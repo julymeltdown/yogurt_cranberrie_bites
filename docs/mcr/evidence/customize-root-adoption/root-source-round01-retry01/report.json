@@ -1,0 +1,86 @@
+{
+  "slot": "ROOT-CHAR-SOURCE-202611041321Z",
+  "source": "48218edbf52faec1119615d3e8bdcec857bd1cfd",
+  "qualification": "SOURCE_ONLY_NOT_NATIVE_OR_ACTIVATION",
+  "carryBytes": 86269591,
+  "commands": [
+    {
+      "label": "tests",
+      "argv": [
+        "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node",
+        "/Users/lhs/Desktop/mcr/frontend/node_modules/vitest/vitest.mjs",
+        "run",
+        "--configLoader",
+        "runner",
+        "--config",
+        "src/app/character-entry/__tests__/reviewed-production/vitest.config.mjs",
+        "--no-cache",
+        "--reporter",
+        "dot"
+      ],
+      "pid": 5527,
+      "startedEpoch": 1793798816.71503,
+      "exit": 0,
+      "endedEpoch": 1793798831.64541
+    },
+    {
+      "label": "types",
+      "argv": [
+        "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node",
+        "--max-old-space-size=2048",
+        "/Users/lhs/Desktop/mcr/frontend/node_modules/typescript/bin/tsc",
+        "--noEmit",
+        "--incremental",
+        "false",
+        "-p",
+        "tsconfig.json"
+      ],
+      "pid": 6046,
+      "startedEpoch": 1793798831.645729,
+      "exit": 0,
+      "endedEpoch": 1793798838.5990348
+    },
+    {
+      "label": "lint",
+      "argv": [
+        "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node",
+        "/Users/lhs/Desktop/mcr/frontend/node_modules/oxlint/bin/oxlint",
+        "--deny-warnings",
+        "src/app/character-entry",
+        "src/app/account-entry",
+        "src/app/CommunityFeatures.tsx",
+        "src/app/world-entry/production.ts",
+        "src/app/world-entry/resolver.ts",
+        "src/features/avatar/motion-adoption",
+        "src/world/avatar/motion-adoption/renderer.ts",
+        "src/app/errors",
+        "src/features/connection-status",
+        "src/main.tsx",
+        "src/app/WorldShell.tsx",
+        "src/app/router.tsx",
+        "src/app/ports.ts"
+      ],
+      "pid": 6506,
+      "startedEpoch": 1793798838.599196,
+      "exit": 0,
+      "endedEpoch": 1793798838.831114
+    }
+  ],
+  "wholePeak": 87640543,
+  "temporaryPeak": 1362628,
+  "durablePeak": 8324,
+  "rssPeak": 1392640000,
+  "freeMinimum": 32218071040,
+  "started": "2026-11-04T13:26:56.714646+00:00",
+  "ownedPids": [
+    5527,
+    6046,
+    6506
+  ],
+  "aliveOwnedPids": [],
+  "status": "PASS",
+  "ended": "2026-11-04T13:27:18.854627+00:00",
+  "linkAbsent": true,
+  "privateTempAbsent": true,
+  "finalFree": 32219369472
+}

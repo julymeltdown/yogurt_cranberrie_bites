@@ -1,0 +1,52 @@
+{
+  "classification": "TEST_ONLY",
+  "realService": false,
+  "status": "FAIL",
+  "errors": [],
+  "cases": [],
+  "listenerPort": 5173,
+  "diagnostic": {
+    "width": 360,
+    "scenario": "world-only",
+    "state": {
+      "scenario": "world-only",
+      "classification": "TEST_ONLY",
+      "policy": {
+        "classification": "TEST_ONLY",
+        "evidence": "Synthetic native fixture, not measured platform guarantees",
+        "maxAgeMs": 30000,
+        "uncertaintyMs": 1000,
+        "maxElapsedRate": 1.01,
+        "maxObservationGapMs": 5000
+      },
+      "path": "/world",
+      "published": false,
+      "avatarPin": {
+        "manifest_id": "mcr_selected_static_20261103",
+        "manifest_version": 1,
+        "content_hash": "sha256:0627c7d178b22535a561e1270db6d8bf9e2383ba84d03a63962e48e565c59b2b"
+      },
+      "requests": [
+        {
+          "path": "/api/auth/capabilities",
+          "method": "GET"
+        },
+        {
+          "path": "/api/auth/login",
+          "method": "POST"
+        },
+        {
+          "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/bootstrap",
+          "method": "GET"
+        }
+      ],
+      "sockets": 0,
+      "activeSockets": 0,
+      "socketPeak": 0,
+      "canvases": 0,
+      "disposed": false
+    },
+    "text": "Skip to content\nSelected fixture fan\nSynthetic contract fixture\nREVENGE\nPARADE\nDANGER\n\nEras unavailable.\n\nYOU IN WORLD\n\nWorld entry is being prepared\n\nMovement and live presence are not available yet.\n\nWorld\nTools\nWORLD\nFEED\nMEET\nGIFTS\nWALL\nME"
+  },
+  "failure": "Error: expect(received).toBe(expected) // Object.is equality\n\nExpected: true\nReceived: false\n\nCall Log:\n- Timeout 25000ms exceeded while waiting on the predicate\n    at captureRawStack (/Users/lhs/Desktop/mcr-worktrees/fe-profile-preferences/frontend/node_modules/.pnpm/playwright-core@1.61.1/node_modules/playwright-core/lib/coreBundle.js:3172:17)\n    at callMatcherAsStep (/Users/lhs/Desktop/mcr-worktrees/fe-profile-preferences/frontend/node_modules/.pnpm/playwright@1.61.1/node_modules/playwright/lib/matchers/expect.js:12877:57)\n    at Object.toBe (/Users/lhs/Desktop/mcr-worktrees/fe-profile-preferences/frontend/node_modules/.pnpm/playwright@1.61.1/node_modules/playwright/lib/matchers/expect.js:12867:23)\n    at /Users/lhs/Desktop/mcr-worktrees/fe-profile-preferences/frontend/src/app/community-adoption/__tests__/native/native.mjs:28:84"
+}

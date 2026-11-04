@@ -1,0 +1,3792 @@
+{
+  "allocation": "FE209-POST-ONLY-COUPLED-BROWSER2-202611041550Z",
+  "acceptedUTC": "2026-11-04T15:49:12.906398+00:00",
+  "workCutoffUTC": "2026-11-04T15:54:12.906398+00:00",
+  "hardCleanupUTC": "2026-11-04T15:55:12.906398+00:00",
+  "fullReleaseUTC": "2026-11-04T15:50:15.705243+00:00",
+  "testedSource": "9e485bcbddc8738a2ae914699b4dd315a6bcff62",
+  "overallStatus": "PASS",
+  "boundedQualification": "Synthetic default-shell post-only Feed, Thread/comment, Notice article/list and media observer/privacy behavior",
+  "synthetic": true,
+  "worldDisabled": true,
+  "liveIN03": "NOT_RUN",
+  "performance": "NOT_RUN",
+  "wholeVisualTarget": "NOT_ACCEPTED_BY_THIS_FIXTURE",
+  "browser": "156.0.8078.80",
+  "cases": [
+    {
+      "name": "feed-360x843",
+      "viewport": {
+        "width": 360,
+        "height": 843
+      },
+      "regions": {
+        ".world-shell": {
+          "x": 0,
+          "y": 0,
+          "width": 360,
+          "height": 843,
+          "scrollHeight": 835,
+          "clientHeight": 835,
+          "background": "rgb(255, 243, 236)",
+          "backgroundImage": "none",
+          "overflowY": "hidden",
+          "objectFit": "fill",
+          "aspectRatio": "auto",
+          "minBlockSize": "288px",
+          "naturalRatio": "",
+          "fontFamily": "system-ui, -apple-system, \"system-ui\", \"Segoe UI\", sans-serif",
+          "fontSize": "16px",
+          "outlineStyle": "none",
+          "outlineWidth": "3px"
+        },
+        ".shell-panel": {
+          "x": 6,
+          "y": 4,
+          "width": 348,
+          "height": 835,
+          "scrollHeight": 829,
+          "clientHeight": 829,
+          "background": "rgb(233, 225, 212)",
+          "backgroundImage": "none",
+          "overflowY": "visible",
+          "objectFit": "fill",
+          "aspectRatio": "auto",
+          "minBlockSize": "176px",
+          "naturalRatio": "",
+          "fontFamily": "system-ui, -apple-system, \"system-ui\", \"Segoe UI\", sans-serif",
+          "fontSize": "16px",
+          "outlineStyle": "none",
+          "outlineWidth": "3px"
+        },
+        ".mcr-chrome-panel-header": {
+          "x": 9,
+          "y": 7,
+          "width": 342,
+          "height": 50,
+          "scrollHeight": 44,
+          "clientHeight": 44,
+          "background": "rgb(37, 16, 23)",
+          "backgroundImage": "linear-gradient(to right, rgb(37, 16, 23) 7px, rgba(0, 0, 0, 0) 0px, rgba(0, 0, 0, 0) calc(100% - 133px), rgb(37, 16, 23) 0px), linear-gradient(rgb(37, 16, 23) 10px, rgb(233, 225, 212) 0px, rgb(233, 225, 212) 14px, rgba(0, 0, 0, 0) 0px, rgba(0, 0, 0, 0) 31px, rgb(233, 225, 212) 0px, rgb(233, 225, 212) 35px, rgb(37, 16, 23) 0px), linear-gradient(to right, rgb(37, 16, 23) 7px, rgb(233, 225, 212) 0px, rgb(233, 225, 212) 11px, rgb(37, 16, 23) 0px, rgb(37, 16, 23) calc(100% - 137px), rgb(233, 225, 212) 0px, rgb(233, 225, 212) calc(100% - 133px), rgb(37, 16, 23) 0px)",
+          "overflowY": "visible",
+          "objectFit": "fill",
+          "aspectRatio": "auto",
+          "minBlockSize": "46px",
+          "naturalRatio": "",
+          "fontFamily": "\"Arial Narrow\", \"Helvetica Neue\", Arial, sans-serif",
+          "fontSize": "14px",
+          "outlineStyle": "none",
+          "outlineWidth": "3px"
+        },
+        ".shell-panel-body": {
+          "x": 9,
+          "y": 57,
+          "width": 342,
+          "height": 779,
+          "scrollHeight": 779,
+          "clientHeight": 779,
+          "background": "rgb(245, 217, 223)",
+          "backgroundImage": "url(\"http://127.0.0.1:5279/backgrounds/cute-community-v1/feed-backdrop.svg\")",
+          "overflowY": "auto",
+          "objectFit": "fill",
+          "aspectRatio": "auto",
+          "minBlockSize": "0px",
+          "naturalRatio": "",
+          "fontFamily": "system-ui, -apple-system, \"system-ui\", \"Segoe UI\", sans-serif",
+          "fontSize": "16px",
+          "outlineStyle": "none",
+          "outlineWidth": "3px"
+        },
+        ".event-feed": {
+          "x": 15,
+          "y": 63,
+          "width": 330,
+          "height": 765,
+          "scrollHeight": 765,
+          "clientHeight": 765,
+          "background": "rgba(0, 0, 0, 0)",
+          "backgroundImage": "none",
+          "overflowY": "visible",
+          "objectFit": "fill",
+          "aspectRatio": "auto",
+          "minBlockSize": "765px",
+          "naturalRatio": "",
+          "fontFamily": "\"Arial Narrow\", \"Helvetica Neue\", Arial, sans-serif",
+          "fontSize": "14px",
+          "outlineStyle": "none",
+          "outlineWidth": "3px"
+        },
+        ".feed-footer": {
+          "x": 15,
+          "y": 769,
+          "width": 330,
+          "height": 59,
+          "scrollHeight": 58,
+          "clientHeight": 58,
+          "background": "rgb(245, 217, 223)",
+          "backgroundImage": "url(\"http://127.0.0.1:5279/backgrounds/cute-community-v1/feed-backdrop.svg\")",
+          "overflowY": "visible",
+          "objectFit": "fill",
+          "aspectRatio": "auto",
+          "minBlockSize": "auto",
+          "naturalRatio": "",
+          "fontFamily": "\"Arial Narrow\", \"Helvetica Neue\", Arial, sans-serif",
+          "fontSize": "14px",
+          "outlineStyle": "none",
+          "outlineWidth": "3px"
+        }
+      },
+      "images": [
+        {
+          "x": 30,
+          "y": 242,
+          "width": 220,
+          "height": 74.8125,
+          "scrollHeight": 75,
+          "clientHeight": 75,
+          "background": "rgba(0, 0, 0, 0)",
+          "backgroundImage": "none",
+          "overflowY": "clip",
+          "objectFit": "contain",
+          "aspectRatio": "auto 197 / 67",
+          "minBlockSize": "0px",
+          "naturalRatio": "197 / 67",
+          "fontFamily": "Verdana, Geneva, sans-serif",
+          "fontSize": "15px",
+          "outlineStyle": "none",
+          "outlineWidth": "3px",
+          "naturalWidth": 197,
+          "naturalHeight": 67,
+          "blob": true
+        },
+        {
+          "x": 30,
+          "y": 504.8125,
+          "width": 220,
+          "height": 51.359375,
+          "scrollHeight": 51,
+          "clientHeight": 51,
+          "background": "rgba(0, 0, 0, 0)",
+          "backgroundImage": "none",
+          "overflowY": "clip",
+          "objectFit": "contain",
+          "aspectRatio": "auto 197 / 46",
+          "minBlockSize": "0px",
+          "naturalRatio": "197 / 46",
+          "fontFamily": "Verdana, Geneva, sans-serif",
+          "fontSize": "15px",
+          "outlineStyle": "none",
+          "outlineWidth": "3px",
+          "naturalWidth": 197,
+          "naturalHeight": 46,
+          "blob": true
+        }
+      ],
+      "mediaFrames": [
+        {
+          "x": 30,
+          "y": 242,
+          "width": 220,
+          "height": 74.8125,
+          "scrollHeight": 75,
+          "clientHeight": 75,
+          "background": "rgba(0, 0, 0, 0)",
+          "backgroundImage": "none",
+          "overflowY": "visible",
+          "objectFit": "fill",
+          "aspectRatio": "197 / 67",
+          "minBlockSize": "0px",
+          "naturalRatio": "197 / 67",
+          "fontFamily": "Verdana, Geneva, sans-serif",
+          "fontSize": "15px",
+          "outlineStyle": "none",
+          "outlineWidth": "3px"
+        },
+        {
+          "x": 30,
+          "y": 504.8125,
+          "width": 220,
+          "height": 51.359375,
+          "scrollHeight": 51,
+          "clientHeight": 51,
+          "background": "rgba(0, 0, 0, 0)",
+          "backgroundImage": "none",
+          "overflowY": "visible",
+          "objectFit": "fill",
+          "aspectRatio": "197 / 46",
+          "minBlockSize": "0px",
+          "naturalRatio": "197 / 46",
+          "fontFamily": "Verdana, Geneva, sans-serif",
+          "fontSize": "15px",
+          "outlineStyle": "none",
+          "outlineWidth": "3px"
+        }
+      ],
+      "postSurfaces": [
+        {
+          "x": 15,
+          "y": 120,
+          "width": 330,
+          "height": 257.8125,
+          "scrollHeight": 256,
+          "clientHeight": 256,
+          "background": "rgb(241, 236, 223)",
+          "backgroundImage": "none",
+          "overflowY": "visible",
+          "objectFit": "fill",
+          "aspectRatio": "auto",
+          "minBlockSize": "0px",
+          "naturalRatio": "",
+          "fontFamily": "Verdana, Geneva, sans-serif",
+          "fontSize": "15px",
+          "outlineStyle": "none",
+          "outlineWidth": "3px"
+        },
+        {
+          "x": 15,
+          "y": 382.8125,
+          "width": 330,
+          "height": 234.359375,
+          "scrollHeight": 232,
+          "clientHeight": 232,
+          "background": "rgb(241, 236, 223)",
+          "backgroundImage": "none",
+          "overflowY": "visible",
+          "objectFit": "fill",
+          "aspectRatio": "auto",
+          "minBlockSize": "0px",
+          "naturalRatio": "",
+          "fontFamily": "Verdana, Geneva, sans-serif",
+          "fontSize": "15px",
+          "outlineStyle": "none",
+          "outlineWidth": "3px"
+        }
+      ],
+      "controls": {
+        ".feed-browse": {
+          "x": 15,
+          "y": 63,
+          "width": 330,
+          "height": 765,
+          "scrollHeight": 765,
+          "clientHeight": 765,
+          "background": "rgba(0, 0, 0, 0)",
+          "backgroundImage": "none",
+          "overflowY": "visible",
+          "objectFit": "fill",
+          "aspectRatio": "auto",
+          "minBlockSize": "765px",
+          "naturalRatio": "",
+          "fontFamily": "\"Arial Narrow\", \"Helvetica Neue\", Arial, sans-serif",
+          "fontSize": "14px",
+          "outlineStyle": "none",
+          "outlineWidth": "3px"
+        },
+        ".mcr-tab[aria-selected=\"true\"]": {
+          "x": 15,
+          "y": 63,
+          "width": 65.921875,
+          "height": 44,
+          "scrollHeight": 42,
+          "clientHeight": 42,
+          "background": "rgb(172, 36, 48)",
+          "backgroundImage": "none",
+          "overflowY": "visible",
+          "objectFit": "fill",
+          "aspectRatio": "auto",
+          "minBlockSize": "44px",
+          "naturalRatio": "",
+          "fontFamily": "\"Arial Narrow\", \"Helvetica Neue\", Arial, sans-serif",
+          "fontSize": "15px",
+          "outlineStyle": "none",
+          "outlineWidth": "3px"
+        },
+        ".feed-compose": {
+          "x": 72,
+          "y": 779,
+          "width": 216,
+          "height": 44,
+          "scrollHeight": 42,
+          "clientHeight": 42,
+          "background": "rgb(177, 38, 49)",
+          "backgroundImage": "none",
+          "overflowY": "visible",
+          "objectFit": "fill",
+          "aspectRatio": "auto",
+          "minBlockSize": "44px",
+          "naturalRatio": "",
+          "fontFamily": "\"Arial Narrow\", \"Helvetica Neue\", Arial, sans-serif",
+          "fontSize": "18px",
+          "outlineStyle": "none",
+          "outlineWidth": "3px"
+        },
+        ".feed-footer": {
+          "x": 15,
+          "y": 769,
+          "width": 330,
+          "height": 59,
+          "scrollHeight": 58,
+          "clientHeight": 58,
+          "background": "rgb(245, 217, 223)",
+          "backgroundImage": "url(\"http://127.0.0.1:5279/backgrounds/cute-community-v1/feed-backdrop.svg\")",
+          "overflowY": "visible",
+          "objectFit": "fill",
+          "aspectRatio": "auto",
+          "minBlockSize": "auto",
+          "naturalRatio": "",
+          "fontFamily": "\"Arial Narrow\", \"Helvetica Neue\", Arial, sans-serif",
+          "fontSize": "14px",
+          "outlineStyle": "none",
+          "outlineWidth": "3px"
+        }
+      },
+      "authors": [
+        {
+          "x": 26,
+          "y": 131,
+          "width": 48,
+          "height": 48,
+          "scrollHeight": 46,
+          "clientHeight": 46,
+          "background": "rgb(221, 210, 193)",
+          "backgroundImage": "none",
+          "overflowY": "hidden",
+          "objectFit": "fill",
+          "aspectRatio": "auto",
+          "minBlockSize": "auto",
+          "naturalRatio": "",
+          "fontFamily": "Verdana, Geneva, sans-serif",
+          "fontSize": "15px",
+          "outlineStyle": "none",
+          "outlineWidth": "3px",
+          "canvas": {
+            "x": 27,
+            "y": 132,
+            "width": 46,
+            "height": 46,
+            "scrollHeight": 46,
+            "clientHeight": 46,
+            "background": "rgba(0, 0, 0, 0)",
+            "backgroundImage": "none",
+            "overflowY": "clip",
+            "objectFit": "contain",
+            "aspectRatio": "auto 64 / 64",
+            "minBlockSize": "0px",
+            "naturalRatio": "",
+            "fontFamily": "Verdana, Geneva, sans-serif",
+            "fontSize": "15px",
+            "outlineStyle": "none",
+            "outlineWidth": "3px"
+          },
+          "ready": "ready",
+          "paintedPixels": 2110
+        },
+        {
+          "x": 26,
+          "y": 393.8125,
+          "width": 48,
+          "height": 48,
+          "scrollHeight": 46,
+          "clientHeight": 46,
+          "background": "rgb(221, 210, 193)",
+          "backgroundImage": "none",
+          "overflowY": "hidden",
+          "objectFit": "fill",
+          "aspectRatio": "auto",
+          "minBlockSize": "auto",
+          "naturalRatio": "",
+          "fontFamily": "Verdana, Geneva, sans-serif",
+          "fontSize": "15px",
+          "outlineStyle": "none",
+          "outlineWidth": "3px",
+          "canvas": {
+            "x": 27,
+            "y": 394.8125,
+            "width": 46,
+            "height": 46,
+            "scrollHeight": 46,
+            "clientHeight": 46,
+            "background": "rgba(0, 0, 0, 0)",
+            "backgroundImage": "none",
+            "overflowY": "clip",
+            "objectFit": "contain",
+            "aspectRatio": "auto 64 / 64",
+            "minBlockSize": "0px",
+            "naturalRatio": "",
+            "fontFamily": "Verdana, Geneva, sans-serif",
+            "fontSize": "15px",
+            "outlineStyle": "none",
+            "outlineWidth": "3px"
+          },
+          "ready": "ready",
+          "paintedPixels": 2304
+        }
+      ],
+      "horizontalOverflow": false,
+      "calls": [
+        {
+          "method": "GET",
+          "path": "/api/auth/capabilities",
+          "status": 200
+        },
+        {
+          "method": "POST",
+          "path": "/api/auth/login",
+          "status": 200
+        },
+        {
+          "method": "GET",
+          "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/bootstrap",
+          "status": 200
+        },
+        {
+          "method": "GET",
+          "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/feed",
+          "status": 200
+        },
+        {
+          "method": "GET",
+          "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/notices",
+          "status": 200
+        },
+        {
+          "method": "GET",
+          "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/media/00000000-0000-4000-8000-000000000075",
+          "status": 200
+        },
+        {
+          "method": "GET",
+          "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/media/00000000-0000-4000-8000-000000000076",
+          "status": 200
+        },
+        {
+          "method": "GET",
+          "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/media/00000000-0000-4000-8000-000000000075/content",
+          "status": 200
+        },
+        {
+          "method": "GET",
+          "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/media/00000000-0000-4000-8000-000000000076/content",
+          "status": 200
+        }
+      ],
+      "blobUrls": 3,
+      "characters": {
+        "disposed": false,
+        "leases": 3,
+        "pending": 0,
+        "cleanupFailures": 0,
+        "decodedAtlases": 1
+      },
+      "qualification": {
+        "synthetic": true,
+        "mode": "loaded",
+        "inputRevision": "eb6e81bd7e5fbeb15613a45e00f1fe896e49f0da",
+        "mediaInputs": {
+          "00000000-0000-4000-8000-000000000075": {
+            "path": "/reference-feed-media-v1/reference-card-1.png",
+            "sha256": "a28db3162d4fe822b17d3228ad82866d4eeb0e2524fb606d469ccd925fd7385d",
+            "width": 197,
+            "height": 67
+          },
+          "00000000-0000-4000-8000-000000000076": {
+            "path": "/reference-feed-media-v1/reference-card-2.png",
+            "sha256": "2c5863585bce002be0ea0b057f4927d67c6f99e97cc7f5edee6ba9c47589ffdd",
+            "width": 197,
+            "height": 46
+          }
+        },
+        "shapeProvenance": {
+          "revision": "a413e69f6864d3a5578fb3149507921e96e9c5b5",
+          "comment": {
+            "path": "frontend/src/features/feed-thread/__tests__/controller.test.ts",
+            "blob": "3e2215fc78f79558cb1de81162afe938e48d4a79",
+            "adaptation": "Bind post/author/time to first selected-art synthetic row; retain reply text and revision."
+          },
+          "notice": {
+            "path": "frontend/src/features/event-feed/__tests__/fixtures.ts",
+            "blob": "f3e55881c846509f7c4cfd8eb7970c50273afec9",
+            "adaptation": "Bind event_id to canonical synthetic Auth event; retain notice fields."
+          }
+        },
+        "liveIN03": "NOT_RUN",
+        "world": "DISABLED",
+        "selectedStatic": "1.1.0"
+      },
+      "scrolling": {
+        "driverOnlySpacer": true,
+        "observerMargin": 200,
+        "before": {
+          "frameHeight": 74.8125,
+          "frameTop": 238,
+          "scrollHeight": 2318,
+          "scrollTop": 0,
+          "imagePresent": true
+        },
+        "outside": {
+          "frameHeight": 74.8125,
+          "frameTop": -372,
+          "scrollHeight": 2318,
+          "scrollTop": 610,
+          "imagePresent": false
+        },
+        "returned": {
+          "frameHeight": 74.8125,
+          "frameTop": 238,
+          "scrollHeight": 2318,
+          "scrollTop": 0,
+          "imagePresent": true
+        },
+        "geometryPreservedOnExit": true,
+        "geometryRestoredOnReturn": true
+      },
+      "focus": {
+        "visible": true,
+        "outline": "solid",
+        "width": "3px",
+        "tag": "BUTTON"
+      },
+      "composerReachable": true,
+      "readinessWithdrawal": true,
+      "disposedBlobUrls": 0
+    },
+    {
+      "name": "feed-390x843",
+      "viewport": {
+        "width": 390,
+        "height": 843
+      },
+      "regions": {
+        ".world-shell": {
+          "x": 0,
+          "y": 0,
+          "width": 390,
+          "height": 843,
+          "scrollHeight": 835,
+          "clientHeight": 835,
+          "background": "rgb(255, 243, 236)",
+          "backgroundImage": "none",
+          "overflowY": "hidden",
+          "objectFit": "fill",
+          "aspectRatio": "auto",
+          "minBlockSize": "288px",
+          "naturalRatio": "",
+          "fontFamily": "system-ui, -apple-system, \"system-ui\", \"Segoe UI\", sans-serif",
+          "fontSize": "16px",
+          "outlineStyle": "none",
+          "outlineWidth": "3px"
+        },
+        ".shell-panel": {
+          "x": 6,
+          "y": 4,
+          "width": 378,
+          "height": 835,
+          "scrollHeight": 829,
+          "clientHeight": 829,
+          "background": "rgb(233, 225, 212)",
+          "backgroundImage": "none",
+          "overflowY": "visible",
+          "objectFit": "fill",
+          "aspectRatio": "auto",
+          "minBlockSize": "176px",
+          "naturalRatio": "",
+          "fontFamily": "system-ui, -apple-system, \"system-ui\", \"Segoe UI\", sans-serif",
+          "fontSize": "16px",
+          "outlineStyle": "none",
+          "outlineWidth": "3px"
+        },
+        ".mcr-chrome-panel-header": {
+          "x": 9,
+          "y": 7,
+          "width": 372,
+          "height": 50,
+          "scrollHeight": 44,
+          "clientHeight": 44,
+          "background": "rgb(37, 16, 23)",
+          "backgroundImage": "linear-gradient(to right, rgb(37, 16, 23) 7px, rgba(0, 0, 0, 0) 0px, rgba(0, 0, 0, 0) calc(100% - 133px), rgb(37, 16, 23) 0px), linear-gradient(rgb(37, 16, 23) 10px, rgb(233, 225, 212) 0px, rgb(233, 225, 212) 14px, rgba(0, 0, 0, 0) 0px, rgba(0, 0, 0, 0) 31px, rgb(233, 225, 212) 0px, rgb(233, 225, 212) 35px, rgb(37, 16, 23) 0px), linear-gradient(to right, rgb(37, 16, 23) 7px, rgb(233, 225, 212) 0px, rgb(233, 225, 212) 11px, rgb(37, 16, 23) 0px, rgb(37, 16, 23) calc(100% - 137px), rgb(233, 225, 212) 0px, rgb(233, 225, 212) calc(100% - 133px), rgb(37, 16, 23) 0px)",
+          "overflowY": "visible",
+          "objectFit": "fill",
+          "aspectRatio": "auto",
+          "minBlockSize": "46px",
+          "naturalRatio": "",
+          "fontFamily": "\"Arial Narrow\", \"Helvetica Neue\", Arial, sans-serif",
+          "fontSize": "14px",
+          "outlineStyle": "none",
+          "outlineWidth": "3px"
+        },
+        ".shell-panel-body": {
+          "x": 9,
+          "y": 57,
+          "width": 372,
+          "height": 779,
+          "scrollHeight": 779,
+          "clientHeight": 779,
+          "background": "rgb(245, 217, 223)",
+          "backgroundImage": "url(\"http://127.0.0.1:5279/backgrounds/cute-community-v1/feed-backdrop.svg\")",
+          "overflowY": "auto",
+          "objectFit": "fill",
+          "aspectRatio": "auto",
+          "minBlockSize": "0px",
+          "naturalRatio": "",
+          "fontFamily": "system-ui, -apple-system, \"system-ui\", \"Segoe UI\", sans-serif",
+          "fontSize": "16px",
+          "outlineStyle": "none",
+          "outlineWidth": "3px"
+        },
+        ".event-feed": {
+          "x": 15,
+          "y": 63,
+          "width": 360,
+          "height": 765,
+          "scrollHeight": 765,
+          "clientHeight": 765,
+          "background": "rgba(0, 0, 0, 0)",
+          "backgroundImage": "none",
+          "overflowY": "visible",
+          "objectFit": "fill",
+          "aspectRatio": "auto",
+          "minBlockSize": "765px",
+          "naturalRatio": "",
+          "fontFamily": "\"Arial Narrow\", \"Helvetica Neue\", Arial, sans-serif",
+          "fontSize": "14px",
+          "outlineStyle": "none",
+          "outlineWidth": "3px"
+        },
+        ".feed-footer": {
+          "x": 15,
+          "y": 769,
+          "width": 360,
+          "height": 59,
+          "scrollHeight": 58,
+          "clientHeight": 58,
+          "background": "rgb(245, 217, 223)",
+          "backgroundImage": "url(\"http://127.0.0.1:5279/backgrounds/cute-community-v1/feed-backdrop.svg\")",
+          "overflowY": "visible",
+          "objectFit": "fill",
+          "aspectRatio": "auto",
+          "minBlockSize": "auto",
+          "naturalRatio": "",
+          "fontFamily": "\"Arial Narrow\", \"Helvetica Neue\", Arial, sans-serif",
+          "fontSize": "14px",
+          "outlineStyle": "none",
+          "outlineWidth": "3px"
+        }
+      },
+      "images": [
+        {
+          "x": 30,
+          "y": 242,
+          "width": 220,
+          "height": 74.8125,
+          "scrollHeight": 75,
+          "clientHeight": 75,
+          "background": "rgba(0, 0, 0, 0)",
+          "backgroundImage": "none",
+          "overflowY": "clip",
+          "objectFit": "contain",
+          "aspectRatio": "auto 197 / 67",
+          "minBlockSize": "0px",
+          "naturalRatio": "197 / 67",
+          "fontFamily": "Verdana, Geneva, sans-serif",
+          "fontSize": "15px",
+          "outlineStyle": "none",
+          "outlineWidth": "3px",
+          "naturalWidth": 197,
+          "naturalHeight": 67,
+          "blob": true
+        },
+        {
+          "x": 30,
+          "y": 504.8125,
+          "width": 220,
+          "height": 51.359375,
+          "scrollHeight": 51,
+          "clientHeight": 51,
+          "background": "rgba(0, 0, 0, 0)",
+          "backgroundImage": "none",
+          "overflowY": "clip",
+          "objectFit": "contain",
+          "aspectRatio": "auto 197 / 46",
+          "minBlockSize": "0px",
+          "naturalRatio": "197 / 46",
+          "fontFamily": "Verdana, Geneva, sans-serif",
+          "fontSize": "15px",
+          "outlineStyle": "none",
+          "outlineWidth": "3px",
+          "naturalWidth": 197,
+          "naturalHeight": 46,
+          "blob": true
+        }
+      ],
+      "mediaFrames": [
+        {
+          "x": 30,
+          "y": 242,
+          "width": 220,
+          "height": 74.8125,
+          "scrollHeight": 75,
+          "clientHeight": 75,
+          "background": "rgba(0, 0, 0, 0)",
+          "backgroundImage": "none",
+          "overflowY": "visible",
+          "objectFit": "fill",
+          "aspectRatio": "197 / 67",
+          "minBlockSize": "0px",
+          "naturalRatio": "197 / 67",
+          "fontFamily": "Verdana, Geneva, sans-serif",
+          "fontSize": "15px",
+          "outlineStyle": "none",
+          "outlineWidth": "3px"
+        },
+        {
+          "x": 30,
+          "y": 504.8125,
+          "width": 220,
+          "height": 51.359375,
+          "scrollHeight": 51,
+          "clientHeight": 51,
+          "background": "rgba(0, 0, 0, 0)",
+          "backgroundImage": "none",
+          "overflowY": "visible",
+          "objectFit": "fill",
+          "aspectRatio": "197 / 46",
+          "minBlockSize": "0px",
+          "naturalRatio": "197 / 46",
+          "fontFamily": "Verdana, Geneva, sans-serif",
+          "fontSize": "15px",
+          "outlineStyle": "none",
+          "outlineWidth": "3px"
+        }
+      ],
+      "postSurfaces": [
+        {
+          "x": 15,
+          "y": 120,
+          "width": 360,
+          "height": 257.8125,
+          "scrollHeight": 256,
+          "clientHeight": 256,
+          "background": "rgb(241, 236, 223)",
+          "backgroundImage": "none",
+          "overflowY": "visible",
+          "objectFit": "fill",
+          "aspectRatio": "auto",
+          "minBlockSize": "0px",
+          "naturalRatio": "",
+          "fontFamily": "Verdana, Geneva, sans-serif",
+          "fontSize": "15px",
+          "outlineStyle": "none",
+          "outlineWidth": "3px"
+        },
+        {
+          "x": 15,
+          "y": 382.8125,
+          "width": 360,
+          "height": 234.359375,
+          "scrollHeight": 232,
+          "clientHeight": 232,
+          "background": "rgb(241, 236, 223)",
+          "backgroundImage": "none",
+          "overflowY": "visible",
+          "objectFit": "fill",
+          "aspectRatio": "auto",
+          "minBlockSize": "0px",
+          "naturalRatio": "",
+          "fontFamily": "Verdana, Geneva, sans-serif",
+          "fontSize": "15px",
+          "outlineStyle": "none",
+          "outlineWidth": "3px"
+        }
+      ],
+      "controls": {
+        ".feed-browse": {
+          "x": 15,
+          "y": 63,
+          "width": 360,
+          "height": 765,
+          "scrollHeight": 765,
+          "clientHeight": 765,
+          "background": "rgba(0, 0, 0, 0)",
+          "backgroundImage": "none",
+          "overflowY": "visible",
+          "objectFit": "fill",
+          "aspectRatio": "auto",
+          "minBlockSize": "765px",
+          "naturalRatio": "",
+          "fontFamily": "\"Arial Narrow\", \"Helvetica Neue\", Arial, sans-serif",
+          "fontSize": "14px",
+          "outlineStyle": "none",
+          "outlineWidth": "3px"
+        },
+        ".mcr-tab[aria-selected=\"true\"]": {
+          "x": 15,
+          "y": 63,
+          "width": 72.203125,
+          "height": 44,
+          "scrollHeight": 42,
+          "clientHeight": 42,
+          "background": "rgb(172, 36, 48)",
+          "backgroundImage": "none",
+          "overflowY": "visible",
+          "objectFit": "fill",
+          "aspectRatio": "auto",
+          "minBlockSize": "44px",
+          "naturalRatio": "",
+          "fontFamily": "\"Arial Narrow\", \"Helvetica Neue\", Arial, sans-serif",
+          "fontSize": "15px",
+          "outlineStyle": "none",
+          "outlineWidth": "3px"
+        },
+        ".feed-compose": {
+          "x": 87,
+          "y": 779,
+          "width": 216,
+          "height": 44,
+          "scrollHeight": 42,
+          "clientHeight": 42,
+          "background": "rgb(177, 38, 49)",
+          "backgroundImage": "none",
+          "overflowY": "visible",
+          "objectFit": "fill",
+          "aspectRatio": "auto",
+          "minBlockSize": "44px",
+          "naturalRatio": "",
+          "fontFamily": "\"Arial Narrow\", \"Helvetica Neue\", Arial, sans-serif",
+          "fontSize": "18px",
+          "outlineStyle": "none",
+          "outlineWidth": "3px"
+        },
+        ".feed-footer": {
+          "x": 15,
+          "y": 769,
+          "width": 360,
+          "height": 59,
+          "scrollHeight": 58,
+          "clientHeight": 58,
+          "background": "rgb(245, 217, 223)",
+          "backgroundImage": "url(\"http://127.0.0.1:5279/backgrounds/cute-community-v1/feed-backdrop.svg\")",
+          "overflowY": "visible",
+          "objectFit": "fill",
+          "aspectRatio": "auto",
+          "minBlockSize": "auto",
+          "naturalRatio": "",
+          "fontFamily": "\"Arial Narrow\", \"Helvetica Neue\", Arial, sans-serif",
+          "fontSize": "14px",
+          "outlineStyle": "none",
+          "outlineWidth": "3px"
+        }
+      },
+      "authors": [
+        {
+          "x": 26,
+          "y": 131,
+          "width": 48,
+          "height": 48,
+          "scrollHeight": 46,
+          "clientHeight": 46,
+          "background": "rgb(221, 210, 193)",
+          "backgroundImage": "none",
+          "overflowY": "hidden",
+          "objectFit": "fill",
+          "aspectRatio": "auto",
+          "minBlockSize": "auto",
+          "naturalRatio": "",
+          "fontFamily": "Verdana, Geneva, sans-serif",
+          "fontSize": "15px",
+          "outlineStyle": "none",
+          "outlineWidth": "3px",
+          "canvas": {
+            "x": 27,
+            "y": 132,
+            "width": 46,
+            "height": 46,
+            "scrollHeight": 46,
+            "clientHeight": 46,
+            "background": "rgba(0, 0, 0, 0)",
+            "backgroundImage": "none",
+            "overflowY": "clip",
+            "objectFit": "contain",
+            "aspectRatio": "auto 64 / 64",
+            "minBlockSize": "0px",
+            "naturalRatio": "",
+            "fontFamily": "Verdana, Geneva, sans-serif",
+            "fontSize": "15px",
+            "outlineStyle": "none",
+            "outlineWidth": "3px"
+          },
+          "ready": "ready",
+          "paintedPixels": 2110
+        },
+        {
+          "x": 26,
+          "y": 393.8125,
+          "width": 48,
+          "height": 48,
+          "scrollHeight": 46,
+          "clientHeight": 46,
+          "background": "rgb(221, 210, 193)",
+          "backgroundImage": "none",
+          "overflowY": "hidden",
+          "objectFit": "fill",
+          "aspectRatio": "auto",
+          "minBlockSize": "auto",
+          "naturalRatio": "",
+          "fontFamily": "Verdana, Geneva, sans-serif",
+          "fontSize": "15px",
+          "outlineStyle": "none",
+          "outlineWidth": "3px",
+          "canvas": {
+            "x": 27,
+            "y": 394.8125,
+            "width": 46,
+            "height": 46,
+            "scrollHeight": 46,
+            "clientHeight": 46,
+            "background": "rgba(0, 0, 0, 0)",
+            "backgroundImage": "none",
+            "overflowY": "clip",
+            "objectFit": "contain",
+            "aspectRatio": "auto 64 / 64",
+            "minBlockSize": "0px",
+            "naturalRatio": "",
+            "fontFamily": "Verdana, Geneva, sans-serif",
+            "fontSize": "15px",
+            "outlineStyle": "none",
+            "outlineWidth": "3px"
+          },
+          "ready": "ready",
+          "paintedPixels": 2304
+        }
+      ],
+      "horizontalOverflow": false,
+      "calls": [
+        {
+          "method": "GET",
+          "path": "/api/auth/capabilities",
+          "status": 200
+        },
+        {
+          "method": "POST",
+          "path": "/api/auth/login",
+          "status": 200
+        },
+        {
+          "method": "GET",
+          "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/bootstrap",
+          "status": 200
+        },
+        {
+          "method": "GET",
+          "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/feed",
+          "status": 200
+        },
+        {
+          "method": "GET",
+          "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/notices",
+          "status": 200
+        },
+        {
+          "method": "GET",
+          "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/media/00000000-0000-4000-8000-000000000075",
+          "status": 200
+        },
+        {
+          "method": "GET",
+          "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/media/00000000-0000-4000-8000-000000000076",
+          "status": 200
+        },
+        {
+          "method": "GET",
+          "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/media/00000000-0000-4000-8000-000000000075/content",
+          "status": 200
+        },
+        {
+          "method": "GET",
+          "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/media/00000000-0000-4000-8000-000000000076/content",
+          "status": 200
+        }
+      ],
+      "blobUrls": 3,
+      "characters": {
+        "disposed": false,
+        "leases": 3,
+        "pending": 0,
+        "cleanupFailures": 0,
+        "decodedAtlases": 1
+      },
+      "qualification": {
+        "synthetic": true,
+        "mode": "loaded",
+        "inputRevision": "eb6e81bd7e5fbeb15613a45e00f1fe896e49f0da",
+        "mediaInputs": {
+          "00000000-0000-4000-8000-000000000075": {
+            "path": "/reference-feed-media-v1/reference-card-1.png",
+            "sha256": "a28db3162d4fe822b17d3228ad82866d4eeb0e2524fb606d469ccd925fd7385d",
+            "width": 197,
+            "height": 67
+          },
+          "00000000-0000-4000-8000-000000000076": {
+            "path": "/reference-feed-media-v1/reference-card-2.png",
+            "sha256": "2c5863585bce002be0ea0b057f4927d67c6f99e97cc7f5edee6ba9c47589ffdd",
+            "width": 197,
+            "height": 46
+          }
+        },
+        "shapeProvenance": {
+          "revision": "a413e69f6864d3a5578fb3149507921e96e9c5b5",
+          "comment": {
+            "path": "frontend/src/features/feed-thread/__tests__/controller.test.ts",
+            "blob": "3e2215fc78f79558cb1de81162afe938e48d4a79",
+            "adaptation": "Bind post/author/time to first selected-art synthetic row; retain reply text and revision."
+          },
+          "notice": {
+            "path": "frontend/src/features/event-feed/__tests__/fixtures.ts",
+            "blob": "f3e55881c846509f7c4cfd8eb7970c50273afec9",
+            "adaptation": "Bind event_id to canonical synthetic Auth event; retain notice fields."
+          }
+        },
+        "liveIN03": "NOT_RUN",
+        "world": "DISABLED",
+        "selectedStatic": "1.1.0"
+      },
+      "scrolling": {
+        "driverOnlySpacer": true,
+        "observerMargin": 200,
+        "before": {
+          "frameHeight": 74.8125,
+          "frameTop": 238,
+          "scrollHeight": 2318,
+          "scrollTop": 0,
+          "imagePresent": true
+        },
+        "outside": {
+          "frameHeight": 74.8125,
+          "frameTop": -372,
+          "scrollHeight": 2318,
+          "scrollTop": 610,
+          "imagePresent": false
+        },
+        "returned": {
+          "frameHeight": 74.8125,
+          "frameTop": 238,
+          "scrollHeight": 2318,
+          "scrollTop": 0,
+          "imagePresent": true
+        },
+        "geometryPreservedOnExit": true,
+        "geometryRestoredOnReturn": true
+      },
+      "focus": {
+        "visible": true,
+        "outline": "solid",
+        "width": "3px",
+        "tag": "BUTTON"
+      },
+      "composerReachable": true,
+      "readinessWithdrawal": true,
+      "disposedBlobUrls": 0
+    },
+    {
+      "name": "feed-430x843",
+      "viewport": {
+        "width": 430,
+        "height": 843
+      },
+      "regions": {
+        ".world-shell": {
+          "x": 0,
+          "y": 0,
+          "width": 430,
+          "height": 843,
+          "scrollHeight": 835,
+          "clientHeight": 835,
+          "background": "rgb(255, 243, 236)",
+          "backgroundImage": "none",
+          "overflowY": "hidden",
+          "objectFit": "fill",
+          "aspectRatio": "auto",
+          "minBlockSize": "288px",
+          "naturalRatio": "",
+          "fontFamily": "system-ui, -apple-system, \"system-ui\", \"Segoe UI\", sans-serif",
+          "fontSize": "16px",
+          "outlineStyle": "none",
+          "outlineWidth": "3px"
+        },
+        ".shell-panel": {
+          "x": 6,
+          "y": 4,
+          "width": 418,
+          "height": 835,
+          "scrollHeight": 829,
+          "clientHeight": 829,
+          "background": "rgb(233, 225, 212)",
+          "backgroundImage": "none",
+          "overflowY": "visible",
+          "objectFit": "fill",
+          "aspectRatio": "auto",
+          "minBlockSize": "176px",
+          "naturalRatio": "",
+          "fontFamily": "system-ui, -apple-system, \"system-ui\", \"Segoe UI\", sans-serif",
+          "fontSize": "16px",
+          "outlineStyle": "none",
+          "outlineWidth": "3px"
+        },
+        ".mcr-chrome-panel-header": {
+          "x": 9,
+          "y": 7,
+          "width": 412,
+          "height": 50,
+          "scrollHeight": 44,
+          "clientHeight": 44,
+          "background": "rgb(37, 16, 23)",
+          "backgroundImage": "linear-gradient(to right, rgb(37, 16, 23) 7px, rgba(0, 0, 0, 0) 0px, rgba(0, 0, 0, 0) calc(100% - 133px), rgb(37, 16, 23) 0px), linear-gradient(rgb(37, 16, 23) 10px, rgb(233, 225, 212) 0px, rgb(233, 225, 212) 14px, rgba(0, 0, 0, 0) 0px, rgba(0, 0, 0, 0) 31px, rgb(233, 225, 212) 0px, rgb(233, 225, 212) 35px, rgb(37, 16, 23) 0px), linear-gradient(to right, rgb(37, 16, 23) 7px, rgb(233, 225, 212) 0px, rgb(233, 225, 212) 11px, rgb(37, 16, 23) 0px, rgb(37, 16, 23) calc(100% - 137px), rgb(233, 225, 212) 0px, rgb(233, 225, 212) calc(100% - 133px), rgb(37, 16, 23) 0px)",
+          "overflowY": "visible",
+          "objectFit": "fill",
+          "aspectRatio": "auto",
+          "minBlockSize": "46px",
+          "naturalRatio": "",
+          "fontFamily": "\"Arial Narrow\", \"Helvetica Neue\", Arial, sans-serif",
+          "fontSize": "14px",
+          "outlineStyle": "none",
+          "outlineWidth": "3px"
+        },
+        ".shell-panel-body": {
+          "x": 9,
+          "y": 57,
+          "width": 412,
+          "height": 779,
+          "scrollHeight": 779,
+          "clientHeight": 779,
+          "background": "rgb(245, 217, 223)",
+          "backgroundImage": "url(\"http://127.0.0.1:5279/backgrounds/cute-community-v1/feed-backdrop.svg\")",
+          "overflowY": "auto",
+          "objectFit": "fill",
+          "aspectRatio": "auto",
+          "minBlockSize": "0px",
+          "naturalRatio": "",
+          "fontFamily": "system-ui, -apple-system, \"system-ui\", \"Segoe UI\", sans-serif",
+          "fontSize": "16px",
+          "outlineStyle": "none",
+          "outlineWidth": "3px"
+        },
+        ".event-feed": {
+          "x": 15,
+          "y": 63,
+          "width": 400,
+          "height": 765,
+          "scrollHeight": 765,
+          "clientHeight": 765,
+          "background": "rgba(0, 0, 0, 0)",
+          "backgroundImage": "none",
+          "overflowY": "visible",
+          "objectFit": "fill",
+          "aspectRatio": "auto",
+          "minBlockSize": "765px",
+          "naturalRatio": "",
+          "fontFamily": "\"Arial Narrow\", \"Helvetica Neue\", Arial, sans-serif",
+          "fontSize": "14px",
+          "outlineStyle": "none",
+          "outlineWidth": "3px"
+        },
+        ".feed-footer": {
+          "x": 15,
+          "y": 769,
+          "width": 400,
+          "height": 59,
+          "scrollHeight": 58,
+          "clientHeight": 58,
+          "background": "rgb(245, 217, 223)",
+          "backgroundImage": "url(\"http://127.0.0.1:5279/backgrounds/cute-community-v1/feed-backdrop.svg\")",
+          "overflowY": "visible",
+          "objectFit": "fill",
+          "aspectRatio": "auto",
+          "minBlockSize": "auto",
+          "naturalRatio": "",
+          "fontFamily": "\"Arial Narrow\", \"Helvetica Neue\", Arial, sans-serif",
+          "fontSize": "14px",
+          "outlineStyle": "none",
+          "outlineWidth": "3px"
+        }
+      },
+      "images": [
+        {
+          "x": 30,
+          "y": 242,
+          "width": 220,
+          "height": 74.8125,
+          "scrollHeight": 75,
+          "clientHeight": 75,
+          "background": "rgba(0, 0, 0, 0)",
+          "backgroundImage": "none",
+          "overflowY": "clip",
+          "objectFit": "contain",
+          "aspectRatio": "auto 197 / 67",
+          "minBlockSize": "0px",
+          "naturalRatio": "197 / 67",
+          "fontFamily": "Verdana, Geneva, sans-serif",
+          "fontSize": "15px",
+          "outlineStyle": "none",
+          "outlineWidth": "3px",
+          "naturalWidth": 197,
+          "naturalHeight": 67,
+          "blob": true
+        },
+        {
+          "x": 30,
+          "y": 504.8125,
+          "width": 220,
+          "height": 51.359375,
+          "scrollHeight": 51,
+          "clientHeight": 51,
+          "background": "rgba(0, 0, 0, 0)",
+          "backgroundImage": "none",
+          "overflowY": "clip",
+          "objectFit": "contain",
+          "aspectRatio": "auto 197 / 46",
+          "minBlockSize": "0px",
+          "naturalRatio": "197 / 46",
+          "fontFamily": "Verdana, Geneva, sans-serif",
+          "fontSize": "15px",
+          "outlineStyle": "none",
+          "outlineWidth": "3px",
+          "naturalWidth": 197,
+          "naturalHeight": 46,
+          "blob": true
+        }
+      ],
+      "mediaFrames": [
+        {
+          "x": 30,
+          "y": 242,
+          "width": 220,
+          "height": 74.8125,
+          "scrollHeight": 75,
+          "clientHeight": 75,
+          "background": "rgba(0, 0, 0, 0)",
+          "backgroundImage": "none",
+          "overflowY": "visible",
+          "objectFit": "fill",
+          "aspectRatio": "197 / 67",
+          "minBlockSize": "0px",
+          "naturalRatio": "197 / 67",
+          "fontFamily": "Verdana, Geneva, sans-serif",
+          "fontSize": "15px",
+          "outlineStyle": "none",
+          "outlineWidth": "3px"
+        },
+        {
+          "x": 30,
+          "y": 504.8125,
+          "width": 220,
+          "height": 51.359375,
+          "scrollHeight": 51,
+          "clientHeight": 51,
+          "background": "rgba(0, 0, 0, 0)",
+          "backgroundImage": "none",
+          "overflowY": "visible",
+          "objectFit": "fill",
+          "aspectRatio": "197 / 46",
+          "minBlockSize": "0px",
+          "naturalRatio": "197 / 46",
+          "fontFamily": "Verdana, Geneva, sans-serif",
+          "fontSize": "15px",
+          "outlineStyle": "none",
+          "outlineWidth": "3px"
+        }
+      ],
+      "postSurfaces": [
+        {
+          "x": 15,
+          "y": 120,
+          "width": 400,
+          "height": 257.8125,
+          "scrollHeight": 256,
+          "clientHeight": 256,
+          "background": "rgb(241, 236, 223)",
+          "backgroundImage": "none",
+          "overflowY": "visible",
+          "objectFit": "fill",
+          "aspectRatio": "auto",
+          "minBlockSize": "0px",
+          "naturalRatio": "",
+          "fontFamily": "Verdana, Geneva, sans-serif",
+          "fontSize": "15px",
+          "outlineStyle": "none",
+          "outlineWidth": "3px"
+        },
+        {
+          "x": 15,
+          "y": 382.8125,
+          "width": 400,
+          "height": 234.359375,
+          "scrollHeight": 232,
+          "clientHeight": 232,
+          "background": "rgb(241, 236, 223)",
+          "backgroundImage": "none",
+          "overflowY": "visible",
+          "objectFit": "fill",
+          "aspectRatio": "auto",
+          "minBlockSize": "0px",
+          "naturalRatio": "",
+          "fontFamily": "Verdana, Geneva, sans-serif",
+          "fontSize": "15px",
+          "outlineStyle": "none",
+          "outlineWidth": "3px"
+        }
+      ],
+      "controls": {
+        ".feed-browse": {
+          "x": 15,
+          "y": 63,
+          "width": 400,
+          "height": 765,
+          "scrollHeight": 765,
+          "clientHeight": 765,
+          "background": "rgba(0, 0, 0, 0)",
+          "backgroundImage": "none",
+          "overflowY": "visible",
+          "objectFit": "fill",
+          "aspectRatio": "auto",
+          "minBlockSize": "765px",
+          "naturalRatio": "",
+          "fontFamily": "\"Arial Narrow\", \"Helvetica Neue\", Arial, sans-serif",
+          "fontSize": "14px",
+          "outlineStyle": "none",
+          "outlineWidth": "3px"
+        },
+        ".mcr-tab[aria-selected=\"true\"]": {
+          "x": 15,
+          "y": 63,
+          "width": 80.578125,
+          "height": 44,
+          "scrollHeight": 42,
+          "clientHeight": 42,
+          "background": "rgb(172, 36, 48)",
+          "backgroundImage": "none",
+          "overflowY": "visible",
+          "objectFit": "fill",
+          "aspectRatio": "auto",
+          "minBlockSize": "44px",
+          "naturalRatio": "",
+          "fontFamily": "\"Arial Narrow\", \"Helvetica Neue\", Arial, sans-serif",
+          "fontSize": "15px",
+          "outlineStyle": "none",
+          "outlineWidth": "3px"
+        },
+        ".feed-compose": {
+          "x": 107,
+          "y": 779,
+          "width": 216,
+          "height": 44,
+          "scrollHeight": 42,
+          "clientHeight": 42,
+          "background": "rgb(177, 38, 49)",
+          "backgroundImage": "none",
+          "overflowY": "visible",
+          "objectFit": "fill",
+          "aspectRatio": "auto",
+          "minBlockSize": "44px",
+          "naturalRatio": "",
+          "fontFamily": "\"Arial Narrow\", \"Helvetica Neue\", Arial, sans-serif",
+          "fontSize": "18px",
+          "outlineStyle": "none",
+          "outlineWidth": "3px"
+        },
+        ".feed-footer": {
+          "x": 15,
+          "y": 769,
+          "width": 400,
+          "height": 59,
+          "scrollHeight": 58,
+          "clientHeight": 58,
+          "background": "rgb(245, 217, 223)",
+          "backgroundImage": "url(\"http://127.0.0.1:5279/backgrounds/cute-community-v1/feed-backdrop.svg\")",
+          "overflowY": "visible",
+          "objectFit": "fill",
+          "aspectRatio": "auto",
+          "minBlockSize": "auto",
+          "naturalRatio": "",
+          "fontFamily": "\"Arial Narrow\", \"Helvetica Neue\", Arial, sans-serif",
+          "fontSize": "14px",
+          "outlineStyle": "none",
+          "outlineWidth": "3px"
+        }
+      },
+      "authors": [
+        {
+          "x": 26,
+          "y": 131,
+          "width": 48,
+          "height": 48,
+          "scrollHeight": 46,
+          "clientHeight": 46,
+          "background": "rgb(221, 210, 193)",
+          "backgroundImage": "none",
+          "overflowY": "hidden",
+          "objectFit": "fill",
+          "aspectRatio": "auto",
+          "minBlockSize": "auto",
+          "naturalRatio": "",
+          "fontFamily": "Verdana, Geneva, sans-serif",
+          "fontSize": "15px",
+          "outlineStyle": "none",
+          "outlineWidth": "3px",
+          "canvas": {
+            "x": 27,
+            "y": 132,
+            "width": 46,
+            "height": 46,
+            "scrollHeight": 46,
+            "clientHeight": 46,
+            "background": "rgba(0, 0, 0, 0)",
+            "backgroundImage": "none",
+            "overflowY": "clip",
+            "objectFit": "contain",
+            "aspectRatio": "auto 64 / 64",
+            "minBlockSize": "0px",
+            "naturalRatio": "",
+            "fontFamily": "Verdana, Geneva, sans-serif",
+            "fontSize": "15px",
+            "outlineStyle": "none",
+            "outlineWidth": "3px"
+          },
+          "ready": "ready",
+          "paintedPixels": 2110
+        },
+        {
+          "x": 26,
+          "y": 393.8125,
+          "width": 48,
+          "height": 48,
+          "scrollHeight": 46,
+          "clientHeight": 46,
+          "background": "rgb(221, 210, 193)",
+          "backgroundImage": "none",
+          "overflowY": "hidden",
+          "objectFit": "fill",
+          "aspectRatio": "auto",
+          "minBlockSize": "auto",
+          "naturalRatio": "",
+          "fontFamily": "Verdana, Geneva, sans-serif",
+          "fontSize": "15px",
+          "outlineStyle": "none",
+          "outlineWidth": "3px",
+          "canvas": {
+            "x": 27,
+            "y": 394.8125,
+            "width": 46,
+            "height": 46,
+            "scrollHeight": 46,
+            "clientHeight": 46,
+            "background": "rgba(0, 0, 0, 0)",
+            "backgroundImage": "none",
+            "overflowY": "clip",
+            "objectFit": "contain",
+            "aspectRatio": "auto 64 / 64",
+            "minBlockSize": "0px",
+            "naturalRatio": "",
+            "fontFamily": "Verdana, Geneva, sans-serif",
+            "fontSize": "15px",
+            "outlineStyle": "none",
+            "outlineWidth": "3px"
+          },
+          "ready": "ready",
+          "paintedPixels": 2304
+        }
+      ],
+      "horizontalOverflow": false,
+      "calls": [
+        {
+          "method": "GET",
+          "path": "/api/auth/capabilities",
+          "status": 200
+        },
+        {
+          "method": "POST",
+          "path": "/api/auth/login",
+          "status": 200
+        },
+        {
+          "method": "GET",
+          "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/bootstrap",
+          "status": 200
+        },
+        {
+          "method": "GET",
+          "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/feed",
+          "status": 200
+        },
+        {
+          "method": "GET",
+          "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/notices",
+          "status": 200
+        },
+        {
+          "method": "GET",
+          "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/media/00000000-0000-4000-8000-000000000075",
+          "status": 200
+        },
+        {
+          "method": "GET",
+          "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/media/00000000-0000-4000-8000-000000000076",
+          "status": 200
+        },
+        {
+          "method": "GET",
+          "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/media/00000000-0000-4000-8000-000000000075/content",
+          "status": 200
+        },
+        {
+          "method": "GET",
+          "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/media/00000000-0000-4000-8000-000000000076/content",
+          "status": 200
+        }
+      ],
+      "blobUrls": 3,
+      "characters": {
+        "disposed": false,
+        "leases": 3,
+        "pending": 0,
+        "cleanupFailures": 0,
+        "decodedAtlases": 1
+      },
+      "qualification": {
+        "synthetic": true,
+        "mode": "loaded",
+        "inputRevision": "eb6e81bd7e5fbeb15613a45e00f1fe896e49f0da",
+        "mediaInputs": {
+          "00000000-0000-4000-8000-000000000075": {
+            "path": "/reference-feed-media-v1/reference-card-1.png",
+            "sha256": "a28db3162d4fe822b17d3228ad82866d4eeb0e2524fb606d469ccd925fd7385d",
+            "width": 197,
+            "height": 67
+          },
+          "00000000-0000-4000-8000-000000000076": {
+            "path": "/reference-feed-media-v1/reference-card-2.png",
+            "sha256": "2c5863585bce002be0ea0b057f4927d67c6f99e97cc7f5edee6ba9c47589ffdd",
+            "width": 197,
+            "height": 46
+          }
+        },
+        "shapeProvenance": {
+          "revision": "a413e69f6864d3a5578fb3149507921e96e9c5b5",
+          "comment": {
+            "path": "frontend/src/features/feed-thread/__tests__/controller.test.ts",
+            "blob": "3e2215fc78f79558cb1de81162afe938e48d4a79",
+            "adaptation": "Bind post/author/time to first selected-art synthetic row; retain reply text and revision."
+          },
+          "notice": {
+            "path": "frontend/src/features/event-feed/__tests__/fixtures.ts",
+            "blob": "f3e55881c846509f7c4cfd8eb7970c50273afec9",
+            "adaptation": "Bind event_id to canonical synthetic Auth event; retain notice fields."
+          }
+        },
+        "liveIN03": "NOT_RUN",
+        "world": "DISABLED",
+        "selectedStatic": "1.1.0"
+      },
+      "scrolling": {
+        "driverOnlySpacer": true,
+        "observerMargin": 200,
+        "before": {
+          "frameHeight": 74.8125,
+          "frameTop": 238,
+          "scrollHeight": 2318,
+          "scrollTop": 0,
+          "imagePresent": true
+        },
+        "outside": {
+          "frameHeight": 74.8125,
+          "frameTop": -372,
+          "scrollHeight": 2318,
+          "scrollTop": 610,
+          "imagePresent": false
+        },
+        "returned": {
+          "frameHeight": 74.8125,
+          "frameTop": 238,
+          "scrollHeight": 2318,
+          "scrollTop": 0,
+          "imagePresent": true
+        },
+        "geometryPreservedOnExit": true,
+        "geometryRestoredOnReturn": true
+      },
+      "focus": {
+        "visible": true,
+        "outline": "solid",
+        "width": "3px",
+        "tag": "BUTTON"
+      },
+      "composerReachable": true,
+      "readinessWithdrawal": true,
+      "disposedBlobUrls": 0
+    },
+    {
+      "name": "feed-390x480",
+      "viewport": {
+        "width": 390,
+        "height": 480
+      },
+      "regions": {
+        ".world-shell": {
+          "x": 0,
+          "y": 0,
+          "width": 390,
+          "height": 480,
+          "scrollHeight": 472,
+          "clientHeight": 472,
+          "background": "rgb(255, 243, 236)",
+          "backgroundImage": "none",
+          "overflowY": "hidden",
+          "objectFit": "fill",
+          "aspectRatio": "auto",
+          "minBlockSize": "0px",
+          "naturalRatio": "",
+          "fontFamily": "system-ui, -apple-system, \"system-ui\", \"Segoe UI\", sans-serif",
+          "fontSize": "16px",
+          "outlineStyle": "none",
+          "outlineWidth": "3px"
+        },
+        ".shell-panel": {
+          "x": 6,
+          "y": 4,
+          "width": 378,
+          "height": 472,
+          "scrollHeight": 466,
+          "clientHeight": 466,
+          "background": "rgb(233, 225, 212)",
+          "backgroundImage": "none",
+          "overflowY": "visible",
+          "objectFit": "fill",
+          "aspectRatio": "auto",
+          "minBlockSize": "176px",
+          "naturalRatio": "",
+          "fontFamily": "system-ui, -apple-system, \"system-ui\", \"Segoe UI\", sans-serif",
+          "fontSize": "16px",
+          "outlineStyle": "none",
+          "outlineWidth": "3px"
+        },
+        ".mcr-chrome-panel-header": {
+          "x": 9,
+          "y": 7,
+          "width": 372,
+          "height": 46,
+          "scrollHeight": 44,
+          "clientHeight": 40,
+          "background": "rgb(37, 16, 23)",
+          "backgroundImage": "linear-gradient(to right, rgb(37, 16, 23) 7px, rgba(0, 0, 0, 0) 0px, rgba(0, 0, 0, 0) calc(100% - 133px), rgb(37, 16, 23) 0px), linear-gradient(rgb(37, 16, 23) 10px, rgb(233, 225, 212) 0px, rgb(233, 225, 212) 14px, rgba(0, 0, 0, 0) 0px, rgba(0, 0, 0, 0) 31px, rgb(233, 225, 212) 0px, rgb(233, 225, 212) 35px, rgb(37, 16, 23) 0px), linear-gradient(to right, rgb(37, 16, 23) 7px, rgb(233, 225, 212) 0px, rgb(233, 225, 212) 11px, rgb(37, 16, 23) 0px, rgb(37, 16, 23) calc(100% - 137px), rgb(233, 225, 212) 0px, rgb(233, 225, 212) calc(100% - 133px), rgb(37, 16, 23) 0px)",
+          "overflowY": "visible",
+          "objectFit": "fill",
+          "aspectRatio": "auto",
+          "minBlockSize": "46px",
+          "naturalRatio": "",
+          "fontFamily": "\"Arial Narrow\", \"Helvetica Neue\", Arial, sans-serif",
+          "fontSize": "14px",
+          "outlineStyle": "none",
+          "outlineWidth": "3px"
+        },
+        ".shell-panel-body": {
+          "x": 9,
+          "y": 53,
+          "width": 372,
+          "height": 420,
+          "scrollHeight": 632,
+          "clientHeight": 420,
+          "background": "rgb(245, 217, 223)",
+          "backgroundImage": "url(\"http://127.0.0.1:5279/backgrounds/cute-community-v1/feed-backdrop.svg\")",
+          "overflowY": "auto",
+          "objectFit": "fill",
+          "aspectRatio": "auto",
+          "minBlockSize": "0px",
+          "naturalRatio": "",
+          "fontFamily": "system-ui, -apple-system, \"system-ui\", \"Segoe UI\", sans-serif",
+          "fontSize": "16px",
+          "outlineStyle": "none",
+          "outlineWidth": "3px"
+        },
+        ".event-feed": {
+          "x": 15,
+          "y": 59,
+          "width": 360,
+          "height": 620.171875,
+          "scrollHeight": 620,
+          "clientHeight": 620,
+          "background": "rgba(0, 0, 0, 0)",
+          "backgroundImage": "none",
+          "overflowY": "visible",
+          "objectFit": "fill",
+          "aspectRatio": "auto",
+          "minBlockSize": "402px",
+          "naturalRatio": "",
+          "fontFamily": "\"Arial Narrow\", \"Helvetica Neue\", Arial, sans-serif",
+          "fontSize": "14px",
+          "outlineStyle": "none",
+          "outlineWidth": "3px"
+        },
+        ".feed-footer": {
+          "x": 15,
+          "y": 620.171875,
+          "width": 360,
+          "height": 59,
+          "scrollHeight": 58,
+          "clientHeight": 58,
+          "background": "rgb(245, 217, 223)",
+          "backgroundImage": "url(\"http://127.0.0.1:5279/backgrounds/cute-community-v1/feed-backdrop.svg\")",
+          "overflowY": "visible",
+          "objectFit": "fill",
+          "aspectRatio": "auto",
+          "minBlockSize": "auto",
+          "naturalRatio": "",
+          "fontFamily": "\"Arial Narrow\", \"Helvetica Neue\", Arial, sans-serif",
+          "fontSize": "14px",
+          "outlineStyle": "none",
+          "outlineWidth": "3px"
+        }
+      },
+      "images": [
+        {
+          "x": 30,
+          "y": 238,
+          "width": 220,
+          "height": 74.8125,
+          "scrollHeight": 75,
+          "clientHeight": 75,
+          "background": "rgba(0, 0, 0, 0)",
+          "backgroundImage": "none",
+          "overflowY": "clip",
+          "objectFit": "contain",
+          "aspectRatio": "auto 197 / 67",
+          "minBlockSize": "0px",
+          "naturalRatio": "197 / 67",
+          "fontFamily": "Verdana, Geneva, sans-serif",
+          "fontSize": "15px",
+          "outlineStyle": "none",
+          "outlineWidth": "3px",
+          "naturalWidth": 197,
+          "naturalHeight": 67,
+          "blob": true
+        },
+        {
+          "x": 30,
+          "y": 500.8125,
+          "width": 220,
+          "height": 51.359375,
+          "scrollHeight": 51,
+          "clientHeight": 51,
+          "background": "rgba(0, 0, 0, 0)",
+          "backgroundImage": "none",
+          "overflowY": "clip",
+          "objectFit": "contain",
+          "aspectRatio": "auto 197 / 46",
+          "minBlockSize": "0px",
+          "naturalRatio": "197 / 46",
+          "fontFamily": "Verdana, Geneva, sans-serif",
+          "fontSize": "15px",
+          "outlineStyle": "none",
+          "outlineWidth": "3px",
+          "naturalWidth": 197,
+          "naturalHeight": 46,
+          "blob": true
+        }
+      ],
+      "mediaFrames": [
+        {
+          "x": 30,
+          "y": 238,
+          "width": 220,
+          "height": 74.8125,
+          "scrollHeight": 75,
+          "clientHeight": 75,
+          "background": "rgba(0, 0, 0, 0)",
+          "backgroundImage": "none",
+          "overflowY": "visible",
+          "objectFit": "fill",
+          "aspectRatio": "197 / 67",
+          "minBlockSize": "0px",
+          "naturalRatio": "197 / 67",
+          "fontFamily": "Verdana, Geneva, sans-serif",
+          "fontSize": "15px",
+          "outlineStyle": "none",
+          "outlineWidth": "3px"
+        },
+        {
+          "x": 30,
+          "y": 500.8125,
+          "width": 220,
+          "height": 51.359375,
+          "scrollHeight": 51,
+          "clientHeight": 51,
+          "background": "rgba(0, 0, 0, 0)",
+          "backgroundImage": "none",
+          "overflowY": "visible",
+          "objectFit": "fill",
+          "aspectRatio": "197 / 46",
+          "minBlockSize": "0px",
+          "naturalRatio": "197 / 46",
+          "fontFamily": "Verdana, Geneva, sans-serif",
+          "fontSize": "15px",
+          "outlineStyle": "none",
+          "outlineWidth": "3px"
+        }
+      ],
+      "postSurfaces": [
+        {
+          "x": 15,
+          "y": 116,
+          "width": 360,
+          "height": 257.8125,
+          "scrollHeight": 256,
+          "clientHeight": 256,
+          "background": "rgb(241, 236, 223)",
+          "backgroundImage": "none",
+          "overflowY": "visible",
+          "objectFit": "fill",
+          "aspectRatio": "auto",
+          "minBlockSize": "0px",
+          "naturalRatio": "",
+          "fontFamily": "Verdana, Geneva, sans-serif",
+          "fontSize": "15px",
+          "outlineStyle": "none",
+          "outlineWidth": "3px"
+        },
+        {
+          "x": 15,
+          "y": 378.8125,
+          "width": 360,
+          "height": 234.359375,
+          "scrollHeight": 232,
+          "clientHeight": 232,
+          "background": "rgb(241, 236, 223)",
+          "backgroundImage": "none",
+          "overflowY": "visible",
+          "objectFit": "fill",
+          "aspectRatio": "auto",
+          "minBlockSize": "0px",
+          "naturalRatio": "",
+          "fontFamily": "Verdana, Geneva, sans-serif",
+          "fontSize": "15px",
+          "outlineStyle": "none",
+          "outlineWidth": "3px"
+        }
+      ],
+      "controls": {
+        ".feed-browse": {
+          "x": 15,
+          "y": 59,
+          "width": 360,
+          "height": 620.171875,
+          "scrollHeight": 620,
+          "clientHeight": 620,
+          "background": "rgba(0, 0, 0, 0)",
+          "backgroundImage": "none",
+          "overflowY": "visible",
+          "objectFit": "fill",
+          "aspectRatio": "auto",
+          "minBlockSize": "402px",
+          "naturalRatio": "",
+          "fontFamily": "\"Arial Narrow\", \"Helvetica Neue\", Arial, sans-serif",
+          "fontSize": "14px",
+          "outlineStyle": "none",
+          "outlineWidth": "3px"
+        },
+        ".mcr-tab[aria-selected=\"true\"]": {
+          "x": 15,
+          "y": 59,
+          "width": 72.203125,
+          "height": 44,
+          "scrollHeight": 42,
+          "clientHeight": 42,
+          "background": "rgb(172, 36, 48)",
+          "backgroundImage": "none",
+          "overflowY": "visible",
+          "objectFit": "fill",
+          "aspectRatio": "auto",
+          "minBlockSize": "44px",
+          "naturalRatio": "",
+          "fontFamily": "\"Arial Narrow\", \"Helvetica Neue\", Arial, sans-serif",
+          "fontSize": "15px",
+          "outlineStyle": "none",
+          "outlineWidth": "3px"
+        },
+        ".feed-compose": {
+          "x": 87,
+          "y": 630.171875,
+          "width": 216,
+          "height": 44,
+          "scrollHeight": 42,
+          "clientHeight": 42,
+          "background": "rgb(177, 38, 49)",
+          "backgroundImage": "none",
+          "overflowY": "visible",
+          "objectFit": "fill",
+          "aspectRatio": "auto",
+          "minBlockSize": "44px",
+          "naturalRatio": "",
+          "fontFamily": "\"Arial Narrow\", \"Helvetica Neue\", Arial, sans-serif",
+          "fontSize": "18px",
+          "outlineStyle": "none",
+          "outlineWidth": "3px"
+        },
+        ".feed-footer": {
+          "x": 15,
+          "y": 620.171875,
+          "width": 360,
+          "height": 59,
+          "scrollHeight": 58,
+          "clientHeight": 58,
+          "background": "rgb(245, 217, 223)",
+          "backgroundImage": "url(\"http://127.0.0.1:5279/backgrounds/cute-community-v1/feed-backdrop.svg\")",
+          "overflowY": "visible",
+          "objectFit": "fill",
+          "aspectRatio": "auto",
+          "minBlockSize": "auto",
+          "naturalRatio": "",
+          "fontFamily": "\"Arial Narrow\", \"Helvetica Neue\", Arial, sans-serif",
+          "fontSize": "14px",
+          "outlineStyle": "none",
+          "outlineWidth": "3px"
+        }
+      },
+      "authors": [
+        {
+          "x": 26,
+          "y": 127,
+          "width": 48,
+          "height": 48,
+          "scrollHeight": 46,
+          "clientHeight": 46,
+          "background": "rgb(221, 210, 193)",
+          "backgroundImage": "none",
+          "overflowY": "hidden",
+          "objectFit": "fill",
+          "aspectRatio": "auto",
+          "minBlockSize": "auto",
+          "naturalRatio": "",
+          "fontFamily": "Verdana, Geneva, sans-serif",
+          "fontSize": "15px",
+          "outlineStyle": "none",
+          "outlineWidth": "3px",
+          "canvas": {
+            "x": 27,
+            "y": 128,
+            "width": 46,
+            "height": 46,
+            "scrollHeight": 46,
+            "clientHeight": 46,
+            "background": "rgba(0, 0, 0, 0)",
+            "backgroundImage": "none",
+            "overflowY": "clip",
+            "objectFit": "contain",
+            "aspectRatio": "auto 64 / 64",
+            "minBlockSize": "0px",
+            "naturalRatio": "",
+            "fontFamily": "Verdana, Geneva, sans-serif",
+            "fontSize": "15px",
+            "outlineStyle": "none",
+            "outlineWidth": "3px"
+          },
+          "ready": "ready",
+          "paintedPixels": 2110
+        },
+        {
+          "x": 26,
+          "y": 389.8125,
+          "width": 48,
+          "height": 48,
+          "scrollHeight": 46,
+          "clientHeight": 46,
+          "background": "rgb(221, 210, 193)",
+          "backgroundImage": "none",
+          "overflowY": "hidden",
+          "objectFit": "fill",
+          "aspectRatio": "auto",
+          "minBlockSize": "auto",
+          "naturalRatio": "",
+          "fontFamily": "Verdana, Geneva, sans-serif",
+          "fontSize": "15px",
+          "outlineStyle": "none",
+          "outlineWidth": "3px",
+          "canvas": {
+            "x": 27,
+            "y": 390.8125,
+            "width": 46,
+            "height": 46,
+            "scrollHeight": 46,
+            "clientHeight": 46,
+            "background": "rgba(0, 0, 0, 0)",
+            "backgroundImage": "none",
+            "overflowY": "clip",
+            "objectFit": "contain",
+            "aspectRatio": "auto 64 / 64",
+            "minBlockSize": "0px",
+            "naturalRatio": "",
+            "fontFamily": "Verdana, Geneva, sans-serif",
+            "fontSize": "15px",
+            "outlineStyle": "none",
+            "outlineWidth": "3px"
+          },
+          "ready": "ready",
+          "paintedPixels": 2304
+        }
+      ],
+      "horizontalOverflow": false,
+      "calls": [
+        {
+          "method": "GET",
+          "path": "/api/auth/capabilities",
+          "status": 200
+        },
+        {
+          "method": "POST",
+          "path": "/api/auth/login",
+          "status": 200
+        },
+        {
+          "method": "GET",
+          "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/bootstrap",
+          "status": 200
+        },
+        {
+          "method": "GET",
+          "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/feed",
+          "status": 200
+        },
+        {
+          "method": "GET",
+          "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/notices",
+          "status": 200
+        },
+        {
+          "method": "GET",
+          "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/media/00000000-0000-4000-8000-000000000075",
+          "status": 200
+        },
+        {
+          "method": "GET",
+          "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/media/00000000-0000-4000-8000-000000000076",
+          "status": 200
+        },
+        {
+          "method": "GET",
+          "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/media/00000000-0000-4000-8000-000000000075/content",
+          "status": 200
+        },
+        {
+          "method": "GET",
+          "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/media/00000000-0000-4000-8000-000000000076/content",
+          "status": 200
+        }
+      ],
+      "blobUrls": 3,
+      "characters": {
+        "disposed": false,
+        "leases": 3,
+        "pending": 0,
+        "cleanupFailures": 0,
+        "decodedAtlases": 1
+      },
+      "qualification": {
+        "synthetic": true,
+        "mode": "loaded",
+        "inputRevision": "eb6e81bd7e5fbeb15613a45e00f1fe896e49f0da",
+        "mediaInputs": {
+          "00000000-0000-4000-8000-000000000075": {
+            "path": "/reference-feed-media-v1/reference-card-1.png",
+            "sha256": "a28db3162d4fe822b17d3228ad82866d4eeb0e2524fb606d469ccd925fd7385d",
+            "width": 197,
+            "height": 67
+          },
+          "00000000-0000-4000-8000-000000000076": {
+            "path": "/reference-feed-media-v1/reference-card-2.png",
+            "sha256": "2c5863585bce002be0ea0b057f4927d67c6f99e97cc7f5edee6ba9c47589ffdd",
+            "width": 197,
+            "height": 46
+          }
+        },
+        "shapeProvenance": {
+          "revision": "a413e69f6864d3a5578fb3149507921e96e9c5b5",
+          "comment": {
+            "path": "frontend/src/features/feed-thread/__tests__/controller.test.ts",
+            "blob": "3e2215fc78f79558cb1de81162afe938e48d4a79",
+            "adaptation": "Bind post/author/time to first selected-art synthetic row; retain reply text and revision."
+          },
+          "notice": {
+            "path": "frontend/src/features/event-feed/__tests__/fixtures.ts",
+            "blob": "f3e55881c846509f7c4cfd8eb7970c50273afec9",
+            "adaptation": "Bind event_id to canonical synthetic Auth event; retain notice fields."
+          }
+        },
+        "liveIN03": "NOT_RUN",
+        "world": "DISABLED",
+        "selectedStatic": "1.1.0"
+      },
+      "scrolling": {
+        "driverOnlySpacer": true,
+        "observerMargin": 200,
+        "before": {
+          "frameHeight": 74.8125,
+          "frameTop": 238,
+          "scrollHeight": 1592,
+          "scrollTop": 0,
+          "imagePresent": true
+        },
+        "outside": {
+          "frameHeight": 74.8125,
+          "frameTop": -372,
+          "scrollHeight": 1592,
+          "scrollTop": 610,
+          "imagePresent": false
+        },
+        "returned": {
+          "frameHeight": 74.8125,
+          "frameTop": 226,
+          "scrollHeight": 1592,
+          "scrollTop": 12,
+          "imagePresent": true
+        },
+        "geometryPreservedOnExit": true,
+        "geometryRestoredOnReturn": true
+      },
+      "focus": {
+        "visible": true,
+        "outline": "solid",
+        "width": "3px",
+        "tag": "BUTTON"
+      },
+      "composerReachable": true,
+      "readinessWithdrawal": true,
+      "disposedBlobUrls": 0
+    },
+    {
+      "mode": "no-readiness",
+      "viewport": {
+        "width": 390,
+        "height": 843
+      },
+      "regions": {
+        ".world-shell": {
+          "x": 0,
+          "y": 0,
+          "width": 390,
+          "height": 843,
+          "scrollHeight": 835,
+          "clientHeight": 835,
+          "background": "rgb(255, 243, 236)",
+          "backgroundImage": "none",
+          "overflowY": "hidden",
+          "objectFit": "fill",
+          "aspectRatio": "auto",
+          "minBlockSize": "288px",
+          "naturalRatio": "",
+          "fontFamily": "system-ui, -apple-system, \"system-ui\", \"Segoe UI\", sans-serif",
+          "fontSize": "16px",
+          "outlineStyle": "none",
+          "outlineWidth": "3px"
+        },
+        ".shell-panel": {
+          "x": 6,
+          "y": 4,
+          "width": 378,
+          "height": 835,
+          "scrollHeight": 829,
+          "clientHeight": 829,
+          "background": "rgb(233, 225, 212)",
+          "backgroundImage": "none",
+          "overflowY": "visible",
+          "objectFit": "fill",
+          "aspectRatio": "auto",
+          "minBlockSize": "176px",
+          "naturalRatio": "",
+          "fontFamily": "system-ui, -apple-system, \"system-ui\", \"Segoe UI\", sans-serif",
+          "fontSize": "16px",
+          "outlineStyle": "none",
+          "outlineWidth": "3px"
+        },
+        ".mcr-chrome-panel-header": {
+          "x": 9,
+          "y": 7,
+          "width": 372,
+          "height": 50,
+          "scrollHeight": 44,
+          "clientHeight": 44,
+          "background": "rgb(37, 16, 23)",
+          "backgroundImage": "linear-gradient(to right, rgb(37, 16, 23) 7px, rgba(0, 0, 0, 0) 0px, rgba(0, 0, 0, 0) calc(100% - 133px), rgb(37, 16, 23) 0px), linear-gradient(rgb(37, 16, 23) 10px, rgb(233, 225, 212) 0px, rgb(233, 225, 212) 14px, rgba(0, 0, 0, 0) 0px, rgba(0, 0, 0, 0) 31px, rgb(233, 225, 212) 0px, rgb(233, 225, 212) 35px, rgb(37, 16, 23) 0px), linear-gradient(to right, rgb(37, 16, 23) 7px, rgb(233, 225, 212) 0px, rgb(233, 225, 212) 11px, rgb(37, 16, 23) 0px, rgb(37, 16, 23) calc(100% - 137px), rgb(233, 225, 212) 0px, rgb(233, 225, 212) calc(100% - 133px), rgb(37, 16, 23) 0px)",
+          "overflowY": "visible",
+          "objectFit": "fill",
+          "aspectRatio": "auto",
+          "minBlockSize": "46px",
+          "naturalRatio": "",
+          "fontFamily": "\"Arial Narrow\", \"Helvetica Neue\", Arial, sans-serif",
+          "fontSize": "14px",
+          "outlineStyle": "none",
+          "outlineWidth": "3px"
+        },
+        ".shell-panel-body": {
+          "x": 9,
+          "y": 57,
+          "width": 372,
+          "height": 779,
+          "scrollHeight": 779,
+          "clientHeight": 779,
+          "background": "rgb(245, 217, 223)",
+          "backgroundImage": "url(\"http://127.0.0.1:5279/backgrounds/cute-community-v1/feed-backdrop.svg\")",
+          "overflowY": "auto",
+          "objectFit": "fill",
+          "aspectRatio": "auto",
+          "minBlockSize": "0px",
+          "naturalRatio": "",
+          "fontFamily": "system-ui, -apple-system, \"system-ui\", \"Segoe UI\", sans-serif",
+          "fontSize": "16px",
+          "outlineStyle": "none",
+          "outlineWidth": "3px"
+        },
+        ".event-feed": null,
+        ".feed-footer": null
+      },
+      "images": [],
+      "mediaFrames": [],
+      "postSurfaces": [],
+      "controls": {
+        ".feed-browse": null,
+        ".mcr-tab[aria-selected=\"true\"]": null,
+        ".feed-compose": null,
+        ".feed-footer": null
+      },
+      "authors": [],
+      "horizontalOverflow": false,
+      "calls": [
+        {
+          "method": "GET",
+          "path": "/api/auth/capabilities",
+          "status": 200
+        },
+        {
+          "method": "POST",
+          "path": "/api/auth/login",
+          "status": 200
+        },
+        {
+          "method": "GET",
+          "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/bootstrap",
+          "status": 200
+        }
+      ],
+      "blobUrls": 1,
+      "characters": {
+        "disposed": false,
+        "leases": 1,
+        "pending": 0,
+        "cleanupFailures": 0,
+        "decodedAtlases": 1
+      },
+      "qualification": {
+        "synthetic": true,
+        "mode": "no-readiness",
+        "inputRevision": "eb6e81bd7e5fbeb15613a45e00f1fe896e49f0da",
+        "mediaInputs": {
+          "00000000-0000-4000-8000-000000000075": {
+            "path": "/reference-feed-media-v1/reference-card-1.png",
+            "sha256": "a28db3162d4fe822b17d3228ad82866d4eeb0e2524fb606d469ccd925fd7385d",
+            "width": 197,
+            "height": 67
+          },
+          "00000000-0000-4000-8000-000000000076": {
+            "path": "/reference-feed-media-v1/reference-card-2.png",
+            "sha256": "2c5863585bce002be0ea0b057f4927d67c6f99e97cc7f5edee6ba9c47589ffdd",
+            "width": 197,
+            "height": 46
+          }
+        },
+        "shapeProvenance": {
+          "revision": "a413e69f6864d3a5578fb3149507921e96e9c5b5",
+          "comment": {
+            "path": "frontend/src/features/feed-thread/__tests__/controller.test.ts",
+            "blob": "3e2215fc78f79558cb1de81162afe938e48d4a79",
+            "adaptation": "Bind post/author/time to first selected-art synthetic row; retain reply text and revision."
+          },
+          "notice": {
+            "path": "frontend/src/features/event-feed/__tests__/fixtures.ts",
+            "blob": "f3e55881c846509f7c4cfd8eb7970c50273afec9",
+            "adaptation": "Bind event_id to canonical synthetic Auth event; retain notice fields."
+          }
+        },
+        "liveIN03": "NOT_RUN",
+        "world": "DISABLED",
+        "selectedStatic": "1.1.0"
+      },
+      "invalidationWithdrawal": true
+    },
+    {
+      "mode": "denied-media",
+      "viewport": {
+        "width": 390,
+        "height": 843
+      },
+      "regions": {
+        ".world-shell": {
+          "x": 0,
+          "y": 0,
+          "width": 390,
+          "height": 843,
+          "scrollHeight": 835,
+          "clientHeight": 835,
+          "background": "rgb(255, 243, 236)",
+          "backgroundImage": "none",
+          "overflowY": "hidden",
+          "objectFit": "fill",
+          "aspectRatio": "auto",
+          "minBlockSize": "288px",
+          "naturalRatio": "",
+          "fontFamily": "system-ui, -apple-system, \"system-ui\", \"Segoe UI\", sans-serif",
+          "fontSize": "16px",
+          "outlineStyle": "none",
+          "outlineWidth": "3px"
+        },
+        ".shell-panel": {
+          "x": 6,
+          "y": 4,
+          "width": 378,
+          "height": 835,
+          "scrollHeight": 829,
+          "clientHeight": 829,
+          "background": "rgb(233, 225, 212)",
+          "backgroundImage": "none",
+          "overflowY": "visible",
+          "objectFit": "fill",
+          "aspectRatio": "auto",
+          "minBlockSize": "176px",
+          "naturalRatio": "",
+          "fontFamily": "system-ui, -apple-system, \"system-ui\", \"Segoe UI\", sans-serif",
+          "fontSize": "16px",
+          "outlineStyle": "none",
+          "outlineWidth": "3px"
+        },
+        ".mcr-chrome-panel-header": {
+          "x": 9,
+          "y": 7,
+          "width": 372,
+          "height": 50,
+          "scrollHeight": 44,
+          "clientHeight": 44,
+          "background": "rgb(37, 16, 23)",
+          "backgroundImage": "linear-gradient(to right, rgb(37, 16, 23) 7px, rgba(0, 0, 0, 0) 0px, rgba(0, 0, 0, 0) calc(100% - 133px), rgb(37, 16, 23) 0px), linear-gradient(rgb(37, 16, 23) 10px, rgb(233, 225, 212) 0px, rgb(233, 225, 212) 14px, rgba(0, 0, 0, 0) 0px, rgba(0, 0, 0, 0) 31px, rgb(233, 225, 212) 0px, rgb(233, 225, 212) 35px, rgb(37, 16, 23) 0px), linear-gradient(to right, rgb(37, 16, 23) 7px, rgb(233, 225, 212) 0px, rgb(233, 225, 212) 11px, rgb(37, 16, 23) 0px, rgb(37, 16, 23) calc(100% - 137px), rgb(233, 225, 212) 0px, rgb(233, 225, 212) calc(100% - 133px), rgb(37, 16, 23) 0px)",
+          "overflowY": "visible",
+          "objectFit": "fill",
+          "aspectRatio": "auto",
+          "minBlockSize": "46px",
+          "naturalRatio": "",
+          "fontFamily": "\"Arial Narrow\", \"Helvetica Neue\", Arial, sans-serif",
+          "fontSize": "14px",
+          "outlineStyle": "none",
+          "outlineWidth": "3px"
+        },
+        ".shell-panel-body": {
+          "x": 9,
+          "y": 57,
+          "width": 372,
+          "height": 779,
+          "scrollHeight": 779,
+          "clientHeight": 779,
+          "background": "rgb(245, 217, 223)",
+          "backgroundImage": "url(\"http://127.0.0.1:5279/backgrounds/cute-community-v1/feed-backdrop.svg\")",
+          "overflowY": "auto",
+          "objectFit": "fill",
+          "aspectRatio": "auto",
+          "minBlockSize": "0px",
+          "naturalRatio": "",
+          "fontFamily": "system-ui, -apple-system, \"system-ui\", \"Segoe UI\", sans-serif",
+          "fontSize": "16px",
+          "outlineStyle": "none",
+          "outlineWidth": "3px"
+        },
+        ".event-feed": {
+          "x": 15,
+          "y": 63,
+          "width": 360,
+          "height": 765,
+          "scrollHeight": 765,
+          "clientHeight": 765,
+          "background": "rgba(0, 0, 0, 0)",
+          "backgroundImage": "none",
+          "overflowY": "visible",
+          "objectFit": "fill",
+          "aspectRatio": "auto",
+          "minBlockSize": "765px",
+          "naturalRatio": "",
+          "fontFamily": "\"Arial Narrow\", \"Helvetica Neue\", Arial, sans-serif",
+          "fontSize": "14px",
+          "outlineStyle": "none",
+          "outlineWidth": "3px"
+        },
+        ".feed-footer": {
+          "x": 15,
+          "y": 769,
+          "width": 360,
+          "height": 59,
+          "scrollHeight": 58,
+          "clientHeight": 58,
+          "background": "rgb(245, 217, 223)",
+          "backgroundImage": "url(\"http://127.0.0.1:5279/backgrounds/cute-community-v1/feed-backdrop.svg\")",
+          "overflowY": "visible",
+          "objectFit": "fill",
+          "aspectRatio": "auto",
+          "minBlockSize": "auto",
+          "naturalRatio": "",
+          "fontFamily": "\"Arial Narrow\", \"Helvetica Neue\", Arial, sans-serif",
+          "fontSize": "14px",
+          "outlineStyle": "none",
+          "outlineWidth": "3px"
+        }
+      },
+      "images": [],
+      "mediaFrames": [
+        {
+          "x": 30,
+          "y": 246,
+          "width": 220,
+          "height": 87.1875,
+          "scrollHeight": 87,
+          "clientHeight": 87,
+          "background": "rgba(0, 0, 0, 0)",
+          "backgroundImage": "none",
+          "overflowY": "visible",
+          "objectFit": "fill",
+          "aspectRatio": "auto",
+          "minBlockSize": "0px",
+          "naturalRatio": "",
+          "fontFamily": "Verdana, Geneva, sans-serif",
+          "fontSize": "15px",
+          "outlineStyle": "none",
+          "outlineWidth": "3px"
+        },
+        {
+          "x": 30,
+          "y": 525.1875,
+          "width": 220,
+          "height": 87.1875,
+          "scrollHeight": 87,
+          "clientHeight": 87,
+          "background": "rgba(0, 0, 0, 0)",
+          "backgroundImage": "none",
+          "overflowY": "visible",
+          "objectFit": "fill",
+          "aspectRatio": "auto",
+          "minBlockSize": "0px",
+          "naturalRatio": "",
+          "fontFamily": "Verdana, Geneva, sans-serif",
+          "fontSize": "15px",
+          "outlineStyle": "none",
+          "outlineWidth": "3px"
+        }
+      ],
+      "postSurfaces": [
+        {
+          "x": 15,
+          "y": 120,
+          "width": 360,
+          "height": 274.1875,
+          "scrollHeight": 272,
+          "clientHeight": 272,
+          "background": "rgb(241, 236, 223)",
+          "backgroundImage": "none",
+          "overflowY": "visible",
+          "objectFit": "fill",
+          "aspectRatio": "auto",
+          "minBlockSize": "0px",
+          "naturalRatio": "",
+          "fontFamily": "Verdana, Geneva, sans-serif",
+          "fontSize": "15px",
+          "outlineStyle": "none",
+          "outlineWidth": "3px"
+        },
+        {
+          "x": 15,
+          "y": 399.1875,
+          "width": 360,
+          "height": 274.1875,
+          "scrollHeight": 272,
+          "clientHeight": 272,
+          "background": "rgb(241, 236, 223)",
+          "backgroundImage": "none",
+          "overflowY": "visible",
+          "objectFit": "fill",
+          "aspectRatio": "auto",
+          "minBlockSize": "0px",
+          "naturalRatio": "",
+          "fontFamily": "Verdana, Geneva, sans-serif",
+          "fontSize": "15px",
+          "outlineStyle": "none",
+          "outlineWidth": "3px"
+        }
+      ],
+      "controls": {
+        ".feed-browse": {
+          "x": 15,
+          "y": 63,
+          "width": 360,
+          "height": 765,
+          "scrollHeight": 765,
+          "clientHeight": 765,
+          "background": "rgba(0, 0, 0, 0)",
+          "backgroundImage": "none",
+          "overflowY": "visible",
+          "objectFit": "fill",
+          "aspectRatio": "auto",
+          "minBlockSize": "765px",
+          "naturalRatio": "",
+          "fontFamily": "\"Arial Narrow\", \"Helvetica Neue\", Arial, sans-serif",
+          "fontSize": "14px",
+          "outlineStyle": "none",
+          "outlineWidth": "3px"
+        },
+        ".mcr-tab[aria-selected=\"true\"]": {
+          "x": 15,
+          "y": 63,
+          "width": 72.203125,
+          "height": 44,
+          "scrollHeight": 42,
+          "clientHeight": 42,
+          "background": "rgb(172, 36, 48)",
+          "backgroundImage": "none",
+          "overflowY": "visible",
+          "objectFit": "fill",
+          "aspectRatio": "auto",
+          "minBlockSize": "44px",
+          "naturalRatio": "",
+          "fontFamily": "\"Arial Narrow\", \"Helvetica Neue\", Arial, sans-serif",
+          "fontSize": "15px",
+          "outlineStyle": "none",
+          "outlineWidth": "3px"
+        },
+        ".feed-compose": {
+          "x": 87,
+          "y": 779,
+          "width": 216,
+          "height": 44,
+          "scrollHeight": 42,
+          "clientHeight": 42,
+          "background": "rgb(177, 38, 49)",
+          "backgroundImage": "none",
+          "overflowY": "visible",
+          "objectFit": "fill",
+          "aspectRatio": "auto",
+          "minBlockSize": "44px",
+          "naturalRatio": "",
+          "fontFamily": "\"Arial Narrow\", \"Helvetica Neue\", Arial, sans-serif",
+          "fontSize": "18px",
+          "outlineStyle": "none",
+          "outlineWidth": "3px"
+        },
+        ".feed-footer": {
+          "x": 15,
+          "y": 769,
+          "width": 360,
+          "height": 59,
+          "scrollHeight": 58,
+          "clientHeight": 58,
+          "background": "rgb(245, 217, 223)",
+          "backgroundImage": "url(\"http://127.0.0.1:5279/backgrounds/cute-community-v1/feed-backdrop.svg\")",
+          "overflowY": "visible",
+          "objectFit": "fill",
+          "aspectRatio": "auto",
+          "minBlockSize": "auto",
+          "naturalRatio": "",
+          "fontFamily": "\"Arial Narrow\", \"Helvetica Neue\", Arial, sans-serif",
+          "fontSize": "14px",
+          "outlineStyle": "none",
+          "outlineWidth": "3px"
+        }
+      },
+      "authors": [
+        {
+          "x": 26,
+          "y": 131,
+          "width": 48,
+          "height": 48,
+          "scrollHeight": 46,
+          "clientHeight": 46,
+          "background": "rgb(221, 210, 193)",
+          "backgroundImage": "none",
+          "overflowY": "hidden",
+          "objectFit": "fill",
+          "aspectRatio": "auto",
+          "minBlockSize": "auto",
+          "naturalRatio": "",
+          "fontFamily": "Verdana, Geneva, sans-serif",
+          "fontSize": "15px",
+          "outlineStyle": "none",
+          "outlineWidth": "3px",
+          "canvas": {
+            "x": 27,
+            "y": 132,
+            "width": 46,
+            "height": 46,
+            "scrollHeight": 46,
+            "clientHeight": 46,
+            "background": "rgba(0, 0, 0, 0)",
+            "backgroundImage": "none",
+            "overflowY": "clip",
+            "objectFit": "contain",
+            "aspectRatio": "auto 64 / 64",
+            "minBlockSize": "0px",
+            "naturalRatio": "",
+            "fontFamily": "Verdana, Geneva, sans-serif",
+            "fontSize": "15px",
+            "outlineStyle": "none",
+            "outlineWidth": "3px"
+          },
+          "ready": "ready",
+          "paintedPixels": 2110
+        },
+        {
+          "x": 26,
+          "y": 410.1875,
+          "width": 48,
+          "height": 48,
+          "scrollHeight": 46,
+          "clientHeight": 46,
+          "background": "rgb(221, 210, 193)",
+          "backgroundImage": "none",
+          "overflowY": "hidden",
+          "objectFit": "fill",
+          "aspectRatio": "auto",
+          "minBlockSize": "auto",
+          "naturalRatio": "",
+          "fontFamily": "Verdana, Geneva, sans-serif",
+          "fontSize": "15px",
+          "outlineStyle": "none",
+          "outlineWidth": "3px",
+          "canvas": {
+            "x": 27,
+            "y": 411.1875,
+            "width": 46,
+            "height": 46,
+            "scrollHeight": 46,
+            "clientHeight": 46,
+            "background": "rgba(0, 0, 0, 0)",
+            "backgroundImage": "none",
+            "overflowY": "clip",
+            "objectFit": "contain",
+            "aspectRatio": "auto 64 / 64",
+            "minBlockSize": "0px",
+            "naturalRatio": "",
+            "fontFamily": "Verdana, Geneva, sans-serif",
+            "fontSize": "15px",
+            "outlineStyle": "none",
+            "outlineWidth": "3px"
+          },
+          "ready": "ready",
+          "paintedPixels": 2304
+        }
+      ],
+      "horizontalOverflow": false,
+      "calls": [
+        {
+          "method": "GET",
+          "path": "/api/auth/capabilities",
+          "status": 200
+        },
+        {
+          "method": "POST",
+          "path": "/api/auth/login",
+          "status": 200
+        },
+        {
+          "method": "GET",
+          "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/bootstrap",
+          "status": 200
+        },
+        {
+          "method": "GET",
+          "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/feed",
+          "status": 200
+        },
+        {
+          "method": "GET",
+          "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/notices",
+          "status": 200
+        },
+        {
+          "method": "GET",
+          "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/media/00000000-0000-4000-8000-000000000075",
+          "status": 403
+        },
+        {
+          "method": "GET",
+          "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/media/00000000-0000-4000-8000-000000000076",
+          "status": 403
+        }
+      ],
+      "blobUrls": 1,
+      "characters": {
+        "disposed": false,
+        "leases": 3,
+        "pending": 0,
+        "cleanupFailures": 0,
+        "decodedAtlases": 1
+      },
+      "qualification": {
+        "synthetic": true,
+        "mode": "denied-media",
+        "inputRevision": "eb6e81bd7e5fbeb15613a45e00f1fe896e49f0da",
+        "mediaInputs": {
+          "00000000-0000-4000-8000-000000000075": {
+            "path": "/reference-feed-media-v1/reference-card-1.png",
+            "sha256": "a28db3162d4fe822b17d3228ad82866d4eeb0e2524fb606d469ccd925fd7385d",
+            "width": 197,
+            "height": 67
+          },
+          "00000000-0000-4000-8000-000000000076": {
+            "path": "/reference-feed-media-v1/reference-card-2.png",
+            "sha256": "2c5863585bce002be0ea0b057f4927d67c6f99e97cc7f5edee6ba9c47589ffdd",
+            "width": 197,
+            "height": 46
+          }
+        },
+        "shapeProvenance": {
+          "revision": "a413e69f6864d3a5578fb3149507921e96e9c5b5",
+          "comment": {
+            "path": "frontend/src/features/feed-thread/__tests__/controller.test.ts",
+            "blob": "3e2215fc78f79558cb1de81162afe938e48d4a79",
+            "adaptation": "Bind post/author/time to first selected-art synthetic row; retain reply text and revision."
+          },
+          "notice": {
+            "path": "frontend/src/features/event-feed/__tests__/fixtures.ts",
+            "blob": "f3e55881c846509f7c4cfd8eb7970c50273afec9",
+            "adaptation": "Bind event_id to canonical synthetic Auth event; retain notice fields."
+          }
+        },
+        "liveIN03": "NOT_RUN",
+        "world": "DISABLED",
+        "selectedStatic": "1.1.0"
+      },
+      "invalidationWithdrawal": true
+    },
+    {
+      "name": "thread-390x843",
+      "mode": "thread",
+      "viewport": {
+        "width": 390,
+        "height": 843
+      },
+      "regions": {
+        ".world-shell": {
+          "x": 0,
+          "y": 0,
+          "width": 390,
+          "height": 843,
+          "scrollHeight": 835,
+          "clientHeight": 835,
+          "background": "rgb(255, 243, 236)",
+          "backgroundImage": "none",
+          "overflowY": "hidden",
+          "objectFit": "fill",
+          "aspectRatio": "auto",
+          "minBlockSize": "288px",
+          "naturalRatio": "",
+          "fontFamily": "system-ui, -apple-system, \"system-ui\", \"Segoe UI\", sans-serif",
+          "fontSize": "16px",
+          "outlineStyle": "none",
+          "outlineWidth": "3px"
+        },
+        ".shell-panel": {
+          "x": 6,
+          "y": 4,
+          "width": 378,
+          "height": 835,
+          "scrollHeight": 829,
+          "clientHeight": 829,
+          "background": "rgb(233, 225, 212)",
+          "backgroundImage": "none",
+          "overflowY": "visible",
+          "objectFit": "fill",
+          "aspectRatio": "auto",
+          "minBlockSize": "176px",
+          "naturalRatio": "",
+          "fontFamily": "system-ui, -apple-system, \"system-ui\", \"Segoe UI\", sans-serif",
+          "fontSize": "16px",
+          "outlineStyle": "none",
+          "outlineWidth": "3px"
+        },
+        ".mcr-chrome-panel-header": {
+          "x": 9,
+          "y": 7,
+          "width": 372,
+          "height": 47.484375,
+          "scrollHeight": 44,
+          "clientHeight": 41,
+          "background": "rgb(37, 16, 23)",
+          "backgroundImage": "linear-gradient(to right, rgb(37, 16, 23) 7px, rgba(0, 0, 0, 0) 0px, rgba(0, 0, 0, 0) calc(100% - 133px), rgb(37, 16, 23) 0px), linear-gradient(rgb(37, 16, 23) 10px, rgb(233, 225, 212) 0px, rgb(233, 225, 212) 14px, rgba(0, 0, 0, 0) 0px, rgba(0, 0, 0, 0) 31px, rgb(233, 225, 212) 0px, rgb(233, 225, 212) 35px, rgb(37, 16, 23) 0px), linear-gradient(to right, rgb(37, 16, 23) 7px, rgb(233, 225, 212) 0px, rgb(233, 225, 212) 11px, rgb(37, 16, 23) 0px, rgb(37, 16, 23) calc(100% - 137px), rgb(233, 225, 212) 0px, rgb(233, 225, 212) calc(100% - 133px), rgb(37, 16, 23) 0px)",
+          "overflowY": "visible",
+          "objectFit": "fill",
+          "aspectRatio": "auto",
+          "minBlockSize": "46px",
+          "naturalRatio": "",
+          "fontFamily": "\"Arial Narrow\", \"Helvetica Neue\", Arial, sans-serif",
+          "fontSize": "14px",
+          "outlineStyle": "none",
+          "outlineWidth": "3px"
+        },
+        ".shell-panel-body": {
+          "x": 9,
+          "y": 54.484375,
+          "width": 372,
+          "height": 781.515625,
+          "scrollHeight": 828,
+          "clientHeight": 782,
+          "background": "rgb(233, 225, 212)",
+          "backgroundImage": "radial-gradient(rgba(66, 49, 28, 0.086) 0.5px, rgba(0, 0, 0, 0) 0.8px), repeating-linear-gradient(97deg, rgba(0, 0, 0, 0) 0px, rgba(0, 0, 0, 0) 8px, rgba(89, 64, 33, 0.024) 9px, rgba(89, 64, 33, 0.024) 10px)",
+          "overflowY": "auto",
+          "objectFit": "fill",
+          "aspectRatio": "auto",
+          "minBlockSize": "0px",
+          "naturalRatio": "",
+          "fontFamily": "system-ui, -apple-system, \"system-ui\", \"Segoe UI\", sans-serif",
+          "fontSize": "16px",
+          "outlineStyle": "none",
+          "outlineWidth": "3px"
+        },
+        ".event-feed": {
+          "x": 15,
+          "y": 60.484375,
+          "width": 360,
+          "height": 816.078125,
+          "scrollHeight": 816,
+          "clientHeight": 816,
+          "background": "rgba(0, 0, 0, 0)",
+          "backgroundImage": "none",
+          "overflowY": "visible",
+          "objectFit": "fill",
+          "aspectRatio": "auto",
+          "minBlockSize": "0px",
+          "naturalRatio": "",
+          "fontFamily": "system-ui, -apple-system, \"system-ui\", \"Segoe UI\", sans-serif",
+          "fontSize": "16px",
+          "outlineStyle": "none",
+          "outlineWidth": "3px"
+        },
+        ".feed-footer": null
+      },
+      "images": [
+        {
+          "x": 46,
+          "y": 243.671875,
+          "width": 220,
+          "height": 74.8125,
+          "scrollHeight": 75,
+          "clientHeight": 75,
+          "background": "rgba(0, 0, 0, 0)",
+          "backgroundImage": "none",
+          "overflowY": "clip",
+          "objectFit": "contain",
+          "aspectRatio": "auto 197 / 67",
+          "minBlockSize": "0px",
+          "naturalRatio": "197 / 67",
+          "fontFamily": "Verdana, Geneva, sans-serif",
+          "fontSize": "15px",
+          "outlineStyle": "none",
+          "outlineWidth": "3px",
+          "naturalWidth": 197,
+          "naturalHeight": 67,
+          "blob": true
+        }
+      ],
+      "mediaFrames": [
+        {
+          "x": 46,
+          "y": 243.671875,
+          "width": 220,
+          "height": 74.8125,
+          "scrollHeight": 75,
+          "clientHeight": 75,
+          "background": "rgba(0, 0, 0, 0)",
+          "backgroundImage": "none",
+          "overflowY": "visible",
+          "objectFit": "fill",
+          "aspectRatio": "197 / 67",
+          "minBlockSize": "0px",
+          "naturalRatio": "197 / 67",
+          "fontFamily": "Verdana, Geneva, sans-serif",
+          "fontSize": "15px",
+          "outlineStyle": "none",
+          "outlineWidth": "3px"
+        }
+      ],
+      "postSurfaces": [
+        {
+          "x": 31,
+          "y": 113.671875,
+          "width": 328,
+          "height": 300.609375,
+          "scrollHeight": 299,
+          "clientHeight": 299,
+          "background": "rgb(241, 236, 223)",
+          "backgroundImage": "none",
+          "overflowY": "visible",
+          "objectFit": "fill",
+          "aspectRatio": "auto",
+          "minBlockSize": "0px",
+          "naturalRatio": "",
+          "fontFamily": "Verdana, Geneva, sans-serif",
+          "fontSize": "15px",
+          "outlineStyle": "none",
+          "outlineWidth": "3px"
+        },
+        {
+          "x": 31,
+          "y": 478.28125,
+          "width": 328,
+          "height": 121.890625,
+          "scrollHeight": 120,
+          "clientHeight": 120,
+          "background": "rgb(241, 236, 223)",
+          "backgroundImage": "none",
+          "overflowY": "visible",
+          "objectFit": "fill",
+          "aspectRatio": "auto",
+          "minBlockSize": "0px",
+          "naturalRatio": "",
+          "fontFamily": "Verdana, Geneva, sans-serif",
+          "fontSize": "15px",
+          "outlineStyle": "none",
+          "outlineWidth": "3px"
+        }
+      ],
+      "controls": {
+        ".feed-browse": null,
+        ".mcr-tab[aria-selected=\"true\"]": null,
+        ".feed-compose": null,
+        ".feed-footer": null
+      },
+      "authors": [
+        {
+          "x": 42,
+          "y": 124.671875,
+          "width": 48,
+          "height": 48,
+          "scrollHeight": 46,
+          "clientHeight": 46,
+          "background": "rgb(221, 210, 193)",
+          "backgroundImage": "none",
+          "overflowY": "hidden",
+          "objectFit": "fill",
+          "aspectRatio": "auto",
+          "minBlockSize": "auto",
+          "naturalRatio": "",
+          "fontFamily": "Verdana, Geneva, sans-serif",
+          "fontSize": "15px",
+          "outlineStyle": "none",
+          "outlineWidth": "3px",
+          "canvas": null,
+          "paintedPixels": 0
+        }
+      ],
+      "horizontalOverflow": false,
+      "calls": [
+        {
+          "method": "GET",
+          "path": "/api/auth/capabilities",
+          "status": 200
+        },
+        {
+          "method": "POST",
+          "path": "/api/auth/login",
+          "status": 200
+        },
+        {
+          "method": "GET",
+          "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/bootstrap",
+          "status": 200
+        },
+        {
+          "method": "GET",
+          "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/posts/00000000-0000-4000-8000-000000000092",
+          "status": 200
+        },
+        {
+          "method": "GET",
+          "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/media/00000000-0000-4000-8000-000000000075",
+          "status": 200
+        },
+        {
+          "method": "GET",
+          "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/media/00000000-0000-4000-8000-000000000075/content",
+          "status": 200
+        }
+      ],
+      "blobUrls": 2,
+      "characters": {
+        "disposed": false,
+        "leases": 1,
+        "pending": 0,
+        "cleanupFailures": 0,
+        "decodedAtlases": 1
+      },
+      "qualification": {
+        "synthetic": true,
+        "mode": "thread",
+        "inputRevision": "eb6e81bd7e5fbeb15613a45e00f1fe896e49f0da",
+        "mediaInputs": {
+          "00000000-0000-4000-8000-000000000075": {
+            "path": "/reference-feed-media-v1/reference-card-1.png",
+            "sha256": "a28db3162d4fe822b17d3228ad82866d4eeb0e2524fb606d469ccd925fd7385d",
+            "width": 197,
+            "height": 67
+          },
+          "00000000-0000-4000-8000-000000000076": {
+            "path": "/reference-feed-media-v1/reference-card-2.png",
+            "sha256": "2c5863585bce002be0ea0b057f4927d67c6f99e97cc7f5edee6ba9c47589ffdd",
+            "width": 197,
+            "height": 46
+          }
+        },
+        "shapeProvenance": {
+          "revision": "a413e69f6864d3a5578fb3149507921e96e9c5b5",
+          "comment": {
+            "path": "frontend/src/features/feed-thread/__tests__/controller.test.ts",
+            "blob": "3e2215fc78f79558cb1de81162afe938e48d4a79",
+            "adaptation": "Bind post/author/time to first selected-art synthetic row; retain reply text and revision."
+          },
+          "notice": {
+            "path": "frontend/src/features/event-feed/__tests__/fixtures.ts",
+            "blob": "f3e55881c846509f7c4cfd8eb7970c50273afec9",
+            "adaptation": "Bind event_id to canonical synthetic Auth event; retain notice fields."
+          }
+        },
+        "liveIN03": "NOT_RUN",
+        "world": "DISABLED",
+        "selectedStatic": "1.1.0"
+      },
+      "targets": [
+        {
+          "width": 54.171875,
+          "height": 44
+        },
+        {
+          "width": 93.59375,
+          "height": 44
+        }
+      ],
+      "focus": {
+        "visible": true,
+        "outline": "solid",
+        "width": "3px",
+        "tag": "BUTTON"
+      },
+      "scrolling": {
+        "driverOnlySpacer": true,
+        "observerMargin": 200,
+        "before": {
+          "frameHeight": 74.8125,
+          "frameTop": 242.1875,
+          "scrollHeight": 2514,
+          "scrollTop": 0,
+          "imagePresent": true
+        },
+        "outside": {
+          "frameHeight": 74.8125,
+          "frameTop": -371.8125,
+          "scrollHeight": 2514,
+          "scrollTop": 614,
+          "imagePresent": false
+        },
+        "returned": {
+          "frameHeight": 74.8125,
+          "frameTop": 242.1875,
+          "scrollHeight": 2514,
+          "scrollTop": 0,
+          "imagePresent": true
+        },
+        "geometryPreservedOnExit": true,
+        "geometryRestoredOnReturn": true
+      },
+      "invalidationWithdrawal": true,
+      "disposedBlobUrls": 0
+    },
+    {
+      "name": "notice-390x843",
+      "mode": "notice",
+      "viewport": {
+        "width": 390,
+        "height": 843
+      },
+      "regions": {
+        ".world-shell": {
+          "x": 0,
+          "y": 0,
+          "width": 390,
+          "height": 843,
+          "scrollHeight": 835,
+          "clientHeight": 835,
+          "background": "rgb(255, 243, 236)",
+          "backgroundImage": "none",
+          "overflowY": "hidden",
+          "objectFit": "fill",
+          "aspectRatio": "auto",
+          "minBlockSize": "288px",
+          "naturalRatio": "",
+          "fontFamily": "system-ui, -apple-system, \"system-ui\", \"Segoe UI\", sans-serif",
+          "fontSize": "16px",
+          "outlineStyle": "none",
+          "outlineWidth": "3px"
+        },
+        ".shell-panel": {
+          "x": 6,
+          "y": 4,
+          "width": 378,
+          "height": 835,
+          "scrollHeight": 829,
+          "clientHeight": 829,
+          "background": "rgb(233, 225, 212)",
+          "backgroundImage": "none",
+          "overflowY": "visible",
+          "objectFit": "fill",
+          "aspectRatio": "auto",
+          "minBlockSize": "176px",
+          "naturalRatio": "",
+          "fontFamily": "system-ui, -apple-system, \"system-ui\", \"Segoe UI\", sans-serif",
+          "fontSize": "16px",
+          "outlineStyle": "none",
+          "outlineWidth": "3px"
+        },
+        ".mcr-chrome-panel-header": {
+          "x": 9,
+          "y": 7,
+          "width": 372,
+          "height": 50,
+          "scrollHeight": 44,
+          "clientHeight": 44,
+          "background": "rgb(37, 16, 23)",
+          "backgroundImage": "linear-gradient(to right, rgb(37, 16, 23) 7px, rgba(0, 0, 0, 0) 0px, rgba(0, 0, 0, 0) calc(100% - 133px), rgb(37, 16, 23) 0px), linear-gradient(rgb(37, 16, 23) 10px, rgb(233, 225, 212) 0px, rgb(233, 225, 212) 14px, rgba(0, 0, 0, 0) 0px, rgba(0, 0, 0, 0) 31px, rgb(233, 225, 212) 0px, rgb(233, 225, 212) 35px, rgb(37, 16, 23) 0px), linear-gradient(to right, rgb(37, 16, 23) 7px, rgb(233, 225, 212) 0px, rgb(233, 225, 212) 11px, rgb(37, 16, 23) 0px, rgb(37, 16, 23) calc(100% - 137px), rgb(233, 225, 212) 0px, rgb(233, 225, 212) calc(100% - 133px), rgb(37, 16, 23) 0px)",
+          "overflowY": "visible",
+          "objectFit": "fill",
+          "aspectRatio": "auto",
+          "minBlockSize": "46px",
+          "naturalRatio": "",
+          "fontFamily": "\"Arial Narrow\", \"Helvetica Neue\", Arial, sans-serif",
+          "fontSize": "14px",
+          "outlineStyle": "none",
+          "outlineWidth": "3px"
+        },
+        ".shell-panel-body": {
+          "x": 9,
+          "y": 57,
+          "width": 372,
+          "height": 779,
+          "scrollHeight": 779,
+          "clientHeight": 779,
+          "background": "rgb(233, 225, 212)",
+          "backgroundImage": "radial-gradient(rgba(66, 49, 28, 0.086) 0.5px, rgba(0, 0, 0, 0) 0.8px), repeating-linear-gradient(97deg, rgba(0, 0, 0, 0) 0px, rgba(0, 0, 0, 0) 8px, rgba(89, 64, 33, 0.024) 9px, rgba(89, 64, 33, 0.024) 10px)",
+          "overflowY": "auto",
+          "objectFit": "fill",
+          "aspectRatio": "auto",
+          "minBlockSize": "0px",
+          "naturalRatio": "",
+          "fontFamily": "system-ui, -apple-system, \"system-ui\", \"Segoe UI\", sans-serif",
+          "fontSize": "16px",
+          "outlineStyle": "none",
+          "outlineWidth": "3px"
+        },
+        ".event-feed": {
+          "x": 15,
+          "y": 63,
+          "width": 360,
+          "height": 225.078125,
+          "scrollHeight": 225,
+          "clientHeight": 225,
+          "background": "rgba(0, 0, 0, 0)",
+          "backgroundImage": "none",
+          "overflowY": "visible",
+          "objectFit": "fill",
+          "aspectRatio": "auto",
+          "minBlockSize": "0px",
+          "naturalRatio": "",
+          "fontFamily": "system-ui, -apple-system, \"system-ui\", \"Segoe UI\", sans-serif",
+          "fontSize": "16px",
+          "outlineStyle": "none",
+          "outlineWidth": "3px"
+        },
+        ".feed-footer": null
+      },
+      "images": [],
+      "mediaFrames": [],
+      "postSurfaces": [
+        {
+          "x": 31,
+          "y": 116.1875,
+          "width": 328,
+          "height": 139.890625,
+          "scrollHeight": 138,
+          "clientHeight": 138,
+          "background": "rgb(241, 236, 223)",
+          "backgroundImage": "none",
+          "overflowY": "visible",
+          "objectFit": "fill",
+          "aspectRatio": "auto",
+          "minBlockSize": "0px",
+          "naturalRatio": "",
+          "fontFamily": "Verdana, Geneva, sans-serif",
+          "fontSize": "15px",
+          "outlineStyle": "none",
+          "outlineWidth": "3px"
+        }
+      ],
+      "controls": {
+        ".feed-browse": null,
+        ".mcr-tab[aria-selected=\"true\"]": null,
+        ".feed-compose": null,
+        ".feed-footer": null
+      },
+      "authors": [],
+      "horizontalOverflow": false,
+      "calls": [
+        {
+          "method": "GET",
+          "path": "/api/auth/capabilities",
+          "status": 200
+        },
+        {
+          "method": "POST",
+          "path": "/api/auth/login",
+          "status": 200
+        },
+        {
+          "method": "GET",
+          "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/bootstrap",
+          "status": 200
+        },
+        {
+          "method": "GET",
+          "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/feed",
+          "status": 200
+        },
+        {
+          "method": "GET",
+          "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/notices",
+          "status": 200
+        },
+        {
+          "method": "GET",
+          "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/notices/00000000-0000-4000-8000-000000000060",
+          "status": 200
+        }
+      ],
+      "blobUrls": 1,
+      "characters": {
+        "disposed": false,
+        "leases": 1,
+        "pending": 0,
+        "cleanupFailures": 0,
+        "decodedAtlases": 1
+      },
+      "qualification": {
+        "synthetic": true,
+        "mode": "notice",
+        "inputRevision": "eb6e81bd7e5fbeb15613a45e00f1fe896e49f0da",
+        "mediaInputs": {
+          "00000000-0000-4000-8000-000000000075": {
+            "path": "/reference-feed-media-v1/reference-card-1.png",
+            "sha256": "a28db3162d4fe822b17d3228ad82866d4eeb0e2524fb606d469ccd925fd7385d",
+            "width": 197,
+            "height": 67
+          },
+          "00000000-0000-4000-8000-000000000076": {
+            "path": "/reference-feed-media-v1/reference-card-2.png",
+            "sha256": "2c5863585bce002be0ea0b057f4927d67c6f99e97cc7f5edee6ba9c47589ffdd",
+            "width": 197,
+            "height": 46
+          }
+        },
+        "shapeProvenance": {
+          "revision": "a413e69f6864d3a5578fb3149507921e96e9c5b5",
+          "comment": {
+            "path": "frontend/src/features/feed-thread/__tests__/controller.test.ts",
+            "blob": "3e2215fc78f79558cb1de81162afe938e48d4a79",
+            "adaptation": "Bind post/author/time to first selected-art synthetic row; retain reply text and revision."
+          },
+          "notice": {
+            "path": "frontend/src/features/event-feed/__tests__/fixtures.ts",
+            "blob": "f3e55881c846509f7c4cfd8eb7970c50273afec9",
+            "adaptation": "Bind event_id to canonical synthetic Auth event; retain notice fields."
+          }
+        },
+        "liveIN03": "NOT_RUN",
+        "world": "DISABLED",
+        "selectedStatic": "1.1.0"
+      },
+      "targets": [
+        {
+          "width": 52.015625,
+          "height": 44
+        }
+      ],
+      "focus": {
+        "visible": true,
+        "outline": "solid",
+        "width": "3px",
+        "tag": "A"
+      },
+      "scrolling": null,
+      "invalidationWithdrawal": true,
+      "disposedBlobUrls": 0
+    }
+  ],
+  "jsErrors": [],
+  "commands": [
+    {
+      "name": "changed-fixture-tsc",
+      "args": [
+        "node_modules/typescript/bin/tsc",
+        "-p",
+        "src/app/feed-entry/__tests__/tsconfig.json",
+        "--noEmit",
+        "--incremental",
+        "false",
+        "--pretty",
+        "false"
+      ],
+      "exit": 0,
+      "signal": null,
+      "startUTC": "2026-11-04T15:49:37.082Z",
+      "milliseconds": 3890
+    },
+    {
+      "name": "supervisor-syntax",
+      "args": [
+        "--check",
+        "src/app/feed-entry/__tests__/qualify.mjs"
+      ],
+      "exit": 0,
+      "signal": null,
+      "startUTC": "2026-11-04T15:49:41.003Z",
+      "milliseconds": 29
+    },
+    {
+      "name": "native-syntax",
+      "args": [
+        "--check",
+        "src/app/feed-entry/__tests__/native.mjs"
+      ],
+      "exit": 0,
+      "signal": null,
+      "startUTC": "2026-11-04T15:49:41.061Z",
+      "milliseconds": 37
+    },
+    {
+      "name": "native",
+      "args": [
+        "src/app/feed-entry/__tests__/native.mjs"
+      ],
+      "exit": 0,
+      "signal": null,
+      "startUTC": "2026-11-04T15:49:41.428Z",
+      "milliseconds": 13109
+    },
+    {
+      "name": "vite",
+      "args": [
+        "node_modules/vite/bin/vite.js",
+        "--configLoader",
+        "native",
+        "--config",
+        "src/app/feed-entry/__tests__/vite.config.ts",
+        "--host",
+        "127.0.0.1",
+        "--port",
+        "5279",
+        "--strictPort"
+      ],
+      "exit": 143,
+      "signal": null,
+      "startUTC": "2026-11-04T15:49:41.153Z",
+      "milliseconds": 13404
+    }
+  ],
+  "node": "v24.22.2",
+  "nodeSha256": "b6fb419f0f43bb2fbca273700294dd2f3b685a64b60e8417c295f47646a70e4a",
+  "lockSha256": "47ca44459819ad0e887d2f4f93394fdf3b1053b8f45edc9ceb0236981feee1f6",
+  "cssInputs": [
+    {
+      "revision": "1e07321cede694b66aae06184fd05c624a5a0ccb",
+      "sha256": "477adc0571c6151d94c2b91208b4c01397e2c3c93b663dc22964b06d91cb5777",
+      "path": "frontend/src/features/event-feed/feed.css",
+      "readonlyBorrow": true
+    },
+    {
+      "revision": "375c73dfebf778a8949403001662b33bada4345e",
+      "sha256": "d26dd8fbee928539f2689ccd9bb6269e4cb964c58b78e8cc86afbd894f228504",
+      "path": "frontend/src/shared/styles/cozy-community-backgrounds-v1.css",
+      "readonlyBorrow": true
+    }
+  ],
+  "moduleInputs": [
+    {
+      "revision": "49b8bfde47d7f232f7b9dfddfa8c07cf83fdcba6",
+      "sha256": "f22e034423804ec41658fa26760d07926f4f2ebce339fed685072fbf09542d9a",
+      "path": "frontend/src/app/media-entry/RootMediaView.tsx",
+      "readonlyBorrow": true
+    }
+  ],
+  "moduleSourceQualificationOwner": "01a1a230-6acc-7e82-9e4b-92506decc745; 47 focused tests, full application types and scoped lint PASS, own evidence in media-natural-geometry",
+  "initial": {
+    "files": 701,
+    "bytes": 7446044,
+    "temporaryBytes": 0,
+    "freeBytes": 18882621440
+  },
+  "final": {
+    "files": 739,
+    "bytes": 8523084,
+    "temporaryBytes": 0,
+    "freeBytes": 18889719808
+  },
+  "peakProcesses": 11,
+  "peakRssBytes": 2534359040,
+  "fullRelease": {
+    "utc": "2026-11-04T15:50:15.705243+00:00",
+    "ownedProcesses": [],
+    "listener5279": "",
+    "bind5279": "PASS",
+    "dependencyLinkPresent": false,
+    "cachePresent": false,
+    "tmpPresent": false,
+    "freeBytes": 18876370944,
+    "peakProcesses": 11,
+    "peakRssBytes": 2534359040,
+    "summaryStatus": "SYNTHETIC_NATIVE_PASSED",
+    "cases": 8,
+    "errors": []
+  },
+  "sourceSha256": {
+    "frontend/src/app/feed-entry/__tests__/README.md": "6c11295cceaac71864bb18d0fb98364e8e3ff0eb11116f0c5045371e3df8c723",
+    "frontend/src/app/feed-entry/__tests__/fixture.ts": "d0e667e227aa672f24c26520c97fd06b43ad4e0437eae7a662996ad2cb902c5a",
+    "frontend/src/app/feed-entry/__tests__/native.mjs": "ea623e9b041cc057e9080446792a89ba6c27f4712cac20bfd0e3aa8f7ed3f8ce",
+    "frontend/src/app/feed-entry/__tests__/preview.html": "dcf91cb947e126f7007253f133800a889a49b03f5eaf91529ab727393cc96136",
+    "frontend/src/app/feed-entry/__tests__/preview.tsx": "555b6654d06c619e3f224ee9d6ac96e29e8f42efc06ac77cc8128a79cc35eb8a",
+    "frontend/src/app/feed-entry/__tests__/production.test.ts": "faf1035617e78f7c2c69efd129fcdc8e56e214d6c1aa4d7cf3a763e868fbef30",
+    "frontend/src/app/feed-entry/__tests__/qualify.mjs": "e6df3f6286d07e5df1845d72fe0d562cf8ec3b63e385e3c380ad20e9bf117cfb",
+    "frontend/src/app/feed-entry/__tests__/tsconfig.json": "75a17cac9c90f2bfb565b04b2e9b15dd2213eaaa269882d5de542d016fe6404f",
+    "frontend/src/app/feed-entry/__tests__/vite.config.ts": "7694c80cfa9bcb233133087a6b6364255a9f2bbb6b50217e665fbf3b47ba442e",
+    "frontend/src/app/feed-entry/__tests__/vitest.config.ts": "d4b1237aa48adb8fe3ddc70f39d7447d795f1d3b521c99bca392f161a76b733f",
+    "frontend/src/app/feed-entry/production.ts": "3475ecd14440ccaa3f4c1178b3de84da2496e0f102a13bbaf1c18241c2030bdd"
+  },
+  "artifacts": [
+    {
+      "file": "accept.json",
+      "bytes": 1441,
+      "sha256": "d51ca67b06cf7eb5476b60ae24110ee4db06a127d411b8883586b48826715a1c",
+      "rawSha256": "d51ca67b06cf7eb5476b60ae24110ee4db06a127d411b8883586b48826715a1c",
+      "normalization": "byte identical"
+    },
+    {
+      "file": "changed-fixture-tsc.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "rawSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "normalization": "byte identical"
+    },
+    {
+      "file": "feed-owner.css",
+      "bytes": 16635,
+      "sha256": "477adc0571c6151d94c2b91208b4c01397e2c3c93b663dc22964b06d91cb5777",
+      "rawSha256": "477adc0571c6151d94c2b91208b4c01397e2c3c93b663dc22964b06d91cb5777",
+      "normalization": "byte identical"
+    },
+    {
+      "file": "full.json",
+      "bytes": 355,
+      "sha256": "305700838b11aa00d0a5f47b5f25486c4cda758f6a003b4e0dc79e7a814b310a",
+      "rawSha256": "305700838b11aa00d0a5f47b5f25486c4cda758f6a003b4e0dc79e7a814b310a",
+      "normalization": "byte identical"
+    },
+    {
+      "file": "native/denied-media-390x843.png",
+      "bytes": 57622,
+      "sha256": "cb82d5c5210dce735805e386cbd4a2cc437178c1947eb379ac8f128185fbfccd",
+      "rawSha256": "cb82d5c5210dce735805e386cbd4a2cc437178c1947eb379ac8f128185fbfccd",
+      "normalization": "byte identical"
+    },
+    {
+      "file": "native/feed-360x843-author-1.png",
+      "bytes": 3155,
+      "sha256": "bed7a482dcf7d35b78e9791a676cbc1e03cdf5d5b56230632f9937560bbde5fe",
+      "rawSha256": "bed7a482dcf7d35b78e9791a676cbc1e03cdf5d5b56230632f9937560bbde5fe",
+      "normalization": "byte identical"
+    },
+    {
+      "file": "native/feed-360x843-author-2.png",
+      "bytes": 2730,
+      "sha256": "01c4c8e51c2372d4a393fb26840c8ac1d9724cb543d747fa0157566c43903f94",
+      "rawSha256": "01c4c8e51c2372d4a393fb26840c8ac1d9724cb543d747fa0157566c43903f94",
+      "normalization": "byte identical"
+    },
+    {
+      "file": "native/feed-360x843-media-1.png",
+      "bytes": 26969,
+      "sha256": "2c724134616a766a5f158ec5ad1ac55ae61712ad699868c3ba88a29c524fc6df",
+      "rawSha256": "2c724134616a766a5f158ec5ad1ac55ae61712ad699868c3ba88a29c524fc6df",
+      "normalization": "byte identical"
+    },
+    {
+      "file": "native/feed-360x843-media-2.png",
+      "bytes": 22217,
+      "sha256": "016c20b1b9d3f33e261a8900ddf70ad53075efa6e3884c2e6c63a48624f3886e",
+      "rawSha256": "016c20b1b9d3f33e261a8900ddf70ad53075efa6e3884c2e6c63a48624f3886e",
+      "normalization": "byte identical"
+    },
+    {
+      "file": "native/feed-360x843.png",
+      "bytes": 99652,
+      "sha256": "237b36adb9c96316aa668a7bd61ef1f5e84d86a633ddc843d2e91ae937ea2590",
+      "rawSha256": "237b36adb9c96316aa668a7bd61ef1f5e84d86a633ddc843d2e91ae937ea2590",
+      "normalization": "byte identical"
+    },
+    {
+      "file": "native/feed-390x480-author-1.png",
+      "bytes": 3155,
+      "sha256": "bed7a482dcf7d35b78e9791a676cbc1e03cdf5d5b56230632f9937560bbde5fe",
+      "rawSha256": "bed7a482dcf7d35b78e9791a676cbc1e03cdf5d5b56230632f9937560bbde5fe",
+      "normalization": "byte identical"
+    },
+    {
+      "file": "native/feed-390x480-author-2.png",
+      "bytes": 2730,
+      "sha256": "01c4c8e51c2372d4a393fb26840c8ac1d9724cb543d747fa0157566c43903f94",
+      "rawSha256": "01c4c8e51c2372d4a393fb26840c8ac1d9724cb543d747fa0157566c43903f94",
+      "normalization": "byte identical"
+    },
+    {
+      "file": "native/feed-390x480-media-1.png",
+      "bytes": 26970,
+      "sha256": "a3dfdf7f2a34bbff544732df34fc51c8e24f426f240df28039aaccc4c3409d22",
+      "rawSha256": "a3dfdf7f2a34bbff544732df34fc51c8e24f426f240df28039aaccc4c3409d22",
+      "normalization": "byte identical"
+    },
+    {
+      "file": "native/feed-390x480-media-2.png",
+      "bytes": 22217,
+      "sha256": "016c20b1b9d3f33e261a8900ddf70ad53075efa6e3884c2e6c63a48624f3886e",
+      "rawSha256": "016c20b1b9d3f33e261a8900ddf70ad53075efa6e3884c2e6c63a48624f3886e",
+      "normalization": "byte identical"
+    },
+    {
+      "file": "native/feed-390x480-scroll-out.png",
+      "bytes": 10946,
+      "sha256": "374bcbb5faa1bc18fea847dac5b884ac75b6a77bfd06c41fb979003a8ae31ea3",
+      "rawSha256": "374bcbb5faa1bc18fea847dac5b884ac75b6a77bfd06c41fb979003a8ae31ea3",
+      "normalization": "byte identical"
+    },
+    {
+      "file": "native/feed-390x480.png",
+      "bytes": 64547,
+      "sha256": "7e0c9a43b45ce38fe63f35e6d73b39accbd63d6e73dbc671756fa53e7ba68fa1",
+      "rawSha256": "7e0c9a43b45ce38fe63f35e6d73b39accbd63d6e73dbc671756fa53e7ba68fa1",
+      "normalization": "byte identical"
+    },
+    {
+      "file": "native/feed-390x843-author-1.png",
+      "bytes": 3155,
+      "sha256": "bed7a482dcf7d35b78e9791a676cbc1e03cdf5d5b56230632f9937560bbde5fe",
+      "rawSha256": "bed7a482dcf7d35b78e9791a676cbc1e03cdf5d5b56230632f9937560bbde5fe",
+      "normalization": "byte identical"
+    },
+    {
+      "file": "native/feed-390x843-author-2.png",
+      "bytes": 2730,
+      "sha256": "01c4c8e51c2372d4a393fb26840c8ac1d9724cb543d747fa0157566c43903f94",
+      "rawSha256": "01c4c8e51c2372d4a393fb26840c8ac1d9724cb543d747fa0157566c43903f94",
+      "normalization": "byte identical"
+    },
+    {
+      "file": "native/feed-390x843-media-1.png",
+      "bytes": 26970,
+      "sha256": "a3dfdf7f2a34bbff544732df34fc51c8e24f426f240df28039aaccc4c3409d22",
+      "rawSha256": "a3dfdf7f2a34bbff544732df34fc51c8e24f426f240df28039aaccc4c3409d22",
+      "normalization": "byte identical"
+    },
+    {
+      "file": "native/feed-390x843-media-2.png",
+      "bytes": 22217,
+      "sha256": "016c20b1b9d3f33e261a8900ddf70ad53075efa6e3884c2e6c63a48624f3886e",
+      "rawSha256": "016c20b1b9d3f33e261a8900ddf70ad53075efa6e3884c2e6c63a48624f3886e",
+      "normalization": "byte identical"
+    },
+    {
+      "file": "native/feed-390x843.png",
+      "bytes": 100600,
+      "sha256": "b842355a93b5b773aac450ea651210463a5cece6d4a1c8b28ecef186bf0e3eb0",
+      "rawSha256": "b842355a93b5b773aac450ea651210463a5cece6d4a1c8b28ecef186bf0e3eb0",
+      "normalization": "byte identical"
+    },
+    {
+      "file": "native/feed-430x843-author-1.png",
+      "bytes": 3155,
+      "sha256": "bed7a482dcf7d35b78e9791a676cbc1e03cdf5d5b56230632f9937560bbde5fe",
+      "rawSha256": "bed7a482dcf7d35b78e9791a676cbc1e03cdf5d5b56230632f9937560bbde5fe",
+      "normalization": "byte identical"
+    },
+    {
+      "file": "native/feed-430x843-author-2.png",
+      "bytes": 2730,
+      "sha256": "01c4c8e51c2372d4a393fb26840c8ac1d9724cb543d747fa0157566c43903f94",
+      "rawSha256": "01c4c8e51c2372d4a393fb26840c8ac1d9724cb543d747fa0157566c43903f94",
+      "normalization": "byte identical"
+    },
+    {
+      "file": "native/feed-430x843-media-1.png",
+      "bytes": 26970,
+      "sha256": "a3dfdf7f2a34bbff544732df34fc51c8e24f426f240df28039aaccc4c3409d22",
+      "rawSha256": "a3dfdf7f2a34bbff544732df34fc51c8e24f426f240df28039aaccc4c3409d22",
+      "normalization": "byte identical"
+    },
+    {
+      "file": "native/feed-430x843-media-2.png",
+      "bytes": 22217,
+      "sha256": "016c20b1b9d3f33e261a8900ddf70ad53075efa6e3884c2e6c63a48624f3886e",
+      "rawSha256": "016c20b1b9d3f33e261a8900ddf70ad53075efa6e3884c2e6c63a48624f3886e",
+      "normalization": "byte identical"
+    },
+    {
+      "file": "native/feed-430x843.png",
+      "bytes": 101140,
+      "sha256": "75e88da3e2c857a6cefa9b2aa2e8d73d2d3abdaa9ccf1edeff25b0424bf5fd3c",
+      "rawSha256": "75e88da3e2c857a6cefa9b2aa2e8d73d2d3abdaa9ccf1edeff25b0424bf5fd3c",
+      "normalization": "byte identical"
+    },
+    {
+      "file": "native/native.json",
+      "bytes": 110191,
+      "sha256": "8e999787766d8d777a695fafbdf00bdc24c52f9bd1aabf6c50edf4d951322788",
+      "rawSha256": "8e999787766d8d777a695fafbdf00bdc24c52f9bd1aabf6c50edf4d951322788",
+      "normalization": "byte identical"
+    },
+    {
+      "file": "native/no-readiness-390x843.png",
+      "bytes": 22032,
+      "sha256": "b631795ee7fab8220b24b70ecc687debe37e54587435aff1bfdc86340242bcde",
+      "rawSha256": "b631795ee7fab8220b24b70ecc687debe37e54587435aff1bfdc86340242bcde",
+      "normalization": "byte identical"
+    },
+    {
+      "file": "native/notice-390x843.png",
+      "bytes": 65525,
+      "sha256": "79e7e1a9a63b48732717515cd7712fa84b695aeb92e49a4d6dfd412dae7fdc9f",
+      "rawSha256": "79e7e1a9a63b48732717515cd7712fa84b695aeb92e49a4d6dfd412dae7fdc9f",
+      "normalization": "byte identical"
+    },
+    {
+      "file": "native/notice-article-390x843.png",
+      "bytes": 10567,
+      "sha256": "1f1ce2178696c8ba99708e7f77937d921dbffc3a8e76a2f21d0a79c8a59347f3",
+      "rawSha256": "1f1ce2178696c8ba99708e7f77937d921dbffc3a8e76a2f21d0a79c8a59347f3",
+      "normalization": "byte identical"
+    },
+    {
+      "file": "native/notice-list-390x843.png",
+      "bytes": 34974,
+      "sha256": "ace5fdf460f09d0bb2056d32b4d66299fc0e436be5b40e798a45a99a7b770ec3",
+      "rawSha256": "ace5fdf460f09d0bb2056d32b4d66299fc0e436be5b40e798a45a99a7b770ec3",
+      "normalization": "byte identical"
+    },
+    {
+      "file": "native/thread-390x843.png",
+      "bytes": 99879,
+      "sha256": "0c8ac9170e3d093d8a53fc53ff944a4829a784bdf1282db0779f21610c2b2710",
+      "rawSha256": "0c8ac9170e3d093d8a53fc53ff944a4829a784bdf1282db0779f21610c2b2710",
+      "normalization": "byte identical"
+    },
+    {
+      "file": "native/thread-article-390x843.png",
+      "bytes": 43588,
+      "sha256": "6aa2ad62953158cf7ee28fb93431659a0daf70243829486ea58eae6a18088658",
+      "rawSha256": "6aa2ad62953158cf7ee28fb93431659a0daf70243829486ea58eae6a18088658",
+      "normalization": "byte identical"
+    },
+    {
+      "file": "native/thread-comment-390x843.png",
+      "bytes": 7195,
+      "sha256": "032fec7ec117eb18f05332b1a22c29df62279e66fd8b19c60bd6825301e58938",
+      "rawSha256": "032fec7ec117eb18f05332b1a22c29df62279e66fd8b19c60bd6825301e58938",
+      "normalization": "byte identical"
+    },
+    {
+      "file": "native-syntax.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "rawSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "normalization": "byte identical"
+    },
+    {
+      "file": "native.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "rawSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "normalization": "byte identical"
+    },
+    {
+      "file": "root-owner.css",
+      "bytes": 2260,
+      "sha256": "d26dd8fbee928539f2689ccd9bb6269e4cb964c58b78e8cc86afbd894f228504",
+      "rawSha256": "d26dd8fbee928539f2689ccd9bb6269e4cb964c58b78e8cc86afbd894f228504",
+      "normalization": "byte identical"
+    },
+    {
+      "file": "root-owner.tsx",
+      "bytes": 9328,
+      "sha256": "f22e034423804ec41658fa26760d07926f4f2ebce339fed685072fbf09542d9a",
+      "rawSha256": "f22e034423804ec41658fa26760d07926f4f2ebce339fed685072fbf09542d9a",
+      "normalization": "byte identical"
+    },
+    {
+      "file": "summary.json",
+      "bytes": 3281,
+      "sha256": "5eb8153f5cd7fe2821a8d956eed17e369ad8c479c2abbb531de3b9249e69737f",
+      "rawSha256": "98e79cc1bf471b2099a2e0c0481fce331b033cdb0b2ea1eae976f52bbfe6c320",
+      "normalization": "exact local prefix replacement only"
+    },
+    {
+      "file": "supervisor-syntax.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "rawSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "normalization": "byte identical"
+    },
+    {
+      "file": "vite.log",
+      "bytes": 72,
+      "sha256": "7a3bf2eee0f802317dc71dddb2c969078c27348d9d3c9f63855b8cf501085c38",
+      "rawSha256": "7a3bf2eee0f802317dc71dddb2c969078c27348d9d3c9f63855b8cf501085c38",
+      "normalization": "byte identical"
+    }
+  ],
+  "imageAssessment": {
+    "inspected": [
+      "native/feed-360x843.png",
+      "native/feed-390x843.png",
+      "native/feed-430x843.png",
+      "native/feed-390x480.png",
+      "native/thread-390x843.png",
+      "native/thread-comment-390x843.png",
+      "native/notice-390x843.png",
+      "native/notice-list-390x843.png",
+      "native/denied-media-390x843.png",
+      "native/no-readiness-390x843.png"
+    ],
+    "confirmed": [
+      "Retro paper/Verdana appears only on actual Feed post, Thread article/comment and Notice article surfaces.",
+      "Established Feed tabs, red centered216px compose control,14px panel typography and pink shared backdrop are restored.",
+      "Selected Feed portraits and complete protected media retain their content; media has no fixed-ratio blank bands.",
+      "Short Feed remains vertically scrollable, with actual composer navigation verified.",
+      "Thread populated comment and Notice article/list are actual default-controller synthetic states; source links remain truthful.",
+      "Four Feed frames and Thread frame preserve74.8125px across actual image release outside observer and return, with stable scrollHeight.",
+      "Negative states preserve safe text and normal surrounding UI; privacy withdrawal and zero Blob cleanup pass."
+    ],
+    "limitations": [
+      "Thread author remains the pre-existing honest initial placeholder because its product component does not receive the selected-author renderer; this fixture does not fabricate one.",
+      "Original actual-public IN03, World, real multiuser/provider flows, performance and whole visual-target acceptance remain outside this bounded synthetic evidence.",
+      "Only frozen197x67/197x46 media geometry is exercised here; arbitrary-ratio safety relies additionally on responsible owner source qualification."
+    ],
+    "publication": "Named Root publisher canonical verified same-candidate receipt closes delivery; no separate consumer readback or proof-only successor."
+  }
+}

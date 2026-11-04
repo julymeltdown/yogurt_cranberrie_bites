@@ -5,7 +5,7 @@ import { canonicalJson } from '../../../world/map/json'
 
 /** Profile stays idle; the editor can sample the one existing Phaser clock. Never owns a RAF/timer. */
 export function MotionView<C>({ runtime, config, label, size = 64, direction = 'down', walking = false }: {
-  readonly runtime: MotionRuntime<C>; readonly config: C; readonly label: string; readonly size?: 56 | 64 | 72 | 192 | 'fill'
+  readonly runtime: MotionRuntime<C>; readonly config: C; readonly label: string; readonly size?: 56 | 64 | 72 | 128 | 192 | 'fill'
   readonly direction?: MotionDirection; readonly walking?: boolean
 }) {
   const host = useRef<HTMLCanvasElement>(null), [ready, setReady] = useState(false)

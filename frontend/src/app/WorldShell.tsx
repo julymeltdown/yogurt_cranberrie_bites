@@ -12,6 +12,8 @@ import { ConcertWindowEmbedding } from '../shared/ui/concert-window'
 import { WorldTools } from './world-presentation/WorldTools'
 import { projectCapabilities } from './capabilities'
 import type { PrivacyScope } from '../shared/query/privacy'
+import { ConnectionStatus } from '../features/connection-status'
+import { beginCommunityBootstrap, type CommunityBootstrapBinding } from './community-adoption/bootstrap'
 
 const SessionShellHeader = lazy(() => import('./shell-chrome/identity').then(module => ({ default: module.SessionShellHeader })))
 const RootSocialFeatures = lazy(() => import('./world-panels/social').then(module => ({ default: module.RootSocialFeatures })))
@@ -38,17 +40,20 @@ function BootstrapBoundary({ scope }: { scope: ActiveScope }) {
   )
   const captured = privacy?.capture() ?? null
   const result = useScopedLoad(scope, async signal => {
-    const value = privacy && captured
-      ? await privacy.run(captured, context => ports.bootstrap.load(scope, context.signal), signal)
-      : await ports.bootstrap.load(scope, signal)
-    if (!validBootstrap(value, scope)) throw new Error('Invalid bootstrap binding')
-    // Keep capabilities attached to the lease that authorized their read. Never
-    // relabel an old decision with a newly captured policy generation.
-    const bootstrap: ShellBootstrap = Object.freeze({ ...value,
-      event: Object.freeze({ ...value.event }), participant: Object.freeze({ ...value.participant }),
-      capabilities: projectCapabilities(value.capabilities),
-    })
-    return { bootstrap, privacyScope: captured }
+    const timing = beginCommunityBootstrap({ privacy, scope: captured, signal, profile: ports.communityClock })
+    try {
+      const value = privacy && captured
+        ? await privacy.run(captured, context => ports.bootstrap.load(scope, context.signal), signal)
+        : await ports.bootstrap.load(scope, signal)
+      if (!validBootstrap(value, scope)) throw new Error('Invalid bootstrap binding')
+      // Keep capabilities attached to the lease that authorized their read. Never
+      // relabel an old decision with a newly captured policy generation.
+      const bootstrap: ShellBootstrap = Object.freeze({ ...value,
+        event: Object.freeze({ ...value.event }), participant: Object.freeze({ ...value.participant }),
+        capabilities: projectCapabilities(value.capabilities),
+      })
+      return { bootstrap, privacyScope: captured, community: timing.complete(value) }
+    } catch (error) { timing.dispose(); throw error }
   }, `${attempt}:${policyGeneration}`)
   if (result.status !== 'ready') return <div className="shell-gate">
     <Link className="shell-link" to="/">MCR Concert World</Link>
@@ -64,16 +69,16 @@ function BootstrapBoundary({ scope }: { scope: ActiveScope }) {
       <Link className="shell-link" to="/">Back to home</Link>
     </div>
   </div>
-  return <WorldShell scope={scope} bootstrap={result.value.bootstrap} privacyScope={result.value.privacyScope} />
+  return <WorldShell scope={scope} bootstrap={result.value.bootstrap} privacyScope={result.value.privacyScope} community={result.value.community} />
 }
 
 function typingTarget(target: EventTarget | null) {
   return target instanceof HTMLElement && Boolean(target.closest('input,textarea,select,[contenteditable="true"]'))
 }
-export function WorldShell({ scope, bootstrap, privacyScope = null }: {
-  scope: ActiveScope; bootstrap: ShellBootstrap; privacyScope?: PrivacyScope | null
+export function WorldShell({ scope, bootstrap, privacyScope = null, community = null }: {
+  scope: ActiveScope; bootstrap: ShellBootstrap; privacyScope?: PrivacyScope | null; community?: CommunityBootstrapBinding | null
 }) {
-  const { auth, accountAssets } = usePorts()
+  const { auth, accountAssets, connectionStatus } = usePorts()
   const location = useLocation()
   const panelOpen = location.pathname !== '/world'
   const [size, setSize] = useState<'peek' | 'half' | 'full'>(() => window.matchMedia?.('(max-width: 799px)').matches ? 'full' : 'half')
@@ -94,8 +99,10 @@ export function WorldShell({ scope, bootstrap, privacyScope = null }: {
     window.addEventListener('resize', update)
     return () => { viewport?.removeEventListener('resize', update); window.removeEventListener('resize', update) }
   }, [])
-  return <Suspense fallback={<p role="status">Opening your event…</p>}><CharacterProvider bootstrap={bootstrap} scope={privacyScope}><RootMediaProvider auth={auth} scope={privacyScope}><CommunityFeatures bootstrap={bootstrap} privacyScope={privacyScope}><ProductionWorldFeatures privacyScope={privacyScope}><AccountProvider auth={auth} bootstrap={bootstrap} privacyScope={privacyScope} assets={accountAssets}><MeetingEntryFeatures auth={auth ?? null} release={null}>
-    <RootSocialFeatures bootstrap={bootstrap} scope={privacyScope}><NavigationMemory><div className="world-shell" data-mcr-shell="" data-panel-size={panelOpen ? size : 'closed'} ref={root}
+  return <Suspense fallback={<p role="status">Opening your event…</p>}><CharacterProvider bootstrap={bootstrap} scope={privacyScope}><RootMediaProvider auth={auth} scope={privacyScope}><CommunityFeatures bootstrap={bootstrap} privacyScope={privacyScope} binding={community}><ProductionWorldFeatures privacyScope={privacyScope}><AccountProvider auth={auth} bootstrap={bootstrap} privacyScope={privacyScope} assets={accountAssets}><MeetingEntryFeatures auth={auth ?? null} release={null}>
+    <RootSocialFeatures bootstrap={bootstrap} scope={privacyScope}><NavigationMemory>
+    {connectionStatus && <ConnectionStatus controller={connectionStatus.controller} reload={connectionStatus.reload} />}
+    <div className="world-shell" data-mcr-shell="" data-panel-size={panelOpen ? size : 'closed'} ref={root}
     onFocusCapture={event => setTyping(typingTarget(event.target))}
     onBlurCapture={event => setTyping(typingTarget(event.relatedTarget))}>
     <a className="skip-link" href="#shell-content">Skip to content</a>

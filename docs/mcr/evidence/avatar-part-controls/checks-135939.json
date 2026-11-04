@@ -1,0 +1,49 @@
+{
+  "status": "FAIL",
+  "slot": "FE12-BODY-PALETTE-SOURCE-B-202611041355Z",
+  "source": "6a3976d7937cda99d1798609c7d6584deacce1b3",
+  "base": "654974128a27c948a449fa9e58f466b8e612361d",
+  "startedUTC": "2026-11-04T13:59:30.762629+00:00",
+  "deadlineUTC": "2026-11-04T14:07:24.883099+00:00",
+  "wholeChargedCapBytes": 134217728,
+  "rssCapBytes": 2684354560,
+  "startFloorBytes": 17179869184,
+  "stopFloorBytes": 8589934592,
+  "processCap": 8,
+  "sourceGitBytesAtStart": 1749169,
+  "peakProcessCount": 3,
+  "peakChargedBytes": 1939085,
+  "peakAggregateRssBytes": 616071168,
+  "checks": [
+    {
+      "name": "runtime",
+      "argv": [
+        "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node",
+        "--version"
+      ],
+      "cwd": "/Users/lhs/Desktop/mcr-worktrees/fe-ref-map",
+      "exit": 0
+    },
+    {
+      "name": "unit",
+      "argv": [
+        "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node",
+        "/Users/lhs/Desktop/mcr/frontend/node_modules/vitest/vitest.mjs",
+        "run",
+        "--configLoader",
+        "runner",
+        "--root",
+        "/Users/lhs/Desktop/mcr-worktrees/fe-ref-map/frontend",
+        "--config",
+        "/Users/lhs/Desktop/mcr-worktrees/fe-ref-map/frontend/src/features/avatar/part-controls/__tests__/vitest.config.mjs"
+      ],
+      "cwd": "/Users/lhs/Desktop/mcr-worktrees/fe-ref-map/frontend",
+      "exit": 1
+    }
+  ],
+  "sourcePins": {},
+  "failure": "unit failed",
+  "ownedTemporaryRemoved": true,
+  "localNodeModulesPresent": false,
+  "finishedUTC": "2026-11-04T13:59:39.193282+00:00"
+}

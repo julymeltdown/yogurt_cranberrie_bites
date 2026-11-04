@@ -1,0 +1,13 @@
+{
+  "offeredSlot": "ROOT-FE-REVIEWED-NATIVE-BROWSER1-202611041547Z",
+  "guardianSlotAlias": "ROOT-FE-COMBINED-NATIVE-REVIEWED-202611041547Z",
+  "pin": "794a8c3179e1919dfe1c9197f4d271cb859fe2f5",
+  "accepted": "2026-11-04T15:46:11.470404+00:00",
+  "workDeadline": "2026-11-04T15:50:11.470404+00:00",
+  "deadline": "2026-11-04T15:51:11.470404+00:00",
+  "carryBytes": 183546636,
+  "verifiedFiles": 1373,
+  "freshFree": 19193446400,
+  "purpose": "Fullapp types + reviewed360390430 actualUI signout only, no Map/FE41/Feed replay",
+  "output": "docs/mcr/evidence/frontend-combined-adoption/reviewed-round01"
+}

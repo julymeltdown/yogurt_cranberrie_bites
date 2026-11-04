@@ -8,6 +8,8 @@ import { AccountDeletionOwnership } from './account-deletion-entry/context'
 import type { ShellPorts } from './ports'
 import { adminPaths, panelRoutes, publicPaths } from './routes'
 import { PanelScreen, WorldBoundary } from './WorldShell'
+import { RouteState } from './errors/RouteState'
+import { communityEntryPanels } from './community-entry'
 
 const PublicBoundary = lazy(() => import('./PublicBoundary'))
 const AdminBoundary = lazy(() => import('./AdminBoundary'))
@@ -26,6 +28,7 @@ const WallPanel = lazy(() => import('./world-panels').then(module => ({ default:
 const SocialPanel = lazy(() => import('./social-composition').then(module => ({ default: module.SocialRoutePanel })))
 const socialPaths = ['/feed', '/feed/new', '/feed/:postId', '/feed/:postId/edit', '/notices/:noticeId', '/meet/people', '/people/:userId', '/meet/intro/edit', '/me/age', '/notifications', '/me/social', '/me/requests'] as const
 const featurePanels: Readonly<Record<string, ReactNode>> = {
+  ...communityEntryPanels,
   ...Object.fromEntries(socialPaths.map(path => [path, <Suspense fallback={<p role="status">Opening this section…</p>}><SocialPanel /></Suspense>])),
   '/world/map': <Suspense fallback={<p role="status">Opening map…</p>}><MapPanel /></Suspense>,
   '/world/places/:placeId': <Suspense fallback={<p role="status">Opening place…</p>}><PlacePanel /></Suspense>,
@@ -52,11 +55,7 @@ function LazyBoundary({ children }: { children: ReactNode }) {
 }
 export function RouteFailure() {
   // Never render thrown responses, URLs, stack traces or transport payloads.
-  return <div className="shell-gate"><Feedback kind="error" title="This page is unavailable">
-    <p>We could not open this page. You can return safely and try another section.</p>
-    <div className="shell-actions"><Link className="shell-link" to="/world">Back to world</Link>
-      <Link className="shell-link" to="/">Back to home</Link></div>
-  </Feedback></div>
+  return <div className="shell-gate"><RouteState kind="unavailable" reload={() => location.reload()} /></div>
 }
 export interface RouteComposition {
   /** Reviewed feature elements attach here without taking ownership of the shell lifetime.
@@ -71,9 +70,9 @@ export function createAppRoutes(ports: ShellPorts, composition: RouteComposition
     ...adminPaths.map(path => ({ path, element: <LazyBoundary><AdminBoundary /></LazyBoundary>, errorElement: <RouteFailure /> })),
     { element: <WorldPanelOwnership places={!composition.panels?.['/world/map'] && !composition.panels?.['/world/places/:placeId']} mural={!composition.panels?.['/wall']} social={!socialPaths.some(path => composition.panels?.[path])}><WorldBoundary /></WorldPanelOwnership>, children: [
       ...panelRoutes.map(route => ({ path: route.path, element: <PanelScreen route={route}>{composition.panels?.[route.path] ?? featurePanels[route.path]}</PanelScreen>, errorElement: <RouteFailure /> })),
-      ...['/world/*', '/feed/*', '/meet/*', '/gifts/*', '/wall/*', '/me/*'].map(path => ({ path, element: <RouteFailure /> })),
+      ...['/world/*', '/feed/*', '/meet/*', '/gifts/*', '/wall/*', '/me/*'].map(path => ({ path, element: <RouteState kind="not-found" reload={() => location.reload()} /> })),
     ] },
-    { path: '*', element: <LazyBoundary><PublicBoundary /></LazyBoundary> },
+    { path: '*', element: <RouteState kind="not-found" reload={() => location.reload()} /> },
   ] }]
 }
 export const createAppRouter = (ports: ShellPorts) => createBrowserRouter(createAppRoutes(ports))

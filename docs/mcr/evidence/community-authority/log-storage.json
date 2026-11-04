@@ -1,0 +1,41 @@
+{
+  "format": "deterministic gzip, mtime0",
+  "runtime_report_log_names": "Original runtime names retained in immutable reports; append .gz for stored evidence",
+  "logs": [
+    {
+      "original_log_path": "docs/mcr/evidence/community-authority/source01/1.log",
+      "stored_path": "docs/mcr/evidence/community-authority/source01/1.log.gz",
+      "raw_sha256": "47617de34acc658c7721fabe964e2b171e3c0a4f71e17b54706f207c1df8681a",
+      "gzip_sha256": "1f6019d6de04221c002f0bba977e547f68f94e77a97a99a5d584682aec0b7443",
+      "matches_historical_handoff": "71de884c66a71bb7f0ee959bc1fa902f07a51db0"
+    },
+    {
+      "original_log_path": "docs/mcr/evidence/community-authority/source01/2.log",
+      "stored_path": "docs/mcr/evidence/community-authority/source01/2.log.gz",
+      "raw_sha256": "a0de118bc3f201e597021b1094c2fe1f5987e52d7f3e3c6c9105f837fa34b3cd",
+      "gzip_sha256": "084fccaaf4446539e46c995fca243204e081af0f8e86c35cc590f3de2a6e7a11",
+      "matches_historical_handoff": "71de884c66a71bb7f0ee959bc1fa902f07a51db0"
+    },
+    {
+      "original_log_path": "docs/mcr/evidence/community-authority/source02/1.log",
+      "stored_path": "docs/mcr/evidence/community-authority/source02/1.log.gz",
+      "raw_sha256": "0d0851c0b13f9dc3ce9519bdb41180970453de30b6cae22708a92dc39a7ff63c",
+      "gzip_sha256": "1d6144b868f1708e6ea23a6ed224791b794d4616225ff3b7a6a72723bdd9a4e1",
+      "matches_historical_handoff": "71de884c66a71bb7f0ee959bc1fa902f07a51db0"
+    },
+    {
+      "original_log_path": "docs/mcr/evidence/community-authority/source02/2.log",
+      "stored_path": "docs/mcr/evidence/community-authority/source02/2.log.gz",
+      "raw_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "gzip_sha256": "9ceffb7310338057cfe71a4ae1e2c98d2c485d81cdef906532a801f457a38d64",
+      "matches_historical_handoff": "71de884c66a71bb7f0ee959bc1fa902f07a51db0"
+    },
+    {
+      "original_log_path": "docs/mcr/evidence/community-authority/source02/3.log",
+      "stored_path": "docs/mcr/evidence/community-authority/source02/3.log.gz",
+      "raw_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "gzip_sha256": "9ceffb7310338057cfe71a4ae1e2c98d2c485d81cdef906532a801f457a38d64",
+      "matches_historical_handoff": "71de884c66a71bb7f0ee959bc1fa902f07a51db0"
+    }
+  ]
+}

@@ -1,0 +1,84 @@
+{
+  "task": "FE-COMMUNITY-AUTHORITY-01",
+  "status": "CONTRACT_READY_SOURCE_VALIDATED_INTEGRATION_NATIVE_PUBLICATION_PENDING",
+  "base": "654974128a27c948a449fa9e58f466b8e612361d",
+  "branch": "codex/mcr-fe-community-authority",
+  "checkout": "/Users/lhs/Desktop/mcr-worktrees/fe-profile-preferences",
+  "source_paths": [
+    "frontend/src/app/community-authority/__tests__/clock.test.ts",
+    "frontend/src/app/community-authority/__tests__/fixtures.ts",
+    "frontend/src/app/community-authority/__tests__/places.test.ts",
+    "frontend/src/app/community-authority/__tests__/source_round.py",
+    "frontend/src/app/community-authority/__tests__/timeline.test.ts",
+    "frontend/src/app/community-authority/__tests__/vitest.config.ts",
+    "frontend/src/app/community-authority/index.ts",
+    "frontend/src/app/community-authority/timeline.ts"
+  ],
+  "source_sha256": {
+    "frontend/src/app/community-authority/__tests__/clock.test.ts": "3283f10e6b872a6c8b8efa1adf453ec8993a390abcafff0a75f456eb0a927b2b",
+    "frontend/src/app/community-authority/__tests__/fixtures.ts": "b78f3d8a27f3f05a556287b37b09cbb5e1b33fe570b95c8b730525380931eb6e",
+    "frontend/src/app/community-authority/__tests__/places.test.ts": "708f992afc23417eb30615f4149763ea585e36f4499751cd6650b1babecc659c",
+    "frontend/src/app/community-authority/__tests__/source_round.py": "bd25d9473437e7ae83d6bf577ca0c40454d2186359d2fc381caa8150275bf453",
+    "frontend/src/app/community-authority/__tests__/timeline.test.ts": "ee07a0cfaa4bd3cb65ece6b36a19b37cd1682e8e2bbfdcb8eb57d5f46f2e1130",
+    "frontend/src/app/community-authority/__tests__/vitest.config.ts": "b6a95ffaac08970e1f9fada44fd8a9a1754e5f142808fe7ca8d66a0e49e502ec",
+    "frontend/src/app/community-authority/index.ts": "15ea3f30f321fa4c23fa6e17a6d36aaa20a3212ce816d22024ed639eebae11da",
+    "frontend/src/app/community-authority/timeline.ts": "52a85e3d0263cd3980c22f838d3ab3b971eb93f12ac98d730371239ef64f3448"
+  },
+  "input_sha256": {
+    "contracts/generated/mcr-core.openapi.json": "5b62b6e545f2ac5c367bd189bed6c509b76b4383f47b016d7b075c88f2742978",
+    "frontend/src/app/community-entry/ports.ts": "a25eb12ba74cf1c2d331cd71fe940cf336e456f74a06131dab878800bbb76428",
+    "frontend/src/app/meeting-entry/ports.ts": "5dbdd2b26085277d9e6fe03edef8370179a1e1299c70c73e8788a9c7759b5dd8",
+    "frontend/src/features/auth/model/bootstrap.ts": "3398f1263e31a8ac315d7f0bb95eb567ccca3dcfa57ab9c33907473a87ce09a2",
+    "frontend/src/features/auth/model/contract.ts": "6e367afd4c54e54e8f02d0997f3d6f4450e369adcb13e7254bbefc47e3c5a904",
+    "frontend/src/features/auth/model/session.ts": "6665d52e018a8b9b900ed79cce627309889084202498d80420c47fd44a2a44b1",
+    "frontend/src/features/places/model/contract.ts": "9a7ef5be91cb3d470347bdde9177b3f69d1dd37ff075ec2a82dd5337b33718ee",
+    "frontend/src/shared/query/privacy.ts": "9f39e9e25b1c322bbe4b2f19a52d930aa369940757e01611ed632aa11cf2f081"
+  },
+  "verification": {
+    "patch_integrity": "git diff --check: exit 0",
+    "tests": "39 tests / 3 files PASS, exit 0",
+    "typescript": "Full frontend noEmit/incremental false PASS, exit 0",
+    "lint": "Scoped community-authority PASS, exit 0",
+    "default_shell_native": "NOT_RUN",
+    "resource_allocation": "COMMUNITY-AUTHORITY-SOURCE-A-202611041402Z; accepted 14:04:37Z; released 14:07:03.518022Z; both attempts retained"
+  },
+  "publication_owner": "Root153",
+  "existing_files_modified": false,
+  "new_dependencies": false,
+  "whole_FE21_FE22": "OPEN",
+  "limits": [
+    "No canonical HTTP timing capture or Root wiring is modified here",
+    "Clock envelope parameters require explicit runtime qualification",
+    "World-only Bootstrap does not grant Meet/mutations",
+    "Public map facts and reviewed physical choices grant no arrival/audience/meeting/per-place revision authority"
+  ],
+  "integration": {
+    "functional_consumer_owner": "Root153",
+    "existing_file_binding": "PENDING_ROOT",
+    "production_clock_profile": "UNAVAILABLE",
+    "synthetic_native_policy": {
+      "classification": "TEST_ONLY_NOT_PLATFORM_QUALIFICATION",
+      "maxAgeMs": 30000,
+      "uncertaintyMs": 1000,
+      "maxElapsedRate": 1.01,
+      "maxObservationGapMs": 5000
+    },
+    "world_only_capabilities": "UNCHANGED_BY_LEAF"
+  },
+  "qualified_source_revision": "25f473cf572a160c431f69f414e6cb51f7515776",
+  "runtime": {
+    "node": "24.22.2",
+    "node_sha256": "b6fb419f0f43bb2fbca273700294dd2f3b685a64b60e8417c295f47646a70e4a",
+    "both_package_sha256": "0f7a05587bcf1af5f4d5d077a0c2d90011adc87e1036a61db9ef3acf37c8b7d3",
+    "both_lock_sha256": "47ca44459819ad0e887d2f4f93394fdf3b1053b8f45edc9ceb0236981feee1f6",
+    "runtime_packages": {
+      "vitest": "4.1.9",
+      "vite": "8.1.3",
+      "typescript": "6.0.3",
+      "oxlint": "1.72.0",
+      "react": "19.2.7",
+      "zod": "4.4.3",
+      "@tanstack/react-query": "5.101.2"
+    }
+  }
+}

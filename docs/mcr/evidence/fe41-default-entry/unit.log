@@ -1,0 +1,11 @@
+
+FE41 attempt source=e72b9c8e491e29cb8f003b2412e1c78878deea25
+
+ RUN  v4.1.9 /Users/lhs/.codex/worktrees/2411/mcr/frontend
+
+
+ Test Files  11 passed (11)
+      Tests  150 passed (150)
+   Start at  21:41:52
+   Duration  9.84s (transform 1.19s, setup 0ms, import 1.64s, tests 5.23s, environment 2.23s)
+

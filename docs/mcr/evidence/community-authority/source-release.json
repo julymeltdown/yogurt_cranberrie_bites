@@ -1,0 +1,42 @@
+{
+  "job": "COMMUNITY-AUTHORITY-SOURCE-A-202611041402Z",
+  "released_at": "2026-11-04T14:07:03.518022+00:00",
+  "qualified_source_revision": "25f473cf572a160c431f69f414e6cb51f7515776",
+  "source_pin_at_accept": "26fc8149a4f0242569ee9fce5d7459c64cf996bc",
+  "test_result": "39 tests / 3 files passed",
+  "typescript_exit": 0,
+  "scoped_lint_exit": 0,
+  "attempts": [
+    "source01",
+    "source02"
+  ],
+  "prelaunch_guard_fix": "Git object names stripped from object IDs before size accounting; caught before ACCEPT",
+  "guard_peaks": {
+    "all_pids": 4,
+    "rss_bytes": 1454899200,
+    "whole_bytes": 4294384,
+    "temporary_bytes": 1363968,
+    "durable_bytes": 16384
+  },
+  "retained_carry_bytes": {
+    "frontend/src/app/community-authority": 61440,
+    "docs/mcr/frontend/community-authority.md": 12288,
+    "docs/mcr/evidence/community-authority": 32768,
+    "docs/mcr/evidence/fe34-runtime-preferences": 45056,
+    "docs/mcr/evidence/runtime-preferences-root": 102400,
+    "docs/mcr/evidence/world-runtime-preferences": 819200,
+    "frontend/src/world/preferences": 77824
+  },
+  "git_objects_bytes": 104176,
+  "private_git_bytes": 1675264,
+  "free_bytes": 29206061056,
+  "owned_live_processes": [],
+  "own_temp_cache_and_prefixes_removed": true,
+  "preexisting_dependency_directory_preserved": true,
+  "dependency_directory_cleanup_ownership": false,
+  "node_sha256": "b6fb419f0f43bb2fbca273700294dd2f3b685a64b60e8417c295f47646a70e4a",
+  "node": "24.22.2",
+  "lock_sha256": "47ca44459819ad0e887d2f4f93394fdf3b1053b8f45edc9ceb0236981feee1f6",
+  "native": "NOT_RUN",
+  "publication": "PENDING_ROOT"
+}

@@ -1,5 +1,6 @@
 //! Explicit synthetic privilege and owner sources for durable-engine qualification.
 //! These are NOT production role, reviewed-retention, mural or archive adapters.
+pub mod local;
 use async_trait::async_trait;
 use chrono::{DateTime, Duration, Utc};
 use concert_application::{

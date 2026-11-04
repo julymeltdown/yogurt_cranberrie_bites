@@ -3,16 +3,16 @@ import { createRoot } from 'react-dom/client'
 import { createMemoryRouter, RouterProvider } from 'react-router-dom'
 import { createAppRoutes } from '../../router'
 import { createProductionPorts } from '../../ports'
-import { createFeedFixture, inputRevision, mediaInputs, selectedPin, type FixtureMode } from './fixture'
+import { createFeedFixture, fixtureRoute, inputRevision, mediaInputs, selectedPin, shapeProvenance, type FixtureMode } from './fixture'
 import '../../../shared/styles/base.css'
 import '../../shell.css'
 
 const modeInput = new URLSearchParams(location.search).get('mode') ?? 'loaded'
-if (!['loaded', 'no-readiness', 'denied-media'].includes(modeInput)) throw new Error('Unknown synthetic Feed mode')
+if (!['loaded', 'no-readiness', 'denied-media', 'thread', 'notice'].includes(modeInput)) throw new Error('Unknown synthetic Feed mode')
 const fixture = await createFeedFixture(modeInput as FixtureMode)
 // Exactly the default route composition and Root registry/media providers. No panel override.
 const ports = createProductionPorts(fixture.auth, {}, fixture.social, fixture.eventId)
-const router = createMemoryRouter(createAppRoutes(ports), { initialEntries: ['/feed'] })
+const router = createMemoryRouter(createAppRoutes(ports), { initialEntries: [fixtureRoute(modeInput as FixtureMode)] })
 const root = createRoot(document.getElementById('root')!)
 const objectUrls = new Set<string>(), create = URL.createObjectURL.bind(URL), revoke = URL.revokeObjectURL.bind(URL)
 URL.createObjectURL = blob => { const url = create(blob); objectUrls.add(url); return url }
@@ -29,7 +29,7 @@ const dispose = () => {
   }
 }
 window.__FEED_SHELL__ = {
-  qualification: { synthetic: true, mode: modeInput, inputRevision, mediaInputs, liveIN03: 'NOT_RUN', world: 'DISABLED', selectedStatic: '1.1.0' },
+  qualification: { synthetic: true, mode: modeInput, inputRevision, mediaInputs, shapeProvenance, liveIN03: 'NOT_RUN', world: 'DISABLED', selectedStatic: '1.1.0' },
   calls: fixture.calls, resources: () => objectUrls.size,
   characterDiagnostics: () => ports.characters?.read(fixture.auth.privacy.capture(), selectedPin)?.diagnostics() ?? null,
   setReady: fixture.setReady, invalidate: fixture.invalidate,

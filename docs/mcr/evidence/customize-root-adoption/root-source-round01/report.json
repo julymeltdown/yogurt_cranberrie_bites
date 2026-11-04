@@ -1,0 +1,61 @@
+{
+  "slot": "ROOT-CHAR-SOURCE-202611041321Z",
+  "source": "8cc6f21b11d90f756b4e5fdc8db673887a94e7c5",
+  "qualification": "SOURCE_ONLY_NOT_NATIVE_OR_ACTIVATION",
+  "carryBytes": 86259421,
+  "commands": [
+    {
+      "label": "tests",
+      "argv": [
+        "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node",
+        "/Users/lhs/Desktop/mcr/frontend/node_modules/vitest/vitest.mjs",
+        "run",
+        "--configLoader",
+        "runner",
+        "--config",
+        "src/app/character-entry/__tests__/reviewed-production/vitest.config.mjs",
+        "--no-cache",
+        "--reporter",
+        "dot"
+      ],
+      "pid": 3213,
+      "startedEpoch": 1793798759.893693,
+      "exit": 0,
+      "endedEpoch": 1793798775.483239
+    },
+    {
+      "label": "types",
+      "argv": [
+        "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node",
+        "--max-old-space-size=2048",
+        "/Users/lhs/Desktop/mcr/frontend/node_modules/typescript/bin/tsc",
+        "--noEmit",
+        "--incremental",
+        "false",
+        "-p",
+        "tsconfig.json"
+      ],
+      "pid": 4118,
+      "startedEpoch": 1793798775.483551,
+      "exit": 2,
+      "endedEpoch": 1793798782.197761
+    }
+  ],
+  "wholePeak": 86267745,
+  "temporaryPeak": 0,
+  "durablePeak": 8324,
+  "rssPeak": 1391280128,
+  "freeMinimum": 32373047296,
+  "started": "2026-11-04T13:25:59.893377+00:00",
+  "failure": "RuntimeError: types exited 2",
+  "ownedPids": [
+    3213,
+    4118
+  ],
+  "aliveOwnedPids": [],
+  "status": "FAIL",
+  "ended": "2026-11-04T13:26:22.241251+00:00",
+  "linkAbsent": true,
+  "privateTempAbsent": true,
+  "finalFree": 32372719616
+}

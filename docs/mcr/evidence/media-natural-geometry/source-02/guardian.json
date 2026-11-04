@@ -1,0 +1,19 @@
+{
+  "guardianPid": 29897,
+  "standingBeforeChildUtc": "2026-11-04T15:45:27.912077+00:00",
+  "peaks": {
+    "processes": 4,
+    "rssBytes": 1411530752,
+    "temporaryBytes": 16801440,
+    "durableBytes": 35727,
+    "wholeBytes": 16865540
+  },
+  "failure": null,
+  "runnerPid": 29899,
+  "runnerExit": 0,
+  "finishedUtc": "2026-11-04T15:45:40.902603+00:00",
+  "remainingProcesses": [],
+  "dependencyLinkAbsent": true,
+  "temporaryAbsent": true,
+  "finishedBeforeHardDeadline": true
+}

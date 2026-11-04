@@ -1,0 +1,47 @@
+{
+  "postOnlySource": "1e07321cede694b66aae06184fd05c624a5a0ccb",
+  "cssSha256": "477adc0571c6151d94c2b91208b4c01397e2c3c93b663dc22964b06d91cb5777",
+  "publishedSupersededBroadRetro": "6a5ebca208cc9fa6f8fd847cc348b981d2e25a4a",
+  "publishedBroadRetroCssSha256": "14424bc829a47e3e4d0f28ac5c3fe59a6e07df6548906af4cb520407eceb5ef8",
+  "establishedNonPostBaseline": "eb6e81bd7e5fbeb15613a45e00f1fe896e49f0da",
+  "baselineCssSha256": "737dc607d53807bc6fcc1be9021a04da7874df7c8c26a23b3dee754799a9c1fc",
+  "establishedBaselineRetainedByteExactAsPrefix": true,
+  "effectiveNonPostException": "Footer position:static/flex-shrink:0 retains prior collision-safe flow; established paint/type/control geometry restored. Qualified by owner209 native5 normal-flow/short-viewport focus and reachability probes.",
+  "postShapes": [
+    ".event-feed.feed-browse .feed-post",
+    ".event-feed[aria-label=\"Post thread\"] > article",
+    ".event-feed[aria-label=\"Post thread\"] > section[aria-label=\"Comments\"] > .feed-list > li",
+    ".event-feed .feed-notice-detail"
+  ],
+  "sharedInterface": "aspect-ratio:var(--root-media-natural-ratio,auto)",
+  "sharedInterfaceOwner": "Root153",
+  "sharedBackgroundOwner": "Root153; exact pre-retro375c73df sharedfile",
+  "newNative": "PASS; owner209 native5 eight synthetic actual-shell contexts, errors[], exit0. CSS owner assessed same saved images; no duplicate browser run.",
+  "preserved": "Exact generic48px portrait/object-fit/pixelated rules in baseline; true text/identities/media untouched; no productionTSX/sharedfile edits",
+  "qualificationLimit": "Bounded synthetic native and saved-image post-only CSS qualification; not live public IN03, whole product visual acceptance or publication proof.",
+  "initialPostOnlySource": "90322fce65846833fb1e4b0b72390815e40ddd16",
+  "initialPostOnlyCssSha256": "66d25dbacaa84c74a46b7cdcaa4e3332069009aaa58e40f1db03d81bcc2edf05",
+  "sharedLayoutAttributes": {
+    "data-root-media-layout": "authorized",
+    "data-root-media-visibility": "outside hides only aria-hidden filler"
+  },
+  "tallMediaCeiling": "Wrapper max-block-size18rem matches contained image max-height18rem; unknown/failed layout auto.",
+  "qualifiedSharedMediaInput": {
+    "source": "49b8bfde47d7f232f7b9dfddfa8c07cf83fdcba6",
+    "path": "frontend/src/app/media-entry/RootMediaView.tsx",
+    "sha256": "f22e034423804ec41658fa26760d07926f4f2ebce339fed685072fbf09542d9a",
+    "implementationOwner": "01a1a230-6acc-7e82-9e4b-92506decc745",
+    "publicationOwner": "Root153",
+    "consumeAtOriginalModuleIdOnly": true,
+    "newRuntimeDependencies": 0,
+    "ownerReportedValidation": "47 focused tests, full application tsc with invocation-only allowImportingTsExtensions, scoped oxlint exit0; source-01 failure retained. No browser acceptance implied."
+  },
+  "qualifiedSharedBackgroundInput": {
+    "source": "375c73dfebf778a8949403001662b33bada4345e",
+    "path": "frontend/src/shared/styles/cozy-community-backgrounds-v1.css",
+    "sha256": "d26dd8fbee928539f2689ccd9bb6269e4cb964c58b78e8cc86afbd894f228504",
+    "owner": "Root153"
+  },
+  "nativeAssessment": "docs/mcr/evidence/css-parity-feed/post-only-native-assessment.json",
+  "nativePacketCommit": "67956e60091d8a174528b3a3e7597dc4c7fdec95"
+}

@@ -11,6 +11,7 @@ await mkdir(output, { recursive: true })
 const browser = await chromium.launch({ channel: 'chrome', headless: true })
 const results = [], errors = []
 const remaining = process.env.MCR_FEED_REMAINING === '1'
+const postOnly = process.env.MCR_FEED_POST_ONLY === '1'
 async function open(mode, width, height) {
   const context = await browser.newContext({ viewport: { width, height }, deviceScaleFactor: 1, reducedMotion: 'reduce' })
   const page = await context.newPage()
@@ -27,12 +28,15 @@ async function metrics(page) {
       const r = element.getBoundingClientRect(), css = getComputedStyle(element)
       return { x: r.x, y: r.y, width: r.width, height: r.height, scrollHeight: element.scrollHeight, clientHeight: element.clientHeight,
         background: css.backgroundColor, backgroundImage: css.backgroundImage, overflowY: css.overflowY, objectFit: css.objectFit,
-        aspectRatio: css.aspectRatio, minBlockSize: css.minBlockSize }
+        aspectRatio: css.aspectRatio, minBlockSize: css.minBlockSize, naturalRatio: css.getPropertyValue('--root-media-natural-ratio').trim(),
+        fontFamily: css.fontFamily, fontSize: css.fontSize, outlineStyle: css.outlineStyle, outlineWidth: css.outlineWidth }
     }
     return { viewport: { width: innerWidth, height: innerHeight },
       regions: Object.fromEntries(['.world-shell', '.shell-panel', '.mcr-chrome-panel-header', '.shell-panel-body', '.event-feed', '.feed-footer'].map(selector => [selector, document.querySelector(selector) ? rect(document.querySelector(selector)) : null])),
       images: [...document.querySelectorAll('.feed-image')].map(image => ({ ...rect(image), naturalWidth: image.naturalWidth, naturalHeight: image.naturalHeight, blob: image.src.startsWith('blob:') })),
       mediaFrames: [...document.querySelectorAll('.feed-media .root-media-view--post')].map(rect),
+      postSurfaces: [...document.querySelectorAll('.feed-post, .event-feed[aria-label="Post thread"] > article, section[aria-label="Comments"] > .feed-list > li, .feed-notice-detail')].map(rect),
+      controls: Object.fromEntries(['.feed-browse', '.mcr-tab[aria-selected="true"]', '.feed-compose', '.feed-footer'].map(selector => [selector, document.querySelector(selector) ? rect(document.querySelector(selector)) : null])),
       authors: [...document.querySelectorAll('.feed-portrait')].map(element => {
         const canvas = element.querySelector('canvas'), pixels = canvas?.getContext('2d')?.getImageData(0, 0, canvas.width, canvas.height).data
         return { ...rect(element), canvas: canvas ? rect(canvas) : null, ready: element.querySelector('[data-whole-character-state]')?.dataset.wholeCharacterState,
@@ -42,8 +46,8 @@ async function metrics(page) {
       calls: window.__FEED_SHELL__.calls, blobUrls: window.__FEED_SHELL__.resources(), characters: window.__FEED_SHELL__.characterDiagnostics(), qualification: window.__FEED_SHELL__.qualification }
   })
 }
-async function scrollProbe(page, name) {
-  const first = page.locator('.feed-posts > li').first().locator('.root-media-view--post')
+async function scrollProbe(page, name, rowSelector = '.feed-posts > li') {
+  const first = page.locator(rowSelector).first().locator('.root-media-view--post')
   await first.scrollIntoViewIfNeeded()
   await first.locator('.feed-image').waitFor()
   await page.evaluate(() => {
@@ -76,6 +80,20 @@ async function scrollProbe(page, name) {
     await page.evaluate(() => { document.querySelector('#feed-driver-scroll-probe')?.remove(); document.querySelector('.shell-panel-body').scrollTop = 0 })
   }
 }
+async function keyboardFocus(page, button) {
+  await button.focus(); await page.keyboard.press('Tab'); await page.keyboard.press('Shift+Tab')
+  assert(await button.evaluate(element => document.activeElement === element), 'Keyboard traversal did not return to the control')
+  const focus = await page.evaluate(() => {
+    const element = document.activeElement, css = getComputedStyle(element)
+    return { visible: element.matches(':focus-visible'), outline: css.outlineStyle, width: css.outlineWidth, tag: element.tagName }
+  })
+  assert(focus.visible && focus.outline !== 'none' && parseFloat(focus.width) > 0, 'Keyboard focus outline is absent')
+  return focus
+}
+function assertPostSurface(surface) {
+  assert.equal(surface.background, 'rgb(241, 236, 223)')
+  assert.equal(surface.fontSize, '15px'); assert(surface.fontFamily.includes('Verdana'))
+}
 try {
   for (const [width, height] of remaining ? [[390, 480]] : [[360, 843], [390, 843], [430, 843], [390, 480]]) {
     const { context, page } = await open('loaded', width, height)
@@ -87,15 +105,27 @@ try {
       const name = `feed-${width}x${height}`
       const observed = await metrics(page)
       assert.equal(observed.horizontalOverflow, false)
-      assert.equal(observed.regions['.shell-panel-body'].background, 'rgb(248, 245, 236)')
-      assert.equal(observed.regions['.shell-panel-body'].backgroundImage, 'none')
+      if (postOnly) {
+        assert.equal(observed.regions['.shell-panel-body'].background, 'rgb(245, 217, 223)')
+        assert(observed.regions['.shell-panel-body'].backgroundImage.includes('/backgrounds/cute-community-v1/feed-backdrop.svg'))
+        assert.equal(observed.controls['.feed-browse'].fontSize, '14px')
+        assert(observed.controls['.feed-browse'].fontFamily.includes('Arial Narrow'))
+        assert.equal(observed.controls['.mcr-tab[aria-selected="true"]'].background, 'rgb(172, 36, 48)')
+        assert.equal(observed.controls['.feed-compose'].background, 'rgb(177, 38, 49)')
+        assert(observed.controls['.feed-compose'].width <= 216 && observed.controls['.feed-compose'].height >= 44)
+        observed.postSurfaces.forEach(assertPostSurface)
+      } else {
+        assert.equal(observed.regions['.shell-panel-body'].background, 'rgb(248, 245, 236)')
+        assert.equal(observed.regions['.shell-panel-body'].backgroundImage, 'none')
+      }
       assert.deepEqual(observed.images.map(image => [image.naturalWidth, image.naturalHeight]), [[197, 67], [197, 46]])
       assert(observed.images.every(image => image.blob))
       if (process.env.MCR_FEED_COMPACT_MEDIA === '1') {
         assert.equal(observed.mediaFrames.length, 2)
         observed.mediaFrames.forEach((frame, index) => {
-          assert.equal(frame.aspectRatio, 'auto'); assert.equal(frame.minBlockSize, '0px')
+          assert.equal(frame.minBlockSize, '0px')
           assert(frame.height <= observed.images[index].height + 12, 'Feed media wrapper introduced blank letterbox space')
+          if (postOnly) assert(frame.naturalRatio, 'Authorized natural-ratio metadata absent')
         })
       }
       assert(observed.authors.every(author => author.ready === 'ready' && author.paintedPixels > 0))
@@ -109,6 +139,7 @@ try {
       for (let index = 0; index < 2; index++) await page.locator('.feed-portrait').nth(index).screenshot({ path: join(output, `${name}-author-${index + 1}.png`) })
       const scrolling = await scrollProbe(page, name)
       const compose = page.getByRole('button', { name: 'Write a post', exact: true })
+      const focus = postOnly ? await keyboardFocus(page, compose) : null
       await compose.scrollIntoViewIfNeeded(); await compose.click()
       await page.getByRole('textbox').first().waitFor()
       const composerReachable = true
@@ -118,7 +149,7 @@ try {
       await page.waitForFunction(() => document.querySelectorAll('.feed-posts > li').length === 0)
       await page.evaluate(() => window.__FEED_SHELL__.dispose())
       assert.equal(await page.evaluate(() => window.__FEED_SHELL__.resources()), 0)
-      results.push({ name, ...observed, scrolling, composerReachable, readinessWithdrawal: true, disposedBlobUrls: 0 })
+      results.push({ name, ...observed, scrolling, focus, composerReachable, readinessWithdrawal: true, disposedBlobUrls: 0 })
     } catch (error) {
       await page.screenshot({ path: join(output, `failed-${width}x${height}.png`) }).catch(() => {})
       throw error
@@ -145,9 +176,55 @@ try {
       results.push({ mode, ...observed, invalidationWithdrawal: true })
     } finally { await context.close() }
   }
+  if (process.env.MCR_FEED_POST_SHAPES === '1') for (const mode of ['thread', 'notice']) {
+    const { context, page } = await open(mode, 390, 843)
+    try {
+      const selector = mode === 'thread' ? '.event-feed[aria-label="Post thread"] > article' : '.feed-notice-detail'
+      const article = page.locator(selector)
+      await article.waitFor()
+      let scrolling = null
+      if (mode === 'thread') {
+        await page.getByText('A test reply', { exact: true }).waitFor()
+        await article.scrollIntoViewIfNeeded()
+        await page.waitForFunction(() => document.querySelector('.feed-image')?.naturalWidth === 197)
+      } else {
+        assert.equal(await article.locator('h2').innerText(), 'Fixture notice')
+        assert.equal(await article.getByRole('link', { name: 'Source', exact: true }).getAttribute('href'), 'https://example.com/notice')
+      }
+      const observed = await metrics(page)
+      assert.equal(observed.horizontalOverflow, false)
+      observed.postSurfaces.forEach(assertPostSurface)
+      if (mode === 'thread') {
+        const comment = page.locator('section[aria-label="Comments"] > .feed-list > li')
+        assert.equal(await comment.count(), 1)
+        const style = await comment.evaluate(element => ({ background: getComputedStyle(element).backgroundColor, fontSize: getComputedStyle(element).fontSize, fontFamily: getComputedStyle(element).fontFamily }))
+        assertPostSurface(style)
+        await comment.screenshot({ path: join(output, 'thread-comment-390x843.png') })
+      }
+      await article.screenshot({ path: join(output, `${mode}-article-390x843.png`) })
+      await page.locator('.shell-panel-body').evaluate(element => { element.scrollTop = 0 })
+      await page.screenshot({ path: join(output, `${mode}-390x843.png`) })
+      const targets = await article.locator('button, a').evaluateAll(elements => elements.map(element => ({ width: element.getBoundingClientRect().width, height: element.getBoundingClientRect().height })))
+      assert(targets.length > 0 && targets.every(target => target.width >= 44 && target.height >= 44))
+      const focus = await keyboardFocus(page, article.locator('button, a').first())
+      if (mode === 'thread') scrolling = await scrollProbe(page, 'thread-390x843', selector)
+      else {
+        await page.evaluate(() => window.__FEED_SHELL__.navigate('/feed'))
+        await page.getByRole('tab', { name: /^NOTICE$/i }).click()
+        await page.getByRole('button', { name: 'Fixture notice', exact: true }).click()
+        await page.locator('.feed-notice-detail').waitFor()
+        await page.screenshot({ path: join(output, 'notice-list-390x843.png') })
+      }
+      await page.evaluate(() => window.__FEED_SHELL__.invalidate())
+      await page.waitForFunction(() => window.__FEED_SHELL__.resources() === 0 && document.querySelectorAll('.feed-image, .feed-notice-detail, section[aria-label="Comments"] > .feed-list > li').length === 0)
+      await page.evaluate(() => window.__FEED_SHELL__.dispose())
+      assert.equal(await page.evaluate(() => window.__FEED_SHELL__.resources()), 0)
+      results.push({ name: `${mode}-390x843`, mode, ...observed, targets, focus, scrolling, invalidationWithdrawal: true, disposedBlobUrls: 0 })
+    } finally { await context.close() }
+  }
   assert.deepEqual(errors, [])
   assert.deepEqual(results.filter(result => result.scrolling && (!result.scrolling.geometryPreservedOnExit || !result.scrolling.geometryRestoredOnReturn)).map(result => result.name), [], 'Offscreen media withdrawal changed Feed geometry')
 } finally {
   await browser.close()
-  await writeFile(join(output, 'native.json'), JSON.stringify({ synthetic: true, remainingCasesOnly: remaining, browser: browser.version(), liveIN03: 'NOT_RUN', results, errors }, null, 2) + '\n')
+  await writeFile(join(output, 'native.json'), JSON.stringify({ synthetic: true, postOnly, remainingCasesOnly: remaining, browser: browser.version(), liveIN03: 'NOT_RUN', results, errors }, null, 2) + '\n')
 }

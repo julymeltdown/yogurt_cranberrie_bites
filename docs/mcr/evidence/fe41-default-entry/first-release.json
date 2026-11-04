@@ -1,0 +1,21 @@
+{
+  "offer": "FE41-DEFAULT-ENTRY-202611041241Z",
+  "acceptedAt": "2026-11-04T12:41:42Z",
+  "originalWorkCutoff": "2026-11-04T12:55:42Z",
+  "originalReleaseDeadline": "2026-11-04T12:56:42Z",
+  "releaseVerifiedBy": "2026-11-04T12:43:24Z",
+  "source": "e72b9c8e491e29cb8f003b2412e1c78878deea25",
+  "unit": "PASS: 150 tests, 11 files",
+  "types": "PASS: full noEmit and nonincremental",
+  "lint": "PASS: scoped",
+  "native": "NOT_RUN: prelaunch fresh-start free-disk floor",
+  "nativePrelaunchFreeBytes": 17170165760,
+  "requiredFreshFreeBytes": 17179869184,
+  "ownedChildren": [],
+  "ownedPorts": [],
+  "browserStarted": false,
+  "dependencyLinkAbsent": true,
+  "scratchCacheAbsent": true,
+  "priorCarryPreserved": true,
+  "nextAction": "fresh resource21d native-only offer and explicit acceptance"
+}

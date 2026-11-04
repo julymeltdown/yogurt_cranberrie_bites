@@ -131,6 +131,16 @@ try {
       writeFileSync(file, css, { flag: 'wx', mode: 0o444 }); env[prefixEnv + '_FILE'] = file
       summary.cssInputs.push({ revision, sha256, path, file, readonlyBorrow: true })
     }
+    if (process.env.MCR_FEED_ROOT_MEDIA_REVISION || process.env.MCR_FEED_ROOT_MEDIA_SHA256) {
+      const revision = need('MCR_FEED_ROOT_MEDIA_REVISION'), sha256 = need('MCR_FEED_ROOT_MEDIA_SHA256')
+      assert(/^[0-9a-f]{40}$/.test(revision) && /^[0-9a-f]{64}$/.test(sha256))
+      const path = 'frontend/src/app/media-entry/RootMediaView.tsx'
+      const source = execFileSync('git', ['show', `${revision}:${path}`], { cwd: root, maxBuffer: 256 * 1024 })
+      assert.equal(createHash('sha256').update(source).digest('hex'), sha256)
+      const file = join(output, `feed-${run}-root-owner.tsx`)
+      writeFileSync(file, source, { flag: 'wx', mode: 0o444 }); env.MCR_FEED_ROOT_MEDIA_FILE = file
+      summary.moduleInputs = [{ revision, sha256, path, file, readonlyBorrow: true }]
+    }
     const server = await launch('vite', ['node_modules/vite/bin/vite.js', '--configLoader', 'native', '--config', prefix + 'vite.config.ts', '--host', '127.0.0.1', '--port', String(port), '--strictPort'], true)
     try {
       let ready = false

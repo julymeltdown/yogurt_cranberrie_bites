@@ -13,6 +13,8 @@ use sqlx::{postgres::PgRow, PgConnection, PgPool, Row, TransactionManager};
 use std::{collections::BTreeMap, sync::Arc};
 use uuid::Uuid;
 
+pub mod local;
+
 pub const MIGRATION: &str = include_str!("../../migrations/0046_event_cleanup_runtime.sql");
 
 /// Implementations are trusted local owning adapters, not request data. They must
@@ -603,6 +605,11 @@ pub fn owned_source_pin() -> String {
             include_str!("../../../../crates/concert-application/src/event_cleanup/mod.rs"),
         ),
         ("runtime", include_str!("mod.rs")),
+        ("local_owners", include_str!("local.rs")),
+        (
+            "owner_witness_migration",
+            include_str!("../../migrations/0056_event_cleanup_owner_witnesses.sql"),
+        ),
         ("migration", MIGRATION),
         ("config", include_str!("../config/event_cleanup.rs")),
         (
@@ -616,6 +623,10 @@ pub fn owned_source_pin() -> String {
         (
             "test_support",
             include_str!("../../tests/event_cleanup_support/mod.rs"),
+        ),
+        (
+            "local_owner_tests",
+            include_str!("../../tests/event_cleanup_support/local.rs"),
         ),
     ] {
         digest.update(path);

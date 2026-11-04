@@ -12,11 +12,14 @@ ROOT = Path(__file__).resolve().parents[4]
 PIN_PATHS = [
  ('application','backend/crates/concert-application/src/event_cleanup/mod.rs'),
  ('runtime','backend/services/concert-service/src/event_cleanup_live/mod.rs'),
+ ('local_owners','backend/services/concert-service/src/event_cleanup_live/local.rs'),
+ ('owner_witness_migration','backend/services/concert-service/migrations/0056_event_cleanup_owner_witnesses.sql'),
  ('migration','backend/services/concert-service/migrations/0046_event_cleanup_runtime.sql'),
  ('config','backend/services/concert-service/src/config/event_cleanup.rs'),
  ('application_tests','backend/crates/concert-application/tests/event_cleanup.rs'),
  ('runtime_tests','backend/services/concert-service/tests/event_cleanup_runtime.rs'),
- ('test_support','backend/services/concert-service/tests/event_cleanup_support/mod.rs')]
+ ('test_support','backend/services/concert-service/tests/event_cleanup_support/mod.rs'),
+ ('local_owner_tests','backend/services/concert-service/tests/event_cleanup_support/local.rs')]
 def sha(path): return hashlib.sha256(path.read_bytes()).hexdigest()
 def snapshot():
     paths = subprocess.check_output(['git','ls-files','--cached','--others','--exclude-standard','-z','backend','contracts','AGENTS.md'],cwd=ROOT).decode().split('\0')
@@ -55,6 +58,8 @@ def main():
         receipt['binaries'][name]={'sha256':sha(dest),'size':dest.stat().st_size}
     for i,log in enumerate(a.cargo_json):
         dest=a.out/f'cargo-{i}.jsonl';shutil.copy2(log,dest);receipt['cargo_json'].append({'name':dest.name,'sha256':sha(dest)})
+    shutil.copytree(ROOT/'backend/services/concert-service/migrations',a.out/'migrations')
+    receipt['migrations']={p.name:sha(p) for p in sorted((a.out/'migrations').glob('*.sql'))}
     (a.out/'freeze.json').write_text(json.dumps(receipt,indent=2)+'\n')
     print(a.out)
 if __name__=='__main__':main()

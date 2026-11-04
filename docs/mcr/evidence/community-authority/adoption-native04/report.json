@@ -1,0 +1,60 @@
+{
+  "job": "FE-COMMUNITY-ADOPTION-NATIVE-202611041459Z",
+  "source_revision": "fc4c5ecf0c46703907e488af10916f5391558333",
+  "accepted_at": "2026-11-04T14:59:58.492115Z",
+  "work_deadline_utc": 1793804878.492115,
+  "hard_deadline_utc": 1793804998.492115,
+  "commands": [
+    {
+      "command": [
+        "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node",
+        "--check",
+        "src/app/community-adoption/__tests__/native/native.mjs"
+      ],
+      "started_at": "2026-11-04T15:03:45.532032+00:00",
+      "exit_code": 0,
+      "log": "1.log"
+    },
+    {
+      "command": [
+        "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node",
+        "src/app/community-adoption/__tests__/native/native.mjs"
+      ],
+      "started_at": "2026-11-04T15:03:45.556615+00:00",
+      "exit_code": 0,
+      "log": "2.log"
+    }
+  ],
+  "failure": null,
+  "elapsed_seconds": 46.45535154201207,
+  "guard": {
+    "peaks": {
+      "pids": 13,
+      "rss": 2721841152,
+      "whole": 39123456,
+      "temporary": 31252480,
+      "durable": 1114112
+    },
+    "minimum_free_bytes": 24692355072,
+    "reason": null,
+    "last_sample_utc": "2026-11-04T15:04:31.855062+00:00"
+  },
+  "retained_dependencies": "PREEXISTING_READ_ONLY_PRESERVED",
+  "own_temp_removed": true,
+  "charged_carry_paths": [
+    "frontend/src/app/community-adoption",
+    "frontend/src/app/WorldShell.tsx",
+    "frontend/src/app/CommunityFeatures.tsx",
+    "frontend/src/app/ports.ts",
+    "frontend/src/app/router.tsx",
+    "frontend/src/app/community-authority",
+    "docs/mcr/frontend/community-authority.md",
+    "docs/mcr/evidence/community-authority",
+    "docs/mcr/evidence/fe34-runtime-preferences",
+    "docs/mcr/evidence/runtime-preferences-root",
+    "docs/mcr/evidence/world-runtime-preferences",
+    "frontend/src/world/preferences"
+  ],
+  "git_bytes": 6441472,
+  "finished_at": "2026-11-04T15:04:31.870009+00:00"
+}
