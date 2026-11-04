@@ -31,8 +31,8 @@ class DomainBundleTests(unittest.TestCase):
 
     def test_every_registered_http_operation_once_and_no_fake_websocket_endpoint(self):
         ids = [o["operationId"] for methods in self.document["paths"].values() for o in methods.values()]
-        self.assertEqual(len(ids), 134)
-        self.assertEqual(len(set(ids)), 134)
+        self.assertEqual(len(ids), 135)
+        self.assertEqual(len(set(ids)), 135)
         for row in self.rows + self.world:
             self.assertEqual(self.operation(row)["operationId"], row["operationId"])
         self.assertFalse(any("websocket" in p or p.endswith("/world") for p in self.document["paths"]))
