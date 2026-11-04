@@ -135,3 +135,58 @@ body:has([data-mcr-shell]) { padding: 0; }
 .world-shell[data-panel-size='full'] .shell-world { visibility:hidden; }
 .shell-panel-body:has(> .mcr-root-map) { display:flex; flex-direction:column; min-block-size:0; }
 .shell-panel-body > .mcr-root-map { flex:1 1 0; }
+
+/* Shared non-World frame: one ink perimeter and one paper keyline rather than
+   stacked shell/stage/panel borders. Screen backgrounds and artwork are untouched. */
+.world-shell:not([data-panel-size='closed']) {
+  border-width:3px;
+  --mcr-frame-title-bg:#1b1918;
+  --mcr-frame-title-ink:#fff6e7;
+}
+.world-shell:not([data-panel-size='closed'])::after { padding:2px; background:#eee7da; }
+.world-shell:not([data-panel-size='closed']) > .shell-stage { border-inline:0; }
+.world-shell:not([data-panel-size='closed']) .shell-panel { border:1px solid #191817; }
+.world-shell:not([data-panel-size='closed']) .shell-panel-body {
+  scroll-padding-block:8px;
+  --mcr-panel-available-height:calc(var(--shell-viewport-height) * .55 - 66px);
+}
+.world-shell[data-panel-size='full'] .shell-panel-body {
+  --mcr-panel-available-height:calc(var(--shell-viewport-height) - 67px - env(safe-area-inset-top,0px) - env(safe-area-inset-bottom,0px));
+}
+/* More actions remains a real disclosure in natural document/tab order. Its
+   placement is owned by PanelScreen; CSS never hides or visually reorders it. */
+.shell-panel-body .shell-more-sections {
+  margin-block:6px;
+  border-block-start:1px solid #8b7f7359;
+  font-family:'Arial Narrow','Helvetica Neue',Arial,sans-serif;
+}
+.shell-panel-body .shell-more-sections > summary {
+  min-block-size:44px;
+  padding:10px 2px;
+  font-size:12px;
+  line-height:24px;
+}
+.shell-panel-body .shell-more-sections > .shell-section-links {
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  column-gap:12px;
+}
+.shell-panel-body .shell-more-sections .shell-section-links > a {
+  min-inline-size:0;
+  min-block-size:44px;
+  gap:6px;
+  padding-block:6px;
+  font-size:12px;
+  line-height:1.3;
+}
+/* Truthful unavailable/error content stays readable without consuming the page
+   with generic card padding. No state, explanation or recovery action is hidden. */
+.shell-panel-body .shell-unavailable { padding:12px 8px; }
+.shell-panel-body .shell-unavailable > h2 { margin-block:4px 8px; font-size:20px; line-height:1.2; }
+.shell-panel-body .shell-unavailable > p:not(.shell-kicker) { margin-block:6px; font-size:14px; line-height:1.4; }
+.shell-panel-body > .mcr-feedback,
+.mcr-reference-panel-content > .mcr-feedback { padding:12px; border-width:1px; }
+.shell-panel-body > .mcr-feedback h2,
+.mcr-reference-panel-content > .mcr-feedback h2 { margin-block:0 6px; font-size:16px; line-height:1.25; }
+@media (max-width:799px) and (max-height:550px) {
+  .world-shell:not([data-panel-size='closed']) .shell-panel-body { scroll-padding-block:6px; }
+}

@@ -1,0 +1,1 @@
+{"status":"FAIL","errors":[{"workflow":"AssertionError [ERR_ASSERTION]: Truthful unavailable state stays present\n    at file:///Users/lhs/Desktop/mcr-worktrees/sl-world/frontend/src/app/__tests__/shared-chrome-ref/native.mjs:158:10"}],"output":"/Users/lhs/Desktop/mcr-worktrees/sl-world/docs/mcr/evidence/css-shared-chrome-ref-01/round-01"}

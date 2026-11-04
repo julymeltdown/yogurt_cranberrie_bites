@@ -1,0 +1,1824 @@
+{
+  "task": "CSS-SHARED-CHROME-REF-01",
+  "job": "SHARED-CHROME-BROWSER2-20261104T1737Z",
+  "base": "f339f6240db94353e990fed722da0feb598ae9d2",
+  "candidate": "78a3ebb27f964a78c5e3a2bd4ff6673bb41c122b",
+  "rootOwnedDom": {
+    "commit": "61f3accd901fa93d1d558b14e4f45abc99948148",
+    "path": "frontend/src/app/WorldShell.tsx",
+    "sha256": "4d5bb4644423b32529b629d4e6c0fcb53620253a8b424888b7191c6c0ea72904",
+    "consumption": "Read-only Vite pre-load postimage; never edited or staged by this owner."
+  },
+  "reference": {
+    "path": "docs/mcr/design/reference-target-2026-11-04.png",
+    "sha256": "d9a8fae2f96a82253542019ab673589b3938627956eace15c8594c702b5c4617"
+  },
+  "scope": "Shared chrome on actual default router. Synthetic existing Auth/HTTP/C05/clock fixture; not live/device/full visual acceptance.",
+  "startedAt": "2026-11-04T17:39:30.909Z",
+  "readset": {
+    "frontend/src/app/reference-chrome-v2/chrome.css": {
+      "current": "45276b3a69f080d4537b26522b9aebf947bbe803dfd529bb907fbfc0d22d69be",
+      "baseline": "7abaf7ebc23945b75a97bef8e384a7f6dcf81b4bc0edca177ac2871109e0ad7e"
+    },
+    "frontend/src/app/shell.css": {
+      "current": "108da146fe93ff3e7bec225a737a2ff304fcb3f38f6015c0c8fca1c659f69a72",
+      "baseline": "1a7aa7dc7570959e284c2034833b3b1003dbfefea1b2bc605139bddf5c6023bd"
+    },
+    "frontend/src/app/WorldShell.tsx": {
+      "current": "4e8bcf73905f95de244b02e7225fdc9527f68fd120b62854aa4e0175c54846c7",
+      "baseline": "4e8bcf73905f95de244b02e7225fdc9527f68fd120b62854aa4e0175c54846c7"
+    },
+    "frontend/src/app/shell-chrome/index.tsx": {
+      "current": "498fa45b9f14b784bbc410984bc99728bab02e8782f60b15e604c6bcc8283304",
+      "baseline": "498fa45b9f14b784bbc410984bc99728bab02e8782f60b15e604c6bcc8283304"
+    },
+    "frontend/src/app/shell-chrome/shell-chrome.css": {
+      "current": "1fdfaa797e8474a9d17f00e48658d231e4e4791dd9870a7df012946e6c0a3925",
+      "baseline": "1fdfaa797e8474a9d17f00e48658d231e4e4791dd9870a7df012946e6c0a3925"
+    },
+    "frontend/src/app/shell-chrome/parade-footer.tsx": {
+      "current": "a76ee4fc64d249ad44afba0ccc7cce699c57c6771b311b94c5e80cdcaae91b8a",
+      "baseline": "a76ee4fc64d249ad44afba0ccc7cce699c57c6771b311b94c5e80cdcaae91b8a"
+    },
+    "frontend/src/app/community-adoption/__tests__/native/preview.tsx": {
+      "current": "eccc3ffdeff2fa5a1ec6926958e89c5c1fe985d0c6cd95dff215d2435d2dbcdc",
+      "baseline": "eccc3ffdeff2fa5a1ec6926958e89c5c1fe985d0c6cd95dff215d2435d2dbcdc"
+    },
+    "frontend/src/shared/styles/cozy-community-backgrounds-v1.css": {
+      "current": "d26dd8fbee928539f2689ccd9bb6269e4cb964c58b78e8cc86afbd894f228504",
+      "baseline": "d26dd8fbee928539f2689ccd9bb6269e4cb964c58b78e8cc86afbd894f228504"
+    },
+    "frontend/src/shared/styles/cozy-identity-backgrounds-v1.css": {
+      "current": "77b25626d6c94f3f226e1ccc079a8b96d11d6a4873dfc6e20fcef174c49f5f6d",
+      "baseline": "77b25626d6c94f3f226e1ccc079a8b96d11d6a4873dfc6e20fcef174c49f5f6d"
+    },
+    "frontend/pnpm-lock.yaml": {
+      "current": "47ca44459819ad0e887d2f4f93394fdf3b1053b8f45edc9ceb0236981feee1f6",
+      "baseline": "47ca44459819ad0e887d2f4f93394fdf3b1053b8f45edc9ceb0236981feee1f6"
+    }
+  },
+  "cases": [
+    {
+      "mode": "baseline",
+      "width": 360,
+      "path": "/meet",
+      "errors": [],
+      "geometry": {
+        "viewport": {
+          "width": 360,
+          "height": 844
+        },
+        "overflow": false,
+        "shell": {
+          "x": 0,
+          "y": 0,
+          "width": 360,
+          "height": 844,
+          "top": 0,
+          "right": 360,
+          "bottom": 844,
+          "left": 0
+        },
+        "header": {
+          "x": 9,
+          "y": 7,
+          "width": 342,
+          "height": 50,
+          "top": 7,
+          "right": 351,
+          "bottom": 57,
+          "left": 9
+        },
+        "body": {
+          "x": 9,
+          "y": 57,
+          "width": 342,
+          "height": 780,
+          "top": 57,
+          "right": 351,
+          "bottom": 837,
+          "left": 9
+        },
+        "title": {
+          "x": 20,
+          "y": 20.5,
+          "width": 194,
+          "height": 23,
+          "top": 20.5,
+          "right": 214,
+          "bottom": 43.5,
+          "left": 20
+        },
+        "headerPaint": "rgb(37, 16, 23)",
+        "background": "radial-gradient(rgba(66, 49, 28, 0.086) 0.5px, rgba(0, 0, 0, 0) 0.8px) repeat scroll 0% 0% / 5px 7px padding-box border-box, rgb(233, 225, 212) repeating-linear-gradient(97deg, rgba(0, 0, 0, 0) 0px, rgba(0, 0, 0, 0) 8px, rgba(89, 64, 33, 0.024) 9px, rgba(89, 64, 33, 0.024) 10px) repeat scroll 0% 0% / auto padding-box border-box",
+        "titleText": "Meet",
+        "copy": "More actions\nPARTIES\nPEOPLE\nMY PLAN\nFind your company\nArea A Queue Group\n\nArea A · 17:00\n\nMember portraits unavailable\n\n8 spaces. open. Hosted by Jules · fixture. Meeting Nov 8, 5:00 PM GMT+9.\n12/20\nmembers\nJOIN\nAfter Show Hangout\n\nStanding A · 17:00\n\nMember portraits unavailable\n\n4 spaces. open. Hosted by Jules · fixture. Meeting Nov 8, 5:00 PM GMT+9.\n8/12\nmembers\nJOIN\nPhoto Walk (Parade ver.)\n\nStanding A · 17:00\n\nMember portraits unavailable\n\n3 spaces. open. Hosted by Jules · fixture. Meeting Nov 8, 5:00 PM GMT+9.\n5/8\nmembers\nJOIN\nFilter parties\nRefresh\n\nJOIN opens party details. The host approves membership; a virtual position does not confirm arrival. Times are Korea Standard Time.\n\nCREATE PARTY",
+        "controls": [
+          {
+            "label": "Reduce panel",
+            "x": 214,
+            "y": 10,
+            "width": 44,
+            "height": 44,
+            "top": 10,
+            "right": 258,
+            "bottom": 54,
+            "left": 214
+          },
+          {
+            "label": "Minimize panel",
+            "x": 258,
+            "y": 10,
+            "width": 44,
+            "height": 44,
+            "top": 10,
+            "right": 302,
+            "bottom": 54,
+            "left": 258
+          },
+          {
+            "label": "Back to previous panel",
+            "x": 302,
+            "y": 10,
+            "width": 44,
+            "height": 44,
+            "top": 10,
+            "right": 346,
+            "bottom": 54,
+            "left": 302
+          }
+        ],
+        "moreActions": {
+          "x": 15,
+          "y": 69,
+          "width": 330,
+          "height": 44,
+          "top": 69,
+          "right": 345,
+          "bottom": 113,
+          "left": 15
+        },
+        "content": {
+          "x": 15,
+          "y": 113,
+          "width": 330,
+          "height": 630,
+          "top": 113,
+          "right": 345,
+          "bottom": 743,
+          "left": 15
+        },
+        "actionsAfterContent": false,
+        "footer": {
+          "x": 15,
+          "y": 743,
+          "width": 330,
+          "height": 88,
+          "top": 743,
+          "right": 345,
+          "bottom": 831,
+          "left": 15
+        },
+        "artwork": [
+          {
+            "width": 64,
+            "height": 64,
+            "pixels": "c97bfd5fa8919021427790724c53762eb65bdb5ce04f7fe6962ff18b8129cf4a"
+          },
+          {
+            "width": 64,
+            "height": 64,
+            "pixels": "c97bfd5fa8919021427790724c53762eb65bdb5ce04f7fe6962ff18b8129cf4a"
+          },
+          {
+            "width": 64,
+            "height": 64,
+            "pixels": "c97bfd5fa8919021427790724c53762eb65bdb5ce04f7fe6962ff18b8129cf4a"
+          }
+        ]
+      },
+      "world": {
+        "canvases": 1,
+        "activeSockets": 1,
+        "avatarPin": {
+          "manifest_id": "mcr_selected_static_20261103",
+          "manifest_version": 1,
+          "content_hash": "sha256:0627c7d178b22535a561e1270db6d8bf9e2383ba84d03a63962e48e565c59b2b"
+        }
+      },
+      "capture": {
+        "path": "baseline-meet-360.png",
+        "sha256": "c6f425e96bbfdadb41322f8d5944fb8fd077f9d83a612235c550a4bff0307061",
+        "bytes": 79157
+      },
+      "status": "PASS"
+    },
+    {
+      "mode": "baseline",
+      "width": 360,
+      "path": "/me",
+      "errors": [],
+      "geometry": {
+        "viewport": {
+          "width": 360,
+          "height": 844
+        },
+        "overflow": false,
+        "shell": {
+          "x": 0,
+          "y": 0,
+          "width": 360,
+          "height": 844,
+          "top": 0,
+          "right": 360,
+          "bottom": 844,
+          "left": 0
+        },
+        "header": {
+          "x": 9,
+          "y": 7,
+          "width": 342,
+          "height": 50,
+          "top": 7,
+          "right": 351,
+          "bottom": 57,
+          "left": 9
+        },
+        "body": {
+          "x": 9,
+          "y": 57,
+          "width": 342,
+          "height": 780,
+          "top": 57,
+          "right": 351,
+          "bottom": 837,
+          "left": 9
+        },
+        "title": {
+          "x": 20,
+          "y": 20.5,
+          "width": 194,
+          "height": 23,
+          "top": 20.5,
+          "right": 214,
+          "bottom": 43.5,
+          "left": 20
+        },
+        "headerPaint": "rgb(37, 16, 23)",
+        "background": "rgb(255, 240, 231) url(\"http://127.0.0.1:19967/backgrounds/cute-wall-me-v1/me-scrapbook.svg\") no-repeat scroll 50% 100% / 100% auto padding-box border-box",
+        "titleText": "My profile",
+        "copy": "MY PROFILE\nSelected fixture fan\n\nPARADE\n\nNo bio yet. Add one whenever you like.\n\nACTIVITY\nPARTIES\nGIFTS\n\nRecent activity is unavailable in this connection.\n\nOpen feed\nProfile options\nBack to world",
+        "controls": [
+          {
+            "label": "Reduce panel",
+            "x": 214,
+            "y": 10,
+            "width": 44,
+            "height": 44,
+            "top": 10,
+            "right": 258,
+            "bottom": 54,
+            "left": 214
+          },
+          {
+            "label": "Minimize panel",
+            "x": 258,
+            "y": 10,
+            "width": 44,
+            "height": 44,
+            "top": 10,
+            "right": 302,
+            "bottom": 54,
+            "left": 258
+          },
+          {
+            "label": "Back to previous panel",
+            "x": 302,
+            "y": 10,
+            "width": 44,
+            "height": 44,
+            "top": 10,
+            "right": 346,
+            "bottom": 54,
+            "left": 302
+          }
+        ],
+        "moreActions": null,
+        "content": {
+          "x": 15,
+          "y": 63,
+          "width": 330,
+          "height": 441.765625,
+          "top": 63,
+          "right": 345,
+          "bottom": 504.765625,
+          "left": 15
+        },
+        "actionsAfterContent": null,
+        "footer": {
+          "x": 15,
+          "y": 743,
+          "width": 330,
+          "height": 88,
+          "top": 743,
+          "right": 345,
+          "bottom": 831,
+          "left": 15
+        },
+        "artwork": [
+          {
+            "width": 128,
+            "height": 128,
+            "pixels": "2f1ae26c332718f635817f9bfcaa7938576bff4916f97fb69c28b1424fe50860"
+          }
+        ]
+      },
+      "world": {
+        "canvases": 1,
+        "activeSockets": 1,
+        "avatarPin": {
+          "manifest_id": "mcr_selected_static_20261103",
+          "manifest_version": 1,
+          "content_hash": "sha256:0627c7d178b22535a561e1270db6d8bf9e2383ba84d03a63962e48e565c59b2b"
+        }
+      },
+      "capture": {
+        "path": "baseline-me-360.png",
+        "sha256": "a5d43b49b4a07c6f97176ea6027d85670861e5f4e1db068241f2042e42c2a681",
+        "bytes": 63581
+      },
+      "status": "PASS"
+    },
+    {
+      "mode": "baseline",
+      "width": 390,
+      "path": "/meet",
+      "errors": [],
+      "geometry": {
+        "viewport": {
+          "width": 390,
+          "height": 844
+        },
+        "overflow": false,
+        "shell": {
+          "x": 0,
+          "y": 0,
+          "width": 390,
+          "height": 844,
+          "top": 0,
+          "right": 390,
+          "bottom": 844,
+          "left": 0
+        },
+        "header": {
+          "x": 9,
+          "y": 7,
+          "width": 372,
+          "height": 50,
+          "top": 7,
+          "right": 381,
+          "bottom": 57,
+          "left": 9
+        },
+        "body": {
+          "x": 9,
+          "y": 57,
+          "width": 372,
+          "height": 780,
+          "top": 57,
+          "right": 381,
+          "bottom": 837,
+          "left": 9
+        },
+        "title": {
+          "x": 20,
+          "y": 20.5,
+          "width": 224,
+          "height": 23,
+          "top": 20.5,
+          "right": 244,
+          "bottom": 43.5,
+          "left": 20
+        },
+        "headerPaint": "rgb(37, 16, 23)",
+        "background": "radial-gradient(rgba(66, 49, 28, 0.086) 0.5px, rgba(0, 0, 0, 0) 0.8px) repeat scroll 0% 0% / 5px 7px padding-box border-box, rgb(233, 225, 212) repeating-linear-gradient(97deg, rgba(0, 0, 0, 0) 0px, rgba(0, 0, 0, 0) 8px, rgba(89, 64, 33, 0.024) 9px, rgba(89, 64, 33, 0.024) 10px) repeat scroll 0% 0% / auto padding-box border-box",
+        "titleText": "Meet",
+        "copy": "More actions\nPARTIES\nPEOPLE\nMY PLAN\nFind your company\nArea A Queue Group\n\nArea A · 17:00\n\nMember portraits unavailable\n\n8 spaces. open. Hosted by Jules · fixture. Meeting Nov 8, 5:00 PM GMT+9.\n12/20\nmembers\nJOIN\nAfter Show Hangout\n\nStanding A · 17:00\n\nMember portraits unavailable\n\n4 spaces. open. Hosted by Jules · fixture. Meeting Nov 8, 5:00 PM GMT+9.\n8/12\nmembers\nJOIN\nPhoto Walk (Parade ver.)\n\nStanding A · 17:00\n\nMember portraits unavailable\n\n3 spaces. open. Hosted by Jules · fixture. Meeting Nov 8, 5:00 PM GMT+9.\n5/8\nmembers\nJOIN\nFilter parties\nRefresh\n\nJOIN opens party details. The host approves membership; a virtual position does not confirm arrival. Times are Korea Standard Time.\n\nCREATE PARTY",
+        "controls": [
+          {
+            "label": "Reduce panel",
+            "x": 244,
+            "y": 10,
+            "width": 44,
+            "height": 44,
+            "top": 10,
+            "right": 288,
+            "bottom": 54,
+            "left": 244
+          },
+          {
+            "label": "Minimize panel",
+            "x": 288,
+            "y": 10,
+            "width": 44,
+            "height": 44,
+            "top": 10,
+            "right": 332,
+            "bottom": 54,
+            "left": 288
+          },
+          {
+            "label": "Back to previous panel",
+            "x": 332,
+            "y": 10,
+            "width": 44,
+            "height": 44,
+            "top": 10,
+            "right": 376,
+            "bottom": 54,
+            "left": 332
+          }
+        ],
+        "moreActions": {
+          "x": 15,
+          "y": 69,
+          "width": 360,
+          "height": 44,
+          "top": 69,
+          "right": 375,
+          "bottom": 113,
+          "left": 15
+        },
+        "content": {
+          "x": 15,
+          "y": 113,
+          "width": 360,
+          "height": 622,
+          "top": 113,
+          "right": 375,
+          "bottom": 735,
+          "left": 15
+        },
+        "actionsAfterContent": false,
+        "footer": {
+          "x": 15,
+          "y": 735,
+          "width": 360,
+          "height": 96,
+          "top": 735,
+          "right": 375,
+          "bottom": 831,
+          "left": 15
+        },
+        "artwork": [
+          {
+            "width": 64,
+            "height": 64,
+            "pixels": "c97bfd5fa8919021427790724c53762eb65bdb5ce04f7fe6962ff18b8129cf4a"
+          },
+          {
+            "width": 64,
+            "height": 64,
+            "pixels": "c97bfd5fa8919021427790724c53762eb65bdb5ce04f7fe6962ff18b8129cf4a"
+          },
+          {
+            "width": 64,
+            "height": 64,
+            "pixels": "c97bfd5fa8919021427790724c53762eb65bdb5ce04f7fe6962ff18b8129cf4a"
+          }
+        ]
+      },
+      "world": {
+        "canvases": 1,
+        "activeSockets": 1,
+        "avatarPin": {
+          "manifest_id": "mcr_selected_static_20261103",
+          "manifest_version": 1,
+          "content_hash": "sha256:0627c7d178b22535a561e1270db6d8bf9e2383ba84d03a63962e48e565c59b2b"
+        }
+      },
+      "capture": {
+        "path": "baseline-meet-390.png",
+        "sha256": "c423b2452945515891dbbf4e09620a28888c6c66dbf7bbc889e3746b81a50b91",
+        "bytes": 82273
+      },
+      "status": "PASS"
+    },
+    {
+      "mode": "baseline",
+      "width": 390,
+      "path": "/me",
+      "errors": [],
+      "geometry": {
+        "viewport": {
+          "width": 390,
+          "height": 844
+        },
+        "overflow": false,
+        "shell": {
+          "x": 0,
+          "y": 0,
+          "width": 390,
+          "height": 844,
+          "top": 0,
+          "right": 390,
+          "bottom": 844,
+          "left": 0
+        },
+        "header": {
+          "x": 9,
+          "y": 7,
+          "width": 372,
+          "height": 50,
+          "top": 7,
+          "right": 381,
+          "bottom": 57,
+          "left": 9
+        },
+        "body": {
+          "x": 9,
+          "y": 57,
+          "width": 372,
+          "height": 780,
+          "top": 57,
+          "right": 381,
+          "bottom": 837,
+          "left": 9
+        },
+        "title": {
+          "x": 20,
+          "y": 20.5,
+          "width": 224,
+          "height": 23,
+          "top": 20.5,
+          "right": 244,
+          "bottom": 43.5,
+          "left": 20
+        },
+        "headerPaint": "rgb(37, 16, 23)",
+        "background": "rgb(255, 240, 231) url(\"http://127.0.0.1:19967/backgrounds/cute-wall-me-v1/me-scrapbook.svg\") no-repeat scroll 50% 100% / 100% auto padding-box border-box",
+        "titleText": "My profile",
+        "copy": "MY PROFILE\nSelected fixture fan\n\nPARADE\n\nNo bio yet. Add one whenever you like.\n\nACTIVITY\nPARTIES\nGIFTS\n\nRecent activity is unavailable in this connection.\n\nOpen feed\nProfile options\nBack to world",
+        "controls": [
+          {
+            "label": "Reduce panel",
+            "x": 244,
+            "y": 10,
+            "width": 44,
+            "height": 44,
+            "top": 10,
+            "right": 288,
+            "bottom": 54,
+            "left": 244
+          },
+          {
+            "label": "Minimize panel",
+            "x": 288,
+            "y": 10,
+            "width": 44,
+            "height": 44,
+            "top": 10,
+            "right": 332,
+            "bottom": 54,
+            "left": 288
+          },
+          {
+            "label": "Back to previous panel",
+            "x": 332,
+            "y": 10,
+            "width": 44,
+            "height": 44,
+            "top": 10,
+            "right": 376,
+            "bottom": 54,
+            "left": 332
+          }
+        ],
+        "moreActions": null,
+        "content": {
+          "x": 15,
+          "y": 63,
+          "width": 360,
+          "height": 446.296875,
+          "top": 63,
+          "right": 375,
+          "bottom": 509.296875,
+          "left": 15
+        },
+        "actionsAfterContent": null,
+        "footer": {
+          "x": 15,
+          "y": 735,
+          "width": 360,
+          "height": 96,
+          "top": 735,
+          "right": 375,
+          "bottom": 831,
+          "left": 15
+        },
+        "artwork": [
+          {
+            "width": 128,
+            "height": 128,
+            "pixels": "2f1ae26c332718f635817f9bfcaa7938576bff4916f97fb69c28b1424fe50860"
+          }
+        ]
+      },
+      "world": {
+        "canvases": 1,
+        "activeSockets": 1,
+        "avatarPin": {
+          "manifest_id": "mcr_selected_static_20261103",
+          "manifest_version": 1,
+          "content_hash": "sha256:0627c7d178b22535a561e1270db6d8bf9e2383ba84d03a63962e48e565c59b2b"
+        }
+      },
+      "capture": {
+        "path": "baseline-me-390.png",
+        "sha256": "a901eb761c2c4f128be8e7950e6c56a2620968a32ae6a21ca0860fb1387f80e2",
+        "bytes": 66456
+      },
+      "status": "PASS"
+    },
+    {
+      "mode": "baseline",
+      "width": 430,
+      "path": "/meet",
+      "errors": [],
+      "geometry": {
+        "viewport": {
+          "width": 430,
+          "height": 844
+        },
+        "overflow": false,
+        "shell": {
+          "x": 0,
+          "y": 0,
+          "width": 430,
+          "height": 844,
+          "top": 0,
+          "right": 430,
+          "bottom": 844,
+          "left": 0
+        },
+        "header": {
+          "x": 9,
+          "y": 7,
+          "width": 412,
+          "height": 50,
+          "top": 7,
+          "right": 421,
+          "bottom": 57,
+          "left": 9
+        },
+        "body": {
+          "x": 9,
+          "y": 57,
+          "width": 412,
+          "height": 780,
+          "top": 57,
+          "right": 421,
+          "bottom": 837,
+          "left": 9
+        },
+        "title": {
+          "x": 20,
+          "y": 20.5,
+          "width": 264,
+          "height": 23,
+          "top": 20.5,
+          "right": 284,
+          "bottom": 43.5,
+          "left": 20
+        },
+        "headerPaint": "rgb(37, 16, 23)",
+        "background": "radial-gradient(rgba(66, 49, 28, 0.086) 0.5px, rgba(0, 0, 0, 0) 0.8px) repeat scroll 0% 0% / 5px 7px padding-box border-box, rgb(233, 225, 212) repeating-linear-gradient(97deg, rgba(0, 0, 0, 0) 0px, rgba(0, 0, 0, 0) 8px, rgba(89, 64, 33, 0.024) 9px, rgba(89, 64, 33, 0.024) 10px) repeat scroll 0% 0% / auto padding-box border-box",
+        "titleText": "Meet",
+        "copy": "More actions\nPARTIES\nPEOPLE\nMY PLAN\nFind your company\nArea A Queue Group\n\nArea A · 17:00\n\nMember portraits unavailable\n\n8 spaces. open. Hosted by Jules · fixture. Meeting Nov 8, 5:00 PM GMT+9.\n12/20\nmembers\nJOIN\nAfter Show Hangout\n\nStanding A · 17:00\n\nMember portraits unavailable\n\n4 spaces. open. Hosted by Jules · fixture. Meeting Nov 8, 5:00 PM GMT+9.\n8/12\nmembers\nJOIN\nPhoto Walk (Parade ver.)\n\nStanding A · 17:00\n\nMember portraits unavailable\n\n3 spaces. open. Hosted by Jules · fixture. Meeting Nov 8, 5:00 PM GMT+9.\n5/8\nmembers\nJOIN\nFilter parties\nRefresh\n\nJOIN opens party details. The host approves membership; a virtual position does not confirm arrival. Times are Korea Standard Time.\n\nCREATE PARTY",
+        "controls": [
+          {
+            "label": "Reduce panel",
+            "x": 284,
+            "y": 10,
+            "width": 44,
+            "height": 44,
+            "top": 10,
+            "right": 328,
+            "bottom": 54,
+            "left": 284
+          },
+          {
+            "label": "Minimize panel",
+            "x": 328,
+            "y": 10,
+            "width": 44,
+            "height": 44,
+            "top": 10,
+            "right": 372,
+            "bottom": 54,
+            "left": 328
+          },
+          {
+            "label": "Back to previous panel",
+            "x": 372,
+            "y": 10,
+            "width": 44,
+            "height": 44,
+            "top": 10,
+            "right": 416,
+            "bottom": 54,
+            "left": 372
+          }
+        ],
+        "moreActions": {
+          "x": 15,
+          "y": 69,
+          "width": 400,
+          "height": 44,
+          "top": 69,
+          "right": 415,
+          "bottom": 113,
+          "left": 15
+        },
+        "content": {
+          "x": 15,
+          "y": 113,
+          "width": 400,
+          "height": 611.34375,
+          "top": 113,
+          "right": 415,
+          "bottom": 724.34375,
+          "left": 15
+        },
+        "actionsAfterContent": false,
+        "footer": {
+          "x": 15,
+          "y": 724.34375,
+          "width": 400,
+          "height": 106.65625,
+          "top": 724.34375,
+          "right": 415,
+          "bottom": 831,
+          "left": 15
+        },
+        "artwork": [
+          {
+            "width": 64,
+            "height": 64,
+            "pixels": "c97bfd5fa8919021427790724c53762eb65bdb5ce04f7fe6962ff18b8129cf4a"
+          },
+          {
+            "width": 64,
+            "height": 64,
+            "pixels": "c97bfd5fa8919021427790724c53762eb65bdb5ce04f7fe6962ff18b8129cf4a"
+          },
+          {
+            "width": 64,
+            "height": 64,
+            "pixels": "c97bfd5fa8919021427790724c53762eb65bdb5ce04f7fe6962ff18b8129cf4a"
+          }
+        ]
+      },
+      "world": {
+        "canvases": 1,
+        "activeSockets": 1,
+        "avatarPin": {
+          "manifest_id": "mcr_selected_static_20261103",
+          "manifest_version": 1,
+          "content_hash": "sha256:0627c7d178b22535a561e1270db6d8bf9e2383ba84d03a63962e48e565c59b2b"
+        }
+      },
+      "capture": {
+        "path": "baseline-meet-430.png",
+        "sha256": "3aab1e46775c984b49d7ba796a96d3f28efa60ecc08a9712360b13f8ec86d5bd",
+        "bytes": 86272
+      },
+      "status": "PASS"
+    },
+    {
+      "mode": "baseline",
+      "width": 430,
+      "path": "/me",
+      "errors": [],
+      "geometry": {
+        "viewport": {
+          "width": 430,
+          "height": 844
+        },
+        "overflow": false,
+        "shell": {
+          "x": 0,
+          "y": 0,
+          "width": 430,
+          "height": 844,
+          "top": 0,
+          "right": 430,
+          "bottom": 844,
+          "left": 0
+        },
+        "header": {
+          "x": 9,
+          "y": 7,
+          "width": 412,
+          "height": 50,
+          "top": 7,
+          "right": 421,
+          "bottom": 57,
+          "left": 9
+        },
+        "body": {
+          "x": 9,
+          "y": 57,
+          "width": 412,
+          "height": 780,
+          "top": 57,
+          "right": 421,
+          "bottom": 837,
+          "left": 9
+        },
+        "title": {
+          "x": 20,
+          "y": 20.5,
+          "width": 264,
+          "height": 23,
+          "top": 20.5,
+          "right": 284,
+          "bottom": 43.5,
+          "left": 20
+        },
+        "headerPaint": "rgb(37, 16, 23)",
+        "background": "rgb(255, 240, 231) url(\"http://127.0.0.1:19967/backgrounds/cute-wall-me-v1/me-scrapbook.svg\") no-repeat scroll 50% 100% / 100% auto padding-box border-box",
+        "titleText": "My profile",
+        "copy": "MY PROFILE\nSelected fixture fan\n\nPARADE\n\nNo bio yet. Add one whenever you like.\n\nACTIVITY\nPARTIES\nGIFTS\n\nRecent activity is unavailable in this connection.\n\nOpen feed\nProfile options\nBack to world",
+        "controls": [
+          {
+            "label": "Reduce panel",
+            "x": 284,
+            "y": 10,
+            "width": 44,
+            "height": 44,
+            "top": 10,
+            "right": 328,
+            "bottom": 54,
+            "left": 284
+          },
+          {
+            "label": "Minimize panel",
+            "x": 328,
+            "y": 10,
+            "width": 44,
+            "height": 44,
+            "top": 10,
+            "right": 372,
+            "bottom": 54,
+            "left": 328
+          },
+          {
+            "label": "Back to previous panel",
+            "x": 372,
+            "y": 10,
+            "width": 44,
+            "height": 44,
+            "top": 10,
+            "right": 416,
+            "bottom": 54,
+            "left": 372
+          }
+        ],
+        "moreActions": null,
+        "content": {
+          "x": 15,
+          "y": 63,
+          "width": 400,
+          "height": 443.1875,
+          "top": 63,
+          "right": 415,
+          "bottom": 506.1875,
+          "left": 15
+        },
+        "actionsAfterContent": null,
+        "footer": {
+          "x": 15,
+          "y": 724.34375,
+          "width": 400,
+          "height": 106.65625,
+          "top": 724.34375,
+          "right": 415,
+          "bottom": 831,
+          "left": 15
+        },
+        "artwork": [
+          {
+            "width": 128,
+            "height": 128,
+            "pixels": "2f1ae26c332718f635817f9bfcaa7938576bff4916f97fb69c28b1424fe50860"
+          }
+        ]
+      },
+      "world": {
+        "canvases": 1,
+        "activeSockets": 1,
+        "avatarPin": {
+          "manifest_id": "mcr_selected_static_20261103",
+          "manifest_version": 1,
+          "content_hash": "sha256:0627c7d178b22535a561e1270db6d8bf9e2383ba84d03a63962e48e565c59b2b"
+        }
+      },
+      "capture": {
+        "path": "baseline-me-430.png",
+        "sha256": "51196254a082b88279a32aec455563dd9b1e600dfdace0765ad3b766c515e321",
+        "bytes": 69383
+      },
+      "status": "PASS"
+    },
+    {
+      "mode": "candidate",
+      "width": 360,
+      "path": "/meet",
+      "errors": [],
+      "geometry": {
+        "viewport": {
+          "width": 360,
+          "height": 844
+        },
+        "overflow": false,
+        "shell": {
+          "x": 0,
+          "y": 0,
+          "width": 360,
+          "height": 844,
+          "top": 0,
+          "right": 360,
+          "bottom": 844,
+          "left": 0
+        },
+        "header": {
+          "x": 4,
+          "y": 4,
+          "width": 352,
+          "height": 47,
+          "top": 4,
+          "right": 356,
+          "bottom": 51,
+          "left": 4
+        },
+        "body": {
+          "x": 4,
+          "y": 51,
+          "width": 352,
+          "height": 789,
+          "top": 51,
+          "right": 356,
+          "bottom": 840,
+          "left": 4
+        },
+        "title": {
+          "x": 12,
+          "y": 11,
+          "width": 210,
+          "height": 30,
+          "top": 11,
+          "right": 222,
+          "bottom": 41,
+          "left": 12
+        },
+        "headerPaint": "rgb(27, 25, 24)",
+        "background": "radial-gradient(rgba(66, 49, 28, 0.086) 0.5px, rgba(0, 0, 0, 0) 0.8px) repeat scroll 0% 0% / 5px 7px padding-box border-box, rgb(233, 225, 212) repeating-linear-gradient(97deg, rgba(0, 0, 0, 0) 0px, rgba(0, 0, 0, 0) 8px, rgba(89, 64, 33, 0.024) 9px, rgba(89, 64, 33, 0.024) 10px) repeat scroll 0% 0% / auto padding-box border-box",
+        "titleText": "Meet",
+        "copy": "PARTIES\nPEOPLE\nMY PLAN\nFind your company\nArea A Queue Group\n\nArea A · 17:00\n\nMember portraits unavailable\n\n8 spaces. open. Hosted by Jules · fixture. Meeting Nov 8, 5:00 PM GMT+9.\n12/20\nmembers\nJOIN\nAfter Show Hangout\n\nStanding A · 17:00\n\nMember portraits unavailable\n\n4 spaces. open. Hosted by Jules · fixture. Meeting Nov 8, 5:00 PM GMT+9.\n8/12\nmembers\nJOIN\nPhoto Walk (Parade ver.)\n\nStanding A · 17:00\n\nMember portraits unavailable\n\n3 spaces. open. Hosted by Jules · fixture. Meeting Nov 8, 5:00 PM GMT+9.\n5/8\nmembers\nJOIN\nFilter parties\nRefresh\n\nJOIN opens party details. The host approves membership; a virtual position does not confirm arrival. Times are Korea Standard Time.\n\nCREATE PARTY\nMore actions",
+        "controls": [
+          {
+            "label": "Reduce panel",
+            "x": 222,
+            "y": 4,
+            "width": 44,
+            "height": 44,
+            "top": 4,
+            "right": 266,
+            "bottom": 48,
+            "left": 222
+          },
+          {
+            "label": "Minimize panel",
+            "x": 266,
+            "y": 4,
+            "width": 44,
+            "height": 44,
+            "top": 4,
+            "right": 310,
+            "bottom": 48,
+            "left": 266
+          },
+          {
+            "label": "Back to previous panel",
+            "x": 310,
+            "y": 4,
+            "width": 44,
+            "height": 44,
+            "top": 4,
+            "right": 354,
+            "bottom": 48,
+            "left": 310
+          }
+        ],
+        "moreActions": {
+          "x": 10,
+          "y": 692.34375,
+          "width": 340,
+          "height": 45,
+          "top": 692.34375,
+          "right": 350,
+          "bottom": 737.34375,
+          "left": 10
+        },
+        "content": {
+          "x": 10,
+          "y": 57,
+          "width": 340,
+          "height": 629.34375,
+          "top": 57,
+          "right": 350,
+          "bottom": 686.34375,
+          "left": 10
+        },
+        "actionsAfterContent": true,
+        "footer": {
+          "x": 10,
+          "y": 743.34375,
+          "width": 340,
+          "height": 90.65625,
+          "top": 743.34375,
+          "right": 350,
+          "bottom": 834,
+          "left": 10
+        },
+        "artwork": [
+          {
+            "width": 64,
+            "height": 64,
+            "pixels": "c97bfd5fa8919021427790724c53762eb65bdb5ce04f7fe6962ff18b8129cf4a"
+          },
+          {
+            "width": 64,
+            "height": 64,
+            "pixels": "c97bfd5fa8919021427790724c53762eb65bdb5ce04f7fe6962ff18b8129cf4a"
+          },
+          {
+            "width": 64,
+            "height": 64,
+            "pixels": "c97bfd5fa8919021427790724c53762eb65bdb5ce04f7fe6962ff18b8129cf4a"
+          }
+        ]
+      },
+      "world": {
+        "canvases": 1,
+        "activeSockets": 1,
+        "avatarPin": {
+          "manifest_id": "mcr_selected_static_20261103",
+          "manifest_version": 1,
+          "content_hash": "sha256:0627c7d178b22535a561e1270db6d8bf9e2383ba84d03a63962e48e565c59b2b"
+        }
+      },
+      "capture": {
+        "path": "candidate-meet-360.png",
+        "sha256": "9b9aba49270955ad05c829075cf7d9e44579e392b5114c9de390d7ddcfa20fa7",
+        "bytes": 71211
+      },
+      "status": "PASS"
+    },
+    {
+      "mode": "candidate",
+      "width": 360,
+      "path": "/me",
+      "errors": [],
+      "geometry": {
+        "viewport": {
+          "width": 360,
+          "height": 844
+        },
+        "overflow": false,
+        "shell": {
+          "x": 0,
+          "y": 0,
+          "width": 360,
+          "height": 844,
+          "top": 0,
+          "right": 360,
+          "bottom": 844,
+          "left": 0
+        },
+        "header": {
+          "x": 4,
+          "y": 4,
+          "width": 352,
+          "height": 47,
+          "top": 4,
+          "right": 356,
+          "bottom": 51,
+          "left": 4
+        },
+        "body": {
+          "x": 4,
+          "y": 51,
+          "width": 352,
+          "height": 789,
+          "top": 51,
+          "right": 356,
+          "bottom": 840,
+          "left": 4
+        },
+        "title": {
+          "x": 12,
+          "y": 11,
+          "width": 210,
+          "height": 30,
+          "top": 11,
+          "right": 222,
+          "bottom": 41,
+          "left": 12
+        },
+        "headerPaint": "rgb(27, 25, 24)",
+        "background": "rgb(255, 240, 231) url(\"http://127.0.0.1:19967/backgrounds/cute-wall-me-v1/me-scrapbook.svg\") no-repeat scroll 50% 100% / 100% auto padding-box border-box",
+        "titleText": "My profile",
+        "copy": "MY PROFILE\nSelected fixture fan\n\nPARADE\n\nNo bio yet. Add one whenever you like.\n\nACTIVITY\nPARTIES\nGIFTS\n\nRecent activity is unavailable in this connection.\n\nOpen feed\nProfile options\nBack to world",
+        "controls": [
+          {
+            "label": "Reduce panel",
+            "x": 222,
+            "y": 4,
+            "width": 44,
+            "height": 44,
+            "top": 4,
+            "right": 266,
+            "bottom": 48,
+            "left": 222
+          },
+          {
+            "label": "Minimize panel",
+            "x": 266,
+            "y": 4,
+            "width": 44,
+            "height": 44,
+            "top": 4,
+            "right": 310,
+            "bottom": 48,
+            "left": 266
+          },
+          {
+            "label": "Back to previous panel",
+            "x": 310,
+            "y": 4,
+            "width": 44,
+            "height": 44,
+            "top": 4,
+            "right": 354,
+            "bottom": 48,
+            "left": 310
+          }
+        ],
+        "moreActions": null,
+        "content": {
+          "x": 10,
+          "y": 57,
+          "width": 340,
+          "height": 424.78125,
+          "top": 57,
+          "right": 350,
+          "bottom": 481.78125,
+          "left": 10
+        },
+        "actionsAfterContent": null,
+        "footer": {
+          "x": 10,
+          "y": 743.34375,
+          "width": 340,
+          "height": 90.65625,
+          "top": 743.34375,
+          "right": 350,
+          "bottom": 834,
+          "left": 10
+        },
+        "artwork": [
+          {
+            "width": 128,
+            "height": 128,
+            "pixels": "2f1ae26c332718f635817f9bfcaa7938576bff4916f97fb69c28b1424fe50860"
+          }
+        ]
+      },
+      "world": {
+        "canvases": 1,
+        "activeSockets": 1,
+        "avatarPin": {
+          "manifest_id": "mcr_selected_static_20261103",
+          "manifest_version": 1,
+          "content_hash": "sha256:0627c7d178b22535a561e1270db6d8bf9e2383ba84d03a63962e48e565c59b2b"
+        }
+      },
+      "capture": {
+        "path": "candidate-me-360.png",
+        "sha256": "5d67946ab9134211565bdcfc3c0fa528ae8643012cd202739398461aea9b6445",
+        "bytes": 56507
+      },
+      "status": "PASS"
+    },
+    {
+      "mode": "candidate",
+      "width": 390,
+      "path": "/meet",
+      "errors": [],
+      "geometry": {
+        "viewport": {
+          "width": 390,
+          "height": 844
+        },
+        "overflow": false,
+        "shell": {
+          "x": 0,
+          "y": 0,
+          "width": 390,
+          "height": 844,
+          "top": 0,
+          "right": 390,
+          "bottom": 844,
+          "left": 0
+        },
+        "header": {
+          "x": 4,
+          "y": 4,
+          "width": 382,
+          "height": 47,
+          "top": 4,
+          "right": 386,
+          "bottom": 51,
+          "left": 4
+        },
+        "body": {
+          "x": 4,
+          "y": 51,
+          "width": 382,
+          "height": 789,
+          "top": 51,
+          "right": 386,
+          "bottom": 840,
+          "left": 4
+        },
+        "title": {
+          "x": 12,
+          "y": 9.984375,
+          "width": 240,
+          "height": 32.015625,
+          "top": 9.984375,
+          "right": 252,
+          "bottom": 42,
+          "left": 12
+        },
+        "headerPaint": "rgb(27, 25, 24)",
+        "background": "radial-gradient(rgba(66, 49, 28, 0.086) 0.5px, rgba(0, 0, 0, 0) 0.8px) repeat scroll 0% 0% / 5px 7px padding-box border-box, rgb(233, 225, 212) repeating-linear-gradient(97deg, rgba(0, 0, 0, 0) 0px, rgba(0, 0, 0, 0) 8px, rgba(89, 64, 33, 0.024) 9px, rgba(89, 64, 33, 0.024) 10px) repeat scroll 0% 0% / auto padding-box border-box",
+        "titleText": "Meet",
+        "copy": "PARTIES\nPEOPLE\nMY PLAN\nFind your company\nArea A Queue Group\n\nArea A · 17:00\n\nMember portraits unavailable\n\n8 spaces. open. Hosted by Jules · fixture. Meeting Nov 8, 5:00 PM GMT+9.\n12/20\nmembers\nJOIN\nAfter Show Hangout\n\nStanding A · 17:00\n\nMember portraits unavailable\n\n4 spaces. open. Hosted by Jules · fixture. Meeting Nov 8, 5:00 PM GMT+9.\n8/12\nmembers\nJOIN\nPhoto Walk (Parade ver.)\n\nStanding A · 17:00\n\nMember portraits unavailable\n\n3 spaces. open. Hosted by Jules · fixture. Meeting Nov 8, 5:00 PM GMT+9.\n5/8\nmembers\nJOIN\nFilter parties\nRefresh\n\nJOIN opens party details. The host approves membership; a virtual position does not confirm arrival. Times are Korea Standard Time.\n\nCREATE PARTY\nMore actions",
+        "controls": [
+          {
+            "label": "Reduce panel",
+            "x": 252,
+            "y": 4,
+            "width": 44,
+            "height": 44,
+            "top": 4,
+            "right": 296,
+            "bottom": 48,
+            "left": 252
+          },
+          {
+            "label": "Minimize panel",
+            "x": 296,
+            "y": 4,
+            "width": 44,
+            "height": 44,
+            "top": 4,
+            "right": 340,
+            "bottom": 48,
+            "left": 296
+          },
+          {
+            "label": "Back to previous panel",
+            "x": 340,
+            "y": 4,
+            "width": 44,
+            "height": 44,
+            "top": 4,
+            "right": 384,
+            "bottom": 48,
+            "left": 340
+          }
+        ],
+        "moreActions": {
+          "x": 10,
+          "y": 684.34375,
+          "width": 370,
+          "height": 45,
+          "top": 684.34375,
+          "right": 380,
+          "bottom": 729.34375,
+          "left": 10
+        },
+        "content": {
+          "x": 10,
+          "y": 57,
+          "width": 370,
+          "height": 621.34375,
+          "top": 57,
+          "right": 380,
+          "bottom": 678.34375,
+          "left": 10
+        },
+        "actionsAfterContent": true,
+        "footer": {
+          "x": 10,
+          "y": 735.34375,
+          "width": 370,
+          "height": 98.65625,
+          "top": 735.34375,
+          "right": 380,
+          "bottom": 834,
+          "left": 10
+        },
+        "artwork": [
+          {
+            "width": 64,
+            "height": 64,
+            "pixels": "c97bfd5fa8919021427790724c53762eb65bdb5ce04f7fe6962ff18b8129cf4a"
+          },
+          {
+            "width": 64,
+            "height": 64,
+            "pixels": "c97bfd5fa8919021427790724c53762eb65bdb5ce04f7fe6962ff18b8129cf4a"
+          },
+          {
+            "width": 64,
+            "height": 64,
+            "pixels": "c97bfd5fa8919021427790724c53762eb65bdb5ce04f7fe6962ff18b8129cf4a"
+          }
+        ]
+      },
+      "world": {
+        "canvases": 1,
+        "activeSockets": 1,
+        "avatarPin": {
+          "manifest_id": "mcr_selected_static_20261103",
+          "manifest_version": 1,
+          "content_hash": "sha256:0627c7d178b22535a561e1270db6d8bf9e2383ba84d03a63962e48e565c59b2b"
+        }
+      },
+      "capture": {
+        "path": "candidate-meet-390.png",
+        "sha256": "7197520baaea4ef1f8ac79efea3607a013b1e12aea18f54aea9b0fc0a0ec36d2",
+        "bytes": 74342
+      },
+      "status": "PASS"
+    },
+    {
+      "mode": "candidate",
+      "width": 390,
+      "path": "/me",
+      "errors": [],
+      "geometry": {
+        "viewport": {
+          "width": 390,
+          "height": 844
+        },
+        "overflow": false,
+        "shell": {
+          "x": 0,
+          "y": 0,
+          "width": 390,
+          "height": 844,
+          "top": 0,
+          "right": 390,
+          "bottom": 844,
+          "left": 0
+        },
+        "header": {
+          "x": 4,
+          "y": 4,
+          "width": 382,
+          "height": 47,
+          "top": 4,
+          "right": 386,
+          "bottom": 51,
+          "left": 4
+        },
+        "body": {
+          "x": 4,
+          "y": 51,
+          "width": 382,
+          "height": 789,
+          "top": 51,
+          "right": 386,
+          "bottom": 840,
+          "left": 4
+        },
+        "title": {
+          "x": 12,
+          "y": 9.984375,
+          "width": 240,
+          "height": 32.015625,
+          "top": 9.984375,
+          "right": 252,
+          "bottom": 42,
+          "left": 12
+        },
+        "headerPaint": "rgb(27, 25, 24)",
+        "background": "rgb(255, 240, 231) url(\"http://127.0.0.1:19967/backgrounds/cute-wall-me-v1/me-scrapbook.svg\") no-repeat scroll 50% 100% / 100% auto padding-box border-box",
+        "titleText": "My profile",
+        "copy": "MY PROFILE\nSelected fixture fan\n\nPARADE\n\nNo bio yet. Add one whenever you like.\n\nACTIVITY\nPARTIES\nGIFTS\n\nRecent activity is unavailable in this connection.\n\nOpen feed\nProfile options\nBack to world",
+        "controls": [
+          {
+            "label": "Reduce panel",
+            "x": 252,
+            "y": 4,
+            "width": 44,
+            "height": 44,
+            "top": 4,
+            "right": 296,
+            "bottom": 48,
+            "left": 252
+          },
+          {
+            "label": "Minimize panel",
+            "x": 296,
+            "y": 4,
+            "width": 44,
+            "height": 44,
+            "top": 4,
+            "right": 340,
+            "bottom": 48,
+            "left": 296
+          },
+          {
+            "label": "Back to previous panel",
+            "x": 340,
+            "y": 4,
+            "width": 44,
+            "height": 44,
+            "top": 4,
+            "right": 384,
+            "bottom": 48,
+            "left": 340
+          }
+        ],
+        "moreActions": null,
+        "content": {
+          "x": 10,
+          "y": 57,
+          "width": 370,
+          "height": 435.578125,
+          "top": 57,
+          "right": 380,
+          "bottom": 492.578125,
+          "left": 10
+        },
+        "actionsAfterContent": null,
+        "footer": {
+          "x": 10,
+          "y": 735.34375,
+          "width": 370,
+          "height": 98.65625,
+          "top": 735.34375,
+          "right": 380,
+          "bottom": 834,
+          "left": 10
+        },
+        "artwork": [
+          {
+            "width": 128,
+            "height": 128,
+            "pixels": "2f1ae26c332718f635817f9bfcaa7938576bff4916f97fb69c28b1424fe50860"
+          }
+        ]
+      },
+      "world": {
+        "canvases": 1,
+        "activeSockets": 1,
+        "avatarPin": {
+          "manifest_id": "mcr_selected_static_20261103",
+          "manifest_version": 1,
+          "content_hash": "sha256:0627c7d178b22535a561e1270db6d8bf9e2383ba84d03a63962e48e565c59b2b"
+        }
+      },
+      "capture": {
+        "path": "candidate-me-390.png",
+        "sha256": "0d63de1c562724af09594d0b5de846fd476b684190174ad6de4124d2aef16d22",
+        "bytes": 58546
+      },
+      "status": "PASS"
+    },
+    {
+      "mode": "candidate",
+      "width": 430,
+      "path": "/meet",
+      "errors": [],
+      "geometry": {
+        "viewport": {
+          "width": 430,
+          "height": 844
+        },
+        "overflow": false,
+        "shell": {
+          "x": 0,
+          "y": 0,
+          "width": 430,
+          "height": 844,
+          "top": 0,
+          "right": 430,
+          "bottom": 844,
+          "left": 0
+        },
+        "header": {
+          "x": 4,
+          "y": 4,
+          "width": 422,
+          "height": 47,
+          "top": 4,
+          "right": 426,
+          "bottom": 51,
+          "left": 4
+        },
+        "body": {
+          "x": 4,
+          "y": 51,
+          "width": 422,
+          "height": 789,
+          "top": 51,
+          "right": 426,
+          "bottom": 840,
+          "left": 4
+        },
+        "title": {
+          "x": 12,
+          "y": 9.78125,
+          "width": 280,
+          "height": 32.4375,
+          "top": 9.78125,
+          "right": 292,
+          "bottom": 42.21875,
+          "left": 12
+        },
+        "headerPaint": "rgb(27, 25, 24)",
+        "background": "radial-gradient(rgba(66, 49, 28, 0.086) 0.5px, rgba(0, 0, 0, 0) 0.8px) repeat scroll 0% 0% / 5px 7px padding-box border-box, rgb(233, 225, 212) repeating-linear-gradient(97deg, rgba(0, 0, 0, 0) 0px, rgba(0, 0, 0, 0) 8px, rgba(89, 64, 33, 0.024) 9px, rgba(89, 64, 33, 0.024) 10px) repeat scroll 0% 0% / auto padding-box border-box",
+        "titleText": "Meet",
+        "copy": "PARTIES\nPEOPLE\nMY PLAN\nFind your company\nArea A Queue Group\n\nArea A · 17:00\n\nMember portraits unavailable\n\n8 spaces. open. Hosted by Jules · fixture. Meeting Nov 8, 5:00 PM GMT+9.\n12/20\nmembers\nJOIN\nAfter Show Hangout\n\nStanding A · 17:00\n\nMember portraits unavailable\n\n4 spaces. open. Hosted by Jules · fixture. Meeting Nov 8, 5:00 PM GMT+9.\n8/12\nmembers\nJOIN\nPhoto Walk (Parade ver.)\n\nStanding A · 17:00\n\nMember portraits unavailable\n\n3 spaces. open. Hosted by Jules · fixture. Meeting Nov 8, 5:00 PM GMT+9.\n5/8\nmembers\nJOIN\nFilter parties\nRefresh\n\nJOIN opens party details. The host approves membership; a virtual position does not confirm arrival. Times are Korea Standard Time.\n\nCREATE PARTY\nMore actions",
+        "controls": [
+          {
+            "label": "Reduce panel",
+            "x": 292,
+            "y": 4,
+            "width": 44,
+            "height": 44,
+            "top": 4,
+            "right": 336,
+            "bottom": 48,
+            "left": 292
+          },
+          {
+            "label": "Minimize panel",
+            "x": 336,
+            "y": 4,
+            "width": 44,
+            "height": 44,
+            "top": 4,
+            "right": 380,
+            "bottom": 48,
+            "left": 336
+          },
+          {
+            "label": "Back to previous panel",
+            "x": 380,
+            "y": 4,
+            "width": 44,
+            "height": 44,
+            "top": 4,
+            "right": 424,
+            "bottom": 48,
+            "left": 380
+          }
+        ],
+        "moreActions": {
+          "x": 10,
+          "y": 673.671875,
+          "width": 410,
+          "height": 45,
+          "top": 673.671875,
+          "right": 420,
+          "bottom": 718.671875,
+          "left": 10
+        },
+        "content": {
+          "x": 10,
+          "y": 57,
+          "width": 410,
+          "height": 610.671875,
+          "top": 57,
+          "right": 420,
+          "bottom": 667.671875,
+          "left": 10
+        },
+        "actionsAfterContent": true,
+        "footer": {
+          "x": 10,
+          "y": 724.671875,
+          "width": 410,
+          "height": 109.328125,
+          "top": 724.671875,
+          "right": 420,
+          "bottom": 834,
+          "left": 10
+        },
+        "artwork": [
+          {
+            "width": 64,
+            "height": 64,
+            "pixels": "c97bfd5fa8919021427790724c53762eb65bdb5ce04f7fe6962ff18b8129cf4a"
+          },
+          {
+            "width": 64,
+            "height": 64,
+            "pixels": "c97bfd5fa8919021427790724c53762eb65bdb5ce04f7fe6962ff18b8129cf4a"
+          },
+          {
+            "width": 64,
+            "height": 64,
+            "pixels": "c97bfd5fa8919021427790724c53762eb65bdb5ce04f7fe6962ff18b8129cf4a"
+          }
+        ]
+      },
+      "world": {
+        "canvases": 1,
+        "activeSockets": 1,
+        "avatarPin": {
+          "manifest_id": "mcr_selected_static_20261103",
+          "manifest_version": 1,
+          "content_hash": "sha256:0627c7d178b22535a561e1270db6d8bf9e2383ba84d03a63962e48e565c59b2b"
+        }
+      },
+      "capture": {
+        "path": "candidate-meet-430.png",
+        "sha256": "1a3048b735feaac74d118884645e80a5a0f167eba9ff2897352aecd2387baea7",
+        "bytes": 77506
+      },
+      "status": "PASS"
+    },
+    {
+      "mode": "candidate",
+      "width": 430,
+      "path": "/me",
+      "errors": [],
+      "geometry": {
+        "viewport": {
+          "width": 430,
+          "height": 844
+        },
+        "overflow": false,
+        "shell": {
+          "x": 0,
+          "y": 0,
+          "width": 430,
+          "height": 844,
+          "top": 0,
+          "right": 430,
+          "bottom": 844,
+          "left": 0
+        },
+        "header": {
+          "x": 4,
+          "y": 4,
+          "width": 422,
+          "height": 47,
+          "top": 4,
+          "right": 426,
+          "bottom": 51,
+          "left": 4
+        },
+        "body": {
+          "x": 4,
+          "y": 51,
+          "width": 422,
+          "height": 789,
+          "top": 51,
+          "right": 426,
+          "bottom": 840,
+          "left": 4
+        },
+        "title": {
+          "x": 12,
+          "y": 9.78125,
+          "width": 280,
+          "height": 32.4375,
+          "top": 9.78125,
+          "right": 292,
+          "bottom": 42.21875,
+          "left": 12
+        },
+        "headerPaint": "rgb(27, 25, 24)",
+        "background": "rgb(255, 240, 231) url(\"http://127.0.0.1:19967/backgrounds/cute-wall-me-v1/me-scrapbook.svg\") no-repeat scroll 50% 100% / 100% auto padding-box border-box",
+        "titleText": "My profile",
+        "copy": "MY PROFILE\nSelected fixture fan\n\nPARADE\n\nNo bio yet. Add one whenever you like.\n\nACTIVITY\nPARTIES\nGIFTS\n\nRecent activity is unavailable in this connection.\n\nOpen feed\nProfile options\nBack to world",
+        "controls": [
+          {
+            "label": "Reduce panel",
+            "x": 292,
+            "y": 4,
+            "width": 44,
+            "height": 44,
+            "top": 4,
+            "right": 336,
+            "bottom": 48,
+            "left": 292
+          },
+          {
+            "label": "Minimize panel",
+            "x": 336,
+            "y": 4,
+            "width": 44,
+            "height": 44,
+            "top": 4,
+            "right": 380,
+            "bottom": 48,
+            "left": 336
+          },
+          {
+            "label": "Back to previous panel",
+            "x": 380,
+            "y": 4,
+            "width": 44,
+            "height": 44,
+            "top": 4,
+            "right": 424,
+            "bottom": 48,
+            "left": 380
+          }
+        ],
+        "moreActions": null,
+        "content": {
+          "x": 10,
+          "y": 57,
+          "width": 410,
+          "height": 443.1875,
+          "top": 57,
+          "right": 420,
+          "bottom": 500.1875,
+          "left": 10
+        },
+        "actionsAfterContent": null,
+        "footer": {
+          "x": 10,
+          "y": 724.671875,
+          "width": 410,
+          "height": 109.328125,
+          "top": 724.671875,
+          "right": 420,
+          "bottom": 834,
+          "left": 10
+        },
+        "artwork": [
+          {
+            "width": 128,
+            "height": 128,
+            "pixels": "2f1ae26c332718f635817f9bfcaa7938576bff4916f97fb69c28b1424fe50860"
+          }
+        ]
+      },
+      "world": {
+        "canvases": 1,
+        "activeSockets": 1,
+        "avatarPin": {
+          "manifest_id": "mcr_selected_static_20261103",
+          "manifest_version": 1,
+          "content_hash": "sha256:0627c7d178b22535a561e1270db6d8bf9e2383ba84d03a63962e48e565c59b2b"
+        }
+      },
+      "capture": {
+        "path": "candidate-me-430.png",
+        "sha256": "26515eb620b79f267c2631f94b4c97767228d6e5dd3686d36346e06d1dfc1f92",
+        "bytes": 61812
+      },
+      "status": "PASS"
+    }
+  ],
+  "errors": [],
+  "browser": "156.0.8078.80",
+  "unavailable": {
+    "text": "Gift access is unavailable\n\nCheck your current account and event before continuing.\n\nMore actions",
+    "capture": {
+      "path": "unavailable-390.png",
+      "sha256": "b2faa76e861b6e1cf741d13a15427e35350efac25a9996b093a588b76c9fee40",
+      "bytes": 23920
+    }
+  },
+  "finishedAt": "2026-11-04T17:40:25.672Z",
+  "status": "PASS_PENDING_OWNER_VISUAL_INSPECTION",
+  "cleanup": {
+    "browserClosed": true,
+    "viteClosed": true
+  }
+}

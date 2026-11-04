@@ -1,0 +1,50 @@
+{
+  "job": "SHARED-CHROME-BROWSER2-20261104T1737Z",
+  "round": "round-01",
+  "started": 1793813886.862221,
+  "workDeadline": 1793814173.0,
+  "cleanupDeadline": 1793814233.0,
+  "candidate": "630bf9462917494c963fa71d21c8dbe65f839d69",
+  "carriedWholeBytes": 1256112128,
+  "retainedDependencyBytes": 438317056,
+  "aggregateNewReserve": 2415919104,
+  "caps": {
+    "whole": 2147483648,
+    "new": 268435456,
+    "temp": 209715200,
+    "durable": 50331648,
+    "allPids": 24,
+    "rss": 4294967296
+  },
+  "peaks": {
+    "temp": 53162135,
+    "durable": 1556480,
+    "allPids": 12,
+    "rss": 2623815680,
+    "new": 54673408,
+    "whole": 1310785536
+  },
+  "commands": [
+    [
+      "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node",
+      "--check",
+      "/Users/lhs/Desktop/mcr-worktrees/sl-world/frontend/src/app/__tests__/shared-chrome-ref/native.mjs"
+    ],
+    [
+      "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node",
+      "/Users/lhs/Desktop/mcr-worktrees/sl-world/frontend/src/app/__tests__/shared-chrome-ref/native.mjs"
+    ]
+  ],
+  "minFree": 25932173312,
+  "currentCarry": 1257668608,
+  "wholeMeasuredAt": 1793813931.6128519,
+  "exitCode": 1,
+  "remainingOwnedPids": [],
+  "finished": 1793813934.480395,
+  "ownLinkAbsent": true,
+  "ownTempAbsent": true,
+  "portClosed": true,
+  "cleanupWithinDeadline": true,
+  "finalFree": 26289819648,
+  "FULL": true
+}

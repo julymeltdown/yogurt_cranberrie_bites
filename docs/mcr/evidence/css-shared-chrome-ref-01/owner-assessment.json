@@ -1,0 +1,63 @@
+{
+  "task": "CSS-SHARED-CHROME-REF-01",
+  "originalTasks": [
+    "FE05",
+    "FE07",
+    "QA06"
+  ],
+  "status": "PASS_SCOPED_SYNTHETIC_COMPOSITION",
+  "qualifiedCssSource": "daf0cf5c",
+  "finalRunnerSource": "78a3ebb27f964a78c5e3a2bd4ff6673bb41c122b",
+  "rootOwnedDom": {
+    "commit": "61f3accd901fa93d1d558b14e4f45abc99948148",
+    "path": "frontend/src/app/WorldShell.tsx",
+    "sha256": "4d5bb4644423b32529b629d4e6c0fcb53620253a8b424888b7191c6c0ea72904",
+    "consumption": "Read-only Vite pre-load postimage; never edited or staged by this owner."
+  },
+  "reference": {
+    "path": "docs/mcr/design/reference-target-2026-11-04.png",
+    "sha256": "d9a8fae2f96a82253542019ab673589b3938627956eace15c8594c702b5c4617"
+  },
+  "acceptedEvidence": {
+    "round-01": "Only six ready Gifts baseline/candidate cases plus short-actions/input/title-focus/forced-focus/responsive-navigation checks. Overall FAIL is retained, not relabeled.",
+    "round-02": "Twelve loaded Meet/Me baseline/candidate cases plus truthful unavailable state. Syntax/native exit0."
+  },
+  "excludedEvidence": "Round01 Meet/Me loading captures and premature unavailable read; NOT visual qualification.",
+  "ownerImageAssessment": {
+    "personallyInspected": [
+      "Latest original1536x1024 target",
+      "Prior Gifts owner360/390/430 comparisons",
+      "Candidate Gifts/Meet/Me at360/390/430",
+      "Baseline Gifts/Meet/Me360",
+      "short-actions390",
+      "short-input360",
+      "title-focus390",
+      "title-forced-focus390",
+      "responsive-half900",
+      "unavailable390"
+    ],
+    "outcome": "Shared frame/title strip accepted for this bounded change. Thin ink/paper perimeter, readable title, compact notices and retained footer move closer to target; no clipped shared header or horizontal overflow. Gifts/Meet content begins56px higher. More actions remains reachable after content in DOM order. Selected character canvas pixels and cute body backgrounds match baseline.",
+    "remainingDifferences": "Real fixture content and truthful unavailable/member-portrait/activity states differ from reference illustration; necessary44px controls make title strip taller than the small printed reference. Feature content/art/density and complete ten-screen visual acceptance remain separately owned."
+  },
+  "limits": [
+    "Synthetic Auth/HTTP/C05/clock fixture, not live multiuser or server authorization proof",
+    "Physical iOS Safari/Android Chrome keyboard/safe area NOT_RUN",
+    "Other eras and full ten-screen visual acceptance NOT_RUN",
+    "No build or backend/load job; CSS parsed through actual Vite runtime"
+  ],
+  "commands": [
+    {
+      "command": "git diff f339f6240db94353e990fed722da0feb598ae9d2 --check",
+      "exitCode": 0
+    },
+    {
+      "command": "guard.py --job SHARED-CHROME-BROWSER2-20261104T1737Z --round round-01 --deadline1793814173 --port19967 --aggregate-reserve2415919104",
+      "exitCode": 1
+    },
+    {
+      "command": "guard.py --job SHARED-CHROME-BROWSER2-20261104T1737Z --round round-02 --deadline1793814173 --port19967 --aggregate-reserve2415919104 --paths meet,me",
+      "exitCode": 0
+    }
+  ],
+  "resourceRelease": "Actual finalFULL17:40:26.192Z, zero ownPIDs/port/link/TMP, sent directly to385 andSocial before documentation/publication."
+}

@@ -20,6 +20,59 @@
 .concert-window__titlebar.concert-window__titlebar--reference > .concert-window__close { display:grid; place-items:center; inline-size:44px; block-size:44px; min-inline-size:44px; min-block-size:44px; padding:0; border:0; border-radius:0; background:transparent; box-shadow:none; }
 .concert-window__titlebar--reference .mcr-reference-window-ink { inline-size:24px; block-size:24px; padding:2px; border:1px solid #f2eadf; background:#a2232b; }
 .concert-window__titlebar--reference > button:focus-visible { outline:2px solid #f2eadf; outline-offset:-3px; }
+
+/* Shared panel chrome follows the reference's ink title strip. The 24px printed
+   controls sit in separate 44px targets; focus and all three actions stay intact. */
+.world-shell:not([data-panel-size='closed']) .mcr-chrome-panel-header {
+  min-block-size:47px;
+  padding:0 2px 0 8px;
+  border:0;
+  border-block-end:3px double #eee7da;
+  background:#1b1918;
+  color:#fff6e7;
+}
+.world-shell:not([data-panel-size='closed']) .mcr-chrome-panel-header > h1 {
+  min-inline-size:0;
+  padding-block:3px;
+  font:800 clamp(20px,5.8vw,23px)/1.15 'Arial Narrow','Helvetica Neue',Arial,sans-serif;
+  font-stretch:condensed;
+  letter-spacing:-.02em;
+}
+.world-shell:not([data-panel-size='closed']) .mcr-chrome-panel-header > button {
+  inline-size:44px;
+  block-size:44px;
+  min-inline-size:44px;
+  min-block-size:44px;
+}
+.world-shell:not([data-panel-size='closed']) .mcr-chrome-panel-header .mcr-reference-window-ink {
+  border-color:#eee7da;
+}
+.world-shell:not([data-panel-size='closed']) .mcr-chrome-panel-header .mcr-chrome-panel-close .mcr-reference-window-ink {
+  background:#a2232b;
+}
+/* Half panels retain the existing identity and navigation, with the same compact
+   paper/ink proportions as the full panel. Closed World remains owner-qualified. */
+.world-shell:not([data-panel-size='closed']) > .mcr-chrome-header {
+  min-block-size:50px;
+  padding:2px;
+  border:1px solid #191817;
+  background:#1b1918;
+}
+.world-shell:not([data-panel-size='closed']) > .mcr-chrome-bottom {
+  gap:0;
+  padding:1px;
+  border:1px solid #191817;
+}
+.world-shell:not([data-panel-size='closed']) > .mcr-chrome-bottom > a {
+  min-block-size:52px;
+  padding:3px 1px;
+  border-radius:1px;
+  font-size:13px;
+}
+@media (forced-colors:active) {
+  .world-shell:not([data-panel-size='closed']) .mcr-chrome-panel-header { border-block-end:1px solid CanvasText; }
+  .world-shell:not([data-panel-size='closed']) .mcr-chrome-panel-header > button { border:1px solid ButtonText; }
+}
 @media (forced-colors:active) {
   .mcr-chrome-panel-header .mcr-reference-window-ink,
   .concert-window__titlebar--reference .mcr-reference-window-ink,
