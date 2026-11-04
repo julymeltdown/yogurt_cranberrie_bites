@@ -1,6 +1,6 @@
 # Execution record
 
-Updated **2026-11-04T09:03:56+09:00**, from published history through `02320134` and existing developer/SL delivery reports. This is a management reconciliation, not a code, query, visual or test review. All **112 required tasks and 61 required IA entries** remain in scope; the six optional EX tasks are excluded from the denominator.
+Updated **2026-11-04T09:21:37+09:00**, from published history through `1249430f` and existing developer/SL delivery reports. This is a management reconciliation, not a code, query, visual or test review. All **112 required tasks and 61 required IA entries** remain in scope; the six optional EX tasks are excluded from the denominator.
 
 ## Current task accounting
 
@@ -8,18 +8,18 @@ Updated **2026-11-04T09:03:56+09:00**, from published history through `02320134`
 
 | Original-task disposition | Count | Meaning |
 | --- | ---: | --- |
-| Recorded formal acceptance | **11** | Existing ACCEPTED records preserved. |
-| Additional task-local criteria satisfied | **9** | Existing frontend completion dispositions reconciled below; no new king/SL technical sign-off. |
-| Other implementation evidence | **77** | Bounded implementation, fixtures or component delivery exist; original-task completion is partial or not yet reconciled. |
+| Recorded acceptance dispositions | **12** | Eleven historical ACCEPTED records plus the implementation owner's explicit original FE08 acceptance. |
+| Additional task-local criteria satisfied | **10** | Nine existing frontend dispositions plus original BE25; no new king/SL technical sign-off. |
+| Other implementation evidence | **75** | Bounded implementation, fixtures or component delivery exist; original-task completion is partial or not yet reconciled. |
 | Status not yet reconciled | **10** | Insufficient current per-task disposition in this reconciliation; not assumed unstarted. |
 | Open integrated-product/release gates | **5** | IN01–IN05 have no completed gate receipt in the current reports. |
 | **Required total** | **112** | Every original required ID appears once in the linked register. |
 
-There are **20 recorded task-criteria outcomes** (11 formal acceptances plus 9 additional frontend task-local dispositions), **not only 11 tasks with implementation**. This is not a claim that 20 tasks were newly accepted today, nor an effort-weighted completion percentage. The 77 evidence-bearing tasks are not silently counted as complete. A completed worker goal, a new commit, a test count or an assistance artifact adds no original task IDs.
+There are **22 recorded task-criteria outcomes** (12 recorded acceptance dispositions plus 10 additional task-local dispositions), **not only 11 tasks with implementation**. The latest two closures are original **FE08** and **BE25**, explicitly reported by their implementation owners and deduplicated against the previous 20. This is not a claim that 22 tasks were newly accepted today, nor an effort-weighted completion percentage. The 75 evidence-bearing tasks are not silently counted as complete. A completed worker goal, a new commit, a test count or an assistance artifact adds no original task IDs.
 
 The [112-row task register](task-progress-2026-11-04.json) records each original ID, its evidence pointers and the distinction above. Its null states mean unreconciled completion, not NOT_STARTED. No current full-product completion percentage is asserted.
 
-### Additional task-local dispositions now reflected
+### Completion dispositions reconciled from owner records
 
 [Specification section 12](../../MCR_IMPLEMENTATION_PLAN_V2_EN.md#12-frontend-implementation-tasks) permits frontend contract fixtures and deliberately does not make corresponding backend implementation a prerequisite. Live integration requirements remain in their own tasks/gates. Pure helper/contract tasks likewise use their own original criteria, without an invented IN05 prerequisite.
 
@@ -29,15 +29,17 @@ The [112-row task register](task-progress-2026-11-04.json) records each original
 | **FE27, FE28** | Social SL's retained task-local fixture-complete dispositions and [Feed/thread delivery record](frontend/social-feed.md), with published `cf7836a`, `a413e69`, `5bc0055`, `b392f56`. Live Post/media/write authority and IN03 remain separate. |
 | **FE29, FE30** | Social SL's existing task-local criteria disposition and [introduction/profile record](frontend/introduction-profile.md), delivered through `a3bdb38`. Original author commits need not themselves be ancestors after recorded integration. Actual social/age/public-profile producers remain open. |
 | **FE40** | [Archive owner record](frontend/archive.md) explicitly records the complete assigned read-only feature and its task-local fixture criteria implemented. Real closure/publication/media and integrated-product acceptance are separate. |
+| **FE08** | The [Landing owner record](frontend/reference-public.md) explicitly declares original frontend criteria ACCEPTED in `0c76e427`, with required artwork `b01eb708` delivered. This is owner-declared task-local acceptance, not a new king/SL review. Production legal/contact content and its document-provider composition remain separate A07/BE38 dependencies. |
+| **BE25** | The policy implementation owner reconciled the original pure-policy scope and reports no remaining criterion; the old goal is actually COMPLETE. Published `3810016a` and [combined qualification record](backend/intro-age-combined-qualification.md) support the disposition. A separate canonical-authority goal is ACTIVE; its provider/DB/RPC work does not keep original BE25 open. |
 
-This reconciliation does not overwrite these records with new formal ACCEPTED labels. Known follow-up requirements, including the later exact visual target, remain tracked even when the original task-local implementation criteria were met.
+This reconciliation preserves the owners' actual dispositions: FE08 is explicitly owner-declared ACCEPTED, while the other newly reconciled SATISFIED records are not relabeled as new formal acceptances. Known follow-up requirements, including the later exact visual target, remain tracked even when the original task-local implementation criteria were met.
 
 ## Current major feature delivery
 
 | Feature | Published or owner-reported delivery | Required remainder |
 | --- | --- | --- |
 | Selected characters and root integration | Canonical avatar persistence `b13d79e6`, participant increment `0313afa5`, whole editor `c3f411ad`, default-root character flow `9fc3a299` / `903773b8`, authorized portrait/media binding `9dacd962`. | Actual live identity/Profile/authority journeys, all original avatar capabilities, directional/walk/layered art and full device/visual acceptance. |
-| Ten-screen reference design | Auth refinement `08d1b1c0`, Landing `d5ec766d`, Map `f4b40808`, Gifts `9055af1e`, Profile/party/feed portrait delivery `9dacd962`; existing browser-fixture records are retained. | Required Auth/Landing print/glyph work is active. All ten screens still need the requested near-identical final design; fixture success is not complete visual acceptance. |
+| Ten-screen reference design | Auth refinement `08d1b1c0` and required artwork `1249430f`, Landing `d5ec766d` and artwork `b01eb708`, Map `f4b40808`, Gifts `9055af1e`, Profile/party/feed portrait delivery `9dacd962`; existing browser-fixture records are retained. | Auth and Landing owners report their required artwork increments delivered. Auth's original FE09 still has production refresh activation remaining; Landing's original FE08 task-local criteria are recorded complete. All ten screens still need the requested near-identical final design; fixture success is not complete visual acceptance. |
 | Three-era scenery and map | All three era inputs `02320134`, canonical Tiled/loader `aa3e2f3d`, World scene hook `969b3b2f` and Map consumer `4dc12a56` are published. World owner correction `482d02c4` identifies all four current scene targets as virtual concepts. | Root integration, final reference fidelity and actual art/theme/release admission remain open. These four virtual records do not establish a physical-venue-review prerequisite. Real physical-place qualification remains separate AR01/beacon/IN02 scope; no REVIEWED status or physical eligibility is invented. |
 | Feed and media product APIs | Feed groundwork `02b17e04`, owner media `84126f6a`, Product API transport `49fb637c`, platform authority checkpoint `ba64c62e`. | Actual durable canonical guards, Profile/producer composition, public HTTP and recovery/revocation journeys. Published transport does not establish enabled live Feed/media. |
 | Meet, Gifts and Wall | Retained community and mural kernels are delivered; reused developers have accepted isolated live-producer assignments. | Genuine public authority, root transport, party commands, reservation/pickup and multiuser mural flows. Newly assigned producers do not close the original feature tasks. |
@@ -50,7 +52,9 @@ This reconciliation does not overwrite these records with new formal ACCEPTED la
 
 Backend staffing/resources SL owns both existing target queues and actual handoffs. Current holders must come from live receipts, not old snapshots in this file. Frontend/art staffing belongs to the frontend king and its three SLs. Finished chats are reused only for ready disjoint scopes or archived with work and unfinished requirements preserved. No chat quota is imposed.
 
-Named future backlog ownership covers beacon/rally, age/introduction/mutual sharing, Feed mutations/comments, notifications, operations/moderation, closure/deletion and real-stack startup. These future assignments are not counted as active or complete. The planning exports remain untouched.
+The backend meeting-photo owner has accepted an isolated active assignment supporting original BE09/FE20; Social coordinates the frontend photo continuation. This is assignment progress, not task completion. Contract and fixture work can proceed independently of physical-venue live qualification.
+
+Named future backlog ownership covers the remaining beacon/rally scope, age/introduction/mutual sharing, Feed mutations/comments, notifications, operations/moderation, closure/deletion and real-stack startup. These future assignments are not counted as active or complete. The planning exports remain untouched.
 
 ## Historical task acceptance ledger
 

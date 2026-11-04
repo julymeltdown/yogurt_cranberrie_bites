@@ -1,0 +1,25 @@
+{
+  "kind": "Developer texture measurement, not visual acceptance",
+  "method": "Compare first material quadrant at same128x128 sampling; no geometry/different paving mask confound.",
+  "horizontal_adjacent_luminance_difference_mean": {
+    "v3_source": 21.760888287401574,
+    "new_v6_source": 7.5310654527559056
+  },
+  "relative_reduction": 0.6539173698568177,
+  "map_stage_representation": {
+    "published_v5": {
+      "width": 406,
+      "height": 292,
+      "center_x": 335,
+      "depth_y": 552
+    },
+    "new_candidate": {
+      "width": 300,
+      "height": 210,
+      "center_x": 335,
+      "depth_y": 373
+    }
+  },
+  "new_geometry_hash": "sha256:899aca9bd6ce499c6f46aff5eaf21e30ab34b301e988771b978a6fab7c2d469f",
+  "limits": "Texture metric and diagram size deltas are not a reference-match score."
+}

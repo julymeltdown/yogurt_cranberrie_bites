@@ -3,8 +3,9 @@
 ## Current checkpoint
 
 The [current progress reconciliation](progress.md#current-task-accounting) records
-20 task-criteria outcomes: 11 preserved formal acceptances plus 9 additional
-existing frontend task-local SATISFIED dispositions. Another 77 original tasks
+22 task-criteria outcomes: 12 recorded acceptance dispositions plus 10 additional
+task-local SATISFIED dispositions. The latest owner-declared original-task closures
+are FE08 and BE25. Another 75 original tasks
 have partial or unreconciled implementation evidence, 10 statuses remain
 unreconciled, and all 5 IN gates remain open. The [112-row register](task-progress-2026-11-04.json)
 states the evidence and limitations. Historical 11/112 statements later in this
@@ -23,6 +24,8 @@ milestones and periodic commit/push progress; SLs track the broad feature pictur
 dependencies and staffing. Required scope and developer verification duties remain
 unchanged. Shared paths retain one explicit writer and physical build slots remain
 coordinated. A king receiving a review or verification request must decline: "I don't perform reviews. The responsible developer owns validation; please resolve this with the implementation owner." SLs likewise do not review code, queries or tests. No work waits for king or SL review. Staffing, priority, ownership conflicts and missing product decisions may still be escalated. See [current delivery policy](king-coordination.md).
+
+## Historical execution plan (superseded where noted above)
 
 Intake and assessment are delivered. Foundation implementation is active: reviewed source mapping, pinned frontend installation/build, imported Rust workspace build and source-origin/boundary guards are available. The [execution record](progress.md) separates accepted foundation tasks, implementation in progress and unrun runtime gates. The original planning exports remain unchanged.
 

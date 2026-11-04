@@ -1,0 +1,20 @@
+[
+  {
+    "upstream": "https://raw.githubusercontent.com/google/fonts/69d0549e8fc7ad72e1531734c81237be401ec4fd/ofl/robotocondensed/RobotoCondensed%5Bwght%5D.ttf",
+    "revision": "69d0549e8fc7ad72e1531734c81237be401ec4fd",
+    "path": "typography/RobotoCondensed-variable.ttf",
+    "sha256": "dace262afcee68a5276f200d8026c57221735c0118ab5fda8c2c0d3dc409a8d0",
+    "license": "typography/robotocondensed-OFL.txt",
+    "licenseSha256": "0e4cc6ece88573545be2ed25835363662a6182ba4a4c1b5c8feda52add30e8a6",
+    "licenseType": "SIL OFL 1.1",
+    "upstreamCopyright": "Copyright 2011 Google Inc. All Rights Reserved.",
+    "derivative": {
+      "path": "typography/mcr-auth-print.woff",
+      "sha256": "cb8969bdfb81ea7cb9e5d4b2d3918a84ae41adae5a4ab89986887f51455acf63",
+      "family": "MCR Auth Print",
+      "changes": "800 weight; Latin subset; width .86; original I cap/foot terminals; deterministic subpixel ink-edge roughness; unique font family; fixed timestamps",
+      "generator": "typography/build-print.py",
+      "license": "SIL OFL 1.1"
+    }
+  }
+]
