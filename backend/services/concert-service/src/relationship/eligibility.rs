@@ -160,9 +160,13 @@ impl<A: FencedRelationshipAuthority, V: SharingVerifierStatus> SocialEligibility
                 return Err(RelationshipError::Denied);
             }
         }
-        let intro=sqlx::query("select owner_id,revision,state,minimum_age,maximum_age_exclusive,expires_at from public.concert_intros where event_id=$1 and intro_id=$2 for share")
+        let intro=sqlx::query("select owner_id,revision,state,minimum_age,maximum_age_exclusive,expires_at,created_at from public.concert_intros where event_id=$1 and intro_id=$2 for share")
             .bind(sharing.event.uuid()).bind(sharing.intro_id).fetch_optional(&mut *c).await.map_err(db)?.ok_or(RelationshipError::Denied)?;
-        if intro.try_get::<uuid::Uuid, _>("owner_id").map_err(db)? != sharing.recipient.uuid()
+        if intro
+            .try_get::<DateTime<Utc>, _>("created_at")
+            .map_err(db)?
+            > now
+            || intro.try_get::<uuid::Uuid, _>("owner_id").map_err(db)? != sharing.recipient.uuid()
             || intro.try_get::<i64, _>("revision").map_err(db)? != sharing.intro_revision.get()
             || intro.try_get::<String, _>("state").map_err(db)? != "PUBLISHED"
         {
