@@ -48,7 +48,7 @@ pub(super) async fn pool(owner: &str) -> anyhow::Result<PgPool> {
     );
     let root = root()?;
     let name = if owner == "concert" {
-        "mcr_concert_cu01".to_owned()
+        "mcr_concert_cu".to_owned()
     } else {
         format!("mcr_canonical_{owner}")
     };

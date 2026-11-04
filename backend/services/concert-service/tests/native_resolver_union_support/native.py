@@ -10,6 +10,7 @@ import shutil
 import signal
 import subprocess
 import sys
+import threading
 import time
 
 ROOT = Path(__file__).resolve().parents[5]
@@ -20,7 +21,7 @@ from auth_invalidation_smoke import frozen_binary
 from invalidation_clients_smoke import pki
 
 CASE = "native::actual_producer_witnesses_dispatch_without_unknown_or_error_fallback"
-DATABASES = {"auth": "mcr_canonical_auth", "friend": "mcr_canonical_friend", "concert": "mcr_concert_cu01"}
+DATABASES = {"auth": "mcr_canonical_auth", "friend": "mcr_canonical_friend", "concert": "mcr_concert_cu"}
 
 def sha(path: Path) -> str:
     return hashlib.sha256(path.read_bytes()).hexdigest()
@@ -93,7 +94,25 @@ def qualify(args, report: dict) -> None:
         binary_sha256=checkpoint["binary_sha256"], owned_root=str(cluster.root),
         capacity={"hard_whole_bytes": args.hard_whole_bytes, "fixed_target_growth": args.fixed_target_growth,
                   "max_sampled_whole_additional": 0, "sampling_limit": "Sampled allocation; no peak between samples inferred"})
+    stop = threading.Event()
+    def capacity_signal(_signal, _frame):
+        raise SmokeError("capacity", "owned workflow allocation/floor observer stopped execution")
+    previous = signal.signal(signal.SIGUSR1, capacity_signal)
+    def observe():
+        while not stop.is_set():
+            try:
+                growth = allocated(cluster.root) + allocated(args.report.parent) + args.fixed_target_growth
+                report["capacity"]["max_sampled_whole_additional"] = max(report["capacity"]["max_sampled_whole_additional"], growth)
+                if growth > args.hard_whole_bytes or shutil.disk_usage(ROOT).free < 8 * 1024**3:
+                    raise RuntimeError("whole workflow resource boundary")
+            except Exception as error:
+                report["capacity"]["observer_failure"] = str(error)
+                os.kill(os.getpid(), signal.SIGUSR1)
+                return
+            stop.wait(.1)
+    observer = threading.Thread(target=observe, daemon=True)
     try:
+        observer.start()
         cluster.init()
         with (cluster.data / "postgresql.conf").open("a") as stream:
             stream.write("\nmax_prepared_transactions=128\n")
@@ -126,6 +145,9 @@ def qualify(args, report: dict) -> None:
             raise SmokeError("provenance", "source or frozen binary drifted")
         report["status"] = "PASS"
     finally:
+        stop.set()
+        observer.join(timeout=3)
+        signal.signal(signal.SIGUSR1, previous)
         cluster.cleanup()
         report["cleanup"] = {"status": "PASS", "owned_root_absent": not cluster.root.exists(),
             "certifies_native_settlement": False, "boundary": "Expected negative fences removed only with whole disposable cluster"}

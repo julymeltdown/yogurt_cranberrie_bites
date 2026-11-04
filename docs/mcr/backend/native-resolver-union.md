@@ -106,3 +106,14 @@ processes before ending the allocation; PostgreSQL was NOT_RUN. Retained target
 growth was 81,723,392 bytes. A preceding private monitor preflight falsely
 matched `.cargo` in unrelated process environments and started no build; its
 failure receipt is retained, and the corrected monitor checks executable names.
+
+Source `45a2c8ca61fd428004098c640158dcfda15e7568` compiled at exit 0 in
+2.013 seconds under `CU01-MEDIA3-202611040640Z`. The frozen executable SHA256
+was `7518e88861c0a251c34d334cc20c358ffc8e62f17c9ab0c773c9840de56eb52c`.
+Target release proved zero handles/processes before PostgreSQL. The controller
+then stopped before any test: its database `mcr_concert_cu01` violated the retained
+cluster helper's letters/underscore-only namespace policy. The earlier diagnosis
+that `client_env(postgres)` caused this refusal was incorrect; that helper call
+is valid. The follow-up uses `mcr_concert_cu`, without broadening the retained
+cluster policy. Whole-owned cluster cleanup passed and its root is absent.
+Neither route tests nor native qualification receive credit from this run.

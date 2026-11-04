@@ -32,7 +32,8 @@
     "Ledger exposed only inside test fixture",
     "Participant capture adapts pinned Product capture to actual Participant protobuf/policy",
     "Producer fixtures use actual canonical guards and production witness writers; initial identities and selected avatar rows are test setup only",
-    "Copied owner helper capture import aliases the CU01 product_capture module"
+    "Copied owner helper capture import aliases the CU01 product_capture module",
+    "Owned PG helper admits letters and underscores only; native fixture uses mcr_concert_cu (constructor-only lazy URL remains nonconnecting cu01)"
   ],
   "external_dependencies": "Existing retained Cargo workspace only; no new manifest/lockfile dependency"
 }
