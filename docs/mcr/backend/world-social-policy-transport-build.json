@@ -1,0 +1,186 @@
+{
+  "status": "IN_PROGRESS",
+  "qualified_boundary": "Configured World transport and synthetic-authority loopback boundary only; no canonical Social source or production main activation.",
+  "source_commit": "d36382c1aef212ea4339a17c5c7e56afcbbde07f",
+  "transport_source_commit": "27658acc",
+  "source_freeze_files": 3686,
+  "full_source_runtime_copy_sha256_verified": true,
+  "commands": [
+    [
+      "cargo",
+      "+1.88.0",
+      "test",
+      "--manifest-path",
+      "backend/Cargo.toml",
+      "--locked",
+      "--offline",
+      "-j",
+      "2",
+      "--config",
+      "profile.dev.package.contracts-build.opt-level=2",
+      "-p",
+      "concert-service",
+      "--lib",
+      "--no-run",
+      "--message-format=json"
+    ],
+    [
+      "cargo",
+      "+1.88.0",
+      "test",
+      "--manifest-path",
+      "backend/Cargo.toml",
+      "--locked",
+      "--offline",
+      "-j",
+      "2",
+      "--config",
+      "profile.dev.package.contracts-build.opt-level=2",
+      "-p",
+      "concert-service",
+      "--test",
+      "world_ws",
+      "--no-run",
+      "--message-format=json"
+    ]
+  ],
+  "build_results": [
+    {
+      "abort": null,
+      "argv": [
+        "cargo",
+        "+1.88.0",
+        "test",
+        "--manifest-path",
+        "backend/Cargo.toml",
+        "--locked",
+        "--offline",
+        "-j",
+        "2",
+        "--config",
+        "profile.dev.package.contracts-build.opt-level=2",
+        "-p",
+        "concert-service",
+        "--lib",
+        "--no-run",
+        "--message-format=json"
+      ],
+      "elapsed_seconds": 56.76004795799963,
+      "exit_code": 0,
+      "maximum_whole_bytes": 2905239552,
+      "minimum_free_bytes": 20832350208,
+      "source_commit": "d36382c1aef212ea4339a17c5c7e56afcbbde07f"
+    },
+    {
+      "abort": null,
+      "argv": [
+        "cargo",
+        "+1.88.0",
+        "test",
+        "--manifest-path",
+        "backend/Cargo.toml",
+        "--locked",
+        "--offline",
+        "-j",
+        "2",
+        "--config",
+        "profile.dev.package.contracts-build.opt-level=2",
+        "-p",
+        "concert-service",
+        "--test",
+        "world_ws",
+        "--no-run",
+        "--message-format=json"
+      ],
+      "elapsed_seconds": 23.675569542014273,
+      "exit_code": 0,
+      "maximum_whole_bytes": 3212181504,
+      "minimum_free_bytes": 20623790080,
+      "source_commit": "d36382c1aef212ea4339a17c5c7e56afcbbde07f"
+    }
+  ],
+  "artifacts": {
+    "concert-lib": {
+      "name": "concert-lib-tests",
+      "bytes": 97793024,
+      "sha256": "52b68910fbe14ae9fbf2503d1d7df06c8b6e8f277dc87239a415a1214ed2b870"
+    },
+    "world_ws": {
+      "name": "world_ws-tests",
+      "bytes": 39884640,
+      "sha256": "7865c7eba147cdeac5045dbd14f1e4ff356bb0faee5fb143577db22df456f489"
+    }
+  },
+  "copied_tests": {
+    "results": [
+      {
+        "abort": null,
+        "argv": [
+          "/private/var/folders/j4/41h_5mjj7j9d8f2j2bzcsngw0000gn/T/mcr-root-world-policy-tyfqvibw/concert-lib-tests",
+          "world_ws::policy::tests",
+          "--test-threads=1"
+        ],
+        "elapsed_seconds": 0.9329689999867696,
+        "exit_code": 0,
+        "name": "concert-lib"
+      },
+      {
+        "abort": null,
+        "argv": [
+          "/private/var/folders/j4/41h_5mjj7j9d8f2j2bzcsngw0000gn/T/mcr-root-world-policy-tyfqvibw/world_ws-tests",
+          "--test-threads=1"
+        ],
+        "elapsed_seconds": 9.214709416992264,
+        "exit_code": 0,
+        "name": "world_ws"
+      }
+    ],
+    "sampled_maximum_whole_bytes": 3249459200,
+    "sampled_minimum_free_bytes": 20452663296,
+    "source_commit": "d36382c1aef212ea4339a17c5c7e56afcbbde07f"
+  },
+  "counts": {
+    "policy_unit_passed": 4,
+    "world_loopback_passed": 18,
+    "existing_pg_cases_ignored": 4,
+    "failed": 0
+  },
+  "release": {
+    "state": "FULLY_RELEASED",
+    "offer": "ROOT-WORLD-POLICY-BACKEND-202611041128Z",
+    "source_commit": "d36382c1aef212ea4339a17c5c7e56afcbbde07f",
+    "released_at": 1793791939.2471712,
+    "elapsed_from_accept_seconds": 182.12363123893738,
+    "elapsed_from_target_release_seconds": 67.05587410926819,
+    "source_freeze_files": 3686,
+    "evidence_open_handles": 0,
+    "owned_build_and_test_groups_absent": true,
+    "tmp_removed": true,
+    "pg_created": false,
+    "explicit_mains_run": false,
+    "native_resources": "only copied World loopback tests; no remaining owned test process/listener",
+    "target_access_after_release": "NONE",
+    "fixed_target_growth_bytes": 575123456,
+    "whole_allocated_upper_bound_including_receipt_reserve": 3249467392,
+    "free_bytes_at_full_release": 20452491264
+  },
+  "evidence_sha256": {
+    "offer-acceptance.json": "9f5621635a7827d40596a19155fb002a128ee3a270afcb0c714362604226efed",
+    "source-freeze-receipt.json": "6abc9024a11c6f71f6acb3275e34e87bb18e46e9b35715160215613f8b567242",
+    "source-pins.json": "3f3dc5946c7d91d8a0fca3b7fb02006bcbd8319590abe89d8d212762e7dc12b4",
+    "checkpoint.json": "bebe71ec917727aba09fd3d6a008be30b457eca0283485b91a3fca6a84421279",
+    "concert-lib-build-receipt.json": "20c36567d439375cdf42aa07c5006d2d39336c17a7e64a3fd0392772d3c30da8",
+    "world_ws-build-receipt.json": "3dcd88aa05afd95e4bdaa6e7ed91a7a11290f43dfcc736b702d61a9ea7f98813",
+    "target-release.json": "c289897cb24fb47c8908eb94bb8e2007fcf5f4f470fbfc62dbc2be9171b4d232",
+    "test-results.json": "c686d7aae57f75a55e0cd2d056f590a7747bfa5c2e043f267d934cdfbda0833b",
+    "concert-lib-tests.log": "f6541456a27868b5659799c50c2ca1efeb1682518e476a0b96014cbe46af2505",
+    "world_ws-tests.log": "b069b7c43208c7ed41cc1b1375d670165063b2a196a22b2e36e12ffd223bbcf3",
+    "full-release.json": "98f82a8115e83144f651818b3b6f1a8d8dbe0c8379939ac473304c4261c26178"
+  },
+  "limitations": [
+    "Authority/guard ports in these native socket cases are synthetic, not deployed Auth/Social.",
+    "Canonical sealed Social source adapter and actual World startup binding remain pending.",
+    "Publisher invalidation-to-native-socket/HTTP/cache withdrawal and original IN03 remain NOT_RUN.",
+    "No PostgreSQL, explicit production main, browser, installed dependency or peer executable was run in this round."
+  ]
+}

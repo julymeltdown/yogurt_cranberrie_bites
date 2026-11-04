@@ -1,7 +1,9 @@
 # World transport for Social policy metadata
 
-Status: IN_PROGRESS. Source authored; compilation, unit tests and native socket
-tests are NOT_RUN for this revision. Public IN03 remains NOT_RUN.
+Status: IN_PROGRESS. Configured transport compilation, four policy unit cases
+and 18 synthetic-authority native loopback cases PASS at source
+`d36382c1aef212ea4339a17c5c7e56afcbbde07f`. Four existing PostgreSQL cases were
+explicitly ignored. Canonical Social composition and public IN03 remain NOT_RUN.
 
 This Root-owned transport implements `SOCIAL_POLICY_V1` from contract commit
 `930380deed5c47b4c9eed920a8d9352278f0e90e` on the existing World socket. It adds
@@ -29,11 +31,11 @@ and invoking the incumbent close path. There is no intermediate application
 queue to mistake for delivery. No-active-stream acknowledgement is safe only
 with the held-baseline reconnect path.
 
-Four authored unit cases cover commit/snapshot ordering, invalidation crossing
-arm, old/duplicate signals, failed guards and unsafe revisions. Two authored
+Four passing unit cases cover commit/snapshot ordering, invalidation crossing
+arm, old/duplicate signals, failed guards and unsafe revisions. Two passing new
 loopback socket cases cover baseline ordering on the same socket and independent
 World movement when guard commit fails. Their authority is explicitly synthetic;
-even a passing run will not certify durable Social source or public IN03.
+these passing cases do not certify durable Social source or public IN03.
 
 Pending required integration: adapt the original Social owner's sealed signal
 and `BaselineGuard` (candidate source `cbc1bbce`, documentation `0372e00b`) after
@@ -43,6 +45,18 @@ durable-source HTTP/WS withdrawal and original frontend IN03. None is implied
 by the transport source. Explicit public service availability is also pending;
 a World flag or policy baseline is never its replacement.
 
-Formatting and scoped `git diff --check` passed. Rust compilation/test commands
-require a fresh bounded allocation before execution. No Cargo target, PostgreSQL,
-native listener or browser was used while authoring this checkpoint.
+Formatting and scoped `git diff --check` passed. The accepted
+`ROOT-WORLD-POLICY-BACKEND-202611041128Z` round used Rust 1.88, locked/offline,
+`-j 2`, debug zero and incremental disabled. Both `concert-service --lib` and
+`--test world_ws` no-run selections passed. All 3,686 source/runtime files were
+copied and hash-verified; exactly two ordinary Cargo-JSON executables were copied.
+The target was released with zero handles before any copied tests. Copied test
+commands passed in 0.933 and 9.215 seconds; the loopback suite reports 18 passed
+and four PostgreSQL cases ignored. All resources were released 182.124 seconds
+after acceptance, 67.056 seconds after target release. No target access followed
+release. No PostgreSQL or explicit production main was run.
+
+See `world-social-policy-transport-build.json` for exact commands, executable and
+evidence hashes, sampled resource measurements and the final allocation bound.
+Actual production World startup still supplies no canonical policy port; this
+checkpoint does not claim that a deployed Social baseline is emitted.
