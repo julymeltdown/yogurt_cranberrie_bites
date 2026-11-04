@@ -1,8 +1,9 @@
 # BE42 PrivateData aggregate coordinator
 
-Status: **SOURCE IN PROGRESS; CURRENT NATIVE NOT_RUN**. The current committed
-owner pin is `a9a6bf2d2`, which carries the `d6b2ea271` guard correction. The
-qualified core leaf remains a separate published component. This coordinator
+Status: **SOURCE IN PROGRESS; CURRENT TWO-PHASE NATIVE PASS**. The current source
+pin is `160b31909`, with this documentation committed at `f83022b4f`. It carries
+the `d6b2ea271` guard correction and current evidence update. The qualified
+core leaf remains a separate published component. This coordinator
 makes its success one category of a closed Concert target and withholds whole
 PrivateData acknowledgement until every required category has an exact durable
 owner receipt.
@@ -105,16 +106,18 @@ coordinator, reads those six incompletes, and replays without rerunning core.
 It then applies one guarded missing-to-complete transition and requires five
 remaining incompletes, no whole ACK, and an unchanged core fence. The test
 postimage is
-`db4d6195b38ed65370d4163e3307e577cae4ac39a7ad6ec9c7340a71c52fdb36`;
-this corrected restart sequence is **NOT_RUN** and inherits no native result.
+`db4d6195b38ed65370d4163e3307e577cae4ac39a7ad6ec9c7340a71c52fdb36`.
+The current sequence passed against the PostgreSQL 16 fixture described below.
 
 The same native fixture now includes a cancellation witness. A test-only owner
 opens a real transaction, writes a sentinel, and waits beyond the coordinator's
 original deadline. The test requires `Unavailable`, no terminal owner or whole
 receipt, a rolled-back sentinel, and only the real core category remaining
 complete. It runs only in the first process before a second process projects the
-durable restart state. This cancellation case is **NOT_RUN** on the current
-source.
+durable restart state. This cancellation case passed on the current source: the
+primary user retained one Core completion, the distinct cancellation user
+retained one Core completion with no terminal probe row, and the aggregate
+remained unacknowledged.
 
 A missing core owner returns `Unavailable`; a missing non-core owner remains
 retryable `Incomplete`. No empty registry or synthetic category receipt can
@@ -158,8 +161,8 @@ to frozen executable
 `5448a70c0d41a7af6713ec02a1891ffee9f911ceeadac3c0cca0b19f58eb416b`
 and does not qualify the current source.
 
-The current source `a9a6bf2d2` has passed the 11 pure source tests from its
-preceding frozen executable. Its native test has not passed. A first actual
+The current source `160b31909` has passed the 11 pure source tests from its
+preceding frozen executable. A first actual
 PostgreSQL attempt on `e34d1c8ae` exposed that the category guard accepted a
 terminal timestamp on an `INCOMPLETE` row. The guard now rejects both terminal
 time rewrites and non-null terminal time on incomplete rows. Its evidence is
@@ -194,7 +197,51 @@ outside the shared target and released directly to Age before documentation:
 13,222,096 bytes. The target grew 13,254,656 bytes and finished at
 19,128,852,480 bytes. Compilers, readers, PostgreSQL processes, services and
 owned children were all zero at release. This is compile and freeze evidence
-only; the executable has not run, so native qualification remains **NOT_RUN**.
+only; it does not itself establish native qualification.
+
+After the 1955 compile-only result released the target, the allocator issued
+`PRIVATE-DATA-TWO-PHASE-NATIVE-20261104T2015Z` as a fresh native-only successor.
+Both admission guards passed before PostgreSQL started: the independent guard
+reported source `160b31909`, a 19,691,917,312-byte free-space baseline, zero
+compiler and native processes, and zero target handles. The controller reported
+the exact source, frozen executable and runner pins, with 256 MiB for PostgreSQL,
+48 native processes, 4 GiB native RSS, 240 seconds of work, 360 seconds through
+the FULL receipt and 120 seconds for cleanup. The target and compiler limits
+were zero for this round.
+
+The corrected runner SHA-256 is
+`b4ff9016089f64fde4ea10d3665fca3828d121e2a1fdd45d8650ae3cb712a285`.
+The first run used its predecessor and passed both test processes, but its final
+ad hoc SQL dump was not scoped to a user and doubled the primary user's Core row
+with the cancellation user's Core row. The test assertions themselves used
+user `4200`, but the dump was ambiguous evidence. It is preserved at
+`native-pass-2005-run1` and `native-current-unscoped-dump-preserved`; it is not
+used for the final current result. The corrected runner queries main user
+`00000000-0000-0000-0000-000000001068` and cancellation user
+`00000000-0000-0000-0000-00000000106a` separately.
+
+The fresh corrected run used frozen executable
+`7f760f8049cdcf8b85507f3baea61cd7554e6b8f7a570c557434333d6e6ef6e4`
+(13,222,096 bytes), source `160b31909f368b12463b310bb699c2440dab8e51`,
+and one owned PostgreSQL 16 database `mcr_private_data_aggregate`. Both
+processes exited `0`; each log reports one passed native test. After the
+physical server restart, the primary user's exact rows were Core `COMPLETE`
+plus five `INCOMPLETE` categories (`AGE_CLAIMS`, `MEDIA_AND_MEETING_PHOTOS`,
+`BEACONS_AND_RALLY`, `PARTY_AND_GIFT_INPUT`, and `MURAL_PRIVATE_METADATA`),
+with cursor `7`, no aggregate ACK, Core `COMPLETE`, and exactly one Core fence.
+The first process also proved the Core category earlier; the controlled test
+owner made `INTRO_TEXT` terminal in the restart process. The cancellation user
+had one Core completion, no ACK, and no probe row. PostgreSQL was stopped and
+its owned data root removed at `2026-11-04T20:11:25.593840Z`. The runner ended
+at `2026-11-04T20:11:25.594091Z`, with no remaining compiler, native or owned
+PostgreSQL process.
+
+Raw first-phase and restarted-phase logs, exact exit files, the PostgreSQL
+startup/restart/cleanup records, source and executable pins, and the corrected
+SQL result are under `native-current`. This result qualifies this coordinator's
+two-phase durable protocol on the frozen fixture. It does not supply six real
+production owner effects, canonical Auth-to-Concert transport, combined serving
+composition or whole BE42 acceptance.
 
 The owned evidence is under
 `/Users/lhs/Desktop/mcr-evidence/be42-private-data-aggregate-rebased-202611041802Z`
@@ -223,10 +270,10 @@ does not simulate successful non-core owners. Whole PrivateData remains
 Intro, age, media, beacon/rally, Party/Gift and Mural production owners remain
 unintegrated here. The earlier native result on `04a51b2b` remains bound only
 to that executable and fixture sequence. The current restart-order, cursor and
-other-user negatives are **NOT_RUN** on `a9a6bf2d2` pending a fresh named
-allocation; the source-level changes do not inherit the earlier result. The
-latest attempt also confirms that the SQL guard correction must be exercised
-with a new executable rather than inferred from a migration-only source edit.
+other-user negatives passed on source `160b31909` and frozen executable
+`7f760f80`; the result does not inherit from the earlier executable. The
+earlier SQL-guard failures remain preserved, and the corrected fixture was run
+rather than inferred from a migration-only source edit.
 Publication and the complete multiuser target remain separate Root and
 provider-owner handoffs.
 
