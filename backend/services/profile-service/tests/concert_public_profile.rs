@@ -551,13 +551,35 @@ async fn native_original_budget_bounds_owner_lock_wait_and_recovers() -> anyhow:
     allocate(&mut m);
     m.expires_unix_micros = chrono::Utc::now().timestamp_micros() + 100_000;
     let start = std::time::Instant::now();
-    let e = call(&mut s, m).await.unwrap_err();
+    let e = call(&mut s, m.clone()).await.unwrap_err();
     assert!(matches!(
         e.code(),
         Code::Unavailable | Code::DeadlineExceeded
     ));
     assert!(start.elapsed() < Duration::from_millis(800));
     blocked.rollback().await?;
+    // This actual owner attempt registered its native XID before waiting for
+    // the row lock, then expired before PREPARE. Recovery needs its receipt,
+    // not a fabricated empty-GID success or a new data-read budget.
+    let intent = Reply {
+        child_id: m.child_id.clone(),
+        completion_secret: m.completion_secret.clone(),
+        ..Default::default()
+    };
+    let until = tokio::time::Instant::now() + Duration::from_secs(2);
+    loop {
+        if finish(&mut s, &m, &intent).await.is_ok() {
+            break;
+        }
+        assert!(tokio::time::Instant::now() < until);
+        tokio::time::sleep(Duration::from_millis(5)).await;
+    }
+    let state: String =
+        sqlx::query_scalar("select state from concert_public_profile_children where child_id=$1")
+            .bind(&m.child_id)
+            .fetch_one(&pool)
+            .await?;
+    assert_eq!(state, "SETTLED");
     let mut m = message(Uuid::new_v4());
     m.subject_id = subject.to_string();
     allocate(&mut m);
