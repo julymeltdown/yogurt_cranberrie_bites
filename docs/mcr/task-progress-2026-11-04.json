@@ -1,22 +1,22 @@
 {
-  "updated_at": "2026-11-04T10:55:41+09:00",
-  "published_snapshot": "047d892cc6ad5eec6125322b84cf1efc2380078f",
+  "updated_at": "2026-11-04T11:27:19+09:00",
+  "published_snapshot": "980fc4d85020f297b36fee8195e1ca92079ff33f",
   "method": "Management reconciliation of published task dispositions and existing developer/SL receipts; no code/query/visual/test inspection or reruns. Publication ancestry only was checked for task-linked delivery commits.",
   "required_tasks": 112,
   "required_ia_entries": 61,
   "optional_tasks_excluded": 6,
   "counts": {
     "RECORDED_ACCEPTED": 12,
-    "IMPLEMENTATION_EVIDENCED": 67,
+    "IMPLEMENTATION_EVIDENCED": 65,
     "UNRECONCILED": 9,
-    "TASK_CRITERIA_SATISFIED": 19,
+    "TASK_CRITERIA_SATISFIED": 21,
     "OPEN_INTEGRATION_GATE": 5
   },
-  "recorded_task_criteria_outcomes": 31,
+  "recorded_task_criteria_outcomes": 33,
   "implementation_percentage": null,
   "limitations": [
-    "12 recorded ACCEPTED dispositions comprise 11 preserved historical records plus the explicit FE08 implementation-owner acceptance. Another 19 original-task criteria closures preserve the owners' exact dispositions, including FE15 INTEGRATED; no new king/SL technical acceptance is asserted.",
-    "67 denotes other evidence-bearing tasks, not 67 complete tasks or a completion percentage. Some may be ready for an existing owner disposition to close them.",
+    "12 recorded ACCEPTED dispositions comprise 11 preserved historical records plus the explicit FE08 implementation-owner acceptance. Another 21 original-task criteria closures preserve the owners' exact dispositions, including FE07 and FE15 INTEGRATED; no new king/SL technical acceptance is asserted.",
+    "65 denotes other evidence-bearing tasks, not 65 complete tasks or a completion percentage. Some may be ready for an existing owner disposition to close them.",
     "9 unreconciled task statuses are not assumed NOT_STARTED.",
     "No IN01-IN05 completion or full 61-entry IA acceptance is established.",
     "Feature and visual follow-ups remain required even where an original bounded task has a historical completion record."
@@ -300,12 +300,16 @@
       "id": "BE12",
       "title": "Authoritative movement loop",
       "lane": "BE-CONCERT",
-      "coverage_bucket": "IMPLEMENTATION_EVIDENCED",
-      "recorded_state": null,
+      "coverage_bucket": "TASK_CRITERIA_SATISFIED",
+      "recorded_state": "CONTRACT_READY",
       "evidence": [
         "docs/mcr/backend/world-simulation.md"
       ],
-      "note": "Published receipt or owner report records bounded implementation/fixture/component work. Whole original-task completion is partial or not yet reconciled; no additional live/device gate is imposed on a pure task."
+      "note": "Current World implementation owner explicitly reconciles original BE12 authoritative movement criteria as SATISFIED: fixed-step normalized movement, speed limits, collision/spawn/range and the original negative cases are covered by the retained 26 native deterministic regressions. Published motion 2d3faaa6 is unchanged per that owner. The historical document labels its component CONTRACT_READY and excludes full BE12/IN01 acceptance; this later management reconciliation uses the owner's explicit original-task disposition without converting it to formal ACCEPTED or adding public HTTP/WS as a pure-loop prerequisite.",
+      "known_followup": "Actual public movement, two-client delivery, new FE17 movement-profile/apply-timing contracts and IN01 remain with their separate implementation owners. BE10/BE11 whole-task dispositions and BE13/BE14 recipient/revocation flows are not inferred from BE12.",
+      "published_integration_commits": [
+        "2d3faaa6e07e0ccce0ad23682cc9aff1b7bd633f"
+      ]
     },
     {
       "id": "BE13",
@@ -724,13 +728,19 @@
       "id": "FE07",
       "title": "Persistent world shell and routes",
       "lane": "FE-APP",
-      "coverage_bucket": "IMPLEMENTATION_EVIDENCED",
-      "recorded_state": null,
+      "coverage_bucket": "TASK_CRITERIA_SATISFIED",
+      "recorded_state": "INTEGRATED",
       "evidence": [
-        "docs/mcr/frontend/reference-root.md",
-        "docs/mcr/frontend/reference-scene-root.md"
+        "docs/mcr/frontend/world-shell.md",
+        "docs/mcr/frontend/fe07-shell-journey.md"
       ],
-      "note": "Published 10784b26 satisfies the current persistent-shell criterion. Whole original six-tab/history/deep-link criteria still need an explicit owner reconciliation; this criterion-only receipt does not close FE07. No backend/device gate is invented."
+      "note": "Implementation owner explicitly declares whole original FE07 client criteria SATISFIED at INTEGRATED. The actual browser router, canonical client Auth ownership and default Phaser composition qualify the full shell/history/direct-gift journey at pinned candidate 8cd20466. Source/evidence and final publication receipt are in master; integrator reports all 24 payload pins preserved. No new king/SL technical validation or formal ACCEPTED relabeling. Final owner receipt confirms the same goal COMPLETE, fresh null, clean STOP and all assigned ownership returned.",
+      "known_followup": "Live backend/cookies/two-user delivery, physical devices, production art admission and IN/release requirements remain separate. The historical Meet test readiness repair has a separate source owner; it does not make the completed FE07 browser journey a new whole-product gate. Current goal closure/null/clean STOP and returned ownership are verified by the owner; World SL is the sole next QA06 allocator, and dispatch alone will not establish startup.",
+      "published_integration_commits": [
+        "19ad4ca0e17e4b93ce0f9219e918d15b372950f0",
+        "59de1ac9547ccd22a94bea8e8f224fe16a8c4eeb",
+        "629a9f840a819d1ffa8679a95ce50ae9a81db868"
+      ]
     },
     {
       "id": "FE08",
@@ -1425,6 +1435,20 @@
       "owner_chat": "01a1a230-6acc-7e82-9e4b-92506decc745",
       "receipt_commit": "ced8ec124a3c9fb3443a2bc69d69055d64a6fd7b",
       "disposition": "SATISFIED at task-local MOCK_READY; original accessibility/input criteria explicitly closed by implementation owner, published artifact 41f7c64c and receipt ced8ec12, actual goal COMPLETE then null/clean STOP and ownership returned. Separate live/device/release limits preserved."
+    },
+    {
+      "recorded_at": "2026-11-04T11:24:24+09:00",
+      "task": "BE12",
+      "owner_chat": "01a1a20f-8d37-71c3-a429-8a55bb6d6c49",
+      "receipt_commit": "2d3faaa6e07e0ccce0ad23682cc9aff1b7bd633f",
+      "disposition": "Current World owner explicitly declares original BE12 movement-loop criteria SATISFIED, retaining CONTRACT_READY evidence and 26 native deterministic cases. Publication ancestry confirmed; historical full-task caveat reconciled against original pure-loop scope. No king/SL technical review or public two-client/IN01 closure."
+    },
+    {
+      "recorded_at": "2026-11-04T11:27:19+09:00",
+      "task": "FE07",
+      "owner_chat": "01a1a1fe-1ab7-79b0-adbc-d4c025701acb",
+      "receipt_commit": "629a9f840a819d1ffa8679a95ce50ae9a81db868",
+      "disposition": "Whole original FE07 client criteria explicitly SATISFIED at INTEGRATED. Source/evidence map from009327ca/c19ad5b1 to19ad4ca0/59de1ac9; final receipt629a9f84 and integrator-confirmed master980fc4d8 preserve24payloadpins. Separate live/device/production/IN limits retained; no manager review. Same goal COMPLETE then fresh null/clean STOP and all owned leases returned confirmed by the final implementation-owner receipt."
     }
   ]
 }
