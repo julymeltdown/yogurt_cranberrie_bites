@@ -20,7 +20,7 @@ use crate::{
         commands::BlockCommand,
         eligibility::{PgSocialEligibility, SharingVerifierStatus, VerifierStatus},
         social::{SocialEffect, SocialService, SocialTransactionHooks},
-        PgRelationshipPolicy,
+        FencedRelationshipAuthority, PgRelationshipPolicy,
     },
 };
 use chrono::{DateTime, SecondsFormat, Utc};
@@ -33,7 +33,10 @@ use prost::Message;
 use serde_json::{json, Value};
 use sha2::{Digest, Sha256};
 use sqlx::{PgConnection, PgPool, Row};
-use std::sync::Arc;
+use std::sync::{
+    atomic::{AtomicBool, Ordering},
+    Arc,
+};
 use tonic::Status;
 use uuid::Uuid;
 
@@ -128,7 +131,9 @@ impl SocialRuntime {
             _ => None,
         };
         let hooks = Arc::new(RuntimeHooks {
-            witness: SocialWitness::new(scope.clone(), input.key),
+            witness: Arc::new(SocialWitness::new(scope.clone(), input.key)),
+            write_gate: Arc::new(ReadOnlyGate::default()),
+            command_transaction: true,
             scope: scope.clone(),
             pool: self.pool.clone(),
             operation: op,
@@ -174,7 +179,7 @@ impl SocialRuntime {
                             &command_keys,
                         )
                         .await
-                        .map_err(command)?,
+                        .map_err(|error| hooks.command(error))?,
                 )
             }
             (SocialOperation::RemoveHandle(platform), SocialInput::Remove(expected)) => {
@@ -188,7 +193,7 @@ impl SocialRuntime {
                             &command_keys,
                         )
                         .await
-                        .map_err(command)?,
+                        .map_err(|error| hooks.command(error))?,
                 )
             }
             (SocialOperation::Create, SocialInput::Create(input)) => {
@@ -196,7 +201,7 @@ impl SocialRuntime {
                     service
                         .create(actor, input, key.ok_or_else(unavailable)?, &command_keys)
                         .await
-                        .map_err(command)?,
+                        .map_err(|error| hooks.command(error))?,
                 );
             }
             (SocialOperation::Decide(id), SocialInput::Decide(input)) => {
@@ -210,7 +215,7 @@ impl SocialRuntime {
                             &command_keys,
                         )
                         .await
-                        .map_err(command)?,
+                        .map_err(|error| hooks.command(error))?,
                 )
             }
             (SocialOperation::Cancel(id), SocialInput::Cancel(expected)) => {
@@ -224,7 +229,7 @@ impl SocialRuntime {
                             &command_keys,
                         )
                         .await
-                        .map_err(command)?,
+                        .map_err(|error| hooks.command(error))?,
                 )
             }
             (SocialOperation::Revoke(id), SocialInput::Revoke(expected)) => {
@@ -238,7 +243,7 @@ impl SocialRuntime {
                             &command_keys,
                         )
                         .await
-                        .map_err(command)?,
+                        .map_err(|error| hooks.command(error))?,
                 )
             }
             (
@@ -260,7 +265,8 @@ impl SocialRuntime {
                 let scope = Scope {
                     actor: context.actor(),
                     event: context.event(),
-                    operation: RegisteredOperation::find(op.id()).map_err(command)?,
+                    operation: RegisteredOperation::find(op.id())
+                        .map_err(|error| hooks.command(error))?,
                     key: key.ok_or_else(unavailable)?,
                 };
                 let event = context.event().to_string();
@@ -272,12 +278,12 @@ impl SocialRuntime {
                     &[],
                     if blocked { Some(&empty) } else { None },
                 )
-                .map_err(command)?;
+                .map_err(|error| hooks.command(error))?;
                 receipt = Some(
                     PgCommandRepository::new(self.pool.clone())
                         .execute(&request, id, &command_keys, &producer)
                         .await
-                        .map_err(command)?,
+                        .map_err(|error| hooks.command(error))?,
                 );
             }
             (SocialOperation::Requests | SocialOperation::Blocks, SocialInput::Page(page)) => {
@@ -295,6 +301,9 @@ impl SocialRuntime {
             return Err(unavailable());
         }
         let reference = receipt.reference.ok_or_else(unavailable)?;
+        // Projection is a new read transaction after the command commits.
+        // Do not classify post-command reads as new NORMAL commands.
+        let hooks = hooks.for_projection();
         let value = match op {
             SocialOperation::SetHandle(platform) | SocialOperation::RemoveHandle(platform) => {
                 self.handle_state(actor, platform, reference.revision, scope, hooks, op)
@@ -612,19 +621,7 @@ impl ScopedProductProducer for SocialRuntime {
         match self.execute(context, scope, request).await {
             Ok(value) => Ok(value),
             Err(error) => {
-                let (status, reason) = match error.code() {
-                    tonic::Code::InvalidArgument => (400, "INVALID_INPUT"),
-                    tonic::Code::PermissionDenied | tonic::Code::NotFound => {
-                        (404, "RESOURCE_UNAVAILABLE")
-                    }
-                    tonic::Code::Aborted => (409, "VERSION_CONFLICT"),
-                    tonic::Code::AlreadyExists => (409, "IDEMPOTENCY_CONFLICT"),
-                    tonic::Code::FailedPrecondition => (409, "INVALID_TRANSITION"),
-                    tonic::Code::OutOfRange => (409, "IDEMPOTENCY_EXPIRED"),
-                    tonic::Code::ResourceExhausted => (429, "RATE_LIMITED"),
-                    tonic::Code::DeadlineExceeded => (504, "DEADLINE_EXCEEDED"),
-                    _ => (503, "DEPENDENCY_UNAVAILABLE"),
-                };
+                let (status, reason) = response_error(&error);
                 representation(
                     status,
                     json!({"code":format!("CONCERT_{status}"),"message":"The requested action is unavailable.","traceId":context.request(),"timestamp":timestamp(Utc::now()),"details":{"reason":reason}}),
@@ -648,13 +645,29 @@ impl SharingVerifierStatus for Verifier {
 /// commits. Command hooks only record effects; their separately authorized
 /// post-command projection retains the child after the write transaction ends.
 struct RuntimeHooks {
-    witness: SocialWitness,
+    witness: Arc<SocialWitness>,
+    write_gate: Arc<ReadOnlyGate>,
+    command_transaction: bool,
     scope: Arc<OwnerGuardScope>,
     pool: PgPool,
     operation: SocialOperation,
     retained: Option<SocialReadSources>,
 }
 impl RuntimeHooks {
+    fn for_projection(&self) -> Arc<Self> {
+        Arc::new(Self {
+            witness: self.witness.clone(),
+            write_gate: self.write_gate.clone(),
+            command_transaction: false,
+            scope: self.scope.clone(),
+            pool: self.pool.clone(),
+            operation: self.operation,
+            retained: self.retained.clone(),
+        })
+    }
+    fn command(&self, error: CommandError) -> Status {
+        command_rejection(error, &self.write_gate)
+    }
     async fn retain(
         &self,
         c: &mut PgConnection,
@@ -667,7 +680,43 @@ impl RuntimeHooks {
 #[async_trait::async_trait]
 impl SocialTransactionHooks for RuntimeHooks {
     async fn register(&self, c: &mut PgConnection) -> Result<(), RelationshipError> {
-        self.witness.register(c).await
+        self.witness.register(c).await?;
+        if self.command_transaction && normal_mutation(self.operation) {
+            let binding = self.scope.binding();
+            let milliseconds = binding
+                .deadline()
+                .remaining(
+                    std::time::Duration::from_secs(5),
+                    binding.deadline().expires_micros(),
+                )
+                .map_err(|_| RelationshipError::Unavailable)?
+                .as_millis()
+                .max(1)
+                .to_string();
+            sqlx::query(
+                "select set_config('statement_timeout',$1,true),set_config('lock_timeout',$1,true)",
+            )
+            .bind(milliseconds)
+            .execute(&mut *c)
+            .await
+            .map_err(|_| RelationshipError::Unavailable)?;
+            let policy = PgRelationshipPolicy::new(
+                self.pool.clone(),
+                GuardedAuthority::new(self.scope.clone()),
+            );
+            self.write_gate
+                .check_in(
+                    c,
+                    &policy,
+                    ParticipantKey {
+                        event_id: EventId::from_uuid(binding.event()),
+                        user_id: AuthUserId::from_uuid(binding.actor()),
+                    },
+                    self.operation,
+                )
+                .await?;
+        }
+        Ok(())
     }
     async fn succeeded(
         &self,
@@ -804,6 +853,77 @@ async fn request_value(
         (active && !expired).then_some(expires),
     ))
 }
+// Private local discriminator; never infer this reason from a generic owner denial.
+const READ_ONLY_ERROR: &[u8] = b"mcr.social.event-read-only.v1";
+fn normal_mutation(operation: SocialOperation) -> bool {
+    matches!(
+        operation,
+        SocialOperation::SetHandle(_) | SocialOperation::Create | SocialOperation::Decide(_)
+    )
+}
+#[derive(Default)]
+struct ReadOnlyGate(AtomicBool);
+impl ReadOnlyGate {
+    fn rejected(&self) -> bool {
+        self.0.load(Ordering::Acquire)
+    }
+    /// Called only after native registration, inside the actual command transaction.
+    /// Event UPDATE precedes all participant/pair locks. This check grants no target
+    /// or operator authority; every successful path still runs the retained producer.
+    async fn check_in<A: FencedRelationshipAuthority>(
+        &self,
+        c: &mut PgConnection,
+        policy: &PgRelationshipPolicy<A>,
+        actor: ParticipantKey,
+        operation: SocialOperation,
+    ) -> Result<(), RelationshipError> {
+        if !normal_mutation(operation) {
+            return Ok(());
+        }
+        let phase: String =
+            sqlx::query_scalar("select phase from concert_events where event_id=$1 for update")
+                .bind(actor.event_id.uuid())
+                .fetch_optional(&mut *c)
+                .await
+                .map_err(|_| RelationshipError::Unavailable)?
+                .ok_or(RelationshipError::Denied)?;
+        // Do not expose the phase reason to nonmembers, revoked actors or an
+        // unavailable canonical owner. This is current actor eligibility only.
+        policy.authorize_actor_in(c, actor).await?;
+        if phase == "READ_ONLY" {
+            self.0.store(true, Ordering::Release);
+            return Err(RelationshipError::Denied);
+        }
+        Ok(())
+    }
+}
+fn command_rejection(error: CommandError, gate: &ReadOnlyGate) -> Status {
+    if matches!(error, CommandError::Denied) && gate.rejected() {
+        Status::with_details(
+            tonic::Code::FailedPrecondition,
+            "Event is read-only",
+            READ_ONLY_ERROR.into(),
+        )
+    } else {
+        command(error)
+    }
+}
+fn response_error(error: &Status) -> (u32, &'static str) {
+    match error.code() {
+        tonic::Code::InvalidArgument => (400, "INVALID_INPUT"),
+        tonic::Code::PermissionDenied | tonic::Code::NotFound => (404, "RESOURCE_UNAVAILABLE"),
+        tonic::Code::Aborted => (409, "VERSION_CONFLICT"),
+        tonic::Code::AlreadyExists => (409, "IDEMPOTENCY_CONFLICT"),
+        tonic::Code::FailedPrecondition if error.details() == READ_ONLY_ERROR => {
+            (409, "EVENT_READ_ONLY")
+        }
+        tonic::Code::FailedPrecondition => (409, "INVALID_TRANSITION"),
+        tonic::Code::OutOfRange => (409, "IDEMPOTENCY_EXPIRED"),
+        tonic::Code::ResourceExhausted => (429, "RATE_LIMITED"),
+        tonic::Code::DeadlineExceeded => (504, "DEADLINE_EXCEEDED"),
+        _ => (503, "DEPENDENCY_UNAVAILABLE"),
+    }
+}
 fn rel(error: RelationshipError) -> Status {
     match error {
         RelationshipError::Denied => Status::not_found("Social resource unavailable"),
@@ -835,3 +955,7 @@ fn representation(status: u32, value: Value) -> Result<ProductRepresentation, St
         body: serde_json::to_vec(&value).map_err(|_| unavailable())?,
     })
 }
+
+#[cfg(test)]
+#[path = "../../tests/social_live_support/write_policy.rs"]
+mod write_policy_tests;

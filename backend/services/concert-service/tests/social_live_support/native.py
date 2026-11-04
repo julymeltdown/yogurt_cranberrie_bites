@@ -32,7 +32,7 @@ def run(args,report):
     if shutil.disk_usage(ROOT).free<8*1024**3:raise SmokeError('preflight','8 GiB free required')
     report.update(source_commit=commit,source_sha256=meta['source_sha256'],artifacts=meta['artifacts'],checks={})
     pure=execute([str(binaries['live']),'--test-threads=1'],env={},phase='pure-input-tests',cwd=ROOT,timeout=30)
-    if 'test result: ok. 6 passed; 0 failed; 9 ignored;' not in pure.stdout:raise SmokeError('inventory','exact pure/native inventory required')
+    if 'test result: ok. 8 passed; 0 failed; 10 ignored;' not in pure.stdout:raise SmokeError('inventory','exact pure/native inventory required')
     report['checks']['pure-input-tests']={'exit_code':pure.returncode,'stdout':pure.stdout}
     cluster=Cluster({name:executable(args.pg_bin/name) for name in PG_TOOLS})
     report['owned_root']=str(cluster.root)
@@ -55,7 +55,7 @@ def run(args,report):
         env={**cluster.env,'MCR_SOCIAL_ROOT':str(cluster.root),'MCR_SOCIAL_TOKEN':cluster.token,'MCR_SOCIAL_IDENTITY':f'{cluster.identity[0]}:{cluster.identity[1]}','MCR_SOCIAL_SYSTEM':system,'MCR_SOCIAL_CONCERT_URL':cluster.url('mcr_social_concert'),
              'CONCERT_TEST_DATABASE_URL':cluster.url('mcr_concert_be_commands'),'CONCERT_TEST_OWNER_ROOT':str(cluster.root),'CONCERT_TEST_OWNER_TOKEN':cluster.token,'CONCERT_TEST_OWNER_IDENTITY':f'{cluster.identity[0]}:{cluster.identity[1]}'}
         def tests(phase):
-            for name,count in [('live',9),('remaining',8),('receipts',17)]:
+            for name,count in [('live',10),('remaining',8),('receipts',17)]:
                 command=[str(binaries[name]),'--test-threads=1','--nocapture']
                 if name!='receipts':command.append('--ignored')
                 if name=='remaining':command+=['--skip','actual_qa04_http_authorization_matrix']

@@ -604,3 +604,121 @@ falsely completed or replaced.
 
 Delivery note: `$MCR_EVIDENCE_ROOT` redacts the machine-local evidence directory;
 the returned patch SHA256 above remains the exact artifact identity.
+
+### Owned READ_ONLY error correction successor (not yet qualified)
+
+Root confirmed unchanged adoption of the exact returned `CommandProducer::completed`
+receipt hook as an Operations dependency. Its `receipt.rs` blob remains
+`5c52fe67de67fbe9d3a3208efb460d5cb9006dd6`; no receipt hook redesign or shared
+slice edit is part of this successor. All eight returned shared postimage hashes
+still match the qualified return manifest.
+
+The owned Social producer adds a NORMAL-only phase gate inside the actual
+registered command transaction. It registers the native transaction first,
+uses the original Root deadline for SQL wait bounds, locks the event FOR UPDATE,
+and checks current actor membership/canonical eligibility before recording an
+explicit READ_ONLY denial. A private local status discriminator maps that denial
+alone to frozen HTTP 409 / EVENT_READ_ONLY. Missing membership, owner denial,
+owner outage, generic transition, conflict and other errors retain their existing
+projection. Full retained target/pair/consent/revision authorization remains
+mandatory after a successful gate; this supplies no operator/system capability.
+
+Frozen NORMAL operations are set handle, create request and decide request.
+READ and SAFETY operations bypass this additional gate. Post-command projection
+uses a separate read-hook view so a later event phase transition cannot be
+misreported as a new command-phase rejection after a successful write. Existing
+metadata/reveal source retention and canonical native registration are retained.
+
+New owned tests bind all thirteen write-policy classifications to the frozen
+operation registry, distinguish explicit READ_ONLY from generic denial/error
+projection, and add one synthetic-authority native case for current actor denial,
+owner outage, nonmember refusal, READ/SAFETY bypass, exact event-lock exclusion
+and no fabricated receipts/outbox/witnesses. The native runner expects ten live
+native cases (70 native executions across its two phases), rather than nine.
+These new checks are NOT_RUN pending a fresh named resource allocation. Rustfmt,
+Python runner syntax, fixture path resolution, explicit shared-file preservation
+and diff checks passed; none is claimed as compile or native acceptance.
+
+The fe86 frozen seven executables and previous reports remain the qualified
+baseline. This successor has not accessed a build target, started a runtime,
+changed a migration or altered any returned shared slice. Root still owns serving
+composition and integration. Actual HTTP/EOF/QA04/WS/cache and the full original
+goal remain unfinished.
+
+### Qualified owned READ_ONLY correction (ba9d595c)
+
+Source `ba9d595c5befa49bb6a71189ad37f6919803d094` is now qualified for
+its owned local phase gate, error projection and retained regression scope.
+Implementation commit 0085569e and exact-runner-inventory correction ba9d595c
+are descendants of e084a7b6. This checkpoint supersedes the preceding successor
+NOT_RUN statements only within the qualifications and limits below.
+
+SL offered SOCIAL-409-BACKEND-202611040502Z; this writer explicitly accepted
+the exact clean ba9 pin, existing BACKEND target, four Concert test executables
+and hard 1 GiB whole additional allocation. Fresh preflight verified 38.33 GiB
+free, zero BACKEND handles and no Social-owned active compiler session. The
+expected peak was 640 MiB. Rust 1.88, locked/offline, j2, debug0 and incremental0
+were retained. Exact command:
+
+```text
+cargo test --manifest-path backend/Cargo.toml --locked --offline -j 2 -p concert-service --lib --test social_live --test social_remaining --test command_receipts --no-run --message-format=json
+```
+
+The first attempt exited 101 for the reused contracts-build proto path from the
+prior BE41 checkout. The permitted contracts-build-only clean exited 0. An
+external disk-monitor scan then raced a disappearing compiler file; the writer
+stopped only its owned compiler process group, preserved the interrupted attempt
+and corrected the external monitor. The final attempt exited 0 in 24.06 seconds,
+with 82.71 seconds of elapsed allowance recorded. No Rust source fix, pin change,
+new target, Gateway/service MAIN, broad clean or shared-path modification occurred.
+
+All four executables and Cargo/source records were frozen outside the target.
+The exact 928 source hashes matched after native execution. BACKEND was
+unconditionally released with zero handles and the owned compiler exited BEFORE
+copied-only tests. No target access occurred during the owned runtime.
+Evidence directory: `${SOCIAL_BA9_FROZEN_ROOT}/`.
+
+| Copied executable | SHA256 |
+| --- | --- |
+| `concert-lib-tests` | `5e2028dfd0736faa66eb81783181f383a36bd3d6dc5864e0d8c083e7c555d0eb` |
+| `live-tests` | `d9cd9ae16461e7c3b4105442e93f58489eb58cdb4c07df1854d428c8209f8ed3` |
+| `receipts-tests` | `97a4d94715a1a70a4789faa81129a53a8ce87c9eb7a2ac9ab767a69468088f22` |
+| `remaining-tests` | `0ce7bbf1a01b49cf05f1d6785e8f695941581d4e4a40571c866d1781615001b1` |
+
+The copied runner exited 0: **eight pure cases and 70 native executions passed**
+(ten live, eight retained Social/eligibility and seventeen receipt cases, each
+native group before and after physical PostgreSQL 16.14 restart). The new native
+phase-gate case passed in both phases, covering current actor denial/outage,
+nonmember refusal, READ/SAFETY bypass, event-phase lock exclusion and absence of
+fabricated receipts/outbox/witnesses. Persisted counts survived restart. Owned
+cluster shutdown/removal passed and its root was independently confirmed absent.
+A copied library filter additionally passed its two pure regressions, with its
+one native case correctly ignored because that case ran in the owned suite.
+
+`native-report.json` SHA256:
+`d8df86932753c7be57c8654562ab276c1c864471366e2fbe24fdf0b0ba51b32d`.
+`focused-report.json` SHA256:
+`b2497bf69537931af583ea1e1fe91997df2dd0b64340b1d17e7df1ec72302037`.
+`all-artifacts.json` SHA256:
+`26264d52a4db7aa7f9b5f901b6660f78b26d2006264ad0c8acd6f16aad2a010c`.
+Budget monitor recorded peak additional allocation **294,170,624 bytes
+(280.54 MiB)**, below 1,073,741,824 bytes; no budget abort. This includes the
+fixed final target growth plus copied output and the owned PostgreSQL root.
+Its monitor did not inspect the released target. The observed sampled peak is
+not a guaranteed measure of unobserved transient peaks between samples.
+
+`qualified-successor.json` records the exact three-path patch, source/postimage
+hashes and all build/repair/interruption/release/native/budget receipts. It is
+based on the e084 handoff and contains only owned producer, test and runner
+changes. All eight returned shared postimages and receipt blob
+`5c52fe67de67fbe9d3a3208efb460d5cb9006dd6` remain unchanged. Root may serially
+integrate this qualified successor; no main/SL review or acknowledgment gate is
+introduced. Root's changed assembly still needs its own combined evidence.
+
+The new native authority is explicitly synthetic. This is not proof of an
+actual acquired canonical OwnerGuardScope, real provider acceptance, full
+production migration qualification, live thirteen-operation HTTP, seven-role
+QA04, full-lifetime EOF/cancellation/restart, global Friend blocking, WebSockets
+or cached UI. Those runtime gates and the original goal remain unfinished.
+
+Root serial intake preserves the above worker source/hashes and all previous Root history. This appended qualification is from handoff `66197e2459caddb5dbd43928c9060a6c563384ee`; only the local artifact prefix is made portable. Coherent Root compile and the remaining public gates are NOT_RUN.
