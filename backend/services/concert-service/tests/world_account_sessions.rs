@@ -616,6 +616,7 @@ async fn native_sessions_actual_auth_active_pending_multievent_and_exact_retry()
         .map_err(|_| anyhow::anyhow!("pending admission failed"))?;
     let before: (Uuid,chrono::DateTime<Utc>)=sqlx::query_as("select connection_id,access_expires_at from concert_world_memberships where event_id=$1 and user_id=$2")
         .bind(f.event.uuid()).bind(other.uuid()).fetch_one(&pool).await?;
+    let (_, old_ticket) = f.ticket(f.room, f.user).await?;
     let command = actual_delete(&auth, user).await?;
     let deletion = SessionDeletion::new(
         pool.clone(),
@@ -702,6 +703,14 @@ async fn native_sessions_actual_auth_active_pending_multievent_and_exact_retry()
         f.ticket(f.room, f.user).await.is_err(),
         "permanent common fence denies fresh tickets"
     );
+    assert!(
+        f.bridge.admit(old_ticket, Uuid::new_v4()).await.is_err(),
+        "a pre-deletion unconsumed ticket cannot reconnect"
+    );
+    assert!(sqlx::query("insert into concert_world_memberships(event_id,user_id,room_id,session_id,connection_id,owner_process_id,owner_epoch,map_id,map_revision,avatar_manifest_id,avatar_manifest_version,admitted_at,lease_until,access_expires_at) values($1,$2,$3,$4,$5,$6,$7,'map_fixture',1,'avatar_fixture',1,clock_timestamp(),clock_timestamp()+interval '5 seconds',clock_timestamp()+interval '60 seconds')")
+        .bind(f.event.uuid()).bind(user).bind(f.room).bind(Uuid::new_v4()).bind(Uuid::new_v4())
+        .bind(&f.owner.process_id).bind(f.owner.epoch).execute(&pool).await.is_err(),
+        "the membership guard itself denies bypassing the ticket boundary");
     assert!(sqlx::query("update concert_world_session_deletion_progress set progress_revision=progress_revision+1 where user_id=$1").bind(user).execute(&pool).await.is_err());
     assert!(
         sqlx::query("delete from concert_world_session_deletion_progress where user_id=$1")
@@ -781,6 +790,28 @@ async fn native_sessions_foreign_owner_unavailable_and_original_deadline_remain_
     drop(fixed);
     drop(deletion);
     drop(serving);
+    tokio::time::sleep(Duration::from_millis(25)).await;
+    let repaired = Serving::start(&f).await?;
+    let resumed = SessionDeletion::new(
+        pool.clone(),
+        Arc::new(AuthRepositoryTestTransport::new(auth.clone())),
+        vec![repaired.leaf(&f), foreign_serving.leaf(&foreign)],
+    )
+    .unwrap();
+    assert_eq!(
+        resumed
+            .apply(command, deadline())
+            .await
+            .unwrap()
+            .fence_revision,
+        1
+    );
+    assert!(
+        completed(&pool, user).await?,
+        "a repaired actual owner completes the retained operation"
+    );
+    drop(resumed);
+    drop(repaired);
     drop(foreign_serving);
     pool.close().await;
     auth.close().await;
