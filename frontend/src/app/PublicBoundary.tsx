@@ -1,3 +1,4 @@
+import { lazy, Suspense } from 'react'
 import { Link, useLocation, useParams } from 'react-router-dom'
 import { FoundationApp } from './FoundationApp'
 import { DocumentPage } from '../features/public/ui/DocumentPage'
@@ -7,6 +8,8 @@ import { SignUp } from '../features/auth/ui/SignUp'
 import { VerifyEmail } from '../features/auth/ui/VerifyEmail'
 import { Callback } from '../features/auth/ui/Callback'
 import { AccountDeletionRecovery } from './account-deletion-entry/recovery'
+
+const ArchiveRoute = lazy(() => import('./archive-entry').then(module => ({ default: module.ArchiveRoutePanel })))
 
 /** Lazy public-only boundary. No game/network imports and no fabricated session. */
 export default function PublicBoundary() {
@@ -19,6 +22,7 @@ export default function PublicBoundary() {
   if (location.pathname === '/reset-password') return <ResetPassword />
   if (location.pathname === '/auth/callback') return <Callback />
   if (location.pathname.startsWith('/legal/')) return <DocumentPage document={params.document} />
+  if (location.pathname === '/archive') return <Suspense fallback={<p role="status">Opening archive…</p>}><ArchiveRoute /></Suspense>
   const title = location.pathname === '/login' ? 'Sign in'
     : location.pathname === '/signup' ? 'Create account'
       : location.pathname === '/verify-email' ? 'Verify email'
