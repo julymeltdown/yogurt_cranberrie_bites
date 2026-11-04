@@ -474,3 +474,46 @@ artifact hashes, nine core results, and failed HTTP preflight separately. Root
 owns rebuilding coherent current peer MAINs and rerunning actual C03 HTTP.
 The original f8a behavior PASS and its compiled-cache provenance limit remain
 unchanged. No additional resource lease or test run was taken by this worker.
+
+### Coherent native consumer qualification
+
+C03-CANCEL01 is INTEGRATED in the dedicated native fixture at Root source
+`d0f063d18a0549935f80a536077c30962d89f9e9`. Root rebuilt five current peer
+MAINs under `ROOT-D0F-FIVE-MAINS-20261104`, retaining the same-pin clean Gateway
+and Participant host. Exact Auth, Friend and Notification packages were cleaned
+for their embedded migration inputs. All five builds exited 0 with freshly
+compiled executables. The 2151 tracked backend/contract input hashes match the
+clean-platform cohort; all six peer hashes and the host hash were verified.
+The target was released at 05:38:18 UTC, before any copied native PostgreSQL
+work at 05:38:19 UTC. No Participant Rust or Python edit was required.
+
+The actual public HTTP run passed all 17 recorded statuses: three real users
+completed signup, delivered-email verification, login, Profile update and
+Bootstrap; normal C03 GET returned 200 through its original EOF path. The real
+post-publication TCP reset left serialization and delivery false, recorded true
+abandonment and cancellation settlement, completed both Auth/Friend owners
+(two scopes each including the normal control), and left zero prepared
+transactions. Subsequent real Auth login returned 200 with the same canonical
+identity and a fresh token. The retained callback remained SEALED without
+abandonment after expiry and delayed callback release. The registered, actually
+committed native transaction resolved UNKNOWN without witness; abandonment
+was truthful but cancellation settlement stayed false. Four expected negative
+fences remained held until whole disposable-cluster teardown.
+
+All six source-exact migration ledgers survived restart and independent
+verification: Gateway 17, Auth 18, Profile 9, Friend 18, Post 31 and
+Notification 6. The Rust host passed; owned cleanup passed; every peer and
+Redis stopped unforced with exit 0. Independent readback found the owned
+directory and all recorded peer/Redis PIDs absent. The whole-workflow guard
+recorded 625,954,816 additional sampled bytes under its 1.5 GiB bound, with no
+abort. The native report SHA256 is
+`03e2f66b29051104a959629a779454c4aa2794b86a66b81cfb02b7a146980dac`.
+
+The portable [coherent native qualification](../../../backend/services/concert-service/tests/participant_cancellation_support/consumer_native_qualification.json)
+records source/contract and artifact pins, exact build commands and exit codes,
+positive and negative behavior, migration/restart checks, resource release,
+cleanup and limitations. Earlier failed and passing attempts remain unchanged.
+This resolves the concrete cache/cohort consumer follow-up without weakening
+authority checks. Root's non-force master publication remains to be verified;
+full production Concert main composition, browser IN01 and release acceptance
+remain separate Root/FE obligations. No resource is held by this worker.
