@@ -39,7 +39,9 @@ receiver prevents every claim; it cannot be bypassed by the one-batch API.
 Selective claim binds immutable successful/retired receipt, exact outbox tuple
 and the sealed source snapshot. It includes only set/remove handle, set/publish/
 close Intro and create/decide/cancel/revoke Social request. After the actual
-World receiver resolves, it additionally includes block/unblock. Unknown,
+World receiver resolves, it additionally includes block/unblock. The block/unblock claim, exhaustion and delivery checks bind the actual
+resolved consumer event UUID; foreign-event block jobs retain state and attempts.
+Unknown,
 canonical, maintenance, close-event and all other families keep their state,
 leases and attempt budget. There is no global claimant or blanket World sink.
 
@@ -91,3 +93,12 @@ Positive real Notification delivery, actual World consumer application, complete
 current migration composition, startup supervision and public HTTP/WS/cache/IN03
 remain open for Root's combined runtime qualification. Prior Social 10-pure/
 80-native results belong to their exact earlier dependency/source snapshot.
+
+
+The World event accessor is an explicitly supplied Root-authored dependency:
+original commit `fde7b682`, only five lines in World invalidation's public module.
+It is imported without authoring existing World paths. The worker's block scope
+uses its actual bridge event, with a bound UUID in SQL at all three stages.
+The foreign-job case executes the exact production claim predicate to show a
+current-event block is selected and a foreign exhausted lease remains untouched;
+this is not actual World-application evidence. All seven test cases remain.

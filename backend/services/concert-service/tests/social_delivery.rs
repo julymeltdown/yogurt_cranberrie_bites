@@ -236,6 +236,19 @@ async fn foreign_and_unbound_block_jobs_keep_their_attempt_budget() {
     for e in jobs.into_iter().skip(1) {
         assert_eq!(f.state(e).await, ("READY".into(), 0));
     }
+    // Execute the exact production predicate with a bound owner event. This
+    // tests SQL scope only: no fake World consumer, publication or ACK.
+    let current = Fixture::new().await;
+    let own_block = current.source("blockConcertUser", 1, None).await;
+    let selected = delivery::scoped_claim_for_test(&current.pool, current.event)
+        .await
+        .unwrap();
+    assert_eq!(selected.len(), 1);
+    assert_eq!(selected[0].id, own_block.outbox_id);
+    assert_eq!(f.state(exhausted).await, ("LEASED".into(), 8));
+    assert_eq!(current.state(own_block).await, ("LEASED".into(), 1));
+    current.retire_fixture_jobs().await;
+    current.pool.close().await;
     assert!(f.publisher.seen.lock().unwrap().is_empty());
     f.retire_fixture_jobs().await;
     f.pool.close().await;
