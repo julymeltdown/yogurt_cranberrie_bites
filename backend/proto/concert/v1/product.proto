@@ -23,8 +23,23 @@ message ProductResponse {
   uint32 status = 1;
   string content_type = 2;
   bytes body = 3;
+  ResponseDelivery delivery = 4; // Internal only; NEVER serialize into HTTP JSON/headers.
 }
+
+// Completion is a separate bounded system operation, never renewed content
+// authority. Only Gateway may report its actual HTTP body terminal. A missing
+// callback, cancellation or lost reply leaves the canonical scope quarantined.
+message ResponseDelivery {
+  string instance_id = 1;
+  string scope_id = 2;
+  bytes binding_digest = 3;
+  bytes completion_secret = 4;
+}
+message CompleteResponseResult { bool completed = 1; }
 
 service ProductService {
   rpc Dispatch(ProductRequest) returns (ProductResponse);
+}
+service ProductDeliveryService {
+  rpc CompleteResponse(ResponseDelivery) returns (CompleteResponseResult);
 }

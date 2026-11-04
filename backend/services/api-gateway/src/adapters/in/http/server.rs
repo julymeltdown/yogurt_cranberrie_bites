@@ -69,6 +69,9 @@ pub fn with_transport_layers(
         ))
         .layer(from_fn(super::concert_bootstrap::protect_response))
         .layer(from_fn(super::concert_product::protect_response))
+        // Outermost body boundary: inner middleware may transform response data.
+        // Preserve canonical product scopes until actual terminal HTTP framing.
+        .layer(platform::actor_delegation::response_scope::RetainedScopeLayer)
 }
 
 // Restrict replay to command results, never read-by-POST profile batches or
