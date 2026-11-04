@@ -8,3 +8,7 @@ pub mod proto {
 }
 mod client;
 pub use client::{NotificationClient, NotificationRecoveryBinding};
+mod protocol;
+mod product;
+pub use protocol::{NotificationOperation, NotificationRequest};
+pub use product::NotificationRuntime;
