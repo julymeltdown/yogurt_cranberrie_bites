@@ -1,0 +1,78 @@
+{
+  "task": "FE-SCENE-R3-WORLD",
+  "status": "INTEGRATED",
+  "scope": "Full assigned World implementation and concrete handoff; no product/live/visual acceptance claim",
+  "reconciledParent": "4908cad7003d40af8ca5abe54c09887ecb8d73d5",
+  "backendPublishedRevision": "60991c53241a2dd1fdb5052d86a1fff81eb66b67",
+  "requirements": [
+    {
+      "requirement": "isolated_checkout_and_exact_paths",
+      "status": "COMPLETE",
+      "evidence": "codex/mcr-fe-scene-r3-world; own commits 7ad23da0,6491aa47,969b3b2f,482d02c4; exact path grants inspected; sole runtime public-prefix extension documented"
+    },
+    {
+      "requirement": "stable_artist_source_and_canonical_geometry",
+      "status": "COMPLETE",
+      "evidence": "model.ts/source-inputs.json metadata/provenance; source hashes and full geometry equality tested; source originals and docs/source unchanged"
+    },
+    {
+      "requirement": "validated_loader_and_incumbent_draw",
+      "status": "COMPLETE",
+      "evidence": "loader.ts,model.ts,phaser.ts and MapScene dispatch; incumbent C06/Tiled/hash/dimension path; real native exact pixel parity"
+    },
+    {
+      "requirement": "agreed_root_backend_map_interfaces",
+      "status": "COMPLETE",
+      "evidence": "aa3 exports plus model.ts metadata preflight; Map delivered4dc12a56; root accepted optional overview factory+adapter with exact shared-file transfer; published backend60991c53 pin verified"
+    },
+    {
+      "requirement": "retained_valid_release_and_singleton",
+      "status": "COMPLETE",
+      "evidence": "referenceSceneFor leaves ordinary path; MapScene hidden atomic skin preparation; native replacement mount1 and retained native3widths; no network/transport/Auth implementation changes"
+    },
+    {
+      "requirement": "canonical_coordinates_privacy_depth_masks_identity",
+      "status": "COMPLETE",
+      "evidence": "strict full geometry and manifest binding; source frames/foot depths; canonical bounds mask; native C05-selected characters/interactions/route/privacy disposal and zero resource cleanup"
+    },
+    {
+      "requirement": "malformed_stale_abort_replacement_cleanup",
+      "status": "COMPLETE",
+      "evidence": "313tests/11files incl27owned; native7malformed cases, loaded-late supersession, ordinary and reference teardown, overview URL generation/reentrant fencing"
+    },
+    {
+      "requirement": "native360_390_430_and_interactions",
+      "status": "COMPLETE",
+      "evidence": "native.json actual Phaser+source PNGs and all4 canonical interaction feet; six inspected reference captures; retained.json+three inspected captures"
+    },
+    {
+      "requirement": "documentation_provenance_regression_limits",
+      "status": "COMPLETE",
+      "evidence": "reference-scene-world.md; validation.json,native.json,retained.json; source/artifact hashes reread against reconciled files; all required commands exit0"
+    },
+    {
+      "requirement": "committed_direct_nonforce_remote_delivery",
+      "status": "COMPLETE",
+      "evidence": "published6510c3af/aa3e2f3d/969b3b2f/482d02c4 ancestry verified; containing candidate pin/audit commit requires final remote verification before goal completion"
+    },
+    {
+      "requirement": "concrete_interface_fixes",
+      "status": "COMPLETE",
+      "evidence": "canonical-map-v2-pin.json now binds exact published backend map; no open World API fix requested by Map/root/BE"
+    }
+  ],
+  "checkedReports": {
+    "native.json": "sha256:72ead4a323b55b6464a4189f95a4e229c17a5b7fccb5436841fc83775407fdf4",
+    "retained.json": "sha256:e878031ad0bd87c88d969f6617c809ab3433051b68ccbb95a8ff57cdb17a5618",
+    "validation.json": "sha256:c60a4ed6855ac5566b0eb2297662b6ced1243ad079fbe6b5f23f4bbf7cf05145"
+  },
+  "candidatePinSha256": "sha256:073069e4df27f0dc6dcf390e3554e6e9ad3edd60ac1b3778c931cb48b49016e6",
+  "requiredWorldWorkRemaining": [],
+  "separateProductGates": [
+    "Actual product/operator/bootstrap activation",
+    "Live socket/multiuser and physical-device acceptance",
+    "PHYSICAL meeting-source/beacon/IN02 requirements for their own scope",
+    "Artist target fidelity acceptance",
+    "Root-owned adapter/source/fixture implementation on its separate goal"
+  ]
+}

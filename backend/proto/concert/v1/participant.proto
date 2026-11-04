@@ -27,3 +27,40 @@ service ConcertParticipantService {
   // Preference-only PATCH subset. Profile edits need a separate owner protocol.
   rpc UpdatePreferences(ParticipantRequest) returns (ParticipantResponse);
 }
+
+// Profile-only recovery query. A fresh bounded signed query can inspect ONLY an
+// existing exact durable operation; it cannot create, decide or retry a write.
+message ParticipantDecisionRequest {
+  string actor_id = 1;
+  string event_id = 2;
+  string session_family_id = 3;
+  string operation_id = 4;
+  bytes parent_digest = 5;
+  bytes body_digest = 6;
+  bytes guard_binding_digest = 7;
+  string profile_prepared_gid = 8;
+  bytes profile_effect_digest = 9;
+  int64 authority_expires_unix_micros = 10;
+}
+enum ParticipantDecision {
+  PARTICIPANT_DECISION_UNSPECIFIED = 0;
+  UNRESOLVED = 1;
+  COMMIT = 2;
+  ABORT = 3;
+}
+message ParticipantDecisionTransaction {
+  string system_identifier = 1;
+  uint32 database_oid = 2;
+  string full_xid = 3;
+  int32 backend_pid = 4;
+  int64 backend_started_unix_micros = 5;
+}
+message ParticipantDecisionResponse {
+  ParticipantDecisionRequest query = 1;
+  ParticipantDecision decision = 2;
+  ParticipantDecisionTransaction concert_transaction = 3;
+  int64 committed_revision = 4; // Nonzero only for an authoritative COMMIT.
+}
+service ConcertParticipantDecisionService {
+  rpc ResolveDecision(ParticipantDecisionRequest) returns (ParticipantDecisionResponse);
+}
