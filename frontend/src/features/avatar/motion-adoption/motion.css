@@ -1,0 +1,29 @@
+.mcr-motion-editor { width:100%; min-width:0; max-width:27rem; margin-inline:auto; color:#211e1c; }
+.mcr-motion-editor .concert-window__body { min-width:0; padding:6px; }
+.mcr-motion-preview { display:grid; place-items:center; min-height:218px; border:1px solid #827765; background:#e7dfcf; }
+.mcr-motion-preview canvas { max-width:100%; }
+.mcr-motion-pose { display:grid; grid-template-columns:auto minmax(0,1fr) minmax(0,1fr); align-items:center; gap:4px; margin:5px 0; }
+.mcr-motion-editor button,.mcr-motion-editor select { min-height:44px; min-width:0; border:1px solid #786a56; border-radius:1px; background:#eee5d5; color:#241d19; padding:5px; font:700 12px/1.25 "Arial Narrow",Arial,sans-serif; }
+.mcr-motion-editor button:disabled { color:#71695d; background:#d9d0c1; }
+.mcr-motion-editor button[aria-pressed=true] { outline:2px solid #8a2d33; outline-offset:-3px; background:#f6ead5; }
+.mcr-motion-editor :focus-visible { outline:3px solid #922936; outline-offset:2px; }
+.mcr-motion-mode,.mcr-motion-actions { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:5px; margin-top:5px; }
+.mcr-motion-editor .concert-action { color:#fff5e4; background:#9d2d32; border-color:#49242a; }
+.mcr-motion-editor .concert-action--paper { color:#241d19; background:#eee5d5; }
+.mcr-motion-presets { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:4px; margin-top:5px; }
+.mcr-motion-presets button { display:grid; justify-items:center; gap:3px; }
+.mcr-motion-categories { display:flex; overflow-x:auto; gap:3px; margin-top:5px; }
+.mcr-motion-categories button { flex:0 0 auto; min-width:54px; white-space:nowrap; padding-inline:8px; }
+.mcr-motion-options { margin-top:5px; }
+.mcr-motion-options header { display:flex; justify-content:space-between; align-items:center; padding:5px; color:#fff2df; background:#211e1c; }
+.mcr-motion-options h2 { margin:0; font-size:14px; }
+.mcr-motion-option-row { display:grid; grid-template-columns:44px minmax(0,1fr) 44px; gap:3px; margin:4px 0; }
+.mcr-motion-option-grid { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:3px; }
+.mcr-motion-option-grid > button { display:grid; justify-items:center; gap:4px; padding:3px; }
+.mcr-motion-option-row > button { font-size:23px; }
+.mcr-motion-select { display:flex; align-items:center; justify-content:space-between; gap:5px; margin-top:4px; }
+.mcr-motion-select select { flex:1; max-width:60%; }
+.mcr-motion-status { margin-top:7px; font:12px/1.35 Arial,sans-serif; }
+.mcr-motion-status p { margin:0; }
+.mcr-motion-status button { margin:4px 4px 0 0; }
+@media(prefers-reduced-motion:reduce) { .mcr-motion-editor * { scroll-behavior:auto; transition:none; animation:none; } }
