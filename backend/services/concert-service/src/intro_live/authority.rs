@@ -130,6 +130,17 @@ impl ScopedIntroExecutor {
         expected: &intro::PublicForumIntro,
     ) -> Result<concert_domain::age_policy::AgeBounds, intro::IntroError> {
         self.context(context)?;
+        // This is a negative-only private filter on our registered transaction.
+        // A departed author or established local block is absence, not a Profile
+        // outage. A positive observation grants nothing: the actual current
+        // owner enrollment and held PublicProfile child below remain mandatory.
+        // Do not turn a generic Profile/guard failure into a skippable candidate.
+        let visible_locally: bool = sqlx::query_scalar("select exists(select 1 from public.concert_event_admissions a join public.concert_participants p using(event_id,user_id) where a.event_id=$1 and a.user_id=$2 and a.state='ACTIVE') and not exists(select 1 from public.concert_relationship_pairs where event_id=$1 and low_user=least($2,$3) and high_user=greatest($2,$3) and (low_blocks_high or high_blocks_low))")
+            .bind(context.event.uuid()).bind(expected.author.uuid()).bind(context.actor.uuid())
+            .fetch_one(&mut *c).await.map_err(|_| intro::IntroError::Unavailable)?;
+        if !visible_locally {
+            return Err(intro::IntroError::NotFound);
+        }
         // Prepare the actual shared local policy child before any conflicting
         // pair/admission/avatar write. Do NOT stack lock_state's pair FOR UPDATE.
         let (subject, policy) = self
