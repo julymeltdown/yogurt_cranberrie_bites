@@ -52,10 +52,10 @@ performed by this coordinator. All 112 tasks and 61 IA entries remain required.
 | Original ID | Owner / current task-level disposition | Work since previous checkpoint / latest retained publication | Remaining original criteria, dependency owner and next action |
 |---|---|---|---|
 | FE20 | Former owner `3ff2`; SATISFIED at MOCK_READY per explicit photo-completion receipt; no current Community writer | No newer task receipt; published `6c908472` retained | No identified original frontend gap in that receipt. Genuine provider/IN02 qualification stays with Product root `1fc`; do not reopen frozen criteria or divert the owner's later Auth scope |
-| FE21 | IN_PROGRESS, original-client completion owner `204`; task-level criterion disposition pending developer self-qualification | NEW accepted clean branch `codex/mcr-fe-FE21-FE24-client` at `096858b9`; fresh null → new unbudgeted goal, exact three feature trees/two owner docs/new runner/evidence/report prefixes accepted. Earlier Party repair `30e52fac` and independently published QA06 proof remain preserved; no new source commit/publication yet | Owner determines existing original filters/list/detail/apply-cancel/capability/MY PLAN and empty/full/private/cancelled/uncertain-receipt behavior, completes any gaps, validates meaningful focused/native interactions and documents task-level outcomes. Root153 direct scoped publication/remote verification remains in same goal. No FE23/25/26 reopening, root/shared grant or real IN02 dependency for client criteria |
+| FE21 | IN_PROGRESS, original-client completion owner `204`; task-level criterion disposition pending developer self-qualification | NEW accepted clean branch `codex/mcr-fe-FE21-FE24-client` at `096858b9`; fresh null → new unbudgeted goal, exact three feature trees/two owner docs/new runner/evidence/report prefixes accepted. Earlier Party repair `30e52fac` and independently published QA06 proof remain preserved; owner reports source ready, 142 baseline/144 final focused tests/application+fixture noemit/scoped lint PASS; native/build not launched, no new commit/publication yet | Owner requests named native/build slot FE21-FE24-204 from single coordinator21d; qualify declared original interactions, document exact criterion outcomes and finish scoped committed delivery without premature task closure. Root153 direct scoped publication/remote verification remains in same goal. No FE23/25/26 reopening, root/shared grant or real IN02 dependency for client criteria |
 | FE22 | Former authoring owner `6ec9`, now Backend-allocated; last explicit frontend criteria SATISFIED | No new delivery; source `1c38ad4` → published `e82a220`, final KST correction `d8778b8` retained | No identified task-local gap: form/validation/draft/conflict criteria met in retained receipt. Root `1fc` owns actual producer/configuration; real IN02 remains separate; no old writer wake |
 | FE23 | Former authoring owner `6ec9`; last explicit frontend criteria SATISFIED; bounded QA06 follow-up `204` complete/null/clean STOP | Original `7342058`/`58e18ab` → `aa103a8`/`48bb3e8`, KST `d8778b8` retained. Shared Party-action visual repair `30e52fac` delivered as described once under FE21; no new whole-parent outcome | No identified original member-decision/rally/conflict/removal/moved-card gap in retained receipt. Shared QA06 published postfix is independently VERIFIED as recorded under FE21; Product root/Gift counterparts own real IN02 inputs, not a new original frontend gate |
-| FE24 | IN_PROGRESS, same accepted original-client owner `204`; existing MOCK_READY baseline retained, current criterion disposition pending | Existing `3cb3f9c`/`8c33ba3` and `9055af1e` deliveries preserved. New shared FE21/FE24 goal/clean base `096858b9` and exact `gift-discovery/**`/`my-gifts/**` source lease accepted; no new commit/publication yet | Owner completes/qualifies list/detail/GIVING/RECEIVING, stock/time filters/current eligibility, public recipient privacy and paused/sold-out/ended invalid-action prevention using frozen contracts. Native queue only when source ready and `21d` explicitly allocates; no generic backend/device wait. Scoped docs/commits/direct Root153 publication/fixes/fresh remote verification required; Gift267 real producer/IN02 work remains separate |
+| FE24 | IN_PROGRESS, same accepted original-client owner `204`; existing MOCK_READY baseline retained, current criterion disposition pending | Existing `3cb3f9c`/`8c33ba3` and `9055af1e` deliveries preserved. New shared FE21/FE24 goal/clean base `096858b9` and exact `gift-discovery/**`/`my-gifts/**` source lease accepted; owner source ready/144 final focused checks+noemit/lint PASS, clean source `0bf53e67` committed, native/build not launched and publication pending | Owner completes/qualifies list/detail/GIVING/RECEIVING, stock/time filters/current eligibility, public recipient privacy and paused/sold-out/ended invalid-action prevention using frozen contracts. Native queue only when source ready and `21d` explicitly allocates; no generic backend/device wait. Scoped docs/commits/direct Root153 publication/fixes/fresh remote verification required; Gift267 real producer/IN02 work remains separate |
 | FE25 | Former authoring owner `6ec9`; last explicit frontend criteria SATISFIED | No new delivery; `dee1392` → `95d9f37`, KST `d8778b8` retained | No identified task-local form/photo/inventory/conflict/owner-route gap in receipt. Qualified upload may be frozen; actual BE24/root upload is a separate integration responsibility, not a new original-task prerequisite |
 | FE26 | Former authoring owner `6ec9`; last explicit frontend criteria SATISFIED | Public pickup and actual route-fixture pointers now sent directly to QA06/World; historical `d127b74` → `941d36c`, KST `d8778b8` explicitly labeled historical, not current requalification | No identified original client gap in retained receipt: intent/hold/expiry/code/claim/cancel and timeout/reload/no-fake-success. QA06 owner pins usable current fixtures; Gift `267`/root `1fc` supply genuine authority. No FE31 substitution or live/device promotion |
 | FE27 | Social ledger retains original SATISFIED/MOCK_READY; bounded latest fidelity owner `202` complete/null/clean STOP/returned leases/archived; no Community feature lease | Existing `9f72a71`/`cf7836a`/`a413e69` retained. Since checkpoint, Social reports bounded source `576f9848` → `ddd279e4`, final receipt `203db3a4` → `6393b451`, all 44 final payloads owner-verified; duplicate root action/bottom compose repair with owner native three widths/244 affected tests | No identified original fixture criterion gap in Social's explicit receipt. QA06 postfix evidence is published with unfinished whole-visual acceptance preserved; real Feed/media providers and IN03 remain separate. Actual evidence/ownership primary is Social, not a new Community acceptance or count |
@@ -120,8 +120,53 @@ evidence/report paths and dependency link absent, and acceptance of the exact
 three feature trees/two owner docs/new prefixes with no inherited rights.
 Owner started source/contract inspection. This is actual acceptance, not
 merely dispatch; no goal ID is invented. Native queue only when source is ready, with
-exact min/peak/scope to `21d`+Community, explicit slot release/fresh ≥8 GiB/
+exact min/peak/scope to `21d`+Community, explicit slot release/fresh ≥16 GiB start and actual 8 GiB stop floor/
 process preflight/one workflow ≤0.2 GiB and no shared cleanup or extra target.
+
+Native/build readiness update: owner204 reports source ready, all 142
+baseline and 144 final focused tests, application/fixture noemit and scoped
+lint PASS. Named request `FE21-FE24-204` was routed to BackendSL21d as one
+job, not a duplicate reservation. Exact runner is
+`frontend/e2e/community-client/fe21-fe24/native.mjs` in the assigned checkout:
+actual default app/router/Phaser/selected art, labeled synthetic HTTP/C05,
+serial Chrome contexts 360/390/430×844, Party filters/detail/original-key
+lost-response status recovery/cancel and Gift filters/detail/stock eligibility/
+GIVING-RECEIVING/privacy. Estimate 3–5 minutes, ≤0.02 GiB retained evidence,
+≤0.08 GiB temporary peak, hard ≤0.2 GiB new output. A temporary no-public-copy
+production build follows serially, ≤0.03 GiB; no parallel browser/build,
+install/Cargo/new shared target or cleanup. Existing IN01 priority and actual
+holders remain preserved. No native/build has started; source/docs continue
+in the same goal pending EXPLICIT named21d release plus owner fresh≥16 GiB start/8 GiB stop/
+process preflight. Owner closes its own resources/cache and reports release
+to21d+Community. No SL capacity grant, goal pause or King technical review.
+
+Coordinator21d confirms this is the SAME job, not a second reservation.
+Architecture holder FE153 has now reported actual PASS/full browser release.
+Named offer `FE21-FE24-NATIVE-202611040517Z` was sent DIRECT204 for clean
+source `0bf53e67`; explicit worker ACCEPT and fresh ≥16 GiB/process preflight
+remain pending, not inferred from the offer. No actual IN01 slot is in use.
+The plan remains one serial browser then build, hard ≤0.2 GiB new output and
+≤0.02 GiB durable. Current start/stop policy is ≥16 GiB to START and actual
+8 GiB STOP floor, superseding earlier 8 GiB start wording. No Community
+technical approval, new source rights, shared target or cleanup is granted.
+
+Owner clean-ready receipt: full source
+`0bf53e67ae78dec16cf28f7579687fefb449b6f8`, base `096858b9`, same isolated
+branch/checkout and fresh aligned ACTIVE unbudgeted goal, no reset/pause.
+Git status is clean and own dependency link removed while queued. Criterion
+report is committed; initial two failing regression logs/final 144 checks are
+retained. Native fixture source is committed, browser/build not yet reported
+started. Frozen domain bundle SHA-256
+`905d6f5b6f66f95cb68499a5fbfb32802539fce515f421226d79cb375ecfb887`,
+selected manifest
+`04b0815c5ad66729c578236b010974e44274e6562a9e9dd4599a861e2eed485e`
+and source pack
+`f8d6c83818bced007f71af1f59dbc53cd88115c5dab0112fc302d8469a4fdc6f`
+are owner-reported pins; whole-character fixture/read-only Git artwork stay
+unchanged. Advisory source-only disk snapshot 36.31 GiB is not a launch
+clearance: owner rechecks actual capacity/processes at the named offer.
+Same goal continues through native/build qualification, exact task-level
+outcomes, Root publication and fresh remote payload verification.
 
 ### Shared QA06 input handoff and available staffing
 
@@ -1350,7 +1395,7 @@ must not override the current authority and verified delivery table above.
 | BE20–23 | IN_PROGRESS overall; bounded corrected giveaway/pickup handoff `eac0b6a` delivered | Same released BE writer; exact manifest45 paths (own/delegated) | Corrected gift6/6 + actual restart expiry/cleanup PASS at `8628a56`; maintenance2 + restart PASS at `9c4e900`; first fixture failure retained, corrected rerun green | Delivery publication/current public owner/resource fences and code-replay wire amendment are separate from bounded internal completion |
 | FE22 | INTEGRATED locally; task-local fixture criteria satisfied: scoped RHF create/edit, drafts/conflicts, receipt recovery | FE `01a1a1fd-6ec9-71e2-a2c6-b5dddca7542e`; `fe-community-authoring`, base `f0e44bd` | Worker `1c38ad4`, integrated `e82a220`; eight tests/type/build/lint/four-width Chromium exit 0. Integrated SHA is ancestor of published `54900ec` (exit 0) | Retain concrete fixes; root/live authoring remains delivery qualification |
 | FE23 | INTEGRATED locally; task-local fixture criteria satisfied: owner decisions/removal/cancel/explicit rally | Same FE writer; party-management/rally scope | `7342058`, semantic fix `58e18ab`; 13 focused/type/build/lint/four-width browser PASS at bounded handoff; real producer/authority NOT_RUN | Authoring and pickup handoffs delivered; moved-meeting reports retain original meeting and monotonic self revisions |
-| FE24 | IN_PROGRESS, same accepted original-client owner `204`; existing MOCK_READY baseline retained, current criterion disposition pending | Existing `3cb3f9c`/`8c33ba3` and `9055af1e` deliveries preserved. New shared FE21/FE24 goal/clean base `096858b9` and exact `gift-discovery/**`/`my-gifts/**` source lease accepted; no new commit/publication yet | Owner completes/qualifies list/detail/GIVING/RECEIVING, stock/time filters/current eligibility, public recipient privacy and paused/sold-out/ended invalid-action prevention using frozen contracts. Native queue only when source ready and `21d` explicitly allocates; no generic backend/device wait. Scoped docs/commits/direct Root153 publication/fixes/fresh remote verification required; Gift267 real producer/IN02 work remains separate |
+| FE24 | MOCK_READY: existing gift discovery/detail/own activity | Existing scoped delivery, no new writer allocated | Workers `5f1005d`/`595c07f`, integrated `3cb3f9c`/`8c33ba3` per ledger | Consume retained public controller; not real reservation acceptance |
 | FE25 | INTEGRATED locally; task-local fixture criteria satisfied: validated giveaway authoring/owner inventory `dee1392` | Same FE authoring writer; coordinated `giveaway-authoring/**` scope | Committed lane evidence read: eight focused tests, type/build/lint and native four-width exit 0; integrated `95d9f37` locally; real upload/authority/root NOT_RUN | Pickup and community-entry handoffs delivered; qualified READY attachment remains explicit dependency |
 | FE26 | INTEGRATED locally; task-local fixture criteria satisfied: consumer/journal/owner claim committed `d127b74`, after KST fix `30c7ad5` | Same FE authoring writer; pickup scope | Committed evidence read: 17 focused/213 affected in 12 files, all four native scripts at four widths/type/build/lint/source guards exit0; real service NOT_RUN | Bounded authoring and next community-entry goals COMPLETE; both tracked sources clean/STOPPED; real root/service qualification delivery-owned |
 | BE09/19 | IN_PROGRESS overall; bounded corrected backend handoff `91e9e59` delivered | BE `01a1a202-3b96-7822-ab54-2f7d29aa42e5`; clean STOPPED `be-physical-meeting`, base `48458d5`; actual goal COMPLETE then null | Native report binds `96779ca`: 9 tests before + 9 after PG restart PASS; 15 source/9 migration hashes independently checked; final handoff differs only in documentation. Forward0016/fresh/upgrade/replay/expiry/contention/cleanup PASS | Delivery integrates serially; independent exact two-path QA remains active; public routes/remote authority/IN02 NOT_RUN |
