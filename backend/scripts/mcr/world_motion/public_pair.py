@@ -38,6 +38,17 @@ async def pair(config, principals, evidence):
         try:
             while True:
                 frame = await client['ws'].receive()
+                if frame.get('type') == 'policy.baseline':
+                    contracts.validate(frame, 'ServerMessage')
+                    check(client['state'].stream is not None
+                          and frame['streamId'] == client['state'].stream
+                          and frame['eventId'] == config['event']
+                          and client['policy_revision'] is None, 'policy-baseline-binding')
+                    client['policy_revision'] = frame['policyRevision']
+                    continue
+                if frame.get('type') == 'policy.invalidate':
+                    contracts.validate(frame, 'ServerMessage')
+                    check(False, 'unexpected-social-policy-invalidation')
                 response = client['state'].accept(frame, time.monotonic())
                 if response:
                     await client['ws'].send(response)
@@ -99,7 +110,7 @@ async def pair(config, principals, evidence):
             ws = await network.websocket()
             client = {'ws': ws, 'state': StreamState(user, config['event'], config['room'], pins, contracts),
                       'actor': user, 'opted': ordinal == 0, 'geometry': geometry,
-                      'anchor': None, 'profile': None, 'frames': 0}
+                      'anchor': None, 'profile': None, 'frames': 0, 'policy_revision': None}
             clients.append(client)
             await ws.send(auth)
             tasks.append(asyncio.create_task(reader(client)))
@@ -137,6 +148,7 @@ async def pair(config, principals, evidence):
         check(a['anchor']['position'] == stopped, 'neutral-position-drift')
         await until(lambda: b['state'].players[a['actor']]['position'] == stopped, 'legacy-observes-authority')
         evidence['phase'] = 'disconnect-removal'
+        check(all(c['policy_revision'] is not None for c in clients), 'canonical-policy-baselines')
         a['closing'] = True
         await a['ws'].abort()
         tasks[0].cancel()
@@ -147,7 +159,7 @@ async def pair(config, principals, evidence):
                 'actual_c06_hash_matched': True, 'complete_self_anchor': True,
                 'authoritative_movement': True, 'neutral_stop': True, 'legacy_wire_unchanged': True,
                 'legacy_observed_motion': True, 'peer_removal': True,
-                'frame_counts': [c['frames'] for c in clients],
+                'frame_counts': [c['frames'] for c in clients], 'canonical_policy_baselines': 2,
                 'full_c03_retained_or_hashed': False, 'tokens': 'MEMORY_ONLY',
                 'performance_qualification': 'DEFERRED_BY_USER', 'original_in03_journey': 'NOT_RUN'}
     finally:
