@@ -1,0 +1,16 @@
+{
+  "task": "CSS-GIFTS-DENSITY-02",
+  "throughCommit": "17a61b4ce840b88889ca6e3ad5b228cba0a07a8e",
+  "recordedAt": 1793811861.591697,
+  "retainedEvidenceBytes": 7175488,
+  "allNewTaskGitObjectsDiskBytes": 4805493,
+  "newGitObjectCount": 113,
+  "finalAccountingAndDocCommitAllowanceBytes": 65536,
+  "maximumObservedPrivateTempBytes": 52763167,
+  "conservativeWholeWithCommittedEvidenceAndPeakTemp": 64809684,
+  "wholeLimit": 150994944,
+  "durableLimit": 25165824,
+  "tempLimit": 125829120,
+  "freeBytes": 25933955072,
+  "note": "Counts every Git object unique to the task branch plus retained failed and passing artifacts; combines final retained objects with maximum temp conservatively although evidence was committed after browser release. Shared retained dependencies/art/source originals were read-only and acquired no job-owned growth. Own symlink and all private temp absent at release."
+}

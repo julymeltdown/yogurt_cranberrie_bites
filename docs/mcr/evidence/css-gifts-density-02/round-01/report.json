@@ -1,0 +1,189 @@
+{
+  "task": "CSS-GIFTS-DENSITY-02",
+  "job": "CSS-GIFTS-DENSITY-BROWSER2-202611041658Z",
+  "base": "e7bd68cfa35fb620e2eed060a71a72e50718b9dc",
+  "candidate": "3b5d6f8c2c49433788d31cbee08d79d855489c30",
+  "round": "round-01",
+  "startedAt": "2026-11-04T16:59:04.339Z",
+  "cssPins": {
+    "frontend/src/features/gift-discovery/ui/gifts.css": "f10d645469ba821be72bbecf88ce97f9229ee16b6d57e8a95e112c75970f8f2d",
+    "frontend/src/features/gift-discovery/ui/reference-gifts.css": "0e6e68a6219857b49e308b83f340417bf0db05f012c613fab233759ee076969c"
+  },
+  "reference": {
+    "path": "docs/mcr/design/ui-reference-audit-2026-11-04/user-reference.jpg",
+    "sha256": "2b3988d546f87b813d78ca13bf267730a6dd19118bd6535a2d3c3032b6f12d23"
+  },
+  "scope": "Existing actual-root synthetic HTTP/C05 fixture plus feature state fixture; no live/media/device acceptance",
+  "cases": [
+    {
+      "mode": "baseline",
+      "width": 360,
+      "errors": [],
+      "status": "FAIL",
+      "error": "Error: expect(locator).toHaveCount(expected) failed\n\nLocator:  locator('.gift-reference-row')\nExpected: 3\nReceived: 0\nTimeout:  5000ms\n\nCall log:\n  - Expect \"to.have.count\" with timeout 5000ms\n  - waiting for locator('.gift-reference-row')\n    14 × locator resolved to 0 elements\n       - unexpected value \"0\"\n\n    at captureRawStack (/Users/lhs/Desktop/mcr/frontend/node_modules/.pnpm/playwright-core@1.61.1/node_modules/playwright-core/lib/coreBundle.js:3172:17)\n    at callMatcherAsStep (/Users/lhs/Desktop/mcr/frontend/node_modules/.pnpm/playwright@1.61.1/node_modules/playwright/lib/matchers/expect.js:12877:57)\n    at Object.toHaveCount (/Users/lhs/Desktop/mcr/frontend/node_modules/.pnpm/playwright@1.61.1/node_modules/playwright/lib/matchers/expect.js:12867:23)\n    at root (/Users/lhs/.codex/worktrees/092f/mcr/docs/mcr/evidence/css-gifts-density-02/native.mjs:40:193)\n    at async run (/Users/lhs/.codex/worktrees/092f/mcr/docs/mcr/evidence/css-gifts-density-02/native.mjs:47:2)\n    at async file:///Users/lhs/.codex/worktrees/092f/mcr/docs/mcr/evidence/css-gifts-density-02/native.mjs:59:194",
+      "failure": {
+        "path": "failure-baseline-360.png",
+        "sha256": "4512fb09e91c00051c1b79e806d96c79ebf47539edfa6c27e1f8e0aa1f08f4fd",
+        "bytes": 32631
+      }
+    },
+    {
+      "mode": "baseline",
+      "width": 390,
+      "errors": [],
+      "status": "FAIL",
+      "error": "Error: expect(locator).toHaveCount(expected) failed\n\nLocator:  locator('.gift-reference-row')\nExpected: 3\nReceived: 0\nTimeout:  5000ms\n\nCall log:\n  - Expect \"to.have.count\" with timeout 5000ms\n  - waiting for locator('.gift-reference-row')\n    14 × locator resolved to 0 elements\n       - unexpected value \"0\"\n\n    at captureRawStack (/Users/lhs/Desktop/mcr/frontend/node_modules/.pnpm/playwright-core@1.61.1/node_modules/playwright-core/lib/coreBundle.js:3172:17)\n    at callMatcherAsStep (/Users/lhs/Desktop/mcr/frontend/node_modules/.pnpm/playwright@1.61.1/node_modules/playwright/lib/matchers/expect.js:12877:57)\n    at Object.toHaveCount (/Users/lhs/Desktop/mcr/frontend/node_modules/.pnpm/playwright@1.61.1/node_modules/playwright/lib/matchers/expect.js:12867:23)\n    at root (/Users/lhs/.codex/worktrees/092f/mcr/docs/mcr/evidence/css-gifts-density-02/native.mjs:40:193)\n    at async run (/Users/lhs/.codex/worktrees/092f/mcr/docs/mcr/evidence/css-gifts-density-02/native.mjs:47:2)\n    at async file:///Users/lhs/.codex/worktrees/092f/mcr/docs/mcr/evidence/css-gifts-density-02/native.mjs:59:194",
+      "failure": {
+        "path": "failure-baseline-390.png",
+        "sha256": "a599b018b8aa47b2296ad65e77181c73bad545e250ec86b19e2b5ced719205af",
+        "bytes": 33545
+      }
+    },
+    {
+      "mode": "baseline",
+      "width": 430,
+      "errors": [],
+      "status": "FAIL",
+      "error": "Error: expect(locator).toHaveCount(expected) failed\n\nLocator:  locator('.gift-reference-row')\nExpected: 3\nReceived: 0\nTimeout:  5000ms\n\nCall log:\n  - Expect \"to.have.count\" with timeout 5000ms\n  - waiting for locator('.gift-reference-row')\n    14 × locator resolved to 0 elements\n       - unexpected value \"0\"\n\n    at captureRawStack (/Users/lhs/Desktop/mcr/frontend/node_modules/.pnpm/playwright-core@1.61.1/node_modules/playwright-core/lib/coreBundle.js:3172:17)\n    at callMatcherAsStep (/Users/lhs/Desktop/mcr/frontend/node_modules/.pnpm/playwright@1.61.1/node_modules/playwright/lib/matchers/expect.js:12877:57)\n    at Object.toHaveCount (/Users/lhs/Desktop/mcr/frontend/node_modules/.pnpm/playwright@1.61.1/node_modules/playwright/lib/matchers/expect.js:12867:23)\n    at root (/Users/lhs/.codex/worktrees/092f/mcr/docs/mcr/evidence/css-gifts-density-02/native.mjs:40:193)\n    at async run (/Users/lhs/.codex/worktrees/092f/mcr/docs/mcr/evidence/css-gifts-density-02/native.mjs:47:2)\n    at async file:///Users/lhs/.codex/worktrees/092f/mcr/docs/mcr/evidence/css-gifts-density-02/native.mjs:59:194",
+      "failure": {
+        "path": "failure-baseline-430.png",
+        "sha256": "86858829616a6f7b44bf820b470e4d601a5cbcaa593be29d00c5b91c9d8844e1",
+        "bytes": 34747
+      }
+    },
+    {
+      "mode": "candidate",
+      "width": 360,
+      "errors": [],
+      "status": "FAIL",
+      "error": "Error: expect(locator).toHaveCount(expected) failed\n\nLocator:  locator('.gift-reference-row')\nExpected: 3\nReceived: 0\nTimeout:  5000ms\n\nCall log:\n  - Expect \"to.have.count\" with timeout 5000ms\n  - waiting for locator('.gift-reference-row')\n    13 × locator resolved to 0 elements\n       - unexpected value \"0\"\n\n    at captureRawStack (/Users/lhs/Desktop/mcr/frontend/node_modules/.pnpm/playwright-core@1.61.1/node_modules/playwright-core/lib/coreBundle.js:3172:17)\n    at callMatcherAsStep (/Users/lhs/Desktop/mcr/frontend/node_modules/.pnpm/playwright@1.61.1/node_modules/playwright/lib/matchers/expect.js:12877:57)\n    at Object.toHaveCount (/Users/lhs/Desktop/mcr/frontend/node_modules/.pnpm/playwright@1.61.1/node_modules/playwright/lib/matchers/expect.js:12867:23)\n    at root (/Users/lhs/.codex/worktrees/092f/mcr/docs/mcr/evidence/css-gifts-density-02/native.mjs:40:193)\n    at async run (/Users/lhs/.codex/worktrees/092f/mcr/docs/mcr/evidence/css-gifts-density-02/native.mjs:47:2)\n    at async file:///Users/lhs/.codex/worktrees/092f/mcr/docs/mcr/evidence/css-gifts-density-02/native.mjs:59:292",
+      "failure": {
+        "path": "failure-candidate-360.png",
+        "sha256": "4512fb09e91c00051c1b79e806d96c79ebf47539edfa6c27e1f8e0aa1f08f4fd",
+        "bytes": 32631
+      }
+    },
+    {
+      "mode": "candidate",
+      "width": 390,
+      "errors": [],
+      "status": "FAIL",
+      "error": "Error: expect(locator).toHaveCount(expected) failed\n\nLocator:  locator('.gift-reference-row')\nExpected: 3\nReceived: 0\nTimeout:  5000ms\n\nCall log:\n  - Expect \"to.have.count\" with timeout 5000ms\n  - waiting for locator('.gift-reference-row')\n    14 × locator resolved to 0 elements\n       - unexpected value \"0\"\n\n    at captureRawStack (/Users/lhs/Desktop/mcr/frontend/node_modules/.pnpm/playwright-core@1.61.1/node_modules/playwright-core/lib/coreBundle.js:3172:17)\n    at callMatcherAsStep (/Users/lhs/Desktop/mcr/frontend/node_modules/.pnpm/playwright@1.61.1/node_modules/playwright/lib/matchers/expect.js:12877:57)\n    at Object.toHaveCount (/Users/lhs/Desktop/mcr/frontend/node_modules/.pnpm/playwright@1.61.1/node_modules/playwright/lib/matchers/expect.js:12867:23)\n    at root (/Users/lhs/.codex/worktrees/092f/mcr/docs/mcr/evidence/css-gifts-density-02/native.mjs:40:193)\n    at async run (/Users/lhs/.codex/worktrees/092f/mcr/docs/mcr/evidence/css-gifts-density-02/native.mjs:47:2)\n    at async file:///Users/lhs/.codex/worktrees/092f/mcr/docs/mcr/evidence/css-gifts-density-02/native.mjs:59:292",
+      "failure": {
+        "path": "failure-candidate-390.png",
+        "sha256": "a599b018b8aa47b2296ad65e77181c73bad545e250ec86b19e2b5ced719205af",
+        "bytes": 33545
+      }
+    },
+    {
+      "mode": "candidate",
+      "width": 430,
+      "errors": [],
+      "status": "FAIL",
+      "error": "Error: expect(locator).toHaveCount(expected) failed\n\nLocator:  locator('.gift-reference-row')\nExpected: 3\nReceived: 0\nTimeout:  5000ms\n\nCall log:\n  - Expect \"to.have.count\" with timeout 5000ms\n  - waiting for locator('.gift-reference-row')\n    14 × locator resolved to 0 elements\n       - unexpected value \"0\"\n\n    at captureRawStack (/Users/lhs/Desktop/mcr/frontend/node_modules/.pnpm/playwright-core@1.61.1/node_modules/playwright-core/lib/coreBundle.js:3172:17)\n    at callMatcherAsStep (/Users/lhs/Desktop/mcr/frontend/node_modules/.pnpm/playwright@1.61.1/node_modules/playwright/lib/matchers/expect.js:12877:57)\n    at Object.toHaveCount (/Users/lhs/Desktop/mcr/frontend/node_modules/.pnpm/playwright@1.61.1/node_modules/playwright/lib/matchers/expect.js:12867:23)\n    at root (/Users/lhs/.codex/worktrees/092f/mcr/docs/mcr/evidence/css-gifts-density-02/native.mjs:40:193)\n    at async run (/Users/lhs/.codex/worktrees/092f/mcr/docs/mcr/evidence/css-gifts-density-02/native.mjs:47:2)\n    at async file:///Users/lhs/.codex/worktrees/092f/mcr/docs/mcr/evidence/css-gifts-density-02/native.mjs:59:292",
+      "failure": {
+        "path": "failure-candidate-430.png",
+        "sha256": "86858829616a6f7b44bf820b470e4d601a5cbcaa593be29d00c5b91c9d8844e1",
+        "bytes": 34747
+      }
+    }
+  ],
+  "errors": [
+    {
+      "mode": "baseline",
+      "width": 360,
+      "error": "expect(locator).toHaveCount(expected) failed\n\nLocator:  locator('.gift-reference-row')\nExpected: 3\nReceived: 0\nTimeout:  5000ms\n\nCall log:\n  - Expect \"to.have.count\" with timeout 5000ms\n  - waiting for locator('.gift-reference-row')\n    14 × locator resolved to 0 elements\n       - unexpected value \"0\"\n"
+    },
+    {
+      "mode": "baseline",
+      "width": 390,
+      "error": "expect(locator).toHaveCount(expected) failed\n\nLocator:  locator('.gift-reference-row')\nExpected: 3\nReceived: 0\nTimeout:  5000ms\n\nCall log:\n  - Expect \"to.have.count\" with timeout 5000ms\n  - waiting for locator('.gift-reference-row')\n    14 × locator resolved to 0 elements\n       - unexpected value \"0\"\n"
+    },
+    {
+      "mode": "baseline",
+      "width": 430,
+      "error": "expect(locator).toHaveCount(expected) failed\n\nLocator:  locator('.gift-reference-row')\nExpected: 3\nReceived: 0\nTimeout:  5000ms\n\nCall log:\n  - Expect \"to.have.count\" with timeout 5000ms\n  - waiting for locator('.gift-reference-row')\n    14 × locator resolved to 0 elements\n       - unexpected value \"0\"\n"
+    },
+    {
+      "mode": "candidate",
+      "width": 360,
+      "error": "expect(locator).toHaveCount(expected) failed\n\nLocator:  locator('.gift-reference-row')\nExpected: 3\nReceived: 0\nTimeout:  5000ms\n\nCall log:\n  - Expect \"to.have.count\" with timeout 5000ms\n  - waiting for locator('.gift-reference-row')\n    13 × locator resolved to 0 elements\n       - unexpected value \"0\"\n"
+    },
+    {
+      "mode": "candidate",
+      "width": 390,
+      "error": "expect(locator).toHaveCount(expected) failed\n\nLocator:  locator('.gift-reference-row')\nExpected: 3\nReceived: 0\nTimeout:  5000ms\n\nCall log:\n  - Expect \"to.have.count\" with timeout 5000ms\n  - waiting for locator('.gift-reference-row')\n    14 × locator resolved to 0 elements\n       - unexpected value \"0\"\n"
+    },
+    {
+      "mode": "candidate",
+      "width": 430,
+      "error": "expect(locator).toHaveCount(expected) failed\n\nLocator:  locator('.gift-reference-row')\nExpected: 3\nReceived: 0\nTimeout:  5000ms\n\nCall log:\n  - Expect \"to.have.count\" with timeout 5000ms\n  - waiting for locator('.gift-reference-row')\n    14 × locator resolved to 0 elements\n       - unexpected value \"0\"\n"
+    },
+    {
+      "workflow": "Error: ENOENT: no such file or directory, open '/Users/lhs/.codex/worktrees/092f/mcr/docs/mcr/evidence/css-gifts-density-02/round-01/baseline-360.png'\n    at async open (node:internal/fs/promises:1345:25)\n    at async readFile (node:internal/fs/promises:2003:14)\n    at async inline (file:///Users/lhs/.codex/worktrees/092f/mcr/docs/mcr/evidence/css-gifts-density-02/native.mjs:60:86)\n    at async file:///Users/lhs/.codex/worktrees/092f/mcr/docs/mcr/evidence/css-gifts-density-02/native.mjs:60:883"
+    }
+  ],
+  "minFree": 26591813632,
+  "peaks": {
+    "durable": 234239,
+    "temp": 52762999,
+    "whole": 52958837
+  },
+  "limits": {
+    "durable": 25165824,
+    "temp": 125829120,
+    "whole": 150994944
+  },
+  "changedPaths": [
+    "docs/mcr/evidence/css-gifts-density-02/native.mjs",
+    "docs/mcr/evidence/css-gifts-density-02/supervise.py",
+    "docs/mcr/frontend/css-gifts-density-02.md",
+    "frontend/src/features/gift-discovery/ui/reference-gifts.css"
+  ],
+  "readsetPins": {
+    "frontend/src/features/gift-discovery/ui/gifts.css": {
+      "candidate": "f10d645469ba821be72bbecf88ce97f9229ee16b6d57e8a95e112c75970f8f2d",
+      "baseline": "f10d645469ba821be72bbecf88ce97f9229ee16b6d57e8a95e112c75970f8f2d"
+    },
+    "frontend/src/features/gift-discovery/ui/reference-gifts.css": {
+      "candidate": "0e6e68a6219857b49e308b83f340417bf0db05f012c613fab233759ee076969c",
+      "baseline": "bfc7fcd0f0d5cc32fad690a272502af361392e272e38cc9b35fb9fafe8e5ae91"
+    },
+    "frontend/src/features/gift-discovery/ui/Gifts.tsx": {
+      "candidate": "88ad2761bea29adbcbc3fe7c5a1d0ede202acba58a4ab5a32f12ca1ec1b2ea2d",
+      "baseline": "88ad2761bea29adbcbc3fe7c5a1d0ede202acba58a4ab5a32f12ca1ec1b2ea2d"
+    },
+    "frontend/src/features/gift-discovery/ui/reference-presentation.tsx": {
+      "candidate": "2c71518ba195f9e50f0e9888ab0ef6fe0b2e0d02d969d4e1f4cf1f3165612754",
+      "baseline": "2c71518ba195f9e50f0e9888ab0ef6fe0b2e0d02d969d4e1f4cf1f3165612754"
+    },
+    "frontend/src/app/__tests__/cozy-backgrounds-v1/preview.tsx": {
+      "candidate": "5fb0fed19cf9b2fe14a8179052d5cfd639514c879952beab67e1d64b9529e261",
+      "baseline": "5fb0fed19cf9b2fe14a8179052d5cfd639514c879952beab67e1d64b9529e261"
+    },
+    "frontend/src/features/gift-discovery/__tests__/reference-native/preview.tsx": {
+      "candidate": "2979b33a6067f766ff8b979693d170d876fdb9de14a7c2f404a5c539b42cf066",
+      "baseline": "2979b33a6067f766ff8b979693d170d876fdb9de14a7c2f404a5c539b42cf066"
+    },
+    "frontend/e2e/reference-integrated/data.ts": {
+      "candidate": "186ca7d28cca66f2eab4fe87f95fc76e5a4acca432b109abb7216ddfc404a994",
+      "baseline": "186ca7d28cca66f2eab4fe87f95fc76e5a4acca432b109abb7216ddfc404a994"
+    },
+    "frontend/pnpm-lock.yaml": {
+      "candidate": "47ca44459819ad0e887d2f4f93394fdf3b1053b8f45edc9ceb0236981feee1f6",
+      "baseline": "47ca44459819ad0e887d2f4f93394fdf3b1053b8f45edc9ceb0236981feee1f6"
+    },
+    "frontend/src/shared/styles/cozy-community-backgrounds-v1.css": {
+      "candidate": "d26dd8fbee928539f2689ccd9bb6269e4cb964c58b78e8cc86afbd894f228504",
+      "baseline": "d26dd8fbee928539f2689ccd9bb6269e4cb964c58b78e8cc86afbd894f228504"
+    }
+  },
+  "browser": "156.0.8078.80",
+  "finishedAt": "2026-11-04T16:59:38.461Z",
+  "status": "FAIL",
+  "cleanup": {
+    "browserClosed": true,
+    "viteClosed": true,
+    "ownTempRemoved": true
+  }
+}

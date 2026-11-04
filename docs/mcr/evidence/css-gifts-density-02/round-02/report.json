@@ -1,0 +1,2017 @@
+{
+  "task": "CSS-GIFTS-DENSITY-02",
+  "job": "CSS-GIFTS-DENSITY-BROWSER2-202611041658Z",
+  "base": "e7bd68cfa35fb620e2eed060a71a72e50718b9dc",
+  "candidate": "fedc7aa3e52aea72bfd148b4349e3da0194d8d72",
+  "round": "round-02",
+  "startedAt": "2026-11-04T17:00:38.704Z",
+  "cssPins": {
+    "frontend/src/features/gift-discovery/ui/gifts.css": "f10d645469ba821be72bbecf88ce97f9229ee16b6d57e8a95e112c75970f8f2d",
+    "frontend/src/features/gift-discovery/ui/reference-gifts.css": "0e6e68a6219857b49e308b83f340417bf0db05f012c613fab233759ee076969c"
+  },
+  "reference": {
+    "path": "docs/mcr/design/ui-reference-audit-2026-11-04/user-reference.jpg",
+    "sha256": "2b3988d546f87b813d78ca13bf267730a6dd19118bd6535a2d3c3032b6f12d23"
+  },
+  "scope": "Existing actual-root synthetic HTTP/C05 fixture plus feature state fixture; no live/media/device acceptance",
+  "cases": [
+    {
+      "mode": "baseline",
+      "width": 360,
+      "errors": [],
+      "geometry": {
+        "overflow": false,
+        "text": "BROWSE\nMY GIVING\nMY PICKUPS\nNo photo\nSticker pack · fixture\n\nby Fixture fan · 1 left\nof 3\n\nEvent place reference\n\n17:00–18:00 KST\n\nRESERVE\nNo photo\nHand banner · fixture\n\nby Fixture fan · 1 left\nof 3\n\nEvent place reference\n\n17:00–18:00 KST\n\nRESERVE\nNo photo\nCustom button · fixture\n\nby Fixture fan · 1 left\nof 3\n\nEvent place reference\n\n17:00–18:00 KST\n\nRESERVE\nFilter giveaways\n\nAvailability is checked in the reservation journey. Stock and pickup windows can change.\n\nMy gifts →",
+        "rows": [
+          {
+            "rect": {
+              "x": 15,
+              "y": 165,
+              "width": 330,
+              "height": 125,
+              "top": 165,
+              "right": 345,
+              "bottom": 290,
+              "left": 15
+            },
+            "image": {
+              "x": 24,
+              "y": 182.25,
+              "width": 90.46875,
+              "height": 90.46875,
+              "top": 182.25,
+              "right": 114.46875,
+              "bottom": 272.71875,
+              "left": 24
+            },
+            "title": {
+              "x": 128.46875,
+              "y": 173.953125,
+              "width": 207.53125,
+              "height": 44,
+              "top": 173.953125,
+              "right": 336,
+              "bottom": 217.953125,
+              "left": 128.46875
+            },
+            "location": {
+              "x": 128.46875,
+              "y": 241.9375,
+              "width": 111.53125,
+              "height": 34.1875,
+              "top": 241.9375,
+              "right": 240,
+              "bottom": 276.125,
+              "left": 128.46875
+            },
+            "action": {
+              "x": 254,
+              "y": 237.03125,
+              "width": 82,
+              "height": 44,
+              "top": 237.03125,
+              "right": 336,
+              "bottom": 281.03125,
+              "left": 254
+            },
+            "background": "rgb(233, 223, 238) url(\"http://127.0.0.1:5296/backgrounds/cute-community-v1/gifts-backdrop.svg\") no-repeat scroll 50% 50% / 100% 100% padding-box border-box",
+            "clip": [
+              {
+                "text": "Sticker pack · fixture",
+                "width": 208,
+                "scroll": 208,
+                "height": 44,
+                "scrollHeight": 44
+              },
+              {
+                "text": "by Fixture fan · 1 left of 3",
+                "width": 208,
+                "scroll": 208,
+                "height": 15,
+                "scrollHeight": 15
+              },
+              {
+                "text": "Event place reference",
+                "width": 112,
+                "scroll": 112,
+                "height": 14,
+                "scrollHeight": 14
+              },
+              {
+                "text": "17:00–18:00 KST",
+                "width": 98,
+                "scroll": 98,
+                "height": 13,
+                "scrollHeight": 13
+              }
+            ]
+          },
+          {
+            "rect": {
+              "x": 15,
+              "y": 296,
+              "width": 330,
+              "height": 125,
+              "top": 296,
+              "right": 345,
+              "bottom": 421,
+              "left": 15
+            },
+            "image": {
+              "x": 24,
+              "y": 313.25,
+              "width": 90.46875,
+              "height": 90.46875,
+              "top": 313.25,
+              "right": 114.46875,
+              "bottom": 403.71875,
+              "left": 24
+            },
+            "title": {
+              "x": 128.46875,
+              "y": 304.953125,
+              "width": 207.53125,
+              "height": 44,
+              "top": 304.953125,
+              "right": 336,
+              "bottom": 348.953125,
+              "left": 128.46875
+            },
+            "location": {
+              "x": 128.46875,
+              "y": 372.9375,
+              "width": 111.53125,
+              "height": 34.1875,
+              "top": 372.9375,
+              "right": 240,
+              "bottom": 407.125,
+              "left": 128.46875
+            },
+            "action": {
+              "x": 254,
+              "y": 368.03125,
+              "width": 82,
+              "height": 44,
+              "top": 368.03125,
+              "right": 336,
+              "bottom": 412.03125,
+              "left": 254
+            },
+            "background": "rgb(233, 223, 238) url(\"http://127.0.0.1:5296/backgrounds/cute-community-v1/gifts-backdrop.svg\") no-repeat scroll 50% 50% / 100% 100% padding-box border-box",
+            "clip": [
+              {
+                "text": "Hand banner · fixture",
+                "width": 208,
+                "scroll": 208,
+                "height": 44,
+                "scrollHeight": 44
+              },
+              {
+                "text": "by Fixture fan · 1 left of 3",
+                "width": 208,
+                "scroll": 208,
+                "height": 15,
+                "scrollHeight": 15
+              },
+              {
+                "text": "Event place reference",
+                "width": 112,
+                "scroll": 112,
+                "height": 14,
+                "scrollHeight": 14
+              },
+              {
+                "text": "17:00–18:00 KST",
+                "width": 98,
+                "scroll": 98,
+                "height": 13,
+                "scrollHeight": 13
+              }
+            ]
+          },
+          {
+            "rect": {
+              "x": 15,
+              "y": 427,
+              "width": 330,
+              "height": 125,
+              "top": 427,
+              "right": 345,
+              "bottom": 552,
+              "left": 15
+            },
+            "image": {
+              "x": 24,
+              "y": 444.25,
+              "width": 90.46875,
+              "height": 90.46875,
+              "top": 444.25,
+              "right": 114.46875,
+              "bottom": 534.71875,
+              "left": 24
+            },
+            "title": {
+              "x": 128.46875,
+              "y": 435.953125,
+              "width": 207.53125,
+              "height": 44,
+              "top": 435.953125,
+              "right": 336,
+              "bottom": 479.953125,
+              "left": 128.46875
+            },
+            "location": {
+              "x": 128.46875,
+              "y": 503.9375,
+              "width": 111.53125,
+              "height": 34.1875,
+              "top": 503.9375,
+              "right": 240,
+              "bottom": 538.125,
+              "left": 128.46875
+            },
+            "action": {
+              "x": 254,
+              "y": 499.03125,
+              "width": 82,
+              "height": 44,
+              "top": 499.03125,
+              "right": 336,
+              "bottom": 543.03125,
+              "left": 254
+            },
+            "background": "rgb(233, 223, 238) url(\"http://127.0.0.1:5296/backgrounds/cute-community-v1/gifts-backdrop.svg\") no-repeat scroll 50% 50% / 100% 100% padding-box border-box",
+            "clip": [
+              {
+                "text": "Custom button · fixture",
+                "width": 208,
+                "scroll": 208,
+                "height": 44,
+                "scrollHeight": 44
+              },
+              {
+                "text": "by Fixture fan · 1 left of 3",
+                "width": 208,
+                "scroll": 208,
+                "height": 15,
+                "scrollHeight": 15
+              },
+              {
+                "text": "Event place reference",
+                "width": 112,
+                "scroll": 112,
+                "height": 14,
+                "scrollHeight": 14
+              },
+              {
+                "text": "17:00–18:00 KST",
+                "width": 98,
+                "scroll": 98,
+                "height": 13,
+                "scrollHeight": 13
+              }
+            ]
+          }
+        ]
+      },
+      "world": {
+        "scenario": "enabled",
+        "capabilityMode": "TEST_ONLY synthetic capabilities",
+        "classification": "TEST_ONLY",
+        "policy": {
+          "classification": "TEST_ONLY",
+          "evidence": "Synthetic native fixture, not measured platform guarantees",
+          "maxAgeMs": 30000,
+          "uncertaintyMs": 1000,
+          "maxElapsedRate": 1.01,
+          "maxObservationGapMs": 5000
+        },
+        "path": "/gifts",
+        "published": false,
+        "phase": "idle",
+        "entities": 0,
+        "avatarPin": {
+          "manifest_id": "mcr_selected_static_20261103",
+          "manifest_version": 1,
+          "content_hash": "sha256:0627c7d178b22535a561e1270db6d8bf9e2383ba84d03a63962e48e565c59b2b"
+        },
+        "requests": [
+          {
+            "path": "/api/auth/capabilities",
+            "method": "GET"
+          },
+          {
+            "path": "/api/auth/login",
+            "method": "POST"
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/bootstrap",
+            "method": "GET"
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/giveaways",
+            "method": "GET"
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/rooms",
+            "method": "GET"
+          }
+        ],
+        "sockets": 0,
+        "activeSockets": 0,
+        "socketPeak": 0,
+        "canvases": 0,
+        "disposed": false
+      },
+      "status": "FAIL",
+      "error": "AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:\n\n0 !== 1\n\n    at run (file:///Users/lhs/.codex/worktrees/092f/mcr/docs/mcr/evidence/css-gifts-density-02/native.mjs:47:359)\n    at async file:///Users/lhs/.codex/worktrees/092f/mcr/docs/mcr/evidence/css-gifts-density-02/native.mjs:59:194",
+      "failure": {
+        "path": "failure-baseline-360.png",
+        "sha256": "2a34494608faf7e0d87cd09ee6626241f7a0ea7e112e314697f736b5384f1bde",
+        "bytes": 62647
+      }
+    },
+    {
+      "mode": "baseline",
+      "width": 390,
+      "errors": [],
+      "geometry": {
+        "overflow": false,
+        "text": "BROWSE\nMY GIVING\nMY PICKUPS\nNo photo\nSticker pack · fixture\n\nby Fixture fan · 1 left\nof 3\n\nEvent place reference\n\n17:00–18:00 KST\n\nRESERVE\nNo photo\nHand banner · fixture\n\nby Fixture fan · 1 left\nof 3\n\nEvent place reference\n\n17:00–18:00 KST\n\nRESERVE\nNo photo\nCustom button · fixture\n\nby Fixture fan · 1 left\nof 3\n\nEvent place reference\n\n17:00–18:00 KST\n\nRESERVE\nFilter giveaways\n\nAvailability is checked in the reservation journey. Stock and pickup windows can change.\n\nMy gifts →",
+        "rows": [
+          {
+            "rect": {
+              "x": 15,
+              "y": 165,
+              "width": 360,
+              "height": 125,
+              "top": 165,
+              "right": 375,
+              "bottom": 290,
+              "left": 15
+            },
+            "image": {
+              "x": 24,
+              "y": 177.90625,
+              "width": 99.171875,
+              "height": 99.171875,
+              "top": 177.90625,
+              "right": 123.171875,
+              "bottom": 277.078125,
+              "left": 24
+            },
+            "title": {
+              "x": 137.171875,
+              "y": 173.328125,
+              "width": 228.828125,
+              "height": 44,
+              "top": 173.328125,
+              "right": 366,
+              "bottom": 217.328125,
+              "left": 137.171875
+            },
+            "location": {
+              "x": 137.171875,
+              "y": 242.375,
+              "width": 132.828125,
+              "height": 34.546875,
+              "top": 242.375,
+              "right": 270,
+              "bottom": 276.921875,
+              "left": 137.171875
+            },
+            "action": {
+              "x": 284,
+              "y": 237.65625,
+              "width": 82,
+              "height": 44,
+              "top": 237.65625,
+              "right": 366,
+              "bottom": 281.65625,
+              "left": 284
+            },
+            "background": "rgb(233, 223, 238) url(\"http://127.0.0.1:5296/backgrounds/cute-community-v1/gifts-backdrop.svg\") no-repeat scroll 50% 50% / 100% 100% padding-box border-box",
+            "clip": [
+              {
+                "text": "Sticker pack · fixture",
+                "width": 229,
+                "scroll": 229,
+                "height": 44,
+                "scrollHeight": 44
+              },
+              {
+                "text": "by Fixture fan · 1 left of 3",
+                "width": 229,
+                "scroll": 229,
+                "height": 16,
+                "scrollHeight": 16
+              },
+              {
+                "text": "Event place reference",
+                "width": 133,
+                "scroll": 133,
+                "height": 14,
+                "scrollHeight": 14
+              },
+              {
+                "text": "17:00–18:00 KST",
+                "width": 119,
+                "scroll": 119,
+                "height": 13,
+                "scrollHeight": 13
+              }
+            ]
+          },
+          {
+            "rect": {
+              "x": 15,
+              "y": 296,
+              "width": 360,
+              "height": 125,
+              "top": 296,
+              "right": 375,
+              "bottom": 421,
+              "left": 15
+            },
+            "image": {
+              "x": 24,
+              "y": 308.90625,
+              "width": 99.171875,
+              "height": 99.171875,
+              "top": 308.90625,
+              "right": 123.171875,
+              "bottom": 408.078125,
+              "left": 24
+            },
+            "title": {
+              "x": 137.171875,
+              "y": 304.328125,
+              "width": 228.828125,
+              "height": 44,
+              "top": 304.328125,
+              "right": 366,
+              "bottom": 348.328125,
+              "left": 137.171875
+            },
+            "location": {
+              "x": 137.171875,
+              "y": 373.375,
+              "width": 132.828125,
+              "height": 34.546875,
+              "top": 373.375,
+              "right": 270,
+              "bottom": 407.921875,
+              "left": 137.171875
+            },
+            "action": {
+              "x": 284,
+              "y": 368.65625,
+              "width": 82,
+              "height": 44,
+              "top": 368.65625,
+              "right": 366,
+              "bottom": 412.65625,
+              "left": 284
+            },
+            "background": "rgb(233, 223, 238) url(\"http://127.0.0.1:5296/backgrounds/cute-community-v1/gifts-backdrop.svg\") no-repeat scroll 50% 50% / 100% 100% padding-box border-box",
+            "clip": [
+              {
+                "text": "Hand banner · fixture",
+                "width": 229,
+                "scroll": 229,
+                "height": 44,
+                "scrollHeight": 44
+              },
+              {
+                "text": "by Fixture fan · 1 left of 3",
+                "width": 229,
+                "scroll": 229,
+                "height": 16,
+                "scrollHeight": 16
+              },
+              {
+                "text": "Event place reference",
+                "width": 133,
+                "scroll": 133,
+                "height": 14,
+                "scrollHeight": 14
+              },
+              {
+                "text": "17:00–18:00 KST",
+                "width": 119,
+                "scroll": 119,
+                "height": 13,
+                "scrollHeight": 13
+              }
+            ]
+          },
+          {
+            "rect": {
+              "x": 15,
+              "y": 427,
+              "width": 360,
+              "height": 125,
+              "top": 427,
+              "right": 375,
+              "bottom": 552,
+              "left": 15
+            },
+            "image": {
+              "x": 24,
+              "y": 439.90625,
+              "width": 99.171875,
+              "height": 99.171875,
+              "top": 439.90625,
+              "right": 123.171875,
+              "bottom": 539.078125,
+              "left": 24
+            },
+            "title": {
+              "x": 137.171875,
+              "y": 435.328125,
+              "width": 228.828125,
+              "height": 44,
+              "top": 435.328125,
+              "right": 366,
+              "bottom": 479.328125,
+              "left": 137.171875
+            },
+            "location": {
+              "x": 137.171875,
+              "y": 504.375,
+              "width": 132.828125,
+              "height": 34.546875,
+              "top": 504.375,
+              "right": 270,
+              "bottom": 538.921875,
+              "left": 137.171875
+            },
+            "action": {
+              "x": 284,
+              "y": 499.65625,
+              "width": 82,
+              "height": 44,
+              "top": 499.65625,
+              "right": 366,
+              "bottom": 543.65625,
+              "left": 284
+            },
+            "background": "rgb(233, 223, 238) url(\"http://127.0.0.1:5296/backgrounds/cute-community-v1/gifts-backdrop.svg\") no-repeat scroll 50% 50% / 100% 100% padding-box border-box",
+            "clip": [
+              {
+                "text": "Custom button · fixture",
+                "width": 229,
+                "scroll": 229,
+                "height": 44,
+                "scrollHeight": 44
+              },
+              {
+                "text": "by Fixture fan · 1 left of 3",
+                "width": 229,
+                "scroll": 229,
+                "height": 16,
+                "scrollHeight": 16
+              },
+              {
+                "text": "Event place reference",
+                "width": 133,
+                "scroll": 133,
+                "height": 14,
+                "scrollHeight": 14
+              },
+              {
+                "text": "17:00–18:00 KST",
+                "width": 119,
+                "scroll": 119,
+                "height": 13,
+                "scrollHeight": 13
+              }
+            ]
+          }
+        ]
+      },
+      "world": {
+        "scenario": "enabled",
+        "capabilityMode": "TEST_ONLY synthetic capabilities",
+        "classification": "TEST_ONLY",
+        "policy": {
+          "classification": "TEST_ONLY",
+          "evidence": "Synthetic native fixture, not measured platform guarantees",
+          "maxAgeMs": 30000,
+          "uncertaintyMs": 1000,
+          "maxElapsedRate": 1.01,
+          "maxObservationGapMs": 5000
+        },
+        "path": "/gifts",
+        "published": false,
+        "phase": "idle",
+        "entities": 0,
+        "avatarPin": {
+          "manifest_id": "mcr_selected_static_20261103",
+          "manifest_version": 1,
+          "content_hash": "sha256:0627c7d178b22535a561e1270db6d8bf9e2383ba84d03a63962e48e565c59b2b"
+        },
+        "requests": [
+          {
+            "path": "/api/auth/capabilities",
+            "method": "GET"
+          },
+          {
+            "path": "/api/auth/login",
+            "method": "POST"
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/bootstrap",
+            "method": "GET"
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/giveaways",
+            "method": "GET"
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/rooms",
+            "method": "GET"
+          }
+        ],
+        "sockets": 0,
+        "activeSockets": 0,
+        "socketPeak": 0,
+        "canvases": 0,
+        "disposed": false
+      },
+      "status": "FAIL",
+      "error": "AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:\n\n0 !== 1\n\n    at run (file:///Users/lhs/.codex/worktrees/092f/mcr/docs/mcr/evidence/css-gifts-density-02/native.mjs:47:359)\n    at async file:///Users/lhs/.codex/worktrees/092f/mcr/docs/mcr/evidence/css-gifts-density-02/native.mjs:59:194",
+      "failure": {
+        "path": "failure-baseline-390.png",
+        "sha256": "ac6b5cd5beffbb26710ac454baf517d67b9d09bda136a50c928314974f9607f5",
+        "bytes": 66329
+      }
+    },
+    {
+      "mode": "baseline",
+      "width": 430,
+      "errors": [],
+      "geometry": {
+        "overflow": false,
+        "text": "BROWSE\nMY GIVING\nMY PICKUPS\nNo photo\nSticker pack · fixture\n\nby Fixture fan · 1 left\nof 3\n\nEvent place reference\n\n17:00–18:00 KST\n\nRESERVE\nNo photo\nHand banner · fixture\n\nby Fixture fan · 1 left\nof 3\n\nEvent place reference\n\n17:00–18:00 KST\n\nRESERVE\nNo photo\nCustom button · fixture\n\nby Fixture fan · 1 left\nof 3\n\nEvent place reference\n\n17:00–18:00 KST\n\nRESERVE\nFilter giveaways\n\nAvailability is checked in the reservation journey. Stock and pickup windows can change.\n\nMy gifts →",
+        "rows": [
+          {
+            "rect": {
+              "x": 15,
+              "y": 165,
+              "width": 400,
+              "height": 125,
+              "top": 165,
+              "right": 415,
+              "bottom": 290,
+              "left": 15
+            },
+            "image": {
+              "x": 24,
+              "y": 172.109375,
+              "width": 110.765625,
+              "height": 110.765625,
+              "top": 172.109375,
+              "right": 134.765625,
+              "bottom": 282.875,
+              "left": 24
+            },
+            "title": {
+              "x": 148.765625,
+              "y": 172.109375,
+              "width": 257.234375,
+              "height": 44,
+              "top": 172.109375,
+              "right": 406,
+              "bottom": 216.109375,
+              "left": 148.765625
+            },
+            "location": {
+              "x": 148.765625,
+              "y": 243.078125,
+              "width": 161.234375,
+              "height": 35.578125,
+              "top": 243.078125,
+              "right": 310,
+              "bottom": 278.65625,
+              "left": 148.765625
+            },
+            "action": {
+              "x": 324,
+              "y": 238.875,
+              "width": 82,
+              "height": 44,
+              "top": 238.875,
+              "right": 406,
+              "bottom": 282.875,
+              "left": 324
+            },
+            "background": "rgb(233, 223, 238) url(\"http://127.0.0.1:5296/backgrounds/cute-community-v1/gifts-backdrop.svg\") no-repeat scroll 50% 50% / 100% 100% padding-box border-box",
+            "clip": [
+              {
+                "text": "Sticker pack · fixture",
+                "width": 257,
+                "scroll": 257,
+                "height": 44,
+                "scrollHeight": 44
+              },
+              {
+                "text": "by Fixture fan · 1 left of 3",
+                "width": 257,
+                "scroll": 257,
+                "height": 19,
+                "scrollHeight": 19
+              },
+              {
+                "text": "Event place reference",
+                "width": 161,
+                "scroll": 161,
+                "height": 15,
+                "scrollHeight": 15
+              },
+              {
+                "text": "17:00–18:00 KST",
+                "width": 147,
+                "scroll": 147,
+                "height": 13,
+                "scrollHeight": 13
+              }
+            ]
+          },
+          {
+            "rect": {
+              "x": 15,
+              "y": 296,
+              "width": 400,
+              "height": 125,
+              "top": 296,
+              "right": 415,
+              "bottom": 421,
+              "left": 15
+            },
+            "image": {
+              "x": 24,
+              "y": 303.109375,
+              "width": 110.765625,
+              "height": 110.765625,
+              "top": 303.109375,
+              "right": 134.765625,
+              "bottom": 413.875,
+              "left": 24
+            },
+            "title": {
+              "x": 148.765625,
+              "y": 303.109375,
+              "width": 257.234375,
+              "height": 44,
+              "top": 303.109375,
+              "right": 406,
+              "bottom": 347.109375,
+              "left": 148.765625
+            },
+            "location": {
+              "x": 148.765625,
+              "y": 374.078125,
+              "width": 161.234375,
+              "height": 35.578125,
+              "top": 374.078125,
+              "right": 310,
+              "bottom": 409.65625,
+              "left": 148.765625
+            },
+            "action": {
+              "x": 324,
+              "y": 369.875,
+              "width": 82,
+              "height": 44,
+              "top": 369.875,
+              "right": 406,
+              "bottom": 413.875,
+              "left": 324
+            },
+            "background": "rgb(233, 223, 238) url(\"http://127.0.0.1:5296/backgrounds/cute-community-v1/gifts-backdrop.svg\") no-repeat scroll 50% 50% / 100% 100% padding-box border-box",
+            "clip": [
+              {
+                "text": "Hand banner · fixture",
+                "width": 257,
+                "scroll": 257,
+                "height": 44,
+                "scrollHeight": 44
+              },
+              {
+                "text": "by Fixture fan · 1 left of 3",
+                "width": 257,
+                "scroll": 257,
+                "height": 19,
+                "scrollHeight": 19
+              },
+              {
+                "text": "Event place reference",
+                "width": 161,
+                "scroll": 161,
+                "height": 15,
+                "scrollHeight": 15
+              },
+              {
+                "text": "17:00–18:00 KST",
+                "width": 147,
+                "scroll": 147,
+                "height": 13,
+                "scrollHeight": 13
+              }
+            ]
+          },
+          {
+            "rect": {
+              "x": 15,
+              "y": 427,
+              "width": 400,
+              "height": 125,
+              "top": 427,
+              "right": 415,
+              "bottom": 552,
+              "left": 15
+            },
+            "image": {
+              "x": 24,
+              "y": 434.109375,
+              "width": 110.765625,
+              "height": 110.765625,
+              "top": 434.109375,
+              "right": 134.765625,
+              "bottom": 544.875,
+              "left": 24
+            },
+            "title": {
+              "x": 148.765625,
+              "y": 434.109375,
+              "width": 257.234375,
+              "height": 44,
+              "top": 434.109375,
+              "right": 406,
+              "bottom": 478.109375,
+              "left": 148.765625
+            },
+            "location": {
+              "x": 148.765625,
+              "y": 505.078125,
+              "width": 161.234375,
+              "height": 35.578125,
+              "top": 505.078125,
+              "right": 310,
+              "bottom": 540.65625,
+              "left": 148.765625
+            },
+            "action": {
+              "x": 324,
+              "y": 500.875,
+              "width": 82,
+              "height": 44,
+              "top": 500.875,
+              "right": 406,
+              "bottom": 544.875,
+              "left": 324
+            },
+            "background": "rgb(233, 223, 238) url(\"http://127.0.0.1:5296/backgrounds/cute-community-v1/gifts-backdrop.svg\") no-repeat scroll 50% 50% / 100% 100% padding-box border-box",
+            "clip": [
+              {
+                "text": "Custom button · fixture",
+                "width": 257,
+                "scroll": 257,
+                "height": 44,
+                "scrollHeight": 44
+              },
+              {
+                "text": "by Fixture fan · 1 left of 3",
+                "width": 257,
+                "scroll": 257,
+                "height": 19,
+                "scrollHeight": 19
+              },
+              {
+                "text": "Event place reference",
+                "width": 161,
+                "scroll": 161,
+                "height": 15,
+                "scrollHeight": 15
+              },
+              {
+                "text": "17:00–18:00 KST",
+                "width": 147,
+                "scroll": 147,
+                "height": 13,
+                "scrollHeight": 13
+              }
+            ]
+          }
+        ]
+      },
+      "world": {
+        "scenario": "enabled",
+        "capabilityMode": "TEST_ONLY synthetic capabilities",
+        "classification": "TEST_ONLY",
+        "policy": {
+          "classification": "TEST_ONLY",
+          "evidence": "Synthetic native fixture, not measured platform guarantees",
+          "maxAgeMs": 30000,
+          "uncertaintyMs": 1000,
+          "maxElapsedRate": 1.01,
+          "maxObservationGapMs": 5000
+        },
+        "path": "/gifts",
+        "published": false,
+        "phase": "idle",
+        "entities": 0,
+        "avatarPin": {
+          "manifest_id": "mcr_selected_static_20261103",
+          "manifest_version": 1,
+          "content_hash": "sha256:0627c7d178b22535a561e1270db6d8bf9e2383ba84d03a63962e48e565c59b2b"
+        },
+        "requests": [
+          {
+            "path": "/api/auth/capabilities",
+            "method": "GET"
+          },
+          {
+            "path": "/api/auth/login",
+            "method": "POST"
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/bootstrap",
+            "method": "GET"
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/giveaways",
+            "method": "GET"
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/rooms",
+            "method": "GET"
+          }
+        ],
+        "sockets": 0,
+        "activeSockets": 0,
+        "socketPeak": 0,
+        "canvases": 0,
+        "disposed": false
+      },
+      "status": "FAIL",
+      "error": "AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:\n\n0 !== 1\n\n    at run (file:///Users/lhs/.codex/worktrees/092f/mcr/docs/mcr/evidence/css-gifts-density-02/native.mjs:47:359)\n    at async file:///Users/lhs/.codex/worktrees/092f/mcr/docs/mcr/evidence/css-gifts-density-02/native.mjs:59:194",
+      "failure": {
+        "path": "failure-baseline-430.png",
+        "sha256": "49713ff1ce8b8ebba4e9632695ebf70e1a857cf8d105675d71b4b21906d852d8",
+        "bytes": 70256
+      }
+    },
+    {
+      "mode": "candidate",
+      "width": 360,
+      "errors": [],
+      "geometry": {
+        "overflow": false,
+        "text": "BROWSE\nMY GIVING\nMY PICKUPS\nNo photo\nSticker pack · fixture\n\nby Fixture fan · 1 left\nof 3\n\nEvent place reference\n\n17:00–18:00 KST\n\nRESERVE\nNo photo\nHand banner · fixture\n\nby Fixture fan · 1 left\nof 3\n\nEvent place reference\n\n17:00–18:00 KST\n\nRESERVE\nNo photo\nCustom button · fixture\n\nby Fixture fan · 1 left\nof 3\n\nEvent place reference\n\n17:00–18:00 KST\n\nRESERVE\nFilter giveaways\n\nAvailability is checked in the reservation journey. Stock and pickup windows can change.\n\nMy gifts →",
+        "rows": [
+          {
+            "rect": {
+              "x": 15,
+              "y": 165,
+              "width": 330,
+              "height": 112.390625,
+              "top": 165,
+              "right": 345,
+              "bottom": 277.390625,
+              "left": 15
+            },
+            "image": {
+              "x": 22,
+              "y": 178.53125,
+              "width": 85.3125,
+              "height": 85.3125,
+              "top": 178.53125,
+              "right": 107.3125,
+              "bottom": 263.84375,
+              "left": 22
+            },
+            "title": {
+              "x": 115.3125,
+              "y": 170,
+              "width": 222.6875,
+              "height": 44,
+              "top": 170,
+              "right": 338,
+              "bottom": 214,
+              "left": 115.3125
+            },
+            "location": {
+              "x": 115.3125,
+              "y": 233.296875,
+              "width": 138.6875,
+              "height": 34.1875,
+              "top": 233.296875,
+              "right": 254,
+              "bottom": 267.484375,
+              "left": 115.3125
+            },
+            "action": {
+              "x": 262,
+              "y": 228.390625,
+              "width": 76,
+              "height": 44,
+              "top": 228.390625,
+              "right": 338,
+              "bottom": 272.390625,
+              "left": 262
+            },
+            "background": "rgb(233, 223, 238) url(\"http://127.0.0.1:5296/backgrounds/cute-community-v1/gifts-backdrop.svg\") no-repeat scroll 50% 50% / 100% 100% padding-box border-box",
+            "clip": [
+              {
+                "text": "Sticker pack · fixture",
+                "width": 223,
+                "scroll": 223,
+                "height": 44,
+                "scrollHeight": 44
+              },
+              {
+                "text": "by Fixture fan · 1 left of 3",
+                "width": 223,
+                "scroll": 223,
+                "height": 14,
+                "scrollHeight": 14
+              },
+              {
+                "text": "Event place reference",
+                "width": 139,
+                "scroll": 139,
+                "height": 14,
+                "scrollHeight": 14
+              },
+              {
+                "text": "17:00–18:00 KST",
+                "width": 125,
+                "scroll": 125,
+                "height": 13,
+                "scrollHeight": 13
+              }
+            ]
+          },
+          {
+            "rect": {
+              "x": 15,
+              "y": 283.390625,
+              "width": 330,
+              "height": 112.390625,
+              "top": 283.390625,
+              "right": 345,
+              "bottom": 395.78125,
+              "left": 15
+            },
+            "image": {
+              "x": 22,
+              "y": 296.921875,
+              "width": 85.3125,
+              "height": 85.3125,
+              "top": 296.921875,
+              "right": 107.3125,
+              "bottom": 382.234375,
+              "left": 22
+            },
+            "title": {
+              "x": 115.3125,
+              "y": 288.390625,
+              "width": 222.6875,
+              "height": 44,
+              "top": 288.390625,
+              "right": 338,
+              "bottom": 332.390625,
+              "left": 115.3125
+            },
+            "location": {
+              "x": 115.3125,
+              "y": 351.6875,
+              "width": 138.6875,
+              "height": 34.1875,
+              "top": 351.6875,
+              "right": 254,
+              "bottom": 385.875,
+              "left": 115.3125
+            },
+            "action": {
+              "x": 262,
+              "y": 346.78125,
+              "width": 76,
+              "height": 44,
+              "top": 346.78125,
+              "right": 338,
+              "bottom": 390.78125,
+              "left": 262
+            },
+            "background": "rgb(233, 223, 238) url(\"http://127.0.0.1:5296/backgrounds/cute-community-v1/gifts-backdrop.svg\") no-repeat scroll 50% 50% / 100% 100% padding-box border-box",
+            "clip": [
+              {
+                "text": "Hand banner · fixture",
+                "width": 223,
+                "scroll": 223,
+                "height": 44,
+                "scrollHeight": 44
+              },
+              {
+                "text": "by Fixture fan · 1 left of 3",
+                "width": 223,
+                "scroll": 223,
+                "height": 14,
+                "scrollHeight": 14
+              },
+              {
+                "text": "Event place reference",
+                "width": 139,
+                "scroll": 139,
+                "height": 14,
+                "scrollHeight": 14
+              },
+              {
+                "text": "17:00–18:00 KST",
+                "width": 125,
+                "scroll": 125,
+                "height": 13,
+                "scrollHeight": 13
+              }
+            ]
+          },
+          {
+            "rect": {
+              "x": 15,
+              "y": 401.78125,
+              "width": 330,
+              "height": 112.390625,
+              "top": 401.78125,
+              "right": 345,
+              "bottom": 514.171875,
+              "left": 15
+            },
+            "image": {
+              "x": 22,
+              "y": 415.3125,
+              "width": 85.3125,
+              "height": 85.3125,
+              "top": 415.3125,
+              "right": 107.3125,
+              "bottom": 500.625,
+              "left": 22
+            },
+            "title": {
+              "x": 115.3125,
+              "y": 406.78125,
+              "width": 222.6875,
+              "height": 44,
+              "top": 406.78125,
+              "right": 338,
+              "bottom": 450.78125,
+              "left": 115.3125
+            },
+            "location": {
+              "x": 115.3125,
+              "y": 470.078125,
+              "width": 138.6875,
+              "height": 34.1875,
+              "top": 470.078125,
+              "right": 254,
+              "bottom": 504.265625,
+              "left": 115.3125
+            },
+            "action": {
+              "x": 262,
+              "y": 465.171875,
+              "width": 76,
+              "height": 44,
+              "top": 465.171875,
+              "right": 338,
+              "bottom": 509.171875,
+              "left": 262
+            },
+            "background": "rgb(233, 223, 238) url(\"http://127.0.0.1:5296/backgrounds/cute-community-v1/gifts-backdrop.svg\") no-repeat scroll 50% 50% / 100% 100% padding-box border-box",
+            "clip": [
+              {
+                "text": "Custom button · fixture",
+                "width": 223,
+                "scroll": 223,
+                "height": 44,
+                "scrollHeight": 44
+              },
+              {
+                "text": "by Fixture fan · 1 left of 3",
+                "width": 223,
+                "scroll": 223,
+                "height": 14,
+                "scrollHeight": 14
+              },
+              {
+                "text": "Event place reference",
+                "width": 139,
+                "scroll": 139,
+                "height": 14,
+                "scrollHeight": 14
+              },
+              {
+                "text": "17:00–18:00 KST",
+                "width": 125,
+                "scroll": 125,
+                "height": 13,
+                "scrollHeight": 13
+              }
+            ]
+          }
+        ]
+      },
+      "world": {
+        "scenario": "enabled",
+        "capabilityMode": "TEST_ONLY synthetic capabilities",
+        "classification": "TEST_ONLY",
+        "policy": {
+          "classification": "TEST_ONLY",
+          "evidence": "Synthetic native fixture, not measured platform guarantees",
+          "maxAgeMs": 30000,
+          "uncertaintyMs": 1000,
+          "maxElapsedRate": 1.01,
+          "maxObservationGapMs": 5000
+        },
+        "path": "/gifts",
+        "published": false,
+        "phase": "idle",
+        "entities": 0,
+        "avatarPin": {
+          "manifest_id": "mcr_selected_static_20261103",
+          "manifest_version": 1,
+          "content_hash": "sha256:0627c7d178b22535a561e1270db6d8bf9e2383ba84d03a63962e48e565c59b2b"
+        },
+        "requests": [
+          {
+            "path": "/api/auth/capabilities",
+            "method": "GET"
+          },
+          {
+            "path": "/api/auth/login",
+            "method": "POST"
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/bootstrap",
+            "method": "GET"
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/giveaways",
+            "method": "GET"
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/rooms",
+            "method": "GET"
+          }
+        ],
+        "sockets": 0,
+        "activeSockets": 0,
+        "socketPeak": 0,
+        "canvases": 0,
+        "disposed": false
+      },
+      "status": "FAIL",
+      "error": "AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:\n\n0 !== 1\n\n    at run (file:///Users/lhs/.codex/worktrees/092f/mcr/docs/mcr/evidence/css-gifts-density-02/native.mjs:47:359)\n    at async file:///Users/lhs/.codex/worktrees/092f/mcr/docs/mcr/evidence/css-gifts-density-02/native.mjs:59:292",
+      "failure": {
+        "path": "failure-candidate-360.png",
+        "sha256": "924aae28434915801137c7ff228060bf0f6526387524b0d5a24fbf3a043bd472",
+        "bytes": 60809
+      }
+    },
+    {
+      "mode": "candidate",
+      "width": 390,
+      "errors": [],
+      "geometry": {
+        "overflow": false,
+        "text": "BROWSE\nMY GIVING\nMY PICKUPS\nNo photo\nSticker pack · fixture\n\nby Fixture fan · 1 left\nof 3\n\nEvent place reference\n\n17:00–18:00 KST\n\nRESERVE\nNo photo\nHand banner · fixture\n\nby Fixture fan · 1 left\nof 3\n\nEvent place reference\n\n17:00–18:00 KST\n\nRESERVE\nNo photo\nCustom button · fixture\n\nby Fixture fan · 1 left\nof 3\n\nEvent place reference\n\n17:00–18:00 KST\n\nRESERVE\nFilter giveaways\n\nAvailability is checked in the reservation journey. Stock and pickup windows can change.\n\nMy gifts →",
+        "rows": [
+          {
+            "rect": {
+              "x": 15,
+              "y": 165,
+              "width": 360,
+              "height": 112.5,
+              "top": 165,
+              "right": 375,
+              "bottom": 277.5,
+              "left": 15
+            },
+            "image": {
+              "x": 22,
+              "y": 174.546875,
+              "width": 93.40625,
+              "height": 93.40625,
+              "top": 174.546875,
+              "right": 115.40625,
+              "bottom": 267.953125,
+              "left": 22
+            },
+            "title": {
+              "x": 123.40625,
+              "y": 170,
+              "width": 244.59375,
+              "height": 44,
+              "top": 170,
+              "right": 368,
+              "bottom": 214,
+              "left": 123.40625
+            },
+            "location": {
+              "x": 123.40625,
+              "y": 233.40625,
+              "width": 160.59375,
+              "height": 34.1875,
+              "top": 233.40625,
+              "right": 284,
+              "bottom": 267.59375,
+              "left": 123.40625
+            },
+            "action": {
+              "x": 292,
+              "y": 228.5,
+              "width": 76,
+              "height": 44,
+              "top": 228.5,
+              "right": 368,
+              "bottom": 272.5,
+              "left": 292
+            },
+            "background": "rgb(233, 223, 238) url(\"http://127.0.0.1:5296/backgrounds/cute-community-v1/gifts-backdrop.svg\") no-repeat scroll 50% 50% / 100% 100% padding-box border-box",
+            "clip": [
+              {
+                "text": "Sticker pack · fixture",
+                "width": 245,
+                "scroll": 245,
+                "height": 44,
+                "scrollHeight": 44
+              },
+              {
+                "text": "by Fixture fan · 1 left of 3",
+                "width": 245,
+                "scroll": 245,
+                "height": 15,
+                "scrollHeight": 15
+              },
+              {
+                "text": "Event place reference",
+                "width": 161,
+                "scroll": 161,
+                "height": 14,
+                "scrollHeight": 14
+              },
+              {
+                "text": "17:00–18:00 KST",
+                "width": 147,
+                "scroll": 147,
+                "height": 13,
+                "scrollHeight": 13
+              }
+            ]
+          },
+          {
+            "rect": {
+              "x": 15,
+              "y": 283.5,
+              "width": 360,
+              "height": 112.5,
+              "top": 283.5,
+              "right": 375,
+              "bottom": 396,
+              "left": 15
+            },
+            "image": {
+              "x": 22,
+              "y": 293.046875,
+              "width": 93.40625,
+              "height": 93.40625,
+              "top": 293.046875,
+              "right": 115.40625,
+              "bottom": 386.453125,
+              "left": 22
+            },
+            "title": {
+              "x": 123.40625,
+              "y": 288.5,
+              "width": 244.59375,
+              "height": 44,
+              "top": 288.5,
+              "right": 368,
+              "bottom": 332.5,
+              "left": 123.40625
+            },
+            "location": {
+              "x": 123.40625,
+              "y": 351.90625,
+              "width": 160.59375,
+              "height": 34.1875,
+              "top": 351.90625,
+              "right": 284,
+              "bottom": 386.09375,
+              "left": 123.40625
+            },
+            "action": {
+              "x": 292,
+              "y": 347,
+              "width": 76,
+              "height": 44,
+              "top": 347,
+              "right": 368,
+              "bottom": 391,
+              "left": 292
+            },
+            "background": "rgb(233, 223, 238) url(\"http://127.0.0.1:5296/backgrounds/cute-community-v1/gifts-backdrop.svg\") no-repeat scroll 50% 50% / 100% 100% padding-box border-box",
+            "clip": [
+              {
+                "text": "Hand banner · fixture",
+                "width": 245,
+                "scroll": 245,
+                "height": 44,
+                "scrollHeight": 44
+              },
+              {
+                "text": "by Fixture fan · 1 left of 3",
+                "width": 245,
+                "scroll": 245,
+                "height": 15,
+                "scrollHeight": 15
+              },
+              {
+                "text": "Event place reference",
+                "width": 161,
+                "scroll": 161,
+                "height": 14,
+                "scrollHeight": 14
+              },
+              {
+                "text": "17:00–18:00 KST",
+                "width": 147,
+                "scroll": 147,
+                "height": 13,
+                "scrollHeight": 13
+              }
+            ]
+          },
+          {
+            "rect": {
+              "x": 15,
+              "y": 402,
+              "width": 360,
+              "height": 112.5,
+              "top": 402,
+              "right": 375,
+              "bottom": 514.5,
+              "left": 15
+            },
+            "image": {
+              "x": 22,
+              "y": 411.546875,
+              "width": 93.40625,
+              "height": 93.40625,
+              "top": 411.546875,
+              "right": 115.40625,
+              "bottom": 504.953125,
+              "left": 22
+            },
+            "title": {
+              "x": 123.40625,
+              "y": 407,
+              "width": 244.59375,
+              "height": 44,
+              "top": 407,
+              "right": 368,
+              "bottom": 451,
+              "left": 123.40625
+            },
+            "location": {
+              "x": 123.40625,
+              "y": 470.40625,
+              "width": 160.59375,
+              "height": 34.1875,
+              "top": 470.40625,
+              "right": 284,
+              "bottom": 504.59375,
+              "left": 123.40625
+            },
+            "action": {
+              "x": 292,
+              "y": 465.5,
+              "width": 76,
+              "height": 44,
+              "top": 465.5,
+              "right": 368,
+              "bottom": 509.5,
+              "left": 292
+            },
+            "background": "rgb(233, 223, 238) url(\"http://127.0.0.1:5296/backgrounds/cute-community-v1/gifts-backdrop.svg\") no-repeat scroll 50% 50% / 100% 100% padding-box border-box",
+            "clip": [
+              {
+                "text": "Custom button · fixture",
+                "width": 245,
+                "scroll": 245,
+                "height": 44,
+                "scrollHeight": 44
+              },
+              {
+                "text": "by Fixture fan · 1 left of 3",
+                "width": 245,
+                "scroll": 245,
+                "height": 15,
+                "scrollHeight": 15
+              },
+              {
+                "text": "Event place reference",
+                "width": 161,
+                "scroll": 161,
+                "height": 14,
+                "scrollHeight": 14
+              },
+              {
+                "text": "17:00–18:00 KST",
+                "width": 147,
+                "scroll": 147,
+                "height": 13,
+                "scrollHeight": 13
+              }
+            ]
+          }
+        ]
+      },
+      "world": {
+        "scenario": "enabled",
+        "capabilityMode": "TEST_ONLY synthetic capabilities",
+        "classification": "TEST_ONLY",
+        "policy": {
+          "classification": "TEST_ONLY",
+          "evidence": "Synthetic native fixture, not measured platform guarantees",
+          "maxAgeMs": 30000,
+          "uncertaintyMs": 1000,
+          "maxElapsedRate": 1.01,
+          "maxObservationGapMs": 5000
+        },
+        "path": "/gifts",
+        "published": false,
+        "phase": "idle",
+        "entities": 0,
+        "avatarPin": {
+          "manifest_id": "mcr_selected_static_20261103",
+          "manifest_version": 1,
+          "content_hash": "sha256:0627c7d178b22535a561e1270db6d8bf9e2383ba84d03a63962e48e565c59b2b"
+        },
+        "requests": [
+          {
+            "path": "/api/auth/capabilities",
+            "method": "GET"
+          },
+          {
+            "path": "/api/auth/login",
+            "method": "POST"
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/bootstrap",
+            "method": "GET"
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/giveaways",
+            "method": "GET"
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/rooms",
+            "method": "GET"
+          }
+        ],
+        "sockets": 0,
+        "activeSockets": 0,
+        "socketPeak": 0,
+        "canvases": 0,
+        "disposed": false
+      },
+      "status": "FAIL",
+      "error": "AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:\n\n0 !== 1\n\n    at run (file:///Users/lhs/.codex/worktrees/092f/mcr/docs/mcr/evidence/css-gifts-density-02/native.mjs:47:359)\n    at async file:///Users/lhs/.codex/worktrees/092f/mcr/docs/mcr/evidence/css-gifts-density-02/native.mjs:59:292",
+      "failure": {
+        "path": "failure-candidate-390.png",
+        "sha256": "4275d52429faead20065f02af9d94647e4966af69f3f8473f4a97ab5ad7f0fb1",
+        "bytes": 63794
+      }
+    },
+    {
+      "mode": "candidate",
+      "width": 430,
+      "errors": [],
+      "geometry": {
+        "overflow": false,
+        "text": "BROWSE\nMY GIVING\nMY PICKUPS\nNo photo\nSticker pack · fixture\n\nby Fixture fan · 1 left\nof 3\n\nEvent place reference\n\n17:00–18:00 KST\n\nRESERVE\nNo photo\nHand banner · fixture\n\nby Fixture fan · 1 left\nof 3\n\nEvent place reference\n\n17:00–18:00 KST\n\nRESERVE\nNo photo\nCustom button · fixture\n\nby Fixture fan · 1 left\nof 3\n\nEvent place reference\n\n17:00–18:00 KST\n\nRESERVE\nFilter giveaways\n\nAvailability is checked in the reservation journey. Stock and pickup windows can change.\n\nMy gifts →",
+        "rows": [
+          {
+            "rect": {
+              "x": 15,
+              "y": 165,
+              "width": 400,
+              "height": 113.59375,
+              "top": 165,
+              "right": 415,
+              "bottom": 278.59375,
+              "left": 15
+            },
+            "image": {
+              "x": 22,
+              "y": 173.796875,
+              "width": 96,
+              "height": 96,
+              "top": 173.796875,
+              "right": 118,
+              "bottom": 269.796875,
+              "left": 22
+            },
+            "title": {
+              "x": 126,
+              "y": 170,
+              "width": 282,
+              "height": 44,
+              "top": 170,
+              "right": 408,
+              "bottom": 214,
+              "left": 126
+            },
+            "location": {
+              "x": 126,
+              "y": 234.5,
+              "width": 198,
+              "height": 34.1875,
+              "top": 234.5,
+              "right": 324,
+              "bottom": 268.6875,
+              "left": 126
+            },
+            "action": {
+              "x": 332,
+              "y": 229.59375,
+              "width": 76,
+              "height": 44,
+              "top": 229.59375,
+              "right": 408,
+              "bottom": 273.59375,
+              "left": 332
+            },
+            "background": "rgb(233, 223, 238) url(\"http://127.0.0.1:5296/backgrounds/cute-community-v1/gifts-backdrop.svg\") no-repeat scroll 50% 50% / 100% 100% padding-box border-box",
+            "clip": [
+              {
+                "text": "Sticker pack · fixture",
+                "width": 282,
+                "scroll": 282,
+                "height": 44,
+                "scrollHeight": 44
+              },
+              {
+                "text": "by Fixture fan · 1 left of 3",
+                "width": 282,
+                "scroll": 282,
+                "height": 16,
+                "scrollHeight": 16
+              },
+              {
+                "text": "Event place reference",
+                "width": 198,
+                "scroll": 198,
+                "height": 14,
+                "scrollHeight": 14
+              },
+              {
+                "text": "17:00–18:00 KST",
+                "width": 184,
+                "scroll": 184,
+                "height": 13,
+                "scrollHeight": 13
+              }
+            ]
+          },
+          {
+            "rect": {
+              "x": 15,
+              "y": 284.59375,
+              "width": 400,
+              "height": 113.59375,
+              "top": 284.59375,
+              "right": 415,
+              "bottom": 398.1875,
+              "left": 15
+            },
+            "image": {
+              "x": 22,
+              "y": 293.390625,
+              "width": 96,
+              "height": 96,
+              "top": 293.390625,
+              "right": 118,
+              "bottom": 389.390625,
+              "left": 22
+            },
+            "title": {
+              "x": 126,
+              "y": 289.59375,
+              "width": 282,
+              "height": 44,
+              "top": 289.59375,
+              "right": 408,
+              "bottom": 333.59375,
+              "left": 126
+            },
+            "location": {
+              "x": 126,
+              "y": 354.09375,
+              "width": 198,
+              "height": 34.1875,
+              "top": 354.09375,
+              "right": 324,
+              "bottom": 388.28125,
+              "left": 126
+            },
+            "action": {
+              "x": 332,
+              "y": 349.1875,
+              "width": 76,
+              "height": 44,
+              "top": 349.1875,
+              "right": 408,
+              "bottom": 393.1875,
+              "left": 332
+            },
+            "background": "rgb(233, 223, 238) url(\"http://127.0.0.1:5296/backgrounds/cute-community-v1/gifts-backdrop.svg\") no-repeat scroll 50% 50% / 100% 100% padding-box border-box",
+            "clip": [
+              {
+                "text": "Hand banner · fixture",
+                "width": 282,
+                "scroll": 282,
+                "height": 44,
+                "scrollHeight": 44
+              },
+              {
+                "text": "by Fixture fan · 1 left of 3",
+                "width": 282,
+                "scroll": 282,
+                "height": 16,
+                "scrollHeight": 16
+              },
+              {
+                "text": "Event place reference",
+                "width": 198,
+                "scroll": 198,
+                "height": 14,
+                "scrollHeight": 14
+              },
+              {
+                "text": "17:00–18:00 KST",
+                "width": 184,
+                "scroll": 184,
+                "height": 13,
+                "scrollHeight": 13
+              }
+            ]
+          },
+          {
+            "rect": {
+              "x": 15,
+              "y": 404.1875,
+              "width": 400,
+              "height": 113.59375,
+              "top": 404.1875,
+              "right": 415,
+              "bottom": 517.78125,
+              "left": 15
+            },
+            "image": {
+              "x": 22,
+              "y": 412.984375,
+              "width": 96,
+              "height": 96,
+              "top": 412.984375,
+              "right": 118,
+              "bottom": 508.984375,
+              "left": 22
+            },
+            "title": {
+              "x": 126,
+              "y": 409.1875,
+              "width": 282,
+              "height": 44,
+              "top": 409.1875,
+              "right": 408,
+              "bottom": 453.1875,
+              "left": 126
+            },
+            "location": {
+              "x": 126,
+              "y": 473.6875,
+              "width": 198,
+              "height": 34.1875,
+              "top": 473.6875,
+              "right": 324,
+              "bottom": 507.875,
+              "left": 126
+            },
+            "action": {
+              "x": 332,
+              "y": 468.78125,
+              "width": 76,
+              "height": 44,
+              "top": 468.78125,
+              "right": 408,
+              "bottom": 512.78125,
+              "left": 332
+            },
+            "background": "rgb(233, 223, 238) url(\"http://127.0.0.1:5296/backgrounds/cute-community-v1/gifts-backdrop.svg\") no-repeat scroll 50% 50% / 100% 100% padding-box border-box",
+            "clip": [
+              {
+                "text": "Custom button · fixture",
+                "width": 282,
+                "scroll": 282,
+                "height": 44,
+                "scrollHeight": 44
+              },
+              {
+                "text": "by Fixture fan · 1 left of 3",
+                "width": 282,
+                "scroll": 282,
+                "height": 16,
+                "scrollHeight": 16
+              },
+              {
+                "text": "Event place reference",
+                "width": 198,
+                "scroll": 198,
+                "height": 14,
+                "scrollHeight": 14
+              },
+              {
+                "text": "17:00–18:00 KST",
+                "width": 184,
+                "scroll": 184,
+                "height": 13,
+                "scrollHeight": 13
+              }
+            ]
+          }
+        ]
+      },
+      "world": {
+        "scenario": "enabled",
+        "capabilityMode": "TEST_ONLY synthetic capabilities",
+        "classification": "TEST_ONLY",
+        "policy": {
+          "classification": "TEST_ONLY",
+          "evidence": "Synthetic native fixture, not measured platform guarantees",
+          "maxAgeMs": 30000,
+          "uncertaintyMs": 1000,
+          "maxElapsedRate": 1.01,
+          "maxObservationGapMs": 5000
+        },
+        "path": "/gifts",
+        "published": false,
+        "phase": "idle",
+        "entities": 0,
+        "avatarPin": {
+          "manifest_id": "mcr_selected_static_20261103",
+          "manifest_version": 1,
+          "content_hash": "sha256:0627c7d178b22535a561e1270db6d8bf9e2383ba84d03a63962e48e565c59b2b"
+        },
+        "requests": [
+          {
+            "path": "/api/auth/capabilities",
+            "method": "GET"
+          },
+          {
+            "path": "/api/auth/login",
+            "method": "POST"
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/bootstrap",
+            "method": "GET"
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/giveaways",
+            "method": "GET"
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/rooms",
+            "method": "GET"
+          }
+        ],
+        "sockets": 0,
+        "activeSockets": 0,
+        "socketPeak": 0,
+        "canvases": 0,
+        "disposed": false
+      },
+      "status": "FAIL",
+      "error": "AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:\n\n0 !== 1\n\n    at run (file:///Users/lhs/.codex/worktrees/092f/mcr/docs/mcr/evidence/css-gifts-density-02/native.mjs:47:359)\n    at async file:///Users/lhs/.codex/worktrees/092f/mcr/docs/mcr/evidence/css-gifts-density-02/native.mjs:59:292",
+      "failure": {
+        "path": "failure-candidate-430.png",
+        "sha256": "2cdcc2d5bfdc1377719f08798fed49884b9cdeae299391d5f829d0d7e417e385",
+        "bytes": 67043
+      }
+    }
+  ],
+  "errors": [
+    {
+      "mode": "baseline",
+      "width": 360,
+      "error": "Expected values to be strictly equal:\n\n0 !== 1\n"
+    },
+    {
+      "mode": "baseline",
+      "width": 390,
+      "error": "Expected values to be strictly equal:\n\n0 !== 1\n"
+    },
+    {
+      "mode": "baseline",
+      "width": 430,
+      "error": "Expected values to be strictly equal:\n\n0 !== 1\n"
+    },
+    {
+      "mode": "candidate",
+      "width": 360,
+      "error": "Expected values to be strictly equal:\n\n0 !== 1\n"
+    },
+    {
+      "mode": "candidate",
+      "width": 390,
+      "error": "Expected values to be strictly equal:\n\n0 !== 1\n"
+    },
+    {
+      "mode": "candidate",
+      "width": 430,
+      "error": "Expected values to be strictly equal:\n\n0 !== 1\n"
+    },
+    {
+      "workflow": "Error: ENOENT: no such file or directory, open '/Users/lhs/.codex/worktrees/092f/mcr/docs/mcr/evidence/css-gifts-density-02/round-02/baseline-360.png'\n    at async open (node:internal/fs/promises:1345:25)\n    at async readFile (node:internal/fs/promises:2003:14)\n    at async inline (file:///Users/lhs/.codex/worktrees/092f/mcr/docs/mcr/evidence/css-gifts-density-02/native.mjs:60:86)\n    at async file:///Users/lhs/.codex/worktrees/092f/mcr/docs/mcr/evidence/css-gifts-density-02/native.mjs:60:883"
+    }
+  ],
+  "minFree": 26630316032,
+  "peaks": {
+    "durable": 695343,
+    "temp": 52388135,
+    "whole": 53073274
+  },
+  "limits": {
+    "durable": 25165824,
+    "temp": 125829120,
+    "whole": 150994944
+  },
+  "changedPaths": [
+    "docs/mcr/evidence/css-gifts-density-02/native.mjs",
+    "docs/mcr/evidence/css-gifts-density-02/supervise.py",
+    "docs/mcr/frontend/css-gifts-density-02.md",
+    "frontend/src/features/gift-discovery/ui/reference-gifts.css"
+  ],
+  "readsetPins": {
+    "frontend/src/features/gift-discovery/ui/gifts.css": {
+      "candidate": "f10d645469ba821be72bbecf88ce97f9229ee16b6d57e8a95e112c75970f8f2d",
+      "baseline": "f10d645469ba821be72bbecf88ce97f9229ee16b6d57e8a95e112c75970f8f2d"
+    },
+    "frontend/src/features/gift-discovery/ui/reference-gifts.css": {
+      "candidate": "0e6e68a6219857b49e308b83f340417bf0db05f012c613fab233759ee076969c",
+      "baseline": "bfc7fcd0f0d5cc32fad690a272502af361392e272e38cc9b35fb9fafe8e5ae91"
+    },
+    "frontend/src/features/gift-discovery/ui/Gifts.tsx": {
+      "candidate": "88ad2761bea29adbcbc3fe7c5a1d0ede202acba58a4ab5a32f12ca1ec1b2ea2d",
+      "baseline": "88ad2761bea29adbcbc3fe7c5a1d0ede202acba58a4ab5a32f12ca1ec1b2ea2d"
+    },
+    "frontend/src/features/gift-discovery/ui/reference-presentation.tsx": {
+      "candidate": "2c71518ba195f9e50f0e9888ab0ef6fe0b2e0d02d969d4e1f4cf1f3165612754",
+      "baseline": "2c71518ba195f9e50f0e9888ab0ef6fe0b2e0d02d969d4e1f4cf1f3165612754"
+    },
+    "frontend/src/app/__tests__/cozy-backgrounds-v1/preview.tsx": {
+      "candidate": "5fb0fed19cf9b2fe14a8179052d5cfd639514c879952beab67e1d64b9529e261",
+      "baseline": "5fb0fed19cf9b2fe14a8179052d5cfd639514c879952beab67e1d64b9529e261"
+    },
+    "frontend/src/app/community-adoption/__tests__/native/preview.tsx": {
+      "candidate": "eccc3ffdeff2fa5a1ec6926958e89c5c1fe985d0c6cd95dff215d2435d2dbcdc",
+      "baseline": "eccc3ffdeff2fa5a1ec6926958e89c5c1fe985d0c6cd95dff215d2435d2dbcdc"
+    },
+    "frontend/src/features/gift-discovery/__tests__/reference-native/preview.tsx": {
+      "candidate": "2979b33a6067f766ff8b979693d170d876fdb9de14a7c2f404a5c539b42cf066",
+      "baseline": "2979b33a6067f766ff8b979693d170d876fdb9de14a7c2f404a5c539b42cf066"
+    },
+    "frontend/e2e/reference-integrated/data.ts": {
+      "candidate": "186ca7d28cca66f2eab4fe87f95fc76e5a4acca432b109abb7216ddfc404a994",
+      "baseline": "186ca7d28cca66f2eab4fe87f95fc76e5a4acca432b109abb7216ddfc404a994"
+    },
+    "frontend/pnpm-lock.yaml": {
+      "candidate": "47ca44459819ad0e887d2f4f93394fdf3b1053b8f45edc9ceb0236981feee1f6",
+      "baseline": "47ca44459819ad0e887d2f4f93394fdf3b1053b8f45edc9ceb0236981feee1f6"
+    },
+    "frontend/src/shared/styles/cozy-community-backgrounds-v1.css": {
+      "candidate": "d26dd8fbee928539f2689ccd9bb6269e4cb964c58b78e8cc86afbd894f228504",
+      "baseline": "d26dd8fbee928539f2689ccd9bb6269e4cb964c58b78e8cc86afbd894f228504"
+    }
+  },
+  "browser": "156.0.8078.80",
+  "finishedAt": "2026-11-04T17:00:48.269Z",
+  "status": "FAIL",
+  "cleanup": {
+    "browserClosed": true,
+    "viteClosed": true,
+    "ownTempRemoved": true
+  }
+}

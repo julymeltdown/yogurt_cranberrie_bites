@@ -1,0 +1,13 @@
+{
+  "job": "CSS-GIFTS-DENSITY-BROWSER2-202611041658Z",
+  "releasedAt": 1793811758.767997,
+  "allKnownPidsAbsent": true,
+  "remainingKnownPids": [],
+  "port5296ActualBindReuse": true,
+  "socketOption": "SO_REUSEADDR for closed connection TIME_WAIT; no listener. Initial bare bind returned EADDRINUSE, retained here.",
+  "ownDepsLinkAbsent": true,
+  "ownTempsAbsent": true,
+  "freeBytes": 27007184896,
+  "durableBytes": 7171658,
+  "scope": "Browser2 FULL, no live handles. Retained failed rounds count in durable. Final Git object byte accounting follows committed evidence."
+}

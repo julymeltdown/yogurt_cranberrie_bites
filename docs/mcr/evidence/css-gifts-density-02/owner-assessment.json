@@ -1,0 +1,63 @@
+{
+  "task": "CSS-GIFTS-DENSITY-02",
+  "status": "PASS_DEVELOPER_SCOPE",
+  "validatedCandidate": "7f96144fee12e5da5621e6e3d1ae7165d705efde",
+  "inspected": [
+    "round-03/comparison-360.png",
+    "round-03/comparison-390.png",
+    "round-03/comparison-430.png",
+    "round-03/candidate-360.png",
+    "round-03/long-360.png",
+    "round-03/forced-focus-390.png",
+    "round-03/error-390.png",
+    "round-03/short-430.png"
+  ],
+  "geometry": [
+    {
+      "width": 360,
+      "baselineHeight": 125,
+      "candidateHeight": 112.390625,
+      "reductionPercent": 10.09,
+      "actionWidth": 76,
+      "actionHeight": 44,
+      "imageWidth": 85.3125
+    },
+    {
+      "width": 390,
+      "baselineHeight": 125,
+      "candidateHeight": 112.5,
+      "reductionPercent": 10.0,
+      "actionWidth": 76,
+      "actionHeight": 44,
+      "imageWidth": 93.40625
+    },
+    {
+      "width": 430,
+      "baselineHeight": 125,
+      "candidateHeight": 113.59375,
+      "reductionPercent": 9.12,
+      "actionWidth": 76,
+      "actionHeight": 44,
+      "imageWidth": 96
+    }
+  ],
+  "findings": [
+    "All three ordinary cards reduced height at every width; image remains prominent, text/action separation is tighter and readable.",
+    "Full root copy and computed cute card background are identical between baseline and candidate. No photo remains explicit in all three cards.",
+    "All action targets are 76 by44px or larger; no horizontal overflow, clipped measured title/paragraph text or pickup/action overlap.",
+    "Full long fixture titles and owner names remain visible; rows can grow naturally rather than hide text.",
+    "Forced-color keyboard focus remains visible; short-height actions/filter remain reachable. Error retry stays honest and private transport detail stays hidden.",
+    "Native shell has extra controls/copy and a taller frame relative to the reference; required cute background differs deliberately from reference paper. These shared differences and unavailable authorized photos are outside CSS ownership. Full ten-screen visual acceptance remains open."
+  ],
+  "failedRounds": {
+    "round-01": "Preserved stale cozy fixture unavailable state; mandatory clock qualification missing. No product policy weakened.",
+    "round-02": "Current qualified fixture rendered correct rows; harness sampled world canvas before async publication. Added current fixture standard world publication wait before navigation; all six early canvas assertions preserved."
+  },
+  "provenance": "Evidence driver adapted from existing css-parity-signin native driver and css-parity-giveaway guard patterns; all authored code remains within the assignment. Existing production components and deterministic fixtures are borrowed unchanged at base e7bd68cf.",
+  "limits": [
+    "Synthetic HTTP/C05/TEST_ONLY clock profile, no live admission or backend mutation qualification.",
+    "Existing standalone feature fixture has a root surrogate. Actual-router root captures and reservation navigation are separately recorded.",
+    "No invented images, media fixture qualification, device/multiuser acceptance or full FE24 acceptance.",
+    "No install/build/type/lint/test/DB job; native Vite parsed the changed CSS and exercised relevant rendered behavior."
+  ]
+}

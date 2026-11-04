@@ -1,0 +1,25 @@
+{
+  "job": "CSS-GIFTS-DENSITY-BROWSER2-202611041658Z",
+  "round": "round-01",
+  "started": 1793811543.890531,
+  "deadline": 1793812009.255724,
+  "cleanupDeadline": 1793812069.255724,
+  "ownedGitReservation": 1048576,
+  "peaks": {
+    "durable": 197665,
+    "temp": 52762999,
+    "whole": 54009284
+  },
+  "floor": 8589934592,
+  "pid": 27143,
+  "minFree": 26591203328,
+  "peakPids": 2,
+  "peakRss": 1476116480,
+  "exitCode": 1,
+  "finished": 1793811578.5915709,
+  "ownLinkAbsent": true,
+  "ownTempAbsent": true,
+  "durableBytes": 237761,
+  "cleanupWithinDeadline": true,
+  "free": 26698960896
+}
