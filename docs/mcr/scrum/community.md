@@ -39,7 +39,7 @@ the task record for QA01/QA05/QA07/QA08/QA09/QA10/IN04/IN05.
 | Original ID | Owner / current task-level disposition | Work since previous checkpoint / latest retained publication | Remaining original criteria, dependency owner and next action |
 |---|---|---|---|
 | FE20 | Former owner `3ff2`; SATISFIED at MOCK_READY per explicit photo-completion receipt; no current Community writer | No newer task receipt; published `6c908472` retained | No identified original frontend gap in that receipt. Genuine provider/IN02 qualification stays with Product root `1fc`; do not reopen frozen criteria or divert the owner's later Auth scope |
-| FE21 | Whole-task disposition UNRECONCILED; bounded QA06 Party-action repair owner `204` SAME goal ACTIVE for publication/remote verification | Repair `52f7b2f9`, exact 17 paths, owner-validated READY handoff direct Root153. Production changes only three feature CSS container hunks; TSX/root/shared/row style/capability/art unchanged. Native seven-case matrix, 46 focused tests/types/lint/temp build PASS reported; publication pending | Root publishes exact owner-validated repair; developer freshly verifies remote ancestry/payload before closing goal/returning leases. QA06 independently recaptures published fix. Existing whole-task filters/list/detail/apply/cancel/receipt/MY PLAN/privacy/state criteria still require their own explicit full disposition; no FE21/FE23/QA06 closure inferred |
+| FE21 | Whole-task disposition UNRECONCILED; bounded Party-action repair DELIVERED, former owner `204` actual COMPLETE then null/clean STOP/returned leases/archived | Repair source `52f7b2f9` → publication `30e52fac`, ancestor of owner-fresh master `ddd279e4`; all 17 payloads byte-equal local/published/latest master. Only three feature CSS container hunks changed; TSX/root/shared/row style/capability/art unchanged. Owner seven native cases/46 regressions/types/lint/production build PASS | QA06 independently recaptures the actual published fix; no current Community source writer or waiting goal. Existing whole-task filters/list/detail/apply/cancel/receipt/MY PLAN/privacy/state criteria still require their own explicit full disposition; no FE21/FE23/QA06 closure inferred |
 | FE22 | Former authoring owner `6ec9`, now Backend-allocated; last explicit frontend criteria SATISFIED | No new delivery; source `1c38ad4` → published `e82a220`, final KST correction `d8778b8` retained | No identified task-local gap: form/validation/draft/conflict criteria met in retained receipt. Root `1fc` owns actual producer/configuration; real IN02 remains separate; no old writer wake |
 | FE23 | Former authoring owner `6ec9`; last explicit frontend criteria SATISFIED | No new delivery; `7342058`/`58e18ab` → `aa103a8`/`48bb3e8`, KST `d8778b8` retained | No identified task-local gap for member decisions, explicit rally, conflict/removal/moved-card behavior. Product root/Gift counterpart own real journey inputs; next actual IN02 owner qualifies the real flow |
 | FE24 | Historical Gift discovery owner; current whole-task disposition UNRECONCILED, existing environment MOCK_READY | No new task receipt; historical `3cb3f9c`/`8c33ba3` and touch follow-up `9055af1e` retained | Current owner must reconcile public privacy, stock/time filters, GIVING/RECEIVING and paused/sold-out/ended action eligibility. Gift `267` supplies genuine producer inputs; lack of current receipt does not erase delivered fixtures |
@@ -178,6 +178,43 @@ room-membership outcomes stay open, while device/IN04 remain separate gates.
 No whole QA05 completion or QA10 change is inferred. Owner records:
 `docs/mcr/frontend/qa05-mural-failure-journey.md` and
 `docs/mcr/evidence/realtime/mural/candidate-7195d78c/native.json`.
+
+### Subsequent explicit context release and historical wire-claim clearance
+
+World identified a genuinely ready canonical frontend boundary slice, not an
+IN01 reservation or waiting goal. Community explicitly RELEASES completed
+`26e` to World as SOLE NEXT allocator. No subsequent Community assignment,
+unfinished scope or reservation exists; current compact metadata remains
+terminal/notLoaded/completed, consistent with the actual COMPLETE-object/
+clean-STOP receipt above. No worker status wake, new goal, reset or pause was
+performed. Preserved `fe-ref-customize` checkout/old branches/evidence remain;
+World owns its concrete original-ID assignment, exact isolated branch/base,
+fresh compatible goal/startup acceptance, developer qualification/docs/
+committed direct Root publication and remote verification. Dispatch is not
+acceptance; no new source result or goal is inferred here.
+
+At canonical release, `204` held ONLY its accepted Party repair lease; that
+repair has since completed publication and returned all leases as recorded
+below. No historical avatar/wire rights carry into either stage. Community has NO
+current writer or residual reservation on the requested generator schema
+registry, generated wire projection, transport contract docs registry or
+bootstrap reviewed-2.0 branch. Any old `204` generated-wire reservation is
+explicitly relinquished. Its historical grant allowed generated output via
+invocation of `world/network/__tests__/generate-types.mjs`, not generator
+edits; it did not grant the currently requested transport-docs/bootstrap
+hunks. World may record its exact receiving single-writer allocation with
+the current contract owners; this clearance is not a global whole-file grant
+or technical review. Requested paths are
+`frontend/src/world/network/__tests__/generate-types.mjs` schema registry,
+generated `frontend/src/world/network/transport/wire-types.ts`,
+`frontend/src/world/network/transport/contract.ts` docs registry and
+`frontend/src/features/auth/model/bootstrap.ts` reviewed-2.0 validation branch
+with necessary imports/types only; filename-only Git tree metadata confirms
+this auth path, with technical hunk qualification left to the receiver.
+Motion retains whole-admission five functions/new helper;
+`auth/model/contract.ts` and `avatar/runtime/schema.ts` remain UNLEASED by
+this clearance. Root's active v10 and Party work stay undisturbed. No King
+review/acknowledgment or fake completion of old goals is introduced.
 
 World corrected primary `202`'s exact lifecycle: bounded FE17/QA05 client
 journey published `a9517e04`, idle/clean/all world-QA05 leases returned and
@@ -321,6 +358,25 @@ Exact leases are not returned yet; context is not terminal/reassignable.
 QA06 receives the ready source and independently recaptures the actual
 published fix once its publication pin is available. No parent FE21/FE23/
 QA06 closure or new acceptance count is inferred.
+
+Actual Party repair publication closure supersedes the pending stage above:
+source `52f7b2f9f47282c820de21b1f791213e61076ddb` was published by Root153
+as `30e52fac097611fa3fc0a60d933657e7c260e175`. Owner fresh fetch and
+ls-remote agree on master `ddd279e48e4ea7fefd94ddcf008e1939946e42fb`;
+published commit is an ancestor and all 17 payloads match local, published
+and latest master byte for byte. CSS SHA-256 is
+`6e7c259074016d9f05d90cba8a3355403906a4330a384548302c8abe2b564e54`.
+Same seven native cases/46 regressions/types/lint/production build PASS are
+owner results; physical devices/live backend and whole FE21/FE23/QA06
+acceptance remain separate, not extra repair prerequisites. Actual goal
+completion was 17m41s, then immediate fresh `get_goal: null`. Checkout is
+clean and owned browser/server/cache resources/dependency link are removed.
+Exact CSS action/container and three new test/evidence/doc prefix leases
+returned to Community; no source writer or inherited rights remain.
+Community archived the preserved context because no next genuinely ready
+disjoint repair is established; no waiting/filler goal was created. QA06
+received the exact published pin/hash and owns independent postfix recapture
+within its existing goal/fresh disk guard. No whole-parent closure follows.
 
 QA06 also reports corrected ten equal-aspect captures completed; full corrected
 78-matrix rerun reported an actual 7.53 GiB guard hold, with existing
