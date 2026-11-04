@@ -103,7 +103,7 @@ try {
   const fixture=await open(width,era),{page}=fixture
   try {
    await expect.poll(async()=> (await state(page))?.overview?.themeId,{timeout:20000}).toBe(era)
-   const before=await state(page); await navigate(page,'/world/map')
+   const before=await page.evaluate(()=>window.__SCENE_V5_ROOT__.cameraProjection().self); await navigate(page,'/world/map')
    const image=page.getByAltText(`${era} illustrated virtual map`,{exact:true}); await expect(image).toBeVisible();await settled(page)
    const pixels=await page.evaluate(()=>window.__SCENE_V5_ROOT__.layoutV2()); assert.equal(pixels.differentChannels,0); assert.deepEqual(pixels.invalidPairsRejected,[true,true]);assert.equal(pixels.objects,49)
    assertFit(await mapBounds(page)); const original=await mapBounds(page)
@@ -112,10 +112,11 @@ try {
    const navigation=[]
    const names=await page.locator('.places-map-plaque').evaluateAll(nodes=>nodes.map(n=>n.getAttribute('aria-label')))
    for(const name of names){const link=page.getByRole('link',{name,exact:true});await link.focus();await expect(link).toBeFocused();await page.keyboard.press('Enter');const back=page.getByRole('link',{name:'All places',exact:true});await expect(back).toBeVisible();await back.click();await expect(image).toBeVisible();navigation.push(name)}
-   await page.getByRole('button',{name:'Zoom in map view',exact:true}).click();await page.getByRole('button',{name:'Reset view',exact:true}).click();await settled(page);assertFit(await mapBounds(page))
+   const controlsCamera=(await state(page)).camera
+   await page.getByRole('button',{name:'Zoom in map view',exact:true}).click();await page.getByRole('button',{name:'Reset view',exact:true}).click();await settled(page);assertFit(await mapBounds(page));assert.deepEqual((await state(page)).camera,controlsCamera)
    let short=null
    if(width===390){await page.setViewportSize({width,height:754});await expect.poll(async()=>(await mapBounds(page)).viewport.height).not.toBe(original.viewport.height);await settled(page);assertFit(await mapBounds(page));short=await inspectLayout(page);assertLayout(short);await page.screenshot({path:resolve(output,`map-${era.toLowerCase()}-${width}-h754.png`)})}
-   const after=await state(page),w=await world(page);assert.equal(after.factoryCalls,1);assert.equal(after.socketPeak,1);assert.equal(w.totalGames,1);assert.deepEqual(after.camera,before.camera);assert.deepEqual(fixture.errors,[])
+   const after=await state(page),w=await world(page);assert.equal(after.factoryCalls,1);assert.equal(after.socketPeak,1);assert.equal(w.totalGames,1);assert.deepEqual(await page.evaluate(()=>window.__SCENE_V5_ROOT__.cameraProjection().self),before);assert.deepEqual(fixture.errors,[])
    report.checks.push({width,era,pixels,layout,short,navigation,singleton:w,cleanup:await close(fixture)})
   }catch(error){await page.screenshot({path:resolve(output,'failure.png')}).catch(()=>{});await close(fixture).catch(()=>{});throw error}
  }
