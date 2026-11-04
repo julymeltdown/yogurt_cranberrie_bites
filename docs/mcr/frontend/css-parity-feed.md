@@ -1,8 +1,117 @@
-# Feed presentation: current retro iteration
+# Feed presentation: current post-only revision
 
-## Current human direction supersedes the historical photo criterion
+## Current post-only human clarification — MOCK_READY; native PASS
 
-Bounded CSS/fixture status: MOCK_READY; native qualification PASS.
+The latest human instruction limits retro treatment by actual component shape,
+not route. Broad Feed-wide imageboard palette/font/tabs/footer/tools/status paint
+is superseded. Established non-post styles are restored from the validated
+pre-retro `eb6e81bd7e5fbeb15613a45e00f1fe896e49f0da` stylesheet: Feed tabs,
+centered composer/footer controls, tools, empty/error/read-only/Notice-list
+surfaces and outer panel typography. The proven normal-flow footer behavior
+remains for short-height collision safety. Ordinary 44px targets and visible
+focus remain. No retro custom properties are installed on the Feed container.
+Root153 exclusively restores shared Feed shell paint to the pre-retro
+`375c73df` shared file (`#f5d9df`/feed-backdrop.svg); this chat edits no shared file.
+
+The new card-scoped rules apply to actual Feed articles, the Thread's direct
+post article, populated comment list rows and `NoticeContent`'s actual article.
+Notice list/filters, system alerts, empty states, thread headings, reply form,
+mutation status and deletion confirmation retain established UI. This follows
+the actual JSX structure. The same coupled native5 saved images now qualify
+these bounded post-shaped surfaces; whole-product visual acceptance remains
+open. Selected-character dimensions/pixels, true
+post/comment text, identities, counts and media bytes remain untouched.
+
+Owner209's actual native packet `56502e1e6d4d944e5dd4840594cc08145a4d64fa`
+confirms candidate `d0b2d44f` removes visible blank bands and passes four loaded
+viewports plus two negative functional/privacy cases, but overall FAILED:
+wrapper height changes 74.8125 → 22.5 → 74.8125 outside/return, and scroll extent
+shrinks by81px. These broad-retro images are historical visual evidence only.
+They do not qualify the latest post-only design. Root153 owns the shared media
+fix and proposed `--root-media-natural-ratio`, present only for the same admitted
+auth/privacy/source/media/purpose and cleared for privacy, failure, replacement
+and disposal. This CSS revision consumes that property in post media as
+`aspect-ratio:var(--root-media-natural-ratio,auto)` with the same 18rem maximum
+as the contained image, so tall media do not reserve space beyond the image
+ceiling. The aria-hidden decorative offscreen placeholder is hidden only when
+Root declares an authorized retained layout and outside visibility; meaningful
+loading/retry/access messages keep normal flow. No fixed source-specific
+ratios, new media reader or shared media edits are added.
+
+The shared-media implementation owner230 has now supplied source-qualified
+`49b8bfde47d7f232f7b9dfddfa8c07cf83fdcba6`, original module
+`frontend/src/app/media-entry/RootMediaView.tsx`, SHA-256
+`f22e034423804ec41658fa26760d07926f4f2ebce339fed685072fbf09542d9a`.
+It exposes the agreed ratio/layout/visibility interface without new runtime
+dependencies. Its owner reports47 focused tests, full application TypeScript
+checking and scoped lint passed in the named source allocation, retaining the
+initial type failure. These are source-owner results, not a rerun by this CSS
+chat and not browser or whole-C06 acceptance. Consume only at the original
+module identity. Root's restored shared-body input is
+`375c73dfebf778a8949403001662b33bada4345e`, SHA-256
+`d26dd8fbee928539f2689ccd9bb6269e4cb964c58b78e8cc86afbd894f228504`.
+
+The owned stylesheet remains frozen at
+`1e07321cede694b66aae06184fd05c624a5a0ccb`, SHA-256
+`477adc0571c6151d94c2b91208b4c01397e2c3c93b663dc22964b06d91cb5777`.
+Owner209 completed one coherent eight-context actual-shell capture over these
+three exact inputs: Feed360/390/430×843 and390×480, two negatives,
+populated Thread/comment390 and Notice article/list390. All eight passed,
+errors[]; native and changed-fixture type/syntax checks exited0. No duplicate
+CSS matrix or manager acknowledgment is required. Root's verified same-candidate
+delivery receipt will be reused; this follow-up adds no consumer proof-commit cycle.
+
+### Coupled post-only native and saved-image disposition
+
+Owner209 committed the shared immutable packet at
+`67956e60091d8a174528b3a3e7597dc4c7fdec95`, directory
+`docs/mcr/evidence/feed-root-composition/native-round-3/`. Its
+`receipt.json` preserves source/payload/artifact hashes, exact commands, initial
+and final resource accounting and FULL release. The PNGs and `native.json` are
+byte identical to the raw images assessed here. No image copy is added to this
+CSS handoff.
+
+Allocation `FE209-POST-ONLY-COUPLED-BROWSER2-202611041550Z` consumed fixture
+source `9e485bcbddc8738a2ae914699b4dd315a6bcff62`. The CSS owner assessed
+owner209's same saved Feed, short-height, Thread/comment, Notice/article/list
+and two negative images; no additional browser ran. Commands, exact artifact
+hashes, portable paths and limitations are recorded in
+[`post-only-native-assessment.json`](../evidence/css-parity-feed/post-only-native-assessment.json).
+
+The post-shaped paper treatment is contained to actual cards. Whole Feed
+baseline14px typography, red tabs, pink backdrop and centered216×44 composer
+are restored. Post text is complete at15px, with unchanged selected48px Feed
+portraits and complete contained thumbnails. Short-height content scrolls in
+normal flow; the owner's hit/focus probes confirm composer reachability and
+visible3px outlines. The saved scroll-out image includes a declared test-only
+inert spacer and is diagnostic evidence, not a product capture.
+
+Thread post/comment cards and Notice articles receive the scoped styling;
+Thread heading/reply/mutation UI and Notice list/filter surfaces retain their
+established UI. The actual Thread renderer shows its existing initial avatar:
+this is a separate renderer seam, not selected-character delivery. No-readiness
+has no post cards; denied media keeps readable retry and original post text.
+No decorative left rails or horizontal overflow appear in the bounded captures.
+
+All four Feed contexts and Thread retain media frame height74.8125 →74.8125
+→74.8125 across loaded/outside/return. Per-case scroll extent stays constant;
+image DOM is removed outside and returns afterward. Auth/private-media
+withdrawal and zero disposed Blob URLs pass in the owner's packet. Resource
+FULL release at `2026-11-04T15:50:15.705243+00:00` confirms zero owned
+processes/listener/dependency link/cache/temp and successful reuse bind5279.
+
+Current bounded source/native status: MOCK_READY/PASS. Publication remains
+Root153's duty; no delivery receipt is asserted by this CSS assessment. Synthetic
+fixtures do not accept live public IN03, the complete ten-screen visual target,
+the separate Thread avatar seam or the deferred200-user performance gate.
+Only the frozen197×67/197×46 media ratios are exercised in this native cohort;
+arbitrary-ratio safety also relies on shared implementation-owner qualification.
+The persistent goal remains unfinished with its existing metadata preserved.
+
+## Historical broad-retro direction — superseded by post-only clarification
+
+Historical broad-retro CSS/fixture status: MOCK_READY; native qualification PASS.
+Current post-only revision: MOCK_READY, coupled native5 PASS; publication pending.
 Product integration remains IN_PROGRESS; publication handoff follows below. The human rejected
 the prior 390px Feed and requested a substantial retro imageboard presentation:
 flat warm paper, charcoal text, restrained burgundy, thin square thread frames,
@@ -39,6 +148,47 @@ The existing persistent goal remains BLOCKED in tool metadata. Work has resumed
 under the latest human direction; no exposed API can change it to active. It is
 not reset, replaced or falsely completed. Implementation, developer-owned native
 validation/fixes, documentation, committed handoff and publication remain required.
+
+## Historical natural-wrapper source checkpoint before post-only revision
+
+Owner209's newer actual selected-C06/default-shell/protected-media captures
+exposed an integration-specific gap absent from the historical standalone
+FeedImage fixture. At all three widths, images were complete 220×74.8125 and
+220×51.3594, but the shared `.root-media-view--post` reserved an approximately
+228×154 frame (`aspect-ratio:3/2`, `min-block-size:88px`, centered grid). The
+resulting top/bottom blank bands weaken the requested compact imageboard layout.
+Those captures remain owner209 evidence; its short-viewport run was partial due
+to an offscreen image-locator issue and is not accepted as a full matrix.
+
+The follow-up changes only Feed-scoped POST-wrapper CSS: natural block sizing,
+no fixed aspect ratio/minimum frame, visible overflow, explicit auto image block
+size and readable loading/failure copy. The existing thin outer figure border
+and complete contained thumbnails remain. No generic Root media/Gift/Thread,
+selected-character, privacy code, fixture or shell-height change is included.
+Status at the earlier source checkpoint: authored at `d0b2d44f30c6026b57cee66518f6dd4917c15c1e`,
+CSS SHA-256 `d72c8471fd23163b20c821abe74e439eb2539cd71a99358045cc49c54ae4a0fb`;
+new native qualification NOT_RUN. Owner209 is the sole fresh consumer of the
+overlapping four-viewport/negative-state matrix (frozen source `aba39344`, runtime
+driver `9856de08dced574ae3c6df7583c987a406a6e8e4`), as scheduled by resource21d.
+It uses the actual default shell and selected-C06/protected-media fixture plus
+Root CSS `32fed3eb41e2b57783cebb78e4aff11d3fa087ba` with SHA-256
+`f41dc64630680729de9bd5acc1239a76cf7a34193f383efa1b78a283e48b2b98`.
+This chat starts no overlapping browser work and holds no resource lease.
+The prepared own driver at `be7eeeeee6bcedcbdcdeb9f318adf29bc9b4ac69` is unexecuted;
+only a finite uncovered gap, such as protected Thread390, may be requested later.
+
+The native consumer explicitly probes loaded → outside observer → loaded wrapper
+height/scroll extent using a declared inert test-only scroll extender, with no
+cloned posts or fake product capture. Visible compactness alone cannot certify
+scroll stability. Root153 retains the shared RootMediaView implementation/interface
+lease and will resolve a confirmed retained-authorized-size concern directly;
+this CSS owner does not modify shared media or fabricate fixed input ratios.
+Readonly owner209 source is consumed through exact Git objects; its checkout
+and dependency links remain untouched. No king/SL review or acknowledgment applies.
+
+The earlier CSS/path qualification and publication remain historical PASS; they
+do not qualify this new integration concern. A fresh named resource round and direct publishing
+handoff remain required, with the existing unfinished goal reused truthfully.
 
 ## Retro native result and handoff
 

@@ -3,10 +3,10 @@ import postInput from '../../../../../contracts/fixtures/domain/public-post.json
 import { authResponse, capabilities, eventId, fixture, isolatedCookiePolicy } from '../../../features/auth/__tests__/fixtures/data'
 import { canonicalJson } from '../../../features/auth/model/contract'
 import { createSessionController } from '../../../features/auth/model/session'
-import { parse, type Post } from '../../../features/event-feed/contract'
+import { parse, type Comment, type Notice, type Post } from '../../../features/event-feed/contract'
 import { createFeedSocialPorts } from '../production'
 
-export type FixtureMode = 'loaded' | 'no-readiness' | 'denied-media'
+export type FixtureMode = 'loaded' | 'no-readiness' | 'denied-media' | 'thread' | 'notice'
 export const inputRevision = 'eb6e81bd7e5fbeb15613a45e00f1fe896e49f0da'
 export const fixedNow = Date.parse('2026-11-04T12:00:00Z')
 export const selectedPin = Object.freeze({ manifest_id: selected.manifest_id, manifest_version: selected.manifest_version, content_hash: selected.content_hash })
@@ -19,6 +19,19 @@ export const rows = parse<{ items: readonly Post[]; next_cursor: null }>('Domain
   { ...postInput, event_id: eventId, post_id: id(92), author: { ...postInput.author, display_name: 'Encore fan', avatar: { revision: 1, config: selected.presets[2]!.config } }, text: 'SEE YOU FOR THE ENCORE!\nAnyone swapping favourite songs?', created_at: new Date(fixedNow - 7_200_000).toISOString(), links: [], media_ids: [id(75)], reaction_count: 42, comment_count: 7 },
   { ...postInput, event_id: eventId, post_id: id(91), author: { ...postInput.author, display_name: 'Paper parade', avatar: { revision: 1, config: selected.presets[3]!.config } }, text: 'Trading memories from tonight.\nWhich moment are you keeping?', created_at: new Date(fixedNow - 14_400_000).toISOString(), links: [], media_ids: [id(76)], reaction_count: 27, comment_count: 5 },
 ], next_cursor: null }).items
+// Existing declared test prose only. Bind IDs/authors to this fixture's canonical
+// synthetic scope; do not import test runners or alter production inputs.
+export const shapeProvenance = Object.freeze({
+  revision: 'a413e69f6864d3a5578fb3149507921e96e9c5b5',
+  comment: { path: 'frontend/src/features/feed-thread/__tests__/controller.test.ts', blob: '3e2215fc78f79558cb1de81162afe938e48d4a79', adaptation: 'Bind post/author/time to first selected-art synthetic row; retain reply text and revision.' },
+  notice: { path: 'frontend/src/features/event-feed/__tests__/fixtures.ts', blob: 'f3e55881c846509f7c4cfd8eb7970c50273afec9', adaptation: 'Bind event_id to canonical synthetic Auth event; retain notice fields.' },
+})
+export const reply = parse<Comment>('Domain_feed_CommentPublic', { comment_id: id(71), post_id: rows[0]!.post_id,
+  author: rows[0]!.author, text: 'A test reply', created_at: rows[0]!.created_at, revision: 1 })
+export const notice = parse<Notice>('Domain_feed_PublishedNotice', { notice_id: id(60), event_id: eventId,
+  title: 'Fixture notice', text: 'Test-only published notice.', source_uri: 'https://example.com/notice',
+  confirmed_at: '2026-11-01T01:00:00Z', created_at: '2026-11-01T01:00:00Z', state: 'PUBLISHED', revision: 1 })
+export const fixtureRoute = (mode: FixtureMode) => mode === 'thread' ? `/feed/${rows[0]!.post_id}` : mode === 'notice' ? `/notices/${notice.notice_id}` : '/feed'
 
 async function sha(value: BufferSource) {
   return [...new Uint8Array(await crypto.subtle.digest('SHA-256', value))].map(byte => byte.toString(16).padStart(2, '0')).join('')
@@ -60,8 +73,9 @@ export async function createFeedFixture(mode: FixtureMode) {
       return done(Response.json({ items: !filter || ['ALL', 'WITH_MEDIA'].includes(filter) ? rows : [], next_cursor: null }))
     }
     const post = rows.find(row => path === `${base}/posts/${row.post_id}`)
-    if (post) return done(Response.json({ post, comments: [], next_cursor: null }))
-    if (path === `${base}/notices`) return done(Response.json({ items: [], next_cursor: null }))
+    if (post) return done(Response.json({ post, comments: mode === 'thread' && post.post_id === reply.post_id ? [reply] : [], next_cursor: null }))
+    if (mode === 'notice' && path === `${base}/notices/${notice.notice_id}`) return done(Response.json(notice))
+    if (path === `${base}/notices`) return done(Response.json({ items: mode === 'notice' ? [notice] : [], next_cursor: null }))
     const match = /^\/media\/([^/]+)(\/content)?$/.exec(path.slice(base.length))
     const media = match?.[1] ? mediaInputs[match[1]] : undefined
     if (path.startsWith(base) && media && match) {

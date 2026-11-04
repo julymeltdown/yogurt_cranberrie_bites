@@ -1,0 +1,15 @@
+{
+  "utc": "2026-11-04T15:50:15.705243+00:00",
+  "ownedProcesses": [],
+  "listener5279": "",
+  "bind5279": "PASS",
+  "dependencyLinkPresent": false,
+  "cachePresent": false,
+  "tmpPresent": false,
+  "freeBytes": 18876370944,
+  "peakProcesses": 11,
+  "peakRssBytes": 2534359040,
+  "summaryStatus": "SYNTHETIC_NATIVE_PASSED",
+  "cases": 8,
+  "errors": []
+}

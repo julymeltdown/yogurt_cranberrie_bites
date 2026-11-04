@@ -1,0 +1,104 @@
+{
+  "allocation": "C06-MEDIA-GEOMETRY-SOURCE-B-202611041546Z",
+  "candidate": "74c2f47bac5b875820172f64178382a0e990deb2",
+  "actualAcceptedAtUtc": "2026-11-04T15:45:16Z",
+  "actualAcceptanceFreeBytes": 19397382144,
+  "workDeadlineUtc": "2026-11-04T15:46:46Z",
+  "hardDeadlineUtc": "2026-11-04T15:47:16Z",
+  "commands": [
+    {
+      "argv": [
+        "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node",
+        "/Users/lhs/Desktop/mcr/frontend/node_modules/vitest/vitest.mjs",
+        "run",
+        "src/app/media-entry/__tests__/owner.test.ts",
+        "src/app/media-entry/__tests__/root-binding/provider.test.tsx",
+        "src/app/media-entry/__tests__/root-binding/rows.test.tsx",
+        "src/app/media-entry/__tests__/profile-composition/layered-fallback.test.tsx",
+        "--config",
+        "src/app/media-entry/__tests__/natural-geometry/vitest.config.mjs",
+        "--configLoader",
+        "runner",
+        "--no-cache",
+        "--maxWorkers=1",
+        "--reporter=json",
+        "--outputFile=/Users/lhs/Desktop/mcr-worktrees/fe-ref-gifts/docs/mcr/evidence/media-natural-geometry/source-02/vitest.json"
+      ],
+      "cwd": "frontend",
+      "exitCode": 0,
+      "elapsedSeconds": 4.595127334
+    },
+    {
+      "argv": [
+        "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node",
+        "/Users/lhs/Desktop/mcr/frontend/node_modules/typescript/bin/tsc",
+        "-p",
+        "tsconfig.json",
+        "--noEmit",
+        "--incremental",
+        "false",
+        "--pretty",
+        "false",
+        "--allowImportingTsExtensions"
+      ],
+      "cwd": "frontend",
+      "exitCode": 0,
+      "elapsedSeconds": 7.763210875
+    },
+    {
+      "argv": [
+        "/Users/lhs/Desktop/mcr/frontend/node_modules/.bin/oxlint",
+        "--deny-warnings",
+        "src/app/media-entry/RootMediaView.tsx",
+        "src/app/media-entry/__tests__/root-binding/provider.test.tsx",
+        "src/app/media-entry/__tests__/natural-geometry/vitest.config.mjs"
+      ],
+      "cwd": "frontend",
+      "exitCode": 0,
+      "elapsedSeconds": 0.2887240000000002
+    }
+  ],
+  "caps": {
+    "wholeBytes": 268435456,
+    "temporaryBytes": 201326592,
+    "durableBytes": 50331648,
+    "rssBytes": 4294967296,
+    "processes": 32
+  },
+  "peaks": {
+    "wholeBytes": 16865540,
+    "temporaryBytes": 16801440,
+    "durableBytes": 35727,
+    "rssBytes": 1406533632,
+    "processes": 3
+  },
+  "status": "PASS",
+  "failure": null,
+  "sourceSha256": {
+    "frontend/src/app/media-entry/RootMediaView.tsx": "f22e034423804ec41658fa26760d07926f4f2ebce339fed685072fbf09542d9a",
+    "frontend/src/app/media-entry/__tests__/root-binding/provider.test.tsx": "c4f583ef6b3d4a446992af6555a051c9778bf59f0172899f56baafdbed5fe411",
+    "frontend/src/app/media-entry/__tests__/natural-geometry/vitest.config.mjs": "27d02ed8f1a528f3f28a9840cca51b3e3f188ce5459ec45ed970e81c9ef368cc",
+    "frontend/src/app/media-entry/__tests__/natural-geometry/allocated-source.py": "67b19ec5be319a3e669a4c5800db91ccff1bb5ed17125c465dcc9e8c617f4c9b",
+    "frontend/src/app/media-entry/provider.tsx": "eaa72a2ee28cdd84fbddd8a10a5cd555763843907597955f5a283b0f9bf6a14a",
+    "frontend/src/app/media-entry/index.ts": "fcf4019d22056e7d8c2c148c1fbeab00187e62751ba232c3784a9506924e058a",
+    "frontend/src/shared/query/privacy.ts": "9f39e9e25b1c322bbe4b2f19a52d930aa369940757e01611ed632aa11cf2f081",
+    "frontend/src/shared/media/read-media.ts": "a91aa13d5a3d074985e50ea2252728ef17b526376c798171138f8bd63f802cd8",
+    "frontend/src/app/media-entry/root-media.css": "fa2e352398f3baf98a85be0892e807d0fb84d9c913f4698dc392809981a34b31",
+    "frontend/tsconfig.json": "4f24f37e8ef13f1e888a0cd69c971b132eace79cc1ef633efd86a8b669b1644d",
+    "frontend/vite.config.ts": "f068812eb2cc54891e2422112ccf14374b2a329c8c1d7d68b6195b7a87f743f8",
+    "frontend/pnpm-lock.yaml": "47ca44459819ad0e887d2f4f93394fdf3b1053b8f45edc9ceb0236981feee1f6"
+  },
+  "elapsedSeconds": 12.708421458,
+  "cleanupSeconds": 0.031633375000000186,
+  "dependencyLinkAbsent": true,
+  "temporaryAbsent": true,
+  "remainingProcesses": [],
+  "freeAfterBytes": 19326013440,
+  "finishedBeforeHardDeadline": true,
+  "released": true,
+  "logSha256": {
+    "00.log": "066209d6dd98d10c517e009800a5856631f4a5c01e85546cb90956242f9ada31",
+    "01.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "02.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  }
+}

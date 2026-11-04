@@ -1,0 +1,166 @@
+{
+  "scope": "Post-shaped Feed CSS owner disposition; same owner209 saved native5 captures, no additional browser run",
+  "status": "MOCK_READY",
+  "native": "PASS",
+  "savedImageAssessment": "PASS",
+  "synthetic": true,
+  "liveIN03": "NOT_RUN",
+  "cssSource": "1e07321cede694b66aae06184fd05c624a5a0ccb",
+  "cssSha256": "477adc0571c6151d94c2b91208b4c01397e2c3c93b663dc22964b06d91cb5777",
+  "fixtureSource": "9e485bcbddc8738a2ae914699b4dd315a6bcff62",
+  "allocation": "FE209-POST-ONLY-COUPLED-BROWSER2-202611041550Z",
+  "cases": 8,
+  "errors": [],
+  "findings": [
+    "Feed360/390/430x843: thin symmetric paper post frames, readable complete15px text, compact complete contained images,48px selected source portraits. Nonpost tabs/composer/footer retain established red/pink treatment and14px outer typography.",
+    "Feed390x480 initial capture shows normal overflow rather than compressed or overlaid cards. Owner native probe confirms keyboard focus and reachable216x44 composer; saved scroll-out image contains declared diagnostic spacer and is not a product image.",
+    "Thread390 actual post and populated comment row use card styling; heading, comment form and disabled mutation UI retain established presentation. Existing initial avatar is truthful actual renderer output; no selected-character Thread claim.",
+    "Notice390 actual article uses paper styling; Feed Notice list has baseline unframed list rows, established filters and composer. Source link is44px high.",
+    "No-readiness has no post cards; denied-media retains readable failure/retry and real text. No decorative left rails observed.",
+    "Four Feed cases and Thread retain74.8125px frame height before/outside/return and constant per-case scroll extent; image element absent outside and restored on return.",
+    "Native owner reports visible3px focus, no horizontal overflow, private/Auth withdrawal and zero remaining Blob URLs. These are reused owner209 results, not an independent runtime run."
+  ],
+  "limits": [
+    "Synthetic default-shell fixtures do not accept live multiuser/public IN03 or whole ten-screen visual target.",
+    "Thread selected-character renderer seam remains outside this stylesheet ownership.",
+    "200-user performance gate deferred by latest human direction; not certified here.",
+    "Persistent goal metadata remains unfinished; no false completion or reset.",
+    "Shared RootMediaView49b8bfde and backdrop375c73df must be consumed at the qualified paths/hashes recorded in post-only-source-scope.json."
+  ],
+  "commands": [
+    {
+      "command": "node node_modules/typescript/bin/tsc -p src/app/feed-entry/__tests__/tsconfig.json --noEmit --incremental false --pretty false",
+      "exit": 0
+    },
+    {
+      "command": "node --check src/app/feed-entry/__tests__/qualify.mjs",
+      "exit": 0
+    },
+    {
+      "command": "node --check src/app/feed-entry/__tests__/native.mjs",
+      "exit": 0
+    },
+    {
+      "command": "node src/app/feed-entry/__tests__/native.mjs",
+      "exit": 0
+    }
+  ],
+  "resourceRelease": {
+    "fullUTC": "2026-11-04T15:50:15.705243+00:00",
+    "ownedProcesses": 0,
+    "listener5279": false,
+    "reuseBind": "PASS",
+    "dependencyLink": false,
+    "cache": false,
+    "temporaryWorktree": false
+  },
+  "artifacts": [
+    {
+      "sha256": "d51ca67b06cf7eb5476b60ae24110ee4db06a127d411b8883586b48826715a1c",
+      "diagnosticOnly": false,
+      "rawRelativePath": "feed-native5-accept.json",
+      "packetPath": "docs/mcr/evidence/feed-root-composition/native-round-3/accept.json",
+      "packetSha256": "d51ca67b06cf7eb5476b60ae24110ee4db06a127d411b8883586b48826715a1c"
+    },
+    {
+      "sha256": "98e79cc1bf471b2099a2e0c0481fce331b033cdb0b2ea1eae976f52bbfe6c320",
+      "diagnosticOnly": false,
+      "rawRelativePath": "feed-native5-summary.json",
+      "packetPath": "docs/mcr/evidence/feed-root-composition/native-round-3/summary.json",
+      "packetSha256": "5eb8153f5cd7fe2821a8d956eed17e369ad8c479c2abbb531de3b9249e69737f"
+    },
+    {
+      "sha256": "305700838b11aa00d0a5f47b5f25486c4cda758f6a003b4e0dc79e7a814b310a",
+      "diagnosticOnly": false,
+      "rawRelativePath": "feed-native5-full.json",
+      "packetPath": "docs/mcr/evidence/feed-root-composition/native-round-3/full.json",
+      "packetSha256": "305700838b11aa00d0a5f47b5f25486c4cda758f6a003b4e0dc79e7a814b310a"
+    },
+    {
+      "sha256": "8e999787766d8d777a695fafbdf00bdc24c52f9bd1aabf6c50edf4d951322788",
+      "diagnosticOnly": false,
+      "rawRelativePath": "feed-native5-native/native.json",
+      "packetPath": "docs/mcr/evidence/feed-root-composition/native-round-3/native/native.json",
+      "packetSha256": "8e999787766d8d777a695fafbdf00bdc24c52f9bd1aabf6c50edf4d951322788"
+    },
+    {
+      "sha256": "237b36adb9c96316aa668a7bd61ef1f5e84d86a633ddc843d2e91ae937ea2590",
+      "diagnosticOnly": false,
+      "rawRelativePath": "feed-native5-native/feed-360x843.png",
+      "packetPath": "docs/mcr/evidence/feed-root-composition/native-round-3/native/feed-360x843.png",
+      "packetSha256": "237b36adb9c96316aa668a7bd61ef1f5e84d86a633ddc843d2e91ae937ea2590"
+    },
+    {
+      "sha256": "b842355a93b5b773aac450ea651210463a5cece6d4a1c8b28ecef186bf0e3eb0",
+      "diagnosticOnly": false,
+      "rawRelativePath": "feed-native5-native/feed-390x843.png",
+      "packetPath": "docs/mcr/evidence/feed-root-composition/native-round-3/native/feed-390x843.png",
+      "packetSha256": "b842355a93b5b773aac450ea651210463a5cece6d4a1c8b28ecef186bf0e3eb0"
+    },
+    {
+      "sha256": "75e88da3e2c857a6cefa9b2aa2e8d73d2d3abdaa9ccf1edeff25b0424bf5fd3c",
+      "diagnosticOnly": false,
+      "rawRelativePath": "feed-native5-native/feed-430x843.png",
+      "packetPath": "docs/mcr/evidence/feed-root-composition/native-round-3/native/feed-430x843.png",
+      "packetSha256": "75e88da3e2c857a6cefa9b2aa2e8d73d2d3abdaa9ccf1edeff25b0424bf5fd3c"
+    },
+    {
+      "sha256": "7e0c9a43b45ce38fe63f35e6d73b39accbd63d6e73dbc671756fa53e7ba68fa1",
+      "diagnosticOnly": false,
+      "rawRelativePath": "feed-native5-native/feed-390x480.png",
+      "packetPath": "docs/mcr/evidence/feed-root-composition/native-round-3/native/feed-390x480.png",
+      "packetSha256": "7e0c9a43b45ce38fe63f35e6d73b39accbd63d6e73dbc671756fa53e7ba68fa1"
+    },
+    {
+      "sha256": "0c8ac9170e3d093d8a53fc53ff944a4829a784bdf1282db0779f21610c2b2710",
+      "diagnosticOnly": false,
+      "rawRelativePath": "feed-native5-native/thread-390x843.png",
+      "packetPath": "docs/mcr/evidence/feed-root-composition/native-round-3/native/thread-390x843.png",
+      "packetSha256": "0c8ac9170e3d093d8a53fc53ff944a4829a784bdf1282db0779f21610c2b2710"
+    },
+    {
+      "sha256": "79e7e1a9a63b48732717515cd7712fa84b695aeb92e49a4d6dfd412dae7fdc9f",
+      "diagnosticOnly": false,
+      "rawRelativePath": "feed-native5-native/notice-390x843.png",
+      "packetPath": "docs/mcr/evidence/feed-root-composition/native-round-3/native/notice-390x843.png",
+      "packetSha256": "79e7e1a9a63b48732717515cd7712fa84b695aeb92e49a4d6dfd412dae7fdc9f"
+    },
+    {
+      "sha256": "ace5fdf460f09d0bb2056d32b4d66299fc0e436be5b40e798a45a99a7b770ec3",
+      "diagnosticOnly": false,
+      "rawRelativePath": "feed-native5-native/notice-list-390x843.png",
+      "packetPath": "docs/mcr/evidence/feed-root-composition/native-round-3/native/notice-list-390x843.png",
+      "packetSha256": "ace5fdf460f09d0bb2056d32b4d66299fc0e436be5b40e798a45a99a7b770ec3"
+    },
+    {
+      "sha256": "b631795ee7fab8220b24b70ecc687debe37e54587435aff1bfdc86340242bcde",
+      "diagnosticOnly": false,
+      "rawRelativePath": "feed-native5-native/no-readiness-390x843.png",
+      "packetPath": "docs/mcr/evidence/feed-root-composition/native-round-3/native/no-readiness-390x843.png",
+      "packetSha256": "b631795ee7fab8220b24b70ecc687debe37e54587435aff1bfdc86340242bcde"
+    },
+    {
+      "sha256": "cb82d5c5210dce735805e386cbd4a2cc437178c1947eb379ac8f128185fbfccd",
+      "diagnosticOnly": false,
+      "rawRelativePath": "feed-native5-native/denied-media-390x843.png",
+      "packetPath": "docs/mcr/evidence/feed-root-composition/native-round-3/native/denied-media-390x843.png",
+      "packetSha256": "cb82d5c5210dce735805e386cbd4a2cc437178c1947eb379ac8f128185fbfccd"
+    },
+    {
+      "sha256": "374bcbb5faa1bc18fea847dac5b884ac75b6a77bfd06c41fb979003a8ae31ea3",
+      "diagnosticOnly": true,
+      "rawRelativePath": "feed-native5-native/feed-390x480-scroll-out.png",
+      "packetPath": "docs/mcr/evidence/feed-root-composition/native-round-3/native/feed-390x480-scroll-out.png",
+      "packetSha256": "374bcbb5faa1bc18fea847dac5b884ac75b6a77bfd06c41fb979003a8ae31ea3"
+    }
+  ],
+  "publication": "Root153 direct committed handoff; reuse verified same-candidate Root delivery receipt, no consumer proof-commit loop.",
+  "portablePacket": {
+    "commit": "67956e60091d8a174528b3a3e7597dc4c7fdec95",
+    "directory": "docs/mcr/evidence/feed-root-composition/native-round-3/",
+    "receiptSha256": "4960f42c8f1df01191c96e1753ee60796ddda63c78a77ad37fe1a8ef3e641ef5",
+    "rawNormalization": "Only exact local-prefix replacement for text receipts; native.json and PNGs byte identical. Raw hashes preserved in owner209 receipt."
+  },
+  "commandsExecutedBy": "owner209 under the named allocation; reused by CSS owner without rerun",
+  "arbitraryRatioLimit": "This native cohort exercises frozen197x67/197x46 media only; broader ratios depend additionally on shared implementation owner source qualification."
+}

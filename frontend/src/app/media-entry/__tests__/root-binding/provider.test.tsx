@@ -96,3 +96,91 @@ it('bounds active reads and facades without throwing or hiding row text; retry s
   act(() => near(document.querySelector('.root-media-view')!, false)); fireEvent.click(screen.getAllByRole('button', { name: 'Retry image read' })[0]!)
   await screen.findByRole('img', { name: 'Photo 8' }); expect(h.fetch).toHaveBeenCalledTimes(18); expect(seen.at(-1)!.inspect().entries).toBe(8)
 })
+
+it('retains only authorized natural-ratio metadata across observer exit while removing the image consumer', async () => {
+  const h = harness(), state: ReturnType<MediaPreviewPort['read']> = { phase: 'ready', scope: h.scope, previewUrl: 'blob:explicit', media: { ...metadata(), purpose: 'POST', width: 197, height: 67 }, error: null }
+  const port: MediaPreviewPort = { read: () => state, subscribe: () => () => undefined, load: vi.fn(async () => undefined), cancel: vi.fn(), dispose: vi.fn() }
+  const factory = vi.fn(() => port)
+  render(<RootPostImage auth={h.auth} scope={h.scope} mediaId={mediaId} eventId={eventId} alt="Natural photo" createPreview={factory} />)
+  const frame = document.querySelector<HTMLElement>('.root-media-view')!
+  expect(frame.style.getPropertyValue('--root-media-natural-ratio')).toBe('')
+  revealAll(); await screen.findByRole('img'); expect(frame.style.getPropertyValue('--root-media-natural-ratio')).toBe('197 / 67')
+  act(() => near(frame, false)); expect(screen.queryByRole('img')).not.toBeInTheDocument(); expect(port.dispose).toHaveBeenCalledTimes(1)
+  expect(frame.style.getPropertyValue('--root-media-natural-ratio')).toBe('197 / 67'); expect(frame).toHaveAttribute('data-root-media-layout', 'authorized')
+  expect(h.fetch).not.toHaveBeenCalled(); expect(frame.querySelector('[src]')).toBeNull()
+  act(() => near(frame)); await screen.findByRole('img'); expect(frame.style.getPropertyValue('--root-media-natural-ratio')).toBe('197 / 67')
+})
+it('clears retained natural geometry on policy withdrawal outside the observer margin', async () => {
+  const h = harness(), state: ReturnType<MediaPreviewPort['read']> = { phase: 'ready', scope: h.scope, previewUrl: 'blob:explicit', media: { ...metadata(), purpose: 'POST', width: 197, height: 46 }, error: null }
+  const port: MediaPreviewPort = { read: () => state, subscribe: () => () => undefined, load: async () => undefined, cancel: vi.fn(), dispose: vi.fn() }
+  render(<RootPostImage auth={h.auth} scope={h.scope} mediaId={mediaId} eventId={eventId} alt="Private dimensions" createPreview={() => port} />)
+  revealAll(); await screen.findByRole('img'); const frame = document.querySelector<HTMLElement>('.root-media-view')!
+  act(() => near(frame, false)); expect(frame.style.getPropertyValue('--root-media-natural-ratio')).toBe('197 / 46')
+  act(() => { h.privacy.changePolicy(h.scope, 'block') })
+  expect(frame.style.getPropertyValue('--root-media-natural-ratio')).toBe(''); expect(frame).not.toHaveAttribute('data-root-media-layout'); expect(screen.queryByRole('img')).not.toBeInTheDocument()
+})
+it('never carries another media identity geometry into a replacement row', async () => {
+  const h = harness(), state: ReturnType<MediaPreviewPort['read']> = { phase: 'ready', scope: h.scope, previewUrl: 'blob:explicit', media: { ...metadata(), purpose: 'POST', width: 197, height: 67 }, error: null }
+  const port: MediaPreviewPort = { read: () => state, subscribe: () => () => undefined, load: async () => undefined, cancel() {}, dispose() {} }, factory = () => port
+  const view = (selected: string) => <RootPostImage auth={h.auth} scope={h.scope} mediaId={selected} eventId={eventId} alt="Replacement dimensions" createPreview={factory} />
+  const r = render(view(mediaId)); revealAll(); await screen.findByRole('img'); const frame = document.querySelector<HTMLElement>('.root-media-view')!
+  act(() => near(frame, false)); r.rerender(view(id(4)))
+  expect(frame.style.getPropertyValue('--root-media-natural-ratio')).toBe(''); expect(frame).not.toHaveAttribute('data-root-media-layout')
+})
+
+function mutablePreview(scope: ReturnType<typeof setup>['scope'], width = 197, height = 67) {
+  // Preview state intentionally has only SessionScope fields. Full privacy remains
+  // fenced by the row's PrivacyScope and its original privacy.isCurrent check.
+  let state: ReturnType<MediaPreviewPort['read']> = { phase: 'ready',
+    scope: { userId: scope.userId, eventId: scope.eventId, generation: scope.generation },
+    media: { ...metadata(), purpose: 'POST', width, height }, previewUrl: 'blob:explicit', error: null }
+  const listeners = new Set<() => void>()
+  const port: MediaPreviewPort = { read: () => state, subscribe: listener => { listeners.add(listener); return () => { listeners.delete(listener) } },
+    load: vi.fn(async () => undefined), cancel: vi.fn(), dispose: vi.fn() }
+  return { port, update(next: Partial<typeof state>) { state = { ...state, ...next }; for (const listener of listeners) listener() } }
+}
+it('clears a replaced preview source outside the observer margin without acquiring or reading its replacement', async () => {
+  const h = harness(), first = mutablePreview(h.scope), second = mutablePreview(h.scope, 120, 240)
+  const before = vi.fn(() => first.port), after = vi.fn(() => second.port)
+  const view = (factory: (selected: string) => MediaPreviewPort) => <RootPostImage auth={h.auth} scope={h.scope} mediaId={mediaId} eventId={eventId} alt="Source dimensions" createPreview={factory} />
+  const r = render(view(before)); revealAll(); await screen.findByRole('img')
+  const frame = document.querySelector<HTMLElement>('.root-media-view')!
+  act(() => near(frame, false)); expect(frame.style.getPropertyValue('--root-media-natural-ratio')).toBe('197 / 67')
+  r.rerender(view(after)); expect(frame.style.getPropertyValue('--root-media-natural-ratio')).toBe('')
+  expect(frame).not.toHaveAttribute('data-root-media-layout'); expect(after).not.toHaveBeenCalled()
+  expect(first.port.dispose).toHaveBeenCalledTimes(1); expect(second.port.load).not.toHaveBeenCalled()
+  act(() => first.update({ media: { ...metadata(), purpose: 'POST', width: 999, height: 1 } }))
+  expect(frame.style.getPropertyValue('--root-media-natural-ratio')).toBe('')
+  act(() => near(frame)); await screen.findByRole('img'); expect(frame.style.getPropertyValue('--root-media-natural-ratio')).toBe('120 / 240')
+  expect(second.port.load).toHaveBeenCalledTimes(1); expect(h.fetch).not.toHaveBeenCalled(); expect(created).not.toHaveBeenCalled(); expect(revoked).not.toHaveBeenCalled()
+})
+it.each(['failed', 'cancelled'] as const)('clears natural geometry on %s and authorizes new dimensions only after a retry', async phase => {
+  const h = harness(), first = mutablePreview(h.scope), second = mutablePreview(h.scope, 120, 240)
+  const factory = vi.fn().mockReturnValueOnce(first.port).mockReturnValue(second.port)
+  render(<RootPostImage auth={h.auth} scope={h.scope} mediaId={mediaId} eventId={eventId} alt="Retry dimensions" createPreview={factory} />)
+  revealAll(); await screen.findByRole('img'); const frame = document.querySelector<HTMLElement>('.root-media-view')!
+  expect(frame.style.getPropertyValue('--root-media-natural-ratio')).toBe('197 / 67')
+  act(() => first.update({ phase, media: null, previewUrl: null }))
+  expect(screen.queryByRole('img')).not.toBeInTheDocument(); expect(frame.style.getPropertyValue('--root-media-natural-ratio')).toBe('')
+  expect(frame).not.toHaveAttribute('data-root-media-layout')
+  if (phase === 'failed') fireEvent.click(screen.getByRole('button', { name: 'Retry image read' }))
+  else { act(() => near(frame, false)); act(() => near(frame)) }
+  await screen.findByRole('img'); expect(frame.style.getPropertyValue('--root-media-natural-ratio')).toBe('120 / 240')
+  expect(first.port.dispose).toHaveBeenCalledTimes(1); expect(factory).toHaveBeenCalledTimes(2)
+  expect(h.fetch).not.toHaveBeenCalled(); expect(created).not.toHaveBeenCalled(); expect(revoked).not.toHaveBeenCalled()
+})
+it.each([[0, 67], [197, -1], [Number.NaN, 67], [197, Number.POSITIVE_INFINITY], [1.5, 67]])('does not retain invalid numeric geometry %s × %s', async (width, height) => {
+  const h = harness(), preview = mutablePreview(h.scope, width, height)
+  render(<RootPostImage auth={h.auth} scope={h.scope} mediaId={mediaId} eventId={eventId} alt="Invalid dimensions" createPreview={() => preview.port} />)
+  revealAll(); await screen.findByRole('img'); const frame = document.querySelector<HTMLElement>('.root-media-view')!
+  expect(frame.style.getPropertyValue('--root-media-natural-ratio')).toBe(''); expect(frame).not.toHaveAttribute('data-root-media-layout')
+  act(() => near(frame, false)); expect(frame.style.getPropertyValue('--root-media-natural-ratio')).toBe('')
+})
+it('mounts safely with a disposed privacy owner and never acquires media or geometry', () => {
+  const h = harness(), factory = vi.fn(() => mutablePreview(h.scope).port)
+  act(() => h.privacy.dispose())
+  render(<RootPostImage auth={h.auth} scope={h.scope} mediaId={mediaId} eventId={eventId} alt="Ended access" createPreview={factory} />)
+  revealAll(); expect(screen.getByText('Image access unavailable.')).toBeInTheDocument()
+  expect(factory).not.toHaveBeenCalled(); expect(h.fetch).not.toHaveBeenCalled()
+  expect(document.querySelector('.root-media-view')).not.toHaveAttribute('data-root-media-layout')
+})
