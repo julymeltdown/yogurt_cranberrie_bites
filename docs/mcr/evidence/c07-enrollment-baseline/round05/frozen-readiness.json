@@ -1,0 +1,58 @@
+{
+  "task": "CORE-ENROLLMENT-C07-01",
+  "goalId": "01a1a533-50a8-7fb2-b3ed-96b941b96bbf",
+  "goalStatus": "blocked",
+  "goalCreatedAt": 1793816464,
+  "goalBudget": null,
+  "originalC07Completion": "PRESERVED_SEPARATE",
+  "sourceBeforeMetadata": "9f36c948421864f4bb6d5ab59d0ca0bc1d4cbabc",
+  "canonical": "a0cb4396d2fe5c333e7863aa5bf4c8b88a357ac9",
+  "readsetFiles": 340,
+  "readsetSha256": "70e516528dd98d81b70c3f15c0a8e4424311226e5f034b765c69b41ec9bd59bc",
+  "guardianSha256": "8a1a125834c73e66952390dcef2fbf09655879baae778f78bded743cbb66a23a",
+  "qualifySha256": "d0d48cd0b9c938122dda887a94a98bd568f5e634f40e3d436bfef23647eaaf15",
+  "activePinsSha256": "4a48efe667fe9b88a12761ad2cf90ee5c3b6b53ed2f1f211dad76daa349f87b5",
+  "activePinCanonical": "2ff0aab865a06a5664d2096ba572c766ac0fba85",
+  "carryAllocatedBytes": {
+    "/Users/lhs/Desktop/mcr-worktrees/sl-world": 844763136,
+    "/Users/lhs/Desktop/mcr/.git/worktrees/sl-world": 2195456,
+    "/Users/lhs/Desktop/mcr/frontend/node_modules": 438317056,
+    "/Users/lhs/Desktop/mcr-tools/contracts-validation-venv": 16502784,
+    "retainedNodeBytes": 122564432
+  },
+  "retainedVersions": {
+    "Node": "24.22.2",
+    "TypeScript": "6.0.3",
+    "Zod": "4.4.3",
+    "Python": "retained contracts-validation-venv/python3.14",
+    "requirements": "scripts/mcr/requirements-contracts.txt"
+  },
+  "preservedRefs": {
+    "codex/mcr-world-progress-20261105": "3500e3021b685823c760ba8b503f9a31daf57800",
+    "codex/mcr-world-progress-publish": "c277f4697155508f11687c9a6f993ffbf700d8aa",
+    "codex/mcr-fe-FE16-original-parity": "26688e8f9c4df4a476cb05ab4c9405f899b5ada5",
+    "codex/mcr-css-shared-chrome-ref-01": "390493282882413b85c7e08f91368548c570e38a",
+    "codex/mcr-ci-installation-recovery": "14ed80ad49892bdbd37ee42a1ecdcfd03374ddea"
+  },
+  "newSourceReservationHeld": false,
+  "qualificationStarted": false,
+  "createdAt": 1793817530.859176,
+  "floorPolicy": "Fresh explicit offer may authorize 11GiB start; default12GiB; reserve9GiB and live8GiB unchanged",
+  "metadataUpdatedAt": 1793820259.36549,
+  "priorAttempt": {
+    "status": "FAIL_FULL_RELEASED",
+    "path": "docs/mcr/evidence/c07-enrollment-baseline/round03",
+    "reason": "Generation succeeded; full preflight found stale CORE input hash in DOMAIN metadata; exact generated leaf now granted"
+  },
+  "runtimeTests": 7,
+  "inventoryTests": 4,
+  "allocationStatus": "NONE_HELD_NEW_FROZEN_OFFER_REQUIRED",
+  "keywordInventorySha256": "2b44ae9214e84301b42ba93027869ce6ed2d1167b75f6fedf00cc1323124a22e",
+  "schemaEntrypointsInventoried": 3806,
+  "unsupportedKeywords": [],
+  "transportMetadataGrant": "Unchanged generator; exactly additive published OwnAccess registry operation; existing operations/query/error exports preserved",
+  "goalResume": "Aligned assigned continuation authorized; existing goal retained, available goal API cannot set active",
+  "contractUpdate": "own-access",
+  "wholeCarryBytes": 1424342864,
+  "measuredFreeBytes": 13662318592
+}

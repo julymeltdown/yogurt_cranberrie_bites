@@ -1,0 +1,14 @@
+{
+  "lease": "CORE-OWNACCESS-C07-SOURCE-20261104T2010Z",
+  "actualAcceptAt": 1793822810.323742,
+  "activeEnd": 1793823410.323742,
+  "hardFull": 1793823470.323742,
+  "freeBytes": 18203348992,
+  "otherWorstNewBytes": 1312817152,
+  "ownWorstNewBytes": 134217728,
+  "remainingMarginBytes": 16756314112,
+  "wholeCarryBytes": 1424342864,
+  "currentInventory": "A AgeCOPIED2010 640MiB; LegacyDEFERRED0; CHelp256; DTheme100; ordinaryprep256combined",
+  "source": "f38c0bf518cdb5b4a054fdffd6654fa39f2ee149",
+  "startFloorGiB": 11
+}

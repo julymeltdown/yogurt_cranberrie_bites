@@ -1587,6 +1587,46 @@ export const document = {
         ],
         "type": "object"
       },
+      "Domain_admin_OperationsAccessLeaseV1": {
+        "additionalProperties": false,
+        "properties": {
+          "actor_id": {
+            "$ref": "#/components/schemas/Domain_common_Uuid"
+          },
+          "checked_at": {
+            "$ref": "#/components/schemas/Domain_common_UtcTimestamp"
+          },
+          "decision_id": {
+            "$ref": "#/components/schemas/Domain_common_Uuid"
+          },
+          "event_id": {
+            "$ref": "#/components/schemas/Domain_common_Uuid"
+          },
+          "expires_at": {
+            "$ref": "#/components/schemas/Domain_common_UtcTimestamp"
+          },
+          "role": {
+            "enum": [
+              "MODERATOR",
+              "OPERATOR"
+            ],
+            "type": "string"
+          },
+          "role_revision": {
+            "$ref": "#/components/schemas/Domain_common_Revision"
+          }
+        },
+        "required": [
+          "actor_id",
+          "event_id",
+          "role",
+          "role_revision",
+          "decision_id",
+          "checked_at",
+          "expires_at"
+        ],
+        "type": "object"
+      },
       "Domain_admin_Overview": {
         "additionalProperties": false,
         "properties": {
@@ -1620,6 +1660,29 @@ export const document = {
           "health",
           "open_reports",
           "pending_jobs"
+        ],
+        "type": "object"
+      },
+      "Domain_admin_OwnOperationsAccessV1": {
+        "additionalProperties": false,
+        "properties": {
+          "access": {
+            "oneOf": [
+              {
+                "type": "null"
+              },
+              {
+                "$ref": "#/components/schemas/Domain_admin_OperationsAccessLeaseV1"
+              }
+            ]
+          },
+          "server_time": {
+            "$ref": "#/components/schemas/Domain_common_UtcTimestamp"
+          }
+        },
+        "required": [
+          "server_time",
+          "access"
         ],
         "type": "object"
       },
@@ -46446,6 +46509,345 @@ export const document = {
       },
       "x-mcr-retry": "SAFE_READ_AFTER_REAUTH_ONCE",
       "x-mcr-rule": "mural_tools_b_read",
+      "x-mcr-runtime-status": "NOT_IMPLEMENTED",
+      "x-mcr-write-policy": "READ"
+    },
+    "getOwnConcertOperationsAccess": {
+      "method": "GET",
+      "operationId": "getOwnConcertOperationsAccess",
+      "parameters": [
+        {
+          "in": "path",
+          "name": "eventId",
+          "required": true,
+          "schema": {
+            "$ref": "#/components/schemas/Domain_common_Uuid"
+          }
+        }
+      ],
+      "path": "/api/concert/events/{eventId}/me/operations-access",
+      "responses": {
+        "200": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Domain_admin_OwnOperationsAccessV1"
+              }
+            }
+          },
+          "description": "Success",
+          "headers": {
+            "Cache-Control": {
+              "required": true,
+              "schema": {
+                "const": "no-store",
+                "type": "string"
+              }
+            }
+          }
+        },
+        "400": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/Domain_common_DomainError"
+                  },
+                  {
+                    "properties": {
+                      "details": {
+                        "properties": {
+                          "reason": {
+                            "enum": [
+                              "INVALID_INPUT"
+                            ]
+                          }
+                        }
+                      }
+                    }
+                  }
+                ]
+              }
+            }
+          },
+          "description": "Domain error",
+          "headers": {
+            "Cache-Control": {
+              "required": true,
+              "schema": {
+                "const": "no-store",
+                "type": "string"
+              }
+            }
+          }
+        },
+        "401": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/Domain_common_DomainError"
+                  },
+                  {
+                    "properties": {
+                      "details": {
+                        "properties": {
+                          "reason": {
+                            "enum": [
+                              "AUTHENTICATION_REQUIRED"
+                            ]
+                          }
+                        }
+                      }
+                    }
+                  }
+                ]
+              }
+            }
+          },
+          "description": "Domain error",
+          "headers": {
+            "Cache-Control": {
+              "required": true,
+              "schema": {
+                "const": "no-store",
+                "type": "string"
+              }
+            }
+          }
+        },
+        "403": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/Domain_common_DomainError"
+                  },
+                  {
+                    "properties": {
+                      "details": {
+                        "properties": {
+                          "reason": {
+                            "enum": [
+                              "PERMISSION_DENIED"
+                            ]
+                          }
+                        }
+                      }
+                    }
+                  }
+                ]
+              }
+            }
+          },
+          "description": "Domain error",
+          "headers": {
+            "Cache-Control": {
+              "required": true,
+              "schema": {
+                "const": "no-store",
+                "type": "string"
+              }
+            }
+          }
+        },
+        "404": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/Domain_common_DomainError"
+                  },
+                  {
+                    "properties": {
+                      "details": {
+                        "properties": {
+                          "reason": {
+                            "enum": [
+                              "RESOURCE_UNAVAILABLE"
+                            ]
+                          }
+                        }
+                      }
+                    }
+                  }
+                ]
+              }
+            }
+          },
+          "description": "Domain error",
+          "headers": {
+            "Cache-Control": {
+              "required": true,
+              "schema": {
+                "const": "no-store",
+                "type": "string"
+              }
+            }
+          }
+        },
+        "429": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/Domain_common_DomainError"
+                  },
+                  {
+                    "properties": {
+                      "details": {
+                        "properties": {
+                          "reason": {
+                            "enum": [
+                              "RATE_LIMITED"
+                            ]
+                          }
+                        }
+                      }
+                    }
+                  }
+                ]
+              }
+            }
+          },
+          "description": "Domain error",
+          "headers": {
+            "Cache-Control": {
+              "required": true,
+              "schema": {
+                "const": "no-store",
+                "type": "string"
+              }
+            }
+          }
+        },
+        "500": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/Domain_common_DomainError"
+                  },
+                  {
+                    "properties": {
+                      "details": {
+                        "properties": {
+                          "reason": {
+                            "enum": [
+                              "INTERNAL_ERROR"
+                            ]
+                          }
+                        }
+                      }
+                    }
+                  }
+                ]
+              }
+            }
+          },
+          "description": "Domain error",
+          "headers": {
+            "Cache-Control": {
+              "required": true,
+              "schema": {
+                "const": "no-store",
+                "type": "string"
+              }
+            }
+          }
+        },
+        "503": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/Domain_common_DomainError"
+                  },
+                  {
+                    "properties": {
+                      "details": {
+                        "properties": {
+                          "reason": {
+                            "enum": [
+                              "DEPENDENCY_UNAVAILABLE"
+                            ]
+                          }
+                        }
+                      }
+                    }
+                  }
+                ]
+              }
+            }
+          },
+          "description": "Domain error",
+          "headers": {
+            "Cache-Control": {
+              "required": true,
+              "schema": {
+                "const": "no-store",
+                "type": "string"
+              }
+            }
+          }
+        },
+        "504": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/Domain_common_DomainError"
+                  },
+                  {
+                    "properties": {
+                      "details": {
+                        "properties": {
+                          "reason": {
+                            "enum": [
+                              "DEADLINE_EXCEEDED"
+                            ]
+                          }
+                        }
+                      }
+                    }
+                  }
+                ]
+              }
+            }
+          },
+          "description": "Domain error",
+          "headers": {
+            "Cache-Control": {
+              "required": true,
+              "schema": {
+                "const": "no-store",
+                "type": "string"
+              }
+            }
+          }
+        }
+      },
+      "security": [
+        {
+          "BearerAuth": []
+        }
+      ],
+      "x-mcr-actor": "SELF",
+      "x-mcr-cache": "NO_STORE",
+      "x-mcr-closed-query": true,
+      "x-mcr-query-schema": {
+        "$ref": "#/components/schemas/Domain_common_EmptyRequest"
+      },
+      "x-mcr-retry": "SAFE_READ_AFTER_REAUTH_ONCE",
+      "x-mcr-rule": "operations_access_v1",
       "x-mcr-runtime-status": "NOT_IMPLEMENTED",
       "x-mcr-write-policy": "READ"
     },

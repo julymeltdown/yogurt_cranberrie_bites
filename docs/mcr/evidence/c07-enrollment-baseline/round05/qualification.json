@@ -1,0 +1,71 @@
+{
+  "task": "CORE-ENROLLMENT-C07-01",
+  "canonical": "a0cb4396d2fe5c333e7863aa5bf4c8b88a357ac9",
+  "source": "f38c0bf518cdb5b4a054fdffd6654fa39f2ee149",
+  "started": 1793822820.648992,
+  "commands": [
+    {
+      "name": "domain-transport-generation",
+      "argv": [
+        "/Users/lhs/Desktop/mcr-tools/contracts-validation-venv/bin/python",
+        "-B",
+        "/Users/lhs/Desktop/mcr-worktrees/sl-world/scripts/mcr/generate-domain-transport.py"
+      ],
+      "exit": 0
+    },
+    {
+      "name": "preflight",
+      "argv": [
+        "/Users/lhs/Desktop/mcr-tools/contracts-validation-venv/bin/python",
+        "-B",
+        "/Users/lhs/Desktop/mcr-worktrees/sl-world/scripts/mcr/contracts/c07/qualify_baseline.py",
+        "--pins",
+        "/Users/lhs/Desktop/mcr-worktrees/sl-world/docs/mcr/evidence/c07-enrollment-baseline/round05/candidate-pins.json",
+        "--output",
+        "/Users/lhs/Desktop/mcr-worktrees/sl-world/docs/mcr/evidence/c07-enrollment-baseline/round05/preflight.json"
+      ],
+      "exit": 0
+    },
+    {
+      "name": "qa01",
+      "argv": [
+        "/Users/lhs/Desktop/mcr-tools/contracts-validation-venv/bin/python",
+        "-B",
+        "/Users/lhs/Desktop/mcr-worktrees/sl-world/scripts/mcr/contracts/qa01-coverage/run.py"
+      ],
+      "exit": 0
+    },
+    {
+      "name": "qa01-regressions",
+      "argv": [
+        "/Users/lhs/Desktop/mcr-tools/contracts-validation-venv/bin/python",
+        "-B",
+        "/Users/lhs/Desktop/mcr-worktrees/sl-world/scripts/mcr/contracts/qa01-coverage/test_coverage.py"
+      ],
+      "exit": 0
+    },
+    {
+      "name": "c07",
+      "argv": [
+        "/Users/lhs/Desktop/mcr-tools/contracts-validation-venv/bin/python",
+        "-B",
+        "/Users/lhs/Desktop/mcr-worktrees/sl-world/scripts/mcr/contracts/c07/run.py",
+        "--node",
+        "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node",
+        "--dependencies",
+        "/Users/lhs/Desktop/mcr/frontend/node_modules",
+        "--artifacts",
+        "/Users/lhs/Desktop/mcr-worktrees/sl-world/docs/mcr/evidence/c07-enrollment-baseline/round05/checks"
+      ],
+      "exit": 0
+    }
+  ],
+  "status": "PASS",
+  "hosted": "NOT_RUN_NOT_REQUIRED",
+  "oldPinArchive": "scripts/mcr/contracts/qa01-coverage/archive/pins-2ff0aab865a06a5664d2096ba572c766ac0fba85.json",
+  "auditArchive": "scripts/mcr/contracts/qa01-coverage/archive/forward-baseline-a0cb4396d2fe5c333e7863aa5bf4c8b88a357ac9.json",
+  "activePinsSha256": "5b06537ca67a97611e391cb37017585d81b8c15cf592be5663a2909edd433e5e",
+  "operations": 148,
+  "inputs": 243,
+  "finished": 1793822907.392807
+}
