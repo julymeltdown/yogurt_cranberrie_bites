@@ -208,6 +208,12 @@ impl Harness {
         Self::with_budget(NATIVE_WRITE_BYTES).await
     }
     async fn with_budget(budget: usize) -> Self {
+        Self::configured(budget, None).await
+    }
+    async fn configured(
+        budget: usize,
+        policy: Option<Arc<dyn policy::PolicyBaselinePort>>,
+    ) -> Self {
         let event = EventId::from_uuid(Uuid::new_v4());
         let anchor = Utc::now();
         let room = id(50);
@@ -221,7 +227,10 @@ impl Harness {
             event,
             room,
         });
-        let transport = SocketTransport::default();
+        let transport = match policy {
+            Some(policy) => SocketTransport::default().with_policy_baseline(policy),
+            None => SocketTransport::default(),
+        };
         let runtime = WorldRuntime::new(
             event,
             id(4),
@@ -295,6 +304,90 @@ impl Harness {
             .unwrap()
             .unwrap();
     }
+}
+
+struct BaselineFixture {
+    committed: Arc<std::sync::atomic::AtomicBool>,
+    commit_ok: bool,
+}
+struct HeldBaselineFixture {
+    committed: Arc<std::sync::atomic::AtomicBool>,
+    commit_ok: bool,
+}
+#[async_trait]
+impl policy::PolicyBaselinePort for BaselineFixture {
+    async fn held_baseline(
+        &self,
+        _event: Uuid,
+        _actor: Uuid,
+    ) -> Result<Box<dyn policy::HeldPolicyBaseline>, policy::PolicyUnavailable> {
+        Ok(Box::new(HeldBaselineFixture {
+            committed: self.committed.clone(),
+            commit_ok: self.commit_ok,
+        }))
+    }
+}
+#[async_trait]
+impl policy::HeldPolicyBaseline for HeldBaselineFixture {
+    fn revision(&self) -> i64 {
+        7
+    }
+    async fn commit(self: Box<Self>) -> Result<(), policy::PolicyUnavailable> {
+        if !self.commit_ok {
+            return Err(policy::PolicyUnavailable);
+        }
+        self.committed
+            .store(true, std::sync::atomic::Ordering::SeqCst);
+        Ok(())
+    }
+}
+
+#[tokio::test]
+async fn policy_baseline_follows_actual_snapshot_and_committed_guard_on_same_socket() {
+    let committed = Arc::new(std::sync::atomic::AtomicBool::new(false));
+    let h = Harness::configured(
+        NATIVE_WRITE_BYTES,
+        Some(Arc::new(BaselineFixture {
+            committed: committed.clone(),
+            commit_ok: true,
+        })),
+    )
+    .await;
+    let mut client = h.connect().await;
+    client.send(h.auth('A')).await.unwrap();
+    let snapshot = value(&mut client).await;
+    assert_eq!(snapshot["type"], "snapshot");
+    let baseline = value(&mut client).await;
+    assert!(committed.load(std::sync::atomic::Ordering::SeqCst));
+    assert_eq!(
+        baseline,
+        json!({
+            "protocolVersion":"1.0.0", "type":"policy.baseline", "scope":"SOCIAL",
+            "streamId":snapshot["streamId"], "eventId":h.authority.event.uuid(), "policyRevision":7,
+        })
+    );
+    client.send(Message::Text(json!({"protocolVersion":"1.0.0","type":"input","streamId":snapshot["streamId"],"roomEpoch":snapshot["roomEpoch"],"seq":1,"axisX":1,"axisY":0,"buttons":[]}).to_string())).await.unwrap();
+    assert_eq!(value(&mut client).await["type"], "delta");
+    h.close().await;
+}
+
+#[tokio::test]
+async fn failed_policy_guard_preserves_world_without_a_private_baseline() {
+    let h = Harness::configured(
+        NATIVE_WRITE_BYTES,
+        Some(Arc::new(BaselineFixture {
+            committed: Arc::new(std::sync::atomic::AtomicBool::new(false)),
+            commit_ok: false,
+        })),
+    )
+    .await;
+    let mut client = h.connect().await;
+    client.send(h.auth('A')).await.unwrap();
+    let snapshot = value(&mut client).await;
+    assert_eq!(snapshot["type"], "snapshot");
+    client.send(Message::Text(json!({"protocolVersion":"1.0.0","type":"input","streamId":snapshot["streamId"],"roomEpoch":snapshot["roomEpoch"],"seq":1,"axisX":1,"axisY":0,"buttons":[]}).to_string())).await.unwrap();
+    assert_eq!(value(&mut client).await["type"], "delta");
+    h.close().await;
 }
 async fn value(client: &mut Client) -> Value {
     loop {

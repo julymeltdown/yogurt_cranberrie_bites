@@ -31,6 +31,9 @@ use std::{
 use tokio::sync::{oneshot, Semaphore};
 use uuid::Uuid;
 
+pub mod policy;
+use policy::{PolicyBaselinePort, PolicyState};
+
 pub const MAX_SOCKETS: usize = 864;
 pub const NATIVE_WRITE_BYTES: usize = 262144;
 /// Each successful result must already be committed, owner-fenced and published
@@ -71,10 +74,12 @@ struct Slot {
     socket: WebSocket,
     binding: Option<Binding>,
     terminal: Option<SafeClose>,
+    policy: PolicyState,
 }
 #[derive(Clone, Default)]
 pub struct SocketTransport {
     slots: Arc<Mutex<BTreeMap<Uuid, Arc<Mutex<Slot>>>>>,
+    policy_baseline: Option<Arc<dyn PolicyBaselinePort>>,
 }
 impl SocketTransport {
     fn slot(&self, id: Uuid) -> Result<Arc<Mutex<Slot>>, WriteError> {
@@ -94,6 +99,7 @@ impl SocketTransport {
             socket,
             binding: None,
             terminal: None,
+            policy: PolicyState::default(),
         }));
         slots.insert(id, slot.clone());
         Ok(slot)
@@ -143,6 +149,7 @@ impl TransportPort for SocketTransport {
             return Err(WriteError::Failed);
         }
         slot.binding = Some(b.clone());
+        slot.policy.installed(b);
         Ok(())
     }
     fn ready(&self, b: &Binding) -> bool {
@@ -169,8 +176,13 @@ impl TransportPort for SocketTransport {
         if slot.binding.as_ref() != Some(b) || slot.terminal.is_some() {
             return Err(WriteError::Failed);
         }
+        let snapshot = !slot.policy.snapshot_sent && policy::snapshot_matches(b, &delivery.bytes);
         let bytes = String::from_utf8(delivery.bytes).map_err(|_| WriteError::Failed)?;
         handoff(&mut slot, Message::Text(bytes.into()))?;
+        // Only an actual native snapshot handoff may precede the policy baseline.
+        // The World owner, not client frames, supplies this message.
+        slot.policy.snapshot_sent |= snapshot;
+        policy::flush_baseline(&mut slot, b)?;
         if let Some(code) = delivery.close_code {
             slot.terminal = Some(SafeClose {
                 code,
@@ -302,6 +314,19 @@ async fn owner_install(
     b: Binding,
     cause: SnapshotCause,
 ) -> Result<(), SafeClose> {
+    // No DB guard is held across a socket/network wait. The owner command only
+    // installs local state; snapshot publication happens on its later tick.
+    let policy = match &state.transport.policy_baseline {
+        Some(port) => tokio::time::timeout(
+            Duration::from_millis(500),
+            port.held_baseline(b.key.event_id.uuid(), b.key.user_id.uuid()),
+        )
+        .await
+        .ok()
+        .and_then(Result::ok),
+        None => None,
+    };
+    let policy_binding = b.clone();
     let (reply, answer) = oneshot::channel();
     state
         .owner
@@ -315,7 +340,23 @@ async fn owner_install(
         .await
         .map_err(|_| SafeClose::UNAVAILABLE)?
         .map_err(|_| SafeClose::UNAVAILABLE)?
-        .map_err(|_| SafeClose::UNAVAILABLE)
+        .map_err(|_| SafeClose::UNAVAILABLE)?;
+    if let Some(guard) = policy {
+        let revision = guard.revision();
+        if state
+            .transport
+            .prepare_policy(&policy_binding, revision)
+            .is_ok()
+        {
+            let committed = tokio::time::timeout(Duration::from_millis(500), guard.commit())
+                .await
+                .is_ok_and(|result| result.is_ok());
+            state
+                .transport
+                .finish_policy(&policy_binding, revision, committed);
+        }
+    }
+    Ok(())
 }
 async fn serve_socket(state: Arc<WorldSocketState>, socket: WebSocket) {
     let connection = Uuid::new_v4();
