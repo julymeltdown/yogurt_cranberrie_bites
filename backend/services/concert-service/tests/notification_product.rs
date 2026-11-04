@@ -135,6 +135,7 @@ fn closed_mutation_body_revision_type_and_idempotency() {
         r#"{"expected_revision":1,"payload":"secret"}"#,
         r#"{"expected_revision":1,"expected_revision":2}"#,
         "null",
+        "[1]",
         "[]",
         "{}{}",
     ] {

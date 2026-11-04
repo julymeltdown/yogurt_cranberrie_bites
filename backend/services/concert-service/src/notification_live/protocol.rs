@@ -74,7 +74,15 @@ impl NotificationRequest {
             NotificationOperation::route(event, &request.http_method, &request.http_target)?;
         let mut query = query(&request.http_target)?;
         let key = if operation.mutation() {
-            if request.content_type != "application/json" || request.http_body.is_empty() {
+            // Serde structs also accept sequences; C04 requires JSON objects.
+            if request.content_type != "application/json"
+                || request
+                    .http_body
+                    .iter()
+                    .copied()
+                    .find(|b| !b.is_ascii_whitespace())
+                    != Some(b'{')
+            {
                 return Err(invalid());
             }
             Some(canonical(&request.idempotency_key)?)

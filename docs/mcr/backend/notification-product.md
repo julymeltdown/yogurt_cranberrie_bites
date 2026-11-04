@@ -161,3 +161,32 @@ with canonical Auth/Friend source exclusions. The callback protocol, provider,
 root policy composition and exact shared followup ownership are Root's scope.
 This facade does not acquire those paths or wait for their review to finish
 its own source work.
+
+## First qualification checkpoint (superseded by object-shape fix)
+
+Source `5f85e06fee7c6a2d5b5109f90f05b75831db4e45` compiled successfully
+with Rust 1.88, locked/offline, two jobs, debug/incremental disabled. The exact
+command was `cargo +1.88.0 test --locked --offline -p concert-service --lib
+--test notification_product --no-run --message-format=json` (exit 0).
+Compile/freeze took 58.90 seconds, peak observed total growth 176,316,416 bytes.
+Both Cargo-emitted binaries and the complete tracked backend/contracts sources
+were frozen outside the shared target; zero target handles were verified and
+the target explicitly released before copied runtime execution.
+
+The first run found that Serde's empty struct decoding accepts `[]`; C04 requires
+an object. The failing parser case returned exit 101. Seven other exact tests
+passed (three parser cases and all four private DTO/error tests; 130 unrelated
+library tests filtered). The fix requires a JSON object before typed decoding
+for both mutations and adds the analogous `[1]` revision regression. No native
+case or PostgreSQL process was started. This failure remains retained, not
+rewritten as a pass. All lease resources were released.
+
+Evidence directory: `/private/tmp/mcr-be33-product-5f85e06f`, containing complete
+Cargo JSON/stderr, `artifact-receipt.json`, `target-release.json`,
+`qualification.json`, `runtime-bounds.json`, and `independent-tests.json`.
+Integration executable SHA256: `4dec5740550376bde3482518eb2f303c99f5a5e8ec89b22c49388c71aa7ff686`;
+library executable: `03a1533403add1e675d7932f7f7921fff4e9e18f2bd595d09c6847b0323ab2ff`;
+source archive: `2d8c7976acd26aa24dd18b861b6ee756be8ef37e763995c6481bdc5b2d4fae38`.
+Copied checks took less than two seconds total, with no roots remaining,
+peak observed whole growth 176,951,296 bytes and minimum free 39,745,662,976 bytes.
+The fixed source still requires a fresh clean-pin allocation and rerun.
