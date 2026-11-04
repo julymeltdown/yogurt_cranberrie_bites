@@ -1,0 +1,43 @@
+from pathlib import Path
+import subprocess,os,time,signal,json,shutil,datetime,hashlib
+root=Path('/Users/lhs/Desktop/mcr-worktrees/fe-delivery-publish');front=root/'frontend';tmp=Path('/private/tmp/mcr-preferences-final-source04');out=Path('/private/tmp/mcr-preferences-final-source04-results');pin='7d4c523461840ff5bfdbff3df06c86757b0c8139';job='ROOT-PREFERENCES-FINAL-SOURCE-202611040810Z';carry=7413760
+node='/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node';link=front/'node_modules';ownlink=False;proc=None;started=time.monotonic();peaks=dict(whole=0,temp=0,durable=0,new=0);minfree=10**30;entries=[];failure=None
+commands=[[node,'node_modules/vitest/vitest.mjs','run','src/features/settings/runtime-adoption/__tests__','--config',str(tmp/'vitest.config.mjs'),'--configLoader','runner','--cache=false','--no-file-parallelism','--maxWorkers=1'],[node,'node_modules/typescript/bin/tsc','--project','tsconfig.json','--pretty','false','--incremental','false'],[node,'node_modules/oxlint/bin/oxlint','src/features/settings/runtime-adoption','src/world/preferences/__tests__/native'],[node,'--check','src/world/preferences/__tests__/native/native.mjs']]
+def size(p):return sum(f.stat().st_blocks*512 for f in p.rglob('*') if f.is_file() and not f.is_symlink()) if p.exists() else 0
+def guard():
+ global minfree
+ t=size(tmp);d=size(out);new=t+d;w=new+carry;free=shutil.disk_usage(root).free;minfree=min(minfree,free)
+ for k,v in dict(whole=w,temp=t,durable=d,new=new).items():peaks[k]=max(peaks[k],v)
+ assert time.monotonic()-started<116 and w<56*1024**2 and new<48*1024**2 and t<=32*1024**2 and d<=8*1024**2 and free>=8*1024**3,'resource-guard'
+try:
+ assert subprocess.check_output(['git','rev-parse','HEAD'],cwd=root,text=True).strip()==pin
+ assert not subprocess.check_output(['git','status','--porcelain'],cwd=root)
+ assert not link.exists() and not link.is_symlink() and not tmp.exists() and not out.exists()
+ assert shutil.disk_usage(root).free>=16*1024**3
+ tmp.mkdir();out.mkdir()
+ old=root/'docs/mcr/evidence/runtime-preferences-root/source-03'
+ (tmp/'vitest.config.mjs').write_text((old/'runner-config.mjs').read_text().replace('/private/tmp/mcr-composed-preferences-source03',str(tmp)))
+ (tmp/'setup.mjs').write_bytes((old/'runner-setup.mjs').read_bytes())
+ for n in ['vitest.config.mjs','setup.mjs']:(out/n).write_bytes((tmp/n).read_bytes())
+ link.symlink_to('/Users/lhs/Desktop/mcr/frontend/node_modules',target_is_directory=True);ownlink=True
+ env={**os.environ,'MCR_FE14_PYTHON':'/Users/lhs/Desktop/mcr-tools/contracts-validation-venv/bin/python','PATH':str(Path(node).parent)+':/Users/lhs/Desktop/mcr-tools/contracts-validation-venv/bin:'+os.environ['PATH'],'TMPDIR':str(tmp),'TMP':str(tmp),'TEMP':str(tmp),'XDG_CACHE_HOME':str(tmp/'cache'),'CI':'true'}
+ for i,cmd in enumerate(commands):
+  at=datetime.datetime.now(datetime.timezone.utc).isoformat();log=out/f'{i+1}.log'
+  with log.open('wb') as f:
+   proc=subprocess.Popen(cmd,cwd=front,env=env,stdout=f,stderr=subprocess.STDOUT,start_new_session=True)
+   while proc.poll() is None:guard();time.sleep(.2)
+   guard();code=proc.returncode
+  entries.append(dict(command=cmd,started_at=at,exit_code=code,log=log.name));print(json.dumps(entries[-1]),flush=True)
+  if code:raise RuntimeError(f'command-{i+1}-exit-{code}')
+except BaseException as e:failure=str(e)
+finally:
+ if proc is not None:
+  try:os.killpg(proc.pid,signal.SIGTERM)
+  except ProcessLookupError:pass
+  try:proc.wait(timeout=2)
+  except subprocess.TimeoutExpired:os.killpg(proc.pid,signal.SIGKILL);proc.wait()
+ if ownlink and link.is_symlink():link.unlink()
+ shutil.rmtree(tmp,ignore_errors=True)
+ if out.exists():
+  report=dict(job=job,source_revision=pin,driver_sha256=hashlib.sha256(Path(__file__).read_bytes()).hexdigest(),carried_art_bytes=carry,commands=entries,failure=failure,elapsed_seconds=time.monotonic()-started,peaks=peaks,minimum_free_bytes=minfree,owned_temp_absent=not tmp.exists(),owned_link_absent=not link.exists(),finished_at=datetime.datetime.now(datetime.timezone.utc).isoformat());(out/'report.json').write_text(json.dumps(report,indent=2)+'\n');print(json.dumps(report),flush=True)
+raise SystemExit(1 if failure else 0)

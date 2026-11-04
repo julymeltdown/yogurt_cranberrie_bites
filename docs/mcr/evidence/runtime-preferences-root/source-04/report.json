@@ -1,0 +1,74 @@
+{
+  "job": "ROOT-PREFERENCES-FINAL-SOURCE-202611040810Z",
+  "source_revision": "7d4c523461840ff5bfdbff3df06c86757b0c8139",
+  "driver_sha256": "76d4a8bfdf1738e07e29144d24c15239e338b1226c5ff7c2c4d1b700a53dc02f",
+  "carried_art_bytes": 7413760,
+  "commands": [
+    {
+      "command": [
+        "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node",
+        "node_modules/vitest/vitest.mjs",
+        "run",
+        "src/features/settings/runtime-adoption/__tests__",
+        "--config",
+        "/private/tmp/mcr-preferences-final-source04/vitest.config.mjs",
+        "--configLoader",
+        "runner",
+        "--cache=false",
+        "--no-file-parallelism",
+        "--maxWorkers=1"
+      ],
+      "started_at": "2026-11-04T08:06:13.143057+00:00",
+      "exit_code": 0,
+      "log": "1.log"
+    },
+    {
+      "command": [
+        "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node",
+        "node_modules/typescript/bin/tsc",
+        "--project",
+        "tsconfig.json",
+        "--pretty",
+        "false",
+        "--incremental",
+        "false"
+      ],
+      "started_at": "2026-11-04T08:06:16.503034+00:00",
+      "exit_code": 0,
+      "log": "2.log"
+    },
+    {
+      "command": [
+        "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node",
+        "node_modules/oxlint/bin/oxlint",
+        "src/features/settings/runtime-adoption",
+        "src/world/preferences/__tests__/native"
+      ],
+      "started_at": "2026-11-04T08:06:23.195720+00:00",
+      "exit_code": 0,
+      "log": "3.log"
+    },
+    {
+      "command": [
+        "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node",
+        "--check",
+        "src/world/preferences/__tests__/native/native.mjs"
+      ],
+      "started_at": "2026-11-04T08:06:23.409217+00:00",
+      "exit_code": 0,
+      "log": "4.log"
+    }
+  ],
+  "failure": null,
+  "elapsed_seconds": 10.529050917000859,
+  "peaks": {
+    "whole": 20742144,
+    "temp": 13316096,
+    "durable": 12288,
+    "new": 13328384
+  },
+  "minimum_free_bytes": 38333579264,
+  "owned_temp_absent": true,
+  "owned_link_absent": true,
+  "finished_at": "2026-11-04T08:06:23.623310+00:00"
+}

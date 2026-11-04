@@ -780,3 +780,115 @@ allocation occurred. New three-era visual inspection is `NOT_RUN`; the pending
 36-PNG packet is a separate assignment. No resources are held. Publication byte
 proof does not establish all-era visual acceptance or resolve the original
 functional/live/device/public-flow obligations.
+
+### ART-BG-MATRIX-01 actual three-era owner comparison
+
+The preceding publication receipt is committed as
+`bfd3bb0990a53d15a33d37da9bc1a059ea33459b`, pushed to the ART branch and
+independently matched by `git ls-remote`; `git status --porcelain` was empty.
+Subsequent fresh fetch and independent master readback both resolved
+`70a444bf7cf6454f2ed4da7a635db2bb649738f2`, exit 0. Its ART document equals
+the `bfd3bb09` blob exactly, and native-03 seal `4600542b` is its ancestor
+(`git merge-base --is-ancestor`, exit 0).
+Its `NOT_RUN` visual status records the state before this separate assignment.
+Artist completed the following actual retained-image comparison at
+2026-11-04T08:02:47Z. The same unfinished goal remains `blocked`.
+
+Root's immutable native-03 seal is
+`4600542ba8f5d16210075c93847fa60960809540`, under
+`docs/mcr/evidence/reference-scene-v5/map-cozy-v1/native-03/` in the delivery
+checkout. Candidate `aea02a262f7d834be7ef2267368812520a5d9c0c` is compared with
+baseline `7c25078f118da53dd9a524d0a58e707cca190f0f`.
+The capture packet SHA256 is
+`e6b40ade602f886ad587d570432394aacb832c00c98e08dcb644af5a2fca6084`;
+report SHA256 is
+`8475506428171eb935c9be1b55c72768075b14d88b2978c175d50855b6724134`.
+
+Artist's read-only `python3` verifier exited 0: all 41 packet artifact byte
+counts/SHA256 values match retained files and `git show 4600542b:<path>` blobs;
+all 36 screenshot report byte counts, hashes and dimensions match, with exact
+coverage of baseline/candidate, three eras, World/Map and three widths. Each
+screen is 844px high; capture times are pinned in the immutable report. The
+packet and report also independently match Root's subsequently supplied seals.
+The report's four candidate scenery asset pins (three atlases and shared ground)
+match the closed ART handoff and candidate Git blobs, including byte counts,
+SHA256 and revision; the independent Python/Git comparison exited 0.
+No screenshot was copied, restored, regenerated or assembled into new media.
+
+The two initially routed actual 390px Maps are included in that full matrix:
+
+- REVENGE: 379545 bytes, SHA256
+  `875ff6d6976ed2ed0ba8bef148a593e29d5154d8cf7254334d320dedc2152c11`,
+  captured 2026-11-04T07:55:50.238Z (16:55:50.238 KST).
+- DANGER: 381665 bytes, SHA256
+  `d62c8eef74663ed6b41dcf4eb7faf272eb59538a0734803d8853df40b0acf1f2`,
+  captured 2026-11-04T07:55:52.827Z (16:55:52.827 KST).
+
+Artist directly viewed every baseline and candidate PNG, including all World
+views and all widths, plus the unchanged user collage: 482737 bytes, 1280x853,
+SHA256 `2b3988d546f87b813d78ca13bf267730a6dd19118bd6535a2d3c3032b6f12d23`.
+Each table entry represents an actually inspected, width-matched before/after
+pair. PASS is the bounded scenery-owner comparison described below.
+
+| Width | PARADE World | PARADE Map | REVENGE World | REVENGE Map | DANGER World | DANGER Map |
+| --- | --- | --- | --- | --- | --- | --- |
+| 360 | PASS | PASS | PASS | PASS | PASS | PASS |
+| 390 | PASS | PASS | PASS | PASS | PASS | PASS |
+| 430 | PASS | PASS | PASS | PASS | PASS | PASS |
+
+In every era, dominant scenery looks visibly cuter than both its actual before
+UI and the supplied dark collage. Pink blossom, soft gold, lime and muted teal
+rounded canopies replace angular dark foliage; cream/peach facades, pink/lilac
+roofs, flower edging and warm awnings replace dark brick and striped stalls.
+The retained dark stage and plaque are deliberate original-era context. At
+390px these large soft forms remain clear behind the frozen foreground labels
+and characters; this judgment also holds at 360px and 430px.
+
+No new cell bleed, detached sprite base, atlas registration defect or scenery
+crop regression was seen in the eighteen comparisons. Existing edge cropping
+and foreground occlusion remain visible in matched baseline views. The Map's
+fit bands are largest at 360px, moderate at 390px and minimal at 430px; the
+corrected sage/mint fill now harmonizes with the terrain instead of the former
+olive bands. The 430px Map's different annotation/zoom positions are already
+present in its baseline. Labels, connectors and controls remain visually
+legible over the softer scenery. These are image observations, not a rerun of
+interaction, geometry or accessibility tests.
+
+Era intent was checked before judging similarity: binding `7dcbc0e2` explicitly
+authorizes restrained channel recipes over the same fourteen environment crops,
+shared ground, each era's own original stage/plaque and frozen geometry. The
+immutable `era-derivatives.json` records half-up RGB recipes, with unchanged
+alpha: REVENGE uses (92%, +20), (84%, +28), (87%, +24), named warm strawberry /
+rose cream; DANGER uses (83%, +34), (94%, +16), (98%, +10), named apricot / mint /
+lavender. Actual REVENGE roofs and foliage lean slightly rosier, while DANGER
+greens/teals are slightly cooler. These are subtle palette differences over
+shared shapes. World makes the preserved distinction clearer: REVENGE has
+red/maroon stage trim and plaque; DANGER has cyan/yellow stage lights/trim and
+green plaque accents. PARADE retains its neutral stage structure and plaque.
+Map palettes alone do not reliably identify an era. That limitation is explicit;
+the authorized derivative design does not promise different architecture or
+terrain. Similarity is not evidence of a misbound atlas, and no stronger era
+redesign requirement is invented by this comparison.
+
+No source or consumer fix is required by this bounded owner inspection. Root
+received the concrete observations directly. Root separately reports 640 Git
+source/asset pins, unchanged six-character pixels/frame/geometry, camera and
+label rectangles, zero-channel object-oracle differences and twelve successful
+destination/back-focus actions. These are attributed Root checks, not Artist
+reruns. Root also reports an inherited title-ring contrast of 2.41, below 3;
+this receipt does not certify global accessibility or alter frozen styling.
+
+Root explicitly fully released job `ERA-WORLD-MAP-NATIVE-202611040754Z` at
+2026-11-04T07:56:07.729306Z: exit 0, 51.529 seconds, whole 54181888 bytes
+including 7413760 carried ART bytes, temporary 29978624, durable 16891904,
+minimum free 37368500224; owned temporary/dependency link absent and browser /
+Vite children exited. Root remains sole packet custodian. Artist acquired no
+resource, ran no browser/native/source-generation/consumer test, and changed
+only this document. All source PNGs, originals, metadata, geometry, characters
+and renderers remain frozen.
+
+The bounded actual three-era World/Map owner comparison is complete. This does
+not close human final acceptance, all-ten-screen acceptance, parent-goal,
+functional/live/device/public-flow obligations or physical venue evidence.
+Controlled synthetic C03/C05 map7005 fixtures remain `NOT_ADMITTED`; no live
+authority or physical-device acceptance follows from these captures.
