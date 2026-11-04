@@ -133,5 +133,10 @@
     "frontend/e2e/privacy/schema.mjs": "1a4d147a0c349180e22cd323bfde6109eaf4ab7cf342e2a8ecf8c421e75b7ced",
     "frontend/e2e/privacy/typecheck.mjs": "2c9873d04c726613d8edfd5b78570b4cfdf9fb73cae36332d764e9e70b204b89"
   },
-  "authoredWhitespaceExitCode": 0
+  "authoredWhitespaceExitCode": 0,
+  "publicationRetry": {
+    "reason": "non-fast-forward preserved concurrent peers",
+    "mergedRemote": "bd103c101b07e1df30c424cbc1e8a3ea62ca5315",
+    "qualifiedSourcePins": "all unchanged; no repeated runtime needed"
+  }
 }
