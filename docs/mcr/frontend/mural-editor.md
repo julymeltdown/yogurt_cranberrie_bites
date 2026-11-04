@@ -1,5 +1,20 @@
 # FE32 mural editing surface
 
+Current original FE32 client criteria: **SATISFIED**, qualification **MOCK_READY**,
+2026-11-04. Owner 204 requalified the actual current editor, corrected three-plus-
+contact touch ambiguity and delayed-ack cooldown shortening, and passed 136
+current affected tests plus all three native widths. Full criterion dispositions,
+provenance, current source pin `21ceef60`, 15 captures, visual comparison and precise
+integration limits are in [the current delivery report](fe32-client-delivery.md).
+No original client behavior remains identified as unfinished. Live producer,
+FE33/IN04, physical devices and whole-reference acceptance remain separate.
+
+The following original owner report is preserved as historical provenance. Its
+uncomposed-route statements describe its old base, not current app composition;
+current native results certify the component/HTTP fixture boundary explicitly.
+
+## Historical original owner report
+
 Status: **MOCK_READY**, 2026-11-04 (Asia/Seoul). This is an independently usable
 editor with deterministic command-port fixtures. Production composition, HTTP
 receipt recovery, FE33 synchronization/world texture, real collaboration and
