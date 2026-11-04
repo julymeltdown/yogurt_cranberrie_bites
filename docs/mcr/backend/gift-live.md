@@ -247,7 +247,22 @@ signed trusted-network context.
 `0576c359`, PublicProfile unsupported-variant source `56f18703` (local
 `929420e0`) and Root ledger/composite-settler source `82ec8b89` (local
 `c1ae9126`). These consumed peer sources are not certified by the earlier
-`e9b761fb` runtime proof. This increment is **IN_PROGRESS**, with compilation and
+`e9b761fb` runtime proof. Gift source checkpoint is `8f8aadc0`. Root's subsequent
+minimal source sequence `c9a5081c`, SDK `f646f015`, Root `0797bdd6`, `22590db0`,
+`24af845b`, `a975e845` is consumed without editing central files. It supplies
+response-wide disclosure clipping, Gateway before-frame expiry checks and signed
+trusted-network context source; this is not a joined runtime claim.
+
+Published Media port source `65f90e08` is consumed locally as `b2c1251c`.
+The Media documentation conflict was resolved by taking that exact file from
+the peer's published `15e7bd8` snapshot, with no authored peer-file changes.
+`GiftMediaAdapter` explicitly implements the new prelock port: exact parsed
+Create intent or owner Update root is validated and locked before PgMedia locks
+its row, and final Link authorization rechecks that same immutable target on the
+same transaction. The published media implementation file matches `15e7bd8`.
+Actual Gift image-linking runtime remains **NOT_RUN**.
+
+This increment is **IN_PROGRESS**, with compilation and
 all newly authored native tests **NOT_RUN** until a target is explicitly leased.
 
 `GiftPrivateRequest::from_request` accepts the exact parsed Pickup or IssueCode

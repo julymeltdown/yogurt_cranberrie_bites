@@ -133,8 +133,42 @@ fn db(_: sqlx::Error) -> CommandError {
     CommandError::Unavailable
 }
 struct LinkAuthority(Arc<Intent>);
+impl LinkAuthority {
+    async fn exact_target_in(
+        &self,
+        c: &mut PgConnection,
+        context: Context,
+        owner: Uuid,
+        target: Option<Target>,
+    ) -> Result<(), CommandError> {
+        let cmd = self.0.command()?;
+        if owner != cmd.actor
+            || target
+                != Some(Target {
+                    resource: cmd.giveaway_id(),
+                    purpose: Purpose::Giveaway,
+                })
+            || context != self.0.context_in(c).await?
+        {
+            return Err(CommandError::Denied);
+        }
+        self.0.authorize_target_in(c).await
+    }
+}
 #[async_trait]
 impl MediaAuthority for LinkAuthority {
+    async fn prelock_target_in(
+        &self,
+        c: &mut PgConnection,
+        context: Context,
+        owner: Uuid,
+        target: Option<Target>,
+    ) -> Result<(), CommandError> {
+        // PgMedia calls this BEFORE its media row lock. The immutable parsed
+        // command permits exactly one root: validated server-derived Create
+        // intent, or the actual owner Update root locked on this connection.
+        self.exact_target_in(c, context, owner, target).await
+    }
     async fn authorize_in(
         &self,
         c: &mut PgConnection,
@@ -143,22 +177,12 @@ impl MediaAuthority for LinkAuthority {
         owner: Uuid,
         target: Option<Target>,
     ) -> Result<(), CommandError> {
-        let cmd = self.0.command()?;
-        if access != Access::Link(Purpose::Giveaway)
-            || owner != cmd.actor
-            || target
-                != Some(Target {
-                    resource: cmd.giveaway_id(),
-                    purpose: Purpose::Giveaway,
-                })
-        {
+        if access != Access::Link(Purpose::Giveaway) {
             return Err(CommandError::Denied);
         }
-        let actual = self.0.context_in(c).await?;
-        if context != actual {
-            return Err(CommandError::Denied);
-        }
-        self.0.authorize_target_in(c).await
+        // Recheck that same immutable target while all prelocked owner roots
+        // remain held in this TX. This cannot acquire a different target.
+        self.exact_target_in(c, context, owner, target).await
     }
 }
 /// Created from the exact parsed request and actual root scope. No supplied target
