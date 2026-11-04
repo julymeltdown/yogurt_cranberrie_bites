@@ -1,6 +1,8 @@
 """Deterministic tiny Git fixtures; no app, browser, Cargo, services or credentials."""
 import copy
+import contextlib
 import gzip
+import io
 import json
 import os
 from pathlib import Path
@@ -370,9 +372,14 @@ class ReleaseChecks(unittest.TestCase):
         for arguments, code, status in [(["--manifest", EVIDENCE + "/manifest.json"], 0, "PARTIAL"),
                                          ([], 2, "INCOMPLETE"), (["--candidate", "f" * 40], 1, "FAIL")]:
             with self.subTest(code=code):
-                result = subprocess.run(command + arguments, capture_output=True, check=False)
-                self.assertEqual(result.returncode, code, result.stderr.decode())
-                self.assertEqual(json.loads(result.stdout)["status"], status)
+                # Exercise the actual entrypoint without a nested Python child;
+                # the source-round supervisor runs external CLI probes separately.
+                from check import main
+                output = io.StringIO()
+                with patch.object(sys, "argv", command[2:] + arguments), contextlib.redirect_stdout(output):
+                    result = main()
+                self.assertEqual(result, code)
+                self.assertEqual(json.loads(output.getvalue())["status"], status)
 
     def test_boolean_vitest_count_is_rejected(self):
         report = {"success": True, "numTotalTests": True, "numPassedTests": 1, "numFailedTests": 0,

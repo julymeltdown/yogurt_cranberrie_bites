@@ -502,7 +502,14 @@ def main():
     parser.add_argument("--root", type=Path, default=Path(__file__).resolve().parents[3])
     parser.add_argument("--candidate", required=True)
     parser.add_argument("--manifest", help="Repository-relative explicit sanitized evidence manifest")
+    parser.add_argument("--mode", choices=("source", "composition"), default="source",
+                        help="source-v1 by default; composition adds original task/IA and runtime bindings")
     args = parser.parse_args()
+    if args.mode == "composition":
+        from composition import evaluate as compose
+        report = compose(args.root, args.candidate, args.manifest)
+        print(json.dumps(report, indent=2, sort_keys=True))
+        return 1 if report["status"] == "FAIL" else 0 if report["composition_checks"] == "PASS" else 2
     report = evaluate(args.root, args.candidate, args.manifest)
     print(json.dumps(report, indent=2, sort_keys=True))
     return 1 if report["status"] == "FAIL" else 0 if report["source_checks"] == "PASS" else 2
