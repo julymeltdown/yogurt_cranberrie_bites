@@ -1,0 +1,136 @@
+{
+  "status": "INTEGRATED",
+  "qualified_source": "7c6cf64f1ade1de4100c705f46bb4f39902b0a22",
+  "initial_source": "13c542dfe6051306623c3b2d6cc98fd7f16731ee",
+  "source_commits": [
+    "3b87ad17",
+    "13c542df",
+    "7c6cf64f"
+  ],
+  "offer": "ROOT-FEED-TARGET-MAIN-BACKEND-202611041203Z",
+  "private_receipt_basename": "mcr-root-feed-target-main-m_5rl_zc",
+  "source_freeze": {
+    "allocated_bytes": 529530880,
+    "files": 3703,
+    "verified_sha256": true
+  },
+  "artifacts": {
+    "concert-service": {
+      "binary_bytes": 58354416,
+      "binary_sha256": "3610b8d37be0c071232f8333d322911618afc89f27114df2fa192381a7401455"
+    },
+    "feed_runtime": {
+      "binary_bytes": 5818864,
+      "binary_sha256": "0d51d8536309545b7b032782cf4aaa6d27ad7da14bf00cdc562f78eec36009f8"
+    }
+  },
+  "commands": {
+    "feed_runtime": [
+      "cargo",
+      "+1.88.0",
+      "test",
+      "--manifest-path",
+      "backend/Cargo.toml",
+      "--locked",
+      "--offline",
+      "-j",
+      "2",
+      "--config",
+      "profile.dev.package.contracts-build.opt-level=2",
+      "-p",
+      "concert-service",
+      "--test",
+      "feed_runtime",
+      "--no-run",
+      "--message-format=json"
+    ],
+    "concert-service": [
+      "cargo",
+      "+1.88.0",
+      "build",
+      "--manifest-path",
+      "backend/Cargo.toml",
+      "--locked",
+      "--offline",
+      "-j",
+      "2",
+      "--config",
+      "profile.dev.package.contracts-build.opt-level=2",
+      "-p",
+      "concert-service",
+      "--bin",
+      "concert-service",
+      "--message-format=json"
+    ]
+  },
+  "configuration_passed": 4,
+  "actual_main_startup_refusals_passed": 3,
+  "failed": 0,
+  "ignored": 0,
+  "copied_results": [
+    {
+      "exit_code": 0,
+      "name": "feed_runtime",
+      "output_sha256": "65b3fce258112ba674fa2bb3bba733f40fd7fd13a54db5a90600771c59ee6f66",
+      "passed": 4
+    },
+    {
+      "exit_code": 1,
+      "expected_startup_refusal": "Live Notification target requires Inbox and shared live Intro/Participant",
+      "name": "target-without-inbox",
+      "observed_expected_error": true,
+      "output_sha256": "10d4d99e5eea11f0198a826561cf46e998b9bf4d9c14372811d683172ccf9d91"
+    },
+    {
+      "exit_code": 1,
+      "expected_startup_refusal": "CONCERT_NOTIFICATION_TARGET_MODE must be off or live",
+      "name": "invalid-target-mode",
+      "observed_expected_error": true,
+      "output_sha256": "1f08535eb15741b28eb1fbd58131722e54fe0490554794d6c83bf90856ee142b"
+    },
+    {
+      "exit_code": 1,
+      "expected_startup_refusal": "Concert product modes require guarded gRPC bootstrap composition",
+      "name": "feed-without-bootstrap",
+      "observed_expected_error": true,
+      "output_sha256": "3afbb0da493929cdc2e0554ea72dab626c096d1fa44b60fce292f32359ee76b2"
+    }
+  ],
+  "initial_failure": "Compiler E0277 in one new test: ? on infallible TlsMaterial::from_pem. Initial source/log/receipt preserved; one-line fix within original unreleased allocation and unchanged cutoffs/caps. No failed result counted as passing.",
+  "resources": {
+    "accepted_to_release_seconds": 159.15005803108215,
+    "final_free_bytes": 18698293248,
+    "no_pg_services_listeners": true,
+    "offer": "ROOT-FEED-TARGET-MAIN-BACKEND-202611041203Z",
+    "own_open_handles": 0,
+    "owned_groups_absent": true,
+    "owned_pki_tmp_removed": true,
+    "released_at": 1793794199.0220318,
+    "state": "FULLY_RELEASED",
+    "target_access_after_target_release": "NONE",
+    "target_to_full_release_seconds": 15.523980140686035,
+    "whole_upper_bound_including_receipt_reserve_bytes": 3321344000
+  },
+  "copied_stage_sampled_maximum_whole_bytes": 3321352192,
+  "copied_stage_seconds": 2.0899887084960938,
+  "evidence_sha256": {
+    "offer-acceptance.json": "c80b52fbd17d956dd147715b880ee36292be3a472672ffd805885e96e3dacbfa",
+    "source-amendment.json": "87667b2522aced2bca87d79e4679f41422fd1547e3b1ca1015199aec3482cf76",
+    "source-pins.json": "2dcb3e561ca194ce5ed87ec0412932b75aa297b8790aa744702f6b233f1cfd27",
+    "source-freeze-receipt.json": "8c4795f909bf8fcd2dccdcc97b7e0715906b0261ceea8aa214223136194b2220",
+    "checkpoint.json": "a4f9a0900b93bb651ebf46283c89f41e3b7fbf2500b3e0a426aaba27ae4e3bd2",
+    "feed_runtime-build-receipt.json": "1c3ae7d8ba1a59d82f535fde9a057ea482378e5cd3e0727f79aa5d2709ece536",
+    "concert-service-build-receipt.json": "dd28873b681030c818b6cb681bf732bacd773b7e6840e022987611f1b975b557",
+    "target-release.json": "67b735ed09a1814b3e3a524b6e2efda5a7e7af8d25b8b2578f8b2a78044c41cb",
+    "copied-results.json": "80a0765e7b0b87da0e40fdb1485c975b392f114ecf2eae67a9e42399eef09cf8",
+    "test-results.json": "ba7a1632a65c3615e7defcce09dd311f82da3dda6b48c0c4493f80615c51838e",
+    "full-release.json": "d534ea2f8bc561e5feef30d061bfdca5ca020105e932bb9ccf722b65ec31bdd3",
+    "failed-attempt-1/feed_runtime-build-receipt.json": "834e1c0933b7f190a8768b35465b8bbaf6369dbb4f99543a2ff41096fff79a0b",
+    "failed-attempt-1/feed_runtime.jsonl": "c8cab2e96c6668e7bddcb56db5c8de5693d991e02fb21ff2b52d5777882c9358"
+  },
+  "limitations": [
+    "No PostgreSQL, owner service, listener, browser or positive public flow ran in this qualification.",
+    "Configuration and actual-main refusals do not certify positive callback behavior, outer HTTP EOF, nonempty Inbox or five-owner Feed.",
+    "Real Age provider, Social publisher/outbox/expiry and original IN03 remain unfinished."
+  ]
+}
