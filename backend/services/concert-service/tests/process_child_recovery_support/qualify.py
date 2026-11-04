@@ -38,6 +38,7 @@ def run(args, report):
             stream.write("\nmax_prepared_transactions=256\n")
         cluster.start()
         core.pki(cluster)
+        pin.profile_certificate(cluster, core)
         if int(cluster.sql("postgres","show server_version_num;"))//10000 != 16:
             raise core.SmokeError("preflight","PG16 required")
         report["postgres_version"] = cluster.sql("postgres","show server_version;")

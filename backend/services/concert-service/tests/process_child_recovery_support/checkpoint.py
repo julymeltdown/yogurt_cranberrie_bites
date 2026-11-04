@@ -109,3 +109,18 @@ def verify_checkpoint(repo: Path, checkpoint_path: Path) -> tuple[Path, str, str
     if not isinstance(digest, str) or len(digest) != 64 or sha(binary) != digest:
         raise ValueError("build checkpoint executable SHA256 mismatch")
     return binary, digest, commit
+
+
+def profile_certificate(cluster, core) -> None:
+    """Issue the real Profile workload identity in the exact owned fixture PKI."""
+    cluster.assert_owned()
+    directory = cluster.root / "pki"
+    extension = directory / "profile.ext"
+    extension.write_text("basicConstraints=critical,CA:FALSE\nkeyUsage=critical,digitalSignature,keyEncipherment\nextendedKeyUsage=serverAuth,clientAuth\nsubjectAltName=DNS:profile.svc.internal,URI:spiffe://internal/profile\n")
+    openssl = core.executable(Path("/usr/bin/openssl"))
+    for args in [
+        ["req", "-new", "-newkey", "rsa:2048", "-nodes", "-keyout", "profile.key", "-out", "profile.csr", "-subj", "/CN=profile.svc.internal"],
+        ["x509", "-req", "-in", "profile.csr", "-CA", "ca.crt", "-CAkey", "ca.key", "-CAcreateserial", "-out", "profile.crt", "-days", "2", "-extfile", str(extension)],
+    ]:
+        core.execute([str(openssl), *args], env=cluster.env, cwd=directory, phase="fixture-profile-pki", timeout=30)
+    (directory / "profile.key").chmod(0o600)
