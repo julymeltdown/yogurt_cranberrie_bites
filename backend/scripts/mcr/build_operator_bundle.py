@@ -205,7 +205,7 @@ def main():
                 destination.parent.mkdir(parents=True, exist_ok=True)
                 destination.write_bytes(data)
         print(json.dumps({'result': 'PASS', 'outputs': len(result), 'admission': 'NOT_ADMITTED',
-                          'rust_constructor': 'NOT_RUN', 'gateway_http': 'NOT_RUN'}))
+                          'rust_constructor': 'NOT_CERTIFIED_BY_BUILDER', 'gateway_http': 'NOT_RUN'}))
         return 0
     except (OSError, ValueError, KeyError, StopIteration) as error:
         print('OPERATOR BUNDLE FAIL: ' + str(error), file=sys.stderr)

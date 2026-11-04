@@ -21,9 +21,9 @@
   ],
   "format": "MCR_OPERATOR_BUNDLE_CANDIDATE",
   "generator": {
-    "bytes": 12280,
+    "bytes": 12297,
     "path": "backend/scripts/mcr/build_operator_bundle.py",
-    "sha256": "sha256:0b92c6c492ebfb7695bb05d93bd3d3cc28756c4355d14ca7abd5f91f3556a272"
+    "sha256": "sha256:b2dd760813f80fbba726a1d0407c093ab01a945a66d6423b4dd47168e9851aa5"
   },
   "limits": [
     "Source provenance applies to exact supplied scene inputs only.",
