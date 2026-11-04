@@ -48,7 +48,7 @@ operation delta: only additive `getConcertIntro`, with no removed or changed
 route identities. Motion candidate evidence remains candidate-only; none of
 this pin accounting grants art, runtime, privacy, service or release acceptance.
 
-The active pins now name the audited canonical candidate
+The first qualified forward pins named the audited canonical candidate
 `6dd22ede377df1bf2c1d1de55275f80277af839a`, after the full temporary-candidate
 preflight passed on admitted source `daa26b3d3282ae42015155e7c7a1f360ed27921b`.
 The exact record is
@@ -79,3 +79,25 @@ The separately granted C07 workflow invokes these complete public commands.
 Coverage establishes offline QA01
 criteria only, without promoting C07, production routes, art, live services,
 devices or IN gates. See the evidence README for the task disposition and pins.
+
+The subsequent actually published C18 contract delta is
+`e7bd68cfa35fb620e2eed060a71a72e50718b9dc`, producer `c18d5ba9`, consumed as
+`267a040ac8d33c312aa87a5a2f22bc418b3895f2`. Its separate additive audit records
+17 pinned input deltas and five added operations, with no removed or changed
+routes. The previous qualified pins are archived byte for byte as
+`archive/pins-6dd22ede377df1bf2c1d1de55275f80277af839a.json`; the original
+historical archive and 84-delta audit remain unchanged.
+
+After full temporary-candidate QA01 passed on source `b6c6945c`, active pins
+advanced conditionally to canonical candidate `267a040ac8d33c312aa87a5a2f22bc418b3895f2`
+with SHA-256 `b2fbc46bda9b409891bb22567bcc851d9beeda9436ada15c07e6f276e1c342e8`.
+The ordinary public CLI passed: 238 definitions, 193 fixture outcomes, 140 HTTP
+operations and 1,591 responses. All 13 regressions, including the unchanged
+12 public negative probes, passed. Only the explicitly granted direct domain
+`wall-tools-b/*.json` nested catalog is admitted; traversal, path aliases,
+unknown prefixes and other-family nested entries fail. Exact discovery and
+exhaustive covered-versus-actual comparison remain enforced. The eight published
+C18 fixture outcomes use the existing domain validator, without new dispatch
+or exclusions. This remains offline contract qualification, not Wall runtime
+or IN04 acceptance. See `docs/mcr/c07-generation.md` for the corresponding
+complete C07 qualification and preserved earlier cohorts.

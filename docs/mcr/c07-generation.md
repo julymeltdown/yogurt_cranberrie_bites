@@ -1,10 +1,9 @@
 # C07 generated client and deterministic contract harness
 
-Status: IN_PROGRESS for the subsequent published C18 contract delta. The prior
-coherent cohort at `46050bb9` passed full QA01, its original negative probes,
-and all eight C07 checks. Its evidence remains valid for that frozen source.
-Current-source regeneration and publication follow the C18 intake recorded
-below. GitHub Actions has not been run.
+Status: INTEGRATED locally, including the published C18 contract delta. Full
+QA01, all original negative probes, and all eight C07 checks pass on the current
+canonical cohort. Named-owner publication is pending. The prior coherent cohort
+at `46050bb9` and its evidence remain preserved. GitHub Actions has not been run.
 
 The generator consumes the canonical `contracts/generated/mcr-domain.openapi.json`
 and the existing contract/fixture corpus without changing those inputs. It emits
@@ -340,3 +339,46 @@ segments, aliases and other-family rejection. The full old suite and all twelve
 negative probes remain intact. At this intake commit these additions and the
 new canonical candidate remain pending a fresh bounded source qualification;
 active pins still identify the preceding qualified cohort.
+
+## C18 follow-up qualification result
+
+The source-A slot transferred directly from the frontend owner after its actual
+16:59:39 UTC FULL. `C07-C18-SOURCE-A-NEXT-202611041656Z` admitted clean source
+`b6c6945cb045a652dd85280092862042e763df45` at 17:00:34 UTC, with canonical
+candidate `267a040ac8d33c312aa87a5a2f22bc418b3895f2`. All 238 canonical input
+hashes matched at admission. The complete temporary-candidate preflight passed
+before the active pin changed. The active candidate SHA-256 is now
+`b2fbc46bda9b409891bb22567bcc851d9beeda9436ada15c07e6f276e1c342e8`.
+Both previous pin archives remain byte-exact, and the 238 admitted canonical
+inputs remain unchanged after qualification.
+
+Every command in the reproduction sequence exited 0: complete temporary
+preflight, C07 generation, public QA01 CLI, complete QA01 unittest suite, and
+complete C07 harness. QA01 checked 238 source definitions, 193 fixture outcomes,
+140 HTTP operations and 1,591 response outcomes. All 13 unittest methods passed,
+including the original 12 deliberate public CLI failures with their expected
+exit 1 and diagnostics. Both new nested-catalog regressions passed; exhaustive
+fixture coverage and all prior guards remain enabled.
+
+The regenerated 18 artifacts cover 254 named schemas, 140 operations, 1,591
+operation/status/media witnesses and 38,433 independent Python decisions
+(6,618 accepted). All eight C07 checks passed: exact drift 0; three deliberate
+mismatch probes 1 with required drift diagnostics; inventory and motion tests 0;
+strict TypeScript 0; all five Node runtime tests 0. No C07 runtime source change
+was necessary for the C18 contract delta. No application consumer was adopted.
+
+Evidence remains in local `mcr-tools/c07-c18-followup-20261104T1652Z`:
+`baseline.json`, `canonical-snapshot.json`, `preflight.json`, `generate.log`,
+`qa01.log`, `qa01-regressions.log`, `checks/receipt.json` and its eight logs,
+`qualification-summary.json`, and `full-measured.json`. These are additional
+receipts; the earlier failed and passing rounds remain preserved.
+
+The workload reached FULL at 17:03:06 UTC, well inside its original deadlines.
+All workers and the independent guardian terminated; remaining scoped processes
+were zero, and private TMP, compile directories and dependency links were removed.
+The nonshrinking whole carry was 3,275,706,368 bytes, peak new growth 6,303,744
+bytes, observed maximum four processes, and minimum free space 26,507,124,736
+bytes, with no guard breach. The slot was handed directly to ART06 before this
+metadata/publication work, without waiting for a manager acknowledgment.
+Publication routes to Root; its one canonical delivery receipt is sufficient.
+No remote-proof-only follow-up commit or separate review stage is required.

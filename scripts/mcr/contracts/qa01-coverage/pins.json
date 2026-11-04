@@ -1,8 +1,8 @@
 {
-  "canonical_candidate": "6dd22ede377df1bf2c1d1de55275f80277af839a",
+  "canonical_candidate": "267a040ac8d33c312aa87a5a2f22bc418b3895f2",
   "inputs": {
     "backend/docs/api/mcr-core.openapi.json": "5b62b6e545f2ac5c367bd189bed6c509b76b4383f47b016d7b075c88f2742978",
-    "backend/docs/api/mcr-domain.openapi.json": "4c185d9099b7e02cc61fce1e58b475be169e78bd5ba20b295e99827fc07e034f",
+    "backend/docs/api/mcr-domain.openapi.json": "e7de84d358c18ae3b0431953b582e4f305a1f89c5146b771d7da9cab04e159ef",
     "backend/scripts/docs/check-openapi.py": "4147c67e3aa8d1f4de890ff793ec60e15a7a1e9197e9056d61220cfed162c3a7",
     "backend/scripts/docs/generate-mcr-core.py": "91de68ad25bfd695690ab5a61f5de81a27ff0efd49ed45db7fad0fa560bec93e",
     "backend/scripts/docs/generate-mcr-domain.py": "587d18f45f40f1ee54e051e5cf70bc39786426c94cf140a334f23c30e2cebb03",
@@ -22,14 +22,14 @@
     "contracts/core/v1/operations.json": "2f5b972dbccea09340e1519a1a2c522e3c42f63690fa26b9e58d721e9927ba62",
     "contracts/domain/v1/admin.schema.json": "953e78a482d998e35c9612c30467600adcead3c9e9d4fb6ab7679a2164aef640",
     "contracts/domain/v1/beacon.schema.json": "183186acc1c3ac916e1011c022174041c6557a148347dd135ffaf6ee84385573",
-    "contracts/domain/v1/common.schema.json": "65f2c2f19594942b89613e67b97bd3181e0889e7f47e4476cda752d9aab10584",
+    "contracts/domain/v1/common.schema.json": "cc34c0a16cff70f89a4779ebf6aa962a9009d7ffa7c3d84133d13c2dc159f258",
     "contracts/domain/v1/feed.schema.json": "f9b4b8912b2bf4513ab474ad690efdeaa23d64f97b220f9626c5b37c5e2e99ed",
     "contracts/domain/v1/giveaway.schema.json": "3a5af6301bb9514623aa7d6e68b3ee27b4b89709836801f4c10741f149a7577d",
     "contracts/domain/v1/inherited-map.json": "2d7510d94d45efd3f77a5586800ab7a353326288bfebb3900157b80225329751",
-    "contracts/domain/v1/mural.schema.json": "345871ce89fabff02f06087fcd3e8907651a5712b34ccbd53091158af123b6ca",
-    "contracts/domain/v1/operations.json": "f801d703dfc5509bbe06a2f0fa07a170b6442a48b2204c7ead460fc9a3600112",
+    "contracts/domain/v1/mural.schema.json": "6ef0fea077a277d9029447ed60e6914a3665308969f91bf4ff4a93097e27d8a9",
+    "contracts/domain/v1/operations.json": "f9ee6dcd0e755b8d11179507fa6e0db16bc09e76970313ea5f46743cf8ee409d",
     "contracts/domain/v1/party.schema.json": "7cbea6af623668a36d641e7498bf52f4869b9bc44594b46e7f4a3806cc907d03",
-    "contracts/domain/v1/policy.json": "646f25a81e64ee4f0958c86ea5c46829780bc42dde15c7bf05362f7bd974f294",
+    "contracts/domain/v1/policy.json": "5f0ab5a6d96a34ef45b26778a41bd39226660b8bc9e2f84140f107c604c639e6",
     "contracts/domain/v1/social.schema.json": "b275b36f2ad8eee90922f7ad27cfcbece943773a94831720b6dfca588d0201d2",
     "contracts/fixtures/asset-semantics/illustrated-cases.json": "cb37aa0a71540c0aa987a2ae7f588d7a94e413ce4022bf3d17febed5d211fb73",
     "contracts/fixtures/assets/avatar-config.json": "dea02c52183c82094d76c014115c77716ac32c02cc9841d3f1a7ce9aeb54df4d",
@@ -162,7 +162,7 @@
     "contracts/fixtures/domain/feed-private-handle.json": "c1aa2508e07c365fc02ae17fb75e074808c0a37bbca795d82097d4dbdeaabcca",
     "contracts/fixtures/domain/giveaway-management.json": "b2b74d4fa5070458e0e0f52798c6ba55fc39184f4b31c2825a19317b2993f7e3",
     "contracts/fixtures/domain/half-open-age-bounds.json": "5df494f13df1129fd5926ad1a13ae90a52ffa858a6f8f3e7498fca30ab5093c7",
-    "contracts/fixtures/domain/index.json": "0098bbe0d8a98a262e515eb5d3f9e07f9f85e3fe6839edc98e808295c9066729",
+    "contracts/fixtures/domain/index.json": "1ffba4696e8b49c1c69eb37a3728221c8625c4c7dfeff3c8a40a7ce11986e7d0",
     "contracts/fixtures/domain/intro-age-leak.json": "81617a026c4aa82d298005f2c78e06b13c81d7cadb602a30e01514479a3cf97c",
     "contracts/fixtures/domain/mural-delta.json": "af33340632238564e8c58ac077310fb6993343f6cdb0d220b629e67e14e362a6",
     "contracts/fixtures/domain/mural-gap.json": "005d2254cff3cd074c85f7f38a02d871932835d4fdf3b281d580d3a10e44417a",
@@ -192,6 +192,14 @@
     "contracts/fixtures/domain/social-unconsented-approval.json": "c40cb9bfe3837290323ec8164043b33609e8c25c7bc3972f55114206b91a1dec",
     "contracts/fixtures/domain/sold-out-error.json": "311301eb75f239160f42f4efd9ed56a4c0babda9e630f13ed85ed544f1f9006f",
     "contracts/fixtures/domain/stock-mismatch.json": "fa72e16a382973422172058a1c74361e87a7490911ac6c39e9d6583f1721b324",
+    "contracts/fixtures/domain/wall-tools-b/budget-513.json": "3cd1a5138a2a8c76b2e296ea3839c5a6dbed7500b2b65954b2e5a91b9eb5243f",
+    "contracts/fixtures/domain/wall-tools-b/false-pixel-delta.json": "0e892aed1e057cb030a4815d111cfe3758dc1b030649f49f35ec99e37009ab2f",
+    "contracts/fixtures/domain/wall-tools-b/fill-257.json": "856e19cfe7b9bb6cf0f281adf19376db29fbc1d7fe397896654638b7a86700ac",
+    "contracts/fixtures/domain/wall-tools-b/foreign-history.json": "9469daecb40417ba9736eabd6ea7aa894858289feb13872415989ca7cd4c7dbf",
+    "contracts/fixtures/domain/wall-tools-b/own-fill-256.json": "d21a8014938fb7d8a3fbd3a9f747d97af0c1349e79903bf935f9e29b386dba3a",
+    "contracts/fixtures/domain/wall-tools-b/private-history-leak.json": "b83ba3e91d874f377f5db9370a8a332d7869ce3ddf2f644db1a883dc0c67e46d",
+    "contracts/fixtures/domain/wall-tools-b/tools-qualified.json": "929e6e0fbfd7c600fed6277f415a8b54a258d06d98a2fcda3e28e549a9bf8a93",
+    "contracts/fixtures/domain/wall-tools-b/wrong-background.json": "69fdd4ba7b70ae6a5055afe556a78e3f891051e46f20d7775aad3992b8dbfd2d",
     "contracts/fixtures/realtime/auth-required.json": "3b38eecf227d1533e5fadb6df547d89bc32b0119a01a3e91395c297fb6c6e673",
     "contracts/fixtures/realtime/binary-message.json": "cb80a452a0e3b5061bbdb6cb8bfa2cffb37b3cd0c3d040a1d749df3d4737609b",
     "contracts/fixtures/realtime/duplicate-key.json": "8b33760b6ad7600fa12c80b6c9da5da95da602e0fe9dd8adb7c64613f8b095bb",
@@ -220,16 +228,16 @@
     "contracts/fixtures/realtime/unknown-message.json": "49cade3b71aeeab5eb511fd1799af0342df9c541792ac4194576f5a2e809ae27",
     "contracts/fixtures/realtime/wrong-version.json": "d325eaf29d7c694d50393b2995d222a1a1bc382237f22c3a127b2d56b7b692eb",
     "contracts/generated/mcr-core.openapi.json": "5b62b6e545f2ac5c367bd189bed6c509b76b4383f47b016d7b075c88f2742978",
-    "contracts/generated/mcr-domain.openapi.json": "4c185d9099b7e02cc61fce1e58b475be169e78bd5ba20b295e99827fc07e034f",
+    "contracts/generated/mcr-domain.openapi.json": "e7de84d358c18ae3b0431953b582e4f305a1f89c5146b771d7da9cab04e159ef",
     "contracts/realtime/v1/operations.json": "400d28e861ca5a87c54fde447f77b1680f7ea58e3047ee43b46db25816af6da0",
     "contracts/realtime/v1/policy.json": "ef61bfba5337a06216e98a9d3eba4ed952dfb405815088b926832276d2464cd3",
     "contracts/realtime/v1/world.schema.json": "10d328b555e24f444454bd1d01770bdc4acc3aabeeca8d6a3c5fb10281f2a794",
-    "frontend/src/shared/api/domain-operations.generated.ts": "5abefd1e27a1472291b706eed0ddb7c1c06cc9290ea32d105844caaa0ed66308",
+    "frontend/src/shared/api/domain-operations.generated.ts": "29496fd06ebb6f8567499a980c793b778ca3580e6eae1230bf7d3ddb49937117",
     "scripts/mcr/generate-domain-transport.py": "7a85c1d47978df991f767989ad4264345f7b0a057bc54259a8f8c0bdc9cb941b",
     "scripts/mcr/requirements-contracts.txt": "fc6c67bbfd66de4a6fa8e5521823a733cedff5ea56657cbd49ca03a619504782",
     "scripts/mcr/validate-assets.py": "a4fb1f8cd579031c585f458fe7eb6607116afdc41c90113007ab60de3ccb023c",
     "scripts/mcr/validate-core.py": "69e29751133b16e1e226593d79c008cbd7586e10ca0b93442126f7ffac536954",
-    "scripts/mcr/validate-domain.py": "b6dac35195063fe4248fc7946ac85eb17de03ff79c161545c4d6f750383a0098",
+    "scripts/mcr/validate-domain.py": "6da2c573127d8dda9a7dfb80840abf72ac1ea4c67757b1dea29a06c978701cb0",
     "scripts/mcr/validate-realtime.py": "31ee92c619fae378c03a6ed25339dae9bd1dfeee7b8cb986cc38bd34c4400ee9"
   },
   "operations": {
@@ -357,6 +365,14 @@
       "/api/concert/events/{eventId}/posts/{postId}",
       "patch"
     ],
+    "eraseConcertMuralPixel": [
+      "/api/concert/events/{eventId}/mural/erase",
+      "post"
+    ],
+    "fillConcertMuralRegion": [
+      "/api/concert/events/{eventId}/mural/fill",
+      "post"
+    ],
     "finalizeConcertUpload": [
       "/api/concert/events/{eventId}/media/{mediaId}/finalize",
       "post"
@@ -445,6 +461,10 @@
       "/api/concert/events/{eventId}/mural/snapshot",
       "get"
     ],
+    "getConcertMuralTools": [
+      "/api/concert/events/{eventId}/mural/tools",
+      "get"
+    ],
     "getConcertNotice": [
       "/api/concert/events/{eventId}/notices/{noticeId}",
       "get"
@@ -503,6 +523,10 @@
     ],
     "getOwnConcertIntro": [
       "/api/concert/events/{eventId}/me/intro",
+      "get"
+    ],
+    "getOwnConcertMuralAction": [
+      "/api/concert/events/{eventId}/mural/actions/{idempotencyKey}",
       "get"
     ],
     "initConcertUpload": [
@@ -744,6 +768,10 @@
     "unblockConcertUser": [
       "/api/concert/events/{eventId}/me/blocks/{userId}",
       "delete"
+    ],
+    "undoConcertMuralAction": [
+      "/api/concert/events/{eventId}/mural/undo",
+      "post"
     ],
     "unlikeConcertPost": [
       "/api/concert/events/{eventId}/posts/{postId}/reaction",

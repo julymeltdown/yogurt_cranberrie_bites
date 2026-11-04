@@ -12689,6 +12689,857 @@
         "Cache-Control": "no-store"
       },
       "mediaType": "application/json",
+      "operation": "eraseConcertMuralPixel",
+      "request": {
+        "body": {
+          "expected_revision": 1,
+          "x": 1,
+          "y": 1
+        },
+        "headers": {
+          "Idempotency-Key": "00000000-0000-4000-8000-000000000001",
+          "X-MCR-Intent": "browser"
+        },
+        "mediaType": "application/json",
+        "path": {
+          "eventId": "00000000-0000-4000-8000-000000000001"
+        }
+      },
+      "status": 400
+    },
+    {
+      "body": {
+        "code": "401",
+        "details": {
+          "reason": "AUTHENTICATION_REQUIRED"
+        },
+        "message": "Request could not be completed."
+      },
+      "headers": {
+        "Cache-Control": "no-store"
+      },
+      "mediaType": "application/json",
+      "operation": "eraseConcertMuralPixel",
+      "request": {
+        "body": {
+          "expected_revision": 1,
+          "x": 1,
+          "y": 1
+        },
+        "headers": {
+          "Idempotency-Key": "00000000-0000-4000-8000-000000000001",
+          "X-MCR-Intent": "browser"
+        },
+        "mediaType": "application/json",
+        "path": {
+          "eventId": "00000000-0000-4000-8000-000000000001"
+        }
+      },
+      "status": 401
+    },
+    {
+      "body": {
+        "code": "GATEWAY_403",
+        "details": {
+          "reason": "BROWSER_INTENT_REQUIRED"
+        },
+        "message": "The request is not permitted."
+      },
+      "headers": {
+        "Cache-Control": "no-store"
+      },
+      "mediaType": "application/json",
+      "operation": "eraseConcertMuralPixel",
+      "request": {
+        "body": {
+          "expected_revision": 1,
+          "x": 1,
+          "y": 1
+        },
+        "headers": {
+          "Idempotency-Key": "00000000-0000-4000-8000-000000000001",
+          "X-MCR-Intent": "browser"
+        },
+        "mediaType": "application/json",
+        "path": {
+          "eventId": "00000000-0000-4000-8000-000000000001"
+        }
+      },
+      "status": 403
+    },
+    {
+      "body": {
+        "code": "GATEWAY_404",
+        "details": {
+          "reason": "RESOURCE_UNAVAILABLE"
+        },
+        "message": "The requested action is unavailable.",
+        "timestamp": "2026-11-03T00:00:00Z",
+        "traceId": "fixture-correlation-123"
+      },
+      "headers": {
+        "Cache-Control": "no-store"
+      },
+      "mediaType": "application/json",
+      "operation": "eraseConcertMuralPixel",
+      "request": {
+        "body": {
+          "expected_revision": 1,
+          "x": 1,
+          "y": 1
+        },
+        "headers": {
+          "Idempotency-Key": "00000000-0000-4000-8000-000000000001",
+          "X-MCR-Intent": "browser"
+        },
+        "mediaType": "application/json",
+        "path": {
+          "eventId": "00000000-0000-4000-8000-000000000001"
+        }
+      },
+      "status": 404
+    },
+    {
+      "body": {
+        "code": "GATEWAY_429",
+        "details": {
+          "reason": "MURAL_COOLDOWN"
+        },
+        "message": "The requested action is unavailable.",
+        "timestamp": "2026-11-03T00:00:00Z",
+        "traceId": "fixture-correlation-123"
+      },
+      "headers": {
+        "Cache-Control": "no-store"
+      },
+      "mediaType": "application/json",
+      "operation": "eraseConcertMuralPixel",
+      "request": {
+        "body": {
+          "expected_revision": 1,
+          "x": 1,
+          "y": 1
+        },
+        "headers": {
+          "Idempotency-Key": "00000000-0000-4000-8000-000000000001",
+          "X-MCR-Intent": "browser"
+        },
+        "mediaType": "application/json",
+        "path": {
+          "eventId": "00000000-0000-4000-8000-000000000001"
+        }
+      },
+      "status": 429
+    },
+    {
+      "body": {
+        "code": "GATEWAY_500",
+        "details": {
+          "reason": "INTERNAL_ERROR"
+        },
+        "message": "The request could not be completed."
+      },
+      "headers": {
+        "Cache-Control": "no-store"
+      },
+      "mediaType": "application/json",
+      "operation": "eraseConcertMuralPixel",
+      "request": {
+        "body": {
+          "expected_revision": 1,
+          "x": 1,
+          "y": 1
+        },
+        "headers": {
+          "Idempotency-Key": "00000000-0000-4000-8000-000000000001",
+          "X-MCR-Intent": "browser"
+        },
+        "mediaType": "application/json",
+        "path": {
+          "eventId": "00000000-0000-4000-8000-000000000001"
+        }
+      },
+      "status": 500
+    },
+    {
+      "body": {
+        "code": "GATEWAY_502",
+        "details": {
+          "reason": "DEPENDENCY_UNAVAILABLE"
+        },
+        "message": "The request could not be completed."
+      },
+      "headers": {
+        "Cache-Control": "no-store"
+      },
+      "mediaType": "application/json",
+      "operation": "eraseConcertMuralPixel",
+      "request": {
+        "body": {
+          "expected_revision": 1,
+          "x": 1,
+          "y": 1
+        },
+        "headers": {
+          "Idempotency-Key": "00000000-0000-4000-8000-000000000001",
+          "X-MCR-Intent": "browser"
+        },
+        "mediaType": "application/json",
+        "path": {
+          "eventId": "00000000-0000-4000-8000-000000000001"
+        }
+      },
+      "status": 503
+    },
+    {
+      "body": {
+        "code": "GATEWAY_504",
+        "details": {
+          "reason": "DEADLINE_EXCEEDED"
+        },
+        "message": "The request could not be completed."
+      },
+      "headers": {
+        "Cache-Control": "no-store"
+      },
+      "mediaType": "application/json",
+      "operation": "eraseConcertMuralPixel",
+      "request": {
+        "body": {
+          "expected_revision": 1,
+          "x": 1,
+          "y": 1
+        },
+        "headers": {
+          "Idempotency-Key": "00000000-0000-4000-8000-000000000001",
+          "X-MCR-Intent": "browser"
+        },
+        "mediaType": "application/json",
+        "path": {
+          "eventId": "00000000-0000-4000-8000-000000000001"
+        }
+      },
+      "status": 504
+    },
+    {
+      "body": {
+        "code": "GATEWAY_409",
+        "details": {
+          "reason": "EVENT_READ_ONLY"
+        },
+        "message": "The requested action is unavailable.",
+        "timestamp": "2026-11-03T00:00:00Z",
+        "traceId": "fixture-correlation-123"
+      },
+      "headers": {
+        "Cache-Control": "no-store"
+      },
+      "mediaType": "application/json",
+      "operation": "eraseConcertMuralPixel",
+      "request": {
+        "body": {
+          "expected_revision": 1,
+          "x": 1,
+          "y": 1
+        },
+        "headers": {
+          "Idempotency-Key": "00000000-0000-4000-8000-000000000001",
+          "X-MCR-Intent": "browser"
+        },
+        "mediaType": "application/json",
+        "path": {
+          "eventId": "00000000-0000-4000-8000-000000000001"
+        }
+      },
+      "status": 409
+    },
+    {
+      "body": {
+        "code": "GATEWAY_413",
+        "details": {
+          "reason": "PAYLOAD_TOO_LARGE"
+        },
+        "message": "The request could not be completed."
+      },
+      "headers": {
+        "Cache-Control": "no-store"
+      },
+      "mediaType": "application/json",
+      "operation": "eraseConcertMuralPixel",
+      "request": {
+        "body": {
+          "expected_revision": 1,
+          "x": 1,
+          "y": 1
+        },
+        "headers": {
+          "Idempotency-Key": "00000000-0000-4000-8000-000000000001",
+          "X-MCR-Intent": "browser"
+        },
+        "mediaType": "application/json",
+        "path": {
+          "eventId": "00000000-0000-4000-8000-000000000001"
+        }
+      },
+      "status": 413
+    },
+    {
+      "body": {
+        "code": "GATEWAY_415",
+        "details": {
+          "reason": "INVALID_MEDIA_TYPE"
+        },
+        "message": "The request could not be completed."
+      },
+      "headers": {
+        "Cache-Control": "no-store"
+      },
+      "mediaType": "application/json",
+      "operation": "eraseConcertMuralPixel",
+      "request": {
+        "body": {
+          "expected_revision": 1,
+          "x": 1,
+          "y": 1
+        },
+        "headers": {
+          "Idempotency-Key": "00000000-0000-4000-8000-000000000001",
+          "X-MCR-Intent": "browser"
+        },
+        "mediaType": "application/json",
+        "path": {
+          "eventId": "00000000-0000-4000-8000-000000000001"
+        }
+      },
+      "status": 415
+    },
+    {
+      "body": {
+        "action_id": "40000000-0000-4000-8000-000000000004",
+        "actor_id": "10000000-0000-4000-8000-000000000001",
+        "changed_cells": 256,
+        "command": {
+          "body": {
+            "color_index": 2,
+            "expected_revision": 1,
+            "x": 0,
+            "y": 0
+          },
+          "operation_id": "fillConcertMuralRegion"
+        },
+        "committed_at": "2026-11-05T00:00:00Z",
+        "event_id": "20000000-0000-4000-8000-000000000002",
+        "idempotency_key": "30000000-0000-4000-8000-000000000003",
+        "kind": "FILL",
+        "next_allowed_at": "2026-11-05T00:00:00Z",
+        "receipt_id": "50000000-0000-4000-8000-000000000005",
+        "reset_required": true,
+        "revision": 2,
+        "undo_expires_at": "2026-11-05T00:10:00Z"
+      },
+      "headers": {
+        "Cache-Control": "no-store"
+      },
+      "mediaType": "application/json",
+      "operation": "eraseConcertMuralPixel",
+      "request": {
+        "body": {
+          "expected_revision": 1,
+          "x": 1,
+          "y": 1
+        },
+        "headers": {
+          "Idempotency-Key": "00000000-0000-4000-8000-000000000001",
+          "X-MCR-Intent": "browser"
+        },
+        "mediaType": "application/json",
+        "path": {
+          "eventId": "00000000-0000-4000-8000-000000000001"
+        }
+      },
+      "status": 200
+    },
+    {
+      "body": {
+        "actor_id": "00000000-0000-4000-8000-000000000002",
+        "created_at": "2026-11-07T08:00:00Z",
+        "event_id": "00000000-0000-4000-8000-000000000001",
+        "expires_at": "2026-11-08T08:00:00Z",
+        "failure_reason": null,
+        "idempotency_key": "00000000-0000-4000-8000-000000000047",
+        "operation_id": "reserveConcertGiveaway",
+        "receipt_id": "00000000-0000-4000-8000-000000000046",
+        "resource_id": null,
+        "resource_revision": null,
+        "result_status": null,
+        "state": "PENDING"
+      },
+      "headers": {
+        "Cache-Control": "no-store"
+      },
+      "mediaType": "application/json",
+      "operation": "eraseConcertMuralPixel",
+      "request": {
+        "body": {
+          "expected_revision": 1,
+          "x": 1,
+          "y": 1
+        },
+        "headers": {
+          "Idempotency-Key": "00000000-0000-4000-8000-000000000001",
+          "X-MCR-Intent": "browser"
+        },
+        "mediaType": "application/json",
+        "path": {
+          "eventId": "00000000-0000-4000-8000-000000000001"
+        }
+      },
+      "status": 202
+    },
+    {
+      "body": {
+        "code": "GATEWAY_422",
+        "details": {
+          "reason": "INVALID_INPUT"
+        },
+        "message": "The request could not be completed."
+      },
+      "headers": {
+        "Cache-Control": "no-store"
+      },
+      "mediaType": "application/json",
+      "operation": "fillConcertMuralRegion",
+      "request": {
+        "body": {
+          "color_index": 15,
+          "expected_revision": 7,
+          "x": 127,
+          "y": 0
+        },
+        "headers": {
+          "Idempotency-Key": "00000000-0000-4000-8000-000000000001",
+          "X-MCR-Intent": "browser"
+        },
+        "mediaType": "application/json",
+        "path": {
+          "eventId": "00000000-0000-4000-8000-000000000001"
+        }
+      },
+      "status": 400
+    },
+    {
+      "body": {
+        "code": "401",
+        "details": {
+          "reason": "AUTHENTICATION_REQUIRED"
+        },
+        "message": "Request could not be completed."
+      },
+      "headers": {
+        "Cache-Control": "no-store"
+      },
+      "mediaType": "application/json",
+      "operation": "fillConcertMuralRegion",
+      "request": {
+        "body": {
+          "color_index": 15,
+          "expected_revision": 7,
+          "x": 127,
+          "y": 0
+        },
+        "headers": {
+          "Idempotency-Key": "00000000-0000-4000-8000-000000000001",
+          "X-MCR-Intent": "browser"
+        },
+        "mediaType": "application/json",
+        "path": {
+          "eventId": "00000000-0000-4000-8000-000000000001"
+        }
+      },
+      "status": 401
+    },
+    {
+      "body": {
+        "code": "GATEWAY_403",
+        "details": {
+          "reason": "BROWSER_INTENT_REQUIRED"
+        },
+        "message": "The request is not permitted."
+      },
+      "headers": {
+        "Cache-Control": "no-store"
+      },
+      "mediaType": "application/json",
+      "operation": "fillConcertMuralRegion",
+      "request": {
+        "body": {
+          "color_index": 15,
+          "expected_revision": 7,
+          "x": 127,
+          "y": 0
+        },
+        "headers": {
+          "Idempotency-Key": "00000000-0000-4000-8000-000000000001",
+          "X-MCR-Intent": "browser"
+        },
+        "mediaType": "application/json",
+        "path": {
+          "eventId": "00000000-0000-4000-8000-000000000001"
+        }
+      },
+      "status": 403
+    },
+    {
+      "body": {
+        "code": "GATEWAY_404",
+        "details": {
+          "reason": "RESOURCE_UNAVAILABLE"
+        },
+        "message": "The requested action is unavailable.",
+        "timestamp": "2026-11-03T00:00:00Z",
+        "traceId": "fixture-correlation-123"
+      },
+      "headers": {
+        "Cache-Control": "no-store"
+      },
+      "mediaType": "application/json",
+      "operation": "fillConcertMuralRegion",
+      "request": {
+        "body": {
+          "color_index": 15,
+          "expected_revision": 7,
+          "x": 127,
+          "y": 0
+        },
+        "headers": {
+          "Idempotency-Key": "00000000-0000-4000-8000-000000000001",
+          "X-MCR-Intent": "browser"
+        },
+        "mediaType": "application/json",
+        "path": {
+          "eventId": "00000000-0000-4000-8000-000000000001"
+        }
+      },
+      "status": 404
+    },
+    {
+      "body": {
+        "code": "GATEWAY_429",
+        "details": {
+          "reason": "MURAL_COOLDOWN"
+        },
+        "message": "The requested action is unavailable.",
+        "timestamp": "2026-11-03T00:00:00Z",
+        "traceId": "fixture-correlation-123"
+      },
+      "headers": {
+        "Cache-Control": "no-store"
+      },
+      "mediaType": "application/json",
+      "operation": "fillConcertMuralRegion",
+      "request": {
+        "body": {
+          "color_index": 15,
+          "expected_revision": 7,
+          "x": 127,
+          "y": 0
+        },
+        "headers": {
+          "Idempotency-Key": "00000000-0000-4000-8000-000000000001",
+          "X-MCR-Intent": "browser"
+        },
+        "mediaType": "application/json",
+        "path": {
+          "eventId": "00000000-0000-4000-8000-000000000001"
+        }
+      },
+      "status": 429
+    },
+    {
+      "body": {
+        "code": "GATEWAY_500",
+        "details": {
+          "reason": "INTERNAL_ERROR"
+        },
+        "message": "The request could not be completed."
+      },
+      "headers": {
+        "Cache-Control": "no-store"
+      },
+      "mediaType": "application/json",
+      "operation": "fillConcertMuralRegion",
+      "request": {
+        "body": {
+          "color_index": 15,
+          "expected_revision": 7,
+          "x": 127,
+          "y": 0
+        },
+        "headers": {
+          "Idempotency-Key": "00000000-0000-4000-8000-000000000001",
+          "X-MCR-Intent": "browser"
+        },
+        "mediaType": "application/json",
+        "path": {
+          "eventId": "00000000-0000-4000-8000-000000000001"
+        }
+      },
+      "status": 500
+    },
+    {
+      "body": {
+        "code": "GATEWAY_502",
+        "details": {
+          "reason": "DEPENDENCY_UNAVAILABLE"
+        },
+        "message": "The request could not be completed."
+      },
+      "headers": {
+        "Cache-Control": "no-store"
+      },
+      "mediaType": "application/json",
+      "operation": "fillConcertMuralRegion",
+      "request": {
+        "body": {
+          "color_index": 15,
+          "expected_revision": 7,
+          "x": 127,
+          "y": 0
+        },
+        "headers": {
+          "Idempotency-Key": "00000000-0000-4000-8000-000000000001",
+          "X-MCR-Intent": "browser"
+        },
+        "mediaType": "application/json",
+        "path": {
+          "eventId": "00000000-0000-4000-8000-000000000001"
+        }
+      },
+      "status": 503
+    },
+    {
+      "body": {
+        "code": "GATEWAY_504",
+        "details": {
+          "reason": "DEADLINE_EXCEEDED"
+        },
+        "message": "The request could not be completed."
+      },
+      "headers": {
+        "Cache-Control": "no-store"
+      },
+      "mediaType": "application/json",
+      "operation": "fillConcertMuralRegion",
+      "request": {
+        "body": {
+          "color_index": 15,
+          "expected_revision": 7,
+          "x": 127,
+          "y": 0
+        },
+        "headers": {
+          "Idempotency-Key": "00000000-0000-4000-8000-000000000001",
+          "X-MCR-Intent": "browser"
+        },
+        "mediaType": "application/json",
+        "path": {
+          "eventId": "00000000-0000-4000-8000-000000000001"
+        }
+      },
+      "status": 504
+    },
+    {
+      "body": {
+        "code": "GATEWAY_409",
+        "details": {
+          "reason": "EVENT_READ_ONLY"
+        },
+        "message": "The requested action is unavailable.",
+        "timestamp": "2026-11-03T00:00:00Z",
+        "traceId": "fixture-correlation-123"
+      },
+      "headers": {
+        "Cache-Control": "no-store"
+      },
+      "mediaType": "application/json",
+      "operation": "fillConcertMuralRegion",
+      "request": {
+        "body": {
+          "color_index": 15,
+          "expected_revision": 7,
+          "x": 127,
+          "y": 0
+        },
+        "headers": {
+          "Idempotency-Key": "00000000-0000-4000-8000-000000000001",
+          "X-MCR-Intent": "browser"
+        },
+        "mediaType": "application/json",
+        "path": {
+          "eventId": "00000000-0000-4000-8000-000000000001"
+        }
+      },
+      "status": 409
+    },
+    {
+      "body": {
+        "code": "GATEWAY_413",
+        "details": {
+          "reason": "PAYLOAD_TOO_LARGE"
+        },
+        "message": "The request could not be completed."
+      },
+      "headers": {
+        "Cache-Control": "no-store"
+      },
+      "mediaType": "application/json",
+      "operation": "fillConcertMuralRegion",
+      "request": {
+        "body": {
+          "color_index": 15,
+          "expected_revision": 7,
+          "x": 127,
+          "y": 0
+        },
+        "headers": {
+          "Idempotency-Key": "00000000-0000-4000-8000-000000000001",
+          "X-MCR-Intent": "browser"
+        },
+        "mediaType": "application/json",
+        "path": {
+          "eventId": "00000000-0000-4000-8000-000000000001"
+        }
+      },
+      "status": 413
+    },
+    {
+      "body": {
+        "code": "GATEWAY_415",
+        "details": {
+          "reason": "INVALID_MEDIA_TYPE"
+        },
+        "message": "The request could not be completed."
+      },
+      "headers": {
+        "Cache-Control": "no-store"
+      },
+      "mediaType": "application/json",
+      "operation": "fillConcertMuralRegion",
+      "request": {
+        "body": {
+          "color_index": 15,
+          "expected_revision": 7,
+          "x": 127,
+          "y": 0
+        },
+        "headers": {
+          "Idempotency-Key": "00000000-0000-4000-8000-000000000001",
+          "X-MCR-Intent": "browser"
+        },
+        "mediaType": "application/json",
+        "path": {
+          "eventId": "00000000-0000-4000-8000-000000000001"
+        }
+      },
+      "status": 415
+    },
+    {
+      "body": {
+        "action_id": "40000000-0000-4000-8000-000000000004",
+        "actor_id": "10000000-0000-4000-8000-000000000001",
+        "changed_cells": 256,
+        "command": {
+          "body": {
+            "color_index": 2,
+            "expected_revision": 1,
+            "x": 0,
+            "y": 0
+          },
+          "operation_id": "fillConcertMuralRegion"
+        },
+        "committed_at": "2026-11-05T00:00:00Z",
+        "event_id": "20000000-0000-4000-8000-000000000002",
+        "idempotency_key": "30000000-0000-4000-8000-000000000003",
+        "kind": "FILL",
+        "next_allowed_at": "2026-11-05T00:00:00Z",
+        "receipt_id": "50000000-0000-4000-8000-000000000005",
+        "reset_required": true,
+        "revision": 2,
+        "undo_expires_at": "2026-11-05T00:10:00Z"
+      },
+      "headers": {
+        "Cache-Control": "no-store"
+      },
+      "mediaType": "application/json",
+      "operation": "fillConcertMuralRegion",
+      "request": {
+        "body": {
+          "color_index": 15,
+          "expected_revision": 7,
+          "x": 127,
+          "y": 0
+        },
+        "headers": {
+          "Idempotency-Key": "00000000-0000-4000-8000-000000000001",
+          "X-MCR-Intent": "browser"
+        },
+        "mediaType": "application/json",
+        "path": {
+          "eventId": "00000000-0000-4000-8000-000000000001"
+        }
+      },
+      "status": 200
+    },
+    {
+      "body": {
+        "actor_id": "00000000-0000-4000-8000-000000000002",
+        "created_at": "2026-11-07T08:00:00Z",
+        "event_id": "00000000-0000-4000-8000-000000000001",
+        "expires_at": "2026-11-08T08:00:00Z",
+        "failure_reason": null,
+        "idempotency_key": "00000000-0000-4000-8000-000000000047",
+        "operation_id": "reserveConcertGiveaway",
+        "receipt_id": "00000000-0000-4000-8000-000000000046",
+        "resource_id": null,
+        "resource_revision": null,
+        "result_status": null,
+        "state": "PENDING"
+      },
+      "headers": {
+        "Cache-Control": "no-store"
+      },
+      "mediaType": "application/json",
+      "operation": "fillConcertMuralRegion",
+      "request": {
+        "body": {
+          "color_index": 15,
+          "expected_revision": 7,
+          "x": 127,
+          "y": 0
+        },
+        "headers": {
+          "Idempotency-Key": "00000000-0000-4000-8000-000000000001",
+          "X-MCR-Intent": "browser"
+        },
+        "mediaType": "application/json",
+        "path": {
+          "eventId": "00000000-0000-4000-8000-000000000001"
+        }
+      },
+      "status": 202
+    },
+    {
+      "body": {
+        "code": "GATEWAY_422",
+        "details": {
+          "reason": "INVALID_INPUT"
+        },
+        "message": "The request could not be completed."
+      },
+      "headers": {
+        "Cache-Control": "no-store"
+      },
+      "mediaType": "application/json",
       "operation": "finalizeConcertUpload",
       "request": {
         "body": {
@@ -50927,6 +51778,297 @@
         "Cache-Control": "no-store"
       },
       "mediaType": "application/json",
+      "operation": "getConcertMuralTools",
+      "request": {
+        "path": {
+          "eventId": "00000000-0000-4000-8000-000000000001"
+        }
+      },
+      "status": 400
+    },
+    {
+      "body": {
+        "code": "401",
+        "details": {
+          "reason": "AUTHENTICATION_REQUIRED"
+        },
+        "message": "Request could not be completed."
+      },
+      "headers": {
+        "Cache-Control": "no-store"
+      },
+      "mediaType": "application/json",
+      "operation": "getConcertMuralTools",
+      "request": {
+        "path": {
+          "eventId": "00000000-0000-4000-8000-000000000001"
+        }
+      },
+      "status": 401
+    },
+    {
+      "body": {
+        "code": "GATEWAY_403",
+        "details": {
+          "reason": "BROWSER_INTENT_REQUIRED"
+        },
+        "message": "The request is not permitted."
+      },
+      "headers": {
+        "Cache-Control": "no-store"
+      },
+      "mediaType": "application/json",
+      "operation": "getConcertMuralTools",
+      "request": {
+        "path": {
+          "eventId": "00000000-0000-4000-8000-000000000001"
+        }
+      },
+      "status": 403
+    },
+    {
+      "body": {
+        "code": "GATEWAY_404",
+        "details": {
+          "reason": "RESOURCE_UNAVAILABLE"
+        },
+        "message": "The requested action is unavailable.",
+        "timestamp": "2026-11-03T00:00:00Z",
+        "traceId": "fixture-correlation-123"
+      },
+      "headers": {
+        "Cache-Control": "no-store"
+      },
+      "mediaType": "application/json",
+      "operation": "getConcertMuralTools",
+      "request": {
+        "path": {
+          "eventId": "00000000-0000-4000-8000-000000000001"
+        }
+      },
+      "status": 404
+    },
+    {
+      "body": {
+        "code": "GATEWAY_429",
+        "details": {
+          "reason": "MURAL_COOLDOWN"
+        },
+        "message": "The requested action is unavailable.",
+        "timestamp": "2026-11-03T00:00:00Z",
+        "traceId": "fixture-correlation-123"
+      },
+      "headers": {
+        "Cache-Control": "no-store"
+      },
+      "mediaType": "application/json",
+      "operation": "getConcertMuralTools",
+      "request": {
+        "path": {
+          "eventId": "00000000-0000-4000-8000-000000000001"
+        }
+      },
+      "status": 429
+    },
+    {
+      "body": {
+        "code": "GATEWAY_500",
+        "details": {
+          "reason": "INTERNAL_ERROR"
+        },
+        "message": "The request could not be completed."
+      },
+      "headers": {
+        "Cache-Control": "no-store"
+      },
+      "mediaType": "application/json",
+      "operation": "getConcertMuralTools",
+      "request": {
+        "path": {
+          "eventId": "00000000-0000-4000-8000-000000000001"
+        }
+      },
+      "status": 500
+    },
+    {
+      "body": {
+        "code": "GATEWAY_502",
+        "details": {
+          "reason": "DEPENDENCY_UNAVAILABLE"
+        },
+        "message": "The request could not be completed."
+      },
+      "headers": {
+        "Cache-Control": "no-store"
+      },
+      "mediaType": "application/json",
+      "operation": "getConcertMuralTools",
+      "request": {
+        "path": {
+          "eventId": "00000000-0000-4000-8000-000000000001"
+        }
+      },
+      "status": 503
+    },
+    {
+      "body": {
+        "code": "GATEWAY_504",
+        "details": {
+          "reason": "DEADLINE_EXCEEDED"
+        },
+        "message": "The request could not be completed."
+      },
+      "headers": {
+        "Cache-Control": "no-store"
+      },
+      "mediaType": "application/json",
+      "operation": "getConcertMuralTools",
+      "request": {
+        "path": {
+          "eventId": "00000000-0000-4000-8000-000000000001"
+        }
+      },
+      "status": 504
+    },
+    {
+      "body": {
+        "code": "GATEWAY_409",
+        "details": {
+          "reason": "EVENT_READ_ONLY"
+        },
+        "message": "The requested action is unavailable.",
+        "timestamp": "2026-11-03T00:00:00Z",
+        "traceId": "fixture-correlation-123"
+      },
+      "headers": {
+        "Cache-Control": "no-store"
+      },
+      "mediaType": "application/json",
+      "operation": "getConcertMuralTools",
+      "request": {
+        "path": {
+          "eventId": "00000000-0000-4000-8000-000000000001"
+        }
+      },
+      "status": 409
+    },
+    {
+      "body": {
+        "code": "GATEWAY_413",
+        "details": {
+          "reason": "PAYLOAD_TOO_LARGE"
+        },
+        "message": "The request could not be completed."
+      },
+      "headers": {
+        "Cache-Control": "no-store"
+      },
+      "mediaType": "application/json",
+      "operation": "getConcertMuralTools",
+      "request": {
+        "path": {
+          "eventId": "00000000-0000-4000-8000-000000000001"
+        }
+      },
+      "status": 413
+    },
+    {
+      "body": {
+        "code": "GATEWAY_415",
+        "details": {
+          "reason": "INVALID_MEDIA_TYPE"
+        },
+        "message": "The request could not be completed."
+      },
+      "headers": {
+        "Cache-Control": "no-store"
+      },
+      "mediaType": "application/json",
+      "operation": "getConcertMuralTools",
+      "request": {
+        "path": {
+          "eventId": "00000000-0000-4000-8000-000000000001"
+        }
+      },
+      "status": 415
+    },
+    {
+      "body": {
+        "actor_id": "10000000-0000-4000-8000-000000000001",
+        "available": {
+          "erase": true,
+          "fill": true,
+          "pencil": true,
+          "undo": true
+        },
+        "background_index": 0,
+        "cell_allowance": 512,
+        "editable": true,
+        "event_id": "20000000-0000-4000-8000-000000000002",
+        "fill_limit": 256,
+        "latest_action": {
+          "action_id": "40000000-0000-4000-8000-000000000004",
+          "actor_id": "60000000-0000-4000-8000-000000000006",
+          "changed_cells": 256,
+          "command": {
+            "body": {
+              "color_index": 2,
+              "expected_revision": 1,
+              "x": 0,
+              "y": 0
+            },
+            "operation_id": "fillConcertMuralRegion"
+          },
+          "committed_at": "2026-11-05T00:00:00Z",
+          "event_id": "20000000-0000-4000-8000-000000000002",
+          "idempotency_key": "30000000-0000-4000-8000-000000000003",
+          "kind": "FILL",
+          "next_allowed_at": "2026-11-05T00:00:00Z",
+          "receipt_id": "50000000-0000-4000-8000-000000000005",
+          "reset_required": true,
+          "revision": 2,
+          "undo_expires_at": "2026-11-05T00:10:00Z"
+        },
+        "next_allowed_at": "2026-11-05T00:00:00Z",
+        "next_cell_available_at": null,
+        "remaining_cells": 256,
+        "revision": 2,
+        "server_time": "2026-11-05T00:00:00Z",
+        "undo": {
+          "action_id": "40000000-0000-4000-8000-000000000004",
+          "changed_cells": 256,
+          "expires_at": "2026-11-05T00:10:00Z",
+          "revision": 2
+        },
+        "undo_window_seconds": 600,
+        "unresolved": null,
+        "version": 1,
+        "window_seconds": 600
+      },
+      "headers": {
+        "Cache-Control": "no-store"
+      },
+      "mediaType": "application/json",
+      "operation": "getConcertMuralTools",
+      "request": {
+        "path": {
+          "eventId": "00000000-0000-4000-8000-000000000001"
+        }
+      },
+      "status": 200
+    },
+    {
+      "body": {
+        "code": "GATEWAY_422",
+        "details": {
+          "reason": "INVALID_INPUT"
+        },
+        "message": "The request could not be completed."
+      },
+      "headers": {
+        "Cache-Control": "no-store"
+      },
+      "mediaType": "application/json",
       "operation": "getConcertNotice",
       "request": {
         "path": {
@@ -54250,6 +55392,280 @@
       "request": {
         "path": {
           "eventId": "00000000-0000-4000-8000-000000000001"
+        }
+      },
+      "status": 200
+    },
+    {
+      "body": {
+        "code": "GATEWAY_422",
+        "details": {
+          "reason": "INVALID_INPUT"
+        },
+        "message": "The request could not be completed."
+      },
+      "headers": {
+        "Cache-Control": "no-store"
+      },
+      "mediaType": "application/json",
+      "operation": "getOwnConcertMuralAction",
+      "request": {
+        "path": {
+          "eventId": "00000000-0000-4000-8000-000000000001",
+          "idempotencyKey": "00000000-0000-4000-8000-000000000001"
+        }
+      },
+      "status": 400
+    },
+    {
+      "body": {
+        "code": "401",
+        "details": {
+          "reason": "AUTHENTICATION_REQUIRED"
+        },
+        "message": "Request could not be completed."
+      },
+      "headers": {
+        "Cache-Control": "no-store"
+      },
+      "mediaType": "application/json",
+      "operation": "getOwnConcertMuralAction",
+      "request": {
+        "path": {
+          "eventId": "00000000-0000-4000-8000-000000000001",
+          "idempotencyKey": "00000000-0000-4000-8000-000000000001"
+        }
+      },
+      "status": 401
+    },
+    {
+      "body": {
+        "code": "GATEWAY_403",
+        "details": {
+          "reason": "BROWSER_INTENT_REQUIRED"
+        },
+        "message": "The request is not permitted."
+      },
+      "headers": {
+        "Cache-Control": "no-store"
+      },
+      "mediaType": "application/json",
+      "operation": "getOwnConcertMuralAction",
+      "request": {
+        "path": {
+          "eventId": "00000000-0000-4000-8000-000000000001",
+          "idempotencyKey": "00000000-0000-4000-8000-000000000001"
+        }
+      },
+      "status": 403
+    },
+    {
+      "body": {
+        "code": "GATEWAY_404",
+        "details": {
+          "reason": "RESOURCE_UNAVAILABLE"
+        },
+        "message": "The requested action is unavailable.",
+        "timestamp": "2026-11-03T00:00:00Z",
+        "traceId": "fixture-correlation-123"
+      },
+      "headers": {
+        "Cache-Control": "no-store"
+      },
+      "mediaType": "application/json",
+      "operation": "getOwnConcertMuralAction",
+      "request": {
+        "path": {
+          "eventId": "00000000-0000-4000-8000-000000000001",
+          "idempotencyKey": "00000000-0000-4000-8000-000000000001"
+        }
+      },
+      "status": 404
+    },
+    {
+      "body": {
+        "code": "GATEWAY_429",
+        "details": {
+          "reason": "MURAL_COOLDOWN"
+        },
+        "message": "The requested action is unavailable.",
+        "timestamp": "2026-11-03T00:00:00Z",
+        "traceId": "fixture-correlation-123"
+      },
+      "headers": {
+        "Cache-Control": "no-store"
+      },
+      "mediaType": "application/json",
+      "operation": "getOwnConcertMuralAction",
+      "request": {
+        "path": {
+          "eventId": "00000000-0000-4000-8000-000000000001",
+          "idempotencyKey": "00000000-0000-4000-8000-000000000001"
+        }
+      },
+      "status": 429
+    },
+    {
+      "body": {
+        "code": "GATEWAY_500",
+        "details": {
+          "reason": "INTERNAL_ERROR"
+        },
+        "message": "The request could not be completed."
+      },
+      "headers": {
+        "Cache-Control": "no-store"
+      },
+      "mediaType": "application/json",
+      "operation": "getOwnConcertMuralAction",
+      "request": {
+        "path": {
+          "eventId": "00000000-0000-4000-8000-000000000001",
+          "idempotencyKey": "00000000-0000-4000-8000-000000000001"
+        }
+      },
+      "status": 500
+    },
+    {
+      "body": {
+        "code": "GATEWAY_502",
+        "details": {
+          "reason": "DEPENDENCY_UNAVAILABLE"
+        },
+        "message": "The request could not be completed."
+      },
+      "headers": {
+        "Cache-Control": "no-store"
+      },
+      "mediaType": "application/json",
+      "operation": "getOwnConcertMuralAction",
+      "request": {
+        "path": {
+          "eventId": "00000000-0000-4000-8000-000000000001",
+          "idempotencyKey": "00000000-0000-4000-8000-000000000001"
+        }
+      },
+      "status": 503
+    },
+    {
+      "body": {
+        "code": "GATEWAY_504",
+        "details": {
+          "reason": "DEADLINE_EXCEEDED"
+        },
+        "message": "The request could not be completed."
+      },
+      "headers": {
+        "Cache-Control": "no-store"
+      },
+      "mediaType": "application/json",
+      "operation": "getOwnConcertMuralAction",
+      "request": {
+        "path": {
+          "eventId": "00000000-0000-4000-8000-000000000001",
+          "idempotencyKey": "00000000-0000-4000-8000-000000000001"
+        }
+      },
+      "status": 504
+    },
+    {
+      "body": {
+        "code": "GATEWAY_409",
+        "details": {
+          "reason": "EVENT_READ_ONLY"
+        },
+        "message": "The requested action is unavailable.",
+        "timestamp": "2026-11-03T00:00:00Z",
+        "traceId": "fixture-correlation-123"
+      },
+      "headers": {
+        "Cache-Control": "no-store"
+      },
+      "mediaType": "application/json",
+      "operation": "getOwnConcertMuralAction",
+      "request": {
+        "path": {
+          "eventId": "00000000-0000-4000-8000-000000000001",
+          "idempotencyKey": "00000000-0000-4000-8000-000000000001"
+        }
+      },
+      "status": 409
+    },
+    {
+      "body": {
+        "code": "GATEWAY_413",
+        "details": {
+          "reason": "PAYLOAD_TOO_LARGE"
+        },
+        "message": "The request could not be completed."
+      },
+      "headers": {
+        "Cache-Control": "no-store"
+      },
+      "mediaType": "application/json",
+      "operation": "getOwnConcertMuralAction",
+      "request": {
+        "path": {
+          "eventId": "00000000-0000-4000-8000-000000000001",
+          "idempotencyKey": "00000000-0000-4000-8000-000000000001"
+        }
+      },
+      "status": 413
+    },
+    {
+      "body": {
+        "code": "GATEWAY_415",
+        "details": {
+          "reason": "INVALID_MEDIA_TYPE"
+        },
+        "message": "The request could not be completed."
+      },
+      "headers": {
+        "Cache-Control": "no-store"
+      },
+      "mediaType": "application/json",
+      "operation": "getOwnConcertMuralAction",
+      "request": {
+        "path": {
+          "eventId": "00000000-0000-4000-8000-000000000001",
+          "idempotencyKey": "00000000-0000-4000-8000-000000000001"
+        }
+      },
+      "status": 415
+    },
+    {
+      "body": {
+        "action_id": "40000000-0000-4000-8000-000000000004",
+        "actor_id": "10000000-0000-4000-8000-000000000001",
+        "changed_cells": 256,
+        "command": {
+          "body": {
+            "color_index": 2,
+            "expected_revision": 1,
+            "x": 0,
+            "y": 0
+          },
+          "operation_id": "fillConcertMuralRegion"
+        },
+        "committed_at": "2026-11-05T00:00:00Z",
+        "event_id": "20000000-0000-4000-8000-000000000002",
+        "idempotency_key": "30000000-0000-4000-8000-000000000003",
+        "kind": "FILL",
+        "next_allowed_at": "2026-11-05T00:00:00Z",
+        "receipt_id": "50000000-0000-4000-8000-000000000005",
+        "reset_required": true,
+        "revision": 2,
+        "undo_expires_at": "2026-11-05T00:10:00Z"
+      },
+      "headers": {
+        "Cache-Control": "no-store"
+      },
+      "mediaType": "application/json",
+      "operation": "getOwnConcertMuralAction",
+      "request": {
+        "path": {
+          "eventId": "00000000-0000-4000-8000-000000000001",
+          "idempotencyKey": "00000000-0000-4000-8000-000000000001"
         }
       },
       "status": 200
@@ -74257,6 +75673,412 @@
         "path": {
           "eventId": "00000000-0000-4000-8000-000000000001",
           "userId": "00000000-0000-4000-8000-000000000001"
+        }
+      },
+      "status": 202
+    },
+    {
+      "body": {
+        "code": "GATEWAY_422",
+        "details": {
+          "reason": "INVALID_INPUT"
+        },
+        "message": "The request could not be completed."
+      },
+      "headers": {
+        "Cache-Control": "no-store"
+      },
+      "mediaType": "application/json",
+      "operation": "undoConcertMuralAction",
+      "request": {
+        "body": {
+          "expected_revision": 1,
+          "target_action_id": "00000000-0000-4000-8000-000000000001"
+        },
+        "headers": {
+          "Idempotency-Key": "00000000-0000-4000-8000-000000000001",
+          "X-MCR-Intent": "browser"
+        },
+        "mediaType": "application/json",
+        "path": {
+          "eventId": "00000000-0000-4000-8000-000000000001"
+        }
+      },
+      "status": 400
+    },
+    {
+      "body": {
+        "code": "401",
+        "details": {
+          "reason": "AUTHENTICATION_REQUIRED"
+        },
+        "message": "Request could not be completed."
+      },
+      "headers": {
+        "Cache-Control": "no-store"
+      },
+      "mediaType": "application/json",
+      "operation": "undoConcertMuralAction",
+      "request": {
+        "body": {
+          "expected_revision": 1,
+          "target_action_id": "00000000-0000-4000-8000-000000000001"
+        },
+        "headers": {
+          "Idempotency-Key": "00000000-0000-4000-8000-000000000001",
+          "X-MCR-Intent": "browser"
+        },
+        "mediaType": "application/json",
+        "path": {
+          "eventId": "00000000-0000-4000-8000-000000000001"
+        }
+      },
+      "status": 401
+    },
+    {
+      "body": {
+        "code": "GATEWAY_403",
+        "details": {
+          "reason": "BROWSER_INTENT_REQUIRED"
+        },
+        "message": "The request is not permitted."
+      },
+      "headers": {
+        "Cache-Control": "no-store"
+      },
+      "mediaType": "application/json",
+      "operation": "undoConcertMuralAction",
+      "request": {
+        "body": {
+          "expected_revision": 1,
+          "target_action_id": "00000000-0000-4000-8000-000000000001"
+        },
+        "headers": {
+          "Idempotency-Key": "00000000-0000-4000-8000-000000000001",
+          "X-MCR-Intent": "browser"
+        },
+        "mediaType": "application/json",
+        "path": {
+          "eventId": "00000000-0000-4000-8000-000000000001"
+        }
+      },
+      "status": 403
+    },
+    {
+      "body": {
+        "code": "GATEWAY_404",
+        "details": {
+          "reason": "RESOURCE_UNAVAILABLE"
+        },
+        "message": "The requested action is unavailable.",
+        "timestamp": "2026-11-03T00:00:00Z",
+        "traceId": "fixture-correlation-123"
+      },
+      "headers": {
+        "Cache-Control": "no-store"
+      },
+      "mediaType": "application/json",
+      "operation": "undoConcertMuralAction",
+      "request": {
+        "body": {
+          "expected_revision": 1,
+          "target_action_id": "00000000-0000-4000-8000-000000000001"
+        },
+        "headers": {
+          "Idempotency-Key": "00000000-0000-4000-8000-000000000001",
+          "X-MCR-Intent": "browser"
+        },
+        "mediaType": "application/json",
+        "path": {
+          "eventId": "00000000-0000-4000-8000-000000000001"
+        }
+      },
+      "status": 404
+    },
+    {
+      "body": {
+        "code": "GATEWAY_429",
+        "details": {
+          "reason": "MURAL_COOLDOWN"
+        },
+        "message": "The requested action is unavailable.",
+        "timestamp": "2026-11-03T00:00:00Z",
+        "traceId": "fixture-correlation-123"
+      },
+      "headers": {
+        "Cache-Control": "no-store"
+      },
+      "mediaType": "application/json",
+      "operation": "undoConcertMuralAction",
+      "request": {
+        "body": {
+          "expected_revision": 1,
+          "target_action_id": "00000000-0000-4000-8000-000000000001"
+        },
+        "headers": {
+          "Idempotency-Key": "00000000-0000-4000-8000-000000000001",
+          "X-MCR-Intent": "browser"
+        },
+        "mediaType": "application/json",
+        "path": {
+          "eventId": "00000000-0000-4000-8000-000000000001"
+        }
+      },
+      "status": 429
+    },
+    {
+      "body": {
+        "code": "GATEWAY_500",
+        "details": {
+          "reason": "INTERNAL_ERROR"
+        },
+        "message": "The request could not be completed."
+      },
+      "headers": {
+        "Cache-Control": "no-store"
+      },
+      "mediaType": "application/json",
+      "operation": "undoConcertMuralAction",
+      "request": {
+        "body": {
+          "expected_revision": 1,
+          "target_action_id": "00000000-0000-4000-8000-000000000001"
+        },
+        "headers": {
+          "Idempotency-Key": "00000000-0000-4000-8000-000000000001",
+          "X-MCR-Intent": "browser"
+        },
+        "mediaType": "application/json",
+        "path": {
+          "eventId": "00000000-0000-4000-8000-000000000001"
+        }
+      },
+      "status": 500
+    },
+    {
+      "body": {
+        "code": "GATEWAY_502",
+        "details": {
+          "reason": "DEPENDENCY_UNAVAILABLE"
+        },
+        "message": "The request could not be completed."
+      },
+      "headers": {
+        "Cache-Control": "no-store"
+      },
+      "mediaType": "application/json",
+      "operation": "undoConcertMuralAction",
+      "request": {
+        "body": {
+          "expected_revision": 1,
+          "target_action_id": "00000000-0000-4000-8000-000000000001"
+        },
+        "headers": {
+          "Idempotency-Key": "00000000-0000-4000-8000-000000000001",
+          "X-MCR-Intent": "browser"
+        },
+        "mediaType": "application/json",
+        "path": {
+          "eventId": "00000000-0000-4000-8000-000000000001"
+        }
+      },
+      "status": 503
+    },
+    {
+      "body": {
+        "code": "GATEWAY_504",
+        "details": {
+          "reason": "DEADLINE_EXCEEDED"
+        },
+        "message": "The request could not be completed."
+      },
+      "headers": {
+        "Cache-Control": "no-store"
+      },
+      "mediaType": "application/json",
+      "operation": "undoConcertMuralAction",
+      "request": {
+        "body": {
+          "expected_revision": 1,
+          "target_action_id": "00000000-0000-4000-8000-000000000001"
+        },
+        "headers": {
+          "Idempotency-Key": "00000000-0000-4000-8000-000000000001",
+          "X-MCR-Intent": "browser"
+        },
+        "mediaType": "application/json",
+        "path": {
+          "eventId": "00000000-0000-4000-8000-000000000001"
+        }
+      },
+      "status": 504
+    },
+    {
+      "body": {
+        "code": "GATEWAY_409",
+        "details": {
+          "reason": "EVENT_READ_ONLY"
+        },
+        "message": "The requested action is unavailable.",
+        "timestamp": "2026-11-03T00:00:00Z",
+        "traceId": "fixture-correlation-123"
+      },
+      "headers": {
+        "Cache-Control": "no-store"
+      },
+      "mediaType": "application/json",
+      "operation": "undoConcertMuralAction",
+      "request": {
+        "body": {
+          "expected_revision": 1,
+          "target_action_id": "00000000-0000-4000-8000-000000000001"
+        },
+        "headers": {
+          "Idempotency-Key": "00000000-0000-4000-8000-000000000001",
+          "X-MCR-Intent": "browser"
+        },
+        "mediaType": "application/json",
+        "path": {
+          "eventId": "00000000-0000-4000-8000-000000000001"
+        }
+      },
+      "status": 409
+    },
+    {
+      "body": {
+        "code": "GATEWAY_413",
+        "details": {
+          "reason": "PAYLOAD_TOO_LARGE"
+        },
+        "message": "The request could not be completed."
+      },
+      "headers": {
+        "Cache-Control": "no-store"
+      },
+      "mediaType": "application/json",
+      "operation": "undoConcertMuralAction",
+      "request": {
+        "body": {
+          "expected_revision": 1,
+          "target_action_id": "00000000-0000-4000-8000-000000000001"
+        },
+        "headers": {
+          "Idempotency-Key": "00000000-0000-4000-8000-000000000001",
+          "X-MCR-Intent": "browser"
+        },
+        "mediaType": "application/json",
+        "path": {
+          "eventId": "00000000-0000-4000-8000-000000000001"
+        }
+      },
+      "status": 413
+    },
+    {
+      "body": {
+        "code": "GATEWAY_415",
+        "details": {
+          "reason": "INVALID_MEDIA_TYPE"
+        },
+        "message": "The request could not be completed."
+      },
+      "headers": {
+        "Cache-Control": "no-store"
+      },
+      "mediaType": "application/json",
+      "operation": "undoConcertMuralAction",
+      "request": {
+        "body": {
+          "expected_revision": 1,
+          "target_action_id": "00000000-0000-4000-8000-000000000001"
+        },
+        "headers": {
+          "Idempotency-Key": "00000000-0000-4000-8000-000000000001",
+          "X-MCR-Intent": "browser"
+        },
+        "mediaType": "application/json",
+        "path": {
+          "eventId": "00000000-0000-4000-8000-000000000001"
+        }
+      },
+      "status": 415
+    },
+    {
+      "body": {
+        "action_id": "40000000-0000-4000-8000-000000000004",
+        "actor_id": "10000000-0000-4000-8000-000000000001",
+        "changed_cells": 256,
+        "command": {
+          "body": {
+            "color_index": 2,
+            "expected_revision": 1,
+            "x": 0,
+            "y": 0
+          },
+          "operation_id": "fillConcertMuralRegion"
+        },
+        "committed_at": "2026-11-05T00:00:00Z",
+        "event_id": "20000000-0000-4000-8000-000000000002",
+        "idempotency_key": "30000000-0000-4000-8000-000000000003",
+        "kind": "FILL",
+        "next_allowed_at": "2026-11-05T00:00:00Z",
+        "receipt_id": "50000000-0000-4000-8000-000000000005",
+        "reset_required": true,
+        "revision": 2,
+        "undo_expires_at": "2026-11-05T00:10:00Z"
+      },
+      "headers": {
+        "Cache-Control": "no-store"
+      },
+      "mediaType": "application/json",
+      "operation": "undoConcertMuralAction",
+      "request": {
+        "body": {
+          "expected_revision": 1,
+          "target_action_id": "00000000-0000-4000-8000-000000000001"
+        },
+        "headers": {
+          "Idempotency-Key": "00000000-0000-4000-8000-000000000001",
+          "X-MCR-Intent": "browser"
+        },
+        "mediaType": "application/json",
+        "path": {
+          "eventId": "00000000-0000-4000-8000-000000000001"
+        }
+      },
+      "status": 200
+    },
+    {
+      "body": {
+        "actor_id": "00000000-0000-4000-8000-000000000002",
+        "created_at": "2026-11-07T08:00:00Z",
+        "event_id": "00000000-0000-4000-8000-000000000001",
+        "expires_at": "2026-11-08T08:00:00Z",
+        "failure_reason": null,
+        "idempotency_key": "00000000-0000-4000-8000-000000000047",
+        "operation_id": "reserveConcertGiveaway",
+        "receipt_id": "00000000-0000-4000-8000-000000000046",
+        "resource_id": null,
+        "resource_revision": null,
+        "result_status": null,
+        "state": "PENDING"
+      },
+      "headers": {
+        "Cache-Control": "no-store"
+      },
+      "mediaType": "application/json",
+      "operation": "undoConcertMuralAction",
+      "request": {
+        "body": {
+          "expected_revision": 1,
+          "target_action_id": "00000000-0000-4000-8000-000000000001"
+        },
+        "headers": {
+          "Idempotency-Key": "00000000-0000-4000-8000-000000000001",
+          "X-MCR-Intent": "browser"
+        },
+        "mediaType": "application/json",
+        "path": {
+          "eventId": "00000000-0000-4000-8000-000000000001"
         }
       },
       "status": 202
