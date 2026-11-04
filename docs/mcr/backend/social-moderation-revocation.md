@@ -100,6 +100,13 @@ and the same-intent retry; confirm revocation and no restoration on UNSUSPEND.
 Real browser/World/cache coverage belongs to the corresponding combined flow.
 
 No former resource offer authorizes this new build or database run. The previous
-Social/Sharing allocation and target access are closed. The allocator has a
-request for a new finite validation slot; current outstanding resource use is 0.
+Social/Sharing allocation and target access are closed. Queued offer
+`SOCIAL-MODERATION-TWO-EXE-MEDIA-20261104T1830Z` permits the two integration
+targets only after actual queue admission: no main, library-test target or PG.
+It is not accepted and grants no target hold. The whole limit is 12 GiB with at
+least 6 GiB retained carry; all new growth is at most 768 MiB (target 512 MiB,
+outside 256 MiB, including two executable copies at most 80 MiB each). Fresh
+admission, predecessor release, the global workflow limit and an independent
+continuous guard remain required. Actual 0076 positive-producer integration
+requires a separate future allocation. Current outstanding resource use is 0.
 No earlier Social/Sharing PASS transfers to this new implementation.
