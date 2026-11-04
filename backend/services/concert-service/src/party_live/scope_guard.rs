@@ -5,7 +5,6 @@ use crate::adapters::out::{
     public_profile::PublicProfileReader, relationship_authority::guarded::OwnerGuardScope,
 };
 use async_trait::async_trait;
-use sha2::{Digest, Sha256};
 use sqlx::PgConnection;
 use std::sync::Arc;
 use tonic::Status;
@@ -138,24 +137,30 @@ impl PartyLiveOwnerGuard for ScopePartyLiveGuard {
         binding: &PartyLiveBinding,
     ) -> Result<(), PartyLiveError> {
         self.check(binding)?;
-        let mut hash = Sha256::new();
-        hash.update(b"MCR party transaction v1\0");
-        hash.update(self.scope.binding().digest());
-        hash.update(binding.digest());
-        let effect: [u8; 32] = hash.finalize().into();
-        let reference = serde_json::to_vec(&serde_json::json!({
-            "kind": "PARTY_REQUEST_V1",
-            "actor_id": binding.actor(),
-            "event_id": binding.event(),
-            "request_id": binding.request_id(),
-            "operation_id": binding.operation(),
-            "idempotency_key": binding.idempotency_key(),
-        }))
-        .map_err(|_| PartyLiveError::DependencyUnavailable)?;
-        self.scope
-            .register_transaction_in(connection, effect, reference)
-            .await
-            .map_err(status)
+        super::settlement::register_in(
+            &self.scope,
+            connection,
+            binding,
+            super::settlement::NativeRole::for_operation(binding.operation())?,
+        )
+        .await
+        .map(|_| ())
+    }
+
+    async fn track_lookup_in(
+        &self,
+        connection: &mut PgConnection,
+        binding: &PartyLiveBinding,
+    ) -> Result<(), PartyLiveError> {
+        self.check(binding)?;
+        super::settlement::register_in(
+            &self.scope,
+            connection,
+            binding,
+            super::settlement::NativeRole::Lookup,
+        )
+        .await
+        .map(|_| ())
     }
 }
 
