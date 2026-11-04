@@ -66,6 +66,34 @@
       "exitCode": 0,
       "evidence": "plan-reconciled.log",
       "result": "PASS after merging published peer progress/art/backend handoffs; qualified runtime inputs unchanged"
+    },
+    {
+      "cwd": "frontend",
+      "command": "node node_modules/vitest/vitest.mjs run --configLoader runner --no-cache --maxWorkers 3 src/features/places src/app/places-entry src/app/__tests__/reference-root/root.test.tsx src/world/reference-scene",
+      "exitCode": 0,
+      "evidence": "tests-reconciled.log",
+      "result": "PASS after World hook969b3b2f merge; 150 tests / 16 files"
+    },
+    {
+      "cwd": "frontend",
+      "command": "node node_modules/typescript/bin/tsc --noEmit --incremental false --project tsconfig.json",
+      "exitCode": 0,
+      "evidence": "types-reconciled.log",
+      "result": "PASS after World hook969b3b2f merge"
+    },
+    {
+      "cwd": "frontend",
+      "command": "node --input-type=module -e 'import {build} from \"vite\"; await build({configLoader:\"runner\",build:{outDir:\"/tmp/mcr-scene-r3-map-production\",emptyOutDir:true,copyPublicDir:false}})'",
+      "exitCode": 0,
+      "evidence": "build-reconciled.log",
+      "result": "PASS after World hook969b3b2f merge"
+    },
+    {
+      "cwd": ".",
+      "command": "node scripts/mcr/check-ui-origin.mjs",
+      "exitCode": 0,
+      "evidence": "origin-reconciled.log",
+      "result": "PASS after World hook969b3b2f merge"
     }
   ],
   "nativeCapturesInspected": [
@@ -96,5 +124,7 @@
     "FPS/load/process-memory soak",
     "final target-art fidelity acceptance"
   ],
-  "productStatus": "NOT_ADMITTED; no scope cut"
+  "productStatus": "NOT_ADMITTED; no scope cut",
+  "finalLegacyQualificationTree": "2bf78e17d3d89f2396cd8c1e015be7f537fa555f",
+  "finalLegacyExitCode": 0
 }

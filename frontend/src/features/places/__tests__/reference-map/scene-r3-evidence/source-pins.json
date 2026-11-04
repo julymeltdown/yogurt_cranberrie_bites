@@ -275,5 +275,20 @@
       "currentSha256": "0cc412e8cd158096290a6df726214ec9581cbb182c0e99c720dd79f00bfb09a7",
       "reason": "Peer-added task progress accounting only; reviewed diff. No runtime or contract changes."
     }
+  },
+  "postWorldHookQualification": {
+    "head": "2bf78e17d3d89f2396cd8c1e015be7f537fa555f",
+    "publishedWorldHook": "969b3b2f",
+    "why": "Peer publishes actual reference Phaser path on incumbent MapScene. Re-ran affected test suite, TypeScript, production build, UI-origin and retained-release actual Phaser native. Map producer API/art pixels unchanged; portrait fixture report remains its original qualified tree.",
+    "inputs": {
+      "frontend/src/world/scenes/MapScene.ts": {
+        "sha256": "c172568f4b3c1a01894fbc4e5e41e3c887601fa9c2d3eb0c4c79dc76117a7363",
+        "bytes": 18415
+      },
+      "frontend/src/world/reference-scene/phaser.ts": {
+        "sha256": "b01001452caa199723bbb34f672e7985687f146850f46e28d7bd4801faa707b8",
+        "bytes": 3035
+      }
+    }
   }
 }
