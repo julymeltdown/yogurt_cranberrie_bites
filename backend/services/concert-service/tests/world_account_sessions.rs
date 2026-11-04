@@ -705,6 +705,8 @@ async fn native_sessions_actual_auth_active_pending_multievent_and_exact_retry()
     .unwrap();
     let receipt = deletion.apply(command.clone(), deadline()).await.unwrap();
     let acknowledged = std::time::Instant::now();
+    // Force a real post-ACK publication; idle replication need not emit deltas.
+    survivor.send(Message::Text(json!({"protocolVersion":"1.0.0","type":"input","streamId":initial["streamId"],"roomEpoch":initial["roomEpoch"],"seq":1,"axisX":1,"axisY":0,"buttons":[]}).to_string())).await?;
     assert_eq!(receipt.command, command);
     assert_eq!(receipt.fence_revision, 1);
     assert!(completed(&pool, user).await?);
@@ -744,7 +746,15 @@ async fn native_sessions_actual_auth_active_pending_multievent_and_exact_retry()
         before, after,
         "unrelated membership and captured deadline retained"
     );
-    let next = value(&mut survivor).await?;
+    let next = tokio::time::timeout(Duration::from_secs(2), async {
+        loop {
+            let next = value(&mut survivor).await?;
+            if next["ackInputSeq"] == 1 {
+                return Ok::<Value, anyhow::Error>(next);
+            }
+        }
+    })
+    .await??;
     assert_eq!(
         initial["streamId"], next["streamId"],
         "unrelated stream generation retained"
