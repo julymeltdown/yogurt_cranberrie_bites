@@ -1,0 +1,206 @@
+{
+  "task_id": "FE-REF-SCENE-MAP-PLANTING",
+  "status": "CONTRACT_READY_SOURCE_NOT_RELEASE_BOUND",
+  "execution_base": "93ef0d895dcc4b247b727e2cccba0bb84576b262",
+  "branch": "codex/mcr-art-map-landscape-v1",
+  "geometry_hash": "sha256:ef52c8b05af6a882f2e82285c9879c9a4cb78ab513336e4bb3cd483c9b123395",
+  "changed_paths": [
+    "docs/mcr/art/reference-scene-v2.md",
+    "frontend/public/world/reference-scene-v2/map-landscape-v1/ADOPTION.md",
+    "frontend/public/world/reference-scene-v2/map-landscape-v1/browser-verification.json",
+    "frontend/public/world/reference-scene-v2/map-landscape-v1/build.py",
+    "frontend/public/world/reference-scene-v2/map-landscape-v1/check.mjs",
+    "frontend/public/world/reference-scene-v2/map-landscape-v1/danger-map-360.png",
+    "frontend/public/world/reference-scene-v2/map-landscape-v1/danger-map-390.png",
+    "frontend/public/world/reference-scene-v2/map-landscape-v1/danger-map-430.png",
+    "frontend/public/world/reference-scene-v2/map-landscape-v1/danger-map-editable.json",
+    "frontend/public/world/reference-scene-v2/map-landscape-v1/danger-map-native.png",
+    "frontend/public/world/reference-scene-v2/map-landscape-v1/danger-map.tsrct",
+    "frontend/public/world/reference-scene-v2/map-landscape-v1/environment.json",
+    "frontend/public/world/reference-scene-v2/map-landscape-v1/handoff.json",
+    "frontend/public/world/reference-scene-v2/map-landscape-v1/native-evidence.json",
+    "frontend/public/world/reference-scene-v2/map-landscape-v1/parade-map-360.png",
+    "frontend/public/world/reference-scene-v2/map-landscape-v1/parade-map-390.png",
+    "frontend/public/world/reference-scene-v2/map-landscape-v1/parade-map-430.png",
+    "frontend/public/world/reference-scene-v2/map-landscape-v1/parade-map-editable.json",
+    "frontend/public/world/reference-scene-v2/map-landscape-v1/parade-map-native.png",
+    "frontend/public/world/reference-scene-v2/map-landscape-v1/parade-map.tsrct",
+    "frontend/public/world/reference-scene-v2/map-landscape-v1/presentation.json",
+    "frontend/public/world/reference-scene-v2/map-landscape-v1/revenge-map-360.png",
+    "frontend/public/world/reference-scene-v2/map-landscape-v1/revenge-map-390.png",
+    "frontend/public/world/reference-scene-v2/map-landscape-v1/revenge-map-430.png",
+    "frontend/public/world/reference-scene-v2/map-landscape-v1/revenge-map-editable.json",
+    "frontend/public/world/reference-scene-v2/map-landscape-v1/revenge-map-native.png",
+    "frontend/public/world/reference-scene-v2/map-landscape-v1/revenge-map.tsrct",
+    "frontend/public/world/reference-scene-v2/map-landscape-v1/review.html",
+    "frontend/public/world/reference-scene-v2/map-landscape-v1/review.mjs",
+    "frontend/public/world/reference-scene-v2/map-landscape-v1/v10-publication.json",
+    "frontend/public/world/reference-scene-v2/map-landscape-v1/verification.json",
+    "frontend/public/world/reference-scene-v2/map-landscape-v1/verify.py"
+  ],
+  "presentation": {
+    "path": "frontend/public/world/reference-scene-v2/map-landscape-v1/presentation.json",
+    "bytes": 12497,
+    "sha256": "sha256:90402525366769febb1f8d5b779d9b293e4680858f105c88af4bf808965cc35e"
+  },
+  "files": [
+    {
+      "path": "frontend/public/world/reference-scene-v2/map-landscape-v1/ADOPTION.md",
+      "bytes": 6129,
+      "sha256": "sha256:43a179f7e3b3304ca8f92d45621885d85bb37a2be718c62e81f0222c303372a1"
+    },
+    {
+      "path": "frontend/public/world/reference-scene-v2/map-landscape-v1/browser-verification.json",
+      "bytes": 151807,
+      "sha256": "sha256:d3224ce8d87df905e2840cda516065c097181c51cfe4a93d37c80ef6928a4006"
+    },
+    {
+      "path": "frontend/public/world/reference-scene-v2/map-landscape-v1/build.py",
+      "bytes": 6992,
+      "sha256": "sha256:19a2baf7e75c9cec33284f4c905e6be12943fbabbd65beee851c77e8d523c858"
+    },
+    {
+      "path": "frontend/public/world/reference-scene-v2/map-landscape-v1/check.mjs",
+      "bytes": 3410,
+      "sha256": "sha256:9f52109fca79d530a5719c5bd7e635652ec1beba55b8685d3b299f6483b34e08"
+    },
+    {
+      "path": "frontend/public/world/reference-scene-v2/map-landscape-v1/danger-map-360.png",
+      "bytes": 781017,
+      "sha256": "sha256:27bac84a7637c79406ffb67a2ee25735e136b1fb4c2d0bc7fea788219837c7d3"
+    },
+    {
+      "path": "frontend/public/world/reference-scene-v2/map-landscape-v1/danger-map-390.png",
+      "bytes": 895221,
+      "sha256": "sha256:caff50c2ed505a7ac8652e3d609eff54afbc0275ef584ddbcad2021af4e504cc"
+    },
+    {
+      "path": "frontend/public/world/reference-scene-v2/map-landscape-v1/danger-map-430.png",
+      "bytes": 1086016,
+      "sha256": "sha256:a05a1e99afa472cd53352c2610681369c360b30553698078c57af70d3c3c7f8d"
+    },
+    {
+      "path": "frontend/public/world/reference-scene-v2/map-landscape-v1/danger-map-editable.json",
+      "bytes": 170588,
+      "sha256": "sha256:31541165fc4c9ae3cae7b0745ae658d578d374bb3951de4b3b1b1217b3dfeee4"
+    },
+    {
+      "path": "frontend/public/world/reference-scene-v2/map-landscape-v1/danger-map-native.png",
+      "bytes": 1873028,
+      "sha256": "sha256:d8309272eed59c71e348c8aec8de5e6fc8da28e23940bd1c6b9b502e94e77b5b"
+    },
+    {
+      "path": "frontend/public/world/reference-scene-v2/map-landscape-v1/danger-map.tsrct",
+      "bytes": 2113403,
+      "sha256": "sha256:6bd89499eed27f59ecb5a859f27d851827c81a01044a2c37954fcb6ca61e0a4c"
+    },
+    {
+      "path": "frontend/public/world/reference-scene-v2/map-landscape-v1/environment.json",
+      "bytes": 1389,
+      "sha256": "sha256:05b7b8b3b7dfafab7e5b688ff5449bf09727aae1de6a31f79de11bc01b0aaf53"
+    },
+    {
+      "path": "frontend/public/world/reference-scene-v2/map-landscape-v1/native-evidence.json",
+      "bytes": 2791,
+      "sha256": "sha256:d798ca930b7ee1aef88455a5fd3e7fd0b41023cdf2feb5a4eb9eef0abfbc1ace"
+    },
+    {
+      "path": "frontend/public/world/reference-scene-v2/map-landscape-v1/parade-map-360.png",
+      "bytes": 781613,
+      "sha256": "sha256:87480321a2cadfd768214652899c387be57bfebbc4e7b125ffad797b2d4d9dbd"
+    },
+    {
+      "path": "frontend/public/world/reference-scene-v2/map-landscape-v1/parade-map-390.png",
+      "bytes": 895528,
+      "sha256": "sha256:3f21e70228e8653b35251d5ad3734ae31ede4ba3a7f9dd59c879a0840e52bb84"
+    },
+    {
+      "path": "frontend/public/world/reference-scene-v2/map-landscape-v1/parade-map-430.png",
+      "bytes": 1086037,
+      "sha256": "sha256:9c3c4997092717c63f24d1fd926c64659d3d917491c24f2ebaaab2b5470fe15f"
+    },
+    {
+      "path": "frontend/public/world/reference-scene-v2/map-landscape-v1/parade-map-editable.json",
+      "bytes": 170549,
+      "sha256": "sha256:eda1d90919392cb4bb1f07eafc796c8836c734574155dc51e4be933c6040b8af"
+    },
+    {
+      "path": "frontend/public/world/reference-scene-v2/map-landscape-v1/parade-map-native.png",
+      "bytes": 1880186,
+      "sha256": "sha256:2fb3733e316dcb45fb2fe70407052e0b9b052a4d2f25e16ab4477287b65cd540"
+    },
+    {
+      "path": "frontend/public/world/reference-scene-v2/map-landscape-v1/parade-map.tsrct",
+      "bytes": 2128073,
+      "sha256": "sha256:89c44940ffc8fb54e2bec6b2599b9d69417cff49f4dceb1e017d0781f256db7c"
+    },
+    {
+      "path": "frontend/public/world/reference-scene-v2/map-landscape-v1/presentation.json",
+      "bytes": 12497,
+      "sha256": "sha256:90402525366769febb1f8d5b779d9b293e4680858f105c88af4bf808965cc35e"
+    },
+    {
+      "path": "frontend/public/world/reference-scene-v2/map-landscape-v1/revenge-map-360.png",
+      "bytes": 780847,
+      "sha256": "sha256:6a69e3efbd96bae9f6df61c83320ab134757a4ef6e72ba7aa7e6166de2f594a5"
+    },
+    {
+      "path": "frontend/public/world/reference-scene-v2/map-landscape-v1/revenge-map-390.png",
+      "bytes": 894169,
+      "sha256": "sha256:e8b35a1d2bb84c933f9c30ad1fbd97afc803b8ac5f001b2055f40f0ab60a792d"
+    },
+    {
+      "path": "frontend/public/world/reference-scene-v2/map-landscape-v1/revenge-map-430.png",
+      "bytes": 1085136,
+      "sha256": "sha256:4c161546ef669585ea6d90d4295384260c9d77ca603551fb40c0c8fefa45cf8c"
+    },
+    {
+      "path": "frontend/public/world/reference-scene-v2/map-landscape-v1/revenge-map-editable.json",
+      "bytes": 170579,
+      "sha256": "sha256:7753de80127c49118f61ea0eb8986fe5dbf5f2add16f418ea2fa86995a57dd2b"
+    },
+    {
+      "path": "frontend/public/world/reference-scene-v2/map-landscape-v1/revenge-map-native.png",
+      "bytes": 1870083,
+      "sha256": "sha256:0e21d4409f2b18bc5089d62ad775cf09a35b9018d4006c85a6b28baf382e8a62"
+    },
+    {
+      "path": "frontend/public/world/reference-scene-v2/map-landscape-v1/revenge-map.tsrct",
+      "bytes": 2116756,
+      "sha256": "sha256:b9d457d1fa7a81389475187dd093ea2ff8459e798c853c10f023e87be442e1f1"
+    },
+    {
+      "path": "frontend/public/world/reference-scene-v2/map-landscape-v1/review.html",
+      "bytes": 1811,
+      "sha256": "sha256:3b820784617c49ff690492d80bd8ff2d6c24c3f2781cc81975884af49427cd3a"
+    },
+    {
+      "path": "frontend/public/world/reference-scene-v2/map-landscape-v1/review.mjs",
+      "bytes": 5634,
+      "sha256": "sha256:ab52745bdaa5e7a6414ece18cd1fdfb543bfaed2c0a51382b2fb0511d7296f0b"
+    },
+    {
+      "path": "frontend/public/world/reference-scene-v2/map-landscape-v1/v10-publication.json",
+      "bytes": 536,
+      "sha256": "sha256:e39c8670adbe0ecee2cda42b8dde38afb2272a57b5f4332f01599d0a6fe65dc5"
+    },
+    {
+      "path": "frontend/public/world/reference-scene-v2/map-landscape-v1/verification.json",
+      "bytes": 12845,
+      "sha256": "sha256:400f679b7f01bfbb932afcf12162d03c7078d333e56dafc3de0d9d1f0bf01d05"
+    },
+    {
+      "path": "frontend/public/world/reference-scene-v2/map-landscape-v1/verify.py",
+      "bytes": 7639,
+      "sha256": "sha256:885f0b862366d4fc6cc405f3f8b76caefe52befd5698184118261e14b2f74f76"
+    }
+  ],
+  "scope": "Only this new MAP illustration folder plus the lane art document. No runtime, app, backend, shared, character or source-archive edits.",
+  "source": "Ten null-bound MAP illustrations reuse each exact original era shrub_bed frame. Generation/crop/packing/runtime hashes are pinned per era. No source pixel/alpha edits or new PNG/font.",
+  "native": "Three768x1296 MAP projects/PNGs; two original PNGs plus one exact font each. Removing ten added image layers preserves all93 original layers; all pixels outside ten rectangles equal v10.",
+  "validation": "build.py0; verify.py0 all source/resource/native/bounds/depth/visibility checks; check.mjs0 for36sourcebrowsercases at360/390/430,216labelchecks and216added-decoration-foot samples; plan/archive and whitespace0.",
+  "review": "Owner source/native/browser validation. No new independent visual critic panel or acceptance score; no blanket peer/release approval implied.",
+  "publication": "Task branch only; Root153 is the designated frontend/art publisher. Sent handoff is not master publication proof. v10-publication.json proves only the previous v10 source publication.",
+  "adoption": "Require exact ef52 geometry and era atlas hash. Stable depth-sort MAP illustrations with existing scenery; labels then real runtime markers. WORLD ignores the sidecar. No extra canonical revision beyond the actual ef52 binding itself; artist allocates no server revision. Old0448/map5 and all v9/v10 sources remain frozen.",
+  "limits": "No application/Phaser/server/source-review/release/device/multiuser/physical acceptance. No new place/interaction/solid or selected state. Full reference fidelity and concrete consumer findings remain in the same active artist goal."
+}

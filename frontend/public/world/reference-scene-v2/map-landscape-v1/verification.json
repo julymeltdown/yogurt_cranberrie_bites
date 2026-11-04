@@ -1,0 +1,282 @@
+{
+  "status": "PASS_MAP_ILLUSTRATION_SOURCE_ONLY",
+  "geometry_hash": "sha256:ef52c8b05af6a882f2e82285c9879c9a4cb78ab513336e4bb3cd483c9b123395",
+  "decorations": 10,
+  "new_world_solids_places_interactions": 0,
+  "themes": [
+    {
+      "era": "parade",
+      "pixel_exact_outside_decoration_rects": true,
+      "unchanged_base_layers": 93,
+      "new_image_layers": 10,
+      "runtime_pngs": 2,
+      "bytes": 1764183,
+      "pixels": 2043904
+    },
+    {
+      "era": "revenge",
+      "pixel_exact_outside_decoration_rects": true,
+      "unchanged_base_layers": 93,
+      "new_image_layers": 10,
+      "runtime_pngs": 2,
+      "bytes": 1752996,
+      "pixels": 2043904
+    },
+    {
+      "era": "danger",
+      "pixel_exact_outside_decoration_rects": true,
+      "unchanged_base_layers": 93,
+      "new_image_layers": 10,
+      "runtime_pngs": 2,
+      "bytes": 1750488,
+      "pixels": 2043904
+    }
+  ],
+  "visible_illustrations": [
+    {
+      "era": "parade",
+      "id": "map_garden_plaza_north_west",
+      "changed_pixels_gt5": 1161,
+      "source_alpha_support_ge32": 1207,
+      "visible_change_fraction": 0.9618889809444905,
+      "threshold": "At least85percent of resized original source-alpha support changes the actual native image by >5/channel. This is visibility, not reference-match acceptance."
+    },
+    {
+      "era": "parade",
+      "id": "map_garden_plaza_north_east",
+      "changed_pixels_gt5": 1251,
+      "source_alpha_support_ge32": 1281,
+      "visible_change_fraction": 0.9765807962529274,
+      "threshold": "At least85percent of resized original source-alpha support changes the actual native image by >5/channel. This is visibility, not reference-match acceptance."
+    },
+    {
+      "era": "parade",
+      "id": "map_garden_plaza_east",
+      "changed_pixels_gt5": 438,
+      "source_alpha_support_ge32": 455,
+      "visible_change_fraction": 0.9626373626373627,
+      "threshold": "At least85percent of resized original source-alpha support changes the actual native image by >5/channel. This is visibility, not reference-match acceptance."
+    },
+    {
+      "era": "parade",
+      "id": "map_garden_plaza_south_west",
+      "changed_pixels_gt5": 1464,
+      "source_alpha_support_ge32": 1499,
+      "visible_change_fraction": 0.9766511007338226,
+      "threshold": "At least85percent of resized original source-alpha support changes the actual native image by >5/channel. This is visibility, not reference-match acceptance."
+    },
+    {
+      "era": "parade",
+      "id": "map_garden_plaza_south_east",
+      "changed_pixels_gt5": 510,
+      "source_alpha_support_ge32": 585,
+      "visible_change_fraction": 0.8717948717948718,
+      "threshold": "At least85percent of resized original source-alpha support changes the actual native image by >5/channel. This is visibility, not reference-match acceptance."
+    },
+    {
+      "era": "parade",
+      "id": "map_garden_meeting_north",
+      "changed_pixels_gt5": 1624,
+      "source_alpha_support_ge32": 1671,
+      "visible_change_fraction": 0.9718731298623579,
+      "threshold": "At least85percent of resized original source-alpha support changes the actual native image by >5/channel. This is visibility, not reference-match acceptance."
+    },
+    {
+      "era": "parade",
+      "id": "map_garden_meeting_east",
+      "changed_pixels_gt5": 1077,
+      "source_alpha_support_ge32": 1124,
+      "visible_change_fraction": 0.958185053380783,
+      "threshold": "At least85percent of resized original source-alpha support changes the actual native image by >5/channel. This is visibility, not reference-match acceptance."
+    },
+    {
+      "era": "parade",
+      "id": "map_garden_meeting_west",
+      "changed_pixels_gt5": 444,
+      "source_alpha_support_ge32": 469,
+      "visible_change_fraction": 0.9466950959488273,
+      "threshold": "At least85percent of resized original source-alpha support changes the actual native image by >5/channel. This is visibility, not reference-match acceptance."
+    },
+    {
+      "era": "parade",
+      "id": "map_garden_giveaway_west",
+      "changed_pixels_gt5": 1518,
+      "source_alpha_support_ge32": 1584,
+      "visible_change_fraction": 0.9583333333333334,
+      "threshold": "At least85percent of resized original source-alpha support changes the actual native image by >5/channel. This is visibility, not reference-match acceptance."
+    },
+    {
+      "era": "parade",
+      "id": "map_garden_giveaway_south_west",
+      "changed_pixels_gt5": 2025,
+      "source_alpha_support_ge32": 2069,
+      "visible_change_fraction": 0.9787336877718704,
+      "threshold": "At least85percent of resized original source-alpha support changes the actual native image by >5/channel. This is visibility, not reference-match acceptance."
+    },
+    {
+      "era": "revenge",
+      "id": "map_garden_plaza_north_west",
+      "changed_pixels_gt5": 1189,
+      "source_alpha_support_ge32": 1219,
+      "visible_change_fraction": 0.9753896636587367,
+      "threshold": "At least85percent of resized original source-alpha support changes the actual native image by >5/channel. This is visibility, not reference-match acceptance."
+    },
+    {
+      "era": "revenge",
+      "id": "map_garden_plaza_north_east",
+      "changed_pixels_gt5": 1273,
+      "source_alpha_support_ge32": 1301,
+      "visible_change_fraction": 0.97847809377402,
+      "threshold": "At least85percent of resized original source-alpha support changes the actual native image by >5/channel. This is visibility, not reference-match acceptance."
+    },
+    {
+      "era": "revenge",
+      "id": "map_garden_plaza_east",
+      "changed_pixels_gt5": 444,
+      "source_alpha_support_ge32": 463,
+      "visible_change_fraction": 0.958963282937365,
+      "threshold": "At least85percent of resized original source-alpha support changes the actual native image by >5/channel. This is visibility, not reference-match acceptance."
+    },
+    {
+      "era": "revenge",
+      "id": "map_garden_plaza_south_west",
+      "changed_pixels_gt5": 1497,
+      "source_alpha_support_ge32": 1524,
+      "visible_change_fraction": 0.9822834645669292,
+      "threshold": "At least85percent of resized original source-alpha support changes the actual native image by >5/channel. This is visibility, not reference-match acceptance."
+    },
+    {
+      "era": "revenge",
+      "id": "map_garden_plaza_south_east",
+      "changed_pixels_gt5": 523,
+      "source_alpha_support_ge32": 596,
+      "visible_change_fraction": 0.87751677852349,
+      "threshold": "At least85percent of resized original source-alpha support changes the actual native image by >5/channel. This is visibility, not reference-match acceptance."
+    },
+    {
+      "era": "revenge",
+      "id": "map_garden_meeting_north",
+      "changed_pixels_gt5": 1676,
+      "source_alpha_support_ge32": 1701,
+      "visible_change_fraction": 0.9853027630805409,
+      "threshold": "At least85percent of resized original source-alpha support changes the actual native image by >5/channel. This is visibility, not reference-match acceptance."
+    },
+    {
+      "era": "revenge",
+      "id": "map_garden_meeting_east",
+      "changed_pixels_gt5": 1108,
+      "source_alpha_support_ge32": 1148,
+      "visible_change_fraction": 0.9651567944250871,
+      "threshold": "At least85percent of resized original source-alpha support changes the actual native image by >5/channel. This is visibility, not reference-match acceptance."
+    },
+    {
+      "era": "revenge",
+      "id": "map_garden_meeting_west",
+      "changed_pixels_gt5": 453,
+      "source_alpha_support_ge32": 474,
+      "visible_change_fraction": 0.9556962025316456,
+      "threshold": "At least85percent of resized original source-alpha support changes the actual native image by >5/channel. This is visibility, not reference-match acceptance."
+    },
+    {
+      "era": "revenge",
+      "id": "map_garden_giveaway_west",
+      "changed_pixels_gt5": 1574,
+      "source_alpha_support_ge32": 1606,
+      "visible_change_fraction": 0.9800747198007472,
+      "threshold": "At least85percent of resized original source-alpha support changes the actual native image by >5/channel. This is visibility, not reference-match acceptance."
+    },
+    {
+      "era": "revenge",
+      "id": "map_garden_giveaway_south_west",
+      "changed_pixels_gt5": 2068,
+      "source_alpha_support_ge32": 2102,
+      "visible_change_fraction": 0.9838249286393911,
+      "threshold": "At least85percent of resized original source-alpha support changes the actual native image by >5/channel. This is visibility, not reference-match acceptance."
+    },
+    {
+      "era": "danger",
+      "id": "map_garden_plaza_north_west",
+      "changed_pixels_gt5": 1177,
+      "source_alpha_support_ge32": 1205,
+      "visible_change_fraction": 0.9767634854771784,
+      "threshold": "At least85percent of resized original source-alpha support changes the actual native image by >5/channel. This is visibility, not reference-match acceptance."
+    },
+    {
+      "era": "danger",
+      "id": "map_garden_plaza_north_east",
+      "changed_pixels_gt5": 1253,
+      "source_alpha_support_ge32": 1287,
+      "visible_change_fraction": 0.9735819735819736,
+      "threshold": "At least85percent of resized original source-alpha support changes the actual native image by >5/channel. This is visibility, not reference-match acceptance."
+    },
+    {
+      "era": "danger",
+      "id": "map_garden_plaza_east",
+      "changed_pixels_gt5": 437,
+      "source_alpha_support_ge32": 455,
+      "visible_change_fraction": 0.9604395604395605,
+      "threshold": "At least85percent of resized original source-alpha support changes the actual native image by >5/channel. This is visibility, not reference-match acceptance."
+    },
+    {
+      "era": "danger",
+      "id": "map_garden_plaza_south_west",
+      "changed_pixels_gt5": 1470,
+      "source_alpha_support_ge32": 1502,
+      "visible_change_fraction": 0.9786950732356857,
+      "threshold": "At least85percent of resized original source-alpha support changes the actual native image by >5/channel. This is visibility, not reference-match acceptance."
+    },
+    {
+      "era": "danger",
+      "id": "map_garden_plaza_south_east",
+      "changed_pixels_gt5": 515,
+      "source_alpha_support_ge32": 589,
+      "visible_change_fraction": 0.8743633276740238,
+      "threshold": "At least85percent of resized original source-alpha support changes the actual native image by >5/channel. This is visibility, not reference-match acceptance."
+    },
+    {
+      "era": "danger",
+      "id": "map_garden_meeting_north",
+      "changed_pixels_gt5": 1636,
+      "source_alpha_support_ge32": 1681,
+      "visible_change_fraction": 0.9732302201070792,
+      "threshold": "At least85percent of resized original source-alpha support changes the actual native image by >5/channel. This is visibility, not reference-match acceptance."
+    },
+    {
+      "era": "danger",
+      "id": "map_garden_meeting_east",
+      "changed_pixels_gt5": 1092,
+      "source_alpha_support_ge32": 1130,
+      "visible_change_fraction": 0.9663716814159292,
+      "threshold": "At least85percent of resized original source-alpha support changes the actual native image by >5/channel. This is visibility, not reference-match acceptance."
+    },
+    {
+      "era": "danger",
+      "id": "map_garden_meeting_west",
+      "changed_pixels_gt5": 447,
+      "source_alpha_support_ge32": 472,
+      "visible_change_fraction": 0.9470338983050848,
+      "threshold": "At least85percent of resized original source-alpha support changes the actual native image by >5/channel. This is visibility, not reference-match acceptance."
+    },
+    {
+      "era": "danger",
+      "id": "map_garden_giveaway_west",
+      "changed_pixels_gt5": 1542,
+      "source_alpha_support_ge32": 1595,
+      "visible_change_fraction": 0.9667711598746082,
+      "threshold": "At least85percent of resized original source-alpha support changes the actual native image by >5/channel. This is visibility, not reference-match acceptance."
+    },
+    {
+      "era": "danger",
+      "id": "map_garden_giveaway_south_west",
+      "changed_pixels_gt5": 2053,
+      "source_alpha_support_ge32": 2079,
+      "visible_change_fraction": 0.9874939874939875,
+      "threshold": "At least85percent of resized original source-alpha support changes the actual native image by >5/channel. This is visibility, not reference-match acceptance."
+    }
+  ],
+  "limits": [
+    "Original canonical terrain/collision/world props remain exactly frozen; this is a MAP-only illustration overlay.",
+    "Pixel equality outside rectangles and illustration visibility do not constitute whole-reference acceptance.",
+    "No fourth visual panel, new critic score, application/Phaser/server/release/source-review/device/multiuser/physical acceptance."
+  ]
+}
