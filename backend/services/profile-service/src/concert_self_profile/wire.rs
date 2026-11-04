@@ -10,7 +10,9 @@ pub mod authority {
 pub mod profile {
     pub mod self_profile {
         pub mod v1 {
-            tonic::include_proto!("profile.self.v1");
+            // Prost escapes the Rust keyword in its generated filename. The
+            // protobuf package and RPC service name remain profile.self.v1.
+            tonic::include_proto!("profile.self_.v1");
         }
     }
 }
