@@ -1,7 +1,7 @@
 // TEST ONLY input boundaries, never a deployment, producer or actual Admin proof.
 import { expect, it } from 'vitest'
-import { parseConfig } from '../../../../e2e/real/mural-helpers'
-import { ownedInput, validateBackendObservation, validateFrontendHandoff, validateFrontendObservation } from './actual-inputs'
+import { Contracts, parseConfig } from '../../../../e2e/real/mural-helpers'
+import { qualifyAccessContracts, ownedInput, validateBackendObservation, validateFrontendHandoff, validateFrontendObservation } from './actual-inputs'
 const id = (n: number) => `00000000-0000-4000-8000-${String(n).padStart(12,'0')}`
 const config = parseConfig({ version: 1, isolated: true, allowDestructiveFixtureEndState: true,
   origin: 'http://127.0.0.1:52624', eventId: id(1), releaseRevision: 'a'.repeat(40), environmentId: id(2),
@@ -10,8 +10,16 @@ const config = parseConfig({ version: 1, isolated: true, allowDestructiveFixture
   contractHashes: { domain: 'b'.repeat(64), realtime: 'c'.repeat(64) }, restoreSnapshotId: id(6), maxCooldownMs: 5000, restartObservationTimeoutMs: 1000 })
 const handoff = () => ({ candidate: config.releaseRevision, environmentId: config.environmentId, eventId: config.eventId,
   origin: config.origin, settingsSha256: 'd'.repeat(64), token: 'e'.repeat(64), phaserModulePath: '/@fs/private/tmp/TEST_ONLY/deps/phaser.js' })
-it('requires private actual paths rather than manufacturing a default runtime input', async () => {
+it('requires actual private paths and the exact closed public nullable contract before runtime', async () => {
   await expect(ownedInput(undefined, true)).rejects.toThrow('ACTUAL_PRIVATE_INPUT_REQUIRED')
+  const name = 'Domain_admin_OwnOperationsAccessV1', leaseName = 'Domain_admin_OperationsAccessLeaseV1'
+  const union = [{ type: 'null' }, { $ref: '#/components/schemas/' + leaseName }]
+  const root = { type: 'object', additionalProperties: false, required: ['server_time','access'], properties: { server_time: { type: 'string' }, access: { oneOf: union } } }
+  const schemas = { [name]: root, [leaseName]: { type: 'object', additionalProperties: false, required: [], properties: {} } }
+  const decoder = qualifyAccessContracts(new Contracts([], schemas)), value = { server_time: 'TEST_ONLY', access: null }
+  expect(decoder.decode(name, value)).toEqual(value)
+  expect(() => decoder.decode(name, { ...value, privateToken: 'TEST_ONLY' })).toThrow()
+  expect(() => qualifyAccessContracts(new Contracts([], { ...schemas, [name]: { ...root, properties: { ...root.properties, access: { oneOf: [union[1],union[1]] } } } }))).toThrow('DISJOINT_NULL_OR_CLOSED_LEASE_REQUIRED')
 })
 it('rejects foreign, expired and changed frontend bindings before any browser', () => {
   const h = validateFrontendHandoff(config, handoff()), now = Date.now()

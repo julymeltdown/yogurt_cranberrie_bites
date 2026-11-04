@@ -5,7 +5,7 @@ import { test, expect, type Page, type BrowserContext } from '@playwright/test'
 import { loadContracts, type GateConfig } from '../../../../e2e/real/mural-helpers'
 import { domainOperation } from '../../../shared/api/domain'
 import { OPERATIONS_ACCESS_ID, operationsAccessPath } from '../../operations-entry/contract'
-import { actualInputs } from './actual-inputs'
+import { actualInputs, qualifyAccessContracts } from './actual-inputs'
 
 test('Actual canonical Admin discovery uses genuine operator lease and denies the real member', async ({ playwright }) => {
   const out = process.env.ADMIN_OUTPUT
@@ -23,7 +23,7 @@ test('Actual canonical Admin discovery uses genuine operator lease and denies th
     assert(registered?.method === 'GET' && registered.path === '/api/concert/events/{eventId}/me/operations-access', 'ACTUAL_CANONICAL_REGISTRY_REQUIRED')
     const { config, observe } = await actualInputs()
     report.candidate = config.releaseRevision
-    const contracts = await loadContracts(config)
+    const contracts = qualifyAccessContracts(await loadContracts(config))
     const operation = contracts.operation(OPERATIONS_ACCESS_ID)
     assert(operation.method.toUpperCase() === 'GET' && operation.path === registered.path, 'CURRENT_PUBLIC_OPERATION_REQUIRED')
     const schemaName = (name: string) => 'Domain_' + name.replaceAll('.', '_')

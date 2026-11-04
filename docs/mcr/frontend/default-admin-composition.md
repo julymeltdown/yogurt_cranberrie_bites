@@ -203,3 +203,11 @@ current Concert/OwnAccess cohort remain prerequisites. Root owns private ephemer
 issuer keys and signed OPERATOR publication after normal Enrollment; frontend
 configuration labels grant no role. Run only within a fresh joint owner window
 using the actual shared frontend/backend and a separate finite browser allocation.
+
+The actual driver also qualifies one existing decoder compatibility boundary:
+shared `Contracts` predates `oneOf`, while the agreed OwnAccess access field is
+exactly null-or-closed-lease. It verifies that exact two-branch public union, its
+lease reference and closed object target, then uses equivalent `anyOf` only there.
+Every other public schema and private-field rejection remains intact. The three
+new source cases include a null response, preserved closed-field rejection and
+refusal of a non-disjoint replacement union; this supplies no producer evidence.

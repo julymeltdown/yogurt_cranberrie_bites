@@ -3,7 +3,7 @@ import { constants } from 'node:fs'
 import { open } from 'node:fs/promises'
 import { isAbsolute } from 'node:path'
 import { createHash } from 'node:crypto'
-import { loadConfig, type GateConfig } from '../../../../e2e/real/mural-helpers'
+import { Contracts, loadConfig, type GateConfig } from '../../../../e2e/real/mural-helpers'
 
 // Qualified owner protocol2653376e5; this module observes the existing managed
 // runtime. It never launches services, publishes a role, or fabricates a proof.
@@ -71,4 +71,20 @@ export async function actualInputs() {
   }
   await observe()
   return { config, observe }
+}
+
+/** The shared decoder predates oneOf. Translate only this verified disjoint
+ * null-or-closed-object union; preserve every original schema and closed field. */
+export function qualifyAccessContracts(base: Contracts): Contracts {
+  const object = (v: unknown): v is Record<string, unknown> => !!v && typeof v === 'object' && !Array.isArray(v)
+  const name = 'Domain_admin_OwnOperationsAccessV1', leaseName = 'Domain_admin_OperationsAccessLeaseV1'
+  const root = base.schemas[name], lease = base.schemas[leaseName]
+  need(object(root) && root.type === 'object' && root.additionalProperties === false && object(root.properties), 'EXACT_OWN_ACCESS_SCHEMA_REQUIRED')
+  const access = root.properties.access
+  need(object(access) && Object.keys(access).join(',') === 'oneOf' && Array.isArray(access.oneOf) && access.oneOf.length === 2, 'EXACT_NULLABLE_ACCESS_UNION_REQUIRED')
+  const [absent, present] = access.oneOf
+  need(object(absent) && Object.keys(absent).join(',') === 'type' && absent.type === 'null'
+    && object(present) && Object.keys(present).join(',') === '$ref' && present.$ref === '#/components/schemas/' + leaseName
+    && object(lease) && lease.type === 'object' && lease.additionalProperties === false, 'DISJOINT_NULL_OR_CLOSED_LEASE_REQUIRED')
+  return new Contracts(base.operations, { ...base.schemas, [name]: { ...root, properties: { ...root.properties, access: { anyOf: access.oneOf } } } })
 }
