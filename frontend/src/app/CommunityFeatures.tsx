@@ -66,6 +66,6 @@ export function GiftsPanel({ view }: { view: 'list' | 'detail' | 'mine' }) {
   const { auth } = usePorts()
   if (!controller) return <p role="status">{auth ? 'Opening gifts…' : 'Gift access is unavailable.'}</p>
   return view === 'mine' ? <MyGifts controller={controller} />
-    : view === 'detail' ? <GiftDetail controller={controller} giveawayId={giveawayId} />
+    : view === 'detail' ? <GiftDetail controller={controller} giveawayId={giveawayId} renderGiftImage={renderGiftImage} />
       : <GiftDiscovery controller={controller} renderGiftImage={renderGiftImage} />
 }
