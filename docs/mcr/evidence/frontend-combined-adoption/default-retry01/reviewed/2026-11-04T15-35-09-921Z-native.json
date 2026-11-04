@@ -1,0 +1,16 @@
+{
+  "run": "2026-11-04T15-35-09-921Z",
+  "result": "FAIL",
+  "qualification": "ACTUAL_MAIN_SYNTHETIC_HTTP_C05_REVIEWED_C06_NOT_LIVE",
+  "widths": [],
+  "screenshots": [
+    "2026-11-04T15-35-09-921Z-reviewed-world-before-360.png",
+    "2026-11-04T15-35-09-921Z-reviewed-all-layer-draft-360.png",
+    "2026-11-04T15-35-09-921Z-reviewed-saved-360.png"
+  ],
+  "errors": [
+    "360/profile-and-world-readback: locator.click: Timeout 30000ms exceeded.\nCall log:\n\u001b[2m  - waiting for getByRole('navigation', { name: 'Main navigation' }).getByRole('link', { name: 'Me', exact: true })\u001b[22m\n\n    at /Users/lhs/Desktop/mcr-worktrees/fe-delivery-publish/frontend/src/app/character-entry/__tests__/reviewed-production/default-entry/native.mjs:89:59"
+  ],
+  "server": "http://127.0.0.1:5173",
+  "browser": "156.0.8078.80"
+}

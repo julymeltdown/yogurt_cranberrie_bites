@@ -1,0 +1,16 @@
+node:internal/modules/run_main:107
+    triggerUncaughtException(
+    ^
+
+locator.click: Timeout 30000ms exceeded.
+Call log:
+[2m  - waiting for getByRole('navigation', { name: 'Main navigation' }).getByRole('link', { name: 'Me', exact: true })[22m
+
+    at /Users/lhs/Desktop/mcr-worktrees/fe-delivery-publish/frontend/src/app/character-entry/__tests__/reviewed-production/default-entry/native.mjs:89:59 {
+  log: [
+    "  - waiting for getByRole('navigation', { name: 'Main navigation' }).getByRole('link', { name: 'Me', exact: true })"
+  ],
+  name: 'TimeoutError'
+}
+
+Node.js v24.22.2

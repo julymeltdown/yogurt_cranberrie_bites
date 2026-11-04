@@ -1,9 +1,9 @@
 # Map4 reference composition v1
 
-Recipe status: **SOURCE_VALIDATED_NATIVE_NOT_RUN**, `reference-correction-03`.
-The eight saved generated files are the separately validated correction03
-candidate. Correction02 remains preserved at1f2f9ff6. Neither candidate is an
-implicit replacement of FE19's qualified8fcd1287 intake.
+Recipe status: **SOURCE_VALIDATED_NATIVE_NOT_RUN**, `reference-correction-04`.
+The eight saved generated files are the separately validated correction04
+candidate. Correction03 remains preserved at94c47a8b, correction02 at1f2f9ff6.
+No consumer's qualified scene/paint combination is implicitly replaced.
 Immutable8fcd1287 and46180268 handoffs remain preserved in Git history.
 This source is a complete Map-only illustration, with
 editable geometry and individually placed original atlas crops. It retains the
@@ -120,6 +120,44 @@ captures; SVG parity, mobile labels/selection and full visual convergence remain
 open. The existing adopted8fcd packet does not qualify these new pixels.
 Painted runtime label size and viewport letterboxing/short cropping remain with
 their client/CSS owners; all44px hit targets and112px source exclusions persist.
+
+Correction04 makes only the two requested planting fixes. It removes the visible
+polygon substrate entirely, retaining the original textured lawn/garden ground.
+The fifteen parcel polygons are now invisible placement domains; new substrate
+painted-pixel counts will be0, without claiming vegetation coverage. Cluster
+trees use100percent of their original source frame, preserving natural lower
+alpha edges/root tufts instead of cutting off the bottom24percent. A deterministic
+area spiral replaces the row grid. Read-only geometry checks find145 cluster
+trees and300 placements total; all155 pre-existing whole placements are exact.
+
+Path centerlines/46-40-28 widths,22px garden borders,60/30px clearances, roof/facade
+geometry, palettes, all six label rectangles, four canonical anchors/World cells,
+nine source pins and original tuples remain unchanged. No characters, consumer
+registration, labels, CSS or actual World resources are edited. FE19's qualified
+ART03/compact-paint source05 remains frozen as its own candidate.
+
+At source checkpointdbfc7c30, AST/pure geometry/scope checks passed with saved
+outputs still exact94c47a8b. Fresh accepted allocation
+`ART-MAP04-SOURCE-B-202611041443Z` then ran the frozen builder, deterministic
+verification and one preview child: all three exited0 with no warnings or retries.
+All eight outputs reproduced exactly, ten-file durable size7865831bytes at release.
+Nine temporary nearest-neighbor source raster previews were generated and directly
+inspected at360x608,390x658 and430x726 for each era, plus all three full-size PNGs.
+The guardian removed all nine previews/private directory before FULL RELEASE at
+14:46:26Z on2026-11-04. Peak temporary bytes2001234, final temporary bytes0.
+These contain source scenery only, without App labels, controls or runtime
+framing; they are not canonical captures. The frozen933-byte inline preview
+script SHA256 is `4b2898bff04c7c458929e6ec2c5743b19cff1033265637d77de24aa0313af221`.
+
+Direct inspection confirms both targeted defects are addressed at all three
+source scales: no colored angular parcel boundaries and no cropped flat foliage
+bases/row grid. Original natural tree edges form irregular groups. Existing path,
+roof and reserved-label geometry is unchanged. Broad empty lawns, large uniform
+roof slopes and full reference density remain open visual gaps. This candidate
+requires its own atomic consumer registration and Root's fresh native captures;
+source previews do not qualify runtime labels/hits, World invariance or reference
+approval. Root remains sole native custodian. No job, temporary file or allocation
+is held; the existing frozen ART03 runtime candidate remains separate.
 
 Run only inside a fresh accepted source-output allocation:
 

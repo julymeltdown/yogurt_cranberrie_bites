@@ -1,0 +1,18 @@
+{
+  "run": "2026-11-04T15-32-59-233Z",
+  "result": "FAIL",
+  "scope": "Actual main.tsx/default production composition, UI login, synthetic HTTP/socket/map admission, selected source characters; no live backend/device acceptance.",
+  "widths": [],
+  "screenshots": [
+    "2026-11-04T15-32-59-233Z-ready-360.png",
+    "2026-11-04T15-32-59-233Z-covered-panel-360.png",
+    "2026-11-04T15-32-59-233Z-offline-360.png",
+    "2026-11-04T15-32-59-233Z-unavailable-360.png",
+    "2026-11-04T15-32-59-233Z-short-actions-360.png"
+  ],
+  "errors": [
+    "360/shell-404-and-home-cleanup: Error: expect(locator).toBeVisible() failed\n\nLocator:  getByRole('heading', { name: 'Page not found' })\nExpected: visible\nReceived: hidden\nTimeout:  5000ms\n\nCall log:\n  - Expect \"to.be.visible\" with timeout 5000ms\n  - waiting for getByRole('heading', { name: 'Page not found' })\n    14 × locator resolved to <h1 id=\"_r_8_\">Page not found</h1>\n       - unexpected value \"hidden\"\n\n    at captureRawStack (/Users/lhs/Desktop/mcr/frontend/node_modules/.pnpm/playwright-core@1.61.1/node_modules/playwright-core/lib/coreBundle.js:3172:17)\n    at callMatcherAsStep (/Users/lhs/Desktop/mcr/frontend/node_modules/.pnpm/playwright@1.61.1/node_modules/playwright/lib/matchers/expect.js:12877:57)\n    at Object.toBeVisible (/Users/lhs/Desktop/mcr/frontend/node_modules/.pnpm/playwright@1.61.1/node_modules/playwright/lib/matchers/expect.js:12867:23)\n    at /Users/lhs/Desktop/mcr-worktrees/fe-delivery-publish/frontend/src/app/errors/__tests__/default-entry/native.mjs:90:73"
+  ],
+  "server": "http://127.0.0.1:5173",
+  "browser": "156.0.8078.80"
+}

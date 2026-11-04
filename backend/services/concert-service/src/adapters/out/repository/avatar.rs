@@ -346,6 +346,19 @@ impl AvatarRepository for PgAvatarRepository {
         let event = key.event_id.uuid();
         let user = key.user_id.uuid();
         let mut tx = self.pool.begin().await.map_err(unavailable)?;
+        if op != AvatarOperation::Read {
+            // Personal effects share the canonical user-first deletion lock. The
+            // read-only path stays lock-light and cannot create or revive a row.
+            crate::world::account_deletion::lock_user_in(&mut tx, user)
+                .await
+                .map_err(unavailable)?;
+            if crate::world::account_deletion::is_fenced_in(&mut tx, user)
+                .await
+                .map_err(unavailable)?
+            {
+                return Err(AvatarError::Denied);
+            }
+        }
         check()?;
         let effect = if let Some(fence) = fence {
             let identity = effect_identity(&mut tx).await?;

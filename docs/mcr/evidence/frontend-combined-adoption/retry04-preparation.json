@@ -1,0 +1,11 @@
+{
+  "slot": "ROOT-FE-COMBINED-NATIVE-202611041530Z",
+  "originalDeadline": "2026-11-04T15:41:40.891463+00:00",
+  "retainedFailedRound": "default-retry03",
+  "retainedNewBytes": 578750,
+  "retryCarryBytes": 174458975,
+  "typesChanged": false,
+  "resume": "reviewed-native ONLY",
+  "reason": "Registry explicitly retains artwork while current Auth/privacy scope lives across routes; test real canonical UI signout for URL retirement rather than falsely assume Home destroys Auth owner. 360 Save/Profile/World self and peer comparisons passed before cleanup assertion.",
+  "recorded": "2026-11-04T15:39:50.589935+00:00"
+}

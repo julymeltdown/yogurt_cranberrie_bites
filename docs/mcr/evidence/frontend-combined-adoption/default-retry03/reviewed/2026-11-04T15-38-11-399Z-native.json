@@ -1,0 +1,18 @@
+{
+  "run": "2026-11-04T15-38-11-399Z",
+  "result": "FAIL",
+  "qualification": "ACTUAL_MAIN_SYNTHETIC_HTTP_C05_REVIEWED_C06_NOT_LIVE",
+  "widths": [],
+  "screenshots": [
+    "2026-11-04T15-38-11-399Z-reviewed-world-before-360.png",
+    "2026-11-04T15-38-11-399Z-reviewed-all-layer-draft-360.png",
+    "2026-11-04T15-38-11-399Z-reviewed-saved-360.png",
+    "2026-11-04T15-38-11-399Z-reviewed-profile-readback-360.png",
+    "2026-11-04T15-38-11-399Z-reviewed-world-after-360.png"
+  ],
+  "errors": [
+    "360/profile-and-world-readback: Error: expect(received).toBe(expected) // Object.is equality\n\nExpected: 0\nReceived: 2\n\nCall Log:\n- Timeout 5000ms exceeded while waiting on the predicate\n    at captureRawStack (/Users/lhs/Desktop/mcr/frontend/node_modules/.pnpm/playwright-core@1.61.1/node_modules/playwright-core/lib/coreBundle.js:3172:17)\n    at callMatcherAsStep (/Users/lhs/Desktop/mcr/frontend/node_modules/.pnpm/playwright@1.61.1/node_modules/playwright/lib/matchers/expect.js:12877:57)\n    at Object.toBe (/Users/lhs/Desktop/mcr/frontend/node_modules/.pnpm/playwright@1.61.1/node_modules/playwright/lib/matchers/expect.js:12867:23)\n    at /Users/lhs/Desktop/mcr-worktrees/fe-delivery-publish/frontend/src/app/character-entry/__tests__/reviewed-production/default-entry/native.mjs:111:61"
+  ],
+  "server": "http://127.0.0.1:5173",
+  "browser": "156.0.8078.80"
+}

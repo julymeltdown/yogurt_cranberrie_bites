@@ -402,6 +402,18 @@ impl ParticipantProfileJournal {
         let expected_profile =
             ExpectedProfileEffect::for_request(request, guard_digest, profile_version)?;
         let mut tx = self.pool.begin().await.map_err(unavailable)?;
+        // Profile and Concert commit against the same personal participant row.
+        // This shared user-first lock serializes both the prepared decision and
+        // the deletion fence before any event/admission/participant lock.
+        crate::world::account_deletion::lock_user_in(&mut tx, request.key().user_id.uuid())
+            .await
+            .map_err(unavailable)?;
+        if crate::world::account_deletion::is_fenced_in(&mut tx, request.key().user_id.uuid())
+            .await
+            .map_err(unavailable)?
+        {
+            return Err(AvatarError::Denied);
+        }
         authority.check(request).await?;
         let native = NativeTransaction::capture(&mut tx).await?;
         authority.check(request).await?;

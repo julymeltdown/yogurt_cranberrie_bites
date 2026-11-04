@@ -1,0 +1,66 @@
+{
+  "run": "2026-11-04T15-34-52-198Z",
+  "result": "PASS",
+  "scope": "Actual main.tsx/default production composition, UI login, synthetic HTTP/socket/map admission, selected source characters; no live backend/device acceptance.",
+  "widths": [
+    {
+      "width": 360,
+      "height": 800,
+      "result": "PASS",
+      "actualMain": true,
+      "uiLogin": true,
+      "oneCanvasAndActiveSocket": true,
+      "onlineDoesNotRetry": true,
+      "keyboardReconnectReload": true,
+      "shortActionsReachable": true,
+      "safe404": true
+    },
+    {
+      "width": 390,
+      "height": 844,
+      "result": "PASS",
+      "actualMain": true,
+      "uiLogin": true,
+      "oneCanvasAndActiveSocket": true,
+      "onlineDoesNotRetry": true,
+      "keyboardReconnectReload": true,
+      "shortActionsReachable": true,
+      "safe404": true
+    },
+    {
+      "width": 430,
+      "height": 932,
+      "result": "PASS",
+      "actualMain": true,
+      "uiLogin": true,
+      "oneCanvasAndActiveSocket": true,
+      "onlineDoesNotRetry": true,
+      "keyboardReconnectReload": true,
+      "shortActionsReachable": true,
+      "safe404": true
+    }
+  ],
+  "screenshots": [
+    "2026-11-04T15-34-52-198Z-ready-360.png",
+    "2026-11-04T15-34-52-198Z-covered-panel-360.png",
+    "2026-11-04T15-34-52-198Z-offline-360.png",
+    "2026-11-04T15-34-52-198Z-unavailable-360.png",
+    "2026-11-04T15-34-52-198Z-short-actions-360.png",
+    "2026-11-04T15-34-52-198Z-safe-404-360.png",
+    "2026-11-04T15-34-52-198Z-ready-390.png",
+    "2026-11-04T15-34-52-198Z-covered-panel-390.png",
+    "2026-11-04T15-34-52-198Z-offline-390.png",
+    "2026-11-04T15-34-52-198Z-unavailable-390.png",
+    "2026-11-04T15-34-52-198Z-short-actions-390.png",
+    "2026-11-04T15-34-52-198Z-safe-404-390.png",
+    "2026-11-04T15-34-52-198Z-ready-430.png",
+    "2026-11-04T15-34-52-198Z-covered-panel-430.png",
+    "2026-11-04T15-34-52-198Z-offline-430.png",
+    "2026-11-04T15-34-52-198Z-unavailable-430.png",
+    "2026-11-04T15-34-52-198Z-short-actions-430.png",
+    "2026-11-04T15-34-52-198Z-safe-404-430.png"
+  ],
+  "errors": [],
+  "server": "http://127.0.0.1:5173",
+  "browser": "156.0.8078.80"
+}

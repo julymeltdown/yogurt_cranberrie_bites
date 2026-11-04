@@ -15,9 +15,9 @@ HERE = Path(__file__).resolve().parent
 ROOT = HERE.parents[3]
 BASE = 'frontend/public/world/reference-scene-v2/'
 VERSION = 'map4-reference-composition-v1'
-RECIPE_REVISION = 'reference-correction-03'
+RECIPE_REVISION = 'reference-correction-04'
 # Keep the consumer's layout identity/schema; a future intake must pin new bytes.
-PREVIOUS_HANDOFF = '1f2f9ff6bac13467d76c430ff67a26e51b421727'
+PREVIOUS_HANDOFF = '94c47a8b3219efc76a4be9646014cfeaad2f1957'
 FACADE_SOURCE_START = 0.54
 FACADE_HEIGHT_SCALE = 0.80
 ROOF_EAVE = 0.65
@@ -25,7 +25,7 @@ PATH_WIDTHS = (46, 40, 28)
 GARDEN_BORDER = 22
 PATH_PLANT_CLEARANCE = 60
 GARDEN_PLANT_CLEARANCE = 30
-CANOPY_SOURCE_END = 0.76
+CANOPY_SOURCE_END = 1.0
 SIZE = (768, 1296)
 PINS = {
     BASE + 'map-cozy-v1/parade/atlas.png': '9c77e42eb377fbab1df485d6c1e8e47221ac33aebbc03e9aecba3cc7bbcded9f',
@@ -96,7 +96,6 @@ PALETTES = {
 }
 VENUES = {'meeting_pavilion', 'giveaway_pavilion', 'north_hall', 'west_hall'}
 TREES = {'tree_green', 'tree_dark', 'tree_yellow', 'tree_red'}
-PLANT_COLORS = {'REVENGE': '#a4b692', 'PARADE': '#9fb68a', 'DANGER': '#a2bba8'}
 
 
 def digest(data):
@@ -201,33 +200,36 @@ def placements():
             frame = ['tree_green', 'tree_dark', 'tree_green', 'tree_yellow', 'tree_green'][(group+member) % 5]
             add('grove_%02d_tree_%d' % (group, member), frame,
                 cx+ox, cy+oy, width, round(width*0.84))
-    # Retained upper foliage fragments form the planting silhouette. They use
-    # exact atlas RGB/alpha, not new checker rectangles or full tree trunks.
+    # Complete original silhouettes avoid cut-off lower foliage. A deterministic
+    # area spiral replaces rows; parcel polygons are invisible placement bounds.
     architecture = [r['rect'] for r in rows if r['frame'] in VENUES]
     for parcel, polygon in enumerate(PLANTING):
         left, right = min(p[0] for p in polygon), max(p[0] for p in polygon)
         top, bottom = min(p[1] for p in polygon), max(p[1] for p in polygon)
-        for gy, cy in enumerate(range(top+12, bottom, 30)):
-            for gx, cx in enumerate(range(left+12, right, 32)):
-                seed = parcel*97 + gx*31 + gy*53
-                cx, cy = cx+(seed % 13)-6, cy+((seed//7) % 11)-5
-                width = 32+(seed % 3)*4
-                height = round(width*0.66)
-                center = (cx, cy)
-                if not inside(center, polygon):
-                    continue
-                radius = math.hypot(width/2, height/2)
-                if any(segment_distance(center, a, b) < PATH_PLANT_CLEARANCE/2+radius
-                       for path in PATHS for a, b in zip(path, path[1:])):
-                    continue
-                if any(segment_distance(center, a, b) < GARDEN_PLANT_CLEARANCE/2+radius
-                       for garden in GARDENS for a, b in zip(garden, garden[1:] + garden[:1])):
-                    continue
-                rect = [cx-width//2, cy-height//2, width, height]
-                if any(intersects(rect, r) for r in architecture):
-                    continue
-                add('parcel_%02d_canopy_%02d_%02d' % (parcel, gy, gx),
-                    'tree_dark' if seed % 5 == 0 else 'tree_green', *rect, crop_role='canopy')
+        samples = math.ceil((right-left)*(bottom-top)/780)
+        for sample in range(samples):
+            seed = parcel*97 + sample*53
+            angle = sample*math.pi*(3-math.sqrt(5)) + parcel*0.73
+            radius = math.sqrt((sample+0.5)/samples)
+            cx = round((left+right)/2 + radius*(right-left)*0.55*math.cos(angle))
+            cy = round((top+bottom)/2 + radius*(bottom-top)*0.55*math.sin(angle))
+            width = 32+(seed % 3)*4
+            height = round(width*0.84)
+            center = (cx, cy)
+            if not inside(center, polygon):
+                continue
+            clearance = math.hypot(width/2, height/2)
+            if any(segment_distance(center, a, b) < PATH_PLANT_CLEARANCE/2+clearance
+                   for path in PATHS for a, b in zip(path, path[1:])):
+                continue
+            if any(segment_distance(center, a, b) < GARDEN_PLANT_CLEARANCE/2+clearance
+                   for garden in GARDENS for a, b in zip(garden, garden[1:] + garden[:1])):
+                continue
+            rect = [cx-width//2, cy-height//2, width, height]
+            if any(intersects(rect, r) for r in architecture):
+                continue
+            add('parcel_%02d_canopy_%03d' % (parcel, sample),
+                'tree_dark' if seed % 5 == 0 else 'tree_green', *rect, crop_role='canopy')
     assert len({r['id'] for r in rows}) == len(rows)
     assert all(not intersects(r['rect'], e) for r in rows for e in exclusions())
     return sorted(rows, key=lambda r: (r['depth_y'], r['id']))
@@ -259,39 +261,7 @@ def surface(era):
         draw.line(points + [points[0]], fill=palette['ring'], width=GARDEN_BORDER, joint='curve')
         encoded = ' '.join(f'{x},{y}' for x, y in points)
         svg.append(f'<polygon id="garden_{i}" points="{encoded}" fill="{palette["garden"]}" stroke="{palette["ring"]}" stroke-width="{GARDEN_BORDER}" stroke-linejoin="round"/>')
-    # Blocked-out planted area has explicit clearance from paving and labels.
-    # Every painted cluster must fit wholly inside this mask, including corners.
-    mask = Image.new('1', SIZE)
-    mask_draw = ImageDraw.Draw(mask)
-    svg_mask = ['<defs><mask id="planting_clearance" maskUnits="userSpaceOnUse" x="0" y="0" width="768" height="1296"><rect width="768" height="1296" fill="black"/>']
-    for polygon in PLANTING:
-        mask_draw.polygon(polygon, fill=1)
-        encoded = ' '.join(f'{x},{y}' for x, y in polygon)
-        svg_mask.append(f'<polygon points="{encoded}" fill="white"/>')
-    for path in PATHS:
-        mask_draw.line(path, fill=0, width=PATH_PLANT_CLEARANCE, joint='curve')
-        encoded = ' '.join(f'{x},{y}' for x, y in path)
-        svg_mask.append(f'<polyline points="{encoded}" fill="none" stroke="black" stroke-width="{PATH_PLANT_CLEARANCE}" stroke-linejoin="round"/>')
-    for polygon in GARDENS:
-        mask_draw.line(polygon + [polygon[0]], fill=0, width=GARDEN_PLANT_CLEARANCE, joint='curve')
-        encoded = ' '.join(f'{x},{y}' for x, y in polygon)
-        svg_mask.append(f'<polygon points="{encoded}" fill="none" stroke="black" stroke-width="{GARDEN_PLANT_CLEARANCE}" stroke-linejoin="round"/>')
-    for ex, ey, ew, eh in exclusions():
-        mask_draw.rectangle((ex, ey, ex+ew-1, ey+eh-1), fill=0)
-        svg_mask.append(f'<rect x="{ex}" y="{ey}" width="{ew}" height="{eh}" fill="black"/>')
-    svg_mask.append('</mask></defs>')
-    svg.extend(svg_mask)
-    image.paste(PLANT_COLORS[era], (0, 0, *SIZE), mask)
-    mask_pixels = mask.load()
-    planted_pixels = sum(1 for value in mask.getdata() if value)
-    svg.append(f'<rect id="original_planted_substrate" width="768" height="1296" fill="{PLANT_COLORS[era]}" mask="url(#planting_clearance)"/>')
-    # Sparse, subtle substrate flecks; retained foliage crops carry the texture.
-    for y in range(0, SIZE[1]-2, 18):
-        for x in range((y//18 % 3)*5, SIZE[0]-4, 24):
-            if (x*7+y*11) % 23 > 5 or not all(mask_pixels[x+dx, y+dy] for dx in range(4) for dy in range(2)):
-                continue
-            rect(x, y, 4, 2, mix(PLANT_COLORS[era], palette['lawnLight'], 0.20))
-    assert 90000 <= planted_pixels <= 330000, planted_pixels
+    # Planting parcels guide placement only; keep original textured ground.
     # Paving seams stay in the path raster; SVG keeps the same explicit segments.
     pixels = image.load()
     for y in range(8, SIZE[1]-8, 18):
@@ -307,7 +277,7 @@ def surface(era):
         for dx, dy in [(0, -3), (-3, 0), (3, 0), (0, 3)]:
             rect(x+dx, y+dy, 3, 3, color)
         rect(x, y, 3, 3, '#f9edc1')
-    return image, svg, planted_pixels
+    return image, svg, 0
 
 
 def overhead_roof(canvas, svg, name, x, y, w, h, palette):
@@ -452,7 +422,7 @@ def produce():
                   'recipe': descriptor('frontend/public/world/map-reference-composition-v1/build.py', Path(__file__).read_bytes()),
                   'referenceUse': 'DIRECT_VISUAL_INSPECTION_ONLY_NO_REFERENCE_PIXELS_SAMPLED',
                   'authorship': 'New editable paths/gardens/placement geometry; retained original built-in generated warm atlas crops. No new generation, stock, character or font input.',
-                  'transform': 'Whole and upper76percent canopy crops retain uniform nearest fit, centered X/bottom Y. Venue bottom46percent source crops retain width and receive explicit 0.80 vertical nearest projection, bottom-aligned; original RGBA unchanged before sampling.',
+                  'transform': 'Whole frames including complete foliage silhouettes retain uniform nearest fit, centered X/bottom Y. Venue bottom46percent source crops retain width and receive explicit 0.80 vertical nearest projection, bottom-aligned; original RGBA unchanged before sampling.',
                   'venueProjection': {'sourceStartFraction': FACADE_SOURCE_START,
                                       'facadeHeightScale': FACADE_HEIGHT_SCALE,
                                       'roofEaveFraction': ROOF_EAVE,
@@ -466,9 +436,10 @@ def produce():
                                'canopySourceEndFraction': CANOPY_SOURCE_END,
                                'canopyPlacements': sum(row['crop_role'] == 'canopy' for row in decorations),
                                'excludes': ['six exact label rectangles', 'declared path corridors', 'declared garden edges'],
-                               'coverageMeaning': 'Continuous substrate-mask painted pixels before original canopy/scenery occlusion, not vegetation coverage or reference/runtime similarity'},
+                               'substratePolicy': 'NONE_KEEP_EXISTING_TEXTURED_GROUND',
+                               'placementSampler': 'DETERMINISTIC_AREA_SPIRAL_NO_ROW_GRID',
+                               'coverageMeaning': 'Zero new substrate pixels: parcels are invisible placement domains, not vegetation coverage or reference/runtime similarity'},
                   'surfacePaletteByTheme': PALETTES,
-                  'plantPaletteByTheme': PLANT_COLORS,
                   'svgPolicy': 'Editable SVG embeds the exact era atlas; Pillow PNG is raster authority. SVG engine parity NOT_RUN.',
                   'checks': {'immutableInputHashes': True, 'closedThreeEras': True, 'uniqueDecorativeIds': True,
                              'canonicalWorldCellsExact': True, 'architectureOutsideLabelExclusions': True,

@@ -1,0 +1,37 @@
+{
+  "slot": "ROOT-FE-COMBINED-NATIVE-202611041530Z",
+  "status": "FULL_RELEASE_PARTIAL_QUALIFICATION",
+  "verified": "2026-11-04T15:40:27.000645+00:00",
+  "beforeWorkCutoff": true,
+  "beforeHardDeadline": true,
+  "originalWorkCutoff": "2026-11-04T15:40:40.891463+00:00",
+  "originalHardDeadline": "2026-11-04T15:41:40.891463+00:00",
+  "map": "PASS19_CONTEXTS_21_PNG",
+  "fullAppTypes": "PASS",
+  "FE41": "PASS360_390_430_18_PNG",
+  "reviewed": "PARTIAL360_FUNCTIONAL_PROFILE_WORLD_PASS; original cleanup assertion failed; final canonical UI signout driver NOT_RUN",
+  "lastAttempt": "retry04 start rejected before child/output/link/TMP creation by existing supervisor minimum120s-before-hard guard; no bypass/extension",
+  "notRunOutputAbsent": true,
+  "aliveOwnedPids": [],
+  "allSampledOwnedPids": 781,
+  "linkAbsent": true,
+  "allRecordedPrivateTempsAbsent": true,
+  "ownedPorts": {
+    "5298": {
+      "listenerAbsent": true,
+      "SO_REUSEADDR_bind": "PASS"
+    },
+    "5173": {
+      "listenerAbsent": true,
+      "SO_REUSEADDR_bind": "PASS"
+    }
+  },
+  "maxWhole": 204419178,
+  "maxTMP": 31327893,
+  "maxRSS": 2849046528,
+  "maxALLProcesses": 13,
+  "newDurableBytes": 11075517,
+  "freshFree": 21028298752,
+  "qualification": "Controlled actual default clients, not live/device/full visual; all initial failures retained",
+  "retainedNativeImages": 55
+}

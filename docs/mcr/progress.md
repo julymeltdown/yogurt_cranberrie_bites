@@ -1,12 +1,49 @@
 # Execution record
 
-Updated **2026-11-04T23:09:44+09:00** from the frontend 14:00 UTC and backend 14:04:51/14:06:41 UTC ordinary digests, the 14:09 UTC chat sample and publication metadata through da9b8a98. Kings record owner dispositions and staffing/publication outcomes without technical re-review. All **112 required tasks and 61 required IA entries** remain in scope.
+Updated **2026-11-05T00:26:28+09:00** with the direct human performance deferral and Wall B choice, preserving the 15:00/15:06:20 hourly outcomes and post-only retro clarification. Publication metadata is observed through 3107026f. All 112 task IDs and 61 IA entries remain recorded; QA08 is deferred rather than completed.
+
+## Current delivery priority — direct human decisions
+
+Functional completion is the priority. **Performance qualification, including
+the 200-concurrent-user load run, is deferred for this delivery.** Preserve QA08's
+original scope and partial evidence as DEFERRED_BY_USER; do not mark benchmarks
+PASS, count QA08 complete or claim measured capacity. Remove performance-only
+work from the active queue and release active resources safely. Functional
+multiuser flows, authorization/privacy, inventory/transaction integrity,
+recovery, accessibility, visual correctness and host safety limits remain.
+
+**Wall option B is selected and authorized.** Implement the complete published
+bundle: server-qualified opaque erase, four-connected fills up to 256 changed
+cells, and undo of the latest own action within 10 minutes only while the global
+wall revision is unchanged. Keep the server cooldown and a shared 512 changed-cell
+budget per canonical actor/event per rolling 10 database minutes, including undo.
+Retain explicit confirmation, exact revision/idempotency, atomic writes and
+server-owned reload/unknown-outcome recovery. Transparency, full-wall fills,
+redo and undo across intervening edits remain excluded. The original proposal
+snapshot is historical; its former unselected status does not override this
+direct human decision.
+
+The delivery process uses coherent feature assignments and explicit disjoint
+composition transfers. A developer continues remaining work in owned paths
+without waiting for another tiny task packet. A single necessary changed-source
+run can supply CSS/art/consumer evidence, and a canonical publisher receipt can
+establish remote delivery facts. Do not add repeated identical proof commits,
+proof-only goals or king/SL ACK cycles. Publish meaningful increments regularly.
+The allocator may expand independent functional parallelism after measuring
+capacity and isolation; existing host limits still apply.
+
+FE204 has the separate frontend Wall assignment. Backend proposal owner 6ec9
+retains its incompatible unfinished QA09 goal and has made no Wall changes;
+the staffing lead is selecting an aligned backend implementation owner with
+Root. No false goal completion, shared writable checkout or silent ownership
+transfer is permitted. The post-only retro clarification and all other current
+visual instructions remain.
 
 ## Current task accounting
 
 The [current portfolio](#portfolio-and-staffing-update) records actual receiving
-assignments and the latest Feed direction. Original-task dispositions remain
-unchanged this hour; new staffing and bounded qualification are not completion.
+assignments and the post-only retro clarification. Original-task dispositions
+remain unchanged this hour; staffing and bounded qualification are not completion.
 
 **The old 11/112 number counted historical formal acceptances; it did not count all implemented work. The central ledger failed to incorporate later task-local completion dispositions.**
 
@@ -82,43 +119,51 @@ This reconciliation preserves the owners' actual dispositions: FE08 is explicitl
 
 ## Portfolio and staffing update
 
-Both ordinary hourly digests report **no unique original-task or IA closure**.
-The count remains **39/112**: 13 acceptance dispositions and 26 additional
-original-task criteria outcomes. QA01 and FE40 are counted once. C07 and QA10
-remain unreconciled; IN01 is accepted and IN02–IN05 remain open.
+The frontend 15:00 UTC and backend 15:06:20 UTC ordinary records report **no new
+unique original-task or IA closure**. The register retains **39/112 recorded
+task-criteria outcomes**: 13 acceptance dispositions and 26 additional original
+criteria closures. C07 and QA10 now have active owners but no whole-task closure;
+IN01 remains accepted and IN02–IN05 remain open.
 
 | Major work | Responsible-owner outcome | Remaining work |
 | --- | --- | --- |
-| BE41 event cleanup | SocialGrants source `66f14795` and handoff passed 12 native probes, including restart; the writer stopped and handed off. | Full lifecycle authority, archive/retention and public owner composition remain open. |
-| Reports and Social startup | Report startup `834aaa6b` / `48bfde10` passed its build and seven checks. Shared startup and earlier adapters have published evidence. | Root production activation and real public operator/social journeys remain open. |
-| BE42 deletion | Ticket owner21e has an actual new ACTIVE goal and source `2c61aa79`. Spatial12cc completed its old goal and received the session scope; new-goal intake confirmation is pending. Sharing16e and Notification232 support have actual source starts. | Four owning adapters remain unaccepted. Notification support does not implement the whole PrivateData policy/erase/recreation-denial port. Root Auth-to-domain transport remains open. Ordering tests are a separate deliverable. |
-| Party / IN02 | Existing bounded Party work is retained. Former00c stopped with 12 WIP paths and an unfinished goal; the old213 reference now identifies a frontend worker. | Resource lead must obtain a real backend receiving owner or formal return to the original owner. No lost work, duplicate writer or completed Party goal is inferred. |
-| Feed redesign | The human rejected pastel Feed styling and requested a flatter retro imageboard design with modern usability. `684cab41` passed 12 before/after, responsive, short-viewport and actual-shell cases and was handed to Root. | Combine the separate shared edge correction `e70568b7`, qualify the application and publish. Scope beyond Feed remains unanswered; other screens keep their current direction. |
-| Map | Root v2 technical comparison passed 19 contexts, nine World invariant pairs and 40 routes, then released. The artist's separate roof/planting source qualified. | Full reference fit, actual admission and device acceptance remain open. Source success does not automatically replace the qualified art candidate. |
-| Shared chrome, Customize and Community | Shared chrome passed 25 source checks; BODY palette passed 384 checks/types. Window controls and Parade print have qualified source handoffs. Community authority and Feed composition source work continue. | Consumer placement, default-App/native integration and real producers remain open. Existing toolbar/Profile behavior is not duplicated; FE209 is frontend-only. |
-| QA08 capacity | RW10 created 200 real Auth/profile accounts but reached only 17 World sockets before a deadline failure; all resources were released. The corrected frontend rendering round passed its bounded scope. | No 200-socket or measurement-window credit. The earlier unexpected service exit was not reproduced; responsible developers diagnose before another attempt. |
-| QA05 / QA09 | QA05 retains its bounded pair result and original PARTIAL status. QA09 recovery helpers and source evidence are published through `da9b8a98`. | Six original live QA09 recovery cases remain NOT_RUN; fixtures and empty business rows do not certify real business recovery. |
+| Contracts and candidate checks | C07 owner 21e accepted seven new path prefixes, a retained isolated checkout and a new unbudgeted ACTIVE goal. QA10 owner 230 accepted its own clean branch and ACTIVE goal. Existing generators, contracts and QA01 evidence remain protected. | Whole C07/QA10 criteria remain open. Generated frontend output requires an explicit stopped-writer transfer; QA10 missing live evidence stays NOT_RUN. |
+| Reports, lifecycle and Notifications | Report, lifecycle and Notification owners resumed actual work. Report added duplicate/quota/rollback cases; its first fresh qualification failed at compile time because a newer cached build script was paired with older source, then released. Notification started the concrete receipt transport gap. | Report is refreshing its own source onto the qualified base before a fresh round. BE41 expiry/retention and Notification response/Auth verification continue in exact grants; original parent criteria remain open. |
+| BE42 deletion | Ticket and Sharing bounded adapters are published. The Auth bridge passed real Auth/mTLS and PostgreSQL restart, published at fa6f3f72. Sessions and PrivateData have actual implementations, with new fixes still requiring qualification. | Sessions' durable-journal correction needs a fresh five-case cohort. PrivateData's delete-guard failure and merged migration changes need a fresh matching qualification; old results do not certify the merged candidate. Full production sealed apply and remaining categories stay open. |
+| Party / IN02 | Root is the actual shared production-composition owner. Former 00c's twelve Party WIP paths were preserved as checkpoint d92c4b08 with their branch/tag before the same retained checkout took the PrivateData assignment. | Original real Party/meetup/pickup journey remains open. No duplicate Party writer or lost WIP is implied. |
+| Post-only retro design | The human clarified that the retro treatment applies only to post-shaped portions. Feed CSS owns the post-card/thread-row correction; Root owns reversal of the shared flat-cream Feed body styling. Earlier broad Feed retro delivery is historical. | Restore surrounding tabs, composer, tools, non-post states and global Feed styling to the supplied reference; qualify the new post-only candidate. Other screens keep the reference direction. Character artwork is unchanged. |
+| Map | The corrected ART03 cohort passed nineteen browser contexts with World invariants, virtual actions and focus, and was published. The failed temporary-font assumption is retained in history; the toolbar correction is included. | ART04 scenery is a separate candidate requiring registration and fresh captures. Remaining reference-fit, real admission and device criteria remain open. |
+| Shared chrome, art and Community | Shared chrome passed its bounded source/browser cohort. Parade print was published and its actual owner goal completed. Gifts' three reference illustrations passed native fit inspection. Community source checks and twelve native cases passed, with image inspection and handoff still in progress. | Component CTA-to-print spacing and Landing palette precedence have owner fixes. Gifts production media mapping/publication, integrated BODY self/peer/Profile checks and real Community authority remain open. |
+| Performance and recovery | QA08 performance qualification is DEFERRED_BY_USER for functional-first delivery; prior results remain historical, with no measured-capacity claim. QA09 bounded helpers are published. | Remove performance-only jobs from the active queue. Complete the six live QA09 recovery cases and remaining QA05 functional cases; other original non-performance checks remain required. |
 
-The 14:09 UTC recent-list sample contains **41 MCR chats: 3 active coordination,
-15 active development/art/QA, 8 idle and 15 not loaded**. This is a sample, not an
-exhaustive staffing register or proof that every active chat is writing source.
-Completed inactive FE204 was archived after its final receipt; history remains
-available and no live checkout was removed. Earlier staffing snapshots remain in
-the JSON history.
+The 2026-11-04T15:09:54Z recent-list sample contains **41 MCR chats: 4 active coordination, 15 active development/art/QA, 6 idle and 16 not loaded**. This is a dated sample, not a census, source-writer count or proof of persistent-goal state.
 
-Measured host capacity permitted **one browser plus two isolated source-only
-checks**, removing unnecessary source serialization behind browser work. Separate
-writable outputs, private caches/TMP, read-only retained dependencies, two Rust
-targets, aggregate runtime limits and the existing 16 GiB start / 8 GiB running
-floors remain. Completed rounds release their slots for ready owners. Root153's
-affected retirement-dispatch route stays stopped; the Title/Focus discarded
-local-state preservation gap remains UNPROVEN.
+The three previously idle backend developers have actual active receiving turns
+for their remaining original-feature scopes. C07 and QA10 reused existing
+isolated contexts with new unbudgeted active goals. A mistaken CSS-only C07
+handoff stopped before implementation or validation, and its leases were
+returned. Existing generated files and QA01 work are preserved.
+
+Completed Parade print chat 534…674080f was archived after fresh terminal/goal-complete/remote-delivery evidence; history, commits and worktree were preserved. Remaining component spacing belongs to its frontend owner. Earlier FE204 archive and Title/Focus discarded-local-state preservation gap remain unchanged.
+
+One browser plus two isolated source-only checks continue under existing two Rust targets and aggregate runtime limits, separate outputs/private caches and 16 GiB start/8 GiB running floors. Completed rounds released their slots for ready owners; no implicit lease extension or blanket source queue behind the browser.
+
+The earlier PrivateData post-release compiler reentry was acknowledged and fully
+released, not retroactively authorized. Later rounds are separate. Report's
+cache/source compile failure and PrivateData's delete-guard/candidate failures
+remain recorded; fresh matching qualification is required. This adds no king
+approval, new permanent resource floor or blanket delivery barrier.
+
+The later human clarification is **post-only retro styling**, not a global Feed
+or ten-screen treatment. Existing owners are restoring surrounding reference
+styles and qualifying the revised post components. The previous all-screen
+question is resolved; Wall B is also selected. Other genuine human inputs
+remain pending. Character sources and the ban on left accent bars remain.
 
 Developers own validation, fixes and direct delivery to named publishers. Kings
-and SLs do not review technical packets or acknowledge delivery as a prerequisite.
-All 112 tasks, 61 IA entries and original functional/validation obligations remain.
-The all-screen retro-design question, Wall expanded-tool A/B and other genuine
-human inputs remain pending; independent authorized work continues.
+and SLs do not inspect technical packets or acknowledge delivery as a prerequisite.
+All 112 task IDs and 61 IA entries remain; the explicit QA08 performance deferral
+and Wall B extension are recorded above. Other functional/validation duties remain.
 
 ## Prior portfolio update — 09:52Z
 

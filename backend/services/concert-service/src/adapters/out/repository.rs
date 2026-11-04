@@ -109,6 +109,17 @@ impl CoreRepository for PgConcertRepository {
         preferences: Preferences,
     ) -> Result<PreferenceUpdate, StoreError> {
         let mut tx = self.pool.begin().await.map_err(unavailable)?;
+        // The account deletion owner takes this same user-first lock before
+        // mutating every personal row. Do not move it below event or row locks.
+        crate::world::account_deletion::lock_user_in(&mut tx, key.user_id.uuid())
+            .await
+            .map_err(unavailable)?;
+        if crate::world::account_deletion::is_fenced_in(&mut tx, key.user_id.uuid())
+            .await
+            .map_err(unavailable)?
+        {
+            return Ok(PreferenceUpdate::Missing);
+        }
         // SHARE conflicts with event closure UPDATE, so phase cannot change between check and commit.
         let phase: Option<String> = sqlx::query_scalar(
             "select phase from public.concert_events where event_id=$1 for share",
