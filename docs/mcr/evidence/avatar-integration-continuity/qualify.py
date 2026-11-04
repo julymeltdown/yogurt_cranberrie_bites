@@ -72,7 +72,8 @@ def main():
     assert shutil.disk_usage(ROOT).free - offer['newBytes'] - offer['otherUpperBytes'] >= offer['afterAllFreeBytes']
     assert hashlib.sha256((ROOT / 'frontend/pnpm-lock.yaml').read_bytes()).hexdigest() == '47ca44459819ad0e887d2f4f93394fdf3b1053b8f45edc9ceb0236981feee1f6'
     carry = inventory()
-    assert sum(carry.values()) < offer['wholeBytes']
+    carry_bound = max(sum(carry.values()), offer.get('minimumCarryBytes', 0))
+    assert carry_bound < offer['wholeBytes']
     output = EVIDENCE / attempt
     assert not output.exists()
     output.mkdir(parents=True)
@@ -89,12 +90,12 @@ def main():
                 ('syntax', [str(NODE), '--check', TESTS + '/native.mjs'])] if mode == 'source' else [
                 ('native', [str(NODE), TESTS + '/native.mjs'])]
     report = {'offer': offer, 'mode': mode, 'source': sp.check_output(['git', 'rev-parse', 'HEAD'], cwd=ROOT, text=True).strip(),
-              'commands': [], 'inventory': carry, 'wholePeak': sum(carry.values()), 'status': 'FAIL', 'startedUTC': dt.datetime.now(dt.timezone.utc).isoformat(),
+              'commands': [], 'inventory': carry, 'carryBoundBytes': carry_bound, 'wholePeak': carry_bound, 'status': 'FAIL', 'startedUTC': dt.datetime.now(dt.timezone.utc).isoformat(),
               'rssPeak': 0, 'processPeak': 0, 'temporaryPeak': 0, 'durablePeak': 0, 'freeMinimum': shutil.disk_usage(ROOT).free}
     child = None
     owned = set()
     config = {'root': str(ROOT), 'base': BASE, 'supervisor': os.getpid(), 'offer': offer,
-              'temporary': str(tmp), 'evidence': str(EVIDENCE), 'fixedCarry': sum(carry.values()),
+              'temporary': str(tmp), 'evidence': str(EVIDENCE), 'fixedCarry': carry_bound,
               'workDeadline': deadline - 60, 'stop': str(output / 'guard.stop'),
               'ready': str(output / 'guard.ready'),
               'activeChild': str(output / 'active-child.pid'), 'report': str(output / 'guardian.json'),
