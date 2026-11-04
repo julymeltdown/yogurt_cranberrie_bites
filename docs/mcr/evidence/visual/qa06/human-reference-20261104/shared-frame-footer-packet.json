@@ -1,0 +1,216 @@
+{
+  "task": "QA06-HUMAN-FRAME-FOOTER-01",
+  "status": "IN_PROGRESS",
+  "requiredImplementationFollowThrough": true,
+  "authority": "Actual human reattachment plus explicit World/FEKing direction; required fidelity correction, not optional polish or QA approval.",
+  "reference": {
+    "artifact": {
+      "path": "docs/mcr/evidence/visual/qa06/human-reference-20261104/reference-human.jpg",
+      "bytes": 482737,
+      "sha256": "2b3988d546f87b813d78ca13bf267730a6dd19118bd6535a2d3c3032b6f12d23"
+    },
+    "originalAttachment": "/tmp/codex-remote-attachments/01a1a385-9f32-73c2-8715-ff54bd1e0497/327C1E99-C917-4D55-96F7-C83C59A70F90/1-Photo-1.jpg",
+    "dimensions": [
+      1280,
+      853
+    ],
+    "region": "Bottom-row Meet/Gifts/Me for shared footer; all ten frames for chrome. Exact JPEG copied byte for byte. Earlier target PNG is historical context, not a substitute for this reattachment."
+  },
+  "stableActualPairs": [
+    {
+      "screen": "Meet",
+      "actual": {
+        "path": "docs/mcr/evidence/visual/qa06/postfix-12a5-repairs-tail/meet-parade-390-h637.png",
+        "bytes": 81019,
+        "sha256": "7cd49e1a0e6348e42f009966f554d52377dd89d90d74fd9f65b7196505d4bb02"
+      },
+      "viewport": [
+        390,
+        637
+      ],
+      "source": "12a5d394eeabc89e1c7b0012fb51038f737c9a7f",
+      "qualification": "Actual published client, same three deterministic parties; no member-photo or live-capability inference.",
+      "comparisonAid": {
+        "path": "docs/mcr/evidence/visual/qa06/postfix-12a5-review/compare-meet.png",
+        "bytes": 467701,
+        "sha256": "8c06c55bb7dfc09b14e2b80273a4a5a7ec3cd3a92a189e3eda58830ce0952134"
+      }
+    },
+    {
+      "screen": "Me",
+      "actual": {
+        "path": "docs/mcr/evidence/visual/qa06/postfix-12a5-repairs-tail/me-parade-390-h595.png",
+        "bytes": 49395,
+        "sha256": "007f38ed44b197b0f354c057108a322fc9ea388cce6a2c2065a576bce22aeee5"
+      },
+      "viewport": [
+        390,
+        595
+      ],
+      "source": "12a5d394eeabc89e1c7b0012fb51038f737c9a7f",
+      "qualification": "Actual published client, truthful cold activity state. Missing activity is not this style defect."
+    },
+    {
+      "screen": "Gifts",
+      "actual": {
+        "path": "docs/mcr/evidence/visual/qa06/fidelity-v3/equal-gifts-390.png",
+        "bytes": 72242,
+        "sha256": "8717c30724a0dbd1a7983b4ea129e810a599b1b2a57545d8fff208116f39d635"
+      },
+      "viewport": [
+        390,
+        608
+      ],
+      "source": "980fc4d85020f297b36fee8195e1ca92079ff33f application tree; QA06 corrected foreign-owner fixture/harness59f88",
+      "qualification": "Existing desktop fixture capture; no-photo content is separate. Shared footer source unchanged through12a5/a0db."
+    },
+    {
+      "screen": "World",
+      "actual": {
+        "path": "docs/mcr/evidence/visual/qa06/human-reference-20261104/world-native02.png",
+        "bytes": 272306,
+        "sha256": "3362e0aacbb892e93d0311b96289e509220d4ed979c4e4aa27eedad74b5318ba"
+      },
+      "viewport": [
+        390,
+        554
+      ],
+      "source": "5619da572b7e9ba0b4ca614852a90f65666719a4",
+      "qualification": "Owner-qualified source fixture, published9356; old architecture source. It is not a combined current architecture capture."
+    }
+  ],
+  "findings": [
+    {
+      "id": "QA06-HUMAN-FRAME-01",
+      "kind": "ACTUAL_CLIENT_PRESENTATION",
+      "observed": "Repeated thin concentric rectangular outlines dominate current outer window, inset panel and header framing. The human target uses a restrained dark/cream frame with irregular worn print rather than a precise nested-line motif. This persists across otherwise different feature/data states.",
+      "scopePointers": [
+        "world-shell/shell-panel border stack and decorative shell mask",
+        "shared shell panel/header chrome",
+        "ConcertWindow outer/titlebar decoration where actually embedded/standalone"
+      ],
+      "notTheFinding": "The red rectangle around focused headings in saved Feed/Meet/Gifts frames is keyboard focus state. Preserve required focus-visible outline and actual44px controls; do not erase it to make screenshots match.",
+      "requiredOutcome": "Reduce the mechanical concentric decoration and restore restrained distressed black/cream/red hierarchy/type. Owner chooses implementation; preserve shell geometry, genuine controls, all states and current navigation."
+    },
+    {
+      "id": "QA06-HUMAN-FOOTER-01",
+      "kind": "ACTUAL_SHARED_DECORATIVE_ASSET",
+      "observed": "ParadeFooter reuses one angular diamond-headed SVG figure seven times with only transforms. The human target has varied irregular marching silhouettes integrated with a stronger dark ground and web/print texture. Current repeated angular row is visibly different even with unchanged content.",
+      "assetProvenance": "Current authored TSX explicitly labels this original geometric parade ornament; it is decorative aria-hidden SVG, not live people or approved avatar artwork. Source consists of one path# mcr-parade-marcher and seven uses, a ground path, flag strokes and web-like lines.",
+      "requiredOutcome": "Newly author or explicitly delegate a restrained varied footer derivative with irregular silhouettes/dark ground consistent with the reference, maintaining readability and body/action spacing. Do not replace approved avatars or pull legacy/reference character pixels. Exact art/source ownership must remain disjoint."
+    }
+  ],
+  "sourcePointers": [
+    {
+      "path": "frontend/src/app/shell.css",
+      "commit": "a0db1770b048161c5df818f7e4e2417923c8d542",
+      "sha256": "02cfa90906fce69ab896777f44388a1990b2d670a1b0b47bc8099d0cf1ef669f",
+      "symbol": "world-shell, shell-panel, world-shell::after",
+      "exactSelectorLines": [
+        {
+          "line": 3,
+          "text": ".world-shell {"
+        },
+        {
+          "line": 23,
+          "text": ".shell-stage { position: relative; min-block-size: 0; isolation: isolate; display: grid; grid-template-rows: minmax(0, 1fr) auto; }"
+        },
+        {
+          "line": 38,
+          "text": ".shell-panel { position: absolute; z-index: 1; inset-inline: 0; inset-block-end: 0; block-size: 55%; min-block-size: 11rem; max-block-size: 100%; display: flex; flex-direction: column; background: var(--mcr-paper); border-top: 1px solid var(--mcr-ink); }"
+        },
+        {
+          "line": 89,
+          "text": ".world-shell { --mcr-paper:#e9e1d4; max-inline-size:72rem; border:4px double #e8dfd0; outline:1px solid #191817; background:#191817; }"
+        },
+        {
+          "line": 90,
+          "text": ".shell-stage { border-inline:2px solid #191817; }"
+        },
+        {
+          "line": 98,
+          "text": ".shell-panel { border:3px double #191817; box-shadow:inset 0 0 0 1px #c9bbaa; }"
+        },
+        {
+          "line": 129,
+          "text": ".world-shell { position:relative; }"
+        },
+        {
+          "line": 130,
+          "text": ".world-shell::after { content:\"\"; position:absolute; z-index:5; inset:0; padding:4px; pointer-events:none; background:repeating-linear-gradient(8deg,#e9e1d4 0 1px,transparent 1px 19px),repeating-linear-gradient(94deg,transparent 0 31px,#e9e1d4 31px 32px,transparent 32px 59px); mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0); mask-composite:exclude; }"
+        }
+      ]
+    },
+    {
+      "path": "frontend/src/app/shell-chrome/shell-chrome.css",
+      "commit": "a0db1770b048161c5df818f7e4e2417923c8d542",
+      "sha256": "759a7749c7e1bceb8b8ebfe6500128d1ef39b0b4cd4aac3ae142ee782d525a21",
+      "lines": "2;18;26;30-34;39-40",
+      "symbol": "mcr-chrome-header/eras/bottom/panel-header/parade-footer"
+    },
+    {
+      "path": "frontend/src/shared/ui/concert-window/concert-window.css",
+      "commit": "a0db1770b048161c5df818f7e4e2417923c8d542",
+      "sha256": "54bc2ca1737e48c589d2456530c529af39a50e6413aace8dec1bfa5ae5564032",
+      "symbol": "concert-window, ::before, titlebar, embedded variant",
+      "exactSelectorLines": [
+        {
+          "line": 12,
+          "text": ".concert-window {"
+        },
+        {
+          "line": 24,
+          "text": ".concert-window::before {"
+        },
+        {
+          "line": 36,
+          "text": ".concert-window__titlebar {"
+        },
+        {
+          "line": 47,
+          "text": ".concert-window__titlebar h1, .concert-window__titlebar h2, .concert-window__titlebar h3 {"
+        },
+        {
+          "line": 170,
+          "text": ".concert-window { border-width:3px; }"
+        },
+        {
+          "line": 171,
+          "text": ".concert-window__titlebar { min-height:44px; padding-inline:6px 0; gap:5px; }"
+        },
+        {
+          "line": 172,
+          "text": ".concert-window__titlebar h1, .concert-window__titlebar h2, .concert-window__titlebar h3 { font-size:23px; letter-spacing:.015em; }"
+        },
+        {
+          "line": 179,
+          "text": ".concert-window--embedded { border:0; box-shadow:none; background:transparent; }"
+        }
+      ]
+    },
+    {
+      "path": "frontend/src/app/shell-chrome/parade-footer.tsx",
+      "commit": "a0db1770b048161c5df818f7e4e2417923c8d542",
+      "sha256": "7ccff5284eeb2a7851584694f9690835fa13e37746d9d68f0b2b10b8882afc2d",
+      "lines": "1-11",
+      "symbol": "ParadeFooter; path#mcr-parade-marcher; seven use elements"
+    }
+  ],
+  "sourceContinuity": "parade-footer.tsx and shell-chrome.css byte-identical between captured12a5 and inspecteda0db. Final World CSS was separately qualified/published9356. Rebase only explicitly allocated shared hunks; preserve concurrent MAP semantic/architecture work.",
+  "routing": {
+    "responsibleSharedOwner": "Root153; may delegate exact disjoint shared style/footer source scope to available implementation owner without waiting for other comparisons or King/SL approval",
+    "staffingContext": "WorldSL",
+    "assetCounterpart": "Artist231 if Root explicitly delegates a new footer asset scope; current MAP/selected-art scopes do not imply shared TSX ownership",
+    "QA06": "Evidence/owned harness only; no application/art writes or review gate."
+  },
+  "preservation": [
+    "Selected source originals/reviewed derivatives immutable; no legacy or replacement character art",
+    "All functional44px targets, visible keyboard focus, skip/Back/navigation/panel semantics",
+    "One persistent world/Phaser/connection; current closed/nonclosed layout and verified viewport gains",
+    "Truthful data/provider/consent/capability states; no fabricated levels/currency/activity",
+    "No decorative left bars/borders/rails; no new dependencies/manifests/contracts/CI changes",
+    "Keep target composition and typography without deleting real required functionality"
+  ],
+  "developerValidation": "Owner diagnoses/fixes and performs relevant source/runtime/visual validation. Compare actual shared frame/footer at unchanged target aspect against this exact supplied photo, preserving focus/unavailable/cold states. A generated pixel oracle or unit/capture count is not supplied-target comparison. New corrected captures use one existing BackendSL queue only when needed; packet creation needs no new run.",
+  "currentQAStatus": "Original unfinished goal read back BLOCKED, preserved without reset/budget/model override. Ready comparison is executing within exact existing QA06 prefixes. Full ten-screen/device/live/public criteria remain open."
+}
