@@ -17,16 +17,16 @@
     "required_ia_entries": 61,
     "optional_excluded": 6,
     "counts": {
-      "DONE": 41,
-      "IN_PROGRESS": 57,
+      "DONE": 43,
+      "IN_PROGRESS": 55,
       "WAITING_INPUT": 3,
       "REOPENED": 7,
       "DEFERRED_BY_USER": 1,
       "OPEN": 3
     },
-    "done_tasks": 41,
-    "remaining_active_tasks": 70,
-    "task_completion_percentage": 36.9,
+    "done_tasks": 43,
+    "remaining_active_tasks": 68,
+    "task_completion_percentage": 38.7,
     "historical_original_outcomes": 39,
     "reopened_historical_tasks": [
       "FE19",
@@ -49,7 +49,7 @@
     },
     "capacity": {
       "owner_chat": "01a1a21d-39ec-7912-84cb-910058e7a110",
-      "frontend_runtime_counterpart": "01a1a1fe-ca12-7cc3-9a1d-62bbb2689498",
+      "frontend_runtime_counterpart": "01a1a385-9f32-73c2-8715-ff54bd1e0497",
       "authority": "The resource lead current named execution allocation, fresh measured capacity, accepted reservations and actual target/runtime custody govern each run. Central management snapshots do not grant or delay admission.",
       "browser_jobs": 2,
       "source_work": "Ordinary source editing and preparation proceed independently of scarce execution slots. Preserve frozen queued candidates and exclusive writable paths. Only actual workload execution uses its applicable resource allocation.",
@@ -62,7 +62,13 @@
         "claim_boundary": "No current free-space guarantee or native-startup pass is inferred."
       },
       "new_chats": "Reuse capable existing chats; no duplicate producer or checkout merely to increase the active count.",
-      "manager_ack_required": false
+      "manager_ack_required": false,
+      "temporary_allocation_fallback": {
+        "owner": "01a1a21d-39ec-7912-84cb-910058e7a110",
+        "unreachable_chat": "01a1a1fe-ca12-7cc3-9a1d-62bbb2689498",
+        "basis": "Messaging failed after verified IDLE/completed state;21d is the single temporary issuer using the same controller/accepted reservations. Actual queued source work has executed through the fallback.",
+        "claim_boundary": "Original chat recovery is not claimed; no competing allocator or goal reset."
+      }
     },
     "reporting": "SLs reconcile individual task state hourly from existing owner records. Kings receive major outcomes and real allocation/product exceptions. Delivery and next assignments do not await the ledger or king acknowledgment.",
     "new_original_closures_since_replan": [
@@ -74,10 +80,12 @@
       "AR03",
       "FE35",
       "C06",
-      "FE17"
+      "FE17",
+      "FE31",
+      "FE36"
     ],
-    "current_original_criteria_outcomes": 48,
-    "progress_updated_at": "2026-11-05T04:08:18+09:00",
+    "current_original_criteria_outcomes": 50,
+    "progress_updated_at": "2026-11-05T04:37:28+09:00",
     "hosted_ci": {
       "state": "QUALIFIED_PUBLISHED",
       "observed_at": "2026-11-04T18:18:00Z",
@@ -110,8 +118,8 @@
       "handling": "Retain the existing provider/input request; no duplicate human question, fabricated claims or scope cut. Internal source work continues; no unnecessary runtime/browser hold."
     },
     "staffing_changes": {
-      "recorded_at": "2026-11-05T04:08:18+09:00",
-      "sharing_safety": "Existing21e owns default FE31/FE36 composition; FE35 original client scope closed.",
+      "recorded_at": "2026-11-05T04:37:28+09:00",
+      "sharing_safety": "OriginalFE31 andFE36 client criteria explicitly closed by21e at publisheda40d6944; actual IN03/moderation/report/media/deletion producers remain separate open scopes.",
       "operations": "Existing53d owns default Admin composition;230 retains blocked feature goal pending actual producers.",
       "contracts": "Existing50a8 actively qualifies new Enrollment/C05 inputs; previous C07 and hosted CI acceptance preserved. No new current-input PASS is inferred.",
       "backend_age": "Resource lead has allocated Age corrected sourcef309 after actual predecessor target release and removed source-pin-only reissue approval. Actual compile/native results are not inferred from allocation.",
@@ -121,10 +129,13 @@
       "wall_integration": "Original Wall QA e2a9 restored and accepted missing B live-runner source preparation; actual live gate remains NOT_RUN.",
       "visual_software": "Original QA06 developer1ab7 is actively implementing uncovered software IA/era/preference cases from retained coverage; device-only gaps remain separate. It reported a missing default Help route directly to the implementation owner.",
       "profile": "Profile213 actively resumes originalFE34 ticket/visibility/persistence/preferences. Its prior media goal remains completed; settled CSS no-defect follow-up is not replayed.",
-      "avatar": "World lead withdrew the conflicting213 avatar assignment and restored completedAR03 owner1eed for FE12/FE13 reload/movement-peer and remaining editor behavior. Dispatch is confirmed; actual new goal/scope acceptance is still pending.83 remainsFE41.",
+      "avatar": "Restored priorAR03 developer1eed has actual Root scope and is implementing originalFE12/FE13 remainder, including the uncovered Cancel behavior;213 exclusivelyFE34,83FE41.",
       "accessibility": "FormerFE38 bounded owner40c576 is now active as QA07 changed input accessibility, covering only uncovered WallB/Gifts/Thread/Meet software deltas in isolated QA ownership.",
-      "runtime_priority": "Actual runtime-package repair has started; Operations and Wall follow directly. Root153 is implementing the real IN04 frontend adapter while e2a9 owns the missing live-runner source.",
-      "next_assignment": "Leads transition developers directly to a ready coherent feature, or record a genuine resource/input wait. No king acknowledgment, technical review or disposition-only busywork."
+      "runtime_priority": "Qualified Wall native-admin increment and portableSQL startup repair are delivered. Root owns combined runtime and actualOwnAccess composition; frontendadapterd0f27b108 source and originalIN04runner2b2d4de6 are published, while combined liveIN04 remains NOT_RUN.",
+      "next_assignment": "Leads transition developers directly to a ready coherent feature, or record a genuine resource/input wait. No king acknowledgment, technical review or disposition-only busywork.",
+      "themes": "The same completed developer21e is restored as originalFE06 owner on a fresh branch, preserving the old completed goal and publication; exact theme scope is coordinated with Root.",
+      "world_recovery": "World20f completed its negotiated-motion goal at1e20c294 and immediately accepted originalBE13/BE14 and small-cohort backendQA05; actual scope transfer confirmed, resynchronization defect under repair.",
+      "map": "Mapdensity packet7acfac3a published; artist completed three full/nine scaled assessments, and existingMap26e resumed actual consumer adoption. No fullAR02/AR04 closure inferred."
     },
     "capacity_history": [
       {
@@ -176,15 +187,44 @@
       }
     ],
     "current_delivery_checkpoint": {
-      "recorded_at": "2026-11-05T04:08:18+09:00",
-      "canonical_publication": "a10e4f409",
-      "published_increments": [
-        "47ec660d5: qualified seven-case signup-consent native follow-up; real Auth/mail pairing remains separate",
-        "daebd6773 and a10e4f409: qualified Social readiness factory and canonical main wiring",
-        "34ca081d7 and521a80754: runtime SQL package selection and launcher repair; matching native service execution remains pending"
+      "recorded_at": "2026-11-05T04:37:28+09:00",
+      "canonical_publication": "fcac0bed0",
+      "original_closures": [
+        "FE31",
+        "FE36"
       ],
-      "task_count_change": 0,
-      "reason": "Published bounded increments and new assignments do not by themselves close original tasks. Counts remain41/111; all112tasks/61IA retained."
+      "closure_publication": "a40d6944a65091b93381fa96767357eb2941b74a",
+      "published_increments": [
+        "1e20c294: World motion with realAuth pair qualification; broader launcher limits retained",
+        "6d351502: QA10 checker implementation,37 focused tests; actual candidate report pending",
+        "7acfac3a: Map density source packet; consumer adoption active",
+        "d099e016: FE41 version/reload recovery; operational producer and wider validation remain separate",
+        "d0f27b108: IN04 frontendadapter source qualification; combined live journey NOT_RUN",
+        "fcac0bed0: nine uncovered QA06 software states, remaining prepared/device/reference cases open"
+      ],
+      "task_count_change": 2,
+      "reason": "Only explicit originalFE31/FE36 client outcomes close rows. All112tasks/61IA and original requirements remain."
+    },
+    "scope_interpretation": {
+      "QA06": "Original widths, skins, actual devices, keyboard/safearea, readability/reachability/clipping/oldUI checks remain intact. All61IA entries remain required; no unrequested universal61x3x3 capture gate.",
+      "QA10": "Continue from checker tests to actual pinned-candidate composition using genuine available inputs. Missing/stale evidence stays NOT_RUN/BLOCKED; do not wait for every unrelated feature toPASS before producing an honest candidate report. IN05 release remains NOT_READY."
+    },
+    "open_integration_boundaries": {
+      "report_authorization_and_attachments": {
+        "source": "FE31/FE36 responsible developer original-criterion disposition after canonicala40d6944",
+        "remaining": "COMMENT/MURAL direct-address authorization producers and a qualified REPORT attachment producer are absent; UI remains truthfully unavailable for those producer-dependent cases.",
+        "task_routing": [
+          "BE36",
+          "BE24",
+          "FE37",
+          "IN03"
+        ],
+        "routing_owners": [
+          "Backend Root1fc for existing domain/media writers",
+          "Frontend Root153 for actual caller composition"
+        ],
+        "scope": "Preserve this real integration requirement after closing originalFE36 client controls. No live reporting/moderation/media certification or scope cut is inferred."
+      }
     }
   },
   "historical_accounting": {
@@ -1520,7 +1560,9 @@
         "dependency_interpretation": "Interface/read-set readiness for source work; actual producers for live integration. No full-wave or manager approval barrier.",
         "owner_role": "Existing identity/World/character developers",
         "coordination_owner": "backend_staffing",
-        "known_current_owner_chats": [],
+        "known_current_owner_chats": [
+          "01a1a20f-8d37-71c3-a429-8a55bb6d6c49"
+        ],
         "ownership_note": "Known current owners are routing evidence, not a new file lease. Leads allocate any unassigned remainder to an existing capable developer before dispatch; exact paths/worktree remain exclusive.",
         "validation_owner": "World20f replication implementation developer with Social16e policy producer and Root1fc.",
         "current_scope_evidence": [
@@ -1538,6 +1580,13 @@
           "nextAction": "Root actual functional runtime/public boundary; QA08 performance deferred. Retired20f has no ready independent source task; no proof/load loop.",
           "commitPush": "backendcde817b2/native7cd1e900; consumer92989fd7→published1bb911c3; Root41b48eb7 remote verified",
           "source": "Backend staffing16:00 digest; existing responsible-owner records, no Main technical review"
+        },
+        "current_assignment": {
+          "recorded_at": "2026-11-05T04:37:28+09:00",
+          "state": "ACTIVE_CHAT_WITH_SCOPE_TRANSFER",
+          "scope": "Original recipient-specific replication and reconnect/revocation plus relevant small-cohort QA05; prior motion artifact retained for currentIN04.",
+          "coordinator": "Backend Root1fc and resourcelead21d",
+          "manager_technical_review": false
         }
       }
     },
@@ -1578,7 +1627,9 @@
         "dependency_interpretation": "Interface/read-set readiness for source work; actual producers for live integration. No full-wave or manager approval barrier.",
         "owner_role": "Existing identity/World/character developers",
         "coordination_owner": "backend_staffing",
-        "known_current_owner_chats": [],
+        "known_current_owner_chats": [
+          "01a1a20f-8d37-71c3-a429-8a55bb6d6c49"
+        ],
         "ownership_note": "Known current owners are routing evidence, not a new file lease. Leads allocate any unassigned remainder to an existing capable developer before dispatch; exact paths/worktree remain exclusive.",
         "validation_owner": "World20f session/recovery developer with Sessions and Root1fc counterparts.",
         "current_scope_evidence": [
@@ -1596,6 +1647,13 @@
           "nextAction": "Root actual functional runtime/public boundary; QA08 performance deferred. Retired20f has no ready independent source task; no proof/load loop.",
           "commitPush": "backendcde817b2/native7cd1e900; consumer92989fd7→published1bb911c3; Root41b48eb7 remote verified",
           "source": "Backend staffing16:00 digest; existing responsible-owner records, no Main technical review"
+        },
+        "current_assignment": {
+          "recorded_at": "2026-11-05T04:37:28+09:00",
+          "state": "ACTIVE_CHAT_WITH_SCOPE_TRANSFER",
+          "scope": "Original recipient-specific replication and reconnect/revocation plus relevant small-cohort QA05; prior motion artifact retained for currentIN04.",
+          "coordinator": "Backend Root1fc and resourcelead21d",
+          "manager_technical_review": false
         }
       }
     },
@@ -3706,7 +3764,9 @@
         "dependency_interpretation": "Interface/read-set readiness for source work; actual producers for live integration. No full-wave or manager approval barrier.",
         "owner_role": "Existing identity/World/character developers",
         "coordination_owner": "frontend_delivery",
-        "known_current_owner_chats": [],
+        "known_current_owner_chats": [
+          "01a1a21e-ab80-7012-b9fa-cdb69eed097b"
+        ],
         "ownership_note": "Known current owners are routing evidence, not a new file lease. Leads allocate any unassigned remainder to an existing capable developer before dispatch; exact paths/worktree remain exclusive.",
         "validation_owner": "FE theme/World implementation owner",
         "current_scope_evidence": [
@@ -3717,7 +3777,12 @@
           "docs/mcr/frontend/runtime-preferences-root-integration.md",
           "U_MAP"
         ],
-        "active_delivery_requirement": true
+        "active_delivery_requirement": true,
+        "current_assignment": {
+          "recorded_at": "2026-11-05T04:37:28+09:00",
+          "state": "ACTIVE_CHAT_PREPARATION",
+          "scope": "Whole original theme tokens/persistence/failed-load rollback/reduced-motion behavior; existing evidence reused, fresh Root single-writer grant before edits."
+        }
       }
     },
     {
@@ -4006,7 +4071,9 @@
         "dependency_interpretation": "Interface/read-set readiness for source work; actual producers for live integration. No full-wave or manager approval barrier.",
         "owner_role": "Existing identity/World/character developers",
         "coordination_owner": "frontend_delivery",
-        "known_current_owner_chats": [],
+        "known_current_owner_chats": [
+          "01a1a1fe-1eed-7d12-a247-879cd521e0ec"
+        ],
         "ownership_note": "Known current owners are routing evidence, not a new file lease. Leads allocate any unassigned remainder to an existing capable developer before dispatch; exact paths/worktree remain exclusive.",
         "validation_owner": "FE character/compositor developer with Root consumer developer",
         "current_scope_evidence": [
@@ -4020,11 +4087,11 @@
         "active_delivery_requirement": true,
         "previous_owner_chats": [],
         "current_assignment": {
-          "recorded_at": "2026-11-05T04:08:18+09:00",
-          "state": "DISPATCHED_ACCEPTANCE_PENDING",
+          "recorded_at": "2026-11-05T04:37:28+09:00",
+          "state": "ACTIVE_CHAT_WITH_SCOPE_TRANSFER",
           "candidate_owner": "01a1a1fe-1eed-7d12-a247-879cd521e0ec",
           "coordinator": "World SLc276",
-          "scope": "Remaining avatar reload and movement-peer integration and uncovered editor cancel/conflict/catalog behavior; existing art and passed coverage retained.",
+          "scope": "Original avatar reload/moving-peer and uncovered editor behavior; developer reports fresh Root grant and active Cancel/recovery implementation.",
           "ownership": "Fresh exact Root transfer required before writing;213 remainsFE34 and83 remainsFE41."
         }
       }
@@ -4067,7 +4134,9 @@
         "dependency_interpretation": "Interface/read-set readiness for source work; actual producers for live integration. No full-wave or manager approval barrier.",
         "owner_role": "Existing identity/World/character developers",
         "coordination_owner": "frontend_delivery",
-        "known_current_owner_chats": [],
+        "known_current_owner_chats": [
+          "01a1a1fe-1eed-7d12-a247-879cd521e0ec"
+        ],
         "ownership_note": "Known current owners are routing evidence, not a new file lease. Leads allocate any unassigned remainder to an existing capable developer before dispatch; exact paths/worktree remain exclusive.",
         "validation_owner": "FE avatar-editor developer with character owner83 and Root",
         "current_scope_evidence": [
@@ -4084,11 +4153,11 @@
           "01a19f83-2c2a-7fa0-a98d-1c4f5f65cb3c"
         ],
         "current_assignment": {
-          "recorded_at": "2026-11-05T04:08:18+09:00",
-          "state": "DISPATCHED_ACCEPTANCE_PENDING",
+          "recorded_at": "2026-11-05T04:37:28+09:00",
+          "state": "ACTIVE_CHAT_WITH_SCOPE_TRANSFER",
           "candidate_owner": "01a1a1fe-1eed-7d12-a247-879cd521e0ec",
           "coordinator": "World SLc276",
-          "scope": "Remaining avatar reload and movement-peer integration and uncovered editor cancel/conflict/catalog behavior; existing art and passed coverage retained.",
+          "scope": "Original avatar reload/moving-peer and uncovered editor behavior; developer reports fresh Root grant and active Cancel/recovery implementation.",
           "ownership": "Fresh exact Root transfer required before writing;213 remainsFE34 and83 remainsFE41."
         }
       }
@@ -4396,7 +4465,9 @@
         "dependency_interpretation": "Interface/read-set readiness for source work; actual producers for live integration. No full-wave or manager approval barrier.",
         "owner_role": "Existing identity/World/character developers",
         "coordination_owner": "frontend_delivery",
-        "known_current_owner_chats": [],
+        "known_current_owner_chats": [
+          "01a1a26e-1de2-7b41-a294-c9a79cfded9b"
+        ],
         "ownership_note": "Known current owners are routing evidence, not a new file lease. Leads allocate any unassigned remainder to an existing capable developer before dispatch; exact paths/worktree remain exclusive.",
         "validation_owner": "FE Map/Places developer; ART and Root counterparts",
         "current_scope_evidence": [
@@ -4411,7 +4482,12 @@
           "609ae393",
           "82787782"
         ],
-        "active_delivery_requirement": true
+        "active_delivery_requirement": true,
+        "current_assignment": {
+          "recorded_at": "2026-11-05T04:37:28+09:00",
+          "state": "ACTIVE_CHAT_PREPARATION",
+          "scope": "ActualMap/World adoption of published densitypacket7acfac3a; preserve qualified stage/focus behavior and truthful physical-place limitations."
+        }
       }
     },
     {
@@ -4986,25 +5062,18 @@
       ],
       "note": "Published receipt or owner report records bounded implementation/fixture/component work. Whole original-task completion is partial or not yet reconciled; no additional live/device gate is imposed on a pure task.",
       "revised_plan": {
-        "state": "IN_PROGRESS",
+        "state": "DONE",
         "package": "SOCIAL",
         "priority": 0,
         "original_scope": "New handle settings, explicit request consent, decisions, reveal, revoke and expiry views; no-store sensitive fetch.",
         "original_acceptance": "Network payload before approval contains no handle; revocation clears UI/cache; no auto-follow claim.",
         "updated_scope": "Finish handle settings, explicit mutual consent, decisions, no-store reveal/revoke/expiry and synchronous privacy cleanup.",
-        "remaining_work": [
-          "Complete the default-app sharing-request creation entry from an authorized introduction, including explicit consent, current recipient/revision binding and original-command recovery.",
-          "Preserve published no-store reveal/revoke/expiry and privacy cleanup; actual positive and revoked/blocked multiuser flows remain under IN03."
-        ],
+        "remaining_work": [],
         "complete_when": "Network payload before approval contains no handle; revocation clears UI/cache; no auto-follow claim.",
-        "reason": "Owner reconciled component behavior as delivered but identified the default-app offer creation entry as the original client remainder. The same developer accepted the disjoint production composition scope and a new unbudgeted goal; source implementation is active.",
+        "reason": "Responsible developer explicitly closed the original client row: handle settings, explicit request consent and decisions, protected no-store reveal, revoke/expiry, no handle before approval, revoked UI/cache cleanup and no auto-follow. Default-app composition is published at a40d6944 and retained private-social evidence is reused. Controlled HTTP/C05 client completion does not certify live IN03, genuine providers, multiuser or device outcomes.",
         "historical_criteria_closed": false,
         "reopened_for_current_scope": false,
-        "depends_on_for_remaining_work": [
-          "FE02",
-          "FE05",
-          "C04"
-        ],
+        "depends_on_for_remaining_work": [],
         "interface_collaborators_not_completion_barriers": [
           "BE28",
           "BE30",
@@ -5027,9 +5096,21 @@
           "docs/mcr/frontend/social-sharing-entry.md:3",
           "docs/mcr/frontend/social-policy-production.md:3",
           "U_RECONCILIATION",
-          "be6af4e9"
+          "be6af4e9",
+          "a40d6944a65091b93381fa96767357eb2941b74a",
+          "34b922f1",
+          "3a862f"
         ],
-        "active_delivery_requirement": true
+        "active_delivery_requirement": true,
+        "current_completion": {
+          "recorded_at": "2026-11-05T04:37:28+09:00",
+          "owner_chat": "01a1a21e-ab80-7012-b9fa-cdb69eed097b",
+          "published_commit": "a40d6944a65091b93381fa96767357eb2941b74a",
+          "source_commit": "34b922f1",
+          "basis": "Responsible developer explicitly closed the original client row: handle settings, explicit request consent and decisions, protected no-store reveal, revoke/expiry, no handle before approval, revoked UI/cache cleanup and no auto-follow. Default-app composition is published at a40d6944 and retained private-social evidence is reused. Controlled HTTP/C05 client completion does not certify live IN03, genuine providers, multiuser or device outcomes.",
+          "evidence_basis": "Retained private-social384 regressions; deletion15 new plus274 Auth/538 affected;18 default-route cases;390px actual-main combined sharing/report/block/unblock/Help journey; types/lint and exact95-path publication. Counts are owner-reported scoped evidence, not summed into a fabricated test total.",
+          "manager_technical_review": false
+        }
       },
       "latest_owner_activity": {
         "reported_at": "2026-11-05T03:10:54+09:00",
@@ -5292,25 +5373,18 @@
       ],
       "note": "Published receipt or owner report records bounded implementation/fixture/component work. Whole original-task completion is partial or not yet reconciled; no additional live/device gate is imposed on a pure task.",
       "revised_plan": {
-        "state": "IN_PROGRESS",
+        "state": "DONE",
         "package": "SOCIAL",
         "priority": 0,
         "original_scope": "New report dialog, block list/unblock, logout/delete confirmation and progress views; clear private state.",
         "original_acceptance": "Blocking closes affected panels; unblock does not restore old consent; failed deletion is not displayed as complete.",
         "updated_scope": "Finish report/block/unblock/logout/deletion surfaces with private-state cleanup and truthful partial/failed deletion.",
-        "remaining_work": [
-          "Complete default report and block-list routes with working authorized block/unblock controls and stale-target cancellation.",
-          "Preserve delivered account/logout/deletion recovery and original-command retry; real server deletion convergence remains with backend and integration owners."
-        ],
+        "remaining_work": [],
         "complete_when": "Blocking closes affected panels; unblock does not restore old consent; failed deletion is not displayed as complete.",
-        "reason": "Owner explicitly separated delivered account/logout/deletion client recovery from the remaining default report/block route composition. The existing developer is actively implementing that remainder with FE31 in an isolated checkout.",
+        "reason": "Responsible developer explicitly closed the original client row: report dialog, block list/confirmed unblock, canonical logout/delete confirmation and progress, private-state cleanup, affected-panel closure on block, a new consent baseline on unblock and truthful failed/partial deletion. Default-app composition is published at a40d6944 and retained account/deletion evidence is reused. Missing COMMENT/MURAL authorization and REPORT attachment producers remain explicit backend/media integration work; unavailable UI is truthful, not a producer qualification.",
         "historical_criteria_closed": false,
         "reopened_for_current_scope": false,
-        "depends_on_for_remaining_work": [
-          "FE02",
-          "FE05",
-          "C04"
-        ],
+        "depends_on_for_remaining_work": [],
         "interface_collaborators_not_completion_barriers": [],
         "related_validation_gates": [],
         "dependency_interpretation": "Interface/read-set readiness for source work; actual producers for live integration. No full-wave or manager approval barrier.",
@@ -5327,9 +5401,21 @@
           "docs/mcr/frontend/safety-account.md",
           "docs/mcr/frontend/account-deletion-composition.md:3",
           "U_RECONCILIATION",
-          "be6af4e9"
+          "be6af4e9",
+          "a40d6944a65091b93381fa96767357eb2941b74a",
+          "34b922f1",
+          "3a862f"
         ],
-        "active_delivery_requirement": true
+        "active_delivery_requirement": true,
+        "current_completion": {
+          "recorded_at": "2026-11-05T04:37:28+09:00",
+          "owner_chat": "01a1a21e-ab80-7012-b9fa-cdb69eed097b",
+          "published_commit": "a40d6944a65091b93381fa96767357eb2941b74a",
+          "source_commit": "34b922f1",
+          "basis": "Responsible developer explicitly closed the original client row: report dialog, block list/confirmed unblock, canonical logout/delete confirmation and progress, private-state cleanup, affected-panel closure on block, a new consent baseline on unblock and truthful failed/partial deletion. Default-app composition is published at a40d6944 and retained account/deletion evidence is reused. Missing COMMENT/MURAL authorization and REPORT attachment producers remain explicit backend/media integration work; unavailable UI is truthful, not a producer qualification.",
+          "evidence_basis": "Retained private-social384 regressions; deletion15 new plus274 Auth/538 affected;18 default-route cases;390px actual-main combined sharing/report/block/unblock/Help journey; types/lint and exact95-path publication. Counts are owner-reported scoped evidence, not summed into a fabricated test total.",
+          "manager_technical_review": false
+        }
       },
       "latest_owner_activity": {
         "reported_at": "2026-11-05T03:10:54+09:00",
@@ -5881,7 +5967,7 @@
         "original_acceptance": "Avatars remain legible, controls reachable, no panel clipping or old UI; record device/browser versions.",
         "updated_scope": "Test widths 360/390/430, actual iOS Safari and Android Chrome, keyboard, safe area and all three skins.",
         "remaining_work": [
-          "Finish developer-owned comparison of all ten reference surfaces and all61IA states at360/390/430px in all three skins.",
+          "Finish developer-owned comparison of all ten reference surfaces and uncovered software states, covering360/390/430 widths and all three skins with justified reuse of valid common-layout evidence. All61IA functionality and release traceability remain required; no universal fresh61x3x3 screenshot matrix is added.",
           "Preserve exact supplied character designs and post-shaped-only retro treatment; resolve remaining map, avatar, Meet density and Thread presentation differences.",
           "Run actual iOS Safari and Android Chrome keyboard/safe-area/control checks when device access is available."
         ],
@@ -8547,6 +8633,18 @@
       "state": "DONE",
       "commit": "3198cc8d6ec9b5d03c8bc778fd2ab9a0a8e69758",
       "basis": "Original AR03 artwork criteria explicitly accepted by the restored responsible owner using current approved deliveries. Six presets, required layers, four directions/five phases, anchors, clipping and theme identity are covered by retained source-bound evidence. Two-file disposition published by Root; actual aligned goal COMPLETE. No new artwork, legacy fallback or redundant pack was introduced. Whole C06, live/device and full-reference acceptance remain separate."
+    },
+    {
+      "task": "FE31",
+      "state": "DONE",
+      "commit": "a40d6944a65091b93381fa96767357eb2941b74a",
+      "basis": "Responsible developer explicitly closed the original client row: handle settings, explicit request consent and decisions, protected no-store reveal, revoke/expiry, no handle before approval, revoked UI/cache cleanup and no auto-follow. Default-app composition is published at a40d6944 and retained private-social evidence is reused. Controlled HTTP/C05 client completion does not certify live IN03, genuine providers, multiuser or device outcomes."
+    },
+    {
+      "task": "FE36",
+      "state": "DONE",
+      "commit": "a40d6944a65091b93381fa96767357eb2941b74a",
+      "basis": "Responsible developer explicitly closed the original client row: report dialog, block list/confirmed unblock, canonical logout/delete confirmation and progress, private-state cleanup, affected-panel closure on block, a new consent baseline on unblock and truthful failed/partial deletion. Default-app composition is published at a40d6944 and retained account/deletion evidence is reused. Missing COMMENT/MURAL authorization and REPORT attachment producers remain explicit backend/media integration work; unavailable UI is truthful, not a producer qualification."
     }
   ]
 }
