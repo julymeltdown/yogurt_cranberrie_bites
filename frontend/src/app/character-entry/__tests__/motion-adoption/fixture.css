@@ -1,0 +1,5 @@
+* { box-sizing:border-box; } body { margin:0; background:#272522; color:#f1eadc; font:13px Arial,sans-serif; } .fixture-note { margin:5px; font-size:11px; }
+#world { width:100%; height:265px; position:relative; overflow:hidden; } #world canvas { display:block; }
+#controls { width:100%; min-width:0; } nav { display:flex; gap:3px; padding:4px; } nav button { flex:1; min-height:44px; font-weight:bold; }
+main { padding:4px; min-width:0; } main > section[aria-label=Profile] { background:#eee5d5; color:#211d19; padding:16px; }
+main > section[aria-label=Profile] canvas { margin:12px auto; }

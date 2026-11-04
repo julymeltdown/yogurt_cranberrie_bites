@@ -1,0 +1,199 @@
+vite v8.1.3 building client environment for production...
+[2K
+transforming...✓ 485 modules transformed.
+rendering chunks...
+computing gzip size...
+frontend/e2e/qa08-rendering/.cache/production/index.html                                          2.02 kB │ gzip:   0.69 kB
+frontend/e2e/qa08-rendering/.cache/production/assets/red-ink-BU4Q2PCh.svg                         7.61 kB │ gzip:   1.39 kB
+frontend/e2e/qa08-rendering/.cache/production/.vite/manifest.json                                19.04 kB │ gzip:   2.60 kB
+frontend/e2e/qa08-rendering/.cache/production/assets/mcr-auth-print-pPg3st5N.woff                19.45 kB
+frontend/e2e/qa08-rendering/.cache/production/assets/frame-print-Qa3Zbkhj.svg                    33.73 kB │ gzip:   4.43 kB
+frontend/e2e/qa08-rendering/.cache/production/assets/image-compression.worker-5_zI3q-z.js        52.22 kB
+frontend/e2e/qa08-rendering/.cache/production/assets/paper-print-BiNBgY89.svg                   243.45 kB │ gzip:  39.53 kB
+frontend/e2e/qa08-rendering/.cache/production/assets/cemetery-bottom-v1-Bkd59J1m.png            762.21 kB
+frontend/e2e/qa08-rendering/.cache/production/assets/cemetery-top-v1-OlgvrKla.png             2,124.81 kB
+frontend/e2e/qa08-rendering/.cache/production/assets/RootMediaView-BdfnIHbK.css                   0.55 kB │ gzip:   0.25 kB
+frontend/e2e/qa08-rendering/.cache/production/assets/ProfileIcon-C5jlMgdD.css                     1.36 kB │ gzip:   0.59 kB
+frontend/e2e/qa08-rendering/.cache/production/assets/safety-BViJNTBJ.css                          1.51 kB │ gzip:   0.56 kB
+frontend/e2e/qa08-rendering/.cache/production/assets/root-features-nb6jl9cq.css                   1.55 kB │ gzip:   0.65 kB
+frontend/e2e/qa08-rendering/.cache/production/assets/social-BMiG3aQa.css                          1.71 kB │ gzip:   0.71 kB
+frontend/e2e/qa08-rendering/.cache/production/assets/meeting-entry-CaQthYWG.css                   1.73 kB │ gzip:   0.72 kB
+frontend/e2e/qa08-rendering/.cache/production/assets/composition-C7uV5nlu.css                     3.55 kB │ gzip:   1.13 kB
+frontend/e2e/qa08-rendering/.cache/production/assets/panels-BMt8WHkR.css                          4.19 kB │ gzip:   1.38 kB
+frontend/e2e/qa08-rendering/.cache/production/assets/social-composition-BD3_6jZW.css              5.21 kB │ gzip:   1.45 kB
+frontend/e2e/qa08-rendering/.cache/production/assets/activity-CSOKqWtj.css                        9.90 kB │ gzip:   2.79 kB
+frontend/e2e/qa08-rendering/.cache/production/assets/world-panels-cWsIhOQK.css                   13.67 kB │ gzip:   3.54 kB
+frontend/e2e/qa08-rendering/.cache/production/assets/provider-DprRFUma.css                       14.46 kB │ gzip:   3.38 kB
+frontend/e2e/qa08-rendering/.cache/production/assets/CommunityFeatures-CtYOQD37.css              17.33 kB │ gzip:   3.90 kB
+frontend/e2e/qa08-rendering/.cache/production/assets/PublicBoundary-CbXXeRBx.css                 18.72 kB │ gzip:   4.48 kB
+frontend/e2e/qa08-rendering/.cache/production/assets/index-CgHiC7As.css                          27.70 kB │ gzip:   6.03 kB
+frontend/e2e/qa08-rendering/.cache/production/assets/rolldown-runtime-QTnfLwEv.js                 0.69 kB │ gzip:   0.42 kB
+frontend/e2e/qa08-rendering/.cache/production/assets/compatibility-BAEMyyvo.js                    0.96 kB │ gzip:   0.45 kB
+frontend/e2e/qa08-rendering/.cache/production/assets/provider-DVRU0WUn.js                         0.96 kB │ gzip:   0.54 kB
+frontend/e2e/qa08-rendering/.cache/production/assets/reference-scene-overview-Br8TIunO.js         1.00 kB │ gzip:   0.57 kB
+frontend/e2e/qa08-rendering/.cache/production/assets/identity-DWO4MK4B.js                         1.02 kB │ gzip:   0.59 kB
+frontend/e2e/qa08-rendering/.cache/production/assets/phaser-C-L-RzyC.js                           1.19 kB │ gzip:   0.62 kB
+frontend/e2e/qa08-rendering/.cache/production/assets/preload-helper-CZgWQFsJ.js                   1.25 kB │ gzip:   0.70 kB
+frontend/e2e/qa08-rendering/.cache/production/assets/AdminBoundary-DWGHz6iy.js                    1.37 kB │ gzip:   0.68 kB
+frontend/e2e/qa08-rendering/.cache/production/assets/operations-ClTv-duQ.js                       1.45 kB │ gzip:   0.61 kB
+frontend/e2e/qa08-rendering/.cache/production/assets/overview-BqdjoyKZ.js                         1.71 kB │ gzip:   0.91 kB
+frontend/e2e/qa08-rendering/.cache/production/assets/avatar-config.schema-D-59TwV9.js             1.86 kB │ gzip:   0.54 kB
+frontend/e2e/qa08-rendering/.cache/production/assets/reference-scene-jbfOTb7S.js                  1.95 kB │ gzip:   1.07 kB
+frontend/e2e/qa08-rendering/.cache/production/assets/contract-Dj9ImEnV.js                         2.16 kB │ gzip:   1.01 kB
+frontend/e2e/qa08-rendering/.cache/production/assets/authority-BOGcdqL9.js                        2.75 kB │ gzip:   1.19 kB
+frontend/e2e/qa08-rendering/.cache/production/assets/contract-DcaKwr0K.js                         2.98 kB │ gzip:   1.33 kB
+frontend/e2e/qa08-rendering/.cache/production/assets/simulation-sCcriVKG.js                       3.15 kB │ gzip:   1.27 kB
+frontend/e2e/qa08-rendering/.cache/production/assets/RootMediaView-C2gmG5_g.js                    3.51 kB │ gzip:   1.49 kB
+frontend/e2e/qa08-rendering/.cache/production/assets/provider-ioa1P5YE.js                         3.98 kB │ gzip:   1.86 kB
+frontend/e2e/qa08-rendering/.cache/production/assets/errors-hxkLUXfp.js                           4.48 kB │ gzip:   1.88 kB
+frontend/e2e/qa08-rendering/.cache/production/assets/panel-DRU7hmu3.js                            4.71 kB │ gzip:   1.92 kB
+frontend/e2e/qa08-rendering/.cache/production/assets/resolver-fR7LjLrs.js                         4.71 kB │ gzip:   2.18 kB
+frontend/e2e/qa08-rendering/.cache/production/assets/whole-character-uuRj4mhS.js                  5.65 kB │ gzip:   2.20 kB
+frontend/e2e/qa08-rendering/.cache/production/assets/resources-BCBu3f8Y.js                        6.18 kB │ gzip:   2.66 kB
+frontend/e2e/qa08-rendering/.cache/production/assets/read-media-DeBuRj5i.js                       6.39 kB │ gzip:   2.87 kB
+frontend/e2e/qa08-rendering/.cache/production/assets/model-a0gp53af.js                            6.41 kB │ gzip:   2.60 kB
+frontend/e2e/qa08-rendering/.cache/production/assets/jsx-runtime-CIxEorsV.js                      7.89 kB │ gzip:   2.98 kB
+frontend/e2e/qa08-rendering/.cache/production/assets/social-composition-B0RW37c6.js               8.17 kB │ gzip:   2.80 kB
+frontend/e2e/qa08-rendering/.cache/production/assets/MapScene-C7cTkoze.js                        10.90 kB │ gzip:   4.17 kB
+frontend/e2e/qa08-rendering/.cache/production/assets/panels-D5x0JS09.js                          10.96 kB │ gzip:   3.61 kB
+frontend/e2e/qa08-rendering/.cache/production/assets/ProfileIcon-Dbu9pd3v.js                     11.94 kB │ gzip:   4.74 kB
+frontend/e2e/qa08-rendering/.cache/production/assets/capabilities-j6DOnuaE.js                    13.22 kB │ gzip:   3.72 kB
+frontend/e2e/qa08-rendering/.cache/production/assets/root-features-BKkC9dWh.js                   14.87 kB │ gzip:   4.93 kB
+frontend/e2e/qa08-rendering/.cache/production/assets/manifest-BovhGGz9.js                        15.78 kB │ gzip:   4.49 kB
+frontend/e2e/qa08-rendering/.cache/production/assets/source-catalog-B2GN78SH.js                  15.97 kB │ gzip:   4.30 kB
+frontend/e2e/qa08-rendering/.cache/production/assets/contract-Bcu83lns.js                        26.64 kB │ gzip:   5.81 kB
+frontend/e2e/qa08-rendering/.cache/production/assets/social-DSLVqV7q.js                          35.11 kB │ gzip:  10.27 kB
+frontend/e2e/qa08-rendering/.cache/production/assets/provider-URgAi4zp.js                        43.20 kB │ gzip:  13.13 kB
+frontend/e2e/qa08-rendering/.cache/production/assets/composition-Dij9SzW6.js                     53.09 kB │ gzip:  17.94 kB
+frontend/e2e/qa08-rendering/.cache/production/assets/meeting-entry-cEUp7xGg.js                   54.03 kB │ gzip:  14.94 kB
+frontend/e2e/qa08-rendering/.cache/production/assets/access-F-Aseb2W.js                          59.28 kB │ gzip:  20.08 kB
+frontend/e2e/qa08-rendering/.cache/production/assets/schemas-B9zUvP7H.js                         66.99 kB │ gzip:  17.93 kB
+frontend/e2e/qa08-rendering/.cache/production/assets/CommunityFeatures-B3zvAMf-.js               68.75 kB │ gzip:  18.93 kB
+frontend/e2e/qa08-rendering/.cache/production/assets/world-panels-BNthum36.js                    70.26 kB │ gzip:  22.88 kB
+frontend/e2e/qa08-rendering/.cache/production/assets/domain-operations.generated-CpkEJAQQ.js     81.10 kB │ gzip:   4.34 kB
+frontend/e2e/qa08-rendering/.cache/production/assets/model-Dvkhzzqs.js                           86.76 kB │ gzip:  10.63 kB
+frontend/e2e/qa08-rendering/.cache/production/assets/activity-BpXH5iee.js                        88.06 kB │ gzip:  25.00 kB
+frontend/e2e/qa08-rendering/.cache/production/assets/routes-BOxVdSas.js                          97.67 kB │ gzip:  32.09 kB
+frontend/e2e/qa08-rendering/.cache/production/assets/mcr-core.openapi-BTwes0QT.js               126.29 kB │ gzip:  12.56 kB
+frontend/e2e/qa08-rendering/.cache/production/assets/PublicBoundary-C7E5KFFL.js                 151.64 kB │ gzip:  39.45 kB
+frontend/e2e/qa08-rendering/.cache/production/assets/index-Dowgw95q.js                          276.46 kB │ gzip:  86.59 kB
+frontend/e2e/qa08-rendering/.cache/production/assets/mcr-domain.openapi-DSM2K8nD.js             761.93 kB │ gzip:  49.47 kB
+frontend/e2e/qa08-rendering/.cache/production/assets/phaser-DuGV5HTt.js                       1,198.04 kB │ gzip: 319.11 kB
+
+✓ built in 498ms
+[plugin builtin:vite-reporter]
+(!) Some chunks are larger than 500 kB after minification. Consider:
+- Using dynamic import() to code-split the application
+- Use build.rolldownOptions.output.codeSplitting to improve chunking: https://rolldown.rs/reference/OutputOptions.codeSplitting
+- Adjust chunk size limit for this warning via build.chunkSizeWarningLimit.
+vite v8.1.3 building client environment for qa08...
+[2K
+transforming...✓ 506 modules transformed.
+rendering chunks...
+computing gzip size...
+frontend/e2e/qa08-rendering/.cache/fixture/e2e/qa08-rendering/fixture.html                     3.52 kB │ gzip:   0.88 kB
+frontend/e2e/qa08-rendering/.cache/fixture/assets/red-ink-BU4Q2PCh.svg                         7.61 kB │ gzip:   1.39 kB
+frontend/e2e/qa08-rendering/.cache/fixture/assets/mcr-auth-print-pPg3st5N.woff                19.45 kB
+frontend/e2e/qa08-rendering/.cache/fixture/.vite/manifest.json                                25.50 kB │ gzip:   3.28 kB
+frontend/e2e/qa08-rendering/.cache/fixture/assets/frame-print-Qa3Zbkhj.svg                    33.73 kB │ gzip:   4.43 kB
+frontend/e2e/qa08-rendering/.cache/fixture/assets/image-compression.worker-5_zI3q-z.js        52.22 kB
+frontend/e2e/qa08-rendering/.cache/fixture/assets/paper-print-BiNBgY89.svg                   243.45 kB │ gzip:  39.53 kB
+frontend/e2e/qa08-rendering/.cache/fixture/assets/cemetery-bottom-v1-Bkd59J1m.png            762.21 kB
+frontend/e2e/qa08-rendering/.cache/fixture/assets/cemetery-top-v1-OlgvrKla.png             2,124.81 kB
+frontend/e2e/qa08-rendering/.cache/fixture/assets/RootMediaView-BdfnIHbK.css                   0.55 kB │ gzip:   0.25 kB
+frontend/e2e/qa08-rendering/.cache/fixture/assets/ProfileIcon-C5jlMgdD.css                     1.36 kB │ gzip:   0.59 kB
+frontend/e2e/qa08-rendering/.cache/fixture/assets/safety-BViJNTBJ.css                          1.51 kB │ gzip:   0.56 kB
+frontend/e2e/qa08-rendering/.cache/fixture/assets/root-features-nb6jl9cq.css                   1.55 kB │ gzip:   0.65 kB
+frontend/e2e/qa08-rendering/.cache/fixture/assets/social-BMiG3aQa.css                          1.71 kB │ gzip:   0.71 kB
+frontend/e2e/qa08-rendering/.cache/fixture/assets/meeting-entry-CaQthYWG.css                   1.73 kB │ gzip:   0.72 kB
+frontend/e2e/qa08-rendering/.cache/fixture/assets/composition-C7uV5nlu.css                     3.55 kB │ gzip:   1.13 kB
+frontend/e2e/qa08-rendering/.cache/fixture/assets/panels-BMt8WHkR.css                          4.19 kB │ gzip:   1.38 kB
+frontend/e2e/qa08-rendering/.cache/fixture/assets/shell-chrome-B-yTxSDf.css                    4.92 kB │ gzip:   1.42 kB
+frontend/e2e/qa08-rendering/.cache/fixture/assets/social-composition-BD3_6jZW.css              5.21 kB │ gzip:   1.45 kB
+frontend/e2e/qa08-rendering/.cache/fixture/assets/concert-window-DCrRSCOH.css                  6.31 kB │ gzip:   1.93 kB
+frontend/e2e/qa08-rendering/.cache/fixture/assets/activity-CSOKqWtj.css                        9.90 kB │ gzip:   2.79 kB
+frontend/e2e/qa08-rendering/.cache/fixture/assets/world-panels-cWsIhOQK.css                   13.67 kB │ gzip:   3.54 kB
+frontend/e2e/qa08-rendering/.cache/fixture/assets/provider-DprRFUma.css                       14.46 kB │ gzip:   3.38 kB
+frontend/e2e/qa08-rendering/.cache/fixture/assets/fixture-BTbdBH87.css                        16.46 kB │ gzip:   4.01 kB
+frontend/e2e/qa08-rendering/.cache/fixture/assets/CommunityFeatures-CtYOQD37.css              17.33 kB │ gzip:   3.90 kB
+frontend/e2e/qa08-rendering/.cache/fixture/assets/PublicBoundary-CbXXeRBx.css                 18.72 kB │ gzip:   4.48 kB
+frontend/e2e/qa08-rendering/.cache/fixture/assets/provider-BBFANjro.js                         0.07 kB │ gzip:   0.08 kB
+frontend/e2e/qa08-rendering/.cache/fixture/assets/composition-mTZqfBnP.js                      0.08 kB │ gzip:   0.08 kB
+frontend/e2e/qa08-rendering/.cache/fixture/assets/provider-DBnoi7DC.js                         0.08 kB │ gzip:   0.09 kB
+frontend/e2e/qa08-rendering/.cache/fixture/assets/provider-C1RsEuuh.js                         0.09 kB │ gzip:   0.10 kB
+frontend/e2e/qa08-rendering/.cache/fixture/assets/whole-character-DUxBpv6O.js                  0.09 kB │ gzip:   0.10 kB
+frontend/e2e/qa08-rendering/.cache/fixture/assets/social-composition-DKHdqMWF.js               0.11 kB │ gzip:   0.12 kB
+frontend/e2e/qa08-rendering/.cache/fixture/assets/reference-scene-overview-Ct7fwmR9.js         0.17 kB │ gzip:   0.14 kB
+frontend/e2e/qa08-rendering/.cache/fixture/assets/world-panels-D1IMghZu.js                     0.21 kB │ gzip:   0.15 kB
+frontend/e2e/qa08-rendering/.cache/fixture/assets/preferences-CTZasJ2W.js                      0.34 kB │ gzip:   0.25 kB
+frontend/e2e/qa08-rendering/.cache/fixture/assets/ownership-ChbOWedi.js                        0.38 kB │ gzip:   0.25 kB
+frontend/e2e/qa08-rendering/.cache/fixture/assets/rolldown-runtime-Bh1tDfsg.js                 0.56 kB │ gzip:   0.36 kB
+frontend/e2e/qa08-rendering/.cache/fixture/assets/provider-BHHXr4qX.js                         0.91 kB │ gzip:   0.51 kB
+frontend/e2e/qa08-rendering/.cache/fixture/assets/reference-scene-overview-lWkT4uNr.js         0.94 kB │ gzip:   0.54 kB
+frontend/e2e/qa08-rendering/.cache/fixture/assets/compatibility-BAEMyyvo.js                    0.96 kB │ gzip:   0.45 kB
+frontend/e2e/qa08-rendering/.cache/fixture/assets/identity-Df96V7H1.js                         1.01 kB │ gzip:   0.58 kB
+frontend/e2e/qa08-rendering/.cache/fixture/assets/phaser-C-L-RzyC.js                           1.19 kB │ gzip:   0.62 kB
+frontend/e2e/qa08-rendering/.cache/fixture/assets/navigation-1E_8bo8g.js                       1.20 kB │ gzip:   0.66 kB
+frontend/e2e/qa08-rendering/.cache/fixture/assets/preload-helper-CZgWQFsJ.js                   1.25 kB │ gzip:   0.70 kB
+frontend/e2e/qa08-rendering/.cache/fixture/assets/resource-cache-BCI8nByT.js                   1.33 kB │ gzip:   0.74 kB
+frontend/e2e/qa08-rendering/.cache/fixture/assets/AdminBoundary-BNKl3keP.js                    1.38 kB │ gzip:   0.68 kB
+frontend/e2e/qa08-rendering/.cache/fixture/assets/overview-BqdjoyKZ.js                         1.71 kB │ gzip:   0.91 kB
+frontend/e2e/qa08-rendering/.cache/fixture/assets/avatar-config.schema-D-59TwV9.js             1.86 kB │ gzip:   0.54 kB
+frontend/e2e/qa08-rendering/.cache/fixture/assets/reference-scene-7_-nc-MI.js                  1.95 kB │ gzip:   1.07 kB
+frontend/e2e/qa08-rendering/.cache/fixture/assets/contract-Dj9ImEnV.js                         2.16 kB │ gzip:   1.01 kB
+frontend/e2e/qa08-rendering/.cache/fixture/assets/authority-Pf996f6J.js                        2.80 kB │ gzip:   1.21 kB
+frontend/e2e/qa08-rendering/.cache/fixture/assets/contract-DcaKwr0K2.js                        2.98 kB │ gzip:   1.33 kB
+frontend/e2e/qa08-rendering/.cache/fixture/assets/simulation-sCcriVKG.js                       3.15 kB │ gzip:   1.27 kB
+frontend/e2e/qa08-rendering/.cache/fixture/assets/RootMediaView-CVuitsoe.js                    3.51 kB │ gzip:   1.49 kB
+frontend/e2e/qa08-rendering/.cache/fixture/assets/resolver-1qAavaAJ.js                         3.59 kB │ gzip:   1.67 kB
+frontend/e2e/qa08-rendering/.cache/fixture/assets/shell-chrome-DADzd82q.js                     3.74 kB │ gzip:   1.47 kB
+frontend/e2e/qa08-rendering/.cache/fixture/assets/provider-v79D0KaF.js                         3.89 kB │ gzip:   1.80 kB
+frontend/e2e/qa08-rendering/.cache/fixture/assets/concert-window-C-q8huf0.js                   3.92 kB │ gzip:   1.47 kB
+frontend/e2e/qa08-rendering/.cache/fixture/assets/privacy-CcDojcz2.js                          4.21 kB │ gzip:   1.78 kB
+frontend/e2e/qa08-rendering/.cache/fixture/assets/errors-hxkLUXfp.js                           4.48 kB │ gzip:   1.88 kB
+frontend/e2e/qa08-rendering/.cache/fixture/assets/panel-BwiWnZX1.js                            4.71 kB │ gzip:   1.92 kB
+frontend/e2e/qa08-rendering/.cache/fixture/assets/contract-BbYejWP8.js                         5.08 kB │ gzip:   2.16 kB
+frontend/e2e/qa08-rendering/.cache/fixture/assets/whole-character-BJFxlXhM.js                  5.61 kB │ gzip:   2.19 kB
+frontend/e2e/qa08-rendering/.cache/fixture/assets/operations-BpkaROLc.js                       5.68 kB │ gzip:   2.52 kB
+frontend/e2e/qa08-rendering/.cache/fixture/assets/whole-admission-D4MUWcS5.js                  6.17 kB │ gzip:   2.34 kB
+frontend/e2e/qa08-rendering/.cache/fixture/assets/resources-C1BM6NwJ.js                        6.20 kB │ gzip:   2.67 kB
+frontend/e2e/qa08-rendering/.cache/fixture/assets/read-media-DeBuRj5i.js                       6.39 kB │ gzip:   2.87 kB
+frontend/e2e/qa08-rendering/.cache/fixture/assets/model-a0gp53af.js                            6.41 kB │ gzip:   2.60 kB
+frontend/e2e/qa08-rendering/.cache/fixture/assets/jsx-runtime-BHz_hoGM.js                      7.89 kB │ gzip:   2.99 kB
+frontend/e2e/qa08-rendering/.cache/fixture/assets/social-composition-WBT6ofj9.js               8.17 kB │ gzip:   2.80 kB
+frontend/e2e/qa08-rendering/.cache/fixture/assets/context-e4_cMYFU.js                          8.25 kB │ gzip:   3.37 kB
+frontend/e2e/qa08-rendering/.cache/fixture/assets/MapScene-bsnQXK2D.js                        10.90 kB │ gzip:   4.17 kB
+frontend/e2e/qa08-rendering/.cache/fixture/assets/panels-1GIe0Dck.js                          11.06 kB │ gzip:   3.64 kB
+frontend/e2e/qa08-rendering/.cache/fixture/assets/ProfileIcon-Dy1d8HmP.js                     12.03 kB │ gzip:   4.78 kB
+frontend/e2e/qa08-rendering/.cache/fixture/assets/capabilities-j6DOnuaE.js                    13.22 kB │ gzip:   3.72 kB
+frontend/e2e/qa08-rendering/.cache/fixture/assets/root-features-BxzzL3bx.js                   14.91 kB │ gzip:   4.94 kB
+frontend/e2e/qa08-rendering/.cache/fixture/assets/manifest-BovhGGz9.js                        15.78 kB │ gzip:   4.49 kB
+frontend/e2e/qa08-rendering/.cache/fixture/assets/source-catalog-B2GN78SH.js                  15.97 kB │ gzip:   4.30 kB
+frontend/e2e/qa08-rendering/.cache/fixture/assets/contract-D_EM_7lO.js                        26.64 kB │ gzip:   5.84 kB
+frontend/e2e/qa08-rendering/.cache/fixture/assets/social-BEg3pT7z.js                          35.16 kB │ gzip:  10.29 kB
+frontend/e2e/qa08-rendering/.cache/fixture/assets/provider-DK_e8hfb.js                        43.31 kB │ gzip:  13.15 kB
+frontend/e2e/qa08-rendering/.cache/fixture/assets/composition-B6PP7nnX.js                     53.17 kB │ gzip:  17.96 kB
+frontend/e2e/qa08-rendering/.cache/fixture/assets/meeting-entry-BqbKnO98.js                   54.03 kB │ gzip:  14.93 kB
+frontend/e2e/qa08-rendering/.cache/fixture/assets/access-BUorOL2h.js                          59.26 kB │ gzip:  20.10 kB
+frontend/e2e/qa08-rendering/.cache/fixture/assets/schemas-B9zUvP7H.js                         66.99 kB │ gzip:  17.93 kB
+frontend/e2e/qa08-rendering/.cache/fixture/assets/CommunityFeatures-Cn73_VZO.js               68.80 kB │ gzip:  18.95 kB
+frontend/e2e/qa08-rendering/.cache/fixture/assets/world-panels-Be7DNt-n.js                    70.30 kB │ gzip:  22.90 kB
+frontend/e2e/qa08-rendering/.cache/fixture/assets/domain-operations.generated-CpkEJAQQ.js     81.10 kB │ gzip:   4.34 kB
+frontend/e2e/qa08-rendering/.cache/fixture/assets/model-CcOyHfu_.js                           86.84 kB │ gzip:  10.45 kB
+frontend/e2e/qa08-rendering/.cache/fixture/assets/activity-Cq2k8Arr.js                        88.07 kB │ gzip:  25.01 kB
+frontend/e2e/qa08-rendering/.cache/fixture/assets/routes-LUOsxAo2.js                          96.49 kB │ gzip:  31.68 kB
+frontend/e2e/qa08-rendering/.cache/fixture/assets/mcr-core.openapi-BTwes0QT.js               126.29 kB │ gzip:  12.56 kB
+frontend/e2e/qa08-rendering/.cache/fixture/assets/PublicBoundary-DNwafn5z.js                 151.68 kB │ gzip:  39.46 kB
+frontend/e2e/qa08-rendering/.cache/fixture/assets/fixture-CjKMmu_j.js                        294.40 kB │ gzip:  86.75 kB
+frontend/e2e/qa08-rendering/.cache/fixture/assets/mcr-domain.openapi-DSM2K8nD.js             761.93 kB │ gzip:  49.47 kB
+frontend/e2e/qa08-rendering/.cache/fixture/assets/phaser-DVTuvjT6.js                       1,198.04 kB │ gzip: 319.11 kB
+
+[plugin builtin:vite-reporter]
+(!) Some chunks are larger than 500 kB after minification. Consider:
+- Using dynamic import() to code-split the application
+- Use build.rolldownOptions.output.codeSplitting to improve chunking: https://rolldown.rs/reference/OutputOptions.codeSplitting
+- Adjust chunk size limit for this warning via build.chunkSizeWarningLimit.
+✓ built in 430ms
+MEASURED width=360 idle=60.0Hz moving=60.0Hz
+MEASURED width=390 idle=60.0Hz moving=60.0Hz
+MEASURED width=430 idle=60.0Hz moving=60.0Hz

@@ -67,6 +67,7 @@ it('preserves direct-beacon back navigation through Meet to World without creati
   const host = document.querySelector('[data-world-host]')
   fireEvent.click(screen.getByRole('button', { name: 'Back to previous panel' }))
   await waitFor(() => expect(f.router.state.location.pathname).toBe('/meet'))
+  expect(await screen.findByRole('heading', { name: 'Meet', level: 1 })).toBeVisible()
   fireEvent.click(screen.getByRole('button', { name: 'Back to previous panel' }))
   await waitFor(() => expect(f.router.state.location.pathname).toBe('/world'))
   expect(document.querySelector('[data-world-host]')).toBe(host); expect(f.stats.mounts).toBe(1)

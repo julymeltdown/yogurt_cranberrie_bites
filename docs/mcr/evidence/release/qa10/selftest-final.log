@@ -1,0 +1,14 @@
+✔ candidate binding rejects stale ancestors, wrong trees and dirty input (1.050083ms)
+✔ dispatch retains Node probes renamed outside default discovery and reports real-service suites (0.636958ms)
+✔ genuine test results require nonempty exact file coverage, retaining skipped cases (1.32925ms)
+✔ production checks inspect emitted fixture/mock modules and secret markers without exporting values (0.465042ms)
+✔ receipt consumer refuses missing, duplicate, empty or falsely passing gates (1.094125ms)
+✔ artifact paths reject escapes and absolute paths (0.0595ms)
+ℹ tests 6
+ℹ suites 0
+ℹ pass 6
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 51.800167

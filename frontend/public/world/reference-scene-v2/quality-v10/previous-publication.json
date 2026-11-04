@@ -1,0 +1,11 @@
+{
+  "status": "PASS_PREVIOUS_V9_PUBLICATION_ONLY",
+  "remote_master_snapshot": "14b0548a7a062380093861c338e0efdc12f49f3d",
+  "published_merge": "0779101878071e89a533f7e47c2dfdef1d1c82b1",
+  "payload_commit": "ab8e93ba79332df62d5105bb4aa187c8c7f5cd48",
+  "payload_base": "6a73eff54035a4bf6f3e1ef5b0b53ea7be79bebd",
+  "changed_paths": 88,
+  "ancestry": "PASS",
+  "all_changed_path_blobs_equal": "PASS",
+  "new_v10_publication": "NOT_YET_PUBLISHED"
+}

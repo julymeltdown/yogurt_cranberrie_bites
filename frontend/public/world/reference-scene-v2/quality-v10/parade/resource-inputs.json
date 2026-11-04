@@ -1,0 +1,36 @@
+{
+  "version": 10,
+  "theme_id": "PARADE",
+  "geometry_hash": "sha256:ef52c8b05af6a882f2e82285c9879c9a4cb78ab513336e4bb3cd483c9b123395",
+  "status": "PROPOSAL_NOT_RELEASE_BOUND",
+  "resources": [
+    {
+      "id": "quality_v10_route_edge_ground",
+      "path": "world/reference-scene-v2/quality-v10/ground.png",
+      "sha256": "sha256:dd70d8fb02e1c6e57e9a9f9e96d69dc7c15999bc076678a7075161281c929887",
+      "width_px": 768,
+      "height_px": 1296,
+      "bytes": 549155
+    },
+    {
+      "id": "parade_quality_v8_atlas",
+      "path": "world/reference-scene-v2/quality-v8/parade/atlas.png",
+      "sha256": "sha256:0428f976140a3ee1d59368d3016efae605a6e2b7b1470233f523e7721ec806c1",
+      "width_px": 1024,
+      "height_px": 1024,
+      "bytes": 1215028
+    }
+  ],
+  "total_bytes": 1764183,
+  "total_pixels": 2043904,
+  "limits": {
+    "bytes": 2097152,
+    "pixels": 2097152
+  },
+  "budget_pass": true,
+  "scenery": "scenery.json",
+  "layout": "layout.json",
+  "map_metadata": "map-metadata.json",
+  "projection": "../../spatial-v5/integer-projection.json",
+  "provenance": "provenance.json"
+}

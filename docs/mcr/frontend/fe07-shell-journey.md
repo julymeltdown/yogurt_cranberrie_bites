@@ -1,6 +1,6 @@
 # FE07 persistent shell journey qualification
 
-Status: **IN_PROGRESS — whole original FE07 client criteria SATISFIED; validated handoff awaiting designated integrator publication**. The actual goal remains active until publication is verified. Final qualification candidate: `8cd2046601b21e957e73a099d3975aa740a2a1bd`. This document supplements the historical `world-shell.md` implementation; it does not amend the specification or accept other feature tasks.
+Status: **INTEGRATED — whole original FE07 client criteria SATISFIED**. Source and evidence publication were independently verified against the remote delivery branch. Final qualification candidate: `8cd2046601b21e957e73a099d3975aa740a2a1bd`. This document supplements the historical `world-shell.md` implementation; it does not amend the specification or accept other feature tasks.
 
 ## Scope and provenance
 
@@ -68,7 +68,18 @@ Reproduction uses the existing retained dependency tree, installed Chrome, and p
 
 The unchanged old `meeting-entry/__tests__/root-registration.test.tsx` diagnostic at `8de6c411` passed71/72 and exited1 solely for the obsolete DOM-readiness assertion described above. Its actual log is preserved as `historical-meeting-readiness.log`; it is not presented as a passing suite. The final155-test selection includes the three committed-DOM readiness regressions and87 boundary/owner/provider checks, while the native browser qualifies the actual beacon route behavior. Correcting that old test is a separate existing-test ownership matter; FE07 has no edit grant to it.
 
-Only the three new harness files, their new owned evidence prefix and this document are delivered. No application source is authored by this packet, and the supported fixes retain their own committed provenance. The designated frontend delivery integrator receives the fixture implementation plus the subsequent documentation/evidence commit, compares exact paths and source fingerprints, and publishes serially. FE07 does not push master directly. Publication ancestry and actual goal completion are verified after integration; client criteria satisfaction alone is not represented as delivered publication.
+Only the three new harness files, their new owned evidence prefix and this document are delivered. No application source is authored by this packet, and the supported fixes retain their own committed provenance. The designated frontend delivery integrator receives the fixture implementation plus the subsequent documentation/evidence commit, compares exact paths and source fingerprints, and publishes serially. FE07 does not push master directly. The publication receipt below records independently verified delivery ancestry and bytes; the actual goal is completed only after its required receipt publication.
+
+## Verified publication receipt
+
+The designated frontend delivery integrator published the source and evidence using normal, non-force serial delivery to `julymeltdown/mcr master`. This owner did not push master. Fresh fetch and direct Git-object readback verified:
+
+| Owner commit | Published mapping | Payload |
+|---|---|---|
+| `009327ca52d127db39b615e6049e4c66f37decef` | `19ad4ca0e17e4b93ce0f9219e918d15b372950f0` | Three new fixture/runner files |
+| `c19ad5b15f8eaea7460d49f1db9ef4b65aa4a7ee` | `59de1ac9547ccd22a94bea8e8f224fe16a8c4eeb` | Twenty-two new documentation/evidence files |
+
+Both mapped commits are ancestors of freshly fetched `origin/master` at `d73296f582a459eb94d55123f8480e78b52a0d21`. All25 delivered paths,24 payload hashes and the manifest bytes matched the committed handoff. All16 native application/contract/fixture input hashes also matched that remote checkpoint. No source conflict or post-capture product correction was required. The current receipt changes only this document and the two evidence metadata files; native captures, test results and application source remain unchanged. `handoff.json` preserves the exact path list and updates hashes for these receipt metadata changes.
 
 ## Limits
 

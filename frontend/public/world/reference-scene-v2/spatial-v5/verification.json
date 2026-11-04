@@ -1,0 +1,83 @@
+{
+  "status": "PASS_SPATIAL_V5_CANDIDATE_ONLY",
+  "geometry_hash": "sha256:ef52c8b05af6a882f2e82285c9879c9a4cb78ab513336e4bb3cd483c9b123395",
+  "terrain_cells_recomputed": 3888,
+  "collision_cells_sat_checked": 3888,
+  "changed_terrain_cells": 560,
+  "changed_collision_cells": 0,
+  "world_props": 34,
+  "world_props_changed": 0,
+  "routes": [
+    {
+      "from": "courtyard_entry",
+      "to": "courtyard_entry",
+      "steps": 0
+    },
+    {
+      "from": "courtyard_entry",
+      "to": "community_entry",
+      "steps": 25
+    },
+    {
+      "from": "courtyard_entry",
+      "to": "stage_info",
+      "steps": 3
+    },
+    {
+      "from": "courtyard_entry",
+      "to": "park_info",
+      "steps": 10
+    },
+    {
+      "from": "courtyard_entry",
+      "to": "gifts_info",
+      "steps": 38
+    },
+    {
+      "from": "courtyard_entry",
+      "to": "wall_info",
+      "steps": 50
+    },
+    {
+      "from": "community_entry",
+      "to": "courtyard_entry",
+      "steps": 25
+    },
+    {
+      "from": "community_entry",
+      "to": "community_entry",
+      "steps": 0
+    },
+    {
+      "from": "community_entry",
+      "to": "stage_info",
+      "steps": 28
+    },
+    {
+      "from": "community_entry",
+      "to": "park_info",
+      "steps": 27
+    },
+    {
+      "from": "community_entry",
+      "to": "gifts_info",
+      "steps": 19
+    },
+    {
+      "from": "community_entry",
+      "to": "wall_info",
+      "steps": 31
+    }
+  ],
+  "manual_anchor_distance_px": [
+    7.242866981083057,
+    0.5311447250387481,
+    0.03835526497292899,
+    13.266594115963894
+  ],
+  "limits": [
+    "Manual approximate semantic annotations are not independent whole-reference acceptance.",
+    "New terrain requires a new canonical server/client map revision greater than allocated5; proposed6 is not allocated by art.",
+    "No physical arrival, runtime release, source review or application acceptance."
+  ]
+}

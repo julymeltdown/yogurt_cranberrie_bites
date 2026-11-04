@@ -6,7 +6,7 @@ import { resolve } from 'node:path'
 import { createServer } from 'vite'
 const root=resolve(import.meta.dirname,'../../../..')
 test('genuine selected C06 Bootstrap and six-player C05 snapshot/delta pass actual published admission without avatar rewrites',async()=>{
- const cache=await mkdtemp(resolve(tmpdir(),'mcr-whole-data-')),server=await createServer({root:resolve(root,'frontend'),logLevel:'error',cacheDir:cache,server:{middlewareMode:true}})
+ const cache=await mkdtemp(resolve(tmpdir(),'mcr-whole-data-')),server=await createServer({root:resolve(root,'frontend'),configLoader:'runner',logLevel:'error',cacheDir:cache,server:{middlewareMode:true}})
  try{
   const data=await server.ssrLoadModule('/e2e/reference-integrated/whole/data.ts'),auth=await server.ssrLoadModule('/src/features/auth/model/bootstrap.ts'),me=await server.ssrLoadModule('/src/features/me/model/contract.ts')
   const fixture=await data.wholeData(async path=>JSON.parse(await readFile(resolve(root,'frontend/public',path),'utf8'))),manifest=JSON.parse(await readFile(resolve(root,'contracts/fixtures/assets/selected-static/avatar-manifest.json'),'utf8'))

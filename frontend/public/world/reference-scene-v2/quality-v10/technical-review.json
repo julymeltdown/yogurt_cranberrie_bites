@@ -1,0 +1,35 @@
+{
+  "task_id": "FE-REF-SCENE-V10-TECH-QA",
+  "reviewer": "01a1a461-2ba7-7350-9fc5-eb2668b7191b",
+  "initial_candidate": "a24cc7516db1d058dc312b139a1410da4c68573b",
+  "scope": "Read-only geometry/resource/packed-source technical correctness; no fourth visual panel or broader release acceptance.",
+  "findings": [
+    {
+      "priority": "P2",
+      "finding": "Wrong packed material bitmap could pass when outer manifest pins were refreshed.",
+      "resolution": "Exact embedded PNG hash equals selected material-ground.png.",
+      "state": "RESOLVED"
+    },
+    {
+      "priority": "P2",
+      "finding": "Old geometry hashes in all12 theme documents could pass with fresh outer pins.",
+      "resolution": "Recompute canonical geometry and enforce every theme binding, revision and projection path.",
+      "state": "RESOLVED"
+    }
+  ],
+  "reviewed_fix_files": [
+    {
+      "path": "frontend/public/world/reference-scene-v2/verify-diagonal-composition.py",
+      "bytes": 13287,
+      "sha256": "sha256:51168bd5e75082d125f5b3fee5740e1fd3c33e5e710a357af4a73f718b659cf1"
+    },
+    {
+      "path": "frontend/public/world/reference-scene-v2/verify-diagonal-negative.py",
+      "bytes": 3249,
+      "sha256": "sha256:b6ed44d17c2f7fd733ad7984305344c820fee36b97bdc7f33a1880f9ce3df20e"
+    }
+  ],
+  "followup_result": "Both findings resolved; actual assertions pass with report writing suppressed, both mutations reject at expected guards, no additional actionable findings in narrow fixes/tests.",
+  "reviewer_writes": 0,
+  "limits": "No art fidelity score, current app/server/source-review/device/multiuser/physical qualification."
+}

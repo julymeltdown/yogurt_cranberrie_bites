@@ -1,0 +1,3491 @@
+{
+  "status": "PASS_TERRAIN_CANDIDATE_ONLY",
+  "base_geometry_hash": "sha256:0448d5086dc251c6a7aed8c136dbbbf751f95038ea1f7f98e3e40fe6e8067e6f",
+  "geometry_hash": "sha256:ef52c8b05af6a882f2e82285c9879c9a4cb78ab513336e4bb3cd483c9b123395",
+  "terrain_changed_cells": [
+    {
+      "cell_x": 40,
+      "cell_y": 14,
+      "previous": 2,
+      "proposed": 1
+    },
+    {
+      "cell_x": 41,
+      "cell_y": 14,
+      "previous": 2,
+      "proposed": 1
+    },
+    {
+      "cell_x": 42,
+      "cell_y": 14,
+      "previous": 2,
+      "proposed": 1
+    },
+    {
+      "cell_x": 43,
+      "cell_y": 14,
+      "previous": 2,
+      "proposed": 1
+    },
+    {
+      "cell_x": 44,
+      "cell_y": 14,
+      "previous": 2,
+      "proposed": 1
+    },
+    {
+      "cell_x": 45,
+      "cell_y": 14,
+      "previous": 2,
+      "proposed": 1
+    },
+    {
+      "cell_x": 42,
+      "cell_y": 15,
+      "previous": 2,
+      "proposed": 1
+    },
+    {
+      "cell_x": 43,
+      "cell_y": 15,
+      "previous": 2,
+      "proposed": 1
+    },
+    {
+      "cell_x": 44,
+      "cell_y": 15,
+      "previous": 2,
+      "proposed": 1
+    },
+    {
+      "cell_x": 47,
+      "cell_y": 17,
+      "previous": 1,
+      "proposed": 2
+    },
+    {
+      "cell_x": 46,
+      "cell_y": 18,
+      "previous": 1,
+      "proposed": 2
+    },
+    {
+      "cell_x": 47,
+      "cell_y": 18,
+      "previous": 1,
+      "proposed": 2
+    },
+    {
+      "cell_x": 46,
+      "cell_y": 19,
+      "previous": 1,
+      "proposed": 2
+    },
+    {
+      "cell_x": 47,
+      "cell_y": 19,
+      "previous": 1,
+      "proposed": 2
+    },
+    {
+      "cell_x": 46,
+      "cell_y": 20,
+      "previous": 1,
+      "proposed": 2
+    },
+    {
+      "cell_x": 47,
+      "cell_y": 20,
+      "previous": 1,
+      "proposed": 2
+    },
+    {
+      "cell_x": 46,
+      "cell_y": 21,
+      "previous": 1,
+      "proposed": 2
+    },
+    {
+      "cell_x": 47,
+      "cell_y": 21,
+      "previous": 1,
+      "proposed": 2
+    },
+    {
+      "cell_x": 46,
+      "cell_y": 22,
+      "previous": 1,
+      "proposed": 2
+    },
+    {
+      "cell_x": 47,
+      "cell_y": 22,
+      "previous": 1,
+      "proposed": 2
+    },
+    {
+      "cell_x": 46,
+      "cell_y": 23,
+      "previous": 1,
+      "proposed": 2
+    },
+    {
+      "cell_x": 47,
+      "cell_y": 23,
+      "previous": 1,
+      "proposed": 2
+    },
+    {
+      "cell_x": 46,
+      "cell_y": 24,
+      "previous": 1,
+      "proposed": 2
+    },
+    {
+      "cell_x": 18,
+      "cell_y": 38,
+      "previous": 2,
+      "proposed": 1
+    },
+    {
+      "cell_x": 19,
+      "cell_y": 38,
+      "previous": 2,
+      "proposed": 1
+    },
+    {
+      "cell_x": 20,
+      "cell_y": 38,
+      "previous": 2,
+      "proposed": 1
+    },
+    {
+      "cell_x": 21,
+      "cell_y": 38,
+      "previous": 2,
+      "proposed": 1
+    },
+    {
+      "cell_x": 22,
+      "cell_y": 38,
+      "previous": 2,
+      "proposed": 1
+    },
+    {
+      "cell_x": 23,
+      "cell_y": 38,
+      "previous": 1,
+      "proposed": 2
+    },
+    {
+      "cell_x": 24,
+      "cell_y": 38,
+      "previous": 1,
+      "proposed": 2
+    },
+    {
+      "cell_x": 46,
+      "cell_y": 38,
+      "previous": 2,
+      "proposed": 1
+    },
+    {
+      "cell_x": 47,
+      "cell_y": 38,
+      "previous": 2,
+      "proposed": 1
+    },
+    {
+      "cell_x": 9,
+      "cell_y": 39,
+      "previous": 2,
+      "proposed": 1
+    },
+    {
+      "cell_x": 10,
+      "cell_y": 39,
+      "previous": 2,
+      "proposed": 1
+    },
+    {
+      "cell_x": 11,
+      "cell_y": 39,
+      "previous": 2,
+      "proposed": 1
+    },
+    {
+      "cell_x": 12,
+      "cell_y": 39,
+      "previous": 2,
+      "proposed": 1
+    },
+    {
+      "cell_x": 13,
+      "cell_y": 39,
+      "previous": 2,
+      "proposed": 1
+    },
+    {
+      "cell_x": 14,
+      "cell_y": 39,
+      "previous": 2,
+      "proposed": 1
+    },
+    {
+      "cell_x": 15,
+      "cell_y": 39,
+      "previous": 2,
+      "proposed": 1
+    },
+    {
+      "cell_x": 16,
+      "cell_y": 39,
+      "previous": 2,
+      "proposed": 1
+    },
+    {
+      "cell_x": 17,
+      "cell_y": 39,
+      "previous": 2,
+      "proposed": 1
+    },
+    {
+      "cell_x": 18,
+      "cell_y": 39,
+      "previous": 2,
+      "proposed": 1
+    },
+    {
+      "cell_x": 19,
+      "cell_y": 39,
+      "previous": 2,
+      "proposed": 1
+    },
+    {
+      "cell_x": 20,
+      "cell_y": 39,
+      "previous": 2,
+      "proposed": 1
+    },
+    {
+      "cell_x": 21,
+      "cell_y": 39,
+      "previous": 2,
+      "proposed": 1
+    },
+    {
+      "cell_x": 24,
+      "cell_y": 39,
+      "previous": 1,
+      "proposed": 2
+    },
+    {
+      "cell_x": 44,
+      "cell_y": 39,
+      "previous": 2,
+      "proposed": 1
+    },
+    {
+      "cell_x": 45,
+      "cell_y": 39,
+      "previous": 2,
+      "proposed": 1
+    },
+    {
+      "cell_x": 46,
+      "cell_y": 39,
+      "previous": 2,
+      "proposed": 1
+    },
+    {
+      "cell_x": 47,
+      "cell_y": 39,
+      "previous": 2,
+      "proposed": 1
+    },
+    {
+      "cell_x": 8,
+      "cell_y": 40,
+      "previous": 2,
+      "proposed": 1
+    },
+    {
+      "cell_x": 9,
+      "cell_y": 40,
+      "previous": 2,
+      "proposed": 1
+    },
+    {
+      "cell_x": 10,
+      "cell_y": 40,
+      "previous": 2,
+      "proposed": 1
+    },
+    {
+      "cell_x": 11,
+      "cell_y": 40,
+      "previous": 2,
+      "proposed": 1
+    },
+    {
+      "cell_x": 12,
+      "cell_y": 40,
+      "previous": 2,
+      "proposed": 1
+    },
+    {
+      "cell_x": 13,
+      "cell_y": 40,
+      "previous": 2,
+      "proposed": 1
+    },
+    {
+      "cell_x": 14,
+      "cell_y": 40,
+      "previous": 2,
+      "proposed": 1
+    },
+    {
+      "cell_x": 15,
+      "cell_y": 40,
+      "previous": 2,
+      "proposed": 1
+    },
+    {
+      "cell_x": 16,
+      "cell_y": 40,
+      "previous": 2,
+      "proposed": 1
+    },
+    {
+      "cell_x": 17,
+      "cell_y": 40,
+      "previous": 2,
+      "proposed": 1
+    },
+    {
+      "cell_x": 18,
+      "cell_y": 40,
+      "previous": 2,
+      "proposed": 1
+    },
+    {
+      "cell_x": 19,
+      "cell_y": 40,
+      "previous": 2,
+      "proposed": 1
+    },
+    {
+      "cell_x": 20,
+      "cell_y": 40,
+      "previous": 2,
+      "proposed": 1
+    },
+    {
+      "cell_x": 25,
+      "cell_y": 40,
+      "previous": 1,
+      "proposed": 2
+    },
+    {
+      "cell_x": 42,
+      "cell_y": 40,
+      "previous": 2,
+      "proposed": 1
+    },
+    {
+      "cell_x": 43,
+      "cell_y": 40,
+      "previous": 2,
+      "proposed": 1
+    },
+    {
+      "cell_x": 44,
+      "cell_y": 40,
+      "previous": 2,
+      "proposed": 1
+    },
+    {
+      "cell_x": 45,
+      "cell_y": 40,
+      "previous": 2,
+      "proposed": 1
+    },
+    {
+      "cell_x": 46,
+      "cell_y": 40,
+      "previous": 2,
+      "proposed": 1
+    },
+    {
+      "cell_x": 47,
+      "cell_y": 40,
+      "previous": 2,
+      "proposed": 1
+    },
+    {
+      "cell_x": 6,
+      "cell_y": 41,
+      "previous": 2,
+      "proposed": 1
+    },
+    {
+      "cell_x": 7,
+      "cell_y": 41,
+      "previous": 2,
+      "proposed": 1
+    },
+    {
+      "cell_x": 8,
+      "cell_y": 41,
+      "previous": 2,
+      "proposed": 1
+    },
+    {
+      "cell_x": 9,
+      "cell_y": 41,
+      "previous": 2,
+      "proposed": 1
+    },
+    {
+      "cell_x": 10,
+      "cell_y": 41,
+      "previous": 2,
+      "proposed": 1
+    },
+    {
+      "cell_x": 11,
+      "cell_y": 41,
+      "previous": 2,
+      "proposed": 1
+    },
+    {
+      "cell_x": 12,
+      "cell_y": 41,
+      "previous": 2,
+      "proposed": 1
+    },
+    {
+      "cell_x": 13,
+      "cell_y": 41,
+      "previous": 2,
+      "proposed": 1
+    },
+    {
+      "cell_x": 14,
+      "cell_y": 41,
+      "previous": 2,
+      "proposed": 1
+    },
+    {
+      "cell_x": 15,
+      "cell_y": 41,
+      "previous": 2,
+      "proposed": 1
+    },
+    {
+      "cell_x": 16,
+      "cell_y": 41,
+      "previous": 2,
+      "proposed": 1
+    },
+    {
+      "cell_x": 17,
+      "cell_y": 41,
+      "previous": 2,
+      "proposed": 1
+    },
+    {
+      "cell_x": 18,
+      "cell_y": 41,
+      "previous": 2,
+      "proposed": 1
+    },
+    {
+      "cell_x": 19,
+      "cell_y": 41,
+      "previous": 2,
+      "proposed": 1
+    },
+    {
+      "cell_x": 41,
+      "cell_y": 41,
+      "previous": 2,
+      "proposed": 1
+    },
+    {
+      "cell_x": 42,
+      "cell_y": 41,
+      "previous": 2,
+      "proposed": 1
+    },
+    {
+      "cell_x": 43,
+      "cell_y": 41,
+      "previous": 2,
+      "proposed": 1
+    },
+    {
+      "cell_x": 44,
+      "cell_y": 41,
+      "previous": 2,
+      "proposed": 1
+    },
+    {
+      "cell_x": 45,
+      "cell_y": 41,
+      "previous": 2,
+      "proposed": 1
+    },
+    {
+      "cell_x": 46,
+      "cell_y": 41,
+      "previous": 2,
+      "proposed": 1
+    },
+    {
+      "cell_x": 47,
+      "cell_y": 41,
+      "previous": 2,
+      "proposed": 1
+    },
+    {
+      "cell_x": 5,
+      "cell_y": 42,
+      "previous": 2,
+      "proposed": 1
+    },
+    {
+      "cell_x": 6,
+      "cell_y": 42,
+      "previous": 2,
+      "proposed": 1
+    },
+    {
+      "cell_x": 7,
+      "cell_y": 42,
+      "previous": 2,
+      "proposed": 1
+    },
+    {
+      "cell_x": 8,
+      "cell_y": 42,
+      "previous": 2,
+      "proposed": 1
+    },
+    {
+      "cell_x": 9,
+      "cell_y": 42,
+      "previous": 2,
+      "proposed": 1
+    },
+    {
+      "cell_x": 10,
+      "cell_y": 42,
+      "previous": 2,
+      "proposed": 1
+    },
+    {
+      "cell_x": 11,
+      "cell_y": 42,
+      "previous": 2,
+      "proposed": 1
+    },
+    {
+      "cell_x": 12,
+      "cell_y": 42,
+      "previous": 2,
+      "proposed": 1
+    },
+    {
+      "cell_x": 14,
+      "cell_y": 42,
+      "previous": 2,
+      "proposed": 1
+    },
+    {
+      "cell_x": 15,
+      "cell_y": 42,
+      "previous": 2,
+      "proposed": 1
+    },
+    {
+      "cell_x": 16,
+      "cell_y": 42,
+      "previous": 2,
+      "proposed": 1
+    },
+    {
+      "cell_x": 17,
+      "cell_y": 42,
+      "previous": 2,
+      "proposed": 1
+    },
+    {
+      "cell_x": 18,
+      "cell_y": 42,
+      "previous": 2,
+      "proposed": 1
+    },
+    {
+      "cell_x": 27,
+      "cell_y": 42,
+      "previous": 2,
+      "proposed": 1
+    },
+    {
+      "cell_x": 39,
+      "cell_y": 42,
+      "previous": 2,
+      "proposed": 1
+    },
+    {
+      "cell_x": 40,
+      "cell_y": 42,
+      "previous": 2,
+      "proposed": 1
+    },
+    {
+      "cell_x": 41,
+      "cell_y": 42,
+      "previous": 2,
+      "proposed": 1
+    },
+    {
+      "cell_x": 42,
+      "cell_y": 42,
+      "previous": 2,
+      "proposed": 1
+    },
+    {
+      "cell_x": 43,
+      "cell_y": 42,
+      "previous": 2,
+      "proposed": 1
+    },
+    {
+      "cell_x": 44,
+      "cell_y": 42,
+      "previous": 2,
+      "proposed": 1
+    },
+    {
+      "cell_x": 45,
+      "cell_y": 42,
+      "previous": 2,
+      "proposed": 1
+    },
+    {
+      "cell_x": 46,
+      "cell_y": 42,
+      "previous": 2,
+      "proposed": 1
+    },
+    {
+      "cell_x": 47,
+      "cell_y": 42,
+      "previous": 2,
+      "proposed": 1
+    },
+    {
+      "cell_x": 4,
+      "cell_y": 43,
+      "previous": 2,
+      "proposed": 1
+    },
+    {
+      "cell_x": 5,
+      "cell_y": 43,
+      "previous": 2,
+      "proposed": 1
+    },
+    {
+      "cell_x": 6,
+      "cell_y": 43,
+      "previous": 2,
+      "proposed": 1
+    },
+    {
+      "cell_x": 7,
+      "cell_y": 43,
+      "previous": 2,
+      "proposed": 1
+    },
+    {
+      "cell_x": 8,
+      "cell_y": 43,
+      "previous": 2,
+      "proposed": 1
+    },
+    {
+      "cell_x": 9,
+      "cell_y": 43,
+      "previous": 2,
+      "proposed": 1
+    },
+    {
+      "cell_x": 10,
+      "cell_y": 43,
+      "previous": 2,
+      "proposed": 1
+    },
+    {
+      "cell_x": 11,
+      "cell_y": 43,
+      "previous": 2,
+      "proposed": 1
+    },
+    {
+      "cell_x": 14,
+      "cell_y": 43,
+      "previous": 2,
+      "proposed": 1
+    },
+    {
+      "cell_x": 15,
+      "cell_y": 43,
+      "previous": 2,
+      "proposed": 1
+    },
+    {
+      "cell_x": 16,
+      "cell_y": 43,
+      "previous": 2,
+      "proposed": 1
+    },
+    {
+      "cell_x": 17,
+      "cell_y": 43,
+      "previous": 2,
+      "proposed": 1
+    },
+    {
+      "cell_x": 20,
+      "cell_y": 43,
+      "previous": 1,
+      "proposed": 2
+    },
+    {
+      "cell_x": 26,
+      "cell_y": 43,
+      "previous": 2,
+      "proposed": 1
+    },
+    {
+      "cell_x": 27,
+      "cell_y": 43,
+      "previous": 2,
+      "proposed": 1
+    },
+    {
+      "cell_x": 28,
+      "cell_y": 43,
+      "previous": 2,
+      "proposed": 1
+    },
+    {
+      "cell_x": 38,
+      "cell_y": 43,
+      "previous": 2,
+      "proposed": 1
+    },
+    {
+      "cell_x": 39,
+      "cell_y": 43,
+      "previous": 2,
+      "proposed": 1
+    },
+    {
+      "cell_x": 40,
+      "cell_y": 43,
+      "previous": 2,
+      "proposed": 1
+    },
+    {
+      "cell_x": 41,
+      "cell_y": 43,
+      "previous": 2,
+      "proposed": 1
+    },
+    {
+      "cell_x": 42,
+      "cell_y": 43,
+      "previous": 2,
+      "proposed": 1
+    },
+    {
+      "cell_x": 43,
+      "cell_y": 43,
+      "previous": 2,
+      "proposed": 1
+    },
+    {
+      "cell_x": 44,
+      "cell_y": 43,
+      "previous": 2,
+      "proposed": 1
+    },
+    {
+      "cell_x": 45,
+      "cell_y": 43,
+      "previous": 2,
+      "proposed": 1
+    },
+    {
+      "cell_x": 46,
+      "cell_y": 43,
+      "previous": 2,
+      "proposed": 1
+    },
+    {
+      "cell_x": 2,
+      "cell_y": 44,
+      "previous": 2,
+      "proposed": 1
+    },
+    {
+      "cell_x": 3,
+      "cell_y": 44,
+      "previous": 2,
+      "proposed": 1
+    },
+    {
+      "cell_x": 4,
+      "cell_y": 44,
+      "previous": 2,
+      "proposed": 1
+    },
+    {
+      "cell_x": 5,
+      "cell_y": 44,
+      "previous": 2,
+      "proposed": 1
+    },
+    {
+      "cell_x": 6,
+      "cell_y": 44,
+      "previous": 2,
+      "proposed": 1
+    },
+    {
+      "cell_x": 7,
+      "cell_y": 44,
+      "previous": 2,
+      "proposed": 1
+    },
+    {
+      "cell_x": 8,
+      "cell_y": 44,
+      "previous": 2,
+      "proposed": 1
+    },
+    {
+      "cell_x": 9,
+      "cell_y": 44,
+      "previous": 2,
+      "proposed": 1
+    },
+    {
+      "cell_x": 14,
+      "cell_y": 44,
+      "previous": 2,
+      "proposed": 1
+    },
+    {
+      "cell_x": 15,
+      "cell_y": 44,
+      "previous": 2,
+      "proposed": 1
+    },
+    {
+      "cell_x": 16,
+      "cell_y": 44,
+      "previous": 2,
+      "proposed": 1
+    },
+    {
+      "cell_x": 20,
+      "cell_y": 44,
+      "previous": 1,
+      "proposed": 2
+    },
+    {
+      "cell_x": 21,
+      "cell_y": 44,
+      "previous": 1,
+      "proposed": 2
+    },
+    {
+      "cell_x": 22,
+      "cell_y": 44,
+      "previous": 1,
+      "proposed": 2
+    },
+    {
+      "cell_x": 25,
+      "cell_y": 44,
+      "previous": 2,
+      "proposed": 1
+    },
+    {
+      "cell_x": 26,
+      "cell_y": 44,
+      "previous": 2,
+      "proposed": 1
+    },
+    {
+      "cell_x": 27,
+      "cell_y": 44,
+      "previous": 2,
+      "proposed": 1
+    },
+    {
+      "cell_x": 28,
+      "cell_y": 44,
+      "previous": 2,
+      "proposed": 1
+    },
+    {
+      "cell_x": 29,
+      "cell_y": 44,
+      "previous": 2,
+      "proposed": 1
+    },
+    {
+      "cell_x": 36,
+      "cell_y": 44,
+      "previous": 2,
+      "proposed": 1
+    },
+    {
+      "cell_x": 37,
+      "cell_y": 44,
+      "previous": 2,
+      "proposed": 1
+    },
+    {
+      "cell_x": 38,
+      "cell_y": 44,
+      "previous": 2,
+      "proposed": 1
+    },
+    {
+      "cell_x": 39,
+      "cell_y": 44,
+      "previous": 2,
+      "proposed": 1
+    },
+    {
+      "cell_x": 40,
+      "cell_y": 44,
+      "previous": 2,
+      "proposed": 1
+    },
+    {
+      "cell_x": 41,
+      "cell_y": 44,
+      "previous": 2,
+      "proposed": 1
+    },
+    {
+      "cell_x": 42,
+      "cell_y": 44,
+      "previous": 2,
+      "proposed": 1
+    },
+    {
+      "cell_x": 43,
+      "cell_y": 44,
+      "previous": 2,
+      "proposed": 1
+    },
+    {
+      "cell_x": 44,
+      "cell_y": 44,
+      "previous": 2,
+      "proposed": 1
+    },
+    {
+      "cell_x": 1,
+      "cell_y": 45,
+      "previous": 2,
+      "proposed": 1
+    },
+    {
+      "cell_x": 2,
+      "cell_y": 45,
+      "previous": 2,
+      "proposed": 1
+    },
+    {
+      "cell_x": 3,
+      "cell_y": 45,
+      "previous": 2,
+      "proposed": 1
+    },
+    {
+      "cell_x": 4,
+      "cell_y": 45,
+      "previous": 2,
+      "proposed": 1
+    },
+    {
+      "cell_x": 5,
+      "cell_y": 45,
+      "previous": 2,
+      "proposed": 1
+    },
+    {
+      "cell_x": 6,
+      "cell_y": 45,
+      "previous": 2,
+      "proposed": 1
+    },
+    {
+      "cell_x": 7,
+      "cell_y": 45,
+      "previous": 2,
+      "proposed": 1
+    },
+    {
+      "cell_x": 8,
+      "cell_y": 45,
+      "previous": 2,
+      "proposed": 1
+    },
+    {
+      "cell_x": 14,
+      "cell_y": 45,
+      "previous": 2,
+      "proposed": 1
+    },
+    {
+      "cell_x": 15,
+      "cell_y": 45,
+      "previous": 2,
+      "proposed": 1
+    },
+    {
+      "cell_x": 20,
+      "cell_y": 45,
+      "previous": 1,
+      "proposed": 2
+    },
+    {
+      "cell_x": 21,
+      "cell_y": 45,
+      "previous": 1,
+      "proposed": 2
+    },
+    {
+      "cell_x": 22,
+      "cell_y": 45,
+      "previous": 1,
+      "proposed": 2
+    },
+    {
+      "cell_x": 23,
+      "cell_y": 45,
+      "previous": 1,
+      "proposed": 2
+    },
+    {
+      "cell_x": 24,
+      "cell_y": 45,
+      "previous": 2,
+      "proposed": 1
+    },
+    {
+      "cell_x": 25,
+      "cell_y": 45,
+      "previous": 2,
+      "proposed": 1
+    },
+    {
+      "cell_x": 26,
+      "cell_y": 45,
+      "previous": 2,
+      "proposed": 1
+    },
+    {
+      "cell_x": 27,
+      "cell_y": 45,
+      "previous": 2,
+      "proposed": 1
+    },
+    {
+      "cell_x": 28,
+      "cell_y": 45,
+      "previous": 2,
+      "proposed": 1
+    },
+    {
+      "cell_x": 29,
+      "cell_y": 45,
+      "previous": 2,
+      "proposed": 1
+    },
+    {
+      "cell_x": 36,
+      "cell_y": 45,
+      "previous": 2,
+      "proposed": 1
+    },
+    {
+      "cell_x": 37,
+      "cell_y": 45,
+      "previous": 2,
+      "proposed": 1
+    },
+    {
+      "cell_x": 38,
+      "cell_y": 45,
+      "previous": 2,
+      "proposed": 1
+    },
+    {
+      "cell_x": 39,
+      "cell_y": 45,
+      "previous": 2,
+      "proposed": 1
+    },
+    {
+      "cell_x": 40,
+      "cell_y": 45,
+      "previous": 2,
+      "proposed": 1
+    },
+    {
+      "cell_x": 41,
+      "cell_y": 45,
+      "previous": 2,
+      "proposed": 1
+    },
+    {
+      "cell_x": 42,
+      "cell_y": 45,
+      "previous": 2,
+      "proposed": 1
+    },
+    {
+      "cell_x": 0,
+      "cell_y": 46,
+      "previous": 2,
+      "proposed": 1
+    },
+    {
+      "cell_x": 1,
+      "cell_y": 46,
+      "previous": 2,
+      "proposed": 1
+    },
+    {
+      "cell_x": 2,
+      "cell_y": 46,
+      "previous": 2,
+      "proposed": 1
+    },
+    {
+      "cell_x": 3,
+      "cell_y": 46,
+      "previous": 2,
+      "proposed": 1
+    },
+    {
+      "cell_x": 4,
+      "cell_y": 46,
+      "previous": 2,
+      "proposed": 1
+    },
+    {
+      "cell_x": 5,
+      "cell_y": 46,
+      "previous": 2,
+      "proposed": 1
+    },
+    {
+      "cell_x": 6,
+      "cell_y": 46,
+      "previous": 2,
+      "proposed": 1
+    },
+    {
+      "cell_x": 7,
+      "cell_y": 46,
+      "previous": 2,
+      "proposed": 1
+    },
+    {
+      "cell_x": 14,
+      "cell_y": 46,
+      "previous": 2,
+      "proposed": 1
+    },
+    {
+      "cell_x": 20,
+      "cell_y": 46,
+      "previous": 1,
+      "proposed": 2
+    },
+    {
+      "cell_x": 21,
+      "cell_y": 46,
+      "previous": 1,
+      "proposed": 2
+    },
+    {
+      "cell_x": 22,
+      "cell_y": 46,
+      "previous": 1,
+      "proposed": 2
+    },
+    {
+      "cell_x": 26,
+      "cell_y": 46,
+      "previous": 2,
+      "proposed": 1
+    },
+    {
+      "cell_x": 27,
+      "cell_y": 46,
+      "previous": 2,
+      "proposed": 1
+    },
+    {
+      "cell_x": 28,
+      "cell_y": 46,
+      "previous": 2,
+      "proposed": 1
+    },
+    {
+      "cell_x": 29,
+      "cell_y": 46,
+      "previous": 2,
+      "proposed": 1
+    },
+    {
+      "cell_x": 30,
+      "cell_y": 46,
+      "previous": 2,
+      "proposed": 1
+    },
+    {
+      "cell_x": 37,
+      "cell_y": 46,
+      "previous": 2,
+      "proposed": 1
+    },
+    {
+      "cell_x": 38,
+      "cell_y": 46,
+      "previous": 2,
+      "proposed": 1
+    },
+    {
+      "cell_x": 39,
+      "cell_y": 46,
+      "previous": 2,
+      "proposed": 1
+    },
+    {
+      "cell_x": 40,
+      "cell_y": 46,
+      "previous": 2,
+      "proposed": 1
+    },
+    {
+      "cell_x": 41,
+      "cell_y": 46,
+      "previous": 2,
+      "proposed": 1
+    },
+    {
+      "cell_x": 0,
+      "cell_y": 47,
+      "previous": 2,
+      "proposed": 1
+    },
+    {
+      "cell_x": 1,
+      "cell_y": 47,
+      "previous": 2,
+      "proposed": 1
+    },
+    {
+      "cell_x": 2,
+      "cell_y": 47,
+      "previous": 2,
+      "proposed": 1
+    },
+    {
+      "cell_x": 3,
+      "cell_y": 47,
+      "previous": 2,
+      "proposed": 1
+    },
+    {
+      "cell_x": 4,
+      "cell_y": 47,
+      "previous": 2,
+      "proposed": 1
+    },
+    {
+      "cell_x": 5,
+      "cell_y": 47,
+      "previous": 2,
+      "proposed": 1
+    },
+    {
+      "cell_x": 20,
+      "cell_y": 47,
+      "previous": 1,
+      "proposed": 2
+    },
+    {
+      "cell_x": 21,
+      "cell_y": 47,
+      "previous": 1,
+      "proposed": 2
+    },
+    {
+      "cell_x": 27,
+      "cell_y": 47,
+      "previous": 2,
+      "proposed": 1
+    },
+    {
+      "cell_x": 28,
+      "cell_y": 47,
+      "previous": 2,
+      "proposed": 1
+    },
+    {
+      "cell_x": 29,
+      "cell_y": 47,
+      "previous": 2,
+      "proposed": 1
+    },
+    {
+      "cell_x": 30,
+      "cell_y": 47,
+      "previous": 2,
+      "proposed": 1
+    },
+    {
+      "cell_x": 31,
+      "cell_y": 47,
+      "previous": 2,
+      "proposed": 1
+    },
+    {
+      "cell_x": 37,
+      "cell_y": 47,
+      "previous": 2,
+      "proposed": 1
+    },
+    {
+      "cell_x": 38,
+      "cell_y": 47,
+      "previous": 2,
+      "proposed": 1
+    },
+    {
+      "cell_x": 39,
+      "cell_y": 47,
+      "previous": 2,
+      "proposed": 1
+    },
+    {
+      "cell_x": 0,
+      "cell_y": 48,
+      "previous": 2,
+      "proposed": 1
+    },
+    {
+      "cell_x": 1,
+      "cell_y": 48,
+      "previous": 2,
+      "proposed": 1
+    },
+    {
+      "cell_x": 2,
+      "cell_y": 48,
+      "previous": 2,
+      "proposed": 1
+    },
+    {
+      "cell_x": 3,
+      "cell_y": 48,
+      "previous": 2,
+      "proposed": 1
+    },
+    {
+      "cell_x": 4,
+      "cell_y": 48,
+      "previous": 2,
+      "proposed": 1
+    },
+    {
+      "cell_x": 13,
+      "cell_y": 48,
+      "previous": 1,
+      "proposed": 2
+    },
+    {
+      "cell_x": 20,
+      "cell_y": 48,
+      "previous": 1,
+      "proposed": 2
+    },
+    {
+      "cell_x": 29,
+      "cell_y": 48,
+      "previous": 2,
+      "proposed": 1
+    },
+    {
+      "cell_x": 30,
+      "cell_y": 48,
+      "previous": 2,
+      "proposed": 1
+    },
+    {
+      "cell_x": 31,
+      "cell_y": 48,
+      "previous": 2,
+      "proposed": 1
+    },
+    {
+      "cell_x": 38,
+      "cell_y": 48,
+      "previous": 2,
+      "proposed": 1
+    },
+    {
+      "cell_x": 0,
+      "cell_y": 49,
+      "previous": 2,
+      "proposed": 1
+    },
+    {
+      "cell_x": 1,
+      "cell_y": 49,
+      "previous": 2,
+      "proposed": 1
+    },
+    {
+      "cell_x": 2,
+      "cell_y": 49,
+      "previous": 2,
+      "proposed": 1
+    },
+    {
+      "cell_x": 3,
+      "cell_y": 49,
+      "previous": 2,
+      "proposed": 1
+    },
+    {
+      "cell_x": 12,
+      "cell_y": 49,
+      "previous": 1,
+      "proposed": 2
+    },
+    {
+      "cell_x": 13,
+      "cell_y": 49,
+      "previous": 1,
+      "proposed": 2
+    },
+    {
+      "cell_x": 30,
+      "cell_y": 49,
+      "previous": 2,
+      "proposed": 1
+    },
+    {
+      "cell_x": 31,
+      "cell_y": 49,
+      "previous": 2,
+      "proposed": 1
+    },
+    {
+      "cell_x": 32,
+      "cell_y": 49,
+      "previous": 2,
+      "proposed": 1
+    },
+    {
+      "cell_x": 0,
+      "cell_y": 50,
+      "previous": 2,
+      "proposed": 1
+    },
+    {
+      "cell_x": 1,
+      "cell_y": 50,
+      "previous": 2,
+      "proposed": 1
+    },
+    {
+      "cell_x": 2,
+      "cell_y": 50,
+      "previous": 2,
+      "proposed": 1
+    },
+    {
+      "cell_x": 11,
+      "cell_y": 50,
+      "previous": 1,
+      "proposed": 2
+    },
+    {
+      "cell_x": 12,
+      "cell_y": 50,
+      "previous": 1,
+      "proposed": 2
+    },
+    {
+      "cell_x": 13,
+      "cell_y": 50,
+      "previous": 1,
+      "proposed": 2
+    },
+    {
+      "cell_x": 19,
+      "cell_y": 50,
+      "previous": 2,
+      "proposed": 1
+    },
+    {
+      "cell_x": 31,
+      "cell_y": 50,
+      "previous": 2,
+      "proposed": 1
+    },
+    {
+      "cell_x": 32,
+      "cell_y": 50,
+      "previous": 2,
+      "proposed": 1
+    },
+    {
+      "cell_x": 0,
+      "cell_y": 51,
+      "previous": 2,
+      "proposed": 1
+    },
+    {
+      "cell_x": 1,
+      "cell_y": 51,
+      "previous": 2,
+      "proposed": 1
+    },
+    {
+      "cell_x": 9,
+      "cell_y": 51,
+      "previous": 1,
+      "proposed": 2
+    },
+    {
+      "cell_x": 10,
+      "cell_y": 51,
+      "previous": 1,
+      "proposed": 2
+    },
+    {
+      "cell_x": 11,
+      "cell_y": 51,
+      "previous": 1,
+      "proposed": 2
+    },
+    {
+      "cell_x": 12,
+      "cell_y": 51,
+      "previous": 1,
+      "proposed": 2
+    },
+    {
+      "cell_x": 13,
+      "cell_y": 51,
+      "previous": 1,
+      "proposed": 2
+    },
+    {
+      "cell_x": 18,
+      "cell_y": 51,
+      "previous": 2,
+      "proposed": 1
+    },
+    {
+      "cell_x": 19,
+      "cell_y": 51,
+      "previous": 2,
+      "proposed": 1
+    },
+    {
+      "cell_x": 32,
+      "cell_y": 51,
+      "previous": 2,
+      "proposed": 1
+    },
+    {
+      "cell_x": 33,
+      "cell_y": 51,
+      "previous": 2,
+      "proposed": 1
+    },
+    {
+      "cell_x": 8,
+      "cell_y": 52,
+      "previous": 1,
+      "proposed": 2
+    },
+    {
+      "cell_x": 9,
+      "cell_y": 52,
+      "previous": 1,
+      "proposed": 2
+    },
+    {
+      "cell_x": 10,
+      "cell_y": 52,
+      "previous": 1,
+      "proposed": 2
+    },
+    {
+      "cell_x": 11,
+      "cell_y": 52,
+      "previous": 1,
+      "proposed": 2
+    },
+    {
+      "cell_x": 12,
+      "cell_y": 52,
+      "previous": 1,
+      "proposed": 2
+    },
+    {
+      "cell_x": 13,
+      "cell_y": 52,
+      "previous": 1,
+      "proposed": 2
+    },
+    {
+      "cell_x": 16,
+      "cell_y": 52,
+      "previous": 2,
+      "proposed": 1
+    },
+    {
+      "cell_x": 17,
+      "cell_y": 52,
+      "previous": 2,
+      "proposed": 1
+    },
+    {
+      "cell_x": 18,
+      "cell_y": 52,
+      "previous": 2,
+      "proposed": 1
+    },
+    {
+      "cell_x": 19,
+      "cell_y": 52,
+      "previous": 2,
+      "proposed": 1
+    },
+    {
+      "cell_x": 33,
+      "cell_y": 52,
+      "previous": 2,
+      "proposed": 1
+    },
+    {
+      "cell_x": 7,
+      "cell_y": 53,
+      "previous": 1,
+      "proposed": 2
+    },
+    {
+      "cell_x": 8,
+      "cell_y": 53,
+      "previous": 1,
+      "proposed": 2
+    },
+    {
+      "cell_x": 9,
+      "cell_y": 53,
+      "previous": 1,
+      "proposed": 2
+    },
+    {
+      "cell_x": 10,
+      "cell_y": 53,
+      "previous": 1,
+      "proposed": 2
+    },
+    {
+      "cell_x": 11,
+      "cell_y": 53,
+      "previous": 1,
+      "proposed": 2
+    },
+    {
+      "cell_x": 12,
+      "cell_y": 53,
+      "previous": 1,
+      "proposed": 2
+    },
+    {
+      "cell_x": 13,
+      "cell_y": 53,
+      "previous": 1,
+      "proposed": 2
+    },
+    {
+      "cell_x": 15,
+      "cell_y": 53,
+      "previous": 2,
+      "proposed": 1
+    },
+    {
+      "cell_x": 16,
+      "cell_y": 53,
+      "previous": 2,
+      "proposed": 1
+    },
+    {
+      "cell_x": 17,
+      "cell_y": 53,
+      "previous": 2,
+      "proposed": 1
+    },
+    {
+      "cell_x": 18,
+      "cell_y": 53,
+      "previous": 2,
+      "proposed": 1
+    },
+    {
+      "cell_x": 19,
+      "cell_y": 53,
+      "previous": 2,
+      "proposed": 1
+    },
+    {
+      "cell_x": 6,
+      "cell_y": 54,
+      "previous": 1,
+      "proposed": 2
+    },
+    {
+      "cell_x": 7,
+      "cell_y": 54,
+      "previous": 1,
+      "proposed": 2
+    },
+    {
+      "cell_x": 8,
+      "cell_y": 54,
+      "previous": 1,
+      "proposed": 2
+    },
+    {
+      "cell_x": 9,
+      "cell_y": 54,
+      "previous": 1,
+      "proposed": 2
+    },
+    {
+      "cell_x": 10,
+      "cell_y": 54,
+      "previous": 1,
+      "proposed": 2
+    },
+    {
+      "cell_x": 11,
+      "cell_y": 54,
+      "previous": 1,
+      "proposed": 2
+    },
+    {
+      "cell_x": 12,
+      "cell_y": 54,
+      "previous": 1,
+      "proposed": 2
+    },
+    {
+      "cell_x": 14,
+      "cell_y": 54,
+      "previous": 2,
+      "proposed": 1
+    },
+    {
+      "cell_x": 15,
+      "cell_y": 54,
+      "previous": 2,
+      "proposed": 1
+    },
+    {
+      "cell_x": 16,
+      "cell_y": 54,
+      "previous": 2,
+      "proposed": 1
+    },
+    {
+      "cell_x": 17,
+      "cell_y": 54,
+      "previous": 2,
+      "proposed": 1
+    },
+    {
+      "cell_x": 18,
+      "cell_y": 54,
+      "previous": 2,
+      "proposed": 1
+    },
+    {
+      "cell_x": 19,
+      "cell_y": 54,
+      "previous": 2,
+      "proposed": 1
+    },
+    {
+      "cell_x": 5,
+      "cell_y": 55,
+      "previous": 1,
+      "proposed": 2
+    },
+    {
+      "cell_x": 6,
+      "cell_y": 55,
+      "previous": 1,
+      "proposed": 2
+    },
+    {
+      "cell_x": 7,
+      "cell_y": 55,
+      "previous": 1,
+      "proposed": 2
+    },
+    {
+      "cell_x": 8,
+      "cell_y": 55,
+      "previous": 1,
+      "proposed": 2
+    },
+    {
+      "cell_x": 9,
+      "cell_y": 55,
+      "previous": 1,
+      "proposed": 2
+    },
+    {
+      "cell_x": 10,
+      "cell_y": 55,
+      "previous": 1,
+      "proposed": 2
+    },
+    {
+      "cell_x": 11,
+      "cell_y": 55,
+      "previous": 1,
+      "proposed": 2
+    },
+    {
+      "cell_x": 12,
+      "cell_y": 55,
+      "previous": 1,
+      "proposed": 2
+    },
+    {
+      "cell_x": 13,
+      "cell_y": 55,
+      "previous": 2,
+      "proposed": 1
+    },
+    {
+      "cell_x": 14,
+      "cell_y": 55,
+      "previous": 2,
+      "proposed": 1
+    },
+    {
+      "cell_x": 15,
+      "cell_y": 55,
+      "previous": 2,
+      "proposed": 1
+    },
+    {
+      "cell_x": 16,
+      "cell_y": 55,
+      "previous": 2,
+      "proposed": 1
+    },
+    {
+      "cell_x": 17,
+      "cell_y": 55,
+      "previous": 2,
+      "proposed": 1
+    },
+    {
+      "cell_x": 18,
+      "cell_y": 55,
+      "previous": 2,
+      "proposed": 1
+    },
+    {
+      "cell_x": 4,
+      "cell_y": 56,
+      "previous": 1,
+      "proposed": 2
+    },
+    {
+      "cell_x": 5,
+      "cell_y": 56,
+      "previous": 1,
+      "proposed": 2
+    },
+    {
+      "cell_x": 6,
+      "cell_y": 56,
+      "previous": 1,
+      "proposed": 2
+    },
+    {
+      "cell_x": 7,
+      "cell_y": 56,
+      "previous": 1,
+      "proposed": 2
+    },
+    {
+      "cell_x": 8,
+      "cell_y": 56,
+      "previous": 1,
+      "proposed": 2
+    },
+    {
+      "cell_x": 9,
+      "cell_y": 56,
+      "previous": 1,
+      "proposed": 2
+    },
+    {
+      "cell_x": 10,
+      "cell_y": 56,
+      "previous": 1,
+      "proposed": 2
+    },
+    {
+      "cell_x": 11,
+      "cell_y": 56,
+      "previous": 1,
+      "proposed": 2
+    },
+    {
+      "cell_x": 13,
+      "cell_y": 56,
+      "previous": 2,
+      "proposed": 1
+    },
+    {
+      "cell_x": 14,
+      "cell_y": 56,
+      "previous": 2,
+      "proposed": 1
+    },
+    {
+      "cell_x": 15,
+      "cell_y": 56,
+      "previous": 2,
+      "proposed": 1
+    },
+    {
+      "cell_x": 16,
+      "cell_y": 56,
+      "previous": 2,
+      "proposed": 1
+    },
+    {
+      "cell_x": 17,
+      "cell_y": 56,
+      "previous": 2,
+      "proposed": 1
+    },
+    {
+      "cell_x": 18,
+      "cell_y": 56,
+      "previous": 2,
+      "proposed": 1
+    },
+    {
+      "cell_x": 3,
+      "cell_y": 57,
+      "previous": 1,
+      "proposed": 2
+    },
+    {
+      "cell_x": 4,
+      "cell_y": 57,
+      "previous": 1,
+      "proposed": 2
+    },
+    {
+      "cell_x": 5,
+      "cell_y": 57,
+      "previous": 1,
+      "proposed": 2
+    },
+    {
+      "cell_x": 6,
+      "cell_y": 57,
+      "previous": 1,
+      "proposed": 2
+    },
+    {
+      "cell_x": 7,
+      "cell_y": 57,
+      "previous": 1,
+      "proposed": 2
+    },
+    {
+      "cell_x": 8,
+      "cell_y": 57,
+      "previous": 1,
+      "proposed": 2
+    },
+    {
+      "cell_x": 9,
+      "cell_y": 57,
+      "previous": 1,
+      "proposed": 2
+    },
+    {
+      "cell_x": 10,
+      "cell_y": 57,
+      "previous": 1,
+      "proposed": 2
+    },
+    {
+      "cell_x": 13,
+      "cell_y": 57,
+      "previous": 2,
+      "proposed": 1
+    },
+    {
+      "cell_x": 14,
+      "cell_y": 57,
+      "previous": 2,
+      "proposed": 1
+    },
+    {
+      "cell_x": 15,
+      "cell_y": 57,
+      "previous": 2,
+      "proposed": 1
+    },
+    {
+      "cell_x": 16,
+      "cell_y": 57,
+      "previous": 2,
+      "proposed": 1
+    },
+    {
+      "cell_x": 17,
+      "cell_y": 57,
+      "previous": 2,
+      "proposed": 1
+    },
+    {
+      "cell_x": 18,
+      "cell_y": 57,
+      "previous": 2,
+      "proposed": 1
+    },
+    {
+      "cell_x": 1,
+      "cell_y": 58,
+      "previous": 1,
+      "proposed": 2
+    },
+    {
+      "cell_x": 2,
+      "cell_y": 58,
+      "previous": 1,
+      "proposed": 2
+    },
+    {
+      "cell_x": 3,
+      "cell_y": 58,
+      "previous": 1,
+      "proposed": 2
+    },
+    {
+      "cell_x": 4,
+      "cell_y": 58,
+      "previous": 1,
+      "proposed": 2
+    },
+    {
+      "cell_x": 5,
+      "cell_y": 58,
+      "previous": 1,
+      "proposed": 2
+    },
+    {
+      "cell_x": 6,
+      "cell_y": 58,
+      "previous": 1,
+      "proposed": 2
+    },
+    {
+      "cell_x": 7,
+      "cell_y": 58,
+      "previous": 1,
+      "proposed": 2
+    },
+    {
+      "cell_x": 8,
+      "cell_y": 58,
+      "previous": 1,
+      "proposed": 2
+    },
+    {
+      "cell_x": 9,
+      "cell_y": 58,
+      "previous": 1,
+      "proposed": 2
+    },
+    {
+      "cell_x": 10,
+      "cell_y": 58,
+      "previous": 1,
+      "proposed": 2
+    },
+    {
+      "cell_x": 13,
+      "cell_y": 58,
+      "previous": 2,
+      "proposed": 1
+    },
+    {
+      "cell_x": 14,
+      "cell_y": 58,
+      "previous": 2,
+      "proposed": 1
+    },
+    {
+      "cell_x": 15,
+      "cell_y": 58,
+      "previous": 2,
+      "proposed": 1
+    },
+    {
+      "cell_x": 16,
+      "cell_y": 58,
+      "previous": 2,
+      "proposed": 1
+    },
+    {
+      "cell_x": 17,
+      "cell_y": 58,
+      "previous": 2,
+      "proposed": 1
+    },
+    {
+      "cell_x": 0,
+      "cell_y": 59,
+      "previous": 1,
+      "proposed": 2
+    },
+    {
+      "cell_x": 1,
+      "cell_y": 59,
+      "previous": 1,
+      "proposed": 2
+    },
+    {
+      "cell_x": 2,
+      "cell_y": 59,
+      "previous": 1,
+      "proposed": 2
+    },
+    {
+      "cell_x": 3,
+      "cell_y": 59,
+      "previous": 1,
+      "proposed": 2
+    },
+    {
+      "cell_x": 4,
+      "cell_y": 59,
+      "previous": 1,
+      "proposed": 2
+    },
+    {
+      "cell_x": 5,
+      "cell_y": 59,
+      "previous": 1,
+      "proposed": 2
+    },
+    {
+      "cell_x": 6,
+      "cell_y": 59,
+      "previous": 1,
+      "proposed": 2
+    },
+    {
+      "cell_x": 7,
+      "cell_y": 59,
+      "previous": 1,
+      "proposed": 2
+    },
+    {
+      "cell_x": 8,
+      "cell_y": 59,
+      "previous": 1,
+      "proposed": 2
+    },
+    {
+      "cell_x": 9,
+      "cell_y": 59,
+      "previous": 1,
+      "proposed": 2
+    },
+    {
+      "cell_x": 13,
+      "cell_y": 59,
+      "previous": 2,
+      "proposed": 1
+    },
+    {
+      "cell_x": 14,
+      "cell_y": 59,
+      "previous": 2,
+      "proposed": 1
+    },
+    {
+      "cell_x": 15,
+      "cell_y": 59,
+      "previous": 2,
+      "proposed": 1
+    },
+    {
+      "cell_x": 16,
+      "cell_y": 59,
+      "previous": 2,
+      "proposed": 1
+    },
+    {
+      "cell_x": 17,
+      "cell_y": 59,
+      "previous": 2,
+      "proposed": 1
+    },
+    {
+      "cell_x": 0,
+      "cell_y": 60,
+      "previous": 1,
+      "proposed": 2
+    },
+    {
+      "cell_x": 1,
+      "cell_y": 60,
+      "previous": 1,
+      "proposed": 2
+    },
+    {
+      "cell_x": 2,
+      "cell_y": 60,
+      "previous": 1,
+      "proposed": 2
+    },
+    {
+      "cell_x": 3,
+      "cell_y": 60,
+      "previous": 1,
+      "proposed": 2
+    },
+    {
+      "cell_x": 4,
+      "cell_y": 60,
+      "previous": 1,
+      "proposed": 2
+    },
+    {
+      "cell_x": 5,
+      "cell_y": 60,
+      "previous": 1,
+      "proposed": 2
+    },
+    {
+      "cell_x": 6,
+      "cell_y": 60,
+      "previous": 1,
+      "proposed": 2
+    },
+    {
+      "cell_x": 7,
+      "cell_y": 60,
+      "previous": 1,
+      "proposed": 2
+    },
+    {
+      "cell_x": 8,
+      "cell_y": 60,
+      "previous": 1,
+      "proposed": 2
+    },
+    {
+      "cell_x": 9,
+      "cell_y": 60,
+      "previous": 1,
+      "proposed": 2
+    },
+    {
+      "cell_x": 13,
+      "cell_y": 60,
+      "previous": 2,
+      "proposed": 1
+    },
+    {
+      "cell_x": 14,
+      "cell_y": 60,
+      "previous": 2,
+      "proposed": 1
+    },
+    {
+      "cell_x": 15,
+      "cell_y": 60,
+      "previous": 2,
+      "proposed": 1
+    },
+    {
+      "cell_x": 16,
+      "cell_y": 60,
+      "previous": 2,
+      "proposed": 1
+    },
+    {
+      "cell_x": 0,
+      "cell_y": 61,
+      "previous": 1,
+      "proposed": 2
+    },
+    {
+      "cell_x": 1,
+      "cell_y": 61,
+      "previous": 1,
+      "proposed": 2
+    },
+    {
+      "cell_x": 2,
+      "cell_y": 61,
+      "previous": 1,
+      "proposed": 2
+    },
+    {
+      "cell_x": 3,
+      "cell_y": 61,
+      "previous": 1,
+      "proposed": 2
+    },
+    {
+      "cell_x": 4,
+      "cell_y": 61,
+      "previous": 1,
+      "proposed": 2
+    },
+    {
+      "cell_x": 5,
+      "cell_y": 61,
+      "previous": 1,
+      "proposed": 2
+    },
+    {
+      "cell_x": 6,
+      "cell_y": 61,
+      "previous": 1,
+      "proposed": 2
+    },
+    {
+      "cell_x": 7,
+      "cell_y": 61,
+      "previous": 1,
+      "proposed": 2
+    },
+    {
+      "cell_x": 13,
+      "cell_y": 61,
+      "previous": 2,
+      "proposed": 1
+    },
+    {
+      "cell_x": 14,
+      "cell_y": 61,
+      "previous": 2,
+      "proposed": 1
+    },
+    {
+      "cell_x": 15,
+      "cell_y": 61,
+      "previous": 2,
+      "proposed": 1
+    },
+    {
+      "cell_x": 0,
+      "cell_y": 62,
+      "previous": 1,
+      "proposed": 2
+    },
+    {
+      "cell_x": 1,
+      "cell_y": 62,
+      "previous": 1,
+      "proposed": 2
+    },
+    {
+      "cell_x": 2,
+      "cell_y": 62,
+      "previous": 1,
+      "proposed": 2
+    },
+    {
+      "cell_x": 3,
+      "cell_y": 62,
+      "previous": 1,
+      "proposed": 2
+    },
+    {
+      "cell_x": 4,
+      "cell_y": 62,
+      "previous": 1,
+      "proposed": 2
+    },
+    {
+      "cell_x": 5,
+      "cell_y": 62,
+      "previous": 1,
+      "proposed": 2
+    },
+    {
+      "cell_x": 8,
+      "cell_y": 62,
+      "previous": 2,
+      "proposed": 1
+    },
+    {
+      "cell_x": 13,
+      "cell_y": 62,
+      "previous": 2,
+      "proposed": 1
+    },
+    {
+      "cell_x": 14,
+      "cell_y": 62,
+      "previous": 2,
+      "proposed": 1
+    },
+    {
+      "cell_x": 15,
+      "cell_y": 62,
+      "previous": 2,
+      "proposed": 1
+    },
+    {
+      "cell_x": 0,
+      "cell_y": 63,
+      "previous": 1,
+      "proposed": 2
+    },
+    {
+      "cell_x": 1,
+      "cell_y": 63,
+      "previous": 1,
+      "proposed": 2
+    },
+    {
+      "cell_x": 2,
+      "cell_y": 63,
+      "previous": 1,
+      "proposed": 2
+    },
+    {
+      "cell_x": 3,
+      "cell_y": 63,
+      "previous": 1,
+      "proposed": 2
+    },
+    {
+      "cell_x": 8,
+      "cell_y": 63,
+      "previous": 2,
+      "proposed": 1
+    },
+    {
+      "cell_x": 13,
+      "cell_y": 63,
+      "previous": 2,
+      "proposed": 1
+    },
+    {
+      "cell_x": 14,
+      "cell_y": 63,
+      "previous": 2,
+      "proposed": 1
+    },
+    {
+      "cell_x": 0,
+      "cell_y": 64,
+      "previous": 1,
+      "proposed": 2
+    },
+    {
+      "cell_x": 1,
+      "cell_y": 64,
+      "previous": 1,
+      "proposed": 2
+    },
+    {
+      "cell_x": 2,
+      "cell_y": 64,
+      "previous": 1,
+      "proposed": 2
+    },
+    {
+      "cell_x": 7,
+      "cell_y": 64,
+      "previous": 2,
+      "proposed": 1
+    },
+    {
+      "cell_x": 8,
+      "cell_y": 64,
+      "previous": 2,
+      "proposed": 1
+    },
+    {
+      "cell_x": 13,
+      "cell_y": 64,
+      "previous": 2,
+      "proposed": 1
+    },
+    {
+      "cell_x": 14,
+      "cell_y": 64,
+      "previous": 2,
+      "proposed": 1
+    },
+    {
+      "cell_x": 0,
+      "cell_y": 65,
+      "previous": 1,
+      "proposed": 2
+    },
+    {
+      "cell_x": 1,
+      "cell_y": 65,
+      "previous": 1,
+      "proposed": 2
+    },
+    {
+      "cell_x": 7,
+      "cell_y": 65,
+      "previous": 2,
+      "proposed": 1
+    },
+    {
+      "cell_x": 8,
+      "cell_y": 65,
+      "previous": 2,
+      "proposed": 1
+    },
+    {
+      "cell_x": 6,
+      "cell_y": 66,
+      "previous": 2,
+      "proposed": 1
+    },
+    {
+      "cell_x": 7,
+      "cell_y": 66,
+      "previous": 2,
+      "proposed": 1
+    },
+    {
+      "cell_x": 8,
+      "cell_y": 66,
+      "previous": 2,
+      "proposed": 1
+    },
+    {
+      "cell_x": 5,
+      "cell_y": 67,
+      "previous": 2,
+      "proposed": 1
+    },
+    {
+      "cell_x": 6,
+      "cell_y": 67,
+      "previous": 2,
+      "proposed": 1
+    },
+    {
+      "cell_x": 7,
+      "cell_y": 67,
+      "previous": 2,
+      "proposed": 1
+    },
+    {
+      "cell_x": 8,
+      "cell_y": 67,
+      "previous": 2,
+      "proposed": 1
+    },
+    {
+      "cell_x": 5,
+      "cell_y": 68,
+      "previous": 2,
+      "proposed": 1
+    },
+    {
+      "cell_x": 6,
+      "cell_y": 68,
+      "previous": 2,
+      "proposed": 1
+    },
+    {
+      "cell_x": 7,
+      "cell_y": 68,
+      "previous": 2,
+      "proposed": 1
+    },
+    {
+      "cell_x": 8,
+      "cell_y": 68,
+      "previous": 2,
+      "proposed": 1
+    },
+    {
+      "cell_x": 4,
+      "cell_y": 69,
+      "previous": 2,
+      "proposed": 1
+    },
+    {
+      "cell_x": 5,
+      "cell_y": 69,
+      "previous": 2,
+      "proposed": 1
+    },
+    {
+      "cell_x": 6,
+      "cell_y": 69,
+      "previous": 2,
+      "proposed": 1
+    },
+    {
+      "cell_x": 7,
+      "cell_y": 69,
+      "previous": 2,
+      "proposed": 1
+    },
+    {
+      "cell_x": 8,
+      "cell_y": 69,
+      "previous": 2,
+      "proposed": 1
+    },
+    {
+      "cell_x": 11,
+      "cell_y": 69,
+      "previous": 1,
+      "proposed": 2
+    },
+    {
+      "cell_x": 3,
+      "cell_y": 70,
+      "previous": 2,
+      "proposed": 1
+    },
+    {
+      "cell_x": 4,
+      "cell_y": 70,
+      "previous": 2,
+      "proposed": 1
+    },
+    {
+      "cell_x": 5,
+      "cell_y": 70,
+      "previous": 2,
+      "proposed": 1
+    },
+    {
+      "cell_x": 6,
+      "cell_y": 70,
+      "previous": 2,
+      "proposed": 1
+    },
+    {
+      "cell_x": 7,
+      "cell_y": 70,
+      "previous": 2,
+      "proposed": 1
+    },
+    {
+      "cell_x": 8,
+      "cell_y": 70,
+      "previous": 2,
+      "proposed": 1
+    },
+    {
+      "cell_x": 11,
+      "cell_y": 70,
+      "previous": 1,
+      "proposed": 2
+    },
+    {
+      "cell_x": 12,
+      "cell_y": 70,
+      "previous": 1,
+      "proposed": 2
+    },
+    {
+      "cell_x": 3,
+      "cell_y": 71,
+      "previous": 2,
+      "proposed": 1
+    },
+    {
+      "cell_x": 4,
+      "cell_y": 71,
+      "previous": 2,
+      "proposed": 1
+    },
+    {
+      "cell_x": 5,
+      "cell_y": 71,
+      "previous": 2,
+      "proposed": 1
+    },
+    {
+      "cell_x": 6,
+      "cell_y": 71,
+      "previous": 2,
+      "proposed": 1
+    },
+    {
+      "cell_x": 7,
+      "cell_y": 71,
+      "previous": 2,
+      "proposed": 1
+    },
+    {
+      "cell_x": 8,
+      "cell_y": 71,
+      "previous": 2,
+      "proposed": 1
+    },
+    {
+      "cell_x": 10,
+      "cell_y": 71,
+      "previous": 1,
+      "proposed": 2
+    },
+    {
+      "cell_x": 11,
+      "cell_y": 71,
+      "previous": 1,
+      "proposed": 2
+    },
+    {
+      "cell_x": 12,
+      "cell_y": 71,
+      "previous": 1,
+      "proposed": 2
+    },
+    {
+      "cell_x": 2,
+      "cell_y": 72,
+      "previous": 2,
+      "proposed": 1
+    },
+    {
+      "cell_x": 3,
+      "cell_y": 72,
+      "previous": 2,
+      "proposed": 1
+    },
+    {
+      "cell_x": 4,
+      "cell_y": 72,
+      "previous": 2,
+      "proposed": 1
+    },
+    {
+      "cell_x": 5,
+      "cell_y": 72,
+      "previous": 2,
+      "proposed": 1
+    },
+    {
+      "cell_x": 6,
+      "cell_y": 72,
+      "previous": 2,
+      "proposed": 1
+    },
+    {
+      "cell_x": 7,
+      "cell_y": 72,
+      "previous": 2,
+      "proposed": 1
+    },
+    {
+      "cell_x": 8,
+      "cell_y": 72,
+      "previous": 2,
+      "proposed": 1
+    },
+    {
+      "cell_x": 10,
+      "cell_y": 72,
+      "previous": 1,
+      "proposed": 2
+    },
+    {
+      "cell_x": 11,
+      "cell_y": 72,
+      "previous": 1,
+      "proposed": 2
+    },
+    {
+      "cell_x": 12,
+      "cell_y": 72,
+      "previous": 1,
+      "proposed": 2
+    },
+    {
+      "cell_x": 2,
+      "cell_y": 73,
+      "previous": 2,
+      "proposed": 1
+    },
+    {
+      "cell_x": 3,
+      "cell_y": 73,
+      "previous": 2,
+      "proposed": 1
+    },
+    {
+      "cell_x": 4,
+      "cell_y": 73,
+      "previous": 2,
+      "proposed": 1
+    },
+    {
+      "cell_x": 5,
+      "cell_y": 73,
+      "previous": 2,
+      "proposed": 1
+    },
+    {
+      "cell_x": 6,
+      "cell_y": 73,
+      "previous": 2,
+      "proposed": 1
+    },
+    {
+      "cell_x": 7,
+      "cell_y": 73,
+      "previous": 2,
+      "proposed": 1
+    },
+    {
+      "cell_x": 8,
+      "cell_y": 73,
+      "previous": 2,
+      "proposed": 1
+    },
+    {
+      "cell_x": 9,
+      "cell_y": 73,
+      "previous": 1,
+      "proposed": 2
+    },
+    {
+      "cell_x": 10,
+      "cell_y": 73,
+      "previous": 1,
+      "proposed": 2
+    },
+    {
+      "cell_x": 11,
+      "cell_y": 73,
+      "previous": 1,
+      "proposed": 2
+    },
+    {
+      "cell_x": 12,
+      "cell_y": 73,
+      "previous": 1,
+      "proposed": 2
+    },
+    {
+      "cell_x": 1,
+      "cell_y": 74,
+      "previous": 2,
+      "proposed": 1
+    },
+    {
+      "cell_x": 2,
+      "cell_y": 74,
+      "previous": 2,
+      "proposed": 1
+    },
+    {
+      "cell_x": 3,
+      "cell_y": 74,
+      "previous": 2,
+      "proposed": 1
+    },
+    {
+      "cell_x": 4,
+      "cell_y": 74,
+      "previous": 2,
+      "proposed": 1
+    },
+    {
+      "cell_x": 5,
+      "cell_y": 74,
+      "previous": 2,
+      "proposed": 1
+    },
+    {
+      "cell_x": 6,
+      "cell_y": 74,
+      "previous": 2,
+      "proposed": 1
+    },
+    {
+      "cell_x": 7,
+      "cell_y": 74,
+      "previous": 2,
+      "proposed": 1
+    },
+    {
+      "cell_x": 9,
+      "cell_y": 74,
+      "previous": 1,
+      "proposed": 2
+    },
+    {
+      "cell_x": 10,
+      "cell_y": 74,
+      "previous": 1,
+      "proposed": 2
+    },
+    {
+      "cell_x": 11,
+      "cell_y": 74,
+      "previous": 1,
+      "proposed": 2
+    },
+    {
+      "cell_x": 12,
+      "cell_y": 74,
+      "previous": 1,
+      "proposed": 2
+    },
+    {
+      "cell_x": 0,
+      "cell_y": 75,
+      "previous": 2,
+      "proposed": 1
+    },
+    {
+      "cell_x": 1,
+      "cell_y": 75,
+      "previous": 2,
+      "proposed": 1
+    },
+    {
+      "cell_x": 2,
+      "cell_y": 75,
+      "previous": 2,
+      "proposed": 1
+    },
+    {
+      "cell_x": 3,
+      "cell_y": 75,
+      "previous": 2,
+      "proposed": 1
+    },
+    {
+      "cell_x": 4,
+      "cell_y": 75,
+      "previous": 2,
+      "proposed": 1
+    },
+    {
+      "cell_x": 5,
+      "cell_y": 75,
+      "previous": 2,
+      "proposed": 1
+    },
+    {
+      "cell_x": 6,
+      "cell_y": 75,
+      "previous": 2,
+      "proposed": 1
+    },
+    {
+      "cell_x": 7,
+      "cell_y": 75,
+      "previous": 2,
+      "proposed": 1
+    },
+    {
+      "cell_x": 9,
+      "cell_y": 75,
+      "previous": 1,
+      "proposed": 2
+    },
+    {
+      "cell_x": 10,
+      "cell_y": 75,
+      "previous": 1,
+      "proposed": 2
+    },
+    {
+      "cell_x": 11,
+      "cell_y": 75,
+      "previous": 1,
+      "proposed": 2
+    },
+    {
+      "cell_x": 12,
+      "cell_y": 75,
+      "previous": 1,
+      "proposed": 2
+    },
+    {
+      "cell_x": 0,
+      "cell_y": 76,
+      "previous": 2,
+      "proposed": 1
+    },
+    {
+      "cell_x": 1,
+      "cell_y": 76,
+      "previous": 2,
+      "proposed": 1
+    },
+    {
+      "cell_x": 2,
+      "cell_y": 76,
+      "previous": 2,
+      "proposed": 1
+    },
+    {
+      "cell_x": 3,
+      "cell_y": 76,
+      "previous": 2,
+      "proposed": 1
+    },
+    {
+      "cell_x": 4,
+      "cell_y": 76,
+      "previous": 2,
+      "proposed": 1
+    },
+    {
+      "cell_x": 5,
+      "cell_y": 76,
+      "previous": 2,
+      "proposed": 1
+    },
+    {
+      "cell_x": 6,
+      "cell_y": 76,
+      "previous": 2,
+      "proposed": 1
+    },
+    {
+      "cell_x": 9,
+      "cell_y": 76,
+      "previous": 1,
+      "proposed": 2
+    },
+    {
+      "cell_x": 10,
+      "cell_y": 76,
+      "previous": 1,
+      "proposed": 2
+    },
+    {
+      "cell_x": 11,
+      "cell_y": 76,
+      "previous": 1,
+      "proposed": 2
+    },
+    {
+      "cell_x": 12,
+      "cell_y": 76,
+      "previous": 1,
+      "proposed": 2
+    },
+    {
+      "cell_x": 0,
+      "cell_y": 77,
+      "previous": 2,
+      "proposed": 1
+    },
+    {
+      "cell_x": 1,
+      "cell_y": 77,
+      "previous": 2,
+      "proposed": 1
+    },
+    {
+      "cell_x": 2,
+      "cell_y": 77,
+      "previous": 2,
+      "proposed": 1
+    },
+    {
+      "cell_x": 3,
+      "cell_y": 77,
+      "previous": 2,
+      "proposed": 1
+    },
+    {
+      "cell_x": 4,
+      "cell_y": 77,
+      "previous": 2,
+      "proposed": 1
+    },
+    {
+      "cell_x": 5,
+      "cell_y": 77,
+      "previous": 2,
+      "proposed": 1
+    },
+    {
+      "cell_x": 9,
+      "cell_y": 77,
+      "previous": 1,
+      "proposed": 2
+    },
+    {
+      "cell_x": 10,
+      "cell_y": 77,
+      "previous": 1,
+      "proposed": 2
+    },
+    {
+      "cell_x": 11,
+      "cell_y": 77,
+      "previous": 1,
+      "proposed": 2
+    },
+    {
+      "cell_x": 12,
+      "cell_y": 77,
+      "previous": 1,
+      "proposed": 2
+    },
+    {
+      "cell_x": 0,
+      "cell_y": 78,
+      "previous": 2,
+      "proposed": 1
+    },
+    {
+      "cell_x": 1,
+      "cell_y": 78,
+      "previous": 2,
+      "proposed": 1
+    },
+    {
+      "cell_x": 2,
+      "cell_y": 78,
+      "previous": 2,
+      "proposed": 1
+    },
+    {
+      "cell_x": 3,
+      "cell_y": 78,
+      "previous": 2,
+      "proposed": 1
+    },
+    {
+      "cell_x": 4,
+      "cell_y": 78,
+      "previous": 2,
+      "proposed": 1
+    },
+    {
+      "cell_x": 5,
+      "cell_y": 78,
+      "previous": 2,
+      "proposed": 1
+    },
+    {
+      "cell_x": 9,
+      "cell_y": 78,
+      "previous": 1,
+      "proposed": 2
+    },
+    {
+      "cell_x": 10,
+      "cell_y": 78,
+      "previous": 1,
+      "proposed": 2
+    },
+    {
+      "cell_x": 11,
+      "cell_y": 78,
+      "previous": 1,
+      "proposed": 2
+    },
+    {
+      "cell_x": 12,
+      "cell_y": 78,
+      "previous": 1,
+      "proposed": 2
+    },
+    {
+      "cell_x": 0,
+      "cell_y": 79,
+      "previous": 2,
+      "proposed": 1
+    },
+    {
+      "cell_x": 1,
+      "cell_y": 79,
+      "previous": 2,
+      "proposed": 1
+    },
+    {
+      "cell_x": 2,
+      "cell_y": 79,
+      "previous": 2,
+      "proposed": 1
+    },
+    {
+      "cell_x": 3,
+      "cell_y": 79,
+      "previous": 2,
+      "proposed": 1
+    },
+    {
+      "cell_x": 4,
+      "cell_y": 79,
+      "previous": 2,
+      "proposed": 1
+    },
+    {
+      "cell_x": 9,
+      "cell_y": 79,
+      "previous": 1,
+      "proposed": 2
+    },
+    {
+      "cell_x": 10,
+      "cell_y": 79,
+      "previous": 1,
+      "proposed": 2
+    },
+    {
+      "cell_x": 11,
+      "cell_y": 79,
+      "previous": 1,
+      "proposed": 2
+    },
+    {
+      "cell_x": 12,
+      "cell_y": 79,
+      "previous": 1,
+      "proposed": 2
+    },
+    {
+      "cell_x": 0,
+      "cell_y": 80,
+      "previous": 2,
+      "proposed": 1
+    },
+    {
+      "cell_x": 1,
+      "cell_y": 80,
+      "previous": 2,
+      "proposed": 1
+    },
+    {
+      "cell_x": 2,
+      "cell_y": 80,
+      "previous": 2,
+      "proposed": 1
+    },
+    {
+      "cell_x": 3,
+      "cell_y": 80,
+      "previous": 2,
+      "proposed": 1
+    },
+    {
+      "cell_x": 4,
+      "cell_y": 80,
+      "previous": 2,
+      "proposed": 1
+    },
+    {
+      "cell_x": 9,
+      "cell_y": 80,
+      "previous": 1,
+      "proposed": 2
+    },
+    {
+      "cell_x": 10,
+      "cell_y": 80,
+      "previous": 1,
+      "proposed": 2
+    },
+    {
+      "cell_x": 11,
+      "cell_y": 80,
+      "previous": 1,
+      "proposed": 2
+    },
+    {
+      "cell_x": 12,
+      "cell_y": 80,
+      "previous": 1,
+      "proposed": 2
+    }
+  ],
+  "collision_changed_cells": 0,
+  "world_props_changed": 0,
+  "routes": [
+    {
+      "from": "courtyard_entry",
+      "to": "courtyard_entry",
+      "steps": 0
+    },
+    {
+      "from": "courtyard_entry",
+      "to": "community_entry",
+      "steps": 25
+    },
+    {
+      "from": "courtyard_entry",
+      "to": "stage_info",
+      "steps": 3
+    },
+    {
+      "from": "courtyard_entry",
+      "to": "park_info",
+      "steps": 10
+    },
+    {
+      "from": "courtyard_entry",
+      "to": "gifts_info",
+      "steps": 38
+    },
+    {
+      "from": "courtyard_entry",
+      "to": "wall_info",
+      "steps": 50
+    },
+    {
+      "from": "community_entry",
+      "to": "courtyard_entry",
+      "steps": 25
+    },
+    {
+      "from": "community_entry",
+      "to": "community_entry",
+      "steps": 0
+    },
+    {
+      "from": "community_entry",
+      "to": "stage_info",
+      "steps": 28
+    },
+    {
+      "from": "community_entry",
+      "to": "park_info",
+      "steps": 27
+    },
+    {
+      "from": "community_entry",
+      "to": "gifts_info",
+      "steps": 19
+    },
+    {
+      "from": "community_entry",
+      "to": "wall_info",
+      "steps": 31
+    }
+  ],
+  "reference_route_anchors": {
+    "reference_crop": [
+      975,
+      95,
+      248,
+      420
+    ],
+    "method": "Four manually read semantic road-center anchors from the original supplied image. Approximate visual annotation, not raster extraction, whole-map score or independent acceptance.",
+    "anchors": [
+      {
+        "reference_pixel": [
+          975,
+          420
+        ],
+        "map_point": [
+          0.0,
+          1002.8571428571429
+        ],
+        "old_primary_distance": 162.83436573173597,
+        "new_primary_distance": 7.242866981083054
+      },
+      {
+        "reference_pixel": [
+          1075,
+          335
+        ],
+        "map_point": [
+          309.6774193548387,
+          740.5714285714286
+        ],
+        "old_primary_distance": 39.67741935483872,
+        "new_primary_distance": 0.5311447250387481
+      },
+      {
+        "reference_pixel": [
+          1155,
+          255
+        ],
+        "map_point": [
+          557.4193548387096,
+          493.7142857142857
+        ],
+        "old_primary_distance": 98.25893123620475,
+        "new_primary_distance": 0.03835526497291838
+      },
+      {
+        "reference_pixel": [
+          1223,
+          195
+        ],
+        "map_point": [
+          768.0,
+          308.57142857142856
+        ],
+        "old_primary_distance": 121.15458760658042,
+        "new_primary_distance": 13.266594115963906
+      }
+    ]
+  },
+  "source_mapping": "Replace old paving polygons0..8(primary detour) and16..22(duplicate cross-route), retain9..15/23..46exact; add authored continuous diagonal and lowerwest connector. Ground material decoration ellipses removed; no new solid planting."
+}

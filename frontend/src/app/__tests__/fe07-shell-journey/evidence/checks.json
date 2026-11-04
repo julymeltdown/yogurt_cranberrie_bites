@@ -1,8 +1,14 @@
 {
   "candidate": "8cd2046601b21e957e73a099d3975aa740a2a1bd",
-  "status": "IN_PROGRESS",
+  "status": "INTEGRATED",
   "clientCriteria": "SATISFIED",
-  "publication": "Pending designated integrator; owner has not pushed master",
+  "publication": {
+    "verifiedRemote": "d73296f582a459eb94d55123f8480e78b52a0d21",
+    "source": "19ad4ca0e17e4b93ce0f9219e918d15b372950f0",
+    "payload": "59de1ac9547ccd22a94bea8e8f224fe16a8c4eeb",
+    "payloadHashes": 24,
+    "nativeInputs": 16
+  },
   "implementation": "009327ca52d127db39b615e6049e4c66f37decef",
   "publishedSupport": {
     "typingAndVisibility": "50d950d79939a539ebe953744287f7a280ce488b",
@@ -59,6 +65,12 @@
       "exitCode": 0,
       "qualification": "Static origin/import checks only",
       "log": "origin.log"
+    },
+    {
+      "name": "publication-and-scope",
+      "command": "Fresh fetch; git merge-base --is-ancestor and direct Git blob SHA256 readback; exact two-commit changed-path check; git diff --check",
+      "exitCode": 0,
+      "qualification": "25 assigned paths,24 payloads and16 native inputs match publishedcheckpoint; source-original/feature ownership preserved"
     }
   ],
   "historicalDiagnostic": {

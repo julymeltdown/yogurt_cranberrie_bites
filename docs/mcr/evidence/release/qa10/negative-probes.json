@@ -1,0 +1,157 @@
+{
+  "candidate": "f30f7871e8dafb0a0cac6d04857bc49b9cbf5d72",
+  "receipt_sha256": "01f51f27a33a76479dc8b46b0eddb25bedba5d57f39c4906d601376a968faecd",
+  "status": "PASS",
+  "probes": [
+    {
+      "probe": "immutable FAIL receipt verifies with lossless archived JSON",
+      "argv": [
+        "frontend/e2e/release/qa10/run.mjs",
+        "verify",
+        "--candidate",
+        "f30f7871e8dafb0a0cac6d04857bc49b9cbf5d72",
+        "--receipt",
+        "/Users/lhs/Desktop/mcr-worktrees/fe-ref-customize/docs/mcr/evidence/release/qa10/candidate-f30f7871/receipt.json"
+      ],
+      "expected_exit": 1,
+      "exit_code": 1,
+      "stdout": "{\"schema\":\"mcr.qa10.frontend.v1\",\"candidate\":\"f30f7871e8dafb0a0cac6d04857bc49b9cbf5d72\",\"status\":\"FAIL\",\"frontend_checks\":\"FAIL\",\"whole_QA10\":\"BLOCKED\",\"note\":\"This validates the named historical candidate, not current HEAD or live acceptance.\"}\n",
+      "stderr": ""
+    },
+    {
+      "probe": "stale expected candidate rejected",
+      "argv": [
+        "frontend/e2e/release/qa10/run.mjs",
+        "verify",
+        "--candidate",
+        "e227d12ef4bb3ac92b9fdbbfaf954d4a56050081",
+        "--receipt",
+        "/Users/lhs/Desktop/mcr-worktrees/fe-ref-customize/docs/mcr/evidence/release/qa10/candidate-f30f7871/receipt.json"
+      ],
+      "expected_exit": 2,
+      "exit_code": 2,
+      "stdout": "",
+      "stderr": "Candidate mismatch; ancestry alone is insufficient\n+ actual - expected\n\n+ 'f30f7871e8dafb0a0cac6d04857bc49b9cbf5d72'\n- 'e227d12ef4bb3ac92b9fdbbfaf954d4a56050081'\n\n"
+    },
+    {
+      "probe": "missing gate",
+      "argv": [
+        "frontend/e2e/release/qa10/run.mjs",
+        "verify",
+        "--candidate",
+        "f30f7871e8dafb0a0cac6d04857bc49b9cbf5d72",
+        "--receipt",
+        "/var/folders/j4/41h_5mjj7j9d8f2j2bzcsngw0000gn/T/mcr-qa10-negative-li6xgc7s/receipt.json"
+      ],
+      "expected_exit": 2,
+      "exit_code": 2,
+      "stdout": "",
+      "stderr": "Duplicate or missing gates\n\n9 !== 10\n\n"
+    },
+    {
+      "probe": "empty passing gate",
+      "argv": [
+        "frontend/e2e/release/qa10/run.mjs",
+        "verify",
+        "--candidate",
+        "f30f7871e8dafb0a0cac6d04857bc49b9cbf5d72",
+        "--receipt",
+        "/var/folders/j4/41h_5mjj7j9d8f2j2bzcsngw0000gn/T/mcr-qa10-negative-li6xgc7s/receipt.json"
+      ],
+      "expected_exit": 2,
+      "exit_code": 2,
+      "stdout": "",
+      "stderr": "PASS cannot have empty coverage\n"
+    },
+    {
+      "probe": "failed process falsely marked PASS",
+      "argv": [
+        "frontend/e2e/release/qa10/run.mjs",
+        "verify",
+        "--candidate",
+        "f30f7871e8dafb0a0cac6d04857bc49b9cbf5d72",
+        "--receipt",
+        "/var/folders/j4/41h_5mjj7j9d8f2j2bzcsngw0000gn/T/mcr-qa10-negative-li6xgc7s/receipt.json"
+      ],
+      "expected_exit": 2,
+      "exit_code": 2,
+      "stdout": "",
+      "stderr": "PASS cannot hide a failed process\n\n1 !== 0\n\n"
+    },
+    {
+      "probe": "global acceptance forbidden",
+      "argv": [
+        "frontend/e2e/release/qa10/run.mjs",
+        "verify",
+        "--candidate",
+        "f30f7871e8dafb0a0cac6d04857bc49b9cbf5d72",
+        "--receipt",
+        "/var/folders/j4/41h_5mjj7j9d8f2j2bzcsngw0000gn/T/mcr-qa10-negative-li6xgc7s/receipt.json"
+      ],
+      "expected_exit": 2,
+      "exit_code": 2,
+      "stdout": "",
+      "stderr": "Frontend receipt never grants global acceptance\n"
+    },
+    {
+      "probe": "missing end fence",
+      "argv": [
+        "frontend/e2e/release/qa10/run.mjs",
+        "verify",
+        "--candidate",
+        "f30f7871e8dafb0a0cac6d04857bc49b9cbf5d72",
+        "--receipt",
+        "/var/folders/j4/41h_5mjj7j9d8f2j2bzcsngw0000gn/T/mcr-qa10-negative-li6xgc7s/receipt.json"
+      ],
+      "expected_exit": 2,
+      "exit_code": 2,
+      "stdout": "",
+      "stderr": "Candidate was not rechecked after execution\n\nfalse !== true\n\n"
+    },
+    {
+      "probe": "altered command artifact rejected",
+      "argv": [
+        "frontend/e2e/release/qa10/run.mjs",
+        "verify",
+        "--candidate",
+        "f30f7871e8dafb0a0cac6d04857bc49b9cbf5d72",
+        "--receipt",
+        "/var/folders/j4/41h_5mjj7j9d8f2j2bzcsngw0000gn/T/mcr-qa10-negative-li6xgc7s/receipt.json"
+      ],
+      "expected_exit": 2,
+      "exit_code": 2,
+      "stdout": "",
+      "stderr": "Artifact changed: dependencies.log\n+ actual - expected\n\n+ 'e16b245bddc79bb9086612feaf7df77463289932569a439c3e235dc99984e626'\n- 'db213cc9b49053619d6d90dd703ed56acfcf7f6059a60bc4cac5cbf0712ca398'\n\n"
+    },
+    {
+      "probe": "corrupt compressed result rejected",
+      "argv": [
+        "frontend/e2e/release/qa10/run.mjs",
+        "verify",
+        "--candidate",
+        "f30f7871e8dafb0a0cac6d04857bc49b9cbf5d72",
+        "--receipt",
+        "/var/folders/j4/41h_5mjj7j9d8f2j2bzcsngw0000gn/T/mcr-qa10-negative-li6xgc7s/receipt.json"
+      ],
+      "expected_exit": 2,
+      "exit_code": 2,
+      "stdout": "",
+      "stderr": "incorrect header check\n"
+    },
+    {
+      "probe": "run refuses an ancestor rather than current candidate",
+      "argv": [
+        "frontend/e2e/release/qa10/run.mjs",
+        "run",
+        "--candidate",
+        "f30f7871e8dafb0a0cac6d04857bc49b9cbf5d72",
+        "--output",
+        "/Users/lhs/Desktop/mcr-worktrees/fe-ref-customize/docs/mcr/evidence/release/qa10/must-not-exist"
+      ],
+      "expected_exit": 2,
+      "exit_code": 2,
+      "stdout": "",
+      "stderr": "Candidate mismatch; ancestry alone is insufficient\n+ actual - expected\n\n+ '68c5f48d1dc0f4a2bdbdfd372a51f89b842e788f'\n- 'f30f7871e8dafb0a0cac6d04857bc49b9cbf5d72'\n\n"
+    }
+  ]
+}

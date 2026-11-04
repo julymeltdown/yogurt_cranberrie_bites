@@ -1,0 +1,466 @@
+{
+  "result": "PASS",
+  "qualification": "MOCK_READY: new editor/controller/runtime and actual incumbent Phaser scene under explicit TEST_ONLY local authority and deterministic HTTP fixture. Not application Root/public C05/production admission, live socket/service, physical device or multiuser acceptance.",
+  "parent": "6a73eff54035a4bf6f3e1ef5b0b53ea7be79bebd",
+  "cases": [
+    {
+      "width": 360,
+      "height": 800,
+      "initial": {
+        "mounts": 1,
+        "gameCanvases": 1,
+        "avatarRequests": 2
+      },
+      "artProof": {
+        "compared": 120,
+        "distinct": [
+          5,
+          5,
+          5,
+          5,
+          5,
+          5,
+          5,
+          5,
+          5,
+          5,
+          5,
+          5,
+          5,
+          5,
+          5,
+          5,
+          5,
+          5,
+          5,
+          5,
+          5,
+          5,
+          5,
+          5
+        ]
+      },
+      "directionFrames": [
+        {
+          "direction": "down",
+          "frames": [
+            "1",
+            "2",
+            "3",
+            "4"
+          ]
+        },
+        {
+          "direction": "left",
+          "frames": [
+            "8",
+            "9",
+            "6",
+            "7"
+          ]
+        },
+        {
+          "direction": "right",
+          "frames": [
+            "14",
+            "11",
+            "12",
+            "13"
+          ]
+        },
+        {
+          "direction": "up",
+          "frames": [
+            "17",
+            "18",
+            "19",
+            "16"
+          ]
+        }
+      ],
+      "worldFrames": [
+        {
+          "direction": "down",
+          "frames": [
+            1,
+            2,
+            3,
+            4
+          ]
+        },
+        {
+          "direction": "left",
+          "frames": [
+            6,
+            7,
+            8,
+            9
+          ]
+        },
+        {
+          "direction": "right",
+          "frames": [
+            11,
+            12,
+            13,
+            14
+          ]
+        },
+        {
+          "direction": "up",
+          "frames": [
+            16,
+            17,
+            18,
+            19
+          ]
+        }
+      ],
+      "draft": {
+        "testOnlyContract": "mcr-motion-fixture-v1",
+        "selection": {
+          "mode": "wardrobe",
+          "body": "body-7",
+          "eyes": "eyes-3",
+          "hair": "hair-5",
+          "outfit": "outfit-5",
+          "accessory": "accessory-2"
+        }
+      },
+      "pixels": {
+        "sharedComposition": "sha256:9a0314eab3d9d8c3e6a830bca45b143a13734727b8b6cf5c0b13a341dd1a9b57",
+        "profile": "sha256:9a0314eab3d9d8c3e6a830bca45b143a13734727b8b6cf5c0b13a341dd1a9b57"
+      },
+      "cleanup": {
+        "mounts": 1,
+        "destroys": 1,
+        "canvases": 0,
+        "scene": {
+          "textures": 0,
+          "sprites": 0,
+          "listeners": 0
+        },
+        "owner": {
+          "decodedAtlases": 0,
+          "leases": 0,
+          "clockListeners": 0,
+          "composition": null,
+          "disposed": true
+        }
+      }
+    },
+    {
+      "width": 390,
+      "height": 844,
+      "initial": {
+        "mounts": 1,
+        "gameCanvases": 1,
+        "avatarRequests": 2
+      },
+      "artProof": {
+        "compared": 120,
+        "distinct": [
+          5,
+          5,
+          5,
+          5,
+          5,
+          5,
+          5,
+          5,
+          5,
+          5,
+          5,
+          5,
+          5,
+          5,
+          5,
+          5,
+          5,
+          5,
+          5,
+          5,
+          5,
+          5,
+          5,
+          5
+        ]
+      },
+      "directionFrames": [
+        {
+          "direction": "down",
+          "frames": [
+            "3",
+            "4",
+            "1",
+            "2"
+          ]
+        },
+        {
+          "direction": "left",
+          "frames": [
+            "6",
+            "7",
+            "8",
+            "9"
+          ]
+        },
+        {
+          "direction": "right",
+          "frames": [
+            "13",
+            "14",
+            "11",
+            "12"
+          ]
+        },
+        {
+          "direction": "up",
+          "frames": [
+            "16",
+            "17",
+            "18",
+            "19"
+          ]
+        }
+      ],
+      "worldFrames": [
+        {
+          "direction": "down",
+          "frames": [
+            1,
+            2,
+            3,
+            4
+          ]
+        },
+        {
+          "direction": "left",
+          "frames": [
+            6,
+            7,
+            8,
+            9
+          ]
+        },
+        {
+          "direction": "right",
+          "frames": [
+            11,
+            12,
+            13,
+            14
+          ]
+        },
+        {
+          "direction": "up",
+          "frames": [
+            16,
+            17,
+            18,
+            19
+          ]
+        }
+      ],
+      "draft": {
+        "testOnlyContract": "mcr-motion-fixture-v1",
+        "selection": {
+          "mode": "wardrobe",
+          "body": "body-7",
+          "eyes": "eyes-3",
+          "hair": "hair-5",
+          "outfit": "outfit-5",
+          "accessory": "accessory-2"
+        }
+      },
+      "pixels": {
+        "sharedComposition": "sha256:9a0314eab3d9d8c3e6a830bca45b143a13734727b8b6cf5c0b13a341dd1a9b57",
+        "profile": "sha256:9a0314eab3d9d8c3e6a830bca45b143a13734727b8b6cf5c0b13a341dd1a9b57"
+      },
+      "cleanup": {
+        "mounts": 1,
+        "destroys": 1,
+        "canvases": 0,
+        "scene": {
+          "textures": 0,
+          "sprites": 0,
+          "listeners": 0
+        },
+        "owner": {
+          "decodedAtlases": 0,
+          "leases": 0,
+          "clockListeners": 0,
+          "composition": null,
+          "disposed": true
+        }
+      }
+    },
+    {
+      "width": 430,
+      "height": 932,
+      "initial": {
+        "mounts": 1,
+        "gameCanvases": 1,
+        "avatarRequests": 2
+      },
+      "artProof": {
+        "compared": 120,
+        "distinct": [
+          5,
+          5,
+          5,
+          5,
+          5,
+          5,
+          5,
+          5,
+          5,
+          5,
+          5,
+          5,
+          5,
+          5,
+          5,
+          5,
+          5,
+          5,
+          5,
+          5,
+          5,
+          5,
+          5,
+          5
+        ]
+      },
+      "directionFrames": [
+        {
+          "direction": "down",
+          "frames": [
+            "3",
+            "4",
+            "1",
+            "2"
+          ]
+        },
+        {
+          "direction": "left",
+          "frames": [
+            "6",
+            "7",
+            "8",
+            "9"
+          ]
+        },
+        {
+          "direction": "right",
+          "frames": [
+            "13",
+            "14",
+            "11",
+            "12"
+          ]
+        },
+        {
+          "direction": "up",
+          "frames": [
+            "16",
+            "17",
+            "18",
+            "19"
+          ]
+        }
+      ],
+      "worldFrames": [
+        {
+          "direction": "down",
+          "frames": [
+            1,
+            2,
+            3,
+            4
+          ]
+        },
+        {
+          "direction": "left",
+          "frames": [
+            6,
+            7,
+            8,
+            9
+          ]
+        },
+        {
+          "direction": "right",
+          "frames": [
+            11,
+            12,
+            13,
+            14
+          ]
+        },
+        {
+          "direction": "up",
+          "frames": [
+            16,
+            17,
+            18,
+            19
+          ]
+        }
+      ],
+      "draft": {
+        "testOnlyContract": "mcr-motion-fixture-v1",
+        "selection": {
+          "mode": "wardrobe",
+          "body": "body-7",
+          "eyes": "eyes-3",
+          "hair": "hair-5",
+          "outfit": "outfit-5",
+          "accessory": "accessory-2"
+        }
+      },
+      "pixels": {
+        "sharedComposition": "sha256:9a0314eab3d9d8c3e6a830bca45b143a13734727b8b6cf5c0b13a341dd1a9b57",
+        "profile": "sha256:9a0314eab3d9d8c3e6a830bca45b143a13734727b8b6cf5c0b13a341dd1a9b57"
+      },
+      "cleanup": {
+        "mounts": 1,
+        "destroys": 1,
+        "canvases": 0,
+        "scene": {
+          "textures": 0,
+          "sprites": 0,
+          "listeners": 0
+        },
+        "owner": {
+          "decodedAtlases": 0,
+          "leases": 0,
+          "clockListeners": 0,
+          "composition": null,
+          "disposed": true
+        }
+      }
+    }
+  ],
+  "errors": [],
+  "artifacts": {
+    "customize-360-revenge.jpg": "c1a9e542a619988f32ca5f0239e5d781bbdadb38b3872a522d97ad805cc8f94e",
+    "customize-360-parade.jpg": "09940645588a315712a064a96f78ef38dbea6bf642e15c630644a26fb984c4f3",
+    "customize-360-danger.jpg": "ad3bdcf4fc17fe26b68e994e7a12e5748b6573c2589773c1e45ebb2f6354f8b5",
+    "customize-360.jpg": "852d2464ab57a0b788b448fcdd67e248a186761201f61f2f2bcff8dfde6351b6",
+    "customize-390-revenge.jpg": "1bb81f96a96f9f6795202f5f05283f99000d38df3ebf423bbb99845268ed9421",
+    "customize-390-parade.jpg": "f6b4d92aaaf8985fd5e1c8b95d9e7fce7b0d259e110b416a6cdf982589c9fba9",
+    "customize-390-danger.jpg": "4462df1aa2d10e5764e41746f46cbd364dba7430e0001e0e7186fe6675ffd23f",
+    "customize-390.jpg": "81eb97a5f669fc71b4bae043d24d7b43ff7ba84f0f53febe0c671448d5967820",
+    "customize-430-revenge.jpg": "0224f7311640b368c9d7580bd0910d6311a1a8ee22f852e2d1d631c1a3ade46f",
+    "customize-430-parade.jpg": "a13173f38e684b472a73f0dee488d24b785421aa9480e16d884c0e7a48709d35",
+    "customize-430-danger.jpg": "42301c25b98ae3430c2cc5d3b986d890f596c7ca8a774b11679c9aeb5a8c8e64",
+    "customize-430.jpg": "45ff1a6228c646df5223c9ae9782edcd83c7c128455259e901c73508dba48070"
+  },
+  "browser": "156.0.8078.80",
+  "wardrobeReference": {
+    "cases": 1176,
+    "aggregate": "sha256:9201f53893fe5de62b975a777ce377abb662e7e23caa2f891d08999980265408",
+    "reference": "Unchanged previously qualified wardrobe-review.mjs Canvas fixture; 1176 pairwise RGBA comparisons."
+  }
+}

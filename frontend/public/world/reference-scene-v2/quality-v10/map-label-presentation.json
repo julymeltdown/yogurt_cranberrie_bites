@@ -1,0 +1,855 @@
+{
+  "version": 2,
+  "status": "CONTRACT_READY_SOURCE_PRESENTATION_NOT_RELEASE_BOUND",
+  "geometry_hash": "sha256:ef52c8b05af6a882f2e82285c9879c9a4cb78ab513336e4bb3cd483c9b123395",
+  "dimensions": {
+    "width": 768,
+    "height": 1296
+  },
+  "view": "MAP_ONLY",
+  "style": {
+    "font_family": "MCR Map Labels",
+    "font_style": "Bold",
+    "font_size": 40,
+    "line_height": 42,
+    "text_fill": "#211e20",
+    "paper_fill": "#f3ead8",
+    "border_fill": "#211e20",
+    "border_width": 3,
+    "icon_fill": "#211e20",
+    "icon_paper": "#d9b49c",
+    "icon_size": 55,
+    "icon_cell": 70,
+    "padding": 14,
+    "single_height": 78,
+    "double_height": 108,
+    "edge_margin": 5,
+    "text_metric_allowance": 4
+  },
+  "icons": {
+    "stage": [
+      [
+        [
+          2,
+          3
+        ],
+        [
+          22,
+          3
+        ],
+        [
+          22,
+          6
+        ],
+        [
+          2,
+          6
+        ]
+      ],
+      [
+        [
+          3,
+          6
+        ],
+        [
+          6,
+          6
+        ],
+        [
+          6,
+          19
+        ],
+        [
+          3,
+          19
+        ]
+      ],
+      [
+        [
+          18,
+          6
+        ],
+        [
+          21,
+          6
+        ],
+        [
+          21,
+          19
+        ],
+        [
+          18,
+          19
+        ]
+      ],
+      [
+        [
+          2,
+          19
+        ],
+        [
+          22,
+          19
+        ],
+        [
+          22,
+          22
+        ],
+        [
+          2,
+          22
+        ]
+      ],
+      [
+        [
+          6,
+          6
+        ],
+        [
+          10,
+          6
+        ],
+        [
+          8,
+          12
+        ],
+        [
+          6,
+          14
+        ]
+      ],
+      [
+        [
+          14,
+          6
+        ],
+        [
+          18,
+          6
+        ],
+        [
+          18,
+          14
+        ],
+        [
+          16,
+          12
+        ]
+      ],
+      [
+        [
+          10,
+          7
+        ],
+        [
+          14,
+          7
+        ],
+        [
+          14,
+          9
+        ],
+        [
+          10,
+          9
+        ]
+      ]
+    ],
+    "merch": [
+      [
+        [
+          4,
+          8
+        ],
+        [
+          20,
+          8
+        ],
+        [
+          22,
+          22
+        ],
+        [
+          2,
+          22
+        ]
+      ],
+      [
+        [
+          7,
+          8
+        ],
+        [
+          7,
+          3
+        ],
+        [
+          9,
+          1
+        ],
+        [
+          15,
+          1
+        ],
+        [
+          17,
+          3
+        ],
+        [
+          17,
+          8
+        ],
+        [
+          14,
+          8
+        ],
+        [
+          14,
+          4
+        ],
+        [
+          10,
+          4
+        ],
+        [
+          10,
+          8
+        ]
+      ]
+    ],
+    "food": [
+      [
+        [
+          3,
+          2
+        ],
+        [
+          5,
+          2
+        ],
+        [
+          5,
+          9
+        ],
+        [
+          3,
+          9
+        ]
+      ],
+      [
+        [
+          7,
+          2
+        ],
+        [
+          9,
+          2
+        ],
+        [
+          9,
+          9
+        ],
+        [
+          7,
+          9
+        ]
+      ],
+      [
+        [
+          11,
+          2
+        ],
+        [
+          13,
+          2
+        ],
+        [
+          13,
+          9
+        ],
+        [
+          11,
+          9
+        ]
+      ],
+      [
+        [
+          3,
+          8
+        ],
+        [
+          13,
+          8
+        ],
+        [
+          13,
+          11
+        ],
+        [
+          3,
+          11
+        ]
+      ],
+      [
+        [
+          7,
+          10
+        ],
+        [
+          10,
+          10
+        ],
+        [
+          10,
+          23
+        ],
+        [
+          7,
+          23
+        ]
+      ],
+      [
+        [
+          19,
+          1
+        ],
+        [
+          22,
+          4
+        ],
+        [
+          22,
+          11
+        ],
+        [
+          20,
+          13
+        ],
+        [
+          20,
+          23
+        ],
+        [
+          17,
+          23
+        ],
+        [
+          17,
+          13
+        ],
+        [
+          15,
+          11
+        ],
+        [
+          15,
+          4
+        ]
+      ]
+    ],
+    "people": [
+      [
+        [
+          9,
+          1
+        ],
+        [
+          15,
+          1
+        ],
+        [
+          17,
+          3
+        ],
+        [
+          17,
+          7
+        ],
+        [
+          15,
+          9
+        ],
+        [
+          9,
+          9
+        ],
+        [
+          7,
+          7
+        ],
+        [
+          7,
+          3
+        ]
+      ],
+      [
+        [
+          2,
+          6
+        ],
+        [
+          5,
+          6
+        ],
+        [
+          7,
+          8
+        ],
+        [
+          7,
+          12
+        ],
+        [
+          5,
+          14
+        ],
+        [
+          2,
+          14
+        ],
+        [
+          0,
+          12
+        ],
+        [
+          0,
+          8
+        ]
+      ],
+      [
+        [
+          19,
+          6
+        ],
+        [
+          22,
+          6
+        ],
+        [
+          24,
+          8
+        ],
+        [
+          24,
+          12
+        ],
+        [
+          22,
+          14
+        ],
+        [
+          19,
+          14
+        ],
+        [
+          17,
+          12
+        ],
+        [
+          17,
+          8
+        ]
+      ],
+      [
+        [
+          7,
+          12
+        ],
+        [
+          17,
+          12
+        ],
+        [
+          20,
+          16
+        ],
+        [
+          20,
+          23
+        ],
+        [
+          4,
+          23
+        ],
+        [
+          4,
+          16
+        ]
+      ],
+      [
+        [
+          0,
+          16
+        ],
+        [
+          3,
+          16
+        ],
+        [
+          3,
+          23
+        ],
+        [
+          0,
+          23
+        ]
+      ],
+      [
+        [
+          21,
+          16
+        ],
+        [
+          24,
+          16
+        ],
+        [
+          24,
+          23
+        ],
+        [
+          21,
+          23
+        ]
+      ]
+    ],
+    "gift": [
+      [
+        [
+          2,
+          9
+        ],
+        [
+          22,
+          9
+        ],
+        [
+          22,
+          13
+        ],
+        [
+          2,
+          13
+        ]
+      ],
+      [
+        [
+          4,
+          14
+        ],
+        [
+          20,
+          14
+        ],
+        [
+          20,
+          23
+        ],
+        [
+          4,
+          23
+        ]
+      ],
+      [
+        [
+          11,
+          9
+        ],
+        [
+          14,
+          9
+        ],
+        [
+          14,
+          23
+        ],
+        [
+          11,
+          23
+        ]
+      ],
+      [
+        [
+          11,
+          9
+        ],
+        [
+          4,
+          8
+        ],
+        [
+          2,
+          5
+        ],
+        [
+          3,
+          2
+        ],
+        [
+          7,
+          1
+        ],
+        [
+          11,
+          4
+        ],
+        [
+          13,
+          9
+        ],
+        [
+          10,
+          7
+        ],
+        [
+          7,
+          4
+        ],
+        [
+          5,
+          4
+        ],
+        [
+          5,
+          6
+        ],
+        [
+          10,
+          8
+        ]
+      ],
+      [
+        [
+          13,
+          9
+        ],
+        [
+          20,
+          8
+        ],
+        [
+          22,
+          5
+        ],
+        [
+          21,
+          2
+        ],
+        [
+          17,
+          1
+        ],
+        [
+          13,
+          4
+        ],
+        [
+          11,
+          9
+        ],
+        [
+          14,
+          7
+        ],
+        [
+          17,
+          4
+        ],
+        [
+          19,
+          4
+        ],
+        [
+          19,
+          6
+        ],
+        [
+          14,
+          8
+        ]
+      ]
+    ]
+  },
+  "icon_cutouts": {
+    "merch": [
+      [
+        [
+          5,
+          11
+        ],
+        [
+          19,
+          11
+        ],
+        [
+          19,
+          19
+        ],
+        [
+          5,
+          19
+        ]
+      ]
+    ]
+  },
+  "labels": [
+    {
+      "label": "MAIN STAGE",
+      "x": 335,
+      "y": 147,
+      "interaction_id": "stage_info",
+      "lines": [
+        "MAIN STAGE"
+      ],
+      "icon": "stage",
+      "rect": {
+        "x": 179,
+        "y": 108,
+        "width": 312,
+        "height": 78
+      },
+      "binding_policy": "Existing interaction only"
+    },
+    {
+      "label": "PLAZA",
+      "x": 370,
+      "y": 461,
+      "interaction_id": null,
+      "lines": [
+        "PLAZA"
+      ],
+      "icon": null,
+      "rect": {
+        "x": 298,
+        "y": 422,
+        "width": 143,
+        "height": 78
+      },
+      "binding_policy": "Decorative, no hit target or invented place"
+    },
+    {
+      "label": "MERCH",
+      "x": 118,
+      "y": 750,
+      "interaction_id": "gifts_info",
+      "lines": [
+        "MERCH"
+      ],
+      "icon": "merch",
+      "rect": {
+        "x": 8,
+        "y": 711,
+        "width": 221,
+        "height": 78
+      },
+      "binding_policy": "Existing interaction only"
+    },
+    {
+      "label": "FOOD",
+      "x": 658,
+      "y": 758,
+      "interaction_id": null,
+      "lines": [
+        "FOOD"
+      ],
+      "icon": "food",
+      "rect": {
+        "x": 562,
+        "y": 719,
+        "width": 192,
+        "height": 78
+      },
+      "binding_policy": "Decorative, no hit target or invented place"
+    },
+    {
+      "label": "MEETUP ZONE",
+      "x": 372,
+      "y": 1024.836257,
+      "interaction_id": null,
+      "lines": [
+        "MEETUP",
+        "ZONE"
+      ],
+      "icon": "people",
+      "rect": {
+        "x": 252,
+        "y": 971,
+        "width": 240,
+        "height": 108
+      },
+      "binding_policy": "Decorative, no hit target or invented place"
+    },
+    {
+      "label": "GIVEAWAY BOOTH",
+      "x": 540,
+      "y": 1241.157895,
+      "interaction_id": null,
+      "lines": [
+        "GIVEAWAY",
+        "BOOTH"
+      ],
+      "icon": "gift",
+      "rect": {
+        "x": 400,
+        "y": 1183,
+        "width": 280,
+        "height": 108
+      },
+      "binding_policy": "Decorative, no hit target or invented place"
+    }
+  ],
+  "font": {
+    "path": "frontend/public/world/reference-scene-v2/map-labels-v1/map-labels-bold.ttf",
+    "bytes": 145012,
+    "sha256": "sha256:f44e493f61e2d91c2156dd5abc720eeb6274a9c02b11d9097d1ea38d50011e8b"
+  },
+  "font_license": {
+    "path": "frontend/public/world/reference-scene-v2/map-labels-v1/OFL.txt",
+    "bytes": 4393,
+    "sha256": "sha256:0e4cc6ece88573545be2ed25835363662a6182ba4a4c1b5c8feda52add30e8a6"
+  },
+  "frozen_inputs": [
+    {
+      "path": "frontend/public/world/reference-scene-v2/quality-v8/manifest.json",
+      "bytes": 6216,
+      "sha256": "sha256:0aa7ffc44d4fa69ad8d0ac9dfb8ab30907ce0e785aa461a03a1452b8461518d6"
+    },
+    {
+      "path": "frontend/public/world/reference-scene-v2/spatial-v5/integer-projection.json",
+      "bytes": 22508,
+      "sha256": "sha256:ce72d8311287067d8c280f136c852a4f0024610f6550a83b12d42e4df2b82651"
+    },
+    {
+      "path": "frontend/public/world/reference-scene-v2/spatial-v5/geometry-proposal.json",
+      "bytes": 184445,
+      "sha256": "sha256:a2cdd0e60c1f9cc7c3f093643760000e91a01e1fadffb51f9a76bd2c3a7a3a0f"
+    }
+  ],
+  "composition": "Draw labels after scenery in MAP coordinates; scale with the scene, not fixed CSS pixels. Do not bake them into ground/atlas. WORLD has no destination overlay. No pin marker without actual selected state.",
+  "authority": "These vectors and labels add no place, destination, collision, route, physical eligibility, source-review state, interaction or release binding. Existing null bindings remain null.",
+  "runtime_resources": "No additional PNG or changed v8 texture. This exact OFL font is separately pinned; import/reuse it deliberately in an assigned consumer patch.",
+  "provenance": {
+    "icons": "Original hand-authored filled polygons in build.py; no reference raster extraction or legacy icons.",
+    "font_source": {
+      "path": "frontend/src/features/auth/ui/reference-sign-in/typography/RobotoCondensed-variable.ttf",
+      "bytes": 371616,
+      "sha256": "sha256:dace262afcee68a5276f200d8026c57221735c0118ab5fda8c2c0d3dc409a8d0"
+    },
+    "font_source_license": {
+      "path": "frontend/src/features/auth/ui/reference-sign-in/typography/robotocondensed-OFL.txt",
+      "bytes": 4393,
+      "sha256": "sha256:0e4cc6ece88573545be2ed25835363662a6182ba4a4c1b5c8feda52add30e8a6"
+    },
+    "font_upstream": "https://raw.githubusercontent.com/google/fonts/69d0549e8fc7ad72e1531734c81237be401ec4fd/ofl/robotocondensed/RobotoCondensed%5Bwght%5D.ttf",
+    "font_transform": "fontTools instantiateVariableFont wght800; unique MCR Map Labels names; fixed source timestamps; no glyph edits.",
+    "label_text_anchors_bindings": "Exact immutable quality-v8 MAP metadata; visible rectangle centers clamp to5px scene edges, authored anchors unchanged."
+  },
+  "source_lineage_commit": "ab8e93ba79332df62d5105bb4aa187c8c7f5cd48",
+  "publication": "Unpublished candidate; this lineage commit does not contain the new geometry or presentation.",
+  "base_presentation": {
+    "path": "frontend/public/world/reference-scene-v2/map-labels-v1/presentation.json",
+    "bytes": 13268,
+    "sha256": "sha256:f9599a9859fe0b660fee591440dee2f7ab8e025a5f525df82091b61b091b23cc"
+  },
+  "derivation": "Explicit spatial-v5 binding of the byte-equivalent v1 drawing values: dimensions, labels, anchors, null/existing bindings, style, icons and font. New geometry requires fresh consumer validation; no prior review, release or server allocation is inherited."
+}

@@ -1,0 +1,57 @@
+{
+  "commands": [
+    {
+      "command": [
+        "tsrct",
+        "project",
+        "checkout",
+        "--project",
+        "quality-v10/ground.tsrct",
+        "--output",
+        "quality-v10/ground-editable.json"
+      ],
+      "exit_code": 0
+    },
+    {
+      "command": [
+        "tsrct",
+        "project",
+        "commit",
+        "--project",
+        "quality-v10/ground.tsrct",
+        "--file",
+        "quality-v10/ground-editable.json"
+      ],
+      "exit_code": 0
+    },
+    {
+      "command": [
+        "tsrct",
+        "preview",
+        "--project",
+        "quality-v10/ground.tsrct",
+        "--time",
+        "1",
+        "--output",
+        "quality-v10/ground-native.png"
+      ],
+      "exit_code": 0
+    }
+  ],
+  "geometry_hash": "sha256:ef52c8b05af6a882f2e82285c9879c9a4cb78ab513336e4bb3cd483c9b123395",
+  "painted_boundary_segments": 108,
+  "frozen_input": {
+    "path": "material-ground.png",
+    "sha256": "sha256:d21c4efb881d747605dcc0c89a71aeb5acdda273dc5a0d767ae50abc6457f9bc"
+  },
+  "native_output": {
+    "path": "ground-native.png",
+    "sha256": "sha256:4426158f4e7cc771e42ad5352ca5365563f2660d46a862a14d8c227844b91646"
+  },
+  "packaging": "Native RGBA alpha is uniformly255; runtime RGB removes only that redundant channel and applies lossless PNG compression. Every RGB pixel exactly equals actual native export; no palette quantization/resampling.",
+  "output": {
+    "path": "ground.png",
+    "sha256": "sha256:dd70d8fb02e1c6e57e9a9f9e96d69dc7c15999bc076678a7075161281c929887",
+    "bytes": 549155
+  }
+}

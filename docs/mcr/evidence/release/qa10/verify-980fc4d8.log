@@ -1,0 +1,1 @@
+{"schema":"mcr.qa10.frontend.v1","candidate":"980fc4d85020f297b36fee8195e1ca92079ff33f","status":"PARTIAL","frontend_checks":"PASS","whole_QA10":"BLOCKED","note":"This validates the named historical candidate, not current HEAD or live acceptance."}

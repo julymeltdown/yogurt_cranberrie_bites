@@ -1,0 +1,3 @@
+(node:86170) [DEP0129] DeprecationWarning: _channel is deprecated. Use ChildProcess.channel instead.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+JSON report written to <candidate-checkout>/docs/mcr/evidence/release/qa10/candidate-68c5f48d/vitest.json

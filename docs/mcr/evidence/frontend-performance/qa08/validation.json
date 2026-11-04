@@ -1,0 +1,75 @@
+{
+  "recordedAtUtc": "2026-11-04T02:14:58.713748+00:00",
+  "candidate": "f9d1af22bb66d8870a5e2442b64fded7fa013bf8",
+  "sourceBase": "ea9012fb6e4f6447fed5a6fb636b3b3a40991431",
+  "checks": [
+    {
+      "command": [
+        "node",
+        "--test",
+        "frontend/e2e/qa08-rendering/metrics.node-selftest.mjs"
+      ],
+      "exitCode": 0,
+      "output": "\u2714 nearest-rank tails preserve outliers without mutating raw samples (0.448ms)\n\u2714 zero renders in a covered world differ from RAF activity and unknown intervals (0.109667ms)\n\u2714 30 FPS reference uses the original budget and measured window, not requested duration (0.071583ms)\n\u2139 tests 3\n\u2139 suites 0\n\u2139 pass 3\n\u2139 fail 0\n\u2139 cancelled 0\n\u2139 skipped 0\n\u2139 todo 0\n\u2139 duration_ms 43.551\n"
+    },
+    {
+      "command": [
+        "frontend/node_modules/.bin/tsc",
+        "-p",
+        "frontend/e2e/qa08-rendering/tsconfig.json",
+        "--incremental",
+        "--tsBuildInfoFile",
+        "frontend/e2e/qa08-rendering/.cache/fixture.tsbuildinfo"
+      ],
+      "exitCode": 0,
+      "output": ""
+    },
+    {
+      "command": [
+        "frontend/node_modules/.bin/oxlint",
+        "--deny-warnings",
+        "frontend/e2e/qa08-rendering/fixture.tsx",
+        "frontend/e2e/qa08-rendering/native.mjs",
+        "frontend/e2e/qa08-rendering/metrics.mjs",
+        "frontend/e2e/qa08-rendering/metrics.node-selftest.mjs"
+      ],
+      "exitCode": 0,
+      "output": ""
+    },
+    {
+      "command": [
+        "python3",
+        "scripts/mcr/check-plan.py"
+      ],
+      "exitCode": 0,
+      "output": "{\n  \"scope\": \"Planning provenance, structure, exporter regression, and delivery routing only\",\n  \"result\": \"PASS\",\n  \"python_version\": \"3.14.3\",\n  \"checks\": [\n    \"13 original archive checksums match\",\n    \"pinned upstream narrative checksum matches\",\n    \"active and original narrative/table task and IA content match\",\n    \"original: nine regression probes pass and all committed exports reproduce\",\n    \"active: nine regression probes pass and all committed exports reproduce\",\n    \"all active metadata and 118 task destinations use mcr/master; baseline remains NOT_STARTED\",\n    \"release checklist contains 111 prerequisites plus IN05 and 61 required IA entries\"\n  ],\n  \"task_count\": 118,\n  \"ia_count\": 64,\n  \"application_build\": \"NOT_RUN\",\n  \"application_tests\": \"NOT_RUN\",\n  \"deployment\": \"NOT_RUN\",\n  \"input_sha256\": {\n    \"MCR_IMPLEMENTATION_PLAN_V2_EN.md\": \"e19732ac9c5c5d5397652bf047645da0640ec72c97f59869974680c4e7f69a36\",\n    \"PLAN_TABLES_EN.md\": \"7e81683fcc05f8441b473f673b282a1010931721ffabf15aeef6548811ec8ba5\",\n    \"MCR_EXPORT_PLAN_EN.py\": \"57cdba6af51feb45bef5b74a0ed2755b448d475b0ceb1ad2c9ff16b72060e348\",\n    \"TEST_PLAN_EXPORT_EN.py\": \"cd7b1cb49636db9468041d8bf87e7dacfeb483b0679facf50638d0f181557b8e\",\n    \"scripts/mcr/check-plan.py\": \"a172af72eb033dcc3e9461d8a16c58ac7704702a4ced39801a67b3b3edcc3cd3\",\n    \"docs/mcr/source-provenance.json\": \"bf249c1e414928d5946803243ca1857f8d6e4435fa0fe49fb2185bc778d54fd8\"\n  }\n}\n"
+    },
+    {
+      "command": [
+        "node",
+        "scripts/mcr/check-ui-origin.mjs"
+      ],
+      "exitCode": 0,
+      "output": "{\n  \"task\": \"C08\",\n  \"result\": \"PASS\",\n  \"source_revision\": \"5eecdcaffd1a9d505b9ab2a974f8d5623217e90a\",\n  \"inventory_sha256\": \"9d1202211cd136948a7afeb5588238ba9de13613980dab42616011f47762a079\",\n  \"files_scanned\": 2977,\n  \"content_files\": 2969,\n  \"reviewed_extracts\": 4,\n  \"violations\": [],\n  \"scope\": \"Exact bytes and static imports only; manual source/visual review and QA02 remain required\"\n}\n"
+    },
+    {
+      "command": [
+        "git",
+        "diff",
+        "--cached",
+        "--check"
+      ],
+      "exitCode": 0,
+      "output": "Passed after normalizing log-only trailing whitespace."
+    }
+  ],
+  "native": {
+    "command": "QA08_RUN=final node frontend/e2e/qa08-rendering/native.mjs",
+    "exitCode": 0,
+    "status": "MEASURED",
+    "evidence": "final/measurements.json"
+  },
+  "inputPinCount": 2138,
+  "inputPinMismatches": [],
+  "limits": "Local desktop synthetic authority only; original QA08 PARTIAL and physical mobile/real200/four-room/storm NOT_RUN."
+}

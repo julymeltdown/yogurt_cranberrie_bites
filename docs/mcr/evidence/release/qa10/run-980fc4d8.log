@@ -1,0 +1,21 @@
+QA10 dependencies: running
+QA10 dependencies: PASS (exit 0)
+QA10 python-formats: running
+QA10 python-formats: PASS (exit 0)
+QA10 typecheck: running
+QA10 typecheck: PASS (exit 0)
+QA10 lint: running
+QA10 lint: PASS (exit 0)
+QA10 vitest: running
+QA10 vitest: PASS (exit 0)
+QA10 node-tests: running
+QA10 node-tests: PASS (exit 0)
+QA10 build: running
+QA10 build: PASS (exit 0)
+QA10 ui-origin: running
+QA10 ui-origin: PASS (exit 0)
+QA10 production-static: running
+QA10 production-static: PASS (exit 0)
+QA10 task-trace: running
+QA10 task-trace: PASS (exit 0)
+{"candidate":"980fc4d85020f297b36fee8195e1ca92079ff33f","status":"PARTIAL","frontend_checks":"PASS","receipt":"/Users/lhs/Desktop/mcr-worktrees/fe-ref-customize/docs/mcr/evidence/release/qa10/candidate-980fc4d8/receipt.json"}
