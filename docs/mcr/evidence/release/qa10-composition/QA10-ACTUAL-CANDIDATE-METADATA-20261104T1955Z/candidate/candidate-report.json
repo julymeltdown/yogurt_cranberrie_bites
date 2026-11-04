@@ -1,0 +1,325 @@
+{
+  "candidate": "6d351502bcee839e0836955edbf5eff61ab9b0b7",
+  "catalogs": [
+    {
+      "path": "generated/TASKS_EN.json",
+      "sha256": "344faf4a6f47c564706606857e9b1fd1dae3b2ea8289b3960659f4be79c74fad"
+    },
+    {
+      "path": "generated/IA_EN.json",
+      "sha256": "cf086ab8e0737bc6b182c1f5ad6145aebd89595abfe3b550b34c7a7dad29b3ec"
+    }
+  ],
+  "composition_checks": "INCOMPLETE",
+  "findings": [
+    "category.backend.NOT_RUN",
+    "category.device.NOT_RUN",
+    "category.frontend.NOT_RUN",
+    "category.operator.NOT_RUN",
+    "category.service.NOT_RUN",
+    "evidence.backend-candidate.NOT_RUN",
+    "evidence.device-candidate.NOT_RUN",
+    "evidence.frontend-candidate.NOT_RUN",
+    "evidence.operator-candidate.NOT_RUN",
+    "evidence.service-candidate.NOT_RUN",
+    "frontend.v1.NOT_RUN",
+    "gate.BE43.NOT_RUN",
+    "gate.IN01.NOT_RUN",
+    "gate.IN02.NOT_RUN",
+    "gate.IN03.BLOCKED",
+    "gate.IN04.NOT_RUN",
+    "gate.QA01.NOT_RUN",
+    "gate.QA02.NOT_RUN",
+    "gate.QA03.NOT_RUN",
+    "gate.QA04.NOT_RUN",
+    "gate.QA05.NOT_RUN",
+    "gate.QA06.NOT_RUN",
+    "gate.QA07.NOT_RUN",
+    "gate.QA09.NOT_RUN",
+    "ia.NOT_RUN-or-BLOCKED",
+    "source.NOT_RUN",
+    "tasks.NOT_RUN-or-BLOCKED"
+  ],
+  "functional_evidence": "INCOMPLETE",
+  "gates": [
+    {
+      "id": "BE43",
+      "status": "NOT_RUN"
+    },
+    {
+      "id": "QA01",
+      "status": "NOT_RUN"
+    },
+    {
+      "id": "QA02",
+      "status": "NOT_RUN"
+    },
+    {
+      "id": "QA03",
+      "status": "NOT_RUN"
+    },
+    {
+      "id": "QA04",
+      "status": "NOT_RUN"
+    },
+    {
+      "id": "QA05",
+      "status": "NOT_RUN"
+    },
+    {
+      "id": "QA06",
+      "status": "NOT_RUN"
+    },
+    {
+      "id": "QA07",
+      "status": "NOT_RUN"
+    },
+    {
+      "id": "QA09",
+      "status": "NOT_RUN"
+    },
+    {
+      "id": "IN01",
+      "status": "NOT_RUN"
+    },
+    {
+      "id": "IN02",
+      "status": "NOT_RUN"
+    },
+    {
+      "id": "IN03",
+      "status": "BLOCKED"
+    },
+    {
+      "id": "IN04",
+      "status": "NOT_RUN"
+    },
+    {
+      "blocking": false,
+      "id": "QA08",
+      "status": "DEFERRED_BY_USER"
+    }
+  ],
+  "ia_coverage": {
+    "bound": 0,
+    "missing": [
+      "A01",
+      "A02",
+      "A03",
+      "A04",
+      "A05",
+      "A06",
+      "A07",
+      "A08",
+      "F01",
+      "F02",
+      "F03",
+      "F04",
+      "F05",
+      "G01",
+      "G02",
+      "G03",
+      "G04",
+      "G05",
+      "G06",
+      "G07",
+      "M01",
+      "M02",
+      "M03",
+      "M04",
+      "M05",
+      "M06",
+      "M07",
+      "M08",
+      "M09",
+      "O01",
+      "O02",
+      "O03",
+      "O04",
+      "O05",
+      "O06",
+      "O07",
+      "O08",
+      "O09",
+      "R01",
+      "S01",
+      "S02",
+      "S03",
+      "U01",
+      "U02",
+      "U03",
+      "U04",
+      "U05",
+      "U06",
+      "U07",
+      "U08",
+      "U09",
+      "U10",
+      "W01",
+      "W02",
+      "W03",
+      "W04",
+      "W05",
+      "W06",
+      "W07",
+      "W08",
+      "X01"
+    ],
+    "required": 61
+  },
+  "input_manifest": {
+    "path": "docs/mcr/evidence/release/qa10-composition/QA10-ACTUAL-CANDIDATE-METADATA-20261104T1955Z/candidate/input.json",
+    "sha256": "2bc963cbe160d84105746b044360123fc1e09489a6f06543f1385d803748ac89"
+  },
+  "limits": [
+    "Offline owner-evidence consistency, not signed execution attestation.",
+    "No receipt command is executed. Owner acceptance is recorded, not independently decided.",
+    "This output cannot grant IN05, qualify performance, or replace physical/live work."
+  ],
+  "qa08": "DEFERRED_BY_USER",
+  "receipts": [
+    {
+      "id": "backend-candidate",
+      "status": "NOT_RUN"
+    },
+    {
+      "id": "frontend-candidate",
+      "status": "NOT_RUN"
+    },
+    {
+      "id": "service-candidate",
+      "status": "NOT_RUN"
+    },
+    {
+      "id": "device-candidate",
+      "status": "NOT_RUN"
+    },
+    {
+      "id": "operator-candidate",
+      "status": "NOT_RUN"
+    }
+  ],
+  "release_decision": "NOT_ASSESSED",
+  "schema": "mcr.qa10.release-composition.v1",
+  "status": "INCOMPLETE",
+  "task_coverage": {
+    "bound": 0,
+    "deferred": [
+      "QA08"
+    ],
+    "missing": [
+      "AR01",
+      "AR02",
+      "AR03",
+      "AR04",
+      "BE01",
+      "BE02",
+      "BE03",
+      "BE04",
+      "BE05",
+      "BE06",
+      "BE07",
+      "BE08",
+      "BE09",
+      "BE10",
+      "BE11",
+      "BE12",
+      "BE13",
+      "BE14",
+      "BE15",
+      "BE16",
+      "BE17",
+      "BE18",
+      "BE19",
+      "BE20",
+      "BE21",
+      "BE22",
+      "BE23",
+      "BE24",
+      "BE25",
+      "BE26",
+      "BE27",
+      "BE28",
+      "BE29",
+      "BE30",
+      "BE31",
+      "BE32",
+      "BE33",
+      "BE34",
+      "BE35",
+      "BE36",
+      "BE37",
+      "BE38",
+      "BE39",
+      "BE40",
+      "BE41",
+      "BE42",
+      "BE43",
+      "BE44",
+      "C01",
+      "C02",
+      "C03",
+      "C04",
+      "C05",
+      "C06",
+      "C07",
+      "C08",
+      "FE01",
+      "FE02",
+      "FE03",
+      "FE04",
+      "FE05",
+      "FE06",
+      "FE07",
+      "FE08",
+      "FE09",
+      "FE10",
+      "FE11",
+      "FE12",
+      "FE13",
+      "FE14",
+      "FE15",
+      "FE16",
+      "FE17",
+      "FE18",
+      "FE19",
+      "FE20",
+      "FE21",
+      "FE22",
+      "FE23",
+      "FE24",
+      "FE25",
+      "FE26",
+      "FE27",
+      "FE28",
+      "FE29",
+      "FE30",
+      "FE31",
+      "FE32",
+      "FE33",
+      "FE34",
+      "FE35",
+      "FE36",
+      "FE37",
+      "FE38",
+      "FE39",
+      "FE40",
+      "FE41",
+      "IN01",
+      "IN02",
+      "IN03",
+      "IN04",
+      "IN05",
+      "QA01",
+      "QA02",
+      "QA03",
+      "QA04",
+      "QA05",
+      "QA06",
+      "QA07",
+      "QA09",
+      "QA10"
+    ],
+    "required": 112
+  }
+}

@@ -1,0 +1,22 @@
+[
+  {
+    "file": "probe-baf08479.py.txt",
+    "sha256": "baf08479d98f167cb363e11b15edc81bb3780cb64b39801d722656fb32d95161",
+    "provenance": "Reconstructed exact pre-fix source; SHA256 equals original admission pin."
+  },
+  {
+    "file": "probe-99ddd21c.py.txt",
+    "sha256": "99ddd21c8b2c936f1c29f58d3313a48adc4072940f4cc5fbea21cf5862c6972e",
+    "provenance": "Exact current sparse-aware retry source."
+  },
+  {
+    "file": "controller-641f5587.py.txt",
+    "sha256": "641f5587ed5a1f876b671f03397e5d01fc0a832ae278d71d0b2808c518c7b73a",
+    "provenance": "Exact unchanged actual-candidate controller."
+  },
+  {
+    "file": "controller-a644bc26.py.txt",
+    "sha256": "a644bc26f83b98f612fd1285b56c9a17ea64493e13dce7a6fc8204ab121a2438",
+    "provenance": "Exact1955 controller; fresh offer changed admission floor from12 to11GiB before ACCEPT. Other limits unchanged."
+  }
+]

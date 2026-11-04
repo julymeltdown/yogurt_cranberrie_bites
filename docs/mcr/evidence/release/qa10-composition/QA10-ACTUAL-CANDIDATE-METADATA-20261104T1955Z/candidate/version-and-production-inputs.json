@@ -1,0 +1,112 @@
+{
+  "actual_application_binary_versions": "NOT_RUN",
+  "candidate": {
+    "commit": "6d351502bcee839e0836955edbf5eff61ab9b0b7",
+    "dirty": false,
+    "tree": "f9b4696543d042919f149b7be4cb0510516d5789"
+  },
+  "checker_runtime": {
+    "git": "git version 2.55.0",
+    "platform": "darwin",
+    "python": "3.14.3"
+  },
+  "current_candidate_genuine_test_receipts": "NOT_RUN",
+  "declared_frontend_package_manager": "pnpm@11.7.0",
+  "declared_node": "24.22.2",
+  "declared_rust_toolchain": {
+    "channel": "1.88.0",
+    "components": [
+      "clippy",
+      "rustfmt"
+    ],
+    "profile": "minimal"
+  },
+  "production_mock_scan": "NOT_RUN",
+  "production_reason": "CURRENT_RETAINED_BUILD_BYTES_NOT_SUPPLIED",
+  "production_secret_scan": "NOT_RUN",
+  "published_input_pins": [
+    {
+      "bytes": 8,
+      "git_blob": "b74495a07da37ba96fef1eb489b0f7a318602b3b",
+      "input_source": "PINNED_GIT_BLOB_NOT_MATERIALIZED",
+      "kind": "blob",
+      "last_evidence_change_commit": "605b858b3baa2bb93ce4a01a6620cd25bc648c14",
+      "mode": "100644",
+      "path": ".node-version",
+      "qualification": "PUBLISHED_REFERENCE_ONLY",
+      "sha256": "9185b9f67843cabfa8054f65ce47ce0b52036b0bfe07ae5a6b834d97cc127140"
+    },
+    {
+      "bytes": 1265,
+      "git_blob": "d3c1adc42639ce34c38c62de7b02d40d55fa9b42",
+      "input_source": "PINNED_GIT_BLOB_NOT_MATERIALIZED",
+      "kind": "blob",
+      "last_evidence_change_commit": "a9746c6042ee25b68ccada307375fb6221c9c52b",
+      "mode": "100644",
+      "path": "frontend/package.json",
+      "qualification": "PUBLISHED_REFERENCE_ONLY",
+      "sha256": "0f7a05587bcf1af5f4d5d077a0c2d90011adc87e1036a61db9ef3acf37c8b7d3"
+    },
+    {
+      "bytes": 80328,
+      "git_blob": "7717408b8c7e5dca744e85aa55ea792e09ab5c5c",
+      "input_source": "PINNED_GIT_BLOB_NOT_MATERIALIZED",
+      "kind": "blob",
+      "last_evidence_change_commit": "605b858b3baa2bb93ce4a01a6620cd25bc648c14",
+      "mode": "100644",
+      "path": "frontend/pnpm-lock.yaml",
+      "qualification": "PUBLISHED_REFERENCE_ONLY",
+      "sha256": "47ca44459819ad0e887d2f4f93394fdf3b1053b8f45edc9ceb0236981feee1f6"
+    },
+    {
+      "bytes": 86,
+      "git_blob": "079e4082dbfc7a499fa02af05f7f16e875c13ecb",
+      "input_source": "WORKTREE_MATCHED_GIT",
+      "kind": "blob",
+      "last_evidence_change_commit": "909e2bf4e1c5bdf752954c94bf71a3b64871732d",
+      "mode": "100644",
+      "path": "backend/rust-toolchain.toml",
+      "qualification": "PUBLISHED_REFERENCE_ONLY",
+      "sha256": "980c9752cb40dca3265ce4e3e31de1c369b469c9837be059b806ea93fe76799d"
+    },
+    {
+      "bytes": 3790,
+      "git_blob": "8decd2893aa516d6c69388796a1c9a7aeb97fd87",
+      "input_source": "WORKTREE_MATCHED_GIT",
+      "kind": "blob",
+      "last_evidence_change_commit": "f5b188bc5f27182964386ed9ff1ddf7d527ce84e",
+      "mode": "100644",
+      "path": "backend/Cargo.toml",
+      "qualification": "PUBLISHED_REFERENCE_ONLY",
+      "sha256": "b7f5fa7c2de9fd1f9a939ca69c6f1fa6ff27fcaf11475055c97e83bfa837ba8b"
+    },
+    {
+      "bytes": 130923,
+      "git_blob": "2f5a71c0a2ef5ed8cdf58574dde233a4c91d6f22",
+      "input_source": "WORKTREE_MATCHED_GIT",
+      "kind": "blob",
+      "last_evidence_change_commit": "a66637f60e253cecc2754d5c94c50d84a692281d",
+      "mode": "100644",
+      "path": "backend/Cargo.lock",
+      "qualification": "PUBLISHED_REFERENCE_ONLY",
+      "sha256": "f1d4e9c239d7e7f2ea505faf21ae64cc59428b216fb88b485e1b1c86aa06def9"
+    },
+    {
+      "bytes": 527424,
+      "git_blob": "7dc1fc99e6b76610c096becd829ee730bfcb488c",
+      "input_source": "WORKTREE_MATCHED_GIT",
+      "kind": "blob",
+      "last_evidence_change_commit": "c093d8a5ca7af1eb3319a88cb188f74e0f862416",
+      "mode": "100644",
+      "path": "contracts/generated/mcr-core.openapi.json",
+      "qualification": "PUBLISHED_REFERENCE_ONLY",
+      "sha256": "6e3b4d141d04b137579bf0436e93009e6c4b6a291a230049064d236d12db171d"
+    },
+    {
+      "finding": "inventory.file-limit",
+      "path": "contracts/generated/mcr-domain.openapi.json",
+      "qualification": "NOT_RUN"
+    }
+  ],
+  "qualification_limit": "Manifest/lock/schema pins are published source identity, not executed application versions."
+}
