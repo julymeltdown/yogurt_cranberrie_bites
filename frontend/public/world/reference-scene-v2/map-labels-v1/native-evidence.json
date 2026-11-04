@@ -1,0 +1,120 @@
+{
+  "commands": [
+    {
+      "command": [
+        "tsrct",
+        "project",
+        "checkout",
+        "--project",
+        "frontend/public/world/reference-scene-v2/map-labels-v1/parade-map-labels.tsrct",
+        "--output",
+        "frontend/public/world/reference-scene-v2/map-labels-v1/parade-map-labels-editable.json"
+      ],
+      "exit_code": 0
+    },
+    {
+      "command": [
+        "tsrct",
+        "project",
+        "commit",
+        "--project",
+        "frontend/public/world/reference-scene-v2/map-labels-v1/parade-map-labels.tsrct",
+        "--file",
+        "frontend/public/world/reference-scene-v2/map-labels-v1/parade-map-labels-editable.json"
+      ],
+      "exit_code": 0
+    },
+    {
+      "command": [
+        "tsrct",
+        "preview",
+        "--project",
+        "frontend/public/world/reference-scene-v2/map-labels-v1/parade-map-labels.tsrct",
+        "--time",
+        "1",
+        "--output",
+        "frontend/public/world/reference-scene-v2/map-labels-v1/parade-map-labels-native.png"
+      ],
+      "exit_code": 0
+    },
+    {
+      "command": [
+        "tsrct",
+        "project",
+        "checkout",
+        "--project",
+        "frontend/public/world/reference-scene-v2/map-labels-v1/revenge-map-labels.tsrct",
+        "--output",
+        "frontend/public/world/reference-scene-v2/map-labels-v1/revenge-map-labels-editable.json"
+      ],
+      "exit_code": 0
+    },
+    {
+      "command": [
+        "tsrct",
+        "project",
+        "commit",
+        "--project",
+        "frontend/public/world/reference-scene-v2/map-labels-v1/revenge-map-labels.tsrct",
+        "--file",
+        "frontend/public/world/reference-scene-v2/map-labels-v1/revenge-map-labels-editable.json"
+      ],
+      "exit_code": 0
+    },
+    {
+      "command": [
+        "tsrct",
+        "preview",
+        "--project",
+        "frontend/public/world/reference-scene-v2/map-labels-v1/revenge-map-labels.tsrct",
+        "--time",
+        "1",
+        "--output",
+        "frontend/public/world/reference-scene-v2/map-labels-v1/revenge-map-labels-native.png"
+      ],
+      "exit_code": 0
+    },
+    {
+      "command": [
+        "tsrct",
+        "project",
+        "checkout",
+        "--project",
+        "frontend/public/world/reference-scene-v2/map-labels-v1/danger-map-labels.tsrct",
+        "--output",
+        "frontend/public/world/reference-scene-v2/map-labels-v1/danger-map-labels-editable.json"
+      ],
+      "exit_code": 0
+    },
+    {
+      "command": [
+        "tsrct",
+        "project",
+        "commit",
+        "--project",
+        "frontend/public/world/reference-scene-v2/map-labels-v1/danger-map-labels.tsrct",
+        "--file",
+        "frontend/public/world/reference-scene-v2/map-labels-v1/danger-map-labels-editable.json"
+      ],
+      "exit_code": 0
+    },
+    {
+      "command": [
+        "tsrct",
+        "preview",
+        "--project",
+        "frontend/public/world/reference-scene-v2/map-labels-v1/danger-map-labels.tsrct",
+        "--time",
+        "1",
+        "--output",
+        "frontend/public/world/reference-scene-v2/map-labels-v1/danger-map-labels-native.png"
+      ],
+      "exit_code": 0
+    }
+  ],
+  "dimensions": [
+    768,
+    1296
+  ],
+  "description": "Fresh MAP variants from immutable v8 native project asset pairs; exact old scenery layers preserved with original native shape and text overlays. No changes to v8 projects."
+}

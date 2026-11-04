@@ -1,0 +1,287 @@
+{
+  "result": "PASS",
+  "candidate": "50d950d79939a539ebe953744287f7a280ce488b",
+  "qualification": "Actual browser router, native layout/scroll/history, canonical Auth, default production composition/Phaser; explicit HTTP/C05 test fixture. Original FE07 owner retains complete task qualification.",
+  "pins": {
+    "frontend/src/app/WorldShell.tsx": "9ab07b46c077bde4381ea2ec5918c146e2d05dfe7dc355bafad7448d9ff2d5f9",
+    "frontend/src/world/__tests__/fe15-application-input/scroll-preview.tsx": "2a0312b9ec33dbb9da37f02310d7a2faf0758d0dc9a94afdcd1c2f0b4a426583",
+    "frontend/src/world/__tests__/fe15-application-input/scroll-preview.html": "b1e7809a256c643a404e8719c77de108fbce3a07ba7091f178c35d6b1a9ab1d4",
+    "frontend/src/world/__tests__/fe15-application-input/scroll-native.mjs": "75094c87970a4980d595706d98a22eb20673f0b21f973c4cb3f70983ec08133e"
+  },
+  "cases": [
+    {
+      "width": 360,
+      "before": 1889,
+      "detailScroll": 0,
+      "after": 1889,
+      "state": {
+        "path": "/gifts",
+        "search": "",
+        "action": "POP",
+        "historyLength": 4,
+        "auth": "ready",
+        "bootstrapHeld": false,
+        "requests": [
+          {
+            "path": "/api/auth/capabilities",
+            "method": "GET",
+            "protected": false
+          },
+          {
+            "path": "/api/auth/login",
+            "method": "POST",
+            "protected": false
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/bootstrap",
+            "method": "GET",
+            "protected": true
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/rooms",
+            "method": "GET",
+            "protected": true
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/world-tickets",
+            "method": "POST",
+            "protected": true
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/places",
+            "method": "GET",
+            "protected": true
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/giveaways",
+            "method": "GET",
+            "protected": true
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/giveaways/00000000-0000-4000-8000-000000000205",
+            "method": "GET",
+            "protected": true
+          }
+        ],
+        "games": 1,
+        "knownGames": 1,
+        "peakGames": 1,
+        "sameGame": true,
+        "sockets": 1,
+        "activeSockets": 1,
+        "peakSockets": 1,
+        "sameCamera": true,
+        "camera": {
+          "following": true,
+          "camera": {
+            "zoom": 1,
+            "scrollX": 0,
+            "scrollY": 105,
+            "width": 348,
+            "height": 791
+          }
+        },
+        "room": "00000000-0000-4000-8000-000000000011",
+        "position": {
+          "x": 140,
+          "y": 520
+        },
+        "phase": "live",
+        "canvases": 1,
+        "inputTypes": [
+          "authenticate",
+          "input"
+        ],
+        "userId": "00000000-0000-4000-8000-000000000101"
+      },
+      "errors": [],
+      "capture": {
+        "file": "scroll-return-360.png",
+        "sha256": "8057d8266e8dfafb74d712f7a5d81a2d451a3b8eb8ee24de1ffaccece86e20d6"
+      }
+    },
+    {
+      "width": 390,
+      "before": 1894,
+      "detailScroll": 0,
+      "after": 1894,
+      "state": {
+        "path": "/gifts",
+        "search": "",
+        "action": "POP",
+        "historyLength": 4,
+        "auth": "ready",
+        "bootstrapHeld": false,
+        "requests": [
+          {
+            "path": "/api/auth/capabilities",
+            "method": "GET",
+            "protected": false
+          },
+          {
+            "path": "/api/auth/login",
+            "method": "POST",
+            "protected": false
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/bootstrap",
+            "method": "GET",
+            "protected": true
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/rooms",
+            "method": "GET",
+            "protected": true
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/world-tickets",
+            "method": "POST",
+            "protected": true
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/places",
+            "method": "GET",
+            "protected": true
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/giveaways",
+            "method": "GET",
+            "protected": true
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/giveaways/00000000-0000-4000-8000-000000000205",
+            "method": "GET",
+            "protected": true
+          }
+        ],
+        "games": 1,
+        "knownGames": 1,
+        "peakGames": 1,
+        "sameGame": true,
+        "sockets": 1,
+        "activeSockets": 1,
+        "peakSockets": 1,
+        "sameCamera": true,
+        "camera": {
+          "following": true,
+          "camera": {
+            "zoom": 1,
+            "scrollX": 0,
+            "scrollY": 105,
+            "width": 378,
+            "height": 791
+          }
+        },
+        "room": "00000000-0000-4000-8000-000000000011",
+        "position": {
+          "x": 140,
+          "y": 520
+        },
+        "phase": "live",
+        "canvases": 1,
+        "inputTypes": [
+          "authenticate",
+          "input"
+        ],
+        "userId": "00000000-0000-4000-8000-000000000101"
+      },
+      "errors": [],
+      "capture": {
+        "file": "scroll-return-390.png",
+        "sha256": "91935c1aea7a53c5db4f8f3eed1b17f2b7beb0971dbf05b914098bfaa4ba67cc"
+      }
+    },
+    {
+      "width": 430,
+      "before": 1901,
+      "detailScroll": 0,
+      "after": 1901,
+      "state": {
+        "path": "/gifts",
+        "search": "",
+        "action": "POP",
+        "historyLength": 4,
+        "auth": "ready",
+        "bootstrapHeld": false,
+        "requests": [
+          {
+            "path": "/api/auth/capabilities",
+            "method": "GET",
+            "protected": false
+          },
+          {
+            "path": "/api/auth/login",
+            "method": "POST",
+            "protected": false
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/bootstrap",
+            "method": "GET",
+            "protected": true
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/rooms",
+            "method": "GET",
+            "protected": true
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/world-tickets",
+            "method": "POST",
+            "protected": true
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/places",
+            "method": "GET",
+            "protected": true
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/giveaways",
+            "method": "GET",
+            "protected": true
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/giveaways/00000000-0000-4000-8000-000000000205",
+            "method": "GET",
+            "protected": true
+          }
+        ],
+        "games": 1,
+        "knownGames": 1,
+        "peakGames": 1,
+        "sameGame": true,
+        "sockets": 1,
+        "activeSockets": 1,
+        "peakSockets": 1,
+        "sameCamera": true,
+        "camera": {
+          "following": true,
+          "camera": {
+            "zoom": 1,
+            "scrollX": 0,
+            "scrollY": 105,
+            "width": 418,
+            "height": 791
+          }
+        },
+        "room": "00000000-0000-4000-8000-000000000011",
+        "position": {
+          "x": 140,
+          "y": 520
+        },
+        "phase": "live",
+        "canvases": 1,
+        "inputTypes": [
+          "authenticate",
+          "input"
+        ],
+        "userId": "00000000-0000-4000-8000-000000000101"
+      },
+      "errors": [],
+      "capture": {
+        "file": "scroll-return-430.png",
+        "sha256": "7b6beaf40d0da0d6541e1b85f265549270dff5e3dab6e92478d9ab12685a57cc"
+      }
+    }
+  ],
+  "browser": "156.0.8078.80"
+}

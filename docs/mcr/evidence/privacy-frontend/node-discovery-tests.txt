@@ -1,0 +1,17 @@
+✔ unavailable setup is rejected before any transport work (1.568375ms)
+✔ all seven roles and 21 HTTP cells are required, without duplicates or role bypass (0.503375ms)
+✔ unregistered endpoints, methods, queries, cross-event IDs and malformed bodies refuse setup (0.908208ms)
+✔ non-isolated setup, URL credentials and unqualified mutations refuse setup (0.260791ms)
+✔ gate selftest consumes published schema/status and labels mocked fetch as synthetic (13.95925ms)
+✔ schema-valid private markers, unknown private fields and missing no-store fail rather than produce passing receipts (0.8245ms)
+✔ oversized private responses stop at the bounded reader (0.77975ms)
+✔ positive-content assertions stop a vacuous empty successful response (0.340583ms)
+✔ frozen public projection fixtures reject handle/claim/recipient leaks while authorized shapes remain separate (4.910834ms)
+ℹ tests 9
+ℹ suites 0
+ℹ pass 9
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 71.464667

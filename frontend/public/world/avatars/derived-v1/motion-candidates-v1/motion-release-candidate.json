@@ -1,0 +1,7177 @@
+{
+  "kind": "SELECTED_IDENTITY_FOUR_DIRECTION_MOTION_CANDIDATE",
+  "status": "IN_PROGRESS",
+  "productionEligible": false,
+  "sourcePack": {
+    "id": "mcr_user_characters_20261103",
+    "revision": 3
+  },
+  "frameSize": [
+    64,
+    64
+  ],
+  "foot": [
+    32,
+    60
+  ],
+  "directions": [
+    "front",
+    "left",
+    "right",
+    "rear"
+  ],
+  "phases": [
+    "idle",
+    "walk-0",
+    "walk-1",
+    "walk-2",
+    "walk-3"
+  ],
+  "presets": 6,
+  "frames": [
+    {
+      "preset": "photo01-front-01",
+      "direction": "front",
+      "phase": 0,
+      "pose": "idle",
+      "attribution": "SUPPLIED_FRONT_PIXELS_SOURCE_ARTICULATION",
+      "source": "photo_01",
+      "sourcePose": "front-idle",
+      "authoredPose": false,
+      "sourceFrame": {
+        "preset": "photo01-front-01",
+        "pose": "idle",
+        "direction": "front",
+        "scale": 0.15555555555555556,
+        "sourceAnchor": {
+          "x": 193.5,
+          "y": 373
+        },
+        "rig": {
+          "id": "photo01-front-01",
+          "rect": {
+            "x": 40,
+            "y": 80,
+            "width": 380,
+            "height": 390
+          },
+          "center": 244,
+          "armTop": 360,
+          "armLeft": 175,
+          "armRight": 307,
+          "legTop": 423
+        },
+        "offsets": {
+          "name": "idle",
+          "leftArm": [
+            0,
+            0
+          ],
+          "rightArm": [
+            0,
+            0
+          ],
+          "leftLeg": [
+            0,
+            0
+          ],
+          "rightLeg": [
+            0,
+            0
+          ]
+        }
+      },
+      "atlasIndex": 0
+    },
+    {
+      "preset": "photo01-front-01",
+      "direction": "front",
+      "phase": 1,
+      "pose": "walk-0-left-contact",
+      "attribution": "SUPPLIED_FRONT_PIXELS_SOURCE_ARTICULATION",
+      "source": "photo_01",
+      "sourcePose": "front-idle",
+      "authoredPose": true,
+      "sourceFrame": {
+        "preset": "photo01-front-01",
+        "pose": "walk-0-left-contact",
+        "direction": "front",
+        "scale": 0.15555555555555556,
+        "sourceAnchor": {
+          "x": 193.5,
+          "y": 373
+        },
+        "rig": {
+          "id": "photo01-front-01",
+          "rect": {
+            "x": 40,
+            "y": 80,
+            "width": 380,
+            "height": 390
+          },
+          "center": 244,
+          "armTop": 360,
+          "armLeft": 175,
+          "armRight": 307,
+          "legTop": 423
+        },
+        "offsets": {
+          "name": "walk-0-left-contact",
+          "leftArm": [
+            0,
+            -8
+          ],
+          "rightArm": [
+            0,
+            5
+          ],
+          "leftLeg": [
+            -6,
+            0
+          ],
+          "rightLeg": [
+            4,
+            -12
+          ]
+        }
+      },
+      "atlasIndex": 1
+    },
+    {
+      "preset": "photo01-front-01",
+      "direction": "front",
+      "phase": 2,
+      "pose": "walk-1-left-passing",
+      "attribution": "SUPPLIED_FRONT_PIXELS_SOURCE_ARTICULATION",
+      "source": "photo_01",
+      "sourcePose": "front-idle",
+      "authoredPose": true,
+      "sourceFrame": {
+        "preset": "photo01-front-01",
+        "pose": "walk-1-left-passing",
+        "direction": "front",
+        "scale": 0.15555555555555556,
+        "sourceAnchor": {
+          "x": 193.5,
+          "y": 373
+        },
+        "rig": {
+          "id": "photo01-front-01",
+          "rect": {
+            "x": 40,
+            "y": 80,
+            "width": 380,
+            "height": 390
+          },
+          "center": 244,
+          "armTop": 360,
+          "armLeft": 175,
+          "armRight": 307,
+          "legTop": 423
+        },
+        "offsets": {
+          "name": "walk-1-left-passing",
+          "leftArm": [
+            0,
+            -4
+          ],
+          "rightArm": [
+            0,
+            2
+          ],
+          "leftLeg": [
+            0,
+            0
+          ],
+          "rightLeg": [
+            0,
+            -6
+          ]
+        }
+      },
+      "atlasIndex": 2
+    },
+    {
+      "preset": "photo01-front-01",
+      "direction": "front",
+      "phase": 3,
+      "pose": "walk-2-right-contact",
+      "attribution": "SUPPLIED_FRONT_PIXELS_SOURCE_ARTICULATION",
+      "source": "photo_01",
+      "sourcePose": "front-idle",
+      "authoredPose": true,
+      "sourceFrame": {
+        "preset": "photo01-front-01",
+        "pose": "walk-2-right-contact",
+        "direction": "front",
+        "scale": 0.15555555555555556,
+        "sourceAnchor": {
+          "x": 193.5,
+          "y": 373
+        },
+        "rig": {
+          "id": "photo01-front-01",
+          "rect": {
+            "x": 40,
+            "y": 80,
+            "width": 380,
+            "height": 390
+          },
+          "center": 244,
+          "armTop": 360,
+          "armLeft": 175,
+          "armRight": 307,
+          "legTop": 423
+        },
+        "offsets": {
+          "name": "walk-2-right-contact",
+          "leftArm": [
+            0,
+            5
+          ],
+          "rightArm": [
+            0,
+            -8
+          ],
+          "leftLeg": [
+            -4,
+            -12
+          ],
+          "rightLeg": [
+            6,
+            0
+          ]
+        }
+      },
+      "atlasIndex": 3
+    },
+    {
+      "preset": "photo01-front-01",
+      "direction": "front",
+      "phase": 4,
+      "pose": "walk-3-right-passing",
+      "attribution": "SUPPLIED_FRONT_PIXELS_SOURCE_ARTICULATION",
+      "source": "photo_01",
+      "sourcePose": "front-idle",
+      "authoredPose": true,
+      "sourceFrame": {
+        "preset": "photo01-front-01",
+        "pose": "walk-3-right-passing",
+        "direction": "front",
+        "scale": 0.15555555555555556,
+        "sourceAnchor": {
+          "x": 193.5,
+          "y": 373
+        },
+        "rig": {
+          "id": "photo01-front-01",
+          "rect": {
+            "x": 40,
+            "y": 80,
+            "width": 380,
+            "height": 390
+          },
+          "center": 244,
+          "armTop": 360,
+          "armLeft": 175,
+          "armRight": 307,
+          "legTop": 423
+        },
+        "offsets": {
+          "name": "walk-3-right-passing",
+          "leftArm": [
+            0,
+            2
+          ],
+          "rightArm": [
+            0,
+            -4
+          ],
+          "leftLeg": [
+            0,
+            -6
+          ],
+          "rightLeg": [
+            0,
+            0
+          ]
+        }
+      },
+      "atlasIndex": 4
+    },
+    {
+      "preset": "photo01-front-01",
+      "direction": "left",
+      "phase": 0,
+      "pose": "idle",
+      "attribution": "AUTHORED_RECONSTRUCTION_WITH_ARTICULATED_SOURCE",
+      "source": "authored-turnaround-source-9a40c5d4098296b0.png",
+      "sourcePose": "authored-left-idle",
+      "authoredPose": true,
+      "rig": {
+        "id": "photo01-front-01",
+        "rect": {
+          "x": 0,
+          "y": 0,
+          "width": 296,
+          "height": 296
+        },
+        "center": 156,
+        "foot": {
+          "x": 156,
+          "y": 287
+        },
+        "armTop": 220,
+        "armLeft": 61.85000000000001,
+        "armRight": 162.725,
+        "legTop": 263
+      },
+      "offsets": {
+        "name": "idle",
+        "leftArm": [
+          0,
+          0
+        ],
+        "rightArm": [
+          0,
+          0
+        ],
+        "leftLeg": [
+          0,
+          0
+        ],
+        "rightLeg": [
+          0,
+          0
+        ]
+      },
+      "scale": 0.20817843866171004,
+      "sourceAnchor": {
+        "x": 156,
+        "y": 287
+      },
+      "atlasIndex": 5
+    },
+    {
+      "preset": "photo01-front-01",
+      "direction": "left",
+      "phase": 1,
+      "pose": "walk-0-front-contact",
+      "attribution": "AUTHORED_RECONSTRUCTION_WITH_ARTICULATED_SOURCE",
+      "source": "authored-turnaround-source-9a40c5d4098296b0.png",
+      "sourcePose": "authored-left-idle",
+      "authoredPose": true,
+      "rig": {
+        "id": "photo01-front-01",
+        "rect": {
+          "x": 0,
+          "y": 0,
+          "width": 296,
+          "height": 296
+        },
+        "center": 156,
+        "foot": {
+          "x": 156,
+          "y": 287
+        },
+        "armTop": 220,
+        "armLeft": 61.85000000000001,
+        "armRight": 162.725,
+        "legTop": 263
+      },
+      "offsets": {
+        "name": "walk-0-front-contact",
+        "leftArm": [
+          -6,
+          -3
+        ],
+        "rightArm": [
+          6,
+          -3
+        ],
+        "leftLeg": [
+          -10,
+          0
+        ],
+        "rightLeg": [
+          10,
+          -4
+        ]
+      },
+      "scale": 0.20817843866171004,
+      "sourceAnchor": {
+        "x": 156,
+        "y": 287
+      },
+      "atlasIndex": 6
+    },
+    {
+      "preset": "photo01-front-01",
+      "direction": "left",
+      "phase": 2,
+      "pose": "walk-1-front-passing",
+      "attribution": "AUTHORED_RECONSTRUCTION_WITH_ARTICULATED_SOURCE",
+      "source": "authored-turnaround-source-9a40c5d4098296b0.png",
+      "sourcePose": "authored-left-idle",
+      "authoredPose": true,
+      "rig": {
+        "id": "photo01-front-01",
+        "rect": {
+          "x": 0,
+          "y": 0,
+          "width": 296,
+          "height": 296
+        },
+        "center": 156,
+        "foot": {
+          "x": 156,
+          "y": 287
+        },
+        "armTop": 220,
+        "armLeft": 61.85000000000001,
+        "armRight": 162.725,
+        "legTop": 263
+      },
+      "offsets": {
+        "name": "walk-1-front-passing",
+        "leftArm": [
+          -2,
+          0
+        ],
+        "rightArm": [
+          2,
+          0
+        ],
+        "leftLeg": [
+          0,
+          0
+        ],
+        "rightLeg": [
+          0,
+          -8
+        ]
+      },
+      "scale": 0.20817843866171004,
+      "sourceAnchor": {
+        "x": 156,
+        "y": 287
+      },
+      "atlasIndex": 7
+    },
+    {
+      "preset": "photo01-front-01",
+      "direction": "left",
+      "phase": 3,
+      "pose": "walk-2-back-contact",
+      "attribution": "AUTHORED_RECONSTRUCTION_WITH_ARTICULATED_SOURCE",
+      "source": "authored-turnaround-source-9a40c5d4098296b0.png",
+      "sourcePose": "authored-left-idle",
+      "authoredPose": true,
+      "rig": {
+        "id": "photo01-front-01",
+        "rect": {
+          "x": 0,
+          "y": 0,
+          "width": 296,
+          "height": 296
+        },
+        "center": 156,
+        "foot": {
+          "x": 156,
+          "y": 287
+        },
+        "armTop": 220,
+        "armLeft": 61.85000000000001,
+        "armRight": 162.725,
+        "legTop": 263
+      },
+      "offsets": {
+        "name": "walk-2-back-contact",
+        "leftArm": [
+          6,
+          3
+        ],
+        "rightArm": [
+          -6,
+          3
+        ],
+        "leftLeg": [
+          10,
+          -4
+        ],
+        "rightLeg": [
+          -10,
+          0
+        ]
+      },
+      "scale": 0.20817843866171004,
+      "sourceAnchor": {
+        "x": 156,
+        "y": 287
+      },
+      "atlasIndex": 8
+    },
+    {
+      "preset": "photo01-front-01",
+      "direction": "left",
+      "phase": 4,
+      "pose": "walk-3-back-passing",
+      "attribution": "AUTHORED_RECONSTRUCTION_WITH_ARTICULATED_SOURCE",
+      "source": "authored-turnaround-source-9a40c5d4098296b0.png",
+      "sourcePose": "authored-left-idle",
+      "authoredPose": true,
+      "rig": {
+        "id": "photo01-front-01",
+        "rect": {
+          "x": 0,
+          "y": 0,
+          "width": 296,
+          "height": 296
+        },
+        "center": 156,
+        "foot": {
+          "x": 156,
+          "y": 287
+        },
+        "armTop": 220,
+        "armLeft": 61.85000000000001,
+        "armRight": 162.725,
+        "legTop": 263
+      },
+      "offsets": {
+        "name": "walk-3-back-passing",
+        "leftArm": [
+          2,
+          0
+        ],
+        "rightArm": [
+          -2,
+          0
+        ],
+        "leftLeg": [
+          0,
+          -8
+        ],
+        "rightLeg": [
+          0,
+          0
+        ]
+      },
+      "scale": 0.20817843866171004,
+      "sourceAnchor": {
+        "x": 156,
+        "y": 287
+      },
+      "atlasIndex": 9
+    },
+    {
+      "preset": "photo01-front-01",
+      "direction": "right",
+      "phase": 0,
+      "pose": "idle",
+      "attribution": "AUTHORED_RECONSTRUCTION_WITH_ARTICULATED_SOURCE",
+      "source": "authored-turnaround-source-9a40c5d4098296b0.png",
+      "sourcePose": "authored-right-idle",
+      "authoredPose": true,
+      "rig": {
+        "id": "photo01-front-01",
+        "rect": {
+          "x": 296,
+          "y": 0,
+          "width": 295,
+          "height": 296
+        },
+        "center": 438,
+        "foot": {
+          "x": 142,
+          "y": 286
+        },
+        "armTop": 219,
+        "armLeft": 431.3,
+        "armRight": 531.8,
+        "legTop": 262
+      },
+      "offsets": {
+        "name": "idle",
+        "leftArm": [
+          0,
+          0
+        ],
+        "rightArm": [
+          0,
+          0
+        ],
+        "leftLeg": [
+          0,
+          0
+        ],
+        "rightLeg": [
+          0,
+          0
+        ]
+      },
+      "scale": 0.208955223880597,
+      "sourceAnchor": {
+        "x": 142,
+        "y": 286
+      },
+      "atlasIndex": 10
+    },
+    {
+      "preset": "photo01-front-01",
+      "direction": "right",
+      "phase": 1,
+      "pose": "walk-0-front-contact",
+      "attribution": "AUTHORED_RECONSTRUCTION_WITH_ARTICULATED_SOURCE",
+      "source": "authored-turnaround-source-9a40c5d4098296b0.png",
+      "sourcePose": "authored-right-idle",
+      "authoredPose": true,
+      "rig": {
+        "id": "photo01-front-01",
+        "rect": {
+          "x": 296,
+          "y": 0,
+          "width": 295,
+          "height": 296
+        },
+        "center": 438,
+        "foot": {
+          "x": 142,
+          "y": 286
+        },
+        "armTop": 219,
+        "armLeft": 431.3,
+        "armRight": 531.8,
+        "legTop": 262
+      },
+      "offsets": {
+        "name": "walk-0-front-contact",
+        "leftArm": [
+          -6,
+          -3
+        ],
+        "rightArm": [
+          6,
+          -3
+        ],
+        "leftLeg": [
+          -10,
+          0
+        ],
+        "rightLeg": [
+          10,
+          -4
+        ]
+      },
+      "scale": 0.208955223880597,
+      "sourceAnchor": {
+        "x": 142,
+        "y": 286
+      },
+      "atlasIndex": 11
+    },
+    {
+      "preset": "photo01-front-01",
+      "direction": "right",
+      "phase": 2,
+      "pose": "walk-1-front-passing",
+      "attribution": "AUTHORED_RECONSTRUCTION_WITH_ARTICULATED_SOURCE",
+      "source": "authored-turnaround-source-9a40c5d4098296b0.png",
+      "sourcePose": "authored-right-idle",
+      "authoredPose": true,
+      "rig": {
+        "id": "photo01-front-01",
+        "rect": {
+          "x": 296,
+          "y": 0,
+          "width": 295,
+          "height": 296
+        },
+        "center": 438,
+        "foot": {
+          "x": 142,
+          "y": 286
+        },
+        "armTop": 219,
+        "armLeft": 431.3,
+        "armRight": 531.8,
+        "legTop": 262
+      },
+      "offsets": {
+        "name": "walk-1-front-passing",
+        "leftArm": [
+          -2,
+          0
+        ],
+        "rightArm": [
+          2,
+          0
+        ],
+        "leftLeg": [
+          0,
+          0
+        ],
+        "rightLeg": [
+          0,
+          -8
+        ]
+      },
+      "scale": 0.208955223880597,
+      "sourceAnchor": {
+        "x": 142,
+        "y": 286
+      },
+      "atlasIndex": 12
+    },
+    {
+      "preset": "photo01-front-01",
+      "direction": "right",
+      "phase": 3,
+      "pose": "walk-2-back-contact",
+      "attribution": "AUTHORED_RECONSTRUCTION_WITH_ARTICULATED_SOURCE",
+      "source": "authored-turnaround-source-9a40c5d4098296b0.png",
+      "sourcePose": "authored-right-idle",
+      "authoredPose": true,
+      "rig": {
+        "id": "photo01-front-01",
+        "rect": {
+          "x": 296,
+          "y": 0,
+          "width": 295,
+          "height": 296
+        },
+        "center": 438,
+        "foot": {
+          "x": 142,
+          "y": 286
+        },
+        "armTop": 219,
+        "armLeft": 431.3,
+        "armRight": 531.8,
+        "legTop": 262
+      },
+      "offsets": {
+        "name": "walk-2-back-contact",
+        "leftArm": [
+          6,
+          3
+        ],
+        "rightArm": [
+          -6,
+          3
+        ],
+        "leftLeg": [
+          10,
+          -4
+        ],
+        "rightLeg": [
+          -10,
+          0
+        ]
+      },
+      "scale": 0.208955223880597,
+      "sourceAnchor": {
+        "x": 142,
+        "y": 286
+      },
+      "atlasIndex": 13
+    },
+    {
+      "preset": "photo01-front-01",
+      "direction": "right",
+      "phase": 4,
+      "pose": "walk-3-back-passing",
+      "attribution": "AUTHORED_RECONSTRUCTION_WITH_ARTICULATED_SOURCE",
+      "source": "authored-turnaround-source-9a40c5d4098296b0.png",
+      "sourcePose": "authored-right-idle",
+      "authoredPose": true,
+      "rig": {
+        "id": "photo01-front-01",
+        "rect": {
+          "x": 296,
+          "y": 0,
+          "width": 295,
+          "height": 296
+        },
+        "center": 438,
+        "foot": {
+          "x": 142,
+          "y": 286
+        },
+        "armTop": 219,
+        "armLeft": 431.3,
+        "armRight": 531.8,
+        "legTop": 262
+      },
+      "offsets": {
+        "name": "walk-3-back-passing",
+        "leftArm": [
+          2,
+          0
+        ],
+        "rightArm": [
+          -2,
+          0
+        ],
+        "leftLeg": [
+          0,
+          -8
+        ],
+        "rightLeg": [
+          0,
+          0
+        ]
+      },
+      "scale": 0.208955223880597,
+      "sourceAnchor": {
+        "x": 142,
+        "y": 286
+      },
+      "atlasIndex": 14
+    },
+    {
+      "preset": "photo01-front-01",
+      "direction": "rear",
+      "phase": 0,
+      "pose": "idle",
+      "attribution": "AUTHORED_RECONSTRUCTION_WITH_ARTICULATED_SOURCE",
+      "source": "authored-turnaround-source-9a40c5d4098296b0.png",
+      "sourcePose": "authored-rear-idle",
+      "authoredPose": true,
+      "rig": {
+        "id": "photo01-front-01",
+        "rect": {
+          "x": 591,
+          "y": 0,
+          "width": 296,
+          "height": 296
+        },
+        "center": 729.5,
+        "foot": {
+          "x": 138.5,
+          "y": 287
+        },
+        "armTop": 220,
+        "armLeft": 694.53,
+        "armRight": 764.47,
+        "legTop": 263
+      },
+      "offsets": {
+        "name": "idle",
+        "leftArm": [
+          0,
+          0
+        ],
+        "rightArm": [
+          0,
+          0
+        ],
+        "leftLeg": [
+          0,
+          0
+        ],
+        "rightLeg": [
+          0,
+          0
+        ]
+      },
+      "scale": 0.20817843866171004,
+      "sourceAnchor": {
+        "x": 138.5,
+        "y": 287
+      },
+      "atlasIndex": 15
+    },
+    {
+      "preset": "photo01-front-01",
+      "direction": "rear",
+      "phase": 1,
+      "pose": "walk-0-left-contact",
+      "attribution": "AUTHORED_RECONSTRUCTION_WITH_ARTICULATED_SOURCE",
+      "source": "authored-turnaround-source-9a40c5d4098296b0.png",
+      "sourcePose": "authored-rear-idle",
+      "authoredPose": true,
+      "rig": {
+        "id": "photo01-front-01",
+        "rect": {
+          "x": 591,
+          "y": 0,
+          "width": 296,
+          "height": 296
+        },
+        "center": 729.5,
+        "foot": {
+          "x": 138.5,
+          "y": 287
+        },
+        "armTop": 220,
+        "armLeft": 694.53,
+        "armRight": 764.47,
+        "legTop": 263
+      },
+      "offsets": {
+        "name": "walk-0-left-contact",
+        "leftArm": [
+          0,
+          -8
+        ],
+        "rightArm": [
+          0,
+          5
+        ],
+        "leftLeg": [
+          -6,
+          0
+        ],
+        "rightLeg": [
+          4,
+          -12
+        ]
+      },
+      "scale": 0.20817843866171004,
+      "sourceAnchor": {
+        "x": 138.5,
+        "y": 287
+      },
+      "atlasIndex": 16
+    },
+    {
+      "preset": "photo01-front-01",
+      "direction": "rear",
+      "phase": 2,
+      "pose": "walk-1-left-passing",
+      "attribution": "AUTHORED_RECONSTRUCTION_WITH_ARTICULATED_SOURCE",
+      "source": "authored-turnaround-source-9a40c5d4098296b0.png",
+      "sourcePose": "authored-rear-idle",
+      "authoredPose": true,
+      "rig": {
+        "id": "photo01-front-01",
+        "rect": {
+          "x": 591,
+          "y": 0,
+          "width": 296,
+          "height": 296
+        },
+        "center": 729.5,
+        "foot": {
+          "x": 138.5,
+          "y": 287
+        },
+        "armTop": 220,
+        "armLeft": 694.53,
+        "armRight": 764.47,
+        "legTop": 263
+      },
+      "offsets": {
+        "name": "walk-1-left-passing",
+        "leftArm": [
+          0,
+          -4
+        ],
+        "rightArm": [
+          0,
+          2
+        ],
+        "leftLeg": [
+          0,
+          0
+        ],
+        "rightLeg": [
+          0,
+          -6
+        ]
+      },
+      "scale": 0.20817843866171004,
+      "sourceAnchor": {
+        "x": 138.5,
+        "y": 287
+      },
+      "atlasIndex": 17
+    },
+    {
+      "preset": "photo01-front-01",
+      "direction": "rear",
+      "phase": 3,
+      "pose": "walk-2-right-contact",
+      "attribution": "AUTHORED_RECONSTRUCTION_WITH_ARTICULATED_SOURCE",
+      "source": "authored-turnaround-source-9a40c5d4098296b0.png",
+      "sourcePose": "authored-rear-idle",
+      "authoredPose": true,
+      "rig": {
+        "id": "photo01-front-01",
+        "rect": {
+          "x": 591,
+          "y": 0,
+          "width": 296,
+          "height": 296
+        },
+        "center": 729.5,
+        "foot": {
+          "x": 138.5,
+          "y": 287
+        },
+        "armTop": 220,
+        "armLeft": 694.53,
+        "armRight": 764.47,
+        "legTop": 263
+      },
+      "offsets": {
+        "name": "walk-2-right-contact",
+        "leftArm": [
+          0,
+          5
+        ],
+        "rightArm": [
+          0,
+          -8
+        ],
+        "leftLeg": [
+          -4,
+          -12
+        ],
+        "rightLeg": [
+          6,
+          0
+        ]
+      },
+      "scale": 0.20817843866171004,
+      "sourceAnchor": {
+        "x": 138.5,
+        "y": 287
+      },
+      "atlasIndex": 18
+    },
+    {
+      "preset": "photo01-front-01",
+      "direction": "rear",
+      "phase": 4,
+      "pose": "walk-3-right-passing",
+      "attribution": "AUTHORED_RECONSTRUCTION_WITH_ARTICULATED_SOURCE",
+      "source": "authored-turnaround-source-9a40c5d4098296b0.png",
+      "sourcePose": "authored-rear-idle",
+      "authoredPose": true,
+      "rig": {
+        "id": "photo01-front-01",
+        "rect": {
+          "x": 591,
+          "y": 0,
+          "width": 296,
+          "height": 296
+        },
+        "center": 729.5,
+        "foot": {
+          "x": 138.5,
+          "y": 287
+        },
+        "armTop": 220,
+        "armLeft": 694.53,
+        "armRight": 764.47,
+        "legTop": 263
+      },
+      "offsets": {
+        "name": "walk-3-right-passing",
+        "leftArm": [
+          0,
+          2
+        ],
+        "rightArm": [
+          0,
+          -4
+        ],
+        "leftLeg": [
+          0,
+          -6
+        ],
+        "rightLeg": [
+          0,
+          0
+        ]
+      },
+      "scale": 0.20817843866171004,
+      "sourceAnchor": {
+        "x": 138.5,
+        "y": 287
+      },
+      "atlasIndex": 19
+    },
+    {
+      "preset": "photo01-front-02",
+      "direction": "front",
+      "phase": 0,
+      "pose": "idle",
+      "attribution": "SUPPLIED_FRONT_PIXELS_SOURCE_ARTICULATION",
+      "source": "photo_01",
+      "sourcePose": "front-idle",
+      "authoredPose": false,
+      "sourceFrame": {
+        "preset": "photo01-front-02",
+        "pose": "idle",
+        "direction": "front",
+        "scale": 0.15512465373961218,
+        "sourceAnchor": {
+          "x": 198.5,
+          "y": 377
+        },
+        "rig": {
+          "id": "photo01-front-02",
+          "rect": {
+            "x": 440,
+            "y": 80,
+            "width": 390,
+            "height": 390
+          },
+          "center": 640,
+          "armTop": 362,
+          "armLeft": 575,
+          "armRight": 708,
+          "legTop": 426
+        },
+        "offsets": {
+          "name": "idle",
+          "leftArm": [
+            0,
+            0
+          ],
+          "rightArm": [
+            0,
+            0
+          ],
+          "leftLeg": [
+            0,
+            0
+          ],
+          "rightLeg": [
+            0,
+            0
+          ]
+        }
+      },
+      "atlasIndex": 20
+    },
+    {
+      "preset": "photo01-front-02",
+      "direction": "front",
+      "phase": 1,
+      "pose": "walk-0-left-contact",
+      "attribution": "SUPPLIED_FRONT_PIXELS_SOURCE_ARTICULATION",
+      "source": "photo_01",
+      "sourcePose": "front-idle",
+      "authoredPose": true,
+      "sourceFrame": {
+        "preset": "photo01-front-02",
+        "pose": "walk-0-left-contact",
+        "direction": "front",
+        "scale": 0.15512465373961218,
+        "sourceAnchor": {
+          "x": 198.5,
+          "y": 377
+        },
+        "rig": {
+          "id": "photo01-front-02",
+          "rect": {
+            "x": 440,
+            "y": 80,
+            "width": 390,
+            "height": 390
+          },
+          "center": 640,
+          "armTop": 362,
+          "armLeft": 575,
+          "armRight": 708,
+          "legTop": 426
+        },
+        "offsets": {
+          "name": "walk-0-left-contact",
+          "leftArm": [
+            0,
+            -8
+          ],
+          "rightArm": [
+            0,
+            5
+          ],
+          "leftLeg": [
+            -6,
+            0
+          ],
+          "rightLeg": [
+            4,
+            -12
+          ]
+        }
+      },
+      "atlasIndex": 21
+    },
+    {
+      "preset": "photo01-front-02",
+      "direction": "front",
+      "phase": 2,
+      "pose": "walk-1-left-passing",
+      "attribution": "SUPPLIED_FRONT_PIXELS_SOURCE_ARTICULATION",
+      "source": "photo_01",
+      "sourcePose": "front-idle",
+      "authoredPose": true,
+      "sourceFrame": {
+        "preset": "photo01-front-02",
+        "pose": "walk-1-left-passing",
+        "direction": "front",
+        "scale": 0.15512465373961218,
+        "sourceAnchor": {
+          "x": 198.5,
+          "y": 377
+        },
+        "rig": {
+          "id": "photo01-front-02",
+          "rect": {
+            "x": 440,
+            "y": 80,
+            "width": 390,
+            "height": 390
+          },
+          "center": 640,
+          "armTop": 362,
+          "armLeft": 575,
+          "armRight": 708,
+          "legTop": 426
+        },
+        "offsets": {
+          "name": "walk-1-left-passing",
+          "leftArm": [
+            0,
+            -4
+          ],
+          "rightArm": [
+            0,
+            2
+          ],
+          "leftLeg": [
+            0,
+            0
+          ],
+          "rightLeg": [
+            0,
+            -6
+          ]
+        }
+      },
+      "atlasIndex": 22
+    },
+    {
+      "preset": "photo01-front-02",
+      "direction": "front",
+      "phase": 3,
+      "pose": "walk-2-right-contact",
+      "attribution": "SUPPLIED_FRONT_PIXELS_SOURCE_ARTICULATION",
+      "source": "photo_01",
+      "sourcePose": "front-idle",
+      "authoredPose": true,
+      "sourceFrame": {
+        "preset": "photo01-front-02",
+        "pose": "walk-2-right-contact",
+        "direction": "front",
+        "scale": 0.15512465373961218,
+        "sourceAnchor": {
+          "x": 198.5,
+          "y": 377
+        },
+        "rig": {
+          "id": "photo01-front-02",
+          "rect": {
+            "x": 440,
+            "y": 80,
+            "width": 390,
+            "height": 390
+          },
+          "center": 640,
+          "armTop": 362,
+          "armLeft": 575,
+          "armRight": 708,
+          "legTop": 426
+        },
+        "offsets": {
+          "name": "walk-2-right-contact",
+          "leftArm": [
+            0,
+            5
+          ],
+          "rightArm": [
+            0,
+            -8
+          ],
+          "leftLeg": [
+            -4,
+            -12
+          ],
+          "rightLeg": [
+            6,
+            0
+          ]
+        }
+      },
+      "atlasIndex": 23
+    },
+    {
+      "preset": "photo01-front-02",
+      "direction": "front",
+      "phase": 4,
+      "pose": "walk-3-right-passing",
+      "attribution": "SUPPLIED_FRONT_PIXELS_SOURCE_ARTICULATION",
+      "source": "photo_01",
+      "sourcePose": "front-idle",
+      "authoredPose": true,
+      "sourceFrame": {
+        "preset": "photo01-front-02",
+        "pose": "walk-3-right-passing",
+        "direction": "front",
+        "scale": 0.15512465373961218,
+        "sourceAnchor": {
+          "x": 198.5,
+          "y": 377
+        },
+        "rig": {
+          "id": "photo01-front-02",
+          "rect": {
+            "x": 440,
+            "y": 80,
+            "width": 390,
+            "height": 390
+          },
+          "center": 640,
+          "armTop": 362,
+          "armLeft": 575,
+          "armRight": 708,
+          "legTop": 426
+        },
+        "offsets": {
+          "name": "walk-3-right-passing",
+          "leftArm": [
+            0,
+            2
+          ],
+          "rightArm": [
+            0,
+            -4
+          ],
+          "leftLeg": [
+            0,
+            -6
+          ],
+          "rightLeg": [
+            0,
+            0
+          ]
+        }
+      },
+      "atlasIndex": 24
+    },
+    {
+      "preset": "photo01-front-02",
+      "direction": "left",
+      "phase": 0,
+      "pose": "idle",
+      "attribution": "AUTHORED_RECONSTRUCTION_WITH_ARTICULATED_SOURCE",
+      "source": "authored-turnaround-source-9a40c5d4098296b0.png",
+      "sourcePose": "authored-left-idle",
+      "authoredPose": true,
+      "rig": {
+        "id": "photo01-front-02",
+        "rect": {
+          "x": 0,
+          "y": 296,
+          "width": 296,
+          "height": 295
+        },
+        "center": 150.5,
+        "foot": {
+          "x": 150.5,
+          "y": 279
+        },
+        "armTop": 508,
+        "armLeft": 56,
+        "armRight": 157.25,
+        "legTop": 551
+      },
+      "offsets": {
+        "name": "idle",
+        "leftArm": [
+          0,
+          0
+        ],
+        "rightArm": [
+          0,
+          0
+        ],
+        "leftLeg": [
+          0,
+          0
+        ],
+        "rightLeg": [
+          0,
+          0
+        ]
+      },
+      "scale": 0.2074074074074074,
+      "sourceAnchor": {
+        "x": 150.5,
+        "y": 279
+      },
+      "atlasIndex": 25
+    },
+    {
+      "preset": "photo01-front-02",
+      "direction": "left",
+      "phase": 1,
+      "pose": "walk-0-front-contact",
+      "attribution": "AUTHORED_RECONSTRUCTION_WITH_ARTICULATED_SOURCE",
+      "source": "authored-turnaround-source-9a40c5d4098296b0.png",
+      "sourcePose": "authored-left-idle",
+      "authoredPose": true,
+      "rig": {
+        "id": "photo01-front-02",
+        "rect": {
+          "x": 0,
+          "y": 296,
+          "width": 296,
+          "height": 295
+        },
+        "center": 150.5,
+        "foot": {
+          "x": 150.5,
+          "y": 279
+        },
+        "armTop": 508,
+        "armLeft": 56,
+        "armRight": 157.25,
+        "legTop": 551
+      },
+      "offsets": {
+        "name": "walk-0-front-contact",
+        "leftArm": [
+          -6,
+          -3
+        ],
+        "rightArm": [
+          6,
+          -3
+        ],
+        "leftLeg": [
+          -10,
+          0
+        ],
+        "rightLeg": [
+          10,
+          -4
+        ]
+      },
+      "scale": 0.2074074074074074,
+      "sourceAnchor": {
+        "x": 150.5,
+        "y": 279
+      },
+      "atlasIndex": 26
+    },
+    {
+      "preset": "photo01-front-02",
+      "direction": "left",
+      "phase": 2,
+      "pose": "walk-1-front-passing",
+      "attribution": "AUTHORED_RECONSTRUCTION_WITH_ARTICULATED_SOURCE",
+      "source": "authored-turnaround-source-9a40c5d4098296b0.png",
+      "sourcePose": "authored-left-idle",
+      "authoredPose": true,
+      "rig": {
+        "id": "photo01-front-02",
+        "rect": {
+          "x": 0,
+          "y": 296,
+          "width": 296,
+          "height": 295
+        },
+        "center": 150.5,
+        "foot": {
+          "x": 150.5,
+          "y": 279
+        },
+        "armTop": 508,
+        "armLeft": 56,
+        "armRight": 157.25,
+        "legTop": 551
+      },
+      "offsets": {
+        "name": "walk-1-front-passing",
+        "leftArm": [
+          -2,
+          0
+        ],
+        "rightArm": [
+          2,
+          0
+        ],
+        "leftLeg": [
+          0,
+          0
+        ],
+        "rightLeg": [
+          0,
+          -8
+        ]
+      },
+      "scale": 0.2074074074074074,
+      "sourceAnchor": {
+        "x": 150.5,
+        "y": 279
+      },
+      "atlasIndex": 27
+    },
+    {
+      "preset": "photo01-front-02",
+      "direction": "left",
+      "phase": 3,
+      "pose": "walk-2-back-contact",
+      "attribution": "AUTHORED_RECONSTRUCTION_WITH_ARTICULATED_SOURCE",
+      "source": "authored-turnaround-source-9a40c5d4098296b0.png",
+      "sourcePose": "authored-left-idle",
+      "authoredPose": true,
+      "rig": {
+        "id": "photo01-front-02",
+        "rect": {
+          "x": 0,
+          "y": 296,
+          "width": 296,
+          "height": 295
+        },
+        "center": 150.5,
+        "foot": {
+          "x": 150.5,
+          "y": 279
+        },
+        "armTop": 508,
+        "armLeft": 56,
+        "armRight": 157.25,
+        "legTop": 551
+      },
+      "offsets": {
+        "name": "walk-2-back-contact",
+        "leftArm": [
+          6,
+          3
+        ],
+        "rightArm": [
+          -6,
+          3
+        ],
+        "leftLeg": [
+          10,
+          -4
+        ],
+        "rightLeg": [
+          -10,
+          0
+        ]
+      },
+      "scale": 0.2074074074074074,
+      "sourceAnchor": {
+        "x": 150.5,
+        "y": 279
+      },
+      "atlasIndex": 28
+    },
+    {
+      "preset": "photo01-front-02",
+      "direction": "left",
+      "phase": 4,
+      "pose": "walk-3-back-passing",
+      "attribution": "AUTHORED_RECONSTRUCTION_WITH_ARTICULATED_SOURCE",
+      "source": "authored-turnaround-source-9a40c5d4098296b0.png",
+      "sourcePose": "authored-left-idle",
+      "authoredPose": true,
+      "rig": {
+        "id": "photo01-front-02",
+        "rect": {
+          "x": 0,
+          "y": 296,
+          "width": 296,
+          "height": 295
+        },
+        "center": 150.5,
+        "foot": {
+          "x": 150.5,
+          "y": 279
+        },
+        "armTop": 508,
+        "armLeft": 56,
+        "armRight": 157.25,
+        "legTop": 551
+      },
+      "offsets": {
+        "name": "walk-3-back-passing",
+        "leftArm": [
+          2,
+          0
+        ],
+        "rightArm": [
+          -2,
+          0
+        ],
+        "leftLeg": [
+          0,
+          -8
+        ],
+        "rightLeg": [
+          0,
+          0
+        ]
+      },
+      "scale": 0.2074074074074074,
+      "sourceAnchor": {
+        "x": 150.5,
+        "y": 279
+      },
+      "atlasIndex": 29
+    },
+    {
+      "preset": "photo01-front-02",
+      "direction": "right",
+      "phase": 0,
+      "pose": "idle",
+      "attribution": "AUTHORED_RECONSTRUCTION_WITH_ARTICULATED_SOURCE",
+      "source": "authored-turnaround-source-9a40c5d4098296b0.png",
+      "sourcePose": "authored-right-idle",
+      "authoredPose": true,
+      "rig": {
+        "id": "photo01-front-02",
+        "rect": {
+          "x": 296,
+          "y": 296,
+          "width": 295,
+          "height": 295
+        },
+        "center": 437,
+        "foot": {
+          "x": 141,
+          "y": 279
+        },
+        "armTop": 508,
+        "armLeft": 430.25,
+        "armRight": 531.5,
+        "legTop": 551
+      },
+      "offsets": {
+        "name": "idle",
+        "leftArm": [
+          0,
+          0
+        ],
+        "rightArm": [
+          0,
+          0
+        ],
+        "leftLeg": [
+          0,
+          0
+        ],
+        "rightLeg": [
+          0,
+          0
+        ]
+      },
+      "scale": 0.2074074074074074,
+      "sourceAnchor": {
+        "x": 141,
+        "y": 279
+      },
+      "atlasIndex": 30
+    },
+    {
+      "preset": "photo01-front-02",
+      "direction": "right",
+      "phase": 1,
+      "pose": "walk-0-front-contact",
+      "attribution": "AUTHORED_RECONSTRUCTION_WITH_ARTICULATED_SOURCE",
+      "source": "authored-turnaround-source-9a40c5d4098296b0.png",
+      "sourcePose": "authored-right-idle",
+      "authoredPose": true,
+      "rig": {
+        "id": "photo01-front-02",
+        "rect": {
+          "x": 296,
+          "y": 296,
+          "width": 295,
+          "height": 295
+        },
+        "center": 437,
+        "foot": {
+          "x": 141,
+          "y": 279
+        },
+        "armTop": 508,
+        "armLeft": 430.25,
+        "armRight": 531.5,
+        "legTop": 551
+      },
+      "offsets": {
+        "name": "walk-0-front-contact",
+        "leftArm": [
+          -6,
+          -3
+        ],
+        "rightArm": [
+          6,
+          -3
+        ],
+        "leftLeg": [
+          -10,
+          0
+        ],
+        "rightLeg": [
+          10,
+          -4
+        ]
+      },
+      "scale": 0.2074074074074074,
+      "sourceAnchor": {
+        "x": 141,
+        "y": 279
+      },
+      "atlasIndex": 31
+    },
+    {
+      "preset": "photo01-front-02",
+      "direction": "right",
+      "phase": 2,
+      "pose": "walk-1-front-passing",
+      "attribution": "AUTHORED_RECONSTRUCTION_WITH_ARTICULATED_SOURCE",
+      "source": "authored-turnaround-source-9a40c5d4098296b0.png",
+      "sourcePose": "authored-right-idle",
+      "authoredPose": true,
+      "rig": {
+        "id": "photo01-front-02",
+        "rect": {
+          "x": 296,
+          "y": 296,
+          "width": 295,
+          "height": 295
+        },
+        "center": 437,
+        "foot": {
+          "x": 141,
+          "y": 279
+        },
+        "armTop": 508,
+        "armLeft": 430.25,
+        "armRight": 531.5,
+        "legTop": 551
+      },
+      "offsets": {
+        "name": "walk-1-front-passing",
+        "leftArm": [
+          -2,
+          0
+        ],
+        "rightArm": [
+          2,
+          0
+        ],
+        "leftLeg": [
+          0,
+          0
+        ],
+        "rightLeg": [
+          0,
+          -8
+        ]
+      },
+      "scale": 0.2074074074074074,
+      "sourceAnchor": {
+        "x": 141,
+        "y": 279
+      },
+      "atlasIndex": 32
+    },
+    {
+      "preset": "photo01-front-02",
+      "direction": "right",
+      "phase": 3,
+      "pose": "walk-2-back-contact",
+      "attribution": "AUTHORED_RECONSTRUCTION_WITH_ARTICULATED_SOURCE",
+      "source": "authored-turnaround-source-9a40c5d4098296b0.png",
+      "sourcePose": "authored-right-idle",
+      "authoredPose": true,
+      "rig": {
+        "id": "photo01-front-02",
+        "rect": {
+          "x": 296,
+          "y": 296,
+          "width": 295,
+          "height": 295
+        },
+        "center": 437,
+        "foot": {
+          "x": 141,
+          "y": 279
+        },
+        "armTop": 508,
+        "armLeft": 430.25,
+        "armRight": 531.5,
+        "legTop": 551
+      },
+      "offsets": {
+        "name": "walk-2-back-contact",
+        "leftArm": [
+          6,
+          3
+        ],
+        "rightArm": [
+          -6,
+          3
+        ],
+        "leftLeg": [
+          10,
+          -4
+        ],
+        "rightLeg": [
+          -10,
+          0
+        ]
+      },
+      "scale": 0.2074074074074074,
+      "sourceAnchor": {
+        "x": 141,
+        "y": 279
+      },
+      "atlasIndex": 33
+    },
+    {
+      "preset": "photo01-front-02",
+      "direction": "right",
+      "phase": 4,
+      "pose": "walk-3-back-passing",
+      "attribution": "AUTHORED_RECONSTRUCTION_WITH_ARTICULATED_SOURCE",
+      "source": "authored-turnaround-source-9a40c5d4098296b0.png",
+      "sourcePose": "authored-right-idle",
+      "authoredPose": true,
+      "rig": {
+        "id": "photo01-front-02",
+        "rect": {
+          "x": 296,
+          "y": 296,
+          "width": 295,
+          "height": 295
+        },
+        "center": 437,
+        "foot": {
+          "x": 141,
+          "y": 279
+        },
+        "armTop": 508,
+        "armLeft": 430.25,
+        "armRight": 531.5,
+        "legTop": 551
+      },
+      "offsets": {
+        "name": "walk-3-back-passing",
+        "leftArm": [
+          2,
+          0
+        ],
+        "rightArm": [
+          -2,
+          0
+        ],
+        "leftLeg": [
+          0,
+          -8
+        ],
+        "rightLeg": [
+          0,
+          0
+        ]
+      },
+      "scale": 0.2074074074074074,
+      "sourceAnchor": {
+        "x": 141,
+        "y": 279
+      },
+      "atlasIndex": 34
+    },
+    {
+      "preset": "photo01-front-02",
+      "direction": "rear",
+      "phase": 0,
+      "pose": "idle",
+      "attribution": "AUTHORED_RECONSTRUCTION_WITH_ARTICULATED_SOURCE",
+      "source": "authored-turnaround-source-9a40c5d4098296b0.png",
+      "sourcePose": "authored-rear-idle",
+      "authoredPose": true,
+      "rig": {
+        "id": "photo01-front-02",
+        "rect": {
+          "x": 591,
+          "y": 296,
+          "width": 296,
+          "height": 295
+        },
+        "center": 733,
+        "foot": {
+          "x": 142,
+          "y": 279
+        },
+        "armTop": 508,
+        "armLeft": 697.9,
+        "armRight": 768.1,
+        "legTop": 551
+      },
+      "offsets": {
+        "name": "idle",
+        "leftArm": [
+          0,
+          0
+        ],
+        "rightArm": [
+          0,
+          0
+        ],
+        "leftLeg": [
+          0,
+          0
+        ],
+        "rightLeg": [
+          0,
+          0
+        ]
+      },
+      "scale": 0.2074074074074074,
+      "sourceAnchor": {
+        "x": 142,
+        "y": 279
+      },
+      "atlasIndex": 35
+    },
+    {
+      "preset": "photo01-front-02",
+      "direction": "rear",
+      "phase": 1,
+      "pose": "walk-0-left-contact",
+      "attribution": "AUTHORED_RECONSTRUCTION_WITH_ARTICULATED_SOURCE",
+      "source": "authored-turnaround-source-9a40c5d4098296b0.png",
+      "sourcePose": "authored-rear-idle",
+      "authoredPose": true,
+      "rig": {
+        "id": "photo01-front-02",
+        "rect": {
+          "x": 591,
+          "y": 296,
+          "width": 296,
+          "height": 295
+        },
+        "center": 733,
+        "foot": {
+          "x": 142,
+          "y": 279
+        },
+        "armTop": 508,
+        "armLeft": 697.9,
+        "armRight": 768.1,
+        "legTop": 551
+      },
+      "offsets": {
+        "name": "walk-0-left-contact",
+        "leftArm": [
+          0,
+          -8
+        ],
+        "rightArm": [
+          0,
+          5
+        ],
+        "leftLeg": [
+          -6,
+          0
+        ],
+        "rightLeg": [
+          4,
+          -12
+        ]
+      },
+      "scale": 0.2074074074074074,
+      "sourceAnchor": {
+        "x": 142,
+        "y": 279
+      },
+      "atlasIndex": 36
+    },
+    {
+      "preset": "photo01-front-02",
+      "direction": "rear",
+      "phase": 2,
+      "pose": "walk-1-left-passing",
+      "attribution": "AUTHORED_RECONSTRUCTION_WITH_ARTICULATED_SOURCE",
+      "source": "authored-turnaround-source-9a40c5d4098296b0.png",
+      "sourcePose": "authored-rear-idle",
+      "authoredPose": true,
+      "rig": {
+        "id": "photo01-front-02",
+        "rect": {
+          "x": 591,
+          "y": 296,
+          "width": 296,
+          "height": 295
+        },
+        "center": 733,
+        "foot": {
+          "x": 142,
+          "y": 279
+        },
+        "armTop": 508,
+        "armLeft": 697.9,
+        "armRight": 768.1,
+        "legTop": 551
+      },
+      "offsets": {
+        "name": "walk-1-left-passing",
+        "leftArm": [
+          0,
+          -4
+        ],
+        "rightArm": [
+          0,
+          2
+        ],
+        "leftLeg": [
+          0,
+          0
+        ],
+        "rightLeg": [
+          0,
+          -6
+        ]
+      },
+      "scale": 0.2074074074074074,
+      "sourceAnchor": {
+        "x": 142,
+        "y": 279
+      },
+      "atlasIndex": 37
+    },
+    {
+      "preset": "photo01-front-02",
+      "direction": "rear",
+      "phase": 3,
+      "pose": "walk-2-right-contact",
+      "attribution": "AUTHORED_RECONSTRUCTION_WITH_ARTICULATED_SOURCE",
+      "source": "authored-turnaround-source-9a40c5d4098296b0.png",
+      "sourcePose": "authored-rear-idle",
+      "authoredPose": true,
+      "rig": {
+        "id": "photo01-front-02",
+        "rect": {
+          "x": 591,
+          "y": 296,
+          "width": 296,
+          "height": 295
+        },
+        "center": 733,
+        "foot": {
+          "x": 142,
+          "y": 279
+        },
+        "armTop": 508,
+        "armLeft": 697.9,
+        "armRight": 768.1,
+        "legTop": 551
+      },
+      "offsets": {
+        "name": "walk-2-right-contact",
+        "leftArm": [
+          0,
+          5
+        ],
+        "rightArm": [
+          0,
+          -8
+        ],
+        "leftLeg": [
+          -4,
+          -12
+        ],
+        "rightLeg": [
+          6,
+          0
+        ]
+      },
+      "scale": 0.2074074074074074,
+      "sourceAnchor": {
+        "x": 142,
+        "y": 279
+      },
+      "atlasIndex": 38
+    },
+    {
+      "preset": "photo01-front-02",
+      "direction": "rear",
+      "phase": 4,
+      "pose": "walk-3-right-passing",
+      "attribution": "AUTHORED_RECONSTRUCTION_WITH_ARTICULATED_SOURCE",
+      "source": "authored-turnaround-source-9a40c5d4098296b0.png",
+      "sourcePose": "authored-rear-idle",
+      "authoredPose": true,
+      "rig": {
+        "id": "photo01-front-02",
+        "rect": {
+          "x": 591,
+          "y": 296,
+          "width": 296,
+          "height": 295
+        },
+        "center": 733,
+        "foot": {
+          "x": 142,
+          "y": 279
+        },
+        "armTop": 508,
+        "armLeft": 697.9,
+        "armRight": 768.1,
+        "legTop": 551
+      },
+      "offsets": {
+        "name": "walk-3-right-passing",
+        "leftArm": [
+          0,
+          2
+        ],
+        "rightArm": [
+          0,
+          -4
+        ],
+        "leftLeg": [
+          0,
+          -6
+        ],
+        "rightLeg": [
+          0,
+          0
+        ]
+      },
+      "scale": 0.2074074074074074,
+      "sourceAnchor": {
+        "x": 142,
+        "y": 279
+      },
+      "atlasIndex": 39
+    },
+    {
+      "preset": "photo01-front-03",
+      "direction": "front",
+      "phase": 0,
+      "pose": "idle",
+      "attribution": "SUPPLIED_FRONT_PIXELS_SOURCE_ARTICULATION",
+      "source": "photo_01",
+      "sourcePose": "front-idle",
+      "authoredPose": false,
+      "sourceFrame": {
+        "preset": "photo01-front-03",
+        "pose": "idle",
+        "direction": "front",
+        "scale": 0.15217391304347827,
+        "sourceAnchor": {
+          "x": 197.5,
+          "y": 376
+        },
+        "rig": {
+          "id": "photo01-front-03",
+          "rect": {
+            "x": 850,
+            "y": 80,
+            "width": 395,
+            "height": 390
+          },
+          "center": 1050,
+          "armTop": 363,
+          "armLeft": 980,
+          "armRight": 1110,
+          "legTop": 429
+        },
+        "offsets": {
+          "name": "idle",
+          "leftArm": [
+            0,
+            0
+          ],
+          "rightArm": [
+            0,
+            0
+          ],
+          "leftLeg": [
+            0,
+            0
+          ],
+          "rightLeg": [
+            0,
+            0
+          ]
+        }
+      },
+      "atlasIndex": 40
+    },
+    {
+      "preset": "photo01-front-03",
+      "direction": "front",
+      "phase": 1,
+      "pose": "walk-0-left-contact",
+      "attribution": "SUPPLIED_FRONT_PIXELS_SOURCE_ARTICULATION",
+      "source": "photo_01",
+      "sourcePose": "front-idle",
+      "authoredPose": true,
+      "sourceFrame": {
+        "preset": "photo01-front-03",
+        "pose": "walk-0-left-contact",
+        "direction": "front",
+        "scale": 0.15217391304347827,
+        "sourceAnchor": {
+          "x": 197.5,
+          "y": 376
+        },
+        "rig": {
+          "id": "photo01-front-03",
+          "rect": {
+            "x": 850,
+            "y": 80,
+            "width": 395,
+            "height": 390
+          },
+          "center": 1050,
+          "armTop": 363,
+          "armLeft": 980,
+          "armRight": 1110,
+          "legTop": 429
+        },
+        "offsets": {
+          "name": "walk-0-left-contact",
+          "leftArm": [
+            0,
+            -8
+          ],
+          "rightArm": [
+            0,
+            5
+          ],
+          "leftLeg": [
+            -6,
+            0
+          ],
+          "rightLeg": [
+            4,
+            -12
+          ]
+        }
+      },
+      "atlasIndex": 41
+    },
+    {
+      "preset": "photo01-front-03",
+      "direction": "front",
+      "phase": 2,
+      "pose": "walk-1-left-passing",
+      "attribution": "SUPPLIED_FRONT_PIXELS_SOURCE_ARTICULATION",
+      "source": "photo_01",
+      "sourcePose": "front-idle",
+      "authoredPose": true,
+      "sourceFrame": {
+        "preset": "photo01-front-03",
+        "pose": "walk-1-left-passing",
+        "direction": "front",
+        "scale": 0.15217391304347827,
+        "sourceAnchor": {
+          "x": 197.5,
+          "y": 376
+        },
+        "rig": {
+          "id": "photo01-front-03",
+          "rect": {
+            "x": 850,
+            "y": 80,
+            "width": 395,
+            "height": 390
+          },
+          "center": 1050,
+          "armTop": 363,
+          "armLeft": 980,
+          "armRight": 1110,
+          "legTop": 429
+        },
+        "offsets": {
+          "name": "walk-1-left-passing",
+          "leftArm": [
+            0,
+            -4
+          ],
+          "rightArm": [
+            0,
+            2
+          ],
+          "leftLeg": [
+            0,
+            0
+          ],
+          "rightLeg": [
+            0,
+            -6
+          ]
+        }
+      },
+      "atlasIndex": 42
+    },
+    {
+      "preset": "photo01-front-03",
+      "direction": "front",
+      "phase": 3,
+      "pose": "walk-2-right-contact",
+      "attribution": "SUPPLIED_FRONT_PIXELS_SOURCE_ARTICULATION",
+      "source": "photo_01",
+      "sourcePose": "front-idle",
+      "authoredPose": true,
+      "sourceFrame": {
+        "preset": "photo01-front-03",
+        "pose": "walk-2-right-contact",
+        "direction": "front",
+        "scale": 0.15217391304347827,
+        "sourceAnchor": {
+          "x": 197.5,
+          "y": 376
+        },
+        "rig": {
+          "id": "photo01-front-03",
+          "rect": {
+            "x": 850,
+            "y": 80,
+            "width": 395,
+            "height": 390
+          },
+          "center": 1050,
+          "armTop": 363,
+          "armLeft": 980,
+          "armRight": 1110,
+          "legTop": 429
+        },
+        "offsets": {
+          "name": "walk-2-right-contact",
+          "leftArm": [
+            0,
+            5
+          ],
+          "rightArm": [
+            0,
+            -8
+          ],
+          "leftLeg": [
+            -4,
+            -12
+          ],
+          "rightLeg": [
+            6,
+            0
+          ]
+        }
+      },
+      "atlasIndex": 43
+    },
+    {
+      "preset": "photo01-front-03",
+      "direction": "front",
+      "phase": 4,
+      "pose": "walk-3-right-passing",
+      "attribution": "SUPPLIED_FRONT_PIXELS_SOURCE_ARTICULATION",
+      "source": "photo_01",
+      "sourcePose": "front-idle",
+      "authoredPose": true,
+      "sourceFrame": {
+        "preset": "photo01-front-03",
+        "pose": "walk-3-right-passing",
+        "direction": "front",
+        "scale": 0.15217391304347827,
+        "sourceAnchor": {
+          "x": 197.5,
+          "y": 376
+        },
+        "rig": {
+          "id": "photo01-front-03",
+          "rect": {
+            "x": 850,
+            "y": 80,
+            "width": 395,
+            "height": 390
+          },
+          "center": 1050,
+          "armTop": 363,
+          "armLeft": 980,
+          "armRight": 1110,
+          "legTop": 429
+        },
+        "offsets": {
+          "name": "walk-3-right-passing",
+          "leftArm": [
+            0,
+            2
+          ],
+          "rightArm": [
+            0,
+            -4
+          ],
+          "leftLeg": [
+            0,
+            -6
+          ],
+          "rightLeg": [
+            0,
+            0
+          ]
+        }
+      },
+      "atlasIndex": 44
+    },
+    {
+      "preset": "photo01-front-03",
+      "direction": "left",
+      "phase": 0,
+      "pose": "idle",
+      "attribution": "AUTHORED_RECONSTRUCTION_WITH_ARTICULATED_SOURCE",
+      "source": "authored-turnaround-source-9a40c5d4098296b0.png",
+      "sourcePose": "authored-left-idle",
+      "authoredPose": true,
+      "rig": {
+        "id": "photo01-front-03",
+        "rect": {
+          "x": 0,
+          "y": 591,
+          "width": 296,
+          "height": 296
+        },
+        "center": 148,
+        "foot": {
+          "x": 148,
+          "y": 281
+        },
+        "armTop": 803,
+        "armLeft": 51.05000000000001,
+        "armRight": 154.925,
+        "legTop": 847
+      },
+      "offsets": {
+        "name": "idle",
+        "leftArm": [
+          0,
+          0
+        ],
+        "rightArm": [
+          0,
+          0
+        ],
+        "leftLeg": [
+          0,
+          0
+        ],
+        "rightLeg": [
+          0,
+          0
+        ]
+      },
+      "scale": 0.20216606498194944,
+      "sourceAnchor": {
+        "x": 148,
+        "y": 281
+      },
+      "atlasIndex": 45
+    },
+    {
+      "preset": "photo01-front-03",
+      "direction": "left",
+      "phase": 1,
+      "pose": "walk-0-front-contact",
+      "attribution": "AUTHORED_RECONSTRUCTION_WITH_ARTICULATED_SOURCE",
+      "source": "authored-turnaround-source-9a40c5d4098296b0.png",
+      "sourcePose": "authored-left-idle",
+      "authoredPose": true,
+      "rig": {
+        "id": "photo01-front-03",
+        "rect": {
+          "x": 0,
+          "y": 591,
+          "width": 296,
+          "height": 296
+        },
+        "center": 148,
+        "foot": {
+          "x": 148,
+          "y": 281
+        },
+        "armTop": 803,
+        "armLeft": 51.05000000000001,
+        "armRight": 154.925,
+        "legTop": 847
+      },
+      "offsets": {
+        "name": "walk-0-front-contact",
+        "leftArm": [
+          -6,
+          -3
+        ],
+        "rightArm": [
+          6,
+          -3
+        ],
+        "leftLeg": [
+          -10,
+          0
+        ],
+        "rightLeg": [
+          10,
+          -4
+        ]
+      },
+      "scale": 0.20216606498194944,
+      "sourceAnchor": {
+        "x": 148,
+        "y": 281
+      },
+      "atlasIndex": 46
+    },
+    {
+      "preset": "photo01-front-03",
+      "direction": "left",
+      "phase": 2,
+      "pose": "walk-1-front-passing",
+      "attribution": "AUTHORED_RECONSTRUCTION_WITH_ARTICULATED_SOURCE",
+      "source": "authored-turnaround-source-9a40c5d4098296b0.png",
+      "sourcePose": "authored-left-idle",
+      "authoredPose": true,
+      "rig": {
+        "id": "photo01-front-03",
+        "rect": {
+          "x": 0,
+          "y": 591,
+          "width": 296,
+          "height": 296
+        },
+        "center": 148,
+        "foot": {
+          "x": 148,
+          "y": 281
+        },
+        "armTop": 803,
+        "armLeft": 51.05000000000001,
+        "armRight": 154.925,
+        "legTop": 847
+      },
+      "offsets": {
+        "name": "walk-1-front-passing",
+        "leftArm": [
+          -2,
+          0
+        ],
+        "rightArm": [
+          2,
+          0
+        ],
+        "leftLeg": [
+          0,
+          0
+        ],
+        "rightLeg": [
+          0,
+          -8
+        ]
+      },
+      "scale": 0.20216606498194944,
+      "sourceAnchor": {
+        "x": 148,
+        "y": 281
+      },
+      "atlasIndex": 47
+    },
+    {
+      "preset": "photo01-front-03",
+      "direction": "left",
+      "phase": 3,
+      "pose": "walk-2-back-contact",
+      "attribution": "AUTHORED_RECONSTRUCTION_WITH_ARTICULATED_SOURCE",
+      "source": "authored-turnaround-source-9a40c5d4098296b0.png",
+      "sourcePose": "authored-left-idle",
+      "authoredPose": true,
+      "rig": {
+        "id": "photo01-front-03",
+        "rect": {
+          "x": 0,
+          "y": 591,
+          "width": 296,
+          "height": 296
+        },
+        "center": 148,
+        "foot": {
+          "x": 148,
+          "y": 281
+        },
+        "armTop": 803,
+        "armLeft": 51.05000000000001,
+        "armRight": 154.925,
+        "legTop": 847
+      },
+      "offsets": {
+        "name": "walk-2-back-contact",
+        "leftArm": [
+          6,
+          3
+        ],
+        "rightArm": [
+          -6,
+          3
+        ],
+        "leftLeg": [
+          10,
+          -4
+        ],
+        "rightLeg": [
+          -10,
+          0
+        ]
+      },
+      "scale": 0.20216606498194944,
+      "sourceAnchor": {
+        "x": 148,
+        "y": 281
+      },
+      "atlasIndex": 48
+    },
+    {
+      "preset": "photo01-front-03",
+      "direction": "left",
+      "phase": 4,
+      "pose": "walk-3-back-passing",
+      "attribution": "AUTHORED_RECONSTRUCTION_WITH_ARTICULATED_SOURCE",
+      "source": "authored-turnaround-source-9a40c5d4098296b0.png",
+      "sourcePose": "authored-left-idle",
+      "authoredPose": true,
+      "rig": {
+        "id": "photo01-front-03",
+        "rect": {
+          "x": 0,
+          "y": 591,
+          "width": 296,
+          "height": 296
+        },
+        "center": 148,
+        "foot": {
+          "x": 148,
+          "y": 281
+        },
+        "armTop": 803,
+        "armLeft": 51.05000000000001,
+        "armRight": 154.925,
+        "legTop": 847
+      },
+      "offsets": {
+        "name": "walk-3-back-passing",
+        "leftArm": [
+          2,
+          0
+        ],
+        "rightArm": [
+          -2,
+          0
+        ],
+        "leftLeg": [
+          0,
+          -8
+        ],
+        "rightLeg": [
+          0,
+          0
+        ]
+      },
+      "scale": 0.20216606498194944,
+      "sourceAnchor": {
+        "x": 148,
+        "y": 281
+      },
+      "atlasIndex": 49
+    },
+    {
+      "preset": "photo01-front-03",
+      "direction": "right",
+      "phase": 0,
+      "pose": "idle",
+      "attribution": "AUTHORED_RECONSTRUCTION_WITH_ARTICULATED_SOURCE",
+      "source": "authored-turnaround-source-9a40c5d4098296b0.png",
+      "sourcePose": "authored-right-idle",
+      "authoredPose": true,
+      "rig": {
+        "id": "photo01-front-03",
+        "rect": {
+          "x": 296,
+          "y": 591,
+          "width": 295,
+          "height": 296
+        },
+        "center": 442.5,
+        "foot": {
+          "x": 146.5,
+          "y": 281
+        },
+        "armTop": 803,
+        "armLeft": 435.575,
+        "armRight": 539.45,
+        "legTop": 847
+      },
+      "offsets": {
+        "name": "idle",
+        "leftArm": [
+          0,
+          0
+        ],
+        "rightArm": [
+          0,
+          0
+        ],
+        "leftLeg": [
+          0,
+          0
+        ],
+        "rightLeg": [
+          0,
+          0
+        ]
+      },
+      "scale": 0.20216606498194944,
+      "sourceAnchor": {
+        "x": 146.5,
+        "y": 281
+      },
+      "atlasIndex": 50
+    },
+    {
+      "preset": "photo01-front-03",
+      "direction": "right",
+      "phase": 1,
+      "pose": "walk-0-front-contact",
+      "attribution": "AUTHORED_RECONSTRUCTION_WITH_ARTICULATED_SOURCE",
+      "source": "authored-turnaround-source-9a40c5d4098296b0.png",
+      "sourcePose": "authored-right-idle",
+      "authoredPose": true,
+      "rig": {
+        "id": "photo01-front-03",
+        "rect": {
+          "x": 296,
+          "y": 591,
+          "width": 295,
+          "height": 296
+        },
+        "center": 442.5,
+        "foot": {
+          "x": 146.5,
+          "y": 281
+        },
+        "armTop": 803,
+        "armLeft": 435.575,
+        "armRight": 539.45,
+        "legTop": 847
+      },
+      "offsets": {
+        "name": "walk-0-front-contact",
+        "leftArm": [
+          -6,
+          -3
+        ],
+        "rightArm": [
+          6,
+          -3
+        ],
+        "leftLeg": [
+          -10,
+          0
+        ],
+        "rightLeg": [
+          10,
+          -4
+        ]
+      },
+      "scale": 0.20216606498194944,
+      "sourceAnchor": {
+        "x": 146.5,
+        "y": 281
+      },
+      "atlasIndex": 51
+    },
+    {
+      "preset": "photo01-front-03",
+      "direction": "right",
+      "phase": 2,
+      "pose": "walk-1-front-passing",
+      "attribution": "AUTHORED_RECONSTRUCTION_WITH_ARTICULATED_SOURCE",
+      "source": "authored-turnaround-source-9a40c5d4098296b0.png",
+      "sourcePose": "authored-right-idle",
+      "authoredPose": true,
+      "rig": {
+        "id": "photo01-front-03",
+        "rect": {
+          "x": 296,
+          "y": 591,
+          "width": 295,
+          "height": 296
+        },
+        "center": 442.5,
+        "foot": {
+          "x": 146.5,
+          "y": 281
+        },
+        "armTop": 803,
+        "armLeft": 435.575,
+        "armRight": 539.45,
+        "legTop": 847
+      },
+      "offsets": {
+        "name": "walk-1-front-passing",
+        "leftArm": [
+          -2,
+          0
+        ],
+        "rightArm": [
+          2,
+          0
+        ],
+        "leftLeg": [
+          0,
+          0
+        ],
+        "rightLeg": [
+          0,
+          -8
+        ]
+      },
+      "scale": 0.20216606498194944,
+      "sourceAnchor": {
+        "x": 146.5,
+        "y": 281
+      },
+      "atlasIndex": 52
+    },
+    {
+      "preset": "photo01-front-03",
+      "direction": "right",
+      "phase": 3,
+      "pose": "walk-2-back-contact",
+      "attribution": "AUTHORED_RECONSTRUCTION_WITH_ARTICULATED_SOURCE",
+      "source": "authored-turnaround-source-9a40c5d4098296b0.png",
+      "sourcePose": "authored-right-idle",
+      "authoredPose": true,
+      "rig": {
+        "id": "photo01-front-03",
+        "rect": {
+          "x": 296,
+          "y": 591,
+          "width": 295,
+          "height": 296
+        },
+        "center": 442.5,
+        "foot": {
+          "x": 146.5,
+          "y": 281
+        },
+        "armTop": 803,
+        "armLeft": 435.575,
+        "armRight": 539.45,
+        "legTop": 847
+      },
+      "offsets": {
+        "name": "walk-2-back-contact",
+        "leftArm": [
+          6,
+          3
+        ],
+        "rightArm": [
+          -6,
+          3
+        ],
+        "leftLeg": [
+          10,
+          -4
+        ],
+        "rightLeg": [
+          -10,
+          0
+        ]
+      },
+      "scale": 0.20216606498194944,
+      "sourceAnchor": {
+        "x": 146.5,
+        "y": 281
+      },
+      "atlasIndex": 53
+    },
+    {
+      "preset": "photo01-front-03",
+      "direction": "right",
+      "phase": 4,
+      "pose": "walk-3-back-passing",
+      "attribution": "AUTHORED_RECONSTRUCTION_WITH_ARTICULATED_SOURCE",
+      "source": "authored-turnaround-source-9a40c5d4098296b0.png",
+      "sourcePose": "authored-right-idle",
+      "authoredPose": true,
+      "rig": {
+        "id": "photo01-front-03",
+        "rect": {
+          "x": 296,
+          "y": 591,
+          "width": 295,
+          "height": 296
+        },
+        "center": 442.5,
+        "foot": {
+          "x": 146.5,
+          "y": 281
+        },
+        "armTop": 803,
+        "armLeft": 435.575,
+        "armRight": 539.45,
+        "legTop": 847
+      },
+      "offsets": {
+        "name": "walk-3-back-passing",
+        "leftArm": [
+          2,
+          0
+        ],
+        "rightArm": [
+          -2,
+          0
+        ],
+        "leftLeg": [
+          0,
+          -8
+        ],
+        "rightLeg": [
+          0,
+          0
+        ]
+      },
+      "scale": 0.20216606498194944,
+      "sourceAnchor": {
+        "x": 146.5,
+        "y": 281
+      },
+      "atlasIndex": 54
+    },
+    {
+      "preset": "photo01-front-03",
+      "direction": "rear",
+      "phase": 0,
+      "pose": "idle",
+      "attribution": "AUTHORED_RECONSTRUCTION_WITH_ARTICULATED_SOURCE",
+      "source": "authored-turnaround-source-9a40c5d4098296b0.png",
+      "sourcePose": "authored-rear-idle",
+      "authoredPose": true,
+      "rig": {
+        "id": "photo01-front-03",
+        "rect": {
+          "x": 591,
+          "y": 591,
+          "width": 296,
+          "height": 296
+        },
+        "center": 728.5,
+        "foot": {
+          "x": 137.5,
+          "y": 281
+        },
+        "armTop": 803,
+        "armLeft": 692.49,
+        "armRight": 764.51,
+        "legTop": 847
+      },
+      "offsets": {
+        "name": "idle",
+        "leftArm": [
+          0,
+          0
+        ],
+        "rightArm": [
+          0,
+          0
+        ],
+        "leftLeg": [
+          0,
+          0
+        ],
+        "rightLeg": [
+          0,
+          0
+        ]
+      },
+      "scale": 0.20216606498194944,
+      "sourceAnchor": {
+        "x": 137.5,
+        "y": 281
+      },
+      "atlasIndex": 55
+    },
+    {
+      "preset": "photo01-front-03",
+      "direction": "rear",
+      "phase": 1,
+      "pose": "walk-0-left-contact",
+      "attribution": "AUTHORED_RECONSTRUCTION_WITH_ARTICULATED_SOURCE",
+      "source": "authored-turnaround-source-9a40c5d4098296b0.png",
+      "sourcePose": "authored-rear-idle",
+      "authoredPose": true,
+      "rig": {
+        "id": "photo01-front-03",
+        "rect": {
+          "x": 591,
+          "y": 591,
+          "width": 296,
+          "height": 296
+        },
+        "center": 728.5,
+        "foot": {
+          "x": 137.5,
+          "y": 281
+        },
+        "armTop": 803,
+        "armLeft": 692.49,
+        "armRight": 764.51,
+        "legTop": 847
+      },
+      "offsets": {
+        "name": "walk-0-left-contact",
+        "leftArm": [
+          0,
+          -8
+        ],
+        "rightArm": [
+          0,
+          5
+        ],
+        "leftLeg": [
+          -6,
+          0
+        ],
+        "rightLeg": [
+          4,
+          -12
+        ]
+      },
+      "scale": 0.20216606498194944,
+      "sourceAnchor": {
+        "x": 137.5,
+        "y": 281
+      },
+      "atlasIndex": 56
+    },
+    {
+      "preset": "photo01-front-03",
+      "direction": "rear",
+      "phase": 2,
+      "pose": "walk-1-left-passing",
+      "attribution": "AUTHORED_RECONSTRUCTION_WITH_ARTICULATED_SOURCE",
+      "source": "authored-turnaround-source-9a40c5d4098296b0.png",
+      "sourcePose": "authored-rear-idle",
+      "authoredPose": true,
+      "rig": {
+        "id": "photo01-front-03",
+        "rect": {
+          "x": 591,
+          "y": 591,
+          "width": 296,
+          "height": 296
+        },
+        "center": 728.5,
+        "foot": {
+          "x": 137.5,
+          "y": 281
+        },
+        "armTop": 803,
+        "armLeft": 692.49,
+        "armRight": 764.51,
+        "legTop": 847
+      },
+      "offsets": {
+        "name": "walk-1-left-passing",
+        "leftArm": [
+          0,
+          -4
+        ],
+        "rightArm": [
+          0,
+          2
+        ],
+        "leftLeg": [
+          0,
+          0
+        ],
+        "rightLeg": [
+          0,
+          -6
+        ]
+      },
+      "scale": 0.20216606498194944,
+      "sourceAnchor": {
+        "x": 137.5,
+        "y": 281
+      },
+      "atlasIndex": 57
+    },
+    {
+      "preset": "photo01-front-03",
+      "direction": "rear",
+      "phase": 3,
+      "pose": "walk-2-right-contact",
+      "attribution": "AUTHORED_RECONSTRUCTION_WITH_ARTICULATED_SOURCE",
+      "source": "authored-turnaround-source-9a40c5d4098296b0.png",
+      "sourcePose": "authored-rear-idle",
+      "authoredPose": true,
+      "rig": {
+        "id": "photo01-front-03",
+        "rect": {
+          "x": 591,
+          "y": 591,
+          "width": 296,
+          "height": 296
+        },
+        "center": 728.5,
+        "foot": {
+          "x": 137.5,
+          "y": 281
+        },
+        "armTop": 803,
+        "armLeft": 692.49,
+        "armRight": 764.51,
+        "legTop": 847
+      },
+      "offsets": {
+        "name": "walk-2-right-contact",
+        "leftArm": [
+          0,
+          5
+        ],
+        "rightArm": [
+          0,
+          -8
+        ],
+        "leftLeg": [
+          -4,
+          -12
+        ],
+        "rightLeg": [
+          6,
+          0
+        ]
+      },
+      "scale": 0.20216606498194944,
+      "sourceAnchor": {
+        "x": 137.5,
+        "y": 281
+      },
+      "atlasIndex": 58
+    },
+    {
+      "preset": "photo01-front-03",
+      "direction": "rear",
+      "phase": 4,
+      "pose": "walk-3-right-passing",
+      "attribution": "AUTHORED_RECONSTRUCTION_WITH_ARTICULATED_SOURCE",
+      "source": "authored-turnaround-source-9a40c5d4098296b0.png",
+      "sourcePose": "authored-rear-idle",
+      "authoredPose": true,
+      "rig": {
+        "id": "photo01-front-03",
+        "rect": {
+          "x": 591,
+          "y": 591,
+          "width": 296,
+          "height": 296
+        },
+        "center": 728.5,
+        "foot": {
+          "x": 137.5,
+          "y": 281
+        },
+        "armTop": 803,
+        "armLeft": 692.49,
+        "armRight": 764.51,
+        "legTop": 847
+      },
+      "offsets": {
+        "name": "walk-3-right-passing",
+        "leftArm": [
+          0,
+          2
+        ],
+        "rightArm": [
+          0,
+          -4
+        ],
+        "leftLeg": [
+          0,
+          -6
+        ],
+        "rightLeg": [
+          0,
+          0
+        ]
+      },
+      "scale": 0.20216606498194944,
+      "sourceAnchor": {
+        "x": 137.5,
+        "y": 281
+      },
+      "atlasIndex": 59
+    },
+    {
+      "preset": "photo01-front-04",
+      "direction": "front",
+      "phase": 0,
+      "pose": "idle",
+      "attribution": "SUPPLIED_FRONT_PIXELS_SOURCE_ARTICULATION",
+      "source": "photo_01",
+      "sourcePose": "front-idle",
+      "authoredPose": false,
+      "sourceFrame": {
+        "preset": "photo01-front-04",
+        "pose": "idle",
+        "direction": "front",
+        "scale": 0.1723076923076923,
+        "sourceAnchor": {
+          "x": 196.5,
+          "y": 352
+        },
+        "rig": {
+          "id": "photo01-front-04",
+          "rect": {
+            "x": 40,
+            "y": 475,
+            "width": 380,
+            "height": 360
+          },
+          "center": 244,
+          "armTop": 750,
+          "armLeft": 176,
+          "armRight": 307,
+          "legTop": 800
+        },
+        "offsets": {
+          "name": "idle",
+          "leftArm": [
+            0,
+            0
+          ],
+          "rightArm": [
+            0,
+            0
+          ],
+          "leftLeg": [
+            0,
+            0
+          ],
+          "rightLeg": [
+            0,
+            0
+          ]
+        }
+      },
+      "atlasIndex": 60
+    },
+    {
+      "preset": "photo01-front-04",
+      "direction": "front",
+      "phase": 1,
+      "pose": "walk-0-left-contact",
+      "attribution": "SUPPLIED_FRONT_PIXELS_SOURCE_ARTICULATION",
+      "source": "photo_01",
+      "sourcePose": "front-idle",
+      "authoredPose": true,
+      "sourceFrame": {
+        "preset": "photo01-front-04",
+        "pose": "walk-0-left-contact",
+        "direction": "front",
+        "scale": 0.1723076923076923,
+        "sourceAnchor": {
+          "x": 196.5,
+          "y": 352
+        },
+        "rig": {
+          "id": "photo01-front-04",
+          "rect": {
+            "x": 40,
+            "y": 475,
+            "width": 380,
+            "height": 360
+          },
+          "center": 244,
+          "armTop": 750,
+          "armLeft": 176,
+          "armRight": 307,
+          "legTop": 800
+        },
+        "offsets": {
+          "name": "walk-0-left-contact",
+          "leftArm": [
+            0,
+            -8
+          ],
+          "rightArm": [
+            0,
+            5
+          ],
+          "leftLeg": [
+            -6,
+            0
+          ],
+          "rightLeg": [
+            4,
+            -12
+          ]
+        }
+      },
+      "atlasIndex": 61
+    },
+    {
+      "preset": "photo01-front-04",
+      "direction": "front",
+      "phase": 2,
+      "pose": "walk-1-left-passing",
+      "attribution": "SUPPLIED_FRONT_PIXELS_SOURCE_ARTICULATION",
+      "source": "photo_01",
+      "sourcePose": "front-idle",
+      "authoredPose": true,
+      "sourceFrame": {
+        "preset": "photo01-front-04",
+        "pose": "walk-1-left-passing",
+        "direction": "front",
+        "scale": 0.1723076923076923,
+        "sourceAnchor": {
+          "x": 196.5,
+          "y": 352
+        },
+        "rig": {
+          "id": "photo01-front-04",
+          "rect": {
+            "x": 40,
+            "y": 475,
+            "width": 380,
+            "height": 360
+          },
+          "center": 244,
+          "armTop": 750,
+          "armLeft": 176,
+          "armRight": 307,
+          "legTop": 800
+        },
+        "offsets": {
+          "name": "walk-1-left-passing",
+          "leftArm": [
+            0,
+            -4
+          ],
+          "rightArm": [
+            0,
+            2
+          ],
+          "leftLeg": [
+            0,
+            0
+          ],
+          "rightLeg": [
+            0,
+            -6
+          ]
+        }
+      },
+      "atlasIndex": 62
+    },
+    {
+      "preset": "photo01-front-04",
+      "direction": "front",
+      "phase": 3,
+      "pose": "walk-2-right-contact",
+      "attribution": "SUPPLIED_FRONT_PIXELS_SOURCE_ARTICULATION",
+      "source": "photo_01",
+      "sourcePose": "front-idle",
+      "authoredPose": true,
+      "sourceFrame": {
+        "preset": "photo01-front-04",
+        "pose": "walk-2-right-contact",
+        "direction": "front",
+        "scale": 0.1723076923076923,
+        "sourceAnchor": {
+          "x": 196.5,
+          "y": 352
+        },
+        "rig": {
+          "id": "photo01-front-04",
+          "rect": {
+            "x": 40,
+            "y": 475,
+            "width": 380,
+            "height": 360
+          },
+          "center": 244,
+          "armTop": 750,
+          "armLeft": 176,
+          "armRight": 307,
+          "legTop": 800
+        },
+        "offsets": {
+          "name": "walk-2-right-contact",
+          "leftArm": [
+            0,
+            5
+          ],
+          "rightArm": [
+            0,
+            -8
+          ],
+          "leftLeg": [
+            -4,
+            -12
+          ],
+          "rightLeg": [
+            6,
+            0
+          ]
+        }
+      },
+      "atlasIndex": 63
+    },
+    {
+      "preset": "photo01-front-04",
+      "direction": "front",
+      "phase": 4,
+      "pose": "walk-3-right-passing",
+      "attribution": "SUPPLIED_FRONT_PIXELS_SOURCE_ARTICULATION",
+      "source": "photo_01",
+      "sourcePose": "front-idle",
+      "authoredPose": true,
+      "sourceFrame": {
+        "preset": "photo01-front-04",
+        "pose": "walk-3-right-passing",
+        "direction": "front",
+        "scale": 0.1723076923076923,
+        "sourceAnchor": {
+          "x": 196.5,
+          "y": 352
+        },
+        "rig": {
+          "id": "photo01-front-04",
+          "rect": {
+            "x": 40,
+            "y": 475,
+            "width": 380,
+            "height": 360
+          },
+          "center": 244,
+          "armTop": 750,
+          "armLeft": 176,
+          "armRight": 307,
+          "legTop": 800
+        },
+        "offsets": {
+          "name": "walk-3-right-passing",
+          "leftArm": [
+            0,
+            2
+          ],
+          "rightArm": [
+            0,
+            -4
+          ],
+          "leftLeg": [
+            0,
+            -6
+          ],
+          "rightLeg": [
+            0,
+            0
+          ]
+        }
+      },
+      "atlasIndex": 64
+    },
+    {
+      "preset": "photo01-front-04",
+      "direction": "left",
+      "phase": 0,
+      "pose": "idle",
+      "attribution": "AUTHORED_RECONSTRUCTION_WITH_ARTICULATED_SOURCE",
+      "source": "authored-turnaround-source-9a40c5d4098296b0.png",
+      "sourcePose": "authored-left-idle",
+      "authoredPose": true,
+      "rig": {
+        "id": "photo01-front-04",
+        "rect": {
+          "x": 0,
+          "y": 887,
+          "width": 296,
+          "height": 292
+        },
+        "center": 149,
+        "foot": {
+          "x": 149,
+          "y": 272
+        },
+        "armTop": 1094,
+        "armLeft": 57.650000000000006,
+        "armRight": 155.525,
+        "legTop": 1136
+      },
+      "offsets": {
+        "name": "idle",
+        "leftArm": [
+          0,
+          0
+        ],
+        "rightArm": [
+          0,
+          0
+        ],
+        "leftLeg": [
+          0,
+          0
+        ],
+        "rightLeg": [
+          0,
+          0
+        ]
+      },
+      "scale": 0.21455938697318008,
+      "sourceAnchor": {
+        "x": 149,
+        "y": 272
+      },
+      "atlasIndex": 65
+    },
+    {
+      "preset": "photo01-front-04",
+      "direction": "left",
+      "phase": 1,
+      "pose": "walk-0-front-contact",
+      "attribution": "AUTHORED_RECONSTRUCTION_WITH_ARTICULATED_SOURCE",
+      "source": "authored-turnaround-source-9a40c5d4098296b0.png",
+      "sourcePose": "authored-left-idle",
+      "authoredPose": true,
+      "rig": {
+        "id": "photo01-front-04",
+        "rect": {
+          "x": 0,
+          "y": 887,
+          "width": 296,
+          "height": 292
+        },
+        "center": 149,
+        "foot": {
+          "x": 149,
+          "y": 272
+        },
+        "armTop": 1094,
+        "armLeft": 57.650000000000006,
+        "armRight": 155.525,
+        "legTop": 1136
+      },
+      "offsets": {
+        "name": "walk-0-front-contact",
+        "leftArm": [
+          -6,
+          -3
+        ],
+        "rightArm": [
+          6,
+          -3
+        ],
+        "leftLeg": [
+          -10,
+          0
+        ],
+        "rightLeg": [
+          10,
+          -4
+        ]
+      },
+      "scale": 0.21455938697318008,
+      "sourceAnchor": {
+        "x": 149,
+        "y": 272
+      },
+      "atlasIndex": 66
+    },
+    {
+      "preset": "photo01-front-04",
+      "direction": "left",
+      "phase": 2,
+      "pose": "walk-1-front-passing",
+      "attribution": "AUTHORED_RECONSTRUCTION_WITH_ARTICULATED_SOURCE",
+      "source": "authored-turnaround-source-9a40c5d4098296b0.png",
+      "sourcePose": "authored-left-idle",
+      "authoredPose": true,
+      "rig": {
+        "id": "photo01-front-04",
+        "rect": {
+          "x": 0,
+          "y": 887,
+          "width": 296,
+          "height": 292
+        },
+        "center": 149,
+        "foot": {
+          "x": 149,
+          "y": 272
+        },
+        "armTop": 1094,
+        "armLeft": 57.650000000000006,
+        "armRight": 155.525,
+        "legTop": 1136
+      },
+      "offsets": {
+        "name": "walk-1-front-passing",
+        "leftArm": [
+          -2,
+          0
+        ],
+        "rightArm": [
+          2,
+          0
+        ],
+        "leftLeg": [
+          0,
+          0
+        ],
+        "rightLeg": [
+          0,
+          -8
+        ]
+      },
+      "scale": 0.21455938697318008,
+      "sourceAnchor": {
+        "x": 149,
+        "y": 272
+      },
+      "atlasIndex": 67
+    },
+    {
+      "preset": "photo01-front-04",
+      "direction": "left",
+      "phase": 3,
+      "pose": "walk-2-back-contact",
+      "attribution": "AUTHORED_RECONSTRUCTION_WITH_ARTICULATED_SOURCE",
+      "source": "authored-turnaround-source-9a40c5d4098296b0.png",
+      "sourcePose": "authored-left-idle",
+      "authoredPose": true,
+      "rig": {
+        "id": "photo01-front-04",
+        "rect": {
+          "x": 0,
+          "y": 887,
+          "width": 296,
+          "height": 292
+        },
+        "center": 149,
+        "foot": {
+          "x": 149,
+          "y": 272
+        },
+        "armTop": 1094,
+        "armLeft": 57.650000000000006,
+        "armRight": 155.525,
+        "legTop": 1136
+      },
+      "offsets": {
+        "name": "walk-2-back-contact",
+        "leftArm": [
+          6,
+          3
+        ],
+        "rightArm": [
+          -6,
+          3
+        ],
+        "leftLeg": [
+          10,
+          -4
+        ],
+        "rightLeg": [
+          -10,
+          0
+        ]
+      },
+      "scale": 0.21455938697318008,
+      "sourceAnchor": {
+        "x": 149,
+        "y": 272
+      },
+      "atlasIndex": 68
+    },
+    {
+      "preset": "photo01-front-04",
+      "direction": "left",
+      "phase": 4,
+      "pose": "walk-3-back-passing",
+      "attribution": "AUTHORED_RECONSTRUCTION_WITH_ARTICULATED_SOURCE",
+      "source": "authored-turnaround-source-9a40c5d4098296b0.png",
+      "sourcePose": "authored-left-idle",
+      "authoredPose": true,
+      "rig": {
+        "id": "photo01-front-04",
+        "rect": {
+          "x": 0,
+          "y": 887,
+          "width": 296,
+          "height": 292
+        },
+        "center": 149,
+        "foot": {
+          "x": 149,
+          "y": 272
+        },
+        "armTop": 1094,
+        "armLeft": 57.650000000000006,
+        "armRight": 155.525,
+        "legTop": 1136
+      },
+      "offsets": {
+        "name": "walk-3-back-passing",
+        "leftArm": [
+          2,
+          0
+        ],
+        "rightArm": [
+          -2,
+          0
+        ],
+        "leftLeg": [
+          0,
+          -8
+        ],
+        "rightLeg": [
+          0,
+          0
+        ]
+      },
+      "scale": 0.21455938697318008,
+      "sourceAnchor": {
+        "x": 149,
+        "y": 272
+      },
+      "atlasIndex": 69
+    },
+    {
+      "preset": "photo01-front-04",
+      "direction": "right",
+      "phase": 0,
+      "pose": "idle",
+      "attribution": "AUTHORED_RECONSTRUCTION_WITH_ARTICULATED_SOURCE",
+      "source": "authored-turnaround-source-9a40c5d4098296b0.png",
+      "sourcePose": "authored-right-idle",
+      "authoredPose": true,
+      "rig": {
+        "id": "photo01-front-04",
+        "rect": {
+          "x": 296,
+          "y": 887,
+          "width": 295,
+          "height": 292
+        },
+        "center": 440,
+        "foot": {
+          "x": 144,
+          "y": 272
+        },
+        "armTop": 1094,
+        "armLeft": 433.475,
+        "armRight": 531.35,
+        "legTop": 1136
+      },
+      "offsets": {
+        "name": "idle",
+        "leftArm": [
+          0,
+          0
+        ],
+        "rightArm": [
+          0,
+          0
+        ],
+        "leftLeg": [
+          0,
+          0
+        ],
+        "rightLeg": [
+          0,
+          0
+        ]
+      },
+      "scale": 0.21455938697318008,
+      "sourceAnchor": {
+        "x": 144,
+        "y": 272
+      },
+      "atlasIndex": 70
+    },
+    {
+      "preset": "photo01-front-04",
+      "direction": "right",
+      "phase": 1,
+      "pose": "walk-0-front-contact",
+      "attribution": "AUTHORED_RECONSTRUCTION_WITH_ARTICULATED_SOURCE",
+      "source": "authored-turnaround-source-9a40c5d4098296b0.png",
+      "sourcePose": "authored-right-idle",
+      "authoredPose": true,
+      "rig": {
+        "id": "photo01-front-04",
+        "rect": {
+          "x": 296,
+          "y": 887,
+          "width": 295,
+          "height": 292
+        },
+        "center": 440,
+        "foot": {
+          "x": 144,
+          "y": 272
+        },
+        "armTop": 1094,
+        "armLeft": 433.475,
+        "armRight": 531.35,
+        "legTop": 1136
+      },
+      "offsets": {
+        "name": "walk-0-front-contact",
+        "leftArm": [
+          -6,
+          -3
+        ],
+        "rightArm": [
+          6,
+          -3
+        ],
+        "leftLeg": [
+          -10,
+          0
+        ],
+        "rightLeg": [
+          10,
+          -4
+        ]
+      },
+      "scale": 0.21455938697318008,
+      "sourceAnchor": {
+        "x": 144,
+        "y": 272
+      },
+      "atlasIndex": 71
+    },
+    {
+      "preset": "photo01-front-04",
+      "direction": "right",
+      "phase": 2,
+      "pose": "walk-1-front-passing",
+      "attribution": "AUTHORED_RECONSTRUCTION_WITH_ARTICULATED_SOURCE",
+      "source": "authored-turnaround-source-9a40c5d4098296b0.png",
+      "sourcePose": "authored-right-idle",
+      "authoredPose": true,
+      "rig": {
+        "id": "photo01-front-04",
+        "rect": {
+          "x": 296,
+          "y": 887,
+          "width": 295,
+          "height": 292
+        },
+        "center": 440,
+        "foot": {
+          "x": 144,
+          "y": 272
+        },
+        "armTop": 1094,
+        "armLeft": 433.475,
+        "armRight": 531.35,
+        "legTop": 1136
+      },
+      "offsets": {
+        "name": "walk-1-front-passing",
+        "leftArm": [
+          -2,
+          0
+        ],
+        "rightArm": [
+          2,
+          0
+        ],
+        "leftLeg": [
+          0,
+          0
+        ],
+        "rightLeg": [
+          0,
+          -8
+        ]
+      },
+      "scale": 0.21455938697318008,
+      "sourceAnchor": {
+        "x": 144,
+        "y": 272
+      },
+      "atlasIndex": 72
+    },
+    {
+      "preset": "photo01-front-04",
+      "direction": "right",
+      "phase": 3,
+      "pose": "walk-2-back-contact",
+      "attribution": "AUTHORED_RECONSTRUCTION_WITH_ARTICULATED_SOURCE",
+      "source": "authored-turnaround-source-9a40c5d4098296b0.png",
+      "sourcePose": "authored-right-idle",
+      "authoredPose": true,
+      "rig": {
+        "id": "photo01-front-04",
+        "rect": {
+          "x": 296,
+          "y": 887,
+          "width": 295,
+          "height": 292
+        },
+        "center": 440,
+        "foot": {
+          "x": 144,
+          "y": 272
+        },
+        "armTop": 1094,
+        "armLeft": 433.475,
+        "armRight": 531.35,
+        "legTop": 1136
+      },
+      "offsets": {
+        "name": "walk-2-back-contact",
+        "leftArm": [
+          6,
+          3
+        ],
+        "rightArm": [
+          -6,
+          3
+        ],
+        "leftLeg": [
+          10,
+          -4
+        ],
+        "rightLeg": [
+          -10,
+          0
+        ]
+      },
+      "scale": 0.21455938697318008,
+      "sourceAnchor": {
+        "x": 144,
+        "y": 272
+      },
+      "atlasIndex": 73
+    },
+    {
+      "preset": "photo01-front-04",
+      "direction": "right",
+      "phase": 4,
+      "pose": "walk-3-back-passing",
+      "attribution": "AUTHORED_RECONSTRUCTION_WITH_ARTICULATED_SOURCE",
+      "source": "authored-turnaround-source-9a40c5d4098296b0.png",
+      "sourcePose": "authored-right-idle",
+      "authoredPose": true,
+      "rig": {
+        "id": "photo01-front-04",
+        "rect": {
+          "x": 296,
+          "y": 887,
+          "width": 295,
+          "height": 292
+        },
+        "center": 440,
+        "foot": {
+          "x": 144,
+          "y": 272
+        },
+        "armTop": 1094,
+        "armLeft": 433.475,
+        "armRight": 531.35,
+        "legTop": 1136
+      },
+      "offsets": {
+        "name": "walk-3-back-passing",
+        "leftArm": [
+          2,
+          0
+        ],
+        "rightArm": [
+          -2,
+          0
+        ],
+        "leftLeg": [
+          0,
+          -8
+        ],
+        "rightLeg": [
+          0,
+          0
+        ]
+      },
+      "scale": 0.21455938697318008,
+      "sourceAnchor": {
+        "x": 144,
+        "y": 272
+      },
+      "atlasIndex": 74
+    },
+    {
+      "preset": "photo01-front-04",
+      "direction": "rear",
+      "phase": 0,
+      "pose": "idle",
+      "attribution": "AUTHORED_RECONSTRUCTION_WITH_ARTICULATED_SOURCE",
+      "source": "authored-turnaround-source-9a40c5d4098296b0.png",
+      "sourcePose": "authored-rear-idle",
+      "authoredPose": true,
+      "rig": {
+        "id": "photo01-front-04",
+        "rect": {
+          "x": 591,
+          "y": 887,
+          "width": 296,
+          "height": 292
+        },
+        "center": 729.5,
+        "foot": {
+          "x": 138.5,
+          "y": 272
+        },
+        "armTop": 1094,
+        "armLeft": 695.57,
+        "armRight": 763.43,
+        "legTop": 1136
+      },
+      "offsets": {
+        "name": "idle",
+        "leftArm": [
+          0,
+          0
+        ],
+        "rightArm": [
+          0,
+          0
+        ],
+        "leftLeg": [
+          0,
+          0
+        ],
+        "rightLeg": [
+          0,
+          0
+        ]
+      },
+      "scale": 0.21455938697318008,
+      "sourceAnchor": {
+        "x": 138.5,
+        "y": 272
+      },
+      "atlasIndex": 75
+    },
+    {
+      "preset": "photo01-front-04",
+      "direction": "rear",
+      "phase": 1,
+      "pose": "walk-0-left-contact",
+      "attribution": "AUTHORED_RECONSTRUCTION_WITH_ARTICULATED_SOURCE",
+      "source": "authored-turnaround-source-9a40c5d4098296b0.png",
+      "sourcePose": "authored-rear-idle",
+      "authoredPose": true,
+      "rig": {
+        "id": "photo01-front-04",
+        "rect": {
+          "x": 591,
+          "y": 887,
+          "width": 296,
+          "height": 292
+        },
+        "center": 729.5,
+        "foot": {
+          "x": 138.5,
+          "y": 272
+        },
+        "armTop": 1094,
+        "armLeft": 695.57,
+        "armRight": 763.43,
+        "legTop": 1136
+      },
+      "offsets": {
+        "name": "walk-0-left-contact",
+        "leftArm": [
+          0,
+          -8
+        ],
+        "rightArm": [
+          0,
+          5
+        ],
+        "leftLeg": [
+          -6,
+          0
+        ],
+        "rightLeg": [
+          4,
+          -12
+        ]
+      },
+      "scale": 0.21455938697318008,
+      "sourceAnchor": {
+        "x": 138.5,
+        "y": 272
+      },
+      "atlasIndex": 76
+    },
+    {
+      "preset": "photo01-front-04",
+      "direction": "rear",
+      "phase": 2,
+      "pose": "walk-1-left-passing",
+      "attribution": "AUTHORED_RECONSTRUCTION_WITH_ARTICULATED_SOURCE",
+      "source": "authored-turnaround-source-9a40c5d4098296b0.png",
+      "sourcePose": "authored-rear-idle",
+      "authoredPose": true,
+      "rig": {
+        "id": "photo01-front-04",
+        "rect": {
+          "x": 591,
+          "y": 887,
+          "width": 296,
+          "height": 292
+        },
+        "center": 729.5,
+        "foot": {
+          "x": 138.5,
+          "y": 272
+        },
+        "armTop": 1094,
+        "armLeft": 695.57,
+        "armRight": 763.43,
+        "legTop": 1136
+      },
+      "offsets": {
+        "name": "walk-1-left-passing",
+        "leftArm": [
+          0,
+          -4
+        ],
+        "rightArm": [
+          0,
+          2
+        ],
+        "leftLeg": [
+          0,
+          0
+        ],
+        "rightLeg": [
+          0,
+          -6
+        ]
+      },
+      "scale": 0.21455938697318008,
+      "sourceAnchor": {
+        "x": 138.5,
+        "y": 272
+      },
+      "atlasIndex": 77
+    },
+    {
+      "preset": "photo01-front-04",
+      "direction": "rear",
+      "phase": 3,
+      "pose": "walk-2-right-contact",
+      "attribution": "AUTHORED_RECONSTRUCTION_WITH_ARTICULATED_SOURCE",
+      "source": "authored-turnaround-source-9a40c5d4098296b0.png",
+      "sourcePose": "authored-rear-idle",
+      "authoredPose": true,
+      "rig": {
+        "id": "photo01-front-04",
+        "rect": {
+          "x": 591,
+          "y": 887,
+          "width": 296,
+          "height": 292
+        },
+        "center": 729.5,
+        "foot": {
+          "x": 138.5,
+          "y": 272
+        },
+        "armTop": 1094,
+        "armLeft": 695.57,
+        "armRight": 763.43,
+        "legTop": 1136
+      },
+      "offsets": {
+        "name": "walk-2-right-contact",
+        "leftArm": [
+          0,
+          5
+        ],
+        "rightArm": [
+          0,
+          -8
+        ],
+        "leftLeg": [
+          -4,
+          -12
+        ],
+        "rightLeg": [
+          6,
+          0
+        ]
+      },
+      "scale": 0.21455938697318008,
+      "sourceAnchor": {
+        "x": 138.5,
+        "y": 272
+      },
+      "atlasIndex": 78
+    },
+    {
+      "preset": "photo01-front-04",
+      "direction": "rear",
+      "phase": 4,
+      "pose": "walk-3-right-passing",
+      "attribution": "AUTHORED_RECONSTRUCTION_WITH_ARTICULATED_SOURCE",
+      "source": "authored-turnaround-source-9a40c5d4098296b0.png",
+      "sourcePose": "authored-rear-idle",
+      "authoredPose": true,
+      "rig": {
+        "id": "photo01-front-04",
+        "rect": {
+          "x": 591,
+          "y": 887,
+          "width": 296,
+          "height": 292
+        },
+        "center": 729.5,
+        "foot": {
+          "x": 138.5,
+          "y": 272
+        },
+        "armTop": 1094,
+        "armLeft": 695.57,
+        "armRight": 763.43,
+        "legTop": 1136
+      },
+      "offsets": {
+        "name": "walk-3-right-passing",
+        "leftArm": [
+          0,
+          2
+        ],
+        "rightArm": [
+          0,
+          -4
+        ],
+        "leftLeg": [
+          0,
+          -6
+        ],
+        "rightLeg": [
+          0,
+          0
+        ]
+      },
+      "scale": 0.21455938697318008,
+      "sourceAnchor": {
+        "x": 138.5,
+        "y": 272
+      },
+      "atlasIndex": 79
+    },
+    {
+      "preset": "photo01-front-05",
+      "direction": "front",
+      "phase": 0,
+      "pose": "idle",
+      "attribution": "SUPPLIED_FRONT_PIXELS_SOURCE_ARTICULATION",
+      "source": "photo_01",
+      "sourcePose": "front-idle",
+      "authoredPose": false,
+      "sourceFrame": {
+        "preset": "photo01-front-05",
+        "pose": "idle",
+        "direction": "front",
+        "scale": 0.16422287390029325,
+        "sourceAnchor": {
+          "x": 198.5,
+          "y": 351
+        },
+        "rig": {
+          "id": "photo01-front-05",
+          "rect": {
+            "x": 440,
+            "y": 475,
+            "width": 390,
+            "height": 360
+          },
+          "center": 642,
+          "armTop": 752,
+          "armLeft": 576,
+          "armRight": 711,
+          "legTop": 800
+        },
+        "offsets": {
+          "name": "idle",
+          "leftArm": [
+            0,
+            0
+          ],
+          "rightArm": [
+            0,
+            0
+          ],
+          "leftLeg": [
+            0,
+            0
+          ],
+          "rightLeg": [
+            0,
+            0
+          ]
+        }
+      },
+      "atlasIndex": 80
+    },
+    {
+      "preset": "photo01-front-05",
+      "direction": "front",
+      "phase": 1,
+      "pose": "walk-0-left-contact",
+      "attribution": "SUPPLIED_FRONT_PIXELS_SOURCE_ARTICULATION",
+      "source": "photo_01",
+      "sourcePose": "front-idle",
+      "authoredPose": true,
+      "sourceFrame": {
+        "preset": "photo01-front-05",
+        "pose": "walk-0-left-contact",
+        "direction": "front",
+        "scale": 0.16422287390029325,
+        "sourceAnchor": {
+          "x": 198.5,
+          "y": 351
+        },
+        "rig": {
+          "id": "photo01-front-05",
+          "rect": {
+            "x": 440,
+            "y": 475,
+            "width": 390,
+            "height": 360
+          },
+          "center": 642,
+          "armTop": 752,
+          "armLeft": 576,
+          "armRight": 711,
+          "legTop": 800
+        },
+        "offsets": {
+          "name": "walk-0-left-contact",
+          "leftArm": [
+            0,
+            -8
+          ],
+          "rightArm": [
+            0,
+            5
+          ],
+          "leftLeg": [
+            -6,
+            0
+          ],
+          "rightLeg": [
+            4,
+            -12
+          ]
+        }
+      },
+      "atlasIndex": 81
+    },
+    {
+      "preset": "photo01-front-05",
+      "direction": "front",
+      "phase": 2,
+      "pose": "walk-1-left-passing",
+      "attribution": "SUPPLIED_FRONT_PIXELS_SOURCE_ARTICULATION",
+      "source": "photo_01",
+      "sourcePose": "front-idle",
+      "authoredPose": true,
+      "sourceFrame": {
+        "preset": "photo01-front-05",
+        "pose": "walk-1-left-passing",
+        "direction": "front",
+        "scale": 0.16422287390029325,
+        "sourceAnchor": {
+          "x": 198.5,
+          "y": 351
+        },
+        "rig": {
+          "id": "photo01-front-05",
+          "rect": {
+            "x": 440,
+            "y": 475,
+            "width": 390,
+            "height": 360
+          },
+          "center": 642,
+          "armTop": 752,
+          "armLeft": 576,
+          "armRight": 711,
+          "legTop": 800
+        },
+        "offsets": {
+          "name": "walk-1-left-passing",
+          "leftArm": [
+            0,
+            -4
+          ],
+          "rightArm": [
+            0,
+            2
+          ],
+          "leftLeg": [
+            0,
+            0
+          ],
+          "rightLeg": [
+            0,
+            -6
+          ]
+        }
+      },
+      "atlasIndex": 82
+    },
+    {
+      "preset": "photo01-front-05",
+      "direction": "front",
+      "phase": 3,
+      "pose": "walk-2-right-contact",
+      "attribution": "SUPPLIED_FRONT_PIXELS_SOURCE_ARTICULATION",
+      "source": "photo_01",
+      "sourcePose": "front-idle",
+      "authoredPose": true,
+      "sourceFrame": {
+        "preset": "photo01-front-05",
+        "pose": "walk-2-right-contact",
+        "direction": "front",
+        "scale": 0.16422287390029325,
+        "sourceAnchor": {
+          "x": 198.5,
+          "y": 351
+        },
+        "rig": {
+          "id": "photo01-front-05",
+          "rect": {
+            "x": 440,
+            "y": 475,
+            "width": 390,
+            "height": 360
+          },
+          "center": 642,
+          "armTop": 752,
+          "armLeft": 576,
+          "armRight": 711,
+          "legTop": 800
+        },
+        "offsets": {
+          "name": "walk-2-right-contact",
+          "leftArm": [
+            0,
+            5
+          ],
+          "rightArm": [
+            0,
+            -8
+          ],
+          "leftLeg": [
+            -4,
+            -12
+          ],
+          "rightLeg": [
+            6,
+            0
+          ]
+        }
+      },
+      "atlasIndex": 83
+    },
+    {
+      "preset": "photo01-front-05",
+      "direction": "front",
+      "phase": 4,
+      "pose": "walk-3-right-passing",
+      "attribution": "SUPPLIED_FRONT_PIXELS_SOURCE_ARTICULATION",
+      "source": "photo_01",
+      "sourcePose": "front-idle",
+      "authoredPose": true,
+      "sourceFrame": {
+        "preset": "photo01-front-05",
+        "pose": "walk-3-right-passing",
+        "direction": "front",
+        "scale": 0.16422287390029325,
+        "sourceAnchor": {
+          "x": 198.5,
+          "y": 351
+        },
+        "rig": {
+          "id": "photo01-front-05",
+          "rect": {
+            "x": 440,
+            "y": 475,
+            "width": 390,
+            "height": 360
+          },
+          "center": 642,
+          "armTop": 752,
+          "armLeft": 576,
+          "armRight": 711,
+          "legTop": 800
+        },
+        "offsets": {
+          "name": "walk-3-right-passing",
+          "leftArm": [
+            0,
+            2
+          ],
+          "rightArm": [
+            0,
+            -4
+          ],
+          "leftLeg": [
+            0,
+            -6
+          ],
+          "rightLeg": [
+            0,
+            0
+          ]
+        }
+      },
+      "atlasIndex": 84
+    },
+    {
+      "preset": "photo01-front-05",
+      "direction": "left",
+      "phase": 0,
+      "pose": "idle",
+      "attribution": "AUTHORED_RECONSTRUCTION_WITH_ARTICULATED_SOURCE",
+      "source": "authored-turnaround-source-9a40c5d4098296b0.png",
+      "sourcePose": "authored-left-idle",
+      "authoredPose": true,
+      "rig": {
+        "id": "photo01-front-05",
+        "rect": {
+          "x": 0,
+          "y": 1179,
+          "width": 296,
+          "height": 299
+        },
+        "center": 151,
+        "foot": {
+          "x": 151,
+          "y": 271
+        },
+        "armTop": 1383,
+        "armLeft": 56.5,
+        "armRight": 157.75,
+        "legTop": 1426
+      },
+      "offsets": {
+        "name": "idle",
+        "leftArm": [
+          0,
+          0
+        ],
+        "rightArm": [
+          0,
+          0
+        ],
+        "leftLeg": [
+          0,
+          0
+        ],
+        "rightLeg": [
+          0,
+          0
+        ]
+      },
+      "scale": 0.2074074074074074,
+      "sourceAnchor": {
+        "x": 151,
+        "y": 271
+      },
+      "atlasIndex": 85
+    },
+    {
+      "preset": "photo01-front-05",
+      "direction": "left",
+      "phase": 1,
+      "pose": "walk-0-front-contact",
+      "attribution": "AUTHORED_RECONSTRUCTION_WITH_ARTICULATED_SOURCE",
+      "source": "authored-turnaround-source-9a40c5d4098296b0.png",
+      "sourcePose": "authored-left-idle",
+      "authoredPose": true,
+      "rig": {
+        "id": "photo01-front-05",
+        "rect": {
+          "x": 0,
+          "y": 1179,
+          "width": 296,
+          "height": 299
+        },
+        "center": 151,
+        "foot": {
+          "x": 151,
+          "y": 271
+        },
+        "armTop": 1383,
+        "armLeft": 56.5,
+        "armRight": 157.75,
+        "legTop": 1426
+      },
+      "offsets": {
+        "name": "walk-0-front-contact",
+        "leftArm": [
+          -6,
+          -3
+        ],
+        "rightArm": [
+          6,
+          -3
+        ],
+        "leftLeg": [
+          -10,
+          0
+        ],
+        "rightLeg": [
+          10,
+          -4
+        ]
+      },
+      "scale": 0.2074074074074074,
+      "sourceAnchor": {
+        "x": 151,
+        "y": 271
+      },
+      "atlasIndex": 86
+    },
+    {
+      "preset": "photo01-front-05",
+      "direction": "left",
+      "phase": 2,
+      "pose": "walk-1-front-passing",
+      "attribution": "AUTHORED_RECONSTRUCTION_WITH_ARTICULATED_SOURCE",
+      "source": "authored-turnaround-source-9a40c5d4098296b0.png",
+      "sourcePose": "authored-left-idle",
+      "authoredPose": true,
+      "rig": {
+        "id": "photo01-front-05",
+        "rect": {
+          "x": 0,
+          "y": 1179,
+          "width": 296,
+          "height": 299
+        },
+        "center": 151,
+        "foot": {
+          "x": 151,
+          "y": 271
+        },
+        "armTop": 1383,
+        "armLeft": 56.5,
+        "armRight": 157.75,
+        "legTop": 1426
+      },
+      "offsets": {
+        "name": "walk-1-front-passing",
+        "leftArm": [
+          -2,
+          0
+        ],
+        "rightArm": [
+          2,
+          0
+        ],
+        "leftLeg": [
+          0,
+          0
+        ],
+        "rightLeg": [
+          0,
+          -8
+        ]
+      },
+      "scale": 0.2074074074074074,
+      "sourceAnchor": {
+        "x": 151,
+        "y": 271
+      },
+      "atlasIndex": 87
+    },
+    {
+      "preset": "photo01-front-05",
+      "direction": "left",
+      "phase": 3,
+      "pose": "walk-2-back-contact",
+      "attribution": "AUTHORED_RECONSTRUCTION_WITH_ARTICULATED_SOURCE",
+      "source": "authored-turnaround-source-9a40c5d4098296b0.png",
+      "sourcePose": "authored-left-idle",
+      "authoredPose": true,
+      "rig": {
+        "id": "photo01-front-05",
+        "rect": {
+          "x": 0,
+          "y": 1179,
+          "width": 296,
+          "height": 299
+        },
+        "center": 151,
+        "foot": {
+          "x": 151,
+          "y": 271
+        },
+        "armTop": 1383,
+        "armLeft": 56.5,
+        "armRight": 157.75,
+        "legTop": 1426
+      },
+      "offsets": {
+        "name": "walk-2-back-contact",
+        "leftArm": [
+          6,
+          3
+        ],
+        "rightArm": [
+          -6,
+          3
+        ],
+        "leftLeg": [
+          10,
+          -4
+        ],
+        "rightLeg": [
+          -10,
+          0
+        ]
+      },
+      "scale": 0.2074074074074074,
+      "sourceAnchor": {
+        "x": 151,
+        "y": 271
+      },
+      "atlasIndex": 88
+    },
+    {
+      "preset": "photo01-front-05",
+      "direction": "left",
+      "phase": 4,
+      "pose": "walk-3-back-passing",
+      "attribution": "AUTHORED_RECONSTRUCTION_WITH_ARTICULATED_SOURCE",
+      "source": "authored-turnaround-source-9a40c5d4098296b0.png",
+      "sourcePose": "authored-left-idle",
+      "authoredPose": true,
+      "rig": {
+        "id": "photo01-front-05",
+        "rect": {
+          "x": 0,
+          "y": 1179,
+          "width": 296,
+          "height": 299
+        },
+        "center": 151,
+        "foot": {
+          "x": 151,
+          "y": 271
+        },
+        "armTop": 1383,
+        "armLeft": 56.5,
+        "armRight": 157.75,
+        "legTop": 1426
+      },
+      "offsets": {
+        "name": "walk-3-back-passing",
+        "leftArm": [
+          2,
+          0
+        ],
+        "rightArm": [
+          -2,
+          0
+        ],
+        "leftLeg": [
+          0,
+          -8
+        ],
+        "rightLeg": [
+          0,
+          0
+        ]
+      },
+      "scale": 0.2074074074074074,
+      "sourceAnchor": {
+        "x": 151,
+        "y": 271
+      },
+      "atlasIndex": 89
+    },
+    {
+      "preset": "photo01-front-05",
+      "direction": "right",
+      "phase": 0,
+      "pose": "idle",
+      "attribution": "AUTHORED_RECONSTRUCTION_WITH_ARTICULATED_SOURCE",
+      "source": "authored-turnaround-source-9a40c5d4098296b0.png",
+      "sourcePose": "authored-right-idle",
+      "authoredPose": true,
+      "rig": {
+        "id": "photo01-front-05",
+        "rect": {
+          "x": 296,
+          "y": 1179,
+          "width": 295,
+          "height": 299
+        },
+        "center": 441.5,
+        "foot": {
+          "x": 145.5,
+          "y": 271
+        },
+        "armTop": 1383,
+        "armLeft": 434.75,
+        "armRight": 536,
+        "legTop": 1426
+      },
+      "offsets": {
+        "name": "idle",
+        "leftArm": [
+          0,
+          0
+        ],
+        "rightArm": [
+          0,
+          0
+        ],
+        "leftLeg": [
+          0,
+          0
+        ],
+        "rightLeg": [
+          0,
+          0
+        ]
+      },
+      "scale": 0.2074074074074074,
+      "sourceAnchor": {
+        "x": 145.5,
+        "y": 271
+      },
+      "atlasIndex": 90
+    },
+    {
+      "preset": "photo01-front-05",
+      "direction": "right",
+      "phase": 1,
+      "pose": "walk-0-front-contact",
+      "attribution": "AUTHORED_RECONSTRUCTION_WITH_ARTICULATED_SOURCE",
+      "source": "authored-turnaround-source-9a40c5d4098296b0.png",
+      "sourcePose": "authored-right-idle",
+      "authoredPose": true,
+      "rig": {
+        "id": "photo01-front-05",
+        "rect": {
+          "x": 296,
+          "y": 1179,
+          "width": 295,
+          "height": 299
+        },
+        "center": 441.5,
+        "foot": {
+          "x": 145.5,
+          "y": 271
+        },
+        "armTop": 1383,
+        "armLeft": 434.75,
+        "armRight": 536,
+        "legTop": 1426
+      },
+      "offsets": {
+        "name": "walk-0-front-contact",
+        "leftArm": [
+          -6,
+          -3
+        ],
+        "rightArm": [
+          6,
+          -3
+        ],
+        "leftLeg": [
+          -10,
+          0
+        ],
+        "rightLeg": [
+          10,
+          -4
+        ]
+      },
+      "scale": 0.2074074074074074,
+      "sourceAnchor": {
+        "x": 145.5,
+        "y": 271
+      },
+      "atlasIndex": 91
+    },
+    {
+      "preset": "photo01-front-05",
+      "direction": "right",
+      "phase": 2,
+      "pose": "walk-1-front-passing",
+      "attribution": "AUTHORED_RECONSTRUCTION_WITH_ARTICULATED_SOURCE",
+      "source": "authored-turnaround-source-9a40c5d4098296b0.png",
+      "sourcePose": "authored-right-idle",
+      "authoredPose": true,
+      "rig": {
+        "id": "photo01-front-05",
+        "rect": {
+          "x": 296,
+          "y": 1179,
+          "width": 295,
+          "height": 299
+        },
+        "center": 441.5,
+        "foot": {
+          "x": 145.5,
+          "y": 271
+        },
+        "armTop": 1383,
+        "armLeft": 434.75,
+        "armRight": 536,
+        "legTop": 1426
+      },
+      "offsets": {
+        "name": "walk-1-front-passing",
+        "leftArm": [
+          -2,
+          0
+        ],
+        "rightArm": [
+          2,
+          0
+        ],
+        "leftLeg": [
+          0,
+          0
+        ],
+        "rightLeg": [
+          0,
+          -8
+        ]
+      },
+      "scale": 0.2074074074074074,
+      "sourceAnchor": {
+        "x": 145.5,
+        "y": 271
+      },
+      "atlasIndex": 92
+    },
+    {
+      "preset": "photo01-front-05",
+      "direction": "right",
+      "phase": 3,
+      "pose": "walk-2-back-contact",
+      "attribution": "AUTHORED_RECONSTRUCTION_WITH_ARTICULATED_SOURCE",
+      "source": "authored-turnaround-source-9a40c5d4098296b0.png",
+      "sourcePose": "authored-right-idle",
+      "authoredPose": true,
+      "rig": {
+        "id": "photo01-front-05",
+        "rect": {
+          "x": 296,
+          "y": 1179,
+          "width": 295,
+          "height": 299
+        },
+        "center": 441.5,
+        "foot": {
+          "x": 145.5,
+          "y": 271
+        },
+        "armTop": 1383,
+        "armLeft": 434.75,
+        "armRight": 536,
+        "legTop": 1426
+      },
+      "offsets": {
+        "name": "walk-2-back-contact",
+        "leftArm": [
+          6,
+          3
+        ],
+        "rightArm": [
+          -6,
+          3
+        ],
+        "leftLeg": [
+          10,
+          -4
+        ],
+        "rightLeg": [
+          -10,
+          0
+        ]
+      },
+      "scale": 0.2074074074074074,
+      "sourceAnchor": {
+        "x": 145.5,
+        "y": 271
+      },
+      "atlasIndex": 93
+    },
+    {
+      "preset": "photo01-front-05",
+      "direction": "right",
+      "phase": 4,
+      "pose": "walk-3-back-passing",
+      "attribution": "AUTHORED_RECONSTRUCTION_WITH_ARTICULATED_SOURCE",
+      "source": "authored-turnaround-source-9a40c5d4098296b0.png",
+      "sourcePose": "authored-right-idle",
+      "authoredPose": true,
+      "rig": {
+        "id": "photo01-front-05",
+        "rect": {
+          "x": 296,
+          "y": 1179,
+          "width": 295,
+          "height": 299
+        },
+        "center": 441.5,
+        "foot": {
+          "x": 145.5,
+          "y": 271
+        },
+        "armTop": 1383,
+        "armLeft": 434.75,
+        "armRight": 536,
+        "legTop": 1426
+      },
+      "offsets": {
+        "name": "walk-3-back-passing",
+        "leftArm": [
+          2,
+          0
+        ],
+        "rightArm": [
+          -2,
+          0
+        ],
+        "leftLeg": [
+          0,
+          -8
+        ],
+        "rightLeg": [
+          0,
+          0
+        ]
+      },
+      "scale": 0.2074074074074074,
+      "sourceAnchor": {
+        "x": 145.5,
+        "y": 271
+      },
+      "atlasIndex": 94
+    },
+    {
+      "preset": "photo01-front-05",
+      "direction": "rear",
+      "phase": 0,
+      "pose": "idle",
+      "attribution": "AUTHORED_RECONSTRUCTION_WITH_ARTICULATED_SOURCE",
+      "source": "authored-turnaround-source-9a40c5d4098296b0.png",
+      "sourcePose": "authored-rear-idle",
+      "authoredPose": true,
+      "rig": {
+        "id": "photo01-front-05",
+        "rect": {
+          "x": 591,
+          "y": 1179,
+          "width": 296,
+          "height": 299
+        },
+        "center": 727,
+        "foot": {
+          "x": 136,
+          "y": 271
+        },
+        "armTop": 1383,
+        "armLeft": 692.03,
+        "armRight": 761.97,
+        "legTop": 1426
+      },
+      "offsets": {
+        "name": "idle",
+        "leftArm": [
+          0,
+          0
+        ],
+        "rightArm": [
+          0,
+          0
+        ],
+        "leftLeg": [
+          0,
+          0
+        ],
+        "rightLeg": [
+          0,
+          0
+        ]
+      },
+      "scale": 0.20817843866171004,
+      "sourceAnchor": {
+        "x": 136,
+        "y": 271
+      },
+      "atlasIndex": 95
+    },
+    {
+      "preset": "photo01-front-05",
+      "direction": "rear",
+      "phase": 1,
+      "pose": "walk-0-left-contact",
+      "attribution": "AUTHORED_RECONSTRUCTION_WITH_ARTICULATED_SOURCE",
+      "source": "authored-turnaround-source-9a40c5d4098296b0.png",
+      "sourcePose": "authored-rear-idle",
+      "authoredPose": true,
+      "rig": {
+        "id": "photo01-front-05",
+        "rect": {
+          "x": 591,
+          "y": 1179,
+          "width": 296,
+          "height": 299
+        },
+        "center": 727,
+        "foot": {
+          "x": 136,
+          "y": 271
+        },
+        "armTop": 1383,
+        "armLeft": 692.03,
+        "armRight": 761.97,
+        "legTop": 1426
+      },
+      "offsets": {
+        "name": "walk-0-left-contact",
+        "leftArm": [
+          0,
+          -8
+        ],
+        "rightArm": [
+          0,
+          5
+        ],
+        "leftLeg": [
+          -6,
+          0
+        ],
+        "rightLeg": [
+          4,
+          -12
+        ]
+      },
+      "scale": 0.20817843866171004,
+      "sourceAnchor": {
+        "x": 136,
+        "y": 271
+      },
+      "atlasIndex": 96
+    },
+    {
+      "preset": "photo01-front-05",
+      "direction": "rear",
+      "phase": 2,
+      "pose": "walk-1-left-passing",
+      "attribution": "AUTHORED_RECONSTRUCTION_WITH_ARTICULATED_SOURCE",
+      "source": "authored-turnaround-source-9a40c5d4098296b0.png",
+      "sourcePose": "authored-rear-idle",
+      "authoredPose": true,
+      "rig": {
+        "id": "photo01-front-05",
+        "rect": {
+          "x": 591,
+          "y": 1179,
+          "width": 296,
+          "height": 299
+        },
+        "center": 727,
+        "foot": {
+          "x": 136,
+          "y": 271
+        },
+        "armTop": 1383,
+        "armLeft": 692.03,
+        "armRight": 761.97,
+        "legTop": 1426
+      },
+      "offsets": {
+        "name": "walk-1-left-passing",
+        "leftArm": [
+          0,
+          -4
+        ],
+        "rightArm": [
+          0,
+          2
+        ],
+        "leftLeg": [
+          0,
+          0
+        ],
+        "rightLeg": [
+          0,
+          -6
+        ]
+      },
+      "scale": 0.20817843866171004,
+      "sourceAnchor": {
+        "x": 136,
+        "y": 271
+      },
+      "atlasIndex": 97
+    },
+    {
+      "preset": "photo01-front-05",
+      "direction": "rear",
+      "phase": 3,
+      "pose": "walk-2-right-contact",
+      "attribution": "AUTHORED_RECONSTRUCTION_WITH_ARTICULATED_SOURCE",
+      "source": "authored-turnaround-source-9a40c5d4098296b0.png",
+      "sourcePose": "authored-rear-idle",
+      "authoredPose": true,
+      "rig": {
+        "id": "photo01-front-05",
+        "rect": {
+          "x": 591,
+          "y": 1179,
+          "width": 296,
+          "height": 299
+        },
+        "center": 727,
+        "foot": {
+          "x": 136,
+          "y": 271
+        },
+        "armTop": 1383,
+        "armLeft": 692.03,
+        "armRight": 761.97,
+        "legTop": 1426
+      },
+      "offsets": {
+        "name": "walk-2-right-contact",
+        "leftArm": [
+          0,
+          5
+        ],
+        "rightArm": [
+          0,
+          -8
+        ],
+        "leftLeg": [
+          -4,
+          -12
+        ],
+        "rightLeg": [
+          6,
+          0
+        ]
+      },
+      "scale": 0.20817843866171004,
+      "sourceAnchor": {
+        "x": 136,
+        "y": 271
+      },
+      "atlasIndex": 98
+    },
+    {
+      "preset": "photo01-front-05",
+      "direction": "rear",
+      "phase": 4,
+      "pose": "walk-3-right-passing",
+      "attribution": "AUTHORED_RECONSTRUCTION_WITH_ARTICULATED_SOURCE",
+      "source": "authored-turnaround-source-9a40c5d4098296b0.png",
+      "sourcePose": "authored-rear-idle",
+      "authoredPose": true,
+      "rig": {
+        "id": "photo01-front-05",
+        "rect": {
+          "x": 591,
+          "y": 1179,
+          "width": 296,
+          "height": 299
+        },
+        "center": 727,
+        "foot": {
+          "x": 136,
+          "y": 271
+        },
+        "armTop": 1383,
+        "armLeft": 692.03,
+        "armRight": 761.97,
+        "legTop": 1426
+      },
+      "offsets": {
+        "name": "walk-3-right-passing",
+        "leftArm": [
+          0,
+          2
+        ],
+        "rightArm": [
+          0,
+          -4
+        ],
+        "leftLeg": [
+          0,
+          -6
+        ],
+        "rightLeg": [
+          0,
+          0
+        ]
+      },
+      "scale": 0.20817843866171004,
+      "sourceAnchor": {
+        "x": 136,
+        "y": 271
+      },
+      "atlasIndex": 99
+    },
+    {
+      "preset": "photo01-front-06",
+      "direction": "front",
+      "phase": 0,
+      "pose": "idle",
+      "attribution": "SUPPLIED_FRONT_PIXELS_SOURCE_ARTICULATION",
+      "source": "photo_01",
+      "sourcePose": "front-idle",
+      "authoredPose": false,
+      "sourceFrame": {
+        "preset": "photo01-front-06",
+        "pose": "idle",
+        "direction": "front",
+        "scale": 0.16326530612244897,
+        "sourceAnchor": {
+          "x": 197,
+          "y": 353
+        },
+        "rig": {
+          "id": "photo01-front-06",
+          "rect": {
+            "x": 850,
+            "y": 475,
+            "width": 395,
+            "height": 360
+          },
+          "center": 1050,
+          "armTop": 752,
+          "armLeft": 980,
+          "armRight": 1112,
+          "legTop": 800
+        },
+        "offsets": {
+          "name": "idle",
+          "leftArm": [
+            0,
+            0
+          ],
+          "rightArm": [
+            0,
+            0
+          ],
+          "leftLeg": [
+            0,
+            0
+          ],
+          "rightLeg": [
+            0,
+            0
+          ]
+        }
+      },
+      "atlasIndex": 100
+    },
+    {
+      "preset": "photo01-front-06",
+      "direction": "front",
+      "phase": 1,
+      "pose": "walk-0-left-contact",
+      "attribution": "SUPPLIED_FRONT_PIXELS_SOURCE_ARTICULATION",
+      "source": "photo_01",
+      "sourcePose": "front-idle",
+      "authoredPose": true,
+      "sourceFrame": {
+        "preset": "photo01-front-06",
+        "pose": "walk-0-left-contact",
+        "direction": "front",
+        "scale": 0.16326530612244897,
+        "sourceAnchor": {
+          "x": 197,
+          "y": 353
+        },
+        "rig": {
+          "id": "photo01-front-06",
+          "rect": {
+            "x": 850,
+            "y": 475,
+            "width": 395,
+            "height": 360
+          },
+          "center": 1050,
+          "armTop": 752,
+          "armLeft": 980,
+          "armRight": 1112,
+          "legTop": 800
+        },
+        "offsets": {
+          "name": "walk-0-left-contact",
+          "leftArm": [
+            0,
+            -8
+          ],
+          "rightArm": [
+            0,
+            5
+          ],
+          "leftLeg": [
+            -6,
+            0
+          ],
+          "rightLeg": [
+            4,
+            -12
+          ]
+        }
+      },
+      "atlasIndex": 101
+    },
+    {
+      "preset": "photo01-front-06",
+      "direction": "front",
+      "phase": 2,
+      "pose": "walk-1-left-passing",
+      "attribution": "SUPPLIED_FRONT_PIXELS_SOURCE_ARTICULATION",
+      "source": "photo_01",
+      "sourcePose": "front-idle",
+      "authoredPose": true,
+      "sourceFrame": {
+        "preset": "photo01-front-06",
+        "pose": "walk-1-left-passing",
+        "direction": "front",
+        "scale": 0.16326530612244897,
+        "sourceAnchor": {
+          "x": 197,
+          "y": 353
+        },
+        "rig": {
+          "id": "photo01-front-06",
+          "rect": {
+            "x": 850,
+            "y": 475,
+            "width": 395,
+            "height": 360
+          },
+          "center": 1050,
+          "armTop": 752,
+          "armLeft": 980,
+          "armRight": 1112,
+          "legTop": 800
+        },
+        "offsets": {
+          "name": "walk-1-left-passing",
+          "leftArm": [
+            0,
+            -4
+          ],
+          "rightArm": [
+            0,
+            2
+          ],
+          "leftLeg": [
+            0,
+            0
+          ],
+          "rightLeg": [
+            0,
+            -6
+          ]
+        }
+      },
+      "atlasIndex": 102
+    },
+    {
+      "preset": "photo01-front-06",
+      "direction": "front",
+      "phase": 3,
+      "pose": "walk-2-right-contact",
+      "attribution": "SUPPLIED_FRONT_PIXELS_SOURCE_ARTICULATION",
+      "source": "photo_01",
+      "sourcePose": "front-idle",
+      "authoredPose": true,
+      "sourceFrame": {
+        "preset": "photo01-front-06",
+        "pose": "walk-2-right-contact",
+        "direction": "front",
+        "scale": 0.16326530612244897,
+        "sourceAnchor": {
+          "x": 197,
+          "y": 353
+        },
+        "rig": {
+          "id": "photo01-front-06",
+          "rect": {
+            "x": 850,
+            "y": 475,
+            "width": 395,
+            "height": 360
+          },
+          "center": 1050,
+          "armTop": 752,
+          "armLeft": 980,
+          "armRight": 1112,
+          "legTop": 800
+        },
+        "offsets": {
+          "name": "walk-2-right-contact",
+          "leftArm": [
+            0,
+            5
+          ],
+          "rightArm": [
+            0,
+            -8
+          ],
+          "leftLeg": [
+            -4,
+            -12
+          ],
+          "rightLeg": [
+            6,
+            0
+          ]
+        }
+      },
+      "atlasIndex": 103
+    },
+    {
+      "preset": "photo01-front-06",
+      "direction": "front",
+      "phase": 4,
+      "pose": "walk-3-right-passing",
+      "attribution": "SUPPLIED_FRONT_PIXELS_SOURCE_ARTICULATION",
+      "source": "photo_01",
+      "sourcePose": "front-idle",
+      "authoredPose": true,
+      "sourceFrame": {
+        "preset": "photo01-front-06",
+        "pose": "walk-3-right-passing",
+        "direction": "front",
+        "scale": 0.16326530612244897,
+        "sourceAnchor": {
+          "x": 197,
+          "y": 353
+        },
+        "rig": {
+          "id": "photo01-front-06",
+          "rect": {
+            "x": 850,
+            "y": 475,
+            "width": 395,
+            "height": 360
+          },
+          "center": 1050,
+          "armTop": 752,
+          "armLeft": 980,
+          "armRight": 1112,
+          "legTop": 800
+        },
+        "offsets": {
+          "name": "walk-3-right-passing",
+          "leftArm": [
+            0,
+            2
+          ],
+          "rightArm": [
+            0,
+            -4
+          ],
+          "leftLeg": [
+            0,
+            -6
+          ],
+          "rightLeg": [
+            0,
+            0
+          ]
+        }
+      },
+      "atlasIndex": 104
+    },
+    {
+      "preset": "photo01-front-06",
+      "direction": "left",
+      "phase": 0,
+      "pose": "idle",
+      "attribution": "AUTHORED_RECONSTRUCTION_WITH_ARTICULATED_SOURCE",
+      "source": "authored-turnaround-source-9a40c5d4098296b0.png",
+      "sourcePose": "authored-left-idle",
+      "authoredPose": true,
+      "rig": {
+        "id": "photo01-front-06",
+        "rect": {
+          "x": 0,
+          "y": 1478,
+          "width": 296,
+          "height": 296
+        },
+        "center": 151,
+        "foot": {
+          "x": 151,
+          "y": 267
+        },
+        "armTop": 1679,
+        "armLeft": 57.900000000000006,
+        "armRight": 157.65,
+        "legTop": 1721
+      },
+      "offsets": {
+        "name": "idle",
+        "leftArm": [
+          0,
+          0
+        ],
+        "rightArm": [
+          0,
+          0
+        ],
+        "leftLeg": [
+          0,
+          0
+        ],
+        "rightLeg": [
+          0,
+          0
+        ]
+      },
+      "scale": 0.21052631578947367,
+      "sourceAnchor": {
+        "x": 151,
+        "y": 267
+      },
+      "atlasIndex": 105
+    },
+    {
+      "preset": "photo01-front-06",
+      "direction": "left",
+      "phase": 1,
+      "pose": "walk-0-front-contact",
+      "attribution": "AUTHORED_RECONSTRUCTION_WITH_ARTICULATED_SOURCE",
+      "source": "authored-turnaround-source-9a40c5d4098296b0.png",
+      "sourcePose": "authored-left-idle",
+      "authoredPose": true,
+      "rig": {
+        "id": "photo01-front-06",
+        "rect": {
+          "x": 0,
+          "y": 1478,
+          "width": 296,
+          "height": 296
+        },
+        "center": 151,
+        "foot": {
+          "x": 151,
+          "y": 267
+        },
+        "armTop": 1679,
+        "armLeft": 57.900000000000006,
+        "armRight": 157.65,
+        "legTop": 1721
+      },
+      "offsets": {
+        "name": "walk-0-front-contact",
+        "leftArm": [
+          -6,
+          -3
+        ],
+        "rightArm": [
+          6,
+          -3
+        ],
+        "leftLeg": [
+          -10,
+          0
+        ],
+        "rightLeg": [
+          10,
+          -4
+        ]
+      },
+      "scale": 0.21052631578947367,
+      "sourceAnchor": {
+        "x": 151,
+        "y": 267
+      },
+      "atlasIndex": 106
+    },
+    {
+      "preset": "photo01-front-06",
+      "direction": "left",
+      "phase": 2,
+      "pose": "walk-1-front-passing",
+      "attribution": "AUTHORED_RECONSTRUCTION_WITH_ARTICULATED_SOURCE",
+      "source": "authored-turnaround-source-9a40c5d4098296b0.png",
+      "sourcePose": "authored-left-idle",
+      "authoredPose": true,
+      "rig": {
+        "id": "photo01-front-06",
+        "rect": {
+          "x": 0,
+          "y": 1478,
+          "width": 296,
+          "height": 296
+        },
+        "center": 151,
+        "foot": {
+          "x": 151,
+          "y": 267
+        },
+        "armTop": 1679,
+        "armLeft": 57.900000000000006,
+        "armRight": 157.65,
+        "legTop": 1721
+      },
+      "offsets": {
+        "name": "walk-1-front-passing",
+        "leftArm": [
+          -2,
+          0
+        ],
+        "rightArm": [
+          2,
+          0
+        ],
+        "leftLeg": [
+          0,
+          0
+        ],
+        "rightLeg": [
+          0,
+          -8
+        ]
+      },
+      "scale": 0.21052631578947367,
+      "sourceAnchor": {
+        "x": 151,
+        "y": 267
+      },
+      "atlasIndex": 107
+    },
+    {
+      "preset": "photo01-front-06",
+      "direction": "left",
+      "phase": 3,
+      "pose": "walk-2-back-contact",
+      "attribution": "AUTHORED_RECONSTRUCTION_WITH_ARTICULATED_SOURCE",
+      "source": "authored-turnaround-source-9a40c5d4098296b0.png",
+      "sourcePose": "authored-left-idle",
+      "authoredPose": true,
+      "rig": {
+        "id": "photo01-front-06",
+        "rect": {
+          "x": 0,
+          "y": 1478,
+          "width": 296,
+          "height": 296
+        },
+        "center": 151,
+        "foot": {
+          "x": 151,
+          "y": 267
+        },
+        "armTop": 1679,
+        "armLeft": 57.900000000000006,
+        "armRight": 157.65,
+        "legTop": 1721
+      },
+      "offsets": {
+        "name": "walk-2-back-contact",
+        "leftArm": [
+          6,
+          3
+        ],
+        "rightArm": [
+          -6,
+          3
+        ],
+        "leftLeg": [
+          10,
+          -4
+        ],
+        "rightLeg": [
+          -10,
+          0
+        ]
+      },
+      "scale": 0.21052631578947367,
+      "sourceAnchor": {
+        "x": 151,
+        "y": 267
+      },
+      "atlasIndex": 108
+    },
+    {
+      "preset": "photo01-front-06",
+      "direction": "left",
+      "phase": 4,
+      "pose": "walk-3-back-passing",
+      "attribution": "AUTHORED_RECONSTRUCTION_WITH_ARTICULATED_SOURCE",
+      "source": "authored-turnaround-source-9a40c5d4098296b0.png",
+      "sourcePose": "authored-left-idle",
+      "authoredPose": true,
+      "rig": {
+        "id": "photo01-front-06",
+        "rect": {
+          "x": 0,
+          "y": 1478,
+          "width": 296,
+          "height": 296
+        },
+        "center": 151,
+        "foot": {
+          "x": 151,
+          "y": 267
+        },
+        "armTop": 1679,
+        "armLeft": 57.900000000000006,
+        "armRight": 157.65,
+        "legTop": 1721
+      },
+      "offsets": {
+        "name": "walk-3-back-passing",
+        "leftArm": [
+          2,
+          0
+        ],
+        "rightArm": [
+          -2,
+          0
+        ],
+        "leftLeg": [
+          0,
+          -8
+        ],
+        "rightLeg": [
+          0,
+          0
+        ]
+      },
+      "scale": 0.21052631578947367,
+      "sourceAnchor": {
+        "x": 151,
+        "y": 267
+      },
+      "atlasIndex": 109
+    },
+    {
+      "preset": "photo01-front-06",
+      "direction": "right",
+      "phase": 0,
+      "pose": "idle",
+      "attribution": "AUTHORED_RECONSTRUCTION_WITH_ARTICULATED_SOURCE",
+      "source": "authored-turnaround-source-9a40c5d4098296b0.png",
+      "sourcePose": "authored-right-idle",
+      "authoredPose": true,
+      "rig": {
+        "id": "photo01-front-06",
+        "rect": {
+          "x": 296,
+          "y": 1478,
+          "width": 295,
+          "height": 296
+        },
+        "center": 440.5,
+        "foot": {
+          "x": 144.5,
+          "y": 267
+        },
+        "armTop": 1679,
+        "armLeft": 433.875,
+        "armRight": 533.25,
+        "legTop": 1721
+      },
+      "offsets": {
+        "name": "idle",
+        "leftArm": [
+          0,
+          0
+        ],
+        "rightArm": [
+          0,
+          0
+        ],
+        "leftLeg": [
+          0,
+          0
+        ],
+        "rightLeg": [
+          0,
+          0
+        ]
+      },
+      "scale": 0.21132075471698114,
+      "sourceAnchor": {
+        "x": 144.5,
+        "y": 267
+      },
+      "atlasIndex": 110
+    },
+    {
+      "preset": "photo01-front-06",
+      "direction": "right",
+      "phase": 1,
+      "pose": "walk-0-front-contact",
+      "attribution": "AUTHORED_RECONSTRUCTION_WITH_ARTICULATED_SOURCE",
+      "source": "authored-turnaround-source-9a40c5d4098296b0.png",
+      "sourcePose": "authored-right-idle",
+      "authoredPose": true,
+      "rig": {
+        "id": "photo01-front-06",
+        "rect": {
+          "x": 296,
+          "y": 1478,
+          "width": 295,
+          "height": 296
+        },
+        "center": 440.5,
+        "foot": {
+          "x": 144.5,
+          "y": 267
+        },
+        "armTop": 1679,
+        "armLeft": 433.875,
+        "armRight": 533.25,
+        "legTop": 1721
+      },
+      "offsets": {
+        "name": "walk-0-front-contact",
+        "leftArm": [
+          -6,
+          -3
+        ],
+        "rightArm": [
+          6,
+          -3
+        ],
+        "leftLeg": [
+          -10,
+          0
+        ],
+        "rightLeg": [
+          10,
+          -4
+        ]
+      },
+      "scale": 0.21132075471698114,
+      "sourceAnchor": {
+        "x": 144.5,
+        "y": 267
+      },
+      "atlasIndex": 111
+    },
+    {
+      "preset": "photo01-front-06",
+      "direction": "right",
+      "phase": 2,
+      "pose": "walk-1-front-passing",
+      "attribution": "AUTHORED_RECONSTRUCTION_WITH_ARTICULATED_SOURCE",
+      "source": "authored-turnaround-source-9a40c5d4098296b0.png",
+      "sourcePose": "authored-right-idle",
+      "authoredPose": true,
+      "rig": {
+        "id": "photo01-front-06",
+        "rect": {
+          "x": 296,
+          "y": 1478,
+          "width": 295,
+          "height": 296
+        },
+        "center": 440.5,
+        "foot": {
+          "x": 144.5,
+          "y": 267
+        },
+        "armTop": 1679,
+        "armLeft": 433.875,
+        "armRight": 533.25,
+        "legTop": 1721
+      },
+      "offsets": {
+        "name": "walk-1-front-passing",
+        "leftArm": [
+          -2,
+          0
+        ],
+        "rightArm": [
+          2,
+          0
+        ],
+        "leftLeg": [
+          0,
+          0
+        ],
+        "rightLeg": [
+          0,
+          -8
+        ]
+      },
+      "scale": 0.21132075471698114,
+      "sourceAnchor": {
+        "x": 144.5,
+        "y": 267
+      },
+      "atlasIndex": 112
+    },
+    {
+      "preset": "photo01-front-06",
+      "direction": "right",
+      "phase": 3,
+      "pose": "walk-2-back-contact",
+      "attribution": "AUTHORED_RECONSTRUCTION_WITH_ARTICULATED_SOURCE",
+      "source": "authored-turnaround-source-9a40c5d4098296b0.png",
+      "sourcePose": "authored-right-idle",
+      "authoredPose": true,
+      "rig": {
+        "id": "photo01-front-06",
+        "rect": {
+          "x": 296,
+          "y": 1478,
+          "width": 295,
+          "height": 296
+        },
+        "center": 440.5,
+        "foot": {
+          "x": 144.5,
+          "y": 267
+        },
+        "armTop": 1679,
+        "armLeft": 433.875,
+        "armRight": 533.25,
+        "legTop": 1721
+      },
+      "offsets": {
+        "name": "walk-2-back-contact",
+        "leftArm": [
+          6,
+          3
+        ],
+        "rightArm": [
+          -6,
+          3
+        ],
+        "leftLeg": [
+          10,
+          -4
+        ],
+        "rightLeg": [
+          -10,
+          0
+        ]
+      },
+      "scale": 0.21132075471698114,
+      "sourceAnchor": {
+        "x": 144.5,
+        "y": 267
+      },
+      "atlasIndex": 113
+    },
+    {
+      "preset": "photo01-front-06",
+      "direction": "right",
+      "phase": 4,
+      "pose": "walk-3-back-passing",
+      "attribution": "AUTHORED_RECONSTRUCTION_WITH_ARTICULATED_SOURCE",
+      "source": "authored-turnaround-source-9a40c5d4098296b0.png",
+      "sourcePose": "authored-right-idle",
+      "authoredPose": true,
+      "rig": {
+        "id": "photo01-front-06",
+        "rect": {
+          "x": 296,
+          "y": 1478,
+          "width": 295,
+          "height": 296
+        },
+        "center": 440.5,
+        "foot": {
+          "x": 144.5,
+          "y": 267
+        },
+        "armTop": 1679,
+        "armLeft": 433.875,
+        "armRight": 533.25,
+        "legTop": 1721
+      },
+      "offsets": {
+        "name": "walk-3-back-passing",
+        "leftArm": [
+          2,
+          0
+        ],
+        "rightArm": [
+          -2,
+          0
+        ],
+        "leftLeg": [
+          0,
+          -8
+        ],
+        "rightLeg": [
+          0,
+          0
+        ]
+      },
+      "scale": 0.21132075471698114,
+      "sourceAnchor": {
+        "x": 144.5,
+        "y": 267
+      },
+      "atlasIndex": 114
+    },
+    {
+      "preset": "photo01-front-06",
+      "direction": "rear",
+      "phase": 0,
+      "pose": "idle",
+      "attribution": "AUTHORED_RECONSTRUCTION_WITH_ARTICULATED_SOURCE",
+      "source": "authored-turnaround-source-9a40c5d4098296b0.png",
+      "sourcePose": "authored-rear-idle",
+      "authoredPose": true,
+      "rig": {
+        "id": "photo01-front-06",
+        "rect": {
+          "x": 591,
+          "y": 1478,
+          "width": 296,
+          "height": 296
+        },
+        "center": 729,
+        "foot": {
+          "x": 138,
+          "y": 267
+        },
+        "armTop": 1679,
+        "armLeft": 694.42,
+        "armRight": 763.58,
+        "legTop": 1721
+      },
+      "offsets": {
+        "name": "idle",
+        "leftArm": [
+          0,
+          0
+        ],
+        "rightArm": [
+          0,
+          0
+        ],
+        "leftLeg": [
+          0,
+          0
+        ],
+        "rightLeg": [
+          0,
+          0
+        ]
+      },
+      "scale": 0.21052631578947367,
+      "sourceAnchor": {
+        "x": 138,
+        "y": 267
+      },
+      "atlasIndex": 115
+    },
+    {
+      "preset": "photo01-front-06",
+      "direction": "rear",
+      "phase": 1,
+      "pose": "walk-0-left-contact",
+      "attribution": "AUTHORED_RECONSTRUCTION_WITH_ARTICULATED_SOURCE",
+      "source": "authored-turnaround-source-9a40c5d4098296b0.png",
+      "sourcePose": "authored-rear-idle",
+      "authoredPose": true,
+      "rig": {
+        "id": "photo01-front-06",
+        "rect": {
+          "x": 591,
+          "y": 1478,
+          "width": 296,
+          "height": 296
+        },
+        "center": 729,
+        "foot": {
+          "x": 138,
+          "y": 267
+        },
+        "armTop": 1679,
+        "armLeft": 694.42,
+        "armRight": 763.58,
+        "legTop": 1721
+      },
+      "offsets": {
+        "name": "walk-0-left-contact",
+        "leftArm": [
+          0,
+          -8
+        ],
+        "rightArm": [
+          0,
+          5
+        ],
+        "leftLeg": [
+          -6,
+          0
+        ],
+        "rightLeg": [
+          4,
+          -12
+        ]
+      },
+      "scale": 0.21052631578947367,
+      "sourceAnchor": {
+        "x": 138,
+        "y": 267
+      },
+      "atlasIndex": 116
+    },
+    {
+      "preset": "photo01-front-06",
+      "direction": "rear",
+      "phase": 2,
+      "pose": "walk-1-left-passing",
+      "attribution": "AUTHORED_RECONSTRUCTION_WITH_ARTICULATED_SOURCE",
+      "source": "authored-turnaround-source-9a40c5d4098296b0.png",
+      "sourcePose": "authored-rear-idle",
+      "authoredPose": true,
+      "rig": {
+        "id": "photo01-front-06",
+        "rect": {
+          "x": 591,
+          "y": 1478,
+          "width": 296,
+          "height": 296
+        },
+        "center": 729,
+        "foot": {
+          "x": 138,
+          "y": 267
+        },
+        "armTop": 1679,
+        "armLeft": 694.42,
+        "armRight": 763.58,
+        "legTop": 1721
+      },
+      "offsets": {
+        "name": "walk-1-left-passing",
+        "leftArm": [
+          0,
+          -4
+        ],
+        "rightArm": [
+          0,
+          2
+        ],
+        "leftLeg": [
+          0,
+          0
+        ],
+        "rightLeg": [
+          0,
+          -6
+        ]
+      },
+      "scale": 0.21052631578947367,
+      "sourceAnchor": {
+        "x": 138,
+        "y": 267
+      },
+      "atlasIndex": 117
+    },
+    {
+      "preset": "photo01-front-06",
+      "direction": "rear",
+      "phase": 3,
+      "pose": "walk-2-right-contact",
+      "attribution": "AUTHORED_RECONSTRUCTION_WITH_ARTICULATED_SOURCE",
+      "source": "authored-turnaround-source-9a40c5d4098296b0.png",
+      "sourcePose": "authored-rear-idle",
+      "authoredPose": true,
+      "rig": {
+        "id": "photo01-front-06",
+        "rect": {
+          "x": 591,
+          "y": 1478,
+          "width": 296,
+          "height": 296
+        },
+        "center": 729,
+        "foot": {
+          "x": 138,
+          "y": 267
+        },
+        "armTop": 1679,
+        "armLeft": 694.42,
+        "armRight": 763.58,
+        "legTop": 1721
+      },
+      "offsets": {
+        "name": "walk-2-right-contact",
+        "leftArm": [
+          0,
+          5
+        ],
+        "rightArm": [
+          0,
+          -8
+        ],
+        "leftLeg": [
+          -4,
+          -12
+        ],
+        "rightLeg": [
+          6,
+          0
+        ]
+      },
+      "scale": 0.21052631578947367,
+      "sourceAnchor": {
+        "x": 138,
+        "y": 267
+      },
+      "atlasIndex": 118
+    },
+    {
+      "preset": "photo01-front-06",
+      "direction": "rear",
+      "phase": 4,
+      "pose": "walk-3-right-passing",
+      "attribution": "AUTHORED_RECONSTRUCTION_WITH_ARTICULATED_SOURCE",
+      "source": "authored-turnaround-source-9a40c5d4098296b0.png",
+      "sourcePose": "authored-rear-idle",
+      "authoredPose": true,
+      "rig": {
+        "id": "photo01-front-06",
+        "rect": {
+          "x": 591,
+          "y": 1478,
+          "width": 296,
+          "height": 296
+        },
+        "center": 729,
+        "foot": {
+          "x": 138,
+          "y": 267
+        },
+        "armTop": 1679,
+        "armLeft": 694.42,
+        "armRight": 763.58,
+        "legTop": 1721
+      },
+      "offsets": {
+        "name": "walk-3-right-passing",
+        "leftArm": [
+          0,
+          2
+        ],
+        "rightArm": [
+          0,
+          -4
+        ],
+        "leftLeg": [
+          0,
+          -6
+        ],
+        "rightLeg": [
+          0,
+          0
+        ]
+      },
+      "scale": 0.21052631578947367,
+      "sourceAnchor": {
+        "x": 138,
+        "y": 267
+      },
+      "atlasIndex": 119
+    }
+  ],
+  "atlas": {
+    "width": 1280,
+    "height": 384,
+    "file": "six-presets-four-directions-b5ea1f4a08b055a0.png"
+  },
+  "views": [
+    {
+      "preset": "photo01-front-01",
+      "direction": "left",
+      "rect": {
+        "x": 0,
+        "y": 0,
+        "width": 296,
+        "height": 296
+      },
+      "bounds": {
+        "x": 47,
+        "y": 18,
+        "width": 227,
+        "height": 269
+      },
+      "foot": {
+        "x": 156,
+        "y": 287
+      },
+      "partialAlphaThresholded": 41913,
+      "rig": {
+        "id": "photo01-front-01",
+        "rect": {
+          "x": 0,
+          "y": 0,
+          "width": 296,
+          "height": 296
+        },
+        "center": 156,
+        "foot": {
+          "x": 156,
+          "y": 287
+        },
+        "armTop": 220,
+        "armLeft": 61.85000000000001,
+        "armRight": 162.725,
+        "legTop": 263
+      },
+      "attribution": "AUTHORED_RECONSTRUCTION_NOT_SUPPLIED_VIEW"
+    },
+    {
+      "preset": "photo01-front-01",
+      "direction": "right",
+      "rect": {
+        "x": 296,
+        "y": 0,
+        "width": 295,
+        "height": 296
+      },
+      "bounds": {
+        "x": 28,
+        "y": 18,
+        "width": 221,
+        "height": 268
+      },
+      "foot": {
+        "x": 142,
+        "y": 286
+      },
+      "partialAlphaThresholded": 41587,
+      "rig": {
+        "id": "photo01-front-01",
+        "rect": {
+          "x": 296,
+          "y": 0,
+          "width": 295,
+          "height": 296
+        },
+        "center": 438,
+        "foot": {
+          "x": 142,
+          "y": 286
+        },
+        "armTop": 219,
+        "armLeft": 431.3,
+        "armRight": 531.8,
+        "legTop": 262
+      },
+      "attribution": "AUTHORED_RECONSTRUCTION_NOT_SUPPLIED_VIEW"
+    },
+    {
+      "preset": "photo01-front-01",
+      "direction": "rear",
+      "rect": {
+        "x": 591,
+        "y": 0,
+        "width": 296,
+        "height": 296
+      },
+      "bounds": {
+        "x": 23,
+        "y": 18,
+        "width": 228,
+        "height": 269
+      },
+      "foot": {
+        "x": 138.5,
+        "y": 287
+      },
+      "partialAlphaThresholded": 44642,
+      "rig": {
+        "id": "photo01-front-01",
+        "rect": {
+          "x": 591,
+          "y": 0,
+          "width": 296,
+          "height": 296
+        },
+        "center": 729.5,
+        "foot": {
+          "x": 138.5,
+          "y": 287
+        },
+        "armTop": 220,
+        "armLeft": 694.53,
+        "armRight": 764.47,
+        "legTop": 263
+      },
+      "attribution": "AUTHORED_RECONSTRUCTION_NOT_SUPPLIED_VIEW"
+    },
+    {
+      "preset": "photo01-front-02",
+      "direction": "left",
+      "rect": {
+        "x": 0,
+        "y": 296,
+        "width": 296,
+        "height": 295
+      },
+      "bounds": {
+        "x": 45,
+        "y": 9,
+        "width": 223,
+        "height": 270
+      },
+      "foot": {
+        "x": 150.5,
+        "y": 279
+      },
+      "partialAlphaThresholded": 44432,
+      "rig": {
+        "id": "photo01-front-02",
+        "rect": {
+          "x": 0,
+          "y": 296,
+          "width": 296,
+          "height": 295
+        },
+        "center": 150.5,
+        "foot": {
+          "x": 150.5,
+          "y": 279
+        },
+        "armTop": 508,
+        "armLeft": 56,
+        "armRight": 157.25,
+        "legTop": 551
+      },
+      "attribution": "AUTHORED_RECONSTRUCTION_NOT_SUPPLIED_VIEW"
+    },
+    {
+      "preset": "photo01-front-02",
+      "direction": "right",
+      "rect": {
+        "x": 296,
+        "y": 296,
+        "width": 295,
+        "height": 295
+      },
+      "bounds": {
+        "x": 26,
+        "y": 9,
+        "width": 220,
+        "height": 270
+      },
+      "foot": {
+        "x": 141,
+        "y": 279
+      },
+      "partialAlphaThresholded": 44936,
+      "rig": {
+        "id": "photo01-front-02",
+        "rect": {
+          "x": 296,
+          "y": 296,
+          "width": 295,
+          "height": 295
+        },
+        "center": 437,
+        "foot": {
+          "x": 141,
+          "y": 279
+        },
+        "armTop": 508,
+        "armLeft": 430.25,
+        "armRight": 531.5,
+        "legTop": 551
+      },
+      "attribution": "AUTHORED_RECONSTRUCTION_NOT_SUPPLIED_VIEW"
+    },
+    {
+      "preset": "photo01-front-02",
+      "direction": "rear",
+      "rect": {
+        "x": 591,
+        "y": 296,
+        "width": 296,
+        "height": 295
+      },
+      "bounds": {
+        "x": 24,
+        "y": 9,
+        "width": 227,
+        "height": 270
+      },
+      "foot": {
+        "x": 142,
+        "y": 279
+      },
+      "partialAlphaThresholded": 45418,
+      "rig": {
+        "id": "photo01-front-02",
+        "rect": {
+          "x": 591,
+          "y": 296,
+          "width": 296,
+          "height": 295
+        },
+        "center": 733,
+        "foot": {
+          "x": 142,
+          "y": 279
+        },
+        "armTop": 508,
+        "armLeft": 697.9,
+        "armRight": 768.1,
+        "legTop": 551
+      },
+      "attribution": "AUTHORED_RECONSTRUCTION_NOT_SUPPLIED_VIEW"
+    },
+    {
+      "preset": "photo01-front-03",
+      "direction": "left",
+      "rect": {
+        "x": 0,
+        "y": 591,
+        "width": 296,
+        "height": 296
+      },
+      "bounds": {
+        "x": 43,
+        "y": 4,
+        "width": 227,
+        "height": 277
+      },
+      "foot": {
+        "x": 148,
+        "y": 281
+      },
+      "partialAlphaThresholded": 45492,
+      "rig": {
+        "id": "photo01-front-03",
+        "rect": {
+          "x": 0,
+          "y": 591,
+          "width": 296,
+          "height": 296
+        },
+        "center": 148,
+        "foot": {
+          "x": 148,
+          "y": 281
+        },
+        "armTop": 803,
+        "armLeft": 51.05000000000001,
+        "armRight": 154.925,
+        "legTop": 847
+      },
+      "attribution": "AUTHORED_RECONSTRUCTION_NOT_SUPPLIED_VIEW"
+    },
+    {
+      "preset": "photo01-front-03",
+      "direction": "right",
+      "rect": {
+        "x": 296,
+        "y": 591,
+        "width": 295,
+        "height": 296
+      },
+      "bounds": {
+        "x": 22,
+        "y": 4,
+        "width": 231,
+        "height": 277
+      },
+      "foot": {
+        "x": 146.5,
+        "y": 281
+      },
+      "partialAlphaThresholded": 46385,
+      "rig": {
+        "id": "photo01-front-03",
+        "rect": {
+          "x": 296,
+          "y": 591,
+          "width": 295,
+          "height": 296
+        },
+        "center": 442.5,
+        "foot": {
+          "x": 146.5,
+          "y": 281
+        },
+        "armTop": 803,
+        "armLeft": 435.575,
+        "armRight": 539.45,
+        "legTop": 847
+      },
+      "attribution": "AUTHORED_RECONSTRUCTION_NOT_SUPPLIED_VIEW"
+    },
+    {
+      "preset": "photo01-front-03",
+      "direction": "rear",
+      "rect": {
+        "x": 591,
+        "y": 591,
+        "width": 296,
+        "height": 296
+      },
+      "bounds": {
+        "x": 18,
+        "y": 4,
+        "width": 236,
+        "height": 277
+      },
+      "foot": {
+        "x": 137.5,
+        "y": 281
+      },
+      "partialAlphaThresholded": 48957,
+      "rig": {
+        "id": "photo01-front-03",
+        "rect": {
+          "x": 591,
+          "y": 591,
+          "width": 296,
+          "height": 296
+        },
+        "center": 728.5,
+        "foot": {
+          "x": 137.5,
+          "y": 281
+        },
+        "armTop": 803,
+        "armLeft": 692.49,
+        "armRight": 764.51,
+        "legTop": 847
+      },
+      "attribution": "AUTHORED_RECONSTRUCTION_NOT_SUPPLIED_VIEW"
+    },
+    {
+      "preset": "photo01-front-04",
+      "direction": "left",
+      "rect": {
+        "x": 0,
+        "y": 887,
+        "width": 296,
+        "height": 292
+      },
+      "bounds": {
+        "x": 50,
+        "y": 11,
+        "width": 215,
+        "height": 261
+      },
+      "foot": {
+        "x": 149,
+        "y": 272
+      },
+      "partialAlphaThresholded": 41835,
+      "rig": {
+        "id": "photo01-front-04",
+        "rect": {
+          "x": 0,
+          "y": 887,
+          "width": 296,
+          "height": 292
+        },
+        "center": 149,
+        "foot": {
+          "x": 149,
+          "y": 272
+        },
+        "armTop": 1094,
+        "armLeft": 57.650000000000006,
+        "armRight": 155.525,
+        "legTop": 1136
+      },
+      "attribution": "AUTHORED_RECONSTRUCTION_NOT_SUPPLIED_VIEW"
+    },
+    {
+      "preset": "photo01-front-04",
+      "direction": "right",
+      "rect": {
+        "x": 296,
+        "y": 887,
+        "width": 295,
+        "height": 292
+      },
+      "bounds": {
+        "x": 21,
+        "y": 11,
+        "width": 218,
+        "height": 261
+      },
+      "foot": {
+        "x": 144,
+        "y": 272
+      },
+      "partialAlphaThresholded": 43735,
+      "rig": {
+        "id": "photo01-front-04",
+        "rect": {
+          "x": 296,
+          "y": 887,
+          "width": 295,
+          "height": 292
+        },
+        "center": 440,
+        "foot": {
+          "x": 144,
+          "y": 272
+        },
+        "armTop": 1094,
+        "armLeft": 433.475,
+        "armRight": 531.35,
+        "legTop": 1136
+      },
+      "attribution": "AUTHORED_RECONSTRUCTION_NOT_SUPPLIED_VIEW"
+    },
+    {
+      "preset": "photo01-front-04",
+      "direction": "rear",
+      "rect": {
+        "x": 591,
+        "y": 887,
+        "width": 296,
+        "height": 292
+      },
+      "bounds": {
+        "x": 23,
+        "y": 11,
+        "width": 228,
+        "height": 261
+      },
+      "foot": {
+        "x": 138.5,
+        "y": 272
+      },
+      "partialAlphaThresholded": 47172,
+      "rig": {
+        "id": "photo01-front-04",
+        "rect": {
+          "x": 591,
+          "y": 887,
+          "width": 296,
+          "height": 292
+        },
+        "center": 729.5,
+        "foot": {
+          "x": 138.5,
+          "y": 272
+        },
+        "armTop": 1094,
+        "armLeft": 695.57,
+        "armRight": 763.43,
+        "legTop": 1136
+      },
+      "attribution": "AUTHORED_RECONSTRUCTION_NOT_SUPPLIED_VIEW"
+    },
+    {
+      "preset": "photo01-front-05",
+      "direction": "left",
+      "rect": {
+        "x": 0,
+        "y": 1179,
+        "width": 296,
+        "height": 299
+      },
+      "bounds": {
+        "x": 40,
+        "y": 1,
+        "width": 236,
+        "height": 270
+      },
+      "foot": {
+        "x": 151,
+        "y": 271
+      },
+      "partialAlphaThresholded": 44161,
+      "rig": {
+        "id": "photo01-front-05",
+        "rect": {
+          "x": 0,
+          "y": 1179,
+          "width": 296,
+          "height": 299
+        },
+        "center": 151,
+        "foot": {
+          "x": 151,
+          "y": 271
+        },
+        "armTop": 1383,
+        "armLeft": 56.5,
+        "armRight": 157.75,
+        "legTop": 1426
+      },
+      "attribution": "AUTHORED_RECONSTRUCTION_NOT_SUPPLIED_VIEW"
+    },
+    {
+      "preset": "photo01-front-05",
+      "direction": "right",
+      "rect": {
+        "x": 296,
+        "y": 1179,
+        "width": 295,
+        "height": 299
+      },
+      "bounds": {
+        "x": 18,
+        "y": 1,
+        "width": 234,
+        "height": 270
+      },
+      "foot": {
+        "x": 145.5,
+        "y": 271
+      },
+      "partialAlphaThresholded": 44328,
+      "rig": {
+        "id": "photo01-front-05",
+        "rect": {
+          "x": 296,
+          "y": 1179,
+          "width": 295,
+          "height": 299
+        },
+        "center": 441.5,
+        "foot": {
+          "x": 145.5,
+          "y": 271
+        },
+        "armTop": 1383,
+        "armLeft": 434.75,
+        "armRight": 536,
+        "legTop": 1426
+      },
+      "attribution": "AUTHORED_RECONSTRUCTION_NOT_SUPPLIED_VIEW"
+    },
+    {
+      "preset": "photo01-front-05",
+      "direction": "rear",
+      "rect": {
+        "x": 591,
+        "y": 1179,
+        "width": 296,
+        "height": 299
+      },
+      "bounds": {
+        "x": 18,
+        "y": 2,
+        "width": 233,
+        "height": 269
+      },
+      "foot": {
+        "x": 136,
+        "y": 271
+      },
+      "partialAlphaThresholded": 45966,
+      "rig": {
+        "id": "photo01-front-05",
+        "rect": {
+          "x": 591,
+          "y": 1179,
+          "width": 296,
+          "height": 299
+        },
+        "center": 727,
+        "foot": {
+          "x": 136,
+          "y": 271
+        },
+        "armTop": 1383,
+        "armLeft": 692.03,
+        "armRight": 761.97,
+        "legTop": 1426
+      },
+      "attribution": "AUTHORED_RECONSTRUCTION_NOT_SUPPLIED_VIEW"
+    },
+    {
+      "preset": "photo01-front-06",
+      "direction": "left",
+      "rect": {
+        "x": 0,
+        "y": 1478,
+        "width": 296,
+        "height": 296
+      },
+      "bounds": {
+        "x": 44,
+        "y": 1,
+        "width": 221,
+        "height": 266
+      },
+      "foot": {
+        "x": 151,
+        "y": 267
+      },
+      "partialAlphaThresholded": 43581,
+      "rig": {
+        "id": "photo01-front-06",
+        "rect": {
+          "x": 0,
+          "y": 1478,
+          "width": 296,
+          "height": 296
+        },
+        "center": 151,
+        "foot": {
+          "x": 151,
+          "y": 267
+        },
+        "armTop": 1679,
+        "armLeft": 57.900000000000006,
+        "armRight": 157.65,
+        "legTop": 1721
+      },
+      "attribution": "AUTHORED_RECONSTRUCTION_NOT_SUPPLIED_VIEW"
+    },
+    {
+      "preset": "photo01-front-06",
+      "direction": "right",
+      "rect": {
+        "x": 296,
+        "y": 1478,
+        "width": 295,
+        "height": 296
+      },
+      "bounds": {
+        "x": 21,
+        "y": 2,
+        "width": 228,
+        "height": 265
+      },
+      "foot": {
+        "x": 144.5,
+        "y": 267
+      },
+      "partialAlphaThresholded": 44151,
+      "rig": {
+        "id": "photo01-front-06",
+        "rect": {
+          "x": 296,
+          "y": 1478,
+          "width": 295,
+          "height": 296
+        },
+        "center": 440.5,
+        "foot": {
+          "x": 144.5,
+          "y": 267
+        },
+        "armTop": 1679,
+        "armLeft": 433.875,
+        "armRight": 533.25,
+        "legTop": 1721
+      },
+      "attribution": "AUTHORED_RECONSTRUCTION_NOT_SUPPLIED_VIEW"
+    },
+    {
+      "preset": "photo01-front-06",
+      "direction": "rear",
+      "rect": {
+        "x": 591,
+        "y": 1478,
+        "width": 296,
+        "height": 296
+      },
+      "bounds": {
+        "x": 23,
+        "y": 1,
+        "width": 224,
+        "height": 266
+      },
+      "foot": {
+        "x": 138,
+        "y": 267
+      },
+      "partialAlphaThresholded": 46858,
+      "rig": {
+        "id": "photo01-front-06",
+        "rect": {
+          "x": 591,
+          "y": 1478,
+          "width": 296,
+          "height": 296
+        },
+        "center": 729,
+        "foot": {
+          "x": 138,
+          "y": 267
+        },
+        "armTop": 1679,
+        "armLeft": 694.42,
+        "armRight": 763.58,
+        "legTop": 1721
+      },
+      "attribution": "AUTHORED_RECONSTRUCTION_NOT_SUPPLIED_VIEW"
+    }
+  ],
+  "provenance": {
+    "file": "four-direction-source-pixel-map-fabfa485b9ba35e7.bin",
+    "format": "little-endian int16 originalX/originalY, frame-major 64x64; -1 transparent. Front coordinates address photo_01; other directions address authored source, NOT original views."
+  },
+  "authoredSource": {
+    "file": "authored-turnaround-source-9a40c5d4098296b0.png",
+    "sha256": "9a40c5d4098296b076f57732f57c6e63778999e360cccb49de477f12d6e004e0",
+    "dimensions": [
+      887,
+      1774
+    ],
+    "method": "BUILT_IN_IMAGEGEN_IDENTITY_PRESERVING_RECONSTRUCTION",
+    "prompt": "docs/mcr/art/evidence/motion-candidates-v1/authored-turnaround-prompt.txt"
+  },
+  "files": [
+    {
+      "file": "six-presets-four-directions-b5ea1f4a08b055a0.png",
+      "sha256": "b5ea1f4a08b055a0435195152083ee4b46894422786038a1c5b0ff2334b04825",
+      "bytes": 179816
+    },
+    {
+      "file": "four-direction-source-pixel-map-fabfa485b9ba35e7.bin",
+      "sha256": "fabfa485b9ba35e76b29a08edab72180ae360f16e62bf3c783625eb16777598a",
+      "bytes": 1966080
+    }
+  ],
+  "qualification": "Actual reconstructed left/right/rear plus source-front articulated gait; 120 candidate frames. New hidden surfaces are explicitly authored, not supplied evidence, inventory or production admission. Layer and runtime contracts unchanged."
+}

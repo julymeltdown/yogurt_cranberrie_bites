@@ -8,7 +8,7 @@ Run from the repository root:
 
 ```sh
 NODE frontend/e2e/privacy/run.mjs
-NODE --test frontend/e2e/privacy/live-gate.test.mjs
+NODE --test frontend/e2e/privacy/live-gate.node.mjs
 NODE frontend/e2e/privacy/typecheck.mjs
 NODE frontend/e2e/privacy/node_modules/oxlint/bin/oxlint frontend/e2e/privacy
 NODE frontend/e2e/privacy/live-gate.mjs
@@ -43,3 +43,7 @@ This is **SYNTHETIC_MOUNTED_COMPONENT_ONLY** evidence. It does not mount the aut
 `recipient-fixtures.ts` uses the actual SELF activity decoder and pickup controller: foreign recipient rows are rejected, expired reservations cannot issue codes, only the explicit synthetic recipient obtains private pickup guidance/code, and an explicit owner claim is read back before completion. Context loss fences a late pickup response; privacy loss clears recipient details, code and drafts. Capabilities, reviewed-place input, HTTP, clock and the in-memory intent journal are synthetic. No real reservation, stock or one-time pickup qualification is claimed.
 
 `beacon-fixtures.ts` reuses the existing conspicuously synthetic `meet-beacon/__tests__/fixtures/harness.ts` and its places/map fixture inputs, read-only and source-pinned. It exercises actual beacon/places controllers with explicit canRead/canWrite inputs, expiry, owner revision-bound revoke, read-only audience member and late response after authority loss. Scenario role names describe supplied fixture authority, not seven real principals. Virtual coordinates do not establish physical arrival; no venue or photo authority is qualified. The controller's local lifetime API is not a WS event.
+
+## Node selftest discovery boundary
+
+The gate selftest is `live-gate.node.mjs` and is executed explicitly with `node --test`. It imports `node:test`, not Vitest. The earlier `.test.mjs` name matched Vitest’s default discovery pattern and produced “No test suite found” in the historical FE09 broad diagnostic, even while Node test cases ran. The rename preserves the selftest bytes and keeps it outside that Vitest pattern without changing shared configuration. Historical commands and source paths in earlier receipts refer to their original committed candidates. This local discovery fix does not make the frozen broad diagnostic green or change QA04’s real-service dependency.

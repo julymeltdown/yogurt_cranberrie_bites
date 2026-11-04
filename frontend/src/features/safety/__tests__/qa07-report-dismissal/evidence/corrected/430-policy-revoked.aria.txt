@@ -1,0 +1,8 @@
+- main:
+  - paragraph: Synthetic FE36 qualification only
+  - navigation "Fixture routes":
+    - button "Open report"
+    - button "Blocked users"
+    - button "Account"
+  - button "Block user" [disabled]
+  - status: Private views were cleared. Reopen safety controls with your current session.
