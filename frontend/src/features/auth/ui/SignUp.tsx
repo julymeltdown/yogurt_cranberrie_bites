@@ -144,7 +144,7 @@ export function EnrollmentView({ mode }: { mode: 'signup' | 'verify' }) {
           {resendRemaining > 0 && <p className="enrollment-help">Another code can be requested in {resendRemaining} seconds.</p>}</>}
       </form>}
       {mode === 'signup' && state?.accepted && <Link className="enrollment-link" to="/verify-email">Continue to email verification</Link>}
-      {(expired || kind === 'attempt-invalid' || kind === 'policy-stale' || kind === 'idempotency-conflict') && <button type="button" disabled={pending} onClick={() => { enrollment?.reset(); setAttemptId(''); setIds([]); clearSecrets(); void navigate('/signup') }}>Start again</button>}
+      {(expired || kind === 'attempt-expired' || kind === 'policy-unavailable' || kind === 'attempt-invalid' || kind === 'policy-stale' || kind === 'idempotency-conflict') && <button type="button" disabled={pending} onClick={() => { enrollment?.reset(); setAttemptId(''); setIds([]); clearSecrets(); void navigate('/signup') }}>Start again</button>}
       <nav aria-label="Account help">
         {mode === 'signup' && <Link className="enrollment-link" to="/verify-email">I have a verification code</Link>}
         <Link className="enrollment-link" to="/login">Sign in</Link>

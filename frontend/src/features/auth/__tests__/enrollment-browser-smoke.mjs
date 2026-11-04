@@ -110,6 +110,7 @@ try {
   assert.deepEqual(signupBodies.at(-1), original); await hygiene(page); results.push({ case: 'unknown-explicit-identical-retry', passed:true })
   mode = 'expired'; await page.getByRole('link', { name: 'Continue to email verification' }).click(); await page.getByLabel('Verification code').fill(code)
   await page.getByRole('button', { name:'Verify email',exact:true }).click(); await page.getByText('This signup attempt expired. Start again with the current published agreements.').waitFor()
+  assert(await page.getByRole('button', { name: 'Start again' }).isVisible())
   await hygiene(page); results.push({ case:'expired-attempt-no-completion',passed:true })
   mode = 'no-policy'; await page.goto(`${base}src/features/auth/__tests__/fixtures/enrollment-preview.html`)
   await page.getByRole('button', { name:'Load current agreements' }).click(); await page.getByText('Signup agreements are unavailable. Account creation cannot continue until the approved documents are published.').first().waitFor()

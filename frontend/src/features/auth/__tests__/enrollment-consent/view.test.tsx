@@ -9,7 +9,7 @@ import { SignUp } from '../../ui/SignUp'
 import { VerifyEmail } from '../../ui/VerifyEmail'
 import { ConsentAdmission } from '../../ui/ConsentAdmission'
 import { fixture, defaultHandler, policy, admission, ack, email, password, attemptId, userId, type Handler } from './fixtures'
-import { TransportError } from '../../../../shared/api/errors'
+import { TransportError, parseServerError } from '../../../../shared/api/errors'
 const live: { dispose(): void }[] = []
 afterEach(() => { cleanup(); live.splice(0).forEach(item => item.dispose()) })
 function setup(path = '/signup', handler: Handler = defaultHandler, signedIn = false) {
@@ -74,4 +74,14 @@ it('shows honest uncertainty with explicit original retry and clears password im
   fireEvent.submit(screen.getByRole('form')); await screen.findByRole('button', { name: 'Retry original request' })
   expect(screen.getByLabelText('Password')).toHaveValue(''); expect(screen.getByRole('button', { name: 'Create account' })).toBeDisabled()
   expect(f.requests.filter(request => request.path.endsWith('/signup'))).toHaveLength(1)
+})
+
+it('offers explicit fresh signup after server attempt expiry; never automatically starts another attempt', async () => {
+  const f = setup(`/verify-email?attemptId=${attemptId}&code=123456`, () => {
+    throw new TransportError('http', { status: 410, server: parseServerError({ code: 'EXPIRED', message: 'private', details: { reason: 'ATTEMPT_EXPIRED' } }, 'auth', 410) })
+  })
+  await waitFor(() => expect(f.router.state.location.search).toBe(''))
+  fireEvent.submit(screen.getByRole('form'))
+  const restart = await screen.findByRole('button', { name: 'Start again' }); expect(f.requests).toHaveLength(1)
+  fireEvent.click(restart); await screen.findByRole('heading', { name: 'Create account' }); expect(f.requests).toHaveLength(1)
 })
