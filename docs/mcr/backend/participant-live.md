@@ -112,8 +112,9 @@ delivery extension is agreed but not imported into this checkpoint.
 Canonical avatar hook source `2561baa7` was consumed locally as `7a8fab63`.
 Its owner still owes native qualification. Participant MutationPermit and
 CheckedAuthority now forward its effect fence; default None is refused by product
-writes. The actual BoundParticipantAuthority adapter is staged in `live/guarded.rs`
-but deliberately unexported pending the compiled SDK. It binds the exact sealed
+writes. The actual BoundParticipantAuthority adapter is in `live/guarded.rs`.
+Compiled SDK `888cb6bd` is now consumed and the adapter exported for its next
+qualification build. The adapter itself is still NOT_RUN. It binds the exact sealed
 parent, request, release and original deadline to the real OwnerGuardScope and
 registers the repository's actual transaction. It owns no completion/release API.
 This source is not a qualified real authority adapter yet.

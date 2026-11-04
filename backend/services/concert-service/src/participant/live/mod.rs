@@ -3,6 +3,7 @@
 pub mod auth;
 pub mod coordinator;
 pub mod decision_rpc;
+pub mod guarded;
 pub mod update;
 
 #[cfg(test)]
