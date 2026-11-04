@@ -1,7 +1,10 @@
 # BE33 Notification product facade
 
-Status: **IN_PROGRESS**. Source checkpoint for the four frozen C04 operations;
-no application, owner-policy or HTTP acceptance is claimed by this document.
+Status: **IN_PROGRESS**. The four-operation facade and its component qualification
+are delivered: all 11 exact checks passed at clean source
+`09395dd0afaa44ee28a13c657a8858f67818d672`. Real target-policy composition,
+successful inbox flows and public HTTP acceptance remain **NOT_RUN**. The final
+documentation commit changes this file only; it does not change the tested source.
 
 ## Ownership and ancestry
 
@@ -86,12 +89,12 @@ Root routes these operations through that composition.
 
 ## Qualification and limits
 
-Initial static checks: Rust 1.88 rustfmt on explicitly assigned Rust files,
+At the initial checkpoint, static checks were Rust 1.88 rustfmt on explicitly assigned Rust files,
 Python runner syntax, and `git diff --check`: exit 0. Cargo, frozen test binaries,
-PostgreSQL and mTLS native execution are **NOT_RUN** pending a fresh named
-backend resource allocation. No shared target or live Root service was used.
+PostgreSQL and mTLS native execution are **NOT_RUN** at that initial checkpoint. The completed fresh allocation and
+actual current results are recorded below. No shared target or live Root service was used.
 
-Planned exact artifacts are the Cargo-emitted `concert_service` library test
+The qualified exact artifacts are the Cargo-emitted `concert_service` library test
 binary (four private projection tests only) and `notification_product`
 integration test binary (four parser tests and three explicitly ignored native
 cases). Private tests validate DTOs against the actual frozen JSON schemas,
@@ -105,7 +108,7 @@ The fixture's late-bound recovery adapter delegates to the actual durable ledger
 lookup and real Notification recovery transport; it grants no default outcome
 and breaks its test composition links on Drop.
 
-Expected native cases are:
+The three qualified native cases are:
 
 - All four operations refuse with safe 503 when the real target provider is
   missing, including empty inbox/count. Root has one pending durable child and
@@ -215,3 +218,96 @@ that same production layer on its owner/Notification/Root servers and Delivery
 component. This prevents an unrelated missing-deadline 400 from masquerading
 as the expected missing-target-provider 503. No runtime or shared target was
 active while this correction was made; the pending pin is superseded.
+
+## Completed fresh qualification and handoff
+
+Tested clean source: `09395dd0afaa44ee28a13c657a8858f67818d672`.
+Contract revision remains the base's frozen C04 bytes; full tracked backend and
+contracts file hashes are in the source receipt. Both executables were emitted
+by the same actual Cargo invocation after the authorized runtime-proto-path
+prerequisite. No source changed during compile/freeze or copied qualification.
+
+Named lease: `BE33-PRODUCT2-MEDIA-202611040651Z`. Fresh preflight verified clean
+pin, no target handles and 37,702,811,648 bytes free. Command (backend directory):
+
+```text
+cargo +1.88.0 test --locked --offline -p concert-service --lib --test notification_product --no-run --message-format=json --config profile.dev.package.contracts-build.opt-level=2
+```
+
+Environment was two jobs, development/test debug information disabled and
+incremental disabled. The package-specific contracts-build opt-level 2 was
+explicitly declared under the offer. No main executable was built or run as
+qualification, no cache was cleaned, and no new target directory was created.
+Build/freeze exited 0 in 55.087 seconds. Cargo JSON, stderr, two exact emitted
+executables, and the complete tracked backend/contracts source archive were
+frozen privately before target release. The Cargo process group was absent;
+fresh target `lsof -nP +D` returned exit 1 with empty output. Target release was
+explicitly sent before any copied test or PostgreSQL process. There was no
+subsequent shared-target access.
+
+Copied qualification ran the committed
+`tests/notification_product_support/qualify.py` with its exact frozen receipt,
+owned PostgreSQL 16.14 tools and an external whole-growth/time monitor. It
+returned exit 0 in 12.258 seconds. Each case was selected by `--exact` and
+`--test-threads=1`; native cases additionally required `--ignored` explicitly.
+The runner rejects a filtered empty pass. The actual executed inventory was:
+
+| Cases | Result | Scope |
+| --- | --- | --- |
+| Four parser tests | 4 PASS, exit 0 each | Four routes, bounds, encoded/duplicate/unknown query, closed JSON object bodies, revisions, keys, actor/event/family/request/path/method |
+| Four private DTO/error tests | 4 PASS, exit 0 each | Frozen schemas, closed tags/IDs/times/revisions, page/unread filter/operation identity, full count bounds, safe 409 reasons; 130 unrelated lib tests filtered per exact invocation |
+| missing_target_policy_denies_all_four_under_real_owners_and_terminal_body | PASS, exit 0 | Real Auth/Friend/Notification mTLS and ledger/child/Delivery composition; all four 503 refusals, held child and owners until real component body EOF plus authenticated terminal completion |
+| sealed_parent_mutations_and_missing_task_local_never_register_child | PASS, exit 0 | Original sealed parent enforced; no durable child or Notification local intent for altered requests |
+| dropped_body_and_expiry_do_not_finish_registered_child | PASS, exit 0 | Actual Root ACTIVE, child pending, one Auth and one Friend prepared exclusion after lost body and expiry |
+
+Native fixture execution used three fresh sequential socket-only clusters,
+never more than one at a time, with isolated Auth/Friend/Concert/Notification
+databases and fresh mTLS PKI. Every cluster's migration ledger matched current
+source checksums: Auth 18, Friend 18, Concert 37 and Notification 6 migrations.
+The frozen integration executable contains the actual current fixture manifest
+path; observed baked service paths and exact migration hashes are recorded in
+`migration-path-pins.json`. No old checkout was redirected or edited.
+The first two cases ended with zero prepared transactions in all four databases.
+The lost-body case deliberately ended with Auth=1, Friend=1, Concert=0,
+Notification=0, proving quarantine; its private cluster stop/delete is cleanup,
+not successful producer settlement. All three owned roots and corresponding
+postmaster processes were verified absent afterward.
+
+Peak observed whole growth was 444,641,280 bytes, including the retained first
+run's 176,951,296-byte carry, all new target deltas, both frozen executables,
+complete source copies/archive, PKI, four-database clusters, temporary files,
+logs and reports. This is below the hard 1 GiB cap. The minimum observed free
+space across fresh build and runtime was 37,688,340,480 bytes, above the 8 GiB
+floor. Compile/freeze was below ten minutes; copied qualification was below
+five minutes. All target, runtime and owned PostgreSQL resources are released.
+
+Evidence is retained in `/private/tmp/mcr-be33-product-09395dd0`:
+
+| Artifact | SHA256 |
+| --- | --- |
+| notification_product executable | fa2e13620ce890f58af81354e4e11502e3e04a8b980dc324febd48ad85968dcc |
+| concert_service library test executable | 3bb598033e90e62d2c97e287f9da61d771706091349ebbec1c663e459a42cf88 |
+| complete source archive | c7b27bca691719e8e33cefdd7ae12f06c80ffc42c37be727a9a27223c184eec4 |
+| artifact-receipt.json | 083f1973de16690d939156fb9e24df07db71b746c616f31b9caa4e3a39d49006 |
+| qualification.json | 9d101a68c2c2f5a5b1e1e52370d46a01d9830831e0bab08c788b580b69b70937 |
+| migration-path-pins.json | c75741f4072c731c22197838a741ac0334046cfb95c084732254f2b10552d503 |
+| runtime-bounds.json | 837e7dff5c1d595872619804b35bb38fbc68209d926615c16dcd538363d7db93 |
+| target-release.json | 36e07e8617d09cf34cf0b23a236029f1e51f9a0cbabc79dc2ddbc6df3e82cb01 |
+| full-release.json | c7b7af2cda597db6eb4716554b8436dfd7c16b47d402287e9111e7e218531f95 |
+
+Feature commits for serial Root intake are `5f85e06f` (facade/harness),
+`d48edb83` (object-shape correction), `58a30102` (authorized prerequisite
+provenance documentation), `09395dd0` (actual fixture deadline layers), and the
+final evidence-only documentation commit. Root's existing `591d908a` is the
+prerequisite; branch import `ecb08815` must not be duplicated on a master that
+already contains it. Feature changes stay within the original thirteen paths;
+the exact five prerequisite paths are separately authorized above. Final path
+and cross-directory import checks found no frontend or other application-owner
+writes, no backend/frontend coupling and no changes to `docs/source/` Git object
+identities. Only Root publishes to master; remote publication and actual Root
+postimage verification are a subsequent handoff obligation.
+
+This is a component handoff, not BE33 product acceptance. Remaining real target
+provider/routing/public flow checks above remain **NOT_RUN**. The persistent
+goal API still reports its aligned historical **BLOCKED** status; the resumed
+work was delivered without falsely completing or recreating that goal.
