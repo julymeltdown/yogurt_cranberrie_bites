@@ -1,0 +1,78 @@
+{
+  "job": "CSS-MEET-FIRST-202611041147Z",
+  "acceptEpoch": 1793792856,
+  "workCutoffEpoch": 1793793096,
+  "releaseDeadlineEpoch": 1793793156,
+  "head": "002184eeb93e6a471f8e132400594a63379337f9",
+  "initialCarrySourceBytes": 189284,
+  "jobs": [
+    {
+      "tag": "baseline-01",
+      "pid": 58905,
+      "argv": [
+        "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node",
+        "docs/mcr/evidence/css-parity-meet/capture.mjs",
+        "baseline-01"
+      ],
+      "baseline": true,
+      "startedEpoch": 1793792900.810216,
+      "exitCode": 0,
+      "finishedEpoch": 1793792904.889565
+    },
+    {
+      "tag": "candidate-01",
+      "pid": 59010,
+      "argv": [
+        "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node",
+        "docs/mcr/evidence/css-parity-meet/capture.mjs",
+        "candidate-01"
+      ],
+      "baseline": false,
+      "startedEpoch": 1793792904.893048,
+      "exitCode": 0,
+      "finishedEpoch": 1793792913.117601
+    },
+    {
+      "tag": "candidate-02",
+      "pid": 61727,
+      "argv": [
+        "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node",
+        "docs/mcr/evidence/css-parity-meet/capture.mjs",
+        "candidate-02"
+      ],
+      "baseline": false,
+      "startedEpoch": 1793792973.310658,
+      "exitCode": 0,
+      "finishedEpoch": 1793792981.477833
+    },
+    {
+      "tag": "candidate-03",
+      "pid": 63965,
+      "argv": [
+        "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node",
+        "docs/mcr/evidence/css-parity-meet/capture.mjs",
+        "candidate-03"
+      ],
+      "baseline": false,
+      "startedEpoch": 1793793042.848654,
+      "exitCode": 0,
+      "finishedEpoch": 1793793051.547094
+    }
+  ],
+  "peaks": {
+    "temporary": 7152106,
+    "durable": 26086464,
+    "whole": 33238570
+  },
+  "minFree": 19761586176,
+  "status": "FULLRELEASE",
+  "cleanup": {
+    "port5298": "FREE",
+    "linkAbsent": true,
+    "tempAbsent": true,
+    "releasedEpoch": 1793793096.093943,
+    "deadlineMet": true,
+    "durableBytes": 3850637,
+    "freeBytes": 19858956288
+  }
+}
