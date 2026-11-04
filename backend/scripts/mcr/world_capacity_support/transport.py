@@ -116,6 +116,11 @@ async def headers(reader):
             key, val = line.split(":", 1)
             check(re.fullmatch(r"[A-Za-z0-9!#$%&'*+.^_`|~-]+", key) and not any(ord(c) < 32 and c != "\t" for c in val), "http-header")
             key = key.lower()
+            # Vary is a list field: intermediaries may append separate lines.
+            # Keep framing, authorization and cache-policy duplicates strict.
+            if key == "vary" and key in result:
+                result[key] += ", " + val.strip()
+                continue
             # Only fixed public protocol names may enter sanitized diagnostics.
             duplicate_label = ("duplicate-http-header-" + key if key in
                 ("date", "server", "cache-control", "content-type", "content-length",
