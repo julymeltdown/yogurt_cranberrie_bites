@@ -85,15 +85,18 @@ impl Operation {
             let status = native_status(pool, &self.identity, self.id, recovery).await?;
             if status == NativeStatus::Committed {
                 let mut c = pool.acquire().await.map_err(unavailable)?;
-                if exact_receipt(
+                let receipt = exact_receipt(
                     &mut c,
                     self.id,
                     &self.identity.effect_digest,
                     &self.command_digest,
                 )
-                .await?
-                .is_none()
-                {
+                .await?;
+                if !receipt.is_some_and(|version| {
+                    version.epoch() == self.expected.epoch()
+                        && (self.expected.revision()..=self.expected.revision() + 1)
+                            .contains(&version.revision())
+                }) {
                     return Ok(NativeStatus::Unknown);
                 }
             }
