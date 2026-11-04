@@ -73,6 +73,8 @@ async fn main() -> anyhow::Result<()> {
         runtime.is_some(),
         participant_settings.is_some(),
     )?;
+    let inbox_settings =
+        config::inbox_runtime::InboxRuntimeSettings::load(intro_settings.is_some())?;
     anyhow::ensure!(
         product_owner.is_none() || participant_settings.is_none(),
         "Product and Participant require a shared canonical scope composition"
@@ -102,7 +104,8 @@ async fn main() -> anyhow::Result<()> {
                             .core
                             .child_recovery_worker(intro.recovery_settings())?,
                     );
-                    product_owner = Some(intro.compose(pool.clone(), &shared.owners));
+                    let intro_owner = intro.compose(pool.clone(), &shared.owners);
+                    product_owner = Some(inbox_settings.compose(&shared.owners, intro_owner));
                     Ok(shared.participant)
                 }
                 None => settings.compose(pool.clone(), release),
