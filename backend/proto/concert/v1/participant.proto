@@ -1,5 +1,6 @@
 syntax = "proto3";
 package concert.participant.v1;
+import "concert/v1/product.proto";
 
 // Gateway-only signed internal envelope. Public DTOs remain frozen C03 JSON.
 // Workload/actor delegation signs this complete message and the exact RPC path.
@@ -20,11 +21,16 @@ message ParticipantRequest {
 message ParticipantResponse {
   // GetParticipant/UpdatePreferences: PrivateParticipant; SetAvatar: AvatarState.
   bytes response_json = 1;
+  concert.product.v1.ResponseDelivery delivery = 2; // Internal; never public JSON/headers.
+  ParticipantFailure failure = 3; // Mutually exclusive with response_json.
 }
+// Closed sanitized error envelope after delivery publication. No diagnostic,
+// private payload, or caller-selected text crosses this internal boundary.
+message ParticipantFailure { uint32 grpc_code = 1; string core_reason = 2; }
 service ConcertParticipantService {
   rpc GetParticipant(ParticipantRequest) returns (ParticipantResponse);
   rpc SetAvatar(ParticipantRequest) returns (ParticipantResponse);
-  // Preference-only PATCH subset. Profile edits need a separate owner protocol.
+  // Full C03 PATCH; selected canonical Profile fields use the SELF coordinator.
   rpc UpdatePreferences(ParticipantRequest) returns (ParticipantResponse);
 }
 

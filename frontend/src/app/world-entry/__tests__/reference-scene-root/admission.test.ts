@@ -9,8 +9,8 @@ import { validateManifests } from '../../../../world/map/manifest'
 
 const cleanup: (() => void)[] = []
 afterEach(() => cleanup.splice(0).reverse().forEach(stop => stop()))
-it('preserves original virtual provenance and independently records the current top-level source-art admission guard', async () => {
-  const data = await sceneData(), h = authHarness(); cleanup.push(h.auth.dispose)
+it.each([{ version: 'legacy', era: 'PARADE' }, { version: 'spatial', era: 'REVENGE' }, { version: 'spatial', era: 'PARADE' }, { version: 'spatial', era: 'DANGER' }] as const)('preserves $version/$era provenance and records actual default source-art denial before HTTP', async ({ version, era }) => {
+  const data = await sceneData(version, era), h = authHarness(); cleanup.push(h.auth.dispose)
   const scope = { userId, eventId, generation: h.auth.session.read().generation }
   const request = { scope, privacyScope: h.auth.privacy.capture(), bootstrap: await decodeBootstrap(data.bootstrap, scope), signal: new AbortController().signal }
   const fetch = vi.fn<typeof globalThis.fetch>()

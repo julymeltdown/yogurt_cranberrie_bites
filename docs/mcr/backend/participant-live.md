@@ -1,0 +1,259 @@
+# BE-PARTICIPANT-LIVE
+
+Status: IN_PROGRESS. This extends Phase A at `0313afa5`; it does not replace its
+bounded CONTRACT_READY assessment or accept BE07/IN01.
+
+## Ownership and source
+
+The participant owner writes `src/participant/**`, participant RPC definitions,
+dedicated participant tests/harnesses, and this evidence. Resource SL assigned
+only `migrations/0027_participant_profile_coordinator.sql` as an additional shared
+path; World retains 0026. Product startup loads the migration directory through
+migration-runtime, without a numbered compile-time registry. The root composer
+retains startup, routing, manifests and readiness probes. Canonical avatar
+application/repository transaction hooks remain assigned to their original owner.
+
+The current Auth adapter calls the existing Auth-owned
+`AuthConcertRelationshipService.ReadCurrent` with a dedicated Concert read key,
+explicit workload credentials, exact self actor/event/session/request binding,
+SAFETY_SELF purpose, and the original two-second wall/monotonic deadline. It
+requires a fresh exact no-store owner response and active account/session facts.
+It implements no mutation capability. Network fixtures exercise the real guards
+and client transport, but deliberately synthetic owner replies are not native
+Auth or public-route acceptance.
+
+The participant context retains the platform-sealed original parent when the
+platform captures it. It checks the exact RPC literal, actor and complete unary
+protobuf. Access for live guard acquisition refuses a missing parent. The guard
+owner must add the three exact Gateway participant RPC literals to parent capture;
+this participant patch does not modify platform allowlists.
+
+The full C03 parser preserves absent versus explicit-null bio, permits selected
+profile fields and/or preferences, and rejects duplicate and unknown properties.
+The verified envelope now recognizes the full syntax. Until canonical SELF and
+coordinator orchestration are composed, profile edits explicitly return dependency
+unavailable before any owner call or preference write. No public header or
+expected_revision key is changed. Canonical Profile retains its established
+nonblank, no-control-character content rules; DTO parsing does not fabricate a
+successful canonical value that its owner refuses.
+
+## Cross-store protocol under implementation
+
+The Profile SELF owner supplies canonical content plus epoch/revision, prepares
+only selected nickname/bio fields, and retains the actual prepared transaction.
+Its deterministic GID is `mcr_sp_` plus the request UUID's lowercase simple form.
+The planned effect digest is SHA256 over ASCII `mcr profile self effect v1\0`,
+the 32-byte guard-binding digest, the 16-byte operation UUID, the 16-byte Profile
+epoch, its big-endian i64 revision, and SHA256 of the exact raw PATCH body.
+
+Migration 0027 is a durable operation registry under implementation. It fixes the original
+binding, expected participant revision, Profile version/GID/effect, and actual
+Concert transaction identity before either store's protected effect. Only the
+actual Concert participant CAS transaction may write its COMMIT decision.
+Profile reconciliation must independently query the authoritative committed
+decision. A registered aborted Concert transaction can establish ABORT; timeout,
+absence, an unknown transaction, or a caller boolean cannot. Unknowns retain
+prepared effects and owner exclusion. The SQL trigger additionally requires the
+COMMIT writer's full XID, system identifier, database OID, PID and backend start
+to match the registered native transaction.
+
+The registry now also records an immutable prepare-attempt marker durably before
+the actual Profile RPC, after locking and checking the participant revision.
+Attempted/unsettled operations and committed decisions without an authenticated
+Profile terminal receipt gate subsequent participant access. An aborted stale CAS
+without a prepare attempt cannot have changed Profile. Visibility checks reject a
+snapshot older than a later coordinated committed revision. Live reads still need
+the local-snapshot, fresh-Profile, final-gate ordering when composed. The real
+Profile client alone will construct the internal terminal receipt after validating
+the canonical response; an HTTP boolean cannot clear this gate.
+The exact original owner-binding protobuf is also persisted without the token or
+raw Profile text. Recovery checks its canonical fingerprint against the immutable
+registry and uses it only to query an existing operation with fresh bounded system
+credentials. It cannot acquire a renewed read/write grant from the expired binding.
+The journal's product constructor now requires the actual validated deployed
+release; begin rejects a different request release before effects.
+
+The new Rust journal captures that identity from its own actual transaction,
+registers it before protected effects, durably inserts PENDING on a separate
+connection, and locks event/admission/participant before the stale-revision check.
+It writes the participant CAS and decision in that actual transaction. The
+dedicated Profile-only ResolveDecision RPC reads the exact operation binding and
+this store's actual pg_xact_status; a new recovery query cannot create an operation
+or choose an outcome. The independent Rust Concert half is qualified below; its real cross-store composition remains unfinished.
+The actual held-owner adapter, real Profile prepare/reconcile, cross-store crash
+and visibility proofs, and public route remain unfinished.
+
+## Validation
+
+Independent checkpoint `4c84ca8f82737b9476888a3bb01446f83be82678`:
+Rust 1.88.0, locked/offline, jobs=2, debug=0, incremental=0. The exact bounded
+`cargo test --manifest-path backend/Cargo.toml --locked --offline -j2 -p
+concert-service --lib participant::live --no-run --message-format=json` exited 0.
+The exact Cargo-emitted test executable was copied and SHA256 checked as
+`d284cf849d7e8d6fcda79ee17bd547078de2823606041fc136ac6fff1cabfc2b`.
+The MEDIA build target was explicitly released before running that private copy.
+
+Four focused tests PASS: two actual-network Auth client tests (14 exact/fault
+owner replies, wrong credential and original deadline) and two C03 parser tests.
+The stale Auth fixture was corrected to three seconds old after the earlier
+one-microsecond case failed to establish staleness. The coordinator test's response
+body mapping was corrected after its initial compile failure. No receiving
+security check was relaxed. Focused output and source/artifact pins are in
+`participant-live-evidence/focused-4c84ca8f.txt` and
+`participant-live-evidence/coordinator-binary-4c84ca8f.json`.
+
+Command `python3 backend/scripts/mcr/participant_coordinator_sql_smoke.py
+--pg-bin /opt/homebrew/opt/postgresql@16/bin --binary <private-copy>
+--receipt <exact-cargo-receipt>` exited 0 against private PostgreSQL 16.14.
+The actual guarded Rust Concert coordinator native test PASS: original signed
+C03 context, same-connection identity registration, event/admission/participant
+locks, stale CAS refusal before prepare, profile-only preference preservation,
+actual UPDATE followed by revocation rollback, COMMIT/ABORT decision queries and
+foreign-body UNRESOLVED. A Concert commit without a canonical Profile terminal
+receipt remains invisible. Owner eligibility and Profile prepared replies in this
+test are explicitly synthetic fixtures; it does not qualify actual owner stores,
+Profile prepare/reconcile, or a public HTTP route.
+
+The same run passed eight SQL checks, restart and owned cleanup. Every current
+Concert migration applied. Another connection could not decide; the registered
+transaction committed effect and decision together; rollback retained PENDING
+without either effect or COMMIT; original binding and prepare/terminal records
+were immutable; restart retained committed effect, decision and aborted status.
+The SQL-only portion uses an explicit effect probe and synthetic Profile terminal
+metadata. Full report: `participant-live-evidence/coordinator-native-4c84ca8f.json`.
+Its legacy scope string describes only the SQL portion; the separate `native_rust`
+field identifies the additional exact Rust test. The earlier SQL-only report is
+retained separately. Four Python artifact-boundary tests also PASS.
+
+The compile emits inherited warnings and unused recovery/terminal seams, because
+the staged SELF client has not been exported. Warnings were not suppressed.
+The real held-owner adapter compiles against published SDK `888cb6bd`; actual
+Auth/Friend native qualification and its use in a live participant flow remain
+separate obligations. Qualified canonical avatar hooks `60991c53` are consumed
+without changing their implementation. The typed SELF client in `live/profile.rs`
+is unexported and NOT_RUN until coherent producer/proto-generation inputs arrive.
+
+The additive decision IDL alone is published as `43cb9e9f`, CONTRACT_READY.
+Vendored protoc exit 0; source SHA256
+`8f5df61f1cdce1ed7e386da17a7ed8e3ea914eb24a117a39a85ec17cae26d6b9`, descriptor
+SHA256 `639b449a2f27eee0d221cef74435afd14cc1389f6b77a1e91a445130cf7ae2e0`.
+The root-owned response delivery extension is agreed but not imported here.
+
+Actual Profile client/terminal/recovery, full live producer orchestration,
+root/Gateway composition, real save/reload and browser/multiuser acceptance remain
+NOT_RUN. The persistent full Live goal remains active. Phase A validation does
+not certify these new paths. Required completion still includes implementation,
+meaningful native/public-route validation, committed non-force delivery,
+documentation and concrete fixes.
+
+## Next source checkpoint (not yet qualified)
+
+`live/service.rs` stages the live producer with concrete Auth/SELF clients, the
+actual CanonicalOwnerFence, Journal and a root-supplied delivery publisher. It
+acquires against the sealed original C03 context, publishes delivery before
+protected work, uses the canonical avatar effect fence, coordinates full Profile
+PATCH, and joins local snapshot -> fresh Profile -> final visibility gate. It
+attaches only the internal typed delivery capability and response-scope extension;
+it never certifies serialization or owner completion on return/error/Drop.
+`live/recovery.rs` stages a restartable worker over persisted original operations,
+using bounded terminal queries and keyset pagination so old unknown operations
+cannot starve newer settlements. These files remain unexported and NOT_RUN.
+
+The external decision endpoint fixture now uses the real guarded handler with
+explicit production-format dedicated keys, private PG ownership checks, loopback
+readiness, an owned stop marker and a bounded lifetime. The native harness will
+run it and its signed generated client in separate copied-binary processes.
+Additional native journal assertions cover recovery of the original binding,
+terminal receipt agreement/idempotency, settled visibility and stale snapshot
+refusal. These additions are NOT_RUN until the next allocated compile/native
+turn. Neither synthetic terminal metadata nor an endpoint fixture qualifies the
+actual canonical Profile producer. The SELF generated include now uses Prost's
+escaped filename `profile.self_.v1`, while the wire package stays `profile.self.v1`.
+
+## Coherent generation and typed producer checkpoint
+
+Published root `21d0ac95` and canonical SELF runtime `4e9c57e3` are consumed.
+The root owner explicitly transferred only Concert `build.rs` generation changes
+and the SDK owner transferred only `guarded/mod.rs`'s generated include. The
+canonical lease pass now writes `OUT_DIR/owner_authority`; its include matches.
+SELF generation joins the existing canonical second pass, preserving Product
+extern mapping. SELF itself imports lease and exercises the previous service-code
+overwrite condition. The pair must be qualified and published together.
+
+The typed client, service and recovery worker are now exported for compilation;
+product startup registration remains unchanged. The service delegates publication
+to the actual root DeliveryPublisher. `ParticipantResponse` adds internal delivery
+field 2 and failure field 3. Completed post-publication errors inside the original
+deadline carry only a closed gRPC-code/core-reason pair, empty response JSON, the
+same delivery capability and the same retained response token. The Gateway owner
+projects the existing public C03 error. Cancellation/timeout before an envelope
+remains quarantined; EOF alone cannot prove an unknown native transaction terminal.
+These additions are NOT_RUN until the standing allocated full compile/native turn.
+
+The external decision host/client now supports explicit private mTLS using real
+Concert/Profile workload identities and canonical owned certificate paths. Missing
+or partial mTLS configuration fails, with no downgrade. Native qualification will
+run this mode. New pure receiving checks reject noncanonical native numbers,
+foreign transaction/effect/operation/instance, and unresolved Profile statuses.
+The legacy participant integration policy assertion also now includes the additive
+Profile-only decision RPC without widening the three Gateway methods.
+
+Actual joined-driver ownership belongs to this participant chat: real Journal,
+BoundParticipantAuthority/OwnerGuardScope, typed SELF client, and actual Auth/Friend/
+Profile processes must prove commit and abort. A raw-SQL synthetic Concert decision
+cannot stand in for that driver. The independent native checkpoint below uses
+explicit Profile/eligibility fixtures only. A concrete root guard-digest/effect-
+digest conflation was reported and its owner supplied a separate source fix;
+producer-specific commit witnesses and the actual join remain open.
+
+## Qualified component checkpoint: `726c6da7`
+
+Status: IN_PROGRESS for BE-PARTICIPANT-LIVE. The previously described exported
+modules and external decision endpoint now have fresh component qualification.
+This does not activate startup or accept a signed-in public flow.
+
+Source `726c6da708100fba1b88833d4003790790f7c373` includes published root fixes
+`72b1233f` and SELF `4e9c57e3`. The root's extended generation grant isolates the
+third Participant pass in `OUT_DIR/participant` with its owned matching include;
+this prevents imported Product service generation from replacing canonical
+Product messages. The canonical lease pass/include and SELF second-pass changes
+are delivered together. The Profile owner supplied `2500b180`, consumed as
+`54a9f571`, adding only the generated `concert::product::v1` sibling module in
+Profile's local wire tree. This was required by Participant's new typed internal
+delivery field; its initial absence produced a concrete compiler error. No new
+dependency or lockfile resolution was added. The subsequent missing tracing
+dependency was removed from the recovery worker without changing its fail-closed
+durable behavior.
+
+Command: `cargo test --manifest-path backend/Cargo.toml --locked --offline -j2
+-p concert-service --lib --test participant_producer --no-run
+--message-format=json`, Rust 1.88.0, incremental 0, dev/test debug 0: exit 0.
+The final compile took 18.24 seconds. Exact emitted library, integration-test and
+server artifacts were privately copied and SHA256 pinned before releasing the
+allocated target; no database test used a shared build artifact. The library
+copy SHA256 is `4ce26434dd9425eaec2f47cda920dbe92a80751371f4118477dd3baf53b3b652`.
+See `participant-live-evidence/binary-726c6da7.json` for the source and artifact
+receipts; absolute machine paths are retained only in the private originals.
+
+Copied-binary validation, all exit 0:
+
+- `concert-lib-726c6da7 participant::live --nocapture`: 7 passed, 3 ignored.
+- `participant-producer-tests-726c6da7 --nocapture`: 8 passed, 2 ignored.
+- Python artifact-boundary suite: 4 passed.
+- `participant_coordinator_sql_smoke.py --pg-bin <PG16.14> --binary
+  <private-copy> --receipt <exact-Cargo-receipt>`: actual journal test passed;
+  8 SQL checks, restart and private owned-cluster cleanup passed.
+- The same native driver ran actual dedicated signed decision server and client
+  in separate private-copy processes with mTLS Concert/Profile identities. Exact
+  no-store unresolved echo, wrong workload credential refusal, foreign signed
+  actor refusal and bounded clean shutdown passed. No plaintext downgrade.
+
+The actual journal test additionally proves in-progress refusal, original binding
+reconstruction after expiry, immutable matching terminal metadata, idempotency,
+and stale-snapshot visibility gates. Its Profile prepared/terminal metadata and
+eligibility remain explicit fixtures. The endpoint test queries an unknown
+operation, so it does not prove actual Profile prepare or commit/abort delivery.
+The exported service/client/recovery now compile, but their complete real
+Auth/Friend/Profile-to-Journal join and successful HTTP save/reload are NOT_RUN.
+Avatar/preference committed settlement still needs the separately assigned 0035
+same-transaction witness. Full acceptance and the persistent goal remain open.
