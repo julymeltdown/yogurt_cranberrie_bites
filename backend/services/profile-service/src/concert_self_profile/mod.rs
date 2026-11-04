@@ -16,3 +16,5 @@ pub mod wire;
 
 #[cfg(test)]
 mod native;
+#[cfg(test)]
+mod native_rpc;

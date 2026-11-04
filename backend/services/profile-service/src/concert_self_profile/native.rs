@@ -9,7 +9,7 @@ use sqlx::{
 use std::{os::unix::fs::MetadataExt, path::PathBuf, str::FromStr, time::Duration};
 use uuid::Uuid;
 
-async fn pool() -> anyhow::Result<PgPool> {
+pub(super) async fn pool() -> anyhow::Result<PgPool> {
     let root = PathBuf::from(std::env::var("MCR_SELF_PROFILE_ROOT")?);
     let info = std::fs::symlink_metadata(&root)?;
     anyhow::ensure!(
