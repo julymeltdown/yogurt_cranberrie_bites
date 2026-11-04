@@ -70,7 +70,7 @@ This establishes staffing/progress, not an original criterion completion.
 | FE26 | Former authoring owner `6ec9`; last explicit frontend criteria SATISFIED | Public pickup and actual route-fixture pointers now sent directly to QA06/World; historical `d127b74` → `941d36c`, KST `d8778b8` explicitly labeled historical, not current requalification | No identified original client gap in retained receipt: intent/hold/expiry/code/claim/cancel and timeout/reload/no-fake-success. QA06 owner pins usable current fixtures; Gift `267`/root `1fc` supply genuine authority. No FE31 substitution or live/device promotion |
 | FE27 | Social ledger retains original SATISFIED/MOCK_READY; bounded latest fidelity owner `202` complete/null/clean STOP/returned leases/archived; no Community feature lease | Existing `9f72a71`/`cf7836a`/`a413e69` retained. Since checkpoint, Social reports bounded source `576f9848` → `ddd279e4`, final receipt `203db3a4` → `6393b451`, all 44 final payloads owner-verified; duplicate root action/bottom compose repair with owner native three widths/244 affected tests | No identified original fixture criterion gap in Social's explicit receipt. QA06 postfix evidence is published with unfinished whole-visual acceptance preserved; real Feed/media providers and IN03 remain separate. Actual evidence/ownership primary is Social, not a new Community acceptance or count |
 | FE28 | Social ledger retains original SATISFIED/MOCK_READY; historical Social author has no new lease | Existing published `5bc0055`/`a413e69`/`b392f56` owner registry pointers newly reconciled here; no new original-task delivery inferred this hour | Original composer/thread/recovery/privacy criteria already recorded in Social owner evidence; no known task-local gap in that receipt. Real service/media and QA04/IN03 are separate dependencies, not grounds for withholding fixture-satisfied original criteria |
-| FE32 | IN_PROGRESS under owner204; current original-criterion disposition remains UNRECONCILED pending implementation-owned completion receipt | Retained `832c7de9` → `7b567acb` and original MOCK_READY editor report preserved. New exact assignment actually ACCEPTED: prior null → NEW active unbudgeted goal, clean `codex/mcr-fe-FE32-client` at fresh published `1c6b8eba`; all new runner/evidence/report prefixes absent before writes | Owner204 completes/reconciles all original editor/touch/DOM/drag/bounds/color/cooldown criteria and relevant reference fidelity within exact editor/doc/new prefixes, validates/documents/commits to Root153, then publication and fresh remote readback. No new source commit/native/build yet. FE05/C04 ready; FE33 and real IN04 remain separate |
+| FE32 | IN_PROGRESS under owner204; current original-criterion disposition remains UNRECONCILED pending implementation-owned completion receipt | Fresh accepted isolated branch/base `1c6b8eba`; owner reports 136 affected tests PASS, including reproduced/fixed third-held-touch tracking and delayed-acknowledgement cooldown regressions. Source/native fixture ready; new source commit pin not yet supplied. Retained original `832c7de9` → `7b567acb` report preserved | Named native/build job FE32-NATIVE-20261104-204 queued directly with21d, not started or passed. Owner continues source/noemit/docs;21d owns explicit capacity release around actual FE18/IN01 holders. Exact editor/doc/new-prefix qualification, criterion receipt, scoped Root153 publication and fresh remote readback remain; FE33/real IN04 separate |
 | FE33 | Former owner `230`, now Backend allocator-owned; original frozen-client criteria SATISFIED | Published module `7c2f3af7` and caller `eeae69be` fixture references routed to QA06/World; no new original outcome | No identified original frozen-client gap. Ordinary production remains closed without supplier. Wall `21e`, root `1fc`, SDK `207`, BE World `20f` and FE Root153 own genuine inputs/activation; IN04 separate |
 | FE37 | Bounded repair owner `26e` COMPLETE/null/STOP; whole-task UNRECONCILED | No new parent receipt; decoder/route regressions published `047d892c` retained | Moderator report/member/content/reason/role-route and truthful failure criteria require the implementation owner's whole-task receipt. Bounded canonical decoder fix is delivered, not whole FE37 acceptance; Root supplies actual role inputs |
 | FE38 | Current frontend whole-task owner/disposition UNRECONCILED | Existing operator work retained; no fresh exact task pin supplied | Event/settings/place review/closure/notices/capability/audit, risky confirmation/stale conflict/source provenance remain to reconcile with actual owner; Root `1fc` is composition dependency contact. No fabricated NOT_STARTED conclusion |
@@ -317,6 +317,35 @@ old Party/Gift branch intact. All three new prefixes actually absent before
 writes and all exact granted paths accepted with no inherited rights. Owner
 is reading authority/current source/reference; no browser/build requested,
 new source commit or criterion PASS inferred. No goal ID is invented.
+
+### FE32 source progress and ONE named capacity request
+
+Owner204 reports two demonstrated baseline regressions and in-scope fixes:
+a third held touch could be forgotten and later become an unintended preview;
+a delayed placement acknowledgment could shorten a newer snapshot cooldown.
+Both new regressions now pass in the affected 136-test suite. This is owner
+source/fixture readiness, not a complete original-task receipt or native PASS;
+new source commit is not yet supplied. SAME FE32 goal remains active.
+
+ONE new job `FE32-NATIVE-20261104-204` was requested DIRECT21d with Community
+copied; Community identified the SAME queue entry, without duplicating or
+granting capacity. Exact runner `frontend/e2e/community-client/fe32/native.mjs`
+in retained `fe-ref-feed` / `codex/mcr-fe-FE32-client`, base `1c6b8eba`.
+Plan: serial Chrome156 headless and Vite5302, widths360/390/430×844 with touch/
+reduced-motion, actual MuralSyncPanel/MuralEditor and frozen C04 synthetic HTTP;
+15 PNGs/report for three-plus-contact touch, pan/zoom/fit/bounds/palette/DOM
+confirmation/cooldown/uncertainty/rejection/privacy and target proportions.
+This is not an actual-root, live-service or device claim. One serial production
+build follows ONLY after owned browser/server/cache closure; no install/Cargo/
+shared target. Whole workflow <=7min, peak temporary/cache/browser/build
+<=0.10GiB, retained <=0.01GiB, HARD whole new output0.2GiB. Isolated owned
+`/tmp/mcr-fe32-native-PID` and build temp removed finally; dependency installation
+read-only via own task link. Advisory disk~33.9GiB is not a launch grant.
+Owner must await explicit21d named slot, fresh >=16GiB START/8GiB STOP and
+process inventory; preserve FE18 replay, genuinely ready IN01, current holders,
+interactive MCP/userChrome and peer resources. No native/build START inferred.
+Source/noemit/docs continue while queued; no goal pause, extra source rights,
+King/SL approval or per-handoff King report.
 
 ### Current QA06 shared evidence and explicit design direction
 
