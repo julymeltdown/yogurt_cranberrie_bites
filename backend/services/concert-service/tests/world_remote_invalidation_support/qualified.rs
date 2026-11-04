@@ -308,6 +308,7 @@ async fn native_pair_block_unblock_deletion_fences_two_real_sockets() -> anyhow:
         "unbootstrapped replay is not ready"
     );
     remote.bootstrap().await?;
+    s.bridge.claim_rooms().await?;
     while !remote.poll().await? {}
     s.bridge.startup_ready()?;
     let pump = Pump::new(remote);
