@@ -12,6 +12,8 @@ sys.dont_write_bytecode = True
 ROOT = Path(__file__).resolve().parents[4]
 OUT = Path(os.environ['MCR_C07_OUTPUT'])
 CANONICAL = os.environ['MCR_C07_CANONICAL']
+CONTRACT_UPDATE = os.environ.get('MCR_C07_CONTRACT_UPDATE', 'enrollment')
+assert CONTRACT_UPDATE in ('enrollment', 'own-access')
 DEPENDENCIES = Path('/Users/lhs/Desktop/mcr/frontend/node_modules')
 NODE = Path('/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node')
 assert OUT.is_relative_to(ROOT / 'docs/mcr/evidence/c07-enrollment-baseline')
@@ -61,13 +63,37 @@ try:
     run('domain-transport-generation', [sys.executable, '-B', ROOT / 'scripts/mcr/generate-domain-transport.py'])
     after_transport = transport.read_text()
     marker = 'export const DOMAIN_OPERATIONS = '
-    assert before_transport.split(marker, 1)[1] == after_transport.split(marker, 1)[1], 'DOMAIN runtime exports must remain byte-identical'
-    transport_deltas = [(a, b) for a, b in zip(before_transport.splitlines(), after_transport.splitlines()) if a != b]
-    assert len(before_transport.splitlines()) == len(after_transport.splitlines())
-    assert all(a.startswith('// contracts/core/v1/core.schema.json: ') and b.startswith('// contracts/core/v1/core.schema.json: ')
-               for a, b in transport_deltas), 'Only the granted CORE input-hash comment may change'
+    if CONTRACT_UPDATE == 'enrollment':
+        assert before_transport.split(marker, 1)[1] == after_transport.split(marker, 1)[1], 'DOMAIN runtime exports must remain byte-identical'
+        transport_deltas = [(a, b) for a, b in zip(before_transport.splitlines(), after_transport.splitlines()) if a != b]
+        assert len(before_transport.splitlines()) == len(after_transport.splitlines())
+        assert all(a.startswith('// contracts/core/v1/core.schema.json: ') and b.startswith('// contracts/core/v1/core.schema.json: ')
+                   for a, b in transport_deltas), 'Only the granted CORE input-hash comment may change'
+        added_transport = []
+    else:
+        def transport_entries(text):
+            body = text.split(marker, 1)[1].split('} as const', 1)[0]
+            return dict(json.loads('{' + line.strip().rstrip(',') + '}').popitem()
+                        for line in body.splitlines()[1:] if line.strip())
+        before_entries, after_entries = map(transport_entries, (before_transport, after_transport))
+        added_transport = sorted(set(after_entries) - set(before_entries))
+        assert added_transport == ['getOwnConcertOperationsAccess'], 'Only the published OwnAccess operation may be added'
+        assert all(after_entries.get(key) == value for key, value in before_entries.items()), 'Existing transport operations must be preserved'
+        suffix = 'export const DOMAIN_QUERIES = '
+        assert before_transport.split(suffix, 1)[1] == after_transport.split(suffix, 1)[1], 'Unrelated query/error exports must remain byte-identical'
+        entry = after_entries[added_transport[0]]
+        assert entry['method'] == 'GET' and entry['path'] == '/api/concert/events/{eventId}/me/operations-access'
+        assert entry['query'] == 'common.EmptyRequest' and entry['idempotency'] is False and entry['success'] == [200]
+        old_header = before_transport.split(marker, 1)[0].splitlines()
+        new_header = after_transport.split(marker, 1)[0].splitlines()
+        assert len(old_header) == len(new_header)
+        transport_deltas = [(a, b) for a, b in zip(old_header, new_header) if a != b]
+        allowed_headers = ('// contracts/domain/v1/admin.schema.json: ', '// contracts/domain/v1/operations.json: ')
+        assert all(any(a.startswith(prefix) and b.startswith(prefix) for prefix in allowed_headers)
+                   for a, b in transport_deltas), 'Only published OwnAccess source-hash comments may change'
     record('domain-transport-generation.json', {'beforeSha256': sha(before_transport.encode()),
-        'afterSha256': sha(after_transport.encode()), 'runtimeExportsByteIdentical': True, 'commentDeltas': transport_deltas})
+        'afterSha256': sha(after_transport.encode()), 'runtimeExportsByteIdentical': CONTRACT_UPDATE == 'enrollment',
+        'existingOperationsPreserved': True, 'addedOperations': added_transport, 'commentDeltas': transport_deltas})
     # The projection is computed in memory, then applied only to the two granted
     # machine leaves. No ordinary generator's broad write mode is invoked.
     domain = module('enrollment_domain', 'backend/scripts/docs/generate-mcr-domain.py')
@@ -110,7 +136,7 @@ try:
                              for p in sorted(set(inputs) | set(old['inputs'])) if inputs.get(p) != old['inputs'].get(p)},
              'addedOperations': {k: operations[k] for k in sorted(set(operations) - set(old['operations']))},
              'removedOperations': removed, 'changedRouteIdentities': altered,
-             'provenance': 'Published Enrollment and C05 contract-only inputs; no live transport/provider/consumer claim.',
+             'provenance': 'Published ' + CONTRACT_UPDATE + ' contract-only inputs; no live transport/provider/consumer claim.',
              'qualification': 'Pending unchanged full temporary-candidate QA01 preflight'}
     record('forward-audit.json', audit)
     run('preflight', [sys.executable, '-B', ROOT / 'scripts/mcr/contracts/c07/qualify_baseline.py',
