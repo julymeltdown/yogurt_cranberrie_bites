@@ -731,7 +731,12 @@ fn participant_policy_is_complete_and_gateway_only() {
         platform::grpc_method_policy::proto_rpc_names(include_str!(
             "../../../proto/concert/v1/participant.proto"
         )),
-        ["GetParticipant", "SetAvatar", "UpdatePreferences"]
+        [
+            "GetParticipant",
+            "SetAvatar",
+            "UpdatePreferences",
+            "ResolveDecision"
+        ]
     );
     for op in [
         Operation::GetParticipant,
@@ -746,6 +751,13 @@ fn participant_policy_is_complete_and_gateway_only() {
         }
         assert_eq!(POLICY.actor_fields_for(method(op)), Some(&[&[1][..]][..]));
     }
+    let path = "/concert.participant.v1.ConcertParticipantDecisionService/ResolveDecision";
+    let decision = &concert_service::participant::live::decision_rpc::DECISION_POLICY;
+    for caller in Workload::ALL {
+        assert_eq!(decision.allows(path, caller), caller == Workload::Profile);
+        assert!(!POLICY.allows(path, caller));
+    }
+    assert_eq!(decision.actor_fields_for(path), Some(&[&[1][..]][..]));
 }
 
 #[path = "support/bootstrap/mod.rs"]
