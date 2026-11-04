@@ -1,0 +1,130 @@
+{
+  "at": "2026-11-04T05:03:00.845267+00:00",
+  "kind": "SOURCE_ONLY_HARNESS_AUDIT",
+  "base": "6cff6c5a40f7f2367e5c3269a6ff83f1ca52b2a4",
+  "status": "PASS",
+  "focusedTests": 9,
+  "syntaxFiles": 8,
+  "commands": [
+    {
+      "command": [
+        "node",
+        "--test",
+        "frontend/e2e/real/world/in01/status.test.mjs",
+        "frontend/e2e/real/world/in01/guards.test.mjs"
+      ],
+      "exitCode": 0,
+      "stdout": "\u2714 rejects malformed, missing, expired and near-expiry windows (0.813458ms)\n\u2714 rejects invalid parent and unadmitted origins before browser allocation (0.524417ms)\n\u2714 rejects cohort replacement even when its new expiry is still valid (0.545833ms)\n\u2714 rejects run identifiers that could overwrite outside the owned evidence tree (0.17325ms)\n\u2714 empty and partial evidence cannot pass the original runtime gate (0.397791ms)\n\u2714 every original runtime criterion is required (0.127042ms)\n\u2714 a service or runtime failure remains nonzero even with other passing evidence (0.429541ms)\n\u2714 complete runtime evidence keeps art inspection explicit (0.057166ms)\n\u2714 late browser, stream or resource faults cannot certify an otherwise complete run (0.055792ms)\n\u2139 tests 9\n\u2139 suites 0\n\u2139 pass 9\n\u2139 fail 0\n\u2139 cancelled 0\n\u2139 skipped 0\n\u2139 todo 0\n\u2139 duration_ms 43.058875\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "node",
+        "--check",
+        "frontend/e2e/real/world/in01/control.mjs"
+      ],
+      "exitCode": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "node",
+        "--check",
+        "frontend/e2e/real/world/in01/flows.mjs"
+      ],
+      "exitCode": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "node",
+        "--check",
+        "frontend/e2e/real/world/in01/guards.mjs"
+      ],
+      "exitCode": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "node",
+        "--check",
+        "frontend/e2e/real/world/in01/guards.test.mjs"
+      ],
+      "exitCode": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "node",
+        "--check",
+        "frontend/e2e/real/world/in01/run.mjs"
+      ],
+      "exitCode": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "node",
+        "--check",
+        "frontend/e2e/real/world/in01/session.mjs"
+      ],
+      "exitCode": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "node",
+        "--check",
+        "frontend/e2e/real/world/in01/status.mjs"
+      ],
+      "exitCode": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "node",
+        "--check",
+        "frontend/e2e/real/world/in01/status.test.mjs"
+      ],
+      "exitCode": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "retained-oxlint",
+        "frontend/e2e/real/world/in01"
+      ],
+      "exitCode": 0,
+      "stdout": "",
+      "stderr": ""
+    }
+  ],
+  "runtimeReplay": "NOT_RUN: canonical Auth recovery and a new named browser allocation are outstanding. Old live descriptor expired and its owner confirmed clean teardown.",
+  "qualification": "Guard tests use local unit data only; they cannot establish real account, browser, service, multiuser, or final-art acceptance.",
+  "boundaryCore": {
+    "status": "PASS",
+    "exitCode": 0,
+    "base": "6cff6c5a40f7f2367e5c3269a6ff83f1ca52b2a4",
+    "paths": [
+      "docs/mcr/evidence/in01-world-browser/checks/harness-audit.json",
+      "docs/mcr/frontend/in01-browser-journey.md",
+      "frontend/e2e/real/world/in01/flows.mjs",
+      "frontend/e2e/real/world/in01/guards.mjs",
+      "frontend/e2e/real/world/in01/guards.test.mjs",
+      "frontend/e2e/real/world/in01/run.mjs",
+      "frontend/e2e/real/world/in01/session.mjs",
+      "frontend/e2e/real/world/in01/status.mjs",
+      "frontend/e2e/real/world/in01/status.test.mjs"
+    ],
+    "count": 9,
+    "qualification": "Unchanged checker core API with the exact authorized documentation set; no shared CLI changes."
+  }
+}
