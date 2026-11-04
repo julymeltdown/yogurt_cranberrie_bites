@@ -661,3 +661,45 @@ Feed accepted the exact eight-line production fix as source-only consumer commit
 error mapping because the diagnostic helper is absent on that base. Root
 reported its analogous production-only consumption; neither consumer imports
 this private fixture or inherits this run's qualification for its own snapshot.
+
+
+### Delivery ancestry and remaining integration owner
+
+The qualified correction source is `c04070be4219e381bd2bf2d132ac1a17a4adc73e`;
+its passing evidence documentation is `e020e135fceeb5ce1c8790508b1fe0e1544dc3c6`.
+The delivered merge is `5ca13d4493ee9eb78675256cb2f6e58f7ac59a48`, with parents
+e020e135 and published master `7c8da1c4babd2551458320a87747bac576db0d94`.
+Non-force publication exited 0 and the actual remote master HEAD was verified
+equal to 5ca13d44 immediately afterward. The net changed-path set against its
+published parent is exactly:
+
+- backend/scripts/mcr/public_profile_projection_smoke.py
+- backend/scripts/mcr/test_public_profile_projection_smoke.py
+- backend/services/concert-service/src/adapters/out/public_profile/local.rs
+- backend/services/concert-service/src/adapters/out/public_profile/mod.rs
+- backend/services/concert-service/src/adapters/out/public_profile/native.rs
+- backend/services/concert-service/src/adapters/out/public_profile/native/capture.rs
+- backend/services/concert-service/src/adapters/out/public_profile/native/environment.rs
+- backend/services/concert-service/src/adapters/out/public_profile/native/owners.rs
+- docs/mcr/backend/public-profile-projection.md
+
+The implementation owner performed that push using an earlier carried direct
+publication instruction; this crossed the current AGENTS designated-integrator
+publication boundary. The integrator and coordination chats were informed.
+There was no force push, SDK3 import or unrelated implementation change. All
+subsequent changes are committed handoffs to the designated Root integrator;
+this owner will make no further direct master pushes. No history rewrite or
+rollback of concurrent work is authorized by this note.
+
+After reconciliation, the exact public adapter/native/controller source, SDK2
+authority contract, public Profile producer and selected constructor inputs were
+compared with c04070be and remained unchanged. Incoming independent media, SELF
+test and art additions do not inherit the original compile/runtime receipt.
+Post-reconciliation Python controller tests pass 7/7, planning check passes, and
+changed-path diff checks pass. There is no whole-master compiled/runtime claim.
+
+Feed and Root received the exact source, copied-artifact pins, report hashes and
+limits directly. Their actual full consumer response/Gateway HTTP and SDK3 gates
+remain with those owners. The public assignment remains IN_PROGRESS. The goal
+API was rechecked and still reports the historical incompatible moderation goal
+as BLOCKED; it was neither reset nor falsely completed.
