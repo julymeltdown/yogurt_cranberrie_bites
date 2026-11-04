@@ -29,6 +29,7 @@ struct Records {
     pending: BTreeMap<Uuid, CanonicalMembership>,
     tickets: BTreeMap<String, u128>,
     blocked: BTreeSet<(Uuid, Uuid)>,
+    generation: u128,
 }
 struct Authority {
     fence: Arc<Mutex<()>>,
@@ -109,7 +110,7 @@ impl RecipientPolicy for OwnerPort {
             binding: b.clone(),
             checked_at_ms: now,
             valid_until_ms: now + 1000,
-            invalidation_id: id(999),
+            invalidation_id: id(999 + r.generation),
             visible_users: subjects
                 .iter()
                 .filter(|s| {
@@ -787,5 +788,24 @@ async fn actual_native_write_buffer_rejects_an_oversized_snapshot_without_replay
         tokio::time::sleep(Duration::from_millis(25)).await;
     }
     assert!(cleaned);
+    h.close().await;
+}
+
+#[tokio::test]
+async fn policy_generation_change_during_maintenance_delivers_gap_then_closes_4409() {
+    let h = Harness::start().await;
+    let mut client = h.connect().await;
+    client.send(h.auth('A')).await.unwrap();
+    let initial = value(&mut client).await;
+    {
+        let _f = h.authority.fence.lock().unwrap();
+        h.authority.records.lock().unwrap().generation += 1;
+    }
+    let terminal = value(&mut client).await;
+    assert_eq!(terminal["type"], "resyncRequired");
+    assert_eq!(terminal["reason"], "GAP");
+    assert_eq!(terminal["streamId"], initial["streamId"]);
+    assert!(terminal.get("players").is_none());
+    assert_eq!(close_code(&mut client).await, 4409);
     h.close().await;
 }

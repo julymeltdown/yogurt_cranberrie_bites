@@ -1007,3 +1007,160 @@ async fn readiness_requires_actual_owner_task_and_closes_after_shutdown() {
     assert!(task.await.unwrap().remaining_cleanup.is_empty());
     assert_eq!(handle.ready().await, Err(RuntimeError::Closed));
 }
+
+#[test]
+fn maintenance_preserves_policy_gap_control_and_removes_subscription() {
+    let mut f = fixture(2, 1);
+    let b = binding(&f, 1, 0);
+    enter(&mut f, &b);
+    f.owner.publish(&b, 0, true).unwrap();
+    f.policy.0.lock().unwrap().generation += 1;
+    f.owner.maintain(1).unwrap();
+    let socket = f.socket.0.lock().unwrap();
+    let (_, wire, code) = socket.frames.last().unwrap();
+    assert_eq!(wire["type"], "resyncRequired");
+    assert_eq!(wire["reason"], "GAP");
+    assert_eq!(*code, Some(4409));
+    assert!(wire.get("players").is_none());
+    assert_eq!(socket.closes.last().unwrap().1, SafeClose { code: 4409, label: "GAP" });
+    assert_eq!(f.owner.active_count(), 0);
+    assert_eq!(f.owner.pending_cleanup_count(), 0);
+}
+
+#[test]
+fn stalled_snapshot_closes_with_backpressure_and_retries_cleanup_without_replay() {
+    let mut f = fixture(2, 1);
+    let old = binding(&f, 1, 0);
+    enter(&mut f, &old);
+    f.socket.0.lock().unwrap().ready = false;
+    f.owner.publish(&old, 0, true).unwrap();
+    {
+        let mut authority = f.authority.0.lock().unwrap();
+        authority.records.get_mut(&(f.event.uuid(), old.key.user_id.uuid())).unwrap()
+            .lease_expires_at = utc() + TimeDelta::milliseconds(10000);
+        authority.fail_release = true;
+    }
+    f.owner.maintain(5000).unwrap();
+    assert_eq!(f.owner.active_count(), 0);
+    assert!(f.owner.pending_cleanup_count() > 0);
+    {
+        let socket = f.socket.0.lock().unwrap();
+        assert!(socket.frames.is_empty());
+        assert_eq!(socket.closes.last().unwrap().1,
+            SafeClose { code: 4409, label: "BACKPRESSURE" });
+    }
+    assert_eq!(f.owner.input(&old, input(&old, 1), 5000), Err(RuntimeError::Stale));
+    f.authority.0.lock().unwrap().fail_release = false;
+    f.owner.maintain(5001).unwrap();
+    assert_eq!(f.owner.pending_cleanup_count(), 0);
+    let mut fresh = old.clone();
+    fresh.connection_id = id(9901);
+    fresh.stream_id = id(9902);
+    f.authority.grant(&fresh);
+    f.authority.0.lock().unwrap().records.get_mut(&(f.event.uuid(), fresh.key.user_id.uuid())).unwrap()
+        .lease_expires_at = utc() + TimeDelta::milliseconds(10000);
+    f.socket.0.lock().unwrap().ready = true;
+    f.owner.install(fresh.clone(), SnapshotCause::Initial, 5001).unwrap();
+    f.owner.publish(&fresh, 5001, true).unwrap();
+    assert!(!f.owner.disconnect(&old, 5001).unwrap());
+    assert_eq!(f.owner.active_count(), 1);
+    let socket = f.socket.0.lock().unwrap();
+    assert_eq!(socket.frames.len(), 1);
+    assert_eq!(socket.frames[0].1["streamId"], fresh.stream_id.to_string());
+    assert_eq!(socket.frames[0].1["streamSeq"], 0);
+    assert_eq!(socket.frames[0].1["ackInputSeq"], 0);
+}
+
+#[test]
+fn differently_filtered_viewers_coalesce_avatar_updates_without_false_sequence_gaps() {
+    let mut f = fixture(3, 1);
+    let a = binding(&f, 1, 0);
+    let b = binding(&f, 2, 0);
+    let subject = binding(&f, 3, 0);
+    for who in [&a, &b, &subject] { enter(&mut f, who); }
+    f.policy.0.lock().unwrap().blocked.insert((b.key.user_id.uuid(), subject.key.user_id.uuid()));
+    for who in [&a, &b, &subject] { f.owner.publish(who, 0, true).unwrap(); }
+    f.owner.input(&subject, input(&subject, 1), 0).unwrap();
+    for now in [50, 100, 150] {
+        f.authority.0.lock().unwrap().records.get_mut(&(f.event.uuid(), subject.key.user_id.uuid())).unwrap()
+            .identity.avatar_revision = Revision::new(now as i64).unwrap();
+        f.owner.maintain(now).unwrap();
+    }
+    f.owner.publish(&a, 150, true).unwrap();
+    f.owner.publish(&b, 150, true).unwrap();
+    {
+        let socket = f.socket.0.lock().unwrap();
+        let a_frames: Vec<_> = socket.frames.iter().filter(|(who, _, _)| who == &a).collect();
+        let b_frames: Vec<_> = socket.frames.iter().filter(|(who, _, _)| who == &b).collect();
+        assert_eq!(a_frames.len(), 2);
+        assert_eq!(a_frames[1].1["streamSeq"], 1);
+        let changed = a_frames[1].1["upserts"].as_array().unwrap().iter()
+            .find(|p| p["userId"] == subject.key.user_id.uuid().to_string()).unwrap();
+        assert_eq!(changed["avatar"]["revision"], 150);
+        assert_eq!(b_frames.len(), 1);
+        assert!(!b_frames[0].1["players"].as_array().unwrap().iter()
+            .any(|p| p["userId"] == subject.key.user_id.uuid().to_string()));
+    }
+    for (old, stream) in [(&a, id(8801)), (&b, id(8802))] {
+        let mut fresh = old.clone();
+        fresh.stream_id = stream;
+        f.authority.grant(&fresh);
+        f.owner.install(fresh.clone(), SnapshotCause::Resync(Uuid::new_v4()), 1000).unwrap();
+        f.owner.publish(&fresh, 1000, true).unwrap();
+        let socket = f.socket.0.lock().unwrap();
+        let frame = &socket.frames.last().unwrap().1;
+        assert_eq!(frame["streamSeq"], 0);
+        assert_eq!(frame["ackInputSeq"], 0);
+        let contains_subject = frame["players"].as_array().unwrap().iter()
+            .any(|p| p["userId"] == subject.key.user_id.uuid().to_string());
+        assert_eq!(contains_subject, old == &a);
+    }
+}
+
+#[test]
+fn foreground_resync_clears_dequeued_and_pending_motion_and_fences_the_old_stream() {
+    let mut f = fixture(2, 1);
+    let old = binding(&f, 1, 0);
+    enter(&mut f, &old);
+    f.owner.publish(&old, 0, true).unwrap();
+    f.owner.input(&old, input(&old, 1), 0).unwrap();
+    f.owner.maintain(50).unwrap();
+    f.owner.input(&old, input(&old, 2), 50).unwrap();
+    let mut fresh = old.clone();
+    fresh.stream_id = id(8901);
+    f.authority.grant(&fresh);
+    f.owner.install(fresh.clone(), SnapshotCause::Resync(id(8902)), 1000).unwrap();
+    f.owner.publish(&fresh, 1000, true).unwrap();
+    assert_eq!(f.owner.input(&old, input(&old, 3), 1000), Err(RuntimeError::Stale));
+    f.owner.maintain(1050).unwrap();
+    f.owner.publish(&fresh, 1100, true).unwrap();
+    let socket = f.socket.0.lock().unwrap();
+    let fresh_frames: Vec<_> = socket.frames.iter().filter(|(who, _, _)| who == &fresh).collect();
+    let baseline = &fresh_frames[0].1;
+    assert_eq!(baseline["type"], "snapshot");
+    assert_eq!(baseline["ackInputSeq"], 0);
+    assert_eq!(baseline["players"][0]["position"]["x"], 54.0);
+    for frame in fresh_frames.iter().skip(1) {
+        assert_eq!(frame.1["ackInputSeq"], 0);
+        assert!(frame.1["upserts"].as_array().unwrap().iter()
+            .all(|p| p["position"] == baseline["players"][0]["position"]));
+    }
+}
+
+#[test]
+fn terminal_cleanup_of_a_peer_does_not_stop_the_room_owner() {
+    let mut f = fixture(2, 1);
+    let a = binding(&f, 1, 0);
+    let b = binding(&f, 2, 0);
+    enter(&mut f, &a);
+    enter(&mut f, &b);
+    f.owner.publish(&a, 0, true).unwrap();
+    f.owner.publish(&b, 0, true).unwrap();
+    f.authority.0.lock().unwrap().records.remove(&(f.event.uuid(), b.key.user_id.uuid()));
+    f.policy.0.lock().unwrap().generation += 1;
+    f.owner.maintain(1).unwrap();
+    assert_eq!(f.owner.active_count(), 0);
+    assert_eq!(f.owner.pending_cleanup_count(), 0);
+    // The controller still accepts the next clock step instead of failing its stale copied roster.
+    f.owner.maintain(50).unwrap();
+}

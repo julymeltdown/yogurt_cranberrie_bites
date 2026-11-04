@@ -697,7 +697,10 @@ where
         }
         // Refresh without dequeuing/numbering to enforce current privacy and slow-consumer limits.
         for b in members {
-            self.publish_inner(&b, now, false)?;
+            // Terminal cleanup may also acknowledge another closed member from this snapshot.
+            if self.members.get(&member_key(&b)) == Some(&b) {
+                self.publish_inner(&b, now, false)?;
+            }
         }
         self.retry_cleanup();
         report.pending_cleanup = self.cleanup.len() + self.recovery.pending_cleanup_count();
@@ -782,7 +785,19 @@ where
                 .refresh(&frame, now, &self.membership, &self.recipient)
                 .is_err()
             {
-                self.close_member(b, RevokeReason::PolicyUnavailable);
+                // Refresh may have already selected a precise terminal control (for example
+                // GAP or BACKPRESSURE). Maintenance must not replace it with a policy outage.
+                let (label, code) = stream.terminal_close().unwrap_or(("POLICY_UNAVAILABLE", 4500));
+                let terminal = stream.take_terminal();
+                if self.transport.ready(b) {
+                    if let Some(delivery) = terminal {
+                        let _ = self.transport.send(b, delivery);
+                    }
+                }
+                self.transport.close(b, SafeClose { code, label });
+                // No terminal subscription or queued private state survives a blocked socket.
+                // Exact failed persistent cleanup remains discoverable for retry.
+                let _ = self.disconnect_inner(b, now);
             }
             return Ok(());
         }
