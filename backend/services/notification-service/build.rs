@@ -15,8 +15,10 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
         .out_dir(&authority_output)
         .compile_protos(&[lease.clone()], &[local_include.clone()])?;
     let notification = contracts_build::proto_root().join("notification/v1/concert_inbox.proto");
+    let delivery = contracts_build::proto_root().join("notification/v1/concert_delivery.proto");
     let protos = [
         notification.clone(),
+        delivery.clone(),
         contracts_build::source_notification_proto(),
         contracts_build::source_authority_proto(),
     ];
@@ -30,6 +32,7 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
 
     println!("cargo:rerun-if-changed={}", lease.display());
     println!("cargo:rerun-if-changed={}", notification.display());
+    println!("cargo:rerun-if-changed={}", delivery.display());
     println!(
         "cargo:rerun-if-changed={}",
         contracts_build::source_notification_proto().display()
