@@ -562,3 +562,53 @@ with one of `baseline`, `quality-v6`, `quality-v8`, plus the frozen
 All six exact selected test commands exited 0. Full portable command templates
 and all source-check exit codes are in the component receipt; the two compiler
 attempts retain their distinct failure/success outcomes.
+
+## Quality-v10 successor: scope and revision reservation
+
+The v8 goal completed after an independent audit of actual remote master
+`babbc3f42eec8fa89b71f4c7d036f253c3c45237`: all eleven handoff paths match
+`3742056c` byte for byte; five ordered integrated commits have equivalent stable
+patch IDs, and old release/source/selected-avatar bytes are preserved. Its
+component qualification does not confer Product, physical-place or art acceptance.
+
+Root granted this sequential v10 assignment explicitly. After accepting it, the
+same isolated backend checkout starts `codex/mcr-be-spatial-v10` from the master
+above, with a new aligned unbudgeted goal. Exact scope is NEW
+`backend/releases/reference-scene-v2/quality-v10/**`, additive v10-only handling
+in the retained two spatial Python scripts, new spatial cases in the two
+bootstrap test files, and this append-only v10 document section. No production
+Rust, frontend, contracts, manifests, root composition or old release outputs
+are writable. No build or PostgreSQL resource is held.
+
+A fresh recursive scan of every tracked backend release JSON at that published
+base found server revisions 3, 4, 5 for `mcr_reference_scene_r3`, with no existing 6
+reservation or release. Under this accepted exclusive producer grant, this
+committed checkpoint **allocates actual new server map revision 6**, before any
+v10 generation. `quality-v10/revision-reservation.json` records the source/ref,
+scan coverage, prior identities and exact input pins. This is a source identity
+reservation; nothing has been published to a database, event-current pointer,
+operator bundle or admitted bootstrap. The artist's proposed 6 and frontend's
+minimum 6 were constraints, not prior authority for this allocation.
+
+Frozen artist input is `06562ff1962be525ed929ef431a54bb589860373`, retaining
+material source `c7b0cb013e5ab1d9f8cac08be1d0046c249e1cd4`. Frozen frontend input
+is `473534296490bbcd4c63a4a0eb85ce7fdd57215a`: finite 48×81, 16-pixel Tiled resource
+`world/reference-scene-v2/runtime/spatial-v5/canonical-map.json`, 24058 bytes,
+SHA256 `e5837dfe08a8d2f1f7cdb4428b87965b4a7c6ecdb1458b8fe910e3f4c2112078`.
+Its three row-major layers have the expected dimensions. Geometry is
+`sha256:ef52c8b05af6a882f2e82285c9879c9a4cb78ab513336e4bb3cd483c9b123395`.
+The original frontend binding remains `map_revision:null` and pending allocation
+at that immutable source revision; it is not rewritten to forge historical
+publication. The three source scenery bodies each contain 34 WORLD objects.
+The expected delta is 560 terrain cells and zero collision cells, with old props,
+places, spawns and interactions retained. These semantic deltas and all source
+pins still require generator/native qualification; reservation alone proves none
+of that runtime behavior. Synthetic frontend fixtures 7005 have no production
+or canonical-allocation authority.
+
+At reservation time v10 generation, Rust, PostgreSQL adoption/conflict/stale-map
+and restart checks are NOT_RUN. Current v8/map5 proof is frozen. V10 remains
+NOT_ADMITTED with no new ThemeManifest/Bootstrap or operator switch. Source
+materialization proceeds through the frontend owner and designated publisher,
+independently of its remaining runtime feature work. No backend-authored Tiled
+serializer, implicit C06 family admission, new target or device gate is added.

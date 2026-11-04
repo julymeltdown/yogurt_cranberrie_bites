@@ -1,0 +1,45 @@
+{
+  "admission": "NOT_ADMITTED",
+  "allocated_at": "2026-11-04T11:55:58+09:00",
+  "artist_commit": "06562ff1962be525ed929ef431a54bb589860373",
+  "artist_material_commit": "c7b0cb013e5ab1d9f8cac08be1d0046c249e1cd4",
+  "checked_backend_release_json_files": 22,
+  "checked_source_commit": "babbc3f42eec8fa89b71f4c7d036f253c3c45237",
+  "existing_server_revisions": [
+    3,
+    4,
+    5
+  ],
+  "format": "MCR_SPATIAL_REVISION_RESERVATION",
+  "frontend_binding_sha256": "sha256:86a5cf9891b77ed31054e4696ade8ae54092d5cbe1f7e8f442643be8b4192244",
+  "frontend_candidate_revision_at_pin": null,
+  "frontend_commit": "473534296490bbcd4c63a4a0eb85ce7fdd57215a",
+  "frontend_descriptor_sha256": "sha256:6a28b3578eb5c5caa317e2078a10166987143d3b05c43441442344db56944e9b",
+  "geometry_hash": "sha256:ef52c8b05af6a882f2e82285c9879c9a4cb78ab513336e4bb3cd483c9b123395",
+  "grant": "Root1fc exact quality-v10 successor namespace and additive source/test/doc scope, accepted after completed v8 goal",
+  "identity_occurrences": 32,
+  "limits": [
+    "Source identity reservation only, no database publication or event-current selection",
+    "No generated v10 MapManifest, ThemeManifest or Bootstrap at reservation time",
+    "No art fidelity, physical-place, user acceptance, public multiuser or Product/IN01 qualification",
+    "Existing map3/map4/map5 and v8 source/proof remain immutable",
+    "Frontend synthetic scene fixtures7005 are not canonical backend allocation"
+  ],
+  "map_id": "mcr_reference_scene_r3",
+  "map_revision": 6,
+  "owner": "backend spatial producer 01a19f83-12cc-7f21-8ad3-55749f012d9b",
+  "required_changes": {
+    "collision_cells": 0,
+    "terrain_cells": 560,
+    "world_objects_per_era": 34
+  },
+  "reservation": "SOURCE_IDENTITY_ONLY",
+  "revision6_existing_before_reservation": false,
+  "state": "CONTRACT_READY",
+  "tilemap": {
+    "bytes": 24058,
+    "path": "world/reference-scene-v2/runtime/spatial-v5/canonical-map.json",
+    "sha256": "sha256:e5837dfe08a8d2f1f7cdb4428b87965b4a7c6ecdb1458b8fe910e3f4c2112078"
+  },
+  "version": 1
+}
