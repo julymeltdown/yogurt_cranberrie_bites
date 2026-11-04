@@ -654,6 +654,9 @@ async fn dispatch(
             )
         }
     };
+    if feature.is_some_and(|route| !feature_routes::valid_body(route, &body)) {
+        return error(StatusCode::BAD_REQUEST, "INVALID_INPUT");
+    }
     let (Some(client), Some(reader)) = (&state.concert_product_client, &state.concert_identity)
     else {
         return error(StatusCode::SERVICE_UNAVAILABLE, "DEPENDENCY_UNAVAILABLE");

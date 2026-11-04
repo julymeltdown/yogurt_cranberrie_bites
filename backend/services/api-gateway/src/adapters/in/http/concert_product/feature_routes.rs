@@ -1,9 +1,13 @@
 //! Exact C04 feature admission. Canonical owners still authorize every request.
 use super::*;
 use std::collections::BTreeMap;
+use serde::Deserialize;
 
 pub(super) fn router() -> Router<Arc<AppState>> {
     Router::new()
+        .route("/api/concert/events/:event_id/me/age-status", get(dispatch))
+        .route("/api/concert/events/:event_id/me/age-verifications", post(dispatch))
+        .route("/api/concert/events/:event_id/me/age-verifications/callback", post(dispatch))
         .route("/api/concert/events/:event_id/intros", get(dispatch))
         .route(
             "/api/concert/events/:event_id/intros/:intro_id",
@@ -41,6 +45,9 @@ pub(super) fn router() -> Router<Arc<AppState>> {
 
 #[derive(Clone, Copy, Debug, PartialEq, Eq)]
 pub(super) enum FeatureRoute {
+    AgeStatus,
+    StartAgeVerification,
+    CompleteAgeVerification,
     ListIntros,
     GetIntro,
     OwnIntro,
@@ -56,7 +63,9 @@ impl FeatureRoute {
     pub(super) fn mutation(self) -> bool {
         matches!(
             self,
-            Self::SetIntro
+            Self::StartAgeVerification
+                | Self::CompleteAgeVerification
+                | Self::SetIntro
                 | Self::PublishIntro
                 | Self::CloseIntro
                 | Self::MarkRead
@@ -66,13 +75,16 @@ impl FeatureRoute {
     pub(super) fn body_limit(self) -> usize {
         match self {
             Self::SetIntro | Self::PublishIntro | Self::CloseIntro => 16 * 1024,
-            Self::MarkRead | Self::MarkAllRead => 8192,
+            Self::MarkRead | Self::MarkAllRead | Self::StartAgeVerification | Self::CompleteAgeVerification => 8192,
             _ => 0,
         }
     }
     #[cfg(test)]
     fn operation(self) -> &'static str {
         match self {
+            Self::AgeStatus => "getConcertAgeStatus",
+            Self::StartAgeVerification => "startConcertAgeVerification",
+            Self::CompleteAgeVerification => "completeConcertAgeVerification",
             Self::ListIntros => "listConcertIntros",
             Self::GetIntro => "getConcertIntro",
             Self::OwnIntro => "getOwnConcertIntro",
@@ -92,7 +104,11 @@ fn tail(path: &str) -> Option<(&str, &str)> {
 }
 pub(super) fn protects(path: &str) -> bool {
     tail(path).is_some_and(|(_, tail)| {
-        tail == "intros"
+        tail == "me/age-status"
+            || tail.starts_with("me/age-status/")
+            || tail == "me/age-verifications"
+            || tail.starts_with("me/age-verifications/")
+            || tail == "intros"
             || tail.starts_with("intros/")
             || tail == "me/intro"
             || tail.starts_with("me/intro/")
@@ -108,6 +124,9 @@ pub(super) fn route(method: &Method, path: &str) -> Option<FeatureRoute> {
         method.as_str(),
         tail.split('/').collect::<Vec<_>>().as_slice(),
     ) {
+        ("GET", ["me", "age-status"]) => Some(AgeStatus),
+        ("POST", ["me", "age-verifications"]) => Some(StartAgeVerification),
+        ("POST", ["me", "age-verifications", "callback"]) => Some(CompleteAgeVerification),
         ("GET", ["intros"]) => Some(ListIntros),
         ("GET", ["intros", id]) if uuid(id).is_some() => Some(GetIntro),
         ("GET", ["me", "intro"]) => Some(OwnIntro),
@@ -123,7 +142,7 @@ pub(super) fn route(method: &Method, path: &str) -> Option<FeatureRoute> {
 }
 
 /// Validate the frozen query without normalizing the signed target or body.
-/// Body schemas, receipts and visibility remain the owning Root's decisions.
+/// Receipts, proof trust and visibility remain the owning Root's decisions.
 pub(super) fn valid_target(route: FeatureRoute, target: &str) -> bool {
     if target.len() > 4096 || target.contains('#') || target.chars().any(char::is_control) {
         return false;
@@ -171,6 +190,42 @@ pub(super) fn valid_target(route: FeatureRoute, target: &str) -> bool {
         _ => false,
     })
 }
+#[derive(Deserialize)]
+#[serde(deny_unknown_fields)]
+struct AgeStart {
+    return_target: String,
+}
+#[derive(Deserialize)]
+#[serde(deny_unknown_fields)]
+struct AgeCallback {
+    verification_id: String,
+    state_token: String,
+    provider_response_token: String,
+}
+
+/// Mirror frozen C04/B91 admission without changing the original signed bytes.
+/// Typed parsing of the original object rejects duplicate and escaped-alias keys.
+pub(super) fn valid_body(route: FeatureRoute, bytes: &[u8]) -> bool {
+    if !matches!(route, FeatureRoute::StartAgeVerification | FeatureRoute::CompleteAgeVerification) {
+        return true;
+    }
+    if bytes.len() > 8192 || !serde_json::from_slice::<serde_json::Value>(bytes).is_ok_and(|v| v.is_object()) {
+        return false;
+    }
+    match route {
+        FeatureRoute::StartAgeVerification => serde_json::from_slice::<AgeStart>(bytes)
+            .is_ok_and(|body| body.return_target == "AGE_PRIVACY"),
+        FeatureRoute::CompleteAgeVerification => serde_json::from_slice::<AgeCallback>(bytes)
+            .is_ok_and(|body| uuid(&body.verification_id).is_some()
+                && age_token(&body.state_token, 512)
+                && age_token(&body.provider_response_token, 4096)),
+        _ => false,
+    }
+}
+fn age_token(value: &str, maximum: usize) -> bool {
+    !value.is_empty() && value.chars().count() <= maximum && !value.chars().any(char::is_control)
+}
+
 fn decode(value: &str) -> Option<String> {
     let mut bytes = Vec::with_capacity(value.len());
     let mut input = value.bytes();
@@ -251,6 +306,6 @@ mod tests {
                 }
             }
         }
-        assert_eq!(count, 10);
+        assert_eq!(count, 13);
     }
 }
