@@ -7,6 +7,7 @@ pub mod cursor;
 mod owners;
 mod runtime;
 pub mod settlement;
+pub mod report_product;
 pub mod wire;
 
 pub use owners::{OperationsOwners, ScopedOperationsRoles, ScopedReportEvidence};
