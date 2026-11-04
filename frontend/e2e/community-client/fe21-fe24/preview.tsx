@@ -1,0 +1,91 @@
+// Owned FE21/FE24 adaptation of the committed QA06-MEET-CTA actual default-root fixture.
+// TEST ONLY: adapted from FE07/default-root fixture at 980fc4d8.
+// Actual canonical Auth, browser router, default production loader and whole-character renderer.
+// Synthetic HTTP/C05 and isolated map admission. No product/source approval or physical arrival.
+import { StrictMode } from 'react'
+import { createRoot } from 'react-dom/client'
+import { RouterProvider } from 'react-router-dom'
+import { createAppRouter } from '../../../src/app/router'
+import { createProductionPorts } from '../../../src/app/ports'
+import { createSessionController } from '../../../src/features/auth/model/session'
+import { isolatedCookiePolicy, capabilities, authResponse } from '../../../src/features/auth/__tests__/fixtures/data'
+import { wholeData, eventId, userId, frame, participant } from '../../reference-integrated/whole/data'
+import {responses} from './data'
+import { response as socialResponse } from '../../../src/app/social-composition/__tests__/fixtures'
+import { rooms } from '../../../src/app/world-entry/__tests__/data'
+import { ticket } from '../../../src/world/composition/__tests__/fixtures/data'
+import { MockSocket } from '../../../src/world/network/mock'
+import type { WorldTicketRequest } from '../../../src/world/network/WorldTransport'
+import '../../../src/shared/styles/base.css'
+import '../../../src/app/shell.css'
+
+if (!import.meta.env.DEV) throw Error('FE21/FE24 fixture is development-only')
+const params = new URLSearchParams(location.search), data = await wholeData()
+const era = params.get('era')
+if (era === 'REVENGE' || era === 'PARADE' || era === 'DANGER') data.bootstrap.participant.preferences.theme = era
+const initial = params.get('entry') ?? '/world', signedIn = !['/', '/login'].includes(initial)
+const domain = responses(eventId, userId, data.bootstrap.map_manifest.places[0]!.place_id, params.get('mode') ?? 'normal')
+const requests: { path: string; method: string }[] = [], sockets: Socket[] = []
+let serial = 0, socketPeak = 0, disposed = false
+// Project contract fixture identities/avatars to the current selected whole-character shape.
+// Never load or display the legacy fixture avatar assets.
+function bind(value: unknown): unknown {
+  if (Array.isArray(value)) return value.map(bind)
+  if (value && typeof value === 'object') return Object.fromEntries(Object.entries(value).map(([key, item]) =>
+    [key, key === 'event_id' ? eventId : ['owner_id', 'actor_id'].includes(key) ? userId : key === 'avatar' ? structuredClone(data.avatar) : bind(item)]))
+  return value
+}
+const auth = createSessionController({ eventId, cookiePolicy: isolatedCookiePolicy(), fetch: async input => {
+  const request = input as Request, path = new URL(request.url).pathname
+  requests.push({ path, method: request.method })
+  if (path === '/api/auth/capabilities') return Response.json(capabilities())
+  if (path === '/api/auth/login') return Response.json(authResponse())
+  if (path === '/api/auth/logout') return new Response(null, { status: 204 })
+  if (path.endsWith('/bootstrap')) return Response.json(data.bootstrap)
+  if (path.endsWith('/rooms')) return Response.json(rooms())
+  if (path.endsWith('/world-tickets')) return Response.json(ticket(await request.json() as WorldTicketRequest, ++serial))
+  if (path.endsWith('/places')) return Response.json({ event_id: eventId, revision: 1, items: data.bootstrap.map_manifest.places })
+  if (path.includes('/places/')) return Response.json({ event_id: eventId, revision: 1, place: data.bootstrap.map_manifest.places.find(p => p.place_id === path.split('/').at(-1)) })
+  if (path.endsWith('/me')) return Response.json(participant(data, data.avatar))
+  const response = await domain.respond(request) ?? await socialResponse(request)
+  const value = bind(await response.json()) as Record<string, unknown>
+  // Public authors stay distinct from the actor. Private age status and a queried
+  // public-profile subject are explicitly bound to their requested fixture identity.
+  if (path.endsWith('/me/age-status')) value.user_id = userId
+  if (path.includes('/people/')) value.user_id = path.split('/').at(-1)
+  return Response.json(value, { status: response.status })
+} })
+class Socket extends MockSocket {
+  constructor() { super(); sockets.push(this); socketPeak = Math.max(socketPeak, sockets.filter(s => s.readyState < 2).length); queueMicrotask(() => this.open()) }
+  override send(text: string) {
+    super.send(text); const message = JSON.parse(text)
+    if (['authenticate', 'switchRoom', 'resync'].includes(message.type)) queueMicrotask(() => {
+      if (this.readyState === 1) this.receive(JSON.stringify(frame(data, message.roomId ?? rooms().default_room_id, data.avatar,
+        message.type === 'switchRoom' ? 'ROOM_SWITCH' : message.type === 'resync' ? 'RESYNC' : 'INITIAL', message.requestId ?? null)))
+    })
+  }
+}
+Object.defineProperty(window, 'WebSocket', { configurable: true, writable: true, value: Socket })
+auth.start(); while (auth.read().capabilities === 'loading') await new Promise(resolve => setTimeout(resolve, 5))
+if (signedIn && !await auth.login('fixture@example.test', 'fixture-password')) throw Error('Synthetic canonical login failed')
+history.replaceState(null, '', initial)
+// No loader/resolver/assetFetch/engine/renderer or panel override. Availability is TEST ONLY.
+const ports = createProductionPorts(auth, { origin: location.origin, localInput: {
+  revision: 'TEST_ONLY_QA06_not_C05_authority', reviewedBy: 'Synthetic visual fixture',
+  movementPolicy: { speedPxPerSecond: 96, footWidthPx: 12, footHeightPx: 8, interactionRadiusPx: 96 }, zoom: 1,
+} }, { availability(context) { const value = { bootstrap: context.bootstrap, scope: context.scope, services: { feed: true, people: true, intro: true, age: true, inbox: true } }; return { read: () => value, subscribe: () => () => {} } } })
+const router = createAppRouter(ports), root = createRoot(document.getElementById('root')!)
+root.render(<StrictMode><RouterProvider router={router} /></StrictMode>)
+const api = {
+  mode: domain.setMode, status: domain.setStatus, calls: () => domain.calls,
+  revoke: () => auth.privacy.changePolicy(auth.privacy.capture(), 'block'),
+  state() { const binding = ports.worldAccess?.read(), presentation = binding?.presentation?.read(), replication = binding?.replication.read()
+    return { path: router.state.location.pathname, published: !!presentation, theme: presentation?.theme.read(), camera: presentation?.camera.read(),
+      phase: replication?.phase, entities: replication?.entities.length, avatarPin: data.pin, requests,
+      sockets: sockets.length, activeSockets: sockets.filter(s => s.readyState < 2).length, socketPeak,
+      canvases: document.querySelectorAll('.shell-world-host canvas').length, disposed } },
+  navigate: (path: string) => router.navigate(path),
+  async dispose() { if (disposed) return; disposed = true; root.unmount(); router.dispose(); ports.dispose?.(); auth.dispose() },
+}
+Object.assign(window, { __COMMUNITY_CLIENT__: api })
+declare global { interface Window { __COMMUNITY_CLIENT__: typeof api } }

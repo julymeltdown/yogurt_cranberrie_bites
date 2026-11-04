@@ -1,4 +1,4 @@
-import { useEffect, useId, useRef, useState, useSyncExternalStore, type ReactNode } from 'react'
+import { useEffect, useId, useState, useSyncExternalStore, type ReactNode } from 'react'
 import { ShellLink } from '../../../app/navigation'
 import { Button, Tabs } from '../../../shared/ui'
 import type { Giveaway, GiftFilters } from '../model/contract'
@@ -106,10 +106,9 @@ export function GiftDiscovery({ controller, places = [], renderGiftImage }: Gift
 function GiftCollections({ controller, state, places, renderGiftImage }: {
   controller: GiftDiscoveryController; state: GiftDiscoveryState; places: readonly GiftPlaceOption[]; renderGiftImage?: RenderGiftImage | undefined
 }) {
-  const [collection, setCollection] = useState('browse'), activityRequested = useRef(false)
+  const [collection, setCollection] = useState('browse')
   useEffect(() => {
-    if (collection !== 'browse' && !activityRequested.current && state.context?.capabilities.gifts.available) {
-      activityRequested.current = true
+    if (collection !== 'browse' && state.context?.capabilities.gifts.available) {
       if (state.giving.phase === 'idle' && state.receiving.phase === 'idle') void controller.loadActivity()
     }
   }, [collection, controller, state.context, state.giving.phase, state.receiving.phase])
