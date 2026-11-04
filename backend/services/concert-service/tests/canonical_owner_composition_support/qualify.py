@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Run only frozen CF01 native cases against newly owned PG16/mTLS stores."""
 from __future__ import annotations
-import argparse, hashlib, json, os, shutil, subprocess, sys, time
+import argparse, hashlib, json, os, shutil, signal, subprocess, sys, time
 from pathlib import Path
 sys.dont_write_bytecode=True
 ROOT=Path(__file__).resolve().parents[5]
@@ -55,7 +55,16 @@ def qualify(args,report):
             if f'{case}: test' not in inventory:raise RuntimeError('exact test missing')
             command=[str(binary),'--ignored','--exact',case,'--test-threads=1','--nocapture']
             start=time.monotonic()
-            result=subprocess.run(command,env=env,cwd=ROOT/'backend',stdout=subprocess.PIPE,stderr=subprocess.PIPE,text=True,timeout=90)
+            child=subprocess.Popen(command,env=env,cwd=ROOT/'backend',stdout=subprocess.PIPE,stderr=subprocess.PIPE,text=True,start_new_session=True)
+            try:
+                stdout,stderr=child.communicate(timeout=90)
+            except BaseException:
+                if child.poll() is None:
+                    os.killpg(child.pid,signal.SIGTERM)
+                    try:child.communicate(timeout=8)
+                    except subprocess.TimeoutExpired:os.killpg(child.pid,signal.SIGKILL);child.communicate(timeout=8)
+                raise
+            result=subprocess.CompletedProcess(command,child.returncode,stdout,stderr)
             # Fixed case diagnostics only; no SQL/transport capability output.
             observed.update(exit_code=result.returncode,elapsed_seconds=round(time.monotonic()-start,3),stdout=result.stdout,stderr=result.stderr)
             if result.returncode or '1 passed; 0 failed' not in result.stdout:raise RuntimeError('actual native case failed')
@@ -69,6 +78,8 @@ def qualify(args,report):
 if __name__=='__main__':
     p=argparse.ArgumentParser(description=__doc__);p.add_argument('--checkpoint',type=Path,required=True);p.add_argument('--pg-bin-dir',type=Path,required=True);p.add_argument('--report',type=Path,required=True);a=p.parse_args()
     if not a.report.is_absolute() or a.report.exists() or not a.pg_bin_dir.is_absolute():p.error('new absolute report and explicit PG path required')
+    def terminate(_signal,_frame):raise KeyboardInterrupt('owned CF01 qualification interrupted')
+    signal.signal(signal.SIGTERM,terminate)
     report={'status':'FAIL','limitations':['Test-owned guarded RPC services share the test PID; public Gateway HTTP and physical process death are not claimed.','Gift and Social actual adapters are composed but their business flows are NOT_RUN here.','No Notification root target provider is supplied: inbox execution refuses; only actual durable close-before-dispatch cleanup is positive. Full public target/inbox acceptance NOT_RUN.','Main mounting, complete native resolver union and child worker supervision remain integrator obligations.']}
     try:qualify(a,report);report['status']='PASS'
     except Exception as e:report['failure']=type(e).__name__+': '+str(e)
