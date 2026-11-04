@@ -5,7 +5,8 @@ MOCK_READY. Full foreground/photo parity: IN_PROGRESS with exact constraints bel
 The intrinsic-media follow-up passed its bounded native/fixture validation;
 its publication is independently verified. The separate reference-media
 comparison and selected-tab correction also passed their bounded fixture
-validation; publication and full target convergence remain open.
+validation and publication; full target convergence and the subsequent
+alignment/display candidate remain open.
 The published first pass and all immutable raw reports remain separately identified.
 Owner: `01a1a5d9-332b-7822-a8f7-412e295fa211`. Persistent goal metadata: BLOCKED; the aligned objective remains unfinished.
 Both later native rounds ran after capacity recovery. The full objective
@@ -382,7 +383,7 @@ handoff directly for normal publication; no correctness acknowledgment is needed
 | --- | --- | --- | --- |
 | First foreground pass | `654bbb16` | contained in `bb1345b5` | 49 exact postimages / 12 pins |
 | Intrinsic media follow-up | `8d39ce8c` | `416051c9` | 83 exact owned postimages; fresh fetch equals ls-remote |
-| Selected-tab underline correction | `6543ba4c` plus reference evidence below | unpublished | reference2 PASS; normal publication pending |
+| Native reference-media / selected-tab correction | `1ed6412e` | `1972ecb3` | 130 exact owned postimages; reference2 PASS |
 
 The latest remote proof establishes delivery of the tested intrinsic scope only.
 It does not prove the pending correction, approved-thumbnail card/detail flow,
@@ -459,3 +460,73 @@ The full [saved comparison index](../evidence/css-parity-feed/reference-comparis
 keeps the original target, first-pass baseline, candidate, both details and focus
 separate. Validated CSS SHA-256 is
 `e744a26807021b0671e967f1595e6909e47b959a6857864f1081991330777538`.
+
+
+## Next bounded foreground alignment candidate
+
+The validated reference-media packet is preserved at `1ed6412e`; its exact
+stylesheet and raw reports remain unchanged there. A later own CSS candidate
+moves only the text/media columns toward the observed reference positions:
+23px grid gap keeps the frozen 48px portrait untouched and moves the media
+figure from x=99 to x=102; 3px internal text inset puts author/body at x=105.
+A compensating -3px action-row start margin preserves existing horizontal
+reaction/comment/share target positions and widths. Native crop dimensions,
+backgrounds, portrait framing, row data and all Thread rules remain unchanged.
+No extra height, fake wide original, post-order style or display upscale is
+introduced to disguise the native-media policy constraint.
+
+This alignment candidate is **NOT_RUN** and is not part of validated `1ed6412e`.
+The next declared comparison will record actual author/body/media origins,
+unchanged portrait geometry and action positions/44px targets, plus existing
+native image, Thread, keyboard focus and privacy checks at all three widths.
+A fresh named output round is required before claiming it validated.
+
+
+## Latest human clarification: fixture display enlargement allowed
+
+The subsequent explicit Main/human clarification relayed by Root153 and King385
+supersedes the earlier fit-down-only **CSS display** restriction. Authentic crop
+files and their true 197×67/197×46 intrinsic metadata remain pinned byte for byte;
+CSS may enlarge their complete display to match the reference. This changes no
+original-source rights, resolution, identity, venue/date, live-post claim or
+production authorized-media policy. The historical native-only reports remain
+valid bounded evidence under their then-current policy, not full parity.
+
+The next alignment candidate now also scopes display enlargement to
+`.reference-native-frame .feed-browse` inside the existing owned `feed.css`.
+Its figure fills the media column with a 2px trailing gutter; the contained image
+keeps its real ratio with auto height. Intended image display is 223/253/293px
+wide at 360/390/430 respectively, while DOM intrinsic attributes/natural sizes
+stay 197×67 and 197×46. Both complete crops are reused; no asset generation,
+resampling, replacement or fixture-source edit occurs. Generic production media
+rules remain unchanged. Thread remains outside this selector and retains the
+same native layout and regression checks.
+
+The evidence driver now distinguishes allowed Feed display scaling from
+unchanged intrinsic/source pins and native Thread display. It checks all three
+responsive display widths, complete image ratio, column origins, unchanged
+portrait/action geometry, actual Thread details, real keyboard focus and blob
+revocation. This amended alignment/display candidate remains **NOT_RUN** until
+a fresh named round. The existing ready CSS-FEED-COLUMNS request will be updated
+with this exact scope; no duplicate round or parent technical approval is needed.
+
+
+## Reference-packet publication verified
+
+Root normally published the exact validated native-media/underline packet
+`1ed6412e0aea9544f8a9c358f50238f1eb213f2d` at
+`1972ecb309f0a0c2ac8cebc27c461bae7d325b0d`, parent
+`40bbf457158ef506b8b49b0b4593152e6c07bd28`. Own fresh fetch and `ls-remote`
+agree on `d62ce6979d6a3326f2da7271c3ae1eba54c6a22f`, a descendant of
+that delivery. All **130 owned postimages** are byte-identical to the qualified
+source both at publication and fetched master, including both original raw
+reference rounds. CSS hash remains
+`e744a26807021b0671e967f1595e6909e47b959a6857864f1081991330777538`.
+[Own reference delivery proof](../evidence/css-parity-feed/publication-reference.json).
+
+This receipt excludes the external artist/Root fixture files and does not
+qualify the later `6e169a6a` alignment/display-enlargement candidate. That follow-up
+remains source-ready, **NOT_RUN**, awaiting the amended CSS-FEED-COLUMNS named
+round. Full original fidelity scope and this worker's exclusive CSS lease remain
+open. No new browser, runtime, test, extraction or output job ran for this Git
+proof; publication is not a king/SL review or acknowledgment gate.

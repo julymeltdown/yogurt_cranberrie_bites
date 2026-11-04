@@ -1,0 +1,927 @@
+{
+  "status": "PASS",
+  "verifiedAtUTC": "2026-11-04T12:32:41.493183+00:00",
+  "qualifiedSource": "1ed6412e0aea9544f8a9c358f50238f1eb213f2d",
+  "publishedCommit": "1972ecb309f0a0c2ac8cebc27c461bae7d325b0d",
+  "publishedParent": "40bbf457158ef506b8b49b0b4593152e6c07bd28",
+  "reportedMaster": "d62ce6979d6a3326f2da7271c3ae1eba54c6a22f",
+  "fetchedMaster": "d62ce6979d6a3326f2da7271c3ae1eba54c6a22f",
+  "lsRemoteMaster": "d62ce6979d6a3326f2da7271c3ae1eba54c6a22f",
+  "fetchedEqualsObservedRemote": true,
+  "publicationAndReportedMasterAreAncestorsOfFetched": true,
+  "ownedPostimageCount": 130,
+  "allOwnedPostimagesExactAtPublicationAndFetchedMaster": true,
+  "files": [
+    {
+      "path": "docs/mcr/evidence/css-parity-feed/accept-intrinsic.json",
+      "gitBlob": "c77c9b01adc95c4c2df187c7a2dd55cdcc878798",
+      "bytes": 500,
+      "sha256": "e1049f087b32adedd2e06a5da08be8b971bbfda630b499765b71c3656d462e29",
+      "sourcePublicationCurrentExact": true
+    },
+    {
+      "path": "docs/mcr/evidence/css-parity-feed/accept-reference.json",
+      "gitBlob": "efdfa7ecd09706bf6e5dbbf8f5e444211fd0a8d2",
+      "bytes": 500,
+      "sha256": "7d0e297c11fd4578d2d4e08040c6066166fe3a2217765eda4e833dc6b8c92491",
+      "sourcePublicationCurrentExact": true
+    },
+    {
+      "path": "docs/mcr/evidence/css-parity-feed/baseline-feed.css.txt",
+      "gitBlob": "941f7cbffe43691dc7deb0ee18eb093557ee1749",
+      "bytes": 7611,
+      "sha256": "7749673c8e87e4d07cacd4c3dff084307d5de40386a1f4fa1a2fe87afb3fece0",
+      "sourcePublicationCurrentExact": true
+    },
+    {
+      "path": "docs/mcr/evidence/css-parity-feed/before.log",
+      "gitBlob": "411ede969108c326cc897554d9c017d0dd41502f",
+      "bytes": 50,
+      "sha256": "05b77dd87e7eb08035afffb74d50a20215d261334d48872d3125c3fd371c6ae5",
+      "sourcePublicationCurrentExact": true
+    },
+    {
+      "path": "docs/mcr/evidence/css-parity-feed/before/feed-390.png",
+      "gitBlob": "f0181044916d1e6e7c7d6ee163ad629683eb14b7",
+      "bytes": 140726,
+      "sha256": "08d23813243970ed8bc7c868646f991b3a8af541db8a1ba7b302f77f9e00c68b",
+      "sourcePublicationCurrentExact": true
+    },
+    {
+      "path": "docs/mcr/evidence/css-parity-feed/before/report.json",
+      "gitBlob": "9d24cefff1692886c9147562e689af9ebde4cb41",
+      "bytes": 5101,
+      "sha256": "1d940dc1beeb7ca58b46fa6a9c851042af4533c92290bc16f5ddfd08dfd8d955",
+      "sourcePublicationCurrentExact": true
+    },
+    {
+      "path": "docs/mcr/evidence/css-parity-feed/comparison.html",
+      "gitBlob": "459bef838bba4ba8838fc820dc48eb2ff7f74c5f",
+      "bytes": 2378,
+      "sha256": "d07bc54bc166c33379b777bb44a7f97f73260f3773ae8c9c248f5af18f3328b9",
+      "sourcePublicationCurrentExact": true
+    },
+    {
+      "path": "docs/mcr/evidence/css-parity-feed/external-fixture-source.json",
+      "gitBlob": "9471940ecd75e172e54faeb4bcee8d6131902952",
+      "bytes": 1498,
+      "sha256": "3722afa1b144085ec125e472134b251e90e5ee4bc0e36ddf249f9edcf982a997",
+      "sourcePublicationCurrentExact": true
+    },
+    {
+      "path": "docs/mcr/evidence/css-parity-feed/failed-before-1.log",
+      "gitBlob": "7f42fdbafaacc1dcf613e895f13b5edd56449939",
+      "bytes": 530,
+      "sha256": "880429eeb385e2a629210ea4ab18802dbba72adf6b3b5db4661dbb7160b89387",
+      "sourcePublicationCurrentExact": true
+    },
+    {
+      "path": "docs/mcr/evidence/css-parity-feed/failed-before-1/report.json",
+      "gitBlob": "829300b30c62c3daa40fdc74711481d1ea8f67ce",
+      "bytes": 911,
+      "sha256": "82f65fb818cd8a0ec86d165dc0f0d53058057976d7cf25e0f0ab7bb0ede83138",
+      "sourcePublicationCurrentExact": true
+    },
+    {
+      "path": "docs/mcr/evidence/css-parity-feed/final-input-pins.json",
+      "gitBlob": "160ea8e4d72f64449299c25a460089951f7d01e4",
+      "bytes": 1489,
+      "sha256": "f0f1afc650ef71024821e6d0df70d4dd8420d2459362ca0a8f7521b1259e36d2",
+      "sourcePublicationCurrentExact": true
+    },
+    {
+      "path": "docs/mcr/evidence/css-parity-feed/intrinsic-comparison.html",
+      "gitBlob": "ed7eb67142cef27fa93d38421d15c50c3c5a4914",
+      "bytes": 1654,
+      "sha256": "d66cf712872764b33359eeaa97369de761f9886654aae5faf3bd4403882b1ab9",
+      "sourcePublicationCurrentExact": true
+    },
+    {
+      "path": "docs/mcr/evidence/css-parity-feed/intrinsic-input-pins.json",
+      "gitBlob": "04ec557a90c5acd36259238690c6a1d3c0a9211b",
+      "bytes": 2030,
+      "sha256": "e79bae0f82997d2d36ce7ccce947f3bc0549f411533a5c5ed2b96846c37e09e9",
+      "sourcePublicationCurrentExact": true
+    },
+    {
+      "path": "docs/mcr/evidence/css-parity-feed/intrinsic-source-boundary.json",
+      "gitBlob": "a11dc75d24491ffee1c1a41e5b8cf5ee418413f5",
+      "bytes": 282,
+      "sha256": "aa46d7b17c46088596b16dd5b3f9c86435b434f5f460a48ba18dde7f99f7cd45",
+      "sourcePublicationCurrentExact": true
+    },
+    {
+      "path": "docs/mcr/evidence/css-parity-feed/intrinsic-ui-tests.log",
+      "gitBlob": "d42396c58f48c9fd691dd123c28fb7a683c055c0",
+      "bytes": 233,
+      "sha256": "fa98d596f064acd7fdf991fb6cc9065b8aa534e80a5d73318f31e9c314af921e",
+      "sourcePublicationCurrentExact": true
+    },
+    {
+      "path": "docs/mcr/evidence/css-parity-feed/intrinsic1.log",
+      "gitBlob": "ae33b934e871958e88312c95d8d3a13909549512",
+      "bytes": 62,
+      "sha256": "588fd8e7e023f10ecb2ee95b9044e4b80b64bfccd39e0ef77dda98eff831cf8f",
+      "sourcePublicationCurrentExact": true
+    },
+    {
+      "path": "docs/mcr/evidence/css-parity-feed/intrinsic1/composer-390.png",
+      "gitBlob": "864613e59b5256ab1e546fd2f49296ddff321b83",
+      "bytes": 74681,
+      "sha256": "0cdb76dfdac605674089e6a54e1ac7f502849e79fb2fbffed010aef09610cfd0",
+      "sourcePublicationCurrentExact": true
+    },
+    {
+      "path": "docs/mcr/evidence/css-parity-feed/intrinsic1/default-root-390.png",
+      "gitBlob": "da9c8f90b0dc3d36377522fc7de01c092b9f08de",
+      "bytes": 30745,
+      "sha256": "b6a7f065ab873789a382fda4d69b2a8e8b47c07df6590d4bf0f774e2cc50abf7",
+      "sourcePublicationCurrentExact": true
+    },
+    {
+      "path": "docs/mcr/evidence/css-parity-feed/intrinsic1/empty-390.png",
+      "gitBlob": "c86cc204314d8e06b685e46eda1204cf297ec9a2",
+      "bytes": 64288,
+      "sha256": "9242de53457ab85ee9983d2238c54105a6d2d2bacc88c2d31f01cdae3f5a0244",
+      "sourcePublicationCurrentExact": true
+    },
+    {
+      "path": "docs/mcr/evidence/css-parity-feed/intrinsic1/error-390.png",
+      "gitBlob": "121155df8574b0b4b4dc91c8bb7c7f9a60bafb9a",
+      "bytes": 63044,
+      "sha256": "c796589cc5b5c4b5feb8a68b05a530503775105479abf4356a6ad820e560b5fd",
+      "sourcePublicationCurrentExact": true
+    },
+    {
+      "path": "docs/mcr/evidence/css-parity-feed/intrinsic1/feed-360.png",
+      "gitBlob": "57fe38a4477da804ef05810b3682fddb8248ef55",
+      "bytes": 107884,
+      "sha256": "2da7318bb382d70dc44332f1bd7991aca3897da07830894b0ebc0f42ae7003c7",
+      "sourcePublicationCurrentExact": true
+    },
+    {
+      "path": "docs/mcr/evidence/css-parity-feed/intrinsic1/feed-390.png",
+      "gitBlob": "7050444fcd474cb0899fd1d3412b41b441395bd5",
+      "bytes": 122989,
+      "sha256": "b4445faca6fd718429f0b8e4272fed28b2faeaab3cecaef1aec1af50c6d2e5cc",
+      "sourcePublicationCurrentExact": true
+    },
+    {
+      "path": "docs/mcr/evidence/css-parity-feed/intrinsic1/feed-430.png",
+      "gitBlob": "e641061a8d4b03fe7438a2fd8600932076cdf7f8",
+      "bytes": 148283,
+      "sha256": "3952d0b71e9e6a80fc0196c2096c29180da7d57afb4e875aa462229a97c504ab",
+      "sourcePublicationCurrentExact": true
+    },
+    {
+      "path": "docs/mcr/evidence/css-parity-feed/intrinsic1/focus-360.png",
+      "gitBlob": "947f19e0f626fd9e6de9bfb2b3aca933576ed738",
+      "bytes": 117886,
+      "sha256": "7185b53e6ac8e46f705d471664868a44313241c08da0dde6963cd1832edb4b72",
+      "sourcePublicationCurrentExact": true
+    },
+    {
+      "path": "docs/mcr/evidence/css-parity-feed/intrinsic1/focus-390.png",
+      "gitBlob": "2907641e938ad87bfd5630eefc4e57adb5942b9f",
+      "bytes": 125555,
+      "sha256": "099c08fbe8ad4d74fdfa00dd1ac0ca7d5fafaf7a92f60ff65c2884084e84965e",
+      "sourcePublicationCurrentExact": true
+    },
+    {
+      "path": "docs/mcr/evidence/css-parity-feed/intrinsic1/focus-430.png",
+      "gitBlob": "fec2866d71cb80444dc32917df54b72423fa7519",
+      "bytes": 157879,
+      "sha256": "b88171edf80008a0cf21f5e4e2ef86aa0e2e1f76757f70a2829bc9b4bd5ba553",
+      "sourcePublicationCurrentExact": true
+    },
+    {
+      "path": "docs/mcr/evidence/css-parity-feed/intrinsic1/forced-focus-390.png",
+      "gitBlob": "adc35d388987f162f636927e6c19a398b15266bb",
+      "bytes": 107248,
+      "sha256": "db4fc478fb656a8486e704e78a23327c24398c3b817f18f3019862cb4bee40fd",
+      "sourcePublicationCurrentExact": true
+    },
+    {
+      "path": "docs/mcr/evidence/css-parity-feed/intrinsic1/intrinsic-geometry-360.png",
+      "gitBlob": "ba1940695e3187af6aba65a64114908d8dd6e32b",
+      "bytes": 19713,
+      "sha256": "5909988f60e6f4fbee417fb7bd361f978567b3ab3c6f4fe9b6fe04ebf9b9f687",
+      "sourcePublicationCurrentExact": true
+    },
+    {
+      "path": "docs/mcr/evidence/css-parity-feed/intrinsic1/intrinsic-geometry-390.png",
+      "gitBlob": "5b5c46bb41897da2cf8f21deadbf026dbc695486",
+      "bytes": 20250,
+      "sha256": "bdf6ad2cc0f79186f9b55a724e77c657b2f5c779cbd83d944a028a286d1daaf3",
+      "sourcePublicationCurrentExact": true
+    },
+    {
+      "path": "docs/mcr/evidence/css-parity-feed/intrinsic1/intrinsic-geometry-430.png",
+      "gitBlob": "332b27a42e4ea647ce547cfb9544ca6b70422452",
+      "bytes": 20882,
+      "sha256": "8b004be29b032c666791f9384259c13e3455beafb41380917799f701f041f59c",
+      "sourcePublicationCurrentExact": true
+    },
+    {
+      "path": "docs/mcr/evidence/css-parity-feed/intrinsic1/pending-390.png",
+      "gitBlob": "a744b54d1a46a0aba3c8ed8b3594dcf1993900fa",
+      "bytes": 57596,
+      "sha256": "05b295524c12b7d0ad532fac8a55d10fe3147ec2585c08709ddb9279c3f23db9",
+      "sourcePublicationCurrentExact": true
+    },
+    {
+      "path": "docs/mcr/evidence/css-parity-feed/intrinsic1/readonly-390.png",
+      "gitBlob": "91a7d8e2faf11d9775299b5714eb00037afb0949",
+      "bytes": 138368,
+      "sha256": "bbcaa0614015b5dac659cdd48c89d315453143606ffff652dd8a7d564f67eba2",
+      "sourcePublicationCurrentExact": true
+    },
+    {
+      "path": "docs/mcr/evidence/css-parity-feed/intrinsic1/report.json",
+      "gitBlob": "d2d2de612e9390eff880113728b23f9459c6b598",
+      "bytes": 29693,
+      "sha256": "3f0723b11178d22a974fc4c54368651e785b4daa8afdf9111b7506eec0283b79",
+      "sourcePublicationCurrentExact": true
+    },
+    {
+      "path": "docs/mcr/evidence/css-parity-feed/intrinsic1/unavailable-390.png",
+      "gitBlob": "ca465e20bb954ca9e71e9aa87a917b449e31338e",
+      "bytes": 61262,
+      "sha256": "513ff0b40f05f6613be8bf9a387c539f156d649b436c9a1841616b5572a28bd3",
+      "sourcePublicationCurrentExact": true
+    },
+    {
+      "path": "docs/mcr/evidence/css-parity-feed/media-geometry-follow-through.md",
+      "gitBlob": "5cc528c9aa617c4a3fe387681d4e5da139ae8166",
+      "bytes": 4905,
+      "sha256": "d454c51b2cacfeb1d404598b16a2625af2e7211cfc19f4f3d6af9c61cee765c9",
+      "sourcePublicationCurrentExact": true
+    },
+    {
+      "path": "docs/mcr/evidence/css-parity-feed/native-intrinsic.mjs",
+      "gitBlob": "ab1ae52702b7c54839c198e170adce60c59cece5",
+      "bytes": 14353,
+      "sha256": "cf5c163626c7672557be79d21c2ecc973e8c9117fd1b530482aaa980432b47c6",
+      "sourcePublicationCurrentExact": true
+    },
+    {
+      "path": "docs/mcr/evidence/css-parity-feed/native-reference-media.mjs",
+      "gitBlob": "fe8bc32b9fb70d7fb9e3d4652309dd60eaabeb14",
+      "bytes": 9736,
+      "sha256": "58ae7c150df9fdd4d285efdf624eb91874af5b8642c92b50c7cab3b856e3ba51",
+      "sourcePublicationCurrentExact": true
+    },
+    {
+      "path": "docs/mcr/evidence/css-parity-feed/native.mjs",
+      "gitBlob": "9ec1012b043f5e92eb410472a630199379419831",
+      "bytes": 10229,
+      "sha256": "6c24ef7c43f47d73b7c3d293d6fa723ec1faa9e037d6fe9f8e239dc6b8d36950",
+      "sourcePublicationCurrentExact": true
+    },
+    {
+      "path": "docs/mcr/evidence/css-parity-feed/preflight-CSS-FEED-INTRINSIC-202611041043Z.json",
+      "gitBlob": "99cda69bb0ffbdddc2dffd591161ef78ea30d6ca",
+      "bytes": 1024,
+      "sha256": "df9ff54d85613eac85a80dcc467bef7f631c9004fe95b2d92a5bb38771c9236d",
+      "sourcePublicationCurrentExact": true
+    },
+    {
+      "path": "docs/mcr/evidence/css-parity-feed/publication-intrinsic.json",
+      "gitBlob": "6c1669b6aacc38886222df70227f3389b8cea032",
+      "bytes": 24853,
+      "sha256": "e396cdfd341887672d3a0e9b62bac2209c51c8b10ad621a0b3b119db1ac4a147",
+      "sourcePublicationCurrentExact": true
+    },
+    {
+      "path": "docs/mcr/evidence/css-parity-feed/publication.json",
+      "gitBlob": "c0f9c4bbc4c85c8a49660719a224cbe60ccd1ade",
+      "bytes": 3533,
+      "sha256": "a7ced5d6af1d366680f1a53c04ed3d296249672936d8d60b4a76cf33d79328f6",
+      "sourcePublicationCurrentExact": true
+    },
+    {
+      "path": "docs/mcr/evidence/css-parity-feed/reference-comparison.html",
+      "gitBlob": "94a6e5425f6dbec3add20250266e89bde267b59b",
+      "bytes": 2361,
+      "sha256": "98d9647ab4810a392227b30da2c09bf56a8ace90813325ba25345166ddf8642e",
+      "sourcePublicationCurrentExact": true
+    },
+    {
+      "path": "docs/mcr/evidence/css-parity-feed/reference-feed-390.png",
+      "gitBlob": "e5b64ed648ca541d69ee91396d071c06664a62be",
+      "bytes": 322610,
+      "sha256": "2bec36294a44264fee8ada620a12fcdf0ce9b7fd69aeff95507a953ec8690529",
+      "sourcePublicationCurrentExact": true
+    },
+    {
+      "path": "docs/mcr/evidence/css-parity-feed/reference-input-pins.json",
+      "gitBlob": "ec510457eb616a044ae731b49c3fe56d727c2971",
+      "bytes": 2967,
+      "sha256": "ee92dcfb0c01cb7b7a5f34b9d8c7183c67cfde2e364785e42902206360b5acb6",
+      "sourcePublicationCurrentExact": true
+    },
+    {
+      "path": "docs/mcr/evidence/css-parity-feed/reference-media-publication.json",
+      "gitBlob": "c9e12caf0f2b9440281b8204a4437fa72a359800",
+      "bytes": 2079,
+      "sha256": "56db44429c0ce29fe0daffe94696216110bf5c43297cedb91a89897cb35da8e4",
+      "sourcePublicationCurrentExact": true
+    },
+    {
+      "path": "docs/mcr/evidence/css-parity-feed/reference1.log",
+      "gitBlob": "a2735e28ac14d1c06cc07dd0a81eb4c7aa189e71",
+      "bytes": 49,
+      "sha256": "2109c0a454af8d67ae53c1d227a8fd486534893df035e3f527c30465c7e8aa28",
+      "sourcePublicationCurrentExact": true
+    },
+    {
+      "path": "docs/mcr/evidence/css-parity-feed/reference1/candidate-feed-360.png",
+      "gitBlob": "4d9fc67725da44ff76d62b0c7789be809c5d7aec",
+      "bytes": 93085,
+      "sha256": "5b797dca085f0d8552fc7974226f259a2686a4eea2b12a9abefa7fbb18515281",
+      "sourcePublicationCurrentExact": true
+    },
+    {
+      "path": "docs/mcr/evidence/css-parity-feed/reference1/candidate-feed-390.png",
+      "gitBlob": "e3748f2dae16c3f6a902527c1550c2e25c4942f3",
+      "bytes": 94125,
+      "sha256": "1b8f1ceec2240affcb01d9e0be9d454e437e70c1df2eb4fdb8490e463123e21a",
+      "sourcePublicationCurrentExact": true
+    },
+    {
+      "path": "docs/mcr/evidence/css-parity-feed/reference1/candidate-feed-430.png",
+      "gitBlob": "64d8ba2170ab2360e1b95dcc70cba7a3f8363d15",
+      "bytes": 94982,
+      "sha256": "4382bf92c857572842c324811b84ff7d5bee033545cfdc765545a4da5fb54e8b",
+      "sourcePublicationCurrentExact": true
+    },
+    {
+      "path": "docs/mcr/evidence/css-parity-feed/reference1/candidate-thread-0-360.png",
+      "gitBlob": "3afc4b1267c6855b3746a69b7834695f227b71e2",
+      "bytes": 114175,
+      "sha256": "e79fe9a6945dc013fce55f700e07c3258c021c5c763e6f6498c70007f53c939d",
+      "sourcePublicationCurrentExact": true
+    },
+    {
+      "path": "docs/mcr/evidence/css-parity-feed/reference1/candidate-thread-0-390.png",
+      "gitBlob": "5aaccdcbcb78105167f28e83bf46f681ec70dcb2",
+      "bytes": 120157,
+      "sha256": "7604adcfe07b5976090dd57c5abd05d947d3fb844ba7526ac2c0fe99ce3a0b59",
+      "sourcePublicationCurrentExact": true
+    },
+    {
+      "path": "docs/mcr/evidence/css-parity-feed/reference1/candidate-thread-0-430.png",
+      "gitBlob": "b49e1acbf285a8225a00555939cad47f4162129a",
+      "bytes": 121182,
+      "sha256": "303fa77e1b5994b59987d44729f2aceeffa97360a984930e81adeb660e9ad8af",
+      "sourcePublicationCurrentExact": true
+    },
+    {
+      "path": "docs/mcr/evidence/css-parity-feed/reference1/candidate-thread-1-360.png",
+      "gitBlob": "05b724a9ac4be4d2dfcb6d916537ce2dd96ac151",
+      "bytes": 106851,
+      "sha256": "be35ef3cea44900d7628fbb96c3832942ba6f017329b68e86f0a4ea494211380",
+      "sourcePublicationCurrentExact": true
+    },
+    {
+      "path": "docs/mcr/evidence/css-parity-feed/reference1/candidate-thread-1-390.png",
+      "gitBlob": "9594cb72554b2238521f61b1a257e0ed0ff96adb",
+      "bytes": 112697,
+      "sha256": "97b7713e317f1a9eb852770db4d6cb1b9ca1e1a3a1aea8f6582d9756917daede",
+      "sourcePublicationCurrentExact": true
+    },
+    {
+      "path": "docs/mcr/evidence/css-parity-feed/reference1/candidate-thread-1-430.png",
+      "gitBlob": "9f9e52a265150accc7630e20c6184dcbcee6c29f",
+      "bytes": 112837,
+      "sha256": "5efe2f7d691919308e7245d271a6193dff35d38005c91fd9292d622c7b092c0c",
+      "sourcePublicationCurrentExact": true
+    },
+    {
+      "path": "docs/mcr/evidence/css-parity-feed/reference1/published-feed-360.png",
+      "gitBlob": "a82f4ffe10c9ec6c188c4cde7353b592065addbd",
+      "bytes": 93424,
+      "sha256": "7a7b419e527b3fc092c571767cc7677893fcda8277c0e78e8c0607ce39aae4f0",
+      "sourcePublicationCurrentExact": true
+    },
+    {
+      "path": "docs/mcr/evidence/css-parity-feed/reference1/published-feed-390.png",
+      "gitBlob": "d936534d6e4c6a90c3b0b21ba0e5811beb1ea763",
+      "bytes": 94272,
+      "sha256": "66c0a3bd8713430b17771d144f8fbf83a380ff059c00e85f645cd480a0ae362a",
+      "sourcePublicationCurrentExact": true
+    },
+    {
+      "path": "docs/mcr/evidence/css-parity-feed/reference1/published-feed-430.png",
+      "gitBlob": "2fec819870105686ced456da75b3f8a330dcc812",
+      "bytes": 95065,
+      "sha256": "f7b8444dc103ecf5d86e8f4183bf876f2b271d84cb2ea0dc95dd47cf76abdcf5",
+      "sourcePublicationCurrentExact": true
+    },
+    {
+      "path": "docs/mcr/evidence/css-parity-feed/reference1/published-thread-0-360.png",
+      "gitBlob": "3afc4b1267c6855b3746a69b7834695f227b71e2",
+      "bytes": 114175,
+      "sha256": "e79fe9a6945dc013fce55f700e07c3258c021c5c763e6f6498c70007f53c939d",
+      "sourcePublicationCurrentExact": true
+    },
+    {
+      "path": "docs/mcr/evidence/css-parity-feed/reference1/published-thread-0-390.png",
+      "gitBlob": "5aaccdcbcb78105167f28e83bf46f681ec70dcb2",
+      "bytes": 120157,
+      "sha256": "7604adcfe07b5976090dd57c5abd05d947d3fb844ba7526ac2c0fe99ce3a0b59",
+      "sourcePublicationCurrentExact": true
+    },
+    {
+      "path": "docs/mcr/evidence/css-parity-feed/reference1/published-thread-0-430.png",
+      "gitBlob": "b49e1acbf285a8225a00555939cad47f4162129a",
+      "bytes": 121182,
+      "sha256": "303fa77e1b5994b59987d44729f2aceeffa97360a984930e81adeb660e9ad8af",
+      "sourcePublicationCurrentExact": true
+    },
+    {
+      "path": "docs/mcr/evidence/css-parity-feed/reference1/published-thread-1-360.png",
+      "gitBlob": "05b724a9ac4be4d2dfcb6d916537ce2dd96ac151",
+      "bytes": 106851,
+      "sha256": "be35ef3cea44900d7628fbb96c3832942ba6f017329b68e86f0a4ea494211380",
+      "sourcePublicationCurrentExact": true
+    },
+    {
+      "path": "docs/mcr/evidence/css-parity-feed/reference1/published-thread-1-390.png",
+      "gitBlob": "9594cb72554b2238521f61b1a257e0ed0ff96adb",
+      "bytes": 112697,
+      "sha256": "97b7713e317f1a9eb852770db4d6cb1b9ca1e1a3a1aea8f6582d9756917daede",
+      "sourcePublicationCurrentExact": true
+    },
+    {
+      "path": "docs/mcr/evidence/css-parity-feed/reference1/published-thread-1-430.png",
+      "gitBlob": "9f9e52a265150accc7630e20c6184dcbcee6c29f",
+      "bytes": 112837,
+      "sha256": "5efe2f7d691919308e7245d271a6193dff35d38005c91fd9292d622c7b092c0c",
+      "sourcePublicationCurrentExact": true
+    },
+    {
+      "path": "docs/mcr/evidence/css-parity-feed/reference1/report.json",
+      "gitBlob": "9a08d89cf6f9b7d4566752f65c386c363a26ee29",
+      "bytes": 35108,
+      "sha256": "adf7f65941080c693483ad9c92bf3f08bc67ed5b027423547ac7b87ee38f20d4",
+      "sourcePublicationCurrentExact": true
+    },
+    {
+      "path": "docs/mcr/evidence/css-parity-feed/reference2.log",
+      "gitBlob": "d548a3c4274937de98b33e890a73d3f288ff681f",
+      "bytes": 49,
+      "sha256": "b53f6789bfdc874a9134a13b17f6875a68492dd4fafe11c8a53427f8c2df5668",
+      "sourcePublicationCurrentExact": true
+    },
+    {
+      "path": "docs/mcr/evidence/css-parity-feed/reference2/candidate-feed-360.png",
+      "gitBlob": "4d9fc67725da44ff76d62b0c7789be809c5d7aec",
+      "bytes": 93085,
+      "sha256": "5b797dca085f0d8552fc7974226f259a2686a4eea2b12a9abefa7fbb18515281",
+      "sourcePublicationCurrentExact": true
+    },
+    {
+      "path": "docs/mcr/evidence/css-parity-feed/reference2/candidate-feed-390.png",
+      "gitBlob": "e3748f2dae16c3f6a902527c1550c2e25c4942f3",
+      "bytes": 94125,
+      "sha256": "1b8f1ceec2240affcb01d9e0be9d454e437e70c1df2eb4fdb8490e463123e21a",
+      "sourcePublicationCurrentExact": true
+    },
+    {
+      "path": "docs/mcr/evidence/css-parity-feed/reference2/candidate-feed-430.png",
+      "gitBlob": "64d8ba2170ab2360e1b95dcc70cba7a3f8363d15",
+      "bytes": 94982,
+      "sha256": "4382bf92c857572842c324811b84ff7d5bee033545cfdc765545a4da5fb54e8b",
+      "sourcePublicationCurrentExact": true
+    },
+    {
+      "path": "docs/mcr/evidence/css-parity-feed/reference2/candidate-keyboard-focus-390.png",
+      "gitBlob": "f1e53d3ad5820d878d4d52ea9df25390fc5bc9e4",
+      "bytes": 97077,
+      "sha256": "4e4b84ba2018ad41a07358d70b7f7e63829879a060b5efc2c5d21e6e83d23a4b",
+      "sourcePublicationCurrentExact": true
+    },
+    {
+      "path": "docs/mcr/evidence/css-parity-feed/reference2/candidate-thread-0-360.png",
+      "gitBlob": "3afc4b1267c6855b3746a69b7834695f227b71e2",
+      "bytes": 114175,
+      "sha256": "e79fe9a6945dc013fce55f700e07c3258c021c5c763e6f6498c70007f53c939d",
+      "sourcePublicationCurrentExact": true
+    },
+    {
+      "path": "docs/mcr/evidence/css-parity-feed/reference2/candidate-thread-0-390.png",
+      "gitBlob": "5aaccdcbcb78105167f28e83bf46f681ec70dcb2",
+      "bytes": 120157,
+      "sha256": "7604adcfe07b5976090dd57c5abd05d947d3fb844ba7526ac2c0fe99ce3a0b59",
+      "sourcePublicationCurrentExact": true
+    },
+    {
+      "path": "docs/mcr/evidence/css-parity-feed/reference2/candidate-thread-0-430.png",
+      "gitBlob": "b49e1acbf285a8225a00555939cad47f4162129a",
+      "bytes": 121182,
+      "sha256": "303fa77e1b5994b59987d44729f2aceeffa97360a984930e81adeb660e9ad8af",
+      "sourcePublicationCurrentExact": true
+    },
+    {
+      "path": "docs/mcr/evidence/css-parity-feed/reference2/candidate-thread-1-360.png",
+      "gitBlob": "05b724a9ac4be4d2dfcb6d916537ce2dd96ac151",
+      "bytes": 106851,
+      "sha256": "be35ef3cea44900d7628fbb96c3832942ba6f017329b68e86f0a4ea494211380",
+      "sourcePublicationCurrentExact": true
+    },
+    {
+      "path": "docs/mcr/evidence/css-parity-feed/reference2/candidate-thread-1-390.png",
+      "gitBlob": "9594cb72554b2238521f61b1a257e0ed0ff96adb",
+      "bytes": 112697,
+      "sha256": "97b7713e317f1a9eb852770db4d6cb1b9ca1e1a3a1aea8f6582d9756917daede",
+      "sourcePublicationCurrentExact": true
+    },
+    {
+      "path": "docs/mcr/evidence/css-parity-feed/reference2/candidate-thread-1-430.png",
+      "gitBlob": "9f9e52a265150accc7630e20c6184dcbcee6c29f",
+      "bytes": 112837,
+      "sha256": "5efe2f7d691919308e7245d271a6193dff35d38005c91fd9292d622c7b092c0c",
+      "sourcePublicationCurrentExact": true
+    },
+    {
+      "path": "docs/mcr/evidence/css-parity-feed/reference2/published-feed-360.png",
+      "gitBlob": "a82f4ffe10c9ec6c188c4cde7353b592065addbd",
+      "bytes": 93424,
+      "sha256": "7a7b419e527b3fc092c571767cc7677893fcda8277c0e78e8c0607ce39aae4f0",
+      "sourcePublicationCurrentExact": true
+    },
+    {
+      "path": "docs/mcr/evidence/css-parity-feed/reference2/published-feed-390.png",
+      "gitBlob": "d936534d6e4c6a90c3b0b21ba0e5811beb1ea763",
+      "bytes": 94272,
+      "sha256": "66c0a3bd8713430b17771d144f8fbf83a380ff059c00e85f645cd480a0ae362a",
+      "sourcePublicationCurrentExact": true
+    },
+    {
+      "path": "docs/mcr/evidence/css-parity-feed/reference2/published-feed-430.png",
+      "gitBlob": "2fec819870105686ced456da75b3f8a330dcc812",
+      "bytes": 95065,
+      "sha256": "f7b8444dc103ecf5d86e8f4183bf876f2b271d84cb2ea0dc95dd47cf76abdcf5",
+      "sourcePublicationCurrentExact": true
+    },
+    {
+      "path": "docs/mcr/evidence/css-parity-feed/reference2/published-thread-0-360.png",
+      "gitBlob": "3afc4b1267c6855b3746a69b7834695f227b71e2",
+      "bytes": 114175,
+      "sha256": "e79fe9a6945dc013fce55f700e07c3258c021c5c763e6f6498c70007f53c939d",
+      "sourcePublicationCurrentExact": true
+    },
+    {
+      "path": "docs/mcr/evidence/css-parity-feed/reference2/published-thread-0-390.png",
+      "gitBlob": "5aaccdcbcb78105167f28e83bf46f681ec70dcb2",
+      "bytes": 120157,
+      "sha256": "7604adcfe07b5976090dd57c5abd05d947d3fb844ba7526ac2c0fe99ce3a0b59",
+      "sourcePublicationCurrentExact": true
+    },
+    {
+      "path": "docs/mcr/evidence/css-parity-feed/reference2/published-thread-0-430.png",
+      "gitBlob": "b49e1acbf285a8225a00555939cad47f4162129a",
+      "bytes": 121182,
+      "sha256": "303fa77e1b5994b59987d44729f2aceeffa97360a984930e81adeb660e9ad8af",
+      "sourcePublicationCurrentExact": true
+    },
+    {
+      "path": "docs/mcr/evidence/css-parity-feed/reference2/published-thread-1-360.png",
+      "gitBlob": "05b724a9ac4be4d2dfcb6d916537ce2dd96ac151",
+      "bytes": 106851,
+      "sha256": "be35ef3cea44900d7628fbb96c3832942ba6f017329b68e86f0a4ea494211380",
+      "sourcePublicationCurrentExact": true
+    },
+    {
+      "path": "docs/mcr/evidence/css-parity-feed/reference2/published-thread-1-390.png",
+      "gitBlob": "9594cb72554b2238521f61b1a257e0ed0ff96adb",
+      "bytes": 112697,
+      "sha256": "97b7713e317f1a9eb852770db4d6cb1b9ca1e1a3a1aea8f6582d9756917daede",
+      "sourcePublicationCurrentExact": true
+    },
+    {
+      "path": "docs/mcr/evidence/css-parity-feed/reference2/published-thread-1-430.png",
+      "gitBlob": "9f9e52a265150accc7630e20c6184dcbcee6c29f",
+      "bytes": 112837,
+      "sha256": "5efe2f7d691919308e7245d271a6193dff35d38005c91fd9292d622c7b092c0c",
+      "sourcePublicationCurrentExact": true
+    },
+    {
+      "path": "docs/mcr/evidence/css-parity-feed/reference2/report.json",
+      "gitBlob": "cff8b7658e6ac68e63f6635e07fe2337066d0550",
+      "bytes": 35500,
+      "sha256": "532aca34ebc24338bfdd80d5eb9effb01010c469fe721ad9f58d29b8dc4dff62",
+      "sourcePublicationCurrentExact": true
+    },
+    {
+      "path": "docs/mcr/evidence/css-parity-feed/release-intrinsic.json",
+      "gitBlob": "48acaa39d4a767568bc0b629391ddbe61e6ef802",
+      "bytes": 1052,
+      "sha256": "b7b573f6d1495b29dd3d87d75a153fbf445436968a9ec2afe22a89144f256aee",
+      "sourcePublicationCurrentExact": true
+    },
+    {
+      "path": "docs/mcr/evidence/css-parity-feed/release-reference.json",
+      "gitBlob": "b669b4b238c1f62d7ca10d30eb1d49169779c5f0",
+      "bytes": 1153,
+      "sha256": "c95d365c59fe0a8e7e6dd6768504d7730002c84d8ce2f3de4a5b45e890cc088f",
+      "sourcePublicationCurrentExact": true
+    },
+    {
+      "path": "docs/mcr/evidence/css-parity-feed/release.json",
+      "gitBlob": "ec183171e03a35063d86dd8dd2c5f1a3cb6318f6",
+      "bytes": 982,
+      "sha256": "a2b3a1678327a3c552f59443c1b31e6bf6607d01ba28fe3432e2a55195840821",
+      "sourcePublicationCurrentExact": true
+    },
+    {
+      "path": "docs/mcr/evidence/css-parity-feed/round1.log",
+      "gitBlob": "9e3da909d012d17d37f9614403e55f7174668abe",
+      "bytes": 58,
+      "sha256": "6b3798ad7d256766a8e141743cfbd06f6022c6dbb1c9fbbad9aa06fad4429833",
+      "sourcePublicationCurrentExact": true
+    },
+    {
+      "path": "docs/mcr/evidence/css-parity-feed/round1/composer-390.png",
+      "gitBlob": "864613e59b5256ab1e546fd2f49296ddff321b83",
+      "bytes": 74681,
+      "sha256": "0cdb76dfdac605674089e6a54e1ac7f502849e79fb2fbffed010aef09610cfd0",
+      "sourcePublicationCurrentExact": true
+    },
+    {
+      "path": "docs/mcr/evidence/css-parity-feed/round1/default-root-390.png",
+      "gitBlob": "740a1252119edc2810b9ea80d31c7e07b350ee5f",
+      "bytes": 30933,
+      "sha256": "c8f29db7783f92768f8f00f1296b459dd000d993949883c6d6ec37ac2da481fe",
+      "sourcePublicationCurrentExact": true
+    },
+    {
+      "path": "docs/mcr/evidence/css-parity-feed/round1/empty-390.png",
+      "gitBlob": "c86cc204314d8e06b685e46eda1204cf297ec9a2",
+      "bytes": 64288,
+      "sha256": "9242de53457ab85ee9983d2238c54105a6d2d2bacc88c2d31f01cdae3f5a0244",
+      "sourcePublicationCurrentExact": true
+    },
+    {
+      "path": "docs/mcr/evidence/css-parity-feed/round1/error-390.png",
+      "gitBlob": "121155df8574b0b4b4dc91c8bb7c7f9a60bafb9a",
+      "bytes": 63044,
+      "sha256": "c796589cc5b5c4b5feb8a68b05a530503775105479abf4356a6ad820e560b5fd",
+      "sourcePublicationCurrentExact": true
+    },
+    {
+      "path": "docs/mcr/evidence/css-parity-feed/round1/feed-360.png",
+      "gitBlob": "bfcf012dfd69597a7eaf26014f0e56a0b9b54811",
+      "bytes": 108025,
+      "sha256": "7bddde4291d3d5740fd97829d56335be5c5a723d1896507e670a12e216e64c2d",
+      "sourcePublicationCurrentExact": true
+    },
+    {
+      "path": "docs/mcr/evidence/css-parity-feed/round1/feed-390.png",
+      "gitBlob": "450d3f24ee263e95ab7888e743273a3553d9a97a",
+      "bytes": 124355,
+      "sha256": "c2ab0ff6b57c3c4358c5b99979105b9f6656007fae53e38a19846cc78451698c",
+      "sourcePublicationCurrentExact": true
+    },
+    {
+      "path": "docs/mcr/evidence/css-parity-feed/round1/feed-430.png",
+      "gitBlob": "fb9fb8c4a18d6079401e07404c703a266d4013d5",
+      "bytes": 151438,
+      "sha256": "61aecf7c2724b2ecb629a8ce224313fda858fa6d851c3c51482d94bb66b91812",
+      "sourcePublicationCurrentExact": true
+    },
+    {
+      "path": "docs/mcr/evidence/css-parity-feed/round1/focus-360.png",
+      "gitBlob": "3107ff284b1998c69e528d3e175d422a660c0f4f",
+      "bytes": 110383,
+      "sha256": "f4a6b8ebc63f1cb58dced8f67a6a299de437ac9f6009414c16102897ea6014b9",
+      "sourcePublicationCurrentExact": true
+    },
+    {
+      "path": "docs/mcr/evidence/css-parity-feed/round1/focus-390.png",
+      "gitBlob": "6d89dd743a90e4381b6f0a11f63db8f25b583659",
+      "bytes": 125456,
+      "sha256": "ce01a7b0014bfc976efa02b3205b63caa6fa424b61a7137fb5b7b48358a0c00e",
+      "sourcePublicationCurrentExact": true
+    },
+    {
+      "path": "docs/mcr/evidence/css-parity-feed/round1/focus-430.png",
+      "gitBlob": "dcd21c5aee75b0ab73f2696ff0cab0abc42ca93e",
+      "bytes": 154139,
+      "sha256": "3cad7b97e5a5a7a5feabe49f2638dc502d2f896acb641dfae76d0c9635236b7a",
+      "sourcePublicationCurrentExact": true
+    },
+    {
+      "path": "docs/mcr/evidence/css-parity-feed/round1/forced-focus-390.png",
+      "gitBlob": "4413905a29bffe2028cff57f41e647d51ab41523",
+      "bytes": 108288,
+      "sha256": "3bb7293cedfbe418b0b1f38bc51cfa3002f28f4e871350f28fc72af809b9376e",
+      "sourcePublicationCurrentExact": true
+    },
+    {
+      "path": "docs/mcr/evidence/css-parity-feed/round1/pending-390.png",
+      "gitBlob": "a744b54d1a46a0aba3c8ed8b3594dcf1993900fa",
+      "bytes": 57596,
+      "sha256": "05b295524c12b7d0ad532fac8a55d10fe3147ec2585c08709ddb9279c3f23db9",
+      "sourcePublicationCurrentExact": true
+    },
+    {
+      "path": "docs/mcr/evidence/css-parity-feed/round1/readonly-390.png",
+      "gitBlob": "99deec87e1991238a17bbbdb8d01b842d8c9f5c0",
+      "bytes": 129772,
+      "sha256": "71921b947c9aef8d76118bcd24de48bda3547fc6cca146bb4a37503d1425ec82",
+      "sourcePublicationCurrentExact": true
+    },
+    {
+      "path": "docs/mcr/evidence/css-parity-feed/round1/report.json",
+      "gitBlob": "7b6cc5dcbda86f088484a5c845b8238cf32971e2",
+      "bytes": 22742,
+      "sha256": "47d3e09bb5d055671cf6383ff82a429b0076b46adbd6947beb15bb2a2a2dc586",
+      "sourcePublicationCurrentExact": true
+    },
+    {
+      "path": "docs/mcr/evidence/css-parity-feed/round1/unavailable-390.png",
+      "gitBlob": "ca465e20bb954ca9e71e9aa87a917b449e31338e",
+      "bytes": 61262,
+      "sha256": "513ff0b40f05f6613be8bf9a387c539f156d649b436c9a1841616b5572a28bd3",
+      "sourcePublicationCurrentExact": true
+    },
+    {
+      "path": "docs/mcr/evidence/css-parity-feed/round2.log",
+      "gitBlob": "d4a4c86856863946e787c1ac68d6bbec464b9a35",
+      "bytes": 58,
+      "sha256": "de5849ab23ff22f2f52a745925533d6b9adb7ceb57931e2a390a778432f877a6",
+      "sourcePublicationCurrentExact": true
+    },
+    {
+      "path": "docs/mcr/evidence/css-parity-feed/round2/composer-390.png",
+      "gitBlob": "864613e59b5256ab1e546fd2f49296ddff321b83",
+      "bytes": 74681,
+      "sha256": "0cdb76dfdac605674089e6a54e1ac7f502849e79fb2fbffed010aef09610cfd0",
+      "sourcePublicationCurrentExact": true
+    },
+    {
+      "path": "docs/mcr/evidence/css-parity-feed/round2/default-root-390.png",
+      "gitBlob": "da9c8f90b0dc3d36377522fc7de01c092b9f08de",
+      "bytes": 30745,
+      "sha256": "b6a7f065ab873789a382fda4d69b2a8e8b47c07df6590d4bf0f774e2cc50abf7",
+      "sourcePublicationCurrentExact": true
+    },
+    {
+      "path": "docs/mcr/evidence/css-parity-feed/round2/empty-390.png",
+      "gitBlob": "c86cc204314d8e06b685e46eda1204cf297ec9a2",
+      "bytes": 64288,
+      "sha256": "9242de53457ab85ee9983d2238c54105a6d2d2bacc88c2d31f01cdae3f5a0244",
+      "sourcePublicationCurrentExact": true
+    },
+    {
+      "path": "docs/mcr/evidence/css-parity-feed/round2/error-390.png",
+      "gitBlob": "121155df8574b0b4b4dc91c8bb7c7f9a60bafb9a",
+      "bytes": 63044,
+      "sha256": "c796589cc5b5c4b5feb8a68b05a530503775105479abf4356a6ad820e560b5fd",
+      "sourcePublicationCurrentExact": true
+    },
+    {
+      "path": "docs/mcr/evidence/css-parity-feed/round2/feed-360.png",
+      "gitBlob": "d6f747a1112ed030e05bc9b90236281e0b8b2f6a",
+      "bytes": 110903,
+      "sha256": "730270fd6acdd97b4e23395145bda817a8bff4b2e915605d7ffe1452594f5859",
+      "sourcePublicationCurrentExact": true
+    },
+    {
+      "path": "docs/mcr/evidence/css-parity-feed/round2/feed-390.png",
+      "gitBlob": "2a267f3cbd50509183df7590e5f1769806859d10",
+      "bytes": 125830,
+      "sha256": "2752714ef98a347ffbba59727216896a6d4d037665cca0d2aeeefda31a49d145",
+      "sourcePublicationCurrentExact": true
+    },
+    {
+      "path": "docs/mcr/evidence/css-parity-feed/round2/feed-430.png",
+      "gitBlob": "e123a47162ace20dcc22a852f4d005b3a08645dd",
+      "bytes": 148633,
+      "sha256": "65dffc42bd23f3340d068ab5d91833ffbd4dd5edafd64ef69c7f2266b0dc162b",
+      "sourcePublicationCurrentExact": true
+    },
+    {
+      "path": "docs/mcr/evidence/css-parity-feed/round2/focus-360.png",
+      "gitBlob": "ecce947fd422f4292da81c50aa709e51e6c3e8c8",
+      "bytes": 113032,
+      "sha256": "39f8451300294d384eedca622bce7378f2e057a445ba84f0740b09630f1943e4",
+      "sourcePublicationCurrentExact": true
+    },
+    {
+      "path": "docs/mcr/evidence/css-parity-feed/round2/focus-390.png",
+      "gitBlob": "fe5006a95f5c668d155220f04855b1aa02913b09",
+      "bytes": 126971,
+      "sha256": "f975fe5747f15df92e992875973ece192bfa3d32b20dc87425bc9616c6da075c",
+      "sourcePublicationCurrentExact": true
+    },
+    {
+      "path": "docs/mcr/evidence/css-parity-feed/round2/focus-430.png",
+      "gitBlob": "3335072bece305721aecd50048fe78305eac573a",
+      "bytes": 151301,
+      "sha256": "69956bcaf408be2b3ca4dd5385c0e5c34e7ac692236944521a60840df3e05017",
+      "sourcePublicationCurrentExact": true
+    },
+    {
+      "path": "docs/mcr/evidence/css-parity-feed/round2/forced-focus-390.png",
+      "gitBlob": "ce1e310673b503c2233a8f3eff5efd749665af2e",
+      "bytes": 109854,
+      "sha256": "87237bf029ab80df6001b7dbe37d65fa463f0f322ac088d753d7fc605836507b",
+      "sourcePublicationCurrentExact": true
+    },
+    {
+      "path": "docs/mcr/evidence/css-parity-feed/round2/pending-390.png",
+      "gitBlob": "a744b54d1a46a0aba3c8ed8b3594dcf1993900fa",
+      "bytes": 57596,
+      "sha256": "05b295524c12b7d0ad532fac8a55d10fe3147ec2585c08709ddb9279c3f23db9",
+      "sourcePublicationCurrentExact": true
+    },
+    {
+      "path": "docs/mcr/evidence/css-parity-feed/round2/readonly-390.png",
+      "gitBlob": "e68a92e1bb31cd29598865fb49d577b208088b37",
+      "bytes": 96494,
+      "sha256": "75f4f5852d2cf32e822a66fc7ffea7d842f0adffe4179ad4f81b6ce11c634ff1",
+      "sourcePublicationCurrentExact": true
+    },
+    {
+      "path": "docs/mcr/evidence/css-parity-feed/round2/report.json",
+      "gitBlob": "0a6996c3a94690ac8385219144f511df758036b2",
+      "bytes": 22873,
+      "sha256": "86a3830eef9da7e50476f4bcdcc31a276a833b5d654ae747336c6f6f543b2aed",
+      "sourcePublicationCurrentExact": true
+    },
+    {
+      "path": "docs/mcr/evidence/css-parity-feed/round2/unavailable-390.png",
+      "gitBlob": "ca465e20bb954ca9e71e9aa87a917b449e31338e",
+      "bytes": 61262,
+      "sha256": "513ff0b40f05f6613be8bf9a387c539f156d649b436c9a1841616b5572a28bd3",
+      "sourcePublicationCurrentExact": true
+    },
+    {
+      "path": "docs/mcr/evidence/css-parity-feed/supervisor-CSS-FEED-INTRINSIC-202611041121Z.json",
+      "gitBlob": "6adec52e70073c88e42e4b456e0d7c113de6909c",
+      "bytes": 1193,
+      "sha256": "db8a1116c836167b3bdcefdb54600782d98639fcd19e0d79940884a0a924a3ff",
+      "sourcePublicationCurrentExact": true
+    },
+    {
+      "path": "docs/mcr/evidence/css-parity-feed/supervisor-CSS-FEED-REFERENCE-202611041215Z.json",
+      "gitBlob": "14c0cffb8fa67a50e4ecd7d6689c648b54f7aadc",
+      "bytes": 1017,
+      "sha256": "8b4a02de6eab3a73fe70332e3f8b1c518426dd11e93995dfe72b39ea074178ac",
+      "sourcePublicationCurrentExact": true
+    },
+    {
+      "path": "docs/mcr/evidence/css-parity-feed/supervisor-attempt1.json",
+      "gitBlob": "4ea696fa19a7b524af9f22e7f0a8a72ee04f4cef",
+      "bytes": 421,
+      "sha256": "00168eb7fd08500fdbc04fc3af94a41423caf4bd4887999427133bd89866d813",
+      "sourcePublicationCurrentExact": true
+    },
+    {
+      "path": "docs/mcr/evidence/css-parity-feed/supervisor-intrinsic.py",
+      "gitBlob": "0f7ec2325fde17697fcf7bb29740ef39c7252b68",
+      "bytes": 5014,
+      "sha256": "d309f96627fe05e96d45796f8cc23ab51151390a4379991397b6bfc53e1c0a7a",
+      "sourcePublicationCurrentExact": true
+    },
+    {
+      "path": "docs/mcr/evidence/css-parity-feed/supervisor.json",
+      "gitBlob": "cef0b472725aeb8753f69d74c935668c03a51ebb",
+      "bytes": 1636,
+      "sha256": "1976ac16de7ac8030d5b53f77a824fedfbf6f8e9f84100811e332f84b0d99fa3",
+      "sourcePublicationCurrentExact": true
+    },
+    {
+      "path": "docs/mcr/evidence/css-parity-feed/supervisor.py",
+      "gitBlob": "25b5829a3d73268947f7cd68a55a9f96bf0802f4",
+      "bytes": 2751,
+      "sha256": "06d78d5289003646ceeff3699c3c4da686eda03d871a660c8ef092d260446321",
+      "sourcePublicationCurrentExact": true
+    },
+    {
+      "path": "docs/mcr/evidence/css-parity-feed/tests.log",
+      "gitBlob": "1dc5c1b139a27ae302c663c27f13be943e61295e",
+      "bytes": 233,
+      "sha256": "17d5f3408e68f7ea6e7a2d98999fbb67261162a5323441d739cb1c21c08ea96f",
+      "sourcePublicationCurrentExact": true
+    },
+    {
+      "path": "docs/mcr/frontend/css-parity-feed.md",
+      "gitBlob": "35ea81c3f6cd0ec04b7be70442a4c279e39c169e",
+      "bytes": 29679,
+      "sha256": "ee91e4be094ec6662dfdffd8610721f379adadba493cbe8ec7a08acd4ecb6700",
+      "sourcePublicationCurrentExact": true
+    },
+    {
+      "path": "frontend/src/features/event-feed/feed.css",
+      "gitBlob": "7f4606b7f2675b52715b37442e6b79c889e52188",
+      "bytes": 8186,
+      "sha256": "e744a26807021b0671e967f1595e6909e47b959a6857864f1081991330777538",
+      "sourcePublicationCurrentExact": true
+    }
+  ],
+  "scope": "Read-only Git proof for validated native reference-media/underline packet only. External artist/Root inputs excluded. Both raw reference rounds retained unchanged. Enlargement/alignment candidate6e169a6a is not qualified or published by this proof; full fidelity remains open."
+}
