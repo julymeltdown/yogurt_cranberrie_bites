@@ -1,11 +1,14 @@
 # Wall and Me background artwork — 2026-11-04
 
-Status: **IN_PROGRESS**. The corrected Me backgrounds pass this asset owner's
-scoped visual inspection in immutable `native-02` at 360/390/430px, including
-four focused header links and forced colors. Their tested source is published.
-Wall remains **NEEDS_CORRECTION**: the captured 180px artwork leaves a large
-sparse lower field. The tall Wall source revision below is ready for integration
-and fresh guarded-Wall evidence. Final documentation publication remains open.
+Status: **INTEGRATED; owned background visual validation complete**. Me passes
+this asset owner's scoped inspection in immutable `native-02` at 360/390/430px,
+including four focused header links and forced colors. The tall Wall correction
+passes direct owner inspection in published `wall-com-03` at all three widths,
+including the relevant captured normal/forced-color guard and focus states.
+The tested SVG bytes are published. Final inspection documentation publication
+is the remaining handoff step. Raw `wall-com-03` exit 1 / `OPEN_FAILURES` remains
+unchanged: invalid forced-color measurement assertions are qualified below,
+while a real inherited Meet focus-clipping finding stays open with its owner.
 This document does not accept FE32, FE34, IN04, or mobile release gates.
 
 ## Assignment and ownership
@@ -381,3 +384,119 @@ Remaining required evidence: Root's bounded fresh Wall 390px before/after and
 360/430px captures (including relevant focus/contrast and forced-color guard
 readability), owner inspection/fixes, and final source/doc publication ancestry.
 Me's unchanged tested assets do not need a duplicate matrix. Goal stays active.
+
+## Tall Wall owner disposition: `wall-com-03`
+
+This section resolves the preceding tall-Wall handoff's pending evidence. The
+earlier `native-02` 180px Wall remains historically **NEEDS_CORRECTION**; its raw
+packet is not rewritten. The source correction is owner commit
+`18e6e4db2f2e6384c796453d6e63caedc11875e8`, imported by Root in delivered commit
+`70a444bf`. Root retained and published the new packet in
+`1722a81734947764996590b94a63aa001501df28`.
+
+| Pin | Value |
+| --- | --- |
+| Frozen candidate | `cc20832a897f18cd83482dcd21b6c2fc1d226942` |
+| Controlled baseline | Same candidate, fixture and foreground source; **only** `wall-stationery.svg` restored to `8972b0b634035055eb023dbc2f786e4463b172e5` |
+| Tested Wall SHA-256 / bytes | `22e2de672776682693bca71c57f501f2450bc9a28bc6314df44c26d6d193efc7` / 4500 |
+| Driver SHA-256 | `84b23c4d4de54d7126447cc6a282b042db216d72a3311eb4b30febc965e7db6f` |
+| [Raw report](../evidence/cozy-backgrounds-v1/wall-com-03/report.json) SHA-256 | `8056cea82655a3ae95e6520952a351890a3eb921953262378ebf260ca89b4c5f` |
+| [Capture manifest](../evidence/cozy-backgrounds-v1/wall-com-03/capture-packet.json) SHA-256 | `4b1b8bf2d7a29678d072f6073c37e0a43ce646beb3a0cb99766275b2c952e61e` |
+| [Qualification](../evidence/cozy-backgrounds-v1/wall-com-03/qualification.json) SHA-256 | `f0ac612f201d43863086039a0284917f0cd9a6677fad5fe0b62a107d258c8301` |
+| Job / actual run | `ROOT-WALL-COM-A11Y-202611040820Z`; `2026-11-04T08:17:02.026Z`–`08:17:31.969Z`; Chrome `156.0.8078.80` |
+| Immutable raw result | Exit **1**, `OPEN_FAILURES`; 30.390 seconds, resources released at `08:17:32.004653Z` |
+
+Canonical files were read in place at
+`/Users/lhs/Desktop/mcr-worktrees/fe-delivery-publish/docs/mcr/evidence/cozy-backgrounds-v1/wall-com-03/`.
+The author started no browser, native job, test matrix, packet copy, restoration
+or materialization. The original active goal and clean isolated source checkout
+at `18e6e4db` were verified before inspection.
+
+| Width | Baseline PNG SHA-256 | Tall Wall PNG SHA-256 |
+| --- | --- | --- |
+| 390 | `ac3b1d2230e5076ea27e4d875fa97a35130527ffeebec38bf314f0dfbcd3d93f` | `ec075ce0ceb6a029a5b469fe2db8ba48b7668a7c83bd8a5845fd7019a8417a9f` |
+| 360 | `c9d97fc5a42910a8e590032867eedd161d0f8fc41dd30da929033b18398875ef` | `d5281ac77ad5b53a32fc3025cfc819865e1d78259ec90cb996fc2946de43e203` |
+| 430 | `871ec6c72b9086d92b906f1554491785b4b371ca802cd24b15a06d8202c70864` | `9bb0bf3f6ac6790306f12a39be4db4fcfec262788fd8f267c94880624522c357` |
+
+**Visual disposition: PASS for the owned background change and captured
+guarded-Wall states.** The author directly viewed the 390px pair, then both
+360/430px pairs, the Wall normal/forced focus images and both text-backing
+images, and compared the supplied source collage again. Large blush and sage
+middle forms and the lower lilac/sage clouds and ribbon now occupy the sparse
+field. Warm paper, scallops, soft music details and broad pastel forms are
+visibly cuter than the former dark/distressed reference and more substantial
+than the rejected short composition. At 430px the existing viewport clips the
+bottom wave, while the lower clouds/ribbon remain visible; at 360px the whole
+composition ends above a matching cream field. Both are coherent uses of the
+unchanged `100% auto`/top/no-repeat mapping. The guard remains legible and does
+not imply an admitted editor or successful service connection. No source fix
+is required after this inspection.
+
+Independent read-only Python checks against immutable Git objects and retained
+PNGs exit **0**:
+
+- All 725 recorded source/asset/physical-CSS pins match their Git revision bytes;
+  all 32 artifact pins match both retained bytes and commit `1722a817`. These
+  physical CSS pins do not certify individual Vite nested-import load receipts.
+- At all three widths, raw baseline/candidate metrics and recorded shell state
+  are exactly equal: text, control type/label/geometry/font/color/disabled state,
+  body rectangle and guard/admission state. There is no horizontal overflow or
+  recorded runtime error. All recorded controls are at least 44×44. The visible
+  non-World character list is explicitly empty in both phases; Wall provides
+  **no character/editor pixel proof**. Me's earlier actual canvas/RGBA proof is
+  unchanged and remains attached to `native-02`, not this Wall packet.
+- The header raster above y=57 is byte-identical per pair. Unchanged top SVG
+  ornament geometry is a source claim, not top-background raster identity:
+  broader pixel-equality assertions were rejected by the readback, so no such
+  equality is claimed for the deliberately repainted body.
+- Recomputing every sampled normal guard text-range backing pixel from the
+  retained PNG gives **9.545801856993844:1** over 6927 pixels. The text-fill mask
+  visibly removes the normal glyphs. This applies to the captured 390px guard
+  ranges, with direct readability inspection at 360/430px.
+- All four actual normal back-button outline samples match the recorded RGB,
+  with minimum **15.114013729961503:1**. The captured target is 44×44, outline
+  2px, offset -3px, focused and `:focus-visible`. Focus was set by the driver;
+  this is not proof of a complete keyboard traversal.
+- In forced colors, the four actual Wall ring samples are `[55,51,109]`, the
+  correct composition of `rgba(5,0,73,.8)` over white, giving
+  **11.309774587047812:1**. Comparing these with uncomposited `[5,0,73]` caused
+  the raw false failure. Independent raster sampling reproduces the pixels and
+  alpha calculation. Two unmasked text fragments each have an actual black
+  glyph-core spot and white system-backplate spot (21:1); the guard is visibly
+  readable. These are limited spots, **not a complete forced text-backing mask**.
+
+The raw forced text test is **not qualified**: forced-color system text overrides
+the temporary transparent text fill, so the supposed backing PNG still has
+black glyphs. Its reported 1:1 is glyph-versus-glyph, not invisible text. The
+actual Wall forced text-backing and focus PNGs are byte-identical
+(`9bac7f25c85b284ef1eab1c2b4506c93e9d413597e6f58726e6f8808496d5997`),
+which independently demonstrates the ineffective mask. The normal focus PNG
+is `4d829241f3f8af62f8250442cb74f70f236120b8af9955a8a2ec22d1d222dd29`.
+No raw file, raw exit code or failed assertion is relabeled as passing. Forced
+colors and reduced motion are recorded active; colored SVG backgrounds remain
+visible behind the system foreground. The SVG source contains no motion.
+
+The author also directly viewed Meet's normal and forced focus PNGs to check
+the reported distinction. Its summary outline loses the bottom and left edges;
+that is a **real inherited finding**, not an alpha/mask false failure. Read-only
+Git byte/hash comparison confirms `party-discovery.css`, `shell.css` and
+`shell-chrome.css` are unchanged from `8972b0b6`; the existing
+`.party-browse .meet-discovery { min-height: 0; overflow-y: auto; }` contains the
+outline. It remains open for the foreground implementation owner. No Meet
+layout/focus declaration, shared CSS, title-focus lease or checker is changed
+by this asset author, and this separate finding is not presented as resolved.
+
+The scope is actual production router/Auth/Phaser under controlled QA06
+synthetic HTTP/C05/local admission. It does not establish live service,
+physical device, admitted Wall editor, whole-screen target fidelity, complete
+accessibility compliance or full FE32/FE34 acceptance. Me's scoped `native-02`
+visual/focus/character disposition remains valid for its exact tested source;
+later header/title work belongs to its separately assigned owner.
+
+Fresh publication readback: `git fetch origin master` and
+`git ls-remote origin refs/heads/master`, both exit **0**, report
+`1722a81734947764996590b94a63aa001501df28`. Frozen candidate `cc20832a` and the
+retained packet are verified ancestors. All three remote SVG bytes match this
+author's final source hashes in the interface table. This inspection document
+is handed to Root for publication; final documentation ancestry is checked
+after its import, without an SL/QA approval gate.

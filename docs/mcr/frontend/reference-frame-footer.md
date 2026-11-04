@@ -1,6 +1,7 @@
 # Shared frame and footer — preserved baseline
 
-Status: **IN_PROGRESS — final factual correction publication/readback pending**. The bounded owned
+Status: **ACCEPTED — bounded goal COMPLETE**. Final factual correction published
+at `0bd35b223d2590fb2b343171d6d8ac30d37ff857` and independently verified. The bounded owned
 shared-background visual scope is **ACCEPTED** after direct inspection of Root's
 corrected60-image packet. Qualified source validation passes at8972b0b6.
 Shared CSS writes are stopped and the exact lease is returned to World/Root;
@@ -128,6 +129,54 @@ edit. The viewed World image has no focused panel heading. Me icon and Community
 leaf issues remain separate. Other native-03 invariants are Root evidence and
 are not newly accepted by this targeted check. No browser/job/helper, copies or
 raw packet rewrites were created.
+
+## Later Wall/Community evidence-only follow-up
+
+This follow-up preserves the completed development goal and returned leases;
+it grants no application write, new browser job or additional QA approval gate.
+Root's canonical `wall-com-03` packet is published at
+`1722a81734947764996590b94a63aa001501df28`, candidate `cc20832a`, job
+`ROOT-WALL-COM-A11Y-202611040820Z`,08:17:02.026–08:17:31.969UTC.
+Raw status remains **OPEN_FAILURES**, exit1. Report SHA-256 is
+`8056cea82655a3ae95e6520952a351890a3eb921953262378ebf260ca89b4c5f`.
+The separate Root qualification preserves its mask/compositing limitations.
+The derived owner record is
+[`wall-community-review-cc20832a.json`](../evidence/reference-frame-footer/wall-community-review-cc20832a.json);
+no canonical raw report or PNG was copied or rewritten.
+
+Independent checks verified all32 artifact pins against actual bytes/hashes and
+Git1722, including25 PNGs; all16 targeted text/focus images and recorded focus
+pixels were checked, and nine relevant images directly viewed. Root's725 loaded
+source/asset/physical-CSS checks remain attributed to Root, not a repeated owner
+run. Normal measured text minima are Wall9.55, Feed15.62, Meet5.50 and Gifts7.46.
+Normal representative focus samples are Wall15.11, Feed6.02 and Gifts6.59.
+These selected measurements do not certify every control or a global pass.
+
+Forced-text backing captures still contain black glyphs: the transparent text
+fill mask did not remove forced system text. Reported1:1 minima sample the text
+itself, so they are invalid background measurements. Forced-focus alarms on
+Wall/Feed/Gifts compare raw `rgba(5,0,73,0.8)` channels with composited opaque PNG
+pixels; independently recomputed compositing matches within1 channel unit.
+Actual sampled minima are11.31/9.38/10.68. These are bounded sampled dispositions,
+not a comprehensive forced-colors text or accessibility acceptance.
+
+Meet has a separate **real inherited clipping issue** in normal and forced
+colors. `.party-filters > summary` at(15,465.5625),301.546875×44 has a3px outline
+with2px offset. `.meet-discovery` clips at(15,115),360×394.5625, bottom509.5625.
+Actual top(165,462) and right(320,487) ring pixels are present; left(11,487) and
+bottom(165,513) lie outside the clip and remain backing. The exact source is
+`party-discovery.css:14` (`overflow-y:auto`) andline52 (outward focus outline).
+The entire relevant party/shell/header/base CSS matches8972, so this is not a
+new Wall-art regression. The finding remains **OPEN** and separate from the
+2.413:1 title-heading ring.
+
+Root explicitly confirms no active functional Meet clipping writer. COM01 owns
+background paint only; former Meet owner204 now owns FE40 and has no old Meet
+lease. The exact evidence was routed through Root, Screen Art and Community
+for original-scope/inherited-limit disposition. It does not authorize a layout
+or outline edit, invent a background gate, or close live/device/Wall-editor,
+character-preservation or full-QA06 acceptance. Earlier status paragraphs below
+retain their historical authoring/publication context.
 
 ## Current background-only source pass
 

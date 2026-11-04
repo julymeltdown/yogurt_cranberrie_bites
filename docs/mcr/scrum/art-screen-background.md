@@ -1,5 +1,38 @@
 # Screen background delivery coordination
 
+## Ownership transfer and parked coordination
+
+FrontendKING transferred the remaining work: UI lead
+`01a1a533-0644-7ef0-9ee8-9f1755817fb9` owns ten-screen integration/title focus;
+Community SL `01a1a1fe-c5f1-7e60-87c2-43785b07f941` owns Wall/COM01 final
+dispositions, committed handoffs/readback and the separate Meet clipping fix.
+Root153 remains sole packet custodian/publisher and BackendSL21d sole output
+allocator. This redundant Screen ART coordinator stops capture/worker monitoring
+and parks by the King's instruction; its full original goal remains BLOCKED,
+as freshly read, without completion, reset or status change.
+
+At transfer, Wall/Me `01a1a534-4fd0-7ba1-8fe8-4cc95674080f` and COM01
+`01a1a533-50a9-73a1-8d4f-a16bf0b69aee` had actually resumed on published
+`1722a817` and were preparing their own final packet dispositions; they are not
+merely awaiting reactivation. Both report the tall Wall lower field resolved at
+360/390/430, with raw harness failures and inherited Meet clipping preserved.
+Their final docs/commits/publication readbacks remain outstanding. Entry and
+Community art are completed/archived; completed identity owner ID01 is now under
+UI lead's separate exclusive title lease. No duplicate writer is assigned here.
+
+Root's new `MEET-FOCUS-VIS-01` grant selects the existing COM01, with Community
+as sole functional dispatcher. It permits only
+`.party-browse .party-filters > summary:focus-visible { outline-offset: -3px; }`
+in `frontend/src/features/party-discovery/ui/party-discovery.css`, after the
+developer confirms the actual 3px ring stays inside the 44px target. Existing
+outline/color/width, layout/scroll/rects/characters/art and overflow stay frozen;
+no global focus or title-header scope is included. Same COM docs/evidence and an
+optional new `frontend/src/app/__tests__/meet-focus-vis-01/**` prefix are allowed.
+Community must obtain actual owner acceptance/HEAD/goal/lease before writes,
+preserve the unfinished original scope, and arrange developer validation/fixes,
+Root's finite affected capture and publication/readback. No additional dispatcher,
+browser job, review gate or acknowledgment wait is introduced by this handoff.
+
 ## Direction and authority
 
 The human's 2026-11-04 direction asks for backgrounds visibly cuter than both
@@ -576,7 +609,181 @@ claims, then let each owner perform its own remaining disposition/fixes/readback
 The corrected Wall source and its consumer closure are ready; no source-proposal
 wait, extra writer, SL review or default all-60 rerun is required.
 
+### Published cohort and owner readback
+
+Root reports the deduplicated handoff postimages published at
+`70a444bf7cf6454f2ed4da7a635db2bb649738f2`: Entry `44628521`, Community
+`f297b8fa`, ID01 `45082068`, COM01 `f414d695` plus final document from `58cd06e5`,
+and tall-Wall `18e6e4db`. All unique evidence is retained; final postimages may
+be integrated through equivalent delivery commits rather than original source
+commit ancestry. Root's local mapping is
+`/private/tmp/mcr-ready-cohort-mapping.json`.
+
+This SL's fresh fetch and `git ls-remote origin refs/heads/master` independently
+confirmed that exact master revision (exit 0). The remote coordination-document
+blob `ae9a9c2fc33757f57864d5b70d3edf888a076999` exactly matches local `f579720b`.
+This is publication metadata for the SL's owned path, not implementation review.
+The present readback record will need its own natural publication update.
+
+Entry, Community art and ID01 were unarchived and assigned only their own fresh
+remote postimage/source/evidence/ancestry readback and truthful bounded goal
+closure. No new source edits, native tests, packet materialization or approval
+step is assigned. Their actual readback/goal results remain to be collected.
+COM01 and Wall/Me stay archived with unfinished full goals: publishing the tall
+source does not qualify its composition. Root's fresh affected-Wall and finite
+Community accessibility packet remains required, followed by those owners'
+actual disposition/fixes and publication receipts.
+
+Entry and Community art completed their actual publication-only readbacks at
+`70a444bf` and reported successful goal-tool returns of COMPLETE for their
+unchanged original bounded objectives. Both finished contexts are archived.
+Entry verified the final document (30,125 bytes, SHA-256 `bd38a1e8…`), all nine
+owned pack files, report/manifest plus all 21 inspected PNGs and its published
+identity CSS against validated bytes. Production `8972b0b6`, runner `e2375727`,
+packet `5186f110` and integrated source/import commits are actual ancestors;
+own final `44628521` is not, so delivery is the exact mapped postimage through
+`70a444bf` rather than original-commit ancestry. Its checkout stayed clean and
+no test/capture/file change was performed.
+
+Community verified final document (11,807 bytes,
+SHA-256 `89b4ef6961cf41fd50dfa9208a00002f0ee01f212577f0607387c9f430bbcf0f`),
+manifest (5,703 bytes,
+SHA-256 `f635c86f90cc6a664cdb34524548c903992743b4b1f93908577c935db94439a7`),
+all seven SVGs and retained report/manifest/18 inspected PNGs. Production and
+packet are actual delivery ancestors; its original art/fit/CSS/final handoff
+commits are not, and the exact mapped final postimages were delivered in
+`70a444bf`. It preserved the synthetic/queried-control/source-contrast limits,
+with the shared targeted accessibility work remaining Root/COM01 scope. No
+changes or reruns were made. ID01's actual readback/goal result remains pending;
+these two bounded closures do not close Wall/COM01 or the overall screen goal.
+
+ID01 subsequently returned its actual completed readback: all nine owned paths
+and seven closed SVG assets exactly match the mapped owner `45082068` postimages
+and recorded pins at `70a444bf` (16 comparisons). Its identity CSS is 3,876 bytes,
+SHA-256 `aafdee7a24270e890c7916a5400a7632b4023270e3a4d0bca965bc62f98564ff`;
+native-02 owner evidence is 57,190 bytes,
+SHA-256 `92c90477f920155c618b587c886463f6e8d92746a44329a37071d459b053e74c`.
+Published source fallback `f86c99bd`, shelf `21493621`, candidate `8972b0b6`,
+packet `5186f110` and nested CSS attestation
+`2579ac15cb1d934de3f7a081cc7f2fb96498b5ac` are verified actual ancestors; its
+original `45082068` is not, as expected for exact deduplicated delivery.
+No files changed or checks reran, its exclusive checkout stayed clean, and it
+reports the actual goal-tool COMPLETE result for the unchanged full identity
+objective. ID01 is archived with no next assignment. Entry, Community art and
+ID01 are therefore closed bounded deliveries; Wall/Me and COM01 remain the
+existing unfinished owners for fresh targeted evidence/fixes. No new independent
+source gap has been identified, so no additional writer is assigned merely to
+increase staffing. Reuse a compatible finished context only on a concrete new
+gap with an exact task, disjoint grant and isolated checkout.
+
+## Targeted Wall/Community packet and final owner disposition
+
+Root supplied the sealed, published `wall-com-03` packet at
+`1722a81734947764996590b94a63aa001501df28`; this SL's fresh fetch/ls-remote
+independently confirms that exact master and ancestry (exit 0). Canonical
+directory is
+`/Users/lhs/Desktop/mcr-worktrees/fe-delivery-publish/docs/mcr/evidence/cozy-backgrounds-v1/wall-com-03`.
+Root reports these immutable SHA-256 pins:
+
+- report: `8056cea82655a3ae95e6520952a351890a3eb921953262378ebf260ca89b4c5f`;
+- packet: `4b1b8bf2d7a29678d072f6073c37e0a43ce646beb3a0cb99766275b2c952e61e`;
+- qualification: `f0ac612f201d43863086039a0284917f0cd9a6677fad5fe0b62a107d258c8301`.
+
+Root reports 32 artifact pins/25 PNGs/725 source-asset and physical CSS pins,
+frozen candidate `cc20832a`, same fixture/source baseline restoring only the
+`8972b0b6` Wall SVG and nine contexts. All three Wall widths preserve actual
+foreground/control/type/text/character/guard/geometry records. Four-route normal
+text minimum is 5.499; normal focus Wall/Feed/Gifts 15.114/6.020/6.586. These
+are implementation-owner receipts, not SL inspection.
+
+Raw exit 1 / `OPEN_FAILURES` remains immutable. Root distinguishes invalid
+forced-color harness assertions (system text overriding the transparent-fill
+mask; expected semitransparent outline needing compositing) from the actual
+inherited Meet summary bottom/left outline clipping under unchanged
+`meet-discovery` overflow. The qualification uses actual unmasked glyph/backplate
+spots and composited ring pixels (Wall/Feed/Gifts at least 9.377), with explicit
+spot/mask limitations. It does not certify global WCAG/live/device/editor
+acceptance or resolve the inherited clipping. Root reports all resources
+released at 08:17:32 UTC; no copy, restoration or new capture job is needed.
+
+Wall/Me and COM01 are unarchived on this actual new packet under their unchanged
+disjoint asset/CSS/docs/evidence grants. They own direct inspection of all three
+Wall widths and relevant qualified accessibility states, independent pin and
+preservation checks, scoped findings/fixes, committed docs/handoffs and final
+publication readback. Inherited unchanged Meet layout is documented and routed
+without an implicit foreground/layout/title grant or invented global fix gate.
+Native-02 stays tied to its old Wall pin/disposition. TITLE-FOCUS-01 remains the
+separate ID01/UI lead lease. No SL/QA213 review gate is introduced.
+
+Live activity confirms both original owners actually resumed on this packet.
+Output coordination is consolidated: Root153 alone owns technical packets and
+publication, BackendSL21d alone allocates output slots, and FrontendKING owns
+feature delivery. This SL does not repeat capture-readiness offers/status polls
+or acknowledgment requests; further handoffs use actual feature milestones.
+UI lead reports the King routed inherited Meet clipping separately as
+`MEET-FOCUS-VIS-01` through existing Community/Meet implementation ownership.
+Community/Root must select one exact owner/lease; possible later COM01 reuse
+requires explicit transfer and preservation of its unfinished original scope.
+There is no implicit Meet/title file grant, new Wall-art assignment, duplicate
+browser job or background acceptance gate for that adjacent layout correction.
+
 ## Delivery criteria
+
+UI lead subsequently relayed the targeted `wall-com-03` result as
+`OPEN_FAILURES`: 390px Wall/Feed/Meet/Gifts forced-text and forced-focus
+measurement errors, plus Meet ordinary focus. Root's live report confirms a
+new lower-field Wall capture and preserved text/control/character records, but
+retains the accessibility findings without claiming a pass. QA213 is separating
+harness measurement failures from product defects. This SL requested the actual
+retained immutable report/PNG revision, source/fixture/case labels and established
+developer dispositions from Root before selectively reopening COM01/Wall/Me.
+Until those inputs arrive, both stay archived; no product fix, full rerun or
+broad visual acceptance is inferred from measurement errors or one Wall image.
+Root remains sole capture/retention custodian. The three shared title-header
+paint declarations remain ID01-exclusive under UI dispatch; this follow-up
+does not grant either background owner that seam or any base/shared CSS scope.
+
+The frontendKing subsequently requested reconciliation of a separate inherited
+Map title-ring contrast finding (2.413:1) because UI lead and World SL were both
+arranging its fix. Finished ID01 is a compatible reuse candidate, not an assigned
+writer. This SL sent both leads and Root a single-dispatch proposal: UI lead
+owns `TITLE-FOCUS-01` dispatch, Root selects exactly one owner and grants exact
+shared CSS/selector/property and documentation/evidence paths, and World SL
+identifies/releases any conflicting paint lease before transfer. ID01 remains
+archived with its prior identity goal COMPLETE until that exact selection and
+lease exist; no shell-chrome/base edits or implicit shared-file grant is made.
+Any reuse requires a new isolated task branch/exclusive checkout and new ACTIVE
+unbudgeted goal, preserving the completed original goal. QA213 contributes
+evidence; Root integrates; there is no separate SL review gate or duplicate
+browser job. Wall/Me and COM01 remain this SL's separate unfinished follow-ups.
+
+UI lead then supplied the actual reconciliation outcome, superseding the earlier
+archived-candidate snapshot: it had already reopened ID01 for read-only startup
+only, then Root explicitly selected that same owner, confirmed CSS STOP/RETURN
+from QA213/Root/World and granted the final narrow shared shell-chrome paint
+lease plus unique `TITLE-FOCUS-01` docs/evidence/tests. UI lead reports base
+`9e7952fc` and branch `codex/mcr-title-focus-01`, and has dispatched the final
+lease to the same writer. UI lead is the sole dispatcher; this SL will not
+unarchive, assign or message a competing title-focus writer. No other current
+lease/writer remains per Root's reported confirmation. Actual new-goal/checkout
+startup readback is pending with UI lead; a dispatched lease is not source
+implementation proof. This SL retains Wall/Me and COM01 reactivation only.
+
+World SL independently confirmed no separate title writer was selected or
+assigned. QA213 returned its prior leases before any App write, reporting clean
+`b8e15dc5` and unchanged CSS; all prior three-CSS/potential-title source leases
+are closed, leaving only its evidence/document publication work. The exact Root
+grant to the reused ID01 is only the existing `.mcr-chrome-panel-header`
+`background-color`, `background-image` and `background-size` in
+`frontend/src/app/shell-chrome/shell-chrome.css`, plus unique title-focus docs,
+evidence and test prefixes. No focus/outline/foreground/layout/base.css,
+character/scenery or new-selector change is granted. Adjacent-property scope
+must go directly to Root. The developer must establish feasibility against both
+the frozen cream-text 4.5:1 and ring 3:1 bounds or report an honest NO_PATCH/scope
+limit; there is no requirement to force a patch. Root remains sole publisher
+and capture custodian, UI lead sole dispatcher, with no World approval or
+acknowledgment wait. Separate motion paint and any genuinely disjoint new World
+criterion do not acquire a second title/root writer lease.
 
 1. Each developer reads the working agreements, specification, assessment,
    execution plan and selected-character guidance; inspects its actual goal;
@@ -616,13 +823,16 @@ receiving acceptance arrived. A fresh metadata-only fetch/log/ancestry check
 (exit 0) first confirmed `origin/master` at initial source candidate
 `c8a731e5c7f03c3fbcbd0581c6e872429806fa22`, subsequently `49ac314e` and then
 `e237572719602da6a1a08b7fe0579b0e9c96da1f`. These are publication observations,
-not SL implementation validation. Root's source-publication receipts and the
-corrected retained `5186f110` packet are recorded above. Required widths and
-additional captured states now exist; they are no longer NOT_RUN. All five
-implementation owners are inspecting the new packet, documenting dispositions,
-checking relevant preservation/contrast bounds and preparing committed
-handoffs. Any new findings, the Landing CSS-span coverage discrepancy, final
-owner evidence/publication readback and the latest coordination-document
-publication remain open. The original transient PNG path issue was resolved
+not SL implementation validation. Root's source-publication receipts, corrected
+retained `5186f110` packet and published `70a444bf` owner cohort are recorded
+above. All five owners delivered committed native-02 dispositions; the Landing
+CSS-span written-summary error is resolved. Entry/Community art/ID01 completed
+their actual final remote readbacks and bounded goals. The changed tall-Wall
+360/390/430 packet and qualified Community accessibility evidence now exist at
+published `1722a817`, with raw measurement failures and inherited Meet clipping
+explicitly preserved. Wall/Me and COM01 own its actual final disposition,
+required scoped fixes/docs and publication readback. This evolving coordination
+record also needs final publication. The original
+transient PNG path issue was resolved
 through immutable artifact `16bf30c6`; Root remains sole packet custodian.
 No overall visual acceptance or task/release closure is claimed.
