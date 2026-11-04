@@ -726,10 +726,18 @@ async fn native_original_deadline_while_common_user_lock_waits_cannot_create_par
 async fn native_initialize_owned_schemas() -> Result<()> {
     let auth = owned_pool("mcr_world_deletion_auth").await?;
     let pool = owned_pool("mcr_world_deletion_concert").await?;
-    sqlx::migrate!("../auth-service/migrations")
+    // Runtime Migrator is enabled by the retained workspace dependency. The
+    // qualification runner copies and hashes these exact SQL directories before
+    // target release; no macro feature or manifest change is necessary.
+    let frozen = std::path::PathBuf::from(std::env::var("BE42_MIGRATIONS_ROOT")?);
+    sqlx::migrate::Migrator::new(frozen.join("auth-service").as_path())
+        .await?
         .run(&auth)
         .await?;
-    sqlx::migrate!("./migrations").run(&pool).await?;
+    sqlx::migrate::Migrator::new(frozen.join("concert-service").as_path())
+        .await?
+        .run(&pool)
+        .await?;
     Ok(())
 }
 #[tokio::test]
