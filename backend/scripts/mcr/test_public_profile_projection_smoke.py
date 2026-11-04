@@ -36,6 +36,13 @@ class Artifacts(unittest.TestCase):
         with self.assertRaises(ValueError):smoke.select_artifacts(items+[unit],joined=True,profile_only=True)
         wrong=copy.deepcopy(unit);wrong["target"]["kind"]=["test"]
         with self.assertRaises(ValueError):smoke.select_artifacts(items+[wrong],joined=True)
+    def test_focused_joined_mode_never_claims_older_owner_or_schema_artifacts(self):
+        unit={"reason":"compiler-artifact","executable":"/tmp/unused-concert-unit",
+              "manifest_path":str(smoke.ROOT/"backend/services/concert-service/Cargo.toml"),
+              "target":{"name":"concert_service","kind":["lib"]},"profile":{"test":True,"debuginfo":0}}
+        self.assertEqual(set(smoke.select_artifacts([unit],joined_only=True)),{"concert_service"})
+        with self.assertRaises(ValueError):smoke.select_artifacts(self.fixtures(),joined_only=True)
+        with self.assertRaises(ValueError):smoke.select_artifacts([unit],joined_only=True,profile_only=True)
     def test_source_pin_excludes_build_targets_and_private_runtime_files(self):
         pins=smoke.source_pins()
         self.assertTrue(any(p.endswith("concert_public_profile.proto") for p in pins))

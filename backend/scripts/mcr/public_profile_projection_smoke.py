@@ -37,10 +37,11 @@ def source_pins():
         "backend/scripts/mcr/public_profile_projection_smoke.py"], cwd=ROOT, text=True).splitlines()
     return {p: sha(ROOT/p) for p in sorted(set(paths)) if (Path(p).suffix in {".rs", ".sql", ".proto", ".json", ".toml", ".lock", ".py"} or p.startswith("frontend/public/")) and (ROOT/p).is_file()}
 
-def select_artifacts(items, root=ROOT, profile_only=False, joined=False):
+def select_artifacts(items, root=ROOT, profile_only=False, joined=False, joined_only=False):
     result = {}
     targets = {**TARGETS, **({"concert_service": "services/concert-service"} if joined else {})}
-    if joined and profile_only: raise ValueError("joined and profile-only are incompatible")
+    if joined_only: targets = {"concert_service": "services/concert-service"}
+    if (joined or joined_only) and profile_only: raise ValueError("joined and profile-only are incompatible")
     for name, package in targets.items():
         if profile_only and name != "concert_public_profile": continue
         manifest = str(root/"backend"/package/"Cargo.toml")
@@ -55,12 +56,12 @@ def select_artifacts(items, root=ROOT, profile_only=False, joined=False):
         result[name] = candidates[0]
     return result
 
-def freeze(json_paths, profile_only=False, joined=False):
+def freeze(json_paths, profile_only=False, joined=False, joined_only=False):
     items = [json.loads(line) for path in json_paths for line in path.read_text().splitlines() if line.startswith("{")]
-    artifacts = select_artifacts(items, profile_only=profile_only, joined=joined)
+    artifacts = select_artifacts(items, profile_only=profile_only, joined=joined, joined_only=joined_only)
     out = Path(tempfile.mkdtemp(prefix="mcr-public-profile-frozen-", dir="/tmp")).resolve()
     report = {"head": subprocess.check_output(["git", "rev-parse", "HEAD"], cwd=ROOT, text=True).strip(),
-              "profile_only": profile_only, "joined": joined, "source_sha256": source_pins(), "cargo_json_sha256": [sha(p) for p in json_paths], "artifacts": {}}
+              "profile_only": profile_only, "joined": joined or joined_only, "joined_only": joined_only, "source_sha256": source_pins(), "cargo_json_sha256": [sha(p) for p in json_paths], "artifacts": {}}
     for name, artifact in artifacts.items():
         src = Path(artifact["executable"]).resolve(strict=True)
         if src.is_symlink() or not src.is_file():
@@ -82,6 +83,9 @@ def verify_pin(path):
     if report.get("joined"):
         if report.get("profile_only"): raise ValueError("incompatible artifact mode")
         expected.add("concert_service")
+    if report.get("joined_only"):
+        if not report.get("joined"): raise ValueError("joined-only requires joined mode")
+        expected = {"concert_service"}
     if set(report["artifacts"]) != expected:
         raise ValueError("exact test artifact set required")
     for name, artifact in report["artifacts"].items():
@@ -122,9 +126,10 @@ def qualify(path, pg_bin):
     save()
     try:
         env = {k: v for k, v in os.environ.items() if not k.startswith(("PG", "MCR_PROFILE_RPC_", "MCR_PUBLIC_PROFILE_")) and not k.endswith("DATABASE_URL")}
-        run("signed-profile", "concert_public_profile", [], env)
-        if not report.get("profile_only"):
-            run("closed-c03-union", "public_profile_projection", [], env)
+        if not report.get("joined_only"):
+            run("signed-profile", "concert_public_profile", [], env)
+            if not report.get("profile_only"):
+                run("closed-c03-union", "public_profile_projection", [], env)
         if report.get("joined"):
             run("authority-denial-regression", "concert_service", ["--exact", "adapters::out::public_profile::tests::guard_or_transport_failure_cannot_become_a_skippable_author"], env)
         sys.path.insert(0, str(ROOT/"backend/scripts/mcr"))
@@ -137,35 +142,38 @@ def qualify(path, pg_bin):
         with (cluster.data/"postgresql.conf").open("a") as stream:
             stream.write("\nmax_prepared_transactions = 256\n")
         cluster.start()
-        database = "mcr_profile_self_rpc"  # retained fixture helper's exact isolated name
-        cluster.sql("postgres", "create database mcr_profile_self_rpc template template0;")
-        migrations = sorted((ROOT/"backend/services/profile-service/migrations").glob("*.sql"))
-        numbers = [int(p.name.split("_",1)[0]) for p in migrations]
-        assert len(migrations) >= 7 and numbers == list(range(1,len(migrations)+1))
-        report["migration_sha256"] = {p.name:sha(p) for p in migrations}
-        for migration in migrations: cluster.sql(database, migration.read_text())
         report["postgres_version"] = cluster.sql("postgres", "show server_version;")
         report["max_prepared_transactions"] = cluster.sql("postgres", "show max_prepared_transactions;")
-        fixture = {**cluster.env, "MCR_PROFILE_RPC_OWNER_ROOT": str(cluster.root),
-            "MCR_PROFILE_RPC_OWNER_IDENTITY": ":".join(map(str, cluster.identity)),
-            "MCR_PROFILE_RPC_OWNER_TOKEN": cluster.token,
-            "MCR_PROFILE_RPC_DATABASE_URL": cluster.url(database),
-            "MCR_PUBLIC_PROFILE_RESTART_FILE": str(out/"private-restart-child.json")}
-        run("native-privacy", "concert_public_profile", ["--exact", "native_current_public_privacy_tombstones_and_minimal_wire", "--ignored"], fixture)
-        run("native-held-exclusion", "concert_public_profile", ["--exact", "native_prepared_child_excludes_privacy_and_direct_tombstone_until_settled", "--ignored"], fixture)
-        run("native-original-budget", "concert_public_profile", ["--exact", "native_original_budget_bounds_owner_lock_wait_and_recovers", "--ignored"], fixture)
-        run("native-capacity", "concert_public_profile", ["--exact", "native_full_hundred_child_capacity_and_fail_closed_overflow", "--ignored"], fixture)
-        run("native-pre-dispatch-cancel", "concert_public_profile", ["--exact", "native_pre_dispatch_cancellation_prevents_late_read", "--ignored"], fixture)
-        run("native-lost-ack", "concert_public_profile", ["--exact", "native_lost_read_and_completion_replies_recover_from_actual_receipt", "--ignored"], fixture)
-        run("native-absence-not-proof", "concert_public_profile", ["--exact", "native_gid_absence_never_settles_active_committed_or_misbound_receipt", "--ignored"], fixture)
-        run("native-owner-before-restart", "concert_public_profile", ["--exact", "native_prepare_restart_quarantine", "--ignored"], fixture)
-        assert cluster.sql(database, "select count(*) from pg_prepared_xacts where database=current_database();") == "1"
-        cluster.stop()
-        time.sleep(2)  # expire the original read; never releases its prepared child
-        cluster.start()
-        assert cluster.sql(database, "select count(*) from pg_prepared_xacts where database=current_database();") == "1"
-        run("native-settlement-after-restart", "concert_public_profile", ["--exact", "native_settle_after_database_restart_and_original_expiry", "--ignored"], fixture)
-        assert cluster.sql(database, "select count(*) from pg_prepared_xacts where database=current_database();") == "0"
+        if not report.get("joined_only"):
+            database = "mcr_profile_self_rpc"  # retained fixture helper's exact isolated name
+            cluster.sql("postgres", "create database mcr_profile_self_rpc template template0;")
+            migrations = sorted((ROOT/"backend/services/profile-service/migrations").glob("*.sql"))
+            numbers = [int(p.name.split("_",1)[0]) for p in migrations]
+            assert len(migrations) >= 7 and numbers == list(range(1,len(migrations)+1))
+            report["migration_sha256"] = {p.name:sha(p) for p in migrations}
+            for migration in migrations: cluster.sql(database, migration.read_text())
+            report["postgres_version"] = cluster.sql("postgres", "show server_version;")
+            report["max_prepared_transactions"] = cluster.sql("postgres", "show max_prepared_transactions;")
+            fixture = {**cluster.env, "MCR_PROFILE_RPC_OWNER_ROOT": str(cluster.root),
+                "MCR_PROFILE_RPC_OWNER_IDENTITY": ":".join(map(str, cluster.identity)),
+                "MCR_PROFILE_RPC_OWNER_TOKEN": cluster.token,
+                "MCR_PROFILE_RPC_DATABASE_URL": cluster.url(database),
+                "MCR_PUBLIC_PROFILE_RESTART_FILE": str(out/"private-restart-child.json")}
+            run("native-privacy", "concert_public_profile", ["--exact", "native_current_public_privacy_tombstones_and_minimal_wire", "--ignored"], fixture)
+            run("native-held-exclusion", "concert_public_profile", ["--exact", "native_prepared_child_excludes_privacy_and_direct_tombstone_until_settled", "--ignored"], fixture)
+            run("native-original-budget", "concert_public_profile", ["--exact", "native_original_budget_bounds_owner_lock_wait_and_recovers", "--ignored"], fixture)
+            run("native-capacity", "concert_public_profile", ["--exact", "native_full_hundred_child_capacity_and_fail_closed_overflow", "--ignored"], fixture)
+            run("native-pre-dispatch-cancel", "concert_public_profile", ["--exact", "native_pre_dispatch_cancellation_prevents_late_read", "--ignored"], fixture)
+            run("native-lost-ack", "concert_public_profile", ["--exact", "native_lost_read_and_completion_replies_recover_from_actual_receipt", "--ignored"], fixture)
+            run("native-absence-not-proof", "concert_public_profile", ["--exact", "native_gid_absence_never_settles_active_committed_or_misbound_receipt", "--ignored"], fixture)
+            run("native-owner-before-restart", "concert_public_profile", ["--exact", "native_prepare_restart_quarantine", "--ignored"], fixture)
+            assert cluster.sql(database, "select count(*) from pg_prepared_xacts where database=current_database();") == "1"
+            cluster.stop()
+            time.sleep(2)  # expire the original read; never releases its prepared child
+            cluster.start()
+            assert cluster.sql(database, "select count(*) from pg_prepared_xacts where database=current_database();") == "1"
+            run("native-settlement-after-restart", "concert_public_profile", ["--exact", "native_settle_after_database_restart_and_original_expiry", "--ignored"], fixture)
+            assert cluster.sql(database, "select count(*) from pg_prepared_xacts where database=current_database();") == "0"
         if report.get("joined"):
             from invalidation_clients_smoke import pki
             pki(cluster)
@@ -241,12 +249,13 @@ def main():
     group = parser.add_mutually_exclusive_group(required=True)
     group.add_argument("--cargo-json", action="append", type=Path)
     group.add_argument("--pinned", type=Path)
+    parser.add_argument("--joined-only", action="store_true", help="freeze only Concert lib and run only mapper plus actual joined cases")
     parser.add_argument("--joined", action="store_true", help="also freeze Concert lib tests for actual owner/reader native qualification")
     parser.add_argument("--profile-only", action="store_true", help="qualify only the owning Profile producer, never the full projection")
     parser.add_argument("--pg-bin", type=Path, default=Path("/opt/homebrew/opt/postgresql@16/bin"))
     args = parser.parse_args()
     if args.cargo_json:
-        print(json.dumps({"pinned": str(freeze(args.cargo_json, args.profile_only, args.joined))}))
+        print(json.dumps({"pinned": str(freeze(args.cargo_json, args.profile_only, args.joined, args.joined_only))}))
         return 0
     report, path = qualify(args.pinned, args.pg_bin)
     print(json.dumps({"result": report["result"], "report": str(path), "cleanup": report["cleanup"]}))
