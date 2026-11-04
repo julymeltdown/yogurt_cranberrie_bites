@@ -879,6 +879,19 @@ builds with ALLNEW<=3GiB to12GiB start,9GiB after all outstanding growth and
 8GiB continuous; no cold/unbounded workload, cap/clock reset or Community
 policy override. Existing shared-target carry is centrally charged once;
 new positive growth/highwater remains in the active owner's allowance.
+Allocator policy details: only existing warm MEDIA compilation with hard
+ALLNEW<=3GiB qualifies for the future12GiB start rule; no cold/new target,
+unbounded growth, archive/install, frontend cap/clock or source-lease change.
+Each exclusive lease logs its fresh existing B0 centrally. Full preexisting
+target is excluded only from task WHOLE; positive new growth remains charged
+to its active owner, with prior receipts/highwater/accepted epochs preserved.
+Dated central snapshot18,557,009,920B at18:13:17 is retained, not a reset of
+current-job growth. Authoritative resource-policy-current.json and
+shared-target-accounting.json remain under external backend-staffing-01a1a21d.
+Only pre-ACCEPT floor/helper pins may change within scope; a new source SHA
+alone needs no reissued offer. Age pending in the older allocator notice is
+superseded by the actual owner ACCEPT18:22:32.266892Z already relayed21d;
+Root copied512MiB remains unadmitted unless an actual later receipt says so.
 
 Ageb91d now reports FIRST ACTUAL ACCEPT18:22:32.266892Z, cleanf309c37c,
 unchanged Root-authorizedcfaABI; guard-before-children/controller+independent
@@ -925,6 +938,52 @@ Actualoffer/ACCEPT still pending. Source controlledHTTP registration is
 TESTONLY because205 actualroleproducer/registration not qualified. Separate
 fresh browser one390 actualmain navigation/unknown/decisionwithdrawal only
 if newsourcePASS; no livejob or whole-original acceptance inferred.
+Social's later finite scheduling disposition: earlier Profile driver tail
+then21e18-case source work precede Admin; fixtures do not await205 liveproducer.
+Requested53d attach original FE37/38/39 IDs as actually advanced, current goal
+ID/status and exact guard/readset pins to existing readiness; no new aligned
+goal, source review or approval queue. Social alone issues the Admin offer
+unless explicitly returning Community custody. No competing offer exists.
+Current dated bounds: Age actual2GiB, FE17native actual128MiB, Artist64MiB
+invalid-reuse-after-decline cleanup pending literalFULL, plus Profile source
+tail128MiB offer1827/expires18:30 conservatively fillglobal4/2,483,027,968B.
+Offer is not ACCEPT; cleanup is not FULL until reported. Preserve accepted
+limits/clocks, no new Community reservation or expiration-inferred release.
+Pre-offer source supersession:53d clean4df79c7b5a674092211661917c41f150cd65605f
+replacesc8eeec38 before anyoffer/ACCEPT, product/tests/native unchanged.
+Owner guard now deduplicates520ownGitobjects across retainedGift/completedFE39/
+Admin branches. Readonly18:27:44.972337Z WHOLE2,207,035,371B/free16,949,891,072B;
+retainedNEWoffset22,510,655B within128MiB. Same21cases/caps/queue/resources0.
+Forwarded pin directlySocial; originalIDs/actualgoal/guard-readset metadata
+requested fromowner, not independently reviewed or inferred bySL.
+Owner subsequently confirms complete readiness sent DIRECT soleSocial:
+originalFE38 O01/O02/O03/O08 andFE39 O07/O09; FE37 unavailable boundaries ONLY,
+not real moderation/evidence integration. Actual persistentgoal ID/status
+ACTIVE and exactRoot transfers included, clean4df79c7b/guard-ownobject successor;
+exact independentguardian/helper/52-file readset SHA, Node/lock/four argv pins,
+fullcarry/caps supplied. SL consumes owner disposition without inspecting
+source/guardian/readset or requiring duplicate technical readback. No newgoal,
+reset/job/hold/paralleloffer; fairqueue and soleSocial allocation preserved.
+
+### Literal backend target handoff —03:29KST
+
+Age owner actualTARGET RELEASE18:28:45.266400Z: compiler_children0,
+zerohandlestrue/lsofexit1empty/independentreleaseguardPASS, soleMEDIA identity
+16777229:539958180 uid501. No target reentry. Receipt
+/private/tmp/mcr-age-deletion-native-569rqzsa/target-release.json. FirstCargo
+FAILED9Wallimports, reported FRESH stale-artifact evidence retained; exact
+2modulemtime request pending with technical owners, no unauthorizedtouch/delete.
+NoEXE/copiednative/PG started, no original/native PASS. SL did no diagnosis,
+implementation inspection or technical permission decision.
+
+World9c12 is direct standing successor; actualrelease relayedWorld/21d/Social,
+correcting old assumption thatAge still repairs in-place. Fresh actualglobal
+position/all-reservation/handle guards still required, no docs/pub/ACK wait.
+Age liveNEW2GiB/workflow remains until literalFULL, despite only202,440,704B
+positive highwater/outside2,121,728B/wholepeak6,647,013,376B. Shortened hardFULL
+18:36:45.265944Z is not actualrelease. Preserve original firstACCEPT/accepted
+clocks, no shrink to measuredpositive. Social latest FEdispositions govern
+fresh admission; old offers/deadlines are not inferred running or FULL.
 
 | Original ID | Owner / current task-level disposition | Work since previous checkpoint / latest retained publication | Remaining original criteria, dependency owner and next action |
 |---|---|---|---|
