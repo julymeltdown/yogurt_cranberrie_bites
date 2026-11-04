@@ -5,6 +5,7 @@ import labelPin from './map-labels-pins.json'
 import landscapePin from './map-landscape-pin.json'
 import tile from './tile-pin.json'
 import { spatialV5ArchitectureScenery } from './architecture'
+import { getSpatialV5ServicePresentation, spatialV5ServiceOverview, verifySpatialV5MapService } from './map-service'
 import { canonicalJson, requireMap, sha256 } from '../../map/json'
 import type { LoadedMap } from '../../map/resources'
 import { validateLoadedScenery, type Scenery, type SceneryObject } from '../../illustrated/model'
@@ -61,6 +62,7 @@ export async function verifySpatialV5MapLayoutPair(label = labels, plants = land
   validateSpatialV5MapLayoutPair(label, plants, labelPins, plantPins)
   const hash = (value: unknown) => sha256(new TextEncoder().encode(JSON.stringify(value)))
   requireMap(await hash(label) === labelPins.document_sha256 && await hash(plants) === plantPins.document_sha256)
+  await verifySpatialV5MapService()
 }
 validateSpatialV5MapLayoutPair()
 const scenes = new Map(spatialV5ThemeIds.map(themeId => {
@@ -69,12 +71,13 @@ const scenes = new Map(spatialV5ThemeIds.map(themeId => {
   const scenery = freeze(spatialV5ArchitectureScenery(themeId, baseScenery))
   const replacements = new Set(source.overview_representations.flatMap(p => 'replaces_prop_id' in p ? [p.replaces_prop_id] : []))
   const frames = data.frames as Readonly<Record<string, Readonly<{ x: number; y: number; width: number; height: number }>>>
-  const overview: readonly SceneryObject[] = freeze([...scenery.objects.filter(o => !replacements.has(o.id)),
+  const originalOverview: readonly SceneryObject[] = freeze([...scenery.objects.filter(o => !replacements.has(o.id)),
     ...source.overview_representations.map(p => ({ id: p.id, atlas_id: scenery.atlases[0]!.id, frame: frames[p.frame]!,
       x: p.x, y: p.y, width: p.width, height: p.height, depth_y: p.depth_y })),
     ...landscape.decorations.map(p => ({ id: p.id, atlas_id: scenery.atlases[0]!.id, frame: frames[p.frame]!,
       x: p.x, y: p.y, width: p.width, height: p.height, depth_y: p.depth_y }))])
-  const mapLabels: readonly ReferenceOverviewLabel[] = freeze(labels.labels.map(p => ({ label: p.label, x: p.x, y: p.y, interactionId: p.interaction_id })))
+  const overview = freeze(spatialV5ServiceOverview(themeId, originalOverview, scenery.atlases[0]!.id))
+  const mapLabels: readonly ReferenceOverviewLabel[] = freeze(getSpatialV5ServicePresentation().labels.map(p => ({ label: p.label, x: p.x, y: p.y, interactionId: p.interaction_id })))
   return [themeId, Object.freeze({ scenery, overview, expected: canonicalJson(scenery),
     metadata: Object.freeze({ ...spatialV5SceneIdentity, themeId, mapLabels }) })] as const
 }))

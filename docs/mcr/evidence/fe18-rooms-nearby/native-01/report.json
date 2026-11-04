@@ -1,0 +1,96 @@
+{
+  "status": "FAIL",
+  "slot": "FE18-CLIENT-NATIVE-202611040538Z",
+  "source": "691768d02fad0e01275444a84b3398f809bb803c",
+  "capturedAtUTC": "2026-11-04T05:38:53.470Z",
+  "preflight": {
+    "availableBytes": 36391964672,
+    "otherValidationBrowserRoots": 0,
+    "interactiveBrowsersPreserved": 1
+  },
+  "pins": {
+    "frontend/src/features/world-nearby/WorldNearby.tsx": "6224994ca76395478d424e5227d8bffb49bc7cb6dd937cbfdbea5ae3fd30cf7f",
+    "frontend/src/features/world-nearby/index.ts": "046a850dbb590d0671c76bc67bea2111a4bc73e23fcefa5c6fb805a203203d38",
+    "frontend/src/features/world-nearby/projection.ts": "d6f8f83482196eb46acdb7d5c9a9fc91b9df052e2c71e88244e104682ad49a27",
+    "frontend/src/features/world-rooms/__tests__/browser-smoke.mjs": "ac9a83ef916da7997a6499f3d7f4b16ae34a82d0b670135661c8f5b9b249d0f1",
+    "frontend/src/features/world-rooms/__tests__/completion/focus.test.tsx": "bc6de7182be90acca4af7c9a9f6c16138037b6831cfe3364f89e8babc183dd2f",
+    "frontend/src/features/world-rooms/__tests__/completion/native.mjs": "8a80ca7cb9fc10aaaad58efe7fda9e25bffa1d2e536929c22f839a2f1830a5f5",
+    "frontend/src/features/world-rooms/__tests__/completion/preview.html": "7c2d322b42206f41db2e1edb7d4569109731ab5c6105e8f05e3ddceba11ed181",
+    "frontend/src/features/world-rooms/__tests__/completion/preview.ts": "942b340a94b0f8adbaf367a32acf2aa9539a4e91042ab995e4e33552d2bad69a",
+    "frontend/src/features/world-rooms/__tests__/fixtures/harness.ts": "2a502b513c4ab51734393dee64f2b46983b14bb7c01dd4c9e32b55d8d9b0653d",
+    "frontend/src/features/world-rooms/__tests__/fixtures/preview.html": "21499beea9d9e9c0daa1cec43df9d55b54f710117fe3e8d69ba249794839dfe0",
+    "frontend/src/features/world-rooms/__tests__/fixtures/preview.tsx": "b53606009d9987c3a8cfe0fd89a3821d22c870b5f4a853d9d87dbcf30304312e",
+    "frontend/src/features/world-rooms/__tests__/ui.test.tsx": "3f86f3e176fde80bd7177ca53d14f1dde64712e6919eafd537c334912291ef4f",
+    "frontend/src/features/world-rooms/__tests__/world-access.test.ts": "a4130e1e19e08e4d1b2234c12204170c9762427ed2aa50df32c4cb8970cf648a",
+    "frontend/src/features/world-rooms/index.ts": "6822da877cf4d0eef2fc4288fffaba386d047b7109a52aa94e80bd353ba83965",
+    "frontend/src/features/world-rooms/model/contract.ts": "d3e19484a27d801d3f9b00d9c7ef37bbda00400338f70decf7f6e05c436c57d3",
+    "frontend/src/features/world-rooms/model/controller.ts": "a2e676f2623ef7cf6c07420312a0bd76adcd02108ad4348f262ead8520358ebc",
+    "frontend/src/features/world-rooms/ui/WorldRooms.tsx": "7dffc0db4327b7453421226c62282330c2122e073fa0d8ebe555e5fc2b84f361",
+    "frontend/src/features/world-rooms/ui/world-access.css": "3b6af995de0f10218cdb5c2b59331e1a7938a92c4d651a5d7b954627bf0171fa",
+    "frontend/src/app/world-entry/__tests__/reference-scene-v5/preview.tsx": "d236e2769abbda946444fb8eda64cf525f48a1c830e42a0715ce8f812e518599",
+    "frontend/src/app/world-entry/__tests__/reference-scene-v5/data.ts": "097697b0c0b12ed6fc61799b6c563bb14205da95e6ac8bec21d0ac6432d4c4bb",
+    "frontend/src/app/world-entry/root-features.tsx": "8d63946b05879cf6a191b7eeb584846549416b4334c4d0328f444be2322fc9b4",
+    "frontend/src/world/composition/index.ts": "90ca131868b60f0c7c5df344503b89ccf17686df85186e9f968742c311718974",
+    "frontend/src/world/scenes/MapScene.ts": "739bea4ff4f470f48ea01038e14f9d3a0ae09fda52c3e7f5bab3eb570b8ace5f",
+    "frontend/src/world/network/replication.ts": "568dda7c23f6d66f9cf5c8239bacf1f58ff1744b0746e07d6cc72812f76f1dd2",
+    "frontend/src/entities/avatar/character-source-pack.json": "f8d6c83818bced007f71af1f59dbc53cd88115c5dab0112fc302d8469a4fdc6f",
+    "contracts/realtime/v1/operations.json": "400d28e861ca5a87c54fde447f77b1680f7ea58e3047ee43b46db25816af6da0",
+    "contracts/realtime/v1/world.schema.json": "1732e627037fe91533ac6f7fe74e36683ce9b846bfbfc020b3cce298ae84df36",
+    "contracts/realtime/v1/policy.json": "3e77e21b036386803c7d5bff0145c434f111ba51b861219a211e853a43d0628b",
+    "contracts/fixtures/realtime/rooms.json": "d04837604d57a40106e823596bc7f7c9d6eb07d8d8829ef0675849348d332529",
+    "contracts/fixtures/realtime/movement-heartbeat.json": "fba34f3b7cba90286ae3b1a1ecd6578a79da496e79d88b920b89bd7d783499dd",
+    "contracts/fixtures/realtime/ticket-response.json": "8162f1ac19b4caf28ca810d9c565386cf8f532b7e282b356999e06fcec4c1c54",
+    "contracts/fixtures/realtime/filtered-viewers.json": "c29bbe1808dca4030ad9efc49192c671ba6ff2afaacc1a42aae368de3745dd36"
+  },
+  "cases": [],
+  "captures": [
+    {
+      "path": "/Users/lhs/Desktop/mcr-worktrees/fe-ref-customize/docs/mcr/evidence/fe18-rooms-nearby/native-01/rooms-full-360.png",
+      "screen": "Full target retains current virtual membership",
+      "viewport": {
+        "width": 360,
+        "height": 844
+      },
+      "capturedAtUTC": "2026-11-04T05:38:56.399Z",
+      "source": "691768d02fad0e01275444a84b3398f809bb803c",
+      "privacy": "Only synthetic source-controlled fan/character fixtures; no real account, message, location or credential data"
+    },
+    {
+      "path": "/Users/lhs/Desktop/mcr-worktrees/fe-ref-customize/docs/mcr/evidence/fe18-rooms-nearby/native-01/rooms-admitted-360.png",
+      "screen": "Correlated switch admitted; keyboard focus on result",
+      "viewport": {
+        "width": 360,
+        "height": 844
+      },
+      "capturedAtUTC": "2026-11-04T05:38:57.001Z",
+      "source": "691768d02fad0e01275444a84b3398f809bb803c",
+      "privacy": "Only synthetic source-controlled fan/character fixtures; no real account, message, location or credential data"
+    },
+    {
+      "path": "/Users/lhs/Desktop/mcr-worktrees/fe-ref-customize/docs/mcr/evidence/fe18-rooms-nearby/native-01/nearby-before-360.png",
+      "screen": "Authorized roster and actual Phaser before filtered removal",
+      "viewport": {
+        "width": 360,
+        "height": 844
+      },
+      "capturedAtUTC": "2026-11-04T05:38:57.468Z",
+      "source": "691768d02fad0e01275444a84b3398f809bb803c",
+      "privacy": "Only synthetic source-controlled fan/character fixtures; no real account, message, location or credential data"
+    }
+  ],
+  "errors": [],
+  "limits": [
+    "Synthetic canonical Auth/C03/C05 source7005 fixture, not live backend or real BE37 block enforcement",
+    "Actual default Phaser + authorized DOM client behavior; not production art admission or whole reference fidelity",
+    "Automated desktop Chrome keyboard/touch events and viewports, not physical devices/software keyboards",
+    "W04 invitation authority unresolved; capacity is not measured occupancy"
+  ],
+  "browser": "156.0.8078.80",
+  "error": "AssertionError [ERR_ASSERTION]: The expression evaluated to a falsy value:\n\n  assert(rowResult.paintAfter.changedChannels > 20)\n\n    at file:///Users/lhs/Desktop/mcr-worktrees/fe-ref-customize/frontend/src/features/world-rooms/__tests__/completion/native.mjs:138:5",
+  "cleanup": {
+    "browserClosed": true,
+    "serverClosed": true,
+    "temporaryRemoved": true
+  },
+  "peakMeasuredWorkflowBytes": 77455513
+}

@@ -1,0 +1,513 @@
+{
+  "task": "QA06",
+  "comparison": "ACTUAL_HUMAN_REATTACHMENT_ALL_TEN_EXISTING_FRAMES",
+  "status": "IN_PROGRESS",
+  "goalReadback": {
+    "status": "BLOCKED",
+    "createdAt": 1793759287,
+    "objectivePreserved": true,
+    "newGoalCreated": false,
+    "tokenBudgetSet": false,
+    "readyComparisonExecuting": true
+  },
+  "reference": {
+    "path": "docs/mcr/evidence/visual/qa06/human-reference-20261104/reference-human.jpg",
+    "bytes": 482737,
+    "sha256": "2b3988d546f87b813d78ca13bf267730a6dd19118bd6535a2d3c3032b6f12d23",
+    "dimensions": [
+      1280,
+      853
+    ],
+    "authority": "Exact new human JPEG; byte-for-byte preserved. Earlier PNG remains historical evidence.",
+    "regionGuide": "Scaled earlier ten-panel registration to new JPEG dimensions, directly checked against whole attached image; presentation crop guide only, not a pixel oracle or numerical fidelity claim."
+  },
+  "screens": [
+    {
+      "screen": "landing",
+      "status": "IN_PROGRESS",
+      "frame": {
+        "path": "docs/mcr/evidence/visual/qa06/fidelity-v3/equal-landing-390.png",
+        "relativeToComparison": "../fidelity-v3/equal-landing-390.png",
+        "bytes": 235736,
+        "sha256": "0a979de9e0fa7d5c9b7839756f2825eda5358c2c6db34465e18a67a6470bb637",
+        "pngDimensions": [
+          390,
+          684
+        ],
+        "context": "Existing 390x684 desktop fixture at original aspect; no new public/legal flow acceptance.",
+        "sourceCommit": "980fc4d85020f297b36fee8195e1ca92079ff33f application tree; QA06 fixture/harness59f88",
+        "newCapture": false
+      },
+      "targetRegionGuide": {
+        "x": 3.3333333333333335,
+        "y": 2.4990234375,
+        "width": 250.0,
+        "height": 438.162109375
+      },
+      "observedAgainstActualHumanPhoto": "Poster logo, moon/cemetery, rose, four approved characters, tagline and red entry action preserve the main hierarchy. The newly supplied target is more irregular in its edge wear and print lettering; current vector framing is straighter.",
+      "sourceFixtureCapabilitySeparation": "Selected-pack faces/poses are source constraints, not permission to copy legacy target character pixels. Required legal/status content can extend beyond the poster; do not remove it.",
+      "responsibleNextAction": "Shared frame/print correction routes to Root. No additional landing-specific source defect established in this bounded comparison. Required final composition/device coverage remains open."
+    },
+    {
+      "screen": "login",
+      "status": "IN_PROGRESS",
+      "frame": {
+        "path": "docs/mcr/evidence/visual/qa06/fidelity-v3/equal-login-390.png",
+        "relativeToComparison": "../fidelity-v3/equal-login-390.png",
+        "bytes": 362657,
+        "sha256": "f3b79abb641ba8e2d8dad61f472f4f449a7e07b35bc567f0aee14231ce78bead",
+        "pngDimensions": [
+          390,
+          746
+        ],
+        "context": "Existing 390x746 desktop fixture at original aspect; real mobile keyboard/provider qualification remains open.",
+        "sourceCommit": "980fc4d85020f297b36fee8195e1ca92079ff33f application tree; QA06 fixture/harness59f88",
+        "newCapture": false
+      },
+      "targetRegionGuide": {
+        "x": 257.5,
+        "y": 2.4990234375,
+        "width": 229.16666666666666,
+        "height": 438.162109375
+      },
+      "observedAgainstActualHumanPhoto": "Black cemetery surround, cream form, red submit and lower provider/create-account hierarchy correspond. The top silhouette/print contours and border treatment remain visibly authored differently; shared frame/type needs target-led correction.",
+      "sourceFixtureCapabilitySeparation": "Remember-me, enabled social providers and fictional account state are not implied by the reference. Preserve actual validation/consent/reset/create/provider-unavailable states and44px controls.",
+      "responsibleNextAction": "Root shared style route only for proven shared drift; no invented auth capability or deletion of required signup/consent flows. Actual iOS/Android keyboard remains NOT_RUN."
+    },
+    {
+      "screen": "world",
+      "status": "IN_PROGRESS",
+      "frame": {
+        "path": "docs/mcr/evidence/visual/qa06/human-reference-20261104/world-native02.png",
+        "relativeToComparison": "world-native02.png",
+        "bytes": 272306,
+        "sha256": "3362e0aacbb892e93d0311b96289e509220d4ed979c4e4aa27eedad74b5318ba",
+        "pngDimensions": [
+          390,
+          554
+        ],
+        "context": "Qualified native02 at390x554, published9356. Old architecture data; not combined architecture/currentsemanticMAP.",
+        "sourceCommit": "5619da572b7e9ba0b4ca614852a90f65666719a4",
+        "newCapture": false,
+        "copiedFromQualifiedArtifact": {
+          "revision": "27502f714441c9f5b8d6257fe07d0f77eb7c5e1b",
+          "path": "docs/mcr/evidence/world-presentation-budget/native-02/candidate-parade-390-h554.png",
+          "bytesUnchanged": true
+        }
+      },
+      "targetRegionGuide": {
+        "x": 490.8333333333333,
+        "y": 2.4990234375,
+        "width": 308.3333333333333,
+        "height": 438.162109375
+      },
+      "observedAgainstActualHumanPhoto": "Recovered scene373px versus baseline280px materially improves foreground scale and scene-to-nav composition. Target still has broader character distribution and different scene massing; current selected actors remain grouped.",
+      "sourceFixtureCapabilitySeparation": "Roster coordinates are explicit synthetic snapshot content, not a production placement defect. Selected art is fixed; no geometry, authoritative feet, camera or fake-position change is inferred. Safety/status and tools are real required controls.",
+      "responsibleNextAction": "Shared chrome packet is ready. Root/Artist continue actual architecture/density work; combined corrected frames come from their existing queue. Original full visual criterion stays open."
+    },
+    {
+      "screen": "map",
+      "status": "IN_PROGRESS",
+      "frame": {
+        "path": "docs/mcr/evidence/visual/qa06/human-reference-20261104/map-architecture-native04-h754.png",
+        "relativeToComparison": "map-architecture-native04-h754.png",
+        "bytes": 408637,
+        "sha256": "9bdeea28ffe0dc67b92174cdd51b091e047fcd0b60dddad686b8cc3f9f04991f",
+        "pngDimensions": [
+          390,
+          754
+        ],
+        "context": "Architecture native04 exact390x754 -h754 file;49objects, oldWorldShell/CSS. Published002d/receipt95b/mastera0db.",
+        "sourceCommit": "4cb162b71133446e73533ce3471b06fffea6327b",
+        "newCapture": false,
+        "copiedFromQualifiedArtifact": {
+          "revision": "a0db1770b048161c5df818f7e4e2417923c8d542",
+          "path": "docs/mcr/evidence/reference-scene-v5/architecture-v2/native-04/map-parade-390-h754.png",
+          "bytesUnchanged": true
+        }
+      },
+      "targetRegionGuide": {
+        "x": 802.5,
+        "y": 2.4990234375,
+        "width": 226.66666666666666,
+        "height": 438.162109375
+      },
+      "observedAgainstActualHumanPhoto": "Revised brick architecture, six clear labels, winding paths and planting are visible. Central building mass/width, enclosed courtyard feel and populated landscape density still differ from the supplied target.",
+      "sourceFixtureCapabilitySeparation": "FOOD/MERCH/etc in this old image are superseded semantic presentation, not desired fictional features. New51-object wings and correctedMCRservice labels/actions are not adopted or proved by this49-object capture.",
+      "responsibleNextAction": "Root+Artist already own semanticMap+wings work. Reuse their next qualified corrected frame naturally; do not duplicate capture/source ownership or rename canonical authority IDs."
+    },
+    {
+      "screen": "customize",
+      "status": "IN_PROGRESS",
+      "frame": {
+        "path": "docs/mcr/evidence/visual/qa06/human-reference-20261104/customize-portrait.png",
+        "relativeToComparison": "customize-portrait.png",
+        "bytes": 58703,
+        "sha256": "c4cb177d72ae8ebe9dcc57ef28a5880abb7171aaa88429b275db847d6a5d7af2",
+        "pngDimensions": [
+          350,
+          685
+        ],
+        "context": "Qualified Motion component350x685PNG (DOM350x683.984) inside390x698 viewport; publisheda93. Full content element, not publicRoot viewport.",
+        "sourceCommit": "14d61ee7d179732d3fd582de0876de664613ff79",
+        "newCapture": false,
+        "copiedFromQualifiedArtifact": {
+          "revision": "57c4fbb1554e25ef3a1756e0d4ea9cfe2147ab91",
+          "path": "docs/mcr/evidence/avatar-motion-adoption/portrait-responsive/component-390x698.png",
+          "bytesUnchanged": true
+        }
+      },
+      "targetRegionGuide": {
+        "x": 1033.3333333333333,
+        "y": 2.4990234375,
+        "width": 245.0,
+        "height": 438.162109375
+      },
+      "observedAgainstActualHumanPhoto": "Responsive267px square preview restores much of the portrait hierarchy over old192px. Real right-side five-category rail, hair choices and red Save remain visible. Extra pose/mode rows and longer panel differ from target composition.",
+      "sourceFixtureCapabilitySeparation": "Those extra supported controls must remain reachable; sixth icon/palette/random and target character replacement are not implied features. Keep64px source buffer/approved pixels and genuine draft/reset/save states. Element scrolling cannot certify publicRoot fit.",
+      "responsibleNextAction": "Prior preview/aspect repair is bounded verified. Any further composition refinement must preserve actual features in owner scope; publicRoot/device/live-save and whole target fidelity stay open."
+    },
+    {
+      "screen": "feed",
+      "status": "IN_PROGRESS",
+      "frame": {
+        "path": "docs/mcr/evidence/visual/qa06/postfix-12a5-repairs-tail/feed-parade-390-h631.png",
+        "relativeToComparison": "../postfix-12a5-repairs-tail/feed-parade-390-h631.png",
+        "bytes": 47709,
+        "sha256": "a08da33b96c8f94589c69635961535ea156677e56e38a38a65d7b4d82d551c75",
+        "pngDimensions": [
+          390,
+          631
+        ],
+        "context": "Published client390x631, corrected synthetic HTTP/C05, one text-only post; no new flow rerun.",
+        "sourceCommit": "12a5d394eeabc89e1c7b0012fb51038f737c9a7f",
+        "newCapture": false
+      },
+      "targetRegionGuide": {
+        "x": 2.5,
+        "y": 448.9912109375,
+        "width": 248.33333333333334,
+        "height": 401.509765625
+      },
+      "observedAgainstActualHumanPhoto": "Bottom compose/duplicate-section repairs are retained. Target has dense illustrated post cards; actual current frame has a small single text-only card and shared mechanical chrome/type.",
+      "sourceFixtureCapabilitySeparation": "Post count/photos/reaction totals are fixture content, not permission to fabricate media/activity. The red title rectangle is captured keyboard focus, not decorative border. Real composer/tools/refresh states must remain.",
+      "responsibleNextAction": "Root shared frame/type route; Social receives exact visual context and preservation requirements. No new leaf feed-content defect established; actual optional-media state remains a coverage/input distinction."
+    },
+    {
+      "screen": "meet",
+      "status": "IN_PROGRESS",
+      "frame": {
+        "path": "docs/mcr/evidence/visual/qa06/postfix-12a5-repairs-tail/meet-parade-390-h637.png",
+        "relativeToComparison": "../postfix-12a5-repairs-tail/meet-parade-390-h637.png",
+        "bytes": 81019,
+        "sha256": "7cd49e1a0e6348e42f009966f554d52377dd89d90d74fd9f65b7196505d4bb02",
+        "pngDimensions": [
+          390,
+          637
+        ],
+        "context": "Published client390x637 with same three party titles/capacities as reference comparison; sourceCSS unchanged througha0db.",
+        "sourceCommit": "12a5d394eeabc89e1c7b0012fb51038f737c9a7f",
+        "newCapture": false
+      },
+      "targetRegionGuide": {
+        "x": 255.83333333333334,
+        "y": 448.9912109375,
+        "width": 245.83333333333334,
+        "height": 401.509765625
+      },
+      "observedAgainstActualHumanPhoto": "Same three-row layout makes a client type difference assessable: party names/place lines are visually less prominent and smaller relative to row/action chrome than target. Names use fixed15px title CSS; row minheight110px and44px actions are already established. Shared footer repeats one geometric figure.",
+      "sourceFixtureCapabilitySeparation": "Missing member portraits and disabled CreateParty represent current fixture/capability states. Do not fabricate members, enable unavailable actions, or copy fictional participation. The captured red heading rectangle is focus.",
+      "responsibleNextAction": "Route leaf title/place/action hierarchy to Community for an exact current owner; Root owns shared frame/footer. Preserve the previously fixed CreateParty reachability, row content, statuses and44px targets."
+    },
+    {
+      "screen": "gifts",
+      "status": "IN_PROGRESS",
+      "frame": {
+        "path": "docs/mcr/evidence/visual/qa06/fidelity-v3/equal-gifts-390.png",
+        "relativeToComparison": "../fidelity-v3/equal-gifts-390.png",
+        "bytes": 72242,
+        "sha256": "8717c30724a0dbd1a7983b4ea129e810a599b1b2a57545d8fff208116f39d635",
+        "pngDimensions": [
+          390,
+          608
+        ],
+        "context": "Existing390x608 corrected foreign-owner fixture. Reserve disabled baseline was own fixture mistake; no new Reserve defect.",
+        "sourceCommit": "980fc4d85020f297b36fee8195e1ca92079ff33f application tree; QA06 fixture/harness59f88",
+        "newCapture": false
+      },
+      "targetRegionGuide": {
+        "x": 505.8333333333333,
+        "y": 448.9912109375,
+        "width": 257.5,
+        "height": 401.509765625
+      },
+      "observedAgainstActualHumanPhoto": "Three-row browse/quantity/place/action structure is close. Current125px minimum cards and extra filter line differ from target rhythm; dominant shared drift is frame/footer. Target illustrated item slots are not populated in this fixture.",
+      "sourceFixtureCapabilitySeparation": "No-photo labels, quantities, KST windows and genuine own-activity/filter features remain truthful. Do not invent product photos or shorten44px Reserve/link controls to imitate target ink bounds.",
+      "responsibleNextAction": "Root shared frame/footer route plus Community context; no independent new Gift leaf fix is asserted from absent optional imagery or supported filters."
+    },
+    {
+      "screen": "wall",
+      "status": "NOT_RUN",
+      "frame": {
+        "path": "docs/mcr/evidence/visual/qa06/fidelity-v3/equal-wall-390.png",
+        "relativeToComparison": "../fidelity-v3/equal-wall-390.png",
+        "bytes": 45919,
+        "sha256": "bbbabdc36c82b3fa6929b7ae2199080a2f968e2e9d8fc5667cca1aaa7d079cc0",
+        "pngDimensions": [
+          390,
+          639
+        ],
+        "context": "Actual default unavailable guard only; this is not a qualified mural editor image.",
+        "sourceCommit": "980fc4d85020f297b36fee8195e1ca92079ff33f application tree; QA06 fixture/harness59f88",
+        "newCapture": false
+      },
+      "targetRegionGuide": {
+        "x": 766.6666666666666,
+        "y": 448.9912109375,
+        "width": 245.0,
+        "height": 401.509765625
+      },
+      "observedAgainstActualHumanPhoto": "The target contains a large mural grid, title, bounded right tool rail, palette and cooldown area. Existing available frame shows only the truthful current-world qualification error, so editor proportions cannot be evaluated from it.",
+      "sourceFixtureCapabilitySeparation": "Do not replace this guard with fake target art/anchor/admission. The client editor can and should be compared under its own valid deterministic fixture; publicRoot denial does not make all client work depend on backend/device readiness.",
+      "responsibleNextAction": "Published FE32 owner component qualification is separately recorded as MOCK_READY; no duplicate editor task or capture requested. This selected QA06 guard frame remains NOT_RUN for editor comparison. Public root/live/device/full visual acceptance remain open.",
+      "supplementalOwnerEvidence": {
+        "task": "FE32",
+        "qualification": "MOCK_READY",
+        "originalPureClientCriteria": "SATISFIED_OWNER_REPORTED",
+        "publicationCommit": "4af1c86863698e311d286039a0702d5b2517c1c3",
+        "runtimeSourceCommit": "21ceef6080c302ca8d7a92ef6045db88c7d5bf70",
+        "evidenceScope": "Production MuralSyncPanel/MuralEditor actual raster and canonical HTTP, frozen deterministic fixture; no production-root, liveBE, physical-device or IN04 claim.",
+        "referenceSha256": "2b3988d546f87b813d78ca13bf267730a6dd19118bd6535a2d3c3032b6f12d23",
+        "report": {
+          "path": "docs/mcr/evidence/fe32-client/native/report.json",
+          "sha256": "eda5a7c8162b8d78ffe734df2c0ded31ddeb9556a6fa12d531a9bf61f57818e6"
+        },
+        "ownerComparison": {
+          "path": "docs/mcr/frontend/fe32-client-delivery.md",
+          "sha256": "099526f66cfcd6c6471ec0a7c38adf0971bbb41a680c05b6fd634518d9ac3ba1",
+          "actualFramesViewedByOwner": [
+            "360-loaded",
+            "390-loaded",
+            "430-loaded",
+            "390-preview",
+            "390-unknown",
+            "360-cooldown"
+          ],
+          "reportedValidation": "136 tests/11 files; 3-width actual component+canonical HTTP/C04 synthetic native PASS; 15 captures; owner remote ancestry/payload checks reported complete"
+        },
+        "geometry": [
+          {
+            "width": 360,
+            "geometry": {
+              "panel": {
+                "width": 348,
+                "height": 635.71875
+              },
+              "canvas": {
+                "top": 71,
+                "width": 342,
+                "height": 376.1875
+              },
+              "tools": {
+                "right": 9,
+                "top": 77,
+                "width": 44
+              },
+              "palette": {
+                "top": 451.1875,
+                "height": 62
+              },
+              "ratio": 0.5917514624195055
+            },
+            "errors": []
+          },
+          {
+            "width": 390,
+            "geometry": {
+              "panel": {
+                "width": 378,
+                "height": 668.71875
+              },
+              "canvas": {
+                "top": 71,
+                "width": 372,
+                "height": 409.1875
+              },
+              "tools": {
+                "right": 9,
+                "top": 77,
+                "width": 44
+              },
+              "palette": {
+                "top": 484.1875,
+                "height": 62
+              },
+              "ratio": 0.6118977522314126
+            },
+            "errors": []
+          },
+          {
+            "width": 430,
+            "geometry": {
+              "panel": {
+                "width": 418,
+                "height": 712.71875
+              },
+              "canvas": {
+                "top": 71,
+                "width": 412,
+                "height": 453.1875
+              },
+              "tools": {
+                "right": 9,
+                "top": 77,
+                "width": 44
+              },
+              "palette": {
+                "top": 528.1875,
+                "height": 62
+              },
+              "ratio": 0.6358574121980094
+            },
+            "errors": []
+          }
+        ],
+        "sourceInputPins": 21,
+        "artifactPattern": "docs/mcr/evidence/fe32-client/native/{360,390,430}-{loaded,preview,cooldown,unknown,frozen}.png",
+        "regressionFixes": [
+          "Track every held touch until release to prevent ambiguous selection",
+          "Preserve newer snapshot cooldown deadline against delayed placement acknowledgement"
+        ],
+        "qa06Verification": "Read actual published-revision delivery doc and native report Git blobs; checked exact human-reference SHA/runtime source and 3-width PASS metadata. No new remote fetch, payload audit, test, capture or independent visual acceptance; owner performed the recorded comparison.",
+        "limitations": [
+          "Original QA06 selected default-guard frame remains NOT_RUN for editor comparison",
+          "Component fixture does not prove public root editor admission, live service, physical devices, full reference fidelity or IN04",
+          "Shared frame/footer source was unchanged in these captures; no adoption or new capture inferred",
+          "Owner publication report supersedes pending-publication prose in sealed delivery doc; QA06 does not infer clean STOP or goal completion"
+        ]
+      }
+    },
+    {
+      "screen": "me",
+      "status": "IN_PROGRESS",
+      "frame": {
+        "path": "docs/mcr/evidence/visual/qa06/postfix-12a5-repairs-tail/me-parade-390-h595.png",
+        "relativeToComparison": "../postfix-12a5-repairs-tail/me-parade-390-h595.png",
+        "bytes": 49395,
+        "sha256": "007f38ed44b197b0f354c057108a322fc9ea388cce6a2c2065a576bce22aeee5",
+        "pngDimensions": [
+          390,
+          595
+        ],
+        "context": "Published client390x595 cold authorized activity unavailable; profileCSS unchanged througha0db.",
+        "sourceCommit": "12a5d394eeabc89e1c7b0012fb51038f737c9a7f",
+        "newCapture": false
+      },
+      "targetRegionGuide": {
+        "x": 1015.0,
+        "y": 448.9912109375,
+        "width": 263.3333333333333,
+        "height": 401.509765625
+      },
+      "observedAgainstActualHumanPhoto": "Black profile header, selected avatar, bio/actions/tabs preserve hierarchy. Current portrait shows more full-body figure inside its square than the target\u2019s close portrait; footer is repeated geometric marchers and type/chrome remain different.",
+      "sourceFixtureCapabilitySeparation": "Some portrait/hair/body occupancy is selected artwork/configuration, not a client bug. Diagnose local profile presentation before changing it; never crop/replace approved art blindly or alter shared/world thumbnails. Cold activity, level/currency and private provider handles must not be fabricated.",
+      "responsibleNextAction": "Social receives a bounded profile-framing diagnosis with unchanged-art constraints, not an unconditional crop mandate. Root shared frame/footer fix proceeds. Existing real profile options/privacy/consent links remain reachable."
+    }
+  ],
+  "semanticMapRequirements": {
+    "FOOD": {
+      "presentation": "FEED",
+      "route": "/feed",
+      "icon": "post/message"
+    },
+    "MERCH": {
+      "presentation": "WALL",
+      "route": "/wall",
+      "icon": "mural grid/brush"
+    },
+    "MEETUP ZONE": {
+      "presentation": "MEET",
+      "route": "/meet",
+      "icon": "people"
+    },
+    "GIVEAWAY BOOTH": {
+      "presentation": "GIFTS",
+      "route": "/gifts",
+      "icon": "gift"
+    },
+    "STAGE/PLAZA": "Virtual scenery; canonicalIDs/geometry/reviewed-place/physical-arrival authority unchanged."
+  },
+  "sourceDiagnosisPins": [
+    {
+      "path": "frontend/src/app/shell-chrome/parade-footer.tsx",
+      "revision": "a0db1770b048161c5df818f7e4e2417923c8d542",
+      "sha256": "7ccff5284eeb2a7851584694f9690835fa13e37746d9d68f0b2b10b8882afc2d"
+    },
+    {
+      "path": "frontend/src/app/shell-chrome/shell-chrome.css",
+      "revision": "a0db1770b048161c5df818f7e4e2417923c8d542",
+      "sha256": "759a7749c7e1bceb8b8ebfe6500128d1ef39b0b4cd4aac3ae142ee782d525a21"
+    },
+    {
+      "path": "frontend/src/shared/ui/concert-window/concert-window.css",
+      "revision": "a0db1770b048161c5df818f7e4e2417923c8d542",
+      "sha256": "54bc2ca1737e48c589d2456530c529af39a50e6413aace8dec1bfa5ae5564032"
+    },
+    {
+      "path": "frontend/src/features/party-discovery/ui/party-discovery.css",
+      "revision": "a0db1770b048161c5df818f7e4e2417923c8d542",
+      "sha256": "6e7c259074016d9f05d90cba8a3355403906a4330a384548302c8abe2b564e54"
+    },
+    {
+      "path": "frontend/src/features/me/ui/me.css",
+      "revision": "a0db1770b048161c5df818f7e4e2417923c8d542",
+      "sha256": "037a55c87cc72e6b06cba8fb4d4b35a7ac8356ac98919d1db237d54fa2931a48"
+    },
+    {
+      "path": "frontend/src/features/me/ui/AvatarThumbnail.tsx",
+      "revision": "a0db1770b048161c5df818f7e4e2417923c8d542",
+      "sha256": "829748940d147959bf8656e9448d00b7f9ba49305a9d5e8ac17acb0de72cfdd0"
+    },
+    {
+      "path": "frontend/src/features/event-feed/feed.css",
+      "revision": "a0db1770b048161c5df818f7e4e2417923c8d542",
+      "sha256": "7749673c8e87e4d07cacd4c3dff084307d5de40386a1f4fa1a2fe87afb3fece0"
+    },
+    {
+      "path": "frontend/src/features/gift-discovery/ui/reference-gifts.css",
+      "revision": "a0db1770b048161c5df818f7e4e2417923c8d542",
+      "sha256": "c11d23a14cf241e763f8c07b8f4c4595923aa1aac6e4c25cad1ccebfa0745040"
+    }
+  ],
+  "requiredSharedPacket": "shared-frame-footer-packet.json atfc65be64; already sent directlyRoot/World/Artist for immediate disjoint implementation; not blocked by this report",
+  "leafPackets": [
+    {
+      "id": "QA06-HUMAN-MEET-TYPE-01",
+      "classification": "ACTUAL_CLIENT_PRESENTATION",
+      "ownerRoute": "Community allocator + actual currently assigned implementation counterpart; old completed Meet/Gifts owner not implicitly awakened",
+      "sourcePath": "frontend/src/features/party-discovery/ui/party-discovery.css",
+      "lines": "25-39 (especially31-33)",
+      "finding": "At the same3rows, fixed15px party title and12px location hierarchy is visually underscaled relative to supplied target. Diagnose/rebalance type/spacing/action ink without removing44px hit areas or reducing genuine feature states.",
+      "validation": "Same frozen3partycontent/reference aspect, longname and360/390/430 readability as relevant to changedCSS; preserve existing action/footer reachability. Owner chooses implementation and validation, no unchanged matrix rerun by QA06."
+    },
+    {
+      "id": "QA06-HUMAN-ME-PORTRAIT-01",
+      "classification": "CLIENT_PRESENTATION_DIAGNOSIS_REQUIRED_ART_DEPENDENT",
+      "ownerRoute": "Social allocator + exact available profile implementation owner; no general avatar lease",
+      "sourcePath": "frontend/src/features/me/ui/me.css",
+      "lines": "51-61, profile-scoped avatar frame/identity; AvatarThumbnail.tsx13-36 read-only provenance",
+      "finding": "Target portrait framing is closer than saved current full-body thumbnail. Separate selected-art/configuration proportions from local frame scale/crop before proposing any change.",
+      "constraints": "No unconditionalcropfix; approvedart/UV/source buffers/lifecycles and World/header/feed/avatar callers remain unchanged absent exact authority. Preserve genuine account/consent/privacy/options.",
+      "validation": "Actual same approved saved-avatar bytes/configuration, native profile bounds, and exact target qualitative comparison; no legacyface replacement or false publicRoot/live acceptance."
+    }
+  ],
+  "remainingOriginalCriteria": [
+    "All ten target composition/proportion/type/density/character-scale criteria remain required; bounded earlier repairs do not waive them",
+    "Actual iOS Safari and Android Chrome, real software keyboard and safe-area checks remain NOT_RUN; original connection question pending, no repeatedrequest/poll",
+    "Qualified publicWall and publicRootCustomize/runtime/service-save evidence remain separate open inputs; valid client fixtures may proceed now",
+    "Three-skin/360-390-430 existing bounded evidence is retained; changed owner source requires relevant fresh qualification, not repeated unchanged flows",
+    "Root/Artist semanticMAP+51wings corrected capture pending their one existing BackendSL queue; old49/currentWorld/portrait contexts are not combined automatically"
+  ],
+  "workPerformed": "Read-only direct viewing of exact humanJPEG and all ten selected existing frames, source hunk diagnosis, byte-preserved copies and QA06-only comparison artifacts. No application/art/source/contract write, new browser/native/build/test/device request, payload review rerun, or slot claim.",
+  "delivery": "Commit owned artifacts, direct packets to Root/Artist/Social/Community actual source owners plus World for staffing/context. No KingCC or QA/SLapproval gate; sourceowners implement/validate/publish independently."
+}

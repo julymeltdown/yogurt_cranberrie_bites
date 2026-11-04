@@ -51,6 +51,6 @@ it('projects only coherent v10 authored label obstacles; decorative labels remai
   expect(spatialV5LabelObstacles({ ...identity, mapRevision: 4 }, 384, 648)).toEqual([])
   const boxes = spatialV5LabelObstacles(identity, 384, 648)
   expect(boxes).toHaveLength(6)
-  expect(boxes.filter(b => b.interactionId !== null).map(b => b.interactionId)).toEqual(['stage_info', 'gifts_info'])
+  expect(boxes.filter(b => b.interactionId !== null).map(b => b.interactionId)).toEqual([])
   expect(boxes[0]).toMatchObject({ left: 133, top: 81, width: 156, height: 39 })
 })

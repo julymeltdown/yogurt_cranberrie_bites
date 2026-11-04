@@ -1,0 +1,102 @@
+{
+  "owner": "FE18",
+  "captures": [
+    {
+      "path": "/Users/lhs/Desktop/mcr-worktrees/fe-ref-customize/docs/mcr/evidence/fe18-rooms-nearby/native-02/rooms-full-390.png",
+      "screen": "Full target retains current virtual membership",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "capturedAtUTC": "2026-11-04T05:42:04.936Z",
+      "source": "d5247c9c87233621afc58fc556d7e4423786b26e",
+      "privacy": "Only synthetic source-controlled fan/character fixtures; no real account, message, location or credential data",
+      "capturedAtAsiaSeoul": "2026-11-04T14:42:04.936000+09:00",
+      "branch": "codex/mcr-fe-FE18-client-completion",
+      "sha256": "abccc285a406c4d8b15b16b56fbf5a3a2d0ad8f65614d643ab3c429ed16cb245",
+      "qualification": "Owner inspected fixture-based client evidence; original capture source retained",
+      "publication": "Source commits pending Root153 publication; no real-backend/device/production-art acceptance"
+    },
+    {
+      "path": "/Users/lhs/Desktop/mcr-worktrees/fe-ref-customize/docs/mcr/evidence/fe18-rooms-nearby/native-02/rooms-admitted-390.png",
+      "screen": "Correlated switch admitted; keyboard focus on result",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "capturedAtUTC": "2026-11-04T05:42:05.504Z",
+      "source": "d5247c9c87233621afc58fc556d7e4423786b26e",
+      "privacy": "Only synthetic source-controlled fan/character fixtures; no real account, message, location or credential data",
+      "capturedAtAsiaSeoul": "2026-11-04T14:42:05.504000+09:00",
+      "branch": "codex/mcr-fe-FE18-client-completion",
+      "sha256": "85958a9ac3ca534d13885f1b368715206c5a633776fcef22e925d5284dce91c3",
+      "qualification": "Owner inspected fixture-based client evidence; original capture source retained",
+      "publication": "Source commits pending Root153 publication; no real-backend/device/production-art acceptance"
+    },
+    {
+      "path": "/Users/lhs/Desktop/mcr-worktrees/fe-ref-customize/docs/mcr/evidence/fe18-rooms-nearby/native-03/nearby-before-390.png",
+      "screen": "Authorized roster and actual Phaser before filtered removal",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "capturedAtUTC": "2026-11-04T06:03:36.575Z",
+      "source": "4248e580fac41741ebc05a7f6804067aaaacd401",
+      "privacy": "Only synthetic source-controlled fan/character fixtures; no real account, message, location or credential data",
+      "capturedAtAsiaSeoul": "2026-11-04T15:03:36.575000+09:00",
+      "branch": "codex/mcr-fe-FE18-client-completion",
+      "sha256": "3262e890e919081f69e36c6b851adbac7d6a70f6074ce5efce13e37cb63197df",
+      "qualification": "Owner inspected fixture-based client evidence; original capture source retained",
+      "publication": "Source commits pending Root153 publication; no real-backend/device/production-art acceptance"
+    },
+    {
+      "path": "/Users/lhs/Desktop/mcr-worktrees/fe-ref-customize/docs/mcr/evidence/fe18-rooms-nearby/native-03/nearby-removed-390.png",
+      "screen": "One filtered projection removes the name and actual painted avatar",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "capturedAtUTC": "2026-11-04T06:03:36.908Z",
+      "source": "4248e580fac41741ebc05a7f6804067aaaacd401",
+      "privacy": "Only synthetic source-controlled fan/character fixtures; no real account, message, location or credential data",
+      "capturedAtAsiaSeoul": "2026-11-04T15:03:36.908000+09:00",
+      "branch": "codex/mcr-fe-FE18-client-completion",
+      "sha256": "cd3a1f320bed8124dec479f43bce28ce149632b0a056c98b1f934bf9710c0ac1",
+      "qualification": "Owner inspected fixture-based client evidence; original capture source retained",
+      "publication": "Source commits pending Root153 publication; no real-backend/device/production-art acceptance"
+    },
+    {
+      "path": "/Users/lhs/Desktop/mcr-worktrees/fe-ref-customize/docs/mcr/evidence/fe18-rooms-nearby/native-03/nearby-epoch-self-only.png",
+      "screen": "Epoch replacement removes every previous remote person",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "capturedAtUTC": "2026-11-04T06:03:37.107Z",
+      "source": "4248e580fac41741ebc05a7f6804067aaaacd401",
+      "privacy": "Only synthetic source-controlled fan/character fixtures; no real account, message, location or credential data",
+      "capturedAtAsiaSeoul": "2026-11-04T15:03:37.107000+09:00",
+      "branch": "codex/mcr-fe-FE18-client-completion",
+      "sha256": "d2c7a5d3d0a8d831a8b47fe3fcf6d47e8f458e21fa3e40ec81793257f1138f54",
+      "qualification": "Owner inspected fixture-based client evidence; original capture source retained",
+      "publication": "Source commits pending Root153 publication; no real-backend/device/production-art acceptance"
+    },
+    {
+      "path": "/Users/lhs/Desktop/mcr-worktrees/fe-ref-customize/docs/mcr/evidence/fe18-rooms-nearby/native-03/privacy-cancelled-late-admission.png",
+      "screen": "Privacy cancellation rejects late pending admission and clears private presentation",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "capturedAtUTC": "2026-11-04T06:03:37.623Z",
+      "source": "4248e580fac41741ebc05a7f6804067aaaacd401",
+      "privacy": "Only synthetic source-controlled fan/character fixtures; no real account, message, location or credential data",
+      "capturedAtAsiaSeoul": "2026-11-04T15:03:37.623000+09:00",
+      "branch": "codex/mcr-fe-FE18-client-completion",
+      "sha256": "45839631b6bc7676304c36252c0a41a15306f88255cadc4689e8f0d81e3b0520",
+      "qualification": "Owner inspected fixture-based client evidence; original capture source retained",
+      "publication": "Source commits pending Root153 publication; no real-backend/device/production-art acceptance"
+    }
+  ],
+  "reuse": "Privacy-safe hourly screenshot handoff; reuse these exact captures, no new browser allocation"
+}

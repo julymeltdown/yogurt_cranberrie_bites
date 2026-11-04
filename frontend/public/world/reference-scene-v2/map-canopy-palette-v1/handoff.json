@@ -1,0 +1,30 @@
+{
+  "format": "MCR_MAP_CANOPY_PALETTE_V1_HANDOFF",
+  "status": "CONTRACT_READY_METADATA_RENDER_VALIDATION_NOT_RUN",
+  "source_parent_commit": "b50177e745af331dcbc9d5755dcb2c04585b5cff",
+  "payloads": [
+    {
+      "path": "frontend/public/world/reference-scene-v2/map-canopy-palette-v1/build.py",
+      "bytes": 7922,
+      "sha256": "sha256:70a5496f6f39328894e0e99d5d999173e9ee7dcf4e6ab9da96b3872769c7eff2"
+    },
+    {
+      "path": "frontend/public/world/reference-scene-v2/map-canopy-palette-v1/README.md",
+      "bytes": 2283,
+      "sha256": "sha256:88745b9241072910b1254c664f0a9d7a25ccf9178be002c671f8da93af38d5b4"
+    },
+    {
+      "path": "frontend/public/world/reference-scene-v2/map-canopy-palette-v1/reference-analysis.json",
+      "bytes": 1463,
+      "sha256": "sha256:3e285dc7cce7744276abc50fb25eccb394e09f20dfd7091095060d380f8cb0c6"
+    },
+    {
+      "path": "frontend/public/world/reference-scene-v2/map-canopy-palette-v1/presentation.json",
+      "bytes": 8176,
+      "sha256": "sha256:29d539a66b7d5acc065c61c4303f48ee770dd7f25077e2b191558b5d9ccfb27b"
+    }
+  ],
+  "changes": "Four existing PARADE MAP canopy frame substitutions only; no placement/object/geometry/resource changes.",
+  "qualification": "Actual attached reference and saved native image compared. Corrected consumer/native/mobile capture NOT_RUN; full density/framing/target fidelity remains open.",
+  "adoption": "Requires explicit separate consumer lease; current sealed service bundle unchanged."
+}

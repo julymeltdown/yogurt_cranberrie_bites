@@ -23,7 +23,8 @@ export function createPointerInput({ select, pan, cancel, now = () => performanc
   let first: { id: number; origin: Point; last: Point; at: number; moved: boolean; ambiguous: boolean } | null = null
   return {
     down(id: number, point: Point) {
-      if (pointers.size >= 2) { if (first) first.ambiguous = true; return }
+      // Track every contact until release. Forgetting a third finger would let
+      // a later contact masquerade as a single tap while that finger is down.
       pointers.add(id); cancel()
       if (pointers.size > 1) { if (first) first.ambiguous = true; return }
       first = { id, origin: point, last: point, at: now(), moved: false, ambiguous: false }

@@ -1,0 +1,114 @@
+{
+  "at": "2026-11-04T06:02:55.942498+00:00",
+  "status": "CURRENT_COHORT_INCOMPLETE",
+  "historySync": {
+    "authority": "Root153 exact history-only merge grant; no authored application/shared edits",
+    "merge": "06e2d67d6f5667d4e1abd3d1a4b78909d7e8b05b",
+    "publishedParent": "4af1c86863698e311d286039a0702d5b2517c1c3",
+    "conflicts": [],
+    "applicationContractPinsExactlyMatchPublishedParent": 1116,
+    "qualification": "The local merge commit itself is preserved in the worker branch; all actual App/contract inputs also match its publicly delivered4af1 parent byte for byte."
+  },
+  "sourceEvidenceVerification": [
+    {
+      "attempt": "attempt-05",
+      "processExit": 1,
+      "source": "15d688560c2b8745052a84fa2ef49535fbf02c73",
+      "status": "FAIL",
+      "applicationContractPins": 1106,
+      "driverSnapshots": 6,
+      "captures": 4,
+      "loadedAssets": 4
+    },
+    {
+      "attempt": "attempt-06",
+      "processExit": 1,
+      "source": "15d688560c2b8745052a84fa2ef49535fbf02c73",
+      "status": "FAIL",
+      "applicationContractPins": 1106,
+      "driverSnapshots": 6,
+      "captures": 4,
+      "loadedAssets": 4
+    },
+    {
+      "attempt": "attempt-07",
+      "processExit": 0,
+      "source": "15d688560c2b8745052a84fa2ef49535fbf02c73",
+      "status": "RUNTIME_PASS_PENDING_ART_REVIEW",
+      "applicationContractPins": 1106,
+      "driverSnapshots": 6,
+      "captures": 4,
+      "loadedAssets": 4
+    },
+    {
+      "attempt": "attempt-08",
+      "processExit": 1,
+      "source": "06e2d67d6f5667d4e1abd3d1a4b78909d7e8b05b",
+      "status": "FAIL",
+      "applicationContractPins": 1116,
+      "driverSnapshots": 6,
+      "captures": 2,
+      "loadedAssets": 3
+    },
+    {
+      "attempt": "attempt-09",
+      "processExit": 1,
+      "source": "06e2d67d6f5667d4e1abd3d1a4b78909d7e8b05b",
+      "status": "FAIL",
+      "applicationContractPins": 1116,
+      "driverSnapshots": 6,
+      "captures": 4,
+      "loadedAssets": 4
+    }
+  ],
+  "gate": {
+    "historicalAttempt07": "All original runtime criteria and direct native static-art inspection PASS for pinned15d cohort.",
+    "currentAttempt08": "NOT_ACCEPTED: obsolete harness readiness assertion assumed always-visible World-tools navigation. FE32 now exposes a collapsed Tools button; no product-defect claim.",
+    "currentAttempt09": "NOT_ACCEPTED: fresh Auth/room/movement/panels/theme passed; actual me401/refresh504 prevented customization and dependent qualification.",
+    "dependentDisposition": {
+      "customization": "BLOCKED_BY_CANONICAL_AUTH",
+      "reconnect": "NOT_RUN after Auth loss",
+      "singleActualPhaserGame": "NOT_RUN after Auth loss despite preliminary no-live-game assertion",
+      "finalWorldInvariants": "NOT_RUN after Auth loss despite preliminary missing-stream assertion",
+      "finalArt": "NOT_QUALIFIED for current cohort after Auth loss"
+    }
+  },
+  "faultChronology": [
+    {
+      "principal": 0,
+      "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/me",
+      "method": "GET",
+      "status": 401,
+      "at": "2026-11-04T06:00:49.176Z",
+      "correlation": null
+    },
+    {
+      "principal": 0,
+      "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/me",
+      "method": "GET",
+      "status": 200,
+      "at": "2026-11-04T06:00:49.191Z",
+      "correlation": null
+    },
+    {
+      "principal": 0,
+      "path": "/api/auth/refresh",
+      "method": "POST",
+      "status": 504,
+      "at": "2026-11-04T06:00:49.982Z",
+      "correlation": null
+    }
+  ],
+  "resource": {
+    "initialSlot": "IN01-REAL-BROWSER-202611040550Z",
+    "finiteAttempt09Slot": "IN01-REAL-BROWSER-202611040550Z-A09",
+    "browserFinished": "2026-11-04T06:01:08.277Z",
+    "fullReleaseReadback": "2026-11-04T06:01:20.102145Z",
+    "ownedBrowserServerCacheTempClosed": true,
+    "port5173Free": true,
+    "ownedDependencySymlinkRemoved": true,
+    "ownedTempDirectories": 0,
+    "noFurtherRetryWithoutFreshNamedOffer": true
+  },
+  "requiredNext": "BackendRoot owning diagnosis/recovery of real Auth refresh504; only then a genuine immutable admitted runtime plus fresh BackendSL named browser offer. Preserve original two-account full journey and current source pins. No manual SQL/rollback/new-stack reset as substitute."
+}

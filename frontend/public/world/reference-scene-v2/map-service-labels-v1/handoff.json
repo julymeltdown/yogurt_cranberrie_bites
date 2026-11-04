@@ -1,0 +1,53 @@
+{
+  "format": "MCR_MAP_SERVICE_LABELS_V1_HANDOFF",
+  "status": "CONTRACT_READY_METADATA_RENDER_ACTION_VALIDATION_NOT_RUN",
+  "production_status": "NOT_ADMITTED",
+  "source_parent_commit": "9a441859e4ec9c97e28f7e5326307e62cf95cfb2",
+  "labels": {
+    "path": "frontend/public/world/reference-scene-v2/map-service-labels-v1/label-presentation.json",
+    "bytes": 17716,
+    "sha256": "sha256:3869218ae5c1c54c001e533f9a405a7f9fbfe6d5078e765daf51132aeab0aa26"
+  },
+  "payloads": [
+    {
+      "path": "frontend/public/world/reference-scene-v2/map-service-labels-v1/build.py",
+      "bytes": 10152,
+      "sha256": "sha256:e28c2ab038dea35431134d632cb4375f8bc2d6fdd36060af1ca05397c5454d66"
+    },
+    {
+      "path": "frontend/public/world/reference-scene-v2/map-service-labels-v1/verify.py",
+      "bytes": 2334,
+      "sha256": "sha256:aab8175266851304010f0b8f38ad777d53fef112e599a4e979155e92ff63b214"
+    },
+    {
+      "path": "frontend/public/world/reference-scene-v2/map-service-labels-v1/README.md",
+      "bytes": 2964,
+      "sha256": "sha256:03826bc46207c532739bb9d9be1f75d0f72d7db1c826573c151b777f4488c073"
+    },
+    {
+      "path": "frontend/public/world/reference-scene-v2/map-service-labels-v1/original-target.jpg",
+      "bytes": 482737,
+      "sha256": "sha256:2b3988d546f87b813d78ca13bf267730a6dd19118bd6535a2d3c3032b6f12d23"
+    },
+    {
+      "path": "frontend/public/world/reference-scene-v2/map-service-labels-v1/label-presentation.json",
+      "bytes": 17716,
+      "sha256": "sha256:3869218ae5c1c54c001e533f9a405a7f9fbfe6d5078e765daf51132aeab0aa26"
+    },
+    {
+      "path": "frontend/public/world/reference-scene-v2/map-service-labels-v1/qualification.json",
+      "bytes": 2424,
+      "sha256": "sha256:95015e7ec024551eacfaed93dfca87cac42421a7ff86106c0f2f4a3f6dcf9cd8"
+    }
+  ],
+  "baseline_pin_policy": "New labels pin immutable OLD base/landscape/architecture/massing lineage. Existing two wings can only be activated by explicit consumer allocation. No new paired art derivative or display replacement.",
+  "consumer_counts": {
+    "feature_actions": 4,
+    "scenic_labels": 2,
+    "canonical_annotation_bindings": 0
+  },
+  "validation": "build.py --verify and verify.py are source/byte/authority checks, not browser/native/action execution or full target acceptance.",
+  "consumer_followup": "Root under exact recorded consumer lease maps the closed intents to actual routes, removes only annotation-owned old hitareas, keeps genuine reviewed-place catalog/safety separate and validates44px targets/native/actions/reference. No manager review gate.",
+  "known_visual_limit": "Existing groceries/stall imagery is not changed by this label-only source. It does not create a food service; neutral display art remains a separate unresolved visual source concern.",
+  "source_originals": "Supplied JPEG copied byte-exact. Prior source/wing/character/geometry/font/PNG artifacts unchanged."
+}

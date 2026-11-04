@@ -1,0 +1,215 @@
+{
+  "base": "9356b943900ae4b4bf2c45f11118555e2c5d72ff",
+  "sourceHead": "4248e580fac41741ebc05a7f6804067aaaacd401",
+  "branch": "codex/mcr-fe-FE18-client-completion",
+  "commitsBeforeEvidenceHandoff": [
+    "691768d02fad0e01275444a84b3398f809bb803c",
+    "d5247c9c87233621afc58fc556d7e4423786b26e",
+    "4248e580fac41741ebc05a7f6804067aaaacd401"
+  ],
+  "selfHashExcluded": true,
+  "payloads": [
+    {
+      "path": "docs/mcr/evidence/fe18-rooms-nearby/driver-final.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "docs/mcr/evidence/fe18-rooms-nearby/lint-final.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "docs/mcr/evidence/fe18-rooms-nearby/lint.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "docs/mcr/evidence/fe18-rooms-nearby/native-01/nearby-before-360.png",
+      "sha256": "48861800e3850925e30d2194b7cb98deb424917c59075235bf4e4ce75b5bcb62"
+    },
+    {
+      "path": "docs/mcr/evidence/fe18-rooms-nearby/native-01/report.json",
+      "sha256": "d9c89baff60900b05971e2ca724fcf2174f076b9f7ac9d031dc3a2c1a51af421"
+    },
+    {
+      "path": "docs/mcr/evidence/fe18-rooms-nearby/native-01/review.json",
+      "sha256": "432b05d0b46128bd7e87e155de5611503f406f2b24a5ea4e7e9fd02e513fe460"
+    },
+    {
+      "path": "docs/mcr/evidence/fe18-rooms-nearby/native-01/rooms-admitted-360.png",
+      "sha256": "5046825f4d23be8e64c8b9dba3ef56a4ed15eeeb0def7dd74b8675a325131faa"
+    },
+    {
+      "path": "docs/mcr/evidence/fe18-rooms-nearby/native-01/rooms-full-360.png",
+      "sha256": "21d3d56aec93145eff86bc17912f1cfee7c2d5cfcecb50af0d012d00a015b823"
+    },
+    {
+      "path": "docs/mcr/evidence/fe18-rooms-nearby/native-02/nearby-before-360.png",
+      "sha256": "48861800e3850925e30d2194b7cb98deb424917c59075235bf4e4ce75b5bcb62"
+    },
+    {
+      "path": "docs/mcr/evidence/fe18-rooms-nearby/native-02/nearby-before-390.png",
+      "sha256": "6224b939a0e7897bbfa45bf37aa40b8d3e36dfadd0c63f755075d76ad3ceba5b"
+    },
+    {
+      "path": "docs/mcr/evidence/fe18-rooms-nearby/native-02/nearby-before-430.png",
+      "sha256": "e66b78afee24f34b0bf8dbadfa41ada5bb68887b332fef85ad11c54903c0c7c9"
+    },
+    {
+      "path": "docs/mcr/evidence/fe18-rooms-nearby/native-02/nearby-epoch-self-only.png",
+      "sha256": "dc6fea8e1b1f31f448819473a29c0d1a946c17e37ac8a35ce9eada2dcccf4ab5"
+    },
+    {
+      "path": "docs/mcr/evidence/fe18-rooms-nearby/native-02/nearby-removed-360.png",
+      "sha256": "4132f28b58c41a9b151d61ead560a4a17712f6b2511044c7fa6e98ea9a20c5f3"
+    },
+    {
+      "path": "docs/mcr/evidence/fe18-rooms-nearby/native-02/nearby-removed-390.png",
+      "sha256": "26274366cdefd0aee939b9bb223256e0737d5403475e9575ac4bc097b81a217a"
+    },
+    {
+      "path": "docs/mcr/evidence/fe18-rooms-nearby/native-02/nearby-removed-430.png",
+      "sha256": "ce5583d8c25f82875823ae37488ecc9c571053b4b7589c381bcc1149c163be4d"
+    },
+    {
+      "path": "docs/mcr/evidence/fe18-rooms-nearby/native-02/privacy-cancelled-late-admission.png",
+      "sha256": "45839631b6bc7676304c36252c0a41a15306f88255cadc4689e8f0d81e3b0520"
+    },
+    {
+      "path": "docs/mcr/evidence/fe18-rooms-nearby/native-02/report.json",
+      "sha256": "f34c27b8c31ee8acb46f986f1ee5c53c3427ff36f9f1c2ddadb0705709ef7b21"
+    },
+    {
+      "path": "docs/mcr/evidence/fe18-rooms-nearby/native-02/rooms-admitted-360.png",
+      "sha256": "c885f8ff7d33f33d342b0c3dd9e0d38bb5c5c8b8fd8ffc6ca0bae03eb8c07da0"
+    },
+    {
+      "path": "docs/mcr/evidence/fe18-rooms-nearby/native-02/rooms-admitted-390.png",
+      "sha256": "85958a9ac3ca534d13885f1b368715206c5a633776fcef22e925d5284dce91c3"
+    },
+    {
+      "path": "docs/mcr/evidence/fe18-rooms-nearby/native-02/rooms-admitted-430.png",
+      "sha256": "fedb029b086858aba0607c2d519ad9dc3848a699946eda7ce2bc42dda4b0e8a7"
+    },
+    {
+      "path": "docs/mcr/evidence/fe18-rooms-nearby/native-02/rooms-full-360.png",
+      "sha256": "21d3d56aec93145eff86bc17912f1cfee7c2d5cfcecb50af0d012d00a015b823"
+    },
+    {
+      "path": "docs/mcr/evidence/fe18-rooms-nearby/native-02/rooms-full-390.png",
+      "sha256": "abccc285a406c4d8b15b16b56fbf5a3a2d0ad8f65614d643ab3c429ed16cb245"
+    },
+    {
+      "path": "docs/mcr/evidence/fe18-rooms-nearby/native-02/rooms-full-430.png",
+      "sha256": "d998437455f84f9a96deefc47fbf9b5618446de88729cc2fe5792c76c15a2ed8"
+    },
+    {
+      "path": "docs/mcr/evidence/fe18-rooms-nearby/native-03/nearby-before-390.png",
+      "sha256": "3262e890e919081f69e36c6b851adbac7d6a70f6074ce5efce13e37cb63197df"
+    },
+    {
+      "path": "docs/mcr/evidence/fe18-rooms-nearby/native-03/nearby-epoch-self-only.png",
+      "sha256": "d2c7a5d3d0a8d831a8b47fe3fcf6d47e8f458e21fa3e40ec81793257f1138f54"
+    },
+    {
+      "path": "docs/mcr/evidence/fe18-rooms-nearby/native-03/nearby-removed-390.png",
+      "sha256": "cd3a1f320bed8124dec479f43bce28ce149632b0a056c98b1f934bf9710c0ac1"
+    },
+    {
+      "path": "docs/mcr/evidence/fe18-rooms-nearby/native-03/privacy-cancelled-late-admission.png",
+      "sha256": "45839631b6bc7676304c36252c0a41a15306f88255cadc4689e8f0d81e3b0520"
+    },
+    {
+      "path": "docs/mcr/evidence/fe18-rooms-nearby/native-03/report.json",
+      "sha256": "002f637f965e6417e87884218dae91d7434284c3d9f48738a36eb31d95c65a3a"
+    },
+    {
+      "path": "docs/mcr/evidence/fe18-rooms-nearby/plan.log",
+      "sha256": "88606f33d640a29811a4cbdc9748fc0f1e16225b81ad7e697deaf3b20c9b86e1"
+    },
+    {
+      "path": "docs/mcr/evidence/fe18-rooms-nearby/qualification.json",
+      "sha256": "fd64181f0a49f15e9bb1ead788638629d1994d4113e08556b22dd86f305c246f"
+    },
+    {
+      "path": "docs/mcr/evidence/fe18-rooms-nearby/regressions-final.log",
+      "sha256": "8fef2742e7c10514451097264e176f65672bbeffa9b958122ec1b50d95a8cb3d"
+    },
+    {
+      "path": "docs/mcr/evidence/fe18-rooms-nearby/regressions-system-python.log",
+      "sha256": "f2d97e39982dc60d402535bb0a26f33380e1e3ef7edc7e44ec45af740933068f"
+    },
+    {
+      "path": "docs/mcr/evidence/fe18-rooms-nearby/regressions.log",
+      "sha256": "53711fb0ccd2b9aedc29106540e0da4f3b608e94d4878d50af8ecfb7433ed50e"
+    },
+    {
+      "path": "docs/mcr/evidence/fe18-rooms-nearby/screenshots.json",
+      "sha256": "5c89e3c70b73f69dc208ddda19435bd196cd73c1923ab17fba6260648668bb5b"
+    },
+    {
+      "path": "docs/mcr/evidence/fe18-rooms-nearby/source-ready.json",
+      "sha256": "02a7a3ecaf09e6c39dd146b25a764f259812ec5e50bfff5eb126c944292f6c0d"
+    },
+    {
+      "path": "docs/mcr/evidence/fe18-rooms-nearby/tests.log",
+      "sha256": "4dc3aab481dab91dabe64392b909469a0a54f99d54b6f19114a38dc277efffd7"
+    },
+    {
+      "path": "docs/mcr/evidence/fe18-rooms-nearby/types-final.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "docs/mcr/evidence/fe18-rooms-nearby/types.log",
+      "sha256": "cafc208a59b3c5af2892f46120afbd571d07bcca04e14112219acb64d9e0c2b6"
+    },
+    {
+      "path": "docs/mcr/frontend/fe18-rooms-nearby.md",
+      "sha256": "42680ccb1941afe5439b35060fb1313ee3db8d52c96c1910304923398f3b260a"
+    },
+    {
+      "path": "frontend/src/features/world-nearby/WorldNearby.tsx",
+      "sha256": "84a515f457f9b9c70778c10bb73f935cd48273bf4d0b1b3fc9c5753cef9c6f32"
+    },
+    {
+      "path": "frontend/src/features/world-rooms/__tests__/completion/focus.test.tsx",
+      "sha256": "377ba6cd3e8779890b94279119e39dcc04d27cde8e57c1541f30d419abcceb1e"
+    },
+    {
+      "path": "frontend/src/features/world-rooms/__tests__/completion/native.mjs",
+      "sha256": "14a4b33496183c7cf08b19031bc7d744d2e854b5cfc2c8e304810d35d586a41c"
+    },
+    {
+      "path": "frontend/src/features/world-rooms/__tests__/completion/preview.html",
+      "sha256": "7c2d322b42206f41db2e1edb7d4569109731ab5c6105e8f05e3ddceba11ed181"
+    },
+    {
+      "path": "frontend/src/features/world-rooms/__tests__/completion/preview.ts",
+      "sha256": "5e3c3f50750c641dd818777f9913003b6a47f2c2d22588118ac16d085b3d7298"
+    },
+    {
+      "path": "frontend/src/features/world-rooms/ui/WorldRooms.tsx",
+      "sha256": "7dffc0db4327b7453421226c62282330c2122e073fa0d8ebe555e5fc2b84f361"
+    },
+    {
+      "path": "frontend/src/features/world-rooms/ui/world-access.css",
+      "sha256": "fdde6e1f0118145f9431b0ac1d90f23358861f4cb907565372c8553535850b3d"
+    }
+  ],
+  "protectedSharedPins": [
+    "frontend/src/app/world-entry/__tests__/reference-scene-v5/preview.tsx",
+    "frontend/src/app/world-entry/__tests__/reference-scene-v5/data.ts",
+    "frontend/src/app/world-entry/root-features.tsx",
+    "frontend/src/world/composition/index.ts",
+    "frontend/src/world/scenes/MapScene.ts",
+    "frontend/src/world/network/replication.ts",
+    "frontend/src/entities/avatar/character-source-pack.json",
+    "contracts/realtime/v1/operations.json",
+    "contracts/realtime/v1/world.schema.json",
+    "contracts/realtime/v1/policy.json",
+    "contracts/fixtures/realtime/rooms.json",
+    "contracts/fixtures/realtime/movement-heartbeat.json",
+    "contracts/fixtures/realtime/ticket-response.json",
+    "contracts/fixtures/realtime/filtered-viewers.json"
+  ],
+  "publisher": "Root153; serial reviewed non-force delivery only",
+  "lease": "Source frozen; returned upon final committed handoff"
+}

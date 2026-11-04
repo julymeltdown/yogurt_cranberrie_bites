@@ -83,7 +83,8 @@ export function createMuralEditor({ privacy, commands, now = () => performance.n
       } else if (!snapshot || snapshot.revision < p.revision) {
         publish({ availability: 'error' })
       }
-      publish({ command: null, selection: null, phase: 'confirmed', cooldownUntil: now() + Math.max(0, Date.parse(p.next_allowed_at) - Date.parse(p.committed_at)),
+      // A delayed command result must not shorten a newer snapshot's cooldown.
+      publish({ command: null, selection: null, phase: 'confirmed', cooldownUntil: Math.max(state.cooldownUntil, now() + Math.max(0, Date.parse(p.next_allowed_at) - Date.parse(p.committed_at))),
         message: 'Server confirmed the pixel. The server checks every cooldown and permission.' })
     } else if (response.kind === 'rejected') {
       if (!definitiveRejections.has(response.reason)) {

@@ -1,0 +1,269 @@
+{
+  "format": "MCR_MAP_CANOPY_PALETTE_V1",
+  "version": 1,
+  "status": "CONTRACT_READY_METADATA_RENDER_VALIDATION_NOT_RUN",
+  "view": "MAP_ONLY",
+  "theme_id": "PARADE",
+  "production_status": "NOT_ADMITTED",
+  "geometry_hash": "sha256:ef52c8b05af6a882f2e82285c9879c9a4cb78ab513336e4bb3cd483c9b123395",
+  "source_layout": {
+    "path": "frontend/public/world/reference-scene-v2/architecture-v2/parade/layout.json",
+    "bytes": 25333,
+    "sha256": "sha256:1dabdcd979ae3d64ebfdb834ce0319f25869d20f6d354e69f0f2c2e8d68f619d"
+  },
+  "source_atlas": {
+    "path": "frontend/public/world/reference-scene-v2/architecture-v2/parade/atlas.png",
+    "bytes": 1284429,
+    "sha256": "sha256:aab0383b8963f1b681acf81d22d2be88e130744554311e74f0793efbe388e529"
+  },
+  "source_provenance": {
+    "path": "frontend/public/world/reference-scene-v2/architecture-v2/parade/provenance.json",
+    "bytes": 6301,
+    "sha256": "sha256:e59c51c9504d41dc5277b7f6e804732d3afba4c8b25ffd0589f1ec25b2ca35d0"
+  },
+  "required_architecture": {
+    "path": "frontend/public/world/reference-scene-v2/architecture-v2/atlas-handoff.json",
+    "bytes": 8302,
+    "sha256": "sha256:98484ffd7c3301f7ba3b8cc5221be29d48386ec1dcc2eb67015c2dffc76a5fc0"
+  },
+  "required_service_labels": {
+    "path": "frontend/public/world/reference-scene-v2/map-service-labels-v1/label-presentation.json",
+    "bytes": 17716,
+    "sha256": "sha256:3869218ae5c1c54c001e533f9a405a7f9fbfe6d5078e765daf51132aeab0aa26"
+  },
+  "required_massing": {
+    "path": "frontend/public/world/reference-scene-v2/map-venue-massing-v1/presentation.json",
+    "bytes": 12965,
+    "sha256": "sha256:06c6d4dad6b2c141079f3b54f7407dd0458e9e918d043c46f20524f56d0a37c7"
+  },
+  "display_replacements": [
+    {
+      "id": "rooted_tree_01",
+      "x": 146,
+      "y": -22,
+      "width": 166,
+      "height": 159,
+      "depth_y": 137,
+      "replaces_prop_id": "rooted_tree_01",
+      "frame": "tree_green",
+      "interaction_id": null,
+      "place_id": null,
+      "view": "MAP_ONLY",
+      "authority": "VIRTUAL_SCENERY_ONLY",
+      "source_placement": {
+        "id": "rooted_tree_01",
+        "frame": "tree_red",
+        "x": 146,
+        "y": -22,
+        "depth_y": 137,
+        "footprint": [
+          [
+            216,
+            122
+          ],
+          [
+            248,
+            122
+          ],
+          [
+            250,
+            140
+          ],
+          [
+            213,
+            140
+          ]
+        ],
+        "interaction_id": null,
+        "placement_reason": "Named rooted parcel/perimeter planting in shared proposal. Four distinct illustrated species/seasonal frames are intentionally reused at 11 fixed roots; not randomly stamped filler.",
+        "width": 166,
+        "height": 159
+      },
+      "source_placement_sha256": "sha256:98b60a1d1b895cba84d701381ef52ac632dcf167a4779f9109a0b21a50f67a81",
+      "alpha_core_base_delta_px": -0.008278016399827948
+    },
+    {
+      "id": "rooted_tree_02",
+      "x": 328,
+      "y": -25,
+      "width": 166,
+      "height": 162,
+      "depth_y": 137,
+      "replaces_prop_id": "rooted_tree_02",
+      "frame": "tree_green",
+      "interaction_id": null,
+      "place_id": null,
+      "view": "MAP_ONLY",
+      "authority": "VIRTUAL_SCENERY_ONLY",
+      "source_placement": {
+        "id": "rooted_tree_02",
+        "frame": "tree_red",
+        "x": 328,
+        "y": -25,
+        "depth_y": 137,
+        "footprint": [
+          [
+            398,
+            122
+          ],
+          [
+            430,
+            122
+          ],
+          [
+            432,
+            140
+          ],
+          [
+            395,
+            140
+          ]
+        ],
+        "interaction_id": null,
+        "placement_reason": "Named rooted parcel/perimeter planting in shared proposal. Four distinct illustrated species/seasonal frames are intentionally reused at 11 fixed roots; not randomly stamped filler.",
+        "width": 166,
+        "height": 162
+      },
+      "source_placement_sha256": "sha256:3356e79f3703fba3398229f5e2f38426cfe90933b48f736dbac2055b6b3318a6",
+      "alpha_core_base_delta_px": -0.008434205388510918
+    },
+    {
+      "id": "grove_north_west",
+      "x": 8,
+      "y": -34,
+      "width": 184,
+      "height": 170,
+      "depth_y": 136,
+      "replaces_prop_id": "grove_north_west",
+      "frame": "tree_green",
+      "interaction_id": null,
+      "place_id": null,
+      "view": "MAP_ONLY",
+      "authority": "VIRTUAL_SCENERY_ONLY",
+      "source_placement": {
+        "id": "grove_north_west",
+        "frame": "tree_red",
+        "x": 8,
+        "y": -34,
+        "width": 184,
+        "height": 170,
+        "depth_y": 136,
+        "footprint": [
+          [
+            88.0,
+            122.0
+          ],
+          [
+            120.0,
+            122.0
+          ],
+          [
+            123.0,
+            136.0
+          ],
+          [
+            85.0,
+            136.0
+          ]
+        ],
+        "interaction_id": null,
+        "placement_reason": "Join the west red canopy band behind the court. Unbound virtual decoration; root is solid, canopy uses ordinary depth occlusion."
+      },
+      "source_placement_sha256": "sha256:1840b027b0e709e265ca55b6c61528d1744527ee381f3d9fefe6487482a97777",
+      "alpha_core_base_delta_px": -0.008850709358313225
+    },
+    {
+      "id": "grove_north_gap",
+      "x": 428,
+      "y": -30,
+      "width": 176,
+      "height": 166,
+      "depth_y": 136,
+      "replaces_prop_id": "grove_north_gap",
+      "frame": "tree_green",
+      "interaction_id": null,
+      "place_id": null,
+      "view": "MAP_ONLY",
+      "authority": "VIRTUAL_SCENERY_ONLY",
+      "source_placement": {
+        "id": "grove_north_gap",
+        "frame": "tree_red",
+        "x": 428,
+        "y": -30,
+        "width": 176,
+        "height": 166,
+        "depth_y": 136,
+        "footprint": [
+          [
+            504.0,
+            122.0
+          ],
+          [
+            536.0,
+            122.0
+          ],
+          [
+            539.0,
+            136.0
+          ],
+          [
+            501.0,
+            136.0
+          ]
+        ],
+        "interaction_id": null,
+        "placement_reason": "Close the upper canopy gap between the existing rooted red/yellow trees. Unbound virtual decoration; root is solid, canopy uses ordinary depth occlusion."
+      },
+      "source_placement_sha256": "sha256:e67fab93091a911634101e6a38f0c9ea283cda83cb19faef41240c7811c8d0b8",
+      "alpha_core_base_delta_px": -0.008642457373412071
+    }
+  ],
+  "frame_alpha_cores": {
+    "tree_red": {
+      "frame": {
+        "x": 774,
+        "y": 285,
+        "width": 244,
+        "height": 197
+      },
+      "bbox": [
+        1,
+        1,
+        244,
+        196
+      ]
+    },
+    "tree_green": {
+      "frame": {
+        "x": 6,
+        "y": 286,
+        "width": 244,
+        "height": 195
+      },
+      "bbox": [
+        0,
+        1,
+        243,
+        194
+      ]
+    }
+  },
+  "reason": "Attached MAP upper district has muted green/yellow foliage; actual native04 has a broad crimson band between the north facades. Substitute existing green crowns in four existing positions, without scattering new props.",
+  "scope": "PARADE MAP only. Other era views and all World views unchanged. No reference evidence is inferred for other eras.",
+  "unchanged": [
+    "All34 World objects/source geometry/server feet",
+    "All4 prop IDs/destination rectangles/depths",
+    "All atlas/ground/font/character pixels",
+    "All stage/annex/garden/label placements and feature intents",
+    "Canonical place authority, cameras and release admission"
+  ],
+  "consumer": "Separately allocated optional follow-up; do not mutate or block sealed service-label/action/wings delivery. Replace only four MAP frame references after exact source/prop/pair validation; preserve stable depth ordering. No new objects or resources.",
+  "validation": {
+    "new_objects": 0,
+    "new_rasters_fonts": 0,
+    "new_browser_exports": 0,
+    "source_alpha_base_change_max_px": 0.008850709358313225,
+    "corrected_native_visibility_palette_mobile": "NOT_RUN",
+    "density_framing_full_reference": "IN_PROGRESS_NOT_ACCEPTED"
+  }
+}

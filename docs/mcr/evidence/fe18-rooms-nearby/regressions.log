@@ -1,0 +1,10 @@
+
+ RUN  v4.1.9 /Users/lhs/Desktop/mcr-worktrees/fe-ref-customize/frontend
+
+·····························································································································································································································
+
+ Test Files  13 passed (13)
+      Tests  221 passed (221)
+   Start at  14:36:22
+   Duration  12.92s (transform 1.03s, setup 0ms, import 1.65s, tests 8.10s, environment 2.29s)
+

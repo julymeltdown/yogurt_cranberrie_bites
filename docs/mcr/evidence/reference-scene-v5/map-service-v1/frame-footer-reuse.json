@@ -1,0 +1,134 @@
+{
+  "status": "CAPTURED_SOURCE_EQUIVALENT",
+  "capturedCandidate": "6ca52f8851473090479f1c13a33e879b6cd099d0",
+  "sources": {
+    "frontend/src/shared/ui/concert-window/concert-window.css": "848f6d00a6738071e890ba83ae13d5033782ac1f399c81270d0042ec2b68f9f7",
+    "frontend/src/app/shell.css": "ddf7accccc638552a902995a6f83c1e84a25158437424144a1c65d4590ba6eea",
+    "frontend/src/app/shell-chrome/shell-chrome.css": "3dca2fe0cc22f1dd3b21c1e3fc738d90d4f17c7da6fa09e047729c34ba27679a",
+    "frontend/src/app/shell-chrome/parade-footer.tsx": "6f3b1f838987dbe470e1c92e589718d60de8d70ff7a1d369b0dc0607df3b9b41"
+  },
+  "cases": [
+    {
+      "path": "/Users/lhs/Desktop/mcr-worktrees/fe-reference-root/docs/mcr/evidence/reference-scene-v5/map-service-v1/native-01/map-parade-360.png",
+      "bytes": 361118,
+      "sha256": "26871060ff95555d3258fab486812ed8927bb64ab94f544018aad108593cfa37",
+      "capturedAt": "2026-11-04T06:05:24.384704+00:00",
+      "id": "map",
+      "source": "6ca52f8851473090479f1c13a33e879b6cd099d0",
+      "viewport": {
+        "width": 360,
+        "height": 844
+      },
+      "qualification": "Actual default root; synthetic source fixture; shared frame/footer and honest route/guard only. No loaded service/editor/live/device qualification."
+    },
+    {
+      "path": "/Users/lhs/Desktop/mcr-worktrees/fe-reference-root/docs/mcr/evidence/reference-scene-v5/map-service-v1/native-01/map-parade-390.png",
+      "bytes": 410326,
+      "sha256": "87ab843422292a7701e2a3fe39a4419ef95e52721c6c2b052b617c6c2d135b01",
+      "capturedAt": "2026-11-04T06:05:14.291358+00:00",
+      "id": "map",
+      "source": "6ca52f8851473090479f1c13a33e879b6cd099d0",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "qualification": "Actual default root; synthetic source fixture; shared frame/footer and honest route/guard only. No loaded service/editor/live/device qualification."
+    },
+    {
+      "path": "/Users/lhs/Desktop/mcr-worktrees/fe-reference-root/docs/mcr/evidence/reference-scene-v5/map-service-v1/native-01/map-parade-430.png",
+      "bytes": 483148,
+      "sha256": "b76e8a3fe2c7c2b1104e6642ae94046cac1f20f312b794a7f4df6e8bedfb118c",
+      "capturedAt": "2026-11-04T06:05:33.781232+00:00",
+      "id": "map",
+      "source": "6ca52f8851473090479f1c13a33e879b6cd099d0",
+      "viewport": {
+        "width": 430,
+        "height": 844
+      },
+      "qualification": "Actual default root; synthetic source fixture; shared frame/footer and honest route/guard only. No loaded service/editor/live/device qualification."
+    },
+    {
+      "path": "/Users/lhs/Desktop/mcr-worktrees/fe-reference-root/docs/mcr/evidence/reference-scene-v5/map-service-v1/native-01/action-feed-390.png",
+      "bytes": 61470,
+      "sha256": "08ddd67a94edd6de5e56e852fc4807bf2cde485318d6a9ec489ea840e88c7599",
+      "capturedAt": "2026-11-04T06:05:14.954905+00:00",
+      "id": "feed",
+      "source": "6ca52f8851473090479f1c13a33e879b6cd099d0",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "qualification": "Actual default root; synthetic source fixture; shared frame/footer and honest route/guard only. No loaded service/editor/live/device qualification."
+    },
+    {
+      "path": "/Users/lhs/Desktop/mcr-worktrees/fe-reference-root/docs/mcr/evidence/reference-scene-v5/map-service-v1/native-01/action-wall-390.png",
+      "bytes": 62077,
+      "sha256": "b7873a37928b512e2bd62a635528ba188391b15f84245dc36ec9022d0f60308f",
+      "capturedAt": "2026-11-04T06:05:15.104791+00:00",
+      "id": "wall",
+      "source": "6ca52f8851473090479f1c13a33e879b6cd099d0",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "qualification": "Actual default root; synthetic source fixture; shared frame/footer and honest route/guard only. No loaded service/editor/live/device qualification."
+    },
+    {
+      "path": "/Users/lhs/Desktop/mcr-worktrees/fe-reference-root/docs/mcr/evidence/reference-scene-v5/map-service-v1/native-01/action-meet-390.png",
+      "bytes": 73400,
+      "sha256": "29abde21f4f5b21f3bef2cbc92ddf2ad488571a8756193bfc4302b5d76559b7c",
+      "capturedAt": "2026-11-04T06:05:15.222576+00:00",
+      "id": "meet",
+      "source": "6ca52f8851473090479f1c13a33e879b6cd099d0",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "qualification": "Actual default root; synthetic source fixture; shared frame/footer and honest route/guard only. No loaded service/editor/live/device qualification."
+    },
+    {
+      "path": "/Users/lhs/Desktop/mcr-worktrees/fe-reference-root/docs/mcr/evidence/reference-scene-v5/map-service-v1/native-01/action-gifts-390.png",
+      "bytes": 64246,
+      "sha256": "7ea3ceea686ce0269a7e27bb8c4009df08299f1218a350f8a54fbbdc59d4c192",
+      "capturedAt": "2026-11-04T06:05:15.304613+00:00",
+      "id": "gifts",
+      "source": "6ca52f8851473090479f1c13a33e879b6cd099d0",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "qualification": "Actual default root; synthetic source fixture; shared frame/footer and honest route/guard only. No loaded service/editor/live/device qualification."
+    }
+  ],
+  "nativeReport": {
+    "path": "docs/mcr/evidence/reference-scene-v5/map-service-v1/native-01/native.json",
+    "bytes": 284696,
+    "sha256": "56783b58d6ddcf180c22edf57220da4a2702d06e7de4e362505cd3232f09d1ad",
+    "capturedAt": "2026-11-04T06:05:58.930348+00:00"
+  },
+  "normalization": {
+    "sourceCommit": "0ee51c16a9948c45f52784095a2d4694b0c410cd",
+    "path": "frontend/src/shared/ui/concert-window/concert-window.css",
+    "capturedSHA256": "848f6d00a6738071e890ba83ae13d5033782ac1f399c81270d0042ec2b68f9f7",
+    "currentSHA256": "ae2b0c9e1a1e638218823b7e6715a53b5d6af6020069e2c858bb3450da493d3f",
+    "exactReplacement": {
+      "before": "border-bottom: 3px solid #d7cab3;",
+      "after": "border-bottom: 3px double #d7cab3;"
+    },
+    "proof": {
+      "frontend/src/app/WorldShell.tsx": {
+        "capturedSHA256": "ef0aeb98a10d93c5dcdb89c7e6b25f0292260e699e093311506c06a4cc10f19d",
+        "currentSHA256": "ef0aeb98a10d93c5dcdb89c7e6b25f0292260e699e093311506c06a4cc10f19d"
+      },
+      "frontend/src/shared/ui/concert-window/index.tsx": {
+        "capturedSHA256": "30568e75d61b31644ef105b2ef25fc150de19f7d604bad43615b97d1506efc10",
+        "currentSHA256": "30568e75d61b31644ef105b2ef25fc150de19f7d604bad43615b97d1506efc10"
+      },
+      "frontend/src/shared/ui/concert-window/concert-window.css": {
+        "capturedSHA256": "848f6d00a6738071e890ba83ae13d5033782ac1f399c81270d0042ec2b68f9f7",
+        "currentSHA256": "ae2b0c9e1a1e638218823b7e6715a53b5d6af6020069e2c858bb3450da493d3f"
+      }
+    },
+    "scope": "Default root PanelScreen wraps ConcertWindowEmbedding. Embedded inner titlebar is clipped to1px and border:0 overrides the corrected declaration. All other shared bytes exact. Reuse only these captured root cases, not standalone ConcertWindow. Raw source hashes differ and captures retain6ca provenance."
+  }
+}

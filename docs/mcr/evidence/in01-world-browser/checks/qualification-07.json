@@ -1,0 +1,65 @@
+{
+  "at": "2026-11-04T05:59:15.313487+00:00",
+  "status": "PASS_PINNED_APP_COHORT",
+  "attempt": "attempt-07",
+  "runtimeProcessExit": 0,
+  "base": "15d688560c2b8745052a84fa2ef49535fbf02c73",
+  "backendSource": "c9dd4c980f39b12eda5a79fff871c8de48f8df71",
+  "descriptorSha256": "84538c3385504ebf879b70b14df608bf76671da83439444f7a5f96ea49643e0c",
+  "resourceSlot": "IN01-REAL-BROWSER-202611040550Z",
+  "checks": [
+    {
+      "attempt": "attempt-05",
+      "processExit": 1,
+      "status": "FAIL",
+      "applicationContractPins": 1106,
+      "exactDriverSnapshots": 6,
+      "capturesVerified": 4,
+      "loadedPublicAssetsVerified": 4
+    },
+    {
+      "attempt": "attempt-06",
+      "processExit": 1,
+      "status": "FAIL",
+      "applicationContractPins": 1106,
+      "exactDriverSnapshots": 6,
+      "capturesVerified": 4,
+      "loadedPublicAssetsVerified": 4
+    },
+    {
+      "attempt": "attempt-07",
+      "processExit": 0,
+      "status": "RUNTIME_PASS_PENDING_ART_REVIEW",
+      "applicationContractPins": 1106,
+      "exactDriverSnapshots": 6,
+      "capturesVerified": 4,
+      "loadedPublicAssetsVerified": 4
+    }
+  ],
+  "secretScan": {
+    "status": "PASS",
+    "files": 73,
+    "valuesExported": false
+  },
+  "visualReview": {
+    "status": "PASS",
+    "reviewed": [
+      "attempt-07/world-final-a.png",
+      "attempt-07/world-final-b.png",
+      "attempt-07/customization-actual.png",
+      "attempt-06/theme-parade.png"
+    ],
+    "method": "Direct native image inspection plus loaded asset Git/hash verification and actual App source-pack/whole-character contract provenance.",
+    "findings": [
+      "Two distinct supplied whole-character appearances render on the actual map with ordinary foreground occlusion and coherent scale.",
+      "Customization preview and choices use the same approved six-preset static atlas; three choices are visible per page.",
+      "No broken-image, synthetic fixture art or legacy fallback is observed.",
+      "The two independent contexts show different locally selected theme appearances."
+    ],
+    "staticAtlasSha256": "e124c88815b22220df2f2dc59e2f26b3ceb845e57b77674fd8e55383116d7efe",
+    "staticReleaseSha256": "cc53c6852742e9cbb9858a2d0961411e1a9e131d1e30c0f2b73b265e03f91677",
+    "sourcePack": "mcr_user_characters_20261103 revision3 / photo_01",
+    "qualification": "Admitted static whole-character artwork only. No animation/four-direction/motion upgrade or broad design approval."
+  },
+  "currentMasterLimit": "Fresh origin/master6f2d289bdce8154a3aa42b981c6ee6d9f5923448 differs in30 frontend source/test paths. This actual passing source cohort is pinned; it is not automatically current-master runtime proof. Integrator baseline synchronization requested; all original criteria remain required for the delivered cohort."
+}

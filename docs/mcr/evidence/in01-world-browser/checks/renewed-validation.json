@@ -1,0 +1,190 @@
+{
+  "at": "2026-11-04T06:04:39.579007+00:00",
+  "status": "PASS_SOURCE_VALIDATION_ONLY",
+  "commands": [
+    {
+      "command": [
+        "node",
+        "--test",
+        "frontend/e2e/real/world/in01/status.test.mjs",
+        "frontend/e2e/real/world/in01/guards.test.mjs"
+      ],
+      "exitCode": 0,
+      "stdout": "\u2714 rejects malformed, missing, expired and near-expiry windows (0.811958ms)\n\u2714 rejects invalid parent and unadmitted origins before browser allocation (0.52225ms)\n\u2714 rejects cohort replacement even when its new expiry is still valid (0.63175ms)\n\u2714 rejects run identifiers that could overwrite outside the owned evidence tree (0.1875ms)\n\u2714 empty and partial evidence cannot pass the original runtime gate (0.401166ms)\n\u2714 every original runtime criterion is required (0.118625ms)\n\u2714 a service or runtime failure remains nonzero even with other passing evidence (0.392584ms)\n\u2714 complete runtime evidence keeps art inspection explicit (0.085083ms)\n\u2714 late browser, stream or resource faults cannot certify an otherwise complete run (0.066375ms)\n\u2139 tests 9\n\u2139 suites 0\n\u2139 pass 9\n\u2139 fail 0\n\u2139 cancelled 0\n\u2139 skipped 0\n\u2139 todo 0\n\u2139 duration_ms 43.757125\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "node",
+        "--check",
+        "frontend/e2e/real/world/in01/control.mjs"
+      ],
+      "exitCode": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "node",
+        "--check",
+        "frontend/e2e/real/world/in01/flows.mjs"
+      ],
+      "exitCode": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "node",
+        "--check",
+        "frontend/e2e/real/world/in01/guards.mjs"
+      ],
+      "exitCode": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "node",
+        "--check",
+        "frontend/e2e/real/world/in01/guards.test.mjs"
+      ],
+      "exitCode": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "node",
+        "--check",
+        "frontend/e2e/real/world/in01/run.mjs"
+      ],
+      "exitCode": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "node",
+        "--check",
+        "frontend/e2e/real/world/in01/session.mjs"
+      ],
+      "exitCode": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "node",
+        "--check",
+        "frontend/e2e/real/world/in01/status.mjs"
+      ],
+      "exitCode": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "node",
+        "--check",
+        "frontend/e2e/real/world/in01/status.test.mjs"
+      ],
+      "exitCode": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "retained-oxlint",
+        "frontend/e2e/real/world/in01"
+      ],
+      "exitCode": 0,
+      "stdout": "",
+      "stderr": ""
+    }
+  ],
+  "tests": 9,
+  "syntaxFiles": 8,
+  "credentialSeedScan": {
+    "status": "PASS",
+    "files": 92,
+    "valuesExported": false
+  },
+  "preservedSourceArchives": true,
+  "newestDefensiveCaptureStageStopChanges": "NOT_NATIVE_REPLAYED",
+  "runtimeDisposition": "Historical07 PASS plus native static-art PASS; current09 INCOMPLETE due real Auth401/refresh504.",
+  "boundaryCore": {
+    "status": "PASS",
+    "exitCode": 0,
+    "base": "06e2d67d6f5667d4e1abd3d1a4b78909d7e8b05b",
+    "count": 65,
+    "paths": [
+      "docs/mcr/evidence/in01-world-browser/attempt-05/control.mjs.snapshot",
+      "docs/mcr/evidence/in01-world-browser/attempt-05/customization-actual.png",
+      "docs/mcr/evidence/in01-world-browser/attempt-05/flows.mjs.snapshot",
+      "docs/mcr/evidence/in01-world-browser/attempt-05/guards.mjs.snapshot",
+      "docs/mcr/evidence/in01-world-browser/attempt-05/report.json",
+      "docs/mcr/evidence/in01-world-browser/attempt-05/run.mjs.snapshot",
+      "docs/mcr/evidence/in01-world-browser/attempt-05/session.mjs.snapshot",
+      "docs/mcr/evidence/in01-world-browser/attempt-05/status.mjs.snapshot",
+      "docs/mcr/evidence/in01-world-browser/attempt-05/theme-parade.png",
+      "docs/mcr/evidence/in01-world-browser/attempt-05/world-final-a.png",
+      "docs/mcr/evidence/in01-world-browser/attempt-05/world-final-b.png",
+      "docs/mcr/evidence/in01-world-browser/attempt-06/control.mjs.snapshot",
+      "docs/mcr/evidence/in01-world-browser/attempt-06/customization-actual.png",
+      "docs/mcr/evidence/in01-world-browser/attempt-06/flows.mjs.snapshot",
+      "docs/mcr/evidence/in01-world-browser/attempt-06/guards.mjs.snapshot",
+      "docs/mcr/evidence/in01-world-browser/attempt-06/report.json",
+      "docs/mcr/evidence/in01-world-browser/attempt-06/run.mjs.snapshot",
+      "docs/mcr/evidence/in01-world-browser/attempt-06/session.mjs.snapshot",
+      "docs/mcr/evidence/in01-world-browser/attempt-06/status.mjs.snapshot",
+      "docs/mcr/evidence/in01-world-browser/attempt-06/theme-parade.png",
+      "docs/mcr/evidence/in01-world-browser/attempt-06/world-final-a.png",
+      "docs/mcr/evidence/in01-world-browser/attempt-06/world-final-b.png",
+      "docs/mcr/evidence/in01-world-browser/attempt-07/control.mjs.snapshot",
+      "docs/mcr/evidence/in01-world-browser/attempt-07/customization-actual.png",
+      "docs/mcr/evidence/in01-world-browser/attempt-07/flows.mjs.snapshot",
+      "docs/mcr/evidence/in01-world-browser/attempt-07/guards.mjs.snapshot",
+      "docs/mcr/evidence/in01-world-browser/attempt-07/report.json",
+      "docs/mcr/evidence/in01-world-browser/attempt-07/run.mjs.snapshot",
+      "docs/mcr/evidence/in01-world-browser/attempt-07/session.mjs.snapshot",
+      "docs/mcr/evidence/in01-world-browser/attempt-07/status.mjs.snapshot",
+      "docs/mcr/evidence/in01-world-browser/attempt-07/theme-parade.png",
+      "docs/mcr/evidence/in01-world-browser/attempt-07/world-final-a.png",
+      "docs/mcr/evidence/in01-world-browser/attempt-07/world-final-b.png",
+      "docs/mcr/evidence/in01-world-browser/attempt-08/control.mjs.snapshot",
+      "docs/mcr/evidence/in01-world-browser/attempt-08/flows.mjs.snapshot",
+      "docs/mcr/evidence/in01-world-browser/attempt-08/guards.mjs.snapshot",
+      "docs/mcr/evidence/in01-world-browser/attempt-08/report.json",
+      "docs/mcr/evidence/in01-world-browser/attempt-08/run.mjs.snapshot",
+      "docs/mcr/evidence/in01-world-browser/attempt-08/session.mjs.snapshot",
+      "docs/mcr/evidence/in01-world-browser/attempt-08/status.mjs.snapshot",
+      "docs/mcr/evidence/in01-world-browser/attempt-08/world-final-a.png",
+      "docs/mcr/evidence/in01-world-browser/attempt-08/world-final-b.png",
+      "docs/mcr/evidence/in01-world-browser/attempt-09/control.mjs.snapshot",
+      "docs/mcr/evidence/in01-world-browser/attempt-09/customization-actual.png",
+      "docs/mcr/evidence/in01-world-browser/attempt-09/flows.mjs.snapshot",
+      "docs/mcr/evidence/in01-world-browser/attempt-09/guards.mjs.snapshot",
+      "docs/mcr/evidence/in01-world-browser/attempt-09/report.json",
+      "docs/mcr/evidence/in01-world-browser/attempt-09/run.mjs.snapshot",
+      "docs/mcr/evidence/in01-world-browser/attempt-09/session.mjs.snapshot",
+      "docs/mcr/evidence/in01-world-browser/attempt-09/status.mjs.snapshot",
+      "docs/mcr/evidence/in01-world-browser/attempt-09/theme-parade.png",
+      "docs/mcr/evidence/in01-world-browser/attempt-09/world-final-a.png",
+      "docs/mcr/evidence/in01-world-browser/attempt-09/world-final-b.png",
+      "docs/mcr/evidence/in01-world-browser/checks/current-cohort-09.json",
+      "docs/mcr/evidence/in01-world-browser/checks/qualification-07.json",
+      "docs/mcr/evidence/in01-world-browser/checks/renewed-validation.json",
+      "docs/mcr/evidence/in01-world-browser/checks/run-05.log",
+      "docs/mcr/evidence/in01-world-browser/checks/run-06.log",
+      "docs/mcr/evidence/in01-world-browser/checks/run-07.log",
+      "docs/mcr/evidence/in01-world-browser/checks/run-08.log",
+      "docs/mcr/evidence/in01-world-browser/checks/run-09.log",
+      "docs/mcr/frontend/in01-browser-journey.md",
+      "frontend/e2e/real/world/in01/flows.mjs",
+      "frontend/e2e/real/world/in01/run.mjs",
+      "frontend/e2e/real/world/in01/session.mjs"
+    ],
+    "qualification": "Only authored scoped changes are checked relative to the coordinated history-merge baseline; unchanged core API accepts the exact assigned evidence/documentation set."
+  }
+}

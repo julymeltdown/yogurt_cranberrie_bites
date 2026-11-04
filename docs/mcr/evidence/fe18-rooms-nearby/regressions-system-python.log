@@ -1,0 +1,75 @@
+
+ RUN  v4.1.9 /Users/lhs/Desktop/mcr-worktrees/fe-ref-customize/frontend
+
+x·········x··················································································································································································································
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 2 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  src/app/world-entry/__tests__/reference-scene-v4/contracts.test.ts > passes the actual closed C06 bundle validator with the supported retained Python format environment
+AssertionError: Traceback (most recent call last):
+  File "<string>", line 1, in <module>
+    import runpy,json,sys;m=runpy.run_path('../scripts/mcr/validate-assets.py');print(json.dumps(m['validate_bundle'](json.loads(sys.stdin.read(),object_pairs_hook=m['reject_duplicates']))))
+                                                                                                 ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "../scripts/mcr/validate-assets.py", line 290, in validate_bundle
+    checks = checks or validators()
+                       ~~~~~~~~~~^^
+  File "../scripts/mcr/validate-assets.py", line 110, in validators
+    require(not missing,
+    ~~~~~~~^^^^^^^^^^^^^
+            "required asset format checkers unavailable: " + ", ".join(missing) +
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+            "; install scripts/mcr/requirements-contracts.txt in the validation environment")
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "../scripts/mcr/validate-assets.py", line 34, in require
+    raise AssetError(message)
+<run_path>.AssetError: required asset format checkers unavailable: date-time, uri; install scripts/mcr/requirements-contracts.txt in the validation environment
+: expected 1 to be +0 // Object.is equality
+
+- Expected
++ Received
+
+- 0
++ 1
+
+ ❯ src/app/world-entry/__tests__/reference-scene-v4/contracts.test.ts:15:40
+
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/2]⎯
+
+ FAIL  src/app/world-entry/__tests__/reference-scene-v5/contracts.test.ts > passes the actual closed C06 bundle validator with the supported retained Python format environment
+AssertionError: Traceback (most recent call last):
+  File "<string>", line 1, in <module>
+    import runpy,json,sys;m=runpy.run_path('../scripts/mcr/validate-assets.py');print(json.dumps(m['validate_bundle'](json.loads(sys.stdin.read(),object_pairs_hook=m['reject_duplicates']))))
+                                                                                                 ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "../scripts/mcr/validate-assets.py", line 290, in validate_bundle
+    checks = checks or validators()
+                       ~~~~~~~~~~^^
+  File "../scripts/mcr/validate-assets.py", line 110, in validators
+    require(not missing,
+    ~~~~~~~^^^^^^^^^^^^^
+            "required asset format checkers unavailable: " + ", ".join(missing) +
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+            "; install scripts/mcr/requirements-contracts.txt in the validation environment")
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "../scripts/mcr/validate-assets.py", line 34, in require
+    raise AssetError(message)
+<run_path>.AssetError: required asset format checkers unavailable: date-time, uri; install scripts/mcr/requirements-contracts.txt in the validation environment
+: expected 1 to be +0 // Object.is equality
+
+- Expected
++ Received
+
+- 0
++ 1
+
+ ❯ src/app/world-entry/__tests__/reference-scene-v5/contracts.test.ts:15:40
+
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/2]⎯
+
+
+ Test Files  2 failed | 11 passed (13)
+      Tests  2 failed | 219 passed (221)
+   Start at  14:35:39
+   Duration  13.01s (transform 1.04s, setup 0ms, import 1.68s, tests 8.17s, environment 2.28s)
+

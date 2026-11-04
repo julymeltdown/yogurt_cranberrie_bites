@@ -1,0 +1,139 @@
+{
+  "status": "CONTRACT_READY",
+  "scope": "Original FE18 client completion; fixture-qualified W05 client behavior",
+  "base": "9356b943900ae4b4bf2c45f11118555e2c5d72ff",
+  "source": "4248e580fac41741ebc05a7f6804067aaaacd401",
+  "branch": "codex/mcr-fe-FE18-client-completion",
+  "grant": "74ede9bad189e14373c80c5d595fb690d2f52692",
+  "goal": {
+    "createdAt": 1793769944,
+    "statusAtHandoffPreparation": "ACTIVE",
+    "unbudgeted": true
+  },
+  "checks": [
+    {
+      "command": "MCR_FE14_PYTHON=/Users/lhs/Desktop/mcr-tools/contracts-validation-venv/bin/python3 node24 vitest run src/features/world-rooms/__tests__ src/app/world-entry/__tests__ src/world/network/__tests__/replication.test.ts src/world/composition/__tests__/composition.test.ts --reporter=dot",
+      "cwd": "frontend",
+      "exitCode": 0,
+      "evidence": "regressions-final.log",
+      "tests": 223,
+      "files": 13
+    },
+    {
+      "command": "node24 node_modules/typescript/bin/tsc -p tsconfig.json --incremental false --pretty false",
+      "cwd": "frontend",
+      "exitCode": 0,
+      "evidence": "types-final.log"
+    },
+    {
+      "command": "node24 node_modules/oxlint/bin/oxlint src/features/world-rooms src/features/world-nearby",
+      "cwd": "frontend",
+      "exitCode": 0,
+      "evidence": "lint-final.log"
+    },
+    {
+      "command": "node24 --check src/features/world-rooms/__tests__/completion/native.mjs",
+      "cwd": "frontend",
+      "exitCode": 0,
+      "evidence": "driver-final.log"
+    },
+    {
+      "command": "python3 scripts/mcr/check-plan.py",
+      "cwd": ".",
+      "exitCode": 0,
+      "evidence": "plan.log"
+    },
+    {
+      "command": "node scripts/mcr/check-ui-origin.mjs",
+      "cwd": ".",
+      "exitCode": 0,
+      "evidence": "Tool receipt: 3326 files checked, zero violations"
+    },
+    {
+      "command": "git diff --check",
+      "cwd": ".",
+      "exitCode": 0
+    }
+  ],
+  "native": [
+    {
+      "report": "native-02/report.json",
+      "status": "PASS",
+      "source": "d5247c9c87233621afc58fc556d7e4423786b26e",
+      "slot": "FE18-CLIENT-RETRY-202611040541Z",
+      "caseWidths": [
+        360,
+        390,
+        430
+      ],
+      "peakMeasuredWorkflowBytes": 113864857,
+      "cleanup": {
+        "browserClosed": true,
+        "serverClosed": true,
+        "temporaryRemoved": true
+      },
+      "applicationBuild": {
+        "result": "PASS",
+        "entry": "frontend/index.html/src/main.tsx",
+        "sequentialAfterBrowser": true,
+        "copyPublicDir": false
+      }
+    },
+    {
+      "report": "native-03/report.json",
+      "status": "PASS",
+      "source": "4248e580fac41741ebc05a7f6804067aaaacd401",
+      "slot": "FE18-FOCUS-202611040602Z",
+      "caseWidths": [
+        390
+      ],
+      "peakMeasuredWorkflowBytes": 81191065,
+      "cleanup": {
+        "browserClosed": true,
+        "serverClosed": true,
+        "temporaryRemoved": true
+      },
+      "applicationBuild": {
+        "result": "PASS",
+        "entry": "frontend/index.html/src/main.tsx",
+        "sequentialAfterBrowser": true,
+        "copyPublicDir": false
+      }
+    }
+  ],
+  "failedEvidencePreserved": [
+    "native-01/report.json",
+    "native-01/review.json",
+    "regressions-system-python.log",
+    "types.log"
+  ],
+  "visualReview": [
+    "native-02/rooms-admitted-390.png",
+    "native-02/nearby-before-390.png",
+    "native-03/nearby-before-390.png",
+    "native-03/nearby-removed-390.png"
+  ],
+  "resourceRelease": {
+    "slot": "FE18-FOCUS-202611040602Z",
+    "released": true,
+    "ownDependencyLinkAbsent": true,
+    "ownTempDirectories": 0,
+    "validationChromeRoots": 0,
+    "interactiveMCPPreserved": 1,
+    "durableBytesAtRelease": 4193385
+  },
+  "disposition": {
+    "FE18Client": "Implemented, validated, committed handoff pending Root publication",
+    "W05Client": "Frozen authorized projection removes DOM and actual Phaser paint",
+    "W04Invitation": "OPEN_UNRESOLVED_AUTHORITY_INTERFACE / NOT_IMPLEMENTED; user interpretation pending; BE11 World20f producer, BackendRoot1fc shared authority",
+    "IN01": "No acceptance claim; real current-cohort run remains separate",
+    "IN05": "No acceptance claim;112 tasks and61 IA retained"
+  },
+  "limitations": [
+    "Synthetic canonical Auth/C03/C05 source7005 fixture, not live backend or real BE37 block enforcement",
+    "Actual default Phaser + authorized DOM client behavior; not production art admission or whole reference fidelity",
+    "Automated desktop Chrome keyboard/touch events and viewports, not physical devices/software keyboards",
+    "W04 invitation authority unresolved; capacity is not measured occupancy"
+  ],
+  "publisher": "Root153 only; no worker push"
+}
