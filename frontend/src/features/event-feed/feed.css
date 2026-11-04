@@ -39,7 +39,7 @@
 .feed-browse .feed-author-line { flex-wrap: wrap; column-gap: 12px; row-gap: 3px; }
 .feed-browse .feed-author-line strong { font-size: 16px; }
 .feed-browse .feed-author-line time { font-size: 14px; }
-.feed-browse .feed-post-copy { grid-column: 2; display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 2; overflow: hidden; min-width: 0; margin: 8px 0 16px; font: 700 16px/1.3 "Courier New", monospace; letter-spacing: -.02em; }
+.feed-browse .feed-post-copy { grid-column: 2; display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 2; overflow: hidden; min-width: 0; margin: 8px 0 16px; font: 700 17px/1.25 "Arial Narrow", "Helvetica Neue", Arial, sans-serif; }
 .feed-media { grid-column: 2; display: grid; gap: 6px; min-width: 0; }
 .feed-browse .feed-media figure { display: grid; margin: 0; aspect-ratio: 2.85; overflow: hidden; border: 1px solid #40362d; border-radius: 2px; background: #ded5c8; }
 .feed-browse .feed-media img { display: block; width: 100%; height: 100%; object-fit: cover; }

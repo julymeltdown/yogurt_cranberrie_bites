@@ -10,7 +10,7 @@ const repo=process.env.MCR_FEED_REPO, phase=process.env.MCR_FEED_PHASE??'after'
 assert(repo);assert(process.env.MCR_FEED_SLOT,'named accepted slot required')
 const frontend=resolve(repo,'frontend'),req=createRequire(resolve(frontend,'package.json'))
 const {createServer}=await import(pathToFileURL(req.resolve('vite')))
-const {chromium,expect}=await import(pathToFileURL(req.resolve('@playwright/test')))
+const {chromium,expect}=req('@playwright/test')
 const {default:react}=await import(pathToFileURL(req.resolve('@vitejs/plugin-react')))
 const evidence=resolve(repo,'docs/mcr/evidence/css-parity-feed',phase)
 const hash=b=>createHash('sha256').update(b).digest('hex')

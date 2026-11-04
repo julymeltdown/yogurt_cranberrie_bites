@@ -1,0 +1,9 @@
+file:///Users/lhs/.codex/worktrees/d51f/mcr/docs/mcr/evidence/css-parity-feed/native.mjs:31
+ await server.listen();browser=await chromium.launch({channel:'chrome',headless:true});report.browser=browser.version()
+                                              ^
+
+TypeError: Cannot read properties of undefined (reading 'launch')
+    at file:///Users/lhs/.codex/worktrees/d51f/mcr/docs/mcr/evidence/css-parity-feed/native.mjs:31:47
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+
+Node.js v24.22.2
