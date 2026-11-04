@@ -132,6 +132,8 @@ class TransportTests(unittest.IsolatedAsyncioTestCase):
             await transport.body(reader(b''), {"transfer-encoding": "chunked", "content-length": "2"})
 
     async def test_http_limits_and_duplicate_headers(self):
+        with self.assertRaisesRegex(Failure, "duplicate-http-header-cache-control"):
+            await transport.headers(reader(b'HTTP/1.1 200 OK\r\nCache-Control: no-store\r\nCache-Control: no-store\r\n\r\n'))
         for raw in (b'HTTP/1.1 200 OK\r\nX: one\r\nX: two\r\n\r\n', b'HTTP/1.1 200 OK\r\nX: '+b'x'*8192+b'\r\n\r\n'):
             with self.assertRaises(Failure): await transport.headers(reader(raw))
         with self.assertRaisesRegex(Failure, "http-body-limit"):
