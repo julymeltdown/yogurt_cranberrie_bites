@@ -1,7 +1,7 @@
 # BE-MEETING-PHOTO execution evidence
 
 Original scope: optional authorized physical-beacon photo, BE09 / FE20 / §5.4.
-Status: IN_PROGRESS; frozen contract and bounded photo adapter are qualified at final combined source 3394edc6; publication is being prepared. Historical checkpoints below retain their original evidence limits.
+Status: IN_PROGRESS for parent BE09/FE20/IN02; the frozen contract and bounded photo adapter are native-qualified at final combined source 3394edc6. Historical checkpoints below retain their original evidence limits.
 No full BE09/FE20/IN02 or giveaway-BE20 completion is asserted.
 
 Checkout `/Users/lhs/Desktop/mcr-worktrees/be-meeting-photo`, branch
@@ -320,3 +320,33 @@ this receipt does not assert new whole-master/native/IN02 proof. Real canonical
 Auth/Friend joined photo authority, MEETING_PHOTO root settlement and HTTP terminal
 delivery, public routes, device flow and genuine physical provenance/rights
 remain separately owned and unverified here. No production flags are enabled.
+
+
+## Final publication reconciliation
+
+Final evidence commit: `5db507df`. Normal peer merge
+`cf6ac374490a79552638ebc6a1357a89f87c9f3a` preserves the subsequently published
+PartyLive subject-error mapping and Profile test-only preparation. The PartyLive
+changes have no photo/meeting call edge or public interface change; Profile's new
+module is `cfg(test)` and is outside the three compiled photo targets. They
+retain their owners' evidence, not a new photo whole-master claim.
+All recorded photo source pins (excluding the evidence JSON metadata itself) and
+all photo migration hashes remained byte-identical to the qualified 3394 source.
+The final changed-path audit found exactly 16 scoped paths: contract document,
+smoke harness, 0029, exact lib export and granted commands correction, five new
+photo module files, three native targets, support module and native receipt,
+and this document. No frontend, shared manifest/lockfile, source archive,
+generated contract, peer evidence or unrelated source is authored in this patch.
+The media-port publication is already in master as its owner's actual 15e commit.
+
+Offline schema17 and required planning checks both exit 0 after reconciliation;
+Rust formatting and scoped whitespace checks exit 0. The explicit shared build
+target is released, both owned PG runs cleaned up, and the checkout is clean.
+The direct handoff records the actual published SHA/remote ancestry separately,
+so the native receipt is never rewritten to assert a later source was tested.
+
+Remaining broader requirements have named owners: root public beacon/rally/photo
+dispatch and qualified SQL/HTTP settlement, actual canonical Auth/Friend and party
+fences, genuine physical place provenance/current public revision, real-client
+cache invalidation and IN02/device proof. They are the planned next increment
+rather than completed criteria or cuts to the original product specification.
