@@ -1,0 +1,15 @@
+{
+  "allocation": "UI-BG-CUSTOMIZE-02-SOURCE-202611040919Z",
+  "preflight_utc": "2026-11-04T09:19:50.904051Z",
+  "completed_checks_utc": "2026-11-04T09:20:47.180581+00:00",
+  "start_free_bytes": 18266615808,
+  "end_free_bytes": 18142175232,
+  "all_checkout_carry_bytes_before_receipt": 162127,
+  "evidence_bytes_before_receipt": 7250,
+  "temp_bytes": 0,
+  "source_verifier_exit": 0,
+  "diff_check_exit": 0,
+  "long_lived_processes_created": 0,
+  "limits": "<=120s whole, >=15s cleanup reserve, 8MiB whole/2MiB durable/2MiB temp; no browser/build/render/export/install/deps",
+  "status": "SOURCE_PASS_RELEASE_READY_RENDER_PENDING"
+}

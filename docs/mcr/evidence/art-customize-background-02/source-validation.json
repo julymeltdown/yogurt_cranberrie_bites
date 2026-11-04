@@ -1,0 +1,54 @@
+{
+  "task": "UI-BG-CUSTOMIZE-02",
+  "base": "55132a2f06948fced1025dd70c583b3848d32724",
+  "status": "SOURCE_PASS_RENDER_PENDING",
+  "dependencies_added": [],
+  "scope": "One new SVG; only image/position/size in existing outer Customize selector; own new doc/evidence",
+  "svg": {
+    "dimensions": [
+      390,
+      780
+    ],
+    "opaque_base": "#fbf2df",
+    "elements": 29,
+    "external_references": 0,
+    "text_or_characters": false
+  },
+  "pins": {
+    "frontend/public/backgrounds/cute-entry-v1/customize-playful-lower.svg": {
+      "bytes": 3683,
+      "sha256": "c7d71e6c41d764fb0f086bc25f8c987e3bfc41e36d6b927fd30842468b36a693"
+    },
+    "frontend/src/shared/styles/cozy-identity-backgrounds-v1.css": {
+      "bytes": 3891,
+      "sha256": "77b25626d6c94f3f226e1ccc079a8b96d11d6a4873dfc6e20fcef174c49f5f6d"
+    },
+    "docs/mcr/evidence/art-customize-background-02/verify-source.py": {
+      "bytes": 5389,
+      "sha256": "4dd02a01b7b3dae40060272fd18cb85ee20e956fa6ac8603a685595222e364d5"
+    }
+  },
+  "existing_asset_files_unchanged": 9,
+  "nonleased_css_bytes_unchanged": true,
+  "observed_color_palette_dark_ink_ratios": {
+    "#91aa8b": 7.031,
+    "#a7bd98": 8.76,
+    "#ae91b8": 6.368,
+    "#bccca8": 10.42,
+    "#d0b5d6": 9.509,
+    "#d5ddbd": 12.586,
+    "#d7a0ae": 8.046,
+    "#d8cbe3": 11.459,
+    "#d9a1af": 8.162,
+    "#e5bbc2": 10.317,
+    "#e7b6a5": 9.822,
+    "#f1d8c5": 12.976,
+    "#f2e8f2": 14.861,
+    "#fbf2df": 15.931,
+    "#ffe5a8": 14.375,
+    "#fff0c5": 15.639,
+    "#fff3dc": 16.132
+  },
+  "minimum_flat_palette_dark_ink_contrast": 6.368,
+  "limits": "Source/scope proof only. Flat palette samples do not certify composed contrast or focus. Root owns one allocated default-App three-width pair cohort; actual pixel/control/character proof and owner inspection remain required. No live-service/device/feature acceptance."
+}

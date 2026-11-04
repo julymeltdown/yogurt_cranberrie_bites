@@ -71,8 +71,8 @@
  */
 :root .shell-panel[data-mcr-panel='customize'] > .shell-panel-body {
   background-color: #fbf2df;
-  background-image: url('/backgrounds/cute-entry-v1/customize-paper.svg');
-  background-position: center;
+  background-image: url('/backgrounds/cute-entry-v1/customize-playful-lower.svg');
+  background-position: center bottom;
   background-size: 100% 100%;
   background-repeat: no-repeat;
 }
