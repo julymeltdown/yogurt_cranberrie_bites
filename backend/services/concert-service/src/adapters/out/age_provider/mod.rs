@@ -26,6 +26,11 @@ pub enum Access {
 /// A timestamp is not a fence. Missing production integration must remain unavailable.
 #[async_trait]
 pub trait Authority: Send + Sync {
+    /// Only a response ceiling, never authorization or a reusable claim lease.
+    /// A canonical runtime binds this to the original held response scope.
+    fn disclose_until(&self, _until: DateTime<Utc>) -> Result<(), CommandError> {
+        Ok(())
+    }
     async fn authorize_in(
         &self,
         c: &mut PgConnection,
@@ -390,6 +395,16 @@ impl PgAgeClaims {
             })
             .collect::<Vec<_>>();
         deadline(self, &mut tx, c).await.map_err(command)?;
+        let assessment = concert_domain::age_policy::assess(c.actor, &claims, self.clock.now())
+            .map_err(|_| Error::Unavailable)?;
+        self.authority
+            .disclose_until(
+                assessment
+                    .recheck_at()
+                    .unwrap_or(c.expires_at)
+                    .min(c.expires_at),
+            )
+            .map_err(command)?;
         tx.commit().await.map_err(db)?;
         // A known COMMIT does not extend claim expiry or the Seoul birthday boundary.
         own_status(c, &claims, self.available(), self.clock.now())

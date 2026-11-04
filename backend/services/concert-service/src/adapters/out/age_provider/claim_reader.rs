@@ -27,6 +27,12 @@ pub trait ProjectionAuthority: Send + Sync {
     fn accepts_claim(&self, _verifier: &str, _revision: &str) -> bool {
         false
     }
+    /// Bind the private projection's earliest temporal boundary to its response
+    /// owner before any value is produced. Standalone SQL-only authorities have
+    /// no transport; canonical scoped implementations must shorten that scope.
+    fn disclose_until(&self, _until: DateTime<Utc>) -> Result<(), PolicyError> {
+        Ok(())
+    }
     /// Called before claim locks and again AFTER private projection. Resolve exact
     /// canonical actor/subject/session/event/request/deadline and current policy;
     /// hold participating owner/session/scope fences through the final COMMIT.
@@ -221,6 +227,7 @@ impl PgClaimProjection {
         } else {
             query.context.expires_at
         };
+        self.authority.disclose_until(until.min(valid_until))?;
         let value = projection(
             &mut *connection,
             ProjectionAge {
