@@ -48,7 +48,14 @@ impl ScopedProductProducer for ReportProduct {
             &frame.http_target,
             Sha256::digest(&frame.http_body).into(),
             context.deadline(),
-        )?;
+        )
+        .map_err(|error| {
+            if error.code() == tonic::Code::DeadlineExceeded {
+                error
+            } else {
+                Status::permission_denied("Report parent binding mismatch")
+            }
+        })?;
         if expected.digest() != scope.binding().digest() {
             return Err(Status::permission_denied("Report canonical scope mismatch"));
         }
