@@ -1,5 +1,8 @@
 # Canonical owner authority
 
+Machine-local build and checkout prefixes are redacted as `$MCR_BUILD_ROOT` and
+$MCR_WORKTREE_ROOT`; original commands and path values remain in private receipts.
+
 Implementation owner: `BE-CANONICAL-OWNER-AUTHORITY` in isolated
 `be-intro-age-policy`, branch `codex/mcr-be-owner-authority`, base
 `b8b5a939318bf39465fad44663eb272cb71868dc`. The former BE25 branch remains at
@@ -113,14 +116,14 @@ Auth/Friend stores, handlers, 0017 migrations and narrow registration hooks.
 Pinned Rust 1.88.0 command (MEDIA target exclusively leased for this check):
 
 ```sh
-CARGO_TARGET_DIR=/Users/lhs/Desktop/mcr-build/media-combined-fa4b4b3/target \
+CARGO_TARGET_DIR=$MCR_BUILD_ROOT/media-combined-fa4b4b3/target \
 CARGO_INCREMENTAL=0 CARGO_PROFILE_DEV_DEBUG=0 CARGO_PROFILE_TEST_DEBUG=0 \
 cargo +1.88.0 test --manifest-path backend/Cargo.toml --locked --offline -j2 -p platform --lib
 ```
 
 First and final passes: exit 0, 197 passed each; final pass has zero warnings.
 Exact source and binary hashes are in `platform-checkpoint.json`. Logs are private local evidence under
-`/Users/lhs/Desktop/mcr-build/owner-authority-evidence/`. This covers exact
+`$MCR_BUILD_ROOT/owner-authority-evidence/`. This covers exact
 Gateway parent/header/body binding, recovery-safe request fingerprints,
 capability/producer identity separation, exact new service policy boundaries,
 and actual body consumption versus cancellation/serializer failure. It does not

@@ -1,10 +1,13 @@
 # World runtime and socket delivery
 
+Machine-local build and checkout prefixes are redacted as `$MCR_BUILD_ROOT` and
+$MCR_WORKTREE_ROOT`; original commands and path values remain in private receipts.
+
 Status: IN_PROGRESS. The latest switch/sealed-Auth candidate passes 62 focused native tests: 27 runtime, 16 actual socket tests, 14 library tests, four isolated PostgreSQL bridge cases and one production-bridge/signed-Auth/owning-DB composition case. The separate earlier `c529741` freeze passed 97 tests and remains tied to its own source and executables. Qualified production Profile/recipient transport, distributed invalidation, real two-account/product-art/Gateway flow, load and IN01 acceptance remain unproven.
 
 ## Ownership and ancestry
 
-The resumed sole writer uses `codex/mcr-be-world-runtime-production` in `/Users/lhs/Desktop/mcr-worktrees/be-world-runtime-production`, exact base `e869480395b70b4aae6cfcf50e904b079a59a0e7`. Main preserved six untracked source files from the stopped `fed927b00e05a0b25747d628b6c5a662d0cbc4b5` runtime checkout under `/private/tmp/mcr-world-runtime-resume-20261104`. That checkout remains stopped. No old prerequisite history was replayed into this branch.
+The resumed sole writer uses `codex/mcr-be-world-runtime-production` in `$MCR_WORKTREE_ROOT/be-world-runtime-production`, exact base `e869480395b70b4aae6cfcf50e904b079a59a0e7`. Main preserved six untracked source files from the stopped `fed927b00e05a0b25747d628b6c5a662d0cbc4b5` runtime checkout under `/private/tmp/mcr-world-runtime-resume-20261104`. That checkout remains stopped. No old prerequisite history was replayed into this branch.
 
 The owned additions are `world/{runtime,membership,ingress,admission_bridge}.rs`, `adapters/in/{mod,world_ws}.rs`, `config/world_runtime.rs`, `tests/world_runtime.rs`, `tests/world_ws.rs`, `tests/world_runtime_support/**` and this document. Shared-file edits are additive module registrations and world-only startup/supervision in `main.rs`. Main owns Cargo manifests/lockfiles, prerequisite simulation/replication/admission modules, RPC/proto and Gateway integration.
 
@@ -33,7 +36,7 @@ The bridge consumes a one-use digest through `PgWorldRepository`, performs fresh
 - Scoped `rustfmt +1.88.0 --edition 2021`: exit 0. Default stable rustfmt is unavailable due to a missing dylib; explicit Rust 1.88 succeeds.
 - `git diff --check`: exit 0 before the source checkpoint.
 - `python3 scripts/mcr/check-plan.py`: exit 0; all 13 archive hashes and planning provenance pass. This checks planning only.
-- Main granted exclusive mutable `/Users/lhs/Desktop/mcr-build/media-combined-fa4b4b3/target` after BE26 released its handles and froze evidence. No third target may be created. Rust 1.88, locked/offline, at most two jobs, development/test debug zero and 8GiB free floor are required. No Cargo has run at this checkpoint; central ws dependencies and BE13/14 prerequisite imports are pending.
+- Main granted exclusive mutable `$MCR_BUILD_ROOT/media-combined-fa4b4b3/target` after BE26 released its handles and froze evidence. No third target may be created. Rust 1.88, locked/offline, at most two jobs, development/test debug zero and 8GiB free floor are required. No Cargo has run at this checkpoint; central ws dependencies and BE13/14 prerequisite imports are pending.
 - Authored unit and actual loopback socket regressions are NOT_RUN. Socket fixtures explicitly synthesize authority and geometry. They do not prove live canonical Auth, product art, deployed Gateway routing, real multiuser behavior, load, IN01 or release acceptance.
 
 A later evidence checkpoint must record exact commands/exits, current source hashes, Cargo JSON-selected executable hashes/copies and unresolved failures. No test count or historical evidence is promoted here.
@@ -42,7 +45,7 @@ A later evidence checkpoint must record exact commands/exits, current source has
 
 Central source/dependency prerequisite `3b18b94` was merged at `5bc0554dacaae2bea11b1487a1cc71382190ca91`, preserving Main's ownership and the existing DB/RPC exports. Exact dependency follow-up `4091e4b` is local `ce9bab5`; it exposes retained tokio-tungstenite 0.24.0 for typed Capacity/Utf8/Protocol mapping without error-text parsing. Main's unrelated published frontend changes arrived only as unchanged central merge ancestry; this worker authored no frontend patch.
 
-The leased Rust 1.88 command was `CARGO_TARGET_DIR=/Users/lhs/Desktop/mcr-build/media-combined-fa4b4b3/target CARGO_BUILD_JOBS=2 CARGO_PROFILE_DEV_DEBUG=0 CARGO_PROFILE_TEST_DEBUG=0 cargo +1.88.0 test --manifest-path backend/Cargo.toml --locked --offline -p concert-service --test world_runtime --test world_ws --test world_simulation --test world_replication --test world_recovery --no-run --message-format=json`. Initial compile exits 101 identified an owned ingress reference mismatch and a socket-test orphan implementation; both were corrected. Third combined compile exited 0. All five executables were selected from Cargo JSON, copied outside the mutable target and hashed before execution.
+The leased Rust 1.88 command was `CARGO_TARGET_DIR=$MCR_BUILD_ROOT/media-combined-fa4b4b3/target CARGO_BUILD_JOBS=2 CARGO_PROFILE_DEV_DEBUG=0 CARGO_PROFILE_TEST_DEBUG=0 cargo +1.88.0 test --manifest-path backend/Cargo.toml --locked --offline -p concert-service --test world_runtime --test world_ws --test world_simulation --test world_replication --test world_recovery --no-run --message-format=json`. Initial compile exits 101 identified an owned ingress reference mismatch and a socket-test orphan implementation; both were corrected. Third combined compile exited 0. All five executables were selected from Cargo JSON, copied outside the mutable target and hashed before execution.
 
 The first run passed all 78 simulation/replication/recovery/runtime cases. Socket run passed 3/8 and found redundant recovery cleanup after an acknowledged disconnect and a known-revocation reason incorrectly mapped to unavailable. The owned runtime now retries newly registered recovery obligations and preserves expired/revoked authority close reasons. Fourth focused compile (runtime and sockets only) exited 0. Runtime 24/24 and socket 12/12 then passed with `--test-threads=2 --nocapture`; source inputs were captured before execution. The socket tests include two independent actual TCP/WS clients observing authoritative movement, Origin/query rejection, unknown/replayed tickets, connection-relative auth timeout, binary 1003, native UTF-8 1007, oversized/fragment aggregate 1009, input flood 4429, explicit revocation 4401, peer room cleanup and two-socket shutdown.
 
@@ -74,7 +77,7 @@ The deterministic native backpressure case tightens the real tungstenite write b
 
 **Remaining required work:** compose the committed sealed Auth producer once qualified and supplied by Main; supply actual Profile and recipient authority with defensible remote revocation semantics; verify a successful DB room switch cannot have its old replication slot closed by an intervening tick before the new owner installation. The planned owned remedy for that local switch race is an explicit bounded owner transition that suppresses publication and recovery rechecks for that transitioning subscription while the actual BE12 canonical check may remove its old simulated presence; other rooms and deadlines must continue, and rejection resumes only a still-current old membership. This is not implemented or certified by this freeze. Keep production opt-in unavailable and the goal active. Real canonical two-account/product-asset/Gateway/device/load/IN01 and release acceptance remain outstanding.
 
-The exclusive mutable target `/Users/lhs/Desktop/mcr-build/media-combined-fa4b4b3/target` is released to Main after this committed freeze. No additional Cargo run is authorized without a new lease; source-only producer adaptation may continue in the same isolated checkout.
+The exclusive mutable target `$MCR_BUILD_ROOT/media-combined-fa4b4b3/target` is released to Main after this committed freeze. No additional Cargo run is authorized without a new lease; source-only producer adaptation may continue in the same isolated checkout.
 
 ## Source-only successful-switch transition follow-up
 
@@ -100,7 +103,7 @@ Main explicitly granted the single additional repository line changing `Duration
 
 Native evidence is under `/private/tmp/mcr-world-runtime-auth-20261104/`. Four bounded no-run compilations exit 0, using Rust 1.88, locked/offline, jobs2, debug0 and incremental0 with the exclusive `media-combined-fa4b4b3/target` lease. Compiles 2 and 3 were superseded without native execution. The final compile command is:
 
-`CARGO_TARGET_DIR=/Users/lhs/Desktop/mcr-build/media-combined-fa4b4b3/target CARGO_BUILD_JOBS=2 CARGO_PROFILE_DEV_DEBUG=0 CARGO_PROFILE_TEST_DEBUG=0 CARGO_INCREMENTAL=0 cargo +1.88.0 test --manifest-path backend/Cargo.toml --locked --offline -p concert-service --lib --test world_runtime --test world_ws --no-run --message-format=json`
+`CARGO_TARGET_DIR=$MCR_BUILD_ROOT/media-combined-fa4b4b3/target CARGO_BUILD_JOBS=2 CARGO_PROFILE_DEV_DEBUG=0 CARGO_PROFILE_TEST_DEBUG=0 CARGO_INCREMENTAL=0 cargo +1.88.0 test --manifest-path backend/Cargo.toml --locked --offline -p concert-service --lib --test world_runtime --test world_ws --no-run --message-format=json`
 
 Cargo JSON-selected executables were copied outside the mutable target before running. `inputs-4.json` records 1494 backend/contract inputs, unchanged through every final native/DB run. `compile-4.jsonl` and `.stderr` preserve compilation evidence. Final ordinary immutable runs (`--test-threads=2 --nocapture`) exit 0: runtime **27/27**, actual socket **16/16**, library **14/14**. The library count includes eight sealed Auth guards and six existing unit checks. Four ordinary socket DB cases and three library DB cases are ignored in ordinary runs; the four socket cases and the new library composition case are explicitly run below. The two producer-native Auth cases were qualified upstream at `30ca2a4` and were **not reexecuted** in this worker's final run.
 

@@ -195,4 +195,3 @@ the test-file conflict. Participant factory `e7c0cbb8` maps to `161a3bd6`.
 These mappings do not certify the combined Root entrypoint: its fresh compilation,
 supervision tests and actual public C03/World serving proof remain NOT_RUN at
 this source checkpoint.
-
