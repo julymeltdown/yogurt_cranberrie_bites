@@ -167,3 +167,10 @@ to that executable and fixture sequence. The current restart-order, cursor and
 other-user negatives are **NOT_RUN** pending a fresh named allocation; the
 source-level changes do not inherit the earlier result. Publication and the
 complete multiuser target remain separate Root and provider-owner handoffs.
+
+The production composition is owned separately by the backend integrator. It
+constructs the canonical core-only registry and may add each real provider
+only after that provider has passed its own coherent qualification. The
+coordinator's closed registry will reject duplicate category insertion. A
+missing provider stays durable `INCOMPLETE`; the aggregate cannot turn the core
+owner or an unavailable constructor into a seven-category acknowledgement.
