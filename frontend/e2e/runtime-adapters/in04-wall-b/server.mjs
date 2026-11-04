@@ -7,6 +7,7 @@ import { extname, resolve, normalize } from 'node:path'
 import { pathToFileURL } from 'node:url'
 import { pinnedSource, sha256 } from './pinned-source.mjs'
 import { ownedBytes, readSettings } from './inputs.mjs'
+import { buildApplicationRelease, canonicalJson } from './application-release.mjs'
 
 export function browserDependencyIncludes(manifest) {
   // Tailwind runs in the Vite server. Optimizing its native Oxide plugin as a
@@ -31,6 +32,8 @@ export async function startProductionFrontend({ repo, candidate, settingsPath, d
   const manifest = JSON.parse(source.bytes('frontend/package.json').toString())
   const aliases = Object.keys(manifest.dependencies).map(name => ({ find: name, replacement: resolve(dependencies, name) }))
   const [vite, react, tailwind] = await Promise.all(['vite', '@vitejs/plugin-react', '@tailwindcss/vite'].map(name => import(pathToFileURL(require.resolve(name)).href)))
+  const application = await buildApplicationRelease({ repo, candidate, dependencies, mode: 'vite-serve' })
+  await writeFile(resolve(cacheDirectory, 'application-release.json'), canonicalJson(application.manifest), { flag: 'wx', mode: 0o600 })
   const token = randomBytes(32).toString('hex'), origin = new URL(settings.origin)
   const settingsSha256 = sha256(settingsBytes)
   const binding = Object.freeze({ candidate, environmentId: settings.environmentId, eventId: settings.eventId, origin: settings.origin, settingsSha256 })
@@ -82,6 +85,7 @@ export async function startProductionFrontend({ repo, candidate, settingsPath, d
       },
     }],
     define: {
+      'import.meta.env.VITE_MCR_APPLICATION_RELEASE': JSON.stringify(application.release),
       'import.meta.env.VITE_MCR_EVENT_ID': JSON.stringify(settings.eventId),
       'import.meta.env.VITE_MCR_LOCAL_INPUT_CONFIG': JSON.stringify(JSON.stringify(settings.localInput)),
       'import.meta.env.VITE_MCR_MURAL_CONFIG': JSON.stringify(JSON.stringify(settings.mural)),
@@ -116,7 +120,7 @@ export async function startProductionFrontend({ repo, candidate, settingsPath, d
     serving = true
     await writeFile(handoffPath, JSON.stringify({ ...binding, token, phaserModulePath }) + '\n', { flag: 'wx', mode: 0o600 })
   } catch (error) { serving = false; await server.close(); throw error }
-  return { binding, receipts: source.receipts, async close() { serving = false; await server.close() } }
+  return { binding, applicationRelease: application.release, receipts: source.receipts, async close() { serving = false; await server.close() } }
 }
 
 if (process.argv[1] && import.meta.url === pathToFileURL(resolve(process.argv[1])).href) {

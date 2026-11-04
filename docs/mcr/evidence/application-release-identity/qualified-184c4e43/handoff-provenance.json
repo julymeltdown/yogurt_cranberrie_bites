@@ -1,0 +1,46 @@
+{
+  "task": "APPLICATION-RELEASE-IDENTITY",
+  "status": "SOURCE_QUALIFIED",
+  "source": "184c4e43f8accef58f1ebea2375dc6c140c5dd98",
+  "base": "80de53f327c90db21955eb63d3b74aa41ec62514",
+  "draft": "0d1205851f4401662e380aeefdad15142ef7052a",
+  "applicationPaths": [
+    "frontend/src/shared/release/application.ts",
+    "frontend/e2e/runtime-adapters/in04-wall-b/application-release.mjs",
+    "frontend/e2e/runtime-adapters/in04-wall-b/application-release.test.mjs",
+    "frontend/e2e/runtime-adapters/in04-wall-b/server.mjs"
+  ],
+  "preimages": {
+    "frontend/src/shared/release/application.ts": null,
+    "frontend/e2e/runtime-adapters/in04-wall-b/application-release.mjs": null,
+    "frontend/e2e/runtime-adapters/in04-wall-b/application-release.test.mjs": null,
+    "frontend/e2e/runtime-adapters/in04-wall-b/server.mjs": {
+      "gitBlob": "2084f0a7da246f3877c48ed01ed497d1a275eb50",
+      "sha256": "cbcd295752e9cbb5bc05501489f7acdbda0702019a0569f9f84ec81dcc6e02ad"
+    }
+  },
+  "postimages": {
+    "frontend/src/shared/release/application.ts": {
+      "gitBlob": "7093af6c9e691e08fee815fac4a65346949a33aa",
+      "sha256": "a50b09ff51ab5d45be46ac788b16a2060c279d9c015651c6783d4ca1b197f6b6"
+    },
+    "frontend/e2e/runtime-adapters/in04-wall-b/application-release.mjs": {
+      "gitBlob": "2cffa959111cea11147be17a942cb0f6ca6d02cd",
+      "sha256": "a569bdd295852e4b8ef4754021dc4d2b4a2da46866ef8cd40263a66c6da27287"
+    },
+    "frontend/e2e/runtime-adapters/in04-wall-b/application-release.test.mjs": {
+      "gitBlob": "6b5d2ed6fa9d5596ea40615b1436abb168ba7ffd",
+      "sha256": "0bacce5bd0faa7470bc462361a142e129db086dbc52842a0ee42559ad8e8c771"
+    },
+    "frontend/e2e/runtime-adapters/in04-wall-b/server.mjs": {
+      "gitBlob": "734e932c541d708f80086263532b205efa29a7dc",
+      "sha256": "462b06ee8561a7391e8cbbf0f4cd885a8bbe6ed88a85e411545c76e0e3c89890"
+    }
+  },
+  "phase": "PASS: actual manifest; five cases including retained Vite Oxc define and strict leaf TS; syntax; exact scoped lint",
+  "limits": "Runtime/Vite server/browser/catalog/authenticated admission/emitted bundle not run. Enclosing lease failed later unrelated C07 preflight and fully released; identity phase passed independently. No test replay.",
+  "sampleCandidate": "80de53f327c90db21955eb63d3b74aa41ec62514",
+  "sampleBuildId": "8b9a477e03ef35fbb612cb79cfbc5140c4be1f2dbf2331f1e3974e0e7a71a551",
+  "actualFull": 1793826474.011847,
+  "runtimeOwner": "Root153; regenerate manifest for actual published runtime candidate/mode/assembly; never reuse sample ID for a different candidate."
+}

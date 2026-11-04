@@ -1,0 +1,12 @@
+{
+  "docs/mcr/evidence/application-release-identity/guardian.py": "5cac875af8b9070b08fa7adfe5fe5e746c8fb43b27f9fffa930a2fcdadafa25e",
+  "docs/mcr/evidence/application-release-identity/qualify.py": "0c6e7e193575d8c9228c03bf332abeb9c1116bc4f4658da147a96ed6f9320abe",
+  "docs/mcr/frontend/application-release-identity.md": "51d7227d185b0d580862c9f416d30af86315907c11a9ff6dcc9ed9559bbcd584",
+  "frontend/e2e/runtime-adapters/in04-wall-b/application-release.mjs": "a569bdd295852e4b8ef4754021dc4d2b4a2da46866ef8cd40263a66c6da27287",
+  "frontend/e2e/runtime-adapters/in04-wall-b/application-release.test.mjs": "0bacce5bd0faa7470bc462361a142e129db086dbc52842a0ee42559ad8e8c771",
+  "frontend/e2e/runtime-adapters/in04-wall-b/inputs.mjs": "fd932e9cda587ef6a0be383e143a30555f5ca29844e7056289ef819dcc4f5432",
+  "frontend/e2e/runtime-adapters/in04-wall-b/pinned-source.mjs": "511808e9963f81a187280c8593280d583852ac13b5e7460e6e1937b0d0d1b09d",
+  "frontend/e2e/runtime-adapters/in04-wall-b/private-file.mjs": "253063a7965050bba34a96d6958ad9cf038ec9106ff3d6a37bfb4e09b61fe296",
+  "frontend/e2e/runtime-adapters/in04-wall-b/server.mjs": "462b06ee8561a7391e8cbbf0f4cd885a8bbe6ed88a85e411545c76e0e3c89890",
+  "frontend/src/shared/release/application.ts": "a50b09ff51ab5d45be46ac788b16a2060c279d9c015651c6783d4ca1b197f6b6"
+}
