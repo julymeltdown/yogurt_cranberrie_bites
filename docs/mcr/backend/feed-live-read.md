@@ -359,3 +359,22 @@ NOT_RUN. The Rust case and controller have not executed: **NOT_RUN**; formatting
 Python syntax and diff checks alone are not compilation or native evidence.
 A separate library-test compile is needed for this cfg(test) component in
 addition to the queued 20-case adapter build. No target or PostgreSQL lease is held.
+
+
+## Canonical denial dependency evidence
+
+The current consumed SDK `scope.rs` is byte-identical to both published status
+fix `b0c95de3` and the owner's compiled clean `e5f922dd` snapshot. Direct inspection
+of `/private/tmp/mcr-canonical-denial-swldhben/native-report-1.json` confirms five
+actual native phases passed, including `subject_denial_never_masks_whole_scope_failure`.
+Owned-cluster cleanup passed and its root was absent. Report SHA-256:
+`6e1242c2f81e20a4282521942574fbb168b08b00e7e8d6c602e606426656be9c`.
+
+The overall report is **FAIL**, because a sixth Product error fixture did not
+reach producer dispatch; that owner is diagnosing it. The five bounded passing
+phases do not qualify that error wrapper, outer HTTP, or this Feed join. Our
+three adapter executables and five-owner native component still need fresh
+compilation/execution; no PASS is inferred from unchanged dependency bytes.
+Native Feed source inventory now also explicitly pins the character registry;
+a read-only check found 1,945 source/resource hashes including the real release,
+map/source binding, PNGs and Post tracking migration, with no database started.
