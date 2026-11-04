@@ -102,12 +102,33 @@ def build():
                   plaza_parcel=shared['plaza_parcel'], world_camera=source['world_camera'], scenes=scenes)
     (HERE / 'source-inputs.json').write_text(json.dumps(output, separators=(',', ':')) + '\n')
     (HERE / 'tile-pin.json').write_text(json.dumps(tile, indent=2) + '\n')
+    labels_dir = BASE / 'map-labels-v1'
+    presentation_raw = (labels_dir / 'presentation.json').read_bytes()
+    handoff_raw = (labels_dir / 'handoff.json').read_bytes()
+    assert sha(presentation_raw) == 'sha256:f9599a9859fe0b660fee591440dee2f7ab8e025a5f525df82091b61b091b23cc'
+    assert sha(handoff_raw) == 'sha256:a3cfaf56d880bca913f34e91fea72c70aefa8b8c8e3bc8aa8b30f76e3b473686'
+    presentation, handoff = json.loads(presentation_raw), json.loads(handoff_raw)
+    assert presentation['geometry_hash'] == handoff['source_geometry_hash'] == source['geometry_hash']
+    for item in handoff['files']:
+        raw = (labels_dir / item['path']).read_bytes()
+        assert len(raw) == item['bytes'] and sha(raw) == item['sha256'], item['path']
+    for item in presentation['frozen_inputs'] + [presentation['font'], presentation['font_license']]:
+        raw = (HERE.parents[4] / item['path']).read_bytes()
+        assert len(raw) == item['bytes'] and sha(raw) == item['sha256'], item['path']
+    assert [(v['label'], v['x'], v['y'], v['interaction_id']) for v in presentation['labels']] == [(v['label'], v['x'], v['y'], v['interaction_id']) for v in source['map_labels']]
+    (HERE / 'map-labels-source.json').write_bytes(presentation_raw)
+    labels_pin = dict(source_revision='f27cc114e2482b98d75ba00ce0104008a97d2e9e',
+                     presentation=dict(path='world/reference-scene-v2/map-labels-v1/presentation.json', bytes=len(presentation_raw), sha256=sha(presentation_raw)),
+                     handoff=dict(path='world/reference-scene-v2/map-labels-v1/handoff.json', bytes=len(handoff_raw), sha256=sha(handoff_raw)),
+                     files=handoff['files'], runtime_font=presentation['font'],
+                     authority='MAP-only decoration; no third PNG, C06 extension, admission or invented hit target.')
+    (HERE / 'map-labels-pins.json').write_text(json.dumps(labels_pin, indent=2) + '\n')
     binding = dict(format='MCR_REFERENCE_SCENE_SPATIAL4_PUBLIC_INPUTS', version=1, status='NOT_RELEASE_BOUND',
                    production_status='NOT_ADMITTED', source_revision=SOURCE_REVISION,
                    candidate_map=dict(map_id=output['map_id'], map_revision=None, minimum_map_revision=5,
                                       allocation='PENDING_ACTUAL_BACKEND_PRODUCER', geometry_hash=source['geometry_hash']),
                    source_inputs=[dict(path='world/reference-scene-v2/' + path, sha256=pin) for path, pin in pins.items()],
-                   tilemap=tile, scenes=binding_scenes,
+                   tilemap=tile, scenes=binding_scenes, map_presentation=labels_pin,
                    authority='Exact public source bytes only; actual server revision is producer-owned. No release/source-review/physical admission.')
     (runtime / 'source-binding.json').write_text(json.dumps(binding, indent=2) + '\n')
     print(json.dumps(dict(map=binding['candidate_map'], tilemap=tile, source_pins=len(pins), world_objects=34, changed_cells=len(changed))))
