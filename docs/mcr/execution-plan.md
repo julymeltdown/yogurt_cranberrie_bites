@@ -6,12 +6,13 @@ The [current progress reconciliation](progress.md#current-task-accounting) recor
 38 task-criteria outcomes: 12 recorded acceptance dispositions plus 26 additional
 task-local criteria closures. Exact owner states are preserved, including FE07 and FE15
 INTEGRATED, FE18 CONTRACT_READY and FE32 MOCK_READY. The latest owner-declared original-task closures are FE14, FE19, QA01,
-QA02, FE09, FE15, QA07, BE12, FE07, BE26, FE21, FE24, FE18 and FE32. Another 60 original tasks
-have partial or unreconciled implementation evidence, 9 statuses remain
+QA02, FE09, FE15, QA07, BE12, FE07, BE26, FE21, FE24, FE18 and FE32. Another 65 original tasks
+have partial or unreconciled implementation evidence, 4 statuses remain
 unreconciled, and all 5 IN gates remain open. The [112-row register](task-progress-2026-11-04.json)
 states the evidence and limitations. Historical 11/112 statements later in this
 document are not current implementation progress, and no effort-weighted
 completion percentage is asserted.
+Five stale backend coverage labels now reflect partial implementation; this adds no completed tasks. IN01 is IN_PROGRESS after the current-source partial live run, with customization504 and genuine-expiry refresh still unresolved.
 
 The current coordination model has no king or SL technical review stage.
 Developers implement, validate, resolve technical interfaces and commit their
