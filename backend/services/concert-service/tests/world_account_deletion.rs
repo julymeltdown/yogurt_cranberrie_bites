@@ -604,3 +604,49 @@ async fn native_actual_auth_bounded_replay_rollback_and_ticket_races() -> Result
     auth.close().await;
     Ok(())
 }
+
+#[tokio::test]
+#[ignore = "same owned fixture AFTER actual postmaster stop/start; component test transport"]
+async fn native_actual_postmaster_restart_replays_durable_receipts() -> Result<()> {
+    let auth = owned_pool("mcr_world_deletion_auth").await?;
+    let pool = owned_pool("mcr_world_deletion_concert").await?;
+    let users: Vec<Uuid> = sqlx::query_scalar("select user_id from concert_world_ticket_deletion_progress where completed_at is not null order by user_id")
+        .fetch_all(&pool).await?;
+    anyhow::ensure!(
+        users.len() == 4,
+        "expected original completed fixture receipts"
+    );
+    let deletion = TicketDeletion::new(
+        pool.clone(),
+        Arc::new(AuthRepositoryTestTransport::new(auth.clone())),
+    );
+    for user in users {
+        let source = PgUserDeletionSagaRepository::new(auth.clone())
+            .find_by_user_id(user)
+            .await?
+            .unwrap();
+        let command = WorldDeletionCommand {
+            saga_id: source.id,
+            user_id: source.user_id,
+            target: WorldDeletionTarget::Tickets,
+            actor_id: source.actor_id,
+            retention_until: source.retention_until,
+        };
+        let ack = deletion
+            .apply(command.clone(), deadline())
+            .await
+            .map_err(|_| anyhow::anyhow!("actual postmaster restart replay failed"))?;
+        assert_eq!(ack.command, command);
+        assert_eq!(ack.fence_revision, 1);
+        assert_eq!(
+            PgWorldRepository::new(pool.clone())
+                .issue(record(room(&pool).await?, user))
+                .await,
+            Err(WorldError::Denied)
+        );
+    }
+    eprintln!("BE42 actual postmaster restart PASS: four exact durable receipt replays and permanent issue denials; NOT production Auth transport.");
+    pool.close().await;
+    auth.close().await;
+    Ok(())
+}
