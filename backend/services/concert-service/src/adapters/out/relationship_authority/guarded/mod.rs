@@ -13,5 +13,8 @@ pub use registry::{RootReadPermit, ScopeLifecycle, ScopeRegistry};
 pub use scope::{CanonicalOwnerFence, GuardedAuthority, OwnerGuardScope};
 pub use wire::wire_binding_digest;
 pub mod proto {
-    tonic::include_proto!("authority.lease.v1");
+    include!(concat!(
+        env!("OUT_DIR"),
+        "/owner_authority/authority.lease.v1.rs"
+    ));
 }

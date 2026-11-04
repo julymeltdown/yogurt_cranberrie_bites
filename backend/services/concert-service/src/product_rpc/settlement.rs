@@ -58,11 +58,10 @@ impl NativeTransactionResolver for PgNativeAbortResolver {
         identity: &ProducerTransaction,
     ) -> Result<NativeTransactionResolution, Status> {
         identity.digest()?;
-        if binding.digest()? != identity.effect_binding_digest {
-            return Err(Status::permission_denied(
-                "Native settlement binding mismatch",
-            ));
-        }
+        // The authenticated service has already joined this exact immutable
+        // identity to its stored parent. Its effect digest need not equal that
+        // parent's guard digest. Commit witnesses stay producer-specific.
+        binding.validate()?;
         let mut status = proto::TransactionStatus::Unknown;
         if identity.producer == "CONCERT" && identity.producer_instance == self.instance {
             let mut tx = self
@@ -185,9 +184,6 @@ impl proto::producer_settlement_service_server::ProducerSettlementService
                 .binding
                 .ok_or_else(|| Status::invalid_argument("Missing settlement binding"))?,
         )?;
-        if incoming.digest()? != identity.effect_binding_digest {
-            return Err(Status::permission_denied("Settlement binding mismatch"));
-        }
         let registration = canonical_uuid(&request.registration_id)?;
         let work = async {
             let (binding, ack, phase) = self

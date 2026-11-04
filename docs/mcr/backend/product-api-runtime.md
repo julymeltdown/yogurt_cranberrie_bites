@@ -326,3 +326,52 @@ The private `mcr-product-sdk2-native-20261104` evidence directory contains
 `native-boundaries.result.json`, `native-ledger.result.json`, `source-pins.json`,
 per-artifact Cargo receipts and `target-release.json`. These qualify this exact
 SDK2 composition, not later source changes, deployment or whole-product readiness.
+
+
+## Distinct effect identity and scoped delivery: `188db7c9`
+
+Source commits `cc4c9acf` and `d005b272` were compiled at
+`188db7c9b01ed30d63e2dd3d9272b11dad1bef31`. A producer's native effect digest
+need not equal its enclosing owner guard digest. The ledger now binds the
+original scope digest separately and compares the complete registered transaction
+identity at tracking, confirmation and settlement. Altered identities and wrong
+owner registrations remain denied. Two native ledger cases use distinct digests.
+
+`ScopedProductOwner` acquires one actual canonical scope and persists its delivery
+capability before constructing the producer future. Successful representations
+and normalized produced errors carry the same private capability and response
+token through serialization. This wrapper does not complete owner exclusion on
+return; actual terminal delivery and native settlement remain required.
+
+Fresh Rust 1.88 locked/offline builds used jobs=2, debug=0, incremental=0.
+The first attempt failed because cached `contracts-build` supplied another
+checkout's absolute proto include directory. Cleaning only contracts-build and
+Auth/Friend/Profile artifacts repaired this; the unchanged source retry and
+Concert binary build both exited 0. All 1,809 recorded input hashes remained
+unchanged during compilation. Four copied executable artifacts were frozen in
+`/private/tmp/mcr-product-effect-native-20261104`, with Cargo JSON and full input
+receipts. The shared build target was released with zero open handles and
+69,326,716,928 free bytes before starting PostgreSQL.
+
+| Check | Actual result | Limit |
+| --- | --- | --- |
+| Concert library | Exit 0, 48 passed, 13 ignored | Ignored native gates receive no credit |
+| Product runtime | Exit 0, 4 passed | Configuration tests |
+| Native ledger | Exit 0, 5 passed | Real private PostgreSQL16; service-caller extensions and child recovery fixture remain explicit doubles |
+| SQL lifecycle | 26 checks passed, restart and cleanup passed | No real owner RPC or HTTP proof |
+| Product opt-in startup | Both exit 1 before DB/listener with missing guarded bootstrap | Product modes remain closed |
+| New scoped wrapper with real owners and Gateway HTTP | NOT_RUN | Required follow-up; compilation alone does not prove terminal delivery |
+
+Copied artifact SHA-256:
+
+- concert-lib-tests: `0c7fb9b6cc1e47eeccd8a47acd3d46f3803409f843217e02e5fe03468211af37`
+- product-runtime-tests: `7546e66e4fafcf7d1400a1c18fc7a1fd6fec55b4b45260ff1cac1b15d60e3de4`
+- product-scope-ledger-tests: `9f12286d4c34d637bce5defd757bbd128d8136240f955aefd3ac279135edd3a4`
+- concert-service: `dff6ba30fead9bedd54208758f2a85e9ca4c2a610bb392749de56065d586471b`
+
+Commands: the prior SDK2 bounded Cargo test/bin commands were repeated against
+this source. `product_scope_ledger_smoke.py` used the new copied ledger executable
+and its receipt, returning PASS/cleanup PASS. Copied library/runtime binaries ran
+with `--test-threads=1`. `python3 scripts/mcr/check-plan.py` and `git diff --check`
+exited 0. Initial startup probes omitted required local metrics configuration;
+those refusals were not credited, and corrected explicit-local probes were run.
