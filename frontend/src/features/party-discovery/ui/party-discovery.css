@@ -28,16 +28,16 @@
 .party-browse .meet-party__portrait :is(img,canvas) { object-fit: contain; image-rendering: pixelated; }
 .party-browse .meet-party__portrait-unavailable { display: grid; place-items: center; color: #e4d6c5; font: 700 23px/1 monospace; background: repeating-linear-gradient(135deg,transparent 0 5px,#ffffff06 5px 6px); }
 .party-browse .meet-party__copy { min-width: 0; }
-.party-browse .meet-party h3 { margin: 0; font: 800 15px/1.15 "Arial Narrow", "Helvetica Neue", Arial, sans-serif; letter-spacing: -.035em; }
+.party-browse .meet-party h3 { margin: 0; font: 800 18px/1.15 "Arial Narrow", "Helvetica Neue", Arial, sans-serif; letter-spacing: -.02em; }
 .party-browse .meet-party h3 a { display: block; min-width: 0; min-height: 44px; padding: 0; color: #211b18; text-decoration: none; }
-/* Static metadata overlaps the title target visually; taps must reach its full 44px link. */
-.party-browse .meet-party__where { pointer-events: none; display: flex; align-items: start; gap: 3px; font-size: 12px; margin: -22px 0 7px; line-height: 1.3; }
-.party-browse .meet-party__where svg { width: 11px; height: 13px; flex: 0 0 11px; }
+/* Keep metadata below wrapped titles and retain the full title link's touch safety. */
+.party-browse .meet-party__where { pointer-events: none; display: flex; align-items: start; gap: 3px; color: #3e3229; font-size: 14px; font-weight: 600; margin: 2px 0 6px; line-height: 1.3; }
+.party-browse .meet-party__where svg { width: 12px; height: 15px; flex: 0 0 12px; }
 .party-browse .meet-party__members-unavailable { margin: 6px 0 0; min-height: 23px; color: #67594b; font-size: 10px; line-height: 1.15; }
 .party-browse .meet-party__actions { align-self: stretch; display: flex; flex-direction: column; align-items: stretch; justify-content: space-between; gap: 6px; }
 .party-browse .meet-party__capacity { display: flex; gap: 3px; align-items: center; justify-content: end; font-size: 12px; font-weight: 800; white-space: nowrap; padding-top: 2px; }
 .party-browse .meet-party__capacity svg { width: 12px; height: 13px; }
-.party-browse a.meet-party__join { display: flex; justify-content: center; align-items: center; min-width: 44px; min-height: 44px; padding: 4px; border: 1px solid #45181a; border-radius: 2px; background: #a3212b; color: #fff7e9; box-shadow: inset 0 0 0 1px #cd565b; text-decoration: none; text-transform: uppercase; font: 800 13px/1 "Arial Narrow", "Helvetica Neue", Arial, sans-serif; overflow-wrap: anywhere; }
+.party-browse a.meet-party__join { display: flex; justify-content: center; align-items: center; min-width: 44px; min-height: 44px; padding: 4px; border: 1px solid #45181a; border-radius: 2px; background: #a3212b; color: #fff7e9; box-shadow: inset 0 0 0 1px #cd565b; text-decoration: none; text-transform: uppercase; font: 800 14px/1 "Arial Narrow", "Helvetica Neue", Arial, sans-serif; overflow-wrap: anywhere; }
 .party-browse a.meet-party__join--read { color: #3e3229; background: #e7dcc8; border-color: #776452; box-shadow: none; font-size: 10px; }
 .party-browse .meet-tools { display: flex; align-items: start; gap: 8px; margin-top: 7px; }
 .party-browse .party-filters { flex: 1; margin: 0; border: 0; }

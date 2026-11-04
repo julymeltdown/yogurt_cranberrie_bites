@@ -1,0 +1,61 @@
+{
+  "assignmentBase": "4af1c86863698e311d286039a0702d5b2517c1c3",
+  "historicalCaptureSource": "12a5d394eeabc89e1c7b0012fb51038f737c9a7f",
+  "historicalCssSha256": "6e7c259074016d9f05d90cba8a3355403906a4330a384548302c8abe2b564e54",
+  "baseCssSha256": "264b4c5304ada1419b46f73d3cdb0168505234a0d308289560967a495d801350",
+  "baseDelta": "Only retained pointer-events:none title-touch fix and comment; typography unchanged since historical capture",
+  "reference": {
+    "path": "/Users/lhs/Desktop/mcr-worktrees/fe-ref-public/docs/mcr/evidence/visual/qa06/human-reference-20261104/reference-human.jpg",
+    "sha256": "2b3988d546f87b813d78ca13bf267730a6dd19118bd6535a2d3c3032b6f12d23"
+  },
+  "historicalCapture": {
+    "path": "/Users/lhs/Desktop/mcr-worktrees/fe-ref-public/docs/mcr/evidence/visual/qa06/postfix-12a5-repairs-tail/meet-parade-390-h637.png",
+    "sha256": "7cd49e1a0e6348e42f009966f554d52377dd89d90d74fd9f65b7196505d4bb02"
+  },
+  "pins": {
+    "AGENTS.md": {
+      "sha256": "1c44f8c1ec729a8a533991cd877877da8ea93f7c0471d0f828eb2dd0f1ee4948",
+      "lastRevision": "d2a5fbddb781bcd1ac87e830a45405fd3c39c0f8"
+    },
+    "MCR_IMPLEMENTATION_PLAN_V2_EN.md": {
+      "sha256": "e19732ac9c5c5d5397652bf047645da0640ec72c97f59869974680c4e7f69a36",
+      "lastRevision": "f5b97aca2b002484fc4cbdd7581c723392df10c6"
+    },
+    "docs/mcr/project-assessment.md": {
+      "sha256": "e8203528b95d46faa2bfd92d2929e5723b99f52df61dc6febd613696d69ca807",
+      "lastRevision": "f5b97aca2b002484fc4cbdd7581c723392df10c6"
+    },
+    "docs/mcr/execution-plan.md": {
+      "sha256": "b8c85e1e9468a5b3d423eb7030354ec036274d22414dcecc47036c8c07b3fc5f",
+      "lastRevision": "c1464613751ed6f5fda48616b057b1be33ca5c38"
+    },
+    "frontend/pnpm-lock.yaml": {
+      "sha256": "47ca44459819ad0e887d2f4f93394fdf3b1053b8f45edc9ceb0236981feee1f6",
+      "lastRevision": "605b858b3baa2bb93ce4a01a6620cd25bc648c14"
+    },
+    "frontend/src/entities/avatar/character-source-pack.json": {
+      "sha256": "f8d6c83818bced007f71af1f59dbc53cd88115c5dab0112fc302d8469a4fdc6f",
+      "lastRevision": "4590eb3c3a00a75c9858c0f33810c8f6504e8ee2"
+    },
+    "contracts/generated/mcr-domain.openapi.json": {
+      "sha256": "905d6f5b6f66f95cb68499a5fbfb32802539fce515f421226d79cb375ecfb887",
+      "lastRevision": "d839bc208dfe21f33b4a72c03868952268c34608"
+    },
+    "contracts/domain/v1/party.schema.json": {
+      "sha256": "7cbea6af623668a36d641e7498bf52f4869b9bc44594b46e7f4a3806cc907d03",
+      "lastRevision": "ca9f955cd22f7e4c1da029d034c1923f1e98bb9d"
+    },
+    "frontend/src/features/party-discovery/ui/PartyDiscovery.tsx": {
+      "sha256": "687d59c29d6155ead1df9152391af9f5422e6441b60b51b15df7084b0582f148",
+      "lastRevision": "995b5cc19c490ebbefe9b4dc2b28d96e247f4b20"
+    },
+    "frontend/src/features/party-discovery/__tests__/qa06-meet-cta/preview.tsx": {
+      "sha256": "ce889431a8077e6e954d3a7685766b7a00454ab8cd201220aaec5987dc1f1309",
+      "lastRevision": "30e52fac097611fa3fc0a60d933657e7c260e175"
+    },
+    "frontend/src/features/party-discovery/__tests__/qa06-meet-cta/native.mjs": {
+      "sha256": "e91ba1659d83b15841813354127d6f1f869570cf8ad077acf5bd80bd19443b56",
+      "lastRevision": "30e52fac097611fa3fc0a60d933657e7c260e175"
+    }
+  }
+}
