@@ -4,7 +4,7 @@ export interface ImageUploadPort {
   read(): {
     readonly phase: 'idle' | 'preparing' | 'prepared' | 'initializing' | 'uploading' | 'finalizing' | 'ready' | 'failed' | 'uncertain' | 'cancelled'
     readonly scope: SessionScope | null; readonly previewUrl: string | null; readonly progress: number | null
-    readonly attachment: { readonly media_id: string; readonly state: 'READY'; readonly revision: number; readonly width: number; readonly height: number; readonly content_type: 'image/jpeg' | 'image/png' | 'image/webp'; readonly purpose: 'POST' | 'GIVEAWAY' | 'REPORT'; readonly read_path: string } | null
+    readonly attachment: { readonly media_id: string; readonly state: 'READY'; readonly revision: number; readonly width: number; readonly height: number; readonly content_type: 'image/jpeg' | 'image/png' | 'image/webp'; readonly purpose: import('../../shared/media/types').MediaPurpose; readonly read_path: string } | null
     readonly error: string | null
   }
   subscribe(listener: () => void): () => void

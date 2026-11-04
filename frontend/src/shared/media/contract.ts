@@ -7,7 +7,8 @@ const uuidSchema = z.string().regex(/^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-
 export const uuid = (v: unknown): v is string => uuidSchema.safeParse(v).success
 const revision = z.number().int().min(1).max(Number.MAX_SAFE_INTEGER)
 const timestamp = z.iso.datetime({ precision: null }).refine(v => v.endsWith('Z') && new Date(v).toISOString().slice(0, 19) === v.slice(0, 19))
-const purpose = z.enum(['POST', 'GIVEAWAY', 'REPORT'])
+// Canonical meeting-photo/v1 feed schema: 17fd2e93 (published a3526254).
+const purpose = z.enum(['POST', 'GIVEAWAY', 'REPORT', 'BEACON'])
 const mime = z.enum(['image/jpeg', 'image/png', 'image/webp'])
 const intentSchema = z.strictObject({ media_id: uuidSchema, state: z.literal('PENDING'), upload_path: z.string(),
   max_bytes: z.literal(MAX_IMAGE_BYTES), expires_at: timestamp, upload_method: z.literal('PUT'), revision })

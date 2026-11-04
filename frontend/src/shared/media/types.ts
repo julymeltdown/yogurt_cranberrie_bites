@@ -1,6 +1,6 @@
 import type { SessionScope } from '../api/http'
 export type ImageMime = 'image/jpeg' | 'image/png' | 'image/webp'
-export type MediaPurpose = 'POST' | 'GIVEAWAY' | 'REPORT'
+export type MediaPurpose = 'POST' | 'GIVEAWAY' | 'REPORT' | 'BEACON'
 export interface ReadyMedia {
   readonly media_id: string; readonly state: 'READY'; readonly revision: number
   readonly width: number; readonly height: number; readonly content_type: ImageMime
