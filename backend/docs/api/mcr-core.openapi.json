@@ -1359,16 +1359,26 @@
             }
           },
           "422": {
-            "description": "JSON body does not match the request schema",
-            "headers": {
-              "X-Correlation-Id": {
-                "$ref": "#/components/headers/XCorrelationId"
-              }
-            },
+            "description": "Canonical enrollment required; no account lookup or signup performed",
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/ErrorResponse"
+                  "allOf": [
+                    {
+                      "$ref": "#/components/schemas/CoreErrorResponse"
+                    },
+                    {
+                      "properties": {
+                        "details": {
+                          "properties": {
+                            "reason": {
+                              "const": "ACKNOWLEDGEMENTS_REQUIRED"
+                            }
+                          }
+                        }
+                      }
+                    }
+                  ]
                 }
               }
             }
@@ -1511,7 +1521,7 @@
         "x-mcr-runtime-status": "ADAPTATION_REQUIRED",
         "x-mcr-retry": "NO_AUTOMATIC_REPLAY",
         "x-mcr-cache": "NO_STORE",
-        "x-mcr-browser-exposure": "TARGET",
+        "x-mcr-browser-exposure": "RETIRED_USE_CANONICAL_ENROLLMENT",
         "x-mcr-origin-policy": "EXACT_ALLOWLIST_AND_X_MCR_INTENT_BROWSER",
         "x-mcr-origin-rejection": {
           "status": 403,
@@ -1519,7 +1529,9 @@
             "$ref": "#/components/schemas/OriginErrorResponse"
           },
           "downstream_dispatch": false
-        }
+        },
+        "deprecated": true,
+        "description": "Retired MCR browser signup: always returns generic 422 ACKNOWLEDGEMENTS_REQUIRED before account lookup. Use submitEnrollmentSignup with the current policy, explicit acknowledgements and browser-bound attempt. Private canonical Auth signup is unchanged."
       }
     },
     "/api/auth/email/verify": {
@@ -2253,24 +2265,31 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "allOf": [
+                  "anyOf": [
                     {
-                      "$ref": "#/components/schemas/CoreErrorResponse"
-                    },
-                    {
-                      "properties": {
-                        "details": {
+                      "allOf": [
+                        {
+                          "$ref": "#/components/schemas/CoreErrorResponse"
+                        },
+                        {
                           "properties": {
-                            "reason": {
-                              "enum": [
-                                "ACCOUNT_INACTIVE",
-                                "PERMISSION_DENIED",
-                                "CONSENT_REQUIRED"
-                              ]
+                            "details": {
+                              "properties": {
+                                "reason": {
+                                  "enum": [
+                                    "ACCOUNT_INACTIVE",
+                                    "PERMISSION_DENIED",
+                                    "CONSENT_REQUIRED"
+                                  ]
+                                }
+                              }
                             }
                           }
                         }
-                      }
+                      ]
+                    },
+                    {
+                      "$ref": "#/components/schemas/OriginErrorResponse"
                     }
                   ]
                 }
@@ -2704,24 +2723,31 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "allOf": [
+                  "anyOf": [
                     {
-                      "$ref": "#/components/schemas/CoreErrorResponse"
-                    },
-                    {
-                      "properties": {
-                        "details": {
+                      "allOf": [
+                        {
+                          "$ref": "#/components/schemas/CoreErrorResponse"
+                        },
+                        {
                           "properties": {
-                            "reason": {
-                              "enum": [
-                                "ACCOUNT_INACTIVE",
-                                "PERMISSION_DENIED",
-                                "CONSENT_REQUIRED"
-                              ]
+                            "details": {
+                              "properties": {
+                                "reason": {
+                                  "enum": [
+                                    "ACCOUNT_INACTIVE",
+                                    "PERMISSION_DENIED",
+                                    "CONSENT_REQUIRED"
+                                  ]
+                                }
+                              }
                             }
                           }
                         }
-                      }
+                      ]
+                    },
+                    {
+                      "$ref": "#/components/schemas/OriginErrorResponse"
                     }
                   ]
                 }
@@ -3566,24 +3592,31 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "allOf": [
+                  "anyOf": [
                     {
-                      "$ref": "#/components/schemas/CoreErrorResponse"
-                    },
-                    {
-                      "properties": {
-                        "details": {
+                      "allOf": [
+                        {
+                          "$ref": "#/components/schemas/CoreErrorResponse"
+                        },
+                        {
                           "properties": {
-                            "reason": {
-                              "enum": [
-                                "ACCOUNT_INACTIVE",
-                                "PERMISSION_DENIED",
-                                "CONSENT_REQUIRED"
-                              ]
+                            "details": {
+                              "properties": {
+                                "reason": {
+                                  "enum": [
+                                    "ACCOUNT_INACTIVE",
+                                    "PERMISSION_DENIED",
+                                    "CONSENT_REQUIRED"
+                                  ]
+                                }
+                              }
                             }
                           }
                         }
-                      }
+                      ]
+                    },
+                    {
+                      "$ref": "#/components/schemas/OriginErrorResponse"
                     }
                   ]
                 }
@@ -4009,24 +4042,31 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "allOf": [
+                  "anyOf": [
                     {
-                      "$ref": "#/components/schemas/CoreErrorResponse"
-                    },
-                    {
-                      "properties": {
-                        "details": {
+                      "allOf": [
+                        {
+                          "$ref": "#/components/schemas/CoreErrorResponse"
+                        },
+                        {
                           "properties": {
-                            "reason": {
-                              "enum": [
-                                "ACCOUNT_INACTIVE",
-                                "PERMISSION_DENIED",
-                                "CONSENT_REQUIRED"
-                              ]
+                            "details": {
+                              "properties": {
+                                "reason": {
+                                  "enum": [
+                                    "ACCOUNT_INACTIVE",
+                                    "PERMISSION_DENIED",
+                                    "CONSENT_REQUIRED"
+                                  ]
+                                }
+                              }
                             }
                           }
                         }
-                      }
+                      ]
+                    },
+                    {
+                      "$ref": "#/components/schemas/OriginErrorResponse"
                     }
                   ]
                 }
@@ -4452,24 +4492,31 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "allOf": [
+                  "anyOf": [
                     {
-                      "$ref": "#/components/schemas/CoreErrorResponse"
-                    },
-                    {
-                      "properties": {
-                        "details": {
+                      "allOf": [
+                        {
+                          "$ref": "#/components/schemas/CoreErrorResponse"
+                        },
+                        {
                           "properties": {
-                            "reason": {
-                              "enum": [
-                                "ACCOUNT_INACTIVE",
-                                "PERMISSION_DENIED",
-                                "CONSENT_REQUIRED"
-                              ]
+                            "details": {
+                              "properties": {
+                                "reason": {
+                                  "enum": [
+                                    "ACCOUNT_INACTIVE",
+                                    "PERMISSION_DENIED",
+                                    "CONSENT_REQUIRED"
+                                  ]
+                                }
+                              }
                             }
                           }
                         }
-                      }
+                      ]
+                    },
+                    {
+                      "$ref": "#/components/schemas/OriginErrorResponse"
                     }
                   ]
                 }

@@ -107,8 +107,12 @@ async fn main() -> anyhow::Result<()> {
         pool.clone(),
         matches!(config.runtime_mode, RuntimeMode::Production),
     )?;
+    let enrollment_store = auth_service::enrollment_policy::EnrollmentStore::from_env(pool.clone(), matches!(config.runtime_mode, RuntimeMode::Production))?;
     let state =
         Arc::new(build_state_with_deletion_runtime(&config, pool, deletion_settings).await?);
+    let enrollment_service = auth_service::enrollment_policy::rpc::guarded_server(
+        enrollment_store, state.signup.clone(), config.caller_registry.clone(), config.actor_delegation.clone(),
+    )?;
     let http_router: Router = http::router(state.clone());
     let metrics_router = http::metrics_router(state.metrics.clone()).merge(health);
     let http_listeners = bind_http_listeners(config.http_addr, config.metrics_addr).await?;
@@ -150,6 +154,7 @@ async fn main() -> anyhow::Result<()> {
                 .add_optional_service(invalidation_service)
                 .add_optional_service(authority_service)
                 .add_optional_service(deletion_source_service)
+                .add_service(enrollment_service)
                 .add_service(platform::grpc_method_policy::guard(
                     &auth_service::adapters::r#in::grpc::method_policy::AUTH_METHOD_POLICY,
                     AuthServiceServer::new(grpc_service),

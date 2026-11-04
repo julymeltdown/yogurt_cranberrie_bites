@@ -1,5 +1,6 @@
 fn main() -> Result<(), Box<dyn std::error::Error>> {
     let protos = vec![
+        contracts_build::proto_root().join("auth/v1/enrollment_policy.proto"),
         contracts_build::source_auth_proto(),
         contracts_build::source_profile_proto(),
         contracts_build::source_friend_proto(),

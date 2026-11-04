@@ -37,6 +37,32 @@ where
         }
     }
 
+    /// Prepare using the same admitted password worker and identity/entropy owner.
+    /// The MCR adapter commits this result together with durable consent; preparing
+    /// alone creates no account, challenge, mail or acceptance.
+    pub async fn prepare_email_signup(
+        &self,
+        email: &str,
+        password: &str,
+    ) -> crate::errors::AuthResult<(
+        crate::dto::repository_dto::AuthUserRecordDto,
+        crate::dto::verification_code_dto::VerificationCodeDto,
+    )> {
+        let normalized_email = User::normalized_email(email);
+        validate_email(&normalized_email)?;
+        validate_password(password)?;
+        let password_hash = self.password_work.hash_for_signup(password).await?;
+        let code = self.verification_crypto.generate()?;
+        let user = User {
+            id: self.runtime.new_id(),
+            primary_email: normalized_email,
+            password_hash,
+            status: UserStatus::PendingVerification,
+            last_login_at: Some(self.runtime.now()),
+        };
+        Ok(((&user).into(), code))
+    }
+
     pub async fn signup_email(
         &self,
         email: &str,

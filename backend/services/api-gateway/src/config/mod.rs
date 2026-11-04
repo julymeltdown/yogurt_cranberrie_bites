@@ -835,6 +835,7 @@ pub struct AppState {
     pub concert_participant_client:
         Option<Arc<crate::adapters::out::concert_participant::GrpcConcertParticipantClient>>,
     pub auth_service: AuthGatewayService,
+    pub enrollment_policy: Arc<dyn crate::application::enrollment_policy::EnrollmentPolicyPort>,
     pub profile_service: ProfileGatewayService,
     pub friend_service: FriendGatewayService,
     pub moderation_service: ModerationService,
@@ -1858,6 +1859,10 @@ async fn build_state_with_clients_and_moderation_with_metrics(
             runtime.clone(),
         ),
         auth_service: AuthGatewayService::new(auth_client),
+        enrollment_policy: Arc::new(crate::adapters::out::enrollment_policy::GrpcEnrollmentClient::connect(
+            &config.auth_grpc_endpoint, &config.outbound_identity, config.tls_material.as_ref(),
+            config.actor_delegation_signer.clone(), metrics.clone(),
+        )?),
         profile_service: ProfileGatewayService::new(
             profile_client,
             friend_client.clone(),

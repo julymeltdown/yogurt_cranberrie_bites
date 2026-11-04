@@ -125,6 +125,14 @@ def build_document():
                     "name": "X-MCR-Intent", "in": "header", "required": True,
                     "schema": {"type": "string", "const": "browser"},
                     "description": "Require this header AND an exactly allowed Origin; no wildcard/null Origin."})
+            if target["operationId"] == "signupWithEmail":
+                target["deprecated"] = True
+                target["x-mcr-browser-exposure"] = "RETIRED_USE_CANONICAL_ENROLLMENT"
+                target["description"] = "Retired MCR browser signup: always returns generic 422 ACKNOWLEDGEMENTS_REQUIRED before account lookup. Use submitEnrollmentSignup with the current policy, explicit acknowledgements and browser-bound attempt. Private canonical Auth signup is unchanged."
+                target["responses"]["422"] = {"description": "Canonical enrollment required; no account lookup or signup performed",
+                    "content": {"application/json": {"schema": {"allOf": [
+                        {"$ref": "#/components/schemas/CoreErrorResponse"},
+                        {"properties": {"details": {"properties": {"reason": {"const": "ACKNOWLEDGEMENTS_REQUIRED"}}}}}]}}}}
             if target["operationId"] == "logout":
                 target["security"] = []
                 target["description"] = target.get("description", "") + " MCR permits missing refresh cookie for local logout; Origin/intent remain required."
@@ -215,6 +223,10 @@ def build_document():
                     "content": {"application/json": {"schema": {"allOf": [
                         {"$ref": "#/components/schemas/CoreErrorResponse"},
                         {"properties": {"details": {"properties": {"reason": {"enum": reasons}}}}}]}}}}
+            if method == "post":
+                schema = target["responses"]["403"]["content"]["application/json"]["schema"]
+                target["responses"]["403"]["content"]["application/json"]["schema"] = {
+                    "anyOf": [schema, {"$ref": "#/components/schemas/OriginErrorResponse"}]}
             if identity == "beginEnrollmentAttempt":
                 success["headers"] = {"Set-Cookie": {"schema": {"type": "string"},
                     "description": "Opaque browser binding; HttpOnly Secure SameSite=Strict; no Domain; never JavaScript-readable."}}
