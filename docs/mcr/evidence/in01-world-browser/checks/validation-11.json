@@ -1,0 +1,139 @@
+{
+  "at": "2026-11-04T08:40:38.143590+00:00",
+  "status": "PASS",
+  "tests": 10,
+  "syntaxFiles": 8,
+  "commands": [
+    {
+      "command": [
+        "node",
+        "--test",
+        "frontend/e2e/real/world/in01/guards.test.mjs",
+        "frontend/e2e/real/world/in01/status.test.mjs"
+      ],
+      "exitCode": 0,
+      "stdout": "\u2714 rejects malformed, missing, expired and near-expiry windows (1.16425ms)\n\u2714 rejects invalid parent and unadmitted origins before browser allocation (0.525875ms)\n\u2714 rejects cohort replacement even when its new expiry is still valid (0.569417ms)\n\u2714 rejects run identifiers that could overwrite outside the owned evidence tree (0.16825ms)\n\u2714 accepts the explicit localhost deployment origin while rejecting variants (0.135167ms)\n\u2714 empty and partial evidence cannot pass the original runtime gate (0.394417ms)\n\u2714 every original runtime criterion is required (0.130833ms)\n\u2714 a service or runtime failure remains nonzero even with other passing evidence (0.075333ms)\n\u2714 complete runtime evidence keeps art inspection explicit (0.058708ms)\n\u2714 late browser, stream or resource faults cannot certify an otherwise complete run (0.056875ms)\n\u2139 tests 10\n\u2139 suites 0\n\u2139 pass 10\n\u2139 fail 0\n\u2139 cancelled 0\n\u2139 skipped 0\n\u2139 todo 0\n\u2139 duration_ms 44.0025\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "node",
+        "--check",
+        "frontend/e2e/real/world/in01/control.mjs"
+      ],
+      "exitCode": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "node",
+        "--check",
+        "frontend/e2e/real/world/in01/flows.mjs"
+      ],
+      "exitCode": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "node",
+        "--check",
+        "frontend/e2e/real/world/in01/guards.mjs"
+      ],
+      "exitCode": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "node",
+        "--check",
+        "frontend/e2e/real/world/in01/guards.test.mjs"
+      ],
+      "exitCode": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "node",
+        "--check",
+        "frontend/e2e/real/world/in01/run.mjs"
+      ],
+      "exitCode": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "node",
+        "--check",
+        "frontend/e2e/real/world/in01/session.mjs"
+      ],
+      "exitCode": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "node",
+        "--check",
+        "frontend/e2e/real/world/in01/status.mjs"
+      ],
+      "exitCode": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "node",
+        "--check",
+        "frontend/e2e/real/world/in01/status.test.mjs"
+      ],
+      "exitCode": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "retained-oxlint",
+        "frontend/e2e/real/world/in01"
+      ],
+      "exitCode": 0,
+      "stdout": "",
+      "stderr": ""
+    }
+  ],
+  "runtimeAndNativeArt": "PASS, nativeexit0; originalcriteriaallproven, naturalexpiryNOT_RUNinformationalonly",
+  "sourcePostimages": "1158 App/contractpins exactpublished1722 plus sixdriver/fivecapture/fourassethashes",
+  "sourceScope": "Only own helper/doc/evidence changes; historybaseline separate, all application/backend/sharedfiles readonly",
+  "boundaryCore": {
+    "status": "PASS",
+    "exitCode": 0,
+    "base": "619256f1da3f72045adea2cd170ae4380765796f",
+    "authoredPaths": [
+      "docs/mcr/evidence/in01-world-browser/attempt-11/control.mjs.snapshot",
+      "docs/mcr/evidence/in01-world-browser/attempt-11/customization-actual.png",
+      "docs/mcr/evidence/in01-world-browser/attempt-11/customization-saved-persisted.png",
+      "docs/mcr/evidence/in01-world-browser/attempt-11/flows.mjs.snapshot",
+      "docs/mcr/evidence/in01-world-browser/attempt-11/guards.mjs.snapshot",
+      "docs/mcr/evidence/in01-world-browser/attempt-11/release.json",
+      "docs/mcr/evidence/in01-world-browser/attempt-11/report.json",
+      "docs/mcr/evidence/in01-world-browser/attempt-11/run.mjs.snapshot",
+      "docs/mcr/evidence/in01-world-browser/attempt-11/session.mjs.snapshot",
+      "docs/mcr/evidence/in01-world-browser/attempt-11/status.mjs.snapshot",
+      "docs/mcr/evidence/in01-world-browser/attempt-11/theme-parade.png",
+      "docs/mcr/evidence/in01-world-browser/attempt-11/world-final-a.png",
+      "docs/mcr/evidence/in01-world-browser/attempt-11/world-final-b.png",
+      "docs/mcr/evidence/in01-world-browser/checks/qualification-11.json",
+      "docs/mcr/evidence/in01-world-browser/checks/run-11.log",
+      "docs/mcr/evidence/in01-world-browser/checks/validation-11.json",
+      "docs/mcr/frontend/in01-browser-journey.md",
+      "frontend/e2e/real/world/in01/flows.mjs",
+      "frontend/e2e/real/world/in01/session.mjs"
+    ],
+    "count": 19,
+    "qualification": "Unchanged core API with exact authorized evidence/docset; excludes coordinated history-only baseline integration."
+  }
+}
