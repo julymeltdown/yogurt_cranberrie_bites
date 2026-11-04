@@ -52,6 +52,7 @@ async fn state(
     c.friend_grpc_endpoint = c.profile_grpc_endpoint.clone();
     c.post_grpc_endpoint = c.profile_grpc_endpoint.clone();
     c.notification_grpc_endpoint = notification.into();
+    c.user_deletion_worker_enabled = true;
     c.user_deletion_worker_batch_size = 100;
     c.user_deletion_worker_max_attempts = 8;
     c.user_deletion_worker_lease_timeout_ms = 1000;

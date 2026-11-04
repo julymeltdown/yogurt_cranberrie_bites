@@ -56,11 +56,26 @@ macro_rules! serve {
     }};
 }
 pub async fn source_server(p: PgPool) -> anyhow::Result<Running> {
+    // Exercise the exact early production source configuration before serving,
+    // with no dependency connection or listening side effect on refusal.
+    let mut config = auth_fixture::test_config(std::env::var("MCR_CANONICAL_AUTH_URL")?)?;
+    config.outbound_identity = AUTH.into();
+    config.tls_material = Some(environment::tls(Workload::Auth)?);
+    config.profile_grpc_endpoint = "https://127.0.0.1:1".into();
+    config.friend_grpc_endpoint = config.profile_grpc_endpoint.clone();
+    config.post_grpc_endpoint = config.profile_grpc_endpoint.clone();
+    config.notification_grpc_endpoint = config.profile_grpc_endpoint.clone();
+    let settings = settings("https://127.0.0.1:1", 5000)?;
+    std::env::remove_var("AUTH_CONCERT_DELETION_SOURCE_ENABLED");
+    assert!(settings.startup_source_registry(&config).is_err());
+    std::env::set_var("AUTH_CONCERT_DELETION_SOURCE_ENABLED", "false");
+    assert!(settings.startup_source_registry(&config).is_err());
+    std::env::set_var("AUTH_CONCERT_DELETION_SOURCE_ENABLED", "invalid");
+    assert!(settings.startup_source_registry(&config).is_err());
+    std::env::set_var("AUTH_CONCERT_DELETION_SOURCE_ENABLED", "true");
+    let registry = settings.startup_source_registry(&config)?.unwrap();
     Ok(serve!(
-        auth_service::adapters::r#in::grpc::concert_deletion_source::guarded_server(
-            p,
-            CallerRegistry::new().register(Workload::Concert, CONCERT)?
-        )?,
+        auth_service::adapters::r#in::grpc::concert_deletion_source::guarded_server(p, registry)?,
         Workload::Auth
     ))
 }
