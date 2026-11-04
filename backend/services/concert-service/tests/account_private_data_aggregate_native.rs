@@ -267,9 +267,7 @@ async fn aggregate_native() -> Result<()> {
     // positive transition; a later terminal row stays immutable.
     let missing_category: String = sqlx::query_scalar("select category from concert_private_data_category_progress where user_id=$1 and state='INCOMPLETE' order by ordinal limit 1").bind(user).fetch_one(&p).await?;
     anyhow::ensure!(missing_category != "CORE_PREFERENCES_AND_AVATAR");
-    if restart {
-        anyhow::ensure!(sqlx::query("update concert_private_data_category_progress set owner_revision=1,state='COMPLETE',completed_at=clock_timestamp() where user_id=$1 and category=$2 and state='INCOMPLETE' and owner_revision is null").bind(user).bind(&missing_category).execute(&p).await?.rows_affected()==1);
-    }
+    anyhow::ensure!(sqlx::query("update concert_private_data_category_progress set owner_revision=1,state='COMPLETE',completed_at=clock_timestamp() where user_id=$1 and category=$2 and state='INCOMPLETE' and owner_revision is null").bind(user).bind(&missing_category).execute(&p).await?.rows_affected()==1);
     anyhow::ensure!(sqlx::query("update concert_private_data_category_progress set owner_revision=2 where user_id=$1 and category=$2").bind(user).bind(&missing_category).execute(&p).await.is_err());
     anyhow::ensure!(sqlx::query("update concert_private_data_category_progress set completed_at=completed_at + interval '1 microsecond' where user_id=$1 and category=$2").bind(user).bind(&missing_category).execute(&p).await.is_err());
     anyhow::ensure!(sqlx::query("update concert_private_data_category_progress set source_binding=decode(repeat('aa',32),'hex') where user_id=$1 and category=$2").bind(user).bind(&missing_category).execute(&p).await.is_err());
@@ -307,6 +305,6 @@ async fn aggregate_native() -> Result<()> {
     .await?;
     anyhow::ensure!(fence_after_restart == fence_before_restart);
     let still_incomplete:i64=sqlx::query_scalar("select count(*) from concert_private_data_category_progress where user_id=$1 and state='INCOMPLETE'").bind(user).fetch_one(&p).await?;
-    anyhow::ensure!(still_incomplete > 0);
+    anyhow::ensure!(still_incomplete == 5);
     Ok(())
 }
