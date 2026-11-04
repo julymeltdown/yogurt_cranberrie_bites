@@ -83,3 +83,56 @@ last owner checkpoint. The duplicate CR08 cherry-pick was omitted. Actual public
 HTTP disconnect/fresh-login and unknown-work qualification is still in progress.
 Root's combined compiler/native cohort and any fresh serving/browser evidence
 remain NOT_RUN at this intake.
+
+## Combined checkpoint at d0f063d1
+
+The later [portable qualification receipt](root-native-d0f063d1.json) supersedes
+the compilation and cancellation `NOT_RUN` statements above for the exact source
+`d0f063d18a0549935f80a536077c30962d89f9e9`. It does not upgrade the separate
+producer/public acceptance limits. All seven requested Concert/Gateway artifacts
+compiled with Rust 1.88, locked/offline dependencies, jobs 2, debug 0 and
+incremental 0. Five current peer MAIN executables were subsequently compiled at
+the same source. Every executable was frozen and hashed before unconditional
+zero-handle target release; PostgreSQL runs used only those copies.
+
+The first actual CR08 case failed before producer work because a reused platform
+test artifact rejected the current matching Auth/Friend owner policy. Source
+inspection confirmed that the fixture uses production guards and that all three
+current policies already match. An exact `platform` package clean and rebuild,
+without any source or policy edit, made all nine actual PostgreSQL/mTLS cases
+pass. Four positive cases had no remaining prepared fences; five negative cases
+retained one Auth and one Friend fence before owned cluster shutdown. Their
+shutdown is cleanup evidence, not settlement. The first failure remains recorded.
+
+During that repair an external allocation observer raced deletion of a compiler
+temporary file. Its exact owned compile group was stopped, the failed attempt
+was retained, and the observer gained bounded retries and unconditional process
+cleanup. The original allocation clock and baseline were retained. The receipt
+does not claim an uninterrupted sampled peak over that interruption.
+
+The first C03 attempt then stopped before service startup: the retained Auth
+MAIN had 17 embedded migrations while this source requires 18. The old peer
+cohort remains immutable. Exact Auth/Friend/Notification package repairs and five
+current peer MAIN builds produced a coherent cohort; no Participant source fix
+was needed. All six peers passed actual migration verification and restart, with
+ledger counts Gateway 17, Auth 18, Profile 9, Friend 18, Post 31, Notification 6.
+
+The coherent public HTTP run passed three real email-auth accounts, Profile and
+bootstrap, normal Participant HTTP 200 with EOF settlement, a real TCP reset
+after durable publication, and fresh Auth login HTTP 200 after safe cancellation.
+The safe read was abandoned and settled with serialization/delivery still null.
+A held callback stayed SEALED, and a registered actual COMMIT without its witness
+remained UNKNOWN and unsettled. Their four negative prepared fences remained
+until exact owned shutdown. All peer/mail/Redis stops were non-forced exit 0;
+PostgreSQL cleanup, independent owned-directory absence and process absence pass.
+
+The repaired copied tests pass 3 canonical constructors, 3 reviewed-motion
+regressions, 78 normal Concert tests, and 138 normal Gateway tests. Two existing
+Docker-backed Gateway checks failed on the unavailable Docker socket in the
+first complete run; the repaired run explicitly filters those exact checks.
+Those two checks are not credited as passing. The candidate motion remains
+denied and the map4/static-avatar1 World baseline is unchanged.
+
+The general typed child-settler/native resolver union, production main worker
+supervision, unavailable product providers, spontaneous browser cancellation and
+renewed IN01 remain open. No full MCR acceptance is claimed by this checkpoint.

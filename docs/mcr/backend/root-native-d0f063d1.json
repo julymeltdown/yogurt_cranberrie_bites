@@ -1,0 +1,946 @@
+{
+  "canonical_cancellation": [
+    {
+      "binary_sha256": "7b8473db16c24e265b22a786ad7d483c9131e23ff21a04d241998f6d49648f96",
+      "case": "returned_error_records_abandonment_without_delivery",
+      "cleanup": {
+        "certifies_native_settlement": false,
+        "owned_root_absent": true,
+        "status": "PASS"
+      },
+      "guard": {
+        "aborted": null,
+        "max_sampled_whole_additional": 614879232,
+        "owned_roots_absent": [
+          true
+        ]
+      },
+      "migration_counts": {
+        "auth": 18,
+        "concert": 36,
+        "friend": 18
+      },
+      "normal_native_settlement": true,
+      "remaining_prepared": {
+        "auth": 0,
+        "concert": 0,
+        "friend": 0
+      },
+      "report": {
+        "file": "core-native-1.json",
+        "sha256": "3b42047dc0469b185ff8acb9ada169ea676fa0b95860e7fafa58d23109103d62"
+      },
+      "status": "PASS"
+    },
+    {
+      "binary_sha256": "7b8473db16c24e265b22a786ad7d483c9131e23ff21a04d241998f6d49648f96",
+      "case": "caller_cancellation_destroys_actual_work_before_owner_release",
+      "cleanup": {
+        "certifies_native_settlement": false,
+        "owned_root_absent": true,
+        "status": "PASS"
+      },
+      "guard": {
+        "aborted": null,
+        "max_sampled_whole_additional": 622174208,
+        "owned_roots_absent": [
+          true
+        ]
+      },
+      "migration_counts": {
+        "auth": 18,
+        "concert": 36,
+        "friend": 18
+      },
+      "normal_native_settlement": true,
+      "remaining_prepared": {
+        "auth": 0,
+        "concert": 0,
+        "friend": 0
+      },
+      "report": {
+        "file": "core-native-2.json",
+        "sha256": "8dd3830d170a5558bfbeb826d9eed04b35cec0615410089226d7fa2b77ff71a2"
+      },
+      "status": "PASS"
+    },
+    {
+      "binary_sha256": "7b8473db16c24e265b22a786ad7d483c9131e23ff21a04d241998f6d49648f96",
+      "case": "unresolved_callback_and_expiry_never_prove_abandonment",
+      "cleanup": {
+        "certifies_native_settlement": false,
+        "owned_root_absent": true,
+        "status": "PASS"
+      },
+      "guard": {
+        "aborted": null,
+        "max_sampled_whole_additional": 622223360,
+        "owned_roots_absent": [
+          true
+        ]
+      },
+      "migration_counts": {
+        "auth": 18,
+        "concert": 36,
+        "friend": 18
+      },
+      "normal_native_settlement": false,
+      "remaining_prepared": {
+        "auth": 1,
+        "concert": 0,
+        "friend": 1
+      },
+      "report": {
+        "file": "core-native-3.json",
+        "sha256": "b83b6ae657f0ce4ef4268a68f1384f1158476111fe7555448f59ee8283feac1a"
+      },
+      "status": "PASS"
+    },
+    {
+      "binary_sha256": "7b8473db16c24e265b22a786ad7d483c9131e23ff21a04d241998f6d49648f96",
+      "case": "active_native_transaction_prevents_cancellation_settlement",
+      "cleanup": {
+        "certifies_native_settlement": false,
+        "owned_root_absent": true,
+        "status": "PASS"
+      },
+      "guard": {
+        "aborted": null,
+        "max_sampled_whole_additional": 575827968,
+        "owned_roots_absent": [
+          true
+        ]
+      },
+      "migration_counts": {
+        "auth": 18,
+        "concert": 36,
+        "friend": 18
+      },
+      "normal_native_settlement": false,
+      "remaining_prepared": {
+        "auth": 1,
+        "concert": 0,
+        "friend": 1
+      },
+      "report": {
+        "file": "core-native-4.json",
+        "sha256": "faed3c52dd4268ca6ea7a0b0a0cc5803acb2d17892a563d40d28afd30fc320fe"
+      },
+      "status": "PASS"
+    },
+    {
+      "binary_sha256": "7b8473db16c24e265b22a786ad7d483c9131e23ff21a04d241998f6d49648f96",
+      "case": "successful_handoff_retains_existing_unserialized_quarantine",
+      "cleanup": {
+        "certifies_native_settlement": false,
+        "owned_root_absent": true,
+        "status": "PASS"
+      },
+      "guard": {
+        "aborted": null,
+        "max_sampled_whole_additional": 622665728,
+        "owned_roots_absent": [
+          true
+        ]
+      },
+      "migration_counts": {
+        "auth": 18,
+        "concert": 36,
+        "friend": 18
+      },
+      "normal_native_settlement": false,
+      "remaining_prepared": {
+        "auth": 1,
+        "concert": 0,
+        "friend": 1
+      },
+      "report": {
+        "file": "core-native-5.json",
+        "sha256": "300587355866389a62f559d12f5402e190b00c85ee2a1c7bc6ac87ca74fa5f5f"
+      },
+      "status": "PASS"
+    },
+    {
+      "binary_sha256": "7b8473db16c24e265b22a786ad7d483c9131e23ff21a04d241998f6d49648f96",
+      "case": "drained_late_callback_allows_true_abandonment",
+      "cleanup": {
+        "certifies_native_settlement": false,
+        "owned_root_absent": true,
+        "status": "PASS"
+      },
+      "guard": {
+        "aborted": null,
+        "max_sampled_whole_additional": 603197440,
+        "owned_roots_absent": [
+          true
+        ]
+      },
+      "migration_counts": {
+        "auth": 18,
+        "concert": 36,
+        "friend": 18
+      },
+      "normal_native_settlement": true,
+      "remaining_prepared": {
+        "auth": 0,
+        "concert": 0,
+        "friend": 0
+      },
+      "report": {
+        "file": "core-native-6.json",
+        "sha256": "198bf7d6705014a38a19bd2959195a2664debcbb8f1094efde5976b5b3071cd8"
+      },
+      "status": "PASS"
+    },
+    {
+      "binary_sha256": "7b8473db16c24e265b22a786ad7d483c9131e23ff21a04d241998f6d49648f96",
+      "case": "expired_original_deadline_never_polls_ready_producer",
+      "cleanup": {
+        "certifies_native_settlement": false,
+        "owned_root_absent": true,
+        "status": "PASS"
+      },
+      "guard": {
+        "aborted": null,
+        "max_sampled_whole_additional": 623144960,
+        "owned_roots_absent": [
+          true
+        ]
+      },
+      "migration_counts": {
+        "auth": 18,
+        "concert": 36,
+        "friend": 18
+      },
+      "normal_native_settlement": true,
+      "remaining_prepared": {
+        "auth": 0,
+        "concert": 0,
+        "friend": 0
+      },
+      "report": {
+        "file": "core-native-7.json",
+        "sha256": "2184de0c409d052d4b721dfcdd2555e62dff9afa8372dc638763192a884f2c78"
+      },
+      "status": "PASS"
+    },
+    {
+      "binary_sha256": "7b8473db16c24e265b22a786ad7d483c9131e23ff21a04d241998f6d49648f96",
+      "case": "failed_work_destruction_never_reaches_terminal_proof",
+      "cleanup": {
+        "certifies_native_settlement": false,
+        "owned_root_absent": true,
+        "status": "PASS"
+      },
+      "guard": {
+        "aborted": null,
+        "max_sampled_whole_additional": 623538176,
+        "owned_roots_absent": [
+          true
+        ]
+      },
+      "migration_counts": {
+        "auth": 18,
+        "concert": 36,
+        "friend": 18
+      },
+      "normal_native_settlement": false,
+      "remaining_prepared": {
+        "auth": 1,
+        "concert": 0,
+        "friend": 1
+      },
+      "report": {
+        "file": "core-native-8.json",
+        "sha256": "2f7a6ec10eea9a3b37e8e7825d21adb925db54450a47cc4d0aaae478aede7ecc"
+      },
+      "status": "PASS"
+    },
+    {
+      "binary_sha256": "7b8473db16c24e265b22a786ad7d483c9131e23ff21a04d241998f6d49648f96",
+      "case": "unpublished_unsettled_abandonment_remains_in_durable_capacity",
+      "cleanup": {
+        "certifies_native_settlement": false,
+        "owned_root_absent": true,
+        "status": "PASS"
+      },
+      "guard": {
+        "aborted": null,
+        "max_sampled_whole_additional": 623579136,
+        "owned_roots_absent": [
+          true
+        ]
+      },
+      "migration_counts": {
+        "auth": 18,
+        "concert": 36,
+        "friend": 18
+      },
+      "normal_native_settlement": false,
+      "remaining_prepared": {
+        "auth": 1,
+        "concert": 0,
+        "friend": 1
+      },
+      "report": {
+        "file": "core-native-9.json",
+        "sha256": "e591bd1c95e497544747ab4ba8e7dab72fa4fb58b6047230475d8ac9d47d2d42"
+      },
+      "status": "PASS"
+    }
+  ],
+  "coherent_peer_build": {
+    "clean_packages": [
+      "auth-service",
+      "friend-service",
+      "notification-service"
+    ],
+    "cohort_receipt": {
+      "file": "cohort.json",
+      "sha256": "90a7e7fb4231471ea02cb3b1639a72e0c18be413d582aa561e7913b2b4efb058"
+    },
+    "compile": [
+      {
+        "artifacts": [
+          {
+            "bytes": 46112128,
+            "file": "auth-service",
+            "fresh": false,
+            "name": "auth-service",
+            "sha256": "bd4b5199b1087ebbba1fdbbcb8a0ce879398a96b1d6162f14aec4dfbfec60ef7"
+          }
+        ],
+        "attempt": "1",
+        "elapsed_seconds": 9.1,
+        "exit_code": 0,
+        "phase": "auth-service",
+        "receipt": {
+          "file": "auth-service-1-receipt.json",
+          "sha256": "a05e078c1785643a1f212ddf4cd67caeb822318c9ead0d18ab3df8f6b28f69ec"
+        }
+      },
+      {
+        "artifacts": [
+          {
+            "bytes": 37830288,
+            "file": "friend-service",
+            "fresh": false,
+            "name": "friend-service",
+            "sha256": "83fa11e9ba01fda4c859a5136b4ccdde900a20f183800abb999679243b4a3509"
+          }
+        ],
+        "attempt": "1",
+        "elapsed_seconds": 6.83,
+        "exit_code": 0,
+        "phase": "friend-service",
+        "receipt": {
+          "file": "friend-service-1-receipt.json",
+          "sha256": "80212a962f2160f4e5871d571292b3d21893ee0f734429b3af426cb42fb4cf22"
+        }
+      },
+      {
+        "artifacts": [
+          {
+            "bytes": 39884656,
+            "file": "profile-service",
+            "fresh": false,
+            "name": "profile-service",
+            "sha256": "2f1e0c719254cd5631d9dc1c37b308b1ba2d34326294101f7153e1846ddcfe35"
+          }
+        ],
+        "attempt": "1",
+        "elapsed_seconds": 4.99,
+        "exit_code": 0,
+        "phase": "profile-service",
+        "receipt": {
+          "file": "profile-service-1-receipt.json",
+          "sha256": "fd0126c38e0e24ad7ed87ff622823fddb3831ce21af00976c9300e592aad80de"
+        }
+      },
+      {
+        "artifacts": [
+          {
+            "bytes": 47215664,
+            "file": "post-service",
+            "fresh": false,
+            "name": "post-service",
+            "sha256": "d6058d1d025d935008d990c922285485db618395d6dd9b8c984566f77da15ee0"
+          }
+        ],
+        "attempt": "1",
+        "elapsed_seconds": 17.17,
+        "exit_code": 0,
+        "phase": "post-service",
+        "receipt": {
+          "file": "post-service-1-receipt.json",
+          "sha256": "bdbfc68d62d049e317e8149821304ccbfa4fc74c3cd546b961388560869cb085"
+        }
+      },
+      {
+        "artifacts": [
+          {
+            "bytes": 31537776,
+            "file": "notification-service",
+            "fresh": false,
+            "name": "notification-service",
+            "sha256": "6b6edec7195f79159f7327d3964ac60dc0cdfe2b847eaf363949595c2c2b80e8"
+          }
+        ],
+        "attempt": "1",
+        "elapsed_seconds": 4.52,
+        "exit_code": 0,
+        "phase": "notification-service",
+        "receipt": {
+          "file": "notification-service-1-receipt.json",
+          "sha256": "69a903401ba76a7912ec4fcecde367e17944e3a70a4dcbb61885c7dcc6dfbc32"
+        }
+      }
+    ],
+    "offer": "ROOT-D0F-FIVE-MAINS-20261104",
+    "target_release": {
+      "all_five_compile_pass": true,
+      "before_copied_tests_or_pg": true,
+      "receipt": {
+        "file": "target-release.json",
+        "sha256": "69e13ca81febf9b53b5911c56f7c68b85344d634e7b63288c22ed2053b87c005"
+      },
+      "released_at": "2026-11-04T05:38:18.554160+00:00",
+      "state": "RELEASED",
+      "target_open_handles": 0
+    },
+    "unchanged_owned_source_since_3710": [
+      "profile-service",
+      "post-service"
+    ]
+  },
+  "first_policy_failure": {
+    "classification": "Reused platform test artifact was inconsistent with current matching owner policies; exact platform package clean and unchanged-source rebuild made all nine cases pass. No production policy or fixture was changed.",
+    "cleanup": "PASS",
+    "diagnostic": "reserved owner authority policy must match exact owner, methods, callers and Acquire actor field",
+    "report": {
+      "file": "core-native-1.json",
+      "sha256": "a7eb14c9155923b0482e52c3ec55459f18800c286a63003053dc8e09862508a0"
+    },
+    "status": "FAIL"
+  },
+  "limitations": [
+    "The first complete Gateway normal-suite run had two Docker-socket failures; the repaired run passed 138 tests with those exact two tests explicitly filtered. No full Docker-backed suite PASS is claimed.",
+    "CR08 includes five negative cases that deliberately retain Auth/Friend prepared fences before exact owned cluster shutdown; shutdown is not settlement evidence.",
+    "Public C03 uses a deterministic gate at actual durable publication and a real TCP reset. Spontaneous browser cancellation and resumed IN01 remain NOT_RUN.",
+    "CR07 shared handles and separate producer mechanics do not activate the general typed child-settler/native resolver union, main worker supervision, or currently unavailable product owner providers.",
+    "No ThemeManifest, map6, approved art, admission policy or product route was switched; map4/static-avatar1 remains the basic World baseline.",
+    "The new Notification inbox public four-operation verticals, Operations operator ports and complete BE41 production effects are not certified by this checkpoint."
+  ],
+  "old_peer_preflight_failure": {
+    "auth_and_friend_added_migration": "0018_notification_producer.sql",
+    "classification": "PRE_SERVICE_COHORT_MISMATCH",
+    "cleanup": "PASS",
+    "current_auth_migrations": 18,
+    "prepared_at_failure": 0,
+    "public_c03_behavior": "NOT_RUN",
+    "report": {
+      "file": "participant-native.json",
+      "sha256": "aeee8e5fb757f9230553925dafb2efcdae30ad375d90dd3bc64dbea99c0ca8d4"
+    },
+    "retained_auth_migrations": 17,
+    "status": "FAIL"
+  },
+  "participant_http": {
+    "binary_sha256": "f4efc9e3579d71361cf54b36a5e3a025f2b4d71ff545292da9818b8d487ec272",
+    "browser_in01": "NOT_RUN",
+    "cleanup": {
+      "independent_release": {
+        "file": "copied-workflow-release.json",
+        "sha256": "d02c16881b6c413cbbf8ad2ea7b42537c614c213dfe65ab31b5df12218aa3edb"
+      },
+      "owned_root_absent": true,
+      "process_stops": [
+        {
+          "exit_code": 0,
+          "forced": false,
+          "resource": "in_process_mail_sink",
+          "service": "local-mail"
+        },
+        {
+          "exit_code": 0,
+          "forced": false,
+          "pid": 31375,
+          "service": "api-gateway"
+        },
+        {
+          "exit_code": 0,
+          "forced": false,
+          "pid": 31362,
+          "service": "auth-service"
+        },
+        {
+          "exit_code": 0,
+          "forced": false,
+          "pid": 31350,
+          "service": "post-service"
+        },
+        {
+          "exit_code": 0,
+          "forced": false,
+          "pid": 31338,
+          "service": "friend-service"
+        },
+        {
+          "exit_code": 0,
+          "forced": false,
+          "pid": 31332,
+          "service": "notification-service"
+        },
+        {
+          "exit_code": 0,
+          "forced": false,
+          "pid": 31324,
+          "service": "profile-service"
+        },
+        {
+          "exit_code": 0,
+          "forced": false,
+          "pid": 31319,
+          "service": "redis"
+        }
+      ],
+      "restart": {
+        "after_pid": 30964,
+        "before_pid": 30756,
+        "status": "PASS"
+      },
+      "services": [
+        {
+          "binary_sha256": "f95a445ba399239b0575c7e806616189c6d60a28cb0c2056e66cbca931e45470",
+          "expected_migrations": 17,
+          "ledger_after": 17,
+          "ledger_before": 17,
+          "migrate": "PASS",
+          "migration_manifest_sha256": "1bea1d8e70e1c6490f554a07780945e5087445033b957b319285a31c899921b7",
+          "restart_persistence": "PASS",
+          "service": "api-gateway",
+          "verify": "PASS",
+          "verify_after_restart": "PASS"
+        },
+        {
+          "binary_sha256": "bd4b5199b1087ebbba1fdbbcb8a0ce879398a96b1d6162f14aec4dfbfec60ef7",
+          "expected_migrations": 18,
+          "ledger_after": 18,
+          "ledger_before": 18,
+          "migrate": "PASS",
+          "migration_manifest_sha256": "4d726b386497d0546bc30be37b677392cc94aa5a946222d05bceed87ba369aeb",
+          "restart_persistence": "PASS",
+          "service": "auth-service",
+          "verify": "PASS",
+          "verify_after_restart": "PASS"
+        },
+        {
+          "binary_sha256": "2f1e0c719254cd5631d9dc1c37b308b1ba2d34326294101f7153e1846ddcfe35",
+          "expected_migrations": 9,
+          "ledger_after": 9,
+          "ledger_before": 9,
+          "migrate": "PASS",
+          "migration_manifest_sha256": "d93496d70d2f6f8996a56c66e945486a371ad7beb275cdc0390e27fd074536ed",
+          "restart_persistence": "PASS",
+          "service": "profile-service",
+          "verify": "PASS",
+          "verify_after_restart": "PASS"
+        },
+        {
+          "binary_sha256": "83fa11e9ba01fda4c859a5136b4ccdde900a20f183800abb999679243b4a3509",
+          "expected_migrations": 18,
+          "ledger_after": 18,
+          "ledger_before": 18,
+          "migrate": "PASS",
+          "migration_manifest_sha256": "396294d80cf0c139654c5a71de05cff34384e9b5b3272da9df57bc21463151c4",
+          "restart_persistence": "PASS",
+          "service": "friend-service",
+          "verify": "PASS",
+          "verify_after_restart": "PASS"
+        },
+        {
+          "binary_sha256": "d6058d1d025d935008d990c922285485db618395d6dd9b8c984566f77da15ee0",
+          "expected_migrations": 31,
+          "ledger_after": 31,
+          "ledger_before": 31,
+          "migrate": "PASS",
+          "migration_manifest_sha256": "0a48d09908b891612a771e40e3ac08422c0c6774dbad8aae505aae913e07fd42",
+          "restart_persistence": "PASS",
+          "service": "post-service",
+          "verify": "PASS",
+          "verify_after_restart": "PASS"
+        },
+        {
+          "binary_sha256": "6b6edec7195f79159f7327d3964ac60dc0cdfe2b847eaf363949595c2c2b80e8",
+          "expected_migrations": 6,
+          "ledger_after": 6,
+          "ledger_before": 6,
+          "migrate": "PASS",
+          "migration_manifest_sha256": "6aeadad2ce246bdb3a7754ae679904b5111524a5f0bd0149885d418015662665",
+          "restart_persistence": "PASS",
+          "service": "notification-service",
+          "verify": "PASS",
+          "verify_after_restart": "PASS"
+        }
+      ],
+      "status": "PASS"
+    },
+    "compiled_source_commit": "d0f063d18a0549935f80a536077c30962d89f9e9",
+    "driver_sha256": "8c8e040f951f0c6e524f10eb5e7cd0126e2f9a8aefb4d7d0ed986d6f24616ca8",
+    "event_id": "f1fd7b85-d393-5410-8bc3-5ea6b71aeb77",
+    "fresh_real_login": "PASS",
+    "guard": {
+      "aborted": null,
+      "fixed_target_growth": 181805056,
+      "hard_whole_bytes": 1610612736,
+      "max_sampled_whole_additional": 625954816,
+      "owned_roots_absent": [
+        true
+      ]
+    },
+    "limits": [
+      "Deterministic gate after actual durable publication; spontaneous browser timing is Root/FE owned.",
+      "No fabricated EOF, CompleteResponse, prepared rollback or TTL release.",
+      "Expected unknown-work fences remain until the entire owned disposable cluster is stopped; shutdown is not recovery proof."
+    ],
+    "native_host": "PASS",
+    "normal_public_c03": "PASS",
+    "owners_after_positive": {
+      "auth": [
+        {
+          "count": 2,
+          "settled": true,
+          "state": "COMPLETED"
+        }
+      ],
+      "friend": [
+        {
+          "count": 2,
+          "settled": true,
+          "state": "COMPLETED"
+        }
+      ]
+    },
+    "owners_after_unknown": {
+      "auth": [
+        {
+          "count": 1,
+          "settled": false,
+          "state": "SEALED"
+        },
+        {
+          "count": 2,
+          "settled": true,
+          "state": "COMPLETED"
+        },
+        {
+          "count": 1,
+          "settled": true,
+          "state": "SEALED"
+        }
+      ],
+      "friend": [
+        {
+          "count": 1,
+          "settled": false,
+          "state": "SEALED"
+        },
+        {
+          "count": 2,
+          "settled": true,
+          "state": "COMPLETED"
+        },
+        {
+          "count": 1,
+          "settled": true,
+          "state": "SEALED"
+        }
+      ]
+    },
+    "peer_binary_sha256": {
+      "api-gateway": "f95a445ba399239b0575c7e806616189c6d60a28cb0c2056e66cbca931e45470",
+      "auth-service": "bd4b5199b1087ebbba1fdbbcb8a0ce879398a96b1d6162f14aec4dfbfec60ef7",
+      "friend-service": "83fa11e9ba01fda4c859a5136b4ccdde900a20f183800abb999679243b4a3509",
+      "notification-service": "6b6edec7195f79159f7327d3964ac60dc0cdfe2b847eaf363949595c2c2b80e8",
+      "post-service": "d6058d1d025d935008d990c922285485db618395d6dd9b8c984566f77da15ee0",
+      "profile-service": "2f1e0c719254cd5631d9dc1c37b308b1ba2d34326294101f7153e1846ddcfe35"
+    },
+    "positive": {
+      "abandoned": true,
+      "delivered": false,
+      "serialized": false,
+      "settled": true
+    },
+    "prepared_before_owned_shutdown": 4,
+    "production_wiring": "ROOT_OWNED",
+    "release_digest": "5fe7555cf4274e0e66ccc04c650ec89ae40db5fec8a8b773498219dee5143e7d",
+    "report": {
+      "file": "participant-native.json",
+      "sha256": "03e2f66b29051104a959629a779454c4aa2794b86a66b81cfb02b7a146980dac"
+    },
+    "result": "PASS",
+    "scope": "C03-CANCEL01 actual native public HTTP cancellation and real Auth login",
+    "statuses": {
+      "fresh-login-after-cancellation": 200,
+      "normal-c03-read": 200,
+      "principal-1-bootstrap": 200,
+      "principal-1-login": 200,
+      "principal-1-profile": 200,
+      "principal-1-signup": 200,
+      "principal-1-verify": 200,
+      "principal-2-bootstrap": 200,
+      "principal-2-login": 200,
+      "principal-2-profile": 200,
+      "principal-2-signup": 200,
+      "principal-2-verify": 200,
+      "principal-3-bootstrap": 200,
+      "principal-3-login": 200,
+      "principal-3-profile": 200,
+      "principal-3-signup": 200,
+      "principal-3-verify": 200
+    },
+    "unknown_callback": {
+      "abandoned": false,
+      "delivered": false,
+      "expired_callback_did_not_release": true,
+      "phase": "SEALED",
+      "serialized": false,
+      "settled": false
+    },
+    "unknown_native": {
+      "abandoned": true,
+      "delivered": false,
+      "native_status": "committed",
+      "phase": "ROOT_FINISHED",
+      "receipt_evidence": false,
+      "registered_transactions": 1,
+      "resolution": "UNKNOWN",
+      "serialized": false,
+      "settled": false
+    }
+  },
+  "pure_tests": [
+    {
+      "argv": [
+        "<REPAIRED_SEVEN_ARTIFACT_DIR>/canonical-runtime-tests",
+        "--test-threads=1"
+      ],
+      "binary": "canonical-runtime-tests",
+      "binary_sha256": "466ad9550b0968729970b23d05fc7782ce0d17ec74f11885f18128377c31b635",
+      "exit_code": 0,
+      "log": "canonical-runtime-focused.txt",
+      "log_sha256": "f08ac9455bd18b2e277457fc937fbe166c0ca082869bef9763b3e7ef266d7d48",
+      "summary": [
+        "test result: ok. 3 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s"
+      ]
+    },
+    {
+      "argv": [
+        "<REPAIRED_SEVEN_ARTIFACT_DIR>/gateway-lib-tests",
+        "reviewed_motion_v2_tests",
+        "--test-threads=1"
+      ],
+      "binary": "gateway-lib-tests",
+      "binary_sha256": "c5ad6ce500b2f787d63d16ba67a624d900574b9c3095525817bd5c410718ba84",
+      "exit_code": 0,
+      "log": "gateway-motion-focused.txt",
+      "log_sha256": "3cd7803e29c657d77d1cf3cc18276ee8356066f4d82018414c9b6242da0e0a61",
+      "summary": [
+        "test result: ok. 3 passed; 0 failed; 0 ignored; 0 measured; 137 filtered out; finished in 0.00s"
+      ]
+    },
+    {
+      "argv": [
+        "<REPAIRED_SEVEN_ARTIFACT_DIR>/concert-lib-tests",
+        "--test-threads=1"
+      ],
+      "binary": "concert-lib-tests",
+      "binary_sha256": "ef1b9fb92f0abc4d9494e3281660e5427cd13519ff24c300c3c7b31e3e46dbdd",
+      "exit_code": 0,
+      "log": "concert-all-normal.txt",
+      "log_sha256": "864861c773856e03ed0be0d840b71cb7949f68c6eaad56454b9c372d2132fb5d",
+      "summary": [
+        "test result: ok. 78 passed; 0 failed; 46 ignored; 0 measured; 0 filtered out; finished in 1.79s"
+      ]
+    },
+    {
+      "argv": [
+        "<REPAIRED_SEVEN_ARTIFACT_DIR>/gateway-lib-tests",
+        "--skip",
+        "config::hardening_tests::external_migration_mode_rejects_schema_damage_without_owner_privileges",
+        "--skip",
+        "config::hardening_tests::external_quota_pool_preserves_restricted_shared_budgets_and_timeouts",
+        "--test-threads=1"
+      ],
+      "binary": "gateway-lib-tests",
+      "binary_sha256": "c5ad6ce500b2f787d63d16ba67a624d900574b9c3095525817bd5c410718ba84",
+      "exit_code": 0,
+      "log": "gateway-normal-without-docker.txt",
+      "log_sha256": "d5f3a3b58699ce7e4312001c89f33ed29b6ebd4cdf42f18901ae22c347b05385",
+      "summary": [
+        "test result: ok. 138 passed; 0 failed; 0 ignored; 0 measured; 2 filtered out; finished in 1.77s"
+      ]
+    }
+  ],
+  "qualified_source_commit": "d0f063d18a0549935f80a536077c30962d89f9e9",
+  "repair": {
+    "build_guard": {
+      "file": "build-guard.json",
+      "sha256": "0d0d4afdc4f85f362a9b676569d3f6927b6b22ccdef6fdff18ce64e242ef5d62"
+    },
+    "clean_packages": [
+      "platform"
+    ],
+    "clean_receipt": {
+      "file": "platform-clean.json",
+      "sha256": "6e1e8829d8f826a608f98b2226570f920768cf79e5058c95fcefe10a6a221488"
+    },
+    "compile": [
+      {
+        "artifacts": [
+          {
+            "bytes": 93802432,
+            "file": "concert-lib-tests",
+            "fresh": false,
+            "name": "concert_service",
+            "sha256": "ef1b9fb92f0abc4d9494e3281660e5427cd13519ff24c300c3c7b31e3e46dbdd"
+          },
+          {
+            "bytes": 14194240,
+            "file": "canonical-runtime-tests",
+            "fresh": true,
+            "name": "canonical_runtime_config",
+            "sha256": "466ad9550b0968729970b23d05fc7782ce0d17ec74f11885f18128377c31b635"
+          },
+          {
+            "bytes": 33332448,
+            "file": "owner-cancellation-tests",
+            "fresh": true,
+            "name": "owner_authority_cancellation",
+            "sha256": "7b8473db16c24e265b22a786ad7d483c9131e23ff21a04d241998f6d49648f96"
+          },
+          {
+            "bytes": 40749328,
+            "file": "participant-cancellation-tests",
+            "fresh": true,
+            "name": "participant_cancellation",
+            "sha256": "f4efc9e3579d71361cf54b36a5e3a025f2b4d71ff545292da9818b8d487ec272"
+          }
+        ],
+        "attempt": "2",
+        "elapsed_seconds": 22.5,
+        "exit_code": 0,
+        "phase": "concert-tests",
+        "receipt": {
+          "file": "concert-tests-2-receipt.json",
+          "sha256": "8375a8c94f2a84e03d429f4917ffc207d1a2f31c1970176d78f95a61776aa7bf"
+        }
+      },
+      {
+        "artifacts": [
+          {
+            "bytes": 50151936,
+            "file": "concert-service",
+            "fresh": false,
+            "name": "concert-service",
+            "sha256": "ea0bb95afff806c8965ec2517e0cee6e5153b3bd0c35cde2f8a23470438fd4d0"
+          }
+        ],
+        "attempt": "1",
+        "elapsed_seconds": 19.33,
+        "exit_code": 0,
+        "phase": "concert-main",
+        "receipt": {
+          "file": "concert-main-1-receipt.json",
+          "sha256": "a2a9fb574fdea292fb5fa8227c4695434f08d2fdd39c5d0f8eee0155b9ce89f9"
+        }
+      },
+      {
+        "artifacts": [
+          {
+            "bytes": 38728736,
+            "file": "gateway-lib-tests",
+            "fresh": false,
+            "name": "api_gateway",
+            "sha256": "c5ad6ce500b2f787d63d16ba67a624d900574b9c3095525817bd5c410718ba84"
+          }
+        ],
+        "attempt": "1",
+        "elapsed_seconds": 19.42,
+        "exit_code": 0,
+        "phase": "gateway-tests",
+        "receipt": {
+          "file": "gateway-tests-1-receipt.json",
+          "sha256": "7c1aeaa117a75ae8cd52268ccc887d0a9a3f1afcea75a9d60add9fc190611b19"
+        }
+      },
+      {
+        "artifacts": [
+          {
+            "bytes": 57225248,
+            "file": "api-gateway",
+            "fresh": false,
+            "name": "api-gateway",
+            "sha256": "f95a445ba399239b0575c7e806616189c6d60a28cb0c2056e66cbca931e45470"
+          }
+        ],
+        "attempt": "1",
+        "elapsed_seconds": 15.52,
+        "exit_code": 0,
+        "phase": "gateway-main",
+        "receipt": {
+          "file": "gateway-main-1-receipt.json",
+          "sha256": "8ed49246d1af1570d61e2718b746b8836d66c9b0b56b4b37f7a1fc5145808376"
+        }
+      }
+    ],
+    "observer_interruption": {
+      "continuous_peak_claim": false,
+      "diagnostic": "du raced an ephemeral compiler rmeta deletion. The observer exited and its exact owned compile group was stopped. Bounded retries and unconditional process cleanup repaired the external monitor.",
+      "original_lease_clock_and_baseline_retained": true,
+      "receipt": {
+        "file": "guard-observation-failure.json",
+        "sha256": "b0f7e53bc2235c2500f6e5b04deeec17328cf46a0e6d4170b5c724f672bfdef9"
+      }
+    },
+    "offer": "ROOT-SEVEN-CACHE-REPAIR-D0F-20261104",
+    "source_edits": false,
+    "target_release": {
+      "all_seven_compile_pass": true,
+      "before_copied_tests_or_pg": true,
+      "receipt": {
+        "file": "target-release.json",
+        "sha256": "2e7185253fd539348ebb89c4256cff724407bcf8513ab6916c266d8cdd3f49db"
+      },
+      "released_at": "2026-11-04T05:34:09.719291+00:00",
+      "state": "RELEASED",
+      "target_open_handles": 0
+    }
+  },
+  "schema_version": 1,
+  "scope": "Combined compilation, actual canonical cancellation and public Participant HTTP cancellation; not whole MCR acceptance.",
+  "source_input_manifests": {
+    "build": {
+      "count": 2151,
+      "receipt": {
+        "file": "source-pins.json",
+        "sha256": "da1057e2e3a5d77292e91926cc006f3aba6a8c6e2fdf3b0561e888383ff08692"
+      }
+    },
+    "core": {
+      "count": 1515,
+      "receipt": {
+        "file": "owner-cancellation-checkpoint.json",
+        "sha256": "cdcbba4fc42386923f14154ebd0f6fcfcc572e87676fc33d0961a2b5946900de"
+      }
+    },
+    "participant": {
+      "count": 1822,
+      "receipt": {
+        "file": "participant-cancellation-receipt.json",
+        "sha256": "62b2dd8224e48203fa29ff0a8ff5949023f9b32dd02dbc68e5afcb81813e2cef"
+      }
+    }
+  },
+  "status": "INTEGRATED"
+}
