@@ -1,0 +1,95 @@
+{
+  "status": "PASS",
+  "scope": "Original FE06/FE34 runtime capability producer and final adopter controlled native integration only",
+  "source": "f9781febcd3784f7beeff862bc0939f243018803",
+  "frozenPublishedProduction": "9e7952fcd89360f7b4fe43c69f22060b9aa55c74",
+  "slot": "WORLD-PREFERENCES-NATIVE3-202611040829Z",
+  "scopedLintExitCode": 0,
+  "nativeExitCode": 0,
+  "cwd": "repository root",
+  "commands": [
+    [
+      "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node",
+      "frontend/node_modules/oxlint/bin/oxlint",
+      "frontend/src/world/preferences/__tests__/native"
+    ],
+    [
+      "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node",
+      "frontend/src/world/preferences/__tests__/native/native.mjs"
+    ]
+  ],
+  "environment": {
+    "MCR_FRONTEND_SLOT": "WORLD-PREFERENCES-NATIVE3-202611040829Z",
+    "MCR_PREFERENCES_OUTPUT": "docs/mcr/evidence/world-runtime-preferences/native-03"
+  },
+  "acceptedAtUTC": "2026-11-04T08:30:15.964214+00:00",
+  "absoluteDeadlineUTC": "2026-11-04T08:33:15.964214+00:00",
+  "driverStartedAtUTC": "2026-11-04T08:30:16.846Z",
+  "driverCompletedAtUTC": "2026-11-04T08:30:24.409Z",
+  "driverElapsedSeconds": 7.563,
+  "ownDependencyLinkRemovedAtUTC": "2026-11-04T08:30:57.464447+00:00",
+  "peakMeasuredWholeBytes": 78586053,
+  "minimumAvailableBytes": 33324589056,
+  "normal": {
+    "elapsed": 803,
+    "updates": 48,
+    "pre": 48,
+    "render": 48,
+    "post": 48
+  },
+  "lowPower": {
+    "elapsed": 1203,
+    "updates": 72,
+    "pre": 16,
+    "render": 16,
+    "post": 16
+  },
+  "osReduced": {
+    "updates": 19,
+    "tweenDelta": 0,
+    "computedTransition": "0s"
+  },
+  "osRestoredTweenDelta": 2.9999999999999964,
+  "scopeCleanup": {
+    "postSettleCallerAbortNormalMethods": true,
+    "postSettleCallerAbortTweenScale": 1,
+    "postSettleCallerAbortComputedTransition": "0.12s",
+    "privacySockets": 0,
+    "privacyCanvases": 0,
+    "finalSockets": 0,
+    "finalCanvases": 0,
+    "createdObjectURLs": 5,
+    "revokedObjectURLs": 5
+  },
+  "applicationBuild": {
+    "result": "PASS",
+    "entry": "frontend/index.html/src/main.tsx",
+    "afterBrowserServerProfileCleanup": true,
+    "copyPublicDir": false
+  },
+  "applicationBuildLimitation": "Bundles the actual production index/main entry with copyPublicDir=false. It does not certify deployment packaging or copied public-asset completeness.",
+  "cleanup": {
+    "browserClosed": true,
+    "serverClosed": true,
+    "profileCacheBuildTemporaryRemoved": true,
+    "ownedNodeProcessExited": true,
+    "ownedDependencyLinkAbsent": true,
+    "ownNativeTemporaryPathsAbsent": true,
+    "listeningPortLifetime": "Vite server close awaited and owning Node exited; no server retained.",
+    "interactiveMCPPreserved": true
+  },
+  "sourceContractPinCount": 360,
+  "priorFailuresPreserved": [
+    "native-01",
+    "native-02"
+  ],
+  "limitations": [
+    "Controlled frozen C03/C05/C06/selected-source fixtures, not live backend or production art admission",
+    "Actual production Root/Settings/adopter/composition/default Phaser and ThemeController from one checkout",
+    "Reduced motion covers nonessential tweens; character artwork/manual walk renderer unchanged",
+    "Low power caps actual canvas paints, not updates/network/authoritative physics; no battery or physical-device claim",
+    "No real eligible audio source; enable-sound is explicitly unavailable",
+    "Pending ignored-abort theme candidate disposal qualified by source tests; fixture lacks alternate admitted theme assets"
+  ],
+  "recordedAtUTC": "2026-11-04T08:36:04.508713+00:00"
+}

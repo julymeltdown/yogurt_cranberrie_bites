@@ -1,0 +1,77 @@
+{
+  "status": "PASS",
+  "source": "f9781febcd3784f7beeff862bc0939f243018803",
+  "frozenPublishedProduction": "9e7952fcd89360f7b4fe43c69f22060b9aa55c74",
+  "slot": "WORLD-PREFERENCES-NATIVE3-202611040829Z",
+  "captureUTCAndKSTAreOriginal": true,
+  "captures": [
+    {
+      "path": "docs/mcr/evidence/world-runtime-preferences/native-03/settings-saved-only.png",
+      "screen": "Actual Settings saved values remain separate from incumbent engine application",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "source": "f9781febcd3784f7beeff862bc0939f243018803",
+      "branch": "codex/mcr-fe-FE06-FE34-runtime-capabilities",
+      "capturedAtUTC": "2026-11-04T08:30:20.984Z",
+      "capturedAtKST": "2026-11-04T17:30:20.984+09:00",
+      "privacy": "Synthetic source-controlled identity/preferences/characters only; no real person, account, message, credential or location",
+      "sha256": "01d3f3fc755f70eb6e500cb0a80b48a4c7febd44fc9148a1d91e2e47b2309b75",
+      "fileBytes": 285293,
+      "dimensions": {
+        "width": 390,
+        "height": 844
+      }
+    },
+    {
+      "path": "docs/mcr/evidence/world-runtime-preferences/native-03/settings-applied-low-power.png",
+      "screen": "Actual production adapter applies a paint-only limit to the same Phaser game",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "source": "f9781febcd3784f7beeff862bc0939f243018803",
+      "branch": "codex/mcr-fe-FE06-FE34-runtime-capabilities",
+      "capturedAtUTC": "2026-11-04T08:30:22.302Z",
+      "capturedAtKST": "2026-11-04T17:30:22.302+09:00",
+      "privacy": "Synthetic source-controlled identity/preferences/characters only; no real person, account, message, credential or location",
+      "sha256": "f2fb892f316a0da07301cc9040fac998fcff920a20fcd13730a897fb5b4b24bf",
+      "fileBytes": 285255,
+      "dimensions": {
+        "width": 390,
+        "height": 844
+      }
+    },
+    {
+      "path": "docs/mcr/evidence/world-runtime-preferences/native-03/settings-privacy-withdrawn.png",
+      "screen": "Privacy withdrawal clears private presentation and restores the actual incumbent effects",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "source": "f9781febcd3784f7beeff862bc0939f243018803",
+      "branch": "codex/mcr-fe-FE06-FE34-runtime-capabilities",
+      "capturedAtUTC": "2026-11-04T08:30:23.548Z",
+      "capturedAtKST": "2026-11-04T17:30:23.548+09:00",
+      "privacy": "Synthetic source-controlled identity/preferences/characters only; no real person, account, message, credential or location",
+      "sha256": "45839631b6bc7676304c36252c0a41a15306f88255cadc4689e8f0d81e3b0520",
+      "fileBytes": 23394,
+      "dimensions": {
+        "width": 390,
+        "height": 844
+      }
+    }
+  ],
+  "ownerInspection": {
+    "inspectedAtUTC": "2026-11-04T08:36:04.508713+00:00",
+    "allThreeOriginalPNGsViewed": true,
+    "observations": [
+      "Saved-only and low-power screens show the actual half-height Settings panel and six selected-source sprites in the same world.",
+      "Settings is scrolled around the sound/apply controls; the complete form and status are not simultaneously visible. Effect acceptance comes from mechanical engine/CSS checks, not screenshot text.",
+      "Privacy screenshot shows the generic unavailable-event view with private world/panel content cleared."
+    ],
+    "scope": "Bounded synthetic fixture inspection; no general visual/accessibility or production art admission claim."
+  },
+  "privacy": "Only controlled source-fixture identity/preferences/characters; no real account, location, message or credential."
+}

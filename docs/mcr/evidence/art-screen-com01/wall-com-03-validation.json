@@ -1,0 +1,2015 @@
+{
+  "task": "ART-SCREEN-COM01",
+  "kind": "READ_ONLY_QUALIFIED_OWNER_AUDIT",
+  "artifactCommit": "1722a81734947764996590b94a63aa001501df28",
+  "candidate": "cc20832a897f18cd83482dcd21b6c2fc1d226942",
+  "pins": {
+    "report.json": "8056cea82655a3ae95e6520952a351890a3eb921953262378ebf260ca89b4c5f",
+    "capture-packet.json": "4b1b8bf2d7a29678d072f6073c37e0a43ce646beb3a0cb99766275b2c952e61e",
+    "qualification.json": "f0ac612f201d43863086039a0284917f0cd9a6677fad5fe0b62a107d258c8301"
+  },
+  "job": "ROOT-WALL-COM-A11Y-202611040820Z",
+  "startedAt": "2026-11-04T08:17:02.026Z",
+  "finishedAt": "2026-11-04T08:17:31.969Z",
+  "rawExit": 1,
+  "rawStatus": "OPEN_FAILURES",
+  "rawErrors": [
+    {
+      "id": "wall",
+      "mode": "candidate",
+      "width": 390,
+      "a11yErrors": [
+        {
+          "name": "forcedText",
+          "error": "Measured threshold or outline-pixel check failed"
+        },
+        {
+          "name": "forcedFocus",
+          "error": "Measured threshold or outline-pixel check failed"
+        }
+      ]
+    },
+    {
+      "id": "feed",
+      "mode": "candidate",
+      "width": 390,
+      "a11yErrors": [
+        {
+          "name": "forcedText",
+          "error": "Measured threshold or outline-pixel check failed"
+        },
+        {
+          "name": "forcedFocus",
+          "error": "Measured threshold or outline-pixel check failed"
+        }
+      ]
+    },
+    {
+      "id": "meet",
+      "mode": "candidate",
+      "width": 390,
+      "a11yErrors": [
+        {
+          "name": "focus",
+          "error": "Measured threshold or outline-pixel check failed"
+        },
+        {
+          "name": "forcedText",
+          "error": "Measured threshold or outline-pixel check failed"
+        },
+        {
+          "name": "forcedFocus",
+          "error": "Measured threshold or outline-pixel check failed"
+        }
+      ]
+    },
+    {
+      "id": "gifts",
+      "mode": "candidate",
+      "width": 390,
+      "a11yErrors": [
+        {
+          "name": "forcedText",
+          "error": "Measured threshold or outline-pixel check failed"
+        },
+        {
+          "name": "forcedFocus",
+          "error": "Measured threshold or outline-pixel check failed"
+        }
+      ]
+    }
+  ],
+  "qualificationDisposition": "WALL_BACKGROUND_AND_NORMAL_TEXT_PASS; INHERITED_MEET_FOCUS_CLIPPING_OPEN; FORCED_CHECKER_FINDINGS_QUALIFIED_SEPARATELY",
+  "qualification": "Actual default router/Auth/Phaser; QA06 DEV synthetic HTTP/C05/local admission only. Guarded Wall remains guarded; no live service or physical device acceptance.",
+  "baselinePolicy": "Same candidate/fixture/source; baseline restores ONLY Wall SVG to8972 bytes. All foreground geometry/style stays fixed.",
+  "artifactsVerified": [
+    {
+      "path": "docs/mcr/evidence/cozy-backgrounds-v1/wall-com-03/baseline-wall-360.png",
+      "bytes": 29640,
+      "sha256": "c9d97fc5a42910a8e590032867eedd161d0f8fc41dd30da929033b18398875ef"
+    },
+    {
+      "path": "docs/mcr/evidence/cozy-backgrounds-v1/wall-com-03/baseline-wall-390.png",
+      "bytes": 30461,
+      "sha256": "ac3b1d2230e5076ea27e4d875fa97a35130527ffeebec38bf314f0dfbcd3d93f"
+    },
+    {
+      "path": "docs/mcr/evidence/cozy-backgrounds-v1/wall-com-03/baseline-wall-430.png",
+      "bytes": 31645,
+      "sha256": "871ec6c72b9086d92b906f1554491785b4b371ca802cd24b15a06d8202c70864"
+    },
+    {
+      "path": "docs/mcr/evidence/cozy-backgrounds-v1/wall-com-03/candidate-feed-390.png",
+      "bytes": 29604,
+      "sha256": "2c4eee679c691499411c12791645188c8ebf597be655769f118fd7af191cefb5"
+    },
+    {
+      "path": "docs/mcr/evidence/cozy-backgrounds-v1/wall-com-03/candidate-feed-focus-forced-390.png",
+      "bytes": 20559,
+      "sha256": "30f8ea89ada4e57134d83affbe1eeafb02981eedcb978137178f4986752efc2d"
+    },
+    {
+      "path": "docs/mcr/evidence/cozy-backgrounds-v1/wall-com-03/candidate-feed-focus-normal-390.png",
+      "bytes": 30018,
+      "sha256": "0c464785f8c64db7b6b3cf9af82c06d48416c103000d3c1476fdb72b680ad945"
+    },
+    {
+      "path": "docs/mcr/evidence/cozy-backgrounds-v1/wall-com-03/candidate-feed-text-backing-forced-390.png",
+      "bytes": 20559,
+      "sha256": "30f8ea89ada4e57134d83affbe1eeafb02981eedcb978137178f4986752efc2d"
+    },
+    {
+      "path": "docs/mcr/evidence/cozy-backgrounds-v1/wall-com-03/candidate-feed-text-backing-normal-390.png",
+      "bytes": 27573,
+      "sha256": "6f66328349323d6a8cd3a7d9014b648718291ab858a28d8ab4921fa67a442df9"
+    },
+    {
+      "path": "docs/mcr/evidence/cozy-backgrounds-v1/wall-com-03/candidate-gifts-390.png",
+      "bytes": 65005,
+      "sha256": "9214f16c9b2b1b665e35dd84a9ddac9a4f695063c8b85e792b7b00b206abf83f"
+    },
+    {
+      "path": "docs/mcr/evidence/cozy-backgrounds-v1/wall-com-03/candidate-gifts-focus-forced-390.png",
+      "bytes": 51419,
+      "sha256": "1d092d6846e692b52b3e22fce93b8088b135daefd2222cb311cab4617e67a820"
+    },
+    {
+      "path": "docs/mcr/evidence/cozy-backgrounds-v1/wall-com-03/candidate-gifts-focus-normal-390.png",
+      "bytes": 65278,
+      "sha256": "8ac54cb6f16e116bc38520b117b7923be62ec72fe3597a69c3a73d33da2f55b3"
+    },
+    {
+      "path": "docs/mcr/evidence/cozy-backgrounds-v1/wall-com-03/candidate-gifts-text-backing-forced-390.png",
+      "bytes": 51419,
+      "sha256": "1d092d6846e692b52b3e22fce93b8088b135daefd2222cb311cab4617e67a820"
+    },
+    {
+      "path": "docs/mcr/evidence/cozy-backgrounds-v1/wall-com-03/candidate-gifts-text-backing-normal-390.png",
+      "bytes": 60583,
+      "sha256": "96277691bdc003b64d723d01ba72ece8ad7df3eec509df50f5d80c5c9a8e0fff"
+    },
+    {
+      "path": "docs/mcr/evidence/cozy-backgrounds-v1/wall-com-03/candidate-meet-390.png",
+      "bytes": 72061,
+      "sha256": "85f2d76ba60ab3a84af36b70aecf2b57d0057d29979d40987ac37801160a5be7"
+    },
+    {
+      "path": "docs/mcr/evidence/cozy-backgrounds-v1/wall-com-03/candidate-meet-focus-forced-390.png",
+      "bytes": 55034,
+      "sha256": "e294dc222efa3068f43d11bb2e92299d19582b405322d77e6ba7960caf0fc09c"
+    },
+    {
+      "path": "docs/mcr/evidence/cozy-backgrounds-v1/wall-com-03/candidate-meet-focus-normal-390.png",
+      "bytes": 72153,
+      "sha256": "e4cac6d380f96ec881ae893208ea88b436610330e45b6a7c497df1f3914c381a"
+    },
+    {
+      "path": "docs/mcr/evidence/cozy-backgrounds-v1/wall-com-03/candidate-meet-text-backing-forced-390.png",
+      "bytes": 55038,
+      "sha256": "597059f318037bb92540290d6074ce71fc4a5cfadd8c23f265ea7625a103af14"
+    },
+    {
+      "path": "docs/mcr/evidence/cozy-backgrounds-v1/wall-com-03/candidate-meet-text-backing-normal-390.png",
+      "bytes": 66821,
+      "sha256": "920e2a0a29ff1ecb4358ea9111fd77c9b6dae7a37e5126e4b53654b700efb50a"
+    },
+    {
+      "path": "docs/mcr/evidence/cozy-backgrounds-v1/wall-com-03/candidate-wall-360.png",
+      "bytes": 42703,
+      "sha256": "d5281ac77ad5b53a32fc3025cfc819865e1d78259ec90cb996fc2946de43e203"
+    },
+    {
+      "path": "docs/mcr/evidence/cozy-backgrounds-v1/wall-com-03/candidate-wall-390.png",
+      "bytes": 42172,
+      "sha256": "ec075ce0ceb6a029a5b469fe2db8ba48b7668a7c83bd8a5845fd7019a8417a9f"
+    },
+    {
+      "path": "docs/mcr/evidence/cozy-backgrounds-v1/wall-com-03/candidate-wall-430.png",
+      "bytes": 40881,
+      "sha256": "9bb0bf3f6ac6790306f12a39be4db4fcfec262788fd8f267c94880624522c357"
+    },
+    {
+      "path": "docs/mcr/evidence/cozy-backgrounds-v1/wall-com-03/candidate-wall-focus-forced-390.png",
+      "bytes": 26344,
+      "sha256": "9bac7f25c85b284ef1eab1c2b4506c93e9d413597e6f58726e6f8808496d5997"
+    },
+    {
+      "path": "docs/mcr/evidence/cozy-backgrounds-v1/wall-com-03/candidate-wall-focus-normal-390.png",
+      "bytes": 42343,
+      "sha256": "4d829241f3f8af62f8250442cb74f70f236120b8af9955a8a2ec22d1d222dd29"
+    },
+    {
+      "path": "docs/mcr/evidence/cozy-backgrounds-v1/wall-com-03/candidate-wall-text-backing-forced-390.png",
+      "bytes": 26344,
+      "sha256": "9bac7f25c85b284ef1eab1c2b4506c93e9d413597e6f58726e6f8808496d5997"
+    },
+    {
+      "path": "docs/mcr/evidence/cozy-backgrounds-v1/wall-com-03/candidate-wall-text-backing-normal-390.png",
+      "bytes": 34020,
+      "sha256": "dddb1c80201f85718499cae5ed12a15aef114561a8bf1e815dc939f1673e734a"
+    },
+    {
+      "path": "docs/mcr/evidence/cozy-backgrounds-v1/wall-com-03/driver.mjs.snapshot",
+      "bytes": 18427,
+      "sha256": "84b23c4d4de54d7126447cc6a282b042db216d72a3311eb4b30febc965e7db6f"
+    },
+    {
+      "path": "docs/mcr/evidence/cozy-backgrounds-v1/wall-com-03/guard.json",
+      "bytes": 716,
+      "sha256": "328ee614e19197cf4ec9d6d12ffb6fdcfb73bacb0522a6acf0dad5d43bbe9f44"
+    },
+    {
+      "path": "docs/mcr/evidence/cozy-backgrounds-v1/wall-com-03/guard.py.snapshot",
+      "bytes": 3207,
+      "sha256": "2f53d911bb92d455977166c02fcd2566063c20ddb326c987ad6ceac5a6c380f4"
+    },
+    {
+      "path": "docs/mcr/evidence/cozy-backgrounds-v1/wall-com-03/native.log.gz",
+      "bytes": 777,
+      "sha256": "f5b171cdda1f741c59a814ff5dd86cf33924373931bbd275e3d49e3e9f447998"
+    },
+    {
+      "path": "docs/mcr/evidence/cozy-backgrounds-v1/wall-com-03/qualification.json",
+      "bytes": 20157,
+      "sha256": "f0ac612f201d43863086039a0284917f0cd9a6677fad5fe0b62a107d258c8301"
+    },
+    {
+      "path": "docs/mcr/evidence/cozy-backgrounds-v1/wall-com-03/report.json",
+      "bytes": 459261,
+      "sha256": "8056cea82655a3ae95e6520952a351890a3eb921953262378ebf260ca89b4c5f"
+    },
+    {
+      "path": "docs/mcr/evidence/cozy-backgrounds-v1/wall-com-03/syntax.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  ],
+  "pngsDirectlyInspected": 25,
+  "relevantSourcePinsVerified": [
+    {
+      "kind": "loaded-source",
+      "mode": "baseline",
+      "path": "frontend/src/app/__tests__/cozy-backgrounds-v1/preview.tsx",
+      "revision": "cc20832a897f18cd83482dcd21b6c2fc1d226942",
+      "sha256": "5fb0fed19cf9b2fe14a8179052d5cfd639514c879952beab67e1d64b9529e261",
+      "bytes": 7319
+    },
+    {
+      "kind": "loaded-source",
+      "mode": "baseline",
+      "path": "frontend/src/app/router.tsx",
+      "revision": "cc20832a897f18cd83482dcd21b6c2fc1d226942",
+      "sha256": "8ce076a0c8929b3cb7dbf16e3683f2e1c3fab77be7385b519a36f282d8119eba",
+      "bytes": 7160
+    },
+    {
+      "kind": "loaded-source",
+      "mode": "baseline",
+      "path": "frontend/e2e/reference-integrated/whole/data.ts",
+      "revision": "cc20832a897f18cd83482dcd21b6c2fc1d226942",
+      "sha256": "8031884ce211e04272a20d66db4427b67a192a197a766d14a6f848765cc99d33",
+      "bytes": 4237
+    },
+    {
+      "kind": "loaded-source",
+      "mode": "baseline",
+      "path": "frontend/src/app/social-composition/__tests__/fixtures.ts",
+      "revision": "cc20832a897f18cd83482dcd21b6c2fc1d226942",
+      "sha256": "69c1110092ae076ed05ba831d86da7f67fb96816cc060661d146aeb228fb924f",
+      "bytes": 3949
+    },
+    {
+      "kind": "loaded-source",
+      "mode": "baseline",
+      "path": "frontend/src/features/event-feed/EventFeed.tsx",
+      "revision": "cc20832a897f18cd83482dcd21b6c2fc1d226942",
+      "sha256": "7966aaf91af0894a8aca181b2e7385b0e56788032116dad22e266d6b34eb20ae",
+      "bytes": 8292
+    },
+    {
+      "kind": "loaded-source",
+      "mode": "baseline",
+      "path": "frontend/src/features/party-discovery/ui/PartyDiscovery.tsx",
+      "revision": "cc20832a897f18cd83482dcd21b6c2fc1d226942",
+      "sha256": "687d59c29d6155ead1df9152391af9f5422e6441b60b51b15df7084b0582f148",
+      "bytes": 17844
+    },
+    {
+      "kind": "loaded-source",
+      "mode": "baseline",
+      "path": "frontend/src/features/gift-discovery/ui/reference-presentation.tsx",
+      "revision": "cc20832a897f18cd83482dcd21b6c2fc1d226942",
+      "sha256": "2c71518ba195f9e50f0e9888ab0ef6fe0b2e0d02d969d4e1f4cf1f3165612754",
+      "bytes": 5446
+    },
+    {
+      "kind": "loaded-source",
+      "mode": "candidate",
+      "path": "frontend/src/app/__tests__/cozy-backgrounds-v1/preview.tsx",
+      "revision": "cc20832a897f18cd83482dcd21b6c2fc1d226942",
+      "sha256": "5fb0fed19cf9b2fe14a8179052d5cfd639514c879952beab67e1d64b9529e261",
+      "bytes": 7319
+    },
+    {
+      "kind": "loaded-source",
+      "mode": "candidate",
+      "path": "frontend/src/app/router.tsx",
+      "revision": "cc20832a897f18cd83482dcd21b6c2fc1d226942",
+      "sha256": "8ce076a0c8929b3cb7dbf16e3683f2e1c3fab77be7385b519a36f282d8119eba",
+      "bytes": 7160
+    },
+    {
+      "kind": "loaded-source",
+      "mode": "candidate",
+      "path": "frontend/e2e/reference-integrated/whole/data.ts",
+      "revision": "cc20832a897f18cd83482dcd21b6c2fc1d226942",
+      "sha256": "8031884ce211e04272a20d66db4427b67a192a197a766d14a6f848765cc99d33",
+      "bytes": 4237
+    },
+    {
+      "kind": "loaded-source",
+      "mode": "candidate",
+      "path": "frontend/src/app/social-composition/__tests__/fixtures.ts",
+      "revision": "cc20832a897f18cd83482dcd21b6c2fc1d226942",
+      "sha256": "69c1110092ae076ed05ba831d86da7f67fb96816cc060661d146aeb228fb924f",
+      "bytes": 3949
+    },
+    {
+      "kind": "loaded-source",
+      "mode": "candidate",
+      "path": "frontend/src/features/event-feed/EventFeed.tsx",
+      "revision": "cc20832a897f18cd83482dcd21b6c2fc1d226942",
+      "sha256": "7966aaf91af0894a8aca181b2e7385b0e56788032116dad22e266d6b34eb20ae",
+      "bytes": 8292
+    },
+    {
+      "kind": "loaded-source",
+      "mode": "candidate",
+      "path": "frontend/src/features/party-discovery/ui/PartyDiscovery.tsx",
+      "revision": "cc20832a897f18cd83482dcd21b6c2fc1d226942",
+      "sha256": "687d59c29d6155ead1df9152391af9f5422e6441b60b51b15df7084b0582f148",
+      "bytes": 17844
+    },
+    {
+      "kind": "loaded-source",
+      "mode": "candidate",
+      "path": "frontend/src/features/gift-discovery/ui/reference-presentation.tsx",
+      "revision": "cc20832a897f18cd83482dcd21b6c2fc1d226942",
+      "sha256": "2c71518ba195f9e50f0e9888ab0ef6fe0b2e0d02d969d4e1f4cf1f3165612754",
+      "bytes": 5446
+    },
+    {
+      "kind": "physical-clean-checkout-not-individual-nested-load",
+      "path": "frontend/src/shared/styles/cozy-community-backgrounds-v1.css",
+      "revision": "cc20832a897f18cd83482dcd21b6c2fc1d226942",
+      "bytes": 2260,
+      "sha256": "d26dd8fbee928539f2689ccd9bb6269e4cb964c58b78e8cc86afbd894f228504",
+      "method": "Physical clean-checkout pin; not a Vite individual nested-import load receipt"
+    },
+    {
+      "kind": "physical-clean-checkout-not-individual-nested-load",
+      "path": "frontend/src/features/event-feed/feed.css",
+      "revision": "cc20832a897f18cd83482dcd21b6c2fc1d226942",
+      "bytes": 7611,
+      "sha256": "7749673c8e87e4d07cacd4c3dff084307d5de40386a1f4fa1a2fe87afb3fece0",
+      "method": "Physical clean-checkout pin; not a Vite individual nested-import load receipt"
+    },
+    {
+      "kind": "physical-clean-checkout-not-individual-nested-load",
+      "path": "frontend/src/features/party-discovery/ui/party-discovery.css",
+      "revision": "cc20832a897f18cd83482dcd21b6c2fc1d226942",
+      "bytes": 9066,
+      "sha256": "0f4b94ffb12cf8890d6e7c4e258e69b68833287dca0e8ad275a69d0700ebdea8",
+      "method": "Physical clean-checkout pin; not a Vite individual nested-import load receipt"
+    },
+    {
+      "kind": "physical-clean-checkout-not-individual-nested-load",
+      "path": "frontend/src/features/gift-discovery/ui/reference-gifts.css",
+      "revision": "cc20832a897f18cd83482dcd21b6c2fc1d226942",
+      "bytes": 5730,
+      "sha256": "c11d23a14cf241e763f8c07b8f4c4595923aa1aac6e4c25cad1ccebfa0745040",
+      "method": "Physical clean-checkout pin; not a Vite individual nested-import load receipt"
+    },
+    {
+      "kind": "physical-clean-checkout-not-individual-nested-load",
+      "path": "frontend/src/app/shell.css",
+      "revision": "cc20832a897f18cd83482dcd21b6c2fc1d226942",
+      "bytes": 12105,
+      "sha256": "c0b2052693ac51575b877714640beefbe4007f6a33c9b64482ea47aa8ed022ee",
+      "method": "Physical clean-checkout pin; not a Vite individual nested-import load receipt"
+    },
+    {
+      "kind": "physical-clean-checkout-not-individual-nested-load",
+      "path": "frontend/src/app/shell-chrome/shell-chrome.css",
+      "revision": "cc20832a897f18cd83482dcd21b6c2fc1d226942",
+      "bytes": 5451,
+      "sha256": "08614a9b3263d7cbb27af4d59aaabc0ee4db07943812faa0e04bdba7f720291d",
+      "method": "Physical clean-checkout pin; not a Vite individual nested-import load receipt"
+    },
+    {
+      "kind": "loaded-asset",
+      "mode": "baseline",
+      "path": "frontend/public/backgrounds/cute-wall-me-v1/wall-stationery.svg",
+      "revision": "8972b0b634035055eb023dbc2f786e4463b172e5",
+      "sha256": "1929fda18afe73000f79a44a7cb37c5504bee42d450bff343a562baa85e2e227",
+      "bytes": 2639
+    },
+    {
+      "kind": "loaded-asset",
+      "mode": "baseline",
+      "path": "frontend/public/world/avatars/derived-v1/static-release.json",
+      "revision": "cc20832a897f18cd83482dcd21b6c2fc1d226942",
+      "sha256": "cc53c6852742e9cbb9858a2d0961411e1a9e131d1e30c0f2b73b265e03f91677",
+      "bytes": 1898
+    },
+    {
+      "kind": "loaded-asset",
+      "mode": "baseline",
+      "path": "frontend/public/world/avatars/derived-v1/photo01-front-idle-64-e124c88815b22220.png",
+      "revision": "cc20832a897f18cd83482dcd21b6c2fc1d226942",
+      "sha256": "e124c88815b22220df2f2dc59e2f26b3ceb845e57b77674fd8e55383116d7efe",
+      "bytes": 36030
+    },
+    {
+      "kind": "loaded-asset",
+      "mode": "candidate",
+      "path": "frontend/public/backgrounds/cute-wall-me-v1/wall-stationery.svg",
+      "revision": "cc20832a897f18cd83482dcd21b6c2fc1d226942",
+      "sha256": "22e2de672776682693bca71c57f501f2450bc9a28bc6314df44c26d6d193efc7",
+      "bytes": 4500
+    },
+    {
+      "kind": "loaded-asset",
+      "mode": "candidate",
+      "path": "frontend/public/world/avatars/derived-v1/static-release.json",
+      "revision": "cc20832a897f18cd83482dcd21b6c2fc1d226942",
+      "sha256": "cc53c6852742e9cbb9858a2d0961411e1a9e131d1e30c0f2b73b265e03f91677",
+      "bytes": 1898
+    },
+    {
+      "kind": "loaded-asset",
+      "mode": "candidate",
+      "path": "frontend/public/world/avatars/derived-v1/photo01-front-idle-64-e124c88815b22220.png",
+      "revision": "cc20832a897f18cd83482dcd21b6c2fc1d226942",
+      "sha256": "e124c88815b22220df2f2dc59e2f26b3ceb845e57b77674fd8e55383116d7efe",
+      "bytes": 36030
+    },
+    {
+      "kind": "loaded-asset",
+      "mode": "candidate",
+      "path": "frontend/public/backgrounds/cute-community-v1/feed-backdrop.svg",
+      "revision": "cc20832a897f18cd83482dcd21b6c2fc1d226942",
+      "sha256": "ebafd41c3f4954eb91c1549541f1f1c1d0a5209b7c04fc9d314a98515c445234",
+      "bytes": 991
+    },
+    {
+      "kind": "loaded-asset",
+      "mode": "candidate",
+      "path": "frontend/public/backgrounds/cute-community-v1/meet-backdrop.svg",
+      "revision": "cc20832a897f18cd83482dcd21b6c2fc1d226942",
+      "sha256": "b792df37b1a31a5abd681096fcac6e0541b5de0ee9422cd2408b98414b158ca8",
+      "bytes": 989
+    },
+    {
+      "kind": "loaded-asset",
+      "mode": "candidate",
+      "path": "frontend/public/backgrounds/cute-community-v1/gifts-backdrop.svg",
+      "revision": "cc20832a897f18cd83482dcd21b6c2fc1d226942",
+      "sha256": "24fee1dd690452a053bdde2ad0928713979e24c67ed0e68ce767795f3a205de4",
+      "bytes": 1011
+    }
+  ],
+  "wallPairs": [
+    {
+      "width": 390,
+      "body": {
+        "x": 9,
+        "y": 57,
+        "width": 372,
+        "height": 780
+      },
+      "metricsAndCharactersIdentical": true,
+      "guardPreserved": true,
+      "baseline": {
+        "path": "baseline-wall-390.png",
+        "bytes": 30461,
+        "sha256": "ac3b1d2230e5076ea27e4d875fa97a35130527ffeebec38bf314f0dfbcd3d93f",
+        "time": "2026-11-04T08:17:07.803Z"
+      },
+      "candidate": {
+        "path": "candidate-wall-390.png",
+        "bytes": 42172,
+        "sha256": "ec075ce0ceb6a029a5b469fe2db8ba48b7668a7c83bd8a5845fd7019a8417a9f",
+        "time": "2026-11-04T08:17:17.064Z"
+      }
+    },
+    {
+      "width": 360,
+      "body": {
+        "x": 9,
+        "y": 57,
+        "width": 342,
+        "height": 780
+      },
+      "metricsAndCharactersIdentical": true,
+      "guardPreserved": true,
+      "baseline": {
+        "path": "baseline-wall-360.png",
+        "bytes": 29640,
+        "sha256": "c9d97fc5a42910a8e590032867eedd161d0f8fc41dd30da929033b18398875ef",
+        "time": "2026-11-04T08:17:10.119Z"
+      },
+      "candidate": {
+        "path": "candidate-wall-360.png",
+        "bytes": 42703,
+        "sha256": "d5281ac77ad5b53a32fc3025cfc819865e1d78259ec90cb996fc2946de43e203",
+        "time": "2026-11-04T08:17:19.689Z"
+      }
+    },
+    {
+      "width": 430,
+      "body": {
+        "x": 9,
+        "y": 57,
+        "width": 412,
+        "height": 780
+      },
+      "metricsAndCharactersIdentical": true,
+      "guardPreserved": true,
+      "baseline": {
+        "path": "baseline-wall-430.png",
+        "bytes": 31645,
+        "sha256": "871ec6c72b9086d92b906f1554491785b4b371ca802cd24b15a06d8202c70864",
+        "time": "2026-11-04T08:17:12.437Z"
+      },
+      "candidate": {
+        "path": "candidate-wall-430.png",
+        "bytes": 40881,
+        "sha256": "9bb0bf3f6ac6790306f12a39be4db4fcfec262788fd8f267c94880624522c357",
+        "time": "2026-11-04T08:17:22.002Z"
+      }
+    }
+  ],
+  "accessibility": [
+    {
+      "route": "wall",
+      "normalTextRecalculated": [
+        {
+          "selector": ".shell-panel-body [role=\"status\"]",
+          "index": 0,
+          "computedColor": "rgb(25, 24, 23)",
+          "minimum": 9.545801856993844,
+          "pixels": 6927,
+          "boxes": [
+            {
+              "x": 15,
+              "y": 64,
+              "width": 357,
+              "height": 16
+            },
+            {
+              "x": 15,
+              "y": 83.59375,
+              "width": 81.046875,
+              "height": 16
+            }
+          ]
+        }
+      ],
+      "focus": {
+        "selector": "button[aria-label=\"Back to previous panel\"]",
+        "rect": {
+          "x": 332,
+          "y": 10,
+          "width": 44,
+          "height": 44
+        },
+        "color": "rgb(242, 234, 223)",
+        "width": 2,
+        "offset": -3,
+        "samples": [
+          {
+            "x": 354,
+            "y": 12,
+            "backing": [
+              37,
+              16,
+              23,
+              255
+            ],
+            "paint": [
+              242,
+              234,
+              223,
+              255
+            ],
+            "expectedAlphaCompositeRgb": [
+              242,
+              234,
+              223
+            ],
+            "matchesWithOneChannelTolerance": true,
+            "contrast": 15.114013729961503
+          },
+          {
+            "x": 354,
+            "y": 52,
+            "backing": [
+              37,
+              16,
+              23,
+              255
+            ],
+            "paint": [
+              242,
+              234,
+              223,
+              255
+            ],
+            "expectedAlphaCompositeRgb": [
+              242,
+              234,
+              223
+            ],
+            "matchesWithOneChannelTolerance": true,
+            "contrast": 15.114013729961503
+          },
+          {
+            "x": 334,
+            "y": 32,
+            "backing": [
+              37,
+              16,
+              23,
+              255
+            ],
+            "paint": [
+              242,
+              234,
+              223,
+              255
+            ],
+            "expectedAlphaCompositeRgb": [
+              242,
+              234,
+              223
+            ],
+            "matchesWithOneChannelTolerance": true,
+            "contrast": 15.114013729961503
+          },
+          {
+            "x": 374,
+            "y": 32,
+            "backing": [
+              37,
+              16,
+              23,
+              255
+            ],
+            "paint": [
+              242,
+              234,
+              223,
+              255
+            ],
+            "expectedAlphaCompositeRgb": [
+              242,
+              234,
+              223
+            ],
+            "matchesWithOneChannelTolerance": true,
+            "contrast": 15.114013729961503
+          }
+        ],
+        "allFourSamplesVisible": true,
+        "minimum": 15.114013729961503
+      },
+      "forcedFocus": {
+        "selector": "button[aria-label=\"Back to previous panel\"]",
+        "rect": {
+          "x": 332,
+          "y": 10,
+          "width": 44,
+          "height": 44
+        },
+        "color": "rgba(5, 0, 73, 0.8)",
+        "width": 2,
+        "offset": -3,
+        "samples": [
+          {
+            "x": 354,
+            "y": 12,
+            "backing": [
+              255,
+              255,
+              255,
+              255
+            ],
+            "paint": [
+              55,
+              51,
+              109,
+              255
+            ],
+            "expectedAlphaCompositeRgb": [
+              55,
+              51,
+              109
+            ],
+            "matchesWithOneChannelTolerance": true,
+            "contrast": 11.309774587047812
+          },
+          {
+            "x": 354,
+            "y": 52,
+            "backing": [
+              255,
+              255,
+              255,
+              255
+            ],
+            "paint": [
+              55,
+              51,
+              109,
+              255
+            ],
+            "expectedAlphaCompositeRgb": [
+              55,
+              51,
+              109
+            ],
+            "matchesWithOneChannelTolerance": true,
+            "contrast": 11.309774587047812
+          },
+          {
+            "x": 334,
+            "y": 32,
+            "backing": [
+              255,
+              255,
+              255,
+              255
+            ],
+            "paint": [
+              55,
+              51,
+              109,
+              255
+            ],
+            "expectedAlphaCompositeRgb": [
+              55,
+              51,
+              109
+            ],
+            "matchesWithOneChannelTolerance": true,
+            "contrast": 11.309774587047812
+          },
+          {
+            "x": 374,
+            "y": 32,
+            "backing": [
+              255,
+              255,
+              255,
+              255
+            ],
+            "paint": [
+              55,
+              51,
+              109,
+              255
+            ],
+            "expectedAlphaCompositeRgb": [
+              55,
+              51,
+              109
+            ],
+            "matchesWithOneChannelTolerance": true,
+            "contrast": 11.309774587047812
+          }
+        ],
+        "allFourSamplesVisible": true,
+        "minimum": 11.309774587047812
+      },
+      "forcedTextUnmaskedSpotsVerified": [
+        {
+          "selector": ".shell-panel-body [role=\"status\"]",
+          "rect": {
+            "x": 15,
+            "y": 64,
+            "width": 357,
+            "height": 16
+          },
+          "whiteBackplateSample": {
+            "rgba": [
+              255,
+              255,
+              255,
+              255
+            ],
+            "x": 15,
+            "y": 64
+          },
+          "darkGlyphCoreSample": {
+            "rgba": [
+              0,
+              0,
+              0,
+              255
+            ],
+            "x": 20,
+            "y": 67
+          },
+          "sampleContrast": 21.0,
+          "computedBlackOnWhiteContrast": 21,
+          "limits": "One darkest glyph-core and white backplate spot per actual text fragment, plus grayscale-only raster check. This is not a complete backing mask or a global text contrast proof."
+        },
+        {
+          "selector": ".shell-panel-body [role=\"status\"]",
+          "rect": {
+            "x": 15,
+            "y": 83.59375,
+            "width": 81.046875,
+            "height": 16
+          },
+          "whiteBackplateSample": {
+            "rgba": [
+              255,
+              255,
+              255,
+              255
+            ],
+            "x": 15,
+            "y": 84
+          },
+          "darkGlyphCoreSample": {
+            "rgba": [
+              0,
+              0,
+              0,
+              255
+            ],
+            "x": 19,
+            "y": 87
+          },
+          "sampleContrast": 21.0,
+          "computedBlackOnWhiteContrast": 21,
+          "limits": "One darkest glyph-core and white backplate spot per actual text fragment, plus grayscale-only raster check. This is not a complete backing mask or a global text contrast proof."
+        }
+      ],
+      "rawForcedTextMaskIsNotQualified": true,
+      "rawFocusRGBComparisonIgnoredAlpha": true,
+      "geometryStateRestored": true,
+      "disposition": "REPRESENTATIVE_SAMPLES_QUALIFIED"
+    },
+    {
+      "route": "feed",
+      "normalTextRecalculated": [
+        {
+          "selector": ".feed-browse .feed-post-copy",
+          "index": 0,
+          "computedColor": "rgb(32, 27, 24)",
+          "minimum": 15.622721919572312,
+          "pixels": 1560,
+          "boxes": [
+            {
+              "x": 84,
+              "y": 154.1875,
+              "width": 104.046875,
+              "height": 16
+            }
+          ]
+        }
+      ],
+      "focus": {
+        "selector": ".feed-tools > summary",
+        "rect": {
+          "x": 19,
+          "y": 780,
+          "width": 44,
+          "height": 44
+        },
+        "color": "rgb(155, 32, 44)",
+        "width": 3,
+        "offset": 2,
+        "samples": [
+          {
+            "x": 41,
+            "y": 776,
+            "backing": [
+              245,
+              217,
+              223,
+              255
+            ],
+            "paint": [
+              155,
+              32,
+              44,
+              255
+            ],
+            "expectedAlphaCompositeRgb": [
+              155,
+              32,
+              44
+            ],
+            "matchesWithOneChannelTolerance": true,
+            "contrast": 6.020122808754989
+          },
+          {
+            "x": 41,
+            "y": 827,
+            "backing": [
+              248,
+              222,
+              210,
+              255
+            ],
+            "paint": [
+              155,
+              32,
+              44,
+              255
+            ],
+            "expectedAlphaCompositeRgb": [
+              155,
+              32,
+              44
+            ],
+            "matchesWithOneChannelTolerance": true,
+            "contrast": 6.208712135520761
+          },
+          {
+            "x": 15,
+            "y": 802,
+            "backing": [
+              255,
+              243,
+              232,
+              255
+            ],
+            "paint": [
+              155,
+              32,
+              44,
+              255
+            ],
+            "expectedAlphaCompositeRgb": [
+              155,
+              32,
+              44
+            ],
+            "matchesWithOneChannelTolerance": true,
+            "contrast": 7.296078609450512
+          },
+          {
+            "x": 66,
+            "y": 802,
+            "backing": [
+              255,
+              243,
+              232,
+              255
+            ],
+            "paint": [
+              155,
+              32,
+              44,
+              255
+            ],
+            "expectedAlphaCompositeRgb": [
+              155,
+              32,
+              44
+            ],
+            "matchesWithOneChannelTolerance": true,
+            "contrast": 7.296078609450512
+          }
+        ],
+        "allFourSamplesVisible": true,
+        "minimum": 6.020122808754989
+      },
+      "forcedFocus": {
+        "selector": ".feed-tools > summary",
+        "rect": {
+          "x": 19,
+          "y": 780,
+          "width": 44,
+          "height": 44
+        },
+        "color": "rgba(5, 0, 73, 0.8)",
+        "width": 3,
+        "offset": 2,
+        "samples": [
+          {
+            "x": 41,
+            "y": 776,
+            "backing": [
+              245,
+              217,
+              223,
+              255
+            ],
+            "paint": [
+              53,
+              43,
+              103,
+              255
+            ],
+            "expectedAlphaCompositeRgb": [
+              53,
+              43,
+              103
+            ],
+            "matchesWithOneChannelTolerance": true,
+            "contrast": 9.376977599757085
+          },
+          {
+            "x": 41,
+            "y": 827,
+            "backing": [
+              248,
+              222,
+              210,
+              255
+            ],
+            "paint": [
+              54,
+              44,
+              100,
+              255
+            ],
+            "expectedAlphaCompositeRgb": [
+              54,
+              44,
+              100
+            ],
+            "matchesWithOneChannelTolerance": true,
+            "contrast": 9.623173534716571
+          },
+          {
+            "x": 15,
+            "y": 802,
+            "backing": [
+              255,
+              243,
+              232,
+              255
+            ],
+            "paint": [
+              55,
+              49,
+              105,
+              255
+            ],
+            "expectedAlphaCompositeRgb": [
+              55,
+              49,
+              105
+            ],
+            "matchesWithOneChannelTolerance": true,
+            "contrast": 10.653429488281706
+          },
+          {
+            "x": 66,
+            "y": 802,
+            "backing": [
+              255,
+              243,
+              232,
+              255
+            ],
+            "paint": [
+              55,
+              49,
+              105,
+              255
+            ],
+            "expectedAlphaCompositeRgb": [
+              55,
+              49,
+              105
+            ],
+            "matchesWithOneChannelTolerance": true,
+            "contrast": 10.653429488281706
+          }
+        ],
+        "allFourSamplesVisible": true,
+        "minimum": 9.376977599757085
+      },
+      "forcedTextUnmaskedSpotsVerified": [
+        {
+          "selector": ".feed-browse .feed-post-copy",
+          "rect": {
+            "x": 84,
+            "y": 154.1875,
+            "width": 104.046875,
+            "height": 16
+          },
+          "whiteBackplateSample": {
+            "rgba": [
+              255,
+              255,
+              255,
+              255
+            ],
+            "x": 84,
+            "y": 155
+          },
+          "darkGlyphCoreSample": {
+            "rgba": [
+              0,
+              0,
+              0,
+              255
+            ],
+            "x": 87,
+            "y": 157
+          },
+          "sampleContrast": 21.0,
+          "computedBlackOnWhiteContrast": 21,
+          "limits": "One darkest glyph-core and white backplate spot per actual text fragment, plus grayscale-only raster check. This is not a complete backing mask or a global text contrast proof."
+        }
+      ],
+      "rawForcedTextMaskIsNotQualified": true,
+      "rawFocusRGBComparisonIgnoredAlpha": true,
+      "geometryStateRestored": true,
+      "disposition": "REPRESENTATIVE_SAMPLES_QUALIFIED"
+    },
+    {
+      "route": "meet",
+      "normalTextRecalculated": [
+        {
+          "selector": ".meet-party__members-unavailable",
+          "index": 0,
+          "computedColor": "rgb(103, 89, 75)",
+          "minimum": 5.499084791599385,
+          "pixels": 1050,
+          "boxes": [
+            {
+              "x": 90.265625,
+              "y": 195.1875,
+              "width": 105.75,
+              "height": 11
+            }
+          ]
+        },
+        {
+          "selector": ".meet-party__members-unavailable",
+          "index": 1,
+          "computedColor": "rgb(103, 89, 75)",
+          "minimum": 6.089918214777241,
+          "pixels": 1050,
+          "boxes": [
+            {
+              "x": 90.265625,
+              "y": 311.375,
+              "width": 105.75,
+              "height": 11
+            }
+          ]
+        },
+        {
+          "selector": ".meet-party__members-unavailable",
+          "index": 2,
+          "computedColor": "rgb(103, 89, 75)",
+          "minimum": 6.089918214777241,
+          "pixels": 1050,
+          "boxes": [
+            {
+              "x": 90.265625,
+              "y": 427.5625,
+              "width": 105.75,
+              "height": 11
+            }
+          ]
+        },
+        {
+          "selector": ".meet-tools button",
+          "index": 0,
+          "computedColor": "rgb(87, 69, 55)",
+          "minimum": 8.321919817740435,
+          "pixels": 442,
+          "boxes": [
+            {
+              "x": 332.546875,
+              "y": 480.0625,
+              "width": 34.453125,
+              "height": 14
+            }
+          ]
+        }
+      ],
+      "focus": {
+        "selector": ".party-filters > summary",
+        "rect": {
+          "x": 15,
+          "y": 465.5625,
+          "width": 301.546875,
+          "height": 44
+        },
+        "color": "rgb(163, 33, 43)",
+        "width": 3,
+        "offset": 2,
+        "samples": [
+          {
+            "x": 165,
+            "y": 462,
+            "backing": [
+              255,
+              243,
+              232,
+              255
+            ],
+            "paint": [
+              163,
+              33,
+              43,
+              255
+            ],
+            "expectedAlphaCompositeRgb": [
+              163,
+              33,
+              43
+            ],
+            "matchesWithOneChannelTolerance": true,
+            "contrast": 6.846729222725709
+          },
+          {
+            "x": 165,
+            "y": 513,
+            "backing": [
+              255,
+              243,
+              232,
+              255
+            ],
+            "paint": [
+              255,
+              243,
+              232,
+              255
+            ],
+            "expectedAlphaCompositeRgb": [
+              163,
+              33,
+              43
+            ],
+            "matchesWithOneChannelTolerance": false,
+            "contrast": 1.0
+          },
+          {
+            "x": 11,
+            "y": 487,
+            "backing": [
+              219,
+              210,
+              197,
+              255
+            ],
+            "paint": [
+              219,
+              210,
+              197,
+              255
+            ],
+            "expectedAlphaCompositeRgb": [
+              163,
+              33,
+              43
+            ],
+            "matchesWithOneChannelTolerance": false,
+            "contrast": 1.0
+          },
+          {
+            "x": 320,
+            "y": 487,
+            "backing": [
+              255,
+              243,
+              232,
+              255
+            ],
+            "paint": [
+              163,
+              33,
+              43,
+              255
+            ],
+            "expectedAlphaCompositeRgb": [
+              163,
+              33,
+              43
+            ],
+            "matchesWithOneChannelTolerance": true,
+            "contrast": 6.846729222725709
+          }
+        ],
+        "allFourSamplesVisible": false,
+        "minimum": 1.0
+      },
+      "forcedFocus": {
+        "selector": ".party-filters > summary",
+        "rect": {
+          "x": 15,
+          "y": 465.5625,
+          "width": 301.546875,
+          "height": 44
+        },
+        "color": "rgba(5, 0, 73, 0.8)",
+        "width": 3,
+        "offset": 2,
+        "samples": [
+          {
+            "x": 165,
+            "y": 462,
+            "backing": [
+              255,
+              243,
+              232,
+              255
+            ],
+            "paint": [
+              55,
+              49,
+              104,
+              255
+            ],
+            "expectedAlphaCompositeRgb": [
+              55,
+              49,
+              105
+            ],
+            "matchesWithOneChannelTolerance": true,
+            "contrast": 10.677607806093935
+          },
+          {
+            "x": 165,
+            "y": 513,
+            "backing": [
+              255,
+              243,
+              232,
+              255
+            ],
+            "paint": [
+              255,
+              243,
+              232,
+              255
+            ],
+            "expectedAlphaCompositeRgb": [
+              55,
+              49,
+              105
+            ],
+            "matchesWithOneChannelTolerance": false,
+            "contrast": 1.0
+          },
+          {
+            "x": 11,
+            "y": 487,
+            "backing": [
+              255,
+              255,
+              255,
+              255
+            ],
+            "paint": [
+              255,
+              255,
+              255,
+              255
+            ],
+            "expectedAlphaCompositeRgb": [
+              55,
+              51,
+              109
+            ],
+            "matchesWithOneChannelTolerance": false,
+            "contrast": 1.0
+          },
+          {
+            "x": 320,
+            "y": 487,
+            "backing": [
+              255,
+              243,
+              232,
+              255
+            ],
+            "paint": [
+              55,
+              49,
+              104,
+              255
+            ],
+            "expectedAlphaCompositeRgb": [
+              55,
+              49,
+              105
+            ],
+            "matchesWithOneChannelTolerance": true,
+            "contrast": 10.677607806093935
+          }
+        ],
+        "allFourSamplesVisible": false,
+        "minimum": 1.0
+      },
+      "forcedTextUnmaskedSpotsVerified": [
+        {
+          "selector": ".meet-party__members-unavailable",
+          "rect": {
+            "x": 90.265625,
+            "y": 195.1875,
+            "width": 105.75,
+            "height": 11
+          },
+          "whiteBackplateSample": {
+            "rgba": [
+              255,
+              255,
+              255,
+              255
+            ],
+            "x": 92,
+            "y": 196
+          },
+          "darkGlyphCoreSample": {
+            "rgba": [
+              0,
+              0,
+              0,
+              255
+            ],
+            "x": 91,
+            "y": 197
+          },
+          "sampleContrast": 21.0,
+          "computedBlackOnWhiteContrast": 21,
+          "limits": "One darkest glyph-core and white backplate spot per actual text fragment, plus grayscale-only raster check. This is not a complete backing mask or a global text contrast proof."
+        },
+        {
+          "selector": ".meet-party__members-unavailable",
+          "rect": {
+            "x": 90.265625,
+            "y": 311.375,
+            "width": 105.75,
+            "height": 11
+          },
+          "whiteBackplateSample": {
+            "rgba": [
+              255,
+              255,
+              255,
+              255
+            ],
+            "x": 92,
+            "y": 312
+          },
+          "darkGlyphCoreSample": {
+            "rgba": [
+              0,
+              0,
+              0,
+              255
+            ],
+            "x": 91,
+            "y": 313
+          },
+          "sampleContrast": 21.0,
+          "computedBlackOnWhiteContrast": 21,
+          "limits": "One darkest glyph-core and white backplate spot per actual text fragment, plus grayscale-only raster check. This is not a complete backing mask or a global text contrast proof."
+        },
+        {
+          "selector": ".meet-party__members-unavailable",
+          "rect": {
+            "x": 90.265625,
+            "y": 427.5625,
+            "width": 105.75,
+            "height": 11
+          },
+          "whiteBackplateSample": {
+            "rgba": [
+              255,
+              255,
+              255,
+              255
+            ],
+            "x": 91,
+            "y": 428
+          },
+          "darkGlyphCoreSample": {
+            "rgba": [
+              0,
+              0,
+              0,
+              255
+            ],
+            "x": 91,
+            "y": 430
+          },
+          "sampleContrast": 21.0,
+          "computedBlackOnWhiteContrast": 21,
+          "limits": "One darkest glyph-core and white backplate spot per actual text fragment, plus grayscale-only raster check. This is not a complete backing mask or a global text contrast proof."
+        },
+        {
+          "selector": ".meet-tools button",
+          "rect": {
+            "x": 332.546875,
+            "y": 480.0625,
+            "width": 34.453125,
+            "height": 14
+          },
+          "whiteBackplateSample": {
+            "rgba": [
+              255,
+              255,
+              255,
+              255
+            ],
+            "x": 333,
+            "y": 481
+          },
+          "darkGlyphCoreSample": {
+            "rgba": [
+              0,
+              0,
+              0,
+              255
+            ],
+            "x": 334,
+            "y": 482
+          },
+          "sampleContrast": 21.0,
+          "computedBlackOnWhiteContrast": 21,
+          "limits": "One darkest glyph-core and white backplate spot per actual text fragment, plus grayscale-only raster check. This is not a complete backing mask or a global text contrast proof."
+        }
+      ],
+      "rawForcedTextMaskIsNotQualified": true,
+      "rawFocusRGBComparisonIgnoredAlpha": true,
+      "geometryStateRestored": true,
+      "disposition": "INHERITED_MEET_BOTTOM_LEFT_CLIP_OPEN"
+    },
+    {
+      "route": "gifts",
+      "normalTextRecalculated": [
+        {
+          "selector": ".gift-reference-footnote p",
+          "index": 0,
+          "computedColor": "rgb(90, 77, 67)",
+          "minimum": 7.4641039141338945,
+          "pixels": 3899,
+          "boxes": [
+            {
+              "x": 15,
+              "y": 568.703125,
+              "width": 301.5625,
+              "height": 12
+            },
+            {
+              "x": 15,
+              "y": 583,
+              "width": 49.15625,
+              "height": 12
+            }
+          ]
+        }
+      ],
+      "focus": {
+        "selector": ".gift-filters > details > summary",
+        "rect": {
+          "x": 15,
+          "y": 510,
+          "width": 360,
+          "height": 44
+        },
+        "color": "rgb(166, 37, 43)",
+        "width": 2,
+        "offset": 2,
+        "samples": [
+          {
+            "x": 195,
+            "y": 507,
+            "backing": [
+              255,
+              243,
+              232,
+              255
+            ],
+            "paint": [
+              166,
+              37,
+              43,
+              255
+            ],
+            "expectedAlphaCompositeRgb": [
+              166,
+              37,
+              43
+            ],
+            "matchesWithOneChannelTolerance": true,
+            "contrast": 6.586126471068874
+          },
+          {
+            "x": 195,
+            "y": 557,
+            "backing": [
+              255,
+              243,
+              232,
+              255
+            ],
+            "paint": [
+              166,
+              37,
+              43,
+              255
+            ],
+            "expectedAlphaCompositeRgb": [
+              166,
+              37,
+              43
+            ],
+            "matchesWithOneChannelTolerance": true,
+            "contrast": 6.586126471068874
+          },
+          {
+            "x": 12,
+            "y": 532,
+            "backing": [
+              255,
+              243,
+              232,
+              255
+            ],
+            "paint": [
+              166,
+              37,
+              43,
+              255
+            ],
+            "expectedAlphaCompositeRgb": [
+              166,
+              37,
+              43
+            ],
+            "matchesWithOneChannelTolerance": true,
+            "contrast": 6.586126471068874
+          },
+          {
+            "x": 378,
+            "y": 532,
+            "backing": [
+              255,
+              243,
+              232,
+              255
+            ],
+            "paint": [
+              166,
+              37,
+              43,
+              255
+            ],
+            "expectedAlphaCompositeRgb": [
+              166,
+              37,
+              43
+            ],
+            "matchesWithOneChannelTolerance": true,
+            "contrast": 6.586126471068874
+          }
+        ],
+        "allFourSamplesVisible": true,
+        "minimum": 6.586126471068874
+      },
+      "forcedFocus": {
+        "selector": ".gift-filters > details > summary",
+        "rect": {
+          "x": 15,
+          "y": 510,
+          "width": 360,
+          "height": 44
+        },
+        "color": "rgba(5, 0, 73, 0.8)",
+        "width": 2,
+        "offset": 2,
+        "samples": [
+          {
+            "x": 195,
+            "y": 507,
+            "backing": [
+              255,
+              243,
+              232,
+              255
+            ],
+            "paint": [
+              55,
+              49,
+              104,
+              255
+            ],
+            "expectedAlphaCompositeRgb": [
+              55,
+              49,
+              105
+            ],
+            "matchesWithOneChannelTolerance": true,
+            "contrast": 10.677607806093935
+          },
+          {
+            "x": 195,
+            "y": 557,
+            "backing": [
+              255,
+              243,
+              232,
+              255
+            ],
+            "paint": [
+              55,
+              49,
+              104,
+              255
+            ],
+            "expectedAlphaCompositeRgb": [
+              55,
+              49,
+              105
+            ],
+            "matchesWithOneChannelTolerance": true,
+            "contrast": 10.677607806093935
+          },
+          {
+            "x": 12,
+            "y": 532,
+            "backing": [
+              255,
+              243,
+              232,
+              255
+            ],
+            "paint": [
+              55,
+              49,
+              104,
+              255
+            ],
+            "expectedAlphaCompositeRgb": [
+              55,
+              49,
+              105
+            ],
+            "matchesWithOneChannelTolerance": true,
+            "contrast": 10.677607806093935
+          },
+          {
+            "x": 378,
+            "y": 532,
+            "backing": [
+              255,
+              243,
+              232,
+              255
+            ],
+            "paint": [
+              55,
+              49,
+              104,
+              255
+            ],
+            "expectedAlphaCompositeRgb": [
+              55,
+              49,
+              105
+            ],
+            "matchesWithOneChannelTolerance": true,
+            "contrast": 10.677607806093935
+          }
+        ],
+        "allFourSamplesVisible": true,
+        "minimum": 10.677607806093935
+      },
+      "forcedTextUnmaskedSpotsVerified": [
+        {
+          "selector": ".gift-reference-footnote p",
+          "rect": {
+            "x": 15,
+            "y": 568.703125,
+            "width": 301.5625,
+            "height": 12
+          },
+          "whiteBackplateSample": {
+            "rgba": [
+              255,
+              255,
+              255,
+              255
+            ],
+            "x": 15,
+            "y": 569
+          },
+          "darkGlyphCoreSample": {
+            "rgba": [
+              0,
+              0,
+              0,
+              255
+            ],
+            "x": 213,
+            "y": 571
+          },
+          "sampleContrast": 21.0,
+          "computedBlackOnWhiteContrast": 21,
+          "limits": "One darkest glyph-core and white backplate spot per actual text fragment, plus grayscale-only raster check. This is not a complete backing mask or a global text contrast proof."
+        },
+        {
+          "selector": ".gift-reference-footnote p",
+          "rect": {
+            "x": 15,
+            "y": 583,
+            "width": 49.15625,
+            "height": 12
+          },
+          "whiteBackplateSample": {
+            "rgba": [
+              255,
+              255,
+              255,
+              255
+            ],
+            "x": 15,
+            "y": 583
+          },
+          "darkGlyphCoreSample": {
+            "rgba": [
+              0,
+              0,
+              0,
+              255
+            ],
+            "x": 25,
+            "y": 588
+          },
+          "sampleContrast": 21.0,
+          "computedBlackOnWhiteContrast": 21,
+          "limits": "One darkest glyph-core and white backplate spot per actual text fragment, plus grayscale-only raster check. This is not a complete backing mask or a global text contrast proof."
+        }
+      ],
+      "rawForcedTextMaskIsNotQualified": true,
+      "rawFocusRGBComparisonIgnoredAlpha": true,
+      "geometryStateRestored": true,
+      "disposition": "REPRESENTATIVE_SAMPLES_QUALIFIED"
+    }
+  ],
+  "actualCharacterContinuityFromNative02": [
+    {
+      "route": "feed",
+      "priorPacket": "5186f11017185a040e4ccde1c59589e140563ef0",
+      "sameActualCanvasRgbaRectDimensions": true,
+      "canvasCount": 1,
+      "characters": [
+        {
+          "rect": {
+            "x": 27,
+            "y": 132,
+            "width": 46,
+            "height": 46
+          },
+          "dimensions": [
+            64,
+            64
+          ],
+          "rgba": "a4a6b1ceac075574b988f94f45fe839efc3e14692db73f8fdcfd8131ba3681d5"
+        }
+      ]
+    },
+    {
+      "route": "meet",
+      "priorPacket": "5186f11017185a040e4ccde1c59589e140563ef0",
+      "sameActualCanvasRgbaRectDimensions": true,
+      "canvasCount": 3,
+      "characters": [
+        {
+          "rect": {
+            "x": 24,
+            "y": 126,
+            "width": 64,
+            "height": 64
+          },
+          "dimensions": [
+            64,
+            64
+          ],
+          "rgba": "a4a6b1ceac075574b988f94f45fe839efc3e14692db73f8fdcfd8131ba3681d5"
+        },
+        {
+          "rect": {
+            "x": 24,
+            "y": 242.1875,
+            "width": 64,
+            "height": 64
+          },
+          "dimensions": [
+            64,
+            64
+          ],
+          "rgba": "a4a6b1ceac075574b988f94f45fe839efc3e14692db73f8fdcfd8131ba3681d5"
+        },
+        {
+          "rect": {
+            "x": 24,
+            "y": 358.375,
+            "width": 64,
+            "height": 64
+          },
+          "dimensions": [
+            64,
+            64
+          ],
+          "rgba": "a4a6b1ceac075574b988f94f45fe839efc3e14692db73f8fdcfd8131ba3681d5"
+        }
+      ]
+    },
+    {
+      "route": "gifts",
+      "priorPacket": "5186f11017185a040e4ccde1c59589e140563ef0",
+      "sameActualCanvasRgbaRectDimensions": true,
+      "canvasCount": 0,
+      "characters": []
+    }
+  ],
+  "inheritedMeetSourceComparison": [
+    {
+      "path": "frontend/src/features/party-discovery/ui/party-discovery.css",
+      "sameBytes": true,
+      "sha256": "0f4b94ffb12cf8890d6e7c4e258e69b68833287dca0e8ad275a69d0700ebdea8"
+    },
+    {
+      "path": "frontend/src/app/shell.css",
+      "sameBytes": true,
+      "sha256": "c0b2052693ac51575b877714640beefbe4007f6a33c9b64482ea47aa8ed022ee"
+    },
+    {
+      "path": "frontend/src/app/shell-chrome/shell-chrome.css",
+      "sameBytes": true,
+      "sha256": "08614a9b3263d7cbb27af4d59aaabc0ee4db07943812faa0e04bdba7f720291d"
+    }
+  ],
+  "inheritedMeetClipAncestor": {
+    "tag": "SECTION",
+    "class": "meet-discovery",
+    "overflowX": "auto",
+    "overflowY": "auto",
+    "rect": {
+      "x": 15,
+      "y": 115,
+      "width": 360,
+      "height": 394.5625
+    }
+  },
+  "localCssSha256": "d26dd8fbee928539f2689ccd9bb6269e4cb964c58b78e8cc86afbd894f228504",
+  "localCssUnchanged": true,
+  "resourceRelease": {
+    "carried_art_bytes": 7413760,
+    "syntax_exit": 0,
+    "job": "ROOT-WALL-COM-A11Y-202611040820Z",
+    "candidate": "cc20832a897f18cd83482dcd21b6c2fc1d226942",
+    "driver_sha256": "84b23c4d4de54d7126447cc6a282b042db216d72a3311eb4b30febc965e7db6f",
+    "command": [
+      "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node",
+      "src/app/__tests__/cozy-wall-accessibility-v1/native.mjs"
+    ],
+    "exit_code": 1,
+    "failure": "native exit 1",
+    "elapsed_seconds": 30.39045120800438,
+    "peaks": {
+      "whole": 38899712,
+      "temp": 29978624,
+      "durable": 1609728
+    },
+    "minimum_free_bytes": 36644380672,
+    "temp_absent": true,
+    "owned_link_absent": true,
+    "finished_at": "2026-11-04T08:17:32.004653+00:00"
+  },
+  "cleanup": {
+    "browserClosed": true,
+    "serverClosed": true,
+    "tempRemoved": true
+  },
+  "auditCommandExitCode": 0,
+  "result": "BOUNDED_BACKGROUND_EVIDENCE_QUALIFIED_WITH_REAL_INHERITED_MEET_FOCUS_LIMIT",
+  "limits": [
+    "Audit exit0 verifies retained evidence arithmetic/provenance; the original browser job remains exit1/OPEN_FAILURES.",
+    "Normal text covers only selected visible fragments; focus covers four perimeter points per representative target at390.",
+    "Forced text-fill masking is invalid under forced colors; actual black glyph/white backplate spots are local evidence only.",
+    "Alpha-composited focus samples qualify Wall/Feed/Gifts locally; Meet remains clipped and is not passed.",
+    "Physical CSS pins are clean-checkout evidence, not per-import Vite load receipts.",
+    "No global WCAG, all-state, real-media, live-service, physical-device or mural-editor acceptance.",
+    "Historical native02 oldWallNEEDS_CORRECTION remains frozen; this packet alone qualifies the tall correction."
+  ]
+}

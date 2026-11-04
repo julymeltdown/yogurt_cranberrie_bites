@@ -1,0 +1,155 @@
+{
+  "status": "INTEGRATED",
+  "scope": "Bounded original FE06/FE34 same-incumbent runtime capability producer, source-qualified and controlled-native PASS; final publisher readback pending at authored handoff.",
+  "intakeBase": "c8a731e5c7f03c3fbcbd0581c6e872429806fa22",
+  "validatedProductionPublication": "9e7952fcd89360f7b4fe43c69f22060b9aa55c74",
+  "validatedNativeSource": "f9781febcd3784f7beeff862bc0939f243018803",
+  "prewriteGrant": "2ccf628c",
+  "mapSceneGrantRecord": "61693981",
+  "workerBranch": "codex/mcr-fe-FE06-FE34-runtime-capabilities",
+  "workerCommitsAndChangedPaths": {
+    "3cd74cae5b5c4a3d8ce572ef883b4b12fc3493da": [
+      "docs/mcr/evidence/world-runtime-preferences/source-01/lint.log",
+      "docs/mcr/evidence/world-runtime-preferences/source-01/plan.log",
+      "docs/mcr/evidence/world-runtime-preferences/source-01/report.json",
+      "docs/mcr/evidence/world-runtime-preferences/source-01/tests.log",
+      "docs/mcr/evidence/world-runtime-preferences/source-01/types.log",
+      "docs/mcr/evidence/world-runtime-preferences/source-02/lint.log",
+      "docs/mcr/evidence/world-runtime-preferences/source-02/report.json",
+      "docs/mcr/evidence/world-runtime-preferences/source-02/types.log",
+      "docs/mcr/frontend/world-runtime-preferences.md",
+      "frontend/src/features/theme/__tests__/runtime-preferences/cancellation.test.ts",
+      "frontend/src/features/theme/model/controller.ts",
+      "frontend/src/world/preferences/__tests__/effects.test.ts",
+      "frontend/src/world/preferences/__tests__/runtime-owner.test.ts",
+      "frontend/src/world/preferences/__tests__/vitest.config.ts",
+      "frontend/src/world/preferences/contract.ts",
+      "frontend/src/world/preferences/engine.ts",
+      "frontend/src/world/preferences/runtime.ts",
+      "frontend/src/world/runtime.ts",
+      "frontend/src/world/scenes/MapScene.ts"
+    ],
+    "dd181c21eab8a2ff745795a69da4dd572a6272e1": [
+      "docs/mcr/frontend/world-runtime-preferences.md",
+      "frontend/src/world/preferences/__tests__/effects.test.ts",
+      "frontend/src/world/preferences/engine.ts"
+    ],
+    "c59bb91e357ad8eaecd58d96c43bc517c932693b": [
+      "docs/mcr/frontend/world-runtime-preferences.md",
+      "frontend/src/world/preferences/__tests__/native/native.mjs",
+      "frontend/src/world/preferences/__tests__/native/preview.html",
+      "frontend/src/world/preferences/__tests__/native/preview.tsx"
+    ],
+    "0aa1afc597ca393131881e8e10dd69e52883cf22": [
+      "docs/mcr/frontend/world-runtime-preferences.md"
+    ],
+    "5fa13676ecadc609236bfeda69a8d0d0f79bad6f": [
+      "docs/mcr/evidence/world-runtime-preferences/source-03/lint.log",
+      "docs/mcr/evidence/world-runtime-preferences/source-03/report.json",
+      "docs/mcr/evidence/world-runtime-preferences/source-03/syntax.log",
+      "docs/mcr/evidence/world-runtime-preferences/source-03/types.log",
+      "docs/mcr/frontend/world-runtime-preferences.md"
+    ],
+    "920c0e2baf571b7c97fc59fb6741a9293b49fb0c": [
+      "docs/mcr/frontend/world-runtime-preferences.md",
+      "frontend/src/world/preferences/__tests__/native/native.mjs"
+    ],
+    "948232992914a306d0a267511b5266a67e1d8098": [
+      "docs/mcr/evidence/world-runtime-preferences/native-01/driver.log",
+      "docs/mcr/evidence/world-runtime-preferences/native-01/qualification.json",
+      "docs/mcr/evidence/world-runtime-preferences/native-01/report.json",
+      "docs/mcr/frontend/world-runtime-preferences.md",
+      "frontend/src/world/preferences/__tests__/native/native.mjs"
+    ],
+    "f9781febcd3784f7beeff862bc0939f243018803": [
+      "docs/mcr/evidence/world-runtime-preferences/native-02/driver.log",
+      "docs/mcr/evidence/world-runtime-preferences/native-02/qualification.json",
+      "docs/mcr/evidence/world-runtime-preferences/native-02/report.json",
+      "docs/mcr/frontend/world-runtime-preferences.md",
+      "frontend/src/world/preferences/__tests__/native/native.mjs"
+    ]
+  },
+  "publisherMappingsAlreadyVerified": {
+    "3cd74cae": "53b67c37",
+    "dd181c21": "44d168f2",
+    "c59bb91e": "1bcb805a",
+    "0aa1afc5": "bd3d1a42",
+    "5fa13676": "db26dd41",
+    "920c0e2b": "950b0df9"
+  },
+  "remainingPublisherCommits": [
+    "948232992914a306d0a267511b5266a67e1d8098",
+    "f9781febcd3784f7beeff862bc0939f243018803",
+    "the evidence commit containing this manifest"
+  ],
+  "finalEvidenceCommitResolution": "Reported in direct Root handoff; no self-referential hash or post-publication receipt commit required.",
+  "manifestSelfHashExcluded": "docs/mcr/evidence/world-runtime-preferences/handoff.json",
+  "latestOwnedPayloadSha256": {
+    "docs/mcr/evidence/world-runtime-preferences/native-01/driver.log": "e8f1aedbc37fb9a37c178d457379725e456044c04dcd98d54590d387888c2e9f",
+    "docs/mcr/evidence/world-runtime-preferences/native-01/qualification.json": "be1630d218575273e76e0d8445f22fae9c264e37289d163aea525b558d17f213",
+    "docs/mcr/evidence/world-runtime-preferences/native-01/report.json": "09e89206e98e9fbd249c6b8dd8f5bbc881092fc016e2a851545637979d25586d",
+    "docs/mcr/evidence/world-runtime-preferences/native-02/driver.log": "763b68c12ea4c3cd0eae00ded3b8b8ce636b71bd9e0800b7912129b4ff529e9e",
+    "docs/mcr/evidence/world-runtime-preferences/native-02/qualification.json": "0bd2ac5130e36c3fd8c0044f96c7b83dfa3eae1a441430a09a2b4d3554120c34",
+    "docs/mcr/evidence/world-runtime-preferences/native-02/report.json": "de738ce377c8ebbf74f10e2284bd9a28b7a07fd51757e9f0edc0c1459391a610",
+    "docs/mcr/evidence/world-runtime-preferences/native-03/capture-packet.json": "8462ec70db68f195cd31d218872b45b9f64444f78a4e7e92234f633689bcc2d6",
+    "docs/mcr/evidence/world-runtime-preferences/native-03/driver.log": "32ac51385fb1999a479bdb88f062701598c161ed54cdc31824f716ac6aa517a3",
+    "docs/mcr/evidence/world-runtime-preferences/native-03/qualification.json": "3ffc2f2fd116b61a3c80b23d6dc0502a4185b465280d61cea82031310003ea93",
+    "docs/mcr/evidence/world-runtime-preferences/native-03/report.json": "ec6ff9191ae5312930034d70f66fdcbcb4d36365cdb91d8653b243aec5409cc1",
+    "docs/mcr/evidence/world-runtime-preferences/native-03/settings-applied-low-power.png": "f2fb892f316a0da07301cc9040fac998fcff920a20fcd13730a897fb5b4b24bf",
+    "docs/mcr/evidence/world-runtime-preferences/native-03/settings-privacy-withdrawn.png": "45839631b6bc7676304c36252c0a41a15306f88255cadc4689e8f0d81e3b0520",
+    "docs/mcr/evidence/world-runtime-preferences/native-03/settings-saved-only.png": "01d3f3fc755f70eb6e500cb0a80b48a4c7febd44fc9148a1d91e2e47b2309b75",
+    "docs/mcr/evidence/world-runtime-preferences/source-01/lint.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "docs/mcr/evidence/world-runtime-preferences/source-01/plan.log": "88606f33d640a29811a4cbdc9748fc0f1e16225b81ad7e697deaf3b20c9b86e1",
+    "docs/mcr/evidence/world-runtime-preferences/source-01/report.json": "e48d01c1307786d348a9fbc1032851d29b5a35ab2b8cebdbcb514ac7a955b684",
+    "docs/mcr/evidence/world-runtime-preferences/source-01/tests.log": "c6413151ce65c5462aa2dd96af2ec913cc7fec83a309a8371c9c90bc009aa811",
+    "docs/mcr/evidence/world-runtime-preferences/source-01/types.log": "beb894449bffe6ed771dd4993fb95fef731b189c2a0b43b62fac55b067b81739",
+    "docs/mcr/evidence/world-runtime-preferences/source-02/lint.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "docs/mcr/evidence/world-runtime-preferences/source-02/report.json": "b08a78a2070b07b4e2382a1c6136ca1a65fd8cb17f640d4f74c10e6e8dfe7e89",
+    "docs/mcr/evidence/world-runtime-preferences/source-02/types.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "docs/mcr/evidence/world-runtime-preferences/source-03/lint.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "docs/mcr/evidence/world-runtime-preferences/source-03/report.json": "a69e97cfe32674ea45ff768b84083b0afc1de1ff9fb9f083fe063d7f5bf8b367",
+    "docs/mcr/evidence/world-runtime-preferences/source-03/syntax.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "docs/mcr/evidence/world-runtime-preferences/source-03/types.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "docs/mcr/frontend/world-runtime-preferences.md": "a443372e19e731a55699d0918b09f78287f9baf114ceacd6a039b9cd2441f36f",
+    "frontend/src/features/theme/__tests__/runtime-preferences/cancellation.test.ts": "0c6277a3ff38309ad0431f9a49f1ef445c41ab0acf99f7b21869513bcfea5e43",
+    "frontend/src/features/theme/model/controller.ts": "879105b2e39a63b6b206c9955a650b7867bcc9ada76c5c350c1286e38da2ac96",
+    "frontend/src/world/preferences/__tests__/effects.test.ts": "7c0dbc7c96576a38aeaef98dfc9bcd5bcfc7462695425338c40b309a4d1ffab3",
+    "frontend/src/world/preferences/__tests__/native/native.mjs": "35fed61355b78bc268f1d727bd8c86e95d7804140136ca84e0505f5421dd93af",
+    "frontend/src/world/preferences/__tests__/native/preview.html": "8746c2f5808c4a763319ca43326debc730b15bcf5ffe36398a722c51f91bd78a",
+    "frontend/src/world/preferences/__tests__/native/preview.tsx": "ba2ed7105acc92488fa555ed254af4cecf0bfad17f201dbfabba9f1ec70feef0",
+    "frontend/src/world/preferences/__tests__/runtime-owner.test.ts": "f2895fb262d72d8ed9407eda57f07906514c8e68ce33feeaeb98188f70680489",
+    "frontend/src/world/preferences/__tests__/vitest.config.ts": "3c41cdc88604ae234e81de09e59273d62d52c9fefe65f24f7d9c8f1ba0b24851",
+    "frontend/src/world/preferences/contract.ts": "39817923bc33e0e8b44eb27805678377b8468c18766404df97fd99f072641948",
+    "frontend/src/world/preferences/engine.ts": "22fbee961c46f7161276e61cab71bf29d8669ced70d291c364efc79d7a81e3bd",
+    "frontend/src/world/preferences/runtime.ts": "8aca495286342baf294ff4f0c141766899f4b73307e75493a84c397aa4553e97",
+    "frontend/src/world/runtime.ts": "47fc58ab147702a4e90cf9a28aa101a999177b9af86f6bc0815ecbe36424776f",
+    "frontend/src/world/scenes/MapScene.ts": "91cb1bfd7770051d126da6a15ab307e03f4228f22f3c7fe9819e87a514a1a258"
+  },
+  "ownershipCheck": "Every authored path is inside the exact grant; existing MapScene changes are only the four granted hooks. No backend import from changed frontend source.",
+  "evidence": {
+    "native03": "native-03/qualification.json",
+    "captures": "native-03/capture-packet.json",
+    "originalSourceReports": [
+      "source-01/report.json",
+      "source-02/report.json",
+      "source-03/report.json"
+    ],
+    "rootComposedSourceReports": [
+      "docs/mcr/evidence/runtime-preferences-root/source-03/report.json",
+      "docs/mcr/evidence/runtime-preferences-root/source-04/report.json"
+    ],
+    "retainedFailures": [
+      "native-01",
+      "native-02"
+    ]
+  },
+  "limitations": [
+    "Controlled source-fixture HTTP/C05/assets; not live backend, device, battery savings or production art admission.",
+    "Actual incumbent PARADE and unavailable DANGER retention; no cross-theme native asset-success claim.",
+    "Post-settle public producer lease caller abort is native; adapter caller-abort/reentrant races also have source tests. Navigation and privacy exercise actual Settings cleanup.",
+    "Application Vite build uses copyPublicDir=false; public-asset deployment packaging is not certified.",
+    "No whole FE06/FE34, W04, IN01/IN05 or general accessibility/visual acceptance inferred."
+  ],
+  "resourceStateAtHandoff": "No held native/source allocation, browser/server/process, dependency link or private temporary/cache/build tree.",
+  "recordedAtUTC": "2026-11-04T08:37:24.920955+00:00"
+}

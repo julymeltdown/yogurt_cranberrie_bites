@@ -1,0 +1,129 @@
+{
+  "task": "ART-SCREEN-COM01",
+  "packetCommit": "1722a81734947764996590b94a63aa001501df28",
+  "candidate": "cc20832a897f18cd83482dcd21b6c2fc1d226942",
+  "job": "ROOT-WALL-COM-A11Y-202611040820Z",
+  "pins": {
+    "report.json": "8056cea82655a3ae95e6520952a351890a3eb921953262378ebf260ca89b4c5f",
+    "capture-packet.json": "4b1b8bf2d7a29678d072f6073c37e0a43ce646beb3a0cb99766275b2c952e61e",
+    "qualification.json": "f0ac612f201d43863086039a0284917f0cd9a6677fad5fe0b62a107d258c8301"
+  },
+  "ownerDisposition": "PASS_BOUNDED_BACKGROUND_SCOPE_WITH_DOCUMENTED_INHERITED_MEET_FOCUS_LIMIT",
+  "rawExit": 1,
+  "rawStatus": "OPEN_FAILURES",
+  "rawResultUnmodified": true,
+  "inspection": {
+    "actualPngCount": 25,
+    "order": "Wall390 baseline/candidate, then360/430; all four routes normal/focus/forced and text-mask evidence; original supplied collage already inspected in native02 ownership pass. Canonical originals only, no copies/reconstruction/captures.",
+    "wall": "PASS at390/360/430 for background scope. Tall source22e2de67 fills the previously sparse lower field with broad blush/sage/lilac clouds, bow, music details and quiet cream center. Top guard remains unchanged/readable. Lower shapes are visible at every width, including430 where natural tall artwork is clipped to the existing body. No geometry adjustment required.",
+    "community": "Feed/Meet/Gifts retain broad warm/soft/playful backgrounds and truthful fixture content. Their native02 paired360/390/430 results remain applicable to unchanged CSS/assets; new390 targeted states were directly inspected.",
+    "forced": "Actual forced views keep system-black glyphs on white backplates, blue/system outlines and readable guards/labels. Art stays colored in this browser. Masked forced text PNGs still visibly contain glyphs and cannot qualify raw backing-mask contrast.",
+    "meet": "Actual normal and forced summary images show top/right ring only; bottom/left are clipped. This is a real inherited layout defect, not an alpha artifact or new background regression."
+  },
+  "evidence": "wall-com-03-validation.json",
+  "normalTextMinima": {
+    "wall": 9.545801856993844,
+    "feed": 15.622721919572312,
+    "meet": 5.499084791599385,
+    "gifts": 7.4641039141338945
+  },
+  "focusSamples": {
+    "wall": {
+      "normalMinimum": 15.114013729961503,
+      "forcedAlphaCompositedMinimum": 11.309774587047812,
+      "target": {
+        "x": 332,
+        "y": 10,
+        "width": 44,
+        "height": 44
+      },
+      "allFourSamplesVisible": true
+    },
+    "feed": {
+      "normalMinimum": 6.020122808754989,
+      "forcedAlphaCompositedMinimum": 9.376977599757085,
+      "target": {
+        "x": 19,
+        "y": 780,
+        "width": 44,
+        "height": 44
+      },
+      "allFourSamplesVisible": true
+    },
+    "meet": {
+      "normalMinimum": 1.0,
+      "forcedAlphaCompositedMinimum": 1.0,
+      "target": {
+        "x": 15,
+        "y": 465.5625,
+        "width": 301.546875,
+        "height": 44
+      },
+      "allFourSamplesVisible": false
+    },
+    "gifts": {
+      "normalMinimum": 6.586126471068874,
+      "forcedAlphaCompositedMinimum": 10.677607806093935,
+      "target": {
+        "x": 15,
+        "y": 510,
+        "width": 360,
+        "height": 44
+      },
+      "allFourSamplesVisible": true
+    }
+  },
+  "forcedTextQualification": "Unmasked original PNG black/white glyph/backplate spots independently match qualification coordinates and yield21:1; per-fragment spots only, not a complete backing mask/global text proof.",
+  "inheritedFinding": {
+    "id": "COM01-INHERITED-MEET-SUMMARY-CLIP",
+    "selector": ".party-filters > summary",
+    "ancestor": ".meet-discovery",
+    "property": "overflow:auto",
+    "clippedEdges": [
+      "bottom",
+      "left"
+    ],
+    "sourceComparison": [
+      {
+        "path": "frontend/src/features/party-discovery/ui/party-discovery.css",
+        "sameBytes": true,
+        "sha256": "0f4b94ffb12cf8890d6e7c4e258e69b68833287dca0e8ad275a69d0700ebdea8"
+      },
+      {
+        "path": "frontend/src/app/shell.css",
+        "sameBytes": true,
+        "sha256": "c0b2052693ac51575b877714640beefbe4007f6a33c9b64482ea47aa8ed022ee"
+      },
+      {
+        "path": "frontend/src/app/shell-chrome/shell-chrome.css",
+        "sameBytes": true,
+        "sha256": "08614a9b3263d7cbb27af4d59aaabc0ee4db07943812faa0e04bdba7f720291d"
+      }
+    ],
+    "disposition": "OPEN_SEPARATE_FUNCTIONAL_SCOPE",
+    "routedTo": "01a1a1fe-c5f1-7e60-87c2-43785b07f941",
+    "publisherNotified": "01a1a153-1227-7e72-801f-a2a6b91981e1",
+    "writes": "No functional layout, focus geometry, title/header declarations or new selectors authorized or changed."
+  },
+  "sourceFixesRequiredInOwnedBackgroundScope": [],
+  "cssUnchangedSha256": "d26dd8fbee928539f2689ccd9bb6269e4cb964c58b78e8cc86afbd894f228504",
+  "historicalNative02": "Original5186 report/images/oldWall1929 pins and NEEDS_CORRECTION disposition remain frozen. This new packet qualifies only the delivered tall revision separately.",
+  "validationCommands": [
+    {
+      "command": "python3 docs/mcr/evidence/art-screen-com01/verify-wall-com-03.py --repository /Users/lhs/Desktop/mcr-worktrees/fe-delivery-publish --packet-root /Users/lhs/Desktop/mcr-worktrees/fe-delivery-publish/docs/mcr/evidence/cozy-backgrounds-v1/wall-com-03",
+      "exitCode": 0,
+      "scope": "Read-only retained evidence/pixel arithmetic audit, not a rerun of raw browser job."
+    }
+  ],
+  "coordination": "Community SL now owns functional followthrough; Root remains sole publisher/capture custodian. No SL/King/QA approval gate requested.",
+  "completion": "Owner implementation/fixes/documented validation delivered; final remote owned-byte/ancestry readback pending publication of this handoff. Full original goal retained until then.",
+  "limits": [
+    "Audit exit0 verifies retained evidence arithmetic/provenance; the original browser job remains exit1/OPEN_FAILURES.",
+    "Normal text covers only selected visible fragments; focus covers four perimeter points per representative target at390.",
+    "Forced text-fill masking is invalid under forced colors; actual black glyph/white backplate spots are local evidence only.",
+    "Alpha-composited focus samples qualify Wall/Feed/Gifts locally; Meet remains clipped and is not passed.",
+    "Physical CSS pins are clean-checkout evidence, not per-import Vite load receipts.",
+    "No global WCAG, all-state, real-media, live-service, physical-device or mural-editor acceptance.",
+    "Historical native02 oldWallNEEDS_CORRECTION remains frozen; this packet alone qualifies the tall correction."
+  ]
+}
