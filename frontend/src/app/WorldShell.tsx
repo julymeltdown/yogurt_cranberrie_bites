@@ -125,14 +125,22 @@ function PanelFrame({ size, onSize, positions, children }: { size: 'peek' | 'hal
   const scroll = useRef<HTMLDivElement>(null)
   useLayoutEffect(() => {
     const element = scroll.current
-    if (element) element.scrollTop = positions.get(location.pathname + location.search) ?? 0
+    const path = location.pathname + location.search
+    let lastScroll = positions.get(path) ?? 0
+    if (element) element.scrollTop = lastScroll
+    let lastExtent = element ? element.scrollHeight - element.clientHeight : 0
+    const rememberScroll = () => {
+      if (element) { lastScroll = element.scrollTop; lastExtent = element.scrollHeight - element.clientHeight }
+    }
+    element?.addEventListener('scroll', rememberScroll, { passive: true })
     // On POP NavigationMemory restores a known opener; otherwise focus the destination heading.
     heading.current?.focus({ preventScroll: true })
     return () => {
       if (!element) return
-      const path = location.pathname + location.search
+      element.removeEventListener('scroll', rememberScroll)
+      // A shorter destination can clamp the shared element before layout cleanup.
       positions.delete(path)
-      positions.set(path, element.scrollTop)
+      positions.set(path, element.scrollHeight - element.clientHeight < lastExtent ? lastScroll : element.scrollTop)
       if (positions.size > MAX_SHELL_LOCATIONS) positions.delete(positions.keys().next().value!)
     }
   }, [location.key, location.pathname, location.search, navigation])
