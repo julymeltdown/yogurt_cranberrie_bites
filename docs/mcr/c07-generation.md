@@ -180,3 +180,28 @@ recorded a peak of two scoped processes and no breach. The latest human directio
 allows the designated publisher's single canonical delivery receipt; repeated
 independent readback proofs and proof-only commits are not required. Functional
 validation, fixes and the meaningful committed handoff remain required.
+
+## Published prerequisite consumed
+
+Root published the separately qualified two-mirror correction as
+`42a542e8f4b045a1afe426c1f6bdd56ba2c2b842`, from producer
+`0e75917206d716b4f7f80825f9d5526a3c11f35a`. Its frozen public canonical inputs
+and unchanged generator passed generation and `--check`; both mirrors have
+SHA-256 `4c185d9099b7e02cc61fce1e58b475be169e78bd5ba20b295e99827fc07e034f`.
+The publisher supplied the single authoritative delivery receipt. No redundant
+consumer remote proof was performed.
+
+Consumption commit `2b390c234665252d03793779c3cc38ee00026cad` changes only those
+two already-published mirrors. The new audited forward candidate is recorded in
+`archive/forward-baseline-2b390c234665252d03793779c3cc38ee00026cad.json` under the
+QA01 checker directory. Exactly two hashes differ from the failed temporary
+candidate; all other audited input deltas and the single additive route remain
+the same. Historical pins, their byte-identical archive and the failure receipt
+remain unchanged. This source consumption includes no Wall feature work.
+
+The next source-only allocation was not accepted: fresh free space was
+15,013,621,760 bytes, below its required 17,179,869,184-byte start floor. No
+guardian or workload started and no clock or slot was retained. Source and
+controls are ready under local `mcr-tools/c07-published-baseline-20261104T1554Z`;
+the temporary-candidate preflight and complete public QA01/C07 checks remain
+NOT_RUN on this corrected source until a usable allocation is accepted.

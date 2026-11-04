@@ -56,6 +56,15 @@ Silently ignoring files or repinning around a failure is prohibited. After an
 audited forward update, the ordinary public positive command, all original
 negative probes, and the complete C07 harness must run again on the candidate.
 
+The first temporary candidate failed with `generated OpenAPI drift`; active pins
+were preserved. The subsequent separately qualified, published two-mirror repair
+is `42a542e8f4b045a1afe426c1f6bdd56ba2c2b842`. Its consumption and refreshed
+audit are recorded in
+`archive/forward-baseline-2b390c234665252d03793779c3cc38ee00026cad.json`.
+The initial audit remains a historical snapshot, not a passing baseline. The
+corrected candidate still requires a fresh complete validation round before
+active pins change.
+
 There is no mutation of CI composition in this assignment. These commands can be
 invoked by a separately owned CI entrypoint. Coverage establishes offline QA01
 criteria only, without promoting C07, production routes, art, live services,
