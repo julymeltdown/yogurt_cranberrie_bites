@@ -1,0 +1,179 @@
+{
+  "old_canonical_candidate": "6dd22ede377df1bf2c1d1de55275f80277af839a",
+  "candidate_source": "267a040ac8d33c312aa87a5a2f22bc418b3895f2",
+  "old_archive": "scripts/mcr/contracts/qa01-coverage/archive/pins-6dd22ede377df1bf2c1d1de55275f80277af839a.json",
+  "old_pins_sha256": "9e132bc28102bbda6c3060d662eb5154c40a4fd23242ba46eba656ec3bb3491a",
+  "candidate_pins_sha256": "b2fbc46bda9b409891bb22567bcc851d9beeda9436ada15c07e6f276e1c342e8",
+  "published_commit": "e7bd68cfa35fb620e2eed060a71a72e50718b9dc",
+  "producer_commit": "c18d5ba9fd27a73356d9be68614863172303c81f",
+  "deltas": [
+    {
+      "path": "backend/docs/api/mcr-domain.openapi.json",
+      "old_sha256": "4c185d9099b7e02cc61fce1e58b475be169e78bd5ba20b295e99827fc07e034f",
+      "new_sha256": "e7de84d358c18ae3b0431953b582e4f305a1f89c5146b771d7da9cab04e159ef",
+      "producer_commit": "c18d5ba9fd27a73356d9be68614863172303c81f",
+      "published_commit": "e7bd68cfa35fb620e2eed060a71a72e50718b9dc",
+      "producer_disposition": "106 owner contract checks PASS; offline contract-only, no runtime/IN04 acceptance"
+    },
+    {
+      "path": "contracts/domain/v1/common.schema.json",
+      "old_sha256": "65f2c2f19594942b89613e67b97bd3181e0889e7f47e4476cda752d9aab10584",
+      "new_sha256": "cc34c0a16cff70f89a4779ebf6aa962a9009d7ffa7c3d84133d13c2dc159f258",
+      "producer_commit": "c18d5ba9fd27a73356d9be68614863172303c81f",
+      "published_commit": "e7bd68cfa35fb620e2eed060a71a72e50718b9dc",
+      "producer_disposition": "106 owner contract checks PASS; offline contract-only, no runtime/IN04 acceptance"
+    },
+    {
+      "path": "contracts/domain/v1/mural.schema.json",
+      "old_sha256": "345871ce89fabff02f06087fcd3e8907651a5712b34ccbd53091158af123b6ca",
+      "new_sha256": "6ef0fea077a277d9029447ed60e6914a3665308969f91bf4ff4a93097e27d8a9",
+      "producer_commit": "c18d5ba9fd27a73356d9be68614863172303c81f",
+      "published_commit": "e7bd68cfa35fb620e2eed060a71a72e50718b9dc",
+      "producer_disposition": "106 owner contract checks PASS; offline contract-only, no runtime/IN04 acceptance"
+    },
+    {
+      "path": "contracts/domain/v1/operations.json",
+      "old_sha256": "f801d703dfc5509bbe06a2f0fa07a170b6442a48b2204c7ead460fc9a3600112",
+      "new_sha256": "f9ee6dcd0e755b8d11179507fa6e0db16bc09e76970313ea5f46743cf8ee409d",
+      "producer_commit": "c18d5ba9fd27a73356d9be68614863172303c81f",
+      "published_commit": "e7bd68cfa35fb620e2eed060a71a72e50718b9dc",
+      "producer_disposition": "106 owner contract checks PASS; offline contract-only, no runtime/IN04 acceptance"
+    },
+    {
+      "path": "contracts/domain/v1/policy.json",
+      "old_sha256": "646f25a81e64ee4f0958c86ea5c46829780bc42dde15c7bf05362f7bd974f294",
+      "new_sha256": "5f0ab5a6d96a34ef45b26778a41bd39226660b8bc9e2f84140f107c604c639e6",
+      "producer_commit": "c18d5ba9fd27a73356d9be68614863172303c81f",
+      "published_commit": "e7bd68cfa35fb620e2eed060a71a72e50718b9dc",
+      "producer_disposition": "106 owner contract checks PASS; offline contract-only, no runtime/IN04 acceptance"
+    },
+    {
+      "path": "contracts/fixtures/domain/index.json",
+      "old_sha256": "0098bbe0d8a98a262e515eb5d3f9e07f9f85e3fe6839edc98e808295c9066729",
+      "new_sha256": "1ffba4696e8b49c1c69eb37a3728221c8625c4c7dfeff3c8a40a7ce11986e7d0",
+      "producer_commit": "c18d5ba9fd27a73356d9be68614863172303c81f",
+      "published_commit": "e7bd68cfa35fb620e2eed060a71a72e50718b9dc",
+      "producer_disposition": "106 owner contract checks PASS; offline contract-only, no runtime/IN04 acceptance"
+    },
+    {
+      "path": "contracts/fixtures/domain/wall-tools-b/budget-513.json",
+      "old_sha256": null,
+      "new_sha256": "3cd1a5138a2a8c76b2e296ea3839c5a6dbed7500b2b65954b2e5a91b9eb5243f",
+      "producer_commit": "c18d5ba9fd27a73356d9be68614863172303c81f",
+      "published_commit": "e7bd68cfa35fb620e2eed060a71a72e50718b9dc",
+      "producer_disposition": "106 owner contract checks PASS; offline contract-only, no runtime/IN04 acceptance"
+    },
+    {
+      "path": "contracts/fixtures/domain/wall-tools-b/false-pixel-delta.json",
+      "old_sha256": null,
+      "new_sha256": "0e892aed1e057cb030a4815d111cfe3758dc1b030649f49f35ec99e37009ab2f",
+      "producer_commit": "c18d5ba9fd27a73356d9be68614863172303c81f",
+      "published_commit": "e7bd68cfa35fb620e2eed060a71a72e50718b9dc",
+      "producer_disposition": "106 owner contract checks PASS; offline contract-only, no runtime/IN04 acceptance"
+    },
+    {
+      "path": "contracts/fixtures/domain/wall-tools-b/fill-257.json",
+      "old_sha256": null,
+      "new_sha256": "856e19cfe7b9bb6cf0f281adf19376db29fbc1d7fe397896654638b7a86700ac",
+      "producer_commit": "c18d5ba9fd27a73356d9be68614863172303c81f",
+      "published_commit": "e7bd68cfa35fb620e2eed060a71a72e50718b9dc",
+      "producer_disposition": "106 owner contract checks PASS; offline contract-only, no runtime/IN04 acceptance"
+    },
+    {
+      "path": "contracts/fixtures/domain/wall-tools-b/foreign-history.json",
+      "old_sha256": null,
+      "new_sha256": "9469daecb40417ba9736eabd6ea7aa894858289feb13872415989ca7cd4c7dbf",
+      "producer_commit": "c18d5ba9fd27a73356d9be68614863172303c81f",
+      "published_commit": "e7bd68cfa35fb620e2eed060a71a72e50718b9dc",
+      "producer_disposition": "106 owner contract checks PASS; offline contract-only, no runtime/IN04 acceptance"
+    },
+    {
+      "path": "contracts/fixtures/domain/wall-tools-b/own-fill-256.json",
+      "old_sha256": null,
+      "new_sha256": "d21a8014938fb7d8a3fbd3a9f747d97af0c1349e79903bf935f9e29b386dba3a",
+      "producer_commit": "c18d5ba9fd27a73356d9be68614863172303c81f",
+      "published_commit": "e7bd68cfa35fb620e2eed060a71a72e50718b9dc",
+      "producer_disposition": "106 owner contract checks PASS; offline contract-only, no runtime/IN04 acceptance"
+    },
+    {
+      "path": "contracts/fixtures/domain/wall-tools-b/private-history-leak.json",
+      "old_sha256": null,
+      "new_sha256": "b83ba3e91d874f377f5db9370a8a332d7869ce3ddf2f644db1a883dc0c67e46d",
+      "producer_commit": "c18d5ba9fd27a73356d9be68614863172303c81f",
+      "published_commit": "e7bd68cfa35fb620e2eed060a71a72e50718b9dc",
+      "producer_disposition": "106 owner contract checks PASS; offline contract-only, no runtime/IN04 acceptance"
+    },
+    {
+      "path": "contracts/fixtures/domain/wall-tools-b/tools-qualified.json",
+      "old_sha256": null,
+      "new_sha256": "929e6e0fbfd7c600fed6277f415a8b54a258d06d98a2fcda3e28e549a9bf8a93",
+      "producer_commit": "c18d5ba9fd27a73356d9be68614863172303c81f",
+      "published_commit": "e7bd68cfa35fb620e2eed060a71a72e50718b9dc",
+      "producer_disposition": "106 owner contract checks PASS; offline contract-only, no runtime/IN04 acceptance"
+    },
+    {
+      "path": "contracts/fixtures/domain/wall-tools-b/wrong-background.json",
+      "old_sha256": null,
+      "new_sha256": "69fdd4ba7b70ae6a5055afe556a78e3f891051e46f20d7775aad3992b8dbfd2d",
+      "producer_commit": "c18d5ba9fd27a73356d9be68614863172303c81f",
+      "published_commit": "e7bd68cfa35fb620e2eed060a71a72e50718b9dc",
+      "producer_disposition": "106 owner contract checks PASS; offline contract-only, no runtime/IN04 acceptance"
+    },
+    {
+      "path": "contracts/generated/mcr-domain.openapi.json",
+      "old_sha256": "4c185d9099b7e02cc61fce1e58b475be169e78bd5ba20b295e99827fc07e034f",
+      "new_sha256": "e7de84d358c18ae3b0431953b582e4f305a1f89c5146b771d7da9cab04e159ef",
+      "producer_commit": "c18d5ba9fd27a73356d9be68614863172303c81f",
+      "published_commit": "e7bd68cfa35fb620e2eed060a71a72e50718b9dc",
+      "producer_disposition": "106 owner contract checks PASS; offline contract-only, no runtime/IN04 acceptance"
+    },
+    {
+      "path": "frontend/src/shared/api/domain-operations.generated.ts",
+      "old_sha256": "5abefd1e27a1472291b706eed0ddb7c1c06cc9290ea32d105844caaa0ed66308",
+      "new_sha256": "29496fd06ebb6f8567499a980c793b778ca3580e6eae1230bf7d3ddb49937117",
+      "producer_commit": "c18d5ba9fd27a73356d9be68614863172303c81f",
+      "published_commit": "e7bd68cfa35fb620e2eed060a71a72e50718b9dc",
+      "producer_disposition": "106 owner contract checks PASS; offline contract-only, no runtime/IN04 acceptance"
+    },
+    {
+      "path": "scripts/mcr/validate-domain.py",
+      "old_sha256": "b6dac35195063fe4248fc7946ac85eb17de03ff79c161545c4d6f750383a0098",
+      "new_sha256": "6da2c573127d8dda9a7dfb80840abf72ac1ea4c67757b1dea29a06c978701cb0",
+      "producer_commit": "c18d5ba9fd27a73356d9be68614863172303c81f",
+      "published_commit": "e7bd68cfa35fb620e2eed060a71a72e50718b9dc",
+      "producer_disposition": "106 owner contract checks PASS; offline contract-only, no runtime/IN04 acceptance"
+    }
+  ],
+  "operation_delta": {
+    "old_count": 135,
+    "new_count": 140,
+    "added": {
+      "getOwnConcertMuralAction": [
+        "/api/concert/events/{eventId}/mural/actions/{idempotencyKey}",
+        "get"
+      ],
+      "eraseConcertMuralPixel": [
+        "/api/concert/events/{eventId}/mural/erase",
+        "post"
+      ],
+      "fillConcertMuralRegion": [
+        "/api/concert/events/{eventId}/mural/fill",
+        "post"
+      ],
+      "getConcertMuralTools": [
+        "/api/concert/events/{eventId}/mural/tools",
+        "get"
+      ],
+      "undoConcertMuralAction": [
+        "/api/concert/events/{eventId}/mural/undo",
+        "post"
+      ]
+    },
+    "removed": {},
+    "changed": {}
+  },
+  "previous_qualified_commit": "46050bb9125390787f3e69d91a2fba2ad181cce1",
+  "previous_qualification": "full QA01+12 negatives+C07 eightchecks PASS; immutable coherent1634Z evidence retained",
+  "status": "PUBLISHED_C18_SOURCE_AUDIT_COMPLETE; full temporary candidate preflight pending",
+  "active_pins_changed": false
+}

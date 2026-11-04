@@ -36,7 +36,68 @@ an existing pin. A later canonical revision requires an explicit documented pin
 update and new complete validation; do not repin merely to silence drift. The
 normal command fails on any missing, added or changed pinned input.
 
-There is no mutation of CI composition in this assignment. These commands can be
-invoked by a separately owned CI entrypoint. Coverage establishes offline QA01
+## Audited forward baseline
+
+Root explicitly assigned forward reconciliation after the C07 source-only round
+released all resources. The historical baseline remains preserved byte for byte
+at `archive/pins-d042638789bc84587be7bbbe09b32c324570c75f.json`.
+The audit record `archive/forward-baseline-c525bd8c3129c191f9ed97f355ba5ead0ec006f6.json`
+records all 84 input deltas (16 changed, 68 added), old/new SHA-256 values,
+published producer ancestry, producer task/evidence dispositions, and the exact
+operation delta: only additive `getConcertIntro`, with no removed or changed
+route identities. Motion candidate evidence remains candidate-only; none of
+this pin accounting grants art, runtime, privacy, service or release acceptance.
+
+The first qualified forward pins named the audited canonical candidate
+`6dd22ede377df1bf2c1d1de55275f80277af839a`, after the full temporary-candidate
+preflight passed on admitted source `daa26b3d3282ae42015155e7c7a1f360ed27921b`.
+The exact record is
+`archive/forward-baseline-6dd22ede377df1bf2c1d1de55275f80277af839a.json`.
+The 62 published motion config fixtures and four v2 schemas have explicit
+coverage before the unchanged exhaustive fixture comparison.
+The Social policy fixtures use the retained trace/wire-rejection dispatch.
+Silently ignoring files or repinning around a failure is prohibited. After an
+audited forward update, the ordinary public positive command, all original
+negative probes, and the complete C07 harness must run again on the candidate.
+
+The first temporary candidate failed with `generated OpenAPI drift`; active pins
+were preserved. The subsequent separately qualified, published two-mirror repair
+is `42a542e8f4b045a1afe426c1f6bdd56ba2c2b842`. Its consumption and refreshed
+audit are recorded in
+`archive/forward-baseline-2b390c234665252d03793779c3cc38ee00026cad.json`.
+The initial audit remains a historical snapshot, not a passing baseline. The
+corrected candidate next exposed the independently published transport metadata
+header drift. Its single-file repair is
+`efc1f56b19d3cd33d64a0aff6a960f0b772277bf`. The coherent three-projection
+candidate subsequently passed the full preflight: 229 source definitions,
+185 fixture outcomes, 135 operations and 1,528 responses. Only then were active
+pins replaced. The ordinary QA01 CLI and all 11 regressions, including the
+unchanged 12 negative probes, passed with exit 0. Historical failed receipts are
+retained separately; no negative setup or generator gate was weakened.
+
+The separately granted C07 workflow invokes these complete public commands.
+Coverage establishes offline QA01
 criteria only, without promoting C07, production routes, art, live services,
 devices or IN gates. See the evidence README for the task disposition and pins.
+
+The subsequent actually published C18 contract delta is
+`e7bd68cfa35fb620e2eed060a71a72e50718b9dc`, producer `c18d5ba9`, consumed as
+`267a040ac8d33c312aa87a5a2f22bc418b3895f2`. Its separate additive audit records
+17 pinned input deltas and five added operations, with no removed or changed
+routes. The previous qualified pins are archived byte for byte as
+`archive/pins-6dd22ede377df1bf2c1d1de55275f80277af839a.json`; the original
+historical archive and 84-delta audit remain unchanged.
+
+After full temporary-candidate QA01 passed on source `b6c6945c`, active pins
+advanced conditionally to canonical candidate `267a040ac8d33c312aa87a5a2f22bc418b3895f2`
+with SHA-256 `b2fbc46bda9b409891bb22567bcc851d9beeda9436ada15c07e6f276e1c342e8`.
+The ordinary public CLI passed: 238 definitions, 193 fixture outcomes, 140 HTTP
+operations and 1,591 responses. All 13 regressions, including the unchanged
+12 public negative probes, passed. Only the explicitly granted direct domain
+`wall-tools-b/*.json` nested catalog is admitted; traversal, path aliases,
+unknown prefixes and other-family nested entries fail. Exact discovery and
+exhaustive covered-versus-actual comparison remain enforced. The eight published
+C18 fixture outcomes use the existing domain validator, without new dispatch
+or exclusions. This remains offline contract qualification, not Wall runtime
+or IN04 acceptance. See `docs/mcr/c07-generation.md` for the corresponding
+complete C07 qualification and preserved earlier cohorts.
