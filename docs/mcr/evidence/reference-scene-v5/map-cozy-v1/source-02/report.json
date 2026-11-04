@@ -1,0 +1,88 @@
+{
+  "carried_allocated_bytes": 7413760,
+  "generated_postimages": [
+    {
+      "path": "frontend/src/world/reference-scene/spatial-v5/map-cozy-source.json",
+      "bytes": 4562,
+      "sha256": "56934998d331b11bf65ca68a1187b4c1d87cfd3ccd89dea0fb2572bb86a1893c"
+    },
+    {
+      "path": "frontend/src/world/reference-scene/spatial-v5/map-cozy-pins.json",
+      "bytes": 5564,
+      "sha256": "00c8606f967297afb75ab8ba2e7d3e85402b16f90d787f160dc79908695c1425"
+    }
+  ],
+  "source_revision": "f3ac89f7dcda7ccb55283f709a51374cd4171a1f",
+  "runner_sha256": "a575511c07d508a918559d2c246de41f00c8f244ef9303f6a9cab465e6923e3f",
+  "commands": [
+    {
+      "command": [
+        "/Users/lhs/Desktop/mcr-tools/contracts-validation-venv/bin/python",
+        "-B",
+        "src/world/reference-scene/spatial-v5/build-map-cozy-inputs.py",
+        "--source-revision",
+        "aa7d09a498f5d6e0c5c30294155d7a4e55af6bf6",
+        "--handoff-sha",
+        "sha256:a9f493017a0780d2a92d3376fbdf2c45cffe6570cd5948786a1c1283c7334978"
+      ],
+      "started_at": "2026-11-04T07:46:42.882184+00:00",
+      "exit_code": 0,
+      "log": "1.log"
+    },
+    {
+      "command": [
+        "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node",
+        "node_modules/vitest/vitest.mjs",
+        "run",
+        "src/world/reference-scene/__tests__/spatial-v5",
+        "--config",
+        "/private/tmp/mcr-era-source01/vitest.config.mjs",
+        "--configLoader",
+        "runner",
+        "--cache=false",
+        "--no-file-parallelism",
+        "--maxWorkers=1"
+      ],
+      "started_at": "2026-11-04T07:46:43.087472+00:00",
+      "exit_code": 0,
+      "log": "2.log"
+    },
+    {
+      "command": [
+        "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node",
+        "node_modules/typescript/bin/tsc",
+        "--project",
+        "tsconfig.json",
+        "--pretty",
+        "false",
+        "--incremental",
+        "false"
+      ],
+      "started_at": "2026-11-04T07:46:47.259755+00:00",
+      "exit_code": 0,
+      "log": "3.log"
+    },
+    {
+      "command": [
+        "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node",
+        "node_modules/oxlint/bin/oxlint",
+        "src/world/reference-scene/spatial-v5/map-cozy.ts",
+        "src/world/reference-scene/spatial-v5/model.ts",
+        "src/world/reference-scene/__tests__/spatial-v5/map-cozy.test.ts",
+        "src/app/world-entry/__tests__/reference-scene-v5/map-cozy-v1"
+      ],
+      "started_at": "2026-11-04T07:46:53.955496+00:00",
+      "exit_code": 0,
+      "log": "4.log"
+    }
+  ],
+  "failure": null,
+  "elapsed_seconds": 11.341874082994764,
+  "peak_whole_bytes": 11096064,
+  "peak_temp_bytes": 3657728,
+  "peak_durable_bytes": 8192,
+  "minimum_free_bytes": 37480423424,
+  "owned_temp_absent": true,
+  "owned_link_absent": true,
+  "finished_at": "2026-11-04T07:46:54.171120+00:00"
+}

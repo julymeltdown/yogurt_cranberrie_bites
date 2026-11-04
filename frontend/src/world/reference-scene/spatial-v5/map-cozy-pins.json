@@ -1,17 +1,17 @@
 {
   "format": "MCR_SPATIAL5_MAP_COZY_V1_PINS",
-  "source_revision": "70f22a683ab029751548331df5cf46f2ad16baf8",
+  "source_revision": "aa7d09a498f5d6e0c5c30294155d7a4e55af6bf6",
   "production_status": "NOT_ADMITTED",
   "handoff": {
     "path": "frontend/public/world/reference-scene-v2/map-cozy-v1/handoff.json",
-    "bytes": 2528,
-    "sha256": "sha256:c11b404958d8332732c1335cbc137c29ab5ba623eec0b68b4e3c824eb31079ab"
+    "bytes": 3174,
+    "sha256": "sha256:a9f493017a0780d2a92d3376fbdf2c45cffe6570cd5948786a1c1283c7334978"
   },
   "outputs": [
     {
       "path": "frontend/public/world/reference-scene-v2/map-cozy-v1/README.md",
-      "bytes": 4702,
-      "sha256": "sha256:6d3b4edc18de98c696200e475960e46cb85b828f9f438d97e2c9f6e4fd6f7665"
+      "bytes": 5364,
+      "sha256": "sha256:1453f533b9a18c3554fcefeddcc08e684e00f5e2ff87fb89bba47180116b041e"
     },
     {
       "path": "frontend/public/world/reference-scene-v2/map-cozy-v1/build.py",
@@ -45,8 +45,8 @@
     },
     {
       "path": "frontend/public/world/reference-scene-v2/map-cozy-v1/presentation.json",
-      "bytes": 5836,
-      "sha256": "sha256:0b2be1fa5773f9c98f221ac83d1fd729fee89f0e0c3a8bf2bf71c81d2bf35217"
+      "bytes": 14186,
+      "sha256": "sha256:b3c08ea713e7413539c976a49c5f1267bee3345f8cc2d1dafb99fede8e733a0a"
     },
     {
       "path": "frontend/public/world/reference-scene-v2/map-cozy-v1/parade/atlas.png",
@@ -57,6 +57,21 @@
       "path": "frontend/public/world/reference-scene-v2/map-cozy-v1/parade/ground.png",
       "bytes": 850849,
       "sha256": "sha256:09d77ad8aa85f9d6464fa5248dae3eb91498f57b0c2183af1f90fc2e79b0dd45"
+    },
+    {
+      "path": "frontend/public/world/reference-scene-v2/map-cozy-v1/revenge/atlas.png",
+      "bytes": 1176781,
+      "sha256": "sha256:54b5a72a1e16062f84248602f8bebaee500ca086fb58285b1689d665618dfdbd"
+    },
+    {
+      "path": "frontend/public/world/reference-scene-v2/map-cozy-v1/danger/atlas.png",
+      "bytes": 1178440,
+      "sha256": "sha256:3184e26c5b83cf95c31f692b3087112faa93a0ef270bd5416e36fc9952d9a17a"
+    },
+    {
+      "path": "frontend/public/world/reference-scene-v2/map-cozy-v1/era-derivatives.json",
+      "bytes": 32665,
+      "sha256": "sha256:4cb98c6ba28535427b4c3ed8e122e317a0f0cd1e278d2b9cb56aaf52836b5fa0"
     }
   ],
   "frozen_inputs": [
@@ -111,10 +126,10 @@
       "sha256": "sha256:cd600fe144b481616c229d2a3542482b7dc4abb4ca656808194587eac6b381b1"
     }
   ],
-  "document_sha256": "sha256:4f9d7394add8872720bba0c4f86a9ebfd3f1e330b94e6e415ead2c2385fa46af",
+  "document_sha256": "sha256:26e602590020302d0b6bf8ea97dbfb2a0ab96710dc2ac2a353282a06b2e244da",
   "document": {
     "path": "frontend/src/world/reference-scene/spatial-v5/map-cozy-source.json",
-    "bytes": 1676,
-    "sha256": "sha256:ac0920a92db119387fffde5a1d15dae5d39b01e69189c367457b0b09ae433277"
+    "bytes": 4562,
+    "sha256": "sha256:56934998d331b11bf65ca68a1187b4c1d87cfd3ccd89dea0fb2572bb86a1893c"
   }
 }
