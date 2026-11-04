@@ -40,7 +40,7 @@
   ],
   "source_sha256": {
     "frontend/src/app/WorldShell.tsx": "ef0aeb98a10d93c5dcdb89c7e6b25f0292260e699e093311506c06a4cc10f19d",
-    "frontend/src/app/shell.css": "406cbfb6bbbec5cf037a957e8b1dfd5c8fb806bfc4fb32616d60d73496abbc71",
+    "frontend/src/app/shell.css": "02cfa90906fce69ab896777f44388a1990b2d670a1b0b47bc8099d0cf1ef669f",
     "frontend/src/app/world-presentation/WorldTools.tsx": "1b4206cb413700246803c38b71cb16ebf3875008af65767774d7b89e36bf69a1",
     "frontend/src/world/composition/index.ts": "90ca131868b60f0c7c5df344503b89ccf17686df85186e9f968742c311718974",
     "frontend/src/world/scenes/MapScene.ts": "739bea4ff4f470f48ea01038e14f9d3a0ae09fda52c3e7f5bab3eb570b8ace5f",
@@ -70,5 +70,6 @@
     "durable_max_MiB": 40,
     "browser_processes": 1,
     "minimum_available_GiB": 8
-  }
+  },
+  "review_fix": "QA06 source finding: closed-only CSS selectors restored nonclosed baseline; native driver compares full/half/peek geometry at554+844"
 }

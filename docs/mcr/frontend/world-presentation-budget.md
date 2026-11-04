@@ -59,6 +59,10 @@ and the full virtual-position notice remain readable; reconnect/error states
 retain their original live text and 44px retry action. Their layout can expand
 without reducing the camera viewport or changing lifecycle/authority logic.
 No camera formula, server feet, fixture roster, geometry or image is changed.
+QA06 source review caught the first selectors reaching nonclosed shells. The
+corrected selectors require `data-panel-size='closed'`; original full/half/peek
+composition selectors remain. The native driver compares their canvas, stage,
+summary and panel geometry against the immutable baseline at both heights.
 
 ## Qualification plan and current evidence
 

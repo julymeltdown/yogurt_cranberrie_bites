@@ -61,6 +61,7 @@ async function measure(page) {
     }
     return { stage: rect('.shell-stage'), canvas: rect('.shell-world-host canvas'), controlsStage: rect('.world-controls-stage'),
       summary: rect('.world-composition-summary'), tools: rect('.shell-world-tools'), toggle: rect('.world-tools-toggle'),
+      panel: rect('.shell-panel'), panelBody: rect('.shell-panel-body'),
       header: rect('.mcr-chrome-header'), eras: rect('.shell-era-region'), navigation: rect('.mcr-chrome-bottom'),
       status: document.querySelector('.world-composition-status')?.textContent,
       notice: document.querySelector('.world-composition-notice')?.textContent,
@@ -162,6 +163,30 @@ try {
         await page.screenshot({ path: resolve(output, image) })
         const row = { mode, era, width, height, image, metrics, ...single, projection }
         report.cases.push(row)
+        if (era === 'PARADE' && width === 390) {
+          row.panelMetrics = {}
+          await page.evaluate(() => window.__SCENE_V5_ROOT__.navigate('/world/help'))
+          await expect(page.locator('.world-shell')).toHaveAttribute('data-panel-size', 'full')
+          await page.waitForTimeout(100); row.panelMetrics.full = await measure(page)
+          await page.getByRole('button', { name: 'Reduce panel', exact: true }).click()
+          await expect(page.locator('.world-shell')).toHaveAttribute('data-panel-size', 'half')
+          await page.waitForTimeout(100); row.panelMetrics.half = await measure(page)
+          await page.getByRole('button', { name: 'Minimize panel', exact: true }).click()
+          await expect(page.locator('.world-shell')).toHaveAttribute('data-panel-size', 'peek')
+          await page.waitForTimeout(100); row.panelMetrics.peek = await measure(page)
+          if (mode === 'candidate') {
+            const original = report.cases.find(entry => entry.mode === 'baseline' && entry.width === width && entry.height === height)
+            for (const size of ['full', 'half', 'peek']) for (const surface of ['stage', 'canvas', 'summary', 'panel']) {
+              for (const axis of ['x', 'y', 'width', 'height']) {
+                assert(Math.abs(row.panelMetrics[size][surface][axis] - original.panelMetrics[size][surface][axis]) < 1,
+                  `Nonclosed ${size}/${surface}/${axis} retains original geometry`)
+              }
+            }
+          }
+          await page.getByRole('button', { name: 'Back to previous panel', exact: true }).click()
+          await expect(page.locator('.world-shell')).toHaveAttribute('data-panel-size', 'closed')
+          await assertSingle(page)
+        }
         if (mode === 'candidate' && era === 'PARADE' && width === 390 && height === 554) {
           const toggle = page.getByRole('button', { name: 'World tools', exact: true })
           await toggle.focus(); await page.keyboard.press('Enter')
