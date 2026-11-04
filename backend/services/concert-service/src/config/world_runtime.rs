@@ -402,9 +402,7 @@ impl WorldRuntimeSettings {
             if let Some(local) = local {
                 local
                     .send(Arc::new(
-                        crate::world::invalidation::WorldInvalidationConsumer::new(Arc::new(
-                            bridge.clone(),
-                        )),
+                        crate::world::invalidation::WorldInvalidationConsumer::new(bridge.clone()),
                     ))
                     .map_err(|_| anyhow::anyhow!("World local invalidation receiver closed"))?;
             }
