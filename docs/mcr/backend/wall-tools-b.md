@@ -283,3 +283,10 @@ This handoff excludes later engine, native, startup and migration commits and
 confers no runtime acceptance. If publication inputs change, retain unrelated
 operations and regenerate from the receiving public base with the unchanged
 generators rather than overwriting newer contract work.
+
+The first allocated Rust round passed all five domain Wall cases and exposed
+one application regression inventory assertion still expecting 59 mutations.
+Root explicitly transferred only that test hunk: the inventory is now 62 and
+checks all three new Wall POST paths, preserving unknown/read-operation refusal
+and every other case. The original failure is retained in the allocation logs;
+this paragraph does not claim its rerun or subsequent runtime checks passed.
