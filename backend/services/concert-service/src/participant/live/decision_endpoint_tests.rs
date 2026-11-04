@@ -128,7 +128,7 @@ async fn native_decision_service_client() -> anyhow::Result<()> {
     let token = std::env::var("MCR_PARTICIPANT_DECISION_PROFILE_TOKEN")?;
     let user = Uuid::new_v4();
     let operation = Uuid::new_v4();
-    let query = proto::ParticipantDecisionRequest {
+    let mut query = proto::ParticipantDecisionRequest {
         actor_id: user.to_string(),
         event_id: Uuid::new_v4().to_string(),
         session_family_id: Uuid::new_v4().to_string(),
@@ -141,6 +141,7 @@ async fn native_decision_service_client() -> anyhow::Result<()> {
         authority_expires_unix_micros: chrono::Utc::now().timestamp_micros() + 1_500_000,
     };
     for fault in ["valid", "wrong-credential", "foreign-actor"] {
+        query.authority_expires_unix_micros = chrono::Utc::now().timestamp_micros() + 1_500_000;
         let mut client = proto::concert_participant_decision_service_client::ConcertParticipantDecisionServiceClient::with_interceptor(
             signer.client(channel.clone()), ServiceIdentityClientInterceptor::new(Workload::Profile, if fault == "wrong-credential" { "incorrect-fixture-credential" } else { &token })?);
         let actor = if fault == "foreign-actor" {
@@ -156,7 +157,15 @@ async fn native_decision_service_client() -> anyhow::Result<()> {
         )
         .await;
         if fault != "valid" {
-            assert!(result.is_err(), "{fault}");
+            assert_eq!(
+                result.unwrap_err().code(),
+                if fault == "wrong-credential" {
+                    tonic::Code::Unauthenticated
+                } else {
+                    tonic::Code::PermissionDenied
+                },
+                "{fault}"
+            );
             continue;
         }
         let reply = result?;
