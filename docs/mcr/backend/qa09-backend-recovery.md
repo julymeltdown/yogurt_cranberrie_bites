@@ -1,7 +1,8 @@
 # QA09-BE recovery orchestration and owner observations
 
-Status: IN_PROGRESS. Source observer regressions passed; fresh physical recovery
-qualification and normal Root publication are pending. Original QA09 remains open.
+Status: IN_PROGRESS. Twenty source regressions and the fresh physical recovery,
+owned-restart and read-only SQL supporting qualification passed. Normal Root
+publication/readback remain pending. Original QA09 remains open.
 
 ## Assignment and original criteria
 
@@ -140,10 +141,119 @@ redaction, binding drift, read-only SQL construction, unsupported metadata,
 exclusive private reports and both-script checkpoint pins. Dictionary fixtures
 are pure algorithm checks, never native/runtime or product acceptance evidence.
 
-Fresh Cargo/target/native/PG recovery: NOT_RUN pending a fresh named resource
-OFFER and actual ACCEPT. No resources held. Future qualification retains the
-16 GiB new-start and continuous 8 GiB disk floors, whole-task byte limits,
-absolute deadlines, target release before copied execution, and exact-owned
-cluster cleanup. Original negative restore cases retain quarantine until owned
-teardown; teardown is not native settlement. Normal publication and independent
-remote ancestry/postimage proof remain required before this bounded delivery closes.
+## Fresh supporting recovery qualification
+
+Exact tested source: `73636ad86f3ba42dbf939a6487e557b97d89b5c0` (source commits
+`7b59208d`, `320eb6c5`, `73636ad8` on the stated base). This evidence update changes
+only documentation. Both Python scripts and all compiled inputs remain byte
+identical to the tested checkpoint. Standard-library source tests passed 20/20;
+AST, plan CLI, `git diff --check`, and planning checker also exited 0. Planning
+validation is separate from application/recovery acceptance.
+
+Fresh resource round `QA09-BE-RESTORE-MEDIA-202611041321Z` actually accepted
+2026-11-04 13:23:55.066965 UTC with 33,895,231,488 free bytes. Absolute compilation
+stop 13:43:55 UTC, work stop 13:50:55 UTC, hard/full-release stop 13:53:55 UTC.
+Rust 1.88.0, locked/offline, two jobs, debug/incremental off, both Rust flag
+variables unset, and contracts-build dev opt-level 2 were used. Exact command:
+
+```sh
+cargo +1.88.0 test -p concert-service --test canonical_owner_restore --no-run --locked --offline -j2 --message-format=json
+```
+
+Build attempt 1 exited 101: cached contract build code supplied the old
+`be-world-recipient-producer` protobuf include path. The worker incorrectly
+interpreted the original metadata exception as covering
+`backend/crates/contracts-build/src/lib.rs` and refreshed that own file's mtime
+before the allocator extended that exact exception. The allocator explicitly
+extended it **after** the refresh/rebuild/target release. This is not described as
+prior authorization. Content SHA, mode, UID/GID and actual before/after times are
+retained. Before-inode was not captured; current inode is recorded without
+inventing a historical measurement. No content, cache, dependency or fingerprint
+was deleted, no further metadata refresh occurred, and no clock was extended.
+Rebuild exited 0 in 40.37 seconds. The failed attempt and authority-timing
+correction remain in the private evidence.
+
+One exact executable (50,093,744 bytes) was frozen outside the existing selected
+MEDIA target with Cargo JSON, complete source/tree/diff, 3712 runtime/source
+pins including both QA09 scripts, original fixture checkpoint, library links and
+fresh PG tool hashes. Copy/freeze took 1.24 seconds. Unconditional target release
+at 13:26:47.856761 UTC recorded zero target handles before any copied/native/PG
+execution. There was no target access afterward. Actual owned servers verified
+PostgreSQL **16.14** using `/opt/homebrew/opt/postgresql@16/bin`.
+
+The unchanged original controller launched only:
+
+```text
+<copied canonical_owner_restore executable> --ignored --exact canonical_owner_restore_process --test-threads=1 --nocapture --format terse
+```
+
+The QA09 CLI delegated that original runner. Private tracking instrumentation
+recorded its constructor-authenticated owned roots and charged all source and
+restored data, backup, PKI, logs, copied executable and proofs. At each restored
+cluster's pre-cleanup boundary, the new observer read Auth/Concert projections,
+the new helper stopped/restarted that same cluster, and the observer read again.
+Original fixture/controller/source files were unchanged. Instrumentation does
+not introduce business rows, authority or a replacement feature harness.
+
+Native attempt 1 reached FINISHED plus one restart and two owner observer pairs,
+then its private resource monitor raced with normal directory teardown: the
+marker had been removed while the exact owned directory still existed. The
+monitor interrupted cleanup. The remaining directory was removed only after
+matching its constructor-recorded inode/UID and confirming no postmaster PID
+file. The failed attempt's paired native/report artifacts and monitor failure
+remain intact under `attempt-1/`. The private monitor was corrected to retain
+the constructor-authenticated inode binding during marker-removal teardown.
+All source bytes remained unchanged.
+
+The retry passed within the **same original cumulative 420-second window**
+(deadline 13:34:16.024061 UTC), ending at 13:30:07.069048 UTC. No native clock
+reset, target re-entry, source/SQL change or allocation extension occurred.
+
+| Final supporting case | Prepared work before teardown | Result |
+|---|---|---|
+| FINISHED | All five owners zero | PASS; supported native settlement |
+| ACTIVE | Auth/Friend/Concert/Profile one each; Notification zero | PASS; quarantine retained, not settlement |
+| MISSING_WITNESS | Auth/Friend one each; other owners zero | PASS; quarantine retained, not settlement |
+
+All three same-owned-cluster restarts preserved actual prepared GID/XID/database
+state and system lineage, with distinct postmasters. Prepared counts were
+`0`, `4`, `2`. The final run produced six before/after owner pairs (12 snapshots,
+36 table projections), with no observer SQL errors and exact migration receipts:
+Auth 18, Concert 40, Friend 18, Notification 6, Profile 9. Scoped business rows
+were empty: this validates the SQL/helper against real owner schemas, **not**
+outbox, pickup, deletion or closure behavior. The extra first-attempt FINISHED
+and restart are preserved history, not additional final acceptance credits.
+
+Full release at 13:31:11.233725 UTC verified all eight allocated roots absent,
+including the failed attempt's two roots, with zero owned processes/listeners,
+private TMP entries and executable copies. Copy hash was verified before removal.
+Peak whole allocation was 1,123,263,421 bytes (below 2 GiB), runtime roots peaked
+at 314,601,472 bytes, and at most 22 owned processes were observed (cap 80), with
+one postmaster at a time. Accounting includes conservative 536,870,912-byte old
+Gateway carry and 217,587,712-byte new target growth; failed-attempt history was
+not reset. The continuous 8 GiB floor held. Retained proof was approximately
+4.81 MB after executable removal; no resources remain held.
+
+Private evidence directory:
+`/var/folders/j4/41h_5mjj7j9d8f2j2bzcsngw0000gn/T/mcr-qa09-be-2yvq03iw/`.
+
+| Receipt | SHA-256 |
+|---|---|
+| `native.json` | `4a9706cbdcc822d73ebf6a66436612e9ccada2bd53f6806e023e9e8d222949d5` |
+| `restart-observer.json` | `766ab457a619b8eaa6513b1fce2596ddbc8dcf049aa79499dee7dfd8e43e593b` |
+| `observer-sql.json` | `829190a4d3fa6a4edfee6f50ff928f89c77b228744e39f761c0acefd8c2305fb` |
+| `runtime-result.json` | `40be35bd772f61b413e694f4eac6a754b60f6abf5460bb48608d7c23496aa84c` |
+| `full-release.json` | `c4f93fce5333a5823a12a336663b8219d1701cde37ad84a062ff068e0d9a76d1` |
+| `metadata-authority-correction.json` | `c62833be077dcfa17f8f9cc3d8e288df221651d918ca5895b90fa6bd2e7f31eb` |
+
+`qualified-support-report.json` is an independently assembled immutable envelope:
+physical restart and restore cases are IN_PROGRESS with pinned component proofs;
+other original cases remain NOT_RUN. Restart phase timestamps refer to its first
+actual qualified physical boundary; all three per-cluster records are pinned.
+Frontend source remains unknown/null. No candidate-bound browser or whole-case
+credit is inferred. The CLI's original report and both failed attempts are
+preserved separately. Original QA09 still requires actual application restart,
+consumer-bound outbox replay, pending/committed pickup, deletion fencing and
+privileged partial closure on the real current candidate. Those requirements
+are not removed by this supporting delivery. Normal Root publication and own
+fresh ancestry/postimage proof are separate from those outstanding product gates.
