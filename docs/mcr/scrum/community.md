@@ -31,6 +31,83 @@ milestones, ready unstaffed work, blockers/decisions and links to owner records.
 Immediate escalation is limited to cross-lane conflicts unresolved directly,
 genuinely unattended critical work or human-required product/access decisions.
 
+## PI05 ready-scope staffing — 2026-11-05 08:33 KST
+
+Canonical publication receipt: prior Community source5c262f97d is now delivered
+as master62e5ef7bbb4fa228b6705ce95124186a7e56a068, exact one document in the
+publisher's five-document batch, basef025/current-master-only ancestry retained.
+No receipt-only successor, manager acknowledgment or implementation rerun is
+required. Current updates below are actual new staffing/source deltas.
+
+Frontend King authorized whole PI05 through the compatible existing Meet6950,
+original FE21/FE22/FE23/FE29/FE30/QA06 and required IA M01-M08. Initial immediate
+snapshot was terminal/notLoaded, clean codex/mcr-fe-meet-density at ebfad2aa,
+leases returned/resources0 and old broader Meet goal BLOCKED unfinished. Intake
+send first met an archived chat; subsequent actual state already showed a new
+active turn01a1a8e7. Community continued that turn without another restart,
+model override, new chat or invented custody. Receiver actually confirms compatibility and conditional PI05 acceptance,
+but historical2970 checkout is ABSENT. Original CSS-only BLOCKED goal remains
+unfinished; broader PI05 objective will be recorded alongside after actual grant.
+No restore/copy/new worktree or resource held. Root exact existing-checkout
+loan and literal presentation scope are pending; this is not write acceptance.
+UI533 identifies returned26e fe-ref-customize only as a candidate, not free
+custody. No development grant is inferred from dispatch or old checkout metadata.
+
+Finish-to-delivery objective: functioning Parade Ink Meet discovery,
+applications, create/manage/rally, People and introductions using current
+truthful authorized data/actions; Photo4 anatomy translated into Photo2
+light panels/black headers/black selected tabs/crimson primary. Consume one
+fixed PI01 API independently of its full completion or backend wave. Developer
+owns relevant tests, normalized390 reference comparison plus changed360/430,
+state/focus/safe-area checks, fixes, minimal documentation and exact committed
+handoff direct412e through canonical receipt. Selected approved portraits only;
+no DM/handle/SayHi/level semantics, new assets or false membership success.
+
+Root153 is arranging literal former STOP and exact existing rendering/CSS,
+newhelpers/tests/doc/evidence source scope and isolated checkout custody.
+Protect204 Party authorized Manage/rally/navigation and IN02 tests,1eed FE38,
+53d clock/Admin,230 Reports,50 QA01 and Root composition. No implicit controller,
+transport/clock/Auth/World/router/manifest/lockfile rights. Resource scheduling
+remains single21d; source preparation may proceed under actual granted limits,
+execution only under fresh usable allocation. Old goals remain truthful; reuse
+an aligned goal, create unbudgeted only when none unfinished, otherwise record
+this authorized objective without false complete/reset/pause. No manager review,
+ACK, ledger or whole-design gate.
+
+Related actual UI custody now established: Root reports PI04 receiver accepted
+its returned exclusive checkout and exact grant; Feed/Thread switched to its
+booked branch and started markup. These are source/custody observations, not
+family acceptance. PI05 remains independently ready pending its own custody.
+Root also transferred only ServicePolicy child mount/cleanup/render hunks in
+operations-composition owner.ts/panel.tsx to1eed, protected230 Reports child
+and every other Root hunk. Direct1eed/230 read-set/preimage coordination handles
+any literal overlap before mutation; validation/publication stay developer-owned.
+This closes a genuine FE38 caller seam, not general Root or Parade ownership.
+
+Current resource exception after this intake: Root153 reports Feed/Thread and
+backend owners measured about4.7GB free, below agreed safetyfloor, and froze
+further checkout/source growth while notifying sole allocator21d. No clean-up
+or history deletion is authorized. Community relayed this actual restriction
+directly6950: read-only preparation only, no restore/install/newcheckout/branch
+or source growth, no stale pre-floor offer acceptance. PI05 remains compatible
+and conditionally accepted; actual custody/grant/write acceptance is pending
+usable current Root/21d capacity, not manager review. Existing goals preserved,
+not paused/reset, no second allocator/offer queue or speculative replacement.
+
+Other fresh functional contributions: FE38 owner1eed reports qualifiedsource
+280da366869d7e32e65f5b0f302b9c73960ee345 /sealedcheckpoint
+b823416acadb859a9cdfa093eaf0401f9aa4b73a,36 NEW paths direct412e publication
+pending. All34 new cases and six source commands PASS; first assertion failure
+preserved and fixed by owner, guardsNULL/resources0. Controlled leaf native
+qualification queued21d; actual defaultAdmin/LIVE and wholeFE38 stay open.
+QA01 owner50 now deliveredsource130a9da6743fab3c49fecf8be7211ae3d343f007,
+three NEW documents containing truthful original-row disposition,63-command
+trace and243 source hashes; minimal doc proofPASS, reused qualified150/1727
+baseline. Direct412e publication pending. Existing sl-world returned clean at
+19d41968ca75db2aaf037167cd74a792a0de5c0e,112MiB booking released/resources0.
+Persistent historical usageLimited metadata preserved; original closure not
+inferred before exact responsible disposition/canonical receipt.
+
 ## Hourly reconciliation — 2026-11-05 08:20 KST
 
 Current canonical functional plan/register snapshot08:20:03 records49/111
