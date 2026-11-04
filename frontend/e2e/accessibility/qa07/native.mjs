@@ -18,10 +18,10 @@ async function collect(dir) {
   for (const entry of await readdir(dir, { withFileTypes: true })) {
     const file = resolve(dir, entry.name)
     if (entry.isDirectory()) { if (!['evidence', 'node_modules', '.cache'].includes(entry.name) && !entry.name.endsWith('-evidence')) await collect(file) }
-    else if (/\.(tsx?|css|html|json|mjs)$/.test(file)) pins[relative(root, file)] = createHash('sha256').update(await readFile(file)).digest('hex')
+    else if (/\.(tsx?|css|html|json|mjs|png|svg|webp|jpe?g|gif)$/.test(file)) pins[relative(root, file)] = createHash('sha256').update(await readFile(file)).digest('hex')
   }
 }
-for (const dir of ['frontend/src', 'frontend/e2e/accessibility/qa07', 'contracts/domain/v1', 'contracts/realtime/v1', 'contracts/assets', 'contracts/fixtures/domain', 'contracts/fixtures/realtime']) await collect(resolve(root, dir))
+for (const dir of ['frontend/src', 'frontend/public/world', 'frontend/e2e/accessibility/qa07', 'contracts/domain/v1', 'contracts/realtime/v1', 'contracts/assets', 'contracts/fixtures/domain', 'contracts/fixtures/realtime']) await collect(resolve(root, dir))
 for (const path of ['MCR_IMPLEMENTATION_PLAN_V2_EN.md', 'contracts/generated/mcr-domain.openapi.json', 'frontend/pnpm-lock.yaml']) pins[path] = createHash('sha256').update(await readFile(resolve(root, path))).digest('hex')
 await writeFile(resolve(output, 'input-pins.json'), JSON.stringify(pins, null, 2) + '\n')
 const dependencyRoot = await realpath(resolve(frontend, 'node_modules'))
@@ -226,7 +226,8 @@ try {
       await expect.poll(async () => (await state()).phase).toBe('live')
       assert.equal((await state()).sockets, 1, 'A full panel must preserve the original world socket')
       notes.push('Actual Root/FE18 Nearby authorized DOM alternatives and FE19 illustrated Map keyboard controls/labels; fixture route placement for Nearby, no live room admission')
-      notes.push({ socketsBeforeNearby: sockets, socketsAfterNearby: (await state()).sockets, game: await p.evaluate(() => window.__SCENE_ROOT__.inspectWorld()) })
+      const final = await state()
+      notes.push({ socketsBeforeNearby: sockets, socketsAfterNearby: final.sockets, game: await p.evaluate(() => window.__SCENE_ROOT__.inspectWorld()), map: final.map, themes: final.suppliedThemePins, originalMapProvenance: final.originalMapProvenance, suppliedThemeProvenance: final.suppliedThemeProvenance })
     })
     await run('profile-return', width, async (p, notes) => {
       await p.clock.setFixedTime(new Date('2026-11-07T07:00:00Z'))
