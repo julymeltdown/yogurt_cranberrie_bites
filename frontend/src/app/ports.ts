@@ -8,6 +8,7 @@ import type { PrivacyScope } from '../shared/query/privacy'
 import { createMemorySession, type SessionPort, type SessionScope } from '../shared/api/http'
 import { createRootCharacterRegistry, type RootCharacterRegistry } from './character-entry/runtime'
 import type { ConnectionStatusController } from '../features/connection-status/model'
+import { createDefaultAdmin, type AdminComposition } from './operations-composition/owner'
 
 export type SessionReadiness = 'unknown' | 'checking' | 'ready' | 'anonymous' | 'unavailable' | 'error'
 export interface ReadinessPort {
@@ -69,7 +70,9 @@ export interface ShellPorts {
   /** Application teardown; does not replace the canonical Auth owner. */
   readonly dispose?: () => void
   /** Requires a current server authorization decision. C03 participant data grants no admin role. */
-  readonly admin: { authorize(scope: ActiveScope, signal: AbortSignal): Promise<boolean> }
+  readonly admin: { authorize(scope: ActiveScope, signal: AbortSignal): Promise<boolean>
+    /** Retained canonical full-scope owner; a boolean alone cannot mount tools. */
+    open?(scope: ActiveScope): AdminComposition | null }
 }
 export function createProductionPorts(auth?: SessionController, worldOptions: Omit<ProductionWorldOptions, 'auth' | 'characters'> = {}, social?: ShellPorts['social'], publicEventId: string | null = null): ShellPorts {
   if (auth) {
@@ -77,9 +80,10 @@ export function createProductionPorts(auth?: SessionController, worldOptions: Om
     let production: ReturnType<typeof createProductionWorld>
     try { production = createProductionWorld({ ...worldOptions, auth, characters }) }
     catch (error) { characters.dispose(); throw error }
+    const admin = createDefaultAdmin(auth)
     return { eventId: publicEventId, ...(social ? { social } : {}), characters, auth, session: auth.session, readiness: auth.readiness, world: production.world, worldAccess: production.access,
-      dispose() { try { production.dispose() } finally { characters.dispose() } },
-      bootstrap: { load: auth.loadBootstrap }, admin: { authorize: () => Promise.resolve(false) } }
+      dispose() { try { admin.dispose() } finally { try { production.dispose() } finally { characters.dispose() } } },
+      bootstrap: { load: auth.loadBootstrap }, admin }
   }
   return {
     eventId: publicEventId,

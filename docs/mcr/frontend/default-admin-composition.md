@@ -1,0 +1,52 @@
+# Default Admin composition
+
+This bounded assignment replaces the default Admin placeholder with canonical
+production composition of the published Event, Places, Audit, Wall and Closure
+consumers. Source is authored from canonical
+`306626d49cd8b55916cf973ab6eea06569ec98d4` in the retained isolated checkout.
+The completed FE39 branch at `7d4b8b8b` is preserved. Validation and publication
+are pending; this document does not claim current live producer acceptance.
+
+The production ports retain one full-privacy-scope owner above sibling Admin
+routes. Panel navigation borrows the same controllers, preserving unresolved
+commands and their original keys. No panel cleanup disposes this owner. Canonical
+privacy, identity, decision replacement, expiry, clock interruption and application
+teardown withdraw the children. Null is observable before abort/disposal or
+replacement callbacks. Legacy boolean-only injected ports remain compatible and
+cannot manufacture control factories.
+
+The common operations decision supplies only the independently versioned role,
+decision identity and qualified monotonic clock. The composition then requests
+registered `getConcertSettings` with canonical Auth. Its closed existing decoder
+requires settings revision to equal event revision and binds the event ID and
+canonical generation. That response supplies event revision and phase; role
+revision remains independent. An OPERATOR role alone grants no event state,
+report evidence or reviewed place write release. MODERATOR does not gain event
+operator controls. READ_ONLY and ARCHIVED are valid operator observation states;
+they do not close canonical privacy or manufacture participant writes. Existing
+closure guards decide whether start/resume/observation is allowed.
+
+Event/settings responses from the retained event controller update the joined
+event context, without replacing the role decision or the retained entry.
+Rewinding revisions or changing equal-revision settings withdraw the composition.
+Missing report/evidence/moderation producers remain explicit unavailable states
+owned by Operations205. Place review mounts the existing authorized reader;
+BE08/Operations205 still owns the independently qualified map/write release.
+No role-derived place writer is installed.
+
+The current generated registry does not register
+`getOwnConcertOperationsAccess`. The published common consumer therefore makes
+no fallback request and the actual product remains unavailable until the
+registered typed Operations205 producer and Root publication exist. Focused
+controlled HTTP tests use only the frozen `3a089a3b` test registration, explicitly
+separate from the production registry. The proposed single 390px native journey
+uses the actual unmodified index.html/main.tsx/AdminBoundary/production ports;
+its local Vite harness injects that registration only in served test bytes and
+provides synthetic HTTP. It is not live backend, real role or IN04/IN05 evidence.
+
+Exact writes are NEW `app/operations-composition/**`, this document and its NEW
+evidence prefix; transferred `app/AdminBoundary.tsx`; and only the compatible
+`ShellPorts.admin` extension, production admin binding and disposal hunks in
+`app/ports.ts`. All CSS, main/router/session/World, feature consumers, backend,
+contracts/generated registry, lockfile and unrelated Root/consent hunks remain
+read-only. No new cache, Auth controller, socket, install or build is introduced.

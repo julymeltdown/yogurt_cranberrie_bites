@@ -1,0 +1,13 @@
+{
+  "base": "306626d49cd8b55916cf973ab6eea06569ec98d4",
+  "branch": "codex/mcr-fe-default-admin-composition",
+  "preservedBranch": "codex/mcr-fe-FE39-current-20261105",
+  "preservedSource": "7d4b8b8baf2675cd5282d7e6e4cb87570258e0c2",
+  "qualification": "PENDING_FRESH_FUNCTIONAL_SOURCE_OFFER",
+  "scope": "Default Admin canonical consumer composition and changed boundary only",
+  "actualProducer205": "NOT_QUALIFIED",
+  "productionRoleRegistration": "ABSENT_FAIL_CLOSED_NO_FALLBACK",
+  "placeWriteRelease": "ABSENT_NO_ROLE_DERIVED_GRANT",
+  "missingReviewProducers": "Operations205",
+  "wholeTaskLiveAcceptance": "OPEN_SEPARATE"
+}

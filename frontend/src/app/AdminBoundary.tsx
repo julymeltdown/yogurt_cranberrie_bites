@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom'
 import { Button, Feedback } from '../shared/ui'
 import { AccessNotice, scopeKey, useAccess, usePorts, useScopedLoad } from './access'
 import type { ActiveScope } from './ports'
+import { DefaultAdminPanel } from './operations-composition/panel'
 
 export default function AdminBoundary() {
   const { scope } = useAccess()
@@ -10,6 +11,11 @@ export default function AdminBoundary() {
   return <AdminAccess key={scopeKey(scope)} scope={scope} />
 }
 function AdminAccess({ scope }: { scope: ActiveScope }) {
+  const ports = usePorts()
+  return ports.admin.open ? <DefaultAdminPanel scope={scope} /> : <LegacyAdminAccess scope={scope} />
+}
+// Compatible older injected shell ports never gain controls from a boolean.
+function LegacyAdminAccess({ scope }: { scope: ActiveScope }) {
   const ports = usePorts()
   const [attempt, setAttempt] = useState(0)
   const access = useScopedLoad(scope, signal => ports.admin.authorize(scope, signal), attempt)
