@@ -322,6 +322,18 @@ class Composition(unittest.TestCase):
         self.manifest["ia"][0]["receipt_ids"] = ["frontend"]
         self.rule("binding.criteria-not-qualified")
 
+    def test_unrelated_live_receipt_cannot_lend_its_level_to_native_ia_coverage(self):
+        record = self.manifest["ia"][0]
+        self.reports["live"]["coverage"]["ia_ids"].remove(record["id"])
+        record["receipt_ids"] = ["backend", "live"]
+        self.rule("ia.unit-as-product")
+
+    def test_unrelated_live_receipt_cannot_lend_its_level_to_native_gate_coverage(self):
+        record = next(row for row in self.manifest["gates"] if row["id"] == "IN02")
+        self.reports["live"]["coverage"]["gate_ids"].remove("IN02")
+        record["receipt_ids"] = ["backend", "live"]
+        self.rule("gates.unit-as-live")
+
     def test_duplicate_or_unknown_original_id_refused(self):
         self.manifest["tasks"][0]["id"] = "INVENTED"
         self.rule("tasks.unknown-or-duplicate")

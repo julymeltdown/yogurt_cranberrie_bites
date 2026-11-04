@@ -62,13 +62,14 @@ def binding(repo, record, expected, receipts, coverage_kind):
     paths = names(record["paths"], "binding.paths")
     checks = names(record["receipt_ids"], "binding.receipts")
     source.require(all(c in receipts for c in checks), "binding.receipt-not-qualified")
-    source.require(any(record["id"] in receipts[c]["coverage"][coverage_kind] for c in checks),
-                   "binding.criteria-not-qualified")
+    qualified = [receipts[c] for c in checks if record["id"] in receipts[c]["coverage"][coverage_kind]]
+    source.require(qualified, "binding.criteria-not-qualified")
     for path in paths:
         repo.path(path)
-        source.require(any(path in receipts[c]["pins"] for c in checks), "binding.source-not-qualified")
+        source.require(any(path in receipt["pins"] for receipt in qualified), "binding.source-not-qualified")
         source.require(repo.git("rev-parse", commit + ":" + path)
                        == repo.git("rev-parse", expected + ":" + path), "binding.stale-source")
+    return qualified
 
 
 def deferral(repo, document, expected, tasks):
@@ -190,8 +191,8 @@ def evaluate(root, expected, manifest=None):
             if not record or record["status"] != "ACCEPTED":
                 missing_ia.append(identity)
                 continue
-            binding(repo, record, expected, receipts, "ia_ids")
-            source.require(any(receipts[c]["level"] in ("live", "device") for c in record["receipt_ids"]),
+            qualified = binding(repo, record, expected, receipts, "ia_ids")
+            source.require(any(receipt["level"] in ("live", "device") for receipt in qualified),
                            "ia.unit-as-product")
             source.require(all(t in tasks for t in screen["task_ids"]), "ia.unknown-task")
             source.require(all(any(owned(p, tasks[t]["owned_paths"]) for t in screen["task_ids"])
@@ -213,8 +214,7 @@ def evaluate(root, expected, manifest=None):
                 gaps.append("gate." + identity + "." + state)
                 result["gates"].append({"id": identity, "status": state})
                 continue
-            binding(repo, record, expected, receipts, "gate_ids")
-            selected = [receipts[c] for c in record["receipt_ids"]]
+            selected = binding(repo, record, expected, receipts, "gate_ids")
             source.require(any(r["level"] in levels for r in selected), "gates.unit-as-live")
             if identity == "QA06":
                 platforms = {r["context"]["device"]["platform"] for r in selected if r["level"] == "device"}
