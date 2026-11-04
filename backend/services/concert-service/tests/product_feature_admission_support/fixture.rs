@@ -15,7 +15,6 @@ use platform::{
 };
 use prost::Message;
 use std::{
-    convert::Infallible,
     sync::{
         atomic::{AtomicUsize, Ordering},
         Arc, Mutex,
@@ -116,8 +115,7 @@ pub async fn call(
     server: GuardedService<ProductServiceServer<ProductRpcService>>,
     request: http::Request<Body>,
 ) -> (Code, String) {
-    let response: Result<http::Response<Body>, Infallible> =
-        CallDeadlineLayer.layer(server).oneshot(request).await;
+    let response = CallDeadlineLayer.layer(server).oneshot(request).await;
     let response = response.unwrap();
     let headers = response.headers().clone();
     let collected = response.into_body().collect().await.unwrap();
