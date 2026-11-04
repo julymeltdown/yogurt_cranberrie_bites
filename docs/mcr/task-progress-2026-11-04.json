@@ -1,18 +1,18 @@
 {
-  "updated_at": "2026-11-04T09:21:37+09:00",
-  "published_snapshot": "1249430fa09537fa7a5b3499916e29ad0683fe32",
+  "updated_at": "2026-11-04T09:44:43+09:00",
+  "published_snapshot": "2db32fdf274bee227533774930e8b7207e29e95e",
   "method": "Management reconciliation of published task dispositions and existing developer/SL receipts; no code/query/visual/test inspection or reruns. Publication ancestry only was checked for task-linked delivery commits.",
   "required_tasks": 112,
   "required_ia_entries": 61,
   "optional_tasks_excluded": 6,
   "counts": {
     "RECORDED_ACCEPTED": 12,
-    "IMPLEMENTATION_EVIDENCED": 75,
+    "IMPLEMENTATION_EVIDENCED": 74,
     "UNRECONCILED": 10,
-    "TASK_CRITERIA_SATISFIED": 10,
+    "TASK_CRITERIA_SATISFIED": 11,
     "OPEN_INTEGRATION_GATE": 5
   },
-  "recorded_task_criteria_outcomes": 22,
+  "recorded_task_criteria_outcomes": 23,
   "implementation_percentage": null,
   "limitations": [
     "12 recorded ACCEPTED dispositions comprise 11 preserved historical records plus the explicit FE08 implementation-owner acceptance; 10 additional task-local SATISFIED dispositions comprise the previous nine frontend records plus original BE25. No new king/SL technical acceptance is asserted.",
@@ -1058,12 +1058,17 @@
       "id": "FE33",
       "title": "Mural synchronization and world object",
       "lane": "FE-WORLD",
-      "coverage_bucket": "IMPLEMENTATION_EVIDENCED",
-      "recorded_state": null,
+      "coverage_bucket": "TASK_CRITERIA_SATISFIED",
+      "recorded_state": "MOCK_READY",
       "evidence": [
-        "docs/mcr/frontend/mural-sync.md"
+        "docs/mcr/frontend/mural-sync.md",
+        "docs/mcr/frontend/mural-entry-lifecycle.md"
       ],
-      "note": "Published receipt or owner report records bounded implementation/fixture/component work. Whole original-task completion is partial or not yet reconciled; no additional live/device gate is imposed on a pure task."
+      "note": "The implementation owner explicitly declares original FE33 frontend criteria SATISFIED under the frozen-contract/fixture scope in published 7c2f3af7: convergence, rejected-preview rollback and restore invalidation. MOCK_READY describes the environment; it does not withhold the reported task-local criteria outcome. No king or SL technical review was performed.",
+      "known_followup": "Separate production integration: actual anchor/source/server eligibility, Gateway admission/mappings/fence and caller assembly remain assigned to their implementation owners. The caller assembly continues under a separate active goal; shared generated Feed hash metadata correction is separately owned. Neither is silently treated as full live/IN04 acceptance.",
+      "published_integration_commits": [
+        "7c2f3af7b9fd7bab2ed2d863cc2262527cc8553e"
+      ]
     },
     {
       "id": "FE34",
@@ -1318,6 +1323,13 @@
       "owner_chat": "01a1a207-f012-7343-a24b-12b9c544973f",
       "receipt_commit": "3810016a",
       "disposition": "SATISFIED, original pure-policy criteria; actual goal COMPLETE"
+    },
+    {
+      "recorded_at": "2026-11-04T09:44:43+09:00",
+      "task": "FE33",
+      "owner_chat": "01a1a230-6acc-7e82-9e4b-92506decc745",
+      "receipt_commit": "7c2f3af7b9fd7bab2ed2d863cc2262527cc8553e",
+      "disposition": "SATISFIED, original frontend contract/fixture criteria; actual bounded goal COMPLETE, separate caller-assembly goal ACTIVE"
     }
   ]
 }

@@ -1,6 +1,6 @@
 # Execution record
 
-Updated **2026-11-04T09:21:37+09:00**, from published history through `1249430f` and existing developer/SL delivery reports. This is a management reconciliation, not a code, query, visual or test review. All **112 required tasks and 61 required IA entries** remain in scope; the six optional EX tasks are excluded from the denominator.
+Updated **2026-11-04T09:44:43+09:00**, from published history through `2db32fdf` and existing developer/SL delivery reports. This is a management reconciliation, not a code, query, visual or test review. All **112 required tasks and 61 required IA entries** remain in scope; the six optional EX tasks are excluded from the denominator.
 
 ## Current task accounting
 
@@ -9,13 +9,13 @@ Updated **2026-11-04T09:21:37+09:00**, from published history through `1249430f`
 | Original-task disposition | Count | Meaning |
 | --- | ---: | --- |
 | Recorded acceptance dispositions | **12** | Eleven historical ACCEPTED records plus the implementation owner's explicit original FE08 acceptance. |
-| Additional task-local criteria satisfied | **10** | Nine existing frontend dispositions plus original BE25; no new king/SL technical sign-off. |
-| Other implementation evidence | **75** | Bounded implementation, fixtures or component delivery exist; original-task completion is partial or not yet reconciled. |
+| Additional task-local criteria satisfied | **11** | Nine existing frontend dispositions plus original BE25 and FE33; no new king/SL technical sign-off. |
+| Other implementation evidence | **74** | Bounded implementation, fixtures or component delivery exist; original-task completion is partial or not yet reconciled. |
 | Status not yet reconciled | **10** | Insufficient current per-task disposition in this reconciliation; not assumed unstarted. |
 | Open integrated-product/release gates | **5** | IN01–IN05 have no completed gate receipt in the current reports. |
 | **Required total** | **112** | Every original required ID appears once in the linked register. |
 
-There are **22 recorded task-criteria outcomes** (12 recorded acceptance dispositions plus 10 additional task-local dispositions), **not only 11 tasks with implementation**. The latest two closures are original **FE08** and **BE25**, explicitly reported by their implementation owners and deduplicated against the previous 20. This is not a claim that 22 tasks were newly accepted today, nor an effort-weighted completion percentage. The 75 evidence-bearing tasks are not silently counted as complete. A completed worker goal, a new commit, a test count or an assistance artifact adds no original task IDs.
+There are **23 recorded task-criteria outcomes** (12 recorded acceptance dispositions plus 11 additional task-local dispositions), **not only 11 tasks with implementation**. The latest closure is original **FE33**, explicitly reported by its implementation owner and added once after FE08 and BE25 brought the previous total to 22. This is not a claim that 23 tasks were newly accepted today, nor an effort-weighted completion percentage. The 74 evidence-bearing tasks are not silently counted as complete. A completed worker goal, a new commit, a test count or an assistance artifact adds no original task IDs.
 
 The [112-row task register](task-progress-2026-11-04.json) records each original ID, its evidence pointers and the distinction above. Its null states mean unreconciled completion, not NOT_STARTED. No current full-product completion percentage is asserted.
 
@@ -31,6 +31,7 @@ The [112-row task register](task-progress-2026-11-04.json) records each original
 | **FE40** | [Archive owner record](frontend/archive.md) explicitly records the complete assigned read-only feature and its task-local fixture criteria implemented. Real closure/publication/media and integrated-product acceptance are separate. |
 | **FE08** | The [Landing owner record](frontend/reference-public.md) explicitly declares original frontend criteria ACCEPTED in `0c76e427`, with required artwork `b01eb708` delivered. This is owner-declared task-local acceptance, not a new king/SL review. Production legal/contact content and its document-provider composition remain separate A07/BE38 dependencies. |
 | **BE25** | The policy implementation owner reconciled the original pure-policy scope and reports no remaining criterion; the old goal is actually COMPLETE. Published `3810016a` and [combined qualification record](backend/intro-age-combined-qualification.md) support the disposition. A separate canonical-authority goal is ACTIVE; its provider/DB/RPC work does not keep original BE25 open. |
+| **FE33** | The [mural lifecycle owner record](frontend/mural-entry-lifecycle.md), published `7c2f3af7`, explicitly declares original frontend convergence, rejected-preview rollback and restore-invalidation criteria SATISFIED under frozen contracts/fixtures. The bounded goal is complete; separately assigned caller assembly and actual backend/IN04 integration remain open. |
 
 This reconciliation preserves the owners' actual dispositions: FE08 is explicitly owner-declared ACCEPTED, while the other newly reconciled SATISFIED records are not relabeled as new formal acceptances. Known follow-up requirements, including the later exact visual target, remain tracked even when the original task-local implementation criteria were met.
 
