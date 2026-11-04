@@ -1,0 +1,32 @@
+
+ RUN  v4.1.9 <FE17_WORKTREE>/frontend
+
+ ↓ src/world/network/__tests__/replication.test.ts > FE17 authoritative entity projection > consumes canonical filtered-viewer stream for 00000000-0000-4000-8000-000000000001
+ ↓ src/world/network/__tests__/replication.test.ts > FE17 authoritative entity projection > consumes canonical filtered-viewer stream for 00000000-0000-4000-8000-000000000002
+ ↓ src/world/network/__tests__/replication.test.ts > FE17 authoritative entity projection > consumes canonical filtered-viewer stream for 00000000-0000-4000-8000-000000000003
+ ↓ src/world/network/__tests__/replication.test.ts > FE17 authoritative entity projection > replaces snapshots, applies atomic upserts/removals and never retains snapshot.players
+ ↓ src/world/network/__tests__/replication.test.ts > FE17 authoritative entity projection > interpolates only remote positions within one 100ms window and never extrapolates/local-predicts
+ ↓ src/world/network/__tests__/replication.test.ts > FE17 authoritative entity projection > accepts tick skips without treating viewer-filtered changes as missing deltas
+ ↓ src/world/network/__tests__/replication.test.ts > FE17 authoritative entity projection > epoch mismatch requests epoch recovery and clears old positions
+ ↓ src/world/network/__tests__/replication.test.ts > FE17 authoritative entity projection > retains at most the current capacity roster under repeated coalesced position changes
+ ✓ src/world/network/__tests__/replication.test.ts > FE17 authoritative entity projection > a gap clears ghosts, requests one resync, discards queued old changes and replaces the complete baseline 20ms
+ ↓ src/world/network/__tests__/replication.test.ts > FE17 authoritative entity projection > spaces repeated resyncs without adding another recovery or reconnect loop
+ ↓ src/world/network/__tests__/replication.test.ts > FE17 bounded input and transport lifecycle > coalesces normalized axes to 20Hz, sends interactions once and reconciles acknowledgements without replay
+ ↓ src/world/network/__tests__/replication.test.ts > FE17 bounded input and transport lifecycle > bounds unacknowledged input at 64 and recovers instead of growing a replay queue
+ ↓ src/world/network/__tests__/replication.test.ts > FE17 bounded input and transport lifecycle > does not accumulate an idle replay ledger or run an idle cadence after sending neutral once
+ ↓ src/world/network/__tests__/replication.test.ts > FE17 bounded input and transport lifecycle > terminal MAP_VERSION_MISMATCH clears roster without an in-place resync
+ ↓ src/world/network/__tests__/replication.test.ts > FE17 bounded input and transport lifecycle > terminal BACKPRESSURE clears roster without an in-place resync
+ ↓ src/world/network/__tests__/replication.test.ts > FE17 bounded input and transport lifecycle > responds to the existing heartbeat event without owning a heartbeat timer
+ ↓ src/world/network/__tests__/replication.test.ts > FE17 bounded input and transport lifecycle > hidden teardown removes ghosts/listeners, foreground gets a fresh ticket once and replays no old intent
+ ↓ src/world/network/__tests__/replication.test.ts > FE17 bounded input and transport lifecycle > can start hidden without acquiring a ticket until first foreground
+ ↓ src/world/network/__tests__/replication.test.ts > FE17 bounded input and transport lifecycle > does not reconnect on unexpected close until explicit retry
+ ↓ src/world/network/__tests__/replication.test.ts > FE17 bounded input and transport lifecycle > canonical owner replacement while a ticket is pending disposes and ignores its eventual result
+ ↓ src/world/network/__tests__/replication.test.ts > FE17 bounded input and transport lifecycle > revoke clears all data and disables visibility takeover and retries
+ ↓ src/world/network/__tests__/replication.test.ts > FE17 bounded input and transport lifecycle > sink failure and reentrant disposal cannot leave an active transport, timers or later commits
+ ↓ src/world/network/__tests__/replication.test.ts > FE17 bounded input and transport lifecycle > room ticket denial preserves old baseline and movement; target snapshot atomically resets roster
+
+ Test Files  1 passed (1)
+      Tests  1 passed | 22 skipped (23)
+   Start at  10:47:44
+   Duration  232ms (transform 91ms, setup 0ms, import 139ms, tests 21ms, environment 0ms)
+

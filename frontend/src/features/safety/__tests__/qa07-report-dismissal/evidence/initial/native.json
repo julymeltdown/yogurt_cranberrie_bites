@@ -1,0 +1,66 @@
+{
+  "candidate": "ca0d2d7b3d3a73abb7a338dada30d5cdd5987d94",
+  "pins": {
+    "src/features/safety/controller.ts": "3d0981ba8c525781e92c6658f5bc225b456e58f590bb3a8dbd6fc723cb23713e",
+    "src/features/safety/panels.tsx": "20ec17735ca3707edc70696c89276cf0c612228d322caa9d76f95e6c4d315875",
+    "src/features/safety/__tests__/preview.tsx": "49aeb6eecb3c6561bece477e74691eb4a856bc3ab6bb9900e0f589e9b588a33d",
+    "src/features/safety/__tests__/qa07-report-dismissal/native.mjs": "f6aa0a946e1ae6ed6c654fef82073e5f8581b575d023991651f62f13ff29daf6",
+    "pnpm-lock.yaml": "47ca44459819ad0e887d2f4f93394fdf3b1053b8f45edc9ceb0236981feee1f6"
+  },
+  "classification": "Native macOS Chrome; actual retained FE36 controller and product panels; synthetic session/authorization, no live backend or physical-device acceptance",
+  "cases": [
+    {
+      "width": 390,
+      "scenario": "escape",
+      "status": "FAIL",
+      "requests": [],
+      "afterDismiss": {
+        "blockEnabled": false,
+        "status": [
+          "Private views were cleared. Reopen safety controls with your current session."
+        ]
+      },
+      "failure": "Keyboard target disabled: Block user",
+      "errors": []
+    },
+    {
+      "width": 390,
+      "scenario": "close-button",
+      "status": "FAIL",
+      "requests": [],
+      "afterDismiss": {
+        "blockEnabled": false,
+        "status": [
+          "Private views were cleared. Reopen safety controls with your current session."
+        ]
+      },
+      "failure": "Keyboard target disabled: Block user",
+      "errors": []
+    },
+    {
+      "width": 390,
+      "scenario": "policy-revoked",
+      "status": "PASS",
+      "requests": [],
+      "afterDismiss": {
+        "blockEnabled": false,
+        "status": [
+          "Private views were cleared. Reopen safety controls with your current session."
+        ]
+      }
+    },
+    {
+      "width": 390,
+      "scenario": "identity-changed",
+      "status": "PASS",
+      "requests": [],
+      "afterDismiss": {
+        "blockEnabled": false,
+        "status": [
+          "Private views were cleared. Reopen safety controls with your current session."
+        ]
+      }
+    }
+  ],
+  "browser": "156.0.8078.80"
+}

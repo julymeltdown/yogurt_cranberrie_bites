@@ -1,0 +1,54 @@
+[
+  {
+    "role": "RootWebArea",
+    "name": "QA07 synthetic accessibility inputs"
+  },
+  {
+    "role": "generic",
+    "name": ""
+  },
+  {
+    "role": "generic",
+    "name": ""
+  },
+  {
+    "role": "main",
+    "name": ""
+  },
+  {
+    "role": "paragraph",
+    "name": ""
+  },
+  {
+    "role": "button",
+    "name": "Open pickup sheet"
+  },
+  {
+    "role": "link",
+    "name": "Outside navigation"
+  },
+  {
+    "role": "StaticText",
+    "name": "QA07 synthetic sheet; actual shared Dialog."
+  },
+  {
+    "role": "StaticText",
+    "name": "Open pickup sheet"
+  },
+  {
+    "role": "StaticText",
+    "name": "Outside navigation"
+  },
+  {
+    "role": "InlineTextBox",
+    "name": "QA07 synthetic sheet; actual shared Dialog."
+  },
+  {
+    "role": "InlineTextBox",
+    "name": "Open pickup sheet"
+  },
+  {
+    "role": "InlineTextBox",
+    "name": "Outside navigation"
+  }
+]

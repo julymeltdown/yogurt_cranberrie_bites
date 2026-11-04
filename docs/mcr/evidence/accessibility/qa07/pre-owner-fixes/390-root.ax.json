@@ -1,0 +1,158 @@
+[
+  {
+    "role": "RootWebArea",
+    "name": ""
+  },
+  {
+    "role": "generic",
+    "name": ""
+  },
+  {
+    "role": "generic",
+    "name": ""
+  },
+  {
+    "role": "link",
+    "name": "Skip to content"
+  },
+  {
+    "role": "generic",
+    "name": ""
+  },
+  {
+    "role": "StaticText",
+    "name": "Skip to content"
+  },
+  {
+    "role": "main",
+    "name": "NEARBY IN WORLD"
+  },
+  {
+    "role": "InlineTextBox",
+    "name": "Skip to content"
+  },
+  {
+    "role": "sectionheader",
+    "name": ""
+  },
+  {
+    "role": "navigation",
+    "name": "Nearby navigation"
+  },
+  {
+    "role": "heading",
+    "name": "Nearby in world"
+  },
+  {
+    "role": "paragraph",
+    "name": ""
+  },
+  {
+    "role": "status",
+    "name": ""
+  },
+  {
+    "role": "paragraph",
+    "name": ""
+  },
+  {
+    "role": "heading",
+    "name": "NEARBY IN WORLD"
+  },
+  {
+    "role": "button",
+    "name": "Reduce panel"
+  },
+  {
+    "role": "button",
+    "name": "Minimize panel"
+  },
+  {
+    "role": "button",
+    "name": "Back to previous panel"
+  },
+  {
+    "role": "link",
+    "name": "Choose a room"
+  },
+  {
+    "role": "link",
+    "name": "Back to world"
+  },
+  {
+    "role": "StaticText",
+    "name": "Nearby in world"
+  },
+  {
+    "role": "StaticText",
+    "name": "People currently visible to you in this virtual room. This list does not show physical location or distance."
+  },
+  {
+    "role": "StaticText",
+    "name": "The world is paused. The previous list has been cleared."
+  },
+  {
+    "role": "StaticText",
+    "name": "Visibility can change when someone leaves, access changes or blocking applies. Hidden people are not listed."
+  },
+  {
+    "role": "StaticText",
+    "name": "NEARBY IN WORLD"
+  },
+  {
+    "role": "StaticText",
+    "name": "Choose a room"
+  },
+  {
+    "role": "StaticText",
+    "name": "Back to world"
+  },
+  {
+    "role": "InlineTextBox",
+    "name": "Nearby in world"
+  },
+  {
+    "role": "InlineTextBox",
+    "name": "People currently visible to you in this virtual room. "
+  },
+  {
+    "role": "InlineTextBox",
+    "name": "This list does not show physical location or "
+  },
+  {
+    "role": "InlineTextBox",
+    "name": "distance."
+  },
+  {
+    "role": "InlineTextBox",
+    "name": "The world is paused. The previous list has been "
+  },
+  {
+    "role": "InlineTextBox",
+    "name": "cleared."
+  },
+  {
+    "role": "InlineTextBox",
+    "name": "Visibility can change when someone leaves, access "
+  },
+  {
+    "role": "InlineTextBox",
+    "name": "changes or blocking applies. Hidden people are not "
+  },
+  {
+    "role": "InlineTextBox",
+    "name": "listed."
+  },
+  {
+    "role": "InlineTextBox",
+    "name": "NEARBY IN WORLD"
+  },
+  {
+    "role": "InlineTextBox",
+    "name": "Choose a room"
+  },
+  {
+    "role": "InlineTextBox",
+    "name": "Back to world"
+  }
+]

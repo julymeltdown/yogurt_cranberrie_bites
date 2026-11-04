@@ -1,0 +1,505 @@
+{
+  "kind": "SOURCE_PIXEL_HAND_CUT_GARMENT_LAYERS",
+  "status": "IN_PROGRESS",
+  "productionEligible": false,
+  "sourcePack": {
+    "id": "mcr_user_characters_20261103",
+    "revision": 3
+  },
+  "source": {
+    "source_id": "photo_06",
+    "original_name": "Photo 5.jpg",
+    "file": "photo-06.jpg",
+    "sha256": "a5fa9ecebf1ce7f36d1cb3eb50c5a21d75fe817797d9f1cd330d252b3677845f",
+    "byte_length": 193901,
+    "width_px": 1280,
+    "height_px": 960,
+    "mime_type": "image/jpeg",
+    "has_alpha": false,
+    "category": "outfits",
+    "label": "Outfits",
+    "visible_choice_count": 16,
+    "layout": {
+      "columns": 4,
+      "rows": 4,
+      "usage": "CONTACT_SHEET_GUIDE_ONLY_NOT_FRAME_COORDINATES"
+    },
+    "duplicate_of": null,
+    "notes": "Includes visible hands, lower hems and some leg elements; prepare masks and decide skin-tone treatment.",
+    "first_registered_name": "Photo 6.jpg",
+    "first_registered_revision": 1,
+    "attachment_number": 5,
+    "upload_id": "2CFE2FDF-BB17-4FFD-A0EF-8E9B8AD671CD"
+  },
+  "items": [
+    {
+      "sourceId": "photo_06",
+      "sourceLocation": "row1-col1",
+      "sourceRect": {
+        "x": 0,
+        "y": 0,
+        "width": 351,
+        "height": 265
+      },
+      "originalNative": {
+        "width": 351,
+        "height": 265,
+        "bounds": {
+          "x": 76,
+          "y": 76,
+          "width": 248,
+          "height": 167
+        },
+        "stats": {
+          "opaque": 32538,
+          "white": 41,
+          "dark": 28819,
+          "discardedDark": 0,
+          "removedPaper": 60477,
+          "parts": [
+            {
+              "pixels": 32538,
+              "dark": 28819
+            }
+          ]
+        },
+        "file": "photo-06-row1-col1-native-b390ecb72c96e487.png"
+      },
+      "removedHandWindows": [
+        [
+          85,
+          158,
+          36,
+          33
+        ],
+        [
+          280,
+          158,
+          36,
+          33
+        ]
+      ],
+      "removedOpaquePixels": 2374,
+      "role": "HAND_CUT_GARMENT_LAYER_UNFITTED",
+      "neckline": "SUPPLIED_UNCHANGED_NO_INFERRED_SKIN",
+      "jointRule": "OPEN_SOURCE_HAND_WINDOWS; BODY_HAND_ALIGNMENT_NOT_IMPLEMENTED",
+      "productItemId": null,
+      "native": {
+        "width": 351,
+        "height": 265,
+        "file": "hand-cut-garment-row1-col1-fcbb822171d8a075.png"
+      },
+      "transform": {
+        "sourceAnchor": {
+          "x": 200,
+          "y": 159.5
+        },
+        "targetAnchor": {
+          "x": 32,
+          "y": 32
+        },
+        "scale": 0.22580645161290322,
+        "uniform": true,
+        "sampling": "NEAREST_SOURCE_PIXEL"
+      }
+    },
+    {
+      "sourceId": "photo_06",
+      "sourceLocation": "row1-col2",
+      "sourceRect": {
+        "x": 350,
+        "y": 0,
+        "width": 293,
+        "height": 265
+      },
+      "originalNative": {
+        "width": 293,
+        "height": 265,
+        "bounds": {
+          "x": 27,
+          "y": 76,
+          "width": 247,
+          "height": 167
+        },
+        "stats": {
+          "opaque": 32523,
+          "white": 282,
+          "dark": 26363,
+          "discardedDark": 0,
+          "removedPaper": 45122,
+          "parts": [
+            {
+              "pixels": 32523,
+              "dark": 26363
+            }
+          ]
+        },
+        "file": "photo-06-row1-col2-native-e8114e438dd5d0fc.png"
+      },
+      "removedHandWindows": [
+        [
+          385,
+          158,
+          37,
+          33
+        ],
+        [
+          581,
+          157,
+          35,
+          34
+        ]
+      ],
+      "removedOpaquePixels": 2407,
+      "role": "HAND_CUT_GARMENT_LAYER_UNFITTED",
+      "neckline": "SUPPLIED_UNCHANGED_NO_INFERRED_SKIN",
+      "jointRule": "OPEN_SOURCE_HAND_WINDOWS; BODY_HAND_ALIGNMENT_NOT_IMPLEMENTED",
+      "productItemId": null,
+      "native": {
+        "width": 293,
+        "height": 265,
+        "file": "hand-cut-garment-row1-col2-13dbb23386730a97.png"
+      },
+      "transform": {
+        "sourceAnchor": {
+          "x": 150.5,
+          "y": 159.5
+        },
+        "targetAnchor": {
+          "x": 32,
+          "y": 32
+        },
+        "scale": 0.22672064777327935,
+        "uniform": true,
+        "sampling": "NEAREST_SOURCE_PIXEL"
+      }
+    },
+    {
+      "sourceId": "photo_06",
+      "sourceLocation": "row1-col3",
+      "sourceRect": {
+        "x": 642,
+        "y": 0,
+        "width": 296,
+        "height": 265
+      },
+      "originalNative": {
+        "width": 296,
+        "height": 265,
+        "bounds": {
+          "x": 19,
+          "y": 76,
+          "width": 251,
+          "height": 167
+        },
+        "stats": {
+          "opaque": 31899,
+          "white": 0,
+          "dark": 21239,
+          "discardedDark": 0,
+          "removedPaper": 46541,
+          "parts": [
+            {
+              "pixels": 31899,
+              "dark": 21239
+            }
+          ]
+        },
+        "file": "photo-06-row1-col3-native-3d53bcaac02cd0be.png"
+      },
+      "removedHandWindows": [
+        [
+          681,
+          183,
+          17,
+          10
+        ],
+        [
+          877,
+          183,
+          17,
+          10
+        ]
+      ],
+      "removedOpaquePixels": 340,
+      "role": "HAND_CUT_GARMENT_LAYER_UNFITTED",
+      "neckline": "SUPPLIED_UNCHANGED_NO_INFERRED_SKIN",
+      "jointRule": "OPEN_SOURCE_HAND_WINDOWS; BODY_HAND_ALIGNMENT_NOT_IMPLEMENTED",
+      "productItemId": null,
+      "native": {
+        "width": 296,
+        "height": 265,
+        "file": "hand-cut-garment-row1-col3-047229add1de8bf0.png"
+      },
+      "transform": {
+        "sourceAnchor": {
+          "x": 144.5,
+          "y": 159.5
+        },
+        "targetAnchor": {
+          "x": 32,
+          "y": 32
+        },
+        "scale": 0.22310756972111553,
+        "uniform": true,
+        "sampling": "NEAREST_SOURCE_PIXEL"
+      }
+    },
+    {
+      "sourceId": "photo_06",
+      "sourceLocation": "row1-col4",
+      "sourceRect": {
+        "x": 937,
+        "y": 0,
+        "width": 343,
+        "height": 265
+      },
+      "originalNative": {
+        "width": 343,
+        "height": 265,
+        "bounds": {
+          "x": 27,
+          "y": 51,
+          "width": 248,
+          "height": 192
+        },
+        "stats": {
+          "opaque": 37621,
+          "white": 60,
+          "dark": 35473,
+          "discardedDark": 0,
+          "removedPaper": 53274,
+          "parts": [
+            {
+              "pixels": 37621,
+              "dark": 35473
+            }
+          ]
+        },
+        "file": "photo-06-row1-col4-native-91b16fc45e6dbe7b.png"
+      },
+      "removedHandWindows": [
+        [
+          972,
+          159,
+          36,
+          33
+        ],
+        [
+          1168,
+          159,
+          35,
+          33
+        ]
+      ],
+      "removedOpaquePixels": 2341,
+      "role": "HAND_CUT_GARMENT_LAYER_UNFITTED",
+      "neckline": "SUPPLIED_UNCHANGED_NO_INFERRED_SKIN",
+      "jointRule": "OPEN_SOURCE_HAND_WINDOWS; BODY_HAND_ALIGNMENT_NOT_IMPLEMENTED",
+      "productItemId": null,
+      "native": {
+        "width": 343,
+        "height": 265,
+        "file": "hand-cut-garment-row1-col4-36cb2bb52c658457.png"
+      },
+      "transform": {
+        "sourceAnchor": {
+          "x": 151,
+          "y": 147
+        },
+        "targetAnchor": {
+          "x": 32,
+          "y": 32
+        },
+        "scale": 0.22580645161290322,
+        "uniform": true,
+        "sampling": "NEAREST_SOURCE_PIXEL"
+      }
+    },
+    {
+      "sourceId": "photo_06",
+      "sourceLocation": "row3-col2",
+      "sourceRect": {
+        "x": 346,
+        "y": 482,
+        "width": 293,
+        "height": 228
+      },
+      "originalNative": {
+        "width": 293,
+        "height": 228,
+        "bounds": {
+          "x": 24,
+          "y": 24,
+          "width": 249,
+          "height": 181
+        },
+        "stats": {
+          "opaque": 34364,
+          "white": 446,
+          "dark": 18516,
+          "discardedDark": 0,
+          "removedPaper": 32440,
+          "parts": [
+            {
+              "pixels": 34364,
+              "dark": 18516
+            }
+          ]
+        },
+        "file": "photo-06-row3-col2-native-7b34c53faa8fabe1.png"
+      },
+      "removedHandWindows": [
+        [
+          387,
+          617,
+          26,
+          16
+        ],
+        [
+          574,
+          617,
+          27,
+          16
+        ]
+      ],
+      "removedOpaquePixels": 848,
+      "role": "HAND_CUT_GARMENT_LAYER_UNFITTED",
+      "neckline": "SUPPLIED_UNCHANGED_NO_INFERRED_SKIN",
+      "jointRule": "OPEN_SOURCE_HAND_WINDOWS; BODY_HAND_ALIGNMENT_NOT_IMPLEMENTED",
+      "productItemId": null,
+      "native": {
+        "width": 293,
+        "height": 228,
+        "file": "hand-cut-garment-row3-col2-d7545ed73454f629.png"
+      },
+      "transform": {
+        "sourceAnchor": {
+          "x": 148.5,
+          "y": 114.5
+        },
+        "targetAnchor": {
+          "x": 32,
+          "y": 32
+        },
+        "scale": 0.2248995983935743,
+        "uniform": true,
+        "sampling": "NEAREST_SOURCE_PIXEL"
+      }
+    },
+    {
+      "sourceId": "photo_06",
+      "sourceLocation": "row4-col4",
+      "sourceRect": {
+        "x": 934,
+        "y": 709,
+        "width": 346,
+        "height": 251
+      },
+      "originalNative": {
+        "width": 346,
+        "height": 251,
+        "bounds": {
+          "x": 22,
+          "y": 23,
+          "width": 269,
+          "height": 182
+        },
+        "stats": {
+          "opaque": 37604,
+          "white": 0,
+          "dark": 23747,
+          "discardedDark": 0,
+          "removedPaper": 49242,
+          "parts": [
+            {
+              "pixels": 37604,
+              "dark": 23747
+            }
+          ]
+        },
+        "file": "photo-06-row4-col4-native-90d813b120543dc9.png"
+      },
+      "removedHandWindows": [
+        [
+          974,
+          845,
+          35,
+          22
+        ],
+        [
+          1173,
+          845,
+          34,
+          23
+        ]
+      ],
+      "removedOpaquePixels": 1552,
+      "role": "HAND_CUT_GARMENT_LAYER_UNFITTED",
+      "neckline": "SUPPLIED_UNCHANGED_NO_INFERRED_SKIN",
+      "jointRule": "OPEN_SOURCE_HAND_WINDOWS; BODY_HAND_ALIGNMENT_NOT_IMPLEMENTED",
+      "productItemId": null,
+      "native": {
+        "width": 346,
+        "height": 251,
+        "file": "hand-cut-garment-row4-col4-75844ecb9885a4be.png"
+      },
+      "transform": {
+        "sourceAnchor": {
+          "x": 156.5,
+          "y": 114
+        },
+        "targetAnchor": {
+          "x": 32,
+          "y": 32
+        },
+        "scale": 0.20817843866171004,
+        "uniform": true,
+        "sampling": "NEAREST_SOURCE_PIXEL"
+      }
+    }
+  ],
+  "atlas": {
+    "width": 384,
+    "height": 64,
+    "file": "hand-cut-garments-a62f1f624284f7ea.png"
+  },
+  "files": [
+    {
+      "file": "hand-cut-garment-row1-col1-fcbb822171d8a075.png",
+      "sha256": "fcbb822171d8a07598573ac8bbcc828f4bed3546ca3a86ca994737ca68fd0e50",
+      "bytes": 46730
+    },
+    {
+      "file": "hand-cut-garment-row1-col2-13dbb23386730a97.png",
+      "sha256": "13dbb23386730a979f200456b751a15ed7b729285a7e18e14ba18b204fd81121",
+      "bytes": 46785
+    },
+    {
+      "file": "hand-cut-garment-row1-col3-047229add1de8bf0.png",
+      "sha256": "047229add1de8bf06163670fd21f46023dc4b4f31dda5bb19b9f4e2d6e25c6b2",
+      "bytes": 59011
+    },
+    {
+      "file": "hand-cut-garment-row1-col4-36cb2bb52c658457.png",
+      "sha256": "36cb2bb52c658457e482e0c41fb6e619f67b5b6aa7b5c3ec16501609e44a5f9b",
+      "bytes": 44724
+    },
+    {
+      "file": "hand-cut-garment-row3-col2-d7545ed73454f629.png",
+      "sha256": "d7545ed73454f6297683f58d5b992ad9cb6250e335730b1105d2988960d9d9eb",
+      "bytes": 61876
+    },
+    {
+      "file": "hand-cut-garment-row4-col4-75844ecb9885a4be.png",
+      "sha256": "75844ecb9885a4beddbd5f3669e48d94947e02aa10fe43d52cc8a72ba92ca59c",
+      "bytes": 71900
+    },
+    {
+      "file": "hand-cut-garments-a62f1f624284f7ea.png",
+      "sha256": "a62f1f624284f7ead8d4058d5e33b270302a42ab2f03d86f1bb7e3a1ecb24a64",
+      "bytes": 26347
+    }
+  ],
+  "qualification": "Six genuine masked garment parts; hand windows removed without filling hidden cloth. Unfitted: not an all-skin body-hand composition or C06 outfit admission."
+}

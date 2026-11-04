@@ -1,0 +1,64 @@
+{
+  "initialBase": "cf706882ed91a2708f3ef1e514b1fc81886cffc5",
+  "testedCandidate": "5eb418391012cb2cc435ef3dcb08884b95055720",
+  "ownedPrefixes": [
+    "frontend/e2e/accessibility/qa07/",
+    "docs/mcr/evidence/accessibility/qa07/"
+  ],
+  "sourceFixPublications": {
+    "FE15": "50d950d79939a539ebe953744287f7a280ce488b",
+    "FE15AndFE07SupportFinal": "a84885f26b973a5cd49afbb29c86888563265924",
+    "FE36": "69d4a0acd381692c4864f6cc549dbbd882aed240"
+  },
+  "entryAndContractSources": {
+    "frontend/src/app/WorldShell.tsx": {
+      "lastCommit": "416b4e5f1adf6c1e6d1ad7f376dbdd92b7573a63",
+      "sha256": "9ab07b46c077bde4381ea2ec5918c146e2d05dfe7dc355bafad7448d9ff2d5f9"
+    },
+    "frontend/src/world/composition/index.ts": {
+      "lastCommit": "977b773deec35226e899bd017d4d946c200fd05f",
+      "sha256": "90ca131868b60f0c7c5df344503b89ccf17686df85186e9f968742c311718974"
+    },
+    "frontend/src/features/safety/controller.ts": {
+      "lastCommit": "705da35a5f77e2207dc805d38efd518968085e26",
+      "sha256": "ea8e95f49ff85fe4988da2aa5dea4d3020c42a793598783fcd5753e25f7f9086"
+    },
+    "frontend/src/app/world-entry/__tests__/reference-scene-root/preview.tsx": {
+      "lastCommit": "b59ca1a6d6f96cc062c73d9728af7949fd1c7b41",
+      "sha256": "82540778d6fdc62b256b36d430c2e1458092e77bc7c09881af8407cdd2be9e22"
+    },
+    "frontend/src/world/mural-entry-lifecycle/__tests__/assembly-native.tsx": {
+      "lastCommit": "ebf0473dd8f2123b74d77ca3f4de3da5abd0df9a",
+      "sha256": "562353a7d1795fc335ca4a980897dc7a33d73bd0cbcb5b7e04d94a0551779e65"
+    },
+    "frontend/src/features/gift-pickup/index.ts": {
+      "lastCommit": "941d36c6438d7ece727e9cdec7e67b61c646203b",
+      "sha256": "123ea5f847aa27a3781771d23e764dcb3e11c6585ea531f417db7b6d7defaf8f"
+    },
+    "frontend/src/features/social-sharing/index.ts": {
+      "lastCommit": "fc19e47f1a5291cbba80c5c35bcb7ad523c33072",
+      "sha256": "030e8036ad14902c239f742dbe6766d633a7cb9a5eae642f865f9baf03e0ec3b"
+    },
+    "frontend/src/features/world-rooms/index.ts": {
+      "lastCommit": "5ef66e1113fc01e297f5d2531bcfd9029bf105b4",
+      "sha256": "6822da877cf4d0eef2fc4288fffaba386d047b7109a52aa94e80bd353ba83965"
+    },
+    "frontend/src/features/places/index.ts": {
+      "lastCommit": "c903453c809d79b99d74967a5410fe5eb935bd82",
+      "sha256": "9052d813d49a9c06022fc9626ea4186bfa3d11e093b0e2f1b79ce8a6cfc50e58"
+    },
+    "frontend/src/features/mural/editor/index.ts": {
+      "lastCommit": "98c2c793ba5c380b0cca334f4f8647123c9d30a9",
+      "sha256": "86b4e8536d5ca9cd9332796d91291193ab24cc8ee7c79bbad37ebcfd2f898ca1"
+    },
+    "contracts/domain/v1/operations.json": {
+      "lastCommit": "911f15665379425afeb52c1401626f39f5298739",
+      "sha256": "622c0e0eba6e1c835c5e953a3acd6825f97ed43aff9bc32b982c207fdfe31839"
+    },
+    "contracts/realtime/v1/operations.json": {
+      "lastCommit": "3371e6f91af14d7ba14d395911439ad3cab7e3cb",
+      "sha256": "400d28e861ca5a87c54fde447f77b1680f7ea58e3047ee43b46db25816af6da0"
+    }
+  },
+  "sourcePreservation": "No original source or production art changed by QA07; source/art bytes pinned in current/input-pins.json."
+}

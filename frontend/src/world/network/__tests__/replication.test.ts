@@ -26,7 +26,12 @@ function setup(patch: Partial<WorldTransportOptions> = {}, sink?: (view: Replica
   const socket = () => transport.sockets.at(-1)!
   const receive = (data: unknown) => socket().receive(JSON.stringify(data))
   return { c, session, clock, transport, commits, acquire, socket, receive,
-    async live() { const p = c.start(); await flush(); socket().open(); receive(admitted); expect(await p).toBe(true) },
+    async live() {
+      const p = c.start()
+      // Ticket validation hashes asynchronously before the socket exists.
+      await vi.waitFor(() => expect(transport.sockets).toHaveLength(1))
+      socket().open(); receive(admitted); expect(await p).toBe(true)
+    },
     delta(seq: number, upserts: readonly WorldPlayer[] = [], removes: readonly string[] = [], extra = {}) {
       receive({ protocolVersion: '1.0.0', type: 'delta', streamId: c.read().baseline!.streamId, roomEpoch: c.read().baseline!.roomEpoch,
         streamSeq: seq, serverTick: seq * 2, ackInputSeq: 0, upserts, removes, ...extra })
@@ -88,12 +93,36 @@ describe('FE17 authoritative entity projection', () => {
   })
   it('a gap clears ghosts, requests one resync, discards queued old changes and replaces the complete baseline', async () => {
     const s = setup(); await s.live(); s.c.setIntent({ axisX: 1, axisY: 0, buttons: ['interact'] }); s.clock.advance(50)
-    s.delta(3); expect(s.c.read().phase).toBe('resync'); expect(s.c.read().entities).toEqual([]); expect(s.c.read().pendingInputs).toBe(0)
-    const req = JSON.parse(s.socket().sent.at(-1)!); expect(req.type).toBe('resync'); expect(req.lastStreamSeq).toBe(0)
-    s.delta(4); expect(s.socket().sent.filter(x => JSON.parse(x).type === 'resync')).toHaveLength(1)
-    s.receive({ ...initial, streamId: id(120), cause: 'RESYNC', requestId: req.requestId, players: [initial.players[0]], serverTick: 8 })
+    expect(s.c.read().pendingInputs).toBe(1)
+    s.c.setIntent({ axisX: 1, axisY: 0, buttons: ['interact'] }) // Unsent interaction must also be discarded.
+    const ghost = { ...initial.players[2]!, displayName: 'Queued old ghost', position: { x: 200, y: 220 } }
+    s.delta(3, [ghost]); expect(s.c.read().phase).toBe('resync'); expect(s.c.read().entities).toEqual([]); expect(s.c.read().pendingInputs).toBe(0)
+    const req = JSON.parse(s.socket().sent.at(-1)!)
+    expect(req).toMatchObject({ type: 'resync', reason: 'GAP', streamId: initial.streamId, roomEpoch: initial.roomEpoch, lastStreamSeq: 0 })
+    const commits = s.commits.length, sent = s.socket().sent.length
+    s.delta(4, [ghost], [initial.players[1]!.userId]); s.delta(5, [ghost])
+    s.clock.advance(50)
+    expect(s.c.read().entities).toEqual([]); expect(s.c.read().baseline!.streamSeq).toBe(0)
+    expect(s.commits).toHaveLength(commits); expect(s.socket().sent).toHaveLength(sent)
+    expect(s.socket().sent.filter(x => JSON.parse(x).type === 'resync')).toHaveLength(1)
+    const self = { ...initial.players[0]!, position: { x: 90, y: 70 } }
+    const newcomer = { ...initial.players[1]!, userId: id(130), displayName: 'Fresh baseline peer', avatar: { ...initial.players[1]!.avatar, revision: 3 } }
+    s.receive({ ...initial, streamId: id(120), cause: 'RESYNC', requestId: req.requestId, players: [self, newcomer], serverTick: 8 })
+    expect(s.c.read()).toMatchObject({ phase: 'live', pendingInputs: 0, ackInputSeq: 0,
+      baseline: { streamId: id(120), streamSeq: 0, serverTick: 8, requestId: req.requestId } })
+    expect(s.c.read().baseline).not.toHaveProperty('players')
+    expect(s.c.read().entities.map(e => e.player)).toEqual([self, newcomer])
+    expect(s.c.read().entities.map(e => e.position)).toEqual([self.position, newcomer.position])
+    expect(s.commits.slice(commits).every(view => view.entities.every(e => e.player.userId === self.userId || e.player.userId === newcomer.userId))).toBe(true)
     s.clock.advance(50); expect(JSON.parse(s.socket().sent.at(-1)!)).toMatchObject({ type: 'input', seq: 1, axisX: 1, buttons: [] })
-    expect(s.c.read().entities).toHaveLength(1)
+    s.delta(1, [{ ...newcomer, displayName: 'Current stream peer' }], [], { serverTick: 10, ackInputSeq: 1 })
+    expect(s.c.read()).toMatchObject({ phase: 'live', pendingInputs: 0, ackInputSeq: 1, baseline: { streamId: id(120), streamSeq: 1 } })
+    expect(s.c.read().entities.map(e => e.player.displayName)).toEqual([self.displayName, 'Current stream peer'])
+    const outgoing = s.socket().sent.map(x => JSON.parse(x))
+    expect(outgoing.map(frame => frame.type)).toEqual(['authenticate', 'input', 'resync', 'input'])
+    expect(outgoing.filter(frame => frame.buttons?.includes('interact'))).toHaveLength(1)
+    s.c.dispose(); expect(s.clock.pending).toBe(0)
+    expect([...s.socket().listeners.values()].every(listeners => listeners.size === 0)).toBe(true)
   })
   it('spaces repeated resyncs without adding another recovery or reconnect loop', async () => {
     const s = setup(); await s.live(); s.delta(2)
