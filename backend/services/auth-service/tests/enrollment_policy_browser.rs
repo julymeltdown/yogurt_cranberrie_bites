@@ -198,6 +198,7 @@ async fn paired_browser_fixture_uses_real_auth_rpc_gateway_and_mail() -> anyhow:
     let router = harness.transport_router();
     let browser = tokio::net::TcpListener::bind("127.0.0.1:0").await?;
     let gateway_origin = format!("http://localhost:{}", browser.local_addr()?.port());
+    let gateway_loopback_origin = format!("http://{}", browser.local_addr()?);
     let (http_stop, http_stopped) = tokio::sync::oneshot::channel();
     let http_server = tokio::spawn(async move {
         axum::serve(browser, router)
@@ -206,6 +207,65 @@ async fn paired_browser_fixture_uses_real_auth_rpc_gateway_and_mail() -> anyhow:
             })
             .await
     });
+    let probe = reqwest::Client::builder()
+        .no_proxy()
+        .timeout(std::time::Duration::from_secs(2))
+        .build()?;
+    let policy_reply = probe
+        .get(format!(
+            "{gateway_loopback_origin}/api/auth/enrollment/policy"
+        ))
+        .header("origin", &frontend)
+        .header("x-mcr-intent", "browser")
+        .send()
+        .await?;
+    anyhow::ensure!(
+        policy_reply.status().as_u16() == 200
+            && policy_reply
+                .headers()
+                .get("cache-control")
+                .is_some_and(|v| v == "no-store")
+            && policy_reply.headers().get("set-cookie").is_none(),
+        "actual policy HTTP boot probe required"
+    );
+    anyhow::ensure!(
+        policy_reply.json::<Value>().await?["revision"] == policy.revision.to_string(),
+        "boot probe must reach real published Auth policy"
+    );
+    let begin_path = format!("{gateway_loopback_origin}/api/auth/enrollment/attempts");
+    let denied = probe
+        .post(&begin_path)
+        .header("x-mcr-intent", "browser")
+        .json(&json!({"policyRevision":policy.revision}))
+        .send()
+        .await?;
+    anyhow::ensure!(
+        denied.status().as_u16() == 403,
+        "missing Origin must remain denied"
+    );
+    let bound = probe
+        .post(&begin_path)
+        .header("origin", &frontend)
+        .header("x-mcr-intent", "browser")
+        .json(&json!({"policyRevision":policy.revision}))
+        .send()
+        .await?;
+    anyhow::ensure!(
+        bound.status().as_u16() == 201,
+        "actual Origin-bound attempt boot required"
+    );
+    let cookie = bound
+        .headers()
+        .get("set-cookie")
+        .ok_or_else(|| anyhow::anyhow!("actual bound cookie required"))?
+        .to_str()?;
+    anyhow::ensure!(
+        cookie.starts_with("mcr-enrollment-dev=")
+            && cookie.contains("HttpOnly")
+            && cookie.contains("SameSite=Strict")
+            && cookie.contains("Path=/api/auth/enrollment"),
+        "actual browser binding cookie attributes required"
+    );
     let captured = Arc::new(Mutex::new(Vec::<Value>::new()));
     let capture = captured.clone();
     let mail_router = axum::Router::new().route(
@@ -237,6 +297,7 @@ async fn paired_browser_fixture_uses_real_auth_rpc_gateway_and_mail() -> anyhow:
         &output.join("browser-ready.json"),
         &json!({
             "gatewayOrigin":gateway_origin,"frontendOrigin":frontend,"policyRevision":policy.revision,
+            "gatewayLoopbackOrigin":gateway_loopback_origin,
             "binarySha256":std::env::var("MCR_ENROLLMENT_BROWSER_BINARY_SHA256")?,
             "sourceRevision":std::env::var("MCR_ENROLLMENT_BROWSER_SOURCE_REVISION")?,
             "runtimeMigrationSha256":serde_json::from_str::<Value>(&std::env::var("MCR_ENROLLMENT_BROWSER_RUNTIME_SQL")?)?,
@@ -267,6 +328,7 @@ async fn paired_browser_fixture_uses_real_auth_rpc_gateway_and_mail() -> anyhow:
     private_write(
         &output.join("browser-fixture-stop.json"),
         &json!({"capturedMails":observed,"accounts":accounts,
+        "bootHttp":{"actualPublishedPolicy":200,"missingOriginBegin":403,"boundBegin":201},
         "explicitStop":stop_file.exists(),"verdict":"NO_BROWSER_ACCEPTANCE_VERDICT"}),
     )?;
     mail_server.abort();
