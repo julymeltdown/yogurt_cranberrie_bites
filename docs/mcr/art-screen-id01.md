@@ -115,7 +115,7 @@ not be relabeled as a new baseline capture.
 
 Repository status, full SHAs, prefix absence, relevant selectors, and the
 decorative SVG source boundaries were inspected read-only with exit code 0.
-The new CSS now contains eighteen granted selectors and consumes all seven
+The new CSS now contains nineteen granted selectors and consumes all seven
 closed assets. The static selector/property/URL mapping, asset byte/hash, and
 inert SVG checks pass with exit code 0:
 
@@ -146,6 +146,63 @@ Required remaining evidence:
 - Scoped committed handoff, required fixes, Root publication, and fresh remote
   verification of the actual delivered source.
 
-All rendered checks, committed handoff, and publication for this task are
-currently **NOT_RUN**. The full four-screen
-persistent goal remains **ACTIVE**; this document does not reduce its scope.
+## First integrated 390px evidence and required correction
+
+The initial CSS handoff is `e44b5d1c38f05b03a74904c94004d5fc983b2493`.
+Fresh fetch and independent remote-head lookup verified master publication
+`c8a731e5c7f03c3fbcbd0581c6e872429806fa22`: this CSS is byte-identical,
+all seven closed assets match exact bytes/hashes, and the Root-owned import
+is present. This verifies publication of the first source increment.
+
+Root's allocated `PANEL-COZY-202611040632Z` workflow produced the actual
+390×844 eight-route before/after packet at
+`docs/mcr/evidence/cozy-backgrounds-v1/native-01/`, from 06:33:32.440 to
+06:34:13.328 UTC on 2026-11-04. The owner directly viewed all eight identity
+PNGs and verified their report byte counts and SHA-256 values. The report
+uses candidate `c8a731e5` for both cohorts, restoring only four paint
+integration files to `7c25078f` for baseline; other candidate source and
+Meet typography stay identical. It is actual default-router rendering with
+QA06 synthetic HTTP/C05, not a live service or physical device check.
+
+The owner's findings and exact artifact/report pins are recorded in
+`evidence/art-screen-id01/owner-native-01.json`:
+
+- Landing has a clear dominant rose/cloud/moon change. Printed wordmark and
+  copy remain on darker fields; the selected crowd is visually unchanged.
+- Sign in has broad pastel paper and garden scenery with readable live form
+  labels and honest unavailable-provider copy.
+- Me has a berry header and softer bio paper. The opaque approved portrait
+  and unavailable activity state remain intact.
+- Customize is **not visually closed**: the large blank region below the
+  controls remains the original grain paper. Its actual `.shell-panel-body`
+  is 372×780 at x=9, y=57; the initially granted editor body/footer rules do
+  not paint this outer region.
+
+Root granted the exact correction before writes:
+`:root .shell-panel[data-mcr-panel='customize'] > .shell-panel-body`, only
+background color/image/position/size/repeat using the same closed
+`customize-paper.svg`. This worker added only that CSS rule. Root owns the
+existing route-marker expression extension for `/me/avatar`; there is no new
+wrapper, preview paint, geometry, control, character, or layout change. This
+correction still requires fresh rendered evidence after integration.
+
+The first packet reports unchanged control geometry/type/color/state and body
+text, no errors, no horizontal overflow, and a visible focus outline for each
+owned route. An independent calculation over its recorded controls finds all
+8 Landing, 9 Sign in, 15 Customize, and 15 Me controls at least 44×44px in both
+cohorts. This does not replace additional auth-state or full focus-return checks.
+
+An important evidence limit: **all four routes have empty `metrics.images`
+arrays**. The driver's `document.images` comparison does not cover the landing
+CSS-background spans or editor/profile canvases. Its `imagesPreserved: true`
+must not be presented as quantitative character RGBA proof. Character-source
+freeze and direct visual comparison remain valid narrower evidence. The owner
+requested actual canvas RGBA/dimensions/rectangles and landing span resource/
+position/size preservation in Root's next single allocated workflow.
+
+Browser/server closure and temp removal are recorded. A later shared fourth
+paint correction is outside this packet's cohort. Required remaining work is
+the integrated Customize correction, actual 360/430px evidence, rendered
+contrast, additional relevant auth/focus states, quantitative character
+invariance, any resulting fixes, final documentation and fresh remote proof.
+The full four-screen persistent goal remains **ACTIVE**.

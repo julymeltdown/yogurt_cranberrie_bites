@@ -1,0 +1,198 @@
+{
+  "task": "ART-SCREEN-ID01",
+  "status": "IN_PROGRESS",
+  "publicationVerified": "c8a731e5c7f03c3fbcbd0581c6e872429806fa22",
+  "publicationChecks": [
+    "Fresh git fetch origin master and independent ls-remote match",
+    "Own CSS byte-exact and seven closed assets exact hashes/bytes",
+    "Root import present"
+  ],
+  "nativeReport": "/Users/lhs/Desktop/mcr-worktrees/fe-delivery-publish/docs/mcr/evidence/cozy-backgrounds-v1/native-01/report.json",
+  "nativeReportSha256": "59e0f2540a1fdc79f240230048385fda678c1029e9d3df3ab2a209320ae86da1",
+  "job": "PANEL-COZY-202611040632Z",
+  "candidate": "c8a731e5c7f03c3fbcbd0581c6e872429806fa22",
+  "base": "7c25078f118da53dd9a524d0a58e707cca190f0f",
+  "baselinePolicy": "Same candidate and fixture, restoring ONLY four background integration files to exact base bytes. Meet typography identical in both captures.",
+  "startedAt": "2026-11-04T06:33:32.440Z",
+  "finishedAt": "2026-11-04T06:34:13.328Z",
+  "browser": "156.0.8078.80",
+  "cleanup": {
+    "browserClosed": true,
+    "serverClosed": true,
+    "tempRemoved": true
+  },
+  "cases": [
+    {
+      "id": "landing",
+      "route": "/",
+      "mode": "baseline",
+      "screenshot": "baseline-landing-390.png",
+      "screenshotPin": {
+        "bytes": 248289,
+        "sha256": "dbb09ff5b80b7ceb578c17778b3021722655ff2c55f9af1904ded21345e288cc"
+      },
+      "errors": [],
+      "overflow": false,
+      "visibleControlCount": 8,
+      "allRecordedControls44px": true,
+      "recordedImageCount": 0
+    },
+    {
+      "id": "landing",
+      "route": "/",
+      "mode": "candidate",
+      "screenshot": "candidate-landing-390.png",
+      "screenshotPin": {
+        "bytes": 221267,
+        "sha256": "daae6b6d413ded95bec493383444cc3860fa121c456e07c8fd462d3ad825fbb2"
+      },
+      "errors": [],
+      "overflow": false,
+      "visibleControlCount": 8,
+      "allRecordedControls44px": true,
+      "recordedImageCount": 0,
+      "controlsPreserved": true,
+      "imagesPreserved": true,
+      "textPreserved": true,
+      "focus": {
+        "tag": "A",
+        "outline": "solid"
+      }
+    },
+    {
+      "id": "login",
+      "route": "/login",
+      "mode": "baseline",
+      "screenshot": "baseline-login-390.png",
+      "screenshotPin": {
+        "bytes": 363464,
+        "sha256": "bf98a92a890b1f1c9c34019c0675b143d260f2225ca1a51fa18344c50bb6979e"
+      },
+      "errors": [],
+      "overflow": false,
+      "visibleControlCount": 9,
+      "allRecordedControls44px": true,
+      "recordedImageCount": 0
+    },
+    {
+      "id": "customize",
+      "route": "/me/avatar",
+      "mode": "baseline",
+      "screenshot": "baseline-customize-390.png",
+      "screenshotPin": {
+        "bytes": 62382,
+        "sha256": "1c7f1bcf709449da0a36c9a0a949f37cd5dc0f77be4dafbff774e8f1985098b2"
+      },
+      "errors": [],
+      "overflow": false,
+      "visibleControlCount": 15,
+      "allRecordedControls44px": true,
+      "recordedImageCount": 0
+    },
+    {
+      "id": "me",
+      "route": "/me",
+      "mode": "baseline",
+      "screenshot": "baseline-me-390.png",
+      "screenshotPin": {
+        "bytes": 66609,
+        "sha256": "82a4dc4db9e98e776cd67a1184f9e9abad0d6aacb94e8f27e08c93954c93cb54"
+      },
+      "errors": [],
+      "overflow": false,
+      "visibleControlCount": 15,
+      "allRecordedControls44px": true,
+      "recordedImageCount": 0
+    },
+    {
+      "id": "login",
+      "route": "/login",
+      "mode": "candidate",
+      "screenshot": "candidate-login-390.png",
+      "screenshotPin": {
+        "bytes": 60783,
+        "sha256": "c8d74794b59ea9674662b73dd857e51ad3737a8ed042918bfd491b20d5b0f7e5"
+      },
+      "errors": [],
+      "overflow": false,
+      "visibleControlCount": 9,
+      "allRecordedControls44px": true,
+      "recordedImageCount": 0,
+      "controlsPreserved": true,
+      "imagesPreserved": true,
+      "textPreserved": true,
+      "focus": {
+        "tag": "BUTTON",
+        "outline": "solid"
+      }
+    },
+    {
+      "id": "customize",
+      "route": "/me/avatar",
+      "mode": "candidate",
+      "screenshot": "candidate-customize-390.png",
+      "screenshotPin": {
+        "bytes": 58007,
+        "sha256": "a3a54afe233b4fd49f91afa8c33506c2a4039ef0cfae915e367ebea3bb596175"
+      },
+      "errors": [],
+      "overflow": false,
+      "visibleControlCount": 15,
+      "allRecordedControls44px": true,
+      "recordedImageCount": 0,
+      "controlsPreserved": true,
+      "imagesPreserved": true,
+      "textPreserved": true,
+      "focus": {
+        "tag": "BUTTON",
+        "outline": "solid"
+      }
+    },
+    {
+      "id": "me",
+      "route": "/me",
+      "mode": "candidate",
+      "screenshot": "candidate-me-390.png",
+      "screenshotPin": {
+        "bytes": 77576,
+        "sha256": "d3f97daa18096a42033c1be905a7f30d41b32ba25f561f8255da65ff3a6a8bbb"
+      },
+      "errors": [],
+      "overflow": false,
+      "visibleControlCount": 15,
+      "allRecordedControls44px": true,
+      "recordedImageCount": 0,
+      "controlsPreserved": true,
+      "imagesPreserved": true,
+      "textPreserved": true,
+      "focus": {
+        "tag": "BUTTON",
+        "outline": "solid"
+      }
+    }
+  ],
+  "directlyViewed": [
+    "baseline-landing-390.png",
+    "candidate-landing-390.png",
+    "baseline-login-390.png",
+    "baseline-customize-390.png",
+    "baseline-me-390.png",
+    "candidate-login-390.png",
+    "candidate-customize-390.png",
+    "candidate-me-390.png"
+  ],
+  "ownerFindings": {
+    "landing": "Clear dominant rose/cloud/moon change; wordmark and copy remain on darker fields; character lineup visually unchanged.",
+    "login": "Clear dominant pastel paper/garden change; live form and unavailable-provider copy remain readable.",
+    "customize": "NOT visually closed: large original grain region below controls remains. Root granted exact route-specific outer shell paper fix after this capture.",
+    "me": "Berry header and paper bio visible; original opaque portrait and honest unavailable activity remain."
+  },
+  "limits": [
+    "Desktop QA06 synthetic HTTP/C05/default-router; no live service or physical-device acceptance",
+    "Images arrays are EMPTY on all four routes: imagesPreserved does not certify character canvas/CSS-background RGBA invariance",
+    "Character source freeze and direct visual comparison retained; quantitative canvas/span preservation requested for next allocated job",
+    "No rendered contrast sampling, responsive360/430, additional auth states or full focus-return qualification in native01",
+    "Baseline restores only four paint files on same candidate; not a full old revision replay",
+    "Later shared fourth-paint correction not included in this captured cohort"
+  ]
+}

@@ -66,6 +66,17 @@
   background-repeat: no-repeat;
 }
 
+/* Native-01 exposed this blank outer paper below the editor's own window.
+ * Root owns the exact route marker. Character/preview surfaces stay opaque.
+ */
+:root .shell-panel[data-mcr-panel='customize'] > .shell-panel-body {
+  background-color: #fbf2df;
+  background-image: url('/backgrounds/cute-entry-v1/customize-paper.svg');
+  background-position: center;
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+}
+
 /* Only the old noninteractive ornamental payload loses paint. The SVG boxes,
  * flow, pointer behavior, wordmark, copy, controls and selected crowd stay intact.
  */
