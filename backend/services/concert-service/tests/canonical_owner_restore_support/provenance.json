@@ -1,0 +1,92 @@
+[
+  {
+    "source_path": "backend/services/concert-service/tests/canonical_owner_composition_support/capture.rs",
+    "source_revision": "3afb8111d8ef206f3e73c63186699c98d9fd4997",
+    "source_sha256": "8226908b6566e22896e254dcd626071364e6df8757c9c8ba6ae4db238e488385",
+    "destination": "backend/services/concert-service/tests/canonical_owner_restore_support/capture.rs",
+    "changes": "Restore-specific caller-supplied instance, retained-key modes and negative Profile completion fault as applicable; existing production factory untouched",
+    "dependencies": "Existing locked Concert dev dependencies",
+    "qualification": "NOT_RUN"
+  },
+  {
+    "source_path": "backend/services/concert-service/tests/canonical_owner_composition_support/environment.rs",
+    "source_revision": "3afb8111d8ef206f3e73c63186699c98d9fd4997",
+    "source_sha256": "7d1b8a3a51be7c63a6aaeaa0a82a25dbb62f9e7ae46737a89ea0905166dd49f6",
+    "destination": "backend/services/concert-service/tests/canonical_owner_restore_support/environment.rs",
+    "changes": "Restore-specific caller-supplied instance, retained-key modes and negative Profile completion fault as applicable; existing production factory untouched",
+    "dependencies": "Existing locked Concert dev dependencies",
+    "qualification": "NOT_RUN"
+  },
+  {
+    "source_path": "backend/services/concert-service/tests/canonical_owner_composition_support/owners.rs",
+    "source_revision": "3afb8111d8ef206f3e73c63186699c98d9fd4997",
+    "source_sha256": "80a792190a04f984f1abcd7be3310d6f94b7c6c07e6a1ebfd454dcbee723f3c7",
+    "destination": "backend/services/concert-service/tests/canonical_owner_restore_support/owners.rs",
+    "changes": "Restore-specific caller-supplied instance, retained-key modes and negative Profile completion fault as applicable; existing production factory untouched",
+    "dependencies": "Existing locked Concert dev dependencies",
+    "qualification": "NOT_RUN"
+  },
+  {
+    "source_path": "backend/services/concert-service/tests/canonical_owner_composition_support/release.rs",
+    "source_revision": "3afb8111d8ef206f3e73c63186699c98d9fd4997",
+    "source_sha256": "6e0ca735e4dcddc07b7ca60114c20e520823e9338877cd55cfacea0decdb2df8",
+    "destination": "backend/services/concert-service/tests/canonical_owner_restore_support/release.rs",
+    "changes": "Restore-specific caller-supplied instance, retained-key modes and negative Profile completion fault as applicable; existing production factory untouched",
+    "dependencies": "Existing locked Concert dev dependencies",
+    "qualification": "NOT_RUN"
+  },
+  {
+    "source_path": "backend/services/concert-service/tests/canonical_owner_composition_support/notification.rs",
+    "source_revision": "3afb8111d8ef206f3e73c63186699c98d9fd4997",
+    "source_sha256": "32df277ffc99b4007bbe815b3c16ddde7af877553eb323aeb77fbd770ae0f7b9",
+    "destination": "backend/services/concert-service/tests/canonical_owner_restore_support/notification.rs",
+    "changes": "Restore-specific caller-supplied instance, retained-key modes and negative Profile completion fault as applicable; existing production factory untouched",
+    "dependencies": "Existing locked Concert dev dependencies",
+    "qualification": "NOT_RUN"
+  },
+  {
+    "source_path": "backend/services/concert-service/tests/canonical_owner_composition_support/fixture.rs",
+    "source_revision": "3afb8111d8ef206f3e73c63186699c98d9fd4997",
+    "source_sha256": "75bb4ed0b03b149c16003f6ea8941f9a432207e3ca1021c316862c78570be472",
+    "destination": "backend/services/concert-service/tests/canonical_owner_restore_support/fixture.rs",
+    "changes": "Restore-specific caller-supplied instance, retained-key modes and negative Profile completion fault as applicable; existing production factory untouched",
+    "dependencies": "Existing locked Concert dev dependencies",
+    "qualification": "NOT_RUN"
+  },
+  {
+    "source_path": "backend/services/concert-service/tests/process_child_recovery_support/fault.rs",
+    "source_revision": "3afb8111d8ef206f3e73c63186699c98d9fd4997",
+    "source_sha256": "6b6f48654e82427875ae5e2f433e038ba7fd824de94eddd18a0f8b9c9468293b",
+    "destination": "backend/services/concert-service/tests/canonical_owner_restore_support/fault.rs",
+    "changes": "Unchanged negative-only exact Complete fault wrapper",
+    "dependencies": "Existing locked tonic/tower/axum dependencies",
+    "qualification": "NOT_RUN"
+  },
+  {
+    "source_path": "backend/services/concert-service/tests/canonical_owner_composition.rs",
+    "source_revision": "3afb8111d8ef206f3e73c63186699c98d9fd4997",
+    "source_sha256": "10488ad03bfbe5466dfd7b93a73eebf27966d77cd5edb8195eb7e02a4760dce8",
+    "destination": "backend/services/concert-service/tests/canonical_owner_restore.rs",
+    "changes": "Retained-body/guarded typed delivery helpers only, new physical restore process scenarios",
+    "dependencies": "Existing locked dependencies plus standard-library Python and existing owned-PG scripts, read-only imported",
+    "qualification": "NOT_RUN"
+  },
+  {
+    "source_path": "backend/services/concert-service/tests/canonical_owner_composition_support/qualify.py",
+    "source_revision": "3afb8111d8ef206f3e73c63186699c98d9fd4997",
+    "source_sha256": "47e4e34e76232db3423d7ea71219d3fd18e5c384c633fb4ad294779a0bb868c6",
+    "destination": "backend/services/concert-service/tests/canonical_owner_restore_support/qualify.py",
+    "changes": "Frozen checkpoint/source pin and PKI patterns adapted; restore runner/controller newly authored",
+    "dependencies": "Existing locked dependencies plus standard-library Python and existing owned-PG scripts, read-only imported",
+    "qualification": "NOT_RUN"
+  },
+  {
+    "source_path": "backend/services/concert-service/tests/process_child_recovery_support/controller.py",
+    "source_revision": "3afb8111d8ef206f3e73c63186699c98d9fd4997",
+    "source_sha256": "45576f3a9c7847a6776df8514ecfc1be0c8b3e77050f3e16d4701f1cefa7b617",
+    "destination": "backend/services/concert-service/tests/canonical_owner_restore_support/controller.py",
+    "changes": "Owned private handoff/exact child protocol patterns adapted; cold physical backup/restore newly authored",
+    "dependencies": "Existing locked dependencies plus standard-library Python and existing owned-PG scripts, read-only imported",
+    "qualification": "NOT_RUN"
+  }
+]
