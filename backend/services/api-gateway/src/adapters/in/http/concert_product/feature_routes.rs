@@ -6,6 +6,10 @@ use std::collections::BTreeMap;
 pub(super) fn router() -> Router<Arc<AppState>> {
     Router::new()
         .route(
+            "/api/concert/events/:event_id/me/operations-access",
+            get(dispatch),
+        )
+        .route(
             "/api/concert/events/:event_id/mural/snapshot",
             get(dispatch),
         )
@@ -85,6 +89,7 @@ pub(super) fn router() -> Router<Arc<AppState>> {
 
 #[derive(Clone, Copy, Debug, PartialEq, Eq)]
 pub(super) enum FeatureRoute {
+    OwnOperationsAccess,
     MuralSnapshot,
     MuralDelta,
     MuralPixel,
@@ -147,6 +152,7 @@ impl FeatureRoute {
     #[cfg(test)]
     fn operation(self) -> &'static str {
         match self {
+            Self::OwnOperationsAccess => "getOwnConcertOperationsAccess",
             Self::MuralAdmin => "getConcertAdminMural",
             Self::MuralAdminControl => "controlConcertMural",
             Self::MuralAdminLocks => "lockConcertMuralRegion",
@@ -186,6 +192,8 @@ pub(super) fn protects(path: &str) -> bool {
             || tail.starts_with("mural/")
             || tail == "admin/mural"
             || tail.starts_with("admin/mural/")
+            || tail == "me/operations-access"
+            || tail.starts_with("me/operations-access/")
             || tail == "me/age-status"
             || tail.starts_with("me/age-status/")
             || tail == "me/age-verifications"
@@ -206,6 +214,7 @@ pub(super) fn route(method: &Method, path: &str) -> Option<FeatureRoute> {
         method.as_str(),
         tail.split('/').collect::<Vec<_>>().as_slice(),
     ) {
+        ("GET", ["me", "operations-access"]) => Some(OwnOperationsAccess),
         ("GET", ["admin", "mural"]) => Some(MuralAdmin),
         ("POST", ["admin", "mural", "control"]) => Some(MuralAdminControl),
         ("POST", ["admin", "mural", "locks"]) => Some(MuralAdminLocks),
@@ -444,7 +453,7 @@ mod tests {
                 }
             }
         }
-        assert_eq!(count, 26);
+        assert_eq!(count, 27);
     }
 }
 

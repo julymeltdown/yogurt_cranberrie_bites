@@ -152,3 +152,62 @@ this source changed. Its old frozen readset remains preserved and is ineligible
 for admission until explicitly updated; this note does not add another build
 output to that one-test-executable offer. No accepted epoch, cap or deadline is
 changed, and no compiler, PostgreSQL process or target handle is held.
+
+### Qualified copied browser-fixture boot — producing source `857a6955`
+
+The single `auth-service --test enrollment_policy_browser --no-run` target
+compiled at `857a69559631db52f1febdb7692888f089a9575c`, using the declared
+Rust 1.88 locked/offline/j2 profile, debug 0 and incremental 0. Cargo exited 0.
+The one frozen test EXE is 57,061,232 bytes, SHA256
+`8c0c8f06e290717ac877c6d068d023ee58f2e60434327850180d1171c31a2e55`.
+This does not qualify an actual Gateway main or any Wall operation.
+
+After releasing the target, the copied fixture ran once against a fresh owned
+PG16 root. Its exact ignored test exited 0 in 3.25 seconds. Actual boot probes
+returned current synthetic policy 200, begin without Origin 403, and bound
+begin with the allowed local Origin 201 and the scoped development HttpOnly
+Strict cookie. The runtime SQL closure remained exactly Auth 19 and Gateway 17;
+there were zero prepared transactions. The controller exited 0, removed its
+owned PG root, and reported `SERVING_STOPPED` with an explicitly FE-owned
+browser verdict. No account or mail was expected or created by this boot.
+Expiry and rotation controls compiled but were not exercised. Real signup,
+resend timing, expiry, renewed-consent browser cases and actual frontend
+acceptance remain NOT_RUN.
+
+Private custody is `/private/tmp/mcr-browser207-1902-d27qutm4`, containing the
+actual Cargo artifact/argv, source/SQL/tool/helper pins, copied EXE, ready/stop
+artifacts, independent guards and build/native/target/FULL receipts. Controller
+report SHA256 is
+`eca32e5d1f05e2f4b8d054f8ddcbaaac0c0d2c47274d52cb4a2498d74881cc2f`.
+The boot descriptor's ephemeral listeners are stopped; it is protocol and boot
+evidence, not an available server. A future paired run must have fresh finite
+native/browser allocations, a new private output directory, both named input
+controls and their owner-only atomic publication paths, and the same producing
+EXE/source/SQL identity. The FE owner records the actual browser verdict.
+
+Allocation accepted at 19:26:20.384748 UTC on 2026-11-04. Target release was
+19:27:42.079189, sent directly to Operations before any PG/native child. FULL was
+19:28:36.686532, 54.607343 seconds after target release. All owned compilers,
+guards, PG/RPC/HTTP processes, binary readers and workflows were zero; the root
+was absent and no target reentry occurred. Inclusive positive growth peaked at
+200,519,680 bytes and retained whole at 4,902,322,176 bytes, which becomes a
+nonshrinking future carry floor. The final copy endpoints were reconciled
+explicitly because a copy can finish between periodic guardian samples; the
+original guardian sample and reconciliation are both retained. This resource
+release adds no browser acceptance or production legal-policy approval.
+
+### Additive current-role discovery source for the queued Gateway main
+
+Before the separate Gateway-main turn was accepted, Root additionally assigned
+only the same-file `OwnOperationsAccess` leaf from Operations source
+`27f674a2932e66b8f728b5430717d1bd9ea5329e`, feature-file blob
+`59d7bea64358844e04c213dd8c1d4fba1b5bb8e7`. The exact route is bodyless SELF GET
+`/api/concert/events/:event_id/me/operations-access`, operation ID
+`getOwnConcertOperationsAccess`. Router, enum, protected namespace, exact
+method/path and operation mapping are additive; existing zero read-body limit,
+no query and no receipt/mutation defaults remain. The frozen feature-operation
+probe now expects twenty-seven. No Report or other Operations endpoint, main,
+contract, shared producer or role factory was copied. Root owns the one prepared
+Operations factory, current-role producer and shared Wall dispatch composition.
+The already compiled fixture retains producing revision `857a6955`; this newer
+Gateway source requires its own immutable compile pin and main qualification.
