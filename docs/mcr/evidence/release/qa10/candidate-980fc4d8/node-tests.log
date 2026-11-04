@@ -1,0 +1,142 @@
+TAP version 13
+# Subtest: unavailable setup is rejected before any transport work
+ok 1 - unavailable setup is rejected before any transport work
+  ---
+  duration_ms: 1.608709
+  type: 'test'
+  ...
+# Subtest: all seven roles and 21 HTTP cells are required, without duplicates or role bypass
+ok 2 - all seven roles and 21 HTTP cells are required, without duplicates or role bypass
+  ---
+  duration_ms: 0.524791
+  type: 'test'
+  ...
+# Subtest: unregistered endpoints, methods, queries, cross-event IDs and malformed bodies refuse setup
+ok 3 - unregistered endpoints, methods, queries, cross-event IDs and malformed bodies refuse setup
+  ---
+  duration_ms: 0.987417
+  type: 'test'
+  ...
+# Subtest: non-isolated setup, URL credentials and unqualified mutations refuse setup
+ok 4 - non-isolated setup, URL credentials and unqualified mutations refuse setup
+  ---
+  duration_ms: 0.263583
+  type: 'test'
+  ...
+# Subtest: gate selftest consumes published schema/status and labels mocked fetch as synthetic
+ok 5 - gate selftest consumes published schema/status and labels mocked fetch as synthetic
+  ---
+  duration_ms: 15.775209
+  type: 'test'
+  ...
+# Subtest: schema-valid private markers, unknown private fields and missing no-store fail rather than produce passing receipts
+ok 6 - schema-valid private markers, unknown private fields and missing no-store fail rather than produce passing receipts
+  ---
+  duration_ms: 0.975125
+  type: 'test'
+  ...
+# Subtest: oversized private responses stop at the bounded reader
+ok 7 - oversized private responses stop at the bounded reader
+  ---
+  duration_ms: 0.947875
+  type: 'test'
+  ...
+# Subtest: positive-content assertions stop a vacuous empty successful response
+ok 8 - positive-content assertions stop a vacuous empty successful response
+  ---
+  duration_ms: 0.377209
+  type: 'test'
+  ...
+# Subtest: frozen public projection fixtures reject handle/claim/recipient leaks while authorized shapes remain separate
+ok 9 - frozen public projection fixtures reject handle/claim/recipient leaks while authorized shapes remain separate
+  ---
+  duration_ms: 6.654
+  type: 'test'
+  ...
+# Subtest: nearest-rank tails preserve outliers without mutating raw samples
+ok 10 - nearest-rank tails preserve outliers without mutating raw samples
+  ---
+  duration_ms: 0.433
+  type: 'test'
+  ...
+# Subtest: zero renders in a covered world differ from RAF activity and unknown intervals
+ok 11 - zero renders in a covered world differ from RAF activity and unknown intervals
+  ---
+  duration_ms: 0.111584
+  type: 'test'
+  ...
+# Subtest: 30 FPS reference uses the original budget and measured window, not requested duration
+ok 12 - 30 FPS reference uses the original budget and measured window, not requested duration
+  ---
+  duration_ms: 0.073042
+  type: 'test'
+  ...
+# Subtest: all ten distinct routes stay within the original source image and preserve unequal phone aspects
+ok 13 - all ten distinct routes stay within the original source image and preserve unequal phone aspects
+  ---
+  duration_ms: 0.588416
+  type: 'test'
+  ...
+# Subtest: memory cache, disk cache and transferred bytes are not conflated with loader calls
+ok 14 - memory cache, disk cache and transferred bytes are not conflated with loader calls
+  ---
+  duration_ms: 0.493959
+  type: 'test'
+  ...
+# Subtest: warm request avoidance is distinct from an HTTP cache hit or a fresh decode
+ok 15 - warm request avoidance is distinct from an HTTP cache hit or a fresh decode
+  ---
+  duration_ms: 0.552833
+  type: 'test'
+  ...
+# Subtest: genuine selected C06 Bootstrap and six-player C05 snapshot/delta pass actual published admission without avatar rewrites
+ok 16 - genuine selected C06 Bootstrap and six-player C05 snapshot/delta pass actual published admission without avatar rewrites
+  ---
+  duration_ms: 413.29625
+  type: 'test'
+  ...
+# Subtest: candidate binding rejects stale ancestors, wrong trees and dirty input
+ok 17 - candidate binding rejects stale ancestors, wrong trees and dirty input
+  ---
+  duration_ms: 1.031875
+  type: 'test'
+  ...
+# Subtest: dispatch retains Node probes renamed outside default discovery and reports real-service suites
+ok 18 - dispatch retains Node probes renamed outside default discovery and reports real-service suites
+  ---
+  duration_ms: 0.63775
+  type: 'test'
+  ...
+# Subtest: genuine test results require nonempty exact file coverage, retaining skipped cases
+ok 19 - genuine test results require nonempty exact file coverage, retaining skipped cases
+  ---
+  duration_ms: 1.13375
+  type: 'test'
+  ...
+# Subtest: production checks inspect emitted fixture/mock modules and secret markers without exporting values
+ok 20 - production checks inspect emitted fixture/mock modules and secret markers without exporting values
+  ---
+  duration_ms: 0.467125
+  type: 'test'
+  ...
+# Subtest: receipt consumer refuses missing, duplicate, empty or falsely passing gates
+ok 21 - receipt consumer refuses missing, duplicate, empty or falsely passing gates
+  ---
+  duration_ms: 0.960833
+  type: 'test'
+  ...
+# Subtest: artifact paths reject escapes and absolute paths
+ok 22 - artifact paths reject escapes and absolute paths
+  ---
+  duration_ms: 0.061875
+  type: 'test'
+  ...
+1..22
+# tests 22
+# suites 0
+# pass 22
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 720.453916

@@ -1,0 +1,1 @@
+{"nonempty_count":249,"findings":[],"limitation":"Known emitted fixture/mock paths and narrow credential markers only; not a complete secret or authorization audit."}

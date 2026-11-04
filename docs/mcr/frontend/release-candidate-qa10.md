@@ -183,3 +183,63 @@ still pending. The integrator can publish these implementation commits while the
 QA10 owner retains responsibility for consuming that candidate and recording a
 fresh meaningful run. Existing broad NOT_GREEN is not overwritten, and no full
 QA10, QA01, QA02, BE43, real-service or IN05 acceptance is claimed here.
+
+## Published candidate qualification
+
+The designated integrator published the implementation, evidence and sole-owner
+readiness repair at **`980fc4d85020f297b36fee8195e1ca92079ff33f`**.
+Fresh fetch and `git ls-remote origin refs/heads/master` independently returned
+that exact commit. Original worker commits were cherry-picked as follows:
+
+| Original | Published ancestor |
+| --- | --- |
+| `f30f7871e8dafb0a0cac6d04857bc49b9cbf5d72` | `976508a87a71f5daf88e5b06fb99a09934791815` |
+| `68c5f48d1dc0f4a2bdbdfd372a51f89b842e788f` | `ec84cfbb433d9abf0abd4acd55fb736e6c1ef0cd` |
+| `0fe5a687522ae2d08a38f7c669fe3814fd68b55e` | `c338b86f2b9e02e84590562fc7714a2e4d6d7b80` |
+| `544d45ae01cb3c54465e901bb977c687da6048fb` | `4505971aaffc833c0b825ddb734af1f3cf617601` |
+
+All 48 handoff paths were independently compared byte for byte against the
+published candidate. `publication-980fc4d8.json` records their SHA-256 hashes,
+mapped ancestry and the repair test hash
+`fc117dc9f32ebe79bf1c974d4fdea1f77742918450fe12aa9b2a894b837a0422`.
+Original commits remain historical candidates; mapping does not rewrite receipts.
+
+The preserved original branch remains at `544d45ae`. Fast-forwarding safely
+refused because of the cherry-picks. In the same isolated checkout, new branch
+`codex/mcr-qa-QA10-published-candidate` started at the exact published commit.
+No merge, application edit, install, source repair or developer push was used.
+
+The QA10 owner then executed the full `run` command itself with explicit
+`--candidate 980fc4d85020f297b36fee8195e1ca92079ff33f`, fresh absolute output
+`docs/mcr/evidence/release/qa10/candidate-980fc4d8`, and the same existing Python
+validation environment. Actual result: **exit 0, PARTIAL, frontend_checks PASS**.
+The initial/final candidate fences both verified commit, clean state and tree
+`4e18155702c0907782da77afc9cb442916473967`.
+
+| Gate | Actual exit | Recorded coverage |
+| --- | ---: | --- |
+| dependencies | 0 | 26 retained direct packages; original lock unchanged |
+| python-formats | 0 | 5 installed validator packages and actual format checks |
+| typecheck | 0 | 780 TypeScript inputs |
+| lint | 0 | canonical source/config plus harness; 1,337 source entries |
+| vitest | 0 | **3,503/3,503 tests, 209 files, zero failures/skips** |
+| node-tests | 0 | **22/22 tests, 5 files, zero failures/skips/todos** |
+| build | 0 | ordinary production entry; 249 emitted source modules |
+| ui-origin | 0 | canonical C08 PASS, 3,012 content files |
+| production-static | 0 | 249 emitted modules; no narrow mock/credential findings |
+| task-trace | 0 | 36 linked source rows; six unmapped rows retained as gaps |
+
+The published run automatically discovered additional tests rather than using
+the old fixed inventory. All 209 Vitest and five Node files executed; all three
+real-service Playwright suites remain explicitly NOT_RUN. No unrecognized runner
+was omitted. The exact commands, source/contract/tool pins, raw lossless report,
+logs and artifacts are in the new candidate directory; `run-980fc4d8.log` records
+process output. The owner also ran `verify` against this explicit candidate and
+receipt; its actual exit/result is retained in `verify-980fc4d8.log`.
+
+This qualifies the assigned frontend candidate contribution, including the
+published readiness repair, without upgrading original historical FAIL results.
+Full QA10/IN05, real multiuser services, backend release packaging, physical
+devices, full secret auditing and complete task/IA acceptance remain with their
+existing owners and explicit NOT_RUN/BLOCKED criteria. A later documentation
+publication is evidence recording, not qualification of a different code SHA.

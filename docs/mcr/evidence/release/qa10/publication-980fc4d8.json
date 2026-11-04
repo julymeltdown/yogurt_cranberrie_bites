@@ -1,0 +1,261 @@
+{
+  "checked_at": "2026-11-04T02:25:53.020559+00:00",
+  "published_candidate": "980fc4d85020f297b36fee8195e1ca92079ff33f",
+  "remote_observation": "git fetch origin master and git ls-remote origin refs/heads/master returned exact candidate before qualification",
+  "mapping": {
+    "f30f7871e8dafb0a0cac6d04857bc49b9cbf5d72": "976508a87a71f5daf88e5b06fb99a09934791815",
+    "68c5f48d1dc0f4a2bdbdfd372a51f89b842e788f": "ec84cfbb433d9abf0abd4acd55fb736e6c1ef0cd",
+    "0fe5a687522ae2d08a38f7c669fe3814fd68b55e": "c338b86f2b9e02e84590562fc7714a2e4d6d7b80",
+    "544d45ae01cb3c54465e901bb977c687da6048fb": "4505971aaffc833c0b825ddb734af1f3cf617601"
+  },
+  "mapped_commits_ancestor": true,
+  "original_commit_ancestry": "Original worker commits were cherry-picked, so original candidate receipts remain historical and do not certify published HEAD.",
+  "payloads": [
+    {
+      "path": "docs/mcr/evidence/release/qa10/candidate-68c5f48d/build-audit.json",
+      "sha256": "0e7964bff07c5e22c0e3597ac995ff1a59bf7f509f366e6089dbef3f3464bb6e",
+      "byte_identical": true
+    },
+    {
+      "path": "docs/mcr/evidence/release/qa10/candidate-68c5f48d/build.log",
+      "sha256": "bb1ff727588ffb8aed146e8d4fbf5eb79a83f81d3c2c8ee2892d8cde82d0ef3e",
+      "byte_identical": true
+    },
+    {
+      "path": "docs/mcr/evidence/release/qa10/candidate-68c5f48d/dependencies.json",
+      "sha256": "81ee9d0280ea89783be1be59823cfcf962c41e6d3fe5605f086d0a47d64cfd76",
+      "byte_identical": true
+    },
+    {
+      "path": "docs/mcr/evidence/release/qa10/candidate-68c5f48d/dependencies.log",
+      "sha256": "b7bcbe2dd84afdce41d426281e6a275607905648be79b70a3962fbb6817f7d78",
+      "byte_identical": true
+    },
+    {
+      "path": "docs/mcr/evidence/release/qa10/candidate-68c5f48d/lint.log",
+      "sha256": "f8e3d82dbc82cbc1d3d09c7e9c21c8d1d0f27572637dcd3b9771ea0d472b85d1",
+      "byte_identical": true
+    },
+    {
+      "path": "docs/mcr/evidence/release/qa10/candidate-68c5f48d/node-tests.log",
+      "sha256": "1c6ebdade41dfda66a667460128d4298f75ab2022e39a6bc1756a08f51d3d167",
+      "byte_identical": true
+    },
+    {
+      "path": "docs/mcr/evidence/release/qa10/candidate-68c5f48d/production-static.log",
+      "sha256": "50d92baaae5ef0b8278a54bd4fa6ae17c203edc1569d88e2f491fd5ce8e61b20",
+      "byte_identical": true
+    },
+    {
+      "path": "docs/mcr/evidence/release/qa10/candidate-68c5f48d/python-formats.log",
+      "sha256": "ccf8d7faaa279ded3347243f260a0850c73547b25bcbffde47b196624ac559b0",
+      "byte_identical": true
+    },
+    {
+      "path": "docs/mcr/evidence/release/qa10/candidate-68c5f48d/receipt.json",
+      "sha256": "aca419ec7e77c0e3247738fe6c8e95a7fcdd11d29718a7b90bd5cb4dec015792",
+      "byte_identical": true
+    },
+    {
+      "path": "docs/mcr/evidence/release/qa10/candidate-68c5f48d/task-trace.json",
+      "sha256": "0fb59befb85b00ba83d41e94da16ecd12f609ca44e377f0956b5c1a82c268f42",
+      "byte_identical": true
+    },
+    {
+      "path": "docs/mcr/evidence/release/qa10/candidate-68c5f48d/task-trace.log",
+      "sha256": "fb030c17bddd48a2f6b79d3b71b3d600b9f9f2e884b12cd4b4ebcdc0c4f987ec",
+      "byte_identical": true
+    },
+    {
+      "path": "docs/mcr/evidence/release/qa10/candidate-68c5f48d/test-inventory.json",
+      "sha256": "f40481792296063fc8c93767102eb934c8d0d1cced719b706910e395aab3ffb9",
+      "byte_identical": true
+    },
+    {
+      "path": "docs/mcr/evidence/release/qa10/candidate-68c5f48d/typecheck.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "byte_identical": true
+    },
+    {
+      "path": "docs/mcr/evidence/release/qa10/candidate-68c5f48d/ui-origin.log",
+      "sha256": "bded04e8515444c421a8fb58786193aeecf5b1694742c0cb415c292379232ad9",
+      "byte_identical": true
+    },
+    {
+      "path": "docs/mcr/evidence/release/qa10/candidate-68c5f48d/vitest.json.gz",
+      "sha256": "2325d67839831db74e8c5b4dcf1f19eaa86d05ef304c1b6e81a68ce986b3c9c5",
+      "byte_identical": true
+    },
+    {
+      "path": "docs/mcr/evidence/release/qa10/candidate-68c5f48d/vitest.log",
+      "sha256": "01bee0c1d21dfb7ca2f788b658de3b89ffb109cb23a3d4e1afd9d7aa652adb17",
+      "byte_identical": true
+    },
+    {
+      "path": "docs/mcr/evidence/release/qa10/candidate-f30f7871/build-audit.json",
+      "sha256": "0e7964bff07c5e22c0e3597ac995ff1a59bf7f509f366e6089dbef3f3464bb6e",
+      "byte_identical": true
+    },
+    {
+      "path": "docs/mcr/evidence/release/qa10/candidate-f30f7871/build.log",
+      "sha256": "435629f74347a299172ee6f1aa59b578da018c13d30fdd7b767af3e06e34afb0",
+      "byte_identical": true
+    },
+    {
+      "path": "docs/mcr/evidence/release/qa10/candidate-f30f7871/dependencies.json",
+      "sha256": "81ee9d0280ea89783be1be59823cfcf962c41e6d3fe5605f086d0a47d64cfd76",
+      "byte_identical": true
+    },
+    {
+      "path": "docs/mcr/evidence/release/qa10/candidate-f30f7871/dependencies.log",
+      "sha256": "db213cc9b49053619d6d90dd703ed56acfcf7f6059a60bc4cac5cbf0712ca398",
+      "byte_identical": true
+    },
+    {
+      "path": "docs/mcr/evidence/release/qa10/candidate-f30f7871/lint.log",
+      "sha256": "f8e3d82dbc82cbc1d3d09c7e9c21c8d1d0f27572637dcd3b9771ea0d472b85d1",
+      "byte_identical": true
+    },
+    {
+      "path": "docs/mcr/evidence/release/qa10/candidate-f30f7871/node-tests.log",
+      "sha256": "3ab94c187b58858146be0d166e4ef35ab1a4380c48c88b4d0d10e4e7832eb5f1",
+      "byte_identical": true
+    },
+    {
+      "path": "docs/mcr/evidence/release/qa10/candidate-f30f7871/production-static.log",
+      "sha256": "50d92baaae5ef0b8278a54bd4fa6ae17c203edc1569d88e2f491fd5ce8e61b20",
+      "byte_identical": true
+    },
+    {
+      "path": "docs/mcr/evidence/release/qa10/candidate-f30f7871/python-formats.log",
+      "sha256": "ccf8d7faaa279ded3347243f260a0850c73547b25bcbffde47b196624ac559b0",
+      "byte_identical": true
+    },
+    {
+      "path": "docs/mcr/evidence/release/qa10/candidate-f30f7871/receipt.json",
+      "sha256": "01f51f27a33a76479dc8b46b0eddb25bedba5d57f39c4906d601376a968faecd",
+      "byte_identical": true
+    },
+    {
+      "path": "docs/mcr/evidence/release/qa10/candidate-f30f7871/task-trace.json",
+      "sha256": "fd85d95a233f7d007a6ec45e7a5becc0f3851f531b7cac9d6400f1252fe7c7a2",
+      "byte_identical": true
+    },
+    {
+      "path": "docs/mcr/evidence/release/qa10/candidate-f30f7871/task-trace.log",
+      "sha256": "9c25a2c2dc83f28664007d673e8291b34d6889410e0aa0bb8f71016318d04dd8",
+      "byte_identical": true
+    },
+    {
+      "path": "docs/mcr/evidence/release/qa10/candidate-f30f7871/test-inventory.json",
+      "sha256": "f40481792296063fc8c93767102eb934c8d0d1cced719b706910e395aab3ffb9",
+      "byte_identical": true
+    },
+    {
+      "path": "docs/mcr/evidence/release/qa10/candidate-f30f7871/typecheck.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "byte_identical": true
+    },
+    {
+      "path": "docs/mcr/evidence/release/qa10/candidate-f30f7871/ui-origin.log",
+      "sha256": "bded04e8515444c421a8fb58786193aeecf5b1694742c0cb415c292379232ad9",
+      "byte_identical": true
+    },
+    {
+      "path": "docs/mcr/evidence/release/qa10/candidate-f30f7871/vitest.json.gz",
+      "sha256": "bce8479ad0a607e97f8764c0993fb2b99a0b8d9f22abf3056f215501299f59ac",
+      "byte_identical": true
+    },
+    {
+      "path": "docs/mcr/evidence/release/qa10/candidate-f30f7871/vitest.log",
+      "sha256": "32f42439a8b66d59d005791b615c7fe66809badbef33b858f2d059133b0b69d3",
+      "byte_identical": true
+    },
+    {
+      "path": "docs/mcr/evidence/release/qa10/focused-meeting.json.gz",
+      "sha256": "af646ad5e8d3e598836ecba5285bebfa5381c2e8b6b1ce7fdbc32d938b1f469a",
+      "byte_identical": true
+    },
+    {
+      "path": "docs/mcr/evidence/release/qa10/focused-meeting.log",
+      "sha256": "24eaca9baf0d3ed7afd9a263e756112ba20fde06b76c009b3f0c2a46b0fb7e8c",
+      "byte_identical": true
+    },
+    {
+      "path": "docs/mcr/evidence/release/qa10/lint-final.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "byte_identical": true
+    },
+    {
+      "path": "docs/mcr/evidence/release/qa10/negative-probes.json",
+      "sha256": "f3310234bf4ae0df9414bef713287df211e981fe12d53c25413dc443773af065",
+      "byte_identical": true
+    },
+    {
+      "path": "docs/mcr/evidence/release/qa10/negative-probes.log",
+      "sha256": "5cb32dfe502d0a6dcc4ae98d42872cd770d3d65f2d86d07b20a76902d156925f",
+      "byte_identical": true
+    },
+    {
+      "path": "docs/mcr/evidence/release/qa10/run-68c5f48d.log",
+      "sha256": "4e51113ff717980b26145b997e264779f271e17d79ccad2e796efb2935977c44",
+      "byte_identical": true
+    },
+    {
+      "path": "docs/mcr/evidence/release/qa10/run-f30f7871.log",
+      "sha256": "d5cac722e095995c6bce72553b038506cb8d41c9ccf49fc1acbc8eb909320ea8",
+      "byte_identical": true
+    },
+    {
+      "path": "docs/mcr/evidence/release/qa10/selftest-final.log",
+      "sha256": "31f119f74313aa359d77b5ebe6b42870349b3cdb21a0aee5f471d5f9c5a33cfc",
+      "byte_identical": true
+    },
+    {
+      "path": "docs/mcr/evidence/release/qa10/verify-68c5f48d.log",
+      "sha256": "447b9c8a117abe243f071b37853484269a4a784f8e1baf12e875a2137bc6395c",
+      "byte_identical": true
+    },
+    {
+      "path": "docs/mcr/evidence/release/qa10/verify-probes.py",
+      "sha256": "c1731d49dd3bd2188cd360bcf659229b44e451a9f830ca677d75fcf01343b7f9",
+      "byte_identical": true
+    },
+    {
+      "path": "docs/mcr/frontend/release-candidate-qa10.md",
+      "sha256": "ff6b030a5164e06fd04b050bf21c5ddbaacf72ec1fd456aa3256260c89baf790",
+      "byte_identical": true
+    },
+    {
+      "path": "frontend/e2e/reference-integrated/whole/data.test.mjs",
+      "sha256": "045de940b60f82d51618b570ff6f3e3aeb115e13be0cedb7929149c6ed07b809",
+      "byte_identical": true
+    },
+    {
+      "path": "frontend/e2e/release/qa10/model.mjs",
+      "sha256": "a0305de734d15fe540ff1a9e5e0d34c5c2b19bdf671f1f9526ce1f3adc10cb9e",
+      "byte_identical": true
+    },
+    {
+      "path": "frontend/e2e/release/qa10/run.mjs",
+      "sha256": "55c78d585b21a1ec8359d6f680411254ef47e8fc4cbeaf2b630747a05ad6955b",
+      "byte_identical": true
+    },
+    {
+      "path": "frontend/e2e/release/qa10/selftest.node.mjs",
+      "sha256": "1690cedb6d6066f6387041191b565ed3281190f23aa376d980eb8f6831331be2",
+      "byte_identical": true
+    },
+    {
+      "path": "frontend/e2e/release/qa10/worker.mjs",
+      "sha256": "f9b8d7406abce9310840882ad06881cf8c44d3c37143f893c513bd30060c2f59",
+      "byte_identical": true
+    }
+  ],
+  "published_repair": {
+    "mapped_commit": "0c0d0f5b4d188fb6335c58ca90714250506c08b5",
+    "path": "frontend/src/app/meeting-entry/__tests__/root-registration.test.tsx",
+    "sha256": "fc117dc9f32ebe79bf1c974d4fdea1f77742918450fe12aa9b2a894b837a0422"
+  },
+  "publication_owner": "Root153; this writer made no push"
+}
