@@ -43,6 +43,7 @@ background_selectors = {
     '.me-hub--reference .me-activity-navigation',
     '.auth-sign-in .auth-cemetery--top', '.auth-sign-in .auth-cemetery--bottom',
     ".shell-panel[data-mcr-panel='customize'] > .shell-panel-body",
+    ".shell-panel[data-mcr-panel='me'] > .shell-panel-body",
 }
 for wrapper in ['mcr-motion-editor', 'mcr-whole-editor', 'mcr-avatar-editor']:
     for child in ['body', 'footer']:
@@ -61,6 +62,7 @@ image_mapping = {
     '.me-hub--reference .me-bio': '/backgrounds/cute-wall-me-v1/me-scrapbook.svg',
     '.me-hub--reference .me-activity-navigation': '/backgrounds/cute-wall-me-v1/me-scrapbook.svg',
     ".shell-panel[data-mcr-panel='customize'] > .shell-panel-body": '/backgrounds/cute-entry-v1/customize-paper.svg',
+    ".shell-panel[data-mcr-panel='me'] > .shell-panel-body": '/backgrounds/cute-wall-me-v1/me-scrapbook.svg',
 }
 for selector in background_selectors:
     if selector.startswith('.mcr-'):

@@ -2,8 +2,8 @@
   "task": "ART-SCREEN-ID01",
   "status": "IN_PROGRESS",
   "base": "7c25078f118da53dd9a524d0a58e707cca190f0f",
-  "sourceSha256": "35d18f2c7e5834feffd16648546bd82da84a2e9191a4cfbce993092b66eb8114",
-  "grantedSelectorCount": 19,
+  "sourceSha256": "a04b89dec0857521a89e69cf5af508f2cdb4280dfe3a7722391e32ee1e95945e",
+  "grantedSelectorCount": 20,
   "closedAssets": [
     {
       "file": "landing-garden-night.svg",

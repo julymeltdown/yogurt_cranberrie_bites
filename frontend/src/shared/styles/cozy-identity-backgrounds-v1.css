@@ -77,6 +77,15 @@
   background-repeat: no-repeat;
 }
 
+/* Route-specific outer paper only, including the blank region below Me content. */
+:root .shell-panel[data-mcr-panel='me'] > .shell-panel-body {
+  background-color: #fff0e7;
+  background-image: url('/backgrounds/cute-wall-me-v1/me-scrapbook.svg');
+  background-position: center top;
+  background-size: 100% auto;
+  background-repeat: no-repeat;
+}
+
 /* Only the old noninteractive ornamental payload loses paint. The SVG boxes,
  * flow, pointer behavior, wordmark, copy, controls and selected crowd stay intact.
  */

@@ -115,7 +115,7 @@ not be relabeled as a new baseline capture.
 
 Repository status, full SHAs, prefix absence, relevant selectors, and the
 decorative SVG source boundaries were inspected read-only with exit code 0.
-The new CSS now contains nineteen granted selectors and consumes all seven
+The new CSS now contains twenty granted selectors and consumes all seven
 closed assets. The static selector/property/URL mapping, asset byte/hash, and
 inert SVG checks pass with exit code 0:
 
@@ -185,6 +185,15 @@ background color/image/position/size/repeat using the same closed
 existing route-marker expression extension for `/me/avatar`; there is no new
 wrapper, preview paint, geometry, control, character, or layout change. This
 correction still requires fresh rendered evidence after integration.
+
+Root then granted the equivalent exact Me outer-paper rule before writes:
+`:root .shell-panel[data-mcr-panel='me'] > .shell-panel-body`. It uses only
+background paint with the same pinned `me-scrapbook.svg`, `center top`,
+`100% auto`, `no-repeat`, and solid `#fff0e7`. Root owns the existing
+route-marker expression extension for exactly `/me`. This replaces the old
+blank lower paper while keeping the original opaque portrait, all character
+pixels, controls, layout, and footer unchanged. It also needs fresh rendered
+evidence; the first packet does not include this rule.
 
 The first packet reports unchanged control geometry/type/color/state and body
 text, no errors, no horizontal overflow, and a visible focus outline for each
