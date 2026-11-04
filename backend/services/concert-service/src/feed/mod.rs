@@ -9,3 +9,6 @@ pub mod qualified_transport;
 pub mod queue;
 pub mod resources;
 pub mod wire;
+
+#[cfg(test)]
+mod native_join;
