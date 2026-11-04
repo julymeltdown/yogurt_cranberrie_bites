@@ -63,7 +63,7 @@ fn only_gateway_may_dispatch_with_a_signed_field_one_actor() {
         platform::grpc_method_policy::proto_rpc_names(include_str!(
             "../../../proto/concert/v1/product.proto"
         )),
-        ["Dispatch"]
+        ["Dispatch", "CompleteResponse"]
     );
 }
 

@@ -309,3 +309,18 @@ The map4 native case also publishes the old map3 first in the same isolated
 database/event, adopts map4, then checks immutable map3 bytes/geometry remain
 stored and stale map3 selections fail. The restart case checks exact map4 state.
 This authored regression remains NOT_RUN until its frozen-binary qualification.
+
+## Published source-only checkpoint
+
+This publication contains the reproducible map3/map4 source candidates, existing
+Python generator/tests and this document only. It deliberately does not deliver
+the still-queued Rust provenance-policy/layout/native-test changes. Ten Python
+checks and exact reproduction of both candidate directories pass. The native
+runner requires the frozen test binary to report the exact actual map identity,
+source and art revisions; older binaries without that observation fail closed.
+Rust/native map3/map4 qualification remains **NOT_RUN** at this source checkpoint.
+The previously published map2 content remains immutable in `60991c53` history;
+the default source directory now describes map3, and quality-v6 describes map4.
+Consumers may pin these actual source artifacts for separate fixtures without
+claiming Product admission, backend runtime qualification or fidelity acceptance.
+The backend owner retains the queued Rust implementation and qualification goal.

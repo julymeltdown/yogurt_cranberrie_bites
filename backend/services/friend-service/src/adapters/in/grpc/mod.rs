@@ -7,3 +7,5 @@ pub mod server;
 pub mod concert_relationship;
 
 pub mod concert_invalidation;
+
+pub mod concert_authority;
