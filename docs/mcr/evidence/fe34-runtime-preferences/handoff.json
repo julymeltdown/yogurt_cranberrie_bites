@@ -38,8 +38,43 @@
     "frontend/src/world/composition/index.ts": "90ca131868b60f0c7c5df344503b89ccf17686df85186e9f968742c311718974",
     "frontend/src/app/account-entry/panels.tsx": "87b9d04d380d8099713936e704737d656a810fdb39f0a6eb63875ae4cf498b78"
   },
-  "root_wiring": "OUTSTANDING",
+  "root_wiring": {
+    "status": "SOURCE_INTEGRATED_UNPUBLISHED",
+    "commit": "dd379b4512405403033b198abf2a3727cfc7f592",
+    "paths": [
+      "frontend/src/world/composition/index.ts",
+      "frontend/src/app/world-panels/index.tsx",
+      "frontend/src/app/account-entry/panels.tsx",
+      "frontend/src/features/settings/SettingsPage.tsx",
+      "frontend/src/features/theme/ui/ThemeSelector.tsx"
+    ]
+  },
   "combined_actual_phaser_browser": "NOT_RUN",
   "remote_publication": "NOT_YET_VERIFIED",
-  "whole_FE34": "NOT_ACCEPTED"
+  "whole_FE34": "NOT_ACCEPTED",
+  "publisher_source_mapping": {
+    "3cd74cae5b5c4a3d8ce572ef883b4b12fc3493da": "53b67c3718785a154c4d2ceaf02bdc67ea2a1f1d",
+    "3eea76f47f9f7825c98e5d72616fcb8b72849720": "dbb2d08ceacd0fb1f82034dd426c4dbbaa44b360",
+    "281d80e8eb5d21844c62a37325d63fafed2171c2": "5ef20bb4d296362de9ed052f8435f7590bb7f15e"
+  },
+  "adopted_source_and_document_payloads_identical": true,
+  "dom_motion_projection": {
+    "status": "IMPLEMENTED_VALIDATION_NOT_RUN",
+    "requested_by": "Root153",
+    "validation_owner": "Root composed check, no standalone output job",
+    "owned_source_sha256": {
+      "frontend/src/features/settings/runtime-adoption/useRuntimePreferences.ts": "ff053c31402b8d9b67dc9f070c1cb55fb9884c8454a4e255499a31c05401e6e3",
+      "frontend/src/features/settings/runtime-adoption/index.ts": "f823248a6d25bbeef66442e9c03792b2b3512de5dc453ab3b65bae2e0dfc29f2",
+      "frontend/src/features/settings/runtime-adoption/motionProjection.ts": "7e3d8c2457726c7aa6e24dfc5dec00a28aeb5f13c00e8b2ebcb6aa2b12d66cd2",
+      "frontend/src/features/settings/runtime-adoption/__tests__/preview.html": "10d7dc1cee370ca8ba22060f93d49d21a32c4f32063a5142890b63eb4d5d56f1",
+      "frontend/src/features/settings/runtime-adoption/__tests__/settings.test.tsx": "b884ba3c43e8cbc34bbdc5695c4676e5119aebf3596a177b5a022f9f95bce040",
+      "frontend/src/features/settings/runtime-adoption/__tests__/binding.test.tsx": "14b994157273f30006bdc8dc388edf5ead291181780f6e3baf6382f2a8479da1",
+      "frontend/src/features/settings/runtime-adoption/__tests__/preview.tsx": "0f549a1c6b9620a3561fb8ccd65afd74a54e8ea295786c267c052c5dc5575fe0",
+      "frontend/src/features/settings/runtime-adoption/__tests__/adapter.test.ts": "e539f67627ac68c79feb1bcd92f512aa2e10d50e05568afabd101c905ac26ec2",
+      "frontend/src/features/settings/runtime-adoption/__tests__/motionProjection.test.ts": "d3b2b18d2ebe0c7e3b37a9129e6f3e4e3c4b758dd04dc255b497d2c806f7d6b9",
+      "frontend/src/features/settings/runtime-adoption/__tests__/native.mjs": "fb8a1951bae28c3c8ec557fd05c8011360ffc96d9acc958a01e6203ba4063e63",
+      "frontend/src/features/settings/runtime-adoption/__tests__/vitest.config.ts": "bf3242696beab929911aa5ae09f5d00616b1f3d9d3bd7275960cffe3a9f35086",
+      "frontend/src/features/settings/runtime-adoption/__tests__/fixture.ts": "56c4d8f483d97586f3042ec47e348c01240333f2fb4a1a5fa0a3ee51cd7ef4c7"
+    }
+  }
 }

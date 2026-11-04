@@ -119,8 +119,7 @@ The base presentation exposes only `read/subscribe/select` while SettingsPage an
 ThemeSelector currently type the full ThemeController. Root can narrow those
 consumer parameter types to the actually used public projection or explicitly
 provide the full incumbent controller; a cast or fabricated controller is not a
-production adoption. Runtime producer delivery, exact root wiring and remote
-ancestry/payload verification are still outstanding at this checkpoint.
+production adoption.
 
 The exact five-existing-file consumer proposal is preserved as text in
 `docs/mcr/evidence/fe34-runtime-preferences/root-wiring-proposal.patch`, generated
@@ -129,6 +128,15 @@ incumbent `WorldRuntime.effects`, exports the existing presentation context,
 binds the owned hook and narrows both theme consumer types. Root owns any
 application/reconciliation of those existing-file hunks after the producer source
 is available. No art, CSS, layout, text or character change is proposed.
+
+Root applied exactly those five existing-file hunks in
+`dd379b4512405403033b198abf2a3727cfc7f592`. The producer source was adopted as
+`53b67c37`, adapter source as `dbb2d08c` and this handoff's initial documentation
+as `5ef20bb4`. The adopter independently compared its source/document payloads
+against those publisher commits: identical. This is actual production source
+composition, with remote publication and composed execution still outstanding
+at this checkpoint. No duplicate existing-file edits or ownership transfer was
+made by the adopter.
 
 Validated adapter source checkpoint:
 `3eea76f47f9f7825c98e5d72616fcb8b72849720`.
@@ -193,3 +201,29 @@ The standalone instrumented native fixture is intentionally NOT_RUN: the
 runtime producer and adopter agreed to one combined native workflow with actual
 Phaser, SettingsPage, canonical controllers and this adapter after Root's
 production binding. That execution remains outstanding, not a separate QA gate.
+
+## DOM reduced-motion follow-up
+
+Root identified that engine effects alone did not project an explicit saved
+reduced-motion preference onto the existing shell CSS. The owned adapter now
+publishes motion/lifetime state to subscribers. `projectRuntimeMotion` borrows
+the single existing `[data-mcr-shell]` element, sets the existing
+`data-mcr-reduced-motion` attribute before theme selection and updates the value
+using the adapter's OS/user OR result. The hook refuses a missing or ambiguous
+shell instead of changing another document surface. No new wrapper, CSS rule,
+Root file, layout, control, artwork or storage is introduced.
+
+Caller abort, apply failure, release/privacy invalidation, hook replacement and
+teardown restore the exact prior attribute (including absence). Old cleanup
+does not erase a later external writer's value. Subscriptions are removed on
+teardown; observer errors cannot strand engine effects. A reentrant abort during
+applied-state publication is checked before the apply promise can report success.
+
+New tests cover explicit projection before theme selection, OS OR updates without
+audio restart, baseline/absent attribute restoration, privacy/caller abort,
+failure, external writer preservation and reentrant abort. Root hook tests add
+the actual shell element and exercise StrictMode and missing-shell refusal.
+These follow-up source/tests are **NOT_RUN pending Root's next necessary composed
+check**: Root explicitly requested a source handoff with no standalone output
+job. The earlier 52-test/type/lint result belongs to checkpoint `3eea76f4`, and
+does not certify this later DOM follow-up or full DOM motion success.

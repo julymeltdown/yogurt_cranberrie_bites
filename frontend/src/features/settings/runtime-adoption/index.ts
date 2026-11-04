@@ -61,13 +61,17 @@ export function createRuntimePreferencesAdapter(options: RuntimeAdoptionOptions)
   const media = options.motion ?? (typeof window !== 'undefined' && window.matchMedia
     ? window.matchMedia('(prefers-reduced-motion: reduce)') : undefined)
   let disposed = false, revision = 0, unregister = () => {}
+  const listeners = new Set<() => void>()
   let state: RuntimeAdoptionState = Object.freeze({ phase: 'idle', reducedMotion: media?.matches ?? false, soundEnabled: false })
   type Operation = { controller: AbortController; preferences: Readonly<Preferences>; effects: RuntimeEffectLease | null;
     sound: RuntimeEffectLease | null; effectRevision: number; effectFlight: Promise<void>; ticket: number; detach(): void }
   let active: Operation | null = null
   const current = (operation: Operation) => !disposed && active === operation && !operation.controller.signal.aborted
     && !options.signal.aborted && privacy.isCurrent(scope)
-  const publish = (next: RuntimeAdoptionState) => { state = Object.freeze(next) }
+  const publish = (next: RuntimeAdoptionState) => {
+    state = Object.freeze(next)
+    for (const listener of Array.from(listeners)) { try { listener() } catch { /* Observers cannot own runtime effects. */ } }
+  }
   function stop(operation: Operation) {
     if (active === operation) active = null
     operation.controller.abort(); operation.detach()
@@ -82,6 +86,7 @@ export function createRuntimePreferencesAdapter(options: RuntimeAdoptionOptions)
     unregister(); options.signal.removeEventListener('abort', dispose)
     media?.removeEventListener('change', osChanged)
     publish({ phase: 'disposed', reducedMotion: media?.matches ?? false, soundEnabled: false })
+    listeners.clear()
   }
   function assert(operation: Operation) {
     if (!current(operation)) throw new RuntimePreferenceError('cancelled')
@@ -181,6 +186,7 @@ export function createRuntimePreferencesAdapter(options: RuntimeAdoptionOptions)
         const actual = theme.read()
         if (actual.selected !== operation.preferences.theme || actual.phase !== 'ready') throw new RuntimePreferenceError('failed')
         publish({ phase: 'applied', reducedMotion: operation.preferences.reduced_motion || Boolean(media?.matches), soundEnabled: !!operation.sound })
+        assert(operation)
       } catch (error) {
         fail(operation, error)
         throw error instanceof RuntimePreferenceError ? error : new RuntimePreferenceError('failed')
@@ -193,6 +199,7 @@ export function createRuntimePreferencesAdapter(options: RuntimeAdoptionOptions)
     options.signal.addEventListener('abort', dispose, { once: true })
     media?.addEventListener('change', osChanged)
   }
-  return Object.freeze({ apply: port.apply, read: () => state, dispose })
+  return Object.freeze({ apply: port.apply, read: () => state, dispose,
+    subscribe(listener: () => void) { if (disposed) return () => {}; listeners.add(listener); return () => { listeners.delete(listener) } } })
 }
 export type RuntimePreferencesAdapter = ReturnType<typeof createRuntimePreferencesAdapter>
