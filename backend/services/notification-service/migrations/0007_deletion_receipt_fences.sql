@@ -138,8 +138,9 @@ CREATE FUNCTION notification_deletion_receipt_commit_v1() RETURNS trigger LANGUA
 BEGIN
     IF NEW.effect_xid IS DISTINCT FROM pg_current_xact_id()
        OR NEW.retention_until IS DISTINCT FROM
-          (timestamptz 'epoch' + NEW.retention_seconds * interval '1 second'
-           + (NEW.retention_nanos / 1000) * interval '1 microsecond')
+          (timestamptz '2000-01-01 00:00:00+00' +
+           trunc(((NEW.retention_seconds - 946684800)::numeric * 1000000000
+                  + NEW.retention_nanos) / 1000) * interval '1 microsecond')
        OR NOT EXISTS (SELECT 1 FROM notification_subject_states
                       WHERE subject_id = NEW.user_id AND suppress_as_recipient AND suppress_as_actor)
        OR EXISTS (SELECT 1 FROM notifications

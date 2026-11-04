@@ -161,6 +161,18 @@ async fn committed_exact_receipt_retry_full_command_rebound_and_wire_compatibili
         c.retention_until().timestamp_micros()
     );
     assert!(!format!("{first:?}").contains(&c.user_id().to_string()));
+    // Match SQLx's retained microsecond truncation relative to its 2000 epoch,
+    // including past retention values; exact command nanoseconds still bind.
+    for retention in [
+        DateTime::from_timestamp(900_000_000, 123_456_789).unwrap(),
+        DateTime::from_timestamp(-1, 999_999_999).unwrap(),
+    ] {
+        let other = DeletionCommand::new(Uuid::new_v4(), Uuid::new_v4(), c.actor_id(), retention)?;
+        let receipt = repo.apply_user_deletion_receipt(other.clone()).await?;
+        assert_eq!(receipt.command(), &other);
+        assert_eq!(repo.apply_user_deletion_receipt(other).await?, receipt);
+    }
+
     pool.close().await;
     Ok(())
 }
@@ -216,9 +228,18 @@ async fn immutable_evidence_permanent_deny_and_bounded_purge_remain_real() -> an
         "delete from notification_subject_states where subject_id=$1",
         "update notifications set deleted_at=null where user_id=$1 or actor_id=$1",
     ] {
-        let id=if sql.contains("subject_id") || sql.contains("update notifications") {c.user_id()}else{c.saga_id()};
-        let error=sqlx::query(sql).bind(id).execute(&pool).await.unwrap_err();
-        assert!(error.as_database_error().is_some_and(|e|e.code().is_some_and(|c|c=="23514")),"{sql}");
+        let id = if sql.contains("subject_id") || sql.contains("update notifications") {
+            c.user_id()
+        } else {
+            c.saga_id()
+        };
+        let error = sqlx::query(sql).bind(id).execute(&pool).await.unwrap_err();
+        assert!(
+            error
+                .as_database_error()
+                .is_some_and(|e| e.code().is_some_and(|c| c == "23514")),
+            "{sql}"
+        );
     }
     for table in [
         "notification_deletion_receipts_v1",
