@@ -23,6 +23,7 @@ HERE = Path(__file__).resolve().parent
 TEST = "process_root_child_recovery_cr04"
 READY = b"MCR_CR01_OLD_READY"
 OBSERVED = b"MCR_CR01_RESTART_OBSERVED"
+KEY_OMITTED = b"MCR_CR04_KEY_OMITTED_OBSERVED"
 
 class CheckFailed(Exception):
     pass
@@ -97,7 +98,7 @@ class Child:
             self.buffer += block
             while b"\n" in self.buffer:
                 line, self.buffer = self.buffer.split(b"\n", 1)
-                if line.rstrip(b"\r") in (READY, OBSERVED):
+                if line.rstrip(b"\r") in (READY, OBSERVED, KEY_OMITTED):
                     self.seen.add(line.rstrip(b"\r"))
             require(len(self.buffer) <= 65536, "child line bound exceeded")
 
@@ -157,7 +158,7 @@ def execute(args: argparse.Namespace) -> None:
         missing = Child(binary, env, root / f"process-cr01-{run.hex}-missing-key.log")
         missing_pid = missing.process.pid
         require(missing_pid != old_pid, "omitted-key replacement must be a distinct PID")
-        missing.wait_line(b"MCR_CR04_KEY_OMITTED_OBSERVED", 100)
+        missing.wait_line(KEY_OMITTED, 100)
         require(missing.finish(10) == 0, "actual omitted-key quarantine assertions failed")
         fresh_binary, fresh_sha256, fresh_commit = verify_checkpoint(args.repo, args.checkpoint)
         require((fresh_binary, fresh_sha256, fresh_commit) == (binary, binary_sha256, source_commit),
@@ -185,7 +186,7 @@ def execute(args: argparse.Namespace) -> None:
         with os.fdopen(os.open(report_path, os.O_WRONLY | os.O_CREAT | os.O_EXCL, 0o600), "w") as handle:
             json.dump(report, handle, indent=2)
             handle.write("\n")
-        print("CR01 runtime_case_status=PASS; other_CR_cases=NOT_RUN; release/main acceptance is not inferred.")
+        print("CR04 runtime_case_status=PASS; other_CR_cases=NOT_RUN; release/main acceptance is not inferred.")
     finally:
         if restarted is not None:
             restarted.close()
