@@ -100,6 +100,53 @@ Real HTTP/live multiuser IN04, device and full-product acceptance are separate
 open outcomes. The new caller assembly is assigned functioning frontend work,
 not an added condition on the already satisfied original FE33 fixture criteria.
 
+## Current bounded FE33-ENTRY / FE37 regression assignment
+
+Frontend king appointed Community sole allocator for existing FE09 broad
+diagnostic residuals, not a new review stage. Candidate
+`01a1a26e-1de2-7b41-a294-c9a79cfded9b` had actually reported prior Customize
+goal COMPLETE and published clean STOP at `c3f411ad`; its latest old turn is
+marked interrupted, so the concrete receiving assignment explicitly requires
+an actual goal read and truthful acceptance before ACTIVE is recorded.
+Management checkout metadata confirmed clean. No application or diagnostic
+source was inspected or checks rerun by this coordinator.
+
+Prepared isolated checkout `/Users/lhs/Desktop/mcr-worktrees/fe-ref-customize`,
+NEW branch `codex/mcr-fe-mural-admin-regressions`, exact base
+`7ea11efdbdc1e2a447ece669a660c10f12b43463`; old branches/history preserved.
+Actual receiving receipt: `get_goal` returned null, then NEW unbudgeted ACTIVE
+goal `1793756572` was created covering diagnosis, necessary bounded fixes,
+validation/docs, direct non-force publication and concrete fixes. Developer
+verified clean exact base and accepted the initial lease; bounded assignment
+status IN_PROGRESS. No incompatible goal was paused, reset or falsely completed.
+
+Exact initial exclusive writes only:
+
+- `frontend/src/app/mural-entry/__tests__/routes.test.tsx`
+- `frontend/src/features/admin/reports/__tests__/controller.test.ts`
+- NEW `docs/mcr/frontend/mural-admin-regressions.md`
+- NEW `docs/mcr/evidence/mural-admin-regressions/**`
+
+Existing owner packet: frozen `cb9abce4`, diagnostic publication `62b4bf80`,
+`frontend/src/app/__tests__/production-refresh/evidence/broad-diagnostic.log`.
+Two mural route cases miss “Confirmed revision 10”; four AdminReports cases
+report `target_type`/member-filter failures. The developer must establish
+test-versus-product causes, preserve meaningful invariants, identify exact
+feature source hunks before any added lease, implement required bounded fixes,
+run relevant checks, document evidence and safely publish non-force with clean
+STOP and actual completed-goal receipt. No delivered correction commit or
+test result exists in this assignment receipt yet. Original FE33 satisfaction
+is not recounted; FE37 whole-task acceptance is unchanged, and broad NOTGREEN
+is not promoted to PASS by routing.
+
+No app/root/shared/contracts/generated/manifests/locks/composition, other tests,
+backend, art, caller or QA07 ownership is inherited. Feature source requests
+need explicit exact hunk allocation before editing; excluded source changes
+route to its incumbent. Motion and QA07 continue undiverted. Privacy
+`live-gate.test.mjs` collection mismatch was separately routed to actual QA04
+owner `01a1a202-3ff2-7a93-95c3-374c6df97281` and Social, with no implicit
+shared-config fix lease or demonstrated product-fault claim.
+
 ## Current QA07 ownership and hourly checkpoint
 
 Community released completed caller developer
