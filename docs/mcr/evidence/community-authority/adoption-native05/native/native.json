@@ -1,0 +1,680 @@
+{
+  "classification": "TEST_ONLY",
+  "realService": false,
+  "status": "PASS",
+  "errors": [],
+  "cases": [
+    {
+      "width": 360,
+      "scenario": "enabled",
+      "initial": {
+        "scenario": "enabled",
+        "capabilityMode": "TEST_ONLY synthetic capabilities",
+        "classification": "TEST_ONLY",
+        "policy": {
+          "classification": "TEST_ONLY",
+          "evidence": "Synthetic native fixture, not measured platform guarantees",
+          "maxAgeMs": 30000,
+          "uncertaintyMs": 1000,
+          "maxElapsedRate": 1.01,
+          "maxObservationGapMs": 5000
+        },
+        "path": "/meet",
+        "published": true,
+        "theme": {
+          "selected": "REVENGE",
+          "pending": null,
+          "phase": "ready",
+          "message": "",
+          "saved": false
+        },
+        "camera": {
+          "following": true,
+          "camera": {
+            "zoom": 1,
+            "scrollX": 0,
+            "scrollY": 105,
+            "width": 348,
+            "height": 791
+          }
+        },
+        "phase": "live",
+        "entities": 6,
+        "avatarPin": {
+          "manifest_id": "mcr_selected_static_20261103",
+          "manifest_version": 1,
+          "content_hash": "sha256:0627c7d178b22535a561e1270db6d8bf9e2383ba84d03a63962e48e565c59b2b"
+        },
+        "requests": [
+          {
+            "path": "/api/auth/capabilities",
+            "method": "GET"
+          },
+          {
+            "path": "/api/auth/login",
+            "method": "POST"
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/bootstrap",
+            "method": "GET"
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/rooms",
+            "method": "GET"
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/world-tickets",
+            "method": "POST"
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/places",
+            "method": "GET"
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/parties",
+            "method": "GET"
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/me/parties",
+            "method": "GET"
+          }
+        ],
+        "sockets": 1,
+        "activeSockets": 1,
+        "socketPeak": 1,
+        "canvases": 1,
+        "disposed": false
+      },
+      "final": {
+        "scenario": "enabled",
+        "capabilityMode": "TEST_ONLY synthetic capabilities",
+        "classification": "TEST_ONLY",
+        "policy": {
+          "classification": "TEST_ONLY",
+          "evidence": "Synthetic native fixture, not measured platform guarantees",
+          "maxAgeMs": 30000,
+          "uncertaintyMs": 1000,
+          "maxElapsedRate": 1.01,
+          "maxObservationGapMs": 5000
+        },
+        "path": "/meet",
+        "published": true,
+        "theme": {
+          "selected": "REVENGE",
+          "pending": null,
+          "phase": "ready",
+          "message": "",
+          "saved": false
+        },
+        "camera": {
+          "following": true,
+          "camera": {
+            "zoom": 1,
+            "scrollX": 0,
+            "scrollY": 105,
+            "width": 348,
+            "height": 791
+          }
+        },
+        "phase": "live",
+        "entities": 6,
+        "avatarPin": {
+          "manifest_id": "mcr_selected_static_20261103",
+          "manifest_version": 1,
+          "content_hash": "sha256:0627c7d178b22535a561e1270db6d8bf9e2383ba84d03a63962e48e565c59b2b"
+        },
+        "requests": [
+          {
+            "path": "/api/auth/capabilities",
+            "method": "GET"
+          },
+          {
+            "path": "/api/auth/login",
+            "method": "POST"
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/bootstrap",
+            "method": "GET"
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/rooms",
+            "method": "GET"
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/world-tickets",
+            "method": "POST"
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/places",
+            "method": "GET"
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/parties",
+            "method": "GET"
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/me/parties",
+            "method": "GET"
+          }
+        ],
+        "sockets": 1,
+        "activeSockets": 1,
+        "socketPeak": 1,
+        "canvases": 1,
+        "disposed": false
+      },
+      "disposed": {
+        "scenario": "enabled",
+        "capabilityMode": "TEST_ONLY synthetic capabilities",
+        "classification": "TEST_ONLY",
+        "policy": {
+          "classification": "TEST_ONLY",
+          "evidence": "Synthetic native fixture, not measured platform guarantees",
+          "maxAgeMs": 30000,
+          "uncertaintyMs": 1000,
+          "maxElapsedRate": 1.01,
+          "maxObservationGapMs": 5000
+        },
+        "path": "/meet",
+        "published": false,
+        "avatarPin": {
+          "manifest_id": "mcr_selected_static_20261103",
+          "manifest_version": 1,
+          "content_hash": "sha256:0627c7d178b22535a561e1270db6d8bf9e2383ba84d03a63962e48e565c59b2b"
+        },
+        "requests": [
+          {
+            "path": "/api/auth/capabilities",
+            "method": "GET"
+          },
+          {
+            "path": "/api/auth/login",
+            "method": "POST"
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/bootstrap",
+            "method": "GET"
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/rooms",
+            "method": "GET"
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/world-tickets",
+            "method": "POST"
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/places",
+            "method": "GET"
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/parties",
+            "method": "GET"
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/me/parties",
+            "method": "GET"
+          }
+        ],
+        "sockets": 1,
+        "activeSockets": 0,
+        "socketPeak": 1,
+        "canvases": 0,
+        "disposed": true
+      },
+      "status": "PASS"
+    },
+    {
+      "width": 390,
+      "scenario": "enabled",
+      "initial": {
+        "scenario": "enabled",
+        "capabilityMode": "TEST_ONLY synthetic capabilities",
+        "classification": "TEST_ONLY",
+        "policy": {
+          "classification": "TEST_ONLY",
+          "evidence": "Synthetic native fixture, not measured platform guarantees",
+          "maxAgeMs": 30000,
+          "uncertaintyMs": 1000,
+          "maxElapsedRate": 1.01,
+          "maxObservationGapMs": 5000
+        },
+        "path": "/meet",
+        "published": true,
+        "theme": {
+          "selected": "REVENGE",
+          "pending": null,
+          "phase": "ready",
+          "message": "",
+          "saved": false
+        },
+        "camera": {
+          "following": true,
+          "camera": {
+            "zoom": 1,
+            "scrollX": 0,
+            "scrollY": 105,
+            "width": 378,
+            "height": 791
+          }
+        },
+        "phase": "live",
+        "entities": 6,
+        "avatarPin": {
+          "manifest_id": "mcr_selected_static_20261103",
+          "manifest_version": 1,
+          "content_hash": "sha256:0627c7d178b22535a561e1270db6d8bf9e2383ba84d03a63962e48e565c59b2b"
+        },
+        "requests": [
+          {
+            "path": "/api/auth/capabilities",
+            "method": "GET"
+          },
+          {
+            "path": "/api/auth/login",
+            "method": "POST"
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/bootstrap",
+            "method": "GET"
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/rooms",
+            "method": "GET"
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/world-tickets",
+            "method": "POST"
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/places",
+            "method": "GET"
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/parties",
+            "method": "GET"
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/me/parties",
+            "method": "GET"
+          }
+        ],
+        "sockets": 1,
+        "activeSockets": 1,
+        "socketPeak": 1,
+        "canvases": 1,
+        "disposed": false
+      },
+      "final": {
+        "scenario": "enabled",
+        "capabilityMode": "TEST_ONLY synthetic capabilities",
+        "classification": "TEST_ONLY",
+        "policy": {
+          "classification": "TEST_ONLY",
+          "evidence": "Synthetic native fixture, not measured platform guarantees",
+          "maxAgeMs": 30000,
+          "uncertaintyMs": 1000,
+          "maxElapsedRate": 1.01,
+          "maxObservationGapMs": 5000
+        },
+        "path": "/meet",
+        "published": true,
+        "theme": {
+          "selected": "REVENGE",
+          "pending": null,
+          "phase": "ready",
+          "message": "",
+          "saved": false
+        },
+        "camera": {
+          "following": true,
+          "camera": {
+            "zoom": 1,
+            "scrollX": 0,
+            "scrollY": 105,
+            "width": 378,
+            "height": 791
+          }
+        },
+        "phase": "live",
+        "entities": 6,
+        "avatarPin": {
+          "manifest_id": "mcr_selected_static_20261103",
+          "manifest_version": 1,
+          "content_hash": "sha256:0627c7d178b22535a561e1270db6d8bf9e2383ba84d03a63962e48e565c59b2b"
+        },
+        "requests": [
+          {
+            "path": "/api/auth/capabilities",
+            "method": "GET"
+          },
+          {
+            "path": "/api/auth/login",
+            "method": "POST"
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/bootstrap",
+            "method": "GET"
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/rooms",
+            "method": "GET"
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/world-tickets",
+            "method": "POST"
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/places",
+            "method": "GET"
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/parties",
+            "method": "GET"
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/me/parties",
+            "method": "GET"
+          }
+        ],
+        "sockets": 1,
+        "activeSockets": 1,
+        "socketPeak": 1,
+        "canvases": 1,
+        "disposed": false
+      },
+      "disposed": {
+        "scenario": "enabled",
+        "capabilityMode": "TEST_ONLY synthetic capabilities",
+        "classification": "TEST_ONLY",
+        "policy": {
+          "classification": "TEST_ONLY",
+          "evidence": "Synthetic native fixture, not measured platform guarantees",
+          "maxAgeMs": 30000,
+          "uncertaintyMs": 1000,
+          "maxElapsedRate": 1.01,
+          "maxObservationGapMs": 5000
+        },
+        "path": "/meet",
+        "published": false,
+        "avatarPin": {
+          "manifest_id": "mcr_selected_static_20261103",
+          "manifest_version": 1,
+          "content_hash": "sha256:0627c7d178b22535a561e1270db6d8bf9e2383ba84d03a63962e48e565c59b2b"
+        },
+        "requests": [
+          {
+            "path": "/api/auth/capabilities",
+            "method": "GET"
+          },
+          {
+            "path": "/api/auth/login",
+            "method": "POST"
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/bootstrap",
+            "method": "GET"
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/rooms",
+            "method": "GET"
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/world-tickets",
+            "method": "POST"
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/places",
+            "method": "GET"
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/parties",
+            "method": "GET"
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/me/parties",
+            "method": "GET"
+          }
+        ],
+        "sockets": 1,
+        "activeSockets": 0,
+        "socketPeak": 1,
+        "canvases": 0,
+        "disposed": true
+      },
+      "status": "PASS"
+    },
+    {
+      "width": 430,
+      "scenario": "enabled",
+      "initial": {
+        "scenario": "enabled",
+        "capabilityMode": "TEST_ONLY synthetic capabilities",
+        "classification": "TEST_ONLY",
+        "policy": {
+          "classification": "TEST_ONLY",
+          "evidence": "Synthetic native fixture, not measured platform guarantees",
+          "maxAgeMs": 30000,
+          "uncertaintyMs": 1000,
+          "maxElapsedRate": 1.01,
+          "maxObservationGapMs": 5000
+        },
+        "path": "/meet",
+        "published": true,
+        "theme": {
+          "selected": "REVENGE",
+          "pending": null,
+          "phase": "ready",
+          "message": "",
+          "saved": false
+        },
+        "camera": {
+          "following": true,
+          "camera": {
+            "zoom": 1,
+            "scrollX": 0,
+            "scrollY": 105,
+            "width": 418,
+            "height": 791
+          }
+        },
+        "phase": "live",
+        "entities": 6,
+        "avatarPin": {
+          "manifest_id": "mcr_selected_static_20261103",
+          "manifest_version": 1,
+          "content_hash": "sha256:0627c7d178b22535a561e1270db6d8bf9e2383ba84d03a63962e48e565c59b2b"
+        },
+        "requests": [
+          {
+            "path": "/api/auth/capabilities",
+            "method": "GET"
+          },
+          {
+            "path": "/api/auth/login",
+            "method": "POST"
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/bootstrap",
+            "method": "GET"
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/rooms",
+            "method": "GET"
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/world-tickets",
+            "method": "POST"
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/places",
+            "method": "GET"
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/parties",
+            "method": "GET"
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/me/parties",
+            "method": "GET"
+          }
+        ],
+        "sockets": 1,
+        "activeSockets": 1,
+        "socketPeak": 1,
+        "canvases": 1,
+        "disposed": false
+      },
+      "final": {
+        "scenario": "enabled",
+        "capabilityMode": "TEST_ONLY synthetic capabilities",
+        "classification": "TEST_ONLY",
+        "policy": {
+          "classification": "TEST_ONLY",
+          "evidence": "Synthetic native fixture, not measured platform guarantees",
+          "maxAgeMs": 30000,
+          "uncertaintyMs": 1000,
+          "maxElapsedRate": 1.01,
+          "maxObservationGapMs": 5000
+        },
+        "path": "/meet",
+        "published": true,
+        "theme": {
+          "selected": "REVENGE",
+          "pending": null,
+          "phase": "ready",
+          "message": "",
+          "saved": false
+        },
+        "camera": {
+          "following": true,
+          "camera": {
+            "zoom": 1,
+            "scrollX": 0,
+            "scrollY": 105,
+            "width": 418,
+            "height": 791
+          }
+        },
+        "phase": "live",
+        "entities": 6,
+        "avatarPin": {
+          "manifest_id": "mcr_selected_static_20261103",
+          "manifest_version": 1,
+          "content_hash": "sha256:0627c7d178b22535a561e1270db6d8bf9e2383ba84d03a63962e48e565c59b2b"
+        },
+        "requests": [
+          {
+            "path": "/api/auth/capabilities",
+            "method": "GET"
+          },
+          {
+            "path": "/api/auth/login",
+            "method": "POST"
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/bootstrap",
+            "method": "GET"
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/rooms",
+            "method": "GET"
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/world-tickets",
+            "method": "POST"
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/places",
+            "method": "GET"
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/parties",
+            "method": "GET"
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/me/parties",
+            "method": "GET"
+          }
+        ],
+        "sockets": 1,
+        "activeSockets": 1,
+        "socketPeak": 1,
+        "canvases": 1,
+        "disposed": false
+      },
+      "disposed": {
+        "scenario": "enabled",
+        "capabilityMode": "TEST_ONLY synthetic capabilities",
+        "classification": "TEST_ONLY",
+        "policy": {
+          "classification": "TEST_ONLY",
+          "evidence": "Synthetic native fixture, not measured platform guarantees",
+          "maxAgeMs": 30000,
+          "uncertaintyMs": 1000,
+          "maxElapsedRate": 1.01,
+          "maxObservationGapMs": 5000
+        },
+        "path": "/meet",
+        "published": false,
+        "avatarPin": {
+          "manifest_id": "mcr_selected_static_20261103",
+          "manifest_version": 1,
+          "content_hash": "sha256:0627c7d178b22535a561e1270db6d8bf9e2383ba84d03a63962e48e565c59b2b"
+        },
+        "requests": [
+          {
+            "path": "/api/auth/capabilities",
+            "method": "GET"
+          },
+          {
+            "path": "/api/auth/login",
+            "method": "POST"
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/bootstrap",
+            "method": "GET"
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/rooms",
+            "method": "GET"
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/world-tickets",
+            "method": "POST"
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/places",
+            "method": "GET"
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/parties",
+            "method": "GET"
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/me/parties",
+            "method": "GET"
+          }
+        ],
+        "sockets": 1,
+        "activeSockets": 0,
+        "socketPeak": 1,
+        "canvases": 0,
+        "disposed": true
+      },
+      "status": "PASS"
+    }
+  ],
+  "listenerPort": 5173,
+  "screenshotNames": [
+    "enabled-360.png",
+    "enabled-390.png",
+    "enabled-430.png"
+  ],
+  "browser": "156.0.8078.80",
+  "limits": [
+    "Synthetic HTTP/C05 and explicitly TEST_ONLY clock policy, not measured platform guarantees",
+    "Lifecycle interruption is a synthetic visibility event through the actual browser adapter",
+    "No real-service mutation, physical arrival, member roster or full FE21/FE22 acceptance"
+  ]
+}

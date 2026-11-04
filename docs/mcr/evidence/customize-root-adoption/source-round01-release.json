@@ -1,0 +1,28 @@
+{
+  "slot": "ROOT-CHAR-SOURCE-202611041321Z",
+  "accepted": "2026-11-04T13:25:47.718898+00:00",
+  "workDeadline": "2026-11-04T13:31:47.718898+00:00",
+  "hardDeadline": "2026-11-04T13:32:47.718898+00:00",
+  "fullRelease": "2026-11-04T13:27:40.814882+00:00",
+  "source": "48218edbf52faec1119615d3e8bdcec857bd1cfd",
+  "status": "SOURCE_PASS_NATIVE_NOT_RUN",
+  "tests": {
+    "passed": 505,
+    "files": 29
+  },
+  "fullApplicationTypesExit": 0,
+  "scopedDenyWarningsLintExit": 0,
+  "initialFailureRetained": "root-source-round01",
+  "retry": "root-source-round01-retry01",
+  "qualificationLimits": [
+    "No browser/native/visual/default-app acceptance",
+    "No actual service/reviewed production activation",
+    "Initial type failure retained; explicit admitted-owner null guard added"
+  ],
+  "resources": {
+    "aliveOwnedPids": [],
+    "ownNodeModulesAbsent": true,
+    "privateTempAbsent": true,
+    "ports": []
+  }
+}

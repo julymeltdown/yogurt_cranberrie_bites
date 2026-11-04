@@ -1,7 +1,7 @@
 import type { WorldLifecyclePort, WorldLease, WorldAccessBinding, WorldAccessBindingPort } from '../ports'
 import type { SessionController } from '../../features/auth/model/session'
 import type { ReplicationReader } from '../../features/world-rooms'
-import type { WorldComposition } from '../../world/composition'
+import type { WorldComposition, WorldRendererPort } from '../../world/composition'
 import type { LocalInputConfiguration } from './resolver'
 import { validateLocalInputConfiguration } from './configuration'
 import type { RootCharacterRegistry } from '../character-entry/runtime'
@@ -16,20 +16,32 @@ export interface ProductionWorldOptions {
   readonly load?: (options: { auth: SessionController; origin: string; localInput: LocalInputConfiguration; characters?: RootCharacterRegistry }) => Promise<WorldComposition>
 }
 async function loadProduction({ auth, origin, localInput, characters }: { auth: SessionController; origin: string; localInput: LocalInputConfiguration; characters?: RootCharacterRegistry }) {
-  const [{ createWorldComposition }, { createWorldEntryResolver }, { createWholeCharacterWorldRenderer }, { createRootSceneOverview }] = await Promise.all([
+  const [{ createWorldComposition }, { createWorldEntryResolver }, { createWholeCharacterWorldRenderer }, { createRootSceneOverview }, { createMotionWorldRenderer }] = await Promise.all([
     import('../../world/composition'), import('./resolver'), import('../../world/avatar/whole-character'),
-    import('./reference-scene-overview'),
+    import('./reference-scene-overview'), import('../../world/avatar/motion-adoption/renderer'),
   ])
-  return createWorldComposition({ auth, resolveRelease: createWorldEntryResolver({ auth, origin, localInput }), createOverview: createRootSceneOverview,
-    ...(characters ? { renderer: createWholeCharacterWorldRenderer({ resolveRuntime(context) {
-      const manifest = context.release.avatarManifest
-      if (manifest.representation !== 'whole_character' || typeof manifest.manifest_id !== 'string'
-        || typeof manifest.manifest_version !== 'number' || typeof manifest.content_hash !== 'string') throw new Error('Character release unavailable')
-      const runtime = characters.read(auth.privacy.capture(), { manifest_id: manifest.manifest_id,
-        manifest_version: manifest.manifest_version, content_hash: manifest.content_hash })
-      if (!runtime) throw new Error('Character authority unavailable')
-      return runtime
-    } }) } : {}),
+  const pinFor = (manifest: Readonly<Record<string, unknown>>) => {
+    if (typeof manifest.manifest_id !== 'string' || typeof manifest.manifest_version !== 'number'
+      || typeof manifest.content_hash !== 'string') throw new Error('Character release unavailable')
+    return { manifest_id: manifest.manifest_id, manifest_version: manifest.manifest_version, content_hash: manifest.content_hash }
+  }
+  const whole = characters ? createWholeCharacterWorldRenderer({ resolveRuntime(context) {
+    const runtime = characters.read(auth.privacy.capture(), pinFor(context.release.avatarManifest))
+    if (!runtime) throw new Error('Character authority unavailable')
+    return runtime
+  } }) : null
+  const reviewed = characters ? createMotionWorldRenderer({ qualification: 'REVIEWED_PRODUCTION', resolveRuntime(context) {
+    const owner = characters.readReviewed(auth.privacy.capture(), pinFor(context.release.avatarManifest))
+    if (!owner) throw new Error('Reviewed character authority unavailable')
+    return owner.runtime
+  } }) : null
+  return createWorldComposition({ auth, resolveRelease: createWorldEntryResolver({ auth, origin, localInput, ...(characters ? { characters } : {}) }), createOverview: createRootSceneOverview,
+    ...(whole && reviewed ? { renderer: { mount(context: Parameters<WorldRendererPort['mount']>[0]) {
+      const representation = context.release.avatarManifest.representation
+      if (representation === 'whole_character') return whole.mount(context)
+      if (representation === 'reviewed_selected_source_motion') return reviewed.mount(context)
+      throw new Error('Character family unavailable')
+    } } } : {}),
   })
 }
 /** One lazy composition per canonical application Auth; no resource defaults or renderer fallback. */
@@ -78,7 +90,13 @@ export function createProductionWorld(options: ProductionWorldOptions) {
       read() { return live() ? composition?.presentation?.read() ?? null : null },
       subscribe(fn: () => void) { if (!live()) return () => {}; observers.add(fn); return () => { observers.delete(fn) } },
     }
-    owner = owned; binding = Object.freeze({ release, replication, presentation })
+    owner = owned; binding = Object.freeze({ release, replication, presentation,
+      async reconnect() {
+        if (!live()) return false
+        const recovered = await (composition?.replication.reconnect() ?? Promise.resolve(false))
+        return live() && recovered
+      },
+    })
     context.signal.addEventListener('abort', owned.dispose, { once: true })
     try { stopPrivacy = auth.privacy.registerCleanup(owned.dispose) } catch { owned.dispose(); throw new Error('World authority unavailable') }
     notify(listeners)

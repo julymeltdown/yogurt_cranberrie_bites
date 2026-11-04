@@ -1,0 +1,45 @@
+{
+  "offer": "FE41-DEFAULT-ENTRY-202611041241Z",
+  "source": "e72b9c8e491e29cb8f003b2412e1c78878deea25",
+  "job": "lint",
+  "argv": [
+    "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node",
+    "frontend/node_modules/oxlint/bin/oxlint",
+    "frontend/src/app/errors",
+    "frontend/src/features/connection-status",
+    "frontend/src/main.tsx",
+    "frontend/src/app/ports.ts",
+    "frontend/src/app/router.tsx",
+    "frontend/src/app/WorldShell.tsx",
+    "frontend/src/app/world-entry/production.ts"
+  ],
+  "started": 1793796156.15232,
+  "cutoff": 1793796942,
+  "release": 1793797002,
+  "caps": {
+    "whole": 1342177280,
+    "temp": 402653184,
+    "durable": 16777216,
+    "profile": 67108864,
+    "processes": 32,
+    "rss": 4294967296
+  },
+  "sourceBytes": 684146404,
+  "peaks": {
+    "whole": 684157025,
+    "temp": 0,
+    "durable": 10621,
+    "profile": 0,
+    "processes": 1,
+    "rss": 1081344
+  },
+  "minFree": 17187020800,
+  "exitCode": 0,
+  "currentRSS": 0,
+  "pid": 79760,
+  "finished": 1793796157.067445,
+  "childrenRemaining": [],
+  "linkAbsent": true,
+  "scratchAbsent": true,
+  "releasedBeforeDeadline": true
+}

@@ -1,0 +1,8 @@
+{
+  "classification": "TEST_ONLY",
+  "realService": false,
+  "status": "FAIL",
+  "errors": [],
+  "cases": [],
+  "failure": "Error: expect(received).toBe(expected) // Object.is equality\n\nExpected: true\nReceived: false\n\nCall Log:\n- Timeout 25000ms exceeded while waiting on the predicate\n    at captureRawStack (/Users/lhs/Desktop/mcr-worktrees/fe-profile-preferences/frontend/node_modules/.pnpm/playwright-core@1.61.1/node_modules/playwright-core/lib/coreBundle.js:3172:17)\n    at callMatcherAsStep (/Users/lhs/Desktop/mcr-worktrees/fe-profile-preferences/frontend/node_modules/.pnpm/playwright@1.61.1/node_modules/playwright/lib/matchers/expect.js:12877:57)\n    at Object.toBe (/Users/lhs/Desktop/mcr-worktrees/fe-profile-preferences/frontend/node_modules/.pnpm/playwright@1.61.1/node_modules/playwright/lib/matchers/expect.js:12867:23)\n    at /Users/lhs/Desktop/mcr-worktrees/fe-profile-preferences/frontend/src/app/community-adoption/__tests__/native/native.mjs:27:84"
+}

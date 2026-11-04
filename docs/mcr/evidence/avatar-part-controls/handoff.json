@@ -1,0 +1,132 @@
+{
+  "status": "MOCK_READY",
+  "base": "654974128a27c948a449fa9e58f466b8e612361d",
+  "source": "3e299cd76ae55380124b7e29e120ea48370291e1",
+  "orderedSourceCommits": [
+    "bfaf7318869971564be3de671e18898c82a67bd4",
+    "6a3976d7937cda99d1798609c7d6584deacce1b3",
+    "3e299cd76ae55380124b7e29e120ea48370291e1"
+  ],
+  "sourcePaths": [
+    "docs/mcr/evidence/avatar-part-controls/qualify.py",
+    "docs/mcr/frontend/avatar-part-controls.md",
+    "frontend/src/features/avatar/part-controls/MotionBodyPalette.tsx",
+    "frontend/src/features/avatar/part-controls/__tests__/fixture.ts",
+    "frontend/src/features/avatar/part-controls/__tests__/palette.test.tsx",
+    "frontend/src/features/avatar/part-controls/__tests__/vitest.config.mjs",
+    "frontend/src/features/avatar/part-controls/body-palette.css",
+    "frontend/src/features/avatar/wardrobe-options/__tests__/body-options.test.ts",
+    "frontend/src/features/avatar/wardrobe-options/body-options.ts"
+  ],
+  "consumer": {
+    "module": "frontend/src/features/avatar/part-controls/MotionBodyPalette.tsx",
+    "export": "MotionBodyPalette",
+    "props": "{ readonly controller: MotionEditorController<C> }",
+    "mount": "Existing MotionEditor BODY category; Root153 owns hunk",
+    "ownership": "Borrowed controller; never start/stop/dispose/save/reset/random; no runtime/Auth/player/socket ownership"
+  },
+  "validation": {
+    "status": "FULL_RELEASE",
+    "slot": "FE12-BODY-PALETTE-SOURCE-B-202611041355Z",
+    "source": "3e299cd76ae55380124b7e29e120ea48370291e1",
+    "releasedUTC": "2026-11-04T14:00:58.186306+00:00",
+    "deadlineUTC": "2026-11-04T14:07:24.883099+00:00",
+    "checks": [
+      {
+        "name": "runtime",
+        "argv": [
+          "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node",
+          "--version"
+        ],
+        "cwd": "/Users/lhs/Desktop/mcr-worktrees/fe-ref-map",
+        "exit": 0
+      },
+      {
+        "name": "unit",
+        "argv": [
+          "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node",
+          "/Users/lhs/Desktop/mcr/frontend/node_modules/vitest/vitest.mjs",
+          "run",
+          "--configLoader",
+          "runner",
+          "--root",
+          "/Users/lhs/Desktop/mcr-worktrees/fe-ref-map/frontend",
+          "--config",
+          "/Users/lhs/Desktop/mcr-worktrees/fe-ref-map/frontend/src/features/avatar/part-controls/__tests__/vitest.config.mjs"
+        ],
+        "cwd": "/Users/lhs/Desktop/mcr-worktrees/fe-ref-map/frontend",
+        "exit": 0
+      },
+      {
+        "name": "application-types",
+        "argv": [
+          "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node",
+          "/Users/lhs/Desktop/mcr-worktrees/fe-ref-map/frontend/src/world/avatar/__tests__/motion-adoption/typecheck.mjs",
+          "--application"
+        ],
+        "cwd": "/Users/lhs/Desktop/mcr-worktrees/fe-ref-map",
+        "exit": 0
+      },
+      {
+        "name": "lint",
+        "argv": [
+          "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node",
+          "/Users/lhs/Desktop/mcr/frontend/node_modules/oxlint/bin/oxlint",
+          "/Users/lhs/Desktop/mcr-worktrees/fe-ref-map/frontend/src/features/avatar/part-controls",
+          "/Users/lhs/Desktop/mcr-worktrees/fe-ref-map/frontend/src/features/avatar/wardrobe-options"
+        ],
+        "cwd": "/Users/lhs/Desktop/mcr-worktrees/fe-ref-map",
+        "exit": 0
+      },
+      {
+        "name": "whitespace",
+        "argv": [
+          "git",
+          "diff",
+          "--check",
+          "654974128a27c948a449fa9e58f466b8e612361d"
+        ],
+        "cwd": "/Users/lhs/Desktop/mcr-worktrees/fe-ref-map",
+        "exit": 0
+      },
+      {
+        "name": "plan",
+        "argv": [
+          "python3",
+          "/Users/lhs/Desktop/mcr-worktrees/fe-ref-map/scripts/mcr/check-plan.py"
+        ],
+        "cwd": "/Users/lhs/Desktop/mcr-worktrees/fe-ref-map",
+        "exit": 0
+      }
+    ],
+    "ownedWorkflowProcesses": [],
+    "ownedTemporaryPaths": [],
+    "localDependencyLinkPresent": false,
+    "borrowedViteTemp": [],
+    "evidenceOpenHandles": [],
+    "lsofExit": 1,
+    "wholeRetainedChargedBytes": 1957461,
+    "sourceGitBytes": 1762221,
+    "freeBytes": 29587091456,
+    "peakProcessCount": 3,
+    "peakAggregateRssBytes": 1535049728,
+    "peakChargedBytes": 1955472,
+    "unitTests": 384,
+    "unitFiles": 18,
+    "applicationFiles": 886,
+    "typeDiagnostics": 0,
+    "attempts": 2,
+    "limits": "Original 600second allocation retained; cleanup before deadline; no extension."
+  },
+  "nativeStatus": "NOT_RUN; Root153 actual default App360/390/430 shared all-layers journey only",
+  "goal": "Original aligned AR03 remains BLOCKED unfinished; no reset/scope cut/completion",
+  "provenance": {
+    "ui": "Newly authored React/CSS; no legacy rendering copied",
+    "qualifier": "Adapted from MCR f23344e7 entity reviewed-production qualifier; source/lease argv and accounting changed",
+    "testInputs": "Existing MCR reviewed-production canonical Auth/privacy/HTTP fixtures and frozen reviewed public asset bytes",
+    "palette": "Reviewed revision2 composition.hand_palette_color_index=2, eight exact supplied body palette colors",
+    "dependencies": "Existing React/react-dom/Vitest/jsdom and retained public runtime types only; no manifest/lock changes"
+  },
+  "publicationOwner": "Root153; no self-push; no king/SL review or ACK gate",
+  "sourceHashAdmissionReject": "Mistyped source SHA rejected before child creation; subsequent retry uses git rev-parse HEAD; original deadline unchanged"
+}

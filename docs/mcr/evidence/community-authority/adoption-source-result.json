@@ -1,0 +1,22 @@
+{
+  "status": "PASS",
+  "qualified_source_revision": "25ea81e0507add978ad3ba937834e8f8c45d53c7",
+  "baseline": "32fed3eb41e2b57783cebb78e4aff11d3fa087ba",
+  "tests": 53,
+  "files": 4,
+  "commands": {
+    "vitest": 0,
+    "full_tsc_noEmit_incrementalfalse": 0,
+    "scoped_oxlint": 0,
+    "native_driver_syntax": 0
+  },
+  "failure_preserved": "Attempt 1 omitted the mandatory browser HTTP origin in the Node fixture. Fixture only corrected; attempt 2 passes.",
+  "log_format": "Raw stdout preserved byte-exact in deterministic gzip, append .gz to report log names.",
+  "native": "NOT_RUN",
+  "production_clock_profile": "ABSENT; TEST_ONLY accepted only in synthetic dev fixture",
+  "prior_attempt_durable_bytes": 24576,
+  "aggregate_whole_upper_bound_bytes": 9130820,
+  "released_at": "2026-11-04T14:41:55.225951+00:00",
+  "temporary_prefixes_removed": true,
+  "retained_physical_dependencies": "READ_ONLY_UNMODIFIED"
+}

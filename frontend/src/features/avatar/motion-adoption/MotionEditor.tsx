@@ -5,6 +5,7 @@ import type { MotionDirection, MotionLayer, MotionSelection } from '../../../ent
 import type { MotionEditorController, MotionNotice } from './controller'
 import { MotionView } from './MotionView'
 import { MotionOption } from './MotionOption'
+import { MotionBodyPalette } from '../part-controls/MotionBodyPalette'
 import './motion.css'
 
 const messages: Record<Exclude<MotionNotice, null>, string> = {
@@ -90,6 +91,7 @@ export function MotionEditor<C>({ controller }: { readonly controller: MotionEdi
         </div> : <>
           <section className="mcr-motion-options" aria-label={layerLabels[category]}>
             <header><h2>{layerLabels[category]}</h2><span>{items.length} choices</span></header>
+            {category === 'body' && <MotionBodyPalette controller={controller} />}
             <div className="mcr-motion-option-row">
               <button type="button" aria-label={`Previous ${layerLabels[category]} choices`} disabled={current === 0} onClick={() => setPage(current - 1)}>‹</button>
               <div className="mcr-motion-option-grid">

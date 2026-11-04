@@ -1,0 +1,93 @@
+{
+  "status": "FULL_RELEASE",
+  "slot": "FE12-BODY-PALETTE-SOURCE-B-202611041355Z",
+  "source": "3e299cd76ae55380124b7e29e120ea48370291e1",
+  "releasedUTC": "2026-11-04T14:00:58.186306+00:00",
+  "deadlineUTC": "2026-11-04T14:07:24.883099+00:00",
+  "checks": [
+    {
+      "name": "runtime",
+      "argv": [
+        "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node",
+        "--version"
+      ],
+      "cwd": "/Users/lhs/Desktop/mcr-worktrees/fe-ref-map",
+      "exit": 0
+    },
+    {
+      "name": "unit",
+      "argv": [
+        "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node",
+        "/Users/lhs/Desktop/mcr/frontend/node_modules/vitest/vitest.mjs",
+        "run",
+        "--configLoader",
+        "runner",
+        "--root",
+        "/Users/lhs/Desktop/mcr-worktrees/fe-ref-map/frontend",
+        "--config",
+        "/Users/lhs/Desktop/mcr-worktrees/fe-ref-map/frontend/src/features/avatar/part-controls/__tests__/vitest.config.mjs"
+      ],
+      "cwd": "/Users/lhs/Desktop/mcr-worktrees/fe-ref-map/frontend",
+      "exit": 0
+    },
+    {
+      "name": "application-types",
+      "argv": [
+        "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node",
+        "/Users/lhs/Desktop/mcr-worktrees/fe-ref-map/frontend/src/world/avatar/__tests__/motion-adoption/typecheck.mjs",
+        "--application"
+      ],
+      "cwd": "/Users/lhs/Desktop/mcr-worktrees/fe-ref-map",
+      "exit": 0
+    },
+    {
+      "name": "lint",
+      "argv": [
+        "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node",
+        "/Users/lhs/Desktop/mcr/frontend/node_modules/oxlint/bin/oxlint",
+        "/Users/lhs/Desktop/mcr-worktrees/fe-ref-map/frontend/src/features/avatar/part-controls",
+        "/Users/lhs/Desktop/mcr-worktrees/fe-ref-map/frontend/src/features/avatar/wardrobe-options"
+      ],
+      "cwd": "/Users/lhs/Desktop/mcr-worktrees/fe-ref-map",
+      "exit": 0
+    },
+    {
+      "name": "whitespace",
+      "argv": [
+        "git",
+        "diff",
+        "--check",
+        "654974128a27c948a449fa9e58f466b8e612361d"
+      ],
+      "cwd": "/Users/lhs/Desktop/mcr-worktrees/fe-ref-map",
+      "exit": 0
+    },
+    {
+      "name": "plan",
+      "argv": [
+        "python3",
+        "/Users/lhs/Desktop/mcr-worktrees/fe-ref-map/scripts/mcr/check-plan.py"
+      ],
+      "cwd": "/Users/lhs/Desktop/mcr-worktrees/fe-ref-map",
+      "exit": 0
+    }
+  ],
+  "ownedWorkflowProcesses": [],
+  "ownedTemporaryPaths": [],
+  "localDependencyLinkPresent": false,
+  "borrowedViteTemp": [],
+  "evidenceOpenHandles": [],
+  "lsofExit": 1,
+  "wholeRetainedChargedBytes": 1957461,
+  "sourceGitBytes": 1762221,
+  "freeBytes": 29587091456,
+  "peakProcessCount": 3,
+  "peakAggregateRssBytes": 1535049728,
+  "peakChargedBytes": 1955472,
+  "unitTests": 384,
+  "unitFiles": 18,
+  "applicationFiles": 886,
+  "typeDiagnostics": 0,
+  "attempts": 2,
+  "limits": "Original 600second allocation retained; cleanup before deadline; no extension."
+}

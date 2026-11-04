@@ -1,0 +1,42 @@
+{
+  "status": "PASS_FUNCTIONAL_SETTLED_CTA",
+  "source_revision": "877f2634a44721f5dcf0991315fcce8b78c5ecb7",
+  "cases": 3,
+  "widths": [
+    360,
+    390,
+    430
+  ],
+  "assessment": "All three captures inspected: settled .party-browse list visible, actual #party-create enabled and readable, no transient fallback. Actual click-through, retained draft and clock-withdrawal checks pass. Each case publishes one actual Phaser canvas; disposal leaves canvas/socket zero.",
+  "scope": "FUNCTIONAL evidence with frozen historical frames only; no broad reference/post-only visual approval, live service, production clock qualification or full FE21/FE22 acceptance.",
+  "previous_matrix": "adoption-native04: 12 functional cases PASS; old 15 images and all failed attempts retained. These three captures close the settled positive control gap.",
+  "screenshot_sha256": {
+    "enabled-390.png": "a884da8d92c4fc63cc30fa6ab660f112ed0a7a2484b6ffd64c032d815e67fc23",
+    "enabled-430.png": "44cf6cd3c78f3f75c9d00472982038508377de48f8279f8d702fdbfc5951df5e",
+    "enabled-360.png": "33594c61541c74a2010e50cde85740ef33cd53472aca237cac0515f3ceac526d"
+  },
+  "total_retained_images": 18,
+  "cleanup": {
+    "verified_at": "2026-11-04T15:14:07.809809+00:00",
+    "owned_process_groups_absent": [
+      2332,
+      2338
+    ],
+    "temporary_cache_prefixes_absent": true,
+    "listener_port": 5173,
+    "listener_rebind": "PASS",
+    "physical_dependencies": "PRESERVED_READ_ONLY"
+  },
+  "guard": {
+    "peaks": {
+      "pids": 11,
+      "rss": 2598191104,
+      "whole": 40202682,
+      "temporary": 30494720,
+      "durable": 266240
+    },
+    "minimum_free_bytes": 23024795648,
+    "reason": null,
+    "last_sample_utc": "2026-11-04T15:13:19.482278+00:00"
+  }
+}

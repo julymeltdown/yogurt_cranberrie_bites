@@ -1,0 +1,43 @@
+{
+  "offer": "FE41-DEFAULT-ENTRY-202611041241Z",
+  "source": "e72b9c8e491e29cb8f003b2412e1c78878deea25",
+  "job": "types",
+  "argv": [
+    "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node",
+    "frontend/node_modules/typescript/bin/tsc",
+    "--noEmit",
+    "--incremental",
+    "false",
+    "--project",
+    "frontend/tsconfig.json"
+  ],
+  "started": 1793796140.030001,
+  "cutoff": 1793796942,
+  "release": 1793797002,
+  "caps": {
+    "whole": 1342177280,
+    "temp": 402653184,
+    "durable": 16777216,
+    "profile": 67108864,
+    "processes": 32,
+    "rss": 4294967296
+  },
+  "sourceBytes": 684146404,
+  "peaks": {
+    "whole": 685518579,
+    "temp": 1362604,
+    "durable": 9571,
+    "profile": 0,
+    "processes": 1,
+    "rss": 1402781696
+  },
+  "minFree": 17186111488,
+  "exitCode": 0,
+  "currentRSS": 0,
+  "pid": 79146,
+  "finished": 1793796149.4622421,
+  "childrenRemaining": [],
+  "linkAbsent": true,
+  "scratchAbsent": true,
+  "releasedBeforeDeadline": true
+}

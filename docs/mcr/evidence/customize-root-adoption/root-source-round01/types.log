@@ -1,0 +1,2 @@
+src/app/world-entry/resolver.ts(72,43): error TS18049: 'owner' is possibly 'null' or 'undefined'.
+src/app/world-entry/resolver.ts(74,22): error TS18049: 'owner' is possibly 'null' or 'undefined'.

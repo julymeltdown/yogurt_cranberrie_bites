@@ -15,7 +15,7 @@ export function ConnectionStatusNotice({ view, retry, reload }: {
 }) {
   if (view.kind === 'ready') return null
   const copy = connectionCopy[view.kind]
-  return <div className="connection-status">
+  return <div className="connection-status" role="region" aria-label="World connection status">
     <ConcertWindow title={copy.title} icon="world">
       <div role="status" aria-live="polite" aria-atomic="true">
         <p>{copy.description}</p>

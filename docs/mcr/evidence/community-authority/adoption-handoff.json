@@ -1,0 +1,40 @@
+{
+  "task": "FE-COMMUNITY-AUTHORITY-01",
+  "handoff_source_head": "47fa201323fab229ab7e79215419e85fedd90b9a",
+  "root_baseline": "32fed3eb41e2b57783cebb78e4aff11d3fa087ba",
+  "qualified_runtime_source": "25ea81e0507add978ad3ba937834e8f8c45d53c7",
+  "qualification": "53 tests/full tsc/scoped lint PASS; native 12-case functional PASS plus three settled positive-control cases PASS. Historical framing only, no broad visual/live-service acceptance.",
+  "new_source_files_sha256": {
+    "frontend/src/app/community-authority/index.ts": "15ea3f30f321fa4c23fa6e17a6d36aaa20a3212ce816d22024ed639eebae11da",
+    "frontend/src/app/community-authority/timeline.ts": "52a85e3d0263cd3980c22f838d3ab3b971eb93f12ac98d730371239ef64f3448",
+    "frontend/src/app/community-authority/__tests__/fixtures.ts": "b78f3d8a27f3f05a556287b37b09cbb5e1b33fe570b95c8b730525380931eb6e",
+    "frontend/src/app/community-authority/__tests__/places.test.ts": "708f992afc23417eb30615f4149763ea585e36f4499751cd6650b1babecc659c",
+    "frontend/src/app/community-authority/__tests__/source_round.py": "bd25d9473437e7ae83d6bf577ca0c40454d2186359d2fc381caa8150275bf453",
+    "frontend/src/app/community-authority/__tests__/timeline.test.ts": "ee07a0cfaa4bd3cb65ece6b36a19b37cd1682e8e2bbfdcb8eb57d5f46f2e1130",
+    "frontend/src/app/community-authority/__tests__/vitest.config.ts": "b6a95ffaac08970e1f9fada44fd8a9a1754e5f142808fe7ca8d66a0e49e502ec",
+    "frontend/src/app/community-authority/__tests__/clock.test.ts": "3283f10e6b872a6c8b8efa1adf453ec8993a390abcafff0a75f456eb0a927b2b",
+    "frontend/src/app/community-adoption/owner.ts": "b61b9910ee4ca31ab3dc96e1741a76646821ce0cf18e65d49b14d9c30e7e619d",
+    "frontend/src/app/community-adoption/usePartyCreation.ts": "a6f9d471962ccdc5dcc94896fd8478fed60e15661cc574dc36d15792d5a51560",
+    "frontend/src/app/community-adoption/bootstrap.ts": "8f3c566c9d79228221923e367ab579d952b3d01c177aba3b7c32873f9b51e6fc",
+    "frontend/src/app/community-adoption/__tests__/fixtures.ts": "5178046db1e4b88b7c591711fcfcf198b84b96436410771c3678a7d2d41425d0",
+    "frontend/src/app/community-adoption/__tests__/source_round.py": "0795e0ddcf66a652ae7267bb3639ad4947b824f76aa969f5bfe9a0c8ac84de66",
+    "frontend/src/app/community-adoption/__tests__/native_round.py": "958e2c0b164c3ec3d3cab296201a5ad3ee2d333b15b43b1f47ca0364d792ffb4",
+    "frontend/src/app/community-adoption/__tests__/vitest.config.ts": "648030a4285d80072bbf1b291f1957bc5f4d166ce832a7fc7e96b4e06b1e7ac8",
+    "frontend/src/app/community-adoption/__tests__/binding.test.ts": "b9f38e2e7fc8ba20adfb974daae50396d7bf0c12707cd7075af13c5a5464aded",
+    "frontend/src/app/community-adoption/__tests__/native/preview.html": "50f62d2310f71004489e8b44017cebce8447260a8721c8501ffed594c16a492b",
+    "frontend/src/app/community-adoption/__tests__/native/preview.tsx": "eccc3ffdeff2fa5a1ec6926958e89c5c1fe985d0c6cd95dff215d2435d2dbcdc",
+    "frontend/src/app/community-adoption/__tests__/native/native.mjs": "4eb92f2b85f2d36a64126e676ea2d5984324cda76ba6196be7753148ef364e90"
+  },
+  "targeted_existing_hunks": [
+    "frontend/src/app/WorldShell.tsx",
+    "frontend/src/app/CommunityFeatures.tsx",
+    "frontend/src/app/ports.ts",
+    "frontend/src/app/router.tsx"
+  ],
+  "patch_gzip": "adoption-shared-hunks.patch.gz",
+  "raw_patch_sha256": "114dfa8748663e731b430edb4fdd39d6e4d52e69e07978c6dc884b5fdf39e6b0",
+  "shared_file_intake": "Apply only these transferred hunks; preserve current Root/213 PanelFrame/PanelScreen and character rendering. Do not replace whole shared files.",
+  "native_preparation": "Follow-up narrowed to ONLY three enabled width contexts, three settled screenshots, guardian 120s work/180s total. Requires fresh allocation with explicit 18-image aggregate cap; old round closed and all records retained.",
+  "publication_owner": "Root153",
+  "full_FE21_FE22": "OPEN"
+}

@@ -15,6 +15,9 @@ import { sceneryResources } from '../../world/illustrated/model'
 import type { ResolvedWorldRelease, WorldReleaseResolver } from '../../world/composition'
 import { assertEntry, captureEntry, validateEntry, type WorldEntryRequest } from './authority'
 import { preflightReferenceScene } from './reference-scene-overview'
+import type { RootCharacterRegistry } from '../character-entry/runtime'
+import { assertReviewedProductionAuthority } from '../../entities/avatar/runtime/motion-adoption/reviewed-production'
+import { decodeReviewedMotionManifest } from '../../entities/avatar/runtime/motion-adoption/reviewed-manifest'
 
 export interface LocalInputConfiguration {
   /** Reviewed application configuration, not a claimed C05 authoritative movement model. */
@@ -28,6 +31,8 @@ export interface WorldEntryResolverOptions {
   readonly auth: SessionController
   readonly origin: string
   readonly localInput: LocalInputConfiguration
+  /** Borrow the shell-admitted registry; this resolver never mints another authority. */
+  readonly characters?: RootCharacterRegistry
   /** Optional fetch seam for the existing same-origin, hash-checked asset reader only. */
   readonly assetFetch?: typeof fetch
 }
@@ -59,7 +64,16 @@ export function createWorldEntryResolver(options: WorldEntryResolverOptions): Wo
       const theme = list(document.theme_manifests).map(object).find(t => t.theme_id === themeId)
       requireValue(theme)
       reviewedArt(map); reviewedArt(theme)
-      if (avatar.contract_version === '1.1.0' && avatar.representation === 'whole_character') {
+      const reviewedMotion = avatar.contract_version === '2.0.0' && avatar.representation === 'reviewed_selected_source_motion'
+      if (reviewedMotion) {
+        const pin = { manifest_id: text(avatar.manifest_id), manifest_version: Number(avatar.manifest_version), content_hash: text(avatar.content_hash) }
+        const owner = options.characters?.readReviewed(captured.privacyScope, pin)
+        requireValue(owner)
+        requireValue(owner.isCurrent())
+        assertReviewedProductionAuthority(owner.authority, auth)
+        await decodeReviewedMotionManifest(avatar, pin)
+        requireValue(owner.isCurrent())
+      } else if (avatar.contract_version === '1.1.0' && avatar.representation === 'whole_character') {
         // This reviewed release binds source/texture/frame hashes directly, without layered provenance.
         await validateWholeCharacterManifest(avatar, { manifest_id: text(avatar.manifest_id),
           manifest_version: Number(avatar.manifest_version), content_hash: text(avatar.content_hash) })
@@ -74,7 +88,9 @@ export function createWorldEntryResolver(options: WorldEntryResolverOptions): Wo
         avatar: { manifest_id: text(avatar.manifest_id), manifest_version: Number(avatar.manifest_version), content_hash: text(avatar.content_hash) },
       })
       preflightReferenceScene(metadata)
-      const allow = [provided(map.tilemap, 'json'), provided(theme.texture, 'png'), provided(object(avatar.atlas).texture, 'png')]
+      // The shared reviewed runtime alone loads its pinned character atlas; no duplicate World asset lease.
+      const allow = [provided(map.tilemap, 'json'), provided(theme.texture, 'png'),
+        ...(!reviewedMotion ? [provided(object(avatar.atlas).texture, 'png')] : [])]
       const merge = (resources: readonly Resource[]) => {
         const staged = [...allow]
         for (const resource of resources) {

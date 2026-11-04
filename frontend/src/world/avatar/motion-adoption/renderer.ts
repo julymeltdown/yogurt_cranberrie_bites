@@ -1,15 +1,16 @@
 import type { MotionLease, MotionRuntime } from '../../../entities/avatar/runtime/motion-adoption/runtime'
 import { motionFrame } from '../../../entities/avatar/runtime/motion-adoption/art'
 import { canonicalJson } from '../../map/json'
+import { isReviewedProductionAuthority } from '../../../entities/avatar/runtime/motion-adoption/reviewed-production'
 import type { WorldRendererPort, WorldRendererStatus } from '../../composition'
 import type { ReplicationView } from '../../network/replication'
 import type { AvatarSceneSprite, AvatarSceneTexture } from '../scene'
 import { sceneryDepth } from '../../illustrated/model'
 
 type Context = Parameters<WorldRendererPort['mount']>[0]
-/** Real scene adapter with explicit TEST_ONLY authority. No public decoder or production admission is changed. */
+/** One incumbent scene clock. Production requires the factory-minted current authority; fixtures remain explicitly TEST_ONLY. */
 export function createMotionWorldRenderer<C>(options: {
-  readonly qualification: 'TEST_ONLY'
+  readonly qualification: 'TEST_ONLY' | 'REVIEWED_PRODUCTION'
   resolveRuntime(context: Context): MotionRuntime<C>
 }) {
   return { mount(context: Context) {
@@ -102,10 +103,12 @@ export function createMotionWorldRenderer<C>(options: {
     function dispose() { if (disposed) return; disposed = true; context.signal.removeEventListener('abort', dispose); attempt(removeFrame); clear(); listeners.clear() }
     context.signal.addEventListener('abort', dispose, { once: true })
     try {
-      if (context.signal.aborted || !scene || options.qualification !== 'TEST_ONLY') throw Error('Motion scene unavailable')
+      if (context.signal.aborted || !scene || !['TEST_ONLY', 'REVIEWED_PRODUCTION'].includes(options.qualification)) throw Error('Motion scene unavailable')
       runtime = options.resolveRuntime(context)
       const manifest = context.release.avatarManifest, authority = runtime.authority
-      if (!current() || authority.qualification !== 'TEST_ONLY' || manifest.manifest_id !== authority.manifestId
+      if (!current() || authority.qualification !== options.qualification
+        || options.qualification === 'REVIEWED_PRODUCTION' && !isReviewedProductionAuthority(authority)
+        || manifest.manifest_id !== authority.manifestId
         || manifest.manifest_version !== authority.manifestVersion || manifest.content_hash !== authority.manifestHash) throw Error('Motion authority unavailable')
       removeFrame = scene.onFrame(next => {
         if (!current()) { dispose(); return }

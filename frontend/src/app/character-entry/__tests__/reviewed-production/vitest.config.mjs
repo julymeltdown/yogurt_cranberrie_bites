@@ -1,0 +1,17 @@
+import baseline from '../../../../entities/avatar/runtime/__tests__/reviewed-production/vitest.config.mjs'
+export default { ...baseline, cacheDir: process.env.MCR_MOTION_CACHE,
+  test: { ...baseline.test, include: [...baseline.test.include,
+    'src/app/character-entry/__tests__/reviewed-production/**/*.test.ts',
+    'src/app/character-entry/__tests__/reviewed-production/**/*.test.tsx',
+    'src/app/character-entry/__tests__/registry.test.ts',
+    'src/app/character-entry/__tests__/provider.test.tsx',
+    'src/app/account-entry/__tests__/owner.test.ts',
+    'src/app/account-entry/__tests__/root.test.tsx',
+    'src/app/world-entry/__tests__/production.test.tsx',
+    'src/app/world-entry/__tests__/resolver.test.ts',
+    'src/world/avatar/__tests__/whole-character/renderer.test.ts',
+    'src/app/errors/__tests__/default-entry.test.ts',
+    'src/app/errors/__tests__/default-routes.test.tsx',
+    'src/app/errors/__tests__/production-reconnect.test.ts'],
+  },
+}

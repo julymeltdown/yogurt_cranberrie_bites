@@ -1,0 +1,49 @@
+{
+  "status": "FUNCTIONAL_PASS_SETTLED_CTA_PASS",
+  "source_revision": "fc4c5ecf0c46703907e488af10916f5391558333",
+  "cases": 12,
+  "widths": [
+    360,
+    390,
+    430
+  ],
+  "images": {
+    "enabled-360.png": "de93db379e3157dd7f293c7a835392ea38062b0ad88a59f4209ae4b70c3f87d8",
+    "enabled-390.png": "afa8cc007ebbf9c4b0ebc6b1451d8c5ff5b99dc42fa2c0dc4a2e0c58bb575531",
+    "enabled-430.png": "7fbfae701b5d72c3439cb2957b9c5a82206f3df2f87de402d3e2a6128a20f1f0",
+    "no-policy-360.png": "9d41a34ae14ea21e75c8b9c9582045538707d5b46415ad08ac756570460a3769",
+    "no-policy-390.png": "2cede99f9e49f1ab16e9611cc5d1ee37613b47972cbdfe880981a708a724bfb4",
+    "no-policy-430.png": "7f7a522a0abbf4dee82911e15fe99fecd2135a6a831f12dd8740bc287e969990",
+    "retained-form-360.png": "dd1b8bf5d5363f2dbdc84bb0a73cd0753d2f8a60ddb7d91337435f14f853d435",
+    "retained-form-390.png": "a1ff8d0576b6caaac9b70cbcd4b832f0b068976f69e29bdf97671921db7ee920",
+    "retained-form-430.png": "bea4048e6ce93e8deb817dff4a11778a2153d135cd5ab6d04f0dede97b4227fb",
+    "virtual-360.png": "a89a742bd30de034a31f76854619e27131bd9c378847ec5b2c603d2a540be42f",
+    "virtual-390.png": "2cede99f9e49f1ab16e9611cc5d1ee37613b47972cbdfe880981a708a724bfb4",
+    "virtual-430.png": "7f7a522a0abbf4dee82911e15fe99fecd2135a6a831f12dd8740bc287e969990",
+    "world-only-360.png": "9593c9c1e37de15a879255187ed5044fc15bb1e08d34dd599c001a1af007c59e",
+    "world-only-390.png": "9a7a148c21c0da463aa992989702803038bad6e7c1729355d5f703f22ca56f9d",
+    "world-only-430.png": "937d182a7eb1a5159d6a99a9f235f2ee62afd6e95bdcf2c07d0e012e884cdc28"
+  },
+  "inspection": "All 15 images inspected. Canonical-disabled, no-policy and virtual states display unavailable creation; retained drafts are legible. Enabled base screenshots capture transient Opening parties and generic fallback link; these three images do not qualify the settled discovery creation control.",
+  "followup_source": "47fa201323fab229ab7e79215419e85fedd90b9a",
+  "followup": "adoption-native05: source877f2634, three enabled width contexts and three settled captures PASS; see adoption-settled-result.json. Historical frame styling is not new reference visual approval.",
+  "fixture_correction": "The exact committed C03 fixture disables ALL capabilities including World. world-only is a legacy scenario id; it preserves those exact decisions and expects zero canvas. Other three scenarios are explicitly TEST_ONLY capabilities and require actual published Phaser and one canvas. No live-service capability claim.",
+  "runtime_changes": "NONE since qualified25ea81e0; changes only native fixture/driver",
+  "cleanup": {
+    "checked_at": "2026-11-04T15:07:20.422181+00:00",
+    "live_owned_runtime_processes": [],
+    "temporary_prefixes_absent": true,
+    "listener_5173_rebind": "PASS",
+    "physical_dependencies": "PRESERVED_READ_ONLY"
+  },
+  "maxima": {
+    "processes": 13,
+    "rss_bytes": 2721841152,
+    "whole_bytes": 39123456,
+    "temporary_bytes": 31252480,
+    "durable_bytes": 1114112,
+    "minimum_free_bytes": 24692355072
+  },
+  "full_FE21_FE22": "OPEN",
+  "production_clock_policy": "ABSENT"
+}

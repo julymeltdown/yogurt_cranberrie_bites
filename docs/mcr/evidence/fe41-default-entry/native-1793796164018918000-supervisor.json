@@ -1,0 +1,38 @@
+{
+  "offer": "FE41-DEFAULT-ENTRY-202611041241Z",
+  "source": "e72b9c8e491e29cb8f003b2412e1c78878deea25",
+  "job": "native",
+  "argv": [
+    "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node",
+    "frontend/src/app/errors/__tests__/default-entry/native.mjs"
+  ],
+  "started": 1793796163.974088,
+  "cutoff": 1793796942,
+  "release": 1793797002,
+  "caps": {
+    "whole": 1342177280,
+    "temp": 402653184,
+    "durable": 16777216,
+    "profile": 67108864,
+    "processes": 32,
+    "rss": 4294967296
+  },
+  "sourceBytes": 684146404,
+  "peaks": {
+    "whole": 684158168,
+    "temp": 0,
+    "durable": 11764,
+    "profile": 0,
+    "processes": 0,
+    "rss": 0
+  },
+  "minFree": 17170165760,
+  "exitCode": null,
+  "currentRSS": 0,
+  "guardFailure": "free disk floor: 17170165760",
+  "finished": 1793796164.0188658,
+  "childrenRemaining": [],
+  "linkAbsent": true,
+  "scratchAbsent": true,
+  "releasedBeforeDeadline": true
+}

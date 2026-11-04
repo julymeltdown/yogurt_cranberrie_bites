@@ -7,6 +7,7 @@ import type { WorldEntryRequest } from './world-entry/authority'
 import type { PrivacyScope } from '../shared/query/privacy'
 import { createMemorySession, type SessionPort, type SessionScope } from '../shared/api/http'
 import { createRootCharacterRegistry, type RootCharacterRegistry } from './character-entry/runtime'
+import type { ConnectionStatusController } from '../features/connection-status/model'
 
 export type SessionReadiness = 'unknown' | 'checking' | 'ready' | 'anonymous' | 'unavailable' | 'error'
 export interface ReadinessPort {
@@ -46,9 +47,12 @@ export interface WorldLifecyclePort {
    */
   mount(host: HTMLElement, context: { scope: ActiveScope; bootstrap: ShellBootstrap; signal: AbortSignal; privacyScope?: PrivacyScope | null }): WorldLease
 }
-export interface WorldAccessBinding { readonly release: WorldEntryRequest; readonly replication: ReplicationReader; readonly presentation?: import('../world/composition').WorldPresentationPort }
+export interface WorldAccessBinding { readonly release: WorldEntryRequest; readonly replication: ReplicationReader; readonly presentation?: import('../world/composition').WorldPresentationPort; readonly reconnect?: () => Promise<boolean> }
 export interface WorldAccessBindingPort { read(): WorldAccessBinding | null; subscribe(listener: () => void): () => void }
 export interface ShellPorts {
+  /** Absent until a supported clock environment is qualified; never inferred from Bootstrap. */
+  readonly communityClock?: import('./community-adoption/bootstrap').CommunityClockProfile
+  readonly connectionStatus?: { readonly controller: ConnectionStatusController; readonly reload: () => void }
   /** Explicit public event selection. It does not grant identity or world access. */
   readonly eventId?: string | null
   /** One fixed-scope selected-character owner, borrowed by shell views and World. */

@@ -54,6 +54,7 @@ export function createCharacterRuntimeRegistry<T extends CharacterRuntimeLifetim
       active = { scope: Object.freeze({ ...scope }), key, runtime }
       return runtime
     },
+    clear,
     dispose() { if (closed) return; closed = true; unregister(); clear() },
   }
 }
