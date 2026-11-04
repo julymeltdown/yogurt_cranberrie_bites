@@ -9,6 +9,31 @@
   ],
   "nativeReport": "/Users/lhs/Desktop/mcr-worktrees/fe-delivery-publish/docs/mcr/evidence/cozy-backgrounds-v1/native-01/report.json",
   "nativeReportSha256": "59e0f2540a1fdc79f240230048385fda678c1029e9d3df3ab2a209320ae86da1",
+  "artifactAvailability": {
+    "immutableCommit": "16bf30c617995f87c89f94a13d9cc5f4c65d51b5",
+    "all16PhysicalPngsMatchGitBlobs": true,
+    "all8OwnedPngsMatchRecordedPins": true,
+    "reportMatchesRecordedPin": true,
+    "incident": "Sparse checkout temporarily dematerialized the original PNGs. Root restored exact Git bytes at the same paths and corrected the sparse inclusion pattern. Owner independently reverified all 16 physical files against the immutable commit and all eight owned pins. No rerun or cohort substitution."
+  },
+  "boundedScreenshotPixelChecks": [
+    {
+      "route": "me",
+      "region": "Opaque portrait interior only",
+      "cropXYXY": [23, 73, 163, 213],
+      "rgbaSize": [140, 140],
+      "baselineCandidateBytesEqual": true,
+      "rgbaSha256": "aefbbb51305c5112db0e54a20c902ae5e32db689916c9f4d93993191409f09cf"
+    },
+    {
+      "route": "customize",
+      "region": "Preview interior only",
+      "cropXYXY": [21, 69, 369, 391],
+      "rgbaSize": [348, 322],
+      "baselineCandidateBytesEqual": true,
+      "rgbaSha256": "386115826443781cd84dfabcf9acc4f6c30ec95169e05bf66ee3d240d31b8046"
+    }
+  ],
   "job": "PANEL-COZY-202611040632Z",
   "candidate": "c8a731e5c7f03c3fbcbd0581c6e872429806fa22",
   "base": "7c25078f118da53dd9a524d0a58e707cca190f0f",
@@ -190,7 +215,7 @@
   "limits": [
     "Desktop QA06 synthetic HTTP/C05/default-router; no live service or physical-device acceptance",
     "Images arrays are EMPTY on all four routes: imagesPreserved does not certify character canvas/CSS-background RGBA invariance",
-    "Character source freeze and direct visual comparison retained; quantitative canvas/span preservation requested for next allocated job",
+    "Character source freeze, direct visual comparison and two bounded screenshot-interior RGBA checks retained; full canvas/span preservation requested for next allocated job",
     "No rendered contrast sampling, responsive360/430, additional auth states or full focus-return qualification in native01",
     "Baseline restores only four paint files on same candidate; not a full old revision replay",
     "Later shared fourth-paint correction not included in this captured cohort"

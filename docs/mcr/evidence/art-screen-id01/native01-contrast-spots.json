@@ -1,0 +1,71 @@
+{
+  "task": "ART-SCREEN-ID01",
+  "job": "PANEL-COZY-202611040632Z",
+  "candidate": "c8a731e5c7f03c3fbcbd0581c6e872429806fa22",
+  "artifactCommit": "16bf30c617995f87c89f94a13d9cc5f4c65d51b5",
+  "reportSha256": "59e0f2540a1fdc79f240230048385fda678c1029e9d3df3ab2a209320ae86da1",
+  "method": "Read original candidate 390px PNGs with Pillow as RGB; verify exact observed glyph-core and backing pixels at the recorded coordinates; calculate sRGB relative luminance and (Llighter + 0.05)/(Ldarker + 0.05). No browser, export or image edit.",
+  "samples": [
+    {
+      "route": "me",
+      "label": "profile name",
+      "glyphCoreXY": [177, 78],
+      "backingXY": [175, 78],
+      "glyphCoreRGB": [245, 236, 220],
+      "backingRGB": [87, 51, 68],
+      "contrast": 9.129
+    },
+    {
+      "route": "me",
+      "label": "bio text",
+      "glyphCoreXY": [239, 143],
+      "backingXY": [182, 142],
+      "glyphCoreRGB": [33, 29, 25],
+      "backingRGB": [255, 240, 231],
+      "contrast": 15.042
+    },
+    {
+      "route": "me",
+      "label": "activity label",
+      "glyphCoreXY": [47, 289],
+      "backingXY": [44, 287],
+      "glyphCoreRGB": [33, 29, 25],
+      "backingRGB": [211, 199, 180],
+      "contrast": 10.043
+    },
+    {
+      "route": "customize",
+      "label": "Random button",
+      "glyphCoreXY": [54, 533],
+      "backingXY": [49, 528],
+      "glyphCoreRGB": [29, 26, 23],
+      "backingRGB": [241, 232, 216],
+      "contrast": 14.248
+    },
+    {
+      "route": "customize",
+      "label": "disabled Save button",
+      "disabledInCapturedState": true,
+      "glyphCoreXY": [301, 533],
+      "backingXY": [297, 528],
+      "glyphCoreRGB": [100, 91, 80],
+      "backingRGB": [222, 211, 192],
+      "contrast": 4.497
+    },
+    {
+      "route": "customize",
+      "label": "Characters heading",
+      "glyphCoreXY": [29, 404],
+      "backingXY": [25, 400],
+      "glyphCoreRGB": [255, 245, 227],
+      "backingRGB": [27, 25, 23],
+      "contrast": 16.212
+    }
+  ],
+  "limits": [
+    "Selected observed glyph cores and backing pixels only; not all text, antialiased edges, backgrounds or pixels beneath every glyph",
+    "First 390px cohort only; corrected outer paint, 360/430px, focus, pending/error and enabled Save states remain unqualified",
+    "Disabled Save measured 4.497:1 and must not be rounded into a claimed 4.5:1 pass",
+    "No claim of complete composed accessibility or release acceptance"
+  ]
+}

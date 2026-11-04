@@ -46,8 +46,9 @@ Entry assets are authored separately by chat
 `01a1a534-4fd0-7ba1-8fe8-4cc95674080f` under
 `frontend/public/backgrounds/cute-wall-me-v1/`. This owner has no asset write
 rights. Entry source revision is
-`9a962ea6f8c20fe59846cbcf4f468b902e3f280e`; Me source revision is
-`8ff3a58f556bf2811ad1415cd31c5ba1953ccd58`. The Entry manifest and exact Git
+`9a962ea6f8c20fe59846cbcf4f468b902e3f280e`; current Me source revision is
+`77d8e2608a28286bcce18df000eeea4069c826d1`, superseding the original
+`8ff3a58f556bf2811ad1415cd31c5ba1953ccd58` header art. The Entry manifest and exact Git
 asset bytes were read before adoption. All seven used asset hashes and byte
 sizes are recorded in `evidence/art-screen-id01/source-validation.json`.
 They are original inert SVGs without raster/character/font/script/filter or
@@ -60,7 +61,7 @@ this worker's commit contains CSS and its own documents/evidence only.
 | A02 window | `cute-entry-v1/sign-in-paper.svg` | Vanilla paper with broad pastel side fields |
 | A02 existing top/bottom decorative SVG boxes | `cute-entry-v1/sign-in-clouds-top.svg`, `cute-entry-v1/sign-in-garden-bottom.svg` | Background paint replaces only old cemetery image payload paint |
 | U02 direct window body/footer in all three granted wrappers | `cute-entry-v1/customize-paper.svg` | Outer paper only; all preview/figure/choice/canvas descendants keep their original surfaces |
-| U01 profile header | `cute-wall-me-v1/me-night-ribbon.svg` | Berry field with broad mauve clouds; original opaque portrait surface remains |
+| U01 profile header | `cute-wall-me-v1/me-night-ribbon.svg` | Berry upper field and opaque cream lower shelf behind unchanged header links; original opaque portrait surface remains |
 | U01 bio and navigation surround | `cute-wall-me-v1/me-scrapbook.svg` | Blush paper and soft broad ornament; opaque controls remain |
 
 Every adopted image uses the granted `center`, `100% 100%`, `no-repeat`
@@ -213,9 +214,32 @@ An important evidence limit: **all four routes have empty `metrics.images`
 arrays**. The driver's `document.images` comparison does not cover the landing
 CSS-background spans or editor/profile canvases. Its `imagesPreserved: true`
 must not be presented as quantitative character RGBA proof. Character-source
-freeze and direct visual comparison remain valid narrower evidence. The owner
+freeze and direct visual comparison remain valid narrower evidence. Independent
+read-only screenshot comparisons additionally show byte-identical RGBA in the
+140×140 opaque Me portrait interior and the 348×322 Customize preview interior;
+their coordinates and hashes are in the owner evidence JSON. These two crops do
+not certify landing spans, antialiased edges, other widths, or corrected paint.
+The owner
 requested actual canvas RGBA/dimensions/rectangles and landing span resource/
 position/size preservation in Root's next single allocated workflow.
+
+The original 16 PNGs and report are retained in immutable commit
+`16bf30c617995f87c89f94a13d9cc5f4c65d51b5`. Sparse checkout temporarily
+dematerialized the PNGs from the shared working directory. Root restored the
+exact original blobs and corrected the inclusion pattern. The owner then
+independently verified all 16 physical PNGs against that commit, all eight owned
+PNG pins, and the original report hash at the same recorded paths. This was
+artifact restoration, with no replacement capture or changed cohort identity.
+
+Read-only contrast spot checks on the retained candidate PNGs are recorded in
+`evidence/art-screen-id01/native01-contrast-spots.json`, including exact glyph
+and backing RGB values and pixel coordinates. Selected Me profile-name, bio
+and activity-label samples measure 9.129:1, 15.042:1 and 10.043:1; Customize's
+Random button and Characters heading measure 14.248:1 and 16.212:1. Disabled
+Save measures **4.497:1**, which is not rounded into a 4.5:1 pass. It is disabled
+in this captured state; the enabled state remains unqualified. These selected
+samples do not certify all glyphs, antialiasing, focus, other states, corrected
+outer paint or other widths. No foreground or asset change follows from them.
 
 Browser/server closure and temp removal are recorded. A later shared fourth
 paint correction is outside this packet's cohort. Required remaining work is
@@ -223,3 +247,44 @@ the integrated Customize correction, actual 360/430px evidence, rendered
 contrast, additional relevant auth/focus states, quantitative character
 invariance, any resulting fixes, final documentation and fresh remote proof.
 The full four-screen persistent goal remains **ACTIVE**.
+
+## Me header focus backing correction
+
+The retained native01 report places the header at `(15,63,360,208.390625)` and
+the four 48×44 icon links at x=81/141/201/261, y=220.390625. Existing
+`me.css` gives these links a 3px `#a1212c` focus outline with 3px offset.
+Read-only inspection of the original screenshots finds the future outline's
+y=215..217 backing strip uniformly `#1c1a18` in baseline, but berry/cloud
+colors in candidate (the fourth link strip is uniformly `#75495d`). This
+confirms the new background reaches the actual focus footprint; the original
+packet did not focus those links and cannot certify their rendered outlines.
+
+The asset owner closed the background-only correction at
+`77d8e2608a28286bcce18df000eeea4069c826d1`, documented at
+`856c7170c2066975ffbf8910a2c04b0cc0d48a81`. The same header URL now has
+2,298 bytes and SHA-256
+`29ad1cb9d04101399e2483fef9de6a3d710c6bf7f08cb1cb4501fb746152932d`.
+It explicitly stretches its 390×180 viewBox with `preserveAspectRatio="none"`
+and paints an opaque cream shelf across y=120..180, followed only by clipped
+light ornament. The four outline boxes map to source y=130.7655..179.1362,
+inside that shelf. The author's conservative light-paint color envelope gives
+4.583:1 source contrast against the unchanged ring. This is source evidence;
+actual focused captures at all required widths remain outstanding.
+
+Root granted exactly one existing CSS declaration change before this edit:
+`.me-hub--reference .me-profile-header` background fallback returns from
+`#573344` to its former `#1c1a18`. It preserves the original fallback's
+2.288:1 ring contrast; it is **not** claimed as a 3:1 pass. The source checker
+now pins the actual new header bytes/revision and unchanged scrapbook hash,
+and enforces that fallback. No asset, focus style, control, character,
+typography, geometry, layout, import or shared root file is authored here.
+Root owns asset import and publication; this bounded source fix does not
+complete the original four-screen goal.
+
+`python3 docs/mcr/evidence/art-screen-id01/validate-source.py` exits 0:
+20 granted selectors and seven closed assets pass. An independent read-only
+XML/painter-order and original-report geometry calculation exits 0, confirming
+all four original outline boxes lie inside the shelf and reproducing the
+2.288089 fallback and 4.583275 conservative shelf ratios. The exact CSS diff
+is one fallback declaration across four assigned CSS/doc/evidence paths;
+`git diff --check` exits 0. No browser or capture job was started.
