@@ -100,7 +100,7 @@ async fn saga(p: &PgPool, id: Uuid) -> anyhow::Result<UserDeletionSaga> {
 async fn park(p: &PgPool, id: Uuid) -> anyhow::Result<()> {
     // Scheduling only: preserve every required target/receipt/status; never
     // manufacture a positive owner response or remove a required step.
-    sqlx::query("update user_deletion_steps set next_attempt_at=clock_timestamp()+interval '1 day' where saga_id=$1").bind(id).execute(p).await?;
+    sqlx::query("update user_deletion_steps set next_attempt_at=clock_timestamp()+interval '1 day', status=case when status='IN_PROGRESS' then 'RETRY' else status end, locked_at=case when status='IN_PROGRESS' then null else locked_at end where saga_id=$1").bind(id).execute(p).await?;
     Ok(())
 }
 async fn due(p: &PgPool, id: Uuid, target: &str) -> anyhow::Result<()> {

@@ -145,7 +145,10 @@ impl proto::account_deletion_service_server::AccountDeletionService for Hostile 
     ) -> Result<tonic::Response<proto::ApplyResponse>, tonic::Status> {
         self.calls.fetch_add(1, Ordering::SeqCst);
         if self.delay.load(Ordering::SeqCst) {
-            std::future::pending::<()>().await;
+            tokio::time::sleep(Duration::from_millis(250)).await;
+            return Err(tonic::Status::deadline_exceeded(
+                "Negative-only delayed response",
+            ));
         }
         // Authenticated but malformed/missing proof: deliberately never positive.
         let mut r = tonic::Response::new(proto::ApplyResponse::default());
