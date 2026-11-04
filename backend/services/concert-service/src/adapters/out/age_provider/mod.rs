@@ -397,14 +397,15 @@ impl PgAgeClaims {
         deadline(self, &mut tx, c).await.map_err(command)?;
         let assessment = concert_domain::age_policy::assess(c.actor, &claims, self.clock.now())
             .map_err(|_| Error::Unavailable)?;
-        self.authority
-            .disclose_until(
-                assessment
-                    .recheck_at()
-                    .unwrap_or(c.expires_at)
-                    .min(c.expires_at),
-            )
-            .map_err(command)?;
+        let until = if assessment.status() == concert_domain::age_policy::AgeStatus::Verified {
+            assessment
+                .recheck_at()
+                .unwrap_or(c.expires_at)
+                .min(c.expires_at)
+        } else {
+            c.expires_at
+        };
+        self.authority.disclose_until(until).map_err(command)?;
         tx.commit().await.map_err(db)?;
         // A known COMMIT does not extend claim expiry or the Seoul birthday boundary.
         own_status(c, &claims, self.available(), self.clock.now())
