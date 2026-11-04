@@ -191,7 +191,7 @@ class ProfileTests(unittest.TestCase):
         ports = Mock()
         names = ["concert-service:grpc", "concert-service:metrics", "concert-service:world"]
         stack = NS(cluster=NS(assert_owned=Mock()), ports=NS(ports=dict(zip(names, [31001, 31002, 31003]))))
-        with patch.object(live, "RestartPorts", return_value=ports), patch.object(live.dev.runtime, "Child", return_value=replacement), patch.object(live.dev.runtime, "http_probe", return_value=(200, b'')):
+        with patch.object(live, "RestartPorts", return_value=ports), patch.object(live.dev.runtime, "Child", return_value=replacement), patch.object(live.dev.runtime, "http_probe", return_value=(200, b'')), patch.object(live.time, "sleep") as wait:
             records = []
             actual, env = live.restart_owned_concert(stack, child, {"CONCERT_WORLD_OWNER_ID": "old"}, Path("/not-executed"), names, records)
         self.assertIs(actual, replacement)
@@ -199,6 +199,8 @@ class ProfileTests(unittest.TestCase):
         self.assertEqual(ports.reserve.call_count, 3)
         ports.close.assert_called_once()
         self.assertEqual(records[0]["after_pid"], 124)
+        wait.assert_called_once_with(5.1)
+        self.assertIn("natural_owner_lease_wait_seconds", records[0])
         child.stop.return_value = {"exit_code": -9, "forced": True}
         with patch.object(live.dev.runtime, "Child") as spawn:
             with self.assertRaises(prep.auth.CheckFailure): live.restart_owned_concert(stack, child, {}, None, names, [])
@@ -224,7 +226,7 @@ class ProfileTests(unittest.TestCase):
         names = ["concert-service:grpc", "concert-service:metrics", "concert-service:world"]
         stack = NS(cluster=NS(assert_owned=Mock()), ports=NS(ports=dict(zip(names, [31001,31002,31003]))))
         records = []
-        with patch.object(live, "RestartPorts"), patch.object(live.dev.runtime, "Child", return_value=replacement):
+        with patch.object(live, "RestartPorts"), patch.object(live.dev.runtime, "Child", return_value=replacement), patch.object(live.time, "sleep"):
             with self.assertRaises(live.dev.SmokeError):
                 live.restart_owned_concert(stack, child, {}, Path("/not-executed"), names, records)
         self.assertEqual(records[0]["stop"]["exit_code"], 0)
