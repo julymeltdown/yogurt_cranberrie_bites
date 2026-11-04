@@ -72,9 +72,13 @@ bounded resource allocation.
 
 The concrete `session.mjs` attaches to a fresh allocated native Chrome supplied by Root, uses ordinary UI logins for the exact pair, reads real C05 traffic and same-version Phaser instances, moves through the actual joystick, switches rooms through shell links and records trusted native cover-tab visibility in a private closure. World restart has a separate `producer-ready` phase: the owner must observe genuine completion before one ordinary UI Reconnect per App. Its 60-second owner bound requires at least 65 seconds remaining; a queued action is never completed-restart proof. The session creates no Vite/server or Auth cohort. Its descriptive kind is not runtime authority.
 
-Source qualification: NOT_RUN at this checkpoint. Actual shared descriptor,
+Source qualification: PASS at source commit `0de2faa3f7977a1a60981b5ae7c1208675680abf`, under finite offer `FE-QA05-ORACLE-SOURCE-20261104T2015Z`. All 21 synthetic source tests passed; scoped deny-warning lint, six MJS syntax checks, whitespace and the planning check exited zero. The independent outer guardian and inner supervisor passed, with peak five processes / 318,095,360 bytes RSS and 14,007 bytes new output; all owned process groups and temporary roots were removed by 20:15:22.064940 UTC. The slot was reported FULL directly to the allocator and Auth207 before documentation. Source checks were not expanded into old baseline, application type, browser or backend runs. Raw commands, exit codes, hashes, source/read-only pins and both guard records are in `evidence/qa05-frontend-recovery/source-01/`.
+
+Actual shared descriptor,
 attachment, fault controls and combined browser cases: NOT_RUN. No Node, browser,
 Vite, service, install, build or target job is held. The unbudgeted goal remains
 active through implementation, relevant fixes/validation, minimal documentation,
 committed handoff and direct normal non-force Root153 publication. No king/SL
 inspection, review or acknowledgment stage exists.
+
+Renderer qualification is an exact live coordinate multiset and sprite-count comparison, plus real C05 identity/room agreement. Phaser sprites currently carry no user-ID metadata; this observer does not independently identify each sprite or certify character-art/reference acceptance. Wire pending-input bookkeeping also does not replace retained product queue proof or actual owning server membership/queue observations.

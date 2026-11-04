@@ -1,0 +1,352 @@
+{
+  "slot": "FE-QA05-ORACLE-SOURCE-20261104T2015Z",
+  "sourceCommit": "0de2faa3f7977a1a60981b5ae7c1208675680abf",
+  "sourcePins": {
+    "frontend/e2e/qa05-functional-recovery/browser-observer.mjs": "c9a8529a1bb433f91c105bf8ec3197f5bb1f47e72a2085f9f46d9d6a353ce3f1",
+    "frontend/e2e/qa05-functional-recovery/checkpoints.mjs": "cea269b4a56150087b0370335834cc7a2d595c3320305e40328f4b9b8bafefc2",
+    "frontend/e2e/qa05-functional-recovery/driver.mjs": "f56c8cfbcfb3917f7fec847351f83a2743a04a2e33d01ad59442d6ff9c7dd110",
+    "frontend/e2e/qa05-functional-recovery/observations.mjs": "865c81e460be475d36463e73cb4b0d11abba54430cc30feb0c95bd897d438257",
+    "frontend/e2e/qa05-functional-recovery/session.mjs": "320f3c0f137dcf5bbae24e0b8874cd3b23d05ff6aa9cc574eb4d63beaaf66757",
+    "frontend/src/world/network/__tests__/qa05-functional-recovery/oracles.test.mjs": "77bd4f3af17780613c41a99c70e2aee114a106eb72e4d978179df1ce97ed8d4e"
+  },
+  "inventory": {
+    "roots": [
+      {
+        "root": "/Users/lhs/Desktop/mcr-worktrees/fe-ref-map",
+        "bytes": 824667320,
+        "entries": 8753
+      },
+      {
+        "root": "/Users/lhs/Desktop/mcr/frontend/node_modules",
+        "bytes": 408263334,
+        "entries": 11564
+      },
+      {
+        "root": "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64",
+        "bytes": 197443390,
+        "entries": 4800
+      },
+      {
+        "root": "/Users/lhs/Desktop/mcr/.git/worktrees/fe-ref-map",
+        "bytes": 2120703,
+        "entries": 10
+      },
+      {
+        "root": "/private/tmp/mcr-fe41-final-harness-check.json",
+        "bytes": 1779,
+        "entries": 1
+      },
+      {
+        "root": "/private/tmp/mcr-fe41-combined-c0de4c8-types.log",
+        "bytes": 0,
+        "entries": 1
+      },
+      {
+        "root": "/private/tmp/mcr-fe41-remote-publication-verified.json",
+        "bytes": 4145,
+        "entries": 1
+      },
+      {
+        "root": "/private/tmp/mcr-fe41-final-scope-check.json",
+        "bytes": 548,
+        "entries": 1
+      },
+      {
+        "root": "/private/tmp/mcr-fe17-native-first",
+        "bytes": 1954,
+        "entries": 1
+      },
+      {
+        "root": "/private/tmp/mcr-fe17-native-delivery",
+        "bytes": 1954,
+        "entries": 1
+      },
+      {
+        "root": "/private/tmp/mcr-fe17-tests-second.log",
+        "bytes": 241,
+        "entries": 1
+      },
+      {
+        "root": "/private/tmp/mcr-fe17-native-final.log",
+        "bytes": 29,
+        "entries": 1
+      },
+      {
+        "root": "/private/tmp/mcr-fe17-boundaries-staged.log",
+        "bytes": 123,
+        "entries": 1
+      },
+      {
+        "root": "/private/tmp/mcr-fe17-origin.log",
+        "bytes": 393,
+        "entries": 1
+      },
+      {
+        "root": "/private/tmp/mcr-fe17-handoff",
+        "bytes": 24781,
+        "entries": 19
+      },
+      {
+        "root": "/private/tmp/mcr-fe17-lint.log",
+        "bytes": 0,
+        "entries": 1
+      },
+      {
+        "root": "/private/tmp/mcr-fe17-tests-first.log",
+        "bytes": 241,
+        "entries": 1
+      },
+      {
+        "root": "/private/tmp/mcr-fe17-plan.log",
+        "bytes": 1435,
+        "entries": 1
+      },
+      {
+        "root": "/private/tmp/mcr-fe17-build-final.log",
+        "bytes": 979,
+        "entries": 1
+      },
+      {
+        "root": "/private/tmp/mcr-fe17-lint-delivery.log",
+        "bytes": 0,
+        "entries": 1
+      },
+      {
+        "root": "/private/tmp/mcr-fe17-runner-lint-final.log",
+        "bytes": 0,
+        "entries": 1
+      },
+      {
+        "root": "/private/tmp/mcr-fe17-boundaries.log",
+        "bytes": 123,
+        "entries": 1
+      },
+      {
+        "root": "/private/tmp/mcr-fe17-native-final",
+        "bytes": 1954,
+        "entries": 1
+      },
+      {
+        "root": "/private/tmp/mcr-fe17-boundaries-delivery.log",
+        "bytes": 123,
+        "entries": 1
+      },
+      {
+        "root": "/private/tmp/mcr-fe17-build-first.log",
+        "bytes": 173,
+        "entries": 1
+      },
+      {
+        "root": "/private/tmp/mcr-fe17-tests-delivery.log",
+        "bytes": 241,
+        "entries": 1
+      },
+      {
+        "root": "/private/tmp/mcr-fe17-tests-final.log",
+        "bytes": 241,
+        "entries": 1
+      },
+      {
+        "root": "/private/tmp/mcr-fe17-room-publication-red.log",
+        "bytes": 1422,
+        "entries": 1
+      },
+      {
+        "root": "/private/tmp/mcr-fe17-build-delivery.log",
+        "bytes": 979,
+        "entries": 1
+      },
+      {
+        "root": "/private/tmp/mcr-fe17-native-delivery.log",
+        "bytes": 29,
+        "entries": 1
+      },
+      {
+        "root": "/private/tmp/mcr-fe17-native-first.log",
+        "bytes": 29,
+        "entries": 1
+      },
+      {
+        "root": "/private/tmp/mcr-fe17-install.log",
+        "bytes": 1103,
+        "entries": 1
+      },
+      {
+        "root": "/private/tmp/mcr-qa05-source-offer-2015.json",
+        "bytes": 576,
+        "entries": 1
+      },
+      {
+        "root": "/private/tmp/mcr-qa05-integrated-native.log",
+        "bytes": 41,
+        "entries": 1
+      },
+      {
+        "root": "/private/tmp/mcr-qa05-pair-runtime32-202611041135Z-nk4ixk3v",
+        "bytes": 58964,
+        "entries": 4
+      },
+      {
+        "root": "/private/tmp/mcr-qa05-pair80-runtime50-vzar43ky",
+        "bytes": 227211,
+        "entries": 8
+      },
+      {
+        "root": "/private/tmp/mcr-qa05-integration-evidence",
+        "bytes": 3612430,
+        "entries": 7
+      },
+      {
+        "root": "/private/tmp/mcr-qa05-pair-copied-202611041106Z-3xf19k8y",
+        "bytes": 67346,
+        "entries": 7
+      },
+      {
+        "root": "/private/tmp/mcr-qa05-pair80-runtime51-hn2eqqbh",
+        "bytes": 267314,
+        "entries": 9
+      },
+      {
+        "root": "/private/tmp/mcr-qa05-owner-control-source-20261105",
+        "bytes": 29576,
+        "entries": 4
+      },
+      {
+        "root": "/private/tmp/mcr-qa05-checkout-before.json",
+        "bytes": 597,
+        "entries": 1
+      }
+    ],
+    "historyBytes": 1672629000,
+    "historyObjects": 42904,
+    "bytes": 3109432821,
+    "entries": 68119
+  },
+  "offer": {
+    "issuer": "01a1a21d-39ec-7912-84cb-910058e7a110",
+    "acceptance": "ACCEPT",
+    "mode": "SOURCE",
+    "slot": "FE-QA05-ORACLE-SOURCE-20261104T2015Z",
+    "sourceCommit": "0de2faa3f7977a1a60981b5ae7c1208675680abf",
+    "workByUTC": "2026-11-04T20:17:08+00:00",
+    "cleanupByUTC": "2026-11-04T20:18:08+00:00",
+    "startFloorBytes": 11811160064,
+    "otherReservedBytes": 2692743168,
+    "caps": {
+      "wholeBytes": 4294967296,
+      "entries": 98304,
+      "newBytes": 67108864,
+      "temporaryBytes": 33554432,
+      "durableBytes": 8388608,
+      "rssBytes": 1610612736,
+      "processes": 6
+    }
+  },
+  "commands": [
+    {
+      "label": "oracles",
+      "argv": [
+        "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node",
+        "--test",
+        "/Users/lhs/Desktop/mcr-worktrees/fe-ref-map/frontend/src/world/network/__tests__/qa05-functional-recovery/oracles.test.mjs"
+      ],
+      "exit": 0
+    },
+    {
+      "label": "lint",
+      "argv": [
+        "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node",
+        "/Users/lhs/Desktop/mcr/frontend/node_modules/oxlint/bin/oxlint",
+        "--deny-warnings",
+        "frontend/e2e/qa05-functional-recovery/browser-observer.mjs",
+        "frontend/e2e/qa05-functional-recovery/checkpoints.mjs",
+        "frontend/e2e/qa05-functional-recovery/driver.mjs",
+        "frontend/e2e/qa05-functional-recovery/observations.mjs",
+        "frontend/e2e/qa05-functional-recovery/session.mjs",
+        "frontend/src/world/network/__tests__/qa05-functional-recovery/oracles.test.mjs"
+      ],
+      "exit": 0
+    },
+    {
+      "label": "syntax-0",
+      "argv": [
+        "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node",
+        "--check",
+        "frontend/e2e/qa05-functional-recovery/browser-observer.mjs"
+      ],
+      "exit": 0
+    },
+    {
+      "label": "syntax-1",
+      "argv": [
+        "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node",
+        "--check",
+        "frontend/e2e/qa05-functional-recovery/checkpoints.mjs"
+      ],
+      "exit": 0
+    },
+    {
+      "label": "syntax-2",
+      "argv": [
+        "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node",
+        "--check",
+        "frontend/e2e/qa05-functional-recovery/driver.mjs"
+      ],
+      "exit": 0
+    },
+    {
+      "label": "syntax-3",
+      "argv": [
+        "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node",
+        "--check",
+        "frontend/e2e/qa05-functional-recovery/observations.mjs"
+      ],
+      "exit": 0
+    },
+    {
+      "label": "syntax-4",
+      "argv": [
+        "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node",
+        "--check",
+        "frontend/e2e/qa05-functional-recovery/session.mjs"
+      ],
+      "exit": 0
+    },
+    {
+      "label": "syntax-5",
+      "argv": [
+        "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node",
+        "--check",
+        "frontend/src/world/network/__tests__/qa05-functional-recovery/oracles.test.mjs"
+      ],
+      "exit": 0
+    },
+    {
+      "label": "whitespace",
+      "argv": [
+        "git",
+        "diff",
+        "--check",
+        "a0cb4396d2fe5c333e7863aa5bf4c8b88a357ac9"
+      ],
+      "exit": 0
+    },
+    {
+      "label": "plan",
+      "argv": [
+        "python3",
+        "scripts/mcr/check-plan.py"
+      ],
+      "exit": 0
+    }
+  ],
+  "status": "PASS",
+  "rssPeak": 172769280,
+  "processPeak": 3,
+  "newPeak": 3594,
+  "minimumFree": 18652545024,
+  "qualification": "Synthetic changed-source checks only; combined actual runtime NOT_RUN.",
+  "temporaryAbsent": true,
+  "ownedProcessGroupsAbsent": true,
+  "finishedUTC": "2026-11-04T20:15:21.805456+00:00"
+}

@@ -1,0 +1,29 @@
+✔ complete current pair plus actual matching renderer converges; summary omits identity and protected values (1.2535ms)
+✔ an actual delivered stream gap withdraws the roster until a full correlated fresh baseline (0.49775ms)
+✔ late messages and close callbacks from an obsolete socket cannot replace the new baseline (0.154625ms)
+✔ bare 4409 is not a version reason; a typed BACKPRESSURE reason stays distinct (0.11625ms)
+✔ foreign identity or event never becomes the current evidence baseline (0.643125ms)
+✔ complete motion anchors update self even without an upsert; wire ACK bookkeeping is bounded (0.295541ms)
+✔ same counts do not conceal renderer ghosts, wrong coordinates or duplicate games (0.642167ms)
+✔ disposal withdraws cached observations and ignores later frames (0.091042ms)
+✔ checkpoint arming and executed after-observation are distinct, awaitable, correlated stages (1.4705ms)
+✔ read-only IN04 observation cannot masquerade as a QA05 fault controller (0.19125ms)
+✔ a supplied binding/configuration is not an owner execution proof (0.146042ms)
+✔ foreign candidate rejects the owner checkpoint and cannot be retried (0.15225ms)
+✔ foreign environmentId rejects the owner checkpoint and cannot be retried (0.151292ms)
+✔ foreign eventId rejects the owner checkpoint and cannot be retried (0.112541ms)
+✔ foreign windowId rejects the owner checkpoint and cannot be retried (0.097167ms)
+✔ foreign expiresAt rejects the owner checkpoint and cannot be retried (0.095458ms)
+✔ expired, missing, unknown and private-expanded interfaces fail before invoking owner actions (0.224375ms)
+✔ an uncertain action never silently retries or overlaps another owner mutation (0.147417ms)
+✔ restart cannot skip producer-ready or run without the actual owner time reserve (0.157125ms)
+✔ driver awaits genuine producer-ready before one reconnect and compares captured old stream/epoch values (3.701459ms)
+✔ failed producer readiness aborts the combined driver without reconnecting or claiming PASS (0.218291ms)
+ℹ tests 21
+ℹ suites 0
+ℹ pass 21
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 53.329542

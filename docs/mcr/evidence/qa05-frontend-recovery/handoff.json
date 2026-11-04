@@ -1,0 +1,52 @@
+{
+  "status": "SOURCE_VALIDATED_HANDOFF_RUNTIME_NOT_RUN",
+  "sourceCommit": "0de2faa3f7977a1a60981b5ae7c1208675680abf",
+  "base": "a0cb4396d2fe5c333e7863aa5bf4c8b88a357ac9",
+  "branch": "codex/mcr-fe-QA05-functional-recovery",
+  "publisher": "Root153 01a1a153-1227-7e72-801f-a2a6b91981e1",
+  "scope": [
+    "frontend/e2e/qa05-functional-recovery/**",
+    "frontend/src/world/network/__tests__/qa05-functional-recovery/**",
+    "docs/mcr/qa/qa05-frontend-recovery.md",
+    "docs/mcr/evidence/qa05-frontend-recovery/**"
+  ],
+  "sourceChecks": {
+    "syntheticTests": 21,
+    "failures": 0,
+    "lintExit": 0,
+    "syntaxChecks": 6,
+    "whitespaceExit": 0,
+    "planExit": 0,
+    "supervisor": "PASS",
+    "guardian": "PASS"
+  },
+  "releaseUTC": "2026-11-04T20:15:22.064940+00:00",
+  "resourcesHeld": 0,
+  "publication": "Requested directly from named publishing developer, normal non-force master publication; no king/SL review or acknowledgment. Publication not yet observed.",
+  "originalQA05": "IN_PROGRESS; actual combined default-App/Rust/Auth recovery/convergence remains NOT_RUN. Goal stays active. No requirement removed; QA08 stress deferred.",
+  "remaining": [
+    "Root shared transparent real WS fault control composition",
+    "Actual managed child/owner control attachment and current same-candidate two-App-principal descriptor",
+    "Fresh independently guarded finite actual native/producer window",
+    "Run actual combined required fault boundaries, own fixes and evidence, direct publication and exact clean STOP scope return"
+  ],
+  "evidenceSha256": {
+    "docs/mcr/evidence/qa05-frontend-recovery/checkpoint-abi.json": "4c9479271abb443ef480bf108485d154d445127b4a6694499268903c81eb4924",
+    "docs/mcr/evidence/qa05-frontend-recovery/custody.json": "1c1cc82ff65933f3d6c3ba1b88002246608d3f4f7de0a8680c5879d428155067",
+    "docs/mcr/evidence/qa05-frontend-recovery/guardian.py": "ccb9d755d7864af50f220decb05f9f9aa1cfd7dc8b11b177d364e2d997e2693f",
+    "docs/mcr/evidence/qa05-frontend-recovery/qualify-source.py": "d631f831880ddd1a8ee6b3d085cc9fd3d4a09a7d50b719ba40f1fd7285a51df4",
+    "docs/mcr/evidence/qa05-frontend-recovery/readset.json": "5b384cb49f443b2b701ebdc49685d982ff4bd0adc0e058a295361e6660111f7a",
+    "docs/mcr/evidence/qa05-frontend-recovery/source-01/guardian.json": "1d6518bd4bc589c8ea9953b97a33d39be4e8217e61cb07e225c61c813ed74065",
+    "docs/mcr/evidence/qa05-frontend-recovery/source-01/lint.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "docs/mcr/evidence/qa05-frontend-recovery/source-01/oracles.log": "aa57b333e73cd7f49ab476496cd6f8fb4cff410f957f91124d2ffb888c6e4c66",
+    "docs/mcr/evidence/qa05-frontend-recovery/source-01/plan.log": "88606f33d640a29811a4cbdc9748fc0f1e16225b81ad7e697deaf3b20c9b86e1",
+    "docs/mcr/evidence/qa05-frontend-recovery/source-01/supervisor.json": "3f28c3ec2abf5515028389df27c570af39e8f4342bd11adf985b6e4a22a334cb",
+    "docs/mcr/evidence/qa05-frontend-recovery/source-01/syntax-0.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "docs/mcr/evidence/qa05-frontend-recovery/source-01/syntax-1.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "docs/mcr/evidence/qa05-frontend-recovery/source-01/syntax-2.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "docs/mcr/evidence/qa05-frontend-recovery/source-01/syntax-3.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "docs/mcr/evidence/qa05-frontend-recovery/source-01/syntax-4.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "docs/mcr/evidence/qa05-frontend-recovery/source-01/syntax-5.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "docs/mcr/evidence/qa05-frontend-recovery/source-01/whitespace.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  }
+}
