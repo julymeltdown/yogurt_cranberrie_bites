@@ -504,6 +504,17 @@ async fn native_all_events_incoming_outgoing_retry_withdrawal_tombstone_and_exac
     .fetch_one(&f.pool)
     .await?;
     assert!(!completed);
+    let remaining_requests: i64 = sqlx::query_scalar(
+        "select count(*) from concert_social_requests where $1 in(requester_id,recipient_id) and state='APPROVED'",
+    )
+    .bind(f.user)
+    .fetch_one(&f.pool)
+    .await?;
+    assert_eq!(
+        remaining_requests,
+        140 - 32,
+        "one bounded request page only"
+    );
     let cascade = sqlx::query("delete from concert_events where event_id=$1")
         .bind(f.events[0])
         .execute(&f.pool)
@@ -535,6 +546,20 @@ async fn native_all_events_incoming_outgoing_retry_withdrawal_tombstone_and_exac
     let denied=sqlx::query("update concert_social_handles set key_id='bad',nonce=decode(repeat('01',12),'hex'),ciphertext=decode(repeat('01',20),'hex'),revision=revision+1 where event_id=$1 and user_id=$2")
         .bind(f.events[0]).bind(f.user).execute(&mut *tx).await;
     assert!(denied.is_err());
+    tx.rollback().await?;
+    let mut tx = f.pool.begin().await?;
+    sqlx::query("select set_config('mcr.relationship_authority_until',(clock_timestamp()+interval '4 seconds')::text,true)").execute(&mut *tx).await?;
+    let denied = sqlx::query(
+        "insert into concert_social_handles(event_id,user_id,platform) values($1,$2,'X')",
+    )
+    .bind(f.events[0])
+    .bind(f.user)
+    .execute(&mut *tx)
+    .await;
+    assert!(
+        denied.is_err(),
+        "new platform cannot bypass the permanent fence"
+    );
     tx.rollback().await?;
     f.publisher.fail.store(false, Ordering::SeqCst);
     let ack = f.finish(&command).await?;
@@ -586,6 +611,10 @@ async fn native_cancellation_keeps_source_pending_and_does_not_ack_empty_registr
     )
     .await
     .is_err());
+    assert!(
+        f.publisher.calls.load(Ordering::SeqCst) > 0,
+        "cancellation must reach actual held publication after durable progress"
+    );
     f.publisher.hold.store(false, Ordering::SeqCst);
     let empty = Arc::new(Publisher::new([]));
     assert_eq!(
@@ -646,15 +675,17 @@ async fn native_actual_auth_source_rejects_wrong_subject_retention_and_undeleted
     // round back, including the common fence and leaf progress.
     let mut disappearing = AuthRepositoryTestTransport::new(f.auth.clone());
     disappearing.reject_after = Some(1);
+    let authority = Arc::new(disappearing);
     let disappearing = SharingDeletion::new(
         f.pool.clone(),
-        Arc::new(disappearing),
+        authority.clone(),
         SocialInvalidationSink::new(f.pool.clone(), f.publisher.clone()),
     );
     assert_eq!(
         disappearing.apply(command.clone(), deadline()).await.err(),
         Some(DeletionFailure::Unavailable)
     );
+    assert_eq!(authority.calls.load(Ordering::SeqCst), 2);
     let remaining: i64 = sqlx::query_scalar(
         "select count(*) from concert_world_account_deletion_fences where user_id=$1",
     )
