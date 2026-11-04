@@ -162,7 +162,7 @@ BEGIN
   END IF;
   SELECT count(*) INTO count_value FROM public.concert_event_cleanup_owner_effects WHERE operation_id=NEW.operation_id;
   IF NEW.processed<>count_value OR count_value>NEW.batch_limit
-   OR NEW.cursor_out IS DISTINCT FROM CASE WHEN public.concert_event_cleanup_owner_remaining(NEW.event_id,NEW.owner) THEN int8send(NEW.ordinal+1) ELSE NULL END
+   OR NEW.cursor_out IS DISTINCT FROM (CASE WHEN public.concert_event_cleanup_owner_remaining(NEW.event_id,NEW.owner) THEN int8send(NEW.ordinal+1) ELSE NULL END)
    OR (NEW.cursor_out IS NOT NULL AND NEW.processed=0) THEN
    RAISE EXCEPTION 'unproved cleanup page count or convergence' USING ERRCODE='23514';
   END IF;
@@ -303,7 +303,7 @@ BEGIN
   OR (p.job_id,p.event_id,p.actor_id,p.step,p.owner,p.ordinal,p.binding,p.receipt_id,p.processed)
    IS DISTINCT FROM (NEW.job_id,NEW.event_id,NEW.actor_id,NEW.step,NEW.owner,NEW.ordinal,NEW.binding,NEW.receipt_id,NEW.processed)
   OR p.cursor_in IS DISTINCT FROM NEW.cursor_in OR p.cursor_out IS DISTINCT FROM NEW.cursor_out
-  OR NEW.owner_revision<>1 OR NEW.outcome<>CASE WHEN p.cursor_out IS NULL THEN 'CONVERGED' ELSE 'PAGE' END THEN
+  OR NEW.owner_revision<>1 OR NEW.outcome<>(CASE WHEN p.cursor_out IS NULL THEN 'CONVERGED' ELSE 'PAGE' END) THEN
   RAISE EXCEPTION 'cleanup append lacks exact native witness' USING ERRCODE='23514';
  END IF;
  RETURN NEW;
