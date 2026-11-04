@@ -1,7 +1,7 @@
-// Deterministic registration of corrected ART 8fcd1287496aedbde12ef0d2e426855f8f8ec4d6.
+// Deterministic registration of corrected ART 94c47a8b3219efc76a4be9646014cfeaad2f1957.
 import resources from './resources.json'
 import { compositionVersion } from './semantics'
 import type { CompositionRegistration } from './contract'
 
 export const compositionRegistration = { ...resources, version: compositionVersion,
-  presentationHash: 'sha256:9fcddca91030aaff0f3c3efaa1018fdeddb4708c56c9eea80024deb0bee9f522' } as CompositionRegistration
+  presentationHash: 'sha256:4922af8c4761014a2dd672ec52610ab9abd394be0bcc0b29e7780421167600ca' } as CompositionRegistration

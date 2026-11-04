@@ -23,6 +23,7 @@ export function createCompositionModel(document: unknown, registration: Composit
   const labels = Object.freeze(serviceSemantics.map(semantic => {
     const anchor = parsed.serviceLabelAnchors.find(a => a.key === semantic.key)!
     return Object.freeze({ ...semantic, ...anchor,
+      // Stable transparent hit rectangle, independent of compact measured paint.
       rect: Object.freeze({ x: anchor.x - anchor.width / 2, y: anchor.y - 39, width: anchor.width, height: 78 }) })
   }))
   function matches(identity: CompositionIdentity) {

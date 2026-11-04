@@ -7,6 +7,28 @@ type Polygon = readonly (readonly number[])[]
 const icons = style.icons as Record<string, readonly Polygon[]>, cutouts = style.icon_cutouts as Record<string, readonly Polygon[]>
 const family = 'MCR Map4 Composition Labels'
 
+type LabelMetrics = Pick<TextMetrics, 'width'> & Partial<Pick<TextMetrics,
+  'actualBoundingBoxLeft' | 'actualBoundingBoxRight' | 'actualBoundingBoxAscent' | 'actualBoundingBoxDescent'>>
+/** Paint occupies measured ink space; source hit/exclusion rectangles remain independent. */
+export function compositionLabelPaintRect(label: CompositionModel['labels'][number], metrics: LabelMetrics) {
+  const s = style.style
+  requireMap(s.paint_mode === 'MEASURED_CENTERED_V1' && Number.isFinite(metrics.width) && metrics.width > 0)
+  const metric = (value: number | undefined, fallback: number) => {
+    const result = value ?? fallback; requireMap(Number.isFinite(result)); return result
+  }
+  const left = Math.max(0, metric(metrics.actualBoundingBoxLeft, 0))
+  const right = Math.max(metrics.width, metric(metrics.actualBoundingBoxRight, metrics.width))
+  const ascent = metric(metrics.actualBoundingBoxAscent, s.font_size * .8)
+  const descent = metric(metrics.actualBoundingBoxDescent, s.font_size * .2)
+  const width = Math.ceil(left + right + s.padding * 2 + (label.icon ? s.icon_cell : 0) + s.text_metric_allowance)
+  const height = s.single_height
+  requireMap(width <= label.rect.width && height <= label.rect.height
+    && ascent + descent > 0 && ascent + descent <= height - s.padding * 2 && s.icon_size + 6 <= height - s.border_width * 2)
+  const x = label.x - width / 2, y = label.y - height / 2
+  return Object.freeze({ x, y, width, height, textX: x + s.padding + (label.icon ? s.icon_cell : 0) + left,
+    textBaseline: y + (height + ascent - descent) / 2 })
+}
+
 /** Independent lease over the retained original font/icons; no old layout or World asset reader. */
 export async function prepareCompositionLabels(model: CompositionModel, signal: AbortSignal, options: { origin: string; fetch?: typeof fetch }) {
   requireMap(new URL(options.origin).origin === options.origin)
@@ -45,8 +67,7 @@ export async function prepareCompositionLabels(model: CompositionModel, signal: 
       try {
         context.font = `${s.font_size}px "${family}"`; context.textAlign = 'left'; context.textBaseline = 'alphabetic'
         for (const label of model.labels) {
-          const r = label.rect, b = s.border_width
-          requireMap(context.measureText(label.label).width <= r.width - s.padding * 2 - (label.icon ? s.icon_cell : 0) + s.text_metric_allowance)
+          const r = compositionLabelPaintRect(label, context.measureText(label.label)), b = s.border_width
           context.fillStyle = s.border_fill; context.fillRect(r.x, r.y, r.width, r.height)
           context.fillStyle = s.paper_fill; context.fillRect(r.x + b, r.y + b, r.width - b * 2, r.height - b * 2)
           if (label.icon) {
@@ -57,7 +78,7 @@ export async function prepareCompositionLabels(model: CompositionModel, signal: 
             for (const shape of cutouts[label.icon] ?? []) polygon(transform(shape), s.icon_paper)
           }
           context.fillStyle = s.text_fill
-          context.fillText(label.label, r.x + s.padding + (label.icon ? s.icon_cell : 0), r.y + (r.height - s.line_height) / 2 + 32)
+          context.fillText(label.label, r.textX, r.textBaseline)
         }
       } finally { context.restore() }
     } }
