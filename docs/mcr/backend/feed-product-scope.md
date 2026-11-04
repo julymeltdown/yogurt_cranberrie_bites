@@ -122,6 +122,24 @@ Full original-request/scope/HTTP behavior still needs Root's existing actual IN0
 consumer, including real restricted/deleted/blocked controls. Prior passing native
 component evidence is preserved below and is not evidence for the new adapter.
 
+### Published source and denied build preflight
+
+Source commits are `d4224d1ef4baeeded29a89dbdd1f7de22b2b771b` (adapter) and
+`11004823ec95c681cab5aa64a0d77f6712989c91` (raw-fragment review fix).
+Both were non-force published to `origin/codex/mcr-feed-product-scope`; live
+`git ls-remote --heads` verified the branch at `11004823` before this receipt.
+
+The offered round `FEED-PRODUCT-BACKEND-202611041043Z` did **not** reach ACCEPT.
+At 2026-11-04 10:44:17 UTC the clean source preflight measured 16,931,356,672
+free bytes, below the 17,179,869,184-byte (16 GiB) start floor by 248,512,512
+bytes. No target was inspected, Cargo started, external round created, source
+copied, or executable run. External round carry was zero; the four leased source
+files totaled 32,655 bytes. The failure was returned to Backend SL for the fresh
+queue; a new eligible allocation is required. No lease or readiness is inferred
+from the offer. The intended matching build environment leaves global RUSTFLAGS
+unset and uses dev/test profile debug=0, incremental=0, Rust 1.88, jobs=2,
+locked/offline. All five new executable checks remain NOT_RUN.
+
 ## Qualified lineage intake order
 
 Merge the published base `03c54fa3` preserving history, then integrate this adapter
