@@ -181,45 +181,11 @@ impl SocialDeliveryRuntime {
     }
 
     async fn claim(&self) -> anyhow::Result<Vec<Delivery>> {
-        let source = source_predicate(self.worker.world.is_some());
-        let mut tx = self.worker.pool.begin().await.map_err(|_| unavailable())?;
-        bound(&mut tx).await?;
-        // Apply exhaustion only to the same sealed, explicitly owned families.
-        // Foreign/unknown/block/canonical rows retain state AND attempt budget.
-        let exhausted = format!("with picked as (select o.outbox_id from public.concert_outbox o join public.concert_command_receipts r on r.receipt_id=o.receipt_id where {source} and o.state='LEASED' and o.lease_until<=clock_timestamp() and o.attempts>=8 order by o.lease_until,o.outbox_id for update of o skip locked limit $1) update public.concert_outbox o set state='DEAD',lease_token=null,lease_until=null,terminal_at=clock_timestamp(),last_error='ATTEMPTS_EXHAUSTED' from picked p where o.outbox_id=p.outbox_id");
-        sqlx::query(&exhausted)
-            .bind(BATCH)
-            .execute(&mut *tx)
-            .await
-            .map_err(|_| unavailable())?;
-        let claim = format!("with picked as (select o.outbox_id from public.concert_outbox o join public.concert_command_receipts r on r.receipt_id=o.receipt_id where {source} and o.attempts<8 and ((o.state='READY' and o.available_at<=clock_timestamp()) or (o.state='LEASED' and o.lease_until<=clock_timestamp())) order by o.available_at,o.created_at,o.outbox_id for update of o skip locked limit $1) update public.concert_outbox o set state='LEASED',attempts=o.attempts+1,lease_token=$2,lease_until=clock_timestamp()+interval '30 seconds' from picked p where o.outbox_id=p.outbox_id returning o.*");
-        let rows = sqlx::query(&claim)
-            .bind(BATCH)
-            .bind(Uuid::new_v4())
-            .fetch_all(&mut *tx)
-            .await
-            .map_err(|_| unavailable())?;
-        let mut deliveries = Vec::with_capacity(rows.len());
-        for row in rows {
-            deliveries.push(Delivery {
-                id: row.try_get("outbox_id").map_err(|_| unavailable())?,
-                receipt: row.try_get("receipt_id").map_err(|_| unavailable())?,
-                event: row.try_get("event_id").map_err(|_| unavailable())?,
-                kind: InvalidationKind::ResourceInvalidated,
-                reference: SafeReference {
-                    resource: row.try_get("resource_id").map_err(|_| unavailable())?,
-                    revision: row
-                        .try_get("resource_revision")
-                        .map_err(|_| unavailable())?,
-                }
-                .validate()
-                .map_err(|_| unavailable())?,
-                attempt: row.try_get("attempts").map_err(|_| unavailable())?,
-                lease: row.try_get("lease_token").map_err(|_| unavailable())?,
-            });
-        }
-        tx.commit().await.map_err(|_| unavailable())?;
-        Ok(deliveries)
+        claim_scoped(
+            &self.worker.pool,
+            self.worker.world.as_ref().map(|world| world.event_id()),
+        )
+        .await
     }
 }
 
@@ -233,7 +199,7 @@ impl DeliveryWorker {
         bound(&mut tx)
             .await
             .map_err(|_| DeliveryFailure::Retryable)?;
-        let source = source_predicate(self.world.is_some());
+        let source = source_predicate("$8");
         let query = format!("select r.operation_id from public.concert_outbox o join public.concert_command_receipts r on r.receipt_id=o.receipt_id where {source} and o.outbox_id=$1 and o.receipt_id=$2 and o.event_id=$3 and o.resource_id=$4 and o.resource_revision=$5 and o.state='LEASED' and o.lease_token=$6 and o.attempts=$7 and o.lease_until>clock_timestamp()+interval '10 seconds'");
         let op: Option<String> = sqlx::query_scalar(&query)
             .bind(d.id)
@@ -243,6 +209,7 @@ impl DeliveryWorker {
             .bind(d.reference.revision)
             .bind(d.lease)
             .bind(d.attempt)
+            .bind(self.world.as_ref().map(|world| world.event_id()))
             .fetch_optional(&mut *tx)
             .await
             .map_err(|_| DeliveryFailure::Retryable)?;
@@ -266,6 +233,61 @@ impl DeliveryWorker {
     }
 }
 
+async fn claim_scoped(pool: &PgPool, world_event: Option<Uuid>) -> anyhow::Result<Vec<Delivery>> {
+    let source = source_predicate("$2");
+    let mut tx = pool.begin().await.map_err(|_| unavailable())?;
+    bound(&mut tx).await?;
+    // Apply exhaustion only to the same sealed, explicitly owned families.
+    // Foreign/unknown/block/canonical rows retain state AND attempt budget.
+    let exhausted = format!("with picked as (select o.outbox_id from public.concert_outbox o join public.concert_command_receipts r on r.receipt_id=o.receipt_id where {source} and o.state='LEASED' and o.lease_until<=clock_timestamp() and o.attempts>=8 order by o.lease_until,o.outbox_id for update of o skip locked limit $1) update public.concert_outbox o set state='DEAD',lease_token=null,lease_until=null,terminal_at=clock_timestamp(),last_error='ATTEMPTS_EXHAUSTED' from picked p where o.outbox_id=p.outbox_id");
+    sqlx::query(&exhausted)
+        .bind(BATCH)
+        .bind(world_event)
+        .execute(&mut *tx)
+        .await
+        .map_err(|_| unavailable())?;
+    let source = source_predicate("$3");
+    let claim = format!("with picked as (select o.outbox_id from public.concert_outbox o join public.concert_command_receipts r on r.receipt_id=o.receipt_id where {source} and o.attempts<8 and ((o.state='READY' and o.available_at<=clock_timestamp()) or (o.state='LEASED' and o.lease_until<=clock_timestamp())) order by o.available_at,o.created_at,o.outbox_id for update of o skip locked limit $1) update public.concert_outbox o set state='LEASED',attempts=o.attempts+1,lease_token=$2,lease_until=clock_timestamp()+interval '30 seconds' from picked p where o.outbox_id=p.outbox_id returning o.*");
+    let rows = sqlx::query(&claim)
+        .bind(BATCH)
+        .bind(Uuid::new_v4())
+        .bind(world_event)
+        .fetch_all(&mut *tx)
+        .await
+        .map_err(|_| unavailable())?;
+    let mut deliveries = Vec::with_capacity(rows.len());
+    for row in rows {
+        deliveries.push(Delivery {
+            id: row.try_get("outbox_id").map_err(|_| unavailable())?,
+            receipt: row.try_get("receipt_id").map_err(|_| unavailable())?,
+            event: row.try_get("event_id").map_err(|_| unavailable())?,
+            kind: InvalidationKind::ResourceInvalidated,
+            reference: SafeReference {
+                resource: row.try_get("resource_id").map_err(|_| unavailable())?,
+                revision: row
+                    .try_get("resource_revision")
+                    .map_err(|_| unavailable())?,
+            }
+            .validate()
+            .map_err(|_| unavailable())?,
+            attempt: row.try_get("attempts").map_err(|_| unavailable())?,
+            lease: row.try_get("lease_token").map_err(|_| unavailable())?,
+        });
+    }
+    tx.commit().await.map_err(|_| unavailable())?;
+    Ok(deliveries)
+}
+
+// Test invokes the exact production SQL without constructing a fake World owner.
+// This can prove claim scope, never publication, World effects or queue ACK.
+#[cfg(test)]
+pub(crate) async fn scoped_claim_for_test(
+    pool: &PgPool,
+    event: Uuid,
+) -> anyhow::Result<Vec<Delivery>> {
+    claim_scoped(pool, Some(event)).await
+}
+
 fn requires_notification(op: &str) -> bool {
     matches!(
         op,
@@ -281,13 +303,9 @@ fn requires_notification(op: &str) -> bool {
 // retained even after receipt retirement and prevents receipt-only fabrication.
 const SOURCE: &str = "o.kind='RESOURCE_INVALIDATED' and r.event_id=o.event_id and r.target_id=o.resource_id and r.state in ('SUCCEEDED','RETIRED') and (r.state='RETIRED' or (r.resource_id=o.resource_id and r.resource_revision=o.resource_revision and r.result_status=case when r.operation_id='createConcertSocialRequest' then 201 else 200 end)) and exists(select 1 from public.concert_social_policy_signals s where s.source_outbox=o.outbox_id and s.source_receipt=r.receipt_id and s.source_operation=r.operation_id and s.event_id=o.event_id and s.source_resource=o.resource_id and s.source_revision=o.resource_revision)";
 
-fn source_predicate(world_ready: bool) -> String {
-    let world = if world_ready {
-        ", 'blockConcertUser','unblockConcertUser'"
-    } else {
-        ""
-    };
-    format!("{SOURCE} and r.operation_id in ('setConcertHandle','removeConcertHandle','setConcertIntro','publishConcertIntro','closeConcertIntro','createConcertSocialRequest','decideConcertSocialRequest','cancelConcertSocialRequest','revokeConcertSocialRequest'{world})")
+fn source_predicate(event_bind: &'static str) -> String {
+    // The caller passes a literal SQL parameter marker, never command input.
+    format!("{SOURCE} and (r.operation_id in ('setConcertHandle','removeConcertHandle','setConcertIntro','publishConcertIntro','closeConcertIntro','createConcertSocialRequest','decideConcertSocialRequest','cancelConcertSocialRequest','revokeConcertSocialRequest') or (r.operation_id in ('blockConcertUser','unblockConcertUser') and o.event_id={event_bind}))")
 }
 
 async fn bound(c: &mut PgConnection) -> anyhow::Result<()> {
