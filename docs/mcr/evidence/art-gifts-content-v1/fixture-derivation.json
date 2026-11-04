@@ -1,0 +1,24 @@
+{
+  "usage": "TEST_ONLY_REFERENCE_FIXTURE",
+  "productionBinding": null,
+  "sourceCommit": "654974128a27c948a449fa9e58f466b8e612361d",
+  "files": [
+    {"path": "frontend/src/features/gift-discovery/__tests__/fixtures/data.ts", "gitBlob": "ee0544a17dd41050fb3842056102ed1610cf28af", "use": "Imported fixture/controller/giveaway helper and uid; retained identity/context/clock/quantities."},
+    {"path": "frontend/src/features/gift-discovery/__tests__/reference-native/root-touch-data.ts", "gitBlob": "234cd8cfd2745bf017780d9dae4385be60715117", "use": "Exact row UUIDs uid(100), uid(99), uid(98) and existing three motif titles; no edits to the original fixture."},
+    {"path": "contracts/fixtures/domain/giveaway-management.json", "gitBlob": "622c3901d790d7199e288a25671fdcc530ae8900", "use": "Imported through giveaway helper: exact quantity_total=3, available=1, owner, event, pickup and place fields; synthetic contract fixture, not new inventory."},
+    {"path": "frontend/src/app/media-entry/__tests__/preview.tsx", "gitBlob": "0c033f53616c7e8bb930f32f6122a85b1b92b9ec", "use": "Retained explicit synthetic GIVEAWAY media ID 00000000-0000-4000-8000-000000000004, not a production media identity."}
+  ],
+  "mapping": {
+    "kind": "Fixture renderer only, composite existing giveawayId plus existing mediaId",
+    "mediaId": "00000000-0000-4000-8000-000000000004",
+    "rows": [
+      {"giveawayId": "00000000-0000-4000-8000-000000000064", "file": "sticker-pack.svg"},
+      {"giveawayId": "00000000-0000-4000-8000-000000000063", "file": "hand-banner.svg"},
+      {"giveawayId": "00000000-0000-4000-8000-000000000062", "file": "diy-buttons.svg"}
+    ],
+    "unknownMapping": "return null; no generic fallback",
+    "scope": "Only the retained fixture auth context; no production requests, catalog edits, authorization bypass or RootMediaView edits.",
+    "limitation": "The retained one media fixture ID is reused under three existing row identities for image-fit inspection. This composite renderer is not proof of production media identity consistency or shared-cache isolation. Root must provide genuine approved per-item media mapping for production."
+  },
+  "native": {"360": "NOT_RUN", "390": "NOT_RUN", "430": "NOT_RUN"}
+}

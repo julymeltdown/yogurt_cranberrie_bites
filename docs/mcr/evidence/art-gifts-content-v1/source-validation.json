@@ -1,0 +1,58 @@
+{
+  "schemaVersion": 1,
+  "task": "ART-GIFTS-CONTENT-02",
+  "usage": "TEST_ONLY_REFERENCE_FIXTURE",
+  "method": "Python stdlib XML/JSON and source inspection",
+  "renderedInspection": "NOT_RUN",
+  "nativeQualification": "NOT_RUN",
+  "productionBinding": "NOT_READY",
+  "assets": [
+    {
+      "file": "diy-buttons.svg",
+      "bytes": 1300,
+      "sha256": "d16d01d7822192687496477dc2946b7f4db7e42059512c86408d12ba24cb8d90",
+      "viewBox": [
+        0,
+        0,
+        256,
+        256
+      ],
+      "elementCount": 16
+    },
+    {
+      "file": "hand-banner.svg",
+      "bytes": 1054,
+      "sha256": "2e1229c95ba56831980295f98f4059f0e9a85533df44be524387b8be0c4b41eb",
+      "viewBox": [
+        0,
+        0,
+        256,
+        256
+      ],
+      "elementCount": 8
+    },
+    {
+      "file": "sticker-pack.svg",
+      "bytes": 1621,
+      "sha256": "067b2f4153158f1a914a2b257c539d954a26d82dbd814272f0d367b53330ae7d",
+      "viewBox": [
+        0,
+        0,
+        256,
+        256
+      ],
+      "elementCount": 17
+    }
+  ],
+  "checks": [
+    "three bounded editable XML vector sources",
+    "transparent square viewBoxes",
+    "no fonts, text nodes, raster, scripts, links, filters or external resources",
+    "explicit finite palette and safe geometry attributes",
+    "TEST_ONLY usage and unbound production metadata",
+    "reference hash and original/no-pixel-copy provenance",
+    "static specimen source",
+    "SHA-256 source pins"
+  ],
+  "result": "PASS"
+}

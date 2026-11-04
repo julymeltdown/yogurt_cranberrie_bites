@@ -1,0 +1,638 @@
+(!) Failed to run dependency scan. Skipping dependency pre-bundling. Error:   Failed to scan for dependencies from entries:
+  /Users/lhs/.codex/worktrees/ac70/mcr/docs/mcr/evidence/art-gifts-content-v1/native.html
+/Users/lhs/.codex/worktrees/ac70/mcr/docs/mcr/evidence/art-gifts-content-v1/preview.html
+
+  Build failed with 3 errors:
+
+[31m[UNLOADABLE_DEPENDENCY] [0mCould not load docs/mcr/evidence/art-gifts-content-v1/.readonly-git/frontend/src/features/gift-discovery/ui/Gifts.tsx
+   [38;5;246m╭[0m[38;5;246m─[0m[38;5;246m[[0m docs/mcr/evidence/art-gifts-content-v1/native.tsx:4:31 [38;5;246m][0m
+   [38;5;246m│[0m
+ [38;5;246m4 │[0m [38;5;249mi[0m[38;5;249mm[0m[38;5;249mp[0m[38;5;249mo[0m[38;5;249mr[0m[38;5;249mt[0m[38;5;249m [0m[38;5;249m{[0m[38;5;249m [0m[38;5;249mG[0m[38;5;249mi[0m[38;5;249mf[0m[38;5;249mt[0m[38;5;249mD[0m[38;5;249mi[0m[38;5;249ms[0m[38;5;249mc[0m[38;5;249mo[0m[38;5;249mv[0m[38;5;249me[0m[38;5;249mr[0m[38;5;249my[0m[38;5;249m [0m[38;5;249m}[0m[38;5;249m [0m[38;5;249mf[0m[38;5;249mr[0m[38;5;249mo[0m[38;5;249mm[0m[38;5;249m [0m'../../../../frontend/src/features/gift-discovery/ui/Gifts'
+ [38;5;240m  │[0m                               ─────────────────────────────┬─────────────────────────────  
+ [38;5;240m  │[0m                                                            ╰─────────────────────────────── No such file or directory (os error 2)
+[38;5;246m───╯[0m
+
+[31m[UNLOADABLE_DEPENDENCY] [0mCould not load docs/mcr/evidence/art-gifts-content-v1/.readonly-git/frontend/src/features/gift-discovery/__tests__/fixtures/data.ts
+   [38;5;246m╭[0m[38;5;246m─[0m[38;5;246m[[0m docs/mcr/evidence/art-gifts-content-v1/native.tsx:6:40 [38;5;246m][0m
+   [38;5;246m│[0m
+ [38;5;246m6 │[0m [38;5;249mi[0m[38;5;249mm[0m[38;5;249mp[0m[38;5;249mo[0m[38;5;249mr[0m[38;5;249mt[0m[38;5;249m [0m[38;5;249m{[0m[38;5;249m [0m[38;5;249mf[0m[38;5;249mi[0m[38;5;249mx[0m[38;5;249mt[0m[38;5;249mu[0m[38;5;249mr[0m[38;5;249me[0m[38;5;249m,[0m[38;5;249m [0m[38;5;249mg[0m[38;5;249mi[0m[38;5;249mv[0m[38;5;249me[0m[38;5;249ma[0m[38;5;249mw[0m[38;5;249ma[0m[38;5;249my[0m[38;5;249m,[0m[38;5;249m [0m[38;5;249mu[0m[38;5;249mi[0m[38;5;249md[0m[38;5;249m [0m[38;5;249m}[0m[38;5;249m [0m[38;5;249mf[0m[38;5;249mr[0m[38;5;249mo[0m[38;5;249mm[0m[38;5;249m [0m'../../../../frontend/src/features/gift-discovery/__tests__/fixtures/data'
+ [38;5;240m  │[0m                                        ─────────────────────────────────────┬────────────────────────────────────  
+ [38;5;240m  │[0m                                                                             ╰────────────────────────────────────── No such file or directory (os error 2)
+[38;5;246m───╯[0m
+
+[31m[UNLOADABLE_DEPENDENCY] [0mCould not load docs/mcr/evidence/art-gifts-content-v1/.readonly-git/frontend/src/shared/ui/concert-window/index.tsx
+   [38;5;246m╭[0m[38;5;246m─[0m[38;5;246m[[0m docs/mcr/evidence/art-gifts-content-v1/native.tsx:7:31 [38;5;246m][0m
+   [38;5;246m│[0m
+ [38;5;246m7 │[0m [38;5;249mi[0m[38;5;249mm[0m[38;5;249mp[0m[38;5;249mo[0m[38;5;249mr[0m[38;5;249mt[0m[38;5;249m [0m[38;5;249m{[0m[38;5;249m [0m[38;5;249mC[0m[38;5;249mo[0m[38;5;249mn[0m[38;5;249mc[0m[38;5;249me[0m[38;5;249mr[0m[38;5;249mt[0m[38;5;249mW[0m[38;5;249mi[0m[38;5;249mn[0m[38;5;249md[0m[38;5;249mo[0m[38;5;249mw[0m[38;5;249m [0m[38;5;249m}[0m[38;5;249m [0m[38;5;249mf[0m[38;5;249mr[0m[38;5;249mo[0m[38;5;249mm[0m[38;5;249m [0m'../../../../frontend/src/shared/ui/concert-window'
+ [38;5;240m  │[0m                               ─────────────────────────┬─────────────────────────  
+ [38;5;240m  │[0m                                                        ╰─────────────────────────── No such file or directory (os error 2)
+[38;5;246m───╯[0m
+
+    at aggregateBindingErrorsIntoJsError (file:///Users/lhs/Desktop/mcr/frontend/node_modules/.pnpm/rolldown@1.1.4/node_modules/rolldown/dist/shared/error-BlQ0-ek7.mjs:48:18)
+    at unwrapBindingResult (file:///Users/lhs/Desktop/mcr/frontend/node_modules/.pnpm/rolldown@1.1.4/node_modules/rolldown/dist/shared/error-BlQ0-ek7.mjs:18:128)
+    at scan (file:///Users/lhs/Desktop/mcr/frontend/node_modules/.pnpm/rolldown@1.1.4/node_modules/rolldown/dist/experimental-index.mjs:187:3)
+    at async Object.build (file:///Users/lhs/Desktop/mcr/frontend/node_modules/.pnpm/vite@8.1.3_@types+node@24.13.2_jiti@2.7.0/node_modules/vite/dist/node/chunks/node.js:30302:3)
+    at async scan (file:///Users/lhs/Desktop/mcr/frontend/node_modules/.pnpm/vite@8.1.3_@types+node@24.13.2_jiti@2.7.0/node_modules/vite/dist/node/chunks/node.js:30245:4)
+    at async file:///Users/lhs/Desktop/mcr/frontend/node_modules/.pnpm/vite@8.1.3_@types+node@24.13.2_jiti@2.7.0/node_modules/vite/dist/node/chunks/node.js:33264:15
+Unable to resolve `@import "./cozy-identity-backgrounds-v1.css"` from /Users/lhs/.codex/worktrees/ac70/mcr/docs/mcr/evidence/art-gifts-content-v1/.readonly-git/frontend/src/shared/styles
+11:31:55 PM [vite] (client) Pre-transform error: [postcss] ENOENT: no such file or directory, open './cozy-identity-backgrounds-v1.css'
+  Plugin: vite:css
+  File: /Users/lhs/.codex/worktrees/ac70/mcr/docs/mcr/evidence/art-gifts-content-v1/.readonly-git/frontend/src/shared/styles/base.css:undefined:NaN
+11:31:55 PM [vite] Internal server error: Failed to resolve import "/Users/lhs/.codex/worktrees/ac70/mcr/docs/mcr/evidence/art-gifts-content-v1/.readonly-git/frontend/src/features/gift-discovery/ui/Gifts.tsx" from "docs/mcr/evidence/art-gifts-content-v1/.readonly-git/frontend/src/features/gift-discovery/ui/Gifts.tsx". Does the file exist?
+  Plugin: vite:import-analysis
+  File: /Users/lhs/.codex/worktrees/ac70/mcr/docs/mcr/evidence/art-gifts-content-v1/.readonly-git/frontend/src/features/gift-discovery/ui/Gifts.tsx:1061:46
+  1059 |  import * as RefreshRuntime from "/@react-refresh";
+  1060 |  const inWebWorker = typeof WorkerGlobalScope !== 'undefined' && self instanceof WorkerGlobalScope;
+  1061 |  import * as __vite_react_currentExports from "/Users/lhs/.codex/worktrees/ac70/mcr/docs/mcr/evidence/art-gifts-conten...
+       |                                                ^
+  1062 |  if (import.meta.hot && !inWebWorker) {
+  1063 |    if (!window.$RefreshReg$) {
+      at TransformPluginContext._formatLog (file:///Users/lhs/Desktop/mcr/frontend/node_modules/.pnpm/vite@8.1.3_@types+node@24.13.2_jiti@2.7.0/node_modules/vite/dist/node/chunks/node.js:29960:39)
+      at TransformPluginContext.error (file:///Users/lhs/Desktop/mcr/frontend/node_modules/.pnpm/vite@8.1.3_@types+node@24.13.2_jiti@2.7.0/node_modules/vite/dist/node/chunks/node.js:29957:14)
+      at normalizeUrl (file:///Users/lhs/Desktop/mcr/frontend/node_modules/.pnpm/vite@8.1.3_@types+node@24.13.2_jiti@2.7.0/node_modules/vite/dist/node/chunks/node.js:26993:18)
+      at async file:///Users/lhs/Desktop/mcr/frontend/node_modules/.pnpm/vite@8.1.3_@types+node@24.13.2_jiti@2.7.0/node_modules/vite/dist/node/chunks/node.js:27056:30
+      at async Promise.all (index 10)
+      at async TransformPluginContext.transform (file:///Users/lhs/Desktop/mcr/frontend/node_modules/.pnpm/vite@8.1.3_@types+node@24.13.2_jiti@2.7.0/node_modules/vite/dist/node/chunks/node.js:27024:4)
+      at async EnvironmentPluginContainer.transform (file:///Users/lhs/Desktop/mcr/frontend/node_modules/.pnpm/vite@8.1.3_@types+node@24.13.2_jiti@2.7.0/node_modules/vite/dist/node/chunks/node.js:29745:14)
+      at async loadAndTransform (file:///Users/lhs/Desktop/mcr/frontend/node_modules/.pnpm/vite@8.1.3_@types+node@24.13.2_jiti@2.7.0/node_modules/vite/dist/node/chunks/node.js:19729:26)
+11:31:55 PM [vite] (client) Pre-transform error: Failed to resolve import "/Users/lhs/.codex/worktrees/ac70/mcr/docs/mcr/evidence/art-gifts-content-v1/.readonly-git/frontend/src/features/gift-discovery/ui/Gifts.tsx" from "docs/mcr/evidence/art-gifts-content-v1/.readonly-git/frontend/src/features/gift-discovery/ui/Gifts.tsx". Does the file exist?
+  Plugin: vite:import-analysis
+  File: /Users/lhs/.codex/worktrees/ac70/mcr/docs/mcr/evidence/art-gifts-content-v1/.readonly-git/frontend/src/features/gift-discovery/ui/Gifts.tsx:1061:46
+  1059 |  import * as RefreshRuntime from "/@react-refresh";
+  1060 |  const inWebWorker = typeof WorkerGlobalScope !== 'undefined' && self instanceof WorkerGlobalScope;
+  1061 |  import * as __vite_react_currentExports from "/Users/lhs/.codex/worktrees/ac70/mcr/docs/mcr/evidence/art-gifts-conten...
+       |                                                ^
+  1062 |  if (import.meta.hot && !inWebWorker) {
+  1063 |    if (!window.$RefreshReg$) {
+11:31:55 PM [vite] (client) Pre-transform error: Failed to resolve import "/Users/lhs/.codex/worktrees/ac70/mcr/docs/mcr/evidence/art-gifts-content-v1/.readonly-git/frontend/src/shared/ui/concert-window/index.tsx" from "docs/mcr/evidence/art-gifts-content-v1/.readonly-git/frontend/src/shared/ui/concert-window/index.tsx". Does the file exist?
+  Plugin: vite:import-analysis
+  File: /Users/lhs/.codex/worktrees/ac70/mcr/docs/mcr/evidence/art-gifts-content-v1/.readonly-git/frontend/src/shared/ui/concert-window/index.tsx:444:46
+  442 |  import * as RefreshRuntime from "/@react-refresh";
+  443 |  const inWebWorker = typeof WorkerGlobalScope !== 'undefined' && self instanceof WorkerGlobalScope;
+  444 |  import * as __vite_react_currentExports from "/Users/lhs/.codex/worktrees/ac70/mcr/docs/mcr/evidence/art-gifts-conten...
+      |                                                ^
+  445 |  if (import.meta.hot && !inWebWorker) {
+  446 |    if (!window.$RefreshReg$) {
+11:31:55 PM [vite] Internal server error: Failed to resolve import "/Users/lhs/.codex/worktrees/ac70/mcr/docs/mcr/evidence/art-gifts-content-v1/.readonly-git/frontend/src/shared/ui/concert-window/index.tsx" from "docs/mcr/evidence/art-gifts-content-v1/.readonly-git/frontend/src/shared/ui/concert-window/index.tsx". Does the file exist?
+  Plugin: vite:import-analysis
+  File: /Users/lhs/.codex/worktrees/ac70/mcr/docs/mcr/evidence/art-gifts-content-v1/.readonly-git/frontend/src/shared/ui/concert-window/index.tsx:444:46
+  442 |  import * as RefreshRuntime from "/@react-refresh";
+  443 |  const inWebWorker = typeof WorkerGlobalScope !== 'undefined' && self instanceof WorkerGlobalScope;
+  444 |  import * as __vite_react_currentExports from "/Users/lhs/.codex/worktrees/ac70/mcr/docs/mcr/evidence/art-gifts-conten...
+      |                                                ^
+  445 |  if (import.meta.hot && !inWebWorker) {
+  446 |    if (!window.$RefreshReg$) {
+      at TransformPluginContext._formatLog (file:///Users/lhs/Desktop/mcr/frontend/node_modules/.pnpm/vite@8.1.3_@types+node@24.13.2_jiti@2.7.0/node_modules/vite/dist/node/chunks/node.js:29960:39)
+      at TransformPluginContext.error (file:///Users/lhs/Desktop/mcr/frontend/node_modules/.pnpm/vite@8.1.3_@types+node@24.13.2_jiti@2.7.0/node_modules/vite/dist/node/chunks/node.js:29957:14)
+      at normalizeUrl (file:///Users/lhs/Desktop/mcr/frontend/node_modules/.pnpm/vite@8.1.3_@types+node@24.13.2_jiti@2.7.0/node_modules/vite/dist/node/chunks/node.js:26993:18)
+      at async file:///Users/lhs/Desktop/mcr/frontend/node_modules/.pnpm/vite@8.1.3_@types+node@24.13.2_jiti@2.7.0/node_modules/vite/dist/node/chunks/node.js:27056:30
+      at async Promise.all (index 5)
+      at async TransformPluginContext.transform (file:///Users/lhs/Desktop/mcr/frontend/node_modules/.pnpm/vite@8.1.3_@types+node@24.13.2_jiti@2.7.0/node_modules/vite/dist/node/chunks/node.js:27024:4)
+      at async EnvironmentPluginContainer.transform (file:///Users/lhs/Desktop/mcr/frontend/node_modules/.pnpm/vite@8.1.3_@types+node@24.13.2_jiti@2.7.0/node_modules/vite/dist/node/chunks/node.js:29745:14)
+      at async loadAndTransform (file:///Users/lhs/Desktop/mcr/frontend/node_modules/.pnpm/vite@8.1.3_@types+node@24.13.2_jiti@2.7.0/node_modules/vite/dist/node/chunks/node.js:19729:26)
+11:31:55 PM [vite] (client) Pre-transform error: Failed to resolve import "/Users/lhs/.codex/worktrees/ac70/mcr/docs/mcr/evidence/art-gifts-content-v1/.readonly-git/frontend/src/shared/ui/concert-window/index.tsx" from "docs/mcr/evidence/art-gifts-content-v1/.readonly-git/frontend/src/shared/ui/concert-window/index.tsx". Does the file exist?
+  Plugin: vite:import-analysis
+  File: /Users/lhs/.codex/worktrees/ac70/mcr/docs/mcr/evidence/art-gifts-content-v1/.readonly-git/frontend/src/shared/ui/concert-window/index.tsx:444:46
+  442 |  import * as RefreshRuntime from "/@react-refresh";
+  443 |  const inWebWorker = typeof WorkerGlobalScope !== 'undefined' && self instanceof WorkerGlobalScope;
+  444 |  import * as __vite_react_currentExports from "/Users/lhs/.codex/worktrees/ac70/mcr/docs/mcr/evidence/art-gifts-conten...
+      |                                                ^
+  445 |  if (import.meta.hot && !inWebWorker) {
+  446 |    if (!window.$RefreshReg$) {
+Unable to resolve `@import "./cozy-identity-backgrounds-v1.css"` from /Users/lhs/.codex/worktrees/ac70/mcr/docs/mcr/evidence/art-gifts-content-v1/.readonly-git/frontend/src/shared/styles
+11:31:55 PM [vite] Internal server error: [postcss] ENOENT: no such file or directory, open './cozy-identity-backgrounds-v1.css'
+  Plugin: vite:css
+  File: /Users/lhs/.codex/worktrees/ac70/mcr/docs/mcr/evidence/art-gifts-content-v1/.readonly-git/frontend/src/shared/styles/base.css:undefined:NaN
+      at async open (node:internal/fs/promises:1345:25)
+      at async Object.readFile (node:internal/fs/promises:2003:14)
+      at async Object.load (file:///Users/lhs/Desktop/mcr/frontend/node_modules/.pnpm/vite@8.1.3_@types+node@24.13.2_jiti@2.7.0/node_modules/vite/dist/node/chunks/node.js:22161:17)
+      at async loadImportContent (file:///Users/lhs/Desktop/mcr/frontend/node_modules/.pnpm/vite@8.1.3_@types+node@24.13.2_jiti@2.7.0/node_modules/vite/dist/node/chunks/postcss-import.js:392:19)
+      at async Promise.all (index 0)
+      at async resolveImportId (file:///Users/lhs/Desktop/mcr/frontend/node_modules/.pnpm/vite@8.1.3_@types+node@24.13.2_jiti@2.7.0/node_modules/vite/dist/node/chunks/postcss-import.js:378:20)
+      at async parseStyles (file:///Users/lhs/Desktop/mcr/frontend/node_modules/.pnpm/vite@8.1.3_@types+node@24.13.2_jiti@2.7.0/node_modules/vite/dist/node/chunks/postcss-import.js:331:4)
+      at async Object.Once (file:///Users/lhs/Desktop/mcr/frontend/node_modules/.pnpm/vite@8.1.3_@types+node@24.13.2_jiti@2.7.0/node_modules/vite/dist/node/chunks/postcss-import.js:455:20)
+      at async LazyResult.runAsync (/Users/lhs/Desktop/mcr/frontend/node_modules/.pnpm/postcss@8.5.16/node_modules/postcss/lib/lazy-result.js:293:11)
+      at async runPostCSS (file:///Users/lhs/Desktop/mcr/frontend/node_modules/.pnpm/vite@8.1.3_@types+node@24.13.2_jiti@2.7.0/node_modules/vite/dist/node/chunks/node.js:22215:19)
+11:31:55 PM [vite] (client) Pre-transform error: Failed to resolve import "/Users/lhs/.codex/worktrees/ac70/mcr/docs/mcr/evidence/art-gifts-content-v1/.readonly-git/frontend/src/app/navigation.tsx" from "docs/mcr/evidence/art-gifts-content-v1/.readonly-git/frontend/src/app/navigation.tsx". Does the file exist?
+  Plugin: vite:import-analysis
+  File: /Users/lhs/.codex/worktrees/ac70/mcr/docs/mcr/evidence/art-gifts-content-v1/.readonly-git/frontend/src/app/navigation.tsx:89:46
+  87 |  import * as RefreshRuntime from "/@react-refresh";
+  88 |  const inWebWorker = typeof WorkerGlobalScope !== 'undefined' && self instanceof WorkerGlobalScope;
+  89 |  import * as __vite_react_currentExports from "/Users/lhs/.codex/worktrees/ac70/mcr/docs/mcr/evidence/art-gifts-conten...
+     |                                                ^
+  90 |  if (import.meta.hot && !inWebWorker) {
+  91 |    if (!window.$RefreshReg$) {
+11:31:55 PM [vite] (client) Pre-transform error: Failed to resolve import "/Users/lhs/.codex/worktrees/ac70/mcr/docs/mcr/evidence/art-gifts-content-v1/.readonly-git/frontend/src/app/navigation.tsx" from "docs/mcr/evidence/art-gifts-content-v1/.readonly-git/frontend/src/app/navigation.tsx". Does the file exist?
+  Plugin: vite:import-analysis
+  File: /Users/lhs/.codex/worktrees/ac70/mcr/docs/mcr/evidence/art-gifts-content-v1/.readonly-git/frontend/src/app/navigation.tsx:89:46
+  87 |  import * as RefreshRuntime from "/@react-refresh";
+  88 |  const inWebWorker = typeof WorkerGlobalScope !== 'undefined' && self instanceof WorkerGlobalScope;
+  89 |  import * as __vite_react_currentExports from "/Users/lhs/.codex/worktrees/ac70/mcr/docs/mcr/evidence/art-gifts-conten...
+     |                                                ^
+  90 |  if (import.meta.hot && !inWebWorker) {
+  91 |    if (!window.$RefreshReg$) {
+11:31:55 PM [vite] (client) Pre-transform error: Failed to resolve import "/Users/lhs/.codex/worktrees/ac70/mcr/docs/mcr/evidence/art-gifts-content-v1/.readonly-git/frontend/src/features/gift-discovery/ui/reference-presentation.tsx" from "docs/mcr/evidence/art-gifts-content-v1/.readonly-git/frontend/src/features/gift-discovery/ui/reference-presentation.tsx". Does the file exist?
+  Plugin: vite:import-analysis
+  File: /Users/lhs/.codex/worktrees/ac70/mcr/docs/mcr/evidence/art-gifts-content-v1/.readonly-git/frontend/src/features/gift-discovery/ui/reference-presentation.tsx:311:46
+  309 |  import * as RefreshRuntime from "/@react-refresh";
+  310 |  const inWebWorker = typeof WorkerGlobalScope !== 'undefined' && self instanceof WorkerGlobalScope;
+  311 |  import * as __vite_react_currentExports from "/Users/lhs/.codex/worktrees/ac70/mcr/docs/mcr/evidence/art-gifts-conten...
+      |                                                ^
+  312 |  if (import.meta.hot && !inWebWorker) {
+  313 |    if (!window.$RefreshReg$) {
+11:31:55 PM [vite] (client) Pre-transform error: Failed to resolve import "/Users/lhs/.codex/worktrees/ac70/mcr/docs/mcr/evidence/art-gifts-content-v1/.readonly-git/frontend/src/shared/ui/Tabs.tsx" from "docs/mcr/evidence/art-gifts-content-v1/.readonly-git/frontend/src/shared/ui/Tabs.tsx". Does the file exist?
+  Plugin: vite:import-analysis
+  File: /Users/lhs/.codex/worktrees/ac70/mcr/docs/mcr/evidence/art-gifts-content-v1/.readonly-git/frontend/src/shared/ui/Tabs.tsx:87:46
+  85 |  import * as RefreshRuntime from "/@react-refresh";
+  86 |  const inWebWorker = typeof WorkerGlobalScope !== 'undefined' && self instanceof WorkerGlobalScope;
+  87 |  import * as __vite_react_currentExports from "/Users/lhs/.codex/worktrees/ac70/mcr/docs/mcr/evidence/art-gifts-conten...
+     |                                                ^
+  88 |  if (import.meta.hot && !inWebWorker) {
+  89 |    if (!window.$RefreshReg$) {
+11:31:55 PM [vite] (client) Pre-transform error: Failed to resolve import "/Users/lhs/.codex/worktrees/ac70/mcr/docs/mcr/evidence/art-gifts-content-v1/.readonly-git/frontend/src/shared/ui/Tabs.tsx" from "docs/mcr/evidence/art-gifts-content-v1/.readonly-git/frontend/src/shared/ui/Tabs.tsx". Does the file exist?
+  Plugin: vite:import-analysis
+  File: /Users/lhs/.codex/worktrees/ac70/mcr/docs/mcr/evidence/art-gifts-content-v1/.readonly-git/frontend/src/shared/ui/Tabs.tsx:87:46
+  85 |  import * as RefreshRuntime from "/@react-refresh";
+  86 |  const inWebWorker = typeof WorkerGlobalScope !== 'undefined' && self instanceof WorkerGlobalScope;
+  87 |  import * as __vite_react_currentExports from "/Users/lhs/.codex/worktrees/ac70/mcr/docs/mcr/evidence/art-gifts-conten...
+     |                                                ^
+  88 |  if (import.meta.hot && !inWebWorker) {
+  89 |    if (!window.$RefreshReg$) {
+11:31:55 PM [vite] (client) Pre-transform error: Failed to resolve import "/Users/lhs/.codex/worktrees/ac70/mcr/docs/mcr/evidence/art-gifts-content-v1/.readonly-git/frontend/src/shared/ui/controls.tsx" from "docs/mcr/evidence/art-gifts-content-v1/.readonly-git/frontend/src/shared/ui/controls.tsx". Does the file exist?
+  Plugin: vite:import-analysis
+  File: /Users/lhs/.codex/worktrees/ac70/mcr/docs/mcr/evidence/art-gifts-content-v1/.readonly-git/frontend/src/shared/ui/controls.tsx:96:46
+  94 |  import * as RefreshRuntime from "/@react-refresh";
+  95 |  const inWebWorker = typeof WorkerGlobalScope !== 'undefined' && self instanceof WorkerGlobalScope;
+  96 |  import * as __vite_react_currentExports from "/Users/lhs/.codex/worktrees/ac70/mcr/docs/mcr/evidence/art-gifts-conten...
+     |                                                ^
+  97 |  if (import.meta.hot && !inWebWorker) {
+  98 |    if (!window.$RefreshReg$) {
+11:31:55 PM [vite] (client) Pre-transform error: Failed to resolve import "/Users/lhs/.codex/worktrees/ac70/mcr/docs/mcr/evidence/art-gifts-content-v1/.readonly-git/frontend/src/shared/ui/controls.tsx" from "docs/mcr/evidence/art-gifts-content-v1/.readonly-git/frontend/src/shared/ui/controls.tsx". Does the file exist?
+  Plugin: vite:import-analysis
+  File: /Users/lhs/.codex/worktrees/ac70/mcr/docs/mcr/evidence/art-gifts-content-v1/.readonly-git/frontend/src/shared/ui/controls.tsx:96:46
+  94 |  import * as RefreshRuntime from "/@react-refresh";
+  95 |  const inWebWorker = typeof WorkerGlobalScope !== 'undefined' && self instanceof WorkerGlobalScope;
+  96 |  import * as __vite_react_currentExports from "/Users/lhs/.codex/worktrees/ac70/mcr/docs/mcr/evidence/art-gifts-conten...
+     |                                                ^
+  97 |  if (import.meta.hot && !inWebWorker) {
+  98 |    if (!window.$RefreshReg$) {
+11:31:55 PM [vite] (client) Pre-transform error: Failed to resolve import "/Users/lhs/.codex/worktrees/ac70/mcr/docs/mcr/evidence/art-gifts-content-v1/.readonly-git/frontend/src/shared/ui/controls.tsx" from "docs/mcr/evidence/art-gifts-content-v1/.readonly-git/frontend/src/shared/ui/controls.tsx". Does the file exist?
+  Plugin: vite:import-analysis
+  File: /Users/lhs/.codex/worktrees/ac70/mcr/docs/mcr/evidence/art-gifts-content-v1/.readonly-git/frontend/src/shared/ui/controls.tsx:96:46
+  94 |  import * as RefreshRuntime from "/@react-refresh";
+  95 |  const inWebWorker = typeof WorkerGlobalScope !== 'undefined' && self instanceof WorkerGlobalScope;
+  96 |  import * as __vite_react_currentExports from "/Users/lhs/.codex/worktrees/ac70/mcr/docs/mcr/evidence/art-gifts-conten...
+     |                                                ^
+  97 |  if (import.meta.hot && !inWebWorker) {
+  98 |    if (!window.$RefreshReg$) {
+11:31:55 PM [vite] (client) Pre-transform error: Failed to resolve import "/Users/lhs/.codex/worktrees/ac70/mcr/docs/mcr/evidence/art-gifts-content-v1/.readonly-git/frontend/src/shared/ui/Dialog.tsx" from "docs/mcr/evidence/art-gifts-content-v1/.readonly-git/frontend/src/shared/ui/Dialog.tsx". Does the file exist?
+  Plugin: vite:import-analysis
+  File: /Users/lhs/.codex/worktrees/ac70/mcr/docs/mcr/evidence/art-gifts-content-v1/.readonly-git/frontend/src/shared/ui/Dialog.tsx:168:46
+  166 |  import * as RefreshRuntime from "/@react-refresh";
+  167 |  const inWebWorker = typeof WorkerGlobalScope !== 'undefined' && self instanceof WorkerGlobalScope;
+  168 |  import * as __vite_react_currentExports from "/Users/lhs/.codex/worktrees/ac70/mcr/docs/mcr/evidence/art-gifts-conten...
+      |                                                ^
+  169 |  if (import.meta.hot && !inWebWorker) {
+  170 |    if (!window.$RefreshReg$) {
+11:31:55 PM [vite] (client) Pre-transform error: Failed to resolve import "/Users/lhs/.codex/worktrees/ac70/mcr/docs/mcr/evidence/art-gifts-content-v1/.readonly-git/frontend/src/shared/ui/feedback.tsx" from "docs/mcr/evidence/art-gifts-content-v1/.readonly-git/frontend/src/shared/ui/feedback.tsx". Does the file exist?
+  Plugin: vite:import-analysis
+  File: /Users/lhs/.codex/worktrees/ac70/mcr/docs/mcr/evidence/art-gifts-content-v1/.readonly-git/frontend/src/shared/ui/feedback.tsx:160:46
+  158 |  import * as RefreshRuntime from "/@react-refresh";
+  159 |  const inWebWorker = typeof WorkerGlobalScope !== 'undefined' && self instanceof WorkerGlobalScope;
+  160 |  import * as __vite_react_currentExports from "/Users/lhs/.codex/worktrees/ac70/mcr/docs/mcr/evidence/art-gifts-conten...
+      |                                                ^
+  161 |  if (import.meta.hot && !inWebWorker) {
+  162 |    if (!window.$RefreshReg$) {
+11:31:55 PM [vite] (client) Pre-transform error: Failed to resolve import "../../../../../contracts/generated/mcr-domain.openapi.json" from "docs/mcr/evidence/art-gifts-content-v1/.readonly-git/frontend/src/features/gift-discovery/model/contract.ts". Does the file exist?
+  Plugin: vite:import-analysis
+  File: /Users/lhs/.codex/worktrees/ac70/mcr/docs/mcr/evidence/art-gifts-content-v1/.readonly-git/frontend/src/features/gift-discovery/model/contract.ts:2:28
+  1  |  import { z } from "zod";
+  2  |  import browserContract from "../../../../../contracts/generated/mcr-domain.openapi.json";
+     |                               ^
+  3  |  export const giftId = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/;
+  4  |  function assert(value) {
+11:31:55 PM [vite] (client) Pre-transform error: Failed to resolve import "../../../../../contracts/generated/mcr-core.openapi.json" from "docs/mcr/evidence/art-gifts-content-v1/.readonly-git/frontend/src/features/auth/model/contract.ts". Does the file exist?
+  Plugin: vite:import-analysis
+  File: /Users/lhs/.codex/worktrees/ac70/mcr/docs/mcr/evidence/art-gifts-content-v1/.readonly-git/frontend/src/features/auth/model/contract.ts:2:21
+  1  |  import { z } from "zod";
+  2  |  import contract from "../../../../../contracts/generated/mcr-core.openapi.json";
+     |                        ^
+  3  |  export const object = (value) => {
+  4  |  	if (!value || typeof value !== "object" || Array.isArray(value)) throw new Error("Invalid contract value");
+11:31:55 PM [vite] (client) Pre-transform error: Failed to resolve import "../../../../../contracts/generated/mcr-core.openapi.json" from "docs/mcr/evidence/art-gifts-content-v1/.readonly-git/frontend/src/features/auth/model/contract.ts". Does the file exist?
+  Plugin: vite:import-analysis
+  File: /Users/lhs/.codex/worktrees/ac70/mcr/docs/mcr/evidence/art-gifts-content-v1/.readonly-git/frontend/src/features/auth/model/contract.ts:2:21
+  1  |  import { z } from "zod";
+  2  |  import contract from "../../../../../contracts/generated/mcr-core.openapi.json";
+     |                        ^
+  3  |  export const object = (value) => {
+  4  |  	if (!value || typeof value !== "object" || Array.isArray(value)) throw new Error("Invalid contract value");
+11:31:55 PM [vite] (client) Pre-transform error: Failed to resolve import "../../../../../contracts/generated/mcr-core.openapi.json" from "docs/mcr/evidence/art-gifts-content-v1/.readonly-git/frontend/src/features/auth/model/contract.ts". Does the file exist?
+  Plugin: vite:import-analysis
+  File: /Users/lhs/.codex/worktrees/ac70/mcr/docs/mcr/evidence/art-gifts-content-v1/.readonly-git/frontend/src/features/auth/model/contract.ts:2:21
+  1  |  import { z } from "zod";
+  2  |  import contract from "../../../../../contracts/generated/mcr-core.openapi.json";
+     |                        ^
+  3  |  export const object = (value) => {
+  4  |  	if (!value || typeof value !== "object" || Array.isArray(value)) throw new Error("Invalid contract value");
+11:31:56 PM [vite] (client) Pre-transform error: Failed to resolve import "../../../../../contracts/generated/mcr-core.openapi.json" from "docs/mcr/evidence/art-gifts-content-v1/.readonly-git/frontend/src/features/auth/model/recovery-contract.ts". Does the file exist?
+  Plugin: vite:import-analysis
+  File: /Users/lhs/.codex/worktrees/ac70/mcr/docs/mcr/evidence/art-gifts-content-v1/.readonly-git/frontend/src/features/auth/model/recovery-contract.ts:2:21
+  1  |  import { z } from "zod";
+  2  |  import contract from "../../../../../contracts/generated/mcr-core.openapi.json";
+     |                        ^
+  3  |  import { object, requireValue } from "./contract";
+  4  |  export const resetPaths = {
+11:31:56 PM [vite] (client) Pre-transform error: Failed to resolve import "../../../../../contracts/generated/mcr-core.openapi.json" from "docs/mcr/evidence/art-gifts-content-v1/.readonly-git/frontend/src/features/auth/model/recovery-contract.ts". Does the file exist?
+  Plugin: vite:import-analysis
+  File: /Users/lhs/.codex/worktrees/ac70/mcr/docs/mcr/evidence/art-gifts-content-v1/.readonly-git/frontend/src/features/auth/model/recovery-contract.ts:2:21
+  1  |  import { z } from "zod";
+  2  |  import contract from "../../../../../contracts/generated/mcr-core.openapi.json";
+     |                        ^
+  3  |  import { object, requireValue } from "./contract";
+  4  |  export const resetPaths = {
+11:31:56 PM [vite] (client) Pre-transform error: Failed to resolve import "../../../../../contracts/generated/mcr-core.openapi.json" from "docs/mcr/evidence/art-gifts-content-v1/.readonly-git/frontend/src/features/auth/model/enrollment-contract.ts". Does the file exist?
+  Plugin: vite:import-analysis
+  File: /Users/lhs/.codex/worktrees/ac70/mcr/docs/mcr/evidence/art-gifts-content-v1/.readonly-git/frontend/src/features/auth/model/enrollment-contract.ts:2:21
+  1  |  import { z } from "zod";
+  2  |  import contract from "../../../../../contracts/generated/mcr-core.openapi.json";
+     |                        ^
+  3  |  import { canonicalUuid, object } from "./contract";
+  4  |  import { validResetPassword } from "./recovery-contract";
+11:31:56 PM [vite] (client) Pre-transform error: Failed to resolve import "../../../../../contracts/assets/v1/common.schema.json" from "docs/mcr/evidence/art-gifts-content-v1/.readonly-git/frontend/src/entities/avatar/runtime/schema.ts". Does the file exist?
+  Plugin: vite:import-analysis
+  File: /Users/lhs/.codex/worktrees/ac70/mcr/docs/mcr/evidence/art-gifts-content-v1/.readonly-git/frontend/src/entities/avatar/runtime/schema.ts:3:19
+  1  |  // Headless schema evaluator adapted from world/map/schema.ts at5356679; C06 inputs remain authoritative.
+  2  |  import { validDateTime, validUri, validUuid } from "../../../world/map/formats";
+  3  |  import common from "../../../../../contracts/assets/v1/common.schema.json";
+     |                      ^
+  4  |  import manifest from "../../../../../contracts/assets/v1/avatar-manifest.schema.json";
+  5  |  import config from "../../../../../contracts/assets/v1/avatar-config.schema.json";
+11:31:56 PM [vite] (client) Pre-transform error: Failed to resolve import "../../../../../contracts/assets/v1/common.schema.json" from "docs/mcr/evidence/art-gifts-content-v1/.readonly-git/frontend/src/entities/avatar/runtime/schema.ts". Does the file exist?
+  Plugin: vite:import-analysis
+  File: /Users/lhs/.codex/worktrees/ac70/mcr/docs/mcr/evidence/art-gifts-content-v1/.readonly-git/frontend/src/entities/avatar/runtime/schema.ts:3:19
+  1  |  // Headless schema evaluator adapted from world/map/schema.ts at5356679; C06 inputs remain authoritative.
+  2  |  import { validDateTime, validUri, validUuid } from "../../../world/map/formats";
+  3  |  import common from "../../../../../contracts/assets/v1/common.schema.json";
+     |                      ^
+  4  |  import manifest from "../../../../../contracts/assets/v1/avatar-manifest.schema.json";
+  5  |  import config from "../../../../../contracts/assets/v1/avatar-config.schema.json";
+11:31:56 PM [vite] (client) Pre-transform error: Failed to resolve import "../../../../../contracts/assets/v1/avatar-config.schema.json" from "docs/mcr/evidence/art-gifts-content-v1/.readonly-git/frontend/src/entities/avatar/whole-character/contract.ts". Does the file exist?
+  Plugin: vite:import-analysis
+  File: /Users/lhs/.codex/worktrees/ac70/mcr/docs/mcr/evidence/art-gifts-content-v1/.readonly-git/frontend/src/entities/avatar/whole-character/contract.ts:1:25
+  1  |  import configSchema from "../../../../../contracts/assets/v1/avatar-config.schema.json";
+     |                            ^
+  2  |  import manifestSchema from "../../../../../contracts/assets/v1/avatar-manifest.schema.json";
+  3  |  import commonSchema from "../../../../../contracts/assets/v1/common.schema.json";
+11:31:56 PM [vite] (client) Pre-transform error: Failed to resolve import "../../../../../contracts/assets/v1/avatar-config.schema.json" from "docs/mcr/evidence/art-gifts-content-v1/.readonly-git/frontend/src/entities/avatar/whole-character/contract.ts". Does the file exist?
+  Plugin: vite:import-analysis
+  File: /Users/lhs/.codex/worktrees/ac70/mcr/docs/mcr/evidence/art-gifts-content-v1/.readonly-git/frontend/src/entities/avatar/whole-character/contract.ts:1:25
+  1  |  import configSchema from "../../../../../contracts/assets/v1/avatar-config.schema.json";
+     |                            ^
+  2  |  import manifestSchema from "../../../../../contracts/assets/v1/avatar-manifest.schema.json";
+  3  |  import commonSchema from "../../../../../contracts/assets/v1/common.schema.json";
+11:31:56 PM [vite] (client) Pre-transform error: Failed to resolve import "../../../../../contracts/generated/mcr-core.openapi.json" from "docs/mcr/evidence/art-gifts-content-v1/.readonly-git/frontend/src/features/auth/model/contract.ts". Does the file exist?
+  Plugin: vite:import-analysis
+  File: /Users/lhs/.codex/worktrees/ac70/mcr/docs/mcr/evidence/art-gifts-content-v1/.readonly-git/frontend/src/features/auth/model/contract.ts:2:21
+  1  |  import { z } from "zod";
+  2  |  import contract from "../../../../../contracts/generated/mcr-core.openapi.json";
+     |                        ^
+  3  |  export const object = (value) => {
+  4  |  	if (!value || typeof value !== "object" || Array.isArray(value)) throw new Error("Invalid contract value");
+11:31:56 PM [vite] (client) Pre-transform error: Failed to resolve import "../../../../../contracts/generated/mcr-core.openapi.json" from "docs/mcr/evidence/art-gifts-content-v1/.readonly-git/frontend/src/features/auth/model/contract.ts". Does the file exist?
+  Plugin: vite:import-analysis
+  File: /Users/lhs/.codex/worktrees/ac70/mcr/docs/mcr/evidence/art-gifts-content-v1/.readonly-git/frontend/src/features/auth/model/contract.ts:2:21
+  1  |  import { z } from "zod";
+  2  |  import contract from "../../../../../contracts/generated/mcr-core.openapi.json";
+     |                        ^
+  3  |  export const object = (value) => {
+  4  |  	if (!value || typeof value !== "object" || Array.isArray(value)) throw new Error("Invalid contract value");
+11:31:56 PM [vite] (client) Pre-transform error: Failed to resolve import "/Users/lhs/.codex/worktrees/ac70/mcr/docs/mcr/evidence/art-gifts-content-v1/.readonly-git/frontend/src/entities/avatar/whole-character/view.tsx" from "docs/mcr/evidence/art-gifts-content-v1/.readonly-git/frontend/src/entities/avatar/whole-character/view.tsx". Does the file exist?
+  Plugin: vite:import-analysis
+  File: /Users/lhs/.codex/worktrees/ac70/mcr/docs/mcr/evidence/art-gifts-content-v1/.readonly-git/frontend/src/entities/avatar/whole-character/view.tsx:102:46
+  100 |  import * as RefreshRuntime from "/@react-refresh";
+  101 |  const inWebWorker = typeof WorkerGlobalScope !== 'undefined' && self instanceof WorkerGlobalScope;
+  102 |  import * as __vite_react_currentExports from "/Users/lhs/.codex/worktrees/ac70/mcr/docs/mcr/evidence/art-gifts-conten...
+      |                                                ^
+  103 |  if (import.meta.hot && !inWebWorker) {
+  104 |    if (!window.$RefreshReg$) {
+11:31:56 PM [vite] (client) Pre-transform error: Failed to resolve import "../../../../../contracts/assets/v1/avatar-config.schema.json" from "docs/mcr/evidence/art-gifts-content-v1/.readonly-git/frontend/src/entities/avatar/whole-character/contract.ts". Does the file exist?
+  Plugin: vite:import-analysis
+  File: /Users/lhs/.codex/worktrees/ac70/mcr/docs/mcr/evidence/art-gifts-content-v1/.readonly-git/frontend/src/entities/avatar/whole-character/contract.ts:1:25
+  1  |  import configSchema from "../../../../../contracts/assets/v1/avatar-config.schema.json";
+     |                            ^
+  2  |  import manifestSchema from "../../../../../contracts/assets/v1/avatar-manifest.schema.json";
+  3  |  import commonSchema from "../../../../../contracts/assets/v1/common.schema.json";
+11:31:56 PM [vite] (client) Pre-transform error: Failed to resolve import "../../../../../contracts/assets/v1/avatar-config.schema.json" from "docs/mcr/evidence/art-gifts-content-v1/.readonly-git/frontend/src/entities/avatar/whole-character/contract.ts". Does the file exist?
+  Plugin: vite:import-analysis
+  File: /Users/lhs/.codex/worktrees/ac70/mcr/docs/mcr/evidence/art-gifts-content-v1/.readonly-git/frontend/src/entities/avatar/whole-character/contract.ts:1:25
+  1  |  import configSchema from "../../../../../contracts/assets/v1/avatar-config.schema.json";
+     |                            ^
+  2  |  import manifestSchema from "../../../../../contracts/assets/v1/avatar-manifest.schema.json";
+  3  |  import commonSchema from "../../../../../contracts/assets/v1/common.schema.json";
+11:31:56 PM [vite] (client) Pre-transform error: Failed to resolve import "../../../../contracts/assets/v1/common.schema.json" from "docs/mcr/evidence/art-gifts-content-v1/.readonly-git/frontend/src/world/map/schema.ts". Does the file exist?
+  Plugin: vite:import-analysis
+  File: /Users/lhs/.codex/worktrees/ac70/mcr/docs/mcr/evidence/art-gifts-content-v1/.readonly-git/frontend/src/world/map/schema.ts:2:19
+  1  |  import { validDateTime, validUri, validUuid } from "./formats";
+  2  |  import common from "../../../../contracts/assets/v1/common.schema.json";
+     |                      ^
+  3  |  import map from "../../../../contracts/assets/v1/map-manifest.schema.json";
+  4  |  import theme from "../../../../contracts/assets/v1/theme-manifest.schema.json";
+Unable to resolve `@import "./cozy-identity-backgrounds-v1.css"` from /Users/lhs/.codex/worktrees/ac70/mcr/docs/mcr/evidence/art-gifts-content-v1/.readonly-git/frontend/src/shared/styles
+11:31:56 PM [vite] (client) Pre-transform error: [postcss] ENOENT: no such file or directory, open './cozy-identity-backgrounds-v1.css'
+  Plugin: vite:css
+  File: /Users/lhs/.codex/worktrees/ac70/mcr/docs/mcr/evidence/art-gifts-content-v1/.readonly-git/frontend/src/shared/styles/base.css:undefined:NaN
+11:31:56 PM [vite] Internal server error: Failed to resolve import "/Users/lhs/.codex/worktrees/ac70/mcr/docs/mcr/evidence/art-gifts-content-v1/.readonly-git/frontend/src/features/gift-discovery/ui/Gifts.tsx" from "docs/mcr/evidence/art-gifts-content-v1/.readonly-git/frontend/src/features/gift-discovery/ui/Gifts.tsx". Does the file exist?
+  Plugin: vite:import-analysis
+  File: /Users/lhs/.codex/worktrees/ac70/mcr/docs/mcr/evidence/art-gifts-content-v1/.readonly-git/frontend/src/features/gift-discovery/ui/Gifts.tsx:1061:46
+  1059 |  import * as RefreshRuntime from "/@react-refresh";
+  1060 |  const inWebWorker = typeof WorkerGlobalScope !== 'undefined' && self instanceof WorkerGlobalScope;
+  1061 |  import * as __vite_react_currentExports from "/Users/lhs/.codex/worktrees/ac70/mcr/docs/mcr/evidence/art-gifts-conten...
+       |                                                ^
+  1062 |  if (import.meta.hot && !inWebWorker) {
+  1063 |    if (!window.$RefreshReg$) {
+      at TransformPluginContext._formatLog (file:///Users/lhs/Desktop/mcr/frontend/node_modules/.pnpm/vite@8.1.3_@types+node@24.13.2_jiti@2.7.0/node_modules/vite/dist/node/chunks/node.js:29960:39)
+      at TransformPluginContext.error (file:///Users/lhs/Desktop/mcr/frontend/node_modules/.pnpm/vite@8.1.3_@types+node@24.13.2_jiti@2.7.0/node_modules/vite/dist/node/chunks/node.js:29957:14)
+      at normalizeUrl (file:///Users/lhs/Desktop/mcr/frontend/node_modules/.pnpm/vite@8.1.3_@types+node@24.13.2_jiti@2.7.0/node_modules/vite/dist/node/chunks/node.js:26993:18)
+      at async file:///Users/lhs/Desktop/mcr/frontend/node_modules/.pnpm/vite@8.1.3_@types+node@24.13.2_jiti@2.7.0/node_modules/vite/dist/node/chunks/node.js:27056:30
+      at async Promise.all (index 10)
+      at async TransformPluginContext.transform (file:///Users/lhs/Desktop/mcr/frontend/node_modules/.pnpm/vite@8.1.3_@types+node@24.13.2_jiti@2.7.0/node_modules/vite/dist/node/chunks/node.js:27024:4)
+      at async EnvironmentPluginContainer.transform (file:///Users/lhs/Desktop/mcr/frontend/node_modules/.pnpm/vite@8.1.3_@types+node@24.13.2_jiti@2.7.0/node_modules/vite/dist/node/chunks/node.js:29745:14)
+      at async loadAndTransform (file:///Users/lhs/Desktop/mcr/frontend/node_modules/.pnpm/vite@8.1.3_@types+node@24.13.2_jiti@2.7.0/node_modules/vite/dist/node/chunks/node.js:19729:26)
+11:31:56 PM [vite] (client) Pre-transform error: Failed to resolve import "/Users/lhs/.codex/worktrees/ac70/mcr/docs/mcr/evidence/art-gifts-content-v1/.readonly-git/frontend/src/features/gift-discovery/ui/Gifts.tsx" from "docs/mcr/evidence/art-gifts-content-v1/.readonly-git/frontend/src/features/gift-discovery/ui/Gifts.tsx". Does the file exist?
+  Plugin: vite:import-analysis
+  File: /Users/lhs/.codex/worktrees/ac70/mcr/docs/mcr/evidence/art-gifts-content-v1/.readonly-git/frontend/src/features/gift-discovery/ui/Gifts.tsx:1061:46
+  1059 |  import * as RefreshRuntime from "/@react-refresh";
+  1060 |  const inWebWorker = typeof WorkerGlobalScope !== 'undefined' && self instanceof WorkerGlobalScope;
+  1061 |  import * as __vite_react_currentExports from "/Users/lhs/.codex/worktrees/ac70/mcr/docs/mcr/evidence/art-gifts-conten...
+       |                                                ^
+  1062 |  if (import.meta.hot && !inWebWorker) {
+  1063 |    if (!window.$RefreshReg$) {
+11:31:56 PM [vite] Internal server error: Failed to resolve import "/Users/lhs/.codex/worktrees/ac70/mcr/docs/mcr/evidence/art-gifts-content-v1/.readonly-git/frontend/src/shared/ui/concert-window/index.tsx" from "docs/mcr/evidence/art-gifts-content-v1/.readonly-git/frontend/src/shared/ui/concert-window/index.tsx". Does the file exist?
+  Plugin: vite:import-analysis
+  File: /Users/lhs/.codex/worktrees/ac70/mcr/docs/mcr/evidence/art-gifts-content-v1/.readonly-git/frontend/src/shared/ui/concert-window/index.tsx:444:46
+  442 |  import * as RefreshRuntime from "/@react-refresh";
+  443 |  const inWebWorker = typeof WorkerGlobalScope !== 'undefined' && self instanceof WorkerGlobalScope;
+  444 |  import * as __vite_react_currentExports from "/Users/lhs/.codex/worktrees/ac70/mcr/docs/mcr/evidence/art-gifts-conten...
+      |                                                ^
+  445 |  if (import.meta.hot && !inWebWorker) {
+  446 |    if (!window.$RefreshReg$) {
+      at TransformPluginContext._formatLog (file:///Users/lhs/Desktop/mcr/frontend/node_modules/.pnpm/vite@8.1.3_@types+node@24.13.2_jiti@2.7.0/node_modules/vite/dist/node/chunks/node.js:29960:39)
+      at TransformPluginContext.error (file:///Users/lhs/Desktop/mcr/frontend/node_modules/.pnpm/vite@8.1.3_@types+node@24.13.2_jiti@2.7.0/node_modules/vite/dist/node/chunks/node.js:29957:14)
+      at normalizeUrl (file:///Users/lhs/Desktop/mcr/frontend/node_modules/.pnpm/vite@8.1.3_@types+node@24.13.2_jiti@2.7.0/node_modules/vite/dist/node/chunks/node.js:26993:18)
+      at async file:///Users/lhs/Desktop/mcr/frontend/node_modules/.pnpm/vite@8.1.3_@types+node@24.13.2_jiti@2.7.0/node_modules/vite/dist/node/chunks/node.js:27056:30
+      at async Promise.all (index 5)
+      at async TransformPluginContext.transform (file:///Users/lhs/Desktop/mcr/frontend/node_modules/.pnpm/vite@8.1.3_@types+node@24.13.2_jiti@2.7.0/node_modules/vite/dist/node/chunks/node.js:27024:4)
+      at async EnvironmentPluginContainer.transform (file:///Users/lhs/Desktop/mcr/frontend/node_modules/.pnpm/vite@8.1.3_@types+node@24.13.2_jiti@2.7.0/node_modules/vite/dist/node/chunks/node.js:29745:14)
+      at async loadAndTransform (file:///Users/lhs/Desktop/mcr/frontend/node_modules/.pnpm/vite@8.1.3_@types+node@24.13.2_jiti@2.7.0/node_modules/vite/dist/node/chunks/node.js:19729:26)
+11:31:56 PM [vite] (client) Pre-transform error: Failed to resolve import "/Users/lhs/.codex/worktrees/ac70/mcr/docs/mcr/evidence/art-gifts-content-v1/.readonly-git/frontend/src/shared/ui/concert-window/index.tsx" from "docs/mcr/evidence/art-gifts-content-v1/.readonly-git/frontend/src/shared/ui/concert-window/index.tsx". Does the file exist?
+  Plugin: vite:import-analysis
+  File: /Users/lhs/.codex/worktrees/ac70/mcr/docs/mcr/evidence/art-gifts-content-v1/.readonly-git/frontend/src/shared/ui/concert-window/index.tsx:444:46
+  442 |  import * as RefreshRuntime from "/@react-refresh";
+  443 |  const inWebWorker = typeof WorkerGlobalScope !== 'undefined' && self instanceof WorkerGlobalScope;
+  444 |  import * as __vite_react_currentExports from "/Users/lhs/.codex/worktrees/ac70/mcr/docs/mcr/evidence/art-gifts-conten...
+      |                                                ^
+  445 |  if (import.meta.hot && !inWebWorker) {
+  446 |    if (!window.$RefreshReg$) {
+11:31:56 PM [vite] (client) Pre-transform error: Failed to resolve import "/Users/lhs/.codex/worktrees/ac70/mcr/docs/mcr/evidence/art-gifts-content-v1/.readonly-git/frontend/src/shared/ui/concert-window/index.tsx" from "docs/mcr/evidence/art-gifts-content-v1/.readonly-git/frontend/src/shared/ui/concert-window/index.tsx". Does the file exist?
+  Plugin: vite:import-analysis
+  File: /Users/lhs/.codex/worktrees/ac70/mcr/docs/mcr/evidence/art-gifts-content-v1/.readonly-git/frontend/src/shared/ui/concert-window/index.tsx:444:46
+  442 |  import * as RefreshRuntime from "/@react-refresh";
+  443 |  const inWebWorker = typeof WorkerGlobalScope !== 'undefined' && self instanceof WorkerGlobalScope;
+  444 |  import * as __vite_react_currentExports from "/Users/lhs/.codex/worktrees/ac70/mcr/docs/mcr/evidence/art-gifts-conten...
+      |                                                ^
+  445 |  if (import.meta.hot && !inWebWorker) {
+  446 |    if (!window.$RefreshReg$) {
+Unable to resolve `@import "./cozy-identity-backgrounds-v1.css"` from /Users/lhs/.codex/worktrees/ac70/mcr/docs/mcr/evidence/art-gifts-content-v1/.readonly-git/frontend/src/shared/styles
+11:31:56 PM [vite] Internal server error: [postcss] ENOENT: no such file or directory, open './cozy-identity-backgrounds-v1.css'
+  Plugin: vite:css
+  File: /Users/lhs/.codex/worktrees/ac70/mcr/docs/mcr/evidence/art-gifts-content-v1/.readonly-git/frontend/src/shared/styles/base.css:undefined:NaN
+      at async open (node:internal/fs/promises:1345:25)
+      at async Object.readFile (node:internal/fs/promises:2003:14)
+      at async Object.load (file:///Users/lhs/Desktop/mcr/frontend/node_modules/.pnpm/vite@8.1.3_@types+node@24.13.2_jiti@2.7.0/node_modules/vite/dist/node/chunks/node.js:22161:17)
+      at async loadImportContent (file:///Users/lhs/Desktop/mcr/frontend/node_modules/.pnpm/vite@8.1.3_@types+node@24.13.2_jiti@2.7.0/node_modules/vite/dist/node/chunks/postcss-import.js:392:19)
+      at async Promise.all (index 0)
+      at async resolveImportId (file:///Users/lhs/Desktop/mcr/frontend/node_modules/.pnpm/vite@8.1.3_@types+node@24.13.2_jiti@2.7.0/node_modules/vite/dist/node/chunks/postcss-import.js:378:20)
+      at async parseStyles (file:///Users/lhs/Desktop/mcr/frontend/node_modules/.pnpm/vite@8.1.3_@types+node@24.13.2_jiti@2.7.0/node_modules/vite/dist/node/chunks/postcss-import.js:331:4)
+      at async Object.Once (file:///Users/lhs/Desktop/mcr/frontend/node_modules/.pnpm/vite@8.1.3_@types+node@24.13.2_jiti@2.7.0/node_modules/vite/dist/node/chunks/postcss-import.js:455:20)
+      at async LazyResult.runAsync (/Users/lhs/Desktop/mcr/frontend/node_modules/.pnpm/postcss@8.5.16/node_modules/postcss/lib/lazy-result.js:293:11)
+      at async runPostCSS (file:///Users/lhs/Desktop/mcr/frontend/node_modules/.pnpm/vite@8.1.3_@types+node@24.13.2_jiti@2.7.0/node_modules/vite/dist/node/chunks/node.js:22215:19)
+11:31:56 PM [vite] (client) Pre-transform error: Failed to resolve import "/Users/lhs/.codex/worktrees/ac70/mcr/docs/mcr/evidence/art-gifts-content-v1/.readonly-git/frontend/src/app/navigation.tsx" from "docs/mcr/evidence/art-gifts-content-v1/.readonly-git/frontend/src/app/navigation.tsx". Does the file exist?
+  Plugin: vite:import-analysis
+  File: /Users/lhs/.codex/worktrees/ac70/mcr/docs/mcr/evidence/art-gifts-content-v1/.readonly-git/frontend/src/app/navigation.tsx:89:46
+  87 |  import * as RefreshRuntime from "/@react-refresh";
+  88 |  const inWebWorker = typeof WorkerGlobalScope !== 'undefined' && self instanceof WorkerGlobalScope;
+  89 |  import * as __vite_react_currentExports from "/Users/lhs/.codex/worktrees/ac70/mcr/docs/mcr/evidence/art-gifts-conten...
+     |                                                ^
+  90 |  if (import.meta.hot && !inWebWorker) {
+  91 |    if (!window.$RefreshReg$) {
+11:31:56 PM [vite] (client) Pre-transform error: Failed to resolve import "/Users/lhs/.codex/worktrees/ac70/mcr/docs/mcr/evidence/art-gifts-content-v1/.readonly-git/frontend/src/app/navigation.tsx" from "docs/mcr/evidence/art-gifts-content-v1/.readonly-git/frontend/src/app/navigation.tsx". Does the file exist?
+  Plugin: vite:import-analysis
+  File: /Users/lhs/.codex/worktrees/ac70/mcr/docs/mcr/evidence/art-gifts-content-v1/.readonly-git/frontend/src/app/navigation.tsx:89:46
+  87 |  import * as RefreshRuntime from "/@react-refresh";
+  88 |  const inWebWorker = typeof WorkerGlobalScope !== 'undefined' && self instanceof WorkerGlobalScope;
+  89 |  import * as __vite_react_currentExports from "/Users/lhs/.codex/worktrees/ac70/mcr/docs/mcr/evidence/art-gifts-conten...
+     |                                                ^
+  90 |  if (import.meta.hot && !inWebWorker) {
+  91 |    if (!window.$RefreshReg$) {
+11:31:56 PM [vite] (client) Pre-transform error: Failed to resolve import "/Users/lhs/.codex/worktrees/ac70/mcr/docs/mcr/evidence/art-gifts-content-v1/.readonly-git/frontend/src/features/gift-discovery/ui/reference-presentation.tsx" from "docs/mcr/evidence/art-gifts-content-v1/.readonly-git/frontend/src/features/gift-discovery/ui/reference-presentation.tsx". Does the file exist?
+  Plugin: vite:import-analysis
+  File: /Users/lhs/.codex/worktrees/ac70/mcr/docs/mcr/evidence/art-gifts-content-v1/.readonly-git/frontend/src/features/gift-discovery/ui/reference-presentation.tsx:311:46
+  309 |  import * as RefreshRuntime from "/@react-refresh";
+  310 |  const inWebWorker = typeof WorkerGlobalScope !== 'undefined' && self instanceof WorkerGlobalScope;
+  311 |  import * as __vite_react_currentExports from "/Users/lhs/.codex/worktrees/ac70/mcr/docs/mcr/evidence/art-gifts-conten...
+      |                                                ^
+  312 |  if (import.meta.hot && !inWebWorker) {
+  313 |    if (!window.$RefreshReg$) {
+11:31:56 PM [vite] (client) Pre-transform error: Failed to resolve import "/Users/lhs/.codex/worktrees/ac70/mcr/docs/mcr/evidence/art-gifts-content-v1/.readonly-git/frontend/src/shared/ui/Tabs.tsx" from "docs/mcr/evidence/art-gifts-content-v1/.readonly-git/frontend/src/shared/ui/Tabs.tsx". Does the file exist?
+  Plugin: vite:import-analysis
+  File: /Users/lhs/.codex/worktrees/ac70/mcr/docs/mcr/evidence/art-gifts-content-v1/.readonly-git/frontend/src/shared/ui/Tabs.tsx:87:46
+  85 |  import * as RefreshRuntime from "/@react-refresh";
+  86 |  const inWebWorker = typeof WorkerGlobalScope !== 'undefined' && self instanceof WorkerGlobalScope;
+  87 |  import * as __vite_react_currentExports from "/Users/lhs/.codex/worktrees/ac70/mcr/docs/mcr/evidence/art-gifts-conten...
+     |                                                ^
+  88 |  if (import.meta.hot && !inWebWorker) {
+  89 |    if (!window.$RefreshReg$) {
+11:31:56 PM [vite] (client) Pre-transform error: Failed to resolve import "/Users/lhs/.codex/worktrees/ac70/mcr/docs/mcr/evidence/art-gifts-content-v1/.readonly-git/frontend/src/shared/ui/Tabs.tsx" from "docs/mcr/evidence/art-gifts-content-v1/.readonly-git/frontend/src/shared/ui/Tabs.tsx". Does the file exist?
+  Plugin: vite:import-analysis
+  File: /Users/lhs/.codex/worktrees/ac70/mcr/docs/mcr/evidence/art-gifts-content-v1/.readonly-git/frontend/src/shared/ui/Tabs.tsx:87:46
+  85 |  import * as RefreshRuntime from "/@react-refresh";
+  86 |  const inWebWorker = typeof WorkerGlobalScope !== 'undefined' && self instanceof WorkerGlobalScope;
+  87 |  import * as __vite_react_currentExports from "/Users/lhs/.codex/worktrees/ac70/mcr/docs/mcr/evidence/art-gifts-conten...
+     |                                                ^
+  88 |  if (import.meta.hot && !inWebWorker) {
+  89 |    if (!window.$RefreshReg$) {
+11:31:56 PM [vite] (client) Pre-transform error: Failed to resolve import "/Users/lhs/.codex/worktrees/ac70/mcr/docs/mcr/evidence/art-gifts-content-v1/.readonly-git/frontend/src/shared/ui/controls.tsx" from "docs/mcr/evidence/art-gifts-content-v1/.readonly-git/frontend/src/shared/ui/controls.tsx". Does the file exist?
+  Plugin: vite:import-analysis
+  File: /Users/lhs/.codex/worktrees/ac70/mcr/docs/mcr/evidence/art-gifts-content-v1/.readonly-git/frontend/src/shared/ui/controls.tsx:96:46
+  94 |  import * as RefreshRuntime from "/@react-refresh";
+  95 |  const inWebWorker = typeof WorkerGlobalScope !== 'undefined' && self instanceof WorkerGlobalScope;
+  96 |  import * as __vite_react_currentExports from "/Users/lhs/.codex/worktrees/ac70/mcr/docs/mcr/evidence/art-gifts-conten...
+     |                                                ^
+  97 |  if (import.meta.hot && !inWebWorker) {
+  98 |    if (!window.$RefreshReg$) {
+11:31:56 PM [vite] (client) Pre-transform error: Failed to resolve import "/Users/lhs/.codex/worktrees/ac70/mcr/docs/mcr/evidence/art-gifts-content-v1/.readonly-git/frontend/src/shared/ui/controls.tsx" from "docs/mcr/evidence/art-gifts-content-v1/.readonly-git/frontend/src/shared/ui/controls.tsx". Does the file exist?
+  Plugin: vite:import-analysis
+  File: /Users/lhs/.codex/worktrees/ac70/mcr/docs/mcr/evidence/art-gifts-content-v1/.readonly-git/frontend/src/shared/ui/controls.tsx:96:46
+  94 |  import * as RefreshRuntime from "/@react-refresh";
+  95 |  const inWebWorker = typeof WorkerGlobalScope !== 'undefined' && self instanceof WorkerGlobalScope;
+  96 |  import * as __vite_react_currentExports from "/Users/lhs/.codex/worktrees/ac70/mcr/docs/mcr/evidence/art-gifts-conten...
+     |                                                ^
+  97 |  if (import.meta.hot && !inWebWorker) {
+  98 |    if (!window.$RefreshReg$) {
+11:31:56 PM [vite] (client) Pre-transform error: Failed to resolve import "/Users/lhs/.codex/worktrees/ac70/mcr/docs/mcr/evidence/art-gifts-content-v1/.readonly-git/frontend/src/shared/ui/controls.tsx" from "docs/mcr/evidence/art-gifts-content-v1/.readonly-git/frontend/src/shared/ui/controls.tsx". Does the file exist?
+  Plugin: vite:import-analysis
+  File: /Users/lhs/.codex/worktrees/ac70/mcr/docs/mcr/evidence/art-gifts-content-v1/.readonly-git/frontend/src/shared/ui/controls.tsx:96:46
+  94 |  import * as RefreshRuntime from "/@react-refresh";
+  95 |  const inWebWorker = typeof WorkerGlobalScope !== 'undefined' && self instanceof WorkerGlobalScope;
+  96 |  import * as __vite_react_currentExports from "/Users/lhs/.codex/worktrees/ac70/mcr/docs/mcr/evidence/art-gifts-conten...
+     |                                                ^
+  97 |  if (import.meta.hot && !inWebWorker) {
+  98 |    if (!window.$RefreshReg$) {
+11:31:56 PM [vite] (client) Pre-transform error: Failed to resolve import "/Users/lhs/.codex/worktrees/ac70/mcr/docs/mcr/evidence/art-gifts-content-v1/.readonly-git/frontend/src/shared/ui/Dialog.tsx" from "docs/mcr/evidence/art-gifts-content-v1/.readonly-git/frontend/src/shared/ui/Dialog.tsx". Does the file exist?
+  Plugin: vite:import-analysis
+  File: /Users/lhs/.codex/worktrees/ac70/mcr/docs/mcr/evidence/art-gifts-content-v1/.readonly-git/frontend/src/shared/ui/Dialog.tsx:168:46
+  166 |  import * as RefreshRuntime from "/@react-refresh";
+  167 |  const inWebWorker = typeof WorkerGlobalScope !== 'undefined' && self instanceof WorkerGlobalScope;
+  168 |  import * as __vite_react_currentExports from "/Users/lhs/.codex/worktrees/ac70/mcr/docs/mcr/evidence/art-gifts-conten...
+      |                                                ^
+  169 |  if (import.meta.hot && !inWebWorker) {
+  170 |    if (!window.$RefreshReg$) {
+11:31:56 PM [vite] (client) Pre-transform error: Failed to resolve import "/Users/lhs/.codex/worktrees/ac70/mcr/docs/mcr/evidence/art-gifts-content-v1/.readonly-git/frontend/src/shared/ui/feedback.tsx" from "docs/mcr/evidence/art-gifts-content-v1/.readonly-git/frontend/src/shared/ui/feedback.tsx". Does the file exist?
+  Plugin: vite:import-analysis
+  File: /Users/lhs/.codex/worktrees/ac70/mcr/docs/mcr/evidence/art-gifts-content-v1/.readonly-git/frontend/src/shared/ui/feedback.tsx:160:46
+  158 |  import * as RefreshRuntime from "/@react-refresh";
+  159 |  const inWebWorker = typeof WorkerGlobalScope !== 'undefined' && self instanceof WorkerGlobalScope;
+  160 |  import * as __vite_react_currentExports from "/Users/lhs/.codex/worktrees/ac70/mcr/docs/mcr/evidence/art-gifts-conten...
+      |                                                ^
+  161 |  if (import.meta.hot && !inWebWorker) {
+  162 |    if (!window.$RefreshReg$) {
+11:31:56 PM [vite] (client) Pre-transform error: Failed to resolve import "../../../../../contracts/generated/mcr-domain.openapi.json" from "docs/mcr/evidence/art-gifts-content-v1/.readonly-git/frontend/src/features/gift-discovery/model/contract.ts". Does the file exist?
+  Plugin: vite:import-analysis
+  File: /Users/lhs/.codex/worktrees/ac70/mcr/docs/mcr/evidence/art-gifts-content-v1/.readonly-git/frontend/src/features/gift-discovery/model/contract.ts:2:28
+  1  |  import { z } from "zod";
+  2  |  import browserContract from "../../../../../contracts/generated/mcr-domain.openapi.json";
+     |                               ^
+  3  |  export const giftId = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/;
+  4  |  function assert(value) {
+11:31:56 PM [vite] (client) Pre-transform error: Failed to resolve import "../../../../../contracts/generated/mcr-core.openapi.json" from "docs/mcr/evidence/art-gifts-content-v1/.readonly-git/frontend/src/features/auth/model/contract.ts". Does the file exist?
+  Plugin: vite:import-analysis
+  File: /Users/lhs/.codex/worktrees/ac70/mcr/docs/mcr/evidence/art-gifts-content-v1/.readonly-git/frontend/src/features/auth/model/contract.ts:2:21
+  1  |  import { z } from "zod";
+  2  |  import contract from "../../../../../contracts/generated/mcr-core.openapi.json";
+     |                        ^
+  3  |  export const object = (value) => {
+  4  |  	if (!value || typeof value !== "object" || Array.isArray(value)) throw new Error("Invalid contract value");
+11:31:56 PM [vite] (client) Pre-transform error: Failed to resolve import "../../../../../contracts/generated/mcr-core.openapi.json" from "docs/mcr/evidence/art-gifts-content-v1/.readonly-git/frontend/src/features/auth/model/contract.ts". Does the file exist?
+  Plugin: vite:import-analysis
+  File: /Users/lhs/.codex/worktrees/ac70/mcr/docs/mcr/evidence/art-gifts-content-v1/.readonly-git/frontend/src/features/auth/model/contract.ts:2:21
+  1  |  import { z } from "zod";
+  2  |  import contract from "../../../../../contracts/generated/mcr-core.openapi.json";
+     |                        ^
+  3  |  export const object = (value) => {
+  4  |  	if (!value || typeof value !== "object" || Array.isArray(value)) throw new Error("Invalid contract value");
+11:31:56 PM [vite] (client) Pre-transform error: Failed to resolve import "../../../../../contracts/generated/mcr-core.openapi.json" from "docs/mcr/evidence/art-gifts-content-v1/.readonly-git/frontend/src/features/auth/model/contract.ts". Does the file exist?
+  Plugin: vite:import-analysis
+  File: /Users/lhs/.codex/worktrees/ac70/mcr/docs/mcr/evidence/art-gifts-content-v1/.readonly-git/frontend/src/features/auth/model/contract.ts:2:21
+  1  |  import { z } from "zod";
+  2  |  import contract from "../../../../../contracts/generated/mcr-core.openapi.json";
+     |                        ^
+  3  |  export const object = (value) => {
+  4  |  	if (!value || typeof value !== "object" || Array.isArray(value)) throw new Error("Invalid contract value");
+11:31:56 PM [vite] (client) Pre-transform error: Failed to resolve import "../../../../../contracts/generated/mcr-core.openapi.json" from "docs/mcr/evidence/art-gifts-content-v1/.readonly-git/frontend/src/features/auth/model/recovery-contract.ts". Does the file exist?
+  Plugin: vite:import-analysis
+  File: /Users/lhs/.codex/worktrees/ac70/mcr/docs/mcr/evidence/art-gifts-content-v1/.readonly-git/frontend/src/features/auth/model/recovery-contract.ts:2:21
+  1  |  import { z } from "zod";
+  2  |  import contract from "../../../../../contracts/generated/mcr-core.openapi.json";
+     |                        ^
+  3  |  import { object, requireValue } from "./contract";
+  4  |  export const resetPaths = {
+11:31:56 PM [vite] (client) Pre-transform error: Failed to resolve import "../../../../../contracts/generated/mcr-core.openapi.json" from "docs/mcr/evidence/art-gifts-content-v1/.readonly-git/frontend/src/features/auth/model/recovery-contract.ts". Does the file exist?
+  Plugin: vite:import-analysis
+  File: /Users/lhs/.codex/worktrees/ac70/mcr/docs/mcr/evidence/art-gifts-content-v1/.readonly-git/frontend/src/features/auth/model/recovery-contract.ts:2:21
+  1  |  import { z } from "zod";
+  2  |  import contract from "../../../../../contracts/generated/mcr-core.openapi.json";
+     |                        ^
+  3  |  import { object, requireValue } from "./contract";
+  4  |  export const resetPaths = {
+11:31:56 PM [vite] (client) Pre-transform error: Failed to resolve import "../../../../../contracts/generated/mcr-core.openapi.json" from "docs/mcr/evidence/art-gifts-content-v1/.readonly-git/frontend/src/features/auth/model/enrollment-contract.ts". Does the file exist?
+  Plugin: vite:import-analysis
+  File: /Users/lhs/.codex/worktrees/ac70/mcr/docs/mcr/evidence/art-gifts-content-v1/.readonly-git/frontend/src/features/auth/model/enrollment-contract.ts:2:21
+  1  |  import { z } from "zod";
+  2  |  import contract from "../../../../../contracts/generated/mcr-core.openapi.json";
+     |                        ^
+  3  |  import { canonicalUuid, object } from "./contract";
+  4  |  import { validResetPassword } from "./recovery-contract";
+11:31:57 PM [vite] (client) Pre-transform error: Failed to resolve import "../../../../../contracts/assets/v1/common.schema.json" from "docs/mcr/evidence/art-gifts-content-v1/.readonly-git/frontend/src/entities/avatar/runtime/schema.ts". Does the file exist?
+  Plugin: vite:import-analysis
+  File: /Users/lhs/.codex/worktrees/ac70/mcr/docs/mcr/evidence/art-gifts-content-v1/.readonly-git/frontend/src/entities/avatar/runtime/schema.ts:3:19
+  1  |  // Headless schema evaluator adapted from world/map/schema.ts at5356679; C06 inputs remain authoritative.
+  2  |  import { validDateTime, validUri, validUuid } from "../../../world/map/formats";
+  3  |  import common from "../../../../../contracts/assets/v1/common.schema.json";
+     |                      ^
+  4  |  import manifest from "../../../../../contracts/assets/v1/avatar-manifest.schema.json";
+  5  |  import config from "../../../../../contracts/assets/v1/avatar-config.schema.json";
+11:31:57 PM [vite] (client) Pre-transform error: Failed to resolve import "../../../../../contracts/assets/v1/common.schema.json" from "docs/mcr/evidence/art-gifts-content-v1/.readonly-git/frontend/src/entities/avatar/runtime/schema.ts". Does the file exist?
+  Plugin: vite:import-analysis
+  File: /Users/lhs/.codex/worktrees/ac70/mcr/docs/mcr/evidence/art-gifts-content-v1/.readonly-git/frontend/src/entities/avatar/runtime/schema.ts:3:19
+  1  |  // Headless schema evaluator adapted from world/map/schema.ts at5356679; C06 inputs remain authoritative.
+  2  |  import { validDateTime, validUri, validUuid } from "../../../world/map/formats";
+  3  |  import common from "../../../../../contracts/assets/v1/common.schema.json";
+     |                      ^
+  4  |  import manifest from "../../../../../contracts/assets/v1/avatar-manifest.schema.json";
+  5  |  import config from "../../../../../contracts/assets/v1/avatar-config.schema.json";
+11:31:57 PM [vite] (client) Pre-transform error: Failed to resolve import "../../../../../contracts/assets/v1/avatar-config.schema.json" from "docs/mcr/evidence/art-gifts-content-v1/.readonly-git/frontend/src/entities/avatar/whole-character/contract.ts". Does the file exist?
+  Plugin: vite:import-analysis
+  File: /Users/lhs/.codex/worktrees/ac70/mcr/docs/mcr/evidence/art-gifts-content-v1/.readonly-git/frontend/src/entities/avatar/whole-character/contract.ts:1:25
+  1  |  import configSchema from "../../../../../contracts/assets/v1/avatar-config.schema.json";
+     |                            ^
+  2  |  import manifestSchema from "../../../../../contracts/assets/v1/avatar-manifest.schema.json";
+  3  |  import commonSchema from "../../../../../contracts/assets/v1/common.schema.json";
+11:31:57 PM [vite] (client) Pre-transform error: Failed to resolve import "../../../../../contracts/assets/v1/avatar-config.schema.json" from "docs/mcr/evidence/art-gifts-content-v1/.readonly-git/frontend/src/entities/avatar/whole-character/contract.ts". Does the file exist?
+  Plugin: vite:import-analysis
+  File: /Users/lhs/.codex/worktrees/ac70/mcr/docs/mcr/evidence/art-gifts-content-v1/.readonly-git/frontend/src/entities/avatar/whole-character/contract.ts:1:25
+  1  |  import configSchema from "../../../../../contracts/assets/v1/avatar-config.schema.json";
+     |                            ^
+  2  |  import manifestSchema from "../../../../../contracts/assets/v1/avatar-manifest.schema.json";
+  3  |  import commonSchema from "../../../../../contracts/assets/v1/common.schema.json";
+11:31:57 PM [vite] (client) Pre-transform error: Failed to resolve import "../../../../../contracts/generated/mcr-core.openapi.json" from "docs/mcr/evidence/art-gifts-content-v1/.readonly-git/frontend/src/features/auth/model/contract.ts". Does the file exist?
+  Plugin: vite:import-analysis
+  File: /Users/lhs/.codex/worktrees/ac70/mcr/docs/mcr/evidence/art-gifts-content-v1/.readonly-git/frontend/src/features/auth/model/contract.ts:2:21
+  1  |  import { z } from "zod";
+  2  |  import contract from "../../../../../contracts/generated/mcr-core.openapi.json";
+     |                        ^
+  3  |  export const object = (value) => {
+  4  |  	if (!value || typeof value !== "object" || Array.isArray(value)) throw new Error("Invalid contract value");
+11:31:57 PM [vite] (client) Pre-transform error: Failed to resolve import "../../../../../contracts/generated/mcr-core.openapi.json" from "docs/mcr/evidence/art-gifts-content-v1/.readonly-git/frontend/src/features/auth/model/contract.ts". Does the file exist?
+  Plugin: vite:import-analysis
+  File: /Users/lhs/.codex/worktrees/ac70/mcr/docs/mcr/evidence/art-gifts-content-v1/.readonly-git/frontend/src/features/auth/model/contract.ts:2:21
+  1  |  import { z } from "zod";
+  2  |  import contract from "../../../../../contracts/generated/mcr-core.openapi.json";
+     |                        ^
+  3  |  export const object = (value) => {
+  4  |  	if (!value || typeof value !== "object" || Array.isArray(value)) throw new Error("Invalid contract value");
+11:31:57 PM [vite] (client) Pre-transform error: Failed to resolve import "/Users/lhs/.codex/worktrees/ac70/mcr/docs/mcr/evidence/art-gifts-content-v1/.readonly-git/frontend/src/entities/avatar/whole-character/view.tsx" from "docs/mcr/evidence/art-gifts-content-v1/.readonly-git/frontend/src/entities/avatar/whole-character/view.tsx". Does the file exist?
+  Plugin: vite:import-analysis
+  File: /Users/lhs/.codex/worktrees/ac70/mcr/docs/mcr/evidence/art-gifts-content-v1/.readonly-git/frontend/src/entities/avatar/whole-character/view.tsx:102:46
+  100 |  import * as RefreshRuntime from "/@react-refresh";
+  101 |  const inWebWorker = typeof WorkerGlobalScope !== 'undefined' && self instanceof WorkerGlobalScope;
+  102 |  import * as __vite_react_currentExports from "/Users/lhs/.codex/worktrees/ac70/mcr/docs/mcr/evidence/art-gifts-conten...
+      |                                                ^
+  103 |  if (import.meta.hot && !inWebWorker) {
+  104 |    if (!window.$RefreshReg$) {
+11:31:57 PM [vite] (client) Pre-transform error: Failed to resolve import "../../../../../contracts/assets/v1/avatar-config.schema.json" from "docs/mcr/evidence/art-gifts-content-v1/.readonly-git/frontend/src/entities/avatar/whole-character/contract.ts". Does the file exist?
+  Plugin: vite:import-analysis
+  File: /Users/lhs/.codex/worktrees/ac70/mcr/docs/mcr/evidence/art-gifts-content-v1/.readonly-git/frontend/src/entities/avatar/whole-character/contract.ts:1:25
+  1  |  import configSchema from "../../../../../contracts/assets/v1/avatar-config.schema.json";
+     |                            ^
+  2  |  import manifestSchema from "../../../../../contracts/assets/v1/avatar-manifest.schema.json";
+  3  |  import commonSchema from "../../../../../contracts/assets/v1/common.schema.json";
+11:31:57 PM [vite] (client) Pre-transform error: Failed to resolve import "../../../../../contracts/assets/v1/avatar-config.schema.json" from "docs/mcr/evidence/art-gifts-content-v1/.readonly-git/frontend/src/entities/avatar/whole-character/contract.ts". Does the file exist?
+  Plugin: vite:import-analysis
+  File: /Users/lhs/.codex/worktrees/ac70/mcr/docs/mcr/evidence/art-gifts-content-v1/.readonly-git/frontend/src/entities/avatar/whole-character/contract.ts:1:25
+  1  |  import configSchema from "../../../../../contracts/assets/v1/avatar-config.schema.json";
+     |                            ^
+  2  |  import manifestSchema from "../../../../../contracts/assets/v1/avatar-manifest.schema.json";
+  3  |  import commonSchema from "../../../../../contracts/assets/v1/common.schema.json";
+
+ORIGINAL_WORK_DEADLINE

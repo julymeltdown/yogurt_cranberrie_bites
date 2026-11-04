@@ -1,0 +1,2696 @@
+{
+  "status": "PASS_EXISTING_PACKET_READBACK",
+  "method": "Read retained report/PNG metadata in place; no runtime jobs, native image copies, source replay or new capture. Direct owner image observations are in owner-visual-art03-retry01.md.",
+  "nativeDirectory": "/Users/lhs/Desktop/mcr-worktrees/fe-delivery-publish/docs/mcr/evidence/map-production-binding/native-composition-art03-retry01",
+  "reportBytes": 1017699,
+  "reportSha256": "9c653908d8afebcecdff920f880731e92709d0175543fb59c774b319e68b8683",
+  "candidate": "fe0f7ab545aea9317382130483898e9aa3bcb2aa",
+  "qualification": "EXPLICIT_CONTRACT_FIXTURE_MAP_REFERENCE_COMPOSITION_DEFAULT_CLIENT_ONLY",
+  "productionAdmitted": false,
+  "presentationHash": "sha256:4922af8c4761014a2dd672ec52610ab9abd394be0bcc0b29e7780421167600ca",
+  "contexts": 19,
+  "images": {
+    "before-revenge-360.png": {
+      "bytes": 321557,
+      "sha256": "sha256:e3dd412e2fe0b607bcc339e2bcb518612872aa9446994aace7d50dbc746eda1b",
+      "reportHashEqual": true
+    },
+    "before-revenge-390.png": {
+      "bytes": 369246,
+      "sha256": "sha256:81164507596f475cfbe3028cae34f3e205ad74b6c468d2f561893fa8b54010da",
+      "reportHashEqual": true
+    },
+    "before-revenge-430.png": {
+      "bytes": 427996,
+      "sha256": "sha256:0c412f110231c4d02e20dffd8d6cb8809f35c477c6c214418ea31f644e17f686",
+      "reportHashEqual": true
+    },
+    "before-parade-360.png": {
+      "bytes": 324299,
+      "sha256": "sha256:33949575ed7a5aed5e91a654d8dd1bb71b83c35f284fda12121958d84c5e1460",
+      "reportHashEqual": true
+    },
+    "before-parade-390.png": {
+      "bytes": 372174,
+      "sha256": "sha256:2e5d940c64ba1fb249028c2fb588b00da97f4b46610628bb8974d7d6839cfe9c",
+      "reportHashEqual": true
+    },
+    "before-parade-430.png": {
+      "bytes": 431641,
+      "sha256": "sha256:2e389059dd341b9df9cb5bbbcf6079aa7cdd9f1ac79ba16433cfdeb51265bc89",
+      "reportHashEqual": true
+    },
+    "before-danger-360.png": {
+      "bytes": 324112,
+      "sha256": "sha256:7441506a83b2295b69cbaeeec23e7fb3a3c89420fd3338fad638e768cf67c271",
+      "reportHashEqual": true
+    },
+    "before-danger-390.png": {
+      "bytes": 372307,
+      "sha256": "sha256:08179d325eebfad368959709f5077d5d7c92c8ba2e1600e5273acb3719fedf50",
+      "reportHashEqual": true
+    },
+    "before-danger-430.png": {
+      "bytes": 431532,
+      "sha256": "sha256:e9f8b4f6a4fc3d95c92c729637f4d27425ccbbaf96d41465bb444a617135294c",
+      "reportHashEqual": true
+    },
+    "after-revenge-360.png": {
+      "bytes": 190200,
+      "sha256": "sha256:e0329639c8cd8c739b001a9b3206402d26d5a157085a203a8df57a230545fa0f",
+      "reportHashEqual": true
+    },
+    "after-revenge-390.png": {
+      "bytes": 210106,
+      "sha256": "sha256:c4e0247fc7cd9d98d06f84a78710fd784007de4a94435758c491b4e01ee42c48",
+      "reportHashEqual": true
+    },
+    "after-revenge-430.png": {
+      "bytes": 248641,
+      "sha256": "sha256:43b19e6157c20b63e3bb480a13a248af442eda4b7a0b3c3c733314c205244c61",
+      "reportHashEqual": true
+    },
+    "after-parade-360.png": {
+      "bytes": 193310,
+      "sha256": "sha256:d794ec744f090814dc3e980357bfa592962d1e1b8aef1d287976d57d08bb6879",
+      "reportHashEqual": true
+    },
+    "after-parade-390.png": {
+      "bytes": 213544,
+      "sha256": "sha256:363fd44b0f6a13b70fcf267fb03ac93da9aed12b10f23d27ebe9107eb07c3268",
+      "reportHashEqual": true
+    },
+    "after-parade-430.png": {
+      "bytes": 253412,
+      "sha256": "sha256:f7ae7d7b3e43020bde9a0ab9fe8e1400a9b3a7a72b5c39932e8754e0a63353f6",
+      "reportHashEqual": true
+    },
+    "after-parade-390-short.png": {
+      "bytes": 80216,
+      "sha256": "sha256:25cce53e60f757490c89954c34be017c71a18388cf2633824225cd3794b459a3",
+      "reportHashEqual": true
+    },
+    "after-danger-360.png": {
+      "bytes": 191759,
+      "sha256": "sha256:373ae196ec70e0930c4625509c6dc3a9e3f42b5db1d213e0144a44de58e33225",
+      "reportHashEqual": true
+    },
+    "after-danger-390.png": {
+      "bytes": 211825,
+      "sha256": "sha256:3e60c9760a8728f1ac05ebc83d98ec63f4cfdf487270375a21acf9bd45a4039a",
+      "reportHashEqual": true
+    },
+    "after-danger-430.png": {
+      "bytes": 251000,
+      "sha256": "sha256:5f7ec5ec59d64788599dcfef1a462d91d5b24481a1ef51ee1d919085d71661f9",
+      "reportHashEqual": true
+    },
+    "forced-focus-parade-390.png": {
+      "bytes": 201782,
+      "sha256": "sha256:e8f41c8805b44ff9d595459f023bd8cad2af163e366f94b85890defc49c559e9",
+      "reportNamedFocusCapture": true,
+      "hashLimit": "No per-focus image hash in report; independent current-file hash recorded, Git publication proof binds exact blob/mode."
+    },
+    "forced-focus-parade-390-short.png": {
+      "bytes": 75167,
+      "sha256": "sha256:501ff60b54a32c0fd3a41304751705fb176c5eaf2f702515c108bfda99d5c03f",
+      "reportNamedFocusCapture": true,
+      "hashLimit": "No per-focus image hash in report; independent current-file hash recorded, Git publication proof binds exact blob/mode."
+    }
+  },
+  "worldPairs": [
+    {
+      "era": "REVENGE",
+      "width": 360,
+      "worldRgba": "sha256:cbb7b4926aa3559bfdd2943f7271eef6b8bb76b2a5abf3c63624906f4cd023c1",
+      "worldObjects": 29,
+      "worldRgbaObjectsMapEntitiesAndBothCamerasEqual": true
+    },
+    {
+      "era": "REVENGE",
+      "width": 390,
+      "worldRgba": "sha256:d04da6e0cfcb91ef2ea3ff2e6601b0d7d7e4090108496a5ad29d74fb131fd0b5",
+      "worldObjects": 29,
+      "worldRgbaObjectsMapEntitiesAndBothCamerasEqual": true
+    },
+    {
+      "era": "REVENGE",
+      "width": 430,
+      "worldRgba": "sha256:d6f94d3a03cba49bb5659f4fb03e3dc2478bbf8f3ca1b545de800bb770b831a7",
+      "worldObjects": 29,
+      "worldRgbaObjectsMapEntitiesAndBothCamerasEqual": true
+    },
+    {
+      "era": "PARADE",
+      "width": 360,
+      "worldRgba": "sha256:2c547e09c3a7b9478b23e21c57abba20da0f65aeaac1a4e93d3061ec35995c8d",
+      "worldObjects": 29,
+      "worldRgbaObjectsMapEntitiesAndBothCamerasEqual": true
+    },
+    {
+      "era": "PARADE",
+      "width": 390,
+      "worldRgba": "sha256:1bcd5d6ab5ebe886ca6c75f1af15a27e4b321460abeb96932e75069c43809eba",
+      "worldObjects": 29,
+      "worldRgbaObjectsMapEntitiesAndBothCamerasEqual": true
+    },
+    {
+      "era": "PARADE",
+      "width": 430,
+      "worldRgba": "sha256:d57728cc9f162393331acded925334340bf8c2d06b694305e1765bbf40737f66",
+      "worldObjects": 29,
+      "worldRgbaObjectsMapEntitiesAndBothCamerasEqual": true
+    },
+    {
+      "era": "DANGER",
+      "width": 360,
+      "worldRgba": "sha256:ae4c7a74293df814ced6000a3eee8989468a4c035ae48d170542f970ae1fb113",
+      "worldObjects": 29,
+      "worldRgbaObjectsMapEntitiesAndBothCamerasEqual": true
+    },
+    {
+      "era": "DANGER",
+      "width": 390,
+      "worldRgba": "sha256:6e675b7807408a83d55909d38fe6b4878638aaddec07b1b63114e408f7e924fd",
+      "worldObjects": 29,
+      "worldRgbaObjectsMapEntitiesAndBothCamerasEqual": true
+    },
+    {
+      "era": "DANGER",
+      "width": 430,
+      "worldRgba": "sha256:a680809acdf5676e443658debce495e07f8b44a0e3f36fd50d049e8dda5f25f2",
+      "worldObjects": 29,
+      "worldRgbaObjectsMapEntitiesAndBothCamerasEqual": true
+    }
+  ],
+  "virtualRoutes": [
+    {
+      "era": "REVENGE",
+      "width": 360,
+      "height": 844,
+      "intent": "wall",
+      "path": "/wall",
+      "targetWidth": 93.796875,
+      "targetHeight": 44
+    },
+    {
+      "era": "REVENGE",
+      "width": 360,
+      "height": 844,
+      "intent": "feed",
+      "path": "/feed",
+      "targetWidth": 81.5,
+      "targetHeight": 44
+    },
+    {
+      "era": "REVENGE",
+      "width": 360,
+      "height": 844,
+      "intent": "meet",
+      "path": "/meet",
+      "targetWidth": 101.875,
+      "targetHeight": 44
+    },
+    {
+      "era": "REVENGE",
+      "width": 360,
+      "height": 844,
+      "intent": "gifts",
+      "path": "/gifts",
+      "targetWidth": 101.875,
+      "targetHeight": 44
+    },
+    {
+      "era": "REVENGE",
+      "width": 390,
+      "height": 844,
+      "intent": "wall",
+      "path": "/wall",
+      "targetWidth": 102.4375,
+      "targetHeight": 44
+    },
+    {
+      "era": "REVENGE",
+      "width": 390,
+      "height": 844,
+      "intent": "feed",
+      "path": "/feed",
+      "targetWidth": 89,
+      "targetHeight": 44
+    },
+    {
+      "era": "REVENGE",
+      "width": 390,
+      "height": 844,
+      "intent": "meet",
+      "path": "/meet",
+      "targetWidth": 111.25,
+      "targetHeight": 44
+    },
+    {
+      "era": "REVENGE",
+      "width": 390,
+      "height": 844,
+      "intent": "gifts",
+      "path": "/gifts",
+      "targetWidth": 111.25,
+      "targetHeight": 44
+    },
+    {
+      "era": "REVENGE",
+      "width": 430,
+      "height": 844,
+      "intent": "wall",
+      "path": "/wall",
+      "targetWidth": 113.953125,
+      "targetHeight": 44
+    },
+    {
+      "era": "REVENGE",
+      "width": 430,
+      "height": 844,
+      "intent": "feed",
+      "path": "/feed",
+      "targetWidth": 99,
+      "targetHeight": 44
+    },
+    {
+      "era": "REVENGE",
+      "width": 430,
+      "height": 844,
+      "intent": "meet",
+      "path": "/meet",
+      "targetWidth": 123.75,
+      "targetHeight": 44
+    },
+    {
+      "era": "REVENGE",
+      "width": 430,
+      "height": 844,
+      "intent": "gifts",
+      "path": "/gifts",
+      "targetWidth": 123.75,
+      "targetHeight": 44
+    },
+    {
+      "era": "PARADE",
+      "width": 360,
+      "height": 844,
+      "intent": "wall",
+      "path": "/wall",
+      "targetWidth": 93.796875,
+      "targetHeight": 44
+    },
+    {
+      "era": "PARADE",
+      "width": 360,
+      "height": 844,
+      "intent": "feed",
+      "path": "/feed",
+      "targetWidth": 81.5,
+      "targetHeight": 44
+    },
+    {
+      "era": "PARADE",
+      "width": 360,
+      "height": 844,
+      "intent": "meet",
+      "path": "/meet",
+      "targetWidth": 101.875,
+      "targetHeight": 44
+    },
+    {
+      "era": "PARADE",
+      "width": 360,
+      "height": 844,
+      "intent": "gifts",
+      "path": "/gifts",
+      "targetWidth": 101.875,
+      "targetHeight": 44
+    },
+    {
+      "era": "PARADE",
+      "width": 390,
+      "height": 844,
+      "intent": "wall",
+      "path": "/wall",
+      "targetWidth": 102.4375,
+      "targetHeight": 44
+    },
+    {
+      "era": "PARADE",
+      "width": 390,
+      "height": 844,
+      "intent": "feed",
+      "path": "/feed",
+      "targetWidth": 89,
+      "targetHeight": 44
+    },
+    {
+      "era": "PARADE",
+      "width": 390,
+      "height": 844,
+      "intent": "meet",
+      "path": "/meet",
+      "targetWidth": 111.25,
+      "targetHeight": 44
+    },
+    {
+      "era": "PARADE",
+      "width": 390,
+      "height": 844,
+      "intent": "gifts",
+      "path": "/gifts",
+      "targetWidth": 111.25,
+      "targetHeight": 44
+    },
+    {
+      "era": "PARADE",
+      "width": 430,
+      "height": 844,
+      "intent": "wall",
+      "path": "/wall",
+      "targetWidth": 113.953125,
+      "targetHeight": 44
+    },
+    {
+      "era": "PARADE",
+      "width": 430,
+      "height": 844,
+      "intent": "feed",
+      "path": "/feed",
+      "targetWidth": 99,
+      "targetHeight": 44
+    },
+    {
+      "era": "PARADE",
+      "width": 430,
+      "height": 844,
+      "intent": "meet",
+      "path": "/meet",
+      "targetWidth": 123.75,
+      "targetHeight": 44
+    },
+    {
+      "era": "PARADE",
+      "width": 430,
+      "height": 844,
+      "intent": "gifts",
+      "path": "/gifts",
+      "targetWidth": 123.75,
+      "targetHeight": 44
+    },
+    {
+      "era": "PARADE",
+      "width": 390,
+      "height": 420,
+      "intent": "wall",
+      "path": "/wall",
+      "targetWidth": 76.390625,
+      "targetHeight": 44
+    },
+    {
+      "era": "PARADE",
+      "width": 390,
+      "height": 420,
+      "intent": "feed",
+      "path": "/feed",
+      "targetWidth": 66.359375,
+      "targetHeight": 44
+    },
+    {
+      "era": "PARADE",
+      "width": 390,
+      "height": 420,
+      "intent": "meet",
+      "path": "/meet",
+      "targetWidth": 82.953125,
+      "targetHeight": 44
+    },
+    {
+      "era": "PARADE",
+      "width": 390,
+      "height": 420,
+      "intent": "gifts",
+      "path": "/gifts",
+      "targetWidth": 82.953125,
+      "targetHeight": 44
+    },
+    {
+      "era": "DANGER",
+      "width": 360,
+      "height": 844,
+      "intent": "wall",
+      "path": "/wall",
+      "targetWidth": 93.796875,
+      "targetHeight": 44
+    },
+    {
+      "era": "DANGER",
+      "width": 360,
+      "height": 844,
+      "intent": "feed",
+      "path": "/feed",
+      "targetWidth": 81.5,
+      "targetHeight": 44
+    },
+    {
+      "era": "DANGER",
+      "width": 360,
+      "height": 844,
+      "intent": "meet",
+      "path": "/meet",
+      "targetWidth": 101.875,
+      "targetHeight": 44
+    },
+    {
+      "era": "DANGER",
+      "width": 360,
+      "height": 844,
+      "intent": "gifts",
+      "path": "/gifts",
+      "targetWidth": 101.875,
+      "targetHeight": 44
+    },
+    {
+      "era": "DANGER",
+      "width": 390,
+      "height": 844,
+      "intent": "wall",
+      "path": "/wall",
+      "targetWidth": 102.4375,
+      "targetHeight": 44
+    },
+    {
+      "era": "DANGER",
+      "width": 390,
+      "height": 844,
+      "intent": "feed",
+      "path": "/feed",
+      "targetWidth": 89,
+      "targetHeight": 44
+    },
+    {
+      "era": "DANGER",
+      "width": 390,
+      "height": 844,
+      "intent": "meet",
+      "path": "/meet",
+      "targetWidth": 111.25,
+      "targetHeight": 44
+    },
+    {
+      "era": "DANGER",
+      "width": 390,
+      "height": 844,
+      "intent": "gifts",
+      "path": "/gifts",
+      "targetWidth": 111.25,
+      "targetHeight": 44
+    },
+    {
+      "era": "DANGER",
+      "width": 430,
+      "height": 844,
+      "intent": "wall",
+      "path": "/wall",
+      "targetWidth": 113.953125,
+      "targetHeight": 44
+    },
+    {
+      "era": "DANGER",
+      "width": 430,
+      "height": 844,
+      "intent": "feed",
+      "path": "/feed",
+      "targetWidth": 99,
+      "targetHeight": 44
+    },
+    {
+      "era": "DANGER",
+      "width": 430,
+      "height": 844,
+      "intent": "meet",
+      "path": "/meet",
+      "targetWidth": 123.75,
+      "targetHeight": 44
+    },
+    {
+      "era": "DANGER",
+      "width": 430,
+      "height": 844,
+      "intent": "gifts",
+      "path": "/gifts",
+      "targetWidth": 123.75,
+      "targetHeight": 44
+    }
+  ],
+  "afterForegroundAndControls": [
+    {
+      "era": "REVENGE",
+      "width": 360,
+      "height": 844,
+      "foreground": {
+        "family": "\"Arial Narrow\", sans-serif",
+        "weight": "800",
+        "fontSize": "14px",
+        "loadedFaces": [],
+        "labelFontCssPx": 16.979166666666668,
+        "image": {
+          "x": 17,
+          "y": 130.5625,
+          "width": 326,
+          "height": 550.125
+        },
+        "viewport": {
+          "clientHeight": 681,
+          "scrollHeight": 681,
+          "clientWidth": 326,
+          "scrollWidth": 326
+        },
+        "runtimeFontDisposedAfterRaster": true,
+        "actualLabelInk": [
+          {
+            "label": "MAIN STAGE",
+            "font": "40px \"MCR Map4 Composition Labels\"",
+            "advance": 207.5390625,
+            "inkLeft": -2.109375,
+            "inkRight": 206.640625,
+            "ascent": 28.84765625,
+            "descent": 0.390625,
+            "paint": {
+              "x": 264,
+              "y": 163,
+              "width": 292,
+              "height": 64,
+              "textX": 332,
+              "textBaseline": 209.228515625
+            },
+            "exclusion": {
+              "x": 254,
+              "y": 156,
+              "width": 312,
+              "height": 78
+            },
+            "fontProbeQualification": "Independent original-byte metrics; not a persistent production font owner"
+          },
+          {
+            "label": "PLAZA",
+            "font": "40px \"MCR Map4 Composition Labels\"",
+            "advance": 112.05078125,
+            "inkLeft": -2.109375,
+            "inkRight": 111.73828125,
+            "ascent": 28.4375,
+            "descent": 0,
+            "paint": {
+              "x": 258.5,
+              "y": 470,
+              "width": 141,
+              "height": 64,
+              "textX": 270.5,
+              "textBaseline": 516.21875
+            },
+            "exclusion": {
+              "x": 257.5,
+              "y": 463,
+              "width": 143,
+              "height": 78
+            },
+            "fontProbeQualification": "Independent original-byte metrics; not a persistent production font owner"
+          },
+          {
+            "label": "WALL",
+            "font": "40px \"MCR Map4 Composition Labels\"",
+            "advance": 91.3671875,
+            "inkLeft": -0.76171875,
+            "inkRight": 90.390625,
+            "ascent": 28.4375,
+            "descent": 0,
+            "paint": {
+              "x": 72,
+              "y": 677,
+              "width": 176,
+              "height": 64,
+              "textX": 140,
+              "textBaseline": 723.21875
+            },
+            "exclusion": {
+              "x": 49.5,
+              "y": 670,
+              "width": 221,
+              "height": 78
+            },
+            "fontProbeQualification": "Independent original-byte metrics; not a persistent production font owner"
+          },
+          {
+            "label": "FEED",
+            "font": "40px \"MCR Map4 Composition Labels\"",
+            "advance": 80.703125,
+            "inkLeft": -2.109375,
+            "inkRight": 79.00390625,
+            "ascent": 28.4375,
+            "descent": 0,
+            "paint": {
+              "x": 558.5,
+              "y": 660,
+              "width": 165,
+              "height": 64,
+              "textX": 626.5,
+              "textBaseline": 706.21875
+            },
+            "exclusion": {
+              "x": 545,
+              "y": 653,
+              "width": 192,
+              "height": 78
+            },
+            "fontProbeQualification": "Independent original-byte metrics; not a persistent production font owner"
+          },
+          {
+            "label": "MEET",
+            "font": "40px \"MCR Map4 Composition Labels\"",
+            "advance": 91.81640625,
+            "inkLeft": -2.109375,
+            "inkRight": 90.8203125,
+            "ascent": 28.4375,
+            "descent": 0,
+            "paint": {
+              "x": 288,
+              "y": 901,
+              "width": 176,
+              "height": 64,
+              "textX": 356,
+              "textBaseline": 947.21875
+            },
+            "exclusion": {
+              "x": 256,
+              "y": 894,
+              "width": 240,
+              "height": 78
+            },
+            "fontProbeQualification": "Independent original-byte metrics; not a persistent production font owner"
+          },
+          {
+            "label": "GIFTS",
+            "font": "40px \"MCR Map4 Composition Labels\"",
+            "advance": 97.3828125,
+            "inkLeft": -1.7578125,
+            "inkRight": 95.87890625,
+            "ascent": 28.84765625,
+            "descent": 0.390625,
+            "paint": {
+              "x": 424,
+              "y": 1128,
+              "width": 182,
+              "height": 64,
+              "textX": 492,
+              "textBaseline": 1174.228515625
+            },
+            "exclusion": {
+              "x": 395,
+              "y": 1121,
+              "width": 240,
+              "height": 78
+            },
+            "fontProbeQualification": "Independent original-byte metrics; not a persistent production font owner"
+          }
+        ]
+      },
+      "controls": {
+        "localZoomFitReset": true,
+        "cameraUnchanged": true,
+        "bounds": [
+          {
+            "name": "Zoom in map view",
+            "width": 44,
+            "height": 44
+          },
+          {
+            "name": "Zoom out map view",
+            "width": 44,
+            "height": 44
+          },
+          {
+            "name": "Places",
+            "width": 81.5,
+            "height": 44
+          },
+          {
+            "name": "Legend",
+            "width": 81.5,
+            "height": 44
+          },
+          {
+            "name": "Fit map",
+            "width": 81.5,
+            "height": 44
+          },
+          {
+            "name": "Reset view",
+            "width": 81.5,
+            "height": 44
+          }
+        ],
+        "forcedFocus": {
+          "style": "solid",
+          "width": "3px",
+          "offset": "-4px",
+          "color": "rgba(5, 0, 73, 0.8)"
+        }
+      }
+    },
+    {
+      "era": "REVENGE",
+      "width": 390,
+      "height": 844,
+      "foreground": {
+        "family": "\"Arial Narrow\", sans-serif",
+        "weight": "800",
+        "fontSize": "14px",
+        "loadedFaces": [],
+        "labelFontCssPx": 18.541666666666668,
+        "image": {
+          "x": 17,
+          "y": 105.25,
+          "width": 356,
+          "height": 600.75
+        },
+        "viewport": {
+          "clientHeight": 681,
+          "scrollHeight": 681,
+          "clientWidth": 356,
+          "scrollWidth": 356
+        },
+        "runtimeFontDisposedAfterRaster": true,
+        "actualLabelInk": [
+          {
+            "label": "MAIN STAGE",
+            "font": "40px \"MCR Map4 Composition Labels\"",
+            "advance": 207.5390625,
+            "inkLeft": -2.109375,
+            "inkRight": 206.640625,
+            "ascent": 28.84765625,
+            "descent": 0.390625,
+            "paint": {
+              "x": 264,
+              "y": 163,
+              "width": 292,
+              "height": 64,
+              "textX": 332,
+              "textBaseline": 209.228515625
+            },
+            "exclusion": {
+              "x": 254,
+              "y": 156,
+              "width": 312,
+              "height": 78
+            },
+            "fontProbeQualification": "Independent original-byte metrics; not a persistent production font owner"
+          },
+          {
+            "label": "PLAZA",
+            "font": "40px \"MCR Map4 Composition Labels\"",
+            "advance": 112.05078125,
+            "inkLeft": -2.109375,
+            "inkRight": 111.73828125,
+            "ascent": 28.4375,
+            "descent": 0,
+            "paint": {
+              "x": 258.5,
+              "y": 470,
+              "width": 141,
+              "height": 64,
+              "textX": 270.5,
+              "textBaseline": 516.21875
+            },
+            "exclusion": {
+              "x": 257.5,
+              "y": 463,
+              "width": 143,
+              "height": 78
+            },
+            "fontProbeQualification": "Independent original-byte metrics; not a persistent production font owner"
+          },
+          {
+            "label": "WALL",
+            "font": "40px \"MCR Map4 Composition Labels\"",
+            "advance": 91.3671875,
+            "inkLeft": -0.76171875,
+            "inkRight": 90.390625,
+            "ascent": 28.4375,
+            "descent": 0,
+            "paint": {
+              "x": 72,
+              "y": 677,
+              "width": 176,
+              "height": 64,
+              "textX": 140,
+              "textBaseline": 723.21875
+            },
+            "exclusion": {
+              "x": 49.5,
+              "y": 670,
+              "width": 221,
+              "height": 78
+            },
+            "fontProbeQualification": "Independent original-byte metrics; not a persistent production font owner"
+          },
+          {
+            "label": "FEED",
+            "font": "40px \"MCR Map4 Composition Labels\"",
+            "advance": 80.703125,
+            "inkLeft": -2.109375,
+            "inkRight": 79.00390625,
+            "ascent": 28.4375,
+            "descent": 0,
+            "paint": {
+              "x": 558.5,
+              "y": 660,
+              "width": 165,
+              "height": 64,
+              "textX": 626.5,
+              "textBaseline": 706.21875
+            },
+            "exclusion": {
+              "x": 545,
+              "y": 653,
+              "width": 192,
+              "height": 78
+            },
+            "fontProbeQualification": "Independent original-byte metrics; not a persistent production font owner"
+          },
+          {
+            "label": "MEET",
+            "font": "40px \"MCR Map4 Composition Labels\"",
+            "advance": 91.81640625,
+            "inkLeft": -2.109375,
+            "inkRight": 90.8203125,
+            "ascent": 28.4375,
+            "descent": 0,
+            "paint": {
+              "x": 288,
+              "y": 901,
+              "width": 176,
+              "height": 64,
+              "textX": 356,
+              "textBaseline": 947.21875
+            },
+            "exclusion": {
+              "x": 256,
+              "y": 894,
+              "width": 240,
+              "height": 78
+            },
+            "fontProbeQualification": "Independent original-byte metrics; not a persistent production font owner"
+          },
+          {
+            "label": "GIFTS",
+            "font": "40px \"MCR Map4 Composition Labels\"",
+            "advance": 97.3828125,
+            "inkLeft": -1.7578125,
+            "inkRight": 95.87890625,
+            "ascent": 28.84765625,
+            "descent": 0.390625,
+            "paint": {
+              "x": 424,
+              "y": 1128,
+              "width": 182,
+              "height": 64,
+              "textX": 492,
+              "textBaseline": 1174.228515625
+            },
+            "exclusion": {
+              "x": 395,
+              "y": 1121,
+              "width": 240,
+              "height": 78
+            },
+            "fontProbeQualification": "Independent original-byte metrics; not a persistent production font owner"
+          }
+        ]
+      },
+      "controls": {
+        "localZoomFitReset": true,
+        "cameraUnchanged": true,
+        "bounds": [
+          {
+            "name": "Zoom in map view",
+            "width": 44,
+            "height": 44
+          },
+          {
+            "name": "Zoom out map view",
+            "width": 44,
+            "height": 44
+          },
+          {
+            "name": "Places",
+            "width": 89,
+            "height": 44
+          },
+          {
+            "name": "Legend",
+            "width": 89,
+            "height": 44
+          },
+          {
+            "name": "Fit map",
+            "width": 89,
+            "height": 44
+          },
+          {
+            "name": "Reset view",
+            "width": 89,
+            "height": 44
+          }
+        ],
+        "forcedFocus": {
+          "style": "solid",
+          "width": "3px",
+          "offset": "-4px",
+          "color": "rgba(5, 0, 73, 0.8)"
+        }
+      }
+    },
+    {
+      "era": "REVENGE",
+      "width": 430,
+      "height": 844,
+      "foreground": {
+        "family": "\"Arial Narrow\", sans-serif",
+        "weight": "800",
+        "fontSize": "14px",
+        "loadedFaces": [],
+        "labelFontCssPx": 20.625,
+        "image": {
+          "x": 17,
+          "y": 71.5,
+          "width": 396,
+          "height": 668.25
+        },
+        "viewport": {
+          "clientHeight": 681,
+          "scrollHeight": 681,
+          "clientWidth": 396,
+          "scrollWidth": 396
+        },
+        "runtimeFontDisposedAfterRaster": true,
+        "actualLabelInk": [
+          {
+            "label": "MAIN STAGE",
+            "font": "40px \"MCR Map4 Composition Labels\"",
+            "advance": 207.5390625,
+            "inkLeft": -2.109375,
+            "inkRight": 206.640625,
+            "ascent": 28.84765625,
+            "descent": 0.390625,
+            "paint": {
+              "x": 264,
+              "y": 163,
+              "width": 292,
+              "height": 64,
+              "textX": 332,
+              "textBaseline": 209.228515625
+            },
+            "exclusion": {
+              "x": 254,
+              "y": 156,
+              "width": 312,
+              "height": 78
+            },
+            "fontProbeQualification": "Independent original-byte metrics; not a persistent production font owner"
+          },
+          {
+            "label": "PLAZA",
+            "font": "40px \"MCR Map4 Composition Labels\"",
+            "advance": 112.05078125,
+            "inkLeft": -2.109375,
+            "inkRight": 111.73828125,
+            "ascent": 28.4375,
+            "descent": 0,
+            "paint": {
+              "x": 258.5,
+              "y": 470,
+              "width": 141,
+              "height": 64,
+              "textX": 270.5,
+              "textBaseline": 516.21875
+            },
+            "exclusion": {
+              "x": 257.5,
+              "y": 463,
+              "width": 143,
+              "height": 78
+            },
+            "fontProbeQualification": "Independent original-byte metrics; not a persistent production font owner"
+          },
+          {
+            "label": "WALL",
+            "font": "40px \"MCR Map4 Composition Labels\"",
+            "advance": 91.3671875,
+            "inkLeft": -0.76171875,
+            "inkRight": 90.390625,
+            "ascent": 28.4375,
+            "descent": 0,
+            "paint": {
+              "x": 72,
+              "y": 677,
+              "width": 176,
+              "height": 64,
+              "textX": 140,
+              "textBaseline": 723.21875
+            },
+            "exclusion": {
+              "x": 49.5,
+              "y": 670,
+              "width": 221,
+              "height": 78
+            },
+            "fontProbeQualification": "Independent original-byte metrics; not a persistent production font owner"
+          },
+          {
+            "label": "FEED",
+            "font": "40px \"MCR Map4 Composition Labels\"",
+            "advance": 80.703125,
+            "inkLeft": -2.109375,
+            "inkRight": 79.00390625,
+            "ascent": 28.4375,
+            "descent": 0,
+            "paint": {
+              "x": 558.5,
+              "y": 660,
+              "width": 165,
+              "height": 64,
+              "textX": 626.5,
+              "textBaseline": 706.21875
+            },
+            "exclusion": {
+              "x": 545,
+              "y": 653,
+              "width": 192,
+              "height": 78
+            },
+            "fontProbeQualification": "Independent original-byte metrics; not a persistent production font owner"
+          },
+          {
+            "label": "MEET",
+            "font": "40px \"MCR Map4 Composition Labels\"",
+            "advance": 91.81640625,
+            "inkLeft": -2.109375,
+            "inkRight": 90.8203125,
+            "ascent": 28.4375,
+            "descent": 0,
+            "paint": {
+              "x": 288,
+              "y": 901,
+              "width": 176,
+              "height": 64,
+              "textX": 356,
+              "textBaseline": 947.21875
+            },
+            "exclusion": {
+              "x": 256,
+              "y": 894,
+              "width": 240,
+              "height": 78
+            },
+            "fontProbeQualification": "Independent original-byte metrics; not a persistent production font owner"
+          },
+          {
+            "label": "GIFTS",
+            "font": "40px \"MCR Map4 Composition Labels\"",
+            "advance": 97.3828125,
+            "inkLeft": -1.7578125,
+            "inkRight": 95.87890625,
+            "ascent": 28.84765625,
+            "descent": 0.390625,
+            "paint": {
+              "x": 424,
+              "y": 1128,
+              "width": 182,
+              "height": 64,
+              "textX": 492,
+              "textBaseline": 1174.228515625
+            },
+            "exclusion": {
+              "x": 395,
+              "y": 1121,
+              "width": 240,
+              "height": 78
+            },
+            "fontProbeQualification": "Independent original-byte metrics; not a persistent production font owner"
+          }
+        ]
+      },
+      "controls": {
+        "localZoomFitReset": true,
+        "cameraUnchanged": true,
+        "bounds": [
+          {
+            "name": "Zoom in map view",
+            "width": 44,
+            "height": 44
+          },
+          {
+            "name": "Zoom out map view",
+            "width": 44,
+            "height": 44
+          },
+          {
+            "name": "Places",
+            "width": 99,
+            "height": 44
+          },
+          {
+            "name": "Legend",
+            "width": 99,
+            "height": 44
+          },
+          {
+            "name": "Fit map",
+            "width": 99,
+            "height": 44
+          },
+          {
+            "name": "Reset view",
+            "width": 99,
+            "height": 44
+          }
+        ],
+        "forcedFocus": {
+          "style": "solid",
+          "width": "3px",
+          "offset": "-4px",
+          "color": "rgba(5, 0, 73, 0.8)"
+        }
+      }
+    },
+    {
+      "era": "PARADE",
+      "width": 360,
+      "height": 844,
+      "foreground": {
+        "family": "\"Arial Narrow\", sans-serif",
+        "weight": "800",
+        "fontSize": "14px",
+        "loadedFaces": [],
+        "labelFontCssPx": 16.979166666666668,
+        "image": {
+          "x": 17,
+          "y": 130.5625,
+          "width": 326,
+          "height": 550.125
+        },
+        "viewport": {
+          "clientHeight": 681,
+          "scrollHeight": 681,
+          "clientWidth": 326,
+          "scrollWidth": 326
+        },
+        "runtimeFontDisposedAfterRaster": true,
+        "actualLabelInk": [
+          {
+            "label": "MAIN STAGE",
+            "font": "40px \"MCR Map4 Composition Labels\"",
+            "advance": 207.5390625,
+            "inkLeft": -2.109375,
+            "inkRight": 206.640625,
+            "ascent": 28.84765625,
+            "descent": 0.390625,
+            "paint": {
+              "x": 264,
+              "y": 163,
+              "width": 292,
+              "height": 64,
+              "textX": 332,
+              "textBaseline": 209.228515625
+            },
+            "exclusion": {
+              "x": 254,
+              "y": 156,
+              "width": 312,
+              "height": 78
+            },
+            "fontProbeQualification": "Independent original-byte metrics; not a persistent production font owner"
+          },
+          {
+            "label": "PLAZA",
+            "font": "40px \"MCR Map4 Composition Labels\"",
+            "advance": 112.05078125,
+            "inkLeft": -2.109375,
+            "inkRight": 111.73828125,
+            "ascent": 28.4375,
+            "descent": 0,
+            "paint": {
+              "x": 258.5,
+              "y": 470,
+              "width": 141,
+              "height": 64,
+              "textX": 270.5,
+              "textBaseline": 516.21875
+            },
+            "exclusion": {
+              "x": 257.5,
+              "y": 463,
+              "width": 143,
+              "height": 78
+            },
+            "fontProbeQualification": "Independent original-byte metrics; not a persistent production font owner"
+          },
+          {
+            "label": "WALL",
+            "font": "40px \"MCR Map4 Composition Labels\"",
+            "advance": 91.3671875,
+            "inkLeft": -0.76171875,
+            "inkRight": 90.390625,
+            "ascent": 28.4375,
+            "descent": 0,
+            "paint": {
+              "x": 72,
+              "y": 677,
+              "width": 176,
+              "height": 64,
+              "textX": 140,
+              "textBaseline": 723.21875
+            },
+            "exclusion": {
+              "x": 49.5,
+              "y": 670,
+              "width": 221,
+              "height": 78
+            },
+            "fontProbeQualification": "Independent original-byte metrics; not a persistent production font owner"
+          },
+          {
+            "label": "FEED",
+            "font": "40px \"MCR Map4 Composition Labels\"",
+            "advance": 80.703125,
+            "inkLeft": -2.109375,
+            "inkRight": 79.00390625,
+            "ascent": 28.4375,
+            "descent": 0,
+            "paint": {
+              "x": 558.5,
+              "y": 660,
+              "width": 165,
+              "height": 64,
+              "textX": 626.5,
+              "textBaseline": 706.21875
+            },
+            "exclusion": {
+              "x": 545,
+              "y": 653,
+              "width": 192,
+              "height": 78
+            },
+            "fontProbeQualification": "Independent original-byte metrics; not a persistent production font owner"
+          },
+          {
+            "label": "MEET",
+            "font": "40px \"MCR Map4 Composition Labels\"",
+            "advance": 91.81640625,
+            "inkLeft": -2.109375,
+            "inkRight": 90.8203125,
+            "ascent": 28.4375,
+            "descent": 0,
+            "paint": {
+              "x": 288,
+              "y": 901,
+              "width": 176,
+              "height": 64,
+              "textX": 356,
+              "textBaseline": 947.21875
+            },
+            "exclusion": {
+              "x": 256,
+              "y": 894,
+              "width": 240,
+              "height": 78
+            },
+            "fontProbeQualification": "Independent original-byte metrics; not a persistent production font owner"
+          },
+          {
+            "label": "GIFTS",
+            "font": "40px \"MCR Map4 Composition Labels\"",
+            "advance": 97.3828125,
+            "inkLeft": -1.7578125,
+            "inkRight": 95.87890625,
+            "ascent": 28.84765625,
+            "descent": 0.390625,
+            "paint": {
+              "x": 424,
+              "y": 1128,
+              "width": 182,
+              "height": 64,
+              "textX": 492,
+              "textBaseline": 1174.228515625
+            },
+            "exclusion": {
+              "x": 395,
+              "y": 1121,
+              "width": 240,
+              "height": 78
+            },
+            "fontProbeQualification": "Independent original-byte metrics; not a persistent production font owner"
+          }
+        ]
+      },
+      "controls": {
+        "localZoomFitReset": true,
+        "cameraUnchanged": true,
+        "bounds": [
+          {
+            "name": "Zoom in map view",
+            "width": 44,
+            "height": 44
+          },
+          {
+            "name": "Zoom out map view",
+            "width": 44,
+            "height": 44
+          },
+          {
+            "name": "Places",
+            "width": 81.5,
+            "height": 44
+          },
+          {
+            "name": "Legend",
+            "width": 81.5,
+            "height": 44
+          },
+          {
+            "name": "Fit map",
+            "width": 81.5,
+            "height": 44
+          },
+          {
+            "name": "Reset view",
+            "width": 81.5,
+            "height": 44
+          }
+        ],
+        "forcedFocus": {
+          "style": "solid",
+          "width": "3px",
+          "offset": "-4px",
+          "color": "rgba(5, 0, 73, 0.8)"
+        }
+      }
+    },
+    {
+      "era": "PARADE",
+      "width": 390,
+      "height": 844,
+      "foreground": {
+        "family": "\"Arial Narrow\", sans-serif",
+        "weight": "800",
+        "fontSize": "14px",
+        "loadedFaces": [],
+        "labelFontCssPx": 18.541666666666668,
+        "image": {
+          "x": 17,
+          "y": 105.25,
+          "width": 356,
+          "height": 600.75
+        },
+        "viewport": {
+          "clientHeight": 681,
+          "scrollHeight": 681,
+          "clientWidth": 356,
+          "scrollWidth": 356
+        },
+        "runtimeFontDisposedAfterRaster": true,
+        "actualLabelInk": [
+          {
+            "label": "MAIN STAGE",
+            "font": "40px \"MCR Map4 Composition Labels\"",
+            "advance": 207.5390625,
+            "inkLeft": -2.109375,
+            "inkRight": 206.640625,
+            "ascent": 28.84765625,
+            "descent": 0.390625,
+            "paint": {
+              "x": 264,
+              "y": 163,
+              "width": 292,
+              "height": 64,
+              "textX": 332,
+              "textBaseline": 209.228515625
+            },
+            "exclusion": {
+              "x": 254,
+              "y": 156,
+              "width": 312,
+              "height": 78
+            },
+            "fontProbeQualification": "Independent original-byte metrics; not a persistent production font owner"
+          },
+          {
+            "label": "PLAZA",
+            "font": "40px \"MCR Map4 Composition Labels\"",
+            "advance": 112.05078125,
+            "inkLeft": -2.109375,
+            "inkRight": 111.73828125,
+            "ascent": 28.4375,
+            "descent": 0,
+            "paint": {
+              "x": 258.5,
+              "y": 470,
+              "width": 141,
+              "height": 64,
+              "textX": 270.5,
+              "textBaseline": 516.21875
+            },
+            "exclusion": {
+              "x": 257.5,
+              "y": 463,
+              "width": 143,
+              "height": 78
+            },
+            "fontProbeQualification": "Independent original-byte metrics; not a persistent production font owner"
+          },
+          {
+            "label": "WALL",
+            "font": "40px \"MCR Map4 Composition Labels\"",
+            "advance": 91.3671875,
+            "inkLeft": -0.76171875,
+            "inkRight": 90.390625,
+            "ascent": 28.4375,
+            "descent": 0,
+            "paint": {
+              "x": 72,
+              "y": 677,
+              "width": 176,
+              "height": 64,
+              "textX": 140,
+              "textBaseline": 723.21875
+            },
+            "exclusion": {
+              "x": 49.5,
+              "y": 670,
+              "width": 221,
+              "height": 78
+            },
+            "fontProbeQualification": "Independent original-byte metrics; not a persistent production font owner"
+          },
+          {
+            "label": "FEED",
+            "font": "40px \"MCR Map4 Composition Labels\"",
+            "advance": 80.703125,
+            "inkLeft": -2.109375,
+            "inkRight": 79.00390625,
+            "ascent": 28.4375,
+            "descent": 0,
+            "paint": {
+              "x": 558.5,
+              "y": 660,
+              "width": 165,
+              "height": 64,
+              "textX": 626.5,
+              "textBaseline": 706.21875
+            },
+            "exclusion": {
+              "x": 545,
+              "y": 653,
+              "width": 192,
+              "height": 78
+            },
+            "fontProbeQualification": "Independent original-byte metrics; not a persistent production font owner"
+          },
+          {
+            "label": "MEET",
+            "font": "40px \"MCR Map4 Composition Labels\"",
+            "advance": 91.81640625,
+            "inkLeft": -2.109375,
+            "inkRight": 90.8203125,
+            "ascent": 28.4375,
+            "descent": 0,
+            "paint": {
+              "x": 288,
+              "y": 901,
+              "width": 176,
+              "height": 64,
+              "textX": 356,
+              "textBaseline": 947.21875
+            },
+            "exclusion": {
+              "x": 256,
+              "y": 894,
+              "width": 240,
+              "height": 78
+            },
+            "fontProbeQualification": "Independent original-byte metrics; not a persistent production font owner"
+          },
+          {
+            "label": "GIFTS",
+            "font": "40px \"MCR Map4 Composition Labels\"",
+            "advance": 97.3828125,
+            "inkLeft": -1.7578125,
+            "inkRight": 95.87890625,
+            "ascent": 28.84765625,
+            "descent": 0.390625,
+            "paint": {
+              "x": 424,
+              "y": 1128,
+              "width": 182,
+              "height": 64,
+              "textX": 492,
+              "textBaseline": 1174.228515625
+            },
+            "exclusion": {
+              "x": 395,
+              "y": 1121,
+              "width": 240,
+              "height": 78
+            },
+            "fontProbeQualification": "Independent original-byte metrics; not a persistent production font owner"
+          }
+        ]
+      },
+      "controls": {
+        "localZoomFitReset": true,
+        "cameraUnchanged": true,
+        "bounds": [
+          {
+            "name": "Zoom in map view",
+            "width": 44,
+            "height": 44
+          },
+          {
+            "name": "Zoom out map view",
+            "width": 44,
+            "height": 44
+          },
+          {
+            "name": "Places",
+            "width": 89,
+            "height": 44
+          },
+          {
+            "name": "Legend",
+            "width": 89,
+            "height": 44
+          },
+          {
+            "name": "Fit map",
+            "width": 89,
+            "height": 44
+          },
+          {
+            "name": "Reset view",
+            "width": 89,
+            "height": 44
+          }
+        ],
+        "forcedFocus": {
+          "style": "solid",
+          "width": "3px",
+          "offset": "-4px",
+          "color": "rgba(5, 0, 73, 0.8)",
+          "screenshot": "forced-focus-parade-390.png"
+        }
+      }
+    },
+    {
+      "era": "PARADE",
+      "width": 430,
+      "height": 844,
+      "foreground": {
+        "family": "\"Arial Narrow\", sans-serif",
+        "weight": "800",
+        "fontSize": "14px",
+        "loadedFaces": [],
+        "labelFontCssPx": 20.625,
+        "image": {
+          "x": 17,
+          "y": 71.5,
+          "width": 396,
+          "height": 668.25
+        },
+        "viewport": {
+          "clientHeight": 681,
+          "scrollHeight": 681,
+          "clientWidth": 396,
+          "scrollWidth": 396
+        },
+        "runtimeFontDisposedAfterRaster": true,
+        "actualLabelInk": [
+          {
+            "label": "MAIN STAGE",
+            "font": "40px \"MCR Map4 Composition Labels\"",
+            "advance": 207.5390625,
+            "inkLeft": -2.109375,
+            "inkRight": 206.640625,
+            "ascent": 28.84765625,
+            "descent": 0.390625,
+            "paint": {
+              "x": 264,
+              "y": 163,
+              "width": 292,
+              "height": 64,
+              "textX": 332,
+              "textBaseline": 209.228515625
+            },
+            "exclusion": {
+              "x": 254,
+              "y": 156,
+              "width": 312,
+              "height": 78
+            },
+            "fontProbeQualification": "Independent original-byte metrics; not a persistent production font owner"
+          },
+          {
+            "label": "PLAZA",
+            "font": "40px \"MCR Map4 Composition Labels\"",
+            "advance": 112.05078125,
+            "inkLeft": -2.109375,
+            "inkRight": 111.73828125,
+            "ascent": 28.4375,
+            "descent": 0,
+            "paint": {
+              "x": 258.5,
+              "y": 470,
+              "width": 141,
+              "height": 64,
+              "textX": 270.5,
+              "textBaseline": 516.21875
+            },
+            "exclusion": {
+              "x": 257.5,
+              "y": 463,
+              "width": 143,
+              "height": 78
+            },
+            "fontProbeQualification": "Independent original-byte metrics; not a persistent production font owner"
+          },
+          {
+            "label": "WALL",
+            "font": "40px \"MCR Map4 Composition Labels\"",
+            "advance": 91.3671875,
+            "inkLeft": -0.76171875,
+            "inkRight": 90.390625,
+            "ascent": 28.4375,
+            "descent": 0,
+            "paint": {
+              "x": 72,
+              "y": 677,
+              "width": 176,
+              "height": 64,
+              "textX": 140,
+              "textBaseline": 723.21875
+            },
+            "exclusion": {
+              "x": 49.5,
+              "y": 670,
+              "width": 221,
+              "height": 78
+            },
+            "fontProbeQualification": "Independent original-byte metrics; not a persistent production font owner"
+          },
+          {
+            "label": "FEED",
+            "font": "40px \"MCR Map4 Composition Labels\"",
+            "advance": 80.703125,
+            "inkLeft": -2.109375,
+            "inkRight": 79.00390625,
+            "ascent": 28.4375,
+            "descent": 0,
+            "paint": {
+              "x": 558.5,
+              "y": 660,
+              "width": 165,
+              "height": 64,
+              "textX": 626.5,
+              "textBaseline": 706.21875
+            },
+            "exclusion": {
+              "x": 545,
+              "y": 653,
+              "width": 192,
+              "height": 78
+            },
+            "fontProbeQualification": "Independent original-byte metrics; not a persistent production font owner"
+          },
+          {
+            "label": "MEET",
+            "font": "40px \"MCR Map4 Composition Labels\"",
+            "advance": 91.81640625,
+            "inkLeft": -2.109375,
+            "inkRight": 90.8203125,
+            "ascent": 28.4375,
+            "descent": 0,
+            "paint": {
+              "x": 288,
+              "y": 901,
+              "width": 176,
+              "height": 64,
+              "textX": 356,
+              "textBaseline": 947.21875
+            },
+            "exclusion": {
+              "x": 256,
+              "y": 894,
+              "width": 240,
+              "height": 78
+            },
+            "fontProbeQualification": "Independent original-byte metrics; not a persistent production font owner"
+          },
+          {
+            "label": "GIFTS",
+            "font": "40px \"MCR Map4 Composition Labels\"",
+            "advance": 97.3828125,
+            "inkLeft": -1.7578125,
+            "inkRight": 95.87890625,
+            "ascent": 28.84765625,
+            "descent": 0.390625,
+            "paint": {
+              "x": 424,
+              "y": 1128,
+              "width": 182,
+              "height": 64,
+              "textX": 492,
+              "textBaseline": 1174.228515625
+            },
+            "exclusion": {
+              "x": 395,
+              "y": 1121,
+              "width": 240,
+              "height": 78
+            },
+            "fontProbeQualification": "Independent original-byte metrics; not a persistent production font owner"
+          }
+        ]
+      },
+      "controls": {
+        "localZoomFitReset": true,
+        "cameraUnchanged": true,
+        "bounds": [
+          {
+            "name": "Zoom in map view",
+            "width": 44,
+            "height": 44
+          },
+          {
+            "name": "Zoom out map view",
+            "width": 44,
+            "height": 44
+          },
+          {
+            "name": "Places",
+            "width": 99,
+            "height": 44
+          },
+          {
+            "name": "Legend",
+            "width": 99,
+            "height": 44
+          },
+          {
+            "name": "Fit map",
+            "width": 99,
+            "height": 44
+          },
+          {
+            "name": "Reset view",
+            "width": 99,
+            "height": 44
+          }
+        ],
+        "forcedFocus": {
+          "style": "solid",
+          "width": "3px",
+          "offset": "-4px",
+          "color": "rgba(5, 0, 73, 0.8)"
+        }
+      }
+    },
+    {
+      "era": "PARADE",
+      "width": 390,
+      "height": 420,
+      "foreground": {
+        "family": "\"Arial Narrow\", sans-serif",
+        "weight": "800",
+        "fontSize": "14px",
+        "loadedFaces": [],
+        "labelFontCssPx": 13.826497395833334,
+        "image": {
+          "x": 62.265625,
+          "y": -30,
+          "width": 265.46875,
+          "height": 448
+        },
+        "viewport": {
+          "clientHeight": 257,
+          "scrollHeight": 448,
+          "clientWidth": 356,
+          "scrollWidth": 356
+        },
+        "runtimeFontDisposedAfterRaster": true,
+        "actualLabelInk": [
+          {
+            "label": "MAIN STAGE",
+            "font": "40px \"MCR Map4 Composition Labels\"",
+            "advance": 207.5390625,
+            "inkLeft": -2.109375,
+            "inkRight": 206.640625,
+            "ascent": 28.84765625,
+            "descent": 0.390625,
+            "paint": {
+              "x": 264,
+              "y": 163,
+              "width": 292,
+              "height": 64,
+              "textX": 332,
+              "textBaseline": 209.228515625
+            },
+            "exclusion": {
+              "x": 254,
+              "y": 156,
+              "width": 312,
+              "height": 78
+            },
+            "fontProbeQualification": "Independent original-byte metrics; not a persistent production font owner"
+          },
+          {
+            "label": "PLAZA",
+            "font": "40px \"MCR Map4 Composition Labels\"",
+            "advance": 112.05078125,
+            "inkLeft": -2.109375,
+            "inkRight": 111.73828125,
+            "ascent": 28.4375,
+            "descent": 0,
+            "paint": {
+              "x": 258.5,
+              "y": 470,
+              "width": 141,
+              "height": 64,
+              "textX": 270.5,
+              "textBaseline": 516.21875
+            },
+            "exclusion": {
+              "x": 257.5,
+              "y": 463,
+              "width": 143,
+              "height": 78
+            },
+            "fontProbeQualification": "Independent original-byte metrics; not a persistent production font owner"
+          },
+          {
+            "label": "WALL",
+            "font": "40px \"MCR Map4 Composition Labels\"",
+            "advance": 91.3671875,
+            "inkLeft": -0.76171875,
+            "inkRight": 90.390625,
+            "ascent": 28.4375,
+            "descent": 0,
+            "paint": {
+              "x": 72,
+              "y": 677,
+              "width": 176,
+              "height": 64,
+              "textX": 140,
+              "textBaseline": 723.21875
+            },
+            "exclusion": {
+              "x": 49.5,
+              "y": 670,
+              "width": 221,
+              "height": 78
+            },
+            "fontProbeQualification": "Independent original-byte metrics; not a persistent production font owner"
+          },
+          {
+            "label": "FEED",
+            "font": "40px \"MCR Map4 Composition Labels\"",
+            "advance": 80.703125,
+            "inkLeft": -2.109375,
+            "inkRight": 79.00390625,
+            "ascent": 28.4375,
+            "descent": 0,
+            "paint": {
+              "x": 558.5,
+              "y": 660,
+              "width": 165,
+              "height": 64,
+              "textX": 626.5,
+              "textBaseline": 706.21875
+            },
+            "exclusion": {
+              "x": 545,
+              "y": 653,
+              "width": 192,
+              "height": 78
+            },
+            "fontProbeQualification": "Independent original-byte metrics; not a persistent production font owner"
+          },
+          {
+            "label": "MEET",
+            "font": "40px \"MCR Map4 Composition Labels\"",
+            "advance": 91.81640625,
+            "inkLeft": -2.109375,
+            "inkRight": 90.8203125,
+            "ascent": 28.4375,
+            "descent": 0,
+            "paint": {
+              "x": 288,
+              "y": 901,
+              "width": 176,
+              "height": 64,
+              "textX": 356,
+              "textBaseline": 947.21875
+            },
+            "exclusion": {
+              "x": 256,
+              "y": 894,
+              "width": 240,
+              "height": 78
+            },
+            "fontProbeQualification": "Independent original-byte metrics; not a persistent production font owner"
+          },
+          {
+            "label": "GIFTS",
+            "font": "40px \"MCR Map4 Composition Labels\"",
+            "advance": 97.3828125,
+            "inkLeft": -1.7578125,
+            "inkRight": 95.87890625,
+            "ascent": 28.84765625,
+            "descent": 0.390625,
+            "paint": {
+              "x": 424,
+              "y": 1128,
+              "width": 182,
+              "height": 64,
+              "textX": 492,
+              "textBaseline": 1174.228515625
+            },
+            "exclusion": {
+              "x": 395,
+              "y": 1121,
+              "width": 240,
+              "height": 78
+            },
+            "fontProbeQualification": "Independent original-byte metrics; not a persistent production font owner"
+          }
+        ]
+      },
+      "controls": {
+        "localZoomFitReset": true,
+        "cameraUnchanged": true,
+        "bounds": [
+          {
+            "name": "Zoom in map view",
+            "width": 44,
+            "height": 44
+          },
+          {
+            "name": "Zoom out map view",
+            "width": 44,
+            "height": 44
+          },
+          {
+            "name": "Places",
+            "width": 89,
+            "height": 44
+          },
+          {
+            "name": "Legend",
+            "width": 89,
+            "height": 44
+          },
+          {
+            "name": "Fit map",
+            "width": 89,
+            "height": 44
+          },
+          {
+            "name": "Reset view",
+            "width": 89,
+            "height": 44
+          }
+        ],
+        "forcedFocus": {
+          "style": "solid",
+          "width": "3px",
+          "offset": "-4px",
+          "color": "rgba(5, 0, 73, 0.8)",
+          "screenshot": "forced-focus-parade-390-short.png"
+        }
+      }
+    },
+    {
+      "era": "DANGER",
+      "width": 360,
+      "height": 844,
+      "foreground": {
+        "family": "\"Arial Narrow\", sans-serif",
+        "weight": "800",
+        "fontSize": "14px",
+        "loadedFaces": [],
+        "labelFontCssPx": 16.979166666666668,
+        "image": {
+          "x": 17,
+          "y": 130.5625,
+          "width": 326,
+          "height": 550.125
+        },
+        "viewport": {
+          "clientHeight": 681,
+          "scrollHeight": 681,
+          "clientWidth": 326,
+          "scrollWidth": 326
+        },
+        "runtimeFontDisposedAfterRaster": true,
+        "actualLabelInk": [
+          {
+            "label": "MAIN STAGE",
+            "font": "40px \"MCR Map4 Composition Labels\"",
+            "advance": 207.5390625,
+            "inkLeft": -2.109375,
+            "inkRight": 206.640625,
+            "ascent": 28.84765625,
+            "descent": 0.390625,
+            "paint": {
+              "x": 264,
+              "y": 163,
+              "width": 292,
+              "height": 64,
+              "textX": 332,
+              "textBaseline": 209.228515625
+            },
+            "exclusion": {
+              "x": 254,
+              "y": 156,
+              "width": 312,
+              "height": 78
+            },
+            "fontProbeQualification": "Independent original-byte metrics; not a persistent production font owner"
+          },
+          {
+            "label": "PLAZA",
+            "font": "40px \"MCR Map4 Composition Labels\"",
+            "advance": 112.05078125,
+            "inkLeft": -2.109375,
+            "inkRight": 111.73828125,
+            "ascent": 28.4375,
+            "descent": 0,
+            "paint": {
+              "x": 258.5,
+              "y": 470,
+              "width": 141,
+              "height": 64,
+              "textX": 270.5,
+              "textBaseline": 516.21875
+            },
+            "exclusion": {
+              "x": 257.5,
+              "y": 463,
+              "width": 143,
+              "height": 78
+            },
+            "fontProbeQualification": "Independent original-byte metrics; not a persistent production font owner"
+          },
+          {
+            "label": "WALL",
+            "font": "40px \"MCR Map4 Composition Labels\"",
+            "advance": 91.3671875,
+            "inkLeft": -0.76171875,
+            "inkRight": 90.390625,
+            "ascent": 28.4375,
+            "descent": 0,
+            "paint": {
+              "x": 72,
+              "y": 677,
+              "width": 176,
+              "height": 64,
+              "textX": 140,
+              "textBaseline": 723.21875
+            },
+            "exclusion": {
+              "x": 49.5,
+              "y": 670,
+              "width": 221,
+              "height": 78
+            },
+            "fontProbeQualification": "Independent original-byte metrics; not a persistent production font owner"
+          },
+          {
+            "label": "FEED",
+            "font": "40px \"MCR Map4 Composition Labels\"",
+            "advance": 80.703125,
+            "inkLeft": -2.109375,
+            "inkRight": 79.00390625,
+            "ascent": 28.4375,
+            "descent": 0,
+            "paint": {
+              "x": 558.5,
+              "y": 660,
+              "width": 165,
+              "height": 64,
+              "textX": 626.5,
+              "textBaseline": 706.21875
+            },
+            "exclusion": {
+              "x": 545,
+              "y": 653,
+              "width": 192,
+              "height": 78
+            },
+            "fontProbeQualification": "Independent original-byte metrics; not a persistent production font owner"
+          },
+          {
+            "label": "MEET",
+            "font": "40px \"MCR Map4 Composition Labels\"",
+            "advance": 91.81640625,
+            "inkLeft": -2.109375,
+            "inkRight": 90.8203125,
+            "ascent": 28.4375,
+            "descent": 0,
+            "paint": {
+              "x": 288,
+              "y": 901,
+              "width": 176,
+              "height": 64,
+              "textX": 356,
+              "textBaseline": 947.21875
+            },
+            "exclusion": {
+              "x": 256,
+              "y": 894,
+              "width": 240,
+              "height": 78
+            },
+            "fontProbeQualification": "Independent original-byte metrics; not a persistent production font owner"
+          },
+          {
+            "label": "GIFTS",
+            "font": "40px \"MCR Map4 Composition Labels\"",
+            "advance": 97.3828125,
+            "inkLeft": -1.7578125,
+            "inkRight": 95.87890625,
+            "ascent": 28.84765625,
+            "descent": 0.390625,
+            "paint": {
+              "x": 424,
+              "y": 1128,
+              "width": 182,
+              "height": 64,
+              "textX": 492,
+              "textBaseline": 1174.228515625
+            },
+            "exclusion": {
+              "x": 395,
+              "y": 1121,
+              "width": 240,
+              "height": 78
+            },
+            "fontProbeQualification": "Independent original-byte metrics; not a persistent production font owner"
+          }
+        ]
+      },
+      "controls": {
+        "localZoomFitReset": true,
+        "cameraUnchanged": true,
+        "bounds": [
+          {
+            "name": "Zoom in map view",
+            "width": 44,
+            "height": 44
+          },
+          {
+            "name": "Zoom out map view",
+            "width": 44,
+            "height": 44
+          },
+          {
+            "name": "Places",
+            "width": 81.5,
+            "height": 44
+          },
+          {
+            "name": "Legend",
+            "width": 81.5,
+            "height": 44
+          },
+          {
+            "name": "Fit map",
+            "width": 81.5,
+            "height": 44
+          },
+          {
+            "name": "Reset view",
+            "width": 81.5,
+            "height": 44
+          }
+        ],
+        "forcedFocus": {
+          "style": "solid",
+          "width": "3px",
+          "offset": "-4px",
+          "color": "rgba(5, 0, 73, 0.8)"
+        }
+      }
+    },
+    {
+      "era": "DANGER",
+      "width": 390,
+      "height": 844,
+      "foreground": {
+        "family": "\"Arial Narrow\", sans-serif",
+        "weight": "800",
+        "fontSize": "14px",
+        "loadedFaces": [],
+        "labelFontCssPx": 18.541666666666668,
+        "image": {
+          "x": 17,
+          "y": 105.25,
+          "width": 356,
+          "height": 600.75
+        },
+        "viewport": {
+          "clientHeight": 681,
+          "scrollHeight": 681,
+          "clientWidth": 356,
+          "scrollWidth": 356
+        },
+        "runtimeFontDisposedAfterRaster": true,
+        "actualLabelInk": [
+          {
+            "label": "MAIN STAGE",
+            "font": "40px \"MCR Map4 Composition Labels\"",
+            "advance": 207.5390625,
+            "inkLeft": -2.109375,
+            "inkRight": 206.640625,
+            "ascent": 28.84765625,
+            "descent": 0.390625,
+            "paint": {
+              "x": 264,
+              "y": 163,
+              "width": 292,
+              "height": 64,
+              "textX": 332,
+              "textBaseline": 209.228515625
+            },
+            "exclusion": {
+              "x": 254,
+              "y": 156,
+              "width": 312,
+              "height": 78
+            },
+            "fontProbeQualification": "Independent original-byte metrics; not a persistent production font owner"
+          },
+          {
+            "label": "PLAZA",
+            "font": "40px \"MCR Map4 Composition Labels\"",
+            "advance": 112.05078125,
+            "inkLeft": -2.109375,
+            "inkRight": 111.73828125,
+            "ascent": 28.4375,
+            "descent": 0,
+            "paint": {
+              "x": 258.5,
+              "y": 470,
+              "width": 141,
+              "height": 64,
+              "textX": 270.5,
+              "textBaseline": 516.21875
+            },
+            "exclusion": {
+              "x": 257.5,
+              "y": 463,
+              "width": 143,
+              "height": 78
+            },
+            "fontProbeQualification": "Independent original-byte metrics; not a persistent production font owner"
+          },
+          {
+            "label": "WALL",
+            "font": "40px \"MCR Map4 Composition Labels\"",
+            "advance": 91.3671875,
+            "inkLeft": -0.76171875,
+            "inkRight": 90.390625,
+            "ascent": 28.4375,
+            "descent": 0,
+            "paint": {
+              "x": 72,
+              "y": 677,
+              "width": 176,
+              "height": 64,
+              "textX": 140,
+              "textBaseline": 723.21875
+            },
+            "exclusion": {
+              "x": 49.5,
+              "y": 670,
+              "width": 221,
+              "height": 78
+            },
+            "fontProbeQualification": "Independent original-byte metrics; not a persistent production font owner"
+          },
+          {
+            "label": "FEED",
+            "font": "40px \"MCR Map4 Composition Labels\"",
+            "advance": 80.703125,
+            "inkLeft": -2.109375,
+            "inkRight": 79.00390625,
+            "ascent": 28.4375,
+            "descent": 0,
+            "paint": {
+              "x": 558.5,
+              "y": 660,
+              "width": 165,
+              "height": 64,
+              "textX": 626.5,
+              "textBaseline": 706.21875
+            },
+            "exclusion": {
+              "x": 545,
+              "y": 653,
+              "width": 192,
+              "height": 78
+            },
+            "fontProbeQualification": "Independent original-byte metrics; not a persistent production font owner"
+          },
+          {
+            "label": "MEET",
+            "font": "40px \"MCR Map4 Composition Labels\"",
+            "advance": 91.81640625,
+            "inkLeft": -2.109375,
+            "inkRight": 90.8203125,
+            "ascent": 28.4375,
+            "descent": 0,
+            "paint": {
+              "x": 288,
+              "y": 901,
+              "width": 176,
+              "height": 64,
+              "textX": 356,
+              "textBaseline": 947.21875
+            },
+            "exclusion": {
+              "x": 256,
+              "y": 894,
+              "width": 240,
+              "height": 78
+            },
+            "fontProbeQualification": "Independent original-byte metrics; not a persistent production font owner"
+          },
+          {
+            "label": "GIFTS",
+            "font": "40px \"MCR Map4 Composition Labels\"",
+            "advance": 97.3828125,
+            "inkLeft": -1.7578125,
+            "inkRight": 95.87890625,
+            "ascent": 28.84765625,
+            "descent": 0.390625,
+            "paint": {
+              "x": 424,
+              "y": 1128,
+              "width": 182,
+              "height": 64,
+              "textX": 492,
+              "textBaseline": 1174.228515625
+            },
+            "exclusion": {
+              "x": 395,
+              "y": 1121,
+              "width": 240,
+              "height": 78
+            },
+            "fontProbeQualification": "Independent original-byte metrics; not a persistent production font owner"
+          }
+        ]
+      },
+      "controls": {
+        "localZoomFitReset": true,
+        "cameraUnchanged": true,
+        "bounds": [
+          {
+            "name": "Zoom in map view",
+            "width": 44,
+            "height": 44
+          },
+          {
+            "name": "Zoom out map view",
+            "width": 44,
+            "height": 44
+          },
+          {
+            "name": "Places",
+            "width": 89,
+            "height": 44
+          },
+          {
+            "name": "Legend",
+            "width": 89,
+            "height": 44
+          },
+          {
+            "name": "Fit map",
+            "width": 89,
+            "height": 44
+          },
+          {
+            "name": "Reset view",
+            "width": 89,
+            "height": 44
+          }
+        ],
+        "forcedFocus": {
+          "style": "solid",
+          "width": "3px",
+          "offset": "-4px",
+          "color": "rgba(5, 0, 73, 0.8)"
+        }
+      }
+    },
+    {
+      "era": "DANGER",
+      "width": 430,
+      "height": 844,
+      "foreground": {
+        "family": "\"Arial Narrow\", sans-serif",
+        "weight": "800",
+        "fontSize": "14px",
+        "loadedFaces": [],
+        "labelFontCssPx": 20.625,
+        "image": {
+          "x": 17,
+          "y": 71.5,
+          "width": 396,
+          "height": 668.25
+        },
+        "viewport": {
+          "clientHeight": 681,
+          "scrollHeight": 681,
+          "clientWidth": 396,
+          "scrollWidth": 396
+        },
+        "runtimeFontDisposedAfterRaster": true,
+        "actualLabelInk": [
+          {
+            "label": "MAIN STAGE",
+            "font": "40px \"MCR Map4 Composition Labels\"",
+            "advance": 207.5390625,
+            "inkLeft": -2.109375,
+            "inkRight": 206.640625,
+            "ascent": 28.84765625,
+            "descent": 0.390625,
+            "paint": {
+              "x": 264,
+              "y": 163,
+              "width": 292,
+              "height": 64,
+              "textX": 332,
+              "textBaseline": 209.228515625
+            },
+            "exclusion": {
+              "x": 254,
+              "y": 156,
+              "width": 312,
+              "height": 78
+            },
+            "fontProbeQualification": "Independent original-byte metrics; not a persistent production font owner"
+          },
+          {
+            "label": "PLAZA",
+            "font": "40px \"MCR Map4 Composition Labels\"",
+            "advance": 112.05078125,
+            "inkLeft": -2.109375,
+            "inkRight": 111.73828125,
+            "ascent": 28.4375,
+            "descent": 0,
+            "paint": {
+              "x": 258.5,
+              "y": 470,
+              "width": 141,
+              "height": 64,
+              "textX": 270.5,
+              "textBaseline": 516.21875
+            },
+            "exclusion": {
+              "x": 257.5,
+              "y": 463,
+              "width": 143,
+              "height": 78
+            },
+            "fontProbeQualification": "Independent original-byte metrics; not a persistent production font owner"
+          },
+          {
+            "label": "WALL",
+            "font": "40px \"MCR Map4 Composition Labels\"",
+            "advance": 91.3671875,
+            "inkLeft": -0.76171875,
+            "inkRight": 90.390625,
+            "ascent": 28.4375,
+            "descent": 0,
+            "paint": {
+              "x": 72,
+              "y": 677,
+              "width": 176,
+              "height": 64,
+              "textX": 140,
+              "textBaseline": 723.21875
+            },
+            "exclusion": {
+              "x": 49.5,
+              "y": 670,
+              "width": 221,
+              "height": 78
+            },
+            "fontProbeQualification": "Independent original-byte metrics; not a persistent production font owner"
+          },
+          {
+            "label": "FEED",
+            "font": "40px \"MCR Map4 Composition Labels\"",
+            "advance": 80.703125,
+            "inkLeft": -2.109375,
+            "inkRight": 79.00390625,
+            "ascent": 28.4375,
+            "descent": 0,
+            "paint": {
+              "x": 558.5,
+              "y": 660,
+              "width": 165,
+              "height": 64,
+              "textX": 626.5,
+              "textBaseline": 706.21875
+            },
+            "exclusion": {
+              "x": 545,
+              "y": 653,
+              "width": 192,
+              "height": 78
+            },
+            "fontProbeQualification": "Independent original-byte metrics; not a persistent production font owner"
+          },
+          {
+            "label": "MEET",
+            "font": "40px \"MCR Map4 Composition Labels\"",
+            "advance": 91.81640625,
+            "inkLeft": -2.109375,
+            "inkRight": 90.8203125,
+            "ascent": 28.4375,
+            "descent": 0,
+            "paint": {
+              "x": 288,
+              "y": 901,
+              "width": 176,
+              "height": 64,
+              "textX": 356,
+              "textBaseline": 947.21875
+            },
+            "exclusion": {
+              "x": 256,
+              "y": 894,
+              "width": 240,
+              "height": 78
+            },
+            "fontProbeQualification": "Independent original-byte metrics; not a persistent production font owner"
+          },
+          {
+            "label": "GIFTS",
+            "font": "40px \"MCR Map4 Composition Labels\"",
+            "advance": 97.3828125,
+            "inkLeft": -1.7578125,
+            "inkRight": 95.87890625,
+            "ascent": 28.84765625,
+            "descent": 0.390625,
+            "paint": {
+              "x": 424,
+              "y": 1128,
+              "width": 182,
+              "height": 64,
+              "textX": 492,
+              "textBaseline": 1174.228515625
+            },
+            "exclusion": {
+              "x": 395,
+              "y": 1121,
+              "width": 240,
+              "height": 78
+            },
+            "fontProbeQualification": "Independent original-byte metrics; not a persistent production font owner"
+          }
+        ]
+      },
+      "controls": {
+        "localZoomFitReset": true,
+        "cameraUnchanged": true,
+        "bounds": [
+          {
+            "name": "Zoom in map view",
+            "width": 44,
+            "height": 44
+          },
+          {
+            "name": "Zoom out map view",
+            "width": 44,
+            "height": 44
+          },
+          {
+            "name": "Places",
+            "width": 99,
+            "height": 44
+          },
+          {
+            "name": "Legend",
+            "width": 99,
+            "height": 44
+          },
+          {
+            "name": "Fit map",
+            "width": 99,
+            "height": 44
+          },
+          {
+            "name": "Reset view",
+            "width": 99,
+            "height": 44
+          }
+        ],
+        "forcedFocus": {
+          "style": "solid",
+          "width": "3px",
+          "offset": "-4px",
+          "color": "rgba(5, 0, 73, 0.8)"
+        }
+      }
+    }
+  ],
+  "all19CleanupDisposedAndUrlsRevoked": true,
+  "rootFinalCleanup": {
+    "contextClosed": true,
+    "browserClosed": true,
+    "serverClosed": true,
+    "viteCachesRemoved": true
+  },
+  "limits": [
+    "Explicit eligible-attendee contract fixture via controlled HTTP/C05; original Map4 map/theme/avatar manifest DTOs and hashes preserved. Participant era selected per context.",
+    "Fixture eligibility is not a public operator admission receipt. The actual default client, decoder, loader, resolver, renderer and production guards remain in use.",
+    "Not current default-production availability, real-cohort acceptance, live-server admission, human fidelity, physical devices, or ten-screen acceptance. Complete-scene fit still requires direct owner/Artist reference assessment and fixes.",
+    "No per-focus screenshot digest in report; independent hash and exact Git publication equality retained.",
+    "This readback cannot qualify ART04."
+  ]
+}

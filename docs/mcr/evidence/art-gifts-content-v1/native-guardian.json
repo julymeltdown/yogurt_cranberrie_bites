@@ -1,0 +1,20 @@
+{
+  "reason": "NORMAL_STOP",
+  "peaks": {
+    "processes": 4,
+    "rssBytes": 341606400,
+    "wholeBytes": 408341626,
+    "tempBytes": 0,
+    "cacheBytes": 0,
+    "retainedOutputBytes": 78292
+  },
+  "minimumFreeBytes": 27181420544,
+  "remainingOwnedPids": [],
+  "linkAbsent": true,
+  "tempAbsent": true,
+  "cacheAbsent": true,
+  "port5197Free": true,
+  "trackedPids": [
+    30796
+  ]
+}

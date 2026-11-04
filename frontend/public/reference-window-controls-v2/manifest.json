@@ -1,0 +1,175 @@
+{
+  "schemaVersion": 1,
+  "task": "ART-WINDOW-CONTROLS-02",
+  "status": "SOURCE_VALIDATED_NATIVE_QUALIFICATION_PENDING",
+  "sourceBase": "654974128a27c948a449fa9e58f466b8e612361d",
+  "reference": {
+    "fileName": "1-Photo-1.jpg",
+    "sha256": "2b3988d546f87b813d78ca13bf267730a6dd19118bd6535a2d3c3032b6f12d23",
+    "width": 1280,
+    "height": 853,
+    "use": "Visual reference only. No embedded, traced or extracted reference pixels.",
+    "measurementMethod": "Approximate manual inspection of the full supplied photograph; not pixel-exact segmentation.",
+    "landingPanelApproximateBounds": [
+      4,
+      3,
+      250,
+      438
+    ],
+    "landingStarStripApproximateBounds": [
+      15,
+      11,
+      56,
+      24
+    ],
+    "landingCloseFaceApproximateBounds": [
+      229,
+      10,
+      243,
+      25
+    ],
+    "landingExpandFaceApproximateBounds": [
+      216,
+      11,
+      227,
+      24
+    ],
+    "mapBackInkApproximateBounds": [
+      817,
+      21,
+      829,
+      35
+    ],
+    "reduceEvidence": "No independently legible reduce state in the supplied photograph. The paired inward-corner glyph is an original functional counterpart, subject to actual consumer qualification."
+  },
+  "authorship": {
+    "method": "Original hand-authored, editable SVG path geometry, using the supplied reference for proportions and palette direction.",
+    "fonts": [],
+    "thirdPartyAssets": [],
+    "embeddedRaster": false,
+    "referenceRights": "User-supplied reference; no claim of ownership or redistribution rights in its photograph, branding or characters.",
+    "outputRights": "New generic geometric control glyphs contributed to this repository. No additional third-party asset license is required; no trademark clearance is asserted."
+  },
+  "palette": {
+    "cream": "#f4ecd5",
+    "red": "#c32b35",
+    "background": "transparent"
+  },
+  "embedding": {
+    "consumerTask": "FE-REFERENCE-CHROME-02",
+    "mode": "Standalone img; no external SVG use or font dependency.",
+    "decorativeAttributes": {
+      "alt": "",
+      "aria-hidden": "true"
+    },
+    "controlOwnerResponsibilities": [
+      "native button or link",
+      "truthful action and accessible name",
+      "at least 44 by 44 CSS pixel target",
+      "visible keyboard focus",
+      "navigation and panel lifecycle",
+      "red close face when required"
+    ],
+    "surfaces": "Cream ink requires a dark ink or red titlebar surface. Do not place these files directly on a cream surface or recolor through a destructive whole-image filter.",
+    "stars": "Decorative strip only; no rating, count or clickable state. Start at 72 by 24 CSS pixels at a 390px viewport; confirm actual 360/390/430 frame fit.",
+    "controls": "Start at 24 by 24 CSS pixels centered in the consumer's native >=44px target; reference-proportional reductions must retain legible ink. The SVG contains no hit target or button face."
+  },
+  "assets": [
+    {
+      "file": "stars.svg",
+      "viewBox": [
+        0,
+        0,
+        72,
+        24
+      ],
+      "inkBounds": [
+        3,
+        3,
+        69,
+        20
+      ],
+      "strokeWidth": 0,
+      "alignmentY": 12,
+      "sha256": "4dee9d19d01033f532233db6d44f447a5cd7acdc533d280a9d820a71e6c136b2"
+    },
+    {
+      "file": "close.svg",
+      "viewBox": [
+        0,
+        0,
+        24,
+        24
+      ],
+      "inkBounds": [
+        3.232,
+        3.232,
+        20.768,
+        20.768
+      ],
+      "strokeWidth": 2.5,
+      "alignmentY": 12,
+      "sha256": "1b7041e386117aaae58a44d153abd8612bce1873300b350f357410d2af688f72"
+    },
+    {
+      "file": "back.svg",
+      "viewBox": [
+        0,
+        0,
+        24,
+        24
+      ],
+      "inkBounds": [
+        1.232,
+        2.232,
+        22.25,
+        21.768
+      ],
+      "strokeWidth": 2.5,
+      "alignmentY": 12,
+      "sha256": "a8b6905c1442c519674e63feb28f4166f46d82c63cd82625522ebbc60add6ec2"
+    },
+    {
+      "file": "expand.svg",
+      "viewBox": [
+        0,
+        0,
+        24,
+        24
+      ],
+      "inkBounds": [
+        2.5,
+        2.5,
+        21.5,
+        21.5
+      ],
+      "strokeWidth": 2,
+      "alignmentY": 12,
+      "sha256": "6f03be45919f5b599c6884f63edafaf9d9948caa250f8f60342630d6ba3d71ff"
+    },
+    {
+      "file": "reduce.svg",
+      "viewBox": [
+        0,
+        0,
+        24,
+        24
+      ],
+      "inkBounds": [
+        2.5,
+        2.5,
+        21.5,
+        21.5
+      ],
+      "strokeWidth": 2,
+      "alignmentY": 12,
+      "sha256": "536c5bc9c8f8902eaf6ea4fa5112f9eaad6e885da92ca36f273c30211eb56ac5"
+    }
+  ],
+  "qualification": {
+    "sourceReport": "docs/mcr/evidence/art-window-controls-v2/source-validation.json",
+    "native360": "NOT_RUN",
+    "native390": "NOT_RUN",
+    "native430": "NOT_RUN"
+  }
+}

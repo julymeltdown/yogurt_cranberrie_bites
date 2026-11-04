@@ -1,0 +1,127 @@
+{
+  "schemaVersion": 1,
+  "task": "ART-GIFTS-CONTENT-02",
+  "usage": "TEST_ONLY_REFERENCE_FIXTURE",
+  "status": "SOURCE_AND_NATIVE_FIXTURE_QUALIFIED_PRODUCTION_BINDING_NOT_READY",
+  "notLiveInventory": true,
+  "productionBinding": null,
+  "productionBindingOwner": "Root153",
+  "reference": {
+    "fileName": "1-Photo-1.jpg",
+    "width": 1280,
+    "height": 853,
+    "bytes": 482737,
+    "sha256": "2b3988d546f87b813d78ca13bf267730a6dd19118bd6535a2d3c3032b6f12d23",
+    "authority": "User-supplied visual reference; latest Main and Root clarification permits original reference/fixture item-art candidates before production catalog/media binding.",
+    "panelApproximateBounds": [
+      506,
+      451,
+      759,
+      849
+    ],
+    "coordinateSystem": "Original 1280x853 JPEG, approximate manual full-image inspection, [left,top,right,bottom].",
+    "pixelsCopied": false,
+    "cropFilesCreated": false,
+    "embeddedReference": false
+  },
+  "derivation": {
+    "method": "Original hand-authored editable SVG interpretation of the three approved visible item motifs, not a pixel extraction, tracing or photorealistic product representation.",
+    "fonts": [],
+    "thirdPartyAssets": [],
+    "charactersOrPortraits": false,
+    "raster": false,
+    "lettering": "Original geometric MCR and PARADE vector lettering, drawn as paths from reference-visible words; no font or copied logo paths.",
+    "rights": "The photograph and branding remain their respective owners' material. These original generic vector motif candidates do not establish merchandise authenticity, permission to sell, inventory, ownership or trademark clearance.",
+    "reuse": "Reference/fixture preview only until Root153 supplies approved identity/media mapping and the applicable production rights/provenance decision. Never a no-photo fallback."
+  },
+  "palette": [
+    "#181616",
+    "#f4ecd5",
+    "#c32b35",
+    "#8d1f2b",
+    "#a8a293"
+  ],
+  "placement": {
+    "viewBox": [
+      0,
+      0,
+      256,
+      256
+    ],
+    "background": "transparent",
+    "listConsumer": "ReferenceGiftRow .gift-reference-image; current square, minmax(78px,29%) list track, 1px symmetric border, object-fit:contain.",
+    "historical390OuterThumbnailCssPx": 99.171875,
+    "historicalSizeIsNotNewQualification": true,
+    "nativeFixtureViewportsQualified": [
+      360,
+      390,
+      430
+    ],
+    "detailConsumer": "GiftDetail has no image slot in the audited production source. No detail integration or qualified detail size is claimed.",
+    "detailProposal": "Keep the same square SVG source and contain fit if a detail image slot is later authorized. Up to 256 CSS pixels is a source specimen size only, not a product requirement."
+  },
+  "assets": [
+    {
+      "file": "sticker-pack.svg",
+      "motif": "Sticker pack",
+      "referenceApproximateBounds": [
+        523,
+        526,
+        587,
+        591
+      ],
+      "viewBox": [
+        0,
+        0,
+        256,
+        256
+      ],
+      "sha256": "067b2f4153158f1a914a2b257c539d954a26d82dbd814272f0d367b53330ae7d",
+      "description": "Two geometric letter badges, a red rose sticker and a generic skull pictogram; no character portrait."
+    },
+    {
+      "file": "hand-banner.svg",
+      "motif": "Hand banner",
+      "referenceApproximateBounds": [
+        522,
+        612,
+        586,
+        674
+      ],
+      "viewBox": [
+        0,
+        0,
+        256,
+        256
+      ],
+      "sha256": "2e1229c95ba56831980295f98f4059f0e9a85533df44be524387b8be0c4b41eb",
+      "description": "Cream fabric banner with original black MCR and red PARADE path lettering; drawn seams and uneven cloth edge."
+    },
+    {
+      "file": "diy-buttons.svg",
+      "motif": "DIY buttons",
+      "referenceApproximateBounds": [
+        522,
+        697,
+        586,
+        758
+      ],
+      "viewBox": [
+        0,
+        0,
+        256,
+        256
+      ],
+      "sha256": "d16d01d7822192687496477dc2946b7f4db7e42059512c86408d12ba24cb8d90",
+      "description": "Three overlapping cream/red buttons with heart, star and geometric lettering; no people or characters."
+    }
+  ],
+  "checks": {
+    "source": "PASS",
+    "native360": "TEST_ONLY_PASS",
+    "native390": "TEST_ONLY_PASS",
+    "native430": "TEST_ONLY_PASS",
+    "nativeEvidence": "docs/mcr/evidence/art-gifts-content-v1/native-04/report.json",
+    "productionBinding": "NOT_READY"
+  }
+}

@@ -1,0 +1,708 @@
+{
+  "status": "PASS_BOUNDED_ART03_PUBLICATION",
+  "observedAt": "2026-11-04T15:03:31.935283+00:00",
+  "repository": "https://github.com/julymeltdown/mcr.git",
+  "branch": "master",
+  "method": "Independent git fetch --no-tags origin master, then separate git ls-remote --heads origin master. FETCH_HEAD and remote advertised SHA agreed. Read Git postimages/modes only; no runtime rerun or native copies.",
+  "sourceSeal": "eb024bb8c53dc8e202b964cff36559522970a897",
+  "delivery": "3ea8703fb62cba6760e12a534551c198d99a5c54",
+  "observedRemote": "f02fe29c69627007aa15eb1e17699b9e3806fba8",
+  "deliveryAncestorOfObservedRemote": true,
+  "exactPaths": 85,
+  "paths": [
+    {
+      "path": "docs/mcr/evidence/map-production-binding/art03-allocation-acceptance.json",
+      "mode": "100644",
+      "blob": "e14b04ce7642b1489a1e53d305939a2a36eecd9a",
+      "bytes": 1315,
+      "sha256": "42f649f896222d06b56f563fae87169fda1d08144a7c781b85721218b8fd0204",
+      "sourceDeliveryRemoteEqual": true
+    },
+    {
+      "path": "docs/mcr/evidence/map-production-binding/art03-allocation-full-release.json",
+      "mode": "100644",
+      "blob": "7e03e4df85e921f437d2fd46e3b7b80ca5e03b41",
+      "bytes": 971,
+      "sha256": "5f46671eacee3b1de53809f028b4c08161ac1d327d71d4abda40091e82a8661b",
+      "sourceDeliveryRemoteEqual": true
+    },
+    {
+      "path": "docs/mcr/evidence/map-production-binding/composition-art03-native-carry.json",
+      "mode": "100644",
+      "blob": "25d8af15afb9cf28c036311a9b3b87b5fb5b6714",
+      "bytes": 204801,
+      "sha256": "45c241f51750e24632bb43db41260cd5f5d3cd5a21537323aea8bbeab5ca3068",
+      "sourceDeliveryRemoteEqual": true
+    },
+    {
+      "path": "docs/mcr/evidence/map-production-binding/composition-art03-native-ready.md",
+      "mode": "100644",
+      "blob": "6c25b02caf22434cb0e60e5b55c1b2320b34627a",
+      "bytes": 1878,
+      "sha256": "ebf516f1e96eb28d985ff514483822e6bd6218f958598c8dc5ef973c13dbc4c3",
+      "sourceDeliveryRemoteEqual": true
+    },
+    {
+      "path": "docs/mcr/evidence/map-production-binding/native-composition-art03-retry01/README.md",
+      "mode": "100644",
+      "blob": "0b3dd60eb1dba5de24fe669f4b4646e79601f8f7",
+      "bytes": 3969,
+      "sha256": "a453828b8de03aa8e822a9e56a00653bc8a2f607930a7a204a4ab4e9c45b6e3b",
+      "sourceDeliveryRemoteEqual": true
+    },
+    {
+      "path": "docs/mcr/evidence/map-production-binding/native-composition-art03-retry01/after-danger-360.png",
+      "mode": "100644",
+      "blob": "4754b89da18f3214ab67b9e0a70ad72e2c00bc8e",
+      "bytes": 191759,
+      "sha256": "373ae196ec70e0930c4625509c6dc3a9e3f42b5db1d213e0144a44de58e33225",
+      "sourceDeliveryRemoteEqual": true
+    },
+    {
+      "path": "docs/mcr/evidence/map-production-binding/native-composition-art03-retry01/after-danger-390.png",
+      "mode": "100644",
+      "blob": "6471afea17e80b51efc25ef0fd1528ced45119bc",
+      "bytes": 211825,
+      "sha256": "3e60c9760a8728f1ac05ebc83d98ec63f4cfdf487270375a21acf9bd45a4039a",
+      "sourceDeliveryRemoteEqual": true
+    },
+    {
+      "path": "docs/mcr/evidence/map-production-binding/native-composition-art03-retry01/after-danger-430.png",
+      "mode": "100644",
+      "blob": "92f09912954c1b1c5bc83283a8c03c632b2a905d",
+      "bytes": 251000,
+      "sha256": "5f7ec5ec59d64788599dcfef1a462d91d5b24481a1ef51ee1d919085d71661f9",
+      "sourceDeliveryRemoteEqual": true
+    },
+    {
+      "path": "docs/mcr/evidence/map-production-binding/native-composition-art03-retry01/after-parade-360.png",
+      "mode": "100644",
+      "blob": "73a8bff3a361c03de2e1291387f2bc6e7dea9c46",
+      "bytes": 193310,
+      "sha256": "d794ec744f090814dc3e980357bfa592962d1e1b8aef1d287976d57d08bb6879",
+      "sourceDeliveryRemoteEqual": true
+    },
+    {
+      "path": "docs/mcr/evidence/map-production-binding/native-composition-art03-retry01/after-parade-390-short.png",
+      "mode": "100644",
+      "blob": "4358c5c74f0b882944d56b6a8451fe41239ef6c1",
+      "bytes": 80216,
+      "sha256": "25cce53e60f757490c89954c34be017c71a18388cf2633824225cd3794b459a3",
+      "sourceDeliveryRemoteEqual": true
+    },
+    {
+      "path": "docs/mcr/evidence/map-production-binding/native-composition-art03-retry01/after-parade-390.png",
+      "mode": "100644",
+      "blob": "4ffa81bf08e4bf88a407b2abab784cdeedd13fb3",
+      "bytes": 213544,
+      "sha256": "363fd44b0f6a13b70fcf267fb03ac93da9aed12b10f23d27ebe9107eb07c3268",
+      "sourceDeliveryRemoteEqual": true
+    },
+    {
+      "path": "docs/mcr/evidence/map-production-binding/native-composition-art03-retry01/after-parade-430.png",
+      "mode": "100644",
+      "blob": "38bd2ee0b44255138eb400f2db3b6377d1651417",
+      "bytes": 253412,
+      "sha256": "f7ae7d7b3e43020bde9a0ab9fe8e1400a9b3a7a72b5c39932e8754e0a63353f6",
+      "sourceDeliveryRemoteEqual": true
+    },
+    {
+      "path": "docs/mcr/evidence/map-production-binding/native-composition-art03-retry01/after-revenge-360.png",
+      "mode": "100644",
+      "blob": "8010ba94381ac569ca35adef24f3b747ecf8ed66",
+      "bytes": 190200,
+      "sha256": "e0329639c8cd8c739b001a9b3206402d26d5a157085a203a8df57a230545fa0f",
+      "sourceDeliveryRemoteEqual": true
+    },
+    {
+      "path": "docs/mcr/evidence/map-production-binding/native-composition-art03-retry01/after-revenge-390.png",
+      "mode": "100644",
+      "blob": "82dfbc5328d2feff6b661bb3b5c143c6b69c9c52",
+      "bytes": 210106,
+      "sha256": "c4e0247fc7cd9d98d06f84a78710fd784007de4a94435758c491b4e01ee42c48",
+      "sourceDeliveryRemoteEqual": true
+    },
+    {
+      "path": "docs/mcr/evidence/map-production-binding/native-composition-art03-retry01/after-revenge-430.png",
+      "mode": "100644",
+      "blob": "c0860b4da19ec0033282c612ad3f864766dee53c",
+      "bytes": 248641,
+      "sha256": "43b19e6157c20b63e3bb480a13a248af442eda4b7a0b3c3c733314c205244c61",
+      "sourceDeliveryRemoteEqual": true
+    },
+    {
+      "path": "docs/mcr/evidence/map-production-binding/native-composition-art03-retry01/before-danger-360.png",
+      "mode": "100644",
+      "blob": "6095a15bae1ecf5b240da490129f25bb9c83d242",
+      "bytes": 324112,
+      "sha256": "7441506a83b2295b69cbaeeec23e7fb3a3c89420fd3338fad638e768cf67c271",
+      "sourceDeliveryRemoteEqual": true
+    },
+    {
+      "path": "docs/mcr/evidence/map-production-binding/native-composition-art03-retry01/before-danger-390.png",
+      "mode": "100644",
+      "blob": "e19cc2430213347048d595346045cbb33c037afa",
+      "bytes": 372307,
+      "sha256": "08179d325eebfad368959709f5077d5d7c92c8ba2e1600e5273acb3719fedf50",
+      "sourceDeliveryRemoteEqual": true
+    },
+    {
+      "path": "docs/mcr/evidence/map-production-binding/native-composition-art03-retry01/before-danger-430.png",
+      "mode": "100644",
+      "blob": "5fbe23caebe4583f846f6c438e7db75bd5e1d61e",
+      "bytes": 431532,
+      "sha256": "e9f8b4f6a4fc3d95c92c729637f4d27425ccbbaf96d41465bb444a617135294c",
+      "sourceDeliveryRemoteEqual": true
+    },
+    {
+      "path": "docs/mcr/evidence/map-production-binding/native-composition-art03-retry01/before-parade-360.png",
+      "mode": "100644",
+      "blob": "4f448e1f2dc40c72edd99056de5174194ed78e3e",
+      "bytes": 324299,
+      "sha256": "33949575ed7a5aed5e91a654d8dd1bb71b83c35f284fda12121958d84c5e1460",
+      "sourceDeliveryRemoteEqual": true
+    },
+    {
+      "path": "docs/mcr/evidence/map-production-binding/native-composition-art03-retry01/before-parade-390.png",
+      "mode": "100644",
+      "blob": "b5068ee08b8bfb64b636db127053376df9f88e54",
+      "bytes": 372174,
+      "sha256": "2e5d940c64ba1fb249028c2fb588b00da97f4b46610628bb8974d7d6839cfe9c",
+      "sourceDeliveryRemoteEqual": true
+    },
+    {
+      "path": "docs/mcr/evidence/map-production-binding/native-composition-art03-retry01/before-parade-430.png",
+      "mode": "100644",
+      "blob": "137c0055c4bddca2169499d4de0c93873ec51eae",
+      "bytes": 431641,
+      "sha256": "2e389059dd341b9df9cb5bbbcf6079aa7cdd9f1ac79ba16433cfdeb51265bc89",
+      "sourceDeliveryRemoteEqual": true
+    },
+    {
+      "path": "docs/mcr/evidence/map-production-binding/native-composition-art03-retry01/before-revenge-360.png",
+      "mode": "100644",
+      "blob": "00a92f46f79474b7170b50abe275284759dc14e2",
+      "bytes": 321557,
+      "sha256": "e3dd412e2fe0b607bcc339e2bcb518612872aa9446994aace7d50dbc746eda1b",
+      "sourceDeliveryRemoteEqual": true
+    },
+    {
+      "path": "docs/mcr/evidence/map-production-binding/native-composition-art03-retry01/before-revenge-390.png",
+      "mode": "100644",
+      "blob": "0bd962b391c2fdda761281207919e62283545be0",
+      "bytes": 369246,
+      "sha256": "81164507596f475cfbe3028cae34f3e205ad74b6c468d2f561893fa8b54010da",
+      "sourceDeliveryRemoteEqual": true
+    },
+    {
+      "path": "docs/mcr/evidence/map-production-binding/native-composition-art03-retry01/before-revenge-430.png",
+      "mode": "100644",
+      "blob": "19eefc12635d11e6883756023781e1c748cb7c69",
+      "bytes": 427996,
+      "sha256": "0c412f110231c4d02e20dffd8d6cb8809f35c477c6c214418ea31f644e17f686",
+      "sourceDeliveryRemoteEqual": true
+    },
+    {
+      "path": "docs/mcr/evidence/map-production-binding/native-composition-art03-retry01/forced-focus-parade-390-short.png",
+      "mode": "100644",
+      "blob": "4bf5da1146be73328587ec6d1a39466043318d2e",
+      "bytes": 75167,
+      "sha256": "501ff60b54a32c0fd3a41304751705fb176c5eaf2f702515c108bfda99d5c03f",
+      "sourceDeliveryRemoteEqual": true
+    },
+    {
+      "path": "docs/mcr/evidence/map-production-binding/native-composition-art03-retry01/forced-focus-parade-390.png",
+      "mode": "100644",
+      "blob": "d88337218accdc2c0b6fa4cb2355d7dd654b144b",
+      "bytes": 201782,
+      "sha256": "e8f41c8805b44ff9d595459f023bd8cad2af163e366f94b85890defc49c559e9",
+      "sourceDeliveryRemoteEqual": true
+    },
+    {
+      "path": "docs/mcr/evidence/map-production-binding/native-composition-art03-retry01/native.log",
+      "mode": "100644",
+      "blob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "sourceDeliveryRemoteEqual": true
+    },
+    {
+      "path": "docs/mcr/evidence/map-production-binding/native-composition-art03-retry01/report.json",
+      "mode": "100644",
+      "blob": "75d2a671cfbcbf4d60b623614a0cab485f5273e1",
+      "bytes": 1017699,
+      "sha256": "9c653908d8afebcecdff920f880731e92709d0175543fb59c774b319e68b8683",
+      "sourceDeliveryRemoteEqual": true
+    },
+    {
+      "path": "docs/mcr/evidence/map-production-binding/native-composition-art03-retry01/supervisor.json",
+      "mode": "100644",
+      "blob": "c53d1e772f188769056d40fe85310a497513a97c",
+      "bytes": 4580,
+      "sha256": "8fcc1e47b5372e2ea1228997c35b882a7025891245b5a7cedd94c50cf52e36d6",
+      "sourceDeliveryRemoteEqual": true
+    },
+    {
+      "path": "docs/mcr/evidence/map-production-binding/native-composition-art03-retry01/syntax.log",
+      "mode": "100644",
+      "blob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "sourceDeliveryRemoteEqual": true
+    },
+    {
+      "path": "docs/mcr/evidence/map-production-binding/native-composition-art03-round01/acceptance.json",
+      "mode": "100644",
+      "blob": "13e19abcb0f78e50a4759b85b4565574969baece",
+      "bytes": 1011,
+      "sha256": "1efeb22e87110d582d4e2abf537d0a88cf24f81de56f8727fb4383254e5a081d",
+      "sourceDeliveryRemoteEqual": true
+    },
+    {
+      "path": "docs/mcr/evidence/map-production-binding/native-composition-art03-round01/after-revenge-360.png",
+      "mode": "100644",
+      "blob": "ca90af9271c5eabd4ae029f5d20b84927cb10d54",
+      "bytes": 190110,
+      "sha256": "db95cdbc8a6aa12d0b3bd08749226960620ff81eea0f576dd34c2dcc612488cb",
+      "sourceDeliveryRemoteEqual": true
+    },
+    {
+      "path": "docs/mcr/evidence/map-production-binding/native-composition-art03-round01/before-danger-360.png",
+      "mode": "100644",
+      "blob": "411f8c98f0966beb1ebe112a053608dc75e71caf",
+      "bytes": 324027,
+      "sha256": "95f442b0bcb271f2687d00b5fcb17d1a2f57e8cf26a9ee54d7a20496586364bc",
+      "sourceDeliveryRemoteEqual": true
+    },
+    {
+      "path": "docs/mcr/evidence/map-production-binding/native-composition-art03-round01/before-danger-390.png",
+      "mode": "100644",
+      "blob": "05abfa5bd25a8be27fb4b5e29ee4aef9b857ba4e",
+      "bytes": 372150,
+      "sha256": "b0fc34a25da80a98e1b33752494fb76dcf510715344ddf24a1adb7cda835a6fa",
+      "sourceDeliveryRemoteEqual": true
+    },
+    {
+      "path": "docs/mcr/evidence/map-production-binding/native-composition-art03-round01/before-danger-430.png",
+      "mode": "100644",
+      "blob": "72629e7d3aeadb67a3726defaf47449836e01d16",
+      "bytes": 431379,
+      "sha256": "b9f40c6adbd59b23ff0db2b995e040e782aa62c49d09041f07197521c7be6110",
+      "sourceDeliveryRemoteEqual": true
+    },
+    {
+      "path": "docs/mcr/evidence/map-production-binding/native-composition-art03-round01/before-parade-360.png",
+      "mode": "100644",
+      "blob": "a8b5ea6039128017d10526ed5f29ac30aee332fa",
+      "bytes": 324209,
+      "sha256": "a3a4af9fb2cb2799e052826fc37cc793b4a2d5ada8a9ffb123b6d216c9706b44",
+      "sourceDeliveryRemoteEqual": true
+    },
+    {
+      "path": "docs/mcr/evidence/map-production-binding/native-composition-art03-round01/before-parade-390.png",
+      "mode": "100644",
+      "blob": "04c9c2aa5b969cbd4eaee0299e5833f9642733ce",
+      "bytes": 372040,
+      "sha256": "549c0eea9ecbdaf784d57c38917c6c38581f14529d842e43dc1105256c9cac09",
+      "sourceDeliveryRemoteEqual": true
+    },
+    {
+      "path": "docs/mcr/evidence/map-production-binding/native-composition-art03-round01/before-parade-430.png",
+      "mode": "100644",
+      "blob": "2597cd3d1bff0c5d2ca4ba9a2b86438c0dda26fa",
+      "bytes": 431505,
+      "sha256": "eacdfcb50659a16b7cea68a3c2dc7400173a10d278fdec6f3f640a0e9edeb739",
+      "sourceDeliveryRemoteEqual": true
+    },
+    {
+      "path": "docs/mcr/evidence/map-production-binding/native-composition-art03-round01/before-revenge-360.png",
+      "mode": "100644",
+      "blob": "12ab7f9262c60a0b4523ba53d1f22de4049220ed",
+      "bytes": 321467,
+      "sha256": "3c2b8d30c98f6b97efeac3a7b1ae2a416e392b57f443592733f065da3871f14b",
+      "sourceDeliveryRemoteEqual": true
+    },
+    {
+      "path": "docs/mcr/evidence/map-production-binding/native-composition-art03-round01/before-revenge-390.png",
+      "mode": "100644",
+      "blob": "fc74363e67156cb93ef575cc473e9b74cb407da2",
+      "bytes": 369078,
+      "sha256": "7c1061252967e6ac46f2b59c3db6d683671c4c575127f42942bff6017d492364",
+      "sourceDeliveryRemoteEqual": true
+    },
+    {
+      "path": "docs/mcr/evidence/map-production-binding/native-composition-art03-round01/before-revenge-430.png",
+      "mode": "100644",
+      "blob": "36b062858f9d696e007d2112f9d1c5878da719ea",
+      "bytes": 427864,
+      "sha256": "15ba54493adcb81b04d9496345441c341646167cd8859989f2cffa89e10f5891",
+      "sourceDeliveryRemoteEqual": true
+    },
+    {
+      "path": "docs/mcr/evidence/map-production-binding/native-composition-art03-round01/failure-disposition.md",
+      "mode": "100644",
+      "blob": "72b31930868d9039a193715ab6afc883c129369d",
+      "bytes": 634,
+      "sha256": "f033a4c26d15aa194a9d2185387b98daece0329d4f4f86504885862404d65c3a",
+      "sourceDeliveryRemoteEqual": true
+    },
+    {
+      "path": "docs/mcr/evidence/map-production-binding/native-composition-art03-round01/native.log",
+      "mode": "100644",
+      "blob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "sourceDeliveryRemoteEqual": true
+    },
+    {
+      "path": "docs/mcr/evidence/map-production-binding/native-composition-art03-round01/report.json",
+      "mode": "100644",
+      "blob": "8291da8b2c1724c97fd7ab54e9a2085df4fbb37b",
+      "bytes": 472359,
+      "sha256": "70158bb8e8f73e64b75a5beee969cdfe81476c41b78106c86b0445ee8ade1008",
+      "sourceDeliveryRemoteEqual": true
+    },
+    {
+      "path": "docs/mcr/evidence/map-production-binding/native-composition-art03-round01/supervisor.json",
+      "mode": "100644",
+      "blob": "7cc34e5a4f5f7f1913657250c38f5bd026f2e2e0",
+      "bytes": 3911,
+      "sha256": "1c87bc743623792bdfe79f040c3e1aa37628cc40c1decc0e28e7d2b42ae0c1f6",
+      "sourceDeliveryRemoteEqual": true
+    },
+    {
+      "path": "docs/mcr/evidence/map-production-binding/native-composition-art03-round01/syntax.log",
+      "mode": "100644",
+      "blob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "sourceDeliveryRemoteEqual": true
+    },
+    {
+      "path": "docs/mcr/evidence/map-production-binding/native-composition-art03-round01/types.log",
+      "mode": "100644",
+      "blob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "sourceDeliveryRemoteEqual": true
+    },
+    {
+      "path": "docs/mcr/evidence/map-production-binding/root-v2-native-supervisor.py",
+      "mode": "100644",
+      "blob": "7fb97bb4d74fd514a393d44a53287d8a458d80b8",
+      "bytes": 7057,
+      "sha256": "29fb4535513e44d3f29a76c843c2be9ba77a1a2ffed5fe27c4c62c19a7341c50",
+      "sourceDeliveryRemoteEqual": true
+    },
+    {
+      "path": "docs/mcr/evidence/map-production-binding/source-round05/README.md",
+      "mode": "100644",
+      "blob": "857c753e3f59629168269e6b574641234ca2ef17",
+      "bytes": 10831,
+      "sha256": "2ec27d19e5a3ee8cc822d93c991b0239aa66ed1609a61d9f3dfcb0f9321f9eaa",
+      "sourceDeliveryRemoteEqual": true
+    },
+    {
+      "path": "docs/mcr/evidence/map-production-binding/source-round05/attempts.jsonl",
+      "mode": "100644",
+      "blob": "3215ca68615c6cb671410a666f31e937645dde7a",
+      "bytes": 3616,
+      "sha256": "16bea54360fcfcbaea44f855153fb25a96af3797f783a233bd5830c606d4b192",
+      "sourceDeliveryRemoteEqual": true
+    },
+    {
+      "path": "docs/mcr/evidence/map-production-binding/source-round05/cleanup.jsonl",
+      "mode": "100644",
+      "blob": "793c8ef38283c6eb8751b9d3597ee4acb883c6d9",
+      "bytes": 860,
+      "sha256": "673a63ebdc5c79520c0ec6da476cf893a55894a15068686ec7dec624448516e9",
+      "sourceDeliveryRemoteEqual": true
+    },
+    {
+      "path": "docs/mcr/evidence/map-production-binding/source-round05/full-release.json",
+      "mode": "100644",
+      "blob": "6f7b92a0daca5b7ace13a949b770433c64105d8e",
+      "bytes": 1759,
+      "sha256": "5ac48d4705c1eaaac912862a806ddb376c840c05af04af5d60118da724cf0ad7",
+      "sourceDeliveryRemoteEqual": true
+    },
+    {
+      "path": "docs/mcr/evidence/map-production-binding/source-round05/guardian.jsonl",
+      "mode": "100644",
+      "blob": "e45373887cc73720f972d8f2308d7a13c1711baf",
+      "bytes": 2638,
+      "sha256": "602770188a39b456ca5c79594677d0d04cf410a487b618558f08f7b451e42a02",
+      "sourceDeliveryRemoteEqual": true
+    },
+    {
+      "path": "docs/mcr/evidence/map-production-binding/source-round05/guardian.py",
+      "mode": "100644",
+      "blob": "4bdde26f6ff3ff5afd9420139eb25adc321ed8fd",
+      "bytes": 4432,
+      "sha256": "aa91d5ee5cbb5b750b4eae9ebafe0ad31f79e1a42ce2cbaf85f2f7803be8a229",
+      "sourceDeliveryRemoteEqual": true
+    },
+    {
+      "path": "docs/mcr/evidence/map-production-binding/source-round05/intake-manifest.json",
+      "mode": "100644",
+      "blob": "33469a43f1aef1ed7dd6532b64a66ac5fb0ba372",
+      "bytes": 8925,
+      "sha256": "bb54684847f8996b8d09e7747594e393731a44ef876be0e951e79011066c12fc",
+      "sourceDeliveryRemoteEqual": true
+    },
+    {
+      "path": "docs/mcr/evidence/map-production-binding/source-round05/lint-01.log",
+      "mode": "100644",
+      "blob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "sourceDeliveryRemoteEqual": true
+    },
+    {
+      "path": "docs/mcr/evidence/map-production-binding/source-round05/registration-01.log",
+      "mode": "100644",
+      "blob": "606c255a606c3772264eea86bb068d32473c998d",
+      "bytes": 3795,
+      "sha256": "39a074087524e80e0a5deeba4a12e5055c1056e4c5444e0a1c881959306babaf",
+      "sourceDeliveryRemoteEqual": true
+    },
+    {
+      "path": "docs/mcr/evidence/map-production-binding/source-round05/registration-check-01.log",
+      "mode": "100644",
+      "blob": "12fc8b09f2315cb39bfb2aa231d7528c678544ad",
+      "bytes": 3795,
+      "sha256": "b77ba234738a6158d5cdb259f4b858ac547b936ef1122e769818c1d8fdaeac58",
+      "sourceDeliveryRemoteEqual": true
+    },
+    {
+      "path": "docs/mcr/evidence/map-production-binding/source-round05/source-pins.json",
+      "mode": "100644",
+      "blob": "b05519eebfcb0fd4bc542e63f4b2143ebef2cbdf",
+      "bytes": 7409,
+      "sha256": "b207f71171c911c543a00ed6333e6fe5c6e8fff223dd5976df0edf03adf35fdc",
+      "sourceDeliveryRemoteEqual": true
+    },
+    {
+      "path": "docs/mcr/evidence/map-production-binding/source-round05/supervisor.py",
+      "mode": "100644",
+      "blob": "8641950764e7d6f57f8a6031a779482c095b2f8e",
+      "bytes": 7066,
+      "sha256": "d3501c229b23b8e55276abd3f7d123620a9d100401512c7cd78df3a0d056c376",
+      "sourceDeliveryRemoteEqual": true
+    },
+    {
+      "path": "docs/mcr/evidence/map-production-binding/source-round05/tests-01.log",
+      "mode": "100644",
+      "blob": "6dc7d1c266f69cd248c485165d841a522325003c",
+      "bytes": 256,
+      "sha256": "2135a8c33329f62ceb4c3f8d2d5990a601c6b18ef265790ceb21a2e2c587ee24",
+      "sourceDeliveryRemoteEqual": true
+    },
+    {
+      "path": "docs/mcr/evidence/map-production-binding/source-round05/types-01.log",
+      "mode": "100644",
+      "blob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "sourceDeliveryRemoteEqual": true
+    },
+    {
+      "path": "docs/mcr/frontend/map-production-binding.md",
+      "mode": "100644",
+      "blob": "a2b9c357ae87383a44c3bb33b2b1c98e7c3b5617",
+      "bytes": 25389,
+      "sha256": "a1d27bc3b2647168b72d7777be36feb70f452e94f8c49718ce7bac03602c3ef0",
+      "sourceDeliveryRemoteEqual": true
+    },
+    {
+      "path": "frontend/public/world/map-reference-composition-v1/README.md",
+      "mode": "100644",
+      "blob": "cd95e2c34c15ccd78a67e6bffa0497448a3ee9c4",
+      "bytes": 8888,
+      "sha256": "a244e90d5f39843487e316ddfef233019da9c49b3f1af1940aeae17011107fb5",
+      "sourceDeliveryRemoteEqual": true
+    },
+    {
+      "path": "frontend/public/world/map-reference-composition-v1/build.py",
+      "mode": "100644",
+      "blob": "e726988b5489322747eff58a10f8e89bdd0281d3",
+      "bytes": 31720,
+      "sha256": "a58fb7a47e8c9f9f7692041f998961b1e9bb1cd3e4c9abeafa5d0eb61b1f46b4",
+      "sourceDeliveryRemoteEqual": true
+    },
+    {
+      "path": "frontend/public/world/map-reference-composition-v1/danger-scene.png",
+      "mode": "100644",
+      "blob": "03e77bb2869d9553636a06ca1789dfe0bfd635c8",
+      "bytes": 686555,
+      "sha256": "8cc354d6666e48d183173bc73ed5c459286bdc8e28a11cce3bc2bdb0f852fbd1",
+      "sourceDeliveryRemoteEqual": true
+    },
+    {
+      "path": "frontend/public/world/map-reference-composition-v1/danger-scene.svg",
+      "mode": "100644",
+      "blob": "769469baf35c3c598b40e0548f515a8bcf10af65",
+      "bytes": 1837204,
+      "sha256": "431a705f83865ddd25b33df4ee4940d055c8a29d8204edbd216c0ea09aec0b8b",
+      "sourceDeliveryRemoteEqual": true
+    },
+    {
+      "path": "frontend/public/world/map-reference-composition-v1/layout.json",
+      "mode": "100644",
+      "blob": "33c311d1760c7e95cd874ae6f9dffbc9cf111e94",
+      "bytes": 101203,
+      "sha256": "3dd7c80f6612c83da97aaae4733d236acbfc8057c18d65b6f8c9d0f40dad6792",
+      "sourceDeliveryRemoteEqual": true
+    },
+    {
+      "path": "frontend/public/world/map-reference-composition-v1/parade-scene.png",
+      "mode": "100644",
+      "blob": "8bbd89d7f997ba1da0ac62773474bf021ca24e04",
+      "bytes": 697466,
+      "sha256": "0a25503095d2ed62960e5ff23731a35d87159301e9a3993a12ead671c057ac06",
+      "sourceDeliveryRemoteEqual": true
+    },
+    {
+      "path": "frontend/public/world/map-reference-composition-v1/parade-scene.svg",
+      "mode": "100644",
+      "blob": "2f0b25706607ee5f6413b40078f39fb22eb0cff0",
+      "bytes": 1867440,
+      "sha256": "dc7447be761db0719746f2aa2afedaff85ead22955c99f70a526a53d71b70117",
+      "sourceDeliveryRemoteEqual": true
+    },
+    {
+      "path": "frontend/public/world/map-reference-composition-v1/revenge-scene.png",
+      "mode": "100644",
+      "blob": "598ba9a374a7801833edffb649c70863b1faf818",
+      "bytes": 677852,
+      "sha256": "b503fde72ebd8c46181609cd1256809bd58eaf34b24f8811781246abbef675bc",
+      "sourceDeliveryRemoteEqual": true
+    },
+    {
+      "path": "frontend/public/world/map-reference-composition-v1/revenge-scene.svg",
+      "mode": "100644",
+      "blob": "4e7302cb22b1d5c413cf233ff02a56edd3374ea3",
+      "bytes": 1834992,
+      "sha256": "6deee6f006ba023d1e9bf28a284e4a7d3a63fec0948ec1847bd21bfa252c2e66",
+      "sourceDeliveryRemoteEqual": true
+    },
+    {
+      "path": "frontend/public/world/map-reference-composition-v1/source-provenance.json",
+      "mode": "100644",
+      "blob": "507cda132a070f6d52931653af96871b4955e132",
+      "bytes": 35516,
+      "sha256": "95605459793ab950f711791de3094daf644c4114406efa0ed9a86380d163135d",
+      "sourceDeliveryRemoteEqual": true
+    },
+    {
+      "path": "frontend/src/app/world-entry/__tests__/map-presentation-v2/labels.test.ts",
+      "mode": "100644",
+      "blob": "14aa3301ae574381a68f6b6339c8aff89139ec6e",
+      "bytes": 5561,
+      "sha256": "14f6cbc05f0b2089d8afd6ee6afefc0fa2df94023a8cc808fc8e3a172725598a",
+      "sourceDeliveryRemoteEqual": true
+    },
+    {
+      "path": "frontend/src/app/world-entry/__tests__/map-presentation-v2/native.mjs",
+      "mode": "100644",
+      "blob": "d04b9841cafa93fb87cf610090702c814ac765bb",
+      "bytes": 22114,
+      "sha256": "bc5c4669958be5ba0fc64ea2c57ddf2a4da8899a3017b3582d6d2339d3c2ea33",
+      "sourceDeliveryRemoteEqual": true
+    },
+    {
+      "path": "frontend/src/app/world-entry/__tests__/map-presentation-v2/register.mjs",
+      "mode": "100644",
+      "blob": "7a2550e005cd32e6861881a695ac27b1d2aebc12",
+      "bytes": 8354,
+      "sha256": "c3c9eefffe002c65965c42ee3ad3f884e4167d205b98fdd49582f989f91ed39f",
+      "sourceDeliveryRemoteEqual": true
+    },
+    {
+      "path": "frontend/src/app/world-entry/__tests__/map-presentation-v2/registration.test.ts",
+      "mode": "100644",
+      "blob": "381deed2e218823e36fc7bbf61a04a6c8b808142",
+      "bytes": 6333,
+      "sha256": "087e6104224713e6c9600cf68d880827a685ada9a1713f4d0c798a23f5cef1ee",
+      "sourceDeliveryRemoteEqual": true
+    },
+    {
+      "path": "frontend/src/features/places/ui/places.css",
+      "mode": "100644",
+      "blob": "f9b27c5db477510fe344f72add5d5b1877af83ff",
+      "bytes": 10643,
+      "sha256": "b0cc09eaaa88ffc90b165d24f573f01d9c59021322455658d411bab8fabaaae6",
+      "sourceDeliveryRemoteEqual": true
+    },
+    {
+      "path": "frontend/src/world/reference-scene/map4-service-v2/labels.ts",
+      "mode": "100644",
+      "blob": "69440da991e92c05dfca3ccc5666656362cf5133",
+      "bytes": 5609,
+      "sha256": "43b93f873276a99dcc5eeb99230cb83c390827bbefccf6f306afb50db7c9a34d",
+      "sourceDeliveryRemoteEqual": true
+    },
+    {
+      "path": "frontend/src/world/reference-scene/map4-service-v2/layout-source.json",
+      "mode": "100644",
+      "blob": "33c311d1760c7e95cd874ae6f9dffbc9cf111e94",
+      "bytes": 101203,
+      "sha256": "3dd7c80f6612c83da97aaae4733d236acbfc8057c18d65b6f8c9d0f40dad6792",
+      "sourceDeliveryRemoteEqual": true
+    },
+    {
+      "path": "frontend/src/world/reference-scene/map4-service-v2/model.ts",
+      "mode": "100644",
+      "blob": "97f32447f8aad8a28a25edf69407d04d2b9d28ee",
+      "bytes": 4269,
+      "sha256": "13020517c600a4b2a7bf30ca2fdfb15f9571d40edea612bae0853f56e9e6b0fa",
+      "sourceDeliveryRemoteEqual": true
+    },
+    {
+      "path": "frontend/src/world/reference-scene/map4-service-v2/registration.ts",
+      "mode": "100644",
+      "blob": "025814be2b1a068304424a532030f9cd02c495dc",
+      "bytes": 445,
+      "sha256": "d42e4f9867662b9ea723b63a833be7221bdcdc29a1e39945cc953f63cd8d4e00",
+      "sourceDeliveryRemoteEqual": true
+    },
+    {
+      "path": "frontend/src/world/reference-scene/map4-service-v2/resources.json",
+      "mode": "100644",
+      "blob": "57c7d8aed0018fa2dcf99f458c910532e29439ad",
+      "bytes": 1132,
+      "sha256": "8b08da2b440295c5454c0677130283d1eba16ec7164c00326b4c66a68fbe6033",
+      "sourceDeliveryRemoteEqual": true
+    },
+    {
+      "path": "frontend/src/world/reference-scene/map4-service-v2/style-source.json",
+      "mode": "100644",
+      "blob": "a6008506fa9edd93f9f34eb1965eaff5d20fdf0f",
+      "bytes": 9173,
+      "sha256": "a7468e7208e70db82c402db7676b7046b739fec681d017082f121d99798c3305",
+      "sourceDeliveryRemoteEqual": true
+    },
+    {
+      "path": "frontend/src/world/reference-scene/map4-service-v2/style.ts",
+      "mode": "100644",
+      "blob": "2c0e79c07cb8a4b4aac46e3ac776672304924a5b",
+      "bytes": 372,
+      "sha256": "c5f96d6a8616398f2922a0af19285c43cb62d2906a1db8d142af79e050c28c04",
+      "sourceDeliveryRemoteEqual": true
+    }
+  ],
+  "ownerSource05PinsMatched": 36,
+  "source05PinsSource": "f56c68dc600c3ec4894cd7269a3558f4c1cc5280",
+  "cssSource": "0ae5e161b478039fa582eeacddc101d819b95cb6",
+  "cssSha256": "b0cc09eaaa88ffc90b165d24f573f01d9c59021322455658d411bab8fabaaae6",
+  "presentationHash": "sha256:4922af8c4761014a2dd672ec52610ab9abd394be0bcc0b29e7780421167600ca",
+  "artSource": "94c47a8b3219efc76a4be9646014cfeaad2f1957",
+  "exceptions": [
+    "Owner MD equality is to frozen Root seal eb024bb8, not stale f56 owner MD. Root preparation/intake/native status updates are preserved. No stale whole-document replacement is authorized."
+  ],
+  "limits": [
+    "Exactly85 scoped publication postimages and modes; no whole current remote-tree runtime claim.",
+    "Original failed native packet and passing19contexts/21PNGs/release included unchanged.",
+    "ART04/source06 explicitly excluded. No live/operator, physical-device or full reference parity acceptance."
+  ]
+}

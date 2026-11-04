@@ -1,0 +1,17 @@
+{
+  "reason": "WORK_DEADLINE",
+  "peaks": {
+    "processes": 9,
+    "rssBytes": 962756608,
+    "wholeBytes": 413995241,
+    "tempBytes": 79684,
+    "cacheBytes": 5492481,
+    "outputBytes": 159742
+  },
+  "minimumFreeBytes": 27059621888,
+  "remainingOwnedPids": [],
+  "linkAbsent": true,
+  "tempAbsent": true,
+  "cacheAbsent": true,
+  "port5197Free": false
+}

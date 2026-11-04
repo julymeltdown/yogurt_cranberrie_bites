@@ -1,0 +1,54 @@
+{
+  "offer": "ART-GIFTS-GRAMMAR-SOURCE-A-202611041445Z",
+  "acceptUtc": "2026-11-04T14:46:18.438410+00:00",
+  "workDeadlineUtc": "2026-11-04T14:46:48.438583+00:00",
+  "fullDeadlineUtc": "2026-11-04T14:47:18.438583+00:00",
+  "head": "c306093e4edca51725e1fa9539a3b4cfe367eb2e",
+  "pins": {
+    "run-native.py": "fcf718f27f58ec2df53888e90adccc54780f12fb8c84f5e14438d5c15799e913",
+    "capture.mjs": "f38fcf48fd328e407b28de47cc1140829ffa4e3c9c05946efff38198eeba6a87",
+    "serve.mjs": "ff3bdfdb18de269a53a3cef53759e261f1d00938f0993e92ae6c4c48723fcb3c"
+  },
+  "checks": [
+    {
+      "argv": [
+        "python3",
+        "-c",
+        "import ast;from pathlib import Path;ast.parse(Path('docs/mcr/evidence/art-gifts-content-v1/run-native.py').read_text());print('PASS AST only')"
+      ],
+      "exitCode": 0,
+      "stdout": "PASS AST only\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "node",
+        "--check",
+        "docs/mcr/evidence/art-gifts-content-v1/capture.mjs"
+      ],
+      "exitCode": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "node",
+        "--check",
+        "docs/mcr/evidence/art-gifts-content-v1/serve.mjs"
+      ],
+      "exitCode": 0,
+      "stdout": "",
+      "stderr": ""
+    }
+  ],
+  "guardianReadyBeforeChildren": true,
+  "guardianOutput": "{\"reason\": \"NORMAL_STOP\", \"peaks\": {\"processes\": 4, \"rssBytes\": 45940736, \"wholeBytes\": 2070565}, \"minimumFreeBytes\": 26049814528, \"remainingWorkPids\": [], \"tempBytes\": 0, \"cacheBytes\": 0}\n",
+  "guardianError": "",
+  "guardianExitCode": 0,
+  "finishedUtc": "2026-11-04T14:46:18.707845+00:00",
+  "result": "PASS",
+  "postFreeBytes": 26047426560,
+  "tempBytes": 0,
+  "cacheBytes": 0,
+  "retainedProcesses": 0
+}
