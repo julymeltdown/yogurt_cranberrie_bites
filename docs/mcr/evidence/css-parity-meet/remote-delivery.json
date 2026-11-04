@@ -1,0 +1,358 @@
+{
+  "kind": "OWNER_REMOTE_CONTENT_AND_ANCESTRY_PROOF",
+  "handoff": "bdb10a2f3b8e047df77220c602f07a2190c0950d",
+  "cumulativeBase": "20682b5736838a4acbdc79e000350834cc553961",
+  "delivery": "02fdd6a1e2c2125918c0f25037be653771290305",
+  "remoteTip": "02fdd6a1e2c2125918c0f25037be653771290305",
+  "deliveryIsRemoteAncestor": true,
+  "paths": 69,
+  "mismatches": [],
+  "files": [
+    {
+      "path": "docs/mcr/evidence/css-parity-meet/baseline-01.log",
+      "matches": true,
+      "sha256": "ab5db8064ef63e744693ff7f17af41977db0be807ce5ac46755361125caa506a"
+    },
+    {
+      "path": "docs/mcr/evidence/css-parity-meet/baseline-01/filters-390.png",
+      "matches": true,
+      "sha256": "9406bd3562ac17f12fc6b6b00cf76f870ec0dbecbc1becc7711ce00da488ff69"
+    },
+    {
+      "path": "docs/mcr/evidence/css-parity-meet/baseline-01/focus-390.png",
+      "matches": true,
+      "sha256": "43f5c6f8b24bbb50860fcf4edd6baa3275e03dc41d4137fa87a07097c1cd573e"
+    },
+    {
+      "path": "docs/mcr/evidence/css-parity-meet/baseline-01/forced-focus-390.png",
+      "matches": true,
+      "sha256": "73d7629cc799526ac28357267dcc39d9cf4a4ecb904fcfb9c54c2a291d834cf4"
+    },
+    {
+      "path": "docs/mcr/evidence/css-parity-meet/baseline-01/long-title-390.png",
+      "matches": true,
+      "sha256": "abc593b3766e2be474646e6109cec36b54560eb09e1a1960fbb77b92d6f6d810"
+    },
+    {
+      "path": "docs/mcr/evidence/css-parity-meet/baseline-01/meet-390.png",
+      "matches": true,
+      "sha256": "c6f6482faa8eee0627c4d0dcae860562bf7c4f3c52670014d86506dec206330b"
+    },
+    {
+      "path": "docs/mcr/evidence/css-parity-meet/baseline-01/meet-390x844.png",
+      "matches": true,
+      "sha256": "080c5397107f32f40e663c775dcf291dd5d7aa033b843056d0e73b07606b020d"
+    },
+    {
+      "path": "docs/mcr/evidence/css-parity-meet/baseline-01/report.json",
+      "matches": true,
+      "sha256": "fde5dfc33126773b4f58bb64ccc386c5dcea665db614b0baa12094b7a94c091f"
+    },
+    {
+      "path": "docs/mcr/evidence/css-parity-meet/candidate-01.log",
+      "matches": true,
+      "sha256": "3efc484afe268b460ba6153f77788c49deac5df5134b88b45f02a32088a4c32a"
+    },
+    {
+      "path": "docs/mcr/evidence/css-parity-meet/candidate-01/filters-360.png",
+      "matches": true,
+      "sha256": "644e0449d45efa49e67a2eb4605ea033320f44d549a55e53ed30c3a9cdc9b968"
+    },
+    {
+      "path": "docs/mcr/evidence/css-parity-meet/candidate-01/filters-390.png",
+      "matches": true,
+      "sha256": "abecad639010280a075590daec22e1f6a4a5413c8b694f2ef7a83c12373ae9be"
+    },
+    {
+      "path": "docs/mcr/evidence/css-parity-meet/candidate-01/filters-430.png",
+      "matches": true,
+      "sha256": "cfbc327f3a9793a98f84d456bc731610587a35e5bc5076f9ebf7e1583ae0026c"
+    },
+    {
+      "path": "docs/mcr/evidence/css-parity-meet/candidate-01/focus-360.png",
+      "matches": true,
+      "sha256": "6e0227dda159f37afa1487b17f4ceba0c00b749d8386d8b712e5940911c73286"
+    },
+    {
+      "path": "docs/mcr/evidence/css-parity-meet/candidate-01/focus-390.png",
+      "matches": true,
+      "sha256": "f92e1419e68f162a53f1dc3590449c2c9e9beccff866b4d458118efbfd50ac1e"
+    },
+    {
+      "path": "docs/mcr/evidence/css-parity-meet/candidate-01/focus-430.png",
+      "matches": true,
+      "sha256": "e014328606de70f27c3dc0939de6721868083110addbc94172a1bde0deb44fdf"
+    },
+    {
+      "path": "docs/mcr/evidence/css-parity-meet/candidate-01/forced-focus-360.png",
+      "matches": true,
+      "sha256": "afac0fc233f5e1e6d63fe6f303c9cf2b4057fb516d486368e1fc0103bd1c6d28"
+    },
+    {
+      "path": "docs/mcr/evidence/css-parity-meet/candidate-01/forced-focus-390.png",
+      "matches": true,
+      "sha256": "6c7faabd2d1847173b749ac9a971ae2b61d9826bd705a246ac2dbb910be10b45"
+    },
+    {
+      "path": "docs/mcr/evidence/css-parity-meet/candidate-01/forced-focus-430.png",
+      "matches": true,
+      "sha256": "fbbd7b9b6c88e8e7862c55527931171631c3ad269e0b9047ec76d5ba2d83141c"
+    },
+    {
+      "path": "docs/mcr/evidence/css-parity-meet/candidate-01/long-title-360.png",
+      "matches": true,
+      "sha256": "e772988e096e36ac9e07084f74cb11b45c80b1a656a62e6df61dab6e7e382188"
+    },
+    {
+      "path": "docs/mcr/evidence/css-parity-meet/candidate-01/long-title-390.png",
+      "matches": true,
+      "sha256": "e5a1ce9a93e1a8077bda63e63e28f98bf5aa9c263e208f3679e075ea12bc4317"
+    },
+    {
+      "path": "docs/mcr/evidence/css-parity-meet/candidate-01/long-title-430.png",
+      "matches": true,
+      "sha256": "c279ff65d6bc38c1d98d1d81b2960d6c89d87af2e5453e7e3179f9cc7b50f12e"
+    },
+    {
+      "path": "docs/mcr/evidence/css-parity-meet/candidate-01/meet-360.png",
+      "matches": true,
+      "sha256": "9ad4d9f2246ca829ad214b161312e18ffbf7fa42e1b03e5a28eb503cc43a87c1"
+    },
+    {
+      "path": "docs/mcr/evidence/css-parity-meet/candidate-01/meet-390.png",
+      "matches": true,
+      "sha256": "5ddc0627040667c17a43e31802b9dd677c90ab800a07a27fb2cec83766bedf12"
+    },
+    {
+      "path": "docs/mcr/evidence/css-parity-meet/candidate-01/meet-390x844.png",
+      "matches": true,
+      "sha256": "02591df11030f5e4a64e754ce20db1e81d42321174182bc4aae60e6ba4c4909a"
+    },
+    {
+      "path": "docs/mcr/evidence/css-parity-meet/candidate-01/meet-430.png",
+      "matches": true,
+      "sha256": "dac025547af06fe8bb28c2a6693c30d3d8f695db38da2559ec7b8588f4f749cd"
+    },
+    {
+      "path": "docs/mcr/evidence/css-parity-meet/candidate-01/report.json",
+      "matches": true,
+      "sha256": "2f803ef1967eda3b7c9ccf4a9c0d01ff75f14604d868cb43e486adc1f256fb24"
+    },
+    {
+      "path": "docs/mcr/evidence/css-parity-meet/candidate-02.log",
+      "matches": true,
+      "sha256": "3efc484afe268b460ba6153f77788c49deac5df5134b88b45f02a32088a4c32a"
+    },
+    {
+      "path": "docs/mcr/evidence/css-parity-meet/candidate-02/filters-360.png",
+      "matches": true,
+      "sha256": "a1226edbfee7c8b0745b098664be8df331c75a2865abcab1eabd3e08d58e3b2a"
+    },
+    {
+      "path": "docs/mcr/evidence/css-parity-meet/candidate-02/filters-390.png",
+      "matches": true,
+      "sha256": "8324d051d1ee5586e43058603641cebe5af8a94552762ce3af4c243455984ba0"
+    },
+    {
+      "path": "docs/mcr/evidence/css-parity-meet/candidate-02/filters-430.png",
+      "matches": true,
+      "sha256": "0b9a9eeaf16d61576d3abeb85c2fcf5e312b201f58e83de271310b60d98266b2"
+    },
+    {
+      "path": "docs/mcr/evidence/css-parity-meet/candidate-02/focus-360.png",
+      "matches": true,
+      "sha256": "6831ae625aafb6643fb815079d7820045b094ae859f976b60091d701d3a62485"
+    },
+    {
+      "path": "docs/mcr/evidence/css-parity-meet/candidate-02/focus-390.png",
+      "matches": true,
+      "sha256": "7727ec4d4e893b34f6622326b656e36d8eb629bd3c65de6ee4e66930df398584"
+    },
+    {
+      "path": "docs/mcr/evidence/css-parity-meet/candidate-02/focus-430.png",
+      "matches": true,
+      "sha256": "b30cdec2766b4cbe7a7ffffb0c3fcba8151ac34737e01c97c8307cd4e1ca3581"
+    },
+    {
+      "path": "docs/mcr/evidence/css-parity-meet/candidate-02/forced-focus-360.png",
+      "matches": true,
+      "sha256": "f3c99fc5ff19181fb69c07ebc942c1b0a0bbc1aca4cf2586889f21ee4e1000b6"
+    },
+    {
+      "path": "docs/mcr/evidence/css-parity-meet/candidate-02/forced-focus-390.png",
+      "matches": true,
+      "sha256": "922a49f47220a448bcedb922e64772aff1a92f2e4f82a998d4f68ee063bd35e7"
+    },
+    {
+      "path": "docs/mcr/evidence/css-parity-meet/candidate-02/forced-focus-430.png",
+      "matches": true,
+      "sha256": "9d39008652f49a76a2fe73c869d2183fc85d6084fae1a87465ce89005d5f61b7"
+    },
+    {
+      "path": "docs/mcr/evidence/css-parity-meet/candidate-02/long-title-360.png",
+      "matches": true,
+      "sha256": "7db6068c59c27b57f154fdbfe6235e8f06dee386889bccd4952f1111edeee268"
+    },
+    {
+      "path": "docs/mcr/evidence/css-parity-meet/candidate-02/long-title-390.png",
+      "matches": true,
+      "sha256": "63af33af78b8d9d4d8808a92b12d99629f6f6f04d228adff88f4e2460fdc3c06"
+    },
+    {
+      "path": "docs/mcr/evidence/css-parity-meet/candidate-02/long-title-430.png",
+      "matches": true,
+      "sha256": "01ebd1075f41d138df9cc35e43edcb7b0edc02c3eda9595ea43d548ed98f34d4"
+    },
+    {
+      "path": "docs/mcr/evidence/css-parity-meet/candidate-02/meet-360.png",
+      "matches": true,
+      "sha256": "57e38ce5c0bf00a7ed5e2747ba9d8158516f9134f9a4e198de3dbb41ed4a1681"
+    },
+    {
+      "path": "docs/mcr/evidence/css-parity-meet/candidate-02/meet-390.png",
+      "matches": true,
+      "sha256": "0436b0670a9fb09b204a566dad5e84b000af082aa46a9be351c7c69d7429f51e"
+    },
+    {
+      "path": "docs/mcr/evidence/css-parity-meet/candidate-02/meet-390x844.png",
+      "matches": true,
+      "sha256": "531bc5c28898b4f4c9b2a43d15d19ae97abcaa65766894f55b70d56dc5e14df9"
+    },
+    {
+      "path": "docs/mcr/evidence/css-parity-meet/candidate-02/meet-430.png",
+      "matches": true,
+      "sha256": "5892061bb6961acced9c55af0a7b56b6e67ac55d497068993917936b0146cc89"
+    },
+    {
+      "path": "docs/mcr/evidence/css-parity-meet/candidate-02/report.json",
+      "matches": true,
+      "sha256": "b16b61c5dda350f83e84a2f8a298999d856a95447a5265f34854e0036408f5af"
+    },
+    {
+      "path": "docs/mcr/evidence/css-parity-meet/candidate-03.log",
+      "matches": true,
+      "sha256": "3efc484afe268b460ba6153f77788c49deac5df5134b88b45f02a32088a4c32a"
+    },
+    {
+      "path": "docs/mcr/evidence/css-parity-meet/candidate-03/filters-360.png",
+      "matches": true,
+      "sha256": "61a870198658d3d11d7702be73cc00d0c287c117336382be265f97ccf5646a0f"
+    },
+    {
+      "path": "docs/mcr/evidence/css-parity-meet/candidate-03/filters-390.png",
+      "matches": true,
+      "sha256": "8324d051d1ee5586e43058603641cebe5af8a94552762ce3af4c243455984ba0"
+    },
+    {
+      "path": "docs/mcr/evidence/css-parity-meet/candidate-03/filters-430.png",
+      "matches": true,
+      "sha256": "63cee4aff5ba1e782251529a7ec1926fbab8ea85a813a040d2d4e20875c0da85"
+    },
+    {
+      "path": "docs/mcr/evidence/css-parity-meet/candidate-03/focus-360.png",
+      "matches": true,
+      "sha256": "5954a1be2e35733853a7a4f83d3d2fff2cdccdf9f60d6efd9920a160f9c9af97"
+    },
+    {
+      "path": "docs/mcr/evidence/css-parity-meet/candidate-03/focus-390.png",
+      "matches": true,
+      "sha256": "7727ec4d4e893b34f6622326b656e36d8eb629bd3c65de6ee4e66930df398584"
+    },
+    {
+      "path": "docs/mcr/evidence/css-parity-meet/candidate-03/focus-430.png",
+      "matches": true,
+      "sha256": "06d73eaef1017daafc7f4133a1ad3269bbf021c9438318ab762db2dcb2ee4562"
+    },
+    {
+      "path": "docs/mcr/evidence/css-parity-meet/candidate-03/forced-focus-360.png",
+      "matches": true,
+      "sha256": "267ab0599c2542cd75bfd983ee895acfd12f566a0a4bb1f365008399d6113c44"
+    },
+    {
+      "path": "docs/mcr/evidence/css-parity-meet/candidate-03/forced-focus-390.png",
+      "matches": true,
+      "sha256": "922a49f47220a448bcedb922e64772aff1a92f2e4f82a998d4f68ee063bd35e7"
+    },
+    {
+      "path": "docs/mcr/evidence/css-parity-meet/candidate-03/forced-focus-430.png",
+      "matches": true,
+      "sha256": "b2722eaeb3f738fc7ef583b00219d84d47643533838c75513929312bf5643e52"
+    },
+    {
+      "path": "docs/mcr/evidence/css-parity-meet/candidate-03/long-title-360.png",
+      "matches": true,
+      "sha256": "6da30b5feb74955de69b8fee6746e037059e7293b92b09ca163cc7eba412fbdf"
+    },
+    {
+      "path": "docs/mcr/evidence/css-parity-meet/candidate-03/long-title-390.png",
+      "matches": true,
+      "sha256": "63af33af78b8d9d4d8808a92b12d99629f6f6f04d228adff88f4e2460fdc3c06"
+    },
+    {
+      "path": "docs/mcr/evidence/css-parity-meet/candidate-03/long-title-430.png",
+      "matches": true,
+      "sha256": "53fb2476d42938190fc2844baaf26dd9ba0e666bb6bf8d001c06fa24b68f9058"
+    },
+    {
+      "path": "docs/mcr/evidence/css-parity-meet/candidate-03/meet-360.png",
+      "matches": true,
+      "sha256": "cd6633cf02efaadf04cdb455cd717f83bf4a8fb3c0c4c120f1025af07f92c1fe"
+    },
+    {
+      "path": "docs/mcr/evidence/css-parity-meet/candidate-03/meet-390.png",
+      "matches": true,
+      "sha256": "0436b0670a9fb09b204a566dad5e84b000af082aa46a9be351c7c69d7429f51e"
+    },
+    {
+      "path": "docs/mcr/evidence/css-parity-meet/candidate-03/meet-390x844.png",
+      "matches": true,
+      "sha256": "92d83e69a24ebc233a6129e89e78acf6ea2841ffa28c73c422ac3c248b75bd3d"
+    },
+    {
+      "path": "docs/mcr/evidence/css-parity-meet/candidate-03/meet-430.png",
+      "matches": true,
+      "sha256": "9b5fc63aee9f30ebb15d505fa6fcb75eb088a94409ec739168c99ca1bc9a5267"
+    },
+    {
+      "path": "docs/mcr/evidence/css-parity-meet/candidate-03/report.json",
+      "matches": true,
+      "sha256": "8c1dfcc6e944c9444fb701eb83ccc965a63c39c3f43963fd79c226491f805afb"
+    },
+    {
+      "path": "docs/mcr/evidence/css-parity-meet/candidate-04-not-run.json",
+      "matches": true,
+      "sha256": "1e8a2163d6a3c6a736c4edcc5e90b47acf4efcd46f4906a501e680dd3cb8a4aa"
+    },
+    {
+      "path": "docs/mcr/evidence/css-parity-meet/capture.mjs",
+      "matches": true,
+      "sha256": "bff8eac220c0b7925f262c0a8c5c71c62aa231e823f6f99eeffcacc33511e96d"
+    },
+    {
+      "path": "docs/mcr/evidence/css-parity-meet/lease-01.json",
+      "matches": true,
+      "sha256": "c731c95192b4c978b6eee5b42a25a13b4d70eca8c64ff11ac822b34edd6d5e32"
+    },
+    {
+      "path": "docs/mcr/evidence/css-parity-meet/reference-meet.png",
+      "matches": true,
+      "sha256": "a2eec7c2053d876ee408eaad00bbc3bd3de309a4b78711e626a9e1e881990cfa"
+    },
+    {
+      "path": "docs/mcr/evidence/css-parity-meet/saved-analysis.json",
+      "matches": true,
+      "sha256": "82f1ac86248e2a770853f4604758a04849bdce2993d46ca0bff4b89476621968"
+    },
+    {
+      "path": "docs/mcr/frontend/css-parity-meet.md",
+      "matches": true,
+      "sha256": "11af8d334b85a65ab88aded1b891a9aafa32bc561ab90f38e572a7f1671e4bda"
+    },
+    {
+      "path": "frontend/src/features/party-discovery/ui/party-discovery.css",
+      "matches": true,
+      "sha256": "b6e0523eea6105e700d01d905b39027026feae6e5e21d4ad945bf9afa45d7f29"
+    }
+  ],
+  "runtimeChecksAtDelivery": "Root publisher owns affected combined checks; this proof reads Git objects, not a new browser acceptance."
+}

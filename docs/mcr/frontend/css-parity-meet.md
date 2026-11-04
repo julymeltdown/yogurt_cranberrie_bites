@@ -1,6 +1,6 @@
 # Meet CSS foreground parity
 
-Task: CSS-PARITY-MEET. Status: MOCK_READY for the bounded foreground CSS handoff. Full photo parity and publication remain open. The objective is unfinished.
+Task: CSS-PARITY-MEET. Status: MOCK_READY for the bounded foreground CSS, published on master. Full photo parity remains open. The objective is unfinished.
 
 The task owns only `frontend/src/features/party-discovery/ui/party-discovery.css`, this document and `docs/mcr/evidence/css-parity-meet/**`. Root153 alone integrates and publishes. No technical approval stage applies. The isolated branch is `codex/mcr-fe-css-parity-meet`, initially fast-forwarded to `54320d71c4ae0bff3524d1b500cea772e0ba42e0`, then to `29a42ca1` after fetching origin/master before edits.
 
@@ -70,4 +70,6 @@ The supervisor ended with FULLRELEASE at **11:51:36.093943 UTC**, before the rel
 
 Publishing route remains directly to Root153 (`01a1a153-1227-7e72-801f-a2a6b91981e1`). The cumulative handoff starts after `20682b5736838a4acbdc79e000350834cc553961`; the final commit alone is incremental and does not replace the earlier CSS changes. Root owns normal integration/publication and affected combined checks. Publication/remote ancestry will be recorded after actual delivery. No king/SL review or acknowledgment is required.
 
-The same persistent goal object was preserved throughout. Its API still reported BLOCKED on explicit resumption and exposes no resume operation; no replacement goal or false completion was created. Implementation work and native validation resumed under the existing objective. The goal is not complete while the exact content/shared-shell limits or publication remain unresolved.
+Root published the cumulative worker handoff `bdb10a2f3b8e047df77220c602f07a2190c0950d` as `02fdd6a1e2c2125918c0f25037be653771290305` on `origin/master`. The implementation owner fetched the remote and read back every one of the 69 handed-off Git file objects: all bytes matched, including the final CSS SHA256 above. `git merge-base --is-ancestor 02fdd6a1e2c2125918c0f25037be653771290305 origin/master` returned 0. The remote tip at readback was that same delivery commit. `remote-delivery.json` records per-file SHA256 and ancestry. This proves publication of the bounded patch, not full visual or live-service acceptance. No resource was reacquired for this Git-object readback.
+
+The same persistent goal object was preserved throughout. Its API still reported BLOCKED on explicit resumption and exposes no resume operation; no replacement goal or false completion was created. Implementation work and native validation resumed under the existing objective. Publication is proved; the goal is not complete while the exact content/shared-shell limits remain unresolved.
