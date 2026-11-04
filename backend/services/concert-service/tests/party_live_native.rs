@@ -3,6 +3,8 @@
 //! The owner guard below is deterministic test material only. It cannot be
 //! constructed by production composition and never grants access through an
 //! observation or a bare identifier.
+mod party_live_support;
+use anyhow::Context;
 use async_trait::async_trait;
 use chrono::{Duration, Utc};
 use concert_application::commands::{FingerprintKeys, ReceiptState, SigningKey};
@@ -138,6 +140,7 @@ impl FencedRelationshipAuthority for TestOwnerFence {
 
 struct TestCommunityPolicy {
     policy: PgRelationshipPolicy<TestOwnerFence>,
+    require_registration: bool,
 }
 fn command_policy(error: RelationshipError) -> concert_application::commands::CommandError {
     match error {
@@ -176,6 +179,17 @@ impl CommunityAuthority for TestCommunityPolicy {
         subject: Uuid,
         access: CommunityAccess,
     ) -> Result<(), concert_application::commands::CommandError> {
+        if self.require_registration {
+            let actual: Option<String> = sqlx::query_scalar(
+                "select nullif(current_setting('mcr.party_test_registered',true),'')",
+            )
+            .fetch_one(&mut *c)
+            .await
+            .map_err(|_| concert_application::commands::CommandError::Unavailable)?;
+            if actual.as_deref() != Some(&format!("{actor}:{event}")) {
+                return Err(concert_application::commands::CommandError::Unavailable);
+            }
+        }
         self.policy
             .authorize_in(
                 c,
@@ -274,14 +288,27 @@ impl PartyLiveOwnerGuard for TestGuard {
         let profile = json!({"user_id":subject,"display_name":"Owner","bio":null,"avatar":{"revision":1,"config":{"contract_version":"1.0.0","kind":"avatar_config","manifest_id":"avatar_fixture","manifest_version":1,"item_ids":{"body":"body_fixture","eyes":"eyes_fixture","hair":"hair_fixture","outfit":"outfit_fixture","accessory":"accessory_fixture"},"skin_tone_id":"tone_fixture"}}});
         Ok(profile)
     }
+    async fn application_profile_in(
+        &self,
+        connection: &mut PgConnection,
+        binding: &PartyLiveBinding,
+        subject: Uuid,
+    ) -> Result<Value, PartyLiveError> {
+        self.public_profile_in(connection, binding, subject).await
+    }
     async fn track_in(
         &self,
-        _: &mut PgConnection,
+        connection: &mut PgConnection,
         binding: &PartyLiveBinding,
     ) -> Result<(), PartyLiveError> {
         if binding.digest() != self.binding.digest() || self.fail_track {
             return Err(PartyLiveError::DependencyUnavailable);
         }
+        sqlx::query("select set_config('mcr.party_test_registered',$1,true)")
+            .bind(format!("{}:{}", binding.actor(), binding.event()))
+            .execute(connection)
+            .await
+            .map_err(|_| PartyLiveError::DependencyUnavailable)?;
         Ok(())
     }
 }
@@ -338,10 +365,10 @@ fn binding(
         request,
         deadline(),
         operation,
-        if operation == "createConcertParty" {
-            "POST"
-        } else {
-            "GET"
+        match operation {
+            "listConcertParties" | "getConcertParty" => "GET",
+            "removeConcertMember" | "cancelConcertApplication" => "DELETE",
+            _ => "POST",
         },
         target,
         body,
@@ -358,6 +385,7 @@ fn service(
         pool.clone(),
         Arc::new(TestCommunityPolicy {
             policy: PgRelationshipPolicy::new(pool, TestOwnerFence),
+            require_registration: true,
         }),
         keys(),
         PartyCursorCodec::new(&[84; 32]).unwrap(),
@@ -456,6 +484,7 @@ async fn party_live_native() -> anyhow::Result<()> {
         pool.clone(),
         TestCommunityPolicy {
             policy: PgRelationshipPolicy::new(pool.clone(), TestOwnerFence),
+            require_registration: false,
         },
     );
     let seed = concert_application::community::PartyCommand {
@@ -493,7 +522,8 @@ async fn party_live_native() -> anyhow::Result<()> {
             ..Default::default()
         }),
     )
-    .await?;
+    .await
+    .context("Party native list_reply")?;
     anyhow::ensure!(
         list_reply.status == 200 && list_reply.body["items"].as_array().unwrap().len() == 1,
         "list failed"
@@ -511,22 +541,101 @@ async fn party_live_native() -> anyhow::Result<()> {
         &[],
         None,
     );
-    let detail = request(&list, detail_binding, PartyLiveAction::Detail(seed_id)).await?;
+    let detail = request(&list, detail_binding, PartyLiveAction::Detail(seed_id))
+        .await
+        .context("Party native detail")?;
     anyhow::ensure!(
         detail.status == 200 && detail.body["party_id"] == seed_id.to_string(),
         "detail failed"
+    );
+    let apply = request(
+        &service(pool.clone(), false, false),
+        binding(
+            other,
+            event,
+            Uuid::new_v4(),
+            "applyConcertParty",
+            format!("/api/concert/events/{event}/parties/{seed_id}/applications"),
+            br#"{"party_revision":1,"note":"Save me a place"}"#,
+            Some(Uuid::new_v4()),
+        ),
+        PartyLiveAction::Apply {
+            party: seed_id,
+            party_revision: 1,
+            note: "Save me a place".into(),
+        },
+    )
+    .await
+    .context("Party native apply")?;
+    anyhow::ensure!(
+        apply.status == 200
+            && apply.body["state"] == "PENDING"
+            && apply.body["applicant"]["user_id"] == other.to_string(),
+        "apply failed"
+    );
+    let application = Uuid::parse_str(apply.body["application_id"].as_str().unwrap())?;
+    let decision = request(
+        &service(pool.clone(), false, false),
+        binding(
+            owner,
+            event,
+            Uuid::new_v4(),
+            "decideConcertApplication",
+            format!("/api/concert/events/{event}/party-applications/{application}/decision"),
+            br#"{"expected_revision":1,"party_revision":1,"decision":"APPROVED"}"#,
+            Some(Uuid::new_v4()),
+        ),
+        PartyLiveAction::Decide {
+            application,
+            expected_revision: 1,
+            party_revision: 1,
+            approve: true,
+        },
+    )
+    .await
+    .context("Party native decision")?;
+    anyhow::ensure!(
+        decision.status == 200 && decision.body["state"] == "APPROVED",
+        "decision failed"
+    );
+    let removal = request(
+        &service(pool.clone(), false, false),
+        binding(
+            other,
+            event,
+            Uuid::new_v4(),
+            "removeConcertMember",
+            format!(
+                "/api/concert/events/{event}/parties/{seed_id}/members/{other}?expected_revision=1&party_revision=2"
+            ),
+            &[],
+            Some(Uuid::new_v4()),
+        ),
+        PartyLiveAction::Remove {
+            party: seed_id,
+            user: other,
+            expected_revision: 1,
+            party_revision: 2,
+        },
+    )
+    .await.context("Party native removal")?;
+    anyhow::ensure!(
+        removal.status == 200 && removal.body["state"] == "LEFT",
+        "leave failed"
     );
 
     let create = service(pool.clone(), false, false);
     let new_fields = fields(place);
     let key = Uuid::new_v4();
     let (create_binding_value, action, _) = create_binding(owner, event, &new_fields, key);
-    let create_reply = request(&create, create_binding_value, action).await?;
+    let create_reply = request(&create, create_binding_value, action)
+        .await
+        .context("Party native create_reply")?;
     anyhow::ensure!(create_reply.status == 200, "create failed");
     let party_id = Uuid::parse_str(create_reply.body["party_id"].as_str().unwrap())?;
     let counts: (i64,i64,i64,i64) = sqlx::query_as("select (select count(*) from concert_command_receipts where event_id=$1 and operation_id='createConcertParty'),(select count(*) from concert_outbox where event_id=$1 and resource_id=$2),(select count(*) from concert_community_parties where event_id=$1),(select count(*) from concert_community_members where event_id=$1)").bind(event).bind(party_id).fetch_one(&pool).await?;
     anyhow::ensure!(
-        counts.0 == 1 && counts.1 == 2 && counts.2 == 2,
+        counts.0 == 2 && counts.1 == 1 && counts.2 == 2,
         "create effects not atomic"
     );
     anyhow::ensure!(
@@ -538,7 +647,8 @@ async fn party_live_native() -> anyhow::Result<()> {
         create_binding(owner, event, &new_fields, key).0,
         create_binding(owner, event, &new_fields, key).1,
     )
-    .await?;
+    .await
+    .context("Party native replay")?;
     anyhow::ensure!(replay.status == 200, "replay failed");
     let replayed_counts: (i64,i64,i64) = sqlx::query_as("select (select count(*) from concert_command_receipts where event_id=$1 and operation_id='createConcertParty'),(select count(*) from concert_outbox where event_id=$1 and resource_id=$2),(select count(*) from concert_community_parties where event_id=$1)").bind(event).bind(party_id).fetch_one(&pool).await?;
     anyhow::ensure!(
@@ -609,7 +719,7 @@ async fn party_live_native() -> anyhow::Result<()> {
             .fetch_one(&pool)
             .await?;
     anyhow::ensure!(
-        after_track_failure == counts.0,
+        after_track_failure == 5,
         "rejected transaction left a receipt"
     );
 
@@ -647,6 +757,7 @@ async fn party_live_native() -> anyhow::Result<()> {
     .bind(event)
     .fetch_one(&pool)
     .await?;
-    anyhow::ensure!(count == 2, "unexpected receipt state");
+    anyhow::ensure!(count == 5, "unexpected receipt state");
+    party_live_support::mutation_invariants(&pool).await?;
     Ok(())
 }

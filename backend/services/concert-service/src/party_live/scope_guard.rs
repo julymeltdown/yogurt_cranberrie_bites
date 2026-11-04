@@ -108,6 +108,30 @@ impl PartyLiveOwnerGuard for ScopePartyLiveGuard {
         Ok(profile)
     }
 
+    async fn application_profile_in(
+        &self,
+        _: &mut PgConnection,
+        binding: &PartyLiveBinding,
+        subject: Uuid,
+    ) -> Result<serde_json::Value, PartyLiveError> {
+        self.check(binding)?;
+        self.subject(subject)?;
+        let guarded = self
+            .scope
+            .public_profile_subject(subject)
+            .await
+            .map_err(status)?;
+        let author = self.profiles.read(&guarded).await.map_err(profile_error)?;
+        if author.user_id != subject || author.json.is_empty() {
+            return Err(PartyLiveError::DependencyUnavailable);
+        }
+        let profile: serde_json::Value = serde_json::from_slice(&author.json)
+            .map_err(|_| PartyLiveError::DependencyUnavailable)?;
+        crate::adapters::out::public_profile::validate(&profile).map_err(status)?;
+        guarded.check().await.map_err(subject_status)?;
+        Ok(profile)
+    }
+
     async fn track_in(
         &self,
         connection: &mut PgConnection,

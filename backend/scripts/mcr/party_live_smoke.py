@@ -16,7 +16,7 @@ import re
 import subprocess
 
 ROOT = Path(__file__).resolve().parents[3]
-REQUIRED = {"party_live_cursor": 3, "party_live_owner": 4, "party_live_wire": 7}
+REQUIRED = {"party_live_cursor": 3, "party_live_owner": 4, "party_live_wire": 8}
 
 
 class PreflightError(Exception):
@@ -43,6 +43,8 @@ def sources() -> dict[str, str]:
         ROOT / "backend/crates/concert-domain/src/community",
         ROOT / "backend/crates/concert-application/src/community",
         ROOT / "backend/services/concert-service/src/community",
+        ROOT / "backend/services/concert-service/src/product_rpc",
+        ROOT / "backend/services/concert-service/tests/party_live_support",
     ]
     paths = {
         path
@@ -56,6 +58,9 @@ def sources() -> dict[str, str]:
             ROOT / "backend/services/concert-service/tests/party_live_cursor.rs",
             ROOT / "backend/services/concert-service/tests/party_live_owner.rs",
             ROOT / "backend/services/concert-service/tests/party_live_wire.rs",
+            ROOT / "backend/services/concert-service/tests/party_live_native.rs",
+            ROOT / "backend/services/concert-service/tests/product_runtime.rs",
+            ROOT / "backend/services/api-gateway/src/adapters/in/http/concert_product/mod.rs",
             ROOT / "backend/Cargo.lock",
             ROOT / "contracts/generated/mcr-domain.openapi.json",
             ROOT / "contracts/domain/v1/party.schema.json",

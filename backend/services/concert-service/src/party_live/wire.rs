@@ -3,7 +3,9 @@ use super::{PartyCursorBinding, PartyLiveBinding, PartyLiveError, PartyPosition}
 use crate::adapters::out::relationship_authority::guarded::GuardBinding;
 use crate::product_rpc::{proto::ProductRequest, MAX_BODY};
 use chrono::{DateTime, SecondsFormat, Utc};
-use concert_domain::community::party::{text, Party, PartyFields, PartyState};
+use concert_domain::community::party::{
+    text, Application, ApplicationState, Member, MemberState, Party, PartyFields, PartyState,
+};
 use serde::Deserialize;
 use serde_json::{json, Value};
 use sha2::{Digest, Sha256};
@@ -14,10 +16,15 @@ use std::{
 };
 use uuid::Uuid;
 
-pub const PARTY_OPERATIONS: [&str; 3] = [
+pub const PARTY_OPERATIONS: [&str; 8] = [
     "listConcertParties",
     "getConcertParty",
     "createConcertParty",
+    "applyConcertParty",
+    "decideConcertApplication",
+    "cancelConcertApplication",
+    "removeConcertMember",
+    "cancelConcertParty",
 ];
 
 #[derive(Clone, PartialEq, Eq, Deserialize)]
@@ -95,6 +102,31 @@ pub enum PartyLiveAction {
     List(PartyQuery),
     Detail(Uuid),
     Create(PartyFields),
+    Apply {
+        party: Uuid,
+        party_revision: i64,
+        note: String,
+    },
+    Decide {
+        application: Uuid,
+        expected_revision: i64,
+        party_revision: i64,
+        approve: bool,
+    },
+    CancelApplication {
+        application: Uuid,
+        expected_revision: i64,
+    },
+    Remove {
+        party: Uuid,
+        user: Uuid,
+        expected_revision: i64,
+        party_revision: i64,
+    },
+    CancelParty {
+        party: Uuid,
+        expected_revision: i64,
+    },
 }
 
 pub struct PartyLiveRequest {
@@ -199,50 +231,113 @@ fn parse(
     content_type: &str,
     idempotency_key: &str,
 ) -> Result<(&'static str, PartyLiveAction, Option<Uuid>), PartyLiveError> {
-    if target.chars().any(char::is_control) {
-        return Err(PartyLiveError::InvalidInput);
-    }
+    let operation = parse_operation(event, method, target)?;
     let root = format!("/api/concert/events/{event}/parties");
     let (path, query) = target
         .split_once('?')
         .map_or((target, None), |(path, query)| (path, Some(query)));
-    if method == "POST" && path == root && query.is_none() {
-        if body.is_empty()
-            || content_type != "application/json"
-            || canonical(idempotency_key).is_none()
-        {
-            return Err(PartyLiveError::InvalidInput);
+    let key = match operation {
+        "listConcertParties" | "getConcertParty" => {
+            if !content_type.is_empty() || !idempotency_key.is_empty() || !body.is_empty() {
+                return Err(PartyLiveError::InvalidInput);
+            }
+            None
         }
-        let fields = create_body(body)?;
-        return Ok((
-            "createConcertParty",
-            PartyLiveAction::Create(fields),
-            canonical(idempotency_key),
-        ));
-    }
-    if method != "GET"
-        || !content_type.is_empty()
-        || !idempotency_key.is_empty()
-        || !body.is_empty()
-    {
-        return Err(PartyLiveError::InvalidInput);
-    }
-    if path == root {
-        let query = parse_query(query.unwrap_or_default())?;
-        query.validate()?;
-        return Ok(("listConcertParties", PartyLiveAction::List(query), None));
-    }
-    let suffix = path
-        .strip_prefix(&(root.clone() + "/"))
-        .ok_or(PartyLiveError::InvalidInput)?;
-    let party = canonical(suffix).ok_or(PartyLiveError::InvalidInput)?;
-    if query.is_some_and(|value| !value.is_empty()) {
-        return Err(PartyLiveError::InvalidInput);
-    }
-    Ok(("getConcertParty", PartyLiveAction::Detail(party), None))
+        "cancelConcertApplication" | "removeConcertMember" => {
+            if !content_type.is_empty() || canonical(idempotency_key).is_none() || !body.is_empty()
+            {
+                return Err(PartyLiveError::InvalidInput);
+            }
+            canonical(idempotency_key)
+        }
+        _ => {
+            if body.is_empty()
+                || content_type != "application/json"
+                || canonical(idempotency_key).is_none()
+            {
+                return Err(PartyLiveError::InvalidInput);
+            }
+            canonical(idempotency_key)
+        }
+    };
+    let action = match operation {
+        "listConcertParties" => {
+            let value = parse_query(query.unwrap_or_default())?;
+            value.validate()?;
+            PartyLiveAction::List(value)
+        }
+        "getConcertParty" => {
+            if query.is_some_and(|value| !value.is_empty()) {
+                return Err(PartyLiveError::InvalidInput);
+            }
+            PartyLiveAction::Detail(
+                canonical(
+                    path.strip_prefix(&(root + "/"))
+                        .ok_or(PartyLiveError::InvalidInput)?,
+                )
+                .ok_or(PartyLiveError::InvalidInput)?,
+            )
+        }
+        "createConcertParty" => PartyLiveAction::Create(create_body(body)?),
+        "applyConcertParty" => {
+            if query.is_some() {
+                return Err(PartyLiveError::InvalidInput);
+            }
+            let party = path_id(path, &root, &["applications"])?;
+            let (party_revision, note) = apply_body(body)?;
+            PartyLiveAction::Apply {
+                party,
+                party_revision,
+                note,
+            }
+        }
+        "decideConcertApplication" => {
+            if query.is_some() {
+                return Err(PartyLiveError::InvalidInput);
+            }
+            let application = application_path(event, path, &["decision"])?;
+            let (expected_revision, party_revision, approve) = decision_body(body)?;
+            PartyLiveAction::Decide {
+                application,
+                expected_revision,
+                party_revision,
+                approve,
+            }
+        }
+        "cancelConcertApplication" => {
+            let application = application_path(event, path, &[])?;
+            let values = revision_query(query, &["expected_revision"])?;
+            PartyLiveAction::CancelApplication {
+                application,
+                expected_revision: values[0],
+            }
+        }
+        "removeConcertMember" => {
+            let (party, user) = member_path(event, path)?;
+            let values = revision_query(query, &["expected_revision", "party_revision"])?;
+            PartyLiveAction::Remove {
+                party,
+                user,
+                expected_revision: values[0],
+                party_revision: values[1],
+            }
+        }
+        "cancelConcertParty" => {
+            if query.is_some() {
+                return Err(PartyLiveError::InvalidInput);
+            }
+            let party = path_id(path, &root, &["cancel"])?;
+            PartyLiveAction::CancelParty {
+                party,
+                expected_revision: revision_body(body)?,
+            }
+        }
+        _ => return Err(PartyLiveError::InvalidInput),
+    };
+    Ok((operation, action, key))
 }
 
-fn parse_operation(
+pub(super) fn parse_operation(
     event: Uuid,
     method: &str,
     target: &str,
@@ -257,21 +352,92 @@ fn parse_operation(
     if method == "POST" && path == root && query.is_none() {
         return Ok("createConcertParty");
     }
-    if method != "GET" {
-        return Err(PartyLiveError::InvalidInput);
-    }
-    if path == root {
+    if method == "GET" && path == root {
         parse_query(query.unwrap_or_default())?;
         return Ok("listConcertParties");
     }
-    let suffix = path
-        .strip_prefix(&(root + "/"))
+    let party_suffix = path.strip_prefix(&(root + "/"));
+    if let Some(suffix) = party_suffix {
+        let pieces: Vec<_> = suffix.split('/').collect();
+        if method == "GET" && pieces.len() == 1 {
+            canonical(pieces[0]).ok_or(PartyLiveError::InvalidInput)?;
+            if query.is_some_and(|value| !value.is_empty()) {
+                return Err(PartyLiveError::InvalidInput);
+            }
+            return Ok("getConcertParty");
+        }
+        if method == "POST" && pieces.len() == 2 && pieces[1] == "applications" {
+            canonical(pieces[0]).ok_or(PartyLiveError::InvalidInput)?;
+            if query.is_some() {
+                return Err(PartyLiveError::InvalidInput);
+            }
+            return Ok("applyConcertParty");
+        }
+        if method == "POST" && pieces.len() == 2 && pieces[1] == "cancel" {
+            canonical(pieces[0]).ok_or(PartyLiveError::InvalidInput)?;
+            if query.is_some() {
+                return Err(PartyLiveError::InvalidInput);
+            }
+            return Ok("cancelConcertParty");
+        }
+        if method == "DELETE" && pieces.len() == 3 && pieces[1] == "members" {
+            canonical(pieces[0]).ok_or(PartyLiveError::InvalidInput)?;
+            canonical(pieces[2]).ok_or(PartyLiveError::InvalidInput)?;
+            revision_query(query, &["expected_revision", "party_revision"])?;
+            return Ok("removeConcertMember");
+        }
+    }
+    let application_root = format!("/api/concert/events/{event}/party-applications/");
+    let application_suffix = path
+        .strip_prefix(&application_root)
         .ok_or(PartyLiveError::InvalidInput)?;
-    canonical(suffix).ok_or(PartyLiveError::InvalidInput)?;
-    if query.is_some_and(|value| !value.is_empty()) {
+    let pieces: Vec<_> = application_suffix.split('/').collect();
+    canonical(pieces[0]).ok_or(PartyLiveError::InvalidInput)?;
+    if method == "DELETE" && pieces.len() == 1 {
+        revision_query(query, &["expected_revision"])?;
+        return Ok("cancelConcertApplication");
+    }
+    if method == "POST" && pieces.len() == 2 && pieces[1] == "decision" {
+        if query.is_some() {
+            return Err(PartyLiveError::InvalidInput);
+        }
+        return Ok("decideConcertApplication");
+    }
+    Err(PartyLiveError::InvalidInput)
+}
+
+fn path_id(path: &str, root: &str, tail: &[&str]) -> Result<Uuid, PartyLiveError> {
+    let suffix = path
+        .strip_prefix(&(root.to_owned() + "/"))
+        .ok_or(PartyLiveError::InvalidInput)?;
+    let pieces: Vec<_> = suffix.split('/').collect();
+    if pieces.len() != tail.len() + 1 || pieces.get(1..).is_some_and(|values| values != tail) {
         return Err(PartyLiveError::InvalidInput);
     }
-    Ok("getConcertParty")
+    canonical(pieces[0]).ok_or(PartyLiveError::InvalidInput)
+}
+
+fn application_path(event: Uuid, path: &str, tail: &[&str]) -> Result<Uuid, PartyLiveError> {
+    path_id(
+        path,
+        &format!("/api/concert/events/{event}/party-applications"),
+        tail,
+    )
+}
+
+fn member_path(event: Uuid, path: &str) -> Result<(Uuid, Uuid), PartyLiveError> {
+    let root = format!("/api/concert/events/{event}/parties/");
+    let suffix = path
+        .strip_prefix(&root)
+        .ok_or(PartyLiveError::InvalidInput)?;
+    let pieces: Vec<_> = suffix.split('/').collect();
+    if pieces.len() != 3 || pieces[1] != "members" {
+        return Err(PartyLiveError::InvalidInput);
+    }
+    Ok((
+        canonical(pieces[0]).ok_or(PartyLiveError::InvalidInput)?,
+        canonical(pieces[2]).ok_or(PartyLiveError::InvalidInput)?,
+    ))
 }
 
 fn parse_query(value: &str) -> Result<PartyQuery, PartyLiveError> {
@@ -417,6 +583,90 @@ fn create_body(bytes: &[u8]) -> Result<PartyFields, PartyLiveError> {
     Ok(result)
 }
 
+fn apply_body(bytes: &[u8]) -> Result<(i64, String), PartyLiveError> {
+    #[derive(Deserialize)]
+    #[serde(deny_unknown_fields)]
+    struct Apply {
+        party_revision: i64,
+        note: String,
+    }
+    let value: Value = serde_json::from_slice(bytes).map_err(|_| PartyLiveError::InvalidInput)?;
+    validate_name("Domain_party_Apply", &value)?;
+    let typed: Apply = serde_json::from_slice(bytes).map_err(|_| PartyLiveError::InvalidInput)?;
+    if !text(&typed.note, 0, 500) {
+        return Err(PartyLiveError::InvalidInput);
+    }
+    Ok((typed.party_revision, typed.note))
+}
+
+fn decision_body(bytes: &[u8]) -> Result<(i64, i64, bool), PartyLiveError> {
+    #[derive(Deserialize)]
+    #[serde(deny_unknown_fields)]
+    struct Decision {
+        expected_revision: i64,
+        party_revision: i64,
+        decision: String,
+    }
+    let value: Value = serde_json::from_slice(bytes).map_err(|_| PartyLiveError::InvalidInput)?;
+    validate_name("Domain_party_ApplicationDecision", &value)?;
+    let typed: Decision =
+        serde_json::from_slice(bytes).map_err(|_| PartyLiveError::InvalidInput)?;
+    let approve = match typed.decision.as_str() {
+        "APPROVED" => true,
+        "REJECTED" => false,
+        _ => return Err(PartyLiveError::InvalidInput),
+    };
+    Ok((typed.expected_revision, typed.party_revision, approve))
+}
+
+fn revision_body(bytes: &[u8]) -> Result<i64, PartyLiveError> {
+    #[derive(Deserialize)]
+    #[serde(deny_unknown_fields)]
+    struct Revision {
+        expected_revision: i64,
+    }
+    let value: Value = serde_json::from_slice(bytes).map_err(|_| PartyLiveError::InvalidInput)?;
+    validate_name("Domain_common_RevisionRequest", &value)?;
+    let typed: Revision =
+        serde_json::from_slice(bytes).map_err(|_| PartyLiveError::InvalidInput)?;
+    Ok(typed.expected_revision)
+}
+
+fn revision_query(value: Option<&str>, required: &[&str]) -> Result<Vec<i64>, PartyLiveError> {
+    let value = value.ok_or(PartyLiveError::InvalidInput)?;
+    let mut values = BTreeMap::new();
+    for component in value.split('&') {
+        let (key, value) = component
+            .split_once('=')
+            .ok_or(PartyLiveError::InvalidInput)?;
+        let key = percent_decode(key, false)?;
+        let value = percent_decode(value, false)?;
+        if !required.contains(&key.as_str()) || values.insert(key, value).is_some() {
+            return Err(PartyLiveError::InvalidInput);
+        }
+    }
+    if values.len() != required.len() {
+        return Err(PartyLiveError::InvalidInput);
+    }
+    required
+        .iter()
+        .map(|name| {
+            let value = values.get(*name).ok_or(PartyLiveError::InvalidInput)?;
+            if value.is_empty()
+                || (value.len() > 1 && value.starts_with('0'))
+                || !value.bytes().all(|byte| byte.is_ascii_digit())
+            {
+                return Err(PartyLiveError::InvalidInput);
+            }
+            value
+                .parse::<i64>()
+                .ok()
+                .filter(|revision| (1..=9_007_199_254_740_991).contains(revision))
+                .ok_or(PartyLiveError::InvalidInput)
+        })
+        .collect()
+}
+
 pub fn public_party(party: &Party, owner: Value) -> Result<Value, PartyLiveError> {
     party
         .validate()
@@ -453,6 +703,93 @@ pub fn party(value: Value) -> Result<PartyLiveReply, PartyLiveError> {
         status: 200,
         body: value,
     })
+}
+
+pub async fn application_from_receipt(
+    connection: &mut PgConnection,
+    binding: &PartyLiveBinding,
+    application: Uuid,
+    guard: &Arc<dyn super::PartyLiveOwnerGuard>,
+) -> Result<PartyLiveReply, PartyLiveError> {
+    let party = load_application(connection, binding.event(), application).await?;
+    let record = party
+        .applications
+        .iter()
+        .find(|value| value.id == application)
+        .ok_or(PartyLiveError::DependencyUnavailable)?;
+    // Receipt authorization committed in a different transaction. Recheck the
+    // current aggregate before projecting a private applicant note.
+    if binding.actor() != party.owner && binding.actor() != record.user {
+        return Err(PartyLiveError::Denied);
+    }
+    let applicant = super::profile_for_subject(connection, binding, record.user, guard).await?;
+    let value = application_record(&party, record, applicant)?;
+    Ok(PartyLiveReply {
+        status: 200,
+        body: value,
+    })
+}
+
+pub fn member(party: &Party, user: Uuid) -> Result<PartyLiveReply, PartyLiveError> {
+    let value = party
+        .members
+        .iter()
+        .find(|value| value.user == user)
+        .ok_or(PartyLiveError::ResourceUnavailable)?;
+    Ok(PartyLiveReply {
+        status: 200,
+        body: member_value(party, value)?,
+    })
+}
+
+pub fn application_record(
+    party: &Party,
+    value: &Application,
+    applicant: Value,
+) -> Result<Value, PartyLiveError> {
+    if applicant["user_id"].as_str() != Some(&value.user.to_string()) {
+        return Err(PartyLiveError::DependencyUnavailable);
+    }
+    validate_name("PublicProfile", &applicant)?;
+    let result = json!({
+        "application_id": value.id,
+        "event_id": party.event,
+        "party_id": party.id,
+        "applicant": applicant,
+        "note": value.note,
+        "created_at": value.created_at.to_rfc3339_opts(SecondsFormat::Micros, true),
+        "state": application_state(value.state),
+        "revision": value.revision,
+    });
+    validate_name("Domain_party_Application", &result)?;
+    Ok(result)
+}
+
+fn member_value(party: &Party, value: &Member) -> Result<Value, PartyLiveError> {
+    let result = json!({
+        "party_id": party.id,
+        "user_id": value.user,
+        "role": if value.owner { "OWNER" } else { "MEMBER" },
+        "state": match value.state {
+            MemberState::Active => "ACTIVE",
+            MemberState::Removed => "REMOVED",
+            MemberState::Left => "LEFT",
+        },
+        "revision": value.revision,
+        "joined_at": value.joined_at.to_rfc3339_opts(SecondsFormat::Micros, true),
+        "event_id": party.event,
+    });
+    validate_name("Domain_party_Member", &result)?;
+    Ok(result)
+}
+
+fn application_state(value: ApplicationState) -> &'static str {
+    match value {
+        ApplicationState::Pending => "PENDING",
+        ApplicationState::Approved => "APPROVED",
+        ApplicationState::Rejected => "REJECTED",
+        ApplicationState::Cancelled => "CANCELLED",
+    }
 }
 
 pub fn list(
@@ -523,6 +860,27 @@ pub async fn load(
     event: Uuid,
     party: Uuid,
 ) -> Result<Option<Party>, PartyLiveError> {
+    load_locked(connection, event, party, false).await
+}
+
+/// Mutations lock the same aggregate row used by community audience reads.
+/// Keep this lock until BE15 commits both the aggregate and its receipt.
+pub(super) async fn load_for_update(
+    connection: &mut PgConnection,
+    event: Uuid,
+    party: Uuid,
+) -> Result<Party, PartyLiveError> {
+    load_locked(connection, event, party, true)
+        .await?
+        .ok_or(PartyLiveError::ResourceUnavailable)
+}
+
+async fn load_locked(
+    connection: &mut PgConnection,
+    event: Uuid,
+    party: Uuid,
+    write: bool,
+) -> Result<Option<Party>, PartyLiveError> {
     let event_exists: Option<Uuid> = sqlx::query_scalar(
         "select event_id from public.concert_events where event_id=$1 for share",
     )
@@ -533,19 +891,23 @@ pub async fn load(
     if event_exists.is_none() {
         return Ok(None);
     }
-    let row = sqlx::query(
-        "select aggregate from public.concert_community_parties where event_id=$1 and party_id=$2 for share",
-    )
-    .bind(event)
-    .bind(party)
-    .fetch_optional(&mut *connection)
-    .await
-    .map_err(super::db)?;
+    let statement = if write {
+        "select aggregate from public.concert_community_parties where event_id=$1 and party_id=$2 for update"
+    } else {
+        "select aggregate from public.concert_community_parties where event_id=$1 and party_id=$2 for share"
+    };
+    let row = sqlx::query(statement)
+        .bind(event)
+        .bind(party)
+        .fetch_optional(&mut *connection)
+        .await
+        .map_err(super::db)?;
+    let party_id = party;
     row.map(|row| {
         let value: Value = row.try_get("aggregate").map_err(super::db)?;
         let party: Party =
             serde_json::from_value(value).map_err(|_| PartyLiveError::DependencyUnavailable)?;
-        if party.event != event {
+        if party.event != event || party.id != party_id {
             return Err(PartyLiveError::DependencyUnavailable);
         }
         party
@@ -554,6 +916,38 @@ pub async fn load(
         Ok(party)
     })
     .transpose()
+}
+
+pub async fn load_application(
+    connection: &mut PgConnection,
+    event: Uuid,
+    application: Uuid,
+) -> Result<Party, PartyLiveError> {
+    let party: Option<Uuid> = sqlx::query_scalar(
+        "select party_id from public.concert_community_applications where event_id=$1 and application_id=$2",
+    )
+    .bind(event)
+    .bind(application)
+    .fetch_optional(&mut *connection)
+    .await
+    .map_err(super::db)?;
+    load(
+        connection,
+        event,
+        party.ok_or(PartyLiveError::ResourceUnavailable)?,
+    )
+    .await?
+    .ok_or(PartyLiveError::ResourceUnavailable)
+}
+
+pub async fn load_member_party(
+    connection: &mut PgConnection,
+    event: Uuid,
+    party: Uuid,
+) -> Result<Party, PartyLiveError> {
+    load(connection, event, party)
+        .await?
+        .ok_or(PartyLiveError::ResourceUnavailable)
 }
 
 fn canonical(value: &str) -> Option<Uuid> {
@@ -578,6 +972,11 @@ fn validate_name(name: &str, value: &Value) -> Result<(), PartyLiveError> {
             | "Domain_party_PartyPublic"
             | "Domain_party_PartyList"
             | "Domain_party_CreateParty"
+            | "Domain_party_Apply"
+            | "Domain_party_ApplicationDecision"
+            | "Domain_party_Application"
+            | "Domain_party_Member"
+            | "Domain_common_RevisionRequest"
     ) {
         return Err(PartyLiveError::InvalidInput);
     }
