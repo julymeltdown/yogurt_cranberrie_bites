@@ -57,6 +57,8 @@ async fn replacement_removal_and_revoke_erase_bytes_atomically() -> anyhow::Resu
     s.execute(frame(&f, b, Uuid::new_v4(), &m), m).await?;
     assert_eq!(state(&p, old).await?, ("DELETED".into(), None, true));
     assert!(s.content(content(&f, b, old, f.peer), old).await.is_err());
+    // An old authorized HTTP target cannot be reused with a new current ID.
+    assert!(s.content(content(&f, b, old, f.peer), new).await.is_err());
     assert_eq!(
         s.read(read(&f, b, f.peer)).await?.meeting.media_id,
         Some(new)

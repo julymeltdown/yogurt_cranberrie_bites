@@ -104,3 +104,41 @@ fn settlement_reference_is_closed_and_full_photo_fingerprint_is_required() {
         assert!(validate_settlement_reference(&serde_json::to_vec(&bad).unwrap()).is_err());
     }
 }
+
+#[test]
+fn request_frame_binds_raw_body_content_type_key_and_intent() {
+    use concert_application::beacon::MeetingActor;
+    use concert_service::meeting_photo::{PhotoFrame, PhotoMutation};
+    use uuid::Uuid;
+    let f = fixture();
+    let actor = MeetingActor {
+        actor: serde_json::from_value(f["actor_id"].clone()).unwrap(),
+        event: serde_json::from_value(f["event_id"].clone()).unwrap(),
+    };
+    let beacon = serde_json::from_value(f["beacon_id"].clone()).unwrap();
+    let body = serde_json::to_vec(&f["create"]).unwrap();
+    let mutation = PhotoMutation::Create(CreatePhotoBeacon::parse(&body).unwrap());
+    let key = Uuid::new_v4();
+    let frame =
+        PhotoFrame::mutation(actor, beacon, key, &mutation, "application/json", &body).unwrap();
+    assert!(PhotoFrame::mutation(actor, beacon, key, &mutation, "text/plain", &body).is_err());
+    let mut changed = f["create"].clone();
+    changed["meeting"]["media_id"] = json!(Uuid::new_v4());
+    assert!(PhotoFrame::mutation(
+        actor,
+        beacon,
+        key,
+        &mutation,
+        "application/json",
+        &serde_json::to_vec(&changed).unwrap(),
+    )
+    .is_err());
+    let mut other_key = frame.clone();
+    other_key.key = Some(Uuid::new_v4());
+    assert_ne!(frame.digest(), other_key.digest());
+    let revoke = PhotoMutation::Revoke {
+        expected_revision: 1,
+    };
+    assert!(PhotoFrame::mutation(actor, beacon, key, &revoke, "", b"{}").is_err());
+    assert!(PhotoFrame::mutation(actor, beacon, key, &revoke, "", b"").is_ok());
+}

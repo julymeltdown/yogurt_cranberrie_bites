@@ -47,7 +47,7 @@ semantics, retained-photo acknowledgement and receipt/private-read lifecycle. Th
 frozen marker is `meeting-photo/v1`; it is an opt-in client input contract, not
 live producer capability. BackendSL explicitly allocated only beacon.schema.json
 and feed.schema.json additions plus reserved forward migration 0029 to this owner;
-media213 owns Purpose enum, and root/230 retain generated outputs.
+media213 owns Purpose enum. Root owns OpenAPI output and FE1ab7 owns the exact generated TypeScript output; the historical 230 assignment is superseded.
 
 `python3 backend/scripts/mcr/meeting_photo_contract.py` exits 0: 17 offline schema
 cases cover fixtures, dedicated purpose, attachment permission, omitted/null
@@ -115,3 +115,19 @@ Metadata/content methods compare the actual media ID to the sealed HTTP target;
 argument substitution cannot fetch another current photo under an old URL.
 The producer source checkpoint is `cd4b7362`; later hardening is tested separately
 before publication. No source checkpoint alone is native qualification.
+
+
+## Current composition dependencies
+
+The checkout reconciles actual SDK/v2 and published owner-store source via merge
+`562334f306b12e5d88aaa46987d9f95bcc692965`. Root OpenAPI projections are published
+at `b9423cabc112da5605eb7f4393adfdee5c93d767`; FE20 optional-client source is
+`7e41574a`, shared BEACON support `591040ff`, and FE-owned generated projection
+`65f91166`, delivered through `6c908472ec3b6025bcdca9a90eae4db26c90a0b4`.
+Those owner-reported client checks use deterministic HTTP persistence and do not
+establish actual backend durability, authorization, atomic erasure or IN02.
+No generated, frontend, source archive or root-composition files were authored by
+this worker. Actual Cargo/native qualification is still pending the resource
+queue, with three test targets ready. Additional security regressions bind the
+actual raw request/type/key and prevent a retained old content URL from being
+substituted with a newly attached image argument.
