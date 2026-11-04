@@ -1,0 +1,25 @@
+/* Composition only. Screen owners retain their content, imagery and typography. */
+.mcr-reference-panel-flow { display:flex; flex-direction:column; min-block-size:100%; min-inline-size:0; }
+.mcr-reference-panel-content { flex:1 0 auto; min-inline-size:0; }
+.mcr-reference-window-ink { display:block; inline-size:24px; block-size:24px; object-fit:contain; pointer-events:none; user-select:none; }
+.mcr-reference-window-ink--stars { inline-size:72px; }
+.mcr-reference-window-ink--collapse { transform:rotate(-90deg); }
+.mcr-reference-window-ink--restore { transform:rotate(90deg); }
+:root .public-entry--poster .public-header.mcr-reference-public-titlebar { min-block-size:48px; block-size:auto; padding:0 4px; background:var(--mcr-frame-title-bg,#251017); color:var(--mcr-frame-title-ink,#f2eadf); }
+.mcr-reference-public-titlebar > .public-brand, .mcr-reference-public-titlebar > .public-text-link { display:flex; align-items:center; justify-content:center; min-inline-size:44px; min-block-size:44px; }
+.mcr-reference-public-titlebar > .public-text-link .mcr-reference-window-ink { inline-size:24px; block-size:24px; padding:2px; border:1px solid #f2eadf; background:#a2232b; transform:rotate(180deg); }
+.public-entry--poster .mcr-reference-public-titlebar > a:focus-visible { outline:2px solid #f2eadf; outline-offset:-3px; }
+.concert-window > .concert-window__titlebar.concert-window__titlebar--reference { gap:6px; min-block-size:48px; padding:0 2px 0 8px; background:var(--mcr-frame-title-bg,#251017); color:var(--mcr-frame-title-ink,#f2eadf); border-bottom:3px double var(--mcr-frame-paper,#e9e1d4); }
+.concert-window__titlebar--reference > .mcr-reference-window-stars { flex:0 0 auto; inline-size:60px; block-size:24px; object-fit:contain; }
+.concert-window__titlebar.concert-window__titlebar--reference > .concert-window__close { display:grid; place-items:center; inline-size:44px; block-size:44px; min-inline-size:44px; min-block-size:44px; padding:0; border:0; border-radius:0; background:transparent; box-shadow:none; }
+.concert-window__titlebar--reference .mcr-reference-window-ink { inline-size:24px; block-size:24px; padding:2px; border:1px solid #f2eadf; background:#a2232b; }
+.concert-window__titlebar--reference > button:focus-visible { outline:2px solid #f2eadf; outline-offset:-3px; }
+@media (forced-colors:active) {
+  .mcr-chrome-panel-header .mcr-reference-window-ink,
+  .concert-window__titlebar--reference .mcr-reference-window-ink,
+  .mcr-reference-public-titlebar .mcr-reference-window-ink,
+  .concert-window__titlebar--reference > .mcr-reference-window-stars { forced-color-adjust:none; background-color:#251017; }
+  .concert-window__titlebar--reference > button { border:1px solid ButtonText; }
+  .concert-window__titlebar--reference > button:focus-visible { outline-color:Highlight; }
+  .public-entry--poster .mcr-reference-public-titlebar > a:focus-visible { outline-color:Highlight; }
+}

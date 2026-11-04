@@ -27,22 +27,16 @@
 .mcr-chrome-bottom a { display:flex; flex-direction:column; align-items:center; justify-content:center; gap:2px; min-width:44px; min-height:58px; padding:3px 0; border:1px solid #2d2721; border-radius:2px; text-decoration:none; background:#e9e1d4; color:#191817; font:15px/1.1 Impact,'Arial Narrow',Arial,sans-serif; text-transform:uppercase; }
 .mcr-chrome-bottom .concert-icon { width:24px; height:24px; }
 .mcr-chrome-bottom a[aria-current='page'] { background:#ddbc58; color:#191817; box-shadow:inset 0 0 0 1px #7b652e; }
-.mcr-chrome-panel-header { position:relative; display:grid; grid-template-columns:minmax(0,1fr) 44px 44px 44px; align-items:center; gap:0; padding:0 2px 0 8px; min-height:46px; border:3px solid #191817; background:#251017; color:#f2eadf; }
-.mcr-chrome-panel-header:has(> #panel-title:focus-visible) {
-  background-image:
-    linear-gradient(to right, #251017 7px, transparent 0 calc(100% - 133px), #251017 0),
-    linear-gradient(to bottom, #251017 10px, #e9e1d4 0 14px, transparent 0 31px, #e9e1d4 0 35px, #251017 0),
-    linear-gradient(to right, #251017 7px, #e9e1d4 0 11px, #251017 0 calc(100% - 137px), #e9e1d4 0 calc(100% - 133px), #251017 0);
-  background-size:100% 100%;
-  background-repeat:no-repeat;
-}
+.mcr-chrome-panel-header { position:relative; display:grid; grid-template-columns:minmax(0,1fr) 44px 44px 44px; align-items:center; gap:0; padding:0 2px 0 8px; min-height:46px; border:3px solid var(--mcr-frame-ink,#191817); background:var(--mcr-frame-title-bg,#251017); color:var(--mcr-frame-title-ink,#f2eadf); }
 .mcr-chrome-panel-header h1 { margin:0; font:23px/1 Impact,'Arial Narrow',sans-serif; text-transform:uppercase; letter-spacing:.01em; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
 .mcr-chrome-panel-header button { display:grid; place-items:center; min-height:44px; min-width:44px; padding:0; color:inherit; background:transparent; border:0; border-radius:0; font:19px/1 Arial,sans-serif; cursor:pointer; }
-.mcr-chrome-panel-header button > span { display:grid; place-items:center; width:22px; height:22px; border:1px solid #d4c8b5; }
-.mcr-chrome-panel-close .concert-icon { width:24px; height:24px; padding:2px; background:#a2232b; border:1px solid #f2eadf; }
-.mcr-chrome-header :focus-visible, .mcr-chrome-panel-header :focus-visible { outline:2px solid #f2eadf; outline-offset:-3px; }
+.mcr-chrome-panel-header .mcr-reference-window-ink { width:24px; height:24px; padding:2px; border:1px solid #d4c8b5; }
+.mcr-chrome-panel-header .mcr-chrome-panel-close .mcr-reference-window-ink { width:24px; height:24px; padding:2px; background:var(--mcr-frame-action,#a2232b); border:1px solid var(--mcr-frame-title-ink,#f2eadf); }
+.mcr-chrome-header :focus-visible, .mcr-chrome-panel-header :focus-visible { outline:2px solid var(--mcr-frame-title-ink,#f2eadf); outline-offset:-3px; }
+.mcr-chrome-panel-header > #panel-title:focus-visible { outline:2px solid var(--mcr-frame-title-ink,#f2eadf); outline-offset:-2px; }
+@media (forced-colors:active) { .mcr-chrome-panel-header button { border:1px solid ButtonText; } .mcr-chrome-panel-header :focus-visible, .mcr-chrome-panel-header > #panel-title:focus-visible { outline-color:Highlight; } }
 .mcr-chrome-sr { position:absolute; width:1px; height:1px; overflow:hidden; clip-path:inset(50%); white-space:nowrap; margin:0; }
 @media (prefers-reduced-motion:reduce) { .mcr-chrome-header *, .mcr-chrome-eras *, .mcr-chrome-bottom *, .mcr-chrome-panel-header * { scroll-behavior:auto; } }
 @media (forced-colors:active) { .mcr-chrome-bottom a[aria-current='page'], .mcr-chrome-eras button[aria-pressed='true'] { outline:2px solid Highlight; outline-offset:-3px; } }
-.mcr-chrome-parade-footer { flex:0 0 auto; min-width:0; height:clamp(56px,17vw,76px); overflow:hidden; color:#191817; background:linear-gradient(#e9e1d4 0 84%,#191817 84%); pointer-events:none; }
-.mcr-chrome-parade-footer svg { display:block; width:100%; height:100%; }
+.mcr-chrome-parade-footer { flex:0 0 auto; min-width:0; margin-block-start:auto; color:#191817; pointer-events:none; }
+.mcr-chrome-parade-footer img { display:block; width:100%; height:auto; aspect-ratio:360 / 96; object-fit:contain; user-select:none; }

@@ -1,0 +1,9 @@
+{
+  "job": "CHROME03-REFERENCE-FRAME-NATIVE-202611041517Z",
+  "originalWorkDeadline": 1793805804.877506,
+  "originalCleanupDeadline": 1793805864.877506,
+  "fix": "Private cache ENOENT while du sampled a Vitest atomically replaced file; stable carry uses du, private temp allocated/logical bytes use FileNotFoundError-tolerant samples only. Other errors remain fatal. All original caps/deadlines unchanged.",
+  "previousAttempt": "native-03/guardian.json",
+  "fixedGuardianSha256": "33e4e3c844c2093f1175d929e282a04e09216762b84b6e3b9ba108263ba4448b",
+  "observedEpoch": 1793805560.5255308
+}

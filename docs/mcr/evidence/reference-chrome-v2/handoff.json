@@ -1,0 +1,178 @@
+{
+  "task": "FE-REFERENCE-CHROME-02",
+  "status": "VALIDATED_HANDOFF_AWAITING_PUBLICATION",
+  "repository": "julymeltdown/mcr",
+  "deliveryBranch": "master",
+  "publisherThread": "01a1a153-1227-7e72-801f-a2a6b91981e1",
+  "base": "654974128a27c948a449fa9e58f466b8e612361d",
+  "sourcePostimageCommit": "6d83e42f74264f621a736120b6f318eb38a59fbd",
+  "branch": "codex/mcr-fe-reference-chrome-v2",
+  "worktree": "/Users/lhs/Desktop/mcr-worktrees/fe-reference-frame-footer",
+  "sourcePaths": [
+    {
+      "path": "frontend/src/app/WorldShell.tsx",
+      "mode": "0o644",
+      "sha256": "ec27c5f1d498b2d6ff6dcbc4c4d8d0e69414497cac72069648a2a091a1774686",
+      "bytes": 11992,
+      "scope": "Targeted transferred hunk only; preserve concurrent content"
+    },
+    {
+      "path": "frontend/src/app/__tests__/reference-frame-footer/footer.test.tsx",
+      "mode": "0o644",
+      "sha256": "5045ac5165c8e1413a26728bb24f07cbe6e9266c7d71891d67c57b65734c7e4c",
+      "bytes": 1627,
+      "scope": "Targeted transferred hunk only; preserve concurrent content"
+    },
+    {
+      "path": "frontend/src/app/reference-chrome-v2/WindowInk.tsx",
+      "mode": "0o644",
+      "sha256": "e1a5dfe723f3b32eb1d6aae37acac8ef93fd1c412eea22b9d7c38d2b5aba429b",
+      "bytes": 555,
+      "scope": "New exclusive owned directory"
+    },
+    {
+      "path": "frontend/src/app/reference-chrome-v2/chrome.css",
+      "mode": "0o644",
+      "sha256": "12645bf4cb607740ca8b317056ba166fd6b8ec4f062942c0bc39709950e67224",
+      "bytes": 2917,
+      "scope": "New exclusive owned directory"
+    },
+    {
+      "path": "frontend/src/app/reference-chrome-v2/chrome.test.tsx",
+      "mode": "0o644",
+      "sha256": "58aaf2e3c65bc19062e280e9bcee12ce7c00940dee0838cd44b2ce43676e1ff3",
+      "bytes": 5088,
+      "scope": "New exclusive owned directory"
+    },
+    {
+      "path": "frontend/src/app/reference-chrome-v2/native-round.py",
+      "mode": "0o644",
+      "sha256": "33e4e3c844c2093f1175d929e282a04e09216762b84b6e3b9ba108263ba4448b",
+      "bytes": 9707,
+      "scope": "New exclusive owned directory"
+    },
+    {
+      "path": "frontend/src/app/reference-chrome-v2/native.mjs",
+      "mode": "0o644",
+      "sha256": "5e1df8d079c1f84b6ca04ca272d28a61d911a285f851ca49c10ff2fae9575434",
+      "bytes": 23341,
+      "scope": "New exclusive owned directory"
+    },
+    {
+      "path": "frontend/src/app/reference-chrome-v2/source-round.py",
+      "mode": "0o644",
+      "sha256": "0151f56574fa3752e65fc51cb35a9092c4b74bb7dcea6bd94502d591befe0ca8",
+      "bytes": 7459,
+      "scope": "New exclusive owned directory"
+    },
+    {
+      "path": "frontend/src/app/reference-chrome-v2/source.vitest.config.ts",
+      "mode": "0o644",
+      "sha256": "0ada4d47cdb66fb198e5f1a3245eb33bc9e183efb93188baad50e86fbdf6e410",
+      "bytes": 381,
+      "scope": "New exclusive owned directory"
+    },
+    {
+      "path": "frontend/src/app/shell-chrome/index.tsx",
+      "mode": "0o644",
+      "sha256": "498fa45b9f14b784bbc410984bc99728bab02e8782f60b15e604c6bcc8283304",
+      "bytes": 6012,
+      "scope": "Targeted transferred hunk only; preserve concurrent content"
+    },
+    {
+      "path": "frontend/src/app/shell-chrome/parade-footer.tsx",
+      "mode": "0o644",
+      "sha256": "a76ee4fc64d249ad44afba0ccc7cce699c57c6771b311b94c5e80cdcaae91b8a",
+      "bytes": 310,
+      "scope": "Targeted transferred hunk only; preserve concurrent content"
+    },
+    {
+      "path": "frontend/src/app/shell-chrome/shell-chrome.css",
+      "mode": "0o644",
+      "sha256": "1fdfaa797e8474a9d17f00e48658d231e4e4791dd9870a7df012946e6c0a3925",
+      "bytes": 5971,
+      "scope": "Targeted transferred hunk only; preserve concurrent content"
+    },
+    {
+      "path": "frontend/src/app/shell.css",
+      "mode": "0o644",
+      "sha256": "1a7aa7dc7570959e284c2034833b3b1003dbfefea1b2bc605139bddf5c6023bd",
+      "bytes": 12577,
+      "scope": "Targeted transferred hunk only; preserve concurrent content"
+    },
+    {
+      "path": "frontend/src/features/public/ui/PublicFrame.tsx",
+      "mode": "0o644",
+      "sha256": "e01b4b7980b6f4f1ebe56c860695ce474c2a86931f13dd08ef4565abbb52deba",
+      "bytes": 1703,
+      "scope": "Targeted transferred hunk only; preserve concurrent content"
+    },
+    {
+      "path": "frontend/src/shared/ui/concert-window/index.tsx",
+      "mode": "0o644",
+      "sha256": "17aa9096ebe34f7d9c0ab49c669088672135713960fd3a7915eb8ba13b439154",
+      "bytes": 6366,
+      "scope": "Targeted transferred hunk only; preserve concurrent content"
+    }
+  ],
+  "existingFilePatch": {
+    "path": "docs/mcr/evidence/reference-chrome-v2/shared-application-hunks.patch",
+    "sha256": "4adebec45e19b0d3cea889fca70ef029b8b142e456c9983d27e48abb8a1d0043"
+  },
+  "sourceOrigins": {
+    "application": "New shared UI composition; no legacy rendering or visual dependency copied. Existing default App/router/QA06 preview reused read-only for validation. Retained manifests/lockfile unchanged.",
+    "print": {
+      "commit": "ec40e53174695f03257fd7f772d91fffb12f4cf9",
+      "path": "frontend/public/reference-parade-print-v2/parade-print.svg",
+      "sha256": "e7b401a8f431651c05b88a6c52d02b8aabc059f697bf960b41454ba59ae95a10",
+      "artNativeDisposition": "fc691930dbbcc823fe702ebb1dffe754b2cff43d"
+    },
+    "controls": {
+      "commit": "65b0d5f6c5014aab6fc218d32dcf97e4c73be203",
+      "path": "frontend/public/reference-window-controls-v2/",
+      "nativeAppearance": "Artist direct NativeC arrow/geometry/legibility PASS; final Landing palette separately checked in NativeD"
+    },
+    "feedContext": {
+      "commit": "654974128a27c948a449fa9e58f466b8e612361d",
+      "path": "frontend/src/features/event-feed/feed.css",
+      "purpose": "Baseline context only. No feature body visual acceptance, no broad-retro1a or32flatpaper in final run."
+    }
+  },
+  "validation": [
+    {
+      "source": "source-A-release.json",
+      "scope": "25 source tests/types/lint/syntax; initial phase"
+    },
+    {
+      "source": "native-B-release.json",
+      "scope": "21 native functional cases; old b68 print, historical Feed"
+    },
+    {
+      "source": "native-C-release.json",
+      "scope": "27 source tests/types/lint/syntax and18 native cases; ec40/Me and arrow proof. Broad Feed visuals historical, header/placement findings superseded."
+    },
+    {
+      "source": "native-D-release.json",
+      "scope": "27 source tests/types/lint/syntax and15 affected native cases; restored reference headers/More actions before feature/CTA print adjacency; failed03/04 retained, success05."
+    }
+  ],
+  "boundaries": {
+    "WorldShell.tsx": "PanelFrame import/header/footer placement and PanelScreen route.links composition only; no BootstrapBoundary/provider/lifetime changes. Feed-only palette override removed under latest human scope.",
+    "shell.css": "Only four new scoped .shell-more-sections rules",
+    "shell-chrome.css": "Only transferred panel header/header ink/footer selectors; no identity/nav/theme changes",
+    "PublicFrame.tsx": "Only imports/header JSX; real links/ARIA/skip/main/footer preserved",
+    "concert-window/index.tsx": "Only title/control composition"
+  },
+  "limitations": [
+    "No full ten-screen/reference acceptance; truthful first-view content density remains with per-screen owners/Root",
+    "No live backend/two-account/physical device/software keyboard acceptance",
+    "Default router uses explicitly labeled DEV synthetic HTTP/C05 fixture; production anonymous separately captured",
+    "Old baseline Root omits canCreate, so Meet CTA remains truthfully disabled; no invented create flow",
+    "No whole original QA06/IN05/Map/C06 closure",
+    "Named publishing developer owns combined integration checks; king/SL/QA approval is not a dependency"
+  ],
+  "requiredNext": [
+    "Root applies targeted shared hunks preserving concurrent community/identity changes and publishes validated scope",
+    "Implementation owner independently verifies fresh remote ancestry and owned postimages, records evidence and only then considers goal completion"
+  ]
+}

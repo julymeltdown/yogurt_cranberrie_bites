@@ -1,0 +1,10 @@
+{
+  "job": "CHROME03-REFERENCE-FRAME-NATIVE-202611041517Z",
+  "originalWorkDeadline": 1793805804.877506,
+  "originalCleanupDeadline": 1793805864.877506,
+  "failedAttempt": "native-04/guardian.json",
+  "failure": "Own profile integration test default1000ms async query elapsed while Root still displayed Opening your event;26otherassertions passed.",
+  "fix": "Wait up to4000ms for real canonical My profile heading before unchanged footer/peek/singleWorld assertions. No product authority or behavior changed.",
+  "testSha256": "58aaf2e3c65bc19062e280e9bcee12ce7c00940dee0838cd44b2ce43676e1ff3",
+  "observedEpoch": 1793805613.205795
+}

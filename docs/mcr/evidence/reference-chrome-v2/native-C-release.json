@@ -1,0 +1,52 @@
+{
+  "job": "CHROME02-SOURCE-SELECTIVE-NATIVE-202611041446Z",
+  "release": "FULL",
+  "observedEpoch": 1793803706.503731,
+  "observedAt": "2026-11-04T14:48:26.503731+00:00",
+  "beforeOriginalWorkCutoff": true,
+  "beforeOriginalCleanupCutoff": true,
+  "port5302BindFree": true,
+  "dependencyLinkAbsent": true,
+  "ownTemporaryDirectories": [],
+  "remainingRecordedDescendants": [],
+  "freeBytes": 25947615232,
+  "wholeDuAtRelease": "1181384\t/Users/lhs/Desktop/mcr-worktrees/fe-reference-frame-footer\n48584\t/Users/lhs/Desktop/mcr-worktrees/fe-mural-editor\n62180\t/Users/lhs/Desktop/mcr-worktrees/fe-wall-reference-target\n71088\t/Users/lhs/Desktop/mcr-worktrees/be-party-runtime\n",
+  "wholeIncludesPrivateGitReserveBytes": 2097152,
+  "evidenceBytesBeforeThisReceipt": 5244058,
+  "pngCountOldPlusNew": 57,
+  "pngBytesOldPlusNew": 4742124,
+  "guardianSha256": "c6530845124a6a5e71cfd5ea9478466de2aaa1b057ca96c1a90f1319c5761d25",
+  "reportSha256": "6c140b707be8dd2d9a2dfa47267db858bb637177cf747e4fd41cd05ffe05df88",
+  "sourceExitCodes": [
+    [
+      "source-tests",
+      0
+    ],
+    [
+      "source-types",
+      0
+    ],
+    [
+      "source-lint",
+      0
+    ],
+    [
+      "syntax",
+      0
+    ],
+    [
+      "native",
+      0
+    ]
+  ],
+  "peaks": {
+    "peakProcesses": 10,
+    "peakRssKiB": 2592704,
+    "peakWholeBytes": 1428979712,
+    "peakTempBytes": 31024580,
+    "peakOutputBytes": 5124669
+  },
+  "cases": 18,
+  "status": "PASS",
+  "qualification": "Real production components/default router/Phaser with explicit DEV synthetic HTTP/C05 fixture; production anonymous entry separately captured"
+}

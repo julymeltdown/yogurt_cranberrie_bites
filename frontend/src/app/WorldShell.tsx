@@ -149,8 +149,11 @@ function PanelFrame({ size, onSize, positions, children }: { size: 'peek' | 'hal
     <PanelHeader title={title} headingRef={heading} size={size} back={back}
       toggleSize={() => onSize(size === 'full' ? 'half' : 'full')}
       toggleContent={() => onSize(size === 'peek' ? 'half' : 'peek')} />
-    <div className="shell-panel-body" ref={scroll} hidden={size === 'peek'}><ConcertWindowEmbedding>{children}</ConcertWindowEmbedding></div>
-    {size !== 'peek' && ['/meet', '/gifts', '/me'].includes(location.pathname) && <ParadeFooter />}
+    <div id="shell-panel-body" className="shell-panel-body" ref={scroll} hidden={size === 'peek'}>
+      {['/meet', '/gifts', '/me'].includes(location.pathname)
+        ? <div className="mcr-reference-panel-flow"><div className="mcr-reference-panel-content"><ConcertWindowEmbedding>{children}</ConcertWindowEmbedding></div><ParadeFooter /></div>
+        : <ConcertWindowEmbedding>{children}</ConcertWindowEmbedding>}
+    </div>
   </main>
 }
 
@@ -158,14 +161,17 @@ export function PanelScreen({ route, children }: { route: PanelRoute; children?:
   const location = useLocation()
   const valid = resolvePanel(location.pathname)?.valid
   const featureOwnsSections = Boolean(children) && ['/feed', '/me'].includes(route.path)
+  const sections = route.links && !featureOwnsSections && <nav className="shell-section-links" aria-label={`${route.title} sections`}>
+    {route.links.map(link => <ShellLink key={link.path} id={`section-${link.path.replaceAll('/', '-')}`} to={link.path}>{link.label}<span aria-hidden="true">→</span></ShellLink>)}
+  </nav>
+  const compactSections = Boolean(sections) && ['/meet', '/gifts'].includes(route.path)
   if (!valid) return <Feedback kind="error" title="This link is unavailable">
     <p>It may have changed or you may not have access.</p><ShellLink className="shell-link" to="/world">Back to world</ShellLink>
   </Feedback>
   return <>
+    {compactSections && <details className="shell-more-sections"><summary>More actions</summary>{sections}</details>}
     {children ?? <div className="shell-unavailable"><p className="shell-kicker">Still taking shape</p>
       <h2>{route.title} is not available yet</h2><p>This part of the event is still being prepared. You can browse the other sections.</p></div>}
-    {route.links && !featureOwnsSections && <nav className="shell-section-links" aria-label={`${route.title} sections`}>
-      {route.links.map(link => <ShellLink key={link.path} id={`section-${link.path.replaceAll('/', '-')}`} to={link.path}>{link.label}<span aria-hidden="true">→</span></ShellLink>)}
-    </nav>}
+    {!compactSections && sections}
   </>
 }

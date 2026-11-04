@@ -102,6 +102,10 @@ body:has([data-mcr-shell]) { padding: 0; }
 .shell-panel-body p { line-height:1.4; }
 .shell-panel-body .shell-section-links { margin-block-start:6px; }
 .shell-panel-body .shell-section-links a { min-block-size:44px; padding-block:6px; font-size:13px; }
+.shell-panel-body .shell-more-sections { margin-block-start:6px; color:inherit; }
+.shell-panel-body .shell-more-sections > summary { min-block-size:44px; padding:12px 2px; box-sizing:border-box; cursor:pointer; font-size:13px; font-weight:650; line-height:20px; }
+.shell-panel-body .shell-more-sections > summary:focus-visible { outline:2px solid currentColor; outline-offset:-2px; }
+.shell-panel-body .shell-more-sections > .shell-section-links { margin-block-start:0; }
 .world-shell[data-panel-size='full'] { grid-template-rows:minmax(0,1fr); }
 .world-shell[data-panel-size='full'] > .mcr-chrome-header,
 .world-shell[data-panel-size='full'] > .shell-era-region,

@@ -1,0 +1,110 @@
+{
+  "job": "CHROME02-SOURCE-SELECTIVE-NATIVE-202611041446Z",
+  "status": "PASS",
+  "startedEpoch": 1793803628.042225,
+  "workDeadline": 1793803927.808845,
+  "cleanupDeadline": 1793803987.808845,
+  "head": "db07437a2619b049d2030d8127b4910c1a44f6dd",
+  "limits": {
+    "workSeconds": 300,
+    "cleanupSeconds": 60,
+    "wholeBytes": 2147483648,
+    "privateGitReserveBytes": 2097152,
+    "tempBytes": 209715200,
+    "additionalDurableBytes": 16777216,
+    "logsBytes": 2097152,
+    "historicalAndNewPngs": 57,
+    "pngBytes": 12582912,
+    "processes": 24,
+    "rssMiB": 4096
+  },
+  "commands": [
+    {
+      "label": "source-tests",
+      "command": [
+        "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node",
+        "/Users/lhs/Desktop/mcr/frontend/node_modules/vitest/vitest.mjs",
+        "run",
+        "--config",
+        "src/app/reference-chrome-v2/source.vitest.config.ts",
+        "--configLoader",
+        "runner",
+        "--maxWorkers=1",
+        "--no-file-parallelism",
+        "src/app/reference-chrome-v2/chrome.test.tsx",
+        "src/app/__tests__/reference-frame-footer/footer.test.tsx",
+        "src/app/__tests__/reference-root/root.test.tsx",
+        "src/features/public/__tests__/reference-target/presentation.test.tsx",
+        "src/shared/ui/__tests__/primitives.test.tsx"
+      ],
+      "startedEpoch": 1793803628.0484428,
+      "exitCode": 0,
+      "finishedEpoch": 1793803633.210996
+    },
+    {
+      "label": "source-types",
+      "command": [
+        "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node",
+        "/Users/lhs/Desktop/mcr/frontend/node_modules/typescript/bin/tsc",
+        "-p",
+        "tsconfig.json",
+        "--noEmit",
+        "--incremental",
+        "false"
+      ],
+      "startedEpoch": 1793803633.2113228,
+      "exitCode": 0,
+      "finishedEpoch": 1793803640.362893
+    },
+    {
+      "label": "source-lint",
+      "command": [
+        "/Users/lhs/Desktop/mcr/frontend/node_modules/.bin/oxlint",
+        "src/app/WorldShell.tsx",
+        "src/app/shell-chrome/index.tsx",
+        "src/app/shell-chrome/parade-footer.tsx",
+        "src/features/public/ui/PublicFrame.tsx",
+        "src/shared/ui/concert-window/index.tsx",
+        "src/app/reference-chrome-v2",
+        "src/app/__tests__/reference-frame-footer/footer.test.tsx"
+      ],
+      "startedEpoch": 1793803640.362978,
+      "exitCode": 0,
+      "finishedEpoch": 1793803641.020978
+    },
+    {
+      "label": "syntax",
+      "command": [
+        "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node",
+        "--check",
+        "src/app/reference-chrome-v2/native.mjs"
+      ],
+      "startedEpoch": 1793803641.021007,
+      "exitCode": 0,
+      "finishedEpoch": 1793803641.67564
+    },
+    {
+      "label": "native",
+      "command": [
+        "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node",
+        "src/app/reference-chrome-v2/native.mjs"
+      ],
+      "startedEpoch": 1793803641.6756601,
+      "exitCode": 0,
+      "finishedEpoch": 1793803683.644363
+    }
+  ],
+  "peakProcesses": 10,
+  "peakRssKiB": 2592704,
+  "peakWholeBytes": 1428979712,
+  "peakTempBytes": 31024580,
+  "peakOutputBytes": 5124669,
+  "sourceChecksRequested": true,
+  "remainingOwnDescendants": [],
+  "finishedEpoch": 1793803683.808584,
+  "cleanup": {
+    "linkAbsent": true,
+    "tempAbsent": true,
+    "beforeOriginalDeadline": true
+  }
+}

@@ -1,0 +1,67 @@
+{
+  "job": "REFERENCE-CHROME-SOURCE-A-202611041356Z",
+  "status": "FAIL",
+  "deadlineEpoch": 1793800860.104772,
+  "cleanupDeadlineEpoch": 1793800920.104772,
+  "head": "4d82e1bedd7b5878b02730aafc4604ebbb0fb278",
+  "limits": {
+    "workSeconds": 120,
+    "cleanupSeconds": 60,
+    "processes": 12,
+    "rssMiB": 3072,
+    "wholeBytes": 2147483648,
+    "outputBytes": 2097152,
+    "tempBytes": 209715200,
+    "runtimeFreeGiB": 8
+  },
+  "dependencyMode": "Absent-only temporary link; shared dependency directory is read-only",
+  "node": "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node",
+  "nodeVersion": "v24.22.2",
+  "commands": [
+    {
+      "label": "tests",
+      "command": [
+        "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node",
+        "/Users/lhs/Desktop/mcr/frontend/node_modules/vitest/vitest.mjs",
+        "run",
+        "--config",
+        "src/app/reference-chrome-v2/source.vitest.config.ts",
+        "--configLoader",
+        "runner",
+        "--maxWorkers=1",
+        "--no-file-parallelism",
+        "src/app/reference-chrome-v2/chrome.test.tsx",
+        "src/app/__tests__/reference-frame-footer/footer.test.tsx",
+        "src/app/__tests__/reference-root/root.test.tsx",
+        "src/features/public/__tests__/reference-target/presentation.test.tsx",
+        "src/shared/ui/__tests__/primitives.test.tsx"
+      ],
+      "startedEpoch": 1793800740.648295,
+      "exitCode": 1,
+      "finishedEpoch": 1793800746.282636
+    }
+  ],
+  "peakProcesses": 4,
+  "peakRssKiB": 847248,
+  "carryRoots": [
+    "/Users/lhs/Desktop/mcr-worktrees/fe-reference-frame-footer",
+    "/Users/lhs/Desktop/mcr-worktrees/fe-mural-editor",
+    "/Users/lhs/Desktop/mcr-worktrees/fe-wall-reference-target",
+    "/Users/lhs/Desktop/mcr-worktrees/be-party-runtime"
+  ],
+  "startWholeBytes": 1390497792,
+  "error": "tests failed; see retained log",
+  "finishedEpoch": 1793800746.283517,
+  "cleanupWithinDeadline": true,
+  "cleanup": {
+    "ownDependencyLinkRemoved": true,
+    "privateTempRemoved": true,
+    "childStopped": true
+  },
+  "logs": {
+    "tests.log": {
+      "bytes": 39783,
+      "sha256": "05c80d57054824e606ebd27a0a68b7934b3d53ec25f985d26ff3de42a2dec692"
+    }
+  }
+}
