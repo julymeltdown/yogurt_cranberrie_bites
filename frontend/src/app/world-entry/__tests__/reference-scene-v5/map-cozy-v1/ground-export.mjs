@@ -1,5 +1,5 @@
 import assert from 'node:assert/strict'
-import { readFile,writeFile,mkdir,rm,statfs } from 'node:fs/promises'
+import { readFile,writeFile,mkdir,statfs } from 'node:fs/promises'
 import { createHash } from 'node:crypto'
 import { chromium } from '@playwright/test'
 assert(process.env.MCR_COZY_EXPORT_JOB,'Fresh named export allocation required')
