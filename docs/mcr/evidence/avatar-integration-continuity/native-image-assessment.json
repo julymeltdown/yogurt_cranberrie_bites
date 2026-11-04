@@ -1,0 +1,36 @@
+{
+  "source": "4d6ff4dd62e0d253097f0f899969e7d70ea4f0c5",
+  "report": "docs/mcr/evidence/avatar-integration-continuity/native-retry05/native/native.json",
+  "reportSHA256": "f51ffb30e2bf100de6fe1d2c7aef2a3817ec611634d090941c542948a7340745",
+  "assessment": "PASS for changed 390px Cancel/conflict flow only; not full reference acceptance",
+  "captures": [
+    {
+      "path": "docs/mcr/evidence/avatar-integration-continuity/native-retry05/native/cancel-restores-persisted.png",
+      "sha256": "bdd4736a44189d25d0636cf2f7544ec79e42a7869f761b28a1b138c22ec9f173",
+      "unaltered": true
+    },
+    {
+      "path": "docs/mcr/evidence/avatar-integration-continuity/native-retry05/native/conflict-preserves-draft.png",
+      "sha256": "4eed6bf17dd230e38a12cb25f622760b04a5dd99a21a8d134b0264b2ad108f70",
+      "unaltered": true
+    },
+    {
+      "path": "docs/mcr/evidence/avatar-integration-continuity/native-retry05/native/cancel-uses-latest-server-outfit.png",
+      "sha256": "f80721e89cf23f22f85befa49583ad74b1ae55e87812f996e4f4e02e1e15f75f",
+      "unaltered": true
+    }
+  ],
+  "observations": [
+    "Cancel restores preset1 preview and disables Save without PUT",
+    "Conflict retains preset2 and exposes explicit revision10 reconciliation with disabled Save/Cancel",
+    "Keep preserves draft; Cancel restores exactpreset5 and disables Save",
+    "World paused banner is truthful for full editor panel; no secondary World/clock/renderer introduced"
+  ],
+  "pixels": {
+    "original": "5c825f58ad9a954cdecb3f01cfec3e02fd906e40d77e857477bff03e5a5d79c6",
+    "draft": "04ad48d25587aa0cfe7fd3c1ab4444493914d5fadea1372d18ce24567b9493c4",
+    "adopted": "481cdff2faf27762bb9cd73012da28bbbb3785221c385d59981e4824469f9ab8",
+    "expectedDraft": "04ad48d25587aa0cfe7fd3c1ab4444493914d5fadea1372d18ce24567b9493c4",
+    "expectedLatest": "481cdff2faf27762bb9cd73012da28bbbb3785221c385d59981e4824469f9ab8"
+  }
+}

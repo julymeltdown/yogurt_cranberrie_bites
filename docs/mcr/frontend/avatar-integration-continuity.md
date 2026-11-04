@@ -1,8 +1,9 @@
 # FE12/FE13 avatar integration continuity
 
-Status: IN_PROGRESS. The explicit Cancel action and focused source qualification
-are delivered. The new native client journey and canonical publication remain
-NOT_RUN, pending the separately allocated native phase and publisher handoff.
+Status: IN_PROGRESS, waiting for final publication. Developer implementation and
+source/native validation are delivered. Root published the source unit as
+`c3c60842a0900e1625633e293092509fe59d341f`; the native harness repairs and
+completed evidence are the remaining publication handoff.
 This is a new integration goal. Completed AR03 artwork and C06 remain preserved.
 
 ## Scope and behavior
@@ -70,9 +71,8 @@ committed validated handoff; there is no king/SL review or acknowledgement gate.
 
 Fresh allocator offer and explicit acceptance are required before execution.
 Source/browser jobs, command exits, source pins, original failed attempts, byte
-and process bounds, cleanup and exact publication ancestry will be recorded in
-`docs/mcr/evidence/avatar-integration-continuity/`. Native execution remains
-NOT_RUN until its actual results exist.
+and process bounds, cleanup and exact publication ancestry are recorded in
+`docs/mcr/evidence/avatar-integration-continuity/`.
 
 The source round also checks the full application with the pinned retained type
 helper (SHA256 `4cbcb57e175101a3fabbcbd67604c223d2604e24732f9d6e3331583a0d624aa1`).
@@ -86,7 +86,7 @@ ACCEPT: free space was 12,774,301,696 bytes, below the offer's explicit 12 GiB
 start floor. Projected free space after all outstanding/proposed growth passed
 the separate 9 GiB reserve. No worker, guardian, temporary root, dependency link
 or application process started. The declined offer is not reused or weakened;
-the same candidate remains queued for a fresh eligible offer. The exact declined
+the same candidate was requeued for a fresh eligible offer. The exact declined
 disposition was sent directly to 21d and the named FE34 resource successor.
 
 The fresh `AVATAR-CANCEL-SOURCE-20261104T2002Z` offer was actually accepted at
@@ -100,8 +100,8 @@ no clock, footprint, process or ownership limit was extended.
 All four sequential commands exited 0: 35 tests across three files (the seven
 new cases plus 28 affected retained cases), scoped lint with zero warnings,
 full application types across 1,036 files with zero diagnostics, and the new
-native driver's JavaScript syntax. Test output retains React act warnings;
-these do not substitute for the still-pending native journey.
+native driver's JavaScript syntax. Test output retains React act warnings from
+the affected retained owner tests; native rendering was qualified separately.
 
 Supervisor and independent guardian both reported no breach. Peak aggregate
 usage was six processes, 1,748,238,336 bytes RSS, 5,931,963 bytes inclusive NEW,
@@ -111,5 +111,56 @@ were eight processes/2.5 GiB RSS, 68 MiB inclusive NEW, 224 MiB WHOLE,
 proved all owned PIDs ended, private temporary files were removed, no dependency
 link existed, and no application/browser/target resources were held. Literal
 FULL was sent directly to the FE34 successor and 21d at 20:01:59.665985 UTC.
-The source release does not authorize a browser run; the same feature queue
-now awaits its separate 390px native offer.
+A separate browser offer was required; its completed round follows.
+
+## Native result and developer fixes
+
+`AVATAR-CANCEL-390-NATIVE-20261104T2010Z` was accepted at 05:08:55.070330 KST
+on November 5 (20:08:55.070330 UTC November 4), after QA06's literal release.
+Its original work/FULL deadlines stayed 05:15:55/05:16:55 KST. Fresh free space
+was 19,082,252,288 bytes; after all conservatively charged growth it was
+16,074,936,320 bytes. The two guards retained 11/9/8 GiB start/reserved/live
+floors, 48 processes/4 GiB RSS, 116 MiB inclusive NEW, 288 MiB WHOLE,
+96 MiB temporary and 20 MiB durable. Each retry retained the higher prior
+WHOLE maximum; no failure, Git, image or other proof bytes were excluded.
+
+The final one-390px actual-main journey passed at source
+`4d6ff4dd62e0d253097f0f899969e7d70ea4f0c5`, Chrome 156.0.8078.80:
+
+- Choose preset 2, then Cancel: the preview exactly returns to preset 1 pixels,
+  Save disables, and no PUT occurs.
+- A controlled producer changes the saved outfit to preset 5 at revision 10.
+  The actual optimistic PUT at expected revision 7 receives a conflict. Draft
+  preset 2 pixels remain; Save disables until an explicit latest-state read.
+- That explicit read produces the reconciliation controls while preserving the
+  draft. Keep retains preset 2; Cancel then restores the exact admitted preset 5
+  pixels and disables Save. There is one rejected PUT and no duplicate write.
+  One additional legitimate participant read refreshes the committed consumer.
+
+The five failed attempts remain unchanged with their raw logs and images:
+CommonJS Playwright exports; a retained dependency subpath; an overbroad package
+alias; the older fixture's missing current Auth admission response; and an overly
+strict read-count assertion that conflated reconciliation with Profile refresh.
+All repairs are confined to this owner's test harness/control paths. The fixture
+now reuses the canonical Auth admission helper through the real protected request
+path. It does not replace Auth, admission logic, controllers, rendering or clocks.
+Package aliases match exact names, and locator/navigation waits are bounded.
+The original seven product cases were not rerun; product code did not change.
+
+`native-retry05/native/native.json` records the passing checks, exact preset pixel
+digests, controlled requests and three unaltered captures. Developer visual
+inspection confirms the original, retained-draft/reconciliation and latest-server
+outfits with visible Cancel controls and selected preset state. This qualifies the
+changed flow at 390px; full-reference, physical-device and real-service acceptance
+remain separate and are not claimed.
+
+Across all six attempts, both guards reported no breach. Peak usage was 14
+processes, 2,685,861,888 bytes RSS, 33,548,098 bytes inclusive NEW,
+230,740,437 bytes WHOLE, 30,316,369 bytes temporary and 785,845 bytes durable.
+Independent final checks found no owned PIDs, temporary roots, dependency link,
+Vite/Chrome or other held resources. Literal FULL at 05:13:16.661171 KST was sent
+directly to Map26e and 21d before documentation or publication work.
+
+The source publication receipt binds `54685f7df` to `c3c60842a` with all 25
+scoped modes/blobs exact in remote `7804fbae`. Native completion is handed to
+the same Root153 publisher, without a king/SL review or acknowledgement stage.

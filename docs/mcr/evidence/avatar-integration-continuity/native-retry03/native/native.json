@@ -1,0 +1,17 @@
+{
+  "result": "FAIL",
+  "qualification": "ACTUAL_MAIN_CONTROLLED_HTTP_C05_NOT_LIVE",
+  "viewport": {
+    "width": 390,
+    "height": 844
+  },
+  "errors": [],
+  "screenshots": [],
+  "browser": "156.0.8078.80",
+  "failure": {
+    "stage": "startup",
+    "message": "TimeoutError: locator.click: Timeout 10000ms exceeded.\nCall log:\n\u001b[2m  - waiting for getByRole('navigation', { name: 'Main navigation' }).getByRole('link', { name: 'Me', exact: true })\u001b[22m\n",
+    "stack": "locator.click: Timeout 10000ms exceeded.\nCall log:\n\u001b[2m  - waiting for getByRole('navigation', { name: 'Main navigation' }).getByRole('link', { name: 'Me', exact: true })\u001b[22m\n\n    at /Users/lhs/Desktop/mcr-worktrees/art-runtime/frontend/src/features/avatar/__tests__/integration-continuity/native.mjs:54:60"
+  },
+  "resourcesClosed": true
+}

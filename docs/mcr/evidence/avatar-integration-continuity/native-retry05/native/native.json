@@ -1,0 +1,97 @@
+{
+  "result": "PASS",
+  "qualification": "ACTUAL_MAIN_CONTROLLED_HTTP_C05_NOT_LIVE",
+  "viewport": {
+    "width": 390,
+    "height": 844
+  },
+  "errors": [],
+  "screenshots": [
+    "cancel-restores-persisted.png",
+    "conflict-preserves-draft.png",
+    "cancel-uses-latest-server-outfit.png"
+  ],
+  "browser": "156.0.8078.80",
+  "remote": {
+    "revision": 10,
+    "config": {
+      "contract_version": "2.0.0",
+      "kind": "avatar_config",
+      "manifest_id": "mcr_selected_motion_reviewed_20261104",
+      "manifest_version": 2,
+      "representation": "motion_preset",
+      "preset_id": "motion_v2_photo01_front_05"
+    }
+  },
+  "explicitReconciliationRead": {
+    "remote": {
+      "revision": 10,
+      "config": {
+        "contract_version": "2.0.0",
+        "kind": "avatar_config",
+        "manifest_id": "mcr_selected_motion_reviewed_20261104",
+        "manifest_version": 2,
+        "representation": "motion_preset",
+        "preset_id": "motion_v2_photo01_front_05"
+      }
+    },
+    "requests": [
+      {
+        "method": "PUT",
+        "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/me/avatar",
+        "expectedRevision": 7
+      },
+      {
+        "method": "GET",
+        "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/me"
+      }
+    ],
+    "admissionReads": 2
+  },
+  "requests": {
+    "remote": {
+      "revision": 10,
+      "config": {
+        "contract_version": "2.0.0",
+        "kind": "avatar_config",
+        "manifest_id": "mcr_selected_motion_reviewed_20261104",
+        "manifest_version": 2,
+        "representation": "motion_preset",
+        "preset_id": "motion_v2_photo01_front_05"
+      }
+    },
+    "requests": [
+      {
+        "method": "PUT",
+        "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/me/avatar",
+        "expectedRevision": 7
+      },
+      {
+        "method": "GET",
+        "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/me"
+      },
+      {
+        "method": "GET",
+        "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/me"
+      }
+    ],
+    "admissionReads": 2
+  },
+  "consumerRefreshReads": 1,
+  "pixels": {
+    "original": "5c825f58ad9a954cdecb3f01cfec3e02fd906e40d77e857477bff03e5a5d79c6",
+    "draft": "04ad48d25587aa0cfe7fd3c1ab4444493914d5fadea1372d18ce24567b9493c4",
+    "adopted": "481cdff2faf27762bb9cd73012da28bbbb3785221c385d59981e4824469f9ab8",
+    "expectedDraft": "04ad48d25587aa0cfe7fd3c1ab4444493914d5fadea1372d18ce24567b9493c4",
+    "expectedLatest": "481cdff2faf27762bb9cd73012da28bbbb3785221c385d59981e4824469f9ab8"
+  },
+  "checks": {
+    "cancelWithoutWrite": true,
+    "conflictDraftRetained": true,
+    "explicitLatestRead": true,
+    "keepDraft": true,
+    "cancelUsesLatest": true,
+    "noDuplicateWrite": true
+  },
+  "resourcesClosed": true
+}

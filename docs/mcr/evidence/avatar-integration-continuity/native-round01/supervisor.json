@@ -1,0 +1,105 @@
+{
+  "offer": {
+    "slot": "AVATAR-CANCEL-390-NATIVE-20261104T2010Z",
+    "acceptedUTC": "2026-11-04T20:08:55.070330+00:00",
+    "deadline": "2026-11-04T20:16:55.070330+00:00",
+    "admissionFreeBytes": 11811160064,
+    "afterAllFreeBytes": 9663676416,
+    "continuousFreeBytes": 8589934592,
+    "newBytes": 121634816,
+    "wholeBytes": 301989888,
+    "minimumCarryBytes": 93085611,
+    "temporaryBytes": 100663296,
+    "durableBytes": 20971520,
+    "rssBytes": 4294967296,
+    "processes": 48,
+    "otherUpperBytes": 2885681152,
+    "otherBoundBasis": "One A upper2GiB covering eligible AgeCOPY640 or Legacy2 only once; B320MiB/D128MiB/sourceprep256MiB conservative issued upper",
+    "globalWorkflowMaximum": 4,
+    "browserWorkflowMaximum": 2,
+    "sourceWorkflowMaximum": 2,
+    "source": "e437fe5bb7279291b408c59e02e6a1a41939ce1d",
+    "predecessorDisposition": "QA06-HELP-TWO-CONTEXT-BROWSER-20261104T1958Z ACTUAL_FULL2026-11-04T20:07:06.451442Z resources0",
+    "freeAtAcceptance": 19082252288,
+    "freeAfterALL": 16074936320,
+    "carryAtAcceptance": {
+      "frontend/src/entities/avatar": 1066860,
+      "frontend/src/features/avatar": 9190237,
+      "frontend/src/world/avatar": 632384,
+      "frontend/src/app/character-entry": 937070,
+      "frontend/public/world/avatars": 25869957,
+      "docs/mcr/art": 43868653,
+      "docs/mcr/evidence/avatar-motion-adoption": 1483812,
+      "docs/mcr/evidence/customize-reviewed-production": 47159,
+      "docs/mcr/evidence/avatar-part-controls": 31056,
+      "docs/mcr/evidence/reviewed-persistence-motion": 1731117,
+      "docs/mcr/evidence/avatar-integration-continuity": 35961,
+      "sourceGitObjects": 324401,
+      "worktreeGit": 2032991
+    },
+    "sharedPolicy": "/Users/lhs/Desktop/mcr-evidence/backend-staffing-01a1a21d/resource-policy-current.json"
+  },
+  "mode": "native",
+  "source": "e437fe5bb7279291b408c59e02e6a1a41939ce1d",
+  "commands": [
+    {
+      "label": "native",
+      "argv": [
+        "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node",
+        "src/features/avatar/__tests__/integration-continuity/native.mjs"
+      ],
+      "pid": 28212,
+      "exit": 1
+    }
+  ],
+  "inventory": {
+    "frontend/src/entities/avatar": 1066860,
+    "frontend/src/features/avatar": 9190237,
+    "frontend/src/world/avatar": 632384,
+    "frontend/src/app/character-entry": 937070,
+    "frontend/public/world/avatars": 25869957,
+    "docs/mcr/art": 43868653,
+    "docs/mcr/evidence/avatar-motion-adoption": 1483812,
+    "docs/mcr/evidence/customize-reviewed-production": 47159,
+    "docs/mcr/evidence/avatar-part-controls": 31056,
+    "docs/mcr/evidence/reviewed-persistence-motion": 1731117,
+    "docs/mcr/evidence/avatar-integration-continuity": 37689,
+    "sourceGitObjects": 324401,
+    "worktreeGit": 2032991
+  },
+  "carryBoundBytes": 93085611,
+  "wholePeak": 95560540,
+  "status": "FAIL",
+  "startedUTC": "2026-11-04T20:08:55.487548+00:00",
+  "rssPeak": 49659904,
+  "processPeak": 5,
+  "temporaryPeak": 23,
+  "durablePeak": 42394,
+  "freeMinimum": 19082067968,
+  "newPeak": 2474929,
+  "failure": "AssertionError: native failed",
+  "guardian": {
+    "breach": null,
+    "samples": 2,
+    "peaks": {
+      "processes": 4,
+      "rss": 240943104,
+      "temporary": 23,
+      "durable": 42394,
+      "new": 2474929,
+      "whole": 95560540
+    },
+    "minimumFree": 19082067968
+  },
+  "ownedPids": [
+    28197,
+    28212,
+    28213,
+    28223,
+    28224
+  ],
+  "aliveOwnedPids": [],
+  "privateTempAbsent": true,
+  "dependencyLinkAbsent": true,
+  "endedUTC": "2026-11-04T20:08:56.584460+00:00"
+}

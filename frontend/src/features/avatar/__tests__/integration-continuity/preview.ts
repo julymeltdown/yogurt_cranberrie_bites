@@ -1,13 +1,18 @@
 // Controlled producer extension; the retained fixture mounts the actual main application.
 // No editor, Auth, renderer, controller, session or frame clock is replaced.
 import { preset } from '../reviewed-production/fixtures'
+import { admission } from '../../../auth/__tests__/enrollment-consent/fixtures'
 await import('../../../../app/character-entry/__tests__/reviewed-production/default-entry/preview')
 const retainedFetch = window.fetch.bind(window)
 let remote: ReturnType<typeof window.__REVIEWED_ROOT_ENTRY__.state>['avatar'] | null = null
+let admissionReads = 0
 const requests: { method: string; path: string; expectedRevision?: number }[] = []
 window.fetch = async (input, init) => {
   const request = input instanceof Request ? input : new Request(new URL(String(input), location.origin), init)
   const path = new URL(request.url).pathname
+  if (path === '/api/auth/enrollment/admission' && request.method === 'GET') {
+    admissionReads++; return Response.json(admission())
+  }
   if (remote && path.startsWith('/api/concert/events/') && path.endsWith('/me/avatar') && request.method === 'PUT') {
     const body = await request.clone().json()
     requests.push({ method: 'PUT', path, expectedRevision: body.expected_revision })
@@ -24,5 +29,5 @@ window.fetch = async (input, init) => {
 }
 Object.assign(window, { __AVATAR_CONTINUITY__: {
   changedElsewhere() { remote = { revision: 10, config: preset(4) }; return structuredClone(remote) },
-  state: () => ({ remote: structuredClone(remote), requests: structuredClone(requests) }),
+  state: () => ({ remote: structuredClone(remote), requests: structuredClone(requests), admissionReads }),
 } })

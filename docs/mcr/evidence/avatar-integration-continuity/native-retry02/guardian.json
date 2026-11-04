@@ -1,0 +1,13 @@
+{
+  "breach": null,
+  "samples": 3,
+  "peaks": {
+    "processes": 5,
+    "rss": 362758144,
+    "temporary": 0,
+    "durable": 141613,
+    "new": 2601010,
+    "whole": 130993307
+  },
+  "minimumFree": 19696611328
+}

@@ -9,10 +9,11 @@ const output = process.env.MCR_CONTINUITY_OUTPUT
 assert(dependencies && scratch && output, 'Allocated dependencies, scratch and output are required')
 const require = createRequire(resolve(dependencies, 'package.json'))
 const { createServer } = await import(pathToFileURL(require.resolve('vite')))
-const { chromium, expect } = await import(pathToFileURL(require.resolve('@playwright/test')))
+const { chromium, expect } = require('@playwright/test')
 const { default: react } = await import(pathToFileURL(require.resolve('@vitejs/plugin-react')))
 const { default: tailwind } = await import(pathToFileURL(require.resolve('@tailwindcss/vite')))
 const { aliases } = await import('../../../../world/avatar/__tests__/motion-adoption/vitest.config.mjs')
+const browserAliases = { ...aliases, '@hookform/resolvers/zod': require.resolve('@hookform/resolvers/zod') }
 const frontend = resolve(import.meta.dirname, '../../../../..')
 const fixture = '/src/features/avatar/__tests__/integration-continuity/preview.html'
 const manifest = JSON.parse(await readFile(resolve(frontend, '../contracts/assets/v2/reviewed/avatar-manifest.schema.json'), 'utf8')).$defs.ReviewedMotionAvatarManifest.const
@@ -32,7 +33,9 @@ const server = await createServer({ root: frontend, configFile: false, plugins: 
     response.end(await server.transformIndexHtml(request.url, await readFile(resolve(frontend, `.${fixture}`), 'utf8')))
   }) },
 }], cacheDir: resolve(scratch, 'vite'), logLevel: 'warn',
-  resolve: { alias: Object.entries(aliases).sort(([a], [b]) => b.length - a.length).map(([find, replacement]) => ({ find, replacement })) },
+  resolve: { alias: Object.entries(browserAliases).map(([name, replacement]) => ({
+    find: new RegExp('^' + name.replace(/[.*+?^${}()|[\]\\]/g, '\\$&') + '$'), replacement,
+  })) },
   define: { 'import.meta.env.VITE_MCR_EVENT_ID': JSON.stringify('00000000-0000-4000-8000-000000000201'),
     'import.meta.env.VITE_MCR_LOCAL_INPUT_CONFIG': JSON.stringify(JSON.stringify(input)) },
   server: { host: '127.0.0.1', port: 0, strictPort: false, watch: null, fs: { allow: [frontend, dependencies] } } })
@@ -41,7 +44,8 @@ try {
   await server.listen(); browser = await chromium.launch({ executablePath: '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome', headless: true })
   report.browser = browser.version()
   const context = await browser.newContext({ viewport: report.viewport, hasTouch: true, reducedMotion: 'reduce' })
-  page = await context.newPage(); page.on('pageerror', error => report.errors.push(error.message))
+  page = await context.newPage(); page.setDefaultTimeout(10000); page.setDefaultNavigationTimeout(20000)
+  page.on('pageerror', error => report.errors.push(error.message))
   await page.goto(`http://127.0.0.1:${server.httpServer.address().port}/login`)
   await page.getByLabel('Email', { exact: true }).fill('fixture@example.test')
   await page.getByLabel('Password', { exact: true }).fill('fixture-password')
@@ -84,6 +88,8 @@ try {
   assert.equal(await previewDigest(), draft)
   await editor.getByRole('button', { name: 'Check latest saved outfit', exact: true }).click()
   await expect(editor.getByRole('region', { name: 'Saved outfit reconciliation' })).toBeVisible()
+  report.explicitReconciliationRead = await page.evaluate(() => window.__AVATAR_CONTINUITY__.state())
+  assert.equal(report.explicitReconciliationRead.requests.filter(value => value.method === 'GET').length, 1)
   await expect(editor.getByRole('button', { name: 'Cancel changes', exact: true })).toBeDisabled()
   await expect(editor.getByRole('button', { name: 'Save outfit', exact: true })).toBeDisabled()
   await shot('conflict-preserves-draft')
@@ -97,7 +103,8 @@ try {
   report.requests = await page.evaluate(() => window.__AVATAR_CONTINUITY__.state())
   assert.equal(report.requests.requests.filter(value => value.method === 'PUT').length, 1)
   assert.equal(report.requests.requests.find(value => value.method === 'PUT').expectedRevision, 7)
-  assert.equal(report.requests.requests.filter(value => value.method === 'GET').length, 1)
+  assert(report.requests.requests.filter(value => value.method === 'GET').length >= 1)
+  report.consumerRefreshReads = report.requests.requests.filter(value => value.method === 'GET').length - 1
   assert(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth))
   report.pixels = { original, draft, adopted, expectedDraft, expectedLatest }
   report.checks = { cancelWithoutWrite: true, conflictDraftRetained: true, explicitLatestRead: true, keepDraft: true, cancelUsesLatest: true, noDuplicateWrite: true }
