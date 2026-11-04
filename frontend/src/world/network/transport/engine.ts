@@ -301,7 +301,7 @@ export class TransportEngine implements WorldTransport {
         if ('streamId' in frame) ensure(frame.streamId === b.streamId)
         if (frame.type === 'policy.baseline' || frame.type === 'policy.invalidate') {
           // Metadata borrows this authenticated stream; it never grants World or HTTP authority.
-          ensure(this.status === 'live' && frame.eventId === b.eventId)
+          ensure(frame.eventId === b.eventId)
         } else if (frame.type === 'switchRejected') {
           ensure(this.pending?.sent && this.pending.type === 'switchRoom' && this.pending.requestId === frame.requestId)
           this.pending = null; this.clearTimer('control'); this.stateTo('live')
