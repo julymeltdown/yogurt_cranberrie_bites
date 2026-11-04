@@ -185,6 +185,17 @@ measured 4,034,658,304 bytes before admission. The shared target measured
 must not be charged twice. The round remains pending a literal current lease;
 neither calculation is a native result.
 
+The allocator then issued the fresh
+`PRIVATE-DATA-FIXTURE-REBUILD-MEDIA-20261104T1955Z` compile-and-freeze-only
+turn. It accepted at `2026-11-04T19:56:33.774227Z` on source `5a824824d` after
+both guards passed. The exact native test selected from Cargo was copied
+outside the shared target and released directly to Age before documentation:
+`7f760f8049cdcf8b85507f3baea61cd7554e6b8f7a570c557434333d6e6ef6e4`,
+13,222,096 bytes. The target grew 13,254,656 bytes and finished at
+19,128,852,480 bytes. Compilers, readers, PostgreSQL processes, services and
+owned children were all zero at release. This is compile and freeze evidence
+only; the executable has not run, so native qualification remains **NOT_RUN**.
+
 The owned evidence is under
 `/Users/lhs/Desktop/mcr-evidence/be42-private-data-aggregate-rebased-202611041802Z`
 and the current guard/fixture evidence is under
