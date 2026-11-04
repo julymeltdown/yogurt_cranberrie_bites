@@ -82,12 +82,53 @@ real Auth/Friend services and PostgreSQL, CanonicalRuntimeCore, NativeResolverUn
 the actual ReportProduct/OperationsRuntime and Root ProductRpcService/scoped
 owner/delivery service. They target original report/receipt/outbox/replay,
 current Auth revocation blocked until terminal, foreign parent and rebound body,
-revoked target and unavailable routes/media, exact acquired-scope identity,
+missing event target and unavailable routes/media, suspended-target safety policy,
+exact acquired-scope identity,
 serialization distinct from terminal completion, and zero prepared work after
 completion. These are internal native capability checks, not public Gateway,
 physical-device, multiuser IN03 or whole product acceptance.
 
-Rust/SQL/native execution is NOT_RUN pending a fresh finite named resource offer.
-No old target/runtime lease or cache cleanup is reused. All failures, exact source
-pins, commands/exit codes, output growth and private cleanup evidence must be
-preserved during that validation before delivery is qualified.
+## First bounded validation and retained failure
+
+The initial source `8501b058ee14efe83dd69a5528064cb9c8faa391` failed the exact
+two-target Rust 1.88 locked/offline build with E0277 in the new native fixture's
+boxed gRPC-body error conversion (exit 101, 43.798 seconds). The assigned fixture
+fix is `3f79e686aec286de622e6e16809e10f45517ac4e`. Its exact two-target rebuild
+passed (exit 0, 2.467 seconds). Both Rustflags variables were unset; jobs 2,
+debug info 0 and incremental compilation disabled. No cache cleanup or build.rs
+mtime refresh was needed.
+
+The finite offer `OPS-PRODUCT-01-BACKEND-2G-202611041240Z` was accepted at
+2026-11-04 12:40:33.162306 UTC, with its original 600-second clock unchanged.
+Its explicit capacity-only amendment raised the whole cap to 2,415,919,104 bytes,
+including the conservative historical carry of 1,341,550,592 bytes. The two exact
+executables, Cargo JSON, 2,366 source hashes and runtime/controller hashes are
+frozen at `/private/tmp/mcr-report-product-frozen-m63cqxzb/pin.json`.
+The shared BACKEND target was unconditionally released with zero handles at
+12:43:26.297942 UTC, before every copied test, and was not accessed afterward.
+
+At that frozen source the five admission cases passed (exit 0). Three of four
+native cases passed; the fourth failed (exit 101) because the fixture incorrectly
+expected a suspended report target to be denied. The published canonical
+`OwnerGuardScope::check_subject` explicitly exempts SafetySelf/SafetyInteraction
+from subject eligibility/block denial, while retaining actor/session eligibility.
+Operations' existing USER evidence path uses SafetyInteraction and additionally
+requires an actual event-admission row. The fixture correction tests that actual
+safety policy positively and separately requires a missing event target to be
+denied. No production owner policy or report business logic is changed.
+
+All original failure logs remain in
+`/private/tmp/mcr-report-product-validation-roc6wfaw` and the frozen directory.
+The failed native case panicked before its terminal call, leaving two prepared
+transactions before owned teardown. The single private PostgreSQL 16.14 cluster
+`/private/tmp/mcr-pg-fn68xa86` was stopped and its exact root removed; copied
+children were reaped. Teardown does not certify native settlement. The whole
+measured peak was 2,170,953,728 bytes, including historical carry, under the
+amended cap; no time/free-space/cap cutoff fired. Resources were fully released
+well before the original release deadline. The native report SHA-256 is
+`502851b8dfc6bad0e7747590938267fd66fa4b601c2114a820c109c7313e782a`.
+
+This failed run does not qualify the native capability. The corrected fixture
+requires a fresh named build/runtime offer; Rust/native reruns remain pending.
+No old target/runtime lease is reused and no public Gateway or whole-task
+acceptance is claimed.
