@@ -20,6 +20,8 @@ def main():
     parser.add_argument('--output', type=Path, required=True)
     parser.add_argument('--absolute-stop', type=float, required=True)
     parser.add_argument('--guardian-pid', type=int, required=True)
+    parser.add_argument('--cluster-root', type=Path, required=True,
+                        help='New short absolute PG root covered by the outer guardian')
     parser.add_argument('--pg-bin-dir', type=Path, default=Path('/opt/homebrew/opt/postgresql@16/bin'))
     args = parser.parse_args()
     binary = args.binary.resolve(strict=True)
@@ -46,7 +48,9 @@ def main():
         return original(*a, **kw)
     pg.execute = execute
     guard()
-    cluster = pg.Cluster({name: pg.executable(args.pg_bin_dir / name) for name in pg.PG_TOOLS}, output / 'owned-enrollment-pg')
+    if not args.cluster_root.is_absolute() or len(str(args.cluster_root / 'socket')) > 90:
+        raise RuntimeError('explicit short owned PG root required')
+    cluster = pg.Cluster({name: pg.executable(args.pg_bin_dir / name) for name in pg.PG_TOOLS}, args.cluster_root)
     marker = cluster.root / 'private-restart.json'
 
     def stop_child():
@@ -65,6 +69,7 @@ def main():
         with (cluster.data / 'postgresql.conf').open('a') as stream:
             stream.write('\nmax_connections=48\nshared_buffers=16MB\nmax_worker_processes=2\nmax_prepared_transactions=16\nmax_wal_size=64MB\nmin_wal_size=32MB\n')
         cluster.start()
+        cluster.sql('postgres', 'create database mcr_enrollment_controller template template0;')
         system = cluster.sql('postgres', 'select system_identifier::text from pg_control_system();')
         report['system_identifier'] = system
         original_postmaster = cluster.assert_postmaster()
@@ -76,7 +81,7 @@ def main():
                 if report['restart_postmaster'] == original_postmaster:
                     raise RuntimeError('physical postmaster did not restart')
             guard()
-            env = {**cluster.env, 'AUTH_RUNTIME_TEST_DATABASE_URL': cluster.url('postgres'),
+            env = {**cluster.env, 'AUTH_RUNTIME_TEST_DATABASE_URL': cluster.url('mcr_enrollment_controller'),
                    'AUTH_RUNTIME_TEST_INITDB_SYSTEM_IDENTIFIER': system,
                    'MCR_ENROLLMENT_PHASE': phase, 'MCR_ENROLLMENT_PRIVATE_MARKER': str(marker)}
             started = time.monotonic()
@@ -96,7 +101,7 @@ def main():
             raise RuntimeError('prepared transaction leak')
         report['status'] = 'PASS'
     except BaseException as error:
-        report['failure'] = type(error).__name__ + ': ' + str(error)
+        report['failure'] = getattr(error, 'detail', type(error).__name__ + ': ' + str(error))
     finally:
         cleaning = True
         stop_child()
