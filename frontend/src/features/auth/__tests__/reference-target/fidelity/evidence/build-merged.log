@@ -1,0 +1,79 @@
+vite v8.1.3 building client environment for production...
+[2K
+transforming...✓ 478 modules transformed.
+rendering chunks...
+computing gzip size...
+src/features/auth/__tests__/reference-target/fidelity/.build-cache/output/src/features/auth/__tests__/reference-target/fidelity/app.html      1.52 kB │ gzip:   0.54 kB
+src/features/auth/__tests__/reference-target/fidelity/.build-cache/output/assets/red-ink-BU4Q2PCh.svg                                         7.61 kB │ gzip:   1.39 kB
+src/features/auth/__tests__/reference-target/fidelity/.build-cache/output/assets/mcr-auth-print-pPg3st5N.woff                                19.45 kB
+src/features/auth/__tests__/reference-target/fidelity/.build-cache/output/assets/frame-print-Qa3Zbkhj.svg                                    33.73 kB │ gzip:   4.43 kB
+src/features/auth/__tests__/reference-target/fidelity/.build-cache/output/assets/paper-print-BiNBgY89.svg                                   243.45 kB │ gzip:  39.53 kB
+src/features/auth/__tests__/reference-target/fidelity/.build-cache/output/assets/cemetery-bottom-v1-Bkd59J1m.png                            762.21 kB
+src/features/auth/__tests__/reference-target/fidelity/.build-cache/output/assets/cemetery-top-v1-OlgvrKla.png                             2,124.81 kB
+src/features/auth/__tests__/reference-target/fidelity/.build-cache/output/assets/RootMediaView-BdfnIHbK.css                                   0.55 kB │ gzip:   0.25 kB
+src/features/auth/__tests__/reference-target/fidelity/.build-cache/output/assets/ProfileIcon-C5jlMgdD.css                                     1.36 kB │ gzip:   0.59 kB
+src/features/auth/__tests__/reference-target/fidelity/.build-cache/output/assets/safety-BViJNTBJ.css                                          1.51 kB │ gzip:   0.56 kB
+src/features/auth/__tests__/reference-target/fidelity/.build-cache/output/assets/root-features-DHpECeai.css                                   1.54 kB │ gzip:   0.65 kB
+src/features/auth/__tests__/reference-target/fidelity/.build-cache/output/assets/meeting-entry-jVy7UCgi.css                                   1.58 kB │ gzip:   0.66 kB
+src/features/auth/__tests__/reference-target/fidelity/.build-cache/output/assets/social-BMiG3aQa.css                                          1.71 kB │ gzip:   0.71 kB
+src/features/auth/__tests__/reference-target/fidelity/.build-cache/output/assets/composition-B6OXCa__.css                                     3.54 kB │ gzip:   1.14 kB
+src/features/auth/__tests__/reference-target/fidelity/.build-cache/output/assets/panels-BMt8WHkR.css                                          4.19 kB │ gzip:   1.38 kB
+src/features/auth/__tests__/reference-target/fidelity/.build-cache/output/assets/social-composition-BD3_6jZW.css                              5.21 kB │ gzip:   1.45 kB
+src/features/auth/__tests__/reference-target/fidelity/.build-cache/output/assets/activity-CSOKqWtj.css                                        9.90 kB │ gzip:   2.79 kB
+src/features/auth/__tests__/reference-target/fidelity/.build-cache/output/assets/world-panels-CzpwATWx.css                                   13.67 kB │ gzip:   3.54 kB
+src/features/auth/__tests__/reference-target/fidelity/.build-cache/output/assets/provider-DprRFUma.css                                       14.46 kB │ gzip:   3.38 kB
+src/features/auth/__tests__/reference-target/fidelity/.build-cache/output/assets/CommunityFeatures-CPOvL9zc.css                              17.32 kB │ gzip:   3.90 kB
+src/features/auth/__tests__/reference-target/fidelity/.build-cache/output/assets/PublicBoundary-Ch__HneL.css                                 18.71 kB │ gzip:   4.49 kB
+src/features/auth/__tests__/reference-target/fidelity/.build-cache/output/assets/app-CP7T5waF.css                                            27.69 kB │ gzip:   6.04 kB
+src/features/auth/__tests__/reference-target/fidelity/.build-cache/output/assets/rolldown-runtime-QTnfLwEv.js                                 0.69 kB │ gzip:   0.42 kB
+src/features/auth/__tests__/reference-target/fidelity/.build-cache/output/assets/compatibility-BGkcp1nM.js                                    0.84 kB │ gzip:   0.40 kB
+src/features/auth/__tests__/reference-target/fidelity/.build-cache/output/assets/provider-C1uMjBQL.js                                         0.96 kB │ gzip:   0.54 kB
+src/features/auth/__tests__/reference-target/fidelity/.build-cache/output/assets/identity-fg3YbeU4.js                                         1.01 kB │ gzip:   0.59 kB
+src/features/auth/__tests__/reference-target/fidelity/.build-cache/output/assets/preload-helper-CZgWQFsJ.js                                   1.25 kB │ gzip:   0.70 kB
+src/features/auth/__tests__/reference-target/fidelity/.build-cache/output/assets/AdminBoundary-bSZLtzPx.js                                    1.38 kB │ gzip:   0.68 kB
+src/features/auth/__tests__/reference-target/fidelity/.build-cache/output/assets/operations-ClTv-duQ.js                                       1.45 kB │ gzip:   0.61 kB
+src/features/auth/__tests__/reference-target/fidelity/.build-cache/output/assets/avatar-config.schema-D-59TwV9.js                             1.86 kB │ gzip:   0.54 kB
+src/features/auth/__tests__/reference-target/fidelity/.build-cache/output/assets/authority-BVATL4eB.js                                        2.75 kB │ gzip:   1.18 kB
+src/features/auth/__tests__/reference-target/fidelity/.build-cache/output/assets/contract-DcaKwr0K.js                                         2.98 kB │ gzip:   1.33 kB
+src/features/auth/__tests__/reference-target/fidelity/.build-cache/output/assets/simulation-sCcriVKG.js                                       3.15 kB │ gzip:   1.27 kB
+src/features/auth/__tests__/reference-target/fidelity/.build-cache/output/assets/RootMediaView-Cmou0Kgt.js                                    3.47 kB │ gzip:   1.48 kB
+src/features/auth/__tests__/reference-target/fidelity/.build-cache/output/assets/errors-CeAwlIOM.js                                           4.41 kB │ gzip:   1.86 kB
+src/features/auth/__tests__/reference-target/fidelity/.build-cache/output/assets/resolver-CPQbzlCU.js                                         4.56 kB │ gzip:   2.11 kB
+src/features/auth/__tests__/reference-target/fidelity/.build-cache/output/assets/panel-CJPMqUgw.js                                            4.71 kB │ gzip:   1.92 kB
+src/features/auth/__tests__/reference-target/fidelity/.build-cache/output/assets/whole-character-uuRj4mhS.js                                  5.65 kB │ gzip:   2.20 kB
+src/features/auth/__tests__/reference-target/fidelity/.build-cache/output/assets/model-a0gp53af.js                                            6.41 kB │ gzip:   2.60 kB
+src/features/auth/__tests__/reference-target/fidelity/.build-cache/output/assets/jsx-runtime-CIxEorsV.js                                      7.89 kB │ gzip:   2.98 kB
+src/features/auth/__tests__/reference-target/fidelity/.build-cache/output/assets/social-composition-D_x9kTn3.js                               8.16 kB │ gzip:   2.80 kB
+src/features/auth/__tests__/reference-target/fidelity/.build-cache/output/assets/provider-BYWq40yN.js                                         9.25 kB │ gzip:   4.07 kB
+src/features/auth/__tests__/reference-target/fidelity/.build-cache/output/assets/MapScene-DO9FS0iK.js                                        10.87 kB │ gzip:   4.17 kB
+src/features/auth/__tests__/reference-target/fidelity/.build-cache/output/assets/panels-D6QrmFqi.js                                          10.96 kB │ gzip:   3.60 kB
+src/features/auth/__tests__/reference-target/fidelity/.build-cache/output/assets/ProfileIcon-T-QbFq8D.js                                     11.95 kB │ gzip:   4.75 kB
+src/features/auth/__tests__/reference-target/fidelity/.build-cache/output/assets/root-features-DK6IM589.js                                   14.87 kB │ gzip:   4.93 kB
+src/features/auth/__tests__/reference-target/fidelity/.build-cache/output/assets/manifest-BovhGGz9.js                                        15.78 kB │ gzip:   4.49 kB
+src/features/auth/__tests__/reference-target/fidelity/.build-cache/output/assets/source-catalog-B2GN78SH.js                                  15.97 kB │ gzip:   4.30 kB
+src/features/auth/__tests__/reference-target/fidelity/.build-cache/output/assets/capabilities-Dzat_4h8.js                                    19.35 kB │ gzip:   6.11 kB
+src/features/auth/__tests__/reference-target/fidelity/.build-cache/output/assets/contract-Bcu83lns.js                                        26.64 kB │ gzip:   5.81 kB
+src/features/auth/__tests__/reference-target/fidelity/.build-cache/output/assets/social-D9qShJIT.js                                          35.11 kB │ gzip:  10.27 kB
+src/features/auth/__tests__/reference-target/fidelity/.build-cache/output/assets/meeting-entry-C233ZTM_.js                                   37.45 kB │ gzip:  10.47 kB
+src/features/auth/__tests__/reference-target/fidelity/.build-cache/output/assets/phaser-B0JqOrhk.js                                          38.19 kB │ gzip:   5.25 kB
+src/features/auth/__tests__/reference-target/fidelity/.build-cache/output/assets/provider-izHV2Uep.js                                        43.20 kB │ gzip:  13.13 kB
+src/features/auth/__tests__/reference-target/fidelity/.build-cache/output/assets/composition-DPHJ5h3l.js                                     50.06 kB │ gzip:  16.90 kB
+src/features/auth/__tests__/reference-target/fidelity/.build-cache/output/assets/access-yzz0AC1R.js                                          58.76 kB │ gzip:  19.91 kB
+src/features/auth/__tests__/reference-target/fidelity/.build-cache/output/assets/schemas-B9zUvP7H.js                                         66.99 kB │ gzip:  17.93 kB
+src/features/auth/__tests__/reference-target/fidelity/.build-cache/output/assets/CommunityFeatures-CFj5hDku.js                               68.75 kB │ gzip:  18.94 kB
+src/features/auth/__tests__/reference-target/fidelity/.build-cache/output/assets/world-panels-u66aa6g2.js                                    72.16 kB │ gzip:  23.52 kB
+src/features/auth/__tests__/reference-target/fidelity/.build-cache/output/assets/domain-operations.generated-Ck-JZXyo.js                     81.08 kB │ gzip:   4.34 kB
+src/features/auth/__tests__/reference-target/fidelity/.build-cache/output/assets/activity-msA3_L1A.js                                        87.40 kB │ gzip:  24.72 kB
+src/features/auth/__tests__/reference-target/fidelity/.build-cache/output/assets/routes-DD6e3a7i.js                                          97.67 kB │ gzip:  32.09 kB
+src/features/auth/__tests__/reference-target/fidelity/.build-cache/output/assets/mcr-core.openapi-BTwes0QT.js                               126.29 kB │ gzip:  12.56 kB
+src/features/auth/__tests__/reference-target/fidelity/.build-cache/output/assets/PublicBoundary-m1-HL7lT.js                                 151.64 kB │ gzip:  39.44 kB
+src/features/auth/__tests__/reference-target/fidelity/.build-cache/output/assets/app-Dd8JyPb-.js                                            285.98 kB │ gzip:  88.76 kB
+src/features/auth/__tests__/reference-target/fidelity/.build-cache/output/assets/mcr-domain.openapi-CbO9FwOW.js                             760.84 kB │ gzip:  49.27 kB
+src/features/auth/__tests__/reference-target/fidelity/.build-cache/output/assets/phaser-DuGV5HTt.js                                       1,198.04 kB │ gzip: 319.11 kB
+
+[plugin builtin:vite-reporter] 
+(!) Some chunks are larger than 500 kB after minification. Consider:
+- Using dynamic import() to code-split the application
+- Use build.rolldownOptions.output.codeSplitting to improve chunking: https://rolldown.rs/reference/OutputOptions.codeSplitting
+- Adjust chunk size limit for this warning via build.chunkSizeWarningLimit.
+✓ built in 504ms

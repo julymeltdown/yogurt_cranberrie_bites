@@ -2,7 +2,7 @@
 
 ## FE-REF-AUTH-ARTWORK-MATCH — current delivery, 2026-11-04
 
-**Required static Auth reference match: PASS, developer-qualified.** The print/glyph/artwork differences left by the previous bounded fidelity checkpoint are now implemented and visually qualified. They were required delivery, not optional polish. Auth service qualification remains **MOCK_READY** because the runtime inputs are synthetic; this does not hold the independently ready static work open or change FE09/IN05 acceptance counts. The earlier residual-difference descriptions below are historical.
+**Required static Auth reference match: PASS, developer-qualified.** The print/glyph/artwork differences left by the previous bounded fidelity checkpoint are now implemented and visually qualified. They were required delivery, not optional polish. Auth service qualification remains **MOCK_READY** because the runtime inputs are synthetic; this does not hold the independently ready static work open. The supported original FE09 disposition is recorded below; IN05/global counts are not edited here. The earlier residual-difference descriptions below are historical.
 
 The actual login entry now uses two newly authored transparent cemetery print layers, with coarse eroded black/off-white silhouettes, varied graves, the tall outlined cross/star/fence composition and worn outer footer crosses. They replace the smooth repeated SVG primitives. A bundled **MCR Auth Print** face supplies condensed display glyphs, original uppercase I cap/foot terminals and controlled ink-edge irregularity; fields and state prose retain ordinary readable text. Seeded multiscale paper grain, a distressed ordinary symmetric frame and worn red ink complete the print treatment. The provider marks have reference-scale proportions and a newly drawn curved Discord silhouette with transparent eyes. All headings, fields, links, buttons and messages remain live DOM. No character artwork, whole-screen screenshot, static form image or decorative left accent is present.
 
@@ -32,6 +32,23 @@ Concrete fixes during qualification include rejecting an overly slab-heavy draft
 There is **no known unfinished static print/glyph/artwork item in this assignment** after developer visual qualification. Source-preserving authored assets reproduce the reference design rather than replacing the functioning UI with its raster. The actual anonymous entry starts with an empty password; the target illustrates entered bullets. Unsupported remember-session remains omitted and providers visibly disabled/explained. The accessible 44px close target, semantic title and actual Create an account route wording remain intact. Those behavior constraints are preserved intentionally.
 
 Live backend/cookie/provider journeys, mobile hardware and whole-application ten-route/IN05 gates remain separate **required, NOT_RUN** project work with their existing implementation owners. They were not used to defer the static obligations, and no generic visual-approval dependency is introduced. Developers own all implementation/visual validation; there is no king/SL review or approval gate. Own test/build caches and the temporary dependency symlink are removed at handoff.
+
+### Original FE09 disposition at this implementation handoff
+
+Original FE09 is **IN_PROGRESS** overall; its implemented client/source/fixture criteria are complete (**MOCK_READY** evidence), not permanently unknown. This conclusion comes from the original specification row, current implementation and the passing existing tests, independently of this artwork goal. The original source handoff is `983dfb2`; subsequent canonical-session fixes and this visual delivery are preserved in master ancestry. The original receipt is [session-sign-in.md](session-sign-in.md), whose early review/approval wording is historical and does not impose a current gate.
+
+| Original behavior/criterion | Supported disposition from this delivery's existing receipts |
+| --- | --- |
+| In-memory token; safe bootstrap | Implemented and fixture-qualified: canonical event/identity checks, malformed or wrong-context rejection, expiry and no persistent bearer restoration. |
+| Login/logout and complete private-state cleanup | Implemented and fixture/native-qualified: duplicate-submit fence, neutral failure, late-response cancellation, immediate token/query/observer/draft/subscription cleanup before logout settles, peer invalidation. |
+| Provider availability and truthful failed/unavailable states | Implemented and fixture/native-qualified: disabled unsupported providers with explanation, capabilities failure, invalid credentials and throttling. Real OAuth success is not claimed. |
+| Concurrent 401s perform one refresh | Single-flight controller path is implemented and fixture-qualified, including delayed old-token failures, failed-refresh cleanup and no mutation replay. **Remaining original behavior:** production composition does not enable `qualifiedRefresh`; a production 401 currently revokes memory authority rather than renewing. This prevents full original FE09 acceptance. |
+
+The concrete remaining dependency is the BE03/browser-cookie race/rotation qualification required by the existing cookie policy, followed by the **root composition implementation owner (chat `01a1a153-1227-7e72-801f-a2a6b91981e1`)** wiring production refresh through the canonical controller. That root path is outside this Auth artwork assignment; ownership is handed back explicitly, with backend BE03 authority supplying the cookie evidence. This is implementation/dependency work, not a king/SL approval request. Unrelated IN01/IN05, multiuser world and mobile-device gates do not withhold any completed FE09 client/fixture criterion. No original task or global acceptance registry is silently amended.
+
+### Publication reconciliation
+
+Qualified source checkpoint `4c76934825a129e3430031678b75f3967ce80317` remains an ancestor after serial peer-preserving merges. The actual-route source/capture pins were checked unchanged after the latest merge on `0c76e42790106501f3988fe7cb46113b8cd7784e`. The broader production lazy graph and strict types passed after the preceding frontend peer merge; the later peer increment changes backend/docs only. Logs and reconciliation are retained in the command receipt. Temporary dependency link and owned caches are removed, with the shared dependency target untouched. This developer publishes the scoped result directly with a non-force master push; no review or approval is requested.
 
 ## Prior bounded fidelity checkpoint — historical
 
