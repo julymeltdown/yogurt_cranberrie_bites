@@ -1,0 +1,12 @@
+{
+  "base": "819d30c3cb32915862281d30cddbe5b7c9bd53cb",
+  "sha256": {
+    "contracts/generated/mcr-core.openapi.json": "4ea617a4ccf96c72b2e5db99e64666f676048f5baf215a2a05d540ef3bdde542",
+    "contracts/generated/mcr-domain.openapi.json": "25a97aae91b27c80230a85b498fcdf162cf066cdeaa4067cdaa02ca5df16316a",
+    "contracts/fixtures/core/bootstrap-open.json": "d29e699f7b2ca9d6a1dfc34af56590bac5f7c3f103644ab02625b6f1707a17e6",
+    "frontend/e2e/reference-integrated/data.ts": "186ca7d28cca66f2eab4fe87f95fc76e5a4acca432b109abb7216ddfc404a994",
+    "frontend/e2e/reference-integrated/whole/data.ts": "8031884ce211e04272a20d66db4427b67a192a197a766d14a6f848765cc99d33",
+    "frontend/src/features/party-discovery/__tests__/fixtures/data.ts": "10bb942e4b0cd9f3969bdd0294a139d0eb5aee5176ed173eb77d86acfad1d59a",
+    "frontend/src/features/party-discovery/ui/party-discovery.css": "6e7c259074016d9f05d90cba8a3355403906a4330a384548302c8abe2b564e54"
+  }
+}
