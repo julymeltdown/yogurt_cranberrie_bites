@@ -52,6 +52,9 @@ pub struct CanonicalOwnerConfig {
 
 /// Typed owners share one pool and one canonical core. This is composition,
 /// not route activation, target-policy authority, or worker supervision.
+/// ParticipantRuntimeSettings::compose_shared constructs this directly from its
+/// validated private identity/key/endpoint origin and shares this exact core;
+/// callers must not independently compose a second owner core for that shell.
 pub struct CanonicalOwnerComposition {
     pub core: CanonicalRuntimeCore,
     pub fence: Arc<CanonicalOwnerFence>,

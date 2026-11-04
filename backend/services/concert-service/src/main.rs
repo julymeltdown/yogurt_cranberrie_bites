@@ -37,7 +37,7 @@ async fn main() -> anyhow::Result<()> {
     // listeners. Absence retains the explicit health-only operational mode.
     let runtime = config::bootstrap_runtime::BootstrapRuntime::load()?;
     let product_settings = config::product_runtime::ProductSettings::load(runtime.is_some())?;
-    let product_owner = config::product_runtime::production_owners(product_settings)?;
+    let mut product_owner = config::product_runtime::production_owners(product_settings)?;
     let world_settings = config::world_runtime::WorldRuntimeSettings::load()?;
     anyhow::ensure!(
         world_settings.is_none() || runtime.is_some(),
@@ -69,6 +69,10 @@ async fn main() -> anyhow::Result<()> {
     }
     let participant_settings =
         config::participant_runtime::ParticipantRuntimeSettings::load(runtime.is_some())?;
+    let intro_settings = config::intro_runtime::IntroRuntimeSettings::load(
+        runtime.is_some(),
+        participant_settings.is_some(),
+    )?;
     anyhow::ensure!(
         product_owner.is_none() || participant_settings.is_none(),
         "Product and Participant require a shared canonical scope composition"
@@ -78,15 +82,31 @@ async fn main() -> anyhow::Result<()> {
         .map(|_| config::world_runtime::production_owners())
         .transpose()?;
     let pool = config::connect_pool(&config).await?;
+    let mut child_recovery = None;
     let participant_runtime = participant_settings
         .map(|settings| {
-            settings.compose(
-                pool.clone(),
-                bootstrap
-                    .as_ref()
-                    .ok_or_else(|| anyhow::anyhow!("Participant release is unavailable"))?
-                    .clone(),
-            )
+            let release = bootstrap
+                .as_ref()
+                .ok_or_else(|| anyhow::anyhow!("Participant release is unavailable"))?
+                .clone();
+            match intro_settings {
+                Some(intro) => {
+                    let shared = settings.compose_shared(
+                        pool.clone(),
+                        release,
+                        intro.participant_owners(),
+                    )?;
+                    child_recovery = Some(
+                        shared
+                            .owners
+                            .core
+                            .child_recovery_worker(intro.recovery_settings())?,
+                    );
+                    product_owner = Some(intro.compose(pool.clone(), &shared.owners));
+                    Ok(shared.participant)
+                }
+                None => settings.compose(pool.clone(), release),
+            }
         })
         .transpose()?;
     let (participant_owners, participant_recovery) = match participant_runtime {
@@ -203,7 +223,11 @@ async fn main() -> anyhow::Result<()> {
                             )?;
                             Ok::<_, anyhow::Error>((Some(participant), Some(decision), Some(settlement), Some(delivery)))
                         }).transpose()?.unwrap_or((None, None, None, None));
-                    let delivery = product_owner.as_ref().map(|owners| {
+                    // Shared mode already constructed the exact canonical
+                    // Participant delivery service. Mount it once for both paths.
+                    let delivery = match participant_delivery {
+                        Some(delivery) => Some(delivery),
+                        None => product_owner.as_ref().map(|owners| {
                         platform::grpc_method_policy::guard(
                             &concert_service::product_rpc::delivery::POLICY,
                             concert_service::product_rpc::proto::product_delivery_service_server::ProductDeliveryServiceServer::new(
@@ -212,7 +236,8 @@ async fn main() -> anyhow::Result<()> {
                             runtime.callers.clone(),
                             runtime.actors.clone(),
                         )
-                    }).transpose()?.or(participant_delivery);
+                        }).transpose()?,
+                    };
                     let product = product_owner.map(|owners| {
                         platform::grpc_method_policy::guard(
                             &concert_service::product_rpc::POLICY,
@@ -271,18 +296,26 @@ async fn main() -> anyhow::Result<()> {
                 None => platform::shutdown::idle().await,
             }
         };
+        let children = async move {
+            match child_recovery {
+                Some(worker) => worker.run().await.map_err(anyhow::Error::from),
+                None => platform::shutdown::idle().await,
+            }
+        };
         // Each component requests shared shutdown on failure. Join rather than
         // dropping peer futures so native replay, membership and recovery drain.
-        let (http, grpc, world, recovery) = tokio::join!(
+        let (http, grpc, world, recovery, children) = tokio::join!(
             component("health", http, platform::shutdown::global()),
             component("gRPC", grpc, platform::shutdown::global()),
             component("World", world, platform::shutdown::global()),
             component("Participant recovery", recovery, platform::shutdown::global()),
+            component("canonical child recovery", children, platform::shutdown::global()),
         );
         http?;
         grpc?;
         world?;
         recovery?;
+        children?;
         Ok(())
     })
     .await;

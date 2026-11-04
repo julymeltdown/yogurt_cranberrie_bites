@@ -1,0 +1,117 @@
+{
+  "changed_paths_sha256": {
+    "backend/scripts/mcr/product_feature_admission_smoke.py": "3fd5c6d8366ed7029c1d6a742e9ed8418543493208f3aa3bbce2311234a32db5",
+    "backend/services/concert-service/src/product_rpc/feature_admission.rs": "85aa1cbee0ebdf0fa771235ac8d1afb296bcbde76b7705d16b12a41919fcc8c7",
+    "backend/services/concert-service/src/product_rpc/mod.rs": "08ef3719e9e57db4c66508130fb60ece60d26ba5efc1eddac46e556c8674f159",
+    "backend/services/concert-service/src/product_rpc/owner_media.rs": "e23cc8694bf8c48c635815f429e1508a269db4181be093825b04874ca3d67061",
+    "backend/services/concert-service/src/product_rpc/query.rs": "b0112f3bad997beff715a2c85b40ab4b7e77f0b4967d737242aba14f90ee4b49",
+    "backend/services/concert-service/tests/product_feature_admission.rs": "b38fd021c828f0b10c797663387a19a657c6b5cba7dea986745da1ce8138f205",
+    "backend/services/concert-service/tests/product_feature_admission_support/fixture.rs": "c6548495e045456d4a39a112d321fe451bd1dec98a932d5f45e75df9f8ad1002",
+    "backend/services/concert-service/tests/product_feature_admission_support/mod.rs": "1315ea182378279153ce669ecfd08b5fc129cff6173070c7c1d764f1fa8d224e",
+    "docs/mcr/backend/product-feature-admission.md": "d8e6853ab620f1374434731a001254f04132e3096789350b62046153b6a87a2f"
+  },
+  "delivered_mapping": {
+    "029b37b42cbac9ec21060986a621d47063655f12": "9bc893fb44cd37c65648673262178ea426cf4e2e",
+    "1814ad37258f9cbcb1ab5ba2955cd53fab97819d": "593c8b1568e2d02bcfd970627a65ca6a0688a0e0",
+    "199bd7b02a21cbbe8532dea1d8e948e63871b8f9": "6db01e00884bc1f10d2723c742f4665ad73e7508",
+    "269a1d37741414efb892fe488e43aa3ab1fcdb95": "0a79e32b87d53d6939196f71c8a6741ee494d7a6",
+    "39d1de66ff399ecd4a9b0dc6bcc70e3de6198c83": "516216dbdc792fee919496c8d8fa2c7c07b39ee9",
+    "898e0eb417b978a3c043303391ac7a0eb468e132": "1d2448ed5bf48fe19e560165570199b4ff25a105"
+  },
+  "developer_validation": {
+    "artifact_sha256": "dfecc2426b4d0648eacc334dddeb601228f39fa581c93ba20ded978a3acb780a",
+    "build_exit_code": 0,
+    "command": [
+      "cargo",
+      "+1.88.0",
+      "test",
+      "--locked",
+      "--offline",
+      "-p",
+      "concert-service",
+      "--test",
+      "product_feature_admission",
+      "--no-run",
+      "--message-format=json",
+      "--config",
+      "profile.dev.package.contracts-build.opt-level=2"
+    ],
+    "genuine_signed_mutual_TLS": "1 PASS; allten typed dispatch and wrong certificate role refusal",
+    "phases": [
+      {
+        "exit_code": 0,
+        "name": "guarded"
+      },
+      {
+        "exit_code": 0,
+        "name": "mtls"
+      }
+    ],
+    "qualification_status": "PASS",
+    "regular_tests": "10 PASS",
+    "source_pin_count": 2302
+  },
+  "evidence": {
+    "artifact-receipt.json": {
+      "path": "/private/tmp/mcr-be33-cf03-1814ad37/artifact-receipt.json",
+      "sha256": "68a80e38ed143424883a65130eeb6167d958d78274c32ada53b740e043f38405"
+    },
+    "full-release.json": {
+      "path": "/private/tmp/mcr-be33-cf03-1814ad37/full-release.json",
+      "sha256": "5c07ff98161ce02f18fc4620b6511748bc8845db7e5adb6b8af91855288e3c37"
+    },
+    "handoff.json": {
+      "path": "/private/tmp/mcr-be33-cf03-1814ad37/handoff.json",
+      "sha256": "c0e28dc6df134c41209874bf603ea492bc05e359882a3742e998534bad54025c"
+    },
+    "qualification/report.json": {
+      "path": "/private/tmp/mcr-be33-cf03-1814ad37/qualification/report.json",
+      "sha256": "7c3bf5acf63ca39e8d9800a5db2edfd65650b322be63ab43e6c8556a833829b3"
+    },
+    "target-release.json": {
+      "path": "/private/tmp/mcr-be33-cf03-1814ad37/target-release.json",
+      "sha256": "bdfb87d7111f5275722d41e586f82a25422633bdf5e40d7c8e228d8cbeb83d05"
+    }
+  },
+  "intake_checks": {
+    "actual_artifact_and_qualification_report_SHA256_rechecked": true,
+    "all8_runtime_postimages_exact_tested_source": true,
+    "all_final_postimages_byte_exact": true,
+    "cross_lane_implementation_imports": "NONE",
+    "docs_source_changes": "NONE",
+    "exact_scope_paths": 9
+  },
+  "limitations": [
+    "Actualguarded recorder intentionally refuses after dispatch; no positive canonical owner or feature policy qualification",
+    "No PG/publicGateway HTTP/listener activation in CF03 component",
+    "Root fresh combined production-main compilation/runtime NOT_RUN at intake",
+    "Original failing attempts preserved by developer; no Main/scrum technical approval gate",
+    "Historical aligned BE33 goal remains BLOCKED in goal metadata; no reset or false completion"
+  ],
+  "resource_release": {
+    "build_exit_code": 0,
+    "clock_utc": "2026-11-04 09:59:45 UTC",
+    "lease": "CF03-PRODUCT-ADMISSION-ROUND2-MEDIA-202611040957Z",
+    "minimum_free_bytes": 19831848960,
+    "no_target_access_after_release": true,
+    "owned_artifact_processes": {
+      "exit_code": 1,
+      "output": ""
+    },
+    "owned_listener_joined": true,
+    "owned_pg_started": false,
+    "owned_pki_removed": true,
+    "qualification_result": "PASS:10ordinary+1genuine_mTLS",
+    "qualification_seconds": 2.1344943750009406,
+    "qualifier_exit_code": 0,
+    "source_commit": "1814ad37258f9cbcb1ab5ba2955cd53fab97819d",
+    "target_released": true,
+    "whole_growth_bytes": 416411648
+  },
+  "scope": "Closed signed Product RPC admission for six Intro and four Notification operations; no feature owner activation",
+  "source_base": "29a42ca1f5d86262ee18141d2bab75996af7e6fd",
+  "source_head": "199bd7b02a21cbbe8532dea1d8e948e63871b8f9",
+  "status": "INTEGRATED",
+  "task": "CF03-PRODUCT-ADMISSION",
+  "tested_source": "1814ad37258f9cbcb1ab5ba2955cd53fab97819d"
+}

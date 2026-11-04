@@ -12,7 +12,7 @@ unreconciled, and 4 IN gates (IN02–IN05) remain open. IN01 has an owner-comple
 states the evidence and limitations. Historical 11/112 statements later in this
 document are not current implementation progress, and no effort-weighted
 completion percentage is asserted.
-Five earlier backend coverage corrections and the latest QA05/QA08 IN_PROGRESS/PARTIAL dispositions add no completed tasks. C07 and QA10 remain unreconciled. BackendSL's08:52Z receipt explicitly records IN01 ACCEPTED after the full original current-cohort live run, publication and independent owner readback; the assigned goal is actually COMPLETE. Natural-expiry observation is NOT_RUN but is not an extra original IN01 criterion; no mandatory900-second run or new renewal/reload behavior is authorised.
+Five earlier backend coverage corrections and the latest QA05/QA08 IN_PROGRESS/PARTIAL dispositions add no completed tasks. C07 and QA10 remain unreconciled. The09:52Z hourly rollups add no unique original closure; FE40 final publication/goal evidence strengthens its already-counted row. BackendSL's08:52Z receipt explicitly records IN01 ACCEPTED after the full original current-cohort live run, publication and independent owner readback; the assigned goal is actually COMPLETE. Natural-expiry observation is NOT_RUN but is not an extra original IN01 criterion; no mandatory900-second run or new renewal/reload behavior is authorised.
 
 The current coordination model has no king or SL technical review stage.
 Developers implement, validate, resolve technical interfaces and commit their
@@ -30,32 +30,38 @@ digest and main updates the central register in batches. Escalate immediately
 only for an unresolved cross-lane conflict, genuinely unattended critical work
 or a necessary human decision. Routine receipts do not require replies.
 
-The requested17:24KST portfolio refresh confirms source work on BE15/QA09
-backup/restore, QA05/QA08 public load/failure drivers and FE40 archive entry.
-FE34 retains separate producer/consumer ownership. C07/IN03 now has a confirmed
-new active goal and accepted scope; BE41 mural-freeze producer is also assigned. Active chat count includes
-feasibility, evidence and qualification; it must not be reported as source-worker
-headcount. The earlier eight-assignment expansion is historical, not a current
-active count. Exact paths, isolated worktrees and honest goal states remain
-mandatory. Source development is not capped by shared build/browser slots.
+The current09:52Z portfolio records no additional unique original-task closure.
+FE40's client completion is already in the39 outcomes; its final publication and
+owner goal closure update that row rather than incrementing the total. C07's
+published source/fixture leaf does not close whole C07 or live IN03. Full CF02
+and CF03 qualification remains failed, with fixes/requalification owned by their
+developers. Original IN02–IN05, device/multiuser and reference acceptance remain open.
 
-The17:22KST inventory had8 active coordination chats and9 active developer/QA
-chats; by17:34KST these were6 and14, without equating activity to source writers. Consolidate duplicate capture/status monitoring and park completed
-redundant coordinators after ownership handoff. Main and frontend KING follow
-major features, staffing, cross-lane blockers and publication metadata only;
-no individual test/fix/screenshot watcher or small-task approval gate belongs
-in either king. Root153 is packet/publication custodian; Backend SL is the
-output allocator. Functional leads assign developers to ready original-scope
-work autonomously, preserving112 tasks/61IA and developer-owned validation.
+Nine foreground CSS workers hand off directly to Root153 under the human's
+published ownership correction. Existing feature/art owners handle actual Map
+binding and links, approved Customize options and Feed media gaps. The recent
+50-chat inventory shows5 active coordinators and11 active developer/art/QA chats;
+activity is not source-writing or completed-goal evidence. Main tracks only major
+portfolio outcomes and publication metadata. Backend SL owns the output queue;
+required UI parity and original integration work receive fair bounded rounds.
+
+Owner-led cleanup preserved histories/proofs and briefly restored16.1–17GiB,
+but the latest hourly report is again below the16GiB new-start gate. Existing
+owners are reclaiming only safely preserved completed worktrees/closed outputs.
+No active/frozen/shared target/original-source deletion or threshold reduction is
+authorized. Source work continues independently of heavy output allocations.
 
 Production composition is not a blanket single-developer reservation. Backend SL
 and the implementation owner may transfer disjoint provider/integration modules
 after the former writer stops on exact paths. Shared entrypoints retain one writer,
 the existing publisher and developer validation; no king patch approval is added.
 
-The latest human visual direction changes backgrounds only to a noticeably
-cuter style; characters remain untouched. The first before/after image metrics
-do not certify canvas/CSS-image preservation or final visual acceptance.
+The latest foreground direction authorizes isolated CSS work on nine screens,
+excluding World. Character artwork and separately assigned backgrounds retain
+their existing owners. Full ten-screen reference parity remains open. The Wall
+reference's erase/fill/committed-undo behavior has one developer-owned proposal
+in preparation at `product-decisions/wall-reference-tools.md`; proposal work does
+not authorize application or contract changes. Other delivery continues.
 
 A king or SL receiving a technical review request must decline: "I don't perform
 reviews. The responsible developer owns validation; please resolve this with

@@ -1,0 +1,129 @@
+{
+  "behaviors": [
+    "same actual scope/core/registry/fence/delivery",
+    "actual Auth and Profile SELF/public mTLS plus Friend owner",
+    "inner EOF retains owners; actual outer typed terminal",
+    "public Profile failure, original expiry, missing-key refusal, real common composite recovery and idempotent delivery",
+    "real coordinated Profile PATCH with separate decision key and actual COMMIT/COMMITTED witness",
+    "standalone C03 Get/terminal and coordinated PATCH compatibility",
+    "release/owner/endpoint/pool/keyrole constructor refusals"
+  ],
+  "bounded_resource_release": {
+    "at": "2026-11-04T09:55:10.807360+00:00",
+    "coordinator_decisions": [
+      "COMMIT",
+      "COMMIT"
+    ],
+    "hard_whole_bytes": 2147483648,
+    "max_runtime_bytes": 96485376,
+    "max_whole_bytes": 519348224,
+    "native": "PASS oneactualnativehost; shared+standaloneGet/PATCH",
+    "owned_group_absent": true,
+    "owned_pid_absent": {
+      "82417": true,
+      "82513": true,
+      "82564": true
+    },
+    "owned_roots_absent": [
+      true
+    ],
+    "prepared_before_teardown": {
+      "auth": 0,
+      "concert": 0,
+      "friend": 0,
+      "profile": 0
+    },
+    "profile_terminal_receipts": [
+      "COMMITTED",
+      "COMMITTED"
+    ],
+    "regular": "8 PASS",
+    "source_commit": "2d48127b8c629b133b967455bb6729e21db95358",
+    "source_pin_count": 3608,
+    "state": "RELEASED",
+    "target_access_after_target_release": "NONE"
+  },
+  "changed_paths_sha256": {
+    "backend/services/concert-service/src/config/canonical_runtime.rs": "4773612680f4117ad52f020346b7be30a618863645912886148b3831b211cc4c",
+    "backend/services/concert-service/src/config/participant_runtime.rs": "f977dbc6e9d3228eb44f9e4fb8f4840bcbd14078ca18f683ce91477fe7fb9ffa",
+    "backend/services/concert-service/tests/shared_participant_composition.rs": "bbd1e2809d04e8ffd836899766a8bddac816e473252663f8e538010a33afa0de",
+    "backend/services/concert-service/tests/shared_participant_composition_support/environment.rs": "ea590f93c5f912f45e3ba4a2e034abec1d66f5c4b618d405f179065ac447bf12",
+    "backend/services/concert-service/tests/shared_participant_composition_support/fixture.rs": "5cad9eedfe6af96a7b25a66859dc17fef9694dccf3edc3040824e8da80b5871f",
+    "backend/services/concert-service/tests/shared_participant_composition_support/mod.rs": "2309cf01de484158d02bf6b742935aabd72644381b912ba35c4739471fef6a0d",
+    "backend/services/concert-service/tests/shared_participant_composition_support/owners.rs": "6a4441b0eb135b2425750236427cfa0920f6c3e16e0574958bd9544a68003240",
+    "docs/mcr/backend/shared-participant-composition.md": "0ea5819b233a8f224019e24e50c878ba00caf473be1663d95dc4e8da36f92987"
+  },
+  "delivered_mapping": {
+    "052cf3ddbd40f557fb2ee185be5244159b690082": "65cbc189aacb34cb4e3cba98a38e5206e2f6f236",
+    "063186f31db4a08b688ba1f45458f7c43de047b3": "74cf58281c602c9a5dda17abc14acbb14deaec89",
+    "2d48127b8c629b133b967455bb6729e21db95358": "e5fcf8c7ec8302fb9c50f5ed38a3d5bde3fe68e9",
+    "f318582a860957e463b66372169a50bb75a8982b": "4266a2941c7e1c63927f9cb43b46faf13028b508"
+  },
+  "developer_validation": {
+    "build_exit_code": 0,
+    "config_tests_passed": 8,
+    "coordinator_decisions": [
+      "COMMIT",
+      "COMMIT"
+    ],
+    "migrations": {
+      "auth": 18,
+      "concert": 38,
+      "friend": 18,
+      "profile": 9
+    },
+    "native_binary_sha256": "5f2e76bd7bbb3cd15be388fe57c60e387395ffa59dbcb10836688a6849fe9cb2",
+    "native_exit_code": 0,
+    "native_status": "PASS",
+    "prepared_before_teardown": {
+      "auth": 0,
+      "concert": 0,
+      "friend": 0,
+      "profile": 0
+    },
+    "profile_terminal_receipts": [
+      "COMMITTED",
+      "COMMITTED"
+    ],
+    "source_pin_count": 3608
+  },
+  "evidence": {
+    "checkpoint.json": {
+      "path": "/private/tmp/mcr-cf02-round3-ce0dymlk/checkpoint.json",
+      "sha256": "df0fb1bf78fa14571d7240031525238675598bc0979eefc0f275b35914afd8ef"
+    },
+    "full-release.json": {
+      "path": "/private/tmp/mcr-cf02-round3-ce0dymlk/full-release.json",
+      "sha256": "320d1942aea94cc8cc43e79a491da90691a67e20f532d4f7be7c07a83ea1aea0"
+    },
+    "handoff.json": {
+      "path": "/private/tmp/mcr-cf02-round3-ce0dymlk/handoff.json",
+      "sha256": "3e1eb6a3bae355142516cbbb2c38ceca08b1c5e9ec0c66387dc32cd1cf83ebcd"
+    },
+    "native.json": {
+      "path": "/private/tmp/mcr-cf02-round3-ce0dymlk/native.json",
+      "sha256": "f97bd5046e46b569288b222c2601a38689468c043062660ece0f97462c8203c8"
+    }
+  },
+  "intake_checks": {
+    "Rust_postimages_exact_tested_source": 7,
+    "all_final_postimages_byte_exact": true,
+    "copied_native_artifacts_SHA256_rechecked": 2,
+    "cross_lane_implementation_imports": "NONE",
+    "docs_source_changes": "NONE",
+    "scope_paths": 8
+  },
+  "integrated_head": "65cbc189aacb34cb4e3cba98a38e5206e2f6f236",
+  "limitations": [
+    "Root fresh compilation and independent production-main startup are NOT_RUN at this intake",
+    "No public Gateway HTTP, successful Notification inbox, full C03/C04/IN03 acceptance or production activation is claimed",
+    "Worker historical aligned goal remains BLOCKED in goal metadata; no false completion/reset"
+  ],
+  "origin": "New MCR composition over retained audited backend owners, no copied legacy rendering or dependency changes",
+  "scope": "Exact shared factory plus standalone native read abort fix; component developer native qualification, pending separate Root combined production-main qualification",
+  "source_base": "f4349d5a1884c451cabdefc6462fe8e82e6d84fd",
+  "source_head": "052cf3ddbd40f557fb2ee185be5244159b690082",
+  "status": "INTEGRATED",
+  "task": "CF02-SHARED-PARTICIPANT",
+  "tested_source": "2d48127b8c629b133b967455bb6729e21db95358"
+}

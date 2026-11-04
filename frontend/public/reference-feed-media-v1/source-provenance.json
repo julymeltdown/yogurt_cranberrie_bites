@@ -1,0 +1,71 @@
+{
+  "schema_version": 1,
+  "status": "EXTRACTED_NATIVE_PIXEL_IDENTITY_PASS",
+  "authorization": "Human/Main Feed-media-only reference derivative lease relayed by Root153",
+  "source": {
+    "repository_path": "docs/mcr/design/reference-target-2026-11-04.png",
+    "commit": "cdcd834f6551941c3b0693552370fd01c45f0f1d",
+    "git_blob": "feeeb7ea637db1ef94d1cbfad970d405e28e1c99",
+    "sha256": "d9a8fae2f96a82253542019ab673589b3938627956eace15c8594c702b5c4617",
+    "bytes": 2967126,
+    "dimensions": [
+      1536,
+      1024
+    ],
+    "mode": "RGB",
+    "rgb_sha256": "84b6b022169da0cc8c71eb41cb10da1a9f8119f67d8fc57d8146d93c03d16e32",
+    "unchanged_after_extraction": true
+  },
+  "method": "Integer rectangular crop only, lossless PNG encoding, original RGB pixels; no resampling/upscale/inpainting/synthesis",
+  "extractor_sha256": "3b7fb08cdba9bbd1397c7dba6c445382f5265b58e4d8c030d6b6f71e3483bb15",
+  "derivatives": [
+    {
+      "path": "frontend/public/reference-feed-media-v1/reference-card-1.png",
+      "description": "Visible wide concert-media thumbnail in the first Feed reference card",
+      "source_box_ltrb_exclusive_right_bottom": [
+        80,
+        704,
+        277,
+        771
+      ],
+      "dimensions": [
+        197,
+        67
+      ],
+      "mode": "RGB",
+      "bytes": 25007,
+      "sha256": "a28db3162d4fe822b17d3228ad82866d4eeb0e2524fb606d469ccd925fd7385d",
+      "rgb_sha256": "d6f2f2cd00dc6895fdc4c67e1ca52df505dc6d417b3ef9de45b8ed8ac36a4b26",
+      "native_source_pixel_identity": true,
+      "use": "Reference fixture media only; never a real user post or original photograph"
+    },
+    {
+      "path": "frontend/public/reference-feed-media-v1/reference-card-2.png",
+      "description": "Visible wide sticker and band-logo media thumbnail in the second Feed reference card",
+      "source_box_ltrb_exclusive_right_bottom": [
+        80,
+        885,
+        277,
+        931
+      ],
+      "dimensions": [
+        197,
+        46
+      ],
+      "mode": "RGB",
+      "bytes": 20007,
+      "sha256": "2c5863585bce002be0ea0b057f4927d67c6f99e97cc7f5edee6ba9c47589ffdd",
+      "rgb_sha256": "573438c7379a8dbba670aeac502432e1be95d4224a7c8c7853b4fbeba6860d63",
+      "native_source_pixel_identity": true,
+      "use": "Reference fixture media only; never a real user post or original photograph"
+    }
+  ],
+  "fixture_display_policy": {
+    "complete_media_input": true,
+    "card_and_detail_native_dimensions": true,
+    "allow_fit_down": true,
+    "allow_upscale": false,
+    "provenance_labels": "Artifact/test metadata only; no product navigation badges"
+  },
+  "limits": "Only tiny visible screenshot thumbnails are available: 197x67 and 197x46. Original photo files, higher resolution, authorship, venue, date and real-post provenance were not supplied. Do not infer them or reuse avatars, characters, venue/map imagery or surrounding interface. Fixture/provenance identity belongs only in artifact and test metadata, not product navigation. Each crop is the complete fixture media input: use its native width/height in card and detail, fit down only, never upscale. No real-post/server-contract claim."
+}
