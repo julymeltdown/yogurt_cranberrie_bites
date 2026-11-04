@@ -20,17 +20,17 @@ def main():
     destination.mkdir(mode=0o700,parents=True,exist_ok=False)
     receipt={'source_commit':subprocess.check_output(['git','rev-parse','HEAD'],cwd=ROOT,text=True).strip(),
              'cargo_metadata_sha256':hashlib.sha256(args.service_metadata.read_bytes()).hexdigest(),'artifacts':[]}
-    for package,target,metadata in [('concert-domain','avatar_motion_v2',args.domain_metadata),('concert-service','avatar_motion_v2_runtime',args.service_metadata)]:
+    for package,target,metadata in [('concert-domain','avatar',args.domain_metadata),('concert-domain','avatar_motion_v2',args.domain_metadata),('concert-service','avatar',args.service_metadata),('concert-service','avatar_motion_v2_runtime',args.service_metadata)]:
         rows=[json.loads(line) for line in metadata.read_text().splitlines()]
         assert any(r.get('reason')=='build-finished' and r.get('success') is True for r in rows), 'Cargo did not succeed'
         matches=[r for r in rows if r.get('reason')=='compiler-artifact' and r.get('target',{}).get('name')==target and 'test' in r.get('target',{}).get('kind',[]) and r.get('executable')]
         assert len(matches)==1,'exact unique executable required'
-        row=matches[0]; source=Path(row['executable']); copied=destination/target
+        row=matches[0]; source=Path(row['executable']); label=package+'-'+target; copied=destination/label
         assert row['manifest_path']==str(ROOT / ('backend/crates/concert-domain/Cargo.toml' if package=='concert-domain' else 'backend/services/concert-service/Cargo.toml'))
         shutil.copy2(source,copied)
         assert hashlib.sha256(source.read_bytes()).digest()==hashlib.sha256(copied.read_bytes()).digest()
         receipt['artifacts'].append({'package':package,'target':target,'manifest_path':row['manifest_path'],'compiler_executable':str(source),'snapshot':str(copied),'sha256':hashlib.sha256(copied.read_bytes()).hexdigest()})
-        shutil.copy2(metadata,destination/(target+'.cargo.jsonl'))
+        shutil.copy2(metadata,destination/(package+'.cargo.jsonl'))
     (destination/'receipt.json').write_text(json.dumps(receipt,indent=2)+'\n')
     print(json.dumps(receipt,sort_keys=True))
 if __name__=='__main__':main()
