@@ -1,0 +1,233 @@
+{
+  "task": "CSS-PARITY-WALL",
+  "status": "MOCK_READY",
+  "fullReferenceParity": "OPEN",
+  "sourceBase": "54320d71c4ae0bff3524d1b500cea772e0ba42e0",
+  "rootCaptionExternalInput": "1dbca746018bdd6d3470cacd9112fb7e7d7aca88",
+  "localCaptionCherryPick": "87c95968605b8da3a8c35b170f7533c89787ca3e",
+  "productPaths": [
+    "frontend/src/features/mural/editor/editor.css"
+  ],
+  "cssSha256": "b8bb2cb3c4e12a9719742c2636a035473f9b521531ffad70ff4626fcb98dbfea",
+  "finalNative": "candidate-3/report.json",
+  "presentationTests": {
+    "passed": 4,
+    "exitCode": 0,
+    "log": "presentation.log",
+    "rawOutput": "presentation-raw.json"
+  },
+  "sourcePinsMatchPhysicalCheckout": true,
+  "rootInputBytesUnchanged": true,
+  "defaultUnavailableAuthorityUnchanged": true,
+  "defaultRootRuntime": "NOT_RUN",
+  "buildTypecheckPlanningGate": "NOT_RUN: not part of bounded allocation",
+  "limits": [
+    "Unsupported Erase/Fill/Undo human decision pending",
+    "Fixture pixels are not reference mural art",
+    "44px targets and 16 colors require scroll",
+    "Standalone fixture does not certify shared root chrome",
+    "No liveBE/device/multiuser/release acceptance"
+  ],
+  "evidenceFiles": {
+    "docs/mcr/evidence/css-parity-wall/candidate-1.log": {
+      "bytes": 604,
+      "sha256": "6608f450eff156c88cf9f0e6129548bdda9a8bcc6cecc8b478277224c651f6e0"
+    },
+    "docs/mcr/evidence/css-parity-wall/candidate-2.log": {
+      "bytes": 2423,
+      "sha256": "f3307fa9ede36b8d7b903254360dfaecde82b76461d77e11bad1479c93608a21"
+    },
+    "docs/mcr/evidence/css-parity-wall/candidate-3.log": {
+      "bytes": 2428,
+      "sha256": "2a0fbc645f292f316ba6fe5aeaf25304fddc5b6bba250ab5f1858ff8561a5fa7"
+    },
+    "docs/mcr/evidence/css-parity-wall/baseline.log": {
+      "bytes": 604,
+      "sha256": "6608f450eff156c88cf9f0e6129548bdda9a8bcc6cecc8b478277224c651f6e0"
+    },
+    "docs/mcr/evidence/css-parity-wall/tests.config.mjs": {
+      "bytes": 715,
+      "sha256": "f998093fb9eaf9d4cb93f4e48d8b44e4b7a33a4d0e28972dd866f210e92c5596"
+    },
+    "docs/mcr/evidence/css-parity-wall/presentation.log": {
+      "bytes": 1181,
+      "sha256": "05d9ef4e91960b7d4f90bf8694c3a2d26f1bfe805bb52dc8afb5b189b6f730b3"
+    },
+    "docs/mcr/evidence/css-parity-wall/baseline-retry.log": {
+      "bytes": 898,
+      "sha256": "2b5ef61bf08df3d20ea721781f287dd18820ba9e94c33e8cbd7af50a57be8649"
+    },
+    "docs/mcr/evidence/css-parity-wall/resource-release.json": {
+      "bytes": 13042,
+      "sha256": "8c44463d08b12ad2ee1bc1a7ed772f52a4155c67cbf668e692322d89d9c762f2"
+    },
+    "docs/mcr/evidence/css-parity-wall/baseline-retry3.log": {
+      "bytes": 1414,
+      "sha256": "4d336aaecb58d98b1510851f1f6dddffc5443a7b53a0fb0ed5074f792d356481"
+    },
+    "docs/mcr/evidence/css-parity-wall/baseline-retry2.log": {
+      "bytes": 421,
+      "sha256": "a410cfec5b52a48b656bae4ee13f67dfbd5d898c66ef234f17e4e82ef2c34eba"
+    },
+    "docs/mcr/evidence/css-parity-wall/native.mjs": {
+      "bytes": 16940,
+      "sha256": "6bdf3ef589e087e43af62fd6de5cb66cbd523ba073547f30ac2e1dc457606ea4"
+    },
+    "docs/mcr/evidence/css-parity-wall/supervise.py": {
+      "bytes": 7309,
+      "sha256": "5705b4f9a318f9e329f7ff640341b5d48e59ddab0cd05779109bca8a3810aff1"
+    },
+    "docs/mcr/evidence/css-parity-wall/failed-baseline-2/report.json": {
+      "bytes": 3976,
+      "sha256": "0d1d73bf88e0f95eeb4d5bbe218158a47175649f180bdc0169b3398178b1535b"
+    },
+    "docs/mcr/evidence/css-parity-wall/failed-baseline-3/390-loaded.png": {
+      "bytes": 32661,
+      "sha256": "3e66f09a1670740a1b23fb33b1055b5546aee5eeacef3bc191955e092eb8d691"
+    },
+    "docs/mcr/evidence/css-parity-wall/failed-baseline-3/report.json": {
+      "bytes": 3636,
+      "sha256": "d9ffdae0b2bf7c034780c18cfbbf2efe94f6cc1f70a47e703005bae78c5c06b3"
+    },
+    "docs/mcr/evidence/css-parity-wall/failed-baseline-3/390-palette-focus.png": {
+      "bytes": 32453,
+      "sha256": "2781ee555ac5c1bab13f3efc648bee33e4bf5af512fc72157191d025b7c58527"
+    },
+    "docs/mcr/evidence/css-parity-wall/candidate-2/390-loaded.png": {
+      "bytes": 32797,
+      "sha256": "d4950f0d92491ff3eb6807febfa3b36aa497b133027c5149200def6e82371f5f"
+    },
+    "docs/mcr/evidence/css-parity-wall/candidate-2/report.json": {
+      "bytes": 5913,
+      "sha256": "12d9aa659818a65558c501a00be895d869ad98f5a560e98e7d892e1c59e81bee"
+    },
+    "docs/mcr/evidence/css-parity-wall/candidate-2/360-loaded.png": {
+      "bytes": 31540,
+      "sha256": "db02ff44b513b8b963b2130fdaed0deec72a80c0f4045507abdbcdc6998dfd1c"
+    },
+    "docs/mcr/evidence/css-parity-wall/candidate-2/390-forced-focus.png": {
+      "bytes": 17528,
+      "sha256": "2a34e88cef31bb63820ad31c27dd3e174e319fae757bccb1665388e010d74481"
+    },
+    "docs/mcr/evidence/css-parity-wall/candidate-2/430-loaded.png": {
+      "bytes": 33790,
+      "sha256": "81c1233932f30ce73b534aceb6ca2ecd76024b3c5a3f3bd9be4627de2bedb684"
+    },
+    "docs/mcr/evidence/css-parity-wall/candidate-2/390-preview.png": {
+      "bytes": 42898,
+      "sha256": "e5451067a93cddceccb08557823765a6192fb8df522784173962e6db9015f133"
+    },
+    "docs/mcr/evidence/css-parity-wall/candidate-2/390-focus.png": {
+      "bytes": 32844,
+      "sha256": "347134b6905d363c572dd78fe99100659cdcdbfb38baae8fec8f2888c75bc0e7"
+    },
+    "docs/mcr/evidence/css-parity-wall/candidate-2/390-palette-focus.png": {
+      "bytes": 32258,
+      "sha256": "f65bc1c66f3a81f6630d7eebfde4cc7f0803f7c801a320bab1f12cbe0cc38389"
+    },
+    "docs/mcr/evidence/css-parity-wall/candidate-2/390-frozen.png": {
+      "bytes": 34553,
+      "sha256": "75bc24850ac7dc8c5363675726334eb1c550f14626e72473d536876235f4a9c9"
+    },
+    "docs/mcr/evidence/css-parity-wall/candidate-2/390-unknown.png": {
+      "bytes": 53824,
+      "sha256": "08539f8d74149301e2f54654fce4263a6f65bfee14f8702d7797ec1bcc81a1f3"
+    },
+    "docs/mcr/evidence/css-parity-wall/candidate-2/390-cooldown.png": {
+      "bytes": 32302,
+      "sha256": "48030ab161f28498297646b89805fa160b04f979bbddab1106519ff85df241bc"
+    },
+    "docs/mcr/evidence/css-parity-wall/candidate-3/390-loaded.png": {
+      "bytes": 34046,
+      "sha256": "ed4f92b9ba93800916a58b97a801c9ede73ec94325ac1fbc48a17135f6270b7a"
+    },
+    "docs/mcr/evidence/css-parity-wall/candidate-3/report.json": {
+      "bytes": 5918,
+      "sha256": "600c289c3797015dd31e68f307b848a4a9f557b80c3ced69250c8c4a05cac583"
+    },
+    "docs/mcr/evidence/css-parity-wall/candidate-3/360-loaded.png": {
+      "bytes": 32576,
+      "sha256": "28ca2989082bf653f5fc7ba3bb4f9abaef5fe852d1992e5e471e16e5cb080e8d"
+    },
+    "docs/mcr/evidence/css-parity-wall/candidate-3/390-forced-focus.png": {
+      "bytes": 18234,
+      "sha256": "f71c7634cf500839a545d7ef8e84cbae75f5d55babe9534b6ac7e86bdf0032bd"
+    },
+    "docs/mcr/evidence/css-parity-wall/candidate-3/430-loaded.png": {
+      "bytes": 34597,
+      "sha256": "290ce1ec588cb8066bd5332cfd130802368fdc6670c2aca432f0312308615553"
+    },
+    "docs/mcr/evidence/css-parity-wall/candidate-3/390-preview.png": {
+      "bytes": 43902,
+      "sha256": "ef20edd0a3442d0637b2fd45513621ecccaee716b01dfd3f6e2cc7e3a943a5aa"
+    },
+    "docs/mcr/evidence/css-parity-wall/candidate-3/390-focus.png": {
+      "bytes": 34095,
+      "sha256": "7ba3ac467abaaf5f1f1bcbf4edc39ed8cdf18ca36e863f9abb82804834281341"
+    },
+    "docs/mcr/evidence/css-parity-wall/candidate-3/390-palette-focus.png": {
+      "bytes": 33536,
+      "sha256": "b2bdc5b4eedcd518d0865a7b900669e0a7fb8b0caf1f42f94faa5cd8bb6fb4a7"
+    },
+    "docs/mcr/evidence/css-parity-wall/candidate-3/390-frozen.png": {
+      "bytes": 35766,
+      "sha256": "5e70b40562c7ccbe8707457e7447074b12262b969b3d6b06d91f6887e176c6d3"
+    },
+    "docs/mcr/evidence/css-parity-wall/candidate-3/390-unknown.png": {
+      "bytes": 54911,
+      "sha256": "d97afaec0066cfe1692f27019ba01b6a407da05d2a4e2ae26ca7dc71326256b5"
+    },
+    "docs/mcr/evidence/css-parity-wall/candidate-3/390-cooldown.png": {
+      "bytes": 33556,
+      "sha256": "e8ce0ba58bb4f3a510fbebdc4d95dedfc2236f3b1ca98ed5f69fd8b5e7852b9b"
+    },
+    "docs/mcr/evidence/css-parity-wall/baseline/390-loaded.png": {
+      "bytes": 32661,
+      "sha256": "3e66f09a1670740a1b23fb33b1055b5546aee5eeacef3bc191955e092eb8d691"
+    },
+    "docs/mcr/evidence/css-parity-wall/baseline/report.json": {
+      "bytes": 4904,
+      "sha256": "ab9a7442ce892380426c453d3820cb62d8b81200d05c6a8808205e9135e793e9"
+    },
+    "docs/mcr/evidence/css-parity-wall/baseline/390-forced-focus.png": {
+      "bytes": 16352,
+      "sha256": "827baad20e16c7b5da3e850a3bcc192fc25d9e6b4f4c7ab4a921b5a2e6f0d938"
+    },
+    "docs/mcr/evidence/css-parity-wall/baseline/390-preview.png": {
+      "bytes": 42892,
+      "sha256": "0e5c471ce39a0929a9cdabd3f264b7f296c6101e0a8f40a7d9137e6de759730e"
+    },
+    "docs/mcr/evidence/css-parity-wall/baseline/390-focus.png": {
+      "bytes": 32676,
+      "sha256": "f80ff9f19ac43cffcaa51bdb497e6b4f018da97936785599f64a7b073d284187"
+    },
+    "docs/mcr/evidence/css-parity-wall/baseline/390-palette-focus.png": {
+      "bytes": 32453,
+      "sha256": "2781ee555ac5c1bab13f3efc648bee33e4bf5af512fc72157191d025b7c58527"
+    },
+    "docs/mcr/evidence/css-parity-wall/baseline/390-frozen.png": {
+      "bytes": 34441,
+      "sha256": "a02489faca2655bf1f08766abc330a12fcdc1c7424b7baef7ff417fcc1b17051"
+    },
+    "docs/mcr/evidence/css-parity-wall/baseline/390-unknown.png": {
+      "bytes": 54214,
+      "sha256": "5048e40b2303d099851894eca3f23e36776655772a2f0830b3541e0c809884f0"
+    },
+    "docs/mcr/evidence/css-parity-wall/baseline/390-cooldown.png": {
+      "bytes": 32466,
+      "sha256": "9ae3f07e91381f09c9694ca7eaeabfe0b535ea5cfc676591ae2a2423ba5e37b6"
+    },
+    "docs/mcr/evidence/css-parity-wall/failed-baseline-1/report.json": {
+      "bytes": 3542,
+      "sha256": "56a930161ef56d3f050b01b14a49de4e380fbcde888732a98837651ba875391a"
+    },
+    "docs/mcr/evidence/css-parity-wall/candidate-1/report.json": {
+      "bytes": 3542,
+      "sha256": "6114c4fa5ea8cd329f26f0972c0c9d5162f4b6e40d218cd8e6b880bef1f3a1ef"
+    },
+    "docs/mcr/evidence/css-parity-wall/presentation-raw.json": {
+      "bytes": 1305,
+      "sha256": "bc7581db56380f4363085fea275c89ac9b018bdacafcbdfe760b9569674f7de6"
+    }
+  }
+}

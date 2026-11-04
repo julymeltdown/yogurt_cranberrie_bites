@@ -1,0 +1,21 @@
+8:28:46 PM [vite] (inline) warning:
+/Users/lhs/.codex/worktrees/9ada/mcr/docs/mcr/evidence/css-parity-wall/tests.config.mjs
+5  |  const root = resolve(import.meta.dirname, '../../../..')
+6  |  const require = createRequire(resolve(root, 'frontend/package.json'))
+7  |  const { default: react } = await import(pathToFileURL(require.resolve('@vitejs/plugin-react')))
+   |                                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+8  |  export default {
+9  |    root: resolve(root, 'frontend'), plugins: [react()],
+The above dynamic import cannot be analyzed by Vite.
+See https://vite.dev/guide/features#dynamic-import for supported dynamic import formats. If this is intended to be left as-is, you can use the /* @vite-ignore */ comment inside the import() call to suppress this warning.
+
+  Plugin: vite:import-analysis
+  File: /Users/lhs/.codex/worktrees/9ada/mcr/docs/mcr/evidence/css-parity-wall/tests.config.mjs
+
+ RUN  v4.1.9 /Users/lhs/.codex/worktrees/9ada/mcr/frontend
+
+
+ Test Files  1 passed (1)
+      Tests  4 passed (4)
+   Start at  20:28:46
+   Duration  717ms (transform 72ms, setup 0ms, import 146ms, tests 207ms, environment 289ms)
