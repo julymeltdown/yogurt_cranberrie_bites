@@ -18,7 +18,9 @@ use std::{future::Future, sync::Arc, time::Duration};
 use tokio::sync::oneshot;
 use uuid::Uuid;
 
-const BATCH: i64 = 8;
+// AppConfig's shared pool has eight connections. Leave capacity for the
+// publisher's own membership checks and the independent deadline/HTTP paths.
+const BATCH: i64 = 4;
 const DELIVERY_BUDGET: Duration = Duration::from_secs(10);
 type Notification =
     NotificationSink<PgProjectionOwner<SocialProjectionRouting>, NotificationDeliveryClient>;
