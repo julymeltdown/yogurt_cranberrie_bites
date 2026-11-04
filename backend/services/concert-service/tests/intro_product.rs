@@ -293,7 +293,7 @@ async fn canonical_authoring_discovery_detail_idempotency_and_close() -> anyhow:
         vec![],
     )?;
     let fingerprint = keys.sign(&command.request()?)?.as_storage();
-    sqlx::query("insert into concert_command_receipts(receipt_id,actor_id,event_id,operation_id,idempotency_key,request_hash,target_id,state,created_at,expires_at) values($1,$2,$3,'setConcertIntro',$4,$5,$6,'RETIRED',clock_timestamp()-interval '2 days',clock_timestamp()-interval '1 day')").bind(Uuid::new_v4()).bind(f.actor).bind(f.event).bind(expired_key).bind(fingerprint).bind(id).execute(&f.concert).await?;
+    sqlx::query("insert into concert_command_receipts(receipt_id,actor_id,event_id,operation_id,idempotency_key,request_hash,target_id,state,created_at,expires_at) select $1,$2,$3,'setConcertIntro',$4,$5,$6,'RETIRED',t-interval '2 days',t-interval '1 day' from (select clock_timestamp() t) source").bind(Uuid::new_v4()).bind(f.actor).bind(f.event).bind(expired_key).bind(fingerprint).bind(id).execute(&f.concert).await?;
     let (status, v) = call(
         &f,
         &r,
