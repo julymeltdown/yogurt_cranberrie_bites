@@ -212,10 +212,32 @@ test('portable CLI --root, invalid flags, and missing inventory', async t => {
   assert.equal(run('--root', f.root).status, 2);
 });
 
-test('shipped policy pins the audited inventory and starts empty', async () => {
+test('shipped policy pins the audited inventory and only the four reviewed headless extracts', async () => {
   const policy = JSON.parse(await readFile(new URL('../../../docs/mcr/reuse-allowlist.json', import.meta.url)));
   assert.equal(policy.schema_version, 1);
   assert.equal(policy.inventory.source_revision, REVISION);
   assert.equal(policy.inventory.sha256, '9d1202211cd136948a7afeb5588238ba9de13613980dab42616011f47762a079');
-  assert.deepEqual(policy.reviewed_headless_extracts, []);
+  const inventoryBytes = await readFile(new URL('../../../docs/mcr/frontend/reuse-inventory.json', import.meta.url));
+  assert.equal(digest(inventoryBytes), policy.inventory.sha256);
+  const inventory = JSON.parse(inventoryBytes);
+  const candidates = inventory.reuse_candidates.flatMap(candidate => candidate.source_files);
+  const excluded = new Set(inventory.legacy_exclusions.map(entry => entry.sha256));
+  // FE03's reviewed additions are pure validation/policy, never controls, layouts or themes.
+  assert.deepEqual(policy.reviewed_headless_extracts.map(entry => entry.destination).sort(), [
+    'frontend/src/entities/intro/model/age.ts',
+    'frontend/src/entities/intro/model/publication-contact.ts',
+    'frontend/src/shared/validation/tags.ts',
+    'frontend/src/shared/validation/text.ts',
+  ]);
+  for (const entry of policy.reviewed_headless_extracts) {
+    assert.equal(entry.kind, 'headless-extract');
+    assert.equal(entry.source_revision, REVISION);
+    assert.ok(candidates.some(source => source.path === entry.source_path && source.sha256 === entry.source_sha256));
+    assert.equal(excluded.has(entry.source_sha256), false);
+    assert.equal(excluded.has(entry.destination_sha256), false);
+    assert.ok(entry.reviewed_by && entry.symbols.length && entry.tests.length);
+    const destination = await readFile(new URL(`../../../${entry.destination}`, import.meta.url));
+    assert.equal(digest(destination), entry.destination_sha256);
+    for (const regression of entry.tests) await readFile(new URL(`../../../${regression}`, import.meta.url));
+  }
 });

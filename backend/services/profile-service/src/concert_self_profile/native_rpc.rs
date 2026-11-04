@@ -18,10 +18,10 @@ use sha2::{Digest, Sha256};
 use std::{path::PathBuf, time::Duration};
 use tonic::{service::interceptor::InterceptedService, Request};
 use uuid::Uuid;
-fn required(name: &str) -> anyhow::Result<String> {
+pub(super) fn required(name: &str) -> anyhow::Result<String> {
     Ok(std::env::var(name)?)
 }
-fn tls(role: Workload) -> anyhow::Result<TlsMaterial> {
+pub(super) fn tls(role: Workload) -> anyhow::Result<TlsMaterial> {
     let p = PathBuf::from(required("MCR_SELF_PROFILE_ROOT")?).join("pki");
     TlsMaterial::load(
         p.join(format!("{}.crt", role.as_str())),
@@ -29,7 +29,7 @@ fn tls(role: Workload) -> anyhow::Result<TlsMaterial> {
         p.join("ca.crt"),
     )
 }
-fn signed<T>(message: T, actor: Uuid) -> anyhow::Result<Request<T>> {
+pub(super) fn signed<T>(message: T, actor: Uuid) -> anyhow::Result<Request<T>> {
     let mut request = request_for(message, &actor.to_string())?;
     request.set_timeout(Duration::from_secs(4));
     Ok(request)

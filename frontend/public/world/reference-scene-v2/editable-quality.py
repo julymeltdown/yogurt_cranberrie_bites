@@ -10,10 +10,10 @@ import shutil
 import subprocess
 
 HERE=Path(__file__).resolve().parent
-parser=argparse.ArgumentParser();parser.add_argument('era',choices=['revenge','danger','parade']);parser.add_argument('--revision',type=int,choices=[6,7],default=6);args=parser.parse_args();era=args.era
+parser=argparse.ArgumentParser();parser.add_argument('era',choices=['revenge','danger','parade']);parser.add_argument('--revision',type=int,choices=[6,7,8],default=6);args=parser.parse_args();era=args.era
 OUT=HERE/f'quality-v{args.revision}'/era
 CLI=os.environ.get('MCR_TSRCT') or shutil.which('tsrct') or str(Path.home()/'Library/Application Support/Tesseract/bin/tsrct')
-layout=json.loads((OUT/'layout.json').read_text());proposal=json.loads((HERE/'spatial-v3/geometry-proposal.json').read_text())
+layout=json.loads((OUT/'layout.json').read_text());proposal=json.loads((HERE/f'spatial-v{layout["geometry_revision"]}/geometry-proposal.json').read_text())
 evidence=[]
 def run(args):
     result=subprocess.run([CLI]+args,capture_output=True,text=True)

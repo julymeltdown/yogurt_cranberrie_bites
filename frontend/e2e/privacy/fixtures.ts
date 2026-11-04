@@ -1,4 +1,7 @@
 import { QueryClient, QueryObserver, MutationObserver, dehydrate } from '@tanstack/react-query'
+import { createElement } from 'react'
+import { SharingRequest } from '../../src/features/social-sharing/ui/SocialSharing'
+import { mountPrivateView, mountedUI } from './mounted-ui'
 import { createMemorySession } from '../../src/shared/api/http'
 import { createQueryPrivacy, publicOnlyDehydrateOptions, type PolicyChange } from '../../src/shared/query/privacy'
 import { publicQueryKey } from '../../src/shared/query/keys'
@@ -17,6 +20,9 @@ import party from '../../../contracts/fixtures/domain/party-full.json'
 import giveaway from '../../../contracts/fixtures/domain/giveaway-management.json'
 import beacon from '../../../contracts/fixtures/domain/private-beacon.json'
 import { roles, operations, markers, check, assertAbsent, deferred, until, type Cell, type Role } from './oracle'
+import { evidenceCells } from './evidence-fixtures'
+import { recipientCells } from './recipient-fixtures'
+import { beaconCells } from './beacon-fixtures'
 
 const eventId = approved.event_id, owner = approved.requester_id, member = approved.recipient_id
 const id = (n: number) => `00000000-0000-4000-8000-${String(n).padStart(12, '0')}`
@@ -58,6 +64,7 @@ async function socialCell(role: Role): Promise<Cell[]> {
   const controller = createSocialSharingController({ auth, sensitiveRead: auth.requestSensitive,
     access: { read: () => ({ available: true, readOnly: false }), subscribe: () => () => undefined }, now: () => epoch })
   controller.start()
+  const view = mountPrivateView('handle', role, createElement(SharingRequest, { controller, retry: () => { void controller.loadRequest(approved.request_id) } }))
   try {
     if (role === 'owner') controller.setDirection('OUTGOING')
     await controller.loadRequests()
@@ -66,11 +73,15 @@ async function socialCell(role: Role): Promise<Cell[]> {
     await controller.loadRequest(approved.request_id)
     check(controller.read().detail.phase === (participant(role) ? 'ready' : 'error'), 'detail role scenario')
     check(!calls.some(call => call.endsWith(':reveal')), 'no reveal before explicit action')
+    view.absent('before explicit reveal')
     if (participant(role)) {
-      check(await controller.revealHandle('INSTAGRAM'), 'approved explicit reveal')
+      view.click('Reveal Instagram')
+      await until(() => controller.read().secret.phase === 'ready')
       check(controller.read().secret.data?.handle === markers[0], 'authorized fixture secret visible')
+      view.visible(markers[0])
       auth.privacy.changePolicy(auth.privacy.capture(), 'consent-revoked')
       assertAbsent(controller.read())
+      view.absent('after consent revoked')
       // A malicious 200 containing a raw handle must fail the real strict client decoder.
       mode = 'poison'
       await controller.loadRequests(); await controller.loadRequest(approved.request_id)
@@ -85,6 +96,7 @@ async function socialCell(role: Role): Promise<Cell[]> {
       late.resolve(noStore(secret))
       check(await pending === false, 'late reveal fenced after block')
       assertAbsent(controller.read())
+      view.absent('after blocked late response')
       mode = 'normal'; await controller.loadRequest(approved.request_id)
       check(await controller.revokeRequest(), 'canonical fixture revoke')
       assertAbsent(controller.read())
@@ -94,9 +106,10 @@ async function socialCell(role: Role): Promise<Cell[]> {
       check(!calls.some(call => call.startsWith('POST:') || call.endsWith(':reveal')), 'no unauthorized action dispatch')
       assertAbsent(controller.read())
     }
+    view.absent('final revoked or denied state'); view.finish()
     return (['list', 'detail', 'mutation'] as const).map(operation => ({ role, operation, status: 'PASS', provenance: 'SYNTHETIC_FIXTURE',
       evidence: participant(role) ? 'Actual social controller; approved/revoke/strict poison decoder/late reveal fences. Synthetic principal and HTTP only.' : 'Actual controller consumes synthetic generic404; no private payload or unauthorized mutation/reveal dispatch. Admin has no social bypass.' }))
-  } finally { controller.dispose(); auth.dispose() }
+  } finally { view.dispose(); controller.dispose(); auth.dispose() }
 }
 
 async function cacheCell(role: Role): Promise<Cell> {
@@ -174,10 +187,14 @@ export async function runFixtures() {
   check(cells.length === roles.length * operations.length, 'matrix complete without dropped cells')
   check(new Set(cells.map(cell => cell.role + ':' + cell.operation)).size === cells.length, 'unique matrix cells')
   const domains = ['handle', 'claim', 'evidence', 'beacon', 'recipient']
+  const evidence = (await Promise.all(roles.map(role => evidenceCells(role)))).flat()
+  const recipient = (await Promise.all(roles.map(role => recipientCells(role)))).flat()
+  const beacon = (await Promise.all(roles.map(role => beaconCells(role)))).flat()
+  const featureCells = { evidence, recipient, beacon }
   const domainMatrix = domains.flatMap(domain => cells.map(cell => ({ domain, role: cell.role, operation: cell.operation,
-    status: domain === 'handle' || cell.operation === 'cache' ? cell.status : 'UNSUPPORTED', provenance: 'SYNTHETIC_FIXTURE',
-    evidence: domain === 'handle' || cell.operation === 'cache' ? cell.evidence : 'Public DTO leak-rejection checks are separate; this role/domain operation has no seeded authorization/service fixture in this increment. Backend role/seed contract and feature-specific runtime input required; no result fabricated.' })))
-  return { task: 'QA04', result: 'MOCK_READY', originalTask: 'IN_PROGRESS', qualification: 'SYNTHETIC_CLIENT_FIXTURE_ONLY', cells, domainMatrix, projections: projections(),
+    status: domain in featureCells && featureCells[domain as keyof typeof featureCells].some(result => result.role === cell.role && result.operation === cell.operation) ? 'PASS' : domain === 'handle' || cell.operation === 'cache' ? cell.status : 'UNSUPPORTED', provenance: 'SYNTHETIC_FIXTURE',
+    evidence: domain in featureCells ? featureCells[domain as keyof typeof featureCells].find(result => result.role === cell.role && result.operation === cell.operation)?.evidence ?? (domain === 'beacon' && cell.operation === 'list' ? 'UNSUPPORTED: no frozen beacon list operation; direct beacon detail is exercised through the current public interface.' : cell.evidence) : domain === 'handle' || cell.operation === 'cache' ? cell.evidence : 'Public DTO leak-rejection checks are separate; raw private claim role/operation access has no frozen frontend interface in this increment. Actual backend policy/runtime inputs required; no result fabricated.' })))
+  return { task: 'QA04', result: 'MOCK_READY', originalTask: 'IN_PROGRESS', qualification: 'SYNTHETIC_CLIENT_FIXTURE_ONLY', cells, domainMatrix, mountedUI, projections: projections(),
     realService: 'NOT_RUN', remaining: ['Actual seeded principals and registered public services', 'HTTP/WS role authorization, real revocation delivery and cached product UI qualification'],
     nonClaims: ['No QA04 live acceptance', 'No IN02/IN03/QA07/FE09 production acceptance', 'No server role-policy proof', 'No actual WS/cache service execution'] }
 }

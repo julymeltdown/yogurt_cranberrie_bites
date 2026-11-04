@@ -1,7 +1,7 @@
 # BE-MEETING-PHOTO execution evidence
 
 Original scope: optional authorized physical-beacon photo, BE09 / FE20 / §5.4.
-Status: IN_PROGRESS; public port proposal and deterministic fixtures authored.
+Status: IN_PROGRESS for parent BE09/FE20/IN02; the frozen contract and bounded photo adapter are native-qualified at final combined source 3394edc6. Historical checkpoints below retain their original evidence limits.
 No full BE09/FE20/IN02 or giveaway-BE20 completion is asserted.
 
 Checkout `/Users/lhs/Desktop/mcr-worktrees/be-meeting-photo`, branch
@@ -47,7 +47,7 @@ semantics, retained-photo acknowledgement and receipt/private-read lifecycle. Th
 frozen marker is `meeting-photo/v1`; it is an opt-in client input contract, not
 live producer capability. BackendSL explicitly allocated only beacon.schema.json
 and feed.schema.json additions plus reserved forward migration 0029 to this owner;
-media213 owns Purpose enum, and root/230 retain generated outputs.
+media213 owns Purpose enum. Root owns OpenAPI output and FE1ab7 owns the exact generated TypeScript output; the historical 230 assignment is superseded.
 
 `python3 backend/scripts/mcr/meeting_photo_contract.py` exits 0: 17 offline schema
 cases cover fixtures, dedicated purpose, attachment permission, omitted/null
@@ -55,3 +55,298 @@ removal, text-only compatibility and invalid remote-photo fields. Python syntax
 and whitespace checks exit 0. No generated output, application build or native
 execution is claimed. The reserved migration is being implemented separately and
 is not included in the schema/fixture publication.
+
+## Producer source checkpoint (native pending)
+
+Root explicitly granted visibility-only `BeaconProducer`/four fields in
+`meeting/commands.rs` and one `pub mod meeting_photo;` export in Concert lib.rs.
+A subsequent exact grant covers only the owner Update authorization correction:
+stale stored party Read no longer gates an explicit owner replacement; existing
+actor/owner checks, stable old/new roots, new Update policy, destination checks,
+CAS and ordinary stored-fence reads remain. Targeted photo regression exercises
+old-read denial, explicit retained-image reconfirmation at revision two and later
+place closure/removal/revoke. No other existing producer logic is assigned.
+
+The new module reuses that actual BeaconProducer and BE24 transaction ports. Full
+photo input participates in the BE15 fingerprint; old text-only serialization is
+unchanged. Old/new media are locked in sorted order before global receipt budget.
+Effect, exact revision/expiry/permission association and irreversible former-image
+erasure share the same SQL transaction. Linked reads prelock current beacon/
+audience/place authority before media locks, recheck stored linkage and final
+expiry/proof, and return only existing private no-store sanitized image types.
+
+`CanonicalPhotoGuard::from_request` consumes an actual SDK OwnerGuardScope and
+seals the full verified frame, including key and typed intent, alongside the raw
+HTTP binding. It registers the actual connection before effects and captures the
+real held actor security generation with existing event/admission/participant
+locks. No default success fence, cached observation grant or release-on-return is
+provided. Root retains the actual scope through durable SQL outcome and qualified
+Gateway HTTP terminal settlement. The closed MEETING_PHOTO reference includes its
+full frame digest; root settlement dispatch for this reference and public product
+routes remain explicit composition work, not enabled by the module export.
+
+The forward migration 0029 extends purpose and adds a one-photo-per-beacon
+association. Deferred SQL checks bind actual owner/event/READY target/media and
+beacon revisions, expiry and any pinned policy deadline. Existing 0008 and 0012
+are untouched. The owned socket-only SQL fixture passed migration application,
+five negative binding/proof cases, a real restart and marker/inode cleanup
+(`/tmp/mcr-meeting-photo-sql-b.json`, exit 0). Schema-only SQL data is explicitly
+synthetic and not a decoded/authorized production image.
+
+Authorized dependency copies: media owner's `d4ce03b1` -> local `ab9af08e` and
+`65f90e08` -> local `b54abe4c`. A pure-doc cherry-pick conflict preserved master
+and only the incoming meeting-photo port section; no dependency source behavior
+was edited. That owner's unrelated unpublished canonical/v2 preparation was not
+imported. No dependency build/live claim is inferred from these source copies.
+
+Owned native sources cover real codec/upload plus attach/replay/current privacy,
+replacement/removal/revoke, wrong owner/purpose/non-READY IDs, competing revision
+updates, forced late erasure rollback, root/media/budget contention, restart,
+expiry/cleanup, party generation/place closure/removal, and SQLx fresh/upgrade/
+preserved old media/checksum/replay. Native tests are NOT_RUN until the actual
+shared target is leased and exact binaries are executed. FixtureGuard is synthetic
+remote owner proof only; production SDK/RPC/HTTP/device/rights and IN02 remain
+unqualified. Earlier reports are not photo evidence.
+
+Request-frame hardening additionally checks closed typed intent against the raw
+body before sealing, validates JSON content type, and binds target/method/key/
+content-type/body digest plus parsed intent in the request-specific guard digest.
+Metadata/content methods compare the actual media ID to the sealed HTTP target;
+argument substitution cannot fetch another current photo under an old URL.
+The producer source checkpoint is `cd4b7362`; later hardening is tested separately
+before publication. No source checkpoint alone is native qualification.
+
+
+## Current composition dependencies
+
+The checkout reconciles actual SDK/v2 and published owner-store source via merge
+`562334f306b12e5d88aaa46987d9f95bcc692965`. Root OpenAPI projections are published
+at `b9423cabc112da5605eb7f4393adfdee5c93d767`; FE20 optional-client source is
+`7e41574a`, shared BEACON support `591040ff`, and FE-owned generated projection
+`65f91166`, delivered through `6c908472ec3b6025bcdca9a90eae4db26c90a0b4`.
+Those owner-reported client checks use deterministic HTTP persistence and do not
+establish actual backend durability, authorization, atomic erasure or IN02.
+No generated, frontend, source archive or root-composition files were authored by
+this worker. Actual Cargo/native qualification is still pending the resource
+queue, with three test targets ready. Additional security regressions bind the
+actual raw request/type/key and prevent a retained old content URL from being
+substituted with a newly attached image argument.
+
+
+## Qualified native checkpoint
+
+Implementation/hardening is committed through `b41cf49bd65f9d6c678c194d744a5322c9facd1e`,
+after peer reconciliation `c1cf15a2c18b0a5dfe224597eb3a795241f3b814`. The explicit
+MEDIA lease was accepted only after 65.25 GiB free-space and process preflight.
+Build command (exit 0):
+
+```sh
+CARGO_TARGET_DIR=/Users/lhs/Desktop/mcr-build/media-combined-fa4b4b3/target CARGO_BUILD_JOBS=2 CARGO_PROFILE_DEV_DEBUG=0 CARGO_PROFILE_TEST_DEBUG=0 CARGO_INCREMENTAL=0 cargo +1.88.0 test --manifest-path backend/Cargo.toml -p concert-service --test meeting_photo_contract --test meeting_photo --test meeting_photo_migrations --no-run --locked --offline --message-format=json
+```
+
+The first attempt exposed a stale contracts-build helper path from the prior
+worktree, corrected by refreshing its mtime without source changes. The second
+reported an owned JSON macro fixture syntax error, corrected in `b41cf49b`.
+The third compile succeeded. Actual SDK/v2 and current imported Post IDL compiled;
+no unrelated generation fix or full-wave barrier was required for this slice.
+All three artifacts, Cargo JSON and 1,714 source pins were frozen/hash-checked in
+`/tmp/mcr-meeting-photo-native-c1cf15a2`; MEDIA was explicitly released before PG.
+No second target, install, target deletion or global cleanup was used.
+
+Native command (exit 0), solely from immutable copied artifacts:
+
+```sh
+python3 backend/scripts/mcr/meeting_photo_smoke.py --binary /tmp/mcr-meeting-photo-native-c1cf15a2/meeting_photo_contract --binary /tmp/mcr-meeting-photo-native-c1cf15a2/meeting_photo --binary /tmp/mcr-meeting-photo-native-c1cf15a2/meeting_photo_migrations --report /tmp/mcr-meeting-photo-native-c1cf15a2/native-a.json
+```
+
+PostgreSQL 16.14: **6 contract + 8 producer + 1 SQLx migration test PASS before
+and after a real process restart**, 30 executions, zero ignored/failed. All five
+SQL binding/proof negative cases, migration application, persisted association
+snapshot and marker/inode-owned cluster cleanup PASS. The committed durable
+receipt is `backend/services/concert-service/tests/meeting_photo_support/native-evidence.json`.
+
+The producer tests executed real bounded image decoding/upload/finalize,
+owner/event/purpose/READY checks, private sanitized bytes and no-store headers,
+current audience/block/outage/place authorization, retained-photo explicit
+reconfirmation, same-key safe replay, replace/remove/revoke byte erasure,
+competing CAS updates, forced late erase failure with complete transaction and
+receipt rollback, actual blocked-reader root/media/budget ordering, expiry
+cleanup, and restart receipt/content persistence. SQLx fresh installation and
+pre-0029 upgrade preserved real existing POST media byte-for-byte at row level;
+ledger replay/checksums and immutable published 0008/0012 hashes passed.
+
+The imported BE24 helper and Purpose source blobs are byte-identical to media
+owner's qualified `c32f4c74` for the exact two source paths, independently checked
+with `git diff`. This worker's real photo composition now also qualifies those
+ports; it does not claim the owner's separate canonical adapter or live RPC join.
+Remote owner proof in these tests remains explicitly synthetic. Actual canonical
+Auth/Friend exclusion, MEETING_PHOTO settlement dispatch, qualified HTTP delivery,
+root routing/capability activation, device flow, production photo rights and IN02
+remain NOT_RUN here. No full BE09/FE20/IN02 acceptance or scope cut is inferred.
+
+The actual persistent-goal API still returned BLOCKED after explicit assignment
+resumption; its available mutation API cannot set ACTIVE. This administrative
+state was reported to BackendSL while the complete authorized work resumed; no
+replacement goal or false completion was used to bypass it.
+
+
+## Delivery path and provenance audit
+
+Original worker base: `0c76e42790106501f3988fe7cb46113b8cd7784e`.
+Input contract handoff: `17fd2e93`, delivered through `a3526254`.
+Owned implementation: `cd4b7362`, `96c44d3d`, `418b5ce4`, `a45b78ea`, `b41cf49b`.
+Qualified native evidence: `701962ef`. Upstream peer commits are preserved through
+serial normal merges; no peer changes are reattributed to this implementation.
+
+Exact owned source/delivery paths (Concert-relative paths below start in
+`backend/services/concert-service/`):
+
+- `src/meeting_photo/{mod,wire,producer,authority,canonical}.rs` (new authored adapter).
+- `migrations/0029_meeting_photo.sql` (explicit exact shared grant).
+- `src/lib.rs` (exact one module export) and `src/meeting/commands.rs` (exact
+  BeaconProducer visibility and explicit owner Update authorization correction).
+- `tests/meeting_photo.rs`, `tests/meeting_photo_contract.rs`,
+  `tests/meeting_photo_migrations.rs`, `tests/meeting_photo_support/**`.
+- `backend/scripts/mcr/meeting_photo_contract.py` and `meeting_photo_smoke.py`.
+- `backend/docs/api/meeting-photo-contract.md`, this execution document, and
+  previously published exact `contracts/domain/v1/{beacon,feed}.schema.json` inputs.
+
+Authorized unchanged media dependency copies `d4ce03b1` → `ab9af08e` and
+`65f90e08` → `b54abe4c` additionally carry the dedicated Purpose enum,
+`src/adapters/out/media/mod.rs`, `src/media_runtime/mod.rs` uploader prelock,
+`tests/media.rs`, and the media owner's exact documentation section. Media213
+explicitly confirmed the relevant blobs against qualified `c32f4c74`, authorized
+publication with this independent photo qualification, and stopped writing these
+ports during reconciliation. No other canonical preparation is imported.
+
+The scoped path/import check found no frontend imports, backend/UI crossing,
+manifest/lockfile authorship or `docs/source` changes. Canonical generated outputs
+and FE client changes are their owners' published commits, preserved as peers.
+
+After the first native proof, peer publication added actual PublicProfile source/
+proto and Spatial bootstrap library inputs. Merge `cf6ba979176de15aac8e1896a01ba262a1f905bd`
+preserves them; all 14 photo qualification pins remained byte-identical. A short
+final combined build has been requested specifically for those newly compiled
+inputs. The earlier native receipt retains its exact `b41cf49b` claim; it is not
+relabeled as evidence for a later uncompiled source.
+
+
+## Media dependency publication transfer
+
+At clean photo checkpoint `091f63c93c782224caa27206bc7687e6dd0c3b45`, media owner
+213 completed its newer canonical/v2 dependency recheck and requested publication
+coordination. This worker explicitly returned **only unchanged d4ce03b1/65f90e08
+port publication** to 213; no new source-writing authority or broader media scope
+was transferred. No photo push was in progress. The local unchanged `ab9af08e` /
+`b54abe4c` dependency copies remain preserved; this worker will reconcile the
+media owner's actual published pin before publishing its separate photo producer
+and 0029 migration. This removes a dependency publication collision without making
+media publication wait for the queued final photo combined build. The b41 native
+qualification and full photo scope are unchanged.
+
+
+Root1fc subsequently requested return of the exact Concert `src/lib.rs` module
+export lease for its age-verification registration. This worker confirmed STOP
+and returned that lease immediately: its single `pub mod meeting_photo;` export
+is finalized in local `cd4b7362`, with no further lib writes planned. Root may add
+its own registration serially; photo publication reconciliation must retain both
+exports together with their actual modules. No photo publication or acceptance
+was implied, and the separate limited commands.rs grant was not transferred.
+
+
+## Published media reconciliation and IN02 input handoff
+
+Consumed media owner publication `15e7bd8abf02e5bf0f3a782914826b0ac613f8d2` in
+merge `3b20744222adf76a6f2a48825bfcf535e865b440`. The dedicated Purpose enum,
+media adapter and media tests are byte-identical to the published blobs. Two
+expected conflicts were resolved without new behavior: preserve Root's Party
+module export plus the already finalized photo module export, and retain the
+entire incoming owner-media evidence document. The lib export lease remains
+returned to Root. Incoming Participant evidence contains preexisting trailing
+blank-line whitespace findings; those peer files were preserved unchanged.
+
+A source-checked IN02 input handoff was sent directly to SocialSL. It pins the
+published six beacon/rally operations in `contracts/domain/v1/operations.json`,
+beacon/party DTOs, deterministic fixtures, published current meeting adapters,
+photo contract version and field semantics, and the distinct historical 18-test
+meeting versus current b41 30-execution photo evidence. Current Gateway/Concert
+product registry/proto/handler source has no beacon/rally dispatch; actual HTTP
+probes and IN02 remain NOT_RUN. Safe internal receipts are not the completed
+public private-projection response: C04 completed responses are 200, pending
+receipts 202. No route or completion claim is inferred from generated schemas.
+
+The handoff names Root1fc for public dispatch/terminal delivery/seed/place output,
+authority207 for real canonical Auth/Friend, Community00c for current party/member
+generations, and Spatial19f83/Root for current place/provenance inputs. The four
+virtual concepts have no blanket external physical-approval prerequisite. A real
+physical destination still requires genuine provenance/current review and closure
+state; virtual motion never establishes arrival. Broader original BE09/BE19
+production work is the planned following increment, after bounded photo delivery
+and its exact new ownership assignment. No parent criterion was removed.
+
+
+## Final combined qualification at 3394edc6
+
+The standing short final MEDIA lease was explicitly accepted on clean source
+`3394edc6440cf6b626c20a433f9d03dc8c41b0b3`, with the actual published media
+`15e7bd8a`, PublicProfile, Spatial and intervening peer source reconciled.
+Resource preflight found 53.36 GiB free and no compiler process. The same exact
+three-target Rust1.88 locked/offline/jobs2/debug0/incremental0 no-run command
+exited **0 in 21.51 seconds** on the successful rerun. The initial attempt used a
+stale shared-target platform crate omitting two modules present in this checkout;
+refreshing the platform source mtimes fixed the identical rerun without a source
+edit, install, target cleanup or second target.
+
+All three binaries, exact Cargo JSON and **1,764 source inputs** were copied and
+hash-verified in `/tmp/mcr-meeting-photo-native-3394edc6`. MEDIA was explicitly
+released immediately and before native PG. The earlier b41 receipt remains its
+own historical snapshot and is referenced separately in the updated committed
+`tests/meeting_photo_support/native-evidence.json`; it is not relabeled.
+
+The final native command replaces the previous artifact directory with
+`/tmp/mcr-meeting-photo-native-3394edc6` for all three binaries and report.
+It exited **0** on private PostgreSQL16.14: **6 contract + 8 producer + 1 SQLx
+migration test passed before and after a real server restart (30 executions,
+zero ignored/failed)**, all five negative SQL binding/proof guards passed,
+persisted content/receipt/association and fresh/upgrade/checksum ledger checks
+passed, and marker/inode-owned cluster cleanup passed. Binary hashes and output
+hashes are in the committed receipt. The final source and all recorded inputs
+were unchanged at freeze. Required offline schema17, planning, Rust formatting
+and scoped whitespace checks are run for publication below.
+
+This is qualification of the bounded photo adapter and migration at the exact
+3394 snapshot. Subsequent peer publication retains its own component evidence;
+this receipt does not assert new whole-master/native/IN02 proof. Real canonical
+Auth/Friend joined photo authority, MEETING_PHOTO root settlement and HTTP terminal
+delivery, public routes, device flow and genuine physical provenance/rights
+remain separately owned and unverified here. No production flags are enabled.
+
+
+## Final publication reconciliation
+
+Final evidence commit: `5db507df`. Normal peer merge
+`cf6ac374490a79552638ebc6a1357a89f87c9f3a` preserves the subsequently published
+PartyLive subject-error mapping and Profile test-only preparation. The PartyLive
+changes have no photo/meeting call edge or public interface change; Profile's new
+module is `cfg(test)` and is outside the three compiled photo targets. They
+retain their owners' evidence, not a new photo whole-master claim.
+All recorded photo source pins (excluding the evidence JSON metadata itself) and
+all photo migration hashes remained byte-identical to the qualified 3394 source.
+The final changed-path audit found exactly 16 scoped paths: contract document,
+smoke harness, 0029, exact lib export and granted commands correction, five new
+photo module files, three native targets, support module and native receipt,
+and this document. No frontend, shared manifest/lockfile, source archive,
+generated contract, peer evidence or unrelated source is authored in this patch.
+The media-port publication is already in master as its owner's actual 15e commit.
+
+Offline schema17 and required planning checks both exit 0 after reconciliation;
+Rust formatting and scoped whitespace checks exit 0. The explicit shared build
+target is released, both owned PG runs cleaned up, and the checkout is clean.
+The direct handoff records the actual published SHA/remote ancestry separately,
+so the native receipt is never rewritten to assert a later source was tested.
+
+Remaining broader requirements have named owners: root public beacon/rally/photo
+dispatch and qualified SQL/HTTP settlement, actual canonical Auth/Friend and party
+fences, genuine physical place provenance/current public revision, real-client
+cache invalidation and IN02/device proof. They are the planned next increment
+rather than completed criteria or cuts to the original product specification.

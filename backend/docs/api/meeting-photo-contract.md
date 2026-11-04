@@ -2,10 +2,11 @@
 
 Frozen producer/consumer input port `meeting-photo/v1`, based on master
 `0c76e42790106501f3988fe7cb46113b8cd7784e`. This document is the explicitly
-assigned shared contract path; it does not claim the existing generated C04
-schemas or live routes already accept these additions. Media owner 213 has confirmed the exact fields and semantics. FE owner 1ab7
+assigned shared contract path. Canonical schema inputs and generated projections
+now carry the additions; live dispatch remains separately unqualified. Media owner 213 has confirmed the exact fields and semantics. FE owner 1ab7
 has explicitly agreed the exact fields and lifecycle semantics. Authority owner
-207 has pinned the canonical guard SDK at published `888cb6bd`. No king/SL implementation review or approval is required.
+207 originally pinned SDK `888cb6bd`; the producer checkout now also reconciles
+the published SDK/v2 and real owner-store sources. No king/SL implementation review or approval is required.
 
 This completes original BE09/FE20 optional authorized photos (§5.4), not the
 specification's giveaway BE20. Existing registered beacon operation IDs, HTTP
@@ -94,16 +95,19 @@ beacon authority only after locking media inverts writer order. Target hints
 never grant access. Mutations, retries, finalize/recovery of linked media and
 cleanup must respect compatible order or deny the unsupported operation.
 
-Exact ungranted shared changes identified early:
+Exact shared ownership (initially identified as dependencies):
 
-- `contracts/domain/v1/beacon.schema.json`, `feed.schema.json`, derived OpenAPI/
-  public types and fixture index: owning root must name one writer.
-- Dedicated forward migration for BEACON purpose and beacon-media association
-  with owner/event/beacon revision/permission/expiry binding; preserve published
-  0008 and 0012. Request a reserved migration number from root before editing.
+- `contracts/domain/v1/beacon.schema.json` and `feed.schema.json`: exact input
+  grant to this worker, delivered `17fd2e93` / `a3526254`. Root generated OpenAPI
+  outputs `b9423cab`; FE1ab7 generated TypeScript `65f91166`.
+- Exact reserved forward migration `0029_meeting_photo.sql`: this worker owns
+  BEACON purpose and beacon-media owner/event/revision/permission/expiry binding;
+  published 0008 and 0012 remain byte-identical.
 - BE24 purpose enum and per-media target-aware erase/read/prelock ports: media213
   owns these unless explicitly transferred. No direct BE24 storage mutation here.
-- Concert `src/lib.rs` module export and product/Gateway dispatch: root1fc owns.
+- Root1fc granted this worker exactly one Concert `src/lib.rs` module export and
+  BeaconProducer visibility plus the explicit owner Update authorization fix in
+  `meeting/commands.rs`. All other root/product/Gateway dispatch remains root-owned.
 - Existing BE09/domain values may remain text-only internally if the new strict
   adapter separates photo input and combines the authorized read projection;
   no implicit old-beacon/domain source edit is required for that composition.
@@ -113,5 +117,33 @@ Native/HTTP/production rights qualification is NOT_RUN for this new slice.
 The input-port marker is **meeting-photo/v1**. It is an explicit opt-in client
 configuration name, not a server capability or automatic root activation flag.
 Absent configuration preserves text-only behavior. Schema inputs are frozen here;
-generated OpenAPI/TypeScript outputs remain with root/230 until their coordinated
-regeneration. Runtime support is NOT_RUN and must not be inferred from this marker.
+generated OpenAPI/TypeScript outputs were produced by their root/FE1ab7 owners
+at the pins above. The old 230 generated-output assignment is superseded. Runtime support is NOT_RUN and must not be inferred from this marker.
+
+## Producer composition port
+
+The owned producer facade is `meeting_photo::PhotoBeacons<A, G>`, composed with
+actual `PgMeetingAuthority<GuardedAuthority>` and request-bound
+`CanonicalPhotoGuard::from_request(actual_scope, &frame)`. Construct the frame
+from verified canonical actor/event plus the actual method target, key, JSON
+content type and raw body; `PhotoFrame::mutation` closes/compares the typed input.
+The root must use the actual held scope, register/retain it before work, and keep
+it beyond reply production/serialization through qualified terminal settlement.
+No success fixture/default owner authority may be composed in production.
+
+`execute(frame, mutation)` returns the original safe BE15 receipt;
+`read(frame)` returns the authorized combined beacon/photo-ID projection.
+`metadata(frame, media_id)` and `content(frame, media_id)` use BE24 same-transaction
+ports and reject disagreement with the sealed HTTP media path. Root may use
+`target_hint(event, media_id)` only as an internal untrusted lookup, then prelock
+and recheck the exact current association. There is no public beacon query added
+to media routes. A bounded `cleanup_expired_in` caller-transaction helper requires
+an actual qualified current owner/job scope and exact expired target; it is not a
+browser delete API or an enabled scheduler. Its caller owns durable job outcome.
+
+MEETING_PHOTO settlement references are closed version 1 and include the full
+photo-frame fingerprint. Root must authenticate the owner workload, match the
+actual durable registration and exact stored reference, and use the producer's
+`canonical::validate_settlement_reference` opaque getters. Shape alone is not
+SQL outcome or a release grant. Photo reference resolution and product dispatch
+remain separate root composition obligations before runtime enablement.

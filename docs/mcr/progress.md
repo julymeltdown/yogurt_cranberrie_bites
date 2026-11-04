@@ -1,6 +1,6 @@
 # Execution record
 
-Updated **2026-11-04T10:18:27+09:00**, from published history through `0b17b093` and existing developer/SL delivery reports. This is a management reconciliation, not a code, query, visual or test review. All **112 required tasks and 61 required IA entries** remain in scope; the six optional EX tasks are excluded from the denominator.
+Updated **2026-11-04T10:34:05+09:00**, from published history through `a1f70c8a` and existing developer/SL delivery reports. This is a management reconciliation, not a code, query, visual or test review. All **112 required tasks and 61 required IA entries** remain in scope; the six optional EX tasks are excluded from the denominator.
 
 ## Current task accounting
 
@@ -9,13 +9,13 @@ Updated **2026-11-04T10:18:27+09:00**, from published history through `0b17b093`
 | Original-task disposition | Count | Meaning |
 | --- | ---: | --- |
 | Recorded acceptance dispositions | **12** | Eleven historical ACCEPTED records plus the implementation owner's explicit original FE08 acceptance. |
-| Additional task-local criteria satisfied | **15** | Existing dispositions plus original FE14, FE19 and QA01; no new king/SL technical sign-off. |
-| Other implementation evidence | **71** | Bounded implementation, fixtures or component delivery exist; original-task completion is partial or not yet reconciled. |
+| Additional task-local criteria satisfied | **17** | Existing dispositions plus original FE14, FE19, QA01, QA02 and FE09; no new king/SL technical sign-off. |
+| Other implementation evidence | **69** | Bounded implementation, fixtures or component delivery exist; original-task completion is partial or not yet reconciled. |
 | Status not yet reconciled | **9** | Insufficient current per-task disposition in this reconciliation; not assumed unstarted. |
 | Open integrated-product/release gates | **5** | IN01–IN05 have no completed gate receipt in the current reports. |
 | **Required total** | **112** | Every original required ID appears once in the linked register. |
 
-There are **27 recorded task-criteria outcomes** (12 recorded acceptance dispositions plus 15 additional task-local dispositions), **not only 11 tasks with implementation**. The latest reconciliation adds original **FE14, FE19 and QA01** from explicit implementation-owner dispositions and published receipts. This is not a claim that 27 tasks were newly accepted today, nor an effort-weighted completion percentage. The 71 evidence-bearing tasks are not silently counted as complete. A completed worker goal, a new commit, a test count or an assistance artifact adds no original task IDs.
+There are **29 recorded task-criteria outcomes** (12 recorded acceptance dispositions plus 17 additional task-local dispositions), **not only 11 tasks with implementation**. The latest reconciliation adds original **FE09**, following FE14, FE19, QA01 and QA02, from explicit implementation-owner dispositions and published receipts. This is not a claim that 29 tasks were newly accepted today, nor an effort-weighted completion percentage. The 69 evidence-bearing tasks are not silently counted as complete. A completed worker goal, a new commit, a test count or an assistance artifact adds no original task IDs.
 
 The [112-row task register](task-progress-2026-11-04.json) records each original ID, its evidence pointers and the distinction above. Its null states mean unreconciled completion, not NOT_STARTED. No current full-product completion percentage is asserted.
 
@@ -37,6 +37,10 @@ The [112-row task register](task-progress-2026-11-04.json) records each original
 | **FE14, FE19** | The [root/Map owner reconciliation](frontend/reference-scene-root.md#explicit-original-criterion-reconciliation), published through `10784b26`, declares the client/source-fixture criteria satisfied after all-era root adoption. Existing Map/Places recovery/source/closure/help evidence is preserved. FE15 remains partial; the current FE07 shell criterion alone does not close original FE07. Actual Product admission and full reference fidelity remain separate. |
 | **QA01** | The [contract-coverage owner record](evidence/contracts/qa01-coverage/README.md), implementation `6e2038fc`, evidence `19d7441f` and publication `bd103c10`, explicitly declares original QA01 criteria SATISFIED for pinned canonical inputs at CONTRACT_READY. The same goal is actually COMPLETE, followed by null/clean STOP. This does not accept whole C07, live producers or IN gates. |
 
+| **QA02** | The [UI-origin audit owner record](evidence/ui-origin/README.md), published `11ca3a3e`, declares original criteria SATISFIED at its pinned candidate after source comparison and native presentation review across 59 route patterns and all 61 IA entries. Goal complete and checkout clean. This closes the original origin audit, not final fidelity, functional route readiness, QA06 or IN gates. |
+
+| **FE09** | The [production refresh owner record](frontend/production-refresh.md), source `dc88c248`, receipts `f96ea11b` and publication `62b4bf80`, declares original frontend criteria SATISFIED. Production caller activation and browser-policy cases close the remaining original caller behavior; actual goal complete and no active goal remain. Frontend fixtures and backend real-service evidence stay separate, and broader test failures are retained rather than claiming a green full suite. |
+
 This reconciliation preserves the owners' actual dispositions: FE08 is explicitly owner-declared ACCEPTED, while the other newly reconciled SATISFIED records are not relabeled as new formal acceptances. Known follow-up requirements, including the later exact visual target, remain tracked even when the original task-local implementation criteria were met.
 
 ## Current major feature delivery
@@ -44,7 +48,7 @@ This reconciliation preserves the owners' actual dispositions: FE08 is explicitl
 | Feature | Published or owner-reported delivery | Required remainder |
 | --- | --- | --- |
 | Selected characters and root integration | Canonical avatar persistence `b13d79e6`, participant increment `0313afa5`, whole editor `c3f411ad`, default-root character flow `9fc3a299` / `903773b8`, authorized portrait/media binding `9dacd962`. | Actual live identity/Profile/authority journeys, all original avatar capabilities, directional/walk/layered art and full device/visual acceptance. |
-| Ten-screen reference design | Auth refinement `08d1b1c0` and required artwork `1249430f`, Landing `d5ec766d` and artwork `b01eb708`, Map `f4b40808`, Gifts `9055af1e`, Profile/party/feed portrait delivery `9dacd962`; existing browser-fixture records are retained. | Auth and Landing owners report their required artwork increments delivered. Auth's original FE09 still has production refresh activation remaining; Landing's original FE08 task-local criteria are recorded complete. All ten screens still need the requested near-identical final design; fixture success is not complete visual acceptance. |
+| Ten-screen reference design | Auth refinement `08d1b1c0` and required artwork `1249430f`, Landing `d5ec766d` and artwork `b01eb708`, Map `f4b40808`, Gifts `9055af1e`, Profile/party/feed portrait delivery `9dacd962`; existing browser-fixture records are retained. | Auth and Landing owners report their required artwork increments delivered. Original FE09 production refresh caller is now delivered in `62b4bf80`; FE08 and FE09 task-local criteria are recorded satisfied. The combined live frontend/service journey remains separate. All ten screens still need the requested near-identical final design; fixture success is not complete visual acceptance. |
 | Three-era scenery and map | All three era inputs `02320134`, canonical Tiled/loader `aa3e2f3d`, World scene hook `969b3b2f` and Map consumer `4dc12a56` are published. World owner correction `482d02c4` identifies all four current scene targets as virtual concepts. | The source-fixture root/Map integration is now delivered in `10784b26`; final reference fidelity and actual Product/art/theme/release admission remain open. These four virtual records do not establish a physical-venue-review prerequisite. Real physical-place qualification remains separate AR01/beacon/IN02 scope; no REVIEWED status or physical eligibility is invented. |
 | Feed and media product APIs | Feed groundwork `02b17e04`, owner media `84126f6a`, Product API transport `49fb637c`, platform authority checkpoint `ba64c62e`. | Actual durable canonical guards, Profile/producer composition, public HTTP and recovery/revocation journeys. Published transport does not establish enabled live Feed/media. |
 | Meeting-photo client | Original FE20 client delivery `6c908472` satisfies the owner-reported frozen-contract/fixture criteria; photo upload, attachment, save and fresh-controller reread are included. | Actual meeting-photo producer, owner-media lifetime/read/erase, Product API root admission and IN02/operator/device/multiuser requirements. |

@@ -16,7 +16,8 @@ if (root === null) {
 }
 
 const configuredEvent: unknown = import.meta.env.VITE_MCR_EVENT_ID
-const auth = createSessionController({ eventId: canonicalUuid(configuredEvent) ? configuredEvent : null })
+// BE03 browser rotation is qualified; the controller owns single-flight recovery and safe read replay.
+const auth = createSessionController({ eventId: canonicalUuid(configuredEvent) ? configuredEvent : null, qualifiedRefresh: true })
 auth.start()
 const ports = createProductionPorts(auth, { localInput: readLocalInputConfiguration(import.meta.env.VITE_MCR_LOCAL_INPUT_CONFIG) })
 const router = createAppRouter(ports)

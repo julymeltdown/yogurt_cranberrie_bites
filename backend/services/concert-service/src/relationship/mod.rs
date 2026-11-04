@@ -8,6 +8,7 @@ use sqlx::{PgConnection, PgPool, Row};
 use std::str::FromStr;
 
 pub mod commands;
+pub mod eligibility;
 
 /// Request-bound authenticated actor plus fresh Auth/Friend restrictions. Implementations
 /// MUST fence owner revocation until the caller transaction commits (or use an equivalent
