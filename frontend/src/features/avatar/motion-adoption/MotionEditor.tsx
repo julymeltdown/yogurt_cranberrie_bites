@@ -51,6 +51,7 @@ export function MotionEditor<C>({ controller }: { readonly controller: MotionEdi
   }
   return <section className="mcr-motion-editor" aria-label="Avatar editor" aria-busy={busy}>
     <ConcertWindow title="CUSTOMIZE" headingLevel={1} icon="me" footer={<div className="mcr-motion-actions">
+      <ConcertAction tone="paper" aria-label="Random character" disabled={!editable} onClick={() => void controller.random()}>Random</ConcertAction>
       <ConcertAction tone="paper" aria-label="Reset draft" disabled={!editable || !!state.candidate} onClick={() => controller.reset()}>Reset</ConcertAction>
       <ConcertAction aria-label="Save outfit" pending={state.phase === 'saving'} disabled={!editable || !dirty || state.needsReconciliation} onClick={() => void controller.save()}>Save</ConcertAction>
     </div>}>

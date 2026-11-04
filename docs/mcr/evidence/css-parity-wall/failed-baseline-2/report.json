@@ -1,0 +1,40 @@
+{
+  "result": "FAIL",
+  "base": "87c95968605b8da3a8c35b170f7533c89787ca3e",
+  "reference": {
+    "sha256": "2b3988d546f87b813d78ca13bf267730a6dd19118bd6535a2d3c3032b6f12d23",
+    "crop": "bottom row fourth WALL; new JPG 1280x853: Wall panel x773 y450 w237 h397; canvas x779 y510 w222 h253",
+    "canvasAspect": 1.1396396396396395
+  },
+  "externalInput": {
+    "rootCaption": "1dbca746018bdd6d3470cacd9112fb7e7d7aca88",
+    "localCaptionCherryPick": "87c95968605b8da3a8c35b170f7533c89787ca3e",
+    "baselineCss": "54320d71c4ae0bff3524d1b500cea772e0ba42e0"
+  },
+  "scope": "Production MuralSyncPanel/MuralEditor actual raster and canonical HTTP, frozen deterministic fixture; no production-root, liveBE, physical-device or IN04 claim.",
+  "sourceHashes": {
+    "frontend/src/features/mural/editor/MuralEditor.tsx": "134c7802d215aa11950f6ca023a181205c88b81b52748747e292931b71b57d44",
+    "frontend/src/features/mural/editor/editor.css": "079b5441ce3a16e0757b688289f388ad50cc156f93903e4ac78f43098e9e694b",
+    "frontend/src/features/mural/editor/controller.ts": "e3cc0c7a6289c19120030398534027fc881786aeebab3b0624e2a43a99a90063",
+    "frontend/src/features/mural/editor/input.ts": "5c111dd36e002f7af687c3cb9fc398c9fdb4fd9909fdf85997c8336d268d7ec1",
+    "frontend/src/features/mural/editor/contract.ts": "bbcdf46b244e8b8434cb496cd3fe09d9a3b385323b97d0c89dfaf91dec8ff22c",
+    "frontend/src/features/mural/sync/MuralSyncPanel.tsx": "70c86e0b4804e6ad9e560aad31e7de73eaa58098941b716fd070018a7aaeaebe",
+    "frontend/src/features/mural/sync/controller.ts": "7d352e7404f81fd0addcb59415bac137f385c37014c5545a629b175d95a58b2b",
+    "frontend/src/features/mural/sync/http.ts": "b2ef84266763e9deebc8470def87c976168ba427f9cadf11cfd8b3eb036db144",
+    "frontend/src/features/mural/sync/contract.ts": "9edeb0eb0560f643371ebb522d461c3f75d6f60c3db344d5aeec29fbefab0400",
+    "frontend/src/features/mural/sync/__tests__/fixture.ts": "c61d33f5258a19541a8d70989686ebfdfa19a5711a9bcf44d2e22ae9b0d52a56",
+    "frontend/src/features/mural/editor/__tests__/fixture.ts": "ba6fa5bd95472e078f4c4a5a1c0eebe4b25f6a56c81c4cac74eaf79eb92a2bf4",
+    "frontend/src/features/mural/editor/__tests__/reference-target/presentation.test.tsx": "a0b8f469f5b5f4d4d99d89ac246b636da193835727f5a226363a75d32891d8a2",
+    "frontend/src/features/mural/editor/__tests__/reference-target/preview.tsx": "92e33845c1a9e36166c88cb901b50c6a81f36d2d2f3451c8dc38c300d3cfdecb",
+    "frontend/src/features/mural/editor/__tests__/reference-target/preview.css": "503a39493cda91ae8dff6e05332de42224e03f322e0815eb5bf4d0c973ac5bc2",
+    "frontend/src/features/mural/editor/__tests__/reference-target/preview.html": "2d18d859f2d7811700ac683fa05916e2bf817fc4c890ecd223192adafcd693be",
+    "frontend/src/features/mural/editor/__tests__/reference-target/browser.mjs": "90e47c678bee5620142a2fafc333f5ba2373b0b2c07bc9af553d0a207aba2b08",
+    "frontend/src/shared/ui/concert-window/index.tsx": "30568e75d61b31644ef105b2ef25fc150de19f7d604bad43615b97d1506efc10",
+    "frontend/src/shared/ui/concert-window/concert-window.css": "ae2b0c9e1a1e638218823b7e6715a53b5d6af6020069e2c858bb3450da493d3f",
+    "contracts/domain/v1/mural.schema.json": "345871ce89fabff02f06087fcd3e8907651a5712b34ccbd53091158af123b6ca"
+  },
+  "widths": [],
+  "checks": [],
+  "browser": "156.0.8078.80",
+  "failure": "Error: ENOENT: no such file or directory, stat '/tmp/mcr-css-wall-first-20261104/playwright_chromiumdev_profile-hXslXC/RunningChromeVersion'\n    at async stat (node:internal/fs/promises:1750:18)\n    at async bytes (file:///Users/lhs/.codex/worktrees/9ada/mcr/docs/mcr/evidence/css-parity-wall/native.mjs:15:202)\n    at async bytes (file:///Users/lhs/.codex/worktrees/9ada/mcr/docs/mcr/evidence/css-parity-wall/native.mjs:15:182)\n    at async disk (file:///Users/lhs/.codex/worktrees/9ada/mcr/docs/mcr/evidence/css-parity-wall/native.mjs:16:259)\n    at async file:///Users/lhs/.codex/worktrees/9ada/mcr/docs/mcr/evidence/css-parity-wall/native.mjs:31:5"
+}

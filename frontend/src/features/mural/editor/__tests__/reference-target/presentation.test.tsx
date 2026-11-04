@@ -14,7 +14,8 @@ afterEach(() => { cleanup(); f.dispose(); vi.restoreAllMocks(); vi.unstubAllGlob
 it('keeps the real canvas first, all server colors and secondary keyboard coordinates collapsed', () => {
   const { container } = render(<MuralEditor controller={f.controller} />)
   expect(container.querySelector('canvas')?.width).toBe(512)
-  expect(screen.getByRole('heading', { name: '128 × 128 PIXEL WALL' })).toBeTruthy()
+  expect(screen.getByRole('heading', { name: 'THE BLACK PARADE' })).toBeTruthy()
+  expect(container.textContent).toContain('This wall is 128 × 128 pixels.')
   expect(screen.getAllByRole('button', { name: /^Color \d+ #/ })).toHaveLength(16)
   expect(container.querySelector('details')?.open).toBe(false)
   expect(screen.getByLabelText('X').closest('details')?.open).toBe(false)

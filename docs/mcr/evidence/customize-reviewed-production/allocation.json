@@ -1,0 +1,37 @@
+{
+  "slot": "AR03-PRODUCTION-SOURCE-202611041141Z",
+  "acceptedUTC": "2026-11-04T11:41:41.434921+00:00",
+  "workStopUTC": "2026-11-04T11:50:41.434921+00:00",
+  "releaseDeadlineUTC": "2026-11-04T11:51:41.434921+00:00",
+  "source": "8d2b92e488c4241086aeb5d6cf80a5abb1a908ad",
+  "base": "01d604080670c967e1ce194df5c3d1827df11228",
+  "sourcePins": {
+    "docs/mcr/frontend/customize-reviewed-production.md": "a7fc19d2a88e9eb72962020d39e59478aabf88d865545301daa553e84144f428",
+    "frontend/src/entities/avatar/runtime/__tests__/reviewed-production/authority.test.ts": "3e26e4e23896cf730979927ea05be69ef6b33d443d66d4954ea520fd9ea9942a",
+    "frontend/src/entities/avatar/runtime/__tests__/reviewed-production/qualify.py": "655df2ea1f3ff1b562c342ca9c76180a64ebea3be54f8c725889efc5c0987ef8",
+    "frontend/src/entities/avatar/runtime/__tests__/reviewed-production/resource.test.ts": "bccc761030e3b3c6eed33237907e83f29dfdbf5d086775d94928efbe186b7f9e",
+    "frontend/src/entities/avatar/runtime/__tests__/reviewed-production/vitest.config.mjs": "5ec0a597ded2f4510a87fdca8e0b88cf07e220a2430616735c9dcb8d847e66ec",
+    "frontend/src/entities/avatar/runtime/motion-adoption/reviewed-manifest.ts": "ff0a901e62f572aa406d5916f741dd771956ec767c3585cf0ce5aa6ec1b81701",
+    "frontend/src/entities/avatar/runtime/motion-adoption/reviewed-production.ts": "dcae35f22db0ce3f20eb52213271d59a25f290a74413a74518eb1708cc92e36c",
+    "frontend/src/entities/avatar/runtime/motion-adoption/runtime.ts": "9d16a2caa0c072ba78410085429b30dd527b3519b83e1d50186b710ac01230b6",
+    "frontend/src/features/avatar/__tests__/reviewed-production/controller.test.tsx": "4d72db95693f40d094f4a6c6bc45c291da0b4b4635d0408410f3c19f44708113",
+    "frontend/src/features/avatar/__tests__/reviewed-production/fixtures.ts": "27da72ade90ba355c1777f7d634fcd6ee4ba3e7217540aef39b8c1ce131632f3",
+    "frontend/src/features/avatar/__tests__/reviewed-production/persistence.test.ts": "023f808b035579a3ed92724efe0b4afca0ab09fd5bb8d1fa8bc46cdf4c53af7c",
+    "frontend/src/features/avatar/motion-adoption/MotionEditor.tsx": "9090cc0c806aa6493764826522d16a5fbe27a05f4578ddc1f0851985a258eb2a",
+    "frontend/src/features/avatar/motion-adoption/controller.ts": "c092f03427278bb935520651e5f02c46e2e29f2b0a47248a539197fc10793045",
+    "frontend/src/features/avatar/motion-adoption/production-persistence.ts": "7608476f9c771ca27ae40f029b2197efc3f17255bc8b930a4c856502c36bc22e"
+  },
+  "freshFreeBytes": 20068999168,
+  "lockSha256": "47ca44459819ad0e887d2f4f93394fdf3b1053b8f45edc9ceb0236981feee1f6",
+  "priorCarryBytes": 0,
+  "wholeCapBytes": 134217728,
+  "rssCapBytes": 2684354560,
+  "cwd": "/Users/lhs/Desktop/mcr-worktrees/fe-ref-map",
+  "outerArgv": [
+    "python3",
+    "/Users/lhs/Desktop/mcr-worktrees/fe-ref-map/frontend/src/entities/avatar/runtime/__tests__/reviewed-production/qualify.py"
+  ],
+  "runtime": "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node",
+  "retainedDependencies": "/Users/lhs/Desktop/mcr/frontend/node_modules",
+  "borrowedViteTempBefore": []
+}

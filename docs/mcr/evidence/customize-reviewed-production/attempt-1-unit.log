@@ -1,0 +1,106 @@
+
+ RUN  v4.1.9 /Users/lhs/Desktop/mcr-worktrees/fe-ref-map/frontend
+
+ ❯ src/features/avatar/__tests__/reviewed-production/persistence.test.ts (21 tests | 13 failed) 315ms
+   × uses canonical protected GET and explicit PUT only, returning verified revision/config without private profile data 28ms
+   × saves and re-reads every closed preset 'motion_v2_photo01_front_01' 16ms
+   × saves and re-reads every closed preset 'motion_v2_photo01_front_02' 13ms
+   × saves and re-reads every closed preset 'motion_v2_photo01_front_03' 11ms
+   × saves and re-reads every closed preset 'motion_v2_photo01_front_04' 11ms
+   × saves and re-reads every closed preset 'motion_v2_photo01_front_05' 11ms
+   × saves and re-reads every closed preset 'motion_v2_photo01_front_06' 11ms
+   × persists every independent admitted item, preserving all unrelated coordinates and nullable choices 11ms
+   × does not retry or disguise a conflict write 13ms
+   × does not retry or disguise a uncertain write 13ms
+   × does not retry or disguise a denied write 12ms
+   × does not retry or disguise a bad-revision write 11ms
+   × rejects invalid authoritative participant reads: old revision 10ms
+
+⎯⎯⎯⎯⎯⎯ Failed Tests 13 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  src/features/avatar/__tests__/reviewed-production/persistence.test.ts > uses canonical protected GET and explicit PUT only, returning verified revision/config without private profile data
+Error: Motion artwork unavailable
+ ❯ requireMotion src/entities/avatar/runtime/motion-adoption/art.ts:32:82
+     30| const verified = Symbol('verified motion artwork')
+     31| export interface MotionArt { readonly descriptor: Descriptor; readonly…
+     32| export function requireMotion(value: unknown): asserts value { if (!va…
+       |                                                                                  ^
+     33| function freeze<T>(value: T): T { if (value && typeof value === 'objec…
+     34| export async function validateMotionArt(bytes: Uint8Array<ArrayBuffer>…
+ ❯ request src/features/avatar/motion-adoption/production-persistence.ts:34:20
+ ❯ Object.save src/features/avatar/motion-adoption/production-persistence.ts:56:84
+ ❯ src/features/avatar/__tests__/reviewed-production/persistence.test.ts:22:30
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/13]⎯
+
+ FAIL  src/features/avatar/__tests__/reviewed-production/persistence.test.ts > saves and re-reads every closed preset 'motion_v2_photo01_front_01'
+ FAIL  src/features/avatar/__tests__/reviewed-production/persistence.test.ts > saves and re-reads every closed preset 'motion_v2_photo01_front_02'
+ FAIL  src/features/avatar/__tests__/reviewed-production/persistence.test.ts > saves and re-reads every closed preset 'motion_v2_photo01_front_03'
+ FAIL  src/features/avatar/__tests__/reviewed-production/persistence.test.ts > saves and re-reads every closed preset 'motion_v2_photo01_front_04'
+ FAIL  src/features/avatar/__tests__/reviewed-production/persistence.test.ts > saves and re-reads every closed preset 'motion_v2_photo01_front_05'
+ FAIL  src/features/avatar/__tests__/reviewed-production/persistence.test.ts > saves and re-reads every closed preset 'motion_v2_photo01_front_06'
+Error: Motion artwork unavailable
+ ❯ requireMotion src/entities/avatar/runtime/motion-adoption/art.ts:32:82
+     30| const verified = Symbol('verified motion artwork')
+     31| export interface MotionArt { readonly descriptor: Descriptor; readonly…
+     32| export function requireMotion(value: unknown): asserts value { if (!va…
+       |                                                                                  ^
+     33| function freeze<T>(value: T): T { if (value && typeof value === 'objec…
+     34| export async function validateMotionArt(bytes: Uint8Array<ArrayBuffer>…
+ ❯ request src/features/avatar/motion-adoption/production-persistence.ts:34:20
+ ❯ Object.save src/features/avatar/motion-adoption/production-persistence.ts:56:84
+ ❯ src/features/avatar/__tests__/reviewed-production/persistence.test.ts:30:30
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/13]⎯
+
+ FAIL  src/features/avatar/__tests__/reviewed-production/persistence.test.ts > persists every independent admitted item, preserving all unrelated coordinates and nullable choices
+Error: Motion artwork unavailable
+ ❯ requireMotion src/entities/avatar/runtime/motion-adoption/art.ts:32:82
+     30| const verified = Symbol('verified motion artwork')
+     31| export interface MotionArt { readonly descriptor: Descriptor; readonly…
+     32| export function requireMotion(value: unknown): asserts value { if (!va…
+       |                                                                                  ^
+     33| function freeze<T>(value: T): T { if (value && typeof value === 'objec…
+     34| export async function validateMotionArt(bytes: Uint8Array<ArrayBuffer>…
+ ❯ request src/features/avatar/motion-adoption/production-persistence.ts:34:20
+ ❯ Object.save src/features/avatar/motion-adoption/production-persistence.ts:56:84
+ ❯ src/features/avatar/__tests__/reviewed-production/persistence.test.ts:40:39
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[3/13]⎯
+
+ FAIL  src/features/avatar/__tests__/reviewed-production/persistence.test.ts > does not retry or disguise a conflict write
+ FAIL  src/features/avatar/__tests__/reviewed-production/persistence.test.ts > does not retry or disguise a uncertain write
+ FAIL  src/features/avatar/__tests__/reviewed-production/persistence.test.ts > does not retry or disguise a denied write
+ FAIL  src/features/avatar/__tests__/reviewed-production/persistence.test.ts > does not retry or disguise a bad-revision write
+AssertionError: expected Error: Motion artwork unavailable to be an instance of TransportError
+ ❯ src/features/avatar/__tests__/reviewed-production/persistence.test.ts:59:17
+     57|   const f = await fixture(); await f.persistence.read(f.signal.signal)…
+     58|   const error = await f.persistence.save(1, preset(2), f.signal.signal…
+     59|   expect(error).toBeInstanceOf(TransportError)
+       |                 ^
+     60|   if (mode === 'conflict') expect(error).toMatchObject({ status: 409, …
+     61|   if (mode === 'denied') expect(error).toMatchObject({ status: 403, un…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[4/13]⎯
+
+ FAIL  src/features/avatar/__tests__/reviewed-production/persistence.test.ts > rejects invalid authoritative participant reads: old revision
+Error: Motion artwork unavailable
+ ❯ requireMotion src/entities/avatar/runtime/motion-adoption/art.ts:32:82
+     30| const verified = Symbol('verified motion artwork')
+     31| export interface MotionArt { readonly descriptor: Descriptor; readonly…
+     32| export function requireMotion(value: unknown): asserts value { if (!va…
+       |                                                                                  ^
+     33| function freeze<T>(value: T): T { if (value && typeof value === 'objec…
+     34| export async function validateMotionArt(bytes: Uint8Array<ArrayBuffer>…
+ ❯ request src/features/avatar/motion-adoption/production-persistence.ts:34:20
+ ❯ Object.save src/features/avatar/motion-adoption/production-persistence.ts:56:84
+ ❯ src/features/avatar/__tests__/reviewed-production/persistence.test.ts:82:56
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[5/13]⎯
+
+
+ Test Files  1 failed | 14 passed (15)
+      Tests  13 failed | 333 passed (346)
+   Start at  20:41:57
+   Duration  3.98s (transform 329ms, setup 0ms, import 920ms, tests 1.53s, environment 806ms)
+

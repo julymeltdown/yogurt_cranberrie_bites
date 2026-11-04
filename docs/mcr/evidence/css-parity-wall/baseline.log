@@ -1,0 +1,9 @@
+file:///Users/lhs/.codex/worktrees/9ada/mcr/docs/mcr/evidence/css-parity-wall/native.mjs:29
+  await server.listen(); browser = await chromium.launch({ executablePath:'/Applications/Google Chrome.app/Contents/MacOS/Google Chrome',headless:true }); report.browser = browser.version()
+                                                  ^
+
+TypeError: Cannot read properties of undefined (reading 'launch')
+    at file:///Users/lhs/.codex/worktrees/9ada/mcr/docs/mcr/evidence/css-parity-wall/native.mjs:29:51
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+
+Node.js v24.22.2

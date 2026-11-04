@@ -1,0 +1,29 @@
+
+ RUN  v4.1.9 /Users/lhs/Desktop/mcr-worktrees/fe-ref-map/frontend
+
+ ❯ src/features/avatar/__tests__/reviewed-production/persistence.test.ts (21 tests | 1 failed) 313ms
+   × honors the authenticated mutation capability without inventing local eligibility 1ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  src/features/avatar/__tests__/reviewed-production/persistence.test.ts > honors the authenticated mutation capability without inventing local eligibility
+TransportError: Request failed: invalid-response.
+ ❯ run src/shared/api/http.ts:349:23
+    347|           throw new TransportError('invalid-response')
+    348|         }
+    349|       } catch { throw new TransportError('invalid-response') }
+       |                       ^
+    350|       assertCurrent()
+    351|       return Object.freeze({ data, scope: scopeOf(expected) })
+ ❯ Object.run src/shared/query/privacy.ts:131:22
+ ❯ createReviewedProductionAuthority src/entities/avatar/runtime/motion-adoption/reviewed-production.ts:60:22
+ ❯ src/features/avatar/__tests__/reviewed-production/persistence.test.ts:72:21
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+
+ Test Files  1 failed | 14 passed (15)
+      Tests  1 failed | 345 passed (346)
+   Start at  20:42:40
+   Duration  3.79s (transform 331ms, setup 0ms, import 912ms, tests 1.48s, environment 669ms)
+

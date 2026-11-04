@@ -1,0 +1,89 @@
+{
+  "result": "PASS",
+  "browser": "156.0.8078.80",
+  "widths": [
+    {
+      "width": 360,
+      "geometry": {
+        "panel": {
+          "width": 348,
+          "height": 643.875
+        },
+        "canvas": {
+          "top": 72.390625,
+          "width": 342,
+          "height": 389.75
+        },
+        "tools": {
+          "right": 9,
+          "top": 86.390625,
+          "width": 44
+        },
+        "palette": {
+          "top": 465.140625,
+          "height": 56
+        },
+        "ratio": 0.6053193554649583
+      },
+      "errors": []
+    },
+    {
+      "width": 390,
+      "geometry": {
+        "panel": {
+          "width": 378,
+          "height": 678.0625
+        },
+        "canvas": {
+          "top": 72.390625,
+          "width": 372,
+          "height": 423.9375
+        },
+        "tools": {
+          "right": 9,
+          "top": 86.390625,
+          "width": 44
+        },
+        "palette": {
+          "top": 499.328125,
+          "height": 56
+        },
+        "ratio": 0.6252189141856392
+      },
+      "errors": []
+    },
+    {
+      "width": 430,
+      "geometry": {
+        "panel": {
+          "width": 418,
+          "height": 723.65625
+        },
+        "canvas": {
+          "top": 72.390625,
+          "width": 412,
+          "height": 469.53125
+        },
+        "tools": {
+          "right": 9,
+          "top": 86.390625,
+          "width": 44
+        },
+        "palette": {
+          "top": 544.921875,
+          "height": 56
+        },
+        "ratio": 0.648831886686531
+      },
+      "errors": []
+    }
+  ],
+  "checks": [
+    "portrait actualcanvas dominant >=55% of idle panel; top<=75px; right44pxtools; one framed palette row",
+    "all16384 RGBA cells match frozen server snapshot; uniform squarepixel scale, fit corner and zoomcenter pointer mapping",
+    "all16 server colors reachable by horizontal scroll/keyboard; selected state retained; no page overflow; >=44px controls",
+    "pencil/pan/zoom/fit and pointerdrag never place; keyboard Escape cancels; coordinates expandable; explicit confirmation onePOST",
+    "real servercooldown60s; unknown command retained across snapshotGET; status/resultGET recovery no replay; pending202 remains blocked then recovers original",
+    "frozen/paused/read-only keep viewingtools; privacy clears raster/palette/selection; 420px height and rootheightvariable retain fit-grid and reachable recovery; no page errors"
+  ]
+}

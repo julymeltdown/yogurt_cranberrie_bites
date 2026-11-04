@@ -1,0 +1,5 @@
+[96msrc/features/avatar/motion-adoption/production-persistence.ts[0m:[93m46[0m:[93m51[0m - [91merror[0m[90m TS2345: [0mArgument of type '"PrivateParticipant"' is not assignable to parameter of type '"AuthCapabilities" | "AuthResponse" | "Bootstrap" | "LoginRequest"'.
+
+[7m46[0m         const participant = object(decodeContract('PrivateParticipant', value)), profile = object(participant.profile)
+[7m  [0m [91m                                                  ~~~~~~~~~~~~~~~~~~~~[0m
+{"files":855,"diagnostics":1}
