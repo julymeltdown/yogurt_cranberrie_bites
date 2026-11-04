@@ -1,5 +1,6 @@
 /* Authored FE06 semantic palettes; independent of C06 world texture palette and avatar colors. */
-[data-mcr-theme="REVENGE"] {
+[data-mcr-theme="REVENGE"],
+[data-mcr-shell][data-mcr-theme="REVENGE"] {
   color-scheme: light;
   --mcr-ink: #24191d;
   --mcr-paper: #fff5ef;
@@ -10,7 +11,8 @@
   --mcr-success: #285c40;
   --mcr-warning: #775000;
 }
-[data-mcr-theme="PARADE"] {
+[data-mcr-theme="PARADE"],
+[data-mcr-shell][data-mcr-theme="PARADE"] {
   color-scheme: dark;
   --mcr-ink: #f4edda;
   --mcr-paper: #1b1b20;
@@ -21,7 +23,8 @@
   --mcr-success: #9ad2aa;
   --mcr-warning: #f3d789;
 }
-[data-mcr-theme="DANGER"] {
+[data-mcr-theme="DANGER"],
+[data-mcr-shell][data-mcr-theme="DANGER"] {
   color-scheme: light;
   --mcr-ink: #152d3b;
   --mcr-paper: #f5fbf5;
@@ -30,6 +33,21 @@
   --mcr-muted: #46636c;
   --mcr-focus: #005e79;
   --mcr-success: #255e40;
+  --mcr-warning: #775000;
+}
+/* The selected reference art uses warm paper in panels and the World tools.
+   Keep its original semantic contrast while the surrounding shell uses its era.
+   No artwork, geometry, component borders or background paint is replaced. */
+[data-mcr-shell][data-mcr-theme] .shell-panel-body,
+[data-mcr-shell][data-mcr-theme] .shell-world-tools {
+  color-scheme: light;
+  --mcr-ink: #201d1d;
+  --mcr-paper: #e9e1d4;
+  --mcr-cream: #d7cbb9;
+  --mcr-red: #a2232b;
+  --mcr-muted: #605952;
+  --mcr-focus: #a2232b;
+  --mcr-success: #285c40;
   --mcr-warning: #775000;
 }
 .mcr-theme-scope {

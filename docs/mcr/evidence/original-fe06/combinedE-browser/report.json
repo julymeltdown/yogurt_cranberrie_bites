@@ -1,0 +1,237 @@
+{
+  "result": "PASS",
+  "head": "eacbaab508400f881447f8c7d89f65ba50f36e93",
+  "diffSha256": "76ec4ce9c01b5ec71dad39674e038f70fa43b21fcafd51bb72eeea6161a77caf",
+  "qualification": "ONE390 actual main/default routes, canonical UI sign-in/Auth/HTTP and incumbent World/Phaser. Read-only retained sharing-safety controlled HTTP/C05 fixture and wholeData immutable selected-source art. Checks only new committed-palette projection and necessary contrast/lifetime integration. Existing persistence/rollback/geometry/avatar/native-width receipts reused. No live backend, provider, device, multiuser or full reference acceptance.",
+  "errors": [],
+  "states": [
+    {
+      "name": "revenge",
+      "theme": "REVENGE",
+      "ink": "#24191d",
+      "paper": "#fff5ef",
+      "scheme": "light"
+    },
+    {
+      "name": "parade",
+      "theme": "PARADE",
+      "ink": "#f4edda",
+      "paper": "#1b1b20",
+      "scheme": "dark"
+    },
+    {
+      "name": "failed-danger-retains-parade",
+      "theme": "PARADE",
+      "ink": "#f4edda",
+      "paper": "#1b1b20",
+      "scheme": "dark"
+    },
+    {
+      "name": "danger",
+      "theme": "DANGER",
+      "ink": "#152d3b",
+      "paper": "#f5fbf5",
+      "scheme": "light"
+    },
+    {
+      "name": "parade-warm-panel",
+      "theme": "PARADE",
+      "ink": "#f4edda",
+      "paper": "#1b1b20",
+      "scheme": "dark"
+    }
+  ],
+  "warmPanel": {
+    "ink": "#201d1d",
+    "paper": "#e9e1d4",
+    "scheme": "light",
+    "background": "rgb(233, 225, 212)",
+    "color": "rgb(32, 29, 29)",
+    "transition": "0s"
+  },
+  "before": {
+    "path": "/world",
+    "requests": [
+      {
+        "path": "/api/auth/capabilities",
+        "url": "http://127.0.0.1:5174/api/auth/capabilities",
+        "method": "GET",
+        "key": null,
+        "baseline": false,
+        "authorized": false,
+        "cache": "no-store"
+      },
+      {
+        "path": "/api/auth/login",
+        "url": "http://127.0.0.1:5174/api/auth/login",
+        "method": "POST",
+        "key": null,
+        "baseline": false,
+        "authorized": false,
+        "cache": "no-store"
+      },
+      {
+        "path": "/api/auth/enrollment/admission",
+        "url": "http://127.0.0.1:5174/api/auth/enrollment/admission",
+        "method": "GET",
+        "key": null,
+        "baseline": false,
+        "authorized": true,
+        "cache": "no-store"
+      },
+      {
+        "path": "/api/auth/enrollment/admission",
+        "url": "http://127.0.0.1:5174/api/auth/enrollment/admission",
+        "method": "GET",
+        "key": null,
+        "baseline": false,
+        "authorized": true,
+        "cache": "no-store"
+      },
+      {
+        "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/bootstrap",
+        "url": "http://127.0.0.1:5174/api/concert/events/00000000-0000-4000-8000-000000000201/bootstrap",
+        "method": "GET",
+        "key": null,
+        "baseline": false,
+        "authorized": true,
+        "cache": "no-store"
+      },
+      {
+        "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/rooms",
+        "url": "http://127.0.0.1:5174/api/concert/events/00000000-0000-4000-8000-000000000201/rooms",
+        "method": "GET",
+        "key": null,
+        "baseline": false,
+        "authorized": true,
+        "cache": "no-store"
+      },
+      {
+        "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/places",
+        "url": "http://127.0.0.1:5174/api/concert/events/00000000-0000-4000-8000-000000000201/places",
+        "method": "GET",
+        "key": null,
+        "baseline": false,
+        "authorized": true,
+        "cache": "no-store"
+      },
+      {
+        "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/world-tickets",
+        "url": "http://127.0.0.1:5174/api/concert/events/00000000-0000-4000-8000-000000000201/world-tickets",
+        "method": "POST",
+        "key": null,
+        "baseline": false,
+        "authorized": true,
+        "cache": "no-store"
+      }
+    ],
+    "frames": [
+      {
+        "type": "snapshot",
+        "streamId": "00000000-0000-4000-8000-000000000020"
+      }
+    ],
+    "baselineEnabled": false,
+    "policyRevision": 1,
+    "sockets": 1,
+    "activeSockets": 1,
+    "peakSockets": 1,
+    "peakCanvases": 1,
+    "canvases": 1,
+    "sameHost": true,
+    "sameCanvas": true
+  },
+  "after": {
+    "path": "/world/help",
+    "requests": [
+      {
+        "path": "/api/auth/capabilities",
+        "url": "http://127.0.0.1:5174/api/auth/capabilities",
+        "method": "GET",
+        "key": null,
+        "baseline": false,
+        "authorized": false,
+        "cache": "no-store"
+      },
+      {
+        "path": "/api/auth/login",
+        "url": "http://127.0.0.1:5174/api/auth/login",
+        "method": "POST",
+        "key": null,
+        "baseline": false,
+        "authorized": false,
+        "cache": "no-store"
+      },
+      {
+        "path": "/api/auth/enrollment/admission",
+        "url": "http://127.0.0.1:5174/api/auth/enrollment/admission",
+        "method": "GET",
+        "key": null,
+        "baseline": false,
+        "authorized": true,
+        "cache": "no-store"
+      },
+      {
+        "path": "/api/auth/enrollment/admission",
+        "url": "http://127.0.0.1:5174/api/auth/enrollment/admission",
+        "method": "GET",
+        "key": null,
+        "baseline": false,
+        "authorized": true,
+        "cache": "no-store"
+      },
+      {
+        "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/bootstrap",
+        "url": "http://127.0.0.1:5174/api/concert/events/00000000-0000-4000-8000-000000000201/bootstrap",
+        "method": "GET",
+        "key": null,
+        "baseline": false,
+        "authorized": true,
+        "cache": "no-store"
+      },
+      {
+        "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/rooms",
+        "url": "http://127.0.0.1:5174/api/concert/events/00000000-0000-4000-8000-000000000201/rooms",
+        "method": "GET",
+        "key": null,
+        "baseline": false,
+        "authorized": true,
+        "cache": "no-store"
+      },
+      {
+        "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/places",
+        "url": "http://127.0.0.1:5174/api/concert/events/00000000-0000-4000-8000-000000000201/places",
+        "method": "GET",
+        "key": null,
+        "baseline": false,
+        "authorized": true,
+        "cache": "no-store"
+      },
+      {
+        "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/world-tickets",
+        "url": "http://127.0.0.1:5174/api/concert/events/00000000-0000-4000-8000-000000000201/world-tickets",
+        "method": "POST",
+        "key": null,
+        "baseline": false,
+        "authorized": true,
+        "cache": "no-store"
+      }
+    ],
+    "frames": [
+      {
+        "type": "snapshot",
+        "streamId": "00000000-0000-4000-8000-000000000020"
+      }
+    ],
+    "baselineEnabled": false,
+    "policyRevision": 1,
+    "sockets": 1,
+    "activeSockets": 1,
+    "peakSockets": 1,
+    "peakCanvases": 1,
+    "canvases": 1,
+    "sameHost": true,
+    "sameCanvas": true
+  },
+  "closed": true
+}
