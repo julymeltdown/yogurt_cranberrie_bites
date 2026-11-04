@@ -1,5 +1,5 @@
 {
-  "status": "IN_PROGRESS",
+  "status": "INTEGRATED",
   "integration_base": "41b48eb7ba0079652f236b28ec28531fc20bd115",
   "source_checkpoint": "876162e0fef0ecae3b32e197046c8fbe36a58699",
   "intakes": [
@@ -36,7 +36,7 @@
         "docs/mcr/backend/canonical-owner-composition.md": "57bb3f4bcf8a5ed61eb8dc40431a069ed58f29c0b4c205b02c51e60dd1ff7415"
       },
       "status": "INTEGRATED",
-      "combined_validation": "NOT_RUN"
+      "combined_validation": "PASS"
     },
     {
       "task": "BE15-QA09",
@@ -79,7 +79,7 @@
         "docs/mcr/backend/canonical-owner-restore.md": "f9914ae9a996b05af51c39f0392d978ceb603037eb12f250b0533c9e34a2727d"
       },
       "status": "INTEGRATED",
-      "combined_validation": "NOT_RUN"
+      "combined_validation": "PASS"
     },
     {
       "task": "BE27",
@@ -159,7 +159,7 @@
         "docs/mcr/backend/intro-product.md": "6350023a125fa50a2a62c41572fa6526e1d448a213bb405b87c31becb70b0617"
       },
       "status": "INTEGRATED",
-      "combined_validation": "NOT_RUN"
+      "combined_validation": "PASS"
     },
     {
       "task": "BE33",
@@ -203,7 +203,7 @@
         "docs/mcr/backend/notification-product.md": "e6f434ed84edb896da246e12f47bef06cfc577114e31ac69ef3bb36184483080"
       },
       "status": "INTEGRATED",
-      "combined_validation": "NOT_RUN"
+      "combined_validation": "PASS"
     }
   ],
   "shared_prerequisite": {
@@ -222,8 +222,8 @@
     "python_AST": "PASS",
     "selected_Rust_1_88_format": "PASS",
     "diff_check": "PASS",
-    "combined_build": "NOT_RUN",
-    "combined_native": "NOT_RUN"
+    "combined_build": "PASS",
+    "combined_native": "PASS"
   },
   "limits": [
     "Source intake does not activate production owners or change main composition.",
@@ -231,5 +231,6 @@
     "BE33 real target provider is absent: safe503 qualification is not successful public inbox acceptance.",
     "BE27 retains actual canonical source qualification, while combined source requires its own bounded build/native workflow.",
     "Prior IN01 acceptance pins its original published source and binaries; this intake does not rewrite that evidence."
-  ]
+  ],
+  "combined_qualification": "root-components-f4349d5a.json"
 }
