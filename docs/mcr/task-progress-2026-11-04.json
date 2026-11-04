@@ -1,22 +1,22 @@
 {
-  "updated_at": "2026-11-04T13:37:13+09:00",
-  "published_snapshot": "921cb3d850925a489302ebcc5483fba71ac835a5",
+  "updated_at": "2026-11-04T14:38:49+09:00",
+  "published_snapshot": "4bf9022f943e601c0f876d7ca7e5fdc54036b8e6",
   "method": "Management reconciliation of published task dispositions and existing developer/SL receipts; no code/query/visual/test inspection or reruns. Publication ancestry only was checked for task-linked delivery commits.",
   "required_tasks": 112,
   "required_ia_entries": 61,
   "optional_tasks_excluded": 6,
   "counts": {
     "RECORDED_ACCEPTED": 12,
-    "IMPLEMENTATION_EVIDENCED": 64,
+    "IMPLEMENTATION_EVIDENCED": 62,
     "UNRECONCILED": 9,
-    "TASK_CRITERIA_SATISFIED": 22,
+    "TASK_CRITERIA_SATISFIED": 24,
     "OPEN_INTEGRATION_GATE": 5
   },
-  "recorded_task_criteria_outcomes": 34,
+  "recorded_task_criteria_outcomes": 36,
   "implementation_percentage": null,
   "limitations": [
-    "12 recorded ACCEPTED dispositions comprise 11 preserved historical records plus the explicit FE08 implementation-owner acceptance. Another 22 original-task criteria closures preserve the owners' exact dispositions, including FE07 and FE15 INTEGRATED; no new king/SL technical acceptance is asserted.",
-    "64 denotes other evidence-bearing tasks, not 64 complete tasks or a completion percentage. Some may be ready for an existing owner disposition to close them.",
+    "12 recorded ACCEPTED dispositions comprise 11 preserved historical records plus the explicit FE08 implementation-owner acceptance. Another 24 original-task criteria closures preserve the owners' exact dispositions, including FE07 and FE15 INTEGRATED; no new king/SL technical acceptance is asserted.",
+    "62 denotes other evidence-bearing tasks, not 62 complete tasks or a completion percentage. Some may be ready for an existing owner disposition to close them.",
     "9 unreconciled task statuses are not assumed NOT_STARTED.",
     "No IN01-IN05 completion or full 61-entry IA acceptance is established.",
     "Feature and visual follow-ups remain required even where an original bounded task has a historical completion record."
@@ -919,12 +919,17 @@
       "id": "FE21",
       "title": "Party discovery and application",
       "lane": "FE-APP",
-      "coverage_bucket": "IMPLEMENTATION_EVIDENCED",
-      "recorded_state": null,
+      "coverage_bucket": "TASK_CRITERIA_SATISFIED",
+      "recorded_state": "MOCK_READY",
       "evidence": [
-        "docs/mcr/frontend/party-discovery.md"
+        "docs/mcr/frontend/party-discovery.md",
+        "docs/mcr/frontend/fe21-fe24-client-delivery.md"
       ],
-      "note": "Published receipt or owner report records bounded implementation/fixture/component work. Whole original-task completion is partial or not yet reconciled; no additional live/device gate is imposed on a pure task."
+      "note": "The implementation owner explicitly closes all original FE21 client criteria as SATISFIED at MOCK_READY, using the actual default application with frozen-contract synthetic HTTP/C05. Published 4bf9022f seals the original criteria and delivery evidence; Frontend KING confirms owner verification of the complete delivered payload in the 05:35 UTC hourly digest. No king/SL technical review or additional original prerequisite is introduced.",
+      "known_followup": "Real backend producers, authority/capacity/stock, two-account IN02, physical devices, full QA06 and release acceptance remain separate. These client closures do not accept those integration boundaries.",
+      "published_integration_commits": [
+        "4bf9022f943e601c0f876d7ca7e5fdc54036b8e6"
+      ]
     },
     {
       "id": "FE22",
@@ -964,12 +969,17 @@
       "id": "FE24",
       "title": "Giveaway discovery and own activity",
       "lane": "FE-APP",
-      "coverage_bucket": "IMPLEMENTATION_EVIDENCED",
-      "recorded_state": null,
+      "coverage_bucket": "TASK_CRITERIA_SATISFIED",
+      "recorded_state": "MOCK_READY",
       "evidence": [
-        "docs/mcr/frontend/gift-discovery.md"
+        "docs/mcr/frontend/gift-discovery.md",
+        "docs/mcr/frontend/fe21-fe24-client-delivery.md"
       ],
-      "note": "Published receipt or owner report records bounded implementation/fixture/component work. Whole original-task completion is partial or not yet reconciled; no additional live/device gate is imposed on a pure task."
+      "note": "The implementation owner explicitly closes all original FE24 client criteria as SATISFIED at MOCK_READY, using the actual default application with frozen-contract synthetic HTTP/C05. Published 4bf9022f seals the original criteria and delivery evidence; Frontend KING confirms owner verification of the complete delivered payload in the 05:35 UTC hourly digest. No king/SL technical review or additional original prerequisite is introduced.",
+      "known_followup": "Real backend producers, authority/capacity/stock, two-account IN02, physical devices, full QA06 and release acceptance remain separate. These client closures do not accept those integration boundaries.",
+      "published_integration_commits": [
+        "4bf9022f943e601c0f876d7ca7e5fdc54036b8e6"
+      ]
     },
     {
       "id": "FE25",
@@ -1457,6 +1467,20 @@
       "owner_chat": "01a1a232-b91d-78f1-a13a-1361788ba51c",
       "receipt_commit": "763257c66eab0247f1aa8837784312fd7505e130",
       "disposition": "SATISFIED, all original verified-age persistence criteria; remaining NONE per implementation owner and Backend SL hourly register. Actual goal COMPLETE; published master ef2000a5 is an ancestor of the current snapshot. Provider/public HTTP/browser and IN03 remain separate."
+    },
+    {
+      "recorded_at": "2026-11-04T14:38:49+09:00",
+      "task": "FE21",
+      "owner_chat": "01a1a204-c583-7670-965a-4891b8b1289e",
+      "receipt_commit": "4bf9022f943e601c0f876d7ca7e5fdc54036b8e6",
+      "disposition": "SATISFIED, all original client criteria at MOCK_READY; no identified client remainder. Owner-qualified delivery published and payload verified per Frontend KING hourly digest. Actual backend, IN02, devices and release remain separate."
+    },
+    {
+      "recorded_at": "2026-11-04T14:38:49+09:00",
+      "task": "FE24",
+      "owner_chat": "01a1a204-c583-7670-965a-4891b8b1289e",
+      "receipt_commit": "4bf9022f943e601c0f876d7ca7e5fdc54036b8e6",
+      "disposition": "SATISFIED, all original client criteria at MOCK_READY; no identified client remainder. Owner-qualified delivery published and payload verified per Frontend KING hourly digest. Actual backend, IN02, devices and release remain separate."
     }
   ]
 }
