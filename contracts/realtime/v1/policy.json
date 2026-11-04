@@ -52,5 +52,16 @@
     "delivery": "EXISTING_WORLD_SOCKET_ONLY_NO_SECOND_SOCKET",
     "failure": "WITHDRAW_PRIVATE_VIEWS_ON_MALFORMED_GAP_OVERFLOW_OR_UNAVAILABLE_POLICY",
     "payload": "METADATA_ONLY_NO_HANDLES_CONTENT_RESOURCE_IDS_OR_COMPLETION_CAPABILITIES"
+  },
+  "motion_v1": {
+    "negotiation": "Authenticate.motionProfileVersion=1.0.0; omitted means legacy shape; missing profile means authoritative-only fallback",
+    "geometry": "exact validated C06 geometry_hash for baseline mapId/mapRevision",
+    "anchor": "selfMotion.position is complete at selfMotion.serverTick=serverTick, even without self upsert",
+    "consumed_input_seq": "inclusive monotonic queue removal, including expired and coalesced inputs; resets with stream",
+    "input_applied_ticks": "actual model applications for ackInputSeq including neutral or blocked outcomes; resets on ACK change and stream",
+    "dropped_ticks": "cumulative discarded due ticks within room epoch; preserved across stream replacement",
+    "hold": "remainingHoldMs measured at serialized capture; age<=holdMs is inclusive; never infer original arrival clock",
+    "prediction": "tentative bounded only; correct every anchor; no exact arrival replay or interaction/HTTP command replay",
+    "fallback": "no negotiated profile or geometry mismatch means no local prediction"
   }
 }

@@ -116,6 +116,9 @@
           "type": "integer",
           "minimum": 1,
           "maximum": 9007199254740991
+        },
+        "motionProfileVersion": {
+          "const": "1.0.0"
         }
       }
     },
@@ -432,7 +435,21 @@
           "items": {
             "$ref": "#/$defs/WorldPlayer"
           }
+        },
+        "motionProfile": {
+          "$ref": "#/$defs/MotionProfile"
+        },
+        "selfMotion": {
+          "$ref": "#/$defs/SelfMotion"
         }
+      },
+      "dependentRequired": {
+        "motionProfile": [
+          "selfMotion"
+        ],
+        "selfMotion": [
+          "motionProfile"
+        ]
       }
     },
     "Delta": {
@@ -497,6 +514,9 @@
             "format": "uuid",
             "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$"
           }
+        },
+        "selfMotion": {
+          "$ref": "#/$defs/SelfMotion"
         }
       }
     },
@@ -928,6 +948,138 @@
             "BLOCK_CHANGED",
             "EXPIRED",
             "CANONICAL_POLICY_CHANGED"
+          ]
+        }
+      }
+    },
+    "MotionProfile": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "version",
+        "geometryHash",
+        "stepMs",
+        "speedPxPerSecond",
+        "holdMs",
+        "maxCatchUpSteps",
+        "axes",
+        "collision",
+        "catchUp",
+        "holdBoundary"
+      ],
+      "properties": {
+        "version": {
+          "const": "1.0.0"
+        },
+        "geometryHash": {
+          "type": "string",
+          "pattern": "^sha256:[a-f0-9]{64}$"
+        },
+        "stepMs": {
+          "const": 50
+        },
+        "speedPxPerSecond": {
+          "type": "number",
+          "exclusiveMinimum": 0,
+          "maximum": 1000
+        },
+        "holdMs": {
+          "type": "integer",
+          "minimum": 50,
+          "maximum": 1000
+        },
+        "maxCatchUpSteps": {
+          "const": 4
+        },
+        "axes": {
+          "const": "UNIT_DISK_ANALOG"
+        },
+        "collision": {
+          "const": "POINT_SUPERCOVER_STOP"
+        },
+        "catchUp": {
+          "const": "DISCARD_OLDEST_DUE_STEPS"
+        },
+        "holdBoundary": {
+          "const": "AGE_LE_HOLD_MS"
+        }
+      }
+    },
+    "MotionHeldInput": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "seq",
+        "axisX",
+        "axisY",
+        "remainingHoldMs"
+      ],
+      "properties": {
+        "seq": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 9007199254740991
+        },
+        "axisX": {
+          "type": "number",
+          "minimum": -1,
+          "maximum": 1
+        },
+        "axisY": {
+          "type": "number",
+          "minimum": -1,
+          "maximum": 1
+        },
+        "remainingHoldMs": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 1000
+        }
+      }
+    },
+    "SelfMotion": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "serverTick",
+        "position",
+        "consumedInputSeq",
+        "inputAppliedTicks",
+        "droppedTicks",
+        "heldInput"
+      ],
+      "properties": {
+        "serverTick": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 9007199254740991
+        },
+        "position": {
+          "$ref": "#/$defs/WorldPosition"
+        },
+        "consumedInputSeq": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 9007199254740991
+        },
+        "inputAppliedTicks": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 9007199254740991
+        },
+        "droppedTicks": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 9007199254740991
+        },
+        "heldInput": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/MotionHeldInput"
+            },
+            {
+              "type": "null"
+            }
           ]
         }
       }

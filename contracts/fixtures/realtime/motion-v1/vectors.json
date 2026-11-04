@@ -1,0 +1,532 @@
+{
+  "version": "1.0.0",
+  "mapFixture": "contracts/fixtures/assets/map-manifest.json",
+  "geometryHash": "sha256:50ef23b282b18f10aaf28d18c9bc1f2ee44ff46504dd81b41df9d7ddca363a94",
+  "speedPxPerSecond": 160,
+  "holdMs": 250,
+  "tolerance": 1e-09,
+  "cases": [
+    {
+      "name": "straight",
+      "actions": [
+        {
+          "input": {
+            "atMs": 0,
+            "seq": 1,
+            "axisX": 1,
+            "axisY": 0
+          }
+        },
+        {
+          "advanceMs": 50,
+          "expected": {
+            "position": {
+              "x": 56,
+              "y": 48
+            },
+            "ackInputSeq": 1,
+            "consumedInputSeq": 1,
+            "inputAppliedTicks": 1,
+            "droppedTicks": 0,
+            "heldInput": {
+              "seq": 1,
+              "axisX": 1,
+              "axisY": 0,
+              "remainingHoldMs": 200
+            }
+          }
+        },
+        {
+          "advanceMs": 100,
+          "expected": {
+            "position": {
+              "x": 64,
+              "y": 48
+            },
+            "ackInputSeq": 1,
+            "consumedInputSeq": 1,
+            "inputAppliedTicks": 2,
+            "droppedTicks": 0,
+            "heldInput": {
+              "seq": 1,
+              "axisX": 1,
+              "axisY": 0,
+              "remainingHoldMs": 150
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "diagonal-corner-stop",
+      "actions": [
+        {
+          "input": {
+            "atMs": 0,
+            "seq": 1,
+            "axisX": 0.7071067811865476,
+            "axisY": 0.7071067811865476
+          }
+        },
+        {
+          "advanceMs": 50,
+          "expected": {
+            "position": {
+              "x": 53.65685424949238,
+              "y": 53.65685424949238
+            },
+            "ackInputSeq": 1,
+            "consumedInputSeq": 1,
+            "inputAppliedTicks": 1,
+            "droppedTicks": 0,
+            "heldInput": {
+              "seq": 1,
+              "axisX": 0.7071067811865476,
+              "axisY": 0.7071067811865476,
+              "remainingHoldMs": 200
+            }
+          }
+        },
+        {
+          "advanceMs": 100,
+          "expected": {
+            "position": {
+              "x": 59.31370849898476,
+              "y": 59.31370849898476
+            },
+            "ackInputSeq": 1,
+            "consumedInputSeq": 1,
+            "inputAppliedTicks": 2,
+            "droppedTicks": 0,
+            "heldInput": {
+              "seq": 1,
+              "axisX": 0.7071067811865476,
+              "axisY": 0.7071067811865476,
+              "remainingHoldMs": 150
+            }
+          }
+        },
+        {
+          "advanceMs": 150,
+          "expected": {
+            "position": {
+              "x": 59.31370849898476,
+              "y": 59.31370849898476
+            },
+            "ackInputSeq": 1,
+            "consumedInputSeq": 1,
+            "inputAppliedTicks": 3,
+            "droppedTicks": 0,
+            "heldInput": {
+              "seq": 1,
+              "axisX": 0.7071067811865476,
+              "axisY": 0.7071067811865476,
+              "remainingHoldMs": 100
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "analog",
+      "actions": [
+        {
+          "input": {
+            "atMs": 0,
+            "seq": 1,
+            "axisX": 0.5,
+            "axisY": 0.25
+          }
+        },
+        {
+          "advanceMs": 50,
+          "expected": {
+            "position": {
+              "x": 52,
+              "y": 50
+            },
+            "ackInputSeq": 1,
+            "consumedInputSeq": 1,
+            "inputAppliedTicks": 1,
+            "droppedTicks": 0,
+            "heldInput": {
+              "seq": 1,
+              "axisX": 0.5,
+              "axisY": 0.25,
+              "remainingHoldMs": 200
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "neutral-stop",
+      "actions": [
+        {
+          "input": {
+            "atMs": 0,
+            "seq": 1,
+            "axisX": 1,
+            "axisY": 0
+          }
+        },
+        {
+          "advanceMs": 50,
+          "expected": {
+            "position": {
+              "x": 56,
+              "y": 48
+            },
+            "ackInputSeq": 1,
+            "consumedInputSeq": 1,
+            "inputAppliedTicks": 1,
+            "droppedTicks": 0,
+            "heldInput": {
+              "seq": 1,
+              "axisX": 1,
+              "axisY": 0,
+              "remainingHoldMs": 200
+            }
+          }
+        },
+        {
+          "input": {
+            "atMs": 50,
+            "seq": 2,
+            "axisX": 0,
+            "axisY": 0
+          }
+        },
+        {
+          "advanceMs": 100,
+          "expected": {
+            "position": {
+              "x": 56,
+              "y": 48
+            },
+            "ackInputSeq": 2,
+            "consumedInputSeq": 2,
+            "inputAppliedTicks": 1,
+            "droppedTicks": 0,
+            "heldInput": {
+              "seq": 2,
+              "axisX": 0,
+              "axisY": 0,
+              "remainingHoldMs": 200
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "coalesced-latest",
+      "actions": [
+        {
+          "input": {
+            "atMs": 0,
+            "seq": 1,
+            "axisX": 1,
+            "axisY": 0
+          }
+        },
+        {
+          "input": {
+            "atMs": 20,
+            "seq": 2,
+            "axisX": 0,
+            "axisY": 1
+          }
+        },
+        {
+          "advanceMs": 50,
+          "expected": {
+            "position": {
+              "x": 48,
+              "y": 56
+            },
+            "ackInputSeq": 2,
+            "consumedInputSeq": 2,
+            "inputAppliedTicks": 1,
+            "droppedTicks": 0,
+            "heldInput": {
+              "seq": 2,
+              "axisX": 0,
+              "axisY": 1,
+              "remainingHoldMs": 220
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "delayed-not-backdated",
+      "actions": [
+        {
+          "input": {
+            "atMs": 51,
+            "seq": 1,
+            "axisX": 1,
+            "axisY": 0
+          }
+        },
+        {
+          "advanceMs": 100,
+          "expected": {
+            "position": {
+              "x": 56,
+              "y": 48
+            },
+            "ackInputSeq": 1,
+            "consumedInputSeq": 1,
+            "inputAppliedTicks": 1,
+            "droppedTicks": 0,
+            "heldInput": {
+              "seq": 1,
+              "axisX": 1,
+              "axisY": 0,
+              "remainingHoldMs": 201
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "inclusive-hold-boundary",
+      "actions": [
+        {
+          "input": {
+            "atMs": 0,
+            "seq": 1,
+            "axisX": 1,
+            "axisY": 0
+          }
+        },
+        {
+          "advanceMs": 250,
+          "expected": {
+            "position": {
+              "x": 80,
+              "y": 48
+            },
+            "ackInputSeq": 1,
+            "consumedInputSeq": 1,
+            "inputAppliedTicks": 4,
+            "droppedTicks": 1,
+            "heldInput": {
+              "seq": 1,
+              "axisX": 1,
+              "axisY": 0,
+              "remainingHoldMs": 0
+            }
+          }
+        },
+        {
+          "advanceMs": 251,
+          "expected": {
+            "position": {
+              "x": 80,
+              "y": 48
+            },
+            "ackInputSeq": 1,
+            "consumedInputSeq": 1,
+            "inputAppliedTicks": 4,
+            "droppedTicks": 1,
+            "heldInput": null
+          }
+        }
+      ]
+    },
+    {
+      "name": "expired-consumed-not-applied",
+      "actions": [
+        {
+          "input": {
+            "atMs": 0,
+            "seq": 1,
+            "axisX": 1,
+            "axisY": 0
+          }
+        },
+        {
+          "advanceMs": 251,
+          "expected": {
+            "position": {
+              "x": 48,
+              "y": 48
+            },
+            "ackInputSeq": 0,
+            "consumedInputSeq": 1,
+            "inputAppliedTicks": 0,
+            "droppedTicks": 1,
+            "heldInput": null
+          }
+        }
+      ]
+    },
+    {
+      "name": "discarded-prefix",
+      "actions": [
+        {
+          "input": {
+            "atMs": 1001,
+            "seq": 1,
+            "axisX": 1,
+            "axisY": 0
+          }
+        },
+        {
+          "advanceMs": 1001,
+          "expected": {
+            "position": {
+              "x": 48,
+              "y": 48
+            },
+            "ackInputSeq": 0,
+            "consumedInputSeq": 0,
+            "inputAppliedTicks": 0,
+            "droppedTicks": 16,
+            "heldInput": null
+          }
+        },
+        {
+          "advanceMs": 1050,
+          "expected": {
+            "position": {
+              "x": 56,
+              "y": 48
+            },
+            "ackInputSeq": 1,
+            "consumedInputSeq": 1,
+            "inputAppliedTicks": 1,
+            "droppedTicks": 16,
+            "heldInput": {
+              "seq": 1,
+              "axisX": 1,
+              "axisY": 0,
+              "remainingHoldMs": 201
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "stream-and-epoch-reset",
+      "actions": [
+        {
+          "input": {
+            "atMs": 1001,
+            "seq": 1,
+            "axisX": 1,
+            "axisY": 0
+          }
+        },
+        {
+          "advanceMs": 1001,
+          "expected": {
+            "position": {
+              "x": 48,
+              "y": 48
+            },
+            "ackInputSeq": 0,
+            "consumedInputSeq": 0,
+            "inputAppliedTicks": 0,
+            "droppedTicks": 16,
+            "heldInput": null
+          }
+        },
+        {
+          "reset": "STREAM",
+          "atMs": 1001,
+          "expected": {
+            "position": {
+              "x": 48,
+              "y": 48
+            },
+            "ackInputSeq": 0,
+            "consumedInputSeq": 0,
+            "inputAppliedTicks": 0,
+            "droppedTicks": 16,
+            "heldInput": null
+          }
+        },
+        {
+          "reset": "EPOCH",
+          "atMs": 0,
+          "expected": {
+            "position": {
+              "x": 48,
+              "y": 48
+            },
+            "ackInputSeq": 0,
+            "consumedInputSeq": 0,
+            "inputAppliedTicks": 0,
+            "droppedTicks": 0,
+            "heldInput": null
+          }
+        }
+      ]
+    }
+  ],
+  "segments": [
+    {
+      "name": "wall",
+      "from": {
+        "x": 48,
+        "y": 80
+      },
+      "to": {
+        "x": 112,
+        "y": 80
+      },
+      "clear": false
+    },
+    {
+      "name": "corner",
+      "from": {
+        "x": 48,
+        "y": 48
+      },
+      "to": {
+        "x": 80,
+        "y": 80
+      },
+      "clear": false
+    },
+    {
+      "name": "grid-edge",
+      "from": {
+        "x": 64,
+        "y": 48
+      },
+      "to": {
+        "x": 64,
+        "y": 80
+      },
+      "clear": false
+    },
+    {
+      "name": "bounds",
+      "from": {
+        "x": 48,
+        "y": 48
+      },
+      "to": {
+        "x": -1,
+        "y": 48
+      },
+      "clear": false
+    },
+    {
+      "name": "walkable",
+      "from": {
+        "x": 48,
+        "y": 48
+      },
+      "to": {
+        "x": 112,
+        "y": 48
+      },
+      "clear": true
+    }
+  ]
+}
