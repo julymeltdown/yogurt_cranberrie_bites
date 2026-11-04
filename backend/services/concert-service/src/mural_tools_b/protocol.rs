@@ -43,18 +43,8 @@ impl WallOperation {
         let suffix = target.strip_prefix(&prefix).ok_or_else(invalid)?;
         let op = match (method, suffix) {
             ("GET", "snapshot") => Self::Snapshot,
-            ("GET", s)
-                if s.starts_with("operations?after_revision=")
-                    && s.split_once('=')
-                        .filter(|(_, n)| {
-                            !n.is_empty()
-                                && (n.len() == 1 || !n.starts_with('0'))
-                                && n.bytes().all(|b| b.is_ascii_digit())
-                        })
-                        .and_then(|(_, n)| n.parse::<i64>().ok())
-                        .is_some_and(|n| (1..=concert_domain::MAX_REVISION).contains(&n))
-                    && !s.contains('&') =>
-            {
+            ("GET", s) if s.starts_with("operations?") => {
+                delta_after(event, target)?;
                 Self::Delta
             }
             ("POST", "pixels") => Self::Pixel,
@@ -151,4 +141,52 @@ pub fn status_query(
         return Err(invalid());
     }
     Ok(query)
+}
+
+/// Decode only the single frozen query field; keep the original signed target unchanged.
+pub fn delta_after(event: Uuid, target: &str) -> Result<i64, Status> {
+    if event.is_nil()
+        || target.len() > 4096
+        || !target.is_ascii()
+        || target.chars().any(char::is_control)
+    {
+        return Err(invalid());
+    }
+    let (path, query) = target.split_once('?').ok_or_else(invalid)?;
+    if path != format!("/api/concert/events/{event}/mural/operations") || query.contains('&') {
+        return Err(invalid());
+    }
+    let (name, value) = query.split_once('=').ok_or_else(invalid)?;
+    if form_value(name)? != "after_revision" {
+        return Err(invalid());
+    }
+    let value = form_value(value)?;
+    if value.is_empty() || value.starts_with('0') || !value.bytes().all(|b| b.is_ascii_digit()) {
+        return Err(invalid());
+    }
+    value
+        .parse::<i64>()
+        .ok()
+        .filter(|n| (1..=concert_domain::MAX_REVISION).contains(n))
+        .ok_or_else(invalid)
+}
+fn form_value(value: &str) -> Result<String, Status> {
+    let mut out = Vec::with_capacity(value.len());
+    let mut bytes = value.bytes();
+    while let Some(byte) = bytes.next() {
+        out.push(match byte {
+            b'%' => {
+                let hi = (bytes.next().ok_or_else(invalid)? as char)
+                    .to_digit(16)
+                    .ok_or_else(invalid)?;
+                let lo = (bytes.next().ok_or_else(invalid)? as char)
+                    .to_digit(16)
+                    .ok_or_else(invalid)?;
+                (hi * 16 + lo) as u8
+            }
+            b'+' => b' ',
+            other => other,
+        });
+    }
+    String::from_utf8(out).map_err(|_| invalid())
 }

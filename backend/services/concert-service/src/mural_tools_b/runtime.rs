@@ -127,11 +127,8 @@ impl MuralToolsRuntime {
                     }
                     WallOperation::Snapshot => serde_json::to_value(legacy.snapshot(actor).await?),
                     WallOperation::Delta => {
-                        let after = request
-                            .http_target
-                            .split_once("after_revision=")
-                            .and_then(|(_, n)| n.parse().ok())
-                            .ok_or(MuralError::InvalidInput)?;
+                        let after = protocol::delta_after(actor.event, &request.http_target)
+                            .map_err(|_| MuralError::InvalidInput)?;
                         serde_json::to_value(legacy.delta(actor, after).await?)
                     }
                     WallOperation::PixelResult(key) => {

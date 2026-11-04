@@ -181,7 +181,7 @@ async fn canonical_fill_undo_budget_recovery_and_restart() -> anyhow::Result<()>
         raw(
             &f,
             "GET",
-            "mural/operations?after_revision=1",
+            "mural/operations?%61fter_revision=%31",
             Value::Null,
             None,
         ),
@@ -300,6 +300,34 @@ fn wall_protocol_rejects_ambiguity_and_binds_recovery_operation() {
     use concert_service::mural_tools_b::protocol::{self, WallOperation};
     let event = Uuid::from_u128(7);
     let key = Uuid::from_u128(8);
+    for query in [
+        "after_revision=1",
+        "after_revision=%31",
+        "%61fter_revision=1",
+    ] {
+        assert_eq!(
+            protocol::delta_after(
+                event,
+                &format!("/api/concert/events/{event}/mural/operations?{query}")
+            )
+            .unwrap(),
+            1
+        );
+    }
+    for query in [
+        "after_revision=01",
+        "after_revision=+1",
+        "after_revision=1&%61fter_revision=2",
+        "after_revision=%",
+        "after_revision=9007199254740992",
+    ] {
+        assert!(protocol::delta_after(
+            event,
+            &format!("/api/concert/events/{event}/mural/operations?{query}")
+        )
+        .is_err());
+    }
+
     assert!(protocol::body(
         WallOperation::Fill,
         br#"{"expected_revision":1,"x":0,"y":0,"color_index":2,"x":1}"#

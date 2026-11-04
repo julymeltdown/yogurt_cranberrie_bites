@@ -186,7 +186,8 @@ pub(super) fn valid_target(route: FeatureRoute, target: &str) -> bool {
         return false;
     }
     if route == FeatureRoute::MuralDelta {
-        return target.split_once('?').and_then(|(_,q)| q.strip_prefix("after_revision=")).is_some_and(|v| !v.is_empty() && (v.len()==1 || !v.starts_with('0')) && v.bytes().all(|b|b.is_ascii_digit()) && v.parse::<i64>().is_ok_and(|n|(1..=9_007_199_254_740_991).contains(&n)));
+        return target.split_once('?').filter(|(_,q)| !q.contains('&')).and_then(|(_,q)|q.split_once('='))
+            .and_then(|(k,v)|Some((decode(k)?,decode(v)?))).is_some_and(|(k,v)|k=="after_revision"&&!v.is_empty()&&!v.starts_with('0')&&v.bytes().all(|b|b.is_ascii_digit())&&v.parse::<i64>().is_ok_and(|n|(1..=9_007_199_254_740_991).contains(&n)));
     }
     let Some((_, query)) = target.split_once('?') else {
         return true;
@@ -393,6 +394,9 @@ mod wall_tests {
         assert!(!valid_body(MuralErase,br#"{"expected_revision":1,"x":0,"y":0,"color_index":0}"#));
         for query in ["", "?after_revision=0", "?after_revision=1&after_revision=2", "?after_revision=+1", "?after_revision=1&actor_id=other", "?after_revision=9007199254740992"]{assert!(!valid_target(MuralDelta,&format!("/wall{query}")));}
         assert!(valid_target(MuralDelta,"/wall?after_revision=9007199254740991"));
+        assert!(valid_target(MuralDelta,"/wall?%61fter_revision=%31"));
+        assert!(!valid_target(MuralDelta,"/wall?after_revision=01"));
+        assert!(!valid_target(MuralDelta,"/wall?after_revision=%31&%61fter_revision=2"));
         assert!(!valid_target(MuralTools,"/wall?actor_id=other"));
     }
 }

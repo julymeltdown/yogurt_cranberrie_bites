@@ -215,3 +215,14 @@ build-resource release and a separate accepted native PG16 round. No native
 job runs during the Cargo lease. Candidate config tests also reject missing
 shared composition/keys, unknown modes, malformed/duplicate/nonzero-key violations
 and retain key rotation. All Rust/native cases remain NOT_RUN.
+
+
+A source compatibility pass found delta admission rejecting percent-encoded
+forms accepted by frozen C04: `after_revision=%31` and `%61fter_revision=1`.
+The backend parser/runtime and Gateway now decode the one closed field for
+validation while retaining the exact original signed target bytes. Zero,
+leading zeros, plus/whitespace, duplicate decoded aliases, malformed encodings
+and values beyond MAX_REVISION remain rejected. The existing pure/native/Gateway
+candidate cases now include those encodings; inventory is unchanged. The actual
+C04 target oracle confirmed the three equivalent valid forms and rejected the
+leading-zero and duplicate-alias examples. Rust/native execution is still queued.
