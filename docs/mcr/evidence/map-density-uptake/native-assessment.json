@@ -1,0 +1,80 @@
+{
+  "task": "FE19-MAP-DENSITY-UPTAKE-01",
+  "status": "MOCK_READY",
+  "assessedAt": "2026-11-04T20:27:02.798895+00:00",
+  "assessor": "Map implementation owner",
+  "sourceCandidate": "7670dff6bc9328063da4da6353f1a5c6742274d5",
+  "runtimeReport": {
+    "path": "native02/report.json",
+    "sha256": "98747f00a7d6d55efc31c1adb5546e98ead88df4ebf13a357d446ea17e76adbf"
+  },
+  "reference": "docs/mcr/design/reference-target-2026-11-04.png",
+  "referenceSha256": "d9a8fae2f96a82253542019ab673589b3938627956eace15c8594c702b5c4617",
+  "personallyInspected": [
+    "native02/density-revenge-360.png",
+    "native02/density-parade-390.png",
+    "native02/density-danger-430.png",
+    "native02/forced-focus-parade-390.png"
+  ],
+  "findings": [
+    "New foliage source increment is rendered in all three themes; labels and controls remain readable.",
+    "Stage targets remain near authoritative presentation anchors without architecture/target overlap.",
+    "Forced-color keyboard focus is visible.",
+    "Broad lawns, pale paths, the long repeated central roof, building scale/detail, palette and map structure remain materially different from the exact reference.",
+    "Portrait contain bands remain at 360/390; this increment does not close full reference fidelity."
+  ],
+  "qualification": "ACTUAL_MAIN_CANONICAL_UI_LOGIN_MAP4_EXPLICIT_HTTP_C05_FIXTURE_NOT_LIVE",
+  "openAcceptance": [
+    "Full ten-screen visual fidelity",
+    "Actual mobile devices",
+    "Live operator/admission/end-to-end flows",
+    "Newer Map5 authoritative producer binding",
+    "Physical venue provenance/photo rights"
+  ],
+  "cleanup": {
+    "independentPort5287BindListenClosed": true,
+    "ownedDependencyLinkAbsent": true,
+    "privateTmpAbsent": true,
+    "resourceReservation": 0
+  },
+  "release": {
+    "type": "FULL",
+    "lease": "FE19-DENSITY-THREE-CONTEXT-BROWSER-20261104T2020Z",
+    "mode": "native",
+    "at": "2026-11-04T20:25:42.951091+00:00",
+    "exitCode": 0,
+    "failure": null,
+    "peak": {
+      "processes": 11,
+      "rssBytes": 2837544960,
+      "newBytes": 69219659,
+      "tmpBytes": 31738858,
+      "wholeBytes": 1675186956
+    },
+    "minimumFreeBytes": 17780330496,
+    "finalFreeBytes": 17811832832,
+    "seenPids": [
+      15018,
+      15046,
+      15508,
+      15523,
+      15524,
+      15525,
+      15526,
+      15528,
+      15530,
+      15531,
+      16186,
+      16187,
+      16188,
+      16947,
+      16956,
+      16957,
+      16985
+    ],
+    "livePids": [],
+    "ownedLinkAbsent": true,
+    "privateTmpAbsent": true,
+    "resources": 0
+  }
+}

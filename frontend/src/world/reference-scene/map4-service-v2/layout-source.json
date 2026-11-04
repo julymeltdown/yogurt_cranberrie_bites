@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "version": "map4-reference-composition-v1",
-  "recipeRevision": "reference-correction-06",
+  "version": "map-density-derived-v1",
+  "recipeRevision": "lawn-shoulders-and-junction-banks-01",
   "coordinateSpace": "MAP_ILLUSTRATION_ONLY",
   "renderMode": "full-composition",
   "dimensions": {
@@ -155,27 +155,27 @@
   "assets": [
     {
       "themeId": "REVENGE",
-      "path": "world/map-reference-composition-v1/revenge-scene.png",
-      "bytes": 709200,
-      "sha256": "sha256:0b6da66ac646ec28469c29d309f62e725ba24d48eee9b4b24e0c0383aedd3083",
+      "path": "world/map-density-derived-v1/revenge-scene.png",
+      "bytes": 726491,
+      "sha256": "sha256:7d657d5cd22ceafa4edf4bff7df5b75843927208ae8a8704747c4a645b51e071",
       "width": 768,
       "height": 1296,
       "mime": "image/png"
     },
     {
       "themeId": "PARADE",
-      "path": "world/map-reference-composition-v1/parade-scene.png",
-      "bytes": 726705,
-      "sha256": "sha256:1d7cc73a1cdaf0931d446206a5424dd8f131c5c819e1f147a0a150583e98b493",
+      "path": "world/map-density-derived-v1/parade-scene.png",
+      "bytes": 744044,
+      "sha256": "sha256:a8ac1c806adfc3cd36af21c655131b3c19e80034528632c23001eb49adcae9e1",
       "width": 768,
       "height": 1296,
       "mime": "image/png"
     },
     {
       "themeId": "DANGER",
-      "path": "world/map-reference-composition-v1/danger-scene.png",
-      "bytes": 716175,
-      "sha256": "sha256:8846875dabb8a48df8b8d8d5433eab5f682e215c02ac50a0fb6dcc2d7da54edf",
+      "path": "world/map-density-derived-v1/danger-scene.png",
+      "bytes": 733466,
+      "sha256": "sha256:b54be823fe26b659b7223f4d2baacbdc2a232d8b1b78926540b87e790a05ec1b",
       "width": 768,
       "height": 1296,
       "mime": "image/png"
@@ -1126,6 +1126,23 @@
       "crop_role": "canopy"
     },
     {
+      "id": "density_plaza_east_45",
+      "frame": "tree_dark",
+      "rect": [
+        487,
+        417,
+        37,
+        32
+      ],
+      "depth_y": 449,
+      "interactive": false,
+      "place_id": null,
+      "interaction_id": null,
+      "world_solid": false,
+      "crop_role": "whole",
+      "density_group": "plaza_east"
+    },
+    {
       "id": "map_only_grove_03_tree_1",
       "frame": "tree_green",
       "rect": [
@@ -1830,6 +1847,23 @@
       "crop_role": "canopy"
     },
     {
+      "id": "density_east_court_01",
+      "frame": "shrub_bed",
+      "rect": [
+        538,
+        588,
+        33,
+        22
+      ],
+      "depth_y": 610,
+      "interactive": false,
+      "place_id": null,
+      "interaction_id": null,
+      "world_solid": false,
+      "crop_role": "whole",
+      "density_group": "east_court"
+    },
+    {
       "id": "map_only_parcel_07_canopy_026",
       "frame": "tree_green",
       "rect": [
@@ -1844,6 +1878,23 @@
       "interaction_id": null,
       "world_solid": false,
       "crop_role": "canopy"
+    },
+    {
+      "id": "density_east_court_25",
+      "frame": "shrub_bed",
+      "rect": [
+        493,
+        586,
+        39,
+        26
+      ],
+      "depth_y": 612,
+      "interactive": false,
+      "place_id": null,
+      "interaction_id": null,
+      "world_solid": false,
+      "crop_role": "whole",
+      "density_group": "east_court"
     },
     {
       "id": "map_only_garden_bed_03",
@@ -1972,6 +2023,23 @@
       "interaction_id": null,
       "world_solid": false,
       "crop_role": "canopy"
+    },
+    {
+      "id": "density_west_junction_22",
+      "frame": "tree_dark",
+      "rect": [
+        241,
+        607,
+        38,
+        32
+      ],
+      "depth_y": 639,
+      "interactive": false,
+      "place_id": null,
+      "interaction_id": null,
+      "world_solid": false,
+      "crop_role": "whole",
+      "density_group": "west_junction"
     },
     {
       "id": "map_only_parcel_06_canopy_010",
@@ -2230,6 +2298,40 @@
       "crop_role": "canopy"
     },
     {
+      "id": "density_junction_east_10",
+      "frame": "tree_green",
+      "rect": [
+        617,
+        751,
+        38,
+        32
+      ],
+      "depth_y": 783,
+      "interactive": false,
+      "place_id": null,
+      "interaction_id": null,
+      "world_solid": false,
+      "crop_role": "whole",
+      "density_group": "junction_east"
+    },
+    {
+      "id": "density_junction_east_00",
+      "frame": "shrub_bed",
+      "rect": [
+        590,
+        761,
+        34,
+        23
+      ],
+      "depth_y": 784,
+      "interactive": false,
+      "place_id": null,
+      "interaction_id": null,
+      "world_solid": false,
+      "crop_role": "whole",
+      "density_group": "junction_east"
+    },
+    {
       "id": "map_only_parcel_08_canopy_034",
       "frame": "tree_green",
       "rect": [
@@ -2246,6 +2348,40 @@
       "crop_role": "canopy"
     },
     {
+      "id": "density_junction_east_19",
+      "frame": "tree_green",
+      "rect": [
+        543,
+        751,
+        41,
+        35
+      ],
+      "depth_y": 786,
+      "interactive": false,
+      "place_id": null,
+      "interaction_id": null,
+      "world_solid": false,
+      "crop_role": "whole",
+      "density_group": "junction_east"
+    },
+    {
+      "id": "density_junction_east_31",
+      "frame": "tree_green",
+      "rect": [
+        636,
+        751,
+        45,
+        38
+      ],
+      "depth_y": 789,
+      "interactive": false,
+      "place_id": null,
+      "interaction_id": null,
+      "world_solid": false,
+      "crop_role": "whole",
+      "density_group": "junction_east"
+    },
+    {
       "id": "map_only_parcel_08_canopy_013",
       "frame": "tree_dark",
       "rect": [
@@ -2260,6 +2396,23 @@
       "interaction_id": null,
       "world_solid": false,
       "crop_role": "canopy"
+    },
+    {
+      "id": "density_junction_east_13",
+      "frame": "tree_green",
+      "rect": [
+        604,
+        764,
+        39,
+        33
+      ],
+      "depth_y": 797,
+      "interactive": false,
+      "place_id": null,
+      "interaction_id": null,
+      "world_solid": false,
+      "crop_role": "whole",
+      "density_group": "junction_east"
     },
     {
       "id": "map_only_parcel_08_canopy_005",
@@ -3798,6 +3951,23 @@
       "crop_role": "whole"
     },
     {
+      "id": "density_south_east_36",
+      "frame": "shrub_bed",
+      "rect": [
+        613,
+        1219,
+        35,
+        23
+      ],
+      "depth_y": 1242,
+      "interactive": false,
+      "place_id": null,
+      "interaction_id": null,
+      "world_solid": false,
+      "crop_role": "whole",
+      "density_group": "south_east"
+    },
+    {
       "id": "map_only_grove_16_tree_1",
       "frame": "tree_green",
       "rect": [
@@ -3876,6 +4046,23 @@
       "interaction_id": null,
       "world_solid": false,
       "crop_role": "whole"
+    },
+    {
+      "id": "density_south_central_11",
+      "frame": "shrub_bed",
+      "rect": [
+        401,
+        1229,
+        34,
+        23
+      ],
+      "depth_y": 1252,
+      "interactive": false,
+      "place_id": null,
+      "interaction_id": null,
+      "world_solid": false,
+      "crop_role": "whole",
+      "density_group": "south_central"
     },
     {
       "id": "map_only_parcel_14_canopy_002",
@@ -4054,6 +4241,23 @@
       "crop_role": "canopy"
     },
     {
+      "id": "density_south_central_32",
+      "frame": "tree_dark",
+      "rect": [
+        412,
+        1231,
+        39,
+        33
+      ],
+      "depth_y": 1264,
+      "interactive": false,
+      "place_id": null,
+      "interaction_id": null,
+      "world_solid": false,
+      "crop_role": "whole",
+      "density_group": "south_central"
+    },
+    {
       "id": "map_only_grove_15_tree_2",
       "frame": "tree_green",
       "rect": [
@@ -4068,6 +4272,23 @@
       "interaction_id": null,
       "world_solid": false,
       "crop_role": "whole"
+    },
+    {
+      "id": "density_south_east_00",
+      "frame": "shrub_bed",
+      "rect": [
+        614,
+        1238,
+        43,
+        28
+      ],
+      "depth_y": 1266,
+      "interactive": false,
+      "place_id": null,
+      "interaction_id": null,
+      "world_solid": false,
+      "crop_role": "whole",
+      "density_group": "south_east"
     },
     {
       "id": "map_only_parcel_13_canopy_010",
@@ -4198,6 +4419,23 @@
       "crop_role": "canopy"
     },
     {
+      "id": "density_south_east_16",
+      "frame": "shrub_bed",
+      "rect": [
+        644,
+        1257,
+        30,
+        20
+      ],
+      "depth_y": 1277,
+      "interactive": false,
+      "place_id": null,
+      "interaction_id": null,
+      "world_solid": false,
+      "crop_role": "whole",
+      "density_group": "south_east"
+    },
+    {
       "id": "map_only_garden_bed_02",
       "frame": "shrub_bed",
       "rect": [
@@ -4292,6 +4530,23 @@
       "interaction_id": null,
       "world_solid": false,
       "crop_role": "canopy"
+    },
+    {
+      "id": "density_south_east_32",
+      "frame": "shrub_bed",
+      "rect": [
+        619,
+        1265,
+        34,
+        23
+      ],
+      "depth_y": 1288,
+      "interactive": false,
+      "place_id": null,
+      "interaction_id": null,
+      "world_solid": false,
+      "crop_role": "whole",
+      "density_group": "south_east"
     },
     {
       "id": "map_only_parcel_13_canopy_031",
@@ -5136,5 +5391,84 @@
     "worldGeometryMutation": false,
     "serviceAnchors": "NONCANONICAL_VIRTUAL_SEMANTICS_RUNTIME_OWNER_BINDS_EXISTING_FEATURE_LINKS",
     "displayMapping": "EXPLICIT_OVERVIEW_ILLUSTRATION_ONLY_NOT_SERVER_COORDINATES"
+  },
+  "derivation": {
+    "sourceCommit": "af298e3246096c4b7a3ae5c7e439f5f33988a6be",
+    "canonicalBase": "609ae3932f22e3689637eb43074b6236ccb6c64f",
+    "previousPresentationHash": "sha256:d8437dda63dd5f0cb554bcfcc1c267782db6630fab39c541291bb3c368d154b6",
+    "baselinePins": [
+      {
+        "path": "frontend/public/world/map-reference-composition-v1/README.md",
+        "bytes": 19870,
+        "sha256": "sha256:dd5915ec730d780b20f9d164328760c39520dfdd57b5c2c0ee26c32bf1d9060c"
+      },
+      {
+        "path": "frontend/public/world/map-reference-composition-v1/build.py",
+        "bytes": 42327,
+        "sha256": "sha256:6bf696b7c3edd5adf35e0b5995ca9cd33f915e87898de0e9266f2923cffc0433"
+      },
+      {
+        "path": "frontend/public/world/map-reference-composition-v1/layout.json",
+        "bytes": 98497,
+        "sha256": "sha256:77da03bcddba15cb88a250a3cad4dbe9bdfadac519af1f1d4ac22623a8aa6141"
+      },
+      {
+        "path": "frontend/public/world/map-reference-composition-v1/source-provenance.json",
+        "bytes": 69597,
+        "sha256": "sha256:0b9c5663e1fa182aae4012be465c448832ff798f926e930ee33c08cd456c084e"
+      },
+      {
+        "path": "frontend/public/world/map-reference-composition-v1/revenge-scene.png",
+        "bytes": 709200,
+        "sha256": "sha256:0b6da66ac646ec28469c29d309f62e725ba24d48eee9b4b24e0c0383aedd3083"
+      },
+      {
+        "path": "frontend/public/world/map-reference-composition-v1/parade-scene.png",
+        "bytes": 726705,
+        "sha256": "sha256:1d7cc73a1cdaf0931d446206a5424dd8f131c5c819e1f147a0a150583e98b493"
+      },
+      {
+        "path": "frontend/public/world/map-reference-composition-v1/danger-scene.png",
+        "bytes": 716175,
+        "sha256": "sha256:8846875dabb8a48df8b8d8d5433eab5f682e215c02ac50a0fb6dcc2d7da54edf"
+      },
+      {
+        "path": "frontend/public/world/map-reference-composition-v1/revenge-scene.svg",
+        "bytes": 1906901,
+        "sha256": "sha256:d3b6bb973996848be191579f3a8f018efda8cea4f8fe428c99f48f1721b1e0ed"
+      },
+      {
+        "path": "frontend/public/world/map-reference-composition-v1/parade-scene.svg",
+        "bytes": 1939349,
+        "sha256": "sha256:2d75bd6c760e140abc39da9bf6e0079edede28aeb0935ad8bc52bfffee92855c"
+      },
+      {
+        "path": "frontend/public/world/map-reference-composition-v1/danger-scene.svg",
+        "bytes": 1909113,
+        "sha256": "sha256:27ab6aa807bc6c63a6bff3c82d6d70189f20d3f93b7a09a536cf92c044e394a1"
+      }
+    ],
+    "addedDecorationIds": [
+      "density_plaza_east_45",
+      "density_east_court_01",
+      "density_east_court_25",
+      "density_west_junction_22",
+      "density_junction_east_10",
+      "density_junction_east_00",
+      "density_junction_east_19",
+      "density_junction_east_31",
+      "density_junction_east_13",
+      "density_south_east_36",
+      "density_south_central_11",
+      "density_south_central_32",
+      "density_south_east_00",
+      "density_south_east_16",
+      "density_south_east_32"
+    ],
+    "pathHalfWidthWithClearancePx": 25,
+    "gardenHalfWidthWithClearancePx": 13,
+    "canonicalClearancePx": 34,
+    "architecturePolicy": "UNCHANGED_NO_OVERPAINT",
+    "foliagePolicy": "WHOLE_ORIGINAL_RGBA_UNIFORM_NEAREST_GLOBAL_FOOT_ORDER"
   }
 }

@@ -23,8 +23,8 @@ async function setup(theme: 'REVENGE' | 'PARADE' | 'DANGER' = 'PARADE') {
 it.each(['REVENGE', 'PARADE', 'DANGER'] as const)('loads only the selected %s scene and publishes full mode after layout, scene and labels qualify', async theme => {
   const s = await setup(theme), provider = createMapCompositionProvider(s.model, { origin, fetch: s.fetch, decode: s.decode, labels: s.labels })
   const paint = await provider(s.map, new AbortController().signal)
-  expect(s.fetch.mock.calls.map(c => String(c[0]))).toEqual([origin + '/world/map-reference-composition-v1/layout.json',
-    origin + `/world/map-reference-composition-v1/${theme.toLowerCase()}-scene.png`])
+  expect(s.fetch.mock.calls.map(c => String(c[0]))).toEqual([origin + '/world/map-density-derived-v1/layout.json',
+    origin + `/world/map-density-derived-v1/${theme.toLowerCase()}-scene.png`])
   expect(paint).toMatchObject({ mode: 'full-composition', scene: s.image, presentationHash: s.registration.presentationHash })
   paint!.dispose(); paint!.dispose(); expect(s.sceneDispose).toHaveBeenCalledOnce(); expect(s.labelDispose).toHaveBeenCalledOnce()
 })

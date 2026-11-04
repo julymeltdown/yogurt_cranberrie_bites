@@ -20,7 +20,7 @@ it('binds the real corrected ART layout and three scene resources to the indepen
   if (!model) throw Error('Allocated registration must run before source qualification')
   expect(await compositionDigest(model.registration)).toBe(model.registration.presentationHash)
   const raw = await bytes(model.registration.layout.path)
-  expect(raw.length).toBe(98497); expect(await sha256(raw)).toBe(model.registration.layout.sha256)
+  expect(raw.length).toBe(107019); expect(await sha256(raw)).toBe(model.registration.layout.sha256)
   expect(model.source).toBe(canonicalPresentationJson(JSON.parse(new TextDecoder().decode(raw))))
   const snapshot = await readFile('src/world/reference-scene/map4-service-v2/layout-source.json')
   expect(new Uint8Array(snapshot)).toEqual(raw)
@@ -46,8 +46,8 @@ it.each(['REVENGE', 'PARADE', 'DANGER'] as const)('prepares only the real select
   const decode = vi.fn(async () => ({ image: { naturalWidth: 768, naturalHeight: 1296 } as HTMLImageElement, dispose }))
   const labels = vi.fn(async () => ({ draw: vi.fn(), dispose: labelDispose }))
   const owner = await createMapCompositionProvider(model, { origin: 'https://mcr.test', fetch, decode, labels })(loaded, new AbortController().signal)
-  expect(fetch.mock.calls.map(call => String(call[0]))).toEqual(['https://mcr.test/world/map-reference-composition-v1/layout.json',
-    `https://mcr.test/world/map-reference-composition-v1/${era.toLowerCase()}-scene.png`])
+  expect(fetch.mock.calls.map(call => String(call[0]))).toEqual(['https://mcr.test/world/map-density-derived-v1/layout.json',
+    `https://mcr.test/world/map-density-derived-v1/${era.toLowerCase()}-scene.png`])
   expect(owner).toMatchObject({ mode: 'full-composition', presentationHash: model.registration.presentationHash })
   expect(JSON.stringify({ map: loaded.map, theme: loaded.theme })).toBe(before)
   owner!.dispose(); owner!.dispose(); expect(dispose).toHaveBeenCalledOnce(); expect(labelDispose).toHaveBeenCalledOnce()

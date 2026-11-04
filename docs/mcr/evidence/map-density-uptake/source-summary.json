@@ -1,0 +1,87 @@
+{
+  "task": "FE19-MAP-DENSITY-UPTAKE-01",
+  "source": "e3f69018be37ebca766e0a01feb7511361b06620",
+  "canonicalIntake": "7ba6de456949136c33a068bdeee8bebb8e7822fd",
+  "registration": {
+    "status": "PASS",
+    "round": "source01",
+    "source": "8e1da9d11f7df43af4a8338ee77871ff07af0af9",
+    "pins": 2438,
+    "unchangedArtistFiles": 10
+  },
+  "tests": {
+    "status": "PASS",
+    "files": 8,
+    "tests": 70,
+    "round": "source01"
+  },
+  "firstFullType": {
+    "status": "FAIL",
+    "round": "source01",
+    "reason": "TS5097 for two existing explicit .ts imports; canonical noEmit import option then granted by Root153"
+  },
+  "remaining": {
+    "status": "PASS",
+    "round": "source02",
+    "commands": [
+      "ordinary full frontend tsc with private incremental cache",
+      "scoped warning-free oxlint",
+      "node --check new native harness"
+    ]
+  },
+  "native": "NOT_RUN",
+  "release": [
+    {
+      "type": "FULL",
+      "lease": "FE19-DENSITY-CONSUMER-SOURCE-20261104T1937Z",
+      "mode": "source",
+      "at": "2026-11-04T19:38:36.612158+00:00",
+      "exitCode": 1,
+      "failure": "RuntimeError('Command failed; immutable attempt retained, offer closes after cleanup')",
+      "peak": {
+        "processes": 3,
+        "rssBytes": 1792671744,
+        "newBytes": 36339467,
+        "tmpBytes": 973,
+        "wholeBytes": 1610616944
+      },
+      "minimumFreeBytes": 14185025536,
+      "finalFreeBytes": 14192963584,
+      "seenPids": [
+        56368,
+        56936,
+        57495
+      ],
+      "livePids": [],
+      "ownedLinkAbsent": true,
+      "privateTmpAbsent": true,
+      "resources": 0
+    },
+    {
+      "type": "FULL",
+      "lease": "FE19-DENSITY-REMAINING-SOURCE-20261104T1943Z",
+      "mode": "source",
+      "at": "2026-11-04T19:46:47.396996+00:00",
+      "exitCode": 0,
+      "failure": null,
+      "peak": {
+        "processes": 3,
+        "rssBytes": 1884635136,
+        "newBytes": 38118525,
+        "tmpBytes": 1774225,
+        "wholeBytes": 1612392650
+      },
+      "minimumFreeBytes": 13760012288,
+      "finalFreeBytes": 13762957312,
+      "seenPids": [
+        693,
+        1927,
+        1931
+      ],
+      "livePids": [],
+      "ownedLinkAbsent": true,
+      "privateTmpAbsent": true,
+      "resources": 0
+    }
+  ]
+}

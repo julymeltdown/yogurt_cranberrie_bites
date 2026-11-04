@@ -1,0 +1,262 @@
+{
+  "task": "FE19-MAP-DENSITY-UPTAKE-01",
+  "publisher": "Root153",
+  "canonicalIntake": "7ba6de456949136c33a068bdeee8bebb8e7822fd",
+  "artistSource": "5d2d0d34536fa8bf9314c67e5a3b8390e9baf553",
+  "publishedArtPack": "7acfac3aed91f1eb06fa48eee63ce3da1431fadc",
+  "qualifiedRuntimeCandidate": "7670dff6bc9328063da4da6353f1a5c6742274d5",
+  "readsetSha256": "sha256:d931c98b60d1803e19d3a6c85be74fa2834d34a192546aa0de5f23bc3df3bdf8",
+  "status": "MOCK_READY_PUBLICATION_PENDING",
+  "paths": [
+    {
+      "path": "docs/mcr/evidence/map-density-uptake/native-assessment.json",
+      "bytes": 2555,
+      "sha256": "7a296d373f4d2876b4874353124b375d3796bb366ed11c9607d9968568509406"
+    },
+    {
+      "path": "docs/mcr/evidence/map-density-uptake/native01/command-00.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "docs/mcr/evidence/map-density-uptake/native01/guardian.jsonl",
+      "bytes": 1315,
+      "sha256": "7d1cc3b65fc82151339df7c239763db0e0c70ed1019420bed08cf7eb2d6aeb30"
+    },
+    {
+      "path": "docs/mcr/evidence/map-density-uptake/native01/release.json",
+      "bytes": 683,
+      "sha256": "f9c2cacbe2c933f83d5c4bccb315ea0ea900aa29c116ffe50663cd215d0cc099"
+    },
+    {
+      "path": "docs/mcr/evidence/map-density-uptake/native01/report.json",
+      "bytes": 19157,
+      "sha256": "16ae9cb461be9ae6453b9b20f1e186f3cbf80b45969e40637a5c4d49c4b72618"
+    },
+    {
+      "path": "docs/mcr/evidence/map-density-uptake/native02/command-00.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "docs/mcr/evidence/map-density-uptake/native02/density-danger-430.png",
+      "bytes": 271131,
+      "sha256": "9d6fa1c6e51a914ff7bac494bd1a7f7a75066e4ce0086854395f50adb2928721"
+    },
+    {
+      "path": "docs/mcr/evidence/map-density-uptake/native02/density-parade-390.png",
+      "bytes": 231010,
+      "sha256": "ca290356bb988b027f1375252cb32b358eafbf286d453dd031b9cf3ada8949b3"
+    },
+    {
+      "path": "docs/mcr/evidence/map-density-uptake/native02/density-revenge-360.png",
+      "bytes": 204961,
+      "sha256": "4a0eb47419ad6a002cfa90c014d05a0f4d3dd57379d9d9a09fc5dd02aab95ab3"
+    },
+    {
+      "path": "docs/mcr/evidence/map-density-uptake/native02/forced-focus-parade-390.png",
+      "bytes": 225608,
+      "sha256": "5b7753680aa5f91948cd61b1a9757eb2eb264cd70acf480b82e8d4ed22e70f82"
+    },
+    {
+      "path": "docs/mcr/evidence/map-density-uptake/native02/guardian.jsonl",
+      "bytes": 1294,
+      "sha256": "5e8fb9db7febe219b2ef43bba03b18085ceac51891a6228e22aa54324f18b4a5"
+    },
+    {
+      "path": "docs/mcr/evidence/map-density-uptake/native02/release.json",
+      "bytes": 698,
+      "sha256": "7d1653aa0dec9889deb7d6ad2330f7c656c28606ea55374de128613fe43bcf37"
+    },
+    {
+      "path": "docs/mcr/evidence/map-density-uptake/native02/report.json",
+      "bytes": 219181,
+      "sha256": "98747f00a7d6d55efc31c1adb5546e98ead88df4ebf13a357d446ea17e76adbf"
+    },
+    {
+      "path": "docs/mcr/evidence/map-density-uptake/readset.json",
+      "bytes": 485594,
+      "sha256": "d931c98b60d1803e19d3a6c85be74fa2834d34a192546aa0de5f23bc3df3bdf8"
+    },
+    {
+      "path": "docs/mcr/evidence/map-density-uptake/source-summary.json",
+      "bytes": 2267,
+      "sha256": "96edb29c69571e5bdf2e8638579e1610e24c042a067a815639ffd6a8d350aaf9"
+    },
+    {
+      "path": "docs/mcr/evidence/map-density-uptake/source01/command-00.log",
+      "bytes": 1895,
+      "sha256": "31bd41c1f27b590375e68a7d8c593f577bfab4e7faab875bcfeb4383fdbe8c1e"
+    },
+    {
+      "path": "docs/mcr/evidence/map-density-uptake/source01/command-01.log",
+      "bytes": 252,
+      "sha256": "d345b1ff0d352f06845c8920b2315ec36b9371875bfb010a2e7fda85e2ec9548"
+    },
+    {
+      "path": "docs/mcr/evidence/map-density-uptake/source01/command-02.log",
+      "bytes": 348,
+      "sha256": "35965b472499f2ae88f158ab064d9b4e91f8410887311bdffac9401302743d74"
+    },
+    {
+      "path": "docs/mcr/evidence/map-density-uptake/source01/guardian.jsonl",
+      "bytes": 2055,
+      "sha256": "8f0805425cd7c5ec23c89a11c44adaf8101859ce84372bf7630c0150d2b43234"
+    },
+    {
+      "path": "docs/mcr/evidence/map-density-uptake/source01/release.json",
+      "bytes": 616,
+      "sha256": "bff65a0832001dfdd97d66c0803b68876f7af099c002d725cd3c54d648c9d8bd"
+    },
+    {
+      "path": "docs/mcr/evidence/map-density-uptake/source02/command-00.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "docs/mcr/evidence/map-density-uptake/source02/command-01.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "docs/mcr/evidence/map-density-uptake/source02/command-02.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "docs/mcr/evidence/map-density-uptake/source02/guardian.jsonl",
+      "bytes": 2255,
+      "sha256": "15fc52b9bfbee83a67db89fba5c30091789284db36a9bd7059e93a62d414c874"
+    },
+    {
+      "path": "docs/mcr/evidence/map-density-uptake/source02/release.json",
+      "bytes": 533,
+      "sha256": "0a742c325f0865b8f44826cbde1661937da65a7b0f4fb99fa5ca987fde9cf20a"
+    },
+    {
+      "path": "docs/mcr/frontend/map-density-uptake.md",
+      "bytes": 10198,
+      "sha256": "621a6c03ce8decdc824b1b30daeca80ce5244b55438692bccd319e24d94ef9e5"
+    },
+    {
+      "path": "frontend/src/app/world-entry/__tests__/map-density-uptake/guardian.py",
+      "bytes": 9667,
+      "sha256": "528580b06bcc8c4889fb4f1c676902fe47b70353d6f2ea197fa4c342bd20d2e8"
+    },
+    {
+      "path": "frontend/src/app/world-entry/__tests__/map-density-uptake/native.mjs",
+      "bytes": 24044,
+      "sha256": "3967dea1d359a683c689ad742e6d2cf020aff2c092a6c54b20c23387ac4a41b7"
+    },
+    {
+      "path": "frontend/src/app/world-entry/__tests__/map-density-uptake/preview.html",
+      "bytes": 321,
+      "sha256": "9c80dadda9740d718df7a14cb5654a93a9fafd6f53a8e7cee41e026386c34edb"
+    },
+    {
+      "path": "frontend/src/app/world-entry/__tests__/map-density-uptake/preview.ts",
+      "bytes": 1282,
+      "sha256": "a03284a7a4c4f8d9221d6e7d0c2c6fce551c8d65ecb589188cbf0a746c6291b7"
+    },
+    {
+      "path": "frontend/src/app/world-entry/__tests__/map-density-uptake/register.mjs",
+      "bytes": 2634,
+      "sha256": "5a7e163f4b2a25a636f4f0506afe77b9b7655fe5c072f4a72262dbb6af85f965"
+    },
+    {
+      "path": "frontend/src/app/world-entry/__tests__/map-density-uptake/tsconfig.json",
+      "bytes": 271,
+      "sha256": "de92b0c2d06bc5e8dee256cb8cfa32b1d8218f815e73b11156efd67ccacbfaa6"
+    },
+    {
+      "path": "frontend/src/app/world-entry/__tests__/map-density-uptake/vitest.config.ts",
+      "bytes": 664,
+      "sha256": "15a2bedf5e3b74a37fe55b0dc4b6b94686e89f2a5cd733c49c600576b012bdc4"
+    },
+    {
+      "path": "frontend/src/app/world-entry/__tests__/map-presentation-v2/fixture.ts",
+      "bytes": 3491,
+      "sha256": "a769685492be64f41caa41d40a8d321985608984c695752b85ca7b7058d23b57"
+    },
+    {
+      "path": "frontend/src/app/world-entry/__tests__/map-presentation-v2/loader.test.ts",
+      "bytes": 7438,
+      "sha256": "18864f1f014a44087966f611a78f399bc79f867c55cbc6d5ed3e78451896850c"
+    },
+    {
+      "path": "frontend/src/app/world-entry/__tests__/map-presentation-v2/registration.test.ts",
+      "bytes": 6711,
+      "sha256": "a5480db914fd9e798ee5d3722721a61985db65896acb5dfc9312728d101ca362"
+    },
+    {
+      "path": "frontend/src/world/reference-scene/map-density-uptake/adoption.test.ts",
+      "bytes": 4109,
+      "sha256": "01b8f17edb31191391f1aaa7e1fdbe7973bd9d7afb44c11db9443b44715c1657"
+    },
+    {
+      "path": "frontend/src/world/reference-scene/map4-service-v2/contract.ts",
+      "bytes": 7024,
+      "sha256": "f778dfcca01995277bfaf840e63c0aa3c11af7bbfda586acab9efc13e8f60cdc"
+    },
+    {
+      "path": "frontend/src/world/reference-scene/map4-service-v2/layout-source.json",
+      "bytes": 107019,
+      "sha256": "971c9a94cd1aa01c771f3defa8cede70754c87f43eb4f7fb0ed4cf98921096eb"
+    },
+    {
+      "path": "frontend/src/world/reference-scene/map4-service-v2/registration.ts",
+      "bytes": 464,
+      "sha256": "aef5546ae8b62c4dfcbf6dfb5b22e1cd2afb910ac062a713693329de9c167043"
+    },
+    {
+      "path": "frontend/src/world/reference-scene/map4-service-v2/resources.json",
+      "bytes": 1101,
+      "sha256": "74e76b0d1008ba6817b1178dffd2bfb0d0b81e28ece77eb5376eed06bc647880"
+    },
+    {
+      "path": "frontend/src/world/reference-scene/map4-service-v2/semantics.ts",
+      "bytes": 1061,
+      "sha256": "e39864e8ff94c66cc569d62947fd39aee638067920b107b3b650b975a0a4af93"
+    }
+  ],
+  "manifestSelfExclusion": "This publication-packet.json does not hash itself; include it in the same evidence prefix.",
+  "alreadyPublished": [
+    {
+      "path": "frontend/tsconfig.json",
+      "commit": "64947bbfb0b63c26856dbb65bb3244d07ae21523",
+      "disposition": "Exact option independently delivered; do not duplicate its feature/checks."
+    }
+  ],
+  "preserved": [
+    "docs/source byte-for-byte",
+    "all artist originals and existing ART04/05/06 packs",
+    "original Map4/theme/geometry/avatar authority and World output"
+  ],
+  "validation": [
+    "source01 registration and70tests/8filesPASS; originalTS5097 failure retained",
+    "source02 ordinaryfulltypes/scopedlint/nativesyntaxPASS",
+    "native01 harnessfailurebeforeWorld retained",
+    "native02 ordinaryfulltypes/scopednewharnesslint plus3changedactualmainfixturecontextsPASS",
+    "owner inspected3nativePNG+forcedfocusPNG against exactreference; fullfidelity remainsopen"
+  ],
+  "limits": [
+    "Full ten-screen visual fidelity",
+    "Actual mobile devices",
+    "Live operator/admission/end-to-end flows",
+    "Newer Map5 authoritative producer binding",
+    "Physical venue provenance/photo rights"
+  ],
+  "dependencies": {
+    "added": [],
+    "reused": [
+      "retained frontend lockfile and Vite/Playwright/TypeScript/Phaser tooling",
+      "canonical Auth test-only admission/authResponse helpers",
+      "unchanged ART06 actual-main HTTP/C05 fixture"
+    ],
+    "driverProvenance": {
+      "commit": "1d34b5af06016058ca8d40d71ed62ea0d440be02",
+      "source": "frontend/src/app/world-entry/__tests__/map-stage-placement/native.mjs",
+      "destination": "frontend/src/app/world-entry/__tests__/map-density-uptake/native.mjs"
+    }
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "type": "FULL",
+  "lease": "FE19-DENSITY-CONSUMER-SOURCE-20261104T1937Z",
+  "mode": "source",
+  "at": "2026-11-04T19:38:36.612158+00:00",
+  "exitCode": 1,
+  "failure": "RuntimeError('Command failed; immutable attempt retained, offer closes after cleanup')",
+  "peak": {
+    "processes": 3,
+    "rssBytes": 1792671744,
+    "newBytes": 36339467,
+    "tmpBytes": 973,
+    "wholeBytes": 1610616944
+  },
+  "minimumFreeBytes": 14185025536,
+  "finalFreeBytes": 14192963584,
+  "seenPids": [
+    56368,
+    56936,
+    57495
+  ],
+  "livePids": [],
+  "ownedLinkAbsent": true,
+  "privateTmpAbsent": true,
+  "resources": 0
+}

@@ -1,0 +1,26 @@
+{
+  "type": "FULL",
+  "lease": "FE19-DENSITY-REMAINING-SOURCE-20261104T1943Z",
+  "mode": "source",
+  "at": "2026-11-04T19:46:47.396996+00:00",
+  "exitCode": 0,
+  "failure": null,
+  "peak": {
+    "processes": 3,
+    "rssBytes": 1884635136,
+    "newBytes": 38118525,
+    "tmpBytes": 1774225,
+    "wholeBytes": 1612392650
+  },
+  "minimumFreeBytes": 13760012288,
+  "finalFreeBytes": 13762957312,
+  "seenPids": [
+    693,
+    1927,
+    1931
+  ],
+  "livePids": [],
+  "ownedLinkAbsent": true,
+  "privateTmpAbsent": true,
+  "resources": 0
+}

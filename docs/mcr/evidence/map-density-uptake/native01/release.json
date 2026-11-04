@@ -1,0 +1,31 @@
+{
+  "type": "FULL",
+  "lease": "FE19-DENSITY-THREE-CONTEXT-BROWSER-20261104T2010Z",
+  "mode": "native",
+  "at": "2026-11-04T20:13:59.955664+00:00",
+  "exitCode": 1,
+  "failure": "RuntimeError('Command failed; immutable attempt retained, offer closes after cleanup')",
+  "peak": {
+    "processes": 10,
+    "rssBytes": 1976385536,
+    "newBytes": 66297725,
+    "tmpBytes": 29947305,
+    "wholeBytes": 1642340376
+  },
+  "minimumFreeBytes": 18982240256,
+  "finalFreeBytes": 19027357696,
+  "seenPids": [
+    58223,
+    58734,
+    58828,
+    58829,
+    58830,
+    58839,
+    58843,
+    58844
+  ],
+  "livePids": [],
+  "ownedLinkAbsent": true,
+  "privateTmpAbsent": true,
+  "resources": 0
+}

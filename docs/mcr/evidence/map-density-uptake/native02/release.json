@@ -1,0 +1,40 @@
+{
+  "type": "FULL",
+  "lease": "FE19-DENSITY-THREE-CONTEXT-BROWSER-20261104T2020Z",
+  "mode": "native",
+  "at": "2026-11-04T20:25:42.951091+00:00",
+  "exitCode": 0,
+  "failure": null,
+  "peak": {
+    "processes": 11,
+    "rssBytes": 2837544960,
+    "newBytes": 69219659,
+    "tmpBytes": 31738858,
+    "wholeBytes": 1675186956
+  },
+  "minimumFreeBytes": 17780330496,
+  "finalFreeBytes": 17811832832,
+  "seenPids": [
+    15018,
+    15046,
+    15508,
+    15523,
+    15524,
+    15525,
+    15526,
+    15528,
+    15530,
+    15531,
+    16186,
+    16187,
+    16188,
+    16947,
+    16956,
+    16957,
+    16985
+  ],
+  "livePids": [],
+  "ownedLinkAbsent": true,
+  "privateTmpAbsent": true,
+  "resources": 0
+}
