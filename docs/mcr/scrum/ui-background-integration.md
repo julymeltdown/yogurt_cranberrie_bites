@@ -343,6 +343,64 @@ Actual rendering, material visual improvement, preservation, owner disposition,
 fixes and final documentation/publication/readback remain required. The owner's
 full goal remains ACTIVE; no lead approval or acknowledgment is required.
 
+Subsequent actual owner goal readback: BLOCKED after three consecutive goal
+turns with the same external evidence dependency. Preserve the full original
+objective, source719abad6, clean exclusive checkout and fully released source
+round; no reset, completion or pause. Owner reports no supplied task packet or
+live native handle. Historical Customize imagery and an active publisher chat
+do not prove the new SVG rendered. Root already holds the exact source handoff
+and finite three-width request; no duplicate capture/checker or readiness polling
+is created. A concrete new cohort packet/handle or publication receipt triggers
+resumption of this SAME owner. Actual paired imagery and pinned source/fixture,
+character/control/preview metrics, its direct disposition/fixes/final document
+commit, publication and exact remote readback remain required. This external
+dependency is not an approval/ACK wait and does not stop Root or upstream work.
+
+Actual Customize05 packet subsequently reached the SAME implementation owner.
+It reports OWNER PASS committed2fb8baad69ceb1da4fd701f260e6feba586ab7ae,
+only its art-customize-background-02.md updated, clean existing checkout/branch.
+The owner directly viewed all six actual before/after PNGs at360/390/430 and
+found a material broad cloud/garden/large-flower lower field with clear controls
+and preview; no in-scope fix was required. Its independent raw-pair comparison
+reports exact controls/text/images, all four actual canvas RGBA/dimensions/rects
+and visible foreground-control records; no overflow/page errors, recorded targets
+at least44px and all three first-focus indicators solid. Empty document.images
+and null foreground records explicitly do not establish character preservation;
+the four actual canvases supply that evidence. Lower-field changed fractions
+94.0444%/94.0579%/93.3844% are corroboration, not a substitute for direct viewing.
+
+Owner independently matched all17retained artifact bytes to seal3dc4f667,
+index16entries plus index pins, reportfdbaeb2f/index05c3b71e/driver349c9 and
+candidate6820, with full pins, fixtures/resources/limits and six PNG hashes in
+its document. Candidate SVG/CSS match source719abad6. No recapture, rerun,
+packet copying/restoring/materialization or source change was needed. These are
+developer-owned findings; UI did not review images/code or rerun checks.
+
+Root received the exact normal-publication handoff: source/evidence719abad6,
+already taken as a97377a4, final document2fb8baad and sealed packet3dc4f667.
+Keep the separate Feed five paths at8f6fe07f out of this task. Actual goal still
+reports BLOCKED from its earlier checkpoint, with the unchanged full objective;
+do not reset it or infer completion. Only actual publication and the owner's
+exact source/document plus17packet-byte/ancestry remote readback remain for this
+bounded task. Return that concrete receipt directly to the same owner, without
+a technical approval or lead ACK gate.
+
+Final Customize-owner readback: actual goal COMPLETE, returned by update_goal
+with the full original objective preserved. Fresh remote
+145a8e939fb7bede7e46931d6559adb2c51f62a7 independently matched all six final
+Customize source/document postimages and17sealed Customize05 packet files plus
+all16indexed hashes. Owner reports integrateda97377a4/d605c249/seal3dc4f667,
+candidate6820 and drivercf1cb ancestry verified. Original719abad6/2fb8baad
+were delivered as exact postimages, not original commit ancestry; retain that
+distinction. Separate Feed five-postimage/resource-exception readback and5879
+ancestry were reported separately and do not expand this background task.
+All six images have actual developer-owned three-width PASS with four-canvas,
+control/foreground/text preservation; source-only/live/device/full-parity limits
+remain explicit. All exact completed leases returned to Root, clean checkout
+at2fb8baad retained, zero jobs/temp/dependency links/handles. No assigned work
+remains and no further receipt/publication loop is requested. The finished same
+context is eligible for archive; no next assignment is inferred.
+
 Human correction forwarded by the king: nine visible per-screen CSS-only
 workers (Landing, Sign in, Map, Customize, Feed, Meet, Giveaway, Wall, My Profile)
 deliver committed work directly to Root153, with NO reporting, review or ACK
@@ -408,8 +466,8 @@ Remaining required outcomes:
   developer disposition/publication under Community; preserve raw prior failure.
 - COM01 final targeted packet documentation/goal/readbacks through Community;
   Wall/Me's bounded art duty is already closed.
-- UI-BG-CUSTOMIZE-02 bounded source improvement, owner checks, actual three-width
-  preservation/material-change evidence, fixes, documentation and published readback.
+- UI-BG-CUSTOMIZE-02 is closed by its implementation owner after source/capture
+  assessment, final documentation, exact remote readback and actual goal COMPLETE.
 - This consolidated coordination record delivered and exact publication verified.
 
 Keep the full goal unfinished while any required outcome is unproven. Controlled
