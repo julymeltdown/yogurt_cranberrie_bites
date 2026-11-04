@@ -978,9 +978,10 @@ handoff makes no public activation, product acceptance or master-push claim.
 
 ## NB02 — acyclic crate-private binding reader
 
-Status: `IN_PROGRESS`; source refactor complete, fresh native validation `NOT_RUN`
-pending a named backend-SL allocation and explicit acceptance. Original NB01
-receipts and its documentation above remain immutable historical qualification.
+Status: `IN_PROGRESS` for BE33 overall. NB02 dependency implementation and fresh
+native qualification are complete; Root factory integration and canonical/public
+acceptance remain `NOT_RUN`. Original NB01 receipts and its documentation above
+remain immutable historical qualification.
 
 Base: qualified NB01 `164ac70ffd6c996cca3b93737ee6f2d9677a8988`, same isolated
 `codex/mcr-be-NB01` worktree, exclusive NB02 ownership. Root confirmed the actual
@@ -1040,3 +1041,80 @@ The aligned persistent BE33 goal was inspected and execution explicitly resumed
 under this follow-up grant. The goal API still reports its historical `BLOCKED`
 state; it was not reset, budgeted or falsely completed. BE33 and the four real
 public verticals remain unfinished; NB02 only unblocks Root's typed factory.
+
+
+### NB02 fresh qualification and stopped handoff
+
+Compiled/native source pin: `d7ca2faf9a4d8706ee55d2b86b77d8260b2caf6d`, parent
+qualified NB01 `164ac70ffd6c996cca3b93737ee6f2d9677a8988`. The subsequent
+qualification commit changes only this appended NB02 documentation section.
+All tracked backend bytes remain identical to the fresh compiled pin. This is a
+separate qualification from NB01; none of the old artifacts/receipts were modified
+or relabeled. The original NB01 chain remains Root `73e89bce` → `dc01de3b` →
+`52d6373f` → `41e81a37` → `164ac70f`, followed by this NB02 chain.
+
+Fresh explicitly accepted lease `NB02-CYCLE-BACKEND-202611040606Z` provided the
+existing BACKEND target and one serial owned PostgreSQL fixture. Preflight had
+33216956 KiB free, zero target handles and the exact clean source pin. One Cargo
+invocation compiled the two declared test executables with Rust 1.88.0,
+`--locked --offline`, jobs 2, dev/test debug 0 and incremental 0:
+
+```sh
+cargo +1.88.0 test --locked --offline -p concert-service --lib --test notification_root_binding --no-run --message-format=json
+```
+
+| Check | Exit/result |
+|---|---|
+| Targeted Rust 1.88 formatting check, Python runner AST and planning check | 0/PASS |
+| Original lookup body, seven original test bodies and narrow parent-byte assertions | PASS |
+| Two-artifact Cargo build, first attempt | 0; 48.28 s including source freeze, no cache repair |
+| Zero-handle target release before PostgreSQL | PASS; no later target access |
+| Original migrations 0028/0048 in new socket-only PostgreSQL 16.14 | 0 each |
+| Frozen `notification_root_binding --test-threads=1` | 0; **7 passed**, 0 failed/ignored, 0.65 s |
+| Frozen library executable with exact `product_rpc::scope_ledger::notification_binding::tests::` filter | 0; **3 passed**, 0 failed/ignored, 124 other tests filtered, 0.10 s |
+| Owned runner/cleanup | 0/PASS; 3.35 s; owned postmaster stopped and fixture deleted |
+
+The two selected artifacts were identified from Cargo JSON and frozen outside
+the shared target with full source hashes and a complete backend source archive.
+Incidental main executable metadata is recorded, but that executable was not run.
+Own Cargo process-group exit and the zero-handle scan preceded unconditional
+target release. Both frozen receipts bind the same complete source manifest;
+the runner validates both before starting its one owned database cluster.
+
+Observed compile/freeze growth was 210321408 bytes and owned fixture allocation
+48766976 bytes, giving a conservative combined bound of **259088384 bytes**,
+below the expected 0.4 GiB and hard 1 GiB limits. Compile monitoring observed at
+least 33792176128 bytes free; final free space was 42541309952 bytes, above the
+8 GiB floor. Whole build/freeze/native qualification/release completed in
+126.26 s, below ten minutes. All owned target/copied-workflow resources were
+released; Root's World hold, live databases and services were untouched.
+
+Portable fresh evidence under `<NB02_ARTIFACT_DIR>`:
+
+| Evidence | SHA-256 |
+|---|---|
+| `notification_root_binding` (13762144 bytes) | `da320b845eeb613d5570ebf1d27b9a1a6de8a8b479d7d3050b4bc129a04234d9` |
+| `concert_service` library test (94554768 bytes) | `46ec24a5bb3ba33590e878888a23bef395a72e7058d0542bd75ca92f132df94e` |
+| `backend-source.tar.gz` | `029a04eead4b1fab64323b034999625c10df6c39417478469d396c073da020d7` |
+| `artifact-receipt.json` | `8182b71499999d8cb9ec498d4a5314ff0a9c1f05a26a4b9b173be362f94e5da5` |
+| `reader-artifact-receipt.json` | `3e155f3eac496a853c1893fae57ec647376b62ddd01184cf374fbb4259b3c59e` |
+| `qualification-report.json` | `3c7148d470a9c5770f4f5b606167d20d2416ad6a68c243fe87dc840f944295c2` |
+| `target-release.json` | `9fba1f219c975a12452d8e5c27fe1db375ae199d6d9a5cf601d2df103db4cea0` |
+| `copied-release.json` | `e8d72335e47bceaa3046037bc9eee513732f38db8f145d00dbfd241a0d06e3a8` |
+| `build.py` | `0b129619014cbbeeb50a130d7f449b8694cc8ed8858f1b3afe1f107da9cec39f` |
+
+Fresh reproduction requires both artifacts and their receipts; the exact filter
+prevents accidentally claiming a full-library run:
+
+```sh
+python3 backend/services/concert-service/tests/notification_root_binding_support/run.py --artifact <NB02_ARTIFACT_DIR>/notification_root_binding --receipt <NB02_ARTIFACT_DIR>/artifact-receipt.json --reader-artifact <NB02_ARTIFACT_DIR>/concert_service --reader-receipt <NB02_ARTIFACT_DIR>/reader-artifact-receipt.json --pg-bin <PG16_BIN> --report <NB02_ARTIFACT_DIR>/qualification-report.json
+```
+
+Root's library factory may now construct
+`product_rpc::scope_ledger::PgNotificationBindingReader::new(pool.clone(), instance)`
+before the Notification client/composite settler/canonical core. This handoff
+qualifies the shared reader, ledger delegation and local lazy-client construction
+only. Actual factory/core integration, canonical owner/native authority and all
+four authenticated public journeys remain separate `NOT_RUN` gates. BE33's
+original goal remains unfinished. The writer stops at this clean committed
+handoff; no public activation, main/registry/settler changes or master push occur.
