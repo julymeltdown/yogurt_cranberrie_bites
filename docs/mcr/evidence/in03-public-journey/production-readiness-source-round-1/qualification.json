@@ -1,0 +1,183 @@
+{
+  "status": "SOURCE_QUALIFIED",
+  "actualIN03": "NOT_RUN",
+  "source": "a3d3b56be8804196bf2d8c612f175856bfcbe1e8",
+  "base": "5c885d65",
+  "implementationCommits": [
+    "0b89c30f",
+    "ccb4f09e",
+    "80aa3de60",
+    "a3d3b56be"
+  ],
+  "scope": "frontend/src/app/social-entry/production-readiness/",
+  "mainIntegration": {
+    "kind": "exact import/factory-only main.patch",
+    "base": "cf0c53365ac14cc84a8f1ac0aa6a9241db8b28ec",
+    "physicalMainChanged": false,
+    "publisherOwnsCombinedIntegration": true
+  },
+  "checks": [
+    {
+      "name": "focused-unit",
+      "command": "$PINNED_NODE node_modules/vitest/vitest.mjs run --configLoader native --config src/app/social-entry/production-readiness/vitest.config.ts",
+      "cases": 29,
+      "exit": 0
+    },
+    {
+      "name": "focused-types",
+      "command": "$PINNED_NODE node_modules/typescript/bin/tsc -p src/app/social-entry/production-readiness/tsconfig.json --noEmit --incremental false --pretty false",
+      "exit": 0
+    },
+    {
+      "name": "focused-lint",
+      "command": "$PINNED_NODE node_modules/oxlint/bin/oxlint --deny-warnings src/app/social-entry/production-readiness/",
+      "exit": 0
+    },
+    {
+      "name": "launcher-syntax",
+      "command": "$PINNED_NODE --check src/app/social-entry/production-readiness/check.mjs",
+      "exit": 0
+    }
+  ],
+  "workingDirectory": "$CHECKOUT/frontend",
+  "allocation": "FE209-PRODUCTION-READINESS-20261104T1852Z",
+  "acceptedAt": "2026-11-04T18:52:32.176137Z",
+  "workUntil": "2026-11-04T18:56:32.176137Z",
+  "cleanupUntil": "2026-11-04T18:57:32.176137Z",
+  "actualFull": "2026-11-04T18:53:02.907621Z",
+  "retainedFailure": {
+    "source": "80aa3de601a300de89a2251479e9c90519589d37",
+    "unitCasesPassed": 29,
+    "typesExit": 0,
+    "lintExit": 1,
+    "reason": "unicorn/prefer-string-starts-ends-with in one test assertion",
+    "repair": "Equivalent endsWith assertion only; production unchanged; rerun within original clock"
+  },
+  "resources": {
+    "initialWholeBytes": 1634261152,
+    "finalWholeBytes": 1634278323,
+    "peakAllProcesses": 5,
+    "peakAllRssBytes": 1138966528,
+    "guardianIntervalMs": 250,
+    "violations": [],
+    "remainingOwnedPidsOrGroups": [],
+    "ownedLinkCacheTemporaryAbsent": true,
+    "leaseReleasedBeforeSealing": true
+  },
+  "pins": {
+    "nodeVersion": "24.22.2",
+    "nodeSha256": "b6fb419f0f43bb2fbca273700294dd2f3b685a64b60e8417c295f47646a70e4a",
+    "retainedLockSha256": "47ca44459819ad0e887d2f4f93394fdf3b1053b8f45edc9ceb0236981feee1f6",
+    "guardianSha256": "ccda859830f6115b5e9d995077270c2ab4c7ce9ce11f2ed5672f7efcdd18fbdb"
+  },
+  "sourcePostimages": {
+    "frontend/src/app/social-entry/production-readiness/README.md": {
+      "sha256": "af193fd3fb3ac275671a5757a09cee1accf91dd70d3747285658a54945e9a51c",
+      "gitBlob": "fd65ebbf8ed844963cbb574ece8ead74e3c65b98",
+      "bytes": 4593
+    },
+    "frontend/src/app/social-entry/production-readiness/check.mjs": {
+      "sha256": "d95c5aa8ea18a9c456e6cfe4422e1c600510cfa34a7954a993425edeb43ca5fa",
+      "gitBlob": "02cf401c0a8109b5137cc839f78af1170e55e519",
+      "bytes": 1703
+    },
+    "frontend/src/app/social-entry/production-readiness/fixtures.ts": {
+      "sha256": "7c799197460505891d5e4c9f4a562716ceaec0628d7f34d18cce2702889f22f4",
+      "gitBlob": "d10d29dd85163c3acc8cf9d70435a4d25526a932",
+      "bytes": 2321
+    },
+    "frontend/src/app/social-entry/production-readiness/index.ts": {
+      "sha256": "87c407bbbc5fc82a8e26b4158d83a54a6952ab934a2762c633396794c4673c43",
+      "gitBlob": "aa1159d3da5717069a12f3d0d4e92727aa3428e8",
+      "bytes": 9426
+    },
+    "frontend/src/app/social-entry/production-readiness/main.patch": {
+      "sha256": "102e112e012fd13423509702ef06280cd7d86af3eae4353f37a27046865b29cf",
+      "gitBlob": "26b76780f02529c95fd7699c5d3a43ed5f8b46b5",
+      "bytes": 1631
+    },
+    "frontend/src/app/social-entry/production-readiness/readiness.test.tsx": {
+      "sha256": "bb42d03e14ed7a46eabb9b557e07c1da76e4658d216d7899621ce44b7be9d12e",
+      "gitBlob": "970c58db592d6d5e25611a5f8f949d0be750eb8b",
+      "bytes": 9904
+    },
+    "frontend/src/app/social-entry/production-readiness/tsconfig.json": {
+      "sha256": "f9464564b972c86a4da62c227f6f243f99115f7d685f4c609ad3413cb4e2cd90",
+      "gitBlob": "d65b90981c1e89d02f44c03158a39eaf8732473f",
+      "bytes": 179
+    },
+    "frontend/src/app/social-entry/production-readiness/vitest.config.ts": {
+      "sha256": "44c8e07a11e5d5ed2c9ae451009f88be96b1d7495f9020ba05ea1422bbb72c2c",
+      "gitBlob": "972f1f8160a23bdeb981b26353783471f427f434",
+      "bytes": 393
+    }
+  },
+  "artifacts": {
+    "production-readiness-declined-1847.json": {
+      "rawSha256": "f99930ef506355fd08738ae1d1299bdb282da72c47b9708a1978bbfee95bb54f",
+      "portableSha256": "f99930ef506355fd08738ae1d1299bdb282da72c47b9708a1978bbfee95bb54f",
+      "bytes": 591
+    },
+    "production-readiness-accept2.json": {
+      "rawSha256": "79702d2ed3dcc596149d592901c3ea46d64800e77cf173b5c3dbfc01bcb4065f",
+      "portableSha256": "1483e3e411be8ee20b24d29190174ef56251038e98ccd0675eb08d0e8c2d1822",
+      "bytes": 1125
+    },
+    "production-readiness-accept2-repair1.json": {
+      "rawSha256": "25f0c0046c60d347f65994dc17c2ff3280fe564302b274dddd0934d5d1832b1c",
+      "portableSha256": "268ba9fe4ee1835c4d424180bf78d665e2a5afc80d7f6d93128760b7a0ed3888",
+      "bytes": 1496
+    },
+    "production-readiness-2.log": {
+      "rawSha256": "88bf96c4637b99a73a1ece82dd10fc3deccb2588e373cb4fec954ebfcf388010",
+      "portableSha256": "948cd6ae9546eb87a628eccfb292ca665dca3d341a351870c43cec58fe8252c6",
+      "bytes": 708
+    },
+    "production-readiness-2-release.json": {
+      "rawSha256": "26a5666273648e6f5264c76f47c28758eee66b2e3e7facd0a538e345f0a61252",
+      "portableSha256": "26a5666273648e6f5264c76f47c28758eee66b2e3e7facd0a538e345f0a61252",
+      "bytes": 797
+    },
+    "production-readiness-2-repair1.log": {
+      "rawSha256": "b600de07399218764ded3f6c68ea3f364e44c2231f9f89ec490f2640ef95463c",
+      "portableSha256": "9da544defb0b24aedcc10dbded3e34268e8b9035712a9e2fdfc7925a216e3125",
+      "bytes": 490
+    },
+    "production-readiness-2-repair1-release.json": {
+      "rawSha256": "6e26c99324583d6271d4da0ae59757a038e22a4e13b934547fec7b43cf712830",
+      "portableSha256": "6e26c99324583d6271d4da0ae59757a038e22a4e13b934547fec7b43cf712830",
+      "bytes": 786
+    },
+    "production-readiness-guardian.py.txt": {
+      "rawSha256": "ccda859830f6115b5e9d995077270c2ab4c7ce9ce11f2ed5672f7efcdd18fbdb",
+      "portableSha256": "01d583906f6bcf24417b8b5a59ffc13a4915f753f5c2d303103fa07ca2171cca",
+      "bytes": 5519
+    }
+  },
+  "limitations": [
+    "Synthetic unit transport and incumbent-policy port fixtures only, not real multiuser/provider/HTTP/WS acceptance.",
+    "No old14/16/8 replay, Vite server, browser, DB, build or install.",
+    "The narrow main patch was not executed in the retained old physical main; publisher/FE21e own actual combined integration and sole controlled390 capture.",
+    "Actual protected-PG256 defaultApp packet and original IN03 scenario resources remain missing.",
+    "Default-app observer5c885d65 source is unvalidated and excluded from this source handoff."
+  ],
+  "provenance": {
+    "authored": "New MCR headless production factory and focused tests; no old rendering copied.",
+    "existingProbeSemantics": {
+      "source": "frontend/src/app/in03-entry/availability.ts",
+      "revision": "f00017b2d8386ce10a607de869fcecb18e3945ec",
+      "adaptation": "No Feed probe; incumbent policy round fencing and per-service qualification; diagnostic unchanged."
+    },
+    "existingLifetime": {
+      "source": "frontend/src/app/social-entry/availability-lifetime.ts",
+      "revision": "f00017b2d8386ce10a607de869fcecb18e3945ec",
+      "adaptation": "Borrowed unchanged; Root committed effect owns prepare/dispose."
+    },
+    "dependencies": [
+      "canonical SessionController request/privacy",
+      "existing People/Intro/Age/Inbox/Social strict decoders and frozen registered HTTP operations",
+      "Root incumbent WorldAccessBindingPort release/socialPolicy; no second socket",
+      "retained React/Vitest/TypeScript/Oxlint; no dependency changes"
+    ]
+  }
+}

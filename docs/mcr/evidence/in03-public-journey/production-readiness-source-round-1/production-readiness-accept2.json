@@ -1,0 +1,32 @@
+{
+  "allocation": "FE209-PRODUCTION-READINESS-20261104T1852Z",
+  "source": "80aa3de601a300de89a2251479e9c90519589d37",
+  "guardianSha256": "ccda859830f6115b5e9d995077270c2ab4c7ce9ce11f2ed5672f7efcdd18fbdb",
+  "wholeBytes": 1634259881,
+  "logicalGitBytes": 5969530,
+  "parts": {
+    "$CHECKOUT": 1213852971,
+    "$PRIVATE_CARRY": 4466690,
+    "$DEPENDENCIES": 408263334,
+    "$WORKTREE_GIT": 1707356
+  },
+  "freeBytes": 12277600256,
+  "otherConservativeReserveBytes": 738197504,
+  "ownMaxNewBytes": 134217728,
+  "residualAfterAllMaxNewBytes": 11405185024,
+  "gitStatus": "",
+  "run": "production-readiness-2",
+  "startFloorBytes": 11811160064,
+  "liveFloorBytes": 8589934592,
+  "requiredResidualBytes": 9663676416,
+  "otherInventory": {
+    "RootSourceBytes": 33554432,
+    "FE10BrowserBytes": 167772160,
+    "ReportCopyBytes": 536870912,
+    "positions": 3
+  },
+  "policy": "1852 future 11GiB initial; WHOLE separately counted without double-charging retained bytes",
+  "acceptedAt": "2026-11-04T18:52:32.176137+00:00",
+  "activeUntil": "2026-11-04T18:56:32.176137+00:00",
+  "hardUntil": "2026-11-04T18:57:32.176137+00:00"
+}

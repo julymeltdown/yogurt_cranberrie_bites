@@ -1,0 +1,13 @@
+
+ RUN  v4.1.9 $CHECKOUT/frontend
+
+
+ Test Files  1 passed (1)
+      Tests  29 passed (29)
+   Start at  03:52:33
+   Duration  2.32s (transform 390ms, setup 0ms, import 568ms, tests 1.26s, environment 411ms)
+
+{"name":"focused-unit","exit":0,"signal":null,"actualIN03":"NOT_RUN"}
+{"name":"focused-types","exit":0,"signal":null,"actualIN03":"NOT_RUN"}
+src/app/social-entry/production-readiness/readiness.test.tsx:27:37: warning unicorn(prefer-string-starts-ends-with): Prefer String#endsWith over a regex with a dollar sign. help: Replace `/\/feed$/.test(new URL(request.url).pathname)` with `new URL(request.url).pathname.endsWith('/feed')`.
+{"name":"focused-lint","exit":1,"signal":null,"actualIN03":"NOT_RUN"}

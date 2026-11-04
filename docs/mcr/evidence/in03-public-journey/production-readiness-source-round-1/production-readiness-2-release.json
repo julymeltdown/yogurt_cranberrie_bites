@@ -1,0 +1,43 @@
+{
+  "allocation": "FE209-PRODUCTION-READINESS-20261104T1852Z",
+  "source": "80aa3de601a300de89a2251479e9c90519589d37",
+  "exit": 1,
+  "utc": "2026-11-04T18:52:39.161293+00:00",
+  "initialWholeBytes": 1634261152,
+  "finalWholeBytes": 1634261906,
+  "peakAllProcesses": 5,
+  "peakAllRssBytes": 1138966528,
+  "freeBytes": 12271476736,
+  "violations": [],
+  "ownedPidsObserved": [
+    65621,
+    65763,
+    65785,
+    65787,
+    65798,
+    65799,
+    65800,
+    65803,
+    65820,
+    65830,
+    65837,
+    65838,
+    66154,
+    66219,
+    66222,
+    66251,
+    66337,
+    66341,
+    66418,
+    66419
+  ],
+  "ownedGroupsObserved": [
+    65785
+  ],
+  "remainingOwned": [],
+  "linkPresent": false,
+  "cachePresent": false,
+  "temporaryPresent": false,
+  "guardianIntervalMs": 250,
+  "deadlineMet": true
+}
