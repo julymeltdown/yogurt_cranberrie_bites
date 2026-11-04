@@ -1,0 +1,85 @@
+{
+  "admission": "NOT_ADMITTED",
+  "avatar": {
+    "bytes": 4166,
+    "path": "contracts/fixtures/assets/selected-static/avatar-manifest.json",
+    "sha256": "sha256:04b0815c5ad66729c578236b010974e44274e6562a9e9dd4599a861e2eed485e"
+  },
+  "avatar_source_registry": {
+    "bytes": 21539,
+    "path": "frontend/src/entities/avatar/character-source-pack.json",
+    "sha256": "sha256:f8d6c83818bced007f71af1f59dbc53cd88115c5dab0112fc302d8469a4fdc6f"
+  },
+  "capabilities_enabled": false,
+  "checks": [
+    "C03 Bootstrap schema and invariants",
+    "C06 complete bundle schema/hash/bindings",
+    "exact reviewed source qualification and source binding",
+    "all scene source hashes/sizes",
+    "PNG full decode/dimensions/hash",
+    "selected avatar original/derived source identity"
+  ],
+  "format": "MCR_OPERATOR_BUNDLE_CANDIDATE",
+  "generator": {
+    "bytes": 12297,
+    "path": "backend/scripts/mcr/build_operator_bundle.py",
+    "sha256": "sha256:b2dd760813f80fbba726a1d0407c093ab01a945a66d6423b4dd47168e9851aa5"
+  },
+  "limits": [
+    "Source provenance applies to exact supplied scene inputs only.",
+    "Original virtual places remain UNREVIEWED/VIRTUAL_CONCEPT/CONCEPT_ONLY.",
+    "The validation event/actor are inert template identities, not real admission or authorization.",
+    "No original source, artwork, map, avatar manifest or fixture is modified."
+  ],
+  "map": {
+    "bytes": 28839,
+    "path": "backend/releases/reference-scene-v2/quality-v6/map-manifest.json",
+    "sha256": "sha256:81f6890b114a75a2885032c4f5c38a7fac685203fbde9a4481eef6b9c2bbb632"
+  },
+  "not_certified_by_builder": [
+    "Rust from_source_bound_files constructor",
+    "Gateway HTTP",
+    "operator admission",
+    "visual fidelity acceptance"
+  ],
+  "outputs": [
+    {
+      "bytes": 204161,
+      "path": "backend/releases/operator-bundle/quality-v6/bootstrap.json",
+      "sha256": "sha256:11e25d9e692e224d35b91c0a77bf9e8da8dfa42ad3d8dbf650e281e905176b42"
+    },
+    {
+      "bytes": 9889,
+      "path": "backend/releases/operator-bundle/quality-v6/theme-danger.json",
+      "sha256": "sha256:ac908ec595c14bb21972cd800c1bb8540a81bd6da386574a89d229f5be04162b"
+    },
+    {
+      "bytes": 9889,
+      "path": "backend/releases/operator-bundle/quality-v6/theme-parade.json",
+      "sha256": "sha256:87a6de90adcf1309e4f11a8e3fdd124e717aff1c477d3b9817b9af95f301eb87"
+    },
+    {
+      "bytes": 9916,
+      "path": "backend/releases/operator-bundle/quality-v6/theme-revenge.json",
+      "sha256": "sha256:c01a12f61687e00d6f34651cfd026d8146733412e2b813f0274b8bb8a9ca3f3e"
+    }
+  ],
+  "palette_source": {
+    "bytes": 7736,
+    "path": "frontend/public/world/themes/binding-inputs.json",
+    "sha256": "sha256:06c2a406b1a4c7628719651386188e79fc718cb54ae26b583ae7898e65fbb87f"
+  },
+  "resource_root": "frontend/public",
+  "source_binding": {
+    "bytes": 11519,
+    "path": "backend/releases/reference-scene-v2/quality-v6/source-binding.json",
+    "sha256": "sha256:0f15f5614d5502442a4e58cc995041f7ee1f2f906e21d4b630db7b13af65ee6b"
+  },
+  "source_qualification": {
+    "bytes": 8010,
+    "path": "backend/releases/reference-scene-v2/quality-v6/scene-source-qualification.json",
+    "sha256": "sha256:70c3d1ac268c6e5da39d30a20e01406fc7eb27668d6f0e6a66e1d87de15d7d07"
+  },
+  "state": "CONTRACT_READY",
+  "version": 1
+}
