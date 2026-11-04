@@ -155,6 +155,15 @@ async function mapParity() {
   actual.width=actual.height=expected.width=expected.height=0;return{different,channels:x.length,pins}
 }
 const api = { state, parity, mapParity, signature,
+  async avatarPaintOrder() {
+    const Phaser = (await import('phaser')).default
+    const pool = Reflect.get(Phaser.Display.Canvas.CanvasPool, 'pool') as { parent: unknown; canvas: HTMLCanvasElement }[]
+    const entry = pool.find(row => row.canvas === engine.camera!.surface())
+    const game = entry?.parent as import('phaser').Game | undefined
+    const scene = game?.scene.getScene('mcr-map')
+    return scene?.children.list.filter(o => o instanceof Phaser.GameObjects.Sprite && o.texture.key.startsWith('mcr-avatar-'))
+      .map(o => { const sprite = o as import('phaser').GameObjects.Sprite; return { x: sprite.x, y: sprite.y, depth: sprite.depth } })
+  },
   async architectureOcclusion() {
     // Synthetic diagnostic positions only. Never changes canonical geometry or any server state.
     const previous = view, rows = []

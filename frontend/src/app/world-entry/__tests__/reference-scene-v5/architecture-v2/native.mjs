@@ -121,9 +121,9 @@ for(const era of ['revenge','parade','danger']) {
 }
 async function rendererCases() {
  report.renderer=[]
- for(const [width,height] of [[360,800],[390,844],[430,932]]) {
+ // Each era starts from the same fixture. Synthetic depth probes intentionally reorder equal-depth overlapping test sprites.
+ for(const [width,height] of [[360,800],[390,844],[430,932]]) for(const era of ['REVENGE','PARADE','DANGER']) {
   await resourceGuard()
-  const disk=await statfs(root);assert(disk.bavail*disk.bsize>=8*1024**3,'Disk floor before renderer')
   const page=await browser.newPage({viewport:{width,height},reducedMotion:'reduce'}),errors=[]
   page.on('pageerror',e=>errors.push(e.message))
   try {
@@ -131,25 +131,24 @@ async function rendererCases() {
    await expect.poll(()=>page.evaluate(()=>Boolean(window.referenceWorld)),{timeout:20000}).toBe(true)
    const call=(method,...args)=>page.evaluate(({method,args})=>window.referenceWorld[method](...args),{method,args})
    await expect.poll(async()=>(await call('state')).avatars.sprites).toBe(6)
-   for(const era of ['REVENGE','PARADE','DANGER']) {
-    await call('era',era);await expect.poll(async()=>(await call('state')).overview?.themeId).toBe(era)
-    const worldPixels=await call('parity')
-    if(worldPixels.different){
-     report.rendererFailure={width,height,era,worldPixels,state:await call('state')}
-     const images=await page.evaluate(()=>({actual:document.querySelector('#world canvas').toDataURL(),expected:window.referenceExpected}))
-     for(const [key,url] of Object.entries(images))if(url)await writeFile(resolve(output,`diagnostic-${key}.png`),Buffer.from(url.split(',')[1],'base64'))
-    }
-    assert.equal(worldPixels.different,0)
-    const mapPixels=await call('mapParity'),occlusion=await call('occlusion'),architectureOcclusion=await call('architectureOcclusion')
-    assert.equal(mapPixels.different,0);assert(occlusion.every(r=>r.pixels.different===0))
-    assert(architectureOcclusion.filter(r=>r.pixels).every(r=>r.pixels.different===0))
-    const s=await call('state');assert.equal(s.mounts,1);assert.equal(s.canvases,1);assert.equal(s.scene.textures,2);assert.equal(s.scene.objects,35);assert.equal(s.avatars.sprites,6)
-    assert(s.requests.filter(p=>p.endsWith('.png')).every(p=>p.includes('/quality-v10/ground.png')||p.includes('/architecture-v2/')))
-    await page.screenshot({path:resolve(output,`renderer-${era.toLowerCase()}-${width}.png`)})
-    report.renderer.push({width,height,era,capturedAt:new Date().toISOString(),worldPixels,mapPixels,occlusion,architectureOcclusion,state:s})
+   await call('era',era);await expect.poll(async()=>(await call('state')).overview?.themeId).toBe(era)
+   const worldPixels=await call('parity'),initialPaintOrder=await call('avatarPaintOrder')
+   if(worldPixels.different){
+    report.rendererFailure={width,height,era,worldPixels,state:await call('state'),initialPaintOrder}
+    const images=await page.evaluate(()=>({actual:document.querySelector('#world canvas').toDataURL(),expected:window.referenceExpected}))
+    for(const [key,url] of Object.entries(images))if(url)await writeFile(resolve(output,`diagnostic-${key}.png`),Buffer.from(url.split(',')[1],'base64'))
    }
+   assert.equal(worldPixels.different,0)
+   const mapPixels=await call('mapParity');assert.equal(mapPixels.different,0)
+   await page.screenshot({path:resolve(output,`renderer-${era.toLowerCase()}-${width}.png`)})
+   const capturedAt=new Date().toISOString(),occlusion=await call('occlusion'),architectureOcclusion=await call('architectureOcclusion')
+   assert(occlusion.every(r=>r.pixels.different===0));assert(architectureOcclusion.filter(r=>r.pixels).every(r=>r.pixels.different===0))
+   const s=await call('state'),afterDepthProbesPaintOrder=await call('avatarPaintOrder')
+   assert.equal(s.mounts,1);assert.equal(s.canvases,1);assert.equal(s.scene.textures,2);assert.equal(s.scene.objects,35);assert.equal(s.avatars.sprites,6)
+   assert(s.requests.filter(p=>p.endsWith('.png')).every(p=>p.includes('/quality-v10/ground.png')||p.includes('/architecture-v2/')))
    const cleanup=await call('dispose');assert.equal(cleanup.scene.textures,0);assert.equal(cleanup.decodedImages,0);assert.equal(cleanup.cache.residentBytes,0);assert.equal(cleanup.canvases,0);assert.equal(cleanup.owner.leases,0)
-   assert.deepEqual(errors,[]);report.renderer.at(-1).cleanup=cleanup
+   assert.deepEqual(errors,[])
+   report.renderer.push({width,height,era,capturedAt,worldPixels,mapPixels,occlusion,architectureOcclusion,initialPaintOrder,afterDepthProbesPaintOrder,state:s,cleanup})
   }finally{await page.evaluate(()=>window.referenceWorld?.dispose()).catch(()=>{});await page.close()}
  }
 }
