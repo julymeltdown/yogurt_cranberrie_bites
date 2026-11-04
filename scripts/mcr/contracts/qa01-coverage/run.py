@@ -142,11 +142,12 @@ def verify_catalog(rows, files, family):
         name = row["file"]
         path = Path(name)
         flat = path.name == name and name.endswith(".json")
-        nested = (family == "domain" and len(path.parts) == 2 and path.parts[0] == "wall-tools-b"
+        folder = {"domain": "wall-tools-b", "realtime": "motion-v1"}.get(family)
+        nested = (folder is not None and len(path.parts) == 2 and path.parts[0] == folder
                   and path.as_posix() == name and "\\" not in name and path.name.endswith(".json"))
         require(flat or nested, "unsafe fixture path")
         if nested:
-            actual = ROOT / "contracts/fixtures/domain" / path
+            actual = ROOT / "contracts/fixtures" / family / path
             require(actual.resolve() == actual, "unsafe fixture path alias")
         declared.append(name)
     require(len(declared) == len(set(declared)), "duplicate indexed fixture")
@@ -198,6 +199,8 @@ def fixture_checks(modules, indexes, fixture_data, inventory):
                     require(sorted(trace.players) == value["expected_players"], "trace roster mismatch")
                 elif kind == "projection":
                     realtime.filtered_projection(value, rc)
+                elif kind == "motion-vectors":
+                    realtime.validate_motion_vectors(value)
                 elif kind == "wire-rejection":
                     expected = "reject"
                     try:
@@ -361,7 +364,7 @@ def run(args, report):
     report["schema_definitions"] = check_schemas(documents)
     for family, rows in indexes.items():
         prefix = f"contracts/fixtures/{family}"
-        directories = {prefix} | ({prefix + "/wall-tools-b"} if family == "domain" else set())
+        directories = {prefix} | ({prefix + "/wall-tools-b"} if family == "domain" else {prefix + "/motion-v1"} if family == "realtime" else set())
         files = [Path(p).relative_to(prefix).as_posix() for p in fixture_data
                  if str(Path(p).parent) in directories and Path(p).name != "index.json"]
         verify_catalog(rows, files, family)

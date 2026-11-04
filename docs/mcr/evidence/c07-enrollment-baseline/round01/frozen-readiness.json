@@ -1,0 +1,42 @@
+{
+  "task": "CORE-ENROLLMENT-C07-01",
+  "goalId": "01a1a533-50a8-7fb2-b3ed-96b941b96bbf",
+  "goalStatus": "active",
+  "goalCreatedAt": 1793816464,
+  "goalBudget": null,
+  "originalC07Completion": "PRESERVED_SEPARATE",
+  "sourceBeforeMetadata": "7c375ec28ae3c5e701bb3e9e7aa92c48fa62fb86",
+  "canonical": "2ff0aab865a06a5664d2096ba572c766ac0fba85",
+  "readsetFiles": 336,
+  "readsetSha256": "fa28bb48dd49f49267a1a6fcdf0c3f846a0e09a04ca957f7f3f78e87313df246",
+  "guardianSha256": "8cae3187f6358703b2e158312a979eb459c5010768f77d4dd0c681ce89f53136",
+  "qualifySha256": "607a2d6b9ace7f8e8820c9df873da95c312c615aa418ed8e74ac9d9c852956f3",
+  "activePinsSha256": "b2fbc46bda9b409891bb22567bcc851d9beeda9436ada15c07e6f276e1c342e8",
+  "activePinCanonical": "267a040ac8d33c312aa87a5a2f22bc418b3895f2",
+  "carryAllocatedBytes": {
+    "/Users/lhs/Desktop/mcr-worktrees/sl-world": 824389632,
+    "/Users/lhs/Desktop/mcr/.git/worktrees/sl-world": 2097152,
+    "/Users/lhs/Desktop/mcr/frontend/node_modules": 438317056,
+    "/Users/lhs/Desktop/mcr-tools/contracts-validation-venv": 16502784,
+    "retainedNodeBytes": 122564432
+  },
+  "retainedVersions": {
+    "Node": "24.22.2",
+    "TypeScript": "6.0.3",
+    "Zod": "4.4.3",
+    "Python": "retained contracts-validation-venv/python3.14",
+    "requirements": "scripts/mcr/requirements-contracts.txt"
+  },
+  "preservedRefs": {
+    "codex/mcr-world-progress-20261105": "3500e3021b685823c760ba8b503f9a31daf57800",
+    "codex/mcr-world-progress-publish": "c277f4697155508f11687c9a6f993ffbf700d8aa",
+    "codex/mcr-fe-FE16-original-parity": "26688e8f9c4df4a476cb05ab4c9405f899b5ada5",
+    "codex/mcr-css-shared-chrome-ref-01": "390493282882413b85c7e08f91368548c570e38a",
+    "codex/mcr-ci-installation-recovery": "14ed80ad49892bdbd37ee42a1ecdcfd03374ddea"
+  },
+  "newSourceReservationHeld": false,
+  "qualificationStarted": false,
+  "createdAt": 1793817530.859176,
+  "floorPolicy": "Fresh explicit offer may authorize 11GiB start; default12GiB; reserve9GiB and live8GiB unchanged",
+  "metadataUpdatedAt": 1793818271.975161
+}

@@ -44,8 +44,26 @@ class InventoryTests(unittest.TestCase):
                     path.write_text(content)
 
     def test_unsupported_schema_extensions_fail_generation(self):
-        for rule in ({'not': {}}, {'format': 'unimplemented'}, {'type': 'unimplemented'}):
+        for rule in ({'contains': {}}, {'format': 'unimplemented'}, {'type': 'unimplemented'},
+                     {'not': {'contains': {}}}):
             with self.assertRaises(ValueError): generator.check_schema(rule)
+
+    def test_negation_children_are_admitted_recursively(self):
+        for rule in ({'not': True}, {'not': False}, {'not': {'const': 0}},
+                     {'not': {'not': {'type': 'integer'}}}):
+            generator.check_schema(rule)
+
+    def test_motion_keyword_shapes_are_validated_as_schema_data(self):
+        for value in (None, True, False, '0', [], {}, float('nan'), float('inf'), -float('inf')):
+            with self.subTest(bound=value), self.assertRaisesRegex(ValueError, 'Invalid exclusiveMinimum'):
+                generator.check_schema({'exclusiveMinimum': value})
+        for value in (None, [], True, {'a': 'b'}, {'a': [1]}, {'a': ['b', 'b']}, {'a': [{}]}, {1: []}):
+            with self.subTest(dependencies=value), self.assertRaisesRegex(ValueError, 'Invalid dependentRequired'):
+                generator.check_schema({'dependentRequired': value})
+        for rule in ({'exclusiveMinimum': 0}, {'exclusiveMinimum': -0.5},
+                     {'dependentRequired': {}}, {'dependentRequired': {'a': ['b'], 'b': ['a'], 'c': []}},
+                     {'not': {'dependentRequired': {'a': ['b']}}}):
+            generator.check_schema(rule)
 
 
 if __name__ == '__main__':

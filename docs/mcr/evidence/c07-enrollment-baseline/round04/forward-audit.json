@@ -1,0 +1,111 @@
+{
+  "task": "CORE-ENROLLMENT-C07-01",
+  "oldCanonical": "267a040ac8d33c312aa87a5a2f22bc418b3895f2",
+  "newCanonical": "2ff0aab865a06a5664d2096ba572c766ac0fba85",
+  "oldActiveSha256": "b2fbc46bda9b409891bb22567bcc851d9beeda9436ada15c07e6f276e1c342e8",
+  "newActiveSha256": "4a48efe667fe9b88a12761ad2cf90ee5c3b6b53ed2f1f211dad76daa349f87b5",
+  "inputDeltas": {
+    "backend/docs/api/mcr-core.openapi.json": {
+      "old": "5b62b6e545f2ac5c367bd189bed6c509b76b4383f47b016d7b075c88f2742978",
+      "new": "6e3b4d141d04b137579bf0436e93009e6c4b6a291a230049064d236d12db171d"
+    },
+    "backend/docs/api/mcr-domain.openapi.json": {
+      "old": "e7de84d358c18ae3b0431953b582e4f305a1f89c5146b771d7da9cab04e159ef",
+      "new": "27e285bfd1c3c4ac93b272577ab1a023fcc056bc6d99e62c18f9984174ec8bcd"
+    },
+    "backend/scripts/docs/generate-mcr-core.py": {
+      "old": "91de68ad25bfd695690ab5a61f5de81a27ff0efd49ed45db7fad0fa560bec93e",
+      "new": "44901d14ebfde8d072030282e6378ea381bbd1b4cf6b55f2b114a672c760e62b"
+    },
+    "contracts/core/v1/core.schema.json": {
+      "old": "e9f9618548d255ba53ea9f46efe6fb52ede468acab636d43f0c487eeab779fba",
+      "new": "7760712818b399faf956b874565c080726f70913b6b4fc81e2236ab127332eaa"
+    },
+    "contracts/core/v1/operations.json": {
+      "old": "2f5b972dbccea09340e1519a1a2c522e3c42f63690fa26b9e58d721e9927ba62",
+      "new": "98c21afed17e60e4a2be0d1c0fea54d06e183e61c1c5c670edcaf5564670ff61"
+    },
+    "contracts/fixtures/realtime/index.json": {
+      "old": "cb4133e389293820230bf234fbc16051fe76691e8aae30201f9467a8919fa13b",
+      "new": "e2888ccd54c4a95fd43e734980e7902713acf507814f340a2a5886365d26dfeb"
+    },
+    "contracts/fixtures/realtime/motion-v1/boolean-version.json": {
+      "old": null,
+      "new": "c6e6498ffc33ac305d542ff83273e4b62098799143f741d26c39415f51651025"
+    },
+    "contracts/fixtures/realtime/motion-v1/negotiated.json": {
+      "old": null,
+      "new": "871eebcd1adc4d0d16c6c059f1f5908abde2259baa71610e73437bc99f9585b6"
+    },
+    "contracts/fixtures/realtime/motion-v1/null-version.json": {
+      "old": null,
+      "new": "993b3f8e81e1c77b5cbb0b6d87fbfbc2e0e7dd6e77b3999e519b522137c36ded"
+    },
+    "contracts/fixtures/realtime/motion-v1/unsupported-version.json": {
+      "old": null,
+      "new": "524baa6e7d9e61f93ff6d82458322bce1f21f29e50d622fa75193ba6270b20b6"
+    },
+    "contracts/fixtures/realtime/motion-v1/vectors.json": {
+      "old": null,
+      "new": "4929a4ff10b33c7bf8286f5e2208f3a044ed73d5780d242ceb4a40629c457c6a"
+    },
+    "contracts/generated/mcr-core.openapi.json": {
+      "old": "5b62b6e545f2ac5c367bd189bed6c509b76b4383f47b016d7b075c88f2742978",
+      "new": "6e3b4d141d04b137579bf0436e93009e6c4b6a291a230049064d236d12db171d"
+    },
+    "contracts/generated/mcr-domain.openapi.json": {
+      "old": "e7de84d358c18ae3b0431953b582e4f305a1f89c5146b771d7da9cab04e159ef",
+      "new": "27e285bfd1c3c4ac93b272577ab1a023fcc056bc6d99e62c18f9984174ec8bcd"
+    },
+    "contracts/realtime/v1/policy.json": {
+      "old": "ef61bfba5337a06216e98a9d3eba4ed952dfb405815088b926832276d2464cd3",
+      "new": "6f79a6f79028d49c7e81a7ef18c82ba451af610dd5acb401293b6298a0645734"
+    },
+    "contracts/realtime/v1/world.schema.json": {
+      "old": "10d328b555e24f444454bd1d01770bdc4acc3aabeeca8d6a3c5fb10281f2a794",
+      "new": "6ec593955a695656bcf5ec736e25fdf26593f1eff28bda657541779a1ec8cd85"
+    },
+    "frontend/src/shared/api/domain-operations.generated.ts": {
+      "old": "29496fd06ebb6f8567499a980c793b778ca3580e6eae1230bf7d3ddb49937117",
+      "new": "924ad2d9e8906abe020cb927b256db98cb477d3aa470405fdf2236b71059147d"
+    },
+    "scripts/mcr/validate-realtime.py": {
+      "old": "31ee92c619fae378c03a6ed25339dae9bd1dfeee7b8cb986cc38bd34c4400ee9",
+      "new": "f16597d77d7110c417dc610b54aa8a40951da7ad656198139df4770e60c1be09"
+    }
+  },
+  "addedOperations": {
+    "acceptEnrollmentPolicy": [
+      "/api/auth/enrollment/consent",
+      "post"
+    ],
+    "beginEnrollmentAttempt": [
+      "/api/auth/enrollment/attempts",
+      "post"
+    ],
+    "getEnrollmentAdmission": [
+      "/api/auth/enrollment/admission",
+      "get"
+    ],
+    "getEnrollmentPolicy": [
+      "/api/auth/enrollment/policy",
+      "get"
+    ],
+    "resendEnrollmentVerification": [
+      "/api/auth/enrollment/resend",
+      "post"
+    ],
+    "submitEnrollmentSignup": [
+      "/api/auth/enrollment/signup",
+      "post"
+    ],
+    "verifyEnrollmentEmail": [
+      "/api/auth/enrollment/verify",
+      "post"
+    ]
+  },
+  "removedOperations": [],
+  "changedRouteIdentities": {},
+  "provenance": "Published Enrollment and C05 contract-only inputs; no live transport/provider/consumer claim.",
+  "qualification": "Pending unchanged full temporary-candidate QA01 preflight"
+}

@@ -1,0 +1,11 @@
+{
+  "task": "CORE-ENROLLMENT-C07-01",
+  "canonical": "2ff0aab865a06a5664d2096ba572c766ac0fba85",
+  "source": "e2f313e2b723067d14ecbe05d5d4fb8c058c2116",
+  "started": 1793818457.7721999,
+  "commands": [],
+  "status": "FAIL",
+  "hosted": "NOT_RUN_NOT_REQUIRED",
+  "error": "ValueError(\"Unsupported schema keyword: {'not'}\")",
+  "finished": 1793818458.01304
+}

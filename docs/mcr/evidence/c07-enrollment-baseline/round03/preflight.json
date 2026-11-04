@@ -1,0 +1,1412 @@
+{
+  "task": "QA01_FORWARD_PREFLIGHT",
+  "candidate": "83d0f54561ff33d4e083b9ad766e7891e8764fc9",
+  "pins_sha256": "1de391be5365f718f9d0a9c0f197e68114371459b75d8babe9022ede243ff6f4",
+  "active_pins_unchanged": true,
+  "dependencies": {
+    "jsonschema": "4.26.0",
+    "referencing": "0.37.0",
+    "rfc3339-validator": "0.1.4",
+    "rfc3986-validator": "0.1.1",
+    "six": "1.17.0"
+  },
+  "schema_definitions": 252,
+  "fixtures": [
+    {
+      "file": "contracts/fixtures/core/bootstrap-open.json",
+      "family": "core",
+      "expected": "accept",
+      "result": "PASS"
+    },
+    {
+      "file": "contracts/fixtures/core/bootstrap-read-only.json",
+      "family": "core",
+      "expected": "accept",
+      "result": "PASS"
+    },
+    {
+      "file": "contracts/fixtures/core/public-profile.json",
+      "family": "core",
+      "expected": "accept",
+      "result": "PASS"
+    },
+    {
+      "file": "contracts/fixtures/core/private-participant.json",
+      "family": "core",
+      "expected": "accept",
+      "result": "PASS"
+    },
+    {
+      "file": "contracts/fixtures/core/avatar-state.json",
+      "family": "core",
+      "expected": "accept",
+      "result": "PASS"
+    },
+    {
+      "file": "contracts/fixtures/core/set-avatar-request.json",
+      "family": "core",
+      "expected": "accept",
+      "result": "PASS"
+    },
+    {
+      "file": "contracts/fixtures/core/update-participant-request.json",
+      "family": "core",
+      "expected": "accept",
+      "result": "PASS"
+    },
+    {
+      "file": "contracts/fixtures/core/place.json",
+      "family": "core",
+      "expected": "accept",
+      "result": "PASS"
+    },
+    {
+      "file": "contracts/fixtures/core/place-list.json",
+      "family": "core",
+      "expected": "accept",
+      "result": "PASS"
+    },
+    {
+      "file": "contracts/fixtures/core/auth-capabilities-disabled.json",
+      "family": "core",
+      "expected": "accept",
+      "result": "PASS"
+    },
+    {
+      "file": "contracts/fixtures/core/auth-success.json",
+      "family": "core",
+      "expected": "accept",
+      "result": "PASS"
+    },
+    {
+      "file": "contracts/fixtures/core/signup-pending.json",
+      "family": "core",
+      "expected": "accept",
+      "result": "PASS"
+    },
+    {
+      "file": "contracts/fixtures/core/password-reset-neutral.json",
+      "family": "core",
+      "expected": "accept",
+      "result": "PASS"
+    },
+    {
+      "file": "contracts/fixtures/core/signup-unicode.json",
+      "family": "core",
+      "expected": "accept",
+      "result": "PASS"
+    },
+    {
+      "file": "contracts/fixtures/core/error-party-full.json",
+      "family": "core",
+      "expected": "accept",
+      "result": "PASS"
+    },
+    {
+      "file": "contracts/fixtures/core/error-giveaway-sold-out.json",
+      "family": "core",
+      "expected": "accept",
+      "result": "PASS"
+    },
+    {
+      "file": "contracts/fixtures/core/error-reservation-expired.json",
+      "family": "core",
+      "expected": "accept",
+      "result": "PASS"
+    },
+    {
+      "file": "contracts/fixtures/core/error-version-conflict.json",
+      "family": "core",
+      "expected": "accept",
+      "result": "PASS"
+    },
+    {
+      "file": "contracts/fixtures/core/error-consent-required.json",
+      "family": "core",
+      "expected": "accept",
+      "result": "PASS"
+    },
+    {
+      "file": "contracts/fixtures/core/error-resource-unavailable.json",
+      "family": "core",
+      "expected": "accept",
+      "result": "PASS"
+    },
+    {
+      "file": "contracts/fixtures/core/error-mural-cooldown.json",
+      "family": "core",
+      "expected": "accept",
+      "result": "PASS"
+    },
+    {
+      "file": "contracts/fixtures/core/error-map-version-mismatch.json",
+      "family": "core",
+      "expected": "accept",
+      "result": "PASS"
+    },
+    {
+      "file": "contracts/fixtures/core/error-event-read-only.json",
+      "family": "core",
+      "expected": "accept",
+      "result": "PASS"
+    },
+    {
+      "file": "contracts/fixtures/core/auth-error-unauthenticated.json",
+      "family": "core",
+      "expected": "accept",
+      "result": "PASS"
+    },
+    {
+      "file": "contracts/fixtures/core/auth-error-rate-limited.json",
+      "family": "core",
+      "expected": "accept",
+      "result": "PASS"
+    },
+    {
+      "file": "contracts/fixtures/core/error-origin-not-allowed.json",
+      "family": "core",
+      "expected": "accept",
+      "result": "PASS"
+    },
+    {
+      "file": "contracts/fixtures/core/error-browser-intent-required.json",
+      "family": "core",
+      "expected": "accept",
+      "result": "PASS"
+    },
+    {
+      "file": "contracts/fixtures/core/core-transport-413.json",
+      "family": "core",
+      "expected": "accept",
+      "result": "PASS"
+    },
+    {
+      "file": "contracts/fixtures/core/core-transport-415.json",
+      "family": "core",
+      "expected": "accept",
+      "result": "PASS"
+    },
+    {
+      "file": "contracts/fixtures/core/core-transport-422.json",
+      "family": "core",
+      "expected": "accept",
+      "result": "PASS"
+    },
+    {
+      "file": "contracts/fixtures/core/core-transport-500.json",
+      "family": "core",
+      "expected": "accept",
+      "result": "PASS"
+    },
+    {
+      "file": "contracts/fixtures/core/core-transport-502.json",
+      "family": "core",
+      "expected": "accept",
+      "result": "PASS"
+    },
+    {
+      "file": "contracts/fixtures/core/core-transport-504.json",
+      "family": "core",
+      "expected": "accept",
+      "result": "PASS"
+    },
+    {
+      "file": "contracts/fixtures/domain/party-full.json",
+      "family": "domain",
+      "expected": "accept",
+      "result": "PASS"
+    },
+    {
+      "file": "contracts/fixtures/domain/party-over-capacity.json",
+      "family": "domain",
+      "expected": "reject",
+      "result": "PASS"
+    },
+    {
+      "file": "contracts/fixtures/domain/party-private-leak.json",
+      "family": "domain",
+      "expected": "reject",
+      "result": "PASS"
+    },
+    {
+      "file": "contracts/fixtures/domain/reservation-held.json",
+      "family": "domain",
+      "expected": "accept",
+      "result": "PASS"
+    },
+    {
+      "file": "contracts/fixtures/domain/giveaway-management.json",
+      "family": "domain",
+      "expected": "accept",
+      "result": "PASS"
+    },
+    {
+      "file": "contracts/fixtures/domain/stock-mismatch.json",
+      "family": "domain",
+      "expected": "reject",
+      "result": "PASS"
+    },
+    {
+      "file": "contracts/fixtures/domain/claimed-without-receipt.json",
+      "family": "domain",
+      "expected": "reject",
+      "result": "PASS"
+    },
+    {
+      "file": "contracts/fixtures/domain/private-beacon.json",
+      "family": "domain",
+      "expected": "accept",
+      "result": "PASS"
+    },
+    {
+      "file": "contracts/fixtures/domain/beacon-world-coordinate.json",
+      "family": "domain",
+      "expected": "reject",
+      "result": "PASS"
+    },
+    {
+      "file": "contracts/fixtures/domain/empty-age-bounds.json",
+      "family": "domain",
+      "expected": "accept",
+      "result": "PASS"
+    },
+    {
+      "file": "contracts/fixtures/domain/half-open-age-bounds.json",
+      "family": "domain",
+      "expected": "accept",
+      "result": "PASS"
+    },
+    {
+      "file": "contracts/fixtures/domain/one-sided-age-bounds.json",
+      "family": "domain",
+      "expected": "reject",
+      "result": "PASS"
+    },
+    {
+      "file": "contracts/fixtures/domain/reversed-age-bounds.json",
+      "family": "domain",
+      "expected": "reject",
+      "result": "PASS"
+    },
+    {
+      "file": "contracts/fixtures/domain/private-age-claim.json",
+      "family": "domain",
+      "expected": "accept",
+      "result": "PASS"
+    },
+    {
+      "file": "contracts/fixtures/domain/public-intro.json",
+      "family": "domain",
+      "expected": "accept",
+      "result": "PASS"
+    },
+    {
+      "file": "contracts/fixtures/domain/intro-age-leak.json",
+      "family": "domain",
+      "expected": "reject",
+      "result": "PASS"
+    },
+    {
+      "file": "contracts/fixtures/domain/approved-social-request.json",
+      "family": "domain",
+      "expected": "accept",
+      "result": "PASS"
+    },
+    {
+      "file": "contracts/fixtures/domain/duplicate-platform-consent.json",
+      "family": "domain",
+      "expected": "reject",
+      "result": "PASS"
+    },
+    {
+      "file": "contracts/fixtures/domain/social-approval.json",
+      "family": "domain",
+      "expected": "accept",
+      "result": "PASS"
+    },
+    {
+      "file": "contracts/fixtures/domain/social-unconsented-approval.json",
+      "family": "domain",
+      "expected": "reject",
+      "result": "PASS"
+    },
+    {
+      "file": "contracts/fixtures/domain/social-grant.json",
+      "family": "domain",
+      "expected": "accept",
+      "result": "PASS"
+    },
+    {
+      "file": "contracts/fixtures/domain/mural-pixel.json",
+      "family": "domain",
+      "expected": "accept",
+      "result": "PASS"
+    },
+    {
+      "file": "contracts/fixtures/domain/mural-out-of-bounds.json",
+      "family": "domain",
+      "expected": "reject",
+      "result": "PASS"
+    },
+    {
+      "file": "contracts/fixtures/domain/empty-mural-region.json",
+      "family": "domain",
+      "expected": "reject",
+      "result": "PASS"
+    },
+    {
+      "file": "contracts/fixtures/domain/mural-delta.json",
+      "family": "domain",
+      "expected": "accept",
+      "result": "PASS"
+    },
+    {
+      "file": "contracts/fixtures/domain/mural-gap.json",
+      "family": "domain",
+      "expected": "reject",
+      "result": "PASS"
+    },
+    {
+      "file": "contracts/fixtures/domain/public-post.json",
+      "family": "domain",
+      "expected": "accept",
+      "result": "PASS"
+    },
+    {
+      "file": "contracts/fixtures/domain/feed-private-handle.json",
+      "family": "domain",
+      "expected": "reject",
+      "result": "PASS"
+    },
+    {
+      "file": "contracts/fixtures/domain/notification-safe.json",
+      "family": "domain",
+      "expected": "accept",
+      "result": "PASS"
+    },
+    {
+      "file": "contracts/fixtures/domain/notification-raw-payload.json",
+      "family": "domain",
+      "expected": "reject",
+      "result": "PASS"
+    },
+    {
+      "file": "contracts/fixtures/domain/command-pending.json",
+      "family": "domain",
+      "expected": "accept",
+      "result": "PASS"
+    },
+    {
+      "file": "contracts/fixtures/domain/receipt-false-success.json",
+      "family": "domain",
+      "expected": "reject",
+      "result": "PASS"
+    },
+    {
+      "file": "contracts/fixtures/domain/sold-out-error.json",
+      "family": "domain",
+      "expected": "accept",
+      "result": "PASS"
+    },
+    {
+      "file": "contracts/fixtures/domain/closure-complete.json",
+      "family": "domain",
+      "expected": "accept",
+      "result": "PASS"
+    },
+    {
+      "file": "contracts/fixtures/domain/closure-false-success.json",
+      "family": "domain",
+      "expected": "reject",
+      "result": "PASS"
+    },
+    {
+      "file": "contracts/fixtures/domain/receipt-fingerprint-leak.json",
+      "family": "domain",
+      "expected": "reject",
+      "result": "PASS"
+    },
+    {
+      "file": "contracts/fixtures/domain/mural-own-result.json",
+      "family": "domain",
+      "expected": "accept",
+      "result": "PASS"
+    },
+    {
+      "file": "contracts/fixtures/domain/mural-own-result-author-leak.json",
+      "family": "domain",
+      "expected": "reject",
+      "result": "PASS"
+    },
+    {
+      "file": "contracts/fixtures/domain/notification-unread-total.json",
+      "family": "domain",
+      "expected": "accept",
+      "result": "PASS"
+    },
+    {
+      "file": "contracts/fixtures/domain/notification-negative-unread-total.json",
+      "family": "domain",
+      "expected": "reject",
+      "result": "PASS"
+    },
+    {
+      "file": "contracts/fixtures/domain/notification-unread-payload-leak.json",
+      "family": "domain",
+      "expected": "reject",
+      "result": "PASS"
+    },
+    {
+      "file": "contracts/fixtures/domain/closure-start-command.json",
+      "family": "domain",
+      "expected": "accept",
+      "result": "PASS"
+    },
+    {
+      "file": "contracts/fixtures/domain/closure-resume-command.json",
+      "family": "domain",
+      "expected": "accept",
+      "result": "PASS"
+    },
+    {
+      "file": "contracts/fixtures/domain/closure-resume-missing-job.json",
+      "family": "domain",
+      "expected": "reject",
+      "result": "PASS"
+    },
+    {
+      "file": "contracts/fixtures/domain/closure-start-with-job.json",
+      "family": "domain",
+      "expected": "reject",
+      "result": "PASS"
+    },
+    {
+      "file": "contracts/fixtures/domain/closure-resume-unknown-field.json",
+      "family": "domain",
+      "expected": "reject",
+      "result": "PASS"
+    },
+    {
+      "file": "contracts/fixtures/domain/closure-resume-invalid-job.json",
+      "family": "domain",
+      "expected": "reject",
+      "result": "PASS"
+    },
+    {
+      "file": "contracts/fixtures/domain/wall-tools-b/own-fill-256.json",
+      "family": "domain",
+      "expected": "accept",
+      "result": "PASS"
+    },
+    {
+      "file": "contracts/fixtures/domain/wall-tools-b/tools-qualified.json",
+      "family": "domain",
+      "expected": "accept",
+      "result": "PASS"
+    },
+    {
+      "file": "contracts/fixtures/domain/wall-tools-b/fill-257.json",
+      "family": "domain",
+      "expected": "reject",
+      "result": "PASS"
+    },
+    {
+      "file": "contracts/fixtures/domain/wall-tools-b/false-pixel-delta.json",
+      "family": "domain",
+      "expected": "reject",
+      "result": "PASS"
+    },
+    {
+      "file": "contracts/fixtures/domain/wall-tools-b/private-history-leak.json",
+      "family": "domain",
+      "expected": "reject",
+      "result": "PASS"
+    },
+    {
+      "file": "contracts/fixtures/domain/wall-tools-b/wrong-background.json",
+      "family": "domain",
+      "expected": "reject",
+      "result": "PASS"
+    },
+    {
+      "file": "contracts/fixtures/domain/wall-tools-b/budget-513.json",
+      "family": "domain",
+      "expected": "reject",
+      "result": "PASS"
+    },
+    {
+      "file": "contracts/fixtures/domain/wall-tools-b/foreign-history.json",
+      "family": "domain",
+      "expected": "reject",
+      "result": "PASS"
+    },
+    {
+      "file": "contracts/fixtures/realtime/movement-heartbeat.json",
+      "family": "realtime",
+      "expected": "accept",
+      "result": "PASS"
+    },
+    {
+      "file": "contracts/fixtures/realtime/resync.json",
+      "family": "realtime",
+      "expected": "accept",
+      "result": "PASS"
+    },
+    {
+      "file": "contracts/fixtures/realtime/room-switch.json",
+      "family": "realtime",
+      "expected": "accept",
+      "result": "PASS"
+    },
+    {
+      "file": "contracts/fixtures/realtime/epoch-replacement.json",
+      "family": "realtime",
+      "expected": "accept",
+      "result": "PASS"
+    },
+    {
+      "file": "contracts/fixtures/realtime/revoke.json",
+      "family": "realtime",
+      "expected": "accept",
+      "result": "PASS"
+    },
+    {
+      "file": "contracts/fixtures/realtime/filtered-viewers.json",
+      "family": "realtime",
+      "expected": "accept",
+      "result": "PASS"
+    },
+    {
+      "file": "contracts/fixtures/realtime/ticket-request.json",
+      "family": "realtime",
+      "expected": "accept",
+      "result": "PASS"
+    },
+    {
+      "file": "contracts/fixtures/realtime/ticket-response.json",
+      "family": "realtime",
+      "expected": "accept",
+      "result": "PASS"
+    },
+    {
+      "file": "contracts/fixtures/realtime/rooms.json",
+      "family": "realtime",
+      "expected": "accept",
+      "result": "PASS"
+    },
+    {
+      "file": "contracts/fixtures/realtime/unknown-message.json",
+      "family": "realtime",
+      "expected": "reject",
+      "result": "PASS"
+    },
+    {
+      "file": "contracts/fixtures/realtime/duplicate-key.json",
+      "family": "realtime",
+      "expected": "reject",
+      "result": "PASS"
+    },
+    {
+      "file": "contracts/fixtures/realtime/oversized-client.json",
+      "family": "realtime",
+      "expected": "reject",
+      "result": "PASS"
+    },
+    {
+      "file": "contracts/fixtures/realtime/binary-message.json",
+      "family": "realtime",
+      "expected": "reject",
+      "result": "PASS"
+    },
+    {
+      "file": "contracts/fixtures/realtime/non-finite.json",
+      "family": "realtime",
+      "expected": "reject",
+      "result": "PASS"
+    },
+    {
+      "file": "contracts/fixtures/realtime/unknown-field.json",
+      "family": "realtime",
+      "expected": "reject",
+      "result": "PASS"
+    },
+    {
+      "file": "contracts/fixtures/realtime/wrong-version.json",
+      "family": "realtime",
+      "expected": "reject",
+      "result": "PASS"
+    },
+    {
+      "file": "contracts/fixtures/realtime/auth-required.json",
+      "family": "realtime",
+      "expected": "accept",
+      "result": "PASS"
+    },
+    {
+      "file": "contracts/fixtures/realtime/forbidden.json",
+      "family": "realtime",
+      "expected": "accept",
+      "result": "PASS"
+    },
+    {
+      "file": "contracts/fixtures/realtime/map-conflict.json",
+      "family": "realtime",
+      "expected": "accept",
+      "result": "PASS"
+    },
+    {
+      "file": "contracts/fixtures/realtime/event-closed.json",
+      "family": "realtime",
+      "expected": "accept",
+      "result": "PASS"
+    },
+    {
+      "file": "contracts/fixtures/realtime/throttled.json",
+      "family": "realtime",
+      "expected": "accept",
+      "result": "PASS"
+    },
+    {
+      "file": "contracts/fixtures/realtime/unavailable.json",
+      "family": "realtime",
+      "expected": "accept",
+      "result": "PASS"
+    },
+    {
+      "file": "contracts/fixtures/realtime/origin-denied.json",
+      "family": "realtime",
+      "expected": "accept",
+      "result": "PASS"
+    },
+    {
+      "file": "contracts/fixtures/realtime/rooms-unavailable.json",
+      "family": "realtime",
+      "expected": "accept",
+      "result": "PASS"
+    },
+    {
+      "file": "contracts/fixtures/realtime/social-policy-baseline.json",
+      "family": "realtime",
+      "expected": "accept",
+      "result": "PASS"
+    },
+    {
+      "file": "contracts/fixtures/realtime/social-policy-private-field-rejection.json",
+      "family": "realtime",
+      "expected": "reject",
+      "result": "PASS"
+    },
+    {
+      "file": "contracts/fixtures/realtime/motion-v1/vectors.json",
+      "family": "realtime",
+      "expected": "accept",
+      "result": "PASS"
+    },
+    {
+      "file": "contracts/fixtures/realtime/motion-v1/negotiated.json",
+      "family": "realtime",
+      "expected": "accept",
+      "result": "PASS"
+    },
+    {
+      "file": "contracts/fixtures/realtime/motion-v1/unsupported-version.json",
+      "family": "realtime",
+      "expected": "reject",
+      "result": "PASS"
+    },
+    {
+      "file": "contracts/fixtures/realtime/motion-v1/null-version.json",
+      "family": "realtime",
+      "expected": "reject",
+      "result": "PASS"
+    },
+    {
+      "file": "contracts/fixtures/realtime/motion-v1/boolean-version.json",
+      "family": "realtime",
+      "expected": "reject",
+      "result": "PASS"
+    },
+    {
+      "file": "contracts/fixtures/assets/avatar-config.json",
+      "family": "assets",
+      "expected": "accept",
+      "result": "PASS"
+    },
+    {
+      "file": "contracts/fixtures/assets/avatar-manifest.json",
+      "family": "assets",
+      "expected": "accept",
+      "result": "PASS"
+    },
+    {
+      "file": "contracts/fixtures/assets/map-manifest.json",
+      "family": "assets",
+      "expected": "accept",
+      "result": "PASS"
+    },
+    {
+      "file": "contracts/fixtures/assets/theme-danger.json",
+      "family": "assets",
+      "expected": "accept",
+      "result": "PASS"
+    },
+    {
+      "file": "contracts/fixtures/assets/theme-parade.json",
+      "family": "assets",
+      "expected": "accept",
+      "result": "PASS"
+    },
+    {
+      "file": "contracts/fixtures/assets/theme-revenge.json",
+      "family": "assets",
+      "expected": "accept",
+      "result": "PASS"
+    },
+    {
+      "file": "contracts/fixtures/assets/selected-static/avatar-manifest.json",
+      "family": "assets",
+      "expected": "accept",
+      "result": "PASS"
+    },
+    {
+      "file": "contracts/fixtures/assets/selected-static/photo01_front_01.json",
+      "family": "assets",
+      "expected": "accept",
+      "result": "PASS"
+    },
+    {
+      "file": "contracts/fixtures/assets/selected-static/photo01_front_02.json",
+      "family": "assets",
+      "expected": "accept",
+      "result": "PASS"
+    },
+    {
+      "file": "contracts/fixtures/assets/selected-static/photo01_front_03.json",
+      "family": "assets",
+      "expected": "accept",
+      "result": "PASS"
+    },
+    {
+      "file": "contracts/fixtures/assets/selected-static/photo01_front_04.json",
+      "family": "assets",
+      "expected": "accept",
+      "result": "PASS"
+    },
+    {
+      "file": "contracts/fixtures/assets/selected-static/photo01_front_05.json",
+      "family": "assets",
+      "expected": "accept",
+      "result": "PASS"
+    },
+    {
+      "file": "contracts/fixtures/assets/selected-static/photo01_front_06.json",
+      "family": "assets",
+      "expected": "accept",
+      "result": "PASS"
+    },
+    {
+      "file": "contracts/fixtures/assets/illustrated/invalid-texture-limit.json",
+      "family": "assets",
+      "expected": "reject",
+      "result": "PASS"
+    },
+    {
+      "file": "contracts/fixtures/assets/illustrated/invalid-unknown-field.json",
+      "family": "assets",
+      "expected": "reject",
+      "result": "PASS"
+    },
+    {
+      "file": "contracts/fixtures/assets/illustrated/valid-theme.json",
+      "family": "assets",
+      "expected": "accept",
+      "result": "PASS"
+    },
+    {
+      "file": "contracts/fixtures/asset-semantics/illustrated-cases.json",
+      "family": "asset-semantics",
+      "cases": 25,
+      "result": "PASS",
+      "case_inventory": [
+        {
+          "name": "valid-base",
+          "expected": "accept",
+          "result": "PASS"
+        },
+        {
+          "name": "valid-ground-detail",
+          "expected": "accept",
+          "result": "PASS"
+        },
+        {
+          "name": "valid-overhang-intersects-world",
+          "expected": "accept",
+          "result": "PASS"
+        },
+        {
+          "name": "valid-exact-transfer-budget",
+          "expected": "accept",
+          "result": "PASS"
+        },
+        {
+          "name": "invalid-ground-extent",
+          "expected": "reject",
+          "result": "PASS"
+        },
+        {
+          "name": "invalid-transfer-budget",
+          "expected": "reject",
+          "result": "PASS"
+        },
+        {
+          "name": "invalid-decoded-budget",
+          "expected": "reject",
+          "result": "PASS"
+        },
+        {
+          "name": "invalid-duplicate-texture-id",
+          "expected": "reject",
+          "result": "PASS"
+        },
+        {
+          "name": "invalid-duplicate-resource-path",
+          "expected": "reject",
+          "result": "PASS"
+        },
+        {
+          "name": "invalid-missing-atlas",
+          "expected": "reject",
+          "result": "PASS"
+        },
+        {
+          "name": "invalid-ground-as-atlas",
+          "expected": "reject",
+          "result": "PASS"
+        },
+        {
+          "name": "invalid-frame-x",
+          "expected": "reject",
+          "result": "PASS"
+        },
+        {
+          "name": "invalid-frame-y",
+          "expected": "reject",
+          "result": "PASS"
+        },
+        {
+          "name": "invalid-world-x-edge",
+          "expected": "reject",
+          "result": "PASS"
+        },
+        {
+          "name": "invalid-world-y-edge",
+          "expected": "reject",
+          "result": "PASS"
+        },
+        {
+          "name": "invalid-no-world-intersection",
+          "expected": "reject",
+          "result": "PASS"
+        },
+        {
+          "name": "invalid-right-overhang",
+          "expected": "reject",
+          "result": "PASS"
+        },
+        {
+          "name": "invalid-bottom-overhang",
+          "expected": "reject",
+          "result": "PASS"
+        },
+        {
+          "name": "invalid-foot-depth",
+          "expected": "reject",
+          "result": "PASS"
+        },
+        {
+          "name": "invalid-object-duplicates",
+          "expected": "reject",
+          "result": "PASS"
+        },
+        {
+          "name": "invalid-97-objects",
+          "expected": "reject",
+          "result": "PASS"
+        },
+        {
+          "name": "invalid-texture-side",
+          "expected": "reject",
+          "result": "PASS"
+        },
+        {
+          "name": "invalid-negative-frame",
+          "expected": "reject",
+          "result": "PASS"
+        },
+        {
+          "name": "invalid-unknown-field",
+          "expected": "reject",
+          "result": "PASS"
+        },
+        {
+          "name": "invalid-null-scenery",
+          "expected": "reject",
+          "result": "PASS"
+        }
+      ]
+    },
+    {
+      "file": "contracts/fixtures/assets/motion-v2/invalid/body-overflow.json",
+      "family": "assets-motion-v2",
+      "expected": "reject",
+      "qualification": "candidate_SCHEMA_ONLY",
+      "result": "PASS"
+    },
+    {
+      "file": "contracts/fixtures/assets/motion-v2/invalid/float-revision.json",
+      "family": "assets-motion-v2",
+      "expected": "reject",
+      "qualification": "candidate_SCHEMA_ONLY",
+      "result": "PASS"
+    },
+    {
+      "file": "contracts/fixtures/assets/motion-v2/invalid/legacy-id.json",
+      "family": "assets-motion-v2",
+      "expected": "reject",
+      "qualification": "candidate_SCHEMA_ONLY",
+      "result": "PASS"
+    },
+    {
+      "file": "contracts/fixtures/assets/motion-v2/invalid/missing-outfit.json",
+      "family": "assets-motion-v2",
+      "expected": "reject",
+      "qualification": "candidate_SCHEMA_ONLY",
+      "result": "PASS"
+    },
+    {
+      "file": "contracts/fixtures/assets/motion-v2/invalid/mixed-representation.json",
+      "family": "assets-motion-v2",
+      "expected": "reject",
+      "qualification": "candidate_SCHEMA_ONLY",
+      "result": "PASS"
+    },
+    {
+      "file": "contracts/fixtures/assets/motion-v2/invalid/null-body.json",
+      "family": "assets-motion-v2",
+      "expected": "reject",
+      "qualification": "candidate_SCHEMA_ONLY",
+      "result": "PASS"
+    },
+    {
+      "file": "contracts/fixtures/assets/motion-v2/invalid/preset-mixed-items.json",
+      "family": "assets-motion-v2",
+      "expected": "reject",
+      "qualification": "candidate_SCHEMA_ONLY",
+      "result": "PASS"
+    },
+    {
+      "file": "contracts/fixtures/assets/motion-v2/invalid/skin-tone.json",
+      "family": "assets-motion-v2",
+      "expected": "reject",
+      "qualification": "candidate_SCHEMA_ONLY",
+      "result": "PASS"
+    },
+    {
+      "file": "contracts/fixtures/assets/motion-v2/invalid/unknown-manifest.json",
+      "family": "assets-motion-v2",
+      "expected": "reject",
+      "qualification": "candidate_SCHEMA_ONLY",
+      "result": "PASS"
+    },
+    {
+      "file": "contracts/fixtures/assets/motion-v2/invalid/unknown-nested.json",
+      "family": "assets-motion-v2",
+      "expected": "reject",
+      "qualification": "candidate_SCHEMA_ONLY",
+      "result": "PASS"
+    },
+    {
+      "file": "contracts/fixtures/assets/motion-v2/invalid/unknown-preset.json",
+      "family": "assets-motion-v2",
+      "expected": "reject",
+      "qualification": "candidate_SCHEMA_ONLY",
+      "result": "PASS"
+    },
+    {
+      "file": "contracts/fixtures/assets/motion-v2/invalid/url.json",
+      "family": "assets-motion-v2",
+      "expected": "reject",
+      "qualification": "candidate_SCHEMA_ONLY",
+      "result": "PASS"
+    },
+    {
+      "file": "contracts/fixtures/assets/motion-v2/invalid/wrong-kind.json",
+      "family": "assets-motion-v2",
+      "expected": "reject",
+      "qualification": "candidate_SCHEMA_ONLY",
+      "result": "PASS"
+    },
+    {
+      "file": "contracts/fixtures/assets/motion-v2/invalid/wrong-revision.json",
+      "family": "assets-motion-v2",
+      "expected": "reject",
+      "qualification": "candidate_SCHEMA_ONLY",
+      "result": "PASS"
+    },
+    {
+      "file": "contracts/fixtures/assets/motion-v2/invalid/wrong-slot.json",
+      "family": "assets-motion-v2",
+      "expected": "reject",
+      "qualification": "candidate_SCHEMA_ONLY",
+      "result": "PASS"
+    },
+    {
+      "file": "contracts/fixtures/assets/motion-v2/invalid/wrong-version.json",
+      "family": "assets-motion-v2",
+      "expected": "reject",
+      "qualification": "candidate_SCHEMA_ONLY",
+      "result": "PASS"
+    },
+    {
+      "file": "contracts/fixtures/assets/motion-v2/valid/layered-body-0.json",
+      "family": "assets-motion-v2",
+      "expected": "accept",
+      "qualification": "candidate_SCHEMA_ONLY",
+      "result": "PASS"
+    },
+    {
+      "file": "contracts/fixtures/assets/motion-v2/valid/layered-body-1.json",
+      "family": "assets-motion-v2",
+      "expected": "accept",
+      "qualification": "candidate_SCHEMA_ONLY",
+      "result": "PASS"
+    },
+    {
+      "file": "contracts/fixtures/assets/motion-v2/valid/layered-body-2.json",
+      "family": "assets-motion-v2",
+      "expected": "accept",
+      "qualification": "candidate_SCHEMA_ONLY",
+      "result": "PASS"
+    },
+    {
+      "file": "contracts/fixtures/assets/motion-v2/valid/layered-body-3.json",
+      "family": "assets-motion-v2",
+      "expected": "accept",
+      "qualification": "candidate_SCHEMA_ONLY",
+      "result": "PASS"
+    },
+    {
+      "file": "contracts/fixtures/assets/motion-v2/valid/layered-body-4.json",
+      "family": "assets-motion-v2",
+      "expected": "accept",
+      "qualification": "candidate_SCHEMA_ONLY",
+      "result": "PASS"
+    },
+    {
+      "file": "contracts/fixtures/assets/motion-v2/valid/layered-body-5.json",
+      "family": "assets-motion-v2",
+      "expected": "accept",
+      "qualification": "candidate_SCHEMA_ONLY",
+      "result": "PASS"
+    },
+    {
+      "file": "contracts/fixtures/assets/motion-v2/valid/layered-body-6.json",
+      "family": "assets-motion-v2",
+      "expected": "accept",
+      "qualification": "candidate_SCHEMA_ONLY",
+      "result": "PASS"
+    },
+    {
+      "file": "contracts/fixtures/assets/motion-v2/valid/layered-body-7.json",
+      "family": "assets-motion-v2",
+      "expected": "accept",
+      "qualification": "candidate_SCHEMA_ONLY",
+      "result": "PASS"
+    },
+    {
+      "file": "contracts/fixtures/assets/motion-v2/valid/layered-max.json",
+      "family": "assets-motion-v2",
+      "expected": "accept",
+      "qualification": "candidate_SCHEMA_ONLY",
+      "result": "PASS"
+    },
+    {
+      "file": "contracts/fixtures/assets/motion-v2/valid/preset-01.json",
+      "family": "assets-motion-v2",
+      "expected": "accept",
+      "qualification": "candidate_SCHEMA_ONLY",
+      "result": "PASS"
+    },
+    {
+      "file": "contracts/fixtures/assets/motion-v2/valid/preset-02.json",
+      "family": "assets-motion-v2",
+      "expected": "accept",
+      "qualification": "candidate_SCHEMA_ONLY",
+      "result": "PASS"
+    },
+    {
+      "file": "contracts/fixtures/assets/motion-v2/valid/preset-03.json",
+      "family": "assets-motion-v2",
+      "expected": "accept",
+      "qualification": "candidate_SCHEMA_ONLY",
+      "result": "PASS"
+    },
+    {
+      "file": "contracts/fixtures/assets/motion-v2/valid/preset-04.json",
+      "family": "assets-motion-v2",
+      "expected": "accept",
+      "qualification": "candidate_SCHEMA_ONLY",
+      "result": "PASS"
+    },
+    {
+      "file": "contracts/fixtures/assets/motion-v2/valid/preset-05.json",
+      "family": "assets-motion-v2",
+      "expected": "accept",
+      "qualification": "candidate_SCHEMA_ONLY",
+      "result": "PASS"
+    },
+    {
+      "file": "contracts/fixtures/assets/motion-v2/valid/preset-06.json",
+      "family": "assets-motion-v2",
+      "expected": "accept",
+      "qualification": "candidate_SCHEMA_ONLY",
+      "result": "PASS"
+    },
+    {
+      "file": "contracts/fixtures/assets/motion-v2/reviewed/invalid/body-overflow.json",
+      "family": "assets-motion-v2",
+      "expected": "reject",
+      "qualification": "reviewed_SCHEMA_ONLY",
+      "result": "PASS"
+    },
+    {
+      "file": "contracts/fixtures/assets/motion-v2/reviewed/invalid/float-revision.json",
+      "family": "assets-motion-v2",
+      "expected": "reject",
+      "qualification": "reviewed_SCHEMA_ONLY",
+      "result": "PASS"
+    },
+    {
+      "file": "contracts/fixtures/assets/motion-v2/reviewed/invalid/legacy-id.json",
+      "family": "assets-motion-v2",
+      "expected": "reject",
+      "qualification": "reviewed_SCHEMA_ONLY",
+      "result": "PASS"
+    },
+    {
+      "file": "contracts/fixtures/assets/motion-v2/reviewed/invalid/missing-outfit.json",
+      "family": "assets-motion-v2",
+      "expected": "reject",
+      "qualification": "reviewed_SCHEMA_ONLY",
+      "result": "PASS"
+    },
+    {
+      "file": "contracts/fixtures/assets/motion-v2/reviewed/invalid/mixed-representation.json",
+      "family": "assets-motion-v2",
+      "expected": "reject",
+      "qualification": "reviewed_SCHEMA_ONLY",
+      "result": "PASS"
+    },
+    {
+      "file": "contracts/fixtures/assets/motion-v2/reviewed/invalid/null-body.json",
+      "family": "assets-motion-v2",
+      "expected": "reject",
+      "qualification": "reviewed_SCHEMA_ONLY",
+      "result": "PASS"
+    },
+    {
+      "file": "contracts/fixtures/assets/motion-v2/reviewed/invalid/preset-mixed-items.json",
+      "family": "assets-motion-v2",
+      "expected": "reject",
+      "qualification": "reviewed_SCHEMA_ONLY",
+      "result": "PASS"
+    },
+    {
+      "file": "contracts/fixtures/assets/motion-v2/reviewed/invalid/skin-tone.json",
+      "family": "assets-motion-v2",
+      "expected": "reject",
+      "qualification": "reviewed_SCHEMA_ONLY",
+      "result": "PASS"
+    },
+    {
+      "file": "contracts/fixtures/assets/motion-v2/reviewed/invalid/unknown-manifest.json",
+      "family": "assets-motion-v2",
+      "expected": "reject",
+      "qualification": "reviewed_SCHEMA_ONLY",
+      "result": "PASS"
+    },
+    {
+      "file": "contracts/fixtures/assets/motion-v2/reviewed/invalid/unknown-nested.json",
+      "family": "assets-motion-v2",
+      "expected": "reject",
+      "qualification": "reviewed_SCHEMA_ONLY",
+      "result": "PASS"
+    },
+    {
+      "file": "contracts/fixtures/assets/motion-v2/reviewed/invalid/unknown-preset.json",
+      "family": "assets-motion-v2",
+      "expected": "reject",
+      "qualification": "reviewed_SCHEMA_ONLY",
+      "result": "PASS"
+    },
+    {
+      "file": "contracts/fixtures/assets/motion-v2/reviewed/invalid/url.json",
+      "family": "assets-motion-v2",
+      "expected": "reject",
+      "qualification": "reviewed_SCHEMA_ONLY",
+      "result": "PASS"
+    },
+    {
+      "file": "contracts/fixtures/assets/motion-v2/reviewed/invalid/wrong-kind.json",
+      "family": "assets-motion-v2",
+      "expected": "reject",
+      "qualification": "reviewed_SCHEMA_ONLY",
+      "result": "PASS"
+    },
+    {
+      "file": "contracts/fixtures/assets/motion-v2/reviewed/invalid/wrong-revision.json",
+      "family": "assets-motion-v2",
+      "expected": "reject",
+      "qualification": "reviewed_SCHEMA_ONLY",
+      "result": "PASS"
+    },
+    {
+      "file": "contracts/fixtures/assets/motion-v2/reviewed/invalid/wrong-slot.json",
+      "family": "assets-motion-v2",
+      "expected": "reject",
+      "qualification": "reviewed_SCHEMA_ONLY",
+      "result": "PASS"
+    },
+    {
+      "file": "contracts/fixtures/assets/motion-v2/reviewed/invalid/wrong-version.json",
+      "family": "assets-motion-v2",
+      "expected": "reject",
+      "qualification": "reviewed_SCHEMA_ONLY",
+      "result": "PASS"
+    },
+    {
+      "file": "contracts/fixtures/assets/motion-v2/reviewed/valid/layered-body-0.json",
+      "family": "assets-motion-v2",
+      "expected": "accept",
+      "qualification": "reviewed_SCHEMA_ONLY",
+      "result": "PASS"
+    },
+    {
+      "file": "contracts/fixtures/assets/motion-v2/reviewed/valid/layered-body-1.json",
+      "family": "assets-motion-v2",
+      "expected": "accept",
+      "qualification": "reviewed_SCHEMA_ONLY",
+      "result": "PASS"
+    },
+    {
+      "file": "contracts/fixtures/assets/motion-v2/reviewed/valid/layered-body-2.json",
+      "family": "assets-motion-v2",
+      "expected": "accept",
+      "qualification": "reviewed_SCHEMA_ONLY",
+      "result": "PASS"
+    },
+    {
+      "file": "contracts/fixtures/assets/motion-v2/reviewed/valid/layered-body-3.json",
+      "family": "assets-motion-v2",
+      "expected": "accept",
+      "qualification": "reviewed_SCHEMA_ONLY",
+      "result": "PASS"
+    },
+    {
+      "file": "contracts/fixtures/assets/motion-v2/reviewed/valid/layered-body-4.json",
+      "family": "assets-motion-v2",
+      "expected": "accept",
+      "qualification": "reviewed_SCHEMA_ONLY",
+      "result": "PASS"
+    },
+    {
+      "file": "contracts/fixtures/assets/motion-v2/reviewed/valid/layered-body-5.json",
+      "family": "assets-motion-v2",
+      "expected": "accept",
+      "qualification": "reviewed_SCHEMA_ONLY",
+      "result": "PASS"
+    },
+    {
+      "file": "contracts/fixtures/assets/motion-v2/reviewed/valid/layered-body-6.json",
+      "family": "assets-motion-v2",
+      "expected": "accept",
+      "qualification": "reviewed_SCHEMA_ONLY",
+      "result": "PASS"
+    },
+    {
+      "file": "contracts/fixtures/assets/motion-v2/reviewed/valid/layered-body-7.json",
+      "family": "assets-motion-v2",
+      "expected": "accept",
+      "qualification": "reviewed_SCHEMA_ONLY",
+      "result": "PASS"
+    },
+    {
+      "file": "contracts/fixtures/assets/motion-v2/reviewed/valid/layered-max.json",
+      "family": "assets-motion-v2",
+      "expected": "accept",
+      "qualification": "reviewed_SCHEMA_ONLY",
+      "result": "PASS"
+    },
+    {
+      "file": "contracts/fixtures/assets/motion-v2/reviewed/valid/preset-01.json",
+      "family": "assets-motion-v2",
+      "expected": "accept",
+      "qualification": "reviewed_SCHEMA_ONLY",
+      "result": "PASS"
+    },
+    {
+      "file": "contracts/fixtures/assets/motion-v2/reviewed/valid/preset-02.json",
+      "family": "assets-motion-v2",
+      "expected": "accept",
+      "qualification": "reviewed_SCHEMA_ONLY",
+      "result": "PASS"
+    },
+    {
+      "file": "contracts/fixtures/assets/motion-v2/reviewed/valid/preset-03.json",
+      "family": "assets-motion-v2",
+      "expected": "accept",
+      "qualification": "reviewed_SCHEMA_ONLY",
+      "result": "PASS"
+    },
+    {
+      "file": "contracts/fixtures/assets/motion-v2/reviewed/valid/preset-04.json",
+      "family": "assets-motion-v2",
+      "expected": "accept",
+      "qualification": "reviewed_SCHEMA_ONLY",
+      "result": "PASS"
+    },
+    {
+      "file": "contracts/fixtures/assets/motion-v2/reviewed/valid/preset-05.json",
+      "family": "assets-motion-v2",
+      "expected": "accept",
+      "qualification": "reviewed_SCHEMA_ONLY",
+      "result": "PASS"
+    },
+    {
+      "file": "contracts/fixtures/assets/motion-v2/reviewed/valid/preset-06.json",
+      "family": "assets-motion-v2",
+      "expected": "accept",
+      "qualification": "reviewed_SCHEMA_ONLY",
+      "result": "PASS"
+    }
+  ],
+  "generators": [
+    {
+      "command": "python3 -B backend/scripts/docs/generate-mcr-core.py --check",
+      "exit": 0,
+      "output": "MCR core target contract checked"
+    },
+    {
+      "command": "python3 -B backend/scripts/docs/generate-mcr-domain.py --check",
+      "exit": 0,
+      "output": "MCR domain HTTP REVIEW_CANDIDATE checked"
+    },
+    {
+      "command": "python3 -B scripts/mcr/generate-domain-transport.py --check",
+      "exit": 1,
+      "output": "Traceback (most recent call last):\n  File \"/Users/lhs/Desktop/mcr-worktrees/sl-world/scripts/mcr/generate-domain-transport.py\", line 87, in <module>\n    main()\n    ~~~~^^\n  File \"/Users/lhs/Desktop/mcr-worktrees/sl-world/scripts/mcr/generate-domain-transport.py\", line 79, in main\n    assert DEST.read_text() == output, \"Domain transport metadata drift; regenerate\"\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError: Domain transport metadata drift; regenerate"
+    }
+  ],
+  "result": "FAIL",
+  "error": "ValueError: generator drift/check failure: scripts/mcr/generate-domain-transport.py"
+}

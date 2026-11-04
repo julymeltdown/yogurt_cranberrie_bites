@@ -1,0 +1,28 @@
+{
+  "lease": "CORE-COHERENT-METADATA-SOURCE-20261104T1927Z",
+  "source": "b0bfe3b5a41675340ebba605dd6e0168e5780098",
+  "canonical": "2ff0aab865a06a5664d2096ba572c766ac0fba85",
+  "readsetSha256": "de1ae4231054bde5634e1d36d990d8816d900f4b81429198976c4d6be7fc1fc4",
+  "guardianSha256": "8a1a125834c73e66952390dcef2fbf09655879baae778f78bded743cbb66a23a",
+  "acceptedAt": 1793820408.660161,
+  "activeEnd": 1793820998.577352,
+  "deadline": 1793821058.577352,
+  "freeBytes": 15448821760,
+  "otherWorstNewBytes": 1476395008,
+  "startFloorGiB": 12,
+  "liveFloorGiB": 8,
+  "reserveMarginGiB": 9,
+  "ownWorstNewBytes": 134217728,
+  "remainingMarginBytes": 13838209024,
+  "wholeFloorBytes": 1406181200,
+  "caps": {
+    "processes": 24,
+    "rssBytes": 4294967296,
+    "wholeBytes": 2147483648,
+    "newBytes": 134217728,
+    "tmpBytes": 100663296,
+    "durableBytes": 25165824
+  },
+  "privateTmp": "/private/tmp/mcr-c07-enrollment-1927",
+  "portsCreated": []
+}

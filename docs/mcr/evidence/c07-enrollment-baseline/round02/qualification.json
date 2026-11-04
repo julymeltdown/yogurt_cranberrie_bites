@@ -1,0 +1,11 @@
+{
+  "task": "CORE-ENROLLMENT-C07-01",
+  "canonical": "2ff0aab865a06a5664d2096ba572c766ac0fba85",
+  "source": "2a1850de1675e1caea4d1cd395f21fc5f149b662",
+  "started": 1793819536.545187,
+  "commands": [],
+  "status": "FAIL",
+  "hosted": "NOT_RUN_NOT_REQUIRED",
+  "error": "ValueError(\"Unsupported schema keyword: {'exclusiveMinimum'}\")",
+  "finished": 1793819536.793499
+}
