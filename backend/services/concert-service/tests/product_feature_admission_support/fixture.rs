@@ -120,16 +120,10 @@ pub async fn call(
     let headers = response.headers().clone();
     let collected = response.into_body().collect().await.unwrap();
     let trailers = collected.trailers();
-    let field = |name| {
-        headers
-            .get(name)
-            .or_else(|| trailers.and_then(|t| t.get(name)))
-            .and_then(|v| v.to_str().ok())
-            .unwrap_or("")
-            .to_owned()
-    };
-    let code = Code::from_i32(field("grpc-status").parse().expect("gRPC terminal status"));
-    (code, field("grpc-message"))
+    let status = Status::from_header_map(&headers)
+        .or_else(|| trailers.and_then(Status::from_header_map))
+        .expect("gRPC terminal status");
+    (status.code(), status.message().to_owned())
 }
 #[derive(Clone, Debug)]
 pub struct Admission {
