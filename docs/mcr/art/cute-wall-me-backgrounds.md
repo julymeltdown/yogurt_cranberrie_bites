@@ -10,6 +10,7 @@ required. This document does not accept FE32, FE34, IN04, or mobile release gate
 - Source baseline: `bfa01939`, isolated worktree
   `/Users/lhs/.codex/worktrees/12a1/mcr`, branch
   `codex/mcr-art-cute-wall-me-v1`.
+- Editable asset handoff: `8ff3a58f556bf2811ad1415cd31c5ba1953ccd58`.
 - This author owns only new
   `frontend/public/backgrounds/cute-wall-me-v1/**` and this document.
 - ID01 (`01a1a533-50a8-7fb2-b3ed-96b941b96bbf`) is the Me CSS consumer;
@@ -103,3 +104,17 @@ and forced-color behavior, and unchanged character/canvas rendering. This asset
 pack adds no motion and should disappear naturally in forced colors if the user
 agent suppresses background images. Physical-device, live multiuser and release
 qualification remain outside this bounded asset source check.
+
+## Committed consumer source handoffs
+
+The asset author inspected these committed CSS declarations through `git show`
+on 2026-11-04; this establishes source adoption only, not live application use.
+
+| Consumer commit | Exact adoption of this pack |
+| --- | --- |
+| COM01 `8824401dec061102c9af33ba302855e48563170a` | New `frontend/src/shared/styles/cozy-community-backgrounds-v1.css`: `:root .shell-panel[data-mcr-panel='wall'] > .shell-panel-body` uses `wall-stationery.svg`, fallback `#fff0de`, `center top`, `100% auto`, `no-repeat`. No mural/editor/character selector. Root's existing-main route attribute and stylesheet import are still required. |
+| ID01 `e44b5d1c38f05b03a74904c94004d5fc983b2493` | New `frontend/src/shared/styles/cozy-identity-backgrounds-v1.css`: `:root .me-hub--reference .me-profile-header` uses `me-night-ribbon.svg` / `#573344`; `.me-bio` and `.me-activity-navigation` under the same Me root use `me-scrapbook.svg` / `#fff0e7`. These three rules set background paint only, with `center`, `100% 100%`, `no-repeat`. No avatar selector. Root's stylesheet import is still required. |
+
+Neither consumer source commit proves publication, image decoding, same-state
+geometry/pixel equivalence, control usability or the requested at-a-glance
+visual improvement. Those obligations remain open for the combined candidate.
