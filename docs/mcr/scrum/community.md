@@ -88,7 +88,7 @@ interfaces, not a blanket barrier to frozen client work:
 
 | Dependency | Named implementation contact | Last handoff / next action |
 |---|---|---|
-| Wall producer and writable authority increment | `01a1a21e-ab80-7012-b9fa-cdb69eed097b` (BE-WALL-LIVE) | Frozen C04/MuralEntryRelease handoff delivered directly to FE33; actual qualified producer publication is not established by the receipts in this record |
+| Wall producer and writable authority increment | `01a1a21e-ab80-7012-b9fa-cdb69eed097b` (BE-WALL-LIVE) | Qualified fixture handoff at clean branch `codex/mcr-be-wall-live`, HEAD `57dc31e1`, delivered directly to Product root. Owner reports actual canonical PreparedWallFence compiled, private PostgreSQL 16.14 ten checks PASS/zero FAIL or ignored plus cleanup, harness seven PASS. Four frozen C04 wire APIs retain original-key/exact-body semantics and corrected optional cooldown hint. This receipt does not establish remote publication, production supplier/anchor/eligibility or actual root HTTP/completion; real IN04 remains NOT_RUN |
 | Product/Gateway mappings and production entry composition | `01a1a1fc-7f3d-7ff1-9416-e3435c8a6f08` | Supply actual producer/configuration handoff; route existence does not confer availability |
 | Canonical held authority | `01a1a207-f012-7343-a24b-12b9c544973f` | Technical interface and qualification belong to the implementation owners |
 | Actual incumbent World binding | `01a1a20f-8d37-71c3-a429-8a55bb6d6c49` | Resolve genuine connection/binding inputs directly with implementation owners |
