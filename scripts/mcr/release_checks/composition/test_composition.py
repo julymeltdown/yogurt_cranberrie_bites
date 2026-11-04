@@ -13,7 +13,7 @@ from unittest.mock import patch
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 import check as source
 from composition.model import AUTHORITY, GATES, SCHEMA, evaluate
-from composition.reports import SCHEMA as EVIDENCE_SCHEMA, playwright_counts, rust_counts
+from composition.reports import SCHEMA as EVIDENCE_SCHEMA, playwright_counts, rust_counts, unittest_counts
 
 ROOT = Path(__file__).resolve().parents[4]
 FOLDER = "docs/mcr/evidence/release/parser-fixture"
@@ -336,6 +336,12 @@ class Composition(unittest.TestCase):
         value["stats"]["expected"] = 2
         with self.assertRaises(source.Rejected):
             playwright_counts(self.bytes(value))
+
+    def test_unittest_requires_named_actual_points_not_just_ok_footer(self):
+        text = b"test_boundary (module.Suite.test_boundary) ... ok\n\nRan 1 test in 0.001s\n\nOK\n"
+        self.assertEqual(unittest_counts(text)["passed"], 1)
+        with self.assertRaises(source.Rejected):
+            unittest_counts(b"Ran 1 test in 0.001s\nOK\n")
 
     def test_default_source_and_explicit_composition_cli_stay_separate(self):
         self.run_check()

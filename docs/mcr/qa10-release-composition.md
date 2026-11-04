@@ -131,6 +131,9 @@ Supported report formats:
   results, suite statistics, nonempty passing cases and no retries, flakes or
   expected failures. Skips remain incomplete; browser execution alone does not
   qualify physical devices or actual services.
+- `python-unittest` consumes verbose named test points, one actual running
+  summary and consistent OK/skip counts, with explicitly dispatched pinned test
+  modules. It qualifies unit level only; a footer without cases is refused.
 - `observations-json` is an explicit owner adapter for existing service/device/
   operator procedures. Its closed `mcr.qa10.observations.v1` object repeats the
   exact candidate and actual command, and contains nonempty named

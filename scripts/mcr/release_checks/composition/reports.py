@@ -81,6 +81,19 @@ def playwright_counts(data, expected_files=None):
     return {"total": len(cases), "passed": passed, "skipped": skipped}
 
 
+def unittest_counts(data):
+    text = data.decode("utf-8")
+    ran = re.findall(r"^Ran (\d+) tests? in [\d.]+s$", text, re.M)
+    cases = re.findall(r"^(test_\S+ \([^\n]+\)) \.\.\. (ok|skipped [^\n]+)$", text, re.M)
+    footer = re.findall(r"^OK(?: \(skipped=(\d+)\))?$", text, re.M)
+    source.require(len(ran) == len(footer) == 1 and int(ran[0]) > 0
+                   and len(cases) == int(ran[0]) and len({n for n, _ in cases}) == len(cases),
+                   "unittest.inventory")
+    skipped = sum(s.startswith("skipped ") for _, s in cases)
+    source.require(skipped == int(footer[0] or 0) and len(cases) > skipped, "unittest.counts")
+    return {"total": len(cases), "passed": len(cases) - skipped, "skipped": skipped}
+
+
 def observation_counts(repo, data, report, expected):
     doc = source.decode(data)
     closed(doc, ("schema", "candidate", "command", "cases"), "observations.shape")
@@ -221,6 +234,15 @@ def evidence(repo, report, expected, folder):
                        and all(any(str(PurePosixPath(cwd) / a) == f for a in argv) for f in files),
                        "playwright.not-dispatched")
         counts = playwright_counts(data, files)
+    elif fmt == "python-unittest":
+        source.require(report["level"] == "unit" and PurePosixPath(argv[0]).name.startswith("python")
+                       and "unittest" in argv and "-v" in argv, "unittest.runner")
+        directory = PurePosixPath(cwd)
+        for file in files:
+            relative = PurePosixPath(file).relative_to(directory) if cwd != "." else PurePosixPath(file)
+            module = str(relative.with_suffix("")).replace("/", ".")
+            source.require(any(a == module or a.startswith(module + ".") for a in argv), "unittest.not-dispatched")
+        counts = unittest_counts(data)
     elif fmt in ("tap", "vitest-json"):
         source.require(report["level"] == "unit", "evidence.unit-as-live")
         command = {**report, "schema": source.COMMAND_SCHEMA, "kind": "tests"}
