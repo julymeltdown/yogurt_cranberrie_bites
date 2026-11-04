@@ -1,10 +1,11 @@
 # Shared Intro startup
 
-Status: **IN_PROGRESS**. The Root-owned startup patch is being composed with the
-CF02 shared Participant factory and CF03 signed Product admission. Formatting
-and source inspection are complete; compilation, native joined flow and actual
-production-process startup for this patch are **NOT_RUN** until a fresh usable
-resource allocation. Earlier Intro component results do not certify this patch.
+Status: **INTEGRATED**. The Root-owned startup composes the qualified CF02 shared
+Participant factory and CF03 signed Product admission. Fresh compilation and
+the actual production Concert process passed at
+`22497af9c315d4d74403467a2529ed95b5b79f06`. This qualifies the configured internal
+service composition; public Gateway HTTP, browser behavior and full IN03 remain
+separate open checks. Earlier component evidence is retained separately.
 
 `CONCERT_INTRO_MODE` accepts `off` (default) or `live`. Live mode requires the
 existing guarded gRPC and live Participant settings, including its canonical
@@ -54,8 +55,34 @@ Intro, Age, canonical-owner and Participant implementations without copying
 legacy rendering or changing dependencies, migrations, contracts or source
 archives. CF02 and CF03 retain separate implementation ownership and evidence.
 
-Planned validation includes closed settings/secret-role failures, actual signed
-Intro read/write dispatch against the shared canonical stores, original EOF and
-child settlement, standalone Participant regression, malformed pre-listener
-configuration, and production-process shutdown. Results and exact tested
-source/artifact pins will replace this pending record after execution.
+Fresh validation used the named finite
+`ROOT-INTRO-COMBINED-MEDIA-202611041008Z` allocation. Exact evidence, committed
+source inventory and copied Cargo artifact identities are recorded in
+[the Root startup receipt](root-intro-startup.json). No dependency, migration,
+contract or frontend change was needed for this startup patch.
+
+| Check | Actual result |
+| --- | --- |
+| Rust 1.88 locked/offline compile, jobs 2, debug 0, incremental 0 | Exit 0; exactly the `intro_runtime` and `intro_startup` test artifacts plus automatically emitted production Concert main were frozen |
+| Closed configuration and retained secret-role cases | 5 passed, exit 0 |
+| Actual production executable with real Auth/Friend/Profile owners | 1 native test passed, exit 0; owner services in-process, Concert in its actual separate production process, genuine signed mutual TLS |
+| Six Intro operations and Participant before/after | Real set, publish, own, list, detail and close; two Participant reads; eight delivered roots on one configured instance |
+| Response terminal | Inner gRPC EOF retained each active root; the mounted delivery service completed all eight; zero pending child intents |
+| Native persistence | Auth/Friend/Concert/Profile migration ledgers 18/18/38/9; all four stores had zero prepared transactions before teardown |
+| Startup and shutdown | Missing required Intro material failed before a Concert listener; configured process exited 0 after its owned SIGTERM and listener closed |
+| Resource release | Target zero-handle release preceded every copied test/PG/listener; host, postmaster, process group and owned roots absent at full release; no later target access |
+
+Maximum sampled whole allocation was 1,119,145,984 bytes, including the
+862,949,376-byte conservative retained artifact carry and 56,614,912 bytes of
+fixed target growth, below the 2 GiB cap. Target-to-full-release time was
+108.367 seconds, below the copied phase's 180-second allowance including its
+60-second cleanup reserve. The runtime minimum sampled free space was
+19,223,232,512 bytes; the compile guard enforced the 8 GiB floor but did not
+store its minimum. Sampling does not prove unsampled peaks.
+
+CF02 separately qualified shared and standalone Participant GET/PATCH, original
+expiry, missing-key refusal and typed child recovery; CF03 separately qualified
+ten guarded admission cases and one genuine mTLS case. This joined run adds
+actual production startup and six positive Intro operations, without claiming
+a successful Notification inbox, an accepted age issuer, independent owner
+processes, a public HTTP/browser journey, production deployment or full IN03.

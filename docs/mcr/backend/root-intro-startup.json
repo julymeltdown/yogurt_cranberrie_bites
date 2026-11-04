@@ -1,0 +1,285 @@
+{
+  "artifacts": {
+    "concert-service": {
+      "bytes": 55297920,
+      "cargo_profile": {
+        "debug_assertions": true,
+        "debuginfo": 0,
+        "opt_level": "0",
+        "overflow_checks": true,
+        "test": false
+      },
+      "cargo_target": {
+        "crate_types": [
+          "bin"
+        ],
+        "doc": true,
+        "doctest": false,
+        "edition": "2021",
+        "kind": [
+          "bin"
+        ],
+        "name": "concert-service",
+        "src_path": "/Users/lhs/Desktop/mcr-worktrees/be-media-combined/backend/services/concert-service/src/main.rs",
+        "test": true
+      },
+      "copied_path": "/private/tmp/mcr-root-intro-startup-cx0ogb2d/concert-service",
+      "sha256": "e7dee984d4af0b8f4a49b525b392a8aabbc21843b74cc6ffbf219712fb71013a"
+    },
+    "intro_runtime": {
+      "bytes": 2484944,
+      "cargo_profile": {
+        "debug_assertions": true,
+        "debuginfo": 0,
+        "opt_level": "0",
+        "overflow_checks": true,
+        "test": true
+      },
+      "cargo_target": {
+        "crate_types": [
+          "bin"
+        ],
+        "doc": false,
+        "doctest": false,
+        "edition": "2021",
+        "kind": [
+          "test"
+        ],
+        "name": "intro_runtime",
+        "src_path": "/Users/lhs/Desktop/mcr-worktrees/be-media-combined/backend/services/concert-service/tests/intro_runtime.rs",
+        "test": true
+      },
+      "copied_path": "/private/tmp/mcr-root-intro-startup-cx0ogb2d/intro_runtime-tests",
+      "sha256": "38a57d4dc8bf05402efc4661576c73f9caf3eeb50bfc312307b93a999d3ee755"
+    },
+    "intro_startup": {
+      "bytes": 43453056,
+      "cargo_profile": {
+        "debug_assertions": true,
+        "debuginfo": 0,
+        "opt_level": "0",
+        "overflow_checks": true,
+        "test": true
+      },
+      "cargo_target": {
+        "crate_types": [
+          "bin"
+        ],
+        "doc": false,
+        "doctest": false,
+        "edition": "2021",
+        "kind": [
+          "test"
+        ],
+        "name": "intro_startup",
+        "src_path": "/Users/lhs/Desktop/mcr-worktrees/be-media-combined/backend/services/concert-service/tests/intro_startup.rs",
+        "test": true
+      },
+      "copied_path": "/private/tmp/mcr-root-intro-startup-cx0ogb2d/intro_startup-tests",
+      "sha256": "7813c4b75b453da846caf006787f07d0b476329d9aaeb647909ff9dc6360056b"
+    }
+  },
+  "contract_pins": {
+    "backend/Cargo.lock": "fecccd21516fd793bbb63e20d36919e400eae70bd26e6eca7ce6c1d1fc0a9360",
+    "backend/proto/concert/v1/participant.proto": "ccc90e9c9ccf5aee22a139cd617026f3681a643a4bffe806d734cc591a5d021e",
+    "backend/proto/concert/v1/product.proto": "e24940d19d6c348d6b5cc32ab169b7c51aaf9f6259ffb1ca2598433604fdc6ae",
+    "contracts/domain/v1/operations.json": "f801d703dfc5509bbe06a2f0fa07a170b6442a48b2204c7ead460fc9a3600112",
+    "contracts/domain/v1/policy.json": "646f25a81e64ee4f0958c86ea5c46829780bc42dde15c7bf05362f7bd974f294"
+  },
+  "evidence": {
+    "build-attempt1-receipt.json": {
+      "path": "/private/tmp/mcr-root-intro-startup-cx0ogb2d/build-attempt1-receipt.json",
+      "sha256": "57c7b4a0e738f278cf538e2a8b1d00303146f01f1f791d23f605473e4e2f91a2"
+    },
+    "full-release.json": {
+      "path": "/private/tmp/mcr-root-intro-startup-cx0ogb2d/full-release.json",
+      "sha256": "8cf48c06266c16e5ce06ecb40c7015ce517c5aaa5fa1f690fb52211ae7d98e6e"
+    },
+    "intro-actual-main.log": {
+      "path": "/private/tmp/mcr-root-intro-startup-cx0ogb2d/intro-actual-main.log",
+      "sha256": "184242cc1eb524461983942756106db05e2d5a8412e0722dfe50476bc1ea46de"
+    },
+    "intro-invalid-startup.log": {
+      "path": "/private/tmp/mcr-root-intro-startup-cx0ogb2d/intro-invalid-startup.log",
+      "sha256": "d036b28263fd8205f98a89104043dac76507e14b5050c44c02a364e86a3a0ddf"
+    },
+    "native-host.log": {
+      "path": "/private/tmp/mcr-root-intro-startup-cx0ogb2d/native-host.log",
+      "sha256": "14cbabd6f7262c72f116d1264297ac4eb463563e7439092fc97f9559c68c311a"
+    },
+    "native.json": {
+      "path": "/private/tmp/mcr-root-intro-startup-cx0ogb2d/native.json",
+      "sha256": "fe49e094754a5d88736dcea469619b64ae91e2f38bcf2f23ac753d750c486fc0"
+    },
+    "offer-acceptance.json": {
+      "path": "/private/tmp/mcr-root-intro-startup-cx0ogb2d/offer-acceptance.json",
+      "sha256": "d8e9bcb46e46431e0253210de57c86d88449769ed50e2bcc439601de492d0e90"
+    },
+    "regular.log": {
+      "path": "/private/tmp/mcr-root-intro-startup-cx0ogb2d/regular.log",
+      "sha256": "822a28651276acb9a2313e85117177615e727de0782deac858623855992cf4c0"
+    },
+    "runtime-guard.json": {
+      "path": "/private/tmp/mcr-root-intro-startup-cx0ogb2d/runtime-guard.json",
+      "sha256": "b3745faf2c7b0df8d4d84e53dc309981b38386e6a1ab9a847cdbc56c04c27084"
+    },
+    "target-release.json": {
+      "path": "/private/tmp/mcr-root-intro-startup-cx0ogb2d/target-release.json",
+      "sha256": "8b5b7fcc0ff1e570ecc7fc997580aabaabc80b5696169321173b1f88a04be47a"
+    }
+  },
+  "implementation_commit": "0fd6cad2e46334b9240d2139a3545c38e61f0ff3",
+  "limitations": [
+    "Only explicit CONCERT_INTRO_MODE=live enables the configured service; default off remains",
+    "Actual Auth/Friend/Profile owners run in-process in the native host; Concert is the actual separate production executable",
+    "Direct signed mutual-TLS RPC and mounted completion, not public Gateway HTTP or browser E2E",
+    "No successful Notification inbox, age verification provider, full Meet/IN03 acceptance or production deployment",
+    "Bootstrap capability declarations unchanged; no canonical authority minted from client observations",
+    "No new dependencies, migrations, protocol contracts, frontend rendering or docs/source bytes"
+  ],
+  "resource_release": {
+    "actual_main_native": {
+      "exit_code": 0,
+      "passed": 1,
+      "pending_children": 0,
+      "prepared_before_teardown": {
+        "auth": 0,
+        "concert": 0,
+        "friend": 0,
+        "profile": 0
+      },
+      "root_terminals": {
+        "delivered": 8,
+        "instances": 1,
+        "total": 8
+      }
+    },
+    "build_exit_code": 0,
+    "compile_free_floor": "enforced by sampled guard; compile minimum was not stored",
+    "elapsed_seconds": 208.401,
+    "fixed_target_growth_bytes": 56614912,
+    "limitations": [
+      "No public Gateway HTTP/browser flow or full IN03 acceptance",
+      "No successful Notification inbox, age verification provider or production deployment",
+      "Sampled allocation measurements do not infer unsampled peaks"
+    ],
+    "max_concurrent_owned_postmasters": 1,
+    "max_sampled_whole_bytes": 1119145984,
+    "minimum_sampled_runtime_free_bytes": 19223232512,
+    "native_window_including_cleanup_seconds": 180,
+    "offer": "ROOT-INTRO-COMBINED-MEDIA-202611041008Z",
+    "owned_artifact_handles": 0,
+    "owned_processes_absent": {
+      "native_host": true,
+      "native_process_group": true,
+      "owned_postmaster": true
+    },
+    "owned_roots_absent": [
+      true
+    ],
+    "regular_config_tests": {
+      "exit_code": 0,
+      "passed": 5
+    },
+    "released_at_utc": "2026-11-04T10:10:48.615877+00:00",
+    "retained_carry_bytes": 862949376,
+    "source_commit": "22497af9c315d4d74403467a2529ed95b5b79f06",
+    "state": "RELEASED",
+    "target_access_after_release": "NONE",
+    "target_release_preceded_all_copied_tests_and_PG": true,
+    "whole_hard_bytes": 2147483648
+  },
+  "scope": "Actual Concert production executable startup and signed internal Intro/Participant composition; full IN03 remains open",
+  "source_commit": "22497af9c315d4d74403467a2529ed95b5b79f06",
+  "source_inventory": {
+    "baked_paths": "Exact owning checkout/migration/fixture paths remain live; reproducing after retirement requires exact source reconstruction and fresh resource ownership",
+    "committed_files": 3640,
+    "includes": "all tracked backend/contracts plus runtime selected frontend public source-bound release inputs",
+    "path": "/private/tmp/mcr-root-intro-startup-cx0ogb2d/checkpoint.json",
+    "sha256": "293a492254686aa492e9ffb6f7104ffab08490739bbc45f2763384b77446a737"
+  },
+  "status": "INTEGRATED",
+  "target_to_full_release_seconds": 108.367,
+  "task": "ROOT-INTRO-SHARED-STARTUP",
+  "validation": {
+    "actual_main_native": {
+      "argv": [
+        "/private/tmp/mcr-root-intro-startup-cx0ogb2d/intro_startup-tests",
+        "--ignored",
+        "--exact",
+        "actual_main_mounts_six_intro_operations_with_shared_participant_and_delivery",
+        "--test-threads=1",
+        "--nocapture",
+        "--format",
+        "terse"
+      ],
+      "checks": [
+        "incomplete Intro configuration fails before listener",
+        "actual compiled production main, no test server substituting Concert",
+        "six real signed Intro read/write operations over mutual TLS",
+        "same instance/core for Participant and Intro, one mounted delivery service",
+        "gRPC body EOF retains root until explicit mounted terminal",
+        "all eight roots ROOT_FINISHED/delivered, zero pending children/prepared xacts",
+        "production process SIGTERM and graceful exit0"
+      ],
+      "elapsed_seconds": 5.619,
+      "exit_code": 0,
+      "migrations": {
+        "auth": 18,
+        "concert": 38,
+        "friend": 18,
+        "profile": 9
+      },
+      "pending_children": 0,
+      "prepared_before_teardown": {
+        "auth": 0,
+        "concert": 0,
+        "friend": 0,
+        "profile": 0
+      },
+      "root_terminals": {
+        "delivered": 8,
+        "instances": 1,
+        "total": 8
+      }
+    },
+    "build": {
+      "argv": [
+        "cargo",
+        "+1.88.0",
+        "test",
+        "--manifest-path",
+        "backend/Cargo.toml",
+        "--locked",
+        "--offline",
+        "-j",
+        "2",
+        "--config",
+        "profile.dev.package.contracts-build.opt-level=2",
+        "-p",
+        "concert-service",
+        "--test",
+        "intro_runtime",
+        "--test",
+        "intro_startup",
+        "--no-run",
+        "--message-format=json"
+      ],
+      "elapsed_seconds": 33.57,
+      "exit_code": 0
+    },
+    "peer_review": "Bounded read-only developer review of six Root startup paths at0fd6cad2 found no actionable findings; runtime validation separate",
+    "regular_config": {
+      "argv": [
+        "/private/tmp/mcr-root-intro-startup-cx0ogb2d/intro_runtime-tests",
+        "--test-threads=1",
+        "--nocapture",
+        "--format",
+        "terse"
+      ],
+      "exit_code": 0,
+      "log_sha256": "822a28651276acb9a2313e85117177615e727de0782deac858623855992cf4c0"
+    },
+    "static": "Rust1.88format, gitdiffcheck and planning provenance check all exit0; planning check is not application acceptance"
+  }
+}
