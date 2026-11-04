@@ -56,6 +56,7 @@ pub enum Operation {
     FinalizeUpload(Uuid),
     PrivateContent(Uuid),
     CommandStatus,
+    Social(crate::social_live::protocol::SocialOperation),
 }
 impl Operation {
     pub fn contract_id(self) -> &'static str {
@@ -77,6 +78,7 @@ impl Operation {
             Self::FinalizeUpload(_) => "finalizeConcertUpload",
             Self::PrivateContent(_) => "readConcertMedia",
             Self::CommandStatus => "getConcertCommandStatus",
+            Self::Social(operation) => operation.id(),
         }
     }
 }
@@ -98,6 +100,11 @@ pub fn operation(event: Uuid, method: &str, target: &str) -> Result<Operation, S
     let suffix = path
         .strip_prefix(&prefix)
         .ok_or_else(|| Status::permission_denied("Product event mismatch"))?;
+    // The Social parser owns exactly thirteen frozen operations. No unknown
+    // route, platform or method falls through to a generic producer.
+    if let Ok(social) = crate::social_live::protocol::route(event, method, target) {
+        return Ok(Operation::Social(social));
+    }
     let result = match (method, suffix) {
         ("GET", "feed") => Operation::Feed,
         ("GET", "parties") => Operation::ListParties,
@@ -264,6 +271,9 @@ fn authorize(request: &Request<proto::ProductRequest>) -> Result<VerifiedProduct
     if m.http_body.len() > MAX_BODY {
         return Err(Status::resource_exhausted("Product body too large"));
     }
+    if let Operation::Social(social) = operation {
+        query::social_request(m, social)?;
+    }
     let mutation = matches!(
         operation,
         Operation::InitializeUpload
@@ -276,7 +286,10 @@ fn authorize(request: &Request<proto::ProductRequest>) -> Result<VerifiedProduct
             | Operation::RemovePartyMember(_, _)
             | Operation::CancelParty(_)
     );
-    if mutation {
+    if matches!(operation, Operation::Social(_)) {
+        // The exact Social decoder above validates keyed bodyless DELETE and
+        // read query forms as well as JSON commands. Never classify DELETE as read.
+    } else if mutation {
         canonical_uuid(&m.idempotency_key)?;
         let bodyless = matches!(
             operation,

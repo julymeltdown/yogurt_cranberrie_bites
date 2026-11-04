@@ -57,6 +57,43 @@ pub fn router(state: Arc<AppState>) -> Router {
         )
         .route("/api/concert/events/:event_id/commands", get(dispatch))
         .route(
+            "/api/concert/events/:event_id/me/social-handles",
+            get(dispatch),
+        )
+        .route(
+            "/api/concert/events/:event_id/me/social-handles/:platform",
+            put(dispatch).delete(dispatch),
+        )
+        .route(
+            "/api/concert/events/:event_id/social-requests",
+            post(dispatch),
+        )
+        .route(
+            "/api/concert/events/:event_id/me/social-requests",
+            get(dispatch),
+        )
+        .route(
+            "/api/concert/events/:event_id/social-requests/:request_id",
+            get(dispatch).delete(dispatch),
+        )
+        .route(
+            "/api/concert/events/:event_id/social-requests/:request_id/decision",
+            post(dispatch),
+        )
+        .route(
+            "/api/concert/events/:event_id/social-requests/:request_id/revoke",
+            post(dispatch),
+        )
+        .route(
+            "/api/concert/events/:event_id/social-requests/:request_id/reveal",
+            get(dispatch),
+        )
+        .route("/api/concert/events/:event_id/me/blocks", get(dispatch))
+        .route(
+            "/api/concert/events/:event_id/me/blocks/:user_id",
+            put(dispatch).delete(dispatch),
+        )
+        .route(
             "/api/concert/events/:event_id/media/uploads",
             post(dispatch),
         )
@@ -91,6 +128,9 @@ pub(super) fn owns_receipt(method: &Method, path: &str) -> bool {
     if uuid(event).is_none() {
         return false;
     }
+    if social_route(method, path).is_some() {
+        return *method != Method::GET;
+    }
     if method == Method::POST && matches!(tail, "media/uploads" | "parties") {
         return true;
     }
@@ -114,6 +154,121 @@ pub(super) fn owns_receipt(method: &Method, path: &str) -> bool {
     }
     (method == Method::PUT && pieces[2] == "bytes")
         || (method == Method::POST && pieces[2] == "finalize")
+}
+
+/// HTTP paths only; canonical actor/session and all consent/grant checks belong
+/// to the authenticated Concert producer, never a browser header or role.
+fn social_route(method: &Method, path: &str) -> Option<&'static str> {
+    let suffix = path.strip_prefix("/api/concert/events/")?;
+    let (event, tail) = suffix.split_once('/')?;
+    uuid(event)?;
+    let parts: Vec<_> = tail.split('/').collect();
+    match (method.as_str(), parts.as_slice()) {
+        ("GET", ["me", "social-handles"]) => Some("listOwnConcertHandles"),
+        ("PUT", ["me", "social-handles", p]) if matches!(*p, "INSTAGRAM" | "X") => {
+            Some("setConcertHandle")
+        }
+        ("DELETE", ["me", "social-handles", p]) if matches!(*p, "INSTAGRAM" | "X") => {
+            Some("removeConcertHandle")
+        }
+        ("POST", ["social-requests"]) => Some("createConcertSocialRequest"),
+        ("GET", ["me", "social-requests"]) => Some("listConcertSocialRequests"),
+        ("GET", ["social-requests", id]) if uuid(id).is_some() => Some("getConcertSocialRequest"),
+        ("POST", ["social-requests", id, "decision"]) if uuid(id).is_some() => {
+            Some("decideConcertSocialRequest")
+        }
+        ("DELETE", ["social-requests", id]) if uuid(id).is_some() => {
+            Some("cancelConcertSocialRequest")
+        }
+        ("POST", ["social-requests", id, "revoke"]) if uuid(id).is_some() => {
+            Some("revokeConcertSocialRequest")
+        }
+        ("GET", ["social-requests", id, "reveal"]) if uuid(id).is_some() => {
+            Some("revealConcertSocialHandle")
+        }
+        ("GET", ["me", "blocks"]) => Some("listConcertBlocks"),
+        ("PUT", ["me", "blocks", id]) if uuid(id).is_some() => Some("blockConcertUser"),
+        ("DELETE", ["me", "blocks", id]) if uuid(id).is_some() => Some("unblockConcertUser"),
+        _ => None,
+    }
+}
+
+#[cfg(test)]
+mod social_route_tests {
+    use super::*;
+    #[test]
+    fn social_frozen_paths_have_exact_receipt_ownership_and_private_error_protection() {
+        let root = std::path::Path::new(env!("CARGO_MANIFEST_DIR"))
+            .ancestors()
+            .nth(3)
+            .unwrap();
+        let rows: serde_json::Value = serde_json::from_slice(
+            &std::fs::read(root.join("contracts/domain/v1/operations.json")).unwrap(),
+        )
+        .unwrap();
+        let event = Uuid::new_v4();
+        let id = Uuid::new_v4();
+        let mut count = 0;
+        for row in rows.as_array().unwrap() {
+            let method = Method::from_bytes(
+                row["method"]
+                    .as_str()
+                    .unwrap()
+                    .to_ascii_uppercase()
+                    .as_bytes(),
+            )
+            .unwrap();
+            let path = row["path"]
+                .as_str()
+                .unwrap()
+                .replace("{eventId}", &event.to_string())
+                .replace("{requestId}", &id.to_string())
+                .replace("{userId}", &id.to_string())
+                .replace("{platform}", "INSTAGRAM");
+            if let Some(name) = social_route(&method, &path) {
+                count += 1;
+                assert_eq!(name, row["operationId"].as_str().unwrap());
+                assert_eq!(owns_receipt(&method, &path), method != Method::GET);
+                assert!(is_product(&path));
+                assert!(social_route(&method, &format!("{path}/unknown")).is_none());
+            }
+        }
+        assert_eq!(count, 13);
+        for path in [
+            format!("/api/concert/events/{event}/me/social-handles/UNKNOWN"),
+            format!("/api/concert/events/{event}/me/blocks/not-uuid"),
+        ] {
+            assert!(!owns_receipt(&Method::PUT, &path));
+        }
+    }
+    #[test]
+    fn social_bodyless_deletes_require_browser_intent_origin_and_exact_key() {
+        let path = format!(
+            "/api/concert/events/{}/me/social-handles/INSTAGRAM",
+            Uuid::new_v4()
+        );
+        let mut headers = HeaderMap::new();
+        headers.insert("origin", HeaderValue::from_static("https://mcr.example"));
+        headers.insert("x-mcr-intent", HeaderValue::from_static("browser"));
+        headers.insert(
+            "idempotency-key",
+            HeaderValue::from_str(&Uuid::new_v4().to_string()).unwrap(),
+        );
+        let origins = vec!["https://mcr.example".to_owned()];
+        assert!(request_metadata(&Method::DELETE, &path, &headers, &origins).is_ok());
+        headers.insert("content-type", HeaderValue::from_static("application/json"));
+        assert!(request_metadata(&Method::DELETE, &path, &headers, &origins).is_err());
+        headers.remove("content-type");
+        headers.remove("idempotency-key");
+        assert!(request_metadata(&Method::DELETE, &path, &headers, &origins).is_err());
+        headers.remove("origin");
+        assert_eq!(
+            request_metadata(&Method::DELETE, &path, &headers, &origins)
+                .unwrap_err()
+                .0,
+            StatusCode::FORBIDDEN
+        );
+    }
 }
 
 #[cfg(test)]
@@ -282,6 +437,13 @@ fn is_product(path: &str) -> bool {
         || tail.starts_with("posts/")
         || tail.starts_with("parties/")
         || tail.starts_with("party-applications/")
+        || tail == "me/social-handles"
+        || tail.starts_with("me/social-handles/")
+        || tail == "me/social-requests"
+        || tail == "social-requests"
+        || tail.starts_with("social-requests/")
+        || tail == "me/blocks"
+        || tail.starts_with("me/blocks/")
 }
 /// Cover outer transport rejections too, without discarding owner recovery details.
 pub async fn protect_response(request: Request, next: axum::middleware::Next) -> Response {
@@ -438,6 +600,8 @@ async fn dispatch(
         MAX_BODY
     } else if bodyless_delete {
         0
+    } else if social_route(&method, uri.path()).is_some() {
+        8192
     } else {
         65536
     };

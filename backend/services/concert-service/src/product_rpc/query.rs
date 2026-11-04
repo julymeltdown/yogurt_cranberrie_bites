@@ -7,6 +7,25 @@ use concert_domain::feed::Filter;
 use tonic::Status;
 use uuid::Uuid;
 
+pub(super) fn social_request(
+    request: &super::proto::ProductRequest,
+    expected: crate::social_live::protocol::SocialOperation,
+) -> Result<(), Status> {
+    let decoded = crate::social_live::protocol::SocialRequest::parse(
+        super::canonical_uuid(&request.user_id)?,
+        super::canonical_uuid(&request.event_id)?,
+        &request.http_method,
+        &request.http_target,
+        &request.http_body,
+        &request.content_type,
+        &request.idempotency_key,
+    )?;
+    if decoded.operation() != expected {
+        return Err(invalid());
+    }
+    Ok(())
+}
+
 #[derive(Clone, Copy, Debug, PartialEq, Eq)]
 pub struct CommandStatusQuery {
     pub operation: RegisteredOperation,
@@ -202,6 +221,33 @@ fn hex(byte: u8) -> Option<u8> {
 #[cfg(test)]
 mod tests {
     use super::*;
+
+    #[test]
+    fn social_delete_and_reveal_use_actual_frame_queries_without_key_or_body_fallback() {
+        use crate::social_live::protocol::SocialOperation;
+        let event = Uuid::new_v4();
+        let actor = Uuid::new_v4();
+        let id = Uuid::new_v4();
+        let mut input = super::super::proto::ProductRequest {
+            user_id: actor.to_string(),
+            event_id: event.to_string(),
+            http_method: "DELETE".into(),
+            http_target: format!(
+                "/api/concert/events/{event}/social-requests/{id}?expected_revision=1"
+            ),
+            idempotency_key: Uuid::new_v4().to_string(),
+            ..Default::default()
+        };
+        assert!(social_request(&input, SocialOperation::Cancel(id)).is_ok());
+        input.idempotency_key.clear();
+        assert!(social_request(&input, SocialOperation::Cancel(id)).is_err());
+        input.http_method = "GET".into();
+        input.http_target =
+            format!("/api/concert/events/{event}/social-requests/{id}/reveal?platform=INSTAGRAM");
+        assert!(social_request(&input, SocialOperation::Reveal(id)).is_ok());
+        input.http_target.push_str("&platform=X");
+        assert!(social_request(&input, SocialOperation::Reveal(id)).is_err());
+    }
 
     #[test]
     fn accepts_frozen_fields_and_single_decoding_without_changing_target() {

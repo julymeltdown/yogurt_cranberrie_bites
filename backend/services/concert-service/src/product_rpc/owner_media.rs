@@ -51,7 +51,8 @@ impl ProductOwner for OwnerMediaRuntime {
             Operation::MediaMetadata(_) => "getConcertMedia",
             Operation::PrivateContent(_) => "readConcertMedia",
             Operation::CommandStatus => "getConcertCommandStatus",
-            Operation::Feed
+            Operation::Social(_)
+            | Operation::Feed
             | Operation::Post(_)
             | Operation::Comments(_)
             | Operation::ListParties

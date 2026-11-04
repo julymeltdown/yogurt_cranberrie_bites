@@ -27,5 +27,6 @@ pub mod party_live;
 
 pub use concert_application::age_verification;
 pub mod meeting_photo;
+pub mod social_live;
 
 pub mod moderation_live;

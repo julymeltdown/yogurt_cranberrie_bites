@@ -10,6 +10,7 @@ use std::{net::SocketAddr, path::PathBuf, str::FromStr, time::Duration};
 pub mod bootstrap_runtime;
 pub mod product_runtime;
 pub mod participant_runtime;
+pub mod social_runtime;
 
 pub struct AppConfig {
     pub database: PgConnectOptions,
