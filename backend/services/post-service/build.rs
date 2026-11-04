@@ -16,9 +16,15 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
     // Generate the canonical owner IDL once; imported Feed envelopes must use
     // this crate-local type instead of generating incompatible nested copies.
     let lease = post_include.join("authority/v1/lease.proto");
+    // tonic emits imported service implementations even with extern_path.
+    // Keep this first pass separate so later imported service output cannot
+    // overwrite the canonical package's message definitions.
+    let lease_out = std::path::PathBuf::from(std::env::var("OUT_DIR")?).join("owner_authority");
+    std::fs::create_dir_all(&lease_out)?;
     tonic_prost_build::configure()
         .build_server(true)
         .build_client(true)
+        .out_dir(lease_out)
         .compile_protos(&[lease.clone()], &[post_include.clone()])?;
     tonic_prost_build::configure()
         .build_server(true)

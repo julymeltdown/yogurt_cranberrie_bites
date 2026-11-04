@@ -123,18 +123,6 @@ impl CapturedReadTransaction {
     pub fn backend_pid(&self) -> i32 {
         self.backend_pid
     }
-    pub fn backend_started(&self) -> DateTime<Utc> {
-        self.backend_started
-    }
-    pub fn system_identifier(&self) -> &str {
-        &self.system_identifier
-    }
-    pub fn database_oid(&self) -> u32 {
-        self.database_oid
-    }
-    pub fn effect_binding(&self) -> [u8; 32] {
-        self.effect_binding
-    }
     pub fn settlement_reference(&self) -> [u8; 32] {
         self.settlement_reference
     }
