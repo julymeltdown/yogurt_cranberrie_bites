@@ -52,6 +52,21 @@ pub struct WorldProductionPorts {
     auth_invalidation: InvalidationSource,
     friend_invalidation: InvalidationSource,
 }
+/// Produced only by the actual serving startup barrier, never from a fixture
+/// registry or a second World. The fields intentionally have no public constructor.
+#[derive(Clone)]
+pub struct WorldDeletionHandle {
+    bridge: Arc<AdmissionBridge>,
+    sockets: Arc<WorldSocketState>,
+}
+impl WorldDeletionHandle {
+    pub(crate) fn serving_world(&self) -> super::account_deletion_runtime::ServingWorld<'_> {
+        super::account_deletion_runtime::ServingWorld {
+            bridge: self.bridge.clone(),
+            sockets: &self.sockets,
+        }
+    }
+}
 pub struct WorldRuntimeSettings {
     pub address: SocketAddr,
     origins: OriginPolicy,
@@ -202,7 +217,7 @@ impl WorldRuntimeSettings {
         pool: sqlx::PgPool,
         ports: WorldProductionPorts,
     ) -> anyhow::Result<()> {
-        self.serve_inner(pool, ports, None, SocketTransport::default(), None)
+        self.serve_inner(pool, ports, None, SocketTransport::default(), None, None)
             .await
     }
     /// Startup barrier for a supervised C03 listener. Failure drops the sender;
@@ -213,8 +228,15 @@ impl WorldRuntimeSettings {
         ports: WorldProductionPorts,
         ready: tokio::sync::oneshot::Sender<()>,
     ) -> anyhow::Result<()> {
-        self.serve_inner(pool, ports, Some(ready), SocketTransport::default(), None)
-            .await
+        self.serve_inner(
+            pool,
+            ports,
+            Some(ready),
+            SocketTransport::default(),
+            None,
+            None,
+        )
+        .await
     }
     /// Supply the single incumbent socket registry with its canonical policy
     /// baseline installed before any runtime or listener clones are created.
@@ -225,7 +247,7 @@ impl WorldRuntimeSettings {
         ready: tokio::sync::oneshot::Sender<()>,
         transport: SocketTransport,
     ) -> anyhow::Result<()> {
-        self.serve_inner(pool, ports, Some(ready), transport, None)
+        self.serve_inner(pool, ports, Some(ready), transport, None, None)
             .await
     }
     /// Publish this exact native owner's local invalidation leg only after the
@@ -240,7 +262,25 @@ impl WorldRuntimeSettings {
             Arc<crate::world::invalidation::WorldInvalidationConsumer>,
         >,
     ) -> anyhow::Result<()> {
-        self.serve_inner(pool, ports, Some(ready), transport, Some(local))
+        self.serve_inner(pool, ports, Some(ready), transport, Some(local), None)
+            .await
+    }
+    /// One incumbent World, with both local invalidation and account-deletion
+    /// consumers receiving their exact live handles after normal startup.
+    pub async fn serve_with_ready_and_owners(
+        self,
+        pool: sqlx::PgPool,
+        ports: WorldProductionPorts,
+        ready: tokio::sync::oneshot::Sender<()>,
+        transport: SocketTransport,
+        local: Option<
+            tokio::sync::oneshot::Sender<
+                Arc<crate::world::invalidation::WorldInvalidationConsumer>,
+            >,
+        >,
+        deletion: Option<tokio::sync::oneshot::Sender<WorldDeletionHandle>>,
+    ) -> anyhow::Result<()> {
+        self.serve_inner(pool, ports, Some(ready), transport, local, deletion)
             .await
     }
     async fn serve_inner(
@@ -254,6 +294,7 @@ impl WorldRuntimeSettings {
                 Arc<crate::world::invalidation::WorldInvalidationConsumer>,
             >,
         >,
+        deletion: Option<tokio::sync::oneshot::Sender<WorldDeletionHandle>>,
     ) -> anyhow::Result<()> {
         let template: serde_json::Value =
             serde_json::from_slice(self.release.release().bootstrap_json())?;
@@ -376,7 +417,7 @@ impl WorldRuntimeSettings {
                 }
             }
         };
-        let server = axum::serve(listener, world_ws::router(state))
+        let server = axum::serve(listener, world_ws::router(state.clone()))
             .with_graceful_shutdown(platform::shutdown::global().cancelled());
         let startup = tokio::time::timeout(Duration::from_secs(2), async {
             handle
@@ -405,6 +446,14 @@ impl WorldRuntimeSettings {
                         crate::world::invalidation::WorldInvalidationConsumer::new(bridge.clone()),
                     ))
                     .map_err(|_| anyhow::anyhow!("World local invalidation receiver closed"))?;
+            }
+            if let Some(deletion) = deletion {
+                deletion
+                    .send(WorldDeletionHandle {
+                        bridge: bridge.clone(),
+                        sockets: state.clone(),
+                    })
+                    .map_err(|_| anyhow::anyhow!("World account deletion receiver closed"))?;
             }
             if let Some(ready) = ready {
                 ready
