@@ -24,10 +24,11 @@ coordinator decision. A proposed value is not committed content. Unknown native
 transaction outcomes retain exclusion and prepared effects; deadline expiry is
 not permission to release them or guess rollback. ReadOperation and Reconcile
 cannot originate another mutation. Full coordinator/guard interface and native
-qualification are in progress; nothing here certifies a live PATCH flow yet.
+qualification are recorded below. The actual multi-store native PATCH join now
+passes; public Gateway HTTP acceptance remains NOT_RUN.
 
 Source authored for this task; no rendering or dependency upgrade. Production registration compiles and actual owner read RPC checks pass below.
-The native multi-store Prepare/decision flow remains NOT_RUN.
+The native multi-store Prepare/decision flow passes at the final checkpoint below.
 
 ## Guarded RPC source checkpoint
 
@@ -395,3 +396,61 @@ root HTTP body completion/release and signed-in HTTP save/reload remain NOT_RUN.
 Owner209 retains the actual joined driver; it has received the current frozen
 Profile binary and receipts. Goal API still reports BLOCKED after the explicit
 resource-resume message; no false ACTIVE/reset/complete transition is asserted.
+
+## Actual owner/Profile/Participant terminal join
+
+Participant source `6767ee8e805db17291d1d77a25c72d881e9f743a` passes the
+actual Auth/Friend/Profile MAIN join using the unchanged qualified Profile source
+`a8776a61f853f4552825eb41e965f29f2274625e` and production binary SHA-256
+`b70fcd6b8a52aef19e516f0a7a53253958bbe1d0da04f9cf7c3187a852f42a32`.
+This chat independently matched the Profile binary hash, read the exact joined
+assertions and inspected the source-bound runtime report. No Profile code change
+or additional compiler/PG run was needed to consume this evidence.
+
+The preceding joined attempt retained a genuinely prepared Profile effect while
+Concert was committed. The concrete cause was Concert's decision handler comparing
+Profile's five-second incoming wall ceiling against its own already clipped
+two-second ceiling. Participant owner209 fixed that comparison in `6767ee8e`:
+the effective expiry is the minimum of incoming and verified expiry, retaining
+the original monotonic stop and local ceiling. The original request is echoed
+unchanged. Source inspection and the focused regression cover a longer incoming
+ceiling, a shorter query, expired wall time and elapsed inherited monotonic time.
+
+The exact native command
+`participant::live::joined_tests::native_actual_owner_profile_participant_save_reload_and_abort`
+exited 0: one test passed in 5.28 seconds. The retained focused run has eight
+passes and four explicit external/native ignores, including the passing deadline
+regression. All three services' migrate/verify commands exited 0. The joined run
+proves these behaviors:
+
+- Actual owner-authorized read, avatar/preferences writes and full Profile PATCH
+  succeed; full PATCH commits Profile natively during inline reconciliation under
+  the original deadline, and the next read exactly matches the saved document.
+- Actual Concert full XID `1107` and Profile full XID `1144` are committed. The
+  Concert Profile decision records revision 2 to 3, and Profile's observation is
+  COMMITTED. Three Concert producer commitments carry native resolver evidence;
+  altered native identity dimensions or body binding fail closed.
+- A barrier installed after actual Profile PREPARE causes the actual Concert
+  transaction to time out and roll back. Concert XID `1360` and Profile XID `1397`
+  are natively aborted, with Profile observation ABORTED. Prepared content is
+  invisible before settlement; after rollback the saved name and revision 3
+  remain unchanged. A stale participant CAS also returns its typed failure.
+- Six serialized root deliveries and their actual Auth/Friend owner leases
+  complete. The seventh, lost-envelope scope remains ACTIVE and unserialized;
+  both owners remain SEALED without root-scope proof. This quarantine is expected,
+  and is not represented as successful response delivery or released guards.
+
+Receipt: `/private/tmp/mcr-participant-join-6767ee8e/join-1.json`, SHA-256
+`b1b22654dc2b92187ae27d3ab2936d33764ab63d712ff33a1297c60750649917`.
+The frozen Concert test library SHA-256 is
+`fc35b975663f4aa1b9061bbe2420987651df1b025c79c6a3255b74685ef5df18`.
+All three production MAIN processes shut down normally with exit 0, no forced
+stops; owned PostgreSQL cleanup passed. The shared build target had been released
+before native execution. Initial database rows remain explicit test fixtures.
+
+This closes the previously NOT_RUN actual terminal coordinator/Profile join.
+The overall BE-PROFILE-SELF status remains IN_PROGRESS: public Gateway HTTP
+save/reload, actual signed-in principals and operator admission remain NOT_RUN
+and belong to the ProductAPI root flow. No browser, multiuser product or release
+acceptance is inferred. The goal API remains BLOCKED; it has no active-resume
+operation, and this required HTTP boundary is not falsely marked complete.
