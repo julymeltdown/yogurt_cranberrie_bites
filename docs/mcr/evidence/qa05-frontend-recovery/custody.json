@@ -1,0 +1,17 @@
+{
+  "atUTC": "2026-11-04T19:52:50.046059+00:00",
+  "oldHead": "4d49d95e6f221cbcc8040f31b0499aa2151ad7ff",
+  "base": "a0cb4396d2fe5c333e7863aa5bf4c8b88a357ac9",
+  "independentRemote": "8f28c09c50d6f0a36c740d3df2c3b19206bda351",
+  "preservedRefs": {
+    "codex/mcr-fe-FE17-original-completion": "8ca330d8966e4551ef0fade957e5ce907646108b",
+    "codex/mcr-fe-AR03-persistence-motion": "defdc8fc429e658c7f53523304208056477c6a88",
+    "codex/mcr-fe-FE41-original-completion": "4d49d95e6f221cbcc8040f31b0499aa2151ad7ff"
+  },
+  "stash": "f543d43a96848d47021eaa4b0736a27e548ebadc",
+  "cleanBefore": true,
+  "grant": "Root153 exclusiveSTOP transfer: ONLY four new prefixes. No old FE17/FE41/application/shared rights.",
+  "branch": "codex/mcr-fe-QA05-functional-recovery",
+  "createdCheckout": false,
+  "newBaseMethod": "Normal git switch -c from verified canonical a0cb4396; no forceclean/reset/rebase. Preserved old source refs and stash."
+}
