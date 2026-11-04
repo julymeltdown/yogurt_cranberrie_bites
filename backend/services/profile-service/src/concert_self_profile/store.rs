@@ -87,9 +87,13 @@ pub(super) async fn receipt_in(
 ) -> Result<(), Error> {
     effect.check()?;
     let effect_digest = effect.identity().effect_digest;
-    sqlx::query("insert into concert_self_profile_receipts(operation_id,effect_binding_digest,command_digest,profile_epoch,profile_revision) values($1,$2,$3,$4,$5)")
+    let receipt=sqlx::query("insert into concert_self_profile_receipts(operation_id,effect_binding_digest,command_digest,profile_epoch,profile_revision) select o.operation_id,$2,$3,$4,$5 from concert_self_profile_operations o join profiles p on p.user_id=o.actor_id where o.operation_id=$1 and o.actor_id=$6 and o.event_id=$7 and o.command_digest=$3 and o.effect_binding_digest=$2 and o.full_xid=pg_current_xact_id()::text and o.system_identifier=(select system_identifier::text from pg_control_system()) and o.database_oid=(select oid::bigint from pg_database where datname=current_database()) and o.backend_pid=pg_backend_pid() and o.backend_started_at=(select backend_start from pg_stat_activity where pid=pg_backend_pid()) and o.producer_instance_id=$8 and p.deleted_at is null and p.concert_self_epoch=$4 and p.concert_self_revision=$5")
         .bind(operation).bind(effect_digest.as_slice()).bind(command_digest.as_slice()).bind(content.version().epoch()).bind(content.version().revision())
+        .bind(actor).bind(event).bind(effect.identity().producer_instance)
         .execute(effect.connection()).await.map_err(unavailable)?;
+    if receipt.rows_affected() != 1 {
+        return Err(Error::Conflict);
+    }
     // The success audit and content/receipt are all in this exact prepared XID.
     // It contains identifiers and revisions, never Profile text or credentials.
     sqlx::query("insert into profile_audit_events(id,actor_id,profile_user_id,action,outcome,request_id,metadata_json) values($1,$2,$2,'CONCERT_SELF_PROFILE_UPDATED','SUCCESS',$3,$4)")

@@ -185,6 +185,21 @@ async fn native_prepare_preserves_visibility_and_blocks_legacy_writes() -> anyho
         // owner admission; actual Check/Track RPC qualification is separate.
         operation.register(&pool, deadline()).await?;
         let content = update_in(&mut effect, actor, version, command.profile().unwrap()).await?;
+        // A different actual connection cannot forge the original effect's
+        // receipt, even when handed the exact command and proposed content.
+        let mut foreign = EffectConnection::open(
+            &pool,
+            operation.identity.producer_instance,
+            digest,
+            deadline(),
+        )
+        .await?;
+        assert!(
+            receipt_in(&mut foreign, id, actor, event, command_hash, &content)
+                .await
+                .is_err()
+        );
+        foreign.rollback().await?;
         receipt_in(&mut effect, id, actor, event, command_hash, &content).await?;
         effect.prepare(id).await?;
         let old: String = sqlx::query_scalar("select nickname from profiles where user_id=$1")
