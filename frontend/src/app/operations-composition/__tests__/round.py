@@ -112,7 +112,7 @@ def run(prefix,kind,pin,offer,accepted,work_seconds,total_seconds):
     assert p['free_bytes']-limits['new_total']>=9*1024**3
     admission=json.loads(os.environ.get('ADMIN_ADMISSION_JSON','{}'))
     prefix.mkdir(); (prefix/'work').mkdir(); state={**p,'limits':limits,'running':True,'work_done':False,'new_offset':int(os.environ.get('ADMIN_RETAINED_NEW_BYTES','0')),
-      'start_floor_bytes':START_FLOOR_BYTES,'live_floor_bytes':LIVE_FLOOR_BYTES,'whole_floor':int(admission.get('accounted_whole_floor_bytes',0))}
+      'start_floor_bytes':max(START_FLOOR_BYTES,int(admission.get('start_floor_bytes',START_FLOOR_BYTES))),'live_floor_bytes':LIVE_FLOOR_BYTES,'whole_floor':int(admission.get('accounted_whole_floor_bytes',0))}
     with socket.socket() as s: s.bind(('127.0.0.1',int(os.environ.get('ADMIN_FIXED_PORT','0')))); port=s.getsockname()[1]
     write(prefix/'control.json',dict(offer=offer,kind=kind,pin=pin,accepted_at=accepted,port=port,work_end=work_end,hard_end=hard_end,preflight=p,limits=limits,admission=json.loads(os.environ.get('ADMIN_ADMISSION_JSON','{}')),
           readset_sha256={str(f.relative_to(ROOT)):hashlib.sha256(f.read_bytes()).hexdigest() for f in [*Path(__file__).parent.parent.rglob('*'),ROOT/'frontend/src/app/ports.ts',ROOT/'frontend/src/app/AdminBoundary.tsx'] if f.is_file()}))
