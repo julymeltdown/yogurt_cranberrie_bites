@@ -699,10 +699,32 @@ fn selected_release_binds_all_six_presets_without_layered_defaults() {
 }
 
 fn source_spatial_candidate() -> concert_service::bootstrap::spatial::SourceBoundSpatialCandidate {
+    let directory = match std::env::var("MCR_SPATIAL_TEST_CANDIDATE").as_deref() {
+        Ok("quality-v6") => "backend/releases/reference-scene-v2/quality-v6",
+        Ok("baseline") | Err(_) => "backend/releases/reference-scene-v2",
+        _ => panic!("unknown spatial test candidate"),
+    };
+    let candidate = spatial_candidate_from_directory(directory);
+    println!(
+        "MCR_SPATIAL_CANDIDATE {}",
+        serde_json::json!({
+            "map_id": candidate.catalog.map_id,
+            "map_revision": candidate.catalog.manifest.map_revision,
+            "content_hash": candidate.catalog.manifest.content_hash,
+            "geometry_hash": candidate.catalog.manifest.geometry_hash,
+            "source_commit": candidate.source_commit,
+            "art_commit": candidate.art_commit,
+        })
+    );
+    candidate
+}
+fn spatial_candidate_from_directory(
+    directory: &str,
+) -> concert_service::bootstrap::spatial::SourceBoundSpatialCandidate {
     let root = std::path::Path::new(env!("CARGO_MANIFEST_DIR")).join("../../..");
     concert_service::bootstrap::spatial::load_candidate(
-        &root.join("backend/releases/reference-scene-v2/map-manifest.json"),
-        &root.join("backend/releases/reference-scene-v2/source-binding.json"),
+        &root.join(directory).join("map-manifest.json"),
+        &root.join(directory).join("source-binding.json"),
         &root.join("frontend/public"),
     )
     .unwrap()
@@ -719,11 +741,20 @@ async fn native_spatial_candidate_transactions() {
     let candidate = source_spatial_candidate();
     let repo = PgPlaceRepository::new(pool.clone());
     let event = concert_domain::EventId::from_uuid(event);
+    let previous = if candidate.catalog.manifest.map_revision == 4 {
+        let previous = spatial_candidate_from_directory("backend/releases/reference-scene-v2");
+        repo.publish_release(event, previous.catalog.clone())
+            .await
+            .unwrap();
+        Some(previous.catalog)
+    } else {
+        None
+    };
     let first = repo
         .publish_release(event, candidate.catalog.clone())
         .await
         .unwrap();
-    assert_eq!(first.map_revision, 2);
+    assert_eq!(first.map_revision, candidate.catalog.manifest.map_revision);
     assert_eq!(first.map_id, "mcr_reference_scene_r3");
     let read = repo.catalog(event).await.unwrap().unwrap();
     assert_eq!(read.release, candidate.catalog);
@@ -751,7 +782,7 @@ async fn native_spatial_candidate_transactions() {
             SelectionOutcome::ConceptOnly
         );
         assert_eq!(
-            repo.select_physical(event, place.id, again.revision, 3)
+            repo.select_physical(event, place.id, again.revision, first.map_revision + 1)
                 .await
                 .unwrap(),
             SelectionOutcome::MapMismatch
@@ -761,6 +792,32 @@ async fn native_spatial_candidate_transactions() {
         .bind(&first.map_id).bind(first.map_revision).fetch_one(&pool).await.unwrap();
     assert_eq!(row.0, candidate.catalog.canonical_bytes);
     assert_eq!(row.1, candidate.catalog.manifest.geometry_hash);
+    if let Some(previous) = previous {
+        // Adoption changes event-current geometry without overwriting the old
+        // immutable revision or granting physical authority to virtual places.
+        let old: (Vec<u8>, String) = sqlx::query_as(
+            "select canonical_bytes,geometry_hash from concert_map_releases where map_id=$1 and map_revision=$2",
+        )
+        .bind(&previous.map_id)
+        .bind(previous.manifest.map_revision)
+        .fetch_one(&pool)
+        .await
+        .unwrap();
+        assert_eq!(old.0, previous.canonical_bytes);
+        assert_eq!(old.1, previous.manifest.geometry_hash);
+        let place = &read.places[0];
+        assert_eq!(
+            repo.select_physical(
+                event,
+                place.id,
+                again.revision,
+                previous.manifest.map_revision
+            )
+            .await
+            .unwrap(),
+            SelectionOutcome::MapMismatch
+        );
+    }
     pool.close().await;
 }
 #[tokio::test]
