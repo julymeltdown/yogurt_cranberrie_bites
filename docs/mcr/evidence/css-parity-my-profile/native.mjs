@@ -12,6 +12,8 @@ const { createServer } = await import(pathToFileURL(require.resolve('vite')).hre
 const { chromium, expect } = require('@playwright/test')
 const job = process.env.MCR_PROFILE_JOB, output = process.env.MCR_PROFILE_OUTPUT, temp = process.env.MCR_PROFILE_TEMP
 assert(job && output?.startsWith(join(repo, 'docs/mcr/evidence/css-parity-my-profile/')) && temp?.startsWith('/tmp/mcr-profile-'))
+const guard = JSON.parse(await readFile('/tmp/mcr-profile-66d3-1001.guard.json', 'utf8'))
+assert.equal(guard.job, job); const workRemaining = new Date(guard.stopActive).getTime() - Date.now(); assert(workRemaining > 10000, 'Accepted active-output deadline expired')
 const base = '54320d71c4ae0bff3524d1b500cea772e0ba42e0', port = 5294
 const paths = ['frontend/src/features/me/ui/me.css', 'frontend/src/features/profile/reference-presentation/activity.css']
 const baseline = Object.fromEntries(paths.map(p => [p, execFileSync('git', ['show', `${base}:${p}`], { cwd: repo, encoding: 'utf8' })]))
@@ -21,12 +23,12 @@ const report = { job, base, candidate: execFileSync('git', ['rev-parse', 'HEAD']
   referenceSha256: '2b3988d546f87b813d78ca13bf267730a6dd19118bd6535a2d3c3032b6f12d23', sources: {}, cases: [], errors: [],
   limits: { whole: 200 * 1024 ** 2, temp: 160 * 1024 ** 2, durable: 30 * 1024 ** 2 }, peaks: { whole: 0, temp: 0, durable: 0 }, minFree: Infinity }
 async function size(path) { let total = 0; try { for (const item of await readdir(path, { withFileTypes: true })) { const p = join(path, item.name); total += item.isDirectory() ? await size(p) : (await stat(p)).size } } catch (error) { if (error.code !== 'ENOENT') throw error } return total }
-async function budget(start = false) { const fs = await statfs(repo), free = fs.bavail * fs.bsize; assert(free >= (start ? 16 : 8) * 1024 ** 3, 'Disk floor'); report.minFree = Math.min(report.minFree, free); const t = await size(temp), d = await size(output); for (const [k, n] of Object.entries({ whole: t + d, temp: t, durable: d })) { report.peaks[k] = Math.max(report.peaks[k], n); assert(n <= report.limits[k], `${k} byte cap`) } }
-await mkdir(output, { recursive: false }); await mkdir(temp, { recursive: false }); process.env.TMPDIR = temp; await budget(true)
+async function budget(start = false) { const fs = await statfs(repo), free = fs.bavail * fs.bsize; assert(free >= (start ? 16 : 8) * 1024 ** 3, 'Disk floor'); report.minFree = Math.min(report.minFree, free); const t = await size(temp), d = await size(join(repo, 'docs/mcr/evidence/css-parity-my-profile')) + (await stat(join(repo, 'docs/mcr/frontend/css-parity-my-profile.md'))).size + (await stat(join(repo, paths[0]))).size + (await stat(join(repo, paths[1]))).size; for (const [k, n] of Object.entries({ whole: t + d, temp: t, durable: d })) { report.peaks[k] = Math.max(report.peaks[k], n); assert(n <= report.limits[k], `${k} byte cap`) } }
+await mkdir(output, { recursive: false }); await writeFile(join(output, 'driver.mjs.txt'), await readFile(import.meta.filename)); await mkdir(temp, { recursive: false }); process.env.TMPDIR = temp; await budget(true)
 for (const p of paths) { const current = await readFile(join(repo, p), 'utf8'); report.sources[p] = { baseline: hash(baseline[p]), candidate: hash(current) }; assert.deepEqual(current.match(/background[^;{}]*[;}]/g), baseline[p].match(/background[^;{}]*[;}]/g), 'No background declaration changes') }
 let browser, server, page
 // End browser work early enough to retain the resource round's cleanup reserve.
-const deadline = setTimeout(() => { report.errors.push('220s native-work deadline'); void browser?.close(); void server?.close() }, 220000)
+const deadline = setTimeout(() => { report.errors.push('220s native-work deadline'); void browser?.close(); void server?.close() }, Math.min(220000, workRemaining))
 let checkingBudget = false
 const monitor = setInterval(() => {
   if (checkingBudget) return
@@ -43,7 +45,7 @@ async function measure() { return page.evaluate(async () => {
   return { geometry, canvases, controls, overflow: document.documentElement.scrollWidth > innerWidth, text: document.querySelector('.me-hub--reference')?.textContent }
 }) }
 async function targets() { const m = await measure(); assert(!m.overflow, 'No horizontal document overflow'); for (const c of m.controls) assert(c.rect.width >= 44 && c.rect.height >= 44, `44px control ${c.label}`); return m }
-async function open(url, root = false) { await page.goto(url); await expect(page.locator('.me-hub--reference')).toBeVisible(); if (root) { await expect(page.locator('.me-avatar [data-whole-character-state="ready"]')).toBeVisible({ timeout: 25000 }) } await page.evaluate(() => document.fonts.ready) }
+async function open(url, root = false) { await page.goto(url); await expect(page.locator('.me-hub--reference')).toBeVisible(); if (root) { await expect(page.locator('.me-avatar [data-whole-character-state="ready"]')).toBeVisible({ timeout: 25000 }); await expect.poll(() => page.evaluate(() => window.__COZY_PANEL__?.state().published), { timeout: 25000 }).toBe(true) } await page.evaluate(() => document.fonts.ready) }
 async function dispose(root) { await page.evaluate(root => root ? window.__COZY_PANEL__?.dispose() : window.__REF_PROFILE__?.dispose(), root) }
 try {
   browser = await chromium.launch({ executablePath: '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome', headless: true }); report.browser = browser.version()
@@ -65,6 +67,17 @@ try {
       item.root.screenshot = await capture(`${stage}-root-${width}`)
       item.root.foreground = await capture(`${stage}-root-foreground-${width}`, page.locator('.me-hub--reference'))
       if (stage === 'candidate') { const before = report.cases.find(r => r.stage === 'baseline' && r.width === width).root; assert.deepEqual(item.root.canvases, before.canvases, 'Selected portrait pixels, source size and DOM framing preserved'); assert.equal(item.root.text, before.text, 'Truthful root content preserved') }
+      if (stage === 'candidate') {
+        item.root.focus = []
+        for (const forced of [false, true]) {
+          await page.emulateMedia({ forcedColors: forced ? 'active' : 'none' }); await page.keyboard.press('Tab')
+          for (const name of ['Edit profile', 'Dress up', 'Manage private social links', 'Sharing requests']) {
+            const link = page.getByRole('link', { name, exact: true }); await link.focus(); const focus = await link.evaluate(e => ({ outline: getComputedStyle(e).outlineStyle, width: getComputedStyle(e).outlineWidth, color: getComputedStyle(e).outlineColor, offset: getComputedStyle(e).outlineOffset })); assert.notEqual(focus.outline, 'none'); item.root.focus.push({ forced, name, ...focus })
+          }
+          if (width === 390) await capture(`candidate-root-${forced ? 'forced' : 'normal'}-focus-390`)
+        }
+        await page.emulateMedia({ forcedColors: 'none' })
+      }
       await dispose(true)
       await open(fixture); item.fixture = await targets(); item.fixture.screenshot = await capture(`${stage}-activity-${width}`)
       await expect(page.getByRole('link', { name: /Posted to the feed/ })).toHaveCount(2)
