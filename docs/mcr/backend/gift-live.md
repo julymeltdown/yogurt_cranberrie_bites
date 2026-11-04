@@ -241,6 +241,58 @@ Gift-specific reviewed-place closure race, HTTP terminal settlement or IN02.
 Private pickup/code gates remain closed and Claim still requires root's actual
 signed trusted-network context.
 
+### SDK3 Gift-private source candidate (not qualified)
+
+`gift_live/private/` implements the actual SDK3 producer API against SDK source
+`0576c359`, PublicProfile unsupported-variant source `56f18703` (local
+`929420e0`) and Root ledger/composite-settler source `82ec8b89` (local
+`c1ae9126`). These consumed peer sources are not certified by the earlier
+`e9b761fb` runtime proof. This increment is **IN_PROGRESS**, with compilation and
+all newly authored native tests **NOT_RUN** until a target is explicitly leased.
+
+`GiftPrivateRequest::from_request` accepts the exact parsed Pickup or IssueCode
+request and actual `OwnerGuardScope`; the opaque value preserves the request
+binding and original deadline. `GiftPrivateRuntime::prepare_pickup` and
+`prepare_code` take that request and actual scope, returning `GiftDisclosure<T>`.
+`into_parts` yields the original business DTO and separate transport clip. The
+runtime implements Root's actual `GiftPrivateIntentSettler`; no caller-selected
+GID, SQL, callback URL, permissive policy, or replacement scope is accepted.
+
+The producer captures the actual full native transaction identity before local
+target locks. Actual canonical actor/owner checks and local event/settings,
+pair, admission, participant, root, reservation, map and reviewed-place locks
+precede disclosure. Before durable intent acknowledgement, SQL selects only
+target/revision/expiry metadata. The exact sealed SDK intent is registered before
+selecting private aggregate instructions/identification or the stored code hash,
+and before PREPARE. Code disclosure verifies the actual issued code against its
+current generation, expiry and keyed hash. This read child deliberately does not
+enter generic mutation Track. Business mutations retain their actual Track path.
+
+The prepared child checks the exact cluster/database/full XID and closed GID,
+original monotonic stop, database wall clock and content clip. Drop or expiry
+does not release it. Recovery accepts only the typed saved Gift intent, requires
+the exact full XID to remain in progress before rolling back a matching prepared
+transaction, and requires actual full-XID abort afterward. Missing GID, unknown
+state, committed state and elapsed time cannot certify settlement. The local
+Gift prepared-slot namespace is distinct from PublicProfile's namespace and
+requires configured PostgreSQL prepared capacity; this code changes no server
+configuration in production.
+
+New owned-PG tests cover native lock retention after Drop, expiry without release,
+cluster/database/XID/epoch mismatch, committed versus aborted terminal states,
+ordinary pre-PREPARE rollback and two-process restart recovery. Their metadata
+is explicitly synthetic and they do not construct a positive canonical scope or
+certify Root's durable intent order. `gift_live_resources.py --private-test`
+accepts the same frozen Concert lib binary as `--queries-test`, configures only
+its own newly created marker/inode-owned cluster, and requires no prepared
+children remain before cleanup. These tests are authored, not executed yet.
+
+Pickup/IssueCode dispatch remains default-unavailable. Root must compose the
+actual Gift settler and enforce the returned clip before every positive response
+data frame without rewriting business expiries. Actual canonical joined reads,
+durable intent/restart orchestration, Root/Gateway before-byte behavior, signed
+Claim network context and the two-user HTTP journey remain **NOT_RUN** here.
+
 ### Earlier baseline qualification (historical)
 
 Authored protocol tests cover all thirteen route/body shapes, authority injection,

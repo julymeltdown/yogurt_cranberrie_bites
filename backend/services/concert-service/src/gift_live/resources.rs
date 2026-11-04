@@ -178,7 +178,7 @@ pub(crate) async fn current_settings_in(
         event_cutoff: row.try_get("event_cutoff").map_err(db)?,
     })
 }
-async fn select_place(
+pub(crate) async fn select_place(
     c: &mut PgConnection,
     event: Uuid,
     place: Uuid,

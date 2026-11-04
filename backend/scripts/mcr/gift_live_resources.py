@@ -38,6 +38,7 @@ def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--repository-test", type=Path, required=True)
     parser.add_argument("--queries-test", type=Path, help="frozen Concert lib test binary; only Gift native query/correlation tests run")
+    parser.add_argument("--private-test", type=Path, help="same frozen Concert lib binary; native prepared exclusion/recovery only, no canonical or Root qualification")
     parser.add_argument("--pg-bin", type=Path, default=Path("/opt/homebrew/opt/postgresql@16/bin"))
     parser.add_argument("--report", type=Path, required=True)
     args = parser.parse_args()
@@ -53,10 +54,22 @@ def main():
         report["source_revision"] = subprocess.check_output(["git", "rev-parse", "HEAD"], cwd=ROOT, text=True).strip()
         report["source_sha256"] = pins()
         report["binary_sha256"] = sha(binary)
+        private = None
+        if args.private_test is not None:
+            private = migration.executable(args.private_test)
+            report["private_binary_sha256"] = sha(private)
+            if args.queries_test is not None:
+                require(sha(migration.executable(args.queries_test)) == sha(private), "query/private binaries must be the same frozen Concert lib build")
         cluster = migration.Cluster({n: migration.executable(args.pg_bin / n) for n in migration.PG_TOOLS})
         report["owned_root"] = str(cluster.root)
         cluster.init()
         cluster.start()
+        if private is not None:
+            # Only this newly created marker/inode-owned cluster is configured.
+            cluster.sql("postgres", "alter system set max_prepared_transactions='256';")
+            cluster.stop()
+            cluster.start()
+            require(cluster.sql("postgres", "show max_prepared_transactions;") == "256", "private prepared capacity unavailable")
         report["postgres_version"] = cluster.sql("postgres", "show server_version;")
         cluster.sql("postgres", f"create database {DATABASE} template template0;")
         for path in sorted((ROOT / "backend/services/concert-service/migrations").glob("*.sql")):
@@ -82,6 +95,29 @@ def main():
                 match = re.search(r"test result: ok\. (\d+) passed", result.stdout)
                 require(match is not None and int(match[1]) == 3, f"expected all three exact Gift {kind} tests")
             require(report["query_binary_sha256"] == sha(queries), "query binary changed during native validation")
+        if private is not None:
+            namespace = "gift_live::private::native_tests::"
+            def private_run(name, phase=None):
+                command = [str(private), "--ignored", "--test-threads=1", "--exact", namespace + name]
+                run_env = {**env, **({"GIFT_PRIVATE_RESTART_PHASE": phase} if phase else {})}
+                result = subprocess.run(command, cwd=ROOT, env=run_env, capture_output=True, text=True, timeout=30)
+                row = {"command": command, "exit_code": result.returncode, "stdout": result.stdout, "stderr": result.stderr,
+                       "authority": "synthetic correlation metadata only; native SQL exclusion/recovery, canonical/Root intent/before-byte NOT_RUN"}
+                report.setdefault("private_runs", []).append(row)
+                require(result.returncode == 0, "native Gift private exclusion test failed")
+                require(re.search(r"test result: ok\. 1 passed", result.stdout) is not None, "expected exactly one named Gift private test")
+            for name in ["drop_keeps_exclusion_until_exact_idempotent_abort", "expiry_denies_content_without_releasing_exclusion",
+                         "mismatched_identity_cannot_rollback_and_commit_is_not_abort", "missing_gid_requires_real_full_xid_abort"]:
+                private_run(name)
+            private_run("prepared_restart_recovery", "prepare")
+            before = cluster.assert_postmaster()
+            cluster.stop()
+            cluster.start()
+            require(before != cluster.assert_postmaster(), "owned postmaster did not restart")
+            report["private_restart"] = "PASS"
+            private_run("prepared_restart_recovery", "recover")
+            require(cluster.sql(DATABASE, "select count(*) from pg_prepared_xacts where database=current_database();") == "0", "prepared Gift children remain")
+            require(report["private_binary_sha256"] == sha(private), "private binary changed during validation")
         require(report["source_sha256"] == pins(), "source changed during native validation")
         require(report["binary_sha256"] == sha(binary), "binary changed during native validation")
         report["result"] = "PASS"
