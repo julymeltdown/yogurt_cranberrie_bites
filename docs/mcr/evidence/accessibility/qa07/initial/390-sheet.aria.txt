@@ -1,0 +1,5 @@
+- main:
+  - paragraph: QA07 synthetic sheet; actual shared Dialog.
+  - button "Open pickup sheet"
+  - link "Outside navigation":
+    - /url: "#outside"
