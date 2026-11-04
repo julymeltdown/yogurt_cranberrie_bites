@@ -166,7 +166,7 @@ impl proto::notification_service_server::NotificationService for NotificationGrp
         let response = self
             .state
             .apply_user_deletion
-            .execute(ApplyUserDeletionDto {
+            .execute_with_receipt(ApplyUserDeletionDto {
                 saga_id: request.saga_id,
                 user_id: request.user_id,
                 actor_id: request.actor_id,
@@ -175,7 +175,18 @@ impl proto::notification_service_server::NotificationService for NotificationGrp
             .await
             .map_err(to_status)?;
         Ok(Response::new(proto::ApplyUserDeletionResponse {
-            applied: response.applied,
+            applied: true,
+            committed_receipt: Some(proto::NotificationDeletionReceipt {
+                version: response.version,
+                saga_id: response.saga_id.to_string(),
+                user_id: response.user_id.to_string(),
+                actor_id: response.actor_id.to_string(),
+                retention_seconds: Some(response.retention_until.timestamp()),
+                retention_nanos: Some(response.retention_until.timestamp_subsec_nanos()),
+                fence_revision: response.fence_revision,
+                effect_xid: response.effect_xid,
+                recorded_at: response.recorded_at.to_rfc3339(),
+            }),
         }))
     }
 }

@@ -1,4 +1,6 @@
-use crate::dto::notification_dto::{ApplyUserDeletionDto, ApplyUserDeletionResponseDto};
+use crate::dto::notification_dto::{
+    ApplyUserDeletionDto, ApplyUserDeletionResponseDto, NotificationDeletionReceiptDto,
+};
 use crate::errors::{NotificationError, NotificationInvalidInput, NotificationResult as Result};
 use crate::ports::NotificationRepositoryPort;
 use chrono::{DateTime, Utc};
@@ -33,6 +35,25 @@ where
             .apply_user_deletion(saga_id, user_id, actor_id, retention_until)
             .await?;
         Ok(ApplyUserDeletionResponseDto { applied: true })
+    }
+
+    /// The Auth RPC uses this path; legacy unit success is never promoted into
+    /// a synthesized receipt. The repository returns only after actual COMMIT.
+    pub async fn execute_with_receipt(
+        &self,
+        request: ApplyUserDeletionDto,
+    ) -> Result<NotificationDeletionReceiptDto> {
+        let saga_id = parse_uuid(&request.saga_id, NotificationInvalidInput::SagaIdRequired)?;
+        let user_id = parse_uuid(&request.user_id, NotificationInvalidInput::UserIdRequired)?;
+        let actor_id = parse_uuid(&request.actor_id, NotificationInvalidInput::ActorIdRequired)?;
+        let retention_until = DateTime::parse_from_rfc3339(&request.retention_until)
+            .map_err(|_| {
+                NotificationError::InvalidInput(NotificationInvalidInput::RetentionDeadlineInvalid)
+            })?
+            .with_timezone(&Utc);
+        self.repository
+            .apply_user_deletion_with_receipt(saga_id, user_id, actor_id, retention_until)
+            .await
     }
 }
 
