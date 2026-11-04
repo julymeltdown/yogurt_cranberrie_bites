@@ -1,0 +1,65 @@
+{
+  "title": "Customize portrait correction: actual development screenshots",
+  "screen": "Customize MotionEditor component",
+  "branch": "codex/mcr-fe-AR03-reviewed-admission",
+  "exactCaptureSourceCommit": "14d61ee7d179732d3fd582de0876de664613ff79",
+  "qualifiedEvidenceCommit": "68fb527b61f7029a7de8a289f2d21c62e2410e8c",
+  "privacyReview": {
+    "ownerInspected": true,
+    "result": "PASS",
+    "notes": "Only deterministic fixture UI and approved selected character artwork. No real user, credential, token, personal profile or live service data is rendered."
+  },
+  "qualification": "Actual MotionEditor + Phaser component under TEST_ONLY readonly fixture, not public Root/live save/runtime admission/device acceptance",
+  "publication": "Portrait changes pending Root153 serial publication and separate fresh remote verification",
+  "dimensionsAndScroll": "390 viewport gives actual DOM panel350x683.984 and native PNG350x685; 430 viewport gives390x723.984 and PNG390x725. Longer content scrolls; reduced-height Save focus/reachability passed. Images are unresized element captures, not full public viewport captures.",
+  "screenshots": [
+    {
+      "path": "docs/mcr/evidence/avatar-motion-adoption/portrait-responsive/component-390x698.png",
+      "savedAtUTC": "2026-11-04T05:01:42.318928+00:00",
+      "savedAtKST": "2026-11-04T14:01:42.318928+09:00",
+      "captureTimeBasis": "Original filesystem capture-save mtime; file bytes unchanged since browser capture",
+      "viewport": [
+        390,
+        698
+      ],
+      "pngDimensions": [
+        350,
+        685
+      ],
+      "bytes": 58703,
+      "sha256": "c4cb177d72ae8ebe9dcc57ef28a5880abb7171aaa88429b275db847d6a5d7af2"
+    },
+    {
+      "path": "docs/mcr/evidence/avatar-motion-adoption/portrait-responsive/component-320x554.png",
+      "savedAtUTC": "2026-11-04T05:01:51.399080+00:00",
+      "savedAtKST": "2026-11-04T14:01:51.399080+09:00",
+      "captureTimeBasis": "Original filesystem capture-save mtime; file bytes unchanged since browser capture",
+      "viewport": [
+        320,
+        554
+      ],
+      "pngDimensions": [
+        280,
+        615
+      ],
+      "bytes": 53814,
+      "sha256": "ebf7ff1ecda55c93d4229dc2dfd43e4f5635729b537eb8af19cbcf199407213b"
+    },
+    {
+      "path": "docs/mcr/evidence/avatar-motion-adoption/portrait-responsive/component-430x698.png",
+      "savedAtUTC": "2026-11-04T05:01:48.376485+00:00",
+      "savedAtKST": "2026-11-04T14:01:48.376485+09:00",
+      "captureTimeBasis": "Original filesystem capture-save mtime; file bytes unchanged since browser capture",
+      "viewport": [
+        430,
+        698
+      ],
+      "pngDimensions": [
+        390,
+        725
+      ],
+      "bytes": 60746,
+      "sha256": "e8a062534887bf7f1e31c8e59c22ef667b7f786d35739936908b9f8a44d31a1b"
+    }
+  ]
+}
