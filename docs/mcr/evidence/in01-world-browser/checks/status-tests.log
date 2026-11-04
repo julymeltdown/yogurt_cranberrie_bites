@@ -1,0 +1,12 @@
+✔ empty and partial evidence cannot pass the original runtime gate (0.367875ms)
+✔ every original runtime criterion is required (0.117042ms)
+✔ a service or runtime failure remains nonzero even with other passing evidence (0.061584ms)
+✔ complete runtime evidence keeps art inspection explicit (0.102333ms)
+ℹ tests 4
+ℹ suites 0
+ℹ pass 4
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 39.553375

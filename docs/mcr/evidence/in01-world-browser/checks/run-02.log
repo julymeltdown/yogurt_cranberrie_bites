@@ -1,0 +1,9 @@
+{"stage":"login","result":{"independentContexts":2,"freshLogins":2}}
+{"stage":"world","result":[{"active":1,"peak":1,"opens":1,"snapshots":1,"invalid":0,"inputs":0,"ack":1,"lastInput":1,"players":2,"frames":3,"privacyFields":0,"map":"mcr_reference_scene_r3","mapRevision":4,"avatarManifest":"mcr_selected_static_20261103","avatarRevision":1},{"active":1,"peak":1,"opens":1,"snapshots":1,"invalid":0,"inputs":0,"ack":1,"lastInput":1,"players":2,"frames":2,"privacyFields":0,"map":"mcr_reference_scene_r3","mapRevision":4,"avatarManifest":"mcr_selected_static_20261103","avatarRevision":1}]}
+{"stage":"movement","result":[{"active":1,"peak":1,"opens":1,"snapshots":1,"invalid":0,"inputs":7,"ack":9,"lastInput":9,"players":2,"frames":13,"privacyFields":0,"map":"mcr_reference_scene_r3","mapRevision":4,"avatarManifest":"mcr_selected_static_20261103","avatarRevision":1},{"active":1,"peak":1,"opens":1,"snapshots":1,"invalid":0,"inputs":8,"ack":10,"lastInput":10,"players":2,"frames":12,"privacyFields":0,"map":"mcr_reference_scene_r3","mapRevision":4,"avatarManifest":"mcr_selected_static_20261103","avatarRevision":1}]}
+{"stage":"panels","result":{"failed":"persistentPanels","code":"RUNTIME_ASSERTION"}}
+{"stage":"theme","result":{"failed":"themeRuntimeAndLocalPersistence","code":"RUNTIME_ASSERTION"}}
+{"stage":"customization","result":{"failed":"customization","code":"RUNTIME_ASSERTION"}}
+{"stage":"reconnect","result":{"failed":"realBrowserReconnect","code":"RUNTIME_ASSERTION"}}
+{"stage":"singleGame","result":{"failed":"singleActualPhaserGame","code":"RUNTIME_ASSERTION"}}
+{"status":"STOPPED","code":"SAFE_GUARD_OR_RUNNER_FAILURE"}

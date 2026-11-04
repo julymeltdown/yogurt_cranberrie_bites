@@ -1,0 +1,3 @@
+PASS core boundary API: 32 exact owned paths, cross-import scan; explicit delegated evidence paths supplied as exact docs set.
+CLI exit1 is preserved as a tool limitation: --allow-doc rejects PNG/snapshot/log suffixes despite the explicit user grant. Shared checker/config unchanged.
+Temporary own dependency symlink removed before final scan.
