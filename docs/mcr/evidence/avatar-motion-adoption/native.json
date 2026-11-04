@@ -1,7 +1,7 @@
 {
   "result": "PASS",
   "qualification": "MOCK_READY: new editor/controller/runtime and actual incumbent Phaser scene under explicit TEST_ONLY local authority and deterministic HTTP fixture. Not application Root/public C05/production admission, live socket/service, physical device or multiuser acceptance.",
-  "parent": "6a73eff54035a4bf6f3e1ef5b0b53ea7be79bebd",
+  "parent": "6f88ec7ec1a935ea88a411fc64c4a2680db7836e",
   "cases": [
     {
       "width": 360,
@@ -44,37 +44,37 @@
         {
           "direction": "down",
           "frames": [
+            "4",
             "1",
             "2",
-            "3",
-            "4"
+            "3"
           ]
         },
         {
           "direction": "left",
           "frames": [
+            "7",
             "8",
             "9",
-            "6",
-            "7"
+            "6"
           ]
         },
         {
           "direction": "right",
           "frames": [
+            "13",
             "14",
             "11",
-            "12",
-            "13"
+            "12"
           ]
         },
         {
           "direction": "up",
           "frames": [
+            "16",
             "17",
             "18",
-            "19",
-            "16"
+            "19"
           ]
         }
       ],
@@ -117,14 +117,17 @@
         }
       ],
       "draft": {
-        "testOnlyContract": "mcr-motion-fixture-v1",
-        "selection": {
-          "mode": "wardrobe",
-          "body": "body-7",
-          "eyes": "eyes-3",
-          "hair": "hair-5",
-          "outfit": "outfit-5",
-          "accessory": "accessory-2"
+        "contract_version": "2.0.0",
+        "kind": "avatar_config",
+        "manifest_id": "mcr_selected_motion_20261103",
+        "manifest_version": 1,
+        "representation": "motion_layered",
+        "item_ids": {
+          "body": "motion_v2_body_7",
+          "eyes": "motion_v2_eyes_3",
+          "hair": "motion_v2_hair_5",
+          "outfit": "motion_v2_outfit_5",
+          "accessory": "motion_v2_accessory_2"
         }
       },
       "pixels": {
@@ -263,14 +266,17 @@
         }
       ],
       "draft": {
-        "testOnlyContract": "mcr-motion-fixture-v1",
-        "selection": {
-          "mode": "wardrobe",
-          "body": "body-7",
-          "eyes": "eyes-3",
-          "hair": "hair-5",
-          "outfit": "outfit-5",
-          "accessory": "accessory-2"
+        "contract_version": "2.0.0",
+        "kind": "avatar_config",
+        "manifest_id": "mcr_selected_motion_20261103",
+        "manifest_version": 1,
+        "representation": "motion_layered",
+        "item_ids": {
+          "body": "motion_v2_body_7",
+          "eyes": "motion_v2_eyes_3",
+          "hair": "motion_v2_hair_5",
+          "outfit": "motion_v2_outfit_5",
+          "accessory": "motion_v2_accessory_2"
         }
       },
       "pixels": {
@@ -409,14 +415,17 @@
         }
       ],
       "draft": {
-        "testOnlyContract": "mcr-motion-fixture-v1",
-        "selection": {
-          "mode": "wardrobe",
-          "body": "body-7",
-          "eyes": "eyes-3",
-          "hair": "hair-5",
-          "outfit": "outfit-5",
-          "accessory": "accessory-2"
+        "contract_version": "2.0.0",
+        "kind": "avatar_config",
+        "manifest_id": "mcr_selected_motion_20261103",
+        "manifest_version": 1,
+        "representation": "motion_layered",
+        "item_ids": {
+          "body": "motion_v2_body_7",
+          "eyes": "motion_v2_eyes_3",
+          "hair": "motion_v2_hair_5",
+          "outfit": "motion_v2_outfit_5",
+          "accessory": "motion_v2_accessory_2"
         }
       },
       "pixels": {
@@ -456,6 +465,13 @@
     "customize-430-parade.jpg": "a13173f38e684b472a73f0dee488d24b785421aa9480e16d884c0e7a48709d35",
     "customize-430-danger.jpg": "42301c25b98ae3430c2cc5d3b986d890f596c7ca8a774b11679c9aeb5a8c8e64",
     "customize-430.jpg": "45ff1a6228c646df5223c9ae9782edcd83c7c128455259e901c73508dba48070"
+  },
+  "producer": {
+    "commit": "ae41db9db2493c259c72ef461844a3ff1019a1f6",
+    "manifestSha256": "9a555f726a9e421f14ed876117be87bb1bb8fa128ac401ab38f8927760776fd6",
+    "productionEligible": false,
+    "wireContract": "2.0.0",
+    "qualification": "TEST_ONLY"
   },
   "browser": "156.0.8078.80",
   "wardrobeReference": {

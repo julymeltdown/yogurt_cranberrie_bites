@@ -1,8 +1,8 @@
 # AR03 frontend motion and wardrobe adoption
 
 Status: **IN_PROGRESS**. The implemented consumer core is qualified under explicit
-TEST_ONLY local authority. No new public C06 version, inventory catalog or
-production admission is asserted. The original AR03 requirement remains open
+TEST_ONLY candidate authority. The producer's pinned C06 2.0.0 candidate now
+exists and is decoded strictly; production admission is still denied. The original AR03 requirement remains open
 through actual application adoption and its required validation.
 
 Assignment base: `6a73eff54035a4bf6f3e1ef5b0b53ea7be79bebd`.
@@ -61,7 +61,44 @@ pixels and authored faithful reconstruction retain the prior art provenance;
 this consumer patch generates no new artwork and changes no original, static
 release, source catalog or `docs/source/` byte.
 
-## Required canonical interface handoff
+## Canonical v2 candidate handoff
+
+Producer checkpoint `ae41db9db2493c259c72ef461844a3ff1019a1f6` freezes the
+following actual Git bytes. These are candidate contracts, not admitted releases.
+
+| Path | SHA-256 | Bytes |
+|---|---|---:|
+| `contracts/assets/v2/avatar-config.schema.json` | `3cbfd3185113d7f4913de89b0e04d67046dbab64b3f90c0b5f14a261afc6a78b` | 3,543 |
+| `contracts/assets/v2/avatar-manifest.schema.json` | `8fc206f00d263ed9465cad932768075a1a0ca61d927e98ccc2aa8e9e7ef0d54f` | 102,672 |
+| `backend/releases/selected-character-motion-v2/manifest.json` | `9a555f726a9e421f14ed876117be87bb1bb8fa128ac401ab38f8927760776fd6` | 95,128 |
+
+The manifest is `mcr_selected_motion_20261103`, version 1, representation
+`selected_source_motion`, with `production_eligible:false`,
+`qualification:CANDIDATE_ONLY`, and `fallback:NONE`. It has no admitted
+`content_hash` field. Its immutable const schema binds all source resources,
+originals, six preset maps, 28 item maps, direction/phase UVs, palettes and masks.
+
+`runtime/motion-adoption/v2.ts` decodes the exact producer config shape:
+`motion_preset` with one of six `motion_v2_photo01_front_01..06` IDs, or
+`motion_layered` with five required item slots. Body IDs 0..7 select the semantic
+skin palette; hair 0..5, eyes 0..3, outfit 0..5 and accessory 0..3 map to their
+matching local keys. Outfit and accessory may be explicitly null. Independent
+skin IDs, mixed branches, URLs, wrong slots and surplus/private fields fail.
+Wire-text parsing rejects duplicate keys and lexical floats before parsing loses
+that information. All 6,720 layered combinations round-trip exactly.
+
+`runtime/motion-adoption/v2-candidate.ts` verifies the exact candidate bytes,
+freezes their metadata and creates only `qualification:TEST_ONLY` authority.
+It never creates a production admission. Tests verify pinned producer bytes,
+compare all 31 producer fixtures, schema and manifest hashes, every selected UV
+and body palette, and reject mutated eligibility/fallback fields. The 34 inputs
+in the test prefix's `producer-inputs.json` each carry a SHA-256 and byte length.
+Published checkout files support clean-clone reproduction after producer
+integration; immutable proposal Git blobs support validation before integration.
+Both paths verify every pin. Source decoder
+and canonical schema provenance remain distinct from production inventory.
+
+## Remaining public interface dependency
 
 The injection seam is `MotionAuthority<C>` in
 `frontend/src/entities/avatar/runtime/motion-adoption/runtime.ts`. It decodes an
@@ -71,28 +108,11 @@ canonical preset choices and replaces a selection through the external decoder.
 authoritative reads and optimistic-revision writes. These are internal consumer
 ports, not parallel public schemas. Their present qualification is TEST_ONLY.
 
-The producer and shared-contract owner must supply the following before real
-application dispatch can be implemented:
-
-1. A separately versioned manifest family/config decision, exact manifest
-   id/version/content hash, representation and supported capabilities. The
-   consumer does not choose the canonical version or assign inventory IDs.
-2. Authorized preset IDs mapped to the six local preset keys, and authorized
-   item/skin IDs mapped to each compatible body/skin, hair, eyes, outfit and
-   accessory key. Configs must never carry arbitrary asset URLs. The producer
-   must decide whether eight skin/body choices map to body IDs, skin IDs or both.
-3. A pinned selected-source atlas/descriptor mapping with 64px cells, foot
-   `(32,60)`, four directions and idle/four walk phases; exact UVs including the
-   already-applied 120-cell wardrobe offset; skin palettes, cuff masks and
-   occlusion; body clip y=42; layer order; and explicit rear-eye invisibility.
-4. Provenance and eligibility that distinguish supplied pixels from authored
-   faithful reconstruction. Candidate status cannot silently become an approved
-   inventory release. The server must enforce compatibility, inventory and
-   optimistic revision, including bootstrap, save, public reads and replication.
-5. Generated public config/state types and decoders across HTTP, WS and public
-   profile boundaries, plus positive/negative same-release fixtures and exact
-   producer/consumer tests. Wrong release, item slot, source hash and unsupported
-   capabilities must still fail closed.
+The contract owner must still supply an actually admitted motion release and
+its bootstrap/theme/World hash binding; canonical C03/C05 schemas and generated
+config/state unions; server persistence, inventory, authorization and optimistic
+revision support; and positive/negative same-release HTTP/WS/Profile fixtures.
+The candidate's raw-file hash cannot be invented as a production content hash.
 
 Current guards are intentionally unchanged: layered `runtime/contract.ts` and
 `schema.ts` admit strict 1.0.0; whole-character `contract.ts` admits reviewed 1.1.0
@@ -100,13 +120,26 @@ front-idle only; WorldTransport and HTTP/Profile DTOs use those public branches.
 The existing layered compositor supports a baked skin tone and rectangular
 320×256 item sheets, not semantic palette/cuff maps. No old family is broadened.
 
-The five allocated root function scopes are registry.get/factory admission,
+The initial five allocated root function scopes are registry.get/factory admission,
 createRootCharacterRegistry, account avatar-controller creation, AccountPanel's
 avatar branch and loadProduction renderer injection/characters.read. They do not
-grant edits to public decoders or other root types. The typed CharacterProvider
-context, account-owner character type, application ports, Profile view dispatch
-and generated DTO unions must receive exact ownership coordination if the new
-canonical interface requires changes. No unsafe cast will manufacture admission.
+grant general root ownership. World additionally recorded provider Context and
+mounted-runtime types/loading predicate, account-owner characters option and
+motion-editor disposal, and MeHub renderAvatar dispatch at `5d052775`.
+World `02348ee6e80b1e66eb689c70f9b796f6050422e2` transferred only
+`whole-admission/index.ts`'s five named decoder functions and necessary config/
+manifest imports/types after both historical incumbents returned their claims.
+The earlier whole-character contract grant stays unused; its 1.1-only guard is
+unchanged. Runtime schemas, generated wire types and contract generators remain
+excluded. No production hunk is changed in the v2 candidate checkpoint.
+
+A full-application check caught the existing exact-type invariant at
+`whole-admission/__tests__/admission.test.ts:22`: `AvatarConfig` must equal the
+generated wire union. An attempted local additive v2 alias was reverted before
+handoff; the invariant, public decoder and tests remain unchanged. Adding a
+public branch before coordinated canonical generation would violate that
+contract. This concrete dependency was routed directly to Root1fc and Root153.
+No unsafe cast or weakened legacy test manufactures admission.
 
 ## Validation and remaining boundary
 
@@ -114,8 +147,9 @@ Tests are confined to the two allocated avatar motion test prefixes and the
 additional `app/character-entry/__tests__/motion-adoption/` prefix. The native
 fixture runs the actual retained Phaser engine and map with working Customize,
 save/reconciliation, self/peer sprites and shared Profile composition. Its local
-record is deliberately named `testOnlyContract:mcr-motion-fixture-v1`, differs
-from every public AvatarConfig, and uses an explicitly labeled fixture endpoint.
+record now uses the producer's canonical 2.0.0 configs with the hash-verified
+candidate authority and an explicitly labeled fixture endpoint. The older
+`testOnlyContract:mcr-motion-fixture-v1` remains only in isolated lifecycle tests.
 It is not the application's production Root or a live HTTP/WS admission test.
 
 Use Node 24.22.2 and set `MCR_FRONTEND_DEPENDENCIES` to the retained frontend
@@ -130,8 +164,13 @@ explicit save, draft retention, known denial, conflict and uncertain/malformed
 receipts. Browser qualification compares all 120 preset cells against the pinned
 atlas, proves five distinct phases per preset/direction, exercises actual walk
 and idle frame indices in Phaser, and compares Profile RGBA to the shared
-composition at 360/390/430 and all themes. The same-source checkpoint passes all seven commands (20 unit cases, scoped
-typecheck, lint, optimized fixture build, planning, UI-origin and native browser).
+composition at 360/390/430 and all themes. The candidate checkpoint runs eight
+commands: 60 unit cases, scoped types, full-application types, lint, optimized
+fixture build, planning, UI-origin and native browser. `checks.json` records the
+actual exit codes: all eight passed, with 19 scoped TS files and 758 full-application
+TS files producing zero diagnostics, and scoped lint producing zero warnings.
+The first published core checkpoint had seven commands and
+20 unit cases, retained historically in `checkpoint.json`.
 Three native cases cover 360/390/430, each with all themes and real scene walk/idle
 frames. All 120 preset cells match the frozen atlas and all 1,176 pairwise wardrobe
 compositions match the unchanged qualified art Canvas fixture. Twelve native JPEGs
@@ -139,7 +178,23 @@ were captured; the 360px selector/pose preview was visually inspected. All avata
 interactions retain two initial resource requests and zero additional requests.
 These results remain TEST_ONLY component/real-Phaser evidence, not public admission.
 
-Actual application Root/public C06 admission, live service and two-account world,
-physical devices and release acceptance remain **NOT_RUN**. Pending contract
-authorship is an interface dependency, not a missing art input, a manager review
+The actual application registry, C03 and C05 refusal cases run in
+`app/character-entry/__tests__/motion-adoption/root-denial.test.ts`. They prove
+the candidate cannot allocate a production runtime, even with forged eligibility
+and hash fields, while preserving static runtime borrowing and private cleanup.
+These refusal tests are not a positive Root journey.
+
+Actual positive application Root/public C06 admission, live service and
+two-account world, physical devices and release acceptance remain **NOT_RUN**.
+Pending release admission and canonical generation are interface dependencies,
+not missing art inputs, a manager review
 gate, a scope cut or permission to close the original goal early.
+
+## Published ancestry
+
+Core source `e713e0f6` was integrated as
+`18a3e745f4c5eeea76f6cc5f5761304cef23a61f`; follow-up `6f88ec7e` as
+`59e5f71138346aa179fcb408330c1bc92ae066eb`. Fetched `origin/master`
+`a9517e049f24f434d103273d535943ff464346a5` contains both. The implementation
+owner verified that ancestry directly. The v2 candidate checkpoint requires its
+own subsequent integrator receipt and does not complete the active goal.

@@ -1,0 +1,107 @@
+{
+  "result": "MOCK_READY_CANONICAL_V2_CANDIDATE",
+  "task": "AR03-MOTION-CONSUMER",
+  "recordedAt": "2026-11-04T02:45:43.569246+00:00",
+  "sourceBase": "6a73eff54035a4bf6f3e1ef5b0b53ea7be79bebd",
+  "sourceParent": "6f88ec7ec1a935ea88a411fc64c4a2680db7836e",
+  "publisherThread": "01a1a153-1227-7e72-801f-a2a6b91981e1",
+  "directPushPerformed": false,
+  "changedPaths": [
+    "docs/mcr/evidence/avatar-motion-adoption/application-types.log",
+    "docs/mcr/evidence/avatar-motion-adoption/checks.json",
+    "docs/mcr/evidence/avatar-motion-adoption/lint.log",
+    "docs/mcr/evidence/avatar-motion-adoption/native.json",
+    "docs/mcr/evidence/avatar-motion-adoption/native.log",
+    "docs/mcr/evidence/avatar-motion-adoption/types.log",
+    "docs/mcr/evidence/avatar-motion-adoption/ui-origin.log",
+    "docs/mcr/evidence/avatar-motion-adoption/unit.log",
+    "docs/mcr/evidence/avatar-motion-adoption/v2-checkpoint.json",
+    "docs/mcr/frontend/ar03-motion-adoption.md",
+    "frontend/src/app/character-entry/__tests__/motion-adoption/fixture.tsx",
+    "frontend/src/app/character-entry/__tests__/motion-adoption/native.mjs",
+    "frontend/src/app/character-entry/__tests__/motion-adoption/root-denial.test.ts",
+    "frontend/src/entities/avatar/runtime/motion-adoption/v2-candidate.ts",
+    "frontend/src/entities/avatar/runtime/motion-adoption/v2.ts",
+    "frontend/src/world/avatar/__tests__/motion-adoption/producer-inputs.json",
+    "frontend/src/world/avatar/__tests__/motion-adoption/producer-inputs.ts",
+    "frontend/src/world/avatar/__tests__/motion-adoption/qualify.mjs",
+    "frontend/src/world/avatar/__tests__/motion-adoption/typecheck.mjs",
+    "frontend/src/world/avatar/__tests__/motion-adoption/v2-producer.test.ts",
+    "frontend/src/world/avatar/__tests__/motion-adoption/v2.test.ts",
+    "frontend/src/world/avatar/__tests__/motion-adoption/vitest.config.mjs"
+  ],
+  "existingProductionHunksChanged": [],
+  "producer": {
+    "commit": "ae41db9db2493c259c72ef461844a3ff1019a1f6",
+    "manifestSha256": "9a555f726a9e421f14ed876117be87bb1bb8fa128ac401ab38f8927760776fd6",
+    "productionEligible": false,
+    "wireContract": "2.0.0",
+    "qualification": "TEST_ONLY"
+  },
+  "canonicalInputs": "frontend/src/world/avatar/__tests__/motion-adoption/producer-inputs.json: exact byte lengths and SHA-256 for 34 producer schemas/manifest/fixtures. Published current-checkout bytes preferred; immutable ae41db9d Git blobs support pre-publication isolated validation. Both routes verify every pin before use.",
+  "checks": {
+    "commands": 8,
+    "exitCodes": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "unitCases": 60,
+    "sourcePins": 28,
+    "scopedTsFiles": 19,
+    "fullApplicationTsFiles": 758,
+    "tsDiagnostics": 0,
+    "lintWarnings": 0,
+    "optimizedBuild": "actual consumer/Phaser fixture, not full production application"
+  },
+  "native": {
+    "widths": [
+      360,
+      390,
+      430
+    ],
+    "themes": [
+      "REVENGE",
+      "PARADE",
+      "DANGER"
+    ],
+    "presetRgbaPerWidth": 120,
+    "wardrobePairwiseRgba": 1176,
+    "wireContract": "2.0.0",
+    "gamesPerWidth": 1,
+    "liveSocketsPerWidth": 0,
+    "initialAvatarResourceRequests": 2,
+    "additionalInteractionAvatarRequests": 0,
+    "screenshots": 12,
+    "browser": "156.0.8078.80",
+    "cleanup": "zero textures/sprites/listeners/leases/decoded atlas; one game destroyed per width"
+  },
+  "oldInputsVerifiedUnchanged": {
+    "frontend/public/world/avatars": 403,
+    "frontend/src/entities/avatar/derived-assets": 42
+  },
+  "publicDependency": {
+    "owner": "Root1fc canonical contract/release owner",
+    "missing": [
+      "actually admitted selected-source motion release with bootstrap/theme/World hash binding",
+      "C03/C05 canonical schema plus generated public union",
+      "HTTP/profile/save/realtime support and real-stack same-release fixtures"
+    ],
+    "preservedGuard": "whole-admission/__tests__/admission.test.ts:22 exact AvatarConfig === generated WireAvatarConfig; attempted local additive alias reverted before handoff; old schema/parser/type tests unchanged",
+    "lease": "World02348ee6 whole-admission five decoder/import/type hunks; World5d052775 provider/account additions. These remain unused until actual prerequisites; generated/runtime schemas excluded."
+  },
+  "publishedCore": {
+    "source": "e713e0f6",
+    "integration": "18a3e745f4c5eeea76f6cc5f5761304cef23a61f",
+    "followupIntegration": "59e5f71138346aa179fcb408330c1bc92ae066eb",
+    "verifiedFetchedMaster": "a9517e049f24f434d103273d535943ff464346a5"
+  },
+  "originalAR03": "IN_PROGRESS. Canonical candidate consumer MOCK_READY; positive actual application Root/admission, live service/two-account/device/release NOT_RUN.",
+  "goal": "ACTIVE. Same unbudgeted goal, implementation and release prerequisites unfinished. No completion or blocked status asserted.",
+  "publication": "V2 candidate patch requires a new committed handoff and verified integrator receipt; source self-commit recorded in handoff, never invented here."
+}
