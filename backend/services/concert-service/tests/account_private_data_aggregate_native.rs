@@ -201,6 +201,13 @@ async fn aggregate_native() -> Result<()> {
         .apply(c.clone(), Instant::now() + WallDuration::from_secs(4))
         .await;
     anyhow::ensure!(matches!(second, Err(DeletionFailure::Incomplete)));
+    let replay_cursor: i32 = sqlx::query_scalar(
+        "select next_category from concert_private_data_owner_progress where user_id=$1",
+    )
+    .bind(user)
+    .fetch_one(&p)
+    .await?;
+    anyhow::ensure!(replay_cursor == PrivateDataCategory::ALL.len() as i32);
     let replay_whole_ack: Option<chrono::DateTime<Utc>> = sqlx::query_scalar(
         "select completed_at from concert_private_data_owner_progress where user_id=$1",
     )
@@ -306,5 +313,12 @@ async fn aggregate_native() -> Result<()> {
     anyhow::ensure!(fence_after_restart == fence_before_restart);
     let still_incomplete:i64=sqlx::query_scalar("select count(*) from concert_private_data_category_progress where user_id=$1 and state='INCOMPLETE'").bind(user).fetch_one(&p).await?;
     anyhow::ensure!(still_incomplete == 5);
+    let no_ack_after_guarded_transition: Option<chrono::DateTime<Utc>> = sqlx::query_scalar(
+        "select completed_at from concert_private_data_owner_progress where user_id=$1",
+    )
+    .bind(user)
+    .fetch_one(&p)
+    .await?;
+    anyhow::ensure!(no_ack_after_guarded_transition.is_none());
     Ok(())
 }
