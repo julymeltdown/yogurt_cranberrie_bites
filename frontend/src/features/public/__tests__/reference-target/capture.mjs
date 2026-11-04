@@ -4,7 +4,7 @@ import { createServer } from 'vite'
 import { chromium, expect } from '@playwright/test'
 import { mkdir, writeFile, statfs, readFile } from 'node:fs/promises'
 import { resolve } from 'node:path'
-const root = resolve(import.meta.dirname, '../../../../..'), evidence = resolve(import.meta.dirname, process.env.MCR_PUBLIC_EVIDENCE_DIR ?? 'evidence/fidelity')
+const root = resolve(import.meta.dirname, '../../../../..'), evidence = resolve(import.meta.dirname, process.env.MCR_PUBLIC_EVIDENCE_DIR ?? 'evidence/artwork')
 const disk = await statfs(root)
 assert(disk.bavail * disk.bsize > 8 * 1024 ** 3, 'At least 8GiB free disk required before browser validation')
 await mkdir(evidence, { recursive: true })
@@ -33,6 +33,14 @@ try {
     const file = `landing-${width}.png`; await page.screenshot({ path: resolve(evidence, file) }); report.screenshots.push(file)
     const clip = await page.evaluate(() => { const head=document.querySelector('.public-header').getBoundingClientRect(), poster=document.querySelector('.public-poster').getBoundingClientRect();return {x:head.x,y:head.y,width:head.width,height:poster.bottom-head.y} })
     const posterFile=`poster-${width}.png`;await page.screenshot({path:resolve(evidence,posterFile),clip});report.screenshots.push(posterFile)
+    if (width === 390 && process.env.MCR_REF_REQUIRE_ART) {
+      // Capture the actual routed foreground at its native CSS geometry, hiding
+      // only unrelated illustration/control layers for contour measurement.
+      const isolate = await page.addStyleTag({ content: '.public-poster > :not(.landing-web):not(.landing-wordmark):not(.landing-scene) { visibility:hidden!important } .public-poster { background:#161413!important } .landing-print-wear { visibility:hidden!important }' })
+      const file = 'foreground-390.png'
+      await page.locator('.landing-wordmark').screenshot({ path: resolve(evidence, file) }); report.screenshots.push(file)
+      await isolate.evaluate(style => style.remove())
+    }
     const geometry = await page.evaluate(() => {
       const rect = selector => { const r = document.querySelector(selector).getBoundingClientRect(); return { x: r.x, y: r.y, width: r.width, height: r.height } }
       return { figureWidths: [...document.querySelectorAll('.landing-crowd > span')].map(el => el.getBoundingClientRect().width), poster: rect('.public-poster'), wordmark: rect('.landing-wordmark'), scene: rect('.landing-scene'), crowd: rect('.landing-crowd'), copy: rect('.landing-poster-copy'), cta: rect('.public-primary'), overflow: document.documentElement.scrollWidth > innerWidth }
@@ -66,7 +74,7 @@ try {
   }
   if(process.env.MCR_REF_REQUIRE_ART && !process.env.MCR_REF_PREVIEW_ONLY) {
     page=await browser.newPage({viewport:{width:1010,height:820}})
-    await page.goto(`${base}/src/features/public/__tests__/reference-target/fidelity-comparison.html`)
+    await page.goto(`${base}/src/features/public/__tests__/reference-target/artwork-comparison.html`)
     await page.locator('img').evaluateAll(async images=>{await Promise.all(images.map(image=>image.decode()))})
     const file='comparison-390.png';await page.screenshot({path:resolve(evidence,file),fullPage:true});report.screenshots.push(file);await page.close()
   }

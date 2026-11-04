@@ -58283,8 +58283,7 @@
                   }
                 },
                 "required": [
-                  "reason",
-                  "retry_after_ms"
+                  "reason"
                 ]
               },
               {

@@ -1,0 +1,33 @@
+{
+  "qualification": "Native routed foreground resampled once to the source coordinate grid, compared against original reference; bounded silhouette IoU, not whole-page acceptance.",
+  "sourceCrop": [
+    10,
+    35,
+    296,
+    520
+  ],
+  "cases": [
+    {
+      "region": "wordmark",
+      "priorIoU": 0.28489586121968197,
+      "deliveredIoU": 0.9624479600333056,
+      "minimum": 0.88,
+      "pass": true
+    },
+    {
+      "region": "rose",
+      "priorIoU": 0.3928237129485179,
+      "deliveredIoU": 0.9781303602058319,
+      "minimum": 0.82,
+      "pass": true
+    },
+    {
+      "region": "moon_cemetery",
+      "priorIoU": 0.5015580368735394,
+      "deliveredIoU": 0.9472623446422573,
+      "minimum": 0.78,
+      "pass": true
+    }
+  ],
+  "result": "PASS"
+}

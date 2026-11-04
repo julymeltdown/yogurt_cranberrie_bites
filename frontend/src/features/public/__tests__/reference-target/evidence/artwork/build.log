@@ -1,0 +1,74 @@
+{"freeBytes":77797519360,"publicDirCopied":false}
+vite v8.1.3 building client environment for production...
+[2K
+transforming...✓ 472 modules transformed.
+rendering chunks...
+computing gzip size...
+../../../../../../tmp/mcr-public-artwork-build/index.html                                          1.94 kB │ gzip:   0.68 kB
+../../../../../../tmp/mcr-public-artwork-build/assets/RootMediaView-BdfnIHbK.css                   0.55 kB │ gzip:   0.25 kB
+../../../../../../tmp/mcr-public-artwork-build/assets/ProfileIcon-C5jlMgdD.css                     1.36 kB │ gzip:   0.59 kB
+../../../../../../tmp/mcr-public-artwork-build/assets/safety-BViJNTBJ.css                          1.51 kB │ gzip:   0.56 kB
+../../../../../../tmp/mcr-public-artwork-build/assets/root-features-nb6jl9cq.css                   1.55 kB │ gzip:   0.65 kB
+../../../../../../tmp/mcr-public-artwork-build/assets/meeting-entry-jVy7UCgi.css                   1.58 kB │ gzip:   0.66 kB
+../../../../../../tmp/mcr-public-artwork-build/assets/social-BMiG3aQa.css                          1.71 kB │ gzip:   0.71 kB
+../../../../../../tmp/mcr-public-artwork-build/assets/composition-C7uV5nlu.css                     3.55 kB │ gzip:   1.13 kB
+../../../../../../tmp/mcr-public-artwork-build/assets/panels-BMt8WHkR.css                          4.19 kB │ gzip:   1.38 kB
+../../../../../../tmp/mcr-public-artwork-build/assets/social-composition-BD3_6jZW.css              5.21 kB │ gzip:   1.45 kB
+../../../../../../tmp/mcr-public-artwork-build/assets/activity-CSOKqWtj.css                        9.90 kB │ gzip:   2.79 kB
+../../../../../../tmp/mcr-public-artwork-build/assets/world-panels-cWsIhOQK.css                   13.67 kB │ gzip:   3.54 kB
+../../../../../../tmp/mcr-public-artwork-build/assets/provider-DprRFUma.css                       14.46 kB │ gzip:   3.38 kB
+../../../../../../tmp/mcr-public-artwork-build/assets/CommunityFeatures-CtYOQD37.css              17.33 kB │ gzip:   3.90 kB
+../../../../../../tmp/mcr-public-artwork-build/assets/PublicBoundary-DqMo5afm.css                 18.33 kB │ gzip:   4.47 kB
+../../../../../../tmp/mcr-public-artwork-build/assets/index-CgHiC7As.css                          27.70 kB │ gzip:   6.03 kB
+../../../../../../tmp/mcr-public-artwork-build/assets/rolldown-runtime-QTnfLwEv.js                 0.69 kB │ gzip:   0.42 kB
+../../../../../../tmp/mcr-public-artwork-build/assets/compatibility-BGkcp1nM.js                    0.84 kB │ gzip:   0.40 kB
+../../../../../../tmp/mcr-public-artwork-build/assets/provider-bSpDwAfw.js                         0.96 kB │ gzip:   0.54 kB
+../../../../../../tmp/mcr-public-artwork-build/assets/identity-BmVSvGua.js                         1.02 kB │ gzip:   0.59 kB
+../../../../../../tmp/mcr-public-artwork-build/assets/preload-helper-CZgWQFsJ.js                   1.25 kB │ gzip:   0.70 kB
+../../../../../../tmp/mcr-public-artwork-build/assets/AdminBoundary-CsU550G0.js                    1.37 kB │ gzip:   0.68 kB
+../../../../../../tmp/mcr-public-artwork-build/assets/operations-ClTv-duQ.js                       1.45 kB │ gzip:   0.61 kB
+../../../../../../tmp/mcr-public-artwork-build/assets/avatar-config.schema-D-59TwV9.js             1.86 kB │ gzip:   0.54 kB
+../../../../../../tmp/mcr-public-artwork-build/assets/authority-BJIpd7jY.js                        2.75 kB │ gzip:   1.19 kB
+../../../../../../tmp/mcr-public-artwork-build/assets/contract-DcaKwr0K.js                         2.98 kB │ gzip:   1.33 kB
+../../../../../../tmp/mcr-public-artwork-build/assets/simulation-sCcriVKG.js                       3.15 kB │ gzip:   1.27 kB
+../../../../../../tmp/mcr-public-artwork-build/assets/RootMediaView-CzB3UtHx.js                    3.47 kB │ gzip:   1.48 kB
+../../../../../../tmp/mcr-public-artwork-build/assets/errors-CeAwlIOM.js                           4.41 kB │ gzip:   1.86 kB
+../../../../../../tmp/mcr-public-artwork-build/assets/resolver-DrCBReSz.js                         4.56 kB │ gzip:   2.11 kB
+../../../../../../tmp/mcr-public-artwork-build/assets/panel-CNi4iBeY.js                            4.71 kB │ gzip:   1.92 kB
+../../../../../../tmp/mcr-public-artwork-build/assets/whole-character-uuRj4mhS.js                  5.65 kB │ gzip:   2.20 kB
+../../../../../../tmp/mcr-public-artwork-build/assets/model-a0gp53af.js                            6.41 kB │ gzip:   2.60 kB
+../../../../../../tmp/mcr-public-artwork-build/assets/jsx-runtime-CIxEorsV.js                      7.89 kB │ gzip:   2.98 kB
+../../../../../../tmp/mcr-public-artwork-build/assets/social-composition-Cx3doQ3B.js               8.17 kB │ gzip:   2.80 kB
+../../../../../../tmp/mcr-public-artwork-build/assets/provider-bU0FSk9L.js                         9.25 kB │ gzip:   4.07 kB
+../../../../../../tmp/mcr-public-artwork-build/assets/MapScene-DO9FS0iK.js                        10.87 kB │ gzip:   4.17 kB
+../../../../../../tmp/mcr-public-artwork-build/assets/panels-i0aR-zDM.js                          10.96 kB │ gzip:   3.60 kB
+../../../../../../tmp/mcr-public-artwork-build/assets/ProfileIcon-fJBvYfSy.js                     11.95 kB │ gzip:   4.75 kB
+../../../../../../tmp/mcr-public-artwork-build/assets/root-features-fEhp1QCF.js                   14.87 kB │ gzip:   4.93 kB
+../../../../../../tmp/mcr-public-artwork-build/assets/manifest-BovhGGz9.js                        15.78 kB │ gzip:   4.49 kB
+../../../../../../tmp/mcr-public-artwork-build/assets/source-catalog-B2GN78SH.js                  15.97 kB │ gzip:   4.30 kB
+../../../../../../tmp/mcr-public-artwork-build/assets/capabilities-Dzat_4h8.js                    19.35 kB │ gzip:   6.11 kB
+../../../../../../tmp/mcr-public-artwork-build/assets/contract-Bcu83lns.js                        26.64 kB │ gzip:   5.81 kB
+../../../../../../tmp/mcr-public-artwork-build/assets/social-Du4FkiHs.js                          35.11 kB │ gzip:  10.27 kB
+../../../../../../tmp/mcr-public-artwork-build/assets/meeting-entry-C233ZTM_.js                   37.45 kB │ gzip:  10.47 kB
+../../../../../../tmp/mcr-public-artwork-build/assets/phaser-B0JqOrhk.js                          38.19 kB │ gzip:   5.25 kB
+../../../../../../tmp/mcr-public-artwork-build/assets/provider-CPdyIi2U.js                        43.20 kB │ gzip:  13.13 kB
+../../../../../../tmp/mcr-public-artwork-build/assets/composition-D8iNSxFr.js                     50.06 kB │ gzip:  16.90 kB
+../../../../../../tmp/mcr-public-artwork-build/assets/access-CUQ7WmSx.js                          58.88 kB │ gzip:  19.94 kB
+../../../../../../tmp/mcr-public-artwork-build/assets/schemas-B9zUvP7H.js                         66.99 kB │ gzip:  17.93 kB
+../../../../../../tmp/mcr-public-artwork-build/assets/CommunityFeatures-jctHVI1y.js               68.75 kB │ gzip:  18.93 kB
+../../../../../../tmp/mcr-public-artwork-build/assets/world-panels-BnDiy02h.js                    72.16 kB │ gzip:  23.52 kB
+../../../../../../tmp/mcr-public-artwork-build/assets/domain-operations.generated-Ck-JZXyo.js     81.08 kB │ gzip:   4.34 kB
+../../../../../../tmp/mcr-public-artwork-build/assets/activity-BGy89pIf.js                        87.40 kB │ gzip:  24.72 kB
+../../../../../../tmp/mcr-public-artwork-build/assets/routes-DD6e3a7i.js                          97.67 kB │ gzip:  32.09 kB
+../../../../../../tmp/mcr-public-artwork-build/assets/mcr-core.openapi-BTwes0QT.js               126.29 kB │ gzip:  12.56 kB
+../../../../../../tmp/mcr-public-artwork-build/assets/PublicBoundary-BU1wDPjg.js                 153.86 kB │ gzip:  40.49 kB
+../../../../../../tmp/mcr-public-artwork-build/assets/index-B8Cwf_vg.js                          275.92 kB │ gzip:  86.41 kB
+../../../../../../tmp/mcr-public-artwork-build/assets/mcr-domain.openapi-CbO9FwOW.js             760.84 kB │ gzip:  49.27 kB
+../../../../../../tmp/mcr-public-artwork-build/assets/phaser-DuGV5HTt.js                       1,198.04 kB │ gzip: 319.11 kB
+
+✓ built in 482ms
+[plugin builtin:vite-reporter]
+(!) Some chunks are larger than 500 kB after minification. Consider:
+- Using dynamic import() to code-split the application
+- Use build.rolldownOptions.output.codeSplitting to improve chunking: https://rolldown.rs/reference/OutputOptions.codeSplitting
+- Adjust chunk size limit for this warning via build.chunkSizeWarningLimit.

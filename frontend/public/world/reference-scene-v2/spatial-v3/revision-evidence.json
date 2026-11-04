@@ -1,0 +1,321 @@
+{
+  "status": "PASS_VIRTUAL_GEOMETRY_CANDIDATE_ONLY",
+  "base_geometry_hash": "sha256:20168a1df64cd3c72ea3b8cb576ca895dcff8c7edfb0e77886cc647fb1df37e5",
+  "geometry_hash": "sha256:899aca9bd6ce499c6f46aff5eaf21e30ab34b301e988771b978a6fab7c2d469f",
+  "world_camera_delta_y": -179,
+  "transformation": "RootY<=954: Y-179; largerY:775+(Y-954)*521/342. Preserve each prop footprint/body shape by root-relative translation; explicit top-hall exceptiondepth96. Ground polygons use continuous same transform with kink vertices.",
+  "prop_deltas": [
+    {
+      "id": "main_stage",
+      "old_depth_y": 539,
+      "new_depth_y": 360,
+      "delta_y": -179,
+      "exception": null
+    },
+    {
+      "id": "north_white_food",
+      "old_depth_y": 329,
+      "new_depth_y": 150,
+      "delta_y": -179,
+      "exception": null
+    },
+    {
+      "id": "west_white_merch",
+      "old_depth_y": 709,
+      "new_depth_y": 530,
+      "delta_y": -179,
+      "exception": null
+    },
+    {
+      "id": "culture_park_plaque",
+      "old_depth_y": 590,
+      "new_depth_y": 411,
+      "delta_y": -179,
+      "exception": null
+    },
+    {
+      "id": "cross_banner_east",
+      "old_depth_y": 450,
+      "new_depth_y": 271,
+      "delta_y": -179,
+      "exception": null
+    },
+    {
+      "id": "meeting_pavilion",
+      "old_depth_y": 1092,
+      "new_depth_y": 985.22807,
+      "delta_y": -106.77193,
+      "exception": null
+    },
+    {
+      "id": "giveaway_pavilion",
+      "old_depth_y": 1266,
+      "new_depth_y": 1250.298246,
+      "delta_y": -15.701754,
+      "exception": null
+    },
+    {
+      "id": "rooted_tree_01",
+      "old_depth_y": 316,
+      "new_depth_y": 137,
+      "delta_y": -179,
+      "exception": null
+    },
+    {
+      "id": "rooted_tree_02",
+      "old_depth_y": 316,
+      "new_depth_y": 137,
+      "delta_y": -179,
+      "exception": null
+    },
+    {
+      "id": "rooted_tree_03",
+      "old_depth_y": 316,
+      "new_depth_y": 137,
+      "delta_y": -179,
+      "exception": null
+    },
+    {
+      "id": "rooted_tree_04",
+      "old_depth_y": 561,
+      "new_depth_y": 382,
+      "delta_y": -179,
+      "exception": null
+    },
+    {
+      "id": "rooted_tree_05",
+      "old_depth_y": 533,
+      "new_depth_y": 354,
+      "delta_y": -179,
+      "exception": null
+    },
+    {
+      "id": "rooted_tree_06",
+      "old_depth_y": 759,
+      "new_depth_y": 580,
+      "delta_y": -179,
+      "exception": null
+    },
+    {
+      "id": "rooted_tree_07",
+      "old_depth_y": 876,
+      "new_depth_y": 697,
+      "delta_y": -179,
+      "exception": null
+    },
+    {
+      "id": "rooted_tree_08",
+      "old_depth_y": 1199,
+      "new_depth_y": 1148.230994,
+      "delta_y": -50.769006,
+      "exception": null
+    },
+    {
+      "id": "rooted_tree_09",
+      "old_depth_y": 1071,
+      "new_depth_y": 953.236842,
+      "delta_y": -117.763158,
+      "exception": null
+    },
+    {
+      "id": "rooted_tree_10",
+      "old_depth_y": 1286,
+      "new_depth_y": 1280.766082,
+      "delta_y": -5.233918,
+      "exception": null
+    },
+    {
+      "id": "rooted_tree_11",
+      "old_depth_y": 796,
+      "new_depth_y": 617,
+      "delta_y": -179,
+      "exception": null
+    },
+    {
+      "id": "food_counters",
+      "old_depth_y": 954,
+      "new_depth_y": 775,
+      "delta_y": -179,
+      "exception": null
+    },
+    {
+      "id": "northern_hall",
+      "old_depth_y": 202,
+      "new_depth_y": 96,
+      "delta_y": -106,
+      "exception": "Top hall rooted depth96 keeps source art within C06 -128px overhang."
+    },
+    {
+      "id": "north_eastern_hall",
+      "old_depth_y": 202,
+      "new_depth_y": 96,
+      "delta_y": -106,
+      "exception": "Top hall rooted depth96 keeps source art within C06 -128px overhang."
+    },
+    {
+      "id": "merch_venue_hall",
+      "old_depth_y": 910,
+      "new_depth_y": 731,
+      "delta_y": -179,
+      "exception": null
+    }
+  ],
+  "point_projection": [
+    {
+      "group": "spawns",
+      "previous": {
+        "spawn_id": "courtyard_entry",
+        "cell_x": 29,
+        "cell_y": 37
+      },
+      "proposed": {
+        "spawn_id": "courtyard_entry",
+        "cell_x": 29,
+        "cell_y": 26
+      },
+      "rule": "Floor transformed cell-center into grid; nearest walkable cell within2 cells, deterministic distance/x/y tie break. Virtual geometry only."
+    },
+    {
+      "group": "spawns",
+      "previous": {
+        "spawn_id": "community_entry",
+        "cell_x": 31,
+        "cell_y": 58
+      },
+      "proposed": {
+        "spawn_id": "community_entry",
+        "cell_x": 31,
+        "cell_y": 47
+      },
+      "rule": "Floor transformed cell-center into grid; nearest walkable cell within2 cells, deterministic distance/x/y tie break. Virtual geometry only."
+    },
+    {
+      "group": "interactions",
+      "previous": {
+        "interaction_id": "stage_info",
+        "place_id": "6a5c196b-58e1-47d5-99bb-000000000003",
+        "cell_x": 30,
+        "cell_y": 35
+      },
+      "proposed": {
+        "interaction_id": "stage_info",
+        "place_id": "6a5c196b-58e1-47d5-99bb-000000000003",
+        "cell_x": 30,
+        "cell_y": 24
+      },
+      "rule": "Floor transformed cell-center into grid; nearest walkable cell within2 cells, deterministic distance/x/y tie break. Virtual geometry only."
+    },
+    {
+      "group": "interactions",
+      "previous": {
+        "interaction_id": "park_info",
+        "place_id": "6a5c196b-58e1-47d5-99bb-000000000002",
+        "cell_x": 38,
+        "cell_y": 38
+      },
+      "proposed": {
+        "interaction_id": "park_info",
+        "place_id": "6a5c196b-58e1-47d5-99bb-000000000002",
+        "cell_x": 38,
+        "cell_y": 27
+      },
+      "rule": "Floor transformed cell-center into grid; nearest walkable cell within2 cells, deterministic distance/x/y tie break. Virtual geometry only."
+    },
+    {
+      "group": "interactions",
+      "previous": {
+        "interaction_id": "gifts_info",
+        "place_id": "6a5c196b-58e1-47d5-99bb-000000000004",
+        "cell_x": 13,
+        "cell_y": 59
+      },
+      "proposed": {
+        "interaction_id": "gifts_info",
+        "place_id": "6a5c196b-58e1-47d5-99bb-000000000004",
+        "cell_x": 13,
+        "cell_y": 48
+      },
+      "rule": "Floor transformed cell-center into grid; nearest walkable cell within2 cells, deterministic distance/x/y tie break. Virtual geometry only."
+    },
+    {
+      "group": "interactions",
+      "previous": {
+        "interaction_id": "wall_info",
+        "place_id": "6a5c196b-58e1-47d5-99bb-000000000005",
+        "cell_x": 14,
+        "cell_y": 68
+      },
+      "proposed": {
+        "interaction_id": "wall_info",
+        "place_id": "6a5c196b-58e1-47d5-99bb-000000000005",
+        "cell_x": 14,
+        "cell_y": 61
+      },
+      "rule": "Floor transformed cell-center into grid; nearest walkable cell within2 cells, deterministic distance/x/y tie break. Virtual geometry only."
+    }
+  ],
+  "routes": [
+    {
+      "from": "courtyard_entry",
+      "to": "courtyard_entry",
+      "steps": 0
+    },
+    {
+      "from": "courtyard_entry",
+      "to": "community_entry",
+      "steps": 25
+    },
+    {
+      "from": "courtyard_entry",
+      "to": "stage_info",
+      "steps": 3
+    },
+    {
+      "from": "courtyard_entry",
+      "to": "park_info",
+      "steps": 10
+    },
+    {
+      "from": "courtyard_entry",
+      "to": "gifts_info",
+      "steps": 38
+    },
+    {
+      "from": "courtyard_entry",
+      "to": "wall_info",
+      "steps": 50
+    },
+    {
+      "from": "community_entry",
+      "to": "courtyard_entry",
+      "steps": 25
+    },
+    {
+      "from": "community_entry",
+      "to": "community_entry",
+      "steps": 0
+    },
+    {
+      "from": "community_entry",
+      "to": "stage_info",
+      "steps": 28
+    },
+    {
+      "from": "community_entry",
+      "to": "park_info",
+      "steps": 27
+    },
+    {
+      "from": "community_entry",
+      "to": "gifts_info",
+      "steps": 19
+    },
+    {
+      "from": "community_entry",
+      "to": "wall_info",
+      "steps": 31
+    }
+  ],
+  "existing_place_records_unchanged": true,
+  "limits": "No release activation, physical validation or target acceptance."
+}

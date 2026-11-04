@@ -996,7 +996,7 @@ mod tests {
                 event_id: event,
                 session_family_id: family,
                 request_id,
-                operation: "FEED_LIST".into(),
+                operation: "listConcertFeed".into(),
                 expires_unix_micros: parent.expires_at() * 1_000_000,
                 parent_digest: parent.parent_digest(),
                 parent_body_digest: parent.request_digest(),

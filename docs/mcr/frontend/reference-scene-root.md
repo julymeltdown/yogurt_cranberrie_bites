@@ -1,0 +1,72 @@
+# FE-SCENE-R3-ROOT
+
+Status: MOCK_READY; bounded client source/fixture implementation and qualification complete. This is not production admission, full art fidelity, physical-place verification or whole-parent acceptance. No king/SL/QA technical approval gate is required. The implementation developer owns inspection, validation, fixes and direct non-force publication.
+
+## Source and ownership
+
+Reused isolated checkout `fe-reference-root`, new branch `codex/mcr-fe-scene-r3-root`, fresh master base `4dc12a56b5d4ac5cbb690450302c7f856757d4b2`. The prior selected-character goal remains complete. This new unbudgeted persistent goal covers implementation, relevant verification, documentation, committed publication and concrete interface fixes.
+
+Exclusive source transfer: `frontend/src/world/runtime.ts`, `frontend/src/world/composition/index.ts` and their exact existing `runtime.test.ts` / `composition.test.ts` files. Root increment: `app/world-entry/production.ts`, `resolver.ts`, new `reference-scene-overview.ts`, new `__tests__/reference-scene-root/**`, and this document. No MapScene, Places, contracts, backend, art, manifest/lock or source archive edits. Existing dependency resolutions are used through a removable link; no installation or dependency copy.
+
+Published source inputs: World `aa3e2f3d` loader/overview/public Tiled, `969b3b2f` actual Phaser dispatch, and Map consumer `c1f7b4e8` / `9c498fad` delivered in base `4dc12a56`. Artist `e3af146a` v4 pack retains source `8f89d190`; source geometry `sha256:20168a1df64cd3c72ea3b8cb576ca895dcff8c7edfb0e77886cc647fb1df37e5`. Strict consumer: `mcr_reference_scene_r3`, revision 2, PARADE, 768×1296. Public Tiled `world/reference-scene-v2/runtime/canonical-map-v2.json`: 24,058 bytes, SHA-256 `5436a99d36c9b91a4c59302ee65130f327214e4ca78981620759846bb40e919f`. Ground SHA-256 `5e27d2e223ba4fd36d1464577c3e9d9ff8d3f2db5db984e0306587a5d2143af5`; atlas `ff68a358fad4e03ceaaf5fd610a9e6cdad9a167963e3ec00545c909ba6bb0dfe`. Shared World test factory remains unmodified. Canonical backend map2 pin `30901851…de9f5` is a separately published candidate; the client test fixture is explicitly nonauthoritative and does not impersonate that backend map hash.
+
+## Delivered implementation
+
+`RuntimeOptions.createOverview` is additive, structurally typed as read/subscribe/replace/dispose, and forwarded through `WorldCompositionOptions`. Omission retains `createSceneryOverview`. The runtime constructs exactly one factory owner, passes only its ready loaded map, replaces it on a successful skin commit and withdraws it before engine/source cleanup. Projection failures cannot strand the engine or decoded source lease. Runtime disposal disposes the projection once.
+
+The root adapter multiplexes the incumbent and reference producers within this one owner. A map ID, known geometry hash or runtime-v4 scenery resource claim requires exact `validateReferenceMetadata` qualification; malformed candidates never fall back to incumbent pixels. The resolver applies metadata preflight after ordinary schema/hash/binding validation and before rooms/resource HTTP, including optional theme qualification. Default production composition receives the root factory through its existing lazy import boundary.
+
+The adapter withdraws its old public read before child replacement/revocation, fences reentrant notifications, ignores inactive producer emissions and disposes both children. It neither loads assets nor disposes the borrowed LoadedMap. The source decoder, Phaser scene, avatar runtime, camera, Auth and world connection keep their incumbent owners. Places receives the existing identity-pinned nullable SceneryOverviewPort; MAP raster width/height and source map/theme revision/hash stay coherent. Local MAP PNG encoding uses the existing 4 MiB per-PNG limit; C06 combined source budgets are unchanged.
+
+## Virtual display and admission
+
+World, Map, artist, Spatial and Productroot directly confirmed that all four frozen records are `VIRTUAL_CONCEPT` / `CONCEPT_ONLY` / `ORIGINAL_ART` / `UNREVIEWED`, with photo `NOT_APPLICABLE`. They are not requests for physical destinations. The new fixture preserves those records and top-level provenance unchanged; it never invents REVIEWED or reseals the source to evade a guard. Virtual place detail explicitly prohibits using the landmark as a physical meeting destination. Existing physical beacon/rally/IN02 and reviewed physical-source guards are not changed.
+
+The current root `reviewedArt(map/theme)` guard is a separate source-art admission guard. Its default-resolver denial is checked with zero scene asset/room requests; this does not establish a physical-review prerequisite for virtual display. Spatial/Productroot own the legitimate engineering-source-review receipt and virtual-aware backend policy, with a new map revision if metadata changes. The optional all-era v5 and required spatial-v3/quality-v6 fidelity correction are separate follow-ups; neither is silently accepted by this strict revision-2 v4 client. Production operator/runtime bundle and a coordinated consumer version adoption remain distinct from source-fixture completion. No generic external venue-source request is justified by these four virtual records.
+
+## Developer evidence
+
+The positive native fixture uses actual Auth/session/privacy, createAppRoutes/WorldShell/Places providers/controllers, production world lifecycle/composition, the real default MapScene/Phaser and reviewed selected characters. Its sole source resolver is explicit, deterministic and nonauthoritative, with unavailable other-theme descriptors rather than aliased pixels. It is not the default production resolver and grants no backend admission. The separate negative case uses the actual default production loader/resolver. A retained ordinary-release default-loader native journey qualifies the preserved incumbent branch independently.
+
+Final commands, exits, source pins, native receipts and captures are recorded at the completion handoff below. Tests cover factory ownership/skin replacement/teardown, broken projection cleanup, current public port privacy withdrawal, strict reference metadata, ordinary fallback, inactive emissions, reentrant replacement/disposal and truthful source-art denial. Initial Python differential failures used the host Python without required format checkers; the existing pinned validation venv resolves them. One bulk test run exceeded an existing 1-second lazy-route test deadline; the bounded two-worker affected run passes without modifying that unassigned test.
+
+## Original task-local disposition
+
+| Original task | Behavior evidenced by this increment | Remaining boundary / next owner |
+| --- | --- | --- |
+| FE07 | Persistent shell Map/place navigation borrows one game, camera and world lease; factory creates no second shell owner. | This source-fixture result does not reconcile unrelated shell routes or change Main's accepted counts. |
+| FE14 | Additive overview factory, strict source metadata, incumbent default, successful skin update and cleanup are implemented and tested; actual default Phaser is used in the new-scene fixture. | No new FPS/device/capacity or whole renderer fidelity claim. Later revision/era adoption requires World/root coordination. |
+| FE19 | The missing root producer-to-existing Map/Places port is implemented; virtual concept details remain nonphysical, exact pins are supplied, and malformed candidate fallback is denied. | Source/fixture adapter gap is closed by the passing checks below. Original FE19 remains implementation-evidenced/task-local rather than globally accepted. Production canonical engineering-reviewed bundle/revision adoption belongs to Spatial/Productroot plus World/root; upper-district versioned visual/geometry correction belongs to artist and needs explicit future adoption. |
+
+These named dependencies describe production/version behavior, not a reason to withhold a completed bounded source-fixture goal. Existing original Place closed/removed/source/mismatch/help behavior remains in the Places owner's scope and tests; this adapter does not change it or claim fresh qualification of every historical case. Live service, multiuser, devices, IN02/IN05 and complete art acceptance remain separate. Historical 11 ACCEPTED + 9 task-local SATISFIED bookkeeping is not amended here.
+
+## Completion and retained receipts
+
+Source checkpoint `167d1426`; reconciled candidate `38a880e554d3f88bd59bf61a0711ebab2ceee0ee` preserves peer master `a3526254`. No assigned source changed during reconciliation. Retained evidence lives under `frontend/src/app/world-entry/__tests__/reference-scene-root/evidence/`: `native.json` binds all 15 relevant source files/resources by SHA-256; six `world-{360,390,430}.png` / `map-{360,390,430}.png` captures show the actual views; `legacy-default-loader.json` retains the independent ordinary-release default-loader receipt. `checks.json` records commands, environment and limits. All source pins were checked again against the reconciled checkout.
+
+Developer checks (all exit 0):
+
+- Vitest 4.1.9, affected root/runtime/composition/reference/overview/skin set: **318 tests in 14 files pass**, `--maxWorkers=2`, with the existing contracts-validation Python venv.
+- Full `tsc -b`, scoped Oxlint and production Vite build pass. Vite retains its existing large-Phaser-chunk advisory.
+- Source-fixture native runner, Chrome 156.0.8078.80: **360 / 390 / 430 pass**, plus actual default-production-resolver denial at 390. Actual Phaser yields 23 reference objects and six whole-character sprites. World → Map → virtual detail → World → warm Map keeps exactly one game/camera/factory/connection and makes only the original two source PNG and one Tiled request. Map pan/zoom does not move the World camera. All five created URLs are revoked on cleanup; no page errors. Suspension withdraws map controls/publication and leaves zero game, socket or world canvas.
+- Each viewport yields the same 768×1296 MAP raster: 2,114,297 encoded bytes, PNG SHA-256 `041af9e128649a8668fc562373cccf540e0b7c5b1f02c2df838519f9f4fe848a`, RGBA SHA-256 `9f25d4d50d96e8c27686471100ea55ec06ca3bbfcf1503434817250a7f4c56f4`. Captures were visually inspected for actual scene/Map/virtual labels; no fidelity acceptance is inferred.
+- Retained whole-character ordinary-release default-loader runner: 390 passes without composition override, preserving save-and-return behavior and incumbent overview.
+- Planning/provenance checker, UI-origin checker, assigned frontend boundary and whitespace checks pass. After merging peers, the sparse checkout initially omitted their two newly tracked Auth artwork PNGs; including those tracked assets fixes the route import failure without changing peer code. The final affected rerun above passes.
+
+Reproduce from `frontend/` using the existing Node 24.22.2 toolchain/dependency resolution and `MCR_FE14_PYTHON` pointing to the existing validation venv:
+
+```sh
+node node_modules/vitest/vitest.mjs run --maxWorkers=2 src/app/world-entry/__tests__ src/world/__tests__/runtime.test.ts src/world/composition/__tests__ src/world/reference-scene/__tests__ src/world/__tests__/illustrated/overview.test.ts src/world/theme/__tests__/replacement.test.ts
+node node_modules/typescript/bin/tsc -b
+node node_modules/vite/bin/vite.js build
+MCR_SCENE_ROOT_OUTPUT=/absolute/new/output node src/app/world-entry/__tests__/reference-scene-root/native.mjs
+QA_WIDTH=390 MCR_WHOLE_ROOT_OUTPUT=/absolute/new/legacy-output node e2e/reference-integrated/whole/native.mjs
+```
+
+Publication is direct and non-force after peer reconciliation. Evidence is pinned to the source/reconciled candidate; the following receipt/document commit adds no application behavior. The checkout is handed off clean with test servers, browsers and temporary dependency link stopped/removed. FE07/FE14/FE19 dispositions above remain task-local; there is no production or global acceptance promotion.
+
+### Subsequent input at the stopped handoff
+
+Artist published the required spatial/fidelity follow-up `bc731ed868ec30b33ae5dd1e6f13e97e68ecabd9`, already preserved by the final peer merge. This is a required later fidelity correction, independent of the completed immutable v4/map2 source-fixture increment. New normalized geometry `sha256:899aca9bd6ce499c6f46aff5eaf21e30ab34b301e988771b978a6fab7c2d469f` and `spatial-v3/geometry-proposal.json` / `quality-v6/manifest.json` must never be mixed with current `20168…` collision or resource pins. Artist status is CONTRACT_READY candidate / NOT_RELEASE_BOUND with target acceptance still IN_PROGRESS. Explicit next adoption needs a server map revision, World-owned actual runtime Tiled/descriptor, and assigned root/Map version coordination; no source adoption or production activation is performed here.
+
+Original FE09 has a reserved next caller lease (`frontend/src/main.tsx`, new `frontend/src/app/__tests__/production-refresh/**`, and `docs/mcr/frontend/production-refresh.md`). It is not active. Backend BE03 successor `01a1a232-b91d-78f1-a13a-1361788ba51c` identified the actual existing refresh endpoint and concrete remaining input: fresh actual browser-cookie and simultaneous-tab rotation/race qualification, since the old receipt marks that proof NOT_RUN. A named owner or client fixture alone does not establish readiness. No Auth model or existing Auth test ownership transfers with this reservation.

@@ -33,6 +33,10 @@ A king receiving a review or verification request must decline: "I don't perform
 
 ## SL dispatch lanes
 
+The user requires an [hourly task-by-task progress check](sl-hourly-progress.md)
+in each SL chat. Active development and staffing continue between those checks;
+the schedule does not introduce a review gate or delay a ready handoff.
+
 | SL | Chat | Ready-work allocation |
 | --- | --- | --- |
 | World / Map | `01a1a1fe-c276-7eb3-a36e-2f383c0e81b8` | World scene and Map staffing/dependencies; implementation owners coordinate frontend root/shared paths directly. |

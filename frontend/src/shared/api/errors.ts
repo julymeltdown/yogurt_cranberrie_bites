@@ -123,11 +123,13 @@ export function parseServerError(value: unknown, family: ErrorFamily, status: nu
     if (!record(value.details) || typeof value.details.reason !== 'string' || !Object.hasOwn(DOMAIN_ERROR_RULES, value.details.reason)) return null
     reason = value.details.reason as DomainReason
     const rule = DOMAIN_ERROR_RULES[reason]
-    if (rule ? !only(value.details, ['reason', 'retry_after_ms']) || !integer(value.details.retry_after_ms, rule.maximum)
-      || value.details.retry_after_ms < rule.minimum
+    const hasHint = Object.hasOwn(value.details, 'retry_after_ms')
+    if (rule ? !only(value.details, ['reason', 'retry_after_ms'])
+      || (!hasHint && rule.required)
+      || (hasHint && (!integer(value.details.retry_after_ms, rule.maximum) || value.details.retry_after_ms < rule.minimum))
       : !only(value.details, ['reason'])) return null
     if ((reason === 'ORIGIN_NOT_ALLOWED' || reason === 'BROWSER_INTENT_REQUIRED') && status !== 403) return null
-    details = Object.freeze({ reason, ...(rule ? { retry_after_ms: value.details.retry_after_ms as number } : {}) })
+    details = Object.freeze({ reason, ...(rule && hasHint ? { retry_after_ms: value.details.retry_after_ms as number } : {}) })
   } else if (record(value.details) && (value.details.reason === 'ORIGIN_NOT_ALLOWED' || value.details.reason === 'BROWSER_INTENT_REQUIRED')) {
     if (status !== 403 || !only(value.details, ['reason'])) return null
     reason = value.details.reason
