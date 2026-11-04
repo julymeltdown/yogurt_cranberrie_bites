@@ -1,0 +1,368 @@
+{
+  "status": "PASS",
+  "synthetic": true,
+  "base": "21d0ac95d20641f99e57bb5c943327f365cbfb37",
+  "browser": "156.0.8078.80",
+  "sources": {
+    "frontend/src/world/mural-entry-lifecycle/source.ts": "dc564b568228413226d510995029c1334cc17bb6bf93f58cca18fcc3a3675458",
+    "frontend/src/world/mural-entry-lifecycle/index.ts": "505dd55a69a68ad99806ec5950abe83a3a2593771aa4f4067d196a2959467da1",
+    "frontend/src/world/mural-entry-lifecycle/__tests__/assembly-data.ts": "8a041798cefd3492cb9f3ec8f1e508ed3700718bb8598681c2ccc7e35b3f56f5",
+    "frontend/src/world/mural-entry-lifecycle/__tests__/assembly-native.tsx": "562353a7d1795fc335ca4a980897dc7a33d73bd0cbcb5b7e04d94a0551779e65",
+    "frontend/src/world/mural-entry-lifecycle/__tests__/assembly-native.html": "4dca787a68f818c813550b4a69c1dd9816e435c1172a4c903d0529101618ff69",
+    "frontend/src/world/mural-entry-lifecycle/__tests__/assembly-native.mjs": "7262171545f07b6bcbfd7f0de438d16b5f5501cd22091de81434922b59873eac",
+    "frontend/src/world/composition/index.ts": "0e33fb2d11207b81a7354b82ea5270dffa2c7f9c63ce12e279ff1d7092bf40f9",
+    "frontend/src/app/world-panels/index.tsx": "4c99a2746715940524cc1a7ad1e2a002f99707f02bfedc9faf4fb3f028c35d69",
+    "frontend/src/app/world-entry/production.ts": "e34d9715e45c8c33fcbc86eadb11d81f0e267d071c3ff032c5f60a1144de76d3",
+    "frontend/src/world/runtime.ts": "5acd1bd73385aeae1d0559f1a8e97978c5b939349a5f2cb84bc23b9fbc409868",
+    "frontend/src/world/scenes/MapScene.ts": "c172568f4b3c1a01894fbc4e5e41e3c887601fa9c2d3eb0c4c79dc76117a7363",
+    "frontend/src/world/mural/phaser.ts": "b254fcc7bfd572f94a048f859f72fecc4baa35e61bafb5c293ed7203bdf64af9",
+    "frontend/src/world/mural/sink.ts": "105180874d00863e00ce2d3918051103f9a2ec25ba9e79eb5c330d737c15e1e8",
+    "frontend/src/world/mural/authority.ts": "f08a51650603fc0f0e6b6049df27e7fb20d554c07768ec89c82958cbc9f8b078",
+    "frontend/src/app/mural-entry/owner.ts": "d798f2804ebd569a422da17692b9b0f3764053bceaca98488b156a00ef31a4c9",
+    "frontend/src/app/mural-entry/provider.tsx": "975918620fb178f68e2af0110a494926ef5aee28fb044b50549ecc1a7e646d60",
+    "frontend/src/features/mural/editor/MuralEditor.tsx": "a5bbb147d4e56c1039428234ae9b02cf36da529b96d658cff217c503b37ec762",
+    "frontend/src/features/mural/sync/http.ts": "b2ef84266763e9deebc8470def87c976168ba427f9cadf11cfd8b3eb036db144"
+  },
+  "results": [
+    {
+      "width": 360,
+      "initial": {
+        "phase": "live",
+        "available": true,
+        "revision": 10,
+        "command": null,
+        "editor": "idle",
+        "posts": [],
+        "created": 1,
+        "active": 1,
+        "peak": 1,
+        "sockets": 1,
+        "socketCount": 1,
+        "factoryCalls": 1,
+        "sourceStops": 0,
+        "sourceListeners": 1
+      },
+      "unknown": {
+        "phase": "live",
+        "available": true,
+        "revision": 10,
+        "command": "15ed136f-3baf-4ece-9eea-75ec21bea2cd",
+        "editor": "unknown",
+        "posts": [
+          "15ed136f-3baf-4ece-9eea-75ec21bea2cd"
+        ],
+        "created": 1,
+        "active": 1,
+        "peak": 1,
+        "sockets": 1,
+        "socketCount": 1,
+        "factoryCalls": 1,
+        "sourceStops": 0,
+        "sourceListeners": 1
+      },
+      "withdrawn": {
+        "phase": "live",
+        "available": false,
+        "revision": null,
+        "command": "15ed136f-3baf-4ece-9eea-75ec21bea2cd",
+        "posts": [
+          "15ed136f-3baf-4ece-9eea-75ec21bea2cd"
+        ],
+        "created": 1,
+        "active": 1,
+        "peak": 1,
+        "sockets": 1,
+        "socketCount": 1,
+        "factoryCalls": 1,
+        "sourceStops": 0,
+        "sourceListeners": 1
+      },
+      "recovered": {
+        "phase": "live",
+        "available": true,
+        "revision": 11,
+        "command": "15ed136f-3baf-4ece-9eea-75ec21bea2cd",
+        "editor": "unknown",
+        "posts": [
+          "15ed136f-3baf-4ece-9eea-75ec21bea2cd"
+        ],
+        "created": 1,
+        "active": 1,
+        "peak": 1,
+        "sockets": 1,
+        "socketCount": 1,
+        "factoryCalls": 1,
+        "sourceStops": 0,
+        "sourceListeners": 1
+      },
+      "confirmed": {
+        "phase": "live",
+        "available": true,
+        "revision": 11,
+        "command": null,
+        "editor": "confirmed",
+        "posts": [
+          "15ed136f-3baf-4ece-9eea-75ec21bea2cd"
+        ],
+        "created": 1,
+        "active": 1,
+        "peak": 1,
+        "sockets": 1,
+        "socketCount": 1,
+        "factoryCalls": 1,
+        "sourceStops": 0,
+        "sourceListeners": 1
+      },
+      "revoked": {
+        "available": false,
+        "revision": null,
+        "command": null,
+        "posts": [
+          "15ed136f-3baf-4ece-9eea-75ec21bea2cd"
+        ],
+        "created": 1,
+        "active": 0,
+        "peak": 1,
+        "sockets": 0,
+        "socketCount": 1,
+        "factoryCalls": 1,
+        "sourceStops": 1,
+        "sourceListeners": 0
+      },
+      "screenshot": "caller-360.png",
+      "sha256": "7f9c478f7ce5400ce64aac11142a4c5549fd1dbddef4f0fa644fbf061892677f"
+    },
+    {
+      "width": 390,
+      "initial": {
+        "phase": "live",
+        "available": true,
+        "revision": 10,
+        "command": null,
+        "editor": "idle",
+        "posts": [],
+        "created": 1,
+        "active": 1,
+        "peak": 1,
+        "sockets": 1,
+        "socketCount": 1,
+        "factoryCalls": 1,
+        "sourceStops": 0,
+        "sourceListeners": 1
+      },
+      "unknown": {
+        "phase": "live",
+        "available": true,
+        "revision": 10,
+        "command": "ff8e779a-b043-40ee-b43d-e7d0ada3173a",
+        "editor": "unknown",
+        "posts": [
+          "ff8e779a-b043-40ee-b43d-e7d0ada3173a"
+        ],
+        "created": 1,
+        "active": 1,
+        "peak": 1,
+        "sockets": 1,
+        "socketCount": 1,
+        "factoryCalls": 1,
+        "sourceStops": 0,
+        "sourceListeners": 1
+      },
+      "withdrawn": {
+        "phase": "live",
+        "available": false,
+        "revision": null,
+        "command": "ff8e779a-b043-40ee-b43d-e7d0ada3173a",
+        "posts": [
+          "ff8e779a-b043-40ee-b43d-e7d0ada3173a"
+        ],
+        "created": 1,
+        "active": 1,
+        "peak": 1,
+        "sockets": 1,
+        "socketCount": 1,
+        "factoryCalls": 1,
+        "sourceStops": 0,
+        "sourceListeners": 1
+      },
+      "recovered": {
+        "phase": "live",
+        "available": true,
+        "revision": 11,
+        "command": "ff8e779a-b043-40ee-b43d-e7d0ada3173a",
+        "editor": "unknown",
+        "posts": [
+          "ff8e779a-b043-40ee-b43d-e7d0ada3173a"
+        ],
+        "created": 1,
+        "active": 1,
+        "peak": 1,
+        "sockets": 1,
+        "socketCount": 1,
+        "factoryCalls": 1,
+        "sourceStops": 0,
+        "sourceListeners": 1
+      },
+      "confirmed": {
+        "phase": "live",
+        "available": true,
+        "revision": 11,
+        "command": null,
+        "editor": "confirmed",
+        "posts": [
+          "ff8e779a-b043-40ee-b43d-e7d0ada3173a"
+        ],
+        "created": 1,
+        "active": 1,
+        "peak": 1,
+        "sockets": 1,
+        "socketCount": 1,
+        "factoryCalls": 1,
+        "sourceStops": 0,
+        "sourceListeners": 1
+      },
+      "revoked": {
+        "available": false,
+        "revision": null,
+        "command": null,
+        "posts": [
+          "ff8e779a-b043-40ee-b43d-e7d0ada3173a"
+        ],
+        "created": 1,
+        "active": 0,
+        "peak": 1,
+        "sockets": 0,
+        "socketCount": 1,
+        "factoryCalls": 1,
+        "sourceStops": 1,
+        "sourceListeners": 0
+      },
+      "screenshot": "caller-390.png",
+      "sha256": "010459bdc4b1be139953babbf1d065aa0910649668c21c79af8a5fb05ae8a5dd"
+    },
+    {
+      "width": 430,
+      "initial": {
+        "phase": "live",
+        "available": true,
+        "revision": 10,
+        "command": null,
+        "editor": "idle",
+        "posts": [],
+        "created": 1,
+        "active": 1,
+        "peak": 1,
+        "sockets": 1,
+        "socketCount": 1,
+        "factoryCalls": 1,
+        "sourceStops": 0,
+        "sourceListeners": 1
+      },
+      "unknown": {
+        "phase": "live",
+        "available": true,
+        "revision": 10,
+        "command": "588b46e0-61ef-4909-a21c-2245d73643fd",
+        "editor": "unknown",
+        "posts": [
+          "588b46e0-61ef-4909-a21c-2245d73643fd"
+        ],
+        "created": 1,
+        "active": 1,
+        "peak": 1,
+        "sockets": 1,
+        "socketCount": 1,
+        "factoryCalls": 1,
+        "sourceStops": 0,
+        "sourceListeners": 1
+      },
+      "withdrawn": {
+        "phase": "live",
+        "available": false,
+        "revision": null,
+        "command": "588b46e0-61ef-4909-a21c-2245d73643fd",
+        "posts": [
+          "588b46e0-61ef-4909-a21c-2245d73643fd"
+        ],
+        "created": 1,
+        "active": 1,
+        "peak": 1,
+        "sockets": 1,
+        "socketCount": 1,
+        "factoryCalls": 1,
+        "sourceStops": 0,
+        "sourceListeners": 1
+      },
+      "recovered": {
+        "phase": "live",
+        "available": true,
+        "revision": 11,
+        "command": "588b46e0-61ef-4909-a21c-2245d73643fd",
+        "editor": "unknown",
+        "posts": [
+          "588b46e0-61ef-4909-a21c-2245d73643fd"
+        ],
+        "created": 1,
+        "active": 1,
+        "peak": 1,
+        "sockets": 1,
+        "socketCount": 1,
+        "factoryCalls": 1,
+        "sourceStops": 0,
+        "sourceListeners": 1
+      },
+      "confirmed": {
+        "phase": "live",
+        "available": true,
+        "revision": 11,
+        "command": null,
+        "editor": "confirmed",
+        "posts": [
+          "588b46e0-61ef-4909-a21c-2245d73643fd"
+        ],
+        "created": 1,
+        "active": 1,
+        "peak": 1,
+        "sockets": 1,
+        "socketCount": 1,
+        "factoryCalls": 1,
+        "sourceStops": 0,
+        "sourceListeners": 1
+      },
+      "revoked": {
+        "available": false,
+        "revision": null,
+        "command": null,
+        "posts": [
+          "588b46e0-61ef-4909-a21c-2245d73643fd"
+        ],
+        "created": 1,
+        "active": 0,
+        "peak": 1,
+        "sockets": 0,
+        "socketCount": 1,
+        "factoryCalls": 1,
+        "sourceStops": 1,
+        "sourceListeners": 0
+      },
+      "screenshot": "caller-430.png",
+      "sha256": "e0dd4ee3dc31dc8f8b1a615d06b705aeca41727679a2a3a70ba25ab7603e70be"
+    }
+  ],
+  "omitted": {
+    "phase": "live",
+    "available": false,
+    "revision": null,
+    "command": null,
+    "posts": [],
+    "created": 1,
+    "active": 1,
+    "peak": 1,
+    "sockets": 1,
+    "socketCount": 1,
+    "factoryCalls": 0,
+    "sourceStops": 0,
+    "sourceListeners": 0
+  },
+  "errors": []
+}
