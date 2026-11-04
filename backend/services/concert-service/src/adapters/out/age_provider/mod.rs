@@ -731,3 +731,4 @@ pub mod settlement;
 pub mod trust;
 
 pub mod claim_reader;
+pub mod account_deletion;

@@ -111,6 +111,9 @@ impl Authority for ScopedAgeAuthority {
             return Err(CommandError::Denied);
         }
         assert_context(&self.scope, context).map_err(command)?;
+        super::account_deletion::allow_age_in(c, context.actor.uuid())
+            .await
+            .map_err(|_| CommandError::Denied)?;
         super::settlement::register_in(c, &self.scope)
             .await
             .map_err(|_| CommandError::Unavailable)?;
@@ -145,6 +148,9 @@ async fn check_in(
     participant: bool,
 ) -> Result<(), PolicyError> {
     assert_context(scope, context)?;
+    super::account_deletion::allow_age_in(c, context.actor.uuid())
+        .await
+        .map_err(|_| PolicyError::Denied)?;
     let q = PolicyQuery {
         actor: context.actor,
         subject: context.actor,
