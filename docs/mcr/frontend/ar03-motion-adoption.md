@@ -173,7 +173,7 @@ The first published core checkpoint had seven commands and
 20 unit cases, retained historically in `checkpoint.json`.
 Three native cases cover 360/390/430, each with all themes and real scene walk/idle
 frames. All 120 preset cells match the frozen atlas and all 1,176 pairwise wardrobe
-compositions match the unchanged qualified art Canvas fixture. Twelve native JPEGs
+compositions match the unchanged qualified art Canvas fixture. The v2 checkpoint's twelve native JPEGs
 were captured; the 360px selector/pose preview was visually inspected. All avatar
 interactions retain two initial resource requests and zero additional requests.
 These results remain TEST_ONLY component/real-Phaser evidence, not public admission.
@@ -187,6 +187,32 @@ by this worktree's sparse patterns. Expanding only those two exact patterns
 materialized their committed bytes; both Git blob identities matched HEAD.
 No auth code, original asset, dependency or lockfile changed. A successful
 application bundle does not prove the still-denied positive v2 Root journey.
+
+## QA06 layout follow-up
+
+QA06's unchanged reference has SHA-256
+`d9a8fae2f96a82253542019ab673589b3938627956eace15c8594c702b5c4617`;
+its Customize crop is `(1240,3,294,526)`. The comparison exposed a ready layout
+gap in the candidate editor, independent of pending production activation.
+The new editor now places five real category controls in a right-hand rail,
+with newly authored line icons and accessible names. Front/left/right/rear and
+walk controls sit beneath the 192px preview. All controls still derive their
+choices from the verified catalog. Selecting a category from preset mode starts
+an explicit unsaved wardrobe draft; clicking an already active mode preserves
+the draft. Category paging exposes the selected item rather than hiding it on
+another page. No identity conversion, asset replacement or extra layer is implied.
+
+`customize-reference-fit-390.jpg` and `native.json.referenceFit` provide the
+actual component capture, measured at a 390px viewport: the panel is 350px wide
+and about 609px tall; each category target is 58×46px; the preview remains
+192×192px. The capture has thirteen native artifacts including this additional
+panel image. It is an unresized element screenshot, not a claimed 390×698 image
+or a positive production Root capture. Native checks assert the rail geometry,
+selected Hair 6 visibility, active-mode draft preservation and preset-to-draft
+transition alongside the existing full directional/save/Profile/cleanup proof.
+This closes those specific layout defects; QA06's independent reference-fit and
+production post-fix capture remain separate. The reference girl's pose does not
+authorize using legacy reference characters or replacing selected artwork.
 
 The actual application registry, C03 and C05 refusal cases run in
 `app/character-entry/__tests__/motion-adoption/root-denial.test.ts`. They prove
@@ -208,3 +234,13 @@ Core source `e713e0f6` was integrated as
 `a9517e049f24f434d103273d535943ff464346a5` contains both. The implementation
 owner verified that ancestry directly. The v2 candidate checkpoint requires its
 own subsequent integrator receipt and does not complete the active goal.
+
+The subsequent receipts are now verified: `df0522fa` integrated as
+`c6b9acd2a77b0c4deec465b16c280e2b21059678` and `d6185d26` as
+`b03c22f71d5e3845500d017a62c065a6217d7028`. Fresh fetched and remote master
+`ef2000a5bc057d65c1a2d4440e2518c0f15f68e1` contains both and producer
+`819d30c3cb32915862281d30cddbe5b7c9bd53cb`. All 24 latest handoff path blobs
+match the source commits exactly, and all 34 published producer inputs match
+the consumer's byte/hash pins. The source candidate remains ineligible and
+has no admitted content hash. The QA06 layout follow-up requires its own
+subsequent committed handoff and publication receipt.

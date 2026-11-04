@@ -1,0 +1,162 @@
+{
+  "result": "MOCK_READY_QA06_LAYOUT_FOLLOWUP",
+  "recordedAt": "2026-11-04T03:10:26.001567+00:00",
+  "parent": "d6185d2625f0e757a1128b2bb95ddbbf08c2db38",
+  "changedPaths": [
+    "docs/mcr/evidence/avatar-motion-adoption/checks.json",
+    "docs/mcr/evidence/avatar-motion-adoption/customize-360-danger.jpg",
+    "docs/mcr/evidence/avatar-motion-adoption/customize-360-parade.jpg",
+    "docs/mcr/evidence/avatar-motion-adoption/customize-360-revenge.jpg",
+    "docs/mcr/evidence/avatar-motion-adoption/customize-360.jpg",
+    "docs/mcr/evidence/avatar-motion-adoption/customize-390-danger.jpg",
+    "docs/mcr/evidence/avatar-motion-adoption/customize-390-parade.jpg",
+    "docs/mcr/evidence/avatar-motion-adoption/customize-390-revenge.jpg",
+    "docs/mcr/evidence/avatar-motion-adoption/customize-390.jpg",
+    "docs/mcr/evidence/avatar-motion-adoption/customize-430-danger.jpg",
+    "docs/mcr/evidence/avatar-motion-adoption/customize-430-parade.jpg",
+    "docs/mcr/evidence/avatar-motion-adoption/customize-430-revenge.jpg",
+    "docs/mcr/evidence/avatar-motion-adoption/customize-430.jpg",
+    "docs/mcr/evidence/avatar-motion-adoption/customize-reference-fit-390.jpg",
+    "docs/mcr/evidence/avatar-motion-adoption/native.json",
+    "docs/mcr/evidence/avatar-motion-adoption/native.log",
+    "docs/mcr/evidence/avatar-motion-adoption/qa06-layout-followup.json",
+    "docs/mcr/evidence/avatar-motion-adoption/ui-origin.log",
+    "docs/mcr/evidence/avatar-motion-adoption/unit.log",
+    "docs/mcr/frontend/ar03-motion-adoption.md",
+    "frontend/src/app/character-entry/__tests__/motion-adoption/native.mjs",
+    "frontend/src/features/avatar/motion-adoption/MotionEditor.tsx",
+    "frontend/src/features/avatar/motion-adoption/motion.css"
+  ],
+  "reference": {
+    "sha256": "d9a8fae2f96a82253542019ab673589b3938627956eace15c8594c702b5c4617",
+    "crop": {
+      "x": 1240,
+      "y": 3,
+      "width": 294,
+      "height": 526
+    },
+    "input": "QA06 compare-customize-390.png reviewed read-only. No source image copied, changed or used as product art."
+  },
+  "implemented": [
+    "Five genuine data-backed category controls in a right-hand rail",
+    "192px actual source-derived preview with direction/walk controls beneath",
+    "Selecting a category from preset mode starts a genuine unsaved wardrobe draft",
+    "Reopening a category exposes the selected option page",
+    "Clicking an active mode preserves the draft"
+  ],
+  "nativeReferenceFit": {
+    "qualification": "Actual candidate component at 390px viewport, not production Root or legacy-character substitution",
+    "viewportWidth": 390,
+    "panel": {
+      "x": 20,
+      "y": 378.875,
+      "width": 350,
+      "height": 608.984375
+    },
+    "rightCategoryRail": [
+      {
+        "label": "Hair",
+        "x": 303,
+        "y": 431.875,
+        "width": 58,
+        "height": 46
+      },
+      {
+        "label": "Outfit",
+        "x": 303,
+        "y": 480.875,
+        "width": 58,
+        "height": 46
+      },
+      {
+        "label": "Accessory",
+        "x": 303,
+        "y": 529.875,
+        "width": 58,
+        "height": 46
+      },
+      {
+        "label": "Skin / body",
+        "x": 303,
+        "y": 578.875,
+        "width": 58,
+        "height": 46
+      },
+      {
+        "label": "Eyes",
+        "x": 303,
+        "y": 627.875,
+        "width": 58,
+        "height": 46
+      }
+    ],
+    "preview": {
+      "x": 67.5,
+      "y": 432.875,
+      "width": 192,
+      "height": 192
+    },
+    "selectedSourceConfig": {
+      "contract_version": "2.0.0",
+      "kind": "avatar_config",
+      "manifest_id": "mcr_selected_motion_20261103",
+      "manifest_version": 1,
+      "representation": "motion_layered",
+      "item_ids": {
+        "body": "motion_v2_body_7",
+        "eyes": "motion_v2_eyes_3",
+        "hair": "motion_v2_hair_5",
+        "outfit": "motion_v2_outfit_5",
+        "accessory": "motion_v2_accessory_2"
+      }
+    },
+    "artifact": "customize-reference-fit-390.jpg"
+  },
+  "artifactSha256": "931b53da629dea709d3bf53c743bed9c3be61021f4818a01e4bb8f620f66dd7c",
+  "checks": {
+    "commands": 8,
+    "exits": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "unitTests": 60,
+    "scopedTsFiles": 19,
+    "applicationTsFiles": 758,
+    "tsDiagnostics": 0,
+    "lintWarnings": 0,
+    "nativeWidths": [
+      360,
+      390,
+      430
+    ],
+    "themes": [
+      "REVENGE",
+      "PARADE",
+      "DANGER"
+    ],
+    "nativeArtifacts": 13,
+    "unchangedPixelProof": "120 preset RGBA per width;1176 pairwise wardrobe RGBA;shared Profile pixel equality;all4direction4walkphases+idle,explicitsave/uncertainty/privatecleanup"
+  },
+  "codeSourcePins": {
+    "frontend/src/app/character-entry/__tests__/motion-adoption/native.mjs": "d9ec81444927a714296f2ef1a4b30a13002a40a62f097a446d5d58d7c8c65b12",
+    "frontend/src/features/avatar/motion-adoption/MotionEditor.tsx": "086e081eb9f63729fca1641f63baf5eb07e5db64eb95f32f16b9823216eca2ae",
+    "frontend/src/features/avatar/motion-adoption/motion.css": "e876d73bc32bba8fb674c618dbbdf06ce0ff102bcacf86ed60720fbcd5a5d214"
+  },
+  "publishedPredecessors": {
+    "df0522fa": "c6b9acd2a77b0c4deec465b16c280e2b21059678",
+    "d6185d26": "b03c22f71d5e3845500d017a62c065a6217d7028",
+    "producer": "819d30c3cb32915862281d30cddbe5b7c9bd53cb",
+    "verifiedFetchedAndRemoteMaster": "ef2000a5bc057d65c1a2d4440e2518c0f15f68e1",
+    "latestHandoffBlobsExact": 24,
+    "producerInputsExact": 34
+  },
+  "boundary": "Candidate component evidence only. No claim of full reference fidelity, positive production Root/default motion admission, real service/two-account/device/release acceptance. Selected artwork and both legacy families unchanged; no art generated or originals modified.",
+  "canonicalOwner": "Producer21e owns actually qualified shared/backend successor under Root1fc allocation; consumer retains exact World-granted avatar/account/whole-admission hunks; no public type/schema waiver or new grant inferred.",
+  "goal": "Same AR03 objective remains unfinished. Existing BLOCKED metadata retained for canonical production prerequisite; this new QA06 input enabled an independent bounded frontend correction, not lifecycle reset or goal completion."
+}

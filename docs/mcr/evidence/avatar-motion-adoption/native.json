@@ -1,7 +1,7 @@
 {
   "result": "PASS",
   "qualification": "MOCK_READY: new editor/controller/runtime and actual incumbent Phaser scene under explicit TEST_ONLY local authority and deterministic HTTP fixture. Not application Root/public C05/production admission, live socket/service, physical device or multiuser acceptance.",
-  "parent": "6f88ec7ec1a935ea88a411fc64c4a2680db7836e",
+  "parent": "d6185d2625f0e757a1128b2bb95ddbbf08c2db38",
   "cases": [
     {
       "width": 360,
@@ -44,37 +44,37 @@
         {
           "direction": "down",
           "frames": [
-            "4",
             "1",
             "2",
-            "3"
+            "3",
+            "4"
           ]
         },
         {
           "direction": "left",
           "frames": [
-            "7",
             "8",
             "9",
-            "6"
+            "6",
+            "7"
           ]
         },
         {
           "direction": "right",
           "frames": [
-            "13",
-            "14",
             "11",
-            "12"
+            "12",
+            "13",
+            "14"
           ]
         },
         {
           "direction": "up",
           "frames": [
-            "16",
-            "17",
             "18",
-            "19"
+            "19",
+            "16",
+            "17"
           ]
         }
       ],
@@ -193,37 +193,37 @@
         {
           "direction": "down",
           "frames": [
-            "3",
             "4",
             "1",
-            "2"
+            "2",
+            "3"
           ]
         },
         {
           "direction": "left",
           "frames": [
-            "6",
             "7",
             "8",
-            "9"
+            "9",
+            "6"
           ]
         },
         {
           "direction": "right",
           "frames": [
-            "13",
             "14",
             "11",
-            "12"
+            "12",
+            "13"
           ]
         },
         {
           "direction": "up",
           "frames": [
-            "16",
             "17",
             "18",
-            "19"
+            "19",
+            "16"
           ]
         }
       ],
@@ -342,37 +342,37 @@
         {
           "direction": "down",
           "frames": [
-            "3",
             "4",
             "1",
-            "2"
+            "2",
+            "3"
           ]
         },
         {
           "direction": "left",
           "frames": [
-            "6",
             "7",
             "8",
-            "9"
+            "9",
+            "6"
           ]
         },
         {
           "direction": "right",
           "frames": [
-            "13",
             "14",
             "11",
-            "12"
+            "12",
+            "13"
           ]
         },
         {
           "direction": "up",
           "frames": [
-            "16",
             "17",
             "18",
-            "19"
+            "19",
+            "16"
           ]
         }
       ],
@@ -453,18 +453,19 @@
   ],
   "errors": [],
   "artifacts": {
-    "customize-360-revenge.jpg": "c1a9e542a619988f32ca5f0239e5d781bbdadb38b3872a522d97ad805cc8f94e",
-    "customize-360-parade.jpg": "09940645588a315712a064a96f78ef38dbea6bf642e15c630644a26fb984c4f3",
-    "customize-360-danger.jpg": "ad3bdcf4fc17fe26b68e994e7a12e5748b6573c2589773c1e45ebb2f6354f8b5",
-    "customize-360.jpg": "852d2464ab57a0b788b448fcdd67e248a186761201f61f2f2bcff8dfde6351b6",
-    "customize-390-revenge.jpg": "1bb81f96a96f9f6795202f5f05283f99000d38df3ebf423bbb99845268ed9421",
-    "customize-390-parade.jpg": "f6b4d92aaaf8985fd5e1c8b95d9e7fce7b0d259e110b416a6cdf982589c9fba9",
-    "customize-390-danger.jpg": "4462df1aa2d10e5764e41746f46cbd364dba7430e0001e0e7186fe6675ffd23f",
-    "customize-390.jpg": "81eb97a5f669fc71b4bae043d24d7b43ff7ba84f0f53febe0c671448d5967820",
-    "customize-430-revenge.jpg": "0224f7311640b368c9d7580bd0910d6311a1a8ee22f852e2d1d631c1a3ade46f",
-    "customize-430-parade.jpg": "a13173f38e684b472a73f0dee488d24b785421aa9480e16d884c0e7a48709d35",
-    "customize-430-danger.jpg": "42301c25b98ae3430c2cc5d3b986d890f596c7ca8a774b11679c9aeb5a8c8e64",
-    "customize-430.jpg": "45ff1a6228c646df5223c9ae9782edcd83c7c128455259e901c73508dba48070"
+    "customize-360-revenge.jpg": "f412abcc54d03e166cff8b962a6f9f94edac2942ca7a1bd2da0a9466a8f2f312",
+    "customize-360-parade.jpg": "a200410ab15056c5bfa8c46c83d07ae9501878770b383908c1edb1660bff1877",
+    "customize-360-danger.jpg": "4d63aa2f7b9ee4483ed547afc951df7b61b61947be3777e933b671209573d028",
+    "customize-360.jpg": "0d84e1479a2e5857692c7c0e50d5133a638798bf782a9244e15bed290ace3082",
+    "customize-390-revenge.jpg": "91373d5fe4eb0af83f8507ffae9acb031603a590fbbc0a7c4c68a3b8360e428d",
+    "customize-390-parade.jpg": "dae896af25b55dbd253ca98f01a3d5f4ed9cd6402edd401c41b16d27018f8cff",
+    "customize-390-danger.jpg": "735779d4152a3bd8eb5df3800c3a845b14fa877c9cc605bd195f8c5596a45a71",
+    "customize-reference-fit-390.jpg": "931b53da629dea709d3bf53c743bed9c3be61021f4818a01e4bb8f620f66dd7c",
+    "customize-390.jpg": "80d5d7d56423d703c8bbe686107935e033e5fd2d85ca25f209aa0d3a9d0c590e",
+    "customize-430-revenge.jpg": "53e454aa826be79cf83847250c10bc21019b46b65c86b1c8f7c6aff8667eb67b",
+    "customize-430-parade.jpg": "be227075ddf1caf557e6b8b2ead71c00a2d6943c3ea7308829d1eccf6ae29b64",
+    "customize-430-danger.jpg": "bd41ad05a52c14f281194547b21ab72c5805c2b03d083f1eefeeb5b8746b6063",
+    "customize-430.jpg": "dfdb2635dfa06cf4ba3bb0245a2bc8ff06cdf5f9fd49fb3469172716b8299dba"
   },
   "producer": {
     "commit": "ae41db9db2493c259c72ef461844a3ff1019a1f6",
@@ -478,5 +479,73 @@
     "cases": 1176,
     "aggregate": "sha256:9201f53893fe5de62b975a777ce377abb662e7e23caa2f891d08999980265408",
     "reference": "Unchanged previously qualified wardrobe-review.mjs Canvas fixture; 1176 pairwise RGBA comparisons."
+  },
+  "referenceFit": {
+    "qualification": "Actual candidate component at 390px viewport, not production Root or legacy-character substitution",
+    "viewportWidth": 390,
+    "panel": {
+      "x": 20,
+      "y": 378.875,
+      "width": 350,
+      "height": 608.984375
+    },
+    "rightCategoryRail": [
+      {
+        "label": "Hair",
+        "x": 303,
+        "y": 431.875,
+        "width": 58,
+        "height": 46
+      },
+      {
+        "label": "Outfit",
+        "x": 303,
+        "y": 480.875,
+        "width": 58,
+        "height": 46
+      },
+      {
+        "label": "Accessory",
+        "x": 303,
+        "y": 529.875,
+        "width": 58,
+        "height": 46
+      },
+      {
+        "label": "Skin / body",
+        "x": 303,
+        "y": 578.875,
+        "width": 58,
+        "height": 46
+      },
+      {
+        "label": "Eyes",
+        "x": 303,
+        "y": 627.875,
+        "width": 58,
+        "height": 46
+      }
+    ],
+    "preview": {
+      "x": 67.5,
+      "y": 432.875,
+      "width": 192,
+      "height": 192
+    },
+    "selectedSourceConfig": {
+      "contract_version": "2.0.0",
+      "kind": "avatar_config",
+      "manifest_id": "mcr_selected_motion_20261103",
+      "manifest_version": 1,
+      "representation": "motion_layered",
+      "item_ids": {
+        "body": "motion_v2_body_7",
+        "eyes": "motion_v2_eyes_3",
+        "hair": "motion_v2_hair_5",
+        "outfit": "motion_v2_outfit_5",
+        "accessory": "motion_v2_accessory_2"
+      }
+    },
+    "artifact": "customize-reference-fit-390.jpg"
   }
 }

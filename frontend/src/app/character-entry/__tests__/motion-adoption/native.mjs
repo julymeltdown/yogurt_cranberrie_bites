@@ -96,7 +96,10 @@ try {
     }
     stage = `${width}/controls`; await page.getByRole('button', { name: 'CUSTOMIZE', exact: true }).click()
     await expect(page.getByRole('img', { name: 'Draft outfit preview', exact: true })).toBeVisible()
-    await page.getByRole('button', { name: 'Dress up', exact: true }).click()
+    // Selecting an actual category from preset mode explicitly starts a wardrobe draft.
+    await page.getByRole('button', { name: width === 360 ? 'Hair' : 'Dress up', exact: true }).click()
+    await expect.poll(async () => (await state()).controller.draft?.representation).toBe('motion_layered')
+    assert.equal((await state()).saved.config.representation, 'motion_preset')
     await page.getByRole('button', { name: 'Skin / body', exact: true }).click(); await page.getByLabel('Choose skin / body', { exact: true }).selectOption('body-7')
     await page.getByRole('button', { name: 'Hair', exact: true }).click(); await page.getByLabel('Choose hair', { exact: true }).selectOption('hair-5')
     await page.getByRole('button', { name: 'Eyes', exact: true }).click(); await page.getByLabel('Choose eyes', { exact: true }).selectOption('eyes-3')
@@ -120,6 +123,30 @@ try {
       assert.equal(await page.getByRole('img', { name: 'Draft outfit preview', exact: true }).evaluate(canvas => canvas.toDataURL()), preview)
       assert(await noOverflow()); const file = `customize-${width}-${['revenge', 'parade', 'danger'][index]}.jpg`
       await page.screenshot({ path: resolve(output, file), type: 'jpeg', quality: 86, fullPage: true }); report.artifacts[file] = hash(await readFile(resolve(output, file)))
+    }
+    if (width === 390) {
+      await page.getByRole('button', { name: 'Hair', exact: true }).click()
+      await expect(page.getByRole('button', { name: 'Choose hair 6', exact: true })).toHaveAttribute('aria-pressed', 'true')
+      await page.getByRole('button', { name: 'Dress up', exact: true }).click()
+      assert.deepEqual((await state()).controller.draft, draft)
+      await page.getByLabel('View', { exact: true }).selectOption('down')
+      await expect(page.getByRole('img', { name: 'Draft outfit preview', exact: true })).toHaveAttribute('data-frame', '0')
+      const rail = await page.getByRole('group', { name: 'Clothing categories', exact: true }).boundingBox()
+      const previewBox = await page.getByRole('img', { name: 'Draft outfit preview', exact: true }).boundingBox()
+      const controls = await page.getByRole('group', { name: 'Clothing categories', exact: true }).getByRole('button').evaluateAll(buttons => buttons.map(button => {
+        const r = button.getBoundingClientRect(); return { label: button.getAttribute('aria-label'), x: r.x, y: r.y, width: r.width, height: r.height }
+      }))
+      assert.equal(controls.length, 5); assert(controls.every((button, i) => button.width >= 44 && button.height >= 44 && (!i || button.y > controls[i - 1].y)))
+      assert(previewBox.x + previewBox.width <= rail.x)
+      const panel = page.getByRole('region', { name: 'Avatar editor', exact: true }), panelBox = await panel.boundingBox()
+      assert(panelBox.height <= 698)
+      const file = 'customize-reference-fit-390.jpg'
+      await panel.screenshot({ path: resolve(output, file), type: 'jpeg', quality: 90 }); report.artifacts[file] = hash(await readFile(resolve(output, file)))
+      report.referenceFit = { qualification: 'Actual candidate component at 390px viewport, not production Root or legacy-character substitution', viewportWidth: width, panel: panelBox,
+        rightCategoryRail: controls, preview: previewBox, selectedSourceConfig: draft, artifact: file }
+      await page.getByRole('button', { name: 'Accessory', exact: true }).click()
+      await page.getByLabel('View', { exact: true }).selectOption('up')
+      await expect(page.getByRole('img', { name: 'Draft outfit preview', exact: true })).toHaveAttribute('data-frame', '15')
     }
     stage = `${width}/save`; await page.getByRole('button', { name: 'Save outfit', exact: true }).click(); await expect(page.getByText('Outfit saved.', { exact: true })).toBeVisible()
     assert.deepEqual((await state()).saved.config, draft)

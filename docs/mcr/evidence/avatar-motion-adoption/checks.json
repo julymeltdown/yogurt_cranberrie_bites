@@ -58,13 +58,13 @@
     "frontend/src/entities/avatar/runtime/motion-adoption/v2-candidate.ts": "f807e183cfb529e953c4a01f57c3ba2ec4c2aca3d36bd0d02b5ba2de5246dee5",
     "frontend/src/entities/avatar/runtime/motion-adoption/v2.ts": "6e12736e28fed01b20c0a309b6e8a15d05c439f65af5ba77fbe4b8a884b13167",
     "frontend/src/world/avatar/motion-adoption/renderer.ts": "c577561c2f051390ae4d2f1340391f68a3ab92d7b965698598d6408ca3b07f2c",
-    "frontend/src/features/avatar/motion-adoption/MotionEditor.tsx": "b81b222a0bffdce45bc8f8d399dfe1734875931c2fe3f6ced6a0ac9502970315",
+    "frontend/src/features/avatar/motion-adoption/MotionEditor.tsx": "086e081eb9f63729fca1641f63baf5eb07e5db64eb95f32f16b9823216eca2ae",
     "frontend/src/features/avatar/motion-adoption/MotionOption.tsx": "e7661142a711a88331a63f0008693cfa6a792d91f4559374c4d83cb013bad5b6",
     "frontend/src/features/avatar/motion-adoption/MotionView.tsx": "39ba203d0d4110af82b78ea53fb26b5cb776b3c5d5a22e05949356b5338e7b30",
     "frontend/src/features/avatar/motion-adoption/controller.ts": "f98ecc2085efc532112beceaae22e764417ea0db2ffd594873783e839b3fd555",
-    "frontend/src/features/avatar/motion-adoption/motion.css": "7252bc282eaa9b248651ae33c8e23c15a51db7949d007910d836a41746a01a7b",
+    "frontend/src/features/avatar/motion-adoption/motion.css": "e876d73bc32bba8fb674c618dbbdf06ce0ff102bcacf86ed60720fbcd5a5d214",
     "frontend/src/world/avatar/__tests__/motion-adoption/art.test.ts": "f18c432790522ff6c25dd4143ec81726032acda127f62608f6aa026707f46534",
-    "frontend/src/world/avatar/__tests__/motion-adoption/build.mjs": "305d487e8ea1a072350cf4c16d9e095a9b601f4fdd524d48d95f03c3f8a38801",
+    "frontend/src/world/avatar/__tests__/motion-adoption/build.mjs": "f71df7efab72d592498885075cd44a7195a251ed71c856ed2b3a4f13a2e6d7be",
     "frontend/src/world/avatar/__tests__/motion-adoption/producer-inputs.json": "9dfe89ee8597452a26bc7b14ebc6a2c0f17d8dd93964daebea668e461654a0aa",
     "frontend/src/world/avatar/__tests__/motion-adoption/producer-inputs.ts": "fbbd27d5fa3b9ccf1bb06dbd3eaedc2457114919c2e55da460e17c39d8f82e02",
     "frontend/src/world/avatar/__tests__/motion-adoption/qualify.mjs": "d9c1e0e203ab586e387ef6f2af29c7b0797547a94951c12bb8f5f7fd0774d556",
@@ -78,7 +78,7 @@
     "frontend/src/app/character-entry/__tests__/motion-adoption/fixture.css": "de2db1f5e6913c8395dbee27459da90b372774850a17cd30da4a61e0ce2a27fd",
     "frontend/src/app/character-entry/__tests__/motion-adoption/fixture.html": "12c59aa5a9d241fc0386f98a20db69e284d52f0d23682ea4d13e0b312c80ff2d",
     "frontend/src/app/character-entry/__tests__/motion-adoption/fixture.tsx": "97eeea2b778eaaead074ea26c9cc4427b4ddb152059e98b54a9fb4ce19e26146",
-    "frontend/src/app/character-entry/__tests__/motion-adoption/native.mjs": "0aa1938c83a61beff95f4897aeb50fc57a622c8f646d299a36ba8d1b782ebddf",
+    "frontend/src/app/character-entry/__tests__/motion-adoption/native.mjs": "d9ec81444927a714296f2ef1a4b30a13002a40a62f097a446d5d58d7c8c65b12",
     "frontend/src/app/character-entry/__tests__/motion-adoption/root-denial.test.ts": "334b9cc67da0cba2ed21d6d7d3195773cdb4a9b4072f52dcb0b5b4e512435821"
   }
 }
