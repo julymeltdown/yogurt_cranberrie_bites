@@ -21,6 +21,8 @@ pub mod child_recovery;
 pub mod child_settlement;
 mod owner_media;
 mod query;
+mod feature_admission;
+pub use feature_admission::IntroOperation;
 pub use query::CommandStatusQuery;
 pub mod root_read;
 pub mod scope_ledger;
@@ -57,6 +59,8 @@ pub enum Operation {
     PrivateContent(Uuid),
     CommandStatus,
     Social(crate::social_live::protocol::SocialOperation),
+    Intro(IntroOperation),
+    Notification(crate::notification_live::NotificationOperation),
 }
 impl Operation {
     pub fn contract_id(self) -> &'static str {
@@ -79,6 +83,8 @@ impl Operation {
             Self::PrivateContent(_) => "readConcertMedia",
             Self::CommandStatus => "getConcertCommandStatus",
             Self::Social(operation) => operation.id(),
+            Self::Intro(operation) => operation.id(),
+            Self::Notification(operation) => operation.id(),
         }
     }
 }
@@ -104,6 +110,14 @@ pub fn operation(event: Uuid, method: &str, target: &str) -> Result<Operation, S
     // route, platform or method falls through to a generic producer.
     if let Ok(social) = crate::social_live::protocol::route(event, method, target) {
         return Ok(Operation::Social(social));
+    }
+    if let Ok(intro) = feature_admission::intro_route(event, method, target) {
+        return Ok(Operation::Intro(intro));
+    }
+    if let Ok(notification) =
+        crate::notification_live::NotificationOperation::route(event, method, target)
+    {
+        return Ok(Operation::Notification(notification));
     }
     let result = match (method, suffix) {
         ("GET", "feed") => Operation::Feed,
@@ -305,6 +319,9 @@ fn authorize(request: &Request<proto::ProductRequest>) -> Result<VerifiedProduct
     if let Operation::Social(social) = operation {
         query::social_request(m, social)?;
     }
+    if matches!(operation, Operation::Intro(_) | Operation::Notification(_)) {
+        feature_admission::request(m, operation)?;
+    }
     let mutation = matches!(
         operation,
         Operation::InitializeUpload
@@ -317,9 +334,13 @@ fn authorize(request: &Request<proto::ProductRequest>) -> Result<VerifiedProduct
             | Operation::RemovePartyMember(_, _)
             | Operation::CancelParty(_)
     );
-    if matches!(operation, Operation::Social(_)) {
-        // The exact Social decoder above validates keyed bodyless DELETE and
-        // read query forms as well as JSON commands. Never classify DELETE as read.
+    if matches!(
+        operation,
+        Operation::Social(_) | Operation::Intro(_) | Operation::Notification(_)
+    ) {
+        // Each exact feature decoder validates its own read payload and keyed
+        // command shape, including Intro PUT/POST and Notification PATCH writes.
+        // Social additionally owns keyed bodyless DELETE; none are generic reads.
     } else if mutation {
         canonical_uuid(&m.idempotency_key)?;
         let bodyless = matches!(

@@ -189,7 +189,7 @@ pub(super) fn feed(target: &str) -> Result<FeedQuery, Status> {
     Ok(result)
 }
 
-fn decode(value: &str) -> Result<String, Status> {
+pub(super) fn decode(value: &str) -> Result<String, Status> {
     let mut bytes = Vec::with_capacity(value.len());
     let mut input = value.bytes();
     while let Some(byte) = input.next() {
