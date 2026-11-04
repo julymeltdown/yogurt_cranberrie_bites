@@ -400,8 +400,16 @@ The new direct http-body manifest/lock edge reuses the workspace resolution.
 A privately constructible VerifiedClientAddress is minted only by the actual
 Gateway ConnectInfo/trusted-proxy normalizer. It is not a browser-header grant.
 The typed-address test and three disclosure-body boundary tests are authored,
-**NOT_RUN**. The privacy HMAC/network ProductRequest binding is still absent;
-Gift Claim remains unavailable without it. Pickup/code stay closed until the
+**NOT_RUN**. Source `a975e845` subsequently adds the privacy HMAC/network ProductRequest
+binding: internal field14 is derived only from the typed actual address and a
+dedicated nonzero32-byte `MCR_GIFT_NETWORK_BUCKET_KEY`. Missing key/address emits
+an absent bucket; malformed explicit keys fail configuration. Root accepts only
+an absent or nonzero32-byte value from the exact authenticated Gateway frame and
+exposes a typed TrustedPickupContext. Raw IP, browser body/header values and
+random/shared fallback buckets cannot substitute. Two additional network tests
+cover the real normalizer plus stable-key behavior and malformed-key refusal;
+these are **NOT_RUN**. Gift Claim remains closed pending qualification and the
+actual public producer join. Pickup/code stay closed until the
 actual native Gift adapter, coherent build and terminal boundary are qualified.
 
 The updated owned PostgreSQL16 SQL runner applies0028 then0037. Its first run
