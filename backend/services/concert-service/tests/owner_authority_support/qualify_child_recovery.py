@@ -16,9 +16,20 @@ CASES = (
     "retained_key_timeout_and_concurrent_retry_require_real_native_abort",
 )
 
+def source_manifest():
+    # The public reader validates real source-bound art/release files at runtime.
+    # Pin those resources too, as Public's separate native controller does.
+    paths = set(core.source_manifest())
+    tracked = subprocess.check_output([
+        "git", "ls-files", "backend/releases", "contracts", "frontend/public",
+        "frontend/src/entities/avatar/character-source-pack.json",
+    ], cwd=core.ROOT, text=True).splitlines()
+    paths.update(p for p in tracked if (core.ROOT/p).is_file())
+    return {p: core.sha(core.ROOT/p) for p in sorted(paths)}
+
 def run(checkpoint: dict, pg: Path, report: dict) -> None:
     commit = subprocess.check_output(["git", "rev-parse", "HEAD"], cwd=core.ROOT, text=True).strip()
-    if checkpoint["source_commit"] != commit or checkpoint["source_sha256"] != core.source_manifest():
+    if checkpoint["source_commit"] != commit or checkpoint["source_sha256"] != source_manifest():
         raise core.SmokeError("preflight", "source checkpoint changed")
     if checkpoint.get("target_name") != "child_recovery_runtime":
         raise core.SmokeError("preflight", "exact child recovery test target required")

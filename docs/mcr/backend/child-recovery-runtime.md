@@ -112,3 +112,9 @@ Source-level checks: `rustfmt +1.88.0` (owned Rust paths, children skipped), Pyt
 AST parse, `git diff --check`, and `python3 scripts/mcr/check-plan.py` all exit 0.
 Planning PASS is not application acceptance. Build/native receipts and exact
 handoff ancestry must be added after execution.
+
+The native controller also pins tracked release, contract and `frontend/public`
+resource bytes consumed by the public constructor, following Public's native
+controller approach. A source-bound constructor does not replace a complete
+qualification checkpoint. Static peer review found no actionable defect in the
+authorized production slice; that review did not execute native checks.
