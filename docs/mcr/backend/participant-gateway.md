@@ -121,23 +121,48 @@ marking the assigned persistent live goal complete. No AppState, root mount,
 configuration, manifest, lockfile, frontend or Party C04 route modification is
 included in this handoff.
 
-## Root composition checkpoint
 
-The integrator consumed ordered owner commits `c05abd5d`, `3f763d4a` and
-`8888ff7a` as `96e6c513`, `065717b1` and `f2683a7c`. The final six sanitized
-receipts and this owner's final documentation came from minimal handoff
-`9c819233`; its single equivalent source patch was not applied a second time.
+The production factory is committed separately at
+`e7c0cbb8bb3be40d49f64f737c8ffe19cc29924c`, based on Root's `f2683a7c`.
+Its status is IN_PROGRESS: a targeted read-only Profile/Decision/recovery review
+found no actionable issues; its Rust build and runtime checks are NOT_RUN and
+queued for a named allocation. Earlier Gateway/native evidence does not certify
+this new factory.
 
-The additive root configuration uses `GATEWAY_CONCERT_RELEASE_DIGEST` with the
-existing Concert endpoint, service credential, TLS and Gateway signer. The
-digest must be exactly 64 lowercase hex characters, nonzero and operator
-configured; no browser value selects it. The root mounts the actual client and
-places Participant response protection outside transport errors. Without a
-configured digest the new Participant client/routes are not activated. Existing
-configuration fixtures default this opt-in to absent.
+Root calls `ParticipantRuntimeSettings::load(grpc_enabled)` before opening the
+database and `settings.compose(pool, active_release)` with the actual
+`Arc<ValidatedProductRelease>`. The returned ports are the actual
+`GuardedParticipantService`, dedicated `ParticipantDecisionService` and verifier,
+`ProducerSettlementService` backed by `ParticipantNativeResolver`, one coherent
+`DeliveryPublisher`, and `ParticipantRecovery`, plus explicit caller/Gateway trust.
+Root mounts the exact policies, retains response EOF handling and supervises
+`recovery.run(shutdown_receiver)`. It must reject simultaneous optional Product
+and Participant runtimes before opening the database: both cannot mount a second
+Delivery/Settlement server or registry.
 
-These root configuration/router changes and their new malformed-input test are
-source only, `NOT_COMPILED` / `NOT_RUN` until the next named integrated build.
-The owner's qualified component receipts do not certify this newer root
-composition or the actual public save/reload path. Concert's actual factory,
-Decision verifier, native resolver and supervised recovery are still required.
+Required configuration:
+
+| Setting | Required value |
+| --- | --- |
+| `CONCERT_PARTICIPANT_MODE` | `live`; absent or `off` creates no Participant runtime |
+| `CONCERT_PARTICIPANT_AUTH_GRPC_ENDPOINT` | Explicit Auth HTTPS host and port |
+| `CONCERT_PARTICIPANT_FRIEND_GRPC_ENDPOINT` | Explicit Friend HTTPS host and port |
+| `CONCERT_PARTICIPANT_PROFILE_GRPC_ENDPOINT` | Explicit Profile HTTPS host and port |
+| `CONCERT_PRODUCER_INSTANCE_ID` | Stable, nonzero canonical UUID |
+| `CONCERT_PARTICIPANT_RELEASE_DIGEST` | Exact active release SHA256, lowercase hex |
+| `CONCERT_PARTICIPANT_RECOVERY_KEYS_JSON` | Closed array of `{id, secret_hex}` records; first active, at most three retained, distinct nonzero 32-byte secrets and unique IDs |
+| `GATEWAY_SERVICE_CREDENTIAL`, `AUTH_SERVICE_CREDENTIAL`, `FRIEND_SERVICE_CREDENTIAL`, `PROFILE_SERVICE_CREDENTIAL`, `CONCERT_SERVICE_CREDENTIAL` | Explicit distinct workload credentials; inbound `_PREVIOUS` rotation values remain distinct |
+| `ACTOR_DELEGATION_VERIFYING_KEYS` | Explicit Gateway keyring for Concert audience |
+| `CONCERT_RELATIONSHIP_SIGNING_SEED` | Dedicated canonical owner-read signer |
+| `CONCERT_PROFILE_SELF_SIGNING_SEED` | Distinct dedicated SELF Profile signer |
+| `PROFILE_PARTICIPANT_DECISION_VERIFYING_KEYS` | Distinct dedicated Profile-to-Concert Decision keyring |
+| `CONCERT_GRPC_TLS_CERT_PATH`, `CONCERT_GRPC_TLS_KEY_PATH`, `CONCERT_GRPC_TLS_CA_PATH` | Actual Concert mTLS material, required even in local mode |
+
+The existing platform encoding applies to signer seeds/keyrings (standard Base64);
+only the new at-rest recovery `secret_hex` field uses lowercase hex. The factory
+rejects known parity identities and overlap among Gateway, relationship, SELF
+and Decision roles. It creates no optional public/Gift/Social authority: C03's
+child settler refuses unsupported intents and leaves them unresolved. Recovery
+reuses the actual Profile client and persisted original binding, and never
+reissues a mutation or renews admission. These are source/review findings until
+fresh qualification and the actual public C03 flow pass.
