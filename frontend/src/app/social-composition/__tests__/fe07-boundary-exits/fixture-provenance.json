@@ -1,0 +1,15 @@
+{
+  "source_owner": "FE07 shell-journey owner 01a1a1fe-1ab7-79b0-adbc-d4c025701acb",
+  "source_checkout_head": "009327ca52d127db39b615e6049e4c66f37decef",
+  "source_path": "frontend/src/app/__tests__/fe07-shell-journey/preview.tsx",
+  "source_sha256": "3df8c98e6d81d34b183e9466c335664c89c8cb311270cdae9a30d1c91541594a",
+  "source_state": "Read-only owner working fixture; no claim that fixture is committed at checkout HEAD",
+  "destination": "frontend/src/app/social-composition/__tests__/fe07-boundary-exits/preview.tsx",
+  "transformations": [
+    "provenance comment",
+    "one additional parent per relative import",
+    "unique window bridge and synthetic revision name"
+  ],
+  "dependencies": "Existing canonical Auth/production ports/router/Phaser, selected-character and C05 fixtures; retained dependencies; no new install",
+  "scope": "Synthetic native shell-lifetime qualification only"
+}

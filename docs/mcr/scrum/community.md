@@ -3,8 +3,17 @@
 <!-- current-lane-record:start -->
 Updated 2026-11-04 (Asia/Seoul) from existing developer handoffs and explicit
 ownership allocations. This is management bookkeeping, not implementation,
-query, visual, test or runtime review. Developers own all qualification, fixes
-and direct non-force publication. No work waits for king/SL technical approval.
+query, visual, test or runtime review. Developers own qualification, fixes and
+exact committed handoffs. Current publication routing follows the user's
+integrator-only clause: only the existing designated delivery integrator
+publishes new work through safe non-force integration. Main explicitly
+designated frontend Root `01a1a153-1227-7e72-801f-a2a6b91981e1` as that
+integrator; Product root retains its separate technical composition ownership.
+Owner-validated exact handoffs go directly to Root's separate isolated
+publishing checkout with serialized writes; its active source goal is preserved
+and delivery maintenance adds no second goal. No king/SL technical review or new
+approval stage is introduced; implementation continues. Previously published
+owner receipts below remain historical facts, not future push authorization.
 
 ## Current original FE33 disposition and delivered caller assignment
 
@@ -235,13 +244,32 @@ required; stale candidate evidence must not substitute for current results.
 Missing backend/service/device or other original criteria remain explicitly
 NOT_RUN/BLOCKED with their owner. No generic backend wave blocks independently
 ready frontend work; no full QA10/IN05 acceptance is inferred from this bounded
-contribution. Developer owns checks/fixes/docs/scoped direct non-force
-publication and actual completed-goal/clean-STOP handoff.
+contribution. Developer owns checks/fixes/docs/exact scoped commits and delivers
+base, changed paths, pins, commands/results and limitations to the existing
+designated delivery integrator for publication. Earlier direct-owner-push
+instructions for this new QA10 goal are withdrawn. Same ACTIVE goal
+`1793757526` continues, with required publication unfinished until the actual
+Root publication/remote-ancestry receipt; no false goal completion, feature halt
+or king/SL review. Root's explicit identity was forwarded to the receiving
+developer, who acknowledged no self-push and preservation of the same goal.
+Already-published `047d892c` and other history are preserved without duplicate
+integration or rewrites. No duplicate human confirmation question is requested.
 
 Root `1fc` retains `scripts/mcr/release-check.sh`, decision publication and
 shared harness composition. Known node:test collection files
 `metrics.test.mjs` and `whole/data.test.mjs` remain read-only until root records
 their exact file/hunk transfer; no implicit rename/config/manifest rights.
+Subsequent owner-reported incumbent `1fc` transfer grants `26e` ONLY insertion
+of `configLoader: 'runner'` in existing `createServer` options at the corrected
+actual path `frontend/e2e/reference-integrated/whole/data.test.mjs`. All other
+bytes/semantics remain unchanged; before/after blobs are recorded by the
+developer. No metrics edit, rename, other existing-test or configuration right
+is transferred. The developer notified Community before editing and confirmed
+Root `153` as publisher, with no self-push. Technical receipt schema agreed
+directly with `1fc`: `mcr.qa10.frontend.v1`, PARTIAL/FAIL, candidate/tool/source/
+contract pins, actual commands/count inventory and explicit unsupported scope.
+This is a reported interface/ownership handoff, not an SL technical review or
+QA10 result.
 Direct canonical command/source/harness handoff was requested from root to the
 developer, not an SL audit or review. Same exact temporary dependency-link
 exception applies with read-only retained target and own-link removal before

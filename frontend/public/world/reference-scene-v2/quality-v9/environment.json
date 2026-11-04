@@ -1,0 +1,56 @@
+{
+  "execution_base": "1383ae452fc81dfe5fd1e4ca4d37af8950700dda",
+  "python": "3.14.3",
+  "pillow": "12.2.0",
+  "tesseract": "0.4.0 d7ccb4bc20fc69f2356c53b80336e52cff31dcc5",
+  "browser": "Chrome156.0.8078.80",
+  "new_dependencies": [],
+  "source_reference_sha256": "d9a8fae2f96a82253542019ab673589b3938627956eace15c8594c702b5c4617",
+  "commands": [
+    {
+      "command": "python3 frontend/public/world/reference-scene-v2/build-route-edges.py",
+      "exit_code": 0
+    },
+    {
+      "command": "python3 frontend/public/world/reference-scene-v2/build-route-composition.py",
+      "exit_code": 0
+    },
+    {
+      "command": "python3 frontend/public/world/reference-scene-v2/editable-quality.py parade --revision 9",
+      "exit_code": 0
+    },
+    {
+      "command": "python3 frontend/public/world/reference-scene-v2/editable-quality.py revenge --revision 9",
+      "exit_code": 0
+    },
+    {
+      "command": "python3 frontend/public/world/reference-scene-v2/editable-quality.py danger --revision 9",
+      "exit_code": 0
+    },
+    {
+      "command": "python3 frontend/public/world/reference-scene-v2/verify-route-composition.py",
+      "exit_code": 0
+    },
+    {
+      "command": "MCR_ART_REVISION=9 MCR_PLAYWRIGHT_PACKAGE=<existing installed package> node frontend/public/world/reference-scene-v2/check-quality.mjs",
+      "exit_code": 0
+    },
+    {
+      "command": "python3 frontend/public/world/reference-scene-v2/verify-density.py",
+      "exit_code": 0
+    },
+    {
+      "command": "python3 frontend/public/world/reference-scene-v2/verify-quality.py --revision 8",
+      "exit_code": 0
+    },
+    {
+      "command": "python3 scripts/mcr/check-plan.py",
+      "exit_code": 0
+    },
+    {
+      "command": "git diff --check",
+      "exit_code": 0
+    }
+  ],
+  "limits": "Native viewer open queued; actual exported PNGs inspected. Source/native/browser evidence; no new independent score, current app/server/source-review/physical/multiuser admission."
+}

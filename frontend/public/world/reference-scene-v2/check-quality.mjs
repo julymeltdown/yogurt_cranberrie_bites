@@ -3,7 +3,7 @@ import {createRequire} from 'node:module'
 import fs from 'node:fs'
 import path from 'node:path'
 import {fileURLToPath} from 'node:url'
-const revision=process.env.MCR_ART_REVISION||'6';assert(['6','7','8'].includes(revision))
+const revision=process.env.MCR_ART_REVISION||'6';assert(['6','7','8','9'].includes(revision))
 const here=path.dirname(fileURLToPath(import.meta.url)),out=path.join(here,`quality-v${revision}`),require=createRequire(process.env.MCR_PLAYWRIGHT_PACKAGE||path.resolve(here,'../../../package.json'))
 const {chromium}=require('@playwright/test'),browser=await chromium.launch({executablePath:'/Applications/Google Chrome.app/Contents/MacOS/Google Chrome',headless:true}),cases=[],errors=[]
 try{
@@ -16,7 +16,11 @@ try{
     await page.locator(`[data-view=${view}]`).click();await page.waitForFunction(view=>window.eraSceneReview?.ready&&window.eraSceneReview.view===view,view)
     const state=await page.evaluate(()=>({state:window.eraSceneReview,feet:window.eraSceneOcclusion(),overflow:document.documentElement.scrollWidth>innerWidth,canvases:document.querySelectorAll('canvas').length}))
     assert.equal(state.overflow,false);assert.equal(state.canvases,1);assert(state.feet.every(p=>p.blockers.length===0),JSON.stringify(state))
-    assert.deepEqual(state.state.ground,[768,1296]);assert.deepEqual(state.state.atlas,[1024,1024]);assert.equal(state.state.physicalObjects,revision==='8'?34:22);assert.equal(state.state.mapRepresentations,6);assert(state.state.cacheEntries<=3)
+    assert.deepEqual(state.state.ground,[768,1296]);assert.deepEqual(state.state.atlas,[1024,1024]);assert.equal(state.state.physicalObjects,['8','9'].includes(revision)?34:22);assert.equal(state.state.mapRepresentations,revision==='9'?8:6);assert(state.state.cacheEntries<=3)
+    if(revision==='9'&&view==='map'){
+     state.labels=await page.evaluate(()=>window.labelReview());assert.equal(state.labels.fontLoaded,true)
+     for(const label of state.labels.labels)for(const line of label.lines)assert(line.width<=label.availableTextWidth+.1)
+    }
     if(cycle===0)await page.screenshot({path:path.join(out,`${era}-${view}-${width}.png`),fullPage:true})
     cases.push({width,cycle,era,view,...state})
    }

@@ -1,0 +1,56 @@
+- link "Skip to content":
+  - /url: "#shell-content"
+- banner:
+  - link "MCR Concert World":
+    - /url: /world
+    - strong: Selected fixture fan
+    - text: Synthetic contract fixture
+  - link "Inbox":
+    - /url: /notifications
+  - link "Settings":
+    - /url: /me/settings
+- region "World era":
+  - group "Choose an era":
+    - button "Revenge" [pressed]: REVENGE
+    - button "Parade": PARADE
+    - button "Danger": DANGER
+  - status: Revenge selected.
+- region "World viewport":
+  - region "World scene and controls":
+    - group "World movement map. Arrow keys or W A S D move. E interacts. R recenters."
+    - region "World movement controls":
+      - button "Movement joystick. Arrow keys or W A S D when focused"
+      - button "Interact" [disabled]
+      - button "Recenter"
+      - group: Controls & help?
+      - status: Local movement ready.
+    - status: World connected.
+    - paragraph: Virtual position is not physical arrival.
+- main:
+  - heading "World" [level=1]
+  - navigation "World tools":
+    - link "Map":
+      - /url: /world/map
+    - link "Rooms":
+      - /url: /world/rooms
+    - link "Nearby":
+      - /url: /world/nearby
+    - link "Help":
+      - /url: /world/help
+- navigation "Main navigation":
+  - link "World":
+    - /url: /world
+  - link "Feed":
+    - /url: /feed
+  - link "Meet":
+    - /url: /meet
+  - link "Gifts":
+    - /url: /gifts
+  - link "Wall":
+    - /url: /wall
+  - link "Me":
+    - /url: /me
+- status:
+  - paragraph: The current action or edit needs attention. Your command identity and draft are retained.
+  - button "Stay with current action"
+  - button "Continue navigation" [disabled]

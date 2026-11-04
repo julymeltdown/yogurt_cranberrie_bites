@@ -7,6 +7,7 @@ import { physicalStatus } from '../model/contract'
 import { getReferenceOverviewMetadata } from '../../../world/reference-scene'
 import { mapViewport, overviewIdentity } from './reference-scene/viewport'
 import { referenceAnnotations, type AnnotationRect } from './reference-scene/annotations'
+import { spatialV4LabelObstacles, spatialV4ZoomBottom } from './reference-scene/spatial-v4-label-obstacles'
 
 function LandmarkIcon({ interaction }: { interaction: string }) {
   if (/gifts?/.test(interaction)) return <ConcertIcon name="gifts" />
@@ -63,7 +64,14 @@ function IllustratedViewport({ controller, state, fallback, legend }: MapProps) 
   const portrait = image.height > image.width
   const view = { left: scroll.left - (portrait ? offsetX : 0), top: scroll.top - (portrait ? offsetY : 0),
     width: size.width, height: size.height }
-  const plaques = referenceAnnotations(annotationAnchors, view, obstacles.map(r => ({ ...r, left: r.left + view.left, top: r.top + view.top })))
+  const labelObstacles = reference ? spatialV4LabelObstacles(image, width, height) : []
+  function paintedLabel(id: string) {
+    const place = items.find(p => p.place_id === id)
+    if (place?.closure_state !== 'OPEN' || state.unavailablePlaceIds.includes(id)) return undefined
+    const interaction = map.geometry.interactions.find(p => p.place_id === id)
+    return labelObstacles.find(label => label.interactionId !== null && label.interactionId === interaction?.interaction_id)
+  }
+  const plaques = referenceAnnotations(annotationAnchors.filter(point => !paintedLabel(point.id)), view, [...labelObstacles, ...obstacles.map(r => ({ ...r, left: r.left + view.left, top: r.top + view.top }))])
   function select(id: string) { selections.set(controller, { mapHash: map.content_hash, id }); setSelected(id) }
   useEffect(() => {
     if (ready && navigation === 'POP' && !restored.current && saved?.mapHash === map.content_hash) {
@@ -118,7 +126,7 @@ function IllustratedViewport({ controller, state, fallback, legend }: MapProps) 
       <div className="places-map-plane" style={{ width, height, visibility: ready ? 'visible' : 'hidden' }}>
         <img draggable={false} src={image.imageUrl} width={image.width} height={image.height} alt={`${image.themeId} illustrated virtual map`}
           onLoad={() => setLoaded(image.imageUrl)} onError={() => setFailed(image.imageUrl)} />
-        {ready && <svg className="places-map-leaders" width={width} height={height} aria-hidden="true">{anchors.map(point => {
+        {ready && <svg className="places-map-leaders" width={width} height={height} aria-hidden="true">{anchors.filter(point => !paintedLabel(point.id)).map(point => {
           const label = plaques.get(point.id)!
           return (label.x !== point.x || label.y !== point.y) && <line key={point.id} x1={point.x} y1={point.y} x2={label.x} y2={label.y} />
         })}</svg>}
@@ -126,12 +134,18 @@ function IllustratedViewport({ controller, state, fallback, legend }: MapProps) 
           const point = map.geometry.interactions.find(p => p.place_id === place.place_id)
           if (!point) return null
           const unavailable = state.unavailablePlaceIds.includes(place.place_id)
+          const painted = paintedLabel(place.place_id)
           const label = plaques.get(place.place_id)!
           return <ShellLink id={`map-place-${place.place_id}`} key={place.place_id} className="places-map-plaque" to={`/world/places/${place.place_id}`}
-            style={{ left: label.x, top: label.y }} onPointerDown={() => select(place.place_id)}
+            data-map-painted-label={painted ? point.interaction_id : undefined}
+            style={painted ? { left: painted.left, top: painted.top - Math.max(0, 44 - painted.height) / 2,
+              width: painted.width, height: Math.max(44, painted.height), maxWidth: 'none', minHeight: 44,
+              transform: 'none', padding: 0, borderColor: 'transparent', background: 'transparent', boxShadow: 'none' }
+              : { left: label.x, top: label.y }} onPointerDown={() => select(place.place_id)}
             aria-label={`View ${place.label}${place.closure_state === 'CLOSED' ? ' — closed' : unavailable ? ' — unavailable' : ''}`} title={place.label}
             data-status={place.closure_state === 'CLOSED' ? 'closed' : unavailable ? 'unavailable' : 'open'} onFocus={() => select(place.place_id)}>
-            <LandmarkIcon interaction={point.interaction_id} /><span>{place.label}</span>
+            {painted ? <span style={{ position: 'absolute', width: 1, height: 1, overflow: 'hidden', clipPath: 'inset(50%)' }}>{place.label}</span>
+              : <><LandmarkIcon interaction={point.interaction_id} /><span>{place.label}</span></>}
             {place.closure_state === 'CLOSED' && <small>Closed</small>}{unavailable && <small>Unavailable</small>}
           </ShellLink>
         })}
@@ -141,7 +155,7 @@ function IllustratedViewport({ controller, state, fallback, legend }: MapProps) 
         </span>}
       </div>
     </div>
-    <div ref={zoomControls} className="places-map-zoom" aria-label="Map view zoom">
+    <div ref={zoomControls} className="places-map-zoom" style={labelObstacles.length ? { bottom: spatialV4ZoomBottom(view, labelObstacles) } : undefined} aria-label="Map view zoom">
       <button type="button" aria-label="Zoom in map view" disabled={effectiveZoom >= 3 || !ready} onClick={() => setZoom(clamp(effectiveZoom + .25, minZoom, 3))}>+</button>
       <button type="button" aria-label="Zoom out map view" disabled={effectiveZoom <= minZoom || !ready} onClick={() => setZoom(clamp(effectiveZoom - .25, minZoom, 3))}>−</button>
     </div>
