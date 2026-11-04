@@ -1,0 +1,24 @@
+{
+  "result": "PASS",
+  "productChangedPaths": [
+    "frontend/src/features/public/ui/public.css"
+  ],
+  "baseline": "29a42ca1f5d86262ee18141d2bab75996af7e6fd",
+  "testedCSSSHA256": "941242817f37b1426e71c68696254ce630cd81da94b6196779961db2a346af96",
+  "targetSHA256": "2b3988d546f87b813d78ca13bf267730a6dd19118bd6535a2d3c3032b6f12d23",
+  "nativeExitCodes": [
+    0,
+    0
+  ],
+  "planningExitCode": 0,
+  "diffCheckExitCode": 0,
+  "pngCount": 13,
+  "candidateWidths": [
+    360,
+    390,
+    430
+  ],
+  "artAndBackgroundPreserved": "Vite-rendered computed background and all four 390px gallery geometries/UV/scaling/rendering equal baseline; no shared/art/TSX/lockfile changes",
+  "build": "NOT_RUN: scoped CSS parsed by actual Vite browser fixture; no TypeScript or dependencies changed",
+  "physicalDeviceAndLiveBackend": "NOT_RUN"
+}

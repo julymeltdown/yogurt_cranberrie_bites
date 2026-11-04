@@ -1,0 +1,3 @@
+UTCepoch=1793784206.8585742 command=['/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node', 'frontend/src/features/public/ui/__tests__/css-parity-landing/native.mjs']
+{"phase":"baseline","result":"PASS","cases":1}
+EXIT=0 guard=None
