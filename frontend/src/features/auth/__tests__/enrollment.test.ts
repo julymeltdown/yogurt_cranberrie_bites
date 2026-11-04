@@ -1,186 +1,142 @@
-import { afterEach, beforeEach, expect, it, vi } from 'vitest'
-import { createSessionController, type SessionController } from '../model/session'
-import { decodeEnrollment, decodeResend, validEnrollmentPassword, validVerificationCode } from '../model/enrollment-contract'
-import { authResponse, capabilities, deferred, eventId, isolatedCookiePolicy, userId } from './fixtures/data'
-const password = '  unchanged password  ', email = 'member@example.com', code = '123456'
-const ack = { eligibility: true, consent: true }, controllers: SessionController[] = []
-beforeEach(() => vi.stubGlobal('location', { origin: 'https://mcr.example' }))
-afterEach(() => { controllers.splice(0).forEach(c => c.dispose()); vi.unstubAllGlobals() })
-async function setup(handler: (r: Request) => Response | Promise<Response> = r => Response.json(r.url.endsWith('/verify') ? { userId, status: 'VERIFIED' } : r.url.endsWith('/resend') ? { status: 'ACCEPTED' } : { userId, status: 'PENDING_VERIFICATION' }, { status: r.url.endsWith('/resend') ? 202 : 200 }), preview = true, timeoutMs = 1000, emailEnabled = true) {
-  const requests: Request[] = [], inflightRequests: Request[] = [], cookiePolicy = isolatedCookiePolicy(), cookieRun = vi.spyOn(cookiePolicy, 'run')
-  const fetch = vi.fn<typeof globalThis.fetch>(async input => {
-    const r = input as Request
-    if (r.url.endsWith('/capabilities')) return Response.json(emailEnabled ? capabilities() : { ...capabilities(), providers: capabilities().providers.map(p => ({ ...p, enabled: false, disabled_reason: 'NOT_CONFIGURED' })) })
-    // Inspect cancellation on the actual fetch input. Node 24's Request.clone()
-    // follows via a weak controller reference that GC can collect before abort;
-    // a body-inspection clone is not an authoritative transport signal.
-    inflightRequests.push(r); requests.push(r.clone())
-    if (r.url.endsWith('/login')) return Response.json(authResponse())
-    if (r.url.endsWith('/logout')) return new Response(null, { status: 204 })
-    return handler(r)
+import { afterEach, expect, it, vi } from 'vitest'
+import { TransportError, parseServerError } from '../../../shared/api/errors'
+import { decodePolicy, decodeAdmission, validEnrollmentPassword, validVerificationCode } from '../model/enrollment-contract'
+import { fixture, defaultHandler, policy, attempt, accepted, admission, ack, email, password, attemptId, revision, userId } from './enrollment-consent/fixtures'
+const live: ReturnType<typeof fixture>[] = []
+const setup = (...args: Parameters<typeof fixture>) => { const item = fixture(...args); live.push(item); return item }
+afterEach(() => { live.splice(0).forEach(item => item.dispose()); vi.restoreAllMocks(); vi.useRealTimers() })
+const rejection = (reason: string, status: number, uncertain = false) => new TransportError('http', { status, uncertain,
+  server: parseServerError({ code: 'TEST_ONLY', message: 'PRIVATE SERVER TEXT', details: { reason } }, 'auth', status) })
+async function ready(item: ReturnType<typeof fixture>) { expect((await item.enrollment.loadPolicy()).kind).toBe('ready'); expect((await item.enrollment.beginAttempt()).kind).toBe('ready') }
+it.each(['12345678', ' '.repeat(8), '가'.repeat(42) + 'aa', 'a'.repeat(128)])('preserves UTF8 boundary %j', value => expect(validEnrollmentPassword(value)).toBe(true))
+it.each(['short', '가'.repeat(43), 'a'.repeat(129), '\ud80012345678'])('rejects malformed/oversized password %j', value => expect(validEnrollmentPassword(value)).toBe(false))
+it.each(['12345', '1234567', '１２３４５６', ' 12345', 'abcdef'])('rejects invalid code %j', value => expect(validVerificationCode(value)).toBe(false))
+it('never treats syntheticQualification or boolean acknowledgments as published consent', async () => {
+  const f = setup()
+  expect((await f.enrollment.signup(email, password, ack)).kind).toBe('policy-unavailable'); expect(f.requests).toHaveLength(0)
+})
+it('sends only bound attempt/revision/exact IDs/body UUID, neutral result and no identity/cache mutation', async () => {
+  const f = setup(); await ready(f)
+  for (const ids of [[], [...ack, ...ack], ['extra'], [...ack, 'extra']]) expect((await f.enrollment.signup(email, password, ids)).kind).toBe('acknowledgements-required')
+  expect((await f.enrollment.signup(email, password, ack)).kind).toBe('created')
+  const request = f.requests.at(-1)!
+  expect(request.path).toBe('/api/auth/enrollment/signup'); expect(request.access).toBe('public')
+  expect(request.body).toEqual({ json: { attemptId, policyRevision: revision, acknowledgementIds: ack, idempotencyKey: expect.any(String), email, password } })
+  expect(request.idempotencyKey).toBeUndefined(); expect(request.refresh).toBeUndefined(); expect(f.session.read().userId).toBeNull()
+  expect(f.client.getQueryCache().getAll()).toHaveLength(0); expect(f.client.getMutationCache().getAll()).toHaveLength(0)
+  expect((await f.enrollment.signup(email, password, ack)).kind).toBe('idempotency-conflict')
+})
+it('reserves one command synchronously and rejects duplicate simultaneous dispatches', async () => {
+  let release!: (value: { status: number; data: unknown }) => void
+  const f = setup(request => request.path.endsWith('/signup') ? new Promise(resolve => { release = resolve }) : defaultHandler(request))
+  await ready(f); const first = f.enrollment.signup(email, password, ack)
+  expect(f.enrollment.pending).toBe(true); expect((await f.enrollment.signup(email, password, ack)).kind).toBe('busy')
+  expect((await f.enrollment.resend(attemptId)).kind).toBe('busy'); expect(f.requests.filter(r => r.path.endsWith('/signup'))).toHaveLength(1)
+  release({ status: 202, data: accepted() }); expect((await first).kind).toBe('created')
+})
+it('retains exact original key/payload for explicit unknown retry and never automatically replays', async () => {
+  let calls = 0
+  const f = setup(request => { if (request.path.endsWith('/signup') && ++calls === 1) throw new TransportError('network', { uncertain: true }); return defaultHandler(request) })
+  await ready(f); expect((await f.enrollment.signup(email, password, ack)).kind).toBe('uncertain')
+  expect(f.enrollment.read().unknown).toBe('signup'); expect(calls).toBe(1)
+  expect((await f.enrollment.signup('other@example.invalid', 'changed password', ack)).kind).toBe('busy')
+  expect((await f.enrollment.retryUnknown()).kind).toBe('created')
+  const mutations = f.requests.filter(r => r.path.endsWith('/signup')); expect(mutations).toHaveLength(2)
+  expect(mutations[1]!.body).toEqual(mutations[0]!.body); expect(f.enrollment.read().unknown).toBeNull()
+})
+it('does not extend an original unknown resend receipt using retry time', async () => {
+  let tick = 1000, calls = 0
+  vi.spyOn(performance, 'now').mockImplementation(() => tick)
+  const receipt = accepted()
+  const f = setup(request => { if (request.path.endsWith('/resend') && ++calls === 1) throw new TransportError('network', { uncertain: true }); return { status: 202, data: receipt } })
+  expect((await f.enrollment.resend(attemptId)).kind).toBe('uncertain'); tick += 1000
+  expect((await f.enrollment.retryUnknown()).kind).toBe('received')
+  expect(f.enrollment.read().attemptDeadline).toBe(1000 + Date.parse(receipt.expiresAt) - Date.parse(receipt.serverTime))
+})
+it('bounds attempt/policy/countdown at request start, even if wall clock moves backwards', async () => {
+  let tick = 1000
+  vi.spyOn(performance, 'now').mockImplementation(() => tick)
+  const f = setup(); await ready(f); await f.enrollment.signup(email, password, ack)
+  const expiry = f.enrollment.read().attemptDeadline, count = f.requests.length
+  expect((await f.enrollment.resend(attemptId)).kind).toBe('rate-limited')
+  vi.spyOn(Date, 'now').mockReturnValue(0); tick = expiry + 1
+  expect((await f.enrollment.verify(attemptId, '123456')).kind).toBe('attempt-expired'); expect(f.requests).toHaveLength(count)
+})
+it.each([['POLICY_UNAVAILABLE',503,'policy-unavailable'],['POLICY_STALE',409,'policy-stale'],['ATTEMPT_EXPIRED',410,'attempt-expired'],['ATTEMPT_INVALID',404,'attempt-invalid'],['ACKNOWLEDGEMENTS_REQUIRED',422,'acknowledgements-required'],['IDEMPOTENCY_CONFLICT',409,'idempotency-conflict'],['VERIFICATION_FAILED',422,'invalid-code'],['ACCOUNT_INACTIVE',403,'account-inactive']] as const)('maps authoritative %s and status, without raw server text', async (reason, status, kind) => {
+  const f = setup(() => { throw rejection(reason, status) })
+  expect(await f.enrollment.verify(attemptId, '123456')).toEqual({ kind }); expect(JSON.stringify(f.enrollment.read())).not.toContain('PRIVATE')
+})
+it('does not guess a duplicate account or verification completion from opaque statuses', async () => {
+  const f = setup(() => { throw rejection('PRIVATE_UNKNOWN', 409) }); expect((await f.enrollment.verify(attemptId, '123456')).kind).toBe('unavailable')
+})
+it('honors bounded server retry metadata, no client invented duration or automatic request', async () => {
+  let tick = 3000
+  vi.spyOn(performance, 'now').mockImplementation(() => tick)
+  const f = setup(() => { throw new TransportError('http', { status: 429, retryAfterMs: 2000 }) })
+  expect((await f.enrollment.verify(attemptId, '123456')).kind).toBe('rate-limited'); expect(f.enrollment.read().retryDeadline).toBe(5000)
+  tick = 4999; expect((await f.enrollment.verify(attemptId, '123456')).kind).toBe('rate-limited'); expect(f.requests).toHaveLength(1)
+})
+it('fences late completion after privacy/session/cancel and removes unknown command secrets', async () => {
+  let release!: (value: {status:number;data:unknown}) => void
+  const f = setup(request => request.path.endsWith('/signup') ? new Promise(resolve => { release = resolve }) : defaultHandler(request))
+  await ready(f); const pending = f.enrollment.signup(email, password, ack)
+  f.privacy.changePolicy(f.privacy.capture(), 'consent-revoked')
+  expect(f.requests.at(-1)!.signal!.aborted).toBe(true); release({ status: 202, data: accepted() })
+  expect((await pending).kind).toBe('cancelled'); expect(f.enrollment.read().accepted).toBeNull(); expect(f.enrollment.read().unknown).toBeNull()
+  expect((await f.enrollment.retryUnknown()).kind).toBe('unavailable')
+})
+it('verifies only opaque attempt+code, and does not synthesize login', async () => {
+  const f = setup(); expect((await f.enrollment.verify(attemptId, '123456')).kind).toBe('verified')
+  expect(f.requests[0]!.body).toEqual({ json: { attemptId, code: '123456' } }); expect(f.session.read().accessToken).toBeNull()
+})
+it('never accepts a receipt bound to another attempt', async () => {
+  const f = setup(() => ({ status: 200, data: { status: 'VERIFIED', attemptId: revision, serverTime: new Date().toISOString() } }))
+  expect((await f.enrollment.verify(attemptId, '123456')).kind).toBe('uncertain')
+})
+it('uses existing canonical identity for protected consent and authoritative admission', async () => {
+  const f = setup(); f.session.replace(0, { userId, eventId: null, accessToken: 'same-canonical-token' })
+  await f.enrollment.loadPolicy(); expect((await f.enrollment.acceptPolicy(ack)).kind).toBe('admitted')
+  expect((await f.enrollment.checkAdmission()).kind).toBe('admitted')
+  expect(f.requests.slice(-2).every(request => request.access === 'protected')).toBe(true)
+  expect(f.session.read().accessToken).toBe('same-canonical-token')
+})
+it.each(['CONSENT_REQUIRED','POLICY_UNAVAILABLE','ACCOUNT_INACTIVE'])('retains server admission denial %s', async decision => {
+  const f = setup(() => ({ status: 200, data: admission(decision) })); f.session.replace(0, { userId, eventId: null, accessToken: 'canonical' })
+  expect((await f.enrollment.checkAdmission()).kind).not.toBe('admitted'); expect(f.enrollment.read().admission?.decision).toBe(decision)
+})
+it('rejects wrong statuses, unknown fields, duplicate policy IDs and inconsistent admission', () => {
+  const context = { status: 200, path: '/api/auth/enrollment/policy', scope: { generation: 0, userId: null, eventId: null } }
+  expect(() => decodePolicy({ ...policy(), unapproved: true }, context)).toThrow()
+  const p = policy(); expect(() => decodePolicy({ ...p, documents: [...p.documents,...p.documents] }, context)).toThrow()
+  expect(() => decodePolicy(p, { ...context, status: 202 })).toThrow()
+  expect(() => decodeAdmission({ ...admission(), acceptedRevision: null }, context)).toThrow()
+})
+it('rejects mismatched begin revision and delayed already-expired policy responses', async () => {
+  const f = setup(request => request.path.endsWith('/attempts') ? { status: 201, data: { ...attempt(), policyRevision: attemptId } } : defaultHandler(request))
+  await f.enrollment.loadPolicy(); expect((await f.enrollment.beginAttempt()).kind).toBe('uncertain')
+})
+it('does not create an attempt for malformed signup fields and does not retain commands when Auth is busy', async () => {
+  const f = setup(); await f.enrollment.loadPolicy()
+  expect((await f.enrollment.signup(email, 'short', ack)).kind).toBe('invalid-input'); expect(f.requests).toHaveLength(1)
+  await f.enrollment.beginAttempt(); f.setCanStart(false)
+  expect((await f.enrollment.signup(email, password, ack)).kind).toBe('busy')
+  expect(f.enrollment.read().unknown).toBeNull(); f.setCanStart(true)
+  expect((await f.enrollment.retryUnknown()).kind).toBe('unavailable')
+})
+it('does not extend bound attempt expiry when resend returns a later expiry', async () => {
+  let later = false
+  const f = setup(request => {
+    if (request.path.endsWith('/resend') && later) { const response = accepted(); response.expiresAt = new Date(Date.parse(response.expiresAt) + 600_000).toISOString(); return { status: 202, data: response } }
+    return defaultHandler(request)
   })
-  const auth = createSessionController({ eventId, fetch, cookiePolicy, syntheticEnrollment: preview, timeoutMs }); controllers.push(auth)
-  auth.start(); await vi.waitFor(() => expect(auth.read().capabilities).toBe('ready'))
-  return { auth, requests, inflightRequests, fetch, cookieRun }
-}
-it.each(['12345678', ' '.repeat(8), '가'.repeat(42) + 'aa', 'a'.repeat(128)])('accepts raw UTF8 password boundary %j', value => expect(validEnrollmentPassword(value)).toBe(true))
-it.each(['short', '가'.repeat(43), 'a'.repeat(129), '\ud80012345678'])('rejects invalid UTF8 password %j', value => expect(validEnrollmentPassword(value)).toBe(false))
-it.each(['12345', '1234567', '１２３４５６', ' 12345', 'abcdef'])('rejects non-six-digit code %j', value => expect(validVerificationCode(value)).toBe(false))
-it('keeps production signup policy disabled even with provider available and checked boxes', async () => {
-  const { auth, requests } = await setup(undefined, false)
-  expect(await auth.enrollment.signup(email, password, ack)).toEqual({ kind: 'policy-unavailable' }); expect(requests).toHaveLength(0)
+  let tick = 1000; vi.spyOn(performance, 'now').mockImplementation(() => tick)
+  await ready(f); await f.enrollment.signup(email, password, ack)
+  const bound = f.enrollment.read().attemptDeadline; tick += 2500; later = true
+  expect((await f.enrollment.resend(attemptId)).kind).toBe('received'); expect(f.enrollment.read().attemptDeadline).toBeLessThanOrEqual(bound)
 })
-it('checks both synthetic acknowledgements before sending the exact two-field payload; never installs identity', async () => {
-  const { auth, requests, cookieRun } = await setup()
-  for (const a of [{ eligibility: false, consent: true }, { eligibility: true, consent: false }]) expect(await auth.enrollment.signup(email, password, a)).toEqual({ kind: 'invalid-input' })
-  expect(await auth.enrollment.signup(email, password, ack)).toEqual({ kind: 'created' })
-  expect(await requests[0]!.json()).toEqual({ email, password }); expect(requests[0]!.headers.get('Authorization')).toBeNull()
-  expect(cookieRun).not.toHaveBeenCalled(); expect(auth.session.read().accessToken).toBeNull(); expect(auth.session.read().userId).toBeNull()
-  expect(auth.queryClient.getQueryCache().getAll()).toHaveLength(0); expect(auth.queryClient.getMutationCache().getAll()).toHaveLength(0)
-})
-it('verifies existing accounts and accepts only202ACCEPTED resend without synthetic signup qualification', async () => {
-  const { auth, requests } = await setup(undefined, false)
-  expect(await auth.enrollment.verify(email, code)).toEqual({ kind: 'verified' })
-  expect(await auth.enrollment.resend(email)).toEqual({ kind: 'received' })
-  expect(await requests[0]!.json()).toEqual({ email, code }); expect(await requests[1]!.json()).toEqual({ email })
-  expect(auth.session.read().accessToken).toBeNull()
-})
-it.each(['signup', 'verify', 'resend'] as const)('fences duplicate and simultaneous auth actions while %s pending', async kind => {
-  const late = deferred<Response>(), { auth, requests } = await setup(() => late.promise)
-  const operation = kind === 'signup' ? auth.enrollment.signup(email, password, ack) : kind === 'verify' ? auth.enrollment.verify(email, code) : auth.enrollment.resend(email)
-  expect(await auth.enrollment.resend(email)).toEqual({ kind: 'busy' })
-  expect(await auth.login(email, password)).toBe(false)
-  expect(await auth.requestPasswordReset(email)).toBe('unavailable')
-  expect(await auth.confirmPasswordReset('A'.repeat(43), password)).toBe('unavailable')
-  await vi.waitFor(() => expect(requests).toHaveLength(1))
-  late.resolve(Response.json(kind === 'resend' ? { status: 'ACCEPTED' } : { userId, status: kind === 'signup' ? 'PENDING_VERIFICATION' : 'VERIFIED' }, { status: kind === 'resend' ? 202 : 200 }))
-  expect((await operation).kind).toBe(kind === 'signup' ? 'created' : kind === 'verify' ? 'verified' : 'received')
-})
-it('blocks enrollment during recovery and login, using the same operation owner', async () => {
-  const late = deferred<Response>(), { auth } = await setup(() => late.promise)
-  const op = auth.requestPasswordReset(email)
-  expect(await auth.enrollment.verify(email, code)).toEqual({ kind: 'busy' })
-  late.resolve(Response.json({ status: 'SENT' })); await op
-  // Login reserves its pending state synchronously before its cookie work.
-  const login = auth.login(email, password)
-  expect(await auth.enrollment.resend(email)).toEqual({ kind: 'busy' }); await login
-  expect(await auth.enrollment.verify(email, code)).toEqual({ kind: 'unavailable' })
-})
-it.each(['privacy', 'account', 'cancel', 'dispose'] as const)('aborts and fences late successful enrollment after %s', async action => {
-  const late = deferred<Response>(), { auth, requests, inflightRequests } = await setup(() => late.promise)
-  const op = auth.enrollment.verify(email, code)
-  await vi.waitFor(() => expect(requests).toHaveLength(1))
-  if (action === 'privacy') auth.privacy.changePolicy(auth.privacy.capture(), 'consent-revoked')
-  else if (action === 'account') auth.session.replace(auth.session.read().generation, { userId, eventId, accessToken: 'other-user-token' })
-  else if (action === 'cancel') auth.enrollment.cancel()
-  else auth.dispose()
-  expect(inflightRequests[0]!.signal.aborted).toBe(true)
-  const fencedSession = auth.session.read()
-  late.resolve(Response.json({ userId, status: 'VERIFIED' })); expect(await op).toEqual({ kind: 'cancelled' })
-  expect(auth.session.read()).toBe(fencedSession); expect(auth.queryClient.getQueryCache().getAll()).toHaveLength(0)
-})
-it('bounds a signal-ignoring transport and reports uncertainty after dispatch', async () => {
-  const { auth, requests } = await setup(() => new Promise(() => {}), true, 30)
-  expect((await auth.enrollment.verify(email, code)).kind).toBe('uncertain'); expect(requests).toHaveLength(1)
-})
-it.each([400, 401, 404, 410, 422])('offers recovery for unusable/expired code HTTP%s', async status => {
-  const { auth } = await setup(() => Response.json({ code: 'PRIVATE', message: 'secret error' }, { status }))
-  expect(await auth.enrollment.verify(email, code)).toEqual({ kind: 'invalid-code' })
-})
-it('keeps duplicate signup response neutral without a check-email request', async () => {
-  const { auth, requests } = await setup(() => Response.json({ code: 'CONFLICT', message: 'Email registered: private' }, { status: 409 }))
-  expect(await auth.enrollment.signup(email, password, ack)).toEqual({ kind: 'not-created' }); expect(requests).toHaveLength(1)
-})
-it.each([429, 503])('honors only bounded server RetryAfter on HTTP%s and never replays', async status => {
-  const { auth, requests } = await setup(() => Response.json({ code: 'WAIT', message: 'raw' }, { status, headers: { 'Retry-After': '2' } }))
-  const before = Date.now(), r = await auth.enrollment.resend(email)
-  expect(r.kind).toBe(status === 429 ? 'rate-limited' : 'uncertain'); expect(r.retryAt).toBeGreaterThanOrEqual(before + 2000)
-  expect(await auth.enrollment.verify(email, code)).toEqual({ kind: 'rate-limited', retryAt: r.retryAt }); expect(requests).toHaveLength(1)
-})
-it('does not invent retry or expiry metadata for opaque accepted or429 responses', async () => {
-  const { auth } = await setup(() => Response.json({ code: 'WAIT', message: 'raw' }, { status: 429 }))
-  expect(await auth.enrollment.resend(email)).toEqual({ kind: 'rate-limited' }); expect(auth.enrollment.retryAt()).toBe(0)
-})
-it.each(['FUTURE_STATUS', 'VERIFIED', 'PENDING_VERIFICATION'])('does not derive signup completion from arbitrary status %s', async status => {
-  const { auth } = await setup(() => Response.json({ userId, status }))
-  expect((await auth.enrollment.signup(email, password, ack)).kind).toBe(status === 'PENDING_VERIFICATION' ? 'created' : 'uncertain')
-  expect((await auth.enrollment.verify(email, code)).kind).toBe(status === 'VERIFIED' ? 'verified' : 'uncertain')
-})
-it.each([{ status: 'ACCEPTED', userId }, { status: 'SENT' }, { status: 1 }])('rejects malformed resend %j with uncertainty', async body => {
-  const { auth } = await setup(() => Response.json(body, { status: 202 }))
-  expect((await auth.enrollment.resend(email)).kind).toBe('uncertain')
-})
-it('rejects wrong successfulHTTP status and malformed enrollment schema', async () => {
-  const { auth } = await setup(() => Response.json({ userId: 'notuuid', status: 'VERIFIED' }))
-  expect((await auth.enrollment.verify(email, code)).kind).toBe('uncertain')
-  const context = { status: 200, path: '/api/auth/email/resend', scope: { generation: 0, userId: null, eventId: null } }
-  expect(() => decodeResend({ status: 'ACCEPTED' }, context)).toThrow()
-  expect(decodeEnrollment({ userId, status: 'arbitrary-string' }, context)).toEqual({ status: 'arbitrary-string' })
-})
-it('never dispatches with a disabled provider, invalid input, or preaborted signal', async () => {
-  const { auth, requests } = await setup(undefined, true, 1000, false)
-  expect((await auth.enrollment.verify(email, code)).kind).toBe('unavailable'); expect(requests).toHaveLength(0)
-  const ready = await setup()
-  expect((await ready.auth.enrollment.signup(email, 'short', ack)).kind).toBe('invalid-input')
-  expect((await ready.auth.enrollment.verify(email, '12345')).kind).toBe('invalid-input')
-  expect((await ready.auth.enrollment.resend('bad email')).kind).toBe('invalid-input')
-  expect((await ready.auth.enrollment.verify(email, code, AbortSignal.abort())).kind).toBe('cancelled')
-  expect(ready.requests).toHaveLength(0)
-})
-
-it('logout locally invalidates a pending enrollment before its late completion', async () => {
-  const late = deferred<Response>(), { auth, requests, inflightRequests } = await setup(() => late.promise)
-  const op = auth.enrollment.verify(email, code)
-  await vi.waitFor(() => expect(requests).toHaveLength(1))
-  expect(await auth.logout()).toBe(true)
-  expect(inflightRequests[0]!.signal.aborted).toBe(true)
-  late.resolve(Response.json({ userId, status: 'VERIFIED' })); expect(await op).toEqual({ kind: 'cancelled' })
-  expect(auth.session.read().accessToken).toBeNull(); expect(auth.queryClient.getQueryCache().getAll()).toHaveLength(0)
-})
-
-it.each([null, 'malformed-event'])('discovers anonymous verification/resend availability without event %j and preserves FE09 readiness', async event => {
-  const pending = deferred<Response>(), policy = isolatedCookiePolicy(), cookieRun = vi.spyOn(policy, 'run')
-  const fetch = vi.fn<typeof globalThis.fetch>(async input => {
-    const r = input as Request
-    if (r.url.endsWith('/capabilities')) return pending.promise
-    if (r.url.endsWith('/verify')) return Response.json({ userId, status: 'VERIFIED' })
-    if (r.url.endsWith('/resend')) return Response.json({ status: 'ACCEPTED' }, { status: 202 })
-    throw new Error('Unexpected request')
-  })
-  const auth = createSessionController({ eventId: event, fetch, cookiePolicy: policy }); controllers.push(auth)
-  auth.start(); expect(fetch).not.toHaveBeenCalled()
-  expect((await auth.enrollment.verify(email, code)).kind).toBe('unavailable')
-  const a = auth.checkEnrollmentAvailability(), b = auth.checkEnrollmentAvailability()
-  await vi.waitFor(() => expect(fetch).toHaveBeenCalledOnce())
-  pending.resolve(Response.json(capabilities())); await Promise.all([a, b])
-  expect(auth.read()).toMatchObject({ readiness: 'unavailable', capabilities: 'ready', emailEnabled: false })
-  expect((await auth.enrollment.verify(email, code)).kind).toBe('verified')
-  expect((await auth.enrollment.resend(email)).kind).toBe('received')
-  expect((await auth.enrollment.signup(email, password, ack)).kind).toBe('policy-unavailable')
-  expect(await auth.login(email, password)).toBe(false); expect(auth.session.read().accessToken).toBeNull()
-  expect(cookieRun).not.toHaveBeenCalled(); expect(fetch).toHaveBeenCalledTimes(3)
-})
-it('allows explicit enrollment discovery retry after failed no-event provider discovery', async () => {
-  let attempt = 0
-  const fetch = vi.fn<typeof globalThis.fetch>(async () => ++attempt === 1 ? new Response(null, { status: 503 }) : Response.json(capabilities()))
-  const auth = createSessionController({ eventId: null, fetch, cookiePolicy: isolatedCookiePolicy() }); controllers.push(auth)
-  auth.start(); await auth.checkEnrollmentAvailability()
-  expect(auth.enrollment.available()).toBe(false); expect(auth.read().capabilities).toBe('error')
-  await auth.checkEnrollmentAvailability(); expect(auth.enrollment.available()).toBe(true)
-  expect(auth.read().readiness).toBe('unavailable'); expect(fetch).toHaveBeenCalledTimes(2)
-})
-
-it.each(['start', 'explicit', 'listener'] as const)('does not dispatch or republish reserved capability discovery after %s synchronous disposal', async mode => {
-  const fetch = vi.fn<typeof globalThis.fetch>(async () => Response.json(capabilities()))
-  const auth = createSessionController({ eventId: mode === 'start' ? eventId : null, fetch, cookiePolicy: isolatedCookiePolicy() }); controllers.push(auth)
-  const observer = vi.fn(); auth.subscribe(observer)
-  if (mode === 'listener') {
-    const unsubscribe = auth.subscribe(() => { unsubscribe(); auth.dispose() })
-  }
-  const discovery = mode === 'start' ? auth.start() : auth.checkEnrollmentAvailability()
-  if (mode !== 'listener') auth.dispose()
-  const state = auth.read(), publications = observer.mock.calls.length
-  await discovery; await Promise.resolve()
-  expect(fetch).not.toHaveBeenCalled(); expect(auth.read()).toBe(state)
-  expect(observer).toHaveBeenCalledTimes(publications)
+it('cancelling an unknown signup discards password and the local attempt without claiming server rollback', async () => {
+  const f = setup(request => { if (request.path.endsWith('/signup')) throw new TransportError('network', { uncertain: true }); return defaultHandler(request) })
+  await ready(f); await f.enrollment.signup(email, password, ack); f.enrollment.cancel()
+  expect(f.enrollment.read().attempt).toBeNull(); expect(f.enrollment.read().result?.kind).toBe('cancelled')
+  expect((await f.enrollment.retryUnknown()).kind).toBe('unavailable')
 })
