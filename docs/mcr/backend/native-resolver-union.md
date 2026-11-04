@@ -93,3 +93,16 @@ or native PG resource may be touched without a fresh named OFFER/ACCEPT.
 Qualification receipts and committed handoff ancestry will be appended after
 fresh execution. Root's final publication and owned postimages must be verified
 before this chat's persistent goal completes.
+
+## Preserved first compile failure
+
+Source `3520652d752df4894207f22fa39463c470f7784d` under allocation
+`CU01-MEDIA2-202611040636Z` reached Cargo exit 101 in 37.76 seconds:
+`E0432` in the copied test owner helper imported its old `capture` module name.
+The production union compiled; this is not a successful artifact qualification.
+The follow-up aliases `product_capture` in that copied helper. The original
+fixture remains unchanged. Target release proved no handles and no Cargo/rustc
+processes before ending the allocation; PostgreSQL was NOT_RUN. Retained target
+growth was 81,723,392 bytes. A preceding private monitor preflight falsely
+matched `.cargo` in unrelated process environments and started no build; its
+failure receipt is retained, and the corrected monitor checks executable names.

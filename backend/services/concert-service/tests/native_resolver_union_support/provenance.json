@@ -31,7 +31,8 @@
     "Fixture composes actual NativeResolverUnion instead of age-only settlement",
     "Ledger exposed only inside test fixture",
     "Participant capture adapts pinned Product capture to actual Participant protobuf/policy",
-    "Producer fixtures use actual canonical guards and production witness writers; initial identities and selected avatar rows are test setup only"
+    "Producer fixtures use actual canonical guards and production witness writers; initial identities and selected avatar rows are test setup only",
+    "Copied owner helper capture import aliases the CU01 product_capture module"
   ],
   "external_dependencies": "Existing retained Cargo workspace only; no new manifest/lockfile dependency"
 }

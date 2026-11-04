@@ -2,7 +2,7 @@
 //! Source SHA256: 5f2b9d7589a6faf5106c1984154bb20f63977ed27916391f325731059aaee8bc. Original remains read-only.
 //! Production owner stores, production guards and actual authenticated settlement
 //! clients. Main-process startup itself is qualified by the owner-store runner.
-use super::{capture, environment};
+use super::{environment, product_capture as capture};
 use platform::{
     actor_delegation::{
         relationship_read::{RelationshipReadSigner, RelationshipReadVerifier},
