@@ -1,0 +1,221 @@
+{
+  "version": 6,
+  "status": "ORIGINAL_ART_NOT_REFERENCE_ACCEPTED",
+  "source_sheet": {
+    "path": "sources/venue-sheet.png",
+    "sha256": "sha256:d2fdd9e0c87584c2b66f0f76820f842070e70d0acb14c5962342eaafde92d886",
+    "width": 1254,
+    "height": 1254
+  },
+  "source_grid": [
+    {
+      "row": 0,
+      "y": [
+        0,
+        313
+      ],
+      "columns": [
+        0,
+        418,
+        836,
+        1254
+      ]
+    },
+    {
+      "row": 1,
+      "y": [
+        313,
+        627
+      ],
+      "columns": [
+        0,
+        418,
+        836,
+        1254
+      ]
+    },
+    {
+      "row": 2,
+      "y": [
+        627,
+        940
+      ],
+      "columns": [
+        0,
+        418,
+        836,
+        1254
+      ]
+    },
+    {
+      "row": 3,
+      "y": [
+        940,
+        1254
+      ],
+      "columns": [
+        0,
+        418,
+        836,
+        1254
+      ]
+    }
+  ],
+  "stage_sheet": {
+    "path": "sources/stage-sheet.png",
+    "sha256": "sha256:f956c25f756888c4c84fafa449eedd0172125c9b1363f372716f5646b9b2266b",
+    "width": 2172,
+    "height": 724
+  },
+  "stage_frames": {
+    "revenge": {
+      "x": 28,
+      "y": 26,
+      "width": 662,
+      "height": 668
+    },
+    "parade": {
+      "x": 752,
+      "y": 25,
+      "width": 662,
+      "height": 668
+    },
+    "danger": {
+      "x": 1477,
+      "y": 26,
+      "width": 662,
+      "height": 667
+    }
+  },
+  "stage_prompt": "sources/stage-prompt.md",
+  "surface_sheet": {
+    "path": "sources/surface-sheet.png",
+    "sha256": "sha256:695ddcdd0d895d01445df545035ae21de3db12c5c17fdfb47b244b2b3c616dae",
+    "width": 1254,
+    "height": 1254
+  },
+  "venue_frames": [
+    {
+      "era": "revenge",
+      "frame": "meeting_pavilion",
+      "rect": {
+        "x": 19,
+        "y": 63,
+        "width": 384,
+        "height": 237
+      }
+    },
+    {
+      "era": "parade",
+      "frame": "meeting_pavilion",
+      "rect": {
+        "x": 437,
+        "y": 63,
+        "width": 384,
+        "height": 237
+      }
+    },
+    {
+      "era": "danger",
+      "frame": "meeting_pavilion",
+      "rect": {
+        "x": 855,
+        "y": 63,
+        "width": 384,
+        "height": 237
+      }
+    },
+    {
+      "era": "revenge",
+      "frame": "giveaway_pavilion",
+      "rect": {
+        "x": 24,
+        "y": 392,
+        "width": 383,
+        "height": 220
+      }
+    },
+    {
+      "era": "parade",
+      "frame": "giveaway_pavilion",
+      "rect": {
+        "x": 442,
+        "y": 392,
+        "width": 383,
+        "height": 220
+      }
+    },
+    {
+      "era": "danger",
+      "frame": "giveaway_pavilion",
+      "rect": {
+        "x": 860,
+        "y": 392,
+        "width": 383,
+        "height": 220
+      }
+    },
+    {
+      "era": "revenge",
+      "frame": "north_hall",
+      "rect": {
+        "x": 10,
+        "y": 702,
+        "width": 399,
+        "height": 204
+      }
+    },
+    {
+      "era": "parade",
+      "frame": "north_hall",
+      "rect": {
+        "x": 428,
+        "y": 702,
+        "width": 399,
+        "height": 204
+      }
+    },
+    {
+      "era": "danger",
+      "frame": "north_hall",
+      "rect": {
+        "x": 846,
+        "y": 702,
+        "width": 399,
+        "height": 204
+      }
+    },
+    {
+      "era": "revenge",
+      "frame": "west_hall",
+      "rect": {
+        "x": 17,
+        "y": 974,
+        "width": 387,
+        "height": 249
+      }
+    },
+    {
+      "era": "parade",
+      "frame": "west_hall",
+      "rect": {
+        "x": 435,
+        "y": 974,
+        "width": 387,
+        "height": 249
+      }
+    },
+    {
+      "era": "danger",
+      "frame": "west_hall",
+      "rect": {
+        "x": 853,
+        "y": 974,
+        "width": 387,
+        "height": 249
+      }
+    }
+  ],
+  "prompt": "sources/prompts.md",
+  "geometry_hash": "sha256:899aca9bd6ce499c6f46aff5eaf21e30ab34b301e988771b978a6fab7c2d469f"
+}
