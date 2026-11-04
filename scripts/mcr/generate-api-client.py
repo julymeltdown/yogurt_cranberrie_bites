@@ -36,7 +36,8 @@ def uri_pattern():
         result.append(char)
     if escaped:raise ValueError('C07 malformed URI oracle expression')
     # Python accepts {,n}; ECMAScript spells the same bound {0,n}.
-    return '^(?:'+re.sub(r'\{,([0-9]+)\}',r'{0,\1}',''.join(result))+')$',sha(source.encode())
+    # Python's end anchor also permits one terminal LF; spell that explicitly.
+    return '^(?:'+re.sub(r'\{,([0-9]+)\}',r'{0,\1}',''.join(result))+')(?:\\n)?(?![\\s\\S])',sha(source.encode())
 def load(path):
     def pairs(rows):
         value = {}
@@ -184,7 +185,7 @@ def render(include_fixtures=True, probe=None):
         for name in sorted(source['components']['schemas']):differential({'$ref':'#/components/schemas/'+name})
         formats={
             'date':['0000-01-01','0001-01-01','1900-02-29','2000-02-29','2026-11-07\n'],
-            'date-time':['0000-01-01T00:00:00Z','0001-01-01T00:00:00Z','2026-11-07T23:59:60Z'],
+            'date-time':['0000-01-01T00:00:00Z','0001-01-01T00:00:00Z','2026-11-07T23:59:60Z','2026-11-07T07:00:00Z\n','2026-11-07T07:00:00Z\r\n'],
             'uri':['http://','urn:example:item','custom:','https://한글.example/','https://example.test/é','https://example.test/[x]','https://example.test/%C3%A9','http://[::1]/','https://example.test/\n','https://example.test/\x01'],
         }
         for node in nodes(source['components']['schemas']):

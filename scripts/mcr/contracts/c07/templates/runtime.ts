@@ -34,8 +34,9 @@ function format(kind: string, value: string): boolean {
   if (kind === 'uuid') return /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(value)
   if (kind === 'date') return date(value)
   if (kind === 'date-time') {
-    const m = /^(\d{4}-\d{2}-\d{2})[Tt](\d{2}):(\d{2}):(\d{2})(?:\.\d+)?(?:[Zz]|([+-])(\d{2}):(\d{2}))$/.exec(value)
-    return !!m && date(m[1]!) && Number(m[2]) < 24 && Number(m[3]) < 60 && Number(m[4]) < 60 && Number(m[6] ?? 0) < 24 && Number(m[7] ?? 0) < 60
+    const input = value.endsWith('\n') ? value.slice(0, -1) : value
+    const m = /^(\d{4}-\d{2}-\d{2})[Tt](\d{2}):(\d{2}):(\d{2})(?:\.\d+)?(?:[Zz]|([+-])(\d{2}):(\d{2}))$/.exec(input)
+    return !!m && m[0] === input && date(m[1]!) && Number(m[2]) < 24 && Number(m[3]) < 60 && Number(m[4]) < 60 && Number(m[6] ?? 0) < 24 && Number(m[7] ?? 0) < 60
   }
   // Match the retained Python JSON Schema email annotation. Product policy is separate.
   if (kind === 'email') return value.includes('@')
