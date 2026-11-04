@@ -8,7 +8,7 @@ export function responses(eventId: string, actorId: string, placeId: string, ini
   const commands = new Map<string, {operation: CommandOperation; result: Application}>()
   const calls: {path: string; query: string; method: string; key: string | null; body: string}[] = []
   const parties = () => [party({event_id: eventId, public_place_id: placeId, member_count: mode === 'full' ? 5 : 2,
-    ...(mode === 'cancelled' ? {state: 'CANCELLED'} : {})}), party({event_id: eventId, public_place_id: placeId, party_id: ids.next, title: 'After the encore'})]
+    ...(mode === 'cancelled' ? {state: 'CANCELLED'} : {})}), party({event_id: eventId, public_place_id: placeId, party_id: ids.next, title: 'After the encore', member_count: mode === 'full' ? 5 : 2})]
   const gifts = () => ['Fan badges', 'Paused badges', 'Last badges'].map((title, index) => giveaway({event_id: eventId,
     giveaway_id: uid(100-index), title, owner: {...giveaway().owner, user_id: uid(900)}, public_place_id: placeId,
     image_media_id: null, created_at: new Date(Date.parse('2026-11-01T00:00Z')-index*60000).toISOString(),
