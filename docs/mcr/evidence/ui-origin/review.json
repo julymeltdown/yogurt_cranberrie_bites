@@ -1,0 +1,533 @@
+{
+  "task": "QA02",
+  "original_criteria": "SATISFIED_AT_PINNED_CANDIDATE",
+  "candidate": "f0d0663a4d95361eea74040a8dee28598e9a7ff9",
+  "initial_component_capture_candidate": "0a8c422645458c9397af9289e15089ee3f9cb0ad",
+  "runtime_qualification": "MOCK_READY",
+  "required_ia_entries": 61,
+  "registered_route_patterns": 59,
+  "source_rendering_files": 155,
+  "legacy_exclusions": 422,
+  "full_git_frontend_blobs": 3498,
+  "source_findings": [],
+  "route_findings": [],
+  "required_review_fixes_remaining": 0,
+  "rows": [
+    {
+      "ia": "A01",
+      "route": "/",
+      "snapshot": "snapshots/route-00.jpg",
+      "review": "NO_LEGACY_UI_FOUND",
+      "note": "New current presentation reviewed; gated or placeholder state is not feature readiness."
+    },
+    {
+      "ia": "A02",
+      "route": "/login",
+      "snapshot": "snapshots/route-01.jpg",
+      "review": "NO_LEGACY_UI_FOUND",
+      "note": "New current presentation reviewed; gated or placeholder state is not feature readiness."
+    },
+    {
+      "ia": "A03",
+      "route": "/signup",
+      "snapshot": "snapshots/route-02.jpg",
+      "review": "NO_LEGACY_UI_FOUND",
+      "note": "New current presentation reviewed; gated or placeholder state is not feature readiness."
+    },
+    {
+      "ia": "A04",
+      "route": "/verify-email",
+      "snapshot": "snapshots/route-03.jpg",
+      "review": "NO_LEGACY_UI_FOUND",
+      "note": "New current presentation reviewed; gated or placeholder state is not feature readiness."
+    },
+    {
+      "ia": "A05",
+      "route": "/reset-password",
+      "snapshot": "snapshots/route-04.jpg",
+      "review": "NO_LEGACY_UI_FOUND",
+      "note": "New current presentation reviewed; gated or placeholder state is not feature readiness."
+    },
+    {
+      "ia": "A06",
+      "route": "/auth/callback",
+      "snapshot": "snapshots/route-05.jpg",
+      "review": "NO_LEGACY_UI_FOUND",
+      "note": "New current presentation reviewed; gated or placeholder state is not feature readiness."
+    },
+    {
+      "ia": "A07",
+      "route": "/legal/:document",
+      "snapshot": "snapshots/route-06.jpg",
+      "review": "NO_LEGACY_UI_FOUND",
+      "note": "New current presentation reviewed; gated or placeholder state is not feature readiness."
+    },
+    {
+      "ia": "A08",
+      "route": "/account/deleted",
+      "snapshot": "snapshots/route-07.jpg",
+      "review": "NO_LEGACY_UI_FOUND",
+      "note": "New current presentation reviewed; gated or placeholder state is not feature readiness."
+    },
+    {
+      "ia": "W01",
+      "route": "/world",
+      "snapshot": "snapshots/route-09.jpg",
+      "review": "NO_LEGACY_UI_FOUND",
+      "note": "New current presentation reviewed; gated or placeholder state is not feature readiness."
+    },
+    {
+      "ia": "W02",
+      "route": "/world/map",
+      "snapshot": "snapshots/route-10.jpg",
+      "review": "NO_LEGACY_UI_FOUND",
+      "note": "New current presentation reviewed; gated or placeholder state is not feature readiness."
+    },
+    {
+      "ia": "W03",
+      "route": "/world/places/:placeId",
+      "snapshot": "snapshots/route-11.jpg",
+      "review": "NO_LEGACY_UI_FOUND",
+      "note": "New current presentation reviewed; gated or placeholder state is not feature readiness."
+    },
+    {
+      "ia": "W04",
+      "route": "/world/rooms",
+      "snapshot": "snapshots/route-12.jpg",
+      "review": "NO_LEGACY_UI_FOUND",
+      "note": "New current presentation reviewed; gated or placeholder state is not feature readiness."
+    },
+    {
+      "ia": "W05",
+      "route": "/world/nearby",
+      "snapshot": "snapshots/route-13.jpg",
+      "review": "NO_LEGACY_UI_FOUND",
+      "note": "New current presentation reviewed; gated or placeholder state is not feature readiness."
+    },
+    {
+      "ia": "W06",
+      "route": "/world/theme",
+      "snapshot": "snapshots/route-14.jpg",
+      "review": "NO_LEGACY_UI_FOUND",
+      "note": "New current presentation reviewed; gated or placeholder state is not feature readiness."
+    },
+    {
+      "ia": "W07",
+      "route": "/world/check-in",
+      "snapshot": "snapshots/route-15.jpg",
+      "review": "NO_LEGACY_UI_FOUND",
+      "note": "New current presentation reviewed; gated or placeholder state is not feature readiness."
+    },
+    {
+      "ia": "W08",
+      "route": "/world/help",
+      "snapshot": "snapshots/route-16.jpg",
+      "review": "NO_LEGACY_UI_FOUND",
+      "note": "New current presentation reviewed; gated or placeholder state is not feature readiness."
+    },
+    {
+      "ia": "F01",
+      "route": "/feed",
+      "snapshot": "snapshots/route-17.jpg",
+      "review": "NO_LEGACY_UI_FOUND",
+      "note": "New current presentation reviewed; gated or placeholder state is not feature readiness."
+    },
+    {
+      "ia": "F02",
+      "route": "/feed/new",
+      "snapshot": "snapshots/route-18.jpg",
+      "review": "NO_LEGACY_UI_FOUND",
+      "note": "New current presentation reviewed; gated or placeholder state is not feature readiness."
+    },
+    {
+      "ia": "F03",
+      "route": "/feed/:postId",
+      "snapshot": "snapshots/route-19.jpg",
+      "review": "NO_LEGACY_UI_FOUND",
+      "note": "New current presentation reviewed; gated or placeholder state is not feature readiness."
+    },
+    {
+      "ia": "F04",
+      "route": "/feed/:postId/edit",
+      "snapshot": "snapshots/route-20.jpg",
+      "review": "NO_LEGACY_UI_FOUND",
+      "note": "New current presentation reviewed; gated or placeholder state is not feature readiness."
+    },
+    {
+      "ia": "F05",
+      "route": "/notices/:noticeId",
+      "snapshot": "snapshots/route-21.jpg",
+      "review": "NO_LEGACY_UI_FOUND",
+      "note": "New current presentation reviewed; gated or placeholder state is not feature readiness."
+    },
+    {
+      "ia": "M01",
+      "route": "/meet",
+      "snapshot": "snapshots/route-22.jpg",
+      "review": "NO_LEGACY_UI_FOUND",
+      "note": "New current presentation reviewed; gated or placeholder state is not feature readiness."
+    },
+    {
+      "ia": "M02",
+      "route": "/meet/parties/new",
+      "snapshot": "snapshots/route-23.jpg",
+      "review": "NO_LEGACY_UI_FOUND",
+      "note": "New current presentation reviewed; gated or placeholder state is not feature readiness."
+    },
+    {
+      "ia": "M03",
+      "route": "/meet/parties/:partyId",
+      "snapshot": "snapshots/route-24.jpg",
+      "review": "NO_LEGACY_UI_FOUND",
+      "note": "New current presentation reviewed; gated or placeholder state is not feature readiness."
+    },
+    {
+      "ia": "M04",
+      "route": "/meet/parties/:partyId/manage",
+      "snapshot": "snapshots/route-25.jpg",
+      "review": "NO_LEGACY_UI_FOUND",
+      "note": "New current presentation reviewed; gated or placeholder state is not feature readiness."
+    },
+    {
+      "ia": "M05",
+      "route": "/meet/parties/:partyId/rally",
+      "snapshot": "snapshots/route-26.jpg",
+      "review": "NO_LEGACY_UI_FOUND",
+      "note": "New current presentation reviewed; gated or placeholder state is not feature readiness."
+    },
+    {
+      "ia": "M06",
+      "route": "/meet/beacons/:beaconId",
+      "snapshot": "snapshots/route-27.jpg",
+      "review": "NO_LEGACY_UI_FOUND",
+      "note": "New current presentation reviewed; gated or placeholder state is not feature readiness."
+    },
+    {
+      "ia": "M07",
+      "route": "/meet/people",
+      "snapshot": "snapshots/route-28.jpg",
+      "review": "NO_LEGACY_UI_FOUND",
+      "note": "New current presentation reviewed; gated or placeholder state is not feature readiness."
+    },
+    {
+      "ia": "M08",
+      "route": "/meet/intro/edit",
+      "snapshot": "snapshots/route-29.jpg",
+      "review": "NO_LEGACY_UI_FOUND",
+      "note": "New current presentation reviewed; gated or placeholder state is not feature readiness."
+    },
+    {
+      "ia": "M09",
+      "route": "/people/:userId",
+      "snapshot": "snapshots/route-30.jpg",
+      "review": "NO_LEGACY_UI_FOUND",
+      "note": "New current presentation reviewed; gated or placeholder state is not feature readiness."
+    },
+    {
+      "ia": "G01",
+      "route": "/gifts",
+      "snapshot": "snapshots/route-31.jpg",
+      "review": "NO_LEGACY_UI_FOUND",
+      "note": "New current presentation reviewed; gated or placeholder state is not feature readiness."
+    },
+    {
+      "ia": "G02",
+      "route": "/gifts/new",
+      "snapshot": "snapshots/route-32.jpg",
+      "review": "NO_LEGACY_UI_FOUND",
+      "note": "New current presentation reviewed; gated or placeholder state is not feature readiness."
+    },
+    {
+      "ia": "G03",
+      "route": "/gifts/:giveawayId",
+      "snapshot": "snapshots/route-34.jpg",
+      "review": "NO_LEGACY_UI_FOUND",
+      "note": "New current presentation reviewed; gated or placeholder state is not feature readiness."
+    },
+    {
+      "ia": "G04",
+      "route": "/gifts/:giveawayId/manage",
+      "snapshot": "snapshots/route-35.jpg",
+      "review": "NO_LEGACY_UI_FOUND",
+      "note": "New current presentation reviewed; gated or placeholder state is not feature readiness."
+    },
+    {
+      "ia": "G05",
+      "route": "/gifts/:giveawayId/reservation",
+      "snapshot": "snapshots/route-36.jpg",
+      "review": "NO_LEGACY_UI_FOUND",
+      "note": "New current presentation reviewed; gated or placeholder state is not feature readiness."
+    },
+    {
+      "ia": "G06",
+      "route": "/gifts/pickups/:reservationId",
+      "snapshot": "snapshots/route-37.jpg",
+      "review": "NO_LEGACY_UI_FOUND",
+      "note": "New current presentation reviewed; gated or placeholder state is not feature readiness."
+    },
+    {
+      "ia": "G07",
+      "route": "/gifts/mine",
+      "snapshot": "snapshots/route-33.jpg",
+      "review": "NO_LEGACY_UI_FOUND",
+      "note": "New current presentation reviewed; gated or placeholder state is not feature readiness."
+    },
+    {
+      "ia": "R01",
+      "route": "/wall",
+      "snapshot": "snapshots/route-38.jpg",
+      "review": "NO_LEGACY_UI_FOUND",
+      "note": "New current presentation reviewed; gated or placeholder state is not feature readiness."
+    },
+    {
+      "ia": "U01",
+      "route": "/me",
+      "snapshot": "snapshots/route-39.jpg",
+      "review": "NO_LEGACY_UI_FOUND",
+      "note": "New current presentation reviewed; gated or placeholder state is not feature readiness."
+    },
+    {
+      "ia": "U02",
+      "route": "/me/avatar",
+      "snapshot": "snapshots/route-40.jpg",
+      "review": "NO_LEGACY_UI_FOUND",
+      "note": "New current presentation reviewed; gated or placeholder state is not feature readiness."
+    },
+    {
+      "ia": "U03",
+      "route": "/me/profile",
+      "snapshot": "snapshots/route-41.jpg",
+      "review": "NO_LEGACY_UI_FOUND",
+      "note": "New current presentation reviewed; gated or placeholder state is not feature readiness."
+    },
+    {
+      "ia": "U04",
+      "route": "/me/social",
+      "snapshot": "snapshots/route-42.jpg",
+      "review": "NO_LEGACY_UI_FOUND",
+      "note": "New current presentation reviewed; gated or placeholder state is not feature readiness."
+    },
+    {
+      "ia": "U05",
+      "route": "/me/requests",
+      "snapshot": "snapshots/route-43.jpg",
+      "review": "NO_LEGACY_UI_FOUND",
+      "note": "New current presentation reviewed; gated or placeholder state is not feature readiness."
+    },
+    {
+      "ia": "U06",
+      "route": "/me/age",
+      "snapshot": "snapshots/route-44.jpg",
+      "review": "NO_LEGACY_UI_FOUND",
+      "note": "New current presentation reviewed; gated or placeholder state is not feature readiness."
+    },
+    {
+      "ia": "U07",
+      "route": "/me/settings",
+      "snapshot": "snapshots/route-45.jpg",
+      "review": "NO_LEGACY_UI_FOUND",
+      "note": "New current presentation reviewed; gated or placeholder state is not feature readiness."
+    },
+    {
+      "ia": "U08",
+      "route": "/me/blocks",
+      "snapshot": "snapshots/route-46.jpg",
+      "review": "NO_LEGACY_UI_FOUND",
+      "note": "New current presentation reviewed; gated or placeholder state is not feature readiness."
+    },
+    {
+      "ia": "U09",
+      "route": "/me/account",
+      "snapshot": "snapshots/route-47.jpg",
+      "review": "NO_LEGACY_UI_FOUND",
+      "note": "New current presentation reviewed; gated or placeholder state is not feature readiness."
+    },
+    {
+      "ia": "U10",
+      "route": "/notifications",
+      "snapshot": "snapshots/route-48.jpg",
+      "review": "NO_LEGACY_UI_FOUND",
+      "note": "New current presentation reviewed; gated or placeholder state is not feature readiness."
+    },
+    {
+      "ia": "X01",
+      "route": "/archive",
+      "snapshot": "snapshots/route-08.jpg",
+      "review": "NO_LEGACY_UI_FOUND",
+      "note": "New current presentation reviewed; gated or placeholder state is not feature readiness."
+    },
+    {
+      "ia": "S01",
+      "route": "/report?targetType=:type&targetId=:id",
+      "snapshot": "snapshots/route-49.jpg",
+      "review": "NO_LEGACY_UI_FOUND",
+      "note": "New current presentation reviewed; gated or placeholder state is not feature readiness."
+    },
+    {
+      "ia": "S02",
+      "route": "route-error-boundary",
+      "snapshot": "snapshots/route-error.jpg",
+      "review": "NO_LEGACY_UI_FOUND",
+      "note": "Actual RouteFailure boundary; safe symmetric error controls."
+    },
+    {
+      "ia": "S03",
+      "route": "connection-and-maintenance-overlay",
+      "snapshot": "snapshots/degraded-maintenance.jpg",
+      "review": "NO_LEGACY_UI_FOUND",
+      "note": "Actual ConnectionStatusNotice; seven isolated view states reviewed. Observer/network recovery not certified."
+    },
+    {
+      "ia": "O01",
+      "route": "/admin",
+      "snapshot": "snapshots/route-50.jpg",
+      "review": "NO_LEGACY_UI_FOUND",
+      "note": "New current presentation reviewed; gated or placeholder state is not feature readiness."
+    },
+    {
+      "ia": "O02",
+      "route": "/admin/event",
+      "snapshot": "snapshots/route-51.jpg",
+      "review": "NO_LEGACY_UI_FOUND",
+      "note": "New current presentation reviewed; gated or placeholder state is not feature readiness."
+    },
+    {
+      "ia": "O03",
+      "route": "/admin/places",
+      "snapshot": "snapshots/route-52.jpg",
+      "review": "NO_LEGACY_UI_FOUND",
+      "note": "New current presentation reviewed; gated or placeholder state is not feature readiness."
+    },
+    {
+      "ia": "O04",
+      "route": "/admin/reports",
+      "snapshot": "snapshots/route-53.jpg",
+      "review": "NO_LEGACY_UI_FOUND",
+      "note": "New current presentation reviewed; gated or placeholder state is not feature readiness."
+    },
+    {
+      "ia": "O05",
+      "route": "/admin/users/:userId",
+      "snapshot": "snapshots/route-54.jpg",
+      "review": "NO_LEGACY_UI_FOUND",
+      "note": "New current presentation reviewed; gated or placeholder state is not feature readiness."
+    },
+    {
+      "ia": "O06",
+      "route": "/admin/content",
+      "snapshot": "snapshots/route-55.jpg",
+      "review": "NO_LEGACY_UI_FOUND",
+      "note": "New current presentation reviewed; gated or placeholder state is not feature readiness."
+    },
+    {
+      "ia": "O07",
+      "route": "/admin/mural",
+      "snapshot": "snapshots/route-56.jpg",
+      "review": "NO_LEGACY_UI_FOUND",
+      "note": "New current presentation reviewed; gated or placeholder state is not feature readiness."
+    },
+    {
+      "ia": "O08",
+      "route": "/admin/audit",
+      "snapshot": "snapshots/route-57.jpg",
+      "review": "NO_LEGACY_UI_FOUND",
+      "note": "New current presentation reviewed; gated or placeholder state is not feature readiness."
+    },
+    {
+      "ia": "O09",
+      "route": "/admin/archive",
+      "snapshot": "snapshots/route-58.jpg",
+      "review": "NO_LEGACY_UI_FOUND",
+      "note": "New current presentation reviewed; gated or placeholder state is not feature readiness."
+    }
+  ],
+  "supplementary_unqualified_previews": [
+    {
+      "id": "feature-05",
+      "source": "frontend/src/shared/ui/__tests__/fixtures/preview.html",
+      "error": "locator.waitFor: Timeout 8000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('#root') to be visible\u001b[22m\n",
+      "errors": [],
+      "disposition": "NOT_RUN in the generic capture harness; requires owning HTTP/asset harness, or alternate mount selector. No application defect inferred."
+    },
+    {
+      "id": "feature-15",
+      "source": "frontend/src/app/account-entry/__tests__/preview.html",
+      "error": "locator.waitFor: Timeout 8000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('#root') to be visible\u001b[22m\n\u001b[2m    20 \u00d7 locator resolved to hidden <div id=\"root\"></div>\u001b[22m\n",
+      "errors": [
+        "Synthetic login unavailable"
+      ],
+      "disposition": "NOT_RUN in the generic capture harness; requires owning HTTP/asset harness, or alternate mount selector. No application defect inferred."
+    },
+    {
+      "id": "feature-18",
+      "source": "frontend/src/app/account-deletion-entry/__tests__/preview.html",
+      "error": "locator.waitFor: Timeout 8000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('#root') to be visible\u001b[22m\n\u001b[2m    20 \u00d7 locator resolved to hidden <div id=\"root\"></div>\u001b[22m\n",
+      "errors": [
+        "Synthetic login unavailable"
+      ],
+      "disposition": "NOT_RUN in the generic capture harness; requires owning HTTP/asset harness, or alternate mount selector. No application defect inferred."
+    },
+    {
+      "id": "feature-25",
+      "source": "frontend/src/world/__tests__/controls-layout/preview.html",
+      "error": "locator.waitFor: Timeout 8000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('#root') to be visible\u001b[22m\n",
+      "errors": [],
+      "disposition": "NOT_RUN in the generic capture harness; requires owning HTTP/asset harness, or alternate mount selector. No application defect inferred."
+    },
+    {
+      "id": "feature-31",
+      "source": "frontend/src/features/avatar/__tests__/fixtures/preview.html",
+      "error": "locator.waitFor: Timeout 8000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('#root') to be visible\u001b[22m\n\u001b[2m    20 \u00d7 locator resolved to hidden <div id=\"root\"></div>\u001b[22m\n",
+      "errors": [
+        "Canonical fixture login failed"
+      ],
+      "disposition": "NOT_RUN in the generic capture harness; requires owning HTTP/asset harness, or alternate mount selector. No application defect inferred."
+    },
+    {
+      "id": "feature-40",
+      "source": "frontend/src/features/avatar/__tests__/reference-target/preview.html",
+      "error": "locator.waitFor: Timeout 8000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('#root') to be visible\u001b[22m\n\u001b[2m    20 \u00d7 locator resolved to hidden <div id=\"root\"></div>\u001b[22m\n",
+      "errors": [
+        "Unexpected token '<', \"<!doctype \"... is not valid JSON"
+      ],
+      "disposition": "NOT_RUN in the generic capture harness; requires owning HTTP/asset harness, or alternate mount selector. No application defect inferred."
+    },
+    {
+      "id": "feature-60",
+      "source": "frontend/src/features/avatar/__tests__/option-previews/preview.html",
+      "error": "locator.waitFor: Timeout 8000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('#root') to be visible\u001b[22m\n\u001b[2m    20 \u00d7 locator resolved to hidden <div id=\"root\"></div>\u001b[22m\n",
+      "errors": [
+        "Unexpected token '<', \"<!doctype \"... is not valid JSON"
+      ],
+      "disposition": "NOT_RUN in the generic capture harness; requires owning HTTP/asset harness, or alternate mount selector. No application defect inferred."
+    },
+    {
+      "id": "feature-63",
+      "source": "frontend/src/features/avatar/__tests__/compact-layout/preview.html",
+      "error": null,
+      "errors": [
+        "Unexpected token '<', \"<!doctype \"... is not valid JSON"
+      ],
+      "disposition": "NOT_RUN in the generic capture harness; requires owning HTTP/asset harness, or alternate mount selector. No application defect inferred."
+    },
+    {
+      "id": "feature-72",
+      "source": "frontend/src/features/people/__tests__/fixtures/preview.html",
+      "error": "locator.waitFor: Timeout 8000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('#root') to be visible\u001b[22m\n\u001b[2m    20 \u00d7 locator resolved to hidden <div id=\"root\"></div>\u001b[22m\n",
+      "errors": [
+        "Canonical fixture login failed"
+      ],
+      "disposition": "NOT_RUN in the generic capture harness; requires owning HTTP/asset harness, or alternate mount selector. No application defect inferred."
+    }
+  ],
+  "limits": [
+    "Origin audit only; no QA01, QA06, live backend, physical device, release, product fidelity or feature acceptance.",
+    "Every registered route was rendered at 390x844, including unavailable and placeholder presentations. Unimplemented routes are not waived.",
+    "Component previews use existing deterministic producers; isolated status view props do not establish real maintenance/recovery behavior.",
+    "The initial generic driver assumed #root. The primitive and control-layout fixtures mount elsewhere; both were captured successfully by state-capture.mjs.",
+    "Other preview failures require their original HTTP/asset producer. They are preserved as NOT_RUN; current route gates and all tracked visual source remain audited.",
+    "Exact hashes and normalized token windows cannot prove originality of transformed or reencoded assets. Manual source/visual review supplies the bounded additional evidence.",
+    "No new snapshots were adopted as golden files and no visual assertion was weakened.",
+    "Future rendering changes require renewed origin review."
+  ]
+}
