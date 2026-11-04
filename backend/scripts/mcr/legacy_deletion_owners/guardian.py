@@ -17,7 +17,11 @@ def allocations(root):
  return result
 def check():
  global peak,minfree,peakrss,maxprocesses
- now=time.time();assert now<stop,'independent phase deadline'
+ now=time.time();effective_stop=stop
+ if stage=='qualify':
+  release=json.loads((OUT/'target-release.json').read_text())
+  effective_stop=min(stop,start+360,C['full_stop']-300,release['at']+360)
+ assert now<effective_stop,'independent phase deadline'
  state=json.loads((OUT/'live-state.json').read_text()) if (OUT/'live-state.json').exists() else {}
  if state.get('copy_started'):assert now<state['copy_started']+30,'independent copy freeze deadline'
  free=shutil.disk_usage(OUT).free;minfree=min(minfree,free);assert free>=8*1024**3,'independent 8GiB floor'
@@ -43,6 +47,10 @@ def check():
  owned=[r for r in rows if r[0] in roots];maxprocesses=max(maxprocesses,len(owned));peakrss=max(peakrss,sum(r[3] for r in owned));assert peakrss<=(C['build_rss_cap'] if stage=='build' else C['native_rss_cap']),'independent RSS cap'
  assert len(owned)<=(C['compile_process_cap'] if stage=='build' else C['native_process_cap']),'independent process cap'
  assert sum('/rustc ' in r[2] for r in owned)<=2,'independent rustc cap'
+
+if stage=='qualify':
+ release=json.loads((OUT/'target-release.json').read_text())
+ full=min(full,release['at']+660)
 
 try:
  check()

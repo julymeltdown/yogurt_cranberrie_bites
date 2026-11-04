@@ -24,7 +24,7 @@ def size(path):return sum(allocations(path).values())
 def write(name,v):
  p=OUT/name;tmp=OUT/(name+'.tmp');tmp.write_text(json.dumps(v,indent=2)+'\n');tmp.chmod(0o600);tmp.replace(p)
 def terminate(p):
- if p is None:return
+ if p is None or p.poll() is not None:return
  try:os.killpg(p.pid,signal.SIGTERM)
  except ProcessLookupError:pass
  try:p.wait(timeout=3)
@@ -99,7 +99,7 @@ def run(name,args,env=None,deadline=None,cwd=ROOT/'backend'):
    if proc.poll() is None:terminate(proc)
   phase['exit_code']=proc.returncode;phase['finished']=time.time()
  assert proc.returncode==0,name+' exit '+str(proc.returncode)
- proc=None;guard(deadline)
+ proc=None;state();guard(deadline)
  return (OUT/(name+'.stdout')).read_text(errors='replace')
 # The guardian must be the actual parent before any workload child exists.
 assert 'guardian.py' in cmd(['ps','-p',str(os.getppid()),'-o','args='])
@@ -112,7 +112,13 @@ if stage=='build':
  write('offer.json',offer)
 else:
  offer=json.loads((OUT/'offer.json').read_text())
+ released=json.loads((OUT/'target-release.json').read_text())
+ assert released['unconditional_release'] and released['target_handles']==[]
+ STOP=min(STOP,released['at']+660)
+ QUALIFY=min(QUALIFY,report['started']+360,STOP-300)
+ assert time.time()<QUALIFY,'native admission has insufficient finite work window'
  assert shutil.disk_usage(OUT).free>=12*1024**3
+ report['effective_qualify_stop']=QUALIFY;report['effective_full_stop']=STOP
 
 def state():
  write('live-state.json',{'controller_pid':os.getpid(),'child_pgid':proc.pid if proc else None,
@@ -130,7 +136,7 @@ try:
   paths=[cmd(['rustup','which','--toolchain','1.88.0',n]) for n in ['cargo','rustc']]+[str(PG/n) for n in ['initdb','pg_ctl','psql','createdb','postgres']]+['/usr/bin/openssl','/opt/homebrew/bin/redis-server',sys.executable]
   report['runtime_sha256']={p:sha(p) for p in paths}
   env={**os.environ,'CARGO_TARGET_DIR':str(TARGET),'CARGO_BUILD_JOBS':'2','CARGO_PROFILE_DEV_DEBUG':'0','CARGO_PROFILE_TEST_DEBUG':'0','CARGO_INCREMENTAL':'0'}
-  for n in ['RUSTFLAGS','CARGO_ENCODED_RUSTFLAGS']:env.pop(n,None)
+  for n in ['RUSTFLAGS','CARGO_ENCODED_RUSTFLAGS','RUSTDOCFLAGS','CARGO_ENCODED_RUSTDOCFLAGS','RUSTC','RUSTC_WRAPPER','RUSTC_WORKSPACE_WRAPPER','CARGO_BUILD_RUSTC','CARGO_BUILD_RUSTC_WRAPPER','CARGO_BUILD_RUSTC_WORKSPACE_WRAPPER']:env.pop(n,None)
   report['artifacts']={};report['automatic_executables']=[]
   for owner in ['profile','friend','post','auth']:
    name='legacy_deletion_receipts' if owner=='auth' else 'committed_deletion_rpc'

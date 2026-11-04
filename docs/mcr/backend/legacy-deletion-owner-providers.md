@@ -171,6 +171,15 @@ copied native execution begins only after unconditional target release. All fail
 attempts, old Notification artifacts, complete worktree/common Git charges and
 nonshrinking historical peaks remain counted and preserved.
 
+Resource offer `BE42-LEGACY-DELETION-MEDIA-NEXT-202611041815Z` is a queued
+finite offer, not current target custody or acceptance. Its original source pin
+is 8c17b923; same-scope pre-ACCEPT source/control pin updates are authorized.
+The controller clears compiler flags/wrappers, bounds native execution to 360
+seconds, and independently shortens FULL to target release plus 660 seconds with
+300 seconds reserved for cleanup. Native admission also needs fresh 12 GiB and
+all outstanding reservations accounted for. No target access occurs before the
+actual direct predecessor release and fresh numeric admission.
+
 Publication and functional acceptance remain pending developer-owned qualification,
 fixes and the named publishing developer's normal committed handoff. One canonical
 publication receipt is sufficient; no manager readback or acknowledgment is needed.
