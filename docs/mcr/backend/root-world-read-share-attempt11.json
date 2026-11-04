@@ -235,8 +235,12 @@
       }
     },
     "error_count": 0,
-    "source_art_audit": "PENDING_CONSUMER_COMMITTED_PACKET",
-    "publication": "PENDING_CONSUMER_COMMITTED_PACKET"
+    "source_art_audit": "PASS",
+    "publication": "PENDING_DELIVERY_PUBLICATION",
+    "handoff_commit": "92989fd79d176195d9c9f1c1180526e8a1e0dafc",
+    "report_sha256": "5a31e78089ba0828b725b2fcc65f22970c0e3b5a6e70df1fe7830d15bcb60d47",
+    "full_release_at": "2026-11-04T08:38:06Z",
+    "peak_whole_mib": 40.85
   },
   "after_browser_readonly": {
     "checked_at": "2026-11-04T08:38:56.175562+00:00",
@@ -338,7 +342,7 @@
   },
   "limits": [
     "Backend driver PARTIAL denotes separately owned browser evaluation; it is not falsely promoted to whole application acceptance.",
-    "Current App runtime checks passed; consumer art/source audit, exact committed packet and publication proof still required.",
+    "Current App runtime, source and static art checks passed in committed consumer packet; delivery publication proof remains required.",
     "Actual room fixture capacity is two. No 200-user/four-room capacity, mobile qualification or World server process restart is claimed.",
     "Expiry-triggered refresh is informational NOT_RUN; no 900-second duration or automatic renewal requirement added.",
     "No target/Cargo access, extra executable copy, manual prepared settlement, TTL fault, extension, reset or second browser run."

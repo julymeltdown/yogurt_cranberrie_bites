@@ -3,8 +3,8 @@
 Status: IN_PROGRESS. Combined component qualification passed at `34fa7a6d`.
 Full production composition, complete IN01 and project acceptance remain open.
 The current App runtime passed customization, persistence and peer appearance,
-as well as the sustained two-player/reconnect slice. Consumer audit/publication
-remains separate from this runtime qualification.
+as well as the sustained two-player/reconnect slice. Consumer source/static-art audit passed in `92989fd7`; publication proof
+remains pending.
 Existing immutable qualifications retain their exact source pins.
 
 ## Current-published replay after Participant read-lock repair
@@ -22,8 +22,9 @@ draft state and the specific actor's peer appearance passed. The same run passed
 91.284 seconds with two genuine Auth identities, real transport-cut reconnect,
 new ticket/stream, peer withdrawal/restoration, the same canvas, one live Phaser
 instance and one peak World socket per context. There were no invalid frames,
-private-field disclosures or late errors. The exact consumer art/source audit
-and committed publication are still pending and receive no inferred credit.
+private-field disclosures or late errors. Consumer source/static-art audit passed in committed packet `92989fd7`, report
+SHA-256 `5a31e78089ba0828b725b2fcc65f22970c0e3b5a6e70df1fe7830d15bcb60d47`.
+Delivery publication proof remains pending.
 
 After browser release, a read-only database snapshot found all 22 roots finished,
 serialized and delivered, all 22 Auth/Friend scopes completed and settled, zero
