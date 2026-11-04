@@ -1,0 +1,9 @@
+
+ RUN  v4.1.9 /Users/lhs/Desktop/mcr-worktrees/fe-archive-root-204/frontend
+
+
+ Test Files  3 passed (3)
+      Tests  84 passed (84)
+   Start at  17:50:40
+   Duration  3.15s (transform 412ms, setup 0ms, import 777ms, tests 1.33s, environment 858ms)
+

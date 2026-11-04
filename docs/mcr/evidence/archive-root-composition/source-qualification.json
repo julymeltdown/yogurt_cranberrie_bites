@@ -1,0 +1,51 @@
+{
+  "qualifiedSourceHead": "3f69299bc1e1132c474139e5a11f3bfb6d8ff8e5",
+  "slot": "ARCHIVE-ROOT-204-202611040852Z",
+  "results": {
+    "vitest": {
+      "exit": 0,
+      "files": 3,
+      "tests": 84
+    },
+    "types": {
+      "exit": 0
+    },
+    "lint": {
+      "exit": 0
+    },
+    "syntax": {
+      "exit": 0
+    },
+    "native": {
+      "exit": 1,
+      "reason": "Runner offer-name guard expected FE40 although actual named offer starts ARCHIVE-ROOT-204. Failed before Chrome/Vite launch; no automatic retry."
+    },
+    "plan": {
+      "exit": 0
+    }
+  },
+  "sourceHashes": {
+    "frontend/src/app/archive-entry/index.tsx": "1f3e319d74d58e3fee86d76e947050345a5a6ff86a8085cbcdd8f73a274937a8",
+    "frontend/src/app/PublicBoundary.tsx": "c7bd2c8e180f0691d03ebd584e6c41b4dfafafd5462e650428cf523d732152d4",
+    "frontend/src/app/router.tsx": "8ce076a0c8929b3cb7dbf16e3683f2e1c3fab77be7385b519a36f282d8119eba",
+    "frontend/src/app/ports.ts": "b2491a31d92e1fa7419fa3d17a682aa01a913ca230984c6ee98937462a8778ed",
+    "frontend/src/main.tsx": "0755c5c6c3217ca898ebe685f39207f1a350bd7f27d5c19e8252541f67bb5870",
+    "frontend/pnpm-lock.yaml": "47ca44459819ad0e887d2f4f93394fdf3b1053b8f45edc9ceb0236981feee1f6",
+    "contracts/generated/mcr-domain.openapi.json": "905d6f5b6f66f95cb68499a5fbfb32802539fce515f421226d79cb375ecfb887"
+  },
+  "sourceDiffPathsIncludingRootInputs": [
+    "docs/mcr/frontend/archive-root-composition.md",
+    "frontend/src/app/PublicBoundary.tsx",
+    "frontend/src/app/__tests__/archive-entry/native.mjs",
+    "frontend/src/app/__tests__/archive-entry/preview.html",
+    "frontend/src/app/__tests__/archive-entry/preview.tsx",
+    "frontend/src/app/__tests__/archive-entry/route.test.tsx",
+    "frontend/src/app/__tests__/archive-entry/tsconfig.json",
+    "frontend/src/app/archive-entry/index.tsx",
+    "frontend/src/app/ports.ts",
+    "frontend/src/main.tsx"
+  ],
+  "native": "NOT_RUN after pre-launch guard failure",
+  "BE41": "NOT_RUN",
+  "physicalDevice": "NOT_RUN"
+}

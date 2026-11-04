@@ -2,7 +2,7 @@
 import assert from 'node:assert/strict'
 import { createHash } from 'node:crypto'
 import { execFileSync } from 'node:child_process'
-import { readFile, writeFile, mkdir, mkdtemp, rm, readdir, stat, statfs } from 'node:fs/promises'
+import { readFile, writeFile, mkdir, mkdtemp, rm, readdir, lstat, statfs } from 'node:fs/promises'
 import { tmpdir } from 'node:os'
 import { resolve, relative } from 'node:path'
 import { createServer } from 'vite'
@@ -11,7 +11,7 @@ import tailwindcss from '@tailwindcss/vite'
 import { chromium, expect } from '@playwright/test'
 
 const slot = process.env.MCR_NATIVE_SLOT
-assert(slot?.includes('FE40') && slot.includes('ARCHIVE'), 'Fresh named FE40 archive offer/ACCEPT required')
+assert(/^ARCHIVE-ROOT-204-\d{12}Z$/.test(slot ?? ''), 'Fresh named Archive Root 204 offer/ACCEPT required')
 const repo = resolve(import.meta.dirname, '../../../../..'), frontend = resolve(repo, 'frontend')
 const out = resolve(repo, 'docs/mcr/evidence/archive-root-composition/native')
 const git = (...args) => execFileSync('git', args, { cwd: repo, encoding: 'utf8' }).trim()
@@ -24,13 +24,17 @@ async function size(path) {
   let total = 0
   for (const e of await readdir(path, { withFileTypes: true }).catch(() => [])) {
     const p = resolve(path, e.name)
-    total += e.isDirectory() ? await size(p) : (await stat(p)).size
+    total += e.isDirectory() ? await size(p) : (await lstat(p)).size
   }
   return total
 }
 assert(await freeGiB() >= 16, '16GiB start floor')
 await mkdir(out, { recursive: true })
 const temporary = await mkdtemp(resolve(tmpdir(), 'mcr-fe40-archive-root-'))
+// Playwright's owned browser profile and subprocess temporary files belong in
+// the same accounted tree as Vite's cache, rather than an uncounted OS temp path.
+const previousTemporary = process.env.TMPDIR
+process.env.TMPDIR = temporary
 const inputs = [
   'frontend/src/app/archive-entry/index.tsx', 'frontend/src/app/PublicBoundary.tsx', 'frontend/src/app/router.tsx',
   'frontend/src/app/ports.ts', 'frontend/src/main.tsx', 'frontend/src/app/access.tsx', 'frontend/src/app/routes.ts',
@@ -41,10 +45,31 @@ const inputs = [
 ]
 for (const name of await readdir(resolve(frontend, 'src/features/archive'))) if (/\.(ts|tsx|css)$/.test(name)) inputs.push(`frontend/src/features/archive/${name}`)
 const report = { result: 'FAIL', qualification: 'ACTUAL_DEFAULT_ROOT_SYNTHETIC_PUBLIC_HTTP_NO_QUALIFIED_MEDIA',
-  slot, sourceHead: head, node: process.version, browser: null, sourceHashes: {}, cases: [], physicalDevices: 'NOT_RUN', BE41: 'NOT_RUN' }
+  slot, sourceHead: head, node: process.version, browser: null, sourceHashes: {}, cases: [], physicalDevices: 'NOT_RUN', BE41: 'NOT_RUN',
+  resourceSamples: 0, sampledPeakWholeBytes: 0, sampledPeakTemporaryBytes: 0, minimumFreeGiB: await freeGiB() }
 for (const p of inputs) report.sourceHashes[p] = hash(await readFile(resolve(repo, p)))
-let server, browser
+let server, browser, resourceTimer, resourceFailure
+let resourceTask = Promise.resolve()
+async function checkResources() {
+  const temporaryBytes = await size(temporary) + await size(resolve(frontend, 'node_modules'))
+  const durableBytes = await size(out), free = await freeGiB()
+  report.resourceSamples++
+  report.sampledPeakWholeBytes = Math.max(report.sampledPeakWholeBytes, temporaryBytes + durableBytes)
+  report.sampledPeakTemporaryBytes = Math.max(report.sampledPeakTemporaryBytes, temporaryBytes)
+  report.minimumFreeGiB = Math.min(report.minimumFreeGiB, free)
+  assert(free >= 8, '8GiB continuous stop floor')
+  assert(temporaryBytes <= .15 * 2 ** 30, '0.15GiB temporary ceiling including owned dependency links/cache')
+  assert(durableBytes <= .01 * 2 ** 30, '0.01GiB durable ceiling')
+  assert(temporaryBytes + durableBytes <= 214748364, '0.2GiB whole-job output ceiling')
+}
 try {
+  await checkResources()
+  resourceTimer = setInterval(() => {
+    resourceTask = resourceTask.then(async () => {
+      if (resourceFailure) return
+      try { await checkResources() } catch (error) { resourceFailure = error; await browser?.close(); await server?.close() }
+    })
+  }, 1000)
   server = await createServer({ root: frontend, configFile: false, plugins: [react(), tailwindcss()], publicDir: false,
     cacheDir: resolve(temporary, 'cache'), logLevel: 'error', server: { host: '127.0.0.1', port: 0, strictPort: false } })
   await server.listen()
@@ -54,8 +79,7 @@ try {
   browser = await chromium.launch({ executablePath: '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome', headless: true })
   report.browser = browser.version()
   for (const [width, height] of [[360, 844], [390, 844], [430, 844], [390, 420]]) {
-    assert(await freeGiB() >= 8, '8GiB stop floor')
-    assert(await size(out) + await size(temporary) < .2 * 2 ** 30, '0.2GiB whole-job output ceiling')
+    await checkResources()
     const context = await browser.newContext({ viewport: { width, height }, isMobile: true, hasTouch: true, reducedMotion: 'reduce' })
     const page = await context.newPage(), errors = []
     page.on('pageerror', e => errors.push(e.message))
@@ -108,10 +132,16 @@ try {
     await page.evaluate(() => window.__ARCHIVE_ROOT__.dispose())
     await context.close()
   }
+  await checkResources()
+  if (resourceFailure) throw resourceFailure
   report.result = 'PASS'
 } finally {
+  clearInterval(resourceTimer)
+  await resourceTask
   await browser?.close()
   await server?.close()
+  if (previousTemporary === undefined) delete process.env.TMPDIR
+  else process.env.TMPDIR = previousTemporary
   await rm(temporary, { recursive: true, force: true })
   report.outputBytes = await size(out)
   report.finalFreeGiB = await freeGiB()

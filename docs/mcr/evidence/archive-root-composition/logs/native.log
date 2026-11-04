@@ -1,0 +1,19 @@
+node:internal/modules/run_main:107
+    triggerUncaughtException(
+    ^
+
+AssertionError [ERR_ASSERTION]: Fresh named FE40 archive offer/ACCEPT required
+    at file:///Users/lhs/Desktop/mcr-worktrees/fe-archive-root-204/frontend/src/app/__tests__/archive-entry/native.mjs:14:1
+    at ModuleJob.run (node:internal/modules/esm/module_job:561:25)
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    at async node:internal/modules/esm/loader:647:26
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5) {
+  generatedMessage: false,
+  code: 'ERR_ASSERTION',
+  actual: false,
+  expected: true,
+  operator: '==',
+  diff: 'simple'
+}
+
+Node.js v24.22.2
