@@ -1,0 +1,534 @@
+{
+  "state": "IN_PROGRESS",
+  "scope": "Actual two-principal public HTTP C03 through production factory; full EOF owner settlement fails before shared framing fix",
+  "artifacts": {
+    "api-gateway": {
+      "sha256": "687df56766a3a10a08a187c6c54e32491222a40ac162f5c8f6230eb22ae1c510"
+    },
+    "auth-service": {
+      "sha256": "d89ae929ea030a00a4ce49f478dd7e437ae3f3d411262b069d6b159334cbb6b9"
+    },
+    "friend-service": {
+      "sha256": "28654896a5d3dfb07de09caa2157db6bba19a268706e15ea90946cc403f97931"
+    },
+    "profile-service": {
+      "sha256": "b70fcd6b8a52aef19e516f0a7a53253958bbe1d0da04f9cf7c3187a852f42a32"
+    },
+    "post-service": {
+      "sha256": "75b44e97f64f611776bb5a429f6249f61766ba2ceb6b7cdc5e5c287e042d0c47"
+    },
+    "notification-service": {
+      "sha256": "f8c53f7df0a571ab8a53bbd16fcc220c51e5d4d196d00def19e12a8a1e9623b3"
+    },
+    "concert-service": {
+      "source_commit": "f2898a642848cbf015cb32664ce3a41b9d83314d",
+      "sha256": "35167d39524ee19e8dd34272e7bd925b762022c8860c1f74acd81ca57068c3ac"
+    }
+  },
+  "runs": [
+    {
+      "original_report_name": "public-c03-1.json",
+      "original_report_sha256": "4241b64aceaa259f0dee2307f4fe66124632fe3f36f88b042d1cbed6efe895b4",
+      "driver_sha256": "a388386e355bbcd0be94a420121be95bb3a3fbd655f4ddb1dea3a8e1d870bf80",
+      "result": "FAIL",
+      "failure": "canonical-profile-c03-write",
+      "statuses": {
+        "principal-1-signup": 200,
+        "principal-1-verify": 200,
+        "principal-1-login": 200,
+        "principal-2-signup": 200,
+        "principal-2-verify": 200,
+        "principal-2-login": 200,
+        "principal-1-profile": 200,
+        "principal-2-profile": 200,
+        "principal-1-bootstrap": 200,
+        "principal-2-bootstrap": 200
+      },
+      "public_c03": {
+        "state": "PASS",
+        "scope": "actual public signed-in C03 HTTP save/reload",
+        "principals": [
+          {
+            "user_id": "653c8256-3a3d-4618-b90a-80027a9aceac",
+            "steps": [
+              {
+                "operation": "initial GET",
+                "http_status": 200
+              },
+              {
+                "operation": "avatar PUT",
+                "http_status": 200
+              },
+              {
+                "operation": "preferences PATCH",
+                "http_status": 200
+              },
+              {
+                "operation": "canonical Profile PATCH",
+                "http_status": 200
+              },
+              {
+                "operation": "fresh reload GET",
+                "http_status": 200
+              },
+              {
+                "operation": "stale CAS refusal",
+                "http_status": 409
+              },
+              {
+                "operation": "unauthenticated refusal",
+                "http_status": 401
+              },
+              {
+                "operation": "reload after refused writes",
+                "http_status": 200
+              },
+              {
+                "operation": "cross-principal isolation reload",
+                "http_status": 200
+              }
+            ]
+          },
+          {
+            "user_id": "a821eb68-fb52-49e3-890c-83b87393eb71",
+            "steps": [
+              {
+                "operation": "initial GET",
+                "http_status": 200
+              },
+              {
+                "operation": "avatar PUT",
+                "http_status": 200
+              },
+              {
+                "operation": "preferences PATCH",
+                "http_status": 200
+              },
+              {
+                "operation": "canonical Profile PATCH",
+                "http_status": 200
+              },
+              {
+                "operation": "fresh reload GET",
+                "http_status": 200
+              },
+              {
+                "operation": "stale CAS refusal",
+                "http_status": 409
+              },
+              {
+                "operation": "unauthenticated refusal",
+                "http_status": 401
+              },
+              {
+                "operation": "reload after refused writes",
+                "http_status": 200
+              },
+              {
+                "operation": "cross-principal isolation reload",
+                "http_status": 200
+              }
+            ]
+          }
+        ],
+        "owner_native_settlement": "NOT_CHECKED_BY_HTTP_PROBE",
+        "browser_ui": "NOT_RUN"
+      },
+      "database_observed": null,
+      "root_phase_counts": null,
+      "concert_stop": {
+        "forced": false,
+        "exit_code": 0
+      },
+      "peer_stops": [
+        {
+          "service": "local-mail",
+          "resource": "in_process_mail_sink",
+          "exit_code": 0,
+          "forced": false
+        },
+        {
+          "service": "api-gateway",
+          "forced": false,
+          "exit_code": 0
+        },
+        {
+          "service": "auth-service",
+          "forced": false,
+          "exit_code": 0
+        },
+        {
+          "service": "post-service",
+          "forced": false,
+          "exit_code": 0
+        },
+        {
+          "service": "friend-service",
+          "forced": false,
+          "exit_code": 0
+        },
+        {
+          "service": "notification-service",
+          "forced": false,
+          "exit_code": 0
+        },
+        {
+          "service": "profile-service",
+          "forced": false,
+          "exit_code": 0
+        },
+        {
+          "service": "redis",
+          "forced": false,
+          "exit_code": 0
+        }
+      ],
+      "owned_cleanup": "PASS"
+    },
+    {
+      "original_report_name": "public-c03-2.json",
+      "original_report_sha256": "813cd3750a1f2db1cbe3dc220e6ee7dcae35b09ccf8dfc96d45dfebf16f1564b",
+      "driver_sha256": "25cc25a4fa0fba14e781696855f73253cf8db61d29e74bd5782be39ac534389a",
+      "result": "FAIL",
+      "failure": "root_delivery_16",
+      "statuses": {
+        "principal-1-signup": 200,
+        "principal-1-verify": 200,
+        "principal-1-login": 200,
+        "principal-2-signup": 200,
+        "principal-2-verify": 200,
+        "principal-2-login": 200,
+        "principal-1-profile": 200,
+        "principal-2-profile": 200,
+        "principal-1-bootstrap": 200,
+        "principal-2-bootstrap": 200
+      },
+      "public_c03": {
+        "state": "PASS",
+        "scope": "actual public signed-in C03 HTTP save/reload",
+        "principals": [
+          {
+            "user_id": "75ca7aa2-b041-4544-ab99-0ea34f2128fb",
+            "steps": [
+              {
+                "operation": "initial GET",
+                "http_status": 200
+              },
+              {
+                "operation": "avatar PUT",
+                "http_status": 200
+              },
+              {
+                "operation": "preferences PATCH",
+                "http_status": 200
+              },
+              {
+                "operation": "canonical Profile PATCH",
+                "http_status": 200
+              },
+              {
+                "operation": "fresh reload GET",
+                "http_status": 200
+              },
+              {
+                "operation": "stale CAS refusal",
+                "http_status": 409
+              },
+              {
+                "operation": "unauthenticated refusal",
+                "http_status": 401
+              },
+              {
+                "operation": "reload after refused writes",
+                "http_status": 200
+              },
+              {
+                "operation": "cross-principal isolation reload",
+                "http_status": 200
+              }
+            ]
+          },
+          {
+            "user_id": "d75882c9-0a26-49a9-bbda-9b389f495139",
+            "steps": [
+              {
+                "operation": "initial GET",
+                "http_status": 200
+              },
+              {
+                "operation": "avatar PUT",
+                "http_status": 200
+              },
+              {
+                "operation": "preferences PATCH",
+                "http_status": 200
+              },
+              {
+                "operation": "canonical Profile PATCH",
+                "http_status": 200
+              },
+              {
+                "operation": "fresh reload GET",
+                "http_status": 200
+              },
+              {
+                "operation": "stale CAS refusal",
+                "http_status": 409
+              },
+              {
+                "operation": "unauthenticated refusal",
+                "http_status": 401
+              },
+              {
+                "operation": "reload after refused writes",
+                "http_status": 200
+              },
+              {
+                "operation": "cross-principal isolation reload",
+                "http_status": 200
+              }
+            ]
+          }
+        ],
+        "owner_native_settlement": "NOT_CHECKED_BY_HTTP_PROBE",
+        "browser_ui": "NOT_RUN"
+      },
+      "database_observed": null,
+      "root_phase_counts": null,
+      "concert_stop": {
+        "forced": false,
+        "exit_code": 0
+      },
+      "peer_stops": [
+        {
+          "service": "local-mail",
+          "resource": "in_process_mail_sink",
+          "exit_code": 0,
+          "forced": false
+        },
+        {
+          "service": "api-gateway",
+          "forced": false,
+          "exit_code": 0
+        },
+        {
+          "service": "auth-service",
+          "forced": false,
+          "exit_code": 0
+        },
+        {
+          "service": "post-service",
+          "forced": false,
+          "exit_code": 0
+        },
+        {
+          "service": "friend-service",
+          "forced": false,
+          "exit_code": 0
+        },
+        {
+          "service": "notification-service",
+          "forced": false,
+          "exit_code": 0
+        },
+        {
+          "service": "profile-service",
+          "forced": false,
+          "exit_code": 0
+        },
+        {
+          "service": "redis",
+          "forced": false,
+          "exit_code": 0
+        }
+      ],
+      "owned_cleanup": "PASS"
+    },
+    {
+      "original_report_name": "public-c03-3.json",
+      "original_report_sha256": "7ae083fa0b5bfb63bd2c353b58ebe2ed72b8bcdfd616e114346bbf581e3b456a",
+      "driver_sha256": "694f9921a402bb7e3f9b9a1796223e05dbde3f6bf3f85284e59f87b7d9a9f572",
+      "result": "FAIL",
+      "failure": "root_delivery_16",
+      "statuses": {
+        "principal-1-signup": 200,
+        "principal-1-verify": 200,
+        "principal-1-login": 200,
+        "principal-2-signup": 200,
+        "principal-2-verify": 200,
+        "principal-2-login": 200,
+        "principal-1-profile": 200,
+        "principal-2-profile": 200,
+        "principal-1-bootstrap": 200,
+        "principal-2-bootstrap": 200
+      },
+      "public_c03": {
+        "state": "PASS",
+        "scope": "actual public signed-in C03 HTTP save/reload",
+        "principals": [
+          {
+            "user_id": "cdde386c-9175-4b46-80b5-9f44c1d9b92e",
+            "steps": [
+              {
+                "operation": "initial GET",
+                "http_status": 200
+              },
+              {
+                "operation": "avatar PUT",
+                "http_status": 200
+              },
+              {
+                "operation": "preferences PATCH",
+                "http_status": 200
+              },
+              {
+                "operation": "canonical Profile PATCH",
+                "http_status": 200
+              },
+              {
+                "operation": "fresh reload GET",
+                "http_status": 200
+              },
+              {
+                "operation": "stale CAS refusal",
+                "http_status": 409
+              },
+              {
+                "operation": "unauthenticated refusal",
+                "http_status": 401
+              },
+              {
+                "operation": "reload after refused writes",
+                "http_status": 200
+              },
+              {
+                "operation": "cross-principal isolation reload",
+                "http_status": 200
+              }
+            ]
+          },
+          {
+            "user_id": "f41b184d-9e9a-4660-8152-c26ad02ac45e",
+            "steps": [
+              {
+                "operation": "initial GET",
+                "http_status": 200
+              },
+              {
+                "operation": "avatar PUT",
+                "http_status": 200
+              },
+              {
+                "operation": "preferences PATCH",
+                "http_status": 200
+              },
+              {
+                "operation": "canonical Profile PATCH",
+                "http_status": 200
+              },
+              {
+                "operation": "fresh reload GET",
+                "http_status": 200
+              },
+              {
+                "operation": "stale CAS refusal",
+                "http_status": 409
+              },
+              {
+                "operation": "unauthenticated refusal",
+                "http_status": 401
+              },
+              {
+                "operation": "reload after refused writes",
+                "http_status": 200
+              },
+              {
+                "operation": "cross-principal isolation reload",
+                "http_status": 200
+              }
+            ]
+          }
+        ],
+        "owner_native_settlement": "NOT_CHECKED_BY_HTTP_PROBE",
+        "browser_ui": "NOT_RUN"
+      },
+      "database_observed": {
+        "root_delivery_16": "0",
+        "profile_commit_2": "2",
+        "concert_native_commit_2": "2",
+        "auth_settlement_16": "0",
+        "friend_settlement_16": "0",
+        "no_prepared_transactions": "32"
+      },
+      "root_phase_counts": [
+        {
+          "phase": "ACTIVE",
+          "serialized": true,
+          "completed": false,
+          "count": 16
+        }
+      ],
+      "concert_stop": {
+        "forced": false,
+        "exit_code": 0
+      },
+      "peer_stops": [
+        {
+          "service": "local-mail",
+          "resource": "in_process_mail_sink",
+          "exit_code": 0,
+          "forced": false
+        },
+        {
+          "service": "api-gateway",
+          "forced": false,
+          "exit_code": 0
+        },
+        {
+          "service": "auth-service",
+          "forced": false,
+          "exit_code": 0
+        },
+        {
+          "service": "post-service",
+          "forced": false,
+          "exit_code": 0
+        },
+        {
+          "service": "friend-service",
+          "forced": false,
+          "exit_code": 0
+        },
+        {
+          "service": "notification-service",
+          "forced": false,
+          "exit_code": 0
+        },
+        {
+          "service": "profile-service",
+          "forced": false,
+          "exit_code": 0
+        },
+        {
+          "service": "redis",
+          "forced": false,
+          "exit_code": 0
+        }
+      ],
+      "owned_cleanup": "PASS"
+    }
+  ],
+  "interpretation": {
+    "public_http": "All 18 steps pass on each run; actual signup/verify/login/Profile/bootstrap precede probe. HTTP PASS is not native owner settlement acceptance.",
+    "run_1": "Incorrect SQL oracle bio IS NULL failed. Retained Profile bio is NOT NULL; BioPatch::Clear persists empty string, represented as null on the wire.",
+    "run_2": "Corrected canonical Profile oracle passed; immediate root-delivery assertion failed.",
+    "run_3": "Bounded 3-second read-only observation confirms 16 ACTIVE serialized scopes, zero root/Auth/Friend completion, 32 prepared owner transactions; two Profile and Concert-native COMMIT proofs pass.",
+    "root_cause": "Retained ScopeBody forwards an exact size hint; Hyper HTTP/1 can stop polling after DATA exhausts Content-Length before inner EOF starts completion. Root owns the shared fix and real-wire regression.",
+    "limits": [
+      "No manual CompleteResponse RPC, root finishing, fake authority, identity SQL seeding or mutation retry was used.",
+      "All three runs cleaned up owned resources and stopped Concert and peer processes without forced termination.",
+      "World multi-client and browser acceptance are NOT_RUN.",
+      "These failed reports must remain distinct from the future corrected production Gateway run."
+    ]
+  }
+}

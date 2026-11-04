@@ -128,8 +128,9 @@ Its compile/configuration status is CONTRACT_READY. A targeted read-only
 Profile/Decision/recovery review found no actionable issues; fresh Rust build,
 eight configuration tests and one key-role test pass. A fresh actual native
 producer join also passes. Production factory mounting and the public C03 flow
-remain IN_PROGRESS / NOT_RUN; earlier Gateway/native evidence does not certify
-those remaining boundaries.
+were NOT_RUN at that checkpoint. The actual production HTTP qualification below
+supersedes that status; earlier Gateway/native evidence does not certify its EOF
+boundary.
 
 Root calls `ParticipantRuntimeSettings::load(grpc_enabled)` before opening the
 database and `settings.compose(pool, active_release)` with the actual
@@ -180,7 +181,8 @@ each response through EOF using a new HTTP client. It checks selected-pack avata
 CAS, preference CAS, canonical display-name/bio CAS, fresh reload, stale-write
 conflict, unauthenticated refusal, refusal-state preservation and isolation after
 both principals write. It requires private-response headers on success and error.
-Syntax validation passes; actual public execution is NOT_RUN. The launcher must
+Syntax validation passes. Actual public execution passes all 18 HTTP checks but
+fails native EOF settlement in the pre-fix runs recorded below. The launcher must
 separately inspect native owner/root settlement and clean process/database
 shutdown. The probe explicitly cannot certify those from HTTP status alone.
 
@@ -206,3 +208,44 @@ expired-PREPARE ABORT, six root/owner completions and lost-envelope quarantine.
 exits/owned-PG cleanup. This join uses its existing guarded native composition;
 it does not execute Root's production factory mount or public HTTP journey.
 No build target or PG resources remain held.
+
+Actual production C03 qualification remains IN_PROGRESS. Root integrated the
+factory at `161a3bd6` and production startup at
+`f2898a642848cbf015cb32664ce3a41b9d83314d`. Its copied production executable
+built successfully, and both startup supervision tests passed. With the retained
+actual Auth/Friend/Profile service binaries and Gateway `687df567`, three
+isolated runs created two accounts through actual signup, email verification and
+login, wrote their Profiles, and bootstrapped both participants. All 18 public
+probe checks passed on each run, including selected-pack avatar CAS, preferences,
+canonical Profile update, fresh reload, stale CAS refusal, anonymous refusal and
+cross-principal isolation. These HTTP results do not certify native settlement.
+
+The first run failed an incorrect SQL oracle. Canonical `profiles.bio` is
+`text NOT NULL`; `BioPatch::Clear` stores the empty string, while the public
+representation is `bio: null`. The correct storage assertion is the exact
+expected nickname and `bio=''`, not `bio IS NULL`. This follows the retained
+`profile-service/migrations/0001_init_profile.sql`,
+`src/concert_self_profile/store.rs` and the clear assertion in
+`src/concert_self_profile/native.rs`. No production behavior or public assertion
+was weakened to correct the oracle.
+
+The second run passed that canonical storage assertion but failed the immediate
+root-delivery count. The third added a bounded three-second read-only settlement
+observation and proved a transport defect: all 16 authenticated C03 scopes stayed
+ACTIVE with serialization recorded, zero root/Auth/Friend delivery completions
+were recorded, and 32 owner prepared transactions remained. Both actual Profile
+COMMIT receipts and both Concert-native COMMIT proofs passed. All three runs
+stopped Concert and peers without forcing termination and cleaned up owned
+resources. No manual completion RPC, fabricated root finish or mutation retry
+was used.
+
+`public-c03-f2898a64-before-eof-fix.json` preserves sanitized original report
+hashes, driver hashes, binary cohort hashes, HTTP steps, actual database counts,
+and cleanup results. The shared retained body advertises an exact byte size;
+Hyper HTTP/1 can exhaust that length and drop the body before polling the EOF
+that starts completion. Root owns the shared framing fix, real-wire regressions,
+fresh Gateway executable and exact public rerun. Full C03 acceptance requires
+16 completed root scopes, 16 Auth and 16 Friend settlements, two canonical Profile
+and Concert-native COMMIT proofs, no remaining prepared transactions and clean
+shutdown in the corrected production run. World and browser acceptance remain
+separate and NOT_RUN.
