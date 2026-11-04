@@ -1,0 +1,21 @@
+{
+  "status": "MEASUREMENTS_PASS_CAPTURE_SETTLING_REPLAY_REQUIRED",
+  "source": "e93b92ad0058f3ad62d9bc639f7dc8c5df1db23c",
+  "command": "MCR_FRONTEND_SLOT=FE26E-WORLD-PRESENTATION-20261104T0451Z MCR_WORLD_BUDGET_OUTPUT=<owned native-01> /Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node frontend/src/app/__tests__/world-presentation-budget/native.mjs",
+  "exitCode": 0,
+  "visualReview": "Normal baseline/candidate/reference and route-world render. tools-expanded caught an unpainted frame immediately after panel return; retained as initial timing evidence, pending corrected capture replay.",
+  "byteCaps": {
+    "peakMeasuredWorkflowBytes": 178270361,
+    "durableBeforeReviewBytes": 14626816
+  },
+  "cleanup": {
+    "report": {
+      "browserClosed": true,
+      "serverClosed": true,
+      "temporaryRemoved": true
+    },
+    "freshValidationChromeRoots": 0,
+    "existingInteractiveChromePreserved": true,
+    "borrowedNodeModulesLinkRemoved": true
+  }
+}

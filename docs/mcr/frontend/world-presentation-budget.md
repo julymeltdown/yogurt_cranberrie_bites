@@ -68,7 +68,7 @@ summary and panel geometry against the immutable baseline at both heights.
 
 Meaningful regressions pass 110 tests across seven suites, including seven new
 disclosure/route/focus/same-world cases and all 39 retained shell checks. Full
-application types and targeted lint exit 0. Runtime evidence is still NOT_RUN.
+application types and targeted lint exit 0. The first actual native run passed its measurements and behavior checks; a capture-settling replay is pending after visual review (details below).
 
 The new native driver reuses the read-only published actual Root/default Phaser
 fixture. Its baseline loads the exact two pre-change files from `d1a5deaa` through
@@ -94,3 +94,37 @@ fresh >=8GiB/process guard, one Chrome/harness, <=0.2GiB peak and <=40MiB durabl
 output are required before runtime work. No install, Cargo, shared build target,
 peer interruption or inherited allocation is authorized. Source/no-emit work
 continues independently. Root153 remains the sole serialized publisher.
+
+## First native run and image review
+
+Named slot `FE26E-WORLD-PRESENTATION-20261104T0451Z` was explicitly accepted
+with a fresh 18,095,816,704-byte free-space guard and zero competing validation
+Chrome roots. Native source `e93b92ad0058f3ad62d9bc639f7dc8c5df1db23c`
+exited 0: 24 baseline/candidate cases, five focused interaction groups and the
+sequential actual application build passed. At 390×554 the measured canvas is
+378×280 before and 378×373 after (+93px / 33.2% height); unchanged camera math
+produces zoom 0.4794520548 and 0.6386986301 (+33.2%). At 390×844 canvas height
+is 570→663; zoom remains 0.647260274 because width constrains it. Full/half/peek
+stage/canvas/summary/panel geometry remains within 1px at both tested heights.
+
+The unchanged original/reference, baseline and candidate are paired in
+`../evidence/world-presentation-budget/native-01/comparison.png`. This shows
+more scene area and larger actors at the short viewport; the fixture's six
+clustered positions, reference art/population differences and broader ten-screen
+obligations remain unchanged. This is a measured improvement, not full reference
+or product acceptance.
+
+Visual review found the expanded-tools image captured an unpainted frame
+immediately after the fourth panel return. The ordinary scene and World-return
+captures paint correctly. The original run and image are retained unchanged;
+the new owned driver now waits two animation frames and 100ms before screenshots.
+A fresh coordinated replay is required to verify that capture; no renderer,
+authority, camera or application code is changed to compensate.
+
+The first workflow measured 178,270,361 peak bytes (<0.2GiB), with 14,626,816
+durable bytes before the review receipt (<40MiB). Browser, server and own
+profile/cache/build temporary directory were removed, the borrowed dependency
+link was removed, zero validation Chrome roots remained and the existing
+interactive MCP browser was preserved. The slot was explicitly returned.
+Replay budget accounting includes all accumulated evidence in this task's
+owned subtree, not only its current output directory.
