@@ -29,6 +29,7 @@ try {
   // No private payload is rendered by the qualification shell.
   assert.doesNotMatch(await page.locator('body').innerText(), /qa04_private_/)
   const files = [
+    'frontend/package.json', 'frontend/pnpm-lock.yaml',
     'contracts/generated/mcr-domain.openapi.json', 'contracts/domain/v1/social.schema.json', 'contracts/domain/v1/policy.json',
     'contracts/domain/v1/operations.json', 'contracts/domain/v1/common.schema.json', 'contracts/realtime/v1/world.schema.json',
     'frontend/src/shared/api/http.ts', 'frontend/src/shared/api/errors.ts', 'frontend/src/shared/api/domain.ts',
@@ -42,7 +43,10 @@ try {
     ...['approved-social-request', 'public-intro', 'public-post', 'party-full', 'giveaway-management', 'private-beacon'].map(name => `contracts/fixtures/domain/${name}.json`),
     ...['fixtures.ts', 'oracle.ts', 'browser.ts', 'runtime.mjs', 'run.mjs'].map(name => `frontend/e2e/privacy/${name}`),
   ]
-  const sourcePins = Object.fromEntries(await Promise.all(files.map(async file => [file, createHash('sha256').update(await readFile(resolve(root, file))).digest('hex')])))
+  for (const module of server.environments.client.moduleGraph.idToModuleMap.values()) {
+    if (module.file?.startsWith(root + '/') && /\.(?:ts|tsx|json)$/.test(module.file) && !module.file.includes('/node_modules/')) files.push(module.file.slice(root.length + 1))
+  }
+  const sourcePins = Object.fromEntries(await Promise.all([...new Set(files)].sort().map(async file => [file, createHash('sha256').update(await readFile(resolve(root, file))).digest('hex')])))
   Object.assign(report, { browser: browser.version(), node: process.version, candidate: execFileSync('git', ['rev-parse', 'HEAD'], { cwd: root, encoding: 'utf8' }).trim(),
     command: 'NODE frontend/e2e/privacy/run.mjs', exitCode: 0, sourcePins, actualApiNetworkCalls: 0, pageErrors: errors })
   await writeFile(resolve(output, 'fixture-report.json'), JSON.stringify(report, null, 2) + '\n')
