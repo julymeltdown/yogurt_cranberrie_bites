@@ -127,3 +127,32 @@ The schema-only prerequisite was published independently to `master` as
 It contains only 0008, the two owned native/schema controllers and their scope
 report. Continuing RPC implementation is preserved on this development branch;
 publishing the prerequisite did not complete BE-PROFILE-SELF.
+
+## Current qualification inputs and remaining gates
+
+The developer checkout has consumed the published SDK/key/policy checkpoint
+`888cb6bd30846d891286b92a9a66e921e8d1ce78` and the published decision IDL
+`43cb9e9f`. Public Profile's exact three-file registration patch `d88751fd` was
+cherry-picked as `e2ca87e09924065a1adc3be9893c639cde5a6705`, without transferring
+or manually editing its existing-file ownership. It adds the generated contracts,
+optional dedicated SELF and settlement services, and supervised bounded recovery.
+The public child protocol uses its own Complete method and does not register a
+second ProducerSettlementService. Missing SELF keys preserve that separate path.
+
+Read admission permits only exact C03 triples: getConcertParticipant/GET/me,
+updateConcertParticipant/PATCH/me, and setConcertAvatar/PUT/me/avatar. Avatar
+admission is read-only here; only update/PATCH/me can prepare Profile writes.
+Both signatures and actual owner capabilities remain necessary. The new receipt
+INSERT also checks the actual registered full XID, cluster/database, PID/start,
+instance, command/effect digest and current Profile version on the same database
+connection. A different connection must not forge the receipt. The expanded
+native test covers that refusal; it is NOT_RUN pending a new allocated build.
+
+Remaining BE-PROFILE-SELF gates belong to this developer: compile the current
+Profile test and production binary, run deterministic/native tests and migration
+CLI against exact frozen artifacts, fix findings, then qualify the actual
+Auth/Friend Check/Track and Concert decision/settlement RPC path with their real
+owners. Owner16e1 supplies qualified Auth/Friend stores and artifacts; owner209
+supplies the actual participant coordinator/decision endpoint. These are direct
+implementation interfaces, not king/SL review gates. The original goal stays
+active through that validation, documentation and non-force publication.
