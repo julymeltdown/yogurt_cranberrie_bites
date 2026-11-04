@@ -152,7 +152,7 @@ mod tests {
             event_id: event.to_string(),
             session_family_id: Uuid::from_u128(3).to_string(),
             request_id: Uuid::from_u128(4).to_string(),
-            operation: "FEED_LIST".into(),
+            operation: "listConcertFeed".into(),
             subject_ids: vec![],
             expires_unix_micros: 1_000_000,
             parent_digest: vec![1; 32],

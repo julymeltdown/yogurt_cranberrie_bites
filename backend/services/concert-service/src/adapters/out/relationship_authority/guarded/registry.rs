@@ -37,6 +37,22 @@ pub trait ScopeLifecycle: Send + Sync {
         auth_registration: &str,
         friend_registration: &str,
     ) -> Result<(), Status>;
+    /// Persist a closed private intent BEFORE any remote child RPC or local
+    /// PREPARE can be dispatched. Duplicate exact intent is idempotent; another
+    /// reference under the same (kind, intent UUID) must be rejected.
+    async fn register_child_intent(
+        &self,
+        scope: &proto::ProducerScope,
+        reference: &super::ChildRecoveryReference,
+    ) -> Result<(), Status>;
+    async fn record_child_completed(
+        &self,
+        scope: &proto::ProducerScope,
+        reference: &super::ChildRecoveryReference,
+    ) -> Result<(), Status>;
+    /// Resolve ALL preallocated child intents, including cancelled/lost-reply
+    /// children without a live Arc handle. Actual owner/native proofs only.
+    async fn settle_child_intents(&self, scope: &proto::ProducerScope) -> Result<(), Status>;
     async fn mark_serialized(&self, scope: &proto::ProducerScope) -> Result<(), Status>;
     async fn seal(&self, scope: &proto::ProducerScope) -> Result<(), Status>;
     /// Proves only that this root can issue no more work, after body exhaustion
@@ -198,5 +214,63 @@ impl RootReadPermit {
 impl Drop for RootReadPermit {
     fn drop(&mut self) {
         self.inflight.fetch_sub(1, Ordering::AcqRel);
+    }
+}
+
+/// Cleanup proof is restricted to an acquisition whose capability has never
+/// escaped this private constructor. Ordinary live scopes have NO such Drop.
+pub(super) struct UnexposedAcquisition {
+    registry: Arc<ScopeRegistry>,
+    producer: proto::ProducerScope,
+    armed: bool,
+}
+impl UnexposedAcquisition {
+    pub fn new(registry: Arc<ScopeRegistry>, producer: proto::ProducerScope) -> Self {
+        Self {
+            registry,
+            producer,
+            armed: true,
+        }
+    }
+    pub fn disarm(&mut self) {
+        self.armed = false;
+    }
+    pub async fn settle(&self) {
+        settle_unexposed(self.registry.clone(), self.producer.clone()).await;
+    }
+}
+impl Drop for UnexposedAcquisition {
+    fn drop(&mut self) {
+        if !self.armed {
+            return;
+        }
+        // Synchronously deny any late root callback before a cleanup task can
+        // record no-root-work. No owner transaction is released here.
+        if self.registry.seal(&self.producer).is_err() {
+            return;
+        }
+        let registry = self.registry.clone();
+        let producer = self.producer.clone();
+        if let Ok(runtime) = tokio::runtime::Handle::try_current() {
+            runtime.spawn(async move {
+                settle_unexposed(registry, producer).await;
+            });
+        }
+        // Missing runtime or unknown settlement retains counted quarantine.
+    }
+}
+async fn settle_unexposed(registry: Arc<ScopeRegistry>, producer: proto::ProducerScope) {
+    if registry.seal(&producer).is_err() {
+        return;
+    }
+    let cleanup = async {
+        registry.lifecycle.seal(&producer).await?;
+        registry.lifecycle.finish_root_work(&producer).await
+    };
+    if tokio::time::timeout(std::time::Duration::from_secs(2), cleanup)
+        .await
+        .is_ok_and(|result| result.is_ok())
+    {
+        let _ = registry.retire(&producer);
     }
 }
