@@ -25,7 +25,7 @@ it.each(['REVENGE', 'PARADE', 'DANGER'])('overrides only %s display anchors and 
   expect(source.map_labels[0]).toMatchObject({ x: 335, y: 147 })
   const boxes = spatialV5LabelObstacles(identity, 768, 1296)
   expect(boxes.map(p => ({ x: p.left, y: p.top, width: p.width, height: p.height }))).toEqual(labels.labels.map(p => p.rect))
-  expect(boxes.filter(p => p.interactionId !== null).map(p => p.interactionId)).toEqual(['stage_info', 'gifts_info'])
+  expect(boxes.filter(p => p.interactionId !== null).map(p => p.interactionId)).toEqual([])
 })
 it.each(['old-label', 'old-plants', 'pair', 'geometry', 'binding', 'offcenter', 'outside', 'zero-width', 'nan', 'duplicate-bed', 'bound-bed'] as const)('rejects %s before exposing mixed or malformed layout', async fault => {
   const l = structuredClone(labels), pin = structuredClone(plantPins)

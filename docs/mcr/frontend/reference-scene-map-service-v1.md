@@ -1,0 +1,25 @@
+# MAP service presentation v1
+
+Status: source implementation qualified; native capture pending a named allocation. This is a bounded virtual MAP contribution. Exact reference fidelity, live service acceptance, device acceptance and production admission remain open.
+
+The human reference is the original 1280×853 JPEG, SHA-256 `2b3988d546f87b813d78ca13bf267730a6dd19118bd6535a2d3c3032b6f12d23`. Its composition informs the service illustration. Literal food and retail labels do not describe this product. The new independent virtual annotations open FEED `/feed`, WALL `/wall`, MEET `/meet` and GIFTS `/gifts`. MAIN STAGE and PLAZA are scenery. The former MERCH location does not inherit its historical `gifts_info` navigation target.
+
+## Inputs and authority
+
+Artist label/glyph source `b50177e745af331dcbc9d5755dcb2c04585b5cff` was published as `58719fa05c51adda725c2a8260dbebfd4d09dab8`. Its 2,913-byte handoff has SHA-256 `33ea05993ff7f68bf71b653048d50de6b0ce806fe735c892576cbe4e9301ae86`; the 17,716-byte presentation has SHA-256 `3869218ae5c1c54c001e533f9a405a7f9fbfe6d5078e765daf51132aeab0aa26`. The generator closes its six payloads, frozen baseline label/landscape pair, architecture inputs and the previously delivered two-wing source. Baseline references are immutable lineage; they do not designate a new Artist landscape bundle.
+
+World grants `af588a30` / `9d1bec78` cover the six existing consumer hunks and new service prefixes. Additional grant `01f270fe` covers only the stale root contract assertion for painted place bindings. The adapter adds the two separately pinned unbound MAP annexes. It replaces the MAP-only `food_counters` display with the frozen `plaza_furniture` frame at exactly x568/y611/190×164/depth775 under the new unbound ID `map_feed_seating_representation`. This is the explicitly granted consumer derivation, requiring no invented Artist replacement file.
+
+The resulting MAP has 51 objects: 48 originals remain exact, one neutral display retains its original placement, and two wings are appended. All 34 World objects, canonical geometry, catalog, place IDs, reviewed-place protections, selected character sources and historical source files remain unchanged. Six painted labels have null place and interaction IDs. Four separate feature links carry only fixed virtual navigation intents. The canonical place markers remain available with their original details, closed/unavailable states and authority. Focus returns to the exact feature opener after history back; targets are at least 44×44 CSS pixels.
+
+The compiler writes exactly two new JSON files. It never invokes the older source builders or alters their outputs. The consumer compares its closed compiled document and pins, checks its digest, and rejects altered intent/geometry/display/massing tuples even when a caller recomputes a hash. Its source-fixture status remains `NOT_ADMITTED`.
+
+## Validation and evidence
+
+The source baseline is published `4af1c86863698e311d286039a0702d5b2517c1c3`, including the delivered FE32 editor fixes. The 288 reference/Places regression tests pass across 26 suites; full frontend TypeScript and scoped lint pass. New tests cover exact two-file reproduction, all producer/frozen input hashes, all three World and MAP object sets, fixed routes, 44px targets, null authority, foreign identity withdrawal and twelve tamper cases. Root contract checks additionally use the retained `MCR_FE14_PYTHON` environment. Initial missing-environment and stale-label-assertion failures are retained separately from corrected results.
+
+The new `map-service-v1` native driver uses the actual default root, production router, Places and destination providers, Phaser and selected character renderer. Auth/world data are explicit synthetic C03/C05/map7005 fixtures. Destinations expose their genuine component state or unavailable guard; this smoke does not manufacture feed content, party/gift data, qualified mural access or a live editor. No backend release or physical provenance is invented.
+
+The planned single allocated workflow covers 390/360/430px across PARADE/REVENGE/DANGER, strict independent source-composition pixels, canonical place links, four virtual route actions, back focus, fit/reset, three reduced-height captures, two marker guards, one game/socket and complete disposal. It emits the first 390px PARADE MAP and four destination results immediately during that same run. New editable SVGs derive from byte-pinned architecture native-04 originals; reverse normalization preserves embedded art/font and every unrelated SVG byte. Their new 51-object output requires its own qualification and inherits no old native result.
+
+No new browser/export/build has run for this patch yet. Source validation alone does not establish mobile visual fit or exact fidelity. The original reference has different landscape density, roof/massing proportions and palette distribution; broader differences remain open. The separate shared-frame/footer and canopy proposals are not silently included in this lease or claimed as adopted. Captures will record exact immutable source revisions and source pins.

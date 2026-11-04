@@ -8,6 +8,7 @@ import { getReferenceOverviewMetadata } from '../../../world/reference-scene'
 import { getSpatialV5OverviewMetadata } from '../../../world/reference-scene/spatial-v5/model'
 import { mapViewport, overviewIdentity } from './reference-scene/viewport'
 import { referenceAnnotations, type AnnotationRect } from './reference-scene/annotations'
+import { MapServiceLinks } from './reference-scene/map-service-links'
 import { spatialV5LabelObstacles, spatialV5ZoomTop } from './reference-scene/spatial-v5-label-obstacles'
 import { spatialV4LabelObstacles, spatialV4ZoomBottom } from './reference-scene/spatial-v4-label-obstacles'
 
@@ -22,6 +23,7 @@ const clamp = (value: number, low: number, high: number) => Math.max(low, Math.m
 // Exact controller lifetime, weakly held; only a user-selected public place ID.
 const selections = new WeakMap<PlacesController, { mapHash: string; id: string }>()
 
+const virtualOpeners = new WeakMap<PlacesController, { mapHash: string; intent: string }>()
 const ownerKeys = new WeakMap<PlacesController, number>()
 let nextOwnerKey = 0
 type MapProps = { controller: PlacesController; state: PlacesState; fallback: ReactNode; legend: ReactNode }
@@ -75,13 +77,16 @@ function IllustratedViewport({ controller, state, fallback, legend }: MapProps) 
     return labelObstacles.find(label => label.interactionId !== null && label.interactionId === interaction?.interaction_id)
   }
   const plaques = referenceAnnotations(annotationAnchors.filter(point => !paintedLabel(point.id)), view, [...labelObstacles, ...obstacles.map(r => ({ ...r, left: r.left + view.left, top: r.top + view.top }))])
-  function select(id: string) { selections.set(controller, { mapHash: map.content_hash, id }); setSelected(id) }
+  function select(id: string) { virtualOpeners.delete(controller); selections.set(controller, { mapHash: map.content_hash, id }); setSelected(id) }
   useEffect(() => {
-    if (ready && navigation === 'POP' && !restored.current && saved?.mapHash === map.content_hash) {
+    if (ready && navigation === 'POP' && !restored.current) {
+      const opener = virtualOpeners.get(controller)
+      const id = opener?.mapHash === map.content_hash ? `map-feature-${opener.intent}`
+        : saved?.mapHash === map.content_hash ? `map-place-${saved.id}` : null
       restored.current = true
-      document.getElementById(`map-place-${saved.id}`)?.focus()
+      if (id) document.getElementById(id)?.focus()
     }
-  }, [ready, navigation, saved, map.content_hash])
+  }, [ready, navigation, saved, map.content_hash, controller])
   useLayoutEffect(() => {
     const element = viewport.current
     if (!element) return
@@ -156,6 +161,7 @@ function IllustratedViewport({ controller, state, fallback, legend }: MapProps) 
             {place.closure_state === 'CLOSED' && <small style={statusBadge} aria-hidden={compact || undefined}>{compact ? '×' : 'Closed'}</small>}{unavailable && <small style={statusBadge} aria-hidden={compact || undefined}>{compact ? '!' : 'Unavailable'}</small>}
           </ShellLink>
         })}
+        {ready && <MapServiceLinks identity={image} width={width} height={height} onOpen={intent => virtualOpeners.set(controller, { mapHash: map.content_hash, intent })} />}
         {ready && target && <span className="places-map-pin" role="img" aria-label={`Selected virtual location: ${current!.label}`}
           style={{ left: `${(target.cell_x + .5) / map.geometry.width_cells * 100}%`, top: `${(target.cell_y + .5) / map.geometry.height_cells * 100}%` }}>
           <svg viewBox="0 0 24 32" aria-hidden="true"><path d="M12 31S1 17 1 12a11 11 0 0 1 22 0c0 5-11 19-11 19Z" /><circle cx="12" cy="12" r="4" /></svg>

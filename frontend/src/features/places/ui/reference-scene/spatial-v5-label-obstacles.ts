@@ -1,12 +1,13 @@
-import presentation from '../../../../world/reference-scene/spatial-v5/map-labels-source.json'
+import { getSpatialV5ServicePresentation } from '../../../../world/reference-scene/spatial-v5/map-service'
 import { getSpatialV5OverviewMetadata } from '../../../../world/reference-scene/spatial-v5/model'
 import type { ReferenceOverviewIdentity } from '../../../../world/reference-scene/metadata'
 
 /** Authored MAP label bounds, projected into the existing image plane; no new destinations. */
 export function spatialV5LabelObstacles(identity: ReferenceOverviewIdentity, width: number, height: number) {
   if (!getSpatialV5OverviewMetadata(identity)) return []
+  const presentation = getSpatialV5ServicePresentation()
   return presentation.labels.map(label => ({
-    interactionId: label.interaction_id,
+    interactionId: label.interaction_id as string | null,
     left: label.rect.x / presentation.dimensions.width * width,
     top: label.rect.y / presentation.dimensions.height * height,
     width: label.rect.width / presentation.dimensions.width * width,

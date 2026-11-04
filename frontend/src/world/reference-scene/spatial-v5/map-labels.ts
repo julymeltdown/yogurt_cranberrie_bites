@@ -1,6 +1,7 @@
-import presentation from './map-labels-source.json'
+import { getSpatialV5ServicePresentation } from './map-service'
 import { sha256 } from '../../map/json'
 import { validateSpatialV5MapLayoutPair, verifySpatialV5MapLayoutPair } from './model'
+const presentation = getSpatialV5ServicePresentation()
 
 type Polygon = readonly (readonly number[])[]
 const icons = presentation.icons as Record<string, readonly Polygon[]>
