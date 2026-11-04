@@ -310,6 +310,8 @@ impl GiftRequest {
                 code,
             }
         };
+        // Cold schema compilation is bounded by the same original stop, too.
+        identity.check()?;
         Ok(Self {
             identity,
             operation: op,
@@ -387,7 +389,26 @@ fn wire<T: serde::de::DeserializeOwned>(schema: &str, body: &[u8]) -> Result<T, 
         ))
         .expect("pinned C04 JSON")
     });
-    let validator=jsonschema::validator_for(&serde_json::json!({"$ref":format!("#/components/schemas/Domain_giveaway_{schema}"),"components":contract["components"]})).map_err(|_|InputError::Unavailable)?;
+    // Compile each pinned schema once; requests retain their original budget.
+    type Cached = OnceLock<Result<jsonschema::Validator, ()>>;
+    static CREATE: Cached = OnceLock::new();
+    static UPDATE: Cached = OnceLock::new();
+    static MEETING: Cached = OnceLock::new();
+    static RESERVE: Cached = OnceLock::new();
+    static ISSUE: Cached = OnceLock::new();
+    static CLAIM: Cached = OnceLock::new();
+    let cache = match schema {
+        "CreateGiveaway" => &CREATE,
+        "UpdateGiveaway" => &UPDATE,
+        "SetPickupMeeting" => &MEETING,
+        "Reserve" => &RESERVE,
+        "IssuePickupCode" => &ISSUE,
+        "ClaimReservation" => &CLAIM,
+        _ => return Err(InputError::Unavailable),
+    };
+    let validator = cache.get_or_init(|| jsonschema::validator_for(
+        &serde_json::json!({"$ref":format!("#/components/schemas/Domain_giveaway_{schema}"),"components":contract["components"]})
+    ).map_err(|_| ())).as_ref().map_err(|_| InputError::Unavailable)?;
     if !validator.is_valid(&value) {
         return Err(InputError::Invalid);
     }

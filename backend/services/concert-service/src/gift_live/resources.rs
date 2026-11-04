@@ -1,6 +1,6 @@
 //! Actual Concert policy/resource locks for GiftAuthority's retained store.
 //! Physical selection adapts BE09's nested-savepoint pattern at source base 1cbb1823.
-use super::protocol::GiftIdentity;
+use super::protocol::{GiftIdentity, GiftOperation, GiftRequest};
 use crate::{
     adapters::out::repository::place::PgPlaceRepository,
     community::{giveaway::GiftSettings, policy::CommunityResources, CommunityAccess},
@@ -28,12 +28,18 @@ pub trait GiftMediaLink: Send + Sync {
 }
 pub struct PgGiftResources<M> {
     identity: GiftIdentity,
+    operation: GiftOperation,
     media: M,
 }
 impl<M: GiftMediaLink> PgGiftResources<M> {
-    pub fn new(identity: GiftIdentity, media: M) -> Result<Self, CommandError> {
+    pub fn new(request: &GiftRequest, media: M) -> Result<Self, CommandError> {
+        let identity = request.identity();
         identity.check().map_err(|_| CommandError::Denied)?;
-        Ok(Self { identity, media })
+        Ok(Self {
+            identity,
+            operation: request.operation(),
+            media,
+        })
     }
     async fn bind(
         &self,
@@ -83,7 +89,7 @@ impl<M: GiftMediaLink> CommunityResources for PgGiftResources<M> {
         // Existing reservations can still be cancelled when feature writes stop.
         if !matches!(phase.as_str(), "OPEN" | "LIVE" | "READ_ONLY")
             || (access == CommunityAccess::WriteGifts && phase == "READ_ONLY")
-            || (!enabled && access != CommunityAccess::SafetyGifts)
+            || (!enabled && self.operation != GiftOperation::Cancel)
         {
             return Err(CommandError::Denied);
         }

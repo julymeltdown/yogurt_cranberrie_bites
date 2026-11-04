@@ -22,3 +22,4 @@ pub mod community;
 pub mod event_lifecycle;
 
 pub mod participant;
+pub mod gift_live;
