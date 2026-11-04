@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Reproduce frozen feed adapter checks; never claim live owner/HTTP acceptance."""
+"""Reproduce frozen adapter or Post storage checks; never claim joined HTTP acceptance."""
 from __future__ import annotations
 import argparse
 import hashlib
@@ -11,6 +11,11 @@ import subprocess
 
 ROOT = Path(__file__).resolve().parents[3]
 REQUIRED = {"feed_live_read": 8, "concert_feed_live_read": 8, "feed_wire": 3}
+NATIVE_CASES = {
+    "concert_feed::read_tracking::tests::native_lost_track_ack_uses_actual_aborted_transaction_and_exact_owner_binding",
+    "concert_feed::read_tracking::tests::native_committed_transaction_without_exact_same_transaction_witness_stays_unknown",
+    "concert_feed::read_tracking::tests::native_both_durable_acknowledgements_and_exact_committed_witness_are_required",
+}
 
 class PreflightError(Exception):
     pass
@@ -34,19 +39,21 @@ def sources():
               ROOT / "contracts/fixtures/domain/public-post.json"]
     return {str(p.relative_to(ROOT)): digest(p) for p in sorted(set(paths))}
 
-def artifacts(metadata):
+def artifacts(metadata, native=False):
     regular(metadata)
     if metadata.stat().st_size > 4 * 1024 * 1024:
         raise PreflightError("bounded metadata required")
     data = json.loads(metadata.read_text())
     if not isinstance(data, dict):
         raise PreflightError("object metadata required")
-    if data.get("scope") != "adapter-only" or set(data.get("artifacts", {})) != set(REQUIRED):
-        raise PreflightError("exact adapter-only artifact inventory required")
+    expected = {"post_service_lib"} if native else set(REQUIRED)
+    scope = "post-native-storage" if native else "adapter-only"
+    if data.get("scope") != scope or set(data.get("artifacts", {})) != expected:
+        raise PreflightError("exact scoped artifact inventory required")
     if data.get("source_sha256") != sources():
         raise PreflightError("frozen source checkpoint mismatch")
     result = {}
-    for name in REQUIRED:
+    for name in expected:
         item = data["artifacts"][name]
         path = regular(Path(item["path"]), executable=True)
         if digest(path) != item["sha256"]:
@@ -61,12 +68,41 @@ def test_result(result, expected):
     return {"status": "PASS", "exit_code": result.returncode, "passed": expected,
             "stdout_sha256": hashlib.sha256(result.stdout.encode()).hexdigest()}
 
+def native_environment(path):
+    regular(path)
+    if path.stat().st_size > 4096 or path.stat().st_mode & 0o077:
+        raise PreflightError("bounded owner-only native configuration required")
+    value = path.read_text().strip()
+    if not value.startswith(("postgres://", "postgresql://")) or any(c.isspace() for c in value):
+        raise PreflightError("native PostgreSQL configuration invalid")
+    return {"PATH": "/usr/bin:/bin:/usr/sbin:/sbin", "MCR_FEED_NATIVE_DATABASE_URL": value}
+
+def native_checks(binary, environment):
+    inventory = subprocess.run([str(binary), "--list", "--ignored", "concert_feed::read_tracking::tests::"],
+                               cwd=ROOT, env=environment, text=True, capture_output=True, timeout=10)
+    names = {line.removesuffix(": test") for line in inventory.stdout.splitlines() if line.endswith(": test")}
+    if inventory.returncode or names != NATIVE_CASES:
+        raise PreflightError("exact native storage inventory required")
+    results = {}
+    for name in sorted(NATIVE_CASES):
+        r = subprocess.run([str(binary), "--ignored", "--exact", name, "--nocapture", "--test-threads=1"],
+                           cwd=ROOT, env=environment, text=True, capture_output=True, timeout=60)
+        match = re.search(r"test result: ok\. 1 passed; 0 failed; 0 ignored; 0 measured; \d+ filtered out;", r.stdout)
+        if r.returncode or not match or f"test {name} ..." not in r.stdout:
+            raise PreflightError("native storage case did not execute successfully")
+        results[name] = {"status": "PASS", "passed": 1, "stdout_sha256": hashlib.sha256(r.stdout.encode()).hexdigest()}
+    return results
+
 def main(argv=None):
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--binaries-json", type=Path, required=True)
     parser.add_argument("--report", type=Path, required=True)
-    parser.add_argument("--adapters-only", action="store_true", required=True,
+    mode = parser.add_mutually_exclusive_group(required=True)
+    mode.add_argument("--adapters-only", action="store_true",
                         help="live native/HTTP qualification is a separate unfinished obligation")
+    mode.add_argument("--post-native-storage", action="store_true",
+                      help="actual leased PostgreSQL storage only; fixture acknowledgements are not live owner qualification")
+    parser.add_argument("--database-url-file", type=Path)
     args = parser.parse_args(argv)
     if not args.report.is_absolute() or args.report.parent.resolve() != args.report.parent:
         parser.error("new canonical absolute report path required")
@@ -74,26 +110,36 @@ def main(argv=None):
         fd = os.open(args.report, os.O_WRONLY | os.O_CREAT | os.O_EXCL, 0o600)
     except OSError:
         parser.error("report must be a new writable file")
-    report = {"status": "FAIL", "scope": "adapter-only", "native_postgres": "NOT_RUN",
+    scope = "post-native-storage" if args.post_native_storage else "adapter-only"
+    report = {"status": "FAIL", "scope": scope, "native_postgres": "NOT_RUN",
               "live_http": "NOT_RUN", "qualified_guard_integration": "NOT_RUN", "commands": {}}
     try:
-        data, binaries = artifacts(args.binaries_json)
+        data, binaries = artifacts(args.binaries_json, native=args.post_native_storage)
         report.update(source_commit=data["source_commit"], source_state=data["source_state"],
                       metadata_sha256=digest(args.binaries_json), runner_sha256=digest(Path(__file__).resolve()))
-        for name, binary in binaries.items():
-            result = subprocess.run([str(binary), "--test-threads=1"], cwd=ROOT,
-                                    env={"PATH": "/usr/bin:/bin:/usr/sbin:/sbin"},
-                                    text=True, capture_output=True, timeout=60)
-            report["commands"][name] = test_result(result, REQUIRED[name])
+        if args.post_native_storage:
+            if args.database_url_file is None:
+                raise PreflightError("explicit leased native configuration required")
+            report["commands"] = native_checks(binaries["post_service_lib"], native_environment(args.database_url_file))
+            report["native_postgres"] = "PASS_STORAGE_ONLY"
+            report["passed"] = len(NATIVE_CASES)
+        else:
+            if args.database_url_file is not None:
+                raise PreflightError("native configuration is not an adapter input")
+            for name, binary in binaries.items():
+                result = subprocess.run([str(binary), "--test-threads=1"], cwd=ROOT,
+                                        env={"PATH": "/usr/bin:/bin:/usr/sbin:/sbin"},
+                                        text=True, capture_output=True, timeout=60)
+                report["commands"][name] = test_result(result, REQUIRED[name])
+            report["passed"] = sum(REQUIRED.values())
         report["status"] = "PASS"
-        report["passed"] = sum(REQUIRED.values())
     except (PreflightError, OSError, ValueError, KeyError, subprocess.SubprocessError) as error:
         report["failure"] = str(error) if isinstance(error, PreflightError) else type(error).__name__
     finally:
         with os.fdopen(fd, "w") as out:
             json.dump(report, out, indent=2, sort_keys=True)
             out.write("\n")
-    print(json.dumps({"status": report["status"], "scope": "adapter-only", "report": str(args.report)}))
+    print(json.dumps({"status": report["status"], "scope": scope, "report": str(args.report)}))
     return 0 if report["status"] == "PASS" else 1
 
 if __name__ == "__main__":

@@ -58,8 +58,8 @@ impl ReadAdmission {
             || !digest(&root.view_secret)
             || !digest(&auth.view_secret)
             || !digest(&friend.view_secret)
-            || auth.expires_unix_micros != binding.expires_unix_micros
-            || friend.expires_unix_micros != binding.expires_unix_micros
+            || auth.expires_unix_micros > binding.expires_unix_micros
+            || friend.expires_unix_micros > binding.expires_unix_micros
             || !digest(&binding.parent_body_digest)
             || !digest(&binding.body_digest)
         {
@@ -93,6 +93,8 @@ impl ReadAdmission {
         let deadline = AuthorityRpcDeadline::within_original(
             binding
                 .expires_unix_micros
+                .min(auth.expires_unix_micros)
+                .min(friend.expires_unix_micros)
                 .min(proof_deadline.expires_micros()),
             proof_deadline.stop().into_std(),
             Duration::from_secs(5),

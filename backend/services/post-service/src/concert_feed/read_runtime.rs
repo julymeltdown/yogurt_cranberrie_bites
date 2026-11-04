@@ -22,6 +22,7 @@ pub struct QualifiedReadRuntime {
     pool: PgPool,
     clients: ReadClients,
     tracking: TrackingStore,
+    admission_slots: Arc<tokio::sync::Semaphore>,
 }
 pub(crate) enum ReadResult {
     Post(proto::GetPostResponse),
@@ -45,7 +46,9 @@ impl QualifiedReadRuntime {
             pool.options().get_max_connections() >= 2,
             "qualified Post reads require two database connections"
         );
+        let slots = (pool.options().get_max_connections() / 2).min(64) as usize;
         Ok(Self {
+            admission_slots: Arc::new(tokio::sync::Semaphore::new(slots)),
             tracking: TrackingStore::new(pool.clone(), Uuid::new_v4())
                 .map_err(|_| anyhow::anyhow!("read tracking unavailable"))?,
             pool,
@@ -69,6 +72,11 @@ impl QualifiedReadRuntime {
     ) -> Result<ReadResult, Error> {
         let stop = a.deadline.stop();
         let work = async {
+            let _slot = self
+                .admission_slots
+                .acquire()
+                .await
+                .map_err(|_| Error::Unavailable)?;
             a.check()?;
             match &query {
                 ReadQuery::Posts(_) if a.operation != ReadOperation::Feed => {
@@ -81,7 +89,7 @@ impl QualifiedReadRuntime {
             // opening any protected Post read. Private own profiles are valid.
             self.clients.subject(&a, a.context.actor_id).await?;
             let mut tx = self.pool.begin().await.map_err(storage)?;
-            let effect = super::digest(&a.context)?;
+            let effect = super::digest(&(&a.context, &query))?;
             let reference = super::digest(&(Uuid::new_v4(), Uuid::new_v4()))?;
             let identity = CapturedReadTransaction::capture(
                 &mut tx,

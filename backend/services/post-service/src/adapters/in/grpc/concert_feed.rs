@@ -363,6 +363,7 @@ pub mod read_wire {
         pub context: Context,
         pub query: ReadQuery,
     }
+    #[derive(serde::Serialize)]
     pub enum ReadQuery {
         Post(Uuid),
         Posts(Window),

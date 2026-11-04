@@ -49,4 +49,26 @@ class AdapterRunnerTests(unittest.TestCase):
             with self.assertRaises(smoke.PreflightError):
                 smoke.test_result(subprocess.CompletedProcess([],0,stdout=output),8)
 
+    def test_native_configuration_must_be_private_and_explicit(self):
+        with tempfile.TemporaryDirectory() as directory:
+            path=Path(directory).resolve()/"native-url"
+            path.write_text("postgresql://localhost/feed_native");path.chmod(0o644)
+            with self.assertRaises(smoke.PreflightError):smoke.native_environment(path)
+            path.chmod(0o600);path.write_text("postgresql://localhost/feed_native\nextra")
+            with self.assertRaises(smoke.PreflightError):smoke.native_environment(path)
+
+    def test_native_missing_inventory_never_executes_a_case(self):
+        listed=subprocess.CompletedProcess([],0,stdout="0 tests, 0 benchmarks\n")
+        with patch.object(smoke.subprocess,"run",return_value=listed) as run:
+            with self.assertRaises(smoke.PreflightError):smoke.native_checks(Path("/tmp/frozen-native"),{})
+            self.assertEqual(run.call_count,1)
+
+    def test_native_filtered_or_ignored_case_cannot_qualify_storage(self):
+        listed=subprocess.CompletedProcess([],0,stdout="\n".join(f"{name}: test" for name in smoke.NATIVE_CASES))
+        for result in ["test result: ok. 0 passed; 0 failed; 1 ignored; 0 measured; 100 filtered out;",
+                       "test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 100 filtered out;"]:
+            run_result=subprocess.CompletedProcess([],0,stdout=result)
+            with patch.object(smoke.subprocess,"run",side_effect=[listed,run_result]):
+                with self.assertRaises(smoke.PreflightError):smoke.native_checks(Path("/tmp/frozen-native"),{})
+
 if __name__ == "__main__":unittest.main()

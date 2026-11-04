@@ -77,10 +77,17 @@ impl ReadClients {
             Workload::Concert,
             EDGE.validate()?,
         )?;
+        let identity = ServiceIdentityClientInterceptor::new(Workload::Post, token)?;
         Ok(Self {
-            auth:wire::auth_owner_authority_service_client::AuthOwnerAuthorityServiceClient::with_interceptor(auth,ServiceIdentityClientInterceptor::new(Workload::Post,token)?).max_decoding_message_size(65536).max_encoding_message_size(65536),
-            friend:wire::friend_owner_authority_service_client::FriendOwnerAuthorityServiceClient::with_interceptor(friend,ServiceIdentityClientInterceptor::new(Workload::Post,token)?).max_decoding_message_size(65536).max_encoding_message_size(65536),
-            root:wire::concert_root_read_service_client::ConcertRootReadServiceClient::with_interceptor(signer.client(root),ServiceIdentityClientInterceptor::new(Workload::Post,token)?).max_decoding_message_size(16384).max_encoding_message_size(65536),
+            auth: wire::auth_owner_authority_service_client::AuthOwnerAuthorityServiceClient::with_interceptor(
+                auth, identity.clone(),
+            ).max_decoding_message_size(65536).max_encoding_message_size(65536),
+            friend: wire::friend_owner_authority_service_client::FriendOwnerAuthorityServiceClient::with_interceptor(
+                friend, identity.clone(),
+            ).max_decoding_message_size(65536).max_encoding_message_size(65536),
+            root: wire::concert_root_read_service_client::ConcertRootReadServiceClient::with_interceptor(
+                signer.client(root), identity,
+            ).max_decoding_message_size(16384).max_encoding_message_size(65536),
         })
     }
     fn request<T>(&self, a: &ReadAdmission, value: T) -> Result<Request<T>, Error> {

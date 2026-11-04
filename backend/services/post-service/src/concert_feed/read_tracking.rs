@@ -249,3 +249,7 @@ fn id(value: &str) -> Result<Uuid, Error> {
         .filter(|id| !id.is_nil() && id.to_string() == value)
         .ok_or(Error::Authority)
 }
+
+#[cfg(test)]
+#[path = "read_tracking_tests.rs"]
+mod tests;

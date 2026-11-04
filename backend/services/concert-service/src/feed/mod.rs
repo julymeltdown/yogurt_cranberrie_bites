@@ -2,5 +2,6 @@
 pub mod cursor;
 pub mod live_read;
 pub mod owner;
+pub mod qualified_transport;
 pub mod queue;
 pub mod wire;

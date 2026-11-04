@@ -166,3 +166,20 @@ The composer delegated the exact Post build path and owns matching Concert/root
 composition. Export, compilation, actual native PostgreSQL/guarded transport,
 joined HTTP acceptance and final direct publication remain open. No live Feed,
 BE31/BE32 or IN01 acceptance is claimed by these source changes.
+
+The task also contains a scoped Concert-to-Post transport using the dedicated
+signer, fixed Post mTLS identity, all four qualified envelopes and the original
+scope deadline. It supplies the actual scope views/root capability and requires
+no-store responses. Mutation and receipt methods retain unavailable defaults.
+
+Three authored native Post storage cases cover a lost Track acknowledgement
+followed by actual rollback, committed-without-witness refusal, and durable
+acknowledgement ordering plus exact same-transaction committed witness. These
+explicitly use fixture acknowledgements to test the producer store; they cannot
+qualify real owner exclusion or guarded HTTP. They require an explicitly leased
+PostgreSQL controller and have NOT_RUN status until executed. The frozen runner's
+--post-native-storage mode pins one exact library binary/source inventory and
+executes all three exact cases, refusing zero execution or skipped success.
+Its nine Python preflight cases pass. Concurrent qualified reads reserve a
+bounded half-pool permit before opening their protected connection, leaving
+control connections for durable acknowledgement writes.
