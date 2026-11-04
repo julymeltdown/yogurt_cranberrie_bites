@@ -1,0 +1,97 @@
+{
+  "at": "2026-11-04T07:33:57.936675+00:00",
+  "status": "CURRENT_COHORT_INCOMPLETE",
+  "attempt": "attempt-10",
+  "processExit": 1,
+  "applicationSource": "e237572719602da6a1a08b7fe0579b0e9c96da1f",
+  "historyMerge": "05b9f9aeca4135042c1420081fe02fa6019d0e70",
+  "backendSource": "eb02a2e13e7c3d2d4866071aa9cf077dda13d0dc",
+  "descriptorSha256": "5daa2d88650c9c4045440860561e42454e3d68ac7b8297bb720bb2804b746570",
+  "resourceSlot": "IN01-CURRENT-REAL-BROWSER-202611040723Z",
+  "origin": "http://localhost:5173",
+  "sourceVerification": {
+    "applicationContractInputsExactPublished": 1154,
+    "exactLoadedDriverSnapshots": 6,
+    "captureHashesVerified": 4,
+    "loadedAssetHashesVerified": 4,
+    "prior65DeliveredPostimagesPreservedInGit": true
+  },
+  "originalCriteria": {
+    "independentAccounts": "PASS",
+    "authorizedWorld": "PASS",
+    "bidirectionalMovementAndAck": "PASS",
+    "persistentPanels": "PASS",
+    "themeRuntimeAndLocalPersistence": "PASS",
+    "customization": "FAIL",
+    "sustainedCurrentAuthWorld": "PASS",
+    "realBrowserReconnect": "PASS",
+    "singleActualPhaserGame": "PASS",
+    "finalWorldInvariants": "PASS"
+  },
+  "actualRefresh": {
+    "status": "NOT_RUN",
+    "reason": "Actual deployment token TTL900s exceeds the immutable runtime window; no actual App reload-resume path or owned401trigger. No expiry/token/clock manipulation."
+  },
+  "profileIncident": {
+    "actorA": [
+      {
+        "principal": 0,
+        "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/me",
+        "method": "GET",
+        "status": 504,
+        "at": "2026-11-04T07:28:57.125Z",
+        "correlation": null
+      },
+      {
+        "principal": 0,
+        "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/me",
+        "method": "GET",
+        "status": 504,
+        "at": "2026-11-04T07:28:57.171Z",
+        "correlation": null
+      }
+    ],
+    "actorB": [
+      {
+        "principal": 1,
+        "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/me",
+        "method": "GET",
+        "status": 200,
+        "at": "2026-11-04T07:28:58.144Z",
+        "correlation": null
+      }
+    ],
+    "actualResponseKeysTypes": "NOT_CAPTURED: privacy-limited observer retained status/path/time only; no new request to reconstruct an unavailable body.",
+    "avatarSave": "NOT_RUN: no actual PUT after the editor could not load its saved character.",
+    "qualification": "Actual HTTP504 is a producer/deadline availability boundary, not evidence that a200 DTO failed the frontend predicate."
+  },
+  "artReview": {
+    "status": "PASS_STATIC_RENDERING_ONLY",
+    "method": "Direct inspection of actual final two-context native captures and saved unavailable-editor capture plus exact loaded selected-atlas hashes.",
+    "sourcePack": "mcr_user_characters_20261103 revision3, photo01 selected whole-character atlas",
+    "findings": [
+      "Both authorized players render approved static characters at coherent scale with foreground occlusion.",
+      "Local theme appearances differ across isolated contexts.",
+      "The editor explicitly reports unavailable preview after /me504 and offers no choices/save; no fallback or fabricated saved character is used."
+    ],
+    "limits": "No customization save/changed peer-avatar proof for this current cohort; no motion, four-direction or broad era/design approval."
+  },
+  "backendOwnerReadOnlyObservation": {
+    "at": "2026-11-04T07:31:41Z",
+    "provenance": "BackendRoot direct report; not frontend SQL or independent transaction audit.",
+    "preparedTransactions": 0,
+    "activeDatabaseWaiters": 0,
+    "authFriendCompletedEach": 19,
+    "participantsEach": {
+      "committed": 8,
+      "aborted": 25
+    },
+    "rootSerializedDeliveredFinished": 17,
+    "rootFinishedUnserializedUndelivered": 2,
+    "qualification": "Failed requests settled; owner distinguishes this from the earlier quarantined incident and is tracing Gateway/Concert deadline/cause. No SQL mutation/rollback by frontend."
+  },
+  "releaseReceiptSha256": "7fd238055679ee59fdbe01233d87f21b474baeb7b7d93da2d1bfb0d6605c3b56",
+  "reportSha256": "213192e48b867963b155318b266b189f781993b3649abe4fbd7c367ed435bea3",
+  "goal": "Original full IN01 remains incomplete; aligned unfinished goal reused with historical BLOCKED API metadata, no false completion/reset/new budget.",
+  "next": "BackendRoot actual /me deadline recovery and fresh immutable runtime plus named browser allocation before any repeat. Preserve historical15d pass and4af refresh failure separately."
+}

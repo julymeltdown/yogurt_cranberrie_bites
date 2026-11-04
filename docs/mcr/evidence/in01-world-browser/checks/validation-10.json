@@ -1,0 +1,145 @@
+{
+  "at": "2026-11-04T07:35:02.214797+00:00",
+  "status": "PASS_SOURCE_VALIDATION",
+  "tests": 10,
+  "syntaxFiles": 8,
+  "commands": [
+    {
+      "command": [
+        "node",
+        "--test",
+        "frontend/e2e/real/world/in01/guards.test.mjs",
+        "frontend/e2e/real/world/in01/status.test.mjs"
+      ],
+      "exitCode": 0,
+      "stdout": "\u2714 rejects malformed, missing, expired and near-expiry windows (1.020875ms)\n\u2714 rejects invalid parent and unadmitted origins before browser allocation (0.468833ms)\n\u2714 rejects cohort replacement even when its new expiry is still valid (0.539083ms)\n\u2714 rejects run identifiers that could overwrite outside the owned evidence tree (0.164792ms)\n\u2714 accepts the explicit localhost deployment origin while rejecting variants (0.130583ms)\n\u2714 empty and partial evidence cannot pass the original runtime gate (0.387625ms)\n\u2714 every original runtime criterion is required (0.130667ms)\n\u2714 a service or runtime failure remains nonzero even with other passing evidence (0.073834ms)\n\u2714 complete runtime evidence keeps art inspection explicit (0.057583ms)\n\u2714 late browser, stream or resource faults cannot certify an otherwise complete run (0.059625ms)\n\u2139 tests 10\n\u2139 suites 0\n\u2139 pass 10\n\u2139 fail 0\n\u2139 cancelled 0\n\u2139 skipped 0\n\u2139 todo 0\n\u2139 duration_ms 42.808542\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "node",
+        "--check",
+        "frontend/e2e/real/world/in01/control.mjs"
+      ],
+      "exitCode": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "node",
+        "--check",
+        "frontend/e2e/real/world/in01/flows.mjs"
+      ],
+      "exitCode": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "node",
+        "--check",
+        "frontend/e2e/real/world/in01/guards.mjs"
+      ],
+      "exitCode": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "node",
+        "--check",
+        "frontend/e2e/real/world/in01/guards.test.mjs"
+      ],
+      "exitCode": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "node",
+        "--check",
+        "frontend/e2e/real/world/in01/run.mjs"
+      ],
+      "exitCode": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "node",
+        "--check",
+        "frontend/e2e/real/world/in01/session.mjs"
+      ],
+      "exitCode": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "node",
+        "--check",
+        "frontend/e2e/real/world/in01/status.mjs"
+      ],
+      "exitCode": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "node",
+        "--check",
+        "frontend/e2e/real/world/in01/status.test.mjs"
+      ],
+      "exitCode": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "retained-oxlint",
+        "frontend/e2e/real/world/in01"
+      ],
+      "exitCode": 0,
+      "stdout": "",
+      "stderr": ""
+    }
+  ],
+  "credentialSeedScan": {
+    "status": "PASS",
+    "files": 89,
+    "valuesExported": false
+  },
+  "runtime": "FAIL exit1 due customization /me504; other originalWorld stages and91.4s sustained check PASS. Expiry-driven refresh NOT_RUN.",
+  "boundaryCore": {
+    "status": "PASS",
+    "exitCode": 0,
+    "base": "05b9f9aeca4135042c1420081fe02fa6019d0e70",
+    "authoredPaths": [
+      "docs/mcr/evidence/in01-world-browser/attempt-10/control.mjs.snapshot",
+      "docs/mcr/evidence/in01-world-browser/attempt-10/customization-actual.png",
+      "docs/mcr/evidence/in01-world-browser/attempt-10/flows.mjs.snapshot",
+      "docs/mcr/evidence/in01-world-browser/attempt-10/guards.mjs.snapshot",
+      "docs/mcr/evidence/in01-world-browser/attempt-10/release.json",
+      "docs/mcr/evidence/in01-world-browser/attempt-10/report.json",
+      "docs/mcr/evidence/in01-world-browser/attempt-10/run.mjs.snapshot",
+      "docs/mcr/evidence/in01-world-browser/attempt-10/session.mjs.snapshot",
+      "docs/mcr/evidence/in01-world-browser/attempt-10/status.mjs.snapshot",
+      "docs/mcr/evidence/in01-world-browser/attempt-10/theme-parade.png",
+      "docs/mcr/evidence/in01-world-browser/attempt-10/world-final-a.png",
+      "docs/mcr/evidence/in01-world-browser/attempt-10/world-final-b.png",
+      "docs/mcr/evidence/in01-world-browser/checks/qualification-10.json",
+      "docs/mcr/evidence/in01-world-browser/checks/run-10.log",
+      "docs/mcr/evidence/in01-world-browser/checks/validation-10.json",
+      "docs/mcr/frontend/in01-browser-journey.md",
+      "frontend/e2e/real/world/in01/flows.mjs",
+      "frontend/e2e/real/world/in01/guards.mjs",
+      "frontend/e2e/real/world/in01/guards.test.mjs",
+      "frontend/e2e/real/world/in01/run.mjs",
+      "frontend/e2e/real/world/in01/session.mjs",
+      "frontend/e2e/real/world/in01/status.mjs"
+    ],
+    "count": 22,
+    "qualification": "Unchanged checker core with exact authorized evidence/document set; history-only source sync is excluded from the authored patch."
+  }
+}

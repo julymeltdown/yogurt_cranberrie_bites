@@ -7,7 +7,7 @@ export function liveBinding(value,now=Date.now()){
  assert(Number.isSafeInteger(value.runtime_owner_pid)&&value.runtime_owner_pid>1,'LIVE_PARENT_INVALID')
  const expires=Date.parse(value.expires_at)
  assert(Number.isFinite(expires)&&Number.isFinite(now)&&expires-now>=15000,'LIVE_LEASE_EXPIRED_OR_INVALID')
- assert(value.browser_origin==='http://127.0.0.1:5173','APP_ORIGIN_NOT_ADMITTED')
+ assert(['http://127.0.0.1:5173','http://localhost:5173'].includes(value.browser_origin),'APP_ORIGIN_NOT_ADMITTED')
  const gateway=new URL(value.gateway_url),world=new URL(value.world_ws_url)
  assert(gateway.protocol==='http:'&&gateway.hostname==='127.0.0.1'&&!gateway.username&&!gateway.password,'GATEWAY_NOT_LOCAL')
  assert(world.protocol==='ws:'&&world.hostname==='127.0.0.1'&&world.pathname==='/world-ws'&&!world.username&&!world.password,'WORLD_ENDPOINT_NOT_LOCAL')

@@ -58,3 +58,16 @@ export async function singleGame(j){return j.check('singleActualPhaserGame',asyn
 })}
 
 export async function invariants(j){return j.check('finalWorldInvariants',async()=>{const values=j.observers;assert.equal(new Set(values.map(o=>o.baseline?.selfUserId)).size,2);for(const o of values){assert.equal(o.active,1);assert.equal(o.peak,1);assert.equal(o.invalid,0);assert.equal(o.privacyFields,0);assert.equal(o.players.size,2);assert(o.baseline);assert.equal(o.baseline.roomId,values[0].baseline.roomId);assert.equal(o.baseline.eventId,values[0].baseline.eventId);for(const other of values)assert(o.players.has(other.baseline.selfUserId))}assert.deepEqual(j.state().errors,[]);return {independentIdentities:2,liveStreams:2,playersPerStream:2,peakSocketsPerContext:1,invalidFrames:0,privateFields:0,lateErrors:0}})}
+
+
+export async function sustain(j){return j.check('sustainedCurrentAuthWorld',async()=>{
+ const start=Date.now(),frames=j.observers.map(o=>o.frames),identities=j.observers.map(o=>o.baseline.selfUserId),room=j.observers[0].baseline.roomId
+ for(let cycle=0;cycle<6;cycle++){
+  for(let i=0;i<2;i++){const p=j.pages[i];await world(p);await nav(p,'Me').click();await expect.poll(()=>new URL(p.url()).pathname).toBe('/me');await expect(p.getByRole('link',{name:'Dress up',exact:true})).toBeVisible();await world(p)}
+  await j.pages[0].waitForTimeout(15000);await j.guard()
+  for(let i=0;i<2;i++){const o=j.observers[i];assert.equal(o.active,1);assert.equal(o.peak,1);assert.equal(o.baseline?.selfUserId,identities[i]);assert.equal(o.baseline?.roomId,room);assert.equal(o.players.size,2);assert.equal(o.invalid,0);assert.equal(o.privacyFields,0)}
+ }
+ const refresh=j.state().requests.filter(r=>r.path==='/api/auth/refresh'&&r.method==='POST');assert(refresh.every(r=>r.status===200),'REAL_CURRENT_APP_REFRESH_FAILED')
+ assert(j.observers.every((o,i)=>o.frames>=frames[i]+4));assert.deepEqual(j.state().errors,[])
+ return {durationMs:Date.now()-start,cycles:6,independentLiveIdentities:2,sameRoom:true,realProfileNavigations:12,refreshObservation:refresh.length?{status:'PASS',mechanism:'Actual canonical App HTTP refresh observed'}:{status:'NOT_RUN',reason:'Actual deployment token TTL900s exceeds the immutable runtime window; no actual App reload-resume path or owned401trigger. No expiry/token/clock manipulation.'},successfulRefreshRequests:refresh.length,refreshPrincipals:[...new Set(refresh.map(r=>r.principal))],noAuthInjectionOrMock:true,oneSocketPerContext:true,protocolPrivacyAndLateErrors:0}
+})}

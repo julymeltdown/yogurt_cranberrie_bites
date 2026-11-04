@@ -1,0 +1,16 @@
+{
+  "at": "2026-11-04T07:31:23.615772+00:00",
+  "slot": "IN01-CURRENT-REAL-BROWSER-202611040723Z",
+  "status": "FULLY_RELEASED",
+  "processExit": 1,
+  "runnerPids": [],
+  "ipv4AndIpv6Port5173Free": true,
+  "browserContextsProxyServerProfileCacheTempClosed": true,
+  "ownTempDirectories": 0,
+  "ownDependencyLinkRemoved": true,
+  "durableBytes": 2672972,
+  "wholePeakMeasuredMiB": 34.15,
+  "lowestFreeGiB": 37.982,
+  "finishedBeforeFixedExpiry": true,
+  "noFurtherBrowserRetryWithoutNewAllocation": true
+}
