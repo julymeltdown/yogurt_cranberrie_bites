@@ -1,5 +1,7 @@
 //! No forged JWT, HttpConcertAccess, client address or positive owner scope.
-//! A transport gate delays polling the *unchanged* production response body.
+//! An ungated actual TCP request covers production terminal framing.
+//! The three held-frame cases use a StreamBody gate and intentionally change
+//! the size hint; they do not certify unchanged fixed-length framing.
 use super::{environment, fixture::Fixture};
 use api_gateway::{
     adapters::{
@@ -291,12 +293,26 @@ async fn actual_public_router_retains_real_owners_and_checks_before_bytes() -> a
     }
     config.concert_grpc_endpoint = Some(endpoint);
     let (gates_tx, mut gates) = mpsc::unbounded_channel();
-    let router = with_transport_layers(
+    let production_router = with_transport_layers(
         gateway_http::router(Arc::new(state)),
         &config,
         TrustedProxies::default(),
-    )
-    .layer(from_fn_with_state(Gates(gates_tx), gate_body));
+    );
+    // Clone the real production composition BEFORE the held-frame test layer.
+    // No synthetic stream, altered size hint, test header or body gate occurs
+    // on this listener. Fixed-size serialization must still reach completion.
+    let ungated_listener = tokio::net::TcpListener::bind("127.0.0.1:0").await?;
+    let ungated_address = ungated_listener.local_addr()?;
+    let ungated_router = production_router.clone();
+    tasks.0.push(tokio::spawn(async move {
+        axum::serve(
+            ungated_listener,
+            ungated_router.into_make_service_with_connect_info::<std::net::SocketAddr>(),
+        )
+        .await
+        .expect("owned ungated Gateway HTTP listener");
+    }));
+    let router = production_router.layer(from_fn_with_state(Gates(gates_tx), gate_body));
     let listener = tokio::net::TcpListener::bind("127.0.0.1:0").await?;
     let address = listener.local_addr()?;
     tasks.0.push(tokio::spawn(async move {
@@ -309,6 +325,51 @@ async fn actual_public_router_retains_real_owners_and_checks_before_bytes() -> a
     }));
 
     let event = Uuid::new_v4();
+    let mut ungated_socket = request(ungated_address, event, token).await?;
+    let mut ungated_bytes = Vec::new();
+    tokio::time::timeout(
+        Duration::from_secs(4),
+        ungated_socket.read_to_end(&mut ungated_bytes),
+    )
+    .await??;
+    let ungated_scope = scopes
+        .try_recv()
+        .map_err(|_| anyhow::anyhow!("ungated actual producer dispatch absent"))?;
+    let ungated_text = std::str::from_utf8(&ungated_bytes)?;
+    let (headers, body) = ungated_text
+        .split_once("\r\n\r\n")
+        .ok_or_else(|| anyhow::anyhow!("ungated actual HTTP headers absent"))?;
+    anyhow::ensure!(
+        headers.starts_with("HTTP/1.1 403"),
+        "ungated closed refusal status missing"
+    );
+    anyhow::ensure!(
+        !headers.to_ascii_lowercase().contains("content-length:")
+            && headers
+                .to_ascii_lowercase()
+                .contains("transfer-encoding: chunked")
+            && body.ends_with("0\r\n\r\n"),
+        "ungated actual terminal framing did not await settlement"
+    );
+    anyhow::ensure!(
+        body.contains("PERMISSION_DENIED") && !ungated_text.contains("PRIVATE_PRODUCER_DIAGNOSTIC"),
+        "ungated closed refusal projection invalid"
+    );
+    anyhow::ensure!(
+        (pending(&f.auth).await?, pending(&f.friend).await?) == (0, 0),
+        "ungated actual EOF left canonical owners prepared"
+    );
+    let exact = ungated_scope.producer_scope();
+    let delivered: (String,bool) = sqlx::query_as(
+        "select phase,delivery_completed_at is not null from concert_product_owner_scopes where instance_id=$1 and scope_id=$2 and binding_digest=$3")
+        .bind(Uuid::parse_str(&exact.instance_id)?).bind(Uuid::parse_str(&exact.scope_id)?)
+        .bind(&exact.binding_digest).fetch_one(&f.concert).await?;
+    anyhow::ensure!(
+        delivered == ("ROOT_FINISHED".to_owned(), true),
+        "ungated actual terminal framing lacks genuine durable DeliveryCompleted"
+    );
+    writer_probe(&f.auth, actor, false, false).await?;
+    writer_probe(&f.friend, actor, true, false).await?;
     let mut quarantined = 0;
     for terminal in [Terminal::Complete, Terminal::Disconnect, Terminal::Expire] {
         let mut reset = if terminal == Terminal::Disconnect {
@@ -409,6 +470,6 @@ async fn actual_public_router_retains_real_owners_and_checks_before_bytes() -> a
         }
     }
     f.assert_no_recovery_calls();
-    println!("actual login/JWT/current Auth+Profile/full public router/socket normalization/production retained HTTP EOF settles both real owners; actual TCP reset drops the unopened response body and retains both guards; delayed poll past original ceiling discloses no representation and retains both guards. Two scopes remain quarantined for owned-cluster teardown; no positive product, Gift, full TLS identity-main or restart claim");
+    println!("actual login/JWT/current Auth+Profile/full public router/socket normalization/ungated actual terminal HTTP framing settles both real owners and records genuine DeliveryCompleted; separate held-frame gate EOF settles both owners; actual TCP reset drops the unopened response body and retains both guards; delayed poll past original ceiling discloses no representation and retains both guards. Two scopes remain quarantined for owned-cluster teardown; no positive product, Gift, full TLS identity-main or restart claim");
     Ok(())
 }

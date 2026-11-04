@@ -522,8 +522,9 @@ test process's standard-input pipe. No `HttpConcertAccess`, verified client
 address, positive owner scope or successful application producer is fabricated.
 
 The negative producer deliberately refuses after checking durable delivery
-publication. A test-only outer gate delays polling the unchanged production
-HTTP body, preserving every data/error/trailer frame. Planned checks cover real
+publication. A test-only outer gate preserves every production data/error/trailer frame
+while delaying polling. Its StreamBody changes the size hint, so this gated
+fixture does not certify unchanged fixed-length terminal framing. Planned checks cover real
 owner writer exclusion before body consumption, actual EOF settlement, real
 TCP reset with observed destruction of the unopened HTTP body, and expiry
 before first body disclosure with continued quarantine. Actual identity
@@ -622,3 +623,13 @@ remain preserved separately. Positive Product/Gift, a full child-composer join,
 physical Root restart and current main activation remain separate open gates.
 The concurrent three native child-recovery component results are documented
 in `child-recovery-runtime.md`; they do not certify those remaining flows.
+
+### Material HTTP framing limitation and pending ungated regression
+
+The exact `8bb61f85` native PASS report remains evidence for held-frame owner exclusion, gated EOF, expiry-before-disclosure and actual unopened-body TCP reset. The StreamBody test gate replaces the production body size hint with an unknown length. It can therefore mask a transport skipping terminal polling after fixed-length serialized bytes. It does **not** prove unchanged production terminal framing or acceptance of the public C03 journey.
+
+Root's `3710a029` fixes this production boundary and adds actual ungated TCP tests with explicit nonempty and zero Content-Length plus unchanged unscoped framing. Its public C03 rerun separately requires actual canonical owner and delivery settlement. Earlier gated evidence is not retroactively upgraded by those source changes.
+
+The additional canonical HTTP regression clones the full production router **before** adding the test gate, serves it on a separate actual socket, and sends one actual logged-in public request without a fixture header or body transformation. It requires the real closed 403 response, protected chunked terminal framing, both actual owner prepared sets zero, actual rollback-only invalidating writers unblocked, and the exact durable RootFinished plus DeliveryCompleted receipt. Existing three gated cases remain separately bounded coverage. No production files, shared dependency manifests, lockfiles or positive owner/identity doubles change in this correction.
+
+This additional regression is source-only: compilation and actual runtime are `NOT_RUN`. Integrate it serially after the scoped `dea44838` HTTP handoff and qualify coherently with Root's production framing fix. No passing result is inferred from formatting, source review or the earlier gated binary.
