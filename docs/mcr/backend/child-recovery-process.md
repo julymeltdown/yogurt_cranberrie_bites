@@ -2,7 +2,7 @@
 
 ## Scope and status
 
-CR01 is implemented as an ignored, explicitly invoked integration test and an owned four-database PostgreSQL 16 controller. Initial compilation and physical runtime are `NOT_RUN`. The already qualified child-worker component and Gateway HTTP tests are separate evidence; neither certifies this process boundary. All six contract cases now have source fixtures; CR03 has separate ACTIVE and SEALED variants. Compilation and every physical case remain NOT_RUN. Production main activation belongs to the delivery integrator.
+All six required contract cases passed on exact frozen source `753977ae58b1270998c5c31a0e4a02a16deaf527`; CR03 ACTIVE and SEALED ran separately, for seven actual physical runs. Each run used an owned four-database PG16/mTLS fixture and actual process death/replacement. The fresh receipt section below records commands, source/binary hashes, native observations, failures and limits. Earlier per-case authoring notes retain their historical NOT_RUN statements; they do not describe this later execution. Production main activation belongs to the delivery integrator.
 
 The controller starts the exact frozen `process_child_recovery` test executable twice. The old process uses actual Product/Delivery services, canonical Auth/Friend stores, the source-bound PublicProfileReader, strict fixture mTLS, real Local/Profile children, and native prepared transactions. A negative-only Auth Complete fault leaves a genuinely finished Root with two durable pending children, no producer transaction, and no delivery receipt. After that genuine terminal proof, an exact Profile Complete transport fault and a negative Local settlement fault make both child settlements unavailable. An old-process production worker iteration must attempt both, observe the actual Profile fault, and preserve both pending intents and native guards. The replacement restores the actual typed settlers and Profile completion service. The controller SIGKILLs and reaps its exact old child, then starts a distinct replacement PID with the same instance and keyring and an empty ScopeRegistry.
 
@@ -57,3 +57,41 @@ Two production workers then use independent cursors on the same composed ledger,
 Clearing the hang on that same configured settler restores the real Local native adapter; a fresh worker must settle the remaining guard and record the fourth unique ACK. Actual Auth/Friend root-proof recovery must then release both owners for both roots. All eight native guards must be normally settled, while both old content paths and Delivery remain denied and neither delivery receipt is fabricated. Private runtime counters distinguish overlapping ACK-success counts from unique durable ACK rows (three before restoration, four after). Repeated drains must change no completion timestamps or identity.
 
 The separate `qualify_cr06.py --execute` runner requires the complete clean source/executable checkpoint, checks its own and the exact controller's pinned bytes, owns a new four-database PG16/mTLS fixture and verifies normal zero-prepared work before teardown. Focused static API/ownership/cursor/native review found no concrete defect; receiving-owner controller review fixed the inherited case default and added script hash checks. Rustfmt and Python AST passed. Compilation, actual scheduling/timeout behavior and physical runtime remain NOT_RUN. External Gateway HTTP, independently surviving owner OS processes and production main activation remain separate gates.
+
+
+## Fresh physical qualification: exact 753977ae
+
+All seven runs passed with exact clean source `753977ae58b1270998c5c31a0e4a02a16deaf527`, 3,053 complete source/runtime-resource hashes, and one frozen `process_child_recovery` executable. The exact locked/offline Rust 1.88 no-run command above exited 0 in 34.23 seconds, jobs 2, debug 0, incremental 0. Copied executable size: 48,065,328 bytes. SHA-256: `236b5cc42239bebfe5017fb3ab4932f23b9edd026d029a400f3d661eba276c6f`.
+
+The named BACKEND target was verified unused before compilation. Source-specific application/domain library and contract-build input mtime refreshes forced current metadata without changing bytes or resolutions. Cargo JSON, full checkpoint, build and zero-handle release receipts were frozen outside the target in the private `mcr-child-process-mfqbdruc` evidence directory. The target was explicitly released before any PG/native execution. Each case then ran separately with a fresh owned socket-only PG16 cluster, actual workload mTLS, exact original instance/keys, real owner/native/child implementations, SIGKILL/reap, and distinct replacement PID. All migration receipts matched Auth 17 / Friend 17 / Concert 28 / Profile 9. All cases exited 0; every exact fixture cleanup passed with its owned root absent. Bounded monitors reported no resource abort.
+
+| Run | Fresh physical result before owned teardown |
+| --- | --- |
+| CR01 | Actual old-worker Local/Profile outage preserved two pending intents; distinct replacement settled both actual children, exact native identities and immutable ACKs; actual Auth/Friend recovery; all native prepared sets empty; no DeliveryCompleted. |
+| CR02 | Actual Profile ReadCurrent ran once, real reply was lost, original Profile PREPARE existed; replacement obtained exact SETTLED proof; all native prepared sets empty and owner completion genuine. |
+| CR03 ACTIVE | Original root remained ACTIVE after death, expiry, owner sweep and three actual worker iterations; selected 0 / ACK 0; all four real prepared guards retained and both content/delivery denied. |
+| CR03 SEALED | Original root remained SEALED under the same negative boundary; selected 0 / ACK 0; all four real prepared guards retained. Dropped callbacks and elapsed time did not create RootFinished. |
+| CR04 | Three distinct PIDs: original death, actual omitted-key failure retaining two pending children and four guards, then configured retained-original-key restoration with normal actual settlement; all native prepared sets empty. |
+| CR05 | Actual pinned SDK future was explicitly dropped before Profile handler construction (0 handler calls / 0 original Profile PREPARE); durable intent recovered through the authenticated exact CANCELLED proof; all native prepared sets empty. |
+| CR06 | Two real finished roots, four actual pending children and eight native holds; actual concurrent batch-one workers timed out the exact first Local child while three unique later ACKs/native releases progressed. NOWAIT ledger-row probe succeeded during pending child work. Restoring the same actual adapter produced the fourth unique ACK and normal settlement of all eight native guards. |
+
+CR06 used 250 ms per child and 1,000 ms per system batch; each tick selected/attempted at most one intent. Overlapping workers reported six ACK successes before restoration but only three unique immutable ACK rows. These counts are deliberately distinct. After restoration there were exactly four unique ACK rows, with one actual adapter ACK success completing the held child.
+
+CR03's four prepared guards were observed intact before owned cluster teardown; those runs do not receive normal-native-settlement credit. Normal recovery in the other five runs ended with Auth/Friend/Concert/Profile native prepared counts all zero before cleanup. No run fabricated DeliveryCompleted. Per-run fields saying other cases are NOT_RUN refer to that individual invocation; the aggregate includes seven independently executed receipts.
+
+### Preserved failures and exact repairs
+
+The first no-run build at `a65c05c7` exited 101 on three actual Tonic body-type diagnostics in the negative-only test wrappers. Exact two-file successor `d99e82e462d0cce1cd15789aeba8a21f08e0da6a` normalizes forwarded intercepted bodies to `tonic::body::Body` and supplies typed empty negative response bodies. It compiled successfully. Its first actual CR01 run failed because the inherited PKI helper created only Auth/Friend/Concert/Gateway certificates, while the real Profile server required its own identity. Exact owned cleanup passed; that failure remains FAIL.
+
+Successor `753977ae58b1270998c5c31a0e4a02a16deaf527` changes only five test-support Python paths. It issues a genuine Profile certificate from the exact owned fixture CA, with the Profile workload SAN and private key mode, and invokes that helper from every physical runner. Python AST and scoped source checks passed. A new complete source checkpoint and actual no-run build were recorded before rerunning the whole seven-case cohort. Older source/binary/checkpoints and failed receipts are preserved; none is relabelled as successful.
+
+### Receipt digests and limits
+
+- Build receipt SHA-256: `eebe055ec2fc183bbc46fa2a813a08a920f3b9163f56e257fe4cc7d4c62030a2`.
+- Complete checkpoint: `4442f8827286c07058429168183e1b2f805e9fd17f7ae8bafa2894789e7ea6e8`.
+- Target release: `eb75adb6bd0b5adaf44b008f86eb9170d0e3de491e02c2e720f6db74e44746b5`.
+- Seven-case summary: `37419d348b690a80336eb4a288d3432f91fa196181d534878e67cf83107a1354`.
+
+The private `qualification-753977ae.json` index records every native report digest, actual PID/reap observations, migration counts, native sets, immutable-proof observations and cleanup. The documentation successor records execution of the original source; it does not label the new documentation HEAD as having been built.
+
+This frozen source precedes CR08's additive cancellation schema and Participant handler adoption. These runs certify its actual child-recovery/process boundary, not CR08 on a newer combined source. Actual Auth/Friend/Profile fixture services share each Root PID; independently surviving owner OS processes, external Gateway network HTTP, coherent production main/worker activation, real World/browser journeys, current master ancestry and release acceptance remain separate obligations. CR08 and Participant public HTTP receipts are separate evidence.
