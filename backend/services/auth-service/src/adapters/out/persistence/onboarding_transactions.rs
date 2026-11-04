@@ -291,6 +291,6 @@ pub(crate) async fn resend_verification_connection(
         .bind(origin_traceparent)
         .execute(&mut *connection)
         .await?;
-    audit(&mut tx, user_id, "EMAIL_VERIFICATION_RESENT").await?;
+    audit(connection, user_id, "EMAIL_VERIFICATION_RESENT").await?;
     Ok(())
 }

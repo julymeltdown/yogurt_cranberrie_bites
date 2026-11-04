@@ -13,7 +13,7 @@ use axum::{
     Json, Router,
 };
 use chrono::{SecondsFormat, Utc};
-use rand::RngCore;
+use ring::rand::{SecureRandom, SystemRandom};
 use serde_json::{json, Value};
 use std::sync::Arc;
 use uuid::Uuid;
@@ -123,7 +123,7 @@ async fn begin(
         Ok(Some(value)) => value,
         Ok(None) => {
             let mut bytes = [0u8; 32];
-            if rand::rngs::OsRng.try_fill_bytes(&mut bytes).is_err() {
+            if SystemRandom::new().fill(&mut bytes).is_err() {
                 return failure(EnrollmentFailure::UNAVAILABLE);
             }
             bytes.iter().map(|b| format!("{b:02x}")).collect()
