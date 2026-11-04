@@ -2,85 +2,66 @@
 
 ## Current checkpoint
 
-The [13:33 UTC staffing correction](progress.md#staffing-correction-2026-11-04-1333-utc)
-supersedes the earlier activity census below. Seven existing frontend/art chats
-have concrete accepted assignments and source work; this adds no original-task
-completion. Backend validation/helper assignments are separate from still-pending
-BE41/BE42 production transfers. Frontend KING owns frontend/art allocation and the
-resource lead owns backend allocation; neither source work nor delivery needs a
-king acknowledgment. A new human retro-design instruction is being applied to
-Feed while the frontend chat clarifies whether it covers all ten screens.
+The [current portfolio](progress.md#portfolio-and-staffing-update) incorporates
+frontend14:00 and backend14:04:51/14:06:41 UTC owner/lead digests. No unique original
+task closed this hour. The [112-row register](task-progress-2026-11-04.json) retains
+39 task-criteria outcomes: 13 acceptance dispositions plus 26 original criteria
+closures, with 67 other evidence-bearing tasks, two unreconciled dispositions
+(C07/QA10), and four open integration gates (IN02–IN05). IN01 remains accepted;
+QA01 and FE40 are counted once. These counts are not an effort-weighted percentage.
 
-The following hourly task accounting is retained at its stated cutoff. Later
-runtime outcomes are recorded in the staffing correction, including the failed
-first 200-user provisioning attempt and the next QA08 preparation; no capacity
-acceptance follows from starting an attempt.
+Actual production staffing now includes WorldTickets, a receiving WorldSessions
+scope, Sharing and Notification deletion support, plus the event-cleanup and
+Report startup owners. Full BE42 PrivateData policy/erase/recreation denial and
+Root Auth-to-domain transport remain open. Party ownership has an explicit stale
+reference: former00c's 12 WIP paths and unfinished goal are preserved; the old213
+chat is frontend. The resource lead must confirm an actual backend recipient or
+formally return exact ownership. No implicit restart or duplicate writer.
 
-The [current progress reconciliation](progress.md#current-task-accounting) records
-39 task-criteria outcomes: 13 acceptance dispositions and 26 additional original
-criteria closures. Another 67 tasks have implementation evidence, 2 dispositions
-(C07/QA10) remain unreconciled, and 4 integration gates (IN02–IN05) remain open.
-IN01 remains accepted. The [112-row register](task-progress-2026-11-04.json) preserves
-all exact task identities and owner states; these counts are not an effort-weighted
-product-completion percentage. The frontend 12:57 and backend 13:01 UTC hourly
-reports assert no new unique original closure. QA01 and FE40 are counted once.
+The 14:09 recent-list sample has 15 active implementation/art/QA chats and three
+coordinators. It is not a census or proof of persistent-goal status. Existing
+contexts and isolated checkouts are reused with exact stopped-writer transfers.
+Completed FE204 was archived with history retained. Nine screen workers remain
+CSS-only; feature/art developers own their separately assigned source paths.
 
-QA05's bounded restart/fault pair progressed while its original failure suite
-remains partial. The independent 200-user QA08 qualification has started without
-a capacity-result claim. QA09 has actual paired frontend/backend owners and active
-goals. FE41 remaining integration belongs to Root153 after the CSS-only writer
-stopped and returned its leases. Full reference, device, recovery and release
-requirements remain intact. No extra 900-second expiry or renewal/reload gate is added.
+The user now requires a flatter retro imageboard-style Feed with modern usability.
+Its bounded source/native handoff is ready, with combined application publication
+pending. Extension to all ten screens remains an unanswered question in the
+frontend chat. Other screens continue under their current instructions. Shared
+chrome, BODY palette and art source passes still need consumer/native integration;
+Map technical checks are not full reference-fit acceptance.
 
-The current coordination model has no king or SL technical review stage.
-Developers implement, validate, resolve technical interfaces and commit their
-assigned scopes. Designated backend and frontend/art delivery integrators handle
-normal non-force publication under their existing assignment leases; this is
-publication routing, not an unresolved king permission. Delivery never waits
-for a king/SL inspection, acknowledgment or ledger edit.
-Shared paths retain one explicit writer and physical build slots remain
-coordinated. Required scope and developer validation duties are unchanged.
+QA08 reached200 real Auth/profile accounts but only17 World sockets before a
+World deadline failure. No200-socket or full measurement result is claimed. QA09
+bounded helper publication does not close its six required live recovery cases;
+QA05 remains partial. Original device, public journey, recovery and release
+requirements remain intact; no extra expiry gate is added.
 
-SLs manage feature dependencies, staffing and resource queues autonomously.
-Kings manage major milestones and unresolved cross-lane issues. Routine handoffs
-stay with the SL, technical counterpart or integrator; leads provide one hourly
-digest and main updates the central register in batches. Escalate immediately
-only for an unresolved cross-lane conflict, genuinely unattended critical work
-or a necessary human decision. Routine receipts do not require replies.
+The resource allocator now permits one browser alongside two isolated source-only
+checks after measured host capacity, using separate writable outputs and private
+caches/TMP. Existing Rust/runtime concurrency limits,16GiB acceptance/8GiB running
+floors and cleanup/release duties remain. Source work does not wait for a browser
+merely because both tasks are frontend. No higher permanent floor or all-cleanup
+barrier is added. Root153's affected retirement-dispatch route stays stopped and
+the Title/Focus discarded local-state preservation gap remains explicit.
 
-Use the current portfolio for major outcomes and receiving owners. The 13:04
-recent-list sample has 3 active coordination chats and 8 active implementation/art/QA
-chats; it is not an exhaustive staffing or completed-goal census. Nine foreground
-screen workers remain CSS-only and hand off directly to Root153. Existing feature
-and art owners retain the non-CSS integration and reference-composition work.
+There is no king or SL technical review stage. Developers implement, validate,
+resolve interfaces, fix and commit their scopes. Designated publishers perform
+normal non-force publication; delivery does not wait for a king acknowledgment,
+inspection or ledger edit. Shared entrypoints retain one explicit writer, but
+production composition is not a blanket reservation for one developer.
 
-Actual-owner retention reopened bounded work after fresh-start refusals. The existing limits remain
-16 GiB at acceptance and 8 GiB while running; a fresh per-child 16 GiB condition is
-not part of an already accepted lease. QA08 is running, Feed's short round released,
-and further starts follow actual capacity. No new permanent floor or all-cleanup
-barrier is added. The Title/Focus custody gap remains explicit and Root153's affected
-retirement-dispatch route stays stopped. Source work continues independently.
+SLs manage dependencies, staffing and resource queues autonomously. Kings track
+major outcomes and unresolved cross-lane issues. Routine handoffs go directly to
+the technical counterpart or publisher; one hourly digest uses existing records.
+Escalate genuinely unattended work, unresolved ownership or a required human
+choice. The Wall expanded-tool A/B decision remains unanswered; no new behavior
+is implied. Current visual direction,112 tasks,61 IA and original validation are
+preserved.
 
-Authentic supplied Feed crops may be displayed larger with CSS to match the
-reference. Preserve source files and true intrinsic metadata; do not fabricate
-higher-resolution content. Earlier inferred fit-down-only fixture guidance cannot
-waive the user's required fidelity. Rendering validation remains developer-owned.
-
-Production composition is not a blanket single-developer reservation. Backend SL
-and the implementation owner may transfer disjoint provider/integration modules
-after the former writer stops on exact paths. Shared entrypoints retain one writer,
-the existing publisher and developer validation; no king patch approval is added.
-
-The latest foreground direction authorizes isolated CSS work on nine screens,
-excluding World. Character artwork and separately assigned backgrounds retain
-their existing owners. Full ten-screen reference parity remains open. The Wall
-reference's erase/fill/committed-undo behavior has one developer-owned proposal
-published at `product-decisions/wall-reference-tools.md` and awaiting the human choice; proposal work does
-not authorize application or contract changes. Other delivery continues.
-
-A king or SL receiving a technical review request must decline: "I don't perform
+A king or SL receiving a technical review request declines: "I don't perform
 reviews. The responsible developer owns validation; please resolve this with
-the implementation owner." See the current [milestone and staffing snapshot](progress.md#portfolio-and-staffing-update).
+the implementation owner."
 
 ## Current instruction and queue boundaries
 
