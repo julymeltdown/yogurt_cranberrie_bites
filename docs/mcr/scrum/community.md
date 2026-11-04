@@ -127,6 +127,24 @@ Exact initial exclusive writes only:
 - NEW `docs/mcr/frontend/mural-admin-regressions.md`
 - NEW `docs/mcr/evidence/mural-admin-regressions/**`
 
+Subsequent exact feature hunk allocated on the developer's concrete source
+diagnosis: `frontend/src/features/admin/reports/model/validate.ts`, only
+Schema/keyword whitelist and `oneOf` evaluation compatibility, preserving
+existing budget/depth/closed-field behavior. Owner reports canonical
+AvatarConfig's layered/whole union was rejected before valid member rows were
+read, causing the four downstream member failures; this is a developer-reported
+product decoder issue, not an SL source review. Both valid wire variants and
+malformed/hybrid/private-field regressions stay in the already leased
+`controller.test.ts`. No other production path or hunk is granted. Mural text
+assertions are only preliminarily identified as stale pending owner-run actual
+route, retained-owner and raster qualification; no PASS claim yet.
+
+Exact temporary operational exception: an untracked
+`fe-ref-customize/frontend/node_modules` symlink to the retained
+`/Users/lhs/Desktop/mcr/frontend/node_modules`, only if absent, target read-only,
+no installs/manifest/lock/shared writes. Developer removes only its own exact
+link before final handoff; no target deletion or other write rights.
+
 Existing owner packet: frozen `cb9abce4`, diagnostic publication `62b4bf80`,
 `frontend/src/app/__tests__/production-refresh/evidence/broad-diagnostic.log`.
 Two mural route cases miss “Confirmed revision 10”; four AdminReports cases
