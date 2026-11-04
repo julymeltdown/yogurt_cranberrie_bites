@@ -1,0 +1,159 @@
+{
+  "task": "TITLE-FOCUS-01",
+  "status": "OWNER_QUALIFIED_WITH_RAW_NATIVE_EXIT1_PRESERVED",
+  "packetCommit": "4591f927023d8fb5f5afa3e8d2f11a501543cae4",
+  "prefix": "docs/mcr/evidence/cozy-backgrounds-v1/focus-04/",
+  "reportSha256": "795dadfdaecfafccea1a50242cbb2f14fe290d5b9e7d117224731b1dbf8aeb21",
+  "candidate": "cadf860dd928d58df7f1e8f26a0b4e8dddd03911",
+  "cssSha256": "5c9e194e62eaf438f8b98436b4e8d7315702ead3307e60684fe4f61800d067c4",
+  "rawNativeExit": 1,
+  "rawNativeErrors": [
+    {
+      "id": "map",
+      "mode": "candidate",
+      "width": 390,
+      "error": "Candidate forced focus contrast/clipping unresolved"
+    },
+    {
+      "id": "me",
+      "mode": "candidate",
+      "width": 390,
+      "error": "Candidate forced focus contrast/clipping unresolved"
+    }
+  ],
+  "artifactPins": 53,
+  "declaredSourceAssetPins": 688,
+  "uniqueSourceAssetPins": 346,
+  "uniquePngPins": 43,
+  "titleCases": [
+    {
+      "id": "map",
+      "width": 390,
+      "focusMinimum": 5.756744626436479,
+      "focusedGlyphMinimum": 15.114013729961503,
+      "unfocusedGlyphMinimum": 15.114013729961503,
+      "forcedRawMinimum": 1.0662600638726478,
+      "forcedQualification": {
+        "rawFailedPoint": {
+          "x": 21,
+          "y": 32,
+          "backing": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "paint": [
+            4,
+            0,
+            58,
+            255
+          ],
+          "expected": [
+            4,
+            0,
+            58
+          ],
+          "expectedMatches": true,
+          "contrast": 1.0662600638726478
+        },
+        "headerRgbaIdenticalToBaseline": true,
+        "changedStrokePixels": 1446,
+        "strokePixelsAtLeast3AgainstSuppressedProbe": 1384,
+        "twoPixelPerimeterArea": 988,
+        "conservativeExteriorBandArea": 1004,
+        "allFourOuterEdgesMinimumAgainstAdjacentCanvas": 11.309774587047812,
+        "areaMethodLimit": "Stroke-suppressed focused probe, not a separately captured forced-unfocused state; no full AAA conformance claim"
+      },
+      "meProfileLinkMinimum": null
+    },
+    {
+      "id": "me",
+      "width": 390,
+      "focusMinimum": 5.756744626436479,
+      "focusedGlyphMinimum": 15.114013729961503,
+      "unfocusedGlyphMinimum": 15.114013729961503,
+      "forcedRawMinimum": 1.0662600638726478,
+      "forcedQualification": {
+        "rawFailedPoint": {
+          "x": 21,
+          "y": 32,
+          "backing": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "paint": [
+            4,
+            0,
+            58,
+            255
+          ],
+          "expected": [
+            4,
+            0,
+            58
+          ],
+          "expectedMatches": true,
+          "contrast": 1.0662600638726478
+        },
+        "headerRgbaIdenticalToBaseline": true,
+        "changedStrokePixels": 1446,
+        "strokePixelsAtLeast3AgainstSuppressedProbe": 1391,
+        "twoPixelPerimeterArea": 988,
+        "conservativeExteriorBandArea": 1004,
+        "allFourOuterEdgesMinimumAgainstAdjacentCanvas": 11.309774587047812,
+        "areaMethodLimit": "Stroke-suppressed focused probe, not a separately captured forced-unfocused state; no full AAA conformance claim"
+      },
+      "meProfileLinkMinimum": 5.637375410942099
+    },
+    {
+      "id": "map",
+      "width": 360,
+      "focusMinimum": 5.756744626436479,
+      "focusedGlyphMinimum": 15.114013729961503,
+      "unfocusedGlyphMinimum": 15.114013729961503,
+      "forcedRawMinimum": null,
+      "forcedQualification": null,
+      "meProfileLinkMinimum": null
+    },
+    {
+      "id": "me",
+      "width": 360,
+      "focusMinimum": 5.756744626436479,
+      "focusedGlyphMinimum": 15.114013729961503,
+      "unfocusedGlyphMinimum": 15.114013729961503,
+      "forcedRawMinimum": null,
+      "forcedQualification": null,
+      "meProfileLinkMinimum": 4.809689154424761
+    },
+    {
+      "id": "map",
+      "width": 430,
+      "focusMinimum": 5.756744626436479,
+      "focusedGlyphMinimum": 15.114013729961503,
+      "unfocusedGlyphMinimum": 15.114013729961503,
+      "forcedRawMinimum": null,
+      "forcedQualification": null,
+      "meProfileLinkMinimum": null
+    },
+    {
+      "id": "me",
+      "width": 430,
+      "focusMinimum": 5.756744626436479,
+      "focusedGlyphMinimum": 15.114013729961503,
+      "unfocusedGlyphMinimum": 15.114013729961503,
+      "forcedRawMinimum": null,
+      "forcedQualification": null,
+      "meProfileLinkMinimum": 5.637375410942099
+    }
+  ],
+  "limits": [
+    "Readback of actual custodian captures, no new rendering or copied packets",
+    "Synthetic transport/default-router qualification only; no live/multiuser/device or broad design/WCAG acceptance",
+    "Meet is separately owned; its source and artifacts are pinned but no Meet acceptance is claimed here",
+    "No CSS repair or recapture is justified by the inherited black-glyph point alone",
+    "Owner visual inspection and remote publication readback remain separate"
+  ]
+}

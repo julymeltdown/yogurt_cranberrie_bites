@@ -215,3 +215,127 @@ fix at 360/390/430 plus representative forced colors, focused/unfocused glyphs
 and the existing Me profile first-link focus. Root owns that capture checkout;
 this developer owns interpretation, title-paint fixes and final documentation.
 No independent duplicate browser/native cohort is launched here.
+
+## Immutable focus-04 packet and resumed owner qualification
+
+The earlier resource dependency persisted across three no-progress goal turns;
+the original goal was truthfully marked **BLOCKED**, with Root/UI notified and
+all implementation requirements intact. On the actual packet handoff this same
+context resumed. `get_goal` still returned **BLOCKED**; its objective, identity
+and metadata were preserved, with no replacement goal or false completion.
+
+Custodian packet commit: `4591f927023d8fb5f5afa3e8d2f11a501543cae4`.
+Canonical files remain in Root's checkout under
+`docs/mcr/evidence/cozy-backgrounds-v1/focus-04/`; nothing was copied or restored.
+Candidate: `cadf860dd928d58df7f1e8f26a0b4e8dddd03911`.
+Executed driver SHA-256:
+`f3d7db08efcce14a3f507113b6c6f3f556b0eb35385b2525515e78244b2bcc2d`.
+Raw report SHA-256:
+`795dadfdaecfafccea1a50242cbb2f14fe290d5b9e7d117224731b1dbf8aeb21`.
+Capture packet SHA-256:
+`c489b856143bc728bb02ed48ef59e2f16fc64d33ed030662bce8daa8ceed768d`.
+
+The immutable run retains native **exit 1**, raw `OPEN_FAILURES`, and exactly two
+candidate Map/Me390 forced-color assertions. At (21,32), a system stroke over a
+black title glyph changes black to (4,0,58), giving 1.0662601:1; this sample is
+also present in the baseline. The other three measured points are against white
+Canvas. No raw artifact, return code or failure is relabeled by owner analysis.
+The four prior source-check commands exited 0, including 15 tests in three files,
+TypeScript, lint and syntax. The native job ended at 18:04:00.512510 KST after
+63.915931 seconds; its guard records temporary/link cleanup. These custodian
+records still require the independent pin/readback check below.
+
+Original candidate Map forced390, Me focused390 and Me profile-link focused390
+PNGs were visually inspected in place. The forced title is black on Canvas with
+a visible blue outline. Normal title focus shows the symmetric exposed paper
+surround; moving to Edit profile restores the original dark title backing. A
+single low same-pixel glyph-overlap measurement does not establish invisible
+focus, and does not justify changing frozen foreground or geometry.
+
+The adapted `check-native.py` preserves those exact raw failures and independently
+checks all declared source/asset/artifact/PNG hashes, normal title states, Me link
+focus, frozen geometry/characters, forced header RGBA identity before/after,
+all four outer edges against adjacent Canvas, and qualifying stroke area. Its
+area calculation excludes pixels whose contrast against the suppressed-stroke
+probe is below 3:1. [W3C Focus Appearance guidance](https://www.w3.org/WAI/WCAG22/Understanding/focus-appearance.html)
+defines a rectangular two-pixel perimeter area as `4w + 4h`; the checker also
+requires exceeding the larger complete exterior-band area. The probe retains
+focus while suppressing only the stroke; it is not an actual forced-unfocused
+capture, and this analysis makes no full AAA/WCAG conformance claim.
+[W3C Non-text Contrast guidance](https://www.w3.org/WAI/WCAG22/Understanding/non-text-contrast)
+separately discusses adjacent-color contrast and whether the remaining indicator
+still communicates its state. Actual measured adjacent-edge and area results
+will be recorded after the allocated check, not inferred from the raw four points.
+
+Fresh Resource21d owner-readback allocation is queued after C07's pinned runtime
+job. The command will read immutable Git blobs in memory and write only
+`native-check.json`; no new rendering, dependency, temporary packet or recapture
+is requested. Formal owner execution is recorded below. Exact checker
+pin and all carry were frozen at explicit acceptance. Publication and own remote
+readback remain required; no main/King/SL technical review or ACK is a gate.
+
+## Allocated actual readback and owner decision
+
+Resource21d offered `TITLE-FOCUS-PACKET-READBACK-202611040916Z`; the owner
+explicitly **ACCEPTED** with preflight at **18:17:44.249184 KST**. Frozen
+checker SHA-256:
+`3fceab75adbfc80c4e1008807f776a023c6e9baa09edc79c147f86aafc8ddfe1`.
+The own branch was `codex/mcr-title-focus-01`; only the owned reader and this
+document were modified. CSS remained exactly `5c9e194e`. All carry was
+**63,032 bytes** and initial free space **19,496,456,192 bytes**.
+
+Exact command:
+
+```sh
+python3 docs/mcr/evidence/title-focus-01/check-native.py 4591f927023d8fb5f5afa3e8d2f11a501543cae4 docs/mcr/evidence/cozy-backgrounds-v1/focus-04
+```
+
+The owner readback exited **0** in **1.369341292 seconds**; it completed at
+**18:17:45.871142 KST**. The 25-second child / 30-second total guard did not
+fire. Continuous observed free floor: **19,493,642,240 bytes**. The only new
+output was `native-check.json`, **5,011 bytes**; all assigned durable content
+totaled **68,043 bytes** within the 96-KiB allocation. The owned process group
+was absent. FULL RELEASE was sent in the next coordination call; no browser,
+server, temporary packet, cache, dependency, render or copy was created.
+
+Independent pin checks passed for **53 artifacts**, **688 declared source/asset
+pins** representing **346 unique immutable blobs**, and **43 original PNGs**.
+The original raw native report remains `OPEN_FAILURES`, exit **1**, with exactly
+the two forced-color point failures. This owner result is separately labeled
+`OWNER_QUALIFIED_WITH_RAW_NATIVE_EXIT1_PRESERVED`.
+
+| Assigned actual behavior | Owner evidence/result |
+| --- | --- |
+| Map and Me focused title, each 360/390/430 | All six rings 5.7567446:1 against backing; exposed paper present on all four outer edges |
+| Visible title glyphs, focused and unfocused | All six cases 15.1140137:1; cream foreground unchanged |
+| Title focus leaves | All six shared headers restore original dark backing; actual Me (21,24) cream core preserved |
+| Me Edit profile link, each 360/390/430 | All four strokes visible; minimum 4.8096892:1 at360 and 5.6373754:1 at390/430 |
+| Outline, layout, controls and characters | Frozen title foreground/outline geometry exact; normal geometry, text/control states and character records match baseline |
+| Forced Map and Me390 | Black heading, Canvas backing, all three non-URL gradient layers suppressed; header RGBA pixel-identical to baseline |
+
+For both forced titles, **all four outer edges** against immediately adjacent
+white Canvas have minimum **11.3097746:1**. Each has **1,446 changed stroke
+pixels**. Excluding every pixel below 3:1 against the suppressed-stroke probe
+leaves **1,384 pixels for Map** and **1,391 for Me**. Both exceed the **988px²**
+two-pixel perimeter reference and even the larger **1,004px²** complete exterior
+band. The low black-glyph sample remains **1.0662601:1** and is not counted as
+qualifying area. Its baseline/candidate sample values and full header pixels
+match exactly.
+
+**Owner decision:** the assigned normal focus/backing/glyph/focus-transition
+behavior is qualified. The forced-color point failures are an inherited
+glyph-overlap limitation of the four-point minimum assertion, not evidence of
+a missing or newly degraded visible indicator. Actual adjacent-edge contrast,
+remaining qualifying area, black-on-Canvas title and before/after pixel identity
+support the assigned visible-focus requirement. No product CSS repair or new
+capture is justified. The immutable failure is preserved, not converted to a
+green native run. The area probe is not an actual forced-unfocused capture;
+this is neither full AAA/WCAG certification nor broad design/live/device
+acceptance. Meet remains separately owned.
+
+The three original390 images identified above were visually inspected in place.
+When additional selected originals were requested, their former physical Root
+path was no longer materialized; the immutable Git blobs remained present and
+all 43 PNGs were independently verified in the allocated readback. No packet
+was restored/copied to work around that change. Publication and exact own remote
+proof are the remaining delivery boundary.
