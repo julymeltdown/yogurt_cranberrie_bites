@@ -131,17 +131,43 @@ impl PgClaimProjection {
     async fn project_inner<T: Send, F>(
         &self,
         query: ClaimQuery,
-        until: DateTime<Utc>,
+        _until: DateTime<Utc>,
         projection: F,
     ) -> Result<T, PolicyError>
     where
         F: for<'a> FnOnce(ProjectionAge<'a>) -> ProjectionFuture<'a, T> + Send,
     {
         let mut tx = self.pool.begin().await.map_err(unavailable)?;
+        let pending = self
+            .project_in(&mut tx, query, |_, age| projection(age))
+            .await?;
+        tx.commit().await.map_err(unavailable)?;
+        pending.after_commit()
+    }
+    /// Borrow the consumer's actual transaction. The closure MUST contain all
+    /// remaining private row, relationship and age-dependent projection work.
+    /// Keep that connection and its locks through a known COMMIT, then release
+    /// the value with PendingAgeProjection::after_commit. On rollback, uncertain
+    /// commit, or source failure discard the entire projection.
+    pub async fn project_in<T: Send, F>(
+        &self,
+        connection: &mut PgConnection,
+        query: ClaimQuery,
+        projection: F,
+    ) -> Result<PendingAgeProjection<T>, PolicyError>
+    where
+        F: for<'a> FnOnce(&'a mut PgConnection, ProjectionAge<'a>) -> ProjectionFuture<'a, T>
+            + Send,
+    {
+        validate(query, self.clock.now())?;
+        let until = query
+            .context
+            .expires_at
+            .min(Utc::now() + Duration::seconds(5));
         // Same clamp as the BE26 producer; never widen shorter SQL timeouts.
         sqlx::query("select set_config('lock_timeout',(extract(epoch from least(coalesce(nullif(current_setting('lock_timeout')::interval,interval '0'),interval '1500 milliseconds'),interval '1500 milliseconds'))*1000)::bigint::text||'ms',true),set_config('statement_timeout',(extract(epoch from least(coalesce(nullif(current_setting('statement_timeout')::interval,interval '0'),interval '5 seconds'),interval '5 seconds'))*1000)::bigint::text||'ms',true)")
-            .execute(&mut *tx).await.map_err(unavailable)?;
-        let decision = self.authority.authorize_in(&mut tx, query).await?;
+            .execute(&mut *connection).await.map_err(unavailable)?;
+        let decision = self.authority.authorize_in(&mut *connection, query).await?;
         if decision.query != query {
             return Err(PolicyError::Denied);
         }
@@ -149,7 +175,7 @@ impl PgClaimProjection {
         let phase: Option<String> =
             sqlx::query_scalar("select phase from concert_events where event_id=$1 for share")
                 .bind(query.context.event.uuid())
-                .fetch_optional(&mut *tx)
+                .fetch_optional(&mut *connection)
                 .await
                 .map_err(unavailable)?;
         if phase.is_none() {
@@ -157,17 +183,17 @@ impl PgClaimProjection {
         }
         sqlx::query("insert into concert_age_owners(user_id) values($1) on conflict do nothing")
             .bind(query.subject.uuid())
-            .execute(&mut *tx)
+            .execute(&mut *connection)
             .await
             .map_err(unavailable)?;
         sqlx::query("select user_id from concert_age_owners where user_id=$1 for share")
             .bind(query.subject.uuid())
-            .fetch_one(&mut *tx)
+            .fetch_one(&mut *connection)
             .await
             .map_err(unavailable)?;
         // Crucially no status/expiry/event predicate before the canonical LIMIT.
         let row = sqlx::query("select * from concert_age_claims where user_id=$1 order by verified_at desc,expires_at desc,claim_id desc limit 1 for share")
-            .bind(query.subject.uuid()).fetch_optional(&mut *tx).await.map_err(unavailable)?;
+            .bind(query.subject.uuid()).fetch_optional(&mut *connection).await.map_err(unavailable)?;
         let claims = row
             .map(owner_claim)
             .transpose()?
@@ -175,7 +201,7 @@ impl PgClaimProjection {
             .collect::<Vec<_>>();
         let now = self.clock.now();
         validate(query, now)?;
-        source_deadline(&mut tx, until).await?;
+        source_deadline(&mut *connection, until).await?;
         let assessment =
             assess(query.subject, &claims, now).map_err(|_| PolicyError::Unavailable)?;
         let valid_until = if assessment.status() == AgeStatus::Verified {
@@ -186,14 +212,17 @@ impl PgClaimProjection {
         } else {
             query.context.expires_at
         };
-        let value = projection(ProjectionAge {
-            query,
-            assessment: &assessment,
-            verification_available: decision.verification_available,
-        })
+        let value = projection(
+            &mut *connection,
+            ProjectionAge {
+                query,
+                assessment: &assessment,
+                verification_available: decision.verification_available,
+            },
+        )
         .await?;
         // Revalidate AFTER projection; no detached synchronous connection lease.
-        let final_decision = self.authority.authorize_in(&mut tx, query).await?;
+        let final_decision = self.authority.authorize_in(&mut *connection, query).await?;
         if final_decision.query != query {
             return Err(PolicyError::Denied);
         }
@@ -205,16 +234,35 @@ impl PgClaimProjection {
         if now >= valid_until {
             return Err(PolicyError::Denied);
         }
-        source_deadline(&mut tx, until.min(valid_until)).await?;
-        tx.commit().await.map_err(unavailable)?;
-        // SQL/COMMIT may itself cross a claim/birthday/request boundary. A known
-        // commit establishes source ordering but never extends temporal validity.
-        validate(query, self.clock.now())?;
-        if self.clock.now() >= valid_until || Utc::now() >= until.min(valid_until) {
+        source_deadline(&mut *connection, until.min(valid_until)).await?;
+        Ok(PendingAgeProjection {
+            value,
+            query,
+            until: until.min(valid_until),
+            clock: self.clock.clone(),
+        })
+    }
+}
+/// A private projection pending the caller's SAME-transaction commit. This is
+/// deliberately not Clone/Debug/Serialize and offers no synchronous claim lease.
+/// It cannot authorize another query or expose intermediate exact-age data.
+#[must_use = "commit the same transaction before releasing the projection"]
+pub struct PendingAgeProjection<T> {
+    value: T,
+    query: ClaimQuery,
+    until: DateTime<Utc>,
+    clock: Arc<dyn Clock>,
+}
+impl<T> PendingAgeProjection<T> {
+    /// Call only after a known successful commit of the borrowed connection.
+    /// Unknown commit/rollback must discard self. This final temporal check is
+    /// not source authority; source authority was retained through that commit.
+    pub fn after_commit(self) -> Result<T, PolicyError> {
+        validate(self.query, self.clock.now())?;
+        if self.clock.now() >= self.until || Utc::now() >= self.until {
             return Err(PolicyError::Denied);
         }
-        // The private projection is released only after a known source commit.
-        Ok(value)
+        Ok(self.value)
     }
 }
 /// Fail closed under the unchanged BE25 synchronous lease API. In particular,

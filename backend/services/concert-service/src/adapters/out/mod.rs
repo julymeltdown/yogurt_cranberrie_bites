@@ -32,3 +32,5 @@ pub mod relationship_authority;
 pub(crate) mod world_profile;
 
 pub mod public_profile;
+
+pub mod age_provider;

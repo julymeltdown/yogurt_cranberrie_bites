@@ -372,9 +372,9 @@ impl PgAgeClaims {
             .into_iter()
             .collect::<Vec<_>>();
         deadline(self, &mut tx, c).await.map_err(command)?;
-        let result = own_status(c, &claims, self.available(), self.clock.now())?;
         tx.commit().await.map_err(db)?;
-        Ok(result)
+        // A known COMMIT does not extend claim expiry or the Seoul birthday boundary.
+        own_status(c, &claims, self.available(), self.clock.now())
     }
     /// Status only: absence is not permission to replay an uncertain external exchange.
     pub async fn recover(
@@ -689,3 +689,7 @@ async fn bounded<T>(
         .await
         .map_err(|_| on_timeout)?
 }
+
+pub mod scoped;
+pub mod settlement;
+pub mod runtime;
