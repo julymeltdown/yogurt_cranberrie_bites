@@ -18,6 +18,8 @@ from auth_invalidation_smoke import frozen_binary
 from invalidation_clients_smoke import pki
 
 OWNERS = ("auth", "friend", "concert", "profile")
+DATABASES = {owner: ("mcr_concert_intro" if owner == "concert" else f"mcr_canonical_{owner}")
+             for owner in OWNERS}
 # Exact names are required: a filtered or wholly ignored inventory is not proof.
 CASES = ("canonical_authoring_discovery_detail_idempotency_and_close",
          "canonical_restricted_age_outage_trust_and_expiry_parity",
@@ -101,7 +103,7 @@ def qualify(checkpoint: dict, pg: Path, report: dict) -> None:
             # Every native case receives a fresh four-store fixture. Selected
             # release event IDs stay canonical without cross-test rows.
             for owner in OWNERS:
-                db=f"mcr_canonical_{owner}"
+                db=DATABASES[owner]
                 if index:
                     cluster.sql("postgres", f"drop database {db} with (force);")
                 execute([str(tools["createdb"]), "--no-password", "--maintenance-db=postgres", db], env=cluster.client_env("postgres"),phase=f"create-{owner}",cwd=cluster.root)
@@ -112,7 +114,7 @@ def qualify(checkpoint: dict, pg: Path, report: dict) -> None:
             report["phases"][case]={"status":"PASS","exit_code":result.returncode,"stdout":result.stdout}
             report["migration_receipts"][case]={}
             for owner in OWNERS:
-                db=f"mcr_canonical_{owner}"
+                db=DATABASES[owner]
                 report["migration_receipts"][case][owner]=check_ledger(cluster,db,migration_manifest(ROOT/"backend",f"{owner}-service"))
             prepared=int(cluster.sql("postgres","select count(*) from pg_prepared_xacts;"))
             if index != len(CASES)-1 and prepared:

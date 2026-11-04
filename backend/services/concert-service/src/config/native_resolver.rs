@@ -2,6 +2,7 @@
 //! no authority and does not activate any handler, listener or recovery worker.
 use crate::{
     adapters::out::age_provider::settlement::AgeTransactionResolver,
+    intro_live::{protocol as intro_protocol, IntroNativeResolver},
     operations_live::settlement::OperationsNativeResolver,
     participant::live::settlement::ParticipantNativeResolver,
     product_rpc::{
@@ -24,6 +25,7 @@ const PARTICIPANT: &str = "/concert.participant.v1.ConcertParticipantService/";
 #[derive(Clone, Copy, Debug, Eq, PartialEq)]
 pub enum NativeResolverDomain {
     Participant,
+    Intro,
     Social,
     Operations,
     Age,
@@ -35,6 +37,7 @@ pub enum NativeResolverDomain {
 /// Root must use that same pool/instance for its canonical ledger and registry.
 pub struct NativeResolverUnion {
     participant: ParticipantNativeResolver,
+    intro: IntroNativeResolver,
     social: SocialNativeResolver,
     operations: OperationsNativeResolver,
     age: AgeTransactionResolver,
@@ -59,6 +62,7 @@ impl NativeResolverUnion {
         }
         Ok(Self {
             participant: ParticipantNativeResolver::new(pool.clone(), instance)?,
+            intro: IntroNativeResolver::new(pool.clone(), instance)?,
             social: SocialNativeResolver::new(pool.clone(), instance)?,
             operations: OperationsNativeResolver::new(pool.clone(), instance)?,
             age: AgeTransactionResolver::new(pool.clone(), instance)?,
@@ -91,6 +95,18 @@ impl NativeResolverUnion {
         // The operation arms are disjoint. There is no first-success chain and
         // no second adapter after the selected adapter returns UNKNOWN/error.
         let domain = match operation {
+            _ if intro_protocol::handles_operation(operation)
+                && intro_protocol::parse_intro_target(
+                    binding.event_id,
+                    method,
+                    &binding.http_target,
+                )
+                .is_ok_and(|(actual, _)| actual == operation)
+                && (operation != "listConcertIntros"
+                    || intro_protocol::parse_query(&binding.http_target).is_ok()) =>
+            {
+                NativeResolverDomain::Intro
+            }
             "listOwnConcertHandles"
             | "setConcertHandle"
             | "removeConcertHandle"
@@ -176,6 +192,7 @@ impl NativeTransactionResolver for NativeResolverUnion {
     ) -> Result<NativeTransactionResolution, Status> {
         let selected: &dyn NativeTransactionResolver = match Self::domain(binding)? {
             NativeResolverDomain::Participant => &self.participant,
+            NativeResolverDomain::Intro => &self.intro,
             NativeResolverDomain::Social => &self.social,
             NativeResolverDomain::Operations => &self.operations,
             NativeResolverDomain::Age => &self.age,

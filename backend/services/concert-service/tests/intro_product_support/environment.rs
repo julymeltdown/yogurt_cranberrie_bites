@@ -48,7 +48,11 @@ pub(super) async fn pool(owner: &str) -> anyhow::Result<PgPool> {
         "Unknown fixture owner"
     );
     let root = root()?;
-    let name = format!("mcr_canonical_{owner}");
+    let name = if owner == "concert" {
+        "mcr_concert_intro".to_owned()
+    } else {
+        format!("mcr_canonical_{owner}")
+    };
     let options = PgConnectOptions::from_str(&std::env::var(format!(
         "MCR_CANONICAL_{}_URL",
         owner.to_ascii_uppercase()

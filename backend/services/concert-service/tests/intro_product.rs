@@ -21,7 +21,8 @@ use concert_service::{
         },
         relationship_authority::guarded::{proto::TransactionStatus, OwnerGuardScope},
     },
-    intro_live::{protocol, IntroCursor, IntroNativeResolver, IntroRuntime},
+    config::native_resolver::{NativeResolverDomain, NativeResolverUnion},
+    intro_live::{protocol, IntroCursor, IntroRuntime},
     product_rpc::{
         proto,
         scope_ledger::{ProducerTransaction, ScopeKey},
@@ -630,7 +631,11 @@ async fn canonical_native_witness_requires_exact_registered_transaction() -> any
         identities.len() >= 2,
         "write and owner projection must each have actual registered native transactions"
     );
-    let resolver = IntroNativeResolver::new(f.concert.clone(), f.instance)?;
+    let resolver = NativeResolverUnion::new(f.concert.clone(), f.instance)?;
+    assert_eq!(
+        NativeResolverUnion::domain(&s.binding().owner_binding())?,
+        NativeResolverDomain::Intro
+    );
     for value in identities {
         let identity: ProducerTransaction = serde_json::from_value(value)?;
         let resolved = resolver

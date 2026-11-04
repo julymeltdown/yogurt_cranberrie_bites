@@ -213,10 +213,12 @@ impl Fixture {
             &POLICY,
             ProducerSettlementService::new(
                 ledger.clone(),
-                Arc::new(concert_service::intro_live::IntroNativeResolver::new(
-                    concert.clone(),
-                    instance,
-                )?),
+                Arc::new(
+                    concert_service::config::native_resolver::NativeResolverUnion::new(
+                        concert.clone(),
+                        instance,
+                    )?,
+                ),
             )
             .server(),
             CallerRegistry::new()
