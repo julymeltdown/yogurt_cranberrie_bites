@@ -107,14 +107,10 @@ def qualify(pin,pg):
             root=cluster.root
             try:
                 if cluster.started:
-                    rows=cluster.sql("postgres","select database||E'\\t'||gid from pg_prepared_xacts;").splitlines();report["cleanup_forced_private_rollbacks"]=len(rows)
-                    for row in rows:
-                        db,gid=row.split("\t")
-                        prefix={"mcr_canonical_auth":"mcr_oa_a_","mcr_canonical_friend":"mcr_oa_f_"}.get(db)
-                        if not prefix or not re.fullmatch(prefix+r"[0-9a-f]{32}",gid):raise ValueError("Unknown prepared quarantine retained")
-                        cluster.sql(db,"rollback prepared '"+gid+"';")
-                    if cluster.sql("postgres","select count(*) from pg_prepared_xacts;")!="0":raise ValueError("Prepared work remains")
-                cluster.cleanup();report["cleanup"]={"prepared_quarantine_resolved":True,"exact_owned_root_absent":not root.exists(),"owned_server_stopped":True}
+                    report["prepared_before_owned_teardown"]=int(cluster.sql("postgres","select count(*) from pg_prepared_xacts;"))
+                # Preserve the actual outcome, then stop/remove only this
+                # fixture. Teardown never fabricates native rollback proof.
+                cluster.cleanup();report["cleanup"]={"kind":"OWNED_CLUSTER_TEARDOWN","certifies_native_settlement":False,"exact_owned_root_absent":not root.exists(),"owned_server_stopped":True}
             except BaseException as exc:report.update(result="FAIL",cleanup={"failure_type":type(exc).__name__,"owned_root_retained":True})
         else:report["cleanup"]={"no_cluster_started":True}
         save()

@@ -102,7 +102,12 @@ def verify_checkpoint(repo: Path, checkpoint_path: Path) -> tuple[Path, str, str
     binary = binary.resolve(strict=True)
     if not stat.S_ISREG(binary.stat().st_mode) or not os.access(binary, os.X_OK):
         raise ValueError("prebuilt integration executable required")
-    target = Path(checkpoint["target"]).resolve(strict=True)
+    # The builder records its canonical target path while it owns the lease.
+    # Copied-process qualification runs after release and must not stat or
+    # resolve the now-unowned shared target directory.
+    target = Path(checkpoint["target"])
+    if not target.is_absolute() or ".." in target.parts or os.path.normpath(str(target)) != str(target):
+        raise ValueError("canonical absolute build target path required")
     if binary == target or target in binary.parents:
         raise ValueError("outside-target frozen executable required")
     digest = checkpoint.get("binary_sha256")
