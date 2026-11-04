@@ -15,6 +15,7 @@ import secrets
 import shutil
 import signal
 import socket
+import subprocess
 import threading
 import time
 from unittest.mock import patch
@@ -25,6 +26,7 @@ import participant_live_join_smoke as joined
 import world_in01_prepare as prep
 
 ROOT = prep.ROOT
+CLEANUP_RESERVE_SECONDS = 240  # Covers bounded direct-child stops plus both PG stop attempts.
 
 
 class QualificationGuard:
@@ -35,10 +37,41 @@ class QualificationGuard:
         prep.auth.require(self.output.is_dir() and not self.output.is_symlink()
                           and info.st_uid == os.getuid() and info.st_mode & 0o077 == 0, "qualification-private-output")
         self.identity = info.st_dev, info.st_ino
-        self.deadline = time.monotonic() + args.whole_timeout_seconds - 180
+        self.started_monotonic = time.monotonic()
+        self.deadline = self.started_monotonic + args.whole_timeout_seconds - CLEANUP_RESERVE_SECONDS
+        self.hard_deadline = self.deadline + CLEANUP_RESERVE_SECONDS
+        self.started_at = datetime.now(timezone.utc)
+        self.work_deadline_at = self.started_at + timedelta(seconds=args.whole_timeout_seconds - CLEANUP_RESERVE_SECONDS)
+        self.hard_deadline_at = self.started_at + timedelta(seconds=args.whole_timeout_seconds)
+        self.phase_history, self.phase_deadline = [], self.deadline
+        self.process_peak = 0
         self.limit, self.carry = args.whole_byte_limit, args.retained_carry_bytes
         self.maximum, self.failure = self.carry, None
         self.stop_event, self.thread = threading.Event(), None
+
+    def phase(self, name, seconds):
+        now = time.monotonic()
+        self.phase_deadline = min(self.deadline, now + seconds)
+        self.phase_history.append({"name": name, "started_at": datetime.now(timezone.utc).isoformat(),
+            "deadline_at": (datetime.now(timezone.utc) + timedelta(seconds=max(0, self.phase_deadline-now))).isoformat()})
+
+    def process_check(self):
+        # Only PID/parent metadata is read, never environment or command arguments.
+        rows = subprocess.run(["/bin/ps", "-axo", "pid=,ppid="], capture_output=True,
+                              text=True, timeout=2, check=True).stdout.splitlines()
+        parents = {int(row.split()[0]): int(row.split()[1]) for row in rows if len(row.split()) == 2}
+        owned = {os.getpid()}
+        if self.stack.cluster is not None:
+            cluster = self.stack.cluster
+            cluster.assert_owned()
+            if cluster.started and (cluster.data / "postmaster.pid").exists():
+                owned.add(cluster.assert_postmaster())
+        while True:
+            more = {pid for pid, parent in parents.items() if parent in owned} - owned
+            if not more: break
+            owned.update(more)
+        self.process_peak = max(self.process_peak, len(owned))
+        prep.auth.require(len(owned) <= 32, "qualification-owned-process-cap")
 
     def check(self):
         info = self.output.lstat()
@@ -67,9 +100,13 @@ class QualificationGuard:
         self.maximum = max(self.maximum, total)
         prep.auth.require(total <= self.limit, "qualification-whole-byte-cap")
         prep.auth.require(time.monotonic() < self.deadline, "qualification-work-deadline")
-        prep.auth.require(shutil.disk_usage(self.output).free >= 4 * 1024**3, "qualification-free-space")
+        prep.auth.require(time.monotonic() < self.phase_deadline, "qualification-phase-deadline")
+        prep.auth.require(shutil.disk_usage(self.output).free >= 8 * 1024**3, "qualification-free-space")
+        self.process_check()
 
     def start(self):
+        prep.auth.require(shutil.disk_usage(self.output).free >= 16 * 1024**3, "qualification-start-free-space")
+        self.phase("native-startup", 180)
         self.check()
         def watch():
             while not self.stop_event.wait(.5):
@@ -87,7 +124,13 @@ class QualificationGuard:
         if self.thread is not None:
             self.thread.join(timeout=1)
         return {"max_sampled_whole_bytes": self.maximum, "hard_whole_bytes": self.limit,
-                "retained_carry_bytes": self.carry, "cleanup_reserve_seconds": 180,
+                "retained_carry_bytes": self.carry, "cleanup_reserve_seconds": CLEANUP_RESERVE_SECONDS,
+                "start_free_floor_bytes": 16 * 1024**3, "continuous_stop_floor_bytes": 8 * 1024**3,
+                "owned_process_cap": 32, "max_sampled_owned_processes": self.process_peak,
+                "started_at": self.started_at.isoformat(),
+                "work_deadline_at": self.work_deadline_at.isoformat(),
+                "hard_deadline_at": self.hard_deadline_at.isoformat(),
+                "phase_cutoffs": self.phase_history,
                 "failure": self.failure, "sample_interval_seconds": .5}
 
 
@@ -473,10 +516,12 @@ def run(args):
         browser = prep.auth.Browser(descriptor["gateway_url"], report)
         # Keep HTTP connection target separate from the actual browser Origin.
         browser.origin = args.browser_origin
+        if guard: guard.phase("real-auth-provisioning", args.provision_timeout_seconds)
         principals = prep.provision_principals(stack, browser, profile, getattr(args, "provision_timeout_seconds", 120))
         report["provisioned_principals"] = len(principals)
         # The retained public helper addresses browser.origin; supply its actual
         # Gateway target while preserving the browser header through a wrapper.
+        if guard: guard.phase("profile-and-concert-startup", 60)
         initialize_profiles(browser, report, principals)
         names = ["concert-service:grpc", "concert-service:metrics"]
         if args.world:
@@ -492,6 +537,7 @@ def run(args):
                 f"/api/concert/events/{context['event']}/bootstrap", token)
             prep.auth.require(value["participant"]["user_id"] == user, "actual-bootstrap-owner")
         if profile != "in01":
+            guard.phase("original-qa05-qa08-probe", args.probe_timeout_seconds)
             config = qualification_config(args, descriptor, context, principals, value,
                 "ws://" + stack.ports.address("concert-service:world") + "/world-ws")
             report["qualification_restarts"] = []
@@ -508,6 +554,7 @@ def run(args):
                                     "room_capacities": [r["capacity"] for r in context["rooms"]],
                                     "expires_on": "OWNED_SHUTDOWN", "contains_tokens": False}
             if args.retain_public_projection and report["qualification"]["result"] == "COMPLETED":
+                guard.phase("public-projection", 20)
                 report["post_admission_projection"] = retain_public_projection(browser, report, context["event"],
                     principals[0], args.report.parent, {"producer_source_revision": stack.report["source_revision"],
                         "backend_runtime": binary_provenance, "frontend_runtime": "NOT_RUN",
@@ -590,6 +637,11 @@ def run(args):
         except BaseException:
             stack.report["cleanup"] = "FAIL"
         report["owned_stack"] = stack.report
+        if guard is not None:
+            report["qualification_total_seconds"] = time.monotonic() - guard.started_monotonic
+            if time.monotonic() >= guard.hard_deadline:
+                report["result"] = "FAIL"
+                report["whole_hard_deadline_exceeded"] = True
         if stack.report.get("cleanup") != "PASS":
             report["result"] = "FAIL"
         for sig, handler in previous.items():
@@ -666,7 +718,7 @@ def validate_qualification_arguments(args):
         prep.auth.require(args.world and args.hold_seconds == 0, "qualification-world-no-hold")
         prep.auth.require(isinstance(args.allocation_id, str) and 1 <= len(args.allocation_id) <= 128, "qualification-allocation")
         prep.auth.require(args.probe_timeout_seconds > args.measurement_seconds, "qualification-deadline")
-        number(args.whole_timeout_seconds, 240, 3600, "qualification-whole-timeout")
+        number(args.whole_timeout_seconds, CLEANUP_RESERVE_SECONDS + 60, 3600, "qualification-whole-timeout")
         integer(args.whole_byte_limit, 1, 4 * 1024**3, "qualification-whole-byte-limit")
         integer(args.retained_carry_bytes, 309342208, args.whole_byte_limit - 1, "qualification-retained-carry")
 

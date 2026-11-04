@@ -212,7 +212,7 @@ class ProfileTests(unittest.TestCase):
 
     def test_guard_counts_carry_outputs_and_deadline_without_starting_thread(self):
         args = arguments()
-        with tempfile.TemporaryDirectory() as directory, patch.object(live.shutil, "disk_usage", return_value=NS(free=8*1024**3)):
+        with tempfile.TemporaryDirectory() as directory, patch.object(live.shutil, "disk_usage", return_value=NS(free=20*1024**3)), patch.object(live.subprocess, "run", return_value=NS(stdout="")):
             args.report = Path(directory) / "report.json"
             guard = live.QualificationGuard(args, NS(cluster=None))
             guard.check()
@@ -223,7 +223,34 @@ class ProfileTests(unittest.TestCase):
             guard.limit = args.whole_byte_limit
             guard.deadline = 0
             with self.assertRaisesRegex(prep.auth.CheckFailure, "qualification-work-deadline"): guard.check()
-            self.assertEqual(guard.close()["cleanup_reserve_seconds"], 180)
+            self.assertEqual(guard.close()["cleanup_reserve_seconds"], 240)
+
+    def test_offer_floors_and_absolute_phase_cutoffs_before_children(self):
+        args = arguments()
+        with tempfile.TemporaryDirectory() as directory, patch.object(live.subprocess, "run", return_value=NS(stdout="")):
+            args.report = Path(directory) / "report.json"
+            guard = live.QualificationGuard(args, NS(cluster=None))
+            with patch.object(live.shutil, "disk_usage", return_value=NS(free=15*1024**3)):
+                with self.assertRaisesRegex(prep.auth.CheckFailure, "start-free-space"): guard.start()
+            self.assertIsNone(guard.thread)
+            with patch.object(live.shutil, "disk_usage", return_value=NS(free=7*1024**3)):
+                with self.assertRaisesRegex(prep.auth.CheckFailure, "free-space"): guard.check()
+            guard.phase("fixture-phase", 10)
+            self.assertLessEqual(guard.phase_deadline, guard.deadline)
+            evidence = guard.close()
+            self.assertIn("+00:00", evidence["hard_deadline_at"])
+            self.assertEqual(evidence["phase_cutoffs"][0]["name"], "fixture-phase")
+
+    def test_process_guard_counts_only_producer_and_owned_descendants(self):
+        args = arguments()
+        with tempfile.TemporaryDirectory() as directory, patch.object(live.os, "getpid", return_value=100):
+            args.report = Path(directory) / "report.json"
+            guard = live.QualificationGuard(args, NS(cluster=None))
+            with patch.object(live.subprocess, "run", return_value=NS(stdout="100 1\n200 100\n300 200\n999 1\n")):
+                guard.process_check()
+            self.assertEqual(guard.process_peak, 3)
+            with patch.object(live.subprocess, "run", return_value=NS(stdout="\n".join(f"{n} 100" for n in range(200,233)))):
+                with self.assertRaisesRegex(prep.auth.CheckFailure, "process-cap"): guard.process_check()
 
     def test_retained_snapshot_is_actual_validated_private_and_never_flag_flipped(self):
         bootstrap = json.loads((prep.RELEASE / "bootstrap.json").read_bytes())
