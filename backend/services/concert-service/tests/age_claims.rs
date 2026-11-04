@@ -536,7 +536,7 @@ async fn durable_restart_verify() -> anyhow::Result<()> {
         None,
         clock,
         keys(),
-    );
+    ).with_claim_trust(trust::ClaimTrust::new(&[("fixture", "fixture-v1")])?);
     let c = restart_context();
     let status = s.status(c).await?;
     assert_eq!(status.status, AgeStatus::Verified);
