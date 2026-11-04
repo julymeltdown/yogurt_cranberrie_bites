@@ -61,13 +61,14 @@ def validate_config(value, capacity):
         check(counts == [50] * 4, "original-fifty-per-room")
     schedule = value["schedule"]
     fields(schedule, {"arrival_concurrency", "operation_timeout_seconds", "measurement_seconds", "total_timeout_seconds", "input_hz"},
-           {"reconnect", "slow_reader"})
+           {"reconnect", "slow_reader", "http_interval_seconds"})
     integer(schedule["arrival_concurrency"], 1, len(principals), "arrival-concurrency")
     number(schedule["operation_timeout_seconds"], .05, 60, "operation-timeout")
     number(schedule["measurement_seconds"], .05, 3600, "measurement-duration")
     number(schedule["total_timeout_seconds"], .1, 7200, "total-timeout")
     check(schedule["total_timeout_seconds"] > schedule["measurement_seconds"], "whole-deadline")
     number(schedule["input_hz"], 0, 30, "input-rate")
+    number(schedule.get("http_interval_seconds", 0), 0, 2, "http-interval")
     reconnects = schedule.get("reconnect", [])
     check(isinstance(reconnects, list) and len(reconnects) <= 16, "reconnect-count")
     for row in reconnects:
@@ -361,9 +362,17 @@ class Runner:
         self.read_pauses = Samples()
         self.slow_backpressure_controls = 0
         self.by_actor = {}
+        self.http_lock = asyncio.Lock()
+        self.next_http = 0
+        self.full_room_auth = None
 
     async def http(self, suffix, token, payload=None):
         start = time.monotonic()
+        interval = self.config["schedule"].get("http_interval_seconds", 0)
+        if interval:
+            async with self.http_lock:
+                await asyncio.sleep(max(0, self.next_http - time.monotonic()))
+                self.next_http = time.monotonic() + interval
         async with asyncio.timeout(self.config["schedule"]["operation_timeout_seconds"]):
             result = await self.network.http(self.base + suffix, token, payload)
         self.http_seconds.add(time.monotonic() - start)
@@ -415,7 +424,15 @@ class Runner:
                 actual = rooms.get(requested["room_id"])
                 check(actual is not None and actual["capacity"] == requested["capacity"]
                       and actual["availability"] == "AVAILABLE", "registered-room-capacity")
-        await self.parallel(self.clients, lambda c: c.connect())
+        if self.capacity:
+            # Public ticket issuance itself refuses a full target. Issue while
+            # its final slot is free, then fill that slot through normal Auth.
+            final = next(c for c in reversed(self.clients) if c.room_index == 1)
+            await self.parallel([c for c in self.clients if c is not final], lambda c: c.connect())
+            self.full_room_auth = await self.clients[0].ticket(1)
+            await self.parallel([final], lambda c: c.connect())
+        else:
+            await self.parallel(self.clients, lambda c: c.connect())
         await self.converge()
 
     async def converge(self):
@@ -439,10 +456,10 @@ class Runner:
         await self.converge()
         return elapsed(start)
 
-    async def switch(self, client, target, expect_full):
+    async def switch(self, client, target, expect_full, auth=None):
         start = time.monotonic()
         old_room, old_stream = client.room_index, client.state.stream
-        auth = await client.ticket(target)
+        auth = auth or await client.ticket(target)
         request = str(uuid4())
         client.state.pending = ("ROOM_SWITCH", request, auth["roomId"])
         client.allowed_rooms.add(target)
@@ -594,7 +611,7 @@ async def run(config, *, capacity=True, network=None, contracts=None, restart_ho
             report["registered_rooms_verified"] = len(config["rooms"])
             report["initial_admitted_sockets"] = runner.active
             if capacity:
-                seconds = await runner.switch(runner.clients[0], 1, True)
+                seconds = await runner.switch(runner.clients[0], 1, True, auth=runner.full_room_auth)
                 report["steps"].append({"kind": "full-room-switch-keeps-old-membership", "seconds": seconds, "status": "OBSERVED"})
             else:
                 await runner.failures(report, restart_hook)

@@ -27,6 +27,31 @@ ROOT = Path(__file__).resolve().parents[3]
 RELEASE = ROOT / "backend/releases/operator-bundle/quality-v6"
 
 
+def producer_profile(name="in01"):
+    """Fixed original-task cohorts, never arbitrary account/room multiplication."""
+    profiles = {"in01": (2, (2,)), "qa05": (2, (2, 2)), "qa08": (200, (50, 50, 50, 50))}
+    auth.require(isinstance(name, str) and name in profiles, "producer-profile")
+    principals, capacities = profiles[name]
+    return {"name": name, "principals": principals, "capacities": capacities}
+
+
+def provision_principals(stack, browser, profile, timeout_seconds=120):
+    """Real signup/mail/verify/login only; fail on normal admission refusal."""
+    from world_capacity_support.report import number
+    number(timeout_seconds, 1, 3600, "provision-deadline")
+    spec = producer_profile(profile)
+    deadline = time.monotonic() + timeout_seconds
+    principals, canonical = [], set()
+    for ordinal in range(1, spec["principals"] + 1):
+        auth.require(time.monotonic() < deadline, "principal-provision-deadline")
+        item = principal(stack, browser, ordinal, deadline=deadline)
+        auth.require(item[0] not in canonical, "distinct-canonical-principals")
+        canonical.add(item[0])
+        principals.append(item)
+        auth.require(time.monotonic() < deadline, "principal-provision-deadline")
+    return principals
+
+
 def private_json(path, value):
     dev.runtime.private_file(path, dev.encode(value))
 
@@ -54,16 +79,19 @@ def release_inputs():
     }
 
 
-def principal(stack, browser, ordinal):
+def principal(stack, browser, ordinal, *, deadline=None):
+    def budget():
+        auth.require(deadline is None or time.monotonic() < deadline, "principal-provision-deadline")
+    budget()
     email = f"mcr-in01-{secrets.token_hex(12)}@example.test"
     password = secrets.token_urlsafe(24)
     _, created = browser.request(f"principal-{ordinal}-signup", "/api/auth/email/signup",
                                   {"email": email, "password": password})
     user = str(UUID(created["userId"]))
     auth.require(created["userId"] == user and UUID(user).int != 0, "canonical-principal")
-    deadline = time.monotonic() + 20
+    delivery_deadline = min(time.monotonic() + 20, deadline) if deadline is not None else time.monotonic() + 20
     code = None
-    while time.monotonic() < deadline and code is None:
+    while time.monotonic() < delivery_deadline and code is None:
         stack.cluster.assert_owned()
         for path in stack.mail.directory.glob("*.json"):
             auth.require(not path.is_symlink() and path.stat().st_mode & 0o077 == 0, "private-inbox")
@@ -74,14 +102,17 @@ def principal(stack, browser, ordinal):
         if code is None:
             time.sleep(0.1)
     auth.require(code is not None, "real-verification-delivery")
+    budget()
     _, verified = browser.request(f"principal-{ordinal}-verify", "/api/auth/email/verify",
                                    {"email": email, "code": code})
     auth.require(verified["userId"] == user, "verified-principal")
+    budget()
     headers, logged_in = browser.request(f"principal-{ordinal}-login", "/api/auth/login",
                                          {"email": email, "password": password})
     auth.require(logged_in["userId"] == user and logged_in["accessToken"]
                  and logged_in["refreshToken"] == "", "real-login-identity")
     auth.refresh_cookie(headers)
+    budget()
     # No JWT decoding, forged session, canonical claim SQL, or token persistence.
     path = stack.cluster.root / f"in01-principal-{ordinal}.json"
     private_json(path, {"user_id": user, "email": email, "password": password,
@@ -89,7 +120,7 @@ def principal(stack, browser, ordinal):
     return user, path, logged_in["accessToken"]
 
 
-def public_json(browser, report, label, path, bearer, *, method="GET", payload=None):
+def public_json(browser, report, label, path, bearer, *, method="GET", payload=None, response_bytes=False):
     """Exercise the actual public route without Auth-only response assumptions."""
     headers = {"Authorization": "Bearer " + bearer,
                "X-Correlation-Id": "in01-" + label, "Origin": browser.origin,
@@ -107,7 +138,11 @@ def public_json(browser, report, label, path, bearer, *, method="GET", payload=N
         report["statuses"][label] = response.status
         auth.require(response.status == 200, label + ":status")
         auth.require(len(raw) <= 2_000_000, label + ":body-limit")
-        return json.loads(raw)
+        if response_bytes:
+            auth.require(response.getheader("Cache-Control") == "no-store"
+                         and response.getheader("Content-Type", "").split(";", 1)[0] == "application/json",
+                         "retained-bootstrap-response-policy")
+        return raw if response_bytes else json.loads(raw)
     finally:
         connection.close()
 
@@ -123,8 +158,9 @@ def initialize_profiles(browser, report, principals):
         auth.require(result["userId"] == user, "public-profile-owner-identity")
 
 
-def seed_concert(stack, binary, report, publish_catalog):
+def seed_concert(stack, binary, report, publish_catalog, profile="in01"):
     """Use the real migration command; seed only this invocation's new database."""
+    spec = producer_profile(profile)
     cluster = stack.cluster
     cluster.assert_owned()
     binary = dev.migration.executable(binary)
@@ -145,7 +181,7 @@ def seed_concert(stack, binary, report, publish_catalog):
                  "missing-avatar-constraint-refused-and-restored")
     template = json.loads((RELEASE / "bootstrap.json").read_bytes())
     event = str(UUID(template["event"]["event_id"]))
-    room = str(uuid4())
+    rooms = [{"room_id": str(uuid4()), "capacity": cap} for cap in spec["capacities"]]
     avatar = template["avatar_manifest"]
     # Event/room configuration is operator-owned. Admission, participant and
     # avatar creation must come from the actual authenticated bootstrap request.
@@ -153,13 +189,13 @@ def seed_concert(stack, binary, report, publish_catalog):
                   ",".join(map(quote, [event, "in01-owned-" + uuid4().hex[:16],
                                         "Owned IN01 startup", "OPEN"])) + ")"]
     map_ = template["map_manifest"]
-    statements += [
-        "INSERT INTO concert_world_rooms(event_id,room_id,label,capacity,map_id,map_revision,"
+    for index, room in enumerate(rooms):
+        statements.append("INSERT INTO concert_world_rooms(event_id,room_id,label,capacity,map_id,map_revision,"
         "avatar_manifest_id,avatar_manifest_version,is_default) VALUES(" +
-        ",".join(map(quote, [event, room, "Owned IN01 room", 2, map_["map_id"],
-                             map_["map_revision"], avatar["manifest_id"], avatar["manifest_version"]])) + ",true)",
-        "COMMIT",
-    ]
+        ",".join(map(quote, [event, room["room_id"], "Owned IN01 room" if profile == "in01" else "Owned World room " + str(index + 1), room["capacity"], map_["map_id"],
+                             map_["map_revision"], avatar["manifest_id"], avatar["manifest_version"]]))
+        + (",true)" if index == 0 else ",false)"))
+    statements.append("COMMIT")
     cluster.sql(database, ";\n".join(statements) + ";")
     for table in ("concert_participants", "concert_event_admissions", "concert_avatar_settings"):
         auth.require(cluster.sql(database, f"SELECT count(*) FROM {table}") == "0", "bootstrap-owned-state-absent")
@@ -175,6 +211,8 @@ def seed_concert(stack, binary, report, publish_catalog):
         auth.require(result.stdout.strip() == "IN01_CATALOG_PUBLISHED=4", "catalog-command-result")
         catalog = "PASS"
     report["concert_seed"] = {"result": "PARTIAL", "migration_commands_exit": [0, 0],
+                               "producer_profile": spec["name"], "principal_target": spec["principals"],
+                               "registered_room_capacities": list(spec["capacities"]),
                                "ledger_count": count, "binary_sha256": dev.runtime.digest(binary),
                                "migration_sha384": manifest,
                                "schema_probe": "PASS; missing avatar representation constraint refused",
@@ -186,7 +224,7 @@ def seed_concert(stack, binary, report, publish_catalog):
     private_json(path, {"CONCERT_DATABASE_URL": cluster.url(database), "CONCERT_RUNTIME_MODE": "local",
                         "CONCERT_MIGRATION_MODE": "external", "CONCERT_WORLD_EVENT_ID": event,
                         "CONCERT_WORLD_OWNER_ID": str(uuid4()),
-                        "CONCERT_WORLD_ROOMS_JSON": json.dumps([{"room_id": room, "capacity": 2}]),
+                        "CONCERT_WORLD_ROOMS_JSON": json.dumps(rooms),
                         "CONCERT_PUBLIC_FEED_MODE": "off", "CONCERT_OWNER_MEDIA_MODE": "off",
                         "release_inputs": release_inputs(),
                         "world_activation": "CLOSED_PENDING_NATIVE_QUALIFICATION"})
