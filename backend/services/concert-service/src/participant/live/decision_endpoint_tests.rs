@@ -11,8 +11,42 @@ use platform::{
     grpc_auth::{CallerRegistry, ServiceIdentityClientInterceptor, Workload},
     grpc_method_policy::guard,
 };
-use std::{io::Write, os::unix::fs::OpenOptionsExt, path::PathBuf, time::Duration};
+use std::{
+    io::Write,
+    os::unix::fs::{MetadataExt, OpenOptionsExt},
+    path::{Path, PathBuf},
+    time::Duration,
+};
 use uuid::Uuid;
+
+fn fixture_tls(root: &Path, role: &str) -> anyhow::Result<Option<platform::grpc_tls::TlsMaterial>> {
+    match std::env::var("MCR_PARTICIPANT_DECISION_TLS_MODE")?.as_str() {
+        "plaintext" => Ok(None),
+        "mtls" => {
+            let owner = std::fs::metadata(root)?.uid();
+            let mut paths = Vec::new();
+            for kind in ["CERT", "KEY", "CA"] {
+                let path = PathBuf::from(std::env::var(format!("{role}_GRPC_TLS_{kind}_PATH"))?);
+                let info = std::fs::symlink_metadata(&path)?;
+                anyhow::ensure!(
+                    path.is_absolute()
+                        && path.canonicalize()? == path
+                        && path.starts_with(root)
+                        && info.is_file()
+                        && !info.file_type().is_symlink()
+                        && info.uid() == owner
+                        && (kind != "KEY" || info.mode() & 0o077 == 0),
+                    "owned fixture TLS path required"
+                );
+                paths.push(path);
+            }
+            Ok(Some(platform::grpc_tls::TlsMaterial::load(
+                &paths[0], &paths[1], &paths[2],
+            )?))
+        }
+        _ => anyhow::bail!("explicit mtls or plaintext fixture mode required"),
+    }
+}
 
 #[tokio::test]
 #[ignore = "external join only: requires owned private Concert PG16.14 and explicit production-format keys"]
@@ -21,6 +55,7 @@ async fn native_decision_service_endpoint() -> anyhow::Result<()> {
     // journal probe, before reading any external endpoint configuration.
     let pool = owned_pool().await?;
     let root = PathBuf::from(std::env::var("MCR_PARTICIPANT_COORDINATOR_ROOT")?);
+    let tls = fixture_tls(&root, "CONCERT")?;
     let ready = root.join("participant-decision-ready.json");
     let ready_temporary = root.join(".participant-decision-ready.tmp");
     let stop = root.join("participant-decision-stop");
@@ -39,14 +74,22 @@ async fn native_decision_service_endpoint() -> anyhow::Result<()> {
         verifier.into_inner(),
     )?;
     let listener = tokio::net::TcpListener::bind("127.0.0.1:0").await?;
-    let endpoint = format!("http://{}", listener.local_addr()?);
+    let endpoint = format!(
+        "{}://{}",
+        if tls.is_some() { "https" } else { "http" },
+        listener.local_addr()?
+    );
     let incoming = futures::stream::unfold(listener, |listener| async move {
         Some((listener.accept().await.map(|(stream, _)| stream), listener))
     });
     let stop_task = stop.clone();
     let (shutdown, shutdown_receiver) = tokio::sync::oneshot::channel();
+    let mut builder = tonic::transport::Server::builder();
+    if let Some(material) = tls {
+        builder = builder.tls_config(material.server_config()?)?;
+    }
     let task = tokio::spawn(async move {
-        tonic::transport::Server::builder()
+        builder
             .layer(CallDeadlineLayer)
             .add_service(service)
             .serve_with_incoming_shutdown(incoming, async {
@@ -106,14 +149,20 @@ async fn native_decision_service_endpoint() -> anyhow::Result<()> {
 async fn native_decision_service_client() -> anyhow::Result<()> {
     let pool = owned_pool().await?;
     let root = PathBuf::from(std::env::var("MCR_PARTICIPANT_COORDINATOR_ROOT")?);
+    let tls = fixture_tls(&root, "PROFILE")?;
     let ready: serde_json::Value = serde_json::from_slice(&std::fs::read(
         root.join("participant-decision-ready.json"),
     )?)?;
     let endpoint = ready["endpoint"]
         .as_str()
         .ok_or_else(|| anyhow::anyhow!("missing endpoint"))?;
+    let prefix = if tls.is_some() {
+        "https://127.0.0.1:"
+    } else {
+        "http://127.0.0.1:"
+    };
     let port: u16 = endpoint
-        .strip_prefix("http://127.0.0.1:")
+        .strip_prefix(prefix)
         .ok_or_else(|| anyhow::anyhow!("private loopback required"))?
         .parse()?;
     anyhow::ensure!(
@@ -122,9 +171,11 @@ async fn native_decision_service_client() -> anyhow::Result<()> {
     );
     let gateway = ActorDelegationVerifier::from_env(true, Workload::Concert)?;
     let signer = ParticipantDecisionSigner::from_env(&gateway)?;
-    let channel = tonic::transport::Endpoint::from_shared(endpoint.to_string())?
-        .connect()
-        .await?;
+    let endpoint = match tls {
+        Some(material) => material.endpoint(endpoint, Workload::Concert)?,
+        None => tonic::transport::Endpoint::from_shared(endpoint.to_string())?,
+    };
+    let channel = endpoint.connect().await?;
     let token = std::env::var("MCR_PARTICIPANT_DECISION_PROFILE_TOKEN")?;
     let user = Uuid::new_v4();
     let operation = Uuid::new_v4();

@@ -18,6 +18,7 @@ import subprocess
 import time
 import uuid
 import migration_smoke as migration
+import invalidation_clients_smoke as invalidation
 
 DATABASE = "mcr_participant_coordinator_sql"
 NATIVE_TEST = "participant::live::coordinator_tests::native_guarded_coordinator_cas_rollback_and_decision_recovery"
@@ -115,8 +116,10 @@ def required_sources(repo):
     sources = list((repo / "backend/services/concert-service/src/participant").rglob("*.rs"))
     sources += list((repo / "backend/crates/platform/src").rglob("*.rs"))
     sources += list((repo / "backend/services/concert-service/src/adapters/out/relationship_authority/guarded").rglob("*.rs"))
+    sources += list((repo / "backend/proto").rglob("*.proto"))
     sources += [repo / relative for relative in (
         "backend/Cargo.lock", "backend/services/concert-service/Cargo.toml",
+        "backend/scripts/mcr/invalidation_clients_smoke.py",
         "backend/services/concert-service/build.rs",
         "backend/proto/concert/v1/participant.proto", "backend/proto/authority/v1/lease.proto",
         "backend/crates/concert-application/src/avatar/mod.rs",
@@ -157,10 +160,23 @@ def decision_endpoint_probe(cluster, binary, env, repo):
     derived = subprocess.run([node, "-e", script], input=json.dumps(seeds), text=True,
                              capture_output=True, check=True, timeout=5, env=cluster.env)
     keys = json.loads(derived.stdout)
+    invalidation.pki(cluster)
+    cert = cluster.root / "pki"
+    (cert / "profile.ext").write_text("basicConstraints=critical,CA:FALSE\nkeyUsage=critical,digitalSignature,keyEncipherment\nextendedKeyUsage=serverAuth,clientAuth\nsubjectAltName=DNS:profile.svc.internal,URI:spiffe://internal/profile\n")
+    for args in [
+        ["req", "-new", "-newkey", "rsa:2048", "-nodes", "-keyout", "profile.key", "-out", "profile.csr", "-subj", "/CN=profile.svc.internal"],
+        ["x509", "-req", "-in", "profile.csr", "-CA", "ca.crt", "-CAkey", "ca.key", "-CAcreateserial", "-out", "profile.crt", "-days", "2", "-extfile", "profile.ext"],
+    ]:
+        migration.execute(["/usr/bin/openssl", *args], env=cluster.env, phase="decision-pki", cwd=cert, timeout=30)
+    (cert / "profile.key").chmod(0o600)
     private_env = {**env, "ACTOR_DELEGATION_VERIFYING_KEYS": keys[0],
                    "PROFILE_PARTICIPANT_DECISION_VERIFYING_KEYS": keys[1],
                    "PROFILE_PARTICIPANT_DECISION_SIGNING_SEED": seeds[1],
-                   "MCR_PARTICIPANT_DECISION_PROFILE_TOKEN": uuid.uuid4().hex}
+                   "MCR_PARTICIPANT_DECISION_PROFILE_TOKEN": uuid.uuid4().hex,
+                   "MCR_PARTICIPANT_DECISION_TLS_MODE": "mtls"}
+    for role in ["concert", "profile"]:
+        for kind, filename in [("CERT", role + ".crt"), ("KEY", role + ".key"), ("CA", "ca.crt")]:
+            private_env[f"{role.upper()}_GRPC_TLS_{kind}_PATH"] = str(cert / filename)
     ready = cluster.root / "participant-decision-ready.json"
     stop = cluster.root / "participant-decision-stop"
     # Output stays in the private owned root; no key/token is logged.
@@ -188,6 +204,7 @@ def decision_endpoint_probe(cluster, binary, env, repo):
             require("1 passed; 0 failed; 0 ignored" in output.read(), "exact decision host test required")
             require(not ready.exists(), "endpoint readiness was not retired")
             return {"state": "PASS", "host_test": ENDPOINT_TEST, "client_test": CLIENT_TEST,
+                    "transport": "actual Concert/Profile identities with private mTLS CA; no plaintext downgrade",
                     "checks": ["dedicated signed unknown query stays unresolved", "no-store exact query echo",
                                "wrong workload credential denied", "foreign signed actor denied", "bounded clean endpoint shutdown"],
                     "limitation": "separate actual handler/client processes; no real Profile prepare or owner store join"}
