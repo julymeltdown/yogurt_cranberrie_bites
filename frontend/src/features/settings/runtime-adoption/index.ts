@@ -152,7 +152,12 @@ export function createRuntimePreferencesAdapter(options: RuntimeAdoptionOptions)
       const ticket = ++revision
       if (active) stop(active)
       if (ticket !== revision) throw new RuntimePreferenceError('cancelled')
-      if (disposed || options.signal.aborted || signal.aborted || !privacy.isCurrent(scope)) throw new RuntimePreferenceError('cancelled')
+      if (disposed || options.signal.aborted || signal.aborted || !privacy.isCurrent(scope)) {
+        // Releasing the old lease can abort this caller before it owns an operation.
+        // Withdraw its old applied projection without overwriting a reentrant successor.
+        if (ticket === revision && !active && !disposed) publish({ phase: 'idle', reducedMotion: Boolean(media?.matches), soundEnabled: false })
+        throw new RuntimePreferenceError('cancelled')
+      }
       const parsed = preferencesSchema.safeParse(value)
       const effects = options.effects, theme = options.theme
       if (!parsed.success || !effects || !theme || (!effects.motion && (parsed.data.reduced_motion || Boolean(media?.matches)))
