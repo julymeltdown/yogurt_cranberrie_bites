@@ -241,7 +241,51 @@ Gift-specific reviewed-place closure race, HTTP terminal settlement or IN02.
 Private pickup/code gates remain closed and Claim still requires root's actual
 signed trusted-network context.
 
-### SDK3 Gift-private source candidate (not qualified)
+### SDK3 private native exclusion/recovery qualification
+
+Root's clean compiled source
+`5329d3f493a87d597c7fb20a4e0f0ecfc1cf1395` includes the Gift private producer,
+timeout fix, scope/response ceiling propagation and Media prelock adapter, plus
+SDK `4b306c8d`. Root supplied the immutable Concert lib-test executable only
+after explicitly releasing MEDIA with zero target handles. This worker used
+only that copy, created no Cargo target, and held no target lease.
+
+The copied executable SHA256 is
+`2686efa3fd2c35b2ad69c201bb495de07863510fc7e485eb50c3c69334bfc06d`.
+Its producer receipt records build exit 0, Rust 1.88.0, locked/offline dependencies,
+two jobs, debug 0 and incremental 0, with the actual Cargo lib-test artifact.
+All **1,885** frozen build hashes were independently checked against exact Git
+blobs at `5329d3f4`. All 22 Gift source/integration-test files and all 25 Concert
+migrations matched this worker's execution checkout. The newer Python runner is
+separately pinned as execution harness, not misrepresented as compiled Rust.
+
+Command: `python3 backend/scripts/mcr/gift_live_resources.py --private-test
+[frozen-copy]/concert_service-tests --report [new-private-report]`, exit **0**.
+On PostgreSQL **16.14**, **six distinct native cases passed in seven process
+invocations**: Drop retains exclusion until exact idempotent abort; expiry denies
+content without releasing exclusion; cluster/database/XID/epoch mismatches cannot
+rollback the child and committed state is not abort; missing GID requires actual
+full-XID abort; shorter SQL statement/lock limits survive and real statement
+cancellation occurs; and prepared exclusion survives an actual PostgreSQL
+restart before a separate process recovers it. Every native invocation exited 0.
+No prepared child remained; marker/inode-owned fixture cleanup passed and its
+root was removed. Executable hashes remained unchanged.
+
+Committed evidence is `tests/gift_live_support/private-native-evidence.json`,
+with `private-build-source-pins.json` and `private-execution-source-pins.json`.
+The receipt preserves producing versus execution revisions, exact command results,
+sanitized Cargo artifact metadata, original handoff hashes and explicit release.
+
+This is actual local PostgreSQL native exclusion/recovery proof with synthetic
+correlation metadata. Actual canonical Gift scopes, Root durable intent/restart
+orchestration, Gateway before-byte delivery, real media linking, Gift-specific
+reviewed-place closure race and the two-user HTTP journey remain **NOT_RUN**.
+The four Gift integration binaries were not allocated: resource/query/correlation
+and protocol/cursor/response reruns at this source remain **NOT_RUN**. The older
+29-pass proof remains pinned to `e9b761fb`. Task delivery remains **IN_PROGRESS**;
+Pickup/IssueCode and Claim production activation remain closed.
+
+### SDK3 Gift-private source checkpoints (historical)
 
 `gift_live/private/` implements the actual SDK3 producer API against SDK source
 `0576c359`, PublicProfile unsupported-variant source `56f18703` (local
@@ -262,8 +306,9 @@ its row, and final Link authorization rechecks that same immutable target on the
 same transaction. The published media implementation file matches `15e7bd8`.
 Actual Gift image-linking runtime remains **NOT_RUN**.
 
-This increment is **IN_PROGRESS**, with compilation and
-all newly authored native tests **NOT_RUN** until a target is explicitly leased.
+At these source-only checkpoints compilation and newly authored native tests
+were **NOT_RUN**. The `5329d3f4` qualification above supersedes that state for
+the compiled source and narrow native exclusion/recovery slice only.
 
 `GiftPrivateRequest::from_request` accepts the exact parsed Pickup or IssueCode
 request and actual `OwnerGuardScope`; the opaque value preserves the request
@@ -300,12 +345,13 @@ is explicitly synthetic and they do not construct a positive canonical scope or
 certify Root's durable intent order. `gift_live_resources.py --private-test`
 accepts the same frozen Concert lib binary as `--queries-test`, configures only
 its own newly created marker/inode-owned cluster, and requires no prepared
-children remain before cleanup. These tests are authored, not executed yet.
+children remain before cleanup. These tests were authored before the later
+`5329d3f4` qualification above.
 SDK peer review identified that the initial private SQL budget could widen an
 existing shorter statement timeout. The corrected helper clamps that limit,
 treats zero as unbounded and leaves the existing lock timeout unchanged. An
 additional actual-SQL test checks both retained limits and a real statement
-cancellation, plus the zero-to-bounded case; it is also **NOT_RUN** currently.
+cancellation, plus the zero-to-bounded case; it passed in that later native run.
 Source follow-up preserves the actual scope's shorter wall/monotonic deadline
 inside the opaque private request. It also requires the already-materialized
 reservation policy pair instead of inserting one inside a prepared read. Missing
@@ -314,8 +360,10 @@ revision consistently and rolls back its test mutation.
 The opaque request now captures the SDK's actual response-wide disclosure
 ceiling, retaining the original monotonic stop and any earlier child clips.
 The SDK owner confirmed a source-audit finding that this ceiling also needs
-both actual owner-view expiries; that peer follow-up is pending consumption and
-qualification. This ceiling is metadata, not a substitute for subject checks.
+both actual owner-view expiries; peer source `4b306c8d` is included in Root's
+qualified producing source `5329d3f4`. Actual Gateway before-byte canonical-owner
+HTTP qualification remains **NOT_RUN** here. This ceiling is metadata, not a
+substitute for subject checks.
 
 The native runner also accepts `--private-test /absolute/frozen/concert-lib`
 without a resource integration binary. This permits the six private native
@@ -334,7 +382,8 @@ The latter used only a new marker/inode-owned PostgreSQL 16 fixture with current
 Concert migrations, and strict cleanup passed. All omitted checks remained
 **NOT_RUN**. `tests/gift_live_support/runner-selection-evidence.json` records
 these negative checks and the exact runner hash. Gift private tests and Rust
-compilation remain **NOT_RUN** for this increment.
+compilation were **NOT_RUN** at that runner-only checkpoint. The later producing
+build and private-native results are recorded separately above.
 
 Pickup/IssueCode dispatch remains default-unavailable. Root must compose the
 actual Gift settler and enforce the returned clip before every positive response
