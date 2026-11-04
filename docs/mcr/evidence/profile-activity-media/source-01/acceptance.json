@@ -1,0 +1,18 @@
+{
+  "offer": "PROFILE-ACTIVITY-SOURCE-B-NEXT-202611041704Z",
+  "acceptedAt": "2026-11-04T17:06:37.182499+00:00",
+  "startEpoch": 1793811997.182284,
+  "workDeadlineEpoch": 1793812117.182284,
+  "cleanupDeadlineEpoch": 1793812177.182284,
+  "freeBytes": 31384637440,
+  "conservativeOutstandingReservationBytes": 17179869184,
+  "ownNewGrowthReservationBytes": 134217728,
+  "head": "bdc3f0f971e103108fa1965b96405615a27a501f",
+  "pins": {
+    "frontend/src/features/me/ui/reference-profile/ProfileActivity.tsx": "a0711221db597dddc6cf90c6b0d59a2fae6bcbd5075a7c9eb7ae4207809cf6ff",
+    "frontend/src/features/me/ui/MePages.tsx": "62cfb1e38aa5c55a05ebebda443eb88d467c4d2490b2145240d9ba937cca1b2f",
+    "frontend/src/features/me/__tests__/profile-activity-media/presentation.test.tsx": "5a5a88379e587002416feb318d82a5aa9a402b9cb640a4f4bd7974563f4d4f96",
+    "frontend/src/features/me/__tests__/profile-activity-media/vitest.config.mjs": "199f147d7dae5584e002459b2610871cb7522de158b54900739b1a0401430add",
+    "frontend/src/features/me/__tests__/profile-activity-media/source-round.py": "f6e8b6afe1693d6615ec6c4da0e77a497f3d94c408f694661a79cf21b0a7066a"
+  }
+}

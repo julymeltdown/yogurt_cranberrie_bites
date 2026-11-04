@@ -1,0 +1,32 @@
+{
+  "task": "FE34-PROFILE-ACTIVITY-MEDIA-01",
+  "base": "30a9c07bb1c0b0a7d1bd76d6c85dfc072bcd3694",
+  "headBeforeFinalEvidence": "6cd19f820dc089ee9694391831fc9cd9508eaf81",
+  "productionPins": {
+    "frontend/src/features/me/ui/reference-profile/ProfileActivity.tsx": "a0711221db597dddc6cf90c6b0d59a2fae6bcbd5075a7c9eb7ae4207809cf6ff",
+    "frontend/src/features/me/ui/MePages.tsx": "62cfb1e38aa5c55a05ebebda443eb88d467c4d2490b2145240d9ba937cca1b2f",
+    "frontend/src/app/media-entry/index.ts": "b1c55c4413396ab6f7ed1ee37c8a0e46f6d9a9fb4f9c60404ab524f69b3b0cc7",
+    "frontend/src/app/media-entry/RootProfilePostImage.tsx": "6e9e423df31b1c59af0c3fc845e216812998cdb9832ce3167703787c8911fca8"
+  },
+  "publisherCaller": "2f873838771d92b936b6d20a614c1793f2cf2980",
+  "productionBytesEqualPublisherCallerCommit": true,
+  "sourceEvidence": [
+    "docs/mcr/evidence/profile-activity-media/source-01/",
+    "docs/mcr/evidence/profile-activity-media/seam-source-01/"
+  ],
+  "nativeEvidence": "docs/mcr/evidence/profile-activity-media/native-01/",
+  "ownership": "Two Me source files; new feature test prefix; explicit transferred newRoot wrapper/rootcachedtestprefix and additiveacquireCached hunk only; own doc/evidence prefixes. Root retains AccountPanel/provider/sharedMedia/CSS/art/manifests/contracts/backend.",
+  "preservedFrozenSource": true,
+  "checks": {
+    "leaf": "25/25 focused component/privacy plus Me/PublicProfile regressions PASS",
+    "seam": "45/45 cachedowner/wrapper plus owner regressions PASS",
+    "native": "7/7 PASS and9PNG reviewed",
+    "publisherCaller": "Responsible publisher reported combined full types+AccountPanel lint PASS at01ea833d; durable evidence commit forthcoming"
+  },
+  "limitations": [
+    "Synthetic authorized HTTP, no live service or physical device",
+    "Actual default Feed-to-Me journey availability remains separate",
+    "Full Profile/header/character and ten-screen visual acceptance open"
+  ],
+  "publication": "Committed handoff goes directly to Root153; canonical verified same-candidate publisher receipt closes this bounded task. No manager review/ACK or owner proof/readback commit."
+}

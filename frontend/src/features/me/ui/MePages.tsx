@@ -1,5 +1,5 @@
 import { useId, useSyncExternalStore, type ReactNode } from 'react'
-import { ProfileActivity, type ProfileActivityInput } from './reference-profile/ProfileActivity'
+import { ProfileActivity, type ProfileActivityInput, type ProfilePostMediaRenderer } from './reference-profile/ProfileActivity'
 import { ProfileIcon } from '../../profile/reference-presentation/ProfileIcon'
 import { ShellLink } from '../../../app/navigation'
 import type { SessionController } from '../../auth/model/session'
@@ -14,7 +14,7 @@ export function MeStatus({ controller }: { controller: MeController }) {
   return <><p role="status" aria-live="polite" aria-atomic="true">{s.message || 'Your profile and preferences are optional. You can enter the world without completing them.'}</p>
     {!busy && <button type="button" onClick={() => void controller.load()}>{s.participant ? 'Discard drafts and reload saved version' : 'Load your profile'}</button>}</>
 }
-export function MeHub({ controller, auth, thumbnailSource, activity, renderAvatar }: { controller: MeController; auth: Pick<SessionController, 'privacy'>; thumbnailSource?: ReviewedThumbnailSource; activity?: ProfileActivityInput; renderAvatar?: (avatar: Participant['profile']['avatar'], label: string) => ReactNode }) {
+export function MeHub({ controller, auth, thumbnailSource, activity, renderAvatar, renderPostMedia }: { controller: MeController; auth: Pick<SessionController, 'privacy'>; thumbnailSource?: ReviewedThumbnailSource; activity?: ProfileActivityInput; renderAvatar?: (avatar: Participant['profile']['avatar'], label: string) => ReactNode; renderPostMedia?: ProfilePostMediaRenderer }) {
   const s = useMe(controller)
   return <section className="me-view me-view--concert me-hub me-hub--reference" aria-label="ME"><ConcertWindow title="My profile" icon="me" footer={<ShellLink id="me-enter-world" to="/world">Back to world</ShellLink>}>
     <div className="me-profile-header">
@@ -29,7 +29,7 @@ export function MeHub({ controller, auth, thumbnailSource, activity, renderAvata
       </nav>
     </div>
     <nav className="me-activity-navigation" aria-label="Your activity"><span aria-current="page">Activity</span><ShellLink id="me-parties" to="/meet" aria-label="Parties and MY PLAN">Parties</ShellLink><ShellLink id="me-gifts" to="/gifts/mine" aria-label="My gifts">Gifts</ShellLink></nav>
-    {s.participant && <ProfileActivity subject={s.participant.user_id} privacy={auth.privacy} input={activity} browseFeed />}
+    {s.participant && <ProfileActivity subject={s.participant.user_id} privacy={auth.privacy} input={activity} browseFeed renderPostMedia={renderPostMedia} />}
     <details className="me-profile-options"><summary>Profile options</summary><nav className="me-account-links" aria-label="More account options">
       <ShellLink id="me-settings" to="/me/settings">Settings</ShellLink><ShellLink id="me-age" to="/me/age">Age &amp; privacy</ShellLink>
       <ShellLink id="me-blocks" to="/me/blocks">Blocked users</ShellLink><ShellLink id="me-account" to="/me/account">Account</ShellLink>

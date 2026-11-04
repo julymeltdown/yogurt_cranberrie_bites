@@ -1,0 +1,93 @@
+{
+  "job": "PROFILE-CACHED-MEDIA-SOURCE-B-DIRECT-202611041717Z",
+  "status": "PASS",
+  "startedEpoch": 1793812713.6472378,
+  "workDeadline": 1793812833.5836852,
+  "cleanupDeadline": 1793812893.5836852,
+  "head": "32e00a771e25ab2431e0b4bb46c2a6c180b1cf67",
+  "limits": {
+    "workSeconds": 120,
+    "cleanupSeconds": 60,
+    "wholeBytes": 2147483648,
+    "privateGitReserveBytes": 2097152,
+    "tempBytes": 104857600,
+    "additionalDurableBytes": 16777216,
+    "logsBytes": 2097152,
+    "newGrowthBytes": 134217728,
+    "processes": 4,
+    "rssMiB": 2560
+  },
+  "commands": [
+    {
+      "label": "syntax",
+      "command": [
+        "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node",
+        "--check",
+        "src/features/me/__tests__/profile-activity-media/native.mjs"
+      ],
+      "startedEpoch": 1793812713.854472,
+      "exitCode": 0,
+      "finishedEpoch": 1793812714.2647822
+    },
+    {
+      "label": "source-tests",
+      "command": [
+        "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node",
+        "/Users/lhs/Desktop/mcr/frontend/node_modules/vitest/vitest.mjs",
+        "run",
+        "--config",
+        "src/app/media-entry/__tests__/profile-cached-thumbnail/vitest.config.mjs",
+        "--configLoader",
+        "runner",
+        "--maxWorkers=1",
+        "--no-file-parallelism"
+      ],
+      "startedEpoch": 1793812714.264808,
+      "exitCode": 0,
+      "finishedEpoch": 1793812715.890538
+    },
+    {
+      "label": "source-types",
+      "command": [
+        "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node",
+        "/Users/lhs/Desktop/mcr/frontend/node_modules/typescript/bin/tsc",
+        "-p",
+        "tsconfig.json",
+        "--noEmit",
+        "--incremental",
+        "false",
+        "--allowImportingTsExtensions"
+      ],
+      "startedEpoch": 1793812715.890618,
+      "exitCode": 0,
+      "finishedEpoch": 1793812723.5862222
+    },
+    {
+      "label": "source-lint",
+      "command": [
+        "/Users/lhs/Desktop/mcr/frontend/node_modules/.bin/oxlint",
+        "src/app/media-entry/index.ts",
+        "src/app/media-entry/RootProfilePostImage.tsx",
+        "src/app/media-entry/__tests__/profile-cached-thumbnail",
+        "src/features/me/__tests__/profile-activity-media"
+      ],
+      "startedEpoch": 1793812723.586261,
+      "exitCode": 0,
+      "finishedEpoch": 1793812724.001013
+    }
+  ],
+  "peakProcesses": 4,
+  "peakRssKiB": 1521520,
+  "peakWholeBytes": 1470808064,
+  "peakTempBytes": 1363038,
+  "peakOutputBytes": 8392,
+  "initialWholeBytes": 1469431808,
+  "remainingOwnDescendants": [],
+  "finishedEpoch": 1793812724.165189,
+  "cleanup": {
+    "linkAbsent": true,
+    "tempAbsent": true,
+    "beforeOriginalDeadline": true
+  },
+  "releaseDisposition": "FULL; no SourceA or Browser2 reservation; no install/build/database/server started"
+}

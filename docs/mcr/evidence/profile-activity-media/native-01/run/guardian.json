@@ -1,0 +1,70 @@
+{
+  "job": "PROFILE-CACHED-ACTIVITY-BROWSER2-202611041724Z",
+  "status": "PASS",
+  "startedEpoch": 1793813099.471482,
+  "workDeadline": 1793813399.326855,
+  "cleanupDeadline": 1793813459.326855,
+  "head": "6cd19f820dc089ee9694391831fc9cd9508eaf81",
+  "limits": {
+    "workSeconds": 300,
+    "cleanupSeconds": 60,
+    "wholeBytes": 2147483648,
+    "privateGitReserveBytes": 2097152,
+    "tempBytes": 104857600,
+    "additionalDurableBytes": 16777216,
+    "logsBytes": 2097152,
+    "newGrowthBytes": 134217728,
+    "processes": 24,
+    "rssMiB": 4096,
+    "pngs": 9,
+    "pngBytes": 4194304
+  },
+  "commands": [
+    {
+      "label": "syntax",
+      "command": [
+        "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node",
+        "--check",
+        "src/features/me/__tests__/profile-activity-media/native.mjs"
+      ],
+      "startedEpoch": 1793813099.731078,
+      "exitCode": 0,
+      "finishedEpoch": 1793813100.1367638
+    },
+    {
+      "label": "native-lint",
+      "command": [
+        "/Users/lhs/Desktop/mcr/frontend/node_modules/.bin/oxlint",
+        "src/features/me/__tests__/profile-activity-media/native.mjs"
+      ],
+      "startedEpoch": 1793813100.13679,
+      "exitCode": 0,
+      "finishedEpoch": 1793813100.543853
+    },
+    {
+      "label": "native",
+      "command": [
+        "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node",
+        "src/features/me/__tests__/profile-activity-media/native.mjs"
+      ],
+      "startedEpoch": 1793813100.5438678,
+      "exitCode": 0,
+      "finishedEpoch": 1793813105.565932
+    }
+  ],
+  "peakProcesses": 10,
+  "peakRssKiB": 2209152,
+  "peakWholeBytes": 1495130112,
+  "peakTempBytes": 29582982,
+  "peakOutputBytes": 774321,
+  "initialWholeBytes": 1469472768,
+  "pngCount": 9,
+  "remainingOwnDescendants": [],
+  "finishedEpoch": 1793813105.741646,
+  "cleanup": {
+    "linkAbsent": true,
+    "tempAbsent": true,
+    "beforeOriginalDeadline": true,
+    "portAbsent": true
+  }
+}

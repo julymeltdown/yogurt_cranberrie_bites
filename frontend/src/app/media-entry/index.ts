@@ -91,6 +91,42 @@ export function createMediaOwner(options: MediaOwnerOptions) {
   }
   return {
     scope,
+    /** Attach only to a ready existing POST reader. This facade can never start a read. */
+    acquireCached({ mediaId, purpose, signal }: { readonly mediaId: string; readonly purpose: RetainedMediaPurpose; readonly signal?: AbortSignal }): MediaLease | null {
+      if (!current() || !uuid(mediaId) || purpose !== 'POST' || signal?.aborted || consumers.size >= maxConsumers) return null
+      const key = JSON.stringify([scopeKey, purpose, mediaId]), existing = entries.get(key)
+      if (!existing || existing.reader.read().phase !== 'ready') return null
+      const entry = existing
+      const cancelled = empty('cancelled'), listeners = new Set<() => void>()
+      let attached = true, released = false
+      const notify = () => { for (const listener of [...listeners]) { try { listener() } catch { /* Isolate cleanup observers. */ } } }
+      function cancel() {
+        if (!attached) return
+        attached = false
+        entry.consumers.delete(consumer)
+        if (entries.get(key) === entry && entry.consumers.size === 0) {
+          if (current() && entry.reader.read().phase === 'ready') entry.used = ++tick
+          else evict(entry)
+        }
+        notify()
+      }
+      function release() {
+        if (released) return
+        released = true
+        signal?.removeEventListener('abort', release)
+        consumers.delete(consumer)
+        cancel(); listeners.clear()
+      }
+      const consumer: Consumer = { update: notify, stop: release }
+      consumers.add(consumer); entry.consumers.add(consumer); entry.used = ++tick
+      signal?.addEventListener('abort', release, { once: true })
+      return {
+        read: () => !released && attached && current() && entries.get(key) === entry ? entry.reader.read() : cancelled,
+        subscribe(listener) { if (released) return () => undefined; listeners.add(listener); return () => { listeners.delete(listener) } },
+        async load() { /* Deliberately inert, including after cancellation or eviction. */ },
+        cancel, release, dispose: release,
+      }
+    },
     acquire({ mediaId, purpose, signal }: { readonly mediaId: string; readonly purpose: RetainedMediaPurpose; readonly signal?: AbortSignal }): MediaLease {
       if (!current()) throw new PrivacyError('scope-expired')
       if (!uuid(mediaId) || (purpose !== 'POST' && purpose !== 'GIVEAWAY')) throw new Error('Invalid media lease')

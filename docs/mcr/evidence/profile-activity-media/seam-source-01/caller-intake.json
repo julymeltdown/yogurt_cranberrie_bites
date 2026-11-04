@@ -1,0 +1,18 @@
+{
+  "commit": "2f873838771d92b936b6d20a614c1793f2cf2980",
+  "path": "frontend/src/app/account-entry/panels.tsx",
+  "sha256": "ae64e8f12cb973cee01bb7b36a4b24e3154e19f571f9c3513c1ee902c99ad965",
+  "intake": "Read-only committed postimage; not copied into this worktree or claimed covered by earlier full types. Publishing developer owns AccountPanel compatibility/combined checks. Native fixture explicitly qualifies MeHub + actual Root owner/wrapper only.",
+  "at": "2026-11-04T17:21:27.595135+00:00",
+  "publisherQualification": {
+    "candidate": "01ea833d6cf3d7e51653fd998dafa58d981cf47a",
+    "actualFullAt": "2026-11-04T17:23:09.975804Z",
+    "commands": [
+      "Full app tsc --noEmit --incremental false --allowImportingTsExtensions: exit0",
+      "Scoped AccountPanel lint deny-warnings: exit0"
+    ],
+    "evidence": "docs/mcr/evidence/root-map-profile-integration/source-01/{offer.json,run/{00.log,01.log,release.json}}",
+    "provenance": "Responsible publishing developer disposition received directly; no independent manager/owner replay; publisher durable evidence commit forthcoming.",
+    "limit": "Actual default Feed-to-Me journey remains separate; own native fixture is MeHub plus actual shared owner/cached wrapper."
+  }
+}

@@ -1,0 +1,1 @@
+src/app/feed-entry/__tests__/vite.config.ts(4,18): error TS5097: An import path can only end with a '.ts' extension when 'allowImportingTsExtensions' is enabled.

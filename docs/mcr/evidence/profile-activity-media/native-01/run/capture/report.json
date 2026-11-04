@@ -1,0 +1,623 @@
+{
+  "task": "FE34-PROFILE-ACTIVITY-MEDIA-01",
+  "job": "PROFILE-CACHED-ACTIVITY-BROWSER2-202611041724Z",
+  "status": "PASS",
+  "head": "6cd19f820dc089ee9694391831fc9cd9508eaf81",
+  "diffSha256": "e27d258448400dc9088f91ef3d6ade7fe7508a98940e85a8939f7fe4f10d7594",
+  "reference": "docs/mcr/design/reference-target-2026-11-04.png",
+  "sources": [
+    {
+      "path": "frontend/src/features/me/ui/reference-profile/ProfileActivity.tsx",
+      "sha256": "a0711221db597dddc6cf90c6b0d59a2fae6bcbd5075a7c9eb7ae4207809cf6ff"
+    },
+    {
+      "path": "frontend/src/features/me/ui/MePages.tsx",
+      "sha256": "62cfb1e38aa5c55a05ebebda443eb88d467c4d2490b2145240d9ba937cca1b2f"
+    }
+  ],
+  "qualification": "Actual MeHub and protected Root cached-only thumbnail with canonical Auth and labeled synthetic authorized Feed/media HTTP. Explicit Feed load precedes loaded Profile; cold Profile performs no Feed/media read.",
+  "limitations": [
+    "No live service, physical device, full ten-screen or whole FE34 acceptance",
+    "Existing avatar and CSS remain unchanged; synthetic POST photo is not a new product/art binding"
+  ],
+  "cases": [
+    {
+      "width": 360,
+      "height": 844,
+      "mode": "loaded",
+      "errors": [],
+      "initial": {
+        "horizontalOverflow": false,
+        "rows": [
+          {
+            "visual": {
+              "x": 33,
+              "y": 384.859375,
+              "width": 52,
+              "height": 52,
+              "bottom": 436.859375,
+              "right": 85
+            },
+            "image": {
+              "x": 34,
+              "y": 385.859375,
+              "width": 50,
+              "height": 50,
+              "bottom": 435.859375,
+              "right": 84,
+              "src": "blob:http://127.0.0.1:5321/56bfee97-d886-421f-80c8-107df5f2fd17",
+              "complete": true,
+              "naturalWidth": 1152
+            },
+            "fallback": false,
+            "interactiveVisual": false,
+            "link": {
+              "x": 95,
+              "y": 384.859375,
+              "width": 232,
+              "height": 51.390625,
+              "bottom": 436.25,
+              "right": 327
+            },
+            "href": "/feed/00000000-0000-4000-8000-00000000003c",
+            "text": "Posted to the feedSee you at the show. Sharing a few photos after the encore."
+          },
+          {
+            "visual": {
+              "x": 33,
+              "y": 468.09375,
+              "width": 52,
+              "height": 52,
+              "bottom": 520.09375,
+              "right": 85
+            },
+            "image": {
+              "x": 34,
+              "y": 469.09375,
+              "width": 50,
+              "height": 50,
+              "bottom": 519.09375,
+              "right": 84,
+              "src": "blob:http://127.0.0.1:5321/e6af324e-065a-4df4-a5de-0cd5b7a3bc8d",
+              "complete": true,
+              "naturalWidth": 1152
+            },
+            "fallback": false,
+            "interactiveVisual": false,
+            "link": {
+              "x": 95,
+              "y": 468.09375,
+              "width": 232,
+              "height": 51.390625,
+              "bottom": 519.484375,
+              "right": 327
+            },
+            "href": "/feed/00000000-0000-4000-8000-00000000003b",
+            "text": "Posted to the feedAnyone else making friendship bracelets for the queue?"
+          }
+        ]
+      },
+      "before": {
+        "ready": true,
+        "readCounts": {
+          "feed": 1,
+          "media": 4
+        },
+        "expectedImages": 2,
+        "mode": "loaded"
+      },
+      "after": {
+        "ready": true,
+        "readCounts": {
+          "feed": 1,
+          "media": 4
+        },
+        "expectedImages": 2,
+        "mode": "loaded"
+      },
+      "screenshot": "profile-loaded-360.png",
+      "revoked": {
+        "ready": true,
+        "readCounts": {
+          "feed": 1,
+          "media": 4
+        },
+        "expectedImages": 2,
+        "mode": "loaded"
+      },
+      "status": "PASS"
+    },
+    {
+      "width": 360,
+      "height": 844,
+      "mode": "unavailable",
+      "errors": [],
+      "initial": {
+        "horizontalOverflow": false,
+        "rows": [
+          {
+            "visual": {
+              "x": 33,
+              "y": 384.859375,
+              "width": 52,
+              "height": 52,
+              "bottom": 436.859375,
+              "right": 85
+            },
+            "image": null,
+            "fallback": true,
+            "interactiveVisual": false,
+            "link": {
+              "x": 95,
+              "y": 384.859375,
+              "width": 232,
+              "height": 51.390625,
+              "bottom": 436.25,
+              "right": 327
+            },
+            "href": "/feed/00000000-0000-4000-8000-00000000003c",
+            "text": "Posted to the feedSee you at the show. Sharing a few photos after the encore."
+          },
+          {
+            "visual": {
+              "x": 33,
+              "y": 468.09375,
+              "width": 52,
+              "height": 52,
+              "bottom": 520.09375,
+              "right": 85
+            },
+            "image": null,
+            "fallback": true,
+            "interactiveVisual": false,
+            "link": {
+              "x": 95,
+              "y": 468.09375,
+              "width": 232,
+              "height": 51.390625,
+              "bottom": 519.484375,
+              "right": 327
+            },
+            "href": "/feed/00000000-0000-4000-8000-00000000003b",
+            "text": "Posted to the feedAnyone else making friendship bracelets for the queue?"
+          }
+        ]
+      },
+      "before": {
+        "ready": true,
+        "readCounts": {
+          "feed": 1,
+          "media": 2
+        },
+        "expectedImages": 0,
+        "mode": "unavailable"
+      },
+      "after": {
+        "ready": true,
+        "readCounts": {
+          "feed": 1,
+          "media": 2
+        },
+        "expectedImages": 0,
+        "mode": "unavailable"
+      },
+      "screenshot": "profile-unavailable-360.png",
+      "revoked": {
+        "ready": true,
+        "readCounts": {
+          "feed": 1,
+          "media": 2
+        },
+        "expectedImages": 0,
+        "mode": "unavailable"
+      },
+      "status": "PASS"
+    },
+    {
+      "width": 390,
+      "height": 844,
+      "mode": "loaded",
+      "errors": [],
+      "initial": {
+        "horizontalOverflow": false,
+        "rows": [
+          {
+            "visual": {
+              "x": 33,
+              "y": 374.546875,
+              "width": 52,
+              "height": 52,
+              "bottom": 426.546875,
+              "right": 85
+            },
+            "image": {
+              "x": 34,
+              "y": 375.546875,
+              "width": 50,
+              "height": 50,
+              "bottom": 425.546875,
+              "right": 84,
+              "src": "blob:http://127.0.0.1:5321/ea548c9f-a3b7-41a1-b8dd-10960f311150",
+              "complete": true,
+              "naturalWidth": 1152
+            },
+            "fallback": false,
+            "interactiveVisual": false,
+            "link": {
+              "x": 95,
+              "y": 374.546875,
+              "width": 262,
+              "height": 44,
+              "bottom": 418.546875,
+              "right": 357
+            },
+            "href": "/feed/00000000-0000-4000-8000-00000000003c",
+            "text": "Posted to the feedSee you at the show. Sharing a few photos after the encore."
+          },
+          {
+            "visual": {
+              "x": 33,
+              "y": 450.390625,
+              "width": 52,
+              "height": 52,
+              "bottom": 502.390625,
+              "right": 85
+            },
+            "image": {
+              "x": 34,
+              "y": 451.390625,
+              "width": 50,
+              "height": 50,
+              "bottom": 501.390625,
+              "right": 84,
+              "src": "blob:http://127.0.0.1:5321/810ddaed-2d52-4b88-b06b-f54a3249b579",
+              "complete": true,
+              "naturalWidth": 1152
+            },
+            "fallback": false,
+            "interactiveVisual": false,
+            "link": {
+              "x": 95,
+              "y": 450.390625,
+              "width": 262,
+              "height": 44,
+              "bottom": 494.390625,
+              "right": 357
+            },
+            "href": "/feed/00000000-0000-4000-8000-00000000003b",
+            "text": "Posted to the feedAnyone else making friendship bracelets for the queue?"
+          }
+        ]
+      },
+      "before": {
+        "ready": true,
+        "readCounts": {
+          "feed": 1,
+          "media": 4
+        },
+        "expectedImages": 2,
+        "mode": "loaded"
+      },
+      "after": {
+        "ready": true,
+        "readCounts": {
+          "feed": 1,
+          "media": 4
+        },
+        "expectedImages": 2,
+        "mode": "loaded"
+      },
+      "screenshot": "profile-loaded-390.png",
+      "revoked": {
+        "ready": true,
+        "readCounts": {
+          "feed": 1,
+          "media": 4
+        },
+        "expectedImages": 2,
+        "mode": "loaded"
+      },
+      "revokeScreenshot": "profile-loaded-revoked-390.png",
+      "status": "PASS"
+    },
+    {
+      "width": 390,
+      "height": 844,
+      "mode": "unavailable",
+      "errors": [],
+      "initial": {
+        "horizontalOverflow": false,
+        "rows": [
+          {
+            "visual": {
+              "x": 33,
+              "y": 374.546875,
+              "width": 52,
+              "height": 52,
+              "bottom": 426.546875,
+              "right": 85
+            },
+            "image": null,
+            "fallback": true,
+            "interactiveVisual": false,
+            "link": {
+              "x": 95,
+              "y": 374.546875,
+              "width": 262,
+              "height": 44,
+              "bottom": 418.546875,
+              "right": 357
+            },
+            "href": "/feed/00000000-0000-4000-8000-00000000003c",
+            "text": "Posted to the feedSee you at the show. Sharing a few photos after the encore."
+          },
+          {
+            "visual": {
+              "x": 33,
+              "y": 450.390625,
+              "width": 52,
+              "height": 52,
+              "bottom": 502.390625,
+              "right": 85
+            },
+            "image": null,
+            "fallback": true,
+            "interactiveVisual": false,
+            "link": {
+              "x": 95,
+              "y": 450.390625,
+              "width": 262,
+              "height": 44,
+              "bottom": 494.390625,
+              "right": 357
+            },
+            "href": "/feed/00000000-0000-4000-8000-00000000003b",
+            "text": "Posted to the feedAnyone else making friendship bracelets for the queue?"
+          }
+        ]
+      },
+      "before": {
+        "ready": true,
+        "readCounts": {
+          "feed": 1,
+          "media": 2
+        },
+        "expectedImages": 0,
+        "mode": "unavailable"
+      },
+      "after": {
+        "ready": true,
+        "readCounts": {
+          "feed": 1,
+          "media": 2
+        },
+        "expectedImages": 0,
+        "mode": "unavailable"
+      },
+      "screenshot": "profile-unavailable-390.png",
+      "revoked": {
+        "ready": true,
+        "readCounts": {
+          "feed": 1,
+          "media": 2
+        },
+        "expectedImages": 0,
+        "mode": "unavailable"
+      },
+      "revokeScreenshot": "profile-unavailable-revoked-390.png",
+      "status": "PASS"
+    },
+    {
+      "width": 430,
+      "height": 844,
+      "mode": "loaded",
+      "errors": [],
+      "initial": {
+        "horizontalOverflow": false,
+        "rows": [
+          {
+            "visual": {
+              "x": 33,
+              "y": 370.84375,
+              "width": 52,
+              "height": 52,
+              "bottom": 422.84375,
+              "right": 85
+            },
+            "image": {
+              "x": 34,
+              "y": 371.84375,
+              "width": 50,
+              "height": 50,
+              "bottom": 421.84375,
+              "right": 84,
+              "src": "blob:http://127.0.0.1:5321/516bad98-9dee-49b0-ac04-ae0032d92e2d",
+              "complete": true,
+              "naturalWidth": 1152
+            },
+            "fallback": false,
+            "interactiveVisual": false,
+            "link": {
+              "x": 95,
+              "y": 370.84375,
+              "width": 302,
+              "height": 44,
+              "bottom": 414.84375,
+              "right": 397
+            },
+            "href": "/feed/00000000-0000-4000-8000-00000000003c",
+            "text": "Posted to the feedSee you at the show. Sharing a few photos after the encore."
+          },
+          {
+            "visual": {
+              "x": 33,
+              "y": 446.6875,
+              "width": 52,
+              "height": 52,
+              "bottom": 498.6875,
+              "right": 85
+            },
+            "image": {
+              "x": 34,
+              "y": 447.6875,
+              "width": 50,
+              "height": 50,
+              "bottom": 497.6875,
+              "right": 84,
+              "src": "blob:http://127.0.0.1:5321/02bd3c31-9dde-4eee-a6f2-7e29300032d3",
+              "complete": true,
+              "naturalWidth": 1152
+            },
+            "fallback": false,
+            "interactiveVisual": false,
+            "link": {
+              "x": 95,
+              "y": 446.6875,
+              "width": 302,
+              "height": 44,
+              "bottom": 490.6875,
+              "right": 397
+            },
+            "href": "/feed/00000000-0000-4000-8000-00000000003b",
+            "text": "Posted to the feedAnyone else making friendship bracelets for the queue?"
+          }
+        ]
+      },
+      "before": {
+        "ready": true,
+        "readCounts": {
+          "feed": 1,
+          "media": 4
+        },
+        "expectedImages": 2,
+        "mode": "loaded"
+      },
+      "after": {
+        "ready": true,
+        "readCounts": {
+          "feed": 1,
+          "media": 4
+        },
+        "expectedImages": 2,
+        "mode": "loaded"
+      },
+      "screenshot": "profile-loaded-430.png",
+      "revoked": {
+        "ready": true,
+        "readCounts": {
+          "feed": 1,
+          "media": 4
+        },
+        "expectedImages": 2,
+        "mode": "loaded"
+      },
+      "status": "PASS"
+    },
+    {
+      "width": 430,
+      "height": 844,
+      "mode": "unavailable",
+      "errors": [],
+      "initial": {
+        "horizontalOverflow": false,
+        "rows": [
+          {
+            "visual": {
+              "x": 33,
+              "y": 370.84375,
+              "width": 52,
+              "height": 52,
+              "bottom": 422.84375,
+              "right": 85
+            },
+            "image": null,
+            "fallback": true,
+            "interactiveVisual": false,
+            "link": {
+              "x": 95,
+              "y": 370.84375,
+              "width": 302,
+              "height": 44,
+              "bottom": 414.84375,
+              "right": 397
+            },
+            "href": "/feed/00000000-0000-4000-8000-00000000003c",
+            "text": "Posted to the feedSee you at the show. Sharing a few photos after the encore."
+          },
+          {
+            "visual": {
+              "x": 33,
+              "y": 446.6875,
+              "width": 52,
+              "height": 52,
+              "bottom": 498.6875,
+              "right": 85
+            },
+            "image": null,
+            "fallback": true,
+            "interactiveVisual": false,
+            "link": {
+              "x": 95,
+              "y": 446.6875,
+              "width": 302,
+              "height": 44,
+              "bottom": 490.6875,
+              "right": 397
+            },
+            "href": "/feed/00000000-0000-4000-8000-00000000003b",
+            "text": "Posted to the feedAnyone else making friendship bracelets for the queue?"
+          }
+        ]
+      },
+      "before": {
+        "ready": true,
+        "readCounts": {
+          "feed": 1,
+          "media": 2
+        },
+        "expectedImages": 0,
+        "mode": "unavailable"
+      },
+      "after": {
+        "ready": true,
+        "readCounts": {
+          "feed": 1,
+          "media": 2
+        },
+        "expectedImages": 0,
+        "mode": "unavailable"
+      },
+      "screenshot": "profile-unavailable-430.png",
+      "revoked": {
+        "ready": true,
+        "readCounts": {
+          "feed": 1,
+          "media": 2
+        },
+        "expectedImages": 0,
+        "mode": "unavailable"
+      },
+      "status": "PASS"
+    },
+    {
+      "width": 390,
+      "height": 844,
+      "mode": "cold",
+      "status": "PASS",
+      "state": {
+        "ready": true,
+        "readCounts": {
+          "feed": 0,
+          "media": 0
+        },
+        "expectedImages": 0,
+        "mode": "cold"
+      },
+      "screenshot": "profile-cold-390.png"
+    }
+  ],
+  "startedAt": "2026-11-04T17:25:00.891Z",
+  "browser": "156.0.8078.80",
+  "finishedAt": "2026-11-04T17:25:05.153Z",
+  "pngBytes": 723622
+}

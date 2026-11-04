@@ -1,0 +1,63 @@
+{
+  "job": "PROFILE-ACTIVITY-SOURCE-B-NEXT-202611041704Z",
+  "status": "PASS",
+  "startedEpoch": 1793812031.37748,
+  "workDeadline": 1793812117.182284,
+  "cleanupDeadline": 1793812177.182284,
+  "head": "bdc3f0f971e103108fa1965b96405615a27a501f",
+  "limits": {
+    "workSeconds": 120,
+    "cleanupSeconds": 60,
+    "wholeBytes": 2147483648,
+    "privateGitReserveBytes": 2097152,
+    "tempBytes": 104857600,
+    "additionalDurableBytes": 16777216,
+    "logsBytes": 2097152,
+    "newGrowthBytes": 134217728,
+    "processes": 24,
+    "rssMiB": 4096
+  },
+  "commands": [
+    {
+      "label": "source-types",
+      "command": [
+        "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node",
+        "/Users/lhs/Desktop/mcr/frontend/node_modules/typescript/bin/tsc",
+        "-p",
+        "tsconfig.json",
+        "--noEmit",
+        "--incremental",
+        "false",
+        "--allowImportingTsExtensions"
+      ],
+      "startedEpoch": 1793812031.4950569,
+      "exitCode": 0,
+      "finishedEpoch": 1793812039.3839328
+    },
+    {
+      "label": "source-lint",
+      "command": [
+        "/Users/lhs/Desktop/mcr/frontend/node_modules/.bin/oxlint",
+        "src/features/me/ui/reference-profile/ProfileActivity.tsx",
+        "src/features/me/ui/MePages.tsx",
+        "src/features/me/__tests__/profile-activity-media"
+      ],
+      "startedEpoch": 1793812039.383966,
+      "exitCode": 0,
+      "finishedEpoch": 1793812039.7971451
+    }
+  ],
+  "peakProcesses": 3,
+  "peakRssKiB": 1483296,
+  "peakWholeBytes": 1470726144,
+  "peakTempBytes": 1362684,
+  "peakOutputBytes": 3502,
+  "initialWholeBytes": 1469362176,
+  "remainingOwnDescendants": [],
+  "finishedEpoch": 1793812039.980949,
+  "cleanup": {
+    "linkAbsent": true,
+    "tempAbsent": true,
+    "beforeOriginalDeadline": true
+  }
+}

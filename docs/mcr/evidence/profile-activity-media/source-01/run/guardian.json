@@ -1,0 +1,68 @@
+{
+  "job": "PROFILE-ACTIVITY-SOURCE-B-NEXT-202611041704Z",
+  "status": "FAIL",
+  "startedEpoch": 1793811997.265019,
+  "workDeadline": 1793812117.182284,
+  "cleanupDeadline": 1793812177.182284,
+  "head": "bdc3f0f971e103108fa1965b96405615a27a501f",
+  "limits": {
+    "workSeconds": 120,
+    "cleanupSeconds": 60,
+    "wholeBytes": 2147483648,
+    "privateGitReserveBytes": 2097152,
+    "tempBytes": 104857600,
+    "additionalDurableBytes": 16777216,
+    "logsBytes": 2097152,
+    "newGrowthBytes": 134217728,
+    "processes": 24,
+    "rssMiB": 4096
+  },
+  "commands": [
+    {
+      "label": "source-tests",
+      "command": [
+        "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node",
+        "/Users/lhs/Desktop/mcr/frontend/node_modules/vitest/vitest.mjs",
+        "run",
+        "--config",
+        "src/features/me/__tests__/profile-activity-media/vitest.config.mjs",
+        "--configLoader",
+        "runner",
+        "--maxWorkers=1",
+        "--no-file-parallelism"
+      ],
+      "startedEpoch": 1793811997.4194,
+      "exitCode": 0,
+      "finishedEpoch": 1793812000.296509
+    },
+    {
+      "label": "source-types",
+      "command": [
+        "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node",
+        "/Users/lhs/Desktop/mcr/frontend/node_modules/typescript/bin/tsc",
+        "-p",
+        "tsconfig.json",
+        "--noEmit",
+        "--incremental",
+        "false"
+      ],
+      "startedEpoch": 1793812000.2965848,
+      "exitCode": 2,
+      "finishedEpoch": 1793812008.097488
+    }
+  ],
+  "peakProcesses": 4,
+  "peakRssKiB": 1420288,
+  "peakWholeBytes": 1479929856,
+  "peakTempBytes": 10394539,
+  "peakOutputBytes": 1403,
+  "initialWholeBytes": 1469349888,
+  "error": "source-types failed; retained log/report",
+  "remainingOwnDescendants": [],
+  "finishedEpoch": 1793812008.258301,
+  "cleanup": {
+    "linkAbsent": true,
+    "tempAbsent": true,
+    "beforeOriginalDeadline": true
+  }
+}

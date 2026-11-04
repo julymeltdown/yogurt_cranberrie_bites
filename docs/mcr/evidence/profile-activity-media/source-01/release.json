@@ -1,0 +1,26 @@
+{
+  "status": "FULL",
+  "releasedAt": "2026-11-04T17:07:45.801670+00:00",
+  "remainingOwnDescendants": [],
+  "dependencyLinkAbsent": true,
+  "privateTmpCacheAbsent": true,
+  "serverOrPortCreated": false,
+  "tests": {
+    "files": 3,
+    "cases": 25,
+    "exitCode": 0
+  },
+  "typeAndLintTailExitCodes": [
+    0,
+    0
+  ],
+  "freeBytes": 31569010688,
+  "peaks": {
+    "peakProcesses": 4,
+    "peakRssKiB": 1483296,
+    "peakWholeBytes": 1479929856,
+    "peakTempBytes": 10394539,
+    "peakOutputBytes": 3502
+  },
+  "sourceGuardianSha256": "ba8fce697d3d60b4a4eb3bce7178a62f46c13f5ed5f2b34bfa788465aae24666"
+}

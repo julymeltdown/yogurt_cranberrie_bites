@@ -1,0 +1,69 @@
+{
+  "assessedAt": "2026-11-04T17:26:26.798129+00:00",
+  "assessor": "Responsible implementation developer in mcr(fe) Profile activity media",
+  "reference": {
+    "path": "docs/mcr/design/reference-target-2026-11-04.png",
+    "sha256": "d9a8fae2f96a82253542019ab673589b3938627956eace15c8594c702b5c4617",
+    "viewed": "Full original ten-screen target, including bottom-right MY PROFILE activity image rows"
+  },
+  "captures": [
+    {
+      "path": "docs/mcr/evidence/profile-activity-media/native-01/run/capture/profile-cold-390.png",
+      "sha256": "bd9da3fcec7c657df43149c5a9e14f0422a4f66d36cf983024175efee47ff14a",
+      "bytes": 63001
+    },
+    {
+      "path": "docs/mcr/evidence/profile-activity-media/native-01/run/capture/profile-loaded-360.png",
+      "sha256": "8701a74ca2561391095017b8b8c1e141dbbcb03c7671ae429bb02deecec2a0a4",
+      "bytes": 94539
+    },
+    {
+      "path": "docs/mcr/evidence/profile-activity-media/native-01/run/capture/profile-loaded-390.png",
+      "sha256": "b5b111e5295f425c02379cc246e323a96d9f84bfdc3d9ae263ea814a48053fad",
+      "bytes": 95720
+    },
+    {
+      "path": "docs/mcr/evidence/profile-activity-media/native-01/run/capture/profile-loaded-430.png",
+      "sha256": "72d4a53037f6f3206a4904915e97e7fcedc5ad20b28111796e1db04e5991e278",
+      "bytes": 99808
+    },
+    {
+      "path": "docs/mcr/evidence/profile-activity-media/native-01/run/capture/profile-loaded-revoked-390.png",
+      "sha256": "6f241f555d17fee6911ee0c340cbb876aa557d52e1ffb81a08fece9997102e11",
+      "bytes": 48889
+    },
+    {
+      "path": "docs/mcr/evidence/profile-activity-media/native-01/run/capture/profile-unavailable-360.png",
+      "sha256": "da9d8fdf07c928b389f3c8767d8a01ef2531ae3e88165aba496c8bc060b567a1",
+      "bytes": 88872
+    },
+    {
+      "path": "docs/mcr/evidence/profile-activity-media/native-01/run/capture/profile-unavailable-390.png",
+      "sha256": "2fdd0670ff32cef69de353bf1d3ddda868535be20524896735feb6d5f56c0c22",
+      "bytes": 89967
+    },
+    {
+      "path": "docs/mcr/evidence/profile-activity-media/native-01/run/capture/profile-unavailable-430.png",
+      "sha256": "a936dc700f204aa0a9cf569694576731fb84e2ef3b32ac58d933312dfcb005f2",
+      "bytes": 93937
+    },
+    {
+      "path": "docs/mcr/evidence/profile-activity-media/native-01/run/capture/profile-unavailable-revoked-390.png",
+      "sha256": "6f241f555d17fee6911ee0c340cbb876aa557d52e1ffb81a08fece9997102e11",
+      "bytes": 48889
+    }
+  ],
+  "findings": {
+    "loaded360390430": "Two square thumbnails render beside readable post links. All52x52px containers and50x50px cover-fit images remain bounded at the three widths. No horizontal overflow or overlapping thumbnails/text observed. Synthetic protected POST photo is the unchanged non-character Parade illustration; both posts deliberately share this test payload.",
+    "unavailable360390430": "The same52px slot holds the existing Feed icon, with readable post text and no broken-image glyph/private error/retry. Geometry matches loaded state.",
+    "privacy390": "Both loaded/unavailable revoke captures clear private participant identity, activity links and media and show the existing changed-session notice.",
+    "cold390": "Honest recent-activity-unavailable text and Open feed link; no activity thumbnail or invented loaded activity. Me avatar remains honestly unavailable in all initial states."
+  },
+  "comparison": "The supplied target uses compact image-led activity rows. This delta now supplies actual already-ready authorized post imagery in that square position while preserving existing typography and row composition. The captures contain synthetic Feed posts rather than inventing the target reserved/joined events.",
+  "materialRemainingDifferences": [
+    "The current retained Profile header has pink/purple ornamental surfaces and a synthetic unavailable-avatar block; the target has a dark header and selected character. Header/CSS/character integration is outside this write lease and full visual acceptance remains open.",
+    "The standalone fixture omits global app chrome and target bottom crowd scene; no full default AccountPanel/whole-app runtime claim.",
+    "Different synthetic content, partial-view notice, metadata and existing Profile options produce different row density from the target. All61 IA,112 tasks and ten-screen visual acceptance are not certified."
+  ],
+  "disposition": "PASS for this bounded optional protected thumbnail delta and unavailable/privacy/cold behavior; full Profile/ten-screen visual acceptance OPEN."
+}

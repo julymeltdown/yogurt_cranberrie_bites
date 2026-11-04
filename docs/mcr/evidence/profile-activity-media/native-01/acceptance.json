@@ -1,0 +1,21 @@
+{
+  "offer": "PROFILE-CACHED-ACTIVITY-BROWSER2-202611041724Z",
+  "acceptedAt": "2026-11-04T17:24:59.327015+00:00",
+  "startedEpoch": 1793813099.326855,
+  "workDeadlineEpoch": 1793813399.326855,
+  "cleanupDeadlineEpoch": 1793813459.326855,
+  "head": "6cd19f820dc089ee9694391831fc9cd9508eaf81",
+  "freeBytes": 28959432704,
+  "conservativeOutstandingReservationBytes": 17179869184,
+  "ownGrowthReservationBytes": 134217728,
+  "port": 5321,
+  "pins": {
+    "frontend/src/features/me/__tests__/profile-activity-media/native-round.py": "61fa313187ffaf9b37fbcc8669a94ef11bb68bdcab850fceb9223fa2f0fc3b79",
+    "frontend/src/features/me/__tests__/profile-activity-media/native.mjs": "c114820cbb3e08b86cf6a979f435a818057598a47d39b4cf8660118fbcc34998",
+    "frontend/src/features/me/__tests__/profile-activity-media/preview.tsx": "9eb2768ad760d7d1c9c8629d46f028cf95e5e83edf4aa2b5206f49bccf5cf539",
+    "frontend/src/app/media-entry/index.ts": "b1c55c4413396ab6f7ed1ee37c8a0e46f6d9a9fb4f9c60404ab524f69b3b0cc7",
+    "frontend/src/app/media-entry/RootProfilePostImage.tsx": "6e9e423df31b1c59af0c3fc845e216812998cdb9832ce3167703787c8911fca8",
+    "frontend/src/features/me/ui/reference-profile/ProfileActivity.tsx": "a0711221db597dddc6cf90c6b0d59a2fae6bcbd5075a7c9eb7ae4207809cf6ff",
+    "frontend/src/features/me/ui/MePages.tsx": "62cfb1e38aa5c55a05ebebda443eb88d467c4d2490b2145240d9ba937cca1b2f"
+  }
+}
