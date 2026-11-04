@@ -5,16 +5,16 @@
   "goalCreatedAt": 1793816464,
   "goalBudget": null,
   "originalC07Completion": "PRESERVED_SEPARATE",
-  "sourceBeforeMetadata": "3f2311be72b137e1e94df7be73da94dd7a76e234",
+  "sourceBeforeMetadata": "b03f234cdd05df6dbe8b77c83610c3a03f5efd68",
   "canonical": "2ff0aab865a06a5664d2096ba572c766ac0fba85",
   "readsetFiles": 336,
-  "readsetSha256": "13a1c182ae2f298e95ab9c4a79dc66206dedefa3e8fe48c98b72f653808b707d",
-  "guardianSha256": "22da61c100c21d601bfbbd27272440f9ea04b82393d183a4f839d653e8e1c60c",
-  "qualifySha256": "607a2d6b9ace7f8e8820c9df873da95c312c615aa418ed8e74ac9d9c852956f3",
+  "readsetSha256": "de1ae4231054bde5634e1d36d990d8816d900f4b81429198976c4d6be7fc1fc4",
+  "guardianSha256": "8a1a125834c73e66952390dcef2fbf09655879baae778f78bded743cbb66a23a",
+  "qualifySha256": "bc969fa0ed5340018b205537a66db3b3319dafd0a7144ec7e3f86a2a7cd700b9",
   "activePinsSha256": "b2fbc46bda9b409891bb22567bcc851d9beeda9436ada15c07e6f276e1c342e8",
   "activePinCanonical": "267a040ac8d33c312aa87a5a2f22bc418b3895f2",
   "carryAllocatedBytes": {
-    "/Users/lhs/Desktop/mcr-worktrees/sl-world": 824786944,
+    "/Users/lhs/Desktop/mcr-worktrees/sl-world": 826691584,
     "/Users/lhs/Desktop/mcr/.git/worktrees/sl-world": 2105344,
     "/Users/lhs/Desktop/mcr/frontend/node_modules": 438317056,
     "/Users/lhs/Desktop/mcr-tools/contracts-validation-venv": 16502784,
@@ -38,16 +38,17 @@
   "qualificationStarted": false,
   "createdAt": 1793817530.859176,
   "floorPolicy": "Fresh explicit offer may authorize 11GiB start; default12GiB; reserve9GiB and live8GiB unchanged",
-  "metadataUpdatedAt": 1793819786.881929,
+  "metadataUpdatedAt": 1793820259.36549,
   "priorAttempt": {
     "status": "FAIL_FULL_RELEASED",
-    "path": "docs/mcr/evidence/c07-enrollment-baseline/round02",
-    "reason": "Unsupported exclusiveMinimum; full source inventory found exactly two remaining keywords; both repaired under exact Root153 four-file extension"
+    "path": "docs/mcr/evidence/c07-enrollment-baseline/round03",
+    "reason": "Generation succeeded; full preflight found stale CORE input hash in DOMAIN metadata; exact generated leaf now granted"
   },
   "runtimeTests": 7,
   "inventoryTests": 4,
   "allocationStatus": "NONE_HELD_NEW_FROZEN_OFFER_REQUIRED",
   "keywordInventorySha256": "2b44ae9214e84301b42ba93027869ce6ed2d1167b75f6fedf00cc1323124a22e",
   "schemaEntrypointsInventoried": 3806,
-  "unsupportedKeywords": []
+  "unsupportedKeywords": [],
+  "transportMetadataGrant": "frontend/src/shared/api/domain-operations.generated.ts; unchanged generator; only CORE hash comment delta allowed; runtime exports byte-identical"
 }
