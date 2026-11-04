@@ -1,0 +1,3 @@
+Command: node frontend/node_modules/oxlint/bin/oxlint frontend/src/app/__tests__/fe07-shell-journey
+Exit: 0
+Qualification: Assigned new prefix

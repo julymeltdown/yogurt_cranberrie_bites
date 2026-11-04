@@ -1,0 +1,71 @@
+{
+  "candidate": "8cd2046601b21e957e73a099d3975aa740a2a1bd",
+  "status": "IN_PROGRESS",
+  "clientCriteria": "SATISFIED",
+  "publication": "Pending designated integrator; owner has not pushed master",
+  "implementation": "009327ca52d127db39b615e6049e4c66f37decef",
+  "publishedSupport": {
+    "typingAndVisibility": "50d950d79939a539ebe953744287f7a280ce488b",
+    "scroll": "1b4ac4579764c2a475b729f702f56d9e3ec311aa",
+    "boundary": "4052d709fef976d14653351cd8bf78ef85bd1579",
+    "boundarySource": "a572b101b67c07c75fda1fa9be359c264ff7d3e8"
+  },
+  "checks": [
+    {
+      "name": "native",
+      "command": "node frontend/src/app/__tests__/fe07-shell-journey/native.mjs",
+      "exitCode": 0,
+      "qualification": "11 actual-browser cases; all360/390/430",
+      "log": "native.log"
+    },
+    {
+      "name": "unit",
+      "command": "node node_modules/vitest/vitest.mjs run src/app/__tests__/routes.test.ts src/app/__tests__/shell.test.tsx src/app/meeting-entry/__tests__/back-readiness/navigation.test.tsx src/app/social-composition/__tests__/fe07-boundary-exits/boundaries.test.ts src/app/social-composition/__tests__/owner.test.ts src/app/social-composition/__tests__/provider.test.tsx",
+      "exitCode": 0,
+      "qualification": "155tests/6files; frontend cwd",
+      "log": "unit.log"
+    },
+    {
+      "name": "typecheck",
+      "command": "node frontend/node_modules/typescript/bin/tsc --project frontend/tsconfig.json --incremental --tsBuildInfoFile /tmp/mcr-fe07-journey.tsbuildinfo --pretty false",
+      "exitCode": 0,
+      "qualification": "Strict TypeScript",
+      "log": "typecheck.log"
+    },
+    {
+      "name": "build",
+      "command": "node node_modules/vite/bin/vite.js build --configLoader runner --outDir /tmp/mcr-fe07-build --emptyOutDir",
+      "exitCode": 0,
+      "qualification": "frontend cwd; existing large-chunk warning",
+      "log": "build.log"
+    },
+    {
+      "name": "lint",
+      "command": "node frontend/node_modules/oxlint/bin/oxlint frontend/src/app/__tests__/fe07-shell-journey",
+      "exitCode": 0,
+      "qualification": "Assigned new prefix",
+      "log": "lint.log"
+    },
+    {
+      "name": "plan",
+      "command": "python3 -B scripts/mcr/check-plan.py",
+      "exitCode": 0,
+      "qualification": "Planning/archive only",
+      "log": "plan.log"
+    },
+    {
+      "name": "origin",
+      "command": "node scripts/mcr/check-ui-origin.mjs --root \"$WORKTREE\"",
+      "exitCode": 0,
+      "qualification": "Static origin/import checks only",
+      "log": "origin.log"
+    }
+  ],
+  "historicalDiagnostic": {
+    "candidate": "8de6c41137c4da90bb0c4d8ea540c35e8920e287",
+    "exitCode": 1,
+    "tests": "71/72; unchanged original meeting-root test clicks before committed DOM. Actual native and corrected readiness regressions pass; no product navigation defect.",
+    "log": "historical-meeting-readiness.log"
+  },
+  "limits": "Actual createAppRouter/browser history, canonical Auth, default production composition/real Phaser. Synthetic HTTP/C05, isolated map/place admission, immutable selected-character data. No production admission, live/backend, device, movement/physical-arrival or IN02 proof."
+}

@@ -1,0 +1,5 @@
+Command: node frontend/src/app/__tests__/fe07-shell-journey/native.mjs
+Exit: 0
+Qualification: 11 actual-browser cases; all360/390/430
+
+{"result":"PASS","cases":11,"errors":[]}

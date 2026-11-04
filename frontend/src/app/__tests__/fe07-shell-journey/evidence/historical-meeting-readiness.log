@@ -1,0 +1,195 @@
+Historical diagnostic at8de6c41137c4da90bb0c4d8ea540c35e8920e287; exit1.
+Actual native beacon journey and committed-DOM readiness regressions qualify separately.
+Command: node node_modules/vitest/vitest.mjs run src/app/__tests__/routes.test.ts src/app/__tests__/shell.test.tsx src/app/meeting-entry/__tests__/root-registration.test.tsx
+
+
+ RUN  v4.1.9 $WORKTREE/frontend
+
+ ❯ src/app/meeting-entry/__tests__/root-registration.test.tsx (7 tests | 1 failed) 2158ms
+   × preserves direct-beacon back navigation through Meet to World without creating a second world lease 1039ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  src/app/meeting-entry/__tests__/root-registration.test.tsx > preserves direct-beacon back navigation through Meet to World without creating a second world lease
+AssertionError: expected '/meet' to be '/world' // Object.is equality
+
+Ignored nodes: comments, script, style
+[36m<html>[39m
+  [36m<head />[39m
+  [36m<body>[39m
+    [36m<div>[39m
+      [36m<div[39m
+        [33mclass[39m=[32m"mcr-root-social"[39m
+      [36m>[39m
+        [36m<div[39m
+          [33mclass[39m=[32m"world-shell"[39m
+          [33mdata-mcr-shell[39m=[32m""[39m
+          [33mdata-panel-size[39m=[32m"half"[39m
+          [33mstyle[39m=[32m"--shell-viewport-height: 768px;"[39m
+        [36m>[39m
+          [36m<a[39m
+            [33mclass[39m=[32m"skip-link"[39m
+            [33mhref[39m=[32m"#shell-content"[39m
+          [36m>[39m
+            [0mSkip to content[0m
+          [36m</a>[39m
+          [36m<header[39m
+            [33mclass[39m=[32m"concert-kit mcr-chrome-header"[39m
+          [36m>[39m
+            [36m<a[39m
+              [33maria-label[39m=[32m"MCR Concert World"[39m
+              [33mclass[39m=[32m"mcr-chrome-brand"[39m
+              [33mdata-discover[39m=[32m"true"[39m
+              [33mhref[39m=[32m"/world"[39m
+              [33mid[39m=[32m"shell-brand"[39m
+            [36m>[39m
+              [36m<span[39m
+                [33maria-hidden[39m=[32m"true"[39m
+                [33mclass[39m=[32m"mcr-chrome-identity-visual"[39m
+              [36m>[39m
+                [36m<svg[39m
+                  [33maria-hidden[39m=[32m"true"[39m
+                  [33mclass[39m=[32m"concert-icon"[39m
+                  [33mfill[39m=[32m"none"[39m
+                  [33mfocusable[39m=[32m"false"[39m
+                  [33mstroke[39m=[32m"currentColor"[39m
+                  [33mstroke-linecap[39m=[32m"square"[39m
+                  [33mstroke-linejoin[39m=[32m"miter"[39m
+                  [33mstroke-width[39m=[32m"2"[39m
+                  [33mviewBox[39m=[32m"0 0 24 24"[39m
+                [36m>[39m
+                  [36m<path[39m
+                    [33md[39m=[32m"m12 2 3 6 7 1-5 5 1 7-6-3-6 3 1-7-5-5 7-1Z"[39m
+                  [36m/>[39m
+                [36m</svg>[39m
+              [36m</span>[39m
+              [36m<span[39m
+                [33mclass[39m=[32m"mcr-chrome-identity-copy"[39m
+              [36m>[39m
+                [36m<strong>[39m
+                  [0mMCR Concert World[0m
+                [36m</strong>[39m
+                [36m<span[39m
+                  [33mclass[39m=[32m"mcr-chrome-event"[39m
+                  [33mtitle[39m=[32m"Shell review · test event"[39m
+                [36m>[39m
+                  [0mShell review · test event[0m
+                [36m</span>[39m
+              [36m</span>[39m
+            [36m</a>[39m
+            [36m<div[39m
+              [33mclass[39m=[32m"mcr-chrome-header__actions"[39m
+            [36m>[39m
+              [36m<a[39m
+                [33maria-label[39m=[32m"Inbox"[39m
+                [33mdata-discover[39m=[32m"true"[39m
+                [33mhref[39m=[32m"/notifications"[39m
+                [33mid[39m=[32m"shell-inbox"[39m
+              [36m>[39m
+                [36m<svg[39m
+                  [33maria-hidden[39m=[32m"true"[39m
+                  [33mclass[39m=[32m"concert-icon"[39m
+                  [33mfill[39m=[32m"none"[39m
+                  [33mfocusable[39m=[32m"false"[39m
+                  [33mstroke[39m=[32m"currentColor"[39m
+                  [33mstroke-linecap[39m=[32m"square"[39m
+                  [33mstroke-linejoin[39m=[32m"miter"[39m
+                  [33mstroke-width[39m=[32m"2"[39m
+                  [33mviewBox[39m=[32m"0 0 24 24"[39m
+                [36m>[39m
+                  [36m<path[39m
+                    [33md[39m=[32m"M5 17h14l-2-3V9a5 5 0 0 0-10 0v5ZM10 21h4M12 2v2"[39m
+                  [36m/>[39m
+                [36m</svg>[39m
+              [36m</a>[39m
+              [36m<a[39m
+                [33maria-label[39m=[32m"Settings"[39m
+                [33mdata-discover[39m=[32m"true"[39m
+                [33mhref[39m=[32m"/me/settings"[39m
+                [33mid[39m=[32m"shell-settings"[39m
+              [36m>[39m
+                [36m<svg[39m
+                  [33maria-hidden[39m=[32m"true"[39m
+                  [33mclass[39m=[32m"concert-icon"[39m
+                  [33mfill[39m=[32m"none"[39m
+                  [33mfocusable[39m=[32m"false"[39m
+                  [33mstroke[39m=[32m"currentColor"[39m
+                  [33mstroke-linecap[39m=[32m"square"[39m
+                  [33mstroke-linejoin[39m=[32m"miter"[39m
+                  [33mstroke-width[39m=[32m"2"[39m
+                  [33mviewBox[39m=[32m"0 0 24 24"[39m
+                [36m>[39m
+                  [36m<path[39m
+                    [33md[39m=[32m"m9 3 1 3h4l1-3 3 2-1 3 2 3 3 1-1 4h-3l-2 3v3h-4l-1-3-3-1-3 1-2-3 2-2V9L2 7l3-3 3 2Z"[39m
+                  [36m/>[39m
+                  [36m<circle[39m
+                    [33mcx[39m=[32m"12"[39m
+                    [33mcy[39m=[32m"12"[39m
+                    [33mr[39m=[32m"3"[39m
+                  [36m/>[39m
+                [36m</svg>[39m
+              [36m</a>[39m
+            [36m</div>[39m
+          [36m</header>[39m
+          [36m<div[39m
+            [33mclass[39m=[32m"shell-era-region"[39m
+          [36m>[39m
+            [36m<section[39m
+              [33maria-label[39m=[32m"World era"[39m
+              [33mclass[39m=[32m"concert-kit mcr-chrome-eras"[39m
+            [36m>[39m
+              [36m<div[39m
+                [33maria-describedby[39m=[32m"_r_7_-status"[39m
+                [33maria-label[39m=[32m"Choose an era"[39m
+                [33mclass[39m=[32m"mcr-chrome-eras__choices"[39m
+                [33mrole[39m=[32m"group"[39m
+              [36m>[39m
+                [36m<button[39m
+                  [33maria-label[39m=[32m"Revenge"[39m
+                  [33maria-pressed[39m=[32m"false"[39m
+                  [33mdisabled[39m=[32m""[39m
+                  [33mtype[39m=[32m"button"[39m
+                [36m>[39m
+                  [0mREVENGE[0m
+                  [36m<span[39m
+                    [33maria-hidden[39m=[32m"true"[39m
+                    [33mclass[39m=[32m"mcr-chrome-eras__pending"[39m
+                  [36m/>[39m
+                [36m</button>[39m
+                [36m<button[39m
+                  [33maria-label[39m=[32m"Parade"[39m
+                  [33maria-pressed[39m=[32m"false"[39m
+                  [33mdisabled[39m=[32m""[39m
+                  [33mtype[39m=[32m"button"[39m
+                [36m>[39m
+                  [0mPARADE[0m
+                  [36m<span[39m
+                    [33maria-hidden[39m=[32m"true"[39m
+                    [33mclass[39m=[32m"mcr-chrome-eras__pending"[39m
+                  [36m/>[39m
+                [36m</button>[39m
+                [36m<button[39m
+                  [33maria-label[39m=[32m"Danger"[39m
+ ...
+
+Expected: "/world"
+Received: "/meet"
+
+ ❯ src/app/meeting-entry/__tests__/root-registration.test.tsx:71:64
+     69|   await waitFor(() => expect(f.router.state.location.pathname).toBe('/…
+     70|   fireEvent.click(screen.getByRole('button', { name: 'Back to previous…
+     71|   await waitFor(() => expect(f.router.state.location.pathname).toBe('/…
+       |                                                                ^
+     72|   expect(document.querySelector('[data-world-host]')).toBe(host); expe…
+     73| })
+ ❯ runWithExpensiveErrorDiagnosticsDisabled ../../../mcr/frontend/node_modules/.pnpm/@testing-library+dom@10.4.1/node_modules/@testing-library/dom/dist/config.js:47:12
+ ❯ checkCallback ../../../mcr/frontend/node_modules/.pnpm/@testing-library+dom@10.4.1/node_modules/@testing-library/dom/dist/wait-for.js:124:77
+ ❯ Timeout.checkRealTimersCallback ../../../mcr/frontend/node_modules/.pnpm/@testing-library+dom@10.4.1/node_modules/@testing-library/dom/dist/wait-for.js:118:16
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+
+ Test Files  1 failed | 2 passed (3)
+      Tests  1 failed | 71 passed (72)
+   Start at  10:43:45
+   Duration  3.24s (transform 1.76s, setup 0ms, import 1.01s, tests 4.22s, environment 894ms)
