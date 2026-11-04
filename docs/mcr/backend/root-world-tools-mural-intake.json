@@ -1,5 +1,5 @@
 {
-  "status": "IN_PROGRESS",
+  "status": "INTEGRATED",
   "intakes": [
     {
       "task": "QA05-QA08",
@@ -80,12 +80,13 @@
     "rust_cases": 10,
     "native_status": "PASS",
     "cleanup": "PASS",
-    "current_root_native": "NOT_RUN"
+    "current_root_native": "PASS"
   },
   "limits": [
     "QA05/QA08 source and deterministic fixture checks are MOCK_READY; no 200-user/four-room/load, real network/server restart, mobile or whole QA acceptance.",
     "Mural supplied-connection component preserves its actual worker native qualification, immutable snapshot/revision checks and owned cleanup; current Root native requalification remains separate.",
     "No Mural library export, operator/system authority, main activation or full BE41/IN04 acceptance.",
     "Original IN01 acceptance stays pinned to App1722/backendcde; later source integration does not rewrite it."
-  ]
+  ],
+  "current_root_qualification": "root-intro-union-mural-dfc63137.json"
 }

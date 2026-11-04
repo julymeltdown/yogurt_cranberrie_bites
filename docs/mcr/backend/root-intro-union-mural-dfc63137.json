@@ -1,0 +1,369 @@
+{
+  "status": "INTEGRATED",
+  "offer": "ROOT-INTRO-UNION-MURAL-MEDIA-202611040905Z",
+  "source_revision": "dfc6313779adf406274fed2e59683525a39f0c3e",
+  "code_revision": "6cae9e53c082543fe9651762e2c846ab28a356c5",
+  "doc_successor_compile_inputs_unchanged": true,
+  "accepted_at": "2026-11-04T09:09:25.160830+00:00",
+  "release": {
+    "offer": "ROOT-INTRO-UNION-MURAL-MEDIA-202611040905Z",
+    "state": "RELEASED",
+    "runtime_exit_code": 0,
+    "finished_at": "2026-11-04T09:10:22.741293+00:00",
+    "elapsed_seconds": 57.58048241600045,
+    "max_sampled_whole_additional": 983971288,
+    "minimum_sampled_free_bytes": 29914750976,
+    "all_owned_roots_absent": true,
+    "qualified": true
+  },
+  "target_release": {
+    "offer": "ROOT-INTRO-UNION-MURAL-MEDIA-202611040905Z",
+    "state": "RELEASED",
+    "released_at": "2026-11-04T09:09:52.489962+00:00",
+    "target_open_handles": 0,
+    "before_any_copied_test_or_pg": true,
+    "target_access_after_receipt": "NONE",
+    "fixed_target_growth_bytes": 15581184,
+    "aborted": null
+  },
+  "build_phases": {
+    "union-intro": {
+      "exit_code": 0,
+      "command_display": [
+        "cargo",
+        "+1.88.0",
+        "test",
+        "--manifest-path",
+        "/workspace/backend/Cargo.toml",
+        "--locked",
+        "--offline",
+        "-j",
+        "2",
+        "--config",
+        "profile.dev.package.contracts-build.opt-level=2",
+        "--message-format=json",
+        "-p",
+        "concert-service",
+        "--test",
+        "native_resolver_union",
+        "--test",
+        "intro_product",
+        "--test",
+        "intro",
+        "--no-run"
+      ],
+      "display_sanitized": true
+    },
+    "mural": {
+      "exit_code": 0,
+      "command_display": [
+        "cargo",
+        "+1.88.0",
+        "test",
+        "--manifest-path",
+        "/workspace/backend/Cargo.toml",
+        "--locked",
+        "--offline",
+        "-j",
+        "2",
+        "--config",
+        "profile.dev.package.contracts-build.opt-level=2",
+        "--message-format=json",
+        "-p",
+        "concert-service",
+        "--test",
+        "event_cleanup_mural_owner",
+        "--no-run"
+      ],
+      "display_sanitized": true
+    }
+  },
+  "artifacts": {
+    "native_resolver_union": {
+      "sha256": "c690bd43164be6564d532ff992f14ef498e9abb208c91fb12266381967e415f2",
+      "bytes": 46120288
+    },
+    "intro_product": {
+      "sha256": "e77610103fbe528dab2d04432742e4b9250d9eb6ba8c115de07a475b077d9a22",
+      "bytes": 50239728
+    },
+    "intro": {
+      "sha256": "0ecb071483ead16b5186d81710d68fd0ef309f1eb7001823e3241f4bbe728194",
+      "bytes": 24109328
+    },
+    "event_cleanup_mural_owner": {
+      "sha256": "350e8b4b6842a8c448a3ae5f2daf8c576e724a70122e9e77ccb28b8c279e7e51",
+      "bytes": 14645200
+    }
+  },
+  "normal_route_constructor": "PASS",
+  "union_native": {
+    "status": "PASS",
+    "actual_native_case": "PASS",
+    "prepared_before_owned_shutdown": 4,
+    "cleanup": {
+      "boundary": "Expected negative fences removed only with whole disposable cluster",
+      "certifies_native_settlement": false,
+      "owned_root_absent": true,
+      "status": "PASS"
+    },
+    "limits": [
+      "Native resolver component qualification only; activation/global factory routing and full BE15/BE44 acceptance are Root-owned.",
+      "No browser/provider qualification, fabricated witness, prepared rollback or status-based COMMIT promotion."
+    ]
+  },
+  "intro_native": {
+    "status": "PASS",
+    "phases": {
+      "canonical_authoring_discovery_detail_idempotency_and_close": {
+        "status": "PASS",
+        "exit_code": 0,
+        "prepared_after": 0
+      },
+      "canonical_block_departure_suspension_and_profile_outage": {
+        "status": "PASS",
+        "exit_code": 0,
+        "prepared_after": 0
+      },
+      "canonical_claim_expiry_bounds_root_delivery_after_commit": {
+        "status": "PASS",
+        "exit_code": 0,
+        "prepared_after": 0
+      },
+      "canonical_full_frame_rebinding_and_missing_parent_fail_closed": {
+        "status": "PASS",
+        "exit_code": 0,
+        "prepared_after": 0
+      },
+      "canonical_intro_edit_revokes_consent_atomically_with_receipt_outbox": {
+        "status": "PASS",
+        "exit_code": 0,
+        "prepared_after": 0
+      },
+      "canonical_native_witness_requires_exact_registered_transaction": {
+        "status": "PASS",
+        "exit_code": 0,
+        "prepared_after": 2
+      },
+      "canonical_restricted_age_outage_trust_and_expiry_parity": {
+        "status": "PASS",
+        "exit_code": 0,
+        "prepared_after": 0
+      }
+    },
+    "restart": {
+      "after_pid": 2769,
+      "after_start": "2026-11-04 18:10:19.007+09",
+      "before_pid": 1909,
+      "before_start": "2026-11-04 18:09:57.675582+09",
+      "retained_row": "PUBLISHED|1",
+      "status": "PASS"
+    },
+    "cleanup": {
+      "owned_root_absent": true,
+      "status": "PASS"
+    },
+    "retained": {
+      "intro": {
+        "status": "PASS",
+        "exit_code": 0
+      }
+    }
+  },
+  "mural_native": {
+    "status": "PASS",
+    "cleanup": true,
+    "checks": [
+      {
+        "name": "source-pin",
+        "exit_code": 0,
+        "passed": 1
+      },
+      {
+        "name": "pg-version",
+        "exit_code": 0
+      },
+      {
+        "name": "initdb",
+        "exit_code": 0
+      },
+      {
+        "name": "pg-start",
+        "exit_code": 0
+      },
+      {
+        "name": "database",
+        "exit_code": 0
+      },
+      {
+        "name": "marker",
+        "exit_code": 0
+      },
+      {
+        "name": "migrations",
+        "exit_code": 0,
+        "passed": 1
+      },
+      {
+        "name": "mural-effects",
+        "exit_code": 0,
+        "passed": 6
+      },
+      {
+        "name": "restart-prepare",
+        "exit_code": 0,
+        "passed": 1
+      },
+      {
+        "name": "before-restart",
+        "exit_code": 0
+      },
+      {
+        "name": "pg-stop-restart",
+        "exit_code": 0
+      },
+      {
+        "name": "pg-start-restart",
+        "exit_code": 0
+      },
+      {
+        "name": "after-restart",
+        "exit_code": 0
+      },
+      {
+        "name": "restart-verify",
+        "exit_code": 0,
+        "passed": 1
+      },
+      {
+        "name": "prepared",
+        "exit_code": 0
+      }
+    ],
+    "restart": {
+      "before": "2026-11-04 18:10:20.750074+09",
+      "after": "2026-11-04 18:10:22.262774+09",
+      "pid_before": 2817,
+      "pid_after": 2871
+    },
+    "elapsed_seconds": 2.903,
+    "peak_cluster_bytes": 69654540,
+    "peak_total_new_bytes": 948506993,
+    "minimum_free_bytes": 29974839296
+  },
+  "mural_current_migration_count": 38,
+  "resource_preflight": {
+    "retained_evidence_carry": 723936728,
+    "whole_hard_bytes": 2147483648,
+    "stricter_mural_hard_bytes": 1073741824,
+    "stricter_mural_estimate": 1043249320,
+    "estimated_test_copies": 134763216,
+    "estimated_target_growth_allowance": 67108864,
+    "estimated_pg_allowance": 100663296,
+    "estimated_new_evidence_allowance": 16777216,
+    "initial_free_bytes": 30186278912,
+    "cleanup_reserve_seconds": 60
+  },
+  "retained_evidence": {
+    "combined.json": {
+      "sha256": "d72dd23324f90a058053e4d29361d9b5e98bc147b02429c4af67b0e679cef64d",
+      "bytes": 226
+    },
+    "target-release.json": {
+      "sha256": "4564a96cdbedf387230f6ec669a993f4b48d6189a4786dcabeb02f05e1a06e83",
+      "bytes": 1449
+    },
+    "union-native.json": {
+      "sha256": "27a1aa5829fafd3d7f624dc05e4c1c18d01ea4ba370a20eeaa467390263a6f7d",
+      "bytes": 259463
+    },
+    "intro-checkpoint.json": {
+      "sha256": "b3a56222fb0ac4f77a9f5756defe06f4b39047f115efe3d325e85d8e6f361f43",
+      "bytes": 438766
+    },
+    "offer-acceptance.json": {
+      "sha256": "4869755a35403096bc579f6edd5e4bf7a0a2fc9c2b41a04bd93066d309c9f541",
+      "bytes": 1315
+    },
+    "mural-before.json": {
+      "sha256": "b93a92755e77c3d601f4257366ff7b25290764e1374be6461af1150ac0c40357",
+      "bytes": 316449
+    },
+    "union-intro-artifacts.json": {
+      "sha256": "fb7792b8ad4a28f1a996f23b522156fda0533052edb49e4433dc02a18987f185",
+      "bytes": 4313
+    },
+    "runtime-owner.json": {
+      "sha256": "b514c2afbaa7e1bf7246575a110507d89f3ebecaa1625c544ad64d630d493914",
+      "bytes": 43
+    },
+    "union-checkpoint.json": {
+      "sha256": "ba8360612ae9a28480d2d5a216f6cf5cd8bd1a5c57e0b6c57679b0cd60e5b210",
+      "bytes": 259025
+    },
+    "intro-native.json": {
+      "sha256": "3c7072026814f461c69fe6697200e1ada6907dfe336e33464c94fc2b34844ad9",
+      "bytes": 444529
+    },
+    "mural-artifacts.json": {
+      "sha256": "879c4a80efcdb38f57dde7f97f129287e758a2fa87ba6792d962845187efd88f",
+      "bytes": 2180
+    },
+    "fullworkflow-release.json": {
+      "sha256": "0d354aafab96612cf64b257ed6107735876b1e65b2d3ab8db936604f1e3c7ae3",
+      "bytes": 347
+    },
+    "pinned-artifacts.json": {
+      "sha256": "e73dd4019011340ff320433c81978ebb7ef06ad104e872912bc8361021c1f8eb",
+      "bytes": 4636
+    },
+    "union-source-pins.json": {
+      "sha256": "8ed20727a91109d556a6e836da2b1714b815a2378e582fc6f1fd58f2bed2d9f2",
+      "bytes": 253915
+    },
+    "runtime-guard.json": {
+      "sha256": "82a582c42d7c0826b1818c6bb3c9132ad8069b969bc9fe76e616e5a1bffa8e66",
+      "bytes": 1100
+    },
+    "intro-source-pins.json": {
+      "sha256": "396842784849748dd7d00580a50c476ed567eda11da94eb06789adc3e6dd2f19",
+      "bytes": 432293
+    },
+    "mural-cargo.jsonl": {
+      "sha256": "25cb68a124a7cab5c8c14794309ac9ed1d3204074bdc3c94d0c6c21cb5cad30b",
+      "bytes": 417413
+    },
+    "union-intro-cargo.jsonl": {
+      "sha256": "31f311844acf99fb670d47e8a28426bc439bb04e581dff664c64040551bc2683",
+      "bytes": 430817
+    },
+    "mcr-intro-union-mural-workflow.py": {
+      "sha256": "a3c713763bfb6ca87b41849d628fc2d1ee40630ca28c523190aa75325c2088dd",
+      "bytes": 10522
+    },
+    "mcr-intro-union-mural-native.py": {
+      "sha256": "03a1bfcef796ccdaaaa8d6d4720b6cf5dc39217d263955a040ae52ea17059210",
+      "bytes": 1707
+    },
+    "mcr-intro-union-mural-guard.py": {
+      "sha256": "d6726a8d757003a63e632ca7de3105201a58d32ab50fff38084b998f253751bc",
+      "bytes": 4996
+    },
+    "mural-frozen/native.json": {
+      "sha256": "d1ab7dc1e51c833c74abf6bac9083ceee9bad0a8b0ef0822690b8785e69ca1bd",
+      "bytes": 325858
+    },
+    "mural-frozen/freeze.json": {
+      "sha256": "de8837a4956bae92f5118455eaf9f449432ff082603f4bf9f22023b893107adb",
+      "bytes": 325641
+    }
+  },
+  "limits": [
+    "Native resolver dispatch does not itself grant authority or activate Product/main routes.",
+    "Intro seven canonical cases and authenticated owner-settlement RPCs now use the real union; committed witness, foreign instance/reference, in-progress, aborted and unwitnessed committed SQL retain exact expected outcomes. UNKNOWN/error never tries another adapter.",
+    "Expected UNKNOWN quarantines remain before owned teardown; teardown is not settlement.",
+    "Mural supplied-transaction authority fixture and concurrency/restart proof do not qualify actual production operator/system authority, cross-owner cleanup or whole BE41/IN04. Mural remains unexported/inactive.",
+    "QA05/QA08 drivers have source/fixture qualification only; heavy load, actual room/ticket/network/producer restart/mobile acceptance remains NOT_RUN.",
+    "No target access after explicit zero-handle release; no additional main executable copy, browser, frontend, TTL fault, manual settlement, deadline reset or cap waiver."
+  ]
+}
