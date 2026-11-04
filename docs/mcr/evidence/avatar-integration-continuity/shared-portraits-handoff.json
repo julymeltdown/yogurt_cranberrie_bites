@@ -1,0 +1,108 @@
+{
+  "task": "Original FE12/FE13 shared owner portraits remainder",
+  "status": "IN_PROGRESS",
+  "disposition": "Task-local implementation, focused source validation and controlled native caller cohorts PASS; ready for named publisher. Production clock join and canonical publication remain open.",
+  "branch": "codex/mcr-fe-avatar-shared-portraits",
+  "base": "80de53f327c90db21955eb63d3b74aa41ec62514",
+  "qualifiedProductSource": "0ae792c8289f136d504b1d209e43a841a05df0d7",
+  "qualifiedRemainingNativeSource": "0ee704512c6afe388fd5db2afa4b7cbff2b670a8",
+  "orderedCommitsBeforeSeal": [
+    "9a1a67e5b52dfb2aab04e36f6c79ff5f64f81cc5",
+    "f36f88ac8cb7fe195ca45441dc8843fbf601a9cb",
+    "38234fea65b1c20e2561523e2763f84a7123985f",
+    "0ae792c8289f136d504b1d209e43a841a05df0d7",
+    "d9f04b278126b04cd04152026c1a39be3730028d",
+    "1ad779f74cb902eaf8556d143075147df08a9122",
+    "4d4203c64a606fced29f0394fa4dd00c9c5c4388",
+    "d81ca987e53d5635638be408474cd3bfbcbc3ee9",
+    "5d760b93ede0695dbe4b01e740fe39914fb37135",
+    "0ee704512c6afe388fd5db2afa4b7cbff2b670a8"
+  ],
+  "sealCommit": "The commit containing this file; resolve via git log, avoiding self-referential commit hash.",
+  "sharedPathsExactGrant": [
+    "frontend/src/app/social-composition/panels.tsx",
+    "frontend/src/app/CommunityFeatures.tsx",
+    "frontend/src/features/gift-discovery/ui/Gifts.tsx",
+    "frontend/src/features/gift-discovery/ui/reference-presentation.tsx",
+    "frontend/src/features/party-discovery/ui/PartyDiscovery.tsx"
+  ],
+  "productBlobsUnchangedSinceQualifiedSource": {
+    "frontend/src/app/social-composition/panels.tsx": true,
+    "frontend/src/app/CommunityFeatures.tsx": true,
+    "frontend/src/features/gift-discovery/ui/Gifts.tsx": true,
+    "frontend/src/features/gift-discovery/ui/reference-presentation.tsx": true,
+    "frontend/src/features/party-discovery/ui/PartyDiscovery.tsx": true
+  },
+  "ownedPrefixes": [
+    "frontend/src/features/avatar/__tests__/integration-continuity/shared-portraits/",
+    "docs/mcr/evidence/avatar-integration-continuity/"
+  ],
+  "ownedDocument": "docs/mcr/frontend/avatar-integration-continuity.md",
+  "validation": {
+    "sourceReceipt": "shared-portraits-source-full-release.json",
+    "tests": 39,
+    "newCases": 8,
+    "files": 6,
+    "typeFilesAtQualifiedSource": 1063,
+    "diagnostics": 0,
+    "lintWarnings": 0,
+    "allFourSourceCommandExits": 0,
+    "laterHarnessLimit": "Later native harness modules were added after the full typecheck. Actual Vite/native runs exercised them; the prior 1063-file result is not relabeled as checking these additions.",
+    "prefixReport": "shared-portraits-native-retry03/native/native.json",
+    "prefixSHA256": "6c430d23d8947c61ed6cc0adcc9c589fd41c6208826bfa64fb64bbf0461d3c4d",
+    "prefixParentResult": "FAIL",
+    "creditedPrefixOnly": [
+      "feed",
+      "thread",
+      "gift-list",
+      "gift-detail"
+    ],
+    "remainingReport": "shared-portraits-remaining-round01/native/native.json",
+    "remainingSHA256": "cbb9ce0c1154777adde3cd9ba1ff1326da77a3e5a9f80efee8c3cb261e8eaa21",
+    "remainingResult": "PASS",
+    "remainingExit": 0,
+    "remainingSurfaces": [
+      "party-list",
+      "party-detail",
+      "public-profile",
+      "gift-denial"
+    ],
+    "prefixReplayed": false,
+    "editorSaveReloadMovingPeerCancelConflictReplayed": false,
+    "imageAssessment": "shared-portraits-image-assessment.json"
+  },
+  "authorityAndArt": "Existing current reviewed owner, selected C06 rev2 hash 7f2891c81ffa1d5850107118898a7ef9377b222ab8639b3f2c9daf7908cf9018; no new artwork, legacy fallback or provider bypass.",
+  "limits": [
+    "Feed/Thread use actual main with controlled HTTP/C05.",
+    "Gift/Party/public profile use actual router/production ports with explicit TEST_ONLY CommunityClockProfile; NOT_MAIN Community and NOT_LIVE.",
+    "Member avatar contract unavailable; applicants are not used as members.",
+    "Not full-reference target, live backend/database, two-user or physical-device acceptance."
+  ],
+  "publication": {
+    "route": "Direct Root153 packet to current exclusive publisher412e; no king/SL review or acknowledgment prerequisite.",
+    "state": "WAITING_FOR_PUBLICATION",
+    "noForcePush": true
+  },
+  "remainingDependency": {
+    "state": "IN_PROGRESS_BY_IMPLEMENTATION_OWNER",
+    "owner": "Community53d with Root153 build/input join",
+    "scope": "Measured production clock factory/input and build identity wiring, then relevant actual-default Community gate under fresh allocation.",
+    "noWritesHere": [
+      "main",
+      "production ports",
+      "Auth",
+      "time",
+      "provider",
+      "clock runtime",
+      "build identity"
+    ]
+  },
+  "callerCustodyDisposition": "All granted shared portrait hunks are complete and returned to Root153 publication routing on handoff. No unused caller rights, further shared writer or implicit clock grant retained. Own disjoint test/docs prefix remains available for original-goal follow-up; any future shared caller edits require exact custody coordination.",
+  "resources": {
+    "activeJobs": 0,
+    "activeAllocations": 0,
+    "browserVitePortsTempDependencyLinks": 0,
+    "remainingFullReceipt": "shared-portraits-remaining-full-release.json"
+  },
+  "persistentGoal": "Original unfinished goal retained; old blocked resource metadata is not a work gate. Do not falsely complete or replace it."
+}

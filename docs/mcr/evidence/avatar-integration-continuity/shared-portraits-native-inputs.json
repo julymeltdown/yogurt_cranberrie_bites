@@ -1,0 +1,54 @@
+{
+  "status": "NATIVE_NOT_RUN",
+  "qualifiedProductSource": "0ae792c8289f136d504b1d209e43a841a05df0d7",
+  "callers": {
+    "feedAndThread": "actual main.tsx",
+    "giftAndParty": "actual app router/production ports; explicit TEST_ONLY CommunityClockProfile; NOT default main"
+  },
+  "qualification": "ACTUAL_MAIN_FEED_THREAD_AND_CONFIGURED_APP_COMMUNITY_TEST_CLOCK_CONTROLLED_HTTP_C05_NOT_LIVE",
+  "expectedOwnerPixels": {
+    "preset": 2,
+    "sha256": "04ad48d25587aa0cfe7fd3c1ab4444493914d5fadea1372d18ce24567b9493c4",
+    "source": "native-retry05/native/native.json expectedDraft"
+  },
+  "openProductionInput": "Root153: actual main does not supply communityClock at canonical80de53f3",
+  "readsetSHA256": {
+    "frontend/src/app/social-composition/panels.tsx": "30c465b213fed7e2ad0d0864f739577b83a3bb7b7b112ddb651573ef9dfcfa5f",
+    "frontend/src/app/CommunityFeatures.tsx": "98bb86741ca91c2c869254d792c7631c0d905c668256ba13716a070f09e07938",
+    "frontend/src/features/gift-discovery/ui/Gifts.tsx": "96b719227d5d62b32328ee2e95d9ac0aca8e03b000dd3a068a4af9d4a6f07924",
+    "frontend/src/features/gift-discovery/ui/reference-presentation.tsx": "ba5586a719b811cc6c7779cd28eb02d985376de86ea54e9ddbddeeaed55f832d",
+    "frontend/src/features/party-discovery/ui/PartyDiscovery.tsx": "861171ee98ae3c25c4441de60527dc1507cb8e1d8d6dc348aed1693b9fa7e381",
+    "frontend/src/features/avatar/__tests__/integration-continuity/shared-portraits/main-preview.ts": "5f0f226512be94c223a7b4a1dc458eea945cd9a33560a08343bc38bb94b98028",
+    "frontend/src/features/avatar/__tests__/integration-continuity/shared-portraits/admission.setup.ts": "2dced3f17f15b1b1cce4541b1f1da7d125f6425fa4c5e5592df6ff67a1c5cda3",
+    "frontend/src/features/avatar/__tests__/integration-continuity/shared-portraits/preview.html": "e60927b96f66bb66f473281ae8459a424ed56c1b0c17244cf70ed2c7c437b293",
+    "frontend/src/features/avatar/__tests__/integration-continuity/shared-portraits/vitest.config.mjs": "7bb0d04ee84d88cbe54a935905aebcccb26d0776ffd9b8d765f9f5aa6b359f1c",
+    "frontend/src/features/avatar/__tests__/integration-continuity/shared-portraits/native.mjs": "b6a011efaede36ac7b0dec2e80bbbc41c0bde93b01b86162523895dadbfb8549",
+    "frontend/src/features/avatar/__tests__/integration-continuity/shared-portraits/portraits.test.tsx": "0e206c524ce969d1242dae1fc07dcbd39bf5b80f850f0c15b515ec2df341c3aa",
+    "frontend/src/features/avatar/__tests__/integration-continuity/shared-portraits/production-preview.tsx": "213d2583c974cd4c7e1e11b27a07644397279c95f84fae69de7262f28fb1bb25",
+    "frontend/src/features/avatar/__tests__/integration-continuity/shared-portraits/main-preview.html": "db8924a4eefe8a6d67b30661e4d08d15da852c8bfdbd17635cb6389ccc7772af",
+    "frontend/src/features/avatar/__tests__/integration-continuity/shared-portraits/preview.ts": "c20524ffdb00abd86f45851e595301ae9f6d5360678a23991621fee262a42bab",
+    "docs/mcr/evidence/avatar-integration-continuity/shared-portraits-qualify.py": "9611f0dc88b3dec2933df3f8fb8edeb0b11b20030e9ce6f1b7c21c1822059486",
+    "docs/mcr/evidence/avatar-integration-continuity/guardian.py": "393a18b4c12e535747b457274f0e221a95f7e450d9f47d2b7b47ce440870e413",
+    "frontend/src/main.tsx": "73dcb049c45fc5125de1637587a09373664c31d4899ef15dea0119a0ace3d5a6",
+    "frontend/src/app/ports.ts": "a5a87476b1f32525a5228e9e7e5ee22dcc6df3680e46a689b966e42951936660",
+    "frontend/src/app/WorldShell.tsx": "ee070a76a730056934c65c2044b58744311c3019ea2e45ae19308853f09ce0d2",
+    "frontend/src/app/community-adoption/bootstrap.ts": "8f3c566c9d79228221923e367ab579d952b3d01c177aba3b7c32873f9b51e6fc",
+    "frontend/src/app/character-entry/__tests__/reviewed-production/default-entry/preview.ts": "e1a6a4f23d14b9ed8a96fd7210f6f936c390d8665b998e113698d8469f9e5d0a",
+    "frontend/src/app/community-adoption/__tests__/native/preview.tsx": "eccc3ffdeff2fa5a1ec6926958e89c5c1fe985d0c6cd95dff215d2435d2dbcdc",
+    "frontend/pnpm-lock.yaml": "47ca44459819ad0e887d2f4f93394fdf3b1053b8f45edc9ceb0236981feee1f6",
+    "frontend/src/features/avatar/__tests__/integration-continuity/shared-portraits/remaining.mjs": "6ca22aa8b34380c762c5425a165735b3f0216163005d8c52cd835b59aa996efc"
+  },
+  "retainedFailure": "round01 opened Feed before the incumbent World policy baseline was admitted; wait for the real prerequisite, no policy/readiness bypass",
+  "retainedFailures": [
+    "round01 and retry01: retained C05 producer lacks current separate policy.baseline receipt; real World rendered but production Social readiness correctly remained unavailable",
+    "Own fixture now emits current controlled policy.baseline through real transport; no provider/auth/readiness injection",
+    "retry02: Feed/Thread/Gift list/detail exact owner pixels passed; shell navigation correctly inert during blocking detail; use actual parent links before changing tabs"
+  ],
+  "remainingNativeScope": [
+    "Party discovery/detail",
+    "changed public-profile caller",
+    "unvisited Gift denial"
+  ],
+  "retainedPrefixReportSHA256": "6c430d23d8947c61ed6cc0adcc9c589fd41c6208826bfa64fb64bbf0461d3c4d",
+  "wholeCarryMinimum": 406358309
+}

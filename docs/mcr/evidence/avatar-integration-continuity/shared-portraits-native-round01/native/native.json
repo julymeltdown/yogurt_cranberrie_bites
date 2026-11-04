@@ -1,0 +1,23 @@
+{
+  "result": "FAIL",
+  "qualification": "ACTUAL_APP_ROUTER_PRODUCTION_PORTS_TEST_CLOCK_CONTROLLED_HTTP_C05_NOT_MAIN_NOT_LIVE",
+  "viewport": {
+    "width": 390,
+    "height": 844
+  },
+  "errors": [],
+  "screenshots": [],
+  "expected": {
+    "preset": 2,
+    "digest": "04ad48d25587aa0cfe7fd3c1ab4444493914d5fadea1372d18ce24567b9493c4",
+    "provenance": "avatar-integration-continuity/native-retry05/native/native.json expectedDraft",
+    "manifest": "sha256:7f2891c81ffa1d5850107118898a7ef9377b222ab8639b3f2c9daf7908cf9018"
+  },
+  "portraits": {},
+  "failure": {
+    "stage": "feed",
+    "message": "Error: expect(locator).toBeVisible() failed\n\nLocator: locator('.social-composition').locator('[data-motion-state=\"ready\"] canvas').first()\nExpected: visible\nTimeout: 5000ms\nError: element(s) not found\n\nCall log:\n  - Expect \"to.be.visible\" with timeout 5000ms\n  - waiting for locator('.social-composition').locator('[data-motion-state=\"ready\"] canvas').first()\n",
+    "stack": "Error: expect(locator).toBeVisible() failed\n\nLocator: locator('.social-composition').locator('[data-motion-state=\"ready\"] canvas').first()\nExpected: visible\nTimeout: 5000ms\nError: element(s) not found\n\nCall log:\n  - Expect \"to.be.visible\" with timeout 5000ms\n  - waiting for locator('.social-composition').locator('[data-motion-state=\"ready\"] canvas').first()\n\n    at captureRawStack (/Users/lhs/Desktop/mcr/frontend/node_modules/.pnpm/playwright-core@1.61.1/node_modules/playwright-core/lib/coreBundle.js:3172:17)\n    at callMatcherAsStep (/Users/lhs/Desktop/mcr/frontend/node_modules/.pnpm/playwright@1.61.1/node_modules/playwright/lib/matchers/expect.js:12877:57)\n    at Object.toBeVisible (/Users/lhs/Desktop/mcr/frontend/node_modules/.pnpm/playwright@1.61.1/node_modules/playwright/lib/matchers/expect.js:12867:23)\n    at inspect (/Users/lhs/Desktop/mcr-worktrees/art-runtime/frontend/src/features/avatar/__tests__/integration-continuity/shared-portraits/native.mjs:61:37)\n    at /Users/lhs/Desktop/mcr-worktrees/art-runtime/frontend/src/features/avatar/__tests__/integration-continuity/shared-portraits/native.mjs:76:9"
+  },
+  "resourcesClosed": true
+}

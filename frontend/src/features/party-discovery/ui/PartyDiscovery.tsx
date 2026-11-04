@@ -143,13 +143,13 @@ export function PartyDiscovery({ controller, presentation }: PartyDiscoveryProps
   </div>
 }
 
-export function PartyDetail({ controller, partyId }: { controller: PartyController; partyId: string }) {
+export function PartyDetail({ controller, partyId, renderOwnerPortrait }: { controller: PartyController; partyId: string; renderOwnerPortrait?: PartyDiscoveryPresentation['renderOwnerPortrait'] }) {
   const s = useParty(controller)
   useEffect(() => { void controller.loadDetail(partyId) }, [controller, partyId])
   const p = s.detail.data?.party_id === partyId ? s.detail.data : null, reason = controller.applyReason()
   return <div className="party-view"><nav className="party-tabs" aria-label="Party navigation"><Link id="party-all" to="/meet" onClick={() => controller.setView('parties')}>All parties</Link><Link id="party-plan" to="/meet" onClick={() => controller.setView('plan')}>MY PLAN</Link></nav>
     <CommandStatus controller={controller} />{!s.access && <p role="status">Party information is unavailable until your current event access is verified.</p>}<ReadState resource={s.detail} label="party" retry={() => void controller.loadDetail(partyId)} />
-    {p && <article><p className="party-meta">{p.ticket_section ?? 'Any ticket section'} · {p.state.toLowerCase()}</p><h2>{p.title}</h2><p>Hosted by {p.owner.display_name}</p>
+    {p && <article><p className="party-meta">{p.ticket_section ?? 'Any ticket section'} · {p.state.toLowerCase()}</p><h2>{p.title}</h2><div aria-label={`Host: ${p.owner.display_name}`}>{renderOwnerPortrait?.(p.owner) ?? <span role="status" aria-label="Host portrait unavailable">Character unavailable</span>}</div><p>Hosted by {p.owner.display_name}</p>
       <dl className="party-facts"><div><dt>Members</dt><dd>{p.member_count} of {p.capacity}{p.member_count >= p.capacity ? ' · Full' : ''}</dd></div>
         <div><dt>Meeting time</dt><dd><time dateTime={p.meeting_starts_at}>{time(p.meeting_starts_at)}</time> to <time dateTime={p.meeting_ends_at}>{time(p.meeting_ends_at)}</time></dd></div></dl>
       <p className="party-prose">{p.description || 'No description supplied.'}</p><h3>Requirements</h3><p className="party-prose">{p.requirements || 'No additional requirements supplied.'}</p>

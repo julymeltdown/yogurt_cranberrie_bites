@@ -40,13 +40,9 @@ export default function CommunityFeatures({ bootstrap, privacyScope, binding = n
   return <GiftsContext value={current?.gifts ?? null}><PartiesContext value={current?.parties ?? null}><CommunityEntryProvider auth={auth ?? null} release={current?.release ?? null}>{children}</CommunityEntryProvider></PartiesContext></GiftsContext>
 }
 
-export function PartiesPanel({ detail = false }: { detail?: boolean }) {
-  const controller = useContext(PartiesContext)
-  const canCreate = usePartyCreation()
-  const { partyId = '' } = useParams()
-  const { auth } = usePorts()
+function useOwnerPortrait() {
   const runtime = useCharacterRuntime(), reviewed = useReviewedCharacterOwner()
-  const renderOwnerPortrait: PartyDiscoveryPresentation['renderOwnerPortrait'] = owner => {
+  const renderOwnerPortrait: NonNullable<PartyDiscoveryPresentation['renderOwnerPortrait']> = owner => {
     const avatar = owner.avatar
     if (!avatar || typeof avatar !== 'object' || !('config' in avatar)) return null
     if (reviewed) return <ReviewedCharacterView owner={reviewed} config={avatar.config} label={`${owner.display_name}'s avatar`} size={64} />
@@ -56,16 +52,26 @@ export function PartiesPanel({ detail = false }: { detail?: boolean }) {
       return <WholeCharacterView runtime={runtime} config={avatar.config} label={`${owner.display_name}'s avatar`} size={64} />
     } catch { return null }
   }
+  return renderOwnerPortrait
+}
+
+export function PartiesPanel({ detail = false }: { detail?: boolean }) {
+  const controller = useContext(PartiesContext)
+  const canCreate = usePartyCreation()
+  const { partyId = '' } = useParams()
+  const { auth } = usePorts()
+  const renderOwnerPortrait = useOwnerPortrait()
   if (!controller) return <p role="status">{auth ? 'Opening parties…' : 'Party access is unavailable.'}</p>
-  return detail ? <PartyDetail controller={controller} partyId={partyId} /> : <PartyDiscovery controller={controller} presentation={{ canCreate, ...((runtime || reviewed) ? { renderOwnerPortrait } : {}) }} />
+  return detail ? <PartyDetail controller={controller} partyId={partyId} renderOwnerPortrait={renderOwnerPortrait} /> : <PartyDiscovery controller={controller} presentation={{ canCreate, renderOwnerPortrait }} />
 }
 
 export function GiftsPanel({ view }: { view: 'list' | 'detail' | 'mine' }) {
   const controller = useContext(GiftsContext)
   const { giveawayId = '' } = useParams()
   const { auth } = usePorts()
+  const renderOwnerPortrait = useOwnerPortrait()
   if (!controller) return <p role="status">{auth ? 'Opening gifts…' : 'Gift access is unavailable.'}</p>
   return view === 'mine' ? <MyGifts controller={controller} />
-    : view === 'detail' ? <GiftDetail controller={controller} giveawayId={giveawayId} renderGiftImage={renderGiftImage} />
-      : <GiftDiscovery controller={controller} renderGiftImage={renderGiftImage} />
+    : view === 'detail' ? <GiftDetail controller={controller} giveawayId={giveawayId} renderGiftImage={renderGiftImage} renderOwnerPortrait={renderOwnerPortrait} />
+      : <GiftDiscovery controller={controller} renderGiftImage={renderGiftImage} renderOwnerPortrait={renderOwnerPortrait} />
 }

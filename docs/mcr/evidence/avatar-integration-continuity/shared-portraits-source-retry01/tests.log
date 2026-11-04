@@ -1,0 +1,2638 @@
+
+ RUN  v4.1.9 /Users/lhs/Desktop/mcr-worktrees/art-runtime/frontend
+
+xxxx·xxxx
+
+⎯⎯⎯⎯⎯⎯ Failed Suites 4 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  src/app/social-composition/__tests__/provider.test.tsx [ src/app/social-composition/__tests__/provider.test.tsx ]
+ FAIL  src/features/gift-discovery/__tests__/reference-presentation.test.tsx [ src/features/gift-discovery/__tests__/reference-presentation.test.tsx ]
+ FAIL  src/features/gift-discovery/__tests__/ui.test.tsx [ src/features/gift-discovery/__tests__/ui.test.tsx ]
+ FAIL  src/features/avatar/__tests__/integration-continuity/shared-portraits/portraits.test.tsx [ src/features/avatar/__tests__/integration-continuity/shared-portraits/portraits.test.tsx ]
+Error: Vitest cannot be imported in a CommonJS module using require(). Please use "import" instead.
+
+If you are using "import" in your source code, then it's possible it was bundled into require() automatically by your bundler. In that case, do not bundle CommonJS output since it will never work with Vitest, or use dynamic import() which is available in all CommonJS modules.
+ ❯ Object.<anonymous> ../../../mcr/frontend/node_modules/.pnpm/vitest@4.1.9_@types+node@24.13.2_jsdom@29.1.1_msw@2.14.6_@types+node@24.13.2_typescript_67338a2989bf71c5b75b87305b6eead5/node_modules/vitest/index.cjs:1:7
+ ❯ Object.<anonymous> ../../../mcr/frontend/node_modules/.pnpm/@testing-library+jest-dom@6.9.1/node_modules/@testing-library/jest-dom/dist/vitest.js:3:14
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/12]⎯
+
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 8 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  src/features/party-discovery/__tests__/reference-presentation.test.tsx > FE-REF-MEET production presentation > uses the reference navigation order, real PEOPLE route, no nested window, and unavailable creation by default
+TestingLibraryElementError: Unable to find role="link" and name "Before the encore"
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div>[39m
+    [36m<div[39m
+      [33mclass[39m=[32m"party-view party-browse"[39m
+    [36m>[39m
+      [36m<nav[39m
+        [33maria-label[39m=[32m"Meet views"[39m
+        [33mclass[39m=[32m"party-tabs"[39m
+      [36m>[39m
+        [36m<button[39m
+          [33maria-pressed[39m=[32m"true"[39m
+          [33mtype[39m=[32m"button"[39m
+        [36m>[39m
+          [0mParties[0m
+        [36m</button>[39m
+        [36m<a[39m
+          [33mdata-discover[39m=[32m"true"[39m
+          [33mhref[39m=[32m"/meet/people"[39m
+          [33mid[39m=[32m"party-people"[39m
+        [36m>[39m
+          [0mPeople[0m
+        [36m</a>[39m
+        [36m<button[39m
+          [33maria-pressed[39m=[32m"false"[39m
+          [33mtype[39m=[32m"button"[39m
+        [36m>[39m
+          [0mMY PLAN[0m
+        [36m</button>[39m
+      [36m</nav>[39m
+      [36m<section[39m
+        [33maria-label[39m=[32m"Party discovery"[39m
+        [33mclass[39m=[32m"meet-discovery"[39m
+      [36m>[39m
+        [36m<h2[39m
+          [33mclass[39m=[32m"party-sr"[39m
+        [36m>[39m
+          [0mFind your company[0m
+        [36m</h2>[39m
+        [36m<div[39m
+          [33mrole[39m=[32m"alert"[39m
+        [36m>[39m
+          [36m<p>[39m
+            [0mTemporarily unavailable. Try reading again later.[0m
+          [36m</p>[39m
+          [36m<button[39m
+            [33mtype[39m=[32m"button"[39m
+          [36m>[39m
+            [0mRead [0m
+            [0mparties[0m
+            [0m again[0m
+          [36m</button>[39m
+        [36m</div>[39m
+        [36m<div[39m
+          [33mclass[39m=[32m"meet-tools"[39m
+        [36m>[39m
+          [36m<details[39m
+            [33mclass[39m=[32m"party-filters"[39m
+          [36m>[39m
+            [36m<summary>[39m
+              [0mFilter parties[0m
+            [36m</summary>[39m
+            [36m<form>[39m
+              [36m<label>[39m
+                [0mTicket section[0m
+                [36m<input[39m
+                  [33mmaxlength[39m=[32m"120"[39m
+                  [33mname[39m=[32m"ticket_section"[39m
+                  [33mplaceholder[39m=[32m"Any section"[39m
+                  [33mvalue[39m=[32m""[39m
+                [36m/>[39m
+              [36m</label>[39m
+              [36m<label>[39m
+                [0mParty state[0m
+                [36m<select[39m
+                  [33mname[39m=[32m"state"[39m
+                [36m>[39m
+                  [36m<option[39m
+                    [33mselected[39m=[32m""[39m
+                    [33mvalue[39m=[32m""[39m
+                  [36m>[39m
+                    [0mAll states[0m
+                  [36m</option>[39m
+                  [36m<option[39m
+                    [33mvalue[39m=[32m"OPEN"[39m
+                  [36m>[39m
+                    [0mopen[0m
+                  [36m</option>[39m
+                  [36m<option[39m
+                    [33mvalue[39m=[32m"CLOSED"[39m
+                  [36m>[39m
+                    [0mclosed[0m
+                  [36m</option>[39m
+                  [36m<option[39m
+                    [33mvalue[39m=[32m"CANCELLED"[39m
+                  [36m>[39m
+                    [0mcancelled[0m
+                  [36m</option>[39m
+                  [36m<option[39m
+                    [33mvalue[39m=[32m"COMPLETED"[39m
+                  [36m>[39m
+                    [0mcompleted[0m
+                  [36m</option>[39m
+                [36m</select>[39m
+              [36m</label>[39m
+              [36m<label>[39m
+                [0mStarts on or after[0m
+                [36m<input[39m
+                  [33mname[39m=[32m"starts_after"[39m
+                  [33mtype[39m=[32m"datetime-local"[39m
+                  [33mvalue[39m=[32m""[39m
+                [36m/>[39m
+              [36m</label>[39m
+              [36m<label>[39m
+                [0mStarts before[0m
+                [36m<input[39m
+                  [33mname[39m=[32m"starts_before"[39m
+                  [33mtype[39m=[32m"datetime-local"[39m
+                  [33mvalue[39m=[32m""[39m
+                [36m/>[39m
+              [36m</label>[39m
+              [36m<p[39m
+                [33mclass[39m=[32m"party-hint"[39m
+              [36m>[39m
+                [0mDates use your device’s local time. The end of the filter range is exclusive.[0m
+              [36m</p>[39m
+              [36m<label[39m
+                [33mclass[39m=[32m"party-checkbox"[39m
+              [36m>[39m
+                [36m<input[39m
+                  [33mname[39m=[32m"has_space"[39m
+                  [33mtype[39m=[32m"checkbox"[39m
+                [36m/>[39m
+                [0mOnly parties with space[0m
+              [36m</label>[39m
+              [36m<button[39m
+                [33mtype[39m=[32m"submit"[39m
+              [36m>[39m
+                [0mShow parties[0m
+              [36m</button>[39m
+            [36m</form>[39m
+          [36m</details>[39m
+          [36m<button[39m
+            [33maria-label[39m=[32m"Refresh parties"[39m
+            [33mtype[39m=[32m"button"[39m
+          [36m>[39m
+            [0mRefresh[0m
+          [36m</button>[39m
+        [36m</div>[39m
+        [36m<p[39m
+          [33mclass[39m=[32m"party-sr"[39m
+        [36m>[39m
+          [0mJOIN opens party details. The host approves membership; a virtual position does not confirm arrival. Times are Korea Standard Time.[0m
+        [36m</p>[39m
+      [36m</section>[39m
+      [36m<footer[39m
+        [33mclass[39m=[32m"meet-create"[39m
+      [36m>[39m
+        [36m<button[39m
+          [33maria-describedby[39m=[32m"meet-create-unavailable"[39m
+          [33mclass[39m=[32m"meet-create__action"[39m
+          [33mdisabled[39m=[32m""[39m
+          [33mtype[39m=[32m"button"[39m
+        [36m>[39m
+          [36m<svg[39m
+            [33maria-hidden[39m=[32m"true"[39m
+            [33mfill[39m=[32m"currentColor"[39m
+            [33mfocusable[39m=[32m"false"[39m
+            [33mviewBox[39m=[32m"0 0 16 16"[39m
+          [36m>[39m
+            [36m<path[39m
+              [33md[39m=[32m"M7 1h2v6h6v2H9v6H7V9H1V7h6z"[39m
+            [36m/>[39m
+          [36m</svg>[39m
+          [0mCreate party[0m
+        [36m</button>[39m
+        [36m<span[39m
+          [33mclass[39m=[32m"meet-create__unavailable"[39m
+          [33mid[39m=[32m"meet-create-unavailable"[39m
+        [36m>[39m
+          [0mParty creation is currently unavailable.[0m
+        [36m</span>[39m
+      [36m</footer>[39m
+    [36m</div>[39m
+  [36m</div>[39m
+[36m</body>[39m
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div>[39m
+    [36m<div[39m
+      [33mclass[39m=[32m"party-view party-browse"[39m
+    [36m>[39m
+      [36m<nav[39m
+        [33maria-label[39m=[32m"Meet views"[39m
+        [33mclass[39m=[32m"party-tabs"[39m
+      [36m>[39m
+        [36m<button[39m
+          [33maria-pressed[39m=[32m"true"[39m
+          [33mtype[39m=[32m"button"[39m
+        [36m>[39m
+          [0mParties[0m
+        [36m</button>[39m
+        [36m<a[39m
+          [33mdata-discover[39m=[32m"true"[39m
+          [33mhref[39m=[32m"/meet/people"[39m
+          [33mid[39m=[32m"party-people"[39m
+        [36m>[39m
+          [0mPeople[0m
+        [36m</a>[39m
+        [36m<button[39m
+          [33maria-pressed[39m=[32m"false"[39m
+          [33mtype[39m=[32m"button"[39m
+        [36m>[39m
+          [0mMY PLAN[0m
+        [36m</button>[39m
+      [36m</nav>[39m
+      [36m<section[39m
+        [33maria-label[39m=[32m"Party discovery"[39m
+        [33mclass[39m=[32m"meet-discovery"[39m
+      [36m>[39m
+        [36m<h2[39m
+          [33mclass[39m=[32m"party-sr"[39m
+        [36m>[39m
+          [0mFind your company[0m
+        [36m</h2>[39m
+        [36m<div[39m
+          [33mrole[39m=[32m"alert"[39m
+        [36m>[39m
+          [36m<p>[39m
+            [0mTemporarily unavailable. Try reading again later.[0m
+          [36m</p>[39m
+          [36m<button[39m
+            [33mtype[39m=[32m"button"[39m
+          [36m>[39m
+            [0mRead [0m
+            [0mparties[0m
+            [0m again[0m
+          [36m</button>[39m
+        [36m</div>[39m
+        [36m<div[39m
+          [33mclass[39m=[32m"meet-tools"[39m
+        [36m>[39m
+          [36m<details[39m
+            [33mclass[39m=[32m"party-filters"[39m
+          [36m>[39m
+            [36m<summary>[39m
+              [0mFilter parties[0m
+            [36m</summary>[39m
+            [36m<form>[39m
+              [36m<label>[39m
+                [0mTicket section[0m
+                [36m<input[39m
+                  [33mmaxlength[39m=[32m"120"[39m
+                  [33mname[39m=[32m"ticket_section"[39m
+                  [33mplaceholder[39m=[32m"Any section"[39m
+                  [33mvalue[39m=[32m""[39m
+                [36m/>[39m
+              [36m</label>[39m
+              [36m<label>[39m
+                [0mParty state[0m
+                [36m<select[39m
+                  [33mname[39m=[32m"state"[39m
+                [36m>[39m
+                  [36m<option[39m
+                    [33mselected[39m=[32m""[39m
+                    [33mvalue[39m=[32m""[39m
+                  [36m>[39m
+                    [0mAll states[0m
+                  [36m</option>[39m
+                  [36m<option[39m
+                    [33mvalue[39m=[32m"OPEN"[39m
+                  [36m>[39m
+                    [0mopen[0m
+                  [36m</option>[39m
+                  [36m<option[39m
+                    [33mvalue[39m=[32m"CLOSED"[39m
+                  [36m>[39m
+                    [0mclosed[0m
+                  [36m</option>[39m
+                  [36m<option[39m
+                    [33mvalue[39m=[32m"CANCELLED"[39m
+                  [36m>[39m
+                    [0mcancelled[0m
+                  [36m</option>[39m
+                  [36m<option[39m
+                    [33mvalue[39m=[32m"COMPLETED"[39m
+                  [36m>[39m
+                    [0mcompleted[0m
+                  [36m</option>[39m
+                [36m</select>[39m
+              [36m</label>[39m
+              [36m<label>[39m
+                [0mStarts on or after[0m
+                [36m<input[39m
+                  [33mname[39m=[32m"starts_after"[39m
+                  [33mtype[39m=[32m"datetime-local"[39m
+                  [33mvalue[39m=[32m""[39m
+                [36m/>[39m
+              [36m</label>[39m
+              [36m<label>[39m
+                [0mStarts before[0m
+                [36m<input[39m
+                  [33mname[39m=[32m"starts_before"[39m
+                  [33mtype[39m=[32m"datetime-local"[39m
+                  [33mvalue[39m=[32m""[39m
+                [36m/>[39m
+              [36m</label>[39m
+              [36m<p[39m
+                [33mclass[39m=[32m"party-hint"[39m
+              [36m>[39m
+                [0mDates use your device’s local time. The end of the filter range is exclusive.[0m
+              [36m</p>[39m
+              [36m<label[39m
+                [33mclass[39m=[32m"party-checkbox"[39m
+              [36m>[39m
+                [36m<input[39m
+                  [33mname[39m=[32m"has_space"[39m
+                  [33mtype[39m=[32m"checkbox"[39m
+                [36m/>[39m
+                [0mOnly parties with space[0m
+              [36m</label>[39m
+              [36m<button[39m
+                [33mtype[39m=[32m"submit"[39m
+              [36m>[39m
+                [0mShow parties[0m
+              [36m</button>[39m
+            [36m</form>[39m
+          [36m</details>[39m
+          [36m<button[39m
+            [33maria-label[39m=[32m"Refresh parties"[39m
+            [33mtype[39m=[32m"button"[39m
+          [36m>[39m
+            [0mRefresh[0m
+          [36m</button>[39m
+        [36m</div>[39m
+        [36m<p[39m
+          [33mclass[39m=[32m"party-sr"[39m
+        [36m>[39m
+          [0mJOIN opens party details. The host approves membership; a virtual position does not confirm arrival. Times are Korea Standard Time.[0m
+        [36m</p>[39m
+      [36m</section>[39m
+      [36m<footer[39m
+        [33mclass[39m=[32m"meet-create"[39m
+      [36m>[39m
+        [36m<button[39m
+          [33maria-describedby[39m=[32m"meet-create-unavailable"[39m
+          [33mclass[39m=[32m"meet-create__action"[39m
+          [33mdisabled[39m=[32m""[39m
+          [33mtype[39m=[32m"button"[39m
+        [36m>[39m
+          [36m<svg[39m
+            [33maria-hidden[39m=[32m"true"[39m
+            [33mfill[39m=[32m"currentColor"[39m
+            [33mfocusable[39m=[32m"false"[39m
+            [33mviewBox[39m=[32m"0 0 16 16"[39m
+          [36m>[39m
+            [36m<path[39m
+              [33md[39m=[32m"M7 1h2v6h6v2H9v6H7V9H1V7h6z"[39m
+            [36m/>[39m
+          [36m</svg>[39m
+          [0mCreate party[0m
+        [36m</button>[39m
+        [36m<span[39m
+          [33mclass[39m=[32m"meet-create__unavailable"[39m
+          [33mid[39m=[32m"meet-create-unavailable"[39m
+        [36m>[39m
+          [0mParty creation is currently unavailable.[0m
+        [36m</span>[39m
+      [36m</footer>[39m
+    [36m</div>[39m
+  [36m</div>[39m
+[36m</body>[39m
+ ❯ waitForWrapper ../../../mcr/frontend/node_modules/.pnpm/@testing-library+dom@10.4.1/node_modules/@testing-library/dom/dist/wait-for.js:163:27
+ ❯ ../../../mcr/frontend/node_modules/.pnpm/@testing-library+dom@10.4.1/node_modules/@testing-library/dom/dist/query-helpers.js:86:33
+ ❯ src/features/party-discovery/__tests__/reference-presentation.test.tsx:23:27
+     21| describe('FE-REF-MEET production presentation', () => {
+     22|   it('uses the reference navigation order, real PEOPLE route, no neste…
+     23|     setup(); await screen.findByRole('link', { name: party().title })
+       |                           ^
+     24|     const nav = screen.getByRole('navigation', { name: 'Meet views' })
+     25|     expect([...nav.children].map(el => el.textContent)).toEqual(['Part…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/12]⎯
+
+ FAIL  src/features/party-discovery/__tests__/reference-presentation.test.tsx > FE-REF-MEET production presentation > JOIN opens the actual detail route without sending an application or claiming membership
+TestingLibraryElementError: Unable to find role="link" and name "View details for Before the encore"
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div>[39m
+    [36m<div[39m
+      [33mclass[39m=[32m"party-view party-browse"[39m
+    [36m>[39m
+      [36m<nav[39m
+        [33maria-label[39m=[32m"Meet views"[39m
+        [33mclass[39m=[32m"party-tabs"[39m
+      [36m>[39m
+        [36m<button[39m
+          [33maria-pressed[39m=[32m"true"[39m
+          [33mtype[39m=[32m"button"[39m
+        [36m>[39m
+          [0mParties[0m
+        [36m</button>[39m
+        [36m<a[39m
+          [33mdata-discover[39m=[32m"true"[39m
+          [33mhref[39m=[32m"/meet/people"[39m
+          [33mid[39m=[32m"party-people"[39m
+        [36m>[39m
+          [0mPeople[0m
+        [36m</a>[39m
+        [36m<button[39m
+          [33maria-pressed[39m=[32m"false"[39m
+          [33mtype[39m=[32m"button"[39m
+        [36m>[39m
+          [0mMY PLAN[0m
+        [36m</button>[39m
+      [36m</nav>[39m
+      [36m<section[39m
+        [33maria-label[39m=[32m"Party discovery"[39m
+        [33mclass[39m=[32m"meet-discovery"[39m
+      [36m>[39m
+        [36m<h2[39m
+          [33mclass[39m=[32m"party-sr"[39m
+        [36m>[39m
+          [0mFind your company[0m
+        [36m</h2>[39m
+        [36m<div[39m
+          [33mrole[39m=[32m"alert"[39m
+        [36m>[39m
+          [36m<p>[39m
+            [0mTemporarily unavailable. Try reading again later.[0m
+          [36m</p>[39m
+          [36m<button[39m
+            [33mtype[39m=[32m"button"[39m
+          [36m>[39m
+            [0mRead [0m
+            [0mparties[0m
+            [0m again[0m
+          [36m</button>[39m
+        [36m</div>[39m
+        [36m<div[39m
+          [33mclass[39m=[32m"meet-tools"[39m
+        [36m>[39m
+          [36m<details[39m
+            [33mclass[39m=[32m"party-filters"[39m
+          [36m>[39m
+            [36m<summary>[39m
+              [0mFilter parties[0m
+            [36m</summary>[39m
+            [36m<form>[39m
+              [36m<label>[39m
+                [0mTicket section[0m
+                [36m<input[39m
+                  [33mmaxlength[39m=[32m"120"[39m
+                  [33mname[39m=[32m"ticket_section"[39m
+                  [33mplaceholder[39m=[32m"Any section"[39m
+                  [33mvalue[39m=[32m""[39m
+                [36m/>[39m
+              [36m</label>[39m
+              [36m<label>[39m
+                [0mParty state[0m
+                [36m<select[39m
+                  [33mname[39m=[32m"state"[39m
+                [36m>[39m
+                  [36m<option[39m
+                    [33mselected[39m=[32m""[39m
+                    [33mvalue[39m=[32m""[39m
+                  [36m>[39m
+                    [0mAll states[0m
+                  [36m</option>[39m
+                  [36m<option[39m
+                    [33mvalue[39m=[32m"OPEN"[39m
+                  [36m>[39m
+                    [0mopen[0m
+                  [36m</option>[39m
+                  [36m<option[39m
+                    [33mvalue[39m=[32m"CLOSED"[39m
+                  [36m>[39m
+                    [0mclosed[0m
+                  [36m</option>[39m
+                  [36m<option[39m
+                    [33mvalue[39m=[32m"CANCELLED"[39m
+                  [36m>[39m
+                    [0mcancelled[0m
+                  [36m</option>[39m
+                  [36m<option[39m
+                    [33mvalue[39m=[32m"COMPLETED"[39m
+                  [36m>[39m
+                    [0mcompleted[0m
+                  [36m</option>[39m
+                [36m</select>[39m
+              [36m</label>[39m
+              [36m<label>[39m
+                [0mStarts on or after[0m
+                [36m<input[39m
+                  [33mname[39m=[32m"starts_after"[39m
+                  [33mtype[39m=[32m"datetime-local"[39m
+                  [33mvalue[39m=[32m""[39m
+                [36m/>[39m
+              [36m</label>[39m
+              [36m<label>[39m
+                [0mStarts before[0m
+                [36m<input[39m
+                  [33mname[39m=[32m"starts_before"[39m
+                  [33mtype[39m=[32m"datetime-local"[39m
+                  [33mvalue[39m=[32m""[39m
+                [36m/>[39m
+              [36m</label>[39m
+              [36m<p[39m
+                [33mclass[39m=[32m"party-hint"[39m
+              [36m>[39m
+                [0mDates use your device’s local time. The end of the filter range is exclusive.[0m
+              [36m</p>[39m
+              [36m<label[39m
+                [33mclass[39m=[32m"party-checkbox"[39m
+              [36m>[39m
+                [36m<input[39m
+                  [33mname[39m=[32m"has_space"[39m
+                  [33mtype[39m=[32m"checkbox"[39m
+                [36m/>[39m
+                [0mOnly parties with space[0m
+              [36m</label>[39m
+              [36m<button[39m
+                [33mtype[39m=[32m"submit"[39m
+              [36m>[39m
+                [0mShow parties[0m
+              [36m</button>[39m
+            [36m</form>[39m
+          [36m</details>[39m
+          [36m<button[39m
+            [33maria-label[39m=[32m"Refresh parties"[39m
+            [33mtype[39m=[32m"button"[39m
+          [36m>[39m
+            [0mRefresh[0m
+          [36m</button>[39m
+        [36m</div>[39m
+        [36m<p[39m
+          [33mclass[39m=[32m"party-sr"[39m
+        [36m>[39m
+          [0mJOIN opens party details. The host approves membership; a virtual position does not confirm arrival. Times are Korea Standard Time.[0m
+        [36m</p>[39m
+      [36m</section>[39m
+      [36m<footer[39m
+        [33mclass[39m=[32m"meet-create"[39m
+      [36m>[39m
+        [36m<button[39m
+          [33maria-describedby[39m=[32m"meet-create-unavailable"[39m
+          [33mclass[39m=[32m"meet-create__action"[39m
+          [33mdisabled[39m=[32m""[39m
+          [33mtype[39m=[32m"button"[39m
+        [36m>[39m
+          [36m<svg[39m
+            [33maria-hidden[39m=[32m"true"[39m
+            [33mfill[39m=[32m"currentColor"[39m
+            [33mfocusable[39m=[32m"false"[39m
+            [33mviewBox[39m=[32m"0 0 16 16"[39m
+          [36m>[39m
+            [36m<path[39m
+              [33md[39m=[32m"M7 1h2v6h6v2H9v6H7V9H1V7h6z"[39m
+            [36m/>[39m
+          [36m</svg>[39m
+          [0mCreate party[0m
+        [36m</button>[39m
+        [36m<span[39m
+          [33mclass[39m=[32m"meet-create__unavailable"[39m
+          [33mid[39m=[32m"meet-create-unavailable"[39m
+        [36m>[39m
+          [0mParty creation is currently unavailable.[0m
+        [36m</span>[39m
+      [36m</footer>[39m
+    [36m</div>[39m
+  [36m</div>[39m
+[36m</body>[39m
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div>[39m
+    [36m<div[39m
+      [33mclass[39m=[32m"party-view party-browse"[39m
+    [36m>[39m
+      [36m<nav[39m
+        [33maria-label[39m=[32m"Meet views"[39m
+        [33mclass[39m=[32m"party-tabs"[39m
+      [36m>[39m
+        [36m<button[39m
+          [33maria-pressed[39m=[32m"true"[39m
+          [33mtype[39m=[32m"button"[39m
+        [36m>[39m
+          [0mParties[0m
+        [36m</button>[39m
+        [36m<a[39m
+          [33mdata-discover[39m=[32m"true"[39m
+          [33mhref[39m=[32m"/meet/people"[39m
+          [33mid[39m=[32m"party-people"[39m
+        [36m>[39m
+          [0mPeople[0m
+        [36m</a>[39m
+        [36m<button[39m
+          [33maria-pressed[39m=[32m"false"[39m
+          [33mtype[39m=[32m"button"[39m
+        [36m>[39m
+          [0mMY PLAN[0m
+        [36m</button>[39m
+      [36m</nav>[39m
+      [36m<section[39m
+        [33maria-label[39m=[32m"Party discovery"[39m
+        [33mclass[39m=[32m"meet-discovery"[39m
+      [36m>[39m
+        [36m<h2[39m
+          [33mclass[39m=[32m"party-sr"[39m
+        [36m>[39m
+          [0mFind your company[0m
+        [36m</h2>[39m
+        [36m<div[39m
+          [33mrole[39m=[32m"alert"[39m
+        [36m>[39m
+          [36m<p>[39m
+            [0mTemporarily unavailable. Try reading again later.[0m
+          [36m</p>[39m
+          [36m<button[39m
+            [33mtype[39m=[32m"button"[39m
+          [36m>[39m
+            [0mRead [0m
+            [0mparties[0m
+            [0m again[0m
+          [36m</button>[39m
+        [36m</div>[39m
+        [36m<div[39m
+          [33mclass[39m=[32m"meet-tools"[39m
+        [36m>[39m
+          [36m<details[39m
+            [33mclass[39m=[32m"party-filters"[39m
+          [36m>[39m
+            [36m<summary>[39m
+              [0mFilter parties[0m
+            [36m</summary>[39m
+            [36m<form>[39m
+              [36m<label>[39m
+                [0mTicket section[0m
+                [36m<input[39m
+                  [33mmaxlength[39m=[32m"120"[39m
+                  [33mname[39m=[32m"ticket_section"[39m
+                  [33mplaceholder[39m=[32m"Any section"[39m
+                  [33mvalue[39m=[32m""[39m
+                [36m/>[39m
+              [36m</label>[39m
+              [36m<label>[39m
+                [0mParty state[0m
+                [36m<select[39m
+                  [33mname[39m=[32m"state"[39m
+                [36m>[39m
+                  [36m<option[39m
+                    [33mselected[39m=[32m""[39m
+                    [33mvalue[39m=[32m""[39m
+                  [36m>[39m
+                    [0mAll states[0m
+                  [36m</option>[39m
+                  [36m<option[39m
+                    [33mvalue[39m=[32m"OPEN"[39m
+                  [36m>[39m
+                    [0mopen[0m
+                  [36m</option>[39m
+                  [36m<option[39m
+                    [33mvalue[39m=[32m"CLOSED"[39m
+                  [36m>[39m
+                    [0mclosed[0m
+                  [36m</option>[39m
+                  [36m<option[39m
+                    [33mvalue[39m=[32m"CANCELLED"[39m
+                  [36m>[39m
+                    [0mcancelled[0m
+                  [36m</option>[39m
+                  [36m<option[39m
+                    [33mvalue[39m=[32m"COMPLETED"[39m
+                  [36m>[39m
+                    [0mcompleted[0m
+                  [36m</option>[39m
+                [36m</select>[39m
+              [36m</label>[39m
+              [36m<label>[39m
+                [0mStarts on or after[0m
+                [36m<input[39m
+                  [33mname[39m=[32m"starts_after"[39m
+                  [33mtype[39m=[32m"datetime-local"[39m
+                  [33mvalue[39m=[32m""[39m
+                [36m/>[39m
+              [36m</label>[39m
+              [36m<label>[39m
+                [0mStarts before[0m
+                [36m<input[39m
+                  [33mname[39m=[32m"starts_before"[39m
+                  [33mtype[39m=[32m"datetime-local"[39m
+                  [33mvalue[39m=[32m""[39m
+                [36m/>[39m
+              [36m</label>[39m
+              [36m<p[39m
+                [33mclass[39m=[32m"party-hint"[39m
+              [36m>[39m
+                [0mDates use your device’s local time. The end of the filter range is exclusive.[0m
+              [36m</p>[39m
+              [36m<label[39m
+                [33mclass[39m=[32m"party-checkbox"[39m
+              [36m>[39m
+                [36m<input[39m
+                  [33mname[39m=[32m"has_space"[39m
+                  [33mtype[39m=[32m"checkbox"[39m
+                [36m/>[39m
+                [0mOnly parties with space[0m
+              [36m</label>[39m
+              [36m<button[39m
+                [33mtype[39m=[32m"submit"[39m
+              [36m>[39m
+                [0mShow parties[0m
+              [36m</button>[39m
+            [36m</form>[39m
+          [36m</details>[39m
+          [36m<button[39m
+            [33maria-label[39m=[32m"Refresh parties"[39m
+            [33mtype[39m=[32m"button"[39m
+          [36m>[39m
+            [0mRefresh[0m
+          [36m</button>[39m
+        [36m</div>[39m
+        [36m<p[39m
+          [33mclass[39m=[32m"party-sr"[39m
+        [36m>[39m
+          [0mJOIN opens party details. The host approves membership; a virtual position does not confirm arrival. Times are Korea Standard Time.[0m
+        [36m</p>[39m
+      [36m</section>[39m
+      [36m<footer[39m
+        [33mclass[39m=[32m"meet-create"[39m
+      [36m>[39m
+        [36m<button[39m
+          [33maria-describedby[39m=[32m"meet-create-unavailable"[39m
+          [33mclass[39m=[32m"meet-create__action"[39m
+          [33mdisabled[39m=[32m""[39m
+          [33mtype[39m=[32m"button"[39m
+        [36m>[39m
+          [36m<svg[39m
+            [33maria-hidden[39m=[32m"true"[39m
+            [33mfill[39m=[32m"currentColor"[39m
+            [33mfocusable[39m=[32m"false"[39m
+            [33mviewBox[39m=[32m"0 0 16 16"[39m
+          [36m>[39m
+            [36m<path[39m
+              [33md[39m=[32m"M7 1h2v6h6v2H9v6H7V9H1V7h6z"[39m
+            [36m/>[39m
+          [36m</svg>[39m
+          [0mCreate party[0m
+        [36m</button>[39m
+        [36m<span[39m
+          [33mclass[39m=[32m"meet-create__unavailable"[39m
+          [33mid[39m=[32m"meet-create-unavailable"[39m
+        [36m>[39m
+          [0mParty creation is currently unavailable.[0m
+        [36m</span>[39m
+      [36m</footer>[39m
+    [36m</div>[39m
+  [36m</div>[39m
+[36m</body>[39m
+ ❯ waitForWrapper ../../../mcr/frontend/node_modules/.pnpm/@testing-library+dom@10.4.1/node_modules/@testing-library/dom/dist/wait-for.js:163:27
+ ❯ ../../../mcr/frontend/node_modules/.pnpm/@testing-library+dom@10.4.1/node_modules/@testing-library/dom/dist/query-helpers.js:86:33
+ ❯ src/features/party-discovery/__tests__/reference-presentation.test.tsx:32:50
+     30|   })
+     31|   it('JOIN opens the actual detail route without sending an applicatio…
+     32|     const h = setup(); const join = await screen.findByRole('link', { …
+       |                                                  ^
+     33|     expect(join.textContent).toBe('Join'); expect(join.getAttribute('h…
+     34|     fireEvent.click(join); expect(screen.getByRole('heading', { name: …
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[3/12]⎯
+
+ FAIL  src/features/party-discovery/__tests__/reference-presentation.test.tsx > FE-REF-MEET production presentation > uses only supplied current-data projections and removes imagery on privacy invalidation
+TestingLibraryElementError: Unable to find role="img" and name "Caller-bound reviewed portrait"
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div>[39m
+    [36m<div[39m
+      [33mclass[39m=[32m"party-view party-browse"[39m
+    [36m>[39m
+      [36m<nav[39m
+        [33maria-label[39m=[32m"Meet views"[39m
+        [33mclass[39m=[32m"party-tabs"[39m
+      [36m>[39m
+        [36m<button[39m
+          [33maria-pressed[39m=[32m"true"[39m
+          [33mtype[39m=[32m"button"[39m
+        [36m>[39m
+          [0mParties[0m
+        [36m</button>[39m
+        [36m<a[39m
+          [33mdata-discover[39m=[32m"true"[39m
+          [33mhref[39m=[32m"/meet/people"[39m
+          [33mid[39m=[32m"party-people"[39m
+        [36m>[39m
+          [0mPeople[0m
+        [36m</a>[39m
+        [36m<button[39m
+          [33maria-pressed[39m=[32m"false"[39m
+          [33mtype[39m=[32m"button"[39m
+        [36m>[39m
+          [0mMY PLAN[0m
+        [36m</button>[39m
+      [36m</nav>[39m
+      [36m<section[39m
+        [33maria-label[39m=[32m"Party discovery"[39m
+        [33mclass[39m=[32m"meet-discovery"[39m
+      [36m>[39m
+        [36m<h2[39m
+          [33mclass[39m=[32m"party-sr"[39m
+        [36m>[39m
+          [0mFind your company[0m
+        [36m</h2>[39m
+        [36m<div[39m
+          [33mrole[39m=[32m"alert"[39m
+        [36m>[39m
+          [36m<p>[39m
+            [0mTemporarily unavailable. Try reading again later.[0m
+          [36m</p>[39m
+          [36m<button[39m
+            [33mtype[39m=[32m"button"[39m
+          [36m>[39m
+            [0mRead [0m
+            [0mparties[0m
+            [0m again[0m
+          [36m</button>[39m
+        [36m</div>[39m
+        [36m<div[39m
+          [33mclass[39m=[32m"meet-tools"[39m
+        [36m>[39m
+          [36m<details[39m
+            [33mclass[39m=[32m"party-filters"[39m
+          [36m>[39m
+            [36m<summary>[39m
+              [0mFilter parties[0m
+            [36m</summary>[39m
+            [36m<form>[39m
+              [36m<label>[39m
+                [0mTicket section[0m
+                [36m<input[39m
+                  [33mmaxlength[39m=[32m"120"[39m
+                  [33mname[39m=[32m"ticket_section"[39m
+                  [33mplaceholder[39m=[32m"Any section"[39m
+                  [33mvalue[39m=[32m""[39m
+                [36m/>[39m
+              [36m</label>[39m
+              [36m<label>[39m
+                [0mParty state[0m
+                [36m<select[39m
+                  [33mname[39m=[32m"state"[39m
+                [36m>[39m
+                  [36m<option[39m
+                    [33mselected[39m=[32m""[39m
+                    [33mvalue[39m=[32m""[39m
+                  [36m>[39m
+                    [0mAll states[0m
+                  [36m</option>[39m
+                  [36m<option[39m
+                    [33mvalue[39m=[32m"OPEN"[39m
+                  [36m>[39m
+                    [0mopen[0m
+                  [36m</option>[39m
+                  [36m<option[39m
+                    [33mvalue[39m=[32m"CLOSED"[39m
+                  [36m>[39m
+                    [0mclosed[0m
+                  [36m</option>[39m
+                  [36m<option[39m
+                    [33mvalue[39m=[32m"CANCELLED"[39m
+                  [36m>[39m
+                    [0mcancelled[0m
+                  [36m</option>[39m
+                  [36m<option[39m
+                    [33mvalue[39m=[32m"COMPLETED"[39m
+                  [36m>[39m
+                    [0mcompleted[0m
+                  [36m</option>[39m
+                [36m</select>[39m
+              [36m</label>[39m
+              [36m<label>[39m
+                [0mStarts on or after[0m
+                [36m<input[39m
+                  [33mname[39m=[32m"starts_after"[39m
+                  [33mtype[39m=[32m"datetime-local"[39m
+                  [33mvalue[39m=[32m""[39m
+                [36m/>[39m
+              [36m</label>[39m
+              [36m<label>[39m
+                [0mStarts before[0m
+                [36m<input[39m
+                  [33mname[39m=[32m"starts_before"[39m
+                  [33mtype[39m=[32m"datetime-local"[39m
+                  [33mvalue[39m=[32m""[39m
+                [36m/>[39m
+              [36m</label>[39m
+              [36m<p[39m
+                [33mclass[39m=[32m"party-hint"[39m
+              [36m>[39m
+                [0mDates use your device’s local time. The end of the filter range is exclusive.[0m
+              [36m</p>[39m
+              [36m<label[39m
+                [33mclass[39m=[32m"party-checkbox"[39m
+              [36m>[39m
+                [36m<input[39m
+                  [33mname[39m=[32m"has_space"[39m
+                  [33mtype[39m=[32m"checkbox"[39m
+                [36m/>[39m
+                [0mOnly parties with space[0m
+              [36m</label>[39m
+              [36m<button[39m
+                [33mtype[39m=[32m"submit"[39m
+              [36m>[39m
+                [0mShow parties[0m
+              [36m</button>[39m
+            [36m</form>[39m
+          [36m</details>[39m
+          [36m<button[39m
+            [33maria-label[39m=[32m"Refresh parties"[39m
+            [33mtype[39m=[32m"button"[39m
+          [36m>[39m
+            [0mRefresh[0m
+          [36m</button>[39m
+        [36m</div>[39m
+        [36m<p[39m
+          [33mclass[39m=[32m"party-sr"[39m
+        [36m>[39m
+          [0mJOIN opens party details. The host approves membership; a virtual position does not confirm arrival. Times are Korea Standard Time.[0m
+        [36m</p>[39m
+      [36m</section>[39m
+      [36m<footer[39m
+        [33mclass[39m=[32m"meet-create"[39m
+      [36m>[39m
+        [36m<a[39m
+          [33mclass[39m=[32m"meet-create__action"[39m
+          [33mdata-discover[39m=[32m"true"[39m
+          [33mhref[39m=[32m"/meet/parties/new"[39m
+          [33mid[39m=[32m"party-create"[39m
+        [36m>[39m
+          [36m<svg[39m
+            [33maria-hidden[39m=[32m"true"[39m
+            [33mfill[39m=[32m"currentColor"[39m
+            [33mfocusable[39m=[32m"false"[39m
+            [33mviewBox[39m=[32m"0 0 16 16"[39m
+          [36m>[39m
+            [36m<path[39m
+              [33md[39m=[32m"M7 1h2v6h6v2H9v6H7V9H1V7h6z"[39m
+            [36m/>[39m
+          [36m</svg>[39m
+          [0mCreate party[0m
+        [36m</a>[39m
+      [36m</footer>[39m
+    [36m</div>[39m
+  [36m</div>[39m
+[36m</body>[39m
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div>[39m
+    [36m<div[39m
+      [33mclass[39m=[32m"party-view party-browse"[39m
+    [36m>[39m
+      [36m<nav[39m
+        [33maria-label[39m=[32m"Meet views"[39m
+        [33mclass[39m=[32m"party-tabs"[39m
+      [36m>[39m
+        [36m<button[39m
+          [33maria-pressed[39m=[32m"true"[39m
+          [33mtype[39m=[32m"button"[39m
+        [36m>[39m
+          [0mParties[0m
+        [36m</button>[39m
+        [36m<a[39m
+          [33mdata-discover[39m=[32m"true"[39m
+          [33mhref[39m=[32m"/meet/people"[39m
+          [33mid[39m=[32m"party-people"[39m
+        [36m>[39m
+          [0mPeople[0m
+        [36m</a>[39m
+        [36m<button[39m
+          [33maria-pressed[39m=[32m"false"[39m
+          [33mtype[39m=[32m"button"[39m
+        [36m>[39m
+          [0mMY PLAN[0m
+        [36m</button>[39m
+      [36m</nav>[39m
+      [36m<section[39m
+        [33maria-label[39m=[32m"Party discovery"[39m
+        [33mclass[39m=[32m"meet-discovery"[39m
+      [36m>[39m
+        [36m<h2[39m
+          [33mclass[39m=[32m"party-sr"[39m
+        [36m>[39m
+          [0mFind your company[0m
+        [36m</h2>[39m
+        [36m<div[39m
+          [33mrole[39m=[32m"alert"[39m
+        [36m>[39m
+          [36m<p>[39m
+            [0mTemporarily unavailable. Try reading again later.[0m
+          [36m</p>[39m
+          [36m<button[39m
+            [33mtype[39m=[32m"button"[39m
+          [36m>[39m
+            [0mRead [0m
+            [0mparties[0m
+            [0m again[0m
+          [36m</button>[39m
+        [36m</div>[39m
+        [36m<div[39m
+          [33mclass[39m=[32m"meet-tools"[39m
+        [36m>[39m
+          [36m<details[39m
+            [33mclass[39m=[32m"party-filters"[39m
+          [36m>[39m
+            [36m<summary>[39m
+              [0mFilter parties[0m
+            [36m</summary>[39m
+            [36m<form>[39m
+              [36m<label>[39m
+                [0mTicket section[0m
+                [36m<input[39m
+                  [33mmaxlength[39m=[32m"120"[39m
+                  [33mname[39m=[32m"ticket_section"[39m
+                  [33mplaceholder[39m=[32m"Any section"[39m
+                  [33mvalue[39m=[32m""[39m
+                [36m/>[39m
+              [36m</label>[39m
+              [36m<label>[39m
+                [0mParty state[0m
+                [36m<select[39m
+                  [33mname[39m=[32m"state"[39m
+                [36m>[39m
+                  [36m<option[39m
+                    [33mselected[39m=[32m""[39m
+                    [33mvalue[39m=[32m""[39m
+                  [36m>[39m
+                    [0mAll states[0m
+                  [36m</option>[39m
+                  [36m<option[39m
+                    [33mvalue[39m=[32m"OPEN"[39m
+                  [36m>[39m
+                    [0mopen[0m
+                  [36m</option>[39m
+                  [36m<option[39m
+                    [33mvalue[39m=[32m"CLOSED"[39m
+                  [36m>[39m
+                    [0mclosed[0m
+                  [36m</option>[39m
+                  [36m<option[39m
+                    [33mvalue[39m=[32m"CANCELLED"[39m
+                  [36m>[39m
+                    [0mcancelled[0m
+                  [36m</option>[39m
+                  [36m<option[39m
+                    [33mvalue[39m=[32m"COMPLETED"[39m
+                  [36m>[39m
+                    [0mcompleted[0m
+                  [36m</option>[39m
+                [36m</select>[39m
+              [36m</label>[39m
+              [36m<label>[39m
+                [0mStarts on or after[0m
+                [36m<input[39m
+                  [33mname[39m=[32m"starts_after"[39m
+                  [33mtype[39m=[32m"datetime-local"[39m
+                  [33mvalue[39m=[32m""[39m
+                [36m/>[39m
+              [36m</label>[39m
+              [36m<label>[39m
+                [0mStarts before[0m
+                [36m<input[39m
+                  [33mname[39m=[32m"starts_before"[39m
+                  [33mtype[39m=[32m"datetime-local"[39m
+                  [33mvalue[39m=[32m""[39m
+                [36m/>[39m
+              [36m</label>[39m
+              [36m<p[39m
+                [33mclass[39m=[32m"party-hint"[39m
+              [36m>[39m
+                [0mDates use your device’s local time. The end of the filter range is exclusive.[0m
+              [36m</p>[39m
+              [36m<label[39m
+                [33mclass[39m=[32m"party-checkbox"[39m
+              [36m>[39m
+                [36m<input[39m
+                  [33mname[39m=[32m"has_space"[39m
+                  [33mtype[39m=[32m"checkbox"[39m
+                [36m/>[39m
+                [0mOnly parties with space[0m
+              [36m</label>[39m
+              [36m<button[39m
+                [33mtype[39m=[32m"submit"[39m
+              [36m>[39m
+                [0mShow parties[0m
+              [36m</button>[39m
+            [36m</form>[39m
+          [36m</details>[39m
+          [36m<button[39m
+            [33maria-label[39m=[32m"Refresh parties"[39m
+            [33mtype[39m=[32m"button"[39m
+          [36m>[39m
+            [0mRefresh[0m
+          [36m</button>[39m
+        [36m</div>[39m
+        [36m<p[39m
+          [33mclass[39m=[32m"party-sr"[39m
+        [36m>[39m
+          [0mJOIN opens party details. The host approves membership; a virtual position does not confirm arrival. Times are Korea Standard Time.[0m
+        [36m</p>[39m
+      [36m</section>[39m
+      [36m<footer[39m
+        [33mclass[39m=[32m"meet-create"[39m
+      [36m>[39m
+        [36m<a[39m
+          [33mclass[39m=[32m"meet-create__action"[39m
+          [33mdata-discover[39m=[32m"true"[39m
+          [33mhref[39m=[32m"/meet/parties/new"[39m
+          [33mid[39m=[32m"party-create"[39m
+        [36m>[39m
+          [36m<svg[39m
+            [33maria-hidden[39m=[32m"true"[39m
+            [33mfill[39m=[32m"currentColor"[39m
+            [33mfocusable[39m=[32m"false"[39m
+            [33mviewBox[39m=[32m"0 0 16 16"[39m
+          [36m>[39m
+            [36m<path[39m
+              [33md[39m=[32m"M7 1h2v6h6v2H9v6H7V9H1V7h6z"[39m
+            [36m/>[39m
+          [36m</svg>[39m
+          [0mCreate party[0m
+        [36m</a>[39m
+      [36m</footer>[39m
+    [36m</div>[39m
+  [36m</div>[39m
+[36m</body>[39m
+ ❯ waitForWrapper ../../../mcr/frontend/node_modules/.pnpm/@testing-library+dom@10.4.1/node_modules/@testing-library/dom/dist/wait-for.js:163:27
+ ❯ ../../../mcr/frontend/node_modules/.pnpm/@testing-library+dom@10.4.1/node_modules/@testing-library/dom/dist/query-helpers.js:86:33
+ ❯ src/features/party-discovery/__tests__/reference-presentation.test.tsx:41:18
+     39|     const placeLabel = vi.fn(() => 'Reviewed plaza')
+     40|     const h = setup({ renderOwnerPortrait, placeLabel, canCreate: true…
+     41|     await screen.findByRole('img', { name: 'Caller-bound reviewed port…
+       |                  ^
+     42|     expect(renderOwnerPortrait).toHaveBeenCalledWith(party().owner); e…
+     43|     expect(screen.getByText(/Reviewed plaza ·/)).toBeTruthy()
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[4/12]⎯
+
+ FAIL  src/features/party-discovery/__tests__/reference-presentation.test.tsx > FE-REF-MEET production presentation > keeps a full party readable without a JOIN promise and never resolves raw fixture avatar IDs
+TestingLibraryElementError: Unable to find role="link" and name "View details for Before the encore"
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div>[39m
+    [36m<div[39m
+      [33mclass[39m=[32m"party-view party-browse"[39m
+    [36m>[39m
+      [36m<nav[39m
+        [33maria-label[39m=[32m"Meet views"[39m
+        [33mclass[39m=[32m"party-tabs"[39m
+      [36m>[39m
+        [36m<button[39m
+          [33maria-pressed[39m=[32m"true"[39m
+          [33mtype[39m=[32m"button"[39m
+        [36m>[39m
+          [0mParties[0m
+        [36m</button>[39m
+        [36m<a[39m
+          [33mdata-discover[39m=[32m"true"[39m
+          [33mhref[39m=[32m"/meet/people"[39m
+          [33mid[39m=[32m"party-people"[39m
+        [36m>[39m
+          [0mPeople[0m
+        [36m</a>[39m
+        [36m<button[39m
+          [33maria-pressed[39m=[32m"false"[39m
+          [33mtype[39m=[32m"button"[39m
+        [36m>[39m
+          [0mMY PLAN[0m
+        [36m</button>[39m
+      [36m</nav>[39m
+      [36m<section[39m
+        [33maria-label[39m=[32m"Party discovery"[39m
+        [33mclass[39m=[32m"meet-discovery"[39m
+      [36m>[39m
+        [36m<h2[39m
+          [33mclass[39m=[32m"party-sr"[39m
+        [36m>[39m
+          [0mFind your company[0m
+        [36m</h2>[39m
+        [36m<div[39m
+          [33mrole[39m=[32m"alert"[39m
+        [36m>[39m
+          [36m<p>[39m
+            [0mTemporarily unavailable. Try reading again later.[0m
+          [36m</p>[39m
+          [36m<button[39m
+            [33mtype[39m=[32m"button"[39m
+          [36m>[39m
+            [0mRead [0m
+            [0mparties[0m
+            [0m again[0m
+          [36m</button>[39m
+        [36m</div>[39m
+        [36m<div[39m
+          [33mclass[39m=[32m"meet-tools"[39m
+        [36m>[39m
+          [36m<details[39m
+            [33mclass[39m=[32m"party-filters"[39m
+          [36m>[39m
+            [36m<summary>[39m
+              [0mFilter parties[0m
+            [36m</summary>[39m
+            [36m<form>[39m
+              [36m<label>[39m
+                [0mTicket section[0m
+                [36m<input[39m
+                  [33mmaxlength[39m=[32m"120"[39m
+                  [33mname[39m=[32m"ticket_section"[39m
+                  [33mplaceholder[39m=[32m"Any section"[39m
+                  [33mvalue[39m=[32m""[39m
+                [36m/>[39m
+              [36m</label>[39m
+              [36m<label>[39m
+                [0mParty state[0m
+                [36m<select[39m
+                  [33mname[39m=[32m"state"[39m
+                [36m>[39m
+                  [36m<option[39m
+                    [33mselected[39m=[32m""[39m
+                    [33mvalue[39m=[32m""[39m
+                  [36m>[39m
+                    [0mAll states[0m
+                  [36m</option>[39m
+                  [36m<option[39m
+                    [33mvalue[39m=[32m"OPEN"[39m
+                  [36m>[39m
+                    [0mopen[0m
+                  [36m</option>[39m
+                  [36m<option[39m
+                    [33mvalue[39m=[32m"CLOSED"[39m
+                  [36m>[39m
+                    [0mclosed[0m
+                  [36m</option>[39m
+                  [36m<option[39m
+                    [33mvalue[39m=[32m"CANCELLED"[39m
+                  [36m>[39m
+                    [0mcancelled[0m
+                  [36m</option>[39m
+                  [36m<option[39m
+                    [33mvalue[39m=[32m"COMPLETED"[39m
+                  [36m>[39m
+                    [0mcompleted[0m
+                  [36m</option>[39m
+                [36m</select>[39m
+              [36m</label>[39m
+              [36m<label>[39m
+                [0mStarts on or after[0m
+                [36m<input[39m
+                  [33mname[39m=[32m"starts_after"[39m
+                  [33mtype[39m=[32m"datetime-local"[39m
+                  [33mvalue[39m=[32m""[39m
+                [36m/>[39m
+              [36m</label>[39m
+              [36m<label>[39m
+                [0mStarts before[0m
+                [36m<input[39m
+                  [33mname[39m=[32m"starts_before"[39m
+                  [33mtype[39m=[32m"datetime-local"[39m
+                  [33mvalue[39m=[32m""[39m
+                [36m/>[39m
+              [36m</label>[39m
+              [36m<p[39m
+                [33mclass[39m=[32m"party-hint"[39m
+              [36m>[39m
+                [0mDates use your device’s local time. The end of the filter range is exclusive.[0m
+              [36m</p>[39m
+              [36m<label[39m
+                [33mclass[39m=[32m"party-checkbox"[39m
+              [36m>[39m
+                [36m<input[39m
+                  [33mname[39m=[32m"has_space"[39m
+                  [33mtype[39m=[32m"checkbox"[39m
+                [36m/>[39m
+                [0mOnly parties with space[0m
+              [36m</label>[39m
+              [36m<button[39m
+                [33mtype[39m=[32m"submit"[39m
+              [36m>[39m
+                [0mShow parties[0m
+              [36m</button>[39m
+            [36m</form>[39m
+          [36m</details>[39m
+          [36m<button[39m
+            [33maria-label[39m=[32m"Refresh parties"[39m
+            [33mtype[39m=[32m"button"[39m
+          [36m>[39m
+            [0mRefresh[0m
+          [36m</button>[39m
+        [36m</div>[39m
+        [36m<p[39m
+          [33mclass[39m=[32m"party-sr"[39m
+        [36m>[39m
+          [0mJOIN opens party details. The host approves membership; a virtual position does not confirm arrival. Times are Korea Standard Time.[0m
+        [36m</p>[39m
+      [36m</section>[39m
+      [36m<footer[39m
+        [33mclass[39m=[32m"meet-create"[39m
+      [36m>[39m
+        [36m<button[39m
+          [33maria-describedby[39m=[32m"meet-create-unavailable"[39m
+          [33mclass[39m=[32m"meet-create__action"[39m
+          [33mdisabled[39m=[32m""[39m
+          [33mtype[39m=[32m"button"[39m
+        [36m>[39m
+          [36m<svg[39m
+            [33maria-hidden[39m=[32m"true"[39m
+            [33mfill[39m=[32m"currentColor"[39m
+            [33mfocusable[39m=[32m"false"[39m
+            [33mviewBox[39m=[32m"0 0 16 16"[39m
+          [36m>[39m
+            [36m<path[39m
+              [33md[39m=[32m"M7 1h2v6h6v2H9v6H7V9H1V7h6z"[39m
+            [36m/>[39m
+          [36m</svg>[39m
+          [0mCreate party[0m
+        [36m</button>[39m
+        [36m<span[39m
+          [33mclass[39m=[32m"meet-create__unavailable"[39m
+          [33mid[39m=[32m"meet-create-unavailable"[39m
+        [36m>[39m
+          [0mParty creation is currently unavailable.[0m
+        [36m</span>[39m
+      [36m</footer>[39m
+    [36m</div>[39m
+  [36m</div>[39m
+[36m</body>[39m
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div>[39m
+    [36m<div[39m
+      [33mclass[39m=[32m"party-view party-browse"[39m
+    [36m>[39m
+      [36m<nav[39m
+        [33maria-label[39m=[32m"Meet views"[39m
+        [33mclass[39m=[32m"party-tabs"[39m
+      [36m>[39m
+        [36m<button[39m
+          [33maria-pressed[39m=[32m"true"[39m
+          [33mtype[39m=[32m"button"[39m
+        [36m>[39m
+          [0mParties[0m
+        [36m</button>[39m
+        [36m<a[39m
+          [33mdata-discover[39m=[32m"true"[39m
+          [33mhref[39m=[32m"/meet/people"[39m
+          [33mid[39m=[32m"party-people"[39m
+        [36m>[39m
+          [0mPeople[0m
+        [36m</a>[39m
+        [36m<button[39m
+          [33maria-pressed[39m=[32m"false"[39m
+          [33mtype[39m=[32m"button"[39m
+        [36m>[39m
+          [0mMY PLAN[0m
+        [36m</button>[39m
+      [36m</nav>[39m
+      [36m<section[39m
+        [33maria-label[39m=[32m"Party discovery"[39m
+        [33mclass[39m=[32m"meet-discovery"[39m
+      [36m>[39m
+        [36m<h2[39m
+          [33mclass[39m=[32m"party-sr"[39m
+        [36m>[39m
+          [0mFind your company[0m
+        [36m</h2>[39m
+        [36m<div[39m
+          [33mrole[39m=[32m"alert"[39m
+        [36m>[39m
+          [36m<p>[39m
+            [0mTemporarily unavailable. Try reading again later.[0m
+          [36m</p>[39m
+          [36m<button[39m
+            [33mtype[39m=[32m"button"[39m
+          [36m>[39m
+            [0mRead [0m
+            [0mparties[0m
+            [0m again[0m
+          [36m</button>[39m
+        [36m</div>[39m
+        [36m<div[39m
+          [33mclass[39m=[32m"meet-tools"[39m
+        [36m>[39m
+          [36m<details[39m
+            [33mclass[39m=[32m"party-filters"[39m
+          [36m>[39m
+            [36m<summary>[39m
+              [0mFilter parties[0m
+            [36m</summary>[39m
+            [36m<form>[39m
+              [36m<label>[39m
+                [0mTicket section[0m
+                [36m<input[39m
+                  [33mmaxlength[39m=[32m"120"[39m
+                  [33mname[39m=[32m"ticket_section"[39m
+                  [33mplaceholder[39m=[32m"Any section"[39m
+                  [33mvalue[39m=[32m""[39m
+                [36m/>[39m
+              [36m</label>[39m
+              [36m<label>[39m
+                [0mParty state[0m
+                [36m<select[39m
+                  [33mname[39m=[32m"state"[39m
+                [36m>[39m
+                  [36m<option[39m
+                    [33mselected[39m=[32m""[39m
+                    [33mvalue[39m=[32m""[39m
+                  [36m>[39m
+                    [0mAll states[0m
+                  [36m</option>[39m
+                  [36m<option[39m
+                    [33mvalue[39m=[32m"OPEN"[39m
+                  [36m>[39m
+                    [0mopen[0m
+                  [36m</option>[39m
+                  [36m<option[39m
+                    [33mvalue[39m=[32m"CLOSED"[39m
+                  [36m>[39m
+                    [0mclosed[0m
+                  [36m</option>[39m
+                  [36m<option[39m
+                    [33mvalue[39m=[32m"CANCELLED"[39m
+                  [36m>[39m
+                    [0mcancelled[0m
+                  [36m</option>[39m
+                  [36m<option[39m
+                    [33mvalue[39m=[32m"COMPLETED"[39m
+                  [36m>[39m
+                    [0mcompleted[0m
+                  [36m</option>[39m
+                [36m</select>[39m
+              [36m</label>[39m
+              [36m<label>[39m
+                [0mStarts on or after[0m
+                [36m<input[39m
+                  [33mname[39m=[32m"starts_after"[39m
+                  [33mtype[39m=[32m"datetime-local"[39m
+                  [33mvalue[39m=[32m""[39m
+                [36m/>[39m
+              [36m</label>[39m
+              [36m<label>[39m
+                [0mStarts before[0m
+                [36m<input[39m
+                  [33mname[39m=[32m"starts_before"[39m
+                  [33mtype[39m=[32m"datetime-local"[39m
+                  [33mvalue[39m=[32m""[39m
+                [36m/>[39m
+              [36m</label>[39m
+              [36m<p[39m
+                [33mclass[39m=[32m"party-hint"[39m
+              [36m>[39m
+                [0mDates use your device’s local time. The end of the filter range is exclusive.[0m
+              [36m</p>[39m
+              [36m<label[39m
+                [33mclass[39m=[32m"party-checkbox"[39m
+              [36m>[39m
+                [36m<input[39m
+                  [33mname[39m=[32m"has_space"[39m
+                  [33mtype[39m=[32m"checkbox"[39m
+                [36m/>[39m
+                [0mOnly parties with space[0m
+              [36m</label>[39m
+              [36m<button[39m
+                [33mtype[39m=[32m"submit"[39m
+              [36m>[39m
+                [0mShow parties[0m
+              [36m</button>[39m
+            [36m</form>[39m
+          [36m</details>[39m
+          [36m<button[39m
+            [33maria-label[39m=[32m"Refresh parties"[39m
+            [33mtype[39m=[32m"button"[39m
+          [36m>[39m
+            [0mRefresh[0m
+          [36m</button>[39m
+        [36m</div>[39m
+        [36m<p[39m
+          [33mclass[39m=[32m"party-sr"[39m
+        [36m>[39m
+          [0mJOIN opens party details. The host approves membership; a virtual position does not confirm arrival. Times are Korea Standard Time.[0m
+        [36m</p>[39m
+      [36m</section>[39m
+      [36m<footer[39m
+        [33mclass[39m=[32m"meet-create"[39m
+      [36m>[39m
+        [36m<button[39m
+          [33maria-describedby[39m=[32m"meet-create-unavailable"[39m
+          [33mclass[39m=[32m"meet-create__action"[39m
+          [33mdisabled[39m=[32m""[39m
+          [33mtype[39m=[32m"button"[39m
+        [36m>[39m
+          [36m<svg[39m
+            [33maria-hidden[39m=[32m"true"[39m
+            [33mfill[39m=[32m"currentColor"[39m
+            [33mfocusable[39m=[32m"false"[39m
+            [33mviewBox[39m=[32m"0 0 16 16"[39m
+          [36m>[39m
+            [36m<path[39m
+              [33md[39m=[32m"M7 1h2v6h6v2H9v6H7V9H1V7h6z"[39m
+            [36m/>[39m
+          [36m</svg>[39m
+          [0mCreate party[0m
+        [36m</button>[39m
+        [36m<span[39m
+          [33mclass[39m=[32m"meet-create__unavailable"[39m
+          [33mid[39m=[32m"meet-create-unavailable"[39m
+        [36m>[39m
+          [0mParty creation is currently unavailable.[0m
+        [36m</span>[39m
+      [36m</footer>[39m
+    [36m</div>[39m
+  [36m</div>[39m
+[36m</body>[39m
+ ❯ waitForWrapper ../../../mcr/frontend/node_modules/.pnpm/@testing-library+dom@10.4.1/node_modules/@testing-library/dom/dist/wait-for.js:163:27
+ ❯ ../../../mcr/frontend/node_modules/.pnpm/@testing-library+dom@10.4.1/node_modules/@testing-library/dom/dist/query-helpers.js:86:33
+ ❯ src/features/party-discovery/__tests__/reference-presentation.test.tsx:52:57
+     50|   })
+     51|   it('keeps a full party readable without a JOIN promise and never res…
+     52|     setup(undefined, true); const detail = await screen.findByRole('li…
+       |                                                         ^
+     53|     expect(detail.textContent).toBe('Full'); expect(detail.getAttribut…
+     54|     expect(screen.getByRole('img', { name: 'Host portrait unavailable'…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[5/12]⎯
+
+ FAIL  src/features/party-discovery/__tests__/ui.test.tsx > FE21 accessible feature views > renders discovery and independent MY PLAN navigation with safe empty copy and no art
+TestingLibraryElementError: Unable to find role="link" and name "Before the encore"
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div>[39m
+    [36m<div[39m
+      [33mclass[39m=[32m"party-view party-browse"[39m
+    [36m>[39m
+      [36m<nav[39m
+        [33maria-label[39m=[32m"Meet views"[39m
+        [33mclass[39m=[32m"party-tabs"[39m
+      [36m>[39m
+        [36m<button[39m
+          [33maria-pressed[39m=[32m"true"[39m
+          [33mtype[39m=[32m"button"[39m
+        [36m>[39m
+          [0mParties[0m
+        [36m</button>[39m
+        [36m<a[39m
+          [33mdata-discover[39m=[32m"true"[39m
+          [33mhref[39m=[32m"/meet/people"[39m
+          [33mid[39m=[32m"party-people"[39m
+        [36m>[39m
+          [0mPeople[0m
+        [36m</a>[39m
+        [36m<button[39m
+          [33maria-pressed[39m=[32m"false"[39m
+          [33mtype[39m=[32m"button"[39m
+        [36m>[39m
+          [0mMY PLAN[0m
+        [36m</button>[39m
+      [36m</nav>[39m
+      [36m<section[39m
+        [33maria-label[39m=[32m"Party discovery"[39m
+        [33mclass[39m=[32m"meet-discovery"[39m
+      [36m>[39m
+        [36m<h2[39m
+          [33mclass[39m=[32m"party-sr"[39m
+        [36m>[39m
+          [0mFind your company[0m
+        [36m</h2>[39m
+        [36m<div[39m
+          [33mrole[39m=[32m"alert"[39m
+        [36m>[39m
+          [36m<p>[39m
+            [0mTemporarily unavailable. Try reading again later.[0m
+          [36m</p>[39m
+          [36m<button[39m
+            [33mtype[39m=[32m"button"[39m
+          [36m>[39m
+            [0mRead [0m
+            [0mparties[0m
+            [0m again[0m
+          [36m</button>[39m
+        [36m</div>[39m
+        [36m<div[39m
+          [33mclass[39m=[32m"meet-tools"[39m
+        [36m>[39m
+          [36m<details[39m
+            [33mclass[39m=[32m"party-filters"[39m
+          [36m>[39m
+            [36m<summary>[39m
+              [0mFilter parties[0m
+            [36m</summary>[39m
+            [36m<form>[39m
+              [36m<label>[39m
+                [0mTicket section[0m
+                [36m<input[39m
+                  [33mmaxlength[39m=[32m"120"[39m
+                  [33mname[39m=[32m"ticket_section"[39m
+                  [33mplaceholder[39m=[32m"Any section"[39m
+                  [33mvalue[39m=[32m""[39m
+                [36m/>[39m
+              [36m</label>[39m
+              [36m<label>[39m
+                [0mParty state[0m
+                [36m<select[39m
+                  [33mname[39m=[32m"state"[39m
+                [36m>[39m
+                  [36m<option[39m
+                    [33mselected[39m=[32m""[39m
+                    [33mvalue[39m=[32m""[39m
+                  [36m>[39m
+                    [0mAll states[0m
+                  [36m</option>[39m
+                  [36m<option[39m
+                    [33mvalue[39m=[32m"OPEN"[39m
+                  [36m>[39m
+                    [0mopen[0m
+                  [36m</option>[39m
+                  [36m<option[39m
+                    [33mvalue[39m=[32m"CLOSED"[39m
+                  [36m>[39m
+                    [0mclosed[0m
+                  [36m</option>[39m
+                  [36m<option[39m
+                    [33mvalue[39m=[32m"CANCELLED"[39m
+                  [36m>[39m
+                    [0mcancelled[0m
+                  [36m</option>[39m
+                  [36m<option[39m
+                    [33mvalue[39m=[32m"COMPLETED"[39m
+                  [36m>[39m
+                    [0mcompleted[0m
+                  [36m</option>[39m
+                [36m</select>[39m
+              [36m</label>[39m
+              [36m<label>[39m
+                [0mStarts on or after[0m
+                [36m<input[39m
+                  [33mname[39m=[32m"starts_after"[39m
+                  [33mtype[39m=[32m"datetime-local"[39m
+                  [33mvalue[39m=[32m""[39m
+                [36m/>[39m
+              [36m</label>[39m
+              [36m<label>[39m
+                [0mStarts before[0m
+                [36m<input[39m
+                  [33mname[39m=[32m"starts_before"[39m
+                  [33mtype[39m=[32m"datetime-local"[39m
+                  [33mvalue[39m=[32m""[39m
+                [36m/>[39m
+              [36m</label>[39m
+              [36m<p[39m
+                [33mclass[39m=[32m"party-hint"[39m
+              [36m>[39m
+                [0mDates use your device’s local time. The end of the filter range is exclusive.[0m
+              [36m</p>[39m
+              [36m<label[39m
+                [33mclass[39m=[32m"party-checkbox"[39m
+              [36m>[39m
+                [36m<input[39m
+                  [33mname[39m=[32m"has_space"[39m
+                  [33mtype[39m=[32m"checkbox"[39m
+                [36m/>[39m
+                [0mOnly parties with space[0m
+              [36m</label>[39m
+              [36m<button[39m
+                [33mtype[39m=[32m"submit"[39m
+              [36m>[39m
+                [0mShow parties[0m
+              [36m</button>[39m
+            [36m</form>[39m
+          [36m</details>[39m
+          [36m<button[39m
+            [33maria-label[39m=[32m"Refresh parties"[39m
+            [33mtype[39m=[32m"button"[39m
+          [36m>[39m
+            [0mRefresh[0m
+          [36m</button>[39m
+        [36m</div>[39m
+        [36m<p[39m
+          [33mclass[39m=[32m"party-sr"[39m
+        [36m>[39m
+          [0mJOIN opens party details. The host approves membership; a virtual position does not confirm arrival. Times are Korea Standard Time.[0m
+        [36m</p>[39m
+      [36m</section>[39m
+      [36m<footer[39m
+        [33mclass[39m=[32m"meet-create"[39m
+      [36m>[39m
+        [36m<button[39m
+          [33maria-describedby[39m=[32m"meet-create-unavailable"[39m
+          [33mclass[39m=[32m"meet-create__action"[39m
+          [33mdisabled[39m=[32m""[39m
+          [33mtype[39m=[32m"button"[39m
+        [36m>[39m
+          [36m<svg[39m
+            [33maria-hidden[39m=[32m"true"[39m
+            [33mfill[39m=[32m"currentColor"[39m
+            [33mfocusable[39m=[32m"false"[39m
+            [33mviewBox[39m=[32m"0 0 16 16"[39m
+          [36m>[39m
+            [36m<path[39m
+              [33md[39m=[32m"M7 1h2v6h6v2H9v6H7V9H1V7h6z"[39m
+            [36m/>[39m
+          [36m</svg>[39m
+          [0mCreate party[0m
+        [36m</button>[39m
+        [36m<span[39m
+          [33mclass[39m=[32m"meet-create__unavailable"[39m
+          [33mid[39m=[32m"meet-create-unavailable"[39m
+        [36m>[39m
+          [0mParty creation is currently unavailable.[0m
+        [36m</span>[39m
+      [36m</footer>[39m
+    [36m</div>[39m
+  [36m</div>[39m
+[36m</body>[39m
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div>[39m
+    [36m<div[39m
+      [33mclass[39m=[32m"party-view party-browse"[39m
+    [36m>[39m
+      [36m<nav[39m
+        [33maria-label[39m=[32m"Meet views"[39m
+        [33mclass[39m=[32m"party-tabs"[39m
+      [36m>[39m
+        [36m<button[39m
+          [33maria-pressed[39m=[32m"true"[39m
+          [33mtype[39m=[32m"button"[39m
+        [36m>[39m
+          [0mParties[0m
+        [36m</button>[39m
+        [36m<a[39m
+          [33mdata-discover[39m=[32m"true"[39m
+          [33mhref[39m=[32m"/meet/people"[39m
+          [33mid[39m=[32m"party-people"[39m
+        [36m>[39m
+          [0mPeople[0m
+        [36m</a>[39m
+        [36m<button[39m
+          [33maria-pressed[39m=[32m"false"[39m
+          [33mtype[39m=[32m"button"[39m
+        [36m>[39m
+          [0mMY PLAN[0m
+        [36m</button>[39m
+      [36m</nav>[39m
+      [36m<section[39m
+        [33maria-label[39m=[32m"Party discovery"[39m
+        [33mclass[39m=[32m"meet-discovery"[39m
+      [36m>[39m
+        [36m<h2[39m
+          [33mclass[39m=[32m"party-sr"[39m
+        [36m>[39m
+          [0mFind your company[0m
+        [36m</h2>[39m
+        [36m<div[39m
+          [33mrole[39m=[32m"alert"[39m
+        [36m>[39m
+          [36m<p>[39m
+            [0mTemporarily unavailable. Try reading again later.[0m
+          [36m</p>[39m
+          [36m<button[39m
+            [33mtype[39m=[32m"button"[39m
+          [36m>[39m
+            [0mRead [0m
+            [0mparties[0m
+            [0m again[0m
+          [36m</button>[39m
+        [36m</div>[39m
+        [36m<div[39m
+          [33mclass[39m=[32m"meet-tools"[39m
+        [36m>[39m
+          [36m<details[39m
+            [33mclass[39m=[32m"party-filters"[39m
+          [36m>[39m
+            [36m<summary>[39m
+              [0mFilter parties[0m
+            [36m</summary>[39m
+            [36m<form>[39m
+              [36m<label>[39m
+                [0mTicket section[0m
+                [36m<input[39m
+                  [33mmaxlength[39m=[32m"120"[39m
+                  [33mname[39m=[32m"ticket_section"[39m
+                  [33mplaceholder[39m=[32m"Any section"[39m
+                  [33mvalue[39m=[32m""[39m
+                [36m/>[39m
+              [36m</label>[39m
+              [36m<label>[39m
+                [0mParty state[0m
+                [36m<select[39m
+                  [33mname[39m=[32m"state"[39m
+                [36m>[39m
+                  [36m<option[39m
+                    [33mselected[39m=[32m""[39m
+                    [33mvalue[39m=[32m""[39m
+                  [36m>[39m
+                    [0mAll states[0m
+                  [36m</option>[39m
+                  [36m<option[39m
+                    [33mvalue[39m=[32m"OPEN"[39m
+                  [36m>[39m
+                    [0mopen[0m
+                  [36m</option>[39m
+                  [36m<option[39m
+                    [33mvalue[39m=[32m"CLOSED"[39m
+                  [36m>[39m
+                    [0mclosed[0m
+                  [36m</option>[39m
+                  [36m<option[39m
+                    [33mvalue[39m=[32m"CANCELLED"[39m
+                  [36m>[39m
+                    [0mcancelled[0m
+                  [36m</option>[39m
+                  [36m<option[39m
+                    [33mvalue[39m=[32m"COMPLETED"[39m
+                  [36m>[39m
+                    [0mcompleted[0m
+                  [36m</option>[39m
+                [36m</select>[39m
+              [36m</label>[39m
+              [36m<label>[39m
+                [0mStarts on or after[0m
+                [36m<input[39m
+                  [33mname[39m=[32m"starts_after"[39m
+                  [33mtype[39m=[32m"datetime-local"[39m
+                  [33mvalue[39m=[32m""[39m
+                [36m/>[39m
+              [36m</label>[39m
+              [36m<label>[39m
+                [0mStarts before[0m
+                [36m<input[39m
+                  [33mname[39m=[32m"starts_before"[39m
+                  [33mtype[39m=[32m"datetime-local"[39m
+                  [33mvalue[39m=[32m""[39m
+                [36m/>[39m
+              [36m</label>[39m
+              [36m<p[39m
+                [33mclass[39m=[32m"party-hint"[39m
+              [36m>[39m
+                [0mDates use your device’s local time. The end of the filter range is exclusive.[0m
+              [36m</p>[39m
+              [36m<label[39m
+                [33mclass[39m=[32m"party-checkbox"[39m
+              [36m>[39m
+                [36m<input[39m
+                  [33mname[39m=[32m"has_space"[39m
+                  [33mtype[39m=[32m"checkbox"[39m
+                [36m/>[39m
+                [0mOnly parties with space[0m
+              [36m</label>[39m
+              [36m<button[39m
+                [33mtype[39m=[32m"submit"[39m
+              [36m>[39m
+                [0mShow parties[0m
+              [36m</button>[39m
+            [36m</form>[39m
+          [36m</details>[39m
+          [36m<button[39m
+            [33maria-label[39m=[32m"Refresh parties"[39m
+            [33mtype[39m=[32m"button"[39m
+          [36m>[39m
+            [0mRefresh[0m
+          [36m</button>[39m
+        [36m</div>[39m
+        [36m<p[39m
+          [33mclass[39m=[32m"party-sr"[39m
+        [36m>[39m
+          [0mJOIN opens party details. The host approves membership; a virtual position does not confirm arrival. Times are Korea Standard Time.[0m
+        [36m</p>[39m
+      [36m</section>[39m
+      [36m<footer[39m
+        [33mclass[39m=[32m"meet-create"[39m
+      [36m>[39m
+        [36m<button[39m
+          [33maria-describedby[39m=[32m"meet-create-unavailable"[39m
+          [33mclass[39m=[32m"meet-create__action"[39m
+          [33mdisabled[39m=[32m""[39m
+          [33mtype[39m=[32m"button"[39m
+        [36m>[39m
+          [36m<svg[39m
+            [33maria-hidden[39m=[32m"true"[39m
+            [33mfill[39m=[32m"currentColor"[39m
+            [33mfocusable[39m=[32m"false"[39m
+            [33mviewBox[39m=[32m"0 0 16 16"[39m
+          [36m>[39m
+            [36m<path[39m
+              [33md[39m=[32m"M7 1h2v6h6v2H9v6H7V9H1V7h6z"[39m
+            [36m/>[39m
+          [36m</svg>[39m
+          [0mCreate party[0m
+        [36m</button>[39m
+        [36m<span[39m
+          [33mclass[39m=[32m"meet-create__unavailable"[39m
+          [33mid[39m=[32m"meet-create-unavailable"[39m
+        [36m>[39m
+          [0mParty creation is currently unavailable.[0m
+        [36m</span>[39m
+      [36m</footer>[39m
+    [36m</div>[39m
+  [36m</div>[39m
+[36m</body>[39m
+ ❯ waitForWrapper ../../../mcr/frontend/node_modules/.pnpm/@testing-library+dom@10.4.1/node_modules/@testing-library/dom/dist/wait-for.js:163:27
+ ❯ ../../../mcr/frontend/node_modules/.pnpm/@testing-library+dom@10.4.1/node_modules/@testing-library/dom/dist/query-helpers.js:86:33
+ ❯ src/features/party-discovery/__tests__/ui.test.tsx:14:18
+     12|   it('renders discovery and independent MY PLAN navigation with safe e…
+     13|     const h = setup(); render(<MemoryRouter><PartyDiscovery controller…
+     14|     await screen.findByRole('link', { name: party().title }); fireEven…
+       |                  ^
+     15|     await screen.findByRole('heading', { name: 'Your applications' });…
+     16|     fireEvent.click(screen.getByRole('button', { name: 'Parties' })); …
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[6/12]⎯
+
+ FAIL  src/features/party-discovery/__tests__/ui.test.tsx > FE21 accessible feature views > renders detail, requirements, reviewed-place link and note; full/closed states disable submission
+TestingLibraryElementError: Unable to find role="heading" and name "Before the encore"
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div>[39m
+    [36m<div[39m
+      [33mclass[39m=[32m"party-view"[39m
+    [36m>[39m
+      [36m<nav[39m
+        [33maria-label[39m=[32m"Party navigation"[39m
+        [33mclass[39m=[32m"party-tabs"[39m
+      [36m>[39m
+        [36m<a[39m
+          [33mdata-discover[39m=[32m"true"[39m
+          [33mhref[39m=[32m"/meet"[39m
+          [33mid[39m=[32m"party-all"[39m
+        [36m>[39m
+          [0mAll parties[0m
+        [36m</a>[39m
+        [36m<a[39m
+          [33mdata-discover[39m=[32m"true"[39m
+          [33mhref[39m=[32m"/meet"[39m
+          [33mid[39m=[32m"party-plan"[39m
+        [36m>[39m
+          [0mMY PLAN[0m
+        [36m</a>[39m
+      [36m</nav>[39m
+      [36m<div[39m
+        [33mrole[39m=[32m"alert"[39m
+      [36m>[39m
+        [36m<p>[39m
+          [0mTemporarily unavailable. Try reading again later.[0m
+        [36m</p>[39m
+        [36m<button[39m
+          [33mtype[39m=[32m"button"[39m
+        [36m>[39m
+          [0mRead [0m
+          [0mparty[0m
+          [0m again[0m
+        [36m</button>[39m
+      [36m</div>[39m
+    [36m</div>[39m
+  [36m</div>[39m
+[36m</body>[39m
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div>[39m
+    [36m<div[39m
+      [33mclass[39m=[32m"party-view"[39m
+    [36m>[39m
+      [36m<nav[39m
+        [33maria-label[39m=[32m"Party navigation"[39m
+        [33mclass[39m=[32m"party-tabs"[39m
+      [36m>[39m
+        [36m<a[39m
+          [33mdata-discover[39m=[32m"true"[39m
+          [33mhref[39m=[32m"/meet"[39m
+          [33mid[39m=[32m"party-all"[39m
+        [36m>[39m
+          [0mAll parties[0m
+        [36m</a>[39m
+        [36m<a[39m
+          [33mdata-discover[39m=[32m"true"[39m
+          [33mhref[39m=[32m"/meet"[39m
+          [33mid[39m=[32m"party-plan"[39m
+        [36m>[39m
+          [0mMY PLAN[0m
+        [36m</a>[39m
+      [36m</nav>[39m
+      [36m<div[39m
+        [33mrole[39m=[32m"alert"[39m
+      [36m>[39m
+        [36m<p>[39m
+          [0mTemporarily unavailable. Try reading again later.[0m
+        [36m</p>[39m
+        [36m<button[39m
+          [33mtype[39m=[32m"button"[39m
+        [36m>[39m
+          [0mRead [0m
+          [0mparty[0m
+          [0m again[0m
+        [36m</button>[39m
+      [36m</div>[39m
+    [36m</div>[39m
+  [36m</div>[39m
+[36m</body>[39m
+ ❯ waitForWrapper ../../../mcr/frontend/node_modules/.pnpm/@testing-library+dom@10.4.1/node_modules/@testing-library/dom/dist/wait-for.js:163:27
+ ❯ ../../../mcr/frontend/node_modules/.pnpm/@testing-library+dom@10.4.1/node_modules/@testing-library/dom/dist/query-helpers.js:86:33
+ ❯ src/features/party-discovery/__tests__/ui.test.tsx:23:18
+     21|       return Response.json(path.endsWith('/me/parties') ? activity() :…
+     22|     }); await ready(h); render(<MemoryRouter><PartyDetail controller={…
+     23|     await screen.findByRole('heading', { name: party().title }); await…
+       |                  ^
+     24|     expect(screen.getByRole('button', { name: 'Apply to party' }).hasA…
+     25|     expect(screen.getByRole('link', { name: 'Review place information'…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[7/12]⎯
+
+ FAIL  src/features/party-discovery/__tests__/ui.test.tsx > FE21 accessible feature views > clears mounted form draft and private note on same-identity privacy changes
+TestingLibraryElementError: Unable to find role="link" and name "Before the encore"
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div>[39m
+    [36m<div[39m
+      [33mclass[39m=[32m"party-view party-browse"[39m
+    [36m>[39m
+      [36m<nav[39m
+        [33maria-label[39m=[32m"Meet views"[39m
+        [33mclass[39m=[32m"party-tabs"[39m
+      [36m>[39m
+        [36m<button[39m
+          [33maria-pressed[39m=[32m"true"[39m
+          [33mtype[39m=[32m"button"[39m
+        [36m>[39m
+          [0mParties[0m
+        [36m</button>[39m
+        [36m<a[39m
+          [33mdata-discover[39m=[32m"true"[39m
+          [33mhref[39m=[32m"/meet/people"[39m
+          [33mid[39m=[32m"party-people"[39m
+        [36m>[39m
+          [0mPeople[0m
+        [36m</a>[39m
+        [36m<button[39m
+          [33maria-pressed[39m=[32m"false"[39m
+          [33mtype[39m=[32m"button"[39m
+        [36m>[39m
+          [0mMY PLAN[0m
+        [36m</button>[39m
+      [36m</nav>[39m
+      [36m<section[39m
+        [33maria-label[39m=[32m"Party discovery"[39m
+        [33mclass[39m=[32m"meet-discovery"[39m
+      [36m>[39m
+        [36m<h2[39m
+          [33mclass[39m=[32m"party-sr"[39m
+        [36m>[39m
+          [0mFind your company[0m
+        [36m</h2>[39m
+        [36m<div[39m
+          [33mrole[39m=[32m"alert"[39m
+        [36m>[39m
+          [36m<p>[39m
+            [0mTemporarily unavailable. Try reading again later.[0m
+          [36m</p>[39m
+          [36m<button[39m
+            [33mtype[39m=[32m"button"[39m
+          [36m>[39m
+            [0mRead [0m
+            [0mparties[0m
+            [0m again[0m
+          [36m</button>[39m
+        [36m</div>[39m
+        [36m<div[39m
+          [33mclass[39m=[32m"meet-tools"[39m
+        [36m>[39m
+          [36m<details[39m
+            [33mclass[39m=[32m"party-filters"[39m
+          [36m>[39m
+            [36m<summary>[39m
+              [0mFilter parties[0m
+            [36m</summary>[39m
+            [36m<form>[39m
+              [36m<label>[39m
+                [0mTicket section[0m
+                [36m<input[39m
+                  [33mmaxlength[39m=[32m"120"[39m
+                  [33mname[39m=[32m"ticket_section"[39m
+                  [33mplaceholder[39m=[32m"Any section"[39m
+                  [33mvalue[39m=[32m""[39m
+                [36m/>[39m
+              [36m</label>[39m
+              [36m<label>[39m
+                [0mParty state[0m
+                [36m<select[39m
+                  [33mname[39m=[32m"state"[39m
+                [36m>[39m
+                  [36m<option[39m
+                    [33mselected[39m=[32m""[39m
+                    [33mvalue[39m=[32m""[39m
+                  [36m>[39m
+                    [0mAll states[0m
+                  [36m</option>[39m
+                  [36m<option[39m
+                    [33mvalue[39m=[32m"OPEN"[39m
+                  [36m>[39m
+                    [0mopen[0m
+                  [36m</option>[39m
+                  [36m<option[39m
+                    [33mvalue[39m=[32m"CLOSED"[39m
+                  [36m>[39m
+                    [0mclosed[0m
+                  [36m</option>[39m
+                  [36m<option[39m
+                    [33mvalue[39m=[32m"CANCELLED"[39m
+                  [36m>[39m
+                    [0mcancelled[0m
+                  [36m</option>[39m
+                  [36m<option[39m
+                    [33mvalue[39m=[32m"COMPLETED"[39m
+                  [36m>[39m
+                    [0mcompleted[0m
+                  [36m</option>[39m
+                [36m</select>[39m
+              [36m</label>[39m
+              [36m<label>[39m
+                [0mStarts on or after[0m
+                [36m<input[39m
+                  [33mname[39m=[32m"starts_after"[39m
+                  [33mtype[39m=[32m"datetime-local"[39m
+                  [33mvalue[39m=[32m""[39m
+                [36m/>[39m
+              [36m</label>[39m
+              [36m<label>[39m
+                [0mStarts before[0m
+                [36m<input[39m
+                  [33mname[39m=[32m"starts_before"[39m
+                  [33mtype[39m=[32m"datetime-local"[39m
+                  [33mvalue[39m=[32m""[39m
+                [36m/>[39m
+              [36m</label>[39m
+              [36m<p[39m
+                [33mclass[39m=[32m"party-hint"[39m
+              [36m>[39m
+                [0mDates use your device’s local time. The end of the filter range is exclusive.[0m
+              [36m</p>[39m
+              [36m<label[39m
+                [33mclass[39m=[32m"party-checkbox"[39m
+              [36m>[39m
+                [36m<input[39m
+                  [33mname[39m=[32m"has_space"[39m
+                  [33mtype[39m=[32m"checkbox"[39m
+                [36m/>[39m
+                [0mOnly parties with space[0m
+              [36m</label>[39m
+              [36m<button[39m
+                [33mtype[39m=[32m"submit"[39m
+              [36m>[39m
+                [0mShow parties[0m
+              [36m</button>[39m
+            [36m</form>[39m
+          [36m</details>[39m
+          [36m<button[39m
+            [33maria-label[39m=[32m"Refresh parties"[39m
+            [33mtype[39m=[32m"button"[39m
+          [36m>[39m
+            [0mRefresh[0m
+          [36m</button>[39m
+        [36m</div>[39m
+        [36m<p[39m
+          [33mclass[39m=[32m"party-sr"[39m
+        [36m>[39m
+          [0mJOIN opens party details. The host approves membership; a virtual position does not confirm arrival. Times are Korea Standard Time.[0m
+        [36m</p>[39m
+      [36m</section>[39m
+      [36m<footer[39m
+        [33mclass[39m=[32m"meet-create"[39m
+      [36m>[39m
+        [36m<button[39m
+          [33maria-describedby[39m=[32m"meet-create-unavailable"[39m
+          [33mclass[39m=[32m"meet-create__action"[39m
+          [33mdisabled[39m=[32m""[39m
+          [33mtype[39m=[32m"button"[39m
+        [36m>[39m
+          [36m<svg[39m
+            [33maria-hidden[39m=[32m"true"[39m
+            [33mfill[39m=[32m"currentColor"[39m
+            [33mfocusable[39m=[32m"false"[39m
+            [33mviewBox[39m=[32m"0 0 16 16"[39m
+          [36m>[39m
+            [36m<path[39m
+              [33md[39m=[32m"M7 1h2v6h6v2H9v6H7V9H1V7h6z"[39m
+            [36m/>[39m
+          [36m</svg>[39m
+          [0mCreate party[0m
+        [36m</button>[39m
+        [36m<span[39m
+          [33mclass[39m=[32m"meet-create__unavailable"[39m
+          [33mid[39m=[32m"meet-create-unavailable"[39m
+        [36m>[39m
+          [0mParty creation is currently unavailable.[0m
+        [36m</span>[39m
+      [36m</footer>[39m
+    [36m</div>[39m
+  [36m</div>[39m
+[36m</body>[39m
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div>[39m
+    [36m<div[39m
+      [33mclass[39m=[32m"party-view party-browse"[39m
+    [36m>[39m
+      [36m<nav[39m
+        [33maria-label[39m=[32m"Meet views"[39m
+        [33mclass[39m=[32m"party-tabs"[39m
+      [36m>[39m
+        [36m<button[39m
+          [33maria-pressed[39m=[32m"true"[39m
+          [33mtype[39m=[32m"button"[39m
+        [36m>[39m
+          [0mParties[0m
+        [36m</button>[39m
+        [36m<a[39m
+          [33mdata-discover[39m=[32m"true"[39m
+          [33mhref[39m=[32m"/meet/people"[39m
+          [33mid[39m=[32m"party-people"[39m
+        [36m>[39m
+          [0mPeople[0m
+        [36m</a>[39m
+        [36m<button[39m
+          [33maria-pressed[39m=[32m"false"[39m
+          [33mtype[39m=[32m"button"[39m
+        [36m>[39m
+          [0mMY PLAN[0m
+        [36m</button>[39m
+      [36m</nav>[39m
+      [36m<section[39m
+        [33maria-label[39m=[32m"Party discovery"[39m
+        [33mclass[39m=[32m"meet-discovery"[39m
+      [36m>[39m
+        [36m<h2[39m
+          [33mclass[39m=[32m"party-sr"[39m
+        [36m>[39m
+          [0mFind your company[0m
+        [36m</h2>[39m
+        [36m<div[39m
+          [33mrole[39m=[32m"alert"[39m
+        [36m>[39m
+          [36m<p>[39m
+            [0mTemporarily unavailable. Try reading again later.[0m
+          [36m</p>[39m
+          [36m<button[39m
+            [33mtype[39m=[32m"button"[39m
+          [36m>[39m
+            [0mRead [0m
+            [0mparties[0m
+            [0m again[0m
+          [36m</button>[39m
+        [36m</div>[39m
+        [36m<div[39m
+          [33mclass[39m=[32m"meet-tools"[39m
+        [36m>[39m
+          [36m<details[39m
+            [33mclass[39m=[32m"party-filters"[39m
+          [36m>[39m
+            [36m<summary>[39m
+              [0mFilter parties[0m
+            [36m</summary>[39m
+            [36m<form>[39m
+              [36m<label>[39m
+                [0mTicket section[0m
+                [36m<input[39m
+                  [33mmaxlength[39m=[32m"120"[39m
+                  [33mname[39m=[32m"ticket_section"[39m
+                  [33mplaceholder[39m=[32m"Any section"[39m
+                  [33mvalue[39m=[32m""[39m
+                [36m/>[39m
+              [36m</label>[39m
+              [36m<label>[39m
+                [0mParty state[0m
+                [36m<select[39m
+                  [33mname[39m=[32m"state"[39m
+                [36m>[39m
+                  [36m<option[39m
+                    [33mselected[39m=[32m""[39m
+                    [33mvalue[39m=[32m""[39m
+                  [36m>[39m
+                    [0mAll states[0m
+                  [36m</option>[39m
+                  [36m<option[39m
+                    [33mvalue[39m=[32m"OPEN"[39m
+                  [36m>[39m
+                    [0mopen[0m
+                  [36m</option>[39m
+                  [36m<option[39m
+                    [33mvalue[39m=[32m"CLOSED"[39m
+                  [36m>[39m
+                    [0mclosed[0m
+                  [36m</option>[39m
+                  [36m<option[39m
+                    [33mvalue[39m=[32m"CANCELLED"[39m
+                  [36m>[39m
+                    [0mcancelled[0m
+                  [36m</option>[39m
+                  [36m<option[39m
+                    [33mvalue[39m=[32m"COMPLETED"[39m
+                  [36m>[39m
+                    [0mcompleted[0m
+                  [36m</option>[39m
+                [36m</select>[39m
+              [36m</label>[39m
+              [36m<label>[39m
+                [0mStarts on or after[0m
+                [36m<input[39m
+                  [33mname[39m=[32m"starts_after"[39m
+                  [33mtype[39m=[32m"datetime-local"[39m
+                  [33mvalue[39m=[32m""[39m
+                [36m/>[39m
+              [36m</label>[39m
+              [36m<label>[39m
+                [0mStarts before[0m
+                [36m<input[39m
+                  [33mname[39m=[32m"starts_before"[39m
+                  [33mtype[39m=[32m"datetime-local"[39m
+                  [33mvalue[39m=[32m""[39m
+                [36m/>[39m
+              [36m</label>[39m
+              [36m<p[39m
+                [33mclass[39m=[32m"party-hint"[39m
+              [36m>[39m
+                [0mDates use your device’s local time. The end of the filter range is exclusive.[0m
+              [36m</p>[39m
+              [36m<label[39m
+                [33mclass[39m=[32m"party-checkbox"[39m
+              [36m>[39m
+                [36m<input[39m
+                  [33mname[39m=[32m"has_space"[39m
+                  [33mtype[39m=[32m"checkbox"[39m
+                [36m/>[39m
+                [0mOnly parties with space[0m
+              [36m</label>[39m
+              [36m<button[39m
+                [33mtype[39m=[32m"submit"[39m
+              [36m>[39m
+                [0mShow parties[0m
+              [36m</button>[39m
+            [36m</form>[39m
+          [36m</details>[39m
+          [36m<button[39m
+            [33maria-label[39m=[32m"Refresh parties"[39m
+            [33mtype[39m=[32m"button"[39m
+          [36m>[39m
+            [0mRefresh[0m
+          [36m</button>[39m
+        [36m</div>[39m
+        [36m<p[39m
+          [33mclass[39m=[32m"party-sr"[39m
+        [36m>[39m
+          [0mJOIN opens party details. The host approves membership; a virtual position does not confirm arrival. Times are Korea Standard Time.[0m
+        [36m</p>[39m
+      [36m</section>[39m
+      [36m<footer[39m
+        [33mclass[39m=[32m"meet-create"[39m
+      [36m>[39m
+        [36m<button[39m
+          [33maria-describedby[39m=[32m"meet-create-unavailable"[39m
+          [33mclass[39m=[32m"meet-create__action"[39m
+          [33mdisabled[39m=[32m""[39m
+          [33mtype[39m=[32m"button"[39m
+        [36m>[39m
+          [36m<svg[39m
+            [33maria-hidden[39m=[32m"true"[39m
+            [33mfill[39m=[32m"currentColor"[39m
+            [33mfocusable[39m=[32m"false"[39m
+            [33mviewBox[39m=[32m"0 0 16 16"[39m
+          [36m>[39m
+            [36m<path[39m
+              [33md[39m=[32m"M7 1h2v6h6v2H9v6H7V9H1V7h6z"[39m
+            [36m/>[39m
+          [36m</svg>[39m
+          [0mCreate party[0m
+        [36m</button>[39m
+        [36m<span[39m
+          [33mclass[39m=[32m"meet-create__unavailable"[39m
+          [33mid[39m=[32m"meet-create-unavailable"[39m
+        [36m>[39m
+          [0mParty creation is currently unavailable.[0m
+        [36m</span>[39m
+      [36m</footer>[39m
+    [36m</div>[39m
+  [36m</div>[39m
+[36m</body>[39m
+ ❯ waitForWrapper ../../../mcr/frontend/node_modules/.pnpm/@testing-library+dom@10.4.1/node_modules/@testing-library/dom/dist/wait-for.js:163:27
+ ❯ ../../../mcr/frontend/node_modules/.pnpm/@testing-library+dom@10.4.1/node_modules/@testing-library/dom/dist/query-helpers.js:86:33
+ ❯ src/features/party-discovery/__tests__/ui.test.tsx:29:120
+
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[8/12]⎯
+
+ FAIL  src/features/party-discovery/__tests__/ui.test.tsx > FE21 accessible feature views > renders only pending application cancellation and explains approved membership boundary
+TestingLibraryElementError: Unable to find role="button" and name "Cancel application"
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div>[39m
+    [36m<div[39m
+      [33mclass[39m=[32m"party-view party-browse"[39m
+    [36m>[39m
+      [36m<nav[39m
+        [33maria-label[39m=[32m"Meet views"[39m
+        [33mclass[39m=[32m"party-tabs"[39m
+      [36m>[39m
+        [36m<button[39m
+          [33maria-pressed[39m=[32m"false"[39m
+          [33mtype[39m=[32m"button"[39m
+        [36m>[39m
+          [0mParties[0m
+        [36m</button>[39m
+        [36m<a[39m
+          [33mdata-discover[39m=[32m"true"[39m
+          [33mhref[39m=[32m"/meet/people"[39m
+          [33mid[39m=[32m"party-people"[39m
+        [36m>[39m
+          [0mPeople[0m
+        [36m</a>[39m
+        [36m<button[39m
+          [33maria-pressed[39m=[32m"true"[39m
+          [33mtype[39m=[32m"button"[39m
+        [36m>[39m
+          [0mMY PLAN[0m
+        [36m</button>[39m
+      [36m</nav>[39m
+      [36m<section[39m
+        [33maria-label[39m=[32m"MY PLAN"[39m
+      [36m>[39m
+        [36m<div[39m
+          [33mclass[39m=[32m"party-heading"[39m
+        [36m>[39m
+          [36m<h2>[39m
+            [0mMY PLAN[0m
+          [36m</h2>[39m
+          [36m<button[39m
+            [33mtype[39m=[32m"button"[39m
+          [36m>[39m
+            [0mRefresh MY PLAN[0m
+          [36m</button>[39m
+        [36m</div>[39m
+        [36m<p>[39m
+          [0mOwned parties, memberships and applications are paged separately.[0m
+        [36m</p>[39m
+        [36m<div[39m
+          [33mrole[39m=[32m"alert"[39m
+        [36m>[39m
+          [36m<p>[39m
+            [0mTemporarily unavailable. Try reading again later.[0m
+          [36m</p>[39m
+          [36m<button[39m
+            [33mtype[39m=[32m"button"[39m
+          [36m>[39m
+            [0mRead [0m
+            [0mMY PLAN[0m
+            [0m again[0m
+          [36m</button>[39m
+        [36m</div>[39m
+      [36m</section>[39m
+      [36m<footer[39m
+        [33mclass[39m=[32m"meet-create"[39m
+      [36m>[39m
+        [36m<button[39m
+          [33maria-describedby[39m=[32m"meet-create-unavailable"[39m
+          [33mclass[39m=[32m"meet-create__action"[39m
+          [33mdisabled[39m=[32m""[39m
+          [33mtype[39m=[32m"button"[39m
+        [36m>[39m
+          [36m<svg[39m
+            [33maria-hidden[39m=[32m"true"[39m
+            [33mfill[39m=[32m"currentColor"[39m
+            [33mfocusable[39m=[32m"false"[39m
+            [33mviewBox[39m=[32m"0 0 16 16"[39m
+          [36m>[39m
+            [36m<path[39m
+              [33md[39m=[32m"M7 1h2v6h6v2H9v6H7V9H1V7h6z"[39m
+            [36m/>[39m
+          [36m</svg>[39m
+          [0mCreate party[0m
+        [36m</button>[39m
+        [36m<span[39m
+          [33mclass[39m=[32m"meet-create__unavailable"[39m
+          [33mid[39m=[32m"meet-create-unavailable"[39m
+        [36m>[39m
+          [0mParty creation is currently unavailable.[0m
+        [36m</span>[39m
+      [36m</footer>[39m
+    [36m</div>[39m
+  [36m</div>[39m
+[36m</body>[39m
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div>[39m
+    [36m<div[39m
+      [33mclass[39m=[32m"party-view party-browse"[39m
+    [36m>[39m
+      [36m<nav[39m
+        [33maria-label[39m=[32m"Meet views"[39m
+        [33mclass[39m=[32m"party-tabs"[39m
+      [36m>[39m
+        [36m<button[39m
+          [33maria-pressed[39m=[32m"false"[39m
+          [33mtype[39m=[32m"button"[39m
+        [36m>[39m
+          [0mParties[0m
+        [36m</button>[39m
+        [36m<a[39m
+          [33mdata-discover[39m=[32m"true"[39m
+          [33mhref[39m=[32m"/meet/people"[39m
+          [33mid[39m=[32m"party-people"[39m
+        [36m>[39m
+          [0mPeople[0m
+        [36m</a>[39m
+        [36m<button[39m
+          [33maria-pressed[39m=[32m"true"[39m
+          [33mtype[39m=[32m"button"[39m
+        [36m>[39m
+          [0mMY PLAN[0m
+        [36m</button>[39m
+      [36m</nav>[39m
+      [36m<section[39m
+        [33maria-label[39m=[32m"MY PLAN"[39m
+      [36m>[39m
+        [36m<div[39m
+          [33mclass[39m=[32m"party-heading"[39m
+        [36m>[39m
+          [36m<h2>[39m
+            [0mMY PLAN[0m
+          [36m</h2>[39m
+          [36m<button[39m
+            [33mtype[39m=[32m"button"[39m
+          [36m>[39m
+            [0mRefresh MY PLAN[0m
+          [36m</button>[39m
+        [36m</div>[39m
+        [36m<p>[39m
+          [0mOwned parties, memberships and applications are paged separately.[0m
+        [36m</p>[39m
+        [36m<div[39m
+          [33mrole[39m=[32m"alert"[39m
+        [36m>[39m
+          [36m<p>[39m
+            [0mTemporarily unavailable. Try reading again later.[0m
+          [36m</p>[39m
+          [36m<button[39m
+            [33mtype[39m=[32m"button"[39m
+          [36m>[39m
+            [0mRead [0m
+            [0mMY PLAN[0m
+            [0m again[0m
+          [36m</button>[39m
+        [36m</div>[39m
+      [36m</section>[39m
+      [36m<footer[39m
+        [33mclass[39m=[32m"meet-create"[39m
+      [36m>[39m
+        [36m<button[39m
+          [33maria-describedby[39m=[32m"meet-create-unavailable"[39m
+          [33mclass[39m=[32m"meet-create__action"[39m
+          [33mdisabled[39m=[32m""[39m
+          [33mtype[39m=[32m"button"[39m
+        [36m>[39m
+          [36m<svg[39m
+            [33maria-hidden[39m=[32m"true"[39m
+            [33mfill[39m=[32m"currentColor"[39m
+            [33mfocusable[39m=[32m"false"[39m
+            [33mviewBox[39m=[32m"0 0 16 16"[39m
+          [36m>[39m
+            [36m<path[39m
+              [33md[39m=[32m"M7 1h2v6h6v2H9v6H7V9H1V7h6z"[39m
+            [36m/>[39m
+          [36m</svg>[39m
+          [0mCreate party[0m
+        [36m</button>[39m
+        [36m<span[39m
+          [33mclass[39m=[32m"meet-create__unavailable"[39m
+          [33mid[39m=[32m"meet-create-unavailable"[39m
+        [36m>[39m
+          [0mParty creation is currently unavailable.[0m
+        [36m</span>[39m
+      [36m</footer>[39m
+    [36m</div>[39m
+  [36m</div>[39m
+[36m</body>[39m
+ ❯ waitForWrapper ../../../mcr/frontend/node_modules/.pnpm/@testing-library+dom@10.4.1/node_modules/@testing-library/dom/dist/wait-for.js:163:27
+ ❯ ../../../mcr/frontend/node_modules/.pnpm/@testing-library+dom@10.4.1/node_modules/@testing-library/dom/dist/query-helpers.js:86:33
+ ❯ src/features/party-discovery/__tests__/ui.test.tsx:38:18
+
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[9/12]⎯
+
+
+ Test Files  6 failed (6)
+      Tests  8 failed | 1 passed (9)
+   Start at  05:39:23
+   Duration  10.89s (transform 414ms, setup 0ms, import 821ms, tests 8.12s, environment 1.50s)
+

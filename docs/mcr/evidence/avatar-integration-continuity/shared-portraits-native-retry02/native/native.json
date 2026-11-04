@@ -1,0 +1,177 @@
+{
+  "result": "FAIL",
+  "qualification": "ACTUAL_APP_ROUTER_PRODUCTION_PORTS_TEST_CLOCK_CONTROLLED_HTTP_C05_NOT_MAIN_NOT_LIVE",
+  "viewport": {
+    "width": 390,
+    "height": 844
+  },
+  "errors": [],
+  "screenshots": [
+    "feed.png",
+    "thread.png",
+    "gift-list.png",
+    "gift-detail.png"
+  ],
+  "expected": {
+    "preset": 2,
+    "digest": "04ad48d25587aa0cfe7fd3c1ab4444493914d5fadea1372d18ce24567b9493c4",
+    "provenance": "avatar-integration-continuity/native-retry05/native/native.json expectedDraft",
+    "manifest": "sha256:7f2891c81ffa1d5850107118898a7ef9377b222ab8639b3f2c9daf7908cf9018"
+  },
+  "portraits": {
+    "feed": {
+      "caller": "ACTUAL_MAIN",
+      "digests": [
+        "04ad48d25587aa0cfe7fd3c1ab4444493914d5fadea1372d18ce24567b9493c4"
+      ],
+      "worldCanvases": 1,
+      "activeSockets": 1,
+      "socketPeak": 1
+    },
+    "thread": {
+      "caller": "ACTUAL_MAIN",
+      "digests": [
+        "04ad48d25587aa0cfe7fd3c1ab4444493914d5fadea1372d18ce24567b9493c4"
+      ],
+      "worldCanvases": 1,
+      "activeSockets": 1,
+      "socketPeak": 1
+    },
+    "gift-list": {
+      "caller": "ACTUAL_APP_ROUTER_PRODUCTION_PORTS_TEST_CLOCK",
+      "digests": [
+        "04ad48d25587aa0cfe7fd3c1ab4444493914d5fadea1372d18ce24567b9493c4",
+        "04ad48d25587aa0cfe7fd3c1ab4444493914d5fadea1372d18ce24567b9493c4",
+        "04ad48d25587aa0cfe7fd3c1ab4444493914d5fadea1372d18ce24567b9493c4"
+      ],
+      "worldCanvases": 1,
+      "activeSockets": 1,
+      "socketPeak": 1
+    },
+    "gift-detail": {
+      "caller": "ACTUAL_APP_ROUTER_PRODUCTION_PORTS_TEST_CLOCK",
+      "digests": [
+        "04ad48d25587aa0cfe7fd3c1ab4444493914d5fadea1372d18ce24567b9493c4"
+      ],
+      "worldCanvases": 1,
+      "activeSockets": 1,
+      "socketPeak": 1
+    }
+  },
+  "actualMain": {
+    "surfaces": [
+      "feed",
+      "thread"
+    ],
+    "state": {
+      "sockets": 1,
+      "active": 1,
+      "peak": 1,
+      "canvases": 1,
+      "requests": [
+        {
+          "path": "/api/auth/capabilities",
+          "method": "GET"
+        },
+        {
+          "path": "/api/auth/login",
+          "method": "POST"
+        },
+        {
+          "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/bootstrap",
+          "method": "GET"
+        },
+        {
+          "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/bootstrap",
+          "method": "GET"
+        },
+        {
+          "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/rooms",
+          "method": "GET"
+        },
+        {
+          "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/places",
+          "method": "GET"
+        },
+        {
+          "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/world-tickets",
+          "method": "POST"
+        },
+        {
+          "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/intros",
+          "method": "GET"
+        },
+        {
+          "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/me/intro",
+          "method": "GET"
+        },
+        {
+          "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/me/age-status",
+          "method": "GET"
+        },
+        {
+          "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/me/notifications",
+          "method": "GET"
+        },
+        {
+          "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/me/social-handles",
+          "method": "GET"
+        },
+        {
+          "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/feed",
+          "method": "GET"
+        },
+        {
+          "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/notices",
+          "method": "GET"
+        },
+        {
+          "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/posts/00000000-0000-4000-8000-00000000003c",
+          "method": "GET"
+        }
+      ],
+      "snapshots": 1,
+      "documentId": "43530839-87fd-4ff4-9b50-de334a1d7ae3",
+      "inputs": [
+        {
+          "seq": 1,
+          "axisX": 0,
+          "axisY": 0
+        }
+      ],
+      "serverUpdates": [
+        {
+          "sequence": 1,
+          "ackInputSeq": 1,
+          "userIds": [
+            "00000000-0000-4000-8000-000000000101"
+          ]
+        }
+      ],
+      "avatar": {
+        "revision": 7,
+        "config": {
+          "contract_version": "2.0.0",
+          "kind": "avatar_config",
+          "manifest_id": "mcr_selected_motion_reviewed_20261104",
+          "manifest_version": 2,
+          "representation": "motion_preset",
+          "preset_id": "motion_v2_photo01_front_01"
+        }
+      },
+      "blobURLs": 6,
+      "manifestPin": {
+        "manifest_id": "mcr_selected_motion_reviewed_20261104",
+        "manifest_version": 2,
+        "content_hash": "sha256:7f2891c81ffa1d5850107118898a7ef9377b222ab8639b3f2c9daf7908cf9018"
+      },
+      "qualification": "SYNTHETIC_REVIEWED_DEFAULT_APP_NOT_LIVE"
+    }
+  },
+  "failure": {
+    "stage": "party",
+    "message": "TimeoutError: locator.click: Timeout 10000ms exceeded.\nCall log:\n\u001b[2m  - waiting for getByRole('navigation', { name: 'Main navigation' }).getByRole('link', { name: 'Meet', exact: true })\u001b[22m\n",
+    "stack": "locator.click: Timeout 10000ms exceeded.\nCall log:\n\u001b[2m  - waiting for getByRole('navigation', { name: 'Main navigation' }).getByRole('link', { name: 'Meet', exact: true })\u001b[22m\n\n    at /Users/lhs/Desktop/mcr-worktrees/art-runtime/frontend/src/features/avatar/__tests__/integration-continuity/shared-portraits/native.mjs:103:62"
+  },
+  "resourcesClosed": true
+}

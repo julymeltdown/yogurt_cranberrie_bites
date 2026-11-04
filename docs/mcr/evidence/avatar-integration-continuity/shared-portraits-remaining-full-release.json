@@ -1,0 +1,69 @@
+{
+  "offer": "AVATAR-SHARED-PORTRAITS-390-REMAINING-20261104T2115Z",
+  "qualifiedSource": "0ee704512c6afe388fd5db2afa4b7cbff2b670a8",
+  "actualFull": "2026-11-04T20:57:29.414951Z",
+  "workDeadline": "2026-11-04T21:03:57.595534+00:00",
+  "fullDeadline": "2026-11-04T21:04:57.595534+00:00",
+  "status": "PASS",
+  "command": {
+    "label": "native",
+    "argv": [
+      "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node",
+      "src/features/avatar/__tests__/integration-continuity/shared-portraits/remaining.mjs"
+    ],
+    "pid": 18100,
+    "exit": 0
+  },
+  "report": "shared-portraits-remaining-round01/native/native.json",
+  "reportSHA256": "cbb9ce0c1154777adde3cd9ba1ff1326da77a3e5a9f80efee8c3cb261e8eaa21",
+  "qualification": "ACTUAL_APP_ROUTER_PRODUCTION_PORTS_TEST_CLOCK_CONTROLLED_HTTP_C05_NOT_MAIN_NOT_LIVE",
+  "prefixNotReplayed": true,
+  "allResourcesZero": true,
+  "allGuardsNoBreach": true,
+  "aliveOwnedPids": [],
+  "privateTempAbsent": true,
+  "dependencyLinkAbsent": true,
+  "peaks": {
+    "processes": 12,
+    "rss": 2624126976,
+    "temporary": 30299425,
+    "durable": 2619955,
+    "new": 36748076,
+    "whole": 443106385
+  },
+  "minimumFree": 17520988160,
+  "caps": {
+    "id": "AVATAR-SHARED-PORTRAITS-390-REMAINING-20261104T2115Z",
+    "accepted": "2026-11-04T20:56:57.595534+00:00",
+    "deadline": "2026-11-04T21:04:57.595534+00:00",
+    "workDeadline": "2026-11-04T21:03:57.595534+00:00",
+    "processes": 48,
+    "rssBytes": 4294967296,
+    "newBytes": 83886080,
+    "temporaryBytes": 50331648,
+    "durableBytes": 33554432,
+    "wholeBytes": 536870912,
+    "minimumCarryBytes": 406358309,
+    "admissionFreeBytes": 11811160064,
+    "afterAllFreeBytes": 9663676416,
+    "continuousFreeBytes": 8589934592,
+    "otherUpperBytes": 3310582100,
+    "actualFree": 17633509376,
+    "afterAll": 14239041196,
+    "source": "0ee704512c6afe388fd5db2afa4b7cbff2b670a8",
+    "nativeScript": "remaining.mjs",
+    "scope": "ONLY Party discovery/detail, public profile, fresh Gift denial; configured actual production ports/router TEST_ONLY clock; prefix not replayed; NOT_MAIN Community/NOT_LIVE",
+    "predecessorState": "20f owner latest commentary in wait snapshot cursor926ef34e-e5d1-497b-89d9-1a79b0566f23:334:39 source cases passed,both controllers passed,all resources released; exact FULL timestamp pending direct receipt",
+    "supervisorSHA256": "9611f0dc88b3dec2933df3f8fb8edeb0b11b20030e9ce6f1b7c21c1822059486",
+    "guardianSHA256": "393a18b4c12e535747b457274f0e221a95f7e450d9f47d2b7b47ce440870e413"
+  },
+  "allocatorPositionCorrection": "Same accepted ONE offer moved from C to D after completion; no second acceptance, clock extension or duplicate job. Accepted OTHER upper bound 3310582100B exceeds later corrected 3167332148B.",
+  "world20fLiteralReleaseReceivedLater": {
+    "offer": "QA05-MANAGED-ATTACHMENT-SOURCE-20261104T2110Z",
+    "actualAccept": "2026-11-04T20:55:15.157002Z",
+    "actualFull": "2026-11-04T20:55:16.561960Z",
+    "receiptSHA256": "324306793455b86bf9fb8b1ba33823fccbb753292f9d1b9ad3a7087172c02f11",
+    "source": "direct owner message; corroborates earlier resources-released snapshot, not an allocation grant"
+  },
+  "notification": "Literal FULL sent directly to allocator21d and Root153 before documentation."
+}

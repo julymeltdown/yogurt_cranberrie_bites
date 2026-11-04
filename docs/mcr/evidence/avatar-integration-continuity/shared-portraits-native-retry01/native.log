@@ -1,0 +1,18 @@
+node:internal/modules/run_main:107
+    triggerUncaughtException(
+    ^
+
+AssertionError [ERR_ASSERTION]: {"stage":"feed","message":"Error: expect(locator).toBeVisible() failed\n\nLocator: locator('.social-composition').locator('[data-motion-state=\"ready\"] canvas').first()\nExpected: visible\nTimeout: 5000ms\nError: element(s) not found\n\nCall log:\n  - Expect \"to.be.visible\" with timeout 5000ms\n  - waiting for locator('.social-composition').locator('[data-motion-state=\"ready\"] canvas').first()\n","stack":"Error: expect(locator).toBeVisible() failed\n\nLocator: locator('.social-composition').locator('[data-motion-state=\"ready\"] canvas').first()\nExpected: visible\nTimeout: 5000ms\nError: element(s) not found\n\nCall log:\n  - Expect \"to.be.visible\" with timeout 5000ms\n  - waiting for locator('.social-composition').locator('[data-motion-state=\"ready\"] canvas').first()\n\n    at captureRawStack (/Users/lhs/Desktop/mcr/frontend/node_modules/.pnpm/playwright-core@1.61.1/node_modules/playwright-core/lib/coreBundle.js:3172:17)\n    at callMatcherAsStep (/Users/lhs/Desktop/mcr/frontend/node_modules/.pnpm/playwright@1.61.1/node_modules/playwright/lib/matchers/expect.js:12877:57)\n    at Object.toBeVisible (/Users/lhs/Desktop/mcr/frontend/node_modules/.pnpm/playwright@1.61.1/node_modules/playwright/lib/matchers/expect.js:12867:23)\n    at inspect (/Users/lhs/Desktop/mcr-worktrees/art-runtime/frontend/src/features/avatar/__tests__/integration-continuity/shared-portraits/native.mjs:66:37)\n    at /Users/lhs/Desktop/mcr-worktrees/art-runtime/frontend/src/features/avatar/__tests__/integration-continuity/shared-portraits/native.mjs:81:9"}
+
+'FAIL' !== 'PASS'
+
+    at file:///Users/lhs/Desktop/mcr-worktrees/art-runtime/frontend/src/features/avatar/__tests__/integration-continuity/shared-portraits/native.mjs:125:8 {
+  generatedMessage: false,
+  code: 'ERR_ASSERTION',
+  actual: 'FAIL',
+  expected: 'PASS',
+  operator: 'strictEqual',
+  diff: 'simple'
+}
+
+Node.js v24.22.2

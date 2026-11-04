@@ -1,0 +1,157 @@
+{
+  "result": "PASS",
+  "qualification": "ACTUAL_APP_ROUTER_PRODUCTION_PORTS_TEST_CLOCK_CONTROLLED_HTTP_C05_NOT_MAIN_NOT_LIVE",
+  "viewport": {
+    "width": 390,
+    "height": 844
+  },
+  "errors": [],
+  "screenshots": [
+    "party-list.png",
+    "party-detail.png",
+    "public-profile.png",
+    "gift-denial.png"
+  ],
+  "retained": {
+    "report": "/Users/lhs/Desktop/mcr-worktrees/art-runtime/docs/mcr/evidence/avatar-integration-continuity/shared-portraits-native-retry03/native/native.json",
+    "sha256": "6c430d23d8947c61ed6cc0adcc9c589fd41c6208826bfa64fb64bbf0461d3c4d",
+    "parentResult": "FAIL",
+    "completedSurfaces": {
+      "feed": {
+        "caller": "ACTUAL_MAIN",
+        "digests": [
+          "04ad48d25587aa0cfe7fd3c1ab4444493914d5fadea1372d18ce24567b9493c4"
+        ],
+        "worldCanvases": 1,
+        "activeSockets": 1,
+        "socketPeak": 1
+      },
+      "thread": {
+        "caller": "ACTUAL_MAIN",
+        "digests": [
+          "04ad48d25587aa0cfe7fd3c1ab4444493914d5fadea1372d18ce24567b9493c4"
+        ],
+        "worldCanvases": 1,
+        "activeSockets": 1,
+        "socketPeak": 1
+      },
+      "gift-list": {
+        "caller": "ACTUAL_APP_ROUTER_PRODUCTION_PORTS_TEST_CLOCK",
+        "digests": [
+          "04ad48d25587aa0cfe7fd3c1ab4444493914d5fadea1372d18ce24567b9493c4",
+          "04ad48d25587aa0cfe7fd3c1ab4444493914d5fadea1372d18ce24567b9493c4",
+          "04ad48d25587aa0cfe7fd3c1ab4444493914d5fadea1372d18ce24567b9493c4"
+        ],
+        "worldCanvases": 1,
+        "activeSockets": 1,
+        "socketPeak": 1
+      },
+      "gift-detail": {
+        "caller": "ACTUAL_APP_ROUTER_PRODUCTION_PORTS_TEST_CLOCK",
+        "digests": [
+          "04ad48d25587aa0cfe7fd3c1ab4444493914d5fadea1372d18ce24567b9493c4"
+        ],
+        "worldCanvases": 1,
+        "activeSockets": 1,
+        "socketPeak": 1
+      }
+    },
+    "replayed": false
+  },
+  "executedThisRound": [
+    "party-list",
+    "party-detail",
+    "public-profile",
+    "gift-denial"
+  ],
+  "portraits": {
+    "party-list": {
+      "caller": "ACTUAL_APP_ROUTER_PRODUCTION_PORTS_TEST_CLOCK",
+      "digests": [
+        "04ad48d25587aa0cfe7fd3c1ab4444493914d5fadea1372d18ce24567b9493c4",
+        "04ad48d25587aa0cfe7fd3c1ab4444493914d5fadea1372d18ce24567b9493c4",
+        "04ad48d25587aa0cfe7fd3c1ab4444493914d5fadea1372d18ce24567b9493c4"
+      ],
+      "worldCanvases": 1,
+      "activeSockets": 1,
+      "socketPeak": 1
+    },
+    "party-detail": {
+      "caller": "ACTUAL_APP_ROUTER_PRODUCTION_PORTS_TEST_CLOCK",
+      "digests": [
+        "04ad48d25587aa0cfe7fd3c1ab4444493914d5fadea1372d18ce24567b9493c4",
+        "04ad48d25587aa0cfe7fd3c1ab4444493914d5fadea1372d18ce24567b9493c4",
+        "04ad48d25587aa0cfe7fd3c1ab4444493914d5fadea1372d18ce24567b9493c4"
+      ],
+      "worldCanvases": 1,
+      "activeSockets": 1,
+      "socketPeak": 1
+    },
+    "public-profile": {
+      "caller": "ACTUAL_APP_ROUTER_PRODUCTION_PORTS_TEST_CLOCK",
+      "digests": [
+        "04ad48d25587aa0cfe7fd3c1ab4444493914d5fadea1372d18ce24567b9493c4"
+      ],
+      "worldCanvases": 1,
+      "activeSockets": 1,
+      "socketPeak": 1
+    }
+  },
+  "control": {
+    "calls": [
+      {
+        "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/parties",
+        "method": "GET",
+        "status": 200
+      },
+      {
+        "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/me/parties",
+        "method": "GET",
+        "status": 200
+      },
+      {
+        "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/parties/00000000-0000-4000-8000-000000000010",
+        "method": "GET",
+        "status": 200
+      },
+      {
+        "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/people/00000000-0000-4000-8000-000000000002",
+        "method": "GET",
+        "status": 200
+      },
+      {
+        "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/giveaways",
+        "method": "GET",
+        "status": 200
+      },
+      {
+        "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/giveaways/00000000-0000-4000-8000-000000000062",
+        "method": "GET",
+        "status": 404
+      }
+    ],
+    "owner": {
+      "revision": 12,
+      "config": {
+        "contract_version": "2.0.0",
+        "kind": "avatar_config",
+        "manifest_id": "mcr_selected_motion_reviewed_20261104",
+        "manifest_version": 2,
+        "representation": "motion_preset",
+        "preset_id": "motion_v2_photo01_front_02"
+      }
+    },
+    "denied": true
+  },
+  "checks": {
+    "exactSelectedOwnerPixels": true,
+    "unavailableMemberPortraitsPreserved": true,
+    "deniedPortraitWithdrawn": true,
+    "oneWorldAndSocket": true,
+    "actualPanelControls": true,
+    "noMutations": true,
+    "priorPrefixNotReplayed": true,
+    "productionCommunityClockStillOpen": true
+  },
+  "resourcesClosed": true
+}

@@ -1,0 +1,15 @@
+{
+  "id": "AVATAR-SHARED-PORTRAITS-390-CALLER-20261104T2055Z",
+  "actualFull": "2026-11-04T20:50:40.608632Z",
+  "status": "PARTIAL_NATIVE_GIFT_FEED_PASS_PARTY_DENIAL_NOT_RUN",
+  "qualifiedSource": "5d760b93ede0695dbe4b01e740fe39914fb37135",
+  "allResourcesZero": true,
+  "allGuardsNoBreach": true,
+  "peakWhole": 406358309,
+  "chargedNew": 126755837,
+  "aggregateTemporary": 121235251,
+  "remainingOriginalNewBytes": 7461891,
+  "partialReport": "shared-portraits-native-retry03/native/native.json",
+  "reportSHA256": "6c430d23d8947c61ed6cc0adcc9c589fd41c6208826bfa64fb64bbf0461d3c4d",
+  "originalProductionCommunityClock": "OPEN with Root153"
+}

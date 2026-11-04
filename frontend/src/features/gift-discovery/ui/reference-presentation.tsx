@@ -11,6 +11,7 @@ export interface GiftImageRequest {
   readonly alt: string
 }
 export type RenderGiftImage = (request: GiftImageRequest) => ReactNode
+export type RenderGiftOwnerPortrait = (owner: Giveaway['owner']) => ReactNode
 
 const shortTime = new Intl.DateTimeFormat('en-GB', { timeZone: 'Asia/Seoul', hour: '2-digit', minute: '2-digit', hour12: false })
 const longTime = new Intl.DateTimeFormat('en-GB', { timeZone: 'Asia/Seoul', month: 'short', day: 'numeric', hour: '2-digit', minute: '2-digit', hour12: false })
@@ -20,9 +21,10 @@ export function canReviewReservation(gift: Giveaway, state: GiftDiscoveryState) 
     && (context.eventPhase === 'OPEN' || context.eventPhase === 'LIVE') && gift.owner.user_id !== context.scope.userId
     && gift.state === 'OPEN' && gift.available > 0 && state.now < Date.parse(gift.pickup_ends_at)
 }
-export function ReferenceGiftRow({ gift, state, place, renderGiftImage, own = false }: {
+export function ReferenceGiftRow({ gift, state, place, renderGiftImage, renderOwnerPortrait, own = false }: {
   readonly gift: Giveaway; readonly state: GiftDiscoveryState; readonly place?: string
   readonly renderGiftImage?: RenderGiftImage | undefined; readonly own?: boolean
+  readonly renderOwnerPortrait?: RenderGiftOwnerPortrait | undefined
 }) {
   const status = giveawayStatus(gift, state.now), published = gift.state !== 'DRAFT'
   const reservation = state.receiving.data?.items.find(row => row.giveaway_id === gift.giveaway_id
@@ -35,7 +37,10 @@ export function ReferenceGiftRow({ gift, state, place, renderGiftImage, own = fa
     </div>
     <div className="gift-reference-copy">
       <h3>{published ? <ShellLink id={`gift-${gift.giveaway_id}`} to={`/gifts/${gift.giveaway_id}`}>{gift.title}</ShellLink> : gift.title}</h3>
-      <p className="gift-reference-byline">{own ? 'Your giveaway' : <>by {gift.owner.display_name}</>}<span aria-hidden="true"> · </span><strong>{gift.available} left<span className="gift-reference-sr"> of {gift.quantity_total}</span></strong></p>
+      <div style={{ gridColumn: '2 / -1', gridRow: 2, display: 'flex', alignItems: 'center', gap: 8, minWidth: 0 }}>
+        <div style={{ flex: '0 0 64px' }} aria-label={`Shared by ${gift.owner.display_name}`}>{renderOwnerPortrait?.(gift.owner) ?? <span role="status" aria-label="Owner portrait unavailable">Character unavailable</span>}</div>
+        <p className="gift-reference-byline">{own ? 'Your giveaway' : <>by {gift.owner.display_name}</>}<span aria-hidden="true"> · </span><strong>{gift.available} left<span className="gift-reference-sr"> of {gift.quantity_total}</span></strong></p>
+      </div>
       <div className="gift-reference-location"><p className="gift-reference-place"><svg viewBox="0 0 16 20" aria-hidden="true"><path d="M8 19S1 10 1 7a7 7 0 0 1 14 0c0 3-7 12-7 12Z" fill="currentColor"/><circle cx="8" cy="7" r="2.4" fill="var(--mcr-paper, #f5eddc)"/></svg><span>{place ?? 'Event place reference'}</span></p>
       <p className="gift-reference-time"><time dateTime={gift.pickup_starts_at} aria-label={longTime.format(Date.parse(gift.pickup_starts_at)) + ' KST'} title={longTime.format(Date.parse(gift.pickup_starts_at))}>{shortTime.format(Date.parse(gift.pickup_starts_at))}</time><span aria-hidden="true">–</span><time dateTime={gift.pickup_ends_at} aria-label={longTime.format(Date.parse(gift.pickup_ends_at)) + ' KST'} title={longTime.format(Date.parse(gift.pickup_ends_at))}>{shortTime.format(Date.parse(gift.pickup_ends_at))}</time> KST</p></div>
       {!status.startsWith('Open') && <p className="gift-reference-status">{status}</p>}

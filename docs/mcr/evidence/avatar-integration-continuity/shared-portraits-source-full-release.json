@@ -1,0 +1,72 @@
+{
+  "offer": "AVATAR-SHARED-PORTRAITS-SOURCE-20261104T2040Z",
+  "actualFull": "2026-11-04T20:42:37.016866Z",
+  "qualifiedSource": "0ae792c8289f136d504b1d209e43a841a05df0d7",
+  "status": "PASS",
+  "commands": [
+    {
+      "label": "tests",
+      "argv": [
+        "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node",
+        "/Users/lhs/Desktop/mcr/frontend/node_modules/vitest/vitest.mjs",
+        "run",
+        "--configLoader",
+        "runner",
+        "--config",
+        "src/features/avatar/__tests__/integration-continuity/shared-portraits/vitest.config.mjs",
+        "--no-cache",
+        "--reporter",
+        "dot"
+      ],
+      "pid": 19814,
+      "exit": 0
+    },
+    {
+      "label": "lint",
+      "argv": [
+        "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node",
+        "/Users/lhs/Desktop/mcr/frontend/node_modules/oxlint/bin/oxlint",
+        "--deny-warnings",
+        "src/features/avatar/__tests__/integration-continuity/shared-portraits",
+        "src/app/social-composition/panels.tsx",
+        "src/app/CommunityFeatures.tsx",
+        "src/features/gift-discovery/ui/Gifts.tsx",
+        "src/features/gift-discovery/ui/reference-presentation.tsx",
+        "src/features/party-discovery/ui/PartyDiscovery.tsx"
+      ],
+      "pid": 20472,
+      "exit": 0
+    },
+    {
+      "label": "types",
+      "argv": [
+        "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node",
+        "--max-old-space-size=2048",
+        "src/features/avatar/__tests__/integration-continuity/shared-portraits/../typecheck.mjs"
+      ],
+      "pid": 20482,
+      "exit": 0
+    },
+    {
+      "label": "syntax",
+      "argv": [
+        "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node",
+        "--check",
+        "src/features/avatar/__tests__/integration-continuity/shared-portraits/native.mjs"
+      ],
+      "pid": 21628,
+      "exit": 0
+    }
+  ],
+  "tests": 39,
+  "newCases": 8,
+  "testFiles": 6,
+  "typeFiles": 1063,
+  "diagnostics": 0,
+  "lintWarnings": 0,
+  "allResourcesZero": true,
+  "allGuardsNoBreach": true,
+  "peakWhole": 265225584,
+  "chargedNew": 42800401,
+  "priorFailures": "all three source failures retained; aliases then current canonical admission HTTP adaptation; no product authority bypass"
+}

@@ -1,0 +1,22 @@
+{
+  "id": "AVATAR-SHARED-PORTRAITS-SOURCE-20261104T2040Z",
+  "accepted": "2026-11-04T20:38:49.182217+00:00",
+  "deadline": "2026-11-04T20:46:49.182217+00:00",
+  "workDeadline": "2026-11-04T20:45:49.182217+00:00",
+  "processes": 8,
+  "rssBytes": 2684354560,
+  "newBytes": 83886080,
+  "temporaryBytes": 50331648,
+  "durableBytes": 33554432,
+  "wholeBytes": 402653184,
+  "minimumCarryBytes": 230740437,
+  "admissionFreeBytes": 12884901888,
+  "afterAllFreeBytes": 9663676416,
+  "continuousFreeBytes": 8589934592,
+  "otherUpperBytes": 4294967296,
+  "actualFree": 17009246208,
+  "afterAll": 12630392832,
+  "source": "9a1a67e5b52dfb2aab04e36f6c79ff5f64f81cc5",
+  "supervisorSHA256": "cff88baf81637587b88c99d28baa9d67292e5c09f284882c8616fee5a1b88f90",
+  "guardianSHA256": "393a18b4c12e535747b457274f0e221a95f7e450d9f47d2b7b47ce440870e413"
+}

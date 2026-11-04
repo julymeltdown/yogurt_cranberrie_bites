@@ -1,0 +1,62 @@
+{
+  "viewport": {
+    "width": 390,
+    "height": 844
+  },
+  "captures": [
+    {
+      "path": "docs/mcr/evidence/avatar-integration-continuity/shared-portraits-native-retry03/native/feed.png",
+      "sha256": "9ac9bf7b430338805f7730507d2be5c603ab452e3a7bddf1c9be15acb152adf8",
+      "assessment": "Selected owner portrait readable; post and action controls retained.",
+      "inspection": "Developer visually inspected retained capture before continuation; no browser replay."
+    },
+    {
+      "path": "docs/mcr/evidence/avatar-integration-continuity/shared-portraits-native-retry03/native/thread.png",
+      "sha256": "223381ba050a0f1f81039d29fe407545c0f2fd999be88ede59e0fb441dfdd0ea",
+      "assessment": "Selected owner portrait readable; thread comments and controls retained.",
+      "inspection": "Developer visually inspected retained capture before continuation; no browser replay."
+    },
+    {
+      "path": "docs/mcr/evidence/avatar-integration-continuity/shared-portraits-native-retry03/native/gift-list.png",
+      "sha256": "a0bfdd7a36b588737d7caa6088fd1695aa1847b450a6ba2fa81bf412264cf8cd",
+      "assessment": "Three owner portraits beside bylines; No photo and inventory controls retained. Rows are taller with 64px portraits.",
+      "inspection": "Developer visually inspected retained capture before continuation; no browser replay."
+    },
+    {
+      "path": "docs/mcr/evidence/avatar-integration-continuity/shared-portraits-native-retry03/native/gift-detail.png",
+      "sha256": "c8653ec75847a847b172fefd5ba5bb0905d60345ced5bfd7431eb9fe994afe15",
+      "assessment": "Owner portrait visible; No photo, location and reservation information retained.",
+      "inspection": "Developer visually inspected retained capture before continuation; no browser replay."
+    },
+    {
+      "path": "docs/mcr/evidence/avatar-integration-continuity/shared-portraits-remaining-round01/native/party-list.png",
+      "sha256": "6e575505f2c5affa822f969c06bc9487a2e70210d03f4af2c9949b56fa18d170",
+      "assessment": "Three selected owner portraits visible beside parties; member portraits explicitly unavailable; Join controls remain readable.",
+      "inspection": "Developer visually inspected this retained capture after resource FULL; no browser replay."
+    },
+    {
+      "path": "docs/mcr/evidence/avatar-integration-continuity/shared-portraits-remaining-round01/native/party-detail.png",
+      "sha256": "73d4923812d73e01c4aa00125e5f6a8c89b75e0740c1c2c19299867cfd745f94",
+      "assessment": "Selected host portrait and hosted-by byline visible; members count, meeting time, place guidance and application section retained. Lower content continues below viewport.",
+      "inspection": "Developer visually inspected this retained capture after resource FULL; no browser replay."
+    },
+    {
+      "path": "docs/mcr/evidence/avatar-integration-continuity/shared-portraits-remaining-round01/native/public-profile.png",
+      "sha256": "bf7fe90124d3c537007c3cea9dc5dfc2e6d6559564a63fc623403b603035c9d9",
+      "assessment": "Selected portrait visible in profile frame; activity, parties, gifts and privacy copy remain readable.",
+      "inspection": "Developer visually inspected this retained capture after resource FULL; no browser replay."
+    },
+    {
+      "path": "docs/mcr/evidence/avatar-integration-continuity/shared-portraits-remaining-round01/native/gift-denial.png",
+      "sha256": "78d2e6769ecad06642aa1af255827f8426a8390ce6f9d3f185ea389728cf28a6",
+      "assessment": "Unavailable message and retry control visible; no owner portrait displayed.",
+      "inspection": "Developer visually inspected this retained capture after resource FULL; no browser replay."
+    }
+  ],
+  "limits": [
+    "Controlled HTTP/C05, not live backend/database or physical device.",
+    "Community callers use explicit TEST_ONLY clock; actual-main Community remains open.",
+    "No claim of exact ten-screen target acceptance or 360/430px qualification.",
+    "Native report checks horizontal overflow; screenshot inspection does not certify unseen lower content."
+  ]
+}

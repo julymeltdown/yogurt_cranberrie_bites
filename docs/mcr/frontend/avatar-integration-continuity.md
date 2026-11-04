@@ -1,10 +1,117 @@
 # FE12/FE13 avatar integration continuity
 
-Status: IN_PROGRESS, waiting for final publication. Developer implementation and
-source/native validation are delivered. Root published the source unit as
-`c3c60842a0900e1625633e293092509fe59d341f`; the native harness repairs and
-completed evidence are the remaining publication handoff.
-This is a new integration goal. Completed AR03 artwork and C06 remain preserved.
+Status: IN_PROGRESS for the original FE12/FE13 shared portrait remainder. The
+continuity source and native packet are published: source `c3c60842a0900e1625633e293092509fe59d341f`
+and final native delta `1adf8006ba6d050aecd2682ab4c0bec6e144ee75`, publisher-reported
+master `80de53f327c90db21955eb63d3b74aa41ec62514`. Completed AR03 artwork and C06 remain preserved.
+The same original persistent goal remains unfinished; this is not a reset or a new goal.
+
+## Shared owner portraits continuation
+
+Root153 stopped the exact caller/component hunks and granted this developer the
+reviewed Feed/Thread and public-profile rendering selection, Giveaway list/detail
+owner-portrait prop plumbing/rendering, and PartyDetail owner portrait. Community
+owner53d confirmed existing GiveawayPublic/PartyPublic owner projections include
+PublicProfile.avatar and accept reviewed motion configuration. No producer change
+is needed for those owner portraits. Party members have no avatar projection;
+their explicit unavailable state remains unchanged and applicants are not reused.
+
+The existing exclusive worktree now uses `codex/mcr-fe-avatar-shared-portraits`,
+based on exact canonical `80de53f327c90db21955eb63d3b74aa41ec62514`. The prior
+`codex/mcr-fe-FE12-FE13-avatar-continuity` branch and its frozen `5b87b5b11` packet
+remain preserved. No release-identity work was accepted or authored.
+
+All added portraits borrow the current provider's reviewed owner and use
+`ReviewedCharacterView`, including its isCurrent/authority.decodeConfig guard.
+Valid incumbent whole-character rendering remains available on its own admitted
+branch; malformed, foreign and stale reviewed configurations do not select a
+legacy or preset fallback. Gift photo props, media identity/scope, controllers,
+feature actions, Auth, World and all artwork are unchanged.
+
+New focused tests cover shared leases across Gift list/detail, protected-photo
+prop retention, privacy withdrawal, Party owner/application controls, four invalid
+configurations and stale-owner rejection. These tests mock Canvas; they do not
+certify native pixels. The new 390px native fixture separates two caller boundaries:
+actual `main.tsx` for Feed/Thread, then a new document using actual application
+router/production ports with an explicit TEST_ONLY Community clock for Gift/Party.
+It uses owner preset2, distinct from self preset1, and checks nonempty exact pixels,
+denial withdrawal and one World/socket per active shell. The default-main source at
+the pinned base does not supply `ports.communityClock`, so whole production
+Community acceptance remains open with Root153; this fixture cannot close that
+input gap or claim live services. No main, ports, Auth, time, provider or artwork
+source is changed. The configured caller is adapted from the retained default
+reviewed HTTP/C05 producer and the existing Community native clock-input pattern.
+The existing editor, Save/reload/movement/Cancel/conflict matrices are retained
+without replay. Fresh source allocation `AVATAR-SHARED-PORTRAITS-SOURCE-20261104T2040Z`
+qualified source `0ae792c8289f136d504b1d209e43a841a05df0d7`: all 39 tests in six
+files passed (eight new and 31 affected), scoped lint had zero warnings, the full
+1,063-file application typecheck had zero diagnostics, and native JS syntax
+passed; all four exits were zero. Three failed source attempts remain recorded:
+missing explicit retained test-library aliases, a CommonJS matcher entry, then
+old feature fixtures lacking mandatory Auth admission. An owned test adapter now
+supplies the existing canonical admission HTTP response through the real session
+client; feature handlers and their request-count assertions are unchanged.
+
+Actual source FULL was `2026-11-04T20:42:37.016866Z`, before its original deadline;
+all child/guard processes, temporary roots and dependency links were absent. All
+attempts' guards reported no breach. Peak RSS was 1,887,600,640 bytes, six ALL
+processes, WHOLE 265,225,584 and cumulative charged NEW 42,800,401. Earlier TMP
+peaks are explicitly charged against the original 80 MiB allowance, and the
+carry floor increases across retries. Subsequent native caller qualifications are
+recorded below. See `shared-portraits-source-full-release.json`
+and the retained `shared-portraits-source-*` evidence under the existing namespace.
+
+Native allocation `AVATAR-SHARED-PORTRAITS-390-CALLER-20261104T2055Z` was released
+at `2026-11-04T20:50:40.608632Z`, with all resources absent and no guard breach.
+Its four attempts are retained. The final report has completed exact nonempty
+preset2 pixel assertions for Feed/Thread through actual main and Gift list/detail
+through configured production ports/router with an explicit TEST_ONLY clock;
+each active shell retained one World canvas/socket. The overall report remains
+FAIL because the harness attempted shell navigation while a full mobile panel
+correctly hides it. That is not an overall native pass. The raw report is
+`shared-portraits-native-retry03/native/native.json`, SHA256
+`6c430d23d8947c61ed6cc0adcc9c589fd41c6208826bfa64fb64bbf0461d3c4d`.
+Earlier failures also preserve the retained producer's missing current separate
+C05 `policy.baseline` receipt. The owned producer now sends that controlled frame
+through the real transport; no client readiness or authority is injected.
+
+The fresh remaining allocation `AVATAR-SHARED-PORTRAITS-390-REMAINING-20261104T2115Z`
+qualified exact source `0ee704512c6afe388fd5db2afa4b7cbff2b670a8` with exit 0.
+Using the actual Reduce panel control, it passed Party discovery/detail, the changed
+public-profile renderer and denial of an unvisited Gift detail. The four completed
+prefix assertions were reused by the exact report hash without replay; their
+parent report remains FAIL. Owner preset2 pixels match the retained nonempty
+digest on every qualified portrait, distinct from self preset1. Member portraits
+remain unavailable, denial removes the ready portrait, and no mutations, page
+errors or horizontal overflow were observed. One World canvas/socket remained
+per active shell. Developer capture inspection is recorded separately; this does
+not certify the full ten-screen target or additional widths.
+
+Actual ACCEPT was `2026-11-04T20:56:57.595534Z`; actual FULL was
+`2026-11-04T20:57:29.414951Z`, before the original work/FULL deadlines.
+All owned processes, browser/Vite, temporary roots and dependency links were
+released; both guards reported no breach. Peaks were 12 ALL processes,
+2,624,126,976 bytes RSS, 443,106,385 WHOLE, 36,748,076 inclusive NEW,
+30,299,425 temporary and 2,619,955 durable. The original 406,358,309 carry
+floor was preserved. The allocator corrected this same ONE offer's position from
+C to D; no second acceptance, workload or extension occurred. Literal release
+was sent directly to allocator21d and Root153 before documentation.
+
+The final report is `shared-portraits-remaining-round01/native/native.json`,
+SHA256 `cbb9ce0c1154777adde3cd9ba1ff1326da77a3e5a9f80efee8c3cb261e8eaa21`.
+All five product blobs remain unchanged from source-qualified `0ae792c8289f`.
+Later harness additions were exercised through actual Vite/native execution;
+the earlier 1,063-file typecheck is not claimed to include those later modules.
+See `shared-portraits-handoff.json`, `shared-portraits-image-assessment.json` and
+`shared-portraits-remaining-full-release.json` for the immutable publishing packet.
+
+Shared caller custody is returned to Root153 for current publisher412e routing;
+no unused caller rights or clock/main/ports ownership is retained. Canonical
+publication is pending and does not gate Community53d's independently assigned
+measured production clock implementation and Root153's build/input identity join.
+Actual-default production Community acceptance remains OPEN. The original goal
+remains unfinished; the old BLOCKED resource metadata does not prevent authorized
+handoff or source work. No king/SL review or acknowledgment is required.
 
 ## Scope and behavior
 

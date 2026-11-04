@@ -9,7 +9,8 @@ import { People } from '../../features/people'
 import { PublicProfile } from '../../features/profile'
 import { ReviewedProfileAvatar } from '../../features/profile/Avatar'
 import { WholeCharacterView } from '../../entities/avatar/whole-character'
-import { useCharacterRuntime } from '../character-entry/provider'
+import { useCharacterRuntime, useReviewedCharacterOwner } from '../character-entry/provider'
+import { ReviewedCharacterView } from '../character-entry/ReviewedCharacterView'
 import { useLoadedProfileActivity } from '../character-entry/activity'
 import { IntroEditor } from '../../features/intro'
 import { AgeStatus } from '../../features/age-status'
@@ -36,7 +37,7 @@ function Unavailable() { return <p role="status">This section is unavailable for
 function CurrentPanel({ owner, path }: { readonly owner: SocialOwner; readonly path: string }) {
   const safety = useSafetyEntry()
   const route = socialRoute(path)
-  const runtime = useCharacterRuntime()
+  const runtime = useCharacterRuntime(), reviewed = useReviewedCharacterOwner()
   const activity = useLoadedProfileActivity(route?.kind === 'profile' ? route.id : '')
   const service: SocialService | null = route ? ['feed', 'compose', 'thread', 'edit', 'notice'].includes(route.kind) ? 'feed' : route.kind === 'profile' ? 'people' : route.kind === 'handles' ? 'requests' : route.kind as SocialService : null
   const thread = owner.thread.read(), editEntry = useRef<{ owner: SocialOwner; path: string } | null>(null)
@@ -50,7 +51,7 @@ function CurrentPanel({ owner, path }: { readonly owner: SocialOwner; readonly p
   }, [owner, path, thread.selectedId, thread.detail, thread.draft])
   if (!route || !service || !owner.available(service)) return <Unavailable />
   const media = (id: string, post: { event_id: string }) => <RootPostImage auth={owner.auth} scope={owner.scope} createPreview={owner.media?.createPreview} mediaId={id} eventId={post.event_id} alt="Post attachment" />
-  const renderAuthor: RenderPostAuthor | undefined = runtime ? author => author.avatar.config.contract_version === '1.1.0'
+  const renderAuthor: RenderPostAuthor | undefined = reviewed ? author => <ReviewedCharacterView owner={reviewed} config={author.avatar.config} label={`${author.display_name}'s avatar`} size={64} /> : runtime ? author => author.avatar.config.contract_version === '1.1.0'
     ? <WholeCharacterView runtime={runtime} config={author.avatar.config} label={`${author.display_name}'s avatar`} size={64} />
     : <span className="feed-initial" role="img" aria-label={`${author.display_name}: avatar unavailable`}>{Array.from(author.display_name.trim())[0]?.toLocaleUpperCase() ?? '?'}</span> : undefined
   switch (route.kind) {
@@ -64,7 +65,7 @@ function CurrentPanel({ owner, path }: { readonly owner: SocialOwner; readonly p
     case 'profile': return <PublicProfile controller={owner.people} userId={route.id}
       {...(owner.canShare(route.id) ? { sharing: (id: string) => { void owner.openSharing(id) } } : {})}
       {...(safety && route.id !== owner.scope.userId ? { blocking: (id: string) => { void safety.beginBlock(id, owner.scope) } } : {})} avatars={owner.avatars} activity={activity} activityPrivacy={owner.auth.privacy}
-      renderAvatar={runtime ? (avatar, label) => avatar.config.contract_version === '1.1.0'
+      renderAvatar={reviewed ? (avatar, label) => <ReviewedCharacterView owner={reviewed} config={avatar.config} label={label} size={64} /> : runtime ? (avatar, label) => avatar.config.contract_version === '1.1.0'
         ? <WholeCharacterView runtime={runtime} config={avatar.config} label={label} size={64} />
         : <ReviewedProfileAvatar config={avatar.config} label={label} options={owner.avatars} /> : undefined} />
     case 'intro': return <IntroEditor controller={owner.intro} />

@@ -1,0 +1,153 @@
+{
+  "status": "SOURCE_VALIDATED_NATIVE_PENDING",
+  "base": "80de53f327c90db21955eb63d3b74aa41ec62514",
+  "branch": "codex/mcr-fe-avatar-shared-portraits",
+  "goal": "same unfinished original FE12/FE13",
+  "sharedGrant": [
+    "frontend/src/app/social-composition/panels.tsx",
+    "frontend/src/app/CommunityFeatures.tsx",
+    "frontend/src/features/gift-discovery/ui/Gifts.tsx",
+    "frontend/src/features/gift-discovery/ui/reference-presentation.tsx",
+    "frontend/src/features/party-discovery/ui/PartyDiscovery.tsx"
+  ],
+  "readsetSHA256": {
+    "frontend/src/app/social-composition/panels.tsx": "30c465b213fed7e2ad0d0864f739577b83a3bb7b7b112ddb651573ef9dfcfa5f",
+    "frontend/src/app/CommunityFeatures.tsx": "98bb86741ca91c2c869254d792c7631c0d905c668256ba13716a070f09e07938",
+    "frontend/src/features/gift-discovery/ui/Gifts.tsx": "96b719227d5d62b32328ee2e95d9ac0aca8e03b000dd3a068a4af9d4a6f07924",
+    "frontend/src/features/gift-discovery/ui/reference-presentation.tsx": "ba5586a719b811cc6c7779cd28eb02d985376de86ea54e9ddbddeeaed55f832d",
+    "frontend/src/features/party-discovery/ui/PartyDiscovery.tsx": "861171ee98ae3c25c4441de60527dc1507cb8e1d8d6dc348aed1693b9fa7e381",
+    "frontend/src/features/avatar/__tests__/integration-continuity/shared-portraits/preview.html": "e60927b96f66bb66f473281ae8459a424ed56c1b0c17244cf70ed2c7c437b293",
+    "frontend/src/features/avatar/__tests__/integration-continuity/shared-portraits/vitest.config.mjs": "7bb0d04ee84d88cbe54a935905aebcccb26d0776ffd9b8d765f9f5aa6b359f1c",
+    "frontend/src/features/avatar/__tests__/integration-continuity/shared-portraits/native.mjs": "b65935b50171cfc0ad58acfa42f3c96d4c328131d640163f523dd90a11c3f413",
+    "frontend/src/features/avatar/__tests__/integration-continuity/shared-portraits/portraits.test.tsx": "0e206c524ce969d1242dae1fc07dcbd39bf5b80f850f0c15b515ec2df341c3aa",
+    "frontend/src/features/avatar/__tests__/integration-continuity/shared-portraits/preview.ts": "6968fac491d75c751b7c1d6eff420741c8e49f204b435dfdf5721c582f558be8",
+    "docs/mcr/evidence/avatar-integration-continuity/shared-portraits-qualify.py": "cff88baf81637587b88c99d28baa9d67292e5c09f284882c8616fee5a1b88f90",
+    "docs/mcr/evidence/avatar-integration-continuity/guardian.py": "393a18b4c12e535747b457274f0e221a95f7e450d9f47d2b7b47ce440870e413",
+    "frontend/pnpm-lock.yaml": "47ca44459819ad0e887d2f4f93394fdf3b1053b8f45edc9ceb0236981feee1f6",
+    "frontend/src/app/character-entry/ReviewedCharacterView.tsx": "fa9abbca03185e05ef309ebd7245c9576e32e681f76a625f9afdc9a8fbf46163",
+    "frontend/src/app/character-entry/provider.tsx": "9d3679fdea8b1b30c20fde46d43ccc8a2b37563cbe617034a553a9332397b620",
+    "frontend/src/app/character-entry/__tests__/reviewed-production/default-entry/preview.ts": "e1a6a4f23d14b9ed8a96fd7210f6f936c390d8665b998e113698d8469f9e5d0a",
+    "frontend/src/features/avatar/__tests__/integration-continuity/typecheck.mjs": "8f22e4c0a55f0a2ba0b7c04f488a9853cec5773d57cae477e4944de849cce648",
+    "frontend/src/features/avatar/__tests__/integration-continuity/shared-portraits/admission.setup.ts": "2dced3f17f15b1b1cce4541b1f1da7d125f6425fa4c5e5592df6ff67a1c5cda3"
+  },
+  "commandsScope": "8 new cases plus affected Gift/Party UI/reference/Social provider regressions; scoped lint; full nonincremental noemit; new native syntax",
+  "limitations": [
+    "Canvas mocked in source tests",
+    "Native controlled HTTP/C05, not live services or database",
+    "No member avatar projection, no synthesized roster",
+    "No completed editor matrix replay"
+  ],
+  "commands": [
+    [
+      "node",
+      "retained/node_modules/vitest/vitest.mjs",
+      "run",
+      "--configLoader",
+      "runner",
+      "--config",
+      "src/features/avatar/__tests__/integration-continuity/shared-portraits/vitest.config.mjs",
+      "--no-cache",
+      "--reporter",
+      "dot"
+    ],
+    [
+      "node",
+      "retained/node_modules/oxlint/bin/oxlint",
+      "--deny-warnings",
+      "src/features/avatar/__tests__/integration-continuity/shared-portraits",
+      "src/app/social-composition/panels.tsx",
+      "src/app/CommunityFeatures.tsx",
+      "src/features/gift-discovery/ui/Gifts.tsx",
+      "src/features/gift-discovery/ui/reference-presentation.tsx",
+      "src/features/party-discovery/ui/PartyDiscovery.tsx"
+    ],
+    [
+      "node",
+      "--max-old-space-size=2048",
+      "src/features/avatar/__tests__/integration-continuity/shared-portraits/../typecheck.mjs"
+    ],
+    [
+      "node",
+      "--check",
+      "src/features/avatar/__tests__/integration-continuity/shared-portraits/native.mjs"
+    ]
+  ],
+  "retainedFailures": [
+    "shared-portraits-source-round01: missing explicit retained test-library aliases; no tests executed",
+    "retry01: CJS matcher entry and pre-admission retained fixture failures",
+    "retry02: old protected feature handlers lacked canonical Auth admission; 6 pass,33 fail; supplied current canonical admission HTTP fixture in owned test setup, no Auth bypass"
+  ],
+  "qualifiedSource": "0ae792c8289f136d504b1d209e43a841a05df0d7",
+  "validation": {
+    "offer": "AVATAR-SHARED-PORTRAITS-SOURCE-20261104T2040Z",
+    "actualFull": "2026-11-04T20:42:37.016866Z",
+    "qualifiedSource": "0ae792c8289f136d504b1d209e43a841a05df0d7",
+    "status": "PASS",
+    "commands": [
+      {
+        "label": "tests",
+        "argv": [
+          "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node",
+          "/Users/lhs/Desktop/mcr/frontend/node_modules/vitest/vitest.mjs",
+          "run",
+          "--configLoader",
+          "runner",
+          "--config",
+          "src/features/avatar/__tests__/integration-continuity/shared-portraits/vitest.config.mjs",
+          "--no-cache",
+          "--reporter",
+          "dot"
+        ],
+        "pid": 19814,
+        "exit": 0
+      },
+      {
+        "label": "lint",
+        "argv": [
+          "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node",
+          "/Users/lhs/Desktop/mcr/frontend/node_modules/oxlint/bin/oxlint",
+          "--deny-warnings",
+          "src/features/avatar/__tests__/integration-continuity/shared-portraits",
+          "src/app/social-composition/panels.tsx",
+          "src/app/CommunityFeatures.tsx",
+          "src/features/gift-discovery/ui/Gifts.tsx",
+          "src/features/gift-discovery/ui/reference-presentation.tsx",
+          "src/features/party-discovery/ui/PartyDiscovery.tsx"
+        ],
+        "pid": 20472,
+        "exit": 0
+      },
+      {
+        "label": "types",
+        "argv": [
+          "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node",
+          "--max-old-space-size=2048",
+          "src/features/avatar/__tests__/integration-continuity/shared-portraits/../typecheck.mjs"
+        ],
+        "pid": 20482,
+        "exit": 0
+      },
+      {
+        "label": "syntax",
+        "argv": [
+          "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node",
+          "--check",
+          "src/features/avatar/__tests__/integration-continuity/shared-portraits/native.mjs"
+        ],
+        "pid": 21628,
+        "exit": 0
+      }
+    ],
+    "tests": 39,
+    "newCases": 8,
+    "testFiles": 6,
+    "typeFiles": 1063,
+    "diagnostics": 0,
+    "lintWarnings": 0,
+    "allResourcesZero": true,
+    "allGuardsNoBreach": true,
+    "peakWhole": 265225584,
+    "chargedNew": 42800401,
+    "priorFailures": "all three source failures retained; aliases then current canonical admission HTTP adaptation; no product authority bypass"
+  }
+}

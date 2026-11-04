@@ -4,7 +4,7 @@ import { Button, Tabs } from '../../../shared/ui'
 import type { Giveaway, GiftFilters } from '../model/contract'
 import { giveawayStatus, reservationEligibility, type GiftDiscoveryController, type GiftDiscoveryState, type GiftPage, type GiftResource } from '../model/controller'
 import { ConcertRow, ConcertState } from '../../../shared/ui/concert-window'
-import { canReviewReservation, ReferenceGiftRow, ReferencePickupRow, type RenderGiftImage } from './reference-presentation'
+import { canReviewReservation, ReferenceGiftRow, ReferencePickupRow, type RenderGiftImage, type RenderGiftOwnerPortrait } from './reference-presentation'
 export type { GiftImageRequest, RenderGiftImage } from './reference-presentation'
 import './gifts.css'
 import './reference-gifts.css'
@@ -96,15 +96,17 @@ export interface GiftDiscoveryProps {
   readonly controller: GiftDiscoveryController
   readonly places?: readonly GiftPlaceOption[]
   readonly renderGiftImage?: RenderGiftImage
+  readonly renderOwnerPortrait?: RenderGiftOwnerPortrait
 }
-export function GiftDiscovery({ controller, places = [], renderGiftImage }: GiftDiscoveryProps) {
+export function GiftDiscovery({ controller, places = [], renderGiftImage, renderOwnerPortrait }: GiftDiscoveryProps) {
   const state = useGifts(controller)
   return <section className="gifts-reference" aria-label="Giveaway discovery"><GiftAccess state={state}>
-    <GiftCollections key={JSON.stringify(state.context?.scope)} controller={controller} state={state} places={places} renderGiftImage={renderGiftImage} />
+    <GiftCollections key={JSON.stringify(state.context?.scope)} controller={controller} state={state} places={places} renderGiftImage={renderGiftImage} renderOwnerPortrait={renderOwnerPortrait} />
   </GiftAccess></section>
 }
-function GiftCollections({ controller, state, places, renderGiftImage }: {
+function GiftCollections({ controller, state, places, renderGiftImage, renderOwnerPortrait }: {
   controller: GiftDiscoveryController; state: GiftDiscoveryState; places: readonly GiftPlaceOption[]; renderGiftImage?: RenderGiftImage | undefined
+  renderOwnerPortrait?: RenderGiftOwnerPortrait | undefined
 }) {
   const [collection, setCollection] = useState('browse')
   useEffect(() => {
@@ -114,7 +116,7 @@ function GiftCollections({ controller, state, places, renderGiftImage }: {
   }, [collection, controller, state.context, state.giving.phase, state.receiving.phase])
   const giftRows = (rows: readonly Giveaway[], own = false) => <ul className="gift-reference-list">{rows.map(gift => <ReferenceGiftRow key={gift.giveaway_id} gift={gift} state={state}
     {...(places.find(place => place.id === gift.public_place_id) ? { place: places.find(place => place.id === gift.public_place_id)!.label } : {})}
-    renderGiftImage={renderGiftImage} own={own} />)}</ul>
+    renderGiftImage={renderGiftImage} renderOwnerPortrait={renderOwnerPortrait} own={own} />)}</ul>
   const browse = <>
     {state.context?.eventPhase === 'READ_ONLY' && <p className="gift-reference-note" role="status">Read-only event. New reservations are unavailable.</p>}
     <GiftResult resource={state.list} label="giveaways" retry={() => { void controller.retryList() }} now={state.now}>{data => data.items.length
@@ -138,15 +140,16 @@ function GiftCollections({ controller, state, places, renderGiftImage }: {
     <ShellLink id="gift-own" to="/gifts/mine">My gifts →</ShellLink></footer></>
 }
 
-export function GiftDetail({ controller, giveawayId, places = [], renderGiftImage }: {
+export function GiftDetail({ controller, giveawayId, places = [], renderGiftImage, renderOwnerPortrait }: {
   controller: GiftDiscoveryController; giveawayId: string; places?: readonly GiftPlaceOption[]; renderGiftImage?: RenderGiftImage
+  renderOwnerPortrait?: RenderGiftOwnerPortrait
 }) {
   const state = useGifts(controller), key = JSON.stringify(state.context?.scope)
   useEffect(() => { controller.select(giveawayId) }, [controller, giveawayId, key])
   return <section className="gifts-view" aria-label="Giveaway detail"><GiftAccess state={state}>
     <ShellLink id="gift-back" to="/gifts">← All giveaways</ShellLink>
     <GiftResult resource={state.selectedId === giveawayId ? state.detail : { phase: 'loading', data: null, failure: null, retryAt: null }} now={state.now} label="giveaway" retry={() => void controller.retryDetail()}>{gift => <>
-      <header className="gift-detail-heading"><p className="gift-eyebrow">{giveawayStatus(gift, state.now)}</p><h2>{gift.title}</h2><p>Shared by {gift.owner.display_name}</p></header>
+      <header className="gift-detail-heading"><p className="gift-eyebrow">{giveawayStatus(gift, state.now)}</p><h2>{gift.title}</h2><div aria-label={`Shared by ${gift.owner.display_name}`}>{renderOwnerPortrait?.(gift.owner) ?? <span role="status" aria-label="Owner portrait unavailable">Character unavailable</span>}</div><p>Shared by {gift.owner.display_name}</p></header>
       <div className="gift-detail-media" role="group" aria-label="Giveaway photo" key={`${key}:${gift.giveaway_id}:${gift.image_media_id}`}>
         {gift.image_media_id === null ? <p>No photo</p>
           : state.context && renderGiftImage

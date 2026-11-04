@@ -1,0 +1,131 @@
+
+ RUN  v4.1.9 /Users/lhs/Desktop/mcr-worktrees/art-runtime/frontend
+
+
+
+⎯⎯⎯⎯⎯⎯ Failed Suites 6 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  src/app/social-composition/__tests__/provider.test.tsx [ src/app/social-composition/__tests__/provider.test.tsx ]
+Error: Failed to resolve import "@testing-library/react" from "src/app/social-composition/__tests__/provider.test.tsx". Does the file exist?
+  Plugin: vite:import-analysis
+  File: /Users/lhs/Desktop/mcr-worktrees/art-runtime/frontend/src/app/social-composition/__tests__/provider.test.tsx:4:65
+  2  |  import "@testing-library/jest-dom/vitest";
+  3  |  import { StrictMode, useLayoutEffect } from "react";
+  4  |  import { act, cleanup, fireEvent, render, screen, waitFor } from "@testing-library/react";
+     |                                                                    ^
+  5  |  import { afterEach, expect, it } from "vitest";
+  6  |  import { createMemoryRouter, RouterProvider, useLocation } from "react-router-dom";
+ ❯ TransformPluginContext._formatLog ../../../mcr/frontend/node_modules/.pnpm/vite@8.1.3_@types+node@24.13.2_jiti@2.7.0/node_modules/vite/dist/node/chunks/node.js:29960:39
+ ❯ TransformPluginContext.error ../../../mcr/frontend/node_modules/.pnpm/vite@8.1.3_@types+node@24.13.2_jiti@2.7.0/node_modules/vite/dist/node/chunks/node.js:29957:14
+ ❯ normalizeUrl ../../../mcr/frontend/node_modules/.pnpm/vite@8.1.3_@types+node@24.13.2_jiti@2.7.0/node_modules/vite/dist/node/chunks/node.js:26993:18
+ ❯ ../../../mcr/frontend/node_modules/.pnpm/vite@8.1.3_@types+node@24.13.2_jiti@2.7.0/node_modules/vite/dist/node/chunks/node.js:27056:30
+ ❯ TransformPluginContext.transform ../../../mcr/frontend/node_modules/.pnpm/vite@8.1.3_@types+node@24.13.2_jiti@2.7.0/node_modules/vite/dist/node/chunks/node.js:27024:4
+ ❯ EnvironmentPluginContainer.transform ../../../mcr/frontend/node_modules/.pnpm/vite@8.1.3_@types+node@24.13.2_jiti@2.7.0/node_modules/vite/dist/node/chunks/node.js:29745:14
+ ❯ loadAndTransform ../../../mcr/frontend/node_modules/.pnpm/vite@8.1.3_@types+node@24.13.2_jiti@2.7.0/node_modules/vite/dist/node/chunks/node.js:19729:26
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/6]⎯
+
+ FAIL  src/features/gift-discovery/__tests__/reference-presentation.test.tsx [ src/features/gift-discovery/__tests__/reference-presentation.test.tsx ]
+Error: Failed to resolve import "@testing-library/jest-dom/vitest" from "src/features/gift-discovery/__tests__/reference-presentation.test.tsx". Does the file exist?
+  Plugin: vite:import-analysis
+  File: /Users/lhs/Desktop/mcr-worktrees/art-runtime/frontend/src/features/gift-discovery/__tests__/reference-presentation.test.tsx:2:7
+  1  |  // @vitest-environment jsdom
+  2  |  import "@testing-library/jest-dom/vitest";
+     |          ^
+  3  |  import { afterEach, expect, it, vi } from "vitest";
+  4  |  import { cleanup, fireEvent, render, screen, waitFor } from "@testing-library/react";
+ ❯ TransformPluginContext._formatLog ../../../mcr/frontend/node_modules/.pnpm/vite@8.1.3_@types+node@24.13.2_jiti@2.7.0/node_modules/vite/dist/node/chunks/node.js:29960:39
+ ❯ TransformPluginContext.error ../../../mcr/frontend/node_modules/.pnpm/vite@8.1.3_@types+node@24.13.2_jiti@2.7.0/node_modules/vite/dist/node/chunks/node.js:29957:14
+ ❯ normalizeUrl ../../../mcr/frontend/node_modules/.pnpm/vite@8.1.3_@types+node@24.13.2_jiti@2.7.0/node_modules/vite/dist/node/chunks/node.js:26993:18
+ ❯ ../../../mcr/frontend/node_modules/.pnpm/vite@8.1.3_@types+node@24.13.2_jiti@2.7.0/node_modules/vite/dist/node/chunks/node.js:27056:30
+ ❯ TransformPluginContext.transform ../../../mcr/frontend/node_modules/.pnpm/vite@8.1.3_@types+node@24.13.2_jiti@2.7.0/node_modules/vite/dist/node/chunks/node.js:27024:4
+ ❯ EnvironmentPluginContainer.transform ../../../mcr/frontend/node_modules/.pnpm/vite@8.1.3_@types+node@24.13.2_jiti@2.7.0/node_modules/vite/dist/node/chunks/node.js:29745:14
+ ❯ loadAndTransform ../../../mcr/frontend/node_modules/.pnpm/vite@8.1.3_@types+node@24.13.2_jiti@2.7.0/node_modules/vite/dist/node/chunks/node.js:19729:26
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/6]⎯
+
+ FAIL  src/features/gift-discovery/__tests__/ui.test.tsx [ src/features/gift-discovery/__tests__/ui.test.tsx ]
+Error: Failed to resolve import "@testing-library/jest-dom/vitest" from "src/features/gift-discovery/__tests__/ui.test.tsx". Does the file exist?
+  Plugin: vite:import-analysis
+  File: /Users/lhs/Desktop/mcr-worktrees/art-runtime/frontend/src/features/gift-discovery/__tests__/ui.test.tsx:2:7
+  1  |  // @vitest-environment jsdom
+  2  |  import "@testing-library/jest-dom/vitest";
+     |          ^
+  3  |  import { afterEach, expect, it } from "vitest";
+  4  |  import { cleanup, fireEvent, render, screen } from "@testing-library/react";
+ ❯ TransformPluginContext._formatLog ../../../mcr/frontend/node_modules/.pnpm/vite@8.1.3_@types+node@24.13.2_jiti@2.7.0/node_modules/vite/dist/node/chunks/node.js:29960:39
+ ❯ TransformPluginContext.error ../../../mcr/frontend/node_modules/.pnpm/vite@8.1.3_@types+node@24.13.2_jiti@2.7.0/node_modules/vite/dist/node/chunks/node.js:29957:14
+ ❯ normalizeUrl ../../../mcr/frontend/node_modules/.pnpm/vite@8.1.3_@types+node@24.13.2_jiti@2.7.0/node_modules/vite/dist/node/chunks/node.js:26993:18
+ ❯ ../../../mcr/frontend/node_modules/.pnpm/vite@8.1.3_@types+node@24.13.2_jiti@2.7.0/node_modules/vite/dist/node/chunks/node.js:27056:30
+ ❯ TransformPluginContext.transform ../../../mcr/frontend/node_modules/.pnpm/vite@8.1.3_@types+node@24.13.2_jiti@2.7.0/node_modules/vite/dist/node/chunks/node.js:27024:4
+ ❯ EnvironmentPluginContainer.transform ../../../mcr/frontend/node_modules/.pnpm/vite@8.1.3_@types+node@24.13.2_jiti@2.7.0/node_modules/vite/dist/node/chunks/node.js:29745:14
+ ❯ loadAndTransform ../../../mcr/frontend/node_modules/.pnpm/vite@8.1.3_@types+node@24.13.2_jiti@2.7.0/node_modules/vite/dist/node/chunks/node.js:19729:26
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[3/6]⎯
+
+ FAIL  src/features/party-discovery/__tests__/reference-presentation.test.tsx [ src/features/party-discovery/__tests__/reference-presentation.test.tsx ]
+Error: Failed to resolve import "@testing-library/react" from "src/features/party-discovery/__tests__/reference-presentation.test.tsx". Does the file exist?
+  Plugin: vite:import-analysis
+  File: /Users/lhs/Desktop/mcr-worktrees/art-runtime/frontend/src/features/party-discovery/__tests__/reference-presentation.test.tsx:3:68
+  1  |  // @vitest-environment jsdom
+  2  |  import { afterEach, describe, expect, it, vi } from "vitest";
+  3  |  import { cleanup, fireEvent, render, screen, waitFor, within } from "@testing-library/react";
+     |                                                                       ^
+  4  |  import { MemoryRouter, Route, Routes } from "react-router-dom";
+  5  |  import { PartyDiscovery } from "../ui/PartyDiscovery";
+ ❯ TransformPluginContext._formatLog ../../../mcr/frontend/node_modules/.pnpm/vite@8.1.3_@types+node@24.13.2_jiti@2.7.0/node_modules/vite/dist/node/chunks/node.js:29960:39
+ ❯ TransformPluginContext.error ../../../mcr/frontend/node_modules/.pnpm/vite@8.1.3_@types+node@24.13.2_jiti@2.7.0/node_modules/vite/dist/node/chunks/node.js:29957:14
+ ❯ normalizeUrl ../../../mcr/frontend/node_modules/.pnpm/vite@8.1.3_@types+node@24.13.2_jiti@2.7.0/node_modules/vite/dist/node/chunks/node.js:26993:18
+ ❯ ../../../mcr/frontend/node_modules/.pnpm/vite@8.1.3_@types+node@24.13.2_jiti@2.7.0/node_modules/vite/dist/node/chunks/node.js:27056:30
+ ❯ TransformPluginContext.transform ../../../mcr/frontend/node_modules/.pnpm/vite@8.1.3_@types+node@24.13.2_jiti@2.7.0/node_modules/vite/dist/node/chunks/node.js:27024:4
+ ❯ EnvironmentPluginContainer.transform ../../../mcr/frontend/node_modules/.pnpm/vite@8.1.3_@types+node@24.13.2_jiti@2.7.0/node_modules/vite/dist/node/chunks/node.js:29745:14
+ ❯ loadAndTransform ../../../mcr/frontend/node_modules/.pnpm/vite@8.1.3_@types+node@24.13.2_jiti@2.7.0/node_modules/vite/dist/node/chunks/node.js:19729:26
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[4/6]⎯
+
+ FAIL  src/features/party-discovery/__tests__/ui.test.tsx [ src/features/party-discovery/__tests__/ui.test.tsx ]
+Error: Failed to resolve import "@testing-library/react" from "src/features/party-discovery/__tests__/ui.test.tsx". Does the file exist?
+  Plugin: vite:import-analysis
+  File: /Users/lhs/Desktop/mcr-worktrees/art-runtime/frontend/src/features/party-discovery/__tests__/ui.test.tsx:3:60
+  1  |  // @vitest-environment jsdom
+  2  |  import { afterEach, describe, expect, it } from "vitest";
+  3  |  import { cleanup, fireEvent, render, screen, waitFor } from "@testing-library/react";
+     |                                                               ^
+  4  |  import { MemoryRouter } from "react-router-dom";
+  5  |  import { PartyDetail, PartyDiscovery } from "../ui/PartyDiscovery";
+ ❯ TransformPluginContext._formatLog ../../../mcr/frontend/node_modules/.pnpm/vite@8.1.3_@types+node@24.13.2_jiti@2.7.0/node_modules/vite/dist/node/chunks/node.js:29960:39
+ ❯ TransformPluginContext.error ../../../mcr/frontend/node_modules/.pnpm/vite@8.1.3_@types+node@24.13.2_jiti@2.7.0/node_modules/vite/dist/node/chunks/node.js:29957:14
+ ❯ normalizeUrl ../../../mcr/frontend/node_modules/.pnpm/vite@8.1.3_@types+node@24.13.2_jiti@2.7.0/node_modules/vite/dist/node/chunks/node.js:26993:18
+ ❯ ../../../mcr/frontend/node_modules/.pnpm/vite@8.1.3_@types+node@24.13.2_jiti@2.7.0/node_modules/vite/dist/node/chunks/node.js:27056:30
+ ❯ TransformPluginContext.transform ../../../mcr/frontend/node_modules/.pnpm/vite@8.1.3_@types+node@24.13.2_jiti@2.7.0/node_modules/vite/dist/node/chunks/node.js:27024:4
+ ❯ EnvironmentPluginContainer.transform ../../../mcr/frontend/node_modules/.pnpm/vite@8.1.3_@types+node@24.13.2_jiti@2.7.0/node_modules/vite/dist/node/chunks/node.js:29745:14
+ ❯ loadAndTransform ../../../mcr/frontend/node_modules/.pnpm/vite@8.1.3_@types+node@24.13.2_jiti@2.7.0/node_modules/vite/dist/node/chunks/node.js:19729:26
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[5/6]⎯
+
+ FAIL  src/features/avatar/__tests__/integration-continuity/shared-portraits/portraits.test.tsx [ src/features/avatar/__tests__/integration-continuity/shared-portraits/portraits.test.tsx ]
+Error: Failed to resolve import "@testing-library/react" from "src/features/avatar/__tests__/integration-continuity/shared-portraits/portraits.test.tsx". Does the file exist?
+  Plugin: vite:import-analysis
+  File: /Users/lhs/Desktop/mcr-worktrees/art-runtime/frontend/src/features/avatar/__tests__/integration-continuity/shared-portraits/portraits.test.tsx:5:54
+  3  |  import { readFile } from "node:fs/promises";
+  4  |  import { URL as FileURL } from "node:url";
+  5  |  import { act, cleanup, render, screen, waitFor } from "@testing-library/react";
+     |                                                         ^
+  6  |  import { afterEach, beforeAll, beforeEach, expect, it, vi } from "vitest";
+  7  |  import { MemoryRouter } from "react-router-dom";
+ ❯ TransformPluginContext._formatLog ../../../mcr/frontend/node_modules/.pnpm/vite@8.1.3_@types+node@24.13.2_jiti@2.7.0/node_modules/vite/dist/node/chunks/node.js:29960:39
+ ❯ TransformPluginContext.error ../../../mcr/frontend/node_modules/.pnpm/vite@8.1.3_@types+node@24.13.2_jiti@2.7.0/node_modules/vite/dist/node/chunks/node.js:29957:14
+ ❯ normalizeUrl ../../../mcr/frontend/node_modules/.pnpm/vite@8.1.3_@types+node@24.13.2_jiti@2.7.0/node_modules/vite/dist/node/chunks/node.js:26993:18
+ ❯ ../../../mcr/frontend/node_modules/.pnpm/vite@8.1.3_@types+node@24.13.2_jiti@2.7.0/node_modules/vite/dist/node/chunks/node.js:27056:30
+ ❯ TransformPluginContext.transform ../../../mcr/frontend/node_modules/.pnpm/vite@8.1.3_@types+node@24.13.2_jiti@2.7.0/node_modules/vite/dist/node/chunks/node.js:27024:4
+ ❯ EnvironmentPluginContainer.transform ../../../mcr/frontend/node_modules/.pnpm/vite@8.1.3_@types+node@24.13.2_jiti@2.7.0/node_modules/vite/dist/node/chunks/node.js:29745:14
+ ❯ loadAndTransform ../../../mcr/frontend/node_modules/.pnpm/vite@8.1.3_@types+node@24.13.2_jiti@2.7.0/node_modules/vite/dist/node/chunks/node.js:19729:26
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[6/6]⎯
+
+
+ Test Files  6 failed (6)
+      Tests  no tests
+   Start at  05:39:00
+   Duration  2.12s (transform 0ms, setup 0ms, import 0ms, tests 0ms, environment 1.57s)
+
