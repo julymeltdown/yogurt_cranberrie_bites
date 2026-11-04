@@ -6,6 +6,7 @@ import json
 import io
 import os
 from pathlib import Path
+import re
 import subprocess
 import sys
 import tempfile
@@ -50,6 +51,10 @@ class Composition(unittest.TestCase):
         self.write(self.node, b"import {test} from 'node:test'; // parser fixture only\n")
         self.write(self.vitest, b"import {test} from 'vitest'; // parser fixture only\n")
         self.write(self.native, b"// parser fixture only\n")
+        self.vitest_files = sorted({self.vitest} | {p for p in self.paths.values()
+            if p.startswith("frontend/") and re.search(r"\.(?:test|spec|node-test)\.[cm]?[jt]sx?$", p)})
+        for path in self.vitest_files:
+            self.write(path, b"import {test} from 'vitest'; // synthetic catalog path, not executed\n")
         self.write("contracts/parser-fixture.json", b"{}\n")
         self.write(AUTHORITY, b"| QA08 | DEFERRED_BY_USER |\nDefer QA08; preserve 111 active tasks.\n")
         self.write("generated/TASKS_EN.json", self.bytes(self.plan))
@@ -176,20 +181,21 @@ class Composition(unittest.TestCase):
                              "gate_ids": sorted(GATES)}}
 
     def frontend_report(self):
-        inventory = {"node": [self.node], "vitest": [self.vitest], "playwright": [], "unsupported": []}
+        count = len(self.vitest_files)
+        inventory = {"node": [self.node], "vitest": self.vitest_files, "playwright": [], "unsupported": []}
         values = {"test-inventory.json": self.bytes(inventory), "node-tests.log": TAP,
-                  "vitest.json": self.bytes({"numTotalTests": 1, "numPassedTests": 1, "numFailedTests": 0,
-                      "numPendingTests": 0, "success": True, "testResults": [{"name": self.vitest,
-                      "status": "passed", "assertionResults": [{"status": "passed"}]}]}),
+                  "vitest.json": self.bytes({"numTotalTests": count, "numPassedTests": count, "numFailedTests": 0,
+                      "numPendingTests": 0, "success": True, "testResults": [{"name": path,
+                      "status": "passed", "assertionResults": [{"status": "passed"}]} for path in self.vitest_files]}),
                   "build-audit.json": self.bytes({"assets": [{"path": "app.js", "sha256": "ab" * 32}],
                                                   "modules": ["frontend/src/main.ts"], "findings": []})}
         commands = []
         for gate in sorted(source.FRONTEND_GATES):
             log = gate + ".log"
             values.setdefault(log, b"synthetic frontend command record\n")
-            argv = ["node", "--test", self.node] if gate == "node-tests" else ["node", "vitest", self.vitest] if gate == "vitest" else ["node", "fixture-command"]
+            argv = ["node", "--test", self.node] if gate == "node-tests" else ["node", "vitest", *self.vitest_files] if gate == "vitest" else ["node", "fixture-command"]
             commands.append({**self.command, "id": gate, "argv": argv, "log": log, "status": "PASS",
-                             "nonempty_count": 1, "report_hash": source.digest(values[log])})
+                             "nonempty_count": count if gate == "vitest" else 1, "report_hash": source.digest(values[log])})
         for path, data in values.items():
             self.ref("frontend/" + path, data)
         return {"schema": "mcr.qa10.frontend.v1", "candidate": self.candidate, "same_candidate_end": True,
