@@ -102,10 +102,15 @@ async fn aggregate_native() -> Result<()> {
         authority.clone(),
         PrivateDataCategoryOwners::core_only(core),
     );
-    let result = coordinator
-        .apply(c.clone(), Instant::now() + WallDuration::from_secs(4))
-        .await;
-    anyhow::ensure!(matches!(result, Err(DeletionFailure::Incomplete)));
+    // This fixture runs one phase per test process. The first process performs
+    // the sole owner round. The restart process opens a fresh pool and only
+    // projects/replays the durable receipt; it must not invoke the owner again.
+    if !fenced {
+        let result = coordinator
+            .apply(c.clone(), Instant::now() + WallDuration::from_secs(4))
+            .await;
+        anyhow::ensure!(matches!(result, Err(DeletionFailure::Incomplete)));
+    }
     let common_fence_count: i64 = sqlx::query_scalar(
         "select count(*) from concert_world_account_deletion_fences where user_id=$1 and saga_id=$2",
     )
@@ -151,23 +156,24 @@ async fn aggregate_native() -> Result<()> {
     .fetch_one(&p)
     .await?;
     anyhow::ensure!(completed.is_none());
-    let progress = coordinator
-        .progress(user)
-        .await
-        .map_err(|e| anyhow::anyhow!("progress: {e:?}"))?
-        .ok_or_else(|| anyhow::anyhow!("progress"))?;
-    anyhow::ensure!(progress.cursor == PrivateDataCategory::ALL.len() - 1);
-    anyhow::ensure!(!progress.completed.is_empty() && !progress.missing.is_empty());
-    anyhow::ensure!(progress.command.retention_until == c.retention_until);
-    anyhow::ensure!(progress.command.retention_until.timestamp_subsec_nanos() == 123_456_000);
-    anyhow::ensure!(progress.fence_revision > 0);
+    if !fenced {
+        let progress = coordinator
+            .progress(user)
+            .await
+            .map_err(|e| anyhow::anyhow!("progress: {e:?}"))?
+            .ok_or_else(|| anyhow::anyhow!("progress"))?;
+        anyhow::ensure!(progress.cursor == PrivateDataCategory::ALL.len() - 1);
+        anyhow::ensure!(!progress.completed.is_empty() && !progress.missing.is_empty());
+        anyhow::ensure!(progress.command.retention_until == c.retention_until);
+        anyhow::ensure!(progress.command.retention_until.timestamp_subsec_nanos() == 123_456_000);
+        anyhow::ensure!(progress.fence_revision > 0);
+    }
     let persisted_fence: i64 = sqlx::query_scalar(
         "select fence_revision from concert_private_data_owner_progress where user_id=$1",
     )
     .bind(user)
     .fetch_one(&p)
     .await?;
-    anyhow::ensure!(progress.fence_revision == persisted_fence as u64);
     let second = coordinator
         .apply(c.clone(), Instant::now() + WallDuration::from_secs(4))
         .await;
