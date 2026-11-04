@@ -259,18 +259,20 @@
   },
   "world_hold": {
     "status": "IN_PROGRESS",
-    "browser_in01": "NOT_RUN",
+    "browser_in01": "PARTIAL; published 400a3110, full journey open",
     "scope": "e692 production binary, retained six-service MAIN cohort, canonical map4 and approved static avatar",
     "initial_two_principal_probe": "PASS",
     "initial_c03_database": "PASS; 16 delivered Root scopes, 16 COMPLETED Auth and Friend leases, zero pending participants, two real Concert native commits, zero prepared transactions",
     "started_at": "2026-11-04T04:25:00Z",
     "expires_at": "2026-11-04T04:55:00.941230Z",
-    "live_bundle": "Delivered privately to the designated World lead, frontend integrator and resource coordinator after confirming survival beyond the previous immediate failure window.",
-    "cleanup": "PENDING_HELD_RUNTIME",
-    "prior_intermittent_failure": "UNRESOLVED; diagnostics preserve evidence but do not establish a fix."
+    "live_bundle": "Expired and removed with owned cluster; no usable live handoff remains.",
+    "cleanup": "PASS; natural hard expiry, all owned service stops non-forced exit 0, cluster removed",
+    "prior_intermittent_failure": "UNRESOLVED; diagnostics preserve evidence but do not establish a fix.",
+    "finished_at": "2026-11-04T04:55:01.609653+00:00",
+    "incident": "Actual login504; one published-but-unserialized Participant GET retained two owner fences. See root-world-e692-expiry.json. Teardown is not recovery."
   },
   "limitations": [
-    "No full-task, multiuser browser, restart or sustained World acceptance is asserted.",
+    "Partial real multiuser browser movement/panels passed; full-task, remaining IN01 journey and sustained World acceptance are not asserted.",
     "The qualified child recovery component is not yet activated in the Root union; the Participant-only settler is not a general child resolver.",
     "Six-service executable sources are a retained mixed immutable cohort. Runtime migration manifests are recorded separately and do not amend executable compile ancestry.",
     "Actual provider/role-backed optional product routes remain separate integration obligations."

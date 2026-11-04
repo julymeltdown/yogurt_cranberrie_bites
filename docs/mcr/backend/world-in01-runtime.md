@@ -1,20 +1,42 @@
 # Isolated World startup
 
-Status: `IN_PROGRESS`. Public backend C03 and a bounded actual two-client World
-flow passed. A new diagnostic production cohort is held through 04:55 UTC on
-2026-11-04 and its expiring private bundle has reached the designated frontend
-team. Sustained World serving previously failed intermittently; that incident
-remains unresolved and browser IN01 remains `NOT_RUN`. The historical startup
-baseline below is superseded by the dated followups. Optional Age, Social, Gift,
-Feed and media modes are not prerequisites.
+Status: `IN_PROGRESS`. Public backend C03, a bounded actual two-client World
+flow, and part of the real two-account browser journey passed. The diagnostic
+production cohort ended at its hard expiry, 04:55 UTC on 2026-11-04. All owned
+services stopped without force, exited 0, and the isolated PostgreSQL root was
+removed. Its private inputs are expired and unavailable. Teardown is not proof
+of recovery of the stranded owner fences.
+
+Actual browser evidence published in `400a3110` records two fresh canonical App
+logins, shared World entry, movement/ACK convergence, and six persistent panels
+per principal with one stable canvas and socket. Theme, customization, reconnect,
+actual single-game qualification and remaining actual-art checks are still open.
+A later fresh App login returned Gateway 504. At 04:48:52 UTC, a fixed read-only
+observation found 17 finished/delivered Root operations and one ACTIVE,
+unserialized, undelivered Participant GET; two owner prepared fences remained.
+The GET had published its delivery capability but tracked no native transaction
+or child intent. Auth refresh-token insertion timed out on
+`auth_concert_relationship_revision`. Request cancellation is a hypothesis to
+reproduce; the observation does not prove its exact triggering event.
+
+`root-world-e692-expiry.json` preserves final report/forensic hashes, counts,
+service-stop results and the distinct external browser evidence. CR08 and
+C03-CANCEL01 are implementing a supervised pre-serialization cancellation proof
+and real interrupted-request qualification. They must preserve quarantine for
+unknown work and distinguish cancellation settlement from HTTP delivery. Another
+browser attempt requires a qualified coherent fix, fresh immutable live inputs
+and a new named resource allocation. No manual rollback or expiry-based release
+was performed. The earlier intermittent World-serving incident also remains
+unresolved; surviving this hold does not establish its fix. Optional Age,
+Social, Gift, Feed and media modes are not entry prerequisites.
 
 The portable `root-native-e6921cf2.json` receipt records the coherent diagnostic
 build, both shutdown-result tests, and a passing actual ungated HTTP owner
-qualification. The latter uses genuine signup, verification, login and Profile
-creation, then verifies terminal delivery and settlement on the public router.
-Its reset and expiry cases deliberately retain owner quarantine until isolated
-teardown. This is distinct from the earlier gated-body framing qualification.
-The ongoing World hold has no final cleanup or browser acceptance result yet.
+qualification. That separate earlier run used genuine signup, verification,
+login and Profile creation, then verified terminal delivery and settlement on
+the public router. Its reset and expiry cases deliberately retained owner
+quarantine until isolated teardown. None of those passes certifies the later
+cancellation or complete browser gate.
 
 `backend/scripts/mcr/world_in01_prepare.py` owns disposable PostgreSQL, Redis,
 six native services, real Auth mail delivery and, with `--bootstrap`, the actual
