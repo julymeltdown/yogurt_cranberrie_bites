@@ -104,3 +104,5 @@ Synthetic native fixtures do not qualify actual Concert admission changes, World
 - `contracts/generated/mcr-domain.openapi.json` SHA256 `79a066b88119e53f6f16876d7e3fe59a18ee956be6ed6d2af7ee1efa187e0feb`.
 
 - Source correction after checkpoint `db360d67`: traced `VerifiedParentAuthority::request_digest` and the admitting interceptor; compare SHA256 of flag + big-endian message length + full prost message, and require the ProductService Dispatch parent method. The signature-verified parent test covers the actual frame boundary. Execution remains pending the fresh target lease.
+
+- Frozen-bundle refusal tests: PASS, 3 tests, exit0. Command: `PYTHONDONTWRITEBYTECODE=1 PYTHONPATH=backend/scripts/mcr python3 -m unittest moderation_live_support.test_preflight -v`. Altered executable/migration pins and replaced bundle inode are refused before any Cluster construction. These are local admission tests, not Cargo/native qualification. The fixture target and PG paths are never opened; temporary directories were automatically removed.
