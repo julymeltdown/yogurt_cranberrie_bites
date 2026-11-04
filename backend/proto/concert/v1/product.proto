@@ -17,6 +17,10 @@ message ProductRequest {
   int64 auth_observed_at_unix_micros = 11;
   int64 profile_observed_at_unix_micros = 12;
   int64 access_expires_unix_micros = 13;
+  // Optional stable privacy HMAC, derived only from Gateway's typed actual
+  // transport address using a dedicated key. The exact signed request binds it.
+  // Empty means unavailable; raw IP and browser-selected buckets are forbidden.
+  bytes trusted_network_bucket = 14;
 }
 
 message ProductResponse {

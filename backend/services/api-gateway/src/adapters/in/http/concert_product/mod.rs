@@ -257,6 +257,8 @@ async fn dispatch(
         return error(StatusCode::BAD_REQUEST, "INVALID_INPUT");
     };
     let method = request.method().clone();
+    let client_address = request.extensions()
+        .get::<super::client_identity::VerifiedClientAddress>().copied();
     let mutation = matches!(method, Method::POST | Method::PUT);
     let headers = request.headers();
     if mutation {
@@ -328,6 +330,7 @@ async fn dispatch(
             reader,
             context,
             ProductHttpRequest {
+                client_address,
                 event,
                 request_id: Uuid::new_v4(),
                 method: method.to_string(),

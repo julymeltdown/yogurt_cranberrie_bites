@@ -128,6 +128,7 @@ pub fn operation(event: Uuid, method: &str, target: &str) -> Result<Operation, S
 /// Only the guarded RPC can construct this request-bound input. Implementations
 /// still owe canonical owner fencing through commit/response, not observations.
 pub struct VerifiedProduct {
+    trusted_network_bucket: Option<[u8; 32]>,
     actor: Uuid,
     event: Uuid,
     session: Uuid,
@@ -140,6 +141,11 @@ pub struct VerifiedProduct {
     command_query: Option<CommandStatusQuery>,
 }
 impl VerifiedProduct {
+    /// Only populated from the exact workload/actor-authenticated Gateway frame.
+    /// Absence is unavailable, never a shared/random/default network bucket.
+    pub fn trusted_pickup_context(&self) -> Option<crate::community::giveaway::TrustedPickupContext> {
+        self.trusted_network_bucket.map(crate::community::giveaway::TrustedPickupContext::from_trusted_keyed_ip_bucket)
+    }
     pub fn actor(&self) -> Uuid {
         self.actor
     }
@@ -272,6 +278,11 @@ fn authorize(request: &Request<proto::ProductRequest>) -> Result<VerifiedProduct
     }
     let original = proof.deadline(BUDGET)?;
     let value = VerifiedProduct {
+        trusted_network_bucket: match m.trusted_network_bucket.as_slice() {
+            [] => None,
+            bytes if bytes.len() == 32 && bytes.iter().any(|b| *b != 0) => Some(bytes.try_into().expect("checked bucket size")),
+            _ => return Err(Status::invalid_argument("Invalid trusted network bucket")),
+        },
         actor,
         event,
         session: canonical_uuid(&m.session_family_id)?,
