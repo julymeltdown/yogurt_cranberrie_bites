@@ -1,0 +1,5 @@
+Traceback (most recent call last):
+  File "/Users/lhs/.codex/worktrees/2411/mcr/docs/mcr/evidence/css-parity-giveaway/source-boundaries.py", line 23, in <module>
+    assert all(allowed(p) for p in changed), sorted(p for p in changed if not allowed(p))
+           ~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ['frontend/node_modules']

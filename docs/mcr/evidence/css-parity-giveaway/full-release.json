@@ -1,0 +1,61 @@
+{
+  "port5296": "",
+  "processCheck": "",
+  "linkAbsent": true,
+  "tempsAbsent": true,
+  "durableBytes": 4048478,
+  "freeBytes": 18216980480,
+  "rounds": [
+    {
+      "round": "native-01",
+      "result": null,
+      "failures": [],
+      "cases": 0,
+      "peaks": {
+        "whole": 194363,
+        "temp": 0,
+        "durable": 194363
+      },
+      "minFree": 18257883136,
+      "cleanup": {
+        "browserClosed": true,
+        "viteClosed": true,
+        "tempRemoved": true
+      }
+    },
+    {
+      "round": "native-02",
+      "result": "PASS_CHECKS_VISUAL_ASSESSMENT_REQUIRED",
+      "failures": [],
+      "cases": 18,
+      "peaks": {
+        "whole": 31770509,
+        "temp": 29662943,
+        "durable": 2107566
+      },
+      "minFree": 18200297472,
+      "cleanup": {
+        "browserClosed": true,
+        "viteClosed": true,
+        "tempRemoved": true
+      }
+    },
+    {
+      "round": "native-03",
+      "result": "PASS_CHECKS_VISUAL_ASSESSMENT_REQUIRED",
+      "failures": [],
+      "cases": 18,
+      "peaks": {
+        "whole": 33693485,
+        "temp": 29662941,
+        "durable": 4030544
+      },
+      "minFree": 18182512640,
+      "cleanup": {
+        "browserClosed": true,
+        "viteClosed": true,
+        "tempRemoved": true
+      }
+    }
+  ]
+}

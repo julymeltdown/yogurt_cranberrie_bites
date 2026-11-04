@@ -113,6 +113,7 @@ def source_pins():
               for p in sorted((ROOT / base).glob("*.json"))]
     paths += [str(p.relative_to(ROOT)) for p in sorted((ROOT / "backend/scripts/mcr/world_capacity_support").glob("*.py"))]
     paths += ["backend/scripts/mcr/world_capacity_probe.py", "backend/scripts/mcr/world_live_failure_probe.py"]
+    paths += ["backend/scripts/mcr/world_in01_prepare.py", "backend/scripts/mcr/world_in01_live.py"]
     return {name: hashlib.sha256((ROOT / name).read_bytes()).hexdigest() for name in paths}
 
 

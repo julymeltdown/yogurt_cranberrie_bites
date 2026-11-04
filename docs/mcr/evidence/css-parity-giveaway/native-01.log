@@ -1,0 +1,8 @@
+file:///Users/lhs/.codex/worktrees/2411/mcr/docs/mcr/evidence/css-parity-giveaway/capture.mjs:96
+  await budget(true); browser = await chromium.launch({ channel: 'chrome', headless: true, args: ['--disk-cache-dir=' + resolve(temp, 'chrome-cache')] }); report.browser = browser.version()
+                                               ^
+
+TypeError: Cannot read properties of undefined (reading 'launch')
+    at file:///Users/lhs/.codex/worktrees/2411/mcr/docs/mcr/evidence/css-parity-giveaway/capture.mjs:96:48
+
+Node.js v24.22.2

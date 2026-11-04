@@ -1,0 +1,15 @@
+{
+  "source": "/tmp/codex-remote-attachments/01a1a385-9f32-73c2-8715-ff54bd1e0497/AB983BDC-49A0-4F5E-A56F-9F45A5560B6D/1-Photo-1.jpg",
+  "sha256": "2b3988d546f87b813d78ca13bf267730a6dd19118bd6535a2d3c3032b6f12d23",
+  "dimensions": [
+    1280,
+    853
+  ],
+  "crop_box": [
+    508,
+    448,
+    762,
+    850
+  ],
+  "note": "Lossless crop of supplied photo; original preserved. Compare foreground only; background and shell outside lease."
+}

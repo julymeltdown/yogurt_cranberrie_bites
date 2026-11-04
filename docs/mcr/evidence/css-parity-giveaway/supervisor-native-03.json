@@ -1,0 +1,12 @@
+{
+  "started": 1793788742.004242,
+  "job": "CSS-PARITY-GIVEAWAY-202611041034Z",
+  "activeCutoffEpoch": 1793788779,
+  "round": "native-03",
+  "pid": 4184,
+  "exitCode": 0,
+  "finished": 1793788771.682365,
+  "ownLinkAbsent": true,
+  "ownTempAbsent": true,
+  "durableBytes": 4048196
+}
