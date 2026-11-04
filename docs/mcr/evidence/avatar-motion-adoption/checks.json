@@ -72,7 +72,7 @@
     "frontend/src/world/avatar/__tests__/motion-adoption/typecheck.mjs": "4cbcb57e175101a3fabbcbd67604c223d2604e24732f9d6e3331583a0d624aa1",
     "frontend/src/world/avatar/__tests__/motion-adoption/v2-producer.test.ts": "77160adcd097bcf14d3aa7804dc58d99e10f63fbebdc616b71e3230344b7dc72",
     "frontend/src/world/avatar/__tests__/motion-adoption/v2.test.ts": "dc78fa64dc98276958c7df67a08e7891c047cd7931dd748f00e0c1ed28862fd2",
-    "frontend/src/world/avatar/__tests__/motion-adoption/vitest.config.mjs": "4fb9125eb6b6432cfe68ed60ef009b493a8eeb4f59f69ecc3db116d7ad66ca7e",
+    "frontend/src/world/avatar/__tests__/motion-adoption/vitest.config.mjs": "a11c86d4d237a08854d4104ae461c89830061a9da6ce7b43a36c1f7d94d2ab9b",
     "frontend/src/features/avatar/__tests__/motion-adoption/controller.test.tsx": "696240e5b3b9b20e06529342bd64061e13e9b2852d25a488a2d14391ea758a6a",
     "frontend/src/app/character-entry/__tests__/motion-adoption/fixture.css": "de2db1f5e6913c8395dbee27459da90b372774850a17cd30da4a61e0ce2a27fd",
     "frontend/src/app/character-entry/__tests__/motion-adoption/fixture.html": "12c59aa5a9d241fc0386f98a20db69e284d52f0d23682ea4d13e0b312c80ff2d",

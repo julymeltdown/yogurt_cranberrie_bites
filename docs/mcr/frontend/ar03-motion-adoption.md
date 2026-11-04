@@ -346,3 +346,23 @@ allocates no resources. The independently owned Auth bootstrap branch and its
 combined checks follow as a separate committed handoff. No new native capture,
 real service mutation, two-account World, physical-device or positive Root
 qualification is implied. The original AR03 goal remains unfinished.
+
+
+## Combined canonical bootstrap check
+
+After parser commit `34ef8fbbd4fd59f2f806abd1c93308567cce2008`, the isolated
+branch consumed the separate boundary owner's bootstrap source
+`789b84c307674812a81e67ad59badc83fab8f532` without authoring any Auth file.
+The six-line branch delegates reviewed manifests/configs only after the public
+canonical const and bundle-hash checks; it allocates no registry or resources.
+Technical compatibility review found no concrete issue in that branch.
+
+The qualifier now includes that owner's 45 real bootstrap cases and its two
+additional C05 unknown-reference cases. All 290 cases across eleven suites pass;
+23 scoped and 782 application TS files have zero diagnostics; all seven checks
+pass. `bootstrap-integration-checkpoint.json` pins the actual consumed producer,
+public parser, bootstrap source and test files. This is combined canonical DTO
+and bootstrap validation using deterministic fixtures. The actual application
+registry remains closed to the staged reviewed release. The real-application
+bundle is delegated to Root153's combined publisher check; no second browser
+capture or local live-service/device proof was started.

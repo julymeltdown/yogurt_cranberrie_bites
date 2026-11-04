@@ -16,6 +16,7 @@ export default {
   test: { include: ['src/world/avatar/__tests__/motion-adoption/**/*.test.ts', 'src/features/avatar/__tests__/motion-adoption/**/*.test.tsx',
     'src/app/character-entry/__tests__/motion-adoption/**/*.test.ts',
     'src/entities/avatar/whole-admission/__tests__/admission.test.ts',
-    'src/world/network/__tests__/reviewed-motion-v2/boundary.test.ts'],
+    'src/world/network/__tests__/reviewed-motion-v2/boundary.test.ts',
+    'src/features/auth/model/__tests__/reviewed-motion-v2/bootstrap.test.ts'],
     environment: 'node', maxWorkers: 1, fileParallelism: false },
 }
