@@ -30659,6 +30659,345 @@
         "x-mcr-origin-policy": "EXACT_ALLOWLIST_AND_X_MCR_INTENT_BROWSER"
       }
     },
+    "/api/concert/events/{eventId}/me/operations-access": {
+      "get": {
+        "operationId": "getOwnConcertOperationsAccess",
+        "parameters": [
+          {
+            "name": "eventId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "$ref": "#/components/schemas/Domain_common_Uuid"
+            }
+          }
+        ],
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ],
+        "responses": {
+          "400": {
+            "description": "Domain error",
+            "headers": {
+              "Cache-Control": {
+                "required": true,
+                "schema": {
+                  "type": "string",
+                  "const": "no-store"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "$ref": "#/components/schemas/Domain_common_DomainError"
+                    },
+                    {
+                      "properties": {
+                        "details": {
+                          "properties": {
+                            "reason": {
+                              "enum": [
+                                "INVALID_INPUT"
+                              ]
+                            }
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Domain error",
+            "headers": {
+              "Cache-Control": {
+                "required": true,
+                "schema": {
+                  "type": "string",
+                  "const": "no-store"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "$ref": "#/components/schemas/Domain_common_DomainError"
+                    },
+                    {
+                      "properties": {
+                        "details": {
+                          "properties": {
+                            "reason": {
+                              "enum": [
+                                "AUTHENTICATION_REQUIRED"
+                              ]
+                            }
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Domain error",
+            "headers": {
+              "Cache-Control": {
+                "required": true,
+                "schema": {
+                  "type": "string",
+                  "const": "no-store"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "$ref": "#/components/schemas/Domain_common_DomainError"
+                    },
+                    {
+                      "properties": {
+                        "details": {
+                          "properties": {
+                            "reason": {
+                              "enum": [
+                                "PERMISSION_DENIED"
+                              ]
+                            }
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Domain error",
+            "headers": {
+              "Cache-Control": {
+                "required": true,
+                "schema": {
+                  "type": "string",
+                  "const": "no-store"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "$ref": "#/components/schemas/Domain_common_DomainError"
+                    },
+                    {
+                      "properties": {
+                        "details": {
+                          "properties": {
+                            "reason": {
+                              "enum": [
+                                "RESOURCE_UNAVAILABLE"
+                              ]
+                            }
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "Domain error",
+            "headers": {
+              "Cache-Control": {
+                "required": true,
+                "schema": {
+                  "type": "string",
+                  "const": "no-store"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "$ref": "#/components/schemas/Domain_common_DomainError"
+                    },
+                    {
+                      "properties": {
+                        "details": {
+                          "properties": {
+                            "reason": {
+                              "enum": [
+                                "RATE_LIMITED"
+                              ]
+                            }
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Domain error",
+            "headers": {
+              "Cache-Control": {
+                "required": true,
+                "schema": {
+                  "type": "string",
+                  "const": "no-store"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "$ref": "#/components/schemas/Domain_common_DomainError"
+                    },
+                    {
+                      "properties": {
+                        "details": {
+                          "properties": {
+                            "reason": {
+                              "enum": [
+                                "INTERNAL_ERROR"
+                              ]
+                            }
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "503": {
+            "description": "Domain error",
+            "headers": {
+              "Cache-Control": {
+                "required": true,
+                "schema": {
+                  "type": "string",
+                  "const": "no-store"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "$ref": "#/components/schemas/Domain_common_DomainError"
+                    },
+                    {
+                      "properties": {
+                        "details": {
+                          "properties": {
+                            "reason": {
+                              "enum": [
+                                "DEPENDENCY_UNAVAILABLE"
+                              ]
+                            }
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "504": {
+            "description": "Domain error",
+            "headers": {
+              "Cache-Control": {
+                "required": true,
+                "schema": {
+                  "type": "string",
+                  "const": "no-store"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "$ref": "#/components/schemas/Domain_common_DomainError"
+                    },
+                    {
+                      "properties": {
+                        "details": {
+                          "properties": {
+                            "reason": {
+                              "enum": [
+                                "DEADLINE_EXCEEDED"
+                              ]
+                            }
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "200": {
+            "description": "Success",
+            "headers": {
+              "Cache-Control": {
+                "required": true,
+                "schema": {
+                  "type": "string",
+                  "const": "no-store"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Domain_admin_OwnOperationsAccessV1"
+                }
+              }
+            }
+          }
+        },
+        "x-mcr-query-schema": {
+          "$ref": "#/components/schemas/Domain_common_EmptyRequest"
+        },
+        "x-mcr-closed-query": true,
+        "x-mcr-runtime-status": "NOT_IMPLEMENTED",
+        "x-mcr-retry": "SAFE_READ_AFTER_REAUTH_ONCE",
+        "x-mcr-cache": "NO_STORE",
+        "x-mcr-actor": "SELF",
+        "x-mcr-rule": "operations_access_v1",
+        "x-mcr-write-policy": "READ"
+      }
+    },
     "/api/concert/events/{eventId}/me/parties": {
       "get": {
         "operationId": "getConcertPartyActivity",
@@ -59855,6 +60194,46 @@
         ],
         "description": "Event-local Concert restriction in the exact path event. Requires a fresh event role and event restriction revision. Does not modify Auth accounts, refresh families or other events."
       },
+      "Domain_admin_OperationsAccessLeaseV1": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "actor_id": {
+            "$ref": "#/components/schemas/Domain_common_Uuid"
+          },
+          "event_id": {
+            "$ref": "#/components/schemas/Domain_common_Uuid"
+          },
+          "role": {
+            "type": "string",
+            "enum": [
+              "MODERATOR",
+              "OPERATOR"
+            ]
+          },
+          "role_revision": {
+            "$ref": "#/components/schemas/Domain_common_Revision"
+          },
+          "decision_id": {
+            "$ref": "#/components/schemas/Domain_common_Uuid"
+          },
+          "checked_at": {
+            "$ref": "#/components/schemas/Domain_common_UtcTimestamp"
+          },
+          "expires_at": {
+            "$ref": "#/components/schemas/Domain_common_UtcTimestamp"
+          }
+        },
+        "required": [
+          "actor_id",
+          "event_id",
+          "role",
+          "role_revision",
+          "decision_id",
+          "checked_at",
+          "expires_at"
+        ]
+      },
       "Domain_admin_Overview": {
         "type": "object",
         "additionalProperties": false,
@@ -59889,6 +60268,29 @@
           "health",
           "open_reports",
           "pending_jobs"
+        ]
+      },
+      "Domain_admin_OwnOperationsAccessV1": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "server_time": {
+            "$ref": "#/components/schemas/Domain_common_UtcTimestamp"
+          },
+          "access": {
+            "oneOf": [
+              {
+                "type": "null"
+              },
+              {
+                "$ref": "#/components/schemas/Domain_admin_OperationsAccessLeaseV1"
+              }
+            ]
+          }
+        },
+        "required": [
+          "server_time",
+          "access"
         ]
       },
       "Domain_admin_OwnReportQuery": {
@@ -73705,6 +74107,24 @@
           "Multi-cell actions advance reset baseline and return reset_required; no invented single-pixel delta or author leakage",
           "Pencil retains old strict endpoint/result, gains same durable budget/history; old errors remain INVALID_INPUT/RATE_LIMITED compatible",
           "Same key exact replay spends no additional quota/cooldown; changed body conflicts; retained charges independent of receipt retirement"
+        ]
+      },
+      "operations_access_v1": {
+        "contract_version": 1,
+        "preconditions": [
+          "Current canonical Auth actor and event admission; bodyless SELF read with no query, key or client role claim",
+          "An explicitly configured trusted Operations issuer owns durable event/actor role assignment, revision, withdrawal and expiry; absent authority is DEPENDENCY_UNAVAILABLE",
+          "Read the actual current assignment under an owning role fence retained with the SAME canonical Root scope through HTTP body terminal; no detached snapshot grants authority"
+        ],
+        "result": [
+          "server_time and access.checked_at are exactly the SAME PostgreSQL clock_timestamp sample; server_time remains present when access is null",
+          "No active MODERATOR or OPERATOR assignment returns access:null; configured current assignment returns actor_id/event_id matching the captured canonical request",
+          "decision_id is the actual canonical request UUID and must remain a distinct immutable lease identity; role_revision is the current positive safe-integer assignment revision",
+          "expires_at is the earlier of the actual assignment expiry and checked_at+60 seconds and is strictly after checked_at; it never renews an HTTP authority scope",
+          "Client qualifies the full request-start-to-receipt RTT using a monotonic clock: reject unknown/backwards/expired/aborted samples; local expiry is request-start plus min(60 seconds, expires_at-checked_at), never receipt time plus TTL",
+          "Client binds its full current actor/event/generation/policy/gate PrivacyScope, synchronously withdraws the old decision BEFORE replacement or null, aborts late reads on withdrawal/disposal, and rechecks scope/expiry at each read",
+          "Informational lease is never a bearer grant or a substitute for current server authorization; unobserved server withdrawal is not inferred; every privileged read/write checks current authority and holds its own delivery fence",
+          "Existing getConcertSettings EventSettings is the authoritative event revision/phase producer for OPERATOR context; do not invent event facts from this role-only projection"
         ]
       }
     },
