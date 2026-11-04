@@ -4,6 +4,7 @@ from __future__ import annotations
 import argparse
 import hashlib
 import json
+import re
 import shutil
 import subprocess
 import sys
@@ -111,8 +112,10 @@ def qualify(checkpoint: dict, pg: Path, report: dict) -> None:
                     CONCERT_TEST_OWNER_PORT="5432")
             result = execute([str(owned_binary), "--test-threads=1", "--nocapture"], env=owned_env,
                              phase=f"retained-{name}", cwd=ROOT / "backend", timeout=60)
-            if "0 failed;" not in result.stdout or "0 passed;" in result.stdout:
-                raise SmokeError("inventory", "retained tests did not execute")
+            summary = re.search(r"test result: ok\. (\d+) passed; (\d+) failed;", result.stdout)
+            expected = {"age_verification":10, "age_claims":16, "age_claim_reader":11}
+            if summary is None or (int(summary[1]), int(summary[2])) != (expected[name], 0):
+                raise SmokeError("inventory", "exact retained tests did not execute")
             report["retained"][name] = {"status":"PASS", "exit_code":result.returncode, "stdout":result.stdout,
                 "binary_sha256":artifact["binary_sha256"]}
         before_pid = cluster.assert_postmaster()
