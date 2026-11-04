@@ -216,3 +216,12 @@ The native runner requires --native-config private JSON tied to the disposable
 controller marker/token, directory inode and exact socket-only database URL.
 Rust fixtures independently check those bindings and actual server directories
 before creating their isolated schema.
+
+SDK2 prerequisite `c4ad561c` is now consumed from published master. Static
+comparison confirms the scope/view/subject APIs used by this Feed slice retain
+their signatures. SDK2 adds durable child recovery intents and separates its
+settlement mutex from admission; this Feed slice does not implement HeldChildGuard
+or supply a ScopeLifecycle. Those root/Profile implementations remain with their
+owners. The merge changed no owned Feed/Post producer source. No Cargo target or
+PostgreSQL controller was allocated or accessed for this compatibility check;
+new Rust/native/joined HTTP checks remain NOT_RUN.
