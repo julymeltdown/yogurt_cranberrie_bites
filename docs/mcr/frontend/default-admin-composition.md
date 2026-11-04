@@ -170,3 +170,36 @@ and their publication receipts remain intact. OwnAccess's genuine producer and
 canonical generated exposure remain independently owned and open; no proof-only
 consumer remote replay or successor commit is required after Root's canonical
 publication receipt.
+
+The genuine discovery continuation remains in the same goal and source custody.
+`__tests__/actual-main.spec.ts` prepares one read-only 390px actual producer check,
+using the existing private `MCR_IN04_CONFIG` parser (three independently bound
+actors), Root153's private frontend handoff and Root1fc's hash-pinned observer.
+Required inputs are `MCR_ADMIN_FRONTEND_HANDOFF`, `MCR_ADMIN_BACKEND_OBSERVER` and
+`MCR_IN04_BACKEND_DESCRIPTOR`; none are committed or given defaults. The observer
+source is Backend Root `2653376e5`, SHA-256
+`7d29fee99b5eab4b3e3320ba5a4513f803d6d2b450da33246fa467767deba6ad`.
+This reuses the existing managed-runtime protocol and shared frontend, and never
+launches another stack, seeds SQL roles or publishes an operator assignment.
+
+Before Chrome, the driver requires the genuine registered operation, canonical
+contract hashes, current frontend candidate/event/environment/settings binding,
+and an actual owner observation with matching actors and scope. It logs in via
+the existing UI. The actual protected OwnAccess response must supply the operator
+lease; the subsequent genuine settings read must bind the same event and its
+revision before the default Event panel mounts. A separate genuine member login
+must return null access, mount the unavailable boundary and issue no operator
+settings read. It writes only sanitized status/request metadata and two Admin
+PNGs. It does not record credentials, tokens, raw response bodies or private
+input paths, intercept HTTP, inject identity, override registry or repeat the
+controlled retained-command journey. Missing prerequisites remain NOT_RUN and a
+nonzero result, never PASS. The accepted work deadline also bounds Playwright.
+
+The new `actual-inputs.config.ts` isolates three new input-boundary checks from
+the already passed 21-case suite. Source qualification is pending. Actual runtime
+qualification is NOT_RUN: Root1fc explicitly reported no live descriptor or
+operator fixture at preparation time; C07's canonical148 closure and the real
+current Concert/OwnAccess cohort remain prerequisites. Root owns private ephemeral
+issuer keys and signed OPERATOR publication after normal Enrollment; frontend
+configuration labels grant no role. Run only within a fresh joint owner window
+using the actual shared frontend/backend and a separate finite browser allocation.

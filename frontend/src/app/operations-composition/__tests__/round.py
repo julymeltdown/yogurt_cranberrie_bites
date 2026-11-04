@@ -132,13 +132,16 @@ def run(prefix,kind,pin,offer,accepted,work_seconds,total_seconds):
         (FRONT/'node_modules').symlink_to(DEPS,target_is_directory=True);created_link=True
         env={**os.environ,'PATH':str(NODE.parent)+':'+os.environ['PATH'],'TMPDIR':str(prefix/'work'),'TMP':str(prefix/'work'),'TEMP':str(prefix/'work'),
              'XDG_CACHE_HOME':str(prefix/'work/cache'),'ADMIN_TMP':str(prefix/'work'),'ADMIN_OUTPUT':str(prefix/'work/native'),'ADMIN_PORT':str(port),'CI':'true',
-             'RAYON_NUM_THREADS':'1','PYTHONDONTWRITEBYTECODE':'1'}
+             'RAYON_NUM_THREADS':'1','PYTHONDONTWRITEBYTECODE':'1','ADMIN_WORK_END_EPOCH_MS':str(int(work_end*1000))}
         assert sp.check_output([str(NODE),'--version'],env=env,text=True).strip()=='v24.22.2'
         cmds=[[str(NODE),str(DEPS/'vitest/vitest.mjs'),'run','--config',PREFIX+'/vitest.config.ts'],
               [str(NODE),str(DEPS/'typescript/bin/tsc'),'--noEmit','--incremental','false','--allowImportingTsExtensions','--pretty','false'],
               [str(DEPS/'.bin/oxlint'),'--deny-warnings','src/app/operations-composition','src/app/AdminBoundary.tsx','src/app/ports.ts'],
               [str(NODE),'--check',PREFIX+'/native.mjs']] if kind=='source' else [[str(NODE),PREFIX+'/native.mjs']]
         if kind=='source' and os.environ.get('ADMIN_SOURCE_STAGE')=='remaining': cmds=cmds[1:]
+        if kind=='source' and os.environ.get('ADMIN_SOURCE_STAGE')=='actual-inputs':
+            cmds[0]=[str(NODE),str(DEPS/'vitest/vitest.mjs'),'run','--config',PREFIX+'/actual-inputs.config.ts'];cmds=cmds[:3]
+        if kind=='actual': cmds=[[str(NODE),str(DEPS/'@playwright/test/cli.js'),'test','--config',PREFIX+'/actual-main.config.ts']]
         for i,cmd in enumerate(cmds):
             with (prefix/f'{i+1}.log').open('wb') as log:
                 child=sp.Popen(cmd,cwd=FRONT,env=env,stdout=log,stderr=sp.STDOUT,start_new_session=True)
