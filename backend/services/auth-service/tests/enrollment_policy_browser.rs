@@ -7,6 +7,7 @@ mod fixture;
 mod gateway_fixture;
 use api_gateway::application::ports::SigningKeySourcePort;
 use auth_service::enrollment_policy::{rpc, ApprovedPublication, EnrollmentStore, PolicyDocument};
+use axum::response::IntoResponse;
 use chrono::{Duration, Utc};
 use rsa::pkcs8::EncodePrivateKey;
 use serde_json::{json, Value};
@@ -39,6 +40,50 @@ fn private_write(path: &Path, value: &Value) -> anyhow::Result<()> {
         .open(path)?;
     file.write_all(&serde_json::to_vec_pretty(value)?)?;
     Ok(())
+}
+fn private_control(path: &Path, output: &Path) -> anyhow::Result<Option<Value>> {
+    use std::{io::Read, os::unix::fs::MetadataExt};
+    let before = match std::fs::symlink_metadata(path) {
+        Ok(info) => info,
+        Err(error) if error.kind() == std::io::ErrorKind::NotFound => return Ok(None),
+        Err(error) => return Err(error.into()),
+    };
+    anyhow::ensure!(
+        before.is_file()
+            && !before.file_type().is_symlink()
+            && before.mode() & 0o777 == 0o600
+            && before.uid() == std::fs::metadata(output)?.uid()
+            && before.len() <= 4096,
+        "private bounded atomic control file required"
+    );
+    let mut file = std::fs::File::open(path)?;
+    let opened = file.metadata()?;
+    anyhow::ensure!(
+        (before.dev(), before.ino()) == (opened.dev(), opened.ino()),
+        "control inode changed"
+    );
+    let mut bytes = Vec::new();
+    (&mut file).take(4097).read_to_end(&mut bytes)?;
+    let after = std::fs::symlink_metadata(path)?;
+    anyhow::ensure!(
+        !after.file_type().is_symlink()
+            && bytes.len() <= 4096
+            && (
+                before.dev(),
+                before.ino(),
+                before.len(),
+                before.mtime_nsec(),
+                before.ctime_nsec()
+            ) == (
+                after.dev(),
+                after.ino(),
+                after.len(),
+                after.mtime_nsec(),
+                after.ctime_nsec()
+            ),
+        "control changed during read"
+    );
+    Ok(Some(serde_json::from_slice(&bytes)?))
 }
 async fn database(controller: &sqlx::PgPool, base: &str, prefix: &str) -> anyhow::Result<String> {
     let name = format!("mcr_enrollment_{prefix}_{}", Uuid::new_v4().simple());
@@ -105,7 +150,7 @@ async fn paired_browser_fixture_uses_real_auth_rpc_gateway_and_mail() -> anyhow:
         false,
     )?;
     let document = b"ISOLATED BROWSER TEST DOCUMENT. NOT PRODUCTION LEGAL APPROVAL.";
-    let policy = ApprovedPublication {
+    let mut policy = ApprovedPublication {
         revision: Uuid::new_v4(),
         documents: vec![PolicyDocument {
             id: "isolated-browser-terms".into(),
@@ -195,7 +240,30 @@ async fn paired_browser_fixture_uses_real_auth_rpc_gateway_and_mail() -> anyhow:
     );
     state.rate_limiter =
         api_gateway::config::InMemoryRateLimiter::new(1000, std::time::Duration::from_secs(60));
-    let router = harness.transport_router();
+    // The shared harness supplies unused foundation test ports. Make those
+    // unreachable: this fixture can prove Auth only and must never accidentally
+    // supply a synthetic bootstrap/profile to the actual frontend shell.
+    let router = harness.transport_router().layer(axum::middleware::from_fn(
+        |request: axum::extract::Request, next: axum::middleware::Next| async move {
+            if !request.uri().path().starts_with("/api/auth/") {
+                let mut response =
+                    api_gateway::adapters::r#in::http::GatewayError::ServiceUnavailable(
+                        anyhow::anyhow!("fixture dependency unavailable"),
+                    )
+                    .into_response();
+                response.headers_mut().insert(
+                    axum::http::header::CACHE_CONTROL,
+                    axum::http::HeaderValue::from_static("no-store"),
+                );
+                response.headers_mut().insert(
+                    "referrer-policy",
+                    axum::http::HeaderValue::from_static("no-referrer"),
+                );
+                return response;
+            }
+            next.run(request).await
+        },
+    ));
     let browser = tokio::net::TcpListener::bind("127.0.0.1:0").await?;
     let gateway_origin = format!("http://localhost:{}", browser.local_addr()?.port());
     let gateway_loopback_origin = format!("http://{}", browser.local_addr()?);
@@ -302,11 +370,13 @@ async fn paired_browser_fixture_uses_real_auth_rpc_gateway_and_mail() -> anyhow:
             "sourceRevision":std::env::var("MCR_ENROLLMENT_BROWSER_SOURCE_REVISION")?,
             "runtimeMigrationSha256":serde_json::from_str::<Value>(&std::env::var("MCR_ENROLLMENT_BROWSER_RUNTIME_SQL")?)?,
             "runtimeMigrationPaths":serde_json::from_str::<Value>(&std::env::var("MCR_ENROLLMENT_BROWSER_RUNTIME_SQL_PATHS")?)?,
-            "syntheticPolicyOnly":true,"mailCapturePattern":"browser-mail-N.json",
+            "syntheticPolicyOnly":true,"mailCapturePattern":"browser-mail-N.json","authOnly":true,
             "verdict":"SERVING_FIXTURE_ONLY_BROWSER_ACCEPTANCE_REMAINS_FE_OWNED"
         }),
     )?;
     let mut observed = 0usize;
+    let mut expired_control = false;
+    let mut rotated_control = false;
     while !stop_file.exists() && Instant::now() < original_stop {
         tokio::time::timeout(std::time::Duration::from_secs(2), worker.run_once()).await??;
         let mails = captured.lock().unwrap().clone();
@@ -320,6 +390,93 @@ async fn paired_browser_fixture_uses_real_auth_rpc_gateway_and_mail() -> anyhow:
             )?;
             observed += 1;
         }
+        if !expired_control {
+            if let Some(control) = private_control(&output.join("browser-expire.json"), &output)? {
+                let object = control
+                    .as_object()
+                    .ok_or_else(|| anyhow::anyhow!("closed expiry control required"))?;
+                anyhow::ensure!(
+                    object.len() == 1 && object.contains_key("attemptId"),
+                    "closed expiry control required"
+                );
+                let text = control["attemptId"]
+                    .as_str()
+                    .ok_or_else(|| anyhow::anyhow!("canonical attempt required"))?;
+                let attempt: Uuid = text.parse()?;
+                anyhow::ensure!(
+                    !attempt.is_nil() && attempt.to_string() == text,
+                    "canonical attempt required"
+                );
+                let mail = mails
+                    .iter()
+                    .rev()
+                    .find(|mail| mail["enrollment_attempt_id"] == text)
+                    .ok_or_else(|| anyhow::anyhow!("actual captured enrollment mail required"))?;
+                let code = mail["verification_code"]
+                    .as_str()
+                    .ok_or_else(|| anyhow::anyhow!("actual code required"))?;
+                // Negative-only fixture precondition. Identity, acceptance,
+                // attempt state, audit, outbox and receipts remain untouched.
+                let expired:Vec<chrono::DateTime<Utc>> = sqlx::query_scalar(
+                    "update email_verifications v set expires_at=least(v.expires_at,clock_timestamp()-interval '1 second') from mcr_enrollment_attempts a,users u where a.id=$1 and a.state='PENDING' and a.expires_at>clock_timestamp() and a.user_id=u.id and u.status='PENDING_VERIFICATION' and u.deleted_at is null and v.user_id=u.id and v.code=$2 and v.expires_at>clock_timestamp() returning v.expires_at"
+                ).bind(attempt).bind(code).fetch_all(&auth_pool).await?;
+                anyhow::ensure!(
+                    expired.len() == 1 && expired[0] < Utc::now(),
+                    "one actual current challenge must expire"
+                );
+                private_write(
+                    &output.join("browser-challenge-expired.json"),
+                    &json!({
+                        "attemptId":attempt,"actualChallengeExpiresAt":expired[0],"serverTime":Utc::now(),"negativeOnly":true
+                    }),
+                )?;
+                expired_control = true;
+            }
+        }
+        if !rotated_control {
+            if let Some(control) = private_control(&output.join("browser-rotate.json"), &output)? {
+                let object = control
+                    .as_object()
+                    .ok_or_else(|| anyhow::anyhow!("closed policy control required"))?;
+                anyhow::ensure!(
+                    object.len() == 1 && control["expectedRevision"] == policy.revision.to_string(),
+                    "exact current synthetic policy required"
+                );
+                let previous = policy.revision;
+                let verified:bool=sqlx::query_scalar("select exists(select 1 from mcr_enrollment_attempts a join users u on u.id=a.user_id where a.state='VERIFIED' and a.revision=$1 and u.status='ACTIVE' and u.deleted_at is null)")
+                    .bind(previous).fetch_one(&auth_pool).await?;
+                anyhow::ensure!(
+                    verified,
+                    "actual verified signup required before synthetic rotation"
+                );
+                let mut next = policy.clone();
+                next.revision = Uuid::new_v4();
+                next.documents[0].title =
+                    "Isolated browser test terms v2 - not production legal approval".into();
+                next.documents[0].url =
+                    "https://legal.example.test/isolated-browser-terms-v2".into();
+                next.documents[0].sha256 = format!(
+                    "{:x}",
+                    Sha256::digest(b"ISOLATED BROWSER TEST V2. NOT PRODUCTION LEGAL APPROVAL.")
+                );
+                next.documents[0].required_acknowledgement_id = "isolated-browser-terms-v2".into();
+                next.approval_reference =
+                    "ISOLATED_BROWSER_TEST_ROTATION_NOT_PRODUCTION_APPROVAL".into();
+                next.published_at = Utc::now();
+                next.expires_at = Utc::now() + Duration::minutes(10);
+                store.publish(&next).await?;
+                private_write(
+                    &output.join("browser-policy-rotated.json"),
+                    &json!({
+                        "previousRevision":previous,"policyRevision":next.revision,
+                        "requiredAcknowledgementIds":[next.documents[0].required_acknowledgement_id],
+                        "serverTime":Utc::now(),"syntheticPolicyOnly":true
+                    }),
+                )?;
+                policy = next;
+                rotated_control = true;
+            }
+        }
         tokio::time::sleep(std::time::Duration::from_millis(100)).await;
     }
     let accounts: i64 = sqlx::query_scalar("select count(*) from users")
@@ -328,6 +485,7 @@ async fn paired_browser_fixture_uses_real_auth_rpc_gateway_and_mail() -> anyhow:
     private_write(
         &output.join("browser-fixture-stop.json"),
         &json!({"capturedMails":observed,"accounts":accounts,
+        "negativeExpiryControlled":expired_control,"syntheticPolicyRotationControlled":rotated_control,
         "bootHttp":{"actualPublishedPolicy":200,"missingOriginBegin":403,"boundBegin":201},
         "explicitStop":stop_file.exists(),"verdict":"NO_BROWSER_ACCEPTANCE_VERDICT"}),
     )?;
