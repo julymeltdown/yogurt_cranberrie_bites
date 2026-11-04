@@ -103,14 +103,16 @@ coordinator, reads those six incompletes, and replays without rerunning core.
 It then applies one guarded missing-to-complete transition and requires five
 remaining incompletes, no whole ACK, and an unchanged core fence. The test
 postimage is
-`331bd48ec27b7f7927c8700302c3daec3a252d804e6a38aaed2f8d9e29967052`;
+`db4d6195b38ed65370d4163e3307e577cae4ac39a7ad6ec9c7340a71c52fdb36`;
 this corrected restart sequence is **NOT_RUN** and inherits no native result.
 
 The same native fixture now includes a cancellation witness. A test-only owner
 opens a real transaction, writes a sentinel, and waits beyond the coordinator's
 original deadline. The test requires `Unavailable`, no terminal owner or whole
 receipt, a rolled-back sentinel, and only the real core category remaining
-complete. This cancellation case is also **NOT_RUN** on the current source.
+complete. It runs only in the first process before a second process projects the
+durable restart state. This cancellation case is **NOT_RUN** on the current
+source.
 
 A missing core owner returns `Unavailable`; a missing non-core owner remains
 retryable `Incomplete`. No empty registry or synthetic category receipt can

@@ -363,7 +363,10 @@ async fn aggregate_native() -> Result<()> {
         .await?;
         anyhow::ensure!(no_ack_after_guarded_transition.is_none());
     }
-    if !fenced {
+    // Run the cancellation probe before the first-phase owner round is already
+    // fenced. The probe's own coordinator establishes a separate saga and the
+    // owner's open transaction is dropped by the original deadline.
+    if !restart && !fenced {
         let cancel_user = Uuid::from_u128(4202);
         let cancel_event = Uuid::from_u128(4302);
         sqlx::query(
@@ -377,9 +380,6 @@ async fn aggregate_native() -> Result<()> {
         sqlx::query("insert into concert_participants(event_id,user_id,theme,low_power,reduced_motion,sound_enabled) values($1,$2,'DANGER',true,true,true) on conflict do nothing")
             .bind(cancel_event).bind(cancel_user).execute(&p).await?;
         let mut cancel_command = cmd(cancel_user);
-        // Saga IDs are globally unique in the durable aggregate schema. Give
-        // this cancellation witness its own command rather than reusing the
-        // first fixture user's fence identity.
         cancel_command.saga_id = Uuid::from_u128(43);
         let cancel_authority: Arc<dyn DeletionAuthority> = Arc::new(TestAuthority);
         let core: Arc<dyn PrivateDataCategoryOwner> = Arc::new(CorePrivateDataOwner::new(
