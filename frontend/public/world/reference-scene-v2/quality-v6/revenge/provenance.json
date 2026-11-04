@@ -1,0 +1,351 @@
+{
+  "version": 6,
+  "theme_id": "REVENGE",
+  "status": "PROPOSAL_NOT_RELEASE_BOUND",
+  "base_revision": "023201343a452b859759e02039d367c11d1ff8ad",
+  "geometry_hash": "sha256:899aca9bd6ce499c6f46aff5eaf21e30ab34b301e988771b978a6fab7c2d469f",
+  "source_pins": [
+    {
+      "path": "../../painted/parade-source-atlas-v3.png",
+      "sha256": "sha256:4a93f18cd55b66f3c09853f01e7fc78b88da8593298e4758738ff73e1e73ea2c"
+    },
+    {
+      "path": "../sources/stage-sheet.png",
+      "sha256": "sha256:f956c25f756888c4c84fafa449eedd0172125c9b1363f372716f5646b9b2266b"
+    },
+    {
+      "path": "../../eras-v5/revenge/source-atlas.png",
+      "sha256": "sha256:0b45b757048b36b46e9fcd07273db97b4487145f08b9d709186a645113d483a5"
+    },
+    {
+      "path": "../sources/venue-sheet.png",
+      "sha256": "sha256:d2fdd9e0c87584c2b66f0f76820f842070e70d0acb14c5962342eaafde92d886"
+    },
+    {
+      "path": "../sources/surface-sheet.png",
+      "sha256": "sha256:695ddcdd0d895d01445df545035ae21de3db12c5c17fdfb47b244b2b3c616dae"
+    }
+  ],
+  "transforms": [
+    {
+      "frame": "stage",
+      "source": "../sources/stage-sheet.png",
+      "source_rect": {
+        "x": 28,
+        "y": 26,
+        "width": 662,
+        "height": 668
+      },
+      "packed_rect": {
+        "x": 7,
+        "y": 6,
+        "width": 242,
+        "height": 244
+      },
+      "scale": 0.3652694610778443,
+      "resampling": "nearest",
+      "rounding": "nearest ties away from zero"
+    },
+    {
+      "frame": "white_merch_booth",
+      "source": "../../eras-v5/revenge/source-atlas.png",
+      "source_rect": {
+        "x": 327,
+        "y": 24,
+        "width": 296,
+        "height": 298
+      },
+      "packed_rect": {
+        "x": 273,
+        "y": 16,
+        "width": 222,
+        "height": 224
+      },
+      "scale": 0.75,
+      "resampling": "nearest",
+      "rounding": "nearest ties away from zero"
+    },
+    {
+      "frame": "white_food_booth",
+      "source": "../../eras-v5/revenge/source-atlas.png",
+      "source_rect": {
+        "x": 629,
+        "y": 23,
+        "width": 303,
+        "height": 298
+      },
+      "packed_rect": {
+        "x": 526,
+        "y": 16,
+        "width": 227,
+        "height": 224
+      },
+      "scale": 0.75,
+      "resampling": "nearest",
+      "rounding": "nearest ties away from zero"
+    },
+    {
+      "frame": "park_plaque",
+      "source": "../../eras-v5/revenge/source-atlas.png",
+      "source_rect": {
+        "x": 939,
+        "y": 54,
+        "width": 309,
+        "height": 265
+      },
+      "packed_rect": {
+        "x": 780,
+        "y": 28,
+        "width": 232,
+        "height": 199
+      },
+      "scale": 0.75,
+      "resampling": "nearest",
+      "rounding": "nearest ties away from zero"
+    },
+    {
+      "frame": "tree_green",
+      "source": "../../eras-v5/revenge/source-atlas.png",
+      "source_rect": {
+        "x": 6,
+        "y": 327,
+        "width": 307,
+        "height": 301
+      },
+      "packed_rect": {
+        "x": 13,
+        "y": 271,
+        "width": 230,
+        "height": 226
+      },
+      "scale": 0.75,
+      "resampling": "nearest",
+      "rounding": "nearest ties away from zero"
+    },
+    {
+      "frame": "tree_yellow",
+      "source": "../../eras-v5/revenge/source-atlas.png",
+      "source_rect": {
+        "x": 326,
+        "y": 331,
+        "width": 290,
+        "height": 297
+      },
+      "packed_rect": {
+        "x": 275,
+        "y": 272,
+        "width": 218,
+        "height": 223
+      },
+      "scale": 0.75,
+      "resampling": "nearest",
+      "rounding": "nearest ties away from zero"
+    },
+    {
+      "frame": "tree_dark",
+      "source": "../../eras-v5/revenge/source-atlas.png",
+      "source_rect": {
+        "x": 627,
+        "y": 365,
+        "width": 306,
+        "height": 263
+      },
+      "packed_rect": {
+        "x": 525,
+        "y": 285,
+        "width": 230,
+        "height": 197
+      },
+      "scale": 0.75,
+      "resampling": "nearest",
+      "rounding": "nearest ties away from zero"
+    },
+    {
+      "frame": "tree_red",
+      "source": "../../eras-v5/revenge/source-atlas.png",
+      "source_rect": {
+        "x": 958,
+        "y": 356,
+        "width": 285,
+        "height": 272
+      },
+      "packed_rect": {
+        "x": 789,
+        "y": 282,
+        "width": 214,
+        "height": 204
+      },
+      "scale": 0.75,
+      "resampling": "nearest",
+      "rounding": "nearest ties away from zero"
+    },
+    {
+      "frame": "meeting_pavilion",
+      "source": "../sources/venue-sheet.png",
+      "source_rect": {
+        "x": 19,
+        "y": 63,
+        "width": 384,
+        "height": 237
+      },
+      "packed_rect": {
+        "x": 6,
+        "y": 564,
+        "width": 244,
+        "height": 151
+      },
+      "scale": 0.6354166666666666,
+      "resampling": "nearest",
+      "rounding": "nearest ties away from zero"
+    },
+    {
+      "frame": "giveaway_pavilion",
+      "source": "../sources/venue-sheet.png",
+      "source_rect": {
+        "x": 24,
+        "y": 392,
+        "width": 383,
+        "height": 220
+      },
+      "packed_rect": {
+        "x": 262,
+        "y": 570,
+        "width": 244,
+        "height": 140
+      },
+      "scale": 0.6370757180156658,
+      "resampling": "nearest",
+      "rounding": "nearest ties away from zero"
+    },
+    {
+      "frame": "north_hall",
+      "source": "../sources/venue-sheet.png",
+      "source_rect": {
+        "x": 10,
+        "y": 702,
+        "width": 399,
+        "height": 204
+      },
+      "packed_rect": {
+        "x": 518,
+        "y": 577,
+        "width": 244,
+        "height": 125
+      },
+      "scale": 0.6115288220551378,
+      "resampling": "nearest",
+      "rounding": "nearest ties away from zero"
+    },
+    {
+      "frame": "west_hall",
+      "source": "../sources/venue-sheet.png",
+      "source_rect": {
+        "x": 17,
+        "y": 974,
+        "width": 387,
+        "height": 249
+      },
+      "packed_rect": {
+        "x": 774,
+        "y": 561,
+        "width": 244,
+        "height": 157
+      },
+      "scale": 0.6304909560723514,
+      "resampling": "nearest",
+      "rounding": "nearest ties away from zero"
+    },
+    {
+      "frame": "food_counter",
+      "source": "../../eras-v5/revenge/source-atlas.png",
+      "source_rect": {
+        "x": 7,
+        "y": 986,
+        "width": 306,
+        "height": 247
+      },
+      "packed_rect": {
+        "x": 13,
+        "y": 803,
+        "width": 230,
+        "height": 185
+      },
+      "scale": 0.75,
+      "resampling": "nearest",
+      "rounding": "nearest ties away from zero"
+    },
+    {
+      "frame": "plaza_furniture",
+      "source": "../../eras-v5/revenge/source-atlas.png",
+      "source_rect": {
+        "x": 317,
+        "y": 1018,
+        "width": 308,
+        "height": 215
+      },
+      "packed_rect": {
+        "x": 268,
+        "y": 815,
+        "width": 231,
+        "height": 161
+      },
+      "scale": 0.75,
+      "resampling": "nearest",
+      "rounding": "nearest ties away from zero"
+    },
+    {
+      "frame": "cross_banner",
+      "source": "../../eras-v5/revenge/source-atlas.png",
+      "source_rect": {
+        "x": 679,
+        "y": 938,
+        "width": 165,
+        "height": 307
+      },
+      "packed_rect": {
+        "x": 578,
+        "y": 781,
+        "width": 124,
+        "height": 230
+      },
+      "scale": 0.75,
+      "resampling": "nearest",
+      "rounding": "nearest ties away from zero"
+    },
+    {
+      "frame": "shrub_bed",
+      "source": "../../eras-v5/revenge/source-atlas.png",
+      "source_rect": {
+        "x": 916,
+        "y": 1021,
+        "width": 335,
+        "height": 211
+      },
+      "packed_rect": {
+        "x": 774,
+        "y": 819,
+        "width": 244,
+        "height": 154
+      },
+      "scale": 0.7283582089552239,
+      "resampling": "nearest",
+      "rounding": "nearest ties away from zero"
+    }
+  ],
+  "native_packaging": {
+    "path": "native-atlas.png",
+    "sha256": "sha256:94cac7d3bfce12088fa09ac3dfeea1d207271ac12fe3d459ae52d12c555e5b48",
+    "width": 2048,
+    "height": 2048,
+    "method": "Runtime atlas at0,0 with transparent padding only for native image-mask bounds."
+  },
+  "spatial_revision": {
+    "path": "../../spatial-v3/geometry-proposal.json",
+    "sha256": "sha256:373dfdb9ee119c5c2ae39b9b5843732e9fb6ca3d7030c2a26f026adc40a1e8dc",
+    "projection": "../../spatial-v3/integer-projection.json",
+    "base_geometry_hash": "sha256:20168a1df64cd3c72ea3b8cb576ca895dcff8c7edfb0e77886cc647fb1df37e5"
+  },
+  "map_change": "Explicit spatial-v3 coordinates/collision/cell/camera candidate. Stage semantic representation300x210center335root373 and UIanchor335,147; no identity/place review changes. Never mix with geometry20168 releases.",
+  "physical_provenance": "All frozen nested places remain UNREVIEWED and virtual concept.",
+  "fidelity": "Candidate after concrete source fixes; not a new critic score or acceptance."
+}

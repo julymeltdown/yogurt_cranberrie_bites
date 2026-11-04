@@ -62,8 +62,11 @@ def main():
         props = branch["properties"]
         assert branch["additionalProperties"] is False
         assert set(props) in ({"reason"}, {"reason", "retry_after_ms"})
-        assert set(branch["required"]) == set(props)
-        errors[props["reason"]["const"]] = scalar(props["retry_after_ms"]) if "retry_after_ms" in props else None
+        assert "reason" in branch["required"] and set(branch["required"]) <= set(props)
+        errors[props["reason"]["const"]] = ({
+            **scalar(props["retry_after_ms"]),
+            "required": "retry_after_ms" in branch["required"],
+        } if "retry_after_ms" in props else None)
     def emit(name, value):
         # One entry per line keeps repeated route metadata reviewable without inflating the bundle.
         rows = [f"  {json.dumps(k)}: {json.dumps(v, separators=(',', ':'))}," for k, v in value.items()]

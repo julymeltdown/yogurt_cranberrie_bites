@@ -1,0 +1,392 @@
+{
+  "task": "FE-REF-PUBLIC-ARTWORK-MATCH",
+  "status": "MOCK_READY",
+  "requiredMutableStaticArtworkDelivered": true,
+  "qualifiedAt": "2026-11-04T00:14:27.276787+00:00",
+  "assignmentBase": "903773b82836f6b76f2a2ece5b37ec686633a655",
+  "ownedImplementationCommits": [
+    "05e9367289bfab407c054d7f6b0ce991a00b186e",
+    "0f7a14fd7968dc4740bc8fbc352ec9c8e82be9b6"
+  ],
+  "qualifiedCombinedParent": "c0510c9c5a645e856acffbce37ece9931ef43df0",
+  "sourcePaths": [
+    "docs/mcr/frontend/reference-public.md",
+    "frontend/src/features/public/__tests__/reference-target/artwork-comparison.html",
+    "frontend/src/features/public/__tests__/reference-target/capture.mjs",
+    "frontend/src/features/public/__tests__/reference-target/compare-ornaments.py",
+    "frontend/src/features/public/__tests__/reference-target/presentation.test.tsx",
+    "frontend/src/features/public/__tests__/reference-target/trace-ornaments.py",
+    "frontend/src/features/public/ui/Landing.tsx",
+    "frontend/src/features/public/ui/PublicFrame.tsx",
+    "frontend/src/features/public/ui/landing-reference/PosterArtwork.tsx",
+    "frontend/src/features/public/ui/landing-reference/reference-contours.json",
+    "frontend/src/features/public/ui/public.css"
+  ],
+  "validationOwner": "Implementation developer; no king/SL technical review or approval.",
+  "preservation": {
+    "canonicalLandingGuard": true,
+    "legalStylePrefix": true,
+    "publicFrameLegalBranchAndNavigation": true,
+    "docsSource": true,
+    "approvedArtAndLockfile": true
+  },
+  "artwork": {
+    "kind": "Transparent source-pinned non-character foreground vector contours, with newly authored real React/HTML controls.",
+    "sourceSha256": "d9a8fae2f96a82253542019ab673589b3938627956eace15c8594c702b5c4617",
+    "forbiddenSourceCharacterRegion": [
+      15,
+      285,
+      292,
+      390
+    ],
+    "embeddedRasterOrWholePageImage": false,
+    "targetCharactersExtracted": false,
+    "dependencyInstalls": 0,
+    "authoringVersions": {
+      "Pillow": "12.2.0",
+      "numpy": "2.4.4",
+      "scipy": "1.17.1"
+    },
+    "losslessPathBytesBefore": 240891,
+    "losslessPathBytesAfter": 113337,
+    "publicChunkGzipKB": 40.49,
+    "contourComparison": {
+      "qualification": "Native routed foreground resampled once to the source coordinate grid, compared against original reference; bounded silhouette IoU, not whole-page acceptance.",
+      "sourceCrop": [
+        10,
+        35,
+        296,
+        520
+      ],
+      "cases": [
+        {
+          "region": "wordmark",
+          "priorIoU": 0.28489586121968197,
+          "deliveredIoU": 0.9624479600333056,
+          "minimum": 0.88,
+          "pass": true
+        },
+        {
+          "region": "rose",
+          "priorIoU": 0.3928237129485179,
+          "deliveredIoU": 0.9781303602058319,
+          "minimum": 0.82,
+          "pass": true
+        },
+        {
+          "region": "moon_cemetery",
+          "priorIoU": 0.5015580368735394,
+          "deliveredIoU": 0.9472623446422573,
+          "minimum": 0.78,
+          "pass": true
+        }
+      ],
+      "result": "PASS"
+    }
+  },
+  "runtime": {
+    "node": "24.22.2",
+    "browser": "Installed native macOS Google Chrome headless",
+    "widths": [
+      360,
+      390,
+      430
+    ],
+    "actualMainAnonymousCases": 3,
+    "memorySessionCases": 3,
+    "tests": 112,
+    "testFiles": 5,
+    "shortViewportHeight": 420,
+    "ctaHeights": [
+      45.8125,
+      49.90625,
+      55.359375
+    ],
+    "noHorizontalOverflow": true,
+    "sameDocumentDescriptorRequests": 1,
+    "sameDocumentAtlasRequests": 1,
+    "perCharacterRequests": 0,
+    "missingArtCase": "390px actual main entry remains navigable with zero fallback figures.",
+    "pageErrors": []
+  },
+  "commands": [
+    {
+      "cwd": ".",
+      "command": "MCR_REF_REQUIRE_ART=1 /Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node frontend/src/features/public/__tests__/reference-target/capture.mjs",
+      "exitCode": 0,
+      "log": "native.log"
+    },
+    {
+      "cwd": "frontend",
+      "command": "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node node_modules/vitest/vitest.mjs run --no-cache --maxWorkers 1 src/features/public src/app/__tests__/public-entry.test.tsx src/features/auth/__tests__/contract.test.ts src/entities/avatar/selected-static",
+      "exitCode": 0,
+      "log": "behavior.log"
+    },
+    {
+      "cwd": ".",
+      "command": "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node frontend/node_modules/typescript/bin/tsc -p frontend --pretty false",
+      "exitCode": 0,
+      "log": "types.log"
+    },
+    {
+      "cwd": ".",
+      "command": "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node frontend/node_modules/oxlint/bin/oxlint frontend/src/features/public/ui/Landing.tsx frontend/src/features/public/ui/PublicFrame.tsx frontend/src/features/public/ui/landing-reference frontend/src/features/public/__tests__/reference-target",
+      "exitCode": 0,
+      "log": "lint.log"
+    },
+    {
+      "cwd": "frontend",
+      "command": "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node --input-type=module",
+      "stdin": "import { statfs } from 'node:fs/promises'\nimport { build } from 'vite'\nconst disk = await statfs('.')\nif(disk.bavail * disk.bsize < 8 * 1024 ** 3) throw new Error('8GiB disk guard')\nconsole.log(JSON.stringify({freeBytes:disk.bavail * disk.bsize, publicDirCopied:false}))\nawait build({publicDir:false,build:{outDir:'/tmp/mcr-public-artwork-build',emptyOutDir:true}})\n",
+      "exitCode": 0,
+      "log": "build.log"
+    },
+    {
+      "cwd": ".",
+      "command": "python3 scripts/mcr/check-plan.py",
+      "exitCode": 0,
+      "log": "plan.log"
+    },
+    {
+      "cwd": ".",
+      "command": "python3 frontend/src/features/public/__tests__/reference-target/trace-ornaments.py --check",
+      "exitCode": 0,
+      "log": "contours-check.log"
+    },
+    {
+      "cwd": ".",
+      "command": "python3 frontend/src/features/public/__tests__/reference-target/compare-ornaments.py",
+      "exitCode": 0,
+      "log": "contours-compare.log"
+    },
+    {
+      "cwd": ".",
+      "command": "git diff --check",
+      "exitCode": 0
+    },
+    {
+      "cwd": ".",
+      "command": "git diff --cached --check",
+      "exitCode": 0
+    }
+  ],
+  "sourcePins": [
+    {
+      "path": "docs/mcr/frontend/reference-public.md",
+      "bytes": 25541,
+      "sha256": "fcd9a2b1a347fb21034ae655ff1a0e699db275dd2659b0fec6bd6efd53ea6205"
+    },
+    {
+      "path": "frontend/src/features/public/__tests__/reference-target/artwork-comparison.html",
+      "bytes": 2864,
+      "sha256": "8010280a571f0e4b00484154010248ca505cd9c96931605fd9a137b973ad2612"
+    },
+    {
+      "path": "frontend/src/features/public/__tests__/reference-target/capture.mjs",
+      "bytes": 14273,
+      "sha256": "9db3b6db7df15f226c0985aa0f4d51251275d61905337d8928b497b1a5c02820"
+    },
+    {
+      "path": "frontend/src/features/public/__tests__/reference-target/compare-ornaments.py",
+      "bytes": 2306,
+      "sha256": "543ef25b6e0cc0d9c7704394263da59965eb16c970b2e2a8ed5a9ad124fa8604"
+    },
+    {
+      "path": "frontend/src/features/public/__tests__/reference-target/presentation.test.tsx",
+      "bytes": 5125,
+      "sha256": "8f96250ce2ac5c57d2ab92e180e2247bc1b4fa6d56223d559ec4b160318e99db"
+    },
+    {
+      "path": "frontend/src/features/public/__tests__/reference-target/trace-ornaments.py",
+      "bytes": 6671,
+      "sha256": "fdce778c546b6cd7afc9ca89c1500c8341fe41421ea07a250046d41f24b82390"
+    },
+    {
+      "path": "frontend/src/features/public/ui/Landing.tsx",
+      "bytes": 4123,
+      "sha256": "169591f279c818070489b8b84463df5979b010514bbc2b1ee2e5b878e15fe16f"
+    },
+    {
+      "path": "frontend/src/features/public/ui/PublicFrame.tsx",
+      "bytes": 1574,
+      "sha256": "c21518ea7fd58779ff98ef6e88abcd044c38b349ca18d5c3b3ea04b01b797fe7"
+    },
+    {
+      "path": "frontend/src/features/public/ui/landing-reference/PosterArtwork.tsx",
+      "bytes": 3395,
+      "sha256": "a7327343587dff347b4191d799ce2fc66959594b9dd706b04af86c7ecfbfa0f6"
+    },
+    {
+      "path": "frontend/src/features/public/ui/landing-reference/reference-contours.json",
+      "bytes": 113337,
+      "sha256": "4fb46bfc4f4ae523e30ac20d3ee7ca99abf8b7bc7502d250baf0add6af163cde"
+    },
+    {
+      "path": "frontend/src/features/public/ui/public.css",
+      "bytes": 10632,
+      "sha256": "861ed0aa68e14b04c7ffc7d6113143264da82563ef082b221ed6d6b780202656"
+    }
+  ],
+  "approvedPins": [
+    {
+      "path": "frontend/src/features/public/__tests__/reference-target/evidence/target-full.png",
+      "bytes": 2967126,
+      "sha256": "d9a8fae2f96a82253542019ab673589b3938627956eace15c8594c702b5c4617"
+    },
+    {
+      "path": "frontend/public/world/avatars/derived-v1/static-release.json",
+      "bytes": 1898,
+      "sha256": "cc53c6852742e9cbb9858a2d0961411e1a9e131d1e30c0f2b73b265e03f91677"
+    },
+    {
+      "path": "frontend/public/world/avatars/derived-v1/photo01-front-idle-64-e124c88815b22220.png",
+      "bytes": 36030,
+      "sha256": "e124c88815b22220df2f2dc59e2f26b3ceb845e57b77674fd8e55383116d7efe"
+    },
+    {
+      "path": "frontend/public/world/avatars/supplied-v1/photo-01.jpg",
+      "bytes": 168045,
+      "sha256": "67448360482a0dd68172d6089378a002190142bb8bd804818c89a86370154311"
+    },
+    {
+      "path": "frontend/pnpm-lock.yaml",
+      "bytes": 80328,
+      "sha256": "47ca44459819ad0e887d2f4f93394fdf3b1053b8f45edc9ceb0236981feee1f6"
+    }
+  ],
+  "evidencePins": [
+    {
+      "path": "frontend/src/features/public/__tests__/reference-target/evidence/artwork/actual-entry-anonymous-360.png",
+      "bytes": 222196,
+      "sha256": "80a84f2f7e95b8d46e3bda32f3b0697e18720f892808efeb06b8df7f54790413"
+    },
+    {
+      "path": "frontend/src/features/public/__tests__/reference-target/evidence/artwork/actual-entry-anonymous-390.png",
+      "bytes": 251201,
+      "sha256": "f3b534326c41c59bfd91deacad3631adc178d81f2726a4c847e9dfde203cf32a"
+    },
+    {
+      "path": "frontend/src/features/public/__tests__/reference-target/evidence/artwork/actual-entry-anonymous-430.png",
+      "bytes": 287803,
+      "sha256": "a625865bf3f46316ca88456d66e4af83a6458064f4539e6c6d5221429854f9e2"
+    },
+    {
+      "path": "frontend/src/features/public/__tests__/reference-target/evidence/artwork/behavior.log",
+      "bytes": 242,
+      "sha256": "b064bead66611fad2f909acb6d7e700e28f820c5d9e6b2d91d36b7bda0f7a80d"
+    },
+    {
+      "path": "frontend/src/features/public/__tests__/reference-target/evidence/artwork/build.log",
+      "bytes": 8326,
+      "sha256": "80b96f9ff91e1b6cd092c9a8160bdd0b0a52c633c10c5b84c297084d3c128830"
+    },
+    {
+      "path": "frontend/src/features/public/__tests__/reference-target/evidence/artwork/comparison-390.png",
+      "bytes": 683226,
+      "sha256": "ccdbfedad733ee2f03c31ff14b2b34d944e8ad879e16847bdfd2217fb7983d1f"
+    },
+    {
+      "path": "frontend/src/features/public/__tests__/reference-target/evidence/artwork/contour-comparison.json",
+      "bytes": 768,
+      "sha256": "e4302620fd9c6346fa15a8dfbce4e90c341c0c3641b85045543ba857ad40fa5f"
+    },
+    {
+      "path": "frontend/src/features/public/__tests__/reference-target/evidence/artwork/contours-check.log",
+      "bytes": 76,
+      "sha256": "a887115f8a96ef1ba6f7d2b25d5e8ff02b38d8128ddfcfe675a8006840012af8"
+    },
+    {
+      "path": "frontend/src/features/public/__tests__/reference-target/evidence/artwork/contours-compare.log",
+      "bytes": 768,
+      "sha256": "e4302620fd9c6346fa15a8dfbce4e90c341c0c3641b85045543ba857ad40fa5f"
+    },
+    {
+      "path": "frontend/src/features/public/__tests__/reference-target/evidence/artwork/foreground-390.png",
+      "bytes": 188550,
+      "sha256": "add3b1d39c8d5049c21648859ef8a375f19eb5805cae9baaeefa85e6f38096ce"
+    },
+    {
+      "path": "frontend/src/features/public/__tests__/reference-target/evidence/artwork/landing-360.png",
+      "bytes": 219285,
+      "sha256": "fa78c4d0cc454ba4a55697e6ec02165ec0f5d5315f7ba81a95c8a0e63e8ab0ae"
+    },
+    {
+      "path": "frontend/src/features/public/__tests__/reference-target/evidence/artwork/landing-390.png",
+      "bytes": 248289,
+      "sha256": "dbb09ff5b80b7ceb578c17778b3021722655ff2c55f9af1904ded21345e288cc"
+    },
+    {
+      "path": "frontend/src/features/public/__tests__/reference-target/evidence/artwork/landing-430.png",
+      "bytes": 287803,
+      "sha256": "a625865bf3f46316ca88456d66e4af83a6458064f4539e6c6d5221429854f9e2"
+    },
+    {
+      "path": "frontend/src/features/public/__tests__/reference-target/evidence/artwork/lint.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "frontend/src/features/public/__tests__/reference-target/evidence/artwork/native.json",
+      "bytes": 7531,
+      "sha256": "16a624f411359c9c96a15d2fc029dd7087c1f046d25aeb1507884a09c25836c8"
+    },
+    {
+      "path": "frontend/src/features/public/__tests__/reference-target/evidence/artwork/native.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "frontend/src/features/public/__tests__/reference-target/evidence/artwork/plan.log",
+      "bytes": 1435,
+      "sha256": "88606f33d640a29811a4cbdc9748fc0f1e16225b81ad7e697deaf3b20c9b86e1"
+    },
+    {
+      "path": "frontend/src/features/public/__tests__/reference-target/evidence/artwork/poster-360.png",
+      "bytes": 206385,
+      "sha256": "24bf4bd2273035bb8f7d14b24e9a344e65c2ac9a41fce87a89c592ef78865bae"
+    },
+    {
+      "path": "frontend/src/features/public/__tests__/reference-target/evidence/artwork/poster-390.png",
+      "bytes": 234637,
+      "sha256": "6592c0ce6b0b13922d05f6893c9f3eb52c410d7893b35adc55e97c0b8f59e94d"
+    },
+    {
+      "path": "frontend/src/features/public/__tests__/reference-target/evidence/artwork/poster-430.png",
+      "bytes": 272097,
+      "sha256": "5e65efa416a8c37786ce417f1561e3a7499de8fe6cfcf107b7615860fc7fd4ea"
+    },
+    {
+      "path": "frontend/src/features/public/__tests__/reference-target/evidence/artwork/production-unavailable-360.png",
+      "bytes": 216467,
+      "sha256": "131164df5aac066c8501817894289fc60fdf363c0501838ebe3b9e1faa9dcce4"
+    },
+    {
+      "path": "frontend/src/features/public/__tests__/reference-target/evidence/artwork/production-unavailable-390.png",
+      "bytes": 245900,
+      "sha256": "51b0151bb77184849e7307af80d411eca7d97be4c05c26884214692db079fd68"
+    },
+    {
+      "path": "frontend/src/features/public/__tests__/reference-target/evidence/artwork/production-unavailable-430.png",
+      "bytes": 284964,
+      "sha256": "dfc9176b7b545382733039382a6a23b853deaa63d1f9eba3bb2af0813733754c"
+    },
+    {
+      "path": "frontend/src/features/public/__tests__/reference-target/evidence/artwork/types.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  ],
+  "explicitVisualConstraints": [
+    "Approved selected characters/costumes/face proportions remain authoritative and differ from target characters.",
+    "Genuine Sign in navigation replaces counterfeit target window controls; truthful readiness/disclosure/legal remain below the poster.",
+    "Minimum 44px interactive target retained even when source proportions would be shorter."
+  ],
+  "notRun": [
+    "Live provider/public backend gateway",
+    "Physical device",
+    "Real multiuser/World/IN01/IN05",
+    "All-ten-screen/full-project acceptance"
+  ],
+  "nextAction": "No missing static-art input or external dependency for this delivered landing. Relevant implementation owners retain separate live/full-product gates.",
+  "logNormalization": "Only trailing whitespace and final blank lines normalized; command content/results retained."
+}

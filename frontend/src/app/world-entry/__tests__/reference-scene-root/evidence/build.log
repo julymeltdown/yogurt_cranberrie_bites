@@ -1,0 +1,84 @@
+vite v8.1.3 building client environment for production...
+[2K
+transforming...✓ 475 modules transformed.
+rendering chunks...
+computing gzip size...
+dist/index.html                                          2.02 kB │ gzip:   0.69 kB
+dist/assets/red-ink-BU4Q2PCh.svg                         7.61 kB │ gzip:   1.39 kB
+dist/assets/mcr-auth-print-pPg3st5N.woff                19.45 kB
+dist/assets/frame-print-Qa3Zbkhj.svg                    33.73 kB │ gzip:   4.43 kB
+dist/assets/paper-print-BiNBgY89.svg                   243.45 kB │ gzip:  39.53 kB
+dist/assets/cemetery-bottom-v1-Bkd59J1m.png            762.21 kB
+dist/assets/cemetery-top-v1-OlgvrKla.png             2,124.81 kB
+dist/assets/RootMediaView-BdfnIHbK.css                   0.55 kB │ gzip:   0.25 kB
+dist/assets/ProfileIcon-C5jlMgdD.css                     1.36 kB │ gzip:   0.59 kB
+dist/assets/safety-BViJNTBJ.css                          1.51 kB │ gzip:   0.56 kB
+dist/assets/root-features-nb6jl9cq.css                   1.55 kB │ gzip:   0.65 kB
+dist/assets/meeting-entry-jVy7UCgi.css                   1.58 kB │ gzip:   0.66 kB
+dist/assets/social-BMiG3aQa.css                          1.71 kB │ gzip:   0.71 kB
+dist/assets/composition-C7uV5nlu.css                     3.55 kB │ gzip:   1.13 kB
+dist/assets/panels-BMt8WHkR.css                          4.19 kB │ gzip:   1.38 kB
+dist/assets/social-composition-BD3_6jZW.css              5.21 kB │ gzip:   1.45 kB
+dist/assets/activity-CSOKqWtj.css                        9.90 kB │ gzip:   2.79 kB
+dist/assets/world-panels-cWsIhOQK.css                   13.67 kB │ gzip:   3.54 kB
+dist/assets/provider-DprRFUma.css                       14.46 kB │ gzip:   3.38 kB
+dist/assets/CommunityFeatures-CtYOQD37.css              17.33 kB │ gzip:   3.90 kB
+dist/assets/PublicBoundary-CbXXeRBx.css                 18.72 kB │ gzip:   4.48 kB
+dist/assets/index-CgHiC7As.css                          27.70 kB │ gzip:   6.03 kB
+dist/assets/rolldown-runtime-QTnfLwEv.js                 0.69 kB │ gzip:   0.42 kB
+dist/assets/compatibility-BGkcp1nM.js                    0.84 kB │ gzip:   0.40 kB
+dist/assets/provider-39rgXx8_.js                         0.96 kB │ gzip:   0.54 kB
+dist/assets/reference-scene-overview-BmObUyC6.js         0.99 kB │ gzip:   0.57 kB
+dist/assets/identity-Iv3P1lMF.js                         1.02 kB │ gzip:   0.59 kB
+dist/assets/phaser-C-L-RzyC.js                           1.19 kB │ gzip:   0.62 kB
+dist/assets/preload-helper-CZgWQFsJ.js                   1.25 kB │ gzip:   0.70 kB
+dist/assets/AdminBoundary-z2M_wr7W.js                    1.37 kB │ gzip:   0.68 kB
+dist/assets/operations-ClTv-duQ.js                       1.45 kB │ gzip:   0.61 kB
+dist/assets/overview-BqdjoyKZ.js                         1.71 kB │ gzip:   0.91 kB
+dist/assets/avatar-config.schema-D-59TwV9.js             1.86 kB │ gzip:   0.54 kB
+dist/assets/reference-scene-CHLMCTV5.js                  1.95 kB │ gzip:   1.07 kB
+dist/assets/authority-BFzIzqAm.js                        2.75 kB │ gzip:   1.19 kB
+dist/assets/contract-DcaKwr0K.js                         2.98 kB │ gzip:   1.33 kB
+dist/assets/simulation-sCcriVKG.js                       3.15 kB │ gzip:   1.27 kB
+dist/assets/RootMediaView-Dn3-gxvK.js                    3.47 kB │ gzip:   1.48 kB
+dist/assets/errors-hxkLUXfp.js                           4.48 kB │ gzip:   1.88 kB
+dist/assets/panel-fJuadsp8.js                            4.71 kB │ gzip:   1.92 kB
+dist/assets/resolver-BmYNPoel.js                         4.71 kB │ gzip:   2.18 kB
+dist/assets/whole-character-uuRj4mhS.js                  5.65 kB │ gzip:   2.20 kB
+dist/assets/resources-BCBu3f8Y.js                        6.18 kB │ gzip:   2.66 kB
+dist/assets/model-a0gp53af.js                            6.41 kB │ gzip:   2.60 kB
+dist/assets/jsx-runtime-CIxEorsV.js                      7.89 kB │ gzip:   2.98 kB
+dist/assets/social-composition-BCUila67.js               8.17 kB │ gzip:   2.80 kB
+dist/assets/provider-Dcm7n2vz.js                         9.25 kB │ gzip:   4.07 kB
+dist/assets/MapScene-D9r_s12p.js                        10.90 kB │ gzip:   4.17 kB
+dist/assets/panels-DiDKpgTB.js                          10.96 kB │ gzip:   3.61 kB
+dist/assets/ProfileIcon-C73B0BXw.js                     11.94 kB │ gzip:   4.74 kB
+dist/assets/capabilities-j6DOnuaE.js                    13.22 kB │ gzip:   3.72 kB
+dist/assets/root-features-BnofnRlN.js                   14.87 kB │ gzip:   4.94 kB
+dist/assets/manifest-BovhGGz9.js                        15.78 kB │ gzip:   4.49 kB
+dist/assets/source-catalog-B2GN78SH.js                  15.97 kB │ gzip:   4.30 kB
+dist/assets/contract-Bcu83lns.js                        26.64 kB │ gzip:   5.81 kB
+dist/assets/social-IdH-gZh7.js                          35.11 kB │ gzip:  10.27 kB
+dist/assets/model-whALPROg.js                           37.02 kB │ gzip:   4.70 kB
+dist/assets/meeting-entry-DB3OoqoH.js                   37.43 kB │ gzip:  10.47 kB
+dist/assets/provider-Bw8TjmYU.js                        43.20 kB │ gzip:  13.13 kB
+dist/assets/composition-BneTLzy1.js                     48.57 kB │ gzip:  16.31 kB
+dist/assets/access-BaxZdj7i.js                          59.25 kB │ gzip:  20.07 kB
+dist/assets/schemas-B9zUvP7H.js                         66.99 kB │ gzip:  17.93 kB
+dist/assets/CommunityFeatures-BZdAj6x5.js               68.75 kB │ gzip:  18.93 kB
+dist/assets/world-panels-u8Px_VZl.js                    72.17 kB │ gzip:  23.51 kB
+dist/assets/domain-operations.generated-CpkEJAQQ.js     81.10 kB │ gzip:   4.34 kB
+dist/assets/activity-j0_PhFpa.js                        87.40 kB │ gzip:  24.73 kB
+dist/assets/routes-DD6e3a7i.js                          97.67 kB │ gzip:  32.09 kB
+dist/assets/mcr-core.openapi-BTwes0QT.js               126.29 kB │ gzip:  12.56 kB
+dist/assets/PublicBoundary-5Gou9g7J.js                 151.64 kB │ gzip:  39.45 kB
+dist/assets/index-BC3PlJyk.js                          276.07 kB │ gzip:  86.44 kB
+dist/assets/mcr-domain.openapi-CcaYUSx5.js             760.82 kB │ gzip:  49.28 kB
+dist/assets/phaser-DuGV5HTt.js                       1,198.04 kB │ gzip: 319.11 kB
+
+✓ built in 931ms
+[plugin builtin:vite-reporter]
+(!) Some chunks are larger than 500 kB after minification. Consider:
+- Using dynamic import() to code-split the application
+- Use build.rolldownOptions.output.codeSplitting to improve chunking: https://rolldown.rs/reference/OutputOptions.codeSplitting
+- Adjust chunk size limit for this warning via build.chunkSizeWarningLimit.
