@@ -1,6 +1,6 @@
 # BE-GIFTS-LIVE production producer
 
-Status: IN_PROGRESS. No compilation, PostgreSQL, canonical-owner or live HTTP acceptance is claimed.
+Status: IN_PROGRESS. The focused slice compiles and its 20 local tests pass. Canonical-owner business flows and live HTTP acceptance remain NOT_RUN.
 
 ## Assignment and source
 
@@ -83,7 +83,7 @@ may finish the response scope. The published SDK is incorporated; root HTTP comp
 
 Media owner warns that BE37 pair stamps cannot replace uploader policy semantics:
 media relationship revision is event-admission restriction revision; authority
-revision is a stable actual per-actor security scalar. Await its binding-only
+revision is a stable actual per-actor security scalar. Use its binding-only
 `capture_owner_context_in` helper, published at `30be9c9c4eaf5886b2c9d5850417474101b05aef`,
 then use actual `PgMedia::link_owned_in` with a
 Gift-scoped MediaAuthority. Uploader-only authority deliberately denies Link and
@@ -100,24 +100,36 @@ keys/content type, code/revision limits, raw input preservation and expired orig
 stop. Additional authored tests cover opaque cursors, safe reservation/code/claim
 projections, frozen error mappings, and actual local Concert resource SQL locks,
 shutdown/read-only distinctions, exact request correlation and denied media hooks.
-All native tests are NOT_RUN until an existing physical target is explicitly
-allocated. No Cargo target, PG cluster, install or global cleanup has been used.
+At source `2590d9982788a7eb3197a49ab712cde6689e131b`, all four focused test
+binaries compile with Rust 1.88 locked/offline, two jobs, debug and incremental
+disabled. Native results: 8 protocol + 4 cursor + 4 safe projection tests PASS;
+4 actual PostgreSQL 16.14 local-resource tests PASS; private-cluster cleanup PASS.
+The existing BACKEND target was explicitly allocated, binaries and 1,728 source
+hashes frozen privately, then the target explicitly released before native runs.
+No new target, installation or global cleanup occurred.
 The private Gift resource runner reuses `migration_smoke.py::Cluster` and adapts
 the retained `tests/support/community/owned.rs` connection/marker checks at base
 `1cbb1823`. Its scope is local Concert resources only; no synthetic Auth/Friend
 positive authority is supplied or certified. It runs all current Concert migrations
 in its owned socket-only database, verifies source/binary hashes stayed frozen and
-requires marker-validated cleanup. The script has not been executed.
+requires marker-validated cleanup. The runner completed with exit 0. Committed
+`tests/gift_live_support/native-evidence.json` records commands, outputs, binary
+hashes and limits; adjacent `source-pins.json` records exact dependency hashes.
+The first build failed from a stale shared-target `contracts-build` artifact
+pointing to another checkout. Package-only cleanup on the allocated target
+removed 20 files (816.3 KiB); the unchanged build command then succeeded.
 
 Static checks: `rustfmt +1.95.0 --edition 2021` on owned Rust source/tests,
 Python `ast.parse` on the new runner and `git diff --check` exit 0. The default
 stable rustfmt fails because its rustc-driver dylib is absent; the already-installed
 1.95.0 formatter succeeds. No toolchain installation or default change was made.
 
-Remaining implementation: actual request-scoped canonical guard integration and
-settlement, mandatory Gift media authority, orchestration/public-profile projection,
-bounded cursor handling, exact safe error/receipt responses, real PostgreSQL
-stock/expiry/idempotency/claim interleavings, real owner and server-entry qualification.
+Remaining implementation: dispatch/business orchestration, actual request-scoped
+canonical guard/settlement qualification, mandatory Gift media authority and
+public-profile assembly, wire-up of the validated cursor/response helpers, real
+PostgreSQL stock/expiry/idempotency/claim interleavings, and real owner/server-entry
+qualification. The physical-place positive path is compiled but has not received
+a new native Gift-specific reviewed-place/closure race test in this slice.
 Mocks or isolated units will not certify live Gifts or the two-user IN02 journey.
 
 Current source additionally wraps actual SDK `GuardedAuthority` with same-connection
@@ -130,3 +142,7 @@ checked against the actual root-supplied scope. Safety cancellation applies the
 retained Safety field at receipt authorization as well as apply, preventing the
 retained generic ReadGifts callback from accidentally blocking that exact safety
 operation after feature shutdown. This adapter is not yet runtime-qualified.
+
+Root temporary single-line module-export grant was returned after source checkpoint
+`92821595`; the registered export and actual module were subsequently compiled at
+`2590d998`. No further lib.rs changes are owned or planned by this worker.
