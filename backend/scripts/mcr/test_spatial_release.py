@@ -11,6 +11,7 @@ import unittest
 import signal
 import subprocess
 import sys
+import tempfile
 from unittest.mock import patch
 
 spec = importlib.util.spec_from_file_location('spatial_builder', Path(__file__).with_name('build_spatial_release.py'))
@@ -173,6 +174,83 @@ class QualityV6Tests(unittest.TestCase):
                 builder.build(mixed)
 
 
+class QualityV8Tests(unittest.TestCase):
+    @classmethod
+    def setUpClass(cls):
+        cls.outputs = builder.build(builder.QUALITY_V8)
+
+    def test_actual_new_revision_preserves_old_runtime_and_adds_exact_collision_cells(self):
+        old = builder.build(builder.QUALITY_V6)['map-manifest.json']
+        new = self.outputs['map-manifest.json']
+        self.assertEqual(new['map_revision'], 5)
+        self.assertEqual(new['map_id'], old['map_id'])
+        self.assertEqual(new['places'], old['places'])
+        self.assertEqual(new['geometry_hash'], builder.QUALITY_V8.geometry_hash)
+        self.assertEqual(new['tilemap']['sha256'], builder.QUALITY_V8.tiled_hash)
+        changes = [(a, b) for before, after in zip(old['geometry']['collision_grid'], new['geometry']['collision_grid'])
+                   for a, b in zip(before, after) if a != b]
+        self.assertEqual(changes, [(0, 1)] * 72)
+        for name, value in self.outputs.items():
+            self.assertEqual(json.loads((builder.ROOT / 'backend/releases/reference-scene-v2/quality-v8' / name).read_bytes()), value)
+
+    def test_all_three_actual_source_descriptors_and_review_limits(self):
+        budgets = {'REVENGE': 1735321, 'PARADE': 1746508, 'DANGER': 1732813}
+        binding = self.outputs['source-binding.json']
+        for scene in binding['scenes']:
+            source = json.loads(builder.published_input(scene['scenery_source']['path'], builder.QUALITY_V8.art_commit))
+            self.assertEqual(len(source['objects']), 34)
+            budget = self.outputs['readiness.json']['scenery_budget'][scene['theme_id']]
+            self.assertEqual((budget['bytes'], budget['pixels']), (budgets[scene['theme_id']], 2043904))
+            self.assertTrue(any(p['path'].endswith('/spatial-v4/revision-evidence.json') for p in scene['scene_sources']))
+        packet = self.outputs['scene-source-qualification.json']
+        self.assertEqual(packet['admission'], 'NOT_ADMITTED')
+        self.assertEqual(len(packet['scenes']), 3)
+        self.assertTrue(all(p['source_provenance']['source_id'].startswith('mcr_quality_v8_') for p in packet['scenes']))
+        self.assertIsNone(self.outputs['readiness.json']['bootstrap'])
+        self.assertTrue(all(p['provenance']['review_state'] == 'UNREVIEWED' for p in self.outputs['map-manifest.json']['places']))
+
+    def test_v8_source_evidence_cannot_hide_collision_removal_or_prop_move(self):
+        proposal = json.loads(builder.published_input(builder.QUALITY_V8.geometry_path, builder.QUALITY_V8.source_commit))
+        evidence = json.loads(builder.published_input(builder.BASE + 'spatial-v4/revision-evidence.json', builder.QUALITY_V8.art_commit))
+        builder.verify_v8_revision(proposal, evidence)
+        changed = copy.deepcopy(evidence); changed['changed_cells'].pop()
+        with self.assertRaisesRegex(ValueError, 'collision evidence'):
+            builder.verify_v8_revision(proposal, changed)
+        changed = copy.deepcopy(proposal)
+        changed['placements'][0]['y'] += 1
+        with self.assertRaisesRegex(ValueError, 'frozen props'):
+            builder.verify_v8_revision(changed, evidence)
+        changed = copy.deepcopy(proposal)
+        changed['geometry']['overdraw_layer'][0][0] = 1 - changed['geometry']['overdraw_layer'][0][0]
+        with self.assertRaisesRegex(ValueError, 'frozen terrain'):
+            builder.verify_v8_revision(changed, evidence)
+
+    def test_map4_tiled_cannot_be_resealed_under_map5(self):
+        original = builder.published_input
+        def swapped(path, revision=builder.SOURCE_COMMIT):
+            if path == builder.QUALITY_V8.tiled_path:
+                return original(builder.QUALITY_V6.tiled_path, builder.QUALITY_V6.tiled_commit)
+            return original(path, revision)
+        with patch.object(builder, 'published_input', side_effect=swapped):
+            with self.assertRaisesRegex(ValueError, 'Tiled differs'):
+                builder.build(builder.QUALITY_V8._replace(tiled_hash=builder.QUALITY_V6.tiled_hash))
+
+    def test_png_crc_and_complete_pixel_stream_are_checked(self):
+        def chunk(kind, data):
+            return builder.struct.pack('>I', len(data)) + kind + data + builder.struct.pack('>I', builder.zlib.crc32(kind + data))
+        def image(pixels):
+            return (b'\x89PNG\r\n\x1a\n' + chunk(b'IHDR', builder.struct.pack('>IIBBBBB', 1, 1, 8, 6, 0, 0, 0))
+                    + chunk(b'IDAT', builder.zlib.compress(pixels)) + chunk(b'IEND', b''))
+        builder.decode_png(image(b'\0\xff\0\0\xff'))
+        damaged = bytearray(image(b'\0\xff\0\0\xff')); damaged[-1] ^= 1
+        with self.assertRaisesRegex(ValueError, 'CRC'):
+            builder.decode_png(damaged)
+        with self.assertRaisesRegex(ValueError, 'pixel stream'):
+            builder.decode_png(image(b'\0\xff'))
+        with self.assertRaisesRegex(ValueError, 'row filter'):
+            builder.decode_png(image(b'\x05\xff\0\0\xff'))
+
+
 def verify_native_candidate(stdout, expected):
     rows = re.findall(r'MCR_SPATIAL_CANDIDATE (\{[^\n]*\})', stdout)
     builder.require(len(rows) == 1 and json.loads(rows[0]) == expected,
@@ -180,9 +258,7 @@ def verify_native_candidate(stdout, expected):
     return json.loads(rows[0])
 
 
-def run_native(metadata, pg_bin, pinned_binaries, inputs=builder.BASELINE):
-    # Reuse the existing marker/inode-owned cluster and exact native-test runner.
-    # No install, Docker, external URL or service-default database is involved.
+def frozen_bootstrap(metadata, pinned_binaries):
     import bootstrap_smoke as bootstrap
     import migration_smoke as migration
     selected = []
@@ -194,24 +270,81 @@ def run_native(metadata, pg_bin, pinned_binaries, inputs=builder.BASELINE):
             finished = True
         if (row.get('reason') == 'compiler-artifact' and row.get('executable')
                 and row['target']['name'] == 'bootstrap' and 'test' in row['target']['kind']
-                and Path(row['manifest_path']).resolve() == builder.ROOT / 'backend/services/concert-service/Cargo.toml'):
-            selected.append(Path(row['executable']).resolve())
+                and Path(row['manifest_path']) == builder.ROOT / 'backend/services/concert-service/Cargo.toml'):
+            executable = Path(row['executable'])
+            bootstrap.require(executable.is_absolute(), 'absolute compiler metadata required')
+            selected.append(executable)
     bootstrap.require(finished and len(set(selected)) == 1, 'exact service bootstrap artifact required')
     receipt = json.loads(pinned_binaries.read_text())
     matches = [row for row in receipt['artifacts']
                if row['package'] == 'concert-service'
-               and Path(row['manifest_path']).resolve() == builder.ROOT / 'backend/services/concert-service/Cargo.toml'
-               and Path(row['compiler_executable']).resolve() == selected[0]]
+               and Path(row['manifest_path']) == builder.ROOT / 'backend/services/concert-service/Cargo.toml'
+               and Path(row['compiler_executable']) == selected[0]]
     bootstrap.require(len(matches) == 1, 'exact frozen compiler artifact required')
     row = matches[0]
     binary = migration.executable(Path(row['snapshot']))
     bootstrap.require(hashlib.sha256(binary.read_bytes()).hexdigest() == row['sha256'], 'frozen checksum mismatch')
+    return binary, receipt, row
+
+
+class FrozenBootstrapTests(unittest.TestCase):
+    def test_released_compiler_paths_are_metadata_only_and_snapshot_is_pinned(self):
+        import migration_smoke as migration
+        with tempfile.TemporaryDirectory() as temporary:
+            root = Path(temporary)
+            metadata, receipt_path = root / 'cargo.jsonl', root / 'receipt.json'
+            shared = root / 'released-target' / 'bootstrap-exact-compiler-id'
+            snapshot = root / 'bootstrap-frozen'
+            snapshot.write_bytes(b'hermetic metadata fixture; never execute')
+            snapshot.chmod(0o700)
+            artifact = {'reason': 'compiler-artifact', 'target': {'name': 'bootstrap', 'kind': ['test']},
+                        'manifest_path': str(builder.ROOT / 'backend/services/concert-service/Cargo.toml'),
+                        'executable': str(shared)}
+            finished = {'reason': 'build-finished', 'success': True}
+            metadata.write_text('\n'.join(map(json.dumps, [artifact, finished])))
+            row = {'package': 'concert-service', 'manifest_path': artifact['manifest_path'],
+                   'compiler_executable': str(shared), 'snapshot': str(snapshot),
+                   'sha256': hashlib.sha256(snapshot.read_bytes()).hexdigest()}
+            receipt_path.write_text(json.dumps({'artifacts': [row]}))
+            original_stat = Path.stat
+            original_resolve = Path.resolve
+            def guarded_stat(path, *args, **kwargs):
+                if path == shared or shared.parent in path.parents:
+                    raise AssertionError('released target stat')
+                return original_stat(path, *args, **kwargs)
+            def guarded_resolve(path, *args, **kwargs):
+                if path == shared or shared.parent in path.parents:
+                    raise AssertionError('released target resolve')
+                return original_resolve(path, *args, **kwargs)
+            with patch.object(Path, 'stat', guarded_stat), patch.object(Path, 'resolve', guarded_resolve):
+                binary, _, _ = frozen_bootstrap(metadata, receipt_path)
+            self.assertEqual(binary, snapshot.resolve())
+            snapshot.write_bytes(b'drift')
+            with self.assertRaises(migration.SmokeError) as error:
+                frozen_bootstrap(metadata, receipt_path)
+            self.assertEqual(error.exception.detail['diagnostic'], 'frozen checksum mismatch')
+            metadata.write_text(json.dumps(artifact))
+            with self.assertRaises(migration.SmokeError) as error:
+                frozen_bootstrap(metadata, receipt_path)
+            self.assertEqual(error.exception.detail['diagnostic'], 'exact service bootstrap artifact required')
+            metadata.write_text('\n'.join(map(json.dumps, [artifact, {**finished, 'success': False}])))
+            with self.assertRaises(migration.SmokeError) as error:
+                frozen_bootstrap(metadata, receipt_path)
+            self.assertEqual(error.exception.detail['diagnostic'], 'Cargo build failed')
+
+
+def run_native(metadata, pg_bin, pinned_binaries, inputs=builder.BASELINE):
+    # Reuse the existing marker/inode-owned cluster and exact native-test runner.
+    # Original compiler paths are metadata only after the shared target release.
+    import bootstrap_smoke as bootstrap
+    import migration_smoke as migration
+    binary, receipt, row = frozen_bootstrap(metadata, pinned_binaries)
     tools = {name: migration.executable(pg_bin / name) for name in migration.PG_TOOLS}
     outputs = builder.build(inputs)
     expected = {**outputs['readiness.json']['map'],
                 'source_commit': inputs.source_commit, 'art_commit': inputs.art_commit}
     cluster = migration.Cluster(tools)
-    cluster.env['MCR_SPATIAL_TEST_CANDIDATE'] = 'quality-v6' if inputs == builder.QUALITY_V6 else 'baseline'
+    cluster.env['MCR_SPATIAL_TEST_CANDIDATE'] = next(name for name, value in builder.CANDIDATES.items() if value == inputs)
     report = {'state': 'FAIL', 'commands': {}, 'source_commit': receipt['source_commit'],
               'binary_sha256': row['sha256'], 'geometry_hash': inputs.geometry_hash, 'map_revision': inputs.map_revision,
               'art_commit': inputs.art_commit, 'admission': 'NOT_ADMITTED'}
@@ -266,13 +399,13 @@ if __name__ == '__main__':
     if '--native' in sys.argv:
         parser = argparse.ArgumentParser(description=__doc__)
         parser.add_argument('--native', action='store_true')
-        parser.add_argument('--candidate', choices=['baseline', 'quality-v6'], default='baseline')
+        parser.add_argument('--candidate', choices=list(builder.CANDIDATES), default='baseline')
         parser.add_argument('--build-metadata', type=Path, required=True)
         parser.add_argument('--pg-bin', type=Path, required=True)
         parser.add_argument('--pinned-binaries', type=Path, required=True)
         args = parser.parse_args()
         report = run_native(args.build_metadata, args.pg_bin, args.pinned_binaries,
-                            builder.QUALITY_V6 if args.candidate == 'quality-v6' else builder.BASELINE)
+                            builder.CANDIDATES[args.candidate])
         print(json.dumps(report, sort_keys=True))
         raise SystemExit(0 if report['state'] == 'PASS' else 1)
     unittest.main()

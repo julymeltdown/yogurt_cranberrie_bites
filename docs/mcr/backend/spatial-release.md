@@ -3,12 +3,13 @@
 Status: IN_PROGRESS. This is implementation of the canonical spatial release;
 source art is a proposal and is not accepted product artwork.
 
-Current delivery: published `60991c53` contains the qualified all-three map2
-component and actual-transaction avatar hook (tested source `6c700f04`). The local
-map3/virtual-aware policy follow-up `a80ac2c2` has source/Python/PNG qualification;
-its fresh Rust/native checks are queued, NOT_RUN. No build target or native
-cluster is held. Current map3/source-review details are in the final section.
-Historical checkpoints below retain their exact source and evidence boundaries.
+Current producer: quality-v8, server map revision5, geometry0448, exact frontend
+Tiled c589. Its source and Python qualification passes; fresh Rust/PostgreSQL
+qualification is queued, NOT_RUN. Existing map3/map4 component qualification
+remains intact. The bounded avatar witness goal completed after verified master
+publication; the separate v8 goal is active. Only the designated delivery
+integrator publishes this handoff to master. Current v8 details are at the end;
+historical checkpoints below retain their original evidence boundaries.
 
 ## Objective and completion criteria
 
@@ -19,9 +20,10 @@ non-force to master, and fix concrete failures. Completion requires compatible
 source resources and all existing admission requirements, not an alias of missing
 skins or invented operator/physical-place qualification.
 
-The actual goal API reports the historical incompatible BE04 goal BLOCKED and
-unfinished. It has been preserved without reset or false completion. This manual
-assignment does not claim a second ACTIVE persistent goal.
+At this historical checkpoint the goal API reported the incompatible BE04 goal
+BLOCKED and unfinished, preserved without reset or false completion. That manual
+assignment did not claim a second ACTIVE persistent goal. The later persistent-goal
+reconciliation and current v8 assignment supersede that historical goal state.
 
 ## Ownership and source
 
@@ -424,3 +426,51 @@ and this document. Root release/schema/registry/composition paths, frontend,
 source originals, manifests, lockfiles, migrations, motion C06 families and
 selected avatars are excluded. Validation and native publication are NOT_RUN
 for this new goal. No build target or database is held.
+
+### Revision5 reproducible source checkpoint
+
+Published frontend inputs were integrated at `4af00fdb` and materialized here by
+merge `48451d09`; their original `cf48c0fe` canonical Tiled bytes are unchanged.
+This producer consumes them without frontend writes or a second serializer.
+The new five-file `quality-v8/` candidate has content hash
+`sha256:e22cda95d98f7f5a5ce2f4fba1e78e074248e8b4439e1b5fa2a07c9957f6e539`.
+Its raw map SHA256 is
+`df4c8d235b408488d0f81711c86f7aa1a838287f8eb26caa56fc28c02c9514fc`
+(28854 bytes), raw source-binding SHA256 is
+`8413534be5034085d4a0632740c4dc2fcc1e12347443485bfcdea3bc302ffc40`
+(10166 bytes), and scene-source qualification SHA256 is
+`283d4ed1153a4b0ad83d8b88caa1d78b555a0232d741b65bfe4f5a6438dce331`.
+
+The generator verifies exactly72 newly blocked cells against artist revision
+ evidence, with no blocked-cell removal. Terrain, overdraw, spawns, interactions,
+four original concept-place records and old fractional footprints are unchanged.
+All22 old runtime object destinations match the published **integer v6 layout**;
+five illustrative floats in its older proposal are not substituted for those
+already published integer runtime values. Exactly12 additional unbound solid
+props yield34 WORLD placements in each of three scenes. MAP representations
+remain frontend-only and create no backend place IDs or physical authority.
+Each era uses two runtime PNGs and2,043,904 pixels: REVENGE1,735,321 bytes,
+PARADE1,746,508, DANGER1,732,813. All remain under the existing C06 budgets.
+PNG chunk integrity and complete RGB/RGBA pixel streams are decoded by the
+retained generator with the standard library; no dependency or budget changes.
+
+Seventeen Python tests pass, including actual old-generation substitution,
+resealed geometry/layout evidence, damaged PNG refusal and the frozen executable
+selector. That selector treats compiler executable paths as metadata after target
+release; a hermetic regression forbids target stat/resolve calls and checks
+snapshot drift, missing build-finished and failed Cargo metadata. All three exact
+builder checks, Rust1.88 formatting, plan and diff checks pass (exit0). Validation
+uses `/tmp/mcr-fe14-format-venv/bin/python`, retaining mandatory JSON-schema
+URI/date-time formats; the system Python's missing format extras are not waived.
+
+The new native cases are authored, **NOT_RUN**: revision4→5 adoption; valid
+same-ID/revision conflicting bytes rejected without advancing the current event;
+old revision4 bytes preserved; stale revision4 selection refused; current5 plus
+old4 bytes retained across real postmaster restart. Production source binding is
+already generic over34 objects, so this checkpoint changes no production Rust.
+Fresh compile/native evidence requires a new named build/PG grant. Source state
+is CONTRACT_READY, admission remains NOT_ADMITTED. There is no supplied new
+ThemeManifest, Bootstrap, operator switch, art-fidelity acceptance, physical-place
+verification, public multiuser proof, or Product/IN01 closure. Original artist
+provenance is preserved; the separate engineering packet reviews only exact
+source inputs and states complete-descriptor consumer obligations.

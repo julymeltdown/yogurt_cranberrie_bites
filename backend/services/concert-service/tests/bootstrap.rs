@@ -700,6 +700,7 @@ fn selected_release_binds_all_six_presets_without_layered_defaults() {
 
 fn source_spatial_candidate() -> concert_service::bootstrap::spatial::SourceBoundSpatialCandidate {
     let directory = match std::env::var("MCR_SPATIAL_TEST_CANDIDATE").as_deref() {
+        Ok("quality-v8") => "backend/releases/reference-scene-v2/quality-v8",
         Ok("quality-v6") => "backend/releases/reference-scene-v2/quality-v6",
         Ok("baseline") | Err(_) => "backend/releases/reference-scene-v2",
         _ => panic!("unknown spatial test candidate"),
@@ -741,8 +742,13 @@ async fn native_spatial_candidate_transactions() {
     let candidate = source_spatial_candidate();
     let repo = PgPlaceRepository::new(pool.clone());
     let event = concert_domain::EventId::from_uuid(event);
-    let previous = if candidate.catalog.manifest.map_revision == 4 {
-        let previous = spatial_candidate_from_directory("backend/releases/reference-scene-v2");
+    let previous_directory = match candidate.catalog.manifest.map_revision {
+        4 => Some("backend/releases/reference-scene-v2"),
+        5 => Some("backend/releases/reference-scene-v2/quality-v6"),
+        _ => None,
+    };
+    let previous = if let Some(directory) = previous_directory {
+        let previous = spatial_candidate_from_directory(directory);
         repo.publish_release(event, previous.catalog.clone())
             .await
             .unwrap();
@@ -774,6 +780,31 @@ async fn native_spatial_candidate_transactions() {
         repo.catalog(event).await.unwrap().unwrap().release,
         candidate.catalog
     );
+    // A fully valid, differently hashed release cannot overwrite the immutable
+    // identity or advance the event head merely by reusing its revision.
+    if candidate.catalog.manifest.map_revision == 5 {
+        use concert_domain::place::{canonical_json_bytes, parse_stored_release, CatalogRelease};
+        use sha2::{Digest, Sha256};
+        let mut changed: Value =
+            serde_json::from_slice(&candidate.catalog.canonical_bytes).unwrap();
+        changed["geometry"]["collision_id"] = "conflicting_revision_five".into();
+        let geometry =
+            canonical_json_bytes(&serde_json::to_vec(&changed["geometry"]).unwrap()).unwrap();
+        changed["geometry_hash"] = format!("sha256:{:x}", Sha256::digest(geometry)).into();
+        changed.as_object_mut().unwrap().remove("content_hash");
+        let unhashed = canonical_json_bytes(&serde_json::to_vec(&changed).unwrap()).unwrap();
+        changed["content_hash"] = format!("sha256:{:x}", Sha256::digest(unhashed)).into();
+        let bytes = canonical_json_bytes(&serde_json::to_vec(&changed).unwrap()).unwrap();
+        let conflicting =
+            CatalogRelease::new(parse_stored_release(&bytes).unwrap(), bytes).unwrap();
+        assert_eq!(
+            repo.publish_release(event, conflicting).await,
+            Err(concert_application::place::PlaceError::Conflict)
+        );
+        let unchanged = repo.catalog(event).await.unwrap().unwrap();
+        assert_eq!(unchanged.snapshot, again);
+        assert_eq!(unchanged.release, candidate.catalog);
+    }
     for place in &read.places {
         assert_eq!(
             repo.select_physical(event, place.id, again.revision, again.map_revision)
@@ -838,5 +869,18 @@ async fn native_spatial_candidate_restart() {
     assert_eq!(read.release, candidate.catalog);
     assert_eq!(read.places.len(), 4);
     assert!(candidate.scenery_within_budget);
+    if candidate.catalog.manifest.map_revision == 5 {
+        let previous =
+            spatial_candidate_from_directory("backend/releases/reference-scene-v2/quality-v6");
+        let bytes: Vec<u8> = sqlx::query_scalar(
+            "select canonical_bytes from concert_map_releases where map_id=$1 and map_revision=$2",
+        )
+        .bind(&previous.catalog.map_id)
+        .bind(previous.catalog.manifest.map_revision)
+        .fetch_one(&pool)
+        .await
+        .unwrap();
+        assert_eq!(bytes, previous.catalog.canonical_bytes);
+    }
     pool.close().await;
 }

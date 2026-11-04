@@ -173,7 +173,13 @@ def verify_v8_revision(proposal, evidence):
     require(len(changes) == 72 and changes == evidence['changed_cells'], 'v8 collision evidence mismatch')
     require(evidence['base_geometry_hash'] == QUALITY_V6.geometry_hash
             and evidence['geometry_hash'] == QUALITY_V8.geometry_hash, 'v8 evidence geometry mismatch')
-    old_props = {p['id']: p for p in previous['placements']}
+    # Preserve the published integer destinations, not the earlier illustration
+    # floats which the v6 author already projected into those destinations.
+    old_layout = json.loads(published_input(QUALITY_V6.runtime + 'parade/layout.json', QUALITY_V6.art_commit))
+    old_props = {p['id']: p for p in old_layout['placements']}
+    require(set(old_props) == {p['id'] for p in previous['placements']}, 'v6 prop identity mismatch')
+    require(all(old_props[p['id']]['footprint'] == p['footprint'] for p in previous['placements']),
+            'v8 changes frozen fractional source footprints')
     new_props = {p['id']: p for p in proposal['placements']}
     require(len(new_props) == 34 and all(new_props.get(k) == v for k, v in old_props.items())
             and len(new_props.keys() - old_props.keys()) == 12, 'v8 changes frozen props or root additions')

@@ -1,0 +1,251 @@
+{
+  "art_commit": "492160b15465818eca172f4017f3816d58c989a9",
+  "format": "MCR_SOURCE_BOUND_SPATIAL_RELEASE",
+  "geometry_hash": "sha256:0448d5086dc251c6a7aed8c136dbbbf751f95038ea1f7f98e3e40fe6e8067e6f",
+  "geometry_source": {
+    "bytes": 185548,
+    "path": "world/reference-scene-v2/spatial-v4/geometry-proposal.json",
+    "sha256": "sha256:371b6bdd898f3e8757ba2dfdb96f9948d6f375e2f09353776a9cf6c0861b44c4"
+  },
+  "map_content_hash": "sha256:e22cda95d98f7f5a5ce2f4fba1e78e074248e8b4439e1b5fa2a07c9957f6e539",
+  "map_id": "mcr_reference_scene_r3",
+  "map_revision": 5,
+  "scenes": [
+    {
+      "runtime_resources": [
+        {
+          "bytes": 531480,
+          "height_px": 1296,
+          "path": "world/reference-scene-v2/quality-v6/ground.png",
+          "sha256": "sha256:e2d9f785d31ea9e9a1888dc8f73d182eca917b54e1924fbf5159bc91be96e795",
+          "width_px": 768
+        },
+        {
+          "bytes": 1203841,
+          "height_px": 1024,
+          "path": "world/reference-scene-v2/quality-v8/revenge/atlas.png",
+          "sha256": "sha256:ee93dcde891054f6ef965d182af8237a09d10464ba762d017168d2bd9326bccd",
+          "width_px": 1024
+        }
+      ],
+      "scene_sources": [
+        {
+          "bytes": 6216,
+          "path": "world/reference-scene-v2/quality-v8/manifest.json",
+          "sha256": "sha256:0aa7ffc44d4fa69ad8d0ac9dfb8ab30907ce0e785aa461a03a1452b8461518d6"
+        },
+        {
+          "bytes": 21491,
+          "path": "world/reference-scene-v2/spatial-v4/integer-projection.json",
+          "sha256": "sha256:2d0cd0c9d7fd07f0ede84ac0e20a3f8a00b4addd1a40706a66e351c46dff3717"
+        },
+        {
+          "bytes": 983,
+          "path": "world/reference-scene-v2/quality-v8/source-metadata.json",
+          "sha256": "sha256:e75af8826f912cf58e27f67cbaaedd14a7dfc91c0752d02917933352f5d33daf"
+        },
+        {
+          "bytes": 1699886,
+          "path": "world/reference-scene-v2/quality-v8/sources/canopy-sheet.png",
+          "sha256": "sha256:29a05b4c32508fea5af551f207b7ab28a3c451cc71baf2ecbcfe77c3567e2d95"
+        },
+        {
+          "bytes": 2590,
+          "path": "world/reference-scene-v2/quality-v8/sources/prompt.md",
+          "sha256": "sha256:71e74e852beb709147f41196c8cca126e3e2afb9705f7daf1788cebdce01c109"
+        },
+        {
+          "bytes": 18743,
+          "path": "world/reference-scene-v2/spatial-v4/revision-evidence.json",
+          "sha256": "sha256:33ee05e53b5eac5aa6b914d96468e84308993f26e69eda4d810be4050c18b063"
+        },
+        {
+          "bytes": 24439,
+          "path": "world/reference-scene-v2/quality-v8/revenge/layout.json",
+          "sha256": "sha256:6ac3abe7d13bcd00b48a43c3d68e08186fc4a347870826aad10b735a9bfe592d"
+        },
+        {
+          "bytes": 7419,
+          "path": "world/reference-scene-v2/quality-v8/revenge/map-metadata.json",
+          "sha256": "sha256:e86768093fb1a6b90b6979adeb40c4c836146a935f4bda958652d972be49fe13"
+        },
+        {
+          "bytes": 1095,
+          "path": "world/reference-scene-v2/quality-v8/revenge/resource-inputs.json",
+          "sha256": "sha256:c3e03d752e5c6de18907a89331604e65db4daf63d7e76491cb77d5f030eb5a62"
+        },
+        {
+          "bytes": 9512,
+          "path": "world/reference-scene-v2/quality-v8/revenge/provenance.json",
+          "sha256": "sha256:d85b9f37269178539be64dd6c24c0f6fd02c09d55b1bc2d1168db8e9cf681b7b"
+        }
+      ],
+      "scenery_source": {
+        "bytes": 10450,
+        "path": "world/reference-scene-v2/quality-v8/revenge/scenery.json",
+        "sha256": "sha256:b7b269825e93e677752d878e2130173a42eeb0c03f8f742304edd060298cf1e3"
+      },
+      "theme_id": "REVENGE"
+    },
+    {
+      "runtime_resources": [
+        {
+          "bytes": 531480,
+          "height_px": 1296,
+          "path": "world/reference-scene-v2/quality-v6/ground.png",
+          "sha256": "sha256:e2d9f785d31ea9e9a1888dc8f73d182eca917b54e1924fbf5159bc91be96e795",
+          "width_px": 768
+        },
+        {
+          "bytes": 1215028,
+          "height_px": 1024,
+          "path": "world/reference-scene-v2/quality-v8/parade/atlas.png",
+          "sha256": "sha256:0428f976140a3ee1d59368d3016efae605a6e2b7b1470233f523e7721ec806c1",
+          "width_px": 1024
+        }
+      ],
+      "scene_sources": [
+        {
+          "bytes": 6216,
+          "path": "world/reference-scene-v2/quality-v8/manifest.json",
+          "sha256": "sha256:0aa7ffc44d4fa69ad8d0ac9dfb8ab30907ce0e785aa461a03a1452b8461518d6"
+        },
+        {
+          "bytes": 21491,
+          "path": "world/reference-scene-v2/spatial-v4/integer-projection.json",
+          "sha256": "sha256:2d0cd0c9d7fd07f0ede84ac0e20a3f8a00b4addd1a40706a66e351c46dff3717"
+        },
+        {
+          "bytes": 983,
+          "path": "world/reference-scene-v2/quality-v8/source-metadata.json",
+          "sha256": "sha256:e75af8826f912cf58e27f67cbaaedd14a7dfc91c0752d02917933352f5d33daf"
+        },
+        {
+          "bytes": 1699886,
+          "path": "world/reference-scene-v2/quality-v8/sources/canopy-sheet.png",
+          "sha256": "sha256:29a05b4c32508fea5af551f207b7ab28a3c451cc71baf2ecbcfe77c3567e2d95"
+        },
+        {
+          "bytes": 2590,
+          "path": "world/reference-scene-v2/quality-v8/sources/prompt.md",
+          "sha256": "sha256:71e74e852beb709147f41196c8cca126e3e2afb9705f7daf1788cebdce01c109"
+        },
+        {
+          "bytes": 18743,
+          "path": "world/reference-scene-v2/spatial-v4/revision-evidence.json",
+          "sha256": "sha256:33ee05e53b5eac5aa6b914d96468e84308993f26e69eda4d810be4050c18b063"
+        },
+        {
+          "bytes": 24438,
+          "path": "world/reference-scene-v2/quality-v8/parade/layout.json",
+          "sha256": "sha256:2781699d9b7e859636da51d707d884ef1c6642cd339758b0b8f8bec1dc0a4471"
+        },
+        {
+          "bytes": 7419,
+          "path": "world/reference-scene-v2/quality-v8/parade/map-metadata.json",
+          "sha256": "sha256:e86768093fb1a6b90b6979adeb40c4c836146a935f4bda958652d972be49fe13"
+        },
+        {
+          "bytes": 1092,
+          "path": "world/reference-scene-v2/quality-v8/parade/resource-inputs.json",
+          "sha256": "sha256:b09e929cbd9bdcb5e1b0639a160f91d3e6a61d1402f9d864c4844028715844bf"
+        },
+        {
+          "bytes": 9479,
+          "path": "world/reference-scene-v2/quality-v8/parade/provenance.json",
+          "sha256": "sha256:ae7a43abea4a67505423c407939f91142067a759cee3fe4082a718cc5c2b14da"
+        }
+      ],
+      "scenery_source": {
+        "bytes": 10414,
+        "path": "world/reference-scene-v2/quality-v8/parade/scenery.json",
+        "sha256": "sha256:10f8130b423795c54ceacff22d59a7bff87fb799171cef0bdb3176aad3e08062"
+      },
+      "theme_id": "PARADE"
+    },
+    {
+      "runtime_resources": [
+        {
+          "bytes": 531480,
+          "height_px": 1296,
+          "path": "world/reference-scene-v2/quality-v6/ground.png",
+          "sha256": "sha256:e2d9f785d31ea9e9a1888dc8f73d182eca917b54e1924fbf5159bc91be96e795",
+          "width_px": 768
+        },
+        {
+          "bytes": 1201333,
+          "height_px": 1024,
+          "path": "world/reference-scene-v2/quality-v8/danger/atlas.png",
+          "sha256": "sha256:61948cb2f642de55721257fd4104fad4a7162a49c5fcf5bef9ed4d81d969ba12",
+          "width_px": 1024
+        }
+      ],
+      "scene_sources": [
+        {
+          "bytes": 6216,
+          "path": "world/reference-scene-v2/quality-v8/manifest.json",
+          "sha256": "sha256:0aa7ffc44d4fa69ad8d0ac9dfb8ab30907ce0e785aa461a03a1452b8461518d6"
+        },
+        {
+          "bytes": 21491,
+          "path": "world/reference-scene-v2/spatial-v4/integer-projection.json",
+          "sha256": "sha256:2d0cd0c9d7fd07f0ede84ac0e20a3f8a00b4addd1a40706a66e351c46dff3717"
+        },
+        {
+          "bytes": 983,
+          "path": "world/reference-scene-v2/quality-v8/source-metadata.json",
+          "sha256": "sha256:e75af8826f912cf58e27f67cbaaedd14a7dfc91c0752d02917933352f5d33daf"
+        },
+        {
+          "bytes": 1699886,
+          "path": "world/reference-scene-v2/quality-v8/sources/canopy-sheet.png",
+          "sha256": "sha256:29a05b4c32508fea5af551f207b7ab28a3c451cc71baf2ecbcfe77c3567e2d95"
+        },
+        {
+          "bytes": 2590,
+          "path": "world/reference-scene-v2/quality-v8/sources/prompt.md",
+          "sha256": "sha256:71e74e852beb709147f41196c8cca126e3e2afb9705f7daf1788cebdce01c109"
+        },
+        {
+          "bytes": 18743,
+          "path": "world/reference-scene-v2/spatial-v4/revision-evidence.json",
+          "sha256": "sha256:33ee05e53b5eac5aa6b914d96468e84308993f26e69eda4d810be4050c18b063"
+        },
+        {
+          "bytes": 24438,
+          "path": "world/reference-scene-v2/quality-v8/danger/layout.json",
+          "sha256": "sha256:f02e6596910e8dc87a42fadafaa933f687dbf9de47b9639d07dd2b0bb4010d84"
+        },
+        {
+          "bytes": 7419,
+          "path": "world/reference-scene-v2/quality-v8/danger/map-metadata.json",
+          "sha256": "sha256:e86768093fb1a6b90b6979adeb40c4c836146a935f4bda958652d972be49fe13"
+        },
+        {
+          "bytes": 1092,
+          "path": "world/reference-scene-v2/quality-v8/danger/resource-inputs.json",
+          "sha256": "sha256:82aed723598c56076f54dfffb2ad10f12570e116079c6af0be0d6de86d570d9c"
+        },
+        {
+          "bytes": 9510,
+          "path": "world/reference-scene-v2/quality-v8/danger/provenance.json",
+          "sha256": "sha256:0f9d485df98f1fd920c9ff3d8c73e4a08ddf908cc54b96e720fd2c7f9b5041dc"
+        }
+      ],
+      "scenery_source": {
+        "bytes": 10414,
+        "path": "world/reference-scene-v2/quality-v8/danger/scenery.json",
+        "sha256": "sha256:3db7a2f3f3fdc169202ba9e9dbae8da71c8db35230311e0debcf61f906fb7914"
+      },
+      "theme_id": "DANGER"
+    }
+  ],
+  "source_commit": "492160b15465818eca172f4017f3816d58c989a9",
+  "tilemap_commit": "cf48c0fe01f8207f5a39e91daf238cc4c85a3980",
+  "tilemap_source": {
+    "bytes": 24058,
+    "path": "world/reference-scene-v2/runtime/spatial-v4/canonical-map.json",
+    "sha256": "sha256:c589b9b01c3e9f7162ccf7443782363bc9c132dd807b5fe15557686df584cf6f"
+  },
+  "version": 2
+}
