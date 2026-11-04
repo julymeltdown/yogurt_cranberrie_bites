@@ -27,6 +27,13 @@ The later documentation-only peer update at
 `16fde48ab9842b3a5e9b5e4aab3719c926191ac9` is preserved by merge
 `c33c6e21e03619b622055a7175730ff1e549a002`; application/contract bytes did not
 change, so no further execution was needed for that merge.
+The final incoming QA07 evidence / FE17 test / coordination update at
+`ef1b6c60afdd06a1847f49c91d805421904552fc` is preserved by merge
+`a25c9147182d556288501e8bc4cd00fa2ccd72cb`. All 32 pinned inputs to this
+qualification and 65 native moderation source hashes remain identical. Full
+strict TypeScript was rerun successfully for the incoming test files; no other
+retest was required by unchanged application/contract bytes. See
+`reconciliation.json` and `final-peer-typecheck.log` in the evidence directory.
 
 The exact three source/test paths changed are:
 

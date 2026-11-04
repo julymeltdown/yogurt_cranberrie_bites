@@ -1,0 +1,22 @@
+{
+  "scope": "Bounded FE33-ENTRY / FE37 latest-peer reconciliation, not broad-suite acceptance",
+  "capturedPeer": "ef1b6c60afdd06a1847f49c91d805421904552fc",
+  "reconciliationMerge": "a25c9147182d556288501e8bc4cd00fa2ccd72cb",
+  "sourceCommit": "ccd71cb4b7c4557fa2463ae8057b853a9b877866",
+  "previousEvidenceCommit": "23c6111aeb80c15aa2fd58ace98df60330c5a649",
+  "sourcePinsStillMatch": 32,
+  "nativeSourcePinsStillMatch": 65,
+  "incomingChanges": "QA07 evidence/e2e files, FE17 replication regression tests, coordination/progress documentation; no pinned consumer/runtime/schema changes",
+  "finalTypecheck": {
+    "command": "NODE24.22.2 frontend/node_modules/typescript/bin/tsc --project frontend/tsconfig.json --noEmit --incremental false --pretty false",
+    "exitCode": 0,
+    "log": "final-peer-typecheck.log"
+  },
+  "cleanup": {
+    "ownExactDependencySymlinkRemoved": true,
+    "retainedDependencyTargetUntouched": true,
+    "ownedBuildAndNativeSiteRemoved": true,
+    "materializedTrackedAssetsHaveNoDiff": true
+  },
+  "publication": "Non-force push and independently observed remote ancestry are reported in the final handoff after this committed qualification; no future SHA claimed here."
+}

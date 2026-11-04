@@ -112,6 +112,12 @@
       "cwd": "repository root",
       "exitCode": 0,
       "log": "plan.log"
+    },
+    {
+      "check": "Final latest-peer strict frontend TypeScript",
+      "command": "NODE24.22.2 frontend/node_modules/typescript/bin/tsc --project frontend/tsconfig.json --noEmit --incremental false --pretty false",
+      "exitCode": 0,
+      "log": "final-peer-typecheck.log"
     }
   ],
   "sourcePins": {
@@ -281,6 +287,7 @@
     "baseline.log": "d7e73920aef09dca2f2917be1d3652237bd25e0074cd1ebf7b9a404e5a07d0fa",
     "build-sparse.log": "2d5157a8f1b03dffbd9196765ea63483c06d22ffec47d00f22ab30a29895dad4",
     "build.log": "dcb8adcd819a1a3a981d5eeccfe3a57745ca249d12fdd01c319bab8385f22f8e",
+    "final-peer-typecheck.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
     "focused.log": "3d4239a3aa654e813ff9a483cd1ee1adfacca92f161ced0130dc660297d2f190",
     "lint.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
     "native/360-content-confirmation.png": "3edb333c2e12b40030191c7739b353a297a9f05960e514be397f73325d88b1a2",
@@ -298,10 +305,11 @@
     "reconciled-affected.log": "159b813e6db62ce636f29765f464b17d33945ebe3594500f2a64245945bde2e9",
     "reconciled-build.log": "c85cace0f8e4488ca3c751224df92572b443b96b8ff5df4d0693ff209e2026f9",
     "reconciled-typecheck.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "reconciliation.json": "e56af645b0b8a9cd6f66fb5e5f2cfaa60d3c25cc140cd479e0f39aec3d2e1118",
     "regressions-before-fix.log": "b4998b603a267a1255f20f0bc63ef211a931f80f181a6c0817a496014167ebd7",
     "typecheck.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
   },
-  "documentationSha256": "82b37e5bdb7ca881a5589a84b0ab56c00096086c049a14a70f9a8fabaadfda15",
+  "documentationSha256": "d5a16fb86ccb6ed7ab096f28ff0b9df71b491d94bf6e68b216f6e84411b240f9",
   "limitations": [
     "Broad unfiltered suite remains historical NOT GREEN, not rerun",
     "No live backend / actual root-world propagation / multiuser / physical devices / IN04 or IN05 / whole FE33 or FE37 acceptance",
@@ -314,5 +322,7 @@
     "nativeOutput": "Generated native site and 36 non-retained captures removed; nine pinned confirmation captures plus report retained",
     "materializedAuthAssets": "Two tracked assets exactly match HEAD, no tracked asset diff",
     "sourceArchiveDiff": "none"
-  }
+  },
+  "finalReconciliation": "a25c9147182d556288501e8bc4cd00fa2ccd72cb",
+  "finalPreservedPeerTip": "ef1b6c60afdd06a1847f49c91d805421904552fc"
 }
