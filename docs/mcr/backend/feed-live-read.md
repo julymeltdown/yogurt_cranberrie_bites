@@ -172,7 +172,7 @@ signer, fixed Post mTLS identity, all four qualified envelopes and the original
 scope deadline. It supplies the actual scope views/root capability and requires
 no-store responses. Mutation and receipt methods retain unavailable defaults.
 
-Four authored native Post storage cases cover a lost Track acknowledgement
+Five authored native Post storage cases cover a lost Track acknowledgement
 followed by actual rollback, committed-without-witness refusal, and durable
 acknowledgement ordering plus exact same-transaction committed witness, and
 expiry maintenance that preserves live/unknown outcomes. These
@@ -180,8 +180,8 @@ explicitly use fixture acknowledgements to test the producer store; they cannot
 qualify real owner exclusion or guarded HTTP. They require an explicitly leased
 PostgreSQL controller and have NOT_RUN status until executed. The frozen runner's
 --post-native-storage mode pins one exact library binary/source inventory and
-executes all four exact cases, refusing zero execution or skipped success.
-Its nine Python preflight cases pass. Concurrent qualified reads reserve a
+executes all five exact cases, refusing zero execution or skipped success.
+Its ten Python preflight cases pass. Concurrent qualified reads reserve a
 bounded half-pool permit before opening their protected connection, leaving
 control connections for durable acknowledgement writes.
 
@@ -195,3 +195,13 @@ Expired pending records are examined in bounded batches against actual owned
 PostgreSQL status; only proven aborts or commits with the exact witness free
 pending capacity. Expiry never supplies an outcome or releases an owner guard.
 Different producer instances remain unknown and require explicit recovery.
+
+The fifth authored storage case uses 101 distinct comment authors at equal
+creation timestamps, with denied authors at both the first row and scan boundary.
+It checks actual SQL 99-row scans plus lookahead and continuation for no skipped
+or duplicate eligible records; the public requested limit remains 100. Its
+cfg(test)-only lock-holding policy fixture does not qualify canonical exclusion.
+Future before dates are accepted under the frozen query schema: cursor AAD keeps
+the original value, while the first internal snapshot is clipped to current time.
+The adapter case verifies fixed-snapshot continuation and rejects changed before
+bindings. These new Rust assertions still require actual execution.

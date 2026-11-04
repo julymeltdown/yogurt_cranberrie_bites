@@ -1,9 +1,7 @@
-//! Isolated transport candidate. Workload authentication does NOT grant actor,
-//! relationship, media or linked-object authority. The current platform cannot
-//! verify Concert-forwarded user authority or fence remote writes, so all public
-//! handlers deliberately return UNAVAILABLE before touching owner persistence.
-//! Enabling these handlers requires a separately qualified authority protocol;
-//! neither caller-supplied context/digests nor a configuration flag can enable it.
+//! Legacy workload-only handlers remain unavailable. The separate qualified
+//! read service requires verified whole-envelope delegation, actual owner views,
+//! retained Concert subject guards and registered PostgreSQL transactions.
+//! Neither caller-supplied context/digests nor a test authority can enable it.
 use platform::grpc_auth::{VerifiedCaller, Workload};
 use platform::grpc_method_policy::MethodPolicy;
 use tonic::{Request, Response, Status};
@@ -349,7 +347,7 @@ impl proto::post_concert_feed_service_server::PostConcertFeedService for PostCon
         Err(admission(&r))
     }
 }
-/// Strict read DTO conversion shared by the eventual qualified read handler.
+/// Strict read DTO conversion shared by the dedicated qualified read handler.
 /// Decoding supplies no authority. The workload-only server above remains closed.
 pub mod read_wire {
     use super::proto;

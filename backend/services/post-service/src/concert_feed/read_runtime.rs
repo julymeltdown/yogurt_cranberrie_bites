@@ -138,7 +138,14 @@ impl QualifiedReadRuntime {
                     // and continuation while public limit/cursor binding stays 100.
                     ReadResult::Comments(read_wire::comments(
                         owner
-                            .comments_in(&a.context, post, upper, after, limit.min(99), tx)
+                            .comments_in(
+                                &a.context,
+                                post,
+                                upper,
+                                after,
+                                comment_scan_limit(limit),
+                                tx,
+                            )
                             .await?,
                     ))
                 }
@@ -152,4 +159,7 @@ impl QualifiedReadRuntime {
             .await
             .map_err(|_| Error::Unavailable)?
     }
+}
+pub(crate) fn comment_scan_limit(requested: u32) -> u32 {
+    requested.min(99)
 }

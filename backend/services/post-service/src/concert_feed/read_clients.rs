@@ -169,14 +169,21 @@ impl ReadClients {
         if !auth.session_live || owner_revision(auth.revision.as_ref())? != local_auth {
             return Err(Error::Authority);
         }
+        if auth.subjects.iter().any(|s| {
+            s.security_revision < 0
+                || (s.active && s.security_revision == 0)
+                || s.actor_blocks_subject
+                || s.subject_blocks_actor
+        }) {
+            return Err(Error::Authority);
+        }
         let actor = state(&auth.subjects, a.context.actor_id)?;
         let target = state(&auth.subjects, subject)?;
-        if !actor.active
-            || !target.active
-            || !revision(actor.security_revision)
-            || !revision(target.security_revision)
-        {
+        if !actor.active || !target.active {
             return Err(Error::Forbidden);
+        }
+        if !revision(actor.security_revision) || !revision(target.security_revision) {
+            return Err(Error::Authority);
         }
         let friend_request = self.request(
             a,
@@ -193,7 +200,10 @@ impl ReadClients {
                 .map_err(remote)?,
         )?;
         a.check()?;
-        if owner_revision(friend.revision.as_ref())? != local_friend {
+        if !friend.session_live
+            || owner_revision(friend.revision.as_ref())? != local_friend
+            || friend.subjects.iter().any(|s| s.security_revision != 0)
+        {
             return Err(Error::Authority);
         }
         let pair = state(&friend.subjects, subject)?;

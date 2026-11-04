@@ -16,7 +16,8 @@ pub mod proto {
 
 /// Trusted transport seam. Implementations must authenticate Post, apply qualified
 /// workload/delegated-actor metadata and preserve the original absolute deadline.
-/// Current platform forwarding cannot qualify Concert as a Post actor presenter.
+/// Production uses qualified_transport::QualifiedPostTransport and its dedicated
+/// whole-envelope signer plus actual retained canonical scope views.
 #[async_trait]
 pub trait PostTransport: Send + Sync {
     async fn post(&self, _: proto::GetPostRequest) -> Result<proto::GetPostResponse, Status> {

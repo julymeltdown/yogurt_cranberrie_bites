@@ -40,6 +40,7 @@ impl Database {
         anyhow::ensure!(
             options.get_socket() == Some(&root.join("socket"))
                 && root.join("socket").canonicalize()? == root.join("socket")
+                && options.get_options().is_none()
                 && options.get_port() == 5432
                 && options.get_database() == Some("mcr_feed_native")
                 && options.get_username() == "mcr_owner",
@@ -357,5 +358,67 @@ async fn native_expiry_reclaims_only_proven_terminal_work_never_a_live_or_unknow
         assert_eq!(status.as_deref(), expected);
     }
     live.rollback().await?;
+    db.finish().await
+}
+
+#[tokio::test]
+#[ignore = "requires explicitly leased native PostgreSQL; storage evidence only"]
+async fn native_comment_subject_budget_and_filtered_boundary_do_not_skip_or_duplicate_records(
+) -> anyhow::Result<()> {
+    let db = Database::start().await?;
+    sqlx::raw_sql(include_str!("../../migrations/0031_concert_feed_owner.sql"))
+        .execute(&db.pool)
+        .await?;
+    let a = admission();
+    let post = Uuid::new_v4();
+    let at = Utc::now() - ChronoDuration::minutes(5);
+    sqlx::query("insert into post_concert_posts(post_id,event_id,author_id,content,revision,state,created_at,comment_count) values($1,$2,$3,$4,1,'PUBLISHED',$5,101)")
+        .bind(post).bind(a.context.event_id).bind(Uuid::from_u128(4000))
+        .bind(serde_json::json!({"text":"Real stored parent","links":[],"media_ids":[]})).bind(at)
+        .execute(&db.pool).await?;
+    // Equal timestamps exercise the UUID component of the DESC keyset.
+    sqlx::query("insert into post_concert_comments(comment_id,event_id,post_id,author_id,text,revision,state,created_at) select ('00000000-0000-0000-0000-'||lpad(to_hex(1000+n),12,'0'))::uuid,$1,$2,('00000000-0000-0000-0000-'||lpad(to_hex(2000+n),12,'0'))::uuid,'Current stored comment',1,'PUBLISHED',$3 from generate_series(0,100) n")
+        .bind(a.context.event_id).bind(post).bind(at+ChronoDuration::seconds(1)).execute(&db.pool).await?;
+    let owner = crate::concert_feed::tests::paging_owner(
+        db.pool.clone(),
+        vec![
+            (a.context.actor_id, Uuid::from_u128(2100)),
+            (Uuid::from_u128(2002), a.context.actor_id),
+        ],
+    );
+    let upper = Utc::now();
+    let limit = crate::concert_feed::read_runtime::comment_scan_limit(100);
+    let first = owner
+        .comments_in(&a.context, post, upper, None, limit, db.pool.begin().await?)
+        .await?;
+    assert_eq!(first.items.len(), 97);
+    assert!(first.has_more);
+    let boundary = first.scanned_through.unwrap();
+    assert_eq!(boundary.id, Uuid::from_u128(1002));
+    assert!(!first.items.iter().any(|c| c.comment_id == boundary.id));
+    let second = owner
+        .comments_in(
+            &a.context,
+            post,
+            upper,
+            Some(boundary),
+            limit,
+            db.pool.begin().await?,
+        )
+        .await?;
+    assert_eq!(second.items.len(), 2);
+    assert!(!second.has_more);
+    let actual: Vec<_> = first
+        .items
+        .iter()
+        .chain(second.items.iter())
+        .map(|c| c.comment_id)
+        .collect();
+    let expected: Vec<_> = (1000..=1100)
+        .rev()
+        .filter(|n| *n != 1100 && *n != 1002)
+        .map(Uuid::from_u128)
+        .collect();
+    assert_eq!(actual, expected);
     db.finish().await
 }

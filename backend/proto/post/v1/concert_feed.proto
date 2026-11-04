@@ -7,7 +7,8 @@ import "authority/v1/lease.proto";
 // event or revision. Only authenticated Concert workload; actor context is
 // untrusted until separately qualified owner authority admission.
 // Context fields/digest are bindings, not authorization capabilities. All
-// production methods fail UNAVAILABLE until a real owner authority fence exists.
+// legacy methods remain UNAVAILABLE. The separate qualified read service below
+// requires actual canonical guard checks and transaction registration.
 message Context {
   string actor_id = 1;
   string event_id = 2;
