@@ -43,23 +43,32 @@ def main():
     parser.add_argument("--repository-test", type=Path, help="optional frozen four-test Gift resource integration binary")
     parser.add_argument("--queries-test", type=Path, help="frozen Concert lib test binary; only Gift native query/correlation tests run")
     parser.add_argument("--private-test", type=Path, help="same frozen Concert lib binary; native prepared exclusion/recovery only, no canonical or Root qualification")
+    parser.add_argument("--settlement-test", type=Path, help="same frozen lib; exact native/receipt witness SQL with synthetic ledger metadata")
     parser.add_argument("--pg-bin", type=Path, default=Path("/opt/homebrew/opt/postgresql@16/bin"))
+    parser.add_argument("--owned-root", type=Path, help="optional absolute fresh cluster root inside the allocated evidence boundary")
     parser.add_argument("--report", type=Path, required=True)
     args = parser.parse_args()
-    if not any((args.repository_test, args.queries_test, args.private_test)):
+    if not any((args.repository_test, args.queries_test, args.private_test, args.settlement_test)):
         parser.error("select at least one frozen native binary")
     require(args.report.is_absolute(), "absolute evidence path required")
+    if args.owned_root is not None:
+        require(args.owned_root.is_absolute(), "absolute fresh owned cluster root required")
     descriptor = os.open(args.report, os.O_WRONLY | os.O_CREAT | os.O_EXCL, 0o600)
     report = {"scope": "BE-GIFTS-LIVE selected local Concert native checks only", "result": "NOT_RUN",
               "canonical_auth_friend": "NOT_RUN", "media_link": "NOT_RUN", "public_profile": "NOT_RUN",
               "http_routes": "NOT_RUN", "two_user_flow": "NOT_RUN",
-              "checks": {"resources": "NOT_RUN", "queries": "NOT_RUN", "correlation": "NOT_RUN", "private_native": "NOT_RUN"},
+              "checks": {"resources": "NOT_RUN", "queries": "NOT_RUN", "correlation": "NOT_RUN", "private_native": "NOT_RUN", "settlement_native": "NOT_RUN"},
               "binary_provenance": "Execution hashes below; compilation source/pins must be supplied by the producing build handoff separately. Harness checkout pins are not a binary build claim."}
     cluster = None
     try:
         binary = frozen_binary(args.repository_test) if args.repository_test is not None else None
         queries = frozen_binary(args.queries_test) if args.queries_test is not None else None
         private = frozen_binary(args.private_test) if args.private_test is not None else None
+        settlement = frozen_binary(args.settlement_test) if args.settlement_test is not None else None
+        lib_hashes = {sha(p) for p in (queries, private, settlement) if p is not None}
+        require(len(lib_hashes) <= 1, "all selected library modes require the same exact frozen build")
+        if settlement is not None:
+            report["settlement_binary_sha256"] = sha(settlement)
         report["source_revision"] = subprocess.check_output(["git", "rev-parse", "HEAD"], cwd=ROOT, text=True).strip()
         report["source_sha256"] = pins()
         report["source_pin_scope"] = "Harness checkout and migrations used during native execution; compiled binary provenance is separate"
@@ -71,7 +80,7 @@ def main():
             report["private_binary_sha256"] = sha(private)
             if queries is not None:
                 require(sha(queries) == sha(private), "query/private binaries must be the same frozen Concert lib build")
-        cluster = migration.Cluster({n: migration.executable(args.pg_bin / n) for n in migration.PG_TOOLS})
+        cluster = migration.Cluster({n: migration.executable(args.pg_bin / n) for n in migration.PG_TOOLS}, root=args.owned_root)
         report["owned_root"] = str(cluster.root)
         cluster.init()
         cluster.start()
@@ -104,7 +113,8 @@ def main():
                                        "authority": "synthetic test policy only; canonical owner acceptance NOT_RUN"}
                 require(result.returncode == 0, f"native Gift {kind} tests failed")
                 match = re.search(r"test result: ok\. (\d+) passed", result.stdout)
-                require(match is not None and int(match[1]) == 3, f"expected all three exact Gift {kind} tests")
+                expected = 4 if kind == "query" else 3
+                require(match is not None and int(match[1]) == expected, f"expected all {expected} Gift {kind} tests")
                 report["checks"]["queries" if kind == "query" else "correlation"] = "PASS"
             require(report["query_binary_sha256"] == sha(queries), "query binary changed during native validation")
         if private is not None:
@@ -132,6 +142,29 @@ def main():
             require(cluster.sql(DATABASE, "select count(*) from pg_prepared_xacts where database=current_database();") == "0", "prepared Gift children remain")
             require(report["private_binary_sha256"] == sha(private), "private binary changed during validation")
             report["checks"]["private_native"] = "PASS"
+        if settlement is not None:
+            def settlement_run(name):
+                command = [str(settlement), "--ignored", "--test-threads=1", "--exact", "gift_live::settlement::native_tests::" + name]
+                result = subprocess.run(command, cwd=ROOT, env=env, capture_output=True, text=True, timeout=45)
+                report.setdefault("settlement_runs", []).append({"command": command, "exit_code": result.returncode,
+                    "stdout": result.stdout, "stderr": result.stderr,
+                    "authority": "synthetic ledger metadata only; canonical business/HTTP NOT_RUN"})
+                require(result.returncode == 0 and re.search(r"test result: ok\. 1 passed", result.stdout) is not None,
+                        "expected exactly one successful named Gift settlement case")
+            for name in ["exact_commit_requires_witness_and_finished_root_and_rejects_forgeries",
+                         "committed_without_witness_stays_unknown_and_rollback_is_not_commit",
+                         "foreign_transaction_cannot_insert_witness_or_mutate_immutable_evidence",
+                         "receipt_snapshot_is_same_transaction_parent_bound_and_survives_retirement"]:
+                settlement_run(name)
+            settlement_run("restart_preserves_exact_committed_snapshot_witness")
+            before = cluster.assert_postmaster()
+            cluster.stop()
+            cluster.start()
+            require(before != cluster.assert_postmaster(), "owned settlement postmaster did not restart")
+            settlement_run("restart_preserves_exact_committed_snapshot_witness")
+            require(report["settlement_binary_sha256"] == sha(settlement), "settlement binary changed")
+            report["settlement_restart"] = "PASS"
+            report["checks"]["settlement_native"] = "PASS"
         require(report["source_sha256"] == pins(), "source changed during native validation")
         if binary is not None:
             require(report["binary_sha256"] == sha(binary), "binary changed during native validation")

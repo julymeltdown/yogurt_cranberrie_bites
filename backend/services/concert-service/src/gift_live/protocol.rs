@@ -509,7 +509,10 @@ fn decode(raw: &str) -> Result<String, InputError> {
     }
     Ok(v)
 }
-fn validate_query(op: GiftOperation, q: &BTreeMap<String, String>) -> Result<(), InputError> {
+pub(crate) fn validate_query(
+    op: GiftOperation,
+    q: &BTreeMap<String, String>,
+) -> Result<(), InputError> {
     let allowed: &[&str] = match op {
         GiftOperation::List => &[
             "limit",

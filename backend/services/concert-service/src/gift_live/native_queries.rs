@@ -1,5 +1,7 @@
 //! Local SQL/query tests only. Synthetic policy is NOT actual canonical authority.
 //! No positive OwnerGuardScope/GuardedSubject fixture is constructed here.
+#[path = "native_completion.rs"]
+mod completion_tests;
 use super::*;
 use crate::community::{giveaway::GiftSettings, CommunityAuthority};
 use async_trait::async_trait;

@@ -1,6 +1,156 @@
 # BE-GIFTS-LIVE production producer
 
-Status: IN_PROGRESS. Business/status source compiles at `e9b761fb`; all 29 focused checks pass. Canonical-owner Gift business flows and live HTTP acceptance remain NOT_RUN.
+Status: IN_PROGRESS. The current functional continuation passed its developer-owned component qualification at `90be4084`. Canonical-owner Gift business flows, public HTTP activation and two-user IN02 acceptance remain NOT_RUN here. Earlier checks below retain their historical source pins.
+
+## Functional continuation — 2026-11-05
+
+Base: `30a9c07bb1c0b0a7d1bd76d6c85dfc072bcd3694`, branch
+`codex/mcr-be-gifts-functional`, retained isolated `be-gifts-live`
+checkout. Old Gift `12566f8f` and the returned QA09 branch are preserved.
+RootBE (`01a1a1fc-7f3d-7ff1-9416-e3435c8a6f08`) is the publishing and
+shared-composition owner. The old BE41 persistent goal remains BLOCKED and
+incompatible; this is the explicitly authorized manual Gift assignment, not a
+new or falsely completed goal. The current human direction removes obsolete
+king/SL/QA review or acknowledgment gates; developer validation remains required.
+
+Exact Root grants add `src/config/gift_runtime.rs`, only the `pub mod
+gift_runtime;` export in `src/config/mod.rs`, migration
+`0060_gift_native_completion.sql`, and the `GiftAuthority::completed_in` /
+`GiftProducer::completed` slice in `src/community/giveaway.rs` to the retained
+Gift leaf/test/runner/doc scope. Paths without a prefix are under
+`backend/services/concert-service/`. No existing migration, contract, manifest,
+lockfile, main/router, resolver union or frontend is owned by this increment.
+
+The actual scoped producer now parses all thirteen frozen C04 Gift operations
+from `VerifiedProduct`, and routes Gift command status without reconstructing a
+mutation. Claim consumes `VerifiedProduct::trusted_pickup_context()`, backed by
+the existing authenticated ProductRequest field14; older statements below about
+missing network transport are historical. No raw IP, new proto or caller-granted
+permission is introduced. Root still owns the closed operation parser and route
+admission; adding this producer/factory does not activate public endpoints.
+
+Pickup uses the SDK3 `GiftPrivateRuntime::prepare_pickup` path; IssueCode passes
+only the newly issued one-shot value through `prepare_code`. Their actual child
+intent must be durably acknowledged before protected content selection, and the
+returned deadline clips the response-wide scope ceiling consumed by Root's
+before-byte delivery boundary. No ordinary `PgGifts::pickup` read bypass remains
+in the runtime. A replay cannot regenerate or retrieve plaintext: it remains a
+durable successful receipt available through command status, while the code
+endpoint refuses a missing one-shot value. These source changes supersede the
+old runtime-level unavailable gates; public activation remains Root-owned and
+NOT_RUN here.
+
+`GiftRuntimeSettings` is off by default. Live mode requires guarded gRPC, the
+existing canonical composition, nonzero independent cursor/retained receipt
+secrets and an actual bounded image sanitizer. Composition reuses the core's
+`PublicProfileReader`, Gift child settler/pickup key ring, fence and publisher;
+it acquires no second canonical core and creates no listener/background worker.
+Gift media linking still calls the actual `PgMedia::link_owned` adapter and
+current Gift target/media/place policy. A nullable image is not a fabricated
+media record or authority grant.
+
+Migration0060 stores exact native identity witnesses separately from immutable
+safe receipt snapshots. Both are written on the registered actual connection;
+receipt snapshots are inserted by BE15's completed hook after verified success,
+safe failure or exact replay. Authorization/read/guess-admission transactions
+have only a local-transaction witness; read-only status does not mutate or
+recreate command outcomes. The resolver requires matching instance, system,
+database, full XID, backend identity, parent/effect/reference binding, durable
+confirmed owner registration and a finished serialized root. A committed XID
+without its exact witness stays UNKNOWN. COMMITTED describes a native
+transaction, not a successful command or picked-up item. Receipt retirement
+must not rewrite historical snapshots. Prepared Gift-private children continue
+through their distinct exact typed recovery adapter.
+
+New meaningful checks cover the closed thirteen-operation selection; off/live
+configuration and key independence; forged parent/reference/key rejection;
+success/failure/replay completion callbacks and aggregate/receipt/outbox rollback
+when completion fails; commit versus abort/missing witness/unfinished root;
+foreign backend/instance/database/binding rejection; same-transaction receipt
+snapshot guards, immutable retirement evidence; and two-process witness
+recovery around an actual PostgreSQL restart. The local native SQL fixtures use
+explicitly synthetic ledger correlation and ACL metadata. They do not qualify
+actual Auth/Friend acquisition, protected-media HTTP, code delivery or IN02.
+
+Runtime command when a fresh guarded allocation is accepted:
+`python3 backend/scripts/mcr/gift_live_resources.py --queries-test
+[frozen-lib] --private-test [same-frozen-lib] --settlement-test
+[same-frozen-lib] --report [new-owned-report]`. The runner never builds, checks
+named tests/counts, starts only its marker/inode-owned PostgreSQL, checks actual
+postmaster replacement, verifies source/executable hashes and cleans its owned
+root. It must be run under the allocator's external deadline/process/disk guards.
+
+### Current developer qualification and publishing handoff
+
+The business increment is `7d61b479`; `57da6bf7` adds an explicit fresh
+`--owned-root` so the native runner's PostgreSQL stays inside its measured
+allocation. The first compile failed with two E0603 sibling-test visibility
+errors; `ec39c8fc` fixes only those fixture helpers. The successful build and
+execution checkout is `90be4084b4ebe3d92423ddcd828943f91154a406`.
+`functional-source-pins.json` records the producing source `ec39c8fc` and
+2,118 exact backend/C04 inputs; its SHA-256 is
+`590d774def7172db061b4c9918dc8d383999d9c3d42fa66dc198f0507f82b9ac`.
+The committed [functional evidence](../../../backend/services/concert-service/tests/gift_live_support/functional-evidence.json)
+contains the producing Cargo JSON hashes, five actual artifact hashes, complete
+selected test output, source/control pins, external guardian source and resource
+release receipts. No source archive was made.
+
+The exact build command was `cargo test --manifest-path backend/Cargo.toml -p
+concert-service --lib --test gift_live_protocol --test gift_live_resources
+--test gift_live_cursor --test gift_live_response --no-run --locked --offline
+-j 2 --message-format=json`, using Rust 1.88.0, debug 0, incremental 0, both
+RUSTFLAGS variables unset and no compiler wrapper. The corrected build exited 0.
+Only the actual five Cargo-reported test executables were frozen. All tests ran
+from those copies after target release; there was no target reentry.
+
+| Current check | Result |
+| --- | --- |
+| Gift library pure checks, including status/reference/route selection | 4 passed |
+| Gift off/live factory configuration checks | 2 passed |
+| Strict protocol, encrypted cursor and C04 response checks | 8 + 5 + 5 passed |
+| Native resource, query/completion and target-correlation cases | 4 + 4 + 3 passed |
+| Prepared Gift-private native exclusion/recovery | 6 cases, 7 invocations passed |
+| Native transaction/receipt witness guards and recovery | 5 cases, 6 invocations passed |
+| Actual PostgreSQL postmaster replacement in private and witness recovery | Passed |
+| Owned PostgreSQL cleanup and unchanged frozen/source hashes | Passed |
+
+This is 24 pure checks and 24 final native test invocations, representing 46
+distinct checks in total. Native SQL uses PostgreSQL 16.14. The final native
+report SHA-256 is
+`4ad03965b00e58ede2060f465f50c3fb3ee9e4027cb5e28c493ce24c1090696e`.
+Receipt snapshots were checked for same-transaction/parent binding and immutable
+retirement evidence; the two-process restart case checks the native witness,
+not a receipt snapshot. The native cohort was repeated only to correct the
+external guardian's detached PostgreSQL process accounting; all repetitions
+were charged to the original lease, totaling 28.89 seconds of native time.
+The final guardian observed ten native processes. Passing product checks were
+not promoted to a canonical authorization or public HTTP result.
+
+The actual 1719 allocation was accepted at 17:26:04.880585 UTC on November 4,
+2026, after the current predecessor's release. Five frozen files total
+151,959,200 bytes; the largest is 96,490,288 bytes, below the 96 MiB individual
+limit. Target release was 17:28:53.931257 UTC with zero compiler processes and
+handles; the next developer received it directly before Gift PostgreSQL work.
+Full resource release was 17:32:19.896206 UTC, 205.96 seconds after target
+release. New-growth high water was 382,128,128 bytes of the 2 GiB allowance;
+outside evidence was 154,054,656 bytes of the 512 MiB limit. Fixed worktree,
+shared Git and nonshrinking history carry plus the full new reservation rounded
+to 5 GiB, within the 12 GiB whole-carry bound. All owned PostgreSQL roots and
+processes were absent, and workload guardians were reaped. No deadline or cap
+was reset. The already released target is not needed for documentation or
+publication.
+
+RootBE receives these validated commits directly for publication, with no king,
+SL, QA or acknowledgment gate. Root still owns closed operation parsing,
+Gateway/public route admission, main composition, the native resolver union
+and combined runtime qualification. Integrate `GiftRuntimeSettings::compose`
+over the existing `CanonicalOwnerComposition` and `ProductOwners`, route the
+thirteen Gift operations and Gift command-status query to this scoped producer,
+and route matching `handles_binding` values to `GiftNativeResolver`. The
+existing composition's exact Gift-private child settler must be retained.
+Actual canonical Gift business acquisition, protected media and reviewed place
+flows, before-byte private body delivery, live HTTP and two-user IN02 remain
+open. This handoff does not amend BE20/21/22/23 or IN02 acceptance.
 
 The current 29-test proof is pinned to `e9b761fb90bc02db570c2aee8f999d3a8b48f993`,
 with exact executable and 1,639 source hashes. It supersedes the earlier local

@@ -3,6 +3,7 @@ use super::{
     authority::{validate_binding, ScopedGiftAuthority},
     cursor::{Collection, CursorBinding, CursorCodec, CursorError, Window},
     media::GiftMediaAdapter,
+    private::{GiftPrivateRequest, GiftPrivateRuntime},
     protocol::*,
     queries::{GiftReads, Page},
     response,
@@ -44,6 +45,7 @@ pub struct GiftRuntime {
     profiles: Arc<dyn GiftProfiles>,
     sanitizer: Arc<dyn ImageSanitizer>,
     cursor: CursorCodec,
+    private: Arc<GiftPrivateRuntime>,
 }
 type Authority = ScopedGiftAuthority<GiftMediaAdapter>;
 impl GiftRuntime {
@@ -56,6 +58,7 @@ impl GiftRuntime {
         cursor_key: &[u8; 32],
     ) -> Result<Self, CommandError> {
         Ok(Self {
+            private: Arc::new(GiftPrivateRuntime::new(pool.clone(), pickup.clone())),
             pool,
             receipts,
             pickup,
@@ -63,6 +66,12 @@ impl GiftRuntime {
             sanitizer,
             cursor: CursorCodec::new(cursor_key).map_err(|_| CommandError::Unavailable)?,
         })
+    }
+    /// Reuse the canonical core's exact child settler and pickup key ring.
+    pub fn with_private(mut self, private: Arc<GiftPrivateRuntime>) -> Self {
+        self.pickup = private.pickup_keys();
+        self.private = private;
+        self
     }
     pub async fn dispatch(
         &self,
@@ -100,12 +109,11 @@ impl GiftRuntime {
         let op = request.operation();
         let key = request.idempotency_key();
 
-        // These disclose private meeting text or a plaintext one-shot code.
-        // SDK3 GiftPrivate/native recovery and root's before-byte clip are not
-        // qualified yet. Ordinary snapshot/business operations remain separate.
-        if matches!(op, GiftOperation::Pickup | GiftOperation::IssueCode) {
-            return Err(CommandError::Unavailable.into());
-        }
+        let private = if matches!(op, GiftOperation::Pickup | GiftOperation::IssueCode) {
+            Some(GiftPrivateRequest::from_request(&request, scope).map_err(private_error)?)
+        } else {
+            None
+        };
 
         if op == GiftOperation::Claim && network.is_none() {
             return Err(CommandError::Unavailable.into());
@@ -127,6 +135,31 @@ impl GiftRuntime {
             identity: i,
             cursor: &self.cursor,
         };
+        if op == GiftOperation::Pickup {
+            let GiftInput::Read {
+                target: Some(id), ..
+            } = request.input()
+            else {
+                return Err(CommandError::InvalidInput.into());
+            };
+            let root = reads.root_for_reservation(*id, false, false, true).await?;
+            let disclosure = self
+                .private
+                .prepare_pickup(
+                    scope.clone(),
+                    private.ok_or(CommandError::InvalidState)?,
+                    root,
+                )
+                .await
+                .map_err(private_error)?;
+            let (view, until) = disclosure.into_parts();
+            clip(scope, until)?;
+            return Ok((
+                200,
+                response::pickup(i.event, root, &view.reservation, &view.meeting)
+                    .map_err(projection)?,
+            ));
+        }
         match request.into_input() {
             GiftInput::Read { target, query } => self
                 .read(op, i, target, query, &scope, &gifts, &reads)
@@ -172,7 +205,21 @@ impl GiftRuntime {
                 }
                 let body = if op == GiftOperation::IssueCode {
                     // Never report SUCCEEDED as PENDING or regenerate a lost code.
-                    let issued = result.issued_code.ok_or(CommandError::InvalidState)?;
+                    // A successful replay has no plaintext. Recover the durable
+                    // outcome through command status; never mint or retrieve it.
+                    let issued = result.issued_code.ok_or(CommandError::Unavailable)?;
+                    let disclosure = self
+                        .private
+                        .prepare_code(
+                            scope.clone(),
+                            private.ok_or(CommandError::InvalidState)?,
+                            root,
+                            issued,
+                        )
+                        .await
+                        .map_err(private_error)?;
+                    let (issued, until) = disclosure.into_parts();
+                    clip(scope, until)?;
                     response::issued(issued).map_err(projection)?
                 } else {
                     match op {
@@ -323,22 +370,26 @@ impl GiftRuntime {
                     json!({"giving":giving,"receiving":{"items":items,"next_cursor":self.next(&receiving,r.next).await?}}),
                 )
             }
-            GiftOperation::Reservation | GiftOperation::Pickup => {
+            GiftOperation::Reservation => {
                 let id = target.ok_or(CommandError::InvalidInput)?;
-                let root = reads
-                    .root_for_reservation(id, false, false, op == GiftOperation::Pickup)
-                    .await?;
-                if op == GiftOperation::Pickup {
-                    let v = gifts.pickup(i.actor, i.event, root, id).await?;
-                    response::pickup(i.event, root, &v.reservation, &v.meeting).map_err(projection)
-                } else {
-                    let r = gifts.reservation(i.actor, i.event, root, id).await?;
-                    response::reservation(i.event, root, &r).map_err(projection)
-                }
+                let root = reads.root_for_reservation(id, false, false, false).await?;
+                let r = gifts.reservation(i.actor, i.event, root, id).await?;
+                response::reservation(i.event, root, &r).map_err(projection)
             }
             _ => Err(CommandError::InvalidInput.into()),
         }
     }
+}
+fn private_error(error: Status) -> CommandError {
+    match error.code() {
+        tonic::Code::PermissionDenied | tonic::Code::NotFound => CommandError::Denied,
+        tonic::Code::InvalidArgument => CommandError::InvalidInput,
+        _ => CommandError::Unavailable,
+    }
+}
+fn clip(scope: &OwnerGuardScope, until: i64) -> Result<(), CommandError> {
+    let until = DateTime::from_timestamp_micros(until).ok_or(CommandError::Unavailable)?;
+    scope.limit_disclosure_until(until).map_err(private_error)
 }
 fn projection(_: response::ProjectionError) -> GiftServiceError {
     CommandError::Unavailable.into()

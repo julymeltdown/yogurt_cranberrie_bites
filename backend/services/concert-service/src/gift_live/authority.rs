@@ -74,19 +74,14 @@ impl TrackedCanonical {
         context: &super::status::StatusContext,
         scope: Arc<OwnerGuardScope>,
     ) -> Result<Self, Status> {
-        let mut h = Sha256::new();
-        h.update(b"MCR-gift-status-transaction-v1\0");
-        h.update(scope.binding().digest());
-        h.update(context.receipt_scope.operation.id().as_bytes());
-        h.update(context.receipt_scope.key.as_bytes());
         let reference = serde_json::to_vec(&serde_json::json!({
             "kind":"GIFT_STATUS_V1", "actor_id":context.identity.actor,
             "event_id":context.identity.event,"request_id":context.identity.request_id,
             "operation_id":context.receipt_scope.operation.id(),"idempotency_key":context.receipt_scope.key,
         })).map_err(|_| Status::unavailable("Gift status settlement binding"))?;
         Ok(Self {
+            effect: super::settlement::effect_digest(&scope.binding().owner_binding(), &reference)?,
             scope,
-            effect: h.finalize().into(),
             reference: Arc::new(reference),
         })
     }
@@ -94,23 +89,16 @@ impl TrackedCanonical {
         validate_binding(request, &scope)?;
         // The signed parent covers exact transport payload; additionally bind the
         // typed effect to its key/content type without ever persisting code bytes.
-        let mut h = Sha256::new();
-        h.update(b"MCR-gift-transaction-v1\0");
-        h.update(scope.binding().digest());
-        h.update(request.idempotency_key().unwrap_or(Uuid::nil()).as_bytes());
-        h.update((request.content_type().len() as u64).to_be_bytes());
-        h.update(request.content_type().as_bytes());
         let i = request.identity();
         let reference=serde_json::to_vec(&serde_json::json!({"kind":"GIFT_REQUEST_V1","actor_id":i.actor,"event_id":i.event,"request_id":i.request_id,"operation_id":request.operation().id(),"idempotency_key":request.idempotency_key()})).map_err(|_|Status::unavailable("Gift settlement binding"))?;
         Ok(Self {
+            effect: super::settlement::effect_digest(&scope.binding().owner_binding(), &reference)?,
             scope,
-            effect: h.finalize().into(),
             reference: Arc::new(reference),
         })
     }
     pub(crate) async fn register_in(&self, c: &mut PgConnection) -> Result<(), CommandError> {
-        self.scope
-            .register_transaction_in(c, self.effect, self.reference.as_ref().clone())
+        super::settlement::register_in(c, &self.scope, self.effect, self.reference.as_ref().clone())
             .await
             .map_err(command)
     }
@@ -145,6 +133,7 @@ impl FencedRelationshipAuthority for TrackedCanonical {
 
 pub struct ScopedGiftAuthority<M> {
     inner: Arc<SharedCommunityAuthority<TrackedCanonical, PgGiftResources<M>>>,
+    canonical: TrackedCanonical,
     safety: bool,
     target: Option<super::correlation::CommandTarget>,
 }
@@ -158,11 +147,12 @@ impl<M: GiftMediaLink> ScopedGiftAuthority<M> {
         let canonical = TrackedCanonical::for_status(context, scope).map_err(command)?;
         Ok(Self {
             inner: Arc::new(SharedCommunityAuthority::new(
-                PgRelationshipPolicy::new(pool, canonical),
+                PgRelationshipPolicy::new(pool, canonical.clone()),
                 PgGiftResources::for_status(context.identity, context.operation, media),
             )),
             safety: context.operation == GiftOperation::Cancel,
             target: None,
+            canonical,
         })
     }
     pub fn new(
@@ -174,11 +164,12 @@ impl<M: GiftMediaLink> ScopedGiftAuthority<M> {
         let canonical = TrackedCanonical::new(request, scope).map_err(command)?;
         Ok(Self {
             inner: Arc::new(SharedCommunityAuthority::new(
-                PgRelationshipPolicy::new(pool, canonical),
+                PgRelationshipPolicy::new(pool, canonical.clone()),
                 PgGiftResources::new(request, media)?,
             )),
             safety: request.operation() == GiftOperation::Cancel,
             target: super::correlation::CommandTarget::from_request(request)?,
+            canonical,
         })
     }
     fn access(&self, access: CommunityAccess) -> CommunityAccess {
@@ -195,6 +186,7 @@ impl<M> Clone for ScopedGiftAuthority<M> {
     fn clone(&self) -> Self {
         Self {
             inner: self.inner.clone(),
+            canonical: self.canonical.clone(),
             safety: self.safety,
             target: self.target.clone(),
         }
@@ -240,6 +232,25 @@ impl<M: GiftMediaLink> CommunityAuthority for ScopedGiftAuthority<M> {
 }
 #[async_trait]
 impl<M: GiftMediaLink> GiftAuthority for ScopedGiftAuthority<M> {
+    async fn completed_in(
+        &self,
+        c: &mut PgConnection,
+        scope: concert_application::commands::Scope,
+        target: Uuid,
+        receipt: &concert_application::commands::SafeReceipt,
+    ) -> Result<(), CommandError> {
+        super::settlement::receipt_in(
+            c,
+            &self.canonical.scope,
+            self.canonical.effect,
+            self.canonical.reference.as_ref().clone(),
+            scope,
+            target,
+            receipt,
+        )
+        .await
+        .map_err(command)
+    }
     async fn settings_in(
         &self,
         c: &mut PgConnection,

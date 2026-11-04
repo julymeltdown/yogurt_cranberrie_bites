@@ -30,7 +30,7 @@ pub(crate) struct StatusContext {
 fn invalid() -> Status {
     Status::invalid_argument("Invalid Gift command status")
 }
-fn query(
+pub(crate) fn query(
     event: Uuid,
     target: &str,
     operation: RegisteredOperation,
