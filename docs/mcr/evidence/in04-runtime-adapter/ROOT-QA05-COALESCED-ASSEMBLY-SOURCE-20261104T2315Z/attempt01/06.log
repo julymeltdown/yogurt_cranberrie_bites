@@ -1,0 +1,15 @@
+✔ published immutable components assemble through verified data URLs without control I/O (84.7865ms)
+✔ every changed frontend or backend component is refused before use (211.957667ms)
+✔ canonical contract imports use selected Git bytes rather than physical-checkout fallback (64.216166ms)
+✔ frontend and backend candidate/environment/event/origin/window bindings must agree (8.370208ms)
+✔ window bounds, aborted lifetime and failed guard cannot authorize attachment (0.652292ms)
+✔ a foreign frontend binding performs no module, decoder, observer or listener work (0.578791ms)
+✔ new restart artifact imports verified bytes without replacing the historical artifact or claiming runtime readiness (4.161625ms)
+ℹ tests 7
+ℹ suites 0
+ℹ pass 7
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 388.776291

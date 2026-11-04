@@ -1,0 +1,12 @@
+{
+  "recorded_epoch": 1793834090.954018,
+  "status": "NOT_RUN_EXPIRED_PRECHILD",
+  "originalAcceptedEpoch": 1793831087.969085,
+  "originalHardDeadlineEpoch": 1793831327.969085,
+  "releaseRecordedEpoch": 1793834050.581346,
+  "releaseWasWithinAcceptedClock": false,
+  "note": "No child was started and no scarce runtime resource was acquired. Late administrative release is not a deadline-compliant successful qualification. Raw accepted controls and release preserved.",
+  "validationJobs": 0,
+  "tests": 0,
+  "generatedArtifact": false
+}

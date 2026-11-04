@@ -1,0 +1,99 @@
+{
+  "status": "PASS",
+  "finishedAt": "2026-11-04T23:18:01.839548+00:00",
+  "commands": [
+    {
+      "argv": [
+        "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node",
+        "/Users/lhs/Desktop/mcr-worktrees/fe-delivery-publish/frontend/e2e/runtime-adapters/in04-wall-b/deferred.mjs",
+        "/Users/lhs/Desktop/mcr-worktrees/fe-delivery-publish",
+        "7d74b7fbf397688f3ae41dd7fa5347d3bcc50aa4",
+        "40fddf11e1520452b73966c8043939cbc35d65ced0e2935515018ab1051cf350",
+        "/Users/lhs/Desktop/mcr-worktrees/fe-delivery-publish/frontend/e2e/runtime-adapters/in04-wall-b/qualified-runtime-restart.mjs"
+      ],
+      "exitCode": 0
+    },
+    {
+      "argv": [
+        "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node",
+        "--check",
+        "/Users/lhs/Desktop/mcr-worktrees/fe-delivery-publish/frontend/e2e/runtime-adapters/in04-wall-b/qualified-runtime-restart.mjs"
+      ],
+      "exitCode": 0
+    },
+    {
+      "argv": [
+        "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node",
+        "--check",
+        "/Users/lhs/Desktop/mcr-worktrees/fe-delivery-publish/frontend/e2e/runtime-adapters/in04-wall-b/qa05-runtime.mjs"
+      ],
+      "exitCode": 0
+    },
+    {
+      "argv": [
+        "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node",
+        "--check",
+        "/Users/lhs/Desktop/mcr-worktrees/fe-delivery-publish/frontend/e2e/runtime-adapters/in04-wall-b/qa05-runtime.test.mjs"
+      ],
+      "exitCode": 0
+    },
+    {
+      "argv": [
+        "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node",
+        "--check",
+        "/Users/lhs/Desktop/mcr-worktrees/fe-delivery-publish/frontend/e2e/runtime-adapters/in04-wall-b/server.mjs"
+      ],
+      "exitCode": 0
+    },
+    {
+      "argv": [
+        "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node",
+        "--check",
+        "/Users/lhs/Desktop/mcr-worktrees/fe-delivery-publish/frontend/e2e/runtime-adapters/in04-wall-b/pinned-source.mjs"
+      ],
+      "exitCode": 0
+    },
+    {
+      "argv": [
+        "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node",
+        "--test",
+        "--test-isolation=none",
+        "/Users/lhs/Desktop/mcr-worktrees/fe-delivery-publish/frontend/e2e/runtime-adapters/in04-wall-b/qa05-runtime.test.mjs"
+      ],
+      "exitCode": 0
+    },
+    {
+      "argv": [
+        "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node",
+        "/Users/lhs/Desktop/mcr/frontend/node_modules/oxlint/bin/oxlint",
+        "--deny-warnings",
+        "/Users/lhs/Desktop/mcr-worktrees/fe-delivery-publish/frontend/e2e/runtime-adapters/in04-wall-b/qa05-runtime.mjs",
+        "/Users/lhs/Desktop/mcr-worktrees/fe-delivery-publish/frontend/e2e/runtime-adapters/in04-wall-b/qa05-runtime.test.mjs",
+        "/Users/lhs/Desktop/mcr-worktrees/fe-delivery-publish/frontend/e2e/runtime-adapters/in04-wall-b/server.mjs",
+        "/Users/lhs/Desktop/mcr-worktrees/fe-delivery-publish/frontend/e2e/runtime-adapters/in04-wall-b/pinned-source.mjs"
+      ],
+      "exitCode": 0
+    }
+  ],
+  "peak": {
+    "ownedBytes": 3611794859,
+    "positiveNewBytes": 168206,
+    "pids": 4,
+    "rssBytes": 143966208
+  },
+  "observedPids": [
+    91907,
+    92292,
+    92323,
+    92568,
+    92664,
+    92779,
+    92931,
+    93107,
+    93159,
+    93162,
+    93704
+  ],
+  "remainingDescendants": [],
+  "scratchRemaining": false
+}

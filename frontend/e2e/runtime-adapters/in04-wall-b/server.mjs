@@ -8,6 +8,7 @@ import { pathToFileURL } from 'node:url'
 import { pinnedSource, sha256 } from './pinned-source.mjs'
 import { ownedBytes, readSettings } from './inputs.mjs'
 import { buildApplicationRelease, canonicalJson } from './application-release.mjs'
+import { attachQa05Runtime } from './qa05-runtime.mjs'
 
 export function browserDependencyIncludes(manifest) {
   // Tailwind runs in the Vite server. Optimizing its native Oxide plugin as a
@@ -17,7 +18,7 @@ export function browserDependencyIncludes(manifest) {
     'react-dom/client', 'react/jsx-runtime', 'react/jsx-dev-runtime', '@hookform/resolvers/zod']
 }
 
-export async function startProductionFrontend({ repo, candidate, settingsPath, dependencies, cacheDirectory, handoffPath }) {
+export async function startProductionFrontend({ repo, candidate, settingsPath, dependencies, cacheDirectory, handoffPath, qa05 }) {
   const source = pinnedSource(repo, candidate)
   const settingsBytes = await ownedBytes(settingsPath, { privateOnly: true })
   const settings = await readSettings(settingsPath, source)
@@ -97,12 +98,14 @@ export async function startProductionFrontend({ repo, candidate, settingsPath, d
       hmr: false, watch: null, cors: false,
       proxy: {
         '/api': { target: settings.gatewayOrigin, changeOrigin: false, ws: false },
-        '/world-ws': { target: settings.worldOrigin, changeOrigin: false, ws: true },
+        ...(qa05 ? {} : { '/world-ws': { target: settings.worldOrigin, changeOrigin: false, ws: true } }),
       },
       fs: { strict: true, allow: [frontend, dependencies, cacheDirectory] },
     },
   })
+  let qa05Runtime = null
   try {
+    if (qa05) qa05Runtime = await attachQa05Runtime({ ...qa05, repo, source, candidate, server, settings })
     await server.listen()
     // Obtain the exact versioned module imported by the canonical scene. A
     // guessed/unversioned URL could instantiate a separate Phaser CanvasPool.
@@ -119,8 +122,9 @@ export async function startProductionFrontend({ repo, candidate, settingsPath, d
     await phaser.arrayBuffer()
     serving = true
     await writeFile(handoffPath, JSON.stringify({ ...binding, token, phaserModulePath }) + '\n', { flag: 'wx', mode: 0o600 })
-  } catch (error) { serving = false; await server.close(); throw error }
-  return { binding, applicationRelease: application.release, receipts: source.receipts, async close() { serving = false; await server.close() } }
+  } catch (error) { serving = false; qa05Runtime?.close(); await server.close(); throw error }
+  return { binding, applicationRelease: application.release, qa05: qa05Runtime, get phaserModuleUrl() { return phaserModuleUrl },
+    receipts: source.receipts, async close() { serving = false; qa05Runtime?.close(); await server.close() } }
 }
 
 if (process.argv[1] && import.meta.url === pathToFileURL(resolve(process.argv[1])).href) {

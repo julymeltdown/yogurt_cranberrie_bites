@@ -1,0 +1,12 @@
+{
+  "allocation": "ROOT-QA05-COALESCED-ASSEMBLY-SOURCE-20261104T2138Z",
+  "accepted_epoch": 1793831087.969085,
+  "full_epoch": 1793834050.581346,
+  "status": "DECLINED_PRECHILD",
+  "reason": "New allocator snapshot changes A to future Gift3GiB plus ordinary1.5GiB. Prior frozen OTHER4GiB does not cover current future inventory; no validation child or generator was started. Preserve accepted clocks and controls.",
+  "processes": 0,
+  "rss": 0,
+  "listeners": 0,
+  "scratchRemaining": false,
+  "generatedArtifactExists": false
+}

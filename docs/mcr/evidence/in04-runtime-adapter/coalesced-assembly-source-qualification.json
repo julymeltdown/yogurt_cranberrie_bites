@@ -1,0 +1,142 @@
+{
+  "status": "SOURCE_QUALIFIED_RUNTIME_NOT_RUN",
+  "source": "76bcbbd8b3ae8e07f2d9232eef1e58261dfc90ae",
+  "selected_postimages": {
+    "frontend/e2e/runtime-adapters/in04-wall-b/qa05-runtime.mjs": "9a293dd61580fab94ab8d93b64316f2aa107440f956cbdc3af354b54e6ae64c2",
+    "frontend/e2e/runtime-adapters/in04-wall-b/qa05-runtime.test.mjs": "df78e93c8d02a7bc576b2c55c69b08f23fa2adbd12203f540a76718bdf020d7d",
+    "frontend/e2e/runtime-adapters/in04-wall-b/server.mjs": "41eae06d6042f08529257e42998fdc205e416f444a7976c536726885d3a87541",
+    "frontend/e2e/runtime-adapters/in04-wall-b/pinned-source.mjs": "1b406508b612fb386b619cd5159d33e45939f39fcbeedd6632076a7ebff0ea1f",
+    "frontend/e2e/runtime-adapters/in04-wall-b/validate.py": "16c80a0bd0efb2fe4ba4fb22c84579ce2d56389007383a0b059035f15e8afe5f"
+  },
+  "allocation": "ROOT-QA05-COALESCED-ASSEMBLY-SOURCE-20261104T2315Z",
+  "accepted_epoch": 1793834266.31131,
+  "full": "2026-11-04T23:18:01.839548+00:00",
+  "commands": 8,
+  "new_tests": 7,
+  "syntax_checks": 5,
+  "lint": "four selected modules, deny warnings, exit0",
+  "artifact": {
+    "path": "frontend/e2e/runtime-adapters/in04-wall-b/qualified-runtime-restart.mjs",
+    "bytes": 15580,
+    "sha256": "40d7c9bb35079b9ff4c93cb8f95fe51bd3680fd3b249f16a14f0f51c6717c3b4",
+    "backendSource": "7d74b7fbf397688f3ae41dd7fa5347d3bcc50aa4",
+    "backendSha256": "40fddf11e1520452b73966c8043939cbc35d65ced0e2935515018ab1051cf350"
+  },
+  "historical_artifact_sha256": "7b1807be10b7a6a717bb10e66b1395ef12a6c06fa047db8ccb0a53059408283c",
+  "source_fixtures": "Synthetic frontend binding import only, no live descriptor or socket; seven actual immutable component bodies assembled through verified data URLs.",
+  "primary": {
+    "status": "PASS",
+    "finishedAt": "2026-11-04T23:18:01.839548+00:00",
+    "commands": [
+      {
+        "argv": [
+          "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node",
+          "/Users/lhs/Desktop/mcr-worktrees/fe-delivery-publish/frontend/e2e/runtime-adapters/in04-wall-b/deferred.mjs",
+          "/Users/lhs/Desktop/mcr-worktrees/fe-delivery-publish",
+          "7d74b7fbf397688f3ae41dd7fa5347d3bcc50aa4",
+          "40fddf11e1520452b73966c8043939cbc35d65ced0e2935515018ab1051cf350",
+          "/Users/lhs/Desktop/mcr-worktrees/fe-delivery-publish/frontend/e2e/runtime-adapters/in04-wall-b/qualified-runtime-restart.mjs"
+        ],
+        "exitCode": 0
+      },
+      {
+        "argv": [
+          "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node",
+          "--check",
+          "/Users/lhs/Desktop/mcr-worktrees/fe-delivery-publish/frontend/e2e/runtime-adapters/in04-wall-b/qualified-runtime-restart.mjs"
+        ],
+        "exitCode": 0
+      },
+      {
+        "argv": [
+          "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node",
+          "--check",
+          "/Users/lhs/Desktop/mcr-worktrees/fe-delivery-publish/frontend/e2e/runtime-adapters/in04-wall-b/qa05-runtime.mjs"
+        ],
+        "exitCode": 0
+      },
+      {
+        "argv": [
+          "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node",
+          "--check",
+          "/Users/lhs/Desktop/mcr-worktrees/fe-delivery-publish/frontend/e2e/runtime-adapters/in04-wall-b/qa05-runtime.test.mjs"
+        ],
+        "exitCode": 0
+      },
+      {
+        "argv": [
+          "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node",
+          "--check",
+          "/Users/lhs/Desktop/mcr-worktrees/fe-delivery-publish/frontend/e2e/runtime-adapters/in04-wall-b/server.mjs"
+        ],
+        "exitCode": 0
+      },
+      {
+        "argv": [
+          "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node",
+          "--check",
+          "/Users/lhs/Desktop/mcr-worktrees/fe-delivery-publish/frontend/e2e/runtime-adapters/in04-wall-b/pinned-source.mjs"
+        ],
+        "exitCode": 0
+      },
+      {
+        "argv": [
+          "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node",
+          "--test",
+          "--test-isolation=none",
+          "/Users/lhs/Desktop/mcr-worktrees/fe-delivery-publish/frontend/e2e/runtime-adapters/in04-wall-b/qa05-runtime.test.mjs"
+        ],
+        "exitCode": 0
+      },
+      {
+        "argv": [
+          "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node",
+          "/Users/lhs/Desktop/mcr/frontend/node_modules/oxlint/bin/oxlint",
+          "--deny-warnings",
+          "/Users/lhs/Desktop/mcr-worktrees/fe-delivery-publish/frontend/e2e/runtime-adapters/in04-wall-b/qa05-runtime.mjs",
+          "/Users/lhs/Desktop/mcr-worktrees/fe-delivery-publish/frontend/e2e/runtime-adapters/in04-wall-b/qa05-runtime.test.mjs",
+          "/Users/lhs/Desktop/mcr-worktrees/fe-delivery-publish/frontend/e2e/runtime-adapters/in04-wall-b/server.mjs",
+          "/Users/lhs/Desktop/mcr-worktrees/fe-delivery-publish/frontend/e2e/runtime-adapters/in04-wall-b/pinned-source.mjs"
+        ],
+        "exitCode": 0
+      }
+    ],
+    "peak": {
+      "ownedBytes": 3611794859,
+      "positiveNewBytes": 168206,
+      "pids": 4,
+      "rssBytes": 143966208
+    },
+    "observedPids": [
+      91907,
+      92292,
+      92323,
+      92568,
+      92664,
+      92779,
+      92931,
+      93107,
+      93159,
+      93162,
+      93704
+    ],
+    "remainingDescendants": [],
+    "scratchRemaining": false
+  },
+  "independent": {
+    "peak": {
+      "ownedBytes": 3611795144,
+      "positiveNewBytes": 163590,
+      "pids": 4,
+      "rssBytes": 171196416
+    },
+    "failure": null
+  },
+  "not_run": [
+    "actual Vite/SSR canonical decoder attachment",
+    "managed backend/principals/event/operator window",
+    "actual IN04",
+    "all seven actual QA05 cases"
+  ],
+  "prior_attempt": "2138 metadata-only attempt expired before children; late administrative release retained without qualification credit."
+}

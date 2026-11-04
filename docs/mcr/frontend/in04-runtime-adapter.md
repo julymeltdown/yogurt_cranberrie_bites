@@ -8,6 +8,21 @@ unchanged. The persistent IN04 delivery objective is ACTIVE.
 
 ## Current boundary
 
+The implementation at `76bcbbd8b3ae8e07f2d9232eef1e58261dfc90ae`
+adds the in-process QA05/Vite attachment and pins contract JSON imports to the
+selected Git candidate. The fresh `ROOT-QA05-COALESCED-ASSEMBLY-SOURCE-20261104T2315Z`
+round qualified these selected postimages and generated the separate
+`qualified-runtime-restart.mjs`. All seven new assembly cases, five syntax checks
+and scoped lint passed. Actual Vite/SSR attachment, managed runtime and live
+IN04/QA05 acceptance remain **NOT_RUN**. The first coalesced allocation started
+no validation child and expired before work;
+its late administrative release is not a successful, deadline-compliant round.
+The original accepted controls and explicit NOT_RUN disposition are preserved.
+The new artifact embeds backend source `7d74b7fbf397688f3ae41dd7fa5347d3bcc50aa4`
+(runtime SHA256
+`40fddf11e1520452b73966c8043939cbc35d65ced0e2935515018ab1051cf350`).
+Historical artifacts and previous component results remain unchanged.
+
 Source is qualified at `6d5863097c46d7ecd3d1633fd1423500e17b8867`: all eight
 focused source cases, all six module syntax checks and deny-warning scoped lint
 passed in the actual allocated round. Actual Vite launch, real HTTP,
@@ -292,3 +307,40 @@ release to the allocator and named successor. The 180/240-second clocks,
 Exact source hashes, commands, raw results and both live releases are retained
 in `ticket-source-qualification.json` and the round directory. No Vite, browser,
 backend, install or dependency link ran.
+
+## Same-server QA05 assembly and restart-aware artifact
+
+`startProductionFrontend` now accepts an optional private `qa05` attachment.
+It verifies the same candidate, environment, event, origin and finite window,
+loads the seven qualified component bodies through verified data URLs, obtains
+the selected application's canonical decoder with Vite SSR, and inspects the
+actual owner descriptor before installing the relay on that Vite HTTP server.
+Only this mode omits Vite's ordinary World proxy. Its returned private handle
+exposes relay/checkpoint/binding/guard/signal/close alongside the existing
+frontend origin and optimized Phaser URL. Consumed-ticket capture is explicit
+and optional, so the gap/delay/slow packet does not require it. Existing default
+startup and the seven-field frontend handoff retain their interfaces.
+
+`pinned-source.mjs` now loads contract JSON from the selected Git tree as well
+as application source. Previously, resolved contract imports could fall back to
+the physical checkout. The new regression checks both canonical core and World
+schemas against exact selected-candidate bytes.
+
+The new self-contained `qualified-runtime-restart.mjs` is 15,580 bytes, SHA256
+`40d7c9bb35079b9ff4c93cb8f95fe51bd3680fd3b249f16a14f0f51c6717c3b4`.
+It embeds the qualified backend's private baseline-notification protocol; the
+separately prearmed owner loop still owns the actual restart. Import requires
+the genuine private frontend handoff, and execution requires the current backend
+descriptor. The import test uses an explicitly synthetic seven-field frontend
+file and performs no observer or service I/O. The historical 7b18 artifact is
+retained byte for byte and is not relabeled as restart-aware.
+
+The fresh round accepted at 23:17:46.311310 UTC on November 4 and fully released
+at 23:18:01.839548 UTC. All eight commands passed. Both live controls passed;
+peak whole inventory was 3,611,795,144 bytes, positive new bytes at most 168,206,
+four aggregate processes and RSS 171,196,416 bytes. Descendants drained and
+scratch was removed before the direct allocator/FE41 release. No Vite, backend,
+socket, browser, listener, install or target ran. The actual SSR/relay join,
+production catalog, genuine accounts and managed window remain unexecuted.
+Exact hashes, raw logs and both releases are in
+`coalesced-assembly-source-qualification.json` and the fresh round directory.

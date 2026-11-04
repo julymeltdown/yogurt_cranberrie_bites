@@ -50,7 +50,7 @@ export function pinnedSource(repo, revision) {
     },
     load(id) {
       const path = pathOf(id)
-      if (!path.startsWith('frontend/src/')) return null
+      if (!path.startsWith('frontend/src/') && !path.startsWith('contracts/')) return null
       if (!/\.(?:tsx?|m?js|json|css)$/.test(path)) {
         assert(readFileSync(resolve(repo, path)).equals(bytes(path)), 'Physical source asset differs from pinned source: ' + path)
         return null

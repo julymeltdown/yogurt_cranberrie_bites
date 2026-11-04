@@ -132,13 +132,23 @@ def main():
     env.pop('NODE_COMPILE_CACHE', None)
     relay_only = offer.get('qa05_relay', False)
     ticket_only = offer.get('qa05_ticket_probe', False)
-    assert not (relay_only and ticket_only)
+    runtime_only = offer.get('qa05_runtime', False)
+    assert sum([relay_only, ticket_only, runtime_only]) <= 1
     commands = ([[str(NODE), str(DEPS / 'oxlint/bin/oxlint'), '--deny-warnings', str(TAIL)],
                  [str(NODE), '--check', str(TAIL)]] if include_tail else [])
     if offer.get('deferred_bundle', False):
-        commands += [[str(NODE), str(HERE / 'deferred.mjs'), str(ROOT), offer['backend_source'], offer['backend_sha256'], str(HERE / 'qualified-runtime.mjs')],
-                     [str(NODE), '--check', str(HERE / 'qualified-runtime.mjs')]]
-    if ticket_only:
+        output_name = offer.get('deferred_output', 'qualified-runtime.mjs')
+        assert output_name in ['qualified-runtime.mjs', 'qualified-runtime-restart.mjs']
+        commands += [[str(NODE), str(HERE / 'deferred.mjs'), str(ROOT), offer['backend_source'], offer['backend_sha256'], str(HERE / output_name)],
+                     [str(NODE), '--check', str(HERE / output_name)]]
+    if runtime_only:
+        assert not include_tail
+        assert not offer.get('deferred_bundle', False) or offer.get('deferred_output') == 'qualified-runtime-restart.mjs'
+        paths = [str(HERE / name) for name in ['qa05-runtime.mjs', 'qa05-runtime.test.mjs', 'server.mjs', 'pinned-source.mjs']]
+        commands += [[str(NODE), '--check', path] for path in paths]
+        commands += [[str(NODE), '--test', '--test-isolation=none', paths[1]],
+                     [str(NODE), str(DEPS / 'oxlint/bin/oxlint'), '--deny-warnings', *paths]]
+    elif ticket_only:
         assert not include_tail and not offer.get('deferred_bundle', False)
         paths = [str(HERE / name) for name in ['qa05-authentication.mjs', 'qa05-relay.mjs',
                                               'qa05-ticket-probe.mjs', 'qa05-ticket-probe.test.mjs']]
@@ -187,7 +197,7 @@ def main():
     signal.signal(signal.SIGINT, stop)
     watcher = None
     try:
-        if relay_only or ticket_only:
+        if relay_only or ticket_only or runtime_only:
             watcher = subprocess.Popen([str(Path(os.sys.executable)), '-B', str(HERE / 'validate.py'),
                 '--accepted-offer', str(args.accepted_offer), '--attempt', args.attempt, '--watch-pid', str(os.getpid())], start_new_session=True)
             ready_deadline = time.monotonic() + 10
