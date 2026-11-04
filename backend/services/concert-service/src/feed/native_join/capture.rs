@@ -42,13 +42,33 @@ impl proto::product_service_server::ProductService for Capture {
     }
 }
 
+pub(super) enum Route {
+    Feed,
+    Detail(Uuid),
+    Comments(Uuid),
+}
+
 pub(super) async fn binding(
     actor: Uuid,
     family: Uuid,
     event: Uuid,
+    route: Route,
 ) -> anyhow::Result<crate::adapters::out::relationship_authority::guarded::GuardBinding> {
     let request_id = Uuid::new_v4();
-    let target = format!("/api/concert/events/{event}/feed");
+    let (operation, target) = match route {
+        Route::Feed => (
+            "listConcertFeed",
+            format!("/api/concert/events/{event}/feed"),
+        ),
+        Route::Detail(post) => (
+            "getConcertPost",
+            format!("/api/concert/events/{event}/posts/{post}"),
+        ),
+        Route::Comments(post) => (
+            "listConcertComments",
+            format!("/api/concert/events/{event}/posts/{post}/comments"),
+        ),
+    };
     let now = chrono::Utc::now().timestamp_micros();
     let deadline =
         AuthorityRpcDeadline::new(now + 4_800_000, std::time::Duration::from_micros(4_800_000))?;
@@ -123,7 +143,7 @@ pub(super) async fn binding(
             event,
             family,
             request_id,
-            "listConcertFeed",
+            operation,
             "GET",
             &target,
             Sha256::digest(b"").into(),

@@ -5,6 +5,7 @@
 mod capture;
 mod environment;
 mod owners;
+mod read_cases;
 
 use super::{cursor::CursorCodec, live_read::FeedQuery, qualified_read::QualifiedReadFeed};
 use crate::adapters::out::public_profile::PublicProfileReader;
@@ -81,7 +82,7 @@ where
     tokio::spawn(async move { future.await.expect("actual native fixture server") })
 }
 impl Fixture {
-    async fn new() -> anyhow::Result<Self> {
+    async fn new(route: capture::Route) -> anyhow::Result<Self> {
         let auth = environment::pool("auth").await?;
         let friend = environment::pool("friend").await?;
         let concert = environment::pool("concert").await?;
@@ -115,7 +116,7 @@ impl Fixture {
         )?;
         let (actor, family, subjects) = environment::identities(&auth, 1).await?;
         let subject = subjects[0];
-        let binding = capture::binding(actor, family, event).await?;
+        let binding = capture::binding(actor, family, event, route).await?;
         let event = binding.event();
         // Actual database fixtures, never an identity-only positive guard.
         sqlx::query("insert into concert_events(event_id,slug,title,phase) values($1,$2,'Public native','OPEN')")
@@ -315,7 +316,7 @@ impl concert_application::Clock for WallClock {
 #[ignore = "requires frozen owned five-database PG16/mTLS Feed join controller"]
 async fn actual_post_reads_use_current_public_author_and_same_transaction_owner_tracking(
 ) -> anyhow::Result<()> {
-    let f = Fixture::new().await?;
+    let f = Fixture::new(capture::Route::Feed).await?;
     let b = f.scope.binding();
     let post_id = Uuid::new_v4();
     sqlx::query("insert into post_concert_posts(post_id,event_id,author_id,content,revision,state,created_at) values($1,$2,$3,$4,1,'PUBLISHED',clock_timestamp()-interval '1 minute')")

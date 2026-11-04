@@ -21,7 +21,14 @@ from auth_invalidation_smoke import frozen_binary
 from invalidation_clients_smoke import pki as canonical_pki
 
 OWNERS = ("auth", "friend", "concert", "profile", "post")
-CASES = ("feed::native_join::actual_post_reads_use_current_public_author_and_same_transaction_owner_tracking",)
+CASES = (
+    "feed::native_join::actual_post_reads_use_current_public_author_and_same_transaction_owner_tracking",
+    "feed::native_join::read_cases::actual_detail_reads_post_and_comments_under_held_guards",
+    "feed::native_join::read_cases::actual_comments_read_current_parent_and_public_author",
+    "feed::native_join::read_cases::actual_private_author_is_filtered_after_real_post_scan",
+    "feed::native_join::read_cases::actual_post_outage_cannot_become_an_empty_page",
+    "feed::native_join::read_cases::actual_sealed_root_cannot_authorize_a_later_read",
+)
 
 def pki(cluster):
     canonical_pki(cluster)
@@ -88,10 +95,30 @@ def qualify(checkpoint: dict, pg: Path, report: dict) -> None:
     if shutil.disk_usage(ROOT).free < 8 * 1024**3:
         raise SmokeError("preflight", "8 GiB free required")
     tools = {name: executable(pg / name) for name in PG_TOOLS}
-    cluster = Cluster(tools)
     report.update(source_commit=commit, binary_source_commit=checkpoint.get("binary_source_commit", commit),
-                  source_sha256=checkpoint["source_sha256"],
-                  binary_sha256=checkpoint["binary_sha256"], owned_root=str(cluster.root), phases={})
+                  source_sha256=checkpoint["source_sha256"], binary_sha256=checkpoint["binary_sha256"],
+                  phases={}, runs={})
+    try:
+        for case in CASES:
+            run = {}
+            report["runs"][case] = run
+            qualify_case(binary, tools, case, run)
+            report["phases"][case] = run["phase"]
+    finally:
+        clean = bool(report["runs"]) and all(
+            run.get("cleanup", {}).get("status") == "PASS"
+            and run.get("cleanup", {}).get("owned_root_absent")
+            for run in report["runs"].values())
+        report["cleanup"] = {"status": "PASS" if clean else "FAIL", "owned_root_absent": clean}
+
+
+def qualify_case(binary: Path, tools: dict, case: str, report: dict) -> None:
+    if case not in CASES:
+        raise SmokeError("inventory", "exact native case required")
+    # Every case gets fresh databases, PKI, marker and private socket. No case
+    # inherits another's event rows, child guards or settlement registrations.
+    cluster = Cluster(tools)
+    report["owned_root"] = str(cluster.root)
     try:
         cluster.init()
         with (cluster.data / "postgresql.conf").open("a") as stream:
@@ -116,14 +143,13 @@ def qualify(checkpoint: dict, pg: Path, report: dict) -> None:
             execute([str(tools["createdb"]), "--no-password", "--maintenance-db=postgres", db],
                     env=cluster.client_env("postgres"), phase=f"create-{owner}", cwd=cluster.root)
             env[f"MCR_CANONICAL_{owner.upper()}_URL"] = cluster.url(db)
-        for case in CASES:
-            result = execute([str(binary), "--ignored", "--exact", case,
-                              "--test-threads=1", "--nocapture"],
-                             env=env, phase=case, cwd=ROOT / "backend", timeout=60)
-            if "test result: ok. 1 passed; 0 failed;" not in result.stdout:
-                raise SmokeError("inventory", "expected one exact native test")
-            report["phases"][case] = {"status": "PASS", "exit_code": result.returncode,
-                                       "stdout": result.stdout}
+        result = execute([str(binary), "--ignored", "--exact", case,
+                          "--test-threads=1", "--nocapture"],
+                         env=env, phase=case, cwd=ROOT / "backend", timeout=60)
+        if "test result: ok. 1 passed; 0 failed; 0 ignored;" not in result.stdout:
+            raise SmokeError("inventory", "expected one exact native test")
+        report["phase"] = {"status": "PASS", "exit_code": result.returncode,
+                           "stdout": result.stdout}
         report["migration_receipts"] = {}
         for owner in OWNERS:
             db = f"mcr_canonical_{owner}"
@@ -147,7 +173,7 @@ def main() -> int:
     fd = os.open(args.report, os.O_WRONLY | os.O_CREAT | os.O_EXCL, 0o600)
     report = {"scope": "feed-native-owner-join", "live_http": "NOT_RUN", "status": "FAIL", "limitations": [
         "Real Feed owner component only; actual Gateway HTTP body completion remains unqualified.",
-        "Media, links, negative-path coverage and process/PostgreSQL restart remain separate obligations."]}
+        "Media, links, additional negative paths and process/PostgreSQL restart remain separate obligations."]}
     try:
         qualify(json.loads(args.checkpoint.read_text()), args.pg_bin_dir, report)
         report["status"] = "PASS"
