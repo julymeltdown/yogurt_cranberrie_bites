@@ -1,0 +1,29 @@
+{
+  "status": "SOURCE_READY_NATIVE_NOT_RUN",
+  "base": "9356b943900ae4b4bf2c45f11118555e2c5d72ff",
+  "grant": "74ede9bad189e14373c80c5d595fb690d2f52692",
+  "goal": 1793769944,
+  "scope": "Only world-rooms/world-nearby and exact new doc/evidence",
+  "tests": {
+    "focused": 54,
+    "combined": 221,
+    "suites": 13,
+    "exitCode": 0
+  },
+  "fullTypesExit": 0,
+  "lintExit": 0,
+  "planExit": 0,
+  "protectedReadOnlyPins": {
+    "frontend/src/app/world-entry/root-features.tsx": "8d63946b05879cf6a191b7eeb584846549416b4334c4d0328f444be2322fc9b4",
+    "frontend/src/app/world-entry/__tests__/reference-scene-v5/preview.tsx": "d236e2769abbda946444fb8eda64cf525f48a1c830e42a0715ce8f812e518599",
+    "frontend/src/app/world-entry/__tests__/reference-scene-v5/data.ts": "097697b0c0b12ed6fc61799b6c563bb14205da95e6ac8bec21d0ac6432d4c4bb",
+    "frontend/src/world/composition/index.ts": "90ca131868b60f0c7c5df344503b89ccf17686df85186e9f968742c311718974",
+    "frontend/src/world/scenes/MapScene.ts": "739bea4ff4f470f48ea01038e14f9d3a0ae09fda52c3e7f5bab3eb570b8ace5f",
+    "frontend/src/world/network/replication.ts": "568dda7c23f6d66f9cf5c8239bacf1f58ff1744b0746e07d6cc72812f76f1dd2",
+    "frontend/src/entities/avatar/character-source-pack.json": "f8d6c83818bced007f71af1f59dbc53cd88115c5dab0112fc302d8469a4fdc6f",
+    "contracts/realtime/v1/world.schema.json": "1732e627037fe91533ac6f7fe74e36683ce9b846bfbfc020b3cce298ae84df36",
+    "contracts/realtime/v1/operations.json": "400d28e861ca5a87c54fde447f77b1680f7ea58e3047ee43b46db25816af6da0"
+  },
+  "W04": "OPEN_UNRESOLVED_AUTHORITY_INTERFACE; no invitation or occupancy invented; World20f and BackendRoot1fc own proposed future contract",
+  "native": "NOT_RUN; NEW named slot required,16GiB launch/8GiB stop guard,190MiB expected whole workflow peak<=0.2GiB,12MiB expected durable<=40MiB"
+}
