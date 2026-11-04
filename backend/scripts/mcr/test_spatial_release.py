@@ -5,6 +5,7 @@ import argparse
 import hashlib
 import importlib.util
 import json
+import re
 from pathlib import Path
 import unittest
 import signal
@@ -131,6 +132,14 @@ class QualityV6Tests(unittest.TestCase):
                 self.assertEqual(builder.sha(raw), pin['sha256'])
                 self.assertEqual(builder.png_size(raw), (pin['width_px'], pin['height_px']))
 
+    def test_native_receipt_rejects_missing_or_wrong_candidate_observations(self):
+        expected = {'map_revision': 4, 'geometry_hash': builder.QUALITY_V6.geometry_hash}
+        valid = 'test native ... MCR_SPATIAL_CANDIDATE ' + json.dumps(expected) + '\n'
+        self.assertEqual(verify_native_candidate(valid, expected), expected)
+        for invalid in ['', valid + valid, 'MCR_SPATIAL_CANDIDATE {"map_revision":3}\n']:
+            with self.assertRaisesRegex(ValueError, 'exact requested candidate'):
+                verify_native_candidate(invalid, expected)
+
     def test_old_tiled_cannot_be_resealed_as_new_generation(self):
         original = builder.published_input
         def swapped(path, revision=builder.SOURCE_COMMIT):
@@ -143,6 +152,13 @@ class QualityV6Tests(unittest.TestCase):
         with patch.object(builder, 'published_input', side_effect=swapped):
             with self.assertRaisesRegex(ValueError, 'Tiled differs'):
                 builder.build(mixed)
+
+
+def verify_native_candidate(stdout, expected):
+    rows = re.findall(r'MCR_SPATIAL_CANDIDATE (\{[^\n]*\})', stdout)
+    builder.require(len(rows) == 1 and json.loads(rows[0]) == expected,
+                    'native binary did not observe the exact requested candidate')
+    return json.loads(rows[0])
 
 
 def run_native(metadata, pg_bin, pinned_binaries, inputs=builder.BASELINE):
@@ -179,6 +195,20 @@ def run_native(metadata, pg_bin, pinned_binaries, inputs=builder.BASELINE):
               'art_commit': inputs.art_commit, 'admission': 'NOT_ADMITTED'}
     def interrupted(number, _frame):
         raise migration.SmokeError('signal', f'interrupted by signal {number}')
+    outputs = builder.build(inputs)
+    expected = {**outputs['readiness.json']['map'],
+                'source_commit': inputs.source_commit, 'art_commit': inputs.art_commit}
+    def run_selected(name):
+        env = {**cluster.env, 'MCR_BOOTSTRAP_ROOT': str(cluster.root),
+               'MCR_BOOTSTRAP_TOKEN': cluster.token, 'MCR_BOOTSTRAP_INODE': str(cluster.identity[1]),
+               'MCR_BOOTSTRAP_DATABASE_URL': cluster.url(bootstrap.DATABASE)}
+        result = migration.execute([str(binary), '--ignored', '--exact', name, '--test-threads=1', '--nocapture'],
+                                   env=env, phase=name, cwd=cluster.root, timeout=60)
+        bootstrap.require(re.search(r'test result: ok\. 1 passed; 0 failed; 0 ignored;', result.stdout),
+                          'native test missing/skipped')
+        observed = verify_native_candidate(result.stdout, expected)
+        report.setdefault('observed_candidates', {})[name] = observed
+        report['commands'][name] = result.returncode
     previous = {number: signal.signal(number, interrupted) for number in (signal.SIGINT, signal.SIGTERM)}
     try:
         cluster.init(); cluster.start()
@@ -190,12 +220,12 @@ def run_native(metadata, pg_bin, pinned_binaries, inputs=builder.BASELINE):
             if not path.name.endswith('.down.sql'):
                 cluster.sql(bootstrap.DATABASE, path.read_text())
                 report['commands'][path.name] = 0
-        bootstrap.run_test(cluster, binary, 'native_spatial_candidate_transactions', report)
+        run_selected('native_spatial_candidate_transactions')
         before = cluster.assert_postmaster(); cluster.stop(); cluster.start()
         after = cluster.assert_postmaster()
         bootstrap.require(before != after, 'postmaster did not restart')
         report['restart'] = {'before_pid': before, 'after_pid': after}
-        bootstrap.run_test(cluster, binary, 'native_spatial_candidate_restart', report)
+        run_selected('native_spatial_candidate_restart')
         report['native_tests'] = 2
         report['state'] = 'PASS'
     except (migration.SmokeError, OSError, ValueError, subprocess.SubprocessError) as error:

@@ -704,7 +704,19 @@ fn source_spatial_candidate() -> concert_service::bootstrap::spatial::SourceBoun
         Ok("baseline") | Err(_) => "backend/releases/reference-scene-v2",
         _ => panic!("unknown spatial test candidate"),
     };
-    spatial_candidate_from_directory(directory)
+    let candidate = spatial_candidate_from_directory(directory);
+    println!(
+        "MCR_SPATIAL_CANDIDATE {}",
+        serde_json::json!({
+            "map_id": candidate.catalog.map_id,
+            "map_revision": candidate.catalog.manifest.map_revision,
+            "content_hash": candidate.catalog.manifest.content_hash,
+            "geometry_hash": candidate.catalog.manifest.geometry_hash,
+            "source_commit": candidate.source_commit,
+            "art_commit": candidate.art_commit,
+        })
+    );
+    candidate
 }
 fn spatial_candidate_from_directory(
     directory: &str,
