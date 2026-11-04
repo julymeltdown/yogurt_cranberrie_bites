@@ -295,6 +295,20 @@ pub struct ApplyUserDeletionResponseDto {
     pub applied: bool,
 }
 
+/// Internal owning-transaction evidence. It is not a public caller capability.
+#[derive(Clone, PartialEq, Eq)]
+pub struct CommittedDeletionReceiptDto {
+    pub version: u32,
+    pub saga_id: uuid::Uuid,
+    pub user_id: uuid::Uuid,
+    pub actor_id: uuid::Uuid,
+    pub retention_until: chrono::DateTime<chrono::Utc>,
+    pub fence_revision: i64,
+    pub effect_xid: String,
+    pub recorded_at: chrono::DateTime<chrono::Utc>,
+    pub owner: String,
+}
+
 redacted_debug! {
     ProfileDto {
         user_id,

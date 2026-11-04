@@ -6,3 +6,5 @@ pub mod domain;
 pub mod concert_invalidation;
 
 pub mod concert_authority;
+
+pub mod deletion_receipt;

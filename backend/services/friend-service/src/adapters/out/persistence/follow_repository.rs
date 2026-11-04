@@ -857,138 +857,19 @@ impl UserLifecycleRepositoryPort for PgFollowRepository {
         actor_id: Uuid,
         retention_until: DateTime<Utc>,
     ) -> Result<()> {
-        let mut tx = self.pool.begin().await?;
-        // Serialize deletion with every active Friend write involving this
-        // identity. The database trigger takes the same advisory lock for
-        // relationship and recommendation writes, so a late event cannot pass
-        // a pre-delete check and commit after the tombstone.
-        sqlx::query("select friend_lock_subject_ids($1::uuid[])")
-            .bind(vec![user_id])
-            .execute(&mut *tx)
-            .await?;
-        sqlx::query(
-            r#"
-            insert into friend_user_deletion_tombstones (
-                user_id, saga_id, actor_id, retention_until, applied_at
-            ) values ($1, $2, $3, $4, now())
-            on conflict (user_id) do nothing
-            "#,
-        )
-        .bind(user_id)
-        .bind(saga_id)
-        .bind(actor_id)
-        .bind(retention_until)
-        .execute(&mut *tx)
-        .await?;
-        let receipt_matches: bool = sqlx::query_scalar(
-            r#"
-            select saga_id = $2 and actor_id = $3 and retention_until = $4
-            from friend_user_deletion_tombstones
-            where user_id = $1
-            "#,
-        )
-        .bind(user_id)
-        .bind(saga_id)
-        .bind(actor_id)
-        .bind(retention_until)
-        .fetch_one(&mut *tx)
-        .await?;
-        anyhow::ensure!(
-            receipt_matches,
-            "Friend deletion identity was reused with different saga data"
-        );
+        crate::deletion_receipt::apply(&self.pool, saga_id, user_id, actor_id, retention_until)
+            .await
+            .map(|_| ())
+    }
 
-        sqlx::query(
-            r#"
-            update follows
-            set deleted_at=coalesce(deleted_at, now()),
-                deleted_by=$2,
-                delete_reason='account_deletion',
-                retention_until=$3
-            where follower_id=$1 or followee_id=$1
-            "#,
-        )
-        .bind(user_id)
-        .bind(actor_id)
-        .bind(retention_until)
-        .execute(&mut *tx)
-        .await?;
-        sqlx::query(
-            r#"
-            update follow_requests
-            set status=case when status='PENDING' then 'CANCELLED' else status end,
-                decided_at=case when status='PENDING' then coalesce(decided_at, now()) else decided_at end,
-                deleted_at=coalesce(deleted_at, now()),
-                deleted_by=$2,
-                delete_reason='account_deletion',
-                retention_until=$3
-            where follower_id=$1 or followee_id=$1
-            "#,
-        )
-        .bind(user_id)
-        .bind(actor_id)
-        .bind(retention_until)
-        .execute(&mut *tx)
-        .await?;
-        sqlx::query(
-            r#"
-            update user_blocks
-            set deleted_at=coalesce(deleted_at, now()),
-                deleted_by=$2,
-                delete_reason='account_deletion',
-                retention_until=$3
-            where blocker_id=$1 or blocked_id=$1
-            "#,
-        )
-        .bind(user_id)
-        .bind(actor_id)
-        .bind(retention_until)
-        .execute(&mut *tx)
-        .await?;
-        sqlx::query(
-            r#"
-            update user_mutes
-            set deleted_at=coalesce(deleted_at, now()),
-                deleted_by=$2,
-                delete_reason='account_deletion',
-                retention_until=$3
-            where muter_id=$1 or muted_id=$1
-            "#,
-        )
-        .bind(user_id)
-        .bind(actor_id)
-        .bind(retention_until)
-        .execute(&mut *tx)
-        .await?;
-
-        for query in [
-            "delete from people_recommendation_impressions where viewer_id=$1 or candidate_user_id=$1",
-            "delete from people_recommendation_snapshots where viewer_id=$1",
-            "delete from people_recommendation_candidates where viewer_id=$1 or candidate_user_id=$1",
-            "delete from people_recommendation_events where viewer_id=$1 or actor_id=$1 or subject_id=$1",
-            "delete from people_recommendation_refresh_jobs where viewer_id=$1",
-            "delete from people_experiment_assignments where viewer_id=$1",
-            "delete from people_embeddings where subject_id=$1",
-        ] {
-            sqlx::query(query).bind(user_id).execute(&mut *tx).await?;
-        }
-        sqlx::query(
-            r#"
-            insert into friend_audit_events (
-                id, actor_id, follower_id, followee_id, action, outcome,
-                request_id, metadata_json, occurred_at
-            ) values ($1,$2,$3,null,'ACCOUNT_DELETION_APPLIED','SUCCESS',$4,$5,now())
-            on conflict (id) do nothing
-            "#,
-        )
-        .bind(saga_id)
-        .bind(actor_id)
-        .bind(user_id)
-        .bind(saga_id.to_string())
-        .bind(serde_json::json!({"retentionUntil": retention_until}).to_string())
-        .execute(&mut *tx)
-        .await?;
-        tx.commit().await?;
-        Ok(())
+    async fn apply_user_deletion_with_receipt(
+        &self,
+        saga_id: Uuid,
+        user_id: Uuid,
+        actor_id: Uuid,
+        retention_until: DateTime<Utc>,
+    ) -> Result<crate::application::dto::friend_dto::CommittedDeletionReceiptDto> {
+        crate::deletion_receipt::apply(&self.pool, saga_id, user_id, actor_id, retention_until)
+            .await
     }
 }

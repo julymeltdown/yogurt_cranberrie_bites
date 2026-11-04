@@ -102,6 +102,17 @@ pub trait ProfileRepositoryPort: Send + Sync {
 #[async_trait]
 pub trait ProfileMutationReceiptMaintenancePort: Send + Sync {
     async fn purge_expired_mutation_outcomes(&self, limit: i32) -> Result<i64>;
+
+    /// Old unit success cannot be upgraded into owning COMMIT evidence.
+    async fn apply_user_deletion_with_receipt(
+        &self,
+        _saga_id: Uuid,
+        _user_id: Uuid,
+        _actor_id: Uuid,
+        _retention_until: DateTime<Utc>,
+    ) -> Result<crate::dto::profile_dto::CommittedDeletionReceiptDto> {
+        Err(crate::errors::ProfileError::ReceiptUnavailable)
+    }
 }
 
 #[async_trait]
@@ -234,6 +245,18 @@ where
     ) -> Result<()> {
         (**self)
             .apply_user_deletion(saga_id, user_id, actor_id, retention_until)
+            .await
+    }
+
+    async fn apply_user_deletion_with_receipt(
+        &self,
+        saga_id: Uuid,
+        user_id: Uuid,
+        actor_id: Uuid,
+        retention_until: DateTime<Utc>,
+    ) -> Result<crate::dto::profile_dto::CommittedDeletionReceiptDto> {
+        (**self)
+            .apply_user_deletion_with_receipt(saga_id, user_id, actor_id, retention_until)
             .await
     }
 

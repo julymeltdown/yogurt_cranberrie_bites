@@ -62,18 +62,27 @@ struct ProfileDeletionClient {
 #[async_trait]
 impl UserDeletionTargetClientPort for ProfileDeletionClient {
     async fn apply(&self, request: UserDeletionDispatchRequest) -> Result<()> {
-        let (saga_id, user_id, actor_id, retention_until) = request.strings();
-        let mut client = self.client.clone();
-        client
-            .apply_user_deletion(profile_proto::ApplyUserDeletionRequest {
-                saga_id,
-                user_id,
-                actor_id,
-                retention_until,
-            })
-            .with_edge_deadline(Edge::AuthProfile, self.edge_deadlines.clone())
-            .await?;
-        Ok(())
+        let deadline =
+            std::time::Instant::now() + platform::grpc_deadline::local_deadline(Edge::AuthProfile);
+        platform::call_deadline::scope(deadline, async {
+            let (saga_id, user_id, actor_id, retention_until) = request.strings();
+            let mut client = self.client.clone();
+            let response = client
+                .apply_user_deletion(profile_proto::ApplyUserDeletionRequest {
+                    saga_id,
+                    user_id,
+                    actor_id,
+                    retention_until,
+                })
+                .with_edge_deadline(Edge::AuthProfile, self.edge_deadlines.clone())
+                .await?
+                .into_inner();
+            if platform::call_deadline::remaining() == Some(std::time::Duration::ZERO) {
+                return Err(crate::application::errors::AuthError::DependencyUnavailable.into());
+            }
+            verify_profile_deletion_receipt(&request, &response)
+        })
+        .await
     }
 }
 
@@ -86,18 +95,27 @@ struct FriendDeletionClient {
 #[async_trait]
 impl UserDeletionTargetClientPort for FriendDeletionClient {
     async fn apply(&self, request: UserDeletionDispatchRequest) -> Result<()> {
-        let (saga_id, user_id, actor_id, retention_until) = request.strings();
-        let mut client = self.client.clone();
-        client
-            .apply_user_deletion(friend_proto::ApplyUserDeletionRequest {
-                saga_id,
-                user_id,
-                actor_id,
-                retention_until,
-            })
-            .with_edge_deadline(Edge::AuthFriend, self.edge_deadlines.clone())
-            .await?;
-        Ok(())
+        let deadline =
+            std::time::Instant::now() + platform::grpc_deadline::local_deadline(Edge::AuthFriend);
+        platform::call_deadline::scope(deadline, async {
+            let (saga_id, user_id, actor_id, retention_until) = request.strings();
+            let mut client = self.client.clone();
+            let response = client
+                .apply_user_deletion(friend_proto::ApplyUserDeletionRequest {
+                    saga_id,
+                    user_id,
+                    actor_id,
+                    retention_until,
+                })
+                .with_edge_deadline(Edge::AuthFriend, self.edge_deadlines.clone())
+                .await?
+                .into_inner();
+            if platform::call_deadline::remaining() == Some(std::time::Duration::ZERO) {
+                return Err(crate::application::errors::AuthError::DependencyUnavailable.into());
+            }
+            verify_friend_deletion_receipt(&request, &response)
+        })
+        .await
     }
 }
 
@@ -110,18 +128,27 @@ struct PostDeletionClient {
 #[async_trait]
 impl UserDeletionTargetClientPort for PostDeletionClient {
     async fn apply(&self, request: UserDeletionDispatchRequest) -> Result<()> {
-        let (saga_id, user_id, actor_id, retention_until) = request.strings();
-        let mut client = self.client.clone();
-        client
-            .apply_user_deletion(post_proto::ApplyUserDeletionRequest {
-                saga_id,
-                user_id,
-                actor_id,
-                retention_until,
-            })
-            .with_edge_deadline(Edge::AuthPost, self.edge_deadlines.clone())
-            .await?;
-        Ok(())
+        let deadline =
+            std::time::Instant::now() + platform::grpc_deadline::local_deadline(Edge::AuthPost);
+        platform::call_deadline::scope(deadline, async {
+            let (saga_id, user_id, actor_id, retention_until) = request.strings();
+            let mut client = self.client.clone();
+            let response = client
+                .apply_user_deletion(post_proto::ApplyUserDeletionRequest {
+                    saga_id,
+                    user_id,
+                    actor_id,
+                    retention_until,
+                })
+                .with_edge_deadline(Edge::AuthPost, self.edge_deadlines.clone())
+                .await?
+                .into_inner();
+            if platform::call_deadline::remaining() == Some(std::time::Duration::ZERO) {
+                return Err(crate::application::errors::AuthError::DependencyUnavailable.into());
+            }
+            verify_post_deletion_receipt(&request, &response)
+        })
+        .await
     }
 }
 
@@ -185,6 +212,46 @@ pub fn verify_notification_deletion_receipt(
     }
     Ok(())
 }
+
+/// Exact typed evidence from the authenticated owning peer; no legacy boolean ACK.
+macro_rules! legacy_deletion_verifier {
+    ($verify:ident, $proto:ident, $owner:literal) => {
+        pub fn $verify(
+            request: &UserDeletionDispatchRequest,
+            response: &$proto::ApplyUserDeletionResponse,
+        ) -> Result<()> {
+            let invalid =
+                || anyhow::Error::new(crate::application::errors::AuthError::DependencyUnavailable);
+            let receipt = response.committed_receipt.as_ref().ok_or_else(invalid)?;
+            let xid = receipt.effect_xid.parse::<u64>().map_err(|_| invalid())?;
+            let recorded =
+                DateTime::parse_from_rfc3339(&receipt.recorded_at).map_err(|_| invalid())?;
+            if !response.applied
+                || receipt.version != 1
+                || receipt.owner != $owner
+                || request.saga_id.is_nil()
+                || request.user_id.is_nil()
+                || request.actor_id.is_nil()
+                || receipt.saga_id != request.saga_id.to_string()
+                || receipt.user_id != request.user_id.to_string()
+                || receipt.actor_id != request.actor_id.to_string()
+                || request.retention_until.timestamp_subsec_nanos() >= 1_000_000_000
+                || receipt.retention_seconds != Some(request.retention_until.timestamp())
+                || receipt.retention_nanos != Some(request.retention_until.timestamp_subsec_nanos())
+                || receipt.fence_revision <= 0
+                || xid == 0
+                || receipt.effect_xid != xid.to_string()
+                || recorded.timestamp_subsec_nanos() >= 1_000_000_000
+            {
+                return Err(invalid());
+            }
+            Ok(())
+        }
+    };
+}
+legacy_deletion_verifier!(verify_profile_deletion_receipt, profile_proto, "PROFILE");
+legacy_deletion_verifier!(verify_friend_deletion_receipt, friend_proto, "FRIEND");
+legacy_deletion_verifier!(verify_post_deletion_receipt, post_proto, "POST");
 
 #[derive(Clone)]
 pub struct GrpcUserDeletionDispatcher {
