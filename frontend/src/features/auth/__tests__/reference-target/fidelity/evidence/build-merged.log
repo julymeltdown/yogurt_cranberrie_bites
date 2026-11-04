@@ -71,7 +71,7 @@ src/features/auth/__tests__/reference-target/fidelity/.build-cache/output/assets
 src/features/auth/__tests__/reference-target/fidelity/.build-cache/output/assets/mcr-domain.openapi-CbO9FwOW.js                             760.84 kB │ gzip:  49.27 kB
 src/features/auth/__tests__/reference-target/fidelity/.build-cache/output/assets/phaser-DuGV5HTt.js                                       1,198.04 kB │ gzip: 319.11 kB
 
-[plugin builtin:vite-reporter] 
+[plugin builtin:vite-reporter]
 (!) Some chunks are larger than 500 kB after minification. Consider:
 - Using dynamic import() to code-split the application
 - Use build.rolldownOptions.output.codeSplitting to improve chunking: https://rolldown.rs/reference/OutputOptions.codeSplitting
