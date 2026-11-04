@@ -7,6 +7,7 @@ alone does not prove native owner settlement; the launcher must inspect that.
 """
 from __future__ import annotations
 
+import http.client
 import json
 import urllib.error
 import urllib.parse
@@ -77,12 +78,16 @@ class Client:
             response = error
         except (OSError, ValueError):
             raise ProbeFailure("public HTTP transport unavailable") from None
-        with response:
-            code, actual_headers = response.code, response.headers
-            raw = response.read(32769)
+        try:
+            with response:
+                code, actual_headers = response.code, response.headers
+                raw = response.read(32769)
+        except (OSError, http.client.HTTPException):
+            raise ProbeFailure(f"{label}: public response framing failed") from None
         require(code == status, f"{label}: expected HTTP {status}, received {code}")
         require(len(raw) <= 32768, f"{label}: oversized public response")
-        require(actual_headers.get("Cache-Control") == "no-store"
+        require(actual_headers.get_content_type() == "application/json"
+                and actual_headers.get("Cache-Control") == "no-store"
                 and actual_headers.get("Pragma") == "no-cache"
                 and actual_headers.get("X-Content-Type-Options") == "nosniff"
                 and actual_headers.get("ETag") is None
