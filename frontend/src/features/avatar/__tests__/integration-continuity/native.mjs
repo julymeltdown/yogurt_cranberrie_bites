@@ -9,7 +9,7 @@ const output = process.env.MCR_CONTINUITY_OUTPUT
 assert(dependencies && scratch && output, 'Allocated dependencies, scratch and output are required')
 const require = createRequire(resolve(dependencies, 'package.json'))
 const { createServer } = await import(pathToFileURL(require.resolve('vite')))
-const { chromium, expect } = await import(pathToFileURL(require.resolve('@playwright/test')))
+const { chromium, expect } = require('@playwright/test')
 const { default: react } = await import(pathToFileURL(require.resolve('@vitejs/plugin-react')))
 const { default: tailwind } = await import(pathToFileURL(require.resolve('@tailwindcss/vite')))
 const { aliases } = await import('../../../../world/avatar/__tests__/motion-adoption/vitest.config.mjs')
