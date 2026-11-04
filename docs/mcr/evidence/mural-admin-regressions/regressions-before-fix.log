@@ -1,0 +1,131 @@
+
+ RUN  v4.1.9 <checkout>/frontend
+
+ ❯ src/features/admin/reports/__tests__/controller.test.ts (60 tests | 7 failed) 60ms
+     × validates layered 1.0 before minimizing and preserves explicit revision/key commands 3ms
+     × validates whole character 1.1 before minimizing and preserves explicit revision/key commands 1ms
+     × rejects a schema-valid profile belonging to a different user 1ms
+     × binds exact members command actor/event/target/revision/key with no replay 1ms
+     × uses the frozen user_id filter for a direct member route and retains minimal fields 1ms
+     × supports the reverse members action against the new revision 1ms
+   × uses a fresh key only for a separately reviewed intent after refresh 1ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 7 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  src/features/admin/reports/__tests__/controller.test.ts > canonical member avatar union compatibility > validates layered 1.0 before minimizing and preserves explicit revision/key commands
+ FAIL  src/features/admin/reports/__tests__/controller.test.ts > canonical member avatar union compatibility > validates whole character 1.1 before minimizing and preserves explicit revision/key commands
+AssertionError: expected [Function] to not throw an error but 'Error: Invalid moderator contract' was thrown
+
+- Expected:
+undefined
+
++ Received:
+"Error: Invalid moderator contract"
+
+ ❯ src/features/admin/reports/__tests__/controller.test.ts:124:55
+    122|     ] as const)('validates %s before minimizing and preserves explicit…
+    123|         const h = setup('members'), full = member(config());
+    124|         expect(() => checked('UserReview', full)).not.toThrow();
+       |                                                       ^
+    125|         h.setRows([full]);
+    126|         await prepare(h, 'SUSPEND');
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/7]⎯
+
+ FAIL  src/features/admin/reports/__tests__/controller.test.ts > canonical member avatar union compatibility > rejects a schema-valid profile belonging to a different user
+AssertionError: expected [Function] to not throw an error but 'Error: Invalid moderator contract' was thrown
+
+- Expected:
+undefined
+
++ Received:
+"Error: Invalid moderator contract"
+
+ ❯ src/features/admin/reports/__tests__/controller.test.ts:159:56
+    157|     it('rejects a schema-valid profile belonging to a different user',…
+    158|         const h = setup('members'), value = { ...member(wholeConfig), …
+    159|         expect(() => checked('UserReview', value)).not.toThrow();
+       |                                                        ^
+    160|         h.override(() => Response.json({ items: [value], next_cursor: …
+    161|         await h.controller.load();
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/7]⎯
+
+ FAIL  src/features/admin/reports/__tests__/controller.test.ts > explicit revision/reason and truthful commands > binds exact members command actor/event/target/revision/key with no replay
+AssertionError: expected 'failed' to be 'ready' // Object.is equality
+
+Expected: "ready"
+Received: "failed"
+
+ ❯ prepare src/features/admin/reports/__tests__/controller.test.ts:22:39
+     20| async function prepare(h: ReturnType<typeof harness>, action?: string)…
+     21|     await h.controller.load();
+     22|     expect(h.controller.read().phase).toBe('ready');
+       |                                       ^
+     23|     expect(h.controller.read().rows).toHaveLength(1);
+     24|     await h.controller.select(rowKey(h.controller.read().rows[0]!));
+ ❯ src/features/admin/reports/__tests__/controller.test.ts:169:9
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[3/7]⎯
+
+ FAIL  src/features/admin/reports/__tests__/controller.test.ts > private evidence, direct member entry and command recovery > uses the frozen user_id filter for a direct member route and retains minimal fields
+AssertionError: expected null to match object { Object (user_id) }
+
+- Expected:
+{
+  "user_id": "00000000-0000-4000-8000-000000000400",
+}
+
++ Received:
+null
+
+ ❯ src/features/admin/reports/__tests__/controller.test.ts:328:39
+    326|             await c.load();
+    327|             expect(new URL(h.requests[0]!.url).searchParams.get('user_…
+    328|             expect(c.read().selected).toMatchObject({ user_id: id(400)…
+       |                                       ^
+    329|             expect(Object.keys((c.read().selected as {
+    330|                 profile: object;
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[4/7]⎯
+
+ FAIL  src/features/admin/reports/__tests__/controller.test.ts > private evidence, direct member entry and command recovery > supports the reverse members action against the new revision
+AssertionError: expected 'failed' to be 'ready' // Object.is equality
+
+Expected: "ready"
+Received: "failed"
+
+ ❯ prepare src/features/admin/reports/__tests__/controller.test.ts:22:39
+     20| async function prepare(h: ReturnType<typeof harness>, action?: string)…
+     21|     await h.controller.load();
+     22|     expect(h.controller.read().phase).toBe('ready');
+       |                                       ^
+     23|     expect(h.controller.read().rows).toHaveLength(1);
+     24|     await h.controller.select(rowKey(h.controller.read().rows[0]!));
+ ❯ src/features/admin/reports/__tests__/controller.test.ts:347:9
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[5/7]⎯
+
+ FAIL  src/features/admin/reports/__tests__/controller.test.ts > uses a fresh key only for a separately reviewed intent after refresh
+AssertionError: expected 'failed' to be 'ready' // Object.is equality
+
+Expected: "ready"
+Received: "failed"
+
+ ❯ prepare src/features/admin/reports/__tests__/controller.test.ts:22:39
+     20| async function prepare(h: ReturnType<typeof harness>, action?: string)…
+     21|     await h.controller.load();
+     22|     expect(h.controller.read().phase).toBe('ready');
+       |                                       ^
+     23|     expect(h.controller.read().rows).toHaveLength(1);
+     24|     await h.controller.select(rowKey(h.controller.read().rows[0]!));
+ ❯ src/features/admin/reports/__tests__/controller.test.ts:407:30
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[6/7]⎯
+
+
+ Test Files  1 failed | 1 passed (2)
+      Tests  7 failed | 56 passed (63)
+   Start at  10:46:34
+   Duration  2.25s (transform 735ms, setup 0ms, import 674ms, tests 889ms, environment 525ms)
+

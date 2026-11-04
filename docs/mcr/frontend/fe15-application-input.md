@@ -1,0 +1,70 @@
+# FE15 application input delivery
+
+## Original task disposition
+
+Original FE15 client/application criteria are **INTEGRATED** with native browser qualification below. The remaining application journey identified by Root reconciliation `df0842a6` and `10784b26` is closed: actual application routes, WorldShell, production ports, composition, input controller and default Phaser engine are exercised together. This is not IN01, IN05, QA06 physical-device, QA07 accessibility or release acceptance. Their existing owners retain those decisions. No unrelated backend/operator/device prerequisite is added to FE15.
+
+| Original FE15 requirement | Current evidence |
+| --- | --- |
+| Pointer-safe joystick/tap movement | Trusted Chrome touch input, pointercancel and lostpointercapture; neutral wire output and stationary post-cancel self; actual canvas tap route completion at 360/390/430. |
+| Keyboard control | Focused canvas arrows and WASD move and stop; real browser blur stops; profile keyboard events cannot create movement/interact intents. |
+| Collision prediction | Actual application taps into observed visible blocked map geometry are rejected without self movement; existing movement simulation/whole-foot collision and route tests pass. |
+| Recenter and selection | Actual DOM nearby selector and Interact emit one intent; actual Recenter control and keyboard R restore follow mode. |
+| Blocking-panel pause | Opening the real profile route while moving pauses input, inerts the world and retains the incumbent socket/game/camera. |
+| Keyboard opening and panel isolation | Actual focused profile textarea, sequential WASD/E/R/arrows, visualViewport resize 844→430→844, then route removal and enabled world return. This emulates keyboard viewport resizing; it does not open an iOS/Android OS keyboard. |
+| Lifecycle/privacy | One total/peak game, same camera, one socket across panel navigation; privacy suspension removes controls/canvas/socket and final disposal revokes all blob URLs and clears source-cache bytes. Input listener ledger retains only test logger and Playwright hit-target interception. |
+
+## Defects and scoped implementation
+
+Before-fix receipt `frontend/src/world/__tests__/fe15-application-input/evidence/before-fix.json` and screenshot preserve the actual 390px failure: after removing a focused profile textarea, the world remained inert/joystick disabled even though the route and replication were live. The full blocking panel also replaced the room connection (two total sockets).
+
+* `WorldShell.tsx`: reread committed `document.activeElement` on location changes. Removing a focused field need not emit blur; stale typing state must not block the next route.
+* `composition/index.ts`, only `setVisible`: panel coverage hides/pauses the engine without withdrawing replication. Actual document backgrounding still withdraws presence and resumes using a fresh ticket.
+* Only the existing composition test “hides by disconnecting/evicting…” was revised to distinguish covered-panel retention from document-hidden withdrawal, fresh-ticket resume and the same game.
+
+Initial exclusive assignment: new `frontend/src/world/__tests__/fe15-application-input/**` and this document. WorldSL `01a1a1fe-c276-7eb3-a36e-2f383c0e81b8` explicitly transferred the two named production hunks before edits; Root153 and FE07 owner confirmed no competing writer. WorldSL subsequently allocated only the named existing composition regression hunk. No whole-file ownership is implied. A separate, explicit FE07 support allocation covers only PanelFrame's scroll capture/restore effect; that support is tracked separately below and does not transfer original FE07 qualification ownership.
+
+## Provenance and reproducibility
+
+Assignment base: `4b327722aaa5697a10bbf8ecc3d1c4c82ecde9bc`; isolated branch `codex/mcr-fe-FE15-application-input`. `preview.tsx` adapts the MCR-owned Root source fixture from `10784b26` into the new owned test prefix; original fixture files remain unchanged. It imports the frozen Root `data.ts`, `qualified-themes.ts`, source packet and authentic selected-character resources. Artist source remains `bc731ed8` spatial-v3/quality-v6; original top-level provenance is preserved. Backend-derived engineering theme qualification is used only by the explicit source-only test resolver. It does not admit the original artist pack into Product or bypass production admission.
+
+The fixture runs real auth/session/controller, application routes, production ports, WorldShell, default Phaser, input, renderer, camera, cache and privacy owner. HTTP/Auth/C05 peers are explicit test fixtures. The C05 peer advances a fixture self from actual received Input using the injected local collision policy and sends validated Delta frames; it is not evidence of live server physics, authorization, networking, concurrency or physical arrival. No live endpoint or device was used.
+
+Retained dependencies/lockfile are unchanged: Node24.22.2, Phaser3.90.0, existing React/Vite/Playwright stack. Browser version, SHA256 source pins, frame samples, trusted events, viewport measurements, target bounds and capture hashes are in `evidence/native.json`. The report candidate identifies the pre-commit base; its SHA256 pins identify the actual tested changed sources. All images are native browser captures of the application. No artwork was generated or replaced. `docs/source/`, backend, public runtime, contracts, root routing, manifests and lockfiles are unchanged by this patch.
+
+From repository root, with the retained Node24.22.2 toolchain and installed dependencies:
+
+```sh
+node frontend/src/world/__tests__/fe15-application-input/native.mjs
+cd frontend
+MCR_FE14_PYTHON=<contract-validation-python> node_modules/.bin/vitest run src/app/__tests__ src/app/world-entry/__tests__ src/world/__tests__/movement.test.ts src/world/__tests__/runtime.test.ts src/world/network/__tests__ src/world/mural-entry-lifecycle/__tests__ --maxWorkers=2 --reporter=dot
+MCR_FE14_PYTHON=<contract-validation-python> node_modules/.bin/vitest run src/world/composition/__tests__ src/app/__tests__/shell.test.tsx src/app/__tests__/reference-root/root.test.tsx src/world/__tests__/movement.test.ts src/world/mural-entry-lifecycle/__tests__/assembly.test.tsx --maxWorkers=2 --reporter=dot
+node_modules/.bin/tsc -b --pretty false
+node_modules/.bin/vite build
+node_modules/.bin/oxlint src/app/WorldShell.tsx src/world/composition/index.ts src/world/composition/__tests__/composition.test.ts src/world/__tests__/fe15-application-input/preview.tsx
+```
+
+Validation: native Chrome156.0.8078.80 all three widths PASS; focused six files/168 tests exit0; broader24 files/742 tests exit0; TypeScript exit0; scoped lint exit0; Vite production build exit0 (existing chunk-size advisory); planning check exit0 with13 source archives unchanged. The first unbounded parallel broad test attempt timed out seven async UI queries under simultaneous browser/build load; the bounded two-worker rerun passed all742 without changing those tests. Before-fix native failure remains preserved; intermediate driver failures are not product acceptance evidence. Vite/browser/cache finally cleanup is required by the runner.
+
+## FE07 support and publication
+
+FE07 owner `01a1a1fe-1ab7-79b0-adbc-d4c025701acb` independently reproduced native390 gift-list scroll1894→detail→Back POP→0 while opener focus restored. Exact PanelFrame effect ownership was accepted before edits. Original FE07 owner retains its full journey, final criteria and task disposition; this lane owns only the allocated scroll fix and regression support.
+
+FE15 implementation `977b773d` and native capture commit `cb23f13c` were delivered in nonforce master checkpoint `50d950d79939a539ebe953744287f7a280ce488b`, verified by `git ls-remote`. Peer master history was merged serially (no source overlaps in the owned hunks); an affected158-test rerun passed after reconciliation. Two non-fast-forward attempts were reconciled without forcing. Direct published-SHA handoffs were sent to FE07, QA07 and WorldSL. QA07 independently confirmed actual Map→Places→Nearby→Rooms panel retention at360/390/430 after consuming the checkpoint; its full accessibility task remains its owner's responsibility.
+
+The FE07 support native reproduction is now in the same owned prefix as `scroll-preview.{tsx,html}` and `scroll-native.mjs`. `scroll-preview.tsx` adapts FE07 owner's read-only WIP fixture from base `5dbb99a0`, source SHA256 `f53f7ec62d3fa1b431e3adf03d5251a60784db17cf306e8d63f4b45d00c1dece`, copied into the exclusive FE15 test prefix with relative imports recalculated and a unique bridge. It uses actual browser `createAppRouter`, canonical auth and default production ports/Phaser without panel/engine overrides. The imported C04 giveaway-management fixture supplies18 explicitly synthetic, correctly ordered gifts; no stock, pickup or physical-arrival claim is made. The original FE07 fixture is unchanged.
+
+`evidence/before-scroll.json` independently preserves390 scroll1894→0 before the source correction. The allocated PanelFrame effect now records passive scroll events with their scrollable extent, removes its listener on cleanup and preserves the observed old position when a shorter destination reduced the extent. Where no layout clamp occurred, it preserves the current property, retaining imperative scroll and existing jsdom behavior. Focus restoration and100-entry bounded identity-scoped memory remain incumbent behavior.
+
+Actual Chrome native360/390/430 support PASS: list1889/1894/1901→detail0→Back1889/1894/1901, opener focus, browser POP/forward/Back, same game/camera and one socket. Screenshots and source hashes are in `evidence/scroll-native.json`. The support runner exits0; the pre-fix run exits1. The final74 affected shell/reference-root/composition tests pass without amendments to those shell tests. TypeScript, scoped lint and production build are rerun after this effect change; the main FE15 three-width native evidence is also repinned to the final WorldShell bytes. Reproduction: `node frontend/src/world/__tests__/fe15-application-input/scroll-native.mjs`.
+
+Manual capture inspection confirms working controls/profile forms and restored list position. This input/scroll patch does not claim ten-screen visual-target acceptance; existing visual work and source-admission boundaries remain explicit. Physical iOS/Android keyboard, safe-area and interruption behavior and real multiuser/server physics are NOT_RUN here; these remain the existing QA06/live integration responsibilities. No owned FE15 client/application criterion remains open. Original FE07 owner consumes the scroll fix and retains the complete original FE07 decision.
+
+
+## Final delivery receipt
+
+Scroll support implementation: `416b4e5f1adf6c1e6d1ad7f376dbdd92b7573a63`, delivered by nonforce master checkpoint `1b4ac4579764c2a475b729f702f56d9e3ec311aa` with unchanged peer history, verified by `git ls-remote`. Both original FE15 implementation/capture commits and the support commit are ancestors of this published checkpoint. Only the new owned harness/evidence prefix, this document, the two original production hunks, the exact composition regression hunk, and the subsequently allocated PanelFrame scroll effect changed in this lane. No cross-lane implementation imports were introduced.
+
+Final source/capture SHA256 comparisons: both retained native reports PASS and match the published production sources and Git capture bytes. Native Chrome runners exit0 at all360/390/430 widths;74 affected tests exit0; full TypeScript/scoped lint/production build exit0 after the support fix. Final `python3 scripts/mcr/check-plan.py` exit0 (13 source archives preserved), `node scripts/mcr/check-ui-origin.mjs` exit0, `python3 scripts/mcr/check-boundaries.py --base 50d950d79939a539ebe953744287f7a280ce488b --lane frontend --allow-doc docs/mcr/frontend/fe15-application-input.md` exit0, and `git diff --check` exit0. Before publication the retained temporary dependency symlink was removed; runner browser/server/temp-cache cleanup completed. Sparse-excluded PNGs were explicitly staged with `git add --sparse`; their original Git bytes were materialized for inspection after merge, without changing them.
+
+Exact published fix handoffs went directly to FE07/QA07/WorldSL. Independent QA07 reports both original FE15 fix areas PASS at all3 widths after50d950d7 (6/6 affected native cases). Original FE15 client/application remainder is delivered; no FE15-owned behavior remains open. FE07's full original decision belongs to its implementation owner, consuming the support checkpoint. No additional QA/IN task was activated. This lane releases its exact typing, visibility, regression and scroll-effect leases on clean STOP after the documentation receipt is published.

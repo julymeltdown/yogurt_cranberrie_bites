@@ -1,0 +1,616 @@
+{
+  "candidate": "5eb418391012cb2cc435ef3dcb08884b95055720",
+  "qualification": "MOCK_READY_NATIVE_CLIENT_FIXTURES",
+  "runtime": {
+    "node": "v24.22.2",
+    "platform": "darwin",
+    "arch": "arm64",
+    "headless": true
+  },
+  "selection": {
+    "widths": [
+      360,
+      390,
+      430
+    ],
+    "only": null
+  },
+  "browser": "156.0.8078.80",
+  "cases": [
+    {
+      "name": "sheet",
+      "width": 360,
+      "status": "PASS",
+      "observations": [
+        "Actual shared sheet initial focus, forward/reverse containment, inert background, reduced-motion computed styles, trusted touchcancel, Escape/Done opener return"
+      ],
+      "unnamedControls": []
+    },
+    {
+      "name": "safety",
+      "width": 360,
+      "status": "PASS",
+      "observations": [
+        "Actual FE36 report reason/text labels, keyboard draft, native dialog Escape, block confirmation reverse focus trap and opener return; no backend report/block claim"
+      ],
+      "unnamedControls": []
+    },
+    {
+      "name": "social",
+      "width": 360,
+      "status": "PASS",
+      "observations": [
+        "Actual public SharingRequest/controller: keyboard explicit reveal, hide and confirmed revoke without canvas; approved consent is synthetic fixture authority"
+      ],
+      "unnamedControls": []
+    },
+    {
+      "name": "social-consent",
+      "width": 360,
+      "status": "PASS",
+      "observations": [
+        "Actual recipient SharingRequest/controller: keyboard platform checkbox and explicit reciprocal-consent checkbox required before approval; approval reveals metadata only, synthetic pending/decision authority"
+      ],
+      "unnamedControls": []
+    },
+    {
+      "name": "safety-block",
+      "width": 360,
+      "status": "PASS",
+      "observations": [
+        "Fresh actual FE36 BlockUserButton keyboard confirmation, native modal reverse-Tab wrap and Escape focus return; no block mutation"
+      ],
+      "unnamedControls": []
+    },
+    {
+      "name": "account",
+      "width": 360,
+      "status": "PASS",
+      "observations": [
+        "Actual FE36 unavailable deletion port disabled, labeled confirmation keyboard input, Keep account initial focus, Escape opener return, zero deletion calls"
+      ],
+      "unnamedControls": []
+    },
+    {
+      "name": "pickup-recipient",
+      "width": 360,
+      "status": "PASS",
+      "observations": [
+        "Actual GiftPickup/controller: Tab/Enter private instructions and labeled code output, no canvas interaction, fixture reviewed-place authority only"
+      ],
+      "unnamedControls": []
+    },
+    {
+      "name": "pickup-reservation",
+      "width": 360,
+      "status": "PASS",
+      "observations": [
+        "Keyboard reserve -> uncertain fixture response -> real reload -> keyboard original-command recovery; no repeated write and no canvas"
+      ],
+      "unnamedControls": []
+    },
+    {
+      "name": "pickup-owner",
+      "width": 360,
+      "status": "PASS",
+      "observations": [
+        "Actual owner GiftPickup: keyboard-only labeled code entry/collection receipt, synthetic claim response, no live collection acceptance"
+      ],
+      "unnamedControls": []
+    },
+    {
+      "name": "mural",
+      "width": 360,
+      "status": "PASS",
+      "observations": [
+        "Actual FE32 editor through frozen FE33 provider/adapter/default MapScene: trusted touchcancel makes no preview/write, keyboard arrows/Escape, labeled DOM coordinates and explicit confirmation, live status"
+      ],
+      "unnamedControls": []
+    },
+    {
+      "name": "root",
+      "width": 360,
+      "status": "PASS",
+      "observations": [
+        "Actual Root/FE18 Nearby authorized DOM alternatives and FE19 illustrated Map keyboard controls/labels; fixture route placement for Nearby, no live room admission",
+        {
+          "socketsBeforeNearby": 1,
+          "socketsAfterNearby": 1,
+          "game": {
+            "games": 1,
+            "peakGames": 1,
+            "totalGames": 1,
+            "sameGame": true,
+            "sprites": 6,
+            "referenceObjects": 23
+          },
+          "map": {
+            "mapId": "mcr_reference_scene_r3",
+            "revision": 4,
+            "contentHash": "sha256:3e85db2eddb6a0daf217f0975c78a41dd6723e0ffad3c7d927e3e6fd2897fac8",
+            "geometryHash": "sha256:899aca9bd6ce499c6f46aff5eaf21e30ab34b301e988771b978a6fab7c2d469f"
+          },
+          "themes": [
+            {
+              "themeId": "REVENGE",
+              "hash": "sha256:8cd0e8e5ccf7070cbb6f06c3e906f7efc8ff9f08a83b8fc66d745d8a5e69b659",
+              "mapHash": "sha256:3e85db2eddb6a0daf217f0975c78a41dd6723e0ffad3c7d927e3e6fd2897fac8",
+              "avatarHash": "sha256:0627c7d178b22535a561e1270db6d8bf9e2383ba84d03a63962e48e565c59b2b"
+            },
+            {
+              "themeId": "PARADE",
+              "hash": "sha256:0bfa8e799b34aa4342f1a9e551cb9b32cb1f8741fd93171e269285386c52e987",
+              "mapHash": "sha256:3e85db2eddb6a0daf217f0975c78a41dd6723e0ffad3c7d927e3e6fd2897fac8",
+              "avatarHash": "sha256:0627c7d178b22535a561e1270db6d8bf9e2383ba84d03a63962e48e565c59b2b"
+            },
+            {
+              "themeId": "DANGER",
+              "hash": "sha256:974604577a656a027a9718026198fcbc32835264abe450dd7ba4ea4ad0e75581",
+              "mapHash": "sha256:3e85db2eddb6a0daf217f0975c78a41dd6723e0ffad3c7d927e3e6fd2897fac8",
+              "avatarHash": "sha256:0627c7d178b22535a561e1270db6d8bf9e2383ba84d03a63962e48e565c59b2b"
+            }
+          ],
+          "originalMapProvenance": {
+            "source_id": "ar02_original_courtyard",
+            "source_kind": "ORIGINAL_ART",
+            "source_revision": "ar02_courtyard_v1; source-pack sha256:22aa34f920c7772a5e4d339c279a54a22d5f2974f40fe26ffc0d5d9e9ae6910c",
+            "source_uri": null,
+            "author": "MCR AR02 map author",
+            "license": "Original MCR geometry and metadata; no third-party raster or map artwork included.",
+            "review_state": "UNREVIEWED",
+            "reviewed_by": null,
+            "reviewed_at": null,
+            "photo_permission": "NOT_APPLICABLE"
+          },
+          "suppliedThemeProvenance": [
+            {
+              "author": "MCR reference scene source author; source-bound scenery packaging",
+              "license": "Original MCR virtual scenery source inputs; attribution retained in pinned artist documents.",
+              "photo_permission": "NOT_APPLICABLE",
+              "review_state": "REVIEWED",
+              "reviewed_at": "2026-11-04T00:58:55Z",
+              "reviewed_by": "MCR backend spatial source qualification",
+              "source_id": "mcr_quality_v6_revenge_scenery",
+              "source_kind": "ORIGINAL_ART",
+              "source_revision": "bc731ed868ec30b33ae5dd1e6f13e97e68ecabd9; scenery sha256:319d38c0e29296ed4b1c47ce1e178a5fca7e408dda0545b6ad0f88f6c8f4e40f; source-binding sha256:0f15f5614d5502442a4e58cc995041f7ee1f2f906e21d4b630db7b13af65ee6b",
+              "source_uri": "https://github.com/julymeltdown/mcr/blob/bc731ed868ec30b33ae5dd1e6f13e97e68ecabd9/frontend/public/world/reference-scene-v2/quality-v6/revenge/scenery.json"
+            },
+            {
+              "author": "MCR reference scene source author; source-bound scenery packaging",
+              "license": "Original MCR virtual scenery source inputs; attribution retained in pinned artist documents.",
+              "photo_permission": "NOT_APPLICABLE",
+              "review_state": "REVIEWED",
+              "reviewed_at": "2026-11-04T00:58:55Z",
+              "reviewed_by": "MCR backend spatial source qualification",
+              "source_id": "mcr_quality_v6_parade_scenery",
+              "source_kind": "ORIGINAL_ART",
+              "source_revision": "bc731ed868ec30b33ae5dd1e6f13e97e68ecabd9; scenery sha256:7c049ebb8bee5369656de0ce69e49162daa52e3a5678d707cf05a5f9c0938a6b; source-binding sha256:0f15f5614d5502442a4e58cc995041f7ee1f2f906e21d4b630db7b13af65ee6b",
+              "source_uri": "https://github.com/julymeltdown/mcr/blob/bc731ed868ec30b33ae5dd1e6f13e97e68ecabd9/frontend/public/world/reference-scene-v2/quality-v6/parade/scenery.json"
+            },
+            {
+              "author": "MCR reference scene source author; source-bound scenery packaging",
+              "license": "Original MCR virtual scenery source inputs; attribution retained in pinned artist documents.",
+              "photo_permission": "NOT_APPLICABLE",
+              "review_state": "REVIEWED",
+              "reviewed_at": "2026-11-04T00:58:55Z",
+              "reviewed_by": "MCR backend spatial source qualification",
+              "source_id": "mcr_quality_v6_danger_scenery",
+              "source_kind": "ORIGINAL_ART",
+              "source_revision": "bc731ed868ec30b33ae5dd1e6f13e97e68ecabd9; scenery sha256:8dfdf93e47d97392a0002a5755f606c976456355ba60714e14405dd5245a432d; source-binding sha256:0f15f5614d5502442a4e58cc995041f7ee1f2f906e21d4b630db7b13af65ee6b",
+              "source_uri": "https://github.com/julymeltdown/mcr/blob/bc731ed868ec30b33ae5dd1e6f13e97e68ecabd9/frontend/public/world/reference-scene-v2/quality-v6/danger/scenery.json"
+            }
+          ]
+        }
+      ],
+      "unnamedControls": []
+    },
+    {
+      "name": "profile-return",
+      "width": 360,
+      "status": "PASS",
+      "observations": [
+        "Actual Root ProfileForm native typing then focused textarea route unmount: World returns live with reachable enabled Recenter and original socket; fixture route trigger, not OS keyboard"
+      ],
+      "unnamedControls": []
+    },
+    {
+      "name": "sheet",
+      "width": 390,
+      "status": "PASS",
+      "observations": [
+        "Actual shared sheet initial focus, forward/reverse containment, inert background, reduced-motion computed styles, trusted touchcancel, Escape/Done opener return"
+      ],
+      "unnamedControls": []
+    },
+    {
+      "name": "safety",
+      "width": 390,
+      "status": "PASS",
+      "observations": [
+        "Actual FE36 report reason/text labels, keyboard draft, native dialog Escape, block confirmation reverse focus trap and opener return; no backend report/block claim"
+      ],
+      "unnamedControls": []
+    },
+    {
+      "name": "social",
+      "width": 390,
+      "status": "PASS",
+      "observations": [
+        "Actual public SharingRequest/controller: keyboard explicit reveal, hide and confirmed revoke without canvas; approved consent is synthetic fixture authority"
+      ],
+      "unnamedControls": []
+    },
+    {
+      "name": "social-consent",
+      "width": 390,
+      "status": "PASS",
+      "observations": [
+        "Actual recipient SharingRequest/controller: keyboard platform checkbox and explicit reciprocal-consent checkbox required before approval; approval reveals metadata only, synthetic pending/decision authority"
+      ],
+      "unnamedControls": []
+    },
+    {
+      "name": "safety-block",
+      "width": 390,
+      "status": "PASS",
+      "observations": [
+        "Fresh actual FE36 BlockUserButton keyboard confirmation, native modal reverse-Tab wrap and Escape focus return; no block mutation"
+      ],
+      "unnamedControls": []
+    },
+    {
+      "name": "account",
+      "width": 390,
+      "status": "PASS",
+      "observations": [
+        "Actual FE36 unavailable deletion port disabled, labeled confirmation keyboard input, Keep account initial focus, Escape opener return, zero deletion calls"
+      ],
+      "unnamedControls": []
+    },
+    {
+      "name": "pickup-recipient",
+      "width": 390,
+      "status": "PASS",
+      "observations": [
+        "Actual GiftPickup/controller: Tab/Enter private instructions and labeled code output, no canvas interaction, fixture reviewed-place authority only"
+      ],
+      "unnamedControls": []
+    },
+    {
+      "name": "pickup-reservation",
+      "width": 390,
+      "status": "PASS",
+      "observations": [
+        "Keyboard reserve -> uncertain fixture response -> real reload -> keyboard original-command recovery; no repeated write and no canvas"
+      ],
+      "unnamedControls": []
+    },
+    {
+      "name": "pickup-owner",
+      "width": 390,
+      "status": "PASS",
+      "observations": [
+        "Actual owner GiftPickup: keyboard-only labeled code entry/collection receipt, synthetic claim response, no live collection acceptance"
+      ],
+      "unnamedControls": []
+    },
+    {
+      "name": "mural",
+      "width": 390,
+      "status": "PASS",
+      "observations": [
+        "Actual FE32 editor through frozen FE33 provider/adapter/default MapScene: trusted touchcancel makes no preview/write, keyboard arrows/Escape, labeled DOM coordinates and explicit confirmation, live status"
+      ],
+      "unnamedControls": []
+    },
+    {
+      "name": "root",
+      "width": 390,
+      "status": "PASS",
+      "observations": [
+        "Actual Root/FE18 Nearby authorized DOM alternatives and FE19 illustrated Map keyboard controls/labels; fixture route placement for Nearby, no live room admission",
+        {
+          "socketsBeforeNearby": 1,
+          "socketsAfterNearby": 1,
+          "game": {
+            "games": 1,
+            "peakGames": 1,
+            "totalGames": 1,
+            "sameGame": true,
+            "sprites": 6,
+            "referenceObjects": 23
+          },
+          "map": {
+            "mapId": "mcr_reference_scene_r3",
+            "revision": 4,
+            "contentHash": "sha256:3e85db2eddb6a0daf217f0975c78a41dd6723e0ffad3c7d927e3e6fd2897fac8",
+            "geometryHash": "sha256:899aca9bd6ce499c6f46aff5eaf21e30ab34b301e988771b978a6fab7c2d469f"
+          },
+          "themes": [
+            {
+              "themeId": "REVENGE",
+              "hash": "sha256:8cd0e8e5ccf7070cbb6f06c3e906f7efc8ff9f08a83b8fc66d745d8a5e69b659",
+              "mapHash": "sha256:3e85db2eddb6a0daf217f0975c78a41dd6723e0ffad3c7d927e3e6fd2897fac8",
+              "avatarHash": "sha256:0627c7d178b22535a561e1270db6d8bf9e2383ba84d03a63962e48e565c59b2b"
+            },
+            {
+              "themeId": "PARADE",
+              "hash": "sha256:0bfa8e799b34aa4342f1a9e551cb9b32cb1f8741fd93171e269285386c52e987",
+              "mapHash": "sha256:3e85db2eddb6a0daf217f0975c78a41dd6723e0ffad3c7d927e3e6fd2897fac8",
+              "avatarHash": "sha256:0627c7d178b22535a561e1270db6d8bf9e2383ba84d03a63962e48e565c59b2b"
+            },
+            {
+              "themeId": "DANGER",
+              "hash": "sha256:974604577a656a027a9718026198fcbc32835264abe450dd7ba4ea4ad0e75581",
+              "mapHash": "sha256:3e85db2eddb6a0daf217f0975c78a41dd6723e0ffad3c7d927e3e6fd2897fac8",
+              "avatarHash": "sha256:0627c7d178b22535a561e1270db6d8bf9e2383ba84d03a63962e48e565c59b2b"
+            }
+          ],
+          "originalMapProvenance": {
+            "source_id": "ar02_original_courtyard",
+            "source_kind": "ORIGINAL_ART",
+            "source_revision": "ar02_courtyard_v1; source-pack sha256:22aa34f920c7772a5e4d339c279a54a22d5f2974f40fe26ffc0d5d9e9ae6910c",
+            "source_uri": null,
+            "author": "MCR AR02 map author",
+            "license": "Original MCR geometry and metadata; no third-party raster or map artwork included.",
+            "review_state": "UNREVIEWED",
+            "reviewed_by": null,
+            "reviewed_at": null,
+            "photo_permission": "NOT_APPLICABLE"
+          },
+          "suppliedThemeProvenance": [
+            {
+              "author": "MCR reference scene source author; source-bound scenery packaging",
+              "license": "Original MCR virtual scenery source inputs; attribution retained in pinned artist documents.",
+              "photo_permission": "NOT_APPLICABLE",
+              "review_state": "REVIEWED",
+              "reviewed_at": "2026-11-04T00:58:55Z",
+              "reviewed_by": "MCR backend spatial source qualification",
+              "source_id": "mcr_quality_v6_revenge_scenery",
+              "source_kind": "ORIGINAL_ART",
+              "source_revision": "bc731ed868ec30b33ae5dd1e6f13e97e68ecabd9; scenery sha256:319d38c0e29296ed4b1c47ce1e178a5fca7e408dda0545b6ad0f88f6c8f4e40f; source-binding sha256:0f15f5614d5502442a4e58cc995041f7ee1f2f906e21d4b630db7b13af65ee6b",
+              "source_uri": "https://github.com/julymeltdown/mcr/blob/bc731ed868ec30b33ae5dd1e6f13e97e68ecabd9/frontend/public/world/reference-scene-v2/quality-v6/revenge/scenery.json"
+            },
+            {
+              "author": "MCR reference scene source author; source-bound scenery packaging",
+              "license": "Original MCR virtual scenery source inputs; attribution retained in pinned artist documents.",
+              "photo_permission": "NOT_APPLICABLE",
+              "review_state": "REVIEWED",
+              "reviewed_at": "2026-11-04T00:58:55Z",
+              "reviewed_by": "MCR backend spatial source qualification",
+              "source_id": "mcr_quality_v6_parade_scenery",
+              "source_kind": "ORIGINAL_ART",
+              "source_revision": "bc731ed868ec30b33ae5dd1e6f13e97e68ecabd9; scenery sha256:7c049ebb8bee5369656de0ce69e49162daa52e3a5678d707cf05a5f9c0938a6b; source-binding sha256:0f15f5614d5502442a4e58cc995041f7ee1f2f906e21d4b630db7b13af65ee6b",
+              "source_uri": "https://github.com/julymeltdown/mcr/blob/bc731ed868ec30b33ae5dd1e6f13e97e68ecabd9/frontend/public/world/reference-scene-v2/quality-v6/parade/scenery.json"
+            },
+            {
+              "author": "MCR reference scene source author; source-bound scenery packaging",
+              "license": "Original MCR virtual scenery source inputs; attribution retained in pinned artist documents.",
+              "photo_permission": "NOT_APPLICABLE",
+              "review_state": "REVIEWED",
+              "reviewed_at": "2026-11-04T00:58:55Z",
+              "reviewed_by": "MCR backend spatial source qualification",
+              "source_id": "mcr_quality_v6_danger_scenery",
+              "source_kind": "ORIGINAL_ART",
+              "source_revision": "bc731ed868ec30b33ae5dd1e6f13e97e68ecabd9; scenery sha256:8dfdf93e47d97392a0002a5755f606c976456355ba60714e14405dd5245a432d; source-binding sha256:0f15f5614d5502442a4e58cc995041f7ee1f2f906e21d4b630db7b13af65ee6b",
+              "source_uri": "https://github.com/julymeltdown/mcr/blob/bc731ed868ec30b33ae5dd1e6f13e97e68ecabd9/frontend/public/world/reference-scene-v2/quality-v6/danger/scenery.json"
+            }
+          ]
+        }
+      ],
+      "unnamedControls": []
+    },
+    {
+      "name": "profile-return",
+      "width": 390,
+      "status": "PASS",
+      "observations": [
+        "Actual Root ProfileForm native typing then focused textarea route unmount: World returns live with reachable enabled Recenter and original socket; fixture route trigger, not OS keyboard"
+      ],
+      "unnamedControls": []
+    },
+    {
+      "name": "sheet",
+      "width": 430,
+      "status": "PASS",
+      "observations": [
+        "Actual shared sheet initial focus, forward/reverse containment, inert background, reduced-motion computed styles, trusted touchcancel, Escape/Done opener return"
+      ],
+      "unnamedControls": []
+    },
+    {
+      "name": "safety",
+      "width": 430,
+      "status": "PASS",
+      "observations": [
+        "Actual FE36 report reason/text labels, keyboard draft, native dialog Escape, block confirmation reverse focus trap and opener return; no backend report/block claim"
+      ],
+      "unnamedControls": []
+    },
+    {
+      "name": "social",
+      "width": 430,
+      "status": "PASS",
+      "observations": [
+        "Actual public SharingRequest/controller: keyboard explicit reveal, hide and confirmed revoke without canvas; approved consent is synthetic fixture authority"
+      ],
+      "unnamedControls": []
+    },
+    {
+      "name": "social-consent",
+      "width": 430,
+      "status": "PASS",
+      "observations": [
+        "Actual recipient SharingRequest/controller: keyboard platform checkbox and explicit reciprocal-consent checkbox required before approval; approval reveals metadata only, synthetic pending/decision authority"
+      ],
+      "unnamedControls": []
+    },
+    {
+      "name": "safety-block",
+      "width": 430,
+      "status": "PASS",
+      "observations": [
+        "Fresh actual FE36 BlockUserButton keyboard confirmation, native modal reverse-Tab wrap and Escape focus return; no block mutation"
+      ],
+      "unnamedControls": []
+    },
+    {
+      "name": "account",
+      "width": 430,
+      "status": "PASS",
+      "observations": [
+        "Actual FE36 unavailable deletion port disabled, labeled confirmation keyboard input, Keep account initial focus, Escape opener return, zero deletion calls"
+      ],
+      "unnamedControls": []
+    },
+    {
+      "name": "pickup-recipient",
+      "width": 430,
+      "status": "PASS",
+      "observations": [
+        "Actual GiftPickup/controller: Tab/Enter private instructions and labeled code output, no canvas interaction, fixture reviewed-place authority only"
+      ],
+      "unnamedControls": []
+    },
+    {
+      "name": "pickup-reservation",
+      "width": 430,
+      "status": "PASS",
+      "observations": [
+        "Keyboard reserve -> uncertain fixture response -> real reload -> keyboard original-command recovery; no repeated write and no canvas"
+      ],
+      "unnamedControls": []
+    },
+    {
+      "name": "pickup-owner",
+      "width": 430,
+      "status": "PASS",
+      "observations": [
+        "Actual owner GiftPickup: keyboard-only labeled code entry/collection receipt, synthetic claim response, no live collection acceptance"
+      ],
+      "unnamedControls": []
+    },
+    {
+      "name": "mural",
+      "width": 430,
+      "status": "PASS",
+      "observations": [
+        "Actual FE32 editor through frozen FE33 provider/adapter/default MapScene: trusted touchcancel makes no preview/write, keyboard arrows/Escape, labeled DOM coordinates and explicit confirmation, live status"
+      ],
+      "unnamedControls": []
+    },
+    {
+      "name": "root",
+      "width": 430,
+      "status": "PASS",
+      "observations": [
+        "Actual Root/FE18 Nearby authorized DOM alternatives and FE19 illustrated Map keyboard controls/labels; fixture route placement for Nearby, no live room admission",
+        {
+          "socketsBeforeNearby": 1,
+          "socketsAfterNearby": 1,
+          "game": {
+            "games": 1,
+            "peakGames": 1,
+            "totalGames": 1,
+            "sameGame": true,
+            "sprites": 6,
+            "referenceObjects": 23
+          },
+          "map": {
+            "mapId": "mcr_reference_scene_r3",
+            "revision": 4,
+            "contentHash": "sha256:3e85db2eddb6a0daf217f0975c78a41dd6723e0ffad3c7d927e3e6fd2897fac8",
+            "geometryHash": "sha256:899aca9bd6ce499c6f46aff5eaf21e30ab34b301e988771b978a6fab7c2d469f"
+          },
+          "themes": [
+            {
+              "themeId": "REVENGE",
+              "hash": "sha256:8cd0e8e5ccf7070cbb6f06c3e906f7efc8ff9f08a83b8fc66d745d8a5e69b659",
+              "mapHash": "sha256:3e85db2eddb6a0daf217f0975c78a41dd6723e0ffad3c7d927e3e6fd2897fac8",
+              "avatarHash": "sha256:0627c7d178b22535a561e1270db6d8bf9e2383ba84d03a63962e48e565c59b2b"
+            },
+            {
+              "themeId": "PARADE",
+              "hash": "sha256:0bfa8e799b34aa4342f1a9e551cb9b32cb1f8741fd93171e269285386c52e987",
+              "mapHash": "sha256:3e85db2eddb6a0daf217f0975c78a41dd6723e0ffad3c7d927e3e6fd2897fac8",
+              "avatarHash": "sha256:0627c7d178b22535a561e1270db6d8bf9e2383ba84d03a63962e48e565c59b2b"
+            },
+            {
+              "themeId": "DANGER",
+              "hash": "sha256:974604577a656a027a9718026198fcbc32835264abe450dd7ba4ea4ad0e75581",
+              "mapHash": "sha256:3e85db2eddb6a0daf217f0975c78a41dd6723e0ffad3c7d927e3e6fd2897fac8",
+              "avatarHash": "sha256:0627c7d178b22535a561e1270db6d8bf9e2383ba84d03a63962e48e565c59b2b"
+            }
+          ],
+          "originalMapProvenance": {
+            "source_id": "ar02_original_courtyard",
+            "source_kind": "ORIGINAL_ART",
+            "source_revision": "ar02_courtyard_v1; source-pack sha256:22aa34f920c7772a5e4d339c279a54a22d5f2974f40fe26ffc0d5d9e9ae6910c",
+            "source_uri": null,
+            "author": "MCR AR02 map author",
+            "license": "Original MCR geometry and metadata; no third-party raster or map artwork included.",
+            "review_state": "UNREVIEWED",
+            "reviewed_by": null,
+            "reviewed_at": null,
+            "photo_permission": "NOT_APPLICABLE"
+          },
+          "suppliedThemeProvenance": [
+            {
+              "author": "MCR reference scene source author; source-bound scenery packaging",
+              "license": "Original MCR virtual scenery source inputs; attribution retained in pinned artist documents.",
+              "photo_permission": "NOT_APPLICABLE",
+              "review_state": "REVIEWED",
+              "reviewed_at": "2026-11-04T00:58:55Z",
+              "reviewed_by": "MCR backend spatial source qualification",
+              "source_id": "mcr_quality_v6_revenge_scenery",
+              "source_kind": "ORIGINAL_ART",
+              "source_revision": "bc731ed868ec30b33ae5dd1e6f13e97e68ecabd9; scenery sha256:319d38c0e29296ed4b1c47ce1e178a5fca7e408dda0545b6ad0f88f6c8f4e40f; source-binding sha256:0f15f5614d5502442a4e58cc995041f7ee1f2f906e21d4b630db7b13af65ee6b",
+              "source_uri": "https://github.com/julymeltdown/mcr/blob/bc731ed868ec30b33ae5dd1e6f13e97e68ecabd9/frontend/public/world/reference-scene-v2/quality-v6/revenge/scenery.json"
+            },
+            {
+              "author": "MCR reference scene source author; source-bound scenery packaging",
+              "license": "Original MCR virtual scenery source inputs; attribution retained in pinned artist documents.",
+              "photo_permission": "NOT_APPLICABLE",
+              "review_state": "REVIEWED",
+              "reviewed_at": "2026-11-04T00:58:55Z",
+              "reviewed_by": "MCR backend spatial source qualification",
+              "source_id": "mcr_quality_v6_parade_scenery",
+              "source_kind": "ORIGINAL_ART",
+              "source_revision": "bc731ed868ec30b33ae5dd1e6f13e97e68ecabd9; scenery sha256:7c049ebb8bee5369656de0ce69e49162daa52e3a5678d707cf05a5f9c0938a6b; source-binding sha256:0f15f5614d5502442a4e58cc995041f7ee1f2f906e21d4b630db7b13af65ee6b",
+              "source_uri": "https://github.com/julymeltdown/mcr/blob/bc731ed868ec30b33ae5dd1e6f13e97e68ecabd9/frontend/public/world/reference-scene-v2/quality-v6/parade/scenery.json"
+            },
+            {
+              "author": "MCR reference scene source author; source-bound scenery packaging",
+              "license": "Original MCR virtual scenery source inputs; attribution retained in pinned artist documents.",
+              "photo_permission": "NOT_APPLICABLE",
+              "review_state": "REVIEWED",
+              "reviewed_at": "2026-11-04T00:58:55Z",
+              "reviewed_by": "MCR backend spatial source qualification",
+              "source_id": "mcr_quality_v6_danger_scenery",
+              "source_kind": "ORIGINAL_ART",
+              "source_revision": "bc731ed868ec30b33ae5dd1e6f13e97e68ecabd9; scenery sha256:8dfdf93e47d97392a0002a5755f606c976456355ba60714e14405dd5245a432d; source-binding sha256:0f15f5614d5502442a4e58cc995041f7ee1f2f906e21d4b630db7b13af65ee6b",
+              "source_uri": "https://github.com/julymeltdown/mcr/blob/bc731ed868ec30b33ae5dd1e6f13e97e68ecabd9/frontend/public/world/reference-scene-v2/quality-v6/danger/scenery.json"
+            }
+          ]
+        }
+      ],
+      "unnamedControls": []
+    },
+    {
+      "name": "profile-return",
+      "width": 430,
+      "status": "PASS",
+      "observations": [
+        "Actual Root ProfileForm native typing then focused textarea route unmount: World returns live with reachable enabled Recenter and original socket; fixture route trigger, not OS keyboard"
+      ],
+      "unnamedControls": []
+    }
+  ],
+  "limits": [
+    "Synthetic HTTP/WS, consent, pickup place/admission authority; no live server or two-principal journey",
+    "Native headless macOS Chrome at CSS widths, not physical iOS/Android or hardware keyboard",
+    "Browser accessibility tree and DOM labels, not real screen-reader announcements",
+    "All original 112 tasks/61 IA remain required; this is original QA07 evidence only"
+  ],
+  "status": "PASS"
+}

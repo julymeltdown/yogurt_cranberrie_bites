@@ -1,0 +1,47 @@
+{
+  "status": "PASS_V8_ART_INPUTS_ONLY",
+  "geometry_hash": "sha256:0448d5086dc251c6a7aed8c136dbbbf751f95038ea1f7f98e3e40fe6e8067e6f",
+  "themes": [
+    {
+      "theme": "REVENGE",
+      "schema": "PASS",
+      "bytes": 1735321,
+      "pixels": 2043904,
+      "objects": 34,
+      "map_only_representations": 6,
+      "native_projects": 2
+    },
+    {
+      "theme": "PARADE",
+      "schema": "PASS",
+      "bytes": 1746508,
+      "pixels": 2043904,
+      "objects": 34,
+      "map_only_representations": 6,
+      "native_projects": 2
+    },
+    {
+      "theme": "DANGER",
+      "schema": "PASS",
+      "bytes": 1732813,
+      "pixels": 2043904,
+      "objects": 34,
+      "map_only_representations": 6,
+      "native_projects": 2
+    }
+  ],
+  "explicit_new_geometry_revision": 4,
+  "place_identities_and_review_states_unchanged": true,
+  "limitations": [
+    "Developer source/contract/render checks, not a fourth critic score or target acceptance.",
+    "Source-art qualification is separate from physical destination authorization; concept-only place states remain truthful.",
+    "New spatial-v4 collision/resources require explicit new canonical Tiled and coordinated server/client binding; never mix with spatial-v3/map4/v6."
+  ],
+  "new_unbound_rooted_props": 12,
+  "protected_plaque_text": "PASS_ALL_ERAS",
+  "unchanged_v7_inputs": [
+    "twelve non-tree atlas cells",
+    "existing22props/footprints",
+    "ground/paving/terrain/spawns/interactions/cameras/places"
+  ]
+}

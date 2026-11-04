@@ -1,0 +1,396 @@
+{
+  "result": "PASS",
+  "qualifiedHead": "30cf548f8fb08b4437184e8062059fbb7e42e430",
+  "qualification": "Candidate art reproduction, actual Canvas/browser/image/gait/network qualification, source preservation and planning/UI-origin checks. No application/Phaser/device/backend/multiuser/release acceptance.",
+  "runtimePayload": {
+    "descriptorBytes": 42925,
+    "atlasBytes": 470010,
+    "initialAvatarRequests": 2,
+    "interactionAvatarRequests": 0
+  },
+  "checks": [
+    {
+      "name": "node-version",
+      "command": [
+        "node",
+        "--version"
+      ],
+      "exit": 0
+    },
+    {
+      "name": "produce-repeat",
+      "command": [
+        "node",
+        "<checkout>/frontend/src/entities/avatar/derived-assets/motion-candidates-v1/produce.mjs"
+      ],
+      "exit": 0
+    },
+    {
+      "name": "produce-rig-repeat",
+      "command": [
+        "node",
+        "<checkout>/frontend/src/entities/avatar/derived-assets/motion-candidates-v1/produce-rig.mjs"
+      ],
+      "exit": 0
+    },
+    {
+      "name": "produce-attachments-repeat",
+      "command": [
+        "node",
+        "<checkout>/frontend/src/entities/avatar/derived-assets/motion-candidates-v1/produce-attachments.mjs"
+      ],
+      "exit": 0
+    },
+    {
+      "name": "produce-eyes-repeat",
+      "command": [
+        "node",
+        "<checkout>/frontend/src/entities/avatar/derived-assets/motion-candidates-v1/produce-eyes.mjs"
+      ],
+      "exit": 0
+    },
+    {
+      "name": "produce-garments-repeat",
+      "command": [
+        "node",
+        "<checkout>/frontend/src/entities/avatar/derived-assets/motion-candidates-v1/produce-garments.mjs"
+      ],
+      "exit": 0
+    },
+    {
+      "name": "produce-directions-repeat",
+      "command": [
+        "node",
+        "<checkout>/frontend/src/entities/avatar/derived-assets/motion-candidates-v1/produce-directions.mjs"
+      ],
+      "exit": 0
+    },
+    {
+      "name": "produce-components-repeat",
+      "command": [
+        "node",
+        "<checkout>/frontend/src/entities/avatar/derived-assets/motion-candidates-v1/produce-components.mjs"
+      ],
+      "exit": 0
+    },
+    {
+      "name": "produce-combined-repeat",
+      "command": [
+        "node",
+        "<checkout>/frontend/src/entities/avatar/derived-assets/motion-candidates-v1/produce-combined.mjs"
+      ],
+      "exit": 0
+    },
+    {
+      "name": "eight-generator-byte-reproduction",
+      "exit": 0,
+      "publicFiles": 373,
+      "allBytesIdentical": true
+    },
+    {
+      "name": "syntax-component-pixels",
+      "command": [
+        "node",
+        "--check",
+        "<checkout>/frontend/src/entities/avatar/derived-assets/motion-candidates-v1/component-pixels.mjs"
+      ],
+      "exit": 0
+    },
+    {
+      "name": "syntax-direction-review",
+      "command": [
+        "node",
+        "--check",
+        "<checkout>/frontend/src/entities/avatar/derived-assets/motion-candidates-v1/direction-review.mjs"
+      ],
+      "exit": 0
+    },
+    {
+      "name": "syntax-gait-review",
+      "command": [
+        "node",
+        "--check",
+        "<checkout>/frontend/src/entities/avatar/derived-assets/motion-candidates-v1/gait-review.mjs"
+      ],
+      "exit": 0
+    },
+    {
+      "name": "syntax-pixels",
+      "command": [
+        "node",
+        "--check",
+        "<checkout>/frontend/src/entities/avatar/derived-assets/motion-candidates-v1/pixels.mjs"
+      ],
+      "exit": 0
+    },
+    {
+      "name": "syntax-preview",
+      "command": [
+        "node",
+        "--check",
+        "<checkout>/frontend/src/entities/avatar/derived-assets/motion-candidates-v1/preview.mjs"
+      ],
+      "exit": 0
+    },
+    {
+      "name": "syntax-produce-attachments",
+      "command": [
+        "node",
+        "--check",
+        "<checkout>/frontend/src/entities/avatar/derived-assets/motion-candidates-v1/produce-attachments.mjs"
+      ],
+      "exit": 0
+    },
+    {
+      "name": "syntax-produce-combined",
+      "command": [
+        "node",
+        "--check",
+        "<checkout>/frontend/src/entities/avatar/derived-assets/motion-candidates-v1/produce-combined.mjs"
+      ],
+      "exit": 0
+    },
+    {
+      "name": "syntax-produce-components",
+      "command": [
+        "node",
+        "--check",
+        "<checkout>/frontend/src/entities/avatar/derived-assets/motion-candidates-v1/produce-components.mjs"
+      ],
+      "exit": 0
+    },
+    {
+      "name": "syntax-produce-directions",
+      "command": [
+        "node",
+        "--check",
+        "<checkout>/frontend/src/entities/avatar/derived-assets/motion-candidates-v1/produce-directions.mjs"
+      ],
+      "exit": 0
+    },
+    {
+      "name": "syntax-produce-eyes",
+      "command": [
+        "node",
+        "--check",
+        "<checkout>/frontend/src/entities/avatar/derived-assets/motion-candidates-v1/produce-eyes.mjs"
+      ],
+      "exit": 0
+    },
+    {
+      "name": "syntax-produce-garments",
+      "command": [
+        "node",
+        "--check",
+        "<checkout>/frontend/src/entities/avatar/derived-assets/motion-candidates-v1/produce-garments.mjs"
+      ],
+      "exit": 0
+    },
+    {
+      "name": "syntax-produce-rig",
+      "command": [
+        "node",
+        "--check",
+        "<checkout>/frontend/src/entities/avatar/derived-assets/motion-candidates-v1/produce-rig.mjs"
+      ],
+      "exit": 0
+    },
+    {
+      "name": "syntax-produce",
+      "command": [
+        "node",
+        "--check",
+        "<checkout>/frontend/src/entities/avatar/derived-assets/motion-candidates-v1/produce.mjs"
+      ],
+      "exit": 0
+    },
+    {
+      "name": "syntax-review",
+      "command": [
+        "node",
+        "--check",
+        "<checkout>/frontend/src/entities/avatar/derived-assets/motion-candidates-v1/review.mjs"
+      ],
+      "exit": 0
+    },
+    {
+      "name": "syntax-rig",
+      "command": [
+        "node",
+        "--check",
+        "<checkout>/frontend/src/entities/avatar/derived-assets/motion-candidates-v1/rig.mjs"
+      ],
+      "exit": 0
+    },
+    {
+      "name": "syntax-server",
+      "command": [
+        "node",
+        "--check",
+        "<checkout>/frontend/src/entities/avatar/derived-assets/motion-candidates-v1/server.mjs"
+      ],
+      "exit": 0
+    },
+    {
+      "name": "syntax-verify-components",
+      "command": [
+        "node",
+        "--check",
+        "<checkout>/frontend/src/entities/avatar/derived-assets/motion-candidates-v1/verify-components.mjs"
+      ],
+      "exit": 0
+    },
+    {
+      "name": "syntax-verify-directions",
+      "command": [
+        "node",
+        "--check",
+        "<checkout>/frontend/src/entities/avatar/derived-assets/motion-candidates-v1/verify-directions.mjs"
+      ],
+      "exit": 0
+    },
+    {
+      "name": "syntax-verify-eyes",
+      "command": [
+        "node",
+        "--check",
+        "<checkout>/frontend/src/entities/avatar/derived-assets/motion-candidates-v1/verify-eyes.mjs"
+      ],
+      "exit": 0
+    },
+    {
+      "name": "syntax-verify-gait",
+      "command": [
+        "node",
+        "--check",
+        "<checkout>/frontend/src/entities/avatar/derived-assets/motion-candidates-v1/verify-gait.mjs"
+      ],
+      "exit": 0
+    },
+    {
+      "name": "syntax-verify-garments",
+      "command": [
+        "node",
+        "--check",
+        "<checkout>/frontend/src/entities/avatar/derived-assets/motion-candidates-v1/verify-garments.mjs"
+      ],
+      "exit": 0
+    },
+    {
+      "name": "syntax-verify-pixels",
+      "command": [
+        "node",
+        "--check",
+        "<checkout>/frontend/src/entities/avatar/derived-assets/motion-candidates-v1/verify-pixels.mjs"
+      ],
+      "exit": 0
+    },
+    {
+      "name": "syntax-verify",
+      "command": [
+        "node",
+        "--check",
+        "<checkout>/frontend/src/entities/avatar/derived-assets/motion-candidates-v1/verify.mjs"
+      ],
+      "exit": 0
+    },
+    {
+      "name": "syntax-wardrobe-review",
+      "command": [
+        "node",
+        "--check",
+        "<checkout>/frontend/src/entities/avatar/derived-assets/motion-candidates-v1/wardrobe-review.mjs"
+      ],
+      "exit": 0
+    },
+    {
+      "name": "scoped-lint",
+      "command": [
+        "<retained-bin>/oxlint",
+        "<checkout>/frontend/src/entities/avatar/derived-assets/motion-candidates-v1"
+      ],
+      "exit": 0
+    },
+    {
+      "name": "verify",
+      "command": [
+        "node",
+        "<checkout>/frontend/src/entities/avatar/derived-assets/motion-candidates-v1/verify.mjs"
+      ],
+      "exit": 0
+    },
+    {
+      "name": "verify-gait",
+      "command": [
+        "node",
+        "<checkout>/frontend/src/entities/avatar/derived-assets/motion-candidates-v1/verify-gait.mjs"
+      ],
+      "exit": 0
+    },
+    {
+      "name": "verify-eyes",
+      "command": [
+        "node",
+        "<checkout>/frontend/src/entities/avatar/derived-assets/motion-candidates-v1/verify-eyes.mjs"
+      ],
+      "exit": 0
+    },
+    {
+      "name": "verify-garments",
+      "command": [
+        "node",
+        "<checkout>/frontend/src/entities/avatar/derived-assets/motion-candidates-v1/verify-garments.mjs"
+      ],
+      "exit": 0
+    },
+    {
+      "name": "verify-directions",
+      "command": [
+        "node",
+        "<checkout>/frontend/src/entities/avatar/derived-assets/motion-candidates-v1/verify-directions.mjs"
+      ],
+      "exit": 0
+    },
+    {
+      "name": "verify-components",
+      "command": [
+        "node",
+        "<checkout>/frontend/src/entities/avatar/derived-assets/motion-candidates-v1/verify-components.mjs"
+      ],
+      "exit": 0
+    },
+    {
+      "name": "planning-provenance",
+      "command": [
+        "python3",
+        "scripts/mcr/check-plan.py"
+      ],
+      "exit": 0
+    },
+    {
+      "name": "ui-origin",
+      "command": [
+        "node",
+        "scripts/mcr/check-ui-origin.mjs"
+      ],
+      "exit": 0
+    },
+    {
+      "name": "original-static-preservation",
+      "command": [
+        "git",
+        "diff",
+        "--exit-code",
+        "a3526254a716e14e3134de551c3b277379a1096f",
+        "--",
+        "docs/source",
+        "frontend/public/world/avatars/supplied-v1",
+        "frontend/src/entities/avatar/character-source-pack.json",
+        "frontend/src/entities/avatar/derived-assets/hair-layout.json",
+        "frontend/src/entities/avatar/derived-assets/static-package.json",
+        "frontend/public/world/avatars/derived-v1/static-release.json"
+      ],
+      "exit": 0
+    }
+  ]
+}

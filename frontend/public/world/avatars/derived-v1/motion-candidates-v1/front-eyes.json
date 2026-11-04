@@ -1,0 +1,247 @@
+{
+  "kind": "SOURCE_PIXEL_FRONT_EYE_OVERLAYS",
+  "status": "IN_PROGRESS",
+  "productionEligible": false,
+  "sourcePack": {
+    "id": "mcr_user_characters_20261103",
+    "revision": 3
+  },
+  "items": [
+    {
+      "label": "Dark eyes",
+      "sourceId": "photo_09",
+      "sourceLocation": "row1-col1",
+      "sourceRect": {
+        "x": 0,
+        "y": 0,
+        "width": 440,
+        "height": 181
+      },
+      "native": {
+        "width": 440,
+        "height": 181,
+        "bounds": {
+          "x": 99,
+          "y": 44,
+          "width": 282,
+          "height": 114
+        },
+        "stats": {
+          "opaque": 23203,
+          "white": 3775,
+          "dark": 18912,
+          "discardedDark": 0,
+          "removedPaper": 56437,
+          "parts": [
+            {
+              "pixels": 11593,
+              "dark": 9437
+            },
+            {
+              "pixels": 11610,
+              "dark": 9475
+            }
+          ]
+        },
+        "file": "photo-09-row1-col1-native-cbc75e310b4484f7.png"
+      },
+      "transform": {
+        "sourceAnchor": {
+          "x": 240,
+          "y": 101
+        },
+        "targetAnchor": {
+          "x": 32,
+          "y": 31
+        },
+        "scale": 0.11,
+        "uniform": true,
+        "sampling": "NEAREST_SOURCE_PIXEL"
+      },
+      "slot": "FRONT_EYE_OVERLAY_CANDIDATE",
+      "productItemId": null,
+      "occlusion": "ABOVE_BODY_BELOW_FRONT_HAIR",
+      "direction": "front",
+      "skinIndependent": true
+    },
+    {
+      "label": "Brown eyes",
+      "sourceId": "photo_09",
+      "sourceLocation": "row1-col2",
+      "sourceRect": {
+        "x": 439,
+        "y": 0,
+        "width": 403,
+        "height": 181
+      },
+      "native": {
+        "width": 403,
+        "height": 181,
+        "bounds": {
+          "x": 60,
+          "y": 44,
+          "width": 282,
+          "height": 114
+        },
+        "stats": {
+          "opaque": 23220,
+          "white": 3761,
+          "dark": 18629,
+          "discardedDark": 0,
+          "removedPaper": 49723,
+          "parts": [
+            {
+              "pixels": 11598,
+              "dark": 9331
+            },
+            {
+              "pixels": 11622,
+              "dark": 9298
+            }
+          ]
+        },
+        "file": "photo-09-row1-col2-native-ea5f457ab45c23b9.png"
+      },
+      "transform": {
+        "sourceAnchor": {
+          "x": 201,
+          "y": 101
+        },
+        "targetAnchor": {
+          "x": 32,
+          "y": 31
+        },
+        "scale": 0.11,
+        "uniform": true,
+        "sampling": "NEAREST_SOURCE_PIXEL"
+      },
+      "slot": "FRONT_EYE_OVERLAY_CANDIDATE",
+      "productItemId": null,
+      "occlusion": "ABOVE_BODY_BELOW_FRONT_HAIR",
+      "direction": "front",
+      "skinIndependent": true
+    },
+    {
+      "label": "Red eyes",
+      "sourceId": "photo_09",
+      "sourceLocation": "row1-col3",
+      "sourceRect": {
+        "x": 841,
+        "y": 0,
+        "width": 439,
+        "height": 181
+      },
+      "native": {
+        "width": 439,
+        "height": 181,
+        "bounds": {
+          "x": 58,
+          "y": 44,
+          "width": 282,
+          "height": 114
+        },
+        "stats": {
+          "opaque": 23228,
+          "white": 3768,
+          "dark": 15403,
+          "discardedDark": 0,
+          "removedPaper": 56231,
+          "parts": [
+            {
+              "pixels": 11599,
+              "dark": 7691
+            },
+            {
+              "pixels": 11629,
+              "dark": 7712
+            }
+          ]
+        },
+        "file": "photo-09-row1-col3-native-ce9b1360a1ddb47b.png"
+      },
+      "transform": {
+        "sourceAnchor": {
+          "x": 199,
+          "y": 101
+        },
+        "targetAnchor": {
+          "x": 32,
+          "y": 31
+        },
+        "scale": 0.11,
+        "uniform": true,
+        "sampling": "NEAREST_SOURCE_PIXEL"
+      },
+      "slot": "FRONT_EYE_OVERLAY_CANDIDATE",
+      "productItemId": null,
+      "occlusion": "ABOVE_BODY_BELOW_FRONT_HAIR",
+      "direction": "front",
+      "skinIndependent": true
+    },
+    {
+      "label": "Turquoise eyes",
+      "sourceId": "photo_09",
+      "sourceLocation": "row2-col3",
+      "sourceRect": {
+        "x": 841,
+        "y": 180,
+        "width": 439,
+        "height": 161
+      },
+      "native": {
+        "width": 439,
+        "height": 161,
+        "bounds": {
+          "x": 59,
+          "y": 24,
+          "width": 281,
+          "height": 114
+        },
+        "stats": {
+          "opaque": 23185,
+          "white": 3745,
+          "dark": 15619,
+          "discardedDark": 0,
+          "removedPaper": 47494,
+          "parts": [
+            {
+              "pixels": 11598,
+              "dark": 7813
+            },
+            {
+              "pixels": 11587,
+              "dark": 7806
+            }
+          ]
+        },
+        "file": "photo-09-row2-col3-native-3da31f2ddc75fc15.png"
+      },
+      "transform": {
+        "sourceAnchor": {
+          "x": 199.5,
+          "y": 81
+        },
+        "targetAnchor": {
+          "x": 32,
+          "y": 31
+        },
+        "scale": 0.11,
+        "uniform": true,
+        "sampling": "NEAREST_SOURCE_PIXEL"
+      },
+      "slot": "FRONT_EYE_OVERLAY_CANDIDATE",
+      "productItemId": null,
+      "occlusion": "ABOVE_BODY_BELOW_FRONT_HAIR",
+      "direction": "front",
+      "skinIndependent": true
+    }
+  ],
+  "atlas": {
+    "width": 256,
+    "height": 64,
+    "file": "front-eye-overlays-375489c1262ae556.png",
+    "sha256": "375489c1262ae556f02ccc1dec5845f193d1b967ef5139782233e4b6d4e39952",
+    "bytes": 4403
+  },
+  "qualification": "Four actual source-pixel front eye overlays; baked-body eye occlusion must be checked, not assumed, no back/side geometry, wardrobe item IDs or production adoption."
+}

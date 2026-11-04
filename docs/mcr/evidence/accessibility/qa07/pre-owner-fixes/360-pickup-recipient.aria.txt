@@ -1,0 +1,23 @@
+- paragraph: GIFTS / YOUR PICKUP
+- heading "Fan badges" [level=1]
+- paragraph: A reservation holds an item. Only a server-confirmed collection completes pickup.
+- status: Show this short-lived code only at the current pickup. It does not confirm collection.
+- button "Read current reservation"
+- heading "Reservation status" [level=2]
+- paragraph: READY
+- paragraph: "Expiry: 07 Nov 2026, 18:15 KST."
+- button "Read private pickup details"
+- checkbox "Cancel this reservation and release the held item."
+- text: Cancel this reservation and release the held item.
+- button "Confirm reservation cancellation" [disabled]
+- region "Authorized pickup details":
+  - heading "Current pickup plan" [level=2]
+  - paragraph: Private pickup fixture instructions
+  - paragraph: "How to identify the giver: Fixture badge"
+  - paragraph: Valid until 07 Nov 2026, 18:15 KST.
+  - paragraph: Virtual movement does not establish physical arrival.
+- heading "Confirmation code" [level=2]
+- paragraph: Request a short-lived code after checking the current pickup plan. A code does not confirm collection.
+- button "Rotate pickup code"
+- status "Pickup confirmation code": "654321"
+- paragraph: Code expires 07 Nov 2026, 17:07 KST. Share it only at pickup.

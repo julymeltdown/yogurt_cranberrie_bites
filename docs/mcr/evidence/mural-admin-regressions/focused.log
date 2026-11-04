@@ -1,0 +1,9 @@
+
+ RUN  v4.1.9 <checkout>/frontend
+
+
+ Test Files  2 passed (2)
+      Tests  63 passed (63)
+   Start at  10:46:58
+   Duration  2.24s (transform 776ms, setup 0ms, import 666ms, tests 949ms, environment 489ms)
+

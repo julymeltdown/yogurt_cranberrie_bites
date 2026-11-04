@@ -1,0 +1,1068 @@
+{
+  "status": "PASS_VIRTUAL_DENSITY_CANDIDATE_ONLY",
+  "base_geometry_hash": "sha256:899aca9bd6ce499c6f46aff5eaf21e30ab34b301e988771b978a6fab7c2d469f",
+  "geometry_hash": "sha256:0448d5086dc251c6a7aed8c136dbbbf751f95038ea1f7f98e3e40fe6e8067e6f",
+  "planting_intent": [
+    {
+      "id": "grove_north_west",
+      "target_root": [
+        110,
+        125
+      ],
+      "root": [
+        104.0,
+        136.0
+      ],
+      "delta": [
+        -6.0,
+        11.0
+      ],
+      "reason": "Join the west red canopy band behind the court.",
+      "allowed_terrain_ids": [
+        1
+      ],
+      "root_collision_cells": [
+        [
+          5,
+          7
+        ],
+        [
+          6,
+          7
+        ],
+        [
+          7,
+          7
+        ],
+        [
+          5,
+          8
+        ],
+        [
+          6,
+          8
+        ],
+        [
+          7,
+          8
+        ]
+      ],
+      "policy": "Nearest deterministic valid grid-center root within64px; footprint clear of existing roots/boundary, >=80px from named feet, no named-foot alpha occlusion. No random stamping."
+    },
+    {
+      "id": "grove_north_gap",
+      "target_root": [
+        520,
+        125
+      ],
+      "root": [
+        520.0,
+        136.0
+      ],
+      "delta": [
+        0.0,
+        11.0
+      ],
+      "reason": "Close the upper canopy gap between the existing rooted red/yellow trees.",
+      "allowed_terrain_ids": [
+        1
+      ],
+      "root_collision_cells": [
+        [
+          31,
+          7
+        ],
+        [
+          32,
+          7
+        ],
+        [
+          33,
+          7
+        ],
+        [
+          31,
+          8
+        ],
+        [
+          32,
+          8
+        ],
+        [
+          33,
+          8
+        ]
+      ],
+      "policy": "Nearest deterministic valid grid-center root within64px; footprint clear of existing roots/boundary, >=80px from named feet, no named-foot alpha occlusion. No random stamping."
+    },
+    {
+      "id": "grove_east_court",
+      "target_root": [
+        735,
+        230
+      ],
+      "root": [
+        728.0,
+        232.0
+      ],
+      "delta": [
+        -7.0,
+        2.0
+      ],
+      "reason": "Plant the outer court verge behind the park plaque, outside the route center.",
+      "allowed_terrain_ids": [
+        1,
+        2
+      ],
+      "root_collision_cells": [
+        [
+          44,
+          13
+        ],
+        [
+          45,
+          13
+        ],
+        [
+          46,
+          13
+        ],
+        [
+          44,
+          14
+        ],
+        [
+          45,
+          14
+        ],
+        [
+          46,
+          14
+        ]
+      ],
+      "policy": "Nearest deterministic valid grid-center root within64px; footprint clear of existing roots/boundary, >=80px from named feet, no named-foot alpha occlusion. No random stamping."
+    },
+    {
+      "id": "grove_east_middle",
+      "target_root": [
+        746,
+        616
+      ],
+      "root": [
+        728.0,
+        616.0
+      ],
+      "delta": [
+        -18.0,
+        0.0
+      ],
+      "reason": "Join the outer eastern verge below the park plaque; keep its lettered face clear.",
+      "allowed_terrain_ids": [
+        1,
+        2
+      ],
+      "root_collision_cells": [
+        [
+          44,
+          37
+        ],
+        [
+          45,
+          37
+        ],
+        [
+          46,
+          37
+        ],
+        [
+          44,
+          38
+        ],
+        [
+          45,
+          38
+        ],
+        [
+          46,
+          38
+        ]
+      ],
+      "policy": "Nearest deterministic valid grid-center root within64px; footprint clear of existing roots/boundary, >=80px from named feet, no named-foot alpha occlusion. No random stamping."
+    },
+    {
+      "id": "grove_east_connector",
+      "target_root": [
+        740,
+        850
+      ],
+      "root": [
+        728.0,
+        824.0
+      ],
+      "delta": [
+        -12.0,
+        -26.0
+      ],
+      "reason": "Narrow east connecting-verge clump, keeping the food counter legible.",
+      "allowed_terrain_ids": [
+        1
+      ],
+      "root_collision_cells": [
+        [
+          44,
+          50
+        ],
+        [
+          45,
+          50
+        ],
+        [
+          46,
+          50
+        ],
+        [
+          44,
+          51
+        ],
+        [
+          45,
+          51
+        ],
+        [
+          46,
+          51
+        ]
+      ],
+      "policy": "Nearest deterministic valid grid-center root within64px; footprint clear of existing roots/boundary, >=80px from named feet, no named-foot alpha occlusion. No random stamping."
+    },
+    {
+      "id": "grove_east_lower",
+      "target_root": [
+        735,
+        1060
+      ],
+      "root": [
+        728.0,
+        1032.0
+      ],
+      "delta": [
+        -7.0,
+        -28.0
+      ],
+      "reason": "Connect the lower east garden perimeter.",
+      "allowed_terrain_ids": [
+        1
+      ],
+      "root_collision_cells": [
+        [
+          44,
+          63
+        ],
+        [
+          45,
+          63
+        ],
+        [
+          46,
+          63
+        ],
+        [
+          44,
+          64
+        ],
+        [
+          45,
+          64
+        ],
+        [
+          46,
+          64
+        ]
+      ],
+      "policy": "Nearest deterministic valid grid-center root within64px; footprint clear of existing roots/boundary, >=80px from named feet, no named-foot alpha occlusion. No random stamping."
+    },
+    {
+      "id": "grove_east_exit",
+      "target_root": [
+        735,
+        1220
+      ],
+      "root": [
+        728.0,
+        1224.0
+      ],
+      "delta": [
+        -7.0,
+        4.0
+      ],
+      "reason": "Frame the outer exit verge without moving the giveaway destination.",
+      "allowed_terrain_ids": [
+        1,
+        2
+      ],
+      "root_collision_cells": [
+        [
+          44,
+          75
+        ],
+        [
+          45,
+          75
+        ],
+        [
+          46,
+          75
+        ],
+        [
+          44,
+          76
+        ],
+        [
+          45,
+          76
+        ],
+        [
+          46,
+          76
+        ]
+      ],
+      "policy": "Nearest deterministic valid grid-center root within64px; footprint clear of existing roots/boundary, >=80px from named feet, no named-foot alpha occlusion. No random stamping."
+    },
+    {
+      "id": "grove_west_upper",
+      "target_root": [
+        35,
+        260
+      ],
+      "root": [
+        40.0,
+        264.0
+      ],
+      "delta": [
+        5.0,
+        4.0
+      ],
+      "reason": "Join the upper west perimeter planting.",
+      "allowed_terrain_ids": [
+        1
+      ],
+      "root_collision_cells": [
+        [
+          1,
+          15
+        ],
+        [
+          2,
+          15
+        ],
+        [
+          3,
+          15
+        ],
+        [
+          1,
+          16
+        ],
+        [
+          2,
+          16
+        ],
+        [
+          3,
+          16
+        ]
+      ],
+      "policy": "Nearest deterministic valid grid-center root within64px; footprint clear of existing roots/boundary, >=80px from named feet, no named-foot alpha occlusion. No random stamping."
+    },
+    {
+      "id": "grove_west_middle",
+      "target_root": [
+        50,
+        500
+      ],
+      "root": [
+        56.0,
+        504.0
+      ],
+      "delta": [
+        6.0,
+        4.0
+      ],
+      "reason": "Connect west canopy groups above the merch hall.",
+      "allowed_terrain_ids": [
+        1
+      ],
+      "root_collision_cells": [
+        [
+          2,
+          30
+        ],
+        [
+          3,
+          30
+        ],
+        [
+          4,
+          30
+        ],
+        [
+          2,
+          31
+        ],
+        [
+          3,
+          31
+        ],
+        [
+          4,
+          31
+        ]
+      ],
+      "policy": "Nearest deterministic valid grid-center root within64px; footprint clear of existing roots/boundary, >=80px from named feet, no named-foot alpha occlusion. No random stamping."
+    },
+    {
+      "id": "grove_west_lower",
+      "target_root": [
+        45,
+        850
+      ],
+      "root": [
+        40.0,
+        856.0
+      ],
+      "delta": [
+        -5.0,
+        6.0
+      ],
+      "reason": "Fill the lower west lawn edge beside the connecting road.",
+      "allowed_terrain_ids": [
+        1
+      ],
+      "root_collision_cells": [
+        [
+          1,
+          52
+        ],
+        [
+          2,
+          52
+        ],
+        [
+          3,
+          52
+        ],
+        [
+          1,
+          53
+        ],
+        [
+          2,
+          53
+        ],
+        [
+          3,
+          53
+        ]
+      ],
+      "policy": "Nearest deterministic valid grid-center root within64px; footprint clear of existing roots/boundary, >=80px from named feet, no named-foot alpha occlusion. No random stamping."
+    },
+    {
+      "id": "grove_west_bottom",
+      "target_root": [
+        45,
+        970
+      ],
+      "root": [
+        40.0,
+        968.0
+      ],
+      "delta": [
+        -5.0,
+        -2.0
+      ],
+      "reason": "Join the lower west canopy chain before the existing yellow tree.",
+      "allowed_terrain_ids": [
+        1
+      ],
+      "root_collision_cells": [
+        [
+          1,
+          59
+        ],
+        [
+          2,
+          59
+        ],
+        [
+          3,
+          59
+        ],
+        [
+          1,
+          60
+        ],
+        [
+          2,
+          60
+        ],
+        [
+          3,
+          60
+        ]
+      ],
+      "policy": "Nearest deterministic valid grid-center root within64px; footprint clear of existing roots/boundary, >=80px from named feet, no named-foot alpha occlusion. No random stamping."
+    },
+    {
+      "id": "grove_south_lawn",
+      "target_root": [
+        365,
+        1190
+      ],
+      "root": [
+        360.0,
+        1192.0
+      ],
+      "delta": [
+        -5.0,
+        2.0
+      ],
+      "reason": "One rooted lower lawn group between the southwest edge and giveaway parcel.",
+      "allowed_terrain_ids": [
+        1
+      ],
+      "root_collision_cells": [
+        [
+          21,
+          73
+        ],
+        [
+          22,
+          73
+        ],
+        [
+          23,
+          73
+        ],
+        [
+          21,
+          74
+        ],
+        [
+          22,
+          74
+        ],
+        [
+          23,
+          74
+        ]
+      ],
+      "policy": "Nearest deterministic valid grid-center root within64px; footprint clear of existing roots/boundary, >=80px from named feet, no named-foot alpha occlusion. No random stamping."
+    }
+  ],
+  "old_props": 22,
+  "new_unbound_rooted_props": 12,
+  "physical_props": 34,
+  "new_place_ids": 0,
+  "unchanged": [
+    "existing22placements/footprints",
+    "terrain/paving/ground",
+    "spawns/interactions/cameras",
+    "sixMAPrepresentations/labels/fourplaces"
+  ],
+  "changed_cells": [
+    {
+      "cell_x": 5,
+      "cell_y": 7,
+      "previous": 0,
+      "proposed": 1
+    },
+    {
+      "cell_x": 6,
+      "cell_y": 7,
+      "previous": 0,
+      "proposed": 1
+    },
+    {
+      "cell_x": 7,
+      "cell_y": 7,
+      "previous": 0,
+      "proposed": 1
+    },
+    {
+      "cell_x": 31,
+      "cell_y": 7,
+      "previous": 0,
+      "proposed": 1
+    },
+    {
+      "cell_x": 32,
+      "cell_y": 7,
+      "previous": 0,
+      "proposed": 1
+    },
+    {
+      "cell_x": 33,
+      "cell_y": 7,
+      "previous": 0,
+      "proposed": 1
+    },
+    {
+      "cell_x": 5,
+      "cell_y": 8,
+      "previous": 0,
+      "proposed": 1
+    },
+    {
+      "cell_x": 6,
+      "cell_y": 8,
+      "previous": 0,
+      "proposed": 1
+    },
+    {
+      "cell_x": 7,
+      "cell_y": 8,
+      "previous": 0,
+      "proposed": 1
+    },
+    {
+      "cell_x": 31,
+      "cell_y": 8,
+      "previous": 0,
+      "proposed": 1
+    },
+    {
+      "cell_x": 32,
+      "cell_y": 8,
+      "previous": 0,
+      "proposed": 1
+    },
+    {
+      "cell_x": 33,
+      "cell_y": 8,
+      "previous": 0,
+      "proposed": 1
+    },
+    {
+      "cell_x": 44,
+      "cell_y": 13,
+      "previous": 0,
+      "proposed": 1
+    },
+    {
+      "cell_x": 45,
+      "cell_y": 13,
+      "previous": 0,
+      "proposed": 1
+    },
+    {
+      "cell_x": 46,
+      "cell_y": 13,
+      "previous": 0,
+      "proposed": 1
+    },
+    {
+      "cell_x": 44,
+      "cell_y": 14,
+      "previous": 0,
+      "proposed": 1
+    },
+    {
+      "cell_x": 45,
+      "cell_y": 14,
+      "previous": 0,
+      "proposed": 1
+    },
+    {
+      "cell_x": 46,
+      "cell_y": 14,
+      "previous": 0,
+      "proposed": 1
+    },
+    {
+      "cell_x": 1,
+      "cell_y": 15,
+      "previous": 0,
+      "proposed": 1
+    },
+    {
+      "cell_x": 2,
+      "cell_y": 15,
+      "previous": 0,
+      "proposed": 1
+    },
+    {
+      "cell_x": 3,
+      "cell_y": 15,
+      "previous": 0,
+      "proposed": 1
+    },
+    {
+      "cell_x": 1,
+      "cell_y": 16,
+      "previous": 0,
+      "proposed": 1
+    },
+    {
+      "cell_x": 2,
+      "cell_y": 16,
+      "previous": 0,
+      "proposed": 1
+    },
+    {
+      "cell_x": 3,
+      "cell_y": 16,
+      "previous": 0,
+      "proposed": 1
+    },
+    {
+      "cell_x": 2,
+      "cell_y": 30,
+      "previous": 0,
+      "proposed": 1
+    },
+    {
+      "cell_x": 3,
+      "cell_y": 30,
+      "previous": 0,
+      "proposed": 1
+    },
+    {
+      "cell_x": 4,
+      "cell_y": 30,
+      "previous": 0,
+      "proposed": 1
+    },
+    {
+      "cell_x": 2,
+      "cell_y": 31,
+      "previous": 0,
+      "proposed": 1
+    },
+    {
+      "cell_x": 3,
+      "cell_y": 31,
+      "previous": 0,
+      "proposed": 1
+    },
+    {
+      "cell_x": 4,
+      "cell_y": 31,
+      "previous": 0,
+      "proposed": 1
+    },
+    {
+      "cell_x": 44,
+      "cell_y": 37,
+      "previous": 0,
+      "proposed": 1
+    },
+    {
+      "cell_x": 45,
+      "cell_y": 37,
+      "previous": 0,
+      "proposed": 1
+    },
+    {
+      "cell_x": 46,
+      "cell_y": 37,
+      "previous": 0,
+      "proposed": 1
+    },
+    {
+      "cell_x": 44,
+      "cell_y": 38,
+      "previous": 0,
+      "proposed": 1
+    },
+    {
+      "cell_x": 45,
+      "cell_y": 38,
+      "previous": 0,
+      "proposed": 1
+    },
+    {
+      "cell_x": 46,
+      "cell_y": 38,
+      "previous": 0,
+      "proposed": 1
+    },
+    {
+      "cell_x": 44,
+      "cell_y": 50,
+      "previous": 0,
+      "proposed": 1
+    },
+    {
+      "cell_x": 45,
+      "cell_y": 50,
+      "previous": 0,
+      "proposed": 1
+    },
+    {
+      "cell_x": 46,
+      "cell_y": 50,
+      "previous": 0,
+      "proposed": 1
+    },
+    {
+      "cell_x": 44,
+      "cell_y": 51,
+      "previous": 0,
+      "proposed": 1
+    },
+    {
+      "cell_x": 45,
+      "cell_y": 51,
+      "previous": 0,
+      "proposed": 1
+    },
+    {
+      "cell_x": 46,
+      "cell_y": 51,
+      "previous": 0,
+      "proposed": 1
+    },
+    {
+      "cell_x": 1,
+      "cell_y": 52,
+      "previous": 0,
+      "proposed": 1
+    },
+    {
+      "cell_x": 2,
+      "cell_y": 52,
+      "previous": 0,
+      "proposed": 1
+    },
+    {
+      "cell_x": 3,
+      "cell_y": 52,
+      "previous": 0,
+      "proposed": 1
+    },
+    {
+      "cell_x": 1,
+      "cell_y": 53,
+      "previous": 0,
+      "proposed": 1
+    },
+    {
+      "cell_x": 2,
+      "cell_y": 53,
+      "previous": 0,
+      "proposed": 1
+    },
+    {
+      "cell_x": 3,
+      "cell_y": 53,
+      "previous": 0,
+      "proposed": 1
+    },
+    {
+      "cell_x": 1,
+      "cell_y": 59,
+      "previous": 0,
+      "proposed": 1
+    },
+    {
+      "cell_x": 2,
+      "cell_y": 59,
+      "previous": 0,
+      "proposed": 1
+    },
+    {
+      "cell_x": 3,
+      "cell_y": 59,
+      "previous": 0,
+      "proposed": 1
+    },
+    {
+      "cell_x": 1,
+      "cell_y": 60,
+      "previous": 0,
+      "proposed": 1
+    },
+    {
+      "cell_x": 2,
+      "cell_y": 60,
+      "previous": 0,
+      "proposed": 1
+    },
+    {
+      "cell_x": 3,
+      "cell_y": 60,
+      "previous": 0,
+      "proposed": 1
+    },
+    {
+      "cell_x": 44,
+      "cell_y": 63,
+      "previous": 0,
+      "proposed": 1
+    },
+    {
+      "cell_x": 45,
+      "cell_y": 63,
+      "previous": 0,
+      "proposed": 1
+    },
+    {
+      "cell_x": 46,
+      "cell_y": 63,
+      "previous": 0,
+      "proposed": 1
+    },
+    {
+      "cell_x": 44,
+      "cell_y": 64,
+      "previous": 0,
+      "proposed": 1
+    },
+    {
+      "cell_x": 45,
+      "cell_y": 64,
+      "previous": 0,
+      "proposed": 1
+    },
+    {
+      "cell_x": 46,
+      "cell_y": 64,
+      "previous": 0,
+      "proposed": 1
+    },
+    {
+      "cell_x": 21,
+      "cell_y": 73,
+      "previous": 0,
+      "proposed": 1
+    },
+    {
+      "cell_x": 22,
+      "cell_y": 73,
+      "previous": 0,
+      "proposed": 1
+    },
+    {
+      "cell_x": 23,
+      "cell_y": 73,
+      "previous": 0,
+      "proposed": 1
+    },
+    {
+      "cell_x": 21,
+      "cell_y": 74,
+      "previous": 0,
+      "proposed": 1
+    },
+    {
+      "cell_x": 22,
+      "cell_y": 74,
+      "previous": 0,
+      "proposed": 1
+    },
+    {
+      "cell_x": 23,
+      "cell_y": 74,
+      "previous": 0,
+      "proposed": 1
+    },
+    {
+      "cell_x": 44,
+      "cell_y": 75,
+      "previous": 0,
+      "proposed": 1
+    },
+    {
+      "cell_x": 45,
+      "cell_y": 75,
+      "previous": 0,
+      "proposed": 1
+    },
+    {
+      "cell_x": 46,
+      "cell_y": 75,
+      "previous": 0,
+      "proposed": 1
+    },
+    {
+      "cell_x": 44,
+      "cell_y": 76,
+      "previous": 0,
+      "proposed": 1
+    },
+    {
+      "cell_x": 45,
+      "cell_y": 76,
+      "previous": 0,
+      "proposed": 1
+    },
+    {
+      "cell_x": 46,
+      "cell_y": 76,
+      "previous": 0,
+      "proposed": 1
+    }
+  ],
+  "routes": [
+    {
+      "from": "courtyard_entry",
+      "to": "courtyard_entry",
+      "steps": 0
+    },
+    {
+      "from": "courtyard_entry",
+      "to": "community_entry",
+      "steps": 25
+    },
+    {
+      "from": "courtyard_entry",
+      "to": "stage_info",
+      "steps": 3
+    },
+    {
+      "from": "courtyard_entry",
+      "to": "park_info",
+      "steps": 10
+    },
+    {
+      "from": "courtyard_entry",
+      "to": "gifts_info",
+      "steps": 38
+    },
+    {
+      "from": "courtyard_entry",
+      "to": "wall_info",
+      "steps": 50
+    },
+    {
+      "from": "community_entry",
+      "to": "courtyard_entry",
+      "steps": 25
+    },
+    {
+      "from": "community_entry",
+      "to": "community_entry",
+      "steps": 0
+    },
+    {
+      "from": "community_entry",
+      "to": "stage_info",
+      "steps": 28
+    },
+    {
+      "from": "community_entry",
+      "to": "park_info",
+      "steps": 27
+    },
+    {
+      "from": "community_entry",
+      "to": "gifts_info",
+      "steps": 19
+    },
+    {
+      "from": "community_entry",
+      "to": "wall_info",
+      "steps": 31
+    }
+  ]
+}

@@ -1,5 +1,8 @@
 import { createSessionController } from '../../src/features/auth/model/session'
+import { createElement } from 'react'
 import { createModeration, type ModeratorLease } from '../../src/features/admin/reports/model/controller'
+import { ModerationReview } from '../../src/features/admin/reports/ui/ModerationReview'
+import { mountPrivateView } from './mounted-ui'
 import { check, assertAbsent, deferred, markers, roles, until, type Cell, type Role } from './oracle'
 
 const id = (n: number) => `00000000-0000-4000-8000-${String(n).padStart(12, '0')}`
@@ -37,8 +40,10 @@ export async function evidenceCells(role: Role): Promise<Cell[]> {
       return delayed ? late.promise : { mediaId: id(804), blob }
     } },
   })
+  const view = mountPrivateView('evidence', role, createElement(ModerationReview, { controller }))
   try {
     await controller.load()
+    await until(() => controller.read().phase !== 'loading')
     if (role !== 'admin') {
       await controller.select(report.report_id); await controller.evidence(id(804))
       controller.draft('RESOLVED', markers[2]); controller.review(); await controller.submit()
@@ -49,16 +54,19 @@ export async function evidenceCells(role: Role): Promise<Cell[]> {
       assertAbsent(controller.read())
       await controller.select(report.report_id)
       check(controller.read().detail?.text === markers[2], 'authorized evidence detail retained')
+      view.visible(markers[2])
       check(!JSON.stringify(controller.read()).includes(id(899)), 'reporter identity excluded from retained feature state')
       await controller.evidence(id(804))
       const url = controller.read().evidenceUrl
       check(typeof url === 'string' && url.startsWith('blob:'), 'private evidence uses native object URL')
+      view.image(url)
       check(await (await fetch(url)).text() === markers[2], 'authorized synthetic Blob readable')
       // Actual feature cleanup must revoke the URL, not only hide a link in the UI.
       auth.privacy.changePolicy(auth.privacy.capture(), 'suspended')
       check(controller.read().evidenceUrl === null && controller.read().detail === null, 'privacy loss scrubs evidence feature state')
       check(await fetch(url).then(() => false, () => true), 'native evidence object URL revoked')
       assertAbsent(controller.read())
+      view.absent('after suspension'); view.noImage('after suspension')
       auth.privacy.changePolicy(auth.privacy.capture(), 'revalidated')
       grant = { scope: auth.privacy.capture(), role: 'MODERATOR', decisionId: 'qa04-synthetic-revalidated-lease', expiresAt: epoch + 60000 }
       listeners.forEach(listener => listener())
@@ -70,6 +78,7 @@ export async function evidenceCells(role: Role): Promise<Cell[]> {
       late.resolve({ mediaId: id(804), blob }); await pending
       check(controller.read().evidenceUrl === null && controller.read().detail === null, 'late evidence cannot restore revoked lease')
       assertAbsent(controller.read())
+      view.absent('after delayed evidence loses lease'); view.noImage('after lease loss')
       delayed = false
       grant = { scope: auth.privacy.capture(), role: 'MODERATOR', decisionId: 'qa04-synthetic-command-lease', expiresAt: epoch + 60000 }
       listeners.forEach(listener => listener())
@@ -80,7 +89,8 @@ export async function evidenceCells(role: Role): Promise<Cell[]> {
       check(controller.read().phase === 'applied' && controller.read().selected?.revision === 2, 'moderation mutation bound to new state')
       assertAbsent(controller.read())
     }
+    view.absent('final decided or denied state'); view.noImage('final decided or denied state'); view.finish()
     return (['list', 'detail', 'mutation', 'cache'] as const).map(operation => ({ role, operation, status: 'PASS', provenance: 'SYNTHETIC_FIXTURE',
-      evidence: role === 'admin' ? 'Actual moderation controller; synthetic moderator lease; private report detail, native Blob URL revocation, delayed evidence fence and revision-bound mutation. Not real role policy, image decode, mounted UI or WS.' : 'Actual moderation controller with absent synthetic moderator lease; no private list/detail/evidence/mutation dispatch or retained data. Not server-role authorization.' }))
-  } finally { controller.dispose(); auth.dispose() }
+      evidence: role === 'admin' ? 'Actual moderation controller and mounted component; synthetic moderator lease; private report text/Blob element, native URL revocation, delayed evidence fence and revision-bound mutation. Not real role policy, image decode, mounted product shell or WS.' : 'Actual moderation controller and mounted component with absent synthetic moderator lease; no private list/detail/evidence/mutation dispatch or retained data. Not server-role authorization.' }))
+  } finally { view.dispose(); controller.dispose(); auth.dispose() }
 }

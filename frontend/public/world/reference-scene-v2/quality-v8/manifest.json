@@ -1,0 +1,158 @@
+{
+  "format": "MCR_REFERENCE_SCENE_SPATIAL4_QUALITY8",
+  "version": 8,
+  "status": "CONTRACT_READY_CANDIDATE_NOT_RELEASE_BOUND",
+  "visual_acceptance": "IN_PROGRESS_NOT_ACCEPTED",
+  "geometry_revision": 4,
+  "geometry": {
+    "path": "../spatial-v4/geometry-proposal.json",
+    "sha256": "sha256:371b6bdd898f3e8757ba2dfdb96f9948d6f375e2f09353776a9cf6c0861b44c4",
+    "geometry_hash": "sha256:0448d5086dc251c6a7aed8c136dbbbf751f95038ea1f7f98e3e40fe6e8067e6f"
+  },
+  "integer_projection": {
+    "path": "../spatial-v4/integer-projection.json",
+    "sha256": "sha256:2d0cd0c9d7fd07f0ede84ac0e20a3f8a00b4addd1a40706a66e351c46dff3717"
+  },
+  "geometry_revision_evidence": {
+    "path": "../spatial-v4/revision-evidence.json",
+    "sha256": "sha256:33ee05e53b5eac5aa6b914d96468e84308993f26e69eda4d810be4050c18b063"
+  },
+  "source_metadata": {
+    "path": "source-metadata.json",
+    "sha256": "sha256:e75af8826f912cf58e27f67cbaaedd14a7dfc91c0752d02917933352f5d33daf"
+  },
+  "sources": [
+    {
+      "path": "sources/canopy-sheet.png",
+      "sha256": "sha256:29a05b4c32508fea5af551f207b7ab28a3c451cc71baf2ecbcfe77c3567e2d95",
+      "bytes": 1699886
+    },
+    {
+      "path": "sources/prompt.md",
+      "sha256": "sha256:71e74e852beb709147f41196c8cca126e3e2afb9705f7daf1788cebdce01c109",
+      "bytes": 2590
+    }
+  ],
+  "themes": [
+    {
+      "theme_id": "REVENGE",
+      "files": [
+        {
+          "path": "revenge/scenery.json",
+          "sha256": "sha256:b7b269825e93e677752d878e2130173a42eeb0c03f8f742304edd060298cf1e3",
+          "bytes": 10450
+        },
+        {
+          "path": "revenge/layout.json",
+          "sha256": "sha256:6ac3abe7d13bcd00b48a43c3d68e08186fc4a347870826aad10b735a9bfe592d",
+          "bytes": 24439
+        },
+        {
+          "path": "revenge/map-metadata.json",
+          "sha256": "sha256:e86768093fb1a6b90b6979adeb40c4c836146a935f4bda958652d972be49fe13",
+          "bytes": 7419
+        },
+        {
+          "path": "revenge/resource-inputs.json",
+          "sha256": "sha256:c3e03d752e5c6de18907a89331604e65db4daf63d7e76491cb77d5f030eb5a62",
+          "bytes": 1095
+        },
+        {
+          "path": "revenge/provenance.json",
+          "sha256": "sha256:d85b9f37269178539be64dd6c24c0f6fd02c09d55b1bc2d1168db8e9cf681b7b",
+          "bytes": 9512
+        },
+        {
+          "path": "revenge/atlas.png",
+          "sha256": "sha256:ee93dcde891054f6ef965d182af8237a09d10464ba762d017168d2bd9326bccd",
+          "bytes": 1203841
+        }
+      ]
+    },
+    {
+      "theme_id": "PARADE",
+      "files": [
+        {
+          "path": "parade/scenery.json",
+          "sha256": "sha256:10f8130b423795c54ceacff22d59a7bff87fb799171cef0bdb3176aad3e08062",
+          "bytes": 10414
+        },
+        {
+          "path": "parade/layout.json",
+          "sha256": "sha256:2781699d9b7e859636da51d707d884ef1c6642cd339758b0b8f8bec1dc0a4471",
+          "bytes": 24438
+        },
+        {
+          "path": "parade/map-metadata.json",
+          "sha256": "sha256:e86768093fb1a6b90b6979adeb40c4c836146a935f4bda958652d972be49fe13",
+          "bytes": 7419
+        },
+        {
+          "path": "parade/resource-inputs.json",
+          "sha256": "sha256:b09e929cbd9bdcb5e1b0639a160f91d3e6a61d1402f9d864c4844028715844bf",
+          "bytes": 1092
+        },
+        {
+          "path": "parade/provenance.json",
+          "sha256": "sha256:ae7a43abea4a67505423c407939f91142067a759cee3fe4082a718cc5c2b14da",
+          "bytes": 9479
+        },
+        {
+          "path": "parade/atlas.png",
+          "sha256": "sha256:0428f976140a3ee1d59368d3016efae605a6e2b7b1470233f523e7721ec806c1",
+          "bytes": 1215028
+        }
+      ]
+    },
+    {
+      "theme_id": "DANGER",
+      "files": [
+        {
+          "path": "danger/scenery.json",
+          "sha256": "sha256:3db7a2f3f3fdc169202ba9e9dbae8da71c8db35230311e0debcf61f906fb7914",
+          "bytes": 10414
+        },
+        {
+          "path": "danger/layout.json",
+          "sha256": "sha256:f02e6596910e8dc87a42fadafaa933f687dbf9de47b9639d07dd2b0bb4010d84",
+          "bytes": 24438
+        },
+        {
+          "path": "danger/map-metadata.json",
+          "sha256": "sha256:e86768093fb1a6b90b6979adeb40c4c836146a935f4bda958652d972be49fe13",
+          "bytes": 7419
+        },
+        {
+          "path": "danger/resource-inputs.json",
+          "sha256": "sha256:82aed723598c56076f54dfffb2ad10f12570e116079c6af0be0d6de86d570d9c",
+          "bytes": 1092
+        },
+        {
+          "path": "danger/provenance.json",
+          "sha256": "sha256:0f9d485df98f1fd920c9ff3d8c73e4a08ddf908cc54b96e720fd2c7f9b5041dc",
+          "bytes": 9510
+        },
+        {
+          "path": "danger/atlas.png",
+          "sha256": "sha256:61948cb2f642de55721257fd4104fad4a7162a49c5fcf5bef9ed4d81d969ba12",
+          "bytes": 1201333
+        }
+      ]
+    }
+  ],
+  "base_revision": "12f6fbf880fab927be130656e05c406f0084d0c1",
+  "adoption": "New spatial-v4 collision and34objects. Requires actual new canonical Tiled/server/client geometry/resource revision from assigned owners. No runtime/** or backend edits here, no silent activation/mixing with map4/v6.",
+  "adoption_requirements": {
+    "map_id": "mcr_reference_scene_r3",
+    "current_published_map_revision": 4,
+    "required_new_map_revision_minimum": 5,
+    "proposed_next_map_revision": 5,
+    "allocation": "Proposal only, not a reserved/published release; responsible backend/runtime owners confirm the actual revision before binding. Existing map4 and its tilemap/resource/source pins remain frozen.",
+    "new_geometry_hash": "sha256:0448d5086dc251c6a7aed8c136dbbbf751f95038ea1f7f98e3e40fe6e8067e6f",
+    "new_collision_cells": 72,
+    "new_physical_props": 34,
+    "actual_canonical_tiled": "NOT_RUN - reserved runtime/** owner publishes it only under an explicit new assignment.",
+    "root_impact": "No implicit task switch: current spatial-v3 Root publication and reserved FE09 serial handoff remain independent. New source composition needs an explicit later consumer assignment."
+  },
+  "provenance_scope": "No new place identities, no physical review/arrival claims. All new grove props are unbound virtual decoration with explicit collision and planted intent."
+}

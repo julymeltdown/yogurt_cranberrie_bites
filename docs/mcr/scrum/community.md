@@ -100,6 +100,117 @@ Real HTTP/live multiuser IN04, device and full-product acceptance are separate
 open outcomes. The new caller assembly is assigned functioning frontend work,
 not an added condition on the already satisfied original FE33 fixture criteria.
 
+## Delivered bounded FE33-ENTRY / FE37 regression assignment
+
+Frontend king appointed Community sole allocator for existing FE09 broad
+diagnostic residuals, not a new review stage. Candidate
+`01a1a26e-1de2-7b41-a294-c9a79cfded9b` had actually reported prior Customize
+goal COMPLETE and published clean STOP at `c3f411ad`; its latest old turn is
+marked interrupted, so the concrete receiving assignment explicitly requires
+an actual goal read and truthful acceptance before ACTIVE is recorded.
+Management checkout metadata confirmed clean. No application or diagnostic
+source was inspected or checks rerun by this coordinator.
+
+Prepared isolated checkout `/Users/lhs/Desktop/mcr-worktrees/fe-ref-customize`,
+NEW branch `codex/mcr-fe-mural-admin-regressions`, exact base
+`7ea11efdbdc1e2a447ece669a660c10f12b43463`; old branches/history preserved.
+Actual receiving receipt: `get_goal` returned null, then NEW unbudgeted ACTIVE
+goal `1793756572` was created covering diagnosis, necessary bounded fixes,
+validation/docs, direct non-force publication and concrete fixes. Developer
+verified clean exact base and accepted the initial lease; bounded assignment
+status DELIVERED. Final lifecycle receipt: the SAME goal `1793756572` returned
+COMPLETE after published handoff, followed immediately by `get_goal: null`;
+802 seconds, unbudgeted. Clean STOP and all exact leases returned, with no
+unfinished goal. No incompatible goal was paused, reset or falsely completed.
+
+Exact initial exclusive writes only:
+
+- `frontend/src/app/mural-entry/__tests__/routes.test.tsx`
+- `frontend/src/features/admin/reports/__tests__/controller.test.ts`
+- NEW `docs/mcr/frontend/mural-admin-regressions.md`
+- NEW `docs/mcr/evidence/mural-admin-regressions/**`
+
+Subsequent exact feature hunk allocated on the developer's concrete source
+diagnosis: `frontend/src/features/admin/reports/model/validate.ts`, only
+Schema/keyword whitelist and `oneOf` evaluation compatibility, preserving
+existing budget/depth/closed-field behavior. Owner reports canonical
+AvatarConfig's layered/whole union was rejected before valid member rows were
+read, causing the four downstream member failures; this is a developer-reported
+product decoder issue, not an SL source review. Both valid wire variants and
+malformed/hybrid/private-field regressions stay in the already leased
+`controller.test.ts`. No other production path or hunk was granted. Owner
+qualified both mural failures as removed text after `7b567acb`; strengthened
+route/owner/command/snapshot/pixel and synchronous privacy-cleanup assertions
+pass with no mural production edit. The exact RGBA evidence is a real sink to
+memory-scene fixture with stubbed jsdom canvas contexts, not native raster proof.
+
+Exact temporary operational exception: an untracked
+`fe-ref-customize/frontend/node_modules` symlink to the retained
+`/Users/lhs/Desktop/mcr/frontend/node_modules`, only if absent, target read-only,
+no installs/manifest/lock/shared writes. Developer removes only its own exact
+link before final handoff; no target deletion or other write rights.
+
+Existing owner packet: frozen `cb9abce4`, diagnostic publication `62b4bf80`,
+`frontend/src/app/__tests__/production-refresh/evidence/broad-diagnostic.log`.
+Two mural route cases miss “Confirmed revision 10”; four AdminReports cases
+report `target_type`/member-filter failures. The developer must establish
+test-versus-product causes, preserve meaningful invariants, identify exact
+feature source hunks before any added lease, implement required bounded fixes,
+run relevant checks, document evidence and safely publish non-force with clean
+STOP and actual completed-goal receipt, all now reported delivered below.
+Original FE33 satisfaction is not recounted; FE37 whole-task acceptance is
+unchanged, and historical broad NOTGREEN is not promoted to PASS.
+
+Owner-reported publication: source `ccd71cb4b7c4557fa2463ae8057b853a9b877866`,
+docs/evidence `23c6111aeb80c15aa2fd58ace98df60330c5a649`, final qualification
+`ad0700bd27990c674946dac39d02485f3a022093`, non-force master publication
+`047d892cc6ad5eec6125322b84cf1efc2380078f`. Owner reports fresh fetch and
+ls-remote matched, all own commits plus preserved peer `5ca13d44` are remote
+ancestors after reconciling a non-fast-forward rejection; no duplicate publish
+or cherry-pick is needed. Exact net change was 30 owned paths.
+
+Owner-run results: baseline six failed/46 passed; eleven meaningful new Admin
+regressions fail their valid positives before the decoder repair; final 63
+focused cases PASS. Affected 17 files/263 tests, strict types, scoped lint,
+production build, planning and provenance PASS, with relevant reruns after
+peer shell/world/test merges. Native Chrome 156.0.8078.80 reports nine
+reports/members/content configurations at 360/390/430 PASS; nine pinned
+captures and original report retained. All reported source/contract/native/
+artifact pins checked by owner after final reconciliation. These are developer
+receipts, not manager inspections or reruns. Durable evidence is
+[mural/admin regressions](../frontend/mural-admin-regressions.md) and
+`docs/mcr/evidence/mural-admin-regressions/`, including validation,
+reconciliation, baseline, before-fix, affected-suite and native reports.
+
+Native moderation HTTP/roles/media are synthetic. Live backend/root World,
+multiuser, physical device, full FE33/FE37, IN04/IN05 and full visual acceptance
+remain NOT_RUN. No parent/task count is added. Owner reports clean final
+checkout, exact dependency link removed/retained target untouched, temporary
+outputs/processes removed, two separately allocated read-only Auth PNGs exact
+HEAD with no asset diff. Existing tests, bounded validator hunk and new
+doc/evidence leases are returned; no old Customize rights remain.
+
+No app/root/shared/contracts/generated/manifests/locks/composition, other tests,
+backend, art, caller or QA07 ownership is inherited. Feature source requests
+need explicit exact hunk allocation before editing; excluded source changes
+route to its incumbent. Motion and QA07 continue undiverted. Privacy
+`live-gate.test.mjs` collection mismatch was separately routed to actual QA04
+owner `01a1a202-3ff2-7a93-95c3-374c6df97281` and Social, with no implicit
+shared-config fix lease or demonstrated product-fault claim.
+
+Privacy owner subsequently reported the discovery residual delivered: source
+`647432c2`, publication `f2ab50a57076fadf53a5278ee73be2e26bc43442`, remote
+HEAD verified and clean checkout. Byte-identical Node selftest rename to
+`live-gate.node.mjs` and explicit `node --test` documentation remove its Vitest
+discovery match; nine Node tests pass. Owned discovery probe reports zero
+privacy/two positive social-sharing matches without executing test modules;
+no config/app/other-lane edits, new goal or review. Evidence remains in
+`docs/mcr/evidence/privacy-frontend/node-discovery.json`, companion logs and
+README. Frozen `62b4bf80` broad diagnostic is unchanged, NOT_GREEN and not
+rerun. This closes the collection residual only; original real-service QA04
+goal remains BLOCKED on actual principal/seed/HTTP/WS/cache handoff, with no
+new acceptance/count or counterpart checks requested.
+
 ## Current QA07 ownership and hourly checkpoint
 
 Community released completed caller developer
@@ -114,6 +225,13 @@ a NEW unbudgeted ACTIVE goal, clean isolated branch, absent target prefixes
 and usable published inputs. This is an actual acceptance receipt, replacing
 the earlier release-only state. Task status IN_PROGRESS; no QA07 deliverable
 commit/publication or whole-task satisfaction has yet been reported.
+
+World's subsequent exact startup receipt: fresh null to NEW unbudgeted ACTIVE
+goal `1793755842`, checkout `/Users/lhs/Desktop/mcr-worktrees/fe-ref-gifts`,
+branch `codex/mcr-qa-QA07-accessibility`, base `cf706882`; both allocated new
+prefixes absent at startup and current published inputs confirmed usable.
+World's management receipt is published at `59782c52`. No QA07 acceptance,
+original-task count increment or result is inferred from this startup.
 
 The developer reports pickup fixtures exercise reservation recovery, private
 instructions, code issuance and one-time collection through actual UI controls;

@@ -3,7 +3,8 @@ import { afterEach, describe, expect, it, vi } from 'vitest';
 import { harness, id, privateDetail, report, eventId, userId, rows } from './fixtures/harness';
 import { checked, rowKey, type Lane } from '../model/contract';
 import { createModeration } from '../model/controller';
-import { deferred } from '../../../auth/__tests__/fixtures/data';
+import { deferred, fixture as coreFixture } from '../../../auth/__tests__/fixtures/data';
+import wholeConfig from '../../../../../../contracts/fixtures/assets/selected-static/photo01_front_01.json';
 const owned: ReturnType<typeof harness>[] = [];
 const setup = (lane: Lane = 'reports') => {
     const h = harness(lane);
@@ -18,6 +19,8 @@ afterEach(() => {
 });
 async function prepare(h: ReturnType<typeof harness>, action?: string) {
     await h.controller.load();
+    expect(h.controller.read().phase).toBe('ready');
+    expect(h.controller.read().rows).toHaveLength(1);
     await h.controller.select(rowKey(h.controller.read().rows[0]!));
     h.controller.draft(action ?? (h.controller.lane === 'reports' ? 'RESOLVED' : h.controller.lane === 'members' ? 'SUSPEND' : 'HIDE'), 'Reviewed factual reason');
     h.controller.review();
@@ -108,6 +111,56 @@ describe('fail closed moderator authority and private reads', () => {
         h.override(() => Response.json({ items: [{ ...report, event_id: id(4) }], next_cursor: null }));
         await h.controller.load();
         expect(h.controller.read().rows).toEqual([]);
+    });
+});
+describe('canonical member avatar union compatibility', () => {
+    const profile = () => ({ ...coreFixture().participant.profile, user_id: id(400), display_name: 'Review member' });
+    const member = (config: unknown) => ({ user_id: id(400), profile: { ...profile(), avatar: { ...profile().avatar, config } }, state: 'ACTIVE' as const, revision: 1 });
+    it.each([
+        ['layered 1.0', () => profile().avatar.config],
+        ['whole character 1.1', () => wholeConfig],
+    ] as const)('validates %s before minimizing and preserves explicit revision/key commands', async (_label, config) => {
+        const h = setup('members'), full = member(config());
+        expect(() => checked('UserReview', full)).not.toThrow();
+        h.setRows([full]);
+        await prepare(h, 'SUSPEND');
+        expect(h.controller.read().selected).toEqual({ user_id: id(400), profile: { user_id: id(400), display_name: 'Review member' }, state: 'ACTIVE', revision: 1 });
+        expect(JSON.stringify(h.controller.read())).not.toContain('avatar');
+        await h.controller.submit();
+        expect(h.controller.read()).toMatchObject({ phase: 'applied', selected: { state: 'SUSPENDED', revision: 2 } });
+        const writes = h.requests.filter(r => r.method === 'POST');
+        expect(writes).toHaveLength(1);
+        expect(writes[0]!.headers.get('Idempotency-Key')).toBe(id(800));
+        expect(await writes[0]!.clone().json()).toEqual({ action: 'SUSPEND', expected_revision: 1, expires_at: null, reason: 'Reviewed factual reason' });
+        await h.controller.submit();
+        expect(h.requests.filter(r => r.method === 'POST')).toHaveLength(1);
+    });
+    it.each([
+        ['hybrid branches', () => member({ ...wholeConfig, item_ids: profile().avatar.config.item_ids, skin_tone_id: profile().avatar.config.skin_tone_id })],
+        ['unknown whole preset', () => member({ ...wholeConfig, preset_id: 'not-approved' })],
+        ['wrong whole manifest', () => member({ ...wholeConfig, manifest_id: 'unreviewed' })],
+        ['mixed version', () => member({ ...wholeConfig, contract_version: '1.0.0' })],
+        ['missing whole field', () => { const { preset_id: _missing, ...config } = wholeConfig; return member(config); }],
+        ['private avatar field', () => member({ ...wholeConfig, access_token: 'PRIVATE FIXTURE MARKER' })],
+        ['private profile field', () => ({ ...member(wholeConfig), profile: { ...member(wholeConfig).profile, social_handle: 'PRIVATE FIXTURE MARKER' } })],
+        ['missing avatar', () => { const { avatar: _missing, ...minimal } = profile(); return { ...member(wholeConfig), profile: minimal }; }],
+    ] as const)('rejects %s before retaining a member or enabling a command', async (_label, invalid) => {
+        const h = setup('members'), value = invalid();
+        expect(() => checked('UserReview', value)).toThrow('Invalid moderator contract');
+        h.override(() => Response.json({ items: [value], next_cursor: null }));
+        await h.controller.load();
+        expect(h.controller.read()).toMatchObject({ phase: 'failed', rows: [], selected: null, confirm: false });
+        h.controller.draft('SUSPEND', 'Reviewed factual reason'); h.controller.review(); await h.controller.submit();
+        expect(h.requests.filter(r => r.method === 'POST')).toHaveLength(0);
+        expect(JSON.stringify(h.controller.read())).not.toContain('PRIVATE FIXTURE MARKER');
+    });
+    it('rejects a schema-valid profile belonging to a different user', async () => {
+        const h = setup('members'), value = { ...member(wholeConfig), profile: { ...member(wholeConfig).profile, user_id: id(401) } };
+        expect(() => checked('UserReview', value)).not.toThrow();
+        h.override(() => Response.json({ items: [value], next_cursor: null }));
+        await h.controller.load();
+        expect(h.controller.read()).toMatchObject({ phase: 'failed', rows: [], selected: null, confirm: false });
+        expect(h.requests.filter(r => r.method === 'POST')).toHaveLength(0);
     });
 });
 describe('explicit revision/reason and truthful commands', () => {

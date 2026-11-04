@@ -1,0 +1,47 @@
+{
+  "status": "PASS_NATIVE_LABEL_COMPOSITION_ONLY",
+  "geometry_hash": "sha256:0448d5086dc251c6a7aed8c136dbbbf751f95038ea1f7f98e3e40fe6e8067e6f",
+  "presentation_sha256": "sha256:f9599a9859fe0b660fee591440dee2f7ab8e025a5f525df82091b61b091b23cc",
+  "results": [
+    {
+      "era": "parade",
+      "dimensions": [
+        768,
+        1296
+      ],
+      "native_overlay_layers": 52,
+      "editable_text_layers": 8,
+      "scenery_pixels_outside_labels": "EXACT_V8",
+      "unchanged_packaged_pngs": 2,
+      "packaged_exact_font": true,
+      "rendered_icons": 5
+    },
+    {
+      "era": "revenge",
+      "dimensions": [
+        768,
+        1296
+      ],
+      "native_overlay_layers": 52,
+      "editable_text_layers": 8,
+      "scenery_pixels_outside_labels": "EXACT_V8",
+      "unchanged_packaged_pngs": 2,
+      "packaged_exact_font": true,
+      "rendered_icons": 5
+    },
+    {
+      "era": "danger",
+      "dimensions": [
+        768,
+        1296
+      ],
+      "native_overlay_layers": 52,
+      "editable_text_layers": 8,
+      "scenery_pixels_outside_labels": "EXACT_V8",
+      "unchanged_packaged_pngs": 2,
+      "packaged_exact_font": true,
+      "rendered_icons": 5
+    }
+  ],
+  "limits": "Original v8 source and PNG assets remain frozen. No application, backend/source admission, physical qualification, independent visual score or target acceptance."
+}

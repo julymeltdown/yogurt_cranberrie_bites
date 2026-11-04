@@ -1,0 +1,194 @@
+[
+  {
+    "role": "RootWebArea",
+    "name": "QA07 synthetic accessibility inputs"
+  },
+  {
+    "role": "generic",
+    "name": ""
+  },
+  {
+    "role": "paragraph",
+    "name": ""
+  },
+  {
+    "role": "region",
+    "name": "Sharing request detail"
+  },
+  {
+    "role": "StaticText",
+    "name": "QA07 synthetic consent fixture; no live reciprocal consent."
+  },
+  {
+    "role": "heading",
+    "name": "SHARING REQUEST"
+  },
+  {
+    "role": "paragraph",
+    "name": ""
+  },
+  {
+    "role": "status",
+    "name": ""
+  },
+  {
+    "role": "paragraph",
+    "name": ""
+  },
+  {
+    "role": "region",
+    "name": "Approved platforms"
+  },
+  {
+    "role": "button",
+    "name": "Revoke sharing"
+  },
+  {
+    "role": "generic",
+    "name": ""
+  },
+  {
+    "role": "InlineTextBox",
+    "name": "QA07 synthetic consent fixture; no live reciprocal "
+  },
+  {
+    "role": "InlineTextBox",
+    "name": "consent."
+  },
+  {
+    "role": "StaticText",
+    "name": "SHARING REQUEST"
+  },
+  {
+    "role": "StaticText",
+    "name": "Sharing lets the other person see your selected account name. It does not follow anyone automatically. Revoking stops future access here; it cannot erase a name someone already saw or copied. Unblocking does not restore previous consent."
+  },
+  {
+    "role": "StaticText",
+    "name": "APPROVED"
+  },
+  {
+    "role": "StaticText",
+    "name": "Expires "
+  },
+  {
+    "role": "time",
+    "name": ""
+  },
+  {
+    "role": "heading",
+    "name": "Approved exchange"
+  },
+  {
+    "role": "paragraph",
+    "name": ""
+  },
+  {
+    "role": "button",
+    "name": "Reveal Instagram"
+  },
+  {
+    "role": "StaticText",
+    "name": "Revoke sharing"
+  },
+  {
+    "role": "paragraph",
+    "name": ""
+  },
+  {
+    "role": "InlineTextBox",
+    "name": "SHARING REQUEST"
+  },
+  {
+    "role": "InlineTextBox",
+    "name": "Sharing lets the other person see your "
+  },
+  {
+    "role": "InlineTextBox",
+    "name": "selected account name. It does not follow "
+  },
+  {
+    "role": "InlineTextBox",
+    "name": "anyone automatically. Revoking stops future "
+  },
+  {
+    "role": "InlineTextBox",
+    "name": "access here; it cannot erase a name "
+  },
+  {
+    "role": "InlineTextBox",
+    "name": "someone already saw or copied. Unblocking "
+  },
+  {
+    "role": "InlineTextBox",
+    "name": "does not restore previous consent."
+  },
+  {
+    "role": "InlineTextBox",
+    "name": "APPROVED"
+  },
+  {
+    "role": "InlineTextBox",
+    "name": "Expires "
+  },
+  {
+    "role": "StaticText",
+    "name": "11/7/2026, 7:00:00 PM"
+  },
+  {
+    "role": "StaticText",
+    "name": "Approved exchange"
+  },
+  {
+    "role": "StaticText",
+    "name": "Approval is metadata, not a displayed account name. Reveal explicitly when needed."
+  },
+  {
+    "role": "StaticText",
+    "name": "Reveal "
+  },
+  {
+    "role": "StaticText",
+    "name": "Instagram"
+  },
+  {
+    "role": "InlineTextBox",
+    "name": "Revoke sharing"
+  },
+  {
+    "role": "StaticText",
+    "name": "The server confirmed this change."
+  },
+  {
+    "role": "InlineTextBox",
+    "name": "11/7/2026, 7:00:00 PM"
+  },
+  {
+    "role": "InlineTextBox",
+    "name": "Approved exchange"
+  },
+  {
+    "role": "InlineTextBox",
+    "name": "Approval is metadata, not a displayed "
+  },
+  {
+    "role": "InlineTextBox",
+    "name": "account name. Reveal explicitly when "
+  },
+  {
+    "role": "InlineTextBox",
+    "name": "needed."
+  },
+  {
+    "role": "InlineTextBox",
+    "name": "Reveal "
+  },
+  {
+    "role": "InlineTextBox",
+    "name": "Instagram"
+  },
+  {
+    "role": "InlineTextBox",
+    "name": "The server confirmed this change."
+  }
+]

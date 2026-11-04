@@ -1,0 +1,252 @@
+{
+  "result": "ART_HANDOFF_COMPLETE_CONSUMER_PROPOSAL_ONLY",
+  "observedBase": "5ca13d4493ee9eb78675256cb2f6e58f7ac59a48",
+  "publishedArtReceipt": "145d0e21b5ce92c55a04c31dc447267f78014a99",
+  "publishedArtEvidence": "2fb8068083cebb39835b9e77f1e7147a39723fc8",
+  "goal": {
+    "priorCompletionReadback": "COMPLETE",
+    "currentGetGoalReadback": null,
+    "newGoalCreated": false
+  },
+  "cleanup": {
+    "checkoutCleanBeforeReceipt": true,
+    "ownedArtServerOrVerifierProcessesObserved": 0,
+    "dependencyInstalls": 0,
+    "temporaryDependencySymlinksRemaining": 0,
+    "consumerFilesEdited": false
+  },
+  "allocator": "World SL 01a1a1fe-c276-7eb3-a36e-2f383c0e81b8; sole NEXT allocator after this clean closing handoff. This receipt grants no consumer ownership and creates no art approval gate.",
+  "pins": [
+    {
+      "path": "frontend/public/world/avatars/derived-v1/motion-candidates-v1/combined-release-candidate.json",
+      "sha256": "6cf3aad25ceba681f4c0306d1139109ee6c07508de617ecf1c0b08b1d43fb950",
+      "bytes": 42925
+    },
+    {
+      "path": "frontend/public/world/avatars/derived-v1/motion-candidates-v1/avatar-candidates-64-1cd8f05af8d76d58.png",
+      "sha256": "1cd8f05af8d76d58243e2f6e143961953b4d4291fdd553df8c8d33aabd700dbd",
+      "bytes": 470010
+    },
+    {
+      "path": "frontend/public/world/avatars/derived-v1/motion-candidates-v1/motion-release-candidate.json",
+      "sha256": "223926a1ee23d57daa791fa15cbdb8a3417eaa9eabfc0026e9cff1096dfe8cae",
+      "bytes": 154956
+    },
+    {
+      "path": "frontend/public/world/avatars/derived-v1/motion-candidates-v1/wardrobe-release-candidate.json",
+      "sha256": "76314115c9de6e7d9e7aec36c49b0f27dfe36e7e185d4f8220c1a43f58dc6b50",
+      "bytes": 115552
+    },
+    {
+      "path": "frontend/public/world/avatars/derived-v1/motion-candidates-v1/candidate-index.json",
+      "sha256": "123d8f56f88299b084bed15d26fe9960c252ee10423ce98db08cba7b2e633433",
+      "bytes": 375733
+    },
+    {
+      "path": "docs/mcr/art/evidence/motion-candidates-v1/source-pins.json",
+      "sha256": "313748ed86619e5f0a0b4b62794e7e11d23d5d17cf98cfcdc0c00f471278534c",
+      "bytes": 4403
+    },
+    {
+      "path": "docs/mcr/art/evidence/motion-candidates-v1/delivery-pins.json",
+      "sha256": "69b1e071a8195e35f56d4ca5f717b8e3262e7d2d694789b47b22c788ce13c423",
+      "bytes": 50007
+    },
+    {
+      "path": "docs/mcr/art/evidence/motion-candidates-v1/original-hashes.json",
+      "sha256": "2a388cf3e8b2a4794dda7ba3d0d0ab1a278e0ba8276094bf0ebd7f2be9c5728f",
+      "bytes": 3206
+    },
+    {
+      "path": "docs/mcr/art/evidence/motion-candidates-v1/authored-reconstruction.json",
+      "sha256": "ee963e181bf6cb1a08f0652dc5fd9d72706dc4c62868496cb5ea30aff484846a",
+      "bytes": 810
+    },
+    {
+      "path": "docs/mcr/art/evidence/motion-candidates-v1/component-source-inputs.json",
+      "sha256": "f1ba21e4addf4efb8eb5a2cdff83afa22e2dfe14b583f54e8de34e4b45c7efc1",
+      "bytes": 1404
+    }
+  ],
+  "verifiedPinCounts": {
+    "public": 373,
+    "tools": 29,
+    "evidenceInputs": 7
+  },
+  "interface": {
+    "entry": "combined-release-candidate.json",
+    "productionEligible": false,
+    "localArtworkKeysAreInventoryIds": false,
+    "cell": [
+      64,
+      64
+    ],
+    "foot": [
+      32,
+      60
+    ],
+    "directions": [
+      "front",
+      "left",
+      "right",
+      "rear"
+    ],
+    "phaseOrder": [
+      "idle",
+      "walk-1",
+      "walk-2",
+      "walk-3",
+      "walk-4"
+    ],
+    "presetCellFormula": "presetOrdinal * 20 + directionOrdinal * 5 + phaseOrdinal",
+    "combinedWardrobeAtlasIndices": "Already offset by 120; do not add 120 again. items[].directions[].frames and handFrames reference the combined atlas.",
+    "composition": [
+      "body/head clipped above y42 when dressed, otherwise full body",
+      "cuff mask filled with body skinPalette.colors[2]",
+      "outfit",
+      "eyes (rear explicitly invisible)",
+      "hair",
+      "accessory"
+    ],
+    "authorship": "Six front idles from supplied photo_01; 24 front walks articulated supplied pixels; other 90 preset cells authored source-faithful views/articulation. Wardrobe authored clean surfaces plus supplied eye cutouts and source-derived semantic skin palettes. Full provenance remains per-family manifests and evidence.",
+    "requests": {
+      "initialAvatar": 2,
+      "interactionAvatar": 0
+    }
+  },
+  "proposedConsumerHunks": [
+    {
+      "path": "frontend/src/entities/avatar/runtime/compositor.ts",
+      "functionOrHunk": "createAvatarCompositor: choose/acquire/thumbnail",
+      "proposedChange": "Provide versioned motion composition: 20 output cells, semantic skin palette, body clip y=42, cuff masks, outfit/eyes/hair/accessory ordering. Existing baked-skin-only path cannot consume candidate unchanged; retain its admitted behavior until versioned dispatch is allocated.",
+      "requiresExplicitOwnerAllocation": true,
+      "protectedOrSharedCoordination": false,
+      "observedGitBlob": "f926cb70fce928fb8a70aca44a736d4ca0e408be"
+    },
+    {
+      "path": "frontend/src/world/avatar/whole-character.ts",
+      "functionOrHunk": "createWholeCharacterWorldRenderer: validRender/load/paint/replace and scene.onFrame callback",
+      "proposedChange": "Versioned motion adapter must retain facing/moving from replication and select actual idle/four walk frames from scene time; stop using constant frame 0 for the new release. Preserve borrowed-runtime lifetime, revocation, depth and roster cleanup.",
+      "requiresExplicitOwnerAllocation": true,
+      "protectedOrSharedCoordination": false,
+      "observedGitBlob": "79e4fe13b9aa98a8b6de740346887f42e7a9332d"
+    },
+    {
+      "path": "frontend/src/world/avatar/renderer.ts",
+      "functionOrHunk": "createAvatarRenderer: render frameIndex and shared composed texture lifetime",
+      "proposedChange": "Reuse existing four-direction/four-walk cadence and 320x256 composed-sheet scene texture for a compatible layered adapter; compare against current whole-character route rather than installing a second renderer or loop.",
+      "requiresExplicitOwnerAllocation": true,
+      "protectedOrSharedCoordination": false,
+      "observedGitBlob": "bbca3ab83b7367a9c8c97cc544af2772eb672b7f"
+    },
+    {
+      "path": "frontend/src/features/avatar/whole-character/WholeCharacterEditor.tsx",
+      "functionOrHunk": "WholeCharacterEditor: preview and preset-option controls",
+      "proposedChange": "Active whole-character Customize view needs real direction/walk controls and a deliberately routed composable wardrobe UI under the new admitted capability; gallery-only changes do not deliver AR03.",
+      "requiresExplicitOwnerAllocation": true,
+      "protectedOrSharedCoordination": false,
+      "observedGitBlob": "46df724854f1b2b7c897dc708d09d42f66c688c3"
+    },
+    {
+      "path": "frontend/src/features/avatar/whole-character/controller.ts",
+      "functionOrHunk": "createWholeCharacterEditorController: initialize/select/save and reconciliation",
+      "proposedChange": "Carry the versioned preset/wardrobe draft through current explicit save, server response, conflicts and revocation; never serialize candidate labels as inventory IDs.",
+      "requiresExplicitOwnerAllocation": true,
+      "protectedOrSharedCoordination": false,
+      "observedGitBlob": "e5da0af8d89b4376954841cb6598942459933491"
+    },
+    {
+      "path": "frontend/src/features/avatar/AvatarEditor.tsx",
+      "functionOrHunk": "AvatarEditor: category, tone and preview controls",
+      "proposedChange": "Existing layered Customize controls are a reusable option only if the account owner selects the new versioned layered adapter.",
+      "requiresExplicitOwnerAllocation": true,
+      "protectedOrSharedCoordination": false,
+      "observedGitBlob": "b2b2ddf64d0b27e8f5e3889e01b92794864eda0a"
+    },
+    {
+      "path": "frontend/src/features/avatar/preview.ts",
+      "functionOrHunk": "compositorPreview/createReviewedAvatarPreview",
+      "proposedChange": "Build catalog and thumbnail leases from the new authorized item/skin mapping; expose actual semantic skin choices instead of baked-skin filtering.",
+      "requiresExplicitOwnerAllocation": true,
+      "protectedOrSharedCoordination": false,
+      "observedGitBlob": "939ea3eabeba2009264e139766e643d9352055c8"
+    },
+    {
+      "path": "frontend/src/features/avatar/controller.ts",
+      "functionOrHunk": "createAvatarEditorController: show/choose/acquireOptionPreviews",
+      "proposedChange": "Retain private draft, save/reconciliation and bounded option-preview lifetimes when the layered editor is selected.",
+      "requiresExplicitOwnerAllocation": true,
+      "protectedOrSharedCoordination": false,
+      "observedGitBlob": "e00ecc35ab3f3c6c0ff17cb9f0cccc69c768accb"
+    },
+    {
+      "path": "frontend/src/app/character-entry/registry.ts",
+      "functionOrHunk": "createCharacterRuntimeRegistry: get admission predicate/create factory",
+      "proposedChange": "Current get accepts whole_character contract 1.1.0 only. Owner must explicitly route a new admitted representation/version while retaining one scoped runtime and synchronous withdrawal.",
+      "requiresExplicitOwnerAllocation": true,
+      "protectedOrSharedCoordination": true,
+      "observedGitBlob": "79f6068cddc3f4d58a978a80be9e48cba771d7a0"
+    },
+    {
+      "path": "frontend/src/app/character-entry/runtime.ts",
+      "functionOrHunk": "createRootCharacterRegistry factory",
+      "proposedChange": "Dispatch the new versioned selected runtime under the existing canonical Auth/private scope, not a view-owned duplicate.",
+      "requiresExplicitOwnerAllocation": true,
+      "protectedOrSharedCoordination": true,
+      "observedGitBlob": "9c01e69a9bbdf1bbc766fbccb86c7a5a215cb530"
+    },
+    {
+      "path": "frontend/src/app/account-entry/owner.ts",
+      "functionOrHunk": "createAccountOwner: wholeAvatar/avatar controller creation",
+      "proposedChange": "Route current bootstrap capability to the correct editor/runtime and preserve borrowed ownership.",
+      "requiresExplicitOwnerAllocation": true,
+      "protectedOrSharedCoordination": true,
+      "observedGitBlob": "fa4d96f0259845797ca8e1f3dcd77182730c82e9"
+    },
+    {
+      "path": "frontend/src/app/account-entry/panels.tsx",
+      "functionOrHunk": "AccountPanel: view === avatar branch",
+      "proposedChange": "Make the actual Customize route reach the adopted preset/wardrobe editor; current wholeAvatar branch bypasses AvatarEditor.",
+      "requiresExplicitOwnerAllocation": true,
+      "protectedOrSharedCoordination": true,
+      "observedGitBlob": "be06375239ddc0d72c86522ae471ceba539e3c60"
+    },
+    {
+      "path": "frontend/src/app/world-entry/production.ts",
+      "functionOrHunk": "loadProduction: renderer injection and characters.read",
+      "proposedChange": "Route the admitted motion renderer on the real Root World lease with the same registry; preserve one Phaser game/world socket.",
+      "requiresExplicitOwnerAllocation": true,
+      "protectedOrSharedCoordination": true,
+      "observedGitBlob": "b30b3855c0e9d61066e99971e5a9e40ba50f650c"
+    },
+    {
+      "path": "frontend/src/world/scenes/MapScene.ts",
+      "functionOrHunk": "createAvatarTexture/AvatarScenePort texture/sprite update",
+      "proposedChange": "Read-only compatibility checkpoint: existing texture supports 20 frames and staticTexture64 supports only one. Prefer composing to existing 320x256 20-cell sheet; any change needs Root153 owner coordination.",
+      "requiresExplicitOwnerAllocation": true,
+      "protectedOrSharedCoordination": true,
+      "observedGitBlob": "ff1b78a5c1bd0179899c55ad6085cf33ae02b493"
+    },
+    {
+      "path": "frontend/src/entities/avatar/whole-character/contract.ts",
+      "functionOrHunk": "REVIEWED/validateWholeCharacterManifest/capabilities",
+      "proposedChange": "Current release is explicitly front_idle/layer_customization:false. Do not mutate historical pins or relabel the candidate admitted; shared versioned contract mapping belongs to designated owner.",
+      "requiresExplicitOwnerAllocation": true,
+      "protectedOrSharedCoordination": true,
+      "observedGitBlob": "7628cf49445785cb588086d10b041655926ddcd0"
+    }
+  ],
+  "validationScopeToAllocate": [
+    "frontend/src/world/avatar/__tests__/motion-adoption/ (new exact proposed prefix): real scene-frame facing/walk/idle, shared texture lifecycle, replacement/revocation and scoped cache tests.",
+    "frontend/src/features/avatar/__tests__/motion-adoption/ (new exact proposed prefix): eight skin/body, six hair, four eyes, six outfit, four accessory controls; direction/walk preview, authorized draft/save/reload/reconcile.",
+    "frontend/src/app/character-entry/__tests__/registry.test.ts and frontend/src/app/account-entry/__tests__/owner.test.ts: only explicitly allocated new-version dispatch/lifetime cases; existing root tests retain their owner.",
+    "Actual Root/Phaser journey fixture/evidence path is not allocated or known here: World and Root153 must name exact path before writing. Exercise Customize -> save -> World self/peer facing+walking -> Profile same config, widths360/390/430 and themes, one game/socket peak, no interaction asset fetches, private cleanup. Actual service/device/multiuser limits must remain explicit."
+  ],
+  "ownerCoordinationNeeded": [
+    "Root153 v8 six existing scope groups remain exclusive; app registry/account/world-entry/MapScene are coordination proposals only.",
+    "Shared contracts/assets schema, release registry, generated public types, backend canonical inventory/config/manifest and HTTP/WS dispatch need exact versioned ownership from their owners. No arbitrary consumer-file change can manufacture admission.",
+    "frontend/src/entities/avatar/runtime/contract.ts and resources.ts plus whole-character runtime.ts/view.tsx may require new-version adapter boundaries; choose exact new module files/hunks with owning developer before allocation, rather than blanket directory transfer.",
+    "Root/main/shared/Auth/composition/generated/central manifests/lockfiles are outside this handoff. Additional source/test path discovered during adoption must be named for World allocation."
+  ],
+  "originalAR03": "IN_PROGRESS; candidate art scope delivered. Application/Phaser/editor/contract/server/multiuser acceptance not claimed."
+}
