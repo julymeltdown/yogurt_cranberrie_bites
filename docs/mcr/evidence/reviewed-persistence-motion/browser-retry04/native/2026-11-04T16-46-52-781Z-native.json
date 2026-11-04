@@ -1,0 +1,1848 @@
+{
+  "run": "2026-11-04T16-46-52-781Z",
+  "result": "PASS",
+  "qualification": "ACTUAL_MAIN_SYNTHETIC_HTTP_C05_REVIEWED_C06_NOT_LIVE",
+  "widths": [
+    {
+      "width": 390,
+      "height": 844,
+      "result": "PASS",
+      "actualMain": true,
+      "qualification": "NARROW_PERSISTENCE_MOTION_CONTROLLED_HTTP_C05_NOT_LIVE",
+      "explicitHardReload": true,
+      "newDocument": true,
+      "canonicalUILoginAfterReload": true,
+      "externalHTTPAuthority": {
+        "reads": 2,
+        "writes": [
+          {
+            "expectedRevision": 7,
+            "acceptedRevision": 8
+          }
+        ],
+        "saved": {
+          "revision": 8,
+          "config": {
+            "contract_version": "2.0.0",
+            "kind": "avatar_config",
+            "manifest_id": "mcr_selected_motion_reviewed_20261104",
+            "manifest_version": 2,
+            "representation": "motion_layered",
+            "item_ids": {
+              "body": "motion_v2_body_7",
+              "eyes": "motion_v2_eyes_0",
+              "hair": "motion_v2_hair_0",
+              "outfit": "motion_v2_outfit_0",
+              "accessory": null
+            }
+          }
+        }
+      },
+      "savedProfile": {
+        "sha256": "4c34c8cd69c88b269e0911ecb20a7bdaeec5a36ad1428c4b1eb73eb94e58c3a0",
+        "alpha": 1672,
+        "width": 64,
+        "height": 64
+      },
+      "reloadedProfile": {
+        "sha256": "4c34c8cd69c88b269e0911ecb20a7bdaeec5a36ad1428c4b1eb73eb94e58c3a0",
+        "alpha": 1672,
+        "width": 64,
+        "height": 64
+      },
+      "reloadedWorld": {
+        "actors": [
+          {
+            "userId": "00000000-0000-4000-8000-000000000101",
+            "self": true,
+            "authoritative": {
+              "position": {
+                "x": 140,
+                "y": 520
+              },
+              "facing": "down",
+              "moving": false,
+              "avatarRevision": 8
+            },
+            "x": 140,
+            "y": 520,
+            "texture": "mcr-avatar-1",
+            "frame": 0,
+            "sourceWidth": 320,
+            "sourceHeight": 256,
+            "visible": true,
+            "alpha": 1,
+            "onCamera": true,
+            "cell": {
+              "sha256": "4c34c8cd69c88b269e0911ecb20a7bdaeec5a36ad1428c4b1eb73eb94e58c3a0",
+              "alpha": 1672,
+              "width": 64,
+              "height": 64
+            }
+          },
+          {
+            "userId": "00000000-0000-4000-8000-000000000901",
+            "self": false,
+            "authoritative": {
+              "position": {
+                "x": 212,
+                "y": 520
+              },
+              "facing": "down",
+              "moving": false,
+              "avatarRevision": 1
+            },
+            "x": 212,
+            "y": 520,
+            "texture": "mcr-avatar-2",
+            "frame": 0,
+            "sourceWidth": 320,
+            "sourceHeight": 256,
+            "visible": true,
+            "alpha": 1,
+            "onCamera": true,
+            "cell": {
+              "sha256": "04ad48d25587aa0cfe7fd3c1ab4444493914d5fadea1372d18ce24567b9493c4",
+              "alpha": 2161,
+              "width": 64,
+              "height": 64
+            }
+          },
+          {
+            "userId": "00000000-0000-4000-8000-000000000902",
+            "self": false,
+            "authoritative": {
+              "position": {
+                "x": 284,
+                "y": 520
+              },
+              "facing": "down",
+              "moving": false,
+              "avatarRevision": 1
+            },
+            "x": 284,
+            "y": 520,
+            "texture": "mcr-avatar-3",
+            "frame": 0,
+            "sourceWidth": 320,
+            "sourceHeight": 256,
+            "visible": true,
+            "alpha": 1,
+            "onCamera": true,
+            "cell": {
+              "sha256": "3192f3f4bc2f5fc8cd7a8075dc25857e0acd3cfc92978ac9417c76085f3aeb51",
+              "alpha": 2117,
+              "width": 64,
+              "height": 64
+            }
+          },
+          {
+            "userId": "00000000-0000-4000-8000-000000000903",
+            "self": false,
+            "authoritative": {
+              "position": {
+                "x": 140,
+                "y": 608
+              },
+              "facing": "down",
+              "moving": false,
+              "avatarRevision": 1
+            },
+            "x": 140,
+            "y": 608,
+            "texture": "mcr-avatar-4",
+            "frame": 0,
+            "sourceWidth": 320,
+            "sourceHeight": 256,
+            "visible": true,
+            "alpha": 1,
+            "onCamera": true,
+            "cell": {
+              "sha256": "7d9dd74b1d5e8612797ca8d0221bf370699f4deca7e3784056b1ed11d5944e70",
+              "alpha": 2373,
+              "width": 64,
+              "height": 64
+            }
+          },
+          {
+            "userId": "00000000-0000-4000-8000-000000000904",
+            "self": false,
+            "authoritative": {
+              "position": {
+                "x": 212,
+                "y": 608
+              },
+              "facing": "down",
+              "moving": false,
+              "avatarRevision": 1
+            },
+            "x": 212,
+            "y": 608,
+            "texture": "mcr-avatar-5",
+            "frame": 0,
+            "sourceWidth": 320,
+            "sourceHeight": 256,
+            "visible": true,
+            "alpha": 1,
+            "onCamera": true,
+            "cell": {
+              "sha256": "481cdff2faf27762bb9cd73012da28bbbb3785221c385d59981e4824469f9ab8",
+              "alpha": 2216,
+              "width": 64,
+              "height": 64
+            }
+          },
+          {
+            "userId": "00000000-0000-4000-8000-000000000905",
+            "self": false,
+            "authoritative": {
+              "position": {
+                "x": 284,
+                "y": 608
+              },
+              "facing": "down",
+              "moving": false,
+              "avatarRevision": 1
+            },
+            "x": 284,
+            "y": 608,
+            "texture": "mcr-avatar-6",
+            "frame": 0,
+            "sourceWidth": 320,
+            "sourceHeight": 256,
+            "visible": true,
+            "alpha": 1,
+            "onCamera": true,
+            "cell": {
+              "sha256": "63083758170593c022f2488a51e8afd7066e0439bb8754ee2f1aad3c2f3a2b86",
+              "alpha": 2239,
+              "width": 64,
+              "height": 64
+            }
+          }
+        ],
+        "profile": null,
+        "sceneKey": "mcr-map",
+        "canvasCount": 1
+      },
+      "actualInput": [
+        {
+          "seq": 1,
+          "axisX": 0,
+          "axisY": 0
+        },
+        {
+          "seq": 2,
+          "axisX": 1,
+          "axisY": 0
+        },
+        {
+          "seq": 3,
+          "axisX": 1,
+          "axisY": 0
+        },
+        {
+          "seq": 4,
+          "axisX": 1,
+          "axisY": 0
+        },
+        {
+          "seq": 5,
+          "axisX": 1,
+          "axisY": 0
+        },
+        {
+          "seq": 6,
+          "axisX": 1,
+          "axisY": 0
+        },
+        {
+          "seq": 7,
+          "axisX": 1,
+          "axisY": 0
+        },
+        {
+          "seq": 8,
+          "axisX": 1,
+          "axisY": 0
+        },
+        {
+          "seq": 9,
+          "axisX": 1,
+          "axisY": 0
+        },
+        {
+          "seq": 10,
+          "axisX": 1,
+          "axisY": 0
+        },
+        {
+          "seq": 11,
+          "axisX": 1,
+          "axisY": 0
+        },
+        {
+          "seq": 12,
+          "axisX": 1,
+          "axisY": 0
+        },
+        {
+          "seq": 13,
+          "axisX": 1,
+          "axisY": 0
+        },
+        {
+          "seq": 14,
+          "axisX": 1,
+          "axisY": 0
+        },
+        {
+          "seq": 15,
+          "axisX": 1,
+          "axisY": 0
+        },
+        {
+          "seq": 16,
+          "axisX": 1,
+          "axisY": 0
+        },
+        {
+          "seq": 17,
+          "axisX": 1,
+          "axisY": 0
+        },
+        {
+          "seq": 18,
+          "axisX": 1,
+          "axisY": 0
+        },
+        {
+          "seq": 19,
+          "axisX": 1,
+          "axisY": 0
+        },
+        {
+          "seq": 20,
+          "axisX": 1,
+          "axisY": 0
+        },
+        {
+          "seq": 21,
+          "axisX": 1,
+          "axisY": 0
+        },
+        {
+          "seq": 22,
+          "axisX": 1,
+          "axisY": 0
+        },
+        {
+          "seq": 23,
+          "axisX": 1,
+          "axisY": 0
+        },
+        {
+          "seq": 24,
+          "axisX": 1,
+          "axisY": 0
+        },
+        {
+          "seq": 25,
+          "axisX": 0,
+          "axisY": 0
+        }
+      ],
+      "controlledAuthoritativeUpdates": [
+        {
+          "sequence": 1,
+          "ackInputSeq": 1,
+          "userIds": [
+            "00000000-0000-4000-8000-000000000101"
+          ]
+        },
+        {
+          "sequence": 2,
+          "ackInputSeq": 2,
+          "userIds": [
+            "00000000-0000-4000-8000-000000000101"
+          ]
+        },
+        {
+          "sequence": 3,
+          "ackInputSeq": 3,
+          "userIds": [
+            "00000000-0000-4000-8000-000000000101"
+          ]
+        },
+        {
+          "sequence": 4,
+          "ackInputSeq": 4,
+          "userIds": [
+            "00000000-0000-4000-8000-000000000101"
+          ]
+        },
+        {
+          "sequence": 5,
+          "ackInputSeq": 5,
+          "userIds": [
+            "00000000-0000-4000-8000-000000000101"
+          ]
+        },
+        {
+          "sequence": 6,
+          "ackInputSeq": 6,
+          "userIds": [
+            "00000000-0000-4000-8000-000000000101"
+          ]
+        },
+        {
+          "sequence": 7,
+          "ackInputSeq": 7,
+          "userIds": [
+            "00000000-0000-4000-8000-000000000101"
+          ]
+        },
+        {
+          "sequence": 8,
+          "ackInputSeq": 8,
+          "userIds": [
+            "00000000-0000-4000-8000-000000000101"
+          ]
+        },
+        {
+          "sequence": 9,
+          "ackInputSeq": 9,
+          "userIds": [
+            "00000000-0000-4000-8000-000000000101"
+          ]
+        },
+        {
+          "sequence": 10,
+          "ackInputSeq": 10,
+          "userIds": [
+            "00000000-0000-4000-8000-000000000101"
+          ]
+        },
+        {
+          "sequence": 11,
+          "ackInputSeq": 11,
+          "userIds": [
+            "00000000-0000-4000-8000-000000000101"
+          ]
+        },
+        {
+          "sequence": 12,
+          "ackInputSeq": 12,
+          "userIds": [
+            "00000000-0000-4000-8000-000000000101"
+          ]
+        },
+        {
+          "sequence": 13,
+          "ackInputSeq": 13,
+          "userIds": [
+            "00000000-0000-4000-8000-000000000101"
+          ]
+        },
+        {
+          "sequence": 14,
+          "ackInputSeq": 14,
+          "userIds": [
+            "00000000-0000-4000-8000-000000000101"
+          ]
+        },
+        {
+          "sequence": 15,
+          "ackInputSeq": 15,
+          "userIds": [
+            "00000000-0000-4000-8000-000000000101"
+          ]
+        },
+        {
+          "sequence": 16,
+          "ackInputSeq": 16,
+          "userIds": [
+            "00000000-0000-4000-8000-000000000101"
+          ]
+        },
+        {
+          "sequence": 17,
+          "ackInputSeq": 17,
+          "userIds": [
+            "00000000-0000-4000-8000-000000000101"
+          ]
+        },
+        {
+          "sequence": 18,
+          "ackInputSeq": 18,
+          "userIds": [
+            "00000000-0000-4000-8000-000000000101"
+          ]
+        },
+        {
+          "sequence": 19,
+          "ackInputSeq": 19,
+          "userIds": [
+            "00000000-0000-4000-8000-000000000101"
+          ]
+        },
+        {
+          "sequence": 20,
+          "ackInputSeq": 20,
+          "userIds": [
+            "00000000-0000-4000-8000-000000000101"
+          ]
+        },
+        {
+          "sequence": 21,
+          "ackInputSeq": 21,
+          "userIds": [
+            "00000000-0000-4000-8000-000000000101"
+          ]
+        },
+        {
+          "sequence": 22,
+          "ackInputSeq": 22,
+          "userIds": [
+            "00000000-0000-4000-8000-000000000101"
+          ]
+        },
+        {
+          "sequence": 23,
+          "ackInputSeq": 23,
+          "userIds": [
+            "00000000-0000-4000-8000-000000000101"
+          ]
+        },
+        {
+          "sequence": 24,
+          "ackInputSeq": 24,
+          "userIds": [
+            "00000000-0000-4000-8000-000000000101"
+          ]
+        },
+        {
+          "sequence": 25,
+          "ackInputSeq": 25,
+          "userIds": [
+            "00000000-0000-4000-8000-000000000101"
+          ]
+        },
+        {
+          "sequence": 26,
+          "ackInputSeq": 25,
+          "userIds": [
+            "00000000-0000-4000-8000-000000000901"
+          ]
+        },
+        {
+          "sequence": 27,
+          "ackInputSeq": 25,
+          "userIds": [
+            "00000000-0000-4000-8000-000000000901"
+          ]
+        }
+      ],
+      "selfMotion": {
+        "before": {
+          "userId": "00000000-0000-4000-8000-000000000101",
+          "self": true,
+          "authoritative": {
+            "position": {
+              "x": 140,
+              "y": 520
+            },
+            "facing": "down",
+            "moving": false,
+            "avatarRevision": 8
+          },
+          "x": 140,
+          "y": 520,
+          "texture": "mcr-avatar-1",
+          "frame": 0,
+          "sourceWidth": 320,
+          "sourceHeight": 256,
+          "visible": true,
+          "alpha": 1,
+          "onCamera": true,
+          "cell": {
+            "sha256": "4c34c8cd69c88b269e0911ecb20a7bdaeec5a36ad1428c4b1eb73eb94e58c3a0",
+            "alpha": 1672,
+            "width": 64,
+            "height": 64
+          }
+        },
+        "samples": [
+          {
+            "userId": "00000000-0000-4000-8000-000000000101",
+            "self": true,
+            "authoritative": {
+              "position": {
+                "x": 150,
+                "y": 520
+              },
+              "facing": "right",
+              "moving": true,
+              "avatarRevision": 8
+            },
+            "x": 150,
+            "y": 520,
+            "texture": "mcr-avatar-1",
+            "frame": 13,
+            "sourceWidth": 320,
+            "sourceHeight": 256,
+            "visible": true,
+            "alpha": 1,
+            "onCamera": true,
+            "cell": {
+              "sha256": "444c601a04d776ff71c12c276cc811fcae1d0048720dc8093ddd015af0940364",
+              "alpha": 1364,
+              "width": 64,
+              "height": 64
+            }
+          },
+          {
+            "userId": "00000000-0000-4000-8000-000000000101",
+            "self": true,
+            "authoritative": {
+              "position": {
+                "x": 152,
+                "y": 520
+              },
+              "facing": "right",
+              "moving": true,
+              "avatarRevision": 8
+            },
+            "x": 152,
+            "y": 520,
+            "texture": "mcr-avatar-1",
+            "frame": 13,
+            "sourceWidth": 320,
+            "sourceHeight": 256,
+            "visible": true,
+            "alpha": 1,
+            "onCamera": true,
+            "cell": {
+              "sha256": "444c601a04d776ff71c12c276cc811fcae1d0048720dc8093ddd015af0940364",
+              "alpha": 1364,
+              "width": 64,
+              "height": 64
+            }
+          },
+          {
+            "userId": "00000000-0000-4000-8000-000000000101",
+            "self": true,
+            "authoritative": {
+              "position": {
+                "x": 154,
+                "y": 520
+              },
+              "facing": "right",
+              "moving": true,
+              "avatarRevision": 8
+            },
+            "x": 154,
+            "y": 520,
+            "texture": "mcr-avatar-1",
+            "frame": 14,
+            "sourceWidth": 320,
+            "sourceHeight": 256,
+            "visible": true,
+            "alpha": 1,
+            "onCamera": true,
+            "cell": {
+              "sha256": "830b739dc04dea7ee0c25e08c2bbe74c66b11fca93a81f27b8a49e2d890d5aba",
+              "alpha": 1392,
+              "width": 64,
+              "height": 64
+            }
+          },
+          {
+            "userId": "00000000-0000-4000-8000-000000000101",
+            "self": true,
+            "authoritative": {
+              "position": {
+                "x": 156,
+                "y": 520
+              },
+              "facing": "right",
+              "moving": true,
+              "avatarRevision": 8
+            },
+            "x": 156,
+            "y": 520,
+            "texture": "mcr-avatar-1",
+            "frame": 14,
+            "sourceWidth": 320,
+            "sourceHeight": 256,
+            "visible": true,
+            "alpha": 1,
+            "onCamera": true,
+            "cell": {
+              "sha256": "830b739dc04dea7ee0c25e08c2bbe74c66b11fca93a81f27b8a49e2d890d5aba",
+              "alpha": 1392,
+              "width": 64,
+              "height": 64
+            }
+          },
+          {
+            "userId": "00000000-0000-4000-8000-000000000101",
+            "self": true,
+            "authoritative": {
+              "position": {
+                "x": 158,
+                "y": 520
+              },
+              "facing": "right",
+              "moving": true,
+              "avatarRevision": 8
+            },
+            "x": 158,
+            "y": 520,
+            "texture": "mcr-avatar-1",
+            "frame": 14,
+            "sourceWidth": 320,
+            "sourceHeight": 256,
+            "visible": true,
+            "alpha": 1,
+            "onCamera": true,
+            "cell": {
+              "sha256": "830b739dc04dea7ee0c25e08c2bbe74c66b11fca93a81f27b8a49e2d890d5aba",
+              "alpha": 1392,
+              "width": 64,
+              "height": 64
+            }
+          },
+          {
+            "userId": "00000000-0000-4000-8000-000000000101",
+            "self": true,
+            "authoritative": {
+              "position": {
+                "x": 160,
+                "y": 520
+              },
+              "facing": "right",
+              "moving": true,
+              "avatarRevision": 8
+            },
+            "x": 160,
+            "y": 520,
+            "texture": "mcr-avatar-1",
+            "frame": 11,
+            "sourceWidth": 320,
+            "sourceHeight": 256,
+            "visible": true,
+            "alpha": 1,
+            "onCamera": true,
+            "cell": {
+              "sha256": "901d1e63088c3cd547aaae5ae94e37fb9abc94734ff52bccffb0b5a5fd4f83ce",
+              "alpha": 1392,
+              "width": 64,
+              "height": 64
+            }
+          },
+          {
+            "userId": "00000000-0000-4000-8000-000000000101",
+            "self": true,
+            "authoritative": {
+              "position": {
+                "x": 162,
+                "y": 520
+              },
+              "facing": "right",
+              "moving": true,
+              "avatarRevision": 8
+            },
+            "x": 162,
+            "y": 520,
+            "texture": "mcr-avatar-1",
+            "frame": 11,
+            "sourceWidth": 320,
+            "sourceHeight": 256,
+            "visible": true,
+            "alpha": 1,
+            "onCamera": true,
+            "cell": {
+              "sha256": "901d1e63088c3cd547aaae5ae94e37fb9abc94734ff52bccffb0b5a5fd4f83ce",
+              "alpha": 1392,
+              "width": 64,
+              "height": 64
+            }
+          },
+          {
+            "userId": "00000000-0000-4000-8000-000000000101",
+            "self": true,
+            "authoritative": {
+              "position": {
+                "x": 164,
+                "y": 520
+              },
+              "facing": "right",
+              "moving": true,
+              "avatarRevision": 8
+            },
+            "x": 164,
+            "y": 520,
+            "texture": "mcr-avatar-1",
+            "frame": 12,
+            "sourceWidth": 320,
+            "sourceHeight": 256,
+            "visible": true,
+            "alpha": 1,
+            "onCamera": true,
+            "cell": {
+              "sha256": "339b75fd97ed573873aa42dd3da505f0541c0fe0fd96d65270f9e6d985130f03",
+              "alpha": 1392,
+              "width": 64,
+              "height": 64
+            }
+          },
+          {
+            "userId": "00000000-0000-4000-8000-000000000101",
+            "self": true,
+            "authoritative": {
+              "position": {
+                "x": 166,
+                "y": 520
+              },
+              "facing": "right",
+              "moving": true,
+              "avatarRevision": 8
+            },
+            "x": 166,
+            "y": 520,
+            "texture": "mcr-avatar-1",
+            "frame": 12,
+            "sourceWidth": 320,
+            "sourceHeight": 256,
+            "visible": true,
+            "alpha": 1,
+            "onCamera": true,
+            "cell": {
+              "sha256": "339b75fd97ed573873aa42dd3da505f0541c0fe0fd96d65270f9e6d985130f03",
+              "alpha": 1392,
+              "width": 64,
+              "height": 64
+            }
+          },
+          {
+            "userId": "00000000-0000-4000-8000-000000000101",
+            "self": true,
+            "authoritative": {
+              "position": {
+                "x": 168,
+                "y": 520
+              },
+              "facing": "right",
+              "moving": true,
+              "avatarRevision": 8
+            },
+            "x": 168,
+            "y": 520,
+            "texture": "mcr-avatar-1",
+            "frame": 12,
+            "sourceWidth": 320,
+            "sourceHeight": 256,
+            "visible": true,
+            "alpha": 1,
+            "onCamera": true,
+            "cell": {
+              "sha256": "339b75fd97ed573873aa42dd3da505f0541c0fe0fd96d65270f9e6d985130f03",
+              "alpha": 1392,
+              "width": 64,
+              "height": 64
+            }
+          },
+          {
+            "userId": "00000000-0000-4000-8000-000000000101",
+            "self": true,
+            "authoritative": {
+              "position": {
+                "x": 170,
+                "y": 520
+              },
+              "facing": "right",
+              "moving": true,
+              "avatarRevision": 8
+            },
+            "x": 170,
+            "y": 520,
+            "texture": "mcr-avatar-1",
+            "frame": 13,
+            "sourceWidth": 320,
+            "sourceHeight": 256,
+            "visible": true,
+            "alpha": 1,
+            "onCamera": true,
+            "cell": {
+              "sha256": "444c601a04d776ff71c12c276cc811fcae1d0048720dc8093ddd015af0940364",
+              "alpha": 1364,
+              "width": 64,
+              "height": 64
+            }
+          },
+          {
+            "userId": "00000000-0000-4000-8000-000000000101",
+            "self": true,
+            "authoritative": {
+              "position": {
+                "x": 172,
+                "y": 520
+              },
+              "facing": "right",
+              "moving": true,
+              "avatarRevision": 8
+            },
+            "x": 172,
+            "y": 520,
+            "texture": "mcr-avatar-1",
+            "frame": 13,
+            "sourceWidth": 320,
+            "sourceHeight": 256,
+            "visible": true,
+            "alpha": 1,
+            "onCamera": true,
+            "cell": {
+              "sha256": "444c601a04d776ff71c12c276cc811fcae1d0048720dc8093ddd015af0940364",
+              "alpha": 1364,
+              "width": 64,
+              "height": 64
+            }
+          },
+          {
+            "userId": "00000000-0000-4000-8000-000000000101",
+            "self": true,
+            "authoritative": {
+              "position": {
+                "x": 172,
+                "y": 520
+              },
+              "facing": "right",
+              "moving": true,
+              "avatarRevision": 8
+            },
+            "x": 172,
+            "y": 520,
+            "texture": "mcr-avatar-1",
+            "frame": 13,
+            "sourceWidth": 320,
+            "sourceHeight": 256,
+            "visible": true,
+            "alpha": 1,
+            "onCamera": true,
+            "cell": {
+              "sha256": "444c601a04d776ff71c12c276cc811fcae1d0048720dc8093ddd015af0940364",
+              "alpha": 1364,
+              "width": 64,
+              "height": 64
+            }
+          },
+          {
+            "userId": "00000000-0000-4000-8000-000000000101",
+            "self": true,
+            "authoritative": {
+              "position": {
+                "x": 172,
+                "y": 520
+              },
+              "facing": "right",
+              "moving": true,
+              "avatarRevision": 8
+            },
+            "x": 172,
+            "y": 520,
+            "texture": "mcr-avatar-1",
+            "frame": 14,
+            "sourceWidth": 320,
+            "sourceHeight": 256,
+            "visible": true,
+            "alpha": 1,
+            "onCamera": true,
+            "cell": {
+              "sha256": "830b739dc04dea7ee0c25e08c2bbe74c66b11fca93a81f27b8a49e2d890d5aba",
+              "alpha": 1392,
+              "width": 64,
+              "height": 64
+            }
+          },
+          {
+            "userId": "00000000-0000-4000-8000-000000000101",
+            "self": true,
+            "authoritative": {
+              "position": {
+                "x": 172,
+                "y": 520
+              },
+              "facing": "right",
+              "moving": true,
+              "avatarRevision": 8
+            },
+            "x": 172,
+            "y": 520,
+            "texture": "mcr-avatar-1",
+            "frame": 14,
+            "sourceWidth": 320,
+            "sourceHeight": 256,
+            "visible": true,
+            "alpha": 1,
+            "onCamera": true,
+            "cell": {
+              "sha256": "830b739dc04dea7ee0c25e08c2bbe74c66b11fca93a81f27b8a49e2d890d5aba",
+              "alpha": 1392,
+              "width": 64,
+              "height": 64
+            }
+          },
+          {
+            "userId": "00000000-0000-4000-8000-000000000101",
+            "self": true,
+            "authoritative": {
+              "position": {
+                "x": 172,
+                "y": 520
+              },
+              "facing": "right",
+              "moving": true,
+              "avatarRevision": 8
+            },
+            "x": 172,
+            "y": 520,
+            "texture": "mcr-avatar-1",
+            "frame": 14,
+            "sourceWidth": 320,
+            "sourceHeight": 256,
+            "visible": true,
+            "alpha": 1,
+            "onCamera": true,
+            "cell": {
+              "sha256": "830b739dc04dea7ee0c25e08c2bbe74c66b11fca93a81f27b8a49e2d890d5aba",
+              "alpha": 1392,
+              "width": 64,
+              "height": 64
+            }
+          },
+          {
+            "userId": "00000000-0000-4000-8000-000000000101",
+            "self": true,
+            "authoritative": {
+              "position": {
+                "x": 172,
+                "y": 520
+              },
+              "facing": "right",
+              "moving": true,
+              "avatarRevision": 8
+            },
+            "x": 172,
+            "y": 520,
+            "texture": "mcr-avatar-1",
+            "frame": 11,
+            "sourceWidth": 320,
+            "sourceHeight": 256,
+            "visible": true,
+            "alpha": 1,
+            "onCamera": true,
+            "cell": {
+              "sha256": "901d1e63088c3cd547aaae5ae94e37fb9abc94734ff52bccffb0b5a5fd4f83ce",
+              "alpha": 1392,
+              "width": 64,
+              "height": 64
+            }
+          },
+          {
+            "userId": "00000000-0000-4000-8000-000000000101",
+            "self": true,
+            "authoritative": {
+              "position": {
+                "x": 172,
+                "y": 520
+              },
+              "facing": "right",
+              "moving": true,
+              "avatarRevision": 8
+            },
+            "x": 172,
+            "y": 520,
+            "texture": "mcr-avatar-1",
+            "frame": 11,
+            "sourceWidth": 320,
+            "sourceHeight": 256,
+            "visible": true,
+            "alpha": 1,
+            "onCamera": true,
+            "cell": {
+              "sha256": "901d1e63088c3cd547aaae5ae94e37fb9abc94734ff52bccffb0b5a5fd4f83ce",
+              "alpha": 1392,
+              "width": 64,
+              "height": 64
+            }
+          }
+        ],
+        "walkFrames": [
+          13,
+          14,
+          11,
+          12
+        ],
+        "stopped": {
+          "userId": "00000000-0000-4000-8000-000000000101",
+          "self": true,
+          "authoritative": {
+            "position": {
+              "x": 172,
+              "y": 520
+            },
+            "facing": "right",
+            "moving": false,
+            "avatarRevision": 8
+          },
+          "x": 172,
+          "y": 520,
+          "texture": "mcr-avatar-1",
+          "frame": 10,
+          "sourceWidth": 320,
+          "sourceHeight": 256,
+          "visible": true,
+          "alpha": 1,
+          "onCamera": true,
+          "cell": {
+            "sha256": "082cd8d684c490c6602c61e51a4e0cebee8fc5a28f36ea10561c71c36fc4b7f2",
+            "alpha": 1399,
+            "width": 64,
+            "height": 64
+          }
+        }
+      },
+      "peerMotion": {
+        "before": {
+          "userId": "00000000-0000-4000-8000-000000000901",
+          "self": false,
+          "authoritative": {
+            "position": {
+              "x": 212,
+              "y": 520
+            },
+            "facing": "down",
+            "moving": false,
+            "avatarRevision": 1
+          },
+          "x": 212,
+          "y": 520,
+          "texture": "mcr-avatar-2",
+          "frame": 0,
+          "sourceWidth": 320,
+          "sourceHeight": 256,
+          "visible": true,
+          "alpha": 1,
+          "onCamera": true,
+          "cell": {
+            "sha256": "04ad48d25587aa0cfe7fd3c1ab4444493914d5fadea1372d18ce24567b9493c4",
+            "alpha": 2161,
+            "width": 64,
+            "height": 64
+          }
+        },
+        "samples": [
+          {
+            "userId": "00000000-0000-4000-8000-000000000901",
+            "self": false,
+            "authoritative": {
+              "position": {
+                "x": 228,
+                "y": 520
+              },
+              "facing": "left",
+              "moving": true,
+              "avatarRevision": 2
+            },
+            "x": 212,
+            "y": 520,
+            "texture": "mcr-avatar-3",
+            "frame": 8,
+            "sourceWidth": 320,
+            "sourceHeight": 256,
+            "visible": true,
+            "alpha": 1,
+            "onCamera": true,
+            "cell": {
+              "sha256": "7b271e163d0631645a80d63f4ca823a15ef37b0abe1278b5e2e41c081f9293d1",
+              "alpha": 1614,
+              "width": 64,
+              "height": 64
+            }
+          },
+          {
+            "userId": "00000000-0000-4000-8000-000000000901",
+            "self": false,
+            "authoritative": {
+              "position": {
+                "x": 228,
+                "y": 520
+              },
+              "facing": "left",
+              "moving": true,
+              "avatarRevision": 2
+            },
+            "x": 218.01599999904633,
+            "y": 520,
+            "texture": "mcr-avatar-3",
+            "frame": 8,
+            "sourceWidth": 320,
+            "sourceHeight": 256,
+            "visible": true,
+            "alpha": 1,
+            "onCamera": true,
+            "cell": {
+              "sha256": "7b271e163d0631645a80d63f4ca823a15ef37b0abe1278b5e2e41c081f9293d1",
+              "alpha": 1614,
+              "width": 64,
+              "height": 64
+            }
+          },
+          {
+            "userId": "00000000-0000-4000-8000-000000000901",
+            "self": false,
+            "authoritative": {
+              "position": {
+                "x": 228,
+                "y": 520
+              },
+              "facing": "left",
+              "moving": true,
+              "avatarRevision": 2
+            },
+            "x": 223.34400000095368,
+            "y": 520,
+            "texture": "mcr-avatar-3",
+            "frame": 8,
+            "sourceWidth": 320,
+            "sourceHeight": 256,
+            "visible": true,
+            "alpha": 1,
+            "onCamera": true,
+            "cell": {
+              "sha256": "7b271e163d0631645a80d63f4ca823a15ef37b0abe1278b5e2e41c081f9293d1",
+              "alpha": 1614,
+              "width": 64,
+              "height": 64
+            }
+          },
+          {
+            "userId": "00000000-0000-4000-8000-000000000901",
+            "self": false,
+            "authoritative": {
+              "position": {
+                "x": 228,
+                "y": 520
+              },
+              "facing": "left",
+              "moving": true,
+              "avatarRevision": 2
+            },
+            "x": 228,
+            "y": 520,
+            "texture": "mcr-avatar-3",
+            "frame": 9,
+            "sourceWidth": 320,
+            "sourceHeight": 256,
+            "visible": true,
+            "alpha": 1,
+            "onCamera": true,
+            "cell": {
+              "sha256": "87c32abc90b3a1635634dc3be5bdd5c51e2010e5c137452a47d3a82d6b6bf587",
+              "alpha": 1622,
+              "width": 64,
+              "height": 64
+            }
+          },
+          {
+            "userId": "00000000-0000-4000-8000-000000000901",
+            "self": false,
+            "authoritative": {
+              "position": {
+                "x": 228,
+                "y": 520
+              },
+              "facing": "left",
+              "moving": true,
+              "avatarRevision": 2
+            },
+            "x": 228,
+            "y": 520,
+            "texture": "mcr-avatar-3",
+            "frame": 9,
+            "sourceWidth": 320,
+            "sourceHeight": 256,
+            "visible": true,
+            "alpha": 1,
+            "onCamera": true,
+            "cell": {
+              "sha256": "87c32abc90b3a1635634dc3be5bdd5c51e2010e5c137452a47d3a82d6b6bf587",
+              "alpha": 1622,
+              "width": 64,
+              "height": 64
+            }
+          },
+          {
+            "userId": "00000000-0000-4000-8000-000000000901",
+            "self": false,
+            "authoritative": {
+              "position": {
+                "x": 228,
+                "y": 520
+              },
+              "facing": "left",
+              "moving": true,
+              "avatarRevision": 2
+            },
+            "x": 228,
+            "y": 520,
+            "texture": "mcr-avatar-3",
+            "frame": 9,
+            "sourceWidth": 320,
+            "sourceHeight": 256,
+            "visible": true,
+            "alpha": 1,
+            "onCamera": true,
+            "cell": {
+              "sha256": "87c32abc90b3a1635634dc3be5bdd5c51e2010e5c137452a47d3a82d6b6bf587",
+              "alpha": 1622,
+              "width": 64,
+              "height": 64
+            }
+          },
+          {
+            "userId": "00000000-0000-4000-8000-000000000901",
+            "self": false,
+            "authoritative": {
+              "position": {
+                "x": 228,
+                "y": 520
+              },
+              "facing": "left",
+              "moving": true,
+              "avatarRevision": 2
+            },
+            "x": 228,
+            "y": 520,
+            "texture": "mcr-avatar-3",
+            "frame": 6,
+            "sourceWidth": 320,
+            "sourceHeight": 256,
+            "visible": true,
+            "alpha": 1,
+            "onCamera": true,
+            "cell": {
+              "sha256": "b70c0822876cd2b4b4ec9754ff7944c49f95b331518740850d37af44a1ffb1e5",
+              "alpha": 1635,
+              "width": 64,
+              "height": 64
+            }
+          },
+          {
+            "userId": "00000000-0000-4000-8000-000000000901",
+            "self": false,
+            "authoritative": {
+              "position": {
+                "x": 228,
+                "y": 520
+              },
+              "facing": "left",
+              "moving": true,
+              "avatarRevision": 2
+            },
+            "x": 228,
+            "y": 520,
+            "texture": "mcr-avatar-3",
+            "frame": 6,
+            "sourceWidth": 320,
+            "sourceHeight": 256,
+            "visible": true,
+            "alpha": 1,
+            "onCamera": true,
+            "cell": {
+              "sha256": "b70c0822876cd2b4b4ec9754ff7944c49f95b331518740850d37af44a1ffb1e5",
+              "alpha": 1635,
+              "width": 64,
+              "height": 64
+            }
+          },
+          {
+            "userId": "00000000-0000-4000-8000-000000000901",
+            "self": false,
+            "authoritative": {
+              "position": {
+                "x": 228,
+                "y": 520
+              },
+              "facing": "left",
+              "moving": true,
+              "avatarRevision": 2
+            },
+            "x": 228,
+            "y": 520,
+            "texture": "mcr-avatar-3",
+            "frame": 6,
+            "sourceWidth": 320,
+            "sourceHeight": 256,
+            "visible": true,
+            "alpha": 1,
+            "onCamera": true,
+            "cell": {
+              "sha256": "b70c0822876cd2b4b4ec9754ff7944c49f95b331518740850d37af44a1ffb1e5",
+              "alpha": 1635,
+              "width": 64,
+              "height": 64
+            }
+          },
+          {
+            "userId": "00000000-0000-4000-8000-000000000901",
+            "self": false,
+            "authoritative": {
+              "position": {
+                "x": 228,
+                "y": 520
+              },
+              "facing": "left",
+              "moving": true,
+              "avatarRevision": 2
+            },
+            "x": 228,
+            "y": 520,
+            "texture": "mcr-avatar-3",
+            "frame": 7,
+            "sourceWidth": 320,
+            "sourceHeight": 256,
+            "visible": true,
+            "alpha": 1,
+            "onCamera": true,
+            "cell": {
+              "sha256": "282603fd27c843f7773f433571dc65f7999c936b975fcab172a3e05554c15fa4",
+              "alpha": 1624,
+              "width": 64,
+              "height": 64
+            }
+          },
+          {
+            "userId": "00000000-0000-4000-8000-000000000901",
+            "self": false,
+            "authoritative": {
+              "position": {
+                "x": 228,
+                "y": 520
+              },
+              "facing": "left",
+              "moving": true,
+              "avatarRevision": 2
+            },
+            "x": 228,
+            "y": 520,
+            "texture": "mcr-avatar-3",
+            "frame": 7,
+            "sourceWidth": 320,
+            "sourceHeight": 256,
+            "visible": true,
+            "alpha": 1,
+            "onCamera": true,
+            "cell": {
+              "sha256": "282603fd27c843f7773f433571dc65f7999c936b975fcab172a3e05554c15fa4",
+              "alpha": 1624,
+              "width": 64,
+              "height": 64
+            }
+          },
+          {
+            "userId": "00000000-0000-4000-8000-000000000901",
+            "self": false,
+            "authoritative": {
+              "position": {
+                "x": 228,
+                "y": 520
+              },
+              "facing": "left",
+              "moving": true,
+              "avatarRevision": 2
+            },
+            "x": 228,
+            "y": 520,
+            "texture": "mcr-avatar-3",
+            "frame": 8,
+            "sourceWidth": 320,
+            "sourceHeight": 256,
+            "visible": true,
+            "alpha": 1,
+            "onCamera": true,
+            "cell": {
+              "sha256": "7b271e163d0631645a80d63f4ca823a15ef37b0abe1278b5e2e41c081f9293d1",
+              "alpha": 1614,
+              "width": 64,
+              "height": 64
+            }
+          },
+          {
+            "userId": "00000000-0000-4000-8000-000000000901",
+            "self": false,
+            "authoritative": {
+              "position": {
+                "x": 228,
+                "y": 520
+              },
+              "facing": "left",
+              "moving": true,
+              "avatarRevision": 2
+            },
+            "x": 228,
+            "y": 520,
+            "texture": "mcr-avatar-3",
+            "frame": 8,
+            "sourceWidth": 320,
+            "sourceHeight": 256,
+            "visible": true,
+            "alpha": 1,
+            "onCamera": true,
+            "cell": {
+              "sha256": "7b271e163d0631645a80d63f4ca823a15ef37b0abe1278b5e2e41c081f9293d1",
+              "alpha": 1614,
+              "width": 64,
+              "height": 64
+            }
+          },
+          {
+            "userId": "00000000-0000-4000-8000-000000000901",
+            "self": false,
+            "authoritative": {
+              "position": {
+                "x": 228,
+                "y": 520
+              },
+              "facing": "left",
+              "moving": true,
+              "avatarRevision": 2
+            },
+            "x": 228,
+            "y": 520,
+            "texture": "mcr-avatar-3",
+            "frame": 8,
+            "sourceWidth": 320,
+            "sourceHeight": 256,
+            "visible": true,
+            "alpha": 1,
+            "onCamera": true,
+            "cell": {
+              "sha256": "7b271e163d0631645a80d63f4ca823a15ef37b0abe1278b5e2e41c081f9293d1",
+              "alpha": 1614,
+              "width": 64,
+              "height": 64
+            }
+          },
+          {
+            "userId": "00000000-0000-4000-8000-000000000901",
+            "self": false,
+            "authoritative": {
+              "position": {
+                "x": 228,
+                "y": 520
+              },
+              "facing": "left",
+              "moving": true,
+              "avatarRevision": 2
+            },
+            "x": 228,
+            "y": 520,
+            "texture": "mcr-avatar-3",
+            "frame": 9,
+            "sourceWidth": 320,
+            "sourceHeight": 256,
+            "visible": true,
+            "alpha": 1,
+            "onCamera": true,
+            "cell": {
+              "sha256": "87c32abc90b3a1635634dc3be5bdd5c51e2010e5c137452a47d3a82d6b6bf587",
+              "alpha": 1622,
+              "width": 64,
+              "height": 64
+            }
+          },
+          {
+            "userId": "00000000-0000-4000-8000-000000000901",
+            "self": false,
+            "authoritative": {
+              "position": {
+                "x": 228,
+                "y": 520
+              },
+              "facing": "left",
+              "moving": true,
+              "avatarRevision": 2
+            },
+            "x": 228,
+            "y": 520,
+            "texture": "mcr-avatar-3",
+            "frame": 9,
+            "sourceWidth": 320,
+            "sourceHeight": 256,
+            "visible": true,
+            "alpha": 1,
+            "onCamera": true,
+            "cell": {
+              "sha256": "87c32abc90b3a1635634dc3be5bdd5c51e2010e5c137452a47d3a82d6b6bf587",
+              "alpha": 1622,
+              "width": 64,
+              "height": 64
+            }
+          },
+          {
+            "userId": "00000000-0000-4000-8000-000000000901",
+            "self": false,
+            "authoritative": {
+              "position": {
+                "x": 228,
+                "y": 520
+              },
+              "facing": "left",
+              "moving": true,
+              "avatarRevision": 2
+            },
+            "x": 228,
+            "y": 520,
+            "texture": "mcr-avatar-3",
+            "frame": 6,
+            "sourceWidth": 320,
+            "sourceHeight": 256,
+            "visible": true,
+            "alpha": 1,
+            "onCamera": true,
+            "cell": {
+              "sha256": "b70c0822876cd2b4b4ec9754ff7944c49f95b331518740850d37af44a1ffb1e5",
+              "alpha": 1635,
+              "width": 64,
+              "height": 64
+            }
+          },
+          {
+            "userId": "00000000-0000-4000-8000-000000000901",
+            "self": false,
+            "authoritative": {
+              "position": {
+                "x": 228,
+                "y": 520
+              },
+              "facing": "left",
+              "moving": true,
+              "avatarRevision": 2
+            },
+            "x": 228,
+            "y": 520,
+            "texture": "mcr-avatar-3",
+            "frame": 6,
+            "sourceWidth": 320,
+            "sourceHeight": 256,
+            "visible": true,
+            "alpha": 1,
+            "onCamera": true,
+            "cell": {
+              "sha256": "b70c0822876cd2b4b4ec9754ff7944c49f95b331518740850d37af44a1ffb1e5",
+              "alpha": 1635,
+              "width": 64,
+              "height": 64
+            }
+          }
+        ],
+        "walkFrames": [
+          8,
+          9,
+          6,
+          7
+        ],
+        "after": {
+          "actors": [
+            {
+              "userId": "00000000-0000-4000-8000-000000000101",
+              "self": true,
+              "authoritative": {
+                "position": {
+                  "x": 172,
+                  "y": 520
+                },
+                "facing": "right",
+                "moving": false,
+                "avatarRevision": 8
+              },
+              "x": 172,
+              "y": 520,
+              "texture": "mcr-avatar-1",
+              "frame": 10,
+              "sourceWidth": 320,
+              "sourceHeight": 256,
+              "visible": true,
+              "alpha": 1,
+              "onCamera": true,
+              "cell": {
+                "sha256": "082cd8d684c490c6602c61e51a4e0cebee8fc5a28f36ea10561c71c36fc4b7f2",
+                "alpha": 1399,
+                "width": 64,
+                "height": 64
+              }
+            },
+            {
+              "userId": "00000000-0000-4000-8000-000000000901",
+              "self": false,
+              "authoritative": {
+                "position": {
+                  "x": 228,
+                  "y": 520
+                },
+                "facing": "left",
+                "moving": false,
+                "avatarRevision": 2
+              },
+              "x": 228,
+              "y": 520,
+              "texture": "mcr-avatar-3",
+              "frame": 5,
+              "sourceWidth": 320,
+              "sourceHeight": 256,
+              "visible": true,
+              "alpha": 1,
+              "onCamera": true,
+              "cell": {
+                "sha256": "83c335fd09dda73883306e8bb60b62756473456b9897036babf8cb3b20d212e3",
+                "alpha": 1635,
+                "width": 64,
+                "height": 64
+              }
+            },
+            {
+              "userId": "00000000-0000-4000-8000-000000000902",
+              "self": false,
+              "authoritative": {
+                "position": {
+                  "x": 284,
+                  "y": 520
+                },
+                "facing": "down",
+                "moving": false,
+                "avatarRevision": 1
+              },
+              "x": 284,
+              "y": 520,
+              "texture": "mcr-avatar-3",
+              "frame": 0,
+              "sourceWidth": 320,
+              "sourceHeight": 256,
+              "visible": true,
+              "alpha": 1,
+              "onCamera": true,
+              "cell": {
+                "sha256": "3192f3f4bc2f5fc8cd7a8075dc25857e0acd3cfc92978ac9417c76085f3aeb51",
+                "alpha": 2117,
+                "width": 64,
+                "height": 64
+              }
+            },
+            {
+              "userId": "00000000-0000-4000-8000-000000000903",
+              "self": false,
+              "authoritative": {
+                "position": {
+                  "x": 140,
+                  "y": 608
+                },
+                "facing": "down",
+                "moving": false,
+                "avatarRevision": 1
+              },
+              "x": 140,
+              "y": 608,
+              "texture": "mcr-avatar-4",
+              "frame": 0,
+              "sourceWidth": 320,
+              "sourceHeight": 256,
+              "visible": true,
+              "alpha": 1,
+              "onCamera": true,
+              "cell": {
+                "sha256": "7d9dd74b1d5e8612797ca8d0221bf370699f4deca7e3784056b1ed11d5944e70",
+                "alpha": 2373,
+                "width": 64,
+                "height": 64
+              }
+            },
+            {
+              "userId": "00000000-0000-4000-8000-000000000904",
+              "self": false,
+              "authoritative": {
+                "position": {
+                  "x": 212,
+                  "y": 608
+                },
+                "facing": "down",
+                "moving": false,
+                "avatarRevision": 1
+              },
+              "x": 212,
+              "y": 608,
+              "texture": "mcr-avatar-5",
+              "frame": 0,
+              "sourceWidth": 320,
+              "sourceHeight": 256,
+              "visible": true,
+              "alpha": 1,
+              "onCamera": true,
+              "cell": {
+                "sha256": "481cdff2faf27762bb9cd73012da28bbbb3785221c385d59981e4824469f9ab8",
+                "alpha": 2216,
+                "width": 64,
+                "height": 64
+              }
+            },
+            {
+              "userId": "00000000-0000-4000-8000-000000000905",
+              "self": false,
+              "authoritative": {
+                "position": {
+                  "x": 284,
+                  "y": 608
+                },
+                "facing": "down",
+                "moving": false,
+                "avatarRevision": 1
+              },
+              "x": 284,
+              "y": 608,
+              "texture": "mcr-avatar-6",
+              "frame": 0,
+              "sourceWidth": 320,
+              "sourceHeight": 256,
+              "visible": true,
+              "alpha": 1,
+              "onCamera": true,
+              "cell": {
+                "sha256": "63083758170593c022f2488a51e8afd7066e0439bb8754ee2f1aad3c2f3a2b86",
+                "alpha": 2239,
+                "width": 64,
+                "height": 64
+              }
+            }
+          ],
+          "profile": null,
+          "sceneKey": "mcr-map",
+          "canvasCount": 1
+        }
+      },
+      "actualAnimationClock": "Unmodified incumbent Phaser scene; no fake Date/performance/RAF or injected frame sampling",
+      "peakActiveSocketPerDocument": 1,
+      "finalOwnedResources": 0,
+      "reusedEvidence": "Published5da64426 reviewed-round01 all3width catalog/BODY/Map/FE41; not rerun or relabeled"
+    }
+  ],
+  "screenshots": [
+    "2026-11-04T16-46-52-781Z-reviewed-world-before-390.png",
+    "2026-11-04T16-46-52-781Z-persisted-profile-before-reload-390.png",
+    "2026-11-04T16-46-52-781Z-persisted-profile-after-hard-reload-390.png",
+    "2026-11-04T16-46-52-781Z-actual-world-peer-walk-after-reload-390.png"
+  ],
+  "errors": [],
+  "server": "http://127.0.0.1:5173",
+  "browser": "156.0.8078.80"
+}

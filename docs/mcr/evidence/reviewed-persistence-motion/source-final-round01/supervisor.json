@@ -1,0 +1,180 @@
+{
+  "slot": "AR03-FINAL-HARNESS-SOURCE-B-202611041656Z",
+  "pin": "785432b9381e189872366e5feeb311788ebf87ca",
+  "base": "7eac13ce30d6dd6be4df30727f75d5df90d3489d",
+  "mode": "source",
+  "startedUTC": "2026-11-04T16:59:19.102948+00:00",
+  "deadlineUTC": "2026-11-04T17:07:35.089962+00:00",
+  "caps": {
+    "whole": 134217728,
+    "temporary": 100663296,
+    "durable": 33554432,
+    "rss": 2684354560,
+    "processes": 8
+  },
+  "inventory": {
+    "frontend/src/app/character-entry/__tests__/reviewed-production/default-entry/": 34989,
+    "frontend/src/entities/avatar/runtime/motion-adoption/": 46135,
+    "frontend/src/entities/avatar/runtime/__tests__/reviewed-production/": 18836,
+    "frontend/src/features/avatar/motion-adoption/": 36274,
+    "frontend/src/features/avatar/part-controls/": 13346,
+    "frontend/src/features/avatar/wardrobe-options/": 5387,
+    "frontend/src/features/avatar/__tests__/reviewed-production/": 35955,
+    "frontend/src/world/avatar/motion-adoption/": 8976,
+    "frontend/src/world/avatar/__tests__/motion-adoption/": 58800,
+    "frontend/src/app/character-entry/__tests__/motion-adoption/": 51716,
+    "docs/mcr/art/evidence/motion-candidates-v1/": 9088225,
+    "docs/mcr/evidence/avatar-motion-adoption/": 1188133,
+    "docs/mcr/evidence/customize-reviewed-production/": 47159,
+    "docs/mcr/evidence/avatar-part-controls/": 31056,
+    "docs/mcr/evidence/reviewed-persistence-motion/": 1700332,
+    "docs/mcr/frontend/ar03-motion-adoption.md": 31560,
+    "docs/mcr/frontend/customize-reviewed-production.md": 14634,
+    "docs/mcr/frontend/avatar-part-controls.md": 8683,
+    "docs/mcr/frontend/reviewed-persistence-motion.md": 11128,
+    "sourceGit": 2926553
+  },
+  "carryBytes": 15357877,
+  "commands": [
+    {
+      "label": "runtime",
+      "argv": [
+        "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node",
+        "--version"
+      ],
+      "pid": 32432,
+      "startedEpoch": 1793811559.111972,
+      "exit": 0,
+      "endedEpoch": 1793811559.351787
+    },
+    {
+      "label": "syntax",
+      "argv": [
+        "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node",
+        "--check",
+        "/Users/lhs/Desktop/mcr-worktrees/fe-ref-map/frontend/src/app/character-entry/__tests__/reviewed-production/default-entry/native.mjs"
+      ],
+      "pid": 32587,
+      "startedEpoch": 1793811559.422635,
+      "exit": 0,
+      "endedEpoch": 1793811559.6577432
+    },
+    {
+      "label": "types",
+      "argv": [
+        "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node",
+        "--input-type=module",
+        "--eval",
+        "import assert from 'node:assert/strict';\nimport {readFileSync} from 'node:fs';\nimport {createHash} from 'node:crypto';\nimport {dirname} from 'node:path';\nconst helper=\"/Users/lhs/Desktop/mcr-worktrees/fe-ref-map/frontend/src/world/avatar/__tests__/motion-adoption/typecheck.mjs\";\nconst original=readFileSync(helper,'utf8');\nassert.equal(createHash('sha256').update(original).digest('hex'),'4cbcb57e175101a3fabbcbd67604c223d2604e24732f9d6e3331583a0d624aa1');\nassert(original.includes('...parsed.options, incremental:'));\nconst source=original.replace('...parsed.options, incremental:','...parsed.options, allowImportingTsExtensions: true, incremental:')\n  .replaceAll('import.meta.dirname',JSON.stringify(dirname(helper)));\nprocess.argv.push('--application');\nawait import('data:text/javascript;base64,'+Buffer.from(source).toString('base64'));\n"
+      ],
+      "pid": 32757,
+      "startedEpoch": 1793811559.7261188,
+      "exit": 0,
+      "endedEpoch": 1793811568.345197
+    },
+    {
+      "label": "lint",
+      "argv": [
+        "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node",
+        "/Users/lhs/Desktop/mcr/frontend/node_modules/oxlint/bin/oxlint",
+        "/Users/lhs/Desktop/mcr-worktrees/fe-ref-map/frontend/src/app/character-entry/__tests__/reviewed-production/default-entry/native.mjs",
+        "/Users/lhs/Desktop/mcr-worktrees/fe-ref-map/frontend/src/app/character-entry/__tests__/reviewed-production/default-entry/preview.ts"
+      ],
+      "pid": 36784,
+      "startedEpoch": 1793811568.414939,
+      "exit": 0,
+      "endedEpoch": 1793811568.64721
+    },
+    {
+      "label": "whitespace",
+      "argv": [
+        "git",
+        "diff",
+        "--check",
+        "7eac13ce30d6dd6be4df30727f75d5df90d3489d"
+      ],
+      "pid": 36971,
+      "startedEpoch": 1793811568.724342,
+      "exit": 0,
+      "endedEpoch": 1793811568.965874
+    },
+    {
+      "label": "plan",
+      "argv": [
+        "python3",
+        "/Users/lhs/Desktop/mcr-worktrees/fe-ref-map/scripts/mcr/check-plan.py"
+      ],
+      "pid": 37144,
+      "startedEpoch": 1793811569.03514,
+      "exit": 0,
+      "endedEpoch": 1793811569.498176
+    }
+  ],
+  "wholePeak": 15747212,
+  "temporaryPeak": 389296,
+  "durablePeak": 39,
+  "rssPeak": 1533329408,
+  "processPeak": 4,
+  "sourcePins": {
+    "docs/mcr/evidence/reviewed-persistence-motion/browser-acceptance.json": "98d762d0c2418e10a1d988736d6d3d0ab3d0a06c5bf8b6d242c1ef562c467692",
+    "docs/mcr/evidence/reviewed-persistence-motion/browser-full-release.json": "3cf53b250ca7e61c31a16c59ce84caee393764dd92cf6970cb4668de568280b3",
+    "docs/mcr/evidence/reviewed-persistence-motion/browser-retry01/native.log": "3468496118a4183866d6f76c91b489a4d061786e688c24a81b0fa499272ee87e",
+    "docs/mcr/evidence/reviewed-persistence-motion/browser-retry01/native/2026-11-04T16-44-16-599Z-failure.png": "7a0ba3bb7a0343695b8858716ba53cdc21cf0a54d6be3a4e5affa60186e9103a",
+    "docs/mcr/evidence/reviewed-persistence-motion/browser-retry01/native/2026-11-04T16-44-16-599Z-native.json": "8e7bdb3d724eab72c3f9f6a295edf371c4507734abed95cfcb9f9265ea1ee562",
+    "docs/mcr/evidence/reviewed-persistence-motion/browser-retry01/runtime.log": "6a0cec2e157365c1a8ac6d1715733b7c3321a7c5565862a701ca71ef00359d04",
+    "docs/mcr/evidence/reviewed-persistence-motion/browser-retry01/supervisor.json": "c58e30770fd0d7aa347b9a1f67d615183225ae7a1b26a36ee9a10207886acedd",
+    "docs/mcr/evidence/reviewed-persistence-motion/browser-retry02/native.log": "eaa66176ad48013c1b102247fa18a19e571e0fae04f8128827110c49ee7fb061",
+    "docs/mcr/evidence/reviewed-persistence-motion/browser-retry02/native/2026-11-04T16-45-13-861Z-failure.png": "e13dd7a2ec663fb27e48e163b189a2815818b27b0ca5839a44dd10e5f2508e0d",
+    "docs/mcr/evidence/reviewed-persistence-motion/browser-retry02/native/2026-11-04T16-45-13-861Z-native.json": "c7b6a5aabf4005988944303ceab43d14a8f01e4c728be6f1829b0b08946b43bb",
+    "docs/mcr/evidence/reviewed-persistence-motion/browser-retry02/native/2026-11-04T16-45-13-861Z-persisted-profile-before-reload-390.png": "40be82bece89ed672d529a2fd7d6cb090cb3e8bff5646ecd42c675a0bd456c8f",
+    "docs/mcr/evidence/reviewed-persistence-motion/browser-retry02/native/2026-11-04T16-45-13-861Z-reviewed-world-before-390.png": "64e8f8d82349c5eedb6b54489ef56619283e15744ac9f610750450ff9c7b0eec",
+    "docs/mcr/evidence/reviewed-persistence-motion/browser-retry02/runtime.log": "6a0cec2e157365c1a8ac6d1715733b7c3321a7c5565862a701ca71ef00359d04",
+    "docs/mcr/evidence/reviewed-persistence-motion/browser-retry02/supervisor.json": "5e607e9b8dc56d11d827d4226314a7e64a53a1d986599273a9bb24fecc07c0d1",
+    "docs/mcr/evidence/reviewed-persistence-motion/browser-retry03/native.log": "d3aa801fa5438f80ae2699b154c9812874bda18c5b24a8243bd2a6eb76e83eb4",
+    "docs/mcr/evidence/reviewed-persistence-motion/browser-retry03/native/2026-11-04T16-45-46-398Z-failure.png": "1f4284a2178b3afc3dfb9eb6a099f055f377d317fceb3c790939ed072e7f9462",
+    "docs/mcr/evidence/reviewed-persistence-motion/browser-retry03/native/2026-11-04T16-45-46-398Z-native.json": "953d598d3939a2c7eca3abeae12583e5c392ab82806a29d23d4942a0f0e4bbbe",
+    "docs/mcr/evidence/reviewed-persistence-motion/browser-retry03/native/2026-11-04T16-45-46-398Z-persisted-profile-before-reload-390.png": "40be82bece89ed672d529a2fd7d6cb090cb3e8bff5646ecd42c675a0bd456c8f",
+    "docs/mcr/evidence/reviewed-persistence-motion/browser-retry03/native/2026-11-04T16-45-46-398Z-reviewed-world-before-390.png": "64e8f8d82349c5eedb6b54489ef56619283e15744ac9f610750450ff9c7b0eec",
+    "docs/mcr/evidence/reviewed-persistence-motion/browser-retry03/runtime.log": "6a0cec2e157365c1a8ac6d1715733b7c3321a7c5565862a701ca71ef00359d04",
+    "docs/mcr/evidence/reviewed-persistence-motion/browser-retry03/supervisor.json": "5984b4b18a768f527ba389a3a28b6e7e6c6006df1c0d01a91ae9e0eb0e8a90a9",
+    "docs/mcr/evidence/reviewed-persistence-motion/browser-retry04/native.log": "88d015dc344d1f7275296575469d3dcc5cdfc93f3f869501ceacee32aae43349",
+    "docs/mcr/evidence/reviewed-persistence-motion/browser-retry04/native/2026-11-04T16-46-52-781Z-actual-world-peer-walk-after-reload-390.png": "10ecb9ae3f24ddc97872d9a5b2e72d253f93fc4527220d7bc229efacd83a227e",
+    "docs/mcr/evidence/reviewed-persistence-motion/browser-retry04/native/2026-11-04T16-46-52-781Z-native.json": "beb18dce1d58b376c64098726bb5adfc78f0e81e8f488a2642d4a4ea9952bf03",
+    "docs/mcr/evidence/reviewed-persistence-motion/browser-retry04/native/2026-11-04T16-46-52-781Z-persisted-profile-after-hard-reload-390.png": "1f4284a2178b3afc3dfb9eb6a099f055f377d317fceb3c790939ed072e7f9462",
+    "docs/mcr/evidence/reviewed-persistence-motion/browser-retry04/native/2026-11-04T16-46-52-781Z-persisted-profile-before-reload-390.png": "40be82bece89ed672d529a2fd7d6cb090cb3e8bff5646ecd42c675a0bd456c8f",
+    "docs/mcr/evidence/reviewed-persistence-motion/browser-retry04/native/2026-11-04T16-46-52-781Z-reviewed-world-before-390.png": "64e8f8d82349c5eedb6b54489ef56619283e15744ac9f610750450ff9c7b0eec",
+    "docs/mcr/evidence/reviewed-persistence-motion/browser-retry04/runtime.log": "6a0cec2e157365c1a8ac6d1715733b7c3321a7c5565862a701ca71ef00359d04",
+    "docs/mcr/evidence/reviewed-persistence-motion/browser-retry04/supervisor.json": "94d1cd8d7d5ee5a9e5dff4b6244db083c333474ca2569bd34c78b9a899386763",
+    "docs/mcr/evidence/reviewed-persistence-motion/browser-round01/native.log": "0ef8328a112457e60fd10e970b53e9999a3a0103dc12a0ee72d9bf1ba7dcb05e",
+    "docs/mcr/evidence/reviewed-persistence-motion/browser-round01/native/2026-11-04T16-43-11-901Z-native.json": "a34c393c06ad88edcc0514f836ed89c00d2dfca3050403e1115e641655188cd6",
+    "docs/mcr/evidence/reviewed-persistence-motion/browser-round01/runtime.log": "6a0cec2e157365c1a8ac6d1715733b7c3321a7c5565862a701ca71ef00359d04",
+    "docs/mcr/evidence/reviewed-persistence-motion/browser-round01/supervisor.json": "3b18618ae560a362fbad5ce2b3ffa2e8b11a17a236268ea2e90404f742620767",
+    "docs/mcr/evidence/reviewed-persistence-motion/native-image-assessment.json": "656c82c2958b1282ec11c6c8ab9d109c1c7c4c429268e8595e9b59baf48154a1",
+    "docs/mcr/evidence/reviewed-persistence-motion/qualify.py": "0fa902b7712adc0328deb65ecf1183b39bb5d56e925c2b082850c92e97887758",
+    "docs/mcr/evidence/reviewed-persistence-motion/retry-preflight-rejection.json": "8511305849416694535deb2da8bfcd1317809d7b986393b098602a8955a5bde2",
+    "docs/mcr/evidence/reviewed-persistence-motion/source-acceptance.json": "855725e21e6f2d70cfd029b73cc28f5ff05caec780c47717a6347c682d2925fc",
+    "docs/mcr/evidence/reviewed-persistence-motion/source-full-release.json": "18a6cc04b6b2c13a55e7501e93c93c8ad5dbc6c7a3f37d4e0e055118a657e583",
+    "docs/mcr/evidence/reviewed-persistence-motion/source-retry01/lint.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "docs/mcr/evidence/reviewed-persistence-motion/source-retry01/plan.log": "88606f33d640a29811a4cbdc9748fc0f1e16225b81ad7e697deaf3b20c9b86e1",
+    "docs/mcr/evidence/reviewed-persistence-motion/source-retry01/runtime.log": "6a0cec2e157365c1a8ac6d1715733b7c3321a7c5565862a701ca71ef00359d04",
+    "docs/mcr/evidence/reviewed-persistence-motion/source-retry01/supervisor.json": "6c55dc5efd4072b3d0a60a572a38f10711ac2ee72c6100f5c22a59d90d7dbbf4",
+    "docs/mcr/evidence/reviewed-persistence-motion/source-retry01/syntax.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "docs/mcr/evidence/reviewed-persistence-motion/source-retry01/types.log": "de10e0b44ec02eafdc04f6491e4fee5eb80e3aacfa13db60363d294b3688cc90",
+    "docs/mcr/evidence/reviewed-persistence-motion/source-retry01/whitespace.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "docs/mcr/evidence/reviewed-persistence-motion/source-round01/runtime.log": "6a0cec2e157365c1a8ac6d1715733b7c3321a7c5565862a701ca71ef00359d04",
+    "docs/mcr/evidence/reviewed-persistence-motion/source-round01/supervisor.json": "e2863439f136458388863fb57b5ccc34ca72e1f22fa921d9d68d6217b6a589b0",
+    "docs/mcr/evidence/reviewed-persistence-motion/source-round01/syntax.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "docs/mcr/evidence/reviewed-persistence-motion/source-round01/types.log": "c2bd62879a3112907c19d4a348fc25fd6ebd2494ff7d6abf8ab92b0e129d4418",
+    "docs/mcr/frontend/reviewed-persistence-motion.md": "ea68366b9112142428567b6b6aba0b4c7e041e92429c528305293b818146b5c2",
+    "frontend/src/app/character-entry/__tests__/reviewed-production/default-entry/native.mjs": "8a939606797f49bf757ae8bd1d7ab20b22dc9a1c1a8c0625bbb55ab772f72b27",
+    "frontend/src/app/character-entry/__tests__/reviewed-production/default-entry/preview.ts": "e1a6a4f23d14b9ed8a96fd7210f6f936c390d8665b998e113698d8469f9e5d0a"
+  },
+  "minimumFree": 26648391680,
+  "aliveOwnedPids": [],
+  "status": "PASS",
+  "finishedUTC": "2026-11-04T16:59:29.661075+00:00",
+  "linkAbsent": true,
+  "temporaryAbsent": true,
+  "borrowedViteTempEmpty": true,
+  "finalFree": 26657284096
+}

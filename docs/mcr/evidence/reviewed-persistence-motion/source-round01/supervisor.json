@@ -1,0 +1,90 @@
+{
+  "slot": "AR03-PERSISTENCE-MOTION-SOURCE-B-202611041623Z",
+  "pin": "082c87333679caf285d27dc95a17aed0d2f07aa4",
+  "base": "7eac13ce30d6dd6be4df30727f75d5df90d3489d",
+  "mode": "source",
+  "startedUTC": "2026-11-04T16:23:14.857290+00:00",
+  "deadlineUTC": "2026-11-04T16:33:01.302647+00:00",
+  "caps": {
+    "whole": 134217728,
+    "temporary": 100663296,
+    "durable": 33554432,
+    "rss": 2684354560,
+    "processes": 8
+  },
+  "inventory": {
+    "frontend/src/app/character-entry/__tests__/reviewed-production/default-entry/": 33695,
+    "frontend/src/entities/avatar/runtime/motion-adoption/": 46135,
+    "frontend/src/entities/avatar/runtime/__tests__/reviewed-production/": 18836,
+    "frontend/src/features/avatar/motion-adoption/": 36274,
+    "frontend/src/features/avatar/part-controls/": 13346,
+    "frontend/src/features/avatar/wardrobe-options/": 5387,
+    "frontend/src/features/avatar/__tests__/reviewed-production/": 35955,
+    "frontend/src/world/avatar/motion-adoption/": 8976,
+    "frontend/src/world/avatar/__tests__/motion-adoption/": 58800,
+    "frontend/src/app/character-entry/__tests__/motion-adoption/": 51716,
+    "docs/mcr/art/evidence/motion-candidates-v1/": 9088225,
+    "docs/mcr/evidence/avatar-motion-adoption/": 1188133,
+    "docs/mcr/evidence/customize-reviewed-production/": 47159,
+    "docs/mcr/evidence/avatar-part-controls/": 31056,
+    "docs/mcr/evidence/reviewed-persistence-motion/": 13808,
+    "docs/mcr/frontend/ar03-motion-adoption.md": 31560,
+    "docs/mcr/frontend/customize-reviewed-production.md": 14634,
+    "docs/mcr/frontend/avatar-part-controls.md": 8683,
+    "docs/mcr/frontend/reviewed-persistence-motion.md": 4749,
+    "sourceGit": 1916714
+  },
+  "carryBytes": 12653841,
+  "commands": [
+    {
+      "label": "runtime",
+      "argv": [
+        "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node",
+        "--version"
+      ],
+      "pid": 69666,
+      "startedEpoch": 1793809394.866366,
+      "exit": 0,
+      "endedEpoch": 1793809395.106993
+    },
+    {
+      "label": "syntax",
+      "argv": [
+        "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node",
+        "--check",
+        "/Users/lhs/Desktop/mcr-worktrees/fe-ref-map/frontend/src/app/character-entry/__tests__/reviewed-production/default-entry/native.mjs"
+      ],
+      "pid": 69680,
+      "startedEpoch": 1793809395.1693408,
+      "exit": 0,
+      "endedEpoch": 1793809395.407138
+    },
+    {
+      "label": "types",
+      "argv": [
+        "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node",
+        "/Users/lhs/Desktop/mcr-worktrees/fe-ref-map/frontend/src/world/avatar/__tests__/motion-adoption/typecheck.mjs",
+        "--application"
+      ],
+      "pid": 69686,
+      "startedEpoch": 1793809395.478858,
+      "exit": 1,
+      "endedEpoch": 1793809404.0685718
+    }
+  ],
+  "wholePeak": 12654209,
+  "temporaryPeak": 0,
+  "durablePeak": 368,
+  "rssPeak": 1486798848,
+  "processPeak": 3,
+  "sourcePins": {},
+  "minimumFree": 17232662528,
+  "failure": "RuntimeError: types failed; original raw evidence retained",
+  "aliveOwnedPids": [],
+  "status": "FAIL",
+  "finishedUTC": "2026-11-04T16:23:24.160698+00:00",
+  "linkAbsent": true,
+  "temporaryAbsent": true,
+  "borrowedViteTempEmpty": true,
+  "finalFree": 17232596992
+}

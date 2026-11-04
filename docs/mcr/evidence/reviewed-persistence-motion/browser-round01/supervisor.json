@@ -1,0 +1,77 @@
+{
+  "slot": "AR03-PERSISTENCE-NATIVE-BROWSER1-202611041642Z",
+  "pin": "aea846282d38fd2ffb86dbdb679d28c9de34195d",
+  "base": "7eac13ce30d6dd6be4df30727f75d5df90d3489d",
+  "mode": "browser",
+  "startedUTC": "2026-11-04T16:43:11.206035+00:00",
+  "deadlineUTC": "2026-11-04T16:52:54.217047+00:00",
+  "caps": {
+    "whole": 301989888,
+    "temporary": 100663296,
+    "durable": 33554432,
+    "rss": 4294967296,
+    "processes": 48
+  },
+  "inventory": {
+    "frontend/src/app/character-entry/__tests__/reviewed-production/default-entry/": 33695,
+    "frontend/src/entities/avatar/runtime/motion-adoption/": 46135,
+    "frontend/src/entities/avatar/runtime/__tests__/reviewed-production/": 18836,
+    "frontend/src/features/avatar/motion-adoption/": 36274,
+    "frontend/src/features/avatar/part-controls/": 13346,
+    "frontend/src/features/avatar/wardrobe-options/": 5387,
+    "frontend/src/features/avatar/__tests__/reviewed-production/": 35955,
+    "frontend/src/world/avatar/motion-adoption/": 8976,
+    "frontend/src/world/avatar/__tests__/motion-adoption/": 58800,
+    "frontend/src/app/character-entry/__tests__/motion-adoption/": 51716,
+    "docs/mcr/art/evidence/motion-candidates-v1/": 9088225,
+    "docs/mcr/evidence/avatar-motion-adoption/": 1188133,
+    "docs/mcr/evidence/customize-reviewed-production/": 47159,
+    "docs/mcr/evidence/avatar-part-controls/": 31056,
+    "docs/mcr/evidence/reviewed-persistence-motion/": 32082,
+    "docs/mcr/frontend/ar03-motion-adoption.md": 31560,
+    "docs/mcr/frontend/customize-reviewed-production.md": 14634,
+    "docs/mcr/frontend/avatar-part-controls.md": 8683,
+    "docs/mcr/frontend/reviewed-persistence-motion.md": 6583,
+    "sourceGit": 2032607
+  },
+  "carryBytes": 12789842,
+  "commands": [
+    {
+      "label": "runtime",
+      "argv": [
+        "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node",
+        "--version"
+      ],
+      "pid": 35901,
+      "startedEpoch": 1793810591.2254431,
+      "exit": 0,
+      "endedEpoch": 1793810591.458994
+    },
+    {
+      "label": "native",
+      "argv": [
+        "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node",
+        "/Users/lhs/Desktop/mcr-worktrees/fe-ref-map/frontend/src/app/character-entry/__tests__/reviewed-production/default-entry/native.mjs"
+      ],
+      "pid": 35908,
+      "startedEpoch": 1793810591.526209,
+      "exit": 1,
+      "endedEpoch": 1793810601.278205
+    }
+  ],
+  "wholePeak": 42737458,
+  "temporaryPeak": 29947607,
+  "durablePeak": 9,
+  "rssPeak": 2546597888,
+  "processPeak": 10,
+  "sourcePins": {},
+  "minimumFree": 14534524928,
+  "failure": "RuntimeError: native failed; original raw evidence retained",
+  "aliveOwnedPids": [],
+  "status": "FAIL",
+  "finishedUTC": "2026-11-04T16:43:21.359525+00:00",
+  "linkAbsent": true,
+  "temporaryAbsent": true,
+  "borrowedViteTempEmpty": true,
+  "finalFree": 14564753408
+}

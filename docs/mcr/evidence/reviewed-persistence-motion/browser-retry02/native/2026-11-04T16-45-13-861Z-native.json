@@ -1,0 +1,61 @@
+{
+  "run": "2026-11-04T16-45-13-861Z",
+  "result": "FAIL",
+  "qualification": "ACTUAL_MAIN_SYNTHETIC_HTTP_C05_REVIEWED_C06_NOT_LIVE",
+  "widths": [],
+  "screenshots": [
+    "2026-11-04T16-45-13-861Z-reviewed-world-before-390.png",
+    "2026-11-04T16-45-13-861Z-persisted-profile-before-reload-390.png",
+    "2026-11-04T16-45-13-861Z-failure.png"
+  ],
+  "errors": [
+    "390/explicit-hard-reload-and-real-ui-login: Error: expect(locator).toBeVisible() failed\n\nLocator: getByLabel('Email', { exact: true })\nExpected: visible\nTimeout: 5000ms\nError: element(s) not found\n\nCall log:\n  - Expect \"to.be.visible\" with timeout 5000ms\n  - waiting for getByLabel('Email', { exact: true })\n\n    at captureRawStack (/Users/lhs/Desktop/mcr/frontend/node_modules/.pnpm/playwright-core@1.61.1/node_modules/playwright-core/lib/coreBundle.js:3172:17)\n    at callMatcherAsStep (/Users/lhs/Desktop/mcr/frontend/node_modules/.pnpm/playwright@1.61.1/node_modules/playwright/lib/matchers/expect.js:12877:57)\n    at Object.toBeVisible (/Users/lhs/Desktop/mcr/frontend/node_modules/.pnpm/playwright@1.61.1/node_modules/playwright/lib/matchers/expect.js:12867:23)\n    at /Users/lhs/Desktop/mcr-worktrees/fe-ref-map/frontend/src/app/character-entry/__tests__/reviewed-production/default-entry/native.mjs:100:59"
+  ],
+  "server": "http://127.0.0.1:5173",
+  "browser": "156.0.8078.80",
+  "networkFailures": [],
+  "failureState": {
+    "url": "http://127.0.0.1:5173/me",
+    "text": "MCR Concert World\nSign in to continue\nYour link is still here\n\nEntry requires a current account and event. This page does not grant access.\n\nSign in\nBack to home",
+    "state": {
+      "sockets": 0,
+      "active": 0,
+      "peak": 0,
+      "canvases": 0,
+      "requests": [
+        {
+          "path": "/api/auth/capabilities",
+          "method": "GET"
+        }
+      ],
+      "snapshots": 0,
+      "documentId": "323a09d3-314e-4cc0-8152-5233133bd661",
+      "inputs": [],
+      "serverUpdates": [],
+      "avatar": {
+        "revision": 8,
+        "config": {
+          "contract_version": "2.0.0",
+          "kind": "avatar_config",
+          "manifest_id": "mcr_selected_motion_reviewed_20261104",
+          "manifest_version": 2,
+          "representation": "motion_layered",
+          "item_ids": {
+            "body": "motion_v2_body_7",
+            "eyes": "motion_v2_eyes_0",
+            "hair": "motion_v2_hair_0",
+            "outfit": "motion_v2_outfit_0",
+            "accessory": null
+          }
+        }
+      },
+      "blobURLs": 0,
+      "manifestPin": {
+        "manifest_id": "mcr_selected_motion_reviewed_20261104",
+        "manifest_version": 2,
+        "content_hash": "sha256:7f2891c81ffa1d5850107118898a7ef9377b222ab8639b3f2c9daf7908cf9018"
+      },
+      "qualification": "SYNTHETIC_REVIEWED_DEFAULT_APP_NOT_LIVE"
+    }
+  }
+}

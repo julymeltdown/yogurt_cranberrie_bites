@@ -1,0 +1,54 @@
+{
+  "slot": "AR03-PERSISTENCE-MOTION-SOURCE-B-202611041623Z",
+  "source": "082c87333679caf285d27dc95a17aed0d2f07aa4",
+  "acceptedUTC": "2026-11-04T16:23:01.302647+00:00",
+  "workStopUTC": "2026-11-04T16:32:01.302647+00:00",
+  "deadlineUTC": "2026-11-04T16:33:01.302647+00:00",
+  "freeBytes": 17257775104,
+  "lock": "47ca44459819ad0e887d2f4f93394fdf3b1053b8f45edc9ceb0236981feee1f6",
+  "sourcePins": {
+    "docs/mcr/evidence/reviewed-persistence-motion/qualify.py": "33fc28de7cdfabd94c4f08e362f37e2515ad63df2f022b4167d8e7f88a4a9d10",
+    "docs/mcr/frontend/reviewed-persistence-motion.md": "784d1488d956c9e429c09c84ddc0087a81839c7ecdcdb27f0970fdb70d28fe79",
+    "frontend/src/app/character-entry/__tests__/reviewed-production/default-entry/native.mjs": "5997703e55b84b7b1d10757170e2f5f92c9dd5689e128c92634a49388ed3c44b",
+    "frontend/src/app/character-entry/__tests__/reviewed-production/default-entry/preview.ts": "5728effd5a722a6d55a97e23a28d9d681654d522a970444724f74a0426620cdb"
+  },
+  "supervisorSHA256": "33fc28de7cdfabd94c4f08e362f37e2515ad63df2f022b4167d8e7f88a4a9d10",
+  "runnerSHA256": "4cbcb57e175101a3fabbcbd67604c223d2604e24732f9d6e3331583a0d624aa1",
+  "carryInventory": {
+    "frontend/src/app/character-entry/__tests__/reviewed-production/default-entry/": 33695,
+    "frontend/src/entities/avatar/runtime/motion-adoption/": 46135,
+    "frontend/src/entities/avatar/runtime/__tests__/reviewed-production/": 18836,
+    "frontend/src/features/avatar/motion-adoption/": 36274,
+    "frontend/src/features/avatar/part-controls/": 13346,
+    "frontend/src/features/avatar/wardrobe-options/": 5387,
+    "frontend/src/features/avatar/__tests__/reviewed-production/": 35955,
+    "frontend/src/world/avatar/motion-adoption/": 8976,
+    "frontend/src/world/avatar/__tests__/motion-adoption/": 58800,
+    "frontend/src/app/character-entry/__tests__/motion-adoption/": 51716,
+    "docs/mcr/art/evidence/motion-candidates-v1/": 9088225,
+    "docs/mcr/evidence/avatar-motion-adoption/": 1188133,
+    "docs/mcr/evidence/customize-reviewed-production/": 47159,
+    "docs/mcr/evidence/avatar-part-controls/": 31056,
+    "docs/mcr/evidence/reviewed-persistence-motion/": 10968,
+    "docs/mcr/frontend/ar03-motion-adoption.md": 31560,
+    "docs/mcr/frontend/customize-reviewed-production.md": 14634,
+    "docs/mcr/frontend/avatar-part-controls.md": 8683,
+    "docs/mcr/frontend/reviewed-persistence-motion.md": 4749,
+    "sourceGit": 1916714
+  },
+  "wholeCarryBeforeReceipt": 12651001,
+  "mode": "source",
+  "outerArgv": [
+    "python3",
+    "/Users/lhs/Desktop/mcr-worktrees/fe-ref-map/docs/mcr/evidence/reviewed-persistence-motion/qualify.py"
+  ],
+  "caps": {
+    "totalSeconds": 600,
+    "workSeconds": 540,
+    "cleanupSeconds": 60,
+    "maxChildSeconds": 300,
+    "rssBytes": 2684354560,
+    "processes": 8,
+    "wholeBytes": 134217728
+  }
+}

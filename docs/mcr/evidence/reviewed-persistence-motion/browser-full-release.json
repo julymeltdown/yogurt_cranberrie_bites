@@ -1,0 +1,80 @@
+{
+  "status": "FULL_RELEASE",
+  "slot": "AR03-PERSISTENCE-NATIVE-BROWSER1-202611041642Z",
+  "source": "3bfc217041b832de955265cd704adabd875b8e9c",
+  "releasedUTC": "2026-11-04T16:48:14.791871+00:00",
+  "originalDeadlineUTC": "2026-11-04T16:52:54.217047+00:00",
+  "nativeResult": "PASS",
+  "nativeReport": "docs/mcr/evidence/reviewed-persistence-motion/browser-retry04/native/2026-11-04T16-46-52-781Z-native.json",
+  "browserVersion": "156.0.8078.80",
+  "viewport": [
+    390,
+    844
+  ],
+  "attempts": 5,
+  "passedAttempts": 1,
+  "peakAllProcesses": 11,
+  "peakRssBytes": 2774581248,
+  "peakWholeBytes": 44423231,
+  "peakTmpBytes": 29964610,
+  "maximumTotalPositiveGrowthEstimate": 31636332,
+  "reservedNewTotalBytes": 167772160,
+  "cumulativeNewDurableBytes": 1659417,
+  "otherPositiveGrowthBytes": 95100,
+  "wholeRetainedBytes": 14541416,
+  "carryInventory": {
+    "frontend/src/app/character-entry/__tests__/reviewed-production/default-entry/": 34644,
+    "frontend/src/entities/avatar/runtime/motion-adoption/": 46135,
+    "frontend/src/entities/avatar/runtime/__tests__/reviewed-production/": 18836,
+    "frontend/src/features/avatar/motion-adoption/": 36274,
+    "frontend/src/features/avatar/part-controls/": 13346,
+    "frontend/src/features/avatar/wardrobe-options/": 5387,
+    "frontend/src/features/avatar/__tests__/reviewed-production/": 35955,
+    "frontend/src/world/avatar/motion-adoption/": 8976,
+    "frontend/src/world/avatar/__tests__/motion-adoption/": 58800,
+    "frontend/src/app/character-entry/__tests__/motion-adoption/": 51716,
+    "docs/mcr/art/evidence/motion-candidates-v1/": 9088225,
+    "docs/mcr/evidence/avatar-motion-adoption/": 1188133,
+    "docs/mcr/evidence/customize-reviewed-production/": 47159,
+    "docs/mcr/evidence/avatar-part-controls/": 31056,
+    "docs/mcr/evidence/reviewed-persistence-motion/": 1691499,
+    "docs/mcr/frontend/ar03-motion-adoption.md": 31560,
+    "docs/mcr/frontend/customize-reviewed-production.md": 14634,
+    "docs/mcr/frontend/avatar-part-controls.md": 8683,
+    "docs/mcr/frontend/reviewed-persistence-motion.md": 6583,
+    "sourceGit": 2123815
+  },
+  "freeBytes": 30018617344,
+  "ownedWorkflowProcesses": [],
+  "ownedTempCacheProfilePaths": [],
+  "ownedDependencyLinks": [],
+  "borrowedViteTemp": [],
+  "ownedEvidenceHandles": [],
+  "lsofEvidenceExit": 1,
+  "ownedPort": 5173,
+  "portListeners": [],
+  "lsofPortExit": 1,
+  "frameProof": {
+    "selfWalkFrames": [
+      13,
+      14,
+      11,
+      12
+    ],
+    "peerWalkFrames": [
+      8,
+      9,
+      6,
+      7
+    ],
+    "selfIdleFrame": 10,
+    "selfInputCount": 25,
+    "controlledUpdates": 27
+  },
+  "privacyCleanup": {
+    "canvases": 0,
+    "activeSockets": 0,
+    "blobURLs": 0
+  },
+  "scope": "One390actualmain/clientcontrolledHTTP-C05; not liveproduction, devices, fullreference or replayedcatalog/Map/FE41."
+}

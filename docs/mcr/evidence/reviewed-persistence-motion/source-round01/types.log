@@ -1,0 +1,5 @@
+[96msrc/app/feed-entry/__tests__/vite.config.ts[0m:[93m4[0m:[93m18[0m - [91merror[0m[90m TS5097: [0mAn import path can only end with a '.ts' extension when 'allowImportingTsExtensions' is enabled.
+
+[7m4[0m import base from '../../../../vite.config.ts'
+[7m [0m [91m                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+{"files":938,"diagnostics":1}

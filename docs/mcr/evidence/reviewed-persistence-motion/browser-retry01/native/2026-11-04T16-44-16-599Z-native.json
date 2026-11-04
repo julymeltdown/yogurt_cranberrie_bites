@@ -1,0 +1,91 @@
+{
+  "run": "2026-11-04T16-44-16-599Z",
+  "result": "FAIL",
+  "qualification": "ACTUAL_MAIN_SYNTHETIC_HTTP_C05_REVIEWED_C06_NOT_LIVE",
+  "widths": [],
+  "screenshots": [
+    "2026-11-04T16-44-16-599Z-failure.png"
+  ],
+  "errors": [
+    "390/login: Error: expect(received).toBe(expected) // Object.is equality\n\nExpected: 1\nReceived: 0\n\nCall Log:\n- Timeout 5000ms exceeded while waiting on the predicate\n    at captureRawStack (/Users/lhs/Desktop/mcr/frontend/node_modules/.pnpm/playwright-core@1.61.1/node_modules/playwright-core/lib/coreBundle.js:3172:17)\n    at callMatcherAsStep (/Users/lhs/Desktop/mcr/frontend/node_modules/.pnpm/playwright@1.61.1/node_modules/playwright/lib/matchers/expect.js:12877:57)\n    at Object.toBe (/Users/lhs/Desktop/mcr/frontend/node_modules/.pnpm/playwright@1.61.1/node_modules/playwright/lib/matchers/expect.js:12867:23)\n    at /Users/lhs/Desktop/mcr-worktrees/fe-ref-map/frontend/src/app/character-entry/__tests__/reviewed-production/default-entry/native.mjs:70:59"
+  ],
+  "server": "http://127.0.0.1:5173",
+  "browser": "156.0.8078.80",
+  "networkFailures": [],
+  "failureState": {
+    "url": "http://127.0.0.1:5173/world",
+    "text": "WORLD CONNECTION UNAVAILABLE\n\nA fresh world view could not be confirmed. You can keep browsing or reload.\n\nPreviously shown world information may be out of date.\n\nRECONNECT\nRELOAD PAGE\nBack to world\nBack to home\nSkip to content\nSelected fixture fan\nSynthetic contract fixture\nREVENGE\nPARADE\nDANGER\n\nRevenge selected.\n\nInteract\n⌖\nRecenter\nControls & help\n\nMovement paused.\n\nWorld disconnected. Select Reconnect world to continue.\n\nReconnect world\n\nVirtual position is not physical arrival.\n\nWorld\nTools\nWORLD\nFEED\nMEET\nGIFTS\nWALL\nME",
+    "state": {
+      "sockets": 1,
+      "active": 0,
+      "peak": 1,
+      "canvases": 1,
+      "requests": [
+        {
+          "path": "/api/auth/capabilities",
+          "method": "GET"
+        },
+        {
+          "path": "/api/auth/login",
+          "method": "POST"
+        },
+        {
+          "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/bootstrap",
+          "method": "GET"
+        },
+        {
+          "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/bootstrap",
+          "method": "GET"
+        },
+        {
+          "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/rooms",
+          "method": "GET"
+        },
+        {
+          "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/world-tickets",
+          "method": "POST"
+        },
+        {
+          "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/places",
+          "method": "GET"
+        }
+      ],
+      "snapshots": 1,
+      "documentId": "c456fbd7-bb65-46d3-a4b4-ab8fbd614759",
+      "inputs": [
+        {
+          "seq": 1,
+          "axisX": 0,
+          "axisY": 0
+        }
+      ],
+      "serverUpdates": [
+        {
+          "sequence": 1,
+          "ackInputSeq": 1,
+          "userIds": [
+            "00000000-0000-4000-8000-000000000101"
+          ]
+        }
+      ],
+      "avatar": {
+        "revision": 7,
+        "config": {
+          "contract_version": "2.0.0",
+          "kind": "avatar_config",
+          "manifest_id": "mcr_selected_motion_reviewed_20261104",
+          "manifest_version": 2,
+          "representation": "motion_preset",
+          "preset_id": "motion_v2_photo01_front_01"
+        }
+      },
+      "blobURLs": 6,
+      "manifestPin": {
+        "manifest_id": "mcr_selected_motion_reviewed_20261104",
+        "manifest_version": 2,
+        "content_hash": "sha256:7f2891c81ffa1d5850107118898a7ef9377b222ab8639b3f2c9daf7908cf9018"
+      },
+      "qualification": "SYNTHETIC_REVIEWED_DEFAULT_APP_NOT_LIVE"
+    }
+  }
+}

@@ -1,0 +1,7 @@
+{
+  "status": "REJECTED_BEFORE_CHILD",
+  "reason": "Fresh-start16GiB assertion reused for an in-lease retry; no child/TMP/link allocated. Retrying within original accepted clock uses continuous8GiB after checking prior slot/deadline/mode.",
+  "UTC": "2026-11-04T16:24:57.150402+00:00",
+  "freeBytes": 15904071680,
+  "originalDeadlineUTC": "2026-11-04T16:33:01.302647+00:00"
+}

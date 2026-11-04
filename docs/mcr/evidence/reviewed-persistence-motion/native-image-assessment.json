@@ -1,0 +1,51 @@
+{
+  "status": "ASSESSED_BY_IMPLEMENTATION_OWNER",
+  "source": "3bfc217041b832de955265cd704adabd875b8e9c",
+  "nativeReportSHA256": "beb18dce1d58b376c64098726bb5adfc78f0e81e8f488a2642d4a4ea9952bf03",
+  "nativeReport": "docs/mcr/evidence/reviewed-persistence-motion/browser-retry04/native/2026-11-04T16-46-52-781Z-native.json",
+  "images": [
+    {
+      "path": "docs/mcr/evidence/reviewed-persistence-motion/browser-retry04/native/2026-11-04T16-46-52-781Z-reviewed-world-before-390.png",
+      "sha256": "64e8f8d82349c5eedb6b54489ef56619283e15744ac9f610750450ff9c7b0eec",
+      "bytes": 230307,
+      "width": 390,
+      "height": 844
+    },
+    {
+      "path": "docs/mcr/evidence/reviewed-persistence-motion/browser-retry04/native/2026-11-04T16-46-52-781Z-persisted-profile-before-reload-390.png",
+      "sha256": "40be82bece89ed672d529a2fd7d6cb090cb3e8bff5646ecd42c675a0bd456c8f",
+      "bytes": 65623,
+      "width": 390,
+      "height": 844
+    },
+    {
+      "path": "docs/mcr/evidence/reviewed-persistence-motion/browser-retry04/native/2026-11-04T16-46-52-781Z-persisted-profile-after-hard-reload-390.png",
+      "sha256": "1f4284a2178b3afc3dfb9eb6a099f055f377d317fceb3c790939ed072e7f9462",
+      "bytes": 84851,
+      "width": 390,
+      "height": 986
+    },
+    {
+      "path": "docs/mcr/evidence/reviewed-persistence-motion/browser-retry04/native/2026-11-04T16-46-52-781Z-actual-world-peer-walk-after-reload-390.png",
+      "sha256": "10ecb9ae3f24ddc97872d9a5b2e72d253f93fc4527220d7bc229efacd83a227e",
+      "bytes": 229856,
+      "width": 390,
+      "height": 844
+    }
+  ],
+  "viewedNativeImages": [
+    "docs/mcr/evidence/reviewed-persistence-motion/browser-retry04/native/2026-11-04T16-46-52-781Z-persisted-profile-before-reload-390.png",
+    "docs/mcr/evidence/reviewed-persistence-motion/browser-retry04/native/2026-11-04T16-46-52-781Z-persisted-profile-after-hard-reload-390.png",
+    "docs/mcr/evidence/reviewed-persistence-motion/browser-retry04/native/2026-11-04T16-46-52-781Z-actual-world-peer-walk-after-reload-390.png"
+  ],
+  "observations": [
+    "Before and after hard reload show the same selected character, dark body tone, hair and outfit; the observed64x64 Profile pixel digest is identical.",
+    "The after-reload capture includes the actual World is paused status above the full Profile, increasing full-page height. This is retained as observed App status/layout; no equal screenshot geometry or full reference parity claim.",
+    "The World capture shows all six source-derived characters, the changed peer and saved self against the actual map; no missing actor or obvious avatar clipping in the inspected narrow capture.",
+    "No screenshots were altered, cropped, recolored or replaced. Natural frame-index assertions, not a static screenshot, establish motion."
+  ],
+  "limits": [
+    "One390 Chromium controlledHTTP/C05 client journey; not physical device, live multiuser/backend persistence or full ten-screen visual acceptance.",
+    "Original allthree catalog/Map/FE41 evidence is reused under its original source/qualification; not repeated."
+  ]
+}

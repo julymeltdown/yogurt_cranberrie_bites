@@ -1,0 +1,132 @@
+{
+  "slot": "AR03-PERSISTENCE-MOTION-SOURCE-B-202611041623Z",
+  "pin": "a227ba34a83f68516b47b289847d895c9009748b",
+  "base": "7eac13ce30d6dd6be4df30727f75d5df90d3489d",
+  "mode": "source",
+  "startedUTC": "2026-11-04T16:25:11.648288+00:00",
+  "deadlineUTC": "2026-11-04T16:33:01.302647+00:00",
+  "caps": {
+    "whole": 134217728,
+    "temporary": 100663296,
+    "durable": 33554432,
+    "rss": 2684354560,
+    "processes": 8
+  },
+  "inventory": {
+    "frontend/src/app/character-entry/__tests__/reviewed-production/default-entry/": 33695,
+    "frontend/src/entities/avatar/runtime/motion-adoption/": 46135,
+    "frontend/src/entities/avatar/runtime/__tests__/reviewed-production/": 18836,
+    "frontend/src/features/avatar/motion-adoption/": 36274,
+    "frontend/src/features/avatar/part-controls/": 13346,
+    "frontend/src/features/avatar/wardrobe-options/": 5387,
+    "frontend/src/features/avatar/__tests__/reviewed-production/": 35955,
+    "frontend/src/world/avatar/motion-adoption/": 8976,
+    "frontend/src/world/avatar/__tests__/motion-adoption/": 58800,
+    "frontend/src/app/character-entry/__tests__/motion-adoption/": 51716,
+    "docs/mcr/art/evidence/motion-candidates-v1/": 9088225,
+    "docs/mcr/evidence/avatar-motion-adoption/": 1188133,
+    "docs/mcr/evidence/customize-reviewed-production/": 47159,
+    "docs/mcr/evidence/avatar-part-controls/": 31056,
+    "docs/mcr/evidence/reviewed-persistence-motion/": 19444,
+    "docs/mcr/frontend/ar03-motion-adoption.md": 31560,
+    "docs/mcr/frontend/customize-reviewed-production.md": 14634,
+    "docs/mcr/frontend/avatar-part-controls.md": 8683,
+    "docs/mcr/frontend/reviewed-persistence-motion.md": 4749,
+    "sourceGit": 1964100
+  },
+  "carryBytes": 12706863,
+  "commands": [
+    {
+      "label": "runtime",
+      "argv": [
+        "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node",
+        "--version"
+      ],
+      "pid": 75951,
+      "startedEpoch": 1793809511.656372,
+      "exit": 0,
+      "endedEpoch": 1793809511.8936121
+    },
+    {
+      "label": "syntax",
+      "argv": [
+        "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node",
+        "--check",
+        "/Users/lhs/Desktop/mcr-worktrees/fe-ref-map/frontend/src/app/character-entry/__tests__/reviewed-production/default-entry/native.mjs"
+      ],
+      "pid": 75958,
+      "startedEpoch": 1793809511.960709,
+      "exit": 0,
+      "endedEpoch": 1793809512.198037
+    },
+    {
+      "label": "types",
+      "argv": [
+        "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node",
+        "--input-type=module",
+        "--eval",
+        "import assert from 'node:assert/strict';\nimport {readFileSync} from 'node:fs';\nimport {createHash} from 'node:crypto';\nimport {dirname} from 'node:path';\nconst helper=\"/Users/lhs/Desktop/mcr-worktrees/fe-ref-map/frontend/src/world/avatar/__tests__/motion-adoption/typecheck.mjs\";\nconst original=readFileSync(helper,'utf8');\nassert.equal(createHash('sha256').update(original).digest('hex'),'4cbcb57e175101a3fabbcbd67604c223d2604e24732f9d6e3331583a0d624aa1');\nassert(original.includes('...parsed.options, incremental:'));\nconst source=original.replace('...parsed.options, incremental:','...parsed.options, allowImportingTsExtensions: true, incremental:')\n  .replaceAll('import.meta.dirname',JSON.stringify(dirname(helper)));\nprocess.argv.push('--application');\nawait import('data:text/javascript;base64,'+Buffer.from(source).toString('base64'));\n"
+      ],
+      "pid": 75963,
+      "startedEpoch": 1793809512.284263,
+      "exit": 0,
+      "endedEpoch": 1793809520.078357
+    },
+    {
+      "label": "lint",
+      "argv": [
+        "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node",
+        "/Users/lhs/Desktop/mcr/frontend/node_modules/oxlint/bin/oxlint",
+        "/Users/lhs/Desktop/mcr-worktrees/fe-ref-map/frontend/src/app/character-entry/__tests__/reviewed-production/default-entry/native.mjs",
+        "/Users/lhs/Desktop/mcr-worktrees/fe-ref-map/frontend/src/app/character-entry/__tests__/reviewed-production/default-entry/preview.ts"
+      ],
+      "pid": 76323,
+      "startedEpoch": 1793809520.1553469,
+      "exit": 0,
+      "endedEpoch": 1793809520.385754
+    },
+    {
+      "label": "whitespace",
+      "argv": [
+        "git",
+        "diff",
+        "--check",
+        "7eac13ce30d6dd6be4df30727f75d5df90d3489d"
+      ],
+      "pid": 76328,
+      "startedEpoch": 1793809520.4610581,
+      "exit": 0,
+      "endedEpoch": 1793809520.6937869
+    },
+    {
+      "label": "plan",
+      "argv": [
+        "python3",
+        "/Users/lhs/Desktop/mcr-worktrees/fe-ref-map/scripts/mcr/check-plan.py"
+      ],
+      "pid": 76339,
+      "startedEpoch": 1793809520.762174,
+      "exit": 0,
+      "endedEpoch": 1793809521.238122
+    }
+  ],
+  "wholePeak": 13320433,
+  "temporaryPeak": 613531,
+  "durablePeak": 39,
+  "rssPeak": 1548075008,
+  "processPeak": 4,
+  "sourcePins": {
+    "docs/mcr/evidence/reviewed-persistence-motion/qualify.py": "b35be9cd8403f027c0e80bb87040c52a0322beb6077a5581e01e9eb78ec67db7",
+    "docs/mcr/frontend/reviewed-persistence-motion.md": "784d1488d956c9e429c09c84ddc0087a81839c7ecdcdb27f0970fdb70d28fe79",
+    "frontend/src/app/character-entry/__tests__/reviewed-production/default-entry/native.mjs": "5997703e55b84b7b1d10757170e2f5f92c9dd5689e128c92634a49388ed3c44b",
+    "frontend/src/app/character-entry/__tests__/reviewed-production/default-entry/preview.ts": "5728effd5a722a6d55a97e23a28d9d681654d522a970444724f74a0426620cdb"
+  },
+  "minimumFree": 15909085184,
+  "aliveOwnedPids": [],
+  "status": "PASS",
+  "finishedUTC": "2026-11-04T16:25:21.392997+00:00",
+  "linkAbsent": true,
+  "temporaryAbsent": true,
+  "borrowedViteTempEmpty": true,
+  "finalFree": 15910182912
+}

@@ -1,0 +1,55 @@
+{
+  "slot": "AR03-FINAL-HARNESS-SOURCE-B-202611041656Z",
+  "source": "785432b9381e189872366e5feeb311788ebf87ca",
+  "acceptedUTC": "2026-11-04T16:57:35.089962+00:00",
+  "workStopUTC": "2026-11-04T17:06:35.089962+00:00",
+  "deadlineUTC": "2026-11-04T17:07:35.089962+00:00",
+  "freeBytes": 30321766400,
+  "sourcePins": {
+    "frontend/src/app/character-entry/__tests__/reviewed-production/default-entry/native.mjs": "8a939606797f49bf757ae8bd1d7ab20b22dc9a1c1a8c0625bbb55ab772f72b27",
+    "frontend/src/app/character-entry/__tests__/reviewed-production/default-entry/preview.ts": "e1a6a4f23d14b9ed8a96fd7210f6f936c390d8665b998e113698d8469f9e5d0a",
+    "frontend/src/app/character-entry/__tests__/reviewed-production/default-entry/preview.html": "eb6275fc44fe45d8bce7101d406896f3a7e4fbe4558ca91054efbec6ce47cafd"
+  },
+  "supervisorSHA256": "0fa902b7712adc0328deb65ecf1183b39bb5d56e925c2b082850c92e97887758",
+  "runnerSHA256": "4cbcb57e175101a3fabbcbd67604c223d2604e24732f9d6e3331583a0d624aa1",
+  "lockSHA256": "47ca44459819ad0e887d2f4f93394fdf3b1053b8f45edc9ceb0236981feee1f6",
+  "carryInventory": {
+    "frontend/src/app/character-entry/__tests__/reviewed-production/default-entry/": 34989,
+    "frontend/src/entities/avatar/runtime/motion-adoption/": 46135,
+    "frontend/src/entities/avatar/runtime/__tests__/reviewed-production/": 18836,
+    "frontend/src/features/avatar/motion-adoption/": 36274,
+    "frontend/src/features/avatar/part-controls/": 13346,
+    "frontend/src/features/avatar/wardrobe-options/": 5387,
+    "frontend/src/features/avatar/__tests__/reviewed-production/": 35955,
+    "frontend/src/world/avatar/motion-adoption/": 8976,
+    "frontend/src/world/avatar/__tests__/motion-adoption/": 58800,
+    "frontend/src/app/character-entry/__tests__/motion-adoption/": 51716,
+    "docs/mcr/art/evidence/motion-candidates-v1/": 9088225,
+    "docs/mcr/evidence/avatar-motion-adoption/": 1188133,
+    "docs/mcr/evidence/customize-reviewed-production/": 47159,
+    "docs/mcr/evidence/avatar-part-controls/": 31056,
+    "docs/mcr/evidence/reviewed-persistence-motion/": 1697437,
+    "docs/mcr/frontend/ar03-motion-adoption.md": 31560,
+    "docs/mcr/frontend/customize-reviewed-production.md": 14634,
+    "docs/mcr/frontend/avatar-part-controls.md": 8683,
+    "docs/mcr/frontend/reviewed-persistence-motion.md": 11128,
+    "sourceGit": 2926553
+  },
+  "wholeCarryBeforeReceipt": 15354982,
+  "mode": "source",
+  "outerArgv": [
+    "python3",
+    "/Users/lhs/Desktop/mcr-worktrees/fe-ref-map/docs/mcr/evidence/reviewed-persistence-motion/qualify.py"
+  ],
+  "caps": {
+    "totalSeconds": 600,
+    "workSeconds": 540,
+    "cleanupSeconds": 60,
+    "maxChildSeconds": 300,
+    "rssBytes": 2684354560,
+    "processes": 8,
+    "wholeBytes": 134217728,
+    "newReservedBytes": 134217728
+  },
+  "nextSourceB": "209 IN03 after actual FULL; exactthreadidentity must be resolved before direct handoff"
+}

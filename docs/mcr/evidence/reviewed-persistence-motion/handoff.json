@@ -1,0 +1,218 @@
+{
+  "status": "IN_PROGRESS_WAITING_FOR_PUBLICATION",
+  "implementationValidation": "DELIVERED",
+  "createdUTC": "2026-11-04T17:00:54.399696+00:00",
+  "sourceBase": "7eac13ce30d6dd6be4df30727f75d5df90d3489d",
+  "validatedSource": "785432b9381e189872366e5feeb311788ebf87ca",
+  "orderedImplementationAndEvidenceCommits": [
+    "74ed62c1855c8eaf78422998d1ecc43ecd5da452",
+    "082c87333679caf285d27dc95a17aed0d2f07aa4",
+    "58828c19a9d655a4291535655f8a140449f3d020",
+    "a227ba34a83f68516b47b289847d895c9009748b",
+    "25677181e084029ab23575e1f131c758d594a567",
+    "aea846282d38fd2ffb86dbdb679d28c9de34195d",
+    "ee10fee2fa1976ed5609d38d029d5dc1ab56e8d0",
+    "259528a3c1786bb5c85c137e84b775ec58010e81",
+    "6d63e8db9c3d346468e9ab701f7667419470c898",
+    "3bfc217041b832de955265cd704adabd875b8e9c",
+    "f89af5f94b29acbce1574f46455be849034ba775",
+    "785432b9381e189872366e5feeb311788ebf87ca"
+  ],
+  "deliveryCommit": "Containing documentation/evidence commit; Root returns canonical publication receipt",
+  "changedPathsBeforeHandoffFile": [
+    "docs/mcr/evidence/reviewed-persistence-motion/browser-acceptance.json",
+    "docs/mcr/evidence/reviewed-persistence-motion/browser-full-release.json",
+    "docs/mcr/evidence/reviewed-persistence-motion/browser-retry01/native.log",
+    "docs/mcr/evidence/reviewed-persistence-motion/browser-retry01/native/2026-11-04T16-44-16-599Z-failure.png",
+    "docs/mcr/evidence/reviewed-persistence-motion/browser-retry01/native/2026-11-04T16-44-16-599Z-native.json",
+    "docs/mcr/evidence/reviewed-persistence-motion/browser-retry01/runtime.log",
+    "docs/mcr/evidence/reviewed-persistence-motion/browser-retry01/supervisor.json",
+    "docs/mcr/evidence/reviewed-persistence-motion/browser-retry02/native.log",
+    "docs/mcr/evidence/reviewed-persistence-motion/browser-retry02/native/2026-11-04T16-45-13-861Z-failure.png",
+    "docs/mcr/evidence/reviewed-persistence-motion/browser-retry02/native/2026-11-04T16-45-13-861Z-native.json",
+    "docs/mcr/evidence/reviewed-persistence-motion/browser-retry02/native/2026-11-04T16-45-13-861Z-persisted-profile-before-reload-390.png",
+    "docs/mcr/evidence/reviewed-persistence-motion/browser-retry02/native/2026-11-04T16-45-13-861Z-reviewed-world-before-390.png",
+    "docs/mcr/evidence/reviewed-persistence-motion/browser-retry02/runtime.log",
+    "docs/mcr/evidence/reviewed-persistence-motion/browser-retry02/supervisor.json",
+    "docs/mcr/evidence/reviewed-persistence-motion/browser-retry03/native.log",
+    "docs/mcr/evidence/reviewed-persistence-motion/browser-retry03/native/2026-11-04T16-45-46-398Z-failure.png",
+    "docs/mcr/evidence/reviewed-persistence-motion/browser-retry03/native/2026-11-04T16-45-46-398Z-native.json",
+    "docs/mcr/evidence/reviewed-persistence-motion/browser-retry03/native/2026-11-04T16-45-46-398Z-persisted-profile-before-reload-390.png",
+    "docs/mcr/evidence/reviewed-persistence-motion/browser-retry03/native/2026-11-04T16-45-46-398Z-reviewed-world-before-390.png",
+    "docs/mcr/evidence/reviewed-persistence-motion/browser-retry03/runtime.log",
+    "docs/mcr/evidence/reviewed-persistence-motion/browser-retry03/supervisor.json",
+    "docs/mcr/evidence/reviewed-persistence-motion/browser-retry04/native.log",
+    "docs/mcr/evidence/reviewed-persistence-motion/browser-retry04/native/2026-11-04T16-46-52-781Z-actual-world-peer-walk-after-reload-390.png",
+    "docs/mcr/evidence/reviewed-persistence-motion/browser-retry04/native/2026-11-04T16-46-52-781Z-native.json",
+    "docs/mcr/evidence/reviewed-persistence-motion/browser-retry04/native/2026-11-04T16-46-52-781Z-persisted-profile-after-hard-reload-390.png",
+    "docs/mcr/evidence/reviewed-persistence-motion/browser-retry04/native/2026-11-04T16-46-52-781Z-persisted-profile-before-reload-390.png",
+    "docs/mcr/evidence/reviewed-persistence-motion/browser-retry04/native/2026-11-04T16-46-52-781Z-reviewed-world-before-390.png",
+    "docs/mcr/evidence/reviewed-persistence-motion/browser-retry04/runtime.log",
+    "docs/mcr/evidence/reviewed-persistence-motion/browser-retry04/supervisor.json",
+    "docs/mcr/evidence/reviewed-persistence-motion/browser-round01/native.log",
+    "docs/mcr/evidence/reviewed-persistence-motion/browser-round01/native/2026-11-04T16-43-11-901Z-native.json",
+    "docs/mcr/evidence/reviewed-persistence-motion/browser-round01/runtime.log",
+    "docs/mcr/evidence/reviewed-persistence-motion/browser-round01/supervisor.json",
+    "docs/mcr/evidence/reviewed-persistence-motion/final-source-acceptance.json",
+    "docs/mcr/evidence/reviewed-persistence-motion/final-source-full-release.json",
+    "docs/mcr/evidence/reviewed-persistence-motion/native-image-assessment.json",
+    "docs/mcr/evidence/reviewed-persistence-motion/qualify.py",
+    "docs/mcr/evidence/reviewed-persistence-motion/retry-preflight-rejection.json",
+    "docs/mcr/evidence/reviewed-persistence-motion/source-acceptance.json",
+    "docs/mcr/evidence/reviewed-persistence-motion/source-final-round01/lint.log",
+    "docs/mcr/evidence/reviewed-persistence-motion/source-final-round01/plan.log",
+    "docs/mcr/evidence/reviewed-persistence-motion/source-final-round01/runtime.log",
+    "docs/mcr/evidence/reviewed-persistence-motion/source-final-round01/supervisor.json",
+    "docs/mcr/evidence/reviewed-persistence-motion/source-final-round01/syntax.log",
+    "docs/mcr/evidence/reviewed-persistence-motion/source-final-round01/types.log",
+    "docs/mcr/evidence/reviewed-persistence-motion/source-final-round01/whitespace.log",
+    "docs/mcr/evidence/reviewed-persistence-motion/source-full-release.json",
+    "docs/mcr/evidence/reviewed-persistence-motion/source-retry01/lint.log",
+    "docs/mcr/evidence/reviewed-persistence-motion/source-retry01/plan.log",
+    "docs/mcr/evidence/reviewed-persistence-motion/source-retry01/runtime.log",
+    "docs/mcr/evidence/reviewed-persistence-motion/source-retry01/supervisor.json",
+    "docs/mcr/evidence/reviewed-persistence-motion/source-retry01/syntax.log",
+    "docs/mcr/evidence/reviewed-persistence-motion/source-retry01/types.log",
+    "docs/mcr/evidence/reviewed-persistence-motion/source-retry01/whitespace.log",
+    "docs/mcr/evidence/reviewed-persistence-motion/source-round01/runtime.log",
+    "docs/mcr/evidence/reviewed-persistence-motion/source-round01/supervisor.json",
+    "docs/mcr/evidence/reviewed-persistence-motion/source-round01/syntax.log",
+    "docs/mcr/evidence/reviewed-persistence-motion/source-round01/types.log",
+    "docs/mcr/frontend/reviewed-persistence-motion.md",
+    "frontend/src/app/character-entry/__tests__/reviewed-production/default-entry/native.mjs",
+    "frontend/src/app/character-entry/__tests__/reviewed-production/default-entry/preview.ts"
+  ],
+  "changedPathScope": "Only two modified default-entry harness files, this new document and new reviewed-persistence-motion evidence. preview.html remains unchanged.",
+  "publisherThread": "01a1a153-1227-7e72-801f-a2a6b91981e1",
+  "worktree": "fe-ref-map",
+  "branch": "codex/mcr-fe-AR03-persistence-motion",
+  "publicationPolicy": "Root publishes; no self push, king/SL review/ACK or own extra remote-proof loop",
+  "sourcePins": {
+    "frontend/src/app/character-entry/__tests__/reviewed-production/default-entry/native.mjs": "8a939606797f49bf757ae8bd1d7ab20b22dc9a1c1a8c0625bbb55ab772f72b27",
+    "frontend/src/app/character-entry/__tests__/reviewed-production/default-entry/preview.ts": "e1a6a4f23d14b9ed8a96fd7210f6f936c390d8665b998e113698d8469f9e5d0a"
+  },
+  "contractPins": {
+    "contracts/assets/v2/reviewed/avatar-config.schema.json": "8d4b5772c763a32e58dd49bf5115894703bba603c6e2c01333cef5a86c988c2e",
+    "contracts/assets/v2/reviewed/avatar-manifest.schema.json": "3fd9bfd589a7f4d2749081ef76057f8bbaf488fbf7385c4cc024ffd01790ccbf"
+  },
+  "reviewedFamily": {
+    "id": "mcr_selected_motion_reviewed_20261104",
+    "revision": 2,
+    "contract": "2.0.0",
+    "contentHash": "sha256:7f2891c81ffa1d5850107118898a7ef9377b222ab8639b3f2c9daf7908cf9018",
+    "atlasSHA256": "1cd8f05af8d76d58243e2f6e143961953b4d4291fdd553df8c8d33aabd700dbd",
+    "sourcePack": "mcr_user_characters_20261103 revision3",
+    "artSource": "bb7d21b3",
+    "artReceipt": "145d0e21"
+  },
+  "provenance": "Adapted Root default-entry harness and bounded supervisor at base; selected source/derivatives and immutable public contracts unchanged; docs/source untouched. No added dependencies/lock edits.",
+  "retainedNode": "24.22.2",
+  "lockSHA256": "47ca44459819ad0e887d2f4f93394fdf3b1053b8f45edc9ceb0236981feee1f6",
+  "sourceQualification": {
+    "source": "785432b9381e189872366e5feeb311788ebf87ca",
+    "result": "PASS",
+    "commands": 6,
+    "allExits": 0,
+    "fullApplicationFiles": 938,
+    "diagnostics": 0,
+    "typeOption": "Invocation-only allowImportingTsExtensions:true; pinned unchanged helper, same full file set"
+  },
+  "nativeQualification": {
+    "source": "3bfc217041b832de955265cd704adabd875b8e9c",
+    "result": "PASS",
+    "viewport": [
+      390,
+      844
+    ],
+    "browser": "156.0.8078.80",
+    "externalHttpReads": 2,
+    "explicitWrites": 1,
+    "revision": [
+      7,
+      8
+    ],
+    "newDocumentAndCanonicalUiRelogin": true,
+    "profileWorldDigest": "4c34c8cd69c88b269e0911ecb20a7bdaeec5a36ad1428c4b1eb73eb94e58c3a0",
+    "actualInputs": 25,
+    "controlledC05Updates": 27,
+    "selfWalkFrames": [
+      13,
+      14,
+      11,
+      12
+    ],
+    "peerWalkFrames": [
+      8,
+      9,
+      6,
+      7
+    ],
+    "idleFrames": {
+      "self": 10,
+      "peer": 5
+    },
+    "peakCanvasSocketPerDocument": [
+      1,
+      1
+    ],
+    "finalCanvasesSocketsBlobUrls": [
+      0,
+      0,
+      0
+    ],
+    "limits": "Actual-main controlled synthetic HTTP/C05 plus reviewed C06; not live services/database/two-account/device/fullreference"
+  },
+  "nativeToFinalDelta": "785432b9 resets external fixture per width only if persistenceMotion false; passed narrow branch unchanged, preview.ts byte-identical. Later changes docs/evidence only. No duplicate browser.",
+  "originalCriteriaDisposition": [
+    {
+      "criteria": "Four directions idle/fourwalk; all reviewed layers/palette, shared Profile composition, theme/width fidelity",
+      "evidence": "Historical avatar-motion-adoption checks/native/application-build and avatar-part-controls 384tests/18files; exact qualifications retained",
+      "result": "DELIVERED_CLIENT"
+    },
+    {
+      "criteria": "Save/reset/reentry/conflict/uncertainty and authority/privacy compatibility",
+      "evidence": "Historical customize-reviewed-production owner-integration 365tests/16suites and reviewed runtime tests; preserved reviewed and old-family denials",
+      "result": "DELIVERED_CLIENT"
+    },
+    {
+      "criteria": "Actual production App editor/Profile/World360/390/430 and one canvas/socket",
+      "evidence": "Root5da644264ee354f63e609db64d65a7c5e63c9c11 / reviewed-round01 2026-11-04T15-46-44-984Z-native.json; reportSHA256 dd59913991048ed93fde44a68dcda814792d59a93cc5cca1dd3c5cb83eb8b0b3",
+      "result": "DELIVERED_CLIENT_CONTROLLED_HTTP_C05"
+    },
+    {
+      "criteria": "Hardreload Save retention; actual World self/peer movement natural frames and canonical signout",
+      "evidence": "docs/mcr/evidence/reviewed-persistence-motion/browser-retry04/native/2026-11-04T16-46-52-781Z-native.json",
+      "result": "DELIVERED_CLIENT_CONTROLLED_HTTP_C05"
+    },
+    {
+      "criteria": "Final changed harness source checks, documentation and cleanup",
+      "evidence": [
+        "docs/mcr/evidence/reviewed-persistence-motion/source-final-round01/supervisor.json",
+        "docs/mcr/evidence/reviewed-persistence-motion/final-source-full-release.json"
+      ],
+      "result": "DELIVERED_CLIENT"
+    },
+    {
+      "criteria": "Committed Root publication",
+      "evidence": "Canonical Root receipt pending; no approval/ACK required",
+      "result": "WAITING_FOR_PUBLICATION"
+    }
+  ],
+  "artifactSHA256": {
+    "docs/mcr/evidence/reviewed-persistence-motion/source-final-round01/supervisor.json": "8e0c8ca770b0d8fa845fb667fcd8929324c3ac09695e5f1ce07193ce9b1e4c5c",
+    "docs/mcr/evidence/reviewed-persistence-motion/final-source-full-release.json": "cbafd3fd13618d1ae4d3a97fbef011e52f93f0842030adcade86f72ed5ab73b6",
+    "docs/mcr/evidence/reviewed-persistence-motion/browser-retry04/native/2026-11-04T16-46-52-781Z-native.json": "beb18dce1d58b376c64098726bb5adfc78f0e81e8f488a2642d4a4ea9952bf03",
+    "docs/mcr/evidence/reviewed-persistence-motion/browser-full-release.json": "3cf53b250ca7e61c31a16c59ce84caee393764dd92cf6970cb4668de568280b3",
+    "docs/mcr/evidence/reviewed-persistence-motion/native-image-assessment.json": "656c82c2958b1282ec11c6c8ab9d109c1c7c4c429268e8595e9b59baf48154a1"
+  },
+  "preservedFailures": [
+    "source-round01 TS5097 Feed diagnostic",
+    "retry-preflight-rejection no child",
+    "browser-round01 and browser-retry01 synchronous fixture acknowledgment",
+    "browser-retry02 real protected-route Sign in action",
+    "browser-retry03 Profile intentional World pause"
+  ],
+  "imageAssessment": "docs/mcr/evidence/reviewed-persistence-motion/native-image-assessment.json",
+  "resourceStatus": "FULL_RELEASE; final SourceB directly handed to209; no execution resource held",
+  "goal": "Original aligned persistent goal remains blocked/unfinished metadata until Root canonical receipt; no reset/newgoal/budget. Live/device/fullreference not new bounded-client gates."
+}

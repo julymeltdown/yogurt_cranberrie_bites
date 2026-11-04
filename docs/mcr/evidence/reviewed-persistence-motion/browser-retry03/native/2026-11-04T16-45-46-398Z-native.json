@@ -1,0 +1,85 @@
+{
+  "run": "2026-11-04T16-45-46-398Z",
+  "result": "FAIL",
+  "qualification": "ACTUAL_MAIN_SYNTHETIC_HTTP_C05_REVIEWED_C06_NOT_LIVE",
+  "widths": [],
+  "screenshots": [
+    "2026-11-04T16-45-46-398Z-reviewed-world-before-390.png",
+    "2026-11-04T16-45-46-398Z-persisted-profile-before-reload-390.png",
+    "2026-11-04T16-45-46-398Z-failure.png"
+  ],
+  "errors": [
+    "390/explicit-hard-reload-and-real-ui-login: Error: expect(received).toBe(expected) // Object.is equality\n\nExpected: 1\nReceived: 0\n\nCall Log:\n- Timeout 5000ms exceeded while waiting on the predicate\n    at captureRawStack (/Users/lhs/Desktop/mcr/frontend/node_modules/.pnpm/playwright-core@1.61.1/node_modules/playwright-core/lib/coreBundle.js:3172:17)\n    at callMatcherAsStep (/Users/lhs/Desktop/mcr/frontend/node_modules/.pnpm/playwright@1.61.1/node_modules/playwright/lib/matchers/expect.js:12877:57)\n    at Object.toBe (/Users/lhs/Desktop/mcr/frontend/node_modules/.pnpm/playwright@1.61.1/node_modules/playwright/lib/matchers/expect.js:12867:23)\n    at /Users/lhs/Desktop/mcr-worktrees/fe-ref-map/frontend/src/app/character-entry/__tests__/reviewed-production/default-entry/native.mjs:106:58"
+  ],
+  "server": "http://127.0.0.1:5173",
+  "browser": "156.0.8078.80",
+  "networkFailures": [],
+  "failureState": {
+    "url": "http://127.0.0.1:5173/me",
+    "text": "WORLD IS PAUSED\n\nThe world will recover when its viewport is visible again.\n\nBack to world\nBack to home\nSkip to content\nMY PROFILE\nMY PROFILE\nSelected fixture fan\n\nREVENGE\n\nNo bio yet. Add one whenever you like.\n\nACTIVITY\nPARTIES\nGIFTS\n\nRecent activity is unavailable in this connection.\n\nOpen feed\nProfile options\nBack to world",
+    "state": {
+      "sockets": 0,
+      "active": 0,
+      "peak": 0,
+      "canvases": 1,
+      "requests": [
+        {
+          "path": "/api/auth/capabilities",
+          "method": "GET"
+        },
+        {
+          "path": "/api/auth/login",
+          "method": "POST"
+        },
+        {
+          "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/bootstrap",
+          "method": "GET"
+        },
+        {
+          "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/bootstrap",
+          "method": "GET"
+        },
+        {
+          "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/me",
+          "method": "GET"
+        },
+        {
+          "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/rooms",
+          "method": "GET"
+        },
+        {
+          "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/places",
+          "method": "GET"
+        }
+      ],
+      "snapshots": 0,
+      "documentId": "fe83cc45-a34d-4205-abcb-e7bfe3dc69ef",
+      "inputs": [],
+      "serverUpdates": [],
+      "avatar": {
+        "revision": 8,
+        "config": {
+          "contract_version": "2.0.0",
+          "kind": "avatar_config",
+          "manifest_id": "mcr_selected_motion_reviewed_20261104",
+          "manifest_version": 2,
+          "representation": "motion_layered",
+          "item_ids": {
+            "body": "motion_v2_body_7",
+            "eyes": "motion_v2_eyes_0",
+            "hair": "motion_v2_hair_0",
+            "outfit": "motion_v2_outfit_0",
+            "accessory": null
+          }
+        }
+      },
+      "blobURLs": 6,
+      "manifestPin": {
+        "manifest_id": "mcr_selected_motion_reviewed_20261104",
+        "manifest_version": 2,
+        "content_hash": "sha256:7f2891c81ffa1d5850107118898a7ef9377b222ab8639b3f2c9daf7908cf9018"
+      },
+      "qualification": "SYNTHETIC_REVIEWED_DEFAULT_APP_NOT_LIVE"
+    }
+  }
+}
