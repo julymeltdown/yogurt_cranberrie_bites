@@ -56,6 +56,10 @@ Content and ownership differences that CSS cannot resolve:
   approved artwork. Neither fixture establishes a live-service or device gate.
 - Background art, shared root/title/footer chrome, selected character imagery
   and rendering are outside this lease. Do not change them to mimic the photo.
+- Shared route metadata at `frontend/src/app/routes.ts` supplies `/me` with the
+  title `Me`; the reference says `MY PROFILE`. The feature's internal `My profile`
+  heading is hidden by shared embedding. Root153 received the exact title-label
+  request. Do not replace the title using CSS generated text or out-of-scope TSX.
 
 ## Validation plan
 
