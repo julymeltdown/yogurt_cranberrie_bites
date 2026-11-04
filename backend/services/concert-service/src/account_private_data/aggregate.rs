@@ -555,7 +555,7 @@ impl PrivateDataAggregateCoordinator {
         )
         .ok_or(DeletionFailure::InvalidCommand)?;
         let completed_names: Vec<String> = sqlx::query_scalar("select category from public.concert_private_data_category_progress where user_id=$1 and saga_id=$2 and command_binding=$3 and source_binding=$4 and state='COMPLETE' order by ordinal")
-            .bind(user_id).bind(saga_id).bind(command_binding).bind(source_binding).fetch_all(&self.pool).await.map_err(db)?;
+            .bind(user_id).bind(saga_id).bind(command_binding).bind(&source_binding).fetch_all(&self.pool).await.map_err(db)?;
         let completed = completed_names
             .iter()
             .filter_map(|name| {
