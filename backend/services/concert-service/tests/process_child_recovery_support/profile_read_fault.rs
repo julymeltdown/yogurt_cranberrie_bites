@@ -65,10 +65,11 @@ where
         + 'static,
     S::Future: Send + 'static,
     S::Error: Send + 'static,
-    R: Default + Send + 'static,
+    R: axum::body::HttpBody<Data = tonic::codegen::Bytes> + Send + 'static,
+    R::Error: Into<Box<dyn std::error::Error + Send + Sync>>,
     B: Send + 'static,
 {
-    type Response = axum::http::Response<R>;
+    type Response = axum::http::Response<tonic::body::Body>;
     type Error = S::Error;
     type Future = Pin<Box<dyn Future<Output = Result<Self::Response, Self::Error>> + Send>>;
     fn poll_ready(&mut self, cx: &mut Context<'_>) -> Poll<Result<(), Self::Error>> {
@@ -95,8 +96,7 @@ where
                 drop(held_request);
                 state.fallback_elapsed.fetch_add(1, Ordering::SeqCst);
                 Ok(tonic::Status::unavailable("CR05 bounded undispatched read")
-                    .into_http()
-                    .map(|_| R::default()))
+                    .into_http::<tonic::body::Body>())
             });
         }
         if target {
@@ -113,11 +113,14 @@ where
                 state.observed.fetch_add(1, Ordering::SeqCst);
                 Ok(
                     tonic::Status::unavailable("CR02 actual acquisition reply lost")
-                        .into_http()
-                        .map(|_| R::default()),
+                        .into_http::<tonic::body::Body>(),
                 )
             });
         }
-        Box::pin(future)
+        Box::pin(async move {
+            future
+                .await
+                .map(|response| response.map(tonic::body::Body::new))
+        })
     }
 }

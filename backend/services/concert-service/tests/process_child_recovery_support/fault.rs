@@ -49,9 +49,10 @@ where
         + 'static,
     S::Future: Send + 'static,
     S::Error: Send + 'static,
-    R: Default + Send + 'static,
+    R: axum::body::HttpBody<Data = tonic::codegen::Bytes> + Send + 'static,
+    R::Error: Into<Box<dyn std::error::Error + Send + Sync>>,
 {
-    type Response = axum::http::Response<R>;
+    type Response = axum::http::Response<tonic::body::Body>;
     type Error = S::Error;
     type Future = Pin<Box<dyn Future<Output = Result<Self::Response, Self::Error>> + Send>>;
     fn poll_ready(&mut self, cx: &mut Context<'_>) -> Poll<Result<(), Self::Error>> {
@@ -65,11 +66,15 @@ where
             return Box::pin(async {
                 Ok(
                     tonic::Status::unavailable("CR01 injected Complete unavailability")
-                        .into_http()
-                        .map(|_| R::default()),
+                        .into_http::<tonic::body::Body>(),
                 )
             });
         }
-        Box::pin(self.inner.call(request))
+        let future = self.inner.call(request);
+        Box::pin(async move {
+            future
+                .await
+                .map(|response| response.map(tonic::body::Body::new))
+        })
     }
 }
