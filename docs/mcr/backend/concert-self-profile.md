@@ -26,8 +26,47 @@ not permission to release them or guess rollback. ReadOperation and Reconcile
 cannot originate another mutation. Full coordinator/guard interface and native
 qualification are in progress; nothing here certifies a live PATCH flow yet.
 
-Source authored for this task; no rendering or dependency upgrade. Validation,
-registration, migrations and native multi-store checks: NOT_RUN.
+Source authored for this task; no rendering or dependency upgrade. Full RPC
+registration and native multi-store checks: NOT_RUN.
+
+## Guarded RPC source checkpoint
+
+The new handler checks the dedicated Concert workload and verified signed actor,
+the original verified deadline, exact SELF subject, both actual owner views,
+Auth live session/active actor/positive security revision, and Friend active actor
+without either malformed self-block flag. Profile privacy remains valid for SELF.
+The binding digest delegates to the shared published `owner_binding` helper.
+Both actual owner Track calls finish before any protected content read or write.
+
+Positive reads retain a separate durable read reference and actual SQL identity,
+then roll back before returning content. They create no dummy write revision or
+receipt. PrepareUpdate records an immutable operation identity before Track,
+derives only selected fields from the exact body, checks the internal Profile
+version, and prepares content, receipt and audit in the same actual transaction.
+
+Reconcile queries the configured Concert decision service using the dedicated
+Profile decision signing key. The response must echo the exact stored binding,
+GID and effect digest. Unknown replies retain prepared effects. Serialized
+settlement rechecks native PG state; committed status additionally requires the
+exact effect/command receipt. The background recovery method discovers existing
+unresolved operations with fair scheduling hints; those hints never prove a
+transaction outcome. Auth/Friend settlement queries use the same native proof.
+Profile ResolveScope always reports unfinished because Concert owns HTTP delivery.
+
+Runtime configuration is additive: missing `CONCERT_PROFILE_SELF_VERIFYING_KEYS`
+disables SELF registration. If present, it must be valid and requires explicit
+`PROFILE_SELF_AUTH_GRPC_ENDPOINT`, `PROFILE_SELF_FRIEND_GRPC_ENDPOINT`,
+`PROFILE_SELF_CONCERT_GRPC_ENDPOINT`, and
+`PROFILE_PARTICIPANT_DECISION_SIGNING_SEED`. No endpoint or decision seed is
+guessed. The shared `concert_self_profile.rs` key helper was adapted from the
+audited platform `concert_read.rs` at base `30be9c9c`, with fixed Profile audience,
+Concert issuer and dedicated base64 key variables. It rejects Gateway trust and
+Gateway/Concert/Profile parity keys. Its exact new-file ownership was transferred
+by canonical authority; the parent module export and method policy remain theirs.
+
+These new RPC modules and the added read/recovery tables in unpublished 0008 are
+source-only, NOT_RUN. The historical storage qualification below precedes these
+changes and cannot certify their amended schema or runtime behavior.
 
 ## Qualified storage prerequisite
 

@@ -57,3 +57,20 @@ create table concert_self_profile_receipts (
     profile_revision bigint not null check (profile_revision between 1 and 9007199254740991),
     recorded_at timestamptz not null default clock_timestamp()
 );
+-- Positive SELF reads register their actual transaction before SELECT/response.
+-- They always roll back and never fabricate a committed mutation receipt.
+CREATE TABLE concert_self_profile_read_references (
+    reference_id uuid PRIMARY KEY CHECK(reference_id <> '00000000-0000-0000-0000-000000000000'),
+    binding_proto bytea NOT NULL CHECK(octet_length(binding_proto) BETWEEN 1 AND 32768),
+    binding_digest bytea NOT NULL CHECK(octet_length(binding_digest)=32),
+    transaction_identity jsonb NOT NULL CHECK(jsonb_typeof(transaction_identity)='object'),
+    created_at timestamptz NOT NULL DEFAULT clock_timestamp()
+);
+-- Scheduling hints only. Authoritative settlement ALWAYS re-reads the actual
+-- retained native XID and, for COMMITTED, its exact same-transaction receipt.
+CREATE TABLE concert_self_profile_settled_observations (
+    operation_id uuid PRIMARY KEY REFERENCES concert_self_profile_operations(operation_id),
+    effect_binding_digest bytea NOT NULL CHECK(octet_length(effect_binding_digest)=32),
+    observed_status text NOT NULL CHECK(observed_status IN ('COMMITTED','ABORTED','UNRESOLVED')),
+    observed_at timestamptz NOT NULL DEFAULT clock_timestamp()
+);

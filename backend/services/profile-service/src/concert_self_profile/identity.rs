@@ -7,7 +7,8 @@ use std::time::Duration;
 use uuid::Uuid;
 
 const CEILING: Duration = Duration::from_secs(5);
-#[derive(Clone, PartialEq, Eq)]
+#[derive(Clone, PartialEq, Eq, serde::Serialize, serde::Deserialize)]
+#[serde(deny_unknown_fields)]
 pub(super) struct TransactionIdentity {
     pub system_identifier: String,
     pub database_oid: u32,
@@ -106,6 +107,15 @@ impl EffectConnection {
             .map_err(unavailable)?;
         // A late/unknown result must be resolved by actual native identity. It
         // must not be converted to an abort just because this local check fails.
+        self.check()?;
+        self.connection.close().await.map_err(unavailable)
+    }
+    pub async fn rollback(mut self) -> Result<(), Error> {
+        self.check()?;
+        sqlx::query("rollback")
+            .execute(&mut self.connection)
+            .await
+            .map_err(unavailable)?;
         self.check()?;
         self.connection.close().await.map_err(unavailable)
     }

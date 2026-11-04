@@ -108,6 +108,39 @@ async fn native_versions_cover_retained_updates_and_tombstone_fences() -> anyhow
     assert_eq!(row.get::<i64, _>("concert_self_revision"), 2);
     assert_eq!(row.get::<String, _>("nickname"), "Current");
     assert_eq!(row.get::<String, _>("avatar_url"), "retained-avatar");
+    // SQL mechanics only: synthetic binding bytes grant no owner capability.
+    // This read reference has an actual transaction, not a dummy write version.
+    let reference = Uuid::new_v4();
+    let mut effect = EffectConnection::open(&pool, Uuid::new_v4(), [11; 32], deadline()).await?;
+    let read = super::read_reference::ReadReference {
+        id: reference,
+        binding_proto: vec![1],
+        binding_digest: [12; 32],
+        identity: effect.identity().clone(),
+    };
+    read.register(&pool).await?;
+    assert!(read.register(&pool).await.is_err());
+    let persisted = super::read_reference::ReadReference::load(&pool, reference)
+        .await?
+        .unwrap();
+    assert!(persisted.identity == *effect.identity());
+    assert_eq!(
+        persisted.status(&pool, deadline()).await?,
+        NativeStatus::InProgress
+    );
+    let (content, _) = read_in(&mut effect, user, false).await?;
+    assert_eq!(content.bio(), Some("Legacy changed"));
+    effect.rollback().await?;
+    assert_eq!(
+        persisted.status(&pool, deadline()).await?,
+        NativeStatus::Aborted
+    );
+    assert_eq!(
+        sqlx::query_scalar::<_, i64>("select count(*) from concert_self_profile_receipts")
+            .fetch_one(&pool)
+            .await?,
+        0
+    );
     sqlx::query("insert into profile_user_deletion_tombstones(user_id,saga_id,actor_id,retention_until) values($1,$2,$1,clock_timestamp()+interval '1 day')").bind(user).bind(Uuid::new_v4()).execute(&pool).await?;
     let result = sqlx::query("update profiles set nickname='Late write' where user_id=$1")
         .bind(user)
