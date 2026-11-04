@@ -1,0 +1,84 @@
+{
+  "evidence_class": "DOCUMENTATION_PROVENANCE_ONLY",
+  "date": "2026-11-05",
+  "timezone": "Asia/Seoul",
+  "result": "PASS",
+  "command": "<pinned Python 3.14> -B <private-controls>/control.py run",
+  "exit_code": 0,
+  "source_revision": "11473eaadce225a59770cb9bb599d5aab8947da7",
+  "qualified_clean_commit": "a641f5374ace58041adf2cdf82851749bccbb8a5",
+  "qualified_paths": {
+    "docs/mcr/qa/qa01-original-completion.md": "724f9b78b224d19a4be16582250666bb4c4e07bb020255acb8d074933ab86bef",
+    "docs/mcr/evidence/qa01-original-completion/source-inventory.json": "18a5ec71293b73d17cfd3495f9810a7ddb419609dd7084b10eaca7989278e747"
+  },
+  "checks": {
+    "243_source_hashes_at_reconciled_and_frozen_revisions": "PASS",
+    "63_commands_exact_rows_preconditions_results_recursive_version_paths": "PASS",
+    "117_generated_actor_rule_retry_write_policy_mappings": "PASS",
+    "exact_published_policy": "PASS",
+    "7_relative_links_in_frozen_git_tree": "PASS",
+    "exact_two_source_documentation_paths": "PASS",
+    "git_diff_check": "PASS",
+    "reused_qa01_counts_and_published_17_test_log": "PASS"
+  },
+  "result_detail": {
+    "result": "PASS",
+    "scope": "DOCUMENTATION_PROVENANCE_ONLY",
+    "frozen": "a641f5374ace58041adf2cdf82851749bccbb8a5",
+    "source_revision": "11473eaadce225a59770cb9bb599d5aab8947da7",
+    "pinned_inputs": 243,
+    "domain_operations": 117,
+    "commands": 63,
+    "relative_links": 7,
+    "new_contract_or_runtime_tests": 0,
+    "application_runtime": "NOT_RUN"
+  },
+  "offer": "QA01-DISPOSITION-PROVENANCE-20261104T2330Z",
+  "accept_epoch": 1793835072.3451462,
+  "full_epoch": 1793835078.626896,
+  "work_deadline": 1793835102.3451462,
+  "full_deadline": 1793835132.3451462,
+  "caps": {
+    "processes": 6,
+    "rss_bytes": 268435456,
+    "whole_bytes": 8589934592,
+    "new_check_bytes_within_source_booking": 8388608,
+    "source_booking_total": 117440512
+  },
+  "before_child_retained_inode_union": 3159232512,
+  "free_before_child": 18592849920,
+  "control_and_python_sha256": {
+    "check.py": "58c77ec17bff6ad99bdc71461e70180c04e98a2db2669e129831f6840759fe70",
+    "control.py": "cf1847b46b37f2aeaf60821bece3416bc11cde0a87784938aeb06d009f0f841c",
+    "python3.14": "1192b994fbb50303c9df2cc97c9d63797d454c7f57f20ca682877c9e770429aa"
+  },
+  "guard_summaries": {
+    "primary": {
+      "pid": 239,
+      "epoch": 1793835078.574036,
+      "baseline": 3159236608,
+      "nonshrinking_peak": 3164639232,
+      "growth": 5402624
+    },
+    "independent": {
+      "pid": 240,
+      "epoch": 1793835078.546479,
+      "baseline": 3159236608,
+      "nonshrinking_peak": 3164639232,
+      "growth": 5402624
+    }
+  },
+  "guard_failures": [],
+  "cleanup": {
+    "worker_and_guardians_closed": true,
+    "execution_resources": 0,
+    "target": 0,
+    "browser": 0,
+    "native": 0
+  },
+  "limits": [
+    "No contract oracle, generator, application tests, 1727-case rerun, service, database, browser or device execution.",
+    "This receipt records documentation/source correspondence; published original qualification remains reused evidence.",
+    "The qualified two files are unchanged in the final handoff; this receipt is appended after resource release."
+  ]
+}
