@@ -100,7 +100,7 @@ isolated management branch on that published base and does not replay them.
 
 | Original ID | Owner / current task-level disposition | Work since previous checkpoint / latest retained publication | Remaining original criteria, dependency owner and next action |
 |---|---|---|---|
-| FE09 | Original task-local SATISFIED retained;204 accepted NEW unbudgeted ACTIVE bounded owner-disposition goal | Current owner finds supported expiry-clear/request-policy design, no original gap or product edit; session.ts unchanged. SourceREADY `f3bdc853418f06341cc08de8ec665958fe74a909`,11 new files/four new prefixes; owner reports6 new+75 retained tests/noemit/lint/plan/diff PASS.29 input pins/no runtime-contract drift. No product edit; base `39c68d1d`, Root publication and fresh owner proof PENDING | Deliver bounded docs/committed Root handoff/publication/readback. Main07:55UTC resolved scope: proposed long-runtime gate withdrawn; expiry observation NOT_RUN informational/nonblocking. No new renewal/reload behavior or900s/30min IN01 criterion.204 finishes bounded disposition/publication/readback;202 preserved archived, root1fc owns actual `/me`504/customization |
+| FE09 | Original task-local SATISFIED retained; bounded owner-disposition goal204 actually COMPLETE→fresh null/clean STOP/exact five leases returned/preserved ARCHIVED | Source `f3bdc853` published at `70a444bf7cf6454f2ed4da7a635db2bb649738f2`; Root and independent owner verify all11 latest payloads.81 targeted fixture tests/types/lint/plan PASS reported; no original gap or product edit.29 local pins/28 remote pins match, sole execution-plan progress-line drift informational | No remaining bounded owner delivery work. Genuine expiry observation NOT_RUN informational, no duration/newrenewal gate.202 remains separate IN01 consumer/root1fc `/me`504/customization owner.204 free under Community sole next allocator for a genuinely ready exact scope, no current Auth/source reservation |
 | FE20 | Former owner `3ff2`; SATISFIED at MOCK_READY per explicit photo-completion receipt; no current Community writer | No newer task receipt; published `6c908472` retained | No identified original frontend gap in that receipt. Genuine provider/IN02 qualification stays with Product root `1fc`; do not reopen frozen criteria or divert the owner's later Auth scope |
 | FE21 | MOCK_READY; original pure-client criteria SATISFIED by owner204; actual goal COMPLETE → fresh null / clean STOP / exact leases returned | No new original completion; previous five source commits through `531c4672` published through `4bf9022f`, 52 payloads owner-verified. Separate bounded Meet typography source `e9912f13`/`0d0b76dc` is published as `1b94fcb8`/`a8fd53c1` under `c8a731e5`, all 21 payloads independently verified; actual goal COMPLETE/null/STOP. It does not recount original FE21 | No original pure-client gap remains in explicit receipt. Publication and owner readback complete. Real IN02 remains separate with Product root1fc and producer owners; no device/live promotion or SL review |
 | FE22 | Former authoring owner `6ec9`, now Backend-allocated; last explicit frontend criteria SATISFIED | No new delivery; source `1c38ad4` → published `e82a220`, final KST correction `d8778b8` retained | No identified task-local gap: form/validation/draft/conflict criteria met in retained receipt. Root `1fc` owns actual producer/configuration; real IN02 remains separate; no old writer wake |
@@ -206,12 +206,12 @@ committed Root handoff/publication and remote readback continue. It must not
 be artificially held open solely by an unsupported new requirement; actual
 remaining required work and any exact accepted handoff stay truthful.
 
-CURRENT owner39c68 source/contracts finding: capability-only startup, expiry
+At classification, owner39c68 source/contracts finding: capability-only startup, expiry
 removing memory authority and eligibleGET401 single-flight are supported
 retained design. No original criterion gap/product edit established; session.ts
 is unchanged. Owner reports six combined boundary fixtures/noemit/lint PASS,
-disposition/evidence source now committed as recorded below, same goal ACTIVE
-through publication and fresh owner readback. Prior FE09 task-local SATISFIED and original request-policy evidence
+disposition/evidence source was then committed, with the same goal ACTIVE
+through publication/readback; actual terminal closure is recorded below. Prior FE09 task-local SATISFIED and original request-policy evidence
 remain intact; this is bounded new evidence, not another task completion.
 
 RESOLVED by Main's explicit07:55UTC(16:55KST) clarification relayed21d:
@@ -260,6 +260,53 @@ proactive/reload/successful-renewal behavior. No native offer/reservation or202
 wake. Owner already routed the source handoff; SL does not duplicate its raw
 test/hash/goal packet to Root/Main/King. Next material update is actual owner
 publication/readback/goal closure or a concrete integration finding.
+
+### FE09 actual publication and terminal owner receipt
+
+Designated Root153 confirms ordinary publication and independent ls-remote
+master `70a444bf7cf6454f2ed4da7a635db2bb649738f2`, clean publishing checkout.
+The deduplicated owner handoff includes all11 FE09 sourceREADY `f3bdc853`
+payloads exactly; Root notified204 directly for independent delivery readback
+and actual goal/lease closure. At the first receipt the compact owner snapshot was ACTIVE performing
+readback; actual subsequent owner closure is recorded below. No completion
+was inferred from publication alone. No new long-runtime gate.
+
+The complete previous management tail through `371f7dbc` is also published:
+fresh management-only fetch confirms the current Community document blob
+`5609d2a0f4a1cc4278e0c3f1658a2df3a94e90f1` exactly equals the published
+master document. Old isolated branch/commits are preserved; no queued aliases
+or six-commit chain should be replayed. New management receipt work starts on
+the actual published base in `codex/mcr-sl-community-published-20261104-1700`.
+This is document-publication tracking, not implementation/visual/test review.
+
+### Actual FE09 owner readback, goal closure and preservation
+
+Owner204 subsequently independently fresh-fetched and separately checked
+ls-remote `70a444bf7cf6454f2ed4da7a635db2bb649738f2`: published/base ancestry,
+all11 delivered postimages exact at publication AND fresh remote,29/29 local
+qualified pins and28/29 remote pins. Sole drift is an informational progress
+line in execution-plan.md; product session.ts/main/HTTP/cookie/privacy remain
+base bytes. Owner81 targeted tests, strict noemit/lint/plan PASS. Prior original
+FE09 task-local SATISFIED unchanged, no original gap/product patch; no extra
+original-task completion is counted for this bounded disposition.
+
+Actual SAME unbudgeted goal createdAt1793778508 COMPLETE, immediate get_goal
+null, elapsed982s(16m22s). Compact current turn completed/idle agrees with
+explicit CLEAN STOP and exact FIVE leases RETURNED: unused session.ts minimal
+scope, new auth test prefix, new e2e prefix, new evidence prefix and new report.
+Checkout/branch at `f3bdc853` and old Meet/FE32 work are preserved clean. Own
+dependency link removed; no install/build/native/browser/server/profile/cache
+or resource reservation held. No Auth/background/runtime rights carry forward.
+No receipt commit or new waiting goal is requested.
+
+With no currently confirmed ready unowned original implementation leaf from
+the outstanding criterion/lease intake, Community preserved and ARCHIVED204
+after actual terminal proof. Community remains sole next allocator; this is
+an actually free compatible context, not an unfinished goal reset/pause or a
+reason to manufacture a new chat/task. Social canonical Auth ownership registry
+is notified of returned leases. Root1fc retains actual IN01 `/me`504/customization;
+expiry NOT_RUN stays informational/nonblocking. Material original-task changes
+remain batched for the next hourly digest, not a per-helper King packet.
 
 ## Immutable corrected background packet handoff
 

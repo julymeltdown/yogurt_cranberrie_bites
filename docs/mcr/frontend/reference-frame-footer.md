@@ -1,6 +1,6 @@
 # Shared frame and footer — preserved baseline
 
-Status: **IN_PROGRESS — final publication/readback pending**. The bounded owned
+Status: **IN_PROGRESS — final factual correction publication/readback pending**. The bounded owned
 shared-background visual scope is **ACCEPTED** after direct inspection of Root's
 corrected60-image packet. Qualified source validation passes at8972b0b6.
 Shared CSS writes are stopped and the exact lease is returned to World/Root;
@@ -73,7 +73,8 @@ records are not comprehensive SVG/footer raster equality. Direct visual
 inspection and frozen-source/asset checks remain separate evidence.
 
 The targeted Community430 review found no concrete **shared-frame** clipping
-in Meet/Gifts/Wall. Those images capture title-button focus only. Community
+in Meet/Gifts/Wall. Those images show the programmatically focused `#panel-title` heading ring;
+Root separately probes a titlebar button outline after capture. Community
 leaf-control focus contrast/clipping remains **OPEN**, and no Community
 forced-colors image exists in this packet; Me measurements do not close those
 issues. Root and the QA coordinator received this limitation directly. Meet
@@ -88,13 +89,45 @@ source/time qualifications below; later Map leaf changes are not certified by
 that cohort. The Root report records browser/server/temp cleanup; owner active
 jobs, dependency links and resource holdings are zero.
 
-No further owned application changes are needed. The shared CSS lease is
-returned; final Root publication of this review/document, source receipt
-`dd60770e` and the previously committed nine historical reference/reuse files,
-followed by fresh owner remote/ancestry/postimage verification, remains required
-before completing this development goal. This is a publication handoff, not
-an additional main-chat or scrum-lead approval gate. Older status statements
+Root published the original final handoff as
+`70a444bf7cf6454f2ed4da7a635db2bb649738f2`. Fresh owner fetch and independent
+`ls-remote` agree. All16 newly delivered owner document/evidence postimages
+(source receipt, final review/document and nine historical reference/reuse
+files), four application files, two regression test files, four earlier review
+JSONs and all65 canonical corrected-panel artifacts match their committed
+source bytes. Required delivered ancestry and the separate World/Map raw-report
+pin also pass. No further owned application changes are needed; the shared CSS
+lease remains returned. Only the factual heading-state correction and targeted
+finding below still require publication/readback. This is a publication handoff,
+not an additional main-chat or scrum-lead approval gate. Older status statements
 below describe their actual historical cohorts.
+
+### Targeted inherited title-ring finding
+
+QA requested a specific follow-up using Root's immutable three-era packet
+`4600542b`, `reference-scene-v5/map-cozy-v1/native-03/report.json`, source
+`aea02a26`, job `ERA-WORLD-MAP-NATIVE-202611040754Z`,
+07:55:16.489–07:56:07.513UTC. Report SHA-256 is
+`8475506428171eb935c9be1b55c72768075b14d88b2978c175d50855b6724134`.
+The owner verified all18 saved Map PNG hashes/bytes and sampled their actual
+ring/backing pixels: all three eras at360/390/430 show `#a2232b` at(21,22),
+baseline `#191817` or candidate `#251017` at(230,30). Calculated contrast is
+2.37→2.41:1, still below3:1. This arithmetic is from saved pixels; the raw
+report does not contain a title-contrast field. Three390 candidate Map images
+and one390 World image were directly viewed for this targeted review.
+
+The affected state is the programmatically focused Map `h1#panel-title`
+(`shell-chrome/index.tsx:82`), not a titlebar button. Header backing is in
+`shell-chrome.css:30`; its intended light focus override exists atline35,
+while `shared/styles/base.css:32–37` defines the global red tabindex outline.
+The actual rendered red ring proves the intended light rule alone is not
+runtime compliance evidence. The inherited functional focus-contrast issue is
+**OPEN**, routed directly to Root/the existing frame composition owner and QA.
+This does not reopen a returned background-only lease or authorize a focus-rule
+edit. The viewed World image has no focused panel heading. Me icon and Community
+leaf issues remain separate. Other native-03 invariants are Root evidence and
+are not newly accepted by this targeted check. No browser/job/helper, copies or
+raw packet rewrites were created.
 
 ## Current background-only source pass
 

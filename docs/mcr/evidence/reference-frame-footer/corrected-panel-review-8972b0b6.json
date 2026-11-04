@@ -2,7 +2,7 @@
   "task": "QA06-HUMAN-FRAME-FOOTER-01 background-only follow-up",
   "reviewed_at_utc": "2026-11-04T07:53:57.652015+00:00",
   "decision": "ACCEPTED_OWNED_SHARED_BACKGROUND_SCOPE",
-  "delivery_status": "IN_PROGRESS_PENDING_ROOT_PUBLICATION_AND_OWNER_REMOTE_READBACK",
+  "delivery_status": "IN_PROGRESS_PENDING_FACTUAL_DOCUMENTATION_CORRECTION_PUBLICATION",
   "scope": "Only assigned shared header and masked perimeter background paint; frozen shared footer and control/frame preservation reviewed. No leaf artwork or whole-QA06 approval.",
   "canonical_packet": {
     "commit": "5186f11017185a040e4ccde1c59589e140563ef0",
@@ -392,7 +392,7 @@
       "candidate-gifts-430.png",
       "candidate-wall-430.png"
     ],
-    "finding": "No concrete shared header/perimeter clipping; captured focus is a title button only. Community leaf focus contrast/clipping and forced-colors remain unverified. Do not infer closure from Me measurements. Root and Main385 informed; no new browser/job requested."
+    "finding": "No concrete shared header/perimeter clipping. Saved screenshots show the programmatically focused #panel-title heading ring; Root separately probes a titlebar button outline after capture. Community leaf focus contrast/clipping and forced-colors remain unverified. Do not infer closure from Me measurements. Root and Main385 informed; no new browser/job requested."
   },
   "world_map_qualified_reuse": {
     "source": "4e491a4509e9cab6a3e28364db616bdab9c157f5",
@@ -446,6 +446,86 @@
     "Full WCAG compliance"
   ],
   "publication": {
-    "pending": "Root serial publication of this review/doc, source receiptdd60770 and exact9 historical evidence files, then fresh owner remote/ancestry/postimage check. No further technical approval gate."
+    "verified_master": "70a444bf7cf6454f2ed4da7a635db2bb649738f2",
+    "fetch_and_ls_remote_agree": true,
+    "owner_postimages_exact": {
+      "new_source_receipt_final_review_doc_and_historical_files": 16,
+      "application_files": 4,
+      "regression_test_files": 2,
+      "earlier_review_json_files": 4,
+      "canonical_corrected_panel_artifacts": 65
+    },
+    "required_delivered_ancestry_verified": true,
+    "previous_world_map_raw_report_sha256_verified": true,
+    "pending": "Only this factual heading-state correction and targeted inherited-contrast finding need publication/readback; no further application edit or duplicate validation job."
+  },
+  "targeted_three_era_title_ring_follow_up": {
+    "decision": "OPEN_INHERITED_FUNCTIONAL_FOCUS_CONTRAST_ISSUE",
+    "canonical_commit": "4600542b",
+    "canonical_report": "docs/mcr/evidence/reference-scene-v5/map-cozy-v1/native-03/report.json",
+    "report_sha256": "8475506428171eb935c9be1b55c72768075b14d88b2978c175d50855b6724134",
+    "candidate": "aea02a262f7d834be7ef2267368812520a5d9c0c",
+    "job": "ERA-WORLD-MAP-NATIVE-202611040754Z",
+    "started_at": "2026-11-04T07:55:16.489Z",
+    "finished_at": "2026-11-04T07:56:07.513Z",
+    "affected_state": "Map /map programmatic focus on h1#panel-title, not a titlebar button, Me icon or Community leaf control.",
+    "widths": [
+      360,
+      390,
+      430
+    ],
+    "eras": [
+      "PARADE",
+      "REVENGE",
+      "DANGER"
+    ],
+    "independent_saved_evidence_checks": {
+      "map_png_hashes_and_bytes_verified": 18,
+      "actual_png_ring_and_backing_samples_verified": 18,
+      "directly_viewed_map_images": [
+        "candidate-map-parade-390.png",
+        "candidate-map-revenge-390.png",
+        "candidate-map-danger-390.png"
+      ],
+      "directly_viewed_world_images": [
+        "candidate-world-parade-390.png"
+      ]
+    },
+    "samples": {
+      "ring_coordinate": [
+        21,
+        22
+      ],
+      "backing_coordinate": [
+        230,
+        30
+      ],
+      "ring_rgb": [
+        162,
+        35,
+        43
+      ],
+      "baseline_backing_rgb": [
+        25,
+        24,
+        23
+      ],
+      "candidate_backing_rgb": [
+        37,
+        16,
+        23
+      ],
+      "baseline_contrast": 2.3739162164624363,
+      "candidate_contrast": 2.4130529038019013
+    },
+    "contrast_evidence": "Owner calculated contrast from actual pinned PNG pixels. Raw report itself does not include a title-contrast field. All9 candidate Map and9 baseline Map images have these exact respective RGB samples.",
+    "source_paths": {
+      "heading": "frontend/src/app/shell-chrome/index.tsx:82",
+      "backing": "frontend/src/app/shell-chrome/shell-chrome.css:30",
+      "intended_light_header_focus_override": "frontend/src/app/shell-chrome/shell-chrome.css:35",
+      "global_red_tabindex_focus_rule": "frontend/src/shared/styles/base.css:32"
+    },
+    "routing": "Concrete inherited issue routed directly Root153 and QA coordinator385; existing Root/frame composition ownership. Shared background CSS lease remains returned; no unallocated functional focus edit.",
+    "limits": "Baseline-preservation background acceptance remains qualified. Both original/current title contrasts are below3:1; no new regression or whole-WCAG acceptance. Viewed World image has no focused panel heading, so this is not a World title-ring measurement. Other native-03 invariants remain Root evidence, not independently accepted by this targeted review. No new browser/helper/copy or raw packet rewrite."
   }
 }
