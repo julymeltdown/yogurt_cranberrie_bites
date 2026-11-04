@@ -89,3 +89,72 @@ mod tests {
         assert!(ConcertPostReadVerifier::new(&[signer.public_key()], &wrong).is_err());
     }
 }
+
+/// Independently configured Post-to-Concert deferred subject admission channel.
+#[derive(Clone)]
+pub struct PostConcertRootReadSigner(ActorDelegationSigner);
+pub struct PostConcertRootReadVerifier(ActorDelegationVerifier);
+pub const ROOT_READ_SIGNING_SEED_ENV: &str = "POST_CONCERT_ROOT_READ_SIGNING_SEED";
+pub const ROOT_READ_VERIFYING_KEYS_ENV: &str = "POST_CONCERT_ROOT_READ_VERIFYING_KEYS";
+impl PostConcertRootReadSigner {
+    pub fn from_seed(seed: &[u8; 32], gateway: &ActorDelegationVerifier) -> anyhow::Result<Self> {
+        let signer = ActorDelegationSigner::from_seed(Workload::Post, seed)?;
+        distinct(&signer.public_key(), gateway)?;
+        Ok(Self(signer))
+    }
+    pub fn from_env(gateway: &ActorDelegationVerifier) -> anyhow::Result<Self> {
+        let raw = std::env::var(ROOT_READ_SIGNING_SEED_ENV)
+            .map_err(|_| anyhow::anyhow!("{ROOT_READ_SIGNING_SEED_ENV} is required"))?;
+        Self::from_seed(
+            &super::decode_key::<32>(ROOT_READ_SIGNING_SEED_ENV, &raw)?,
+            gateway,
+        )
+    }
+    pub fn public_key(&self) -> [u8; 32] {
+        self.0.public_key()
+    }
+    pub fn client<S>(&self, inner: S) -> ActorDelegationClient<S> {
+        ActorDelegationClient::new(inner, self.0.clone(), Workload::Concert)
+    }
+}
+impl PostConcertRootReadVerifier {
+    pub fn new(keys: &[[u8; 32]], gateway: &ActorDelegationVerifier) -> anyhow::Result<Self> {
+        anyhow::ensure!(
+            gateway.audience() == Workload::Concert,
+            "root read audience must be Concert"
+        );
+        for key in keys {
+            distinct(key, gateway)?;
+        }
+        Ok(Self(ActorDelegationVerifier::new(Workload::Concert, keys)?))
+    }
+    pub fn configured_from_env(gateway: &ActorDelegationVerifier) -> anyhow::Result<Option<Self>> {
+        let raw = match std::env::var(ROOT_READ_VERIFYING_KEYS_ENV) {
+            Ok(v) => v,
+            Err(std::env::VarError::NotPresent) => return Ok(None),
+            Err(_) => anyhow::bail!("Invalid root read verification configuration"),
+        };
+        let keys = raw
+            .split(',')
+            .map(|v| super::decode_key::<32>(ROOT_READ_VERIFYING_KEYS_ENV, v.trim()))
+            .collect::<anyhow::Result<Vec<_>>>()?;
+        Ok(Some(Self::new(&keys, gateway)?))
+    }
+    pub fn into_inner(self) -> ActorDelegationVerifier {
+        self.0
+    }
+}
+#[cfg(test)]
+mod root_tests {
+    use super::*;
+    #[test]
+    fn root_callback_keys_have_no_gateway_or_parity_fallback() {
+        let old = ActorDelegationSigner::from_seed(Workload::Gateway, &[41; 32]).unwrap();
+        let gateway = ActorDelegationVerifier::new(Workload::Concert, &[old.public_key()]).unwrap();
+        assert!(PostConcertRootReadSigner::from_seed(&[41; 32], &gateway).is_err());
+        let signer = PostConcertRootReadSigner::from_seed(&[42; 32], &gateway).unwrap();
+        assert!(PostConcertRootReadVerifier::new(&[signer.public_key()], &gateway).is_ok());
+        assert!(PostConcertRootReadVerifier::new(&[], &gateway).is_err());
+        assert!(PostConcertRootReadVerifier::new(&[old.public_key()], &gateway).is_err());
+    }
+}

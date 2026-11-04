@@ -1,55 +1,63 @@
 # Execution record
 
-Updated 2026-11-04 from published history through `f4b40808` and current owner
-handoffs. The snapshot below reports major feature outcomes and open delivery
-boundaries. Earlier task receipts remain historical evidence; neither their
-accepted-task count nor `generated/` is a current project-completion percentage.
-All **112 required tasks and 61 required IA entries** remain in scope.
+Updated **2026-11-04T09:03:56+09:00**, from published history through `02320134` and existing developer/SL delivery reports. This is a management reconciliation, not a code, query, visual or test review. All **112 required tasks and 61 required IA entries** remain in scope; the six optional EX tasks are excluded from the denominator.
 
-## Current major feature snapshot
+## Current task accounting
 
-| Feature | Delivered evidence | Current boundary and next owner |
+**The old 11/112 number counted historical formal acceptances; it did not count all implemented work. The central ledger failed to incorporate later task-local completion dispositions.**
+
+| Original-task disposition | Count | Meaning |
+| --- | ---: | --- |
+| Recorded formal acceptance | **11** | Existing ACCEPTED records preserved. |
+| Additional task-local criteria satisfied | **9** | Existing frontend completion dispositions reconciled below; no new king/SL technical sign-off. |
+| Other implementation evidence | **77** | Bounded implementation, fixtures or component delivery exist; original-task completion is partial or not yet reconciled. |
+| Status not yet reconciled | **10** | Insufficient current per-task disposition in this reconciliation; not assumed unstarted. |
+| Open integrated-product/release gates | **5** | IN01–IN05 have no completed gate receipt in the current reports. |
+| **Required total** | **112** | Every original required ID appears once in the linked register. |
+
+There are **20 recorded task-criteria outcomes** (11 formal acceptances plus 9 additional frontend task-local dispositions), **not only 11 tasks with implementation**. This is not a claim that 20 tasks were newly accepted today, nor an effort-weighted completion percentage. The 77 evidence-bearing tasks are not silently counted as complete. A completed worker goal, a new commit, a test count or an assistance artifact adds no original task IDs.
+
+The [112-row task register](task-progress-2026-11-04.json) records each original ID, its evidence pointers and the distinction above. Its null states mean unreconciled completion, not NOT_STARTED. No current full-product completion percentage is asserted.
+
+### Additional task-local dispositions now reflected
+
+[Specification section 12](../../MCR_IMPLEMENTATION_PLAN_V2_EN.md#12-frontend-implementation-tasks) permits frontend contract fixtures and deliberately does not make corresponding backend implementation a prerequisite. Live integration requirements remain in their own tasks/gates. Pure helper/contract tasks likewise use their own original criteria, without an invented IN05 prerequisite.
+
+| Tasks | Existing disposition and delivery record |
+| --- | --- |
+| **FE22, FE23, FE25, FE26** | Explicit SATISFIED task-local table in [Community's published tracker](scrum/community.md#frontend-task-disposition-against-specification-section-12). Published integration ancestry includes `e82a220`, `aa103a8`, `48bb3e8`, `95d9f37`, `941d36c` and final KST correction `d8778b8`. The old publication-pending notes are historical; these integration commits are in the current remote history. |
+| **FE27, FE28** | Social SL's retained task-local fixture-complete dispositions and [Feed/thread delivery record](frontend/social-feed.md), with published `cf7836a`, `a413e69`, `5bc0055`, `b392f56`. Live Post/media/write authority and IN03 remain separate. |
+| **FE29, FE30** | Social SL's existing task-local criteria disposition and [introduction/profile record](frontend/introduction-profile.md), delivered through `a3bdb38`. Original author commits need not themselves be ancestors after recorded integration. Actual social/age/public-profile producers remain open. |
+| **FE40** | [Archive owner record](frontend/archive.md) explicitly records the complete assigned read-only feature and its task-local fixture criteria implemented. Real closure/publication/media and integrated-product acceptance are separate. |
+
+This reconciliation does not overwrite these records with new formal ACCEPTED labels. Known follow-up requirements, including the later exact visual target, remain tracked even when the original task-local implementation criteria were met.
+
+## Current major feature delivery
+
+| Feature | Published or owner-reported delivery | Required remainder |
 | --- | --- | --- |
-| Reference frontend | [Checkpoint](frontend/reference-checkpoint-2026-11-04.json) `e9ce93da`: 617 tests, typecheck/lint/build and native default-shell comparisons at 360/390/430px. Later World alignment `fb0bfcaa`, approved Public characters `5008a2ed` and Wall native QA `ce9e8e6c` are published. | **IN_PROGRESS.** These passes apply to their recorded revisions. Contract `3398d833` subsequently exposed frontend decoders that reject `oneOf`, including layered-avatar entry. The exclusive consumer owner published the repair through `90f44fd9` with 413 affected tests; Map recovery is published through `f4b40808`. Integrated-screen qualification continues, so the older 617-test result is not claimed for every later revision. Near-identical ten-screen design, full live flows and devices remain unaccepted. |
-| Selected character artwork | [Source guidance](character-art.md), derivative integration `26a8eb61`: six source-preserving front-idle presets, transparent cutouts, a shared 384x64 atlas and source/hash evidence. The user's source-preserving reconstruction authorization is resolved. | **IN_PROGRESS.** Client composition and resource caching retain the supplied designs and avoid repeated asset requests. Canonical save/reload and World consumption are being connected. Directional/walk artwork and full layered customization remain unfinished; a historical tool-BLOCKED art goal is not an unresolved permission request. |
-| Canonical avatar identity | [Selected-static contract](contracts/selected-static-avatar.md), `3398d833`: disjoint existing layered 1.0.0 and selected whole-character 1.1.0 contracts, six strict preset fixtures and manifest pin. | **CONTRACT_READY.** Backend avatar owner implements persistence/bootstrap/GET; World owner adapts its projection/serializer; frontend owns strict union admission/runtime. Actual new-variant database and end-to-end qualification remain **NOT_RUN**. |
-| Auth and Friend revocation replay | [Auth RPC](backend/auth-invalidation-rpc.md), published through `dad5282c`, records 134 Rust and 2 harness tests. [Friend RPC](backend/friend-invalidation-rpc.md), published through `391bc215`, records 98 Rust and 5 harness tests, actual guarded TLS, owner mutations, replay, deadline/cancellation and PostgreSQL restart/cleanup. [Friend journal](backend/friend-invalidation.md) is published through `493958c4`. | **INTEGRATED** for these bounded owner components. Actual deployment and combined World revocation are **NOT_RUN**. The reused Auth chat now owns sealed Concert replay clients; it does not duplicate World code. |
-| World revocation and event closure | [World invalidation](backend/world-invalidation.md), published through `a4ae8555`: local durable receipts, native publication fencing, scoped SQL removal and replay/dedup, with 75 pure and 6 native tests. | **IN_PROGRESS.** World owner implements the READ_ONLY transaction barrier and permit drain. Lifecycle owner has a separately committed closure/composite-receipt candidate awaiting that API and its native build turn. Remote replay/checkpoint/readiness and the real multiplayer gate remain unfinished. |
-| Participant authority | Isolated participant producer source checkpoints are preserved; its existing chat was recovered and resumed with an actual ACTIVE goal. Static format/proto/ownership checks pass. | **IN_PROGRESS.** Compilation, guarded RPC and native qualification are **NOT_RUN**; its initial layered compile/native checks passed, while the whole-character case correctly exposed the old parser dependency. MEDIA was explicitly transferred to the canonical avatar owner; participant awaits its return for the combined variant proof. Current avatar union compatibility is coordinated with the canonical avatar owner. |
-| Product Feed/media APIs | [Current backend owners](king-coordination.md#current-backend-feature-ownership) now implement media authority, event Feed reads and Gateway/Concert runtime composition in three reused chats, with two additional reused owners supplying real cross-owner authority and canonical public-profile projection. | **IN_PROGRESS.** Event Feed/media routes are not yet mounted with production authority. Library/native fixture success and inherited `/api/feed` are not live event API readiness. Real owner authorization and HTTP recovery are required. |
-| Product release | Bounded source, unit, browser-fixture and private native receipts are recorded in the lane documents. | No new whole-task/IA or IN01-IN05 acceptance is claimed by this snapshot. Real product startup, multiuser authorization/recovery, complete visual fidelity, physical devices, load and deployment require their own evidence. |
+| Selected characters and root integration | Canonical avatar persistence `b13d79e6`, participant increment `0313afa5`, whole editor `c3f411ad`, default-root character flow `9fc3a299` / `903773b8`, authorized portrait/media binding `9dacd962`. | Actual live identity/Profile/authority journeys, all original avatar capabilities, directional/walk/layered art and full device/visual acceptance. |
+| Ten-screen reference design | Auth refinement `08d1b1c0`, Landing `d5ec766d`, Map `f4b40808`, Gifts `9055af1e`, Profile/party/feed portrait delivery `9dacd962`; existing browser-fixture records are retained. | Required Auth/Landing print/glyph work is active. All ten screens still need the requested near-identical final design; fixture success is not complete visual acceptance. |
+| Three-era scenery and map | PARADE proposal `8f89d190`, compact derivative `e3af146a`, canonical Tiled/loader checkpoint `aa3e2f3d`, and all three distinct era inputs published as `02320134`. | World/Map adoption, final reference fidelity and actual release admission remain open. Spatial owner reports unresolved reviewed-place/source provenance and operator inputs; the artist's fidelity goal remains active. No review status is fabricated. |
+| Feed and media product APIs | Feed groundwork `02b17e04`, owner media `84126f6a`, Product API transport `49fb637c`, platform authority checkpoint `ba64c62e`. | Actual durable canonical guards, Profile/producer composition, public HTTP and recovery/revocation journeys. Published transport does not establish enabled live Feed/media. |
+| Meet, Gifts and Wall | Retained community and mural kernels are delivered; reused developers have accepted isolated live-producer assignments. | Genuine public authority, root transport, party commands, reservation/pickup and multiuser mural flows. Newly assigned producers do not close the original feature tasks. |
+| World revocation and event closure | Owner replay components and bounded closure `a93a70ec` are published; remote invalidation/combined owner integration continues. | Actual two-account world/revocation, operator/retention and owning-adapter composition, remaining lifecycle/deletion flows. |
+| Release | Existing lane-level source/native/browser receipts are preserved. | **IN01–IN05: 0 completed gate receipts established.** Real devices, accessibility, capacity/recovery, qualified real-stack startup, remaining physical-place/operator inputs and full 61-entry IA accounting remain open. |
 
-## Coordination and resource policy
+## Staffing and delivery policy
 
-[Current ownership](king-coordination.md) and `AGENTS.md` implement the user's
-latest direction: kings manage major features and periodic commit logs; SLs manage
-feature context, dependencies and staffing. Neither role approves or re-reviews
-every commit. Exact-scope owners validate and non-force publish directly to
-`julymeltdown/mcr` `master`, reconcile peer history and report remote ancestry.
-Frontend and backend writers keep separate isolated checkouts and explicit paths.
+[Current coordination roles](king-coordination.md) remain authoritative: developers implement, validate, resolve technical interfaces and non-force publish their exclusive scopes directly to master. Kings manage priorities, staffing escalation and major delivery; SLs manage feature dependencies, ready work and worker lifecycle. No king/SL technical review or approval stage is introduced by this report.
 
-Reuse existing chats for ready related work. Finished chats without a next task
-are stopped/archived after preserving their work; a stale active flag does not
-count as progress. The participant chat was recovered through supported chat
-lifecycle controls, preserving its branch and documentation. Three superseded or
-finished backend/QA chats were archived; frontend staffing remains with its king
-and SLs. No additional chat quota is imposed.
+Backend staffing/resources SL owns both existing target queues and actual handoffs. Current holders must come from live receipts, not old snapshots in this file. Frontend/art staffing belongs to the frontend king and its three SLs. Finished chats are reused only for ready disjoint scopes or archived with work and unfinished requirements preserved. No chat quota is imposed.
 
-Two existing backend build targets remain exclusive physical resource leases.
-Source implementation proceeds independently. A lease moves only after actual
-handle/process cleanup and a fresh free-space check; no third target is created.
-The Auth RPC owner released MEDIA to Friend; Friend has now unconditionally
-released it to participant. Participant and the canonical avatar owner may
-sequence their real dependency with explicit exclusive lease handoffs. World retains BACKEND for closure qualification, followed
-by the dependent lifecycle candidate when that API is delivered. These resource
-and dependency waits are not review/approval queues.
+Named future backlog ownership covers beacon/rally, age/introduction/mutual sharing, Feed mutations/comments, notifications, operations/moderation, closure/deletion and real-stack startup. These future assignments are not counted as active or complete. The planning exports remain untouched.
 
 ## Historical task acceptance ledger
 
 The following task-level receipts preserve earlier criteria and candidate
 revisions. The historical tally was **11/112 required tasks** and **11/118 total**;
 this is not a freshly audited completion count and must not be reported as an
-unchanging project percentage. This major-feature update does not silently grant
+unchanging project percentage. This management reconciliation does not silently grant
 new acceptance, reduce scope, or turn fixture/native component tests into live
 multiuser or release proof. Current lane reports and the snapshot above take
 precedence over stale pending-work descriptions in these earlier receipts.
