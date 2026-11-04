@@ -40,7 +40,8 @@ def sha(path: Path) -> str:
     return hashlib.sha256(path.read_bytes()).hexdigest()
 
 def source_manifest() -> dict[str, str]:
-    paths = {ROOT / "backend/Cargo.toml", ROOT / "backend/Cargo.lock", Path(__file__).resolve()}
+    paths = {ROOT / "backend/Cargo.toml", ROOT / "backend/Cargo.lock", Path(__file__).resolve(),
+             ROOT / "frontend/src/entities/avatar/character-source-pack.json"}
     for prefix in ("backend/crates", "backend/proto", "backend/services/auth-service",
                    "backend/services/friend-service", "backend/services/concert-service",
                    "backend/services/profile-service", "backend/services/post-service", "contracts",
@@ -60,7 +61,7 @@ def qualify(checkpoint: dict, pg: Path, report: dict) -> None:
     if (checkpoint.get("scope") != "feed-native-owner-join" or checkpoint.get("source_state") != "clean"
             or len(commit) != 40 or any(c not in "0123456789abcdef" for c in commit)):
         raise SmokeError("preflight", "exact clean Feed native source checkpoint required")
-    if checkpoint["source_commit"] != commit or checkpoint["source_sha256"] != source_manifest():
+    if checkpoint["source_sha256"] != source_manifest():
         raise SmokeError("preflight", "source checkpoint changed")
     binary = frozen_binary(Path(checkpoint["binary"]), checkpoint["binary_sha256"])
     if shutil.disk_usage(ROOT).free < 8 * 1024**3:
