@@ -119,7 +119,7 @@ impl SocialStartupSettings {
         let uri: axum::http::Uri = endpoint
             .parse()
             .map_err(|_| anyhow::anyhow!("Invalid Social Notification endpoint"))?;
-        anyhow::ensure!(uri.scheme_str() == Some("https") && uri.host().is_some_and(|h| !h.is_empty()) && uri.port_u16().is_some_and(|p| p > 0) && uri.authority().is_some_and(|a| !a.as_str().contains('@')) && uri.path_and_query().is_none_or(|p| p.as_str() == "/"), "Social Notification endpoint requires explicit HTTPS host/port without credentials, path or query");
+        anyhow::ensure!(!endpoint.contains('#') && uri.scheme_str() == Some("https") && uri.host().is_some_and(|h| !h.is_empty()) && uri.port_u16().is_some_and(|p| p > 0) && uri.authority().is_some_and(|a| !a.as_str().contains('@')) && uri.path_and_query().is_none_or(|p| p.as_str() == "/"), "Social Notification endpoint requires explicit HTTPS host/port without credentials, path, query or fragment");
         let token = required(&mut read, "CONCERT_SERVICE_CREDENTIAL")?;
         let token = platform::config::resolve_service_credential(
             Some(token),

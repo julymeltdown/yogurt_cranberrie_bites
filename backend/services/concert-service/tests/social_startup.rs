@@ -170,10 +170,11 @@ async fn delivery_endpoint_cannot_be_retargeted_by_url_components() -> anyhow::R
         "https://notification.internal:8443/path",
         "https://notification.internal:8443/?x=1",
         "https://notification.internal:8443/#private",
+        "https://notification.internal:8443/#",
     ] {
         let mut v = values();
         v.insert("CONCERT_NOTIFICATION_GRPC_ENDPOINT".into(), endpoint.into());
-        assert!(parse(&v, &tls).is_err());
+        assert!(parse(&v, &tls).is_err(), "endpoint accepted: {endpoint}");
     }
     Ok(())
 }
