@@ -181,7 +181,7 @@ def build():
         'checks': ['C03 Bootstrap schema and invariants', 'C06 complete bundle schema/hash/bindings',
                    'exact reviewed source qualification and source binding', 'all scene source hashes/sizes',
                    'PNG full decode/dimensions/hash', 'selected avatar original/derived source identity'],
-        'not_run': ['Rust from_source_bound_files constructor', 'Gateway HTTP', 'operator admission', 'visual fidelity acceptance'],
+        'not_certified_by_builder': ['Rust from_source_bound_files constructor', 'Gateway HTTP', 'operator admission', 'visual fidelity acceptance'],
         'limits': ['Source provenance applies to exact supplied scene inputs only.',
                    'Original virtual places remain UNREVIEWED/VIRTUAL_CONCEPT/CONCEPT_ONLY.',
                    'The validation event/actor are inert template identities, not real admission or authorization.',
