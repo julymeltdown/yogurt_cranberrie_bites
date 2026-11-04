@@ -1,0 +1,108 @@
+{
+  "assignmentBase": "a3526254a716e14e3134de551c3b277379a1096f",
+  "qualifiedHead": "30cf548f8fb08b4437184e8062059fbb7e42e430",
+  "inputs": {
+    "MCR_IMPLEMENTATION_PLAN_V2_EN.md": {
+      "sha256": "e19732ac9c5c5d5397652bf047645da0640ec72c97f59869974680c4e7f69a36",
+      "bytes": 93063,
+      "qualifiedGitBlob": "fdb247c35a5a2a7e8e371c7008fd42df6c6b7a03"
+    },
+    "docs/mcr/character-art.md": {
+      "sha256": "3aa9657c61ae16e433077aae785fdd5a63e28dad5bd217f388966fd851f0a4e8",
+      "bytes": 8011,
+      "qualifiedGitBlob": "5484864e33a0a726f7a82e8916259269b46c56a3"
+    },
+    "frontend/src/entities/avatar/character-source-pack.json": {
+      "sha256": "f8d6c83818bced007f71af1f59dbc53cd88115c5dab0112fc302d8469a4fdc6f",
+      "bytes": 21539,
+      "qualifiedGitBlob": "c6600f6c1745ee1aebffe41a575ffc6a9b05edf7"
+    },
+    "frontend/src/entities/avatar/derived-assets/hair-layout.json": {
+      "sha256": "b9940b696dc8a1d85603092e86c0c1b2ce4f975077a319b3e914d52af477f1e1",
+      "bytes": 34978,
+      "qualifiedGitBlob": "f77c323a66c9105fedd87fa6b58a943163d718e2"
+    },
+    "frontend/src/entities/avatar/derived-assets/mask-presets.mjs": {
+      "sha256": "7b3bd5bdbf9e419a9ad161295be54a125806be9f5483fa93ed2bc91d8c4776f4",
+      "bytes": 6974,
+      "qualifiedGitBlob": "2f8d61ed082c4460db9b7242af8ca5ac2780fa5a"
+    },
+    "frontend/src/entities/avatar/derived-assets/source-layout.json": {
+      "sha256": "69f7312015a6eac12cb2734fe48358e5626dea2e98fb491f0f9aa550a2b7e956",
+      "bytes": 2485,
+      "qualifiedGitBlob": "527fa6dd24d9926b13691995f94ef93aa8901128"
+    },
+    "frontend/src/entities/avatar/derived-assets/static-package.json": {
+      "sha256": "924dff3e37667b547ec27d1034ca45f3ac23faf312c178135efb381d58cd5724",
+      "bytes": 9982,
+      "qualifiedGitBlob": "29a92d7315d9dfbf03297ca9eac8af25b0a39709"
+    },
+    "frontend/public/world/themes/revenge.png": {
+      "sha256": "245049897f87ace9e82a7e2676654708ac3e4aa8a297d11dedbcb9275c064da6",
+      "bytes": 4975,
+      "qualifiedGitBlob": "58ecbed7daceced2a32092995f71599f46831bfd"
+    },
+    "frontend/public/world/themes/parade.png": {
+      "sha256": "3ecb77e72c67e1befb1f345f45f12b7b6f931e3ce62c0a43c1b69de319db6c70",
+      "bytes": 5017,
+      "qualifiedGitBlob": "06ef634c8bd824d264e1705a99f02c314f80de46"
+    },
+    "frontend/public/world/themes/danger.png": {
+      "sha256": "1dcea83f14d38a5911f6c1cda6226c365475272cf89832d6a4957a7298343a21",
+      "bytes": 4909,
+      "qualifiedGitBlob": "894305804e0b610337ad4dc018a38598579cdb60"
+    }
+  },
+  "dependencies": {
+    "node": "24.22.2",
+    "playwright": "1.61.1",
+    "chrome": "156.0.8078.80"
+  },
+  "authoredSources": {
+    "body": {
+      "file": "authored-clean-body-source-da986a83df244072.png",
+      "sha256": "da986a83df2440723b37b224ea7b74de0edfbc4f40bd1c716333199f5581f6d2",
+      "method": "BUILT_IN_IMAGEGEN_SELECTED_BODY_RECONSTRUCTION",
+      "originalSource": "photo_02",
+      "prompt": "authored-body-prompt.txt",
+      "grid": [
+        4,
+        1
+      ]
+    },
+    "hair": {
+      "file": "authored-hair-source-1ecafff63abbb025.png",
+      "sha256": "1ecafff63abbb0252098f6a81fc710aaa8dee78354c1e2fd9223e5a955749fef",
+      "method": "BUILT_IN_IMAGEGEN_SELECTED_COMPONENT_RECONSTRUCTION",
+      "originalSource": "photo_01/photo_04/photo_05",
+      "prompt": "authored-hair-prompt.txt",
+      "grid": [
+        4,
+        6
+      ]
+    },
+    "outfit": {
+      "file": "authored-outfit-source-a106fab178ab0a05.png",
+      "sha256": "a106fab178ab0a05b7d56da3ffb3e3b35dc4d21e3ade53089204926803863dd3",
+      "method": "BUILT_IN_IMAGEGEN_SELECTED_COMPONENT_RECONSTRUCTION",
+      "originalSource": "photo_01/photo_06",
+      "prompt": "authored-outfit-prompt.txt",
+      "grid": [
+        4,
+        6
+      ]
+    },
+    "accessory": {
+      "file": "authored-accessory-source-29ff6bab42ff3829.png",
+      "sha256": "29ff6bab42ff3829119103cd8281799224292668b1b1f317b22c502bc9be818c",
+      "method": "BUILT_IN_IMAGEGEN_SELECTED_ACCESSORY_RECONSTRUCTION",
+      "originalSource": "photo_19",
+      "prompt": "authored-accessory-prompt.txt",
+      "grid": [
+        4,
+        4
+      ]
+    }
+  },
+  "codeProvenance": "Newly authored rendering/tooling; original mask approach adapted from mask-presets.mjs; read-only selected hair windows. Built-in imagegen for explicitly authored reconstruction; saved exact prompts and immutable outputs."
+}

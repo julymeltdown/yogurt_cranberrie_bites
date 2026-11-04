@@ -1,0 +1,182 @@
+[
+  {
+    "role": "RootWebArea",
+    "name": "FE36 synthetic safety qualification"
+  },
+  {
+    "role": "generic",
+    "name": ""
+  },
+  {
+    "role": "main",
+    "name": ""
+  },
+  {
+    "role": "paragraph",
+    "name": ""
+  },
+  {
+    "role": "navigation",
+    "name": "Fixture routes"
+  },
+  {
+    "role": "region",
+    "name": "Account controls"
+  },
+  {
+    "role": "StaticText",
+    "name": "Synthetic FE36 qualification only"
+  },
+  {
+    "role": "button",
+    "name": "Open report"
+  },
+  {
+    "role": "button",
+    "name": "Blocked users"
+  },
+  {
+    "role": "button",
+    "name": "Account"
+  },
+  {
+    "role": "button",
+    "name": "Back"
+  },
+  {
+    "role": "heading",
+    "name": "Account controls"
+  },
+  {
+    "role": "paragraph",
+    "name": ""
+  },
+  {
+    "role": "button",
+    "name": "Sign out"
+  },
+  {
+    "role": "heading",
+    "name": "Delete account"
+  },
+  {
+    "role": "paragraph",
+    "name": ""
+  },
+  {
+    "role": "button",
+    "name": "Request account deletion"
+  },
+  {
+    "role": "status",
+    "name": ""
+  },
+  {
+    "role": "button",
+    "name": "Check deletion progress"
+  },
+  {
+    "role": "InlineTextBox",
+    "name": "Synthetic FE36 qualification only"
+  },
+  {
+    "role": "StaticText",
+    "name": "Open report"
+  },
+  {
+    "role": "StaticText",
+    "name": "Blocked users"
+  },
+  {
+    "role": "StaticText",
+    "name": "Account"
+  },
+  {
+    "role": "StaticText",
+    "name": "Back"
+  },
+  {
+    "role": "StaticText",
+    "name": "Account controls"
+  },
+  {
+    "role": "StaticText",
+    "name": "Signing out clears private views and drafts on this device immediately."
+  },
+  {
+    "role": "StaticText",
+    "name": "Sign out"
+  },
+  {
+    "role": "StaticText",
+    "name": "Delete account"
+  },
+  {
+    "role": "StaticText",
+    "name": "Deletion may remain pending or need recovery. A request acknowledgment does not mean deletion is complete."
+  },
+  {
+    "role": "StaticText",
+    "name": "Request account deletion"
+  },
+  {
+    "role": "StaticText",
+    "name": "Check deletion progress"
+  },
+  {
+    "role": "InlineTextBox",
+    "name": "Open report"
+  },
+  {
+    "role": "InlineTextBox",
+    "name": "Blocked users"
+  },
+  {
+    "role": "InlineTextBox",
+    "name": "Account"
+  },
+  {
+    "role": "InlineTextBox",
+    "name": "Back"
+  },
+  {
+    "role": "InlineTextBox",
+    "name": "Account controls"
+  },
+  {
+    "role": "InlineTextBox",
+    "name": "Signing out clears private views and drafts "
+  },
+  {
+    "role": "InlineTextBox",
+    "name": "on this device immediately."
+  },
+  {
+    "role": "InlineTextBox",
+    "name": "Sign out"
+  },
+  {
+    "role": "InlineTextBox",
+    "name": "Delete account"
+  },
+  {
+    "role": "InlineTextBox",
+    "name": "Deletion may remain pending or need "
+  },
+  {
+    "role": "InlineTextBox",
+    "name": "recovery. A request acknowledgment does "
+  },
+  {
+    "role": "InlineTextBox",
+    "name": "not mean deletion is complete."
+  },
+  {
+    "role": "InlineTextBox",
+    "name": "Request account deletion"
+  },
+  {
+    "role": "InlineTextBox",
+    "name": "Check deletion progress"
+  }
+]

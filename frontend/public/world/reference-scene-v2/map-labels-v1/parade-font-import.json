@@ -1,0 +1,53 @@
+{
+  "assetId": "font-f44e493f61e2d91c2156dd5abc720eeb6274a9c02b11d9097d1ea38d50011e8b",
+  "faces": [
+    {
+      "coveredScripts": [
+        "cyrillic",
+        "greek"
+      ],
+      "faceIndex": 0,
+      "familyName": "MCR Map Labels",
+      "fullName": "MCR Map Labels Bold",
+      "isSerif": false,
+      "italic": false,
+      "postscriptName": "MCRMapLabels-Bold",
+      "selectionNames": [
+        "MCR Map Labels/Bold"
+      ],
+      "styleName": "Bold",
+      "variationInstances": [],
+      "weight": 800,
+      "width": 5
+    }
+  ],
+  "font": "MCRMapLabels-Bold",
+  "fontFamily": "MCR Map Labels",
+  "fontStyle": "Bold",
+  "project": "frontend/public/world/reference-scene-v2/map-labels-v1/parade-map-labels.tsrct",
+  "properties": {
+    "faces": [
+      {
+        "coveredScripts": [
+          "cyrillic",
+          "greek"
+        ],
+        "faceIndex": 0,
+        "familyName": "MCR Map Labels",
+        "fullName": "MCR Map Labels Bold",
+        "isSerif": false,
+        "italic": false,
+        "postscriptName": "MCRMapLabels-Bold",
+        "selectionNames": [
+          "MCR Map Labels/Bold"
+        ],
+        "styleName": "Bold",
+        "variationInstances": [],
+        "weight": 800,
+        "width": 5
+      }
+    ],
+    "fileName": "map-labels-bold.ttf",
+    "mimeType": "font/ttf"
+  }
+}

@@ -1,0 +1,102 @@
+{
+  "result": "FAIL",
+  "candidate": "da9d9cd3f4f7e957d8910a8728ca8d76c5b6a15c",
+  "qualification": "Actual browser router, native layout/scroll/history, canonical Auth, default production composition/Phaser; explicit HTTP/C05 test fixture. Original FE07 owner retains complete task qualification.",
+  "pins": {
+    "frontend/src/app/WorldShell.tsx": "6c16414a471745826db6e5f53c80b0c7ba7bafaec00f88730bbd6216e15ceb33",
+    "frontend/src/world/__tests__/fe15-application-input/scroll-preview.tsx": "2a0312b9ec33dbb9da37f02310d7a2faf0758d0dc9a94afdcd1c2f0b4a426583",
+    "frontend/src/world/__tests__/fe15-application-input/scroll-preview.html": "b1e7809a256c643a404e8719c77de108fbce3a07ba7091f178c35d6b1a9ab1d4",
+    "frontend/src/world/__tests__/fe15-application-input/scroll-native.mjs": "9302d7a35f57deabe245fc1886e0553d957f2786e40ba813766b020062458a43"
+  },
+  "cases": [
+    {
+      "width": 390,
+      "before": 1894,
+      "detailScroll": 1894,
+      "after": 0,
+      "state": {
+        "path": "/gifts",
+        "search": "",
+        "action": "POP",
+        "historyLength": 4,
+        "auth": "ready",
+        "bootstrapHeld": false,
+        "requests": [
+          {
+            "path": "/api/auth/capabilities",
+            "method": "GET",
+            "protected": false
+          },
+          {
+            "path": "/api/auth/login",
+            "method": "POST",
+            "protected": false
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/bootstrap",
+            "method": "GET",
+            "protected": true
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/rooms",
+            "method": "GET",
+            "protected": true
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/world-tickets",
+            "method": "POST",
+            "protected": true
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/places",
+            "method": "GET",
+            "protected": true
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/giveaways",
+            "method": "GET",
+            "protected": true
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/giveaways/00000000-0000-4000-8000-000000000205",
+            "method": "GET",
+            "protected": true
+          }
+        ],
+        "games": 1,
+        "knownGames": 1,
+        "peakGames": 1,
+        "sameGame": true,
+        "sockets": 1,
+        "activeSockets": 1,
+        "peakSockets": 1,
+        "sameCamera": true,
+        "camera": {
+          "following": true,
+          "camera": {
+            "zoom": 1,
+            "scrollX": 0,
+            "scrollY": 105,
+            "width": 378,
+            "height": 791
+          }
+        },
+        "room": "00000000-0000-4000-8000-000000000011",
+        "position": {
+          "x": 140,
+          "y": 520
+        },
+        "phase": "live",
+        "canvases": 1,
+        "inputTypes": [
+          "authenticate",
+          "input"
+        ],
+        "userId": "00000000-0000-4000-8000-000000000101"
+      },
+      "errors": []
+    }
+  ],
+  "browser": "156.0.8078.80",
+  "error": "AssertionError [ERR_ASSERTION]: scroll restoration 1894 -> 0\n    at file:///Users/lhs/Desktop/mcr-worktrees/fe-ref-world/frontend/src/world/__tests__/fe15-application-input/scroll-native.mjs:30:102"
+}

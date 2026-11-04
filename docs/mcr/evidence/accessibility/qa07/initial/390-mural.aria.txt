@@ -1,0 +1,18 @@
+- paragraph: SYNTHETIC FE33 caller assembly. Actual production adapter, World composition, MapScene/Phaser and WorldPanels. Fixture resources, admission, HTTP, anchor and eligibility; no live server.
+- region "World scene and controls":
+  - group "World movement map. Arrow keys or W A S D move. E interacts. R recenters."
+  - region "World movement controls":
+    - button "Movement joystick. Arrow keys or W A S D when focused" [disabled]
+    - 'button "Interact: Virtual fixture landmark" [disabled]'
+    - button "Recenter" [disabled]
+    - group: Controls & help?
+    - status: Movement paused.
+  - status: World disconnected. Select Reconnect world to continue.
+  - button "Reconnect world"
+  - paragraph: Virtual position is not physical arrival.
+- button "Withdraw fixture qualification"
+- button "Supply fresh fixture qualification"
+- button "Invalidate fixture privacy"
+- region "GRAFFITI WALL":
+  - heading "GRAFFITI WALL" [level=1]
+  - status: Wall unavailable. Reconnect to a qualified world scene before opening the current wall.

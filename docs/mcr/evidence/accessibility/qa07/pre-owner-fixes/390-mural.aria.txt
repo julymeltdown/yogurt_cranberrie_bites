@@ -1,0 +1,68 @@
+- paragraph: SYNTHETIC FE33 caller assembly. Actual production adapter, World composition, MapScene/Phaser and WorldPanels. Fixture resources, admission, HTTP, anchor and eligibility; no live server.
+- region "World scene and controls":
+  - group "World movement map. Arrow keys or W A S D move. E interacts. R recenters."
+  - region "World movement controls":
+    - button "Movement joystick. Arrow keys or W A S D when focused" [disabled]
+    - 'button "Interact: Virtual fixture landmark" [disabled]'
+    - button "Recenter" [disabled]
+    - group: Controls & help?
+    - status: Movement paused.
+  - status: Connected. Avatar artwork is unavailable.
+  - paragraph: Virtual position is not physical arrival.
+- button "Withdraw fixture qualification"
+- button "Supply fresh fixture qualification"
+- button "Invalidate fixture privacy"
+- region "Wall editor":
+  - region "Wall":
+    - heading "Wall" [level=2]
+    - heading "128 × 128 PIXEL WALL" [level=3]
+    - group "Mural pixel preview"
+    - group "Wall view controls":
+      - button "Pencil preview" [disabled] [pressed]
+      - button "Pan wall"
+      - status "Zoom level": 1×
+      - button "Zoom in"
+      - button "Zoom out" [disabled]
+      - button "Fit wall"
+    - group "Palette · color 0":
+      - text: Palette · color 0
+      - group "Wall palette":
+        - 'button "Color 0 #FAF6ED" [disabled] [pressed]'
+        - 'button "Color 1 #201D1D" [disabled]'
+        - 'button "Color 2 #A22635" [disabled]'
+        - 'button "Color 3 #605952" [disabled]'
+        - 'button "Color 4 #E5DFD4" [disabled]'
+        - 'button "Color 5 #713B70" [disabled]'
+        - 'button "Color 6 #244C69" [disabled]'
+        - 'button "Color 7 #42736B" [disabled]'
+        - 'button "Color 8 #7E8245" [disabled]'
+        - 'button "Color 9 #BD8E46" [disabled]'
+        - 'button "Color 10 #CF6845" [disabled]'
+        - 'button "Color 11 #D4A2AC" [disabled]'
+        - 'button "Color 12 #938EB0" [disabled]'
+        - 'button "Color 13 #8EBDD0" [disabled]'
+        - 'button "Color 14 #ACCB96" [disabled]'
+        - 'button "Color 15 #FFFFFF" [disabled]'
+    - paragraph: 16 server colors. Scroll horizontally or focus this palette and use Left, Right, Home or End. Tab reaches every color.
+    - strong: PREVIEW ONLY
+    - paragraph: Pixel (12, 13) · color 0
+    - paragraph: "Confirmed color: 0."
+    - button "Confirm pixel" [disabled]
+    - button "Cancel preview" [disabled]
+    - text: REV 10 · EDITABLE Placement unresolved
+    - status "Wall command status": Waiting for server confirmation.
+    - status "Wall synchronization status": Wall synchronized at revision 10.
+    - status "Original placement status": Waiting for the original placement result.
+    - button "Check original command" [disabled]
+    - button "Refresh confirmed wall" [disabled]
+    - group:
+      - text: Coordinates & help
+      - paragraph: Pencil previews one pixel; drag to pan. Pan mode never selects. Only Confirm pixel sends a placement.
+      - paragraph: In Pencil mode, arrow keys select a pixel. In Pan mode, arrow keys move the view. Escape cancels. Coordinates work without the canvas.
+      - group "Pixel coordinates · 0–127":
+        - text: Pixel coordinates · 0–127 X
+        - spinbutton "X" [disabled]: "12"
+        - text: "Y"
+        - spinbutton "Y" [disabled]: "13"
+        - button "Preview pixel" [disabled]
+      - paragraph: The server decides cooldown and region permissions. Completed pixels cannot be undone here.

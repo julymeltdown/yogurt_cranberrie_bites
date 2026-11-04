@@ -1,0 +1,30 @@
+- link "Skip to content":
+  - /url: "#shell-content"
+- main "Map":
+  - heading "Map" [level=1]
+  - button "Reduce panel" [expanded]
+  - button "Minimize panel" [expanded]
+  - button "Back to previous panel"
+  - region "Map overview":
+    - region "Illustrated virtual map; drag or use arrow keys to pan":
+      - img "PARADE illustrated virtual map"
+      - link "View Virtual Culture Park lawn":
+        - /url: /world/places/6a5c196b-58e1-47d5-99bb-000000000002
+        - text: Virtual Culture Park lawn
+      - link "View Virtual stage":
+        - /url: /world/places/6a5c196b-58e1-47d5-99bb-000000000003
+        - text: Virtual stage
+      - link "View Virtual gift corner":
+        - /url: /world/places/6a5c196b-58e1-47d5-99bb-000000000004
+        - text: Virtual gift corner
+      - link "View Virtual pixel wall":
+        - /url: /world/places/6a5c196b-58e1-47d5-99bb-000000000005
+        - text: Virtual pixel wall
+      - 'img "Selected virtual location: Virtual pixel wall"'
+    - button "Zoom in map view": +
+    - button "Zoom out map view": −
+    - status: Virtual pixel wall · virtual target selected No physical arrival is implied.
+    - button "Places"
+    - button "Legend"
+    - button "Fit map"
+    - button "Reset view"

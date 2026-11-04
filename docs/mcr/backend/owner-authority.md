@@ -379,3 +379,58 @@ in the private frozen artifact directory):
 - Copied executable SHA-256: `b274dcace738082e7a7e7e8bd6ac38514c5e8abec0fe71f1b439667c512139d1`.
 - Canonically sorted source-manifest SHA-256: `9b5ecd7abb337fbb6c33a6b7fd341f048dd99ae5b1a3792822f793f2544e07bf`.
 - Native report SHA-256: `2a26d6f2b747d8f9e4f1579fed6ee39737c02eaae678d6385dc379b8d7e03940`.
+
+
+### Reserved subject-denial and distinct-effect qualification
+
+The SDK subject boundary published as `b0c95de3` reserves `NotFound` for an
+actual missing, inactive or blocked subject after a valid fresh scope check.
+An owner/child `NotFound` becomes `Unavailable`; actor denial, wrong binding,
+sealed scope, expired authority and other failures remain fatal to the read.
+Consumers must not turn those failures into an empty successful page.
+
+Clean combined source `e5f922ddc1a57aa7b461ae74c5415c12a860fcdb` consumed the
+published generation fix `cb057d43`, Root's distinct-effect fix `72b1233f`,
+and Party compatibility fix `f0d0663a`. The locked/offline Rust 1.88 command
+above compiled the actual six-case fixture with exit 0, sixteen inherited
+warnings and zero owned fixture warnings. It froze 1,289 source inputs and
+copied the executable before unconditionally releasing BACKEND. Actual
+PostgreSQL 16.14 then ran five individual cases successfully:
+
+- Both-owner exclusion and actual settlement: exit 0, 0.46 seconds.
+- Full 100-subject page and callback drain: exit 0, 0.51 seconds.
+- Actual full transaction identity with an effect digest distinct from the
+  scope fingerprint; exact duplicate Track admission, native in-progress
+  quarantine and actual abort settlement: exit 0, 0.29 seconds.
+- Unexposed acquisition cancellation and authenticated fresh-owner recovery:
+  exit 0, 4.95 seconds.
+- Actual blocked/missing Auth subject yields reserved `NotFound`; a wrong
+  actor/binding or sealed scope remains `PermissionDenied`: exit 0, 0.29 seconds.
+
+**The six-case controller returned exit 1 and its overall report is FAIL.** Its
+sixth Product error-delivery fixture reported that its producer capture was
+absent. The fixture omitted the production `CallDeadlineLayer`, leaving no
+original caller deadline for the real Product handler. Source `41841fb2` adds
+that actual layer and bounded gRPC diagnostics; its fresh compile/native rerun
+is pending. No Product wrapper, six-case, Gift-private or outer Gateway HTTP
+acceptance is inferred from the five individual passes. Owned cluster cleanup
+passed and the private directory was absent even after the failed sixth case.
+
+The earlier compile on `175fb8f4` returned 101 for the Party owner's obsolete
+`Uuid.uuid()` comparison; that owner supplied its already-published `f0d0663a`
+fix. The failed compile receipt is retained separately and is not a passing
+qualification. These failures were not resolved by fabricated authority.
+
+Portable evidence pins for the bounded five-case result:
+
+- Qualified executable: `7bd28f449226397ec642ed0a959c9f189134134042e98f99cd622c05732a843a`.
+- Overall FAIL report: `6e1242c2f81e20a4282521942574fbb168b08b00e7e8d6c602e606426656be9c`.
+- Immutable report/checkpoint/Cargo output are retained with the frozen
+  executable in the owner-controlled evidence directory.
+
+SDK3 source `0576c359` and response-wide ceiling follow-up `f646f015` are
+separate, uncompiled, unpublished source handoffs. They define only the closed
+Gift-private intent and the minimum original/intended/held-child disclosure
+ceiling. Root and Gift still own the matching encrypted recovery, database,
+private producer and before-byte transport qualifications. Expiry does not
+release any prepared guard.

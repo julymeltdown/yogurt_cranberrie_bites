@@ -1,0 +1,231 @@
+{
+  "kind": "SOURCE_PIXEL_FRONT_HEAD_ATTACHMENTS",
+  "status": "IN_PROGRESS",
+  "productionEligible": false,
+  "sourcePack": {
+    "id": "mcr_user_characters_20261103",
+    "revision": 3
+  },
+  "items": [
+    {
+      "label": "Red bow",
+      "sourceId": "photo_19",
+      "sourceLocation": "row1-col1",
+      "sourceRect": {
+        "x": 0,
+        "y": 0,
+        "width": 334,
+        "height": 267
+      },
+      "native": {
+        "width": 334,
+        "height": 267,
+        "bounds": {
+          "x": 43,
+          "y": 42,
+          "width": 266,
+          "height": 217
+        },
+        "stats": {
+          "opaque": 39428,
+          "white": 1,
+          "dark": 20558,
+          "discardedDark": 0,
+          "removedPaper": 49750,
+          "parts": [
+            {
+              "pixels": 39428,
+              "dark": 20558
+            }
+          ]
+        },
+        "file": "photo-19-row1-col1-native-7e3f8951e964f996.png"
+      },
+      "transform": {
+        "sourceAnchor": {
+          "x": 176,
+          "y": 150.5
+        },
+        "targetAnchor": {
+          "x": 44,
+          "y": 16
+        },
+        "scale": 0.045,
+        "uniform": true,
+        "sampling": "NEAREST_SOURCE_PIXEL"
+      },
+      "slot": "FRONT_HEAD_ACCESSORY_CANDIDATE",
+      "productItemId": null,
+      "occlusion": "ABOVE_FRONT_HAIR",
+      "direction": "front",
+      "skinIndependent": true
+    },
+    {
+      "label": "Black bow",
+      "sourceId": "photo_19",
+      "sourceLocation": "row1-col2",
+      "sourceRect": {
+        "x": 333,
+        "y": 0,
+        "width": 310,
+        "height": 267
+      },
+      "native": {
+        "width": 310,
+        "height": 267,
+        "bounds": {
+          "x": 26,
+          "y": 42,
+          "width": 260,
+          "height": 217
+        },
+        "stats": {
+          "opaque": 36980,
+          "white": 0,
+          "dark": 36931,
+          "discardedDark": 0,
+          "removedPaper": 45790,
+          "parts": [
+            {
+              "pixels": 36980,
+              "dark": 36931
+            }
+          ]
+        },
+        "file": "photo-19-row1-col2-native-09b30195e82d474d.png"
+      },
+      "transform": {
+        "sourceAnchor": {
+          "x": 156,
+          "y": 150.5
+        },
+        "targetAnchor": {
+          "x": 44,
+          "y": 16
+        },
+        "scale": 0.045,
+        "uniform": true,
+        "sampling": "NEAREST_SOURCE_PIXEL"
+      },
+      "slot": "FRONT_HEAD_ACCESSORY_CANDIDATE",
+      "productItemId": null,
+      "occlusion": "ABOVE_FRONT_HAIR",
+      "direction": "front",
+      "skinIndependent": true
+    },
+    {
+      "label": "Cat-ear headband",
+      "sourceId": "photo_19",
+      "sourceLocation": "row2-col2",
+      "sourceRect": {
+        "x": 330,
+        "y": 266,
+        "width": 310,
+        "height": 226
+      },
+      "native": {
+        "width": 310,
+        "height": 226,
+        "bounds": {
+          "x": 16,
+          "y": 12,
+          "width": 285,
+          "height": 192
+        },
+        "stats": {
+          "opaque": 26227,
+          "white": 846,
+          "dark": 20913,
+          "discardedDark": 0,
+          "removedPaper": 43833,
+          "parts": [
+            {
+              "pixels": 26227,
+              "dark": 20913
+            }
+          ]
+        },
+        "file": "photo-19-row2-col2-native-06bb7e6caa87521e.png"
+      },
+      "transform": {
+        "sourceAnchor": {
+          "x": 158.5,
+          "y": 108
+        },
+        "targetAnchor": {
+          "x": 32,
+          "y": 20
+        },
+        "scale": 0.13,
+        "uniform": true,
+        "sampling": "NEAREST_SOURCE_PIXEL"
+      },
+      "slot": "FRONT_HEAD_ACCESSORY_CANDIDATE",
+      "productItemId": null,
+      "occlusion": "ABOVE_FRONT_HAIR",
+      "direction": "front",
+      "skinIndependent": true
+    },
+    {
+      "label": "Headphones",
+      "sourceId": "photo_19",
+      "sourceLocation": "row2-col3",
+      "sourceRect": {
+        "x": 639,
+        "y": 266,
+        "width": 282,
+        "height": 226
+      },
+      "native": {
+        "width": 282,
+        "height": 226,
+        "bounds": {
+          "x": 10,
+          "y": 7,
+          "width": 259,
+          "height": 215
+        },
+        "stats": {
+          "opaque": 31938,
+          "white": 399,
+          "dark": 26102,
+          "discardedDark": 0,
+          "removedPaper": 31794,
+          "parts": [
+            {
+              "pixels": 31938,
+              "dark": 26102
+            }
+          ]
+        },
+        "file": "photo-19-row2-col3-native-4681e4ed20e71582.png"
+      },
+      "transform": {
+        "sourceAnchor": {
+          "x": 139.5,
+          "y": 114.5
+        },
+        "targetAnchor": {
+          "x": 32,
+          "y": 25
+        },
+        "scale": 0.145,
+        "uniform": true,
+        "sampling": "NEAREST_SOURCE_PIXEL"
+      },
+      "slot": "FRONT_HEAD_ACCESSORY_CANDIDATE",
+      "productItemId": null,
+      "occlusion": "ABOVE_FRONT_HAIR",
+      "direction": "front",
+      "skinIndependent": true
+    }
+  ],
+  "atlas": {
+    "width": 256,
+    "height": 64,
+    "file": "front-head-attachments-9d6df721a83bfc16.png",
+    "sha256": "9d6df721a83bfc164404eadf9142c43ffe899b98164f411e7bf78f1196ccb27b",
+    "bytes": 5776
+  },
+  "qualification": "Four actual source-pixel independently toggled front attachments only, no back/side geometry, wardrobe item IDs or production adoption."
+}

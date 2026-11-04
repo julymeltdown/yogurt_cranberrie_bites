@@ -1,0 +1,172 @@
+{
+  "date": "2026-11-04",
+  "status": "CONTRACT_READY",
+  "bounded_outcome": "FIXTURE_READINESS_RACE_CORRECTED; assigned gap-baseline regression satisfied",
+  "assignment_base": "1383ae452fc81dfe5fd1e4ca4d37af8950700dda",
+  "historical_source": "cb9abce48d78227bbdedf7ea59ce95e9e0270c4a",
+  "historical_publication": "62b4bf80",
+  "historical_broad": {
+    "status": "NOT_GREEN",
+    "failed_files": 8,
+    "failed_tests": 10,
+    "passed_tests": 3368,
+    "skipped_tests": 14,
+    "rerun_here": false,
+    "path": "frontend/src/app/__tests__/production-refresh/evidence/broad-diagnostic.log",
+    "sha256": "9a8d3884a46dd042ab35e07d91d3da9de6e36e80f813253e1c5d537d2864ddd2",
+    "unchanged_at_assignment_and_delivery": true
+  },
+  "production_changed": false,
+  "global_task_count_changed": false,
+  "sources": {
+    "frontend/src/world/network/__tests__/replication.test.ts": {
+      "current_sha256": "250c937446c6322ba4c40c66fd5ea96fde2e08716d18c23da10ed245ba099b79",
+      "assignment_sha256": "21180899320059666461ae1eaf1ebb8576db63d4e0aa409576f23a82fe36702a",
+      "historical_sha256": "21180899320059666461ae1eaf1ebb8576db63d4e0aa409576f23a82fe36702a"
+    },
+    "frontend/src/world/network/replication.ts": {
+      "current_sha256": "568dda7c23f6d66f9cf5c8239bacf1f58ff1744b0746e07d6cc72812f76f1dd2",
+      "assignment_sha256": "568dda7c23f6d66f9cf5c8239bacf1f58ff1744b0746e07d6cc72812f76f1dd2",
+      "historical_sha256": "568dda7c23f6d66f9cf5c8239bacf1f58ff1744b0746e07d6cc72812f76f1dd2"
+    },
+    "frontend/src/world/network/transport/engine.ts": {
+      "current_sha256": "0ec4c5f8132cfa1c86838ea6c0eabb6005736750f2e1e5870579fb098ddfbbac",
+      "assignment_sha256": "0ec4c5f8132cfa1c86838ea6c0eabb6005736750f2e1e5870579fb098ddfbbac",
+      "historical_sha256": "0ec4c5f8132cfa1c86838ea6c0eabb6005736750f2e1e5870579fb098ddfbbac"
+    },
+    "frontend/src/world/network/transport/contract.ts": {
+      "current_sha256": "1b642a0e1bba8c5c45b39fc38d107af39ff3c83c25955295e49edc03b8402b08",
+      "assignment_sha256": "1b642a0e1bba8c5c45b39fc38d107af39ff3c83c25955295e49edc03b8402b08",
+      "historical_sha256": "1b642a0e1bba8c5c45b39fc38d107af39ff3c83c25955295e49edc03b8402b08"
+    },
+    "frontend/src/world/network/mock.ts": {
+      "current_sha256": "20a021ee8948bbc8ef1d8910c6ab3b0e12919833ec1faa6822e2337a53b40368",
+      "assignment_sha256": "20a021ee8948bbc8ef1d8910c6ab3b0e12919833ec1faa6822e2337a53b40368",
+      "historical_sha256": "20a021ee8948bbc8ef1d8910c6ab3b0e12919833ec1faa6822e2337a53b40368"
+    },
+    "frontend/src/world/entities/replicated.ts": {
+      "current_sha256": "05a3222c8ae68be52a7118f3c04c0d0bce686916328422b50134d535e5f26700",
+      "assignment_sha256": "05a3222c8ae68be52a7118f3c04c0d0bce686916328422b50134d535e5f26700",
+      "historical_sha256": "05a3222c8ae68be52a7118f3c04c0d0bce686916328422b50134d535e5f26700"
+    },
+    "contracts/realtime/v1/world.schema.json": {
+      "current_sha256": "1732e627037fe91533ac6f7fe74e36683ce9b846bfbfc020b3cce298ae84df36",
+      "assignment_sha256": "1732e627037fe91533ac6f7fe74e36683ce9b846bfbfc020b3cce298ae84df36",
+      "historical_sha256": "1732e627037fe91533ac6f7fe74e36683ce9b846bfbfc020b3cce298ae84df36"
+    },
+    "contracts/realtime/v1/policy.json": {
+      "current_sha256": "3e77e21b036386803c7d5bff0145c434f111ba51b861219a211e853a43d0628b",
+      "assignment_sha256": "3e77e21b036386803c7d5bff0145c434f111ba51b861219a211e853a43d0628b",
+      "historical_sha256": "3e77e21b036386803c7d5bff0145c434f111ba51b861219a211e853a43d0628b"
+    },
+    "contracts/realtime/v1/operations.json": {
+      "current_sha256": "400d28e861ca5a87c54fde447f77b1680f7ea58e3047ee43b46db25816af6da0",
+      "assignment_sha256": "400d28e861ca5a87c54fde447f77b1680f7ea58e3047ee43b46db25816af6da0",
+      "historical_sha256": "400d28e861ca5a87c54fde447f77b1680f7ea58e3047ee43b46db25816af6da0"
+    },
+    "contracts/fixtures/realtime/movement-heartbeat.json": {
+      "current_sha256": "fba34f3b7cba90286ae3b1a1ecd6578a79da496e79d88b920b89bd7d783499dd",
+      "assignment_sha256": "fba34f3b7cba90286ae3b1a1ecd6578a79da496e79d88b920b89bd7d783499dd",
+      "historical_sha256": "fba34f3b7cba90286ae3b1a1ecd6578a79da496e79d88b920b89bd7d783499dd"
+    },
+    "contracts/fixtures/realtime/ticket-response.json": {
+      "current_sha256": "8162f1ac19b4caf28ca810d9c565386cf8f532b7e282b356999e06fcec4c1c54",
+      "assignment_sha256": "8162f1ac19b4caf28ca810d9c565386cf8f532b7e282b356999e06fcec4c1c54",
+      "historical_sha256": "8162f1ac19b4caf28ca810d9c565386cf8f532b7e282b356999e06fcec4c1c54"
+    },
+    "contracts/fixtures/realtime/filtered-viewers.json": {
+      "current_sha256": "c29bbe1808dca4030ad9efc49192c671ba6ff2afaacc1a42aae368de3745dd36",
+      "assignment_sha256": "c29bbe1808dca4030ad9efc49192c671ba6ff2afaacc1a42aae368de3745dd36",
+      "historical_sha256": "c29bbe1808dca4030ad9efc49192c671ba6ff2afaacc1a42aae368de3745dd36"
+    },
+    "frontend/pnpm-lock.yaml": {
+      "current_sha256": "47ca44459819ad0e887d2f4f93394fdf3b1053b8f45edc9ceb0236981feee1f6",
+      "assignment_sha256": "47ca44459819ad0e887d2f4f93394fdf3b1053b8f45edc9ceb0236981feee1f6",
+      "historical_sha256": "47ca44459819ad0e887d2f4f93394fdf3b1053b8f45edc9ceb0236981feee1f6"
+    },
+    "frontend/src/world/network/__tests__/fe17-baseline-recovery/delayed-digest.config.ts": {
+      "current_sha256": "dcd37ba92f42d05f128970a4d94db014bccefd9d608798a5c86cef5d7dbbc024"
+    },
+    "frontend/src/world/network/__tests__/fe17-baseline-recovery/delayed-digest.ts": {
+      "current_sha256": "c6d2f87dbe5e6d75522a8708d0df42e3dec60f984ce295ff6bcbeb6cf9901485"
+    }
+  },
+  "checks": [
+    {
+      "cwd": "frontend",
+      "command": "node_modules/.bin/vitest run src/world/network/__tests__/replication.test.ts -t \"a gap clears ghosts\" --maxWorkers=1 --reporter=verbose",
+      "exit_code": 0,
+      "result": "1 passed,22 unselected; before fixture correction",
+      "evidence": "docs/mcr/evidence/fe17-baseline-recovery/before-targeted.txt",
+      "sha256": "50323f1def0f71c9d53f0af1eccf222f0fc0ddca4cb2ca0cb031e5792d6003fe"
+    },
+    {
+      "cwd": "frontend",
+      "command": "node_modules/.bin/vitest run --config src/world/network/__tests__/fe17-baseline-recovery/delayed-digest.config.ts --reporter=verbose",
+      "exit_code": 1,
+      "result": "undefined.open reproduced before correction",
+      "evidence": "docs/mcr/evidence/fe17-baseline-recovery/before-delayed-digest.txt",
+      "sha256": "731b1513e4385bfbd73e1edc836818c777717e20f86806b809976eb0a984a935"
+    },
+    {
+      "cwd": "frontend",
+      "command": "node_modules/.bin/vitest run --config src/world/network/__tests__/fe17-baseline-recovery/delayed-digest.config.ts --reporter=verbose",
+      "exit_code": 0,
+      "result": "1 passed,22 unselected; corrected fixture and stronger assertions",
+      "evidence": "docs/mcr/evidence/fe17-baseline-recovery/after-delayed-digest.txt",
+      "sha256": "41a7fc0103e8d2aa36a4ded228871d3afda7a2c79de08cfc1488e3577f67d835"
+    },
+    {
+      "cwd": "frontend",
+      "command": "node_modules/.bin/vitest run src/world/network/__tests__/replication.test.ts src/world/network/__tests__/transport.test.ts --maxWorkers=2 --reporter=verbose",
+      "exit_code": 0,
+      "result": "183 passed,2 files",
+      "evidence": "docs/mcr/evidence/fe17-baseline-recovery/network.txt",
+      "sha256": "513f580f0936c360ca6f98bbf87a5fdc5617a65ad3ec363c7bf573f2734fe84f"
+    },
+    {
+      "cwd": "frontend",
+      "command": "node_modules/.bin/tsc -b --pretty false",
+      "exit_code": 0,
+      "result": "full frontend TypeScript",
+      "evidence": "docs/mcr/evidence/fe17-baseline-recovery/typecheck.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "cwd": "frontend",
+      "command": "node_modules/.bin/oxlint src/world/network/__tests__/replication.test.ts src/world/network/__tests__/fe17-baseline-recovery",
+      "exit_code": 0,
+      "result": "scoped lint",
+      "evidence": "docs/mcr/evidence/fe17-baseline-recovery/lint.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  ],
+  "planning": {
+    "command": "python3 scripts/mcr/check-plan.py",
+    "exit_code": 0,
+    "evidence": "docs/mcr/evidence/fe17-baseline-recovery/plan.json",
+    "sha256": "88606f33d640a29811a4cbdc9748fc0f1e16225b81ad7e697deaf3b20c9b86e1"
+  },
+  "limitations": [
+    "Headless real controller/transport plus explicit socket/clock/HTTP-ticket fixtures",
+    "Real digest preserved;75ms delay instrumented only for assigned test",
+    "Historical broad failures remain unresolved outside this allocation",
+    "No original whole-FE17,QA05,IN01,IN05,live multiuser,device,art or release acceptance"
+  ],
+  "final_static_checks": [
+    {
+      "command": "python3 scripts/mcr/check-boundaries.py --base 1383ae452fc81dfe5fd1e4ca4d37af8950700dda --lane frontend with exact --allow-doc entries for the assigned document and9 evidence files",
+      "exit_code": 0,
+      "changes": 13
+    },
+    {
+      "command": "node scripts/mcr/check-ui-origin.mjs",
+      "exit_code": 0,
+      "violations": []
+    },
+    {
+      "command": "git diff --check",
+      "exit_code": 0
+    }
+  ]
+}

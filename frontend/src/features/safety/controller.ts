@@ -16,7 +16,8 @@ export function createSafetyController(options:SafetyOptions){
  let state=freeze(initial()),disposed=false,sequence=0,intent:CommandBinding|null=null,flight:AbortController|null=null,listFlight:AbortController|null=null
  const listeners=new Set<()=>void>(),publish=(patch:Partial<SafetyState>)=>{state=freeze({...state,...patch});for(const f of Array.from(listeners)){try{f()}catch{/* Isolate observers. */}}}
  const current=()=>!disposed&&auth.privacy.isCurrent(scope)
- const cleanup=()=>{++sequence;flight?.abort();listFlight?.abort();flight=listFlight=null;intent=null;publish({...initial(),phase:'closed',message:'Private views were cleared. Reopen safety controls with your current session.'})}
+ const reset=(next:SafetyState)=>{++sequence;flight?.abort();listFlight?.abort();flight=listFlight=null;intent=null;publish(next)}
+ const cleanup=()=>reset({...initial(),phase:'closed',message:'Private views were cleared. Reopen safety controls with your current session.'})
  const unsubscribe=auth.privacy.registerCleanup(cleanup)
  const base=`/api/concert/events/${scope.eventId}`
  async function request<T>(input:Omit<HttpRequest<T>,'signal'>,signal:AbortSignal){return auth.privacy.run(scope,async context=>{
@@ -121,8 +122,9 @@ export function createSafetyController(options:SafetyOptions){
   block(userId:string){const p=targetSchema.safeParse({target_type:'USER',target_id:userId});return p.success?execute('blockConcertUser',p.data,null):Promise.resolve()},
   unblock(userId:string){const p=targetSchema.safeParse({target_type:'USER',target_id:userId});return p.success?execute('unblockConcertUser',p.data,null):Promise.resolve()},
   close(){
+   if(!current())return
    if(intent&&state.phase!=='succeeded'){++sequence;flight?.abort();flight=null;publish({...initial(),phase:'unknown',message:'An earlier request has an unresolved outcome. Check that original request; no new action will be sent.'})}
-   else cleanup()
+   else reset(initial())
   },dispose(){if(disposed)return;cleanup();disposed=true;unsubscribe();listeners.clear()},
  }
 }

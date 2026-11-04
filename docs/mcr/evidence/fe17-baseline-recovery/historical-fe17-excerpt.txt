@@ -1,0 +1,17 @@
+ FAIL  src/world/network/__tests__/replication.test.ts > FE17 authoritative entity projection > a gap clears ghosts, requests one resync, discards queued old changes and replaces the complete baseline
+TypeError: Cannot read properties of undefined (reading 'open')
+ ❯ Object.live src/world/network/__tests__/replication.test.ts:29:64
+     27|   const receive = (data: unknown) => socket().receive(JSON.stringify(d…
+     28|   return { c, session, clock, transport, commits, acquire, socket, rec…
+     29|     async live() { const p = c.start(); await flush(); socket().open()…
+       |                                                                ^
+     30|     delta(seq: number, upserts: readonly WorldPlayer[] = [], removes: …
+     31|       receive({ protocolVersion: '1.0.0', type: 'delta', streamId: c.r…
+ ❯ src/world/network/__tests__/replication.test.ts:90:24
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[8/13]⎯
+ Test Files  8 failed | 198 passed (206)
+      Tests  10 failed | 3368 passed | 14 skipped (3392)
+   Start at  10:27:07
+   Duration  15.51s (transform 13.60s, setup 0ms, import 54.28s, tests 94.15s, environment 56.53s)
+

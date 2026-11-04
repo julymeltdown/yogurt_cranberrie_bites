@@ -1,0 +1,370 @@
+{
+  "version": 8,
+  "status": "PROPOSAL_NOT_RELEASE_BOUND",
+  "theme_id": "DANGER",
+  "geometry_hash": "sha256:0448d5086dc251c6a7aed8c136dbbbf751f95038ea1f7f98e3e40fe6e8067e6f",
+  "base_revision": "12f6fbf880fab927be130656e05c406f0084d0c1",
+  "source_pins": [
+    {
+      "path": "../sources/canopy-sheet.png",
+      "sha256": "sha256:29a05b4c32508fea5af551f207b7ab28a3c451cc71baf2ecbcfe77c3567e2d95"
+    },
+    {
+      "path": "../../quality-v7/manifest.json",
+      "sha256": "sha256:156d416606e648dc357a686bc1fd18ec67e425c32ee0955e164277ab229d1e87"
+    },
+    {
+      "path": "../../quality-v7/danger/atlas.png",
+      "sha256": "sha256:589def1802e6c7ab240b3766465de18ce214c9dc14811ed27e5c460c83819942"
+    }
+  ],
+  "transforms": [
+    {
+      "frame": "stage",
+      "source": "../../quality-v6/sources/stage-sheet.png",
+      "source_rect": {
+        "x": 1477,
+        "y": 26,
+        "width": 662,
+        "height": 667
+      },
+      "packed_rect": {
+        "x": 7,
+        "y": 6,
+        "width": 242,
+        "height": 244
+      },
+      "scale": 0.3658170914542729,
+      "resampling": "nearest",
+      "rounding": "nearest ties away from zero"
+    },
+    {
+      "frame": "white_merch_booth",
+      "source": "../../eras-v5/danger/source-atlas.png",
+      "source_rect": {
+        "x": 331,
+        "y": 25,
+        "width": 290,
+        "height": 298
+      },
+      "packed_rect": {
+        "x": 275,
+        "y": 16,
+        "width": 218,
+        "height": 224
+      },
+      "scale": 0.75,
+      "resampling": "nearest",
+      "rounding": "nearest ties away from zero"
+    },
+    {
+      "frame": "white_food_booth",
+      "source": "../../eras-v5/danger/source-atlas.png",
+      "source_rect": {
+        "x": 633,
+        "y": 25,
+        "width": 298,
+        "height": 295
+      },
+      "packed_rect": {
+        "x": 528,
+        "y": 17,
+        "width": 224,
+        "height": 221
+      },
+      "scale": 0.75,
+      "resampling": "nearest",
+      "rounding": "nearest ties away from zero"
+    },
+    {
+      "frame": "park_plaque",
+      "source": "../../eras-v5/danger/source-atlas.png",
+      "source_rect": {
+        "x": 940,
+        "y": 53,
+        "width": 310,
+        "height": 268
+      },
+      "packed_rect": {
+        "x": 779,
+        "y": 27,
+        "width": 233,
+        "height": 201
+      },
+      "scale": 0.75,
+      "resampling": "nearest",
+      "rounding": "nearest ties away from zero"
+    },
+    {
+      "frame": "tree_green",
+      "source": "../sources/canopy-sheet.png",
+      "source_rect": {
+        "x": 627,
+        "y": 87,
+        "width": 608,
+        "height": 485
+      },
+      "packed_rect": {
+        "x": 6,
+        "y": 286,
+        "width": 244,
+        "height": 195
+      },
+      "scale": 0.40131578947368424,
+      "resampling": "nearest",
+      "rounding": "nearest ties away from zero"
+    },
+    {
+      "frame": "tree_yellow",
+      "source": "../sources/canopy-sheet.png",
+      "source_rect": {
+        "x": 14,
+        "y": 674,
+        "width": 602,
+        "height": 486
+      },
+      "packed_rect": {
+        "x": 262,
+        "y": 285,
+        "width": 244,
+        "height": 197
+      },
+      "scale": 0.4053156146179402,
+      "resampling": "nearest",
+      "rounding": "nearest ties away from zero"
+    },
+    {
+      "frame": "tree_dark",
+      "source": "../sources/canopy-sheet.png",
+      "source_rect": {
+        "x": 629,
+        "y": 682,
+        "width": 610,
+        "height": 478
+      },
+      "packed_rect": {
+        "x": 518,
+        "y": 288,
+        "width": 244,
+        "height": 191
+      },
+      "scale": 0.4,
+      "resampling": "nearest",
+      "rounding": "nearest ties away from zero"
+    },
+    {
+      "frame": "tree_red",
+      "source": "../sources/canopy-sheet.png",
+      "source_rect": {
+        "x": 16,
+        "y": 79,
+        "width": 611,
+        "height": 493
+      },
+      "packed_rect": {
+        "x": 774,
+        "y": 285,
+        "width": 244,
+        "height": 197
+      },
+      "scale": 0.3993453355155483,
+      "resampling": "nearest",
+      "rounding": "nearest ties away from zero"
+    },
+    {
+      "frame": "meeting_pavilion",
+      "source": "../../quality-v7/sources/venue-sheet.png",
+      "source_rect": {
+        "x": 835,
+        "y": 73,
+        "width": 386,
+        "height": 217
+      },
+      "packed_rect": {
+        "x": 8,
+        "y": 593,
+        "width": 240,
+        "height": 135
+      },
+      "frame_rect": {
+        "x": 6,
+        "y": 550,
+        "width": 244,
+        "height": 180
+      },
+      "scale": 0.6217616580310881,
+      "resampling": "nearest",
+      "rounding": "nearest ties away from zero",
+      "padding": "Transparent, horizontally centered, bottom aligned with 2px base margin; no source repaint or nonuniform source scaling."
+    },
+    {
+      "frame": "giveaway_pavilion",
+      "source": "../../quality-v7/sources/venue-sheet.png",
+      "source_rect": {
+        "x": 836,
+        "y": 363,
+        "width": 398,
+        "height": 238
+      },
+      "packed_rect": {
+        "x": 264,
+        "y": 584,
+        "width": 240,
+        "height": 144
+      },
+      "frame_rect": {
+        "x": 262,
+        "y": 550,
+        "width": 244,
+        "height": 180
+      },
+      "scale": 0.6030150753768844,
+      "resampling": "nearest",
+      "rounding": "nearest ties away from zero",
+      "padding": "Transparent, horizontally centered, bottom aligned with 2px base margin; no source repaint or nonuniform source scaling."
+    },
+    {
+      "frame": "north_hall",
+      "source": "../../quality-v7/sources/venue-sheet.png",
+      "source_rect": {
+        "x": 830,
+        "y": 676,
+        "width": 405,
+        "height": 210
+      },
+      "packed_rect": {
+        "x": 520,
+        "y": 604,
+        "width": 240,
+        "height": 124
+      },
+      "frame_rect": {
+        "x": 518,
+        "y": 550,
+        "width": 244,
+        "height": 180
+      },
+      "scale": 0.5925925925925926,
+      "resampling": "nearest",
+      "rounding": "nearest ties away from zero",
+      "padding": "Transparent, horizontally centered, bottom aligned with 2px base margin; no source repaint or nonuniform source scaling."
+    },
+    {
+      "frame": "west_hall",
+      "source": "../../quality-v7/sources/venue-sheet.png",
+      "source_rect": {
+        "x": 833,
+        "y": 961,
+        "width": 402,
+        "height": 243
+      },
+      "packed_rect": {
+        "x": 776,
+        "y": 583,
+        "width": 240,
+        "height": 145
+      },
+      "frame_rect": {
+        "x": 774,
+        "y": 550,
+        "width": 244,
+        "height": 180
+      },
+      "scale": 0.5970149253731343,
+      "resampling": "nearest",
+      "rounding": "nearest ties away from zero",
+      "padding": "Transparent, horizontally centered, bottom aligned with 2px base margin; no source repaint or nonuniform source scaling."
+    },
+    {
+      "frame": "food_counter",
+      "source": "../../eras-v5/danger/source-atlas.png",
+      "source_rect": {
+        "x": 7,
+        "y": 988,
+        "width": 302,
+        "height": 247
+      },
+      "packed_rect": {
+        "x": 14,
+        "y": 803,
+        "width": 227,
+        "height": 185
+      },
+      "scale": 0.75,
+      "resampling": "nearest",
+      "rounding": "nearest ties away from zero"
+    },
+    {
+      "frame": "plaza_furniture",
+      "source": "../../eras-v5/danger/source-atlas.png",
+      "source_rect": {
+        "x": 318,
+        "y": 1018,
+        "width": 305,
+        "height": 214
+      },
+      "packed_rect": {
+        "x": 269,
+        "y": 815,
+        "width": 229,
+        "height": 161
+      },
+      "scale": 0.75,
+      "resampling": "nearest",
+      "rounding": "nearest ties away from zero"
+    },
+    {
+      "frame": "cross_banner",
+      "source": "../../eras-v5/danger/source-atlas.png",
+      "source_rect": {
+        "x": 681,
+        "y": 938,
+        "width": 159,
+        "height": 307
+      },
+      "packed_rect": {
+        "x": 580,
+        "y": 781,
+        "width": 119,
+        "height": 230
+      },
+      "scale": 0.75,
+      "resampling": "nearest",
+      "rounding": "nearest ties away from zero"
+    },
+    {
+      "frame": "shrub_bed",
+      "source": "../../eras-v5/danger/source-atlas.png",
+      "source_rect": {
+        "x": 914,
+        "y": 1020,
+        "width": 336,
+        "height": 212
+      },
+      "packed_rect": {
+        "x": 774,
+        "y": 819,
+        "width": 244,
+        "height": 154
+      },
+      "scale": 0.7261904761904762,
+      "resampling": "nearest",
+      "rounding": "nearest ties away from zero"
+    }
+  ],
+  "native_packaging": {
+    "path": "native-atlas.png",
+    "sha256": "sha256:31c7ae3bb8ddaa70e8d72eac7280843b57b9df438f5235c660f256d68cb9a1e7",
+    "width": 2048,
+    "height": 2048,
+    "method": "Runtime source at0,0 with transparent native-only padding."
+  },
+  "geometry": {
+    "path": "../../spatial-v4/geometry-proposal.json",
+    "sha256": "sha256:371b6bdd898f3e8757ba2dfdb96f9948d6f375e2f09353776a9cf6c0861b44c4",
+    "projection": "../../spatial-v4/integer-projection.json"
+  },
+  "source_scope": "Twelve non-tree cells are pixel-identical v7. New natural canopy quartet shared by all eras; other stage/venue/booth identity art remains era-specific.",
+  "physical_provenance": "Existing four virtual-concept places unchanged; new trees are unbound virtual decoration, never physical destinations.",
+  "fidelity": "Unscored required density correction, not target acceptance."
+}
