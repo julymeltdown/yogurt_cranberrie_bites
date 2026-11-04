@@ -2,19 +2,19 @@
 
 This is the current user-authorized execution amendment to the original [112-task specification](../../MCR_IMPLEMENTATION_PLAN_V2_EN.md). It revises each remaining task, scheduling, ownership and progress while preserving all original IDs and all 61 required IA entries. The source archive and generated planning exports remain unchanged. Historical analysis and task outcomes do not silently override this amendment.
 
-Snapshot: **2026-11-05T04:37:28+09:00**. Baseline read set: `7eac13ce30d6dd6be4df30727f75d5df90d3489d`; later delivery milestones are canonical publisher receipts through `fcac0bed0`. The user explicitly requested this full replan. It is a management reconciliation, not a king review of code, queries, screenshots or tests.
+Snapshot: **2026-11-05T05:15:01+09:00**. Baseline read set: `7eac13ce30d6dd6be4df30727f75d5df90d3489d`; later delivery milestones are canonical publisher receipts through `2cc7f5ded`. The user explicitly requested this full replan. It is a management reconciliation, not a king review of code, queries, screenshots or tests.
 
 ## Progress under the revised scope
 
-- **43/111 active tasks complete (38.7%)**; **68 active tasks remain**.
+- **45/111 active tasks complete (40.5%)**; **66 active tasks remain**.
 - **1 task deferred: QA08**. Original total remains 112; performance qualification is neither passed nor completed.
-- The frozen replan baseline remains **39/112** original-task outcomes. Eleven newly published original closures (C07, FE03, FE04, FE11, FE16, AR03, FE35, C06, FE17, FE31, FE36) bring the current original-criteria total to **50/112**. **7** historically closed IDs have explicit new or unresolved current-scope work: **FE19, FE21, FE24, FE32, FE33, QA01, QA07**.
+- The frozen replan baseline remains **39/112** original-task outcomes. Thirteen newly published original closures (C07, FE03, FE04, FE11, FE16, AR03, FE35, C06, FE17, FE31, FE36, BE13, BE14) bring the current original-criteria total to **52/112**. **7** historically closed IDs have explicit new or unresolved current-scope work: **FE19, FE21, FE24, FE32, FE33, QA01, QA07**.
 - This is an unweighted task fraction, not a product-readiness or time estimate. IN02–IN05, full reference/device acceptance and61-entry IA reconciliation remain open.
 
 | Revised state | Tasks |
 | --- | ---: |
-| DONE | 43 |
-| IN_PROGRESS | 55 |
+| DONE | 45 |
+| IN_PROGRESS | 53 |
 | WAITING_INPUT | 3 |
 | OPEN | 3 |
 | REOPENED | 7 |
@@ -29,6 +29,8 @@ Hosted CI is **qualified and published**. The responsible developer reports succ
 IN03 positive and isolated expired/revoked/blocked/unrelated journeys now explicitly await the already-requested genuine claim/provider provenance for both actors. Current internal producer/scenario work continues. C03 true flags, unknown age, storage fixtures and generic unavailable denials do not certify those journeys; no claims are fabricated and no duplicate human question is added.
 
 Original **FE31 and FE36 client criteria are complete**, explicitly disposed by their responsible developer and published at `a40d6944`. Retained sharing/account evidence and the qualified default-app sharing/report/block/unblock/Help journey cover the original client rows. Live IN03, report authorization/media producers, server deletion, multiuser and device outcomes remain open with their implementation/integration owners; this is not a full live-feature or release claim.
+
+Original **BE13 and BE14 are accepted and published** at `9e4ace4d`, explicitly disposed by the responsible World developer against their unchanged original criteria. Current recovery/replication checks and retained real Auth, PostgreSQL, restart and foreground evidence support these task-local closures. Four current PostgreSQL cases remain NOT_RUN; their prior unchanged-path coverage and limits are recorded in the register. The combined QA05 journey, IN04 and device acceptance remain open.
 
 ## Decisions applied to every task
 
@@ -61,7 +63,7 @@ Packages are parallel work queues, not new task IDs or additional managers. Lead
 
 The OPERATIONS package spans both lanes. Its backend owners provide server interfaces; they do not own frontend implementation. Frontend delivery assigns the remaining FE37, FE38, FE39 and FE41 outcomes to frontend developers, preserving active Wall/Root leases and the completed FE40 archive outcome. Empty owner-chat fields require a concrete lead assignment; they do not authorize a second writer or a backend-to-frontend ownership transfer. Developers resolve implementation and validation directly with their counterparts and named publisher.
 
-Original FE31/FE36 client work is complete at `a40d6944`; its developer21e now owns the original FE06 theme remainder. QA06 developer1ab7 covers uncovered software states;213 owns FE34;40c576 owns QA07;1eed continues FE12/FE13 under the transferred scope;83 has delivered its bounded FE41 client assignment and returned its grants. World/Root route the remaining operational producer and consumer work, and the lead assigns83 its next ready whole feature. World20f now implements BE13/BE14 recovery after its motion publication. Artist231 has delivered the density packet and assessments;26e adopts it into the actual Map. Resourcelead21d is the single temporary frontend allocator through the existing controller while Social messaging is unavailable; frontendKING handles Social staffing. Developers validate, fix and publish directly, with no king/SL technical review or acknowledgment gate.
+Original FE31/FE36 client work is complete at `a40d6944`; its developer21e now owns the original FE06 theme remainder. QA06 developer1ab7 covers uncovered software states;213 owns FE34;40c576 owns QA07;1eed continues FE12/FE13 under the transferred scope;83 has delivered its bounded FE41 client assignment and returned its grants. World/Root route the remaining operational producer and consumer work, and the lead assigns83 its next ready whole feature. World20f has delivered original BE13/BE14 and now implements the backend QA05 runtime controls, paired with frontend83. Artist231 has delivered the density packet and assessments;26e adopts it into the actual Map. Resourcelead21d is the single temporary frontend allocator through the existing controller while Social messaging is unavailable; frontendKING handles Social staffing. Developers validate, fix and publish directly, with no king/SL technical review or acknowledgment gate.
 
 ### Next dispatch order
 
@@ -113,8 +115,8 @@ The original specification remains the full baseline. Every row below preserves 
 | BE10 — One-use world admission tickets | IN_PROGRESS / 0 | WORLD | Reconcile all original one-use ticket issuance/consumption criteria through the current canonical user/session/event/room path; Close unrecorded replay, wrong-room, expiry, Origin and unauthenticated-frame cases, including no ticket/bearer leakage in URLs or logs. | Reuse, wrong room, expired ticket, wrong origin, and unauthenticated frames rejected. | BE04, BE05, C05 |
 | BE11 — Room registry and membership leases | IN_PROGRESS / 0 | WORLD | Reconcile production room ownership, capacity admission, atomic join/switch/leave and disconnect-grace lease handling; Complete functional simultaneous-capacity, duplicate-membership and ghost-expiry obligations using bounded scenarios; no 200-user performance run is a prerequisite. | Concurrent joins never exceed cap; switching cannot duplicate membership; ghost leases expire. | BE10 |
 | BE12 — Authoritative movement loop | DONE / 0 | WORLD | Retain delivered outcome; no identified task-local remainder. | Teleport, excessive speed, invalid axis, sequence replay, and wall penetration tests. | None for remaining scope |
-| BE13 — Recipient-specific snapshots and deltas | IN_PROGRESS / 0 | WORLD | Close the remaining production recipient-policy projection and consistent snapshot/delta-baseline disposition; Reconcile differently blocked viewers, per-delivered-stream sequencing, avatar versions and slow-receiver bounded/coalesced queues, including gap recovery. | Two viewers with different block filters resynchronize correctly; slow receiver cannot grow memory unboundedly. | BE12, BE37 |
-| BE14 — Reconnect and authorization revocation | IN_PROGRESS / 0 | WORLD | Reconcile server-epoch/restart resync, foreground recovery and expired/removed/suspended-session subscription revocation on the current production path; Finish any exposed revocation/recovery gaps without motion replay; retain the accepted TCP-disconnect journey instead of repeating it without a relevant change. | New snapshot after server restart; removed/expired session cannot recover its old subscriptions. | BE13 |
+| BE13 — Recipient-specific snapshots and deltas | DONE / 0 | WORLD | Retain the published original-task outcome; combined QA05/IN04/device gates remain separate. | Two viewers with different block filters resynchronize correctly; slow receiver cannot grow memory unboundedly. | None for remaining scope |
+| BE14 — Reconnect and authorization revocation | DONE / 0 | WORLD | Retain the published original-task outcome; combined QA05/IN04/device gates remain separate. | New snapshot after server restart; removed/expired session cannot recover its old subscriptions. | None for remaining scope |
 | BE15 — Domain outbox and command receipts | IN_PROGRESS / 0 | FOUNDATION | Finish actual domain-producer, target-startup and outbox-consumer adoption using the existing shared receipt interfaces; Reconcile transaction-coupled enqueue, crash-after-commit recovery, changed-body/key conflict, bounded retries and event-ID deduplication for the participating production domains. | Crash after commit does not lose event; duplicate event consumed once; changed payload/key conflicts. | BE05 |
 | BE16 — Party aggregate and CRUD | IN_PROGRESS / 1 | MEETUP | Finish original Party production settlement and public create/read/update through canonical identity, event/ticket section and relationship policy; Reconcile owner-only edits, capacity/window/version/lifecycle constraints, reviewed rendezvous selection and applicant-free public projection. | Non-owner edits fail; invalid capacity/window rejected; cancelled party is not joinable. | BE05, BE37, C04 |
 | BE17 — Applications and atomic approval | IN_PROGRESS / 1 | MEETUP | Complete public application/decision settlement, uniqueness, exact-body idempotency and durable approval notification; Close original real-database last-slot contention and duplicate-apply obligations on the composed Party candidate; approval must commit at most one membership for one remaining slot. | Two approvals for last slot produce one membership; duplicate apply does not create extra rows. | BE16, BE15 |
