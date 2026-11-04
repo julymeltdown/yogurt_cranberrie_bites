@@ -1,6 +1,6 @@
 # Execution record
 
-Updated **2026-11-04T14:38:49+09:00**, from published history through `4bf9022f` and the 04:34–05:36 UTC frontend/backend hourly digests. This is a management reconciliation, not a code, query, visual or test review. All **112 required tasks and 61 required IA entries** remain in scope; the six optional EX tasks are excluded from the denominator.
+Updated **2026-11-04T15:41:02+09:00**, from published history through `c8a731e5` and the 05:35–06:37 UTC frontend/backend hourly digests, including the frontend image-metric correction. This is a management reconciliation, not a code, query, visual or test review. All **112 required tasks and 61 required IA entries** remain in scope; the six optional EX tasks are excluded from the denominator.
 
 ## Current task accounting
 
@@ -9,13 +9,13 @@ Updated **2026-11-04T14:38:49+09:00**, from published history through `4bf9022f`
 | Original-task disposition | Count | Meaning |
 | --- | ---: | --- |
 | Recorded acceptance dispositions | **12** | Eleven historical ACCEPTED records plus the implementation owner's explicit original FE08 acceptance. |
-| Additional task-local criteria closed | **24** | Existing dispositions plus original FE21 Party and FE24 Giveaway client criteria; exact owner states are preserved, with no new king/SL technical sign-off. |
-| Other implementation evidence | **62** | Bounded implementation, fixtures or component delivery exist; original-task completion is partial or not yet reconciled. |
+| Additional task-local criteria closed | **26** | Existing dispositions plus original FE18 Rooms/Nearby and FE32 Mural client criteria; exact owner states are preserved, with no new king/SL technical sign-off. |
+| Other implementation evidence | **60** | Bounded implementation, fixtures or component delivery exist; original-task completion is partial or not yet reconciled. |
 | Status not yet reconciled | **9** | Insufficient current per-task disposition in this reconciliation; not assumed unstarted. |
 | Open integrated-product/release gates | **5** | IN01–IN05 have no completed gate receipt in the current reports. |
 | **Required total** | **112** | Every original required ID appears once in the linked register. |
 
-There are **36 recorded task-criteria outcomes** (12 recorded acceptance dispositions plus 24 additional task-local closures), **not only 11 tasks with implementation**. The latest hourly reconciliation adds original **FE21 and FE24**, following the previously recorded BE26 closure, from explicit implementation-owner dispositions and published receipts. FE07 and FE15 retain their exact **INTEGRATED** states and explicit original-criterion closure; they are not relabeled as formal ACCEPTED dispositions. This is not a claim that 36 tasks were newly accepted today, nor an effort-weighted completion percentage. The 62 other evidence-bearing tasks are not silently counted as complete. A completed worker goal, a new commit, a test count or an assistance artifact adds no original task IDs.
+There are **38 recorded task-criteria outcomes** (12 recorded acceptance dispositions plus 26 additional task-local closures), **not only 11 tasks with implementation**. This hourly reconciliation adds original **FE18 and FE32** from explicit published implementation-owner dispositions. FE18 retains **CONTRACT_READY**, FE32 retains **MOCK_READY**, and FE07/FE15 retain **INTEGRATED**; none is relabeled as a new formal ACCEPTED disposition. This is not a claim that 38 tasks were newly accepted today, nor an effort-weighted completion percentage. The 60 other evidence-bearing tasks are not silently counted as complete. A completed worker goal, new commit, test count or assistance artifact adds no original task IDs.
 
 The [112-row task register](task-progress-2026-11-04.json) records each original ID, its evidence pointers and the distinction above. Its null states mean unreconciled completion, not NOT_STARTED. No current full-product completion percentage is asserted.
 
@@ -53,6 +53,9 @@ The [112-row task register](task-progress-2026-11-04.json) records each original
 
 | **FE21, FE24** | The [original client delivery record](frontend/fe21-fe24-client-delivery.md), published `4bf9022f`, explicitly declares both complete original client criteria **SATISFIED at MOCK_READY**, with no identified client remainder. The owner fixed Party title-tap interception and two Gift collection/loading defects and qualified the actual default application at the required widths. Frontend KING confirms publication and complete-payload verification. Real producers, IN02, devices, full QA06 and release remain separate; no helper goal is counted as another original task. |
 
+| **FE18** | The [Rooms/Nearby owner record](frontend/fe18-rooms-nearby.md), published `95bda3ed` and reported delivered through `7c25078f`, explicitly declares the original client scope completed at **CONTRACT_READY**. W04 invitations remain OPEN / NOT_IMPLEMENTED under the separate authority/product question; actual backend filtering, sustained IN01 and IN05 remain open. Historical publication-pending wording does not override actual published ancestry. |
+| **FE32** | The [Mural editor owner record](frontend/fe32-client-delivery.md), published `4af1c868`, explicitly declares original pure-client criteria **SATISFIED at MOCK_READY**, with no identified original client remainder. Live service, FE33 producer activation, multiuser/device/IN04 and final visual acceptance remain separate. |
+
 This reconciliation preserves the owners' actual dispositions: FE08 is explicitly owner-declared ACCEPTED, FE07 and FE15 retain their explicit INTEGRATED states and original-criterion closures, and other SATISFIED records are not relabeled as new formal acceptances. Known follow-up requirements, including the later exact visual target, remain tracked even when the original task-local implementation criteria were met.
 
 ## Current major feature delivery
@@ -61,68 +64,75 @@ This reconciliation preserves the owners' actual dispositions: FE08 is explicitl
 | --- | --- | --- |
 | Actual Auth → Profile → public bootstrap | Root owner reports published source `e9e65e5d`, integration `14b0548a`: two real canonical Auth principals, actual Profile PUT and public HTTP bootstrap 200 for each; map4 catalog, 27 migrations, positive/negative probes and cleanup qualified by that developer. | Later short C03/HTTP/World checks and partial real browser evidence exist, but a fresh login failed with HTTP504. The old live descriptor is retired; the IN01 consumer is archived with its unfinished blocked goal preserved. Root owns recovery and a coherent new live offer; no full IN01 acceptance or optional-feature prerequisite is inferred. |
 | Selected characters and root integration | Canonical avatar persistence `b13d79e6`, participant increment `0313afa5`, whole editor `c3f411ad`, default-root character flow `9fc3a299` / `903773b8`, authorized portrait/media binding `9dacd962`. | Actual live identity/Profile/authority journeys, all original avatar capabilities, directional/walk/layered art and full device/visual acceptance. |
-| Ten-screen reference design | Auth refinement `08d1b1c0` and required artwork `1249430f`, Landing `d5ec766d` and artwork `b01eb708`, Map `f4b40808`, Gifts `9055af1e`, Profile/party/feed portrait delivery `9dacd962`; existing browser-fixture records are retained. | Auth and Landing owners report their required artwork increments delivered. Original FE09 production refresh caller is now delivered in `62b4bf80`; FE08 and FE09 task-local criteria are recorded satisfied. The combined live frontend/service journey remains separate. All ten screens still need the requested near-identical final design; fixture success is not complete visual acceptance. |
+| Ten-screen design and updated background direction | Auth refinement `08d1b1c0` and required artwork `1249430f`, Landing `d5ec766d` and artwork `b01eb708`, Map `f4b40808`, Gifts `9055af1e`, Profile/party/feed portrait delivery `9dacd962`; existing browser-fixture records are retained. | Auth and Landing owners report their required artwork increments delivered. Original FE09 production refresh caller is now delivered in `62b4bf80`; FE08 and FE09 task-local criteria are recorded satisfied. The combined live frontend/service journey remains separate. The human later changed the background target to visibly cuter backgrounds while preserving composition/functions and leaving characters untouched. All ten screens still require owner visual qualification; fixture success is not complete visual acceptance. |
 | Three-era scenery and map | All three era inputs `02320134`, canonical Tiled/loader `aa3e2f3d`, World scene hook `969b3b2f` and Map consumer `4dc12a56` are published. World owner correction `482d02c4` identifies all four current scene targets as virtual concepts. | The source-fixture root/Map integration is now delivered in `10784b26`; final reference fidelity and actual Product/art/theme/release admission remain open. These four virtual records do not establish a physical-venue-review prerequisite. Real physical-place qualification remains separate AR01/beacon/IN02 scope; no REVIEWED status or physical eligibility is invented. |
 | Feed and media product APIs | Feed groundwork `02b17e04`, owner media `84126f6a`, Product API transport `49fb637c`, platform authority checkpoint `ba64c62e`. | Actual durable canonical guards, Profile/producer composition, public HTTP and recovery/revocation journeys. Published transport does not establish enabled live Feed/media. |
 | Meeting-photo client | Original FE20 client delivery `6c908472` satisfies the owner-reported frozen-contract/fixture criteria; photo upload, attachment, save and fresh-controller reread are included. | Actual meeting-photo producer, owner-media lifetime/read/erase, Product API root admission and IN02/operator/device/multiuser requirements. |
-| Meet, Gifts and Wall | Original FE21/FE24 client criteria are now delivered at MOCK_READY in `4bf9022f`; retained community and mural kernels and their component qualifications remain available. | Genuine public authority, root transport, party commands, reservation/pickup and multiuser mural flows. Newly assigned producers do not close the original feature tasks. |
+| Meet, Gifts and Wall | Original FE21/FE24 client criteria are delivered at MOCK_READY in `4bf9022f`; original FE32 client criteria are also closed at MOCK_READY in `4af1c868`. Retained community and mural kernels and component qualifications remain available. | Genuine public authority, root transport, party commands, reservation/pickup and multiuser mural flows. Newly assigned producers do not close the original feature tasks. |
 | World revocation and event closure | Owner replay components and bounded closure `a93a70ec` are published; remote invalidation/combined owner integration continues. | Actual two-account world/revocation, operator/retention and owning-adapter composition, remaining lifecycle/deletion flows. |
 | Release | Existing lane-level source/native/browser receipts are preserved. | **IN01–IN05: 0 completed gate receipts established.** Real devices, accessibility, capacity/recovery, qualified real-stack startup, remaining physical-place/operator inputs and full 61-entry IA accounting remain open. |
 
 ## Hourly milestone and dependency snapshot
 
-The 04:34–05:36 UTC lead digests add original FE21 and FE24 client closures once.
-The count is **36 original task-criteria outcomes**. Backend reports no additional
-original parent-task closure; its cancellation, physical recovery, Party,
-Operations, Spatial, Notification, C06 and BE41 component qualifications retain
-their explicit production/public-composition limits. They do not add completed
-original IDs. QA03's earlier committed database work is not promoted to a new
-original closure without its remaining publication/disposition record.
+The 05:35–06:37 UTC lead digests and published owner dispositions add original
+FE18 and FE32 client closures once. The count is **38 original task-criteria
+outcomes**. Backend reports no additional original parent-task closure.
+Component, facade and visual follow-up work does not add completed original IDs.
 
-IN01 has partial real login, World, movement, acknowledgement, two-account panel
-persistence and input-suppression evidence. A later real fresh login returned
-Gateway HTTP504; Root traced a backend availability defect involving retained
-operation fences. The consumer stopped login retries, released the browser slot
-and is now archived with its unfinished **BLOCKED** goal preserved. There is no
-current live descriptor or renewed World/browser run. Root's subsequent
-cancellation/recovery qualification passed, while the next C03 attempt stopped
-before Auth on a peer-binary migration mismatch. The next coherent peer build is
-owned and queued. Earlier bounded successes do not close sustained public Auth
-or full IN01. Developers own diagnosis, repair and new genuine live inputs.
+IN01 retains partial real login, World, movement and two-account browser evidence.
+The later delivered-cohort attempt returned Auth refresh HTTP504, and the
+consumer remains archived with its unfinished **BLOCKED** goal preserved.
+Owner207 now reports bounded actual PG16/mTLS/HTTP CR10 recovery qualification:
+the consumed expired reply completes both owners, releases prepared fences and
+allows a genuine Auth refresh200; unopened/partial replies retain their fences.
+The committed portable handoff is being finished. Root owns its intake, the new
+coherent cohort and a fresh sustained stack/frontend retry. This bounded repair
+receipt does not close current-cohort IN01; no new live descriptor or full gate
+completion is asserted by this reconciliation.
 
-World canvas presentation, responsive Customize portrait and architecture
-adoption/render qualification are published. FE18's Rooms/Nearby client work has
-an actual new goal and active source/harness work; independent chooser,
-capacity-feedback, focus and removal criteria continue. Remaining QA06 client
-and physical-device scope, selected-art production admission and full reference
-fidelity stay open. The existing device-access request is not repeated.
+The human's newer direction is **noticeably cuter backgrounds on all ten screens,
+with characters untouched**. It supersedes literal gothic-palette imitation for
+backgrounds while retaining composition, functions and all original scope.
+Virtual navigation uses FEED, WALL, MEET and GIFTS instead of FOOD, MERCH,
+MEETUP ZONE and GIVEAWAY BOOTH, with real destinations. Physical-place identity,
+provenance and authorization are unchanged.
 
-The human's new frontend direction preserves the supplied composition,
-proportions and gothic pixel design while adapting actual MCR functions.
-For the **virtual navigation presentation**, FOOD becomes FEED, MERCH becomes
-WALL, MEETUP ZONE becomes MEET, and GIVEAWAY BOOTH becomes GIFTS, with matching
-real icons and destinations. Root, Artist and World already own the disjoint
-implementation and visual qualification. Canonical physical-place IDs,
-provenance and authorization must not be repurposed. The central venue's missing
-side-wing correction has a source handoff; consumer/render qualification remains
-open. Generated-scene pixel checks do not establish the user's requested final
-reference fidelity.
+Three new background asset packs and two CSS handoffs are committed and integrated
+into the current candidate. The first eight 390px before/after route pairs
+compare text/control geometry only: their HTML-image arrays were empty and do
+**not** prove character canvas or CSS-image pixel invariance. Character source
+paths remain frozen. Owners found Feed/Gifts letterboxing and large retained
+paper areas in Customize/Me/Feed/Gifts; source fixes and actual canvas/CSS-image
+comparisons are underway. Remaining widths, interactions, publication and final
+visual qualification stay open. World/Map scenery source is packed, but its
+native after-capture is **NOT_RUN**. QA06 and full ten-screen fidelity remain open;
+the existing device-access question is not repeated.
 
-W04's party-invitation target is an actual unresolved product decision. Root
-already asked the human whether it invites an existing Party member into a
-World room or invites someone to join a Party under approval/capacity rules.
-Keep that one question pending; no automatic answer, duplicate approval queue,
-shared-contract rewrite, scope cut or navigation substitute is authorized.
-BE11/World and Root own the contract proposal. Independent FE18 work continues.
+W04's party-invitation target remains an actual unresolved product decision.
+Root already asked whether it invites an existing Party member into a World
+room or invites someone to join a Party under approval/capacity rules. Keep that
+one question pending. BE11/World and Root own the proposal; no automatic answer,
+new approval queue, scope cut or navigation substitute is authorized. Original
+FE18 client completion does not close the separate W04 invitation requirement.
+
+The user's request for more parallel developers produced **eight additional
+accepted development assignments**: five new frontend/art workers (three asset
+authors and two CSS adopters) and three reused backend workers for CU01 resolver
+composition, BE33 Notification facade and BE27 Introduction facade. Each has an
+isolated worktree and disjoint ownership. Additional coordination roles are not
+counted as developers; one redundant World-art chat was stopped before writes
+and archived. Existing Artist231 remains the sole World/Map scenery source writer.
+Frontend SLs are assigning FE34 runtime preferences and reconciling FE37/FE40
+before follow-up work. Backend Root retains shared composition; the missing
+actual BE33 target provider is not replaced with synthetic positive acceptance.
 
 SLs report no unattended ready critical scope or unresolved ownership dispute.
-Current scheduling uses the two existing Rust targets with one Rust workflow
-and one frontend output workflow, a reported 16 GiB start/8 GiB stop guard,
-and release before copied native tests. The retired private-cache recovery is
-complete with source, unfinished work and provenance preserved. No new target,
-cleanup executor or waiting worker is introduced. Existing stopped contexts are
-reused only for ready disjoint work; live inputs and resource allocations remain
-with their implementation owners and SLs.
+Source work proceeds independently of output slots. Scheduling uses the two
+existing Rust targets with one Rust workflow and one frontend output workflow,
+a reported 16 GiB start/8 GiB stop guard, and release before copied native tests.
+Retired private-cache recovery is complete with source and unfinished work
+preserved. No extra cleanup executor, target or waiting-only worker is added.
+SLs keep follow-up queues and resources moving without king/SL technical review.
 
 ## Staffing and delivery policy
 

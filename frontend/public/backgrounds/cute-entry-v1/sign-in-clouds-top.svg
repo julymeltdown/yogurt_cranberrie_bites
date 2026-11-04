@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="390" height="240" viewBox="0 0 390 240" fill="none">
+<!-- Original background ornament. No text, controls, portraits or source-pack pixels. -->
+<defs>
+  <g id="heart"><path d="M0 5C-15-4-11-16-3-13L0-9 3-13C11-16 15-4 0 5Z" fill="currentColor"/></g>
+  <g id="star"><path d="M0-11Q2-2 10 0 2 2 0 11-2 2-10 0-2-2 0-11Z" fill="currentColor"/></g>
+  <g id="flower"><path d="M0-5C-11-20-22-5-9 2-24 9-10 23 0 10 10 23 24 9 9 2 22-5 11-20 0-5Z" fill="currentColor"/><circle cy="4" r="4" fill="#fff1ce"/></g>
+  <g id="note" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M0 8V-10L12-14V4M0-5 12-9"/><ellipse cx="-3" cy="9" rx="4" ry="3" fill="currentColor" stroke="none"/><ellipse cx="9" cy="5" rx="4" ry="3" fill="currentColor" stroke="none"/></g>
+  <g id="cloud"><path d="M-34 7C-49 7-50-13-35-15-36-31-14-36-5-23 8-39 31-28 29-14 48-15 51 8 32 9Z" fill="currentColor"/></g>
+  <g id="sprig" fill="none" stroke="#a4b49a" stroke-width="2" stroke-linecap="round"><path d="M0 0Q-6-18 1-40"/><path d="M-2-10C-21-8-19-23-3-16M-2-23C15-23 15-36 0-30" fill="#b9c5a8" stroke="none"/></g>
+</defs>
+<use href="#cloud" transform="translate(7 26) rotate(0) scale(2.5)" color="#e7d6e7" opacity="1"/>
+<use href="#cloud" transform="translate(378 31) rotate(0) scale(2.4)" color="#f1d9d5" opacity="1"/>
+<use href="#cloud" transform="translate(51 4) rotate(0) scale(1.5)" color="#f3e4c9" opacity="1"/>
+<use href="#cloud" transform="translate(335 0) rotate(0) scale(1.5)" color="#e4e9d7" opacity="1"/>
+<path d="M-12 20Q195 94 402 20" stroke="#d5bcbd" stroke-width="1.6" stroke-dasharray="2 5" stroke-linecap="round"/>
+<use href="#heart" transform="translate(44 38) rotate(-14) scale(0.6)" color="#d59daf" opacity="1"/>
+<use href="#star" transform="translate(101 54) rotate(9) scale(0.5)" color="#c2b2d2" opacity="1"/>
+<use href="#heart" transform="translate(195 60) rotate(0) scale(0.5)" color="#d59daf" opacity="1"/>
+<use href="#star" transform="translate(289 54) rotate(-9) scale(0.5)" color="#c2b2d2" opacity="1"/>
+<use href="#heart" transform="translate(346 38) rotate(14) scale(0.6)" color="#d59daf" opacity="1"/>
+<use href="#note" transform="translate(20 95) rotate(-14) scale(0.8)" color="#b7bfa6" opacity="1"/>
+<use href="#note" transform="translate(366 91) rotate(14) scale(0.8)" color="#baabc9" opacity="1"/>
+<use href="#star" transform="translate(20 153) rotate(0) scale(0.5)" color="#d8b9bb" opacity="1"/>
+<use href="#star" transform="translate(373 164) rotate(0) scale(0.5)" color="#c7bfd8" opacity="1"/>
+</svg>

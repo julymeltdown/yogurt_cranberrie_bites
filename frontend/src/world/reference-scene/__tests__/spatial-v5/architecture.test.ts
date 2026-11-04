@@ -7,7 +7,7 @@ import input from '../../spatial-v5/architecture-source.json'
 import pins from '../../spatial-v5/architecture-pin.json'
 import base from '../../spatial-v5/source-inputs.json'
 import { spatialV5ArchitectureScenery } from '../../spatial-v5/architecture'
-import { getSpatialV5Scenery, spatialV5ThemeIds } from '../../spatial-v5/model'
+import { spatialV5ThemeIds } from '../../spatial-v5/model'
 import type { Scenery } from '../../../illustrated/model'
 
 const sha = (raw: Uint8Array) => 'sha256:' + createHash('sha256').update(raw).digest('hex')
@@ -25,7 +25,7 @@ it('closes the published handoff, all18 outputs and unchanged geometry/MAP input
 })
 
 it.each(spatialV5ThemeIds)('changes only %s atlas identity while preserving every object/ground/frame/label/camera field', async id => {
-  const scenery = getSpatialV5Scenery(id), original = base.scenes[id].scenery
+  const scenery = spatialV5ArchitectureScenery(id, base.scenes[id].scenery as Scenery), original = base.scenes[id].scenery
   expect(scenery).toEqual(input.scenes[id].scenery)
   expect(scenery.ground).toEqual(original.ground)
   expect(scenery.objects.map(({ atlas_id: _atlas, ...o }) => o)).toEqual(original.objects.map(({ atlas_id: _atlas, ...o }) => o))

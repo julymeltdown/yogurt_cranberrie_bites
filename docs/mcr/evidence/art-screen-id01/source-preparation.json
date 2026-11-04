@@ -1,0 +1,56 @@
+{
+  "task": "ART-SCREEN-ID01",
+  "status": "IN_PROGRESS",
+  "base": "7c25078f118da53dd9a524d0a58e707cca190f0f",
+  "cssSha256": "18e3ca77ebce72b6259cd7ab731806dd0de6b36a5d335cca79450df5bccaa96d",
+  "scope": "Seven granted selectors, background-color only; assets/additional ornamental hooks and U02 pending",
+  "staticScopeCheck": "PASS",
+  "flatFallbackContrast": [
+    {
+      "foreground": "#eee4cf",
+      "background": "#44313f",
+      "ratio": 9.47
+    },
+    {
+      "foreground": "#d6c5a6",
+      "background": "#362936",
+      "ratio": 8.12
+    },
+    {
+      "foreground": "#f5ecdc",
+      "background": "#44313f",
+      "ratio": 10.2
+    },
+    {
+      "foreground": "#211d19",
+      "background": "#f8eedf",
+      "ratio": 14.58
+    },
+    {
+      "foreground": "#211d19",
+      "background": "#eee1cb",
+      "ratio": 12.97
+    },
+    {
+      "foreground": "#211d19",
+      "background": "#f6ecda",
+      "ratio": 14.29
+    },
+    {
+      "foreground": "#554b3e",
+      "background": "#f6ecda",
+      "ratio": 7.28
+    },
+    {
+      "foreground": "#791d25",
+      "background": "#f6ecda",
+      "ratio": 8.9
+    }
+  ],
+  "limitations": [
+    "Static palette calculation only; existing overlaid art and background images still present",
+    "NOT a rendered contrast/visual acceptance",
+    "Browser/build/native NOT_RUN",
+    "No root import or publication yet"
+  ]
+}

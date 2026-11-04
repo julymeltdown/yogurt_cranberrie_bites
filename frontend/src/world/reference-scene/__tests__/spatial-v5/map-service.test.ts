@@ -25,7 +25,7 @@ it('reproduces exactly two new files and closes producer, base, architecture and
 })
 it.each(spatialV5ThemeIds)('preserves %s World, all48 other MAP objects, placement of the explicit neutral replacement and two wings', era => {
   const scenery = getSpatialV5Scenery(era)
-  expect(scenery).toEqual(architecture.scenes[era].scenery)
+  expect(scenery.objects).toEqual(architecture.scenes[era].scenery.objects)
   const replaced = new Set(source.overview_representations.flatMap(p => 'replaces_prop_id' in p ? [p.replaces_prop_id] : []))
   const frames = source.scenes[era].frames
   const original: SceneryObject[] = [...scenery.objects.filter(o => !replaced.has(o.id)),

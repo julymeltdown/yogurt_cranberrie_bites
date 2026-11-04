@@ -1,0 +1,113 @@
+/* ART-SCREEN-ID01. Background paint only; Root owns application imports.
+ * Base: 7c25078f118da53dd9a524d0a58e707cca190f0f.
+ * Asset sources and narrow decorative payload grants are pinned in the task doc.
+ * U02 is restricted to the granted outer window body and footer paper.
+ * Rendered validation is separate from this source implementation.
+ */
+
+:root .public-entry--poster {
+  background-color: #503b4a;
+}
+
+:root .public-entry--poster .public-poster {
+  background-color: #624250;
+  background-image: url('/backgrounds/cute-entry-v1/landing-garden-night.svg');
+  background-position: center;
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+}
+
+:root .public-entry--poster .public-header {
+  background-color: #624250;
+}
+
+:root .auth-sign-in .concert-window {
+  background-color: #fbf2df;
+  background-image: url('/backgrounds/cute-entry-v1/sign-in-paper.svg');
+  background-position: center;
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+}
+
+:root .me-hub--reference .me-profile-header {
+  background-color: #573344;
+  background-image: url('/backgrounds/cute-wall-me-v1/me-night-ribbon.svg');
+  background-position: center;
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+}
+
+:root .me-hub--reference .me-bio {
+  background-color: #fff0e7;
+  background-image: url('/backgrounds/cute-wall-me-v1/me-scrapbook.svg');
+  background-position: center;
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+}
+
+:root .me-hub--reference .me-activity-navigation {
+  background-color: #fff0e7;
+  background-image: url('/backgrounds/cute-wall-me-v1/me-scrapbook.svg');
+  background-position: center;
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+}
+
+:root .mcr-motion-editor > .concert-window > .concert-window__body,
+:root .mcr-motion-editor > .concert-window > .concert-window__footer,
+:root .mcr-whole-editor > .concert-window > .concert-window__body,
+:root .mcr-whole-editor > .concert-window > .concert-window__footer,
+:root .mcr-avatar-editor > .concert-window > .concert-window__body,
+:root .mcr-avatar-editor > .concert-window > .concert-window__footer {
+  background-color: #fbf2df;
+  background-image: url('/backgrounds/cute-entry-v1/customize-paper.svg');
+  background-position: center;
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+}
+
+/* Native-01 exposed this blank outer paper below the editor's own window.
+ * Root owns the exact route marker. Character/preview surfaces stay opaque.
+ */
+:root .shell-panel[data-mcr-panel='customize'] > .shell-panel-body {
+  background-color: #fbf2df;
+  background-image: url('/backgrounds/cute-entry-v1/customize-paper.svg');
+  background-position: center;
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+}
+
+/* Route-specific outer paper only, including the blank region below Me content. */
+:root .shell-panel[data-mcr-panel='me'] > .shell-panel-body {
+  background-color: #fff0e7;
+  background-image: url('/backgrounds/cute-wall-me-v1/me-scrapbook.svg');
+  background-position: center bottom;
+  background-size: 100% auto;
+  background-repeat: no-repeat;
+}
+
+/* Only the old noninteractive ornamental payload loses paint. The SVG boxes,
+ * flow, pointer behavior, wordmark, copy, controls and selected crowd stay intact.
+ */
+:root .public-entry--poster .landing-web > g,
+:root .public-entry--poster .landing-scene > g {
+  opacity: 0;
+}
+
+:root .auth-sign-in .auth-cemetery > image {
+  opacity: 0;
+}
+
+:root .auth-sign-in .auth-cemetery--top {
+  background-image: url('/backgrounds/cute-entry-v1/sign-in-clouds-top.svg');
+  background-position: center;
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+}
+
+:root .auth-sign-in .auth-cemetery--bottom {
+  background-image: url('/backgrounds/cute-entry-v1/sign-in-garden-bottom.svg');
+  background-position: center;
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+}

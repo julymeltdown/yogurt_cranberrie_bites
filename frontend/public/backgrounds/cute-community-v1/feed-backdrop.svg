@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="390" height="640" viewBox="0 0 390 640" preserveAspectRatio="none">
+  <title>Blush letter-paper backdrop</title>
+  <desc>Broad warm pink and ivory stationery shapes for a decorative Feed background. No characters or interface content.</desc>
+  <path fill="#f5d9df" d="M0 0h390v640H0z"/>
+  <path fill="#e8dfed" d="M188 0h202v198c-46 19-93-1-111-44-56 1-89-30-81-71-30-26-36-57-10-83Z"/>
+  <path fill="#fff3e8" d="M0 92c46-40 83-25 102 9 40-29 92-11 108 26 46-20 87 3 95 37 43-6 68 15 85 42v434H0Z"/>
+  <path fill="#f8ded2" d="M0 475c67-29 121-12 154 29 58-39 110-18 136 20 40-14 74-9 100 8v108H0Z"/>
+  <g fill="#efd6cd" opacity=".65"><circle cx="26" cy="36" r="2"/><circle cx="43" cy="53" r="2"/><circle cx="76" cy="28" r="2"/><circle cx="333" cy="588" r="2"/><circle cx="354" cy="606" r="2"/><circle cx="311" cy="612" r="2"/></g>
+  <g fill="#fff3e8"><path d="M131 29h4v7h7v4h-7v7h-4v-7h-7v-4h7zM341 76h4v7h7v4h-7v7h-4v-7h-7v-4h7z"/></g>
+</svg>

@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="390" height="700" viewBox="0 0 390 700" fill="none">
+<!-- Original background ornament. No text, controls, portraits or source-pack pixels. -->
+<defs>
+  <g id="heart"><path d="M0 5C-15-4-11-16-3-13L0-9 3-13C11-16 15-4 0 5Z" fill="currentColor"/></g>
+  <g id="star"><path d="M0-11Q2-2 10 0 2 2 0 11-2 2-10 0-2-2 0-11Z" fill="currentColor"/></g>
+  <g id="flower"><path d="M0-5C-11-20-22-5-9 2-24 9-10 23 0 10 10 23 24 9 9 2 22-5 11-20 0-5Z" fill="currentColor"/><circle cy="4" r="4" fill="#fff1ce"/></g>
+  <g id="note" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M0 8V-10L12-14V4M0-5 12-9"/><ellipse cx="-3" cy="9" rx="4" ry="3" fill="currentColor" stroke="none"/><ellipse cx="9" cy="5" rx="4" ry="3" fill="currentColor" stroke="none"/></g>
+  <g id="cloud"><path d="M-34 7C-49 7-50-13-35-15-36-31-14-36-5-23 8-39 31-28 29-14 48-15 51 8 32 9Z" fill="currentColor"/></g>
+  <g id="sprig" fill="none" stroke="#a4b49a" stroke-width="2" stroke-linecap="round"><path d="M0 0Q-6-18 1-40"/><path d="M-2-10C-21-8-19-23-3-16M-2-23C15-23 15-36 0-30" fill="#b9c5a8" stroke="none"/></g>
+</defs>
+<rect width="390" height="700" fill="#fbf2df"/>
+<path d="M0 0H390V20Q369 13 348 21T306 20T264 21T222 20T180 21T138 20T96 21T54 20T0 21Z" fill="#eee1df"/>
+<ellipse cx="-23" cy="665" rx="206" ry="237" fill="#f0dedd"/>
+<ellipse cx="414" cy="677" rx="205" ry="232" fill="#e9e5ed"/>
+<path d="M0 686Q38 659 75 684T150 684T225 684T300 684T390 677V700H0Z" fill="#e0e6cf"/>
+<use href="#star" transform="translate(14 98) rotate(0) scale(0.4)" color="#d3c0d9" opacity="0.7"/>
+<use href="#heart" transform="translate(377 221) rotate(0) scale(0.35)" color="#dcb8c4" opacity="0.7"/>
+<use href="#heart" transform="translate(12 398) rotate(0) scale(0.35)" color="#dcb8c4" opacity="0.7"/>
+<use href="#star" transform="translate(379 505) rotate(0) scale(0.4)" color="#c1caae" opacity="0.7"/>
+<use href="#note" transform="translate(20 654) rotate(0) scale(0.65)" color="#c0b2ce" opacity="0.7"/>
+<use href="#note" transform="translate(370 657) rotate(0) scale(0.65)" color="#c0b2ce" opacity="0.7"/>
+<use href="#flower" transform="translate(42 683) rotate(0) scale(0.65)" color="#dbb4c0" opacity="0.7"/>
+<use href="#flower" transform="translate(346 685) rotate(0) scale(0.65)" color="#dbb4c0" opacity="0.7"/>
+</svg>

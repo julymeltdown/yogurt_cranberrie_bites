@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 64 64" shape-rendering="crispEdges">
+  <title>Warm blush stationery paper</title>
+  <desc>Original decorative paper texture. No text, characters, or interface controls.</desc>
+  <path fill="#fff3e8" d="M0 0h64v64H0z"/>
+  <g fill="#efd6cd" opacity=".5">
+    <path d="M7 7h1v1H7zm32 0h1v1h-1zM23 23h1v1h-1zm32 0h1v1h-1zM7 39h1v1H7zm32 0h1v1h-1zM23 55h1v1h-1zm32 0h1v1h-1z"/>
+  </g>
+  <g fill="#f7e2d9">
+    <path d="M15 2h2v1h-2zm34 12h1v2h-1zM3 29h2v1H3zm39 15h2v1h-2zM13 51h1v2h-1zm46 11h2v1h-2z"/>
+  </g>
+</svg>

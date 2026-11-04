@@ -1,0 +1,82 @@
+{
+  "id": "mcr-cute-entry-backgrounds",
+  "revision": 1,
+  "authorship": "Original hand-authored SVG geometry; no raster/source-image derivation",
+  "source_base": "bfa0193939c3eebd6c80ade85083c6530c6875e1",
+  "reference_sha256": "2b3988d546f87b813d78ca13bf267730a6dd19118bd6535a2d3c3032b6f12d23",
+  "reference_use": "Human collage inspected for existing foreground contrast and composition only; no traced/copied pixels or paths",
+  "dependencies": [],
+  "character_assets": [],
+  "assets": [
+    {
+      "file": "landing-garden-night.svg",
+      "url": "/backgrounds/cute-entry-v1/landing-garden-night.svg",
+      "viewBox": [
+        0,
+        0,
+        390,
+        660
+      ],
+      "transparent_background": false,
+      "bytes": 3820,
+      "sha256": "172636f6ccafb87d60f4a6be4c1d46657e9548ec5eec872b22517099f9ec8d95",
+      "usage": "A01 existing poster background only; white print stays unchanged"
+    },
+    {
+      "file": "sign-in-paper.svg",
+      "url": "/backgrounds/cute-entry-v1/sign-in-paper.svg",
+      "viewBox": [
+        0,
+        0,
+        390,
+        720
+      ],
+      "transparent_background": false,
+      "bytes": 2115,
+      "sha256": "aee62ec92a87df6a86cfd2322682cd735ba629aeb7a5728aaca2bba81182fa73",
+      "usage": "A02 paper surface; quiet form center x=60..330"
+    },
+    {
+      "file": "sign-in-clouds-top.svg",
+      "url": "/backgrounds/cute-entry-v1/sign-in-clouds-top.svg",
+      "viewBox": [
+        0,
+        0,
+        390,
+        240
+      ],
+      "transparent_background": true,
+      "bytes": 2609,
+      "sha256": "29ed345d8d974798b37bc6eb0dc8a50dd4345925a3c284283fcf2709cca4dbf1",
+      "usage": "A02 optional upper decorative background; never cover existing foreground"
+    },
+    {
+      "file": "sign-in-garden-bottom.svg",
+      "url": "/backgrounds/cute-entry-v1/sign-in-garden-bottom.svg",
+      "viewBox": [
+        0,
+        0,
+        390,
+        180
+      ],
+      "transparent_background": true,
+      "bytes": 2887,
+      "sha256": "0f0965425ce45f96925bc94b7d5372225f10af0a9d3a6901e6cc96bb3a328e4e",
+      "usage": "A02 optional bottom decorative background; no positioning or clipping changes"
+    },
+    {
+      "file": "customize-paper.svg",
+      "url": "/backgrounds/cute-entry-v1/customize-paper.svg",
+      "viewBox": [
+        0,
+        0,
+        390,
+        700
+      ],
+      "transparent_background": false,
+      "bytes": 2386,
+      "sha256": "831c198806213245a9eea9dd4500274c8faf4bd63886864e8a5ccc75022e94b9",
+      "usage": "U02 outer panel paper only; preview, canvas and option art excluded"
+    }
+  ]
+}

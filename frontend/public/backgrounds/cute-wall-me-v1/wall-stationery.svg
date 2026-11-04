@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="390" height="180" viewBox="0 0 390 180" fill="none">
+  <title>Wall stationery background</title>
+  <desc>Original cream paper with soft peach scallops, a tiny ribbon, hearts and music confetti. No mural pixels or character artwork.</desc>
+  <defs>
+    <pattern id="dots" width="18" height="18" patternUnits="userSpaceOnUse">
+      <circle cx="9" cy="9" r=".7" fill="#c9a58b" opacity=".17"/>
+    </pattern>
+    <pattern id="scallops" width="39" height="34" patternUnits="userSpaceOnUse">
+      <path d="M0 0h39v10c0 13-9 21-19.5 21S0 23 0 10Z" fill="#f3c9bd"/>
+      <path d="M2 10c0 12 8 19 17.5 19S37 22 37 10" stroke="#e5b1a8" stroke-width="1"/>
+      <circle cx="19.5" cy="14" r="2.2" fill="#fff8ec"/>
+    </pattern>
+    <g id="heart"><path d="M0 3C0-1 5-1 6 2c1-3 6-3 6 1 0 4-6 7-6 7S0 7 0 3Z"/></g>
+    <g id="spark"><path d="m0-6 1.7 4.3L6 0 1.7 1.7 0 6-1.7 1.7-6 0l4.3-1.7Z"/></g>
+  </defs>
+  <path fill="#fff0de" d="M0 0h390v180H0z"/>
+  <path fill="url(#dots)" d="M0 0h390v180H0z"/>
+  <path d="M260 180c-10-26 11-51 37-47-5-36 49-55 68-24 20-12 42 8 38 32v39Z" fill="#e5d8e8"/>
+  <path d="M0 180v-47c21-18 48-10 53 10 22-11 49 1 48 24 28-5 35 4 38 13Z" fill="#dce3cd"/>
+  <path fill="url(#scallops)" d="M0 0h390v34H0z"/>
+  <path d="M0 165c28-21 54 11 82-2s45-4 66 3 38-14 65-7 40 8 65 2 40-1 65 4 31-8 47-8v23H0Z" fill="#f1d6c2"/>
+  <path d="M0 171c28-21 54 11 82-2s45-4 66 3 38-14 65-7 40 8 65 2 40-1 65 4 31-8 47-8" stroke="#fffaf1" stroke-width="2" stroke-dasharray="2 5"/>
+  <g opacity=".58">
+    <use href="#heart" x="19" y="37" fill="#edc1bc" transform="rotate(-14 25 42)"/>
+    <use href="#spark" x="53" y="30" fill="#d4c6dc"/>
+    <use href="#spark" x="327" y="48" fill="#ccd8c4"/>
+    <use href="#heart" x="349" y="113" fill="#e4c9d9" transform="rotate(12 355 118)"/>
+    <use href="#spark" x="32" y="132" fill="#dbbd99"/>
+    <circle cx="70" cy="133" r="2" fill="#c7d6c4"/>
+    <circle cx="311" cy="125" r="1.5" fill="#ddc7dd"/>
+  </g>
+  <g transform="translate(348 35) rotate(12)" stroke="#dca9a4" stroke-width="1.3" stroke-linejoin="round" opacity=".55">
+    <path d="M0 4C-19-13-24 13-3 10L-9 24l7-4 3 4 1-14C23 14 20-12 3 4Z" fill="#f6d7d2"/>
+    <path d="m-3 6-10-4m15 4 10-4M-2 10l-3 8m7-8 2 8"/>
+    <rect x="-3" y="3" width="7" height="8" rx="2" fill="#fbe5db"/>
+  </g>
+  <g transform="translate(44 96) rotate(-13)" stroke="#cbbad6" stroke-width="1.5" stroke-linecap="round" opacity=".45">
+    <path d="M0 5v-15l11-2V3M0-7l11-2"/>
+    <ellipse cx="-2.5" cy="6" rx="3" ry="2" fill="#d7c6dd"/>
+    <ellipse cx="8.5" cy="4" rx="3" ry="2" fill="#d7c6dd"/>
+  </g>
+</svg>

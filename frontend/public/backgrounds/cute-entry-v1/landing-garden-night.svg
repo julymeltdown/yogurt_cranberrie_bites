@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="390" height="660" viewBox="0 0 390 660" fill="none">
+<!-- Original background ornament. No text, controls, portraits or source-pack pixels. -->
+<defs>
+  <g id="heart"><path d="M0 5C-15-4-11-16-3-13L0-9 3-13C11-16 15-4 0 5Z" fill="currentColor"/></g>
+  <g id="star"><path d="M0-11Q2-2 10 0 2 2 0 11-2 2-10 0-2-2 0-11Z" fill="currentColor"/></g>
+  <g id="flower"><path d="M0-5C-11-20-22-5-9 2-24 9-10 23 0 10 10 23 24 9 9 2 22-5 11-20 0-5Z" fill="currentColor"/><circle cy="4" r="4" fill="#fff1ce"/></g>
+  <g id="note" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M0 8V-10L12-14V4M0-5 12-9"/><ellipse cx="-3" cy="9" rx="4" ry="3" fill="currentColor" stroke="none"/><ellipse cx="9" cy="5" rx="4" ry="3" fill="currentColor" stroke="none"/></g>
+  <g id="cloud"><path d="M-34 7C-49 7-50-13-35-15-36-31-14-36-5-23 8-39 31-28 29-14 48-15 51 8 32 9Z" fill="currentColor"/></g>
+  <g id="sprig" fill="none" stroke="#a4b49a" stroke-width="2" stroke-linecap="round"><path d="M0 0Q-6-18 1-40"/><path d="M-2-10C-21-8-19-23-3-16M-2-23C15-23 15-36 0-30" fill="#b9c5a8" stroke="none"/></g>
+</defs>
+<rect width="390" height="660" fill="#624250"/>
+<path d="M0 0H390V142Q300 117 235 147T87 148T0 133Z" fill="#6b4b5b"/>
+<circle cx="283" cy="341" r="83" fill="#efd6bd"/>
+<path d="M-28 405C-57 354-13 307 29 325 33 280 101 267 124 311 161 293 197 332 180 363 223 362 230 425 186 438H-28Z" fill="#d6afbb"/>
+<path d="M224 415C200 389 218 352 250 353 238 319 278 286 309 312 342 272 402 295 399 337 442 337 456 400 415 425Z" fill="#c7b6d1"/>
+<path d="M0 423Q50 392 94 422T188 420T285 422T390 415V660H0Z" fill="#503b4a"/>
+<path d="M0 434Q54 418 106 437T210 434T313 436T390 429V461H0Z" fill="#8f7389"/>
+<use href="#cloud" transform="translate(16 381) rotate(0) scale(1.35)" color="#f1d8d1" opacity="1"/>
+<use href="#cloud" transform="translate(369 367) rotate(0) scale(1.35)" color="#ead8e8" opacity="1"/>
+<use href="#cloud" transform="translate(3 441) rotate(0) scale(0.9)" color="#d0b5c4" opacity="1"/>
+<use href="#cloud" transform="translate(386 439) rotate(0) scale(0.85)" color="#d0b5c4" opacity="1"/>
+<use href="#star" transform="translate(19 80) rotate(0) scale(0.6)" color="#e6bdc3" opacity="1"/>
+<use href="#star" transform="translate(366 110) rotate(0) scale(0.52)" color="#d2c6e3" opacity="1"/>
+<use href="#star" transform="translate(31 235) rotate(0) scale(0.72)" color="#e4bfcc" opacity="1"/>
+<use href="#star" transform="translate(356 255) rotate(0) scale(0.65)" color="#d7c4e6" opacity="1"/>
+<use href="#star" transform="translate(18 330) rotate(0) scale(0.5)" color="#f2d49e" opacity="1"/>
+<use href="#star" transform="translate(375 324) rotate(0) scale(0.5)" color="#f2d49e" opacity="1"/>
+<use href="#star" transform="translate(27 490) rotate(0) scale(0.65)" color="#e5b4c3" opacity="1"/>
+<use href="#star" transform="translate(364 495) rotate(0) scale(0.65)" color="#cbbddd" opacity="1"/>
+<use href="#heart" transform="translate(29 302) rotate(-10) scale(0.75)" color="#dca6b5" opacity="1"/>
+<use href="#heart" transform="translate(361 351) rotate(14) scale(0.65)" color="#dca6b5" opacity="1"/>
+<use href="#heart" transform="translate(26 566) rotate(-10) scale(0.55)" color="#dca6b5" opacity="1"/>
+<use href="#heart" transform="translate(368 577) rotate(14) scale(0.55)" color="#dca6b5" opacity="1"/>
+<use href="#flower" transform="translate(31 415) rotate(-17) scale(0.75)" color="#dba3b5" opacity="1"/>
+<use href="#flower" transform="translate(357 414) rotate(16) scale(0.85)" color="#dba3b5" opacity="1"/>
+<use href="#note" transform="translate(23 188) rotate(-12) scale(0.72)" color="#bcafce" opacity="1"/>
+<use href="#note" transform="translate(366 189) rotate(12) scale(0.65)" color="#bcafce" opacity="1"/>
+</svg>

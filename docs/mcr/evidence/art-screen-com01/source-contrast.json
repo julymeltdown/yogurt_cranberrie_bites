@@ -1,0 +1,162 @@
+{
+  "task": "ART-SCREEN-COM01",
+  "kind": "CONSERVATIVE_SOURCE_PAINT_BOUND_NOT_RENDERED_A11Y",
+  "method": "WCAG relative luminance; all hex SVG paints treated fully opaque, including low-opacity ornaments. This is a conservative source bound for dark foregrounds on light fields, not sampled browser contrast. Controls, portraits/media and mural pixels are excluded surfaces. Theme inheritance, actual foreground computed styles and focus must be checked in combined rendered packet.",
+  "cssCommit": "8824401dec061102c9af33ba302855e48563170a",
+  "assets": [
+    {
+      "asset": "/backgrounds/cute-community-v1/feed-backdrop.svg",
+      "sha256": "04665cf94e6adda3ca3137070bd35789930e7df927309e1b50a57d41722c1cb8",
+      "paintColors": [
+        "#e8dfed",
+        "#efd6cd",
+        "#f5d9df",
+        "#f8ded2",
+        "#fff3e8"
+      ],
+      "sourceContrast": {
+        "body": {
+          "foreground": "#201b18",
+          "worstUnblendedPaint": "#efd6cd",
+          "minimumSourceRatio": 12.32,
+          "meets4_5": true,
+          "meets3": true
+        },
+        "reacted": {
+          "foreground": "#a0222c",
+          "worstUnblendedPaint": "#efd6cd",
+          "minimumSourceRatio": 5.497,
+          "meets4_5": true,
+          "meets3": true
+        },
+        "focus": {
+          "foreground": "#9b202c",
+          "worstUnblendedPaint": "#efd6cd",
+          "minimumSourceRatio": 5.754,
+          "meets4_5": true,
+          "meets3": true
+        }
+      }
+    },
+    {
+      "asset": "/backgrounds/cute-community-v1/meet-backdrop.svg",
+      "sha256": "9aec4b75eddf1be6eb3c2006f44aa8cfee18755d238589df5dbe9648ec7a8367",
+      "paintColors": [
+        "#e4e8d8",
+        "#eedeea",
+        "#efd6cd",
+        "#f5dccd",
+        "#fff3e8"
+      ],
+      "sourceContrast": {
+        "body": {
+          "foreground": "#211b18",
+          "worstUnblendedPaint": "#efd6cd",
+          "minimumSourceRatio": 12.287,
+          "meets4_5": true,
+          "meets3": true
+        },
+        "hint": {
+          "foreground": "#67594b",
+          "worstUnblendedPaint": "#efd6cd",
+          "minimumSourceRatio": 4.882,
+          "meets4_5": true,
+          "meets3": true
+        },
+        "tool": {
+          "foreground": "#574537",
+          "worstUnblendedPaint": "#efd6cd",
+          "minimumSourceRatio": 6.563,
+          "meets4_5": true,
+          "meets3": true
+        },
+        "focus": {
+          "foreground": "#a3212b",
+          "worstUnblendedPaint": "#efd6cd",
+          "minimumSourceRatio": 5.399,
+          "meets4_5": true,
+          "meets3": true
+        }
+      }
+    },
+    {
+      "asset": "/backgrounds/cute-community-v1/gifts-backdrop.svg",
+      "sha256": "3ac5abfa9432e0feeb1f6b8db781ea1c4609f4fadb678b51636c467ceb27e86c",
+      "paintColors": [
+        "#e9dfee",
+        "#efd6cd",
+        "#f4d8dc",
+        "#f8e0d2",
+        "#fff3e8"
+      ],
+      "sourceContrast": {
+        "bodyDefaultToken": {
+          "foreground": "#201d1d",
+          "worstUnblendedPaint": "#efd6cd",
+          "minimumSourceRatio": 12.089,
+          "meets4_5": true,
+          "meets3": true
+        },
+        "note": {
+          "foreground": "#5a4d43",
+          "worstUnblendedPaint": "#efd6cd",
+          "minimumSourceRatio": 5.886,
+          "meets4_5": true,
+          "meets3": true
+        },
+        "focus": {
+          "foreground": "#a6252b",
+          "worstUnblendedPaint": "#efd6cd",
+          "minimumSourceRatio": 5.194,
+          "meets4_5": true,
+          "meets3": true
+        }
+      }
+    },
+    {
+      "asset": "/backgrounds/cute-wall-me-v1/wall-stationery.svg",
+      "sha256": "1929fda18afe73000f79a44a7cb37c5504bee42d450bff343a562baa85e2e227",
+      "paintColors": [
+        "#c7d6c4",
+        "#c9a58b",
+        "#cbbad6",
+        "#ccd8c4",
+        "#d4c6dc",
+        "#d7c6dd",
+        "#dbbd99",
+        "#dca9a4",
+        "#dce3cd",
+        "#ddc7dd",
+        "#e4c9d9",
+        "#e5b1a8",
+        "#e5d8e8",
+        "#edc1bc",
+        "#f1d6c2",
+        "#f3c9bd",
+        "#f6d7d2",
+        "#fbe5db",
+        "#fff0de",
+        "#fff8ec",
+        "#fffaf1"
+      ],
+      "sourceContrast": {
+        "bodyDefaultToken": {
+          "foreground": "#201d1d",
+          "worstUnblendedPaint": "#c9a58b",
+          "minimumSourceRatio": 7.362,
+          "meets4_5": true,
+          "meets3": true
+        },
+        "rootFocus": {
+          "foreground": "#a2232b",
+          "worstUnblendedPaint": "#c9a58b",
+          "minimumSourceRatio": 3.286,
+          "meets4_5": false,
+          "meets3": true
+        }
+      }
+    }
+  ],
+  "browserComputedContrast": "NOT_RUN",
+  "commandExitCode": 0
+}

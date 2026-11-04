@@ -1,0 +1,110 @@
+{
+  "task": "ART-SCREEN-ID01",
+  "status": "IN_PROGRESS",
+  "base": "7c25078f118da53dd9a524d0a58e707cca190f0f",
+  "sourceSha256": "d2d2a708e9692d5a5770a57149a28a61f383c7604b313be932a82705725a3b79",
+  "grantedSelectorCount": 20,
+  "closedAssets": [
+    {
+      "file": "landing-garden-night.svg",
+      "url": "/backgrounds/cute-entry-v1/landing-garden-night.svg",
+      "viewBox": [
+        0,
+        0,
+        390,
+        660
+      ],
+      "transparent_background": false,
+      "bytes": 3820,
+      "sha256": "172636f6ccafb87d60f4a6be4c1d46657e9548ec5eec872b22517099f9ec8d95",
+      "usage": "A01 existing poster background only; white print stays unchanged",
+      "revision": "9a962ea6f8c20fe59846cbcf4f468b902e3f280e"
+    },
+    {
+      "file": "sign-in-paper.svg",
+      "url": "/backgrounds/cute-entry-v1/sign-in-paper.svg",
+      "viewBox": [
+        0,
+        0,
+        390,
+        720
+      ],
+      "transparent_background": false,
+      "bytes": 2115,
+      "sha256": "aee62ec92a87df6a86cfd2322682cd735ba629aeb7a5728aaca2bba81182fa73",
+      "usage": "A02 paper surface; quiet form center x=60..330",
+      "revision": "9a962ea6f8c20fe59846cbcf4f468b902e3f280e"
+    },
+    {
+      "file": "sign-in-clouds-top.svg",
+      "url": "/backgrounds/cute-entry-v1/sign-in-clouds-top.svg",
+      "viewBox": [
+        0,
+        0,
+        390,
+        240
+      ],
+      "transparent_background": true,
+      "bytes": 2609,
+      "sha256": "29ed345d8d974798b37bc6eb0dc8a50dd4345925a3c284283fcf2709cca4dbf1",
+      "usage": "A02 optional upper decorative background; never cover existing foreground",
+      "revision": "9a962ea6f8c20fe59846cbcf4f468b902e3f280e"
+    },
+    {
+      "file": "sign-in-garden-bottom.svg",
+      "url": "/backgrounds/cute-entry-v1/sign-in-garden-bottom.svg",
+      "viewBox": [
+        0,
+        0,
+        390,
+        180
+      ],
+      "transparent_background": true,
+      "bytes": 2887,
+      "sha256": "0f0965425ce45f96925bc94b7d5372225f10af0a9d3a6901e6cc96bb3a328e4e",
+      "usage": "A02 optional bottom decorative background; no positioning or clipping changes",
+      "revision": "9a962ea6f8c20fe59846cbcf4f468b902e3f280e"
+    },
+    {
+      "file": "customize-paper.svg",
+      "url": "/backgrounds/cute-entry-v1/customize-paper.svg",
+      "viewBox": [
+        0,
+        0,
+        390,
+        700
+      ],
+      "transparent_background": false,
+      "bytes": 2386,
+      "sha256": "831c198806213245a9eea9dd4500274c8faf4bd63886864e8a5ccc75022e94b9",
+      "usage": "U02 outer panel paper only; preview, canvas and option art excluded",
+      "revision": "9a962ea6f8c20fe59846cbcf4f468b902e3f280e"
+    },
+    {
+      "file": "me-scrapbook.svg",
+      "url": "/backgrounds/cute-wall-me-v1/me-scrapbook.svg",
+      "bytes": 2728,
+      "sha256": "98c351c141e372d8d7e0d6879556105c551fbdf7478d66afe76d360a59a7aae1",
+      "revision": "8ff3a58f556bf2811ad1415cd31c5ba1953ccd58"
+    },
+    {
+      "file": "me-night-ribbon.svg",
+      "url": "/backgrounds/cute-wall-me-v1/me-night-ribbon.svg",
+      "bytes": 1895,
+      "sha256": "1519b1b125190be901e1119105eafd057532ff98d1f091cf450f0f31f72b62bc",
+      "revision": "8ff3a58f556bf2811ad1415cd31c5ba1953ccd58"
+    }
+  ],
+  "checks": {
+    "selectorProperties": "PASS",
+    "assetBytesAndHashes": "PASS",
+    "svgLocalInertSource": "PASS",
+    "allSevenAssetsConsumed": "PASS"
+  },
+  "limits": [
+    "Static source validation only; no SVG decode or actual rendered contrast evidence",
+    "Root alone integrates assets/imports and publishes; no root imports authored here",
+    "Before/after390,360/430,focus/geometry/character invariance NOT_RUN",
+    "Visual acceptance and physical-device/live-flow qualification remain unproven"
+  ]
+}

@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="160" height="96" viewBox="0 0 160 96" shape-rendering="crispEdges">
+  <title>Letters and tiny music notes</title>
+  <desc>Transparent noninteractive pixel stationery ornament, without characters or text.</desc>
+  <g fill="#c7a8b9">
+    <path d="M17 30h3v3h3v3h-3v3h-3v-3h-3v-3h3zm110-17h2v3h3v2h-3v3h-2v-3h-3v-2h3zM37 16h2v2h-2zm108 39h2v2h-2z"/>
+  </g>
+  <g stroke="#755363" stroke-width="2" stroke-linejoin="round">
+    <path fill="#f7d9df" d="M34 40h75v43H34z"/>
+    <path fill="#fff3e8" d="m35 41 36 24 37-24"/>
+    <path fill="none" d="m35 82 24-21m49 21L85 62"/>
+  </g>
+  <path fill="#af526d" d="M65 55h4v3h4v-3h4v3h3v6h-3v3h-3v3h-6v-3h-3v-3h-3v-6h3z"/>
+  <path fill="#d78c9e" d="M65 58h4v4h-4z"/>
+  <g stroke="#77637a" stroke-width="2" fill="#c9bdd7">
+    <path d="M115 42V30l13-3v12m-13-6 13-3" fill="none"/>
+    <path d="M110 40h5v4h-5zm13-3h5v4h-5z"/>
+  </g>
+  <path fill="#ba929f" d="M120 65h3v-3h6v3h3v6h-3v3h-3v3h-3v-3h-3v-3h-3v-6h3z"/>
+  <g fill="#b5bdab"><path d="M20 65h2v9h-2zm-4 5h10v2H16zM144 78h2v6h-2zm-2 2h6v2h-6z"/></g>
+</svg>

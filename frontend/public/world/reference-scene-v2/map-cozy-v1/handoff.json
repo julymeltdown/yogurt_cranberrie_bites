@@ -1,0 +1,58 @@
+{
+  "format": "MCR_COZY_SCENERY_HANDOFF_V1",
+  "status": "CONTRACT_READY_SOURCE_VALIDATED_NATIVE_NOT_RUN",
+  "payloads": [
+    {
+      "path": "frontend/public/world/reference-scene-v2/map-cozy-v1/README.md",
+      "bytes": 4702,
+      "sha256": "sha256:6d3b4edc18de98c696200e475960e46cb85b828f9f438d97e2c9f6e4fd6f7665"
+    },
+    {
+      "path": "frontend/public/world/reference-scene-v2/map-cozy-v1/build.py",
+      "bytes": 19955,
+      "sha256": "sha256:6f9c122c97ceab201202a9693575edcd4f1989fb1c4b95324a21574cdf54937f"
+    },
+    {
+      "path": "frontend/public/world/reference-scene-v2/map-cozy-v1/prompt.txt",
+      "bytes": 3426,
+      "sha256": "sha256:f6e3fe63e363b7323476c8c96ed4455867e83c7b34938ed32ba301ba6cc57ac4"
+    },
+    {
+      "path": "frontend/public/world/reference-scene-v2/map-cozy-v1/source-original.png",
+      "bytes": 2120690,
+      "sha256": "sha256:db77361f6366157de19e32fb73b988e5f04883269c1f0a53d9a1a086a1d0b514"
+    },
+    {
+      "path": "frontend/public/world/reference-scene-v2/map-cozy-v1/source-registration.json",
+      "bytes": 16615,
+      "sha256": "sha256:f38f19148b8d9ee80dc7340de2ae1fa4388583977aeff1c0602514b006792121"
+    },
+    {
+      "path": "frontend/public/world/reference-scene-v2/map-cozy-v1/ground.svg",
+      "bytes": 741981,
+      "sha256": "sha256:e52f9acdaf4bc491664125585776ae42fe34848a59f5edc0205880095a19de40"
+    },
+    {
+      "path": "frontend/public/world/reference-scene-v2/map-cozy-v1/ground-provenance.json",
+      "bytes": 22883,
+      "sha256": "sha256:b03be9a7f8cdfd1d2f1613f3930ecb90918fd81c748c0f913af1f41c25120c0a"
+    },
+    {
+      "path": "frontend/public/world/reference-scene-v2/map-cozy-v1/presentation.json",
+      "bytes": 5836,
+      "sha256": "sha256:0b2be1fa5773f9c98f221ac83d1fd729fee89f0e0c3a8bf2bf71c81d2bf35217"
+    },
+    {
+      "path": "frontend/public/world/reference-scene-v2/map-cozy-v1/parade/atlas.png",
+      "bytes": 1201118,
+      "sha256": "sha256:9c77e42eb377fbab1df485d6c1e8e47221ac33aebbc03e9aecba3cc7bbcded9f"
+    },
+    {
+      "path": "frontend/public/world/reference-scene-v2/map-cozy-v1/parade/ground.png",
+      "bytes": 850849,
+      "sha256": "sha256:09d77ad8aa85f9d6464fa5248dae3eb91498f57b0c2183af1f90fc2e79b0dd45"
+    }
+  ],
+  "root_export_ownership": "Root153 produces parade/ground.png from pinned ground.svg, then explicitly stops/releases; ART subsequently closes hashes without modifying PNG.",
+  "limits": "Source-only. No actual warm native World/Map AFTER or ten-screen visual acceptance is claimed."
+}

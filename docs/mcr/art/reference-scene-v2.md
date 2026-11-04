@@ -583,3 +583,93 @@ the sealed service bundle. Consumer adoption needs a separate exact recorded
 scope. Actual corrected canopy visibility/palette/native/mobile comparison is
 **NOT_RUN**; composition, density, framing and overall attached-target fidelity
 remain open. Same original goal metadata remains **BLOCKED**.
+
+## Superseding human direction: cozy backgrounds only
+
+The latest human instruction requires backgrounds visibly cuter than both the
+current product and the unchanged collage. The latest120DC5EC JPEG is byte
+identical to the preserved target (SHA2562b3988d546f87b813d78ca13bf267730a6dd19118bd6535a2d3c3032b6f12d23).
+Its dark palette is no longer a parity target. Historical canopy/roof diagnostics
+above remain evidence, not current design acceptance. Portrait-window and
+proportional-fit proposals are withdrawn. All character pixels, selected packs,
+UVs, crops, framing, anchors, renderers and sizing remain unchanged. Foreground
+controls, text, typography, layout, labels, intents and real functions are frozen.
+
+GrantA022730e5/af01689f and the following sole-source allocation authorize only
+the ten new files under map-cozy-v1 and this existing ART document. Work uses
+the isolated art-map-cozy-v1 checkout and codex/mcr-art-map-cozy-v1 branch from
+published7c25078f118da53dd9a524d0a58e707cca190f0f. The former a519 checkout and
+its sealed source commits remain preserved. Root owns the shared World/Map
+descriptor adapter; there is no second World pack or artist runtime ownership.
+
+The first source changes dominant roof/façade/tree surfaces toward cream,
+peach, lavender, sage and mint. It includes softer two-storey halls, rounded
+foliage and restrained flower/music details. It does not rely on tiny ornaments
+over unchanged dark scenery. One built-in image_gen call, with only the old
+environment atlas as reference, produced the original1254x1254RGBA sheet:
+2120690bytes/SHA256db77361f6366157de19e32fb73b988e5f04883269c1f0a53d9a1a086a1d0b514.
+Exact prompt, original bytes and per-sprite source/packing provenance are saved.
+No character reference or output is included. The model version is not exposed.
+
+Fourteen sprites are registered into the original sixteen frame rectangles;
+the stage and CULTURE PARK plaque retain exact original RGBA bytes. The
+1024x1024RGBA atlas is1201118bytes/SHA2569c77e42eb377fbab1df485d6c1e8e47221ac33aebbc03e9aecba3cc7bbcded9f.
+All sixteen alpha>=32 baseline rows remain exact. Rectangle crops and nearest
+sampling do not repaint or threshold retained pixels. Faint interior crop-edge
+residue remains; sampled exterior red specks have alpha1/255. This is disclosed
+source material, not an asserted native defect or an opaque red outline.
+
+The self-contained768x1296 ground SVG is741981bytes/SHA256e52f9acdaf4bc491664125585776ae42fe34848a59f5edc0205880095a19de40.
+It embeds the exact old ground PNG and applies two code-native palette filters
+using the exact43 existing paving polygons. No coordinate/topology/path/foot/
+camera change is made. Root alone receives temporary ownership of the new
+parade/ground.png export in its own allocated workflow. At this checkpoint the
+PNG is **NOT_RUN**; the presentation correctly remains
+**SOURCE_PREPARED_AWAITING_ROOT_GROUND_PNG_EXPORT**. The final combined PNG
+budget is2097152bytes/2043904decoded pixels, leaving896034bytes for ground.
+No closed PNG tuple or application adoption is claimed yet.
+
+ART-COZY-SOURCE-202611040621Z was accepted after a fresh40.617GiB free-disk
+guard and verified absence of old owned jobs. One generation and bounded source
+packing completed. Build and deterministic verification exited0; the actual
+source atlas was viewed. The output allocation was explicitly released at
+2026-11-04T06:30:32Z (15:30:32KST), with6251073 counted new media-output bytes,
+zero temporary bytes, no owned server/browser/native process or pending tool
+job, and38.863GiB free. Remaining source code/documentation and metadata closure
+do not acquire another media job. Root owns the separately allocated ground
+export and actual native captures. Source images and JSON equality are not
+visual acceptance.
+
+The real candidate6ca52f8851473090479f1c13a33e879b6cd099d0 Map390x844 capture,
+saved15:05:14.291358KST/SHA25687ab843422292a7701e2a3fe39a4419ef95e52721c6c2b052b617c6c2d135b01,
+is preserved BEFORE evidence. Actual390px cozy World and Map AFTER, first-glance
+cuteness, readability/contrast, affected360/430px views and real functional
+gates remain **NOT_RUN/OPEN**. This is the first PARADE source only; REVENGE and
+DANGER remain unchanged and are not cute-accepted. The original goal metadata
+was freshly read as **BLOCKED/unfinished**, reused without reset or completion.
+
+### First PARADE ground export and source closure
+
+Root returned its immutable768x1296PNG after allocated job
+COZY-GROUND-PNG-202611040637Z at2026-11-04T06:38:25.796Z, with exit0 and an
+explicit stop/full release. Artist independently checked and copied exact bytes:
+850849bytes/SHA25609d77ad8aa85f9d6464fa5248dae3eb91498f57b0c2183af1f90fc2e79b0dd45.
+The two runtime PNGs total2051967bytes, leaving45185bytes below the2097152-byte
+limit, and2043904decoded pixels. The source SVG and atlas pins above remain exact.
+Root reports one Chrome156.0.8078.80/noVite/network export,1.3seconds, closed
+browser, removed owned temporary/profile/link state and peak7601112output bytes.
+This is attributed export evidence, not an Artist native application run.
+
+Artist closes metadata using --close and verifies using --close --verify;
+neither repacks nor exports pixels. The resulting first PARADE source status is
+CONTRACT_READY_SOURCE_VALIDATED_NATIVE_NOT_RUN. Real390px World/Map AFTER and
+relevant360/430px checks remain Root's separately allocated work. Original
+functional, device, ten-background and human visual acceptance remain open.
+
+The exact proposed three-file era extension has source-code preparation only:
+revenge/atlas.png, danger/atlas.png and era-derivatives.json. No such output has
+been created. Derivatives must use each era's own frame rectangles and original
+baked-text pixels; five REVENGE and seven DANGER rectangles differ from PARADE.
+Their future palette/registration mode requires an explicit binding record,
+separate named output allocation and a committed first PARADE handoff. No
+released media allocation, extra image generation or new character rights apply.

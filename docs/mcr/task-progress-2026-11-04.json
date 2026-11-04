@@ -1,22 +1,22 @@
 {
-  "updated_at": "2026-11-04T14:38:49+09:00",
-  "published_snapshot": "4bf9022f943e601c0f876d7ca7e5fdc54036b8e6",
+  "updated_at": "2026-11-04T15:41:02+09:00",
+  "published_snapshot": "c8a731e5c7f03c3fbcbd0581c6e872429806fa22",
   "method": "Management reconciliation of published task dispositions and existing developer/SL receipts; no code/query/visual/test inspection or reruns. Publication ancestry only was checked for task-linked delivery commits.",
   "required_tasks": 112,
   "required_ia_entries": 61,
   "optional_tasks_excluded": 6,
   "counts": {
     "RECORDED_ACCEPTED": 12,
-    "IMPLEMENTATION_EVIDENCED": 62,
+    "IMPLEMENTATION_EVIDENCED": 60,
     "UNRECONCILED": 9,
-    "TASK_CRITERIA_SATISFIED": 24,
+    "TASK_CRITERIA_SATISFIED": 26,
     "OPEN_INTEGRATION_GATE": 5
   },
-  "recorded_task_criteria_outcomes": 36,
+  "recorded_task_criteria_outcomes": 38,
   "implementation_percentage": null,
   "limitations": [
-    "12 recorded ACCEPTED dispositions comprise 11 preserved historical records plus the explicit FE08 implementation-owner acceptance. Another 24 original-task criteria closures preserve the owners' exact dispositions, including FE07 and FE15 INTEGRATED; no new king/SL technical acceptance is asserted.",
-    "62 denotes other evidence-bearing tasks, not 62 complete tasks or a completion percentage. Some may be ready for an existing owner disposition to close them.",
+    "12 recorded ACCEPTED dispositions comprise 11 preserved historical records plus the explicit FE08 implementation-owner acceptance. Another 26 original-task criteria closures preserve the owners' exact dispositions, including FE07 and FE15 INTEGRATED, FE18 CONTRACT_READY and FE32 MOCK_READY; no new king/SL technical acceptance is asserted.",
+    "60 denotes other evidence-bearing tasks, not 60 complete tasks or a completion percentage. Some may be ready for an existing owner disposition to close them.",
     "9 unreconciled task statuses are not assumed NOT_STARTED.",
     "No IN01-IN05 completion or full 61-entry IA acceptance is established.",
     "Feature and visual follow-ups remain required even where an original bounded task has a historical completion record."
@@ -877,12 +877,17 @@
       "id": "FE18",
       "title": "Rooms and accessible nearby list",
       "lane": "FE-WORLD",
-      "coverage_bucket": "IMPLEMENTATION_EVIDENCED",
-      "recorded_state": null,
+      "coverage_bucket": "TASK_CRITERIA_SATISFIED",
+      "recorded_state": "CONTRACT_READY",
       "evidence": [
-        "docs/mcr/frontend/world-access.md"
+        "docs/mcr/frontend/world-access.md",
+        "docs/mcr/frontend/fe18-rooms-nearby.md"
       ],
-      "note": "Published receipt or owner report records bounded implementation/fixture/component work. Whole original-task completion is partial or not yet reconciled; no additional live/device gate is imposed on a pure task."
+      "note": "The published implementation-owner record explicitly declares the original FE18 client scope completed at CONTRACT_READY. Rooms chooser, switching feedback, capacity and authorized Nearby client criteria are delivered against frozen fixtures. Frontend KING confirms publication through7c25078f; historical publication-pending wording is superseded by actual published ancestry. No new king/SL technical acceptance or goal-completion claim is asserted.",
+      "known_followup": "W04 invitation semantics and authority interface remain OPEN / NOT_IMPLEMENTED pending the existing human question. Live backend filtering, sustained IN01, device and IN05 criteria remain separate;112 tasks/61 IA are preserved.",
+      "published_integration_commits": [
+        "95bda3ed692ef3b0d9866dbec184a45da26c9957"
+      ]
     },
     {
       "id": "FE19",
@@ -1091,12 +1096,17 @@
       "id": "FE32",
       "title": "Mural editing surface",
       "lane": "FE-WORLD",
-      "coverage_bucket": "IMPLEMENTATION_EVIDENCED",
-      "recorded_state": null,
+      "coverage_bucket": "TASK_CRITERIA_SATISFIED",
+      "recorded_state": "MOCK_READY",
       "evidence": [
-        "docs/mcr/frontend/mural-editor.md"
+        "docs/mcr/frontend/mural-editor.md",
+        "docs/mcr/frontend/fe32-client-delivery.md"
       ],
-      "note": "Published receipt or owner report records bounded implementation/fixture/component work. Whole original-task completion is partial or not yet reconciled; no additional live/device gate is imposed on a pure task."
+      "note": "The published implementation-owner record explicitly declares all original FE32 pure-client criteria SATISFIED at MOCK_READY, with no identified original client remainder. Frontend KING confirms publication. This records the owner disposition without king/SL technical review or a new formal ACCEPTED disposition.",
+      "known_followup": "Live service, FE33 producer activation, multiuser/device/IN04 and final visual acceptance remain separate required work. A fixture-qualified client is not a completed integrated-product gate.",
+      "published_integration_commits": [
+        "4af1c86863698e311d286039a0702d5b2517c1c3"
+      ]
     },
     {
       "id": "FE33",
@@ -1481,6 +1491,20 @@
       "owner_chat": "01a1a204-c583-7670-965a-4891b8b1289e",
       "receipt_commit": "4bf9022f943e601c0f876d7ca7e5fdc54036b8e6",
       "disposition": "SATISFIED, all original client criteria at MOCK_READY; no identified client remainder. Owner-qualified delivery published and payload verified per Frontend KING hourly digest. Actual backend, IN02, devices and release remain separate."
+    },
+    {
+      "recorded_at": "2026-11-04T15:41:02+09:00",
+      "task": "FE18",
+      "owner_chat": "01a1a26e-1de2-7b41-a294-c9a79cfded9b",
+      "receipt_commit": "95bda3ed692ef3b0d9866dbec184a45da26c9957",
+      "disposition": "Original client criteria SATISFIED at CONTRACT_READY per explicit published owner disposition; separate live/IA/fidelity limits preserved. No additional formal ACCEPTED or actual goal COMPLETE status inferred."
+    },
+    {
+      "recorded_at": "2026-11-04T15:41:02+09:00",
+      "task": "FE32",
+      "owner_chat": "01a1a204-c583-7670-965a-4891b8b1289e",
+      "receipt_commit": "4af1c86863698e311d286039a0702d5b2517c1c3",
+      "disposition": "Original client criteria SATISFIED at MOCK_READY per explicit published owner disposition; separate live/IA/fidelity limits preserved. No additional formal ACCEPTED or actual goal COMPLETE status inferred."
     }
   ]
 }

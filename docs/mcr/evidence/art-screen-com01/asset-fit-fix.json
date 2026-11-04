@@ -1,0 +1,63 @@
+{
+  "task": "ART-SCREEN-COM01",
+  "status": "SOURCE_FIX_VERIFIED_RECAPTURE_NOT_RUN",
+  "cssCommit": "8824401dec061102c9af33ba302855e48563170a",
+  "cssUnchanged": true,
+  "assetFixCommit": "124f3ed8217acfff33ffcc7904c6ff000e33b013",
+  "assets": [
+    {
+      "url": "/backgrounds/cute-community-v1/feed-backdrop.svg",
+      "sourcePath": "frontend/public/backgrounds/cute-community-v1/feed-backdrop.svg",
+      "oldCommit": "2a5c67e5d269db818431b28dcef1217b9782b71f",
+      "oldSha256": "04665cf94e6adda3ca3137070bd35789930e7df927309e1b50a57d41722c1cb8",
+      "sourceCommit": "124f3ed8217acfff33ffcc7904c6ff000e33b013",
+      "sha256": "ebafd41c3f4954eb91c1549541f1f1c1d0a5209b7c04fc9d314a98515c445234",
+      "bytes": 991,
+      "viewBox": "0 0 390 640",
+      "preserveAspectRatio": "none",
+      "onlyChangeFromOriginal": "root preserveAspectRatio attribute; byte-identical after removing it"
+    },
+    {
+      "url": "/backgrounds/cute-community-v1/meet-backdrop.svg",
+      "sourcePath": "frontend/public/backgrounds/cute-community-v1/meet-backdrop.svg",
+      "oldCommit": "2a5c67e5d269db818431b28dcef1217b9782b71f",
+      "oldSha256": "9aec4b75eddf1be6eb3c2006f44aa8cfee18755d238589df5dbe9648ec7a8367",
+      "sourceCommit": "124f3ed8217acfff33ffcc7904c6ff000e33b013",
+      "sha256": "b792df37b1a31a5abd681096fcac6e0541b5de0ee9422cd2408b98414b158ca8",
+      "bytes": 989,
+      "viewBox": "0 0 390 640",
+      "preserveAspectRatio": "none",
+      "onlyChangeFromOriginal": "root preserveAspectRatio attribute; byte-identical after removing it"
+    },
+    {
+      "url": "/backgrounds/cute-community-v1/gifts-backdrop.svg",
+      "sourcePath": "frontend/public/backgrounds/cute-community-v1/gifts-backdrop.svg",
+      "oldCommit": "2a5c67e5d269db818431b28dcef1217b9782b71f",
+      "oldSha256": "3ac5abfa9432e0feeb1f6b8db781ea1c4609f4fadb678b51636c467ceb27e86c",
+      "sourceCommit": "124f3ed8217acfff33ffcc7904c6ff000e33b013",
+      "sha256": "24fee1dd690452a053bdde2ad0928713979e24c67ed0e68ce767795f3a205de4",
+      "bytes": 1011,
+      "viewBox": "0 0 390 640",
+      "preserveAspectRatio": "none",
+      "onlyChangeFromOriginal": "root preserveAspectRatio attribute; byte-identical after removing it"
+    }
+  ],
+  "sourceVerification": "PASS",
+  "unchangedSourceProperties": [
+    "all vector geometry",
+    "all paint colors and opacity",
+    "intrinsic dimensions/viewBox",
+    "no new elements or resources",
+    "all characters/media/mural data",
+    "all frontend application CSS/layout/foreground/control source"
+  ],
+  "sourceContrast": "Existing source-color bounds remain applicable because all paint bytes are unchanged; browser-computed contrast still required.",
+  "initialPacket": "c8a731e5c7f03c3fbcbd0581c6e872429806fa22 native-01 is BEFORE this fix; not recapture proof.",
+  "requiredNextEvidence": [
+    "actual refreshed 390 Feed/Meet/Gifts backgrounds",
+    "360/430 responsive render",
+    "computed contrast and sufficient focus/44px checks",
+    "master publication proof"
+  ],
+  "commandExitCode": 0
+}

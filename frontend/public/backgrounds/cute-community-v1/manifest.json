@@ -1,0 +1,119 @@
+{
+  "version": 1,
+  "status": "IN_PROGRESS",
+  "taskIds": [
+    "FE27",
+    "FE21",
+    "FE24"
+  ],
+  "screens": [
+    "F01",
+    "M01",
+    "G01"
+  ],
+  "baseCommit": "bfa0193939c3eebd6c80ade85083c6530c6875e1",
+  "provenance": "Original code-native SVG pixel UI background graphics; no third-party or generated raster input. Character artwork unchanged.",
+  "referenceSha256": "2b3988d546f87b813d78ca13bf267730a6dd19118bd6535a2d3c3032b6f12d23",
+  "dependencies": [],
+  "assets": [
+    {
+      "file": "feed-backdrop.svg",
+      "url": "/backgrounds/cute-community-v1/feed-backdrop.svg",
+      "mime": "image/svg+xml",
+      "bytes": 991,
+      "sha256": "ebafd41c3f4954eb91c1549541f1f1c1d0a5209b7c04fc9d314a98515c445234",
+      "width": 390,
+      "height": 640,
+      "viewBox": "0 0 390 640",
+      "alpha": false,
+      "preserveAspectRatio": "none"
+    },
+    {
+      "file": "feed-corner.svg",
+      "url": "/backgrounds/cute-community-v1/feed-corner.svg",
+      "mime": "image/svg+xml",
+      "bytes": 1097,
+      "sha256": "47835f21905957b0b740c767220346c09b44e31cb2f709ec60d24c660b0f0430",
+      "width": 160,
+      "height": 96,
+      "viewBox": "0 0 160 96",
+      "alpha": true
+    },
+    {
+      "file": "gifts-backdrop.svg",
+      "url": "/backgrounds/cute-community-v1/gifts-backdrop.svg",
+      "mime": "image/svg+xml",
+      "bytes": 1011,
+      "sha256": "24fee1dd690452a053bdde2ad0928713979e24c67ed0e68ce767795f3a205de4",
+      "width": 390,
+      "height": 640,
+      "viewBox": "0 0 390 640",
+      "alpha": false,
+      "preserveAspectRatio": "none"
+    },
+    {
+      "file": "gifts-corner.svg",
+      "url": "/backgrounds/cute-community-v1/gifts-corner.svg",
+      "mime": "image/svg+xml",
+      "bytes": 1068,
+      "sha256": "502e63fa660e63c10cee92f02653d75efd91b5187fa0e39bff26b8a9d4580a61",
+      "width": 160,
+      "height": 96,
+      "viewBox": "0 0 160 96",
+      "alpha": true
+    },
+    {
+      "file": "meet-backdrop.svg",
+      "url": "/backgrounds/cute-community-v1/meet-backdrop.svg",
+      "mime": "image/svg+xml",
+      "bytes": 989,
+      "sha256": "b792df37b1a31a5abd681096fcac6e0541b5de0ee9422cd2408b98414b158ca8",
+      "width": 390,
+      "height": 640,
+      "viewBox": "0 0 390 640",
+      "alpha": false,
+      "preserveAspectRatio": "none"
+    },
+    {
+      "file": "meet-corner.svg",
+      "url": "/backgrounds/cute-community-v1/meet-corner.svg",
+      "mime": "image/svg+xml",
+      "bytes": 1022,
+      "sha256": "7e2dd420fd7e73b549ba0f94a11763aa514e99b2c478851eb75858208d6c2517",
+      "width": 160,
+      "height": 96,
+      "viewBox": "0 0 160 96",
+      "alpha": true
+    },
+    {
+      "file": "paper-tile.svg",
+      "url": "/backgrounds/cute-community-v1/paper-tile.svg",
+      "mime": "image/svg+xml",
+      "bytes": 589,
+      "sha256": "5538b91f92cf00b016951d0cdda1ef71ed820f5d9ee2e873d263f84b89a73cef",
+      "width": 64,
+      "height": 64,
+      "viewBox": "0 0 64 64",
+      "alpha": false
+    }
+  ],
+  "sourceValidation": {
+    "xmlParsing": "PASS",
+    "closedElementAndAttributeAllowlist": "PASS",
+    "intrinsicViewBoxMatch": "PASS",
+    "assetByteLimit4096": "PASS",
+    "conservativePaperContrast": {
+      "background": "#efd6cd",
+      "foregroundRatios": {
+        "#201b18": 12.32,
+        "#211b18": 12.287,
+        "#67594b": 4.882,
+        "#5a4d43": 5.886
+      },
+      "note": "Darkest unblended paint across opaque tile and broad backdrop primitives. Semi-transparent dots blend toward lighter base fields. Browser-computed text and focus contrast remain adopter validation. Ornaments must not overlap text."
+    },
+    "broadSurfaceFit": "preserveAspectRatio=none; painted field fills existing CSS background viewport at row/container ratios. Actual follow-up captures required."
+  },
+  "renderedInApp": "IN_PROGRESS: initial c8a731e5 390 capture inspected; broad SVG surface-fit fix pending shared recapture",
+  "publication": "NOT_RUN"
+}

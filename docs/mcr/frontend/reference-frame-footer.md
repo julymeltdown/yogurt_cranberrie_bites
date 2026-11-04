@@ -1,9 +1,113 @@
-# Shared frame and footer correction
+# Shared frame and footer — preserved baseline
 
-Status: **IN_PROGRESS**. Source prepared; application unit/type/lint/native checks
-and owner comparison of corrected captures are **NOT_RUN** at this checkpoint.
+Status: **IN_PROGRESS**. The original frame baseline is published. The first
+background-only source pass is prepared; its new native comparison is **NOT_RUN**.
 This bounded QA06-HUMAN-FRAME-FOOTER-01 correction supports AR02/AR04 and does
 not close the original QA06, AR02, AR03, AR04 or any IN gate.
+
+## Current background-only source pass
+
+World recorded the exact CSS-paint extension before edits at `9153d3e5` /
+`022730e5` in `docs/mcr/scrum/world.md`, GRANT C. The owner read that committed
+grant and accepted it with actual goal/base/branch/scope readback. The isolated
+checkout is unchanged; current source baseline is published
+`7c25078f118da53dd9a524d0a58e707cca190f0f`, merged while preserving this owner's
+tests, docs and evidence. Goal1793771449 remains ACTIVE and unbudgeted. New work
+follows the superseding human direction; its old wording is historical.
+
+Root's first World/MAP proposal is implemented in four explicitly granted
+background declarations: `.mcr-chrome-header` and `.mcr-chrome-panel-header`
+use dark berry `#251017`, and `.world-shell` uses peach `#fff3ec`. Existing
+`#f2eadf` header text is unchanged; calculated sRGB contrast is15.11:1. Dark
+`#191817` text against peach is16.28:1 where that pairing is actually used.
+These are arithmetic source checks, not browser-computed style evidence.
+The existing `.world-shell::after` now has a pastel rose/lavender/mint
+`background-image` gradient, within its unchanged perimeter mask. The original
+background shorthand retains its non-image defaults; only the image is
+overridden. All other CSS declarations, foreground colors, control state backgrounds,
+typography, borders, masks, layout and artwork remain unchanged. In particular
+`parade-footer.tsx` is READONLY for this stage. No source pack, avatar pixel,
+portrait crop, world actor, landscape image or renderer is edited.
+
+The first actual390px eight-panel capture cohort is Root candidate
+`c8a731e5c7f03c3fbcbd0581c6e872429806fa22`, job
+`PANEL-COZY-202611040632Z`,06:33:32.440–06:34:13.328UTC. It contains the initial
+three paints (`#614252` headers), not the later perimeter gradient. Direct
+owner inspection of its before/after saved images found that the unchanged
+focused-title red outline became less distinct. RGB samples from the saved
+ME pair identify the ring as `#a2232b`, original background `#191817`, and
+candidate background `#614252`. Calculated contrast drops from2.37:1 to1.17:1.
+The owner therefore corrected only the two header backgrounds to `#251017`:
+ring contrast becomes2.41:1 and header text15.11:1, preserving or improving
+both original pairings. Focus styles, text and control foregrounds stay frozen.
+The original red ring itself remains below3:1; this is baseline preservation,
+not a claim of full focus-contrast compliance. New corrected-source rendered
+verification remains pending and the c8a images keep their actual old palette.
+
+The fourth paint was left untouched until World explicitly recorded the exact
+`.world-shell::after` background-color/image/size extension at `2ccf628c`.
+The owner read and accepted that record before editing. No pseudo-element
+geometry, padding, border, position, z-index, pointer behavior or mask changed.
+Further panel backdrop work is a distinct later source pass.
+
+`git diff --check` passes for these source edits. No native/build/browser or
+install has run. The first actual390px before/after World and MAP views will
+use Root's coordinated new-background candidate and a fresh21d resource offer;
+the returned0612 offer grants no launch. Root's scenery tuple is separate and
+must be pinned by its actual source/hashes. The owner will inspect real saved
+images and preserve fixture/viewport/time/source limitations before extending
+checks to affected routes, widths and skins. A color proposal or source image
+is not proof that the World/MAP backdrop is visibly cuter in the application.
+
+## Superseding human direction — 2026-11-04 06:10 UTC
+
+The human now requires noticeably cuter **backgrounds only**. Characters,
+ornamental artwork, crops, source packs, atlases, renderers, typography, text,
+controls, layout and focus are frozen. Root153 relayed this direction and
+World confirmed the exact allocation boundary. The former distressed-frame /
+marching-ground visual target and its pending23-case job are superseded.
+The historical implementation/provenance and original PNG/JPEG bytes below
+remain preserved; they are not an acceptance claim for the revised direction.
+
+The owner initially stopped **before accepting or launching** resource offer
+`QA06-FRAME-FOOTER-202611040612Z`. It was returned unused: no browser, server,
+cache, temporary profile or dependency link was created. No new background or
+ornament write followed the steering. A proposed flower/music footer replacement
+was withdrawn; no SVG artwork change is authorized by the background direction.
+The existing decorative lease was stopped for superseded visual writes. The
+new paint grant is now recorded and accepted as described above.
+Root coordinates the minimum World/MAP paint proposal and first actual390px
+before/after; later panel backdrops and affected-route checks follow their actual
+allocation. There is no King/SL technical approval gate. Goal1793771449 remains
+ACTIVE and unbudgeted without reset or false completion; its historical wording
+does not override the new human instruction.
+
+Source43b492dc was published as
+`bfa0193939c3eebd6c80ade85083c6530c6875e1`. The owner independently fetched,
+checked `ls-remote`, verified delivered ancestry and compared all seven exact
+postimages with exit0. Root reported19 combined footer/chrome tests, full frontend
+typecheck and scoped lint passing in its source cohort; these are integrator
+checks, not fresh owner native or visual acceptance. A source audit found one
+extra titlebar separator declaration outside the exact inset-ring grant.
+Owner correction `0ee51c16a9948c45f52784095a2d4694b0c410cd` restores its original
+`border-bottom: 3px double #d7cab3`; Root published it as
+`bdc1ef6eb8b391ea980ae684bb5164954d895e13`. The owner independently fetched
+master7c25078f, checked `ls-remote`, confirmed bdc1 ancestry and exact corrected
+ConcertWindow bytes with exit0. Raw6ca capture provenance remains unchanged.
+
+Seven actual Root captures at6ca52f88, saved06:05:14–06:05:33UTC, are preserved
+byte for byte under `../evidence/reference-frame-footer/reused/`. Their manifest
+retains originalsource/time/844px viewport/fixture qualifications. Three shared
+files match exactly; ConcertWindow differs by that one restored separator.
+Pinned WorldShell/embedding/CSS proof shows the embedded1px clipped titlebar's
+`border:0` overrides it for those seven root cases. This is explicit rendered
+applicability for the historical baseline, not raw four-file equality, new
+corrected-source screenshots, standalone-window proof or equal target aspect.
+The prepared source harness verifies these facts but has **not been run**.
+
+The following sections record the former baseline and its unexecuted validation
+plan. Their proposed native work is historical and must not launch against the
+superseded visual objective.
 
 ## Ownership and source
 

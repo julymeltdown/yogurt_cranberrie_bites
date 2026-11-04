@@ -1,0 +1,211 @@
+{
+  "format": "MCR_COZY_SCENERY_SOURCE_V1",
+  "version": 1,
+  "status": "CONTRACT_READY_SOURCE_VALIDATED_NATIVE_NOT_RUN",
+  "source_base_commit": "7c25078f118da53dd9a524d0a58e707cca190f0f",
+  "geometry_hash": "sha256:ef52c8b05af6a882f2e82285c9879c9a4cb78ab513336e4bb3cd483c9b123395",
+  "scope": {
+    "views": [
+      "WORLD",
+      "MAP"
+    ],
+    "eras": [
+      "PARADE"
+    ],
+    "other_eras": "UNCHANGED",
+    "characters": "ALL_ORIGINAL_BYTES_UV_RENDERERS_CROPS_ANCHORS_SIZING_FROZEN",
+    "foreground": "ALL_TEXT_TYPOGRAPHY_CONTROLS_LAYOUT_LABELS_INTENTS_FROZEN"
+  },
+  "before": {
+    "candidate": "6ca52f8851473090479f1c13a33e879b6cd099d0",
+    "captured_at": "2026-11-04T06:05:14.291358Z",
+    "map_dimensions": [
+      390,
+      844
+    ],
+    "map_bytes": 410326,
+    "map_sha256": "sha256:87ab843422292a7701e2a3fe39a4419ef95e52721c6c2b052b617c6c2d135b01"
+  },
+  "reference": {
+    "sha256": "sha256:2b3988d546f87b813d78ca13bf267730a6dd19118bd6535a2d3c3032b6f12d23",
+    "meaning": "Human requires visibly CUTER backgrounds than both this unchanged collage and current product; dark pixel parity superseded."
+  },
+  "atlas": {
+    "path": "world/reference-scene-v2/map-cozy-v1/parade/atlas.png",
+    "bytes": 1201118,
+    "sha256": "sha256:9c77e42eb377fbab1df485d6c1e8e47221ac33aebbc03e9aecba3cc7bbcded9f",
+    "width_px": 1024,
+    "height_px": 1024,
+    "mime": "image/png",
+    "id": "parade_architecture_v2_atlas"
+  },
+  "ground": {
+    "path": "world/reference-scene-v2/map-cozy-v1/parade/ground.png",
+    "bytes": 850849,
+    "sha256": "sha256:09d77ad8aa85f9d6464fa5248dae3eb91498f57b0c2183af1f90fc2e79b0dd45",
+    "width_px": 768,
+    "height_px": 1296,
+    "mime": "image/png"
+  },
+  "ground_svg": {
+    "path": "frontend/public/world/reference-scene-v2/map-cozy-v1/ground.svg",
+    "bytes": 741981,
+    "sha256": "sha256:e52f9acdaf4bc491664125585776ae42fe34848a59f5edc0205880095a19de40"
+  },
+  "frame_rects": {
+    "stage": {
+      "x": 7,
+      "y": 6,
+      "width": 242,
+      "height": 244
+    },
+    "white_merch_booth": {
+      "x": 274,
+      "y": 16,
+      "width": 220,
+      "height": 224
+    },
+    "white_food_booth": {
+      "x": 526,
+      "y": 16,
+      "width": 227,
+      "height": 224
+    },
+    "park_plaque": {
+      "x": 781,
+      "y": 28,
+      "width": 230,
+      "height": 199
+    },
+    "tree_green": {
+      "x": 6,
+      "y": 286,
+      "width": 244,
+      "height": 195
+    },
+    "tree_yellow": {
+      "x": 262,
+      "y": 285,
+      "width": 244,
+      "height": 197
+    },
+    "tree_dark": {
+      "x": 518,
+      "y": 288,
+      "width": 244,
+      "height": 191
+    },
+    "tree_red": {
+      "x": 774,
+      "y": 285,
+      "width": 244,
+      "height": 197
+    },
+    "meeting_pavilion": {
+      "x": 6,
+      "y": 550,
+      "width": 244,
+      "height": 180
+    },
+    "giveaway_pavilion": {
+      "x": 262,
+      "y": 550,
+      "width": 244,
+      "height": 180
+    },
+    "north_hall": {
+      "x": 518,
+      "y": 550,
+      "width": 244,
+      "height": 180
+    },
+    "west_hall": {
+      "x": 774,
+      "y": 550,
+      "width": 244,
+      "height": 180
+    },
+    "food_counter": {
+      "x": 13,
+      "y": 805,
+      "width": 229,
+      "height": 182
+    },
+    "plaza_furniture": {
+      "x": 268,
+      "y": 815,
+      "width": 231,
+      "height": 161
+    },
+    "cross_banner": {
+      "x": 579,
+      "y": 781,
+      "width": 122,
+      "height": 229
+    },
+    "shrub_bed": {
+      "x": 774,
+      "y": 818,
+      "width": 244,
+      "height": 156
+    }
+  },
+  "registration": {
+    "path": "frontend/public/world/reference-scene-v2/map-cozy-v1/source-registration.json",
+    "bytes": 16615,
+    "sha256": "sha256:f38f19148b8d9ee80dc7340de2ae1fa4388583977aeff1c0602514b006792121"
+  },
+  "immutable_inputs": [
+    {
+      "path": "frontend/public/world/reference-scene-v2/architecture-v2/parade/layout.json",
+      "bytes": 25333,
+      "sha256": "sha256:1dabdcd979ae3d64ebfdb834ce0319f25869d20f6d354e69f0f2c2e8d68f619d"
+    },
+    {
+      "path": "frontend/public/world/reference-scene-v2/architecture-v2/parade/atlas.png",
+      "bytes": 1284429,
+      "sha256": "sha256:aab0383b8963f1b681acf81d22d2be88e130744554311e74f0793efbe388e529"
+    },
+    {
+      "path": "frontend/public/world/reference-scene-v2/quality-v10/ground.png",
+      "bytes": 549155,
+      "sha256": "sha256:dd70d8fb02e1c6e57e9a9f9e96d69dc7c15999bc076678a7075161281c929887"
+    },
+    {
+      "path": "frontend/public/world/reference-scene-v2/quality-v10/ground-layout.svg",
+      "bytes": 8862,
+      "sha256": "sha256:25fff0d51f12251b34bf072cf4e32f2c8281f65ce676836c6f7998740da64a24"
+    },
+    {
+      "path": "frontend/public/world/reference-scene-v2/spatial-v5/geometry-proposal.json",
+      "bytes": 184445,
+      "sha256": "sha256:a2cdd0e60c1f9cc7c3f093643760000e91a01e1fadffb51f9a76bd2c3a7a3a0f"
+    }
+  ],
+  "retained_placements": {
+    "world": 34,
+    "map": 51,
+    "labels": 6,
+    "coordinates_depth_ids_unchanged": true
+  },
+  "style": "Dominant cream/peach/lavender buildings and rounded sage/mint/butter-yellow/blush canopies; mint lawns and honey-peach paving.",
+  "resource_budget": {
+    "max_png_bytes": 2097152,
+    "decoded_pixels": 2043904,
+    "actual_png_bytes": 2051967,
+    "closed_png_tuple": true
+  },
+  "consumer": "Root-only minimal descriptor tuple adapter; same PARADE source serves World+Map. No renderer/loader/Phaser/canonical mutation.",
+  "validation": {
+    "registered_frames": 14,
+    "original_frames_byte_equal": 2,
+    "frame_rects_exact": 16,
+    "frame_core_base_y_exact": 16,
+    "character_assets_used": 0,
+    "new_browser_native_runs": 0,
+    "actual_390_world_map_after": "NOT_RUN",
+    "affected_360_430_after": "NOT_RUN",
+    "other_eras_cozy": "NOT_RUN_UNCHANGED",
+    "visual_acceptance": "OPEN_FIRST_GLANCE_CUTER_REQUIRED"
+  }
+}

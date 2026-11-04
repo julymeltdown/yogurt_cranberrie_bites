@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="390" height="640" viewBox="0 0 390 640" preserveAspectRatio="none">
+  <title>Peach cloud-paper backdrop</title>
+  <desc>Broad peach, sage and ivory decorative shapes for a Meet background. No characters, maps or physical-place guidance.</desc>
+  <path fill="#f5dccd" d="M0 0h390v640H0z"/>
+  <path fill="#e4e8d8" d="M0 0h204c21 28 10 61-16 78 5 38-26 64-61 61-24 37-81 41-127 21Z"/>
+  <path fill="#fff3e8" d="M0 196c27-29 60-39 94-28 22-42 68-54 109-28 23-32 66-43 101-16 34-16 64-9 86 13v503H0Z"/>
+  <path fill="#eedeea" d="M0 553c48-40 98-38 134-6 26-40 81-52 123-16 43-28 93-22 133 12v97H0Z"/>
+  <g fill="#efd6cd" opacity=".65"><circle cx="306" cy="35" r="2"/><circle cx="327" cy="52" r="2"/><circle cx="350" cy="26" r="2"/><circle cx="27" cy="600" r="2"/><circle cx="50" cy="621" r="2"/><circle cx="66" cy="596" r="2"/></g>
+  <g fill="#fff3e8"><path d="M235 36h4v7h7v4h-7v7h-4v-7h-7v-4h7zM109 578h4v7h7v4h-7v7h-4v-7h-7v-4h7z"/></g>
+</svg>

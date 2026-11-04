@@ -3,10 +3,10 @@
 ## Current checkpoint
 
 The [current progress reconciliation](progress.md#current-task-accounting) records
-36 task-criteria outcomes: 12 recorded acceptance dispositions plus 24 additional
+38 task-criteria outcomes: 12 recorded acceptance dispositions plus 26 additional
 task-local criteria closures. Exact owner states are preserved, including FE07 and FE15
-INTEGRATED. The latest owner-declared original-task closures are FE14, FE19, QA01,
-QA02, FE09, FE15, QA07, BE12, FE07, BE26, FE21 and FE24. Another 62 original tasks
+INTEGRATED, FE18 CONTRACT_READY and FE32 MOCK_READY. The latest owner-declared original-task closures are FE14, FE19, QA01,
+QA02, FE09, FE15, QA07, BE12, FE07, BE26, FE21, FE24, FE18 and FE32. Another 60 original tasks
 have partial or unreconciled implementation evidence, 9 statuses remain
 unreconciled, and all 5 IN gates remain open. The [112-row register](task-progress-2026-11-04.json)
 states the evidence and limitations. Historical 11/112 statements later in this
@@ -27,6 +27,16 @@ stay with the SL, technical counterpart or integrator; leads provide one hourly
 digest and main updates the central register in batches. Escalate immediately
 only for an unresolved cross-lane conflict, genuinely unattended critical work
 or a necessary human decision. Routine receipts do not require replies.
+
+The latest staffing expansion adds eight accepted development assignments:
+five frontend/art workers and three reused backend workers. Exact path ownership
+and isolated worktrees remain mandatory. Source development is not capped by
+the two output workflows; leads coordinate resource-heavy jobs separately and
+assign ready follow-up work without main acknowledgment. New coordination
+roles and redundant stopped chats are not counted as productive developers.
+The latest human visual direction changes backgrounds only to a noticeably
+cuter style; characters remain untouched. The first before/after image metrics
+do not certify canvas/CSS-image preservation or final visual acceptance.
 
 A king or SL receiving a technical review request must decline: "I don't perform
 reviews. The responsible developer owns validation; please resolve this with
