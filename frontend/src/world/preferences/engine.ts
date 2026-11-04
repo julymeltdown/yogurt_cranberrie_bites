@@ -6,7 +6,7 @@ type Tweens = { readonly timeScale: number; setGlobalTimeScale(value: number): u
 /** Only paints are throttled. Scene updates and network/authoritative time never pass through this gate. */
 export function createEnginePreferenceEffects(renderer: Renderer, tweens: Tweens, now = () => performance.now()) {
   let disposed = false, revision = 0, active: (RuntimeEffectLease & { value: RuntimeEffectValue }) | null = null
-  let attempts = 0, paints = 0
+  let attempts = 0, paints = 0, lastPaint: number | null = null
   const effects = {
     motion: true, lowPower: true,
     acquire(value: RuntimeEffectValue, signal: AbortSignal): RuntimeEffectLease {
@@ -17,7 +17,7 @@ export function createEnginePreferenceEffects(renderer: Renderer, tweens: Tweens
       if (disposed || signal.aborted || ticket !== revision) throw new MapError('cancelled')
       const original = { preRender: renderer.preRender, render: renderer.render, postRender: renderer.postRender }
       const scale = tweens.timeScale
-      let released = false, paint = true, lastPaint: number | null = null
+      let released = false, paint = true
       const preRender: Renderer['preRender'] = function(this: Renderer, ...args) {
         const time = now(); attempts++
         paint = lastPaint === null || time - lastPaint >= 1000 / 15

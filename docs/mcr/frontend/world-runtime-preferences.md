@@ -1,8 +1,9 @@
 # FE06 / FE34 incumbent runtime preferences
 
 Status: IN_PROGRESS. Production source is implemented; 172 source/regression
-checks pass. Corrected full types and scoped lint now pass. Combined actual-engine/adopter
-native qualification remains pending. No complete FE06/FE34, W04, IN01/IN05, device,
+checks pass. Corrected full types and scoped lint pass for the initial source. A small paint-
+deadline follow-up is SOURCE-AWAITING-ROOT-VALIDATION in the queued combined
+batch; composed actual-engine/adopter native qualification remains pending. No complete FE06/FE34, W04, IN01/IN05, device,
 audio-source, or art-admission acceptance is inferred.
 
 ## Assignment and ownership
@@ -97,3 +98,16 @@ WebSocket/asset fixtures are labeled; they do not certify a live backend or
 production art admission. Actual source/contract pins, commands, original capture
 times, cleanup, limitations and published ancestry will be recorded with the
 result; no native pass is claimed before execution.
+
+
+## Paint-deadline follow-up
+
+A low-power lease reacquired for an OS motion change must retain the incumbent
+paint deadline. The helper now keeps that timestamp for the engine lifetime,
+preventing an extra immediate paint during lease replacement. A deterministic
+observed pre/render/post count test covers the boundary. Root requested this
+small source commit before its already queued combined source batch, which
+includes the same producer tests and full types. It is explicitly
+SOURCE-AWAITING-ROOT-VALIDATION; no redundant producer check or pass is claimed.
+New owned composed-native helpers are being prepared separately and are not
+part of this production follow-up commit.

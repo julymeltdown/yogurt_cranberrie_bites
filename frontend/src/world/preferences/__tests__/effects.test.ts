@@ -37,6 +37,13 @@ it('supersedes its lease and ignores obsolete disposal or abort', () => {
   expect(f.tweens.timeScale).toBe(.75); expect(f.effects.read().lowPower).toBe(true)
   next.dispose(); expect(f.renderer).toEqual(f.original)
 })
+it('retains the paint deadline across low-power reacquisition for an OS motion change', () => {
+  const f = engine(), caller = new AbortController()
+  const old = f.effects.acquire(reduced, caller.signal); f.tick(0); old.dispose()
+  f.effects.acquire({ reducedMotion: false, lowPower: true }, new AbortController().signal)
+  f.tick(10); f.tick(67)
+  for (const fn of Object.values(f.original)) expect(fn).toHaveBeenCalledTimes(2)
+})
 it('does not overwrite a newer external paint owner when releasing its wrappers', () => {
   const f = engine(), lease = f.effects.acquire(reduced, new AbortController().signal)
   const newer = vi.fn(); f.renderer.render = newer
