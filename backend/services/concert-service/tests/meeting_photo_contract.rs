@@ -88,7 +88,10 @@ fn duplicate_fields_unknown_meeting_fields_and_oversized_inputs_are_rejected() {
 fn settlement_reference_is_closed_and_full_photo_fingerprint_is_required() {
     use concert_service::meeting_photo::canonical::validate_settlement_reference;
     let f = fixture();
-    let r = json!({"version":1,"purpose":"MEETING_PHOTO","actor":f["actor_id"],"event":f["event_id"],"beacon":f["beacon_id"],"key":"77777777-7777-4777-8777-777777777777","operation":"createConcertBeacon","guard_digest":[3;32].to_vec(),"body_sha256":[4;32].to_vec(),"photo_binding_digest":[5;32].to_vec()});
+    let guard_digest = vec![3; 32];
+    let body_sha256 = vec![4; 32];
+    let photo_binding_digest = vec![5; 32];
+    let r = json!({"version":1,"purpose":"MEETING_PHOTO","actor":f["actor_id"],"event":f["event_id"],"beacon":f["beacon_id"],"key":"77777777-7777-4777-8777-777777777777","operation":"createConcertBeacon","guard_digest":guard_digest,"body_sha256":body_sha256,"photo_binding_digest":photo_binding_digest});
     let parsed = validate_settlement_reference(&serde_json::to_vec(&r).unwrap()).unwrap();
     assert_eq!(parsed.photo_binding_digest(), [5; 32]);
     assert!(parsed.idempotency_key().is_some());
@@ -96,7 +99,7 @@ fn settlement_reference_is_closed_and_full_photo_fingerprint_is_required() {
         ("version", json!(0)),
         ("purpose", json!("MEDIA")),
         ("key", Value::Null),
-        ("photo_binding_digest", json!([0; 32].to_vec())),
+        ("photo_binding_digest", json!(vec![0; 32])),
         ("extra", json!(true)),
     ] {
         let mut bad = r.clone();
