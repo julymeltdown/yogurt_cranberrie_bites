@@ -100,7 +100,52 @@ class SpatialReleaseTests(unittest.TestCase):
             self.assertEqual(actual, expected)
 
 
-def run_native(metadata, pg_bin, pinned_binaries):
+
+class QualityV6Tests(unittest.TestCase):
+    @classmethod
+    def setUpClass(cls):
+        cls.outputs = builder.build(builder.QUALITY_V6)
+
+    def test_new_generation_preserves_places_and_exact_canonical_grids(self):
+        old = builder.build()['map-manifest.json']
+        new = self.outputs['map-manifest.json']
+        self.assertEqual(new['map_revision'], 4)
+        self.assertEqual(new['places'], old['places'])
+        self.assertNotEqual(new['geometry_hash'], old['geometry_hash'])
+        self.assertEqual(new['geometry_hash'], builder.QUALITY_V6.geometry_hash)
+        self.assertNotEqual(new['tilemap']['sha256'], old['tilemap']['sha256'])
+        for name, document in self.outputs.items():
+            raw = (builder.ROOT / 'backend/releases/reference-scene-v2/quality-v6' / name).read_bytes()
+            self.assertEqual(json.loads(raw), document)
+
+    def test_new_three_era_runtime_budgets_and_common_source_pins(self):
+        expected = {'REVENGE': 1707562, 'PARADE': 1727221, 'DANGER': 1712974}
+        for scene in self.outputs['source-binding.json']['scenes']:
+            budget = self.outputs['readiness.json']['scenery_budget'][scene['theme_id']]
+            self.assertEqual((budget['bytes'], budget['pixels']), (expected[scene['theme_id']], 2043904))
+            self.assertEqual(len(scene['runtime_resources']), 2)
+            common = [pin for pin in scene['scene_sources'] if '/sources/' in pin['path']]
+            self.assertEqual(len(common), 5)
+            for pin in scene['runtime_resources']:
+                raw = builder.published_input(pin['path'], builder.QUALITY_V6.art_commit)
+                self.assertEqual(builder.sha(raw), pin['sha256'])
+                self.assertEqual(builder.png_size(raw), (pin['width_px'], pin['height_px']))
+
+    def test_old_tiled_cannot_be_resealed_as_new_generation(self):
+        original = builder.published_input
+        def swapped(path, revision=builder.SOURCE_COMMIT):
+            if path == builder.QUALITY_V6.tiled_path:
+                return original(builder.TILED_PATH, builder.TILED_COMMIT)
+            return original(path, revision)
+        # Even after changing the declared byte pin, geometry comparison rejects
+        # a well-formed, published old Tiled file of the same length/dimensions.
+        mixed = builder.QUALITY_V6._replace(tiled_hash=builder.TILED_HASH)
+        with patch.object(builder, 'published_input', side_effect=swapped):
+            with self.assertRaisesRegex(ValueError, 'Tiled differs'):
+                builder.build(mixed)
+
+
+def run_native(metadata, pg_bin, pinned_binaries, inputs=builder.BASELINE):
     # Reuse the existing marker/inode-owned cluster and exact native-test runner.
     # No install, Docker, external URL or service-default database is involved.
     import bootstrap_smoke as bootstrap
@@ -128,9 +173,10 @@ def run_native(metadata, pg_bin, pinned_binaries):
     bootstrap.require(hashlib.sha256(binary.read_bytes()).hexdigest() == row['sha256'], 'frozen checksum mismatch')
     tools = {name: migration.executable(pg_bin / name) for name in migration.PG_TOOLS}
     cluster = migration.Cluster(tools)
+    cluster.env['MCR_SPATIAL_TEST_CANDIDATE'] = 'quality-v6' if inputs == builder.QUALITY_V6 else 'baseline'
     report = {'state': 'FAIL', 'commands': {}, 'source_commit': receipt['source_commit'],
-              'binary_sha256': row['sha256'], 'geometry_hash': builder.GEOMETRY_HASH,
-              'art_commit': builder.ART_COMMIT, 'admission': 'NOT_ADMITTED'}
+              'binary_sha256': row['sha256'], 'geometry_hash': inputs.geometry_hash, 'map_revision': inputs.map_revision,
+              'art_commit': inputs.art_commit, 'admission': 'NOT_ADMITTED'}
     def interrupted(number, _frame):
         raise migration.SmokeError('signal', f'interrupted by signal {number}')
     previous = {number: signal.signal(number, interrupted) for number in (signal.SIGINT, signal.SIGTERM)}
@@ -171,11 +217,13 @@ if __name__ == '__main__':
     if '--native' in sys.argv:
         parser = argparse.ArgumentParser(description=__doc__)
         parser.add_argument('--native', action='store_true')
+        parser.add_argument('--candidate', choices=['baseline', 'quality-v6'], default='baseline')
         parser.add_argument('--build-metadata', type=Path, required=True)
         parser.add_argument('--pg-bin', type=Path, required=True)
         parser.add_argument('--pinned-binaries', type=Path, required=True)
         args = parser.parse_args()
-        report = run_native(args.build_metadata, args.pg_bin, args.pinned_binaries)
+        report = run_native(args.build_metadata, args.pg_bin, args.pinned_binaries,
+                            builder.QUALITY_V6 if args.candidate == 'quality-v6' else builder.BASELINE)
         print(json.dumps(report, sort_keys=True))
         raise SystemExit(0 if report['state'] == 'PASS' else 1)
     unittest.main()

@@ -233,3 +233,56 @@ readiness no longer imposes a generic physical-review blocker on virtual display
 operator bootstrap assembly and actual fidelity acceptance are still open.
 Physical beacon/AR01/IN02 requirements remain separately required, with no claim
 that this all-virtual source pack satisfies them.
+
+## Required spatial-v3 / quality-v6 candidate — source checkpoint
+
+This required fidelity follow-up uses the artist's published
+`bc731ed868ec30b33ae5dd1e6f13e97e68ecabd9` and World's published
+`48cf47e9b2c922de42673d1a29c1758a55fcf883`. World remains the sole public
+runtime/Tiled writer. Artist owns the proposal/art, and this backend owner owns
+only the new `backend/releases/reference-scene-v2/quality-v6/` candidate and
+existing assigned source-binding implementation/tests/generator/documentation.
+The default map3 artifacts and historical map2 content are preserved.
+
+Generate/check the separate candidate with
+`/tmp/mcr-fe14-format-venv/bin/python backend/scripts/mcr/build_spatial_release.py --candidate quality-v6 [--check]`.
+Map identity is `mcr_reference_scene_r3`, revision **4**, content hash
+`sha256:736afd273a067f6c40db76b8cc54412416fba88984a50d9a6b6738d869831fb8`.
+Its new canonical geometry hash is
+`sha256:899aca9bd6ce499c6f46aff5eaf21e30ab34b301e988771b978a6fab7c2d469f`.
+The actual Tiled path is
+`world/reference-scene-v2/runtime/spatial-v3/canonical-map-v4.json`, 24,058 bytes,
+`sha256:60364d5f35bcc8ff82931b7e3a0724a4580880d4a481610e90475d73dcb6ceb9`.
+The file contains the exact three new finite 48x81x16 grids. The old geometry
+`20168a1d…` cannot be combined with new scenery/ground even though dimensions
+remain identical. No independently rounded coordinates are introduced.
+
+| Era | Runtime bytes | Runtime pixels |
+| --- | ---: | ---: |
+| REVENGE | 1,707,562 | 2,043,904 |
+| PARADE | 1,727,221 | 2,043,904 |
+| DANGER | 1,712,974 | 2,043,904 |
+
+All three scenes bind their exact quality-v6 manifest, integer projection,
+metadata, common source sheets/prompts, per-era source files and runtime images.
+Engineering checks cover C06/schema/geometry, all 22 WORLD destinations and
+footprints, six separate MAP representations, distinct atlases and per-scene
+budgets. A read-only Pillow integrity plus full-decode pass verified the four
+unique runtime PNGs against their exact pins. All four original nested places
+remain unchanged VIRTUAL_CONCEPT/CONCEPT_ONLY/UNREVIEWED and physically ineligible.
+The separate source-review receipt is engineering qualification only.
+
+Source-binding format2 and the existing seven-parameter
+`from_source_bound_files` constructor remain compatible. The runtime fence now
+requires one pinned layout per scene and compares its geometry hash, unique
+object set and original proposal footprints, plus exact integer destinations,
+depth and atlas frame, against the supplied scenery. This prevents a binding
+assembled from individually valid old/new source files from mixing generations.
+Regressions exercise actual old-layout substitution and resealed layout drift.
+
+Nine Python source tests, both exact builder checks, Rust formatting, planning
+and diff checks pass (exit0). New Rust tests and both map3/map4 PostgreSQL runs
+are **NOT_RUN**, pending a fresh named resource grant. No target or PostgreSQL
+lease is held at this source checkpoint. Actual operator bundle/admission and
+all-three frontend fidelity acceptance remain open; this candidate is
+**NOT_ADMITTED**, with no full Product or multiuser claim.

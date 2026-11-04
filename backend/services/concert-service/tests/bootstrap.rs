@@ -700,9 +700,14 @@ fn selected_release_binds_all_six_presets_without_layered_defaults() {
 
 fn source_spatial_candidate() -> concert_service::bootstrap::spatial::SourceBoundSpatialCandidate {
     let root = std::path::Path::new(env!("CARGO_MANIFEST_DIR")).join("../../..");
+    let directory = match std::env::var("MCR_SPATIAL_TEST_CANDIDATE").as_deref() {
+        Ok("quality-v6") => "backend/releases/reference-scene-v2/quality-v6",
+        Ok("baseline") | Err(_) => "backend/releases/reference-scene-v2",
+        _ => panic!("unknown spatial test candidate"),
+    };
     concert_service::bootstrap::spatial::load_candidate(
-        &root.join("backend/releases/reference-scene-v2/map-manifest.json"),
-        &root.join("backend/releases/reference-scene-v2/source-binding.json"),
+        &root.join(directory).join("map-manifest.json"),
+        &root.join(directory).join("source-binding.json"),
         &root.join("frontend/public"),
     )
     .unwrap()
@@ -723,7 +728,7 @@ async fn native_spatial_candidate_transactions() {
         .publish_release(event, candidate.catalog.clone())
         .await
         .unwrap();
-    assert_eq!(first.map_revision, 3);
+    assert_eq!(first.map_revision, candidate.catalog.manifest.map_revision);
     assert_eq!(first.map_id, "mcr_reference_scene_r3");
     let read = repo.catalog(event).await.unwrap().unwrap();
     assert_eq!(read.release, candidate.catalog);
@@ -751,7 +756,7 @@ async fn native_spatial_candidate_transactions() {
             SelectionOutcome::ConceptOnly
         );
         assert_eq!(
-            repo.select_physical(event, place.id, again.revision, 4)
+            repo.select_physical(event, place.id, again.revision, first.map_revision + 1)
                 .await
                 .unwrap(),
             SelectionOutcome::MapMismatch
