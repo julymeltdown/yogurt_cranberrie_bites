@@ -830,3 +830,60 @@ claim is made by this checkpoint.
 ## Root intake hygiene
 
 Root preserves the original qualified worker document as Git blob `0ca013839824bc6d55721c36945b1c8a08112fb9`, SHA256 `72dd944f3d88a03994ea467958e1e9f5530436edb106029c1a0649a805661beb`. Published prose substitutes portable checkout/artifact placeholders only; source and runtime evidence remain bound to the original worker pins. Coherent Root compilation and actual public producers remain NOT_RUN.
+
+
+## NB01 — durable original root binding recovery
+
+Status: `IN_PROGRESS`; source implementation complete, native qualification
+`NOT_RUN` pending a fresh named backend-SL resource offer and explicit acceptance.
+
+Source base: Root `73e89bceadc4b456522d0d979ccc768eea8e367e`, isolated branch
+`codex/mcr-be-NB01`. Original BE33 handoff and worktree remain preserved.
+This assignment owns only the new `scope_ledger/notification_binding.rs`, its
+single `mod notification_binding;` registration in `scope_ledger.rs`, the new
+`tests/notification_root_binding.rs` and `tests/notification_root_binding_support/`
+files, and this appended section. Parent module bytes otherwise remain unchanged;
+stopped lifecycle/guard/settler slices and CR08 implementation are untouched.
+
+`PgScopeLedger` now implements `NotificationRecoveryBinding` directly. It loads
+the stored `OwnerBinding` by its configured producer instance and exact query
+fingerprint. `ChildQuery` carries no scope ID, so the provider fetches at most two
+matching rows across **all phases** and requires exactly one before requiring
+`ROOT_FINISHED`. Missing, foreign-instance, ambiguous, nonterminal, malformed or
+mismatched rows return `Unavailable`. No new contract or migration is required;
+ambiguity deliberately remains unavailable rather than choosing a scope.
+
+The original actor/event/family/request, own-subject, expiry, complete fingerprint,
+parent method and four Notification operation/method/path pairs must match. The
+fingerprint validates all original parent/body/HTTP/operation fields. The exact
+stored query bytes and digests are returned without reconstruction from the
+child query. As in the original `OwnerGuardScope::wire_binding()` at this source
+revision, wire subjects are empty. Recovery accepts an expired original binding
+without renewing its expiry. A 750 ms mechanical lookup limit, shortened by the
+caller deadline, bounds pool acquisition and SQL; it grants no content authority.
+
+This provider neither dispatches owner RPCs nor settles a child/native transaction.
+Existing encrypted durable intent, original child completion secret and actual
+remote owner/native proof remain mandatory in their existing layers. Root runtime
+composition and actual canonical-owner/public inbox journeys remain `NOT_RUN`.
+
+Provenance: the implementation uses this base's `OwnerBinding::digest()`, original
+`OwnerGuardScope::wire_binding()`, `NotificationRecoveryBinding` contract, and the
+four Notification operation pairs in Notification's `concert/authority/inbox.rs`.
+Owned fixture checks adapt `product_scope_ledger.rs` and
+`owner_authority_support/environment.rs` at the same base. The runner reuses the
+existing marker/token/inode/postmaster-guarded `backend/scripts/mcr/migration_smoke.py`
+cluster and applies original migrations 0028 and 0048. No dependency, manifest,
+lockfile, migration, source-pack or legacy-rendering changes are introduced.
+
+Seven native tests cover all four exact expired wire bindings after a new ledger
+and empty actual registry; actual register/seal/finish transitions; missing and
+foreign instances; ambiguity with ACTIVE/SEALED/ROOT_FINISHED duplicates; every
+query identity/expiry/digest/own-subject mismatch; malformed and altered original
+fields; valid-fingerprint operation/path relabeling; and bounded pool-starvation,
+caller-deadline and locked-table refusal. Synthetic historical rows are explicitly
+lookup fixtures, not canonical owner admission or positive Track acknowledgements.
+
+Source checks: targeted Rust 1.88 rustfmt and Python runner AST parse exited 0;
+the unchanged-parent byte assertion passed; `python3 scripts/mcr/check-plan.py`
+exited 0. Cargo, shared-target and PostgreSQL access have not occurred for NB01.
