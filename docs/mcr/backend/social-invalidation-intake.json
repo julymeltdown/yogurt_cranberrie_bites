@@ -1,0 +1,73 @@
+{
+  "status": "CONTRACT_READY",
+  "base": "145a8e939fb7bede7e46931d6559adb2c51f62a7",
+  "source": "c4895848e9076b419467b76010410e953d793980",
+  "qualified_source": "beeb34941f3da4bed3826dd388d59ebc781b136c",
+  "commits": {
+    "53c572bbacc65c577c81b261c331c8c7e68d2b1d": "b6a30ce86d2ce1ced68f41dab42fc8bf369ec431",
+    "cbc1bbce3f3bd5e5c0e873a99c3f5ed884a2ab67": "f1b787f2f9d779a7bc2e1f90c046ccdf4b703830",
+    "0372e00b8d79c375665e9b323cb0a7feae785521": "674cd8164c8df5f187139ee9239b0d56548824e9",
+    "61f9e895c6eb4af3367640a7f93791b126eb5d8d": "2ad5c3f5bdb447cae4388652bb6dc7a23697b650",
+    "4badc00125e3129c49dbfee847f8340b5607862b": "cc34b9aaf70db2bcf02eec4938c79cfcf1d04342",
+    "2362ddf946b426e176221068ce9f8e9ec8c96f3d": "c952cb50678fba57ed385605288dffef63dd77b0",
+    "1b1d899f3e2d89c6b8bb7f5033b1a7961ad1cdf8": "72fab53c157fdd4aeebe069ae067176c6d0dc5fe",
+    "baf707da2c4c0d3126585dd1a52d0965d59fc9a3": "3bcac97d5547ec076ca653bbd9c9b5d4c1bdbd93",
+    "eb88183297a4dba510cccba58c39e72bca37066c": "4adb3d8307c1098417e1597bce6304dd3e2c13fe",
+    "08602903d100300edc0b6746b046ab9d77051af2": "92fb5c11a42cb133d4162548263c35853906afbf",
+    "beeb34941f3da4bed3826dd388d59ebc781b136c": "21f37eaeb5b99dcfde0d4d4f2b22dfec2a565248",
+    "c4895848e9076b419467b76010410e953d793980": "dbb3831f9fa0620b1e97e9b4fc153d725b199f47"
+  },
+  "paths": [
+    "backend/services/concert-service/migrations/0051_social_policy_invalidation.sql",
+    "backend/services/concert-service/src/social_live/invalidation.rs",
+    "backend/services/concert-service/src/social_live/mod.rs",
+    "backend/services/concert-service/tests/social_live.rs",
+    "backend/services/concert-service/tests/social_live_support/http_flow.md",
+    "backend/services/concert-service/tests/social_live_support/http_flow.py",
+    "backend/services/concert-service/tests/social_live_support/invalidation.rs",
+    "backend/services/concert-service/tests/social_live_support/native.py",
+    "docs/mcr/backend/social-remaining.md"
+  ],
+  "postimages_sha256": {
+    "backend/services/concert-service/migrations/0051_social_policy_invalidation.sql": "193d73496f45cb3c2d5506d386f83a1bfc007d08c44740c7e99a46a745dbb004",
+    "backend/services/concert-service/src/social_live/invalidation.rs": "4411561c087a4cdffa78d28149963404b549db9e1f9489b15c0b28ae7472fea0",
+    "backend/services/concert-service/src/social_live/mod.rs": "249aab75d0a18652478121341142c2fefe5e76aaecc9c9cef798ba7d5d9e14d8",
+    "backend/services/concert-service/tests/social_live.rs": "7bb3ac700935e406f90a7768347acbf04d235b8577ff3140db2186b6eb0167ff",
+    "backend/services/concert-service/tests/social_live_support/http_flow.md": "64474a3edd6f5390e998410d71ebf340ebddd0897eeb409308e85332e6ee53c3",
+    "backend/services/concert-service/tests/social_live_support/http_flow.py": "dec384c6752f32e5b210edc8692dd19b22d9e38f3694ca16d92d99069205929a",
+    "backend/services/concert-service/tests/social_live_support/invalidation.rs": "a95b0c9812bb8417e198564a76e23516202be8a4b218792fba85aebe39b5b98d",
+    "backend/services/concert-service/tests/social_live_support/native.py": "96e9eb27a2a2659a6e91ab0dbbbab6399c543be0781b35bab8f0ac86e2c0469d",
+    "docs/mcr/backend/social-remaining.md": "9de3b7d85fec8e0346c84f10787731b2b58ce3ff0e6a6e2e9614997dbb103d08"
+  },
+  "owner_validation": {
+    "pure_passed": 10,
+    "native_passed": 80,
+    "native_phases": "15 live + 8 remaining + 17 receipts, before and after actual PostgreSQL restart",
+    "prepared_zero_before_stops_and_finally": true,
+    "owned_pg_root_absent": true,
+    "owned_processes": 0,
+    "full_release_utc": "2026-11-04T12:09:46Z",
+    "maximum_whole_bytes": 1866764288
+  },
+  "evidence_sha256": {
+    "native-report.json": "2fee6bd7543a054f6a2ff47262591d95aa9b46339211eb10adaf5df70ae8fa05",
+    "all-artifacts.json": "69751ef31a0ac822c4d8ec4be482746ca040ef61a303a6d77be2e0706ebc62a4",
+    "full-source.tar.gz": "9fda8d96f2a9b3e33b1d13d95b5a22301dea62276026ce5bc7a4344a794ce1cf",
+    "full-release.json": "74eeca4f9a39bb7305a8935033a488faa1aa48b088d893f326d779eaa97ae3f7"
+  },
+  "migration": {
+    "path": "backend/services/concert-service/migrations/0051_social_policy_invalidation.sql",
+    "created_at": "53c572bb",
+    "final_sql_source": "08602903d100300edc0b6746b046ab9d77051af2",
+    "bytes": 6846,
+    "sha384": "d9672f6fbdbfc363a1624b69f3e26e7dd260b5d1426a9e674983ab8157c2ef7b3253ff13c63864a8bf64c4ebaadc5091",
+    "current_concert_count": 40
+  },
+  "runtime_input_custody": "Intaken only after actual QA05 RW4 FULL_RELEASE at 2026-11-04T12:14:25.004584Z; that run used Concert39, not this new Concert40 snapshot.",
+  "root_combined_qualification": "NOT_RUN after this Social intake. Prior main qualification remains bound to 7c6cf64f, not these changed dependencies.",
+  "limitations": [
+    "Owner checks use isolated storage/synthetic provider and authority fixtures, not full production migration or acquired OwnerGuardScope.",
+    "Actual Social-to-World publisher adapter, feature-aware outbox dispatch and expiry startup remain uncomposed.",
+    "Canonical Auth/Friend change delivery, real provider, public HTTP/WS/cache withdrawal and original IN03 remain open."
+  ]
+}
