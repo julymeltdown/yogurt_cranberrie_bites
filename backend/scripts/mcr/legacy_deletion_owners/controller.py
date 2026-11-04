@@ -20,8 +20,9 @@ def sha(path):
  with open(path,'rb') as f:
   for b in iter(lambda:f.read(1024**2),b''):h.update(b)
  return h.hexdigest()
-def size(path):return int(cmd(['/usr/bin/du','-sk',str(path)]).split()[0])*1024
-def write(name,v):(OUT/name).write_text(json.dumps(v,indent=2)+'\n')
+def size(path):return sum(allocations(path).values())
+def write(name,v):
+ p=OUT/name;tmp=OUT/(name+'.tmp');tmp.write_text(json.dumps(v,indent=2)+'\n');tmp.chmod(0o600);tmp.replace(p)
 def terminate(p):
  if p is None:return
  try:os.killpg(p.pid,signal.SIGTERM)
@@ -49,6 +50,7 @@ def guard(deadline):
  assert time.time()<min(deadline,STOP),'absolute cutoff'
  free=shutil.disk_usage(OUT).free;report['minimum_free']=min(report['minimum_free'],free);
  if not cleaning:assert free>=FLOOR,'free floor'
+ if copy_started is not None:assert time.time()<copy_started+30,'copy freeze cutoff'
  growth=json.loads((OUT/'target-release.json').read_text())['target_growth_bytes'] if (OUT/'target-release.json').exists() else sum(max(v-offer['target_files'].get(k,0),0) for k,v in allocations(TARGET).items())
  source_growth=max(0,size(ROOT)-cfg['wt_baseline'])+max(0,size(pathlib.Path(cfg['git_dir']))-cfg['git_baseline'])
  outside=size(OUT)

@@ -4,7 +4,7 @@ import pathlib,subprocess,sys,os,time,json,shutil,signal,stat
 OUT=pathlib.Path(sys.argv[1]).resolve();C=json.loads((OUT/'accepted-offer.json').read_text());stage=sys.argv[2];assert C['explicit_accept']
 stop=C['compile_stop'] if stage=='build' else C['qualify_stop'];full=C['full_stop'];start=time.time();p=None;failure=None;peak=0;peakrss=0;maxprocesses=0;minfree=shutil.disk_usage(OUT).free
 
-def size(path):return int(subprocess.check_output(['/usr/bin/du','-sk',str(path)],text=True).split()[0])*1024
+def size(path):return sum(allocations(path).values())
 def allocations(root):
  result={}
  for d,ds,fs in os.walk(root):

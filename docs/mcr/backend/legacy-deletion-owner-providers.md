@@ -164,7 +164,9 @@ Those functional scenarios are `NOT_RUN` at this source checkpoint. A fresh
 allocation must pin the committed HEAD, exact four Cargo argv, SQL/helper/tool
 hashes, source manifest (hashes only, no full source archive), whole retained carry,
 single ALLNEW cap, disk/RSS/process limits and absolute cleanup deadlines.
-The independent guardian runs before workload children. No cold target is allowed;
+The independent guardian runs before workload children. Resource state writes use
+atomic replacement; accounting tolerates temporary files disappearing during a
+compiler step rather than falsely failing on a directory traversal race. No cold target is allowed;
 copied native execution begins only after unconditional target release. All failed
 attempts, old Notification artifacts, complete worktree/common Git charges and
 nonshrinking historical peaks remain counted and preserved.
