@@ -1,6 +1,6 @@
 {
-  "updated_at": "2026-11-04T12:37:23+09:00",
-  "published_snapshot": "54e1325fce20e3abc98da50c68de0bd72dfd1a33",
+  "updated_at": "2026-11-04T13:37:13+09:00",
+  "published_snapshot": "921cb3d850925a489302ebcc5483fba71ac835a5",
   "method": "Management reconciliation of published task dispositions and existing developer/SL receipts; no code/query/visual/test inspection or reruns. Publication ancestry only was checked for task-linked delivery commits.",
   "required_tasks": 112,
   "required_ia_entries": 61,
