@@ -239,7 +239,7 @@ async fn native_motion_v2_transactions_cas_constraints_and_rollback() {
         "preset_id='motion_v2_photo01_front_01'",
     ] {
         let query = format!(
-            "update concert_avatar_settings set {assignment} where event_id=$1 and user_id=$2"
+            "update concert_avatar_settings set revision=revision+1,{assignment} where event_id=$1 and user_id=$2"
         );
         let error = sqlx::query(&query)
             .bind(event)
@@ -251,6 +251,11 @@ async fn native_motion_v2_transactions_cas_constraints_and_rollback() {
             error.as_database_error().and_then(|e| e.code()).as_deref(),
             Some("23514"),
             "{assignment}"
+        );
+        assert_eq!(
+            error.as_database_error().and_then(|e| e.constraint()),
+            Some("concert_avatar_representation"),
+            "wrong rejection source: {assignment}"
         );
     }
     assert_eq!(service.read(own, &reader()).await.unwrap(), reread);

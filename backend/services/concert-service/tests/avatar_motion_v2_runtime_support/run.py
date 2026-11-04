@@ -60,7 +60,23 @@ def run(metadata, receipt, pg_bin):
         report['migration_sha384'] = migration.migration_manifest(ROOT / 'backend', 'concert-service')
         for path in sorted((ROOT / 'backend/services/concert-service/migrations').glob('*.sql')):
             if not path.name.endswith('.down.sql'):
+                before = None
+                if path.name == '0044_avatar_motion_v2.sql':
+                    cluster.sql(bootstrap.DATABASE, """
+                        insert into concert_events(event_id,slug,title,phase) values('00000000-0000-4000-8000-000000009410','motion-upgrade','Motion upgrade fixture','OPEN');
+                        insert into concert_participants(event_id,user_id,theme,low_power,reduced_motion,sound_enabled)
+                        select '00000000-0000-4000-8000-000000009410',u::uuid,'REVENGE',false,false,false from unnest(array['00000000-0000-4000-8000-000000009411','00000000-0000-4000-8000-000000009412']) u;
+                        insert into concert_avatar_settings(event_id,user_id,contract_version,representation,manifest_id,manifest_version,body_id,eyes_id,hair_id,outfit_id,accessory_id,skin_tone_id)
+                        values('00000000-0000-4000-8000-000000009410','00000000-0000-4000-8000-000000009411','1.0.0','layered','avatar_fixture',1,'body_fixture','eyes_fixture','hair_fixture','outfit_fixture',null,'tone_fixture');
+                        insert into concert_avatar_settings(event_id,user_id,contract_version,representation,manifest_id,manifest_version,preset_id)
+                        values('00000000-0000-4000-8000-000000009410','00000000-0000-4000-8000-000000009412','1.1.0','whole_character','mcr_selected_static_20261103',1,'photo01_front_01');
+                    """)
+                    query = "select jsonb_agg(to_jsonb(a) order by user_id) from concert_avatar_settings a where event_id='00000000-0000-4000-8000-000000009410';"
+                    before = cluster.sql(bootstrap.DATABASE, query)
                 cluster.sql(bootstrap.DATABASE, path.read_text())
+                if before is not None:
+                    require(cluster.sql(bootstrap.DATABASE, query) == before, '0044 changed existing legacy state/revision')
+                    report['legacy_rows_unchanged_by_0044'] = 'PASS'
                 report['commands'][path.name] = 0
         bootstrap.run_test(cluster, binary, 'native_motion_v2_transactions_cas_constraints_and_rollback', report)
         report['response_sha256'] = hashlib.sha256((cluster.root / 'motion-v2-state.json').read_bytes()).hexdigest()
