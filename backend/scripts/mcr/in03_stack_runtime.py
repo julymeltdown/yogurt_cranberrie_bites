@@ -433,9 +433,9 @@ def run(args):
         cluster.assert_owned()
         cluster.stop()
         with (cluster.data / "postgresql.conf").open("a") as stream:
-            stream.write("\nmax_prepared_transactions=128\n")
+            stream.write("\nmax_prepared_transactions=256\n")
         cluster.start()
-        require(cluster.sql("postgres", "SHOW max_prepared_transactions") == "128", "owned-prepared-config")
+        require(cluster.sql("postgres", "SHOW max_prepared_transactions") == "256", "owned-prepared-config")
         world.pki(cluster)
         relationship, self_profile, decision, post_read, post_callback = world.joined.keys(cluster, 5)
         for kind in ("grpc", "metrics", "world"):
