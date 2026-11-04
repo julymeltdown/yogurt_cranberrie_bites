@@ -31,10 +31,10 @@ impl AuthDeletionSource {
         );
         let channel = tls.endpoint(endpoint, Workload::Auth)?.connect_lazy();
         Ok(Self {
-            client: Client::with_interceptor(
+            client: Client::new(InterceptedService::new(
                 channel,
                 ServiceIdentityClientInterceptor::new(Workload::Concert, credential)?,
-            )
+            ))
             .max_decoding_message_size(2048)
             .max_encoding_message_size(2048),
         })
