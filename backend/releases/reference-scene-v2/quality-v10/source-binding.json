@@ -55,11 +55,6 @@
           "sha256": "sha256:850c96b38253f4953778ac4b30d3b10372d091630b09d8a69bc425a28bcc4fd0"
         },
         {
-          "bytes": 549155,
-          "path": "world/reference-scene-v2/quality-v10/ground.png",
-          "sha256": "sha256:dd70d8fb02e1c6e57e9a9f9e96d69dc7c15999bc076678a7075161281c929887"
-        },
-        {
           "bytes": 1746523,
           "path": "world/reference-scene-v2/quality-v10/ground-native.png",
           "sha256": "sha256:4426158f4e7cc771e42ad5352ca5365563f2660d46a862a14d8c227844b91646"
@@ -201,11 +196,6 @@
           "sha256": "sha256:850c96b38253f4953778ac4b30d3b10372d091630b09d8a69bc425a28bcc4fd0"
         },
         {
-          "bytes": 549155,
-          "path": "world/reference-scene-v2/quality-v10/ground.png",
-          "sha256": "sha256:dd70d8fb02e1c6e57e9a9f9e96d69dc7c15999bc076678a7075161281c929887"
-        },
-        {
           "bytes": 1746523,
           "path": "world/reference-scene-v2/quality-v10/ground-native.png",
           "sha256": "sha256:4426158f4e7cc771e42ad5352ca5365563f2660d46a862a14d8c227844b91646"
@@ -345,11 +335,6 @@
           "bytes": 13881,
           "path": "world/reference-scene-v2/quality-v10/map-label-presentation.json",
           "sha256": "sha256:850c96b38253f4953778ac4b30d3b10372d091630b09d8a69bc425a28bcc4fd0"
-        },
-        {
-          "bytes": 549155,
-          "path": "world/reference-scene-v2/quality-v10/ground.png",
-          "sha256": "sha256:dd70d8fb02e1c6e57e9a9f9e96d69dc7c15999bc076678a7075161281c929887"
         },
         {
           "bytes": 1746523,

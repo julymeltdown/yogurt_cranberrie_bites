@@ -703,3 +703,42 @@ in place of allocated metadata. Exact generation checks pass for all four
 candidates (exit 0). Native compilation and PostgreSQL remain NOT_RUN pending
 a fresh named build lease; no target or database is held. NOT_ADMITTED remains
 unchanged.
+
+### V10 retained-loader finding and producer correction
+
+The first actual Rust1.88 three-target compile at source `5d250cd4` initially
+failed with a friend-service protobuf shadow error. The cached `contracts-build`
+rlib embedded a different worktree path. A narrowly evidenced package-only clean
+removed 20 files (816.4 KiB); the corrected retry passed in 35.808 seconds.
+The first clean invocation failed before cleanup because it omitted the explicit
+Rust1.88 `RUSTC` path. No broad cache cleanup or production-source change occurred.
+The three emitted executables and Cargo JSON were copied and hash checked;
+MEDIA was explicitly released with zero handles before running copied tests.
+
+That copied runtime-config suite reported 16 passes and one v10 load failure,
+`ReleaseUnavailable`. The producer included `quality-v10/ground.png` both among
+common source pins and runtime image pins. The retained loader correctly rejects
+duplicate paths across these groups. The v10-only producer correction excludes
+runtime paths from common pins after all original artist-source pins have been
+verified; the runtime ground retains its exact hash, size, dimensions and decode.
+Each era now has 23 scene-source pins. Existing production Rust, path uniqueness
+and source/provenance policy are unchanged. A regression assertion covers the
+complete scene path set. The previously failing exact copied test now passes
+as a diagnostic against the corrected binding; this does not substitute for
+fresh committed-source compilation and complete native qualification.
+
+Map 6 remains byte identical: raw MapManifest SHA256
+`34369f4a84e8b27c78bdb62b25bacca8f0db550ab468f76b8a23f8f5dcdf3ac8`,
+content `sha256:ac30a80c2c7dd1afdd1e125263403e0b0d4c57941047848a033ec186706c9985`.
+The corrected source binding is 18838 bytes, SHA256
+`12d14fa189f80e3c840d196629c1150f57fa5dd2c2f676379f8ac476a1984f1f`.
+Engineering review SHA256 is
+`0c8a52fc32a18878e278b5949b70f0f303ebeef90b226704a539fb6d435c0512`;
+scene-source qualification remains 8028 bytes, now SHA256
+`ab24f6a50758dd6a5fe87b8d9c018db705395ab1dad18484580b3d87ecc84fcf`.
+Frontend source/allocated-metadata compatibility stays byte identical at
+`e22c107e99d2afd80e5565bf8d6f17936091a42afe3cb06b7b1f34cbaeed6c70`.
+All 23 Python tests pass (21.764 seconds). The failed compile and copied-suite
+logs are retained privately. PostgreSQL is NOT_RUN at this checkpoint;
+NOT_ADMITTED remains unchanged. A fresh named lease is required for the
+corrected source checkpoint; the previous lease is released.

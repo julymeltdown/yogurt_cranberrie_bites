@@ -24,7 +24,7 @@
   "reviewed_at": "2026-11-04T02:59:31Z",
   "reviewed_by": "MCR backend spatial source qualification",
   "scope": "Engineering qualification of the derived virtual map and pinned source inputs only",
-  "source_binding_sha256": "sha256:6c2fa98e26be035e91774de11c0ebad5dd1f56d119b2cadeaf3fd99bb71c7aae",
+  "source_binding_sha256": "sha256:12d14fa189f80e3c840d196629c1150f57fa5dd2c2f676379f8ac476a1984f1f",
   "source_commit": "06562ff1962be525ed929ef431a54bb589860373",
   "source_png_decode": {
     "evidence": "Developer verified PNG integrity and full pixel decoding against these exact resource pins.",

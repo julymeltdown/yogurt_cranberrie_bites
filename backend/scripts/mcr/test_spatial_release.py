@@ -277,6 +277,13 @@ class QualityV10Tests(unittest.TestCase):
         self.assertIsNone(compatibility['frontend_candidate_revision_at_pin'])
         self.assertEqual(compatibility['frontend_metadata_candidate_revision'], 6)
         self.assertEqual(compatibility['frontend_metadata_commit'], builder.V10_METADATA_COMMIT)
+        for scene in self.outputs['source-binding.json']['scenes']:
+            paths = [self.outputs['source-binding.json'][key]['path']
+                     for key in ('geometry_source', 'tilemap_source')]
+            paths += [scene['scenery_source']['path']]
+            paths += [pin['path'] for group in ('scene_sources', 'runtime_resources') for pin in scene[group]]
+            self.assertEqual(len(paths), len(set(paths)), 'retained loader rejects source/runtime path aliases')
+            self.assertEqual(len(scene['scene_sources']), 23)
         for scene in compatibility['scenes']:
             self.assertEqual((scene['world_objects'], scene['map_objects']), (34, 39))
             self.assertEqual(len(scene['runtime_resources']), 2)

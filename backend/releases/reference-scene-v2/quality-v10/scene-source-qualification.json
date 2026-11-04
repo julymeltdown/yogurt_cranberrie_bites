@@ -7,7 +7,7 @@
     "A derived ThemeManifest producer must validate its complete body, map/avatar bindings and content hash",
     "These source_provenance values describe reviewed source inputs; they do not qualify arbitrary theme fields or avatar data"
   ],
-  "engineering_source_review_sha256": "sha256:d9fd1c6f7fbddd8634940884c5587b35f36d218f7eacb3967b423590fda07285",
+  "engineering_source_review_sha256": "sha256:0c8a52fc32a18878e278b5949b70f0f303ebeef90b226704a539fb6d435c0512",
   "format": "MCR_SPATIAL_SCENE_SOURCE_QUALIFICATION",
   "limits": [
     "No supplied ThemeManifest or Bootstrap",
@@ -64,7 +64,7 @@
         "reviewed_by": "MCR backend spatial source qualification",
         "source_id": "mcr_quality_v10_revenge_scenery",
         "source_kind": "ORIGINAL_ART",
-        "source_revision": "06562ff1962be525ed929ef431a54bb589860373; scenery sha256:ecdc17d2a010e3697b5b813fdd079d5cd4d44b2d0ee09d6b81272c2ffecfc9d5; source-binding sha256:6c2fa98e26be035e91774de11c0ebad5dd1f56d119b2cadeaf3fd99bb71c7aae",
+        "source_revision": "06562ff1962be525ed929ef431a54bb589860373; scenery sha256:ecdc17d2a010e3697b5b813fdd079d5cd4d44b2d0ee09d6b81272c2ffecfc9d5; source-binding sha256:12d14fa189f80e3c840d196629c1150f57fa5dd2c2f676379f8ac476a1984f1f",
         "source_uri": "https://github.com/julymeltdown/mcr/blob/06562ff1962be525ed929ef431a54bb589860373/frontend/public/world/reference-scene-v2/quality-v10/revenge/scenery.json"
       },
       "theme_id": "REVENGE"
@@ -111,7 +111,7 @@
         "reviewed_by": "MCR backend spatial source qualification",
         "source_id": "mcr_quality_v10_parade_scenery",
         "source_kind": "ORIGINAL_ART",
-        "source_revision": "06562ff1962be525ed929ef431a54bb589860373; scenery sha256:0c304c9d5e64e5652af20e412d4403890a7388a010101af7fbf3bab589faa855; source-binding sha256:6c2fa98e26be035e91774de11c0ebad5dd1f56d119b2cadeaf3fd99bb71c7aae",
+        "source_revision": "06562ff1962be525ed929ef431a54bb589860373; scenery sha256:0c304c9d5e64e5652af20e412d4403890a7388a010101af7fbf3bab589faa855; source-binding sha256:12d14fa189f80e3c840d196629c1150f57fa5dd2c2f676379f8ac476a1984f1f",
         "source_uri": "https://github.com/julymeltdown/mcr/blob/06562ff1962be525ed929ef431a54bb589860373/frontend/public/world/reference-scene-v2/quality-v10/parade/scenery.json"
       },
       "theme_id": "PARADE"
@@ -158,14 +158,14 @@
         "reviewed_by": "MCR backend spatial source qualification",
         "source_id": "mcr_quality_v10_danger_scenery",
         "source_kind": "ORIGINAL_ART",
-        "source_revision": "06562ff1962be525ed929ef431a54bb589860373; scenery sha256:1f64295a45a9698c75f5d008e42753896c783000698fa5b44e7dde6e8f0b6990; source-binding sha256:6c2fa98e26be035e91774de11c0ebad5dd1f56d119b2cadeaf3fd99bb71c7aae",
+        "source_revision": "06562ff1962be525ed929ef431a54bb589860373; scenery sha256:1f64295a45a9698c75f5d008e42753896c783000698fa5b44e7dde6e8f0b6990; source-binding sha256:12d14fa189f80e3c840d196629c1150f57fa5dd2c2f676379f8ac476a1984f1f",
         "source_uri": "https://github.com/julymeltdown/mcr/blob/06562ff1962be525ed929ef431a54bb589860373/frontend/public/world/reference-scene-v2/quality-v10/danger/scenery.json"
       },
       "theme_id": "DANGER"
     }
   ],
   "scope": "Engineering source qualification of exact per-era scenery and texture inputs for derived virtual theme descriptors",
-  "source_binding_sha256": "sha256:6c2fa98e26be035e91774de11c0ebad5dd1f56d119b2cadeaf3fd99bb71c7aae",
+  "source_binding_sha256": "sha256:12d14fa189f80e3c840d196629c1150f57fa5dd2c2f676379f8ac476a1984f1f",
   "state": "CONTRACT_READY",
   "version": 1
 }

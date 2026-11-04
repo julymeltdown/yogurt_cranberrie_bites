@@ -495,9 +495,16 @@ def build(inputs=BASELINE):
         pixels = sum(p['width_px'] * p['height_px'] for p in runtime)
         require(count <= MAX_SCENERY and pixels <= MAX_SCENERY, 'era exceeds incumbent C06 budget')
         budgets[theme_id] = {'bytes': count, 'pixels': pixels, 'max_bytes': MAX_SCENERY, 'max_pixels': MAX_SCENERY}
+        # V10 ground_sources also includes the runtime ground. The retained
+        # loader requires each path exactly once across source/runtime pins.
+        # It has already been verified above and stays pinned as a runtime image.
+        scene_common_sources = common_sources
+        if inputs.art_version == 10:
+            runtime_paths = {pin['path'] for pin in runtime}
+            scene_common_sources = [pin for pin in common_sources if pin['path'] not in runtime_paths]
         scenes.append({'theme_id': theme_id, 'scenery_source': file_pin(scenery_path, files[scenery_path]),
             'scene_sources': [file_pin(manifest_path, manifest_data), file_pin(projection_path, projection_data)]
-                + common_sources
+                + scene_common_sources
                 + [file_pin(path, raw) for path, raw in files.items()
                    if path not in [scenery_path, runtime[1]['path']]],
             'runtime_resources': runtime})
