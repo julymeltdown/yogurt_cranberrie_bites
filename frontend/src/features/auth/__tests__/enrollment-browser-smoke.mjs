@@ -70,6 +70,7 @@ async function hygiene(page) {
 async function signup(page) {
   await page.getByRole('button', { name: 'Load current agreements' }).click()
   await page.getByRole('checkbox').check(); await page.getByLabel('Email', { exact: true }).fill(email); await page.getByLabel('Password', { exact: true }).fill(password)
+  await page.screenshot({ path: path.join(evidence, `form-${page.viewportSize().width}-${calls.signup}.png`) })
   const before = calls.signup
   await page.getByRole('form', { name: 'Create account' }).evaluate(form => { form.dispatchEvent(new Event('submit', { bubbles: true, cancelable: true })); form.dispatchEvent(new Event('submit', { bubbles: true, cancelable: true })) })
   await page.waitForFunction(() => document.querySelector('#enrollment-password')?.value !== '  SYNTHETIC_FE10_PASSWORD  ')
@@ -117,5 +118,5 @@ try {
   assert.equal(await page.getByRole('checkbox').count(),0); assert(await page.getByRole('button',{name:'Create account'}).isDisabled()); await hygiene(page)
   results.push({ case:'unpublished-policy-fail-closed',passed:true }); await context.close()
   assert.deepEqual(errors,[])
-  await writeFile(path.join(evidence,'report.json'),JSON.stringify({ qualification:'controlled fixtures through canonical client; no real Auth/mail/legal publication',results,calls,errors },null,2)+'\n')
+  await writeFile(path.join(evidence,'report.json'),JSON.stringify({ qualification:'controlled fixtures through canonical client; no real Auth/mail/legal publication',node:process.version,browser:browser.version(),results,calls,errors },null,2)+'\n')
 } finally { await browser?.close(); await dev.close() }
