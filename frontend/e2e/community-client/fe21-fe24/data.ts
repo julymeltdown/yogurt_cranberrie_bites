@@ -13,7 +13,7 @@ export function responses(eventId: string, actorId: string, placeId: string, ini
     giveaway_id: uid(100-index), title, owner: {...giveaway().owner, user_id: uid(900)}, public_place_id: placeId,
     image_media_id: null, created_at: new Date(Date.parse('2026-11-01T00:00Z')-index*60000).toISOString(),
     pickup_starts_at: '2026-11-07T06:00:00Z', pickup_ends_at: mode === 'ended' ? '2026-11-07T06:30:00Z' : '2026-11-07T08:00:00Z',
-    state: index === 1 ? 'PAUSED' : 'OPEN', ...(index === 2 ? {available: 0, quantity_reserved: 1} : {}),
+    state: index === 1 ? 'PAUSED' : 'OPEN', ...(index === 2 ? {available: 0} : {}),
   }))
   return {calls, setMode(value: string) {mode=value}, setStatus(value: string) {status=value},
     async respond(request: Request): Promise<Response | null> {

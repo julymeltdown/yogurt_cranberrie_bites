@@ -7,7 +7,7 @@ import {resolve,extname} from 'node:path'
 import {createServer as netServer} from 'node:net'
 import {createServer} from 'vite'
 import {chromium,expect} from '@playwright/test'
-assert.equal(process.env.MCR_NATIVE_SLOT,'FE21-FE24-204','Requires explicit named coordinator slot')
+const allocation=process.env.MCR_NATIVE_SLOT;assert(allocation?.startsWith('FE21-FE24-NATIVE-'),'Requires explicit named coordinator slot')
 const repo=resolve(import.meta.dirname,'../../../..'),frontend=resolve(repo,'frontend'),out=resolve(repo,'docs/mcr/evidence/fe21-fe24-client/native')
 const disk=await statfs(repo);assert(disk.bavail*disk.bsize>=16*2**30,'Expanded slot requires >=16 GiB at launch; stop floor 8 GiB')
 const git=(...args)=>execFileSync('git',args,{cwd:repo,maxBuffer:64*1024*1024}),hash=x=>createHash('sha256').update(x).digest('hex')
@@ -19,10 +19,10 @@ const server=await createServer({root:frontend,cacheDir,configLoader:'runner',lo
  if(!tracked.has(path)||!['.png','.jpg','.webp','.ttf'].includes(extname(path)))return next()
  try{if(!assets.has(path)){const bytes=git('show',`HEAD:${path}`);assets.set(path,bytes);assetReads.push({path,sha256:hash(bytes),bytes:bytes.length})}res.setHeader('Content-Type',extname(path)==='.ttf'?'font/ttf':`image/${extname(path).slice(1)}`);res.end(assets.get(path))}catch(e){next(e)}
  })}}],server:{host:'127.0.0.1',port,strictPort:true,hmr:false}})
-const report={base:git('rev-parse','HEAD').toString().trim(),clock:'2026-11-07T07:00:00.000Z',slot:'FE21-FE24-204',diskFreeGiB:disk.bavail*disk.bsize/2**30,
+const report={base:git('rev-parse','HEAD').toString().trim(),clock:'2026-11-07T07:00:00.000Z',slot:allocation,diskFreeGiB:disk.bavail*disk.bsize/2**30,
  qualification:'ACTUAL_DEFAULT_ROOT_WITH_SYNTHETIC_HTTP_C05',physicalIOS:'NOT_RUN',physicalAndroid:'NOT_RUN',sourceHashes:{},cases:[],assetReads}
 for(const p of git('ls-files','frontend/src/features/party-discovery','frontend/src/features/gift-discovery','frontend/src/features/my-gifts','frontend/src/app/CommunityFeatures.tsx','frontend/src/app/router.tsx','contracts/generated/mcr-domain.openapi.json','contracts/domain/v1/party.schema.json','contracts/domain/v1/giveaway.schema.json').toString().trim().split('\n').filter(p=>/\.(tsx?|css|json)$/.test(p)&&!p.includes('/evidence/')))report.sourceHashes[p]=hash(await readFile(resolve(repo,p)))
-for(const p of ['data.ts','preview.tsx','preview.html','native.mjs'])report.sourceHashes['frontend/e2e/community-client/fe21-fe24/'+p]=hash(await readFile(resolve(import.meta.dirname,p)))
+for(const p of ['data.ts','preview.tsx','preview.html','native.mjs','fixture.test.ts'])report.sourceHashes['frontend/e2e/community-client/fe21-fe24/'+p]=hash(await readFile(resolve(import.meta.dirname,p)))
 let browser
 const P='00000000-0000-4000-8000-000000000010',N='00000000-0000-4000-8000-000000000011',G='00000000-0000-4000-8000-000000000064'
 const mode=(p,m)=>p.evaluate(m=>window.__COMMUNITY_CLIENT__.mode(m),m)
