@@ -336,6 +336,20 @@ async fn event_cleanup_local_retention_is_bounded_leaf_first_and_preserves_media
 #[ignore = "owned fixture"]
 async fn event_cleanup_local_missing_fence_not_due_and_active_sources_refuse_effects() {
     let pool = pool().await;
+    // Empty canonical sets still require a bound native page and current fences.
+    for (step, own) in [
+        (Step::ExpireBeacons, Owner::Beacons),
+        (Step::Cleanup, Owner::PrivateRetention),
+    ] {
+        let f = seed(&pool, step, true, 0, false).await;
+        let run = run(&pool, owner(own), true);
+        for _ in 0..2 {
+            let p = run.run_owner(f.actor, f.job, own).await.unwrap();
+            assert_eq!((p.state, p.processed), (State::Complete, 0));
+        }
+        assert_eq!(counts(&pool, &f).await, (1, 0));
+        assert!(!run.ready(f.actor, f.job).await.unwrap());
+    }
     let f = seed(&pool, Step::ExpireBeacons, false, 3, false).await;
     let p = run(&pool, owner(Owner::Beacons), false)
         .run_owner(f.actor, f.job, Owner::Beacons)
