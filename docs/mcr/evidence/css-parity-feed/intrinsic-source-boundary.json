@@ -1,0 +1,8 @@
+{
+  "status": "PASS",
+  "comparisonCommit": "654bbb16a045c3ce6306066eb66a36f6c34f471e",
+  "backgroundDeclarationsExact": true,
+  "portraitRulesExact": true,
+  "nodeSyntaxCheck": "PASS exit0",
+  "nativeCssSha256": "a1cd9c28e90cf05155ae4786a9e749a4655bd881077e950f62af9ddb3a07527e"
+}

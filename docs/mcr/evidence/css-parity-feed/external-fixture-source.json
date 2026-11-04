@@ -1,0 +1,29 @@
+{
+  "status": "SOURCE_IMPORTED_NOT_RUN",
+  "previousOwnHead": "eb6325d496470bfc82f36e910ff3fe05304d5cf7",
+  "cssSha256Unchanged": "a1cd9c28e90cf05155ae4786a9e749a4655bd881077e950f62af9ddb3a07527e",
+  "preservedDraft": {
+    "stashCommit": "19c793feeaa9889ca3bd4bd093eac0592fd94594",
+    "pathHashes": {
+      "frontend/src/features/event-feed/__tests__/css-parity-feed/preview.tsx": "a822dec43446bb7f5a8a47aa2ab25c52cc00f12f03f727ca74fe96160bd20928",
+      "frontend/src/features/event-feed/__tests__/css-parity-feed/preview.css": "5ed59c2d5739094a344b89ac8b45edc89862367e43dcd77be24136f062048cde",
+      "frontend/src/features/event-feed/__tests__/css-parity-feed/preview.html": "edd92dc9f7eb10c3e66c15e81cd1baf28101b2a1253f75cc068995b2e2812a8f"
+    }
+  },
+  "imports": [
+    {
+      "source": "ffab0618d937181c5390bf6adb0661320b183e19",
+      "local": "ca70cea7af5e092f4badfc94205267364e2d6ca0"
+    },
+    {
+      "source": "8f6fe07f389f73f09d9fc61a6012b49846b24ce6",
+      "local": "46038aaab7faf6e82032e33ebf80d27e9ac26f24"
+    },
+    {
+      "source": "008248295c120c75c08c8a4bb8fa2ca2c1c6026a",
+      "local": "dfb7932d99e64ba022db58801bde287b7e78ea2c"
+    }
+  ],
+  "ownership": "Artist owns five published asset/provenance/doc paths; Root153 exclusively owns three fixture paths. Imported only as immutable test inputs; no fixes by CSS worker.",
+  "browserQualification": "NOT_RUN; independent intrinsic round still queued, reference-fixture comparison needs its own declared allocation."
+}

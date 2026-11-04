@@ -1,0 +1,28 @@
+{
+  "slot": "CSS-FEED-INTRINSIC-202611041121Z",
+  "acceptedEpoch": 1793791355.634,
+  "releasedEpoch": 1793791427.534519,
+  "elapsedSinceAccept": 71.90051889419556,
+  "activeEndedEpoch": 1793791397.267356,
+  "activeElapsedSeconds": 41.63335680961609,
+  "wholePeakBytes": 34403285,
+  "temporaryPeakBytes": 29648699,
+  "durablePeakBytes": 4813598,
+  "finalDurableBytes": 4813598,
+  "minimumFreeBytes": 22310961152,
+  "currentFreeBytes": 21832171520,
+  "allCommandsExitZero": true,
+  "browserViteClosed": true,
+  "ownProcessesRemaining": [],
+  "port5292Bindable": true,
+  "ownedLinkAbsent": true,
+  "privateTMPAndCacheRemoved": true,
+  "currentCSSSha256": "a1cd9c28e90cf05155ae4786a9e749a4655bd881077e950f62af9ddb3a07527e",
+  "results": {
+    "native": "PASS intrinsic1,360/390/430",
+    "ui": "PASS two files; see intrinsic-ui-tests.log",
+    "sourceBoundary": "PASS backgrounds/portraits exact",
+    "syntax": "PASS native-intrinsic.mjs"
+  },
+  "remaining": "Reference-media comparison is a separate queued allocation. Full photo parity remains open."
+}
