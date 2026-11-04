@@ -1,5 +1,5 @@
 //! Actual owned PostgreSQL, with explicitly synthetic transaction-locked authority/verifier.
-pub use concert_service::{adapters, product_rpc, relationship};
+pub use concert_service::{account_private_data, adapters, product_rpc, relationship, world};
 pub use concert_application::{age_policy, identity};
 pub use concert_service::adapters::out::repository;
 mod age_claims_support;
