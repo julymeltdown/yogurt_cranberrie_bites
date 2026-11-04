@@ -1,0 +1,44 @@
+{
+  "qualification": "SOURCE_KEYWORD_INVENTORY_ONLY_NO_GENERATION_OR_TEST",
+  "unsupported": {
+    "exclusiveMinimum": [
+      "#/components/schemas/Realtime_world_MotionProfile/properties/speedPxPerSecond"
+    ],
+    "dependentRequired": [
+      "#/components/schemas/Realtime_world_Snapshot"
+    ]
+  },
+  "supported": [
+    "$ref",
+    "additionalProperties",
+    "allOf",
+    "anyOf",
+    "const",
+    "default",
+    "description",
+    "else",
+    "enum",
+    "example",
+    "format",
+    "if",
+    "items",
+    "maxItems",
+    "maxLength",
+    "maximum",
+    "minItems",
+    "minLength",
+    "minProperties",
+    "minimum",
+    "not",
+    "oneOf",
+    "pattern",
+    "properties",
+    "readOnly",
+    "required",
+    "then",
+    "type",
+    "uniqueItems",
+    "x-mcr-utf8-bytes"
+  ],
+  "canonical": "2ff0aab865a06a5664d2096ba572c766ac0fba85"
+}

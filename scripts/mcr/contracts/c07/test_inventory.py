@@ -53,6 +53,18 @@ class InventoryTests(unittest.TestCase):
                      {'not': {'not': {'type': 'integer'}}}):
             generator.check_schema(rule)
 
+    def test_motion_keyword_shapes_are_validated_as_schema_data(self):
+        for value in (None, True, False, '0', [], {}, float('nan'), float('inf'), -float('inf')):
+            with self.subTest(bound=value), self.assertRaisesRegex(ValueError, 'Invalid exclusiveMinimum'):
+                generator.check_schema({'exclusiveMinimum': value})
+        for value in (None, [], True, {'a': 'b'}, {'a': [1]}, {'a': ['b', 'b']}, {'a': [{}]}, {1: []}):
+            with self.subTest(dependencies=value), self.assertRaisesRegex(ValueError, 'Invalid dependentRequired'):
+                generator.check_schema({'dependentRequired': value})
+        for rule in ({'exclusiveMinimum': 0}, {'exclusiveMinimum': -0.5},
+                     {'dependentRequired': {}}, {'dependentRequired': {'a': ['b'], 'b': ['a'], 'c': []}},
+                     {'not': {'dependentRequired': {'a': ['b']}}}):
+            generator.check_schema(rule)
+
 
 if __name__ == '__main__':
     unittest.main()

@@ -1,0 +1,29 @@
+{
+  "lease": "CORE-GENERATOR-COMPAT-SOURCE-20261104T1912Z",
+  "status": "FAIL",
+  "error": "AssertionError('qualification child failed; original logs retained')",
+  "actualFullAt": 1793819537.093025,
+  "source": "2a1850de1675e1caea4d1cd395f21fc5f149b662",
+  "canonical": "2ff0aab865a06a5664d2096ba572c766ac0fba85",
+  "peak": {
+    "processes": 3,
+    "rssBytes": 136675328,
+    "wholeBytes": 1404215120,
+    "newBytes": 20480,
+    "tmpBytes": 0,
+    "durableBytes": 20480
+  },
+  "allObservedPids": [
+    95640,
+    95757,
+    95758,
+    95777,
+    95781
+  ],
+  "liveOwnedPids": [],
+  "privateTmpAbsent": true,
+  "compileScratchAbsent": true,
+  "readonlyInputsUnchanged": true,
+  "portsCreated": [],
+  "freeBytes": 18096545792
+}

@@ -1,0 +1,28 @@
+{
+  "lease": "CORE-GENERATOR-COMPAT-SOURCE-20261104T1912Z",
+  "source": "2a1850de1675e1caea4d1cd395f21fc5f149b662",
+  "canonical": "2ff0aab865a06a5664d2096ba572c766ac0fba85",
+  "readsetSha256": "a01eef3545407b3831915843c41b518ca7eccd50506423e59e370080f45b22be",
+  "guardianSha256": "22da61c100c21d601bfbbd27272440f9ea04b82393d183a4f839d653e8e1c60c",
+  "acceptedAt": 1793819536.498328,
+  "activeEnd": 1793820128.4109719,
+  "deadline": 1793820188.4109719,
+  "freeBytes": 18096644096,
+  "otherWorstNewBytes": 2281701376,
+  "startFloorGiB": 12,
+  "liveFloorGiB": 8,
+  "reserveMarginGiB": 9,
+  "ownWorstNewBytes": 134217728,
+  "remainingMarginBytes": 15680724992,
+  "wholeFloorBytes": 1404194640,
+  "caps": {
+    "processes": 24,
+    "rssBytes": 4294967296,
+    "wholeBytes": 2147483648,
+    "newBytes": 134217728,
+    "tmpBytes": 100663296,
+    "durableBytes": 25165824
+  },
+  "privateTmp": "/private/tmp/mcr-c07-enrollment-1912",
+  "portsCreated": []
+}

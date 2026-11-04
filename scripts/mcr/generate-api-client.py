@@ -6,6 +6,7 @@ from copy import deepcopy
 import hashlib
 import importlib.util
 import json
+import math
 import re
 from pathlib import Path
 import sys
@@ -13,7 +14,7 @@ sys.dont_write_bytecode = True
 ROOT = Path(__file__).resolve().parents[2]
 HERE = ROOT / 'scripts/mcr/contracts/c07'
 CLIENTS = ('contracts/generated/api-client', 'frontend/src/shared/api/generated')
-SCHEMA_KEYS = {'$ref','type','properties','required','additionalProperties','items','const','enum','anyOf','oneOf','allOf','not','if','then','else','minimum','maximum','minLength','maxLength','pattern','format','minItems','maxItems','minProperties','uniqueItems','description','default','example','readOnly','x-mcr-utf8-bytes'}
+SCHEMA_KEYS = {'$ref','type','properties','required','additionalProperties','items','const','enum','anyOf','oneOf','allOf','not','if','then','else','minimum','maximum','exclusiveMinimum','dependentRequired','minLength','maxLength','pattern','format','minItems','maxItems','minProperties','uniqueItems','description','default','example','readOnly','x-mcr-utf8-bytes'}
 
 def dump(v): return json.dumps(v, sort_keys=True, ensure_ascii=False, allow_nan=False, indent=2)+'\n'
 def sha(raw): return hashlib.sha256(raw).hexdigest()
@@ -61,6 +62,10 @@ def check_schema(s):
     if not isinstance(s,dict) or set(s)-SCHEMA_KEYS:raise ValueError('Unsupported schema keyword: '+str(set(s)-SCHEMA_KEYS))
     if 'format' in s and s['format'] not in {'date','date-time','email','int64','password','uri','uuid','binary'}:raise ValueError('Unsupported schema format')
     if 'type' in s and any(k not in {'null','boolean','object','array','number','integer','string'} for k in (s['type'] if isinstance(s['type'],list) else [s['type']])):raise ValueError('Unsupported schema type')
+    if 'exclusiveMinimum' in s and (type(s['exclusiveMinimum']) not in (int,float) or not math.isfinite(s['exclusiveMinimum'])):raise ValueError('Invalid exclusiveMinimum')
+    if 'dependentRequired' in s:
+        dependencies=s['dependentRequired']
+        if not isinstance(dependencies,dict) or any(not isinstance(name,str) or not isinstance(required,list) or not all(isinstance(k,str) for k in required) or len(required)!=len(set(required)) for name,required in dependencies.items()):raise ValueError('Invalid dependentRequired')
     for k in ('anyOf','oneOf','allOf'):
         for v in s.get(k,[]):check_schema(v)
     for v in s.get('properties',{}).values():check_schema(v)
@@ -177,6 +182,13 @@ def render(include_fixtures=True, probe=None):
             mutations=[value,None,False,42,"UNKNOWN_C07",{},[],{**value,'__c07_unknown':True} if isinstance(value,dict) else None]
             mutations += [9007199254740992, -9007199254740992, 0.5]
             mutations += list(extra)
+            effective=deref(rule,source)
+            if isinstance(value,dict):
+                for trigger,required in effective.get('dependentRequired',{}).items():
+                    paired={**value,trigger:witnesses.make(effective['properties'][trigger])}
+                    for name in required:paired[name]=witnesses.make(effective['properties'][name])
+                    mutations.append(paired)
+                    mutations += [{k:v for k,v in paired.items() if k!=name} for name in required]
             if isinstance(value,dict):
                 mutations += [{k:v for k,v in value.items() if k!=name} for name in value]
                 mutations += [{**value,name:'UNKNOWN_C07'} for name in value]
@@ -190,6 +202,8 @@ def render(include_fixtures=True, probe=None):
             'uri':['http://','urn:example:item','custom:','https://한글.example/','https://example.test/é','https://example.test/[x]','https://example.test/%C3%A9','http://[::1]/','https://example.test/\n','https://example.test/\x01'],
         }
         for node in nodes(source):
+            if isinstance(node,dict) and 'exclusiveMinimum' in node:
+                boundary=node['exclusiveMinimum'];differential(node,[boundary,boundary+1,boundary-1])
             if isinstance(node,dict) and isinstance(node.get('format'),str) and node['format'] in formats:differential(node,formats[node['format']])
             if isinstance(node,dict) and isinstance(node.get('pattern'),str):
                 value=witnesses.make(node)

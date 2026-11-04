@@ -65,3 +65,20 @@ Root153 also granted the fourth C07 inventory-test file: the obsolete
 unsupported-`not` probe becomes an unsupported-`contains` probe, with additive
 negation-child admission and nested unsupported-keyword rejection cases.
 The repair requires a new frozen readset and fresh finite allocation.
+
+The second attempt, `CORE-GENERATOR-COMPAT-SOURCE-20261104T1912Z`, accepted
+at 19:12:08.410972 UTC and fully released at 19:12:17.093025 UTC. Rendering
+stopped before tests or pin changes on C05's `exclusiveMinimum`. The owner
+should have inventoried all new keywords together before that attempt.
+`round02/` preserves its original failure, controls and FULL record.
+
+A complete source keyword inventory then identified exactly two remaining
+keywords: the positive motion-speed bound and `dependentRequired` for paired
+snapshot `motionProfile`/`selfMotion` fields. Root153 extended the same four
+C07 files for these precise semantics, schema-data validation, additive
+boundary/pair tests and independent Python differential cases. Invalid numeric
+keyword values and malformed or duplicate dependency lists fail closed.
+Present own trigger properties require every declared own companion; inherited
+object properties cannot satisfy dependencies. The Python oracle and canonical
+schemas remain unchanged. The updated source inventory has no unsupported
+keyword; it is source preparation, not a passing qualification result.
