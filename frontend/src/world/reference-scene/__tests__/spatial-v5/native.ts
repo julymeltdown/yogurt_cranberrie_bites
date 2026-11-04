@@ -72,7 +72,12 @@ async function parity() {
   const roster = []
   if (view.visible && owner.isCurrent()) for (const entity of view.entities) {
     const lease = await owner.acquire(entity.player.avatar.config, { signal: abort.signal })
-    leases.push(lease); roster.push({ entity, render: lease.read()! })
+    // Independently crop the source cell before fractional scaling, as the production texture upload does.
+    const render = lease.read()!, cell = document.createElement('canvas')
+    cell.width = cell.height = 64
+    const crop = cell.getContext('2d')!; crop.imageSmoothingEnabled = false
+    crop.drawImage(render.image, render.source.x, 0, 64, 64, 0, 0, 64, 64)
+    leases.push(lease); roster.push({ entity, cell })
   }
   // Finish all asynchronous lease work before observing and composing one frame.
   const camera = engine.camera!.read()!, z = Math.fround(camera.zoom)
@@ -108,13 +113,14 @@ async function parity() {
     paintScenery(o.x, o.y, o.width / f.width, o.height / f.height, () =>
       ctx.drawImage(s.assets.find(a => a.descriptor.id === o.atlas_id)!.image, f.x, f.y, f.width, f.height, 0, 0, f.width, f.height))
   } })
-  for (const { entity, render } of roster) {
+  for (const { entity, cell } of roster) {
     rows.push({ depth: sceneryDepth(entity.position.y, current.heightPx), draw() {
       transform(entity.position.x, entity.position.y)
-      ctx.drawImage(render.image, render.source.x, 0, 64, 64, -32, -60, 64, 64)
+      ctx.drawImage(cell, 0, 0, 64, 64, -32, -60, 64, 64)
     } })
   }
   rows.sort((a, b) => a.depth - b.depth).forEach(r => r.draw()); leases.forEach(l => l.dispose())
+  roster.forEach(({ cell }) => { cell.width = cell.height = 0 })
   ctx.restore()
   const a = actual.getContext('2d')!.getImageData(0, 0, actual.width, actual.height).data, b = ctx.getImageData(0, 0, canvas.width, canvas.height).data
   let different = 0, max = 0

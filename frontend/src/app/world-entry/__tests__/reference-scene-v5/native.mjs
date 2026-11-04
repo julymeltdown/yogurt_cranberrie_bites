@@ -154,9 +154,9 @@ try {
         const inkCoverage = await page.evaluate(labels => {
           const img = document.querySelector('.places-map-plane > img').getBoundingClientRect()
           const controls = [...document.querySelectorAll('.places-map-caption, .places-map-zoom')].map(n => n.getBoundingClientRect())
-          return labels.flatMap(({ id, rect: r }) => {
+          return labels.flatMap(({ label, rect: r }) => {
             const ink = { left: img.left + r.x / 768 * img.width, top: img.top + r.y / 1296 * img.height, right: img.left + (r.x + r.width) / 768 * img.width, bottom: img.top + (r.y + r.height) / 1296 * img.height }
-            return controls.some(c => ink.left < c.right && ink.right > c.left && ink.top < c.bottom && ink.bottom > c.top) ? [id] : []
+            return controls.some(c => ink.left < c.right && ink.right > c.left && ink.top < c.bottom && ink.bottom > c.top) ? [label] : []
           })
         }, labelSource.labels)
         assert.deepEqual(inkCoverage, [], 'All six source labels remain clear of caption/zoom at reference aspect')
