@@ -1,0 +1,62 @@
+{
+  "job": "CSS-PARITY-GIVEAWAY-202611041034Z",
+  "run": "native-01",
+  "base": "54320d71c4ae0bff3524d1b500cea772e0ba42e0",
+  "candidate": "bef48b2a55c12e9b3d4add47b98b76c23fa8286d",
+  "started": "2026-11-04T10:36:57.622Z",
+  "qualification": "Actual selected-source cozy root, canonical Auth, synthetic HTTP/C05 only. Standalone production GiftDiscovery for long/unavailable/empty/error states. No live admission, real gift photos, backend mutation or physical device acceptance.",
+  "baselinePolicy": "Same checkout/fixture; baseline substitutes only two assigned CSS files with exact base Git bytes through Vite load hook. Candidate uses actual working-tree CSS. No disk source replacement.",
+  "sources": {
+    "frontend/src/features/gift-discovery/ui/gifts.css": {
+      "candidate": "f10d645469ba821be72bbecf88ce97f9229ee16b6d57e8a95e112c75970f8f2d",
+      "baseline": "f10d645469ba821be72bbecf88ce97f9229ee16b6d57e8a95e112c75970f8f2d"
+    },
+    "frontend/src/features/gift-discovery/ui/reference-gifts.css": {
+      "candidate": "1bb26e59cd3cd4d66db4cad73bfa8cc018266ec24bd9f4be059ddfb45408078c",
+      "baseline": "c11d23a14cf241e763f8c07b8f4c4595923aa1aac6e4c25cad1ccebfa0745040"
+    },
+    "frontend/src/features/gift-discovery/ui/Gifts.tsx": {
+      "candidate": "88ad2761bea29adbcbc3fe7c5a1d0ede202acba58a4ab5a32f12ca1ec1b2ea2d",
+      "baseline": "88ad2761bea29adbcbc3fe7c5a1d0ede202acba58a4ab5a32f12ca1ec1b2ea2d"
+    },
+    "frontend/src/features/gift-discovery/ui/reference-presentation.tsx": {
+      "candidate": "2c71518ba195f9e50f0e9888ab0ef6fe0b2e0d02d969d4e1f4cf1f3165612754",
+      "baseline": "2c71518ba195f9e50f0e9888ab0ef6fe0b2e0d02d969d4e1f4cf1f3165612754"
+    },
+    "frontend/src/app/__tests__/cozy-backgrounds-v1/preview.tsx": {
+      "candidate": "5fb0fed19cf9b2fe14a8179052d5cfd639514c879952beab67e1d64b9529e261",
+      "baseline": "5fb0fed19cf9b2fe14a8179052d5cfd639514c879952beab67e1d64b9529e261"
+    },
+    "frontend/e2e/reference-integrated/data.ts": {
+      "candidate": "186ca7d28cca66f2eab4fe87f95fc76e5a4acca432b109abb7216ddfc404a994",
+      "baseline": "186ca7d28cca66f2eab4fe87f95fc76e5a4acca432b109abb7216ddfc404a994"
+    },
+    "frontend/e2e/reference-integrated/whole/data.ts": {
+      "candidate": "8031884ce211e04272a20d66db4427b67a192a197a766d14a6f848765cc99d33",
+      "baseline": "8031884ce211e04272a20d66db4427b67a192a197a766d14a6f848765cc99d33"
+    },
+    "frontend/pnpm-lock.yaml": {
+      "candidate": "47ca44459819ad0e887d2f4f93394fdf3b1053b8f45edc9ceb0236981feee1f6",
+      "baseline": "47ca44459819ad0e887d2f4f93394fdf3b1053b8f45edc9ceb0236981feee1f6"
+    }
+  },
+  "cases": [],
+  "failures": [],
+  "limits": {
+    "whole": 167772160,
+    "temp": 125829120,
+    "durable": 20971520
+  },
+  "peaks": {
+    "whole": 194363,
+    "temp": 0,
+    "durable": 194363
+  },
+  "minFree": 18257883136,
+  "finished": "2026-11-04T10:36:57.690Z",
+  "cleanup": {
+    "browserClosed": true,
+    "viteClosed": true,
+    "tempRemoved": true
+  }
+}

@@ -1,6 +1,6 @@
 {
-  "updated_at": "2026-11-04T18:59:39+09:00",
-  "published_snapshot": "bb1345b5302eead08c65deab9423e52344fe58fe",
+  "updated_at": "2026-11-04T19:56:00+09:00",
+  "published_snapshot": "02bd4620bad8d95674fff941be541a4606119511",
   "method": "Hourly management reconciliation of responsible-owner/SL original-task dispositions and publication metadata. No king inspection of implementation, queries, tests, screenshots or technical evidence; no reruns or approval gate.",
   "required_tasks": 112,
   "required_ia_entries": 61,
@@ -1633,15 +1633,13 @@
     }
   ],
   "portfolio_snapshot": {
-    "as_of": "2026-11-04T18:59:39+09:00",
-    "reporting_cutoff": "2026-11-04T09:52:00Z",
+    "as_of": "2026-11-04T19:56:00+09:00",
+    "reporting_cutoff": "2026-11-04T10:54:00Z",
     "criteria_outcomes": 39,
     "required_tasks": 112,
     "required_ia_entries": 61,
     "new_original_closures": [],
-    "strengthened_existing_dispositions": [
-      "FE40"
-    ],
+    "strengthened_existing_dispositions": [],
     "remaining_unreconciled": [
       "C07",
       "QA10"
@@ -1653,40 +1651,49 @@
       "IN05"
     ],
     "owner_reports": {
-      "backend": "Backend staffing/resources SL 09:52Z hourly portfolio, retained hourly-202611040952Z.md and 44-row JSON",
-      "frontend": "Frontend KING 09:52Z rollup of World, Social and Community owner dispositions"
+      "frontend": "Frontend KING 10:50Z hourly rollup: zero new unique original-task closures; subsequent Map/custody exceptions retained.",
+      "backend": "Latest complete per-task report remains09:52Z. Later live lead outcomes through10:54Z are bounded development updates, not a fresh original-task closure census."
     },
     "recent_chat_inventory": {
-      "active_coordination": 5,
-      "active_developer_art_or_qa": 11,
-      "idle": 9,
-      "not_loaded": 12
+      "active_coordination": 4,
+      "active_developer_art_or_qa": 7,
+      "idle": 10,
+      "not_loaded": 17
     },
-    "inventory_limit": "Recent 50-chat inventory collected during this reconciliation, not an exhaustive staffing register. Active status does not establish source writing or goal completion.",
+    "inventory_at": "2026-11-04T10:53:00Z",
+    "inventory_limit": "38 MCR chats in the recent50-chat inventory. Active is not a source-writer count; idle/notLoaded does not by itself establish an abandoned assignment.",
     "published_progress": [
-      "Landing first CSS pass and Feed native-qualified CSS pass through bb1345b5",
-      "Archive root, C07 client/fixture harness and focus handoffs through4d501d92",
-      "Backend restore, Intro, notification, mural and local target-policy supporting increments; no additional original closure claimed"
+      "Combined actual Intro/Participant production startup owner qualification published at eb9c03cc; no full public HTTP/IN03 acceptance inferred.",
+      "My Profile CSS6d1b5b36, Customize background qualification through145a8e93, native Feed fixtures bdcdc184 and panel-title alignment5132e93b.",
+      "Giveaway bounded CSS source78f51c50 published through02bd4620; real item photos and shared-screen differences remain open."
     ],
     "active_work": {
-      "backend": "CF02 and CF03 have accepted disjoint ownership. Their full qualification results remain failed; responsible owners are fixing and requalifying. Root startup follows actual prerequisites.",
-      "frontend": "Nine isolated foreground CSS owners deliver directly to Root153. Existing Map owner26e/artist231 handle Map-only production presentation/ground and four working links across three eras. Existing avatar and Social/media owners handle approved Customize options and the Feed attachment gap."
+      "backend": "CF02/CF03 and combined production startup now owner-qualified; inbox/Post checks passed. Gateway routing has an unresolved route case and awaits owner correction/requalification. Notification ingress/fanout, target authority and Gateway routing retain distinct existing owners; real age-provider/social, public HTTP and IN03 composition remain open.",
+      "frontend": "Nine foreground CSS workers hand off directly to Root153. Sign-in/Landing/Map recaptures, Meet/Wall/Customize CSS and Feed reference-media integration remain assigned. Map4 owner committed a synthetic eligible-attendee fixture/input-boundary fix at3aca2225; validation/native capture/publication are NOT_RUN because of capacity. AR03 reviewed-v2 adapter source is committed; validation/root composition remain open. Root is continuing separate Social adapter source work."
     },
     "bottlenecks": [
-      "Full CF02/CF03 qualification and actual production providers/principals for original IN02-IN04",
-      "Disk capacity oscillating around the16GiB start gate; existing owner230 is preserving evidence while retiring up to two additional completed worktrees",
-      "Full ten-screen reference parity, QA06, real-device/multiuser and final IA/release requirements"
+      "Free disk below16GiB start floor prevents new native validation rounds; existing lead/owners are reclaiming safely retirable completed work for sustainable headroom.",
+      "Public production authorities/providers and actual HTTP/multiuser IN02-IN04 journeys remain open; passing startup/component checks do not close them.",
+      "Full ten-screen reference parity, QA06, physical devices, original load/recovery and final61-entry IA/release obligations remain open."
     ],
-    "resource_state": "Closed bundles and two completed clean worktrees were reclaimed with history/proofs preserved. Capacity briefly recovered16.1-17GiB, then dipped below16GiB again. New starts obey the unchanged gate; existing recovery continues. No active/frozen/shared targets/originals are removed.",
-    "wall_product_decision": {
-      "state": "PROPOSAL_PREPARING",
-      "owner_chat": "01a1a1fd-6ec9-71e2-a2c6-b5dddca7542e",
-      "frontend_owner": "01a1a204-c583-7670-965a-4891b8b1289e",
-      "path": "docs/mcr/product-decisions/wall-reference-tools.md",
-      "scope": "Original single-pixel mural versus reference erase/fill/committed undo and album metadata. No application/contract changes authorized by proposal preparation."
+    "resource_state": "New native validation starts remain below16GiB. The removed Title/Focus checkout was reportedly1,253,376 allocated bytes; actual filesystem/APFS free-space change was not measured. Resource21d owns safe larger candidates through their actual owners. The16GiB start and8GiB running floors remain unchanged; source/publication continue where feasible.",
+    "custody_exception": {
+      "state": "OWNER_RECONCILED_WITH_PRESERVATION_GAP",
+      "report": "Actual Title/Focus owner confirms original delivery COMPLETE unchanged and retained tracked source/branch/canonical evidence reachable. No pre-removal private/admin/index/sparse/xattr/local-config/reflog archive exists in the owner disposition; all discarded local-state preservation is UNPROVEN. The post-incident manifest is not a discarded-state backup.",
+      "owner": "Actual owner50a8 reconciled actor0644 and misrouted dispatcher153. Resource21d coordinates unaffected safe candidates; no duplicate audit owner or king technical review.",
+      "routing": "Root153 has stopped further retirement dispatch; the affected route remains paused. Unaffected source/publication and properly assigned safe cleanup continue without king release/acknowledgment.",
+      "updated_at": "2026-11-04T10:58:35Z",
+      "capacity_evidence": "Actor reported1,253,376 allocated worktree bytes. Actual filesystem/APFS free-space delta was NOT_MEASURED."
     },
-    "operating_decision": "Kings consume major outcomes, staffing and publication metadata only. No king/SL technical review or ACK. Required reference parity and original integration work receive fair bounded validation rounds; neither waits behind the whole other lane. No scope or validation cuts.",
-    "feed_content_direction": "For local reference qualification, existing art/feature owners prepare a provenance-recorded derivative of the Feed media in the human-supplied reference, using the reference wide thumbnail crop and preserving original dimensions for detail. Fixture media is not a fabricated real user post; production authorization and server contracts stay unchanged. Full Feed parity remains open."
+    "wall_product_decision": {
+      "state": "AWAITING_USER_CHOICE",
+      "proposal_published": "a9dd63769c6a035e6ac8938c53ece2b974afb3ac",
+      "path": "docs/mcr/product-decisions/wall-reference-tools.md",
+      "scope": "Human chooses original confirmed-single-pixel behavior versus bounded erase/fill/own-action undo. No answer or timeout default; expanded tools remain unauthorized. Static THE BLACK PARADE caption is already authorized independently."
+    },
+    "governance_state": "Root153 reports startup execution-plan, chat-coordination and king-coordination synchronized to canonical published f94602da postimages; checkout/HEAD retained, expected documentation-only local changes, no duplicate publication. No king/SL inspection or acknowledgment gate.",
+    "operating_decision": "No new chats/worktrees merely to queue behind disk. Leads manage ready work and capacity; developers own validation and direct named publication. All112 tasks,61 IA entries and original validation remain intact.",
+    "feed_content_direction": "Native-resolution source-derived Feed reference crops are complete fixture images and retain their true dimensions in card/detail. No fictitious high-resolution original, generated extension or fabricated real user post. Production authorized media remains separate."
   },
   "milestone_update": {
     "at": "2026-11-04T17:54:17+09:00",
@@ -1752,6 +1759,62 @@
         "Shared build/browser qualification queue and redundant coordination"
       ],
       "operating_decision": "Kings track major features, staffing, genuine cross-lane blockers and publication metadata only. Developers own technical judgment. One packet custodian and one resource allocator; consolidate completed art/capture coordination, no duplicate status or approval watchers. Independent source tasks proceed outside heavy-output slots. No scope cuts, validation cuts or new criteria."
+    },
+    {
+      "as_of": "2026-11-04T18:59:39+09:00",
+      "reporting_cutoff": "2026-11-04T09:52:00Z",
+      "criteria_outcomes": 39,
+      "required_tasks": 112,
+      "required_ia_entries": 61,
+      "new_original_closures": [],
+      "strengthened_existing_dispositions": [
+        "FE40"
+      ],
+      "remaining_unreconciled": [
+        "C07",
+        "QA10"
+      ],
+      "open_integration_gates": [
+        "IN02",
+        "IN03",
+        "IN04",
+        "IN05"
+      ],
+      "owner_reports": {
+        "backend": "Backend staffing/resources SL 09:52Z hourly portfolio, retained hourly-202611040952Z.md and 44-row JSON",
+        "frontend": "Frontend KING 09:52Z rollup of World, Social and Community owner dispositions"
+      },
+      "recent_chat_inventory": {
+        "active_coordination": 5,
+        "active_developer_art_or_qa": 11,
+        "idle": 9,
+        "not_loaded": 12
+      },
+      "inventory_limit": "Recent 50-chat inventory collected during this reconciliation, not an exhaustive staffing register. Active status does not establish source writing or goal completion.",
+      "published_progress": [
+        "Landing first CSS pass and Feed native-qualified CSS pass through bb1345b5",
+        "Archive root, C07 client/fixture harness and focus handoffs through4d501d92",
+        "Backend restore, Intro, notification, mural and local target-policy supporting increments; no additional original closure claimed"
+      ],
+      "active_work": {
+        "backend": "CF02 and CF03 have accepted disjoint ownership. Their full qualification results remain failed; responsible owners are fixing and requalifying. Root startup follows actual prerequisites.",
+        "frontend": "Nine isolated foreground CSS owners deliver directly to Root153. Existing Map owner26e/artist231 handle Map-only production presentation/ground and four working links across three eras. Existing avatar and Social/media owners handle approved Customize options and the Feed attachment gap."
+      },
+      "bottlenecks": [
+        "Full CF02/CF03 qualification and actual production providers/principals for original IN02-IN04",
+        "Disk capacity oscillating around the16GiB start gate; existing owner230 is preserving evidence while retiring up to two additional completed worktrees",
+        "Full ten-screen reference parity, QA06, real-device/multiuser and final IA/release requirements"
+      ],
+      "resource_state": "Closed bundles and two completed clean worktrees were reclaimed with history/proofs preserved. Capacity briefly recovered16.1-17GiB, then dipped below16GiB again. New starts obey the unchanged gate; existing recovery continues. No active/frozen/shared targets/originals are removed.",
+      "wall_product_decision": {
+        "state": "PROPOSAL_PREPARING",
+        "owner_chat": "01a1a1fd-6ec9-71e2-a2c6-b5dddca7542e",
+        "frontend_owner": "01a1a204-c583-7670-965a-4891b8b1289e",
+        "path": "docs/mcr/product-decisions/wall-reference-tools.md",
+        "scope": "Original single-pixel mural versus reference erase/fill/committed undo and album metadata. No application/contract changes authorized by proposal preparation."
+      },
+      "operating_decision": "Kings consume major outcomes, staffing and publication metadata only. No king/SL technical review or ACK. Required reference parity and original integration work receive fair bounded validation rounds; neither waits behind the whole other lane. No scope or validation cuts.",
+      "feed_content_direction": "For local reference qualification, existing art/feature owners prepare a provenance-recorded derivative of the Feed media in the human-supplied reference, using the reference wide thumbnail crop and preserving original dimensions for detail. Fixture media is not a fabricated real user post; production authorization and server contracts stay unchanged. Full Feed parity remains open."
     }
   ],
   "hourly_updates": [
@@ -1762,6 +1825,13 @@
       "existing_row_strengthened": "FE40",
       "criteria_outcomes": 39,
       "note": "Correct stale aggregate limitation text and superseded current-snapshot fields; preserve historical snapshots and original task rows."
+    },
+    {
+      "recorded_at": "2026-11-04T19:56:00+09:00",
+      "source_cutoff": "2026-11-04T10:54:00Z",
+      "new_unique_original_closures": [],
+      "criteria_outcomes": 39,
+      "note": "Frontend10:50Z plus subsequent live owner/lead outcomes; backend original-task census retained at09:52Z pending next ordinary digest. Supporting delivery is not a new original closure. Current capacity and custody exceptions remain explicit."
     }
   ]
 }

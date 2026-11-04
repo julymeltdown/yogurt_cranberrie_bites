@@ -47,12 +47,12 @@ export const panelRoutes: readonly PanelRoute[] = [
   { path: '/gifts/:giveawayId/reservation', title: 'Reserve', tab: '/gifts', parent: '/gifts/:giveawayId' },
   { path: '/gifts/pickups/:reservationId', title: 'My pickup', tab: '/gifts', parent: '/gifts/mine' },
   { path: '/wall', title: 'Wall', tab: '/wall', parent: '/world' },
-  { path: '/me', title: 'Me', tab: '/me', parent: '/world', links: links(
-    ['/me/avatar', 'Dress up'], ['/me/profile', 'Edit profile'], ['/me/social', 'Social links'],
+  { path: '/me', title: 'My profile', tab: '/me', parent: '/world', links: links(
+    ['/me/avatar', 'Customize'], ['/me/profile', 'Edit profile'], ['/me/social', 'Social links'],
     ['/me/requests', 'Requests'], ['/me/age', 'Age & privacy'], ['/me/settings', 'Settings'],
     ['/me/blocks', 'Blocked users'], ['/me/account', 'Account']) },
   ...[
-    ['avatar', 'Dress up'], ['profile', 'Edit profile'], ['social', 'Social links'],
+    ['avatar', 'Customize'], ['profile', 'Edit profile'], ['social', 'Social links'],
     ['requests', 'Requests'], ['age', 'Age & privacy'], ['settings', 'Settings'],
     ['blocks', 'Blocked users'], ['account', 'Account'],
   ].map(([path, title]) => ({ path: `/me/${path}`, title: title!, tab: '/me' as const, parent: '/me' })),

@@ -32,7 +32,58 @@ class RealtimeContractTests(unittest.TestCase):
             self.assertEqual(raised.exception.code, code)
 
     def test_all_indexed_fixtures(self):
-        self.assertEqual(rt.validate_fixtures(), 24)
+        self.assertEqual(rt.validate_fixtures(), 26)
+
+    def policy(self, trace, kind='policy.baseline', revision=1):
+        value = {'protocolVersion': '1.0.0', 'type': kind,
+                 'streamId': trace.snapshot['streamId'], 'eventId': trace.snapshot['eventId'],
+                 'scope': 'SOCIAL', 'policyRevision': revision}
+        if kind == 'policy.invalidate':
+            value['reason'] = 'CONSENT_CHANGED'
+        return value
+
+    def test_world_snapshot_does_not_imply_private_policy_baseline(self):
+        trace = self.started()
+        self.assertIsNone(trace.policy_revision)
+        self.assertFalse(trace.policy_baseline_current)
+        trace.consume('server', self.policy(trace))
+        self.assertEqual(trace.policy_revision, 1)
+        self.assertTrue(trace.policy_baseline_current)
+
+    def test_invalidation_withdraws_and_cannot_roll_revision_back(self):
+        trace = self.started()
+        trace.consume('server', self.policy(trace))
+        trace.consume('server', self.policy(trace, 'policy.invalidate', 3))
+        self.assertFalse(trace.policy_baseline_current)
+        self.assertEqual(trace.policy_revision, 3)
+        trace.consume('server', self.policy(trace, 'policy.invalidate', 2))
+        self.assertEqual(trace.policy_revision, 3)
+        self.reject(lambda: trace.consume('server', self.policy(trace, revision=2)))
+        trace.consume('server', self.policy(trace, revision=3))
+        self.assertFalse(trace.policy_baseline_current, 'duplicate baseline cannot restore withdrawn authority')
+
+    def test_duplicate_metadata_does_not_change_current_policy_authority(self):
+        trace = self.started()
+        trace.consume('server', self.policy(trace))
+        trace.consume('server', self.policy(trace))
+        trace.consume('server', self.policy(trace, 'policy.invalidate', 1))
+        self.assertTrue(trace.policy_baseline_current)
+
+    def test_policy_wrong_stream_event_and_malformed_fields_withdraw(self):
+        for patch in [{'streamId': '00000000-0000-4000-8000-000000000099'},
+                      {'eventId': '00000000-0000-4000-8000-000000000099'},
+                      {'policyRevision': 0}, {'policyRevision': True},
+                      {'scope': 'OTHER'}, {'handles': {'X': 'private'}}]:
+            trace = self.started()
+            trace.consume('server', self.policy(trace))
+            self.reject(lambda: trace.consume('server', self.policy(trace) | patch))
+            self.assertFalse(trace.policy_baseline_current)
+
+    def test_policy_is_server_only_and_never_synthesizes_a_baseline(self):
+        trace = self.started()
+        self.reject(lambda: trace.consume('client', self.policy(trace)))
+        self.reject(lambda: trace.consume('server', self.policy(trace, 'policy.invalidate', 2)))
+        self.assertIsNone(trace.policy_revision)
 
     def test_limits_measure_utf8_bytes_before_json_decode(self):
         for direction, fixture_index, limit in [('client', 0, 4096), ('server', 1, 65536)]:

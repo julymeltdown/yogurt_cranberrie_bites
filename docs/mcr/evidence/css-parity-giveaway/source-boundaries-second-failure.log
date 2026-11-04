@@ -1,0 +1,5 @@
+Traceback (most recent call last):
+  File "/Users/lhs/.codex/worktrees/2411/mcr/docs/mcr/evidence/css-parity-giveaway/source-boundaries.py", line 37, in <module>
+    assert not re.search(r'\bcontent\s*:', new), path + ': generated product text'
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: frontend/src/features/gift-discovery/ui/gifts.css: generated product text
