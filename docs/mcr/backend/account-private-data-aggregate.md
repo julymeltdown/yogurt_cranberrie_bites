@@ -1,0 +1,136 @@
+# BE42 PrivateData aggregate coordinator
+
+Status: **SOURCE IN PROGRESS**. The qualified core leaf remains a separate
+published component. This coordinator makes its success one category of a
+closed Concert target and withholds whole PrivateData acknowledgement until
+every required category has an exact durable owner receipt.
+
+## Closed category registry
+
+The required Concert categories are derived from
+[the field inventory](account-private-data-field-inventory.md):
+
+| Category | Required owner meaning |
+| --- | --- |
+| `CORE_PREFERENCES_AND_AVATAR` | Existing `PrivateDataCoreDeletion` adapter |
+| `INTRO_TEXT` | Personal Intro text, discovery projection and private author input |
+| `AGE_CLAIMS` | Age verification/claim evidence and private derivatives |
+| `MEDIA_AND_MEETING_PHOTOS` | Media bytes/metadata and meeting-photo private linkage |
+| `BEACONS_AND_RALLY` | Precise meeting beacons, physical guidance and rally state |
+| `PARTY_AND_GIFT_INPUT` | Party applications/membership private input and Gift private child data |
+| `MURAL_PRIVATE_METADATA` | Private author/cooldown metadata while retaining public artwork |
+
+Auth, Profile, Post, Friend, Notification and Sharing are separate canonical
+deletion targets. They are not represented as local Concert category success,
+and this document grants no foreign-database writes.
+
+## Durable protocol
+
+`PrivateDataAggregateCoordinator::apply` accepts only the common
+`WorldDeletionCommand` with `WorldDeletionTarget::PrivateData`, a mandatory
+`DeletionAuthority`, and the original monotonic deadline. It verifies source
+again before committing progress and before a final whole acknowledgement.
+The common user-first advisory lock and fence are required before receipt rows
+or category effects.
+
+The aggregate establishes that fence through the common helper before its first
+owner invocation. This step commits independently, then the aggregate rechecks
+the same identity and fence revision before writing progress. A fresh PrivateData
+saga therefore does not depend on another target having created the common row.
+
+`concert_private_data_owner_progress` binds saga, user, actor, target,
+full-second plus nanosecond retention, identity/command/source digests and
+fence revision. `concert_private_data_category_progress` binds one closed
+category and version to the same exact command/source. Both receipts reject
+update/delete/truncate rewrites, user or category substitution, category
+replay, and attempts to reuse another command as a whole acknowledgement.
+The category foreign key includes the exact command, source and fence tuple,
+so a child receipt cannot silently detach from its aggregate receipt.
+
+A category may return bounded progress and resume later, but only an exact
+receipt with matching command, source and category version can become
+`COMPLETE`. Missing or unconfigured owners become durable `INCOMPLETE` entries.
+The whole progress row is marked complete only when all seven category rows
+are complete; the migration independently rejects an earlier completion.
+
+A category first recorded as a durable missing owner has no owner revision.
+When a real owner later becomes available, that row may transition exactly once
+from `INCOMPLETE`/null to `COMPLETE` with its verified positive revision. The
+coordinator includes the exact saga, category, version, command, source, fence
+and ordinal in that update. Terminal rows remain immutable, and the SQL guard
+permits no deletion, rebinding, revision regression or second completion.
+Once a category is terminal, both its owner revision and completion timestamp
+are frozen. Only an exact idempotent replay, which changes neither field, may
+observe it. An owner that returns non-terminal progress is stored as an
+unrevised `INCOMPLETE` row; only a complete owner result can supply the one
+positive revision. Repeating that same nonterminal result leaves the row
+unchanged and retryable; a positive revision on an incomplete row is invalid.
+
+`PrivateDataCategoryOwners::production` registers only the actual core owner.
+The absent Intro, age, media, beacon/rally, Party/Gift and Mural owners remain
+retryable and cannot produce a positive PrivateData acknowledgement. Test-only
+typed owners may prove protocol behavior but never an owner category or
+production readiness. A complete aggregate row requires all seven exact
+category receipts; the coordinator checks that condition before emitting the
+positive acknowledgement, and the SQL guard rejects a premature completion
+independently.
+
+The aggregate counts completed category rows only for the exact saga, command
+and source tuple. The category table permits at most one row per closed category
+and ordinal, so a positive count of seven necessarily represents all seven
+distinct terminal categories. A repeated owner invocation cannot count twice;
+it must match the existing terminal row exactly or fail.
+
+A stored whole receipt is also reauthenticated before replay. The coordinator
+reconstructs the exact command, calls the configured `DeletionAuthority` again,
+and requires the same source binding before returning a positive aggregate ACK.
+Database state alone is never accepted as current authority.
+
+The bounded retry cursor advances only after a category receipt commits.
+Missing owners leave their own durable `INCOMPLETE` row without converting
+another category's success into a whole target success. A process restart can
+therefore resume from the same source-bound receipt without rerunning a
+completed category or acknowledging hidden work. The cursor does not exclude a
+missing category from later selection: every incomplete category is retried,
+so a real owner configured after an earlier round can supply the one exact
+terminal receipt rather than being stranded behind the cursor.
+
+A missing core owner returns `Unavailable`; a missing non-core owner remains
+retryable `Incomplete`. No empty registry or synthetic category receipt can
+satisfy the aggregate completion check.
+
+`progress(user_id)` treats persisted metadata as a lookup key, never authority.
+After reconstructing the exact common command, it authenticates that command
+again through the configured `DeletionAuthority` and requires the returned
+source binding to equal the stored binding before exposing any progress. A
+rebound, unavailable or malformed source therefore remains a failure rather
+than a resumable success.
+
+## Validation boundary
+
+Source tests cover closed registry membership, exact source/category binding,
+nanosecond command binding, redaction, and the core-only production registry.
+The common command hash preserves full nanoseconds at the Rust boundary. The
+canonical Auth source returns the retention value it read from PostgreSQL's
+`timestamptz`, so an actual source tuple is microsecond-aligned. The native core
+fixture uses `.123456000Z`; `0055` remains immutable, and this fixture does not
+claim that a sub-microsecond PostgreSQL timestamp can be represented there. The
+authority boundary rejects a request whose original audit value differs from
+the stored value at microsecond precision.
+The ignored native test requires an owned PostgreSQL database
+`mcr_private_data_aggregate`. It runs the actual core adapter, records a real
+core category completion, leaves missing categories `INCOMPLETE`, verifies the
+aggregate is not acknowledged, checks guard rejection and proves the existing
+core fence remains. The regression also checks the retained timestamp to the
+nanosecond and exercises one direct missing-to-complete SQL transition followed
+by rejected revision and binding rewrites. A fresh allocation must still run
+those checks and add physical restart/replay plus migration provenance; this
+source alone does not qualify that run.
+
+The native fixture is intentionally narrow: it runs the actual core adapter and
+expects the remaining six categories to remain `INCOMPLETE`. It does not
+simulate successful non-core owners. Whole PrivateData remains **INCOMPLETE**,
+canonical Auth-to-Concert transport is **NOT_RUN**, and no real other-category
+owner has been claimed here. Source authoring does not imply runtime
+qualification or publication; those await a fresh named allocation and Root's
+canonical publication receipt.

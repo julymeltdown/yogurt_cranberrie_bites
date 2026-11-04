@@ -7,3 +7,5 @@
 
 pub mod core;
 pub use core::*;
+pub mod aggregate;
+pub use aggregate::*;
