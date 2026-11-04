@@ -508,7 +508,15 @@ async fn restored(run: Uuid, instance: Uuid, case: &str) -> anyhow::Result<()> {
             .fetch_one(&f.concert)
             .await?;
         assert_eq!(state.as_deref(), Some("committed"));
-        let binding:platform::actor_delegation::owner_binding::OwnerBinding=sqlx::query_scalar::<_,serde_json::Value>("select binding from concert_product_owner_scopes where instance_id=$1 and scope_id=$2").bind(k.instance).bind(k.scope).fetch_one(&f.concert).await.and_then(|v|serde_json::from_value(v).map_err(|_|sqlx::Error::Protocol("original binding".into())))?;
+        let binding_json: serde_json::Value = sqlx::query_scalar(
+            "select binding from concert_product_owner_scopes where instance_id=$1 and scope_id=$2",
+        )
+        .bind(k.instance)
+        .bind(k.scope)
+        .fetch_one(&f.concert)
+        .await?;
+        let binding: platform::actor_delegation::owner_binding::OwnerBinding =
+            serde_json::from_value(binding_json)?;
         let proof = PgNativeAbortResolver::new(f.concert.clone(), instance)?
             .resolve(&binding, &native)
             .await?;

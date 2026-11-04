@@ -288,6 +288,11 @@ impl concert_service::product_rpc::settlement::NativeTransactionResolver for Obs
     ) -> Result<concert_service::product_rpc::settlement::NativeTransactionResolution, tonic::Status>
     {
         self.calls.fetch_add(1, std::sync::atomic::Ordering::SeqCst);
-        self.inner.resolve(binding, identity).await
+        concert_service::product_rpc::settlement::NativeTransactionResolver::resolve(
+            &self.inner,
+            binding,
+            identity,
+        )
+        .await
     }
 }
