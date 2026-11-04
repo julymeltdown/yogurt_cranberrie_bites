@@ -521,6 +521,7 @@ def run(args):
         check_inputs()
         control = dev.Control(stack)
         private = {**stack.descriptor(), "browser_origin": args.browser_origin, "event_id": context["event"],
+            "auth_http": "Gateway /api/auth/*; canonical private local HTTP mail fixture",
             "rooms": context["rooms"], "release_digest": context["digest"], "release_inputs": context["release"],
             "principals": {role: str(item[1]) for role, item in zip(ROLES, principals)},
             "authProducer": producer,
@@ -541,6 +542,8 @@ def run(args):
                 "provider-qualified Intro/Post/server-expired request resources", "actual contract denial dispositions"],
             "expires_at_epoch": expires_at,
             "allocation_id": args.allocation_id}
+        private["services"]["concert-service"] = {
+            kind: stack.ports.url("concert-service:" + kind) for kind in ("grpc", "metrics", "world")}
         handoff = stack.cluster.root / "in03-live-inputs.json"
         prep.private_json(handoff, private)
         prep.private_json(args.report.with_suffix(".ready.json"), {"state": "READY", "private_inputs": str(handoff),
