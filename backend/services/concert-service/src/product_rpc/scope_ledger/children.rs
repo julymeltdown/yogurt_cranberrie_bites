@@ -208,7 +208,7 @@ impl PgScopeLedger {
                         || reservation_id.is_nil()
                         || *valid_until_unix_micros <= 0
                         || *valid_until_unix_micros > q.expires_unix_micros
-                        || DateTime::from_timestamp_micros(*valid_until_unix_micros).is_none()
+                        || chrono::DateTime::from_timestamp_micros(*valid_until_unix_micros).is_none()
                     {
                         return Err(invalid());
                     }
