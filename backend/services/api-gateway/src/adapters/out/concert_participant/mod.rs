@@ -112,21 +112,21 @@ impl GrpcConcertParticipantClient {
             stop = stop.min(outer.into());
         }
         let work = async {
-            let identity = reader
-                .read(context, None)
-                .await
-                .map_err(|error| match error {
-                    ConcertIdentityReadError::NotEligible => {
-                        Status::permission_denied("Current identity required")
-                    }
-                    ConcertIdentityReadError::AccessExpired => {
-                        Status::unauthenticated("Current access required")
-                    }
-                    ConcertIdentityReadError::DeadlineExceeded => {
-                        Status::deadline_exceeded("Participant deadline elapsed")
-                    }
-                    _ => Status::unavailable("Participant identity unavailable"),
-                })?;
+            let identity =
+                Box::pin(reader.read(context, None))
+                    .await
+                    .map_err(|error| match error {
+                        ConcertIdentityReadError::NotEligible => {
+                            Status::permission_denied("Current identity required")
+                        }
+                        ConcertIdentityReadError::AccessExpired => {
+                            Status::unauthenticated("Current access required")
+                        }
+                        ConcertIdentityReadError::DeadlineExceeded => {
+                            Status::deadline_exceeded("Participant deadline elapsed")
+                        }
+                        _ => Status::unavailable("Participant identity unavailable"),
+                    })?;
             identity
                 .check()
                 .map_err(|_| Status::unauthenticated("Current identity required"))?;
@@ -175,9 +175,9 @@ impl GrpcConcertParticipantClient {
             request.set_timeout(remaining.min(Duration::from_micros((expires - now) as u64)));
             let mut client = self.client.clone();
             let response = match http.operation {
-                Operation::Read => client.get_participant(request).await?,
-                Operation::Avatar => client.set_avatar(request).await?,
-                Operation::Update => client.update_preferences(request).await?,
+                Operation::Read => Box::pin(client.get_participant(request)).await?,
+                Operation::Avatar => Box::pin(client.set_avatar(request)).await?,
+                Operation::Update => Box::pin(client.update_preferences(request)).await?,
             };
             identity
                 .check()
@@ -215,7 +215,7 @@ impl GrpcConcertParticipantClient {
             Ok(value)
         };
         platform::call_deadline::scope(stop.into_std(), async {
-            tokio::time::timeout_at(stop, work)
+            tokio::time::timeout_at(stop, Box::pin(work))
                 .await
                 .map_err(|_| Status::deadline_exceeded("Participant deadline elapsed"))?
         })

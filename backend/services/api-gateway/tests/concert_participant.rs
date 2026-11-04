@@ -171,8 +171,8 @@ struct Fixture {
 }
 impl Fixture {
     async fn new() -> Self {
-        let mut gateway = gateway_support::RouteHarness::new().await;
-        let owners = identity::Running::start().await;
+        let mut gateway = Box::pin(gateway_support::RouteHarness::new()).await;
+        let owners = Box::pin(identity::Running::start()).await;
         Arc::get_mut(&mut gateway.state).unwrap().concert_identity = Some(owners.reader());
         let seen = Arc::new(Observed::default());
         let listener = tokio::net::TcpListener::bind("127.0.0.1:0").await.unwrap();
@@ -256,7 +256,7 @@ impl Fixture {
 }
 #[tokio::test]
 async fn actual_sealed_http_access_and_signed_identity_forward_original_c03_bytes() {
-    let h = Fixture::new().await;
+    let h = Box::pin(Fixture::new()).await;
     for (method, suffix, body) in [
         ("GET", "", ""),
         ("PUT", "/avatar", r#"{ "expected_revision":1,"config":{} }"#),
@@ -297,7 +297,7 @@ async fn actual_sealed_http_access_and_signed_identity_forward_original_c03_byte
 }
 #[tokio::test]
 async fn typed_conflict_keeps_delivery_but_dropped_and_invalid_bodies_never_complete() {
-    let h = Fixture::new().await;
+    let h = Box::pin(Fixture::new()).await;
     h.seen.mode.store(1, Ordering::SeqCst);
     let r = h
         .router
@@ -346,7 +346,7 @@ async fn typed_conflict_keeps_delivery_but_dropped_and_invalid_bodies_never_comp
 }
 #[tokio::test]
 async fn auth_browser_origin_body_limits_and_noncanonical_paths_refuse_before_owner_dispatch() {
-    let h = Fixture::new().await;
+    let h = Box::pin(Fixture::new()).await;
     let mut cases = Vec::new();
     let mut r = h.request("GET", "", "");
     r.headers_mut().remove("authorization");
@@ -421,7 +421,7 @@ fn response_allowlist_rejects_cross_identity_private_content_and_mismatched_fail
 
 #[tokio::test]
 async fn response_wide_earlier_expiry_withholds_unpolled_data_without_completing_owner() {
-    let h = Fixture::new().await;
+    let h = Box::pin(Fixture::new()).await;
     h.seen.mode.store(3, Ordering::SeqCst);
     let r = h
         .router
@@ -438,7 +438,7 @@ async fn response_wide_earlier_expiry_withholds_unpolled_data_without_completing
 
 #[tokio::test]
 async fn eof_after_valid_data_still_settles_when_content_ceiling_has_expired() {
-    let h = Fixture::new().await;
+    let h = Box::pin(Fixture::new()).await;
     h.seen.mode.store(3, Ordering::SeqCst);
     let r = h
         .router

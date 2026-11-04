@@ -211,19 +211,17 @@ async fn dispatch(
         Ok(v) => v,
         Err(_) => return error(StatusCode::GATEWAY_TIMEOUT, "DEADLINE_EXCEEDED"),
     };
-    let value = match state
-        .client
-        .dispatch(
-            reader,
-            context,
-            ParticipantHttpRequest {
-                event,
-                request_id: Uuid::new_v4(),
-                operation,
-                body: body.to_vec(),
-            },
-        )
-        .await
+    let value = match Box::pin(state.client.dispatch(
+        reader,
+        context,
+        ParticipantHttpRequest {
+            event,
+            request_id: Uuid::new_v4(),
+            operation,
+            body: body.to_vec(),
+        },
+    ))
+    .await
     {
         Ok(v) => v,
         Err(e) => return rpc_error(e),

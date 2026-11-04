@@ -64,3 +64,14 @@ missing body guard is resolved in source; source/build/runtime qualification is
 still pending. Both Gateway and Participant compile/native evidence are required
 for this additive internal-wire revision. Phase A/test response initializers
 explicitly use zero, which the real Gateway refuses for public disclosure.
+
+First qualification at3f763d4a: both exact Gateway and Concert no-run builds pass;
+shared disclosure tests pass3, Participant focused8/integration8 pass, and the
+actual three-main native join passes with the new field4 ceiling assertions,
+COMMIT/save/reload/ABORT/owner-delivery/cleanup. The Gateway transport target
+aborts on its first default-stack test. A diagnostic-only16MiB-stack replay of
+that one case passes, which is not acceptance. The follow-up boxes large
+identity/RPC/dispatch futures (as existing Gateway clients do) and test setup
+futures. Default-stack fresh Gateway validation remains required; no production
+stack-size workaround is introduced. The original compiled3f producer inputs
+are unchanged by this Gateway-only correction.
