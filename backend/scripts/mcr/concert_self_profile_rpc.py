@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Actual Auth/Friend/Profile read/Track/abort proof; no root/HTTP acceptance."""
+"""Actual owner/Profile read or Prepare quarantine; no root/HTTP acceptance."""
 import argparse
 import base64
 import json
@@ -59,7 +59,7 @@ def pki(cluster):
     (directory / "profile.key").chmod(0o600)
 
 
-def exercise(cluster, ports, children, own, owners, report):
+def exercise(cluster, ports, children, own, owners, report, case):
     cluster.init()
     with (cluster.data / "postgresql.conf").open("a") as stream:
         stream.write("\nmax_prepared_transactions=64\n")
@@ -117,28 +117,44 @@ def exercise(cluster, ports, children, own, owners, report):
            "MCR_SELF_PROFILE_IDENTITY": f"{cluster.identity[0]}:{cluster.identity[1]}", "MCR_SELF_PROFILE_URL": cluster.url(native.DB),
            "MCR_SELF_PROFILE_ACTOR": actor, "MCR_SELF_PROFILE_FAMILY": family, "MCR_SELF_PROFILE_EVENT": event}
     env.update({"MCR_SELF_PROFILE_" + role.upper() + "_ENDPOINT": url for role, url in urls.items()})
-    name = "concert_self_profile::native_rpc::actual_owner_read_track_and_native_abort_settlement"
-    result = command(report, "actual-owners-read-rpc", [own["test"], "--ignored", "--exact", name, "--test-threads=1"], env, cluster.root, secrets=redactions)
+    if case == "read":
+        name = "concert_self_profile::native_rpc::actual_owner_read_track_and_native_abort_settlement"
+        label = "actual-owners-read-rpc"
+    else:
+        name = "concert_self_profile::native_prepare::actual_owner_prepare_and_recovery_quarantine"
+        label = "actual-owners-prepare-rpc"
+        env["MCR_SELF_PROFILE_PREPARE_PHASE"] = "prepare"
+    result = command(report, label, [own["test"], "--ignored", "--exact", name, "--test-threads=1"], env, cluster.root, secrets=redactions)
     require(b"test result: ok. 1 passed; 0 failed;" in result.stdout, "exact-real-owner-test-required")
     for child in children:
         require(child.listeners(), "owned-service-must-remain-alive")
     require(cluster.sql(native.DB, "select count(*) from concert_self_profile_read_references;") == "1", "exact-read-reference-required")
     require(cluster.sql(native.DB, "select count(*) from concert_self_profile_receipts;") == "0", "read-must-not-create-write-receipt")
     time.sleep(6)  # Original request expires; no completion proof may be invented.
+    if case == "prepare":
+        env["MCR_SELF_PROFILE_PREPARE_PHASE"] = "recover"
+        result = command(report, "actual-owners-expired-recovery-rpc", [own["test"], "--ignored", "--exact", name, "--test-threads=1"], env, cluster.root, secrets=redactions)
+        require(b"test result: ok. 1 passed; 0 failed;" in result.stdout, "exact-real-recovery-test-required")
+        require(cluster.sql(native.DB, "select count(*) from concert_self_profile_operations;") == "1", "one-original-operation-required")
+        require(cluster.sql(native.DB, "select count(*) from pg_prepared_xacts where database=current_database();") == "1", "missing-decision-must-retain-profile-effect")
+        report.update(actual_prepare_invisibility="PASS", expired_original_recovery="PASS", missing_decision_quarantine="PASS")
     for role in ("auth", "friend"):
         count = cluster.sql("mcr_self_owner_" + role, "select count(*) from pg_prepared_xacts where database=current_database();")
         require(count == "1", "missing-root-must-retain-owner-guard:" + role)
-    report.update(actual_read_track_native_abort="PASS", missing_root_quarantine="PASS", root_scope_release="NOT_RUN", result="PASS")
+    if case == "read":
+        report["actual_read_track_native_abort"] = "PASS"
+    report.update(missing_root_quarantine="PASS", root_scope_release="NOT_RUN", result="PASS")
 
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     for name in ("cargo-json", "frozen-artifacts", "owner-artifacts", "owner-source-root", "pg-bin", "report"):
         parser.add_argument("--" + name, type=Path, required=True)
+    parser.add_argument("--case", choices=("read", "prepare"), default="read")
     args = parser.parse_args()
-    require(all(path.is_absolute() for path in vars(args).values()), "absolute-inputs-required")
+    require(all(path.is_absolute() for path in vars(args).values() if isinstance(path, Path)), "absolute-inputs-required")
     fd = os.open(args.report, os.O_WRONLY | os.O_CREAT | os.O_EXCL, 0o600)
-    report = {"result": "FAIL", "commands": {}, "scope": "real owner/Profile read component only", "actual_concert_decision": "NOT_RUN", "gateway_http": "NOT_RUN"}
+    report = {"result": "FAIL", "commands": {}, "scope": "real owner/Profile " + args.case + " component only", "actual_concert_decision": "NOT_RUN", "gateway_http": "NOT_RUN"}
     cluster, ports, children = None, runtime.Ports(), []
     previous = {}
     def interrupt(*_):
@@ -153,7 +169,7 @@ def main():
         report.update(owner_metadata_sha256=digest(args.owner_artifacts), artifact_sha256={k:digest(v) for k,v in {**owners, **own}.items()}, source_revision=subprocess.check_output(["git", "rev-parse", "HEAD"], cwd=native.ROOT, text=True).strip(), controller_sha256=digest(Path(__file__)))
         cluster = migration.Cluster({name: migration.executable(args.pg_bin / name) for name in migration.PG_TOOLS})
         report["owned_directory"] = str(cluster.root)
-        exercise(cluster, ports, children, own, owners, report)
+        exercise(cluster, ports, children, own, owners, report, args.case)
     except (Exception, KeyboardInterrupt) as error:
         report["failure"] = str(error) if type(error).__name__ == "CheckFailure" else type(error).__name__
         if isinstance(error, migration.SmokeError):

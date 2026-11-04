@@ -264,3 +264,19 @@ No mutable target was used or claimed for another build. The planning check exit
 0 with original archive checksums intact; its first sparse-checkout invocation
 refused missing planning files, then passed after materializing those tracked
 inputs. The planning result certifies no application runtime gate.
+
+The runtime component was delivered as `4e9c57e3838a8f9b3de30e0962e4d2ff01133937`
+and fetched remote ancestry was verified. Exact Profile manifest/lock slot was
+returned to ProductAPIroot after that publication. Existing Profile registration
+ownership remains with owner205.
+
+## Next actual Prepare probe source
+
+A separate ignored `native_prepare` probe and `concert_self_profile_rpc.py --case
+prepare` are staged for the next allocated target. They use actual Auth/Friend
+guards and production Profile MAIN to check exact-body refusal, Prepare identity
+and digest, invisible proposed content, duplicate-operation refusal, and fresh
+signed recovery after the original scope expires. With Concert unavailable, the
+probe must retain the Profile prepared effect and actual owner guards; altered
+binding recovery must fail. This probe supplies no terminal decision, has not
+compiled or run yet, and cannot accept the actual Journal/HTTP flow.
