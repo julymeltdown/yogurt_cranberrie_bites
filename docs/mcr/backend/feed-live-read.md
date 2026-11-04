@@ -2,6 +2,14 @@
 
 Status: IN_PROGRESS. No live read acceptance is claimed.
 
+Current gate: the Concert library-test executable compiled successfully at
+40449973. Its corrected five-owner frozen run reached the actual Feed read but
+failed DependencyUnavailable before protected Post SQL. Private database cleanup
+passed. The exact Post-to-Concert callback frame-capture repair and focused
+security regressions are committed, pending a fresh two-library allocation and
+native rerun. The earlier adapter and Post storage receipts remain scoped to
+their recorded source snapshots.
+
 ## Objective and completion criteria
 
 BE-PUBLIC-FEED-READ delivers event-scoped post list/detail and comment reads
@@ -552,5 +560,28 @@ Private PostgreSQL 16.14 was removed successfully. Evidence directory:
 `/private/tmp/mcr-feed-native-packaging-20261104/`. The diagnostic runs retain
 private PostgreSQL logs outside the removed cluster. They show the actual actor
 local PREPARE succeeds before the request fails; there is no protected Post
-read SQL. Further RPC diagnostics are required to identify the rejecting
-boundary. Actual Gateway HTTP completion remains NOT_RUN.
+read SQL. Report SHA-256:
+`1fa714fa388a9d10708509f5518e9aa87659d526af8cfd1fc7309665b33dacb7`.
+Further RPC diagnostics are required to identify the rejecting boundary.
+Actual Gateway HTTP completion remains NOT_RUN.
+
+## Delegated exact callback frame repair
+
+The root composer explicitly granted the single platform capture seam and a
+new tightly scoped regression file after confirming the mismatch: the root
+callback requires VerifiedParentAuthority, but the verifier previously installed
+that extension only for Gateway calls. Commit
+`2b6499654da1b1ba611ded38979b0bff3e332268` captures the exact already-verified
+Post-to-Concert CheckSubject frame only for nonforwarded calls with a live
+VerifiedReadAuthority and original caller deadline. Existing Gateway capture
+rules and the root handler remain unchanged. Additional regression commit
+aef031b4 confirms other signed Post paths receive no callback extension.
+
+The three focused platform cases use the existing reserved method policy,
+workload guard and dedicated callback verifier. They cover exact frame/actor/
+original deadline, wrong caller/path/body/actor, forwarded proofs, missing
+original deadline, and noncallback Post routes. Formatting and diff checks pass;
+Rust execution remains NOT_RUN until a fresh bounded platform plus Concert
+library build. Test-only Feed diagnostics distinguish actor policy from complete
+Post transport failure. The Post adapter now treats PermissionDenied as a whole
+read dependency failure; only explicit NotFound remains resource absence.
