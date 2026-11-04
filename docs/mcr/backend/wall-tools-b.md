@@ -150,7 +150,8 @@ no prepared transactions after each case, restart-state preservation and cleanup
 The allocated Cargo and PG rounds have not run. Fixture source covers fill
 256/257/no-op, shared undo/pencil allowance, idempotent replay and receipt/action
 recovery after producer recreation, reset delta, and injected storage rollback.
-Additional source cases cover simultaneous same-actor tabs, stale revisions,
+Additional source cases cover safe activation against recent unaccounted legacy
+pencil activity, simultaneous same-actor tabs, stale revisions,
 shared cooldown, pause and admission suspension; these remain unexecuted.
 Remaining native coverage includes cross-actor/lock/control races, expiry and
 canonical authorization changes; actual Gateway/startup/Phaser/two-client IN04
@@ -169,3 +170,12 @@ This is a client UI freshness ceiling, not a grant or a substitute for the
 atomic current server checks on every command. No new wire expiry is implied.
 Root granted one additional owner_media.rs fail-closed match arm solely to
 reject the new Wall Operation variant from the existing media producer.
+
+
+Explicit provisioning also locks the mural root and rejects activation while
+any legacy pencil operation in the preceding 600 seconds lacks its durable
+one-cell charge. Historical before-colors cannot be reconstructed truthfully.
+Use a new mural or wait for the untracked legacy window to expire before the
+operator insert; no historical budget is silently forgiven or fabricated.
+Concurrent activation and pencil writes serialize on the same root. Once
+provisioned, every successful pencil uses the shared history/charge transaction.

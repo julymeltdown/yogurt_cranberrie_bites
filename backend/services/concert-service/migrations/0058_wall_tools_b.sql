@@ -197,3 +197,20 @@ BEGIN
 END $$;
 CREATE TRIGGER concert_mural_tool_charge_truncate_guard BEFORE TRUNCATE ON public.concert_mural_tool_charges
  FOR EACH STATEMENT EXECUTE FUNCTION public.concert_mural_tool_charge_truncate_guard();
+
+-- Activation cannot forget legacy pencil activity still inside the rolling window.
+-- Before/after history cannot be fabricated for historical operations. Require a
+-- new wall or a quiet legacy window instead; the root lock closes activation races.
+CREATE FUNCTION public.concert_mural_tool_provision_guard() RETURNS trigger LANGUAGE plpgsql AS $$
+BEGIN
+ PERFORM event_id FROM public.concert_mural_state WHERE event_id=NEW.event_id FOR UPDATE;
+ IF EXISTS(SELECT 1 FROM public.concert_mural_operations o WHERE o.event_id=NEW.event_id
+   AND o.committed_at>clock_timestamp()-interval '600 seconds'
+   AND NOT EXISTS(SELECT 1 FROM public.concert_mural_tool_charges q WHERE q.action_id=o.operation_id
+     AND q.event_id=o.event_id AND q.actor_id=o.actor_id AND q.changed_cells=1)) THEN
+  RAISE EXCEPTION 'Wall activation requires a fully accounted rolling window' USING ERRCODE='23514';
+ END IF;
+ RETURN NEW;
+END $$;
+CREATE TRIGGER concert_mural_tool_provision_guard BEFORE INSERT ON public.concert_mural_tool_config
+ FOR EACH ROW EXECUTE FUNCTION public.concert_mural_tool_provision_guard();

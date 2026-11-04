@@ -24,7 +24,7 @@ OWNERS = ("auth", "friend", "concert", "profile")
 DATABASES = {owner: ("mcr_concert_wall_b" if owner == "concert" else f"mcr_canonical_{owner}")
              for owner in OWNERS}
 # Exact names are required: a filtered or wholly ignored inventory is not proof.
-CASES = ("canonical_fill_undo_budget_recovery_and_restart", "canonical_fill_257_noop_region_lock_and_failures_are_atomic", "canonical_pencil_shares_undo_budget_and_storage_failure_rolls_back", "canonical_tabs_revision_cooldown_pause_and_admission_are_server_owned")
+CASES = ("canonical_fill_undo_budget_recovery_and_restart", "canonical_fill_257_noop_region_lock_and_failures_are_atomic", "canonical_pencil_shares_undo_budget_and_storage_failure_rolls_back", "canonical_tabs_revision_cooldown_pause_and_admission_are_server_owned", "canonical_activation_cannot_forgive_recent_unaccounted_pencil")
 
 def sha(path: Path) -> str:
     return hashlib.sha256(path.read_bytes()).hexdigest()
@@ -112,8 +112,8 @@ def qualify(checkpoint: dict, pg: Path, report: dict) -> None:
         report["migration_receipts"] = {}
         report["pure"] = {}
         result=execute([str(binary), "--test-threads=1", "--nocapture"], env=env, phase="pure", cwd=ROOT/"backend")
-        if "test result: ok. 1 passed; 0 failed; 4 ignored;" not in result.stdout:
-            raise SmokeError("inventory", "exact one pure and four native cases required")
+        if "test result: ok. 1 passed; 0 failed; 5 ignored;" not in result.stdout:
+            raise SmokeError("inventory", "exact one pure and five native cases required")
         report["pure"]={"exit_code":result.returncode,"stdout":result.stdout}
         for index,case in enumerate(CASES):
             # Every native case receives a fresh four-store fixture. Selected

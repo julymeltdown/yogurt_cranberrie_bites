@@ -486,3 +486,50 @@ async fn canonical_tabs_revision_cooldown_pause_and_admission_are_server_owned(
     assert_eq!(state(&f).await?, baseline);
     Ok(())
 }
+
+#[tokio::test]
+#[ignore = "owned allocated PG16 and actual mTLS owner services required"]
+async fn canonical_activation_cannot_forgive_recent_unaccounted_pencil() -> anyhow::Result<()> {
+    let f = setup(1).await?;
+    let r = runtime(&f);
+    sqlx::query("delete from concert_mural_tool_config where event_id=$1")
+        .bind(f.event)
+        .execute(&f.concert)
+        .await?;
+    let (status, ack) = call(
+        &f,
+        &r,
+        "placeConcertPixel",
+        raw(
+            &f,
+            "POST",
+            "mural/pixels",
+            json!({"expected_revision":1,"x":0,"y":0,"color_index":3}),
+            Some(Uuid::new_v4()),
+        ),
+    )
+    .await?;
+    assert_eq!(status, 200, "{ack}");
+    let baseline = state(&f).await?;
+    assert_eq!(baseline["charges"], 0);
+    let denied = sqlx::query(
+        "insert into concert_mural_tool_config(event_id,background_index) values($1,0)",
+    )
+    .bind(f.event)
+    .execute(&f.concert)
+    .await;
+    assert!(denied.is_err());
+    assert_eq!(state(&f).await?, baseline);
+    let (status, caps) = call(
+        &f,
+        &r,
+        "getConcertMuralTools",
+        raw(&f, "GET", "mural/tools", Value::Null, None),
+    )
+    .await?;
+    assert_eq!(status, 200, "{caps}");
+    assert_eq!(caps["background_index"], Value::Null);
+    assert_eq!(caps["editable"], false);
+    assert_eq!(caps["available"]["fill"], false);
+    Ok(())
+}
