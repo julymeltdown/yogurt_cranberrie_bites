@@ -36,6 +36,8 @@ the persisted pixels without a PUT, conflict preserves draft pixels, a normal
 latest-server read requires explicit reconciliation, and Keep followed by Cancel
 adopts the newer persisted outfit without another PUT. It is not live backend,
 database, two-account or physical-device evidence.
+The preview must match the exact corresponding admitted preset thumbnail's
+nonempty pixels, including the server-selected preset after reconciliation.
 
 ## Retained evidence and provenance
 

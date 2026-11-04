@@ -50,8 +50,7 @@ try {
   await nav.getByRole('link', { name: 'Me', exact: true }).click()
   await page.getByRole('link', { name: 'Dress up', exact: true }).click()
   const editor = page.getByRole('region', { name: 'Avatar editor' })
-  const previewDigest = async () => {
-    const canvas = editor.getByRole('img', { name: 'Draft outfit preview', exact: true })
+  const digest = async canvas => {
     await expect(canvas).toBeVisible()
     return canvas.evaluate(async canvas => {
       const bytes = canvas.getContext('2d').getImageData(0, 0, canvas.width, canvas.height).data
@@ -59,13 +58,17 @@ try {
       return [...new Uint8Array(await crypto.subtle.digest('SHA-256', bytes))].map(value => value.toString(16).padStart(2, '0')).join('')
     })
   }
+  const previewDigest = () => digest(editor.getByRole('img', { name: 'Draft outfit preview', exact: true }))
   const shot = async name => { await page.screenshot({ path: resolve(output, `${name}.png`), fullPage: true }); report.screenshots.push(`${name}.png`) }
   await expect(editor.getByRole('button', { name: 'Cancel changes', exact: true })).toBeEnabled()
   await expect(editor.locator('canvas').first()).toBeVisible()
   const original = await previewDigest()
+  assert.equal(original, await digest(editor.getByRole('button', { name: 'Choose Preset 1', exact: true }).locator('canvas')))
+  const expectedDraft = await digest(editor.getByRole('button', { name: 'Choose Preset 2', exact: true }).locator('canvas'))
+  const expectedLatest = await digest(editor.getByRole('button', { name: 'Choose Preset 5', exact: true }).locator('canvas'))
   stage = 'cancel-draft'
   await editor.getByRole('button', { name: 'Choose Preset 2', exact: true }).click()
-  await expect.poll(previewDigest).not.toBe(original)
+  await expect.poll(previewDigest).toBe(expectedDraft)
   await editor.getByRole('button', { name: 'Cancel changes', exact: true }).click()
   await expect.poll(previewDigest).toBe(original)
   await expect(editor.getByRole('button', { name: 'Save outfit', exact: true })).toBeDisabled()
@@ -74,7 +77,7 @@ try {
   await shot('cancel-restores-persisted')
   stage = 'optimistic-conflict'
   await editor.getByRole('button', { name: 'Choose Preset 2', exact: true }).click()
-  await expect.poll(previewDigest).not.toBe(original); const draft = await previewDigest()
+  await expect.poll(previewDigest).toBe(expectedDraft); const draft = await previewDigest()
   report.remote = await page.evaluate(() => window.__AVATAR_CONTINUITY__.changedElsewhere())
   await editor.getByRole('button', { name: 'Save outfit', exact: true }).click()
   await expect(editor.getByRole('status')).toContainText('changed elsewhere')
@@ -87,7 +90,7 @@ try {
   await editor.getByRole('button', { name: 'Keep my draft', exact: true }).click()
   assert.equal(await previewDigest(), draft)
   await editor.getByRole('button', { name: 'Cancel changes', exact: true }).click()
-  await expect.poll(previewDigest).not.toBe(draft)
+  await expect.poll(previewDigest).toBe(expectedLatest)
   const adopted = await previewDigest(); assert.notEqual(adopted, original)
   await expect(editor.getByRole('button', { name: 'Save outfit', exact: true })).toBeDisabled()
   await shot('cancel-uses-latest-server-outfit')
@@ -96,7 +99,7 @@ try {
   assert.equal(report.requests.requests.find(value => value.method === 'PUT').expectedRevision, 7)
   assert.equal(report.requests.requests.filter(value => value.method === 'GET').length, 1)
   assert(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth))
-  report.pixels = { original, draft, adopted }
+  report.pixels = { original, draft, adopted, expectedDraft, expectedLatest }
   report.checks = { cancelWithoutWrite: true, conflictDraftRetained: true, explicitLatestRead: true, keepDraft: true, cancelUsesLatest: true, noDuplicateWrite: true }
   assert.deepEqual(report.errors, []); report.result = 'PASS'
 } catch (error) { report.failure = { stage, message: String(error), stack: error.stack }; if (page) await page.screenshot({ path: resolve(output, 'failure.png') }).catch(() => {})

@@ -96,13 +96,13 @@ def main():
                 child = sp.Popen(argv, cwd=ROOT / 'frontend', env=env, stdout=stream, stderr=sp.STDOUT, start_new_session=True)
                 row = {'label': label, 'argv': argv, 'pid': child.pid}; report['commands'].append(row)
                 while True:
-                    rows = processes(); ids = {child.pid}
+                    rows = processes(); ids = {os.getpid(), child.pid}
                     while True:
                         more = ids | {pid for pid, parent, group, _ in rows if parent in ids or group == child.pid}
                         if more == ids:
                             break
                         ids = more
-                    owned.update(ids)
+                    owned.update(ids - {os.getpid()})
                     rss = sum(rss * 1024 for pid, _, _, rss in rows if pid in ids)
                     temporary, durable, free = size(tmp), size(EVIDENCE), shutil.disk_usage(ROOT).free
                     whole = sum(carry.values()) + temporary + size(output)
