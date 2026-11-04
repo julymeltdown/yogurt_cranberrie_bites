@@ -185,5 +185,13 @@
     "world-revenge-360.png": "cd96a6b26237d51400cc6fbcaee8739233b737395d5b350f25526ae815a7a0bc",
     "world-revenge-390.png": "2bee63ec33a0e4d2ef1785773b56015bed2c34264d2d8b02bded8d58d8e93d84",
     "world-revenge-430.png": "f4f6fcfa80c3596f64dda1b42ff77a8fc68dbbf04cc745a34a0da4fe64885c53"
+  },
+  "originalTaskLocalDisposition": {
+    "integrationGap": "CLOSED: all3-era root/Map sourcefixture client integration",
+    "FE14": "SATISFIED client/sourcefixture criteria; no remaining code in allocation",
+    "FE15": "UNCHANGED/PARTIAL application-input journey; World/input + explicitly allocated root fixture owner",
+    "FE19": "SATISFIED root/Map integration and virtual-destination criteria; preserves Map owner mismatch/recovery evidence",
+    "FE07": "SATISFIED current persistent-shell criterion; broader routes independently owned",
+    "globalCountAmendment": false
   }
 }
