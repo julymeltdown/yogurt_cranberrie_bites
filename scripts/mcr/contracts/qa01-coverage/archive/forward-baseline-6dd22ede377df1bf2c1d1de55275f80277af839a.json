@@ -1,0 +1,1444 @@
+{
+  "old_pins_sha256": "d5651fbcfc29b83321e6b5ffeee2293bc57f4ba7b6c18365b556379436901aa1",
+  "candidate_pins_sha256": "9e132bc28102bbda6c3060d662eb5154c40a4fd23242ba46eba656ec3bb3491a",
+  "old_canonical_candidate": "d042638789bc84587be7bbbe09b32c324570c75f",
+  "candidate_source": "6dd22ede377df1bf2c1d1de55275f80277af839a",
+  "published_master": "efc1f56b19d3cd33d64a0aff6a960f0b772277bf",
+  "deltas": [
+    {
+      "path": "backend/docs/api/mcr-core.openapi.json",
+      "old_sha256": "4ea617a4ccf96c72b2e5db99e64666f676048f5baf215a2a05d540ef3bdde542",
+      "new_sha256": "5b62b6e545f2ac5c367bd189bed6c509b76b4383f47b016d7b075c88f2742978",
+      "producer_commit": "d839bc208dfe21f33b4a72c03868952268c34608",
+      "producer_subject": "feat(contracts): define reviewed motion v2 successor and public wire",
+      "disposition": "QUALIFIED_OFFLINE_CONTRACT_ONLY",
+      "published_master": "efc1f56b19d3cd33d64a0aff6a960f0b772277bf",
+      "published_sha256": "5b62b6e545f2ac5c367bd189bed6c509b76b4383f47b016d7b075c88f2742978",
+      "producer_task": "C06-MOTION-V2 reviewed successor, C03/C05 projections",
+      "producer_evidence": {
+        "path": "docs/mcr/contracts/avatar-motion-v2/reviewed-successor.md",
+        "sha256": "3a11d4c4a632c11ae114cf9b728bd55f1dafa0c583a334a07e8c25aaae94aad7"
+      },
+      "producer_disposition": "Offline schema/core six-document and generated mirror qualification; source publication is not live or art admission."
+    },
+    {
+      "path": "backend/docs/api/mcr-domain.openapi.json",
+      "old_sha256": "79a066b88119e53f6f16876d7e3fe59a18ee956be6ed6d2af7ee1efa187e0feb",
+      "new_sha256": "4c185d9099b7e02cc61fce1e58b475be169e78bd5ba20b295e99827fc07e034f",
+      "producer_commit": "0e75917206d716b4f7f80825f9d5526a3c11f35a",
+      "producer_subject": "Reconcile named generated C05 and Intro baseline drift",
+      "disposition": "QUALIFIED_OFFLINE_CONTRACT_ONLY",
+      "published_master": "efc1f56b19d3cd33d64a0aff6a960f0b772277bf",
+      "published_sha256": "4c185d9099b7e02cc61fce1e58b475be169e78bd5ba20b295e99827fc07e034f",
+      "producer_task": "C05 and C04 published baseline projection repair",
+      "producer_evidence": {
+        "type": "canonical publisher receipt",
+        "commit": "42a542e8f4b045a1afe426c1f6bdd56ba2c2b842",
+        "generation_exit": 0,
+        "check_exit": 0
+      },
+      "producer_disposition": "QUALIFIED_OFFLINE_GENERATION_ONLY; exact2mirrors, canonical inputs and generator unchanged, no Wall feature.",
+      "published_commit": "42a542e8f4b045a1afe426c1f6bdd56ba2c2b842"
+    },
+    {
+      "path": "backend/scripts/docs/generate-mcr-core.py",
+      "old_sha256": "cc080eb2b09458f29edc3b4dc4c3af93311cf82471247dedebed71217b25a809",
+      "new_sha256": "91de68ad25bfd695690ab5a61f5de81a27ff0efd49ed45db7fad0fa560bec93e",
+      "producer_commit": "d839bc208dfe21f33b4a72c03868952268c34608",
+      "producer_subject": "feat(contracts): define reviewed motion v2 successor and public wire",
+      "disposition": "QUALIFIED_OFFLINE_CONTRACT_ONLY",
+      "published_master": "efc1f56b19d3cd33d64a0aff6a960f0b772277bf",
+      "published_sha256": "91de68ad25bfd695690ab5a61f5de81a27ff0efd49ed45db7fad0fa560bec93e",
+      "producer_task": "C06-MOTION-V2 reviewed successor, C03/C05 projections",
+      "producer_evidence": {
+        "path": "docs/mcr/contracts/avatar-motion-v2/reviewed-successor.md",
+        "sha256": "3a11d4c4a632c11ae114cf9b728bd55f1dafa0c583a334a07e8c25aaae94aad7"
+      },
+      "producer_disposition": "Offline schema/core six-document and generated mirror qualification; source publication is not live or art admission."
+    },
+    {
+      "path": "backend/scripts/docs/generate-mcr-domain.py",
+      "old_sha256": "e83c82e8d9047b63a43e70ce2af7ff48aa7f749c78c21557a8ee3b7e6d45e26f",
+      "new_sha256": "587d18f45f40f1ee54e051e5cf70bc39786426c94cf140a334f23c30e2cebb03",
+      "producer_commit": "d839bc208dfe21f33b4a72c03868952268c34608",
+      "producer_subject": "feat(contracts): define reviewed motion v2 successor and public wire",
+      "disposition": "QUALIFIED_OFFLINE_CONTRACT_ONLY",
+      "published_master": "efc1f56b19d3cd33d64a0aff6a960f0b772277bf",
+      "published_sha256": "587d18f45f40f1ee54e051e5cf70bc39786426c94cf140a334f23c30e2cebb03",
+      "producer_task": "C06-MOTION-V2 reviewed successor, C03/C05 projections",
+      "producer_evidence": {
+        "path": "docs/mcr/contracts/avatar-motion-v2/reviewed-successor.md",
+        "sha256": "3a11d4c4a632c11ae114cf9b728bd55f1dafa0c583a334a07e8c25aaae94aad7"
+      },
+      "producer_disposition": "Offline schema/core six-document and generated mirror qualification; source publication is not live or art admission."
+    },
+    {
+      "path": "contracts/assets/v2/avatar-config.schema.json",
+      "old_sha256": null,
+      "new_sha256": "3cbfd3185113d7f4913de89b0e04d67046dbab64b3f90c0b5f14a261afc6a78b",
+      "producer_commit": "819d30c3cb32915862281d30cddbe5b7c9bd53cb",
+      "producer_subject": "feat(assets): publish immutable motion v2 candidate contracts",
+      "disposition": "QUALIFIED_OFFLINE_CONTRACT_ONLY",
+      "published_master": "efc1f56b19d3cd33d64a0aff6a960f0b772277bf",
+      "published_sha256": "3cbfd3185113d7f4913de89b0e04d67046dbab64b3f90c0b5f14a261afc6a78b",
+      "producer_task": "C06-MOTION-V2 candidate",
+      "producer_evidence": {
+        "path": "docs/mcr/contracts/avatar-motion-v2/validation.md",
+        "sha256": "b3ccf7c25375788dd7255825195a5ef6a964eb1bf493e8bb204625a9baab5b38"
+      },
+      "producer_disposition": "34 deterministic outputs, 15 valid/16 invalid config schema checks; candidate-only production admission DENIED."
+    },
+    {
+      "path": "contracts/assets/v2/avatar-manifest.schema.json",
+      "old_sha256": null,
+      "new_sha256": "8fc206f00d263ed9465cad932768075a1a0ca61d927e98ccc2aa8e9e7ef0d54f",
+      "producer_commit": "819d30c3cb32915862281d30cddbe5b7c9bd53cb",
+      "producer_subject": "feat(assets): publish immutable motion v2 candidate contracts",
+      "disposition": "QUALIFIED_OFFLINE_CONTRACT_ONLY",
+      "published_master": "efc1f56b19d3cd33d64a0aff6a960f0b772277bf",
+      "published_sha256": "8fc206f00d263ed9465cad932768075a1a0ca61d927e98ccc2aa8e9e7ef0d54f",
+      "producer_task": "C06-MOTION-V2 candidate",
+      "producer_evidence": {
+        "path": "docs/mcr/contracts/avatar-motion-v2/validation.md",
+        "sha256": "b3ccf7c25375788dd7255825195a5ef6a964eb1bf493e8bb204625a9baab5b38"
+      },
+      "producer_disposition": "34 deterministic outputs, 15 valid/16 invalid config schema checks; candidate-only production admission DENIED."
+    },
+    {
+      "path": "contracts/assets/v2/reviewed/avatar-config.schema.json",
+      "old_sha256": null,
+      "new_sha256": "8d4b5772c763a32e58dd49bf5115894703bba603c6e2c01333cef5a86c988c2e",
+      "producer_commit": "d839bc208dfe21f33b4a72c03868952268c34608",
+      "producer_subject": "feat(contracts): define reviewed motion v2 successor and public wire",
+      "disposition": "QUALIFIED_OFFLINE_CONTRACT_ONLY",
+      "published_master": "efc1f56b19d3cd33d64a0aff6a960f0b772277bf",
+      "published_sha256": "8d4b5772c763a32e58dd49bf5115894703bba603c6e2c01333cef5a86c988c2e",
+      "producer_task": "C06-MOTION-V2 reviewed successor, C03/C05 projections",
+      "producer_evidence": {
+        "path": "docs/mcr/contracts/avatar-motion-v2/reviewed-successor.md",
+        "sha256": "3a11d4c4a632c11ae114cf9b728bd55f1dafa0c583a334a07e8c25aaae94aad7"
+      },
+      "producer_disposition": "Offline schema/core six-document and generated mirror qualification; source publication is not live or art admission."
+    },
+    {
+      "path": "contracts/assets/v2/reviewed/avatar-manifest.schema.json",
+      "old_sha256": null,
+      "new_sha256": "3fd9bfd589a7f4d2749081ef76057f8bbaf488fbf7385c4cc024ffd01790ccbf",
+      "producer_commit": "d839bc208dfe21f33b4a72c03868952268c34608",
+      "producer_subject": "feat(contracts): define reviewed motion v2 successor and public wire",
+      "disposition": "QUALIFIED_OFFLINE_CONTRACT_ONLY",
+      "published_master": "efc1f56b19d3cd33d64a0aff6a960f0b772277bf",
+      "published_sha256": "3fd9bfd589a7f4d2749081ef76057f8bbaf488fbf7385c4cc024ffd01790ccbf",
+      "producer_task": "C06-MOTION-V2 reviewed successor, C03/C05 projections",
+      "producer_evidence": {
+        "path": "docs/mcr/contracts/avatar-motion-v2/reviewed-successor.md",
+        "sha256": "3a11d4c4a632c11ae114cf9b728bd55f1dafa0c583a334a07e8c25aaae94aad7"
+      },
+      "producer_disposition": "Offline schema/core six-document and generated mirror qualification; source publication is not live or art admission."
+    },
+    {
+      "path": "contracts/core/v1/core.schema.json",
+      "old_sha256": "9ddf3cd3c853ef6a8258a6215c546bd84eccde620ee73b636888d868cfca1c88",
+      "new_sha256": "e9f9618548d255ba53ea9f46efe6fb52ede468acab636d43f0c487eeab779fba",
+      "producer_commit": "d839bc208dfe21f33b4a72c03868952268c34608",
+      "producer_subject": "feat(contracts): define reviewed motion v2 successor and public wire",
+      "disposition": "QUALIFIED_OFFLINE_CONTRACT_ONLY",
+      "published_master": "efc1f56b19d3cd33d64a0aff6a960f0b772277bf",
+      "published_sha256": "e9f9618548d255ba53ea9f46efe6fb52ede468acab636d43f0c487eeab779fba",
+      "producer_task": "C06-MOTION-V2 reviewed successor, C03/C05 projections",
+      "producer_evidence": {
+        "path": "docs/mcr/contracts/avatar-motion-v2/reviewed-successor.md",
+        "sha256": "3a11d4c4a632c11ae114cf9b728bd55f1dafa0c583a334a07e8c25aaae94aad7"
+      },
+      "producer_disposition": "Offline schema/core six-document and generated mirror qualification; source publication is not live or art admission."
+    },
+    {
+      "path": "contracts/domain/v1/operations.json",
+      "old_sha256": "622c0e0eba6e1c835c5e953a3acd6825f97ed43aff9bc32b982c207fdfe31839",
+      "new_sha256": "f801d703dfc5509bbe06a2f0fa07a170b6442a48b2204c7ead460fc9a3600112",
+      "producer_commit": "3bdc49c63c9bef57dec8bcf04ed1d1b7af671be1",
+      "producer_subject": "feat(contracts): add required introduction detail read in C04 0.1.3",
+      "disposition": "QUALIFIED_OFFLINE_CONTRACT_ONLY",
+      "published_master": "efc1f56b19d3cd33d64a0aff6a960f0b772277bf",
+      "published_sha256": "f801d703dfc5509bbe06a2f0fa07a170b6442a48b2204c7ead460fc9a3600112",
+      "producer_task": "C04 0.1.3 / BE27 required intro detail",
+      "producer_evidence": {
+        "path": "docs/mcr/contracts/intro-detail-0.1.3.md",
+        "sha256": "33bf2239dbce8914d4015b096f2eec4b3add3f19cce32edf0d8bc691e9f66a9f"
+      },
+      "producer_disposition": "CONTRACT_READY; 101 domain tests and generator/oracle exit0, additive existing-shape operation. Published contract-only packet342c7be2."
+    },
+    {
+      "path": "contracts/domain/v1/policy.json",
+      "old_sha256": "81b0da4c007543765f120c4ea58163cc1eadea41e10d24db54e1d177ef4e5fbb",
+      "new_sha256": "646f25a81e64ee4f0958c86ea5c46829780bc42dde15c7bf05362f7bd974f294",
+      "producer_commit": "3bdc49c63c9bef57dec8bcf04ed1d1b7af671be1",
+      "producer_subject": "feat(contracts): add required introduction detail read in C04 0.1.3",
+      "disposition": "QUALIFIED_OFFLINE_CONTRACT_ONLY",
+      "published_master": "efc1f56b19d3cd33d64a0aff6a960f0b772277bf",
+      "published_sha256": "646f25a81e64ee4f0958c86ea5c46829780bc42dde15c7bf05362f7bd974f294",
+      "producer_task": "C04 0.1.3 / BE27 required intro detail",
+      "producer_evidence": {
+        "path": "docs/mcr/contracts/intro-detail-0.1.3.md",
+        "sha256": "33bf2239dbce8914d4015b096f2eec4b3add3f19cce32edf0d8bc691e9f66a9f"
+      },
+      "producer_disposition": "CONTRACT_READY; 101 domain tests and generator/oracle exit0, additive existing-shape operation. Published contract-only packet342c7be2."
+    },
+    {
+      "path": "contracts/fixtures/assets/motion-v2/invalid/body-overflow.json",
+      "old_sha256": null,
+      "new_sha256": "27d33a76905ffb8fb9d5ca4633d3e45bbfb9bb88c09c0ffba03f0d8fda6e787f",
+      "producer_commit": "819d30c3cb32915862281d30cddbe5b7c9bd53cb",
+      "producer_subject": "feat(assets): publish immutable motion v2 candidate contracts",
+      "disposition": "QUALIFIED_OFFLINE_CONTRACT_ONLY",
+      "published_master": "efc1f56b19d3cd33d64a0aff6a960f0b772277bf",
+      "published_sha256": "27d33a76905ffb8fb9d5ca4633d3e45bbfb9bb88c09c0ffba03f0d8fda6e787f",
+      "producer_task": "C06-MOTION-V2 candidate",
+      "producer_evidence": {
+        "path": "docs/mcr/contracts/avatar-motion-v2/validation.md",
+        "sha256": "b3ccf7c25375788dd7255825195a5ef6a964eb1bf493e8bb204625a9baab5b38"
+      },
+      "producer_disposition": "34 deterministic outputs, 15 valid/16 invalid config schema checks; candidate-only production admission DENIED."
+    },
+    {
+      "path": "contracts/fixtures/assets/motion-v2/invalid/float-revision.json",
+      "old_sha256": null,
+      "new_sha256": "1faf929416c474f2c223f74c16658f43a773c36099e91dda24418ec14afe002f",
+      "producer_commit": "819d30c3cb32915862281d30cddbe5b7c9bd53cb",
+      "producer_subject": "feat(assets): publish immutable motion v2 candidate contracts",
+      "disposition": "QUALIFIED_OFFLINE_CONTRACT_ONLY",
+      "published_master": "efc1f56b19d3cd33d64a0aff6a960f0b772277bf",
+      "published_sha256": "1faf929416c474f2c223f74c16658f43a773c36099e91dda24418ec14afe002f",
+      "producer_task": "C06-MOTION-V2 candidate",
+      "producer_evidence": {
+        "path": "docs/mcr/contracts/avatar-motion-v2/validation.md",
+        "sha256": "b3ccf7c25375788dd7255825195a5ef6a964eb1bf493e8bb204625a9baab5b38"
+      },
+      "producer_disposition": "34 deterministic outputs, 15 valid/16 invalid config schema checks; candidate-only production admission DENIED."
+    },
+    {
+      "path": "contracts/fixtures/assets/motion-v2/invalid/legacy-id.json",
+      "old_sha256": null,
+      "new_sha256": "32202a9d91bd9bb37a69d1f3f128a1f92cd2696d5f183f3409780e1f849e5221",
+      "producer_commit": "819d30c3cb32915862281d30cddbe5b7c9bd53cb",
+      "producer_subject": "feat(assets): publish immutable motion v2 candidate contracts",
+      "disposition": "QUALIFIED_OFFLINE_CONTRACT_ONLY",
+      "published_master": "efc1f56b19d3cd33d64a0aff6a960f0b772277bf",
+      "published_sha256": "32202a9d91bd9bb37a69d1f3f128a1f92cd2696d5f183f3409780e1f849e5221",
+      "producer_task": "C06-MOTION-V2 candidate",
+      "producer_evidence": {
+        "path": "docs/mcr/contracts/avatar-motion-v2/validation.md",
+        "sha256": "b3ccf7c25375788dd7255825195a5ef6a964eb1bf493e8bb204625a9baab5b38"
+      },
+      "producer_disposition": "34 deterministic outputs, 15 valid/16 invalid config schema checks; candidate-only production admission DENIED."
+    },
+    {
+      "path": "contracts/fixtures/assets/motion-v2/invalid/missing-outfit.json",
+      "old_sha256": null,
+      "new_sha256": "b8d3c7d1e75989448b02c99014b5ab477d64dbf92f280d85dcfc98450bff8748",
+      "producer_commit": "819d30c3cb32915862281d30cddbe5b7c9bd53cb",
+      "producer_subject": "feat(assets): publish immutable motion v2 candidate contracts",
+      "disposition": "QUALIFIED_OFFLINE_CONTRACT_ONLY",
+      "published_master": "efc1f56b19d3cd33d64a0aff6a960f0b772277bf",
+      "published_sha256": "b8d3c7d1e75989448b02c99014b5ab477d64dbf92f280d85dcfc98450bff8748",
+      "producer_task": "C06-MOTION-V2 candidate",
+      "producer_evidence": {
+        "path": "docs/mcr/contracts/avatar-motion-v2/validation.md",
+        "sha256": "b3ccf7c25375788dd7255825195a5ef6a964eb1bf493e8bb204625a9baab5b38"
+      },
+      "producer_disposition": "34 deterministic outputs, 15 valid/16 invalid config schema checks; candidate-only production admission DENIED."
+    },
+    {
+      "path": "contracts/fixtures/assets/motion-v2/invalid/mixed-representation.json",
+      "old_sha256": null,
+      "new_sha256": "b3b44e7ac0d669f43dadb9bb5070e6136c38512092d02498715fe7161d78b8d1",
+      "producer_commit": "819d30c3cb32915862281d30cddbe5b7c9bd53cb",
+      "producer_subject": "feat(assets): publish immutable motion v2 candidate contracts",
+      "disposition": "QUALIFIED_OFFLINE_CONTRACT_ONLY",
+      "published_master": "efc1f56b19d3cd33d64a0aff6a960f0b772277bf",
+      "published_sha256": "b3b44e7ac0d669f43dadb9bb5070e6136c38512092d02498715fe7161d78b8d1",
+      "producer_task": "C06-MOTION-V2 candidate",
+      "producer_evidence": {
+        "path": "docs/mcr/contracts/avatar-motion-v2/validation.md",
+        "sha256": "b3ccf7c25375788dd7255825195a5ef6a964eb1bf493e8bb204625a9baab5b38"
+      },
+      "producer_disposition": "34 deterministic outputs, 15 valid/16 invalid config schema checks; candidate-only production admission DENIED."
+    },
+    {
+      "path": "contracts/fixtures/assets/motion-v2/invalid/null-body.json",
+      "old_sha256": null,
+      "new_sha256": "5aa81a994a1f083e7ac0c11688a65238824c0ee5b0a541003ba4ac33e4a26190",
+      "producer_commit": "819d30c3cb32915862281d30cddbe5b7c9bd53cb",
+      "producer_subject": "feat(assets): publish immutable motion v2 candidate contracts",
+      "disposition": "QUALIFIED_OFFLINE_CONTRACT_ONLY",
+      "published_master": "efc1f56b19d3cd33d64a0aff6a960f0b772277bf",
+      "published_sha256": "5aa81a994a1f083e7ac0c11688a65238824c0ee5b0a541003ba4ac33e4a26190",
+      "producer_task": "C06-MOTION-V2 candidate",
+      "producer_evidence": {
+        "path": "docs/mcr/contracts/avatar-motion-v2/validation.md",
+        "sha256": "b3ccf7c25375788dd7255825195a5ef6a964eb1bf493e8bb204625a9baab5b38"
+      },
+      "producer_disposition": "34 deterministic outputs, 15 valid/16 invalid config schema checks; candidate-only production admission DENIED."
+    },
+    {
+      "path": "contracts/fixtures/assets/motion-v2/invalid/preset-mixed-items.json",
+      "old_sha256": null,
+      "new_sha256": "24cf9a48df59ff3d83800d2e49e358f71d09c2625f34ed4b41d2adc37c5a1a54",
+      "producer_commit": "819d30c3cb32915862281d30cddbe5b7c9bd53cb",
+      "producer_subject": "feat(assets): publish immutable motion v2 candidate contracts",
+      "disposition": "QUALIFIED_OFFLINE_CONTRACT_ONLY",
+      "published_master": "efc1f56b19d3cd33d64a0aff6a960f0b772277bf",
+      "published_sha256": "24cf9a48df59ff3d83800d2e49e358f71d09c2625f34ed4b41d2adc37c5a1a54",
+      "producer_task": "C06-MOTION-V2 candidate",
+      "producer_evidence": {
+        "path": "docs/mcr/contracts/avatar-motion-v2/validation.md",
+        "sha256": "b3ccf7c25375788dd7255825195a5ef6a964eb1bf493e8bb204625a9baab5b38"
+      },
+      "producer_disposition": "34 deterministic outputs, 15 valid/16 invalid config schema checks; candidate-only production admission DENIED."
+    },
+    {
+      "path": "contracts/fixtures/assets/motion-v2/invalid/skin-tone.json",
+      "old_sha256": null,
+      "new_sha256": "8d736a998fed5dc7abbc823b29eab60604ab5e8e01a333cfd474badefd650c65",
+      "producer_commit": "819d30c3cb32915862281d30cddbe5b7c9bd53cb",
+      "producer_subject": "feat(assets): publish immutable motion v2 candidate contracts",
+      "disposition": "QUALIFIED_OFFLINE_CONTRACT_ONLY",
+      "published_master": "efc1f56b19d3cd33d64a0aff6a960f0b772277bf",
+      "published_sha256": "8d736a998fed5dc7abbc823b29eab60604ab5e8e01a333cfd474badefd650c65",
+      "producer_task": "C06-MOTION-V2 candidate",
+      "producer_evidence": {
+        "path": "docs/mcr/contracts/avatar-motion-v2/validation.md",
+        "sha256": "b3ccf7c25375788dd7255825195a5ef6a964eb1bf493e8bb204625a9baab5b38"
+      },
+      "producer_disposition": "34 deterministic outputs, 15 valid/16 invalid config schema checks; candidate-only production admission DENIED."
+    },
+    {
+      "path": "contracts/fixtures/assets/motion-v2/invalid/unknown-manifest.json",
+      "old_sha256": null,
+      "new_sha256": "f22457f39ccfe2b792599bd29370d0313b61070cdc848849051c4615cce51e74",
+      "producer_commit": "819d30c3cb32915862281d30cddbe5b7c9bd53cb",
+      "producer_subject": "feat(assets): publish immutable motion v2 candidate contracts",
+      "disposition": "QUALIFIED_OFFLINE_CONTRACT_ONLY",
+      "published_master": "efc1f56b19d3cd33d64a0aff6a960f0b772277bf",
+      "published_sha256": "f22457f39ccfe2b792599bd29370d0313b61070cdc848849051c4615cce51e74",
+      "producer_task": "C06-MOTION-V2 candidate",
+      "producer_evidence": {
+        "path": "docs/mcr/contracts/avatar-motion-v2/validation.md",
+        "sha256": "b3ccf7c25375788dd7255825195a5ef6a964eb1bf493e8bb204625a9baab5b38"
+      },
+      "producer_disposition": "34 deterministic outputs, 15 valid/16 invalid config schema checks; candidate-only production admission DENIED."
+    },
+    {
+      "path": "contracts/fixtures/assets/motion-v2/invalid/unknown-nested.json",
+      "old_sha256": null,
+      "new_sha256": "9de29b98bbb62bb44d8bf05e24f8c91c83c69c2380e161134ca8b684d8a853e0",
+      "producer_commit": "819d30c3cb32915862281d30cddbe5b7c9bd53cb",
+      "producer_subject": "feat(assets): publish immutable motion v2 candidate contracts",
+      "disposition": "QUALIFIED_OFFLINE_CONTRACT_ONLY",
+      "published_master": "efc1f56b19d3cd33d64a0aff6a960f0b772277bf",
+      "published_sha256": "9de29b98bbb62bb44d8bf05e24f8c91c83c69c2380e161134ca8b684d8a853e0",
+      "producer_task": "C06-MOTION-V2 candidate",
+      "producer_evidence": {
+        "path": "docs/mcr/contracts/avatar-motion-v2/validation.md",
+        "sha256": "b3ccf7c25375788dd7255825195a5ef6a964eb1bf493e8bb204625a9baab5b38"
+      },
+      "producer_disposition": "34 deterministic outputs, 15 valid/16 invalid config schema checks; candidate-only production admission DENIED."
+    },
+    {
+      "path": "contracts/fixtures/assets/motion-v2/invalid/unknown-preset.json",
+      "old_sha256": null,
+      "new_sha256": "8ed748e23cc7d792d5605e3bfa6dfac6f560eccb89ae2620a5b5257a0a53d6c3",
+      "producer_commit": "819d30c3cb32915862281d30cddbe5b7c9bd53cb",
+      "producer_subject": "feat(assets): publish immutable motion v2 candidate contracts",
+      "disposition": "QUALIFIED_OFFLINE_CONTRACT_ONLY",
+      "published_master": "efc1f56b19d3cd33d64a0aff6a960f0b772277bf",
+      "published_sha256": "8ed748e23cc7d792d5605e3bfa6dfac6f560eccb89ae2620a5b5257a0a53d6c3",
+      "producer_task": "C06-MOTION-V2 candidate",
+      "producer_evidence": {
+        "path": "docs/mcr/contracts/avatar-motion-v2/validation.md",
+        "sha256": "b3ccf7c25375788dd7255825195a5ef6a964eb1bf493e8bb204625a9baab5b38"
+      },
+      "producer_disposition": "34 deterministic outputs, 15 valid/16 invalid config schema checks; candidate-only production admission DENIED."
+    },
+    {
+      "path": "contracts/fixtures/assets/motion-v2/invalid/url.json",
+      "old_sha256": null,
+      "new_sha256": "f8b161d35345896ef59124d28e0a6940a6777bff5d433b16725d88aa1ad0d589",
+      "producer_commit": "819d30c3cb32915862281d30cddbe5b7c9bd53cb",
+      "producer_subject": "feat(assets): publish immutable motion v2 candidate contracts",
+      "disposition": "QUALIFIED_OFFLINE_CONTRACT_ONLY",
+      "published_master": "efc1f56b19d3cd33d64a0aff6a960f0b772277bf",
+      "published_sha256": "f8b161d35345896ef59124d28e0a6940a6777bff5d433b16725d88aa1ad0d589",
+      "producer_task": "C06-MOTION-V2 candidate",
+      "producer_evidence": {
+        "path": "docs/mcr/contracts/avatar-motion-v2/validation.md",
+        "sha256": "b3ccf7c25375788dd7255825195a5ef6a964eb1bf493e8bb204625a9baab5b38"
+      },
+      "producer_disposition": "34 deterministic outputs, 15 valid/16 invalid config schema checks; candidate-only production admission DENIED."
+    },
+    {
+      "path": "contracts/fixtures/assets/motion-v2/invalid/wrong-kind.json",
+      "old_sha256": null,
+      "new_sha256": "e76653d1deb3759a54f308e96c8c904213020a3ab931722dc367dd177936ab86",
+      "producer_commit": "819d30c3cb32915862281d30cddbe5b7c9bd53cb",
+      "producer_subject": "feat(assets): publish immutable motion v2 candidate contracts",
+      "disposition": "QUALIFIED_OFFLINE_CONTRACT_ONLY",
+      "published_master": "efc1f56b19d3cd33d64a0aff6a960f0b772277bf",
+      "published_sha256": "e76653d1deb3759a54f308e96c8c904213020a3ab931722dc367dd177936ab86",
+      "producer_task": "C06-MOTION-V2 candidate",
+      "producer_evidence": {
+        "path": "docs/mcr/contracts/avatar-motion-v2/validation.md",
+        "sha256": "b3ccf7c25375788dd7255825195a5ef6a964eb1bf493e8bb204625a9baab5b38"
+      },
+      "producer_disposition": "34 deterministic outputs, 15 valid/16 invalid config schema checks; candidate-only production admission DENIED."
+    },
+    {
+      "path": "contracts/fixtures/assets/motion-v2/invalid/wrong-revision.json",
+      "old_sha256": null,
+      "new_sha256": "b1e4f3ffd20a873314d8f77c3b7627bdd615ca689cd9d01d9031ea140b7225d3",
+      "producer_commit": "819d30c3cb32915862281d30cddbe5b7c9bd53cb",
+      "producer_subject": "feat(assets): publish immutable motion v2 candidate contracts",
+      "disposition": "QUALIFIED_OFFLINE_CONTRACT_ONLY",
+      "published_master": "efc1f56b19d3cd33d64a0aff6a960f0b772277bf",
+      "published_sha256": "b1e4f3ffd20a873314d8f77c3b7627bdd615ca689cd9d01d9031ea140b7225d3",
+      "producer_task": "C06-MOTION-V2 candidate",
+      "producer_evidence": {
+        "path": "docs/mcr/contracts/avatar-motion-v2/validation.md",
+        "sha256": "b3ccf7c25375788dd7255825195a5ef6a964eb1bf493e8bb204625a9baab5b38"
+      },
+      "producer_disposition": "34 deterministic outputs, 15 valid/16 invalid config schema checks; candidate-only production admission DENIED."
+    },
+    {
+      "path": "contracts/fixtures/assets/motion-v2/invalid/wrong-slot.json",
+      "old_sha256": null,
+      "new_sha256": "bf189386174ede081df6524a81011459854274cdd9ff78aec88a650fbf1460c4",
+      "producer_commit": "819d30c3cb32915862281d30cddbe5b7c9bd53cb",
+      "producer_subject": "feat(assets): publish immutable motion v2 candidate contracts",
+      "disposition": "QUALIFIED_OFFLINE_CONTRACT_ONLY",
+      "published_master": "efc1f56b19d3cd33d64a0aff6a960f0b772277bf",
+      "published_sha256": "bf189386174ede081df6524a81011459854274cdd9ff78aec88a650fbf1460c4",
+      "producer_task": "C06-MOTION-V2 candidate",
+      "producer_evidence": {
+        "path": "docs/mcr/contracts/avatar-motion-v2/validation.md",
+        "sha256": "b3ccf7c25375788dd7255825195a5ef6a964eb1bf493e8bb204625a9baab5b38"
+      },
+      "producer_disposition": "34 deterministic outputs, 15 valid/16 invalid config schema checks; candidate-only production admission DENIED."
+    },
+    {
+      "path": "contracts/fixtures/assets/motion-v2/invalid/wrong-version.json",
+      "old_sha256": null,
+      "new_sha256": "10bdbefe43ccdaecdde298f7d62b907916bb05fd85c29df296176867468c9e26",
+      "producer_commit": "819d30c3cb32915862281d30cddbe5b7c9bd53cb",
+      "producer_subject": "feat(assets): publish immutable motion v2 candidate contracts",
+      "disposition": "QUALIFIED_OFFLINE_CONTRACT_ONLY",
+      "published_master": "efc1f56b19d3cd33d64a0aff6a960f0b772277bf",
+      "published_sha256": "10bdbefe43ccdaecdde298f7d62b907916bb05fd85c29df296176867468c9e26",
+      "producer_task": "C06-MOTION-V2 candidate",
+      "producer_evidence": {
+        "path": "docs/mcr/contracts/avatar-motion-v2/validation.md",
+        "sha256": "b3ccf7c25375788dd7255825195a5ef6a964eb1bf493e8bb204625a9baab5b38"
+      },
+      "producer_disposition": "34 deterministic outputs, 15 valid/16 invalid config schema checks; candidate-only production admission DENIED."
+    },
+    {
+      "path": "contracts/fixtures/assets/motion-v2/reviewed/invalid/body-overflow.json",
+      "old_sha256": null,
+      "new_sha256": "01c3315789e0d588e71dcf16cad2b009127d4714d9b814ab669ae2c2e6efbc46",
+      "producer_commit": "d839bc208dfe21f33b4a72c03868952268c34608",
+      "producer_subject": "feat(contracts): define reviewed motion v2 successor and public wire",
+      "disposition": "QUALIFIED_OFFLINE_CONTRACT_ONLY",
+      "published_master": "efc1f56b19d3cd33d64a0aff6a960f0b772277bf",
+      "published_sha256": "01c3315789e0d588e71dcf16cad2b009127d4714d9b814ab669ae2c2e6efbc46",
+      "producer_task": "C06-MOTION-V2 reviewed successor, C03/C05 projections",
+      "producer_evidence": {
+        "path": "docs/mcr/contracts/avatar-motion-v2/reviewed-successor.md",
+        "sha256": "3a11d4c4a632c11ae114cf9b728bd55f1dafa0c583a334a07e8c25aaae94aad7"
+      },
+      "producer_disposition": "Offline schema/core six-document and generated mirror qualification; source publication is not live or art admission."
+    },
+    {
+      "path": "contracts/fixtures/assets/motion-v2/reviewed/invalid/float-revision.json",
+      "old_sha256": null,
+      "new_sha256": "cc363247ac5177cdad8d78ef2f7b6111d7eea20deae0af819d0cecb67148399f",
+      "producer_commit": "d839bc208dfe21f33b4a72c03868952268c34608",
+      "producer_subject": "feat(contracts): define reviewed motion v2 successor and public wire",
+      "disposition": "QUALIFIED_OFFLINE_CONTRACT_ONLY",
+      "published_master": "efc1f56b19d3cd33d64a0aff6a960f0b772277bf",
+      "published_sha256": "cc363247ac5177cdad8d78ef2f7b6111d7eea20deae0af819d0cecb67148399f",
+      "producer_task": "C06-MOTION-V2 reviewed successor, C03/C05 projections",
+      "producer_evidence": {
+        "path": "docs/mcr/contracts/avatar-motion-v2/reviewed-successor.md",
+        "sha256": "3a11d4c4a632c11ae114cf9b728bd55f1dafa0c583a334a07e8c25aaae94aad7"
+      },
+      "producer_disposition": "Offline schema/core six-document and generated mirror qualification; source publication is not live or art admission."
+    },
+    {
+      "path": "contracts/fixtures/assets/motion-v2/reviewed/invalid/legacy-id.json",
+      "old_sha256": null,
+      "new_sha256": "b05180b215b131d773040af61b16faa7ac9ab9d97bf5e9d57928674ff82be150",
+      "producer_commit": "d839bc208dfe21f33b4a72c03868952268c34608",
+      "producer_subject": "feat(contracts): define reviewed motion v2 successor and public wire",
+      "disposition": "QUALIFIED_OFFLINE_CONTRACT_ONLY",
+      "published_master": "efc1f56b19d3cd33d64a0aff6a960f0b772277bf",
+      "published_sha256": "b05180b215b131d773040af61b16faa7ac9ab9d97bf5e9d57928674ff82be150",
+      "producer_task": "C06-MOTION-V2 reviewed successor, C03/C05 projections",
+      "producer_evidence": {
+        "path": "docs/mcr/contracts/avatar-motion-v2/reviewed-successor.md",
+        "sha256": "3a11d4c4a632c11ae114cf9b728bd55f1dafa0c583a334a07e8c25aaae94aad7"
+      },
+      "producer_disposition": "Offline schema/core six-document and generated mirror qualification; source publication is not live or art admission."
+    },
+    {
+      "path": "contracts/fixtures/assets/motion-v2/reviewed/invalid/missing-outfit.json",
+      "old_sha256": null,
+      "new_sha256": "0fdaa734442adea242df55aab483b54648685f85d904f2ac735ef40b051e5d93",
+      "producer_commit": "d839bc208dfe21f33b4a72c03868952268c34608",
+      "producer_subject": "feat(contracts): define reviewed motion v2 successor and public wire",
+      "disposition": "QUALIFIED_OFFLINE_CONTRACT_ONLY",
+      "published_master": "efc1f56b19d3cd33d64a0aff6a960f0b772277bf",
+      "published_sha256": "0fdaa734442adea242df55aab483b54648685f85d904f2ac735ef40b051e5d93",
+      "producer_task": "C06-MOTION-V2 reviewed successor, C03/C05 projections",
+      "producer_evidence": {
+        "path": "docs/mcr/contracts/avatar-motion-v2/reviewed-successor.md",
+        "sha256": "3a11d4c4a632c11ae114cf9b728bd55f1dafa0c583a334a07e8c25aaae94aad7"
+      },
+      "producer_disposition": "Offline schema/core six-document and generated mirror qualification; source publication is not live or art admission."
+    },
+    {
+      "path": "contracts/fixtures/assets/motion-v2/reviewed/invalid/mixed-representation.json",
+      "old_sha256": null,
+      "new_sha256": "3f4a78bc2a90654345e80b9868aaf7cd623af125e79c3a10ee945e364ad9e4e1",
+      "producer_commit": "d839bc208dfe21f33b4a72c03868952268c34608",
+      "producer_subject": "feat(contracts): define reviewed motion v2 successor and public wire",
+      "disposition": "QUALIFIED_OFFLINE_CONTRACT_ONLY",
+      "published_master": "efc1f56b19d3cd33d64a0aff6a960f0b772277bf",
+      "published_sha256": "3f4a78bc2a90654345e80b9868aaf7cd623af125e79c3a10ee945e364ad9e4e1",
+      "producer_task": "C06-MOTION-V2 reviewed successor, C03/C05 projections",
+      "producer_evidence": {
+        "path": "docs/mcr/contracts/avatar-motion-v2/reviewed-successor.md",
+        "sha256": "3a11d4c4a632c11ae114cf9b728bd55f1dafa0c583a334a07e8c25aaae94aad7"
+      },
+      "producer_disposition": "Offline schema/core six-document and generated mirror qualification; source publication is not live or art admission."
+    },
+    {
+      "path": "contracts/fixtures/assets/motion-v2/reviewed/invalid/null-body.json",
+      "old_sha256": null,
+      "new_sha256": "ae287b22a90fb53c54fb90f3f0f180ac220f73890ed8e9d1bb2cb51bef8cc04e",
+      "producer_commit": "d839bc208dfe21f33b4a72c03868952268c34608",
+      "producer_subject": "feat(contracts): define reviewed motion v2 successor and public wire",
+      "disposition": "QUALIFIED_OFFLINE_CONTRACT_ONLY",
+      "published_master": "efc1f56b19d3cd33d64a0aff6a960f0b772277bf",
+      "published_sha256": "ae287b22a90fb53c54fb90f3f0f180ac220f73890ed8e9d1bb2cb51bef8cc04e",
+      "producer_task": "C06-MOTION-V2 reviewed successor, C03/C05 projections",
+      "producer_evidence": {
+        "path": "docs/mcr/contracts/avatar-motion-v2/reviewed-successor.md",
+        "sha256": "3a11d4c4a632c11ae114cf9b728bd55f1dafa0c583a334a07e8c25aaae94aad7"
+      },
+      "producer_disposition": "Offline schema/core six-document and generated mirror qualification; source publication is not live or art admission."
+    },
+    {
+      "path": "contracts/fixtures/assets/motion-v2/reviewed/invalid/preset-mixed-items.json",
+      "old_sha256": null,
+      "new_sha256": "f876d06542f81b4e23ede19a61d3033e97690212960acda2005d142e17d43d55",
+      "producer_commit": "d839bc208dfe21f33b4a72c03868952268c34608",
+      "producer_subject": "feat(contracts): define reviewed motion v2 successor and public wire",
+      "disposition": "QUALIFIED_OFFLINE_CONTRACT_ONLY",
+      "published_master": "efc1f56b19d3cd33d64a0aff6a960f0b772277bf",
+      "published_sha256": "f876d06542f81b4e23ede19a61d3033e97690212960acda2005d142e17d43d55",
+      "producer_task": "C06-MOTION-V2 reviewed successor, C03/C05 projections",
+      "producer_evidence": {
+        "path": "docs/mcr/contracts/avatar-motion-v2/reviewed-successor.md",
+        "sha256": "3a11d4c4a632c11ae114cf9b728bd55f1dafa0c583a334a07e8c25aaae94aad7"
+      },
+      "producer_disposition": "Offline schema/core six-document and generated mirror qualification; source publication is not live or art admission."
+    },
+    {
+      "path": "contracts/fixtures/assets/motion-v2/reviewed/invalid/skin-tone.json",
+      "old_sha256": null,
+      "new_sha256": "8a9cb20b7720f46f285a0652cc4aca53009b5bbd08b8e0fceadcfc729c96bfe6",
+      "producer_commit": "d839bc208dfe21f33b4a72c03868952268c34608",
+      "producer_subject": "feat(contracts): define reviewed motion v2 successor and public wire",
+      "disposition": "QUALIFIED_OFFLINE_CONTRACT_ONLY",
+      "published_master": "efc1f56b19d3cd33d64a0aff6a960f0b772277bf",
+      "published_sha256": "8a9cb20b7720f46f285a0652cc4aca53009b5bbd08b8e0fceadcfc729c96bfe6",
+      "producer_task": "C06-MOTION-V2 reviewed successor, C03/C05 projections",
+      "producer_evidence": {
+        "path": "docs/mcr/contracts/avatar-motion-v2/reviewed-successor.md",
+        "sha256": "3a11d4c4a632c11ae114cf9b728bd55f1dafa0c583a334a07e8c25aaae94aad7"
+      },
+      "producer_disposition": "Offline schema/core six-document and generated mirror qualification; source publication is not live or art admission."
+    },
+    {
+      "path": "contracts/fixtures/assets/motion-v2/reviewed/invalid/unknown-manifest.json",
+      "old_sha256": null,
+      "new_sha256": "b1cce10daf216392382cd7d43587e5292df4baf211d63201f3b3140cbd19dab7",
+      "producer_commit": "d839bc208dfe21f33b4a72c03868952268c34608",
+      "producer_subject": "feat(contracts): define reviewed motion v2 successor and public wire",
+      "disposition": "QUALIFIED_OFFLINE_CONTRACT_ONLY",
+      "published_master": "efc1f56b19d3cd33d64a0aff6a960f0b772277bf",
+      "published_sha256": "b1cce10daf216392382cd7d43587e5292df4baf211d63201f3b3140cbd19dab7",
+      "producer_task": "C06-MOTION-V2 reviewed successor, C03/C05 projections",
+      "producer_evidence": {
+        "path": "docs/mcr/contracts/avatar-motion-v2/reviewed-successor.md",
+        "sha256": "3a11d4c4a632c11ae114cf9b728bd55f1dafa0c583a334a07e8c25aaae94aad7"
+      },
+      "producer_disposition": "Offline schema/core six-document and generated mirror qualification; source publication is not live or art admission."
+    },
+    {
+      "path": "contracts/fixtures/assets/motion-v2/reviewed/invalid/unknown-nested.json",
+      "old_sha256": null,
+      "new_sha256": "efafcd624c34b604fe8bafa32b088e037a2ba41f8f297fad073bf9ce7ee122b1",
+      "producer_commit": "d839bc208dfe21f33b4a72c03868952268c34608",
+      "producer_subject": "feat(contracts): define reviewed motion v2 successor and public wire",
+      "disposition": "QUALIFIED_OFFLINE_CONTRACT_ONLY",
+      "published_master": "efc1f56b19d3cd33d64a0aff6a960f0b772277bf",
+      "published_sha256": "efafcd624c34b604fe8bafa32b088e037a2ba41f8f297fad073bf9ce7ee122b1",
+      "producer_task": "C06-MOTION-V2 reviewed successor, C03/C05 projections",
+      "producer_evidence": {
+        "path": "docs/mcr/contracts/avatar-motion-v2/reviewed-successor.md",
+        "sha256": "3a11d4c4a632c11ae114cf9b728bd55f1dafa0c583a334a07e8c25aaae94aad7"
+      },
+      "producer_disposition": "Offline schema/core six-document and generated mirror qualification; source publication is not live or art admission."
+    },
+    {
+      "path": "contracts/fixtures/assets/motion-v2/reviewed/invalid/unknown-preset.json",
+      "old_sha256": null,
+      "new_sha256": "29c13f3358e8c600495b119daf0b646027c3066775fe1cd40e715762b1735c8d",
+      "producer_commit": "d839bc208dfe21f33b4a72c03868952268c34608",
+      "producer_subject": "feat(contracts): define reviewed motion v2 successor and public wire",
+      "disposition": "QUALIFIED_OFFLINE_CONTRACT_ONLY",
+      "published_master": "efc1f56b19d3cd33d64a0aff6a960f0b772277bf",
+      "published_sha256": "29c13f3358e8c600495b119daf0b646027c3066775fe1cd40e715762b1735c8d",
+      "producer_task": "C06-MOTION-V2 reviewed successor, C03/C05 projections",
+      "producer_evidence": {
+        "path": "docs/mcr/contracts/avatar-motion-v2/reviewed-successor.md",
+        "sha256": "3a11d4c4a632c11ae114cf9b728bd55f1dafa0c583a334a07e8c25aaae94aad7"
+      },
+      "producer_disposition": "Offline schema/core six-document and generated mirror qualification; source publication is not live or art admission."
+    },
+    {
+      "path": "contracts/fixtures/assets/motion-v2/reviewed/invalid/url.json",
+      "old_sha256": null,
+      "new_sha256": "9fd911da547e179ae1a8dc9f5e48cc895625db5c077c9d178d57ce6ba34d943c",
+      "producer_commit": "d839bc208dfe21f33b4a72c03868952268c34608",
+      "producer_subject": "feat(contracts): define reviewed motion v2 successor and public wire",
+      "disposition": "QUALIFIED_OFFLINE_CONTRACT_ONLY",
+      "published_master": "efc1f56b19d3cd33d64a0aff6a960f0b772277bf",
+      "published_sha256": "9fd911da547e179ae1a8dc9f5e48cc895625db5c077c9d178d57ce6ba34d943c",
+      "producer_task": "C06-MOTION-V2 reviewed successor, C03/C05 projections",
+      "producer_evidence": {
+        "path": "docs/mcr/contracts/avatar-motion-v2/reviewed-successor.md",
+        "sha256": "3a11d4c4a632c11ae114cf9b728bd55f1dafa0c583a334a07e8c25aaae94aad7"
+      },
+      "producer_disposition": "Offline schema/core six-document and generated mirror qualification; source publication is not live or art admission."
+    },
+    {
+      "path": "contracts/fixtures/assets/motion-v2/reviewed/invalid/wrong-kind.json",
+      "old_sha256": null,
+      "new_sha256": "97f4efcf93acd74d22ae9fa5054ab0fac24b9944c32d2f863e7b4fda7f8ba24a",
+      "producer_commit": "d839bc208dfe21f33b4a72c03868952268c34608",
+      "producer_subject": "feat(contracts): define reviewed motion v2 successor and public wire",
+      "disposition": "QUALIFIED_OFFLINE_CONTRACT_ONLY",
+      "published_master": "efc1f56b19d3cd33d64a0aff6a960f0b772277bf",
+      "published_sha256": "97f4efcf93acd74d22ae9fa5054ab0fac24b9944c32d2f863e7b4fda7f8ba24a",
+      "producer_task": "C06-MOTION-V2 reviewed successor, C03/C05 projections",
+      "producer_evidence": {
+        "path": "docs/mcr/contracts/avatar-motion-v2/reviewed-successor.md",
+        "sha256": "3a11d4c4a632c11ae114cf9b728bd55f1dafa0c583a334a07e8c25aaae94aad7"
+      },
+      "producer_disposition": "Offline schema/core six-document and generated mirror qualification; source publication is not live or art admission."
+    },
+    {
+      "path": "contracts/fixtures/assets/motion-v2/reviewed/invalid/wrong-revision.json",
+      "old_sha256": null,
+      "new_sha256": "f2463ec0b81a1a5288e8a4dd6196bd3a6013a6c7024eb4851596d1bf6cbcd9c3",
+      "producer_commit": "d839bc208dfe21f33b4a72c03868952268c34608",
+      "producer_subject": "feat(contracts): define reviewed motion v2 successor and public wire",
+      "disposition": "QUALIFIED_OFFLINE_CONTRACT_ONLY",
+      "published_master": "efc1f56b19d3cd33d64a0aff6a960f0b772277bf",
+      "published_sha256": "f2463ec0b81a1a5288e8a4dd6196bd3a6013a6c7024eb4851596d1bf6cbcd9c3",
+      "producer_task": "C06-MOTION-V2 reviewed successor, C03/C05 projections",
+      "producer_evidence": {
+        "path": "docs/mcr/contracts/avatar-motion-v2/reviewed-successor.md",
+        "sha256": "3a11d4c4a632c11ae114cf9b728bd55f1dafa0c583a334a07e8c25aaae94aad7"
+      },
+      "producer_disposition": "Offline schema/core six-document and generated mirror qualification; source publication is not live or art admission."
+    },
+    {
+      "path": "contracts/fixtures/assets/motion-v2/reviewed/invalid/wrong-slot.json",
+      "old_sha256": null,
+      "new_sha256": "b547e065a7051ad07025422f39f641a507869b342cbe894cbaa2b024d888c876",
+      "producer_commit": "d839bc208dfe21f33b4a72c03868952268c34608",
+      "producer_subject": "feat(contracts): define reviewed motion v2 successor and public wire",
+      "disposition": "QUALIFIED_OFFLINE_CONTRACT_ONLY",
+      "published_master": "efc1f56b19d3cd33d64a0aff6a960f0b772277bf",
+      "published_sha256": "b547e065a7051ad07025422f39f641a507869b342cbe894cbaa2b024d888c876",
+      "producer_task": "C06-MOTION-V2 reviewed successor, C03/C05 projections",
+      "producer_evidence": {
+        "path": "docs/mcr/contracts/avatar-motion-v2/reviewed-successor.md",
+        "sha256": "3a11d4c4a632c11ae114cf9b728bd55f1dafa0c583a334a07e8c25aaae94aad7"
+      },
+      "producer_disposition": "Offline schema/core six-document and generated mirror qualification; source publication is not live or art admission."
+    },
+    {
+      "path": "contracts/fixtures/assets/motion-v2/reviewed/invalid/wrong-version.json",
+      "old_sha256": null,
+      "new_sha256": "771257eab9d8767c931448dcb2cd04a8143fa802eb1883b19907c4c16d0a2f9d",
+      "producer_commit": "d839bc208dfe21f33b4a72c03868952268c34608",
+      "producer_subject": "feat(contracts): define reviewed motion v2 successor and public wire",
+      "disposition": "QUALIFIED_OFFLINE_CONTRACT_ONLY",
+      "published_master": "efc1f56b19d3cd33d64a0aff6a960f0b772277bf",
+      "published_sha256": "771257eab9d8767c931448dcb2cd04a8143fa802eb1883b19907c4c16d0a2f9d",
+      "producer_task": "C06-MOTION-V2 reviewed successor, C03/C05 projections",
+      "producer_evidence": {
+        "path": "docs/mcr/contracts/avatar-motion-v2/reviewed-successor.md",
+        "sha256": "3a11d4c4a632c11ae114cf9b728bd55f1dafa0c583a334a07e8c25aaae94aad7"
+      },
+      "producer_disposition": "Offline schema/core six-document and generated mirror qualification; source publication is not live or art admission."
+    },
+    {
+      "path": "contracts/fixtures/assets/motion-v2/reviewed/valid/layered-body-0.json",
+      "old_sha256": null,
+      "new_sha256": "73751a1d53978d2cd6c1543cb66fc6bd0c4c5b5206e004282d6f7051e475175e",
+      "producer_commit": "d839bc208dfe21f33b4a72c03868952268c34608",
+      "producer_subject": "feat(contracts): define reviewed motion v2 successor and public wire",
+      "disposition": "QUALIFIED_OFFLINE_CONTRACT_ONLY",
+      "published_master": "efc1f56b19d3cd33d64a0aff6a960f0b772277bf",
+      "published_sha256": "73751a1d53978d2cd6c1543cb66fc6bd0c4c5b5206e004282d6f7051e475175e",
+      "producer_task": "C06-MOTION-V2 reviewed successor, C03/C05 projections",
+      "producer_evidence": {
+        "path": "docs/mcr/contracts/avatar-motion-v2/reviewed-successor.md",
+        "sha256": "3a11d4c4a632c11ae114cf9b728bd55f1dafa0c583a334a07e8c25aaae94aad7"
+      },
+      "producer_disposition": "Offline schema/core six-document and generated mirror qualification; source publication is not live or art admission."
+    },
+    {
+      "path": "contracts/fixtures/assets/motion-v2/reviewed/valid/layered-body-1.json",
+      "old_sha256": null,
+      "new_sha256": "d0b82e6f1e717490f9339e090295b4cc9a1be3890494efe9b06eb9abe4ca4a40",
+      "producer_commit": "d839bc208dfe21f33b4a72c03868952268c34608",
+      "producer_subject": "feat(contracts): define reviewed motion v2 successor and public wire",
+      "disposition": "QUALIFIED_OFFLINE_CONTRACT_ONLY",
+      "published_master": "efc1f56b19d3cd33d64a0aff6a960f0b772277bf",
+      "published_sha256": "d0b82e6f1e717490f9339e090295b4cc9a1be3890494efe9b06eb9abe4ca4a40",
+      "producer_task": "C06-MOTION-V2 reviewed successor, C03/C05 projections",
+      "producer_evidence": {
+        "path": "docs/mcr/contracts/avatar-motion-v2/reviewed-successor.md",
+        "sha256": "3a11d4c4a632c11ae114cf9b728bd55f1dafa0c583a334a07e8c25aaae94aad7"
+      },
+      "producer_disposition": "Offline schema/core six-document and generated mirror qualification; source publication is not live or art admission."
+    },
+    {
+      "path": "contracts/fixtures/assets/motion-v2/reviewed/valid/layered-body-2.json",
+      "old_sha256": null,
+      "new_sha256": "2af607bcc02a1295accea7b28a00a1e47d4297ba4b977473f0f5e0df01b0c31d",
+      "producer_commit": "d839bc208dfe21f33b4a72c03868952268c34608",
+      "producer_subject": "feat(contracts): define reviewed motion v2 successor and public wire",
+      "disposition": "QUALIFIED_OFFLINE_CONTRACT_ONLY",
+      "published_master": "efc1f56b19d3cd33d64a0aff6a960f0b772277bf",
+      "published_sha256": "2af607bcc02a1295accea7b28a00a1e47d4297ba4b977473f0f5e0df01b0c31d",
+      "producer_task": "C06-MOTION-V2 reviewed successor, C03/C05 projections",
+      "producer_evidence": {
+        "path": "docs/mcr/contracts/avatar-motion-v2/reviewed-successor.md",
+        "sha256": "3a11d4c4a632c11ae114cf9b728bd55f1dafa0c583a334a07e8c25aaae94aad7"
+      },
+      "producer_disposition": "Offline schema/core six-document and generated mirror qualification; source publication is not live or art admission."
+    },
+    {
+      "path": "contracts/fixtures/assets/motion-v2/reviewed/valid/layered-body-3.json",
+      "old_sha256": null,
+      "new_sha256": "3ec8885efe31dac688d850113a5af1e5add4708175cc2d5e3b6ac686206099ab",
+      "producer_commit": "d839bc208dfe21f33b4a72c03868952268c34608",
+      "producer_subject": "feat(contracts): define reviewed motion v2 successor and public wire",
+      "disposition": "QUALIFIED_OFFLINE_CONTRACT_ONLY",
+      "published_master": "efc1f56b19d3cd33d64a0aff6a960f0b772277bf",
+      "published_sha256": "3ec8885efe31dac688d850113a5af1e5add4708175cc2d5e3b6ac686206099ab",
+      "producer_task": "C06-MOTION-V2 reviewed successor, C03/C05 projections",
+      "producer_evidence": {
+        "path": "docs/mcr/contracts/avatar-motion-v2/reviewed-successor.md",
+        "sha256": "3a11d4c4a632c11ae114cf9b728bd55f1dafa0c583a334a07e8c25aaae94aad7"
+      },
+      "producer_disposition": "Offline schema/core six-document and generated mirror qualification; source publication is not live or art admission."
+    },
+    {
+      "path": "contracts/fixtures/assets/motion-v2/reviewed/valid/layered-body-4.json",
+      "old_sha256": null,
+      "new_sha256": "bebd28fd6c1d33392b1e0ff4208d23b934dafe9f612620c4a22ea4027f4f3f97",
+      "producer_commit": "d839bc208dfe21f33b4a72c03868952268c34608",
+      "producer_subject": "feat(contracts): define reviewed motion v2 successor and public wire",
+      "disposition": "QUALIFIED_OFFLINE_CONTRACT_ONLY",
+      "published_master": "efc1f56b19d3cd33d64a0aff6a960f0b772277bf",
+      "published_sha256": "bebd28fd6c1d33392b1e0ff4208d23b934dafe9f612620c4a22ea4027f4f3f97",
+      "producer_task": "C06-MOTION-V2 reviewed successor, C03/C05 projections",
+      "producer_evidence": {
+        "path": "docs/mcr/contracts/avatar-motion-v2/reviewed-successor.md",
+        "sha256": "3a11d4c4a632c11ae114cf9b728bd55f1dafa0c583a334a07e8c25aaae94aad7"
+      },
+      "producer_disposition": "Offline schema/core six-document and generated mirror qualification; source publication is not live or art admission."
+    },
+    {
+      "path": "contracts/fixtures/assets/motion-v2/reviewed/valid/layered-body-5.json",
+      "old_sha256": null,
+      "new_sha256": "e99ed46509e4853560e6ec914e438f9b61079473d7b449f86988558877c14335",
+      "producer_commit": "d839bc208dfe21f33b4a72c03868952268c34608",
+      "producer_subject": "feat(contracts): define reviewed motion v2 successor and public wire",
+      "disposition": "QUALIFIED_OFFLINE_CONTRACT_ONLY",
+      "published_master": "efc1f56b19d3cd33d64a0aff6a960f0b772277bf",
+      "published_sha256": "e99ed46509e4853560e6ec914e438f9b61079473d7b449f86988558877c14335",
+      "producer_task": "C06-MOTION-V2 reviewed successor, C03/C05 projections",
+      "producer_evidence": {
+        "path": "docs/mcr/contracts/avatar-motion-v2/reviewed-successor.md",
+        "sha256": "3a11d4c4a632c11ae114cf9b728bd55f1dafa0c583a334a07e8c25aaae94aad7"
+      },
+      "producer_disposition": "Offline schema/core six-document and generated mirror qualification; source publication is not live or art admission."
+    },
+    {
+      "path": "contracts/fixtures/assets/motion-v2/reviewed/valid/layered-body-6.json",
+      "old_sha256": null,
+      "new_sha256": "ac0ee4f095a8f86f15a32b9747e950fbe2ca63ef3004792b01f9cc8c8a07b452",
+      "producer_commit": "d839bc208dfe21f33b4a72c03868952268c34608",
+      "producer_subject": "feat(contracts): define reviewed motion v2 successor and public wire",
+      "disposition": "QUALIFIED_OFFLINE_CONTRACT_ONLY",
+      "published_master": "efc1f56b19d3cd33d64a0aff6a960f0b772277bf",
+      "published_sha256": "ac0ee4f095a8f86f15a32b9747e950fbe2ca63ef3004792b01f9cc8c8a07b452",
+      "producer_task": "C06-MOTION-V2 reviewed successor, C03/C05 projections",
+      "producer_evidence": {
+        "path": "docs/mcr/contracts/avatar-motion-v2/reviewed-successor.md",
+        "sha256": "3a11d4c4a632c11ae114cf9b728bd55f1dafa0c583a334a07e8c25aaae94aad7"
+      },
+      "producer_disposition": "Offline schema/core six-document and generated mirror qualification; source publication is not live or art admission."
+    },
+    {
+      "path": "contracts/fixtures/assets/motion-v2/reviewed/valid/layered-body-7.json",
+      "old_sha256": null,
+      "new_sha256": "12140f5bec786459ea20552e79647335a21c7e8db4c0a77cb53d9a0d3d411ec1",
+      "producer_commit": "d839bc208dfe21f33b4a72c03868952268c34608",
+      "producer_subject": "feat(contracts): define reviewed motion v2 successor and public wire",
+      "disposition": "QUALIFIED_OFFLINE_CONTRACT_ONLY",
+      "published_master": "efc1f56b19d3cd33d64a0aff6a960f0b772277bf",
+      "published_sha256": "12140f5bec786459ea20552e79647335a21c7e8db4c0a77cb53d9a0d3d411ec1",
+      "producer_task": "C06-MOTION-V2 reviewed successor, C03/C05 projections",
+      "producer_evidence": {
+        "path": "docs/mcr/contracts/avatar-motion-v2/reviewed-successor.md",
+        "sha256": "3a11d4c4a632c11ae114cf9b728bd55f1dafa0c583a334a07e8c25aaae94aad7"
+      },
+      "producer_disposition": "Offline schema/core six-document and generated mirror qualification; source publication is not live or art admission."
+    },
+    {
+      "path": "contracts/fixtures/assets/motion-v2/reviewed/valid/layered-max.json",
+      "old_sha256": null,
+      "new_sha256": "09b8e1e9553976d9a3af60b5d4932aab2e6f3613c8c3702e16903ffacd90e668",
+      "producer_commit": "d839bc208dfe21f33b4a72c03868952268c34608",
+      "producer_subject": "feat(contracts): define reviewed motion v2 successor and public wire",
+      "disposition": "QUALIFIED_OFFLINE_CONTRACT_ONLY",
+      "published_master": "efc1f56b19d3cd33d64a0aff6a960f0b772277bf",
+      "published_sha256": "09b8e1e9553976d9a3af60b5d4932aab2e6f3613c8c3702e16903ffacd90e668",
+      "producer_task": "C06-MOTION-V2 reviewed successor, C03/C05 projections",
+      "producer_evidence": {
+        "path": "docs/mcr/contracts/avatar-motion-v2/reviewed-successor.md",
+        "sha256": "3a11d4c4a632c11ae114cf9b728bd55f1dafa0c583a334a07e8c25aaae94aad7"
+      },
+      "producer_disposition": "Offline schema/core six-document and generated mirror qualification; source publication is not live or art admission."
+    },
+    {
+      "path": "contracts/fixtures/assets/motion-v2/reviewed/valid/preset-01.json",
+      "old_sha256": null,
+      "new_sha256": "8a53ed49376a9d03a62d3792d8ab93191bffdc78148017a6466395e8373d5dc7",
+      "producer_commit": "d839bc208dfe21f33b4a72c03868952268c34608",
+      "producer_subject": "feat(contracts): define reviewed motion v2 successor and public wire",
+      "disposition": "QUALIFIED_OFFLINE_CONTRACT_ONLY",
+      "published_master": "efc1f56b19d3cd33d64a0aff6a960f0b772277bf",
+      "published_sha256": "8a53ed49376a9d03a62d3792d8ab93191bffdc78148017a6466395e8373d5dc7",
+      "producer_task": "C06-MOTION-V2 reviewed successor, C03/C05 projections",
+      "producer_evidence": {
+        "path": "docs/mcr/contracts/avatar-motion-v2/reviewed-successor.md",
+        "sha256": "3a11d4c4a632c11ae114cf9b728bd55f1dafa0c583a334a07e8c25aaae94aad7"
+      },
+      "producer_disposition": "Offline schema/core six-document and generated mirror qualification; source publication is not live or art admission."
+    },
+    {
+      "path": "contracts/fixtures/assets/motion-v2/reviewed/valid/preset-02.json",
+      "old_sha256": null,
+      "new_sha256": "0c6ba0511017d05c0d816752cee1b8a30177d46b9c519de29fc919159aa0b313",
+      "producer_commit": "d839bc208dfe21f33b4a72c03868952268c34608",
+      "producer_subject": "feat(contracts): define reviewed motion v2 successor and public wire",
+      "disposition": "QUALIFIED_OFFLINE_CONTRACT_ONLY",
+      "published_master": "efc1f56b19d3cd33d64a0aff6a960f0b772277bf",
+      "published_sha256": "0c6ba0511017d05c0d816752cee1b8a30177d46b9c519de29fc919159aa0b313",
+      "producer_task": "C06-MOTION-V2 reviewed successor, C03/C05 projections",
+      "producer_evidence": {
+        "path": "docs/mcr/contracts/avatar-motion-v2/reviewed-successor.md",
+        "sha256": "3a11d4c4a632c11ae114cf9b728bd55f1dafa0c583a334a07e8c25aaae94aad7"
+      },
+      "producer_disposition": "Offline schema/core six-document and generated mirror qualification; source publication is not live or art admission."
+    },
+    {
+      "path": "contracts/fixtures/assets/motion-v2/reviewed/valid/preset-03.json",
+      "old_sha256": null,
+      "new_sha256": "e182a3180c287b8b1ab8fb43ce78deb9ea23789daa842ae44b246572e63373ca",
+      "producer_commit": "d839bc208dfe21f33b4a72c03868952268c34608",
+      "producer_subject": "feat(contracts): define reviewed motion v2 successor and public wire",
+      "disposition": "QUALIFIED_OFFLINE_CONTRACT_ONLY",
+      "published_master": "efc1f56b19d3cd33d64a0aff6a960f0b772277bf",
+      "published_sha256": "e182a3180c287b8b1ab8fb43ce78deb9ea23789daa842ae44b246572e63373ca",
+      "producer_task": "C06-MOTION-V2 reviewed successor, C03/C05 projections",
+      "producer_evidence": {
+        "path": "docs/mcr/contracts/avatar-motion-v2/reviewed-successor.md",
+        "sha256": "3a11d4c4a632c11ae114cf9b728bd55f1dafa0c583a334a07e8c25aaae94aad7"
+      },
+      "producer_disposition": "Offline schema/core six-document and generated mirror qualification; source publication is not live or art admission."
+    },
+    {
+      "path": "contracts/fixtures/assets/motion-v2/reviewed/valid/preset-04.json",
+      "old_sha256": null,
+      "new_sha256": "13734c5f9e21f1d3908bfbd847982ea95d520c55b9f40381dab2e750fbba8e29",
+      "producer_commit": "d839bc208dfe21f33b4a72c03868952268c34608",
+      "producer_subject": "feat(contracts): define reviewed motion v2 successor and public wire",
+      "disposition": "QUALIFIED_OFFLINE_CONTRACT_ONLY",
+      "published_master": "efc1f56b19d3cd33d64a0aff6a960f0b772277bf",
+      "published_sha256": "13734c5f9e21f1d3908bfbd847982ea95d520c55b9f40381dab2e750fbba8e29",
+      "producer_task": "C06-MOTION-V2 reviewed successor, C03/C05 projections",
+      "producer_evidence": {
+        "path": "docs/mcr/contracts/avatar-motion-v2/reviewed-successor.md",
+        "sha256": "3a11d4c4a632c11ae114cf9b728bd55f1dafa0c583a334a07e8c25aaae94aad7"
+      },
+      "producer_disposition": "Offline schema/core six-document and generated mirror qualification; source publication is not live or art admission."
+    },
+    {
+      "path": "contracts/fixtures/assets/motion-v2/reviewed/valid/preset-05.json",
+      "old_sha256": null,
+      "new_sha256": "3d7877d9d6a3518ba90711f22ac14e802085a443e571192eb64800186e332a6a",
+      "producer_commit": "d839bc208dfe21f33b4a72c03868952268c34608",
+      "producer_subject": "feat(contracts): define reviewed motion v2 successor and public wire",
+      "disposition": "QUALIFIED_OFFLINE_CONTRACT_ONLY",
+      "published_master": "efc1f56b19d3cd33d64a0aff6a960f0b772277bf",
+      "published_sha256": "3d7877d9d6a3518ba90711f22ac14e802085a443e571192eb64800186e332a6a",
+      "producer_task": "C06-MOTION-V2 reviewed successor, C03/C05 projections",
+      "producer_evidence": {
+        "path": "docs/mcr/contracts/avatar-motion-v2/reviewed-successor.md",
+        "sha256": "3a11d4c4a632c11ae114cf9b728bd55f1dafa0c583a334a07e8c25aaae94aad7"
+      },
+      "producer_disposition": "Offline schema/core six-document and generated mirror qualification; source publication is not live or art admission."
+    },
+    {
+      "path": "contracts/fixtures/assets/motion-v2/reviewed/valid/preset-06.json",
+      "old_sha256": null,
+      "new_sha256": "a0dca0352fde55bd9afcdb5011ec77dd4ae95f8027ac432db34357bd84de8c62",
+      "producer_commit": "d839bc208dfe21f33b4a72c03868952268c34608",
+      "producer_subject": "feat(contracts): define reviewed motion v2 successor and public wire",
+      "disposition": "QUALIFIED_OFFLINE_CONTRACT_ONLY",
+      "published_master": "efc1f56b19d3cd33d64a0aff6a960f0b772277bf",
+      "published_sha256": "a0dca0352fde55bd9afcdb5011ec77dd4ae95f8027ac432db34357bd84de8c62",
+      "producer_task": "C06-MOTION-V2 reviewed successor, C03/C05 projections",
+      "producer_evidence": {
+        "path": "docs/mcr/contracts/avatar-motion-v2/reviewed-successor.md",
+        "sha256": "3a11d4c4a632c11ae114cf9b728bd55f1dafa0c583a334a07e8c25aaae94aad7"
+      },
+      "producer_disposition": "Offline schema/core six-document and generated mirror qualification; source publication is not live or art admission."
+    },
+    {
+      "path": "contracts/fixtures/assets/motion-v2/valid/layered-body-0.json",
+      "old_sha256": null,
+      "new_sha256": "1db582ab6f44dc411f087d119f87e413a466c4011013dab7e2767e1bde5971c7",
+      "producer_commit": "819d30c3cb32915862281d30cddbe5b7c9bd53cb",
+      "producer_subject": "feat(assets): publish immutable motion v2 candidate contracts",
+      "disposition": "QUALIFIED_OFFLINE_CONTRACT_ONLY",
+      "published_master": "efc1f56b19d3cd33d64a0aff6a960f0b772277bf",
+      "published_sha256": "1db582ab6f44dc411f087d119f87e413a466c4011013dab7e2767e1bde5971c7",
+      "producer_task": "C06-MOTION-V2 candidate",
+      "producer_evidence": {
+        "path": "docs/mcr/contracts/avatar-motion-v2/validation.md",
+        "sha256": "b3ccf7c25375788dd7255825195a5ef6a964eb1bf493e8bb204625a9baab5b38"
+      },
+      "producer_disposition": "34 deterministic outputs, 15 valid/16 invalid config schema checks; candidate-only production admission DENIED."
+    },
+    {
+      "path": "contracts/fixtures/assets/motion-v2/valid/layered-body-1.json",
+      "old_sha256": null,
+      "new_sha256": "caddb2f2297905175c39280361c2143b647df4210b63700d0dfb30079eb92075",
+      "producer_commit": "819d30c3cb32915862281d30cddbe5b7c9bd53cb",
+      "producer_subject": "feat(assets): publish immutable motion v2 candidate contracts",
+      "disposition": "QUALIFIED_OFFLINE_CONTRACT_ONLY",
+      "published_master": "efc1f56b19d3cd33d64a0aff6a960f0b772277bf",
+      "published_sha256": "caddb2f2297905175c39280361c2143b647df4210b63700d0dfb30079eb92075",
+      "producer_task": "C06-MOTION-V2 candidate",
+      "producer_evidence": {
+        "path": "docs/mcr/contracts/avatar-motion-v2/validation.md",
+        "sha256": "b3ccf7c25375788dd7255825195a5ef6a964eb1bf493e8bb204625a9baab5b38"
+      },
+      "producer_disposition": "34 deterministic outputs, 15 valid/16 invalid config schema checks; candidate-only production admission DENIED."
+    },
+    {
+      "path": "contracts/fixtures/assets/motion-v2/valid/layered-body-2.json",
+      "old_sha256": null,
+      "new_sha256": "181091d5da7fc02f014a9f1cf1f79ecf9db84b215d769db35f17e538d408ae18",
+      "producer_commit": "819d30c3cb32915862281d30cddbe5b7c9bd53cb",
+      "producer_subject": "feat(assets): publish immutable motion v2 candidate contracts",
+      "disposition": "QUALIFIED_OFFLINE_CONTRACT_ONLY",
+      "published_master": "efc1f56b19d3cd33d64a0aff6a960f0b772277bf",
+      "published_sha256": "181091d5da7fc02f014a9f1cf1f79ecf9db84b215d769db35f17e538d408ae18",
+      "producer_task": "C06-MOTION-V2 candidate",
+      "producer_evidence": {
+        "path": "docs/mcr/contracts/avatar-motion-v2/validation.md",
+        "sha256": "b3ccf7c25375788dd7255825195a5ef6a964eb1bf493e8bb204625a9baab5b38"
+      },
+      "producer_disposition": "34 deterministic outputs, 15 valid/16 invalid config schema checks; candidate-only production admission DENIED."
+    },
+    {
+      "path": "contracts/fixtures/assets/motion-v2/valid/layered-body-3.json",
+      "old_sha256": null,
+      "new_sha256": "106e415ec0673cc1a79be3fc3befed209bb2d03670d3ab0dd6fad228038487fc",
+      "producer_commit": "819d30c3cb32915862281d30cddbe5b7c9bd53cb",
+      "producer_subject": "feat(assets): publish immutable motion v2 candidate contracts",
+      "disposition": "QUALIFIED_OFFLINE_CONTRACT_ONLY",
+      "published_master": "efc1f56b19d3cd33d64a0aff6a960f0b772277bf",
+      "published_sha256": "106e415ec0673cc1a79be3fc3befed209bb2d03670d3ab0dd6fad228038487fc",
+      "producer_task": "C06-MOTION-V2 candidate",
+      "producer_evidence": {
+        "path": "docs/mcr/contracts/avatar-motion-v2/validation.md",
+        "sha256": "b3ccf7c25375788dd7255825195a5ef6a964eb1bf493e8bb204625a9baab5b38"
+      },
+      "producer_disposition": "34 deterministic outputs, 15 valid/16 invalid config schema checks; candidate-only production admission DENIED."
+    },
+    {
+      "path": "contracts/fixtures/assets/motion-v2/valid/layered-body-4.json",
+      "old_sha256": null,
+      "new_sha256": "544a2927ddecdc70467894e31365213c16ed6442830c6c64b252595a24607692",
+      "producer_commit": "819d30c3cb32915862281d30cddbe5b7c9bd53cb",
+      "producer_subject": "feat(assets): publish immutable motion v2 candidate contracts",
+      "disposition": "QUALIFIED_OFFLINE_CONTRACT_ONLY",
+      "published_master": "efc1f56b19d3cd33d64a0aff6a960f0b772277bf",
+      "published_sha256": "544a2927ddecdc70467894e31365213c16ed6442830c6c64b252595a24607692",
+      "producer_task": "C06-MOTION-V2 candidate",
+      "producer_evidence": {
+        "path": "docs/mcr/contracts/avatar-motion-v2/validation.md",
+        "sha256": "b3ccf7c25375788dd7255825195a5ef6a964eb1bf493e8bb204625a9baab5b38"
+      },
+      "producer_disposition": "34 deterministic outputs, 15 valid/16 invalid config schema checks; candidate-only production admission DENIED."
+    },
+    {
+      "path": "contracts/fixtures/assets/motion-v2/valid/layered-body-5.json",
+      "old_sha256": null,
+      "new_sha256": "f7e0ca2d17369f198887e00acab3e5176982ca8f0918d36d1a237d7ff386b620",
+      "producer_commit": "819d30c3cb32915862281d30cddbe5b7c9bd53cb",
+      "producer_subject": "feat(assets): publish immutable motion v2 candidate contracts",
+      "disposition": "QUALIFIED_OFFLINE_CONTRACT_ONLY",
+      "published_master": "efc1f56b19d3cd33d64a0aff6a960f0b772277bf",
+      "published_sha256": "f7e0ca2d17369f198887e00acab3e5176982ca8f0918d36d1a237d7ff386b620",
+      "producer_task": "C06-MOTION-V2 candidate",
+      "producer_evidence": {
+        "path": "docs/mcr/contracts/avatar-motion-v2/validation.md",
+        "sha256": "b3ccf7c25375788dd7255825195a5ef6a964eb1bf493e8bb204625a9baab5b38"
+      },
+      "producer_disposition": "34 deterministic outputs, 15 valid/16 invalid config schema checks; candidate-only production admission DENIED."
+    },
+    {
+      "path": "contracts/fixtures/assets/motion-v2/valid/layered-body-6.json",
+      "old_sha256": null,
+      "new_sha256": "e7c51e3780f433c6d82d9a702cd21e024ef6cb519b61d29ba12bbbf177dbf5a9",
+      "producer_commit": "819d30c3cb32915862281d30cddbe5b7c9bd53cb",
+      "producer_subject": "feat(assets): publish immutable motion v2 candidate contracts",
+      "disposition": "QUALIFIED_OFFLINE_CONTRACT_ONLY",
+      "published_master": "efc1f56b19d3cd33d64a0aff6a960f0b772277bf",
+      "published_sha256": "e7c51e3780f433c6d82d9a702cd21e024ef6cb519b61d29ba12bbbf177dbf5a9",
+      "producer_task": "C06-MOTION-V2 candidate",
+      "producer_evidence": {
+        "path": "docs/mcr/contracts/avatar-motion-v2/validation.md",
+        "sha256": "b3ccf7c25375788dd7255825195a5ef6a964eb1bf493e8bb204625a9baab5b38"
+      },
+      "producer_disposition": "34 deterministic outputs, 15 valid/16 invalid config schema checks; candidate-only production admission DENIED."
+    },
+    {
+      "path": "contracts/fixtures/assets/motion-v2/valid/layered-body-7.json",
+      "old_sha256": null,
+      "new_sha256": "10c32e678820fad0e77440571b79dbdfdabdde2ceba33d14f19f17cc130141b2",
+      "producer_commit": "819d30c3cb32915862281d30cddbe5b7c9bd53cb",
+      "producer_subject": "feat(assets): publish immutable motion v2 candidate contracts",
+      "disposition": "QUALIFIED_OFFLINE_CONTRACT_ONLY",
+      "published_master": "efc1f56b19d3cd33d64a0aff6a960f0b772277bf",
+      "published_sha256": "10c32e678820fad0e77440571b79dbdfdabdde2ceba33d14f19f17cc130141b2",
+      "producer_task": "C06-MOTION-V2 candidate",
+      "producer_evidence": {
+        "path": "docs/mcr/contracts/avatar-motion-v2/validation.md",
+        "sha256": "b3ccf7c25375788dd7255825195a5ef6a964eb1bf493e8bb204625a9baab5b38"
+      },
+      "producer_disposition": "34 deterministic outputs, 15 valid/16 invalid config schema checks; candidate-only production admission DENIED."
+    },
+    {
+      "path": "contracts/fixtures/assets/motion-v2/valid/layered-max.json",
+      "old_sha256": null,
+      "new_sha256": "7cb4b5b152af1dbb4d03d160c0ac15be28735b448edf462d7e28e90c0a0bf5cd",
+      "producer_commit": "819d30c3cb32915862281d30cddbe5b7c9bd53cb",
+      "producer_subject": "feat(assets): publish immutable motion v2 candidate contracts",
+      "disposition": "QUALIFIED_OFFLINE_CONTRACT_ONLY",
+      "published_master": "efc1f56b19d3cd33d64a0aff6a960f0b772277bf",
+      "published_sha256": "7cb4b5b152af1dbb4d03d160c0ac15be28735b448edf462d7e28e90c0a0bf5cd",
+      "producer_task": "C06-MOTION-V2 candidate",
+      "producer_evidence": {
+        "path": "docs/mcr/contracts/avatar-motion-v2/validation.md",
+        "sha256": "b3ccf7c25375788dd7255825195a5ef6a964eb1bf493e8bb204625a9baab5b38"
+      },
+      "producer_disposition": "34 deterministic outputs, 15 valid/16 invalid config schema checks; candidate-only production admission DENIED."
+    },
+    {
+      "path": "contracts/fixtures/assets/motion-v2/valid/preset-01.json",
+      "old_sha256": null,
+      "new_sha256": "405506bc4f9465f90586108e051a1bf4796ded4f6bb200174d1e20c9ebb04595",
+      "producer_commit": "819d30c3cb32915862281d30cddbe5b7c9bd53cb",
+      "producer_subject": "feat(assets): publish immutable motion v2 candidate contracts",
+      "disposition": "QUALIFIED_OFFLINE_CONTRACT_ONLY",
+      "published_master": "efc1f56b19d3cd33d64a0aff6a960f0b772277bf",
+      "published_sha256": "405506bc4f9465f90586108e051a1bf4796ded4f6bb200174d1e20c9ebb04595",
+      "producer_task": "C06-MOTION-V2 candidate",
+      "producer_evidence": {
+        "path": "docs/mcr/contracts/avatar-motion-v2/validation.md",
+        "sha256": "b3ccf7c25375788dd7255825195a5ef6a964eb1bf493e8bb204625a9baab5b38"
+      },
+      "producer_disposition": "34 deterministic outputs, 15 valid/16 invalid config schema checks; candidate-only production admission DENIED."
+    },
+    {
+      "path": "contracts/fixtures/assets/motion-v2/valid/preset-02.json",
+      "old_sha256": null,
+      "new_sha256": "ebaf17e5829c09f21a3906da4b92b7b815c2d5b1da60a99212fa223190e82882",
+      "producer_commit": "819d30c3cb32915862281d30cddbe5b7c9bd53cb",
+      "producer_subject": "feat(assets): publish immutable motion v2 candidate contracts",
+      "disposition": "QUALIFIED_OFFLINE_CONTRACT_ONLY",
+      "published_master": "efc1f56b19d3cd33d64a0aff6a960f0b772277bf",
+      "published_sha256": "ebaf17e5829c09f21a3906da4b92b7b815c2d5b1da60a99212fa223190e82882",
+      "producer_task": "C06-MOTION-V2 candidate",
+      "producer_evidence": {
+        "path": "docs/mcr/contracts/avatar-motion-v2/validation.md",
+        "sha256": "b3ccf7c25375788dd7255825195a5ef6a964eb1bf493e8bb204625a9baab5b38"
+      },
+      "producer_disposition": "34 deterministic outputs, 15 valid/16 invalid config schema checks; candidate-only production admission DENIED."
+    },
+    {
+      "path": "contracts/fixtures/assets/motion-v2/valid/preset-03.json",
+      "old_sha256": null,
+      "new_sha256": "2cc0484346bc665a6705fafab51a1204e625a6bc0cc7b764bf9d42d8494e2b67",
+      "producer_commit": "819d30c3cb32915862281d30cddbe5b7c9bd53cb",
+      "producer_subject": "feat(assets): publish immutable motion v2 candidate contracts",
+      "disposition": "QUALIFIED_OFFLINE_CONTRACT_ONLY",
+      "published_master": "efc1f56b19d3cd33d64a0aff6a960f0b772277bf",
+      "published_sha256": "2cc0484346bc665a6705fafab51a1204e625a6bc0cc7b764bf9d42d8494e2b67",
+      "producer_task": "C06-MOTION-V2 candidate",
+      "producer_evidence": {
+        "path": "docs/mcr/contracts/avatar-motion-v2/validation.md",
+        "sha256": "b3ccf7c25375788dd7255825195a5ef6a964eb1bf493e8bb204625a9baab5b38"
+      },
+      "producer_disposition": "34 deterministic outputs, 15 valid/16 invalid config schema checks; candidate-only production admission DENIED."
+    },
+    {
+      "path": "contracts/fixtures/assets/motion-v2/valid/preset-04.json",
+      "old_sha256": null,
+      "new_sha256": "8a1c0f8c7beecf03972b1582c3f9a3b60130d6a2b1170da4a3932bf0817c5496",
+      "producer_commit": "819d30c3cb32915862281d30cddbe5b7c9bd53cb",
+      "producer_subject": "feat(assets): publish immutable motion v2 candidate contracts",
+      "disposition": "QUALIFIED_OFFLINE_CONTRACT_ONLY",
+      "published_master": "efc1f56b19d3cd33d64a0aff6a960f0b772277bf",
+      "published_sha256": "8a1c0f8c7beecf03972b1582c3f9a3b60130d6a2b1170da4a3932bf0817c5496",
+      "producer_task": "C06-MOTION-V2 candidate",
+      "producer_evidence": {
+        "path": "docs/mcr/contracts/avatar-motion-v2/validation.md",
+        "sha256": "b3ccf7c25375788dd7255825195a5ef6a964eb1bf493e8bb204625a9baab5b38"
+      },
+      "producer_disposition": "34 deterministic outputs, 15 valid/16 invalid config schema checks; candidate-only production admission DENIED."
+    },
+    {
+      "path": "contracts/fixtures/assets/motion-v2/valid/preset-05.json",
+      "old_sha256": null,
+      "new_sha256": "dec0314f3f248b1d00e9977e53c9e4bb8a912415da1a80158bcf1720b4875cb0",
+      "producer_commit": "819d30c3cb32915862281d30cddbe5b7c9bd53cb",
+      "producer_subject": "feat(assets): publish immutable motion v2 candidate contracts",
+      "disposition": "QUALIFIED_OFFLINE_CONTRACT_ONLY",
+      "published_master": "efc1f56b19d3cd33d64a0aff6a960f0b772277bf",
+      "published_sha256": "dec0314f3f248b1d00e9977e53c9e4bb8a912415da1a80158bcf1720b4875cb0",
+      "producer_task": "C06-MOTION-V2 candidate",
+      "producer_evidence": {
+        "path": "docs/mcr/contracts/avatar-motion-v2/validation.md",
+        "sha256": "b3ccf7c25375788dd7255825195a5ef6a964eb1bf493e8bb204625a9baab5b38"
+      },
+      "producer_disposition": "34 deterministic outputs, 15 valid/16 invalid config schema checks; candidate-only production admission DENIED."
+    },
+    {
+      "path": "contracts/fixtures/assets/motion-v2/valid/preset-06.json",
+      "old_sha256": null,
+      "new_sha256": "cbb43c19963d43a9b25c279fd75964c52e9cfa1b75ba3c45f49970198ca01ede",
+      "producer_commit": "819d30c3cb32915862281d30cddbe5b7c9bd53cb",
+      "producer_subject": "feat(assets): publish immutable motion v2 candidate contracts",
+      "disposition": "QUALIFIED_OFFLINE_CONTRACT_ONLY",
+      "published_master": "efc1f56b19d3cd33d64a0aff6a960f0b772277bf",
+      "published_sha256": "cbb43c19963d43a9b25c279fd75964c52e9cfa1b75ba3c45f49970198ca01ede",
+      "producer_task": "C06-MOTION-V2 candidate",
+      "producer_evidence": {
+        "path": "docs/mcr/contracts/avatar-motion-v2/validation.md",
+        "sha256": "b3ccf7c25375788dd7255825195a5ef6a964eb1bf493e8bb204625a9baab5b38"
+      },
+      "producer_disposition": "34 deterministic outputs, 15 valid/16 invalid config schema checks; candidate-only production admission DENIED."
+    },
+    {
+      "path": "contracts/fixtures/realtime/index.json",
+      "old_sha256": "ad10d9c9a15a009da70982f4c586ff446546e17c634d3127d26e69a66f623b0b",
+      "new_sha256": "cb4133e389293820230bf234fbc16051fe76691e8aae30201f9467a8919fa13b",
+      "producer_commit": "930380deed5c47b4c9eed920a8d9352278f0e90e",
+      "producer_subject": "feat(contracts): define explicit Social policy baseline and invalidation frames",
+      "disposition": "QUALIFIED_OFFLINE_CONTRACT_ONLY",
+      "published_master": "efc1f56b19d3cd33d64a0aff6a960f0b772277bf",
+      "published_sha256": "cb4133e389293820230bf234fbc16051fe76691e8aae30201f9467a8919fa13b",
+      "producer_task": "C05 Social policy baseline/invalidation",
+      "producer_evidence": {
+        "path": "docs/mcr/backend/social-policy-wire.md",
+        "sha256": "d2d2c416d88078d99bbdf76ca8fdb16245c0f74203f3a5cd98877b2b7ecde001"
+      },
+      "producer_disposition": "37 oracle cases/26 indexed fixtures exit0; wire shape only, not live privacy/multiuser acceptance. Published packetdc90e9a1."
+    },
+    {
+      "path": "contracts/fixtures/realtime/social-policy-baseline.json",
+      "old_sha256": null,
+      "new_sha256": "bfba4cbb02396319148b151e24ff904b7abffe59c6e97568a4d44c2d23fa2cb4",
+      "producer_commit": "930380deed5c47b4c9eed920a8d9352278f0e90e",
+      "producer_subject": "feat(contracts): define explicit Social policy baseline and invalidation frames",
+      "disposition": "QUALIFIED_OFFLINE_CONTRACT_ONLY",
+      "published_master": "efc1f56b19d3cd33d64a0aff6a960f0b772277bf",
+      "published_sha256": "bfba4cbb02396319148b151e24ff904b7abffe59c6e97568a4d44c2d23fa2cb4",
+      "producer_task": "C05 Social policy baseline/invalidation",
+      "producer_evidence": {
+        "path": "docs/mcr/backend/social-policy-wire.md",
+        "sha256": "d2d2c416d88078d99bbdf76ca8fdb16245c0f74203f3a5cd98877b2b7ecde001"
+      },
+      "producer_disposition": "37 oracle cases/26 indexed fixtures exit0; wire shape only, not live privacy/multiuser acceptance. Published packetdc90e9a1."
+    },
+    {
+      "path": "contracts/fixtures/realtime/social-policy-private-field-rejection.json",
+      "old_sha256": null,
+      "new_sha256": "5e086baf3e92581f9232f8e6a15349ce4bd50e15085e82157170ac5d1ffedb02",
+      "producer_commit": "930380deed5c47b4c9eed920a8d9352278f0e90e",
+      "producer_subject": "feat(contracts): define explicit Social policy baseline and invalidation frames",
+      "disposition": "QUALIFIED_OFFLINE_CONTRACT_ONLY",
+      "published_master": "efc1f56b19d3cd33d64a0aff6a960f0b772277bf",
+      "published_sha256": "5e086baf3e92581f9232f8e6a15349ce4bd50e15085e82157170ac5d1ffedb02",
+      "producer_task": "C05 Social policy baseline/invalidation",
+      "producer_evidence": {
+        "path": "docs/mcr/backend/social-policy-wire.md",
+        "sha256": "d2d2c416d88078d99bbdf76ca8fdb16245c0f74203f3a5cd98877b2b7ecde001"
+      },
+      "producer_disposition": "37 oracle cases/26 indexed fixtures exit0; wire shape only, not live privacy/multiuser acceptance. Published packetdc90e9a1."
+    },
+    {
+      "path": "contracts/generated/mcr-core.openapi.json",
+      "old_sha256": "4ea617a4ccf96c72b2e5db99e64666f676048f5baf215a2a05d540ef3bdde542",
+      "new_sha256": "5b62b6e545f2ac5c367bd189bed6c509b76b4383f47b016d7b075c88f2742978",
+      "producer_commit": "d839bc208dfe21f33b4a72c03868952268c34608",
+      "producer_subject": "feat(contracts): define reviewed motion v2 successor and public wire",
+      "disposition": "QUALIFIED_OFFLINE_CONTRACT_ONLY",
+      "published_master": "efc1f56b19d3cd33d64a0aff6a960f0b772277bf",
+      "published_sha256": "5b62b6e545f2ac5c367bd189bed6c509b76b4383f47b016d7b075c88f2742978",
+      "producer_task": "C06-MOTION-V2 reviewed successor, C03/C05 projections",
+      "producer_evidence": {
+        "path": "docs/mcr/contracts/avatar-motion-v2/reviewed-successor.md",
+        "sha256": "3a11d4c4a632c11ae114cf9b728bd55f1dafa0c583a334a07e8c25aaae94aad7"
+      },
+      "producer_disposition": "Offline schema/core six-document and generated mirror qualification; source publication is not live or art admission."
+    },
+    {
+      "path": "contracts/generated/mcr-domain.openapi.json",
+      "old_sha256": "79a066b88119e53f6f16876d7e3fe59a18ee956be6ed6d2af7ee1efa187e0feb",
+      "new_sha256": "4c185d9099b7e02cc61fce1e58b475be169e78bd5ba20b295e99827fc07e034f",
+      "producer_commit": "0e75917206d716b4f7f80825f9d5526a3c11f35a",
+      "producer_subject": "Reconcile named generated C05 and Intro baseline drift",
+      "disposition": "QUALIFIED_OFFLINE_CONTRACT_ONLY",
+      "published_master": "efc1f56b19d3cd33d64a0aff6a960f0b772277bf",
+      "published_sha256": "4c185d9099b7e02cc61fce1e58b475be169e78bd5ba20b295e99827fc07e034f",
+      "producer_task": "C05 and C04 published baseline projection repair",
+      "producer_evidence": {
+        "type": "canonical publisher receipt",
+        "commit": "42a542e8f4b045a1afe426c1f6bdd56ba2c2b842",
+        "generation_exit": 0,
+        "check_exit": 0
+      },
+      "producer_disposition": "QUALIFIED_OFFLINE_GENERATION_ONLY; exact2mirrors, canonical inputs and generator unchanged, no Wall feature.",
+      "published_commit": "42a542e8f4b045a1afe426c1f6bdd56ba2c2b842"
+    },
+    {
+      "path": "contracts/realtime/v1/policy.json",
+      "old_sha256": "3e77e21b036386803c7d5bff0145c434f111ba51b861219a211e853a43d0628b",
+      "new_sha256": "ef61bfba5337a06216e98a9d3eba4ed952dfb405815088b926832276d2464cd3",
+      "producer_commit": "930380deed5c47b4c9eed920a8d9352278f0e90e",
+      "producer_subject": "feat(contracts): define explicit Social policy baseline and invalidation frames",
+      "disposition": "QUALIFIED_OFFLINE_CONTRACT_ONLY",
+      "published_master": "efc1f56b19d3cd33d64a0aff6a960f0b772277bf",
+      "published_sha256": "ef61bfba5337a06216e98a9d3eba4ed952dfb405815088b926832276d2464cd3",
+      "producer_task": "C05 Social policy baseline/invalidation",
+      "producer_evidence": {
+        "path": "docs/mcr/backend/social-policy-wire.md",
+        "sha256": "d2d2c416d88078d99bbdf76ca8fdb16245c0f74203f3a5cd98877b2b7ecde001"
+      },
+      "producer_disposition": "37 oracle cases/26 indexed fixtures exit0; wire shape only, not live privacy/multiuser acceptance. Published packetdc90e9a1."
+    },
+    {
+      "path": "contracts/realtime/v1/world.schema.json",
+      "old_sha256": "1732e627037fe91533ac6f7fe74e36683ce9b846bfbfc020b3cce298ae84df36",
+      "new_sha256": "10d328b555e24f444454bd1d01770bdc4acc3aabeeca8d6a3c5fb10281f2a794",
+      "producer_commit": "930380deed5c47b4c9eed920a8d9352278f0e90e",
+      "producer_subject": "feat(contracts): define explicit Social policy baseline and invalidation frames",
+      "disposition": "QUALIFIED_OFFLINE_CONTRACT_ONLY",
+      "published_master": "efc1f56b19d3cd33d64a0aff6a960f0b772277bf",
+      "published_sha256": "10d328b555e24f444454bd1d01770bdc4acc3aabeeca8d6a3c5fb10281f2a794",
+      "producer_task": "C05 Social policy baseline/invalidation",
+      "producer_evidence": {
+        "path": "docs/mcr/backend/social-policy-wire.md",
+        "sha256": "d2d2c416d88078d99bbdf76ca8fdb16245c0f74203f3a5cd98877b2b7ecde001"
+      },
+      "producer_disposition": "37 oracle cases/26 indexed fixtures exit0; wire shape only, not live privacy/multiuser acceptance. Published packetdc90e9a1."
+    },
+    {
+      "path": "frontend/src/shared/api/domain-operations.generated.ts",
+      "old_sha256": "a38ffacb0cc989e62b63f6baecedff113b7ac8f87979dd3773aa2ae26b12ee74",
+      "new_sha256": "5abefd1e27a1472291b706eed0ddb7c1c06cc9290ea32d105844caaa0ed66308",
+      "producer_commit": "efc1f56b19d3cd33d64a0aff6a960f0b772277bf",
+      "producer_subject": "Refresh public domain transport baseline header",
+      "disposition": "QUALIFIED_OFFLINE_CONTRACT_ONLY",
+      "published_master": "efc1f56b19d3cd33d64a0aff6a960f0b772277bf",
+      "published_sha256": "5abefd1e27a1472291b706eed0ddb7c1c06cc9290ea32d105844caaa0ed66308",
+      "producer_task": "C04/C07 existing generated transport metadata baseline",
+      "producer_evidence": {
+        "type": "canonical publisher receipt",
+        "commit": "efc1f56b19d3cd33d64a0aff6a960f0b772277bf",
+        "initial_check_exit": 1,
+        "generation_exit": 0,
+        "final_check_exit": 0
+      },
+      "producer_disposition": "QUALIFIED_OFFLINE_GENERATION_ONLY; exactoneheaderline, existing generator/operations unchanged, no Wall feature.",
+      "published_commit": "efc1f56b19d3cd33d64a0aff6a960f0b772277bf"
+    },
+    {
+      "path": "scripts/mcr/validate-assets.py",
+      "old_sha256": "11c766b57b9ca08185641005dd9b7b5d8dea84ea4ddc48e8d929aa1abf52b18d",
+      "new_sha256": "a4fb1f8cd579031c585f458fe7eb6607116afdc41c90113007ab60de3ccb023c",
+      "producer_commit": "d839bc208dfe21f33b4a72c03868952268c34608",
+      "producer_subject": "feat(contracts): define reviewed motion v2 successor and public wire",
+      "disposition": "QUALIFIED_OFFLINE_CONTRACT_ONLY",
+      "published_master": "efc1f56b19d3cd33d64a0aff6a960f0b772277bf",
+      "published_sha256": "a4fb1f8cd579031c585f458fe7eb6607116afdc41c90113007ab60de3ccb023c",
+      "producer_task": "C06-MOTION-V2 reviewed successor, C03/C05 projections",
+      "producer_evidence": {
+        "path": "docs/mcr/contracts/avatar-motion-v2/reviewed-successor.md",
+        "sha256": "3a11d4c4a632c11ae114cf9b728bd55f1dafa0c583a334a07e8c25aaae94aad7"
+      },
+      "producer_disposition": "Offline schema/core six-document and generated mirror qualification; source publication is not live or art admission."
+    },
+    {
+      "path": "scripts/mcr/validate-domain.py",
+      "old_sha256": "8a02f234caa5b561649477860b71bca297fe65cf7253760c6fcd12a3ebfa7811",
+      "new_sha256": "b6dac35195063fe4248fc7946ac85eb17de03ff79c161545c4d6f750383a0098",
+      "producer_commit": "1babe8ee73086f3ebeced1a9caef8f751a533e12",
+      "producer_subject": "fix(contracts): resolve reviewed asset references in domain oracle",
+      "disposition": "QUALIFIED_OFFLINE_CONTRACT_ONLY",
+      "published_master": "efc1f56b19d3cd33d64a0aff6a960f0b772277bf",
+      "published_sha256": "b6dac35195063fe4248fc7946ac85eb17de03ff79c161545c4d6f750383a0098",
+      "producer_task": "Domain oracle reviewed asset registry correction",
+      "producer_evidence": {
+        "path": "docs/mcr/backend/gateway-feature-route-intake.json",
+        "sha256": "ed33880171ed8276c2e9f88ea3e63d483b5073c517a8d6dcff1a1ac86ab99c67"
+      },
+      "producer_disposition": "Complete domain oracle47fixtures and47domain tests exit0; resolves reviewed asset refs only, no live route acceptance."
+    },
+    {
+      "path": "scripts/mcr/validate-realtime.py",
+      "old_sha256": "0934aedbd1c7004398b4521c6f304271e104a6e7d3b5119d8118ff0b5ae7d40e",
+      "new_sha256": "31ee92c619fae378c03a6ed25339dae9bd1dfeee7b8cb986cc38bd34c4400ee9",
+      "producer_commit": "930380deed5c47b4c9eed920a8d9352278f0e90e",
+      "producer_subject": "feat(contracts): define explicit Social policy baseline and invalidation frames",
+      "disposition": "QUALIFIED_OFFLINE_CONTRACT_ONLY",
+      "published_master": "efc1f56b19d3cd33d64a0aff6a960f0b772277bf",
+      "published_sha256": "31ee92c619fae378c03a6ed25339dae9bd1dfeee7b8cb986cc38bd34c4400ee9",
+      "producer_task": "C05 Social policy baseline/invalidation",
+      "producer_evidence": {
+        "path": "docs/mcr/backend/social-policy-wire.md",
+        "sha256": "d2d2c416d88078d99bbdf76ca8fdb16245c0f74203f3a5cd98877b2b7ecde001"
+      },
+      "producer_disposition": "37 oracle cases/26 indexed fixtures exit0; wire shape only, not live privacy/multiuser acceptance. Published packetdc90e9a1."
+    }
+  ],
+  "operation_delta": {
+    "old_count": 134,
+    "new_count": 135,
+    "added": {
+      "getConcertIntro": [
+        "/api/concert/events/{eventId}/intros/{introId}",
+        "get"
+      ]
+    },
+    "removed": {},
+    "changed": {}
+  },
+  "status": "THREE_PROJECTION_PUBLISHED_SOURCE_AUDIT_COMPLETE - fresh full candidate validation pending",
+  "unresolved_producer_deltas": [],
+  "old_archive": {
+    "path": "scripts/mcr/contracts/qa01-coverage/archive/pins-d042638789bc84587be7bbbe09b32c324570c75f.json",
+    "sha256": "d5651fbcfc29b83321e6b5ffeee2293bc57f4ba7b6c18365b556379436901aa1"
+  },
+  "source_commits": [
+    "0e75917206d716b4f7f80825f9d5526a3c11f35a",
+    "1babe8ee73086f3ebeced1a9caef8f751a533e12",
+    "3bdc49c63c9bef57dec8bcf04ed1d1b7af671be1",
+    "819d30c3cb32915862281d30cddbe5b7c9bd53cb",
+    "930380deed5c47b4c9eed920a8d9352278f0e90e",
+    "d839bc208dfe21f33b4a72c03868952268c34608",
+    "efc1f56b19d3cd33d64a0aff6a960f0b772277bf"
+  ],
+  "active_pins_changed": false,
+  "canonical_publication_receipt": {
+    "commit": "42a542e8f4b045a1afe426c1f6bdd56ba2c2b842",
+    "producer_commit": "0e75917206d716b4f7f80825f9d5526a3c11f35a",
+    "publisher": "Root",
+    "source_base": "7d5",
+    "mirror_sha256": "4c185d9099b7e02cc61fce1e58b475be169e78bd5ba20b295e99827fc07e034f",
+    "producer_commands": [
+      {
+        "command": "frozen public canonical inputs: deterministic generation",
+        "exit": 0
+      },
+      {
+        "command": "same unchanged generator --check",
+        "exit": 0
+      }
+    ],
+    "delivery_evidence": "Single canonical publisher receipt, supplied directly by Root; no consumer remote-proof loop."
+  },
+  "previous_candidate": "c525bd8c3129c191f9ed97f355ba5ead0ec006f6",
+  "previous_preflight": {
+    "source": "a5d372bac1e2ae0f737a08d7b607f735d9b30a84",
+    "exit": 1,
+    "error": "generated OpenAPI drift",
+    "active_pins_changed": false
+  },
+  "transport_publication_receipt": {
+    "commit": "efc1f56b19d3cd33d64a0aff6a960f0b772277bf",
+    "publisher": "Root",
+    "producer": "Wall202 baseline-only exact shared-file grant",
+    "output_sha256": "5abefd1e27a1472291b706eed0ddb7c1c06cc9290ea32d105844caaa0ed66308",
+    "initial_check_exit": 1,
+    "generation_exit": 0,
+    "final_check_exit": 0,
+    "input_scope": "Frozen public 3cbaeae5 canonical inputs and unchanged generator; no private Wall inputs",
+    "delivery_evidence": "Single canonical Root publication receipt supplied directly; no consumer remote proof."
+  },
+  "previous_preflights": [
+    {
+      "source": "a5d372bac1e2ae0f737a08d7b607f735d9b30a84",
+      "exit": 1,
+      "error": "generated OpenAPI drift",
+      "active_pins_changed": false
+    },
+    {
+      "source": "4760ffabc31a6fccf898fa482e34348320d82367",
+      "exit": 1,
+      "error": "generator drift/check failure: scripts/mcr/generate-domain-transport.py",
+      "schema_definitions": 229,
+      "fixture_outcomes": 185,
+      "motion_outcomes": 62,
+      "active_pins_changed": false
+    }
+  ]
+}
