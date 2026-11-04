@@ -133,7 +133,16 @@ impl PostTransport for QualifiedPostTransport {
                 query: Some(query),
                 authority,
             })?)
-            .await?;
+            .await
+            .map_err(|status| {
+                #[cfg(test)]
+                eprintln!(
+                    "native qualified Post list failure: {:?}: {}",
+                    status.code(),
+                    status.message()
+                );
+                status
+            })?;
         self.reply(r)
     }
     async fn comment(
