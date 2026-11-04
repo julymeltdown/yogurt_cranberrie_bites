@@ -283,6 +283,14 @@ fn admission_failure(stage: &'static str) -> impl FnOnce(WorldError) -> SafeClos
         safe(error)
     }
 }
+// These fixed labels and data-free error variants identify authority failures
+// without exposing identities, credentials, SQL or remote response bodies.
+fn authority_failure(stage: &'static str) -> impl FnOnce(WorldError) -> WorldError {
+    move |error| {
+        eprintln!("World authority failure stage={stage} error={error:?}");
+        error
+    }
+}
 /// Real production bridge once a qualified live-owner implementation is supplied.
 /// All I/O occurs outside the shared publication fence; only bounded snapshots are read at 20Hz.
 pub struct AdmissionBridge {
@@ -1005,7 +1013,10 @@ impl AdmissionBridge {
         if self.remote_generation().is_err() {
             return Ok(());
         }
-        self.owners.pause().await?;
+        self.owners
+            .pause()
+            .await
+            .map_err(authority_failure("maintenance-publication-pause"))?;
         let mut until = Utc::now() + TimeDelta::milliseconds(5000);
         for room in self.rooms.keys() {
             let lease = self
@@ -1016,14 +1027,17 @@ impl AdmissionBridge {
                     &self.owner,
                     TimeDelta::milliseconds(5000),
                 )
-                .await?;
+                .await
+                .map_err(authority_failure("maintenance-room-renewal"))?;
             until = until.min(lease.expires_at);
         }
         *self
             .owner_until
             .lock()
             .map_err(|_| WorldError::Unavailable)? = until;
-        self.cleanup_inner().await?;
+        self.cleanup_inner()
+            .await
+            .map_err(authority_failure("maintenance-membership-cleanup"))?;
         let entries: Vec<_> = self
             .views
             .lock()
@@ -1065,7 +1079,10 @@ impl AdmissionBridge {
             }
         }
         if self.remote_generation().is_ok() {
-            self.owners.activate().await?;
+            self.owners
+                .activate()
+                .await
+                .map_err(authority_failure("maintenance-publication-activation"))?;
         }
         Ok(())
     }
@@ -1089,13 +1106,22 @@ impl AdmissionBridge {
     }
     pub async fn cleanup(&self) -> Result<usize, WorldError> {
         let _gate = self.admission_gate.lock().await;
-        self.owners.pause().await?;
-        let remaining = self.cleanup_inner().await?;
+        self.owners
+            .pause()
+            .await
+            .map_err(authority_failure("cleanup-publication-pause"))?;
+        let remaining = self
+            .cleanup_inner()
+            .await
+            .map_err(authority_failure("cleanup-membership-release"))?;
         // A departed generation cannot leave every surviving member's permit
         // paused until the next maintenance tick. Recheck retained plans under
         // the real SQL fence; this creates no new authority or expiry extension.
         if self.remote_generation().is_ok() {
-            self.owners.activate().await?;
+            self.owners
+                .activate()
+                .await
+                .map_err(authority_failure("cleanup-publication-activation"))?;
         }
         Ok(remaining)
     }

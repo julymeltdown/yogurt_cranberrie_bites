@@ -22,6 +22,7 @@ use crate::{
         simulation::ResourcePin,
     },
 };
+use anyhow::Context;
 use concert_application::world_ticket::OwnerIdentity;
 use concert_domain::{
     world::{Limits, WorldMap},
@@ -330,7 +331,15 @@ impl WorldRuntimeSettings {
             let mut tick = tokio::time::interval(Duration::from_secs(1));
             tick.set_missed_tick_behavior(tokio::time::MissedTickBehavior::Skip);
             loop {
-                tokio::select! {biased;_ = platform::shutdown::global().cancelled()=>return Ok::<(),anyhow::Error>(()),_ = tick.tick()=>{tokio::time::timeout(Duration::from_secs(2),bridge.maintain()).await??;}}
+                tokio::select! {
+                    biased;
+                    _ = platform::shutdown::global().cancelled()=>return Ok::<(),anyhow::Error>(()),
+                    _ = tick.tick()=>{
+                        tokio::time::timeout(Duration::from_secs(2),bridge.maintain())
+                            .await.context("World authority maintenance timed out")?
+                            .context("World authority maintenance failed")?;
+                    }
+                }
             }
         };
         let server = axum::serve(listener, world_ws::router(state))
@@ -370,29 +379,89 @@ impl WorldRuntimeSettings {
         // cleanup path as later server, authority or replay failure.
         let result = match startup {
             Ok(()) => tokio::select! {
-                result=async { server.await }=>result.map_err(anyhow::Error::from),
+                result=async { server.await }=>result.context("World socket server failed"),
                 result=authority=>result,
                 result=remote.run()=>result.map_err(|_|anyhow::anyhow!("World replay readiness lost")),
             },
             Err(error) => Err(error),
         };
-        let remote_cleanup = remote.shutdown().await;
-        // Dropping all listener states closes sockets and the final handle stops
-        // the owner independently of a full command queue. Await its cleanup report.
-        transport.close_all(crate::world::ingress::SafeClose::UNAVAILABLE);
-        handle.request_stop();
-        drop(handle);
-        let report = tokio::time::timeout(Duration::from_secs(2), owner_task).await??;
-        for b in report.remaining_cleanup {
-            let _ = crate::world::membership::CanonicalAuthorityPort::release(&bridge, &b);
+        if let Err(error) = &result {
+            // Only the fixed top-level stage is printed, never a response body,
+            // credential, identity or SQL error. Preserve it before cleanup.
+            eprintln!("World supervised failure before cleanup: {error}");
         }
-        let pending = tokio::time::timeout(Duration::from_secs(2), bridge.cleanup()).await??;
-        anyhow::ensure!(
-            pending == 0,
-            "World shutdown has pending persistent membership cleanup"
+        let cleanup = async {
+            let remote_cleanup = remote.shutdown().await;
+            // Dropping all listener states closes sockets and the final handle stops
+            // the owner independently of a full command queue. Await its cleanup report.
+            transport.close_all(crate::world::ingress::SafeClose::UNAVAILABLE);
+            handle.request_stop();
+            drop(handle);
+            let report = tokio::time::timeout(Duration::from_secs(2), owner_task)
+                .await
+                .context("World owner shutdown timed out")?
+                .context("World owner shutdown task failed")?;
+            for b in report.remaining_cleanup {
+                let _ = crate::world::membership::CanonicalAuthorityPort::release(&bridge, &b);
+            }
+            let pending = tokio::time::timeout(Duration::from_secs(2), bridge.cleanup())
+                .await
+                .context("World persistent cleanup timed out")?
+                .context("World persistent cleanup failed")?;
+            anyhow::ensure!(
+                pending == 0,
+                "World shutdown has pending persistent membership cleanup"
+            );
+            remote_cleanup.map_err(|_| anyhow::anyhow!("World replay shutdown incomplete"))?;
+            Ok(())
+        }
+        .await;
+        finish_world_run(result, cleanup)
+    }
+}
+/// Cleanup failure must not erase the supervised failure that initiated shutdown.
+fn finish_world_run(result: anyhow::Result<()>, cleanup: anyhow::Result<()>) -> anyhow::Result<()> {
+    if let Err(error) = &cleanup {
+        eprintln!("World shutdown failure: {error}");
+    }
+    match (result, cleanup) {
+        (Err(error), Err(_)) => {
+            Err(error.context("World shutdown also failed; see stage diagnostic"))
+        }
+        (Err(error), Ok(())) => Err(error),
+        (Ok(()), cleanup) => cleanup,
+    }
+}
+
+#[cfg(test)]
+mod shutdown_result_tests {
+    use super::finish_world_run;
+
+    #[test]
+    fn cleanup_failure_preserves_original_supervised_error() {
+        let primary =
+            anyhow::Error::new(concert_application::world_ticket::WorldError::OwnerFenced)
+                .context("World authority maintenance failed");
+        let result = finish_world_run(Err(primary), Err(anyhow::anyhow!("cleanup unavailable")))
+            .unwrap_err();
+        assert!(result
+            .downcast_ref::<concert_application::world_ticket::WorldError>()
+            .is_some_and(|error| matches!(
+                error,
+                concert_application::world_ticket::WorldError::OwnerFenced
+            )));
+        assert!(format!("{result:#}").contains("World authority maintenance failed"));
+    }
+
+    #[test]
+    fn successful_runtime_still_reports_cleanup_failure() {
+        assert_eq!(
+            finish_world_run(Ok(()), Err(anyhow::anyhow!("cleanup unavailable")))
+                .unwrap_err()
+                .to_string(),
+            "cleanup unavailable"
         );
-        remote_cleanup.map_err(|_| anyhow::anyhow!("World replay shutdown incomplete"))?;
-        result
+        assert!(finish_world_run(Ok(()), Ok(())).is_ok());
     }
 }
 fn endpoint(name: &str, value: &str, production: bool) -> anyhow::Result<()> {
