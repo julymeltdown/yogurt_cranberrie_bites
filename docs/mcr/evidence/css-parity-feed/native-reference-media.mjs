@@ -33,12 +33,13 @@ const { createServer } = await import(pathToFileURL(req.resolve('vite')))
 const { default: react } = await import(pathToFileURL(req.resolve('@vitejs/plugin-react')))
 const { chromium, expect } = req('@playwright/test')
 const server = await createServer({ root: frontend, configFile: false, plugins: [react()], cacheDir: resolve(tmp, 'cache'), logLevel: 'error', server: { host: '127.0.0.1', port: 5292, strictPort: true, hmr: false } })
-const report = { status: 'FAIL', phase, slot: process.env.MCR_FEED_SLOT, head: git('rev-parse', 'HEAD').toString().trim(), cssSha256: hash(await readFile(resolve(repo, cssPath))), baselineCssSha256: hash(baselineCss), inputs, cases: [], errors: [], qualification: 'Actual Feed/FeedImage/FeedThread over Root synthetic fixture. Complete approved screenshot thumbnails at native size; no original photographs, live posts, real HTTP acceptance or full parity certification.' }
+const report = { status: 'FAIL', phase, slot: process.env.MCR_FEED_SLOT, head: git('rev-parse', 'HEAD').toString().trim(), cssSha256: hash(await readFile(resolve(repo, cssPath))), baselineCssSha256: hash(baselineCss), inputs, cases: [], errors: [], qualification: 'Actual Feed/FeedImage/FeedThread over Root synthetic fixture. Complete approved screenshot thumbnails with pinned native metadata and explicitly permitted CSS display scaling in the Feed fixture; no original photographs, live posts, real HTTP acceptance or full parity certification.' }
 report.driverSha256 = hash(await readFile(resolve(repo, 'docs/mcr/evidence/css-parity-feed/native-reference-media.mjs')))
 report.trackedChanges = git('diff', '--name-only').toString().trim().split('\n').filter(Boolean)
+report.displayPolicy = 'Latest human/Main clarification permits CSS display enlargement of complete approved fixture crops. Source bytes and true intrinsic dimensions stay pinned. Feed fixture only; Thread native display and production authorized-media policy remain unchanged.'
 const geometry = async page => page.locator('.reference-frame').evaluate(frame => {
   const rect = element => { const r = element.getBoundingClientRect(); return { x: r.x, y: r.y, width: r.width, height: r.height } }
-  return { viewport: innerWidth, documentWidth: document.documentElement.scrollWidth, frame: rect(frame), cards: [...frame.querySelectorAll('.feed-post')].map(rect), portraits: [...frame.querySelectorAll('.feed-portrait')].map(rect), images: [...frame.querySelectorAll('.feed-media img')].map(e => ({ ...rect(e), naturalWidth: e.naturalWidth, naturalHeight: e.naturalHeight, declaredWidth: e.getAttribute('width'), declaredHeight: e.getAttribute('height'), blob: e.src.startsWith('blob:') })), figures: [...frame.querySelectorAll('.feed-media figure')].map(rect) }
+  return { viewport: innerWidth, documentWidth: document.documentElement.scrollWidth, frame: rect(frame), cards: [...frame.querySelectorAll('.feed-post')].map(rect), authors: [...frame.querySelectorAll('.feed-author-line strong')].map(rect), copy: [...frame.querySelectorAll('.feed-post-copy')].map(e => ({ ...rect(e), textStartX: e.getBoundingClientRect().x + parseFloat(getComputedStyle(e).paddingLeft) })), actions: [...frame.querySelectorAll('.feed-post-actions button')].map(rect), portraits: [...frame.querySelectorAll('.feed-portrait')].map(rect), images: [...frame.querySelectorAll('.feed-media img')].map(e => ({ ...rect(e), naturalWidth: e.naturalWidth, naturalHeight: e.naturalHeight, declaredWidth: e.getAttribute('width'), declaredHeight: e.getAttribute('height'), blob: e.src.startsWith('blob:') })), figures: [...frame.querySelectorAll('.feed-media figure')].map(rect) }
 })
 const capture = async (page, name) => {
   const path = resolve(evidence, name + '.png'), bytes = await page.screenshot({ path, fullPage: true })
@@ -49,12 +50,13 @@ const readyImages = async (page, count) => {
   await page.locator('.feed-media img').evaluateAll(es => Promise.all(es.map(e => e.decode())))
   await page.evaluate(() => document.fonts.ready)
 }
-const assertNative = (images, heights) => {
+const assertMedia = (images, heights, displayWidth = null) => {
   assert.equal(images.length, heights.length)
   images.forEach((image, i) => {
     assert.equal(image.naturalWidth, 197); assert.equal(image.naturalHeight, heights[i])
     assert.equal(image.declaredWidth, '197'); assert.equal(image.declaredHeight, String(heights[i])); assert(image.blob)
-    assert(image.width <= 197.1 && image.height <= heights[i] + .1, 'no upscaled display')
+    if (displayWidth === null) assert(image.width <= 197.1 && image.height <= heights[i] + .1, 'Thread/baseline native display remains unchanged')
+    else assert(Math.abs(image.width - displayWidth) < .1, 'approved reference Feed display width')
     assert(Math.abs(image.width / image.height - 197 / heights[i]) < .01, 'complete native crop retains ratio')
   })
 }
@@ -69,20 +71,26 @@ try {
     await page.goto('http://127.0.0.1:5292/src/features/event-feed/__tests__/css-parity-feed/preview.html')
     await expect(page.locator('.feed-post')).toHaveCount(2); await readyImages(page, 2)
     const row = { width, variant, feed: await geometry(page), capture: await capture(page, variant + '-feed-' + width), detail: [] }
-    report.cases.push(row); assert.equal(row.feed.documentWidth, width); assertNative(row.feed.images, [67, 46])
+    report.cases.push(row); assert.equal(row.feed.documentWidth, width); assertMedia(row.feed.images, [67, 46], variant === 'candidate' ? width - 137 : null)
     row.qualification = await page.evaluate(() => window.__REFERENCE_MEDIA_FEED__.qualification)
     assert.equal(row.qualification.inputCommit, assetCommit); assert.equal(row.qualification.productionMedia, false)
     for (const [index, height] of [67, 46].entries()) {
       await page.locator('.feed-post-actions button[aria-label^="Open thread"]').nth(index).click()
       await expect(page.getByRole('region', { name: 'Post thread' })).toBeVisible(); await readyImages(page, 1)
       const detail = { index, geometry: await geometry(page), capture: await capture(page, variant + '-thread-' + index + '-' + width) }
-      row.detail.push(detail); assert.equal(detail.geometry.documentWidth, width); assertNative(detail.geometry.images, [height])
+      row.detail.push(detail); assert.equal(detail.geometry.documentWidth, width); assertMedia(detail.geometry.images, [height])
       await page.locator('.concert-window__close').click(); await expect(page.locator('.feed-post')).toHaveCount(2); await readyImages(page, 2)
     }
     if (variant === 'candidate') {
       row.selectedTabDecoration = await page.getByRole('tab', { name: 'ALL', exact: true }).evaluate(e => getComputedStyle(e).textDecorationLine)
       assert.equal(row.selectedTabDecoration, 'none', 'Feed selected-tab override beats shared underline specificity')
       const previous = report.cases.find(item => item.width === width && item.variant === 'published')
+      assert(row.feed.authors.every(item => Math.abs(item.x - 105) < .1), 'reference author column at x105')
+      assert(row.feed.copy.every(item => Math.abs(item.textStartX - 105) < .1), 'reference body column at x105')
+      assert(row.feed.figures.every(item => Math.abs(item.x - 102) < .1), 'reference media column at x102')
+      assert.deepEqual(row.feed.portraits, previous.feed.portraits.map((item, i) => ({ ...item, y: row.feed.portraits[i].y })), 'portrait x/width/height preserved')
+      assert.deepEqual(row.feed.actions.map(({ x, width }) => ({ x, width })), previous.feed.actions.map(({ x, width }) => ({ x, width })), 'action horizontal positions/target widths preserved')
+      assert(row.feed.actions.every(item => item.width >= 44 && item.height >= 44), '44px action targets')
       row.threadGeometryUnchanged = row.detail.every((item, i) => JSON.stringify(item.geometry) === JSON.stringify(previous.detail[i].geometry))
       assert(row.threadGeometryUnchanged, 'Feed-only CSS must preserve actual Thread geometry')
       await page.getByRole('button', { name: 'Write a post' }).focus()

@@ -1,0 +1,22 @@
+{
+  "slot": "CSS-FEED-COLUMNS-202611041300Z",
+  "acceptedEpoch": 1793797343.457,
+  "releasedEpoch": 1793797368.1606982,
+  "elapsedSinceAccept": 24.70369815826416,
+  "activeElapsedSeconds": 24.55436110496521,
+  "wholePeakBytes": 40360113,
+  "temporaryPeakBytes": 29285274,
+  "durableBytesBeforeReceipt": 11147413,
+  "minimumFreeBytes": 17067610112,
+  "currentFreeBytes": 17076584448,
+  "processesRetiredByOuterCleanup": [],
+  "ownProcessesRemaining": [],
+  "port5292Bindable": true,
+  "ownedLinkAbsent": true,
+  "privateTMPcacheProfileAbsent": true,
+  "supervisorExit": 0,
+  "error": null,
+  "cssSha256": "737dc607d53807bc6fcc1be9021a04da7874df7c8c26a23b3dee754799a9c1fc",
+  "allResourcesReleased": true,
+  "withinDeadline": true
+}
