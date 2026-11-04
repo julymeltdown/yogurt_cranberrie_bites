@@ -82,12 +82,13 @@ impl Fixture {
             retention_purge_actor_id: Uuid::new_v4().to_string(),
         };
         let state = Arc::new(build_state(&config, pool.clone()).await?);
-        let service = platform::grpc_method_policy::guard_without_delegation(
+        let service = platform::grpc_method_policy::guard(
             &NOTIFICATION_METHOD_POLICY,
             proto::notification_service_server::NotificationServiceServer::new(
                 NotificationGrpcServer::new(state),
             ),
             registry,
+            config.actor_delegation.clone(),
         )?;
         let listener = tokio::net::TcpListener::bind("127.0.0.1:0").await?;
         let endpoint = format!("https://{}", listener.local_addr()?);
