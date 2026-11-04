@@ -1,7 +1,7 @@
 # BE33 target callback startup composition
 
-Status: `IN_PROGRESS`. New configuration/composition checks are `NOT_RUN` until
-a fresh bounded resource offer is accepted. This is original BE33 composition,
+Status: `CONTRACT_READY`. All five new configuration/composition checks passed
+under the finite offer below. The committed handoff awaits normal publication. This is original BE33 composition,
 not a new required task or full BE33/IN03 acceptance.
 
 ## Source and ownership
@@ -105,7 +105,7 @@ or duplicate native/recovery implementation is introduced.
 | --- | --- | --- |
 | Rust 1.88 explicit-path formatting | PASS | No recursive peer-source formatting |
 | `git diff --check` | PASS | No application/runtime acceptance implied |
-| New settings/composition cases (5) | NOT_RUN | Fresh finite offer required |
+| New settings/composition cases (5) | PASS | Exact copied executable; five passed, zero failed/ignored |
 | Existing 207 native and previous Notification 11 cases | NOT_RUN in this stage | Unchanged implementation; no unrelated repetition |
 | Actual Root main/mTLS listener activation | NOT_RUN | Root owns and validates the actual mount |
 | Real positive nonempty target policy / public IN03 | NOT_RUN | Required original product boundary remains open |
@@ -126,3 +126,75 @@ target released unconditionally before any copied test or private PKI process.
 No PG, application service, listener or old native test is needed for this scope.
 Offer, exact commands/exit codes, source/runtime pins, evidence, release accounting
 and publication ancestry will be appended after actual execution.
+
+
+## Completed bounded qualification
+
+Implementation source: `f73f84b555e73f1c005144c8ceab9d2a67fac013` (clean),
+exactly the five assigned paths. No provider source changed. Offer
+`BE33-TARGET-STARTUP-BACKEND-202611041151Z` was accepted at
+2026-11-04 11:54:40 UTC, with absolute compile/freeze 12:04:40, copied-test
+12:06:40 and full cleanup 12:09:40 cutoffs. The target was the existing
+`/Users/lhs/Desktop/mcr-build/backend`; no new target or worktree was created.
+
+Exact build (exit 0):
+
+```sh
+CARGO_TARGET_DIR=/Users/lhs/Desktop/mcr-build/backend \
+CARGO_BUILD_JOBS=2 CARGO_PROFILE_DEV_DEBUG=0 CARGO_PROFILE_TEST_DEBUG=0 \
+CARGO_INCREMENTAL=0 cargo +1.88.0 test --locked --offline \
+  -p concert-service --test notification_target_runtime --no-run \
+  --message-format=json --config profile.dev.package.contracts-build.opt-level=2
+```
+
+Both `RUSTFLAGS` and `CARGO_ENCODED_RUSTFLAGS` were unset. Compiler:
+`rustc 1.88.0 (6b00bc388 2025-06-23)`. Cargo reported 45.19 seconds; the
+supervised archive/build/freeze stage took 49.31 seconds. No failure, source
+fix, retry, timestamp repair or cache deletion was needed. Cargo's automatic
+main artifact was recorded as metadata only; it was not copied or run.
+
+One 18,325,696-byte test executable was copied outside the target with SHA-256
+`e136f4bcee4e5c22ac4e90182f16fd82a65bf4a1a0626f83d8ae1610e696ad0b`.
+Full tracked backend/contracts source (29,673,166 bytes), source hashes, contract
+and fixture inputs, runtime executable hashes, linked-library inventory, Cargo
+JSON and stderr were frozen in `/private/tmp/mcr-be33-target-f73f84b5/`.
+Source archive SHA-256:
+`14ac3ead429c238e6479d6db2e63f540aba8e492e7d70721cf278557e2fbe23b`.
+Artifact receipt SHA-256:
+`c0ec9371e06bf252c1f7d6e2cdde2b6e986f75b156faf723ca28083b1bc063c1`.
+
+At 11:57:25 UTC a fresh target `lsof +D` returned exit 1 with empty output:
+zero target handles. The target was unconditionally released before any PKI
+or copied test process and never accessed afterward. Positive target allocation
+growth was 27,504,640 bytes, retained and charged.
+
+The existing owned PKI helper generated an isolated private Concert certificate
+fixture. No database initialization/start, application service or listener ran.
+The copied command exited 0:
+
+```sh
+/private/tmp/mcr-be33-target-f73f84b5/notification_target_runtime \
+  --test-threads=1 --nocapture
+```
+
+All five named cases passed; zero failed, ignored or filtered. The test body
+reported 0.01 seconds; private PKI plus copied qualification took 3.81 seconds.
+The original CF01 root/inode/token guard was used. Source, runtime and copied
+binary hashes matched their frozen receipts. Qualification receipt SHA-256:
+`bbc9f351d1487830e5c8779b20f3a65e31cfa7347ab6ffa706a1299e5ad261ae`.
+
+Full release completed at 11:58:08 UTC, before every cutoff. Owned PKI/TMP was
+removed; fresh private `lsof` proved zero copied handles and no owned process
+remained. Process peaks: compile 5, rustc 2, copied/PKI 1, within 12/2/8 caps.
+Conservative retained carry was 708,837,376 bytes (covering prior 675,188,736,
+new proof and source growth); retained target growth 27,504,640 and private
+output 25,227,264 gave a 761,569,280-byte release snapshot. Whole peak including
+temporary PKI was 761,647,104 bytes, below the 3 GiB cap; minimum available
+space was 19,395,743,744 bytes, above the continuous 8 GiB floor. Subsequent
+small documentation/proof growth remains charged to this retained carry.
+Full-release receipt SHA-256:
+`1ff4bbb185ee71d243929248eed05e53d9fcf546601f7e909370c32d4de737ec`.
+
+These are settings and negative-only composition results. Actual Root main
+mounting and real positive nonempty inbox/target policy remain separate required
+implementation-owner boundaries; this does not certify full BE33 or public IN03.
