@@ -1,0 +1,52 @@
+{
+  "job": "CHROME02-SOURCE-SELECTIVE-NATIVE-202611041446Z",
+  "qualification": "ACTUAL_ACCEPT_SNAPSHOT_BEFORE_CHILDREN",
+  "acceptedEpoch": 1793803627.808845,
+  "acceptedAt": "2026-11-04T14:47:07.808845+00:00",
+  "workDeadline": 1793803927.808845,
+  "workDeadlineUtc": "2026-11-04T14:52:07.808845+00:00",
+  "cleanupDeadline": 1793803987.808845,
+  "cleanupDeadlineUtc": "2026-11-04T14:53:07.808845+00:00",
+  "head": "db07437a2619b049d2030d8127b4910c1a44f6dd",
+  "supersedesOfferedHead": "67492342578561efd0e7860b0ec1e35fb6f1ba41",
+  "statusBeforeAccept": "",
+  "freeBytes": 25985003520,
+  "wholeDuBefore": "1178836\t/Users/lhs/Desktop/mcr-worktrees/fe-reference-frame-footer\n48584\t/Users/lhs/Desktop/mcr-worktrees/fe-mural-editor\n62180\t/Users/lhs/Desktop/mcr-worktrees/fe-wall-reference-target\n71088\t/Users/lhs/Desktop/mcr-worktrees/be-party-runtime\n",
+  "privateGitActualBytes": 1662449,
+  "privateGitReserveBytes": 2097152,
+  "guardianSha256": "87c4f25bb9a9374d908933d295fbb1e375fc203f50f0628128cd69afed98229b",
+  "nativeSha256": "ba51160f2eef12fa84c2bcbb2ab66915689d04abf3becfd72babf7ffffc3e16a",
+  "port": 5302,
+  "portFree": true,
+  "pins": [
+    [
+      "ec40e53174695f03257fd7f772d91fffb12f4cf9",
+      "frontend/public/reference-parade-print-v2/parade-print.svg",
+      "e7b401a8f431651c05b88a6c52d02b8aabc059f697bf960b41454ba59ae95a10"
+    ],
+    [
+      "1a90734394540b2f4ba7303c02e973a730baa2c6",
+      "frontend/src/features/event-feed/feed.css",
+      "14424bc829a47e3e4d0f28ac5c3fe59a6e07df6548906af4cb520407eceb5ef8"
+    ],
+    [
+      "32fed3eb41e2b57783cebb78e4aff11d3fa087ba",
+      "frontend/src/shared/styles/cozy-community-backgrounds-v1.css",
+      "f41dc64630680729de9bd5acc1239a76cf7a34193f383efa1b78a283e48b2b98"
+    ]
+  ],
+  "terms": {
+    "workSeconds": 300,
+    "cleanupSeconds": 60,
+    "wholeBytes": 2147483648,
+    "tempBytes": 209715200,
+    "evidenceBytes": 16777216,
+    "logBytes": 2097152,
+    "pngBytes": 12582912,
+    "pngsOldPlusNew": 57,
+    "newPngs": 27,
+    "cases": 18,
+    "processes": 24,
+    "rssMiB": 4096
+  }
+}

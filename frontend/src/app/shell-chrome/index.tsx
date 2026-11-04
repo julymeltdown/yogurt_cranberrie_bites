@@ -5,7 +5,9 @@ import { resolvePanel, tabs, type TabPath } from '../routes'
 import { ConcertIcon, type ConcertIconName } from '../../shared/ui/concert-window'
 import type { ThemeController, ThemeState } from '../../features/theme/model/controller'
 import { themeIds, type ThemeId } from '../../features/theme/model/preferences'
+import { WindowInk } from '../reference-chrome-v2/WindowInk'
 import './shell-chrome.css'
+import '../reference-chrome-v2/chrome.css'
 
 /** Current identity text and approved visual only; no fabricated level, balances or presence. */
 export function ShellHeader({ eventTitle, displayName, avatar }: { eventTitle?: string; displayName?: string; avatar?: ReactNode }) {
@@ -80,8 +82,8 @@ export function PanelHeader({ title, headingRef, size, back, toggleSize, toggleC
 }) {
   return <header className="concert-kit mcr-chrome-panel-header">
     <h1 id="panel-title" ref={headingRef} tabIndex={-1}>{title}</h1>
-    <button type="button" onClick={toggleSize} aria-label={size === 'full' ? 'Reduce panel' : 'Expand panel'} aria-expanded={size === 'full'}><span aria-hidden="true">{size === 'full' ? '−' : '+'}</span></button>
-    <button type="button" onClick={toggleContent} aria-label={size === 'peek' ? 'Show panel content' : 'Minimize panel'} aria-expanded={size !== 'peek'}><span aria-hidden="true">{size === 'peek' ? '▴' : '▾'}</span></button>
-    <button className="mcr-chrome-panel-close" type="button" onClick={back} aria-label="Back to previous panel"><ConcertIcon name="close" /></button>
+    <button type="button" onClick={toggleSize} aria-label={size === 'full' ? 'Reduce panel' : 'Expand panel'} aria-expanded={size === 'full'}><WindowInk name={size === 'full' ? 'reduce' : 'expand'} /></button>
+    <button type="button" onClick={toggleContent} aria-label={size === 'peek' ? 'Show panel content' : 'Minimize panel'} aria-expanded={size !== 'peek'} aria-controls="shell-panel-body"><WindowInk name="back" className={size === 'peek' ? 'mcr-reference-window-ink--restore' : 'mcr-reference-window-ink--collapse'} /></button>
+    <button className="mcr-chrome-panel-close" type="button" onClick={back} aria-label="Back to previous panel"><WindowInk name="close" /></button>
   </header>
 }

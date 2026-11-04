@@ -1,0 +1,580 @@
+{
+  "verifiedUTC": "2026-11-04T15:24:32.243262+00:00",
+  "base": "654974128a27c948a449fa9e58f466b8e612361d",
+  "previousWorker": "4cb4ac7239ce324e582aa50e8dbc2d124e2719aa",
+  "worker": "56502e1e6d4d944e5dd4840594cc08145a4d64fa",
+  "publicationBase": "6c41b1b553af2b2580facc0d30f239c4961c7ef2",
+  "publication": "3107026f854bbc8803c166abb2b73268e5f36c5b",
+  "freshFetchedRemote": "3107026f854bbc8803c166abb2b73268e5f36c5b",
+  "independentLsRemote": "3107026f854bbc8803c166abb2b73268e5f36c5b",
+  "scopedPostimages": 89,
+  "actualPublicationChangedPaths": 88,
+  "qualifiedCodePostimages": 11,
+  "nativeRound2ArtifactsVerified": 33,
+  "historicalC07PathsPreserved": 20,
+  "unqualifiedNextPathsExcluded": [
+    "docs/mcr/frontend/feed-root-composition.md",
+    "frontend/src/app/feed-entry/__tests__/README.md",
+    "frontend/src/app/feed-entry/__tests__/fixture.ts",
+    "frontend/src/app/feed-entry/__tests__/native.mjs",
+    "frontend/src/app/feed-entry/__tests__/preview.tsx",
+    "frontend/src/app/feed-entry/__tests__/qualify.mjs",
+    "frontend/src/app/feed-entry/__tests__/vite.config.ts"
+  ],
+  "postimages": [
+    {
+      "path": "docs/mcr/evidence/feed-root-composition/native-round-1/native1-feed-native1-changed-fixture-tsc.log",
+      "mode": "100644",
+      "type": "blob",
+      "blob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391"
+    },
+    {
+      "path": "docs/mcr/evidence/feed-root-composition/native-round-1/native1-feed-native1-feed-owner.css",
+      "mode": "100644",
+      "type": "blob",
+      "blob": "324dddeca40a53bea347bffe30ba9d81c1d6cd16"
+    },
+    {
+      "path": "docs/mcr/evidence/feed-root-composition/native-round-1/native1-feed-native1-native-syntax.log",
+      "mode": "100644",
+      "type": "blob",
+      "blob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391"
+    },
+    {
+      "path": "docs/mcr/evidence/feed-root-composition/native-round-1/native1-feed-native1-native.log",
+      "mode": "100644",
+      "type": "blob",
+      "blob": "bbcf33084e8a5a3ddcd76be41341fad11e473499"
+    },
+    {
+      "path": "docs/mcr/evidence/feed-root-composition/native-round-1/native1-feed-native1-root-owner.css",
+      "mode": "100644",
+      "type": "blob",
+      "blob": "ea9db9df1b69065a7b19b2aa047ec6c2ed889715"
+    },
+    {
+      "path": "docs/mcr/evidence/feed-root-composition/native-round-1/native1-feed-native1-summary.json",
+      "mode": "100644",
+      "type": "blob",
+      "blob": "20742109690bc532f4464ddd7e73d787ceaa2c38"
+    },
+    {
+      "path": "docs/mcr/evidence/feed-root-composition/native-round-1/native1-feed-native1-supervisor-syntax.log",
+      "mode": "100644",
+      "type": "blob",
+      "blob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391"
+    },
+    {
+      "path": "docs/mcr/evidence/feed-root-composition/native-round-1/native1-feed-native1-vite.log",
+      "mode": "100644",
+      "type": "blob",
+      "blob": "c62fa84f7a127040ccd8de2c8d4bde72f63a08eb"
+    },
+    {
+      "path": "docs/mcr/evidence/feed-root-composition/native-round-1/native1-native.json",
+      "mode": "100644",
+      "type": "blob",
+      "blob": "d46986f749647274f7f303563f7cbfd4ba3f884c"
+    },
+    {
+      "path": "docs/mcr/evidence/feed-root-composition/native-round-1/native2-failed-360x843.png",
+      "mode": "100644",
+      "type": "blob",
+      "blob": "a42f8762227c2eeef5d3b172f134ce58df88b661"
+    },
+    {
+      "path": "docs/mcr/evidence/feed-root-composition/native-round-1/native2-feed-native2-changed-fixture-tsc.log",
+      "mode": "100644",
+      "type": "blob",
+      "blob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391"
+    },
+    {
+      "path": "docs/mcr/evidence/feed-root-composition/native-round-1/native2-feed-native2-feed-owner.css",
+      "mode": "100644",
+      "type": "blob",
+      "blob": "324dddeca40a53bea347bffe30ba9d81c1d6cd16"
+    },
+    {
+      "path": "docs/mcr/evidence/feed-root-composition/native-round-1/native2-feed-native2-native-syntax.log",
+      "mode": "100644",
+      "type": "blob",
+      "blob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391"
+    },
+    {
+      "path": "docs/mcr/evidence/feed-root-composition/native-round-1/native2-feed-native2-native.log",
+      "mode": "100644",
+      "type": "blob",
+      "blob": "1d75d804ff1a534d92556a2f36a262f384c2b876"
+    },
+    {
+      "path": "docs/mcr/evidence/feed-root-composition/native-round-1/native2-feed-native2-root-owner.css",
+      "mode": "100644",
+      "type": "blob",
+      "blob": "ea9db9df1b69065a7b19b2aa047ec6c2ed889715"
+    },
+    {
+      "path": "docs/mcr/evidence/feed-root-composition/native-round-1/native2-feed-native2-summary.json",
+      "mode": "100644",
+      "type": "blob",
+      "blob": "4d6d1752761f537d2f586e0beb84d90abe232129"
+    },
+    {
+      "path": "docs/mcr/evidence/feed-root-composition/native-round-1/native2-feed-native2-supervisor-syntax.log",
+      "mode": "100644",
+      "type": "blob",
+      "blob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391"
+    },
+    {
+      "path": "docs/mcr/evidence/feed-root-composition/native-round-1/native2-feed-native2-vite.log",
+      "mode": "100644",
+      "type": "blob",
+      "blob": "7df47777a6b233d890d3cd79e7912cd4feaa3445"
+    },
+    {
+      "path": "docs/mcr/evidence/feed-root-composition/native-round-1/native2-native.json",
+      "mode": "100644",
+      "type": "blob",
+      "blob": "bbcd3b83c7d2f1af38699f3e50fc6dac7809d747"
+    },
+    {
+      "path": "docs/mcr/evidence/feed-root-composition/native-round-1/native3-failed-390x480.png",
+      "mode": "100644",
+      "type": "blob",
+      "blob": "dfd8880ae6eb85c3e83673cb1ae29d86e07ab923"
+    },
+    {
+      "path": "docs/mcr/evidence/feed-root-composition/native-round-1/native3-feed-360x843-author-1.png",
+      "mode": "100644",
+      "type": "blob",
+      "blob": "03d318fdf8c2b07b1e13cb9b62c3b924cf460b51"
+    },
+    {
+      "path": "docs/mcr/evidence/feed-root-composition/native-round-1/native3-feed-360x843-author-2.png",
+      "mode": "100644",
+      "type": "blob",
+      "blob": "e49d25443af01781fcebd1369e8afb3a98101e04"
+    },
+    {
+      "path": "docs/mcr/evidence/feed-root-composition/native-round-1/native3-feed-360x843-media-1.png",
+      "mode": "100644",
+      "type": "blob",
+      "blob": "25ac1015125865e0a985d2854da12f26e2501dbc"
+    },
+    {
+      "path": "docs/mcr/evidence/feed-root-composition/native-round-1/native3-feed-360x843-media-2.png",
+      "mode": "100644",
+      "type": "blob",
+      "blob": "75a16836c7a99454d2ffbcbfc9f3d0ed99818360"
+    },
+    {
+      "path": "docs/mcr/evidence/feed-root-composition/native-round-1/native3-feed-360x843.png",
+      "mode": "100644",
+      "type": "blob",
+      "blob": "dafe0c61545311f989b8376410609df513cac523"
+    },
+    {
+      "path": "docs/mcr/evidence/feed-root-composition/native-round-1/native3-feed-390x480-media-1.png",
+      "mode": "100644",
+      "type": "blob",
+      "blob": "1be46feba93729de347ddc14794003ac51de2c34"
+    },
+    {
+      "path": "docs/mcr/evidence/feed-root-composition/native-round-1/native3-feed-390x480.png",
+      "mode": "100644",
+      "type": "blob",
+      "blob": "dfd8880ae6eb85c3e83673cb1ae29d86e07ab923"
+    },
+    {
+      "path": "docs/mcr/evidence/feed-root-composition/native-round-1/native3-feed-390x843-author-1.png",
+      "mode": "100644",
+      "type": "blob",
+      "blob": "03d318fdf8c2b07b1e13cb9b62c3b924cf460b51"
+    },
+    {
+      "path": "docs/mcr/evidence/feed-root-composition/native-round-1/native3-feed-390x843-author-2.png",
+      "mode": "100644",
+      "type": "blob",
+      "blob": "e49d25443af01781fcebd1369e8afb3a98101e04"
+    },
+    {
+      "path": "docs/mcr/evidence/feed-root-composition/native-round-1/native3-feed-390x843-media-1.png",
+      "mode": "100644",
+      "type": "blob",
+      "blob": "1be46feba93729de347ddc14794003ac51de2c34"
+    },
+    {
+      "path": "docs/mcr/evidence/feed-root-composition/native-round-1/native3-feed-390x843-media-2.png",
+      "mode": "100644",
+      "type": "blob",
+      "blob": "75a16836c7a99454d2ffbcbfc9f3d0ed99818360"
+    },
+    {
+      "path": "docs/mcr/evidence/feed-root-composition/native-round-1/native3-feed-390x843.png",
+      "mode": "100644",
+      "type": "blob",
+      "blob": "8c5e0deea0f2e18de3d4983be59e87bc84354ee6"
+    },
+    {
+      "path": "docs/mcr/evidence/feed-root-composition/native-round-1/native3-feed-430x843-author-1.png",
+      "mode": "100644",
+      "type": "blob",
+      "blob": "03d318fdf8c2b07b1e13cb9b62c3b924cf460b51"
+    },
+    {
+      "path": "docs/mcr/evidence/feed-root-composition/native-round-1/native3-feed-430x843-author-2.png",
+      "mode": "100644",
+      "type": "blob",
+      "blob": "e49d25443af01781fcebd1369e8afb3a98101e04"
+    },
+    {
+      "path": "docs/mcr/evidence/feed-root-composition/native-round-1/native3-feed-430x843-media-1.png",
+      "mode": "100644",
+      "type": "blob",
+      "blob": "1be46feba93729de347ddc14794003ac51de2c34"
+    },
+    {
+      "path": "docs/mcr/evidence/feed-root-composition/native-round-1/native3-feed-430x843-media-2.png",
+      "mode": "100644",
+      "type": "blob",
+      "blob": "75a16836c7a99454d2ffbcbfc9f3d0ed99818360"
+    },
+    {
+      "path": "docs/mcr/evidence/feed-root-composition/native-round-1/native3-feed-430x843.png",
+      "mode": "100644",
+      "type": "blob",
+      "blob": "0c8645cb9a2ffffe98d77be1d6eefd5154d53b1a"
+    },
+    {
+      "path": "docs/mcr/evidence/feed-root-composition/native-round-1/native3-feed-native3-changed-fixture-tsc.log",
+      "mode": "100644",
+      "type": "blob",
+      "blob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391"
+    },
+    {
+      "path": "docs/mcr/evidence/feed-root-composition/native-round-1/native3-feed-native3-feed-owner.css",
+      "mode": "100644",
+      "type": "blob",
+      "blob": "324dddeca40a53bea347bffe30ba9d81c1d6cd16"
+    },
+    {
+      "path": "docs/mcr/evidence/feed-root-composition/native-round-1/native3-feed-native3-native-syntax.log",
+      "mode": "100644",
+      "type": "blob",
+      "blob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391"
+    },
+    {
+      "path": "docs/mcr/evidence/feed-root-composition/native-round-1/native3-feed-native3-native.log",
+      "mode": "100644",
+      "type": "blob",
+      "blob": "dc489d13e48a9f2219003e04889356bb514d68c7"
+    },
+    {
+      "path": "docs/mcr/evidence/feed-root-composition/native-round-1/native3-feed-native3-root-owner.css",
+      "mode": "100644",
+      "type": "blob",
+      "blob": "ea9db9df1b69065a7b19b2aa047ec6c2ed889715"
+    },
+    {
+      "path": "docs/mcr/evidence/feed-root-composition/native-round-1/native3-feed-native3-summary.json",
+      "mode": "100644",
+      "type": "blob",
+      "blob": "aa09b5454e4f9affcc8def008d864533ec564bf4"
+    },
+    {
+      "path": "docs/mcr/evidence/feed-root-composition/native-round-1/native3-feed-native3-supervisor-syntax.log",
+      "mode": "100644",
+      "type": "blob",
+      "blob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391"
+    },
+    {
+      "path": "docs/mcr/evidence/feed-root-composition/native-round-1/native3-feed-native3-vite.log",
+      "mode": "100644",
+      "type": "blob",
+      "blob": "407dcee408988b2faf35c95d5acaf96895c7c8d9"
+    },
+    {
+      "path": "docs/mcr/evidence/feed-root-composition/native-round-1/native3-native.json",
+      "mode": "100644",
+      "type": "blob",
+      "blob": "60fd5d27fa56f61ba6bd7d94d513315e0317ace9"
+    },
+    {
+      "path": "docs/mcr/evidence/feed-root-composition/native-round-1/receipt.json",
+      "mode": "100644",
+      "type": "blob",
+      "blob": "b88b0a03baf4b82f08a88b37e12a1c6a2112df83"
+    },
+    {
+      "path": "docs/mcr/evidence/feed-root-composition/native-round-2/accept.json",
+      "mode": "100644",
+      "type": "blob",
+      "blob": "483a5e870f39a79f4a4d9954f8c1666a5fa178b6"
+    },
+    {
+      "path": "docs/mcr/evidence/feed-root-composition/native-round-2/feed-owner.css",
+      "mode": "100644",
+      "type": "blob",
+      "blob": "49d00c5dfd95402a1e5617ff8a62bc59e4178d11"
+    },
+    {
+      "path": "docs/mcr/evidence/feed-root-composition/native-round-2/full.json",
+      "mode": "100644",
+      "type": "blob",
+      "blob": "509dd3826c59d3c9d87b9f6fd1d3b23e81119cd2"
+    },
+    {
+      "path": "docs/mcr/evidence/feed-root-composition/native-round-2/native-syntax.log",
+      "mode": "100644",
+      "type": "blob",
+      "blob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391"
+    },
+    {
+      "path": "docs/mcr/evidence/feed-root-composition/native-round-2/native.log",
+      "mode": "100644",
+      "type": "blob",
+      "blob": "7f803e44cadc0f33206e0e897cb08ea8f8afcaee"
+    },
+    {
+      "path": "docs/mcr/evidence/feed-root-composition/native-round-2/native/denied-media-390x843.png",
+      "mode": "100644",
+      "type": "blob",
+      "blob": "df40e87771a5ee1a7e74ba09526f7f094775116d"
+    },
+    {
+      "path": "docs/mcr/evidence/feed-root-composition/native-round-2/native/feed-360x843-author-1.png",
+      "mode": "100644",
+      "type": "blob",
+      "blob": "59707a8add227e604eca11dcf9e7ef421d94b0df"
+    },
+    {
+      "path": "docs/mcr/evidence/feed-root-composition/native-round-2/native/feed-360x843-author-2.png",
+      "mode": "100644",
+      "type": "blob",
+      "blob": "e49d25443af01781fcebd1369e8afb3a98101e04"
+    },
+    {
+      "path": "docs/mcr/evidence/feed-root-composition/native-round-2/native/feed-360x843-media-1.png",
+      "mode": "100644",
+      "type": "blob",
+      "blob": "b5063445af86d3af9c87a2528eb1e002fe446b36"
+    },
+    {
+      "path": "docs/mcr/evidence/feed-root-composition/native-round-2/native/feed-360x843-media-2.png",
+      "mode": "100644",
+      "type": "blob",
+      "blob": "79f3e857ade3d81f80d23b8285805eae5450a36d"
+    },
+    {
+      "path": "docs/mcr/evidence/feed-root-composition/native-round-2/native/feed-360x843.png",
+      "mode": "100644",
+      "type": "blob",
+      "blob": "2574c0258210a52c274e90c47d1c23dc9dd8fa6b"
+    },
+    {
+      "path": "docs/mcr/evidence/feed-root-composition/native-round-2/native/feed-390x480-author-1.png",
+      "mode": "100644",
+      "type": "blob",
+      "blob": "59707a8add227e604eca11dcf9e7ef421d94b0df"
+    },
+    {
+      "path": "docs/mcr/evidence/feed-root-composition/native-round-2/native/feed-390x480-author-2.png",
+      "mode": "100644",
+      "type": "blob",
+      "blob": "e49d25443af01781fcebd1369e8afb3a98101e04"
+    },
+    {
+      "path": "docs/mcr/evidence/feed-root-composition/native-round-2/native/feed-390x480-media-1.png",
+      "mode": "100644",
+      "type": "blob",
+      "blob": "b5063445af86d3af9c87a2528eb1e002fe446b36"
+    },
+    {
+      "path": "docs/mcr/evidence/feed-root-composition/native-round-2/native/feed-390x480-media-2.png",
+      "mode": "100644",
+      "type": "blob",
+      "blob": "997e0b85509f27d6f92bfa72d936a4ee00503d86"
+    },
+    {
+      "path": "docs/mcr/evidence/feed-root-composition/native-round-2/native/feed-390x480-scroll-out.png",
+      "mode": "100644",
+      "type": "blob",
+      "blob": "d891c015a1c8150b635852c4d34eac14195b8d4f"
+    },
+    {
+      "path": "docs/mcr/evidence/feed-root-composition/native-round-2/native/feed-390x480.png",
+      "mode": "100644",
+      "type": "blob",
+      "blob": "5b9cc38fe798a0be35155d45534a29bfe6ce1505"
+    },
+    {
+      "path": "docs/mcr/evidence/feed-root-composition/native-round-2/native/feed-390x843-author-1.png",
+      "mode": "100644",
+      "type": "blob",
+      "blob": "59707a8add227e604eca11dcf9e7ef421d94b0df"
+    },
+    {
+      "path": "docs/mcr/evidence/feed-root-composition/native-round-2/native/feed-390x843-author-2.png",
+      "mode": "100644",
+      "type": "blob",
+      "blob": "e49d25443af01781fcebd1369e8afb3a98101e04"
+    },
+    {
+      "path": "docs/mcr/evidence/feed-root-composition/native-round-2/native/feed-390x843-media-1.png",
+      "mode": "100644",
+      "type": "blob",
+      "blob": "b5063445af86d3af9c87a2528eb1e002fe446b36"
+    },
+    {
+      "path": "docs/mcr/evidence/feed-root-composition/native-round-2/native/feed-390x843-media-2.png",
+      "mode": "100644",
+      "type": "blob",
+      "blob": "79f3e857ade3d81f80d23b8285805eae5450a36d"
+    },
+    {
+      "path": "docs/mcr/evidence/feed-root-composition/native-round-2/native/feed-390x843.png",
+      "mode": "100644",
+      "type": "blob",
+      "blob": "76ea404863f60d6c5b848a5722ec1e35b2cb7ac4"
+    },
+    {
+      "path": "docs/mcr/evidence/feed-root-composition/native-round-2/native/feed-430x843-author-1.png",
+      "mode": "100644",
+      "type": "blob",
+      "blob": "59707a8add227e604eca11dcf9e7ef421d94b0df"
+    },
+    {
+      "path": "docs/mcr/evidence/feed-root-composition/native-round-2/native/feed-430x843-author-2.png",
+      "mode": "100644",
+      "type": "blob",
+      "blob": "e49d25443af01781fcebd1369e8afb3a98101e04"
+    },
+    {
+      "path": "docs/mcr/evidence/feed-root-composition/native-round-2/native/feed-430x843-media-1.png",
+      "mode": "100644",
+      "type": "blob",
+      "blob": "b5063445af86d3af9c87a2528eb1e002fe446b36"
+    },
+    {
+      "path": "docs/mcr/evidence/feed-root-composition/native-round-2/native/feed-430x843-media-2.png",
+      "mode": "100644",
+      "type": "blob",
+      "blob": "79f3e857ade3d81f80d23b8285805eae5450a36d"
+    },
+    {
+      "path": "docs/mcr/evidence/feed-root-composition/native-round-2/native/feed-430x843.png",
+      "mode": "100644",
+      "type": "blob",
+      "blob": "85e7dd801780b4a1afcb32353fb229cfa07973ee"
+    },
+    {
+      "path": "docs/mcr/evidence/feed-root-composition/native-round-2/native/native.json",
+      "mode": "100644",
+      "type": "blob",
+      "blob": "751e712bec4cea7d5db82b3aaea8630b9272cb4f"
+    },
+    {
+      "path": "docs/mcr/evidence/feed-root-composition/native-round-2/native/no-readiness-390x843.png",
+      "mode": "100644",
+      "type": "blob",
+      "blob": "71ab9f9b68f26a7ac747d56b54af8a2551458435"
+    },
+    {
+      "path": "docs/mcr/evidence/feed-root-composition/native-round-2/receipt.json",
+      "mode": "100644",
+      "type": "blob",
+      "blob": "53357709bea607e233e36d678c2d57c5200959cb"
+    },
+    {
+      "path": "docs/mcr/evidence/feed-root-composition/native-round-2/root-owner.css",
+      "mode": "100644",
+      "type": "blob",
+      "blob": "ea9db9df1b69065a7b19b2aa047ec6c2ed889715"
+    },
+    {
+      "path": "docs/mcr/evidence/feed-root-composition/native-round-2/summary.json",
+      "mode": "100644",
+      "type": "blob",
+      "blob": "65cf38938ffab3655c9e19ebf016cca628e248bd"
+    },
+    {
+      "path": "docs/mcr/evidence/feed-root-composition/native-round-2/supervisor-syntax.log",
+      "mode": "100644",
+      "type": "blob",
+      "blob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391"
+    },
+    {
+      "path": "docs/mcr/evidence/feed-root-composition/native-round-2/vite.log",
+      "mode": "100644",
+      "type": "blob",
+      "blob": "548618ebc5d8ddd50038e19fa2f854c7085fa808"
+    },
+    {
+      "path": "docs/mcr/evidence/feed-root-composition/source-publication.json",
+      "mode": "100644",
+      "type": "blob",
+      "blob": "1ecd8d08b51e5289adcab246643789c994b0eab6"
+    },
+    {
+      "path": "docs/mcr/frontend/feed-root-composition.md",
+      "mode": "100644",
+      "type": "blob",
+      "blob": "81a3e3f787c780c024141c7386ea91609247fd95"
+    },
+    {
+      "path": "frontend/src/app/feed-entry/__tests__/README.md",
+      "mode": "100644",
+      "type": "blob",
+      "blob": "a44a8c5810a5b3daac2fe9f7825b9d17de80b7b1"
+    },
+    {
+      "path": "frontend/src/app/feed-entry/__tests__/fixture.ts",
+      "mode": "100644",
+      "type": "blob",
+      "blob": "7b02e5cd5ee45d061bd73ae9a5bfcc5eb32dae12"
+    },
+    {
+      "path": "frontend/src/app/feed-entry/__tests__/native.mjs",
+      "mode": "100644",
+      "type": "blob",
+      "blob": "b2d312273ee3188e6931c22ab043a25dc66607c2"
+    },
+    {
+      "path": "frontend/src/app/feed-entry/__tests__/preview.tsx",
+      "mode": "100644",
+      "type": "blob",
+      "blob": "5abf0c63c9ea8be82326b0cdaec23be90745fa4b"
+    },
+    {
+      "path": "frontend/src/app/feed-entry/__tests__/qualify.mjs",
+      "mode": "100644",
+      "type": "blob",
+      "blob": "db52b7b226150da33a64459ad27e1aa97039c9c0"
+    },
+    {
+      "path": "frontend/src/app/feed-entry/__tests__/vite.config.ts",
+      "mode": "100644",
+      "type": "blob",
+      "blob": "e757b592304bcb637f2e104d637976f20243021d"
+    }
+  ],
+  "ancestry": [
+    {
+      "ancestor": "654974128a27c948a449fa9e58f466b8e612361d",
+      "descendant": "56502e1e6d4d944e5dd4840594cc08145a4d64fa",
+      "exit": 0
+    },
+    {
+      "ancestor": "654974128a27c948a449fa9e58f466b8e612361d",
+      "descendant": "3107026f854bbc8803c166abb2b73268e5f36c5b",
+      "exit": 0
+    },
+    {
+      "ancestor": "3107026f854bbc8803c166abb2b73268e5f36c5b",
+      "descendant": "3107026f854bbc8803c166abb2b73268e5f36c5b",
+      "exit": 0
+    }
+  ],
+  "nativeDisposition": "Six bounded synthetic functional/privacy cases PASS; overall observer geometry FAILED, historical broad-retro visuals",
+  "liveIN03": "NOT_RUN",
+  "newPostOnlyCohort": "NOT_RUN"
+}

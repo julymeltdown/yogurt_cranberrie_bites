@@ -1,0 +1,21 @@
+{
+  "acceptedEpoch": 1793800740.104772,
+  "workDeadline": 1793800860.104772,
+  "cleanupDeadline": 1793800920.104772,
+  "head": "4d82e1bedd7b5878b02730aafc4604ebbb0fb278",
+  "status": "",
+  "freeBytes": 29624946688,
+  "guardianSha256": "0151f56574fa3752e65fc51cb35a9092c4b74bb7dcea6bd94502d591befe0ca8",
+  "job": "REFERENCE-CHROME-SOURCE-A-202611041356Z",
+  "qualification": "ACTUAL_ACCEPT_SNAPSHOT_BEFORE_CHILDREN",
+  "terms": {
+    "workSeconds": 120,
+    "cleanupSeconds": 60,
+    "wholeBytes": 2147483648,
+    "tempBytes": 209715200,
+    "additionalDurableLogsBytes": 2097152,
+    "processes": 12,
+    "rssMiB": 3072
+  },
+  "note": "Written after the bounded runs; snapshot values were measured before actual acceptance and retained in the tool record. No retrospective clock reset."
+}

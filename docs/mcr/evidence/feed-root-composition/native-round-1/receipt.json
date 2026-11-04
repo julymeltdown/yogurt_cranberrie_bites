@@ -1,0 +1,302 @@
+{
+  "allocation": "FE209-NATIVE-202611041440Z",
+  "acceptedUTC": "2026-11-04T14:40:24Z",
+  "workCutoffUTC": "2026-11-04T14:45:24Z",
+  "hardCutoffUTC": "2026-11-04T14:46:24Z",
+  "fullReleaseUTC": "2026-11-04T14:45:18.990494Z",
+  "status": "INCOMPLETE",
+  "completedCaseSource": "ddfe47994f5b586b8e6c1732aa744677b777244b",
+  "completedCases": [
+    "feed-360x843",
+    "feed-390x843",
+    "feed-430x843"
+  ],
+  "remainingCases": [
+    "loaded-390x480",
+    "no-readiness-390x843",
+    "denied-media-390x843"
+  ],
+  "attemptSources": [
+    "5095f18a6e02b52c63ca75923d3a82ae23d49dce",
+    "9dac95d4d0e91282827dd6b0904c2c48a098a819",
+    "ddfe47994f5b586b8e6c1732aa744677b777244b"
+  ],
+  "allAttemptStatuses": [
+    "FAILED",
+    "FAILED",
+    "FAILED"
+  ],
+  "peakProcesses": 13,
+  "peakRssBytes": 2499248128,
+  "release": {
+    "ownedProcesses": 0,
+    "listener5279": false,
+    "link": false,
+    "cacheTMP": false,
+    "freeBytes": 26057121792
+  },
+  "failures": [
+    "native1: incorrect unqualified FeedPage schema and source post event did not match canonical synthetic Auth bootstrap; corrected in owned fixture.",
+    "native2: nested CSS @import bypassed Vite load overlay; corrected by inlining exact pinned Root dependency into served parent, without source writes.",
+    "native3: short viewport screenshot used a changing global image index after Root offscreen media withdrawal; stable post-row locator prepared, not yet executed."
+  ],
+  "imageAssessment": {
+    "inspected": [
+      "native3-feed-360x843.png",
+      "native3-feed-390x843.png",
+      "native3-feed-430x843.png",
+      "native3-feed-390x480.png",
+      "native3-feed-390x843-author-1.png",
+      "native3-feed-390x843-media-1.png"
+    ],
+    "confirmed": [
+      "Flat paper/background-image:none, full reference text, square rows and burgundy hierarchy.",
+      "Both selected-static characters are painted from one Root atlas; 48px portrait/46px canvas.",
+      "Approved complete media pixels retain 197x67/197x46 intrinsic dimensions and natural aspect ratio.",
+      "Fullwidth real composer navigation, readiness withdrawal and Blob disposal passed."
+    ],
+    "open": [
+      "Root media wrapper leaves large vertical blank bands around compact images; sent directly to Feed CSS owner.",
+      "Short viewport and both negative scenarios remain unfinished.",
+      "Whole visual target and actual public IN03 remain unaccepted."
+    ]
+  },
+  "artifacts": [
+    {
+      "path": "docs/mcr/evidence/feed-root-composition/native-round-1/native1-feed-native1-summary.json",
+      "rawSha256": "f66f455ffe3e39f0a7f0b027cc3fd103987995c43b4cca05bdbd868f2760fcb7",
+      "portableSha256": "34b511b024c5817cfd4cad6872a6967f708247a0d9bc604e3b9f3815798b81ea"
+    },
+    {
+      "path": "docs/mcr/evidence/feed-root-composition/native-round-1/native1-feed-native1-native-syntax.log",
+      "rawSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "portableSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "docs/mcr/evidence/feed-root-composition/native-round-1/native1-feed-native1-vite.log",
+      "rawSha256": "cf86537a0b2a0f2696e4fef718f9d3a8ebab52fe266f19771074840cfd426d3f",
+      "portableSha256": "cf86537a0b2a0f2696e4fef718f9d3a8ebab52fe266f19771074840cfd426d3f"
+    },
+    {
+      "path": "docs/mcr/evidence/feed-root-composition/native-round-1/native1-feed-native1-feed-owner.css",
+      "rawSha256": "14424bc829a47e3e4d0f28ac5c3fe59a6e07df6548906af4cb520407eceb5ef8",
+      "portableSha256": "14424bc829a47e3e4d0f28ac5c3fe59a6e07df6548906af4cb520407eceb5ef8"
+    },
+    {
+      "path": "docs/mcr/evidence/feed-root-composition/native-round-1/native1-feed-native1-supervisor-syntax.log",
+      "rawSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "portableSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "docs/mcr/evidence/feed-root-composition/native-round-1/native1-feed-native1-native.log",
+      "rawSha256": "6fb7be7cfd88b525229934fbc67e59a320f2a201a251cedffc1cd6455ddb9dd7",
+      "portableSha256": "8df69c5f71cb0ce9f4dfa602693e01a68f22ee19d5003cdf275c6c00a2cb4dd9"
+    },
+    {
+      "path": "docs/mcr/evidence/feed-root-composition/native-round-1/native1-feed-native1-root-owner.css",
+      "rawSha256": "f41dc64630680729de9bd5acc1239a76cf7a34193f383efa1b78a283e48b2b98",
+      "portableSha256": "f41dc64630680729de9bd5acc1239a76cf7a34193f383efa1b78a283e48b2b98"
+    },
+    {
+      "path": "docs/mcr/evidence/feed-root-composition/native-round-1/native1-feed-native1-changed-fixture-tsc.log",
+      "rawSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "portableSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "docs/mcr/evidence/feed-root-composition/native-round-1/native1-native.json",
+      "rawSha256": "f6e0dff25b5c9c8c128b34ecc9e2e6e776b10fff3e66e48221a453a2ab5b9d7f",
+      "portableSha256": "f6e0dff25b5c9c8c128b34ecc9e2e6e776b10fff3e66e48221a453a2ab5b9d7f"
+    },
+    {
+      "path": "docs/mcr/evidence/feed-root-composition/native-round-1/native2-feed-native2-native-syntax.log",
+      "rawSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "portableSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "docs/mcr/evidence/feed-root-composition/native-round-1/native2-feed-native2-native.log",
+      "rawSha256": "42f3c2d9ccc6cb374e5dcf849ae2211b6a3966f22f369a8d39210b59cab9d4ef",
+      "portableSha256": "f15c02ec897e2e62f16c449553736333bc4b7727b84b33131ac7443922e3eb75"
+    },
+    {
+      "path": "docs/mcr/evidence/feed-root-composition/native-round-1/native2-feed-native2-feed-owner.css",
+      "rawSha256": "14424bc829a47e3e4d0f28ac5c3fe59a6e07df6548906af4cb520407eceb5ef8",
+      "portableSha256": "14424bc829a47e3e4d0f28ac5c3fe59a6e07df6548906af4cb520407eceb5ef8"
+    },
+    {
+      "path": "docs/mcr/evidence/feed-root-composition/native-round-1/native2-feed-native2-vite.log",
+      "rawSha256": "e1dcecb6656c3891bdf9224fcdd045c83aec2f6a023a0b7be8462cf513ea0e1b",
+      "portableSha256": "e1dcecb6656c3891bdf9224fcdd045c83aec2f6a023a0b7be8462cf513ea0e1b"
+    },
+    {
+      "path": "docs/mcr/evidence/feed-root-composition/native-round-1/native2-feed-native2-root-owner.css",
+      "rawSha256": "f41dc64630680729de9bd5acc1239a76cf7a34193f383efa1b78a283e48b2b98",
+      "portableSha256": "f41dc64630680729de9bd5acc1239a76cf7a34193f383efa1b78a283e48b2b98"
+    },
+    {
+      "path": "docs/mcr/evidence/feed-root-composition/native-round-1/native2-feed-native2-supervisor-syntax.log",
+      "rawSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "portableSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "docs/mcr/evidence/feed-root-composition/native-round-1/native2-feed-native2-summary.json",
+      "rawSha256": "08ef9a00db5a52e1dcc0463722974257bb6d5e41db8fbeb4981f714213e5cf0c",
+      "portableSha256": "935ad355b2efee334bae172eb6aee1bf6c8c5a5beecdaaa605761dd6a2ca7eea"
+    },
+    {
+      "path": "docs/mcr/evidence/feed-root-composition/native-round-1/native2-feed-native2-changed-fixture-tsc.log",
+      "rawSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "portableSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "docs/mcr/evidence/feed-root-composition/native-round-1/native2-failed-360x843.png",
+      "rawSha256": "a5a0f02dec589a0f2208205b9e65e5267f815a607044fb714b560fa9885f2e15",
+      "portableSha256": "a5a0f02dec589a0f2208205b9e65e5267f815a607044fb714b560fa9885f2e15"
+    },
+    {
+      "path": "docs/mcr/evidence/feed-root-composition/native-round-1/native2-native.json",
+      "rawSha256": "24069465a872f0705f0ed760a3c5eeb8219d96a1a2e77baec5e7be993986abb4",
+      "portableSha256": "24069465a872f0705f0ed760a3c5eeb8219d96a1a2e77baec5e7be993986abb4"
+    },
+    {
+      "path": "docs/mcr/evidence/feed-root-composition/native-round-1/native3-feed-native3-feed-owner.css",
+      "rawSha256": "14424bc829a47e3e4d0f28ac5c3fe59a6e07df6548906af4cb520407eceb5ef8",
+      "portableSha256": "14424bc829a47e3e4d0f28ac5c3fe59a6e07df6548906af4cb520407eceb5ef8"
+    },
+    {
+      "path": "docs/mcr/evidence/feed-root-composition/native-round-1/native3-feed-native3-changed-fixture-tsc.log",
+      "rawSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "portableSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "docs/mcr/evidence/feed-root-composition/native-round-1/native3-feed-native3-supervisor-syntax.log",
+      "rawSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "portableSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "docs/mcr/evidence/feed-root-composition/native-round-1/native3-feed-native3-native-syntax.log",
+      "rawSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "portableSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "docs/mcr/evidence/feed-root-composition/native-round-1/native3-feed-native3-vite.log",
+      "rawSha256": "bf88b17a978e7f4b36545865243a4090c8239b1d336e83cca248d9f16fca6d06",
+      "portableSha256": "bf88b17a978e7f4b36545865243a4090c8239b1d336e83cca248d9f16fca6d06"
+    },
+    {
+      "path": "docs/mcr/evidence/feed-root-composition/native-round-1/native3-feed-native3-native.log",
+      "rawSha256": "3377bb21418f9e261789d4d9dc456433b26e5d394b0684a70003e193e632f412",
+      "portableSha256": "cac6a3599c7aa48039b6e316b438dde21ef6ac5d864986984d6c4fdbc28b8fd8"
+    },
+    {
+      "path": "docs/mcr/evidence/feed-root-composition/native-round-1/native3-feed-native3-summary.json",
+      "rawSha256": "84378ea5fd73c0f7892d91ee755af058a6c31878f5dec0efd2447f534bb99422",
+      "portableSha256": "188200588774ca35cb8481ce42a25f1a6b3eb8f60b9309ef4ebfc29cd602efdf"
+    },
+    {
+      "path": "docs/mcr/evidence/feed-root-composition/native-round-1/native3-feed-native3-root-owner.css",
+      "rawSha256": "f41dc64630680729de9bd5acc1239a76cf7a34193f383efa1b78a283e48b2b98",
+      "portableSha256": "f41dc64630680729de9bd5acc1239a76cf7a34193f383efa1b78a283e48b2b98"
+    },
+    {
+      "path": "docs/mcr/evidence/feed-root-composition/native-round-1/native3-feed-390x480-media-1.png",
+      "rawSha256": "9e71bc1d5d730ef735840ab5450e9c5afd0b2b0cebe5c3544a2bfa8fcaec3a52",
+      "portableSha256": "9e71bc1d5d730ef735840ab5450e9c5afd0b2b0cebe5c3544a2bfa8fcaec3a52"
+    },
+    {
+      "path": "docs/mcr/evidence/feed-root-composition/native-round-1/native3-feed-360x843.png",
+      "rawSha256": "0a38aadbba93fb11d3a3fb15ad07b993f2218237d68b4655d73815e232f9a5de",
+      "portableSha256": "0a38aadbba93fb11d3a3fb15ad07b993f2218237d68b4655d73815e232f9a5de"
+    },
+    {
+      "path": "docs/mcr/evidence/feed-root-composition/native-round-1/native3-feed-360x843-author-2.png",
+      "rawSha256": "01c4c8e51c2372d4a393fb26840c8ac1d9724cb543d747fa0157566c43903f94",
+      "portableSha256": "01c4c8e51c2372d4a393fb26840c8ac1d9724cb543d747fa0157566c43903f94"
+    },
+    {
+      "path": "docs/mcr/evidence/feed-root-composition/native-round-1/native3-feed-360x843-author-1.png",
+      "rawSha256": "242b95b96b5a2bef4c72ee22322fc1232ee0bafc3782ac6ecb01252abc306a09",
+      "portableSha256": "242b95b96b5a2bef4c72ee22322fc1232ee0bafc3782ac6ecb01252abc306a09"
+    },
+    {
+      "path": "docs/mcr/evidence/feed-root-composition/native-round-1/native3-failed-390x480.png",
+      "rawSha256": "5e6d2c3a7c1c5963189e2ac51061a9e82f5bece91a601ccfc7f2f9bedc000357",
+      "portableSha256": "5e6d2c3a7c1c5963189e2ac51061a9e82f5bece91a601ccfc7f2f9bedc000357"
+    },
+    {
+      "path": "docs/mcr/evidence/feed-root-composition/native-round-1/native3-feed-390x480.png",
+      "rawSha256": "5e6d2c3a7c1c5963189e2ac51061a9e82f5bece91a601ccfc7f2f9bedc000357",
+      "portableSha256": "5e6d2c3a7c1c5963189e2ac51061a9e82f5bece91a601ccfc7f2f9bedc000357"
+    },
+    {
+      "path": "docs/mcr/evidence/feed-root-composition/native-round-1/native3-native.json",
+      "rawSha256": "cb2e037fbb29558a5099a8e631e15916ad5f5c3e48a74e9256ec269f693eabbd",
+      "portableSha256": "cb2e037fbb29558a5099a8e631e15916ad5f5c3e48a74e9256ec269f693eabbd"
+    },
+    {
+      "path": "docs/mcr/evidence/feed-root-composition/native-round-1/native3-feed-390x843.png",
+      "rawSha256": "260c832435cd004f7bd2a20614e863b1cec00b542c5b112a62c9ca0739c3e4fc",
+      "portableSha256": "260c832435cd004f7bd2a20614e863b1cec00b542c5b112a62c9ca0739c3e4fc"
+    },
+    {
+      "path": "docs/mcr/evidence/feed-root-composition/native-round-1/native3-feed-430x843-media-1.png",
+      "rawSha256": "9e71bc1d5d730ef735840ab5450e9c5afd0b2b0cebe5c3544a2bfa8fcaec3a52",
+      "portableSha256": "9e71bc1d5d730ef735840ab5450e9c5afd0b2b0cebe5c3544a2bfa8fcaec3a52"
+    },
+    {
+      "path": "docs/mcr/evidence/feed-root-composition/native-round-1/native3-feed-390x843-media-1.png",
+      "rawSha256": "9e71bc1d5d730ef735840ab5450e9c5afd0b2b0cebe5c3544a2bfa8fcaec3a52",
+      "portableSha256": "9e71bc1d5d730ef735840ab5450e9c5afd0b2b0cebe5c3544a2bfa8fcaec3a52"
+    },
+    {
+      "path": "docs/mcr/evidence/feed-root-composition/native-round-1/native3-feed-430x843-media-2.png",
+      "rawSha256": "d9c6b6feba7f1b2f61a158721177bc14a3c941958a25e6a9cede73c57ac06769",
+      "portableSha256": "d9c6b6feba7f1b2f61a158721177bc14a3c941958a25e6a9cede73c57ac06769"
+    },
+    {
+      "path": "docs/mcr/evidence/feed-root-composition/native-round-1/native3-feed-390x843-media-2.png",
+      "rawSha256": "d9c6b6feba7f1b2f61a158721177bc14a3c941958a25e6a9cede73c57ac06769",
+      "portableSha256": "d9c6b6feba7f1b2f61a158721177bc14a3c941958a25e6a9cede73c57ac06769"
+    },
+    {
+      "path": "docs/mcr/evidence/feed-root-composition/native-round-1/native3-feed-360x843-media-1.png",
+      "rawSha256": "860524e6dd552ccba4f94d53cd87021df8542ca7543a3fc554bc6615b8cd1a98",
+      "portableSha256": "860524e6dd552ccba4f94d53cd87021df8542ca7543a3fc554bc6615b8cd1a98"
+    },
+    {
+      "path": "docs/mcr/evidence/feed-root-composition/native-round-1/native3-feed-360x843-media-2.png",
+      "rawSha256": "d9c6b6feba7f1b2f61a158721177bc14a3c941958a25e6a9cede73c57ac06769",
+      "portableSha256": "d9c6b6feba7f1b2f61a158721177bc14a3c941958a25e6a9cede73c57ac06769"
+    },
+    {
+      "path": "docs/mcr/evidence/feed-root-composition/native-round-1/native3-feed-390x843-author-2.png",
+      "rawSha256": "01c4c8e51c2372d4a393fb26840c8ac1d9724cb543d747fa0157566c43903f94",
+      "portableSha256": "01c4c8e51c2372d4a393fb26840c8ac1d9724cb543d747fa0157566c43903f94"
+    },
+    {
+      "path": "docs/mcr/evidence/feed-root-composition/native-round-1/native3-feed-430x843-author-2.png",
+      "rawSha256": "01c4c8e51c2372d4a393fb26840c8ac1d9724cb543d747fa0157566c43903f94",
+      "portableSha256": "01c4c8e51c2372d4a393fb26840c8ac1d9724cb543d747fa0157566c43903f94"
+    },
+    {
+      "path": "docs/mcr/evidence/feed-root-composition/native-round-1/native3-feed-390x843-author-1.png",
+      "rawSha256": "242b95b96b5a2bef4c72ee22322fc1232ee0bafc3782ac6ecb01252abc306a09",
+      "portableSha256": "242b95b96b5a2bef4c72ee22322fc1232ee0bafc3782ac6ecb01252abc306a09"
+    },
+    {
+      "path": "docs/mcr/evidence/feed-root-composition/native-round-1/native3-feed-430x843-author-1.png",
+      "rawSha256": "242b95b96b5a2bef4c72ee22322fc1232ee0bafc3782ac6ecb01252abc306a09",
+      "portableSha256": "242b95b96b5a2bef4c72ee22322fc1232ee0bafc3782ac6ecb01252abc306a09"
+    },
+    {
+      "path": "docs/mcr/evidence/feed-root-composition/native-round-1/native3-feed-430x843.png",
+      "rawSha256": "1e3a231a97355f8ad6abfb918d76c3d942a5ed9f3cc8a9e6d59962deb4f5870d",
+      "portableSha256": "1e3a231a97355f8ad6abfb918d76c3d942a5ed9f3cc8a9e6d59962deb4f5870d"
+    }
+  ],
+  "limitations": [
+    "Synthetic transport only; no real Auth producer, server authorization or public IN03 is certified.",
+    "All failed attempts retain FAILED status; three completed cases do not convert the overall round to PASS.",
+    "No old source unit/guard/lint suite reran; changed fixture types and driver syntax were checked.",
+    "World remains disabled; no actual World or social policy WS acceptance."
+  ]
+}

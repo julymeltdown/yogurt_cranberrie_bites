@@ -1,0 +1,120 @@
+{
+  "job": "REFERENCE-CHROME-SOURCE-A-202611041356Z",
+  "status": "PASS",
+  "deadlineEpoch": 1793800860.104772,
+  "cleanupDeadlineEpoch": 1793800920.104772,
+  "head": "4d82e1bedd7b5878b02730aafc4604ebbb0fb278",
+  "limits": {
+    "workSeconds": 120,
+    "cleanupSeconds": 60,
+    "processes": 12,
+    "rssMiB": 3072,
+    "wholeBytes": 2147483648,
+    "outputBytes": 2097152,
+    "tempBytes": 209715200,
+    "runtimeFreeGiB": 8
+  },
+  "dependencyMode": "Absent-only temporary link; shared dependency directory is read-only",
+  "node": "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node",
+  "nodeVersion": "v24.22.2",
+  "commands": [
+    {
+      "label": "tests",
+      "command": [
+        "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node",
+        "/Users/lhs/Desktop/mcr/frontend/node_modules/vitest/vitest.mjs",
+        "run",
+        "--config",
+        "src/app/reference-chrome-v2/source.vitest.config.ts",
+        "--configLoader",
+        "runner",
+        "--maxWorkers=1",
+        "--no-file-parallelism",
+        "src/app/reference-chrome-v2/chrome.test.tsx",
+        "src/app/__tests__/reference-frame-footer/footer.test.tsx",
+        "src/app/__tests__/reference-root/root.test.tsx",
+        "src/features/public/__tests__/reference-target/presentation.test.tsx",
+        "src/shared/ui/__tests__/primitives.test.tsx"
+      ],
+      "startedEpoch": 1793800765.945463,
+      "exitCode": 0,
+      "finishedEpoch": 1793800770.24077
+    },
+    {
+      "label": "types",
+      "command": [
+        "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node",
+        "/Users/lhs/Desktop/mcr/frontend/node_modules/typescript/bin/tsc",
+        "-p",
+        "tsconfig.json",
+        "--noEmit",
+        "--incremental",
+        "false"
+      ],
+      "startedEpoch": 1793800770.240839,
+      "exitCode": 0,
+      "finishedEpoch": 1793800777.7382882
+    },
+    {
+      "label": "lint",
+      "command": [
+        "/Users/lhs/Desktop/mcr/frontend/node_modules/.bin/oxlint",
+        "src/app/WorldShell.tsx",
+        "src/app/shell-chrome/index.tsx",
+        "src/app/shell-chrome/parade-footer.tsx",
+        "src/features/public/ui/PublicFrame.tsx",
+        "src/shared/ui/concert-window/index.tsx",
+        "src/app/reference-chrome-v2",
+        "src/app/__tests__/reference-frame-footer/footer.test.tsx"
+      ],
+      "startedEpoch": 1793800777.7383108,
+      "exitCode": 0,
+      "finishedEpoch": 1793800778.3711202
+    },
+    {
+      "label": "native-syntax",
+      "command": [
+        "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node",
+        "--check",
+        "src/app/reference-chrome-v2/native.mjs"
+      ],
+      "startedEpoch": 1793800778.371145,
+      "exitCode": 0,
+      "finishedEpoch": 1793800778.992852
+    }
+  ],
+  "peakProcesses": 4,
+  "peakRssKiB": 1396256,
+  "carryRoots": [
+    "/Users/lhs/Desktop/mcr-worktrees/fe-reference-frame-footer",
+    "/Users/lhs/Desktop/mcr-worktrees/fe-mural-editor",
+    "/Users/lhs/Desktop/mcr-worktrees/fe-wall-reference-target",
+    "/Users/lhs/Desktop/mcr-worktrees/be-party-runtime"
+  ],
+  "startWholeBytes": 1390542848,
+  "finishedEpoch": 1793800778.9937851,
+  "cleanupWithinDeadline": true,
+  "cleanup": {
+    "ownDependencyLinkRemoved": true,
+    "privateTempRemoved": true,
+    "childStopped": true
+  },
+  "logs": {
+    "types.log": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "lint.log": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "native-syntax.log": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "tests.log": {
+      "bytes": 255,
+      "sha256": "acb33c2a52ae7f8510351177c5c4f1e54aea552ce90b21d81925508c9a15b136"
+    }
+  }
+}

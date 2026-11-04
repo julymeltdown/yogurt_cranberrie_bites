@@ -1,0 +1,21 @@
+{
+  "allocation": "FE209-COMPACT-MEDIA-NATIVE-202611041509Z",
+  "acceptedUTC": "2026-11-04T15:09:51.901383+00:00",
+  "workCutoffUTC": "2026-11-04T15:14:51.901383+00:00",
+  "hardCleanupUTC": "2026-11-04T15:15:51.901383+00:00",
+  "source": "aba393440c6d0bdf0d19b196e13c00c5dee2e0e5",
+  "runtime": "9856de08dced574ae3c6df7583c987a406a6e8e4",
+  "files": 563,
+  "bytes": 5033595,
+  "initialFreeBytes": 23443238912,
+  "maxFiles": 800,
+  "maxBytes": 134217728,
+  "tmpBytes": 104857600,
+  "durableGrowthBytes": 8388608,
+  "maxProcesses": 24,
+  "maxRssBytes": 4294967296,
+  "guardMs": 250,
+  "visualDisposition": "Historical broad-retro pin; latest human post-only visual scope remains open",
+  "feedCSS": "d0b2d44f30c6026b57cee66518f6dd4917c15c1e",
+  "rootCSS": "32fed3eb41e2b57783cebb78e4aff11d3fa087ba"
+}

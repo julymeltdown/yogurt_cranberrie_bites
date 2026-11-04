@@ -1,0 +1,61 @@
+{
+  "job": "CHROME03-REFERENCE-FRAME-NATIVE-202611041517Z",
+  "release": "FULL",
+  "observedEpoch": 1793805690.900339,
+  "observedAt": "2026-11-04T15:21:30.900339+00:00",
+  "beforeOriginalWorkCutoff": true,
+  "beforeOriginalCleanupCutoff": true,
+  "port5302BindFree": true,
+  "dependencyLinkAbsent": true,
+  "ownTemporaryDirectories": [],
+  "allAttemptRemainingRecordedDescendants": [
+    [],
+    [],
+    []
+  ],
+  "freeBytes": 26796818432,
+  "wholeDuAtRelease": "1183616\t/Users/lhs/Desktop/mcr-worktrees/fe-reference-frame-footer\n48584\t/Users/lhs/Desktop/mcr-worktrees/fe-mural-editor\n62180\t/Users/lhs/Desktop/mcr-worktrees/fe-wall-reference-target\n71088\t/Users/lhs/Desktop/mcr-worktrees/be-party-runtime\n",
+  "wholeIncludesPrivateGitReserveBytes": 2097152,
+  "evidenceBytesBeforeThisReceipt": 7446307,
+  "pngCountOldPlusNew": 78,
+  "pngBytesOldPlusNew": 6747117,
+  "guardianSha256": "d20b775ae359669088a0bbd3d12151f8882ac933f95f4f5a958993fef3adb416",
+  "reportSha256": "92feccc7be2622283838f934e6d7cf83e2ed73a520f54f9f00e5530df264d662",
+  "sourceExitCodes": [
+    [
+      "source-tests",
+      0
+    ],
+    [
+      "source-types",
+      0
+    ],
+    [
+      "source-lint",
+      0
+    ],
+    [
+      "syntax",
+      0
+    ],
+    [
+      "native",
+      0
+    ]
+  ],
+  "peaks": {
+    "peakProcesses": 10,
+    "peakRssKiB": 2613104,
+    "peakWholeBytes": 1431539712,
+    "peakTempBytes": 31024617,
+    "peakOutputBytes": 7351337
+  },
+  "failedAttempts": [
+    "native-03",
+    "native-04"
+  ],
+  "successfulAttempt": "native-05",
+  "cases": 15,
+  "status": "PASS",
+  "purpose": "SHARED_REFERENCE_FRAME/FUNCTIONAL_ONLY; no per-screen post/tab/composer/body acceptance"
+}

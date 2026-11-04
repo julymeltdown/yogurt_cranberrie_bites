@@ -1,0 +1,52 @@
+{
+  "job": "CHROME03-REFERENCE-FRAME-NATIVE-202611041517Z",
+  "qualification": "ACTUAL_ACCEPT_SNAPSHOT_BEFORE_CHILDREN",
+  "purpose": "SHARED_REFERENCE_FRAME/FUNCTIONAL_ONLY; no per-screen post/tab/composer/body acceptance",
+  "acceptedEpoch": 1793805504.877506,
+  "acceptedAt": "2026-11-04T15:18:24.877506+00:00",
+  "workDeadline": 1793805804.877506,
+  "workDeadlineUtc": "2026-11-04T15:23:24.877506+00:00",
+  "cleanupDeadline": 1793805864.877506,
+  "cleanupDeadlineUtc": "2026-11-04T15:24:24.877506+00:00",
+  "head": "94f7f90b44ede74ca9562d2e03565d4055c90cb0",
+  "cleanBeforeAccept": true,
+  "freeBytes": 22451453952,
+  "wholeDuBefore": "1181392\t/Users/lhs/Desktop/mcr-worktrees/fe-reference-frame-footer\n48584\t/Users/lhs/Desktop/mcr-worktrees/fe-mural-editor\n62180\t/Users/lhs/Desktop/mcr-worktrees/fe-wall-reference-target\n71088\t/Users/lhs/Desktop/mcr-worktrees/be-party-runtime\n",
+  "privateGitActualBytes": 1668682,
+  "privateGitReserveBytes": 2097152,
+  "guardianSha256": "84547636a09aa904a9c5ca7d661ed4c47f604d4df9564d9f744f07443fadf1d4",
+  "nativeSha256": "5e1df8d079c1f84b6ca04ca272d28a61d911a285f851ca49c10ff2fae9575434",
+  "port": 5302,
+  "portBindFree": true,
+  "pins": [
+    {
+      "commit": "ec40e53174695f03257fd7f772d91fffb12f4cf9",
+      "path": "frontend/public/reference-parade-print-v2/parade-print.svg",
+      "sha256": "e7b401a8f431651c05b88a6c52d02b8aabc059f697bf960b41454ba59ae95a10"
+    },
+    {
+      "commit": "65b0d5f6c5014aab6fc218d32dcf97e4c73be203",
+      "path": "frontend/public/reference-window-controls-v2/back.svg",
+      "sha256": "a8b6905c1442c519674e63feb28f4166f46d82c63cd82625522ebbc60add6ec2"
+    },
+    {
+      "commit": "654974128a27c948a449fa9e58f466b8e612361d",
+      "path": "frontend/src/features/event-feed/feed.css",
+      "sha256": "737dc607d53807bc6fcc1be9021a04da7874df7c8c26a23b3dee754799a9c1fc"
+    }
+  ],
+  "terms": {
+    "workSeconds": 300,
+    "cleanupSeconds": 60,
+    "wholeBytes": 2147483648,
+    "tempBytes": 209715200,
+    "evidenceBytes": 16777216,
+    "logBytes": 2097152,
+    "pngBytes": 12582912,
+    "pngsOldPlusNew": 78,
+    "newPngs": 21,
+    "cases": 15,
+    "processes": 24,
+    "rssMiB": 4096
+  }
+}

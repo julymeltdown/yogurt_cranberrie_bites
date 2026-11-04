@@ -12,14 +12,20 @@ it('keeps the ornament out of the accessibility tree and the action tab order', 
   expect(screen.queryByRole('img')).toBeNull()
   const footer = container.querySelector('.mcr-chrome-parade-footer')!
   expect(footer).toHaveAttribute('aria-hidden', 'true')
-  expect(footer.querySelector('svg')).toHaveAttribute('focusable', 'false')
+  expect(footer.querySelector('img')).toHaveAttribute('alt', '')
+  expect(footer.querySelector('img')).toHaveAttribute('draggable', 'false')
   expect(footer.querySelector('a, button, input, [tabindex], [role]')).toBeNull()
   screen.getByRole('button').focus()
   expect(screen.getByRole('button')).toHaveFocus()
 })
 
-it('can share a page with other footers without document-global SVG references or external imagery', () => {
+it('shares only the fixed local print asset without document-global SVG references or untrusted URLs', () => {
   const { container } = render(<><ParadeFooter /><ParadeFooter /></>)
-  expect(container.querySelectorAll('svg')).toHaveLength(2)
-  expect(container.querySelector('use, [id], image, foreignObject, [href], [style]')).toBeNull()
+  expect(container.querySelectorAll('img')).toHaveLength(2)
+  for (const image of container.querySelectorAll('img')) {
+    expect(image).toHaveAttribute('src', '/reference-parade-print-v2/parade-print.svg')
+    expect(image).toHaveAttribute('width', '360')
+    expect(image).toHaveAttribute('height', '96')
+  }
+  expect(container.querySelector('use, [id], image, foreignObject, [href], [style], [srcset]')).toBeNull()
 })

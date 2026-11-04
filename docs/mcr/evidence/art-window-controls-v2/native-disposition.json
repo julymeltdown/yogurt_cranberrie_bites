@@ -1,6 +1,6 @@
 {
   "task": "ART-WINDOW-CONTROLS-02",
-  "status": "ART_LEGIBILITY_AND_ARROW_STATE_PASS_PUBLIC_PALETTE_FIX_PENDING",
+  "status": "ART_LEGIBILITY_ARROW_AND_PUBLIC_HEADER_PALETTE_PASS_NATIVE_D_SEAL_PENDING",
   "artSourceCommit": "65b0d5f6c5014aab6fc218d32dcf97e4c73be203",
   "consumerTask": "FE-REFERENCE-CHROME-02",
   "consumerCandidate": "c019e84d5a2102f8fd31f3498f37cb235795c55a",
@@ -20,16 +20,38 @@
   "consumerGuardianRecord": "docs/mcr/evidence/reference-chrome-v2/native-01/guardian.json",
   "method": "Artist directly inspected the existing actual native PNGs; no new rendering, screenshot extraction or duplicate browser matrix.",
   "inspected": [
-    "landing-360.png", "landing-390.png", "landing-430.png",
-    "login-360.png", "login-390.png", "login-430.png",
-    "feed-360.png", "feed-390.png", "feed-430.png",
-    "meet-360.png", "meet-390.png", "meet-430.png",
-    "me-360.png", "me-390.png", "me-430.png"
+    "landing-360.png",
+    "landing-390.png",
+    "landing-430.png",
+    "login-360.png",
+    "login-390.png",
+    "login-430.png",
+    "feed-360.png",
+    "feed-390.png",
+    "feed-430.png",
+    "meet-360.png",
+    "meet-390.png",
+    "meet-430.png",
+    "me-360.png",
+    "me-390.png",
+    "me-430.png"
   ],
   "findings": [
-    {"scope": "art", "result": "PASS", "detail": "Red/cream tri-stars and cream arrow/X/window-corner glyphs are legible, centered in their faces, unclipped and loaded from the exact source commit across all three native widths. No SVG geometry or palette fix is needed from this cohort."},
-    {"scope": "consumer", "result": "ARROW_FIX_INSPECTED_PASS", "detail": "Original full-size panel headers showed identical reduce.svg for size/minimization. NativeC now shows a clear distinct downward Back-arrow cue at all three widths. Actual browser collapse/restore matrices are -90/+90 degrees; the upward state is supported by recorded browser matrix and source bounds, not a separately saved restore PNG."},
-    {"scope": "consumer-public-palette", "result": "FIX_PENDING", "detail": "Direct NativeC Landing images still show a mauve header. Frame owner confirmed CSS specificity/load-order failure (#624250) and owns the selector fix plus fresh computed palette assertion and retained 360/390/430 Landing/anonymous captures. The artist has not accepted a dark public header from prose."}
+    {
+      "scope": "art",
+      "result": "PASS",
+      "detail": "Red/cream tri-stars and cream arrow/X/window-corner glyphs are legible, centered in their faces, unclipped and loaded from the exact source commit across all three native widths. No SVG geometry or palette fix is needed from this cohort."
+    },
+    {
+      "scope": "consumer",
+      "result": "ARROW_FIX_INSPECTED_PASS",
+      "detail": "Original full-size panel headers showed identical reduce.svg for size/minimization. NativeC now shows a clear distinct downward Back-arrow cue at all three widths. Actual browser collapse/restore matrices are -90/+90 degrees; the upward state is supported by recorded browser matrix and source bounds, not a separately saved restore PNG."
+    },
+    {
+      "scope": "consumer-public-palette",
+      "result": "FIXED_NATIVE_D_PASS",
+      "detail": "Earlier NativeC mauve header was corrected in NativeD. Direct inspection of six retained Landing/production-anonymous captures at 360/390/430 confirms a dark header and legible unclipped stars/entry arrow. Actual computed background rgb(37,16,23), image none and ink rgb(242,234,223) match the report. No SVG fix needed."
+    }
   ],
   "followup": {
     "candidate": "db07437a2619b049d2030d8127b4910c1a44f6dd",
@@ -42,16 +64,182 @@
     "measuredFullReleaseUtc": "2026-11-04T14:48:26.503731Z",
     "captureStartedAt": "2026-11-04T14:47:21.942Z",
     "captureFinishedAt": "2026-11-04T14:48:03.375Z",
-    "inspected": ["landing-360.png", "landing-390.png", "landing-430.png", "feed-360.png", "feed-390.png", "feed-430.png", "meet-360.png", "meet-390.png", "meet-430.png", "me-360.png", "me-390.png", "me-430.png"],
+    "inspected": [
+      "landing-360.png",
+      "landing-390.png",
+      "landing-430.png",
+      "feed-360.png",
+      "feed-390.png",
+      "feed-430.png",
+      "meet-360.png",
+      "meet-390.png",
+      "meet-430.png",
+      "me-360.png",
+      "me-390.png",
+      "me-430.png"
+    ],
     "reportedConsumerResult": "18/18 cases PASS; functional result does not close the public-palette mismatch.",
-    "collapseInk": {"src": "/reference-window-controls-v2/back.svg", "transform": "matrix(0, -1, 1, 0, 0, 0)"},
-    "restoreInk": {"src": "/reference-window-controls-v2/back.svg", "transform": "matrix(0, 1, -1, 0, 0, 0)"},
+    "collapseInk": {
+      "src": "/reference-window-controls-v2/back.svg",
+      "transform": "matrix(0, -1, 1, 0, 0, 0)"
+    },
+    "restoreInk": {
+      "src": "/reference-window-controls-v2/back.svg",
+      "transform": "matrix(0, 1, -1, 0, 0, 0)"
+    },
     "scope": "Actual default App/router/Phaser DEV synthetic HTTP/C05 fixture plus separate anonymous entry captures. Controls artwork remains exact65b; no live/backend/device/full-screen acceptance."
   },
   "reportedConsumerChecks": "21 cases PASS, 44px native targets, keyboard/forced-color focus, Back/size/peek/history and scroll/persistence. These are the consumer owner's results; this artist disposition independently covers glyph appearance only.",
   "limits": [
     "Original frozen cohort does not include the later Root flat-paper CSS candidate.",
     "No overall screen-design, live backend, Auth, two-account, C06 product-art or physical-device acceptance is implied.",
-    "Original and arrow-state followup evidence are sealed; public-palette correction and publication remain open."
-  ]
+    "Original and arrow-state followup evidence are sealed; public-header palette correction passed NativeD; its immutable consumer seal and own assessment publication remain pending. Bounded source/earlier-assessment publication is independently verified."
+  ],
+  "publication": {
+    "result": "PASS",
+    "sourceCandidate": "a6349dcda12431575e0b4bb58443142bb0d78ee7",
+    "publicationCommit": "fccee9369ff8929db699f2f09af4d639e4be35e6",
+    "proof": "docs/mcr/evidence/art-gifts-content-v1/publication-readback.json",
+    "scope": "Bounded art sources and own assessments; consumer public-palette followup remains open."
+  },
+  "paletteFollowup": {
+    "consumerCandidate": "94f7f90b44ede74ca9562d2e03565d4055c90cb0",
+    "boundedCorrections": "Consumer recorded guardian monitoring and cold Root wait fixes; exact sidecar hashes below. Not an unchanged-clean-source claim.",
+    "consumerEvidenceCommit": null,
+    "consumerAllocation": "CHROME03-REFERENCE-FRAME-NATIVE-202611041517Z",
+    "consumerReport": "docs/mcr/evidence/reference-chrome-v2/native-05/capture/report.json",
+    "consumerReportSha256": "92feccc7be2622283838f934e6d7cf83e2ed73a520f54f9f00e5530df264d662",
+    "actualAcceptUtc": "2026-11-04T15:18:24.877506Z",
+    "originalWorkDeadlineUtc": "2026-11-04T15:23:24.877506Z",
+    "originalCleanupDeadlineUtc": "2026-11-04T15:24:24.877506Z",
+    "fullReleaseUtc": "2026-11-04T15:21:30.900339Z",
+    "captureStartedAt": "2026-11-04T15:20:28.520Z",
+    "captureFinishedAt": "2026-11-04T15:21:01.737Z",
+    "directlyInspectedImages": [
+      {
+        "file": "docs/mcr/evidence/reference-chrome-v2/native-05/capture/landing-360.png",
+        "bytes": 179564,
+        "sha256": "d3c333a4392183036734ef3ab54c86c61dd44f938632bf34382c841920d0b80f"
+      },
+      {
+        "file": "docs/mcr/evidence/reference-chrome-v2/native-05/capture/landing-390.png",
+        "bytes": 205572,
+        "sha256": "1ca2519f3170287211b1252f33d9a3ba86bd75a4d3f52008c1bc87861ee14983"
+      },
+      {
+        "file": "docs/mcr/evidence/reference-chrome-v2/native-05/capture/landing-430.png",
+        "bytes": 241804,
+        "sha256": "e7bdffa2326bd88d750ab1d941ee04295354d665ea58472b2fd52fde51a9fe26"
+      },
+      {
+        "file": "docs/mcr/evidence/reference-chrome-v2/native-05/capture/production-anonymous-360.png",
+        "bytes": 195683,
+        "sha256": "263b43f346cd4f870116dd656b99c6f03a61b1821d7de5e05b1178159a978cba"
+      },
+      {
+        "file": "docs/mcr/evidence/reference-chrome-v2/native-05/capture/production-anonymous-390.png",
+        "bytes": 217309,
+        "sha256": "8156fce16313991159514bac8d5d180692f1a0f1198b55936f72fd48df105515"
+      },
+      {
+        "file": "docs/mcr/evidence/reference-chrome-v2/native-05/capture/production-anonymous-430.png",
+        "bytes": 245083,
+        "sha256": "373712f96957d0caa7274a4c3fe525a553f9a8392bf591efc69d3edb3983c90c"
+      }
+    ],
+    "actualComputedMetrics": [
+      {
+        "case": "landing",
+        "width": 360,
+        "publicHeaderInk": {
+          "background": "rgb(37, 16, 23)",
+          "image": "none",
+          "color": "rgb(242, 234, 223)"
+        },
+        "screenshot": "landing-360.png",
+        "result": "PASS"
+      },
+      {
+        "case": "production-anonymous",
+        "width": 360,
+        "publicHeaderInk": {
+          "background": "rgb(37, 16, 23)",
+          "image": "none",
+          "color": "rgb(242, 234, 223)"
+        },
+        "screenshot": "production-anonymous-360.png",
+        "result": "PASS"
+      },
+      {
+        "case": "landing",
+        "width": 390,
+        "publicHeaderInk": {
+          "background": "rgb(37, 16, 23)",
+          "image": "none",
+          "color": "rgb(242, 234, 223)"
+        },
+        "screenshot": "landing-390.png",
+        "result": "PASS"
+      },
+      {
+        "case": "production-anonymous",
+        "width": 390,
+        "publicHeaderInk": {
+          "background": "rgb(37, 16, 23)",
+          "image": "none",
+          "color": "rgb(242, 234, 223)"
+        },
+        "screenshot": "production-anonymous-390.png",
+        "result": "PASS"
+      },
+      {
+        "case": "landing",
+        "width": 430,
+        "publicHeaderInk": {
+          "background": "rgb(37, 16, 23)",
+          "image": "none",
+          "color": "rgb(242, 234, 223)"
+        },
+        "screenshot": "landing-430.png",
+        "result": "PASS"
+      },
+      {
+        "case": "production-anonymous",
+        "width": 430,
+        "publicHeaderInk": {
+          "background": "rgb(37, 16, 23)",
+          "image": "none",
+          "color": "rgb(242, 234, 223)"
+        },
+        "screenshot": "production-anonymous-430.png",
+        "result": "PASS"
+      }
+    ],
+    "sourceAndCleanupReceipts": [
+      {
+        "file": "docs/mcr/evidence/reference-chrome-v2/native-D-accept.json",
+        "sha256": "5c19506abfaa60043c2973430207761a0295845c707e85e3f35ac3c27c3307f8"
+      },
+      {
+        "file": "docs/mcr/evidence/reference-chrome-v2/native-D-release.json",
+        "sha256": "e63ba6caedd7000bab797897713067370393ec1628497fd9289c0d1184f80ab4"
+      },
+      {
+        "file": "docs/mcr/evidence/reference-chrome-v2/native-05/guardian.json",
+        "sha256": "d20b775ae359669088a0bbd3d12151f8882ac933f95f4f5a958993fef3adb416"
+      },
+      {
+        "file": "docs/mcr/evidence/reference-chrome-v2/native-D-monitor-fix.json",
+        "sha256": "bf2c5a58fd699b64b1a99657263a8acb311a709d0fd82a050b160bc51bd2e29d"
+      },
+      {
+        "file": "docs/mcr/evidence/reference-chrome-v2/native-D-cold-root-wait-fix.json",
+        "sha256": "6ae35bb7a0aac702fc1474deda49f1533358e268afc4c1b3c53f9834199b873a"
+      }
+    ],
+    "reportedResult": "27 source tests, full types/lint/syntax exit0; 15 native cases PASS, 21 PNGs; failures native-03/04 retained, native-05 successful.",
+    "scope": "SHARED_REFERENCE_FRAME/FUNCTIONAL_ONLY. Baseline654974 Feed CSS; no1a/no32; no per-screen post/tab/composer/body, whole-screen, live-backend or physical-device acceptance.",
+    "artistResult": "PASS_PUBLIC_HEADER_PALETTE_FINDING_CLOSED_NO_SVG_FIX",
+    "pending": "Immutable NativeD consumer seal and normal own assessment publication."
+  }
 }

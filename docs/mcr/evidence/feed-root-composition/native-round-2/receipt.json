@@ -1,0 +1,2081 @@
+{
+  "allocation": "FE209-COMPACT-MEDIA-NATIVE-202611041509Z",
+  "acceptedUTC": "2026-11-04T15:09:51.901383+00:00",
+  "workCutoffUTC": "2026-11-04T15:14:51.901383+00:00",
+  "hardCleanupUTC": "2026-11-04T15:15:51.901383+00:00",
+  "fullReleaseUTC": "2026-11-04T15:10:47.058981+00:00",
+  "testedSource": "aba393440c6d0bdf0d19b196e13c00c5dee2e0e5",
+  "runtimeSource": "9856de08dced574ae3c6df7583c987a406a6e8e4",
+  "overallStatus": "FAILED",
+  "functionalCasesStatus": "PASS",
+  "observerGeometryStatus": "FAILED",
+  "visualDisposition": "HISTORICAL broad-retro input; latest human post-only visual acceptance remains open",
+  "synthetic": true,
+  "worldDisabled": true,
+  "liveIN03": "NOT_RUN",
+  "browser": "156.0.8078.80",
+  "cases": [
+    {
+      "name": "feed-360x843",
+      "viewport": {
+        "width": 360,
+        "height": 843
+      },
+      "regions": {
+        ".world-shell": {
+          "x": 0,
+          "y": 0,
+          "width": 360,
+          "height": 843,
+          "scrollHeight": 835,
+          "clientHeight": 835,
+          "background": "rgb(255, 243, 236)",
+          "backgroundImage": "none",
+          "overflowY": "hidden",
+          "objectFit": "fill",
+          "aspectRatio": "auto",
+          "minBlockSize": "288px"
+        },
+        ".shell-panel": {
+          "x": 6,
+          "y": 4,
+          "width": 348,
+          "height": 835,
+          "scrollHeight": 829,
+          "clientHeight": 829,
+          "background": "rgb(233, 225, 212)",
+          "backgroundImage": "none",
+          "overflowY": "visible",
+          "objectFit": "fill",
+          "aspectRatio": "auto",
+          "minBlockSize": "176px"
+        },
+        ".mcr-chrome-panel-header": {
+          "x": 9,
+          "y": 7,
+          "width": 342,
+          "height": 50,
+          "scrollHeight": 44,
+          "clientHeight": 44,
+          "background": "rgb(37, 16, 23)",
+          "backgroundImage": "linear-gradient(to right, rgb(37, 16, 23) 7px, rgba(0, 0, 0, 0) 0px, rgba(0, 0, 0, 0) calc(100% - 133px), rgb(37, 16, 23) 0px), linear-gradient(rgb(37, 16, 23) 10px, rgb(233, 225, 212) 0px, rgb(233, 225, 212) 14px, rgba(0, 0, 0, 0) 0px, rgba(0, 0, 0, 0) 31px, rgb(233, 225, 212) 0px, rgb(233, 225, 212) 35px, rgb(37, 16, 23) 0px), linear-gradient(to right, rgb(37, 16, 23) 7px, rgb(233, 225, 212) 0px, rgb(233, 225, 212) 11px, rgb(37, 16, 23) 0px, rgb(37, 16, 23) calc(100% - 137px), rgb(233, 225, 212) 0px, rgb(233, 225, 212) calc(100% - 133px), rgb(37, 16, 23) 0px)",
+          "overflowY": "visible",
+          "objectFit": "fill",
+          "aspectRatio": "auto",
+          "minBlockSize": "46px"
+        },
+        ".shell-panel-body": {
+          "x": 9,
+          "y": 57,
+          "width": 342,
+          "height": 779,
+          "scrollHeight": 779,
+          "clientHeight": 779,
+          "background": "rgb(248, 245, 236)",
+          "backgroundImage": "none",
+          "overflowY": "auto",
+          "objectFit": "fill",
+          "aspectRatio": "auto",
+          "minBlockSize": "0px"
+        },
+        ".event-feed": {
+          "x": 15,
+          "y": 63,
+          "width": 330,
+          "height": 765,
+          "scrollHeight": 765,
+          "clientHeight": 765,
+          "background": "rgb(248, 245, 236)",
+          "backgroundImage": "none",
+          "overflowY": "visible",
+          "objectFit": "fill",
+          "aspectRatio": "auto",
+          "minBlockSize": "765px"
+        },
+        ".feed-footer": {
+          "x": 15,
+          "y": 767,
+          "width": 330,
+          "height": 61,
+          "scrollHeight": 60,
+          "clientHeight": 60,
+          "background": "rgb(248, 245, 236)",
+          "backgroundImage": "none",
+          "overflowY": "visible",
+          "objectFit": "fill",
+          "aspectRatio": "auto",
+          "minBlockSize": "auto"
+        }
+      },
+      "images": [
+        {
+          "x": 30,
+          "y": 250,
+          "width": 220,
+          "height": 74.8125,
+          "scrollHeight": 75,
+          "clientHeight": 75,
+          "background": "rgba(0, 0, 0, 0)",
+          "backgroundImage": "none",
+          "overflowY": "clip",
+          "objectFit": "contain",
+          "aspectRatio": "auto 197 / 67",
+          "minBlockSize": "0px",
+          "naturalWidth": 197,
+          "naturalHeight": 67,
+          "blob": true
+        },
+        {
+          "x": 30,
+          "y": 507.8125,
+          "width": 220,
+          "height": 51.359375,
+          "scrollHeight": 51,
+          "clientHeight": 51,
+          "background": "rgba(0, 0, 0, 0)",
+          "backgroundImage": "none",
+          "overflowY": "clip",
+          "objectFit": "contain",
+          "aspectRatio": "auto 197 / 46",
+          "minBlockSize": "0px",
+          "naturalWidth": 197,
+          "naturalHeight": 46,
+          "blob": true
+        }
+      ],
+      "mediaFrames": [
+        {
+          "x": 30,
+          "y": 250,
+          "width": 220,
+          "height": 74.8125,
+          "scrollHeight": 75,
+          "clientHeight": 75,
+          "background": "rgba(0, 0, 0, 0)",
+          "backgroundImage": "none",
+          "overflowY": "visible",
+          "objectFit": "fill",
+          "aspectRatio": "auto",
+          "minBlockSize": "0px"
+        },
+        {
+          "x": 30,
+          "y": 507.8125,
+          "width": 220,
+          "height": 51.359375,
+          "scrollHeight": 51,
+          "clientHeight": 51,
+          "background": "rgba(0, 0, 0, 0)",
+          "backgroundImage": "none",
+          "overflowY": "visible",
+          "objectFit": "fill",
+          "aspectRatio": "auto",
+          "minBlockSize": "0px"
+        }
+      ],
+      "authors": [
+        {
+          "x": 26,
+          "y": 139,
+          "width": 48,
+          "height": 48,
+          "scrollHeight": 46,
+          "clientHeight": 46,
+          "background": "rgb(221, 210, 193)",
+          "backgroundImage": "none",
+          "overflowY": "hidden",
+          "objectFit": "fill",
+          "aspectRatio": "auto",
+          "minBlockSize": "auto",
+          "canvas": {
+            "x": 27,
+            "y": 140,
+            "width": 46,
+            "height": 46,
+            "scrollHeight": 46,
+            "clientHeight": 46,
+            "background": "rgba(0, 0, 0, 0)",
+            "backgroundImage": "none",
+            "overflowY": "clip",
+            "objectFit": "contain",
+            "aspectRatio": "auto 64 / 64",
+            "minBlockSize": "0px"
+          },
+          "ready": "ready",
+          "paintedPixels": 2110
+        },
+        {
+          "x": 26,
+          "y": 396.8125,
+          "width": 48,
+          "height": 48,
+          "scrollHeight": 46,
+          "clientHeight": 46,
+          "background": "rgb(221, 210, 193)",
+          "backgroundImage": "none",
+          "overflowY": "hidden",
+          "objectFit": "fill",
+          "aspectRatio": "auto",
+          "minBlockSize": "auto",
+          "canvas": {
+            "x": 27,
+            "y": 397.8125,
+            "width": 46,
+            "height": 46,
+            "scrollHeight": 46,
+            "clientHeight": 46,
+            "background": "rgba(0, 0, 0, 0)",
+            "backgroundImage": "none",
+            "overflowY": "clip",
+            "objectFit": "contain",
+            "aspectRatio": "auto 64 / 64",
+            "minBlockSize": "0px"
+          },
+          "ready": "ready",
+          "paintedPixels": 2304
+        }
+      ],
+      "horizontalOverflow": false,
+      "calls": [
+        {
+          "method": "GET",
+          "path": "/api/auth/capabilities",
+          "status": 200
+        },
+        {
+          "method": "POST",
+          "path": "/api/auth/login",
+          "status": 200
+        },
+        {
+          "method": "GET",
+          "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/bootstrap",
+          "status": 200
+        },
+        {
+          "method": "GET",
+          "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/feed",
+          "status": 200
+        },
+        {
+          "method": "GET",
+          "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/notices",
+          "status": 200
+        },
+        {
+          "method": "GET",
+          "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/media/00000000-0000-4000-8000-000000000075",
+          "status": 200
+        },
+        {
+          "method": "GET",
+          "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/media/00000000-0000-4000-8000-000000000076",
+          "status": 200
+        },
+        {
+          "method": "GET",
+          "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/media/00000000-0000-4000-8000-000000000075/content",
+          "status": 200
+        },
+        {
+          "method": "GET",
+          "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/media/00000000-0000-4000-8000-000000000076/content",
+          "status": 200
+        }
+      ],
+      "blobUrls": 3,
+      "characters": {
+        "disposed": false,
+        "leases": 3,
+        "pending": 0,
+        "cleanupFailures": 0,
+        "decodedAtlases": 1
+      },
+      "qualification": {
+        "synthetic": true,
+        "mode": "loaded",
+        "inputRevision": "eb6e81bd7e5fbeb15613a45e00f1fe896e49f0da",
+        "mediaInputs": {
+          "00000000-0000-4000-8000-000000000075": {
+            "path": "/reference-feed-media-v1/reference-card-1.png",
+            "sha256": "a28db3162d4fe822b17d3228ad82866d4eeb0e2524fb606d469ccd925fd7385d",
+            "width": 197,
+            "height": 67
+          },
+          "00000000-0000-4000-8000-000000000076": {
+            "path": "/reference-feed-media-v1/reference-card-2.png",
+            "sha256": "2c5863585bce002be0ea0b057f4927d67c6f99e97cc7f5edee6ba9c47589ffdd",
+            "width": 197,
+            "height": 46
+          }
+        },
+        "liveIN03": "NOT_RUN",
+        "world": "DISABLED",
+        "selectedStatic": "1.1.0"
+      },
+      "scrolling": {
+        "driverOnlySpacer": true,
+        "observerMargin": 200,
+        "before": {
+          "frameHeight": 74.8125,
+          "frameTop": 246,
+          "scrollHeight": 2318,
+          "scrollTop": 0,
+          "imagePresent": true
+        },
+        "outside": {
+          "frameHeight": 22.5,
+          "frameTop": -291,
+          "scrollHeight": 2237,
+          "scrollTop": 537,
+          "imagePresent": false
+        },
+        "returned": {
+          "frameHeight": 74.8125,
+          "frameTop": 246,
+          "scrollHeight": 2318,
+          "scrollTop": 0,
+          "imagePresent": true
+        },
+        "geometryPreservedOnExit": false,
+        "geometryRestoredOnReturn": true
+      },
+      "composerReachable": true,
+      "readinessWithdrawal": true,
+      "disposedBlobUrls": 0
+    },
+    {
+      "name": "feed-390x843",
+      "viewport": {
+        "width": 390,
+        "height": 843
+      },
+      "regions": {
+        ".world-shell": {
+          "x": 0,
+          "y": 0,
+          "width": 390,
+          "height": 843,
+          "scrollHeight": 835,
+          "clientHeight": 835,
+          "background": "rgb(255, 243, 236)",
+          "backgroundImage": "none",
+          "overflowY": "hidden",
+          "objectFit": "fill",
+          "aspectRatio": "auto",
+          "minBlockSize": "288px"
+        },
+        ".shell-panel": {
+          "x": 6,
+          "y": 4,
+          "width": 378,
+          "height": 835,
+          "scrollHeight": 829,
+          "clientHeight": 829,
+          "background": "rgb(233, 225, 212)",
+          "backgroundImage": "none",
+          "overflowY": "visible",
+          "objectFit": "fill",
+          "aspectRatio": "auto",
+          "minBlockSize": "176px"
+        },
+        ".mcr-chrome-panel-header": {
+          "x": 9,
+          "y": 7,
+          "width": 372,
+          "height": 50,
+          "scrollHeight": 44,
+          "clientHeight": 44,
+          "background": "rgb(37, 16, 23)",
+          "backgroundImage": "linear-gradient(to right, rgb(37, 16, 23) 7px, rgba(0, 0, 0, 0) 0px, rgba(0, 0, 0, 0) calc(100% - 133px), rgb(37, 16, 23) 0px), linear-gradient(rgb(37, 16, 23) 10px, rgb(233, 225, 212) 0px, rgb(233, 225, 212) 14px, rgba(0, 0, 0, 0) 0px, rgba(0, 0, 0, 0) 31px, rgb(233, 225, 212) 0px, rgb(233, 225, 212) 35px, rgb(37, 16, 23) 0px), linear-gradient(to right, rgb(37, 16, 23) 7px, rgb(233, 225, 212) 0px, rgb(233, 225, 212) 11px, rgb(37, 16, 23) 0px, rgb(37, 16, 23) calc(100% - 137px), rgb(233, 225, 212) 0px, rgb(233, 225, 212) calc(100% - 133px), rgb(37, 16, 23) 0px)",
+          "overflowY": "visible",
+          "objectFit": "fill",
+          "aspectRatio": "auto",
+          "minBlockSize": "46px"
+        },
+        ".shell-panel-body": {
+          "x": 9,
+          "y": 57,
+          "width": 372,
+          "height": 779,
+          "scrollHeight": 779,
+          "clientHeight": 779,
+          "background": "rgb(248, 245, 236)",
+          "backgroundImage": "none",
+          "overflowY": "auto",
+          "objectFit": "fill",
+          "aspectRatio": "auto",
+          "minBlockSize": "0px"
+        },
+        ".event-feed": {
+          "x": 15,
+          "y": 63,
+          "width": 360,
+          "height": 765,
+          "scrollHeight": 765,
+          "clientHeight": 765,
+          "background": "rgb(248, 245, 236)",
+          "backgroundImage": "none",
+          "overflowY": "visible",
+          "objectFit": "fill",
+          "aspectRatio": "auto",
+          "minBlockSize": "765px"
+        },
+        ".feed-footer": {
+          "x": 15,
+          "y": 767,
+          "width": 360,
+          "height": 61,
+          "scrollHeight": 60,
+          "clientHeight": 60,
+          "background": "rgb(248, 245, 236)",
+          "backgroundImage": "none",
+          "overflowY": "visible",
+          "objectFit": "fill",
+          "aspectRatio": "auto",
+          "minBlockSize": "auto"
+        }
+      },
+      "images": [
+        {
+          "x": 30,
+          "y": 250,
+          "width": 220,
+          "height": 74.8125,
+          "scrollHeight": 75,
+          "clientHeight": 75,
+          "background": "rgba(0, 0, 0, 0)",
+          "backgroundImage": "none",
+          "overflowY": "clip",
+          "objectFit": "contain",
+          "aspectRatio": "auto 197 / 67",
+          "minBlockSize": "0px",
+          "naturalWidth": 197,
+          "naturalHeight": 67,
+          "blob": true
+        },
+        {
+          "x": 30,
+          "y": 507.8125,
+          "width": 220,
+          "height": 51.359375,
+          "scrollHeight": 51,
+          "clientHeight": 51,
+          "background": "rgba(0, 0, 0, 0)",
+          "backgroundImage": "none",
+          "overflowY": "clip",
+          "objectFit": "contain",
+          "aspectRatio": "auto 197 / 46",
+          "minBlockSize": "0px",
+          "naturalWidth": 197,
+          "naturalHeight": 46,
+          "blob": true
+        }
+      ],
+      "mediaFrames": [
+        {
+          "x": 30,
+          "y": 250,
+          "width": 220,
+          "height": 74.8125,
+          "scrollHeight": 75,
+          "clientHeight": 75,
+          "background": "rgba(0, 0, 0, 0)",
+          "backgroundImage": "none",
+          "overflowY": "visible",
+          "objectFit": "fill",
+          "aspectRatio": "auto",
+          "minBlockSize": "0px"
+        },
+        {
+          "x": 30,
+          "y": 507.8125,
+          "width": 220,
+          "height": 51.359375,
+          "scrollHeight": 51,
+          "clientHeight": 51,
+          "background": "rgba(0, 0, 0, 0)",
+          "backgroundImage": "none",
+          "overflowY": "visible",
+          "objectFit": "fill",
+          "aspectRatio": "auto",
+          "minBlockSize": "0px"
+        }
+      ],
+      "authors": [
+        {
+          "x": 26,
+          "y": 139,
+          "width": 48,
+          "height": 48,
+          "scrollHeight": 46,
+          "clientHeight": 46,
+          "background": "rgb(221, 210, 193)",
+          "backgroundImage": "none",
+          "overflowY": "hidden",
+          "objectFit": "fill",
+          "aspectRatio": "auto",
+          "minBlockSize": "auto",
+          "canvas": {
+            "x": 27,
+            "y": 140,
+            "width": 46,
+            "height": 46,
+            "scrollHeight": 46,
+            "clientHeight": 46,
+            "background": "rgba(0, 0, 0, 0)",
+            "backgroundImage": "none",
+            "overflowY": "clip",
+            "objectFit": "contain",
+            "aspectRatio": "auto 64 / 64",
+            "minBlockSize": "0px"
+          },
+          "ready": "ready",
+          "paintedPixels": 2110
+        },
+        {
+          "x": 26,
+          "y": 396.8125,
+          "width": 48,
+          "height": 48,
+          "scrollHeight": 46,
+          "clientHeight": 46,
+          "background": "rgb(221, 210, 193)",
+          "backgroundImage": "none",
+          "overflowY": "hidden",
+          "objectFit": "fill",
+          "aspectRatio": "auto",
+          "minBlockSize": "auto",
+          "canvas": {
+            "x": 27,
+            "y": 397.8125,
+            "width": 46,
+            "height": 46,
+            "scrollHeight": 46,
+            "clientHeight": 46,
+            "background": "rgba(0, 0, 0, 0)",
+            "backgroundImage": "none",
+            "overflowY": "clip",
+            "objectFit": "contain",
+            "aspectRatio": "auto 64 / 64",
+            "minBlockSize": "0px"
+          },
+          "ready": "ready",
+          "paintedPixels": 2304
+        }
+      ],
+      "horizontalOverflow": false,
+      "calls": [
+        {
+          "method": "GET",
+          "path": "/api/auth/capabilities",
+          "status": 200
+        },
+        {
+          "method": "POST",
+          "path": "/api/auth/login",
+          "status": 200
+        },
+        {
+          "method": "GET",
+          "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/bootstrap",
+          "status": 200
+        },
+        {
+          "method": "GET",
+          "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/feed",
+          "status": 200
+        },
+        {
+          "method": "GET",
+          "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/notices",
+          "status": 200
+        },
+        {
+          "method": "GET",
+          "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/media/00000000-0000-4000-8000-000000000075",
+          "status": 200
+        },
+        {
+          "method": "GET",
+          "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/media/00000000-0000-4000-8000-000000000076",
+          "status": 200
+        },
+        {
+          "method": "GET",
+          "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/media/00000000-0000-4000-8000-000000000075/content",
+          "status": 200
+        },
+        {
+          "method": "GET",
+          "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/media/00000000-0000-4000-8000-000000000076/content",
+          "status": 200
+        }
+      ],
+      "blobUrls": 3,
+      "characters": {
+        "disposed": false,
+        "leases": 3,
+        "pending": 0,
+        "cleanupFailures": 0,
+        "decodedAtlases": 1
+      },
+      "qualification": {
+        "synthetic": true,
+        "mode": "loaded",
+        "inputRevision": "eb6e81bd7e5fbeb15613a45e00f1fe896e49f0da",
+        "mediaInputs": {
+          "00000000-0000-4000-8000-000000000075": {
+            "path": "/reference-feed-media-v1/reference-card-1.png",
+            "sha256": "a28db3162d4fe822b17d3228ad82866d4eeb0e2524fb606d469ccd925fd7385d",
+            "width": 197,
+            "height": 67
+          },
+          "00000000-0000-4000-8000-000000000076": {
+            "path": "/reference-feed-media-v1/reference-card-2.png",
+            "sha256": "2c5863585bce002be0ea0b057f4927d67c6f99e97cc7f5edee6ba9c47589ffdd",
+            "width": 197,
+            "height": 46
+          }
+        },
+        "liveIN03": "NOT_RUN",
+        "world": "DISABLED",
+        "selectedStatic": "1.1.0"
+      },
+      "scrolling": {
+        "driverOnlySpacer": true,
+        "observerMargin": 200,
+        "before": {
+          "frameHeight": 74.8125,
+          "frameTop": 246,
+          "scrollHeight": 2318,
+          "scrollTop": 0,
+          "imagePresent": true
+        },
+        "outside": {
+          "frameHeight": 22.5,
+          "frameTop": -291,
+          "scrollHeight": 2237,
+          "scrollTop": 537,
+          "imagePresent": false
+        },
+        "returned": {
+          "frameHeight": 74.8125,
+          "frameTop": 246,
+          "scrollHeight": 2318,
+          "scrollTop": 0,
+          "imagePresent": true
+        },
+        "geometryPreservedOnExit": false,
+        "geometryRestoredOnReturn": true
+      },
+      "composerReachable": true,
+      "readinessWithdrawal": true,
+      "disposedBlobUrls": 0
+    },
+    {
+      "name": "feed-430x843",
+      "viewport": {
+        "width": 430,
+        "height": 843
+      },
+      "regions": {
+        ".world-shell": {
+          "x": 0,
+          "y": 0,
+          "width": 430,
+          "height": 843,
+          "scrollHeight": 835,
+          "clientHeight": 835,
+          "background": "rgb(255, 243, 236)",
+          "backgroundImage": "none",
+          "overflowY": "hidden",
+          "objectFit": "fill",
+          "aspectRatio": "auto",
+          "minBlockSize": "288px"
+        },
+        ".shell-panel": {
+          "x": 6,
+          "y": 4,
+          "width": 418,
+          "height": 835,
+          "scrollHeight": 829,
+          "clientHeight": 829,
+          "background": "rgb(233, 225, 212)",
+          "backgroundImage": "none",
+          "overflowY": "visible",
+          "objectFit": "fill",
+          "aspectRatio": "auto",
+          "minBlockSize": "176px"
+        },
+        ".mcr-chrome-panel-header": {
+          "x": 9,
+          "y": 7,
+          "width": 412,
+          "height": 50,
+          "scrollHeight": 44,
+          "clientHeight": 44,
+          "background": "rgb(37, 16, 23)",
+          "backgroundImage": "linear-gradient(to right, rgb(37, 16, 23) 7px, rgba(0, 0, 0, 0) 0px, rgba(0, 0, 0, 0) calc(100% - 133px), rgb(37, 16, 23) 0px), linear-gradient(rgb(37, 16, 23) 10px, rgb(233, 225, 212) 0px, rgb(233, 225, 212) 14px, rgba(0, 0, 0, 0) 0px, rgba(0, 0, 0, 0) 31px, rgb(233, 225, 212) 0px, rgb(233, 225, 212) 35px, rgb(37, 16, 23) 0px), linear-gradient(to right, rgb(37, 16, 23) 7px, rgb(233, 225, 212) 0px, rgb(233, 225, 212) 11px, rgb(37, 16, 23) 0px, rgb(37, 16, 23) calc(100% - 137px), rgb(233, 225, 212) 0px, rgb(233, 225, 212) calc(100% - 133px), rgb(37, 16, 23) 0px)",
+          "overflowY": "visible",
+          "objectFit": "fill",
+          "aspectRatio": "auto",
+          "minBlockSize": "46px"
+        },
+        ".shell-panel-body": {
+          "x": 9,
+          "y": 57,
+          "width": 412,
+          "height": 779,
+          "scrollHeight": 779,
+          "clientHeight": 779,
+          "background": "rgb(248, 245, 236)",
+          "backgroundImage": "none",
+          "overflowY": "auto",
+          "objectFit": "fill",
+          "aspectRatio": "auto",
+          "minBlockSize": "0px"
+        },
+        ".event-feed": {
+          "x": 15,
+          "y": 63,
+          "width": 400,
+          "height": 765,
+          "scrollHeight": 765,
+          "clientHeight": 765,
+          "background": "rgb(248, 245, 236)",
+          "backgroundImage": "none",
+          "overflowY": "visible",
+          "objectFit": "fill",
+          "aspectRatio": "auto",
+          "minBlockSize": "765px"
+        },
+        ".feed-footer": {
+          "x": 15,
+          "y": 767,
+          "width": 400,
+          "height": 61,
+          "scrollHeight": 60,
+          "clientHeight": 60,
+          "background": "rgb(248, 245, 236)",
+          "backgroundImage": "none",
+          "overflowY": "visible",
+          "objectFit": "fill",
+          "aspectRatio": "auto",
+          "minBlockSize": "auto"
+        }
+      },
+      "images": [
+        {
+          "x": 30,
+          "y": 250,
+          "width": 220,
+          "height": 74.8125,
+          "scrollHeight": 75,
+          "clientHeight": 75,
+          "background": "rgba(0, 0, 0, 0)",
+          "backgroundImage": "none",
+          "overflowY": "clip",
+          "objectFit": "contain",
+          "aspectRatio": "auto 197 / 67",
+          "minBlockSize": "0px",
+          "naturalWidth": 197,
+          "naturalHeight": 67,
+          "blob": true
+        },
+        {
+          "x": 30,
+          "y": 507.8125,
+          "width": 220,
+          "height": 51.359375,
+          "scrollHeight": 51,
+          "clientHeight": 51,
+          "background": "rgba(0, 0, 0, 0)",
+          "backgroundImage": "none",
+          "overflowY": "clip",
+          "objectFit": "contain",
+          "aspectRatio": "auto 197 / 46",
+          "minBlockSize": "0px",
+          "naturalWidth": 197,
+          "naturalHeight": 46,
+          "blob": true
+        }
+      ],
+      "mediaFrames": [
+        {
+          "x": 30,
+          "y": 250,
+          "width": 220,
+          "height": 74.8125,
+          "scrollHeight": 75,
+          "clientHeight": 75,
+          "background": "rgba(0, 0, 0, 0)",
+          "backgroundImage": "none",
+          "overflowY": "visible",
+          "objectFit": "fill",
+          "aspectRatio": "auto",
+          "minBlockSize": "0px"
+        },
+        {
+          "x": 30,
+          "y": 507.8125,
+          "width": 220,
+          "height": 51.359375,
+          "scrollHeight": 51,
+          "clientHeight": 51,
+          "background": "rgba(0, 0, 0, 0)",
+          "backgroundImage": "none",
+          "overflowY": "visible",
+          "objectFit": "fill",
+          "aspectRatio": "auto",
+          "minBlockSize": "0px"
+        }
+      ],
+      "authors": [
+        {
+          "x": 26,
+          "y": 139,
+          "width": 48,
+          "height": 48,
+          "scrollHeight": 46,
+          "clientHeight": 46,
+          "background": "rgb(221, 210, 193)",
+          "backgroundImage": "none",
+          "overflowY": "hidden",
+          "objectFit": "fill",
+          "aspectRatio": "auto",
+          "minBlockSize": "auto",
+          "canvas": {
+            "x": 27,
+            "y": 140,
+            "width": 46,
+            "height": 46,
+            "scrollHeight": 46,
+            "clientHeight": 46,
+            "background": "rgba(0, 0, 0, 0)",
+            "backgroundImage": "none",
+            "overflowY": "clip",
+            "objectFit": "contain",
+            "aspectRatio": "auto 64 / 64",
+            "minBlockSize": "0px"
+          },
+          "ready": "ready",
+          "paintedPixels": 2110
+        },
+        {
+          "x": 26,
+          "y": 396.8125,
+          "width": 48,
+          "height": 48,
+          "scrollHeight": 46,
+          "clientHeight": 46,
+          "background": "rgb(221, 210, 193)",
+          "backgroundImage": "none",
+          "overflowY": "hidden",
+          "objectFit": "fill",
+          "aspectRatio": "auto",
+          "minBlockSize": "auto",
+          "canvas": {
+            "x": 27,
+            "y": 397.8125,
+            "width": 46,
+            "height": 46,
+            "scrollHeight": 46,
+            "clientHeight": 46,
+            "background": "rgba(0, 0, 0, 0)",
+            "backgroundImage": "none",
+            "overflowY": "clip",
+            "objectFit": "contain",
+            "aspectRatio": "auto 64 / 64",
+            "minBlockSize": "0px"
+          },
+          "ready": "ready",
+          "paintedPixels": 2304
+        }
+      ],
+      "horizontalOverflow": false,
+      "calls": [
+        {
+          "method": "GET",
+          "path": "/api/auth/capabilities",
+          "status": 200
+        },
+        {
+          "method": "POST",
+          "path": "/api/auth/login",
+          "status": 200
+        },
+        {
+          "method": "GET",
+          "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/bootstrap",
+          "status": 200
+        },
+        {
+          "method": "GET",
+          "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/feed",
+          "status": 200
+        },
+        {
+          "method": "GET",
+          "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/notices",
+          "status": 200
+        },
+        {
+          "method": "GET",
+          "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/media/00000000-0000-4000-8000-000000000075",
+          "status": 200
+        },
+        {
+          "method": "GET",
+          "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/media/00000000-0000-4000-8000-000000000076",
+          "status": 200
+        },
+        {
+          "method": "GET",
+          "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/media/00000000-0000-4000-8000-000000000075/content",
+          "status": 200
+        },
+        {
+          "method": "GET",
+          "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/media/00000000-0000-4000-8000-000000000076/content",
+          "status": 200
+        }
+      ],
+      "blobUrls": 3,
+      "characters": {
+        "disposed": false,
+        "leases": 3,
+        "pending": 0,
+        "cleanupFailures": 0,
+        "decodedAtlases": 1
+      },
+      "qualification": {
+        "synthetic": true,
+        "mode": "loaded",
+        "inputRevision": "eb6e81bd7e5fbeb15613a45e00f1fe896e49f0da",
+        "mediaInputs": {
+          "00000000-0000-4000-8000-000000000075": {
+            "path": "/reference-feed-media-v1/reference-card-1.png",
+            "sha256": "a28db3162d4fe822b17d3228ad82866d4eeb0e2524fb606d469ccd925fd7385d",
+            "width": 197,
+            "height": 67
+          },
+          "00000000-0000-4000-8000-000000000076": {
+            "path": "/reference-feed-media-v1/reference-card-2.png",
+            "sha256": "2c5863585bce002be0ea0b057f4927d67c6f99e97cc7f5edee6ba9c47589ffdd",
+            "width": 197,
+            "height": 46
+          }
+        },
+        "liveIN03": "NOT_RUN",
+        "world": "DISABLED",
+        "selectedStatic": "1.1.0"
+      },
+      "scrolling": {
+        "driverOnlySpacer": true,
+        "observerMargin": 200,
+        "before": {
+          "frameHeight": 74.8125,
+          "frameTop": 246,
+          "scrollHeight": 2318,
+          "scrollTop": 0,
+          "imagePresent": true
+        },
+        "outside": {
+          "frameHeight": 22.5,
+          "frameTop": -291,
+          "scrollHeight": 2237,
+          "scrollTop": 537,
+          "imagePresent": false
+        },
+        "returned": {
+          "frameHeight": 74.8125,
+          "frameTop": 246,
+          "scrollHeight": 2318,
+          "scrollTop": 0,
+          "imagePresent": true
+        },
+        "geometryPreservedOnExit": false,
+        "geometryRestoredOnReturn": true
+      },
+      "composerReachable": true,
+      "readinessWithdrawal": true,
+      "disposedBlobUrls": 0
+    },
+    {
+      "name": "feed-390x480",
+      "viewport": {
+        "width": 390,
+        "height": 480
+      },
+      "regions": {
+        ".world-shell": {
+          "x": 0,
+          "y": 0,
+          "width": 390,
+          "height": 480,
+          "scrollHeight": 472,
+          "clientHeight": 472,
+          "background": "rgb(255, 243, 236)",
+          "backgroundImage": "none",
+          "overflowY": "hidden",
+          "objectFit": "fill",
+          "aspectRatio": "auto",
+          "minBlockSize": "0px"
+        },
+        ".shell-panel": {
+          "x": 6,
+          "y": 4,
+          "width": 378,
+          "height": 472,
+          "scrollHeight": 466,
+          "clientHeight": 466,
+          "background": "rgb(233, 225, 212)",
+          "backgroundImage": "none",
+          "overflowY": "visible",
+          "objectFit": "fill",
+          "aspectRatio": "auto",
+          "minBlockSize": "176px"
+        },
+        ".mcr-chrome-panel-header": {
+          "x": 9,
+          "y": 7,
+          "width": 372,
+          "height": 46,
+          "scrollHeight": 44,
+          "clientHeight": 40,
+          "background": "rgb(37, 16, 23)",
+          "backgroundImage": "linear-gradient(to right, rgb(37, 16, 23) 7px, rgba(0, 0, 0, 0) 0px, rgba(0, 0, 0, 0) calc(100% - 133px), rgb(37, 16, 23) 0px), linear-gradient(rgb(37, 16, 23) 10px, rgb(233, 225, 212) 0px, rgb(233, 225, 212) 14px, rgba(0, 0, 0, 0) 0px, rgba(0, 0, 0, 0) 31px, rgb(233, 225, 212) 0px, rgb(233, 225, 212) 35px, rgb(37, 16, 23) 0px), linear-gradient(to right, rgb(37, 16, 23) 7px, rgb(233, 225, 212) 0px, rgb(233, 225, 212) 11px, rgb(37, 16, 23) 0px, rgb(37, 16, 23) calc(100% - 137px), rgb(233, 225, 212) 0px, rgb(233, 225, 212) calc(100% - 133px), rgb(37, 16, 23) 0px)",
+          "overflowY": "visible",
+          "objectFit": "fill",
+          "aspectRatio": "auto",
+          "minBlockSize": "46px"
+        },
+        ".shell-panel-body": {
+          "x": 9,
+          "y": 53,
+          "width": 372,
+          "height": 420,
+          "scrollHeight": 632,
+          "clientHeight": 420,
+          "background": "rgb(248, 245, 236)",
+          "backgroundImage": "none",
+          "overflowY": "auto",
+          "objectFit": "fill",
+          "aspectRatio": "auto",
+          "minBlockSize": "0px"
+        },
+        ".event-feed": {
+          "x": 15,
+          "y": 59,
+          "width": 360,
+          "height": 620.171875,
+          "scrollHeight": 620,
+          "clientHeight": 620,
+          "background": "rgb(248, 245, 236)",
+          "backgroundImage": "none",
+          "overflowY": "visible",
+          "objectFit": "fill",
+          "aspectRatio": "auto",
+          "minBlockSize": "402px"
+        },
+        ".feed-footer": {
+          "x": 15,
+          "y": 618.171875,
+          "width": 360,
+          "height": 61,
+          "scrollHeight": 60,
+          "clientHeight": 60,
+          "background": "rgb(248, 245, 236)",
+          "backgroundImage": "none",
+          "overflowY": "visible",
+          "objectFit": "fill",
+          "aspectRatio": "auto",
+          "minBlockSize": "auto"
+        }
+      },
+      "images": [
+        {
+          "x": 30,
+          "y": 246,
+          "width": 220,
+          "height": 74.8125,
+          "scrollHeight": 75,
+          "clientHeight": 75,
+          "background": "rgba(0, 0, 0, 0)",
+          "backgroundImage": "none",
+          "overflowY": "clip",
+          "objectFit": "contain",
+          "aspectRatio": "auto 197 / 67",
+          "minBlockSize": "0px",
+          "naturalWidth": 197,
+          "naturalHeight": 67,
+          "blob": true
+        },
+        {
+          "x": 30,
+          "y": 503.8125,
+          "width": 220,
+          "height": 51.359375,
+          "scrollHeight": 51,
+          "clientHeight": 51,
+          "background": "rgba(0, 0, 0, 0)",
+          "backgroundImage": "none",
+          "overflowY": "clip",
+          "objectFit": "contain",
+          "aspectRatio": "auto 197 / 46",
+          "minBlockSize": "0px",
+          "naturalWidth": 197,
+          "naturalHeight": 46,
+          "blob": true
+        }
+      ],
+      "mediaFrames": [
+        {
+          "x": 30,
+          "y": 246,
+          "width": 220,
+          "height": 74.8125,
+          "scrollHeight": 75,
+          "clientHeight": 75,
+          "background": "rgba(0, 0, 0, 0)",
+          "backgroundImage": "none",
+          "overflowY": "visible",
+          "objectFit": "fill",
+          "aspectRatio": "auto",
+          "minBlockSize": "0px"
+        },
+        {
+          "x": 30,
+          "y": 503.8125,
+          "width": 220,
+          "height": 51.359375,
+          "scrollHeight": 51,
+          "clientHeight": 51,
+          "background": "rgba(0, 0, 0, 0)",
+          "backgroundImage": "none",
+          "overflowY": "visible",
+          "objectFit": "fill",
+          "aspectRatio": "auto",
+          "minBlockSize": "0px"
+        }
+      ],
+      "authors": [
+        {
+          "x": 26,
+          "y": 135,
+          "width": 48,
+          "height": 48,
+          "scrollHeight": 46,
+          "clientHeight": 46,
+          "background": "rgb(221, 210, 193)",
+          "backgroundImage": "none",
+          "overflowY": "hidden",
+          "objectFit": "fill",
+          "aspectRatio": "auto",
+          "minBlockSize": "auto",
+          "canvas": {
+            "x": 27,
+            "y": 136,
+            "width": 46,
+            "height": 46,
+            "scrollHeight": 46,
+            "clientHeight": 46,
+            "background": "rgba(0, 0, 0, 0)",
+            "backgroundImage": "none",
+            "overflowY": "clip",
+            "objectFit": "contain",
+            "aspectRatio": "auto 64 / 64",
+            "minBlockSize": "0px"
+          },
+          "ready": "ready",
+          "paintedPixels": 2110
+        },
+        {
+          "x": 26,
+          "y": 392.8125,
+          "width": 48,
+          "height": 48,
+          "scrollHeight": 46,
+          "clientHeight": 46,
+          "background": "rgb(221, 210, 193)",
+          "backgroundImage": "none",
+          "overflowY": "hidden",
+          "objectFit": "fill",
+          "aspectRatio": "auto",
+          "minBlockSize": "auto",
+          "canvas": {
+            "x": 27,
+            "y": 393.8125,
+            "width": 46,
+            "height": 46,
+            "scrollHeight": 46,
+            "clientHeight": 46,
+            "background": "rgba(0, 0, 0, 0)",
+            "backgroundImage": "none",
+            "overflowY": "clip",
+            "objectFit": "contain",
+            "aspectRatio": "auto 64 / 64",
+            "minBlockSize": "0px"
+          },
+          "ready": "ready",
+          "paintedPixels": 2304
+        }
+      ],
+      "horizontalOverflow": false,
+      "calls": [
+        {
+          "method": "GET",
+          "path": "/api/auth/capabilities",
+          "status": 200
+        },
+        {
+          "method": "POST",
+          "path": "/api/auth/login",
+          "status": 200
+        },
+        {
+          "method": "GET",
+          "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/bootstrap",
+          "status": 200
+        },
+        {
+          "method": "GET",
+          "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/feed",
+          "status": 200
+        },
+        {
+          "method": "GET",
+          "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/notices",
+          "status": 200
+        },
+        {
+          "method": "GET",
+          "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/media/00000000-0000-4000-8000-000000000075",
+          "status": 200
+        },
+        {
+          "method": "GET",
+          "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/media/00000000-0000-4000-8000-000000000076",
+          "status": 200
+        },
+        {
+          "method": "GET",
+          "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/media/00000000-0000-4000-8000-000000000075/content",
+          "status": 200
+        },
+        {
+          "method": "GET",
+          "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/media/00000000-0000-4000-8000-000000000076/content",
+          "status": 200
+        }
+      ],
+      "blobUrls": 3,
+      "characters": {
+        "disposed": false,
+        "leases": 3,
+        "pending": 0,
+        "cleanupFailures": 0,
+        "decodedAtlases": 1
+      },
+      "qualification": {
+        "synthetic": true,
+        "mode": "loaded",
+        "inputRevision": "eb6e81bd7e5fbeb15613a45e00f1fe896e49f0da",
+        "mediaInputs": {
+          "00000000-0000-4000-8000-000000000075": {
+            "path": "/reference-feed-media-v1/reference-card-1.png",
+            "sha256": "a28db3162d4fe822b17d3228ad82866d4eeb0e2524fb606d469ccd925fd7385d",
+            "width": 197,
+            "height": 67
+          },
+          "00000000-0000-4000-8000-000000000076": {
+            "path": "/reference-feed-media-v1/reference-card-2.png",
+            "sha256": "2c5863585bce002be0ea0b057f4927d67c6f99e97cc7f5edee6ba9c47589ffdd",
+            "width": 197,
+            "height": 46
+          }
+        },
+        "liveIN03": "NOT_RUN",
+        "world": "DISABLED",
+        "selectedStatic": "1.1.0"
+      },
+      "scrolling": {
+        "driverOnlySpacer": true,
+        "observerMargin": 200,
+        "before": {
+          "frameHeight": 74.8125,
+          "frameTop": 169,
+          "scrollHeight": 1592,
+          "scrollTop": 77,
+          "imagePresent": true
+        },
+        "outside": {
+          "frameHeight": 22.5,
+          "frameTop": -291,
+          "scrollHeight": 1511,
+          "scrollTop": 537,
+          "imagePresent": false
+        },
+        "returned": {
+          "frameHeight": 74.8125,
+          "frameTop": 246,
+          "scrollHeight": 1592,
+          "scrollTop": 0,
+          "imagePresent": true
+        },
+        "geometryPreservedOnExit": false,
+        "geometryRestoredOnReturn": true
+      },
+      "composerReachable": true,
+      "readinessWithdrawal": true,
+      "disposedBlobUrls": 0
+    },
+    {
+      "mode": "no-readiness",
+      "viewport": {
+        "width": 390,
+        "height": 843
+      },
+      "regions": {
+        ".world-shell": {
+          "x": 0,
+          "y": 0,
+          "width": 390,
+          "height": 843,
+          "scrollHeight": 835,
+          "clientHeight": 835,
+          "background": "rgb(255, 243, 236)",
+          "backgroundImage": "none",
+          "overflowY": "hidden",
+          "objectFit": "fill",
+          "aspectRatio": "auto",
+          "minBlockSize": "288px"
+        },
+        ".shell-panel": {
+          "x": 6,
+          "y": 4,
+          "width": 378,
+          "height": 835,
+          "scrollHeight": 829,
+          "clientHeight": 829,
+          "background": "rgb(233, 225, 212)",
+          "backgroundImage": "none",
+          "overflowY": "visible",
+          "objectFit": "fill",
+          "aspectRatio": "auto",
+          "minBlockSize": "176px"
+        },
+        ".mcr-chrome-panel-header": {
+          "x": 9,
+          "y": 7,
+          "width": 372,
+          "height": 50,
+          "scrollHeight": 44,
+          "clientHeight": 44,
+          "background": "rgb(37, 16, 23)",
+          "backgroundImage": "linear-gradient(to right, rgb(37, 16, 23) 7px, rgba(0, 0, 0, 0) 0px, rgba(0, 0, 0, 0) calc(100% - 133px), rgb(37, 16, 23) 0px), linear-gradient(rgb(37, 16, 23) 10px, rgb(233, 225, 212) 0px, rgb(233, 225, 212) 14px, rgba(0, 0, 0, 0) 0px, rgba(0, 0, 0, 0) 31px, rgb(233, 225, 212) 0px, rgb(233, 225, 212) 35px, rgb(37, 16, 23) 0px), linear-gradient(to right, rgb(37, 16, 23) 7px, rgb(233, 225, 212) 0px, rgb(233, 225, 212) 11px, rgb(37, 16, 23) 0px, rgb(37, 16, 23) calc(100% - 137px), rgb(233, 225, 212) 0px, rgb(233, 225, 212) calc(100% - 133px), rgb(37, 16, 23) 0px)",
+          "overflowY": "visible",
+          "objectFit": "fill",
+          "aspectRatio": "auto",
+          "minBlockSize": "46px"
+        },
+        ".shell-panel-body": {
+          "x": 9,
+          "y": 57,
+          "width": 372,
+          "height": 779,
+          "scrollHeight": 779,
+          "clientHeight": 779,
+          "background": "rgb(248, 245, 236)",
+          "backgroundImage": "none",
+          "overflowY": "auto",
+          "objectFit": "fill",
+          "aspectRatio": "auto",
+          "minBlockSize": "0px"
+        },
+        ".event-feed": null,
+        ".feed-footer": null
+      },
+      "images": [],
+      "mediaFrames": [],
+      "authors": [],
+      "horizontalOverflow": false,
+      "calls": [
+        {
+          "method": "GET",
+          "path": "/api/auth/capabilities",
+          "status": 200
+        },
+        {
+          "method": "POST",
+          "path": "/api/auth/login",
+          "status": 200
+        },
+        {
+          "method": "GET",
+          "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/bootstrap",
+          "status": 200
+        }
+      ],
+      "blobUrls": 1,
+      "characters": {
+        "disposed": false,
+        "leases": 1,
+        "pending": 0,
+        "cleanupFailures": 0,
+        "decodedAtlases": 1
+      },
+      "qualification": {
+        "synthetic": true,
+        "mode": "no-readiness",
+        "inputRevision": "eb6e81bd7e5fbeb15613a45e00f1fe896e49f0da",
+        "mediaInputs": {
+          "00000000-0000-4000-8000-000000000075": {
+            "path": "/reference-feed-media-v1/reference-card-1.png",
+            "sha256": "a28db3162d4fe822b17d3228ad82866d4eeb0e2524fb606d469ccd925fd7385d",
+            "width": 197,
+            "height": 67
+          },
+          "00000000-0000-4000-8000-000000000076": {
+            "path": "/reference-feed-media-v1/reference-card-2.png",
+            "sha256": "2c5863585bce002be0ea0b057f4927d67c6f99e97cc7f5edee6ba9c47589ffdd",
+            "width": 197,
+            "height": 46
+          }
+        },
+        "liveIN03": "NOT_RUN",
+        "world": "DISABLED",
+        "selectedStatic": "1.1.0"
+      },
+      "invalidationWithdrawal": true
+    },
+    {
+      "mode": "denied-media",
+      "viewport": {
+        "width": 390,
+        "height": 843
+      },
+      "regions": {
+        ".world-shell": {
+          "x": 0,
+          "y": 0,
+          "width": 390,
+          "height": 843,
+          "scrollHeight": 835,
+          "clientHeight": 835,
+          "background": "rgb(255, 243, 236)",
+          "backgroundImage": "none",
+          "overflowY": "hidden",
+          "objectFit": "fill",
+          "aspectRatio": "auto",
+          "minBlockSize": "288px"
+        },
+        ".shell-panel": {
+          "x": 6,
+          "y": 4,
+          "width": 378,
+          "height": 835,
+          "scrollHeight": 829,
+          "clientHeight": 829,
+          "background": "rgb(233, 225, 212)",
+          "backgroundImage": "none",
+          "overflowY": "visible",
+          "objectFit": "fill",
+          "aspectRatio": "auto",
+          "minBlockSize": "176px"
+        },
+        ".mcr-chrome-panel-header": {
+          "x": 9,
+          "y": 7,
+          "width": 372,
+          "height": 50,
+          "scrollHeight": 44,
+          "clientHeight": 44,
+          "background": "rgb(37, 16, 23)",
+          "backgroundImage": "linear-gradient(to right, rgb(37, 16, 23) 7px, rgba(0, 0, 0, 0) 0px, rgba(0, 0, 0, 0) calc(100% - 133px), rgb(37, 16, 23) 0px), linear-gradient(rgb(37, 16, 23) 10px, rgb(233, 225, 212) 0px, rgb(233, 225, 212) 14px, rgba(0, 0, 0, 0) 0px, rgba(0, 0, 0, 0) 31px, rgb(233, 225, 212) 0px, rgb(233, 225, 212) 35px, rgb(37, 16, 23) 0px), linear-gradient(to right, rgb(37, 16, 23) 7px, rgb(233, 225, 212) 0px, rgb(233, 225, 212) 11px, rgb(37, 16, 23) 0px, rgb(37, 16, 23) calc(100% - 137px), rgb(233, 225, 212) 0px, rgb(233, 225, 212) calc(100% - 133px), rgb(37, 16, 23) 0px)",
+          "overflowY": "visible",
+          "objectFit": "fill",
+          "aspectRatio": "auto",
+          "minBlockSize": "46px"
+        },
+        ".shell-panel-body": {
+          "x": 9,
+          "y": 57,
+          "width": 372,
+          "height": 779,
+          "scrollHeight": 779,
+          "clientHeight": 779,
+          "background": "rgb(248, 245, 236)",
+          "backgroundImage": "none",
+          "overflowY": "auto",
+          "objectFit": "fill",
+          "aspectRatio": "auto",
+          "minBlockSize": "0px"
+        },
+        ".event-feed": {
+          "x": 15,
+          "y": 63,
+          "width": 360,
+          "height": 765,
+          "scrollHeight": 765,
+          "clientHeight": 765,
+          "background": "rgb(248, 245, 236)",
+          "backgroundImage": "none",
+          "overflowY": "visible",
+          "objectFit": "fill",
+          "aspectRatio": "auto",
+          "minBlockSize": "765px"
+        },
+        ".feed-footer": {
+          "x": 15,
+          "y": 767,
+          "width": 360,
+          "height": 61,
+          "scrollHeight": 60,
+          "clientHeight": 60,
+          "background": "rgb(248, 245, 236)",
+          "backgroundImage": "none",
+          "overflowY": "visible",
+          "objectFit": "fill",
+          "aspectRatio": "auto",
+          "minBlockSize": "auto"
+        }
+      },
+      "images": [],
+      "mediaFrames": [
+        {
+          "x": 30,
+          "y": 254,
+          "width": 220,
+          "height": 87.1875,
+          "scrollHeight": 87,
+          "clientHeight": 87,
+          "background": "rgba(0, 0, 0, 0)",
+          "backgroundImage": "none",
+          "overflowY": "visible",
+          "objectFit": "fill",
+          "aspectRatio": "auto",
+          "minBlockSize": "0px"
+        },
+        {
+          "x": 30,
+          "y": 528.1875,
+          "width": 220,
+          "height": 87.1875,
+          "scrollHeight": 87,
+          "clientHeight": 87,
+          "background": "rgba(0, 0, 0, 0)",
+          "backgroundImage": "none",
+          "overflowY": "visible",
+          "objectFit": "fill",
+          "aspectRatio": "auto",
+          "minBlockSize": "0px"
+        }
+      ],
+      "authors": [
+        {
+          "x": 26,
+          "y": 139,
+          "width": 48,
+          "height": 48,
+          "scrollHeight": 46,
+          "clientHeight": 46,
+          "background": "rgb(221, 210, 193)",
+          "backgroundImage": "none",
+          "overflowY": "hidden",
+          "objectFit": "fill",
+          "aspectRatio": "auto",
+          "minBlockSize": "auto",
+          "canvas": {
+            "x": 27,
+            "y": 140,
+            "width": 46,
+            "height": 46,
+            "scrollHeight": 46,
+            "clientHeight": 46,
+            "background": "rgba(0, 0, 0, 0)",
+            "backgroundImage": "none",
+            "overflowY": "clip",
+            "objectFit": "contain",
+            "aspectRatio": "auto 64 / 64",
+            "minBlockSize": "0px"
+          },
+          "ready": "ready",
+          "paintedPixels": 2110
+        },
+        {
+          "x": 26,
+          "y": 413.1875,
+          "width": 48,
+          "height": 48,
+          "scrollHeight": 46,
+          "clientHeight": 46,
+          "background": "rgb(221, 210, 193)",
+          "backgroundImage": "none",
+          "overflowY": "hidden",
+          "objectFit": "fill",
+          "aspectRatio": "auto",
+          "minBlockSize": "auto",
+          "canvas": {
+            "x": 27,
+            "y": 414.1875,
+            "width": 46,
+            "height": 46,
+            "scrollHeight": 46,
+            "clientHeight": 46,
+            "background": "rgba(0, 0, 0, 0)",
+            "backgroundImage": "none",
+            "overflowY": "clip",
+            "objectFit": "contain",
+            "aspectRatio": "auto 64 / 64",
+            "minBlockSize": "0px"
+          },
+          "ready": "ready",
+          "paintedPixels": 2304
+        }
+      ],
+      "horizontalOverflow": false,
+      "calls": [
+        {
+          "method": "GET",
+          "path": "/api/auth/capabilities",
+          "status": 200
+        },
+        {
+          "method": "POST",
+          "path": "/api/auth/login",
+          "status": 200
+        },
+        {
+          "method": "GET",
+          "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/bootstrap",
+          "status": 200
+        },
+        {
+          "method": "GET",
+          "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/feed",
+          "status": 200
+        },
+        {
+          "method": "GET",
+          "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/notices",
+          "status": 200
+        },
+        {
+          "method": "GET",
+          "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/media/00000000-0000-4000-8000-000000000075",
+          "status": 403
+        },
+        {
+          "method": "GET",
+          "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/media/00000000-0000-4000-8000-000000000076",
+          "status": 403
+        }
+      ],
+      "blobUrls": 1,
+      "characters": {
+        "disposed": false,
+        "leases": 3,
+        "pending": 0,
+        "cleanupFailures": 0,
+        "decodedAtlases": 1
+      },
+      "qualification": {
+        "synthetic": true,
+        "mode": "denied-media",
+        "inputRevision": "eb6e81bd7e5fbeb15613a45e00f1fe896e49f0da",
+        "mediaInputs": {
+          "00000000-0000-4000-8000-000000000075": {
+            "path": "/reference-feed-media-v1/reference-card-1.png",
+            "sha256": "a28db3162d4fe822b17d3228ad82866d4eeb0e2524fb606d469ccd925fd7385d",
+            "width": 197,
+            "height": 67
+          },
+          "00000000-0000-4000-8000-000000000076": {
+            "path": "/reference-feed-media-v1/reference-card-2.png",
+            "sha256": "2c5863585bce002be0ea0b057f4927d67c6f99e97cc7f5edee6ba9c47589ffdd",
+            "width": 197,
+            "height": 46
+          }
+        },
+        "liveIN03": "NOT_RUN",
+        "world": "DISABLED",
+        "selectedStatic": "1.1.0"
+      },
+      "invalidationWithdrawal": true
+    }
+  ],
+  "jsErrors": [],
+  "commands": [
+    {
+      "name": "supervisor-syntax",
+      "args": [
+        "--check",
+        "src/app/feed-entry/__tests__/qualify.mjs"
+      ],
+      "exit": 0,
+      "signal": null,
+      "startUTC": "2026-11-04T15:10:12.665Z",
+      "milliseconds": 29
+    },
+    {
+      "name": "native-syntax",
+      "args": [
+        "--check",
+        "src/app/feed-entry/__tests__/native.mjs"
+      ],
+      "exit": 0,
+      "signal": null,
+      "startUTC": "2026-11-04T15:10:12.722Z",
+      "milliseconds": 27
+    },
+    {
+      "name": "native",
+      "args": [
+        "src/app/feed-entry/__tests__/native.mjs"
+      ],
+      "exit": 1,
+      "signal": null,
+      "startUTC": "2026-11-04T15:10:13.166Z",
+      "milliseconds": 10511
+    },
+    {
+      "name": "vite",
+      "args": [
+        "node_modules/vite/bin/vite.js",
+        "--configLoader",
+        "native",
+        "--config",
+        "src/app/feed-entry/__tests__/vite.config.ts",
+        "--host",
+        "127.0.0.1",
+        "--port",
+        "5279",
+        "--strictPort"
+      ],
+      "exit": 143,
+      "signal": null,
+      "startUTC": "2026-11-04T15:10:12.801Z",
+      "milliseconds": 10896
+    }
+  ],
+  "node": "v24.22.2",
+  "nodeSha256": "b6fb419f0f43bb2fbca273700294dd2f3b685a64b60e8417c295f47646a70e4a",
+  "lockSha256": "47ca44459819ad0e887d2f4f93394fdf3b1053b8f45edc9ceb0236981feee1f6",
+  "cssInputs": [
+    {
+      "revision": "d0b2d44f30c6026b57cee66518f6dd4917c15c1e",
+      "sha256": "d72c8471fd23163b20c821abe74e439eb2539cd71a99358045cc49c54ae4a0fb",
+      "path": "frontend/src/features/event-feed/feed.css",
+      "readonlyBorrow": true
+    },
+    {
+      "revision": "32fed3eb41e2b57783cebb78e4aff11d3fa087ba",
+      "sha256": "f41dc64630680729de9bd5acc1239a76cf7a34193f383efa1b78a283e48b2b98",
+      "path": "frontend/src/shared/styles/cozy-community-backgrounds-v1.css",
+      "readonlyBorrow": true
+    }
+  ],
+  "initial": {
+    "files": 564,
+    "bytes": 5034394,
+    "temporaryBytes": 0,
+    "freeBytes": 23465426944
+  },
+  "final": {
+    "files": 594,
+    "bytes": 5760727,
+    "temporaryBytes": 0,
+    "freeBytes": 23412985856
+  },
+  "peakProcesses": 11,
+  "peakRssBytes": 2531786752,
+  "fullRelease": {
+    "utc": "2026-11-04T15:10:47.058981+00:00",
+    "ownedProcesses": [],
+    "listener5279": "",
+    "bind5279": "PASS",
+    "dependencyLinkPresent": false,
+    "cachePresent": false,
+    "tmpPresent": false,
+    "freeBytes": 23430782976,
+    "peakProcesses": 11,
+    "peakRssBytes": 2531786752,
+    "summaryStatus": "FAILED",
+    "cases": 6,
+    "errors": []
+  },
+  "sourceSha256": {
+    "frontend/src/app/feed-entry/__tests__/README.md": "82a60af2ea12b23846aec07c014f8bb8939e9474a2c4a10779b96ff5cdb1be37",
+    "frontend/src/app/feed-entry/__tests__/fixture.ts": "4d9eef15cb75eb535f22cbd92d9e824b919d270be1bf587b873c61b872830c2e",
+    "frontend/src/app/feed-entry/__tests__/native.mjs": "dd2e21ebfdd51d577fdff96ce32d6e5e42bf807d006709dec9d3b6b0f8d5ea76",
+    "frontend/src/app/feed-entry/__tests__/preview.html": "dcf91cb947e126f7007253f133800a889a49b03f5eaf91529ab727393cc96136",
+    "frontend/src/app/feed-entry/__tests__/preview.tsx": "c8250da0ae62379747c575b5006fd7572a654168826cd31bda27c491fa16e287",
+    "frontend/src/app/feed-entry/__tests__/production.test.ts": "faf1035617e78f7c2c69efd129fcdc8e56e214d6c1aa4d7cf3a763e868fbef30",
+    "frontend/src/app/feed-entry/__tests__/qualify.mjs": "391e550a9b9ea29f60a8387cbfe7a2b73f55afe1df124debe5023a943b8bf521",
+    "frontend/src/app/feed-entry/__tests__/tsconfig.json": "75a17cac9c90f2bfb565b04b2e9b15dd2213eaaa269882d5de542d016fe6404f",
+    "frontend/src/app/feed-entry/__tests__/vite.config.ts": "711e25afbae57f2510b7c1199f922e73f3dc0bffdb79bf0c55fbfe90ce264e8a",
+    "frontend/src/app/feed-entry/__tests__/vitest.config.ts": "d4b1237aa48adb8fe3ddc70f39d7447d795f1d3b521c99bca392f161a76b733f",
+    "frontend/src/app/feed-entry/production.ts": "3475ecd14440ccaa3f4c1178b3de84da2496e0f102a13bbaf1c18241c2030bdd"
+  },
+  "artifacts": [
+    {
+      "file": "accept.json",
+      "bytes": 799,
+      "sha256": "73d04f7715cae0ae4627f5375f79fd1b70a1cbfdb5d7d58acb5c41904a500ff7",
+      "rawSha256": "73d04f7715cae0ae4627f5375f79fd1b70a1cbfdb5d7d58acb5c41904a500ff7",
+      "normalization": "byte identical"
+    },
+    {
+      "file": "feed-owner.css",
+      "bytes": 11708,
+      "sha256": "d72c8471fd23163b20c821abe74e439eb2539cd71a99358045cc49c54ae4a0fb",
+      "rawSha256": "d72c8471fd23163b20c821abe74e439eb2539cd71a99358045cc49c54ae4a0fb",
+      "normalization": "byte identical"
+    },
+    {
+      "file": "full.json",
+      "bytes": 338,
+      "sha256": "fafbd33bd2281b1cb89ed24423617dd69ae56cc189b36d82b21e78a0fa056917",
+      "rawSha256": "fafbd33bd2281b1cb89ed24423617dd69ae56cc189b36d82b21e78a0fa056917",
+      "normalization": "byte identical"
+    },
+    {
+      "file": "native/denied-media-390x843.png",
+      "bytes": 55602,
+      "sha256": "38db3bd757821c02b99b7826326a1ef6323bba8b95316673f7716dd6ade3728a",
+      "rawSha256": "38db3bd757821c02b99b7826326a1ef6323bba8b95316673f7716dd6ade3728a",
+      "normalization": "byte identical"
+    },
+    {
+      "file": "native/feed-360x843-author-1.png",
+      "bytes": 3155,
+      "sha256": "bed7a482dcf7d35b78e9791a676cbc1e03cdf5d5b56230632f9937560bbde5fe",
+      "rawSha256": "bed7a482dcf7d35b78e9791a676cbc1e03cdf5d5b56230632f9937560bbde5fe",
+      "normalization": "byte identical"
+    },
+    {
+      "file": "native/feed-360x843-author-2.png",
+      "bytes": 2730,
+      "sha256": "01c4c8e51c2372d4a393fb26840c8ac1d9724cb543d747fa0157566c43903f94",
+      "rawSha256": "01c4c8e51c2372d4a393fb26840c8ac1d9724cb543d747fa0157566c43903f94",
+      "normalization": "byte identical"
+    },
+    {
+      "file": "native/feed-360x843-media-1.png",
+      "bytes": 26969,
+      "sha256": "2c724134616a766a5f158ec5ad1ac55ae61712ad699868c3ba88a29c524fc6df",
+      "rawSha256": "2c724134616a766a5f158ec5ad1ac55ae61712ad699868c3ba88a29c524fc6df",
+      "normalization": "byte identical"
+    },
+    {
+      "file": "native/feed-360x843-media-2.png",
+      "bytes": 22217,
+      "sha256": "016c20b1b9d3f33e261a8900ddf70ad53075efa6e3884c2e6c63a48624f3886e",
+      "rawSha256": "016c20b1b9d3f33e261a8900ddf70ad53075efa6e3884c2e6c63a48624f3886e",
+      "normalization": "byte identical"
+    },
+    {
+      "file": "native/feed-360x843.png",
+      "bytes": 97338,
+      "sha256": "0af20d89ae58eb876d59f42e442652b18dab31b12aea51b4dc37155d5630e681",
+      "rawSha256": "0af20d89ae58eb876d59f42e442652b18dab31b12aea51b4dc37155d5630e681",
+      "normalization": "byte identical"
+    },
+    {
+      "file": "native/feed-390x480-author-1.png",
+      "bytes": 3155,
+      "sha256": "bed7a482dcf7d35b78e9791a676cbc1e03cdf5d5b56230632f9937560bbde5fe",
+      "rawSha256": "bed7a482dcf7d35b78e9791a676cbc1e03cdf5d5b56230632f9937560bbde5fe",
+      "normalization": "byte identical"
+    },
+    {
+      "file": "native/feed-390x480-author-2.png",
+      "bytes": 2730,
+      "sha256": "01c4c8e51c2372d4a393fb26840c8ac1d9724cb543d747fa0157566c43903f94",
+      "rawSha256": "01c4c8e51c2372d4a393fb26840c8ac1d9724cb543d747fa0157566c43903f94",
+      "normalization": "byte identical"
+    },
+    {
+      "file": "native/feed-390x480-media-1.png",
+      "bytes": 26969,
+      "sha256": "2c724134616a766a5f158ec5ad1ac55ae61712ad699868c3ba88a29c524fc6df",
+      "rawSha256": "2c724134616a766a5f158ec5ad1ac55ae61712ad699868c3ba88a29c524fc6df",
+      "normalization": "byte identical"
+    },
+    {
+      "file": "native/feed-390x480-media-2.png",
+      "bytes": 22222,
+      "sha256": "c6f562a99002f7c7dd4afc8dda53cb3f107c3a0ad0f2c8735f232af5b4a44d98",
+      "rawSha256": "c6f562a99002f7c7dd4afc8dda53cb3f107c3a0ad0f2c8735f232af5b4a44d98",
+      "normalization": "byte identical"
+    },
+    {
+      "file": "native/feed-390x480-scroll-out.png",
+      "bytes": 8498,
+      "sha256": "692a7401599040d2e3f54f33e21f1a64d853466bf7e90de5e6a761c086bb4c2f",
+      "rawSha256": "692a7401599040d2e3f54f33e21f1a64d853466bf7e90de5e6a761c086bb4c2f",
+      "normalization": "byte identical"
+    },
+    {
+      "file": "native/feed-390x480.png",
+      "bytes": 63424,
+      "sha256": "a4015df1a5b207dcb6f421a96d0daf7ac92b97cf68bfabde136917250d8ec703",
+      "rawSha256": "a4015df1a5b207dcb6f421a96d0daf7ac92b97cf68bfabde136917250d8ec703",
+      "normalization": "byte identical"
+    },
+    {
+      "file": "native/feed-390x843-author-1.png",
+      "bytes": 3155,
+      "sha256": "bed7a482dcf7d35b78e9791a676cbc1e03cdf5d5b56230632f9937560bbde5fe",
+      "rawSha256": "bed7a482dcf7d35b78e9791a676cbc1e03cdf5d5b56230632f9937560bbde5fe",
+      "normalization": "byte identical"
+    },
+    {
+      "file": "native/feed-390x843-author-2.png",
+      "bytes": 2730,
+      "sha256": "01c4c8e51c2372d4a393fb26840c8ac1d9724cb543d747fa0157566c43903f94",
+      "rawSha256": "01c4c8e51c2372d4a393fb26840c8ac1d9724cb543d747fa0157566c43903f94",
+      "normalization": "byte identical"
+    },
+    {
+      "file": "native/feed-390x843-media-1.png",
+      "bytes": 26969,
+      "sha256": "2c724134616a766a5f158ec5ad1ac55ae61712ad699868c3ba88a29c524fc6df",
+      "rawSha256": "2c724134616a766a5f158ec5ad1ac55ae61712ad699868c3ba88a29c524fc6df",
+      "normalization": "byte identical"
+    },
+    {
+      "file": "native/feed-390x843-media-2.png",
+      "bytes": 22217,
+      "sha256": "016c20b1b9d3f33e261a8900ddf70ad53075efa6e3884c2e6c63a48624f3886e",
+      "rawSha256": "016c20b1b9d3f33e261a8900ddf70ad53075efa6e3884c2e6c63a48624f3886e",
+      "normalization": "byte identical"
+    },
+    {
+      "file": "native/feed-390x843.png",
+      "bytes": 98008,
+      "sha256": "dc15e7d4ec8b52995a66856672b4a3b4cdb5c6f20f862e9da3237cbd08d777c0",
+      "rawSha256": "dc15e7d4ec8b52995a66856672b4a3b4cdb5c6f20f862e9da3237cbd08d777c0",
+      "normalization": "byte identical"
+    },
+    {
+      "file": "native/feed-430x843-author-1.png",
+      "bytes": 3155,
+      "sha256": "bed7a482dcf7d35b78e9791a676cbc1e03cdf5d5b56230632f9937560bbde5fe",
+      "rawSha256": "bed7a482dcf7d35b78e9791a676cbc1e03cdf5d5b56230632f9937560bbde5fe",
+      "normalization": "byte identical"
+    },
+    {
+      "file": "native/feed-430x843-author-2.png",
+      "bytes": 2730,
+      "sha256": "01c4c8e51c2372d4a393fb26840c8ac1d9724cb543d747fa0157566c43903f94",
+      "rawSha256": "01c4c8e51c2372d4a393fb26840c8ac1d9724cb543d747fa0157566c43903f94",
+      "normalization": "byte identical"
+    },
+    {
+      "file": "native/feed-430x843-media-1.png",
+      "bytes": 26969,
+      "sha256": "2c724134616a766a5f158ec5ad1ac55ae61712ad699868c3ba88a29c524fc6df",
+      "rawSha256": "2c724134616a766a5f158ec5ad1ac55ae61712ad699868c3ba88a29c524fc6df",
+      "normalization": "byte identical"
+    },
+    {
+      "file": "native/feed-430x843-media-2.png",
+      "bytes": 22217,
+      "sha256": "016c20b1b9d3f33e261a8900ddf70ad53075efa6e3884c2e6c63a48624f3886e",
+      "rawSha256": "016c20b1b9d3f33e261a8900ddf70ad53075efa6e3884c2e6c63a48624f3886e",
+      "normalization": "byte identical"
+    },
+    {
+      "file": "native/feed-430x843.png",
+      "bytes": 98740,
+      "sha256": "a7ffb29a9c107cea1588b76fd59362789500363cfb03a1a313f32763fa1472e0",
+      "rawSha256": "a7ffb29a9c107cea1588b76fd59362789500363cfb03a1a313f32763fa1472e0",
+      "normalization": "byte identical"
+    },
+    {
+      "file": "native/native.json",
+      "bytes": 52201,
+      "sha256": "ea7bb6ed4af5032e9a32686de7d80624549a146479f4c5641a062b72fe9fd62e",
+      "rawSha256": "ea7bb6ed4af5032e9a32686de7d80624549a146479f4c5641a062b72fe9fd62e",
+      "normalization": "byte identical"
+    },
+    {
+      "file": "native/no-readiness-390x843.png",
+      "bytes": 17728,
+      "sha256": "a24de7ee07fca1bfc49b39f1308b68519de96ef4ad3a089829bcf0b0095745f3",
+      "rawSha256": "a24de7ee07fca1bfc49b39f1308b68519de96ef4ad3a089829bcf0b0095745f3",
+      "normalization": "byte identical"
+    },
+    {
+      "file": "native-syntax.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "rawSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "normalization": "byte identical"
+    },
+    {
+      "file": "native.log",
+      "bytes": 563,
+      "sha256": "9a48cd591aedd2a037d0f1c57b9c7a9c5430821aa87c04ee49c955d151d44619",
+      "rawSha256": "a53e8687c16141d1c8b6aba694d8809d30501b01f6c9498184827c652d8649be",
+      "normalization": "exact local prefix replacement only"
+    },
+    {
+      "file": "root-owner.css",
+      "bytes": 2116,
+      "sha256": "f41dc64630680729de9bd5acc1239a76cf7a34193f383efa1b78a283e48b2b98",
+      "rawSha256": "f41dc64630680729de9bd5acc1239a76cf7a34193f383efa1b78a283e48b2b98",
+      "normalization": "byte identical"
+    },
+    {
+      "file": "summary.json",
+      "bytes": 2621,
+      "sha256": "0dc12575ed32caf01602ce4d4c0980d22dc59fc5d7970afc6281e515e3f124ab",
+      "rawSha256": "d9fc72114aed655ca44a33187ba4b573e953a1d6ef783ee378842ad03a2b233e",
+      "normalization": "exact local prefix replacement only"
+    },
+    {
+      "file": "supervisor-syntax.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "rawSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "normalization": "byte identical"
+    },
+    {
+      "file": "vite.log",
+      "bytes": 72,
+      "sha256": "96203ee56dad71bffca01d74c6ca8f1b0b26b31f5b4741380d4332d0a71fee16",
+      "rawSha256": "96203ee56dad71bffca01d74c6ca8f1b0b26b31f5b4741380d4332d0a71fee16",
+      "normalization": "byte identical"
+    }
+  ],
+  "imageAssessment": {
+    "inspected": [
+      "native/feed-360x843.png",
+      "native/feed-390x843.png",
+      "native/feed-430x843.png",
+      "native/feed-390x480.png",
+      "native/no-readiness-390x843.png",
+      "native/denied-media-390x843.png",
+      "native/feed-390x480-scroll-out.png",
+      "native/feed-390x843-media-1.png",
+      "native/feed-390x843-author-1.png"
+    ],
+    "confirmed": [
+      "Both approved complete media crops preserve natural aspect without inherited blank bands.",
+      "Selected static characters paint correctly through the Root registry.",
+      "Short viewport scrolls and actual composer navigation passes.",
+      "Denied media retains truthful unavailable text and post text; no binary request.",
+      "Absent readiness exposes unavailable state and no Feed call.",
+      "Offscreen observer actually withdraws image, wrapper collapses74.8125 to22.5px; return restores geometry."
+    ],
+    "open": [
+      "Shared-media retained-ratio fix and affected regression checks.",
+      "New post-only Feed CSS and restored Root background require compatible captures.",
+      "Original actual-public IN03 remains blocked on backend same-candidate input packet."
+    ]
+  }
+}

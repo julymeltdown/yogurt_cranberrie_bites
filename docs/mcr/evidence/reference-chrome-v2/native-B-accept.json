@@ -1,0 +1,27 @@
+{
+  "acceptedEpoch": 1793801529.605431,
+  "workDeadline": 1793801829.605431,
+  "cleanupDeadline": 1793801889.605431,
+  "head": "c019e84d5a2102f8fd31f3498f37cb235795c55a",
+  "status": "",
+  "freeBytes": 28997345280,
+  "port": 5302,
+  "portFreeAtAccept": true,
+  "guardianSha256": "5459690cf79bb6f3bf6dc67402bb01146064c2f0d6ede71e117ff367f944f849",
+  "nativeSha256": "c3d236f8516b068175fea9eb44716322d86e9f039c0157c435cc34b5da37601b",
+  "job": "REFERENCE-CHROME-NATIVE-BROWSER-202611041410Z",
+  "qualification": "ACTUAL_ACCEPT_SNAPSHOT_BEFORE_CHILDREN",
+  "terms": {
+    "workSeconds": 300,
+    "cleanupSeconds": 60,
+    "wholeBytes": 2147483648,
+    "tempBytes": 209715200,
+    "completeEvidenceBytes": 16777216,
+    "logsBytes": 2097152,
+    "pngs": 30,
+    "pngBytes": 12582912,
+    "processes": 24,
+    "rssMiB": 4096
+  },
+  "note": "Written after the bounded run; values were measured before actual acceptance and retained in the tool record. No clock reset."
+}
