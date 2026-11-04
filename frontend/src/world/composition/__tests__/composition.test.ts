@@ -173,13 +173,20 @@ it('shares the canonical-session resource claim and closure fence across adapter
   expect(f.stats).toMatchObject({ mounts: 2, peak: 1 }); next.dispose()
 })
 
-it('hides by disconnecting/evicting, resumes with a fresh ticket and does not create another game', async () => {
+it('retains a covered panel connection, but withdraws in background and resumes with a fresh ticket', async () => {
   const f = await fixture(), lease = await live(f)
   lease.setVisible(false)
+  expect(f.composition.replication.read()?.phase).toBe('live')
+  expect(f.sockets).toHaveLength(1)
+  expect(f.stats.visible).toBe(false)
+  const hidden = vi.spyOn(document, 'hidden', 'get').mockReturnValue(true)
+  document.dispatchEvent(new Event('visibilitychange'))
   expect(f.composition.replication.read()).toMatchObject({ phase: 'suspended', entities: [] })
   expect(f.sockets[0]!.readyState).toBe(3)
-  lease.setVisible(true); await waitFor(() => expect(f.sockets).toHaveLength(2))
+  hidden.mockReturnValue(false); document.dispatchEvent(new Event('visibilitychange'))
+  await waitFor(() => expect(f.sockets).toHaveLength(2))
   await waitFor(() => expect(f.composition.replication.read()?.phase).toBe('live'))
+  lease.setVisible(true)
   expect(f.stats.mounts).toBe(1)
   expect(f.requests.filter(r => new URL(r.url).pathname.endsWith('/world-tickets'))).toHaveLength(2)
 })

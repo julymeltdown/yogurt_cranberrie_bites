@@ -9,7 +9,8 @@ export const requireDependency = createRequire(resolve(dependencyRoot, 'package.
 export async function createHarnessServer() {
   const { createServer } = await import(pathToFileURL(requireDependency.resolve('vite')).href)
   return createServer({ configFile: false, root: here, cacheDir: resolve(here, '.cache'), logLevel: 'error',
+    esbuild: { jsx: 'automatic' },
     resolve: { dedupe: [...Object.keys(requireDependency('./package.json').dependencies), '@tanstack/query-core'] },
-    ssr: { noExternal: true }, optimizeDeps: { noDiscovery: true, include: ['react', 'react/jsx-runtime', 'react/jsx-dev-runtime', 'react-dom', '@tanstack/react-query', 'ky', 'zod'] },
+    ssr: { noExternal: true }, optimizeDeps: { noDiscovery: true, include: ['react', 'react/jsx-runtime', 'react/jsx-dev-runtime', 'react-dom', 'react-dom/client', '@tanstack/react-query', 'ky', 'zod'] },
     server: { host: '127.0.0.1', port: 0, fs: { allow: [root, dependencyRoot] } } })
 }

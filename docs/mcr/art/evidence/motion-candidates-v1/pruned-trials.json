@@ -1,0 +1,47 @@
+{
+  "result": "PASS",
+  "method": "Only unreferenced content-hashed generated candidates in the exclusive new public prefix; no original/static/peer paths.",
+  "removed": [
+    {
+      "file": "front-eye-overlays-ab3b2689eb63cca1.png",
+      "sha256": "ab3b2689eb63cca11a6d9595f03f2f3dd8664194192af744351b513ee163ec32"
+    },
+    {
+      "file": "hand-cut-garment-row1-col3-86c0d2dcd074a2af.png",
+      "sha256": "86c0d2dcd074a2af11ee03bc7b9b997c5164d843a22b1f0bbba9cd6980ea5bba"
+    },
+    {
+      "file": "hand-cut-garments-db944bb1d57300dd.png",
+      "sha256": "db944bb1d57300dd05605426b7141174ce1376a8549d2d15f628a221394caa71"
+    },
+    {
+      "file": "hand-cut-garment-row1-col1-7ea3424810038224.png",
+      "sha256": "7ea34248100382240cfef746f5c3c9d4454ea299b5d0d5599ab607832dd20304"
+    },
+    {
+      "file": "front-eye-overlays-2d53c243ee8c33f1.png",
+      "sha256": "2d53c243ee8c33f178225ffa66747c6c204e7d0cdf81343f391bd0ea960f413d"
+    },
+    {
+      "file": "layered-wardrobe-b646354916d05678.png",
+      "sha256": "b646354916d05678883cafa62d8dcbc6b0ca05fc0b2797eb2f1d73a2ae4c3c52"
+    },
+    {
+      "file": "hand-cut-garment-row3-col2-4fb095deab5c60df.png",
+      "sha256": "4fb095deab5c60df13c52aa44df343f36497233e4b8129e0e58b955314c6e8b5"
+    },
+    {
+      "file": "hand-cut-garment-row1-col4-0ed7b99fbdb2daae.png",
+      "sha256": "0ed7b99fbdb2daae11c71aaf886ebbb4cf2c4d4653411ac82ad32155ead6dd40"
+    },
+    {
+      "file": "hand-cut-garment-row1-col2-12958cc083e34ac8.png",
+      "sha256": "12958cc083e34ac890462c248e7540a0367adb7a866122325fb73c61f295ba04"
+    },
+    {
+      "file": "hand-cut-garment-row4-col4-1b6bb9445c564df1.png",
+      "sha256": "1b6bb9445c564df17919a913b494a3010791baa5e9f55a9b4e115325ab1bd038"
+    }
+  ],
+  "retainedPublicFiles": 373
+}

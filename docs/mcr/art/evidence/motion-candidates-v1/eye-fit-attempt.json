@@ -1,0 +1,231 @@
+{
+  "sourceRgbMismatches": 0,
+  "cases": [
+    {
+      "body": 0,
+      "eye": 0,
+      "oldDark": 122,
+      "uncovered": 0,
+      "positions": []
+    },
+    {
+      "body": 0,
+      "eye": 1,
+      "oldDark": 122,
+      "uncovered": 0,
+      "positions": []
+    },
+    {
+      "body": 0,
+      "eye": 2,
+      "oldDark": 122,
+      "uncovered": 0,
+      "positions": []
+    },
+    {
+      "body": 0,
+      "eye": 3,
+      "oldDark": 122,
+      "uncovered": 0,
+      "positions": []
+    },
+    {
+      "body": 1,
+      "eye": 0,
+      "oldDark": 130,
+      "uncovered": 0,
+      "positions": []
+    },
+    {
+      "body": 1,
+      "eye": 1,
+      "oldDark": 130,
+      "uncovered": 0,
+      "positions": []
+    },
+    {
+      "body": 1,
+      "eye": 2,
+      "oldDark": 130,
+      "uncovered": 0,
+      "positions": []
+    },
+    {
+      "body": 1,
+      "eye": 3,
+      "oldDark": 130,
+      "uncovered": 0,
+      "positions": []
+    },
+    {
+      "body": 2,
+      "eye": 0,
+      "oldDark": 126,
+      "uncovered": 0,
+      "positions": []
+    },
+    {
+      "body": 2,
+      "eye": 1,
+      "oldDark": 126,
+      "uncovered": 0,
+      "positions": []
+    },
+    {
+      "body": 2,
+      "eye": 2,
+      "oldDark": 126,
+      "uncovered": 0,
+      "positions": []
+    },
+    {
+      "body": 2,
+      "eye": 3,
+      "oldDark": 126,
+      "uncovered": 0,
+      "positions": []
+    },
+    {
+      "body": 3,
+      "eye": 0,
+      "oldDark": 126,
+      "uncovered": 0,
+      "positions": []
+    },
+    {
+      "body": 3,
+      "eye": 1,
+      "oldDark": 126,
+      "uncovered": 0,
+      "positions": []
+    },
+    {
+      "body": 3,
+      "eye": 2,
+      "oldDark": 126,
+      "uncovered": 0,
+      "positions": []
+    },
+    {
+      "body": 3,
+      "eye": 3,
+      "oldDark": 126,
+      "uncovered": 0,
+      "positions": []
+    },
+    {
+      "body": 4,
+      "eye": 0,
+      "oldDark": 133,
+      "uncovered": 0,
+      "positions": []
+    },
+    {
+      "body": 4,
+      "eye": 1,
+      "oldDark": 133,
+      "uncovered": 0,
+      "positions": []
+    },
+    {
+      "body": 4,
+      "eye": 2,
+      "oldDark": 133,
+      "uncovered": 0,
+      "positions": []
+    },
+    {
+      "body": 4,
+      "eye": 3,
+      "oldDark": 133,
+      "uncovered": 0,
+      "positions": []
+    },
+    {
+      "body": 5,
+      "eye": 0,
+      "oldDark": 136,
+      "uncovered": 0,
+      "positions": []
+    },
+    {
+      "body": 5,
+      "eye": 1,
+      "oldDark": 136,
+      "uncovered": 0,
+      "positions": []
+    },
+    {
+      "body": 5,
+      "eye": 2,
+      "oldDark": 136,
+      "uncovered": 0,
+      "positions": []
+    },
+    {
+      "body": 5,
+      "eye": 3,
+      "oldDark": 136,
+      "uncovered": 0,
+      "positions": []
+    },
+    {
+      "body": 6,
+      "eye": 0,
+      "oldDark": 130,
+      "uncovered": 0,
+      "positions": []
+    },
+    {
+      "body": 6,
+      "eye": 1,
+      "oldDark": 130,
+      "uncovered": 0,
+      "positions": []
+    },
+    {
+      "body": 6,
+      "eye": 2,
+      "oldDark": 130,
+      "uncovered": 0,
+      "positions": []
+    },
+    {
+      "body": 6,
+      "eye": 3,
+      "oldDark": 130,
+      "uncovered": 0,
+      "positions": []
+    },
+    {
+      "body": 7,
+      "eye": 0,
+      "oldDark": 140,
+      "uncovered": 0,
+      "positions": []
+    },
+    {
+      "body": 7,
+      "eye": 1,
+      "oldDark": 140,
+      "uncovered": 0,
+      "positions": []
+    },
+    {
+      "body": 7,
+      "eye": 2,
+      "oldDark": 140,
+      "uncovered": 0,
+      "positions": []
+    },
+    {
+      "body": 7,
+      "eye": 3,
+      "oldDark": 140,
+      "uncovered": 0,
+      "positions": []
+    }
+  ],
+  "qualification": "Original-coordinate eye-rectangle dark-pixel occlusion study; bodies retain baked sclera/face. Not a clean-body or C06 admission.",
+  "result": "PASS_EYE_IRIS_OCCLUSION"
+}

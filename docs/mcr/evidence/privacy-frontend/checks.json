@@ -2,25 +2,25 @@
   "task": "QA04",
   "originalDisposition": "IN_PROGRESS",
   "increment": "MOCK_READY",
-  "goal": "ACTIVE; original live requirements unfinished",
+  "goal": "UNFINISHED; external prerequisite audit supports BLOCKED; no completion claim",
   "assignmentBase": "22f9771544d9c0d09ac5819e77377e7524fad0d0",
-  "sourceCandidate": "e251a5af2845b990dce07820fd4971422d5fb80f",
+  "sourceCandidate": "ad5e2eb9038fba67c606f89705f1bd64a8d5dc50",
   "compilerHarnessCommit": "5c3b7499",
-  "remoteParent": "15e7bd8abf02e5bf0f3a782914826b0ac613f8d2",
-  "peerReconciliationHead": "e251a5af2845b990dce07820fd4971422d5fb80f",
-  "qualifiedSourcePinsAfterPeerMerge": "All108 current SHA-256 pins verified; expanded native matrix and strict transitive types pass after peer merge",
+  "remoteParent": "62b4bf80dc24d72984d16f0db4e03fce44e3f750",
+  "peerReconciliationHead": "62b4bf80dc24d72984d16f0db4e03fce44e3f750",
+  "qualifiedSourcePinsAfterPeerMerge": "118 current SHA-256 pins; committed mounted-component increment passed native execution, strict transitive types and lint",
   "commands": [
     {
       "command": "NODE frontend/e2e/privacy/run.mjs",
       "exitCode": 0,
       "log": "native.txt",
-      "result": "28 social/client PASS;7WS unsupported;175domain cells=112fixturePASS/63UNSUPPORTED;6projections;actual evidence/recipient/beacon lifetimes;zero actualAPI calls/pageerrors"
+      "result": "28 social/client PASS; 7WS unsupported; 175domain cells=112fixturePASS/63UNSUPPORTED;28 mounted component/role scenarios;80 DOM assertions;6projections;zero actual API calls/pageerrors"
     },
     {
       "command": "NODE --test frontend/e2e/privacy/live-gate.test.mjs",
       "exitCode": 0,
       "log": "gate-tests.txt",
-      "result": "9/9 synthetic gate selftests"
+      "result": "9/9 synthetic gate selftests retained from previous increment; gate, schema and test source hashes unchanged; no new selftest execution claimed"
     },
     {
       "command": "NODE frontend/e2e/privacy/typecheck.mjs",
@@ -49,7 +49,7 @@
         "python3",
         "scripts/mcr/check-boundaries.py",
         "--base",
-        "15e7bd8abf02e5bf0f3a782914826b0ac613f8d2",
+        "62b4bf80dc24d72984d16f0db4e03fce44e3f750",
         "--lane",
         "frontend",
         "--allow-doc",
@@ -59,16 +59,18 @@
         "--allow-doc",
         "docs/mcr/evidence/privacy-frontend/fixture-report.json",
         "--allow-doc",
+        "docs/mcr/evidence/privacy-frontend/lint.txt",
+        "--allow-doc",
         "docs/mcr/evidence/privacy-frontend/native.txt",
         "--allow-doc",
         "frontend/e2e/privacy/README.md"
       ],
       "exitCode": 0,
-      "result": "BOUNDARIES PASS: frontend, 10 changes vs 15e7bd8abf02e5bf0f3a782914826b0ac613f8d2; manual assignment/import review required"
+      "result": "BOUNDARIES PASS: frontend, 13 changes vs 62b4bf80dc24d72984d16f0db4e03fce44e3f750; manual assignment/import review required"
     }
   ],
   "cleanup": {
-    "directoryLocalDependencyLink": "removed; shared target untouched",
+    "directoryLocalDependencyLink": "removed before boundary check; shared target untouched",
     "ownedCache": "removed",
     "dependencyInstalls": false,
     "newCheckout": false
@@ -77,13 +79,16 @@
     "docs/mcr/evidence/privacy-frontend/README.md",
     "docs/mcr/evidence/privacy-frontend/checks.json",
     "docs/mcr/evidence/privacy-frontend/fixture-report.json",
+    "docs/mcr/evidence/privacy-frontend/lint.txt",
     "docs/mcr/evidence/privacy-frontend/native.txt",
     "frontend/e2e/privacy/README.md",
     "frontend/e2e/privacy/beacon-fixtures.ts",
     "frontend/e2e/privacy/evidence-fixtures.ts",
     "frontend/e2e/privacy/fixtures.ts",
+    "frontend/e2e/privacy/mounted-ui.ts",
     "frontend/e2e/privacy/recipient-fixtures.ts",
-    "frontend/e2e/privacy/run.mjs"
+    "frontend/e2e/privacy/run.mjs",
+    "frontend/e2e/privacy/runtime.mjs"
   ],
   "manualImportBoundary": "Only published frontend and contract/fixture imports; no backend implementation import",
   "remainingInputOwners": {
@@ -92,34 +97,37 @@
   },
   "limitations": [
     "No original QA04 acceptance",
-    "119 domain fixture cells unsupported in this increment",
+    "63 domain fixture cells unsupported",
     "Actual public-service/principal/seed/WS handoff unavailable",
-    "Mounted product UI/live cache NOT_RUN",
+    "Mounted authenticated product shell and live cache NOT_RUN",
+    "Component mounts use synthetic transport and authority; evidence image decode NOT_RUN",
     "IN03 inactive"
   ],
   "harnessPins": {
-    "frontend/e2e/privacy/README.md": "79228fb961e244d032011f941ccbf21bd0577c91eb4046f57960ff02217cc3c8",
-    "frontend/e2e/privacy/beacon-fixtures.ts": "fa0f345f0d8f69b511097ab487f945ae8e078c35812a104be8a11882d3559f96",
+    "frontend/e2e/privacy/README.md": "0270d584805aa8cad78ecdd3f3f4d5ada0e37bd346b5556326ff9d0c1579d85a",
+    "frontend/e2e/privacy/beacon-fixtures.ts": "d916575937cefd93c7cad7165bbe4f666b771dc966c8dfbe680a0057767775b2",
     "frontend/e2e/privacy/browser.ts": "71acb215ffc792ee2d1828e271d69311f33003a48e24275f45790801e97c6796",
-    "frontend/e2e/privacy/evidence-fixtures.ts": "e280fed40b5c3bba40f357470a9a0cd56d9d71a90bb8d59679a8931c1c20612d",
-    "frontend/e2e/privacy/fixtures.ts": "592ded58f8aec169255ff053b6f2e17f7c62d2d6bc0cc6a989e51277b976cfb8",
+    "frontend/e2e/privacy/evidence-fixtures.ts": "533099e4500f5b3fba0cb027822339c70094e71ceaaf515a32602f9bc0b4fefb",
+    "frontend/e2e/privacy/fixtures.ts": "cd126ffc0c33e48f791d7ce704f94c60c3d754fa761decfbe2da4254c12fd90f",
     "frontend/e2e/privacy/index.html": "7a995a72cf2d61cde1e5ea30f7096adf2e6b1ddbadf75f3dcabb6b0e89517168",
     "frontend/e2e/privacy/live-gate.mjs": "64c2437ad0a72cd3efb277564be747467b1ff87118a8f54263d21193e9914267",
     "frontend/e2e/privacy/live-gate.test.mjs": "0777d7d370d1a033f38bf3e5a6bbec977d5fe13b16ed932b3f3234eed2cdcf92",
+    "frontend/e2e/privacy/mounted-ui.ts": "7c3c9f08134b43325ec7c825b0babff11d2ee46bc321bbb3c7c281b9c8dd62d8",
     "frontend/e2e/privacy/oracle.ts": "27c6ed83bc2eeb54c0520abb9e8c4a0099f3c3dbec2ffc9efb4403a83e729344",
-    "frontend/e2e/privacy/recipient-fixtures.ts": "25a163dc100599caaf4d5188368d1045e83f5b850db59bbdfa0d637e55e96cb2",
-    "frontend/e2e/privacy/run.mjs": "c2d4bc6090e2c356b8604a6f1c63d9acb0c0b28b2bd4d1d3000803f710a7dafb",
-    "frontend/e2e/privacy/runtime.mjs": "2d558ddc7877be223f9863b857bf17d02ec37451b237863af6614bdfd86ace41",
+    "frontend/e2e/privacy/recipient-fixtures.ts": "7d4bf076d4ac7999c1eecd3c10a349b0572437554c9f9d7675e13ab93c23e26f",
+    "frontend/e2e/privacy/run.mjs": "a57336d1cd1d69d77126f588cf770d12203541e18537a4de5e7086fc23746dbf",
+    "frontend/e2e/privacy/runtime.mjs": "823fd6159bb9506fa87b2e217668b51e56093a2417df4f0844807dcf666cf383",
     "frontend/e2e/privacy/schema.mjs": "1a4d147a0c349180e22cd323bfde6109eaf4ab7cf342e2a8ecf8c421e75b7ced",
     "frontend/e2e/privacy/typecheck.mjs": "2c9873d04c726613d8edfd5b78570b4cfdf9fb73cae36332d764e9e70b204b89"
   },
   "authoredWhitespaceExitCode": 0,
   "continuation": {
     "previousGoalTurn": "PROGRESS: published original QA04 scaffold cb9abce4",
-    "thisGoalTurn": "PROGRESS: actual moderation evidence, recipient/pickup and beacon privacy lifetime implementation",
+    "thisGoalTurn": "PROGRESS: actual social/moderation/pickup/beacon component mounts;28 scenarios/80 DOM assertions",
     "sourceCommits": [
       "43e657b1",
-      "e225f15f"
+      "e225f15f",
+      "ad5e2eb9038fba67c606f89705f1bd64a8d5dc50"
     ],
     "remainingCells": {
       "allDomainWS": 35,
@@ -127,11 +135,36 @@
       "beaconList": 7
     },
     "liveRuntimeHandoff": "Not published in merged candidate; ProductRoot constructor qualification is not actual seven-principal public service handoff",
-    "originalGoal": "ACTIVE; no completion claim"
+    "originalGoal": "UNFINISHED; awaiting real-service handoff",
+    "runtimePoll": "ProductRoot still resolving SDK3 and routing ownership; Social runtime/test sources authored but not yet compiled/executed. No seven-principal HTTP/WS seed handoff."
+  },
+  "mountedComponentQualification": {
+    "status": "SYNTHETIC_MOUNTED_COMPONENT_ONLY",
+    "scenarios": 28,
+    "assertions": 80,
+    "domains": [
+      "handle",
+      "evidence",
+      "recipient",
+      "beacon"
+    ],
+    "realProductShell": "NOT_RUN"
   },
   "publicationRetry": {
-    "reason": "non-fast-forward; serial peer-preserving merge",
-    "mergedRemote": "0c1f81c7d8f709daa2728ab4829e0d17ea9234fe",
-    "qualifiedSourcePins": "all108 unchanged; no new runtime claim"
+    "reason": "serial peer-preserving reconciliation before publication",
+    "mergedRemote": "6f390a46e91d7eb89e4e1d25d5b1a59ccdab3b4d",
+    "qualifiedSourcePins": "all118 unchanged; no test rerun or new runtime claim"
+  },
+  "externalDependencyAudit": {
+    "consecutiveGoalTurns": 3,
+    "checkpoints": [
+      "cb9abce4",
+      "c5664550",
+      "ca0d2d7b"
+    ],
+    "repeatedMissingInput": "Qualified public runtime and seven canonical principal/seed inputs with registered privacy WS/cache handoff",
+    "independentFrontendProgress": "Committed scaffold, expanded feature lifetime matrix and mounted private component qualification published",
+    "nextMeaningfulWork": "Implement concrete real-service adapters and execute original HTTP/WS/cache matrix after named implementation owners supply the frozen handoff",
+    "disposition": "Supports BLOCKED goal; original QA04 unfinished, no scope waiver"
   }
 }

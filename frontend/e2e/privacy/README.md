@@ -8,7 +8,7 @@ Run from the repository root:
 
 ```sh
 NODE frontend/e2e/privacy/run.mjs
-NODE --test frontend/e2e/privacy/live-gate.test.mjs
+NODE --test frontend/e2e/privacy/live-gate.node.mjs
 NODE frontend/e2e/privacy/typecheck.mjs
 NODE frontend/e2e/privacy/node_modules/oxlint/bin/oxlint frontend/e2e/privacy
 NODE frontend/e2e/privacy/live-gate.mjs
@@ -34,8 +34,16 @@ The gate does not invent a social WS event, service route, role identity, provid
 
 ## Additional native feature lifetimes
 
+`mounted-ui.ts` mounts the actual `SharingRequest`, `ModerationReview`, `GiftPickup` and `MeetingBeaconDetail` components against the synthetic controllers, seven role scenarios apiece. The 28 unique component/role results record actual DOM assertions: explicit social reveal uses the real enabled button; authorized private text, evidence Blob URL assignment and pickup code are observed; consent/suspension/context/authority loss, owner revocation and delayed completion remove private text, image elements, attributes and input/textarea values. Pickup-code removal is checked separately from the five domain canaries. Each host is unmounted and removed before the runner completes. The UI's mount-triggered asynchronous reads are joined before assertions. The Vite host uses automatic JSX and prebundles the existing React DOM client entry; no production configuration is changed.
+
+This is **SYNTHETIC_MOUNTED_COMPONENT_ONLY** evidence. It does not mount the authenticated product shell, run a deployed frontend, validate image decoding or demonstrate a real WS-driven cache invalidation. The runner pins imported CSS along with the actual TypeScript/JSON graph so the source record covers what these components load. Existing rendering is imported read-only for QA; no rendering or styling is copied into product code.
+
 `evidence-fixtures.ts` uses the actual moderation controller and explicit synthetic moderator leases. It verifies detail filtering (reporter identity is not retained), native Blob URL revocation, noncooperative delayed evidence after lease loss, no dispatch without a lease, and revision-bound moderation. The typed Blob is not presented as a decoded image or real evidence upload.
 
 `recipient-fixtures.ts` uses the actual SELF activity decoder and pickup controller: foreign recipient rows are rejected, expired reservations cannot issue codes, only the explicit synthetic recipient obtains private pickup guidance/code, and an explicit owner claim is read back before completion. Context loss fences a late pickup response; privacy loss clears recipient details, code and drafts. Capabilities, reviewed-place input, HTTP, clock and the in-memory intent journal are synthetic. No real reservation, stock or one-time pickup qualification is claimed.
 
 `beacon-fixtures.ts` reuses the existing conspicuously synthetic `meet-beacon/__tests__/fixtures/harness.ts` and its places/map fixture inputs, read-only and source-pinned. It exercises actual beacon/places controllers with explicit canRead/canWrite inputs, expiry, owner revision-bound revoke, read-only audience member and late response after authority loss. Scenario role names describe supplied fixture authority, not seven real principals. Virtual coordinates do not establish physical arrival; no venue or photo authority is qualified. The controller's local lifetime API is not a WS event.
+
+## Node selftest discovery boundary
+
+The gate selftest is `live-gate.node.mjs` and is executed explicitly with `node --test`. It imports `node:test`, not Vitest. The earlier `.test.mjs` name matched Vitest’s default discovery pattern and produced “No test suite found” in the historical FE09 broad diagnostic, even while Node test cases ran. The rename preserves the selftest bytes and keeps it outside that Vitest pattern without changing shared configuration. Historical commands and source paths in earlier receipts refer to their original committed candidates. This local discovery fix does not make the frozen broad diagnostic green or change QA04’s real-service dependency.

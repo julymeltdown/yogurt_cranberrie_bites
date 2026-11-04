@@ -817,7 +817,7 @@
       "operation": "list",
       "status": "PASS",
       "provenance": "SYNTHETIC_FIXTURE",
-      "evidence": "Actual moderation controller with absent synthetic moderator lease; no private list/detail/evidence/mutation dispatch or retained data. Not server-role authorization."
+      "evidence": "Actual moderation controller and mounted component with absent synthetic moderator lease; no private list/detail/evidence/mutation dispatch or retained data. Not server-role authorization."
     },
     {
       "domain": "evidence",
@@ -825,7 +825,7 @@
       "operation": "detail",
       "status": "PASS",
       "provenance": "SYNTHETIC_FIXTURE",
-      "evidence": "Actual moderation controller with absent synthetic moderator lease; no private list/detail/evidence/mutation dispatch or retained data. Not server-role authorization."
+      "evidence": "Actual moderation controller and mounted component with absent synthetic moderator lease; no private list/detail/evidence/mutation dispatch or retained data. Not server-role authorization."
     },
     {
       "domain": "evidence",
@@ -833,7 +833,7 @@
       "operation": "mutation",
       "status": "PASS",
       "provenance": "SYNTHETIC_FIXTURE",
-      "evidence": "Actual moderation controller with absent synthetic moderator lease; no private list/detail/evidence/mutation dispatch or retained data. Not server-role authorization."
+      "evidence": "Actual moderation controller and mounted component with absent synthetic moderator lease; no private list/detail/evidence/mutation dispatch or retained data. Not server-role authorization."
     },
     {
       "domain": "evidence",
@@ -841,7 +841,7 @@
       "operation": "cache",
       "status": "PASS",
       "provenance": "SYNTHETIC_FIXTURE",
-      "evidence": "Actual moderation controller with absent synthetic moderator lease; no private list/detail/evidence/mutation dispatch or retained data. Not server-role authorization."
+      "evidence": "Actual moderation controller and mounted component with absent synthetic moderator lease; no private list/detail/evidence/mutation dispatch or retained data. Not server-role authorization."
     },
     {
       "domain": "evidence",
@@ -857,7 +857,7 @@
       "operation": "list",
       "status": "PASS",
       "provenance": "SYNTHETIC_FIXTURE",
-      "evidence": "Actual moderation controller with absent synthetic moderator lease; no private list/detail/evidence/mutation dispatch or retained data. Not server-role authorization."
+      "evidence": "Actual moderation controller and mounted component with absent synthetic moderator lease; no private list/detail/evidence/mutation dispatch or retained data. Not server-role authorization."
     },
     {
       "domain": "evidence",
@@ -865,7 +865,7 @@
       "operation": "detail",
       "status": "PASS",
       "provenance": "SYNTHETIC_FIXTURE",
-      "evidence": "Actual moderation controller with absent synthetic moderator lease; no private list/detail/evidence/mutation dispatch or retained data. Not server-role authorization."
+      "evidence": "Actual moderation controller and mounted component with absent synthetic moderator lease; no private list/detail/evidence/mutation dispatch or retained data. Not server-role authorization."
     },
     {
       "domain": "evidence",
@@ -873,7 +873,7 @@
       "operation": "mutation",
       "status": "PASS",
       "provenance": "SYNTHETIC_FIXTURE",
-      "evidence": "Actual moderation controller with absent synthetic moderator lease; no private list/detail/evidence/mutation dispatch or retained data. Not server-role authorization."
+      "evidence": "Actual moderation controller and mounted component with absent synthetic moderator lease; no private list/detail/evidence/mutation dispatch or retained data. Not server-role authorization."
     },
     {
       "domain": "evidence",
@@ -881,7 +881,7 @@
       "operation": "cache",
       "status": "PASS",
       "provenance": "SYNTHETIC_FIXTURE",
-      "evidence": "Actual moderation controller with absent synthetic moderator lease; no private list/detail/evidence/mutation dispatch or retained data. Not server-role authorization."
+      "evidence": "Actual moderation controller and mounted component with absent synthetic moderator lease; no private list/detail/evidence/mutation dispatch or retained data. Not server-role authorization."
     },
     {
       "domain": "evidence",
@@ -897,7 +897,7 @@
       "operation": "list",
       "status": "PASS",
       "provenance": "SYNTHETIC_FIXTURE",
-      "evidence": "Actual moderation controller with absent synthetic moderator lease; no private list/detail/evidence/mutation dispatch or retained data. Not server-role authorization."
+      "evidence": "Actual moderation controller and mounted component with absent synthetic moderator lease; no private list/detail/evidence/mutation dispatch or retained data. Not server-role authorization."
     },
     {
       "domain": "evidence",
@@ -905,7 +905,7 @@
       "operation": "detail",
       "status": "PASS",
       "provenance": "SYNTHETIC_FIXTURE",
-      "evidence": "Actual moderation controller with absent synthetic moderator lease; no private list/detail/evidence/mutation dispatch or retained data. Not server-role authorization."
+      "evidence": "Actual moderation controller and mounted component with absent synthetic moderator lease; no private list/detail/evidence/mutation dispatch or retained data. Not server-role authorization."
     },
     {
       "domain": "evidence",
@@ -913,7 +913,7 @@
       "operation": "mutation",
       "status": "PASS",
       "provenance": "SYNTHETIC_FIXTURE",
-      "evidence": "Actual moderation controller with absent synthetic moderator lease; no private list/detail/evidence/mutation dispatch or retained data. Not server-role authorization."
+      "evidence": "Actual moderation controller and mounted component with absent synthetic moderator lease; no private list/detail/evidence/mutation dispatch or retained data. Not server-role authorization."
     },
     {
       "domain": "evidence",
@@ -921,7 +921,7 @@
       "operation": "cache",
       "status": "PASS",
       "provenance": "SYNTHETIC_FIXTURE",
-      "evidence": "Actual moderation controller with absent synthetic moderator lease; no private list/detail/evidence/mutation dispatch or retained data. Not server-role authorization."
+      "evidence": "Actual moderation controller and mounted component with absent synthetic moderator lease; no private list/detail/evidence/mutation dispatch or retained data. Not server-role authorization."
     },
     {
       "domain": "evidence",
@@ -937,7 +937,7 @@
       "operation": "list",
       "status": "PASS",
       "provenance": "SYNTHETIC_FIXTURE",
-      "evidence": "Actual moderation controller with absent synthetic moderator lease; no private list/detail/evidence/mutation dispatch or retained data. Not server-role authorization."
+      "evidence": "Actual moderation controller and mounted component with absent synthetic moderator lease; no private list/detail/evidence/mutation dispatch or retained data. Not server-role authorization."
     },
     {
       "domain": "evidence",
@@ -945,7 +945,7 @@
       "operation": "detail",
       "status": "PASS",
       "provenance": "SYNTHETIC_FIXTURE",
-      "evidence": "Actual moderation controller with absent synthetic moderator lease; no private list/detail/evidence/mutation dispatch or retained data. Not server-role authorization."
+      "evidence": "Actual moderation controller and mounted component with absent synthetic moderator lease; no private list/detail/evidence/mutation dispatch or retained data. Not server-role authorization."
     },
     {
       "domain": "evidence",
@@ -953,7 +953,7 @@
       "operation": "mutation",
       "status": "PASS",
       "provenance": "SYNTHETIC_FIXTURE",
-      "evidence": "Actual moderation controller with absent synthetic moderator lease; no private list/detail/evidence/mutation dispatch or retained data. Not server-role authorization."
+      "evidence": "Actual moderation controller and mounted component with absent synthetic moderator lease; no private list/detail/evidence/mutation dispatch or retained data. Not server-role authorization."
     },
     {
       "domain": "evidence",
@@ -961,7 +961,7 @@
       "operation": "cache",
       "status": "PASS",
       "provenance": "SYNTHETIC_FIXTURE",
-      "evidence": "Actual moderation controller with absent synthetic moderator lease; no private list/detail/evidence/mutation dispatch or retained data. Not server-role authorization."
+      "evidence": "Actual moderation controller and mounted component with absent synthetic moderator lease; no private list/detail/evidence/mutation dispatch or retained data. Not server-role authorization."
     },
     {
       "domain": "evidence",
@@ -977,7 +977,7 @@
       "operation": "list",
       "status": "PASS",
       "provenance": "SYNTHETIC_FIXTURE",
-      "evidence": "Actual moderation controller with absent synthetic moderator lease; no private list/detail/evidence/mutation dispatch or retained data. Not server-role authorization."
+      "evidence": "Actual moderation controller and mounted component with absent synthetic moderator lease; no private list/detail/evidence/mutation dispatch or retained data. Not server-role authorization."
     },
     {
       "domain": "evidence",
@@ -985,7 +985,7 @@
       "operation": "detail",
       "status": "PASS",
       "provenance": "SYNTHETIC_FIXTURE",
-      "evidence": "Actual moderation controller with absent synthetic moderator lease; no private list/detail/evidence/mutation dispatch or retained data. Not server-role authorization."
+      "evidence": "Actual moderation controller and mounted component with absent synthetic moderator lease; no private list/detail/evidence/mutation dispatch or retained data. Not server-role authorization."
     },
     {
       "domain": "evidence",
@@ -993,7 +993,7 @@
       "operation": "mutation",
       "status": "PASS",
       "provenance": "SYNTHETIC_FIXTURE",
-      "evidence": "Actual moderation controller with absent synthetic moderator lease; no private list/detail/evidence/mutation dispatch or retained data. Not server-role authorization."
+      "evidence": "Actual moderation controller and mounted component with absent synthetic moderator lease; no private list/detail/evidence/mutation dispatch or retained data. Not server-role authorization."
     },
     {
       "domain": "evidence",
@@ -1001,7 +1001,7 @@
       "operation": "cache",
       "status": "PASS",
       "provenance": "SYNTHETIC_FIXTURE",
-      "evidence": "Actual moderation controller with absent synthetic moderator lease; no private list/detail/evidence/mutation dispatch or retained data. Not server-role authorization."
+      "evidence": "Actual moderation controller and mounted component with absent synthetic moderator lease; no private list/detail/evidence/mutation dispatch or retained data. Not server-role authorization."
     },
     {
       "domain": "evidence",
@@ -1017,7 +1017,7 @@
       "operation": "list",
       "status": "PASS",
       "provenance": "SYNTHETIC_FIXTURE",
-      "evidence": "Actual moderation controller with absent synthetic moderator lease; no private list/detail/evidence/mutation dispatch or retained data. Not server-role authorization."
+      "evidence": "Actual moderation controller and mounted component with absent synthetic moderator lease; no private list/detail/evidence/mutation dispatch or retained data. Not server-role authorization."
     },
     {
       "domain": "evidence",
@@ -1025,7 +1025,7 @@
       "operation": "detail",
       "status": "PASS",
       "provenance": "SYNTHETIC_FIXTURE",
-      "evidence": "Actual moderation controller with absent synthetic moderator lease; no private list/detail/evidence/mutation dispatch or retained data. Not server-role authorization."
+      "evidence": "Actual moderation controller and mounted component with absent synthetic moderator lease; no private list/detail/evidence/mutation dispatch or retained data. Not server-role authorization."
     },
     {
       "domain": "evidence",
@@ -1033,7 +1033,7 @@
       "operation": "mutation",
       "status": "PASS",
       "provenance": "SYNTHETIC_FIXTURE",
-      "evidence": "Actual moderation controller with absent synthetic moderator lease; no private list/detail/evidence/mutation dispatch or retained data. Not server-role authorization."
+      "evidence": "Actual moderation controller and mounted component with absent synthetic moderator lease; no private list/detail/evidence/mutation dispatch or retained data. Not server-role authorization."
     },
     {
       "domain": "evidence",
@@ -1041,7 +1041,7 @@
       "operation": "cache",
       "status": "PASS",
       "provenance": "SYNTHETIC_FIXTURE",
-      "evidence": "Actual moderation controller with absent synthetic moderator lease; no private list/detail/evidence/mutation dispatch or retained data. Not server-role authorization."
+      "evidence": "Actual moderation controller and mounted component with absent synthetic moderator lease; no private list/detail/evidence/mutation dispatch or retained data. Not server-role authorization."
     },
     {
       "domain": "evidence",
@@ -1057,7 +1057,7 @@
       "operation": "list",
       "status": "PASS",
       "provenance": "SYNTHETIC_FIXTURE",
-      "evidence": "Actual moderation controller; synthetic moderator lease; private report detail, native Blob URL revocation, delayed evidence fence and revision-bound mutation. Not real role policy, image decode, mounted UI or WS."
+      "evidence": "Actual moderation controller and mounted component; synthetic moderator lease; private report text/Blob element, native URL revocation, delayed evidence fence and revision-bound mutation. Not real role policy, image decode, mounted product shell or WS."
     },
     {
       "domain": "evidence",
@@ -1065,7 +1065,7 @@
       "operation": "detail",
       "status": "PASS",
       "provenance": "SYNTHETIC_FIXTURE",
-      "evidence": "Actual moderation controller; synthetic moderator lease; private report detail, native Blob URL revocation, delayed evidence fence and revision-bound mutation. Not real role policy, image decode, mounted UI or WS."
+      "evidence": "Actual moderation controller and mounted component; synthetic moderator lease; private report text/Blob element, native URL revocation, delayed evidence fence and revision-bound mutation. Not real role policy, image decode, mounted product shell or WS."
     },
     {
       "domain": "evidence",
@@ -1073,7 +1073,7 @@
       "operation": "mutation",
       "status": "PASS",
       "provenance": "SYNTHETIC_FIXTURE",
-      "evidence": "Actual moderation controller; synthetic moderator lease; private report detail, native Blob URL revocation, delayed evidence fence and revision-bound mutation. Not real role policy, image decode, mounted UI or WS."
+      "evidence": "Actual moderation controller and mounted component; synthetic moderator lease; private report text/Blob element, native URL revocation, delayed evidence fence and revision-bound mutation. Not real role policy, image decode, mounted product shell or WS."
     },
     {
       "domain": "evidence",
@@ -1081,7 +1081,7 @@
       "operation": "cache",
       "status": "PASS",
       "provenance": "SYNTHETIC_FIXTURE",
-      "evidence": "Actual moderation controller; synthetic moderator lease; private report detail, native Blob URL revocation, delayed evidence fence and revision-bound mutation. Not real role policy, image decode, mounted UI or WS."
+      "evidence": "Actual moderation controller and mounted component; synthetic moderator lease; private report text/Blob element, native URL revocation, delayed evidence fence and revision-bound mutation. Not real role policy, image decode, mounted product shell or WS."
     },
     {
       "domain": "evidence",
@@ -1105,7 +1105,7 @@
       "operation": "detail",
       "status": "PASS",
       "provenance": "SYNTHETIC_FIXTURE",
-      "evidence": "Actual beacon and places controllers via retained synthetic port fixture; canRead/canWrite audience input, expiry, owner revision-bound revoke, read-only member, authority-loss late read and private draft cleanup. No actual venue/role policy/public WS/UI certification. Beacon list has no frozen operation in this harness."
+      "evidence": "Actual beacon/places controllers and mounted detail via retained synthetic port fixture; canRead/canWrite audience input, expiry, owner revision-bound revoke, read-only member, authority-loss late read and private draft/DOM cleanup. No actual venue/role policy/public WS/product-shell certification. Beacon list has no frozen operation in this harness."
     },
     {
       "domain": "beacon",
@@ -1113,7 +1113,7 @@
       "operation": "mutation",
       "status": "PASS",
       "provenance": "SYNTHETIC_FIXTURE",
-      "evidence": "Actual beacon and places controllers via retained synthetic port fixture; canRead/canWrite audience input, expiry, owner revision-bound revoke, read-only member, authority-loss late read and private draft cleanup. No actual venue/role policy/public WS/UI certification. Beacon list has no frozen operation in this harness."
+      "evidence": "Actual beacon/places controllers and mounted detail via retained synthetic port fixture; canRead/canWrite audience input, expiry, owner revision-bound revoke, read-only member, authority-loss late read and private draft/DOM cleanup. No actual venue/role policy/public WS/product-shell certification. Beacon list has no frozen operation in this harness."
     },
     {
       "domain": "beacon",
@@ -1121,7 +1121,7 @@
       "operation": "cache",
       "status": "PASS",
       "provenance": "SYNTHETIC_FIXTURE",
-      "evidence": "Actual beacon and places controllers via retained synthetic port fixture; canRead/canWrite audience input, expiry, owner revision-bound revoke, read-only member, authority-loss late read and private draft cleanup. No actual venue/role policy/public WS/UI certification. Beacon list has no frozen operation in this harness."
+      "evidence": "Actual beacon/places controllers and mounted detail via retained synthetic port fixture; canRead/canWrite audience input, expiry, owner revision-bound revoke, read-only member, authority-loss late read and private draft/DOM cleanup. No actual venue/role policy/public WS/product-shell certification. Beacon list has no frozen operation in this harness."
     },
     {
       "domain": "beacon",
@@ -1145,7 +1145,7 @@
       "operation": "detail",
       "status": "PASS",
       "provenance": "SYNTHETIC_FIXTURE",
-      "evidence": "Actual beacon and places controllers via retained synthetic port fixture; canRead/canWrite audience input, expiry, owner revision-bound revoke, read-only member, authority-loss late read and private draft cleanup. No actual venue/role policy/public WS/UI certification. Beacon list has no frozen operation in this harness."
+      "evidence": "Actual beacon/places controllers and mounted detail via retained synthetic port fixture; canRead/canWrite audience input, expiry, owner revision-bound revoke, read-only member, authority-loss late read and private draft/DOM cleanup. No actual venue/role policy/public WS/product-shell certification. Beacon list has no frozen operation in this harness."
     },
     {
       "domain": "beacon",
@@ -1153,7 +1153,7 @@
       "operation": "mutation",
       "status": "PASS",
       "provenance": "SYNTHETIC_FIXTURE",
-      "evidence": "Actual beacon and places controllers via retained synthetic port fixture; canRead/canWrite audience input, expiry, owner revision-bound revoke, read-only member, authority-loss late read and private draft cleanup. No actual venue/role policy/public WS/UI certification. Beacon list has no frozen operation in this harness."
+      "evidence": "Actual beacon/places controllers and mounted detail via retained synthetic port fixture; canRead/canWrite audience input, expiry, owner revision-bound revoke, read-only member, authority-loss late read and private draft/DOM cleanup. No actual venue/role policy/public WS/product-shell certification. Beacon list has no frozen operation in this harness."
     },
     {
       "domain": "beacon",
@@ -1161,7 +1161,7 @@
       "operation": "cache",
       "status": "PASS",
       "provenance": "SYNTHETIC_FIXTURE",
-      "evidence": "Actual beacon and places controllers via retained synthetic port fixture; canRead/canWrite audience input, expiry, owner revision-bound revoke, read-only member, authority-loss late read and private draft cleanup. No actual venue/role policy/public WS/UI certification. Beacon list has no frozen operation in this harness."
+      "evidence": "Actual beacon/places controllers and mounted detail via retained synthetic port fixture; canRead/canWrite audience input, expiry, owner revision-bound revoke, read-only member, authority-loss late read and private draft/DOM cleanup. No actual venue/role policy/public WS/product-shell certification. Beacon list has no frozen operation in this harness."
     },
     {
       "domain": "beacon",
@@ -1185,7 +1185,7 @@
       "operation": "detail",
       "status": "PASS",
       "provenance": "SYNTHETIC_FIXTURE",
-      "evidence": "Actual beacon and places controllers via retained synthetic port fixture; canRead/canWrite audience input, expiry, owner revision-bound revoke, read-only member, authority-loss late read and private draft cleanup. No actual venue/role policy/public WS/UI certification. Beacon list has no frozen operation in this harness."
+      "evidence": "Actual beacon/places controllers and mounted detail via retained synthetic port fixture; canRead/canWrite audience input, expiry, owner revision-bound revoke, read-only member, authority-loss late read and private draft/DOM cleanup. No actual venue/role policy/public WS/product-shell certification. Beacon list has no frozen operation in this harness."
     },
     {
       "domain": "beacon",
@@ -1193,7 +1193,7 @@
       "operation": "mutation",
       "status": "PASS",
       "provenance": "SYNTHETIC_FIXTURE",
-      "evidence": "Actual beacon and places controllers via retained synthetic port fixture; canRead/canWrite audience input, expiry, owner revision-bound revoke, read-only member, authority-loss late read and private draft cleanup. No actual venue/role policy/public WS/UI certification. Beacon list has no frozen operation in this harness."
+      "evidence": "Actual beacon/places controllers and mounted detail via retained synthetic port fixture; canRead/canWrite audience input, expiry, owner revision-bound revoke, read-only member, authority-loss late read and private draft/DOM cleanup. No actual venue/role policy/public WS/product-shell certification. Beacon list has no frozen operation in this harness."
     },
     {
       "domain": "beacon",
@@ -1201,7 +1201,7 @@
       "operation": "cache",
       "status": "PASS",
       "provenance": "SYNTHETIC_FIXTURE",
-      "evidence": "Actual beacon and places controllers via retained synthetic port fixture; canRead/canWrite audience input, expiry, owner revision-bound revoke, read-only member, authority-loss late read and private draft cleanup. No actual venue/role policy/public WS/UI certification. Beacon list has no frozen operation in this harness."
+      "evidence": "Actual beacon/places controllers and mounted detail via retained synthetic port fixture; canRead/canWrite audience input, expiry, owner revision-bound revoke, read-only member, authority-loss late read and private draft/DOM cleanup. No actual venue/role policy/public WS/product-shell certification. Beacon list has no frozen operation in this harness."
     },
     {
       "domain": "beacon",
@@ -1225,7 +1225,7 @@
       "operation": "detail",
       "status": "PASS",
       "provenance": "SYNTHETIC_FIXTURE",
-      "evidence": "Actual beacon and places controllers via retained synthetic port fixture; canRead/canWrite audience input, expiry, owner revision-bound revoke, read-only member, authority-loss late read and private draft cleanup. No actual venue/role policy/public WS/UI certification. Beacon list has no frozen operation in this harness."
+      "evidence": "Actual beacon/places controllers and mounted detail via retained synthetic port fixture; canRead/canWrite audience input, expiry, owner revision-bound revoke, read-only member, authority-loss late read and private draft/DOM cleanup. No actual venue/role policy/public WS/product-shell certification. Beacon list has no frozen operation in this harness."
     },
     {
       "domain": "beacon",
@@ -1233,7 +1233,7 @@
       "operation": "mutation",
       "status": "PASS",
       "provenance": "SYNTHETIC_FIXTURE",
-      "evidence": "Actual beacon and places controllers via retained synthetic port fixture; canRead/canWrite audience input, expiry, owner revision-bound revoke, read-only member, authority-loss late read and private draft cleanup. No actual venue/role policy/public WS/UI certification. Beacon list has no frozen operation in this harness."
+      "evidence": "Actual beacon/places controllers and mounted detail via retained synthetic port fixture; canRead/canWrite audience input, expiry, owner revision-bound revoke, read-only member, authority-loss late read and private draft/DOM cleanup. No actual venue/role policy/public WS/product-shell certification. Beacon list has no frozen operation in this harness."
     },
     {
       "domain": "beacon",
@@ -1241,7 +1241,7 @@
       "operation": "cache",
       "status": "PASS",
       "provenance": "SYNTHETIC_FIXTURE",
-      "evidence": "Actual beacon and places controllers via retained synthetic port fixture; canRead/canWrite audience input, expiry, owner revision-bound revoke, read-only member, authority-loss late read and private draft cleanup. No actual venue/role policy/public WS/UI certification. Beacon list has no frozen operation in this harness."
+      "evidence": "Actual beacon/places controllers and mounted detail via retained synthetic port fixture; canRead/canWrite audience input, expiry, owner revision-bound revoke, read-only member, authority-loss late read and private draft/DOM cleanup. No actual venue/role policy/public WS/product-shell certification. Beacon list has no frozen operation in this harness."
     },
     {
       "domain": "beacon",
@@ -1265,7 +1265,7 @@
       "operation": "detail",
       "status": "PASS",
       "provenance": "SYNTHETIC_FIXTURE",
-      "evidence": "Actual beacon and places controllers via retained synthetic port fixture; canRead/canWrite audience input, expiry, owner revision-bound revoke, read-only member, authority-loss late read and private draft cleanup. No actual venue/role policy/public WS/UI certification. Beacon list has no frozen operation in this harness."
+      "evidence": "Actual beacon/places controllers and mounted detail via retained synthetic port fixture; canRead/canWrite audience input, expiry, owner revision-bound revoke, read-only member, authority-loss late read and private draft/DOM cleanup. No actual venue/role policy/public WS/product-shell certification. Beacon list has no frozen operation in this harness."
     },
     {
       "domain": "beacon",
@@ -1273,7 +1273,7 @@
       "operation": "mutation",
       "status": "PASS",
       "provenance": "SYNTHETIC_FIXTURE",
-      "evidence": "Actual beacon and places controllers via retained synthetic port fixture; canRead/canWrite audience input, expiry, owner revision-bound revoke, read-only member, authority-loss late read and private draft cleanup. No actual venue/role policy/public WS/UI certification. Beacon list has no frozen operation in this harness."
+      "evidence": "Actual beacon/places controllers and mounted detail via retained synthetic port fixture; canRead/canWrite audience input, expiry, owner revision-bound revoke, read-only member, authority-loss late read and private draft/DOM cleanup. No actual venue/role policy/public WS/product-shell certification. Beacon list has no frozen operation in this harness."
     },
     {
       "domain": "beacon",
@@ -1281,7 +1281,7 @@
       "operation": "cache",
       "status": "PASS",
       "provenance": "SYNTHETIC_FIXTURE",
-      "evidence": "Actual beacon and places controllers via retained synthetic port fixture; canRead/canWrite audience input, expiry, owner revision-bound revoke, read-only member, authority-loss late read and private draft cleanup. No actual venue/role policy/public WS/UI certification. Beacon list has no frozen operation in this harness."
+      "evidence": "Actual beacon/places controllers and mounted detail via retained synthetic port fixture; canRead/canWrite audience input, expiry, owner revision-bound revoke, read-only member, authority-loss late read and private draft/DOM cleanup. No actual venue/role policy/public WS/product-shell certification. Beacon list has no frozen operation in this harness."
     },
     {
       "domain": "beacon",
@@ -1305,7 +1305,7 @@
       "operation": "detail",
       "status": "PASS",
       "provenance": "SYNTHETIC_FIXTURE",
-      "evidence": "Actual beacon and places controllers via retained synthetic port fixture; canRead/canWrite audience input, expiry, owner revision-bound revoke, read-only member, authority-loss late read and private draft cleanup. No actual venue/role policy/public WS/UI certification. Beacon list has no frozen operation in this harness."
+      "evidence": "Actual beacon/places controllers and mounted detail via retained synthetic port fixture; canRead/canWrite audience input, expiry, owner revision-bound revoke, read-only member, authority-loss late read and private draft/DOM cleanup. No actual venue/role policy/public WS/product-shell certification. Beacon list has no frozen operation in this harness."
     },
     {
       "domain": "beacon",
@@ -1313,7 +1313,7 @@
       "operation": "mutation",
       "status": "PASS",
       "provenance": "SYNTHETIC_FIXTURE",
-      "evidence": "Actual beacon and places controllers via retained synthetic port fixture; canRead/canWrite audience input, expiry, owner revision-bound revoke, read-only member, authority-loss late read and private draft cleanup. No actual venue/role policy/public WS/UI certification. Beacon list has no frozen operation in this harness."
+      "evidence": "Actual beacon/places controllers and mounted detail via retained synthetic port fixture; canRead/canWrite audience input, expiry, owner revision-bound revoke, read-only member, authority-loss late read and private draft/DOM cleanup. No actual venue/role policy/public WS/product-shell certification. Beacon list has no frozen operation in this harness."
     },
     {
       "domain": "beacon",
@@ -1321,7 +1321,7 @@
       "operation": "cache",
       "status": "PASS",
       "provenance": "SYNTHETIC_FIXTURE",
-      "evidence": "Actual beacon and places controllers via retained synthetic port fixture; canRead/canWrite audience input, expiry, owner revision-bound revoke, read-only member, authority-loss late read and private draft cleanup. No actual venue/role policy/public WS/UI certification. Beacon list has no frozen operation in this harness."
+      "evidence": "Actual beacon/places controllers and mounted detail via retained synthetic port fixture; canRead/canWrite audience input, expiry, owner revision-bound revoke, read-only member, authority-loss late read and private draft/DOM cleanup. No actual venue/role policy/public WS/product-shell certification. Beacon list has no frozen operation in this harness."
     },
     {
       "domain": "beacon",
@@ -1345,7 +1345,7 @@
       "operation": "detail",
       "status": "PASS",
       "provenance": "SYNTHETIC_FIXTURE",
-      "evidence": "Actual beacon and places controllers via retained synthetic port fixture; canRead/canWrite audience input, expiry, owner revision-bound revoke, read-only member, authority-loss late read and private draft cleanup. No actual venue/role policy/public WS/UI certification. Beacon list has no frozen operation in this harness."
+      "evidence": "Actual beacon/places controllers and mounted detail via retained synthetic port fixture; canRead/canWrite audience input, expiry, owner revision-bound revoke, read-only member, authority-loss late read and private draft/DOM cleanup. No actual venue/role policy/public WS/product-shell certification. Beacon list has no frozen operation in this harness."
     },
     {
       "domain": "beacon",
@@ -1353,7 +1353,7 @@
       "operation": "mutation",
       "status": "PASS",
       "provenance": "SYNTHETIC_FIXTURE",
-      "evidence": "Actual beacon and places controllers via retained synthetic port fixture; canRead/canWrite audience input, expiry, owner revision-bound revoke, read-only member, authority-loss late read and private draft cleanup. No actual venue/role policy/public WS/UI certification. Beacon list has no frozen operation in this harness."
+      "evidence": "Actual beacon/places controllers and mounted detail via retained synthetic port fixture; canRead/canWrite audience input, expiry, owner revision-bound revoke, read-only member, authority-loss late read and private draft/DOM cleanup. No actual venue/role policy/public WS/product-shell certification. Beacon list has no frozen operation in this harness."
     },
     {
       "domain": "beacon",
@@ -1361,7 +1361,7 @@
       "operation": "cache",
       "status": "PASS",
       "provenance": "SYNTHETIC_FIXTURE",
-      "evidence": "Actual beacon and places controllers via retained synthetic port fixture; canRead/canWrite audience input, expiry, owner revision-bound revoke, read-only member, authority-loss late read and private draft cleanup. No actual venue/role policy/public WS/UI certification. Beacon list has no frozen operation in this harness."
+      "evidence": "Actual beacon/places controllers and mounted detail via retained synthetic port fixture; canRead/canWrite audience input, expiry, owner revision-bound revoke, read-only member, authority-loss late read and private draft/DOM cleanup. No actual venue/role policy/public WS/product-shell certification. Beacon list has no frozen operation in this harness."
     },
     {
       "domain": "beacon",
@@ -1377,7 +1377,7 @@
       "operation": "list",
       "status": "PASS",
       "provenance": "SYNTHETIC_FIXTURE",
-      "evidence": "Actual SELF activity decoder and pickup controller; synthetic public context/HTTP/journal/place authority. Cross-recipient200 rejection, expired/code guards, explicit owner/recipient mutations/readback, context-loss late-response and private-state cleanup. No real reservation/pickup/backend-role/UI/WS certification."
+      "evidence": "Actual SELF activity decoder, pickup controller and mounted component; synthetic public context/HTTP/journal/place authority. Cross-recipient200 rejection, expired/code guards, explicit owner/recipient mutations/readback, context-loss late-response and private-state/DOM cleanup. No real reservation/pickup/backend-role/product-shell/WS certification."
     },
     {
       "domain": "recipient",
@@ -1385,7 +1385,7 @@
       "operation": "detail",
       "status": "PASS",
       "provenance": "SYNTHETIC_FIXTURE",
-      "evidence": "Actual SELF activity decoder and pickup controller; synthetic public context/HTTP/journal/place authority. Cross-recipient200 rejection, expired/code guards, explicit owner/recipient mutations/readback, context-loss late-response and private-state cleanup. No real reservation/pickup/backend-role/UI/WS certification."
+      "evidence": "Actual SELF activity decoder, pickup controller and mounted component; synthetic public context/HTTP/journal/place authority. Cross-recipient200 rejection, expired/code guards, explicit owner/recipient mutations/readback, context-loss late-response and private-state/DOM cleanup. No real reservation/pickup/backend-role/product-shell/WS certification."
     },
     {
       "domain": "recipient",
@@ -1393,7 +1393,7 @@
       "operation": "mutation",
       "status": "PASS",
       "provenance": "SYNTHETIC_FIXTURE",
-      "evidence": "Actual SELF activity decoder and pickup controller; synthetic public context/HTTP/journal/place authority. Cross-recipient200 rejection, expired/code guards, explicit owner/recipient mutations/readback, context-loss late-response and private-state cleanup. No real reservation/pickup/backend-role/UI/WS certification."
+      "evidence": "Actual SELF activity decoder, pickup controller and mounted component; synthetic public context/HTTP/journal/place authority. Cross-recipient200 rejection, expired/code guards, explicit owner/recipient mutations/readback, context-loss late-response and private-state/DOM cleanup. No real reservation/pickup/backend-role/product-shell/WS certification."
     },
     {
       "domain": "recipient",
@@ -1401,7 +1401,7 @@
       "operation": "cache",
       "status": "PASS",
       "provenance": "SYNTHETIC_FIXTURE",
-      "evidence": "Actual SELF activity decoder and pickup controller; synthetic public context/HTTP/journal/place authority. Cross-recipient200 rejection, expired/code guards, explicit owner/recipient mutations/readback, context-loss late-response and private-state cleanup. No real reservation/pickup/backend-role/UI/WS certification."
+      "evidence": "Actual SELF activity decoder, pickup controller and mounted component; synthetic public context/HTTP/journal/place authority. Cross-recipient200 rejection, expired/code guards, explicit owner/recipient mutations/readback, context-loss late-response and private-state/DOM cleanup. No real reservation/pickup/backend-role/product-shell/WS certification."
     },
     {
       "domain": "recipient",
@@ -1417,7 +1417,7 @@
       "operation": "list",
       "status": "PASS",
       "provenance": "SYNTHETIC_FIXTURE",
-      "evidence": "Actual SELF activity decoder and pickup controller; synthetic public context/HTTP/journal/place authority. Cross-recipient200 rejection, expired/code guards, explicit owner/recipient mutations/readback, context-loss late-response and private-state cleanup. No real reservation/pickup/backend-role/UI/WS certification."
+      "evidence": "Actual SELF activity decoder, pickup controller and mounted component; synthetic public context/HTTP/journal/place authority. Cross-recipient200 rejection, expired/code guards, explicit owner/recipient mutations/readback, context-loss late-response and private-state/DOM cleanup. No real reservation/pickup/backend-role/product-shell/WS certification."
     },
     {
       "domain": "recipient",
@@ -1425,7 +1425,7 @@
       "operation": "detail",
       "status": "PASS",
       "provenance": "SYNTHETIC_FIXTURE",
-      "evidence": "Actual SELF activity decoder and pickup controller; synthetic public context/HTTP/journal/place authority. Cross-recipient200 rejection, expired/code guards, explicit owner/recipient mutations/readback, context-loss late-response and private-state cleanup. No real reservation/pickup/backend-role/UI/WS certification."
+      "evidence": "Actual SELF activity decoder, pickup controller and mounted component; synthetic public context/HTTP/journal/place authority. Cross-recipient200 rejection, expired/code guards, explicit owner/recipient mutations/readback, context-loss late-response and private-state/DOM cleanup. No real reservation/pickup/backend-role/product-shell/WS certification."
     },
     {
       "domain": "recipient",
@@ -1433,7 +1433,7 @@
       "operation": "mutation",
       "status": "PASS",
       "provenance": "SYNTHETIC_FIXTURE",
-      "evidence": "Actual SELF activity decoder and pickup controller; synthetic public context/HTTP/journal/place authority. Cross-recipient200 rejection, expired/code guards, explicit owner/recipient mutations/readback, context-loss late-response and private-state cleanup. No real reservation/pickup/backend-role/UI/WS certification."
+      "evidence": "Actual SELF activity decoder, pickup controller and mounted component; synthetic public context/HTTP/journal/place authority. Cross-recipient200 rejection, expired/code guards, explicit owner/recipient mutations/readback, context-loss late-response and private-state/DOM cleanup. No real reservation/pickup/backend-role/product-shell/WS certification."
     },
     {
       "domain": "recipient",
@@ -1441,7 +1441,7 @@
       "operation": "cache",
       "status": "PASS",
       "provenance": "SYNTHETIC_FIXTURE",
-      "evidence": "Actual SELF activity decoder and pickup controller; synthetic public context/HTTP/journal/place authority. Cross-recipient200 rejection, expired/code guards, explicit owner/recipient mutations/readback, context-loss late-response and private-state cleanup. No real reservation/pickup/backend-role/UI/WS certification."
+      "evidence": "Actual SELF activity decoder, pickup controller and mounted component; synthetic public context/HTTP/journal/place authority. Cross-recipient200 rejection, expired/code guards, explicit owner/recipient mutations/readback, context-loss late-response and private-state/DOM cleanup. No real reservation/pickup/backend-role/product-shell/WS certification."
     },
     {
       "domain": "recipient",
@@ -1457,7 +1457,7 @@
       "operation": "list",
       "status": "PASS",
       "provenance": "SYNTHETIC_FIXTURE",
-      "evidence": "Actual SELF activity decoder and pickup controller; synthetic public context/HTTP/journal/place authority. Cross-recipient200 rejection, expired/code guards, explicit owner/recipient mutations/readback, context-loss late-response and private-state cleanup. No real reservation/pickup/backend-role/UI/WS certification."
+      "evidence": "Actual SELF activity decoder, pickup controller and mounted component; synthetic public context/HTTP/journal/place authority. Cross-recipient200 rejection, expired/code guards, explicit owner/recipient mutations/readback, context-loss late-response and private-state/DOM cleanup. No real reservation/pickup/backend-role/product-shell/WS certification."
     },
     {
       "domain": "recipient",
@@ -1465,7 +1465,7 @@
       "operation": "detail",
       "status": "PASS",
       "provenance": "SYNTHETIC_FIXTURE",
-      "evidence": "Actual SELF activity decoder and pickup controller; synthetic public context/HTTP/journal/place authority. Cross-recipient200 rejection, expired/code guards, explicit owner/recipient mutations/readback, context-loss late-response and private-state cleanup. No real reservation/pickup/backend-role/UI/WS certification."
+      "evidence": "Actual SELF activity decoder, pickup controller and mounted component; synthetic public context/HTTP/journal/place authority. Cross-recipient200 rejection, expired/code guards, explicit owner/recipient mutations/readback, context-loss late-response and private-state/DOM cleanup. No real reservation/pickup/backend-role/product-shell/WS certification."
     },
     {
       "domain": "recipient",
@@ -1473,7 +1473,7 @@
       "operation": "mutation",
       "status": "PASS",
       "provenance": "SYNTHETIC_FIXTURE",
-      "evidence": "Actual SELF activity decoder and pickup controller; synthetic public context/HTTP/journal/place authority. Cross-recipient200 rejection, expired/code guards, explicit owner/recipient mutations/readback, context-loss late-response and private-state cleanup. No real reservation/pickup/backend-role/UI/WS certification."
+      "evidence": "Actual SELF activity decoder, pickup controller and mounted component; synthetic public context/HTTP/journal/place authority. Cross-recipient200 rejection, expired/code guards, explicit owner/recipient mutations/readback, context-loss late-response and private-state/DOM cleanup. No real reservation/pickup/backend-role/product-shell/WS certification."
     },
     {
       "domain": "recipient",
@@ -1481,7 +1481,7 @@
       "operation": "cache",
       "status": "PASS",
       "provenance": "SYNTHETIC_FIXTURE",
-      "evidence": "Actual SELF activity decoder and pickup controller; synthetic public context/HTTP/journal/place authority. Cross-recipient200 rejection, expired/code guards, explicit owner/recipient mutations/readback, context-loss late-response and private-state cleanup. No real reservation/pickup/backend-role/UI/WS certification."
+      "evidence": "Actual SELF activity decoder, pickup controller and mounted component; synthetic public context/HTTP/journal/place authority. Cross-recipient200 rejection, expired/code guards, explicit owner/recipient mutations/readback, context-loss late-response and private-state/DOM cleanup. No real reservation/pickup/backend-role/product-shell/WS certification."
     },
     {
       "domain": "recipient",
@@ -1497,7 +1497,7 @@
       "operation": "list",
       "status": "PASS",
       "provenance": "SYNTHETIC_FIXTURE",
-      "evidence": "Actual SELF activity decoder and pickup controller; synthetic public context/HTTP/journal/place authority. Cross-recipient200 rejection, expired/code guards, explicit owner/recipient mutations/readback, context-loss late-response and private-state cleanup. No real reservation/pickup/backend-role/UI/WS certification."
+      "evidence": "Actual SELF activity decoder, pickup controller and mounted component; synthetic public context/HTTP/journal/place authority. Cross-recipient200 rejection, expired/code guards, explicit owner/recipient mutations/readback, context-loss late-response and private-state/DOM cleanup. No real reservation/pickup/backend-role/product-shell/WS certification."
     },
     {
       "domain": "recipient",
@@ -1505,7 +1505,7 @@
       "operation": "detail",
       "status": "PASS",
       "provenance": "SYNTHETIC_FIXTURE",
-      "evidence": "Actual SELF activity decoder and pickup controller; synthetic public context/HTTP/journal/place authority. Cross-recipient200 rejection, expired/code guards, explicit owner/recipient mutations/readback, context-loss late-response and private-state cleanup. No real reservation/pickup/backend-role/UI/WS certification."
+      "evidence": "Actual SELF activity decoder, pickup controller and mounted component; synthetic public context/HTTP/journal/place authority. Cross-recipient200 rejection, expired/code guards, explicit owner/recipient mutations/readback, context-loss late-response and private-state/DOM cleanup. No real reservation/pickup/backend-role/product-shell/WS certification."
     },
     {
       "domain": "recipient",
@@ -1513,7 +1513,7 @@
       "operation": "mutation",
       "status": "PASS",
       "provenance": "SYNTHETIC_FIXTURE",
-      "evidence": "Actual SELF activity decoder and pickup controller; synthetic public context/HTTP/journal/place authority. Cross-recipient200 rejection, expired/code guards, explicit owner/recipient mutations/readback, context-loss late-response and private-state cleanup. No real reservation/pickup/backend-role/UI/WS certification."
+      "evidence": "Actual SELF activity decoder, pickup controller and mounted component; synthetic public context/HTTP/journal/place authority. Cross-recipient200 rejection, expired/code guards, explicit owner/recipient mutations/readback, context-loss late-response and private-state/DOM cleanup. No real reservation/pickup/backend-role/product-shell/WS certification."
     },
     {
       "domain": "recipient",
@@ -1521,7 +1521,7 @@
       "operation": "cache",
       "status": "PASS",
       "provenance": "SYNTHETIC_FIXTURE",
-      "evidence": "Actual SELF activity decoder and pickup controller; synthetic public context/HTTP/journal/place authority. Cross-recipient200 rejection, expired/code guards, explicit owner/recipient mutations/readback, context-loss late-response and private-state cleanup. No real reservation/pickup/backend-role/UI/WS certification."
+      "evidence": "Actual SELF activity decoder, pickup controller and mounted component; synthetic public context/HTTP/journal/place authority. Cross-recipient200 rejection, expired/code guards, explicit owner/recipient mutations/readback, context-loss late-response and private-state/DOM cleanup. No real reservation/pickup/backend-role/product-shell/WS certification."
     },
     {
       "domain": "recipient",
@@ -1537,7 +1537,7 @@
       "operation": "list",
       "status": "PASS",
       "provenance": "SYNTHETIC_FIXTURE",
-      "evidence": "Actual SELF activity decoder and pickup controller; synthetic public context/HTTP/journal/place authority. Cross-recipient200 rejection, expired/code guards, explicit owner/recipient mutations/readback, context-loss late-response and private-state cleanup. No real reservation/pickup/backend-role/UI/WS certification."
+      "evidence": "Actual SELF activity decoder, pickup controller and mounted component; synthetic public context/HTTP/journal/place authority. Cross-recipient200 rejection, expired/code guards, explicit owner/recipient mutations/readback, context-loss late-response and private-state/DOM cleanup. No real reservation/pickup/backend-role/product-shell/WS certification."
     },
     {
       "domain": "recipient",
@@ -1545,7 +1545,7 @@
       "operation": "detail",
       "status": "PASS",
       "provenance": "SYNTHETIC_FIXTURE",
-      "evidence": "Actual SELF activity decoder and pickup controller; synthetic public context/HTTP/journal/place authority. Cross-recipient200 rejection, expired/code guards, explicit owner/recipient mutations/readback, context-loss late-response and private-state cleanup. No real reservation/pickup/backend-role/UI/WS certification."
+      "evidence": "Actual SELF activity decoder, pickup controller and mounted component; synthetic public context/HTTP/journal/place authority. Cross-recipient200 rejection, expired/code guards, explicit owner/recipient mutations/readback, context-loss late-response and private-state/DOM cleanup. No real reservation/pickup/backend-role/product-shell/WS certification."
     },
     {
       "domain": "recipient",
@@ -1553,7 +1553,7 @@
       "operation": "mutation",
       "status": "PASS",
       "provenance": "SYNTHETIC_FIXTURE",
-      "evidence": "Actual SELF activity decoder and pickup controller; synthetic public context/HTTP/journal/place authority. Cross-recipient200 rejection, expired/code guards, explicit owner/recipient mutations/readback, context-loss late-response and private-state cleanup. No real reservation/pickup/backend-role/UI/WS certification."
+      "evidence": "Actual SELF activity decoder, pickup controller and mounted component; synthetic public context/HTTP/journal/place authority. Cross-recipient200 rejection, expired/code guards, explicit owner/recipient mutations/readback, context-loss late-response and private-state/DOM cleanup. No real reservation/pickup/backend-role/product-shell/WS certification."
     },
     {
       "domain": "recipient",
@@ -1561,7 +1561,7 @@
       "operation": "cache",
       "status": "PASS",
       "provenance": "SYNTHETIC_FIXTURE",
-      "evidence": "Actual SELF activity decoder and pickup controller; synthetic public context/HTTP/journal/place authority. Cross-recipient200 rejection, expired/code guards, explicit owner/recipient mutations/readback, context-loss late-response and private-state cleanup. No real reservation/pickup/backend-role/UI/WS certification."
+      "evidence": "Actual SELF activity decoder, pickup controller and mounted component; synthetic public context/HTTP/journal/place authority. Cross-recipient200 rejection, expired/code guards, explicit owner/recipient mutations/readback, context-loss late-response and private-state/DOM cleanup. No real reservation/pickup/backend-role/product-shell/WS certification."
     },
     {
       "domain": "recipient",
@@ -1577,7 +1577,7 @@
       "operation": "list",
       "status": "PASS",
       "provenance": "SYNTHETIC_FIXTURE",
-      "evidence": "Actual SELF activity decoder and pickup controller; synthetic public context/HTTP/journal/place authority. Cross-recipient200 rejection, expired/code guards, explicit owner/recipient mutations/readback, context-loss late-response and private-state cleanup. No real reservation/pickup/backend-role/UI/WS certification."
+      "evidence": "Actual SELF activity decoder, pickup controller and mounted component; synthetic public context/HTTP/journal/place authority. Cross-recipient200 rejection, expired/code guards, explicit owner/recipient mutations/readback, context-loss late-response and private-state/DOM cleanup. No real reservation/pickup/backend-role/product-shell/WS certification."
     },
     {
       "domain": "recipient",
@@ -1585,7 +1585,7 @@
       "operation": "detail",
       "status": "PASS",
       "provenance": "SYNTHETIC_FIXTURE",
-      "evidence": "Actual SELF activity decoder and pickup controller; synthetic public context/HTTP/journal/place authority. Cross-recipient200 rejection, expired/code guards, explicit owner/recipient mutations/readback, context-loss late-response and private-state cleanup. No real reservation/pickup/backend-role/UI/WS certification."
+      "evidence": "Actual SELF activity decoder, pickup controller and mounted component; synthetic public context/HTTP/journal/place authority. Cross-recipient200 rejection, expired/code guards, explicit owner/recipient mutations/readback, context-loss late-response and private-state/DOM cleanup. No real reservation/pickup/backend-role/product-shell/WS certification."
     },
     {
       "domain": "recipient",
@@ -1593,7 +1593,7 @@
       "operation": "mutation",
       "status": "PASS",
       "provenance": "SYNTHETIC_FIXTURE",
-      "evidence": "Actual SELF activity decoder and pickup controller; synthetic public context/HTTP/journal/place authority. Cross-recipient200 rejection, expired/code guards, explicit owner/recipient mutations/readback, context-loss late-response and private-state cleanup. No real reservation/pickup/backend-role/UI/WS certification."
+      "evidence": "Actual SELF activity decoder, pickup controller and mounted component; synthetic public context/HTTP/journal/place authority. Cross-recipient200 rejection, expired/code guards, explicit owner/recipient mutations/readback, context-loss late-response and private-state/DOM cleanup. No real reservation/pickup/backend-role/product-shell/WS certification."
     },
     {
       "domain": "recipient",
@@ -1601,7 +1601,7 @@
       "operation": "cache",
       "status": "PASS",
       "provenance": "SYNTHETIC_FIXTURE",
-      "evidence": "Actual SELF activity decoder and pickup controller; synthetic public context/HTTP/journal/place authority. Cross-recipient200 rejection, expired/code guards, explicit owner/recipient mutations/readback, context-loss late-response and private-state cleanup. No real reservation/pickup/backend-role/UI/WS certification."
+      "evidence": "Actual SELF activity decoder, pickup controller and mounted component; synthetic public context/HTTP/journal/place authority. Cross-recipient200 rejection, expired/code guards, explicit owner/recipient mutations/readback, context-loss late-response and private-state/DOM cleanup. No real reservation/pickup/backend-role/product-shell/WS certification."
     },
     {
       "domain": "recipient",
@@ -1617,7 +1617,7 @@
       "operation": "list",
       "status": "PASS",
       "provenance": "SYNTHETIC_FIXTURE",
-      "evidence": "Actual SELF activity decoder and pickup controller; synthetic public context/HTTP/journal/place authority. Cross-recipient200 rejection, expired/code guards, explicit owner/recipient mutations/readback, context-loss late-response and private-state cleanup. No real reservation/pickup/backend-role/UI/WS certification."
+      "evidence": "Actual SELF activity decoder, pickup controller and mounted component; synthetic public context/HTTP/journal/place authority. Cross-recipient200 rejection, expired/code guards, explicit owner/recipient mutations/readback, context-loss late-response and private-state/DOM cleanup. No real reservation/pickup/backend-role/product-shell/WS certification."
     },
     {
       "domain": "recipient",
@@ -1625,7 +1625,7 @@
       "operation": "detail",
       "status": "PASS",
       "provenance": "SYNTHETIC_FIXTURE",
-      "evidence": "Actual SELF activity decoder and pickup controller; synthetic public context/HTTP/journal/place authority. Cross-recipient200 rejection, expired/code guards, explicit owner/recipient mutations/readback, context-loss late-response and private-state cleanup. No real reservation/pickup/backend-role/UI/WS certification."
+      "evidence": "Actual SELF activity decoder, pickup controller and mounted component; synthetic public context/HTTP/journal/place authority. Cross-recipient200 rejection, expired/code guards, explicit owner/recipient mutations/readback, context-loss late-response and private-state/DOM cleanup. No real reservation/pickup/backend-role/product-shell/WS certification."
     },
     {
       "domain": "recipient",
@@ -1633,7 +1633,7 @@
       "operation": "mutation",
       "status": "PASS",
       "provenance": "SYNTHETIC_FIXTURE",
-      "evidence": "Actual SELF activity decoder and pickup controller; synthetic public context/HTTP/journal/place authority. Cross-recipient200 rejection, expired/code guards, explicit owner/recipient mutations/readback, context-loss late-response and private-state cleanup. No real reservation/pickup/backend-role/UI/WS certification."
+      "evidence": "Actual SELF activity decoder, pickup controller and mounted component; synthetic public context/HTTP/journal/place authority. Cross-recipient200 rejection, expired/code guards, explicit owner/recipient mutations/readback, context-loss late-response and private-state/DOM cleanup. No real reservation/pickup/backend-role/product-shell/WS certification."
     },
     {
       "domain": "recipient",
@@ -1641,7 +1641,7 @@
       "operation": "cache",
       "status": "PASS",
       "provenance": "SYNTHETIC_FIXTURE",
-      "evidence": "Actual SELF activity decoder and pickup controller; synthetic public context/HTTP/journal/place authority. Cross-recipient200 rejection, expired/code guards, explicit owner/recipient mutations/readback, context-loss late-response and private-state cleanup. No real reservation/pickup/backend-role/UI/WS certification."
+      "evidence": "Actual SELF activity decoder, pickup controller and mounted component; synthetic public context/HTTP/journal/place authority. Cross-recipient200 rejection, expired/code guards, explicit owner/recipient mutations/readback, context-loss late-response and private-state/DOM cleanup. No real reservation/pickup/backend-role/product-shell/WS certification."
     },
     {
       "domain": "recipient",
@@ -1650,6 +1650,284 @@
       "status": "UNSUPPORTED",
       "provenance": "SYNTHETIC_FIXTURE",
       "evidence": "No frozen social privacy/revocation WS message or registered public transport handoff. C05 world revoke is not a social grant event."
+    }
+  ],
+  "mountedUI": [
+    {
+      "domain": "handle",
+      "role": "owner",
+      "qualification": "SYNTHETIC_MOUNTED_COMPONENT_ONLY",
+      "assertions": [
+        "before explicit reveal: no private markers in DOM/attributes/control values",
+        "authorized synthetic private text visible",
+        "after consent revoked: no private markers in DOM/attributes/control values",
+        "after blocked late response: no private markers in DOM/attributes/control values",
+        "final revoked or denied state: no private markers in DOM/attributes/control values"
+      ]
+    },
+    {
+      "domain": "handle",
+      "role": "member",
+      "qualification": "SYNTHETIC_MOUNTED_COMPONENT_ONLY",
+      "assertions": [
+        "before explicit reveal: no private markers in DOM/attributes/control values",
+        "authorized synthetic private text visible",
+        "after consent revoked: no private markers in DOM/attributes/control values",
+        "after blocked late response: no private markers in DOM/attributes/control values",
+        "final revoked or denied state: no private markers in DOM/attributes/control values"
+      ]
+    },
+    {
+      "domain": "handle",
+      "role": "stranger",
+      "qualification": "SYNTHETIC_MOUNTED_COMPONENT_ONLY",
+      "assertions": [
+        "before explicit reveal: no private markers in DOM/attributes/control values",
+        "final revoked or denied state: no private markers in DOM/attributes/control values"
+      ]
+    },
+    {
+      "domain": "handle",
+      "role": "blocked",
+      "qualification": "SYNTHETIC_MOUNTED_COMPONENT_ONLY",
+      "assertions": [
+        "before explicit reveal: no private markers in DOM/attributes/control values",
+        "final revoked or denied state: no private markers in DOM/attributes/control values"
+      ]
+    },
+    {
+      "domain": "handle",
+      "role": "suspended",
+      "qualification": "SYNTHETIC_MOUNTED_COMPONENT_ONLY",
+      "assertions": [
+        "before explicit reveal: no private markers in DOM/attributes/control values",
+        "final revoked or denied state: no private markers in DOM/attributes/control values"
+      ]
+    },
+    {
+      "domain": "handle",
+      "role": "expired",
+      "qualification": "SYNTHETIC_MOUNTED_COMPONENT_ONLY",
+      "assertions": [
+        "before explicit reveal: no private markers in DOM/attributes/control values",
+        "final revoked or denied state: no private markers in DOM/attributes/control values"
+      ]
+    },
+    {
+      "domain": "handle",
+      "role": "admin",
+      "qualification": "SYNTHETIC_MOUNTED_COMPONENT_ONLY",
+      "assertions": [
+        "before explicit reveal: no private markers in DOM/attributes/control values",
+        "final revoked or denied state: no private markers in DOM/attributes/control values"
+      ]
+    },
+    {
+      "domain": "evidence",
+      "role": "owner",
+      "qualification": "SYNTHETIC_MOUNTED_COMPONENT_ONLY",
+      "assertions": [
+        "final decided or denied state: no private markers in DOM/attributes/control values",
+        "final decided or denied state: no image element retained"
+      ]
+    },
+    {
+      "domain": "evidence",
+      "role": "member",
+      "qualification": "SYNTHETIC_MOUNTED_COMPONENT_ONLY",
+      "assertions": [
+        "final decided or denied state: no private markers in DOM/attributes/control values",
+        "final decided or denied state: no image element retained"
+      ]
+    },
+    {
+      "domain": "evidence",
+      "role": "stranger",
+      "qualification": "SYNTHETIC_MOUNTED_COMPONENT_ONLY",
+      "assertions": [
+        "final decided or denied state: no private markers in DOM/attributes/control values",
+        "final decided or denied state: no image element retained"
+      ]
+    },
+    {
+      "domain": "evidence",
+      "role": "blocked",
+      "qualification": "SYNTHETIC_MOUNTED_COMPONENT_ONLY",
+      "assertions": [
+        "final decided or denied state: no private markers in DOM/attributes/control values",
+        "final decided or denied state: no image element retained"
+      ]
+    },
+    {
+      "domain": "evidence",
+      "role": "suspended",
+      "qualification": "SYNTHETIC_MOUNTED_COMPONENT_ONLY",
+      "assertions": [
+        "final decided or denied state: no private markers in DOM/attributes/control values",
+        "final decided or denied state: no image element retained"
+      ]
+    },
+    {
+      "domain": "evidence",
+      "role": "expired",
+      "qualification": "SYNTHETIC_MOUNTED_COMPONENT_ONLY",
+      "assertions": [
+        "final decided or denied state: no private markers in DOM/attributes/control values",
+        "final decided or denied state: no image element retained"
+      ]
+    },
+    {
+      "domain": "evidence",
+      "role": "admin",
+      "qualification": "SYNTHETIC_MOUNTED_COMPONENT_ONLY",
+      "assertions": [
+        "authorized synthetic private text visible",
+        "authorized synthetic Blob URL assigned; image decode not qualified",
+        "after suspension: no private markers in DOM/attributes/control values",
+        "after suspension: no image element retained",
+        "after delayed evidence loses lease: no private markers in DOM/attributes/control values",
+        "after lease loss: no image element retained",
+        "final decided or denied state: no private markers in DOM/attributes/control values",
+        "final decided or denied state: no image element retained"
+      ]
+    },
+    {
+      "domain": "recipient",
+      "role": "blocked",
+      "qualification": "SYNTHETIC_MOUNTED_COMPONENT_ONLY",
+      "assertions": [
+        "foreign recipient or denied/expired authority: no private markers in DOM/attributes/control values",
+        "after block: no private markers in DOM/attributes/control values"
+      ]
+    },
+    {
+      "domain": "recipient",
+      "role": "suspended",
+      "qualification": "SYNTHETIC_MOUNTED_COMPONENT_ONLY",
+      "assertions": [
+        "foreign recipient or denied/expired authority: no private markers in DOM/attributes/control values",
+        "after block: no private markers in DOM/attributes/control values"
+      ]
+    },
+    {
+      "domain": "recipient",
+      "role": "owner",
+      "qualification": "SYNTHETIC_MOUNTED_COMPONENT_ONLY",
+      "assertions": [
+        "owner has no recipient-only guidance: no private markers in DOM/attributes/control values",
+        "after block: no private markers in DOM/attributes/control values"
+      ]
+    },
+    {
+      "domain": "recipient",
+      "role": "stranger",
+      "qualification": "SYNTHETIC_MOUNTED_COMPONENT_ONLY",
+      "assertions": [
+        "foreign recipient or denied/expired authority: no private markers in DOM/attributes/control values",
+        "after block: no private markers in DOM/attributes/control values"
+      ]
+    },
+    {
+      "domain": "recipient",
+      "role": "expired",
+      "qualification": "SYNTHETIC_MOUNTED_COMPONENT_ONLY",
+      "assertions": [
+        "foreign recipient or denied/expired authority: no private markers in DOM/attributes/control values",
+        "after block: no private markers in DOM/attributes/control values"
+      ]
+    },
+    {
+      "domain": "recipient",
+      "role": "admin",
+      "qualification": "SYNTHETIC_MOUNTED_COMPONENT_ONLY",
+      "assertions": [
+        "foreign recipient or denied/expired authority: no private markers in DOM/attributes/control values",
+        "after block: no private markers in DOM/attributes/control values"
+      ]
+    },
+    {
+      "domain": "recipient",
+      "role": "member",
+      "qualification": "SYNTHETIC_MOUNTED_COMPONENT_ONLY",
+      "assertions": [
+        "authorized synthetic private text visible",
+        "after context loss and delayed pickup: no private markers in DOM/attributes/control values",
+        "authorized control output visible",
+        "after block: no private markers in DOM/attributes/control values"
+      ]
+    },
+    {
+      "domain": "beacon",
+      "role": "stranger",
+      "qualification": "SYNTHETIC_MOUNTED_COMPONENT_ONLY",
+      "assertions": [
+        "denied or expired detail: no private markers in DOM/attributes/control values",
+        "after privacy block: no private markers in DOM/attributes/control values",
+        "after privacy block: no image element retained"
+      ]
+    },
+    {
+      "domain": "beacon",
+      "role": "blocked",
+      "qualification": "SYNTHETIC_MOUNTED_COMPONENT_ONLY",
+      "assertions": [
+        "denied or expired detail: no private markers in DOM/attributes/control values",
+        "after privacy block: no private markers in DOM/attributes/control values",
+        "after privacy block: no image element retained"
+      ]
+    },
+    {
+      "domain": "beacon",
+      "role": "suspended",
+      "qualification": "SYNTHETIC_MOUNTED_COMPONENT_ONLY",
+      "assertions": [
+        "denied or expired detail: no private markers in DOM/attributes/control values",
+        "after privacy block: no private markers in DOM/attributes/control values",
+        "after privacy block: no image element retained"
+      ]
+    },
+    {
+      "domain": "beacon",
+      "role": "expired",
+      "qualification": "SYNTHETIC_MOUNTED_COMPONENT_ONLY",
+      "assertions": [
+        "denied or expired detail: no private markers in DOM/attributes/control values",
+        "after privacy block: no private markers in DOM/attributes/control values",
+        "after privacy block: no image element retained"
+      ]
+    },
+    {
+      "domain": "beacon",
+      "role": "admin",
+      "qualification": "SYNTHETIC_MOUNTED_COMPONENT_ONLY",
+      "assertions": [
+        "denied or expired detail: no private markers in DOM/attributes/control values",
+        "after privacy block: no private markers in DOM/attributes/control values",
+        "after privacy block: no image element retained"
+      ]
+    },
+    {
+      "domain": "beacon",
+      "role": "owner",
+      "qualification": "SYNTHETIC_MOUNTED_COMPONENT_ONLY",
+      "assertions": [
+        "authorized synthetic private text visible",
+        "after authority loss and delayed detail: no private markers in DOM/attributes/control values",
+        "after owner revocation: no private markers in DOM/attributes/control values",
+        "after privacy block: no private markers in DOM/attributes/control values",
+        "after privacy block: no image element retained"
+      ]
+    },
+    {
+      "domain": "beacon",
+      "role": "member",
+      "qualification": "SYNTHETIC_MOUNTED_COMPONENT_ONLY",
+      "assertions": [
+        "authorized synthetic private text visible",
+        "after authority loss and delayed detail: no private markers in DOM/attributes/control values",
+        "after privacy block: no private markers in DOM/attributes/control values",
+        "after privacy block: no image element retained"
+      ]
     }
   ],
   "projections": [
@@ -1703,7 +1981,7 @@
   ],
   "browser": "156.0.8078.80",
   "node": "v24.22.2",
-  "candidate": "e251a5af2845b990dce07820fd4971422d5fb80f",
+  "candidate": "ad5e2eb9038fba67c606f89705f1bd64a8d5dc50",
   "command": "NODE frontend/e2e/privacy/run.mjs",
   "exitCode": 0,
   "sourcePins": {
@@ -1729,14 +2007,15 @@
     "contracts/generated/mcr-core.openapi.json": "4ea617a4ccf96c72b2e5db99e64666f676048f5baf215a2a05d540ef3bdde542",
     "contracts/generated/mcr-domain.openapi.json": "79a066b88119e53f6f16876d7e3fe59a18ee956be6ed6d2af7ee1efa187e0feb",
     "contracts/realtime/v1/world.schema.json": "1732e627037fe91533ac6f7fe74e36683ce9b846bfbfc020b3cce298ae84df36",
-    "frontend/e2e/privacy/beacon-fixtures.ts": "fa0f345f0d8f69b511097ab487f945ae8e078c35812a104be8a11882d3559f96",
+    "frontend/e2e/privacy/beacon-fixtures.ts": "d916575937cefd93c7cad7165bbe4f666b771dc966c8dfbe680a0057767775b2",
     "frontend/e2e/privacy/browser.ts": "71acb215ffc792ee2d1828e271d69311f33003a48e24275f45790801e97c6796",
-    "frontend/e2e/privacy/evidence-fixtures.ts": "e280fed40b5c3bba40f357470a9a0cd56d9d71a90bb8d59679a8931c1c20612d",
-    "frontend/e2e/privacy/fixtures.ts": "592ded58f8aec169255ff053b6f2e17f7c62d2d6bc0cc6a989e51277b976cfb8",
+    "frontend/e2e/privacy/evidence-fixtures.ts": "533099e4500f5b3fba0cb027822339c70094e71ceaaf515a32602f9bc0b4fefb",
+    "frontend/e2e/privacy/fixtures.ts": "cd126ffc0c33e48f791d7ce704f94c60c3d754fa761decfbe2da4254c12fd90f",
+    "frontend/e2e/privacy/mounted-ui.ts": "7c3c9f08134b43325ec7c825b0babff11d2ee46bc321bbb3c7c281b9c8dd62d8",
     "frontend/e2e/privacy/oracle.ts": "27c6ed83bc2eeb54c0520abb9e8c4a0099f3c3dbec2ffc9efb4403a83e729344",
-    "frontend/e2e/privacy/recipient-fixtures.ts": "25a163dc100599caaf4d5188368d1045e83f5b850db59bbdfa0d637e55e96cb2",
-    "frontend/e2e/privacy/run.mjs": "c2d4bc6090e2c356b8604a6f1c63d9acb0c0b28b2bd4d1d3000803f710a7dafb",
-    "frontend/e2e/privacy/runtime.mjs": "2d558ddc7877be223f9863b857bf17d02ec37451b237863af6614bdfd86ace41",
+    "frontend/e2e/privacy/recipient-fixtures.ts": "7d4bf076d4ac7999c1eecd3c10a349b0572437554c9f9d7675e13ab93c23e26f",
+    "frontend/e2e/privacy/run.mjs": "a57336d1cd1d69d77126f588cf770d12203541e18537a4de5e7086fc23746dbf",
+    "frontend/e2e/privacy/runtime.mjs": "823fd6159bb9506fa87b2e217668b51e56093a2417df4f0844807dcf666cf383",
     "frontend/package.json": "0f7a05587bcf1af5f4d5d077a0c2d90011adc87e1036a61db9ef3acf37c8b7d3",
     "frontend/pnpm-lock.yaml": "47ca44459819ad0e887d2f4f93394fdf3b1053b8f45edc9ceb0236981feee1f6",
     "frontend/src/app/capabilities.ts": "82de5740e6380edb0b6b9397d8f79afe6b50e83e74b5983d1e79a8954d9fdae4",
@@ -1762,6 +2041,8 @@
     "frontend/src/features/admin/reports/model/contract.ts": "6e5b006e65d8366ed6b9be52e54fc4bf92459357440a8f6ad3c2ece95b9d73e8",
     "frontend/src/features/admin/reports/model/controller.ts": "6eea30d9e0feaf91a20577a2f6d36a19ea1ac8e546824672c749d7c6efc7c65f",
     "frontend/src/features/admin/reports/model/validate.ts": "e77f65a00a7bd194d697503eb3b492e0872fe497add97b638941e95236b33729",
+    "frontend/src/features/admin/reports/ui/ModerationReview.tsx": "a03bc69c25c073140cb8dbe6c8675ebe520d557b1a313ecabd465d33e1239619",
+    "frontend/src/features/admin/reports/ui/moderation.css": "b9b43dd58fa07677b906c894f2c0d5a0fa52e622cd812507a8f0bdff3ef9c4d0",
     "frontend/src/features/auth/__tests__/fixtures/data.ts": "00577a6ebb610df3279996d36a88d512d0c4df838a6c11e7877238b1e079986f",
     "frontend/src/features/auth/model/account-deletion.ts": "803f860024f373d5751769a3de6c0c53174694461a4e230334fea81d09c1c008",
     "frontend/src/features/auth/model/bootstrap.ts": "028fce14336c1e8357ce7e836631e1b05fb937a005b178344f0941b7db8fa87e",
@@ -1776,6 +2057,8 @@
     "frontend/src/features/gift-discovery/model/contract.ts": "2a931610213c57eb1dc439ac224800e0d86fd8f3a67f4804a9c6c8ceead38cba",
     "frontend/src/features/gift-pickup/model/controller.ts": "d25ddec12bf16994ec63d689ea3fb021e04d0b0bae3c5e8a0ca9188d4c7237d3",
     "frontend/src/features/gift-pickup/model/journal.ts": "94b3b854d3413784740fb20f736894fe147cbe1cfc3bf28c0b8c9e139d483264",
+    "frontend/src/features/gift-pickup/ui/GiftPickup.tsx": "496faaea6d6d69d306da452b80e976c6cf95fbca6620334f9c99253017575dd7",
+    "frontend/src/features/gift-pickup/ui/pickup.css": "a8cdf20921d8b4133d1ff300003100c670cc232006a14c1472893ab1c75be791",
     "frontend/src/features/giveaway-authoring/model/contract.ts": "b0211f60a68ce990b0e8aca7b4ed8514640c73797a67c1cf4347e3b81a3f2315",
     "frontend/src/features/media/model/upload-controller.ts": "e187899b6e8c4c22956eb1f1849420265603d80d56699c2a0baff76334f3e571",
     "frontend/src/features/meet-beacon/__tests__/fixtures/harness.ts": "953b18c140c5f3fd09ec7735727c22089400df79a66ab2e4d26ebaff41fd3ca1",
@@ -1783,7 +2066,10 @@
     "frontend/src/features/meet-beacon/model/controller.ts": "d8ee07eb9bd021687bdd8b70825e7c632caa00d30513e09db38ebd028e22f784",
     "frontend/src/features/meet-beacon/model/photo-client.ts": "39158c91d063b0aecfd874080708a67377cf64de66a497aa7231572e4aea1bd5",
     "frontend/src/features/meet-beacon/model/photo-scope.ts": "1b9a658ab09f5eb07a10291b0ea33913d5857bc1d8e6306c69979c2448719417",
+    "frontend/src/features/meet-beacon/ui/MeetingBeacon.tsx": "ccbc170ff1ade8193fc16667a48527241805f920b2b28acef9558c4392bb3871",
+    "frontend/src/features/meet-beacon/ui/meeting-beacon.css": "69358f493b4ad89f7e237d44f73339f216713e5577c1e0a754fab19a8b390db9",
     "frontend/src/features/party-authoring/model/contract.ts": "9aa33a2a259ba38c9356aea32817d8864cf1a6a07fc707e60d4fb7f5e71b11b3",
+    "frontend/src/features/party-authoring/model/time.ts": "28cae1b6670072da03c9640ec7c808b4fbe94a2d49a0e7047f6bc9bf9a5a2b51",
     "frontend/src/features/party-discovery/model/contract.ts": "73d3dd2a7e6a09a7edc22bee5c24358ddfeda1049f4c5c35a7b754474508a3b7",
     "frontend/src/features/places/__tests__/fixtures/data.ts": "f19893c015a971f96e5bc93fa651b84087706ba195d989bd5f37c53e15a79e20",
     "frontend/src/features/places/model/contract.ts": "9a7ef5be91cb3d470347bdde9177b3f69d1dd37ff075ec2a82dd5337b33718ee",
@@ -1792,6 +2078,8 @@
     "frontend/src/features/social-sharing/model/contract.ts": "eba5001637bc1b1cc5fcb98ec764cc5aa1ac4faf171f8fabac519e2f676e5426",
     "frontend/src/features/social-sharing/model/controller.ts": "a798c5f50cf278a998517c552fc678b818c04ba569e3ff53174560677697e18c",
     "frontend/src/features/social-sharing/model/runtime.ts": "999c074719e88f889130fd7726dbccbc969d2cab15c36d0813f1f54001652b53",
+    "frontend/src/features/social-sharing/ui/SocialSharing.tsx": "51b410255fd7a2bc21c34291d7fb091b830bd6b22e44f5016c7dd8415753cfb6",
+    "frontend/src/features/social-sharing/ui/sharing.css": "4213c99408d0feaaf2a8e39b4ad5876bc7fadfc8123bcdd03562f2ab0c47823c",
     "frontend/src/shared/api/domain-operations.generated.ts": "a38ffacb0cc989e62b63f6baecedff113b7ac8f87979dd3773aa2ae26b12ee74",
     "frontend/src/shared/api/domain.ts": "a32887227334720f8d73530ceabc61edcca5f91bde648d81faebe9117d371741",
     "frontend/src/shared/api/errors.ts": "07472139ebdaf6d4325ffaff1111e00f060bb18b16e8957915bb5301194ac0a3",

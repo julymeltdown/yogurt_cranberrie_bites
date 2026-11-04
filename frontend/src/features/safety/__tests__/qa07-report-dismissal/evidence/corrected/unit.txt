@@ -1,0 +1,8 @@
+
+ RUN  v4.1.9 <frontend>
+
+
+ Test Files  17 passed (17)
+      Tests  447 passed (447)
+   Start at  10:45:43
+   Duration  3.08s (transform 5.70s, setup 0ms, import 8.42s, tests 8.28s, environment 3.12s)

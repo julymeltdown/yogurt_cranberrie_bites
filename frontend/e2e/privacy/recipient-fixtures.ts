@@ -1,5 +1,8 @@
 import { createSessionController } from '../../src/features/auth/model/session'
+import { createElement } from 'react'
 import { createGiftPickup } from '../../src/features/gift-pickup/model/controller'
+import { GiftPickup } from '../../src/features/gift-pickup/ui/GiftPickup'
+import { mountPrivateView } from './mounted-ui'
 import { giftActivityDecoder, type Reservation } from '../../src/features/gift-discovery/model/contract'
 import type { GiftContext } from '../../src/features/gift-discovery/model/controller'
 import type { PickupIntent } from '../../src/features/gift-pickup/model/journal'
@@ -43,6 +46,7 @@ export async function recipientCells(role: Role): Promise<Cell[]> {
     journal: { read: () => storedIntent, write: value => { storedIntent = value }, clear: () => { storedIntent = null } },
     placeAuthority: { read: () => ({ scope: auth.privacy.capture(), placeId: gift.public_place_id, placeRevision: 2, mapRevision: 1, expiresAt: epoch + 60000 }), subscribe: () => () => undefined },
   })
+  const view = mountPrivateView('recipient', role, createElement(GiftPickup, { controller }))
   try {
     // SELF collections may be legitimately empty. A stolen recipient row must fail actual context validation.
     const scope = auth.privacy.capture(), path = `/api/concert/events/${eventId}/me/giveaways`
@@ -52,22 +56,29 @@ export async function recipientCells(role: Role): Promise<Cell[]> {
     let rejected = false
     try { giftActivityDecoder(scope, {})({ giving: { items: [], next_cursor: null }, receiving: { items: [{ ...reservation, recipient_id: id(990) }], next_cursor: null } }, { scope, path, status: 200 }) } catch { rejected = true }
     check(rejected, 'SELF recipient collection rejects another canonical recipient')
-    await controller.load(); await controller.loadPickup()
+    await controller.load()
+    // The actual mounted component starts its read in useEffect; join that read if already in flight.
+    await until(() => controller.read().phase !== 'loading')
+    await controller.loadPickup()
     if (role === 'member') {
       check(controller.read().pickup?.meeting.instructions === markers[4], 'authorized recipient guidance visible')
+      view.visible(markers[4])
       delayed = true
       const pending = controller.loadPickup()
       await until(() => pickupReads === 2)
       publish(null)
       late.resolve(Response.json({ reservation, meeting })); await pending
       assertAbsent(controller.read())
+      view.absent('after context loss and delayed pickup')
       check(controller.read().pickup === null && controller.read().reservation === null, 'late pickup cannot restore lost context')
       delayed = false; publish({ scope: auth.privacy.capture(), eventPhase: 'OPEN', capabilities })
       await controller.load(); await controller.loadPickup(); await controller.issueCode()
       check(controller.read().code?.confirmation_code === '654321', 'explicit recipient code issued through canonical mutation/readback')
+      view.text('654321')
     } else if (role === 'owner') {
       check(controller.read().reservation?.recipient_id === reservation.recipient_id, 'own giveaway owner may retain authorized reservation')
       check(controller.read().pickup === null, 'owner does not automatically receive recipient-only pickup details')
+      view.absent('owner has no recipient-only guidance')
       controller.setClaimCode('654321'); await controller.claim()
       check(controller.read().phase === 'succeeded' && controller.read().reservation?.state === 'CLAIMED', 'owner claim verifies current state')
     } else {
@@ -76,11 +87,13 @@ export async function recipientCells(role: Role): Promise<Cell[]> {
       check(controller.read().pickup === null && controller.read().code === null, 'private pickup/code hidden')
       if (role === 'stranger' || role === 'admin') check(controller.read().reservation === null, 'malicious200 foreign reservation rejected')
       assertAbsent(controller.read())
+      view.absent('foreign recipient or denied/expired authority')
     }
     auth.privacy.changePolicy(auth.privacy.capture(), 'block')
     check(controller.read().reservation === null && controller.read().code === null && controller.read().pickup === null && controller.read().confirmationCode === '', 'recipient state and draft code scrubbed')
     assertAbsent(controller.read())
+    view.absent('after block', ['654321']); view.finish()
     return (['list', 'detail', 'mutation', 'cache'] as const).map(operation => ({ role, operation, status: 'PASS', provenance: 'SYNTHETIC_FIXTURE',
-      evidence: 'Actual SELF activity decoder and pickup controller; synthetic public context/HTTP/journal/place authority. Cross-recipient200 rejection, expired/code guards, explicit owner/recipient mutations/readback, context-loss late-response and private-state cleanup. No real reservation/pickup/backend-role/UI/WS certification.' }))
-  } finally { controller.dispose(); auth.dispose() }
+      evidence: 'Actual SELF activity decoder, pickup controller and mounted component; synthetic public context/HTTP/journal/place authority. Cross-recipient200 rejection, expired/code guards, explicit owner/recipient mutations/readback, context-loss late-response and private-state/DOM cleanup. No real reservation/pickup/backend-role/product-shell/WS certification.' }))
+  } finally { view.dispose(); controller.dispose(); auth.dispose() }
 }

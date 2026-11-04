@@ -1,0 +1,16 @@
+{
+  "method": "BUILT_IN_IMAGEGEN_IDENTITY_PRESERVING_RECONSTRUCTION",
+  "sourcePack": "mcr_user_characters_20261103",
+  "revision": 3,
+  "originalIdentityAuthority": "photo_01",
+  "supportingReferences": [
+    "photo_05",
+    "photo_02",
+    "photo_06"
+  ],
+  "prompt": "authored-turnaround-prompt.txt",
+  "output": "authored-turnaround-source-9a40c5d4098296b0.png",
+  "sha256": "9a40c5d4098296b076f57732f57c6e63778999e360cccb49de477f12d6e004e0",
+  "qualification": "Authored new side/rear pixels based on selected originals; NOT supplied views, original pixel provenance or product admission. Exact output SHA re-read in final pins.",
+  "decision": "Current human-scope reconstruction authorization supersedes no-redraw restriction in the initial assignment. No additional method approval remains pending."
+}

@@ -1,0 +1,46 @@
+{
+  "body": {
+    "file": "authored-clean-body-source-da986a83df244072.png",
+    "sha256": "da986a83df2440723b37b224ea7b74de0edfbc4f40bd1c716333199f5581f6d2",
+    "method": "BUILT_IN_IMAGEGEN_SELECTED_BODY_RECONSTRUCTION",
+    "originalSource": "photo_02",
+    "prompt": "authored-body-prompt.txt",
+    "grid": [
+      4,
+      1
+    ]
+  },
+  "hair": {
+    "file": "authored-hair-source-1ecafff63abbb025.png",
+    "sha256": "1ecafff63abbb0252098f6a81fc710aaa8dee78354c1e2fd9223e5a955749fef",
+    "method": "BUILT_IN_IMAGEGEN_SELECTED_COMPONENT_RECONSTRUCTION",
+    "originalSource": "photo_01/photo_04/photo_05",
+    "prompt": "authored-hair-prompt.txt",
+    "grid": [
+      4,
+      6
+    ]
+  },
+  "outfit": {
+    "file": "authored-outfit-source-a106fab178ab0a05.png",
+    "sha256": "a106fab178ab0a05b7d56da3ffb3e3b35dc4d21e3ade53089204926803863dd3",
+    "method": "BUILT_IN_IMAGEGEN_SELECTED_COMPONENT_RECONSTRUCTION",
+    "originalSource": "photo_01/photo_06",
+    "prompt": "authored-outfit-prompt.txt",
+    "grid": [
+      4,
+      6
+    ]
+  },
+  "accessory": {
+    "file": "authored-accessory-source-29ff6bab42ff3829.png",
+    "sha256": "29ff6bab42ff3829119103cd8281799224292668b1b1f317b22c502bc9be818c",
+    "method": "BUILT_IN_IMAGEGEN_SELECTED_ACCESSORY_RECONSTRUCTION",
+    "originalSource": "photo_19",
+    "prompt": "authored-accessory-prompt.txt",
+    "grid": [
+      4,
+      4
+    ]
+  }
+}
