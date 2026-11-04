@@ -1,4 +1,135 @@
-# Community delivery tracker
+# Community and WALL delivery record
+
+<!-- current-lane-record:start -->
+Updated 2026-11-04 (Asia/Seoul) from existing developer handoffs and explicit
+ownership allocations. This is management bookkeeping, not implementation,
+query, visual, test or runtime review. Developers own all qualification, fixes
+and direct non-force publication. No work waits for king/SL technical approval.
+
+## Current original FE33 disposition and active caller assignment
+
+**Original FE33 frontend criteria: SATISFIED in frozen contract/fixture scope**,
+reported by developer `01a1a230-6acc-7e82-9e4b-92506decc745` at published
+`7c2f3af7b9fd7bab2ed2d863cc2262527cc8553e`. Its explicit criterion receipt covers
+release-driven consumer convergence, rejected-placement rollback with confirmed
+revision preserved, and restore/revision/readonly/obsolete-delta handling.
+Documentation: [mural-entry lifecycle](../frontend/mural-entry-lifecycle.md).
+This disposition was sent to Main for the original-task ledger. The module's
+MOCK_READY environment label does not withhold the met frontend criteria.
+No new task ID, automatic IN04 completion or aggregate count is inferred.
+
+Frontend king subsequently reported central ledger reconciliation published at
+`d8b41aecb4fa9aec139d474aef7fb15eeb6f91ea`: 23 original-task outcomes
+(12 acceptance dispositions plus 11 additional SATISFIED), 74 other
+implementation-evidenced tasks, 10 unreconciled tasks and 5 open IN gates.
+Original FE33 was added once from the `7c2f3af7` owner receipt. Its recorded
+MOCK_READY environment coexists with SATISFIED task criteria. This is the
+king-reported bookkeeping baseline, not a new lane review or task promotion;
+caller assembly, actual production and IN04 remain open.
+
+The primary module goal actually completed (819 seconds), followed by
+`get_goal: null`. The caller grant arrived afterward. The developer then created
+a **NEW unbudgeted ACTIVE** caller-assembly goal, creation receipt `1793752991`;
+no false continuation or reset of the completed goal occurred.
+
+| Assignment | Owner / lifecycle | Completed work / publication | Remaining assigned behavior and next action |
+|---|---|---|---|
+| FE33 caller assembly; separate follow-up to met original client criteria | `01a1a230-6acc-7e82-9e4b-92506decc745`; ACTIVE new goal | Original module `7c2f3af7` reported published and clean; caller branch `codex/mcr-fe-FE33-mural-caller-assembly` starts at that exact source | Connect the explicitly supplied lifecycle presentation to the actual WorldPanels caller within the two allocated hunks; developer implements, qualifies, commits and publishes directly, then reports exact remaining production dependency |
+
+Isolated checkout: `/Users/lhs/Desktop/mcr-worktrees/fe-ref-gifts`. The developer
+reported clean startup, no prior writer/WIP collision, and accepted the exact
+lease. The caller goal remains active; no caller-assembly commit/push is yet
+reported in this record.
+
+### Effective exclusive lease: two existing-file hunks
+
+Frontend king recorded the allocation from former root writer
+`01a1a153-1227-7e72-801f-a2a6b91981e1`'s explicit COMPLETE/null/clean-STOP release.
+Developer `01a1a230-6acc-7e82-9e4b-92506decc745` is the sole active writer through
+committed handoff/STOP for ONLY:
+
+- `frontend/src/world/composition/index.ts`: additive lifecycle import/type,
+  optional explicitly supplied qualification-source factory, borrowed
+  `control.muralScene` capture in `attachControls`, early source/lifecycle
+  withdrawal and disposal in `stopResources`, optional presented mural
+  read/subscribe port. Other overview/map/camera/renderer/theme behavior is
+  excluded.
+- `frontend/src/app/world-panels/index.tsx`: mural subscription and provider
+  release binding only. Places/context/era/theme and all other hunks are excluded.
+
+This is **not whole-file ownership**. The final two-file allocation supersedes
+the crossed three-file proposal: `production.ts` remains excluded/reserved.
+Existing runtime/MapScene/resolver/reference-overview/ports/router/main files,
+existing tests and queued v3 adoption remain excluded. New tests, fixtures and
+native evidence stay under `frontend/src/world/mural-entry-lifecycle/**`;
+`docs/mcr/frontend/mural-entry-lifecycle.md` remains the owned lane note.
+No allocation or approval request is pending. Future root/v3 writers must
+coordinate these exact hunks before any ownership change.
+
+### Actual production dependency remains separate
+
+Explicit frozen fixture inputs may exercise real caller assembly. An omitted
+production source must remain honestly closed: no fabricated anchor, writable
+eligibility, availability flag or authority promotion. The actual supplier,
+server-backed eligibility and public mappings/fence are assigned implementation
+interfaces, not a blanket barrier to frozen client work:
+
+| Dependency | Named implementation contact | Last handoff / next action |
+|---|---|---|
+| Wall producer and writable authority increment | `01a1a21e-ab80-7012-b9fa-cdb69eed097b` (BE-WALL-LIVE) | Frozen C04/MuralEntryRelease handoff delivered directly to FE33; actual qualified producer publication is not established by the receipts in this record |
+| Product/Gateway mappings and production entry composition | `01a1a1fc-7f3d-7ff1-9416-e3435c8a6f08` | Supply actual producer/configuration handoff; route existence does not confer availability |
+| Canonical held authority | `01a1a207-f012-7343-a24b-12b9c544973f` | Technical interface and qualification belong to the implementation owners |
+| Actual incumbent World binding | `01a1a20f-8d37-71c3-a429-8a55bb6d6c49` | Resolve genuine connection/binding inputs directly with implementation owners |
+
+Real HTTP/live multiuser IN04, device and full-product acceptance are separate
+open outcomes. The new caller assembly is assigned functioning frontend work,
+not an added condition on the already satisfied original FE33 fixture criteria.
+
+## Other material lane outcomes and ownership boundaries
+
+| Original task / contribution | Owner-reported disposition and source | Remaining behavior / ownership |
+|---|---|---|
+| FE01/C04 optional mural hint correction | Bounded correction accepted; `faeb6ed4939a623627d1e9ac2c5016b986a2efea`; goal COMPLETE then null, clean STOP, former shared lease ended | No optional-hint behavior dependency remains; no new parent-task count. Supports BE34/FE32/FE33 without completing them automatically |
+| FE27 character-port assistance | Tests/documentation only `25af83452e68549e7da533864742642c902fd398`; completed goal | Existing callback was already usable; no new production API or authority. Actual root portrait binding separately published in `9dacd962` |
+| FE32 editor / FE33 earlier presentation | Historical author `01a1a213-61d6-7a20-a8e7-476649312f8c`, archived/preserved; `832c7de9`/`4eb2d252` mapped to `7b567acb`/`fe9cbb2d` | Former author is not an active writer or an approval gate. FE32's whole-task disposition is not newly decided here |
+| FE24–26 GIVEAWAY public/business flow | Source/fixture deliveries preserved; FE25/FE26 existing task-local satisfied dispositions remain in historical records; target fix `9055af1e` | Actual Gift producer increment assigned `01a1a267-37a0-7723-a4e9-a3a6f5b27f52`; no qualified-publication/readiness inference from old internal deliveries |
+| FE27/FE28 actual Feed/content commands | Existing source/fixture and portrait deliveries preserved | Product Feed/media availability last reported false until genuine producers/configuration; Feed write authority not supplied by read-route publication. Product root coordinates implementation owners |
+| FE37–40 operator/moderation/closure/archive; notices/inbox | Required backlog retained, no new completion decision from this record | Exact remaining original behavior and current task dispositions must come from assigned developer receipts, not a new manager audit or disappearing scope |
+| FE20 photo continuation | Staffing/interface coordination transferred to Social SL `01a1a1fe-ca12-7cc3-9a1d-62bbb2689498` | Active FE20 owner `01a1a1fe-1ab7-79b0-adbc-d4c025701acb`; Community FE33 has no photo or generated-output lease |
+
+`frontend/src/shared/api/domain-operations.generated.ts` is now exclusively
+allocated to active FE20 owner `01a1a1fe-1ab7-79b0-adbc-d4c025701acb` using the
+canonical generator/pin; backend/OpenAPI outputs remain with Product root.
+That owner also has the separately recorded purpose-type/import-only hunks in
+`features/event-feed/FeedImage.tsx` and `features/feed-thread/media.ts`, preserving
+POST-only guards. These grants do not overlap the FE33 new module or caller hunks.
+
+Disputed historical Gift authorship is not a staffing barrier: the old
+`eac0b6ae` to `01a1a1fd-6b5d-75b0-8d42-01ade79b9393` association in older records
+was withdrawn after the developer denied it. The retained manifest names a
+worker branch, not a verified chat sender. New Gift staffing above is explicit;
+SELF/Auth scope is unchanged.
+
+## Hourly management protocol
+
+The existing ACTIVE heartbeat **MCR Community and Wall hourly task progress**
+(`mcr-community-and-wall-hourly-task-progress`) targets this chat hourly; no
+second automation was created. Each run accounts for original lane task IDs,
+owner, status, completed behavior, remaining original criteria, named blockers,
+next action and commit/push using chat lifecycle and developer reports only.
+Deduplicate parents; keep helper milestones separate. Forward material changes
+to the coordinating king and remain quiet when unchanged. Preserve the existing
+coordinator goal and model settings; no reset or false completion is authorized.
+All 112 required tasks and 61 IA entries remain in project scope. This record
+makes no replacement aggregate progress count or technical acceptance decision.
+<!-- current-lane-record:end -->
+
+## Historical records retained below
+
+The following earlier snapshots are historical. Their former active owners,
+file grants, review duties, goal states, resource figures and delivery queues do
+not override the current record or the developer-owned-validation policy above.
+
 
 Updated 2026-11-04 KST. Progress coordinator:
 `01a1a1fe-c5f1-7e60-87c2-43785b07f941`; sole write path is this document in

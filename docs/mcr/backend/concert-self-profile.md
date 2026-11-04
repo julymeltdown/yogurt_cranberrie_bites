@@ -53,3 +53,20 @@ multi-store/HTTP flow remain NOT_RUN. No fake guard grants, guessed coordinator
 decisions, or timeout-derived aborts are acceptance evidence. New source files are
 authored for this task; no source-pack files or retained dependency resolutions
 were changed in this checkpoint.
+
+## Published SELF contract prerequisite
+
+The dedicated `backend/proto/profile/v1/concert_self_profile.proto` is published
+independently to unblock actual Concert client generation. The exact contract
+compiled in Profile source `5c921e28872ce3d24f7d930f63fdce9572b66ab3`, with the
+production main and test target exiting 0 under Rust 1.88 locked/offline.
+Its guarded Read endpoint also passed the actual Auth/Friend/Profile production
+mTLS read/Track/native-abort probe. Receipt:
+`/private/tmp/mcr-profile-self-906e69ab-20261104/rpc-report-2.json`.
+The protobuf package is `profile.self.v1`; Prost generates `profile.self_.v1.rs`
+because `self` is a Rust keyword.
+
+This two-path prerequisite contains the IDL and this report only. It does not
+enable the SELF runtime, publish the continuing implementation, or certify
+Prepare/Concert decision/reconcile and HTTP delivery. Those remain IN_PROGRESS
+in the assigned developer chat. The earlier schema prerequisite is `cc97f510`.

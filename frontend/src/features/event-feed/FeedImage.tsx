@@ -6,7 +6,7 @@ export interface MediaPreviewPort {
   read(): {
     readonly phase: 'idle' | 'loading' | 'ready' | 'failed' | 'cancelled'
     readonly scope: SessionScope | null; readonly previewUrl: string | null
-    readonly media: { readonly media_id: string; readonly purpose: 'POST' | 'GIVEAWAY' | 'REPORT'; readonly read_path: string; readonly width: number; readonly height: number } | null
+    readonly media: { readonly media_id: string; readonly purpose: import('../../shared/media/types').MediaPurpose; readonly read_path: string; readonly width: number; readonly height: number } | null
     readonly error: string | null
   }
   subscribe(listener: () => void): () => void

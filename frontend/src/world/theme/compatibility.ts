@@ -13,8 +13,11 @@ export function assertSameWorld(current: LoadedMap, next: LoadedMap) {
     requireMap(current.theme[key] === next.theme[key])
   }
   if (current.theme.scenery && next.theme.scenery) {
-    // Era resources change color/art, not the bound landmark/detail placement or foot ordering.
-    requireMap(canonicalJson(current.theme.scenery.objects) === canonicalJson(next.theme.scenery.objects))
+    // Atlas identifiers and packed source rectangles belong to each era's art.
+    // Preserve ordered landmark identity, destination geometry and foot ordering.
+    const placement = (objects: NonNullable<LoadedMap['theme']['scenery']>['objects']) =>
+      objects.map(({ id, x, y, width, height, depth_y }) => ({ id, x, y, width, height, depth_y }))
+    requireMap(canonicalJson(placement(current.theme.scenery.objects)) === canonicalJson(placement(next.theme.scenery.objects)))
   }
 }
 
