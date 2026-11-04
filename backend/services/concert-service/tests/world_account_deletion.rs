@@ -650,3 +650,95 @@ async fn native_actual_postmaster_restart_replays_durable_receipts() -> Result<(
     auth.close().await;
     Ok(())
 }
+
+#[tokio::test]
+#[ignore = "owned PG16 actual Auth source; preconsumed admission and room-switch races"]
+async fn native_preconsumed_admission_and_switch_obey_first_user_fence() -> Result<()> {
+    let auth = owned_pool("mcr_world_deletion_auth").await?;
+    let pool = owned_pool("mcr_world_deletion_concert").await?;
+    let user = actual_auth_user(&auth).await?;
+    let repo = PgWorldRepository::new(pool.clone());
+    let a = room(&pool).await?;
+    // Use a second room IN THE SAME EVENT for an actual room switch.
+    let mut b = a.clone();
+    b.room_id = RoomId::from_uuid(Uuid::new_v4());
+    sqlx::query("insert into concert_world_rooms(event_id,room_id,label,capacity,map_id,map_revision,avatar_manifest_id,avatar_manifest_version,is_default) values($1,$2,'Second',50,'map_fixture',1,'avatar_manifest',1,false)")
+        .bind(b.event_id.uuid()).bind(b.room_id.uuid()).execute(&pool).await?;
+    let owner = OwnerIdentity::new("be42-component-owner".into(), Uuid::new_v4())?;
+    for pin in [&a, &b] {
+        repo.claim_owner(
+            pin.event_id,
+            pin.room_id,
+            &owner,
+            Utc::now(),
+            Duration::seconds(60),
+        )
+        .await?;
+    }
+    let first = record(a.clone(), user);
+    assert_eq!(repo.issue(first.clone()).await?, IssueOutcome::Issued);
+    let first_claim = match repo.consume(claim(&first)).await? {
+        ConsumeOutcome::Consumed(c) => c,
+        _ => anyhow::bail!("actual first consume missing"),
+    };
+    let initial = match repo.admit(&owner, &first_claim, Utc::now()).await? {
+        AdmissionOutcome::Admitted(a) => a,
+        _ => anyhow::bail!("positive admission missing"),
+    };
+    let second = record(b.clone(), user);
+    assert_eq!(repo.issue(second.clone()).await?, IssueOutcome::Issued);
+    let second_claim = match repo.consume(claim(&second)).await? {
+        ConsumeOutcome::Consumed(c) => c,
+        _ => anyhow::bail!("actual second consume missing"),
+    };
+    let before: serde_json::Value = sqlx::query_scalar(
+        "select to_jsonb(m) from concert_world_memberships m where event_id=$1 and user_id=$2",
+    )
+    .bind(a.event_id.uuid())
+    .bind(user)
+    .fetch_one(&pool)
+    .await?;
+    let command = actual_delete(&auth, user).await?;
+    let authority = AuthRepositoryTestTransport::new(auth.clone());
+    let proof = verify_source(&authority, &command, deadline())
+        .await
+        .map_err(|_| anyhow::anyhow!("canonical source missing"))?;
+    let mut deletion_tx = pool.begin().await?;
+    establish_fence_in(&mut deletion_tx, &command, &proof)
+        .await
+        .map_err(|_| anyhow::anyhow!("permanent fence missing"))?;
+    // Both requests already possess consumed claims. Neither may revive a
+    // membership or switch rooms after the deletion transaction commits.
+    let contender = repo.clone();
+    let o = owner.clone();
+    let c = first_claim.clone();
+    let admit = tokio::spawn(async move { contender.admit(&o, &c, Utc::now()).await });
+    let contender = repo.clone();
+    let o = owner.clone();
+    let current = initial.membership.clone();
+    let switch = tokio::spawn(async move {
+        contender
+            .switch(&o, &current, &second_claim, Utc::now())
+            .await
+    });
+    wait_user_lock(&pool).await?;
+    deletion_tx.commit().await?;
+    assert_eq!(admit.await?, Ok(AdmissionOutcome::Denied));
+    assert_eq!(switch.await?, Ok(SwitchOutcome::Denied));
+    let after: serde_json::Value = sqlx::query_scalar(
+        "select to_jsonb(m) from concert_world_memberships m where event_id=$1 and user_id=$2",
+    )
+    .bind(a.event_id.uuid())
+    .bind(user)
+    .fetch_one(&pool)
+    .await?;
+    assert_eq!(before, after);
+    assert!(TicketDeletion::new(pool.clone(), Arc::new(authority))
+        .apply(command, deadline())
+        .await
+        .is_ok());
+    eprintln!("BE42 preconsumed admission/switch PASS: actual positive admission then concurrent stale-claim denial behind FIRST shared user fence; membership unchanged. Session withdrawal remains Sessions owner's scope.");
+    pool.close().await;
+    auth.close().await;
+    Ok(())
+}
