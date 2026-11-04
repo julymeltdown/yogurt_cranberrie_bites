@@ -12,10 +12,7 @@ use concert_domain::{
 use serde_json::{json, Value};
 use sqlx::{PgPool, Row};
 use std::collections::BTreeMap;
-use std::{
-    sync::{Arc, Mutex, OnceLock, Weak},
-    time::Duration,
-};
+use std::sync::{Arc, Mutex, OnceLock, Weak};
 use tonic::Status;
 mod local;
 mod profile;

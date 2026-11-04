@@ -49,7 +49,7 @@ impl ProfileReader {
             Workload::Profile,
             EDGE.validate()?,
         )?;
-        let client = Client::with_interceptor(
+        let client = proto::concert_public_profile_service_client::ConcertPublicProfileServiceClient::with_interceptor(
             signer.client(channel, Workload::Profile)?,
             ServiceIdentityClientInterceptor::new(Workload::Concert, token)?,
         )
