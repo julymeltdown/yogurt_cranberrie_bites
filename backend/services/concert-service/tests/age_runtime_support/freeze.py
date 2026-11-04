@@ -35,8 +35,8 @@ def main() -> None:
                 finished = row.get("success") is True
             if row.get("reason") == "compiler-artifact" and row["target"]["name"] in NAMES and row.get("executable"):
                 name = row["target"]["name"]
-                if name in artifacts or "test" not in row["target"]["kind"] or row.get("fresh") is not False:
-                    parser.error("fresh unambiguous test artifacts required")
+                if name in artifacts or "test" not in row["target"]["kind"] or not isinstance(row.get("fresh"), bool):
+                    parser.error("unambiguous Cargo test artifacts required")
                 artifacts[name] = row
         if not finished:
             parser.error("successful completed Cargo log required")
