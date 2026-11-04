@@ -1,0 +1,43 @@
+{
+  "task": "CORE-ENROLLMENT-C07-01",
+  "oldCanonical": "2ff0aab865a06a5664d2096ba572c766ac0fba85",
+  "newCanonical": "a0cb4396d2fe5c333e7863aa5bf4c8b88a357ac9",
+  "oldActiveSha256": "4a48efe667fe9b88a12761ad2cf90ee5c3b6b53ed2f1f211dad76daa349f87b5",
+  "newActiveSha256": "5b06537ca67a97611e391cb37017585d81b8c15cf592be5663a2909edd433e5e",
+  "inputDeltas": {
+    "backend/docs/api/mcr-domain.openapi.json": {
+      "old": "27e285bfd1c3c4ac93b272577ab1a023fcc056bc6d99e62c18f9984174ec8bcd",
+      "new": "9ae294507f6c2587c7354bd5014d45e76686a8a1cec3d783dfd79db6b6c49d65"
+    },
+    "contracts/domain/v1/admin.schema.json": {
+      "old": "953e78a482d998e35c9612c30467600adcead3c9e9d4fb6ab7679a2164aef640",
+      "new": "ee24c4bd99ce6057ca55007c5b8fc02aed9370ad4ea6e1eb4b42b393a7c94d4b"
+    },
+    "contracts/domain/v1/operations.json": {
+      "old": "f9ee6dcd0e755b8d11179507fa6e0db16bc09e76970313ea5f46743cf8ee409d",
+      "new": "0b5941eca26241e8be9389aae23f29f6f6147bf36e1c27de1dbf9f092d4e8066"
+    },
+    "contracts/domain/v1/policy.json": {
+      "old": "5f0ab5a6d96a34ef45b26778a41bd39226660b8bc9e2f84140f107c604c639e6",
+      "new": "abce444846b53a716b2d42f8029e2bf8939b78c78b248c0b1d3540797a467c9f"
+    },
+    "contracts/generated/mcr-domain.openapi.json": {
+      "old": "27e285bfd1c3c4ac93b272577ab1a023fcc056bc6d99e62c18f9984174ec8bcd",
+      "new": "9ae294507f6c2587c7354bd5014d45e76686a8a1cec3d783dfd79db6b6c49d65"
+    },
+    "frontend/src/shared/api/domain-operations.generated.ts": {
+      "old": "924ad2d9e8906abe020cb927b256db98cb477d3aa470405fdf2236b71059147d",
+      "new": "424ebe6045fddce3231b299e80236981c278ae12f82775d87e81db6ab7cb2df8"
+    }
+  },
+  "addedOperations": {
+    "getOwnConcertOperationsAccess": [
+      "/api/concert/events/{eventId}/me/operations-access",
+      "get"
+    ]
+  },
+  "removedOperations": [],
+  "changedRouteIdentities": {},
+  "provenance": "Published own-access contract-only inputs; no live transport/provider/consumer claim.",
+  "qualification": "Unchanged full temporary-candidate QA01 PASS before active-pin advance"
+}

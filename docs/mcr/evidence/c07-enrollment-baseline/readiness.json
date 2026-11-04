@@ -1,21 +1,21 @@
 {
   "task": "CORE-ENROLLMENT-C07-01",
   "goalId": "01a1a533-50a8-7fb2-b3ed-96b941b96bbf",
-  "goalStatus": "active",
+  "goalStatus": "blocked",
   "goalCreatedAt": 1793816464,
   "goalBudget": null,
   "originalC07Completion": "PRESERVED_SEPARATE",
-  "sourceBeforeMetadata": "b03f234cdd05df6dbe8b77c83610c3a03f5efd68",
-  "canonical": "2ff0aab865a06a5664d2096ba572c766ac0fba85",
-  "readsetFiles": 336,
-  "readsetSha256": "de1ae4231054bde5634e1d36d990d8816d900f4b81429198976c4d6be7fc1fc4",
+  "sourceBeforeMetadata": "9f36c948421864f4bb6d5ab59d0ca0bc1d4cbabc",
+  "canonical": "a0cb4396d2fe5c333e7863aa5bf4c8b88a357ac9",
+  "readsetFiles": 340,
+  "readsetSha256": "70e516528dd98d81b70c3f15c0a8e4424311226e5f034b765c69b41ec9bd59bc",
   "guardianSha256": "8a1a125834c73e66952390dcef2fbf09655879baae778f78bded743cbb66a23a",
-  "qualifySha256": "bc969fa0ed5340018b205537a66db3b3319dafd0a7144ec7e3f86a2a7cd700b9",
-  "activePinsSha256": "b2fbc46bda9b409891bb22567bcc851d9beeda9436ada15c07e6f276e1c342e8",
-  "activePinCanonical": "267a040ac8d33c312aa87a5a2f22bc418b3895f2",
+  "qualifySha256": "d0d48cd0b9c938122dda887a94a98bd568f5e634f40e3d436bfef23647eaaf15",
+  "activePinsSha256": "4a48efe667fe9b88a12761ad2cf90ee5c3b6b53ed2f1f211dad76daa349f87b5",
+  "activePinCanonical": "2ff0aab865a06a5664d2096ba572c766ac0fba85",
   "carryAllocatedBytes": {
-    "/Users/lhs/Desktop/mcr-worktrees/sl-world": 826691584,
-    "/Users/lhs/Desktop/mcr/.git/worktrees/sl-world": 2105344,
+    "/Users/lhs/Desktop/mcr-worktrees/sl-world": 844763136,
+    "/Users/lhs/Desktop/mcr/.git/worktrees/sl-world": 2195456,
     "/Users/lhs/Desktop/mcr/frontend/node_modules": 438317056,
     "/Users/lhs/Desktop/mcr-tools/contracts-validation-venv": 16502784,
     "retainedNodeBytes": 122564432
@@ -50,5 +50,9 @@
   "keywordInventorySha256": "2b44ae9214e84301b42ba93027869ce6ed2d1167b75f6fedf00cc1323124a22e",
   "schemaEntrypointsInventoried": 3806,
   "unsupportedKeywords": [],
-  "transportMetadataGrant": "frontend/src/shared/api/domain-operations.generated.ts; unchanged generator; only CORE hash comment delta allowed; runtime exports byte-identical"
+  "transportMetadataGrant": "Unchanged generator; exactly additive published OwnAccess registry operation; existing operations/query/error exports preserved",
+  "goalResume": "Aligned assigned continuation authorized; existing goal retained, available goal API cannot set active",
+  "contractUpdate": "own-access",
+  "wholeCarryBytes": 1424342864,
+  "measuredFreeBytes": 13662318592
 }

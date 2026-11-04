@@ -150,3 +150,92 @@ completion and both successful hosted CI recovery runs are preserved; this
 follow-up adds no original-task completion count. Future OwnOperationsAccess
 contract work is outside this frozen input and requires its actual publication
 and a separate coherent input update.
+
+## Canonical delivery and OwnAccess continuation
+
+The normal publisher delivered source
+`154b239826d908a5909f78239a90715feefe604b` at canonical
+`7ba6de456949136c33a068bdeee8bebb8e7822fd`, parent
+`3491e9c77e9747f48b4dfd109f3c107d703c1e86`. The publisher receipt
+confirms exact scoped modes and blobs for all 86 paths and preserved private
+Root state; its relevant cohort is retained in `enrollment-publication.json`.
+This consumes the required delivery receipt for the qualified 147-operation
+cohort. It does not expose OwnAccess.
+
+The same assigned goal now includes the separately published OwnAccess input
+and its necessary coherent generation. The machine-writer grant covers the
+transport metadata leaf under the unchanged generator. The owner-local driver
+adds an explicit OwnAccess mode: exactly one new bodyless GET registry entry,
+unchanged existing operations and unrelated query/error exports, and only the
+two corresponding source-hash comment updates. Existing frozen rounds remain
+immutable. The new cohort waits for actual canonical source publication and
+a fresh finite resource offer; no compute reservation is held while waiting.
+
+## Qualified OwnAccess generated closure
+
+OwnAccess canonical source `a0cb4396d2fe5c333e7863aa5bf4c8b88a357ac9`
+contains exactly three additive contract changes and the backend owner's
+four-case source test. Their source publication receipt is retained in
+`ownaccess-source-publication.json`. The exclusive loan took only those four
+source paths; no earlier generated trees were imported. Its validated frozen
+source is `f38c0bf518cdb5b4a054fdffd6654fa39f2ee149`, with the 340-file
+readset SHA-256
+`70e516528dd98d81b70c3f15c0a8e4424311226e5f034b765c69b41ec9bd59bc`.
+
+The first OwnAccess offer, `CORE-OWNACCESS-C07-SOURCE-20261104T1955Z`,
+was declined before acceptance: after reserving all declared growth,
+9,547,067,392 bytes remained, below the required 9 GiB. No generation or pin
+change occurred, and the direct successor received the turn. That closed
+offer was not reused.
+
+The fresh `CORE-OWNACCESS-C07-SOURCE-20261104T2010Z` cohort accepted at
+20:06:50.323742 UTC and fully released at 20:08:27.671602 UTC on
+2026-11-04. Its original 600-second work and 60-second cleanup clocks were
+preserved. Fresh free space was 18,203,348,992 bytes; subtracting the actual
+1,312,817,152-byte other-work reservation and own 134,217,728-byte bound
+left 16,756,314,112 bytes. The explicitly offered 11 GiB start, 9 GiB reserve
+and 8 GiB live floors were enforced by the pre-child checks and guardian.
+
+| Check | OwnAccess result |
+| --- | --- |
+| Unchanged full temporary-candidate QA01 preflight | PASS, exit 0, before active-pin advance |
+| Ordinary public QA01 | PASS, exit 0; 198 fixtures, 1,705 responses, 148 operations |
+| Public QA01 regressions | PASS, exit 0; all 17 tests and original 12 negative CLI probes retained |
+| Complete C07 harness | PASS, all eight checks; three negative probes fail with the required diagnostics |
+| Strict retained TypeScript compilation | PASS, exit 0 |
+| Generated-client runtime and independent Python differential decisions | PASS, seven tests; every operation/status/media witness exercised |
+| Scoped paths, four canonical source blobs and five protected refs | PASS; source and prior rounds unchanged |
+
+All 1,696 previous response-case identities are preserved, and OwnAccess adds
+nine. The transport generator adds exactly `getOwnConcertOperationsAccess`,
+a bodyless GET at
+`/api/concert/events/{eventId}/me/operations-access`, with the closed
+`OwnOperationsAccessV1` and `OperationsAccessLeaseV1` types. Existing operations
+and query/error exports are unchanged. Both new schemas participate in the
+independent oracle differential checks: 30 response-wrapper cases and 26 lease
+cases. DOMAIN machine mirrors are byte-identical. No generator semantics or
+application implementation were changed for this continuation.
+
+The exact previous active bytes are archived in
+`scripts/mcr/contracts/qa01-coverage/archive/pins-2ff0aab865a06a5664d2096ba572c766ac0fba85.json`
+with SHA-256
+`4a48efe667fe9b88a12761ad2cf90ee5c3b6b53ed2f1f211dad76daa349f87b5`.
+The new audit is
+`scripts/mcr/contracts/qa01-coverage/archive/forward-baseline-a0cb4396d2fe5c333e7863aa5bf4c8b88a357ac9.json`.
+Active-pin SHA-256 is
+`5b06537ca67a97611e391cb37017585d81b8c15cf592be5663a2909edd433e5e`;
+the baseline covers 243 inputs. Historical archives and rounds 01–04 remain
+unchanged.
+
+The guardian observed at most six concurrent processes, 893,353,984 bytes RSS,
+1,434,079,056 bytes whole storage and 9,736,192 bytes total new growth.
+All owned processes drained; private temporary and compile scratch are absent;
+no ports were created. Actual FULL was sent directly to the coordinator and
+Root153, the next assigned SOURCE owner, before documentation or sealing.
+The receipt and full command outputs are in `round05/`.
+
+This qualifies the generated OwnAccess contract/client closure. Endpoint
+implementation, HTTP producer behavior and the real IN04 journey remain
+`NOT_RUN` by this owner. It is no live authorization, role-withdrawal, browser,
+provider, device, production or multiuser acceptance claim. The original C07
+completion and two successful hosted CI recovery runs remain preserved.

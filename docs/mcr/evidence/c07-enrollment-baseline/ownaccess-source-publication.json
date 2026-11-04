@@ -1,0 +1,29 @@
+{
+  "state": "PUBLISHED",
+  "base": "7ba6de456949136c33a068bdeee8bebb8e7822fd",
+  "source": "23b5cbb42467c3ebf3c94a96e0304debb805cf39",
+  "owner_source": "3a089a3b6b98f01d301a69c02020d77519fa3a2b",
+  "tree": "f8b9dbae67cc65b01546954a079f99a6e86c4057",
+  "paths": [
+    "contracts/domain/v1/admin.schema.json",
+    "contracts/domain/v1/operations.json",
+    "contracts/domain/v1/policy.json",
+    "backend/scripts/mcr/operations_public_contract_test.py"
+  ],
+  "private_head_preserved": "23b5cbb42467c3ebf3c94a96e0304debb805cf39",
+  "evidence": "/var/folders/j4/41h_5mjj7j9d8f2j2bzcsngw0000gn/T/mcr-ownaccess-publication-9z8pezrw",
+  "published": "a0cb4396d2fe5c333e7863aa5bf4c8b88a357ac9",
+  "remote": "a0cb4396d2fe5c333e7863aa5bf4c8b88a357ac9",
+  "verified_epoch": 1793821611.56433,
+  "private_root_preserved": true,
+  "qualification": {
+    "source": "23b5cbb42467c3ebf3c94a96e0304debb805cf39",
+    "tests": 4,
+    "exit_code": 0,
+    "result_sha256": "d67166244df5174c7890f9042ff65c1c7dbac7cfbe58853039c39064302ee7ee",
+    "full_sha256": "e0ec6a4befc27aa21ca390a7c10b58e8076f99c27e83d8387e6310714aee8737",
+    "evidence": "/var/folders/j4/41h_5mjj7j9d8f2j2bzcsngw0000gn/T/mcr-root-ownaccess-retry-cumkd66w",
+    "runtime": "NOT_RUN",
+    "generated_transport": "PENDING_C07"
+  }
+}

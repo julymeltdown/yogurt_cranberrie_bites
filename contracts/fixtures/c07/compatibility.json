@@ -201942,6 +201942,318 @@
     {
       "accept": true,
       "schema": {
+        "$ref": "#/components/schemas/Domain_admin_OperationsAccessLeaseV1"
+      },
+      "value": {
+        "actor_id": "00000000-0000-4000-8000-000000000001",
+        "checked_at": "2026-11-03T00:00:00Z",
+        "decision_id": "00000000-0000-4000-8000-000000000001",
+        "event_id": "00000000-0000-4000-8000-000000000001",
+        "expires_at": "2026-11-03T00:00:00Z",
+        "role": "MODERATOR",
+        "role_revision": 1
+      }
+    },
+    {
+      "accept": false,
+      "schema": {
+        "$ref": "#/components/schemas/Domain_admin_OperationsAccessLeaseV1"
+      },
+      "value": null
+    },
+    {
+      "accept": false,
+      "schema": {
+        "$ref": "#/components/schemas/Domain_admin_OperationsAccessLeaseV1"
+      },
+      "value": false
+    },
+    {
+      "accept": false,
+      "schema": {
+        "$ref": "#/components/schemas/Domain_admin_OperationsAccessLeaseV1"
+      },
+      "value": 42
+    },
+    {
+      "accept": false,
+      "schema": {
+        "$ref": "#/components/schemas/Domain_admin_OperationsAccessLeaseV1"
+      },
+      "value": "UNKNOWN_C07"
+    },
+    {
+      "accept": false,
+      "schema": {
+        "$ref": "#/components/schemas/Domain_admin_OperationsAccessLeaseV1"
+      },
+      "value": {}
+    },
+    {
+      "accept": false,
+      "schema": {
+        "$ref": "#/components/schemas/Domain_admin_OperationsAccessLeaseV1"
+      },
+      "value": []
+    },
+    {
+      "accept": false,
+      "schema": {
+        "$ref": "#/components/schemas/Domain_admin_OperationsAccessLeaseV1"
+      },
+      "value": {
+        "__c07_unknown": true,
+        "actor_id": "00000000-0000-4000-8000-000000000001",
+        "checked_at": "2026-11-03T00:00:00Z",
+        "decision_id": "00000000-0000-4000-8000-000000000001",
+        "event_id": "00000000-0000-4000-8000-000000000001",
+        "expires_at": "2026-11-03T00:00:00Z",
+        "role": "MODERATOR",
+        "role_revision": 1
+      }
+    },
+    {
+      "accept": false,
+      "schema": {
+        "$ref": "#/components/schemas/Domain_admin_OperationsAccessLeaseV1"
+      },
+      "value": 9007199254740992
+    },
+    {
+      "accept": false,
+      "schema": {
+        "$ref": "#/components/schemas/Domain_admin_OperationsAccessLeaseV1"
+      },
+      "value": -9007199254740992
+    },
+    {
+      "accept": false,
+      "schema": {
+        "$ref": "#/components/schemas/Domain_admin_OperationsAccessLeaseV1"
+      },
+      "value": 0.5
+    },
+    {
+      "accept": false,
+      "schema": {
+        "$ref": "#/components/schemas/Domain_admin_OperationsAccessLeaseV1"
+      },
+      "value": {
+        "checked_at": "2026-11-03T00:00:00Z",
+        "decision_id": "00000000-0000-4000-8000-000000000001",
+        "event_id": "00000000-0000-4000-8000-000000000001",
+        "expires_at": "2026-11-03T00:00:00Z",
+        "role": "MODERATOR",
+        "role_revision": 1
+      }
+    },
+    {
+      "accept": false,
+      "schema": {
+        "$ref": "#/components/schemas/Domain_admin_OperationsAccessLeaseV1"
+      },
+      "value": {
+        "actor_id": "00000000-0000-4000-8000-000000000001",
+        "checked_at": "2026-11-03T00:00:00Z",
+        "decision_id": "00000000-0000-4000-8000-000000000001",
+        "expires_at": "2026-11-03T00:00:00Z",
+        "role": "MODERATOR",
+        "role_revision": 1
+      }
+    },
+    {
+      "accept": false,
+      "schema": {
+        "$ref": "#/components/schemas/Domain_admin_OperationsAccessLeaseV1"
+      },
+      "value": {
+        "actor_id": "00000000-0000-4000-8000-000000000001",
+        "checked_at": "2026-11-03T00:00:00Z",
+        "decision_id": "00000000-0000-4000-8000-000000000001",
+        "event_id": "00000000-0000-4000-8000-000000000001",
+        "expires_at": "2026-11-03T00:00:00Z",
+        "role_revision": 1
+      }
+    },
+    {
+      "accept": false,
+      "schema": {
+        "$ref": "#/components/schemas/Domain_admin_OperationsAccessLeaseV1"
+      },
+      "value": {
+        "actor_id": "00000000-0000-4000-8000-000000000001",
+        "checked_at": "2026-11-03T00:00:00Z",
+        "decision_id": "00000000-0000-4000-8000-000000000001",
+        "event_id": "00000000-0000-4000-8000-000000000001",
+        "expires_at": "2026-11-03T00:00:00Z",
+        "role": "MODERATOR"
+      }
+    },
+    {
+      "accept": false,
+      "schema": {
+        "$ref": "#/components/schemas/Domain_admin_OperationsAccessLeaseV1"
+      },
+      "value": {
+        "actor_id": "00000000-0000-4000-8000-000000000001",
+        "checked_at": "2026-11-03T00:00:00Z",
+        "event_id": "00000000-0000-4000-8000-000000000001",
+        "expires_at": "2026-11-03T00:00:00Z",
+        "role": "MODERATOR",
+        "role_revision": 1
+      }
+    },
+    {
+      "accept": false,
+      "schema": {
+        "$ref": "#/components/schemas/Domain_admin_OperationsAccessLeaseV1"
+      },
+      "value": {
+        "actor_id": "00000000-0000-4000-8000-000000000001",
+        "decision_id": "00000000-0000-4000-8000-000000000001",
+        "event_id": "00000000-0000-4000-8000-000000000001",
+        "expires_at": "2026-11-03T00:00:00Z",
+        "role": "MODERATOR",
+        "role_revision": 1
+      }
+    },
+    {
+      "accept": false,
+      "schema": {
+        "$ref": "#/components/schemas/Domain_admin_OperationsAccessLeaseV1"
+      },
+      "value": {
+        "actor_id": "00000000-0000-4000-8000-000000000001",
+        "checked_at": "2026-11-03T00:00:00Z",
+        "decision_id": "00000000-0000-4000-8000-000000000001",
+        "event_id": "00000000-0000-4000-8000-000000000001",
+        "role": "MODERATOR",
+        "role_revision": 1
+      }
+    },
+    {
+      "accept": false,
+      "schema": {
+        "$ref": "#/components/schemas/Domain_admin_OperationsAccessLeaseV1"
+      },
+      "value": {
+        "actor_id": "UNKNOWN_C07",
+        "checked_at": "2026-11-03T00:00:00Z",
+        "decision_id": "00000000-0000-4000-8000-000000000001",
+        "event_id": "00000000-0000-4000-8000-000000000001",
+        "expires_at": "2026-11-03T00:00:00Z",
+        "role": "MODERATOR",
+        "role_revision": 1
+      }
+    },
+    {
+      "accept": false,
+      "schema": {
+        "$ref": "#/components/schemas/Domain_admin_OperationsAccessLeaseV1"
+      },
+      "value": {
+        "actor_id": "00000000-0000-4000-8000-000000000001",
+        "checked_at": "2026-11-03T00:00:00Z",
+        "decision_id": "00000000-0000-4000-8000-000000000001",
+        "event_id": "UNKNOWN_C07",
+        "expires_at": "2026-11-03T00:00:00Z",
+        "role": "MODERATOR",
+        "role_revision": 1
+      }
+    },
+    {
+      "accept": false,
+      "schema": {
+        "$ref": "#/components/schemas/Domain_admin_OperationsAccessLeaseV1"
+      },
+      "value": {
+        "actor_id": "00000000-0000-4000-8000-000000000001",
+        "checked_at": "2026-11-03T00:00:00Z",
+        "decision_id": "00000000-0000-4000-8000-000000000001",
+        "event_id": "00000000-0000-4000-8000-000000000001",
+        "expires_at": "2026-11-03T00:00:00Z",
+        "role": "UNKNOWN_C07",
+        "role_revision": 1
+      }
+    },
+    {
+      "accept": false,
+      "schema": {
+        "$ref": "#/components/schemas/Domain_admin_OperationsAccessLeaseV1"
+      },
+      "value": {
+        "actor_id": "00000000-0000-4000-8000-000000000001",
+        "checked_at": "2026-11-03T00:00:00Z",
+        "decision_id": "00000000-0000-4000-8000-000000000001",
+        "event_id": "00000000-0000-4000-8000-000000000001",
+        "expires_at": "2026-11-03T00:00:00Z",
+        "role": "MODERATOR",
+        "role_revision": "UNKNOWN_C07"
+      }
+    },
+    {
+      "accept": false,
+      "schema": {
+        "$ref": "#/components/schemas/Domain_admin_OperationsAccessLeaseV1"
+      },
+      "value": {
+        "actor_id": "00000000-0000-4000-8000-000000000001",
+        "checked_at": "2026-11-03T00:00:00Z",
+        "decision_id": "UNKNOWN_C07",
+        "event_id": "00000000-0000-4000-8000-000000000001",
+        "expires_at": "2026-11-03T00:00:00Z",
+        "role": "MODERATOR",
+        "role_revision": 1
+      }
+    },
+    {
+      "accept": false,
+      "schema": {
+        "$ref": "#/components/schemas/Domain_admin_OperationsAccessLeaseV1"
+      },
+      "value": {
+        "actor_id": "00000000-0000-4000-8000-000000000001",
+        "checked_at": "UNKNOWN_C07",
+        "decision_id": "00000000-0000-4000-8000-000000000001",
+        "event_id": "00000000-0000-4000-8000-000000000001",
+        "expires_at": "2026-11-03T00:00:00Z",
+        "role": "MODERATOR",
+        "role_revision": 1
+      }
+    },
+    {
+      "accept": false,
+      "schema": {
+        "$ref": "#/components/schemas/Domain_admin_OperationsAccessLeaseV1"
+      },
+      "value": {
+        "actor_id": "00000000-0000-4000-8000-000000000001",
+        "checked_at": "2026-11-03T00:00:00Z",
+        "decision_id": "00000000-0000-4000-8000-000000000001",
+        "event_id": "00000000-0000-4000-8000-000000000001",
+        "expires_at": "UNKNOWN_C07",
+        "role": "MODERATOR",
+        "role_revision": 1
+      }
+    },
+    {
+      "accept": false,
+      "schema": {
+        "$ref": "#/components/schemas/Domain_admin_OperationsAccessLeaseV1"
+      },
+      "value": {
+        "actor_id": "00000000-0000-4000-8000-000000000001",
+        "checked_at": "2026-11-03T00:00:00Z",
+        "decision_id": "00000000-0000-4000-8000-000000000001",
+        "event_id": "00000000-0000-4000-8000-000000000001",
+        "expires_at": "2026-11-03T00:00:00Z",
+        "role": "MODERATOR",
+        "role_revision": 9007199254740992
+      }
+    },
+    {
+      "accept": true,
+      "schema": {
         "$ref": "#/components/schemas/Domain_admin_Overview"
       },
       "value": {
@@ -202191,6 +202503,128 @@
         "open_reports": 1,
         "pending_jobs": 9007199254740992,
         "revision": 1
+      }
+    },
+    {
+      "accept": true,
+      "schema": {
+        "$ref": "#/components/schemas/Domain_admin_OwnOperationsAccessV1"
+      },
+      "value": {
+        "access": null,
+        "server_time": "2026-11-03T00:00:00Z"
+      }
+    },
+    {
+      "accept": false,
+      "schema": {
+        "$ref": "#/components/schemas/Domain_admin_OwnOperationsAccessV1"
+      },
+      "value": null
+    },
+    {
+      "accept": false,
+      "schema": {
+        "$ref": "#/components/schemas/Domain_admin_OwnOperationsAccessV1"
+      },
+      "value": false
+    },
+    {
+      "accept": false,
+      "schema": {
+        "$ref": "#/components/schemas/Domain_admin_OwnOperationsAccessV1"
+      },
+      "value": 42
+    },
+    {
+      "accept": false,
+      "schema": {
+        "$ref": "#/components/schemas/Domain_admin_OwnOperationsAccessV1"
+      },
+      "value": "UNKNOWN_C07"
+    },
+    {
+      "accept": false,
+      "schema": {
+        "$ref": "#/components/schemas/Domain_admin_OwnOperationsAccessV1"
+      },
+      "value": {}
+    },
+    {
+      "accept": false,
+      "schema": {
+        "$ref": "#/components/schemas/Domain_admin_OwnOperationsAccessV1"
+      },
+      "value": []
+    },
+    {
+      "accept": false,
+      "schema": {
+        "$ref": "#/components/schemas/Domain_admin_OwnOperationsAccessV1"
+      },
+      "value": {
+        "__c07_unknown": true,
+        "access": null,
+        "server_time": "2026-11-03T00:00:00Z"
+      }
+    },
+    {
+      "accept": false,
+      "schema": {
+        "$ref": "#/components/schemas/Domain_admin_OwnOperationsAccessV1"
+      },
+      "value": 9007199254740992
+    },
+    {
+      "accept": false,
+      "schema": {
+        "$ref": "#/components/schemas/Domain_admin_OwnOperationsAccessV1"
+      },
+      "value": -9007199254740992
+    },
+    {
+      "accept": false,
+      "schema": {
+        "$ref": "#/components/schemas/Domain_admin_OwnOperationsAccessV1"
+      },
+      "value": 0.5
+    },
+    {
+      "accept": false,
+      "schema": {
+        "$ref": "#/components/schemas/Domain_admin_OwnOperationsAccessV1"
+      },
+      "value": {
+        "access": null
+      }
+    },
+    {
+      "accept": false,
+      "schema": {
+        "$ref": "#/components/schemas/Domain_admin_OwnOperationsAccessV1"
+      },
+      "value": {
+        "server_time": "2026-11-03T00:00:00Z"
+      }
+    },
+    {
+      "accept": false,
+      "schema": {
+        "$ref": "#/components/schemas/Domain_admin_OwnOperationsAccessV1"
+      },
+      "value": {
+        "access": null,
+        "server_time": "UNKNOWN_C07"
+      }
+    },
+    {
+      "accept": false,
+      "schema": {
+        "$ref": "#/components/schemas/Domain_admin_OwnOperationsAccessV1"
+      },
+      "value": {
+        "access": "UNKNOWN_C07",
+        "server_time": "2026-11-03T00:00:00Z"
       }
     },
     {
@@ -2431119,6 +2431553,3876 @@
         "reset_required": true,
         "revision": 2,
         "undo_expires_at": "2026-11-05T00:10:00Z"
+      }
+    },
+    {
+      "accept": true,
+      "schema": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/Domain_common_DomainError"
+          },
+          {
+            "properties": {
+              "details": {
+                "properties": {
+                  "reason": {
+                    "enum": [
+                      "INVALID_INPUT"
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        ]
+      },
+      "value": {
+        "code": "GATEWAY_422",
+        "details": {
+          "reason": "INVALID_INPUT"
+        },
+        "message": "The request could not be completed."
+      }
+    },
+    {
+      "accept": false,
+      "schema": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/Domain_common_DomainError"
+          },
+          {
+            "properties": {
+              "details": {
+                "properties": {
+                  "reason": {
+                    "enum": [
+                      "INVALID_INPUT"
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        ]
+      },
+      "value": null
+    },
+    {
+      "accept": false,
+      "schema": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/Domain_common_DomainError"
+          },
+          {
+            "properties": {
+              "details": {
+                "properties": {
+                  "reason": {
+                    "enum": [
+                      "INVALID_INPUT"
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        ]
+      },
+      "value": false
+    },
+    {
+      "accept": false,
+      "schema": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/Domain_common_DomainError"
+          },
+          {
+            "properties": {
+              "details": {
+                "properties": {
+                  "reason": {
+                    "enum": [
+                      "INVALID_INPUT"
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        ]
+      },
+      "value": 42
+    },
+    {
+      "accept": false,
+      "schema": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/Domain_common_DomainError"
+          },
+          {
+            "properties": {
+              "details": {
+                "properties": {
+                  "reason": {
+                    "enum": [
+                      "INVALID_INPUT"
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        ]
+      },
+      "value": "UNKNOWN_C07"
+    },
+    {
+      "accept": false,
+      "schema": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/Domain_common_DomainError"
+          },
+          {
+            "properties": {
+              "details": {
+                "properties": {
+                  "reason": {
+                    "enum": [
+                      "INVALID_INPUT"
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        ]
+      },
+      "value": {}
+    },
+    {
+      "accept": false,
+      "schema": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/Domain_common_DomainError"
+          },
+          {
+            "properties": {
+              "details": {
+                "properties": {
+                  "reason": {
+                    "enum": [
+                      "INVALID_INPUT"
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        ]
+      },
+      "value": []
+    },
+    {
+      "accept": false,
+      "schema": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/Domain_common_DomainError"
+          },
+          {
+            "properties": {
+              "details": {
+                "properties": {
+                  "reason": {
+                    "enum": [
+                      "INVALID_INPUT"
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        ]
+      },
+      "value": {
+        "__c07_unknown": true,
+        "code": "GATEWAY_422",
+        "details": {
+          "reason": "INVALID_INPUT"
+        },
+        "message": "The request could not be completed."
+      }
+    },
+    {
+      "accept": false,
+      "schema": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/Domain_common_DomainError"
+          },
+          {
+            "properties": {
+              "details": {
+                "properties": {
+                  "reason": {
+                    "enum": [
+                      "INVALID_INPUT"
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        ]
+      },
+      "value": 9007199254740992
+    },
+    {
+      "accept": false,
+      "schema": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/Domain_common_DomainError"
+          },
+          {
+            "properties": {
+              "details": {
+                "properties": {
+                  "reason": {
+                    "enum": [
+                      "INVALID_INPUT"
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        ]
+      },
+      "value": -9007199254740992
+    },
+    {
+      "accept": false,
+      "schema": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/Domain_common_DomainError"
+          },
+          {
+            "properties": {
+              "details": {
+                "properties": {
+                  "reason": {
+                    "enum": [
+                      "INVALID_INPUT"
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        ]
+      },
+      "value": 0.5
+    },
+    {
+      "accept": false,
+      "schema": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/Domain_common_DomainError"
+          },
+          {
+            "properties": {
+              "details": {
+                "properties": {
+                  "reason": {
+                    "enum": [
+                      "INVALID_INPUT"
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        ]
+      },
+      "value": {
+        "details": {
+          "reason": "INVALID_INPUT"
+        },
+        "message": "The request could not be completed."
+      }
+    },
+    {
+      "accept": false,
+      "schema": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/Domain_common_DomainError"
+          },
+          {
+            "properties": {
+              "details": {
+                "properties": {
+                  "reason": {
+                    "enum": [
+                      "INVALID_INPUT"
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        ]
+      },
+      "value": {
+        "code": "GATEWAY_422",
+        "details": {
+          "reason": "INVALID_INPUT"
+        }
+      }
+    },
+    {
+      "accept": false,
+      "schema": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/Domain_common_DomainError"
+          },
+          {
+            "properties": {
+              "details": {
+                "properties": {
+                  "reason": {
+                    "enum": [
+                      "INVALID_INPUT"
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        ]
+      },
+      "value": {
+        "code": "GATEWAY_422",
+        "message": "The request could not be completed."
+      }
+    },
+    {
+      "accept": true,
+      "schema": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/Domain_common_DomainError"
+          },
+          {
+            "properties": {
+              "details": {
+                "properties": {
+                  "reason": {
+                    "enum": [
+                      "INVALID_INPUT"
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        ]
+      },
+      "value": {
+        "code": "UNKNOWN_C07",
+        "details": {
+          "reason": "INVALID_INPUT"
+        },
+        "message": "The request could not be completed."
+      }
+    },
+    {
+      "accept": true,
+      "schema": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/Domain_common_DomainError"
+          },
+          {
+            "properties": {
+              "details": {
+                "properties": {
+                  "reason": {
+                    "enum": [
+                      "INVALID_INPUT"
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        ]
+      },
+      "value": {
+        "code": "GATEWAY_422",
+        "details": {
+          "reason": "INVALID_INPUT"
+        },
+        "message": "UNKNOWN_C07"
+      }
+    },
+    {
+      "accept": false,
+      "schema": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/Domain_common_DomainError"
+          },
+          {
+            "properties": {
+              "details": {
+                "properties": {
+                  "reason": {
+                    "enum": [
+                      "INVALID_INPUT"
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        ]
+      },
+      "value": {
+        "code": "GATEWAY_422",
+        "details": "UNKNOWN_C07",
+        "message": "The request could not be completed."
+      }
+    },
+    {
+      "accept": true,
+      "schema": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/Domain_common_DomainError"
+          },
+          {
+            "properties": {
+              "details": {
+                "properties": {
+                  "reason": {
+                    "enum": [
+                      "AUTHENTICATION_REQUIRED"
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        ]
+      },
+      "value": {
+        "code": "401",
+        "details": {
+          "reason": "AUTHENTICATION_REQUIRED"
+        },
+        "message": "Request could not be completed."
+      }
+    },
+    {
+      "accept": false,
+      "schema": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/Domain_common_DomainError"
+          },
+          {
+            "properties": {
+              "details": {
+                "properties": {
+                  "reason": {
+                    "enum": [
+                      "AUTHENTICATION_REQUIRED"
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        ]
+      },
+      "value": null
+    },
+    {
+      "accept": false,
+      "schema": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/Domain_common_DomainError"
+          },
+          {
+            "properties": {
+              "details": {
+                "properties": {
+                  "reason": {
+                    "enum": [
+                      "AUTHENTICATION_REQUIRED"
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        ]
+      },
+      "value": false
+    },
+    {
+      "accept": false,
+      "schema": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/Domain_common_DomainError"
+          },
+          {
+            "properties": {
+              "details": {
+                "properties": {
+                  "reason": {
+                    "enum": [
+                      "AUTHENTICATION_REQUIRED"
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        ]
+      },
+      "value": 42
+    },
+    {
+      "accept": false,
+      "schema": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/Domain_common_DomainError"
+          },
+          {
+            "properties": {
+              "details": {
+                "properties": {
+                  "reason": {
+                    "enum": [
+                      "AUTHENTICATION_REQUIRED"
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        ]
+      },
+      "value": "UNKNOWN_C07"
+    },
+    {
+      "accept": false,
+      "schema": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/Domain_common_DomainError"
+          },
+          {
+            "properties": {
+              "details": {
+                "properties": {
+                  "reason": {
+                    "enum": [
+                      "AUTHENTICATION_REQUIRED"
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        ]
+      },
+      "value": {}
+    },
+    {
+      "accept": false,
+      "schema": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/Domain_common_DomainError"
+          },
+          {
+            "properties": {
+              "details": {
+                "properties": {
+                  "reason": {
+                    "enum": [
+                      "AUTHENTICATION_REQUIRED"
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        ]
+      },
+      "value": []
+    },
+    {
+      "accept": false,
+      "schema": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/Domain_common_DomainError"
+          },
+          {
+            "properties": {
+              "details": {
+                "properties": {
+                  "reason": {
+                    "enum": [
+                      "AUTHENTICATION_REQUIRED"
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        ]
+      },
+      "value": {
+        "__c07_unknown": true,
+        "code": "401",
+        "details": {
+          "reason": "AUTHENTICATION_REQUIRED"
+        },
+        "message": "Request could not be completed."
+      }
+    },
+    {
+      "accept": false,
+      "schema": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/Domain_common_DomainError"
+          },
+          {
+            "properties": {
+              "details": {
+                "properties": {
+                  "reason": {
+                    "enum": [
+                      "AUTHENTICATION_REQUIRED"
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        ]
+      },
+      "value": 9007199254740992
+    },
+    {
+      "accept": false,
+      "schema": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/Domain_common_DomainError"
+          },
+          {
+            "properties": {
+              "details": {
+                "properties": {
+                  "reason": {
+                    "enum": [
+                      "AUTHENTICATION_REQUIRED"
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        ]
+      },
+      "value": -9007199254740992
+    },
+    {
+      "accept": false,
+      "schema": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/Domain_common_DomainError"
+          },
+          {
+            "properties": {
+              "details": {
+                "properties": {
+                  "reason": {
+                    "enum": [
+                      "AUTHENTICATION_REQUIRED"
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        ]
+      },
+      "value": 0.5
+    },
+    {
+      "accept": false,
+      "schema": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/Domain_common_DomainError"
+          },
+          {
+            "properties": {
+              "details": {
+                "properties": {
+                  "reason": {
+                    "enum": [
+                      "AUTHENTICATION_REQUIRED"
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        ]
+      },
+      "value": {
+        "details": {
+          "reason": "AUTHENTICATION_REQUIRED"
+        },
+        "message": "Request could not be completed."
+      }
+    },
+    {
+      "accept": false,
+      "schema": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/Domain_common_DomainError"
+          },
+          {
+            "properties": {
+              "details": {
+                "properties": {
+                  "reason": {
+                    "enum": [
+                      "AUTHENTICATION_REQUIRED"
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        ]
+      },
+      "value": {
+        "code": "401",
+        "details": {
+          "reason": "AUTHENTICATION_REQUIRED"
+        }
+      }
+    },
+    {
+      "accept": false,
+      "schema": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/Domain_common_DomainError"
+          },
+          {
+            "properties": {
+              "details": {
+                "properties": {
+                  "reason": {
+                    "enum": [
+                      "AUTHENTICATION_REQUIRED"
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        ]
+      },
+      "value": {
+        "code": "401",
+        "message": "Request could not be completed."
+      }
+    },
+    {
+      "accept": true,
+      "schema": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/Domain_common_DomainError"
+          },
+          {
+            "properties": {
+              "details": {
+                "properties": {
+                  "reason": {
+                    "enum": [
+                      "AUTHENTICATION_REQUIRED"
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        ]
+      },
+      "value": {
+        "code": "UNKNOWN_C07",
+        "details": {
+          "reason": "AUTHENTICATION_REQUIRED"
+        },
+        "message": "Request could not be completed."
+      }
+    },
+    {
+      "accept": true,
+      "schema": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/Domain_common_DomainError"
+          },
+          {
+            "properties": {
+              "details": {
+                "properties": {
+                  "reason": {
+                    "enum": [
+                      "AUTHENTICATION_REQUIRED"
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        ]
+      },
+      "value": {
+        "code": "401",
+        "details": {
+          "reason": "AUTHENTICATION_REQUIRED"
+        },
+        "message": "UNKNOWN_C07"
+      }
+    },
+    {
+      "accept": false,
+      "schema": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/Domain_common_DomainError"
+          },
+          {
+            "properties": {
+              "details": {
+                "properties": {
+                  "reason": {
+                    "enum": [
+                      "AUTHENTICATION_REQUIRED"
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        ]
+      },
+      "value": {
+        "code": "401",
+        "details": "UNKNOWN_C07",
+        "message": "Request could not be completed."
+      }
+    },
+    {
+      "accept": true,
+      "schema": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/Domain_common_DomainError"
+          },
+          {
+            "properties": {
+              "details": {
+                "properties": {
+                  "reason": {
+                    "enum": [
+                      "PERMISSION_DENIED"
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        ]
+      },
+      "value": {
+        "code": "403",
+        "details": {
+          "reason": "PERMISSION_DENIED"
+        },
+        "message": "Request could not be completed."
+      }
+    },
+    {
+      "accept": false,
+      "schema": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/Domain_common_DomainError"
+          },
+          {
+            "properties": {
+              "details": {
+                "properties": {
+                  "reason": {
+                    "enum": [
+                      "PERMISSION_DENIED"
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        ]
+      },
+      "value": null
+    },
+    {
+      "accept": false,
+      "schema": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/Domain_common_DomainError"
+          },
+          {
+            "properties": {
+              "details": {
+                "properties": {
+                  "reason": {
+                    "enum": [
+                      "PERMISSION_DENIED"
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        ]
+      },
+      "value": false
+    },
+    {
+      "accept": false,
+      "schema": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/Domain_common_DomainError"
+          },
+          {
+            "properties": {
+              "details": {
+                "properties": {
+                  "reason": {
+                    "enum": [
+                      "PERMISSION_DENIED"
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        ]
+      },
+      "value": 42
+    },
+    {
+      "accept": false,
+      "schema": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/Domain_common_DomainError"
+          },
+          {
+            "properties": {
+              "details": {
+                "properties": {
+                  "reason": {
+                    "enum": [
+                      "PERMISSION_DENIED"
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        ]
+      },
+      "value": "UNKNOWN_C07"
+    },
+    {
+      "accept": false,
+      "schema": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/Domain_common_DomainError"
+          },
+          {
+            "properties": {
+              "details": {
+                "properties": {
+                  "reason": {
+                    "enum": [
+                      "PERMISSION_DENIED"
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        ]
+      },
+      "value": {}
+    },
+    {
+      "accept": false,
+      "schema": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/Domain_common_DomainError"
+          },
+          {
+            "properties": {
+              "details": {
+                "properties": {
+                  "reason": {
+                    "enum": [
+                      "PERMISSION_DENIED"
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        ]
+      },
+      "value": []
+    },
+    {
+      "accept": false,
+      "schema": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/Domain_common_DomainError"
+          },
+          {
+            "properties": {
+              "details": {
+                "properties": {
+                  "reason": {
+                    "enum": [
+                      "PERMISSION_DENIED"
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        ]
+      },
+      "value": {
+        "__c07_unknown": true,
+        "code": "403",
+        "details": {
+          "reason": "PERMISSION_DENIED"
+        },
+        "message": "Request could not be completed."
+      }
+    },
+    {
+      "accept": false,
+      "schema": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/Domain_common_DomainError"
+          },
+          {
+            "properties": {
+              "details": {
+                "properties": {
+                  "reason": {
+                    "enum": [
+                      "PERMISSION_DENIED"
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        ]
+      },
+      "value": 9007199254740992
+    },
+    {
+      "accept": false,
+      "schema": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/Domain_common_DomainError"
+          },
+          {
+            "properties": {
+              "details": {
+                "properties": {
+                  "reason": {
+                    "enum": [
+                      "PERMISSION_DENIED"
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        ]
+      },
+      "value": -9007199254740992
+    },
+    {
+      "accept": false,
+      "schema": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/Domain_common_DomainError"
+          },
+          {
+            "properties": {
+              "details": {
+                "properties": {
+                  "reason": {
+                    "enum": [
+                      "PERMISSION_DENIED"
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        ]
+      },
+      "value": 0.5
+    },
+    {
+      "accept": false,
+      "schema": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/Domain_common_DomainError"
+          },
+          {
+            "properties": {
+              "details": {
+                "properties": {
+                  "reason": {
+                    "enum": [
+                      "PERMISSION_DENIED"
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        ]
+      },
+      "value": {
+        "details": {
+          "reason": "PERMISSION_DENIED"
+        },
+        "message": "Request could not be completed."
+      }
+    },
+    {
+      "accept": false,
+      "schema": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/Domain_common_DomainError"
+          },
+          {
+            "properties": {
+              "details": {
+                "properties": {
+                  "reason": {
+                    "enum": [
+                      "PERMISSION_DENIED"
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        ]
+      },
+      "value": {
+        "code": "403",
+        "details": {
+          "reason": "PERMISSION_DENIED"
+        }
+      }
+    },
+    {
+      "accept": false,
+      "schema": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/Domain_common_DomainError"
+          },
+          {
+            "properties": {
+              "details": {
+                "properties": {
+                  "reason": {
+                    "enum": [
+                      "PERMISSION_DENIED"
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        ]
+      },
+      "value": {
+        "code": "403",
+        "message": "Request could not be completed."
+      }
+    },
+    {
+      "accept": true,
+      "schema": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/Domain_common_DomainError"
+          },
+          {
+            "properties": {
+              "details": {
+                "properties": {
+                  "reason": {
+                    "enum": [
+                      "PERMISSION_DENIED"
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        ]
+      },
+      "value": {
+        "code": "UNKNOWN_C07",
+        "details": {
+          "reason": "PERMISSION_DENIED"
+        },
+        "message": "Request could not be completed."
+      }
+    },
+    {
+      "accept": true,
+      "schema": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/Domain_common_DomainError"
+          },
+          {
+            "properties": {
+              "details": {
+                "properties": {
+                  "reason": {
+                    "enum": [
+                      "PERMISSION_DENIED"
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        ]
+      },
+      "value": {
+        "code": "403",
+        "details": {
+          "reason": "PERMISSION_DENIED"
+        },
+        "message": "UNKNOWN_C07"
+      }
+    },
+    {
+      "accept": false,
+      "schema": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/Domain_common_DomainError"
+          },
+          {
+            "properties": {
+              "details": {
+                "properties": {
+                  "reason": {
+                    "enum": [
+                      "PERMISSION_DENIED"
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        ]
+      },
+      "value": {
+        "code": "403",
+        "details": "UNKNOWN_C07",
+        "message": "Request could not be completed."
+      }
+    },
+    {
+      "accept": true,
+      "schema": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/Domain_common_DomainError"
+          },
+          {
+            "properties": {
+              "details": {
+                "properties": {
+                  "reason": {
+                    "enum": [
+                      "RESOURCE_UNAVAILABLE"
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        ]
+      },
+      "value": {
+        "code": "GATEWAY_404",
+        "details": {
+          "reason": "RESOURCE_UNAVAILABLE"
+        },
+        "message": "The requested action is unavailable.",
+        "timestamp": "2026-11-03T00:00:00Z",
+        "traceId": "fixture-correlation-123"
+      }
+    },
+    {
+      "accept": false,
+      "schema": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/Domain_common_DomainError"
+          },
+          {
+            "properties": {
+              "details": {
+                "properties": {
+                  "reason": {
+                    "enum": [
+                      "RESOURCE_UNAVAILABLE"
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        ]
+      },
+      "value": null
+    },
+    {
+      "accept": false,
+      "schema": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/Domain_common_DomainError"
+          },
+          {
+            "properties": {
+              "details": {
+                "properties": {
+                  "reason": {
+                    "enum": [
+                      "RESOURCE_UNAVAILABLE"
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        ]
+      },
+      "value": false
+    },
+    {
+      "accept": false,
+      "schema": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/Domain_common_DomainError"
+          },
+          {
+            "properties": {
+              "details": {
+                "properties": {
+                  "reason": {
+                    "enum": [
+                      "RESOURCE_UNAVAILABLE"
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        ]
+      },
+      "value": 42
+    },
+    {
+      "accept": false,
+      "schema": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/Domain_common_DomainError"
+          },
+          {
+            "properties": {
+              "details": {
+                "properties": {
+                  "reason": {
+                    "enum": [
+                      "RESOURCE_UNAVAILABLE"
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        ]
+      },
+      "value": "UNKNOWN_C07"
+    },
+    {
+      "accept": false,
+      "schema": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/Domain_common_DomainError"
+          },
+          {
+            "properties": {
+              "details": {
+                "properties": {
+                  "reason": {
+                    "enum": [
+                      "RESOURCE_UNAVAILABLE"
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        ]
+      },
+      "value": {}
+    },
+    {
+      "accept": false,
+      "schema": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/Domain_common_DomainError"
+          },
+          {
+            "properties": {
+              "details": {
+                "properties": {
+                  "reason": {
+                    "enum": [
+                      "RESOURCE_UNAVAILABLE"
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        ]
+      },
+      "value": []
+    },
+    {
+      "accept": false,
+      "schema": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/Domain_common_DomainError"
+          },
+          {
+            "properties": {
+              "details": {
+                "properties": {
+                  "reason": {
+                    "enum": [
+                      "RESOURCE_UNAVAILABLE"
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        ]
+      },
+      "value": {
+        "__c07_unknown": true,
+        "code": "GATEWAY_404",
+        "details": {
+          "reason": "RESOURCE_UNAVAILABLE"
+        },
+        "message": "The requested action is unavailable.",
+        "timestamp": "2026-11-03T00:00:00Z",
+        "traceId": "fixture-correlation-123"
+      }
+    },
+    {
+      "accept": false,
+      "schema": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/Domain_common_DomainError"
+          },
+          {
+            "properties": {
+              "details": {
+                "properties": {
+                  "reason": {
+                    "enum": [
+                      "RESOURCE_UNAVAILABLE"
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        ]
+      },
+      "value": 9007199254740992
+    },
+    {
+      "accept": false,
+      "schema": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/Domain_common_DomainError"
+          },
+          {
+            "properties": {
+              "details": {
+                "properties": {
+                  "reason": {
+                    "enum": [
+                      "RESOURCE_UNAVAILABLE"
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        ]
+      },
+      "value": -9007199254740992
+    },
+    {
+      "accept": false,
+      "schema": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/Domain_common_DomainError"
+          },
+          {
+            "properties": {
+              "details": {
+                "properties": {
+                  "reason": {
+                    "enum": [
+                      "RESOURCE_UNAVAILABLE"
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        ]
+      },
+      "value": 0.5
+    },
+    {
+      "accept": false,
+      "schema": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/Domain_common_DomainError"
+          },
+          {
+            "properties": {
+              "details": {
+                "properties": {
+                  "reason": {
+                    "enum": [
+                      "RESOURCE_UNAVAILABLE"
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        ]
+      },
+      "value": {
+        "details": {
+          "reason": "RESOURCE_UNAVAILABLE"
+        },
+        "message": "The requested action is unavailable.",
+        "timestamp": "2026-11-03T00:00:00Z",
+        "traceId": "fixture-correlation-123"
+      }
+    },
+    {
+      "accept": false,
+      "schema": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/Domain_common_DomainError"
+          },
+          {
+            "properties": {
+              "details": {
+                "properties": {
+                  "reason": {
+                    "enum": [
+                      "RESOURCE_UNAVAILABLE"
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        ]
+      },
+      "value": {
+        "code": "GATEWAY_404",
+        "details": {
+          "reason": "RESOURCE_UNAVAILABLE"
+        },
+        "timestamp": "2026-11-03T00:00:00Z",
+        "traceId": "fixture-correlation-123"
+      }
+    },
+    {
+      "accept": true,
+      "schema": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/Domain_common_DomainError"
+          },
+          {
+            "properties": {
+              "details": {
+                "properties": {
+                  "reason": {
+                    "enum": [
+                      "RESOURCE_UNAVAILABLE"
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        ]
+      },
+      "value": {
+        "code": "GATEWAY_404",
+        "details": {
+          "reason": "RESOURCE_UNAVAILABLE"
+        },
+        "message": "The requested action is unavailable.",
+        "timestamp": "2026-11-03T00:00:00Z"
+      }
+    },
+    {
+      "accept": true,
+      "schema": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/Domain_common_DomainError"
+          },
+          {
+            "properties": {
+              "details": {
+                "properties": {
+                  "reason": {
+                    "enum": [
+                      "RESOURCE_UNAVAILABLE"
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        ]
+      },
+      "value": {
+        "code": "GATEWAY_404",
+        "details": {
+          "reason": "RESOURCE_UNAVAILABLE"
+        },
+        "message": "The requested action is unavailable.",
+        "traceId": "fixture-correlation-123"
+      }
+    },
+    {
+      "accept": false,
+      "schema": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/Domain_common_DomainError"
+          },
+          {
+            "properties": {
+              "details": {
+                "properties": {
+                  "reason": {
+                    "enum": [
+                      "RESOURCE_UNAVAILABLE"
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        ]
+      },
+      "value": {
+        "code": "GATEWAY_404",
+        "message": "The requested action is unavailable.",
+        "timestamp": "2026-11-03T00:00:00Z",
+        "traceId": "fixture-correlation-123"
+      }
+    },
+    {
+      "accept": true,
+      "schema": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/Domain_common_DomainError"
+          },
+          {
+            "properties": {
+              "details": {
+                "properties": {
+                  "reason": {
+                    "enum": [
+                      "RESOURCE_UNAVAILABLE"
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        ]
+      },
+      "value": {
+        "code": "UNKNOWN_C07",
+        "details": {
+          "reason": "RESOURCE_UNAVAILABLE"
+        },
+        "message": "The requested action is unavailable.",
+        "timestamp": "2026-11-03T00:00:00Z",
+        "traceId": "fixture-correlation-123"
+      }
+    },
+    {
+      "accept": true,
+      "schema": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/Domain_common_DomainError"
+          },
+          {
+            "properties": {
+              "details": {
+                "properties": {
+                  "reason": {
+                    "enum": [
+                      "RESOURCE_UNAVAILABLE"
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        ]
+      },
+      "value": {
+        "code": "GATEWAY_404",
+        "details": {
+          "reason": "RESOURCE_UNAVAILABLE"
+        },
+        "message": "UNKNOWN_C07",
+        "timestamp": "2026-11-03T00:00:00Z",
+        "traceId": "fixture-correlation-123"
+      }
+    },
+    {
+      "accept": true,
+      "schema": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/Domain_common_DomainError"
+          },
+          {
+            "properties": {
+              "details": {
+                "properties": {
+                  "reason": {
+                    "enum": [
+                      "RESOURCE_UNAVAILABLE"
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        ]
+      },
+      "value": {
+        "code": "GATEWAY_404",
+        "details": {
+          "reason": "RESOURCE_UNAVAILABLE"
+        },
+        "message": "The requested action is unavailable.",
+        "timestamp": "2026-11-03T00:00:00Z",
+        "traceId": "UNKNOWN_C07"
+      }
+    },
+    {
+      "accept": false,
+      "schema": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/Domain_common_DomainError"
+          },
+          {
+            "properties": {
+              "details": {
+                "properties": {
+                  "reason": {
+                    "enum": [
+                      "RESOURCE_UNAVAILABLE"
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        ]
+      },
+      "value": {
+        "code": "GATEWAY_404",
+        "details": {
+          "reason": "RESOURCE_UNAVAILABLE"
+        },
+        "message": "The requested action is unavailable.",
+        "timestamp": "UNKNOWN_C07",
+        "traceId": "fixture-correlation-123"
+      }
+    },
+    {
+      "accept": false,
+      "schema": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/Domain_common_DomainError"
+          },
+          {
+            "properties": {
+              "details": {
+                "properties": {
+                  "reason": {
+                    "enum": [
+                      "RESOURCE_UNAVAILABLE"
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        ]
+      },
+      "value": {
+        "code": "GATEWAY_404",
+        "details": "UNKNOWN_C07",
+        "message": "The requested action is unavailable.",
+        "timestamp": "2026-11-03T00:00:00Z",
+        "traceId": "fixture-correlation-123"
+      }
+    },
+    {
+      "accept": true,
+      "schema": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/Domain_common_DomainError"
+          },
+          {
+            "properties": {
+              "details": {
+                "properties": {
+                  "reason": {
+                    "enum": [
+                      "RATE_LIMITED"
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        ]
+      },
+      "value": {
+        "code": "429",
+        "details": {
+          "reason": "RATE_LIMITED",
+          "retry_after_ms": 1000
+        },
+        "message": "Request could not be completed."
+      }
+    },
+    {
+      "accept": false,
+      "schema": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/Domain_common_DomainError"
+          },
+          {
+            "properties": {
+              "details": {
+                "properties": {
+                  "reason": {
+                    "enum": [
+                      "RATE_LIMITED"
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        ]
+      },
+      "value": null
+    },
+    {
+      "accept": false,
+      "schema": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/Domain_common_DomainError"
+          },
+          {
+            "properties": {
+              "details": {
+                "properties": {
+                  "reason": {
+                    "enum": [
+                      "RATE_LIMITED"
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        ]
+      },
+      "value": false
+    },
+    {
+      "accept": false,
+      "schema": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/Domain_common_DomainError"
+          },
+          {
+            "properties": {
+              "details": {
+                "properties": {
+                  "reason": {
+                    "enum": [
+                      "RATE_LIMITED"
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        ]
+      },
+      "value": 42
+    },
+    {
+      "accept": false,
+      "schema": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/Domain_common_DomainError"
+          },
+          {
+            "properties": {
+              "details": {
+                "properties": {
+                  "reason": {
+                    "enum": [
+                      "RATE_LIMITED"
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        ]
+      },
+      "value": "UNKNOWN_C07"
+    },
+    {
+      "accept": false,
+      "schema": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/Domain_common_DomainError"
+          },
+          {
+            "properties": {
+              "details": {
+                "properties": {
+                  "reason": {
+                    "enum": [
+                      "RATE_LIMITED"
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        ]
+      },
+      "value": {}
+    },
+    {
+      "accept": false,
+      "schema": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/Domain_common_DomainError"
+          },
+          {
+            "properties": {
+              "details": {
+                "properties": {
+                  "reason": {
+                    "enum": [
+                      "RATE_LIMITED"
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        ]
+      },
+      "value": []
+    },
+    {
+      "accept": false,
+      "schema": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/Domain_common_DomainError"
+          },
+          {
+            "properties": {
+              "details": {
+                "properties": {
+                  "reason": {
+                    "enum": [
+                      "RATE_LIMITED"
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        ]
+      },
+      "value": {
+        "__c07_unknown": true,
+        "code": "429",
+        "details": {
+          "reason": "RATE_LIMITED",
+          "retry_after_ms": 1000
+        },
+        "message": "Request could not be completed."
+      }
+    },
+    {
+      "accept": false,
+      "schema": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/Domain_common_DomainError"
+          },
+          {
+            "properties": {
+              "details": {
+                "properties": {
+                  "reason": {
+                    "enum": [
+                      "RATE_LIMITED"
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        ]
+      },
+      "value": 9007199254740992
+    },
+    {
+      "accept": false,
+      "schema": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/Domain_common_DomainError"
+          },
+          {
+            "properties": {
+              "details": {
+                "properties": {
+                  "reason": {
+                    "enum": [
+                      "RATE_LIMITED"
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        ]
+      },
+      "value": -9007199254740992
+    },
+    {
+      "accept": false,
+      "schema": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/Domain_common_DomainError"
+          },
+          {
+            "properties": {
+              "details": {
+                "properties": {
+                  "reason": {
+                    "enum": [
+                      "RATE_LIMITED"
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        ]
+      },
+      "value": 0.5
+    },
+    {
+      "accept": false,
+      "schema": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/Domain_common_DomainError"
+          },
+          {
+            "properties": {
+              "details": {
+                "properties": {
+                  "reason": {
+                    "enum": [
+                      "RATE_LIMITED"
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        ]
+      },
+      "value": {
+        "details": {
+          "reason": "RATE_LIMITED",
+          "retry_after_ms": 1000
+        },
+        "message": "Request could not be completed."
+      }
+    },
+    {
+      "accept": false,
+      "schema": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/Domain_common_DomainError"
+          },
+          {
+            "properties": {
+              "details": {
+                "properties": {
+                  "reason": {
+                    "enum": [
+                      "RATE_LIMITED"
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        ]
+      },
+      "value": {
+        "code": "429",
+        "details": {
+          "reason": "RATE_LIMITED",
+          "retry_after_ms": 1000
+        }
+      }
+    },
+    {
+      "accept": false,
+      "schema": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/Domain_common_DomainError"
+          },
+          {
+            "properties": {
+              "details": {
+                "properties": {
+                  "reason": {
+                    "enum": [
+                      "RATE_LIMITED"
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        ]
+      },
+      "value": {
+        "code": "429",
+        "message": "Request could not be completed."
+      }
+    },
+    {
+      "accept": true,
+      "schema": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/Domain_common_DomainError"
+          },
+          {
+            "properties": {
+              "details": {
+                "properties": {
+                  "reason": {
+                    "enum": [
+                      "RATE_LIMITED"
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        ]
+      },
+      "value": {
+        "code": "UNKNOWN_C07",
+        "details": {
+          "reason": "RATE_LIMITED",
+          "retry_after_ms": 1000
+        },
+        "message": "Request could not be completed."
+      }
+    },
+    {
+      "accept": true,
+      "schema": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/Domain_common_DomainError"
+          },
+          {
+            "properties": {
+              "details": {
+                "properties": {
+                  "reason": {
+                    "enum": [
+                      "RATE_LIMITED"
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        ]
+      },
+      "value": {
+        "code": "429",
+        "details": {
+          "reason": "RATE_LIMITED",
+          "retry_after_ms": 1000
+        },
+        "message": "UNKNOWN_C07"
+      }
+    },
+    {
+      "accept": false,
+      "schema": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/Domain_common_DomainError"
+          },
+          {
+            "properties": {
+              "details": {
+                "properties": {
+                  "reason": {
+                    "enum": [
+                      "RATE_LIMITED"
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        ]
+      },
+      "value": {
+        "code": "429",
+        "details": "UNKNOWN_C07",
+        "message": "Request could not be completed."
+      }
+    },
+    {
+      "accept": true,
+      "schema": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/Domain_common_DomainError"
+          },
+          {
+            "properties": {
+              "details": {
+                "properties": {
+                  "reason": {
+                    "enum": [
+                      "INTERNAL_ERROR"
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        ]
+      },
+      "value": {
+        "code": "GATEWAY_500",
+        "details": {
+          "reason": "INTERNAL_ERROR"
+        },
+        "message": "The request could not be completed."
+      }
+    },
+    {
+      "accept": false,
+      "schema": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/Domain_common_DomainError"
+          },
+          {
+            "properties": {
+              "details": {
+                "properties": {
+                  "reason": {
+                    "enum": [
+                      "INTERNAL_ERROR"
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        ]
+      },
+      "value": null
+    },
+    {
+      "accept": false,
+      "schema": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/Domain_common_DomainError"
+          },
+          {
+            "properties": {
+              "details": {
+                "properties": {
+                  "reason": {
+                    "enum": [
+                      "INTERNAL_ERROR"
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        ]
+      },
+      "value": false
+    },
+    {
+      "accept": false,
+      "schema": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/Domain_common_DomainError"
+          },
+          {
+            "properties": {
+              "details": {
+                "properties": {
+                  "reason": {
+                    "enum": [
+                      "INTERNAL_ERROR"
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        ]
+      },
+      "value": 42
+    },
+    {
+      "accept": false,
+      "schema": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/Domain_common_DomainError"
+          },
+          {
+            "properties": {
+              "details": {
+                "properties": {
+                  "reason": {
+                    "enum": [
+                      "INTERNAL_ERROR"
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        ]
+      },
+      "value": "UNKNOWN_C07"
+    },
+    {
+      "accept": false,
+      "schema": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/Domain_common_DomainError"
+          },
+          {
+            "properties": {
+              "details": {
+                "properties": {
+                  "reason": {
+                    "enum": [
+                      "INTERNAL_ERROR"
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        ]
+      },
+      "value": {}
+    },
+    {
+      "accept": false,
+      "schema": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/Domain_common_DomainError"
+          },
+          {
+            "properties": {
+              "details": {
+                "properties": {
+                  "reason": {
+                    "enum": [
+                      "INTERNAL_ERROR"
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        ]
+      },
+      "value": []
+    },
+    {
+      "accept": false,
+      "schema": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/Domain_common_DomainError"
+          },
+          {
+            "properties": {
+              "details": {
+                "properties": {
+                  "reason": {
+                    "enum": [
+                      "INTERNAL_ERROR"
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        ]
+      },
+      "value": {
+        "__c07_unknown": true,
+        "code": "GATEWAY_500",
+        "details": {
+          "reason": "INTERNAL_ERROR"
+        },
+        "message": "The request could not be completed."
+      }
+    },
+    {
+      "accept": false,
+      "schema": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/Domain_common_DomainError"
+          },
+          {
+            "properties": {
+              "details": {
+                "properties": {
+                  "reason": {
+                    "enum": [
+                      "INTERNAL_ERROR"
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        ]
+      },
+      "value": 9007199254740992
+    },
+    {
+      "accept": false,
+      "schema": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/Domain_common_DomainError"
+          },
+          {
+            "properties": {
+              "details": {
+                "properties": {
+                  "reason": {
+                    "enum": [
+                      "INTERNAL_ERROR"
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        ]
+      },
+      "value": -9007199254740992
+    },
+    {
+      "accept": false,
+      "schema": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/Domain_common_DomainError"
+          },
+          {
+            "properties": {
+              "details": {
+                "properties": {
+                  "reason": {
+                    "enum": [
+                      "INTERNAL_ERROR"
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        ]
+      },
+      "value": 0.5
+    },
+    {
+      "accept": false,
+      "schema": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/Domain_common_DomainError"
+          },
+          {
+            "properties": {
+              "details": {
+                "properties": {
+                  "reason": {
+                    "enum": [
+                      "INTERNAL_ERROR"
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        ]
+      },
+      "value": {
+        "details": {
+          "reason": "INTERNAL_ERROR"
+        },
+        "message": "The request could not be completed."
+      }
+    },
+    {
+      "accept": false,
+      "schema": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/Domain_common_DomainError"
+          },
+          {
+            "properties": {
+              "details": {
+                "properties": {
+                  "reason": {
+                    "enum": [
+                      "INTERNAL_ERROR"
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        ]
+      },
+      "value": {
+        "code": "GATEWAY_500",
+        "details": {
+          "reason": "INTERNAL_ERROR"
+        }
+      }
+    },
+    {
+      "accept": false,
+      "schema": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/Domain_common_DomainError"
+          },
+          {
+            "properties": {
+              "details": {
+                "properties": {
+                  "reason": {
+                    "enum": [
+                      "INTERNAL_ERROR"
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        ]
+      },
+      "value": {
+        "code": "GATEWAY_500",
+        "message": "The request could not be completed."
+      }
+    },
+    {
+      "accept": true,
+      "schema": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/Domain_common_DomainError"
+          },
+          {
+            "properties": {
+              "details": {
+                "properties": {
+                  "reason": {
+                    "enum": [
+                      "INTERNAL_ERROR"
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        ]
+      },
+      "value": {
+        "code": "UNKNOWN_C07",
+        "details": {
+          "reason": "INTERNAL_ERROR"
+        },
+        "message": "The request could not be completed."
+      }
+    },
+    {
+      "accept": true,
+      "schema": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/Domain_common_DomainError"
+          },
+          {
+            "properties": {
+              "details": {
+                "properties": {
+                  "reason": {
+                    "enum": [
+                      "INTERNAL_ERROR"
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        ]
+      },
+      "value": {
+        "code": "GATEWAY_500",
+        "details": {
+          "reason": "INTERNAL_ERROR"
+        },
+        "message": "UNKNOWN_C07"
+      }
+    },
+    {
+      "accept": false,
+      "schema": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/Domain_common_DomainError"
+          },
+          {
+            "properties": {
+              "details": {
+                "properties": {
+                  "reason": {
+                    "enum": [
+                      "INTERNAL_ERROR"
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        ]
+      },
+      "value": {
+        "code": "GATEWAY_500",
+        "details": "UNKNOWN_C07",
+        "message": "The request could not be completed."
+      }
+    },
+    {
+      "accept": true,
+      "schema": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/Domain_common_DomainError"
+          },
+          {
+            "properties": {
+              "details": {
+                "properties": {
+                  "reason": {
+                    "enum": [
+                      "DEPENDENCY_UNAVAILABLE"
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        ]
+      },
+      "value": {
+        "code": "GATEWAY_502",
+        "details": {
+          "reason": "DEPENDENCY_UNAVAILABLE"
+        },
+        "message": "The request could not be completed."
+      }
+    },
+    {
+      "accept": false,
+      "schema": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/Domain_common_DomainError"
+          },
+          {
+            "properties": {
+              "details": {
+                "properties": {
+                  "reason": {
+                    "enum": [
+                      "DEPENDENCY_UNAVAILABLE"
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        ]
+      },
+      "value": null
+    },
+    {
+      "accept": false,
+      "schema": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/Domain_common_DomainError"
+          },
+          {
+            "properties": {
+              "details": {
+                "properties": {
+                  "reason": {
+                    "enum": [
+                      "DEPENDENCY_UNAVAILABLE"
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        ]
+      },
+      "value": false
+    },
+    {
+      "accept": false,
+      "schema": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/Domain_common_DomainError"
+          },
+          {
+            "properties": {
+              "details": {
+                "properties": {
+                  "reason": {
+                    "enum": [
+                      "DEPENDENCY_UNAVAILABLE"
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        ]
+      },
+      "value": 42
+    },
+    {
+      "accept": false,
+      "schema": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/Domain_common_DomainError"
+          },
+          {
+            "properties": {
+              "details": {
+                "properties": {
+                  "reason": {
+                    "enum": [
+                      "DEPENDENCY_UNAVAILABLE"
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        ]
+      },
+      "value": "UNKNOWN_C07"
+    },
+    {
+      "accept": false,
+      "schema": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/Domain_common_DomainError"
+          },
+          {
+            "properties": {
+              "details": {
+                "properties": {
+                  "reason": {
+                    "enum": [
+                      "DEPENDENCY_UNAVAILABLE"
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        ]
+      },
+      "value": {}
+    },
+    {
+      "accept": false,
+      "schema": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/Domain_common_DomainError"
+          },
+          {
+            "properties": {
+              "details": {
+                "properties": {
+                  "reason": {
+                    "enum": [
+                      "DEPENDENCY_UNAVAILABLE"
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        ]
+      },
+      "value": []
+    },
+    {
+      "accept": false,
+      "schema": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/Domain_common_DomainError"
+          },
+          {
+            "properties": {
+              "details": {
+                "properties": {
+                  "reason": {
+                    "enum": [
+                      "DEPENDENCY_UNAVAILABLE"
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        ]
+      },
+      "value": {
+        "__c07_unknown": true,
+        "code": "GATEWAY_502",
+        "details": {
+          "reason": "DEPENDENCY_UNAVAILABLE"
+        },
+        "message": "The request could not be completed."
+      }
+    },
+    {
+      "accept": false,
+      "schema": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/Domain_common_DomainError"
+          },
+          {
+            "properties": {
+              "details": {
+                "properties": {
+                  "reason": {
+                    "enum": [
+                      "DEPENDENCY_UNAVAILABLE"
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        ]
+      },
+      "value": 9007199254740992
+    },
+    {
+      "accept": false,
+      "schema": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/Domain_common_DomainError"
+          },
+          {
+            "properties": {
+              "details": {
+                "properties": {
+                  "reason": {
+                    "enum": [
+                      "DEPENDENCY_UNAVAILABLE"
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        ]
+      },
+      "value": -9007199254740992
+    },
+    {
+      "accept": false,
+      "schema": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/Domain_common_DomainError"
+          },
+          {
+            "properties": {
+              "details": {
+                "properties": {
+                  "reason": {
+                    "enum": [
+                      "DEPENDENCY_UNAVAILABLE"
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        ]
+      },
+      "value": 0.5
+    },
+    {
+      "accept": false,
+      "schema": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/Domain_common_DomainError"
+          },
+          {
+            "properties": {
+              "details": {
+                "properties": {
+                  "reason": {
+                    "enum": [
+                      "DEPENDENCY_UNAVAILABLE"
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        ]
+      },
+      "value": {
+        "details": {
+          "reason": "DEPENDENCY_UNAVAILABLE"
+        },
+        "message": "The request could not be completed."
+      }
+    },
+    {
+      "accept": false,
+      "schema": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/Domain_common_DomainError"
+          },
+          {
+            "properties": {
+              "details": {
+                "properties": {
+                  "reason": {
+                    "enum": [
+                      "DEPENDENCY_UNAVAILABLE"
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        ]
+      },
+      "value": {
+        "code": "GATEWAY_502",
+        "details": {
+          "reason": "DEPENDENCY_UNAVAILABLE"
+        }
+      }
+    },
+    {
+      "accept": false,
+      "schema": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/Domain_common_DomainError"
+          },
+          {
+            "properties": {
+              "details": {
+                "properties": {
+                  "reason": {
+                    "enum": [
+                      "DEPENDENCY_UNAVAILABLE"
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        ]
+      },
+      "value": {
+        "code": "GATEWAY_502",
+        "message": "The request could not be completed."
+      }
+    },
+    {
+      "accept": true,
+      "schema": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/Domain_common_DomainError"
+          },
+          {
+            "properties": {
+              "details": {
+                "properties": {
+                  "reason": {
+                    "enum": [
+                      "DEPENDENCY_UNAVAILABLE"
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        ]
+      },
+      "value": {
+        "code": "UNKNOWN_C07",
+        "details": {
+          "reason": "DEPENDENCY_UNAVAILABLE"
+        },
+        "message": "The request could not be completed."
+      }
+    },
+    {
+      "accept": true,
+      "schema": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/Domain_common_DomainError"
+          },
+          {
+            "properties": {
+              "details": {
+                "properties": {
+                  "reason": {
+                    "enum": [
+                      "DEPENDENCY_UNAVAILABLE"
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        ]
+      },
+      "value": {
+        "code": "GATEWAY_502",
+        "details": {
+          "reason": "DEPENDENCY_UNAVAILABLE"
+        },
+        "message": "UNKNOWN_C07"
+      }
+    },
+    {
+      "accept": false,
+      "schema": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/Domain_common_DomainError"
+          },
+          {
+            "properties": {
+              "details": {
+                "properties": {
+                  "reason": {
+                    "enum": [
+                      "DEPENDENCY_UNAVAILABLE"
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        ]
+      },
+      "value": {
+        "code": "GATEWAY_502",
+        "details": "UNKNOWN_C07",
+        "message": "The request could not be completed."
+      }
+    },
+    {
+      "accept": true,
+      "schema": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/Domain_common_DomainError"
+          },
+          {
+            "properties": {
+              "details": {
+                "properties": {
+                  "reason": {
+                    "enum": [
+                      "DEADLINE_EXCEEDED"
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        ]
+      },
+      "value": {
+        "code": "GATEWAY_504",
+        "details": {
+          "reason": "DEADLINE_EXCEEDED"
+        },
+        "message": "The request could not be completed."
+      }
+    },
+    {
+      "accept": false,
+      "schema": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/Domain_common_DomainError"
+          },
+          {
+            "properties": {
+              "details": {
+                "properties": {
+                  "reason": {
+                    "enum": [
+                      "DEADLINE_EXCEEDED"
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        ]
+      },
+      "value": null
+    },
+    {
+      "accept": false,
+      "schema": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/Domain_common_DomainError"
+          },
+          {
+            "properties": {
+              "details": {
+                "properties": {
+                  "reason": {
+                    "enum": [
+                      "DEADLINE_EXCEEDED"
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        ]
+      },
+      "value": false
+    },
+    {
+      "accept": false,
+      "schema": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/Domain_common_DomainError"
+          },
+          {
+            "properties": {
+              "details": {
+                "properties": {
+                  "reason": {
+                    "enum": [
+                      "DEADLINE_EXCEEDED"
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        ]
+      },
+      "value": 42
+    },
+    {
+      "accept": false,
+      "schema": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/Domain_common_DomainError"
+          },
+          {
+            "properties": {
+              "details": {
+                "properties": {
+                  "reason": {
+                    "enum": [
+                      "DEADLINE_EXCEEDED"
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        ]
+      },
+      "value": "UNKNOWN_C07"
+    },
+    {
+      "accept": false,
+      "schema": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/Domain_common_DomainError"
+          },
+          {
+            "properties": {
+              "details": {
+                "properties": {
+                  "reason": {
+                    "enum": [
+                      "DEADLINE_EXCEEDED"
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        ]
+      },
+      "value": {}
+    },
+    {
+      "accept": false,
+      "schema": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/Domain_common_DomainError"
+          },
+          {
+            "properties": {
+              "details": {
+                "properties": {
+                  "reason": {
+                    "enum": [
+                      "DEADLINE_EXCEEDED"
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        ]
+      },
+      "value": []
+    },
+    {
+      "accept": false,
+      "schema": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/Domain_common_DomainError"
+          },
+          {
+            "properties": {
+              "details": {
+                "properties": {
+                  "reason": {
+                    "enum": [
+                      "DEADLINE_EXCEEDED"
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        ]
+      },
+      "value": {
+        "__c07_unknown": true,
+        "code": "GATEWAY_504",
+        "details": {
+          "reason": "DEADLINE_EXCEEDED"
+        },
+        "message": "The request could not be completed."
+      }
+    },
+    {
+      "accept": false,
+      "schema": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/Domain_common_DomainError"
+          },
+          {
+            "properties": {
+              "details": {
+                "properties": {
+                  "reason": {
+                    "enum": [
+                      "DEADLINE_EXCEEDED"
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        ]
+      },
+      "value": 9007199254740992
+    },
+    {
+      "accept": false,
+      "schema": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/Domain_common_DomainError"
+          },
+          {
+            "properties": {
+              "details": {
+                "properties": {
+                  "reason": {
+                    "enum": [
+                      "DEADLINE_EXCEEDED"
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        ]
+      },
+      "value": -9007199254740992
+    },
+    {
+      "accept": false,
+      "schema": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/Domain_common_DomainError"
+          },
+          {
+            "properties": {
+              "details": {
+                "properties": {
+                  "reason": {
+                    "enum": [
+                      "DEADLINE_EXCEEDED"
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        ]
+      },
+      "value": 0.5
+    },
+    {
+      "accept": false,
+      "schema": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/Domain_common_DomainError"
+          },
+          {
+            "properties": {
+              "details": {
+                "properties": {
+                  "reason": {
+                    "enum": [
+                      "DEADLINE_EXCEEDED"
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        ]
+      },
+      "value": {
+        "details": {
+          "reason": "DEADLINE_EXCEEDED"
+        },
+        "message": "The request could not be completed."
+      }
+    },
+    {
+      "accept": false,
+      "schema": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/Domain_common_DomainError"
+          },
+          {
+            "properties": {
+              "details": {
+                "properties": {
+                  "reason": {
+                    "enum": [
+                      "DEADLINE_EXCEEDED"
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        ]
+      },
+      "value": {
+        "code": "GATEWAY_504",
+        "details": {
+          "reason": "DEADLINE_EXCEEDED"
+        }
+      }
+    },
+    {
+      "accept": false,
+      "schema": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/Domain_common_DomainError"
+          },
+          {
+            "properties": {
+              "details": {
+                "properties": {
+                  "reason": {
+                    "enum": [
+                      "DEADLINE_EXCEEDED"
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        ]
+      },
+      "value": {
+        "code": "GATEWAY_504",
+        "message": "The request could not be completed."
+      }
+    },
+    {
+      "accept": true,
+      "schema": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/Domain_common_DomainError"
+          },
+          {
+            "properties": {
+              "details": {
+                "properties": {
+                  "reason": {
+                    "enum": [
+                      "DEADLINE_EXCEEDED"
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        ]
+      },
+      "value": {
+        "code": "UNKNOWN_C07",
+        "details": {
+          "reason": "DEADLINE_EXCEEDED"
+        },
+        "message": "The request could not be completed."
+      }
+    },
+    {
+      "accept": true,
+      "schema": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/Domain_common_DomainError"
+          },
+          {
+            "properties": {
+              "details": {
+                "properties": {
+                  "reason": {
+                    "enum": [
+                      "DEADLINE_EXCEEDED"
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        ]
+      },
+      "value": {
+        "code": "GATEWAY_504",
+        "details": {
+          "reason": "DEADLINE_EXCEEDED"
+        },
+        "message": "UNKNOWN_C07"
+      }
+    },
+    {
+      "accept": false,
+      "schema": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/Domain_common_DomainError"
+          },
+          {
+            "properties": {
+              "details": {
+                "properties": {
+                  "reason": {
+                    "enum": [
+                      "DEADLINE_EXCEEDED"
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        ]
+      },
+      "value": {
+        "code": "GATEWAY_504",
+        "details": "UNKNOWN_C07",
+        "message": "The request could not be completed."
+      }
+    },
+    {
+      "accept": true,
+      "schema": {
+        "$ref": "#/components/schemas/Domain_admin_OwnOperationsAccessV1"
+      },
+      "value": {
+        "access": null,
+        "server_time": "2026-11-03T00:00:00Z"
+      }
+    },
+    {
+      "accept": false,
+      "schema": {
+        "$ref": "#/components/schemas/Domain_admin_OwnOperationsAccessV1"
+      },
+      "value": null
+    },
+    {
+      "accept": false,
+      "schema": {
+        "$ref": "#/components/schemas/Domain_admin_OwnOperationsAccessV1"
+      },
+      "value": false
+    },
+    {
+      "accept": false,
+      "schema": {
+        "$ref": "#/components/schemas/Domain_admin_OwnOperationsAccessV1"
+      },
+      "value": 42
+    },
+    {
+      "accept": false,
+      "schema": {
+        "$ref": "#/components/schemas/Domain_admin_OwnOperationsAccessV1"
+      },
+      "value": "UNKNOWN_C07"
+    },
+    {
+      "accept": false,
+      "schema": {
+        "$ref": "#/components/schemas/Domain_admin_OwnOperationsAccessV1"
+      },
+      "value": {}
+    },
+    {
+      "accept": false,
+      "schema": {
+        "$ref": "#/components/schemas/Domain_admin_OwnOperationsAccessV1"
+      },
+      "value": []
+    },
+    {
+      "accept": false,
+      "schema": {
+        "$ref": "#/components/schemas/Domain_admin_OwnOperationsAccessV1"
+      },
+      "value": {
+        "__c07_unknown": true,
+        "access": null,
+        "server_time": "2026-11-03T00:00:00Z"
+      }
+    },
+    {
+      "accept": false,
+      "schema": {
+        "$ref": "#/components/schemas/Domain_admin_OwnOperationsAccessV1"
+      },
+      "value": 9007199254740992
+    },
+    {
+      "accept": false,
+      "schema": {
+        "$ref": "#/components/schemas/Domain_admin_OwnOperationsAccessV1"
+      },
+      "value": -9007199254740992
+    },
+    {
+      "accept": false,
+      "schema": {
+        "$ref": "#/components/schemas/Domain_admin_OwnOperationsAccessV1"
+      },
+      "value": 0.5
+    },
+    {
+      "accept": false,
+      "schema": {
+        "$ref": "#/components/schemas/Domain_admin_OwnOperationsAccessV1"
+      },
+      "value": {
+        "access": null
+      }
+    },
+    {
+      "accept": false,
+      "schema": {
+        "$ref": "#/components/schemas/Domain_admin_OwnOperationsAccessV1"
+      },
+      "value": {
+        "server_time": "2026-11-03T00:00:00Z"
+      }
+    },
+    {
+      "accept": false,
+      "schema": {
+        "$ref": "#/components/schemas/Domain_admin_OwnOperationsAccessV1"
+      },
+      "value": {
+        "access": null,
+        "server_time": "UNKNOWN_C07"
+      }
+    },
+    {
+      "accept": false,
+      "schema": {
+        "$ref": "#/components/schemas/Domain_admin_OwnOperationsAccessV1"
+      },
+      "value": {
+        "access": "UNKNOWN_C07",
+        "server_time": "2026-11-03T00:00:00Z"
       }
     },
     {

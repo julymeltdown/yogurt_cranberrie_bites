@@ -56898,6 +56898,186 @@
         "Cache-Control": "no-store"
       },
       "mediaType": "application/json",
+      "operation": "getOwnConcertOperationsAccess",
+      "request": {
+        "path": {
+          "eventId": "00000000-0000-4000-8000-000000000001"
+        }
+      },
+      "status": 400
+    },
+    {
+      "body": {
+        "code": "401",
+        "details": {
+          "reason": "AUTHENTICATION_REQUIRED"
+        },
+        "message": "Request could not be completed."
+      },
+      "headers": {
+        "Cache-Control": "no-store"
+      },
+      "mediaType": "application/json",
+      "operation": "getOwnConcertOperationsAccess",
+      "request": {
+        "path": {
+          "eventId": "00000000-0000-4000-8000-000000000001"
+        }
+      },
+      "status": 401
+    },
+    {
+      "body": {
+        "code": "403",
+        "details": {
+          "reason": "PERMISSION_DENIED"
+        },
+        "message": "Request could not be completed."
+      },
+      "headers": {
+        "Cache-Control": "no-store"
+      },
+      "mediaType": "application/json",
+      "operation": "getOwnConcertOperationsAccess",
+      "request": {
+        "path": {
+          "eventId": "00000000-0000-4000-8000-000000000001"
+        }
+      },
+      "status": 403
+    },
+    {
+      "body": {
+        "code": "GATEWAY_404",
+        "details": {
+          "reason": "RESOURCE_UNAVAILABLE"
+        },
+        "message": "The requested action is unavailable.",
+        "timestamp": "2026-11-03T00:00:00Z",
+        "traceId": "fixture-correlation-123"
+      },
+      "headers": {
+        "Cache-Control": "no-store"
+      },
+      "mediaType": "application/json",
+      "operation": "getOwnConcertOperationsAccess",
+      "request": {
+        "path": {
+          "eventId": "00000000-0000-4000-8000-000000000001"
+        }
+      },
+      "status": 404
+    },
+    {
+      "body": {
+        "code": "429",
+        "details": {
+          "reason": "RATE_LIMITED",
+          "retry_after_ms": 1000
+        },
+        "message": "Request could not be completed."
+      },
+      "headers": {
+        "Cache-Control": "no-store"
+      },
+      "mediaType": "application/json",
+      "operation": "getOwnConcertOperationsAccess",
+      "request": {
+        "path": {
+          "eventId": "00000000-0000-4000-8000-000000000001"
+        }
+      },
+      "status": 429
+    },
+    {
+      "body": {
+        "code": "GATEWAY_500",
+        "details": {
+          "reason": "INTERNAL_ERROR"
+        },
+        "message": "The request could not be completed."
+      },
+      "headers": {
+        "Cache-Control": "no-store"
+      },
+      "mediaType": "application/json",
+      "operation": "getOwnConcertOperationsAccess",
+      "request": {
+        "path": {
+          "eventId": "00000000-0000-4000-8000-000000000001"
+        }
+      },
+      "status": 500
+    },
+    {
+      "body": {
+        "code": "GATEWAY_502",
+        "details": {
+          "reason": "DEPENDENCY_UNAVAILABLE"
+        },
+        "message": "The request could not be completed."
+      },
+      "headers": {
+        "Cache-Control": "no-store"
+      },
+      "mediaType": "application/json",
+      "operation": "getOwnConcertOperationsAccess",
+      "request": {
+        "path": {
+          "eventId": "00000000-0000-4000-8000-000000000001"
+        }
+      },
+      "status": 503
+    },
+    {
+      "body": {
+        "code": "GATEWAY_504",
+        "details": {
+          "reason": "DEADLINE_EXCEEDED"
+        },
+        "message": "The request could not be completed."
+      },
+      "headers": {
+        "Cache-Control": "no-store"
+      },
+      "mediaType": "application/json",
+      "operation": "getOwnConcertOperationsAccess",
+      "request": {
+        "path": {
+          "eventId": "00000000-0000-4000-8000-000000000001"
+        }
+      },
+      "status": 504
+    },
+    {
+      "body": {
+        "access": null,
+        "server_time": "2026-11-03T00:00:00Z"
+      },
+      "headers": {
+        "Cache-Control": "no-store"
+      },
+      "mediaType": "application/json",
+      "operation": "getOwnConcertOperationsAccess",
+      "request": {
+        "path": {
+          "eventId": "00000000-0000-4000-8000-000000000001"
+        }
+      },
+      "status": 200
+    },
+    {
+      "body": {
+        "code": "GATEWAY_422",
+        "details": {
+          "reason": "INVALID_INPUT"
+        },
+        "message": "The request could not be completed."
+      },
+      "headers": {
+        "Cache-Control": "no-store"
+      },
+      "mediaType": "application/json",
       "operation": "initConcertUpload",
       "request": {
         "body": {

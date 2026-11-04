@@ -1,0 +1,30 @@
+{
+  "canonical": "a0cb4396d2fe5c333e7863aa5bf4c8b88a357ac9",
+  "source": "f38c0bf518cdb5b4a054fdffd6654fa39f2ee149",
+  "scope": "PASS",
+  "protectedRefsUnchanged": {
+    "codex/mcr-world-progress-20261105": "3500e3021b685823c760ba8b503f9a31daf57800",
+    "codex/mcr-world-progress-publish": "c277f4697155508f11687c9a6f993ffbf700d8aa",
+    "codex/mcr-fe-FE16-original-parity": "26688e8f9c4df4a476cb05ab4c9405f899b5ada5",
+    "codex/mcr-css-shared-chrome-ref-01": "390493282882413b85c7e08f91368548c570e38a",
+    "codex/mcr-ci-installation-recovery": "14ed80ad49892bdbd37ee42a1ecdcfd03374ddea"
+  },
+  "source4PathsExact": true,
+  "docsSourceUnchanged": true,
+  "rounds01Through04Immutable": true,
+  "previousActivePinBytesExactlyArchived": true,
+  "activePinsSha256": "5b06537ca67a97611e391cb37017585d81b8c15cf592be5663a2909edd433e5e",
+  "operations": 148,
+  "responses": 1705,
+  "ownAccessResponseCases": 9,
+  "ownAccessDifferentialCaseCounts": {
+    "Domain_admin_OperationsAccessLeaseV1": 26,
+    "Domain_admin_OwnOperationsAccessV1": 30
+  },
+  "operationIsBodylessGet": true,
+  "domainMachineMirrorsByteIdentical": true,
+  "crossLaneApplicationEdits": [],
+  "runtimeEndpoint": "NOT_RUN",
+  "IN04": "NOT_RUN",
+  "hosted": "NOT_RUN_NOT_REQUIRED"
+}
