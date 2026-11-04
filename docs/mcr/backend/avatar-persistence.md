@@ -604,7 +604,8 @@ outside this owned hook's completed validation.
 ### Production-only delivery handoff
 
 The isolated `codex/mcr-be-avatar-witness-delivery` handoff starts from published
-base `d0da6836` and changes exactly eleven paths: this owner's three avatar Rust
+base `ced8ec124a3c9fb3443a2bc69d69055d64a6fd7b` and changes exactly eleven
+paths: this owner's three avatar Rust
 files, `avatar_smoke.py` and this document; plus Participant209's explicitly
 handed-off migration0035, participant-effect-witness document, guarded adapter,
 coordinator visibility seam, module export and settlement resolver. Peer source
