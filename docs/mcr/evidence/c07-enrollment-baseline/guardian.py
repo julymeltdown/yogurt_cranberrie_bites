@@ -1,5 +1,6 @@
 """Finite independent admission guardian; requires an explicit Social offer."""
 import datetime
+import hashlib
 import json
 import os
 from pathlib import Path
@@ -24,6 +25,8 @@ assert TMP.parent == Path('/private/tmp') and TMP.name.startswith('mcr-c07-enrol
 assert LEASE and time.time() < ACTIVE_END
 assert subprocess.check_output(['git', 'status', '--porcelain'], cwd=ROOT) == b''
 assert subprocess.check_output(['git', 'rev-parse', 'HEAD'], cwd=ROOT, text=True).strip() == os.environ['MCR_C07_SOURCE']
+READSET = json.loads((HERE / 'readset.json').read_text())
+assert all(hashlib.sha256((ROOT / path).read_bytes()).hexdigest() == value for path, value in READSET.items())
 GIT = Path(subprocess.check_output(['git', 'rev-parse', '--absolute-git-dir'], cwd=ROOT, text=True).strip())
 def allocated(path):
     return int(subprocess.check_output(['du', '-sk', str(path)], text=True).split()[0]) * 1024
@@ -36,6 +39,8 @@ OUT.mkdir(); TMP.mkdir()
 def record(name, value):
     (OUT / name).write_text(json.dumps(value, indent=2) + '\n')
 record('acceptance.json', dict(lease=LEASE, source=os.environ['MCR_C07_SOURCE'], canonical=os.environ['MCR_C07_CANONICAL'],
+    readsetSha256=hashlib.sha256((HERE/'readset.json').read_bytes()).hexdigest(),
+    guardianSha256=hashlib.sha256(Path(__file__).read_bytes()).hexdigest(),
     acceptedAt=time.time(), activeEnd=ACTIVE_END, deadline=DEADLINE, freeBytes=free, otherWorstNewBytes=OTHER_NEW,
     ownWorstNewBytes=128*MIB, remainingMarginBytes=free-OTHER_NEW-128*MIB, wholeFloorBytes=BASE+RETAINED,
     caps=dict(processes=24, rssBytes=4*GIB, wholeBytes=2*GIB, newBytes=128*MIB, tmpBytes=96*MIB, durableBytes=24*MIB),
@@ -114,9 +119,18 @@ finally:
             shutil.rmtree(path)
     remaining = sorted((set(table()) & seen) - {os.getpid()})
     assert not remaining, 'owned descendants must drain before FULL'
+    mutable = {'contracts/generated/mcr-domain.openapi.json', 'backend/docs/api/mcr-domain.openapi.json',
+               'scripts/mcr/contracts/qa01-coverage/pins.json',
+               *('contracts/fixtures/c07/' + name + '.json' for name in ('responses', 'compatibility', 'index'))}
+    readonly = {path: value for path, value in READSET.items() if path not in mutable and not path.startswith(
+        ('contracts/generated/api-client/', 'frontend/src/shared/api/generated/'))}
+    readonly_unchanged = all(hashlib.sha256((ROOT/path).read_bytes()).hexdigest() == value for path, value in readonly.items())
+    if not readonly_unchanged:
+        status = 'FAIL'; error = 'frozen read-only input changed'
     record('full-release.json', dict(lease=LEASE, status=status, error=error, actualFullAt=time.time(),
         source=os.environ['MCR_C07_SOURCE'], canonical=os.environ['MCR_C07_CANONICAL'], peak=peak,
         allObservedPids=sorted(seen), liveOwnedPids=remaining, privateTmpAbsent=not TMP.exists(),
-        compileScratchAbsent=not list((OUT/'checks').glob('compile-*')), portsCreated=[], freeBytes=shutil.disk_usage(ROOT).free))
+        compileScratchAbsent=not list((OUT/'checks').glob('compile-*')), readonlyInputsUnchanged=readonly_unchanged,
+        portsCreated=[], freeBytes=shutil.disk_usage(ROOT).free))
 print(json.dumps(dict(status=status, error=error, output=str(OUT))))
 raise SystemExit(0 if status == 'PASS' else 1)
