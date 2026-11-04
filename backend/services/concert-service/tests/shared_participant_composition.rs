@@ -210,9 +210,13 @@ async fn invoke(
         .header("te", "trailers")
         .header("x-service-caller", "gateway")
         .header("x-service-token", "gateway-fixture")
+        .header(platform::call_deadline::REMAINING_HEADER, "1950000u")
         .header(HEADER, proof)
         .body(axum::body::Body::from(framed))?;
-    let response = RetainedScopeLayer.layer(service).oneshot(request).await?;
+    let response = RetainedScopeLayer
+        .layer(platform::call_deadline::CallDeadlineLayer.layer(service))
+        .oneshot(request)
+        .await?;
     let headers = response.headers().clone();
     let body = response
         .into_body()
@@ -228,10 +232,13 @@ async fn invoke(
     let data = body.to_bytes();
     anyhow::ensure!(data.len() >= 5, "actual Participant frame");
     let result = pp::ParticipantResponse::decode(&data[5..])?;
-    anyhow::ensure!(
-        result.failure.is_none(),
-        "actual Participant producer returned a failure envelope"
-    );
+    if let Some(failure) = result.failure.as_ref() {
+        anyhow::bail!(
+            "actual Participant {method} returned failure {}/{}",
+            failure.grpc_code,
+            failure.core_reason
+        );
+    }
     let document = serde_json::from_slice(&result.response_json)?;
     Ok((result, document))
 }
