@@ -153,6 +153,15 @@ pub enum ChildRecoveryReference {
         native: ChildNativeIdentity,
         valid_until_unix_micros: i64,
     },
+    TargetRead {
+        query: ChildQuery,
+        root_scope_id: Uuid,
+        child_nonce: Uuid,
+        native: ChildNativeIdentity,
+        inbox_intent_id: Uuid,
+        inbox_reference_digest: [u8; 32],
+        snapshot_digest: [u8; 32],
+    },
 }
 impl ChildRecoveryReference {
     pub fn kind_name(&self) -> &'static str {
@@ -162,6 +171,7 @@ impl ChildRecoveryReference {
             Self::LocalPublic { .. } => "LOCAL_PUBLIC",
             Self::GiftPrivate { .. } => "GIFT_PRIVATE",
             Self::SocialRead { .. } => "SOCIAL_READ",
+            Self::TargetRead { .. } => "TARGET_READ",
         }
     }
     pub(super) fn key(&self) -> Result<(u8, Uuid), Status> {
@@ -172,6 +182,7 @@ impl ChildRecoveryReference {
                 Self::LocalPublic { .. } => 2,
                 Self::GiftPrivate { .. } => 3,
                 Self::SocialRead { .. } => 4,
+                Self::TargetRead { .. } => 6,
             },
             self.intent_id()?,
         ))
@@ -182,6 +193,7 @@ impl ChildRecoveryReference {
             | Self::ProfilePublic { query, .. }
             | Self::LocalPublic { query, .. }
             | Self::GiftPrivate { query, .. }
+            | Self::TargetRead { query, .. }
             | Self::SocialRead { query, .. } => query,
         }
     }
@@ -213,6 +225,7 @@ impl ChildRecoveryReference {
             ),
             Self::LocalPublic { child_nonce, .. }
             | Self::GiftPrivate { child_nonce, .. }
+            | Self::TargetRead { child_nonce, .. }
             | Self::SocialRead { child_nonce, .. } => {
                 if child_nonce.is_nil() {
                     Err(invalid())
@@ -233,6 +246,25 @@ impl ChildRecoveryReference {
                 simple_uuid(completion_secret)?;
             }
             Self::LocalPublic { native, .. } => native.validate(&binding.digest())?,
+            Self::TargetRead {
+                query,
+                native,
+                root_scope_id,
+                inbox_intent_id,
+                inbox_reference_digest,
+                snapshot_digest,
+                ..
+            } => {
+                native.validate(&binding.digest())?;
+                if query.subject != query.actor
+                    || root_scope_id.is_nil()
+                    || inbox_intent_id.is_nil()
+                    || *inbox_reference_digest == [0; 32]
+                    || *snapshot_digest == [0; 32]
+                {
+                    return Err(invalid());
+                }
+            }
             Self::SocialRead {
                 query,
                 native,
@@ -295,6 +327,9 @@ impl ChildRecoveryReference {
             }
             Self::SocialRead { child_nonce, .. } if !child_nonce.is_nil() => {
                 Ok(format!("mcr-social-read:{}", child_nonce.simple()))
+            }
+            Self::TargetRead { child_nonce, .. } if !child_nonce.is_nil() => {
+                Ok(format!("mcr-notification-target:{}", child_nonce.simple()))
             }
             _ => Err(invalid()),
         }

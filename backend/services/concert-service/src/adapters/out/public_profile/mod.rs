@@ -77,6 +77,9 @@ impl PublicProfileReader {
             return Err(unavailable());
         }
         match reference {
+            ChildRecoveryReference::TargetRead { .. } => Err(Status::failed_precondition(
+                "Public Profile recovery does not support Notification target children",
+            )),
             ChildRecoveryReference::NotificationInbox { .. } => Err(Status::failed_precondition(
                 "Public Profile recovery does not support Notification inbox children",
             )),

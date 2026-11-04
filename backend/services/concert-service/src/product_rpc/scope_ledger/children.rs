@@ -204,7 +204,8 @@ impl PgScopeLedger {
             }
             ChildRecoveryReference::LocalPublic { native, .. }
             | ChildRecoveryReference::GiftPrivate { native, .. }
-            | ChildRecoveryReference::SocialRead { native, .. } => {
+            | ChildRecoveryReference::SocialRead { native, .. }
+            | ChildRecoveryReference::TargetRead { native, .. } => {
                 if native.producer_instance_id != scope.instance {
                     return Err(invalid());
                 }
@@ -220,6 +221,30 @@ impl PgScopeLedger {
                     &[],
                 )?;
                 reference.local_prepared_gid()?;
+                if let ChildRecoveryReference::TargetRead {
+                    root_scope_id,
+                    inbox_intent_id,
+                    inbox_reference_digest,
+                    snapshot_digest,
+                    ..
+                } = reference
+                {
+                    if *root_scope_id != scope.scope
+                        || q.subject != q.actor
+                        || inbox_intent_id.is_nil()
+                        || *inbox_reference_digest == [0; 32]
+                        || *snapshot_digest == [0; 32]
+                    {
+                        return Err(invalid());
+                    }
+                    let linked: Option<Vec<u8>> = sqlx::query_scalar("SELECT reference_digest FROM concert_product_child_intents WHERE instance_id=$1 AND scope_id=$2 AND binding_digest=$3 AND kind='NOTIFICATION_INBOX' AND intent_id=$4")
+                        .bind(scope.instance).bind(scope.scope).bind(scope.binding_digest.as_slice()).bind(inbox_intent_id)
+                        .fetch_optional(&mut **tx).await.map_err(unavailable)?;
+                    if linked.as_deref() != Some(inbox_reference_digest.as_slice()) {
+                        return Err(invalid());
+                    }
+                }
+
                 if let ChildRecoveryReference::SocialRead {
                     valid_until_unix_micros,
                     ..

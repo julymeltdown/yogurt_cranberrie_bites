@@ -433,6 +433,7 @@ impl OwnerGuardScope {
                             || (matches!(
                                 reference,
                                 super::ChildRecoveryReference::LocalPublic { .. }
+                                    | super::ChildRecoveryReference::TargetRead { .. }
                                     | super::ChildRecoveryReference::SocialRead { .. }
                             ) && reference.query().subject == self.binding.actor())
                     })
@@ -484,16 +485,24 @@ impl OwnerGuardScope {
         self.binding.check()?;
         reference.validate_for(&self.binding)?;
         reference.check_content_time()?;
-        if let super::ChildRecoveryReference::NotificationInbox { query, .. } = reference {
+        if let super::ChildRecoveryReference::NotificationInbox { query, .. }
+        | super::ChildRecoveryReference::TargetRead { query, .. } = reference
+        {
             if query.subject != self.binding.actor() {
                 return Err(Status::permission_denied(
                     "Notification inbox child is not actor-owned",
                 ));
             }
         }
+        if let super::ChildRecoveryReference::TargetRead { root_scope_id, .. } = reference {
+            if root_scope_id.to_string() != self.producer.scope_id {
+                return Err(Status::permission_denied("Target child root mismatch"));
+            }
+        }
         if let super::ChildRecoveryReference::LocalPublic { native, .. }
         | super::ChildRecoveryReference::GiftPrivate { native, .. }
-        | super::ChildRecoveryReference::SocialRead { native, .. } = reference
+        | super::ChildRecoveryReference::SocialRead { native, .. }
+        | super::ChildRecoveryReference::TargetRead { native, .. } = reference
         {
             if native.producer_instance_id.to_string() != self.producer.instance_id {
                 return Err(Status::permission_denied("Child producer mismatch"));

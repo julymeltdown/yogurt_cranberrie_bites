@@ -17,6 +17,10 @@ pub trait SocialReadIntentSettler: Send + Sync {
     async fn recover_social_read(&self, reference: &ChildRecoveryReference) -> Result<(), Status>;
 }
 #[async_trait::async_trait]
+pub trait NotificationTargetIntentSettler: Send + Sync {
+    async fn recover_target_read(&self, reference: &ChildRecoveryReference) -> Result<(), Status>;
+}
+#[async_trait::async_trait]
 pub trait NotificationInboxIntentSettler: Send + Sync {
     async fn recover_notification_inbox(
         &self,
@@ -28,6 +32,7 @@ pub struct CompositeChildIntentSettler {
     gift: Arc<dyn GiftPrivateIntentSettler>,
     social: Option<Arc<dyn SocialReadIntentSettler>>,
     notification: Option<Arc<dyn NotificationInboxIntentSettler>>,
+    target: Option<Arc<dyn NotificationTargetIntentSettler>>,
 }
 impl CompositeChildIntentSettler {
     pub fn new(public: Arc<PublicProfileReader>, gift: Arc<dyn GiftPrivateIntentSettler>) -> Self {
@@ -36,6 +41,7 @@ impl CompositeChildIntentSettler {
             gift,
             social: None,
             notification: None,
+            target: None,
         }
     }
     pub fn with_notification(
@@ -49,11 +55,24 @@ impl CompositeChildIntentSettler {
         self.social = Some(social);
         self
     }
+    pub fn with_target(mut self, target: Arc<dyn NotificationTargetIntentSettler>) -> Self {
+        self.target = Some(target);
+        self
+    }
 }
 #[async_trait::async_trait]
 impl ChildIntentSettler for CompositeChildIntentSettler {
     async fn recover_one(&self, reference: &ChildRecoveryReference) -> Result<(), Status> {
         match reference {
+            ChildRecoveryReference::TargetRead { .. } => {
+                self.target
+                    .as_ref()
+                    .ok_or_else(|| {
+                        Status::failed_precondition("Notification target recovery is unavailable")
+                    })?
+                    .recover_target_read(reference)
+                    .await
+            }
             ChildRecoveryReference::NotificationInbox { .. } => {
                 self.notification
                     .as_ref()

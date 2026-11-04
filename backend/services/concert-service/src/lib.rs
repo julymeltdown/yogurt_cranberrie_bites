@@ -37,3 +37,5 @@ pub mod operations_live;
 pub mod event_cleanup_live;
 
 pub mod intro_live;
+
+pub mod notification_target_policy;

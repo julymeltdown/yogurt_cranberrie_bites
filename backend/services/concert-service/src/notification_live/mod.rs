@@ -12,3 +12,5 @@ mod protocol;
 mod product;
 pub use protocol::{NotificationOperation, NotificationRequest};
 pub use product::NotificationRuntime;
+
+pub mod target_authority;
