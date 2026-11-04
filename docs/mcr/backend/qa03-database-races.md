@@ -1,9 +1,10 @@
 # QA03 database race qualification
 
-Status: IN_PROGRESS. Compilation passed at `e62a7025`; the first native attempt
-was refused before executing cases and cleaned up successfully. The corrected
-fixture at `eb9bb664` awaits matching compilation and native execution. No
-mock/unit result is counted as database acceptance.
+Status: ACCEPTED for the original QA03 database race criteria. All 11 native
+cases passed against PostgreSQL 16.14 from runtime source `eb9bb664`, built at
+clean source commit `47fb4a771430a995749a87a21d805f753fc74630`. This is task-local
+database evidence, not acceptance of canonical owner RPC, public HTTP, IN02,
+IN04, or the release. The earlier compilation/native failures remain retained.
 
 The original QA03 row in `MCR_IMPLEMENTATION_PLAN_V2_EN.md` requires parallel
 capacity, reservation, cancellation, expiry, claim, idempotency, and mural cooldown
@@ -32,10 +33,16 @@ restarts. Its dependencies are BE17, BE22, BE23, and BE34. The invariants in §�
 - Exact runtime source and domain-contract hashes are captured before build,
   checked after compilation, and checked again before native execution. Cargo
   output and copied binary are digest-bound in the build receipt. The successful
-  source revision and delivered ancestry will be recorded after execution.
+  source revision is recorded above and in the committed native report. Delivery
+  ancestry is `93ef0d89` → `493292f9` → `1ef7bbbb` → `f73d9382` → `e62a7025`
+  → `eb9bb664` → `47fb4a77` → this evidence commit. The committed handoff records
+  its exact final SHA; only the designated integrator delivers it to master.
 
-Feature owner inputs: Party confirms source `7d3e21a3` (runtime code `c7d8eff6`),
-with fresh native validation pending after fixes; Wall confirms user source
+Feature owner inputs: Party most recently identified clean source
+`425b5feae78bb32a3e414d2f7a4e0fd57123228c` for its newer live projection lock
+ordering; the QA03 author performed read-only compatibility inspection and found
+no concrete issue. That newer live-runtime change is not imported or certified
+by this retained-adapter suite. Wall confirms user source
 `57dc31e1c8f8e1ba0f203d71a50cc3f1629bc8fa` and additive operator source
 `bcf81212036872e8b0d2b9694a21f6d97b3f091b`; Gift confirms retained database
 adapters at this baseline are byte-identical to its qualified source
@@ -124,11 +131,44 @@ a later success. Cleanup runs on success, failure, timeout, or termination.
   Commit `eb9bb664` changes only QA03's expected/created name to `mcr_qa_races`
   and preserves structured redacted helper failure details; the shared guard
   is unchanged. A fresh named build lease has been requested for this fix.
-- Matching corrected compilation and the 11 native cases: NOT_RUN.
+- Corrected compilation: offer `QA03-NAMESPACE-BACKEND-20261104T0426Z` was
+  explicitly ACCEPTED for one executable with a 0.35 GiB expected peak and
+  0.6 GiB hard allowance. Preflight observed 9.74 GiB available, no Rust build
+  processes, and no target handles. The first attempt exited 101 on the same
+  evidenced stale protobuf helper. Only `contracts-build` was cleaned (20
+  files/816.3 KiB, exit 0); retry exited 0 in 42.60 seconds. Rust 1.88.0,
+  locked/offline, one job, debug information off, and incremental off were used.
+  [Build records](../../../backend/services/concert-service/tests/qa03_races_support/evidence/build-attempts.json)
+  preserve commands, exit codes, failure diagnostics, and Cargo output hashes.
+- The new copied binary SHA-256 is
+  `f63ab37801b184a5ee958cacc23bf6980feabd78fe441af1730fa9741211f0ca`.
+  All 1,756 source/contract hashes and the successful Cargo JSON hash are bound
+  in the [unaltered native report](../../../backend/services/concert-service/tests/qa03_races_support/evidence/native-02-pass.json).
+  Final target allocation was 1,220,608 bytes below its baseline; outside frozen
+  artifacts/logs occupied 17,866,752 bytes at release. `lsof +D` exited 1 with no
+  output, followed by unconditional release before PostgreSQL initialization.
+  No target access was performed afterward. These are allocation checkpoints;
+  the private PostgreSQL peak was not sampled before teardown, so no measured
+  whole-workflow peak is claimed.
+- Native attempt 2: controller exit 0; **11/11 exact cases PASS**, each exit 0.
+  Nine observed barriers recorded the required contender counts
+  `2,2,5,2,2,2,2,2,3` through actual PostgreSQL blocking graphs. Eight cases ran
+  before restart; PostgreSQL postmaster PID changed `28721` → `28861`; three
+  cases ran afterward in fresh processes, including a newly constructed expiry
+  worker. Both SQLx ledgers matched all 27 migration SHA-384 values. Prepared
+  transactions and PENDING command receipts were ZERO. Owned cleanup PASS.
+  The unaltered report SHA-256 is
+  `2b4591f978af05fdf9155411b4227b48305b110bec14b61d35f6eddac78556e8`.
+  The interrupted-command seed proves interruption before admission and durable
+  pending expiry recovery; it does not claim interruption inside a sweep commit.
 - Canonical owner/public HTTP and same-release integration gates: NOT_RUN;
   Root/feature owners supply those scopes. QA03 has no application/shared-file
   grant and does not mint an OwnerGuardScope from IDs or a fixture allow flag.
 
-The persistent QA03 goal remains ACTIVE through implementation, native
-qualification, committed handoff, and concrete fixes. Delivery goes directly to
-Root; no main-chat or scrum-lead acknowledgment/review gate is introduced.
+The persistent QA03 objective was preserved through the resource block and
+resumed after the fresh external offer. Completion requires this committed
+handoff directly to Root and resolution of concrete integration findings; no
+main-chat or scrum-lead acknowledgment/review gate is introduced. The handoff
+contains this exact branch tip, base, changed paths, qualification evidence, and
+the remaining integration limits. New production adapter changes require their
+own same-candidate qualification rather than inheriting these results.

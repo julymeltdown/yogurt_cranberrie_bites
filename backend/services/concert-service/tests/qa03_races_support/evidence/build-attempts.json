@@ -1,0 +1,207 @@
+{
+  "attempts": [
+    {
+      "attempt": 1,
+      "batch": "initial",
+      "build": {
+        "command": [
+          "/Users/lhs/.rustup/toolchains/1.88.0-aarch64-apple-darwin/bin/cargo",
+          "test",
+          "--locked",
+          "--offline",
+          "-j",
+          "1",
+          "-p",
+          "concert-service",
+          "--test",
+          "qa03_races",
+          "--no-run",
+          "--message-format=json"
+        ],
+        "elapsed_seconds": 6.227475881576538,
+        "exit_code": 101,
+        "source_commit": "f73d93827f9bc55f2d8043c36610a819bd504dfe"
+      },
+      "cargo_jsonl_sha256": "ed7535199ae6ca58e8382e21c027102ca76074ac773aa088792f65d61ee00d7d",
+      "cargo_stderr_sha256": "f2a10b14d1b5c5580b8220fa8c1a226ff214c939b876e5b09e66b86688db4a17",
+      "stderr": "   Compiling recommendation-policy v0.1.0 (<QA03_CHECKOUT>/backend/crates/recommendation-policy)\n   Compiling search-policy v0.1.0 (<QA03_CHECKOUT>/backend/crates/search-policy)\n   Compiling platform v0.1.0 (<QA03_CHECKOUT>/backend/crates/platform)\n   Compiling migration-runtime v0.1.0 (<QA03_CHECKOUT>/backend/crates/migration-runtime)\n   Compiling concert-service v0.1.0 (<QA03_CHECKOUT>/backend/services/concert-service)\n   Compiling friend-domain v0.1.0 (<QA03_CHECKOUT>/backend/crates/friend-domain)\n   Compiling auth-domain v0.1.0 (<QA03_CHECKOUT>/backend/crates/auth-domain)\n   Compiling profile-domain v0.1.0 (<QA03_CHECKOUT>/backend/crates/profile-domain)\n   Compiling profile-application v0.1.0 (<QA03_CHECKOUT>/backend/crates/profile-application)\n   Compiling auth-application v0.1.0 (<QA03_CHECKOUT>/backend/crates/auth-application)\n   Compiling profile-service v0.1.0 (<QA03_CHECKOUT>/backend/services/profile-service)\n   Compiling auth-service v0.1.0 (<QA03_CHECKOUT>/backend/services/auth-service)\nerror: failed to run custom build command for `auth-service v0.1.0 (<QA03_CHECKOUT>/backend/services/auth-service)`\n\nCaused by:\n  process didn't exit successfully: `<BACKEND_TARGET>/debug/build/auth-service-f5ec092a70f96528/build-script-build` (exit status: 1)\n  --- stderr\n  Error: Custom { kind: Other, error: \"protoc failed: <QA03_CHECKOUT>/backend/services/auth-service/../../proto/auth/v1/auth.proto: Input is shadowed in the --proto_path by \\\"<OTHER_WORKTREE>/backend/services/auth-service/../../proto/auth/v1/auth.proto\\\".  Either use the latter file as your input or reorder the --proto_path so that the former file's location comes first.\\n\" }\n"
+    },
+    {
+      "attempt": 2,
+      "batch": "initial",
+      "build": {
+        "command": [
+          "/Users/lhs/.rustup/toolchains/1.88.0-aarch64-apple-darwin/bin/cargo",
+          "test",
+          "--locked",
+          "--offline",
+          "-j",
+          "1",
+          "-p",
+          "concert-service",
+          "--test",
+          "qa03_races",
+          "--no-run",
+          "--message-format=json"
+        ],
+        "elapsed_seconds": 36.4283549785614,
+        "exit_code": 101,
+        "source_commit": "f73d93827f9bc55f2d8043c36610a819bd504dfe"
+      },
+      "cargo_jsonl_sha256": "951202d0190a5202b075d7de84a816a1ccc2d0129a0896eeb0fbf0696f8e141c",
+      "cargo_stderr_sha256": "c06cecf143e831505d2cee6be68e49f96e89e573a0e3d8ae0835f0a1956900b9",
+      "stderr": "   Compiling contracts-build v0.1.0 (<QA03_CHECKOUT>/backend/crates/contracts-build)\n   Compiling concert-service v0.1.0 (<QA03_CHECKOUT>/backend/services/concert-service)\n   Compiling auth-service v0.1.0 (<QA03_CHECKOUT>/backend/services/auth-service)\n   Compiling profile-service v0.1.0 (<QA03_CHECKOUT>/backend/services/profile-service)\n   Compiling friend-service v0.1.0 (<QA03_CHECKOUT>/backend/services/friend-service)\n   Compiling friend-application v0.1.0 (<QA03_CHECKOUT>/backend/crates/friend-application)\nerror: could not compile `concert-service` (test \"qa03_races\") due to 1 previous error\n"
+    },
+    {
+      "attempt": 3,
+      "batch": "initial",
+      "build": {
+        "command": [
+          "/Users/lhs/.rustup/toolchains/1.88.0-aarch64-apple-darwin/bin/cargo",
+          "test",
+          "--locked",
+          "--offline",
+          "-j",
+          "1",
+          "-p",
+          "concert-service",
+          "--test",
+          "qa03_races",
+          "--no-run",
+          "--message-format=json"
+        ],
+        "elapsed_seconds": 4.256414890289307,
+        "exit_code": 0,
+        "source_commit": "e62a7025ea1e873d2df9eac2777da73597c87c55"
+      },
+      "cargo_jsonl_sha256": "cd3c869bd34b6cb4434247d9aa9c349918b0f78bf7f2909390ea50545443d304",
+      "cargo_stderr_sha256": "767794b56dede8ece54f9b308ffa31a3a1567c21b3fdc8f4a696ebc6b4ae12af"
+    },
+    {
+      "attempt": 1,
+      "batch": "namespace-fix",
+      "build": {
+        "command": [
+          "/Users/lhs/.rustup/toolchains/1.88.0-aarch64-apple-darwin/bin/cargo",
+          "test",
+          "--locked",
+          "--offline",
+          "-j",
+          "1",
+          "-p",
+          "concert-service",
+          "--test",
+          "qa03_races",
+          "--no-run",
+          "--message-format=json"
+        ],
+        "elapsed_seconds": 2.1178703749901615,
+        "environment": {
+          "CARGO_INCREMENTAL": "0",
+          "CARGO_PROFILE_DEV_DEBUG": "0",
+          "CARGO_PROFILE_TEST_DEBUG": "0",
+          "CARGO_TARGET_DIR": "<BACKEND_TARGET>",
+          "RUSTUP_TOOLCHAIN": "1.88.0"
+        },
+        "exit_code": 101,
+        "free_bytes": 10499538944,
+        "hard_allowance_bytes": 644245094,
+        "outside_allocated_bytes": 573440,
+        "target_allocated_bytes": 12325285888,
+        "target_growth_bytes": -114688
+      },
+      "cargo_jsonl_sha256": "1e3a7449ca326b871255c6421f92f3cffbe148520b23da3b35f7f8eed2e221b4",
+      "cargo_stderr_sha256": "11279c11ba6614abdc52339b2bb11c0fd3f3591321b2ef31e4dca4b7c82835ea",
+      "stderr": "   Compiling concert-service v0.1.0 (<QA03_CHECKOUT>/backend/services/concert-service)\n   Compiling auth-service v0.1.0 (<QA03_CHECKOUT>/backend/services/auth-service)\nerror: failed to run custom build command for `auth-service v0.1.0 (<QA03_CHECKOUT>/backend/services/auth-service)`\n\nCaused by:\n  process didn't exit successfully: `<BACKEND_TARGET>/debug/build/auth-service-f5ec092a70f96528/build-script-build` (exit status: 1)\n  --- stderr\n  Error: Custom { kind: Other, error: \"protoc failed: <QA03_CHECKOUT>/backend/services/auth-service/../../proto/auth/v1/auth.proto: Input is shadowed in the --proto_path by \\\"<OTHER_WORKTREE>/backend/services/auth-service/../../proto/auth/v1/auth.proto\\\".  Either use the latter file as your input or reorder the --proto_path so that the former file's location comes first.\\n\" }\n"
+    },
+    {
+      "attempt": 2,
+      "batch": "namespace-fix",
+      "build": {
+        "command": [
+          "/Users/lhs/.rustup/toolchains/1.88.0-aarch64-apple-darwin/bin/cargo",
+          "test",
+          "--locked",
+          "--offline",
+          "-j",
+          "1",
+          "-p",
+          "concert-service",
+          "--test",
+          "qa03_races",
+          "--no-run",
+          "--message-format=json"
+        ],
+        "elapsed_seconds": 42.602251332995365,
+        "exit_code": 0,
+        "free_bytes": 10307903488,
+        "hard_allowance_bytes": 644245094,
+        "outside_allocated_bytes": 974848,
+        "target_allocated_bytes": 12324179968,
+        "target_growth_bytes": -1220608
+      },
+      "cargo_jsonl_sha256": "01773026ab463daf87d1a57c77fc26d4792f3ba6fdadc60891f1a59aaac6805b",
+      "cargo_stderr_sha256": "de89a2213d5db64b0d13078ddb48fc29ee0bfc2c47800904a7c6fa1b3d4451a5"
+    }
+  ],
+  "current_expected_peak_bytes": 375809638,
+  "current_hard_allowance_bytes": 644245094,
+  "current_offer": "QA03-NAMESPACE-BACKEND-20261104T0426Z",
+  "current_preflight": {
+    "expected_peak_bytes": 375809638,
+    "free_bytes": 10457456640,
+    "hard_allowance_bytes": 644245094,
+    "lsof_exit_code": 1,
+    "lsof_stderr": "",
+    "lsof_stdout": "",
+    "offer": "QA03-NAMESPACE-BACKEND-20261104T0426Z",
+    "source_commit": "47fb4a771430a995749a87a21d805f753fc74630",
+    "target_baseline_allocated_bytes": 12325400576,
+    "time": 1793766406.657987
+  },
+  "current_release_checkpoint": {
+    "binary_sha256": "f63ab37801b184a5ee958cacc23bf6980feabd78fe441af1730fa9741211f0ca",
+    "budget_remaining_bytes": 626378342,
+    "free_bytes": 10311462912,
+    "lsof_exit_code": 1,
+    "lsof_stderr": "",
+    "lsof_stdout": "",
+    "offer": "QA03-NAMESPACE-BACKEND-20261104T0426Z",
+    "outside_allocated_bytes": 17866752,
+    "release": "UNCONDITIONAL; no further target access",
+    "source_commit": "47fb4a771430a995749a87a21d805f753fc74630",
+    "target_growth_bytes": -1220608
+  },
+  "current_runtime_commit": "eb9bb664",
+  "current_source_commit": "47fb4a771430a995749a87a21d805f753fc74630",
+  "native_02_raw_sha256": "2b4591f978af05fdf9155411b4227b48305b110bec14b61d35f6eddac78556e8",
+  "resource_measurement_limit": "Target/frozen allocation observed at checkpoints; PostgreSQL peak was not sampled before its successful teardown. Do not describe checkpoint values as a measured whole-workflow peak.",
+  "scope": "QA03 exact test executable qualification; historical failures retained",
+  "scoped_cache_repairs": [
+    {
+      "command": [
+        "/Users/lhs/.rustup/toolchains/1.88.0-aarch64-apple-darwin/bin/cargo",
+        "clean",
+        "--offline",
+        "-p",
+        "contracts-build"
+      ],
+      "exit_code": 0,
+      "reason": "protoc input shadowed by previous operations worktree cached contracts-build path",
+      "stderr": "     Removed 20 files, 816.3KiB total\n",
+      "stdout": ""
+    },
+    {
+      "command": [
+        "/Users/lhs/.rustup/toolchains/1.88.0-aarch64-apple-darwin/bin/cargo",
+        "clean",
+        "--offline",
+        "-p",
+        "contracts-build"
+      ],
+      "exit_code": 0,
+      "stderr": "     Removed 20 files, 816.3KiB total\n",
+      "stdout": ""
+    }
+  ]
+}
