@@ -1,0 +1,85 @@
+{
+  "task": "CSS-GIVEAWAY",
+  "result": "MOCK_READY_CSS; full foreground parity OPEN for non-CSS content/shared ownership; publication pending",
+  "base": "54320d71c4ae0bff3524d1b500cea772e0ba42e0",
+  "captureStartHead": "bef48b2a55c12e9b3d4add47b98b76c23fa8286d",
+  "captureCandidatePolicy": "Source head plus dirty owned CSS/harness fixes; actual captured CSS SHA256 recorded below and in native reports. No claim that bef48b2a contains the final working-tree CSS. Final commit supplied in handoff.",
+  "targetSha256": "2b3988d546f87b813d78ca13bf267730a6dd19118bd6535a2d3c3032b6f12d23",
+  "productPaths": [
+    "frontend/src/features/gift-discovery/ui/reference-gifts.css"
+  ],
+  "candidateCssSha256": "bfc7fcd0f0d5cc32fad690a272502af361392e272e38cc9b35fb9fafe8e5ae91",
+  "rounds": {
+    "native-01": "FAILED before browser launch: CommonJS dynamic-import named export mismatch; native-01.log preserved",
+    "native-02": "18/18 PASS; initial 27% thumbnail and 8px gutter inspected against photo",
+    "native-03": "18/18 PASS; final 29% thumbnail and 14px gutter inspected at390 and360/430, short608, long/unavailable/forced colors"
+  },
+  "otherPreservedFailures": [
+    "source-boundaries-first-failure.log: approved ephemeral dependency link misclassified",
+    "source-boundaries-second-failure.log: content regex matched justify-content; declaration boundary fixed"
+  ],
+  "commands": [
+    {
+      "command": "python3 docs/mcr/evidence/css-parity-giveaway/source-boundaries.py",
+      "exit": 0,
+      "evidence": "source-boundaries-final.json"
+    },
+    {
+      "command": "pinned Node24.22.2 --check docs/mcr/evidence/css-parity-giveaway/capture.mjs",
+      "exit": 0
+    },
+    {
+      "command": "python3 docs/mcr/evidence/css-parity-giveaway/supervise.py native-02",
+      "exit": 0
+    },
+    {
+      "command": "python3 docs/mcr/evidence/css-parity-giveaway/supervise.py native-03",
+      "exit": 0
+    }
+  ],
+  "browser": "156.0.8078.80",
+  "caseCountFinal": 18,
+  "visualFindings": {
+    "390": "Three125px rows retained. Measured thumbnail width and title x at baseline, initial candidate and final candidate are recorded in390Measured. Photo normalized to390 has approximately98px thumbnails and title around138px. The inherited selected-tab underline is removed. Title, byline, place/window and Reserve remain readable.",
+    "360430": "No clipped/overlapping copy, horizontal overflow or undersized visible control found; long truthful titles wrap, unavailable statuses expand rows.",
+    "short608": "All three Reserve controls were scrolled into view and hit-tested; filters opened by keyboard; full footer page content scrolls, not hidden.",
+    "forcedColors": "Visible solid3px Highlight focus and selected-tab border, no generated UI.",
+    "390Measured": [
+      {
+        "height": 125,
+        "image": 88.90625,
+        "titleX": 120.90625,
+        "imageX": 24
+      },
+      {
+        "height": 125,
+        "image": 92.328125,
+        "titleX": 124.328125,
+        "imageX": 24
+      },
+      {
+        "height": 125,
+        "image": 99.171875,
+        "titleX": 137.171875,
+        "imageX": 24
+      }
+    ]
+  },
+  "limits": [
+    "No actual item photos supplied; honest No photo preserved",
+    "Actual titles/owners/stock/place labels/fullKST window differ from sample; no fabricated data",
+    "Root passes no places array; Event place reference stays honest until authorized labels supplied",
+    "Shared title GIFTS/chrome/root auxiliary navigation/footer and cute background lie outside lease",
+    "44px target requirement keeps title/tab/action hit areas larger than some photo controls; do not conceal text or shrink touch targets",
+    "Synthetic HTTP/C05, not live backend/multiuser, physical device or release acceptance"
+  ],
+  "accounting": {
+    "durableEvidenceBytesAtRelease": 4048478,
+    "measuredPeakWholeBytes": 33693485,
+    "additionalOwnedCssAndDocBytes": 17138,
+    "conservativeWholeUpperBoundIncludingOwnedSourceAndLink": 33710667,
+    "hardWholeCap": 167772160,
+    "minFreeBytes": 18182512640,
+    "fullRelease": "CSS-PARITY-GIVEAWAY-202611041034Z at10:39:38Z, actual native03 ended10:39:31.682Z, zero owned handles/port/link/temp as recorded in full-release.json"
+  }
+}

@@ -1,0 +1,40 @@
+{
+  "result": "PASS",
+  "base": "54320d71c4ae0bff3524d1b500cea772e0ba42e0",
+  "head": "bef48b2a55c12e9b3d4add47b98b76c23fa8286d",
+  "changed": [
+    "docs/mcr/evidence/css-parity-giveaway/capture.mjs",
+    "docs/mcr/evidence/css-parity-giveaway/comparison.html",
+    "docs/mcr/evidence/css-parity-giveaway/reference-giveaway-crop.png",
+    "docs/mcr/evidence/css-parity-giveaway/reference.json",
+    "docs/mcr/evidence/css-parity-giveaway/source-boundaries-first-failure.log",
+    "docs/mcr/evidence/css-parity-giveaway/source-boundaries-second-failure.log",
+    "docs/mcr/evidence/css-parity-giveaway/source-boundaries.json",
+    "docs/mcr/evidence/css-parity-giveaway/source-boundaries.py",
+    "docs/mcr/evidence/css-parity-giveaway/supervisor-01.json",
+    "docs/mcr/evidence/css-parity-giveaway/supervisor-02.json",
+    "docs/mcr/frontend/css-parity-giveaway.md",
+    "frontend/src/features/gift-discovery/ui/reference-gifts.css"
+  ],
+  "checks": [
+    {
+      "path": "frontend/src/features/gift-discovery/ui/gifts.css",
+      "sha256": "f10d645469ba821be72bbecf88ce97f9229ee16b6d57e8a95e112c75970f8f2d",
+      "decorativePaintPreserved": true,
+      "noGeneratedText": true,
+      "noLeftRails": true
+    },
+    {
+      "path": "frontend/src/features/gift-discovery/ui/reference-gifts.css",
+      "sha256": "1bb26e59cd3cd4d66db4cad73bfa8cc018266ec24bd9f4be059ddfb45408078c",
+      "decorativePaintPreserved": true,
+      "noGeneratedText": true,
+      "noLeftRails": true
+    }
+  ],
+  "temporaryPaths": [
+    "frontend/node_modules: authorized own ephemeral read-only dependency link"
+  ],
+  "sourceArchivePreserved": true,
+  "nonCssProductFilesPreserved": true
+}
