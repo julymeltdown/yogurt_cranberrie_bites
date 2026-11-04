@@ -110,3 +110,37 @@ admission, predecessor release, the global workflow limit and an independent
 continuous guard remain required. Actual 0076 positive-producer integration
 requires a separate future allocation. Current outstanding resource use is 0.
 No earlier Social/Sharing PASS transfers to this new implementation.
+
+## Runtime migration custody finding
+
+Root's later diagnostic report
+`/private/tmp/mcr-c03-ledger-bsxsfmy5/sqlx-ledger-mismatch.json` records 47
+expected versions from source `46defd2346e2e73641c552b408623ce357500c15`
+and 50 actual ledger versions, with additional versions 60, 63 and 78. All
+50 recorded SHA384 checksums match the current owning checkout's migration
+directory at `83912cfe514af7c98792b9231bf0f64824baf320`; all 47 shared
+checksums match the older source as well. This comparison is static evidence,
+not a fresh executable/database run.
+
+The older source's `config::migration_directory()` uses
+`env!("CARGO_MANIFEST_DIR")/migrations`, and `migration_runtime` calls
+`Migrator::new(directory)` at runtime. It does not embed the migration SQL.
+The retained Cargo JSON identifies this same owning checkout as the main
+artifact's manifest path. Copying the executable and a separate expected SQL
+snapshot does not redirect its runtime migration directory. Changing branches
+in the owning checkout can therefore change the migrations read by that copy.
+
+The ledger mismatch establishes incoherent runtime SQL custody. It does not
+establish that the main binary embeds 50 migrations, that its compiled source
+attribution is false, or that Cargo reused a stale fingerprint. Those stronger
+interpretations are withdrawn pending evidence. No product readiness follows.
+The earlier failed artifacts and diagnostics remain preserved.
+
+A correction must freeze the actual runtime migration directory for the entire
+execution, verify its exact source/checksum manifest, execute actual `--migrate`
+and check the resulting ledger against that same manifest under a valid lease.
+Any requested rebuild must use the declared coherent source, actual Cargo JSON
+and executable hash; an unchanged deterministic hash must not be disguised by
+inventing a source revision. The queued two-test offer above excludes main and
+PG and cannot perform this correction. Source custody planning requires no
+cache deletion or product-code change.
