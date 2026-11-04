@@ -1,0 +1,74 @@
+{
+  "status": "PASS_SPATIAL_V3_PROPOSAL_ONLY",
+  "geometry_hash": "sha256:899aca9bd6ce499c6f46aff5eaf21e30ab34b301e988771b978a6fab7c2d469f",
+  "collision_cells": 3888,
+  "routes": [
+    {
+      "from": "courtyard_entry",
+      "to": "courtyard_entry",
+      "steps": 0
+    },
+    {
+      "from": "courtyard_entry",
+      "to": "community_entry",
+      "steps": 25
+    },
+    {
+      "from": "courtyard_entry",
+      "to": "stage_info",
+      "steps": 3
+    },
+    {
+      "from": "courtyard_entry",
+      "to": "park_info",
+      "steps": 10
+    },
+    {
+      "from": "courtyard_entry",
+      "to": "gifts_info",
+      "steps": 38
+    },
+    {
+      "from": "courtyard_entry",
+      "to": "wall_info",
+      "steps": 50
+    },
+    {
+      "from": "community_entry",
+      "to": "courtyard_entry",
+      "steps": 25
+    },
+    {
+      "from": "community_entry",
+      "to": "community_entry",
+      "steps": 0
+    },
+    {
+      "from": "community_entry",
+      "to": "stage_info",
+      "steps": 28
+    },
+    {
+      "from": "community_entry",
+      "to": "park_info",
+      "steps": 27
+    },
+    {
+      "from": "community_entry",
+      "to": "gifts_info",
+      "steps": 19
+    },
+    {
+      "from": "community_entry",
+      "to": "wall_info",
+      "steps": 31
+    }
+  ],
+  "spawns": 2,
+  "interactions": 4,
+  "physical_props": 22,
+  "map_only_representations": 6,
+  "new_ids": 0,
+  "place_records_identical": true,
+  "limits": "Separate virtual candidate only; no actual runtime Tiled/descriptor adoption, physical review, source-review-state upgrade or fidelity acceptance."
+}

@@ -1,0 +1,32 @@
+{
+  "method": "Built-in image_gen, original character-free scenery. Tool-returned source PNG bytes preserved. Only explicitly declared non-generative packing/reconstruction follows. No original character sampled or edited.",
+  "sources": [
+    {
+      "path": "sources/venue-sheet.png",
+      "sha256": "sha256:d2fdd9e0c87584c2b66f0f76820f842070e70d0acb14c5962342eaafde92d886",
+      "bytes": 1930224,
+      "generation_ref": "exec-35168a38-10b8-4cb8-a5a6-2f97c66e46d0.png",
+      "inputs": []
+    },
+    {
+      "path": "sources/surface-sheet.png",
+      "sha256": "sha256:695ddcdd0d895d01445df545035ae21de3db12c5c17fdfb47b244b2b3c616dae",
+      "bytes": 1545597,
+      "generation_ref": "exec-63d9e14e-9d3c-4168-91f1-32fef419ed6c.png",
+      "inputs": [
+        "painted/surface-source-v3.png at8f89"
+      ]
+    },
+    {
+      "path": "sources/stage-sheet.png",
+      "sha256": "sha256:f956c25f756888c4c84fafa449eedd0172125c9b1363f372716f5646b9b2266b",
+      "bytes": 1900193,
+      "generation_ref": "exec-5408a718-0cde-42a5-9582-e54e6d876456.png",
+      "inputs": [
+        "eras-v5/parade/source-atlas.png at02320134",
+        "supplied reference-target-2026-11-04.png scenery structure only"
+      ]
+    }
+  ],
+  "limitations": "Generation provenance and developer hash checks are not formal source-contract review or target acceptance."
+}

@@ -212,6 +212,7 @@ impl GuardBinding {
 pub trait HeldChildGuard: Send + Sync {
     async fn check(&self) -> Result<(), Status>;
     async fn complete_settled(&self) -> Result<(), Status>;
+    fn recovery_reference(&self) -> Result<super::ChildRecoveryReference, Status>;
 }
 /// A sealed, currently enrolled public-profile subject. Construction stays within
 /// the real canonical owner scope; arbitrary Context/observation cannot mint it.
@@ -247,6 +248,21 @@ impl GuardedSubject {
     }
     pub async fn retain_child(&self, child: Arc<dyn HeldChildGuard>) -> Result<(), Status> {
         self.scope.retain_child(child).await
+    }
+    pub async fn register_child_intent(
+        &self,
+        reference: &super::ChildRecoveryReference,
+    ) -> Result<(), Status> {
+        if reference.query().subject != self.subject {
+            return Err(Status::permission_denied("Child subject mismatch"));
+        }
+        self.scope.register_child_intent(reference).await
+    }
+    pub async fn capture_child_identity_in(
+        &self,
+        connection: &mut sqlx::PgConnection,
+    ) -> Result<super::ChildNativeIdentity, Status> {
+        super::ChildNativeIdentity::capture_concert_in(connection, &self.scope).await
     }
 }
 /// Actual full transaction identity must be read by the producer on its protected
