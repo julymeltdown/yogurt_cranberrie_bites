@@ -275,3 +275,26 @@ by participant `01a1a209-80da-7e53-a295-b64cfe09c1d7`; publishing it alone would
 expose the same canonical overwrite in Concert. The remaining independent
 Concert nine adapter cases and three wire cases need their own fresh target lease.
 No live Feed, BE31/BE32 or IN01 acceptance is claimed.
+
+
+## PublicProfile dependency consumption
+
+Published PublicProfile increment `9119073a` is consumed by merge `067e18e6`.
+The merge preserved the owned Feed/Post source byte-for-byte. Feed policy and
+resources are now exported with `QualifiedReadFeed::connect`, which composes the
+actual scoped Post transport, current PublicProfile reader and author-filtering
+adapter. This is source only until a fresh Concert compile and joined checks.
+The constructor accepts a real retained OwnerGuardScope, fixed Post mTLS identity,
+its dedicated read signer, current reader and dedicated cursor codec. Root still
+owns actual HTTP completion and settlement; this constructor does not register
+or enable a product capability.
+
+A denial ambiguity was found during integration: the SDK uses PermissionDenied
+for both ineligible subjects and sealed/stale/mismatched scopes. Feed now treats
+PermissionDenied from the SDK as a whole dependency failure; only reserved
+NotFound may filter an unavailable nonactor subject. SDK owner `01a1a207` has the
+request for a distinct true-subject-denial result. PublicProfile owner `01a1a205`
+has the matching correction request for its current broad PermissionDenied to
+ResourceUnavailable conversion. Until corrected, that upstream mapping remains
+a qualification blocker. No invalid whole scope may become an empty successful
+feed response.

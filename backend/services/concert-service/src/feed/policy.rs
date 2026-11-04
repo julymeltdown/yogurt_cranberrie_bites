@@ -137,10 +137,8 @@ impl FeedPolicy for GuardedPolicy {
 
 fn subject_failure(status: tonic::Status, actor: bool) -> FeedError {
     match status.code() {
-        tonic::Code::NotFound | tonic::Code::PermissionDenied if actor => {
-            FeedError::PermissionDenied
-        }
-        tonic::Code::NotFound | tonic::Code::PermissionDenied => FeedError::ResourceUnavailable,
+        tonic::Code::NotFound if actor => FeedError::PermissionDenied,
+        tonic::Code::NotFound => FeedError::ResourceUnavailable,
         _ => FeedError::DependencyUnavailable,
     }
 }

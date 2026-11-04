@@ -87,7 +87,7 @@ impl FeedResources for GuardedResources {
 
 fn subject_failure(status: tonic::Status) -> FeedError {
     match status.code() {
-        tonic::Code::NotFound | tonic::Code::PermissionDenied => FeedError::ResourceUnavailable,
+        tonic::Code::NotFound => FeedError::ResourceUnavailable,
         _ => FeedError::DependencyUnavailable,
     }
 }
