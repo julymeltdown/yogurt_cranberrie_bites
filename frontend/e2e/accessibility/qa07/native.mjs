@@ -127,6 +127,17 @@ try {
       await expect(button(p, 'Reveal Instagram')).toHaveCount(0)
       notes.push('Actual public SharingRequest/controller: keyboard explicit reveal, hide and confirmed revoke without canvas; approved consent is synthetic fixture authority')
     })
+    await run('social-consent', width, async (p, notes) => {
+      await p.goto(origin + own + '?social=pending')
+      const approve = button(p, 'Approve selected platforms')
+      await expect(approve).toBeDisabled()
+      await activate(p, p.getByRole('checkbox', { name: 'Exchange Instagram account names', exact: true }), 'Space')
+      await expect(approve).toBeDisabled()
+      await activate(p, p.getByRole('checkbox', { name: 'I explicitly consent to share my selected account names with the requester.', exact: true }), 'Space')
+      await activate(p, approve); await expect(button(p, 'Reveal Instagram')).toBeEnabled()
+      await expect(p.getByText('@qa07_synthetic_private', { exact: true })).toHaveCount(0)
+      notes.push('Actual recipient SharingRequest/controller: keyboard platform checkbox and explicit reciprocal-consent checkbox required before approval; approval reveals metadata only, synthetic pending/decision authority')
+    })
     await run('safety-block', width, async (p, notes) => {
       await p.goto(origin + '/src/features/safety/__tests__/preview.html')
       const opener = button(p, 'Block user')
