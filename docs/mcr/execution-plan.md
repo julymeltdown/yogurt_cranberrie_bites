@@ -3,16 +3,20 @@
 ## Current checkpoint
 
 The [current progress reconciliation](progress.md#current-task-accounting) records
-39 task-criteria outcomes: 13 recorded acceptance dispositions plus 26 additional
-original-task criteria closures. Exact owner states are preserved, including FE07 and FE15
-INTEGRATED, FE18 CONTRACT_READY and FE32 MOCK_READY. The latest owner-declared original-task closures are FE14, FE19, QA01,
-QA02, FE09, FE15, QA07, BE12, FE07, BE26, FE21, FE24, FE18, FE32 and original IN01. Another 67 original tasks
-have partial or unreconciled implementation evidence, 2 statuses remain
-unreconciled, and 4 IN gates (IN02–IN05) remain open. IN01 has an owner-completed published original gate receipt at1bb911c3. The [112-row register](task-progress-2026-11-04.json)
-states the evidence and limitations. Historical 11/112 statements later in this
-document are not current implementation progress, and no effort-weighted
-completion percentage is asserted.
-Five earlier backend coverage corrections and the latest QA05/QA08 IN_PROGRESS/PARTIAL dispositions add no completed tasks. C07 and QA10 remain unreconciled. The frontend 11:48 UTC hourly rollup adds no unique original closure; FE40 remains counted once. The backend 11:59 UTC hourly report also asserts no new original-task closure. QA05 retains its independent realtime failure suite; QA08 retains the original 200-socket/four-room, mobile/network/recovery qualification. Ordinary bounded local preparation for that already-required scope needs no new approval solely for the count. IN01 remains ACCEPTED from the responsible owner; natural-expiry observation is informational, with no added 900-second requirement. Full reference fidelity and IN02–IN05 remain open.
+39 task-criteria outcomes: 13 acceptance dispositions and 26 additional original
+criteria closures. Another 67 tasks have implementation evidence, 2 dispositions
+(C07/QA10) remain unreconciled, and 4 integration gates (IN02–IN05) remain open.
+IN01 remains accepted. The [112-row register](task-progress-2026-11-04.json) preserves
+all exact task identities and owner states; these counts are not an effort-weighted
+product-completion percentage. The frontend 12:57 and backend 13:01 UTC hourly
+reports assert no new unique original closure. QA01 and FE40 are counted once.
+
+QA05's bounded restart/fault pair progressed while its original failure suite
+remains partial. The independent 200-user QA08 qualification has started without
+a capacity-result claim. QA09 has actual paired frontend/backend owners and active
+goals. FE41 remaining integration belongs to Root153 after the CSS-only writer
+stopped and returned its leases. Full reference, device, recovery and release
+requirements remain intact. No extra 900-second expiry or renewal/reload gate is added.
 
 The current coordination model has no king or SL technical review stage.
 Developers implement, validate, resolve technical interfaces and commit their
@@ -30,23 +34,23 @@ digest and main updates the central register in batches. Escalate immediately
 only for an unresolved cross-lane conflict, genuinely unattended critical work
 or a necessary human decision. Routine receipts do not require replies.
 
-The frontend 11:48 UTC and backend 11:59 UTC hourly reports add no unique
-original-task closure. The current portfolio records bounded native/source
-progress without claiming live-product or full visual acceptance. FE40 is counted
-once. C07 and QA10 remain unreconciled; IN02–IN05 remain open. Use the linked
-current portfolio for major outcomes, owners and remaining boundaries.
+Use the current portfolio for major outcomes and receiving owners. The 13:04
+recent-list sample has 3 active coordination chats and 8 active implementation/art/QA
+chats; it is not an exhaustive staffing or completed-goal census. Nine foreground
+screen workers remain CSS-only and hand off directly to Root153. Existing feature
+and art owners retain the non-CSS integration and reference-composition work.
 
-Nine foreground CSS workers hand off directly to Root153. Existing feature/art
-owners handle Map reference convergence, Customize options and Feed media gaps.
-Historical chat inventories are dated samples, not current writer counts.
-Backend SL schedules the existing output queue; required UI parity and original
-integration work receive fair bounded rounds without a king review stage.
+Actual-owner retention reopened bounded work after fresh-start refusals. The existing limits remain
+16 GiB at acceptance and 8 GiB while running; a fresh per-child 16 GiB condition is
+not part of an already accepted lease. QA08 is running, Feed's short round released,
+and further starts follow actual capacity. No new permanent floor or all-cleanup
+barrier is added. The Title/Focus custody gap remains explicit and Root153's affected
+retirement-dispatch route stays stopped. Source work continues independently.
 
-Owner-led cleanup reportedly restored about 20 GiB and bounded work resumed.
-Existing 16 GiB start / 8 GiB running floors and accepted workload limits remain.
-No all-cleanup-complete barrier or new permanent headroom floor is added. The
-Title/Focus custody preservation gap remains explicit; Root153's affected
-retirement-dispatch route is stopped while unrelated authorized work continues.
+Authentic supplied Feed crops may be displayed larger with CSS to match the
+reference. Preserve source files and true intrinsic metadata; do not fabricate
+higher-resolution content. Earlier inferred fit-down-only fixture guidance cannot
+waive the user's required fidelity. Rendering validation remains developer-owned.
 
 Production composition is not a blanket single-developer reservation. Backend SL
 and the implementation owner may transfer disjoint provider/integration modules
