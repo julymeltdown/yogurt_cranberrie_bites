@@ -49,8 +49,8 @@ are never updated on retry. No HTTP/RPC endpoint is mounted by this leaf.
 
 Exact native generations now enter the private, immutable
 `concert_world_session_deletion_victims` journal before any local view/socket is
-withdrawn. One owner discovers at most 1664 generations from its existing
-800-entry bridge and 864-entry socket registries, persisted with bounded bulk
+withdrawn. One owner discovers at most 3264 generations from its three existing
+800-entry bridge maps and 864-entry socket registry, persisted with bounded bulk
 SQL. The caller retains the admission gate across discovery and withdrawal;
 the synchronous native publication fence never spans a database await. Each
 attempt confirms at most 128 native effects durably. A new dispatcher loads

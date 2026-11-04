@@ -158,9 +158,9 @@ impl SessionOwner {
             let (id, value) = payload(&binding)?;
             captured.insert(id, value);
         }
-        // Both source registries are bounded (800 bridge + 864 socket entries).
+        // Three bridge maps are each capped at800; socket registry at864.
         // Persist the complete bounded discovery page BEFORE removing any view.
-        if captured.len() > 1664 {
+        if captured.len() > 3264 {
             return Err(DeletionFailure::Unavailable);
         }
         if !captured.is_empty() {
