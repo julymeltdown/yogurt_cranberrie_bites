@@ -1,0 +1,84 @@
+{
+  "base": "bd087fde2c67933b53d1666d3656af5ac98a7c19",
+  "frozenPolicyContract": "83f55f9639273a7994a30d6a591e642f7e4b674f",
+  "readOnlyInputs": {
+    "contracts/domain/v1/admin.schema.json": {
+      "sha256": "045af18ec63eceaf2198c1a11031b6c49abc0a6652a77a68d534b82a59bd0a3e",
+      "gitBlob": "6c0027b184b86d3d4466c141f4296168d14a3b16"
+    },
+    "contracts/domain/v1/common.schema.json": {
+      "sha256": "cc34c0a16cff70f89a4779ebf6aa962a9009d7ffa7c3d84133d13c2dc159f258",
+      "gitBlob": "0e0d41f7db0a9cc849d5263e509dd6da9706d546"
+    },
+    "contracts/domain/v1/operations.json": {
+      "sha256": "e6fd3cb09b6660935102c25c76f8abbb709451dfc039aea4495037df0f5458fb",
+      "gitBlob": "b6ed254e7375f80e1fad773d9b6a07d9b4bf14ca"
+    },
+    "contracts/domain/v1/policy.json": {
+      "sha256": "55deb76bf4591d33100b824b1fdd6bfd7c61ca656f073093e3bfc1541149e3ef",
+      "gitBlob": "e48bac616f1551696ab4fbcc023f08c25d000558"
+    },
+    "contracts/generated/api-client/runtime.ts": {
+      "sha256": "2022e42863e2d0970071d6930c0ec746384768901ca2854fc67f09d40ea33065",
+      "gitBlob": "0da16c468dac58da9c22ba6ed0c4dbb1eb9f1c83"
+    },
+    "contracts/generated/api-client/types.ts": {
+      "sha256": "32de221a260c37703735cef910411a9969a9401fcdc9d217cf0c3b5321a99eb0",
+      "gitBlob": "dfd70d03592fa44079814aa5fbc2f34e510ffb46"
+    },
+    "contracts/generated/api-client/document.ts": {
+      "sha256": "95a5e5e5a9da7e970fe2e2eb6850f6529adace9976736d1296264d06275d85f6",
+      "gitBlob": "624c161605d0c4b78a6c20d81e346ba9d59f5922"
+    },
+    "frontend/src/shared/api/http.ts": {
+      "sha256": "23dc24d55f9d91f769af10106930e2fc0a7ac78dbc6aa3294f6c5ea526947fee",
+      "gitBlob": "e50ce2c8d82dc7582bdb6c385bb25b471568db7c"
+    },
+    "frontend/src/shared/api/domain-operations.generated.ts": {
+      "sha256": "3610456a0925aee9c4e3a32564016ea6acc26b7ab01ce536659b7333a5ddd447",
+      "gitBlob": "6e01670f57e73a2acb6d31595d520a969128ad93"
+    },
+    "frontend/src/features/admin/event/model/lease.ts": {
+      "sha256": "64139083f91530cbe75a5e37fa473e82e5196c3f8c8253dfa69b5ba8d6223214",
+      "gitBlob": "b1d0358f6039457c9be684c139bc733dcc9b84f0"
+    },
+    "frontend/src/features/admin/event/model/ports.ts": {
+      "sha256": "38e116b5fb365920c9ca35a2d445ec2b34eefc6148cf35b7da021be60c70252b",
+      "gitBlob": "fba784facff34b4df50014c25f3dff4badb8872c"
+    },
+    "frontend/src/app/operations-entry/index.ts": {
+      "sha256": "d6139ce9279c61b7e430495ba1f2c7a15ec6b5f4157726df5309b625769ce437",
+      "gitBlob": "eb5cb580413f218a13116ae4808876728ead4b3c"
+    },
+    "frontend/pnpm-lock.yaml": {
+      "sha256": "47ca44459819ad0e887d2f4f93394fdf3b1053b8f45edc9ceb0236981feee1f6",
+      "gitBlob": "7717408b8c7e5dca744e85aa55ea792e09ab5c5c"
+    }
+  },
+  "adaptations": [
+    {
+      "source": "docs/mcr/evidence/avatar-integration-continuity/{guardian.py,shared-portraits-qualify.py}",
+      "revision": "bd087fde2c67933b53d1666d3656af5ac98a7c19",
+      "destination": "docs/mcr/evidence/admin-service-policy/{guardian.py,qualify.py}",
+      "changes": "Exact NEW scope; full inode census including whole checkout/retained deps/tools/shared Git; own env and six source commands; no prior tests replayed."
+    },
+    {
+      "source": "frontend/src/world/avatar/__tests__/motion-adoption/typecheck.mjs",
+      "revision": "bd087fde2c67933b53d1666d3656af5ac98a7c19",
+      "destination": "frontend/src/features/admin/service-policy/__tests__/typecheck.mjs",
+      "changes": "Focused new roots with all transitive diagnostics, retained paths/no emit."
+    }
+  ],
+  "producerClarification": {
+    "owner": "207 via actual16e repository trace",
+    "successResource": "eventId and actual event revision, separate from expected_policy_revision",
+    "write200": "SUCCEEDED or FAILED",
+    "write202": "PENDING only",
+    "status200": "PENDING,SUCCEEDED,FAILED",
+    "statusMissingRetiredExpiredForeign": "404 RESOURCE_UNAVAILABLE; no metadata"
+  },
+  "sourceTestsAuthored": 34,
+  "sourceChecks": "NOT_RUN",
+  "native": "NOT_RUN",
+  "originalGoal": "FE12/FE13 unfinished metadata preserved; durable new FE38 objective in assigned MD"
+}

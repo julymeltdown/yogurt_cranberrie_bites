@@ -1,0 +1,99 @@
+{
+  "offer": "FE38-SERVICE-POLICY-SOURCE-20261104T2327Z",
+  "actualAccept": "2026-11-04T23:28:52.419588+00:00",
+  "actualFull": "2026-11-04T23:30:06Z",
+  "cleanupTerminal": "2026-11-04T23:29:50.973962+00:00",
+  "qualifiedSource": "280da366869d7e32e65f5b0f302b9c73960ee345",
+  "result": "PASS",
+  "commands": [
+    {
+      "label": "tests",
+      "argv": [
+        "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node",
+        "/Users/lhs/Desktop/mcr/frontend/node_modules/vitest/vitest.mjs",
+        "run",
+        "--configLoader",
+        "runner",
+        "--config",
+        "src/features/admin/service-policy/__tests__/vitest.config.mjs",
+        "--no-cache",
+        "--reporter",
+        "dot"
+      ],
+      "pid": 88515,
+      "exit": 0
+    },
+    {
+      "label": "lint",
+      "argv": [
+        "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node",
+        "/Users/lhs/Desktop/mcr/frontend/node_modules/oxlint/bin/oxlint",
+        "--deny-warnings",
+        "src/features/admin/service-policy"
+      ],
+      "pid": 88871,
+      "exit": 0
+    },
+    {
+      "label": "types",
+      "argv": [
+        "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node",
+        "--max-old-space-size=2048",
+        "src/features/admin/service-policy/__tests__/typecheck.mjs"
+      ],
+      "pid": 88963,
+      "exit": 0
+    },
+    {
+      "label": "native-syntax",
+      "argv": [
+        "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node",
+        "--check",
+        "src/features/admin/service-policy/__tests__/native.mjs"
+      ],
+      "pid": 89569,
+      "exit": 0
+    },
+    {
+      "label": "vitest.config-syntax",
+      "argv": [
+        "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node",
+        "--check",
+        "src/features/admin/service-policy/__tests__/vitest.config.mjs"
+      ],
+      "pid": 89653,
+      "exit": 0
+    },
+    {
+      "label": "typecheck-syntax",
+      "argv": [
+        "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node",
+        "--check",
+        "src/features/admin/service-policy/__tests__/typecheck.mjs"
+      ],
+      "pid": 89710,
+      "exit": 0
+    }
+  ],
+  "newTests": 34,
+  "testFiles": 2,
+  "typeRoots": 8,
+  "transitiveTypeFiles": 708,
+  "diagnostics": 0,
+  "lintWarnings": 0,
+  "priorFailure": "First33/34; assertion used DOM property rather than inherited fieldset disabled state. Fixed test-only matcher and TestingLibrary act. Raw original logs preserved.",
+  "allGuardsNoBreach": true,
+  "allResourcesZero": true,
+  "maximums": {
+    "wholePeak": 3528549380,
+    "rssPeak": 1206222848,
+    "processPeak": 6,
+    "durablePeak": 82816,
+    "temporaryPeak": 9567584
+  },
+  "cumulativeChargedNEW": 21733956,
+  "aggregateSpentTMP": 19135168,
+  "limits": "Original96MiBNEW/4GiBWHOLE/300WORK360FULL unchanged; retry deducted prior spentTMP from NEW, added same to OTHER, and retained higher WHOLE. No later reentry.",
+  "timestampCorrection": "Initial FULL messages typed23:30:00; immediately corrected directly to both21d and207 using actual clock23:30:06. No rounded value is retained as actual.",
+  "native": "NOT_RUN"
+}

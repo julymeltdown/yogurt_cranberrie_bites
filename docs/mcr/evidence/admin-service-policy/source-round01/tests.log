@@ -1,0 +1,41 @@
+
+ RUN  v4.1.9 /Users/lhs/Desktop/mcr-worktrees/art-runtime/frontend
+
+································stderr | src/features/admin/service-policy/__tests__/ui.test.tsx > retains pending command across child unmount and scrubs controls on authority withdrawal
+The current testing environment is not configured to support act(...)
+The current testing environment is not configured to support act(...)
+The current testing environment is not configured to support act(...)
+
+stderr | src/features/admin/service-policy/__tests__/ui.test.tsx > retains pending command across child unmount and scrubs controls on authority withdrawal
+The current testing environment is not configured to support act(...)
+The current testing environment is not configured to support act(...)
+
+·x
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  src/features/admin/service-policy/__tests__/ui.test.tsx > retains pending command across child unmount and scrubs controls on authority withdrawal
+AssertionError: expected false to be true // Object.is equality
+
+- Expected
++ Received
+
+- true
++ false
+
+ ❯ src/features/admin/service-policy/__tests__/ui.test.tsx:30:77
+     28|   cleanup(); render(<ServicePolicyOperations controller={owner.control…
+     29|   await waitFor(() => expect(screen.getByRole('button', { name: 'Check…
+     30|   expect((screen.getByLabelText('Reason') as HTMLTextAreaElement).disa…
+       |                                                                             ^
+     31|   act(() => owner.withdraw())
+     32|   expect(screen.queryByLabelText('Reason')).toBeNull(); expect(screen.…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+
+ Test Files  1 failed | 1 passed (2)
+      Tests  1 failed | 33 passed (34)
+   Start at  08:29:11
+   Duration  2.29s (transform 655ms, setup 0ms, import 1.05s, tests 330ms, environment 748ms)
+

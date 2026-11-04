@@ -1,0 +1,154 @@
+{
+  "offer": {
+    "id": "FE38-SERVICE-POLICY-SOURCE-20261104T2327Z",
+    "accepted": "2026-11-04T23:28:52.419588+00:00",
+    "workDeadline": "2026-11-04T23:33:52.419588+00:00",
+    "deadline": "2026-11-04T23:34:52.419588+00:00",
+    "source": "3776b35a7968317b3d0e73ff4896ea623a8c9e6c",
+    "processes": 8,
+    "rssBytes": 2684354560,
+    "wholeBytes": 4294967296,
+    "newBytes": 100663296,
+    "temporaryBytes": 50331648,
+    "durableBytes": 50331648,
+    "minimumCarryBytes": 3503750953,
+    "admissionFreeBytes": 11811160064,
+    "afterAllFreeBytes": 9663676416,
+    "continuousFreeBytes": 8589934592,
+    "otherUpperBytes": 5368709120,
+    "actualFree": 17389047808,
+    "afterAll": 11919675392,
+    "inventory": [
+      {
+        "root": "/Users/lhs/Desktop/mcr-worktrees/art-runtime",
+        "bytes": 1475981664,
+        "inodes": 17916
+      },
+      {
+        "root": "/Users/lhs/Desktop/mcr/frontend/node_modules",
+        "bytes": 438891729,
+        "inodes": 13420
+      },
+      {
+        "root": "/Users/lhs/Desktop/mcr-tools",
+        "bytes": 419021528,
+        "inodes": 8089
+      },
+      {
+        "root": "/Users/lhs/Desktop/mcr/.git",
+        "bytes": 1169856032,
+        "inodes": 4126
+      }
+    ],
+    "readset": {
+      "frontend/src/features/admin/service-policy/contract.ts": "e6c06949e81b7f44dd9a92bf22bc7b032ffad9e1bdf49a5e2a4cf4d5016e8d18",
+      "frontend/src/features/admin/service-policy/ServicePolicyOperations.tsx": "c97f9c1c7f871df85c370f1b6db76fee4737e7fb4edb3ec801e2b5694081bc74",
+      "frontend/src/features/admin/service-policy/index.ts": "ed4bf73dcdb47ae6ec5790e123260a07aee1cc2e9785cd3d0cbaf0b1da5503a3",
+      "frontend/src/features/admin/service-policy/controller.ts": "9229bf596d593a613a2ffa9eb724105bd59caf0b50338dc2bacaf6249b92a48f",
+      "frontend/src/features/admin/service-policy/__tests__/typecheck.mjs": "c33c768602008e724bbafe9a6669eeb5b29b62e3c5b18179e71210876db710a0",
+      "frontend/src/features/admin/service-policy/__tests__/preview.html": "6be1ddb978324edeaa7fc96edce7f5fc61c2bd14592e6441645cc360a43a5027",
+      "frontend/src/features/admin/service-policy/__tests__/preview.tsx": "b4ad21949237263dd7413d082e86e2f05cf2243ded7fecbaf5e8b4aa2767cd73",
+      "frontend/src/features/admin/service-policy/__tests__/controller.test.ts": "5cdb87c626b7b8bd81000e7608daf5e570ad4f9bddf69936a21d228ffa7e84cd",
+      "frontend/src/features/admin/service-policy/__tests__/ui.test.tsx": "a473110c7ec40a790d92dd839f7efa92fb534bccfc1f9c4adbe82e690eec61e2",
+      "frontend/src/features/admin/service-policy/__tests__/vitest.config.mjs": "71cdd369a398d4c90422db13ff1301462419afc3a761262c0e207e1341e5e739",
+      "frontend/src/features/admin/service-policy/__tests__/native.mjs": "03243cbf0a7be3f193579688b0955e446bc7494610750a54c6f2bbff8fb390bf",
+      "frontend/src/features/admin/service-policy/__tests__/fixture.ts": "1faa3e45ec9a7696bbfc2d94512333ce8dad508bf4559c828710b4e12ebb77ce",
+      "docs/mcr/evidence/admin-service-policy/guardian.py": "45ab0e2837879f808dd8760afd06dbdbf42488d6955890b8b5bfb5f7ce89eb23",
+      "docs/mcr/evidence/admin-service-policy/source-inputs.json": "6fd2a8c791949080bc996c58c1ce696adc2b69fd9832d9ce7d2f1ec9e0ca8baf",
+      "docs/mcr/evidence/admin-service-policy/qualify.py": "6f605762fff0d6bb8bf30f5754c422da32796459146fef03be12540443f4cb98"
+    },
+    "nodeSHA256": "b6fb419f0f43bb2fbca273700294dd2f3b685a64b60e8417c295f47646a70e4a",
+    "predecessor": {
+      "id": "ART-MAP-V3-FOUNDATION-FINAL-20261104T2327Z",
+      "actualFull": "2026-11-04T23:27:36.688380Z",
+      "resources": 0,
+      "via": "literal direct231 receipt; Clock predecessor FULL23:26:06.518951"
+    },
+    "pinAmendment": "Direct21d pre-ACCEPT a362\u21923776 authorized; same six commands/34cases/controls/caps",
+    "globalBounds": "Party target40ALL/8GiB + FE38source8/2.5 + Dsource<=8/1 + FE41browser24/3<=80ALL14.5/G4; BE06Dnative40/3 cannot overlap FE41 per its explicit release chain, giving88ALL13.5/G3. Conservative OTHER5GiB per current21d amendment. No reservation for unaccepted jobs."
+  },
+  "mode": "source",
+  "source": "3776b35a7968317b3d0e73ff4896ea623a8c9e6c",
+  "commands": [
+    {
+      "label": "tests",
+      "argv": [
+        "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node",
+        "/Users/lhs/Desktop/mcr/frontend/node_modules/vitest/vitest.mjs",
+        "run",
+        "--configLoader",
+        "runner",
+        "--config",
+        "src/features/admin/service-policy/__tests__/vitest.config.mjs",
+        "--no-cache",
+        "--reporter",
+        "dot"
+      ],
+      "pid": 84461,
+      "exit": 1
+    }
+  ],
+  "inventory": {
+    "total": 3504146025,
+    "roots": [
+      {
+        "root": "/Users/lhs/Desktop/mcr-worktrees/art-runtime",
+        "bytes": 1475985792,
+        "inodes": 17917
+      },
+      {
+        "root": "/Users/lhs/Desktop/mcr/frontend/node_modules",
+        "bytes": 438891729,
+        "inodes": 13420
+      },
+      {
+        "root": "/Users/lhs/Desktop/mcr-tools",
+        "bytes": 419021528,
+        "inodes": 8089
+      },
+      {
+        "root": "/Users/lhs/Desktop/mcr/.git",
+        "bytes": 1170246976,
+        "inodes": 4167
+      }
+    ]
+  },
+  "carryBoundBytes": 3504146025,
+  "wholePeak": 3516383008,
+  "status": "FAIL",
+  "startedUTC": "2026-11-04T23:29:09.573093+00:00",
+  "rssPeak": 917372928,
+  "processPeak": 6,
+  "temporaryPeak": 9567584,
+  "durablePeak": 49568,
+  "freeMinimum": 17338818560,
+  "newPeak": 12092247,
+  "failure": "AssertionError: tests failed",
+  "guardian": {
+    "breach": null,
+    "samples": 5,
+    "peaks": {
+      "processes": 5,
+      "rss": 913981440,
+      "temporary": 9567584,
+      "durable": 49568,
+      "new": 12092247,
+      "whole": 3516383008
+    },
+    "minimumFree": 17338818560
+  },
+  "ownedPids": [
+    84334,
+    84461,
+    84463,
+    84565,
+    84596,
+    84695,
+    84702,
+    84788
+  ],
+  "aliveOwnedPids": [],
+  "privateTempAbsent": true,
+  "dependencyLinkAbsent": true,
+  "endedUTC": "2026-11-04T23:29:14.772251+00:00"
+}
