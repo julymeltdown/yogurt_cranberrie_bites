@@ -861,6 +861,38 @@ The03:05 hourly digest was already sent once03:12. These natural handoffs and
 new accounting go in the next hourly digest; no duplicate routine King packet
 or acknowledgment prerequisite. SL performed management reconciliation only.
 
+### Actual resource transition —03:23KST
+
+Actual owner reports replace the earlier dated two-browser inventory:
+Profile B1 retry FULL18:21:00.774341Z, Map B2 FULL18:21:37.360385Z;
+both workflows/NEW/PIDs/TMP/links0 and ports5324/5323 reusable. Map's affected
+35tests/types/lint/syntax/one390case ownerPASS and two owner-inspected images
+are a bounded World contribution, not a new Community original closure.
+Community holds no runtime job/offer. Social Artist231 has a finite1822 raster
+SOURCE offer through18:25:00Z, NEW64MiB/WHOLE2GiB/4ALL512MiB/120work240TOTAL;
+last immediate snapshot preflight only, actualACCEPT not yet reported.
+FE17native128MiB/Profile repair tail queued/unheld, no future reservation.
+
+World reports00c actualTARGET RELEASE18:19:38.678139Z and FULL18:21:24.235327Z,
+NEW/workflow0. Resource allocator21d explicitly amended FUTURE bounded warm
+builds with ALLNEW<=3GiB to12GiB start,9GiB after all outstanding growth and
+8GiB continuous; no cold/unbounded workload, cap/clock reset or Community
+policy override. Existing shared-target carry is centrally charged once;
+new positive growth/highwater remains in the active owner's allowance.
+
+Ageb91d now reports FIRST ACTUAL ACCEPT18:22:32.266892Z, cleanf309c37c,
+unchanged Root-authorizedcfaABI; guard-before-children/controller+independent
+warm12GiB parameter. ONE actual BEworkflow/ALLNEW2GiB, carry6/WHOLE10GiB,
+outside768MiB/EXE80MiB/PG512MiB; build40/RSS8GiB/native48/RSS4GiB.
+Original450compile480freeze780work1020FULL/240cleanup absolute hardFULL
+18:39:32.266892Z, no clock reset. Evidence/private/tmp/mcr-age-deletion-native-569rqzsa.
+Age target release will go directlyWorld9c12 BEFORE private native, but its
+workflow/NEW stays charged until actualFULL. WorldREADY/nohold remains fair
+successor; actual compiler/handles0 release, fresh guards/all maxima/global4
+required, not inferred admission. Current FE facts and actualAge transition
+sent DIRECT Age/World/21d/Social as applicable; no King packet or review ACK.
+These resource transitions do not pass deferredQA08 or another original gate.
+
 | Original ID | Owner / current task-level disposition | Work since previous checkpoint / latest retained publication | Remaining original criteria, dependency owner and next action |
 |---|---|---|---|
 | FE09 | Revised DONE; Original task-local SATISFIED retained;204 bounded goalCOMPLETE/Auth9leasesreturned, now Social FE10 owner, no current Auth9 lease | Source `f3bdc853` published `70a444bf`; all11 latest payloads independently verified,81 targeted fixtures/types/lint/plan PASS reported. No original gap/product edit; execution-plan progress-line drift informational | Current revised remaining: None in the current revised task scope; separately open integration/reference tasks retain their own criteria. Retained owner/dependency context: No remaining bounded FE09 delivery work. Expiry observation NOT_RUN informational, no duration/renewal gate. World reports original IN01 criteria/delivery PASS, actual COMPLETE/leases returned/freeze released; World owns its accounting.204 completed FE40/read-only assessment and subsequently accepted WallB; no current Auth lease |
