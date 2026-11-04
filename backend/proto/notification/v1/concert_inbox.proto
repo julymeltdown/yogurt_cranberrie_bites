@@ -101,3 +101,46 @@ message ExecuteResponse {
 }
 message GuardRequest { ParentScope scope = 1; InboxIntent intent = 2; }
 message GuardReply { bool held = 1; bool settled = 2; }
+
+// Private Notification -> original Concert Root callback. This is not a public
+// actor grant, target projection, completion capability or fresh owner scope.
+service ConcertNotificationTargetAuthority {
+  rpc Authorize(TargetAuthorityRequest) returns (TargetAuthorityReply);
+}
+message TargetAuthorityContext {
+  string actor_id = 1;
+  string event_id = 2;
+  string session_family_id = 3;
+  string request_id = 4;
+  bytes authority_digest = 5;
+  int64 observed_at_unix_micros = 6;
+  int64 expires_at_unix_micros = 7;
+}
+message TargetAuthorityCandidate {
+  string notification_id = 1;
+  optional string source_actor_id = 2;
+  Target target = 3;
+}
+message TargetAuthorityRequest {
+  ParentScope parent = 1;
+  TargetAuthorityContext context = 2;
+  repeated TargetAuthorityCandidate candidates = 3; // Exact whole ordered snapshot.
+  string call_id = 4; // Private canonical nonce, never a browser field.
+}
+enum TargetAuthorityVisibility {
+  TARGET_AUTHORITY_VISIBILITY_UNSPECIFIED = 0;
+  TARGET_VISIBLE = 1;
+  TARGET_STALE = 2;
+  TARGET_HIDDEN = 3;
+}
+message TargetAuthorityDecision {
+  TargetAuthorityCandidate candidate = 1;
+  TargetAuthorityVisibility visibility = 2;
+}
+message TargetAuthorityReply {
+  authority.lease.v1.ProducerScope scope = 1;
+  bytes request_digest = 2; // SHA256 of the entire encoded private request.
+  int64 checked_at_unix_micros = 3;
+  int64 valid_until_unix_micros = 4;
+  repeated TargetAuthorityDecision decisions = 5; // Same length and order.
+}
