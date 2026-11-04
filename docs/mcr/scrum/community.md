@@ -440,6 +440,48 @@ King/SL approval gate is introduced. The human fidelity correction remains
 required and now has its verified owner; this routine collision was resolved
 directly and does not require immediate escalation or another King packet.
 
+### Required QA06 Meet leaf fidelity follow-through queued
+
+QA06 owner1ab7 supplied concrete source diagnosis
+`QA06-HUMAN-MEET-TYPE-01` from its required all-ten human-reference comparison,
+not a new code/visual approval gate. Immutable owner comparison context:
+`/Users/lhs/Desktop/mcr-worktrees/fe-ref-public/docs/mcr/evidence/visual/qa06/human-reference-20261104/`
+(`comparison.md`, `.html`, `.json`, `reference-human.jpg`); human JPEG SHA256
+`2b3988d546f87b813d78ca13bf267730a6dd19118bd6535a2d3c3032b6f12d23`.
+QA06 reports published12a5 Meet390×637 has the same three party rows as target,
+so title/place/action hierarchy can be compared without invented membership.
+Its frozen-a0db Party CSS pin is
+`6e7c259074016d9f05d90cba8a3355403906a4330a384548302c8abe2b564e54`;
+this is older represented evidence, not a claim current master remains equal.
+Implementation owner must fresh-inspect source/represented-capture differences
+before any corrective change; SL has not inspected CSS, images or implementation.
+
+Required ready bounded QA06/FE21 visual follow-up: developer diagnoses and
+rebalances title/place typography, spacing and action ink while retaining44px
+hitboxes, truthful member/capability state and fixed CreateParty/footer
+reachability. Original FE21 pure-client SATISFIED/MOCK_READY disposition is
+preserved; this is a separately required fidelity fix, not a new original task.
+Prospective exact leaf is ONLY
+`frontend/src/features/party-discovery/ui/party-discovery.css` plus separately
+recorded new scoped fixture/evidence/report prefixes before assignment. No
+shared frame/footer/art/root/route or Gift/Wall source lease is implied.
+213 already owns required shared frame/footer under World; preserve that goal.
+
+Community204 is still ACTIVE on FE32, not available or implicitly reassigned.
+Its latest compact owner reports remote verification complete/checkout clean,
+awaiting actual Root publication receipt before same-goal closure. Route that
+missing delivery receipt directly Root→owner; no SL review or human approval.
+After actual FE32 COMPLETE/null/clean STOP/exact lease return, prioritize this
+concrete ready Meet source task under a NEW truthful unbudgeted finish-to-
+delivery goal and isolated new branch; verify actual receiving acceptance.
+No new worker goal/source rights yet; no waiting/filler assignment or King CC.
+
+Gifts owner evidence is a corrected foreign-owner fixture; absent optional
+photos/quantity/KST/filters do not establish a Reserve bug or permit invented
+content/removing required filters. Wall default guard is not an editor capture;
+valid frozen128×128/16-color editor criteria remain independently qualifiable.
+No extra QA capture or resource queue request is created by this packet.
+
 ### Current QA06 shared evidence and explicit design direction
 
 QA06 remains World-owned IN_PROGRESS; latest bounded readback turn is idle,
