@@ -7,6 +7,13 @@ use concert_domain::feed::Filter;
 use tonic::Status;
 use uuid::Uuid;
 
+pub(super) fn report_request(
+    request: &super::proto::ProductRequest,
+    expected: super::ReportOperation,
+) -> Result<(), Status> {
+    expected.validate(request)
+}
+
 pub(super) fn age_request(
     request: &super::proto::ProductRequest,
     expected: super::AgeOperation,

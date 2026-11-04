@@ -23,7 +23,9 @@ mod owner_media;
 mod query;
 mod feature_admission;
 mod age_admission;
+pub mod report_admission;
 pub use age_admission::AgeOperation;
+pub use report_admission::ReportOperation;
 pub use feature_admission::IntroOperation;
 pub use query::CommandStatusQuery;
 pub mod root_read;
@@ -64,6 +66,7 @@ pub enum Operation {
     Intro(IntroOperation),
     Notification(crate::notification_live::NotificationOperation),
     Age(AgeOperation),
+    Report(ReportOperation),
 }
 impl Operation {
     pub fn contract_id(self) -> &'static str {
@@ -89,6 +92,7 @@ impl Operation {
             Self::Intro(operation) => operation.id(),
             Self::Notification(operation) => operation.id(),
             Self::Age(operation) => operation.id(),
+            Self::Report(operation) => operation.id(),
         }
     }
 }
@@ -120,6 +124,9 @@ pub fn operation(event: Uuid, method: &str, target: &str) -> Result<Operation, S
     }
     if let Ok(age) = age_admission::route(event, method, target) {
         return Ok(Operation::Age(age));
+    }
+    if let Ok(report) = ReportOperation::route(event, method, target) {
+        return Ok(Operation::Report(report));
     }
     if let Ok(notification) =
         crate::notification_live::NotificationOperation::route(event, method, target)
@@ -329,6 +336,9 @@ fn authorize(request: &Request<proto::ProductRequest>) -> Result<VerifiedProduct
     if let Operation::Age(age) = operation {
         query::age_request(m, age)?;
     }
+    if let Operation::Report(report) = operation {
+        query::report_request(m, report)?;
+    }
     if matches!(operation, Operation::Intro(_) | Operation::Notification(_)) {
         feature_admission::request(m, operation)?;
     }
@@ -343,10 +353,11 @@ fn authorize(request: &Request<proto::ProductRequest>) -> Result<VerifiedProduct
             | Operation::CancelPartyApplication(_)
             | Operation::RemovePartyMember(_, _)
             | Operation::CancelParty(_)
+            | Operation::Report(_)
     );
     if matches!(
         operation,
-        Operation::Social(_) | Operation::Intro(_) | Operation::Notification(_) | Operation::Age(_)
+        Operation::Social(_) | Operation::Intro(_) | Operation::Notification(_) | Operation::Age(_) | Operation::Report(_)
     ) {
         // Each exact feature decoder validates its own read payload and keyed
         // command shape, including Intro PUT/POST and Notification PATCH writes.
