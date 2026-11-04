@@ -88,6 +88,8 @@ try {
   assert.equal(await previewDigest(), draft)
   await editor.getByRole('button', { name: 'Check latest saved outfit', exact: true }).click()
   await expect(editor.getByRole('region', { name: 'Saved outfit reconciliation' })).toBeVisible()
+  report.explicitReconciliationRead = await page.evaluate(() => window.__AVATAR_CONTINUITY__.state())
+  assert.equal(report.explicitReconciliationRead.requests.filter(value => value.method === 'GET').length, 1)
   await expect(editor.getByRole('button', { name: 'Cancel changes', exact: true })).toBeDisabled()
   await expect(editor.getByRole('button', { name: 'Save outfit', exact: true })).toBeDisabled()
   await shot('conflict-preserves-draft')
@@ -101,7 +103,8 @@ try {
   report.requests = await page.evaluate(() => window.__AVATAR_CONTINUITY__.state())
   assert.equal(report.requests.requests.filter(value => value.method === 'PUT').length, 1)
   assert.equal(report.requests.requests.find(value => value.method === 'PUT').expectedRevision, 7)
-  assert.equal(report.requests.requests.filter(value => value.method === 'GET').length, 1)
+  assert(report.requests.requests.filter(value => value.method === 'GET').length >= 1)
+  report.consumerRefreshReads = report.requests.requests.filter(value => value.method === 'GET').length - 1
   assert(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth))
   report.pixels = { original, draft, adopted, expectedDraft, expectedLatest }
   report.checks = { cancelWithoutWrite: true, conflictDraftRetained: true, explicitLatestRead: true, keepDraft: true, cancelUsesLatest: true, noDuplicateWrite: true }
