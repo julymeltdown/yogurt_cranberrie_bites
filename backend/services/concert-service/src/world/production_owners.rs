@@ -13,7 +13,7 @@ use crate::adapters::out::{
 use chrono::{DateTime, Utc};
 use concert_application::world_ticket::WorldError;
 use concert_domain::{avatar::AvatarCatalog, AvatarSelection, Revision};
-use futures::{stream, StreamExt, TryStreamExt};
+use futures::{stream, FutureExt, StreamExt, TryStreamExt};
 use sqlx::{postgres::PgRow, PgPool, Postgres, Row, Transaction};
 use std::{
     collections::{BTreeMap, BTreeSet},
@@ -218,7 +218,8 @@ impl ProductionOwners {
         // runs both real owner attempts and enforces the clipped original stop.
         // Ordered buffering preserves the later SQL plan/lock order while a
         // slow first candidate no longer serializes all following owner reads.
-        let candidates = observe_in_order(subjects.iter().map(|subject| async move {
+        let mut reads = Vec::with_capacity(subjects.len());
+        for subject in subjects {
             let expected = concert_application::world_ticket::WorldSubject {
                 key: subject.membership.key,
                 event_id: subject.membership.key.event_id,
@@ -230,14 +231,20 @@ impl ProductionOwners {
                 &expected,
                 subject.membership.connection_id,
             )?;
-            let observation = Box::pin(self.recipient.read(&context)).await?;
-            observation.check_scope(&context)?;
-            Ok::<_, WorldError>(Candidate {
-                context,
-                observation,
-            })
-        }))
-        .await?;
+            let recipient = &self.recipient;
+            reads.push(
+                async move {
+                    let observation = Box::pin(recipient.read(&context)).await?;
+                    observation.check_scope(&context)?;
+                    Ok::<_, WorldError>(Candidate {
+                        context,
+                        observation,
+                    })
+                }
+                .boxed(),
+            );
+        }
+        let candidates = observe_in_order(reads).await?;
         let mut visible = BTreeSet::new();
         let mut until = DateTime::from_timestamp_micros(parent.deadline().expires_micros())
             .ok_or(WorldError::Unavailable)?;
