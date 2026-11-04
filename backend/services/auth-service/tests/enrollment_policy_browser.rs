@@ -72,13 +72,17 @@ fn private_control(path: &Path, output: &Path) -> anyhow::Result<Option<Value>> 
                 before.dev(),
                 before.ino(),
                 before.len(),
+                before.mtime(),
                 before.mtime_nsec(),
+                before.ctime(),
                 before.ctime_nsec()
             ) == (
                 after.dev(),
                 after.ino(),
                 after.len(),
+                after.mtime(),
                 after.mtime_nsec(),
+                after.ctime(),
                 after.ctime_nsec()
             ),
         "control changed during read"
