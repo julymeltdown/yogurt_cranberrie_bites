@@ -1,0 +1,26 @@
+{
+  "status": "CONTRACT_READY",
+  "source_commit": "30fec2fc60baf929e1fbc28adae161b5d94c5fe5",
+  "commits": {
+    "1111851b": "2b77eec7",
+    "0f89b317": "1ba3513e",
+    "30fec2fc": "b0b8df25"
+  },
+  "paths": [
+    "backend/services/api-gateway/src/adapters/in/http/concert_product/feature_routes.rs",
+    "backend/services/api-gateway/src/adapters/in/http/concert_product/mod.rs",
+    "backend/services/api-gateway/tests/concert_age_routes.rs",
+    "docs/mcr/backend/gateway-age-routes.md"
+  ],
+  "postimages_sha256": {
+    "backend/services/api-gateway/src/adapters/in/http/concert_product/feature_routes.rs": "4092794a0e75085074fa8feee9dc750d483a8101b780033ada8471afbefba77e",
+    "backend/services/api-gateway/src/adapters/in/http/concert_product/mod.rs": "afc196200d55edc9a85d12d24c68e2a9e07523299a7d76a9943b39fcafbac137",
+    "backend/services/api-gateway/tests/concert_age_routes.rs": "968e61bdac9dc046515c6e04550e07c4f7f0ed0ee0b0c738ee13a1423d44b431",
+    "docs/mcr/backend/gateway-age-routes.md": "9f2f88db8cfe4990b096aaadc4c12e85a04fb77c57f6700dae558a46b9442197"
+  },
+  "owner_passed": 30,
+  "owner_failed": 0,
+  "resources": "FULLY_RELEASED",
+  "root_actual_main": "NOT_RUN",
+  "limitations": "Scoped configuration/transport qualification only. Provider-positive verification, actual combined production listener and public IN03 remain separate."
+}

@@ -1,0 +1,27 @@
+{
+  "status": "CONTRACT_READY",
+  "source_commit": "2ced980301d5534fbe6f02edda50d1231c8147a2",
+  "commits": {
+    "f73f84b5": "e562606c",
+    "2ced9803": "403022b8"
+  },
+  "paths": [
+    "backend/services/concert-service/src/config/canonical_runtime.rs",
+    "backend/services/concert-service/src/config/mod.rs",
+    "backend/services/concert-service/src/config/notification_target_runtime.rs",
+    "backend/services/concert-service/tests/notification_target_runtime.rs",
+    "docs/mcr/backend/notification-target-startup.md"
+  ],
+  "postimages_sha256": {
+    "backend/services/concert-service/src/config/canonical_runtime.rs": "5dace8e9fb1ec7f25636451bbb0d85149d134c01bcf02c13a4d4da9056dd92ee",
+    "backend/services/concert-service/src/config/mod.rs": "a1911b97860ed4ac46ab71b74cc70b241aad87a055da0664dbe7380b62c1c765",
+    "backend/services/concert-service/src/config/notification_target_runtime.rs": "a551f8e254c74300cbd42e683fa029d94eea646bc272b59f332f9dc346247308",
+    "backend/services/concert-service/tests/notification_target_runtime.rs": "f85aee811d3b02a3ab3f3ff2f226852767a5cfb4c88604f2ecb1653a11649cf9",
+    "docs/mcr/backend/notification-target-startup.md": "f8c67d5eb01aacc8b7e37827ffb46547d13710df68c92f157ce9b831d517ea2a"
+  },
+  "owner_passed": 5,
+  "owner_failed": 0,
+  "resources": "FULLY_RELEASED",
+  "root_actual_main": "NOT_RUN",
+  "limitations": "Scoped configuration/transport qualification only. Provider-positive verification, actual combined production listener and public IN03 remain separate."
+}
