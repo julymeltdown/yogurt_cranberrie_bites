@@ -243,3 +243,12 @@ media owner's actual published pin before publishing its separate photo producer
 and 0029 migration. This removes a dependency publication collision without making
 media publication wait for the queued final photo combined build. The b41 native
 qualification and full photo scope are unchanged.
+
+
+Root1fc subsequently requested return of the exact Concert `src/lib.rs` module
+export lease for its age-verification registration. This worker confirmed STOP
+and returned that lease immediately: its single `pub mod meeting_photo;` export
+is finalized in local `cd4b7362`, with no further lib writes planned. Root may add
+its own registration serially; photo publication reconciliation must retain both
+exports together with their actual modules. No photo publication or acceptance
+was implied, and the separate limited commands.rs grant was not transferred.
