@@ -44,7 +44,7 @@ impl QualifiedPostTransport {
             Workload::Post,
             EDGE.validate()?,
         )?;
-        let client = Client::with_interceptor(
+        let client = proto::post_concert_feed_read_service_client::PostConcertFeedReadServiceClient::with_interceptor(
             signer.client(channel),
             ServiceIdentityClientInterceptor::new(Workload::Concert, token)?,
         )
