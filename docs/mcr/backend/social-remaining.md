@@ -770,8 +770,14 @@ frame. The publisher must hand off to every actual matching current stream or
 durably withdraw its private view; queue acceptance alone is insufficient.
 
 Socket bootstrap order is gated registration, `held_baseline(event, actor)`,
-install that exact tuple/revision, arm publication under the same local gate,
-then commit the guard before permitting private HTTP reads. Its transaction
+install that exact pending tuple/revision under the local gate, then commit the
+guard. Native World registration acknowledgement is not its snapshot handoff:
+Root keeps the slot gated until that actual matching snapshot is handed off.
+Only then may it publish the explicit baseline and permit fresh private reads,
+provided no newer revision floor or withdrawal superseded the pending arm.
+A post-commit invalidation and a delayed arm serialize on the same stream slot;
+a late arm must never restore withdrawn private authority. No socket/network
+wait occurs under the held database guard. Its transaction
 holds the generation row `FOR SHARE`, excluding a concurrent generation commit.
 The guard must be short: statement timeout is two seconds, lock timeout 500 ms,
 idle transaction timeout three seconds. Drop/commit failure requires stream
@@ -802,3 +808,10 @@ Standalone Rust 1.88 formatting, Python AST parsing and `git diff --check`
 passed. Cargo and owned PostgreSQL execution await a fresh SL21d allocation;
 there is no king/SL review or approval gate. Actual public Gateway, provider,
 WebSocket, cached UI and IN03 acceptance remain **NOT_RUN** here.
+
+The port is statically compatible with the later frozen public contract
+`930380deed5c47b4c9eed920a8d9352278f0e90e`: explicit `policy.baseline` follows
+the unchanged World snapshot; `policy.invalidate` uses the same five reason
+strings and integer range 1–9007199254740991. Contract files remain Root-owned
+and were not imported into this branch. No socket implementation, test pass or
+runtime acceptance is inferred from this source compatibility observation.
