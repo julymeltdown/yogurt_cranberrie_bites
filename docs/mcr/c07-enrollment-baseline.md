@@ -1,7 +1,7 @@
 # Enrollment/C05 C07 forward baseline
 
 Task: CORE-ENROLLMENT-C07-01. Implementation owner: visible FE/C07 chat
-`01a1a533-50a8-7fb2-b3ed-96b941b96bbf`. Status: IN_PROGRESS.
+`01a1a533-50a8-7fb2-b3ed-96b941b96bbf`. Status: CONTRACT_READY, owner-qualified.
 
 Canonical input revision: `2ff0aab865a06a5664d2096ba572c766ac0fba85`.
 Enrollment CORE publication: `22b11054c57eb724022050cc017a665852b521c5`;
@@ -99,3 +99,54 @@ the unchanged transport generator. The owner driver requires identical runtime
 exports and permits only the CORE source-hash comment to change. The added
 leaf is included in the frozen readset and final qualified handoff. Canonical
 source, policy, generator semantics and application clients remain unchanged.
+
+## Qualified result
+
+The complete coherent cohort ran under
+`CORE-COHERENT-METADATA-SOURCE-20261104T1927Z`, accepted at
+19:26:38.577352 UTC and fully released at 19:28:17.325379 UTC. The validated
+source is `b0bfe3b5a41675340ebba605dd6e0168e5780098`; its complete frozen
+readset and controls are preserved in `round04/`.
+
+| Check | Result |
+| --- | --- |
+| Unchanged full temporary-candidate QA01 preflight | PASS, exit 0, before active-pin advance |
+| Ordinary public QA01 | PASS, exit 0; 198 fixtures, 1,696 responses, 147 operations |
+| QA01 public regressions | PASS, exit 0; all 17 tests, including the original 13 and all 12 negative CLI probes |
+| C07 drift and three negative generator probes | PASS; drift exits 0, each negative exits 1 with its required diagnostic |
+| C07 inventory and motion regressions | PASS, exit 0; four inventory and two motion tests |
+| Strict retained TypeScript compilation | PASS, exit 0 |
+| Generated-client runtime and Python differential decisions | PASS, exit 0; seven tests, no failures, skips or cancellations |
+| Complete existing C07 harness | PASS, exit 0; all eight checks |
+| Exact source scope and whitespace checks | PASS; no ungranted paths or cross-lane implementation imports |
+
+All 1,591 previous operation/status/media response-case identities remain
+represented. The seven Enrollment operations add 105 cases, producing 1,696.
+The active baseline covers 243 input hashes. The exact previous active bytes
+are archived in
+`scripts/mcr/contracts/qa01-coverage/archive/pins-267a040ac8d33c312aa87a5a2f22bc418b3895f2.json`
+(SHA-256 `b2fbc46bda9b409891bb22567bcc851d9beeda9436ada15c07e6f276e1c342e8`).
+The audited forward amendment is
+`scripts/mcr/contracts/qa01-coverage/archive/forward-baseline-2ff0aab865a06a5664d2096ba572c766ac0fba85.json`.
+Active-pin SHA-256 is
+`4a48efe667fe9b88a12761ad2cf90ee5c3b6b53ed2f1f211dad76daa349f87b5`.
+No existing route identity was changed or removed, and no historical archive
+was overwritten. The transport metadata changed exactly its CORE hash comment;
+the complete runtime export body is byte-identical.
+
+The guardian observed at most six processes, 1,023,934,464 bytes RSS,
+1,415,716,688 bytes whole storage, and 9,535,488 bytes total new growth.
+Its private temporary and compile scratch are absent, all owned descendants
+drained, and no ports were created. The next reserved source owner received
+literal FULL directly; publication and documentation hold no compute lease.
+The five protected World/FE16/CSS/CI refs remain unchanged. The checkout stays
+exclusive until the committed handoff receives its one canonical publisher
+receipt and clean custody is explicitly returned.
+
+This result covers the published Enrollment/C05 contract baseline and its
+generated consumers. It does not certify live Enrollment, provider/legal,
+browser/device, production, load or multiuser flows. The prior original C07
+completion and both successful hosted CI recovery runs are preserved; this
+follow-up adds no original-task completion count. Future OwnOperationsAccess
+contract work is outside this frozen input and requires its actual publication
+and a separate coherent input update.
