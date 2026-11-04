@@ -91,3 +91,14 @@ processes, 1,923,170,304 RSS bytes, 2,216,676,560 accounted WHOLE bytes, and
 owned children, dependency link or private workload TMP, an empty port listener
 and successful rebind. Raw control, commands, logs and release are retained under
 `source-02-current-types-lint-syntax`; no passing suite was replayed.
+
+The first current-main native attempt at `fc28781e7` stopped before login while
+waiting for the Email field; it supplies no Admin behavioral proof. The independent
+guard stayed within limits and FULL release at 19:19:20.570203Z confirmed complete
+cleanup. Raw failure and exact source hashes are retained in
+`native-01-entry-failure`. Static inspection confirms the existing Email label.
+The harness had bypassed the application's Vite configuration, including its React
+and Tailwind plugins. The retry loads the existing configuration with its runner
+loader and adds failure-page, console and request capture. This is a harness-only
+repair; no product, CSS or Auth source changes or passing-suite replay. The initial
+failure lacks a page capture, so its exact browser-visible cause remains unproven.

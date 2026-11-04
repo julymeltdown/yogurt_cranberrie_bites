@@ -32,5 +32,12 @@
     "release": "source-02-current-types-lint-syntax/release.json",
     "passingSuiteReplay": false,
     "accountedWholeHighwaterBytes": 2216676560
+  },
+  "nativeFirstAttempt": {
+    "pin": "fc28781e7178a6fd8fe38b8a35f71bd4e5f90264",
+    "result": "FAILED_BEFORE_LOGIN_EMAIL_FIELD_TIMEOUT",
+    "release": "native-01-entry-failure/release.json",
+    "productProof": false,
+    "repair": "Harness loads existing Vite config and captures failure evidence; exact initial page cause unproven"
   }
 }

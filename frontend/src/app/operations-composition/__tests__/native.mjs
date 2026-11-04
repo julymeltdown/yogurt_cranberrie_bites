@@ -19,7 +19,7 @@ for (const path of ['frontend/index.html','frontend/src/main.tsx','frontend/src/
   'frontend/src/app/operations-composition/owner.ts','frontend/src/app/operations-composition/panel.tsx',
   'frontend/src/app/operations-composition/__tests__/server.ts','frontend/src/app/operations-composition/__tests__/wire.json',
   'frontend/src/app/operations-entry/index.ts','frontend/src/shared/api/domain-operations.generated.ts']) report.sourceHashes[path] = createHash('sha256').update(await readFile(resolve(root,path))).digest('hex')
-const server = await createServer({ root: resolve(root,'frontend'), configFile: false, logLevel: 'error', cacheDir: resolve(process.env.ADMIN_TMP,'vite-cache'),
+const server = await createServer({ root: resolve(root,'frontend'), configLoader: 'runner', logLevel: 'error', cacheDir: resolve(process.env.ADMIN_TMP,'vite-cache'),
   define: { 'import.meta.env.VITE_MCR_EVENT_ID': JSON.stringify(wire.event) },
   plugins: [{ name: 'TEST_ONLY-frozen-operations-registration', enforce: 'pre', transform(code,id) {
     if (!id.endsWith('/shared/api/domain-operations.generated.ts')) return
@@ -27,14 +27,15 @@ const server = await createServer({ root: resolve(root,'frontend'), configFile: 
   } }],
   server: { host: '127.0.0.1', port: Number(process.env.ADMIN_PORT), strictPort: true },
   optimizeDeps: { include: ['react','react-dom/client','react/jsx-runtime','react-router-dom','@tanstack/react-query','zod','ky'] } })
-let browser
+let browser, activePage
 const cleanup = { browserClosed: false, serverClosed: false, errors: [] }
 try {
   await server.listen()
   browser = await chromium.launch({ executablePath:'/Applications/Google Chrome.app/Contents/MacOS/Google Chrome',headless:true,args:['--disable-dev-shm-usage'] })
   report.browser = browser.version()
   const context = await browser.newContext({ viewport:report.viewport,hasTouch:true,isMobile:true,deviceScaleFactor:1,reducedMotion:'reduce' })
-  const page = await context.newPage();page.on('pageerror',e=>report.errors.push(e.message))
+  const page = await context.newPage();activePage=page;page.on('pageerror',e=>report.errors.push(e.message))
+  report.consoleErrors=[];page.on('console',message=>{if(message.type()==='error')report.consoleErrors.push(message.text())})
   await page.route('**/api/**',async route=>{
     const input=route.request()
     try {
@@ -93,8 +94,14 @@ try {
   report.canonicalAdmissionBeforeAdmin=true;report.identityInjected=false
   assert.deepEqual(report.errors,[]);report.result='PASS';report.retainedOriginalKey=originalKey;report.singleMutation=true;report.withdrawal=true
   await context.close()
-} catch(error) {report.failure=String(error);process.exitCode=1}
+} catch(error) {
+  report.failure=String(error);process.exitCode=1
+  if(activePage) {
+    try {report.failureLocation=activePage.url();report.failureText=await activePage.locator('body').innerText();await activePage.screenshot({fullPage:true,path:resolve(out,'390-failure.png')})} catch(diagnosticError) {report.diagnosticFailure=String(diagnosticError)}
+  }
+}
 finally {
+  report.requests=controlled.requests.map(r=>({method:r.method,path:new URL(r.url).pathname,key:r.headers.get('Idempotency-Key')}))
   await writeFile(resolve(out,'native.json'),JSON.stringify(report,null,2))
   try {await browser?.close();cleanup.browserClosed=true}catch(error){cleanup.errors.push(String(error))}
   try {await server.close();cleanup.serverClosed=true}catch(error){cleanup.errors.push(String(error))}
