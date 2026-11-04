@@ -317,11 +317,11 @@ async fn unrelated_source_is_not_acknowledged_and_baselines_reject_nil_scope() {
 
 // Storage fixtures use real future PG deadlines and the retained storage guard;
 // they are not canonical Auth/age authority, command admission or HTTP acceptance.
-async fn expiry_request(p: &PgPool, event: Uuid, a: Uuid, b: Uuid, label: &str) -> Uuid {
+async fn expiry_request(p: &PgPool, event: Uuid, a: Uuid, b: Uuid, _label: &str) -> Uuid {
     let request = Uuid::new_v4();
     let intro = Uuid::new_v4();
-    sqlx::query("insert into concert_intros(event_id,intro_id,owner_id,revision,state,text,created_at,updated_at,expires_at) values($1,$2,$3,1,'PUBLISHED',$4,clock_timestamp(),clock_timestamp(),clock_timestamp()+interval '1 hour')")
-        .bind(event).bind(intro).bind(b).bind(label).execute(p).await.unwrap();
+    // No Intro row is forged: current production schema requires a confirmed
+    // native Intro witness. This fixture exercises the request's own deadline.
     let mut tx = p.begin().await.unwrap();
     sqlx::query("select set_config('mcr.relationship_authority_until',(clock_timestamp()+interval '4 seconds')::text,true)")
         .execute(&mut *tx).await.unwrap();
@@ -457,6 +457,7 @@ async fn pending_round_restart_seed() {
     publisher.fail.store(true, Ordering::SeqCst);
     assert_eq!(sink.drain_pending_round(8).await.unwrap().deferred, 2);
     assert_eq!(deadline_rows(&p, e).await, (2, 0));
+    println!("MCR_SOCIAL_RESTART_EVENT={e}");
     p.close().await;
 }
 
@@ -476,18 +477,53 @@ async fn pending_round_restart_recovers_unpublished_expiry_with_fresh_owner() {
         current,
         std::env::var("MCR_SOCIAL_RECOVERY_POSTMASTER_BEFORE").unwrap()
     );
-    let event: Uuid = sqlx::query_scalar(
-        "select event_id from concert_intros where text='Recovery restart pending source'",
-    )
-    .fetch_one(&p)
-    .await
-    .unwrap();
+    let event = Uuid::parse_str(&std::env::var("MCR_SOCIAL_RECOVERY_EVENT").unwrap()).unwrap();
     assert_eq!(deadline_rows(&p, event).await, (2, 0));
     let publisher = Arc::new(Publisher::default());
     let sink = SocialInvalidationSink::new(p.clone(), publisher.clone());
     assert_eq!(sink.drain_pending_round(100).await.unwrap().published, 2);
     assert_eq!(deadline_rows(&p, event).await, (2, 2));
     assert_eq!(sink.drain_pending_round(100).await.unwrap().attempted, 0);
+    assert_eq!(publisher.seen.lock().unwrap().len(), 2);
+    p.close().await;
+}
+
+#[tokio::test]
+#[ignore = "owned Social privacy recovery allocation required"]
+async fn pending_round_publisher_timeout_defers_without_completion_and_retries_same_source() {
+    let (p, e, a, b, publisher, sink) = setup().await;
+    expiry_request(&p, e, a, b, "Real publisher timeout").await;
+    tokio::time::sleep(std::time::Duration::from_millis(350)).await;
+    sink.emit_expired(100).await.unwrap();
+    let ids: Vec<Uuid> = sqlx::query_scalar(
+        "select signal_id from concert_social_policy_signals where event_id=$1 order by signal_id",
+    )
+    .bind(e)
+    .fetch_all(&p)
+    .await
+    .unwrap();
+    // Actual two-second publication bound, not a fixture timeout response.
+    *publisher.held.lock().unwrap() = Some(a.min(b));
+    let started = std::time::Instant::now();
+    let first = sink.drain_pending_round(2).await.unwrap();
+    assert!(started.elapsed() >= std::time::Duration::from_secs(2));
+    assert_eq!(
+        (first.attempted, first.published, first.deferred),
+        (2, 1, 1)
+    );
+    assert_eq!(deadline_rows(&p, e).await, (2, 1));
+    *publisher.held.lock().unwrap() = None;
+    let recreated = SocialInvalidationSink::new(p.clone(), publisher.clone());
+    assert_eq!(recreated.drain_pending_round(2).await.unwrap().published, 1);
+    let after: Vec<Uuid> = sqlx::query_scalar(
+        "select signal_id from concert_social_policy_signals where event_id=$1 order by signal_id",
+    )
+    .bind(e)
+    .fetch_all(&p)
+    .await
+    .unwrap();
+    assert_eq!(ids, after);
+    assert_eq!(deadline_rows(&p, e).await, (2, 2));
     assert_eq!(publisher.seen.lock().unwrap().len(), 2);
     p.close().await;
 }

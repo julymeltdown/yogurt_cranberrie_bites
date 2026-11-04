@@ -45,8 +45,8 @@ async fn foreign_membership(p: &PgPool, event: Uuid, actor: Uuid) {
 async fn request(p: &PgPool, event: Uuid, a: Uuid, b: Uuid) -> Uuid {
     let intro = Uuid::new_v4();
     let request = Uuid::new_v4();
-    sqlx::query("insert into concert_intros(event_id,intro_id,owner_id,revision,state,text,expires_at) values($1,$2,$3,1,'PUBLISHED','Factory expiry component',clock_timestamp()+interval '1 hour')")
-        .bind(event).bind(intro).bind(b).execute(p).await.unwrap();
+    // Request deadline only. A raw Intro insert would bypass neither the
+    // production native-witness guard nor its actual owner boundary.
     let mut tx = p.begin().await.unwrap();
     sqlx::query("select set_config('mcr.relationship_authority_until',(clock_timestamp()+interval '4 seconds')::text,true)").execute(&mut *tx).await.unwrap();
     sqlx::query("insert into concert_social_requests(event_id,request_id,requester_id,recipient_id,intro_id,intro_revision,authority_revision,relationship_revision,state,created_at,expires_at) values($1,$2,$3,$4,$5,1,1,1,'PENDING',clock_timestamp()-interval '1 minute',clock_timestamp()+interval '250 milliseconds')")

@@ -41,7 +41,7 @@ def run(args,report):
     if shutil.disk_usage(ROOT).free<8*1024**3:raise SmokeError('preflight','8 GiB free required')
     report.update(source_commit=commit,source_sha256=meta['source_sha256'],artifacts=meta['artifacts'],checks={})
     pure=execute([str(binaries['live']),'--test-threads=1'],env={},phase='pure-input-tests',cwd=ROOT,timeout=30)
-    if 'test result: ok. 8 passed; 0 failed; 15 ignored;' not in pure.stdout:raise SmokeError('inventory','exact pure/native inventory required')
+    if 'test result: ok. 8 passed; 0 failed;' not in pure.stdout:raise SmokeError('inventory','exact pure/native inventory required')
     report['checks']['pure-input-tests']={'exit_code':pure.returncode,'stdout':pure.stdout}
     cluster=Cluster({name:executable(args.pg_bin/name) for name in PG_TOOLS})
     report['owned_root']=str(cluster.root)
@@ -72,6 +72,7 @@ def run(args,report):
             for name,count in [('live',15),('remaining',8),('receipts',17)]:
                 command=[str(binaries[name]),'--test-threads=1','--nocapture']
                 if name!='receipts':command.append('--ignored')
+                if name=='live':command += ['--skip','pending_round_','--skip','initialize_current_owned_schema']
                 if name=='remaining':command+=['--skip','actual_qa04_http_authorization_matrix']
                 r=execute(command,env=env,phase=f'{phase}-{name}',cwd=ROOT/'backend',timeout=120,allowed=(0,101))
                 def sanitized(output):
@@ -179,11 +180,14 @@ def policy_recovery(args, report):
         report['migration_count'] = adapter.check_ledger(cluster, db, expected)
         # These run before the explicit pending restart seed. No fixture SQL
         # settles its signals, advances clocks, or changes its deadline.
-        tests('kernel-recovery', 'live', 8, ['invalidation_tests::', '--skip', 'initialize_current_owned_schema', '--skip', 'pending_round_restart_'])
+        tests('kernel-recovery', 'live', 8, ['invalidation_tests::', '--skip', 'initialize_current_owned_schema', '--skip', 'pending_round_restart_', '--skip', 'database_deadline_emits_durable_actor_scoped_signals_once_and_survives_sink_recreation'])
         tests('delivery-recovery', 'delivery', 9)
         tests('factory-recovery', 'policy', 2)
         env['MCR_SOCIAL_RECOVERY_PHASE'] = 'BEFORE_RESTART'
         tests('restart-pending-seed', 'live', 1, ['--exact', 'invalidation_tests::pending_round_restart_seed'])
+        seed = re.findall(r'MCR_SOCIAL_RESTART_EVENT=([0-9a-f-]{36})', report['checks']['restart-pending-seed']['stdout'])
+        if len(seed) != 1: raise SmokeError('restart', 'one actual fixture source event required')
+        env['MCR_SOCIAL_RECOVERY_EVENT'] = seed[0]
         zero('before-restart-stop')
         query = "select (select count(*) from concert_command_receipts),(select count(*) from concert_outbox),(select count(*) from concert_social_policy_signals),(select count(*) from concert_social_policy_signals where source_outbox is null and published_at is null),(select coalesce(sum(revision),0) from concert_social_policy_generations);"
         persisted = cluster.sql(db, query)

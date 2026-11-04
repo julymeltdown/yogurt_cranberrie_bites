@@ -61,3 +61,13 @@ actual full Concert migration SHA384 receipts must match the SQLx ledger. All
 Cargo readers must stop and the target lease must be released before copied
 checks start. No allocation has been consumed by this prepared source notice.
 Real full-stack/WS/FE acceptance remains open.
+
+
+Current-schema fixture boundary: raw Intro insertion is prohibited by migration
+0049's actual native-witness requirement. Recovery fixtures therefore use only
+an actual future request deadline and do not forge an Intro or disable its guard.
+The focused eight kernel cases exclude the historical selected-schema Intro
+fixture test and include an actual two-second publisher-timeout/deferred/retry
+case preserving exact signal identities. The legacy selected-schema runner keeps
+its historical 15-case inventory separate. Full migration-ledger qualification
+does not turn these storage fixtures into canonical admission or provider proof.

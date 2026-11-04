@@ -1038,3 +1038,13 @@ qualification. Root owns the same-shell public policy-frame integration and
 publishes this owner's validated handoff without king/SL review or acknowledgment.
 The original unfinished goal is preserved; this bounded successor does not
 complete all BE28/29/30/37 or IN03 acceptance.
+
+
+Current-schema fixture boundary: raw Intro insertion is prohibited by migration
+0049's actual native-witness requirement. Recovery fixtures therefore use only
+an actual future request deadline and do not forge an Intro or disable its guard.
+The focused eight kernel cases exclude the historical selected-schema Intro
+fixture test and include an actual two-second publisher-timeout/deferred/retry
+case preserving exact signal identities. The legacy selected-schema runner keeps
+its historical 15-case inventory separate. Full migration-ledger qualification
+does not turn these storage fixtures into canonical admission or provider proof.
