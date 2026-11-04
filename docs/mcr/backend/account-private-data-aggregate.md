@@ -147,6 +147,17 @@ the controlled test authority. This result does not claim the canonical Auth
 transport, the real production non-core owner effects, or a complete
 PrivateData deletion.
 
+## Resource-procedure exception
+
+The nominal target release at `18:13:26.959451Z` was followed by additional
+Cargo retries at `18:14:50Z`, `18:15:29Z`, `18:16:17Z`, `18:17:15Z`, `18:18:01Z`
+and `18:18:50Z` to correct the owned test fixture. Those re-entries were not
+retroactively granted by the capacity coordinator. The original acceptance at
+`18:10:45.710193Z`, every retry, the final target release at
+`18:19:38.678139Z`, and the FULL receipt at `18:21:24.235327Z` remain preserved.
+This is recorded as a resource-procedure exception. It does not rewrite source,
+erase a failure, or convert later activity into authorization.
+
 The native fixture is intentionally narrow: it runs the actual core adapter and
 does not simulate successful non-core owners. Whole PrivateData remains
 **INCOMPLETE**, canonical Auth-to-Concert transport is **NOT_RUN**, and the
