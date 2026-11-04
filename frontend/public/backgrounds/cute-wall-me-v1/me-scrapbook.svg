@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="390" height="240" viewBox="0 0 390 240" fill="none">
+  <title>Me scrapbook background</title>
+  <desc>Original warm paper, lilac ribbon, sage star and blush heart ornaments. The broad center stays quiet for existing profile content. No characters.</desc>
+  <defs>
+    <pattern id="paper" width="24" height="24" patternUnits="userSpaceOnUse">
+      <circle cx="12" cy="12" r=".65" fill="#cbb5a0" opacity=".2"/>
+    </pattern>
+    <g id="heart"><path d="M0 3C0-1 5-1 6 2c1-3 6-3 6 1 0 4-6 7-6 7S0 7 0 3Z"/></g>
+    <g id="star"><path d="m0-7 2.1 4.5 5 .6-3.6 3.4 1 5L0 4.1l-4.5 2.4 1-5-3.6-3.4 5-.6Z"/></g>
+  </defs>
+  <path fill="#fff0e7" d="M0 0h390v240H0z"/>
+  <path fill="url(#paper)" d="M0 0h390v240H0z"/>
+  <path d="M0 0h390v15c-19.5 0-19.5 17-39 17s-19.5-17-39-17-19.5 17-39 17-19.5-17-39-17-19.5 17-39 17-19.5-17-39-17-19.5 17-39 17-19.5-17-39-17-19.5 17-39 17S19.5 15 0 15Z" fill="#efc3c9"/>
+  <path d="M0 240v-48c-8-26 30-52 51-31 7-40 64-35 67 2 24-9 50 16 43 41 24-4 41 17 33 36Z" fill="#ead9ea"/>
+  <path d="M230 240c-11-28 11-52 37-46-5-37 49-56 69-26 28-12 60 8 54 37v35Z" fill="#dce5d0"/>
+  <path d="M0 232c44-13 71 10 105-2s72 6 105 0 53-14 86-3 61-7 94-1v14H0Z" fill="#f2d3c4"/>
+  <g transform="translate(344 65) rotate(-14) scale(1.6)" stroke="#c6b2d0" stroke-width="1.2" stroke-linejoin="round" opacity=".62">
+    <path d="M-2 1C-24-16-25 16-3 8L-11 24l8-4 3 6 2-17C25 18 24-17 3 1Z" fill="#e5d8e9"/>
+    <path d="m-4 4-11-4m18 4 11-4m-16 9-4 8m8-8 3 9"/>
+    <rect x="-4" y="0" width="8" height="9" rx="2" fill="#f3e7ef"/>
+  </g>
+  <g opacity=".55">
+    <use href="#heart" x="25" y="40" fill="#ecc1c2" transform="rotate(-14 31 45)"/>
+    <use href="#star" x="47" y="86" fill="#cddcc6"/>
+    <use href="#heart" x="343" y="163" fill="#e8c6d3" transform="rotate(14 349 168)"/>
+    <use href="#star" x="323" y="199" fill="#d8c9df"/>
+    <circle cx="70" cy="48" r="1.5" fill="#c2d2bd"/>
+    <circle cx="332" cy="96" r="2" fill="#d7c3db"/>
+    <circle cx="28" cy="175" r="1.5" fill="#e4c3b0"/>
+    <path d="m307 38 2 4 4 2-4 2-2 4-2-4-4-2 4-2Z" fill="#dfc4a7"/>
+  </g>
+  <g transform="translate(51 210) rotate(-12)" opacity=".53">
+    <path d="M-23 7c-7-1-7-11 0-13-2-12 17-16 21-5 8-8 21-3 20 6 13 0 12 16 1 16h-36Z" fill="#f3dfd7"/>
+    <path d="M-20 12H17" stroke="#fffaf3" stroke-width="2" stroke-linecap="round" stroke-dasharray="2 5"/>
+    <use href="#heart" x="-5" y="-1" fill="#e3b6bc"/>
+  </g>
+  <path d="m365 209 2-11 8-1-2 11" stroke="#bdcdb9" stroke-width="1.7" stroke-linecap="round" opacity=".55"/>
+  <ellipse cx="364" cy="210" rx="3" ry="2" fill="#bdcdb9" opacity=".55"/>
+  <ellipse cx="372" cy="209" rx="3" ry="2" fill="#bdcdb9" opacity=".55"/>
+</svg>
