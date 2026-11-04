@@ -1,0 +1,24 @@
+syntax = "proto3";
+package auth.enrollment.v1;
+
+// Browser DTOs are closed/versioned by the MCR core schema. This isolated
+// service transports bounded JSON without altering the imported AuthService.
+message ReadPolicyRequest {}
+message AnonymousCommand {
+  string client_binding = 1; // Gateway-only opaque cookie material, never logged.
+  string payload_json = 2;
+}
+message ActorCommand {
+  string user_id = 1; // Must match verified Gateway actor delegation.
+  string payload_json = 2;
+}
+message EnrollmentReply { string body_json = 1; }
+service EnrollmentPolicyService {
+  rpc ReadPolicy(ReadPolicyRequest) returns (EnrollmentReply);
+  rpc BeginAttempt(AnonymousCommand) returns (EnrollmentReply);
+  rpc Signup(AnonymousCommand) returns (EnrollmentReply);
+  rpc Verify(AnonymousCommand) returns (EnrollmentReply);
+  rpc Resend(AnonymousCommand) returns (EnrollmentReply);
+  rpc ReadAdmission(ActorCommand) returns (EnrollmentReply);
+  rpc AcceptConsent(ActorCommand) returns (EnrollmentReply);
+}

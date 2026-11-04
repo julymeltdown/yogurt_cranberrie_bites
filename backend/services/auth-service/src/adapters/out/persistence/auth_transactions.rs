@@ -14,40 +14,21 @@ impl AuthTransactionsPort for PgUserRepository {
         user: &crate::application::dto::repository_dto::AuthUserRecordDto,
         code: &str,
     ) -> crate::application::errors::AuthResult<()> {
-        let user = &crate::domain::user::User::from(user.clone());
-
         let result: anyhow::Result<_> = async {
-        anyhow::ensure!(
-            user.status == UserStatus::PendingVerification,
-            "Invalid signup status"
-        );
-        anyhow::ensure!(
-            code.len() == 6 && code.bytes().all(|byte| byte.is_ascii_digit()),
-            "Invalid verification code"
-        );
-        let mut tx = begin(self).await?;
-        sqlx::query("insert into users (id, primary_email, password_hash, status, last_login_at) values ($1, $2, $3, 'PENDING_VERIFICATION', $4)")
-            .bind(user.id).bind(&user.primary_email).bind(&user.password_hash)
-            .bind(user.last_login_at).execute(&mut *tx).await?;
-        sqlx::query("insert into user_identities (id, user_id, provider_type, email, email_verified) values ($1, $2, 'EMAIL', $3, false)")
-            .bind(Uuid::new_v4()).bind(user.id).bind(&user.primary_email)
-            .execute(&mut *tx).await?;
-        let expires_at = Utc::now() + chrono::Duration::hours(1);
-        sqlx::query("insert into email_verifications (id, user_id, email, code, expires_at) values ($1, $2, $3, $4, $5)")
-            .bind(Uuid::new_v4()).bind(user.id).bind(&user.primary_email).bind(code)
-            .bind(expires_at).execute(&mut *tx).await?;
-        enqueue(
-            &mut tx,
-            user.id,
-            "VERIFY_EMAIL",
-            serde_json::json!({"email": user.primary_email, "code": code}).to_string(),
-            expires_at,
-        )
-        .await?;
-        security_audit(&mut tx, user.id, "EMAIL_SIGNUP").await?;
-        tx.commit().await?;
-        Ok(())
-    }.await;
+            anyhow::ensure!(
+                User::from(user.clone()).status == UserStatus::PendingVerification,
+                "Invalid signup status"
+            );
+            anyhow::ensure!(
+                code.len() == 6 && code.bytes().all(|byte| byte.is_ascii_digit()),
+                "Invalid verification code"
+            );
+            let mut tx = begin(self).await?;
+            register_email_connection(&mut tx, user, code).await?;
+            tx.commit().await?;
+            Ok(())
+        }
+        .await;
         result.map_err(crate::adapters::out::errors::boundary_error)
     }
 
@@ -57,47 +38,12 @@ impl AuthTransactionsPort for PgUserRepository {
         code: &str,
     ) -> crate::application::errors::AuthResult<Option<Uuid>> {
         let result: anyhow::Result<_> = async {
-        let mut tx = begin(self).await?;
-        let user_id: Option<Uuid> = sqlx::query_scalar("select id from users where primary_email = $1 and status = 'PENDING_VERIFICATION' and deleted_at is null for update")
-            .bind(email).fetch_optional(&mut *tx).await?;
-        let Some(user_id) = user_id else {
-            return Ok(None);
-        };
-        let row = sqlx::query("select id, code, attempts from email_verifications where user_id = $1 and email = $2 and expires_at > clock_timestamp() order by expires_at desc, id limit 1 for update")
-            .bind(user_id).bind(email).fetch_optional(&mut *tx).await?;
-        let Some(row) = row else {
-            return Ok(None);
-        };
-        let attempts: i32 = row.try_get("attempts")?;
-        if attempts >= 5 {
-            return Ok(None);
-        }
-        let expected: String = row.try_get("code")?;
-        if code != expected {
-            let id: Uuid = row.try_get("id")?;
-            sqlx::query("update email_verifications set attempts = attempts + 1 where id = $1")
-                .bind(id)
-                .execute(&mut *tx)
-                .await?;
+            let mut tx = begin(self).await?;
+            let result = verify_email_connection(&mut tx, email, code).await?;
             tx.commit().await?;
-            return Ok(None);
+            Ok(result)
         }
-        sqlx::query("delete from email_verifications where user_id = $1")
-            .bind(user_id)
-            .execute(&mut *tx)
-            .await?;
-        sqlx::query("update users set status = 'ACTIVE', updated_at = now() where id = $1")
-            .bind(user_id)
-            .execute(&mut *tx)
-            .await?;
-        let changed = sqlx::query("update user_identities set email_verified = true where user_id = $1 and provider_type = 'EMAIL' and email = $2 and deleted_at is null")
-            .bind(user_id).bind(email).execute(&mut *tx).await?.rows_affected();
-        anyhow::ensure!(changed == 1, "Email identity missing");
-        cancel_pending_mail(&mut tx, user_id, "VERIFY_EMAIL", "verified").await?;
-        security_audit(&mut tx, user_id, "EMAIL_VERIFIED").await?;
-        tx.commit().await?;
-        Ok(Some(user_id))
-    }.await;
+        .await;
         result.map_err(crate::adapters::out::errors::boundary_error)
     }
 
@@ -448,4 +394,86 @@ async fn security_audit(
     sqlx::query("insert into auth_audit_events (id, actor_id, subject_user_id, action, outcome) values ($1, $2, $2, $3, 'SUCCESS')")
         .bind(Uuid::new_v4()).bind(user_id).bind(action).execute(&mut *connection).await?;
     Ok(())
+}
+
+/// Reuse the canonical account, challenge, mail and audit writes inside the
+/// caller's transaction. The caller owns commit/rollback.
+pub(crate) async fn register_email_connection(
+    connection: &mut PgConnection,
+    record: &crate::application::dto::repository_dto::AuthUserRecordDto,
+    code: &str,
+) -> anyhow::Result<()> {
+    let user = &User::from(record.clone());
+    anyhow::ensure!(
+        user.status == UserStatus::PendingVerification,
+        "Invalid signup status"
+    );
+    anyhow::ensure!(
+        code.len() == 6 && code.bytes().all(|byte| byte.is_ascii_digit()),
+        "Invalid verification code"
+    );
+    sqlx::query("insert into users (id, primary_email, password_hash, status, last_login_at) values ($1, $2, $3, 'PENDING_VERIFICATION', $4)")
+            .bind(user.id).bind(&user.primary_email).bind(&user.password_hash)
+            .bind(user.last_login_at).execute(&mut *connection).await?;
+    sqlx::query("insert into user_identities (id, user_id, provider_type, email, email_verified) values ($1, $2, 'EMAIL', $3, false)")
+            .bind(Uuid::new_v4()).bind(user.id).bind(&user.primary_email)
+            .execute(&mut *connection).await?;
+    let expires_at = Utc::now() + chrono::Duration::hours(1);
+    sqlx::query("insert into email_verifications (id, user_id, email, code, expires_at) values ($1, $2, $3, $4, $5)")
+            .bind(Uuid::new_v4()).bind(user.id).bind(&user.primary_email).bind(code)
+            .bind(expires_at).execute(&mut *connection).await?;
+    enqueue(
+        &mut *connection,
+        user.id,
+        "VERIFY_EMAIL",
+        serde_json::json!({"email": user.primary_email, "code": code}).to_string(),
+        expires_at,
+    )
+    .await?;
+    security_audit(&mut *connection, user.id, "EMAIL_SIGNUP").await?;
+    Ok(())
+}
+
+pub(crate) async fn verify_email_connection(
+    connection: &mut PgConnection,
+    email: &str,
+    code: &str,
+) -> anyhow::Result<Option<Uuid>> {
+    let user_id: Option<Uuid> = sqlx::query_scalar("select id from users where primary_email = $1 and status = 'PENDING_VERIFICATION' and deleted_at is null for update")
+            .bind(email).fetch_optional(&mut *connection).await?;
+    let Some(user_id) = user_id else {
+        return Ok(None);
+    };
+    let row = sqlx::query("select id, code, attempts from email_verifications where user_id = $1 and email = $2 and expires_at > clock_timestamp() order by expires_at desc, id limit 1 for update")
+            .bind(user_id).bind(email).fetch_optional(&mut *connection).await?;
+    let Some(row) = row else {
+        return Ok(None);
+    };
+    let attempts: i32 = row.try_get("attempts")?;
+    if attempts >= 5 {
+        return Ok(None);
+    }
+    let expected: String = row.try_get("code")?;
+    if code != expected {
+        let id: Uuid = row.try_get("id")?;
+        sqlx::query("update email_verifications set attempts = attempts + 1 where id = $1")
+            .bind(id)
+            .execute(&mut *connection)
+            .await?;
+        return Ok(None);
+    }
+    sqlx::query("delete from email_verifications where user_id = $1")
+        .bind(user_id)
+        .execute(&mut *connection)
+        .await?;
+    sqlx::query("update users set status = 'ACTIVE', updated_at = now() where id = $1")
+        .bind(user_id)
+        .execute(&mut *connection)
+        .await?;
+    let changed = sqlx::query("update user_identities set email_verified = true where user_id = $1 and provider_type = 'EMAIL' and email = $2 and deleted_at is null")
+            .bind(user_id).bind(email).execute(&mut *connection).await?.rows_affected();
+    anyhow::ensure!(changed == 1, "Email identity missing");
+    cancel_pending_mail(&mut *connection, user_id, "VERIFY_EMAIL", "verified").await?;
+    security_audit(&mut *connection, user_id, "EMAIL_VERIFIED").await?;
+    Ok(Some(user_id))
 }

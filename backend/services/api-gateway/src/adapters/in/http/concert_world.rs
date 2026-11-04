@@ -432,6 +432,8 @@ fn concert_identity_error(
         ConcertIdentityReadError::AccessExpired | ConcertIdentityReadError::DeadlineExceeded => {
             GatewayError::gateway_timeout("Request timed out")
         }
+        ConcertIdentityReadError::Auth(crate::adapters::out::auth_client::concert_admission::AdmissionReadError::ConsentRequired) => GatewayError::ConsentRequired,
+        ConcertIdentityReadError::Auth(crate::adapters::out::auth_client::concert_admission::AdmissionReadError::PolicyUnavailable) => GatewayError::PolicyUnavailable,
         ConcertIdentityReadError::NotEligible => GatewayError::forbidden("Access is not permitted"),
         _ => GatewayError::ServiceBusy,
     }
@@ -475,6 +477,7 @@ pub async fn protect_error_response(request: Request, next: Next) -> Response {
     let protected = request.uri().path().contains("/world-tickets")
         || (request.uri().path().contains("/events/") && request.uri().path().ends_with("/rooms"));
     let response = next.run(request).await;
+    if response.extensions().get::<super::enrollment_policy::PolicyDenial>().is_some() { return response; }
     if !protected || (!response.status().is_client_error() && !response.status().is_server_error())
     {
         return response;

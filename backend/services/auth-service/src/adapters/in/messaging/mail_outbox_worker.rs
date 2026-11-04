@@ -293,12 +293,54 @@ impl EmailOutboxWorker {
                     .get("code")
                     .and_then(Value::as_str)
                     .ok_or("INVALID_PAYLOAD")?;
-                (
-                    self.verification.as_ref(),
-                    json!({
-                        "email": email, "verification_code": code, "expires_at": expires_at
-                    }),
-                )
+                let mut body =
+                    json!({"email":email,"verification_code":code,"expires_at":expires_at});
+                match (
+                    payload.get("enrollment_attempt_id"),
+                    payload.get("verification_link"),
+                ) {
+                    (None, None) => {}
+                    (Some(attempt), Some(link)) => {
+                        let attempt = attempt.as_str().ok_or("INVALID_PAYLOAD")?;
+                        let id = Uuid::parse_str(attempt).map_err(|_| "INVALID_PAYLOAD")?;
+                        let link = link.as_str().ok_or("INVALID_PAYLOAD")?;
+                        let url = Url::parse(link).map_err(|_| "INVALID_PAYLOAD")?;
+                        let local = url.host_str().is_some_and(|h| {
+                            h == "localhost"
+                                || h.parse::<std::net::IpAddr>()
+                                    .is_ok_and(|ip| ip.is_loopback())
+                        });
+                        let pairs: Vec<_> = url.query_pairs().collect();
+                        if id.is_nil()
+                            || id.to_string() != attempt
+                            || code.len() != 6
+                            || !code.bytes().all(|b| b.is_ascii_digit())
+                            || url.host_str().is_none()
+                            || !url.username().is_empty()
+                            || url.password().is_some()
+                            || url.fragment().is_some()
+                            || url.path() != "/verify-email"
+                            || !(url.scheme() == "https" || (local && url.scheme() == "http"))
+                            || pairs.len() != 2
+                            || pairs
+                                .iter()
+                                .filter(|(k, v)| k == "attemptId" && v == attempt)
+                                .count()
+                                != 1
+                            || pairs
+                                .iter()
+                                .filter(|(k, v)| k == "code" && v == code)
+                                .count()
+                                != 1
+                        {
+                            return Err("INVALID_PAYLOAD");
+                        }
+                        body["enrollment_attempt_id"] = json!(attempt);
+                        body["verification_link"] = json!(link);
+                    }
+                    _ => return Err("INVALID_PAYLOAD"),
+                }
+                (self.verification.as_ref(), body)
             }
             "PASSWORD_RESET" => {
                 let link = payload

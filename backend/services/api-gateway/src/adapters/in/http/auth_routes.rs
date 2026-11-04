@@ -58,8 +58,17 @@ pub fn browser_router(state: Arc<AppState>) -> Router {
 
 async fn signup(
     State(state): State<Arc<AppState>>,
+    uri: axum::extract::OriginalUri,
     Json(request): Json<EmailSignupRequest>,
-) -> Result<Json<serde_json::Value>, GatewayError> {
+) -> Result<Response, GatewayError> {
+    if uri.0.path() == "/api/auth/email/signup" {
+        return Ok(super::enrollment_policy::failure(
+            crate::application::enrollment_policy::EnrollmentFailure {
+                status: 422,
+                reason: "ACKNOWLEDGEMENTS_REQUIRED",
+            },
+        ));
+    }
     super::admit_anonymous_identity(&state, RouteClass::Signup, &request.email).await?;
     Ok(Json(serde_json::to_value(
         state
@@ -67,7 +76,8 @@ async fn signup(
             .signup(request)
             .await
             .map_err(map_service_error)?,
-    )?))
+    )?)
+    .into_response())
 }
 
 async fn verify(

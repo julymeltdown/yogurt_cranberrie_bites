@@ -45,7 +45,9 @@ fn status(error: ReadError) -> Status {
         ReadError::DeadlineExceeded => {
             Status::deadline_exceeded("Relationship read deadline elapsed")
         }
-        ReadError::Unavailable => Status::unavailable("Relationship owner unavailable"),
+        ReadError::Unavailable | ReadError::ConsentRequired | ReadError::PolicyUnavailable => {
+            Status::unavailable("Relationship owner unavailable")
+        }
     }
 }
 struct CancelOnDrop(ReadCancellation);

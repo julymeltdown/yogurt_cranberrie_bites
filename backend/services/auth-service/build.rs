@@ -1,6 +1,7 @@
 fn main() -> Result<(), Box<dyn std::error::Error>> {
     let relationship = contracts_build::proto_root().join("relationship/v1/relationship.proto");
     let protos = vec![
+        contracts_build::proto_root().join("auth/v1/enrollment_policy.proto"),
         relationship,
         contracts_build::proto_root().join("authority/v1/lease.proto"),
         contracts_build::proto_root().join("authority/v1/deletion_source.proto"),
