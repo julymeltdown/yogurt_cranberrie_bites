@@ -1,0 +1,23 @@
+{
+  "offer": "COMMUNITY-CLOCK-LINT-SYNTAX-SOURCE-20261104T2125Z",
+  "source": "e11480e801bda51aadf4c48ec037f516cf4fc129",
+  "accepted_at": "2026-11-04T21:28:35Z",
+  "result": "PREFLIGHT_FAILED_NO_WORKLOAD_CHILD",
+  "executor_wall_seconds": 0.722506833,
+  "workload_started": false,
+  "guardian_started": false,
+  "dependency_link_created": false,
+  "execution_claims": 0,
+  "cache_from_prior_source02": {
+    "path": "frontend/docs/mcr/evidence/community-clock-runtime/source-02/work/node-compile-cache/v24.22.2-arm64-964aae3f-501/786b97b0",
+    "bytes": 1362620,
+    "allocated": 1363968,
+    "mtime": 1793827216.6878488,
+    "sha256": "362fb0ce8573645d4f595adc2775cd521d7027b46e722e0eb94d946853a236dd"
+  },
+  "correction": "source02 cache was charged as OTHER but outside its incorrectly relative cleanup root; immutable old cleanup field was incomplete",
+  "retained_new_floor_bytes": 117440512,
+  "retained_whole_floor_bytes": 2479673344,
+  "misdirected_temp_absent": true,
+  "verification_utc": "2026-11-04T21:30:37.435056+00:00"
+}

@@ -1,0 +1,416 @@
+{
+  "at": "2026-11-04T21:20:17.081425+00:00",
+  "values": {
+    "pids": 4,
+    "rss": 126926848,
+    "temporary": 0,
+    "durable": 634880,
+    "other": 2002944,
+    "new_total": 107495424,
+    "whole": 2479669248
+  },
+  "free_bytes": 22994128896,
+  "reason": null,
+  "observed_processes": {
+    "67498": {
+      "parent": 67420,
+      "group": 67420,
+      "uid": 501,
+      "rss": 90640,
+      "started": "Thu Nov 5 06:20:04 2026",
+      "command": "/Library/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python frontend/src/app/community-clock-runtime/__tests__/round.py docs/mcr/evidence/community-clock-runtime/source-02 source 7548cc940dae30e97dd656eae80bd4e880a6485c COMMUNITY-CLOCK-RETRY-SOURCE-20261104T2120Z 2026-11-04T21:20:04Z 120 180"
+    },
+    "67518": {
+      "parent": 67498,
+      "group": 67420,
+      "uid": 501,
+      "rss": 31024,
+      "started": "Thu Nov 5 06:20:05 2026",
+      "command": "/Library/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python /Users/lhs/Desktop/mcr-worktrees/fe-gifts-media-detail/frontend/src/app/community-clock-runtime/__tests__/round.py guard docs/mcr/evidence/community-clock-runtime/source-02 67498 1793827324.0 1793827384.0"
+    },
+    "67535": {
+      "parent": 67498,
+      "group": 67420,
+      "uid": 0,
+      "rss": 2128,
+      "started": "Thu Nov 5 06:20:06 2026",
+      "command": "ps -axo pid=,ppid=,pgid=,uid=,rss=,lstart=,args="
+    },
+    "67540": {
+      "parent": 67498,
+      "group": 67420,
+      "uid": 0,
+      "rss": 2128,
+      "started": "Thu Nov 5 06:20:06 2026",
+      "command": "ps -axo pid=,ppid=,pgid=,uid=,rss=,lstart=,args="
+    },
+    "67541": {
+      "parent": 67518,
+      "group": 67420,
+      "uid": 0,
+      "rss": 3568,
+      "started": "Thu Nov 5 06:20:06 2026",
+      "command": "(ps)"
+    },
+    "67542": {
+      "parent": 67498,
+      "group": 67420,
+      "uid": 0,
+      "rss": 2128,
+      "started": "Thu Nov 5 06:20:06 2026",
+      "command": "ps -axo pid=,ppid=,pgid=,uid=,rss=,lstart=,args="
+    },
+    "67543": {
+      "parent": 67498,
+      "group": 67543,
+      "uid": 501,
+      "rss": 519360,
+      "started": "Thu Nov 5 06:20:06 2026",
+      "command": "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node /Users/lhs/Desktop/mcr/frontend/node_modules/vitest/vitest.mjs run --config src/app/community-clock-runtime/__tests__/vitest.config.ts --configLoader runner --pool=threads --cache=false --no-file-parallelism --maxWorkers=1"
+    },
+    "67544": {
+      "parent": 67498,
+      "group": 67420,
+      "uid": 0,
+      "rss": 2128,
+      "started": "Thu Nov 5 06:20:06 2026",
+      "command": "ps -axo pid=,ppid=,pgid=,uid=,rss=,lstart=,args="
+    },
+    "67546": {
+      "parent": 67518,
+      "group": 67420,
+      "uid": 0,
+      "rss": 4784,
+      "started": "Thu Nov 5 06:20:06 2026",
+      "command": "(ps)"
+    },
+    "67547": {
+      "parent": 67498,
+      "group": 67420,
+      "uid": 0,
+      "rss": 2128,
+      "started": "Thu Nov 5 06:20:06 2026",
+      "command": "ps -axo pid=,ppid=,pgid=,uid=,rss=,lstart=,args="
+    },
+    "67554": {
+      "parent": 67498,
+      "group": 67420,
+      "uid": 0,
+      "rss": 2176,
+      "started": "Thu Nov 5 06:20:07 2026",
+      "command": "ps -axo pid=,ppid=,pgid=,uid=,rss=,lstart=,args="
+    },
+    "67641": {
+      "parent": 67498,
+      "group": 67420,
+      "uid": 0,
+      "rss": 2144,
+      "started": "Thu Nov 5 06:20:07 2026",
+      "command": "ps -axo pid=,ppid=,pgid=,uid=,rss=,lstart=,args="
+    },
+    "67712": {
+      "parent": 67518,
+      "group": 67420,
+      "uid": 0,
+      "rss": 4144,
+      "started": "Thu Nov 5 06:20:07 2026",
+      "command": "(ps)"
+    },
+    "67713": {
+      "parent": 67498,
+      "group": 67420,
+      "uid": 0,
+      "rss": 2128,
+      "started": "Thu Nov 5 06:20:07 2026",
+      "command": "ps -axo pid=,ppid=,pgid=,uid=,rss=,lstart=,args="
+    },
+    "67736": {
+      "parent": 67498,
+      "group": 67420,
+      "uid": 0,
+      "rss": 2112,
+      "started": "Thu Nov 5 06:20:08 2026",
+      "command": "ps -axo pid=,ppid=,pgid=,uid=,rss=,lstart=,args="
+    },
+    "67737": {
+      "parent": 67518,
+      "group": 67420,
+      "uid": 0,
+      "rss": 3792,
+      "started": "Thu Nov 5 06:20:08 2026",
+      "command": "(ps)"
+    },
+    "67738": {
+      "parent": 67498,
+      "group": 67738,
+      "uid": 501,
+      "rss": 0,
+      "started": "Thu Nov 5 06:20:08 2026",
+      "command": "(node)"
+    },
+    "67739": {
+      "parent": 67498,
+      "group": 67420,
+      "uid": 0,
+      "rss": 2128,
+      "started": "Thu Nov 5 06:20:08 2026",
+      "command": "ps -axo pid=,ppid=,pgid=,uid=,rss=,lstart=,args="
+    },
+    "67742": {
+      "parent": 67498,
+      "group": 67420,
+      "uid": 0,
+      "rss": 2128,
+      "started": "Thu Nov 5 06:20:08 2026",
+      "command": "ps -axo pid=,ppid=,pgid=,uid=,rss=,lstart=,args="
+    },
+    "67757": {
+      "parent": 67498,
+      "group": 67420,
+      "uid": 0,
+      "rss": 2128,
+      "started": "Thu Nov 5 06:20:08 2026",
+      "command": "ps -axo pid=,ppid=,pgid=,uid=,rss=,lstart=,args="
+    },
+    "67761": {
+      "parent": 67518,
+      "group": 67420,
+      "uid": 0,
+      "rss": 2976,
+      "started": "Thu Nov 5 06:20:09 2026",
+      "command": "ps -axo pid=,ppid=,pgid=,uid=,rss=,lstart=,args="
+    },
+    "67762": {
+      "parent": 67498,
+      "group": 67420,
+      "uid": 0,
+      "rss": 2128,
+      "started": "Thu Nov 5 06:20:09 2026",
+      "command": "ps -axo pid=,ppid=,pgid=,uid=,rss=,lstart=,args="
+    },
+    "67764": {
+      "parent": 67498,
+      "group": 67420,
+      "uid": 0,
+      "rss": 2128,
+      "started": "Thu Nov 5 06:20:09 2026",
+      "command": "ps -axo pid=,ppid=,pgid=,uid=,rss=,lstart=,args="
+    },
+    "67767": {
+      "parent": 67498,
+      "group": 67420,
+      "uid": 0,
+      "rss": 2128,
+      "started": "Thu Nov 5 06:20:09 2026",
+      "command": "ps -axo pid=,ppid=,pgid=,uid=,rss=,lstart=,args="
+    },
+    "67769": {
+      "parent": 67498,
+      "group": 67420,
+      "uid": 0,
+      "rss": 2128,
+      "started": "Thu Nov 5 06:20:10 2026",
+      "command": "ps -axo pid=,ppid=,pgid=,uid=,rss=,lstart=,args="
+    },
+    "67900": {
+      "parent": 67498,
+      "group": 67420,
+      "uid": 0,
+      "rss": 2224,
+      "started": "Thu Nov 5 06:20:10 2026",
+      "command": "ps -axo pid=,ppid=,pgid=,uid=,rss=,lstart=,args="
+    },
+    "67950": {
+      "parent": 67498,
+      "group": 67420,
+      "uid": 0,
+      "rss": 2128,
+      "started": "Thu Nov 5 06:20:11 2026",
+      "command": "ps -axo pid=,ppid=,pgid=,uid=,rss=,lstart=,args="
+    },
+    "67957": {
+      "parent": 67498,
+      "group": 67420,
+      "uid": 0,
+      "rss": 2128,
+      "started": "Thu Nov 5 06:20:11 2026",
+      "command": "ps -axo pid=,ppid=,pgid=,uid=,rss=,lstart=,args="
+    },
+    "68036": {
+      "parent": 67498,
+      "group": 67420,
+      "uid": 0,
+      "rss": 2160,
+      "started": "Thu Nov 5 06:20:11 2026",
+      "command": "ps -axo pid=,ppid=,pgid=,uid=,rss=,lstart=,args="
+    },
+    "68124": {
+      "parent": 67498,
+      "group": 67420,
+      "uid": 0,
+      "rss": 2128,
+      "started": "Thu Nov 5 06:20:12 2026",
+      "command": "ps -axo pid=,ppid=,pgid=,uid=,rss=,lstart=,args="
+    },
+    "68126": {
+      "parent": 67518,
+      "group": 67420,
+      "uid": 0,
+      "rss": 4288,
+      "started": "Thu Nov 5 06:20:12 2026",
+      "command": "(ps)"
+    },
+    "68127": {
+      "parent": 67498,
+      "group": 67420,
+      "uid": 0,
+      "rss": 2128,
+      "started": "Thu Nov 5 06:20:12 2026",
+      "command": "ps -axo pid=,ppid=,pgid=,uid=,rss=,lstart=,args="
+    },
+    "68129": {
+      "parent": 67498,
+      "group": 67420,
+      "uid": 0,
+      "rss": 2128,
+      "started": "Thu Nov 5 06:20:12 2026",
+      "command": "ps -axo pid=,ppid=,pgid=,uid=,rss=,lstart=,args="
+    },
+    "68150": {
+      "parent": 67498,
+      "group": 67420,
+      "uid": 0,
+      "rss": 2128,
+      "started": "Thu Nov 5 06:20:13 2026",
+      "command": "ps -axo pid=,ppid=,pgid=,uid=,rss=,lstart=,args="
+    },
+    "68164": {
+      "parent": 67498,
+      "group": 67420,
+      "uid": 0,
+      "rss": 2144,
+      "started": "Thu Nov 5 06:20:13 2026",
+      "command": "ps -axo pid=,ppid=,pgid=,uid=,rss=,lstart=,args="
+    },
+    "68165": {
+      "parent": 67518,
+      "group": 67420,
+      "uid": 0,
+      "rss": 2128,
+      "started": "Thu Nov 5 06:20:13 2026",
+      "command": "ps -axo pid=,ppid=,pgid=,uid=,rss=,lstart=,args="
+    },
+    "68173": {
+      "parent": 67498,
+      "group": 67420,
+      "uid": 0,
+      "rss": 2128,
+      "started": "Thu Nov 5 06:20:14 2026",
+      "command": "ps -axo pid=,ppid=,pgid=,uid=,rss=,lstart=,args="
+    },
+    "68176": {
+      "parent": 67498,
+      "group": 67420,
+      "uid": 0,
+      "rss": 2128,
+      "started": "Thu Nov 5 06:20:14 2026",
+      "command": "ps -axo pid=,ppid=,pgid=,uid=,rss=,lstart=,args="
+    },
+    "68178": {
+      "parent": 67498,
+      "group": 67420,
+      "uid": 0,
+      "rss": 2128,
+      "started": "Thu Nov 5 06:20:14 2026",
+      "command": "ps -axo pid=,ppid=,pgid=,uid=,rss=,lstart=,args="
+    },
+    "68181": {
+      "parent": 67498,
+      "group": 67420,
+      "uid": 0,
+      "rss": 2128,
+      "started": "Thu Nov 5 06:20:15 2026",
+      "command": "ps -axo pid=,ppid=,pgid=,uid=,rss=,lstart=,args="
+    },
+    "68185": {
+      "parent": 67518,
+      "group": 67420,
+      "uid": 0,
+      "rss": 4576,
+      "started": "Thu Nov 5 06:20:15 2026",
+      "command": "(ps)"
+    },
+    "68186": {
+      "parent": 67498,
+      "group": 67420,
+      "uid": 0,
+      "rss": 2128,
+      "started": "Thu Nov 5 06:20:15 2026",
+      "command": "ps -axo pid=,ppid=,pgid=,uid=,rss=,lstart=,args="
+    },
+    "68417": {
+      "parent": 67498,
+      "group": 67420,
+      "uid": 0,
+      "rss": 2160,
+      "started": "Thu Nov 5 06:20:15 2026",
+      "command": "ps -axo pid=,ppid=,pgid=,uid=,rss=,lstart=,args="
+    },
+    "68428": {
+      "parent": 67498,
+      "group": 67420,
+      "uid": 0,
+      "rss": 2192,
+      "started": "Thu Nov 5 06:20:16 2026",
+      "command": "ps -axo pid=,ppid=,pgid=,uid=,rss=,lstart=,args="
+    },
+    "68436": {
+      "parent": 67518,
+      "group": 67420,
+      "uid": 0,
+      "rss": 3152,
+      "started": "Thu Nov 5 06:20:16 2026",
+      "command": "(ps)"
+    },
+    "68437": {
+      "parent": 67498,
+      "group": 67420,
+      "uid": 0,
+      "rss": 2128,
+      "started": "Thu Nov 5 06:20:16 2026",
+      "command": "ps -axo pid=,ppid=,pgid=,uid=,rss=,lstart=,args="
+    },
+    "68443": {
+      "parent": 67498,
+      "group": 67420,
+      "uid": 0,
+      "rss": 2128,
+      "started": "Thu Nov 5 06:20:16 2026",
+      "command": "ps -axo pid=,ppid=,pgid=,uid=,rss=,lstart=,args="
+    },
+    "68445": {
+      "parent": 67498,
+      "group": 67420,
+      "uid": 0,
+      "rss": 2128,
+      "started": "Thu Nov 5 06:20:16 2026",
+      "command": "ps -axo pid=,ppid=,pgid=,uid=,rss=,lstart=,args="
+    },
+    "68448": {
+      "parent": 67498,
+      "group": 68448,
+      "uid": 501,
+      "rss": 160,
+      "started": "Thu Nov 5 06:20:16 2026",
+      "command": "node /Users/lhs/Desktop/mcr/frontend/node_modules/.bin/../oxlint/bin/oxlint --deny-warnings src/app/community-clock-runtime src/app/community-adoption/bootstrap.ts src/app/community-adoption/__tests__/fixtures.ts src/app/ports.ts"
+    },
+    "68449": {
+      "parent": 67498,
+      "group": 67420,
+      "uid": 0,
+      "rss": 2128,
+      "started": "Thu Nov 5 06:20:16 2026",
+      "command": "ps -axo pid=,ppid=,pgid=,uid=,rss=,lstart=,args="
+    }
+  }
+}

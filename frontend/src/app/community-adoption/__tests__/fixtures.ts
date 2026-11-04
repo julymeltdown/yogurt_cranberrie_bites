@@ -21,7 +21,14 @@ export function fixture(source: ShellBootstrap, profile: CommunityClockProfile |
   let releaseResponse = () => {}
   const auth = createSessionController({ eventId, cookiePolicy: { available: true, onInvalidate: () => () => {}, run: (_key, work) => work(), dispose() {} },
     fetch: async input => {
-      const request = input as Request; requests.push(request.clone())
+      const request = input as Request
+      if (request.method === 'GET' && new URL(request.url).pathname === '/api/auth/enrollment/admission') {
+        // SYNTHETIC TEST fixture for canonical Auth's authenticated admission read.
+        // Preserve requests as the original C03/product request accounting.
+        const revision = '00000000-0000-4000-8000-000000000701'
+        return Response.json({ decision: 'ADMITTED', policyRevision: revision, acceptedRevision: revision, serverTime: source.document?.server_time })
+      }
+      requests.push(request.clone())
       if (new URL(request.url).pathname.endsWith('/bootstrap')) {
         if (mode === 'invalid') return Response.json({ invalid: true })
         if (mode === 'held') return new Promise<Response>(resolve => { releaseResponse = () => { ms = 600; resolve(Response.json(source.document)) } })

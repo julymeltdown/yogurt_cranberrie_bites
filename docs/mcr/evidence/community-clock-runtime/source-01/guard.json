@@ -1,0 +1,150 @@
+{
+  "peaks": {
+    "pids": 4,
+    "rss": 621641728,
+    "temporary": 0,
+    "durable": 626688,
+    "other": 626688,
+    "new_total": 95625216,
+    "whole": 2477322240
+  },
+  "reason": null,
+  "minimum_free_bytes": 23033446400,
+  "observed_processes": {
+    "8821": {
+      "parent": 8748,
+      "group": 8748,
+      "uid": 501,
+      "rss": 89136,
+      "started": "Thu Nov 5 06:11:53 2026",
+      "command": "/Library/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python frontend/src/app/community-clock-runtime/__tests__/round.py docs/mcr/evidence/community-clock-runtime/source-01 source b2095630e9f1b6b4422511776b1c1cc4d44a6590 COMMUNITY-CLOCK-SOURCE-20261104T2140Z 2026-11-04T21:11:53Z 120 180"
+    },
+    "8856": {
+      "parent": 8821,
+      "group": 8748,
+      "uid": 501,
+      "rss": 31168,
+      "started": "Thu Nov 5 06:11:55 2026",
+      "command": "/Library/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python /Users/lhs/Desktop/mcr-worktrees/fe-gifts-media-detail/frontend/src/app/community-clock-runtime/__tests__/round.py guard docs/mcr/evidence/community-clock-runtime/source-01 8821 1793826833.0 1793826893.0"
+    },
+    "8857": {
+      "parent": 8856,
+      "group": 8748,
+      "uid": 0,
+      "rss": 2176,
+      "started": "Thu Nov 5 06:11:55 2026",
+      "command": "ps -axo pid=,ppid=,pgid=,uid=,rss=,lstart=,args="
+    },
+    "8861": {
+      "parent": 8856,
+      "group": 8748,
+      "uid": 0,
+      "rss": 2176,
+      "started": "Thu Nov 5 06:11:55 2026",
+      "command": "ps -axo pid=,ppid=,pgid=,uid=,rss=,lstart=,args="
+    },
+    "8864": {
+      "parent": 8856,
+      "group": 8748,
+      "uid": 0,
+      "rss": 2176,
+      "started": "Thu Nov 5 06:11:55 2026",
+      "command": "ps -axo pid=,ppid=,pgid=,uid=,rss=,lstart=,args="
+    },
+    "8886": {
+      "parent": 8821,
+      "group": 8886,
+      "uid": 501,
+      "rss": 481200,
+      "started": "Thu Nov 5 06:11:55 2026",
+      "command": "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node /Users/lhs/Desktop/mcr/frontend/node_modules/vitest/vitest.mjs run --config src/app/community-clock-runtime/__tests__/vitest.config.ts --configLoader runner --pool=threads --cache=false --no-file-parallelism --maxWorkers=1"
+    },
+    "8888": {
+      "parent": 8856,
+      "group": 8748,
+      "uid": 0,
+      "rss": 2176,
+      "started": "Thu Nov 5 06:11:55 2026",
+      "command": "ps -axo pid=,ppid=,pgid=,uid=,rss=,lstart=,args="
+    },
+    "8889": {
+      "parent": 8856,
+      "group": 8748,
+      "uid": 0,
+      "rss": 2176,
+      "started": "Thu Nov 5 06:11:56 2026",
+      "command": "ps -axo pid=,ppid=,pgid=,uid=,rss=,lstart=,args="
+    },
+    "8891": {
+      "parent": 8856,
+      "group": 8748,
+      "uid": 0,
+      "rss": 2176,
+      "started": "Thu Nov 5 06:11:56 2026",
+      "command": "ps -axo pid=,ppid=,pgid=,uid=,rss=,lstart=,args="
+    },
+    "8906": {
+      "parent": 8856,
+      "group": 8748,
+      "uid": 0,
+      "rss": 2176,
+      "started": "Thu Nov 5 06:11:56 2026",
+      "command": "ps -axo pid=,ppid=,pgid=,uid=,rss=,lstart=,args="
+    },
+    "8908": {
+      "parent": 8856,
+      "group": 8748,
+      "uid": 0,
+      "rss": 2176,
+      "started": "Thu Nov 5 06:11:56 2026",
+      "command": "ps -axo pid=,ppid=,pgid=,uid=,rss=,lstart=,args="
+    },
+    "8910": {
+      "parent": 8856,
+      "group": 8748,
+      "uid": 0,
+      "rss": 2176,
+      "started": "Thu Nov 5 06:11:56 2026",
+      "command": "ps -axo pid=,ppid=,pgid=,uid=,rss=,lstart=,args="
+    },
+    "8913": {
+      "parent": 8856,
+      "group": 8748,
+      "uid": 0,
+      "rss": 2176,
+      "started": "Thu Nov 5 06:11:57 2026",
+      "command": "ps -axo pid=,ppid=,pgid=,uid=,rss=,lstart=,args="
+    },
+    "8915": {
+      "parent": 8821,
+      "group": 8748,
+      "uid": 0,
+      "rss": 4592,
+      "started": "Thu Nov 5 06:11:57 2026",
+      "command": "(ps)"
+    },
+    "8916": {
+      "parent": 8856,
+      "group": 8748,
+      "uid": 0,
+      "rss": 2176,
+      "started": "Thu Nov 5 06:11:57 2026",
+      "command": "ps -axo pid=,ppid=,pgid=,uid=,rss=,lstart=,args="
+    },
+    "8918": {
+      "parent": 8856,
+      "group": 8748,
+      "uid": 0,
+      "rss": 2176,
+      "started": "Thu Nov 5 06:11:57 2026",
+      "command": "ps -axo pid=,ppid=,pgid=,uid=,rss=,lstart=,args="
+    }
+  },
+  "live_pids": [
+    "8821",
+    "8856",
+    "8918"
+  ],
+  "sampled_at": "2026-11-04T21:11:57.607351+00:00",
+  "sample_seconds": 0.12766004199511372
+}

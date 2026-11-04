@@ -9,6 +9,7 @@ import { createMemorySession, type SessionPort, type SessionScope } from '../sha
 import { createRootCharacterRegistry, type RootCharacterRegistry } from './character-entry/runtime'
 import type { ConnectionStatusController } from '../features/connection-status/model'
 import { createDefaultAdmin, type AdminComposition } from './operations-composition/owner'
+import { createProductionCommunityClock } from './community-clock-runtime'
 
 export type SessionReadiness = 'unknown' | 'checking' | 'ready' | 'anonymous' | 'unavailable' | 'error'
 export interface ReadinessPort {
@@ -84,8 +85,9 @@ export function createProductionPorts(auth?: SessionController, worldOptions: Om
     try { production = createProductionWorld({ ...worldOptions, auth, characters }) }
     catch (error) { characters.dispose(); throw error }
     const admin = createDefaultAdmin(auth)
-    return { eventId: publicEventId, ...(social ? { social } : {}), characters, auth, session: auth.session, readiness: auth.readiness, world: production.world, worldAccess: production.access,
-      dispose() { try { admin.dispose() } finally { try { production.dispose() } finally { characters.dispose() } } },
+    const communityClock = createProductionCommunityClock(publicEventId)
+    return { eventId: publicEventId, ...(social ? { social } : {}), ...(communityClock.profile ? { communityClock: communityClock.profile } : {}), characters, auth, session: auth.session, readiness: auth.readiness, world: production.world, worldAccess: production.access,
+      dispose() { try { communityClock.dispose() } finally { try { admin.dispose() } finally { try { production.dispose() } finally { characters.dispose() } } } },
       bootstrap: { load: auth.loadBootstrap }, admin }
   }
   return {

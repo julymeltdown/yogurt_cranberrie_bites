@@ -1,0 +1,118 @@
+{
+  "peaks": {
+    "pids": 5,
+    "rss": 155615232,
+    "temporary": 0,
+    "durable": 589824,
+    "other": 589824,
+    "new_total": 125960192,
+    "whole": 2487570432
+  },
+  "reason": null,
+  "minimum_free_bytes": 17425666048,
+  "observed_processes": {
+    "55083": {
+      "parent": 49590,
+      "group": 55083,
+      "uid": 501,
+      "rss": 91088,
+      "started": "Thu Nov 5 08:26:04 2026",
+      "command": "/Library/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python frontend/src/app/community-clock-runtime/__tests__/round.py docs/mcr/evidence/community-clock-runtime/source-05 source e25cdc21f6121ee8464fd3da9de1c1c2fcfec4db COMMUNITY-CLOCK-EXPIRY-QUALIFICATION-20261104T2325Z 2026-11-04T23:26:04Z 30 60"
+    },
+    "55191": {
+      "parent": 55083,
+      "group": 55083,
+      "uid": 501,
+      "rss": 29712,
+      "started": "Thu Nov 5 08:26:05 2026",
+      "command": "/Library/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python /Users/lhs/Desktop/mcr-worktrees/fe-gifts-media-detail/frontend/src/app/community-clock-runtime/__tests__/round.py guard /Users/lhs/Desktop/mcr-worktrees/fe-gifts-media-detail/docs/mcr/evidence/community-clock-runtime/source-05 55083 1793834794.0 1793834824.0"
+    },
+    "55192": {
+      "parent": 55191,
+      "group": 55083,
+      "uid": 0,
+      "rss": 2176,
+      "started": "Thu Nov 5 08:26:05 2026",
+      "command": "ps -axo pid=,ppid=,pgid=,uid=,rss=,lstart=,args="
+    },
+    "55194": {
+      "parent": 55191,
+      "group": 55083,
+      "uid": 0,
+      "rss": 2176,
+      "started": "Thu Nov 5 08:26:05 2026",
+      "command": "ps -axo pid=,ppid=,pgid=,uid=,rss=,lstart=,args="
+    },
+    "55197": {
+      "parent": 55083,
+      "group": 55083,
+      "uid": 0,
+      "rss": 3472,
+      "started": "Thu Nov 5 08:26:05 2026",
+      "command": "(ps)"
+    },
+    "55198": {
+      "parent": 55191,
+      "group": 55083,
+      "uid": 0,
+      "rss": 2176,
+      "started": "Thu Nov 5 08:26:05 2026",
+      "command": "ps -axo pid=,ppid=,pgid=,uid=,rss=,lstart=,args="
+    },
+    "55199": {
+      "parent": 55083,
+      "group": 55199,
+      "uid": 501,
+      "rss": 0,
+      "started": "Thu Nov 5 08:26:05 2026",
+      "command": "<defunct>"
+    },
+    "55221": {
+      "parent": 55191,
+      "group": 55083,
+      "uid": 0,
+      "rss": 2176,
+      "started": "Thu Nov 5 08:26:05 2026",
+      "command": "ps -axo pid=,ppid=,pgid=,uid=,rss=,lstart=,args="
+    },
+    "55285": {
+      "parent": 55083,
+      "group": 55285,
+      "uid": 501,
+      "rss": 24656,
+      "started": "Thu Nov 5 08:26:06 2026",
+      "command": "(Python)"
+    },
+    "55286": {
+      "parent": 55083,
+      "group": 55083,
+      "uid": 0,
+      "rss": 4320,
+      "started": "Thu Nov 5 08:26:06 2026",
+      "command": "(ps)"
+    },
+    "55307": {
+      "parent": 55191,
+      "group": 55083,
+      "uid": 0,
+      "rss": 2224,
+      "started": "Thu Nov 5 08:26:06 2026",
+      "command": "ps -axo pid=,ppid=,pgid=,uid=,rss=,lstart=,args="
+    },
+    "55315": {
+      "parent": 55191,
+      "group": 55083,
+      "uid": 0,
+      "rss": 2176,
+      "started": "Thu Nov 5 08:26:06 2026",
+      "command": "ps -axo pid=,ppid=,pgid=,uid=,rss=,lstart=,args="
+    }
+  },
+  "live_pids": [
+    "55083",
+    "55191",
+    "55315"
+  ],
+  "sampled_at": "2026-11-04T23:26:06.398413+00:00",
+  "sample_seconds": 0.12360154199996032
+}

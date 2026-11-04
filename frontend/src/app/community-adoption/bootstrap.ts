@@ -9,6 +9,11 @@ export interface CommunityClockProfile extends ClockQualification {
   readonly maxObservationGapMs: number
   readonly classification: 'QUALIFIED_RUNTIME' | 'TEST_ONLY'
   readonly evidence: string
+  readonly runtime?: {
+    isCurrent(): boolean
+    subscribe(withdraw: () => void): () => void
+    qualify(source: ShellBootstrap): ClockQualification | null
+  }
 }
 export interface CommunityBootstrapBinding {
   readonly source: ShellBootstrap
@@ -25,13 +30,19 @@ export function beginCommunityBootstrap({ privacy, scope, signal, profile }: {
   readonly profile: CommunityClockProfile | undefined
 }, makeTimeline: (gap: number, signal: AbortSignal) => AuthorityTimeline = createBrowserAuthorityTimeline) {
   let active = true, completed = false, authority: CommunityAuthority | null = null
-  let timeline: AuthorityTimeline | null = null, stopPrivacy = () => {}, stopAuthority = () => {}
+  let timeline: AuthorityTimeline | null = null, stopPrivacy = () => {}, stopAuthority = () => {}, stopRuntime = () => {}
   const captured = scope ? Object.freeze({ ...scope }) : null
-  function isCurrent() { return active && !signal.aborted && !!captured && !!privacy && privacy.isCurrent(captured) }
+  function isCurrent() {
+    if (!active) return false
+    try {
+      if (!signal.aborted && captured && privacy?.isCurrent(captured) && (!profile?.runtime || profile.runtime.isCurrent())) return active
+    } catch { /* A failed lifetime callback withdraws the retained binding. */ }
+    dispose(); return false
+  }
   function dispose() {
     if (!active) return
     active = false; signal.removeEventListener('abort', dispose)
-    for (const stop of [stopPrivacy, stopAuthority, () => authority?.dispose(), () => timeline?.dispose()]) {
+    for (const stop of [stopPrivacy, stopRuntime, stopAuthority, () => authority?.dispose(), () => timeline?.dispose()]) {
       try { stop() } catch { /* Release every owned lifetime even if a borrower fails. */ }
     }
   }
@@ -41,6 +52,10 @@ export function beginCommunityBootstrap({ privacy, scope, signal, profile }: {
     else {
       const stop = privacy!.registerCleanup(dispose)
       if (active) stopPrivacy = stop; else stop()
+      if (isCurrent() && profile?.runtime) {
+        const stop = profile.runtime.subscribe(dispose)
+        if (active) stopRuntime = stop; else stop()
+      }
     }
   } catch { dispose() }
   let qualification: ClockQualification | null = null
@@ -51,7 +66,7 @@ export function beginCommunityBootstrap({ privacy, scope, signal, profile }: {
       qualification = Object.freeze({ maxAgeMs: profile.maxAgeMs, uncertaintyMs: profile.uncertaintyMs, maxElapsedRate: profile.maxElapsedRate })
       timeline = makeTimeline(profile.maxObservationGapMs, signal)
     }
-  } catch { timeline?.dispose(); timeline = null }
+  } catch { dispose(); timeline = null }
   const requestStarted = timeline?.capture() ?? null
   return Object.freeze({ dispose,
     complete(source: ShellBootstrap): CommunityBootstrapBinding {
@@ -59,12 +74,18 @@ export function beginCommunityBootstrap({ privacy, scope, signal, profile }: {
       const responseReceived = !completed ? timeline?.capture() ?? null : null
       if (completed) throw Error('Bootstrap timing already consumed')
       completed = true
+      try {
+        if (qualification && isCurrent() && profile?.runtime) qualification = profile.runtime.qualify(source)
+      } catch { dispose(); qualification = null }
       if (isCurrent() && timeline && requestStarted && responseReceived && qualification) {
         authority = createCommunityAuthority({ bootstrap: source, scope: captured!, privacy: privacy!, signal,
           timeline, requestStarted, responseReceived, qualification })
         if (!authority.clock.read()) { authority.dispose(); authority = null; timeline.dispose() }
-        else stopAuthority = authority.clock.subscribe(dispose)
-      } else timeline?.dispose()
+        else {
+          const stop = authority.clock.subscribe(dispose)
+          if (active) stopAuthority = stop; else stop()
+        }
+      } else dispose()
       return Object.freeze({ source, scope: captured, signal, isCurrent,
         read: () => isCurrent() ? authority : null, dispose })
     },

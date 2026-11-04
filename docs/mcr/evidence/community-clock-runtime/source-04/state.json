@@ -1,0 +1,168 @@
+{
+  "at": "2026-11-04T23:14:47.363225+00:00",
+  "pin": "7b8f77152a703b97a592ce8320af6e1c663d1e0c",
+  "clean": true,
+  "source_bytes": 1466642432,
+  "deps_bytes": 911728640,
+  "git_bytes": 103440384,
+  "git_dir": "/Users/lhs/Desktop/mcr/.git/worktrees/fe-gifts-media-detail",
+  "git_dir_bytes": 2224128,
+  "git_inode_inventory": {
+    "16777229:548369395": {
+      "path": "/Users/lhs/Desktop/mcr/.git/objects/pack/pack-bd665b702730e7eb962437ad806051f056e63730.pack",
+      "logical": 267799,
+      "allocated": 270336,
+      "charged": 270336
+    },
+    "16777229:548369396": {
+      "path": "/Users/lhs/Desktop/mcr/.git/objects/pack/pack-bd665b702730e7eb962437ad806051f056e63730.idx",
+      "logical": 3060,
+      "allocated": 4096,
+      "charged": 4096
+    },
+    "16777229:548369397": {
+      "path": "/Users/lhs/Desktop/mcr/.git/objects/pack/pack-bd665b702730e7eb962437ad806051f056e63730.rev",
+      "logical": 336,
+      "allocated": 4096,
+      "charged": 4096
+    },
+    "16777229:548452609": {
+      "path": "/Users/lhs/Desktop/mcr/.git/objects/pack/multi-pack-index",
+      "logical": 2161640,
+      "allocated": 2162688,
+      "charged": 2162688
+    },
+    "16777229:548422704": {
+      "path": "/Users/lhs/Desktop/mcr/.git/objects/pack/pack-e225cbb6e81595fbd81f375ce8cd9e4c70c1d83c.pack",
+      "logical": 3301495,
+      "allocated": 3305472,
+      "charged": 3305472
+    },
+    "16777229:548422713": {
+      "path": "/Users/lhs/Desktop/mcr/.git/objects/pack/pack-e225cbb6e81595fbd81f375ce8cd9e4c70c1d83c.idx",
+      "logical": 31340,
+      "allocated": 32768,
+      "charged": 32768
+    },
+    "16777229:548422714": {
+      "path": "/Users/lhs/Desktop/mcr/.git/objects/pack/pack-e225cbb6e81595fbd81f375ce8cd9e4c70c1d83c.rev",
+      "logical": 4376,
+      "allocated": 8192,
+      "charged": 8192
+    },
+    "16777229:548368565": {
+      "path": "/Users/lhs/Desktop/mcr/.git/objects/pack/pack-86d1eab81b0f6052472f3a9949d2a451fc07edb0.rev",
+      "logical": 12080,
+      "allocated": 12288,
+      "charged": 12288
+    },
+    "16777229:548368564": {
+      "path": "/Users/lhs/Desktop/mcr/.git/objects/pack/pack-86d1eab81b0f6052472f3a9949d2a451fc07edb0.idx",
+      "logical": 85268,
+      "allocated": 86016,
+      "charged": 86016
+    },
+    "16777229:548368563": {
+      "path": "/Users/lhs/Desktop/mcr/.git/objects/pack/pack-86d1eab81b0f6052472f3a9949d2a451fc07edb0.pack",
+      "logical": 15636536,
+      "allocated": 15638528,
+      "charged": 15638528
+    },
+    "16777229:548452602": {
+      "path": "/Users/lhs/Desktop/mcr/.git/objects/pack/pack-e0e83c8ab79ff282f9c1c9cbea0f7fe09b941014.rev",
+      "logical": 1920,
+      "allocated": 4096,
+      "charged": 4096
+    },
+    "16777229:548452601": {
+      "path": "/Users/lhs/Desktop/mcr/.git/objects/pack/pack-e0e83c8ab79ff282f9c1c9cbea0f7fe09b941014.idx",
+      "logical": 14148,
+      "allocated": 16384,
+      "charged": 16384
+    },
+    "16777229:548452600": {
+      "path": "/Users/lhs/Desktop/mcr/.git/objects/pack/pack-e0e83c8ab79ff282f9c1c9cbea0f7fe09b941014.pack",
+      "logical": 1167096,
+      "allocated": 1167360,
+      "charged": 1167360
+    },
+    "16777229:548195797": {
+      "path": "/Users/lhs/Desktop/mcr/.git/objects/pack/pack-2054911c800629109c501985dc0fc4120230bd20.rev",
+      "logical": 68688,
+      "allocated": 69632,
+      "charged": 69632
+    },
+    "16777229:548195796": {
+      "path": "/Users/lhs/Desktop/mcr/.git/objects/pack/pack-2054911c800629109c501985dc0fc4120230bd20.idx",
+      "logical": 481524,
+      "allocated": 483328,
+      "charged": 483328
+    },
+    "16777229:548195789": {
+      "path": "/Users/lhs/Desktop/mcr/.git/objects/pack/pack-2054911c800629109c501985dc0fc4120230bd20.pack",
+      "logical": 77838036,
+      "allocated": 77840384,
+      "charged": 77840384
+    },
+    "16777229:548142151": {
+      "path": "/Users/lhs/Desktop/mcr/.git/config",
+      "logical": 14551,
+      "allocated": 16384,
+      "charged": 16384
+    },
+    "16777229:548481114": {
+      "path": "/Users/lhs/Desktop/mcr/.git/packed-refs",
+      "logical": 72871,
+      "allocated": 73728,
+      "charged": 73728
+    },
+    "16777229:546336808": {
+      "path": "/Users/lhs/Desktop/mcr/.git/logs/refs/heads/codex/mcr-fe-gifts-media-detail",
+      "logical": 4078,
+      "allocated": 4096,
+      "charged": 4096
+    },
+    "16777229:546863878": {
+      "path": "/Users/lhs/Desktop/mcr/.git/logs/refs/heads/codex/mcr-fe-FE39-current-20261105",
+      "logical": 2593,
+      "allocated": 4096,
+      "charged": 4096
+    },
+    "16777229:547190269": {
+      "path": "/Users/lhs/Desktop/mcr/.git/logs/refs/heads/codex/mcr-fe-default-admin-composition",
+      "logical": 4923,
+      "allocated": 8192,
+      "charged": 8192
+    },
+    "16777229:548342026": {
+      "path": "/Users/lhs/Desktop/mcr/.git/logs/refs/heads/codex/mcr-fe-community-clock-runtime",
+      "logical": 1873,
+      "allocated": 4096,
+      "charged": 4096
+    }
+  },
+  "node_inode_bytes": 122564608,
+  "owned_object_ranges": [
+    "5da644264ee354f63e609db64d65a7c5e63c9c11..codex/mcr-fe-gifts-media-detail",
+    "ff96d53eb817c93dd1bafb5c4f125630f995413b..codex/mcr-fe-FE39-current-20261105",
+    "306626d49cd8b55916cf973ab6eea06569ec98d4..codex/mcr-fe-default-admin-composition",
+    "2492e35bb9fb61380bf97fa936983ec16c0722f4..HEAD"
+  ],
+  "owned_object_count": 3347,
+  "free_bytes": 18258022400,
+  "limits": {
+    "pids": 6,
+    "rss": 1073741824,
+    "whole": 2684354560,
+    "temporary": 83886080,
+    "durable": 25165824,
+    "other": 16777216,
+    "new_total": 134217728
+  },
+  "running": false,
+  "work_done": true,
+  "new_offset": 119537664,
+  "start_floor_bytes": 11811160064,
+  "live_floor_bytes": 8589934592,
+  "whole_floor": 2480697344
+}

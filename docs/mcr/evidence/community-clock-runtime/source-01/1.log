@@ -1,0 +1,259 @@
+
+ RUN  v4.1.9 /Users/lhs/Desktop/mcr-worktrees/fe-gifts-media-detail/frontend
+
+ ❯ src/app/community-adoption/__tests__/binding.test.ts (14 tests | 11 failed) 91ms
+     × captures the full RTT around one canonical C03 load and retains the original signal after privacy.run finishes 12ms
+     × retires the original binding on identity without recapturing its scope 2ms
+     × retires the original binding on policy without recapturing its scope 2ms
+     × retires the original binding on dispose without recapturing its scope 1ms
+     × does not allocate a clock for absent policy and rejects a second decoded receipt 3ms
+     × rejects an explicitly TEST_ONLY clock profile in production mode 1ms
+     × keeps canonical World-only capabilities unavailable for authoring despite a qualified test clock 2ms
+     × borrows the exact pair, preserves a draft across selections, and survives owner StrictMode replay without disposing parent timing 5ms
+     × disables all action bridges with no profile and never uses the device calendar as a fallback 2ms
+     × rejects a relabeled capability projection rather than upgrading the canonical decision 1ms
+     × withdraws the bridge and discovery projections at clock discontinuity and retains no physical arrival permission 2ms
+(node:8886) PromiseRejectionHandledWarning: Promise rejection was handled asynchronously (rejection id: 4)
+(Use `node --trace-warnings ...` to show where the warning was created)
+ ❯ src/app/community-clock-runtime/__tests__/runtime.test.ts (26 tests | 7 failed) 81ms
+     × uses the one decoded response and clamps its age to the evidence server expiry 11ms
+     × withdraws a pending C03 and cannot resurrect after its late decoded response 55ms
+     × cannot upgrade a rejected TEST_ONLY production profile through its runtime callback 2ms
+     × fails closed when runtime isCurrent fails 1ms
+     × fails closed when runtime subscribe fails 1ms
+     × fails closed when runtime qualify fails 1ms
+     × fails closed when runtime synchronous-withdrawal fails 1ms
+
+⎯⎯⎯⎯⎯⎯ Failed Tests 18 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  src/app/community-adoption/__tests__/binding.test.ts > the original Bootstrap request lifetime > captures the full RTT around one canonical C03 load and retains the original signal after privacy.run finishes
+ShellLoadError: unavailable
+ ❯ Object.loadBootstrap src/features/auth/model/session.ts:279:50
+    277|       try {
+    278|         if (!session.isCurrent(scope)) throw new TransportError('sessi…
+    279|         if (!await checkAdmission(signal)) throw new ShellLoadError(st…
+       |                                                  ^
+    280|         const response = await request({ path: `/api/concert/events/${…
+    281|           decode: value => decodeContract('Bootstrap', value) })
+ ❯ Object.run src/shared/query/privacy.ts:131:22
+ ❯ Object.load src/app/community-adoption/__tests__/fixtures.ts:42:21
+ ❯ src/app/community-adoption/__tests__/binding.test.ts:13:40
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/18]⎯
+
+ FAIL  src/app/community-adoption/__tests__/binding.test.ts > the original Bootstrap request lifetime > retires the original binding on identity without recapturing its scope
+ FAIL  src/app/community-adoption/__tests__/binding.test.ts > the original Bootstrap request lifetime > retires the original binding on policy without recapturing its scope
+ FAIL  src/app/community-adoption/__tests__/binding.test.ts > the original Bootstrap request lifetime > retires the original binding on dispose without recapturing its scope
+ShellLoadError: unavailable
+ ❯ Object.loadBootstrap src/features/auth/model/session.ts:279:50
+    277|       try {
+    278|         if (!session.isCurrent(scope)) throw new TransportError('sessi…
+    279|         if (!await checkAdmission(signal)) throw new ShellLoadError(st…
+       |                                                  ^
+    280|         const response = await request({ path: `/api/concert/events/${…
+    281|           decode: value => decodeContract('Bootstrap', value) })
+ ❯ Object.run src/shared/query/privacy.ts:131:22
+ ❯ Object.load src/app/community-adoption/__tests__/fixtures.ts:42:21
+ ❯ src/app/community-adoption/__tests__/binding.test.ts:23:40
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/18]⎯
+
+ FAIL  src/app/community-adoption/__tests__/binding.test.ts > the original Bootstrap request lifetime > does not allocate a clock for absent policy and rejects a second decoded receipt
+ShellLoadError: unavailable
+ ❯ Object.loadBootstrap src/features/auth/model/session.ts:279:50
+    277|       try {
+    278|         if (!session.isCurrent(scope)) throw new TransportError('sessi…
+    279|         if (!await checkAdmission(signal)) throw new ShellLoadError(st…
+       |                                                  ^
+    280|         const response = await request({ path: `/api/concert/events/${…
+    281|           decode: value => decodeContract('Bootstrap', value) })
+ ❯ Object.run src/shared/query/privacy.ts:131:22
+ ❯ Object.load src/app/community-adoption/__tests__/fixtures.ts:42:21
+ ❯ src/app/community-adoption/__tests__/binding.test.ts:32:21
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[3/18]⎯
+
+ FAIL  src/app/community-adoption/__tests__/binding.test.ts > the original Bootstrap request lifetime > rejects an explicitly TEST_ONLY clock profile in production mode
+ShellLoadError: unavailable
+ ❯ Object.loadBootstrap src/features/auth/model/session.ts:279:50
+    277|       try {
+    278|         if (!session.isCurrent(scope)) throw new TransportError('sessi…
+    279|         if (!await checkAdmission(signal)) throw new ShellLoadError(st…
+       |                                                  ^
+    280|         const response = await request({ path: `/api/concert/events/${…
+    281|           decode: value => decodeContract('Bootstrap', value) })
+ ❯ Object.run src/shared/query/privacy.ts:131:22
+ ❯ Object.load src/app/community-adoption/__tests__/fixtures.ts:42:21
+ ❯ src/app/community-adoption/__tests__/binding.test.ts:38:40
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[4/18]⎯
+
+ FAIL  src/app/community-adoption/__tests__/binding.test.ts > one borrowed discovery pair and the real Community bridge > keeps canonical World-only capabilities unavailable for authoring despite a qualified test clock
+ShellLoadError: unavailable
+ ❯ Object.loadBootstrap src/features/auth/model/session.ts:279:50
+    277|       try {
+    278|         if (!session.isCurrent(scope)) throw new TransportError('sessi…
+    279|         if (!await checkAdmission(signal)) throw new ShellLoadError(st…
+       |                                                  ^
+    280|         const response = await request({ path: `/api/concert/events/${…
+    281|           decode: value => decodeContract('Bootstrap', value) })
+ ❯ Object.run src/shared/query/privacy.ts:131:22
+ ❯ Object.load src/app/community-adoption/__tests__/fixtures.ts:42:21
+ ❯ src/app/community-adoption/__tests__/binding.test.ts:63:40
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[5/18]⎯
+
+ FAIL  src/app/community-adoption/__tests__/binding.test.ts > one borrowed discovery pair and the real Community bridge > borrows the exact pair, preserves a draft across selections, and survives owner StrictMode replay without disposing parent timing
+ShellLoadError: unavailable
+ ❯ Object.loadBootstrap src/features/auth/model/session.ts:279:50
+    277|       try {
+    278|         if (!session.isCurrent(scope)) throw new TransportError('sessi…
+    279|         if (!await checkAdmission(signal)) throw new ShellLoadError(st…
+       |                                                  ^
+    280|         const response = await request({ path: `/api/concert/events/${…
+    281|           decode: value => decodeContract('Bootstrap', value) })
+ ❯ Object.run src/shared/query/privacy.ts:131:22
+ ❯ Object.load src/app/community-adoption/__tests__/fixtures.ts:42:21
+ ❯ src/app/community-adoption/__tests__/binding.test.ts:72:50
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[6/18]⎯
+
+ FAIL  src/app/community-adoption/__tests__/binding.test.ts > one borrowed discovery pair and the real Community bridge > disables all action bridges with no profile and never uses the device calendar as a fallback
+ShellLoadError: unavailable
+ ❯ Object.loadBootstrap src/features/auth/model/session.ts:279:50
+    277|       try {
+    278|         if (!session.isCurrent(scope)) throw new TransportError('sessi…
+    279|         if (!await checkAdmission(signal)) throw new ShellLoadError(st…
+       |                                                  ^
+    280|         const response = await request({ path: `/api/concert/events/${…
+    281|           decode: value => decodeContract('Bootstrap', value) })
+ ❯ Object.run src/shared/query/privacy.ts:131:22
+ ❯ Object.load src/app/community-adoption/__tests__/fixtures.ts:42:21
+ ❯ src/app/community-adoption/__tests__/binding.test.ts:86:21
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[7/18]⎯
+
+ FAIL  src/app/community-adoption/__tests__/binding.test.ts > one borrowed discovery pair and the real Community bridge > rejects a relabeled capability projection rather than upgrading the canonical decision
+ShellLoadError: unavailable
+ ❯ Object.loadBootstrap src/features/auth/model/session.ts:279:50
+    277|       try {
+    278|         if (!session.isCurrent(scope)) throw new TransportError('sessi…
+    279|         if (!await checkAdmission(signal)) throw new ShellLoadError(st…
+       |                                                  ^
+    280|         const response = await request({ path: `/api/concert/events/${…
+    281|           decode: value => decodeContract('Bootstrap', value) })
+ ❯ Object.run src/shared/query/privacy.ts:131:22
+ ❯ Object.load src/app/community-adoption/__tests__/fixtures.ts:42:21
+ ❯ src/app/community-adoption/__tests__/binding.test.ts:93:40
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[8/18]⎯
+
+ FAIL  src/app/community-adoption/__tests__/binding.test.ts > one borrowed discovery pair and the real Community bridge > withdraws the bridge and discovery projections at clock discontinuity and retains no physical arrival permission
+ShellLoadError: unavailable
+ ❯ Object.loadBootstrap src/features/auth/model/session.ts:279:50
+    277|       try {
+    278|         if (!session.isCurrent(scope)) throw new TransportError('sessi…
+    279|         if (!await checkAdmission(signal)) throw new ShellLoadError(st…
+       |                                                  ^
+    280|         const response = await request({ path: `/api/concert/events/${…
+    281|           decode: value => decodeContract('Bootstrap', value) })
+ ❯ Object.run src/shared/query/privacy.ts:131:22
+ ❯ Object.load src/app/community-adoption/__tests__/fixtures.ts:42:21
+ ❯ src/app/community-adoption/__tests__/binding.test.ts:98:50
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[9/18]⎯
+
+ FAIL  src/app/community-clock-runtime/__tests__/runtime.test.ts > runtime factory and original canonical response binding > uses the one decoded response and clamps its age to the evidence server expiry
+ShellLoadError: unavailable
+ ❯ Object.loadBootstrap src/features/auth/model/session.ts:279:50
+    277|       try {
+    278|         if (!session.isCurrent(scope)) throw new TransportError('sessi…
+    279|         if (!await checkAdmission(signal)) throw new ShellLoadError(st…
+       |                                                  ^
+    280|         const response = await request({ path: `/api/concert/events/${…
+    281|           decode: value => decodeContract('Bootstrap', value) })
+ ❯ Object.run src/shared/query/privacy.ts:131:22
+ ❯ Object.load src/app/community-adoption/__tests__/fixtures.ts:42:21
+ ❯ src/app/community-clock-runtime/__tests__/runtime.test.ts:19:21
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[10/18]⎯
+
+ FAIL  src/app/community-clock-runtime/__tests__/runtime.test.ts > runtime factory and original canonical response binding > withdraws a pending C03 and cannot resurrect after its late decoded response
+ShellLoadError: unavailable
+ ❯ Object.loadBootstrap src/features/auth/model/session.ts:279:50
+    277|       try {
+    278|         if (!session.isCurrent(scope)) throw new TransportError('sessi…
+    279|         if (!await checkAdmission(signal)) throw new ShellLoadError(st…
+       |                                                  ^
+    280|         const response = await request({ path: `/api/concert/events/${…
+    281|           decode: value => decodeContract('Bootstrap', value) })
+ ❯ Object.run src/shared/query/privacy.ts:131:22
+ ❯ Object.load src/app/community-adoption/__tests__/fixtures.ts:42:21
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[11/18]⎯
+
+ FAIL  src/app/community-clock-runtime/__tests__/runtime.test.ts > runtime factory and original canonical response binding > cannot upgrade a rejected TEST_ONLY production profile through its runtime callback
+ShellLoadError: unavailable
+ ❯ Object.loadBootstrap src/features/auth/model/session.ts:279:50
+    277|       try {
+    278|         if (!session.isCurrent(scope)) throw new TransportError('sessi…
+    279|         if (!await checkAdmission(signal)) throw new ShellLoadError(st…
+       |                                                  ^
+    280|         const response = await request({ path: `/api/concert/events/${…
+    281|           decode: value => decodeContract('Bootstrap', value) })
+ ❯ Object.run src/shared/query/privacy.ts:131:22
+ ❯ Object.load src/app/community-adoption/__tests__/fixtures.ts:42:21
+ ❯ src/app/community-clock-runtime/__tests__/runtime.test.ts:71:13
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[12/18]⎯
+
+ FAIL  src/app/community-clock-runtime/__tests__/runtime.test.ts > runtime factory and original canonical response binding > fails closed when runtime isCurrent fails
+ FAIL  src/app/community-clock-runtime/__tests__/runtime.test.ts > runtime factory and original canonical response binding > fails closed when runtime subscribe fails
+ FAIL  src/app/community-clock-runtime/__tests__/runtime.test.ts > runtime factory and original canonical response binding > fails closed when runtime qualify fails
+ FAIL  src/app/community-clock-runtime/__tests__/runtime.test.ts > runtime factory and original canonical response binding > fails closed when runtime synchronous-withdrawal fails
+ShellLoadError: unavailable
+ ❯ Object.loadBootstrap src/features/auth/model/session.ts:279:50
+    277|       try {
+    278|         if (!session.isCurrent(scope)) throw new TransportError('sessi…
+    279|         if (!await checkAdmission(signal)) throw new ShellLoadError(st…
+       |                                                  ^
+    280|         const response = await request({ path: `/api/concert/events/${…
+    281|           decode: value => decodeContract('Bootstrap', value) })
+ ❯ Object.run src/shared/query/privacy.ts:131:22
+ ❯ Object.load src/app/community-adoption/__tests__/fixtures.ts:42:21
+ ❯ src/app/community-clock-runtime/__tests__/runtime.test.ts:101:21
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[13/18]⎯
+
+⎯⎯⎯⎯⎯⎯ Unhandled Errors ⎯⎯⎯⎯⎯⎯
+
+Vitest caught 1 unhandled error during the test run.
+This might cause false positive tests. Resolve unhandled errors to make sure your tests are not affected.
+
+⎯⎯⎯⎯ Unhandled Rejection ⎯⎯⎯⎯⎯
+ShellLoadError: unavailable
+ ❯ Object.loadBootstrap src/features/auth/model/session.ts:279:50
+    277|       try {
+    278|         if (!session.isCurrent(scope)) throw new TransportError('sessi…
+    279|         if (!await checkAdmission(signal)) throw new ShellLoadError(st…
+       |                                                  ^
+    280|         const response = await request({ path: `/api/concert/events/${…
+    281|           decode: value => decodeContract('Bootstrap', value) })
+ ❯ Object.run src/shared/query/privacy.ts:131:22
+ ❯ Object.load src/app/community-adoption/__tests__/fixtures.ts:42:21
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯
+Serialized Error: { reason: 'unavailable' }
+This error originated in "src/app/community-clock-runtime/__tests__/runtime.test.ts" test file. It doesn't mean the error was thrown inside the file itself, but while it was running.
+The latest test that might've caused the error is "withdraws a pending C03 and cannot resurrect after its late decoded response". It might mean one of the following:
+- The error was thrown, while Vitest was running this test.
+- If the error occurred after the test had been completed, this was the last documented test before it was thrown.
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯
+
+
+ Test Files  2 failed | 1 passed (3)
+      Tests  18 failed | 48 passed (66)
+     Errors  1 error
+   Start at  06:11:55
+   Duration  1.18s (transform 431ms, setup 0ms, import 849ms, tests 176ms, environment 0ms)
+

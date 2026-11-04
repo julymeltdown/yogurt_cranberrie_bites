@@ -1,0 +1,14 @@
+{
+  "computationalChecks": "LINT_AND_PYTHON_SYNTAX_PASS",
+  "resourceQualification": "REJECTED_EXPIRED_OFFER",
+  "source": "7b8f77152a703b97a592ce8320af6e1c663d1e0c",
+  "offer": "COMMUNITY-CLOCK-LINT-ABSOLUTE-TMP-RETRY-SOURCE-20261104T2140Z",
+  "offerValidUntilUtc": "2026-11-04T22:30:00Z",
+  "actualAcceptedAtUtc": "2026-11-04T23:14:46Z",
+  "actualFullUtc": "2026-11-04T23:14:50.435935Z",
+  "ownerError": "Admission began after literal offer expiry during resumed work.",
+  "rawReceiptsPreserved": true,
+  "allOwnedExecutionResourcesReleased": true,
+  "actualProductionClockMeasurement": "NOT_RUN",
+  "followUp": "Fresh admitted lint/syntax or corresponding publisher combined candidate checks; final runner expiry amendment needs fresh syntax qualification."
+}

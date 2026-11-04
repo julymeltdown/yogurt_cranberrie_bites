@@ -1,0 +1,104 @@
+{
+  "at": "2026-11-04T23:14:49.898625+00:00",
+  "values": {
+    "pids": 5,
+    "rss": 136593408,
+    "temporary": 0,
+    "durable": 593920,
+    "other": 593920,
+    "new_total": 120725504,
+    "whole": 2482999296
+  },
+  "free_bytes": 18258542592,
+  "reason": null,
+  "observed_processes": {
+    "70724": {
+      "parent": 49590,
+      "group": 70724,
+      "uid": 501,
+      "rss": 92128,
+      "started": "Thu Nov 5 08:14:46 2026",
+      "command": "/Library/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python frontend/src/app/community-clock-runtime/__tests__/round.py docs/mcr/evidence/community-clock-runtime/source-04 source 7b8f77152a703b97a592ce8320af6e1c663d1e0c COMMUNITY-CLOCK-LINT-ABSOLUTE-TMP-RETRY-SOURCE-20261104T2140Z 2026-11-04T23:14:46Z 30 60"
+    },
+    "71111": {
+      "parent": 70724,
+      "group": 70724,
+      "uid": 501,
+      "rss": 29824,
+      "started": "Thu Nov 5 08:14:48 2026",
+      "command": "/Library/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python /Users/lhs/Desktop/mcr-worktrees/fe-gifts-media-detail/frontend/src/app/community-clock-runtime/__tests__/round.py guard /Users/lhs/Desktop/mcr-worktrees/fe-gifts-media-detail/docs/mcr/evidence/community-clock-runtime/source-04 70724 1793834116.0 1793834146.0"
+    },
+    "71113": {
+      "parent": 70724,
+      "group": 70724,
+      "uid": 0,
+      "rss": 2192,
+      "started": "Thu Nov 5 08:14:49 2026",
+      "command": "ps -axo pid=,ppid=,pgid=,uid=,rss=,lstart=,args="
+    },
+    "71120": {
+      "parent": 70724,
+      "group": 70724,
+      "uid": 0,
+      "rss": 2192,
+      "started": "Thu Nov 5 08:14:49 2026",
+      "command": "ps -axo pid=,ppid=,pgid=,uid=,rss=,lstart=,args="
+    },
+    "71126": {
+      "parent": 70724,
+      "group": 70724,
+      "uid": 0,
+      "rss": 2192,
+      "started": "Thu Nov 5 08:14:49 2026",
+      "command": "ps -axo pid=,ppid=,pgid=,uid=,rss=,lstart=,args="
+    },
+    "71131": {
+      "parent": 70724,
+      "group": 71131,
+      "uid": 501,
+      "rss": 192,
+      "started": "Thu Nov 5 08:14:49 2026",
+      "command": "node /Users/lhs/Desktop/mcr/frontend/node_modules/.bin/../oxlint/bin/oxlint --deny-warnings src/app/community-clock-runtime src/app/community-adoption/bootstrap.ts src/app/community-adoption/__tests__/fixtures.ts src/app/ports.ts"
+    },
+    "71132": {
+      "parent": 70724,
+      "group": 70724,
+      "uid": 0,
+      "rss": 2192,
+      "started": "Thu Nov 5 08:14:49 2026",
+      "command": "ps -axo pid=,ppid=,pgid=,uid=,rss=,lstart=,args="
+    },
+    "71139": {
+      "parent": 70724,
+      "group": 70724,
+      "uid": 0,
+      "rss": 2192,
+      "started": "Thu Nov 5 08:14:49 2026",
+      "command": "ps -axo pid=,ppid=,pgid=,uid=,rss=,lstart=,args="
+    },
+    "71140": {
+      "parent": 71111,
+      "group": 70724,
+      "uid": 0,
+      "rss": 4368,
+      "started": "Thu Nov 5 08:14:49 2026",
+      "command": "(ps)"
+    },
+    "71141": {
+      "parent": 70724,
+      "group": 71141,
+      "uid": 501,
+      "rss": 4880,
+      "started": "Thu Nov 5 08:14:49 2026",
+      "command": "(python3.14)"
+    },
+    "71142": {
+      "parent": 70724,
+      "group": 70724,
+      "uid": 0,
+      "rss": 2192,
+      "started": "Thu Nov 5 08:14:49 2026",
+      "command": "ps -axo pid=,ppid=,pgid=,uid=,rss=,lstart=,args="
+    }
+  }
+}

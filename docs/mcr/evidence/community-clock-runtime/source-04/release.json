@@ -1,0 +1,153 @@
+{
+  "offer": "COMMUNITY-CLOCK-LINT-ABSOLUTE-TMP-RETRY-SOURCE-20261104T2140Z",
+  "finished_at": "2026-11-04T23:14:50.435935+00:00",
+  "commands": [
+    {
+      "command": [
+        "/Users/lhs/Desktop/mcr/frontend/node_modules/.bin/oxlint",
+        "--deny-warnings",
+        "src/app/community-clock-runtime",
+        "src/app/community-adoption/bootstrap.ts",
+        "src/app/community-adoption/__tests__/fixtures.ts",
+        "src/app/ports.ts"
+      ],
+      "exit_code": 0,
+      "finished_at": "2026-11-04T23:14:49.645523+00:00"
+    },
+    {
+      "command": [
+        "/Library/Frameworks/Python.framework/Versions/3.14/bin/python3",
+        "/Users/lhs/Desktop/mcr-worktrees/fe-gifts-media-detail/frontend/src/app/community-clock-runtime/__tests__/round.py",
+        "syntax"
+      ],
+      "exit_code": 0,
+      "finished_at": "2026-11-04T23:14:49.899145+00:00"
+    }
+  ],
+  "failure": null,
+  "signal_errors": [],
+  "remaining_owned": [],
+  "dependency_link_absent": true,
+  "own_tmp_removed": true,
+  "misdirected_temp_absent": true,
+  "port": 59284,
+  "rebind": true,
+  "guard": {
+    "peaks": {
+      "pids": 5,
+      "rss": 158023680,
+      "temporary": 0,
+      "durable": 593920,
+      "other": 593920,
+      "new_total": 120725504,
+      "whole": 2482999296
+    },
+    "reason": null,
+    "minimum_free_bytes": 18258542592,
+    "observed_processes": {
+      "70724": {
+        "parent": 49590,
+        "group": 70724,
+        "uid": 501,
+        "rss": 92160,
+        "started": "Thu Nov 5 08:14:46 2026",
+        "command": "/Library/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python frontend/src/app/community-clock-runtime/__tests__/round.py docs/mcr/evidence/community-clock-runtime/source-04 source 7b8f77152a703b97a592ce8320af6e1c663d1e0c COMMUNITY-CLOCK-LINT-ABSOLUTE-TMP-RETRY-SOURCE-20261104T2140Z 2026-11-04T23:14:46Z 30 60"
+      },
+      "71111": {
+        "parent": 70724,
+        "group": 70724,
+        "uid": 501,
+        "rss": 29824,
+        "started": "Thu Nov 5 08:14:48 2026",
+        "command": "/Library/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python /Users/lhs/Desktop/mcr-worktrees/fe-gifts-media-detail/frontend/src/app/community-clock-runtime/__tests__/round.py guard /Users/lhs/Desktop/mcr-worktrees/fe-gifts-media-detail/docs/mcr/evidence/community-clock-runtime/source-04 70724 1793834116.0 1793834146.0"
+      },
+      "71112": {
+        "parent": 71111,
+        "group": 70724,
+        "uid": 0,
+        "rss": 2192,
+        "started": "Thu Nov 5 08:14:48 2026",
+        "command": "ps -axo pid=,ppid=,pgid=,uid=,rss=,lstart=,args="
+      },
+      "71116": {
+        "parent": 71111,
+        "group": 70724,
+        "uid": 0,
+        "rss": 2192,
+        "started": "Thu Nov 5 08:14:49 2026",
+        "command": "ps -axo pid=,ppid=,pgid=,uid=,rss=,lstart=,args="
+      },
+      "71123": {
+        "parent": 71111,
+        "group": 70724,
+        "uid": 0,
+        "rss": 2192,
+        "started": "Thu Nov 5 08:14:49 2026",
+        "command": "ps -axo pid=,ppid=,pgid=,uid=,rss=,lstart=,args="
+      },
+      "71131": {
+        "parent": 70724,
+        "group": 71131,
+        "uid": 501,
+        "rss": 25472,
+        "started": "Thu Nov 5 08:14:49 2026",
+        "command": "node /Users/lhs/Desktop/mcr/frontend/node_modules/.bin/../oxlint/bin/oxlint --deny-warnings src/app/community-clock-runtime src/app/community-adoption/bootstrap.ts src/app/community-adoption/__tests__/fixtures.ts src/app/ports.ts"
+      },
+      "71132": {
+        "parent": 70724,
+        "group": 70724,
+        "uid": 0,
+        "rss": 4736,
+        "started": "Thu Nov 5 08:14:49 2026",
+        "command": "(ps)"
+      },
+      "71138": {
+        "parent": 71111,
+        "group": 70724,
+        "uid": 0,
+        "rss": 2192,
+        "started": "Thu Nov 5 08:14:49 2026",
+        "command": "ps -axo pid=,ppid=,pgid=,uid=,rss=,lstart=,args="
+      },
+      "71140": {
+        "parent": 71111,
+        "group": 70724,
+        "uid": 0,
+        "rss": 2192,
+        "started": "Thu Nov 5 08:14:49 2026",
+        "command": "ps -axo pid=,ppid=,pgid=,uid=,rss=,lstart=,args="
+      },
+      "71146": {
+        "parent": 70724,
+        "group": 70724,
+        "uid": 0,
+        "rss": 3040,
+        "started": "Thu Nov 5 08:14:49 2026",
+        "command": "ps -axo pid=,ppid=,pgid=,uid=,rss=,lstart=,args="
+      },
+      "71147": {
+        "parent": 71111,
+        "group": 70724,
+        "uid": 0,
+        "rss": 2192,
+        "started": "Thu Nov 5 08:14:49 2026",
+        "command": "ps -axo pid=,ppid=,pgid=,uid=,rss=,lstart=,args="
+      },
+      "71152": {
+        "parent": 71111,
+        "group": 70724,
+        "uid": 0,
+        "rss": 2192,
+        "started": "Thu Nov 5 08:14:50 2026",
+        "command": "ps -axo pid=,ppid=,pgid=,uid=,rss=,lstart=,args="
+      }
+    },
+    "live_pids": [
+      "70724",
+      "71111",
+      "71152"
+    ],
+    "sampled_at": "2026-11-04T23:14:50.289113+00:00",
+    "sample_seconds": 0.1276464999828022
+  }
+}
