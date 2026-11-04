@@ -1,0 +1,351 @@
+{
+  "version": 6,
+  "theme_id": "DANGER",
+  "status": "PROPOSAL_NOT_RELEASE_BOUND",
+  "base_revision": "023201343a452b859759e02039d367c11d1ff8ad",
+  "geometry_hash": "sha256:899aca9bd6ce499c6f46aff5eaf21e30ab34b301e988771b978a6fab7c2d469f",
+  "source_pins": [
+    {
+      "path": "../../painted/parade-source-atlas-v3.png",
+      "sha256": "sha256:4a93f18cd55b66f3c09853f01e7fc78b88da8593298e4758738ff73e1e73ea2c"
+    },
+    {
+      "path": "../sources/stage-sheet.png",
+      "sha256": "sha256:f956c25f756888c4c84fafa449eedd0172125c9b1363f372716f5646b9b2266b"
+    },
+    {
+      "path": "../../eras-v5/danger/source-atlas.png",
+      "sha256": "sha256:8473efaf6b25b8547d7fe46b673c7fe5279437c7e42dbb015cfda32fa22fe80f"
+    },
+    {
+      "path": "../sources/venue-sheet.png",
+      "sha256": "sha256:d2fdd9e0c87584c2b66f0f76820f842070e70d0acb14c5962342eaafde92d886"
+    },
+    {
+      "path": "../sources/surface-sheet.png",
+      "sha256": "sha256:695ddcdd0d895d01445df545035ae21de3db12c5c17fdfb47b244b2b3c616dae"
+    }
+  ],
+  "transforms": [
+    {
+      "frame": "stage",
+      "source": "../sources/stage-sheet.png",
+      "source_rect": {
+        "x": 1477,
+        "y": 26,
+        "width": 662,
+        "height": 667
+      },
+      "packed_rect": {
+        "x": 7,
+        "y": 6,
+        "width": 242,
+        "height": 244
+      },
+      "scale": 0.3658170914542729,
+      "resampling": "nearest",
+      "rounding": "nearest ties away from zero"
+    },
+    {
+      "frame": "white_merch_booth",
+      "source": "../../eras-v5/danger/source-atlas.png",
+      "source_rect": {
+        "x": 331,
+        "y": 25,
+        "width": 290,
+        "height": 298
+      },
+      "packed_rect": {
+        "x": 275,
+        "y": 16,
+        "width": 218,
+        "height": 224
+      },
+      "scale": 0.75,
+      "resampling": "nearest",
+      "rounding": "nearest ties away from zero"
+    },
+    {
+      "frame": "white_food_booth",
+      "source": "../../eras-v5/danger/source-atlas.png",
+      "source_rect": {
+        "x": 633,
+        "y": 25,
+        "width": 298,
+        "height": 295
+      },
+      "packed_rect": {
+        "x": 528,
+        "y": 17,
+        "width": 224,
+        "height": 221
+      },
+      "scale": 0.75,
+      "resampling": "nearest",
+      "rounding": "nearest ties away from zero"
+    },
+    {
+      "frame": "park_plaque",
+      "source": "../../eras-v5/danger/source-atlas.png",
+      "source_rect": {
+        "x": 940,
+        "y": 53,
+        "width": 310,
+        "height": 268
+      },
+      "packed_rect": {
+        "x": 779,
+        "y": 27,
+        "width": 233,
+        "height": 201
+      },
+      "scale": 0.75,
+      "resampling": "nearest",
+      "rounding": "nearest ties away from zero"
+    },
+    {
+      "frame": "tree_green",
+      "source": "../../eras-v5/danger/source-atlas.png",
+      "source_rect": {
+        "x": 7,
+        "y": 326,
+        "width": 306,
+        "height": 304
+      },
+      "packed_rect": {
+        "x": 13,
+        "y": 270,
+        "width": 230,
+        "height": 228
+      },
+      "scale": 0.75,
+      "resampling": "nearest",
+      "rounding": "nearest ties away from zero"
+    },
+    {
+      "frame": "tree_yellow",
+      "source": "../../eras-v5/danger/source-atlas.png",
+      "source_rect": {
+        "x": 327,
+        "y": 331,
+        "width": 288,
+        "height": 299
+      },
+      "packed_rect": {
+        "x": 276,
+        "y": 272,
+        "width": 216,
+        "height": 224
+      },
+      "scale": 0.75,
+      "resampling": "nearest",
+      "rounding": "nearest ties away from zero"
+    },
+    {
+      "frame": "tree_dark",
+      "source": "../../eras-v5/danger/source-atlas.png",
+      "source_rect": {
+        "x": 627,
+        "y": 367,
+        "width": 305,
+        "height": 263
+      },
+      "packed_rect": {
+        "x": 525,
+        "y": 285,
+        "width": 229,
+        "height": 197
+      },
+      "scale": 0.75,
+      "resampling": "nearest",
+      "rounding": "nearest ties away from zero"
+    },
+    {
+      "frame": "tree_red",
+      "source": "../../eras-v5/danger/source-atlas.png",
+      "source_rect": {
+        "x": 960,
+        "y": 358,
+        "width": 281,
+        "height": 272
+      },
+      "packed_rect": {
+        "x": 790,
+        "y": 282,
+        "width": 211,
+        "height": 204
+      },
+      "scale": 0.75,
+      "resampling": "nearest",
+      "rounding": "nearest ties away from zero"
+    },
+    {
+      "frame": "meeting_pavilion",
+      "source": "../sources/venue-sheet.png",
+      "source_rect": {
+        "x": 855,
+        "y": 63,
+        "width": 384,
+        "height": 237
+      },
+      "packed_rect": {
+        "x": 6,
+        "y": 564,
+        "width": 244,
+        "height": 151
+      },
+      "scale": 0.6354166666666666,
+      "resampling": "nearest",
+      "rounding": "nearest ties away from zero"
+    },
+    {
+      "frame": "giveaway_pavilion",
+      "source": "../sources/venue-sheet.png",
+      "source_rect": {
+        "x": 860,
+        "y": 392,
+        "width": 383,
+        "height": 220
+      },
+      "packed_rect": {
+        "x": 262,
+        "y": 570,
+        "width": 244,
+        "height": 140
+      },
+      "scale": 0.6370757180156658,
+      "resampling": "nearest",
+      "rounding": "nearest ties away from zero"
+    },
+    {
+      "frame": "north_hall",
+      "source": "../sources/venue-sheet.png",
+      "source_rect": {
+        "x": 846,
+        "y": 702,
+        "width": 399,
+        "height": 204
+      },
+      "packed_rect": {
+        "x": 518,
+        "y": 577,
+        "width": 244,
+        "height": 125
+      },
+      "scale": 0.6115288220551378,
+      "resampling": "nearest",
+      "rounding": "nearest ties away from zero"
+    },
+    {
+      "frame": "west_hall",
+      "source": "../sources/venue-sheet.png",
+      "source_rect": {
+        "x": 853,
+        "y": 974,
+        "width": 387,
+        "height": 249
+      },
+      "packed_rect": {
+        "x": 774,
+        "y": 561,
+        "width": 244,
+        "height": 157
+      },
+      "scale": 0.6304909560723514,
+      "resampling": "nearest",
+      "rounding": "nearest ties away from zero"
+    },
+    {
+      "frame": "food_counter",
+      "source": "../../eras-v5/danger/source-atlas.png",
+      "source_rect": {
+        "x": 7,
+        "y": 988,
+        "width": 302,
+        "height": 247
+      },
+      "packed_rect": {
+        "x": 14,
+        "y": 803,
+        "width": 227,
+        "height": 185
+      },
+      "scale": 0.75,
+      "resampling": "nearest",
+      "rounding": "nearest ties away from zero"
+    },
+    {
+      "frame": "plaza_furniture",
+      "source": "../../eras-v5/danger/source-atlas.png",
+      "source_rect": {
+        "x": 318,
+        "y": 1018,
+        "width": 305,
+        "height": 214
+      },
+      "packed_rect": {
+        "x": 269,
+        "y": 815,
+        "width": 229,
+        "height": 161
+      },
+      "scale": 0.75,
+      "resampling": "nearest",
+      "rounding": "nearest ties away from zero"
+    },
+    {
+      "frame": "cross_banner",
+      "source": "../../eras-v5/danger/source-atlas.png",
+      "source_rect": {
+        "x": 681,
+        "y": 938,
+        "width": 159,
+        "height": 307
+      },
+      "packed_rect": {
+        "x": 580,
+        "y": 781,
+        "width": 119,
+        "height": 230
+      },
+      "scale": 0.75,
+      "resampling": "nearest",
+      "rounding": "nearest ties away from zero"
+    },
+    {
+      "frame": "shrub_bed",
+      "source": "../../eras-v5/danger/source-atlas.png",
+      "source_rect": {
+        "x": 914,
+        "y": 1020,
+        "width": 336,
+        "height": 212
+      },
+      "packed_rect": {
+        "x": 774,
+        "y": 819,
+        "width": 244,
+        "height": 154
+      },
+      "scale": 0.7261904761904762,
+      "resampling": "nearest",
+      "rounding": "nearest ties away from zero"
+    }
+  ],
+  "native_packaging": {
+    "path": "native-atlas.png",
+    "sha256": "sha256:466cff78a1d1bf2f6ca0b71715e41da44937f894fd26f767aa35697841cb2167",
+    "width": 2048,
+    "height": 2048,
+    "method": "Runtime atlas at0,0 with transparent padding only for native image-mask bounds."
+  },
+  "spatial_revision": {
+    "path": "../../spatial-v3/geometry-proposal.json",
+    "sha256": "sha256:373dfdb9ee119c5c2ae39b9b5843732e9fb6ca3d7030c2a26f026adc40a1e8dc",
+    "projection": "../../spatial-v3/integer-projection.json",
+    "base_geometry_hash": "sha256:20168a1df64cd3c72ea3b8cb576ca895dcff8c7edfb0e77886cc647fb1df37e5"
+  },
+  "map_change": "Explicit spatial-v3 coordinates/collision/cell/camera candidate. Stage semantic representation300x210center335root373 and UIanchor335,147; no identity/place review changes. Never mix with geometry20168 releases.",
+  "physical_provenance": "All frozen nested places remain UNREVIEWED and virtual concept.",
+  "fidelity": "Candidate after concrete source fixes; not a new critic score or acceptance."
+}

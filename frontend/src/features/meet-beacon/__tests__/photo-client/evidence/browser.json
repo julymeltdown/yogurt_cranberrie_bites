@@ -1,0 +1,990 @@
+{
+  "result": "PASS",
+  "qualification": "Actual feature form/detail/controller, FE19, canonical Auth request/privacy, FE04 worker compression/upload/receipt/metadata+binary reader and Blob URLs. Deterministic in-memory HTTP server storage and synthetic reviewed-place/audience/identity/permission. No root availability, live producer, server invariants, device or multiuser acceptance.",
+  "cases": [
+    {
+      "width": 360,
+      "result": "PASS",
+      "prepared": {
+        "upload": "prepared",
+        "requests": [
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/places",
+            "method": "GET",
+            "key": null
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/places",
+            "method": "GET",
+            "key": null
+          }
+        ]
+      },
+      "first": {
+        "phase": "current",
+        "command": "succeeded",
+        "upload": "idle",
+        "photo": {
+          "mediaId": "00000000-0000-4000-8000-000000000700",
+          "src": "blob:http://127.0.0.1:5173/88fc2157-c7ca-42f6-ae03-7bbaf11c2fc9"
+        },
+        "persisted": {
+          "beacon_id": "00000000-0000-4000-8000-000000000015",
+          "event_id": "00000000-0000-4000-8000-000000000201",
+          "owner_id": "00000000-0000-4000-8000-000000000202",
+          "meeting": {
+            "place_id": "00000000-0000-4000-8000-000000000002",
+            "map_revision": 1,
+            "place_revision": 3,
+            "instructions": "Synthetic test marker; no venue guidance",
+            "identification": "Synthetic test scarf",
+            "audience": {
+              "kind": "PARTY_MEMBERS",
+              "party_id": "00000000-0000-4000-8000-000000000250"
+            },
+            "expires_at": "2026-11-07T08:15:00.000Z",
+            "media_id": "00000000-0000-4000-8000-000000000700"
+          },
+          "created_at": "2026-11-07T08:00:00Z",
+          "updated_at": "2026-11-07T08:00:00Z",
+          "state": "ACTIVE",
+          "revision": 1
+        },
+        "created": [
+          "blob:http://127.0.0.1:5173/ece08c3c-ac80-48d6-9156-1c85d655beae",
+          "blob:http://127.0.0.1:5173/88fc2157-c7ca-42f6-ae03-7bbaf11c2fc9"
+        ],
+        "revoked": [
+          "blob:http://127.0.0.1:5173/ece08c3c-ac80-48d6-9156-1c85d655beae"
+        ],
+        "requests": [
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/places",
+            "method": "GET",
+            "key": null
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/places",
+            "method": "GET",
+            "key": null
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/media/uploads",
+            "method": "POST",
+            "key": "00000000-0000-4000-8000-000000000800"
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/media/00000000-0000-4000-8000-000000000700/bytes",
+            "method": "PUT",
+            "key": "00000000-0000-4000-8000-000000000801"
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/media/00000000-0000-4000-8000-000000000700/finalize",
+            "method": "POST",
+            "key": "00000000-0000-4000-8000-000000000802"
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/beacons",
+            "method": "POST",
+            "key": "00000000-0000-4000-8000-000000000551"
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/beacons/00000000-0000-4000-8000-000000000015",
+            "method": "GET",
+            "key": null
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/media/00000000-0000-4000-8000-000000000700",
+            "method": "GET",
+            "key": null
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/media/00000000-0000-4000-8000-000000000700/content",
+            "method": "GET",
+            "key": null
+          }
+        ]
+      },
+      "reread": {
+        "phase": "current",
+        "command": "idle",
+        "upload": "idle",
+        "photo": {
+          "mediaId": "00000000-0000-4000-8000-000000000700",
+          "src": "blob:http://127.0.0.1:5173/315ca66a-99a9-4e25-b865-f45c9c9f82fb"
+        },
+        "persisted": {
+          "beacon_id": "00000000-0000-4000-8000-000000000015",
+          "event_id": "00000000-0000-4000-8000-000000000201",
+          "owner_id": "00000000-0000-4000-8000-000000000202",
+          "meeting": {
+            "place_id": "00000000-0000-4000-8000-000000000002",
+            "map_revision": 1,
+            "place_revision": 3,
+            "instructions": "Synthetic test marker; no venue guidance",
+            "identification": "Synthetic test scarf",
+            "audience": {
+              "kind": "PARTY_MEMBERS",
+              "party_id": "00000000-0000-4000-8000-000000000250"
+            },
+            "expires_at": "2026-11-07T08:15:00.000Z",
+            "media_id": "00000000-0000-4000-8000-000000000700"
+          },
+          "created_at": "2026-11-07T08:00:00Z",
+          "updated_at": "2026-11-07T08:00:00Z",
+          "state": "ACTIVE",
+          "revision": 1
+        },
+        "created": [
+          "blob:http://127.0.0.1:5173/ece08c3c-ac80-48d6-9156-1c85d655beae",
+          "blob:http://127.0.0.1:5173/88fc2157-c7ca-42f6-ae03-7bbaf11c2fc9",
+          "blob:http://127.0.0.1:5173/315ca66a-99a9-4e25-b865-f45c9c9f82fb"
+        ],
+        "revoked": [
+          "blob:http://127.0.0.1:5173/ece08c3c-ac80-48d6-9156-1c85d655beae",
+          "blob:http://127.0.0.1:5173/88fc2157-c7ca-42f6-ae03-7bbaf11c2fc9"
+        ],
+        "requests": [
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/places",
+            "method": "GET",
+            "key": null
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/places",
+            "method": "GET",
+            "key": null
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/media/uploads",
+            "method": "POST",
+            "key": "00000000-0000-4000-8000-000000000800"
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/media/00000000-0000-4000-8000-000000000700/bytes",
+            "method": "PUT",
+            "key": "00000000-0000-4000-8000-000000000801"
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/media/00000000-0000-4000-8000-000000000700/finalize",
+            "method": "POST",
+            "key": "00000000-0000-4000-8000-000000000802"
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/beacons",
+            "method": "POST",
+            "key": "00000000-0000-4000-8000-000000000551"
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/beacons/00000000-0000-4000-8000-000000000015",
+            "method": "GET",
+            "key": null
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/media/00000000-0000-4000-8000-000000000700",
+            "method": "GET",
+            "key": null
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/media/00000000-0000-4000-8000-000000000700/content",
+            "method": "GET",
+            "key": null
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/beacons/00000000-0000-4000-8000-000000000015",
+            "method": "GET",
+            "key": null
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/media/00000000-0000-4000-8000-000000000700",
+            "method": "GET",
+            "key": null
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/media/00000000-0000-4000-8000-000000000700/content",
+            "method": "GET",
+            "key": null
+          }
+        ]
+      },
+      "revoked": {
+        "phase": "idle",
+        "command": "idle",
+        "photo": null,
+        "persisted": {
+          "beacon_id": "00000000-0000-4000-8000-000000000015",
+          "event_id": "00000000-0000-4000-8000-000000000201",
+          "owner_id": "00000000-0000-4000-8000-000000000202",
+          "meeting": {
+            "place_id": "00000000-0000-4000-8000-000000000002",
+            "map_revision": 1,
+            "place_revision": 3,
+            "instructions": "Synthetic test marker; no venue guidance",
+            "identification": "Synthetic test scarf",
+            "audience": {
+              "kind": "PARTY_MEMBERS",
+              "party_id": "00000000-0000-4000-8000-000000000250"
+            },
+            "expires_at": "2026-11-07T08:15:00.000Z",
+            "media_id": "00000000-0000-4000-8000-000000000700"
+          },
+          "created_at": "2026-11-07T08:00:00Z",
+          "updated_at": "2026-11-07T08:00:00Z",
+          "state": "ACTIVE",
+          "revision": 1
+        },
+        "created": [
+          "blob:http://127.0.0.1:5173/ece08c3c-ac80-48d6-9156-1c85d655beae",
+          "blob:http://127.0.0.1:5173/88fc2157-c7ca-42f6-ae03-7bbaf11c2fc9",
+          "blob:http://127.0.0.1:5173/315ca66a-99a9-4e25-b865-f45c9c9f82fb"
+        ],
+        "revoked": [
+          "blob:http://127.0.0.1:5173/ece08c3c-ac80-48d6-9156-1c85d655beae",
+          "blob:http://127.0.0.1:5173/88fc2157-c7ca-42f6-ae03-7bbaf11c2fc9",
+          "blob:http://127.0.0.1:5173/315ca66a-99a9-4e25-b865-f45c9c9f82fb"
+        ],
+        "requests": [
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/places",
+            "method": "GET",
+            "key": null
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/places",
+            "method": "GET",
+            "key": null
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/media/uploads",
+            "method": "POST",
+            "key": "00000000-0000-4000-8000-000000000800"
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/media/00000000-0000-4000-8000-000000000700/bytes",
+            "method": "PUT",
+            "key": "00000000-0000-4000-8000-000000000801"
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/media/00000000-0000-4000-8000-000000000700/finalize",
+            "method": "POST",
+            "key": "00000000-0000-4000-8000-000000000802"
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/beacons",
+            "method": "POST",
+            "key": "00000000-0000-4000-8000-000000000551"
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/beacons/00000000-0000-4000-8000-000000000015",
+            "method": "GET",
+            "key": null
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/media/00000000-0000-4000-8000-000000000700",
+            "method": "GET",
+            "key": null
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/media/00000000-0000-4000-8000-000000000700/content",
+            "method": "GET",
+            "key": null
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/beacons/00000000-0000-4000-8000-000000000015",
+            "method": "GET",
+            "key": null
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/media/00000000-0000-4000-8000-000000000700",
+            "method": "GET",
+            "key": null
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/media/00000000-0000-4000-8000-000000000700/content",
+            "method": "GET",
+            "key": null
+          }
+        ]
+      }
+    },
+    {
+      "width": 390,
+      "result": "PASS",
+      "prepared": {
+        "upload": "prepared",
+        "requests": [
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/places",
+            "method": "GET",
+            "key": null
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/places",
+            "method": "GET",
+            "key": null
+          }
+        ]
+      },
+      "first": {
+        "phase": "current",
+        "command": "succeeded",
+        "upload": "idle",
+        "photo": {
+          "mediaId": "00000000-0000-4000-8000-000000000700",
+          "src": "blob:http://127.0.0.1:5173/b4cdf48b-31b4-4a6c-9098-d9fc6ddecf33"
+        },
+        "persisted": {
+          "beacon_id": "00000000-0000-4000-8000-000000000015",
+          "event_id": "00000000-0000-4000-8000-000000000201",
+          "owner_id": "00000000-0000-4000-8000-000000000202",
+          "meeting": {
+            "place_id": "00000000-0000-4000-8000-000000000002",
+            "map_revision": 1,
+            "place_revision": 3,
+            "instructions": "Synthetic test marker; no venue guidance",
+            "identification": "Synthetic test scarf",
+            "audience": {
+              "kind": "PARTY_MEMBERS",
+              "party_id": "00000000-0000-4000-8000-000000000250"
+            },
+            "expires_at": "2026-11-07T08:15:00.000Z",
+            "media_id": "00000000-0000-4000-8000-000000000700"
+          },
+          "created_at": "2026-11-07T08:00:00Z",
+          "updated_at": "2026-11-07T08:00:00Z",
+          "state": "ACTIVE",
+          "revision": 1
+        },
+        "created": [
+          "blob:http://127.0.0.1:5173/40bb11e4-f236-4b09-9f16-5048049e07f5",
+          "blob:http://127.0.0.1:5173/b4cdf48b-31b4-4a6c-9098-d9fc6ddecf33"
+        ],
+        "revoked": [
+          "blob:http://127.0.0.1:5173/40bb11e4-f236-4b09-9f16-5048049e07f5"
+        ],
+        "requests": [
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/places",
+            "method": "GET",
+            "key": null
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/places",
+            "method": "GET",
+            "key": null
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/media/uploads",
+            "method": "POST",
+            "key": "00000000-0000-4000-8000-000000000800"
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/media/00000000-0000-4000-8000-000000000700/bytes",
+            "method": "PUT",
+            "key": "00000000-0000-4000-8000-000000000801"
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/media/00000000-0000-4000-8000-000000000700/finalize",
+            "method": "POST",
+            "key": "00000000-0000-4000-8000-000000000802"
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/beacons",
+            "method": "POST",
+            "key": "00000000-0000-4000-8000-000000000551"
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/beacons/00000000-0000-4000-8000-000000000015",
+            "method": "GET",
+            "key": null
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/media/00000000-0000-4000-8000-000000000700",
+            "method": "GET",
+            "key": null
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/media/00000000-0000-4000-8000-000000000700/content",
+            "method": "GET",
+            "key": null
+          }
+        ]
+      },
+      "reread": {
+        "phase": "current",
+        "command": "idle",
+        "upload": "idle",
+        "photo": {
+          "mediaId": "00000000-0000-4000-8000-000000000700",
+          "src": "blob:http://127.0.0.1:5173/7419985d-7e38-4b95-85c4-9d56716f1eac"
+        },
+        "persisted": {
+          "beacon_id": "00000000-0000-4000-8000-000000000015",
+          "event_id": "00000000-0000-4000-8000-000000000201",
+          "owner_id": "00000000-0000-4000-8000-000000000202",
+          "meeting": {
+            "place_id": "00000000-0000-4000-8000-000000000002",
+            "map_revision": 1,
+            "place_revision": 3,
+            "instructions": "Synthetic test marker; no venue guidance",
+            "identification": "Synthetic test scarf",
+            "audience": {
+              "kind": "PARTY_MEMBERS",
+              "party_id": "00000000-0000-4000-8000-000000000250"
+            },
+            "expires_at": "2026-11-07T08:15:00.000Z",
+            "media_id": "00000000-0000-4000-8000-000000000700"
+          },
+          "created_at": "2026-11-07T08:00:00Z",
+          "updated_at": "2026-11-07T08:00:00Z",
+          "state": "ACTIVE",
+          "revision": 1
+        },
+        "created": [
+          "blob:http://127.0.0.1:5173/40bb11e4-f236-4b09-9f16-5048049e07f5",
+          "blob:http://127.0.0.1:5173/b4cdf48b-31b4-4a6c-9098-d9fc6ddecf33",
+          "blob:http://127.0.0.1:5173/7419985d-7e38-4b95-85c4-9d56716f1eac"
+        ],
+        "revoked": [
+          "blob:http://127.0.0.1:5173/40bb11e4-f236-4b09-9f16-5048049e07f5",
+          "blob:http://127.0.0.1:5173/b4cdf48b-31b4-4a6c-9098-d9fc6ddecf33"
+        ],
+        "requests": [
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/places",
+            "method": "GET",
+            "key": null
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/places",
+            "method": "GET",
+            "key": null
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/media/uploads",
+            "method": "POST",
+            "key": "00000000-0000-4000-8000-000000000800"
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/media/00000000-0000-4000-8000-000000000700/bytes",
+            "method": "PUT",
+            "key": "00000000-0000-4000-8000-000000000801"
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/media/00000000-0000-4000-8000-000000000700/finalize",
+            "method": "POST",
+            "key": "00000000-0000-4000-8000-000000000802"
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/beacons",
+            "method": "POST",
+            "key": "00000000-0000-4000-8000-000000000551"
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/beacons/00000000-0000-4000-8000-000000000015",
+            "method": "GET",
+            "key": null
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/media/00000000-0000-4000-8000-000000000700",
+            "method": "GET",
+            "key": null
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/media/00000000-0000-4000-8000-000000000700/content",
+            "method": "GET",
+            "key": null
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/beacons/00000000-0000-4000-8000-000000000015",
+            "method": "GET",
+            "key": null
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/media/00000000-0000-4000-8000-000000000700",
+            "method": "GET",
+            "key": null
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/media/00000000-0000-4000-8000-000000000700/content",
+            "method": "GET",
+            "key": null
+          }
+        ]
+      },
+      "revoked": {
+        "phase": "idle",
+        "command": "idle",
+        "photo": null,
+        "persisted": {
+          "beacon_id": "00000000-0000-4000-8000-000000000015",
+          "event_id": "00000000-0000-4000-8000-000000000201",
+          "owner_id": "00000000-0000-4000-8000-000000000202",
+          "meeting": {
+            "place_id": "00000000-0000-4000-8000-000000000002",
+            "map_revision": 1,
+            "place_revision": 3,
+            "instructions": "Synthetic test marker; no venue guidance",
+            "identification": "Synthetic test scarf",
+            "audience": {
+              "kind": "PARTY_MEMBERS",
+              "party_id": "00000000-0000-4000-8000-000000000250"
+            },
+            "expires_at": "2026-11-07T08:15:00.000Z",
+            "media_id": "00000000-0000-4000-8000-000000000700"
+          },
+          "created_at": "2026-11-07T08:00:00Z",
+          "updated_at": "2026-11-07T08:00:00Z",
+          "state": "ACTIVE",
+          "revision": 1
+        },
+        "created": [
+          "blob:http://127.0.0.1:5173/40bb11e4-f236-4b09-9f16-5048049e07f5",
+          "blob:http://127.0.0.1:5173/b4cdf48b-31b4-4a6c-9098-d9fc6ddecf33",
+          "blob:http://127.0.0.1:5173/7419985d-7e38-4b95-85c4-9d56716f1eac"
+        ],
+        "revoked": [
+          "blob:http://127.0.0.1:5173/40bb11e4-f236-4b09-9f16-5048049e07f5",
+          "blob:http://127.0.0.1:5173/b4cdf48b-31b4-4a6c-9098-d9fc6ddecf33",
+          "blob:http://127.0.0.1:5173/7419985d-7e38-4b95-85c4-9d56716f1eac"
+        ],
+        "requests": [
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/places",
+            "method": "GET",
+            "key": null
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/places",
+            "method": "GET",
+            "key": null
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/media/uploads",
+            "method": "POST",
+            "key": "00000000-0000-4000-8000-000000000800"
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/media/00000000-0000-4000-8000-000000000700/bytes",
+            "method": "PUT",
+            "key": "00000000-0000-4000-8000-000000000801"
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/media/00000000-0000-4000-8000-000000000700/finalize",
+            "method": "POST",
+            "key": "00000000-0000-4000-8000-000000000802"
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/beacons",
+            "method": "POST",
+            "key": "00000000-0000-4000-8000-000000000551"
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/beacons/00000000-0000-4000-8000-000000000015",
+            "method": "GET",
+            "key": null
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/media/00000000-0000-4000-8000-000000000700",
+            "method": "GET",
+            "key": null
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/media/00000000-0000-4000-8000-000000000700/content",
+            "method": "GET",
+            "key": null
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/beacons/00000000-0000-4000-8000-000000000015",
+            "method": "GET",
+            "key": null
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/media/00000000-0000-4000-8000-000000000700",
+            "method": "GET",
+            "key": null
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/media/00000000-0000-4000-8000-000000000700/content",
+            "method": "GET",
+            "key": null
+          }
+        ]
+      }
+    },
+    {
+      "width": 430,
+      "result": "PASS",
+      "prepared": {
+        "upload": "prepared",
+        "requests": [
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/places",
+            "method": "GET",
+            "key": null
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/places",
+            "method": "GET",
+            "key": null
+          }
+        ]
+      },
+      "first": {
+        "phase": "current",
+        "command": "succeeded",
+        "upload": "idle",
+        "photo": {
+          "mediaId": "00000000-0000-4000-8000-000000000700",
+          "src": "blob:http://127.0.0.1:5173/9b63fc95-28b0-4656-9038-93b4896240fb"
+        },
+        "persisted": {
+          "beacon_id": "00000000-0000-4000-8000-000000000015",
+          "event_id": "00000000-0000-4000-8000-000000000201",
+          "owner_id": "00000000-0000-4000-8000-000000000202",
+          "meeting": {
+            "place_id": "00000000-0000-4000-8000-000000000002",
+            "map_revision": 1,
+            "place_revision": 3,
+            "instructions": "Synthetic test marker; no venue guidance",
+            "identification": "Synthetic test scarf",
+            "audience": {
+              "kind": "PARTY_MEMBERS",
+              "party_id": "00000000-0000-4000-8000-000000000250"
+            },
+            "expires_at": "2026-11-07T08:15:00.000Z",
+            "media_id": "00000000-0000-4000-8000-000000000700"
+          },
+          "created_at": "2026-11-07T08:00:00Z",
+          "updated_at": "2026-11-07T08:00:00Z",
+          "state": "ACTIVE",
+          "revision": 1
+        },
+        "created": [
+          "blob:http://127.0.0.1:5173/91fa2b4b-d482-4b71-ae76-e5534b48473a",
+          "blob:http://127.0.0.1:5173/9b63fc95-28b0-4656-9038-93b4896240fb"
+        ],
+        "revoked": [
+          "blob:http://127.0.0.1:5173/91fa2b4b-d482-4b71-ae76-e5534b48473a"
+        ],
+        "requests": [
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/places",
+            "method": "GET",
+            "key": null
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/places",
+            "method": "GET",
+            "key": null
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/media/uploads",
+            "method": "POST",
+            "key": "00000000-0000-4000-8000-000000000800"
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/media/00000000-0000-4000-8000-000000000700/bytes",
+            "method": "PUT",
+            "key": "00000000-0000-4000-8000-000000000801"
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/media/00000000-0000-4000-8000-000000000700/finalize",
+            "method": "POST",
+            "key": "00000000-0000-4000-8000-000000000802"
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/beacons",
+            "method": "POST",
+            "key": "00000000-0000-4000-8000-000000000551"
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/beacons/00000000-0000-4000-8000-000000000015",
+            "method": "GET",
+            "key": null
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/media/00000000-0000-4000-8000-000000000700",
+            "method": "GET",
+            "key": null
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/media/00000000-0000-4000-8000-000000000700/content",
+            "method": "GET",
+            "key": null
+          }
+        ]
+      },
+      "reread": {
+        "phase": "current",
+        "command": "idle",
+        "upload": "idle",
+        "photo": {
+          "mediaId": "00000000-0000-4000-8000-000000000700",
+          "src": "blob:http://127.0.0.1:5173/55956f92-355f-4d32-a9a0-768f7fba51eb"
+        },
+        "persisted": {
+          "beacon_id": "00000000-0000-4000-8000-000000000015",
+          "event_id": "00000000-0000-4000-8000-000000000201",
+          "owner_id": "00000000-0000-4000-8000-000000000202",
+          "meeting": {
+            "place_id": "00000000-0000-4000-8000-000000000002",
+            "map_revision": 1,
+            "place_revision": 3,
+            "instructions": "Synthetic test marker; no venue guidance",
+            "identification": "Synthetic test scarf",
+            "audience": {
+              "kind": "PARTY_MEMBERS",
+              "party_id": "00000000-0000-4000-8000-000000000250"
+            },
+            "expires_at": "2026-11-07T08:15:00.000Z",
+            "media_id": "00000000-0000-4000-8000-000000000700"
+          },
+          "created_at": "2026-11-07T08:00:00Z",
+          "updated_at": "2026-11-07T08:00:00Z",
+          "state": "ACTIVE",
+          "revision": 1
+        },
+        "created": [
+          "blob:http://127.0.0.1:5173/91fa2b4b-d482-4b71-ae76-e5534b48473a",
+          "blob:http://127.0.0.1:5173/9b63fc95-28b0-4656-9038-93b4896240fb",
+          "blob:http://127.0.0.1:5173/55956f92-355f-4d32-a9a0-768f7fba51eb"
+        ],
+        "revoked": [
+          "blob:http://127.0.0.1:5173/91fa2b4b-d482-4b71-ae76-e5534b48473a",
+          "blob:http://127.0.0.1:5173/9b63fc95-28b0-4656-9038-93b4896240fb"
+        ],
+        "requests": [
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/places",
+            "method": "GET",
+            "key": null
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/places",
+            "method": "GET",
+            "key": null
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/media/uploads",
+            "method": "POST",
+            "key": "00000000-0000-4000-8000-000000000800"
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/media/00000000-0000-4000-8000-000000000700/bytes",
+            "method": "PUT",
+            "key": "00000000-0000-4000-8000-000000000801"
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/media/00000000-0000-4000-8000-000000000700/finalize",
+            "method": "POST",
+            "key": "00000000-0000-4000-8000-000000000802"
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/beacons",
+            "method": "POST",
+            "key": "00000000-0000-4000-8000-000000000551"
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/beacons/00000000-0000-4000-8000-000000000015",
+            "method": "GET",
+            "key": null
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/media/00000000-0000-4000-8000-000000000700",
+            "method": "GET",
+            "key": null
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/media/00000000-0000-4000-8000-000000000700/content",
+            "method": "GET",
+            "key": null
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/beacons/00000000-0000-4000-8000-000000000015",
+            "method": "GET",
+            "key": null
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/media/00000000-0000-4000-8000-000000000700",
+            "method": "GET",
+            "key": null
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/media/00000000-0000-4000-8000-000000000700/content",
+            "method": "GET",
+            "key": null
+          }
+        ]
+      },
+      "revoked": {
+        "phase": "idle",
+        "command": "idle",
+        "photo": null,
+        "persisted": {
+          "beacon_id": "00000000-0000-4000-8000-000000000015",
+          "event_id": "00000000-0000-4000-8000-000000000201",
+          "owner_id": "00000000-0000-4000-8000-000000000202",
+          "meeting": {
+            "place_id": "00000000-0000-4000-8000-000000000002",
+            "map_revision": 1,
+            "place_revision": 3,
+            "instructions": "Synthetic test marker; no venue guidance",
+            "identification": "Synthetic test scarf",
+            "audience": {
+              "kind": "PARTY_MEMBERS",
+              "party_id": "00000000-0000-4000-8000-000000000250"
+            },
+            "expires_at": "2026-11-07T08:15:00.000Z",
+            "media_id": "00000000-0000-4000-8000-000000000700"
+          },
+          "created_at": "2026-11-07T08:00:00Z",
+          "updated_at": "2026-11-07T08:00:00Z",
+          "state": "ACTIVE",
+          "revision": 1
+        },
+        "created": [
+          "blob:http://127.0.0.1:5173/91fa2b4b-d482-4b71-ae76-e5534b48473a",
+          "blob:http://127.0.0.1:5173/9b63fc95-28b0-4656-9038-93b4896240fb",
+          "blob:http://127.0.0.1:5173/55956f92-355f-4d32-a9a0-768f7fba51eb"
+        ],
+        "revoked": [
+          "blob:http://127.0.0.1:5173/91fa2b4b-d482-4b71-ae76-e5534b48473a",
+          "blob:http://127.0.0.1:5173/9b63fc95-28b0-4656-9038-93b4896240fb",
+          "blob:http://127.0.0.1:5173/55956f92-355f-4d32-a9a0-768f7fba51eb"
+        ],
+        "requests": [
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/places",
+            "method": "GET",
+            "key": null
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/places",
+            "method": "GET",
+            "key": null
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/media/uploads",
+            "method": "POST",
+            "key": "00000000-0000-4000-8000-000000000800"
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/media/00000000-0000-4000-8000-000000000700/bytes",
+            "method": "PUT",
+            "key": "00000000-0000-4000-8000-000000000801"
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/media/00000000-0000-4000-8000-000000000700/finalize",
+            "method": "POST",
+            "key": "00000000-0000-4000-8000-000000000802"
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/beacons",
+            "method": "POST",
+            "key": "00000000-0000-4000-8000-000000000551"
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/beacons/00000000-0000-4000-8000-000000000015",
+            "method": "GET",
+            "key": null
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/media/00000000-0000-4000-8000-000000000700",
+            "method": "GET",
+            "key": null
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/media/00000000-0000-4000-8000-000000000700/content",
+            "method": "GET",
+            "key": null
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/beacons/00000000-0000-4000-8000-000000000015",
+            "method": "GET",
+            "key": null
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/media/00000000-0000-4000-8000-000000000700",
+            "method": "GET",
+            "key": null
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/media/00000000-0000-4000-8000-000000000700/content",
+            "method": "GET",
+            "key": null
+          }
+        ]
+      }
+    },
+    {
+      "width": 390,
+      "mode": "unknown-upload",
+      "result": "PASS",
+      "unknown": {
+        "phase": "idle",
+        "command": "idle",
+        "upload": "uncertain",
+        "photo": null,
+        "persisted": {
+          "beacon_id": "00000000-0000-4000-8000-000000000015",
+          "event_id": "00000000-0000-4000-8000-000000000201",
+          "owner_id": "00000000-0000-4000-8000-000000000202",
+          "meeting": {
+            "place_id": "00000000-0000-4000-8000-000000000002",
+            "map_revision": 1,
+            "place_revision": 3,
+            "instructions": "SYNTHETIC: wait at a fictional marker. Not venue guidance.",
+            "identification": "SYNTHETIC red scarf",
+            "audience": {
+              "kind": "PARTY_MEMBERS",
+              "party_id": "00000000-0000-4000-8000-000000000250"
+            },
+            "expires_at": "2026-11-07T08:15:00Z"
+          },
+          "created_at": "2026-11-07T08:00:00Z",
+          "updated_at": "2026-11-07T08:00:00Z",
+          "state": "ACTIVE",
+          "revision": 1
+        },
+        "created": [
+          "blob:http://127.0.0.1:5173/109ac0c2-db96-4584-90be-a55c0d67a88d"
+        ],
+        "revoked": [],
+        "requests": [
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/places",
+            "method": "GET",
+            "key": null
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/places",
+            "method": "GET",
+            "key": null
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/media/uploads",
+            "method": "POST",
+            "key": "00000000-0000-4000-8000-000000000800"
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/media/00000000-0000-4000-8000-000000000700/bytes",
+            "method": "PUT",
+            "key": "00000000-0000-4000-8000-000000000801"
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/media/00000000-0000-4000-8000-000000000700/finalize",
+            "method": "POST",
+            "key": "00000000-0000-4000-8000-000000000802"
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/commands",
+            "method": "GET",
+            "key": null
+          }
+        ]
+      }
+    }
+  ],
+  "errors": []
+}

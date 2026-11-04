@@ -3,7 +3,7 @@
 // contracts/core/v1/core.schema.json: 9ddf3cd3c853ef6a8258a6215c546bd84eccde620ee73b636888d868cfca1c88
 // contracts/domain/v1/admin.schema.json: 953e78a482d998e35c9612c30467600adcead3c9e9d4fb6ab7679a2164aef640
 // contracts/domain/v1/common.schema.json: 65f2c2f19594942b89613e67b97bd3181e0889e7f47e4476cda752d9aab10584
-// contracts/domain/v1/feed.schema.json: 590cce6afc00c7a869b5a9711104550ba280ffa5875c9dc49a0753d272320801
+// contracts/domain/v1/feed.schema.json: f9b4b8912b2bf4513ab474ad690efdeaa23d64f97b220f9626c5b37c5e2e99ed
 // contracts/domain/v1/giveaway.schema.json: 3a5af6301bb9514623aa7d6e68b3ee27b4b89709836801f4c10741f149a7577d
 // contracts/domain/v1/mural.schema.json: 345871ce89fabff02f06087fcd3e8907651a5712b34ccbd53091158af123b6ca
 // contracts/domain/v1/operations.json: 622c0e0eba6e1c835c5e953a3acd6825f97ed43aff9bc32b982c207fdfe31839

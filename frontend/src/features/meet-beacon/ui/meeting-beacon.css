@@ -15,4 +15,6 @@
 .meeting-beacon dd { margin: .2rem 0; }
 .meeting-beacon figure { margin: 1rem 0; }
 .meeting-beacon img { display: block; max-width: 100%; height: auto; }
+.meeting-photo-draft { display: grid; gap: .6rem; padding-block: .75rem; }
+.meeting-photo-draft img { max-height: 240px; object-fit: contain; justify-self: start; }
 @media (prefers-reduced-motion: reduce) { .meeting-beacon * { scroll-behavior: auto; } }

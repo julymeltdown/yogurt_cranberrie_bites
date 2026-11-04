@@ -14,6 +14,7 @@ import type { Geometry } from '../../world/map/manifest'
 import { sceneryResources } from '../../world/illustrated/model'
 import type { ResolvedWorldRelease, WorldReleaseResolver } from '../../world/composition'
 import { assertEntry, captureEntry, validateEntry, type WorldEntryRequest } from './authority'
+import { preflightReferenceScene } from './reference-scene-overview'
 
 export interface LocalInputConfiguration {
   /** Reviewed application configuration, not a claimed C05 authoritative movement model. */
@@ -72,6 +73,7 @@ export function createWorldEntryResolver(options: WorldEntryResolverOptions): Wo
         mapHash: text(map.content_hash), themeHash: text(theme.content_hash),
         avatar: { manifest_id: text(avatar.manifest_id), manifest_version: Number(avatar.manifest_version), content_hash: text(avatar.content_hash) },
       })
+      preflightReferenceScene(metadata)
       const allow = [provided(map.tilemap, 'json'), provided(theme.texture, 'png'), provided(object(avatar.atlas).texture, 'png')]
       const merge = (resources: readonly Resource[]) => {
         const staged = [...allow]
@@ -92,6 +94,7 @@ export function createWorldEntryResolver(options: WorldEntryResolverOptions): Wo
           const resource = provided(candidate.texture, 'png')
           const optional = await validateManifests(canonicalJson(map), canonicalJson(candidate), { mapHash: text(map.content_hash), themeHash: text(candidate.content_hash),
             avatar: { manifest_id: text(avatar.manifest_id), manifest_version: Number(avatar.manifest_version), content_hash: text(avatar.content_hash) } })
+          preflightReferenceScene(optional)
           const entries = [resource, ...sceneryResources(optional.theme)]
           requireValue(isThemeId(candidate.theme_id))
           // Includes conflicts within this candidate, not only against already admitted skins.

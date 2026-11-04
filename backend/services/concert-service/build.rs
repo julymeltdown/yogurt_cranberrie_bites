@@ -47,6 +47,7 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
     tonic_prost_build::configure()
         .build_server(true)
         .build_client(true)
+        .extern_path(".concert.product.v1", "crate::product_rpc::proto")
         .extern_path(
             ".authority.lease.v1",
             "crate::adapters::out::relationship_authority::guarded::proto",

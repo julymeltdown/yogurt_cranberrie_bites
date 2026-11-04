@@ -1,0 +1,3947 @@
+{
+  "kind": "GENUINE_SELECTED_ROOT_FIXTURE",
+  "status": "PASS",
+  "qualification": "MOCK_READY_ONLY",
+  "candidate": "4dc12a56b5d4ac5cbb690450302c7f856757d4b2",
+  "clock": "2026-11-07T07:00:00.000Z",
+  "defaultProductionLoad": true,
+  "compositionOverride": false,
+  "liveServices": "NOT_RUN",
+  "devices": "NOT_RUN",
+  "fullVisualAcceptance": "NOT_RUN",
+  "sourceHashes": {
+    "frontend/src/app/ports.ts": "ecd97ae81cd65ba7e2078fc949f607cd4662cdaa9cb1e3af015eb63417dbaa59",
+    "frontend/src/app/WorldShell.tsx": "a0ca5d43d4bb1a862284eee2f879f6cafaa900d792dc2defa0e15b821c68615d",
+    "frontend/src/app/world-entry/production.ts": "e34d9715e45c8c33fcbc86eadb11d81f0e267d071c3ff032c5f60a1144de76d3",
+    "frontend/src/app/world-entry/resolver.ts": "bb49ed5c1d9c6d1985ada6dd9d53c8e1b579c6303cdcb30fb88e38a5c80a6d80",
+    "frontend/src/app/account-entry/owner.ts": "b92e9f9cb7884949677fb6f58a160f6382b0ce482f3afb546003c3b430a330ae",
+    "frontend/src/world/avatar/whole-character.ts": "4e9295799f1a905e53c9866c4621538243bb677ab173f5db6b2ffd3309f8ab85",
+    "frontend/src/world/scenes/MapScene.ts": "c172568f4b3c1a01894fbc4e5e41e3c887601fa9c2d3eb0c4c79dc76117a7363",
+    "frontend/src/features/avatar/whole-character/controller.ts": "9e34de46c857062892d5b64347876fe2485f7117c6c11e2af438775bb402a353",
+    "contracts/fixtures/assets/selected-static/avatar-manifest.json": "04b0815c5ad66729c578236b010974e44274e6562a9e9dd4599a861e2eed485e",
+    "frontend/e2e/reference-integrated/whole/preview.tsx": "9806a79f318b30b6bf189c673575168f85d9c33983fb32bf811d2b284d679787",
+    "frontend/e2e/reference-integrated/whole/data.ts": "8031884ce211e04272a20d66db4427b67a192a197a766d14a6f848765cc99d33",
+    "frontend/e2e/reference-integrated/whole/native.mjs": "179d713526ff121f6dce36759eed1f210438a1abaf76a08a95a22ce3889e2231"
+  },
+  "assetBytes": {
+    "/world/avatars/derived-v1/static-release.json": {
+      "sha256": "cc53c6852742e9cbb9858a2d0961411e1a9e131d1e30c0f2b73b265e03f91677"
+    },
+    "/world/avatars/derived-v1/photo01-front-idle-64-e124c88815b22220.png": {
+      "sha256": "e124c88815b22220df2f2dc59e2f26b3ceb845e57b77674fd8e55383116d7efe"
+    }
+  },
+  "requestedWidths": [
+    390
+  ],
+  "cases": [
+    {
+      "width": 390,
+      "status": "PASS",
+      "samples": [
+        {
+          "name": "cold-world",
+          "state": {
+            "clock": "2026-11-07T07:00:00.000Z",
+            "defaultProductionLoad": true,
+            "compositionOverride": false,
+            "path": "/world",
+            "bootstrapVersion": "1.1.0",
+            "manifestPin": {
+              "manifest_id": "mcr_selected_static_20261103",
+              "manifest_version": 1,
+              "content_hash": "sha256:0627c7d178b22535a561e1270db6d8bf9e2383ba84d03a63962e48e565c59b2b"
+            },
+            "privateQueries": 0,
+            "server": {
+              "revision": 7,
+              "config": {
+                "contract_version": "1.1.0",
+                "kind": "avatar_config",
+                "manifest_id": "mcr_selected_static_20261103",
+                "manifest_version": 1,
+                "representation": "whole_character",
+                "preset_id": "photo01_front_01"
+              }
+            },
+            "requests": [
+              {
+                "path": "/api/auth/capabilities",
+                "method": "GET",
+                "body": null
+              },
+              {
+                "path": "/api/auth/login",
+                "method": "POST",
+                "body": null
+              },
+              {
+                "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/bootstrap",
+                "method": "GET",
+                "body": null
+              },
+              {
+                "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/rooms",
+                "method": "GET",
+                "body": null
+              },
+              {
+                "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/world-tickets",
+                "method": "POST",
+                "body": null
+              },
+              {
+                "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/places",
+                "method": "GET",
+                "body": null
+              }
+            ],
+            "frames": [
+              {
+                "type": "snapshot",
+                "revision": 7
+              }
+            ],
+            "deltaCount": 0,
+            "published": true,
+            "phase": "live",
+            "entities": [
+              {
+                "self": true,
+                "userId": "00000000-0000-4000-8000-000000000101",
+                "avatar": {
+                  "revision": 7,
+                  "config": {
+                    "contract_version": "1.1.0",
+                    "kind": "avatar_config",
+                    "manifest_id": "mcr_selected_static_20261103",
+                    "manifest_version": 1,
+                    "representation": "whole_character",
+                    "preset_id": "photo01_front_01"
+                  }
+                }
+              },
+              {
+                "self": false,
+                "userId": "00000000-0000-4000-8000-000000000901",
+                "avatar": {
+                  "revision": 1,
+                  "config": {
+                    "contract_version": "1.1.0",
+                    "kind": "avatar_config",
+                    "manifest_id": "mcr_selected_static_20261103",
+                    "manifest_version": 1,
+                    "representation": "whole_character",
+                    "preset_id": "photo01_front_02"
+                  }
+                }
+              },
+              {
+                "self": false,
+                "userId": "00000000-0000-4000-8000-000000000902",
+                "avatar": {
+                  "revision": 1,
+                  "config": {
+                    "contract_version": "1.1.0",
+                    "kind": "avatar_config",
+                    "manifest_id": "mcr_selected_static_20261103",
+                    "manifest_version": 1,
+                    "representation": "whole_character",
+                    "preset_id": "photo01_front_03"
+                  }
+                }
+              },
+              {
+                "self": false,
+                "userId": "00000000-0000-4000-8000-000000000903",
+                "avatar": {
+                  "revision": 1,
+                  "config": {
+                    "contract_version": "1.1.0",
+                    "kind": "avatar_config",
+                    "manifest_id": "mcr_selected_static_20261103",
+                    "manifest_version": 1,
+                    "representation": "whole_character",
+                    "preset_id": "photo01_front_04"
+                  }
+                }
+              },
+              {
+                "self": false,
+                "userId": "00000000-0000-4000-8000-000000000904",
+                "avatar": {
+                  "revision": 1,
+                  "config": {
+                    "contract_version": "1.1.0",
+                    "kind": "avatar_config",
+                    "manifest_id": "mcr_selected_static_20261103",
+                    "manifest_version": 1,
+                    "representation": "whole_character",
+                    "preset_id": "photo01_front_05"
+                  }
+                }
+              },
+              {
+                "self": false,
+                "userId": "00000000-0000-4000-8000-000000000905",
+                "avatar": {
+                  "revision": 1,
+                  "config": {
+                    "contract_version": "1.1.0",
+                    "kind": "avatar_config",
+                    "manifest_id": "mcr_selected_static_20261103",
+                    "manifest_version": 1,
+                    "representation": "whole_character",
+                    "preset_id": "photo01_front_06"
+                  }
+                }
+              }
+            ],
+            "sameCamera": true,
+            "camera": {
+              "following": true,
+              "camera": {
+                "zoom": 1,
+                "scrollX": 0,
+                "scrollY": 235,
+                "width": 378,
+                "height": 570
+              }
+            },
+            "geometry": "sha256:463a46ba69bcb48fc691cc33c76e53a43328473edf8b8b61c235d96043dc9e27",
+            "theme": {
+              "selected": "REVENGE",
+              "pending": null,
+              "phase": "ready",
+              "message": "",
+              "saved": false
+            },
+            "currentRuntime": true,
+            "sameRuntime": true,
+            "runtime": {
+              "disposed": false,
+              "leases": 7,
+              "pending": 0,
+              "cleanupFailures": 0,
+              "decodedAtlases": 1
+            },
+            "retainedCurrent": true,
+            "sockets": 1,
+            "socketPeak": 1,
+            "activeSockets": 1,
+            "canvasPeak": 1,
+            "canvases": 1
+          },
+          "world": {
+            "sceneKeys": [
+              "mcr-map"
+            ],
+            "objects": [
+              {
+                "type": "Image",
+                "key": "mcr-reviewed-map-1-ground"
+              },
+              {
+                "type": "Image",
+                "key": "mcr-reviewed-map-1-details"
+              },
+              {
+                "type": "Image",
+                "key": "mcr-reviewed-map-1-landmarks"
+              },
+              {
+                "type": "Image",
+                "key": "mcr-reviewed-map-1-landmarks"
+              },
+              {
+                "type": "Image",
+                "key": "mcr-reviewed-map-1-landmarks"
+              },
+              {
+                "type": "Image",
+                "key": "mcr-reviewed-map-1-landmarks"
+              },
+              {
+                "type": "Image",
+                "key": "mcr-reviewed-map-1-landmarks"
+              },
+              {
+                "type": "Image",
+                "key": "mcr-reviewed-map-1-landmarks"
+              },
+              {
+                "type": "Image",
+                "key": "mcr-reviewed-map-1-details"
+              },
+              {
+                "type": "Image",
+                "key": "mcr-reviewed-map-1-landmarks"
+              },
+              {
+                "type": "Image",
+                "key": "mcr-reviewed-map-1-landmarks"
+              },
+              {
+                "type": "Image",
+                "key": "mcr-reviewed-map-1-details"
+              },
+              {
+                "type": "Image",
+                "key": "mcr-reviewed-map-1-landmarks"
+              },
+              {
+                "type": "Image",
+                "key": "mcr-reviewed-map-1-details"
+              },
+              {
+                "type": "Image",
+                "key": "mcr-reviewed-map-1-details"
+              },
+              {
+                "type": "Image",
+                "key": "mcr-reviewed-map-1-landmarks"
+              },
+              {
+                "type": "Image",
+                "key": "mcr-reviewed-map-1-details"
+              },
+              {
+                "type": "Sprite",
+                "key": "mcr-avatar-1"
+              },
+              {
+                "type": "Sprite",
+                "key": "mcr-avatar-2"
+              },
+              {
+                "type": "Sprite",
+                "key": "mcr-avatar-3"
+              },
+              {
+                "type": "Image",
+                "key": "mcr-reviewed-map-1-details"
+              },
+              {
+                "type": "Image",
+                "key": "mcr-reviewed-map-1-details"
+              },
+              {
+                "type": "Image",
+                "key": "mcr-reviewed-map-1-details"
+              },
+              {
+                "type": "Image",
+                "key": "mcr-reviewed-map-1-landmarks"
+              },
+              {
+                "type": "Sprite",
+                "key": "mcr-avatar-4"
+              },
+              {
+                "type": "Sprite",
+                "key": "mcr-avatar-5"
+              },
+              {
+                "type": "Sprite",
+                "key": "mcr-avatar-6"
+              },
+              {
+                "type": "Image",
+                "key": "mcr-reviewed-map-1-details"
+              },
+              {
+                "type": "Image",
+                "key": "mcr-reviewed-map-1-landmarks"
+              },
+              {
+                "type": "Image",
+                "key": "mcr-reviewed-map-1-landmarks"
+              },
+              {
+                "type": "Image",
+                "key": "mcr-reviewed-map-1-details"
+              },
+              {
+                "type": "Image",
+                "key": "mcr-reviewed-map-1-details"
+              },
+              {
+                "type": "Image",
+                "key": "mcr-reviewed-map-1-landmarks"
+              },
+              {
+                "type": "Image",
+                "key": "mcr-reviewed-map-1-landmarks"
+              },
+              {
+                "type": "Image",
+                "key": "mcr-reviewed-map-1-landmarks"
+              },
+              {
+                "type": "Image",
+                "key": "mcr-reviewed-map-1-landmarks"
+              }
+            ],
+            "games": 1,
+            "peakGames": 1,
+            "totalObservedGames": 1,
+            "sameGame": true,
+            "sprites": [
+              {
+                "x": 140,
+                "y": 520,
+                "visible": true,
+                "frame": 0,
+                "hash": "sha256:a4a6b1ceac075574b988f94f45fe839efc3e14692db73f8fdcfd8131ba3681d5"
+              },
+              {
+                "x": 212,
+                "y": 520,
+                "visible": true,
+                "frame": 0,
+                "hash": "sha256:e2b474308916cc8b303110fcfc0d4e269ef7dbf48f97ac854682a3fe39f33219"
+              },
+              {
+                "x": 284,
+                "y": 520,
+                "visible": true,
+                "frame": 0,
+                "hash": "sha256:7dfbd854577e0fc9ed69c1b70d91233e821b7ef0de4bb50657c1641196be4c3f"
+              },
+              {
+                "x": 140,
+                "y": 608,
+                "visible": true,
+                "frame": 0,
+                "hash": "sha256:310be05370c18b8f8e525f85cd6fed2449f90140e08530e26f71ce2d769b76e8"
+              },
+              {
+                "x": 212,
+                "y": 608,
+                "visible": true,
+                "frame": 0,
+                "hash": "sha256:29bfdf98a12ef22ec26e0fe7d6ba3160c897b30b5372c731927fb2e780d0d5f7"
+              },
+              {
+                "x": 284,
+                "y": 608,
+                "visible": true,
+                "frame": 0,
+                "hash": "sha256:cf5a5d0795af35c637ab4fdfb1709c3e137d54e5a1c4fd7dfefa95cf48d1e6b7"
+              }
+            ],
+            "canvases": 1
+          },
+          "decode": {
+            "calls": 5,
+            "resolved": 5,
+            "rejected": 0
+          },
+          "network": {
+            "requests": 314,
+            "transferredBytes": 39298796,
+            "cacheHits": 0,
+            "assetRequests": 2
+          },
+          "loaderCalls": "NOT_INSTRUMENTED_DEFAULT_LOADER_NOT_OVERRIDDEN"
+        },
+        {
+          "name": "me-first",
+          "state": {
+            "clock": "2026-11-07T07:00:00.000Z",
+            "defaultProductionLoad": true,
+            "compositionOverride": false,
+            "path": "/me",
+            "bootstrapVersion": "1.1.0",
+            "manifestPin": {
+              "manifest_id": "mcr_selected_static_20261103",
+              "manifest_version": 1,
+              "content_hash": "sha256:0627c7d178b22535a561e1270db6d8bf9e2383ba84d03a63962e48e565c59b2b"
+            },
+            "privateQueries": 0,
+            "server": {
+              "revision": 7,
+              "config": {
+                "contract_version": "1.1.0",
+                "kind": "avatar_config",
+                "manifest_id": "mcr_selected_static_20261103",
+                "manifest_version": 1,
+                "representation": "whole_character",
+                "preset_id": "photo01_front_01"
+              }
+            },
+            "requests": [
+              {
+                "path": "/api/auth/capabilities",
+                "method": "GET",
+                "body": null
+              },
+              {
+                "path": "/api/auth/login",
+                "method": "POST",
+                "body": null
+              },
+              {
+                "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/bootstrap",
+                "method": "GET",
+                "body": null
+              },
+              {
+                "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/rooms",
+                "method": "GET",
+                "body": null
+              },
+              {
+                "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/world-tickets",
+                "method": "POST",
+                "body": null
+              },
+              {
+                "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/places",
+                "method": "GET",
+                "body": null
+              },
+              {
+                "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/me",
+                "method": "GET",
+                "body": null
+              }
+            ],
+            "frames": [
+              {
+                "type": "snapshot",
+                "revision": 7
+              }
+            ],
+            "deltaCount": 0,
+            "published": true,
+            "phase": "suspended",
+            "entities": [],
+            "sameCamera": true,
+            "camera": {
+              "following": true,
+              "camera": {
+                "zoom": 1,
+                "scrollX": 0,
+                "scrollY": 105,
+                "width": 378,
+                "height": 791
+              }
+            },
+            "geometry": "sha256:463a46ba69bcb48fc691cc33c76e53a43328473edf8b8b61c235d96043dc9e27",
+            "theme": {
+              "selected": "REVENGE",
+              "pending": null,
+              "phase": "ready",
+              "message": "",
+              "saved": false
+            },
+            "currentRuntime": true,
+            "sameRuntime": true,
+            "runtime": {
+              "disposed": false,
+              "leases": 2,
+              "pending": 0,
+              "cleanupFailures": 0,
+              "decodedAtlases": 1
+            },
+            "retainedCurrent": true,
+            "sockets": 1,
+            "socketPeak": 1,
+            "activeSockets": 0,
+            "canvasPeak": 1,
+            "canvases": 1
+          },
+          "world": {
+            "sceneKeys": [
+              "mcr-map"
+            ],
+            "objects": [
+              {
+                "type": "Image",
+                "key": "mcr-reviewed-map-1-ground"
+              },
+              {
+                "type": "Image",
+                "key": "mcr-reviewed-map-1-details"
+              },
+              {
+                "type": "Image",
+                "key": "mcr-reviewed-map-1-landmarks"
+              },
+              {
+                "type": "Image",
+                "key": "mcr-reviewed-map-1-landmarks"
+              },
+              {
+                "type": "Image",
+                "key": "mcr-reviewed-map-1-landmarks"
+              },
+              {
+                "type": "Image",
+                "key": "mcr-reviewed-map-1-landmarks"
+              },
+              {
+                "type": "Image",
+                "key": "mcr-reviewed-map-1-landmarks"
+              },
+              {
+                "type": "Image",
+                "key": "mcr-reviewed-map-1-landmarks"
+              },
+              {
+                "type": "Image",
+                "key": "mcr-reviewed-map-1-details"
+              },
+              {
+                "type": "Image",
+                "key": "mcr-reviewed-map-1-landmarks"
+              },
+              {
+                "type": "Image",
+                "key": "mcr-reviewed-map-1-landmarks"
+              },
+              {
+                "type": "Image",
+                "key": "mcr-reviewed-map-1-details"
+              },
+              {
+                "type": "Image",
+                "key": "mcr-reviewed-map-1-landmarks"
+              },
+              {
+                "type": "Image",
+                "key": "mcr-reviewed-map-1-details"
+              },
+              {
+                "type": "Image",
+                "key": "mcr-reviewed-map-1-details"
+              },
+              {
+                "type": "Image",
+                "key": "mcr-reviewed-map-1-landmarks"
+              },
+              {
+                "type": "Image",
+                "key": "mcr-reviewed-map-1-details"
+              },
+              {
+                "type": "Image",
+                "key": "mcr-reviewed-map-1-details"
+              },
+              {
+                "type": "Image",
+                "key": "mcr-reviewed-map-1-details"
+              },
+              {
+                "type": "Image",
+                "key": "mcr-reviewed-map-1-details"
+              },
+              {
+                "type": "Image",
+                "key": "mcr-reviewed-map-1-landmarks"
+              },
+              {
+                "type": "Image",
+                "key": "mcr-reviewed-map-1-details"
+              },
+              {
+                "type": "Image",
+                "key": "mcr-reviewed-map-1-landmarks"
+              },
+              {
+                "type": "Image",
+                "key": "mcr-reviewed-map-1-landmarks"
+              },
+              {
+                "type": "Image",
+                "key": "mcr-reviewed-map-1-details"
+              },
+              {
+                "type": "Image",
+                "key": "mcr-reviewed-map-1-details"
+              },
+              {
+                "type": "Image",
+                "key": "mcr-reviewed-map-1-landmarks"
+              },
+              {
+                "type": "Image",
+                "key": "mcr-reviewed-map-1-landmarks"
+              },
+              {
+                "type": "Image",
+                "key": "mcr-reviewed-map-1-landmarks"
+              },
+              {
+                "type": "Image",
+                "key": "mcr-reviewed-map-1-landmarks"
+              }
+            ],
+            "games": 1,
+            "peakGames": 1,
+            "totalObservedGames": 1,
+            "sameGame": true,
+            "sprites": [],
+            "canvases": 1
+          },
+          "decode": {
+            "calls": 5,
+            "resolved": 5,
+            "rejected": 0
+          },
+          "network": {
+            "requests": 322,
+            "transferredBytes": 39378889,
+            "cacheHits": 0,
+            "assetRequests": 2
+          },
+          "loaderCalls": "NOT_INSTRUMENTED_DEFAULT_LOADER_NOT_OVERRIDDEN"
+        },
+        {
+          "name": "customize-first",
+          "state": {
+            "clock": "2026-11-07T07:00:00.000Z",
+            "defaultProductionLoad": true,
+            "compositionOverride": false,
+            "path": "/me/avatar",
+            "bootstrapVersion": "1.1.0",
+            "manifestPin": {
+              "manifest_id": "mcr_selected_static_20261103",
+              "manifest_version": 1,
+              "content_hash": "sha256:0627c7d178b22535a561e1270db6d8bf9e2383ba84d03a63962e48e565c59b2b"
+            },
+            "privateQueries": 0,
+            "server": {
+              "revision": 7,
+              "config": {
+                "contract_version": "1.1.0",
+                "kind": "avatar_config",
+                "manifest_id": "mcr_selected_static_20261103",
+                "manifest_version": 1,
+                "representation": "whole_character",
+                "preset_id": "photo01_front_01"
+              }
+            },
+            "requests": [
+              {
+                "path": "/api/auth/capabilities",
+                "method": "GET",
+                "body": null
+              },
+              {
+                "path": "/api/auth/login",
+                "method": "POST",
+                "body": null
+              },
+              {
+                "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/bootstrap",
+                "method": "GET",
+                "body": null
+              },
+              {
+                "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/rooms",
+                "method": "GET",
+                "body": null
+              },
+              {
+                "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/world-tickets",
+                "method": "POST",
+                "body": null
+              },
+              {
+                "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/places",
+                "method": "GET",
+                "body": null
+              },
+              {
+                "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/me",
+                "method": "GET",
+                "body": null
+              },
+              {
+                "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/me",
+                "method": "GET",
+                "body": null
+              }
+            ],
+            "frames": [
+              {
+                "type": "snapshot",
+                "revision": 7
+              }
+            ],
+            "deltaCount": 0,
+            "published": true,
+            "phase": "suspended",
+            "entities": [],
+            "sameCamera": true,
+            "camera": {
+              "following": true,
+              "camera": {
+                "zoom": 1,
+                "scrollX": 0,
+                "scrollY": 105,
+                "width": 378,
+                "height": 791
+              }
+            },
+            "geometry": "sha256:463a46ba69bcb48fc691cc33c76e53a43328473edf8b8b61c235d96043dc9e27",
+            "theme": {
+              "selected": "REVENGE",
+              "pending": null,
+              "phase": "ready",
+              "message": "",
+              "saved": false
+            },
+            "currentRuntime": true,
+            "sameRuntime": true,
+            "runtime": {
+              "disposed": false,
+              "leases": 5,
+              "pending": 0,
+              "cleanupFailures": 0,
+              "decodedAtlases": 1
+            },
+            "retainedCurrent": true,
+            "sockets": 1,
+            "socketPeak": 1,
+            "activeSockets": 0,
+            "canvasPeak": 1,
+            "canvases": 1
+          },
+          "world": {
+            "sceneKeys": [
+              "mcr-map"
+            ],
+            "objects": [
+              {
+                "type": "Image",
+                "key": "mcr-reviewed-map-1-ground"
+              },
+              {
+                "type": "Image",
+                "key": "mcr-reviewed-map-1-details"
+              },
+              {
+                "type": "Image",
+                "key": "mcr-reviewed-map-1-landmarks"
+              },
+              {
+                "type": "Image",
+                "key": "mcr-reviewed-map-1-landmarks"
+              },
+              {
+                "type": "Image",
+                "key": "mcr-reviewed-map-1-landmarks"
+              },
+              {
+                "type": "Image",
+                "key": "mcr-reviewed-map-1-landmarks"
+              },
+              {
+                "type": "Image",
+                "key": "mcr-reviewed-map-1-landmarks"
+              },
+              {
+                "type": "Image",
+                "key": "mcr-reviewed-map-1-landmarks"
+              },
+              {
+                "type": "Image",
+                "key": "mcr-reviewed-map-1-details"
+              },
+              {
+                "type": "Image",
+                "key": "mcr-reviewed-map-1-landmarks"
+              },
+              {
+                "type": "Image",
+                "key": "mcr-reviewed-map-1-landmarks"
+              },
+              {
+                "type": "Image",
+                "key": "mcr-reviewed-map-1-details"
+              },
+              {
+                "type": "Image",
+                "key": "mcr-reviewed-map-1-landmarks"
+              },
+              {
+                "type": "Image",
+                "key": "mcr-reviewed-map-1-details"
+              },
+              {
+                "type": "Image",
+                "key": "mcr-reviewed-map-1-details"
+              },
+              {
+                "type": "Image",
+                "key": "mcr-reviewed-map-1-landmarks"
+              },
+              {
+                "type": "Image",
+                "key": "mcr-reviewed-map-1-details"
+              },
+              {
+                "type": "Image",
+                "key": "mcr-reviewed-map-1-details"
+              },
+              {
+                "type": "Image",
+                "key": "mcr-reviewed-map-1-details"
+              },
+              {
+                "type": "Image",
+                "key": "mcr-reviewed-map-1-details"
+              },
+              {
+                "type": "Image",
+                "key": "mcr-reviewed-map-1-landmarks"
+              },
+              {
+                "type": "Image",
+                "key": "mcr-reviewed-map-1-details"
+              },
+              {
+                "type": "Image",
+                "key": "mcr-reviewed-map-1-landmarks"
+              },
+              {
+                "type": "Image",
+                "key": "mcr-reviewed-map-1-landmarks"
+              },
+              {
+                "type": "Image",
+                "key": "mcr-reviewed-map-1-details"
+              },
+              {
+                "type": "Image",
+                "key": "mcr-reviewed-map-1-details"
+              },
+              {
+                "type": "Image",
+                "key": "mcr-reviewed-map-1-landmarks"
+              },
+              {
+                "type": "Image",
+                "key": "mcr-reviewed-map-1-landmarks"
+              },
+              {
+                "type": "Image",
+                "key": "mcr-reviewed-map-1-landmarks"
+              },
+              {
+                "type": "Image",
+                "key": "mcr-reviewed-map-1-landmarks"
+              }
+            ],
+            "games": 1,
+            "peakGames": 1,
+            "totalObservedGames": 1,
+            "sameGame": true,
+            "sprites": [],
+            "canvases": 1
+          },
+          "decode": {
+            "calls": 5,
+            "resolved": 5,
+            "rejected": 0
+          },
+          "network": {
+            "requests": 322,
+            "transferredBytes": 39378889,
+            "cacheHits": 0,
+            "assetRequests": 2
+          },
+          "loaderCalls": "NOT_INSTRUMENTED_DEFAULT_LOADER_NOT_OVERRIDDEN"
+        },
+        {
+          "name": "world-after-save",
+          "state": {
+            "clock": "2026-11-07T07:00:00.000Z",
+            "defaultProductionLoad": true,
+            "compositionOverride": false,
+            "path": "/world",
+            "bootstrapVersion": "1.1.0",
+            "manifestPin": {
+              "manifest_id": "mcr_selected_static_20261103",
+              "manifest_version": 1,
+              "content_hash": "sha256:0627c7d178b22535a561e1270db6d8bf9e2383ba84d03a63962e48e565c59b2b"
+            },
+            "privateQueries": 0,
+            "server": {
+              "revision": 8,
+              "config": {
+                "contract_version": "1.1.0",
+                "kind": "avatar_config",
+                "manifest_id": "mcr_selected_static_20261103",
+                "manifest_version": 1,
+                "preset_id": "photo01_front_06",
+                "representation": "whole_character"
+              }
+            },
+            "requests": [
+              {
+                "path": "/api/auth/capabilities",
+                "method": "GET",
+                "body": null
+              },
+              {
+                "path": "/api/auth/login",
+                "method": "POST",
+                "body": null
+              },
+              {
+                "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/bootstrap",
+                "method": "GET",
+                "body": null
+              },
+              {
+                "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/rooms",
+                "method": "GET",
+                "body": null
+              },
+              {
+                "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/world-tickets",
+                "method": "POST",
+                "body": null
+              },
+              {
+                "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/places",
+                "method": "GET",
+                "body": null
+              },
+              {
+                "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/me",
+                "method": "GET",
+                "body": null
+              },
+              {
+                "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/me",
+                "method": "GET",
+                "body": null
+              },
+              {
+                "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/me/avatar",
+                "method": "PUT",
+                "body": {
+                  "expected_revision": 7,
+                  "config": {
+                    "contract_version": "1.1.0",
+                    "kind": "avatar_config",
+                    "manifest_id": "mcr_selected_static_20261103",
+                    "manifest_version": 1,
+                    "preset_id": "photo01_front_06",
+                    "representation": "whole_character"
+                  }
+                }
+              },
+              {
+                "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/me",
+                "method": "GET",
+                "body": null
+              },
+              {
+                "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/world-tickets",
+                "method": "POST",
+                "body": null
+              }
+            ],
+            "frames": [
+              {
+                "type": "snapshot",
+                "revision": 7
+              },
+              {
+                "type": "snapshot",
+                "revision": 7
+              },
+              {
+                "type": "delta",
+                "revision": 8
+              }
+            ],
+            "deltaCount": 1,
+            "published": true,
+            "phase": "live",
+            "entities": [
+              {
+                "self": true,
+                "userId": "00000000-0000-4000-8000-000000000101",
+                "avatar": {
+                  "revision": 8,
+                  "config": {
+                    "contract_version": "1.1.0",
+                    "kind": "avatar_config",
+                    "manifest_id": "mcr_selected_static_20261103",
+                    "manifest_version": 1,
+                    "preset_id": "photo01_front_06",
+                    "representation": "whole_character"
+                  }
+                }
+              },
+              {
+                "self": false,
+                "userId": "00000000-0000-4000-8000-000000000901",
+                "avatar": {
+                  "revision": 1,
+                  "config": {
+                    "contract_version": "1.1.0",
+                    "kind": "avatar_config",
+                    "manifest_id": "mcr_selected_static_20261103",
+                    "manifest_version": 1,
+                    "representation": "whole_character",
+                    "preset_id": "photo01_front_02"
+                  }
+                }
+              },
+              {
+                "self": false,
+                "userId": "00000000-0000-4000-8000-000000000902",
+                "avatar": {
+                  "revision": 1,
+                  "config": {
+                    "contract_version": "1.1.0",
+                    "kind": "avatar_config",
+                    "manifest_id": "mcr_selected_static_20261103",
+                    "manifest_version": 1,
+                    "representation": "whole_character",
+                    "preset_id": "photo01_front_03"
+                  }
+                }
+              },
+              {
+                "self": false,
+                "userId": "00000000-0000-4000-8000-000000000903",
+                "avatar": {
+                  "revision": 1,
+                  "config": {
+                    "contract_version": "1.1.0",
+                    "kind": "avatar_config",
+                    "manifest_id": "mcr_selected_static_20261103",
+                    "manifest_version": 1,
+                    "representation": "whole_character",
+                    "preset_id": "photo01_front_04"
+                  }
+                }
+              },
+              {
+                "self": false,
+                "userId": "00000000-0000-4000-8000-000000000904",
+                "avatar": {
+                  "revision": 1,
+                  "config": {
+                    "contract_version": "1.1.0",
+                    "kind": "avatar_config",
+                    "manifest_id": "mcr_selected_static_20261103",
+                    "manifest_version": 1,
+                    "representation": "whole_character",
+                    "preset_id": "photo01_front_05"
+                  }
+                }
+              },
+              {
+                "self": false,
+                "userId": "00000000-0000-4000-8000-000000000905",
+                "avatar": {
+                  "revision": 1,
+                  "config": {
+                    "contract_version": "1.1.0",
+                    "kind": "avatar_config",
+                    "manifest_id": "mcr_selected_static_20261103",
+                    "manifest_version": 1,
+                    "representation": "whole_character",
+                    "preset_id": "photo01_front_06"
+                  }
+                }
+              }
+            ],
+            "sameCamera": true,
+            "camera": {
+              "following": true,
+              "camera": {
+                "zoom": 1,
+                "scrollX": 0,
+                "scrollY": 235,
+                "width": 378,
+                "height": 570
+              }
+            },
+            "geometry": "sha256:463a46ba69bcb48fc691cc33c76e53a43328473edf8b8b61c235d96043dc9e27",
+            "theme": {
+              "selected": "REVENGE",
+              "pending": null,
+              "phase": "ready",
+              "message": "",
+              "saved": false
+            },
+            "currentRuntime": true,
+            "sameRuntime": true,
+            "runtime": {
+              "disposed": false,
+              "leases": 6,
+              "pending": 0,
+              "cleanupFailures": 0,
+              "decodedAtlases": 1
+            },
+            "retainedCurrent": true,
+            "sockets": 2,
+            "socketPeak": 1,
+            "activeSockets": 1,
+            "canvasPeak": 1,
+            "canvases": 1
+          },
+          "world": {
+            "sceneKeys": [
+              "mcr-map"
+            ],
+            "objects": [
+              {
+                "type": "Image",
+                "key": "mcr-reviewed-map-1-ground"
+              },
+              {
+                "type": "Image",
+                "key": "mcr-reviewed-map-1-details"
+              },
+              {
+                "type": "Image",
+                "key": "mcr-reviewed-map-1-landmarks"
+              },
+              {
+                "type": "Image",
+                "key": "mcr-reviewed-map-1-landmarks"
+              },
+              {
+                "type": "Image",
+                "key": "mcr-reviewed-map-1-landmarks"
+              },
+              {
+                "type": "Image",
+                "key": "mcr-reviewed-map-1-landmarks"
+              },
+              {
+                "type": "Image",
+                "key": "mcr-reviewed-map-1-landmarks"
+              },
+              {
+                "type": "Image",
+                "key": "mcr-reviewed-map-1-landmarks"
+              },
+              {
+                "type": "Image",
+                "key": "mcr-reviewed-map-1-details"
+              },
+              {
+                "type": "Image",
+                "key": "mcr-reviewed-map-1-landmarks"
+              },
+              {
+                "type": "Image",
+                "key": "mcr-reviewed-map-1-landmarks"
+              },
+              {
+                "type": "Image",
+                "key": "mcr-reviewed-map-1-details"
+              },
+              {
+                "type": "Image",
+                "key": "mcr-reviewed-map-1-landmarks"
+              },
+              {
+                "type": "Image",
+                "key": "mcr-reviewed-map-1-details"
+              },
+              {
+                "type": "Image",
+                "key": "mcr-reviewed-map-1-details"
+              },
+              {
+                "type": "Image",
+                "key": "mcr-reviewed-map-1-landmarks"
+              },
+              {
+                "type": "Image",
+                "key": "mcr-reviewed-map-1-details"
+              },
+              {
+                "type": "Sprite",
+                "key": "mcr-avatar-7"
+              },
+              {
+                "type": "Sprite",
+                "key": "mcr-avatar-8"
+              },
+              {
+                "type": "Sprite",
+                "key": "mcr-avatar-11"
+              },
+              {
+                "type": "Image",
+                "key": "mcr-reviewed-map-1-details"
+              },
+              {
+                "type": "Image",
+                "key": "mcr-reviewed-map-1-details"
+              },
+              {
+                "type": "Image",
+                "key": "mcr-reviewed-map-1-details"
+              },
+              {
+                "type": "Image",
+                "key": "mcr-reviewed-map-1-landmarks"
+              },
+              {
+                "type": "Sprite",
+                "key": "mcr-avatar-9"
+              },
+              {
+                "type": "Sprite",
+                "key": "mcr-avatar-10"
+              },
+              {
+                "type": "Sprite",
+                "key": "mcr-avatar-11"
+              },
+              {
+                "type": "Image",
+                "key": "mcr-reviewed-map-1-details"
+              },
+              {
+                "type": "Image",
+                "key": "mcr-reviewed-map-1-landmarks"
+              },
+              {
+                "type": "Image",
+                "key": "mcr-reviewed-map-1-landmarks"
+              },
+              {
+                "type": "Image",
+                "key": "mcr-reviewed-map-1-details"
+              },
+              {
+                "type": "Image",
+                "key": "mcr-reviewed-map-1-details"
+              },
+              {
+                "type": "Image",
+                "key": "mcr-reviewed-map-1-landmarks"
+              },
+              {
+                "type": "Image",
+                "key": "mcr-reviewed-map-1-landmarks"
+              },
+              {
+                "type": "Image",
+                "key": "mcr-reviewed-map-1-landmarks"
+              },
+              {
+                "type": "Image",
+                "key": "mcr-reviewed-map-1-landmarks"
+              }
+            ],
+            "games": 1,
+            "peakGames": 1,
+            "totalObservedGames": 1,
+            "sameGame": true,
+            "sprites": [
+              {
+                "x": 212,
+                "y": 520,
+                "visible": true,
+                "frame": 0,
+                "hash": "sha256:e2b474308916cc8b303110fcfc0d4e269ef7dbf48f97ac854682a3fe39f33219"
+              },
+              {
+                "x": 284,
+                "y": 520,
+                "visible": true,
+                "frame": 0,
+                "hash": "sha256:7dfbd854577e0fc9ed69c1b70d91233e821b7ef0de4bb50657c1641196be4c3f"
+              },
+              {
+                "x": 140,
+                "y": 520,
+                "visible": true,
+                "frame": 0,
+                "hash": "sha256:cf5a5d0795af35c637ab4fdfb1709c3e137d54e5a1c4fd7dfefa95cf48d1e6b7"
+              },
+              {
+                "x": 140,
+                "y": 608,
+                "visible": true,
+                "frame": 0,
+                "hash": "sha256:310be05370c18b8f8e525f85cd6fed2449f90140e08530e26f71ce2d769b76e8"
+              },
+              {
+                "x": 212,
+                "y": 608,
+                "visible": true,
+                "frame": 0,
+                "hash": "sha256:29bfdf98a12ef22ec26e0fe7d6ba3160c897b30b5372c731927fb2e780d0d5f7"
+              },
+              {
+                "x": 284,
+                "y": 608,
+                "visible": true,
+                "frame": 0,
+                "hash": "sha256:cf5a5d0795af35c637ab4fdfb1709c3e137d54e5a1c4fd7dfefa95cf48d1e6b7"
+              }
+            ],
+            "canvases": 1
+          },
+          "decode": {
+            "calls": 5,
+            "resolved": 5,
+            "rejected": 0
+          },
+          "network": {
+            "requests": 322,
+            "transferredBytes": 39378889,
+            "cacheHits": 0,
+            "assetRequests": 2
+          },
+          "loaderCalls": "NOT_INSTRUMENTED_DEFAULT_LOADER_NOT_OVERRIDDEN"
+        },
+        {
+          "name": "me-saved",
+          "state": {
+            "clock": "2026-11-07T07:00:00.000Z",
+            "defaultProductionLoad": true,
+            "compositionOverride": false,
+            "path": "/me",
+            "bootstrapVersion": "1.1.0",
+            "manifestPin": {
+              "manifest_id": "mcr_selected_static_20261103",
+              "manifest_version": 1,
+              "content_hash": "sha256:0627c7d178b22535a561e1270db6d8bf9e2383ba84d03a63962e48e565c59b2b"
+            },
+            "privateQueries": 0,
+            "server": {
+              "revision": 8,
+              "config": {
+                "contract_version": "1.1.0",
+                "kind": "avatar_config",
+                "manifest_id": "mcr_selected_static_20261103",
+                "manifest_version": 1,
+                "preset_id": "photo01_front_06",
+                "representation": "whole_character"
+              }
+            },
+            "requests": [
+              {
+                "path": "/api/auth/capabilities",
+                "method": "GET",
+                "body": null
+              },
+              {
+                "path": "/api/auth/login",
+                "method": "POST",
+                "body": null
+              },
+              {
+                "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/bootstrap",
+                "method": "GET",
+                "body": null
+              },
+              {
+                "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/rooms",
+                "method": "GET",
+                "body": null
+              },
+              {
+                "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/world-tickets",
+                "method": "POST",
+                "body": null
+              },
+              {
+                "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/places",
+                "method": "GET",
+                "body": null
+              },
+              {
+                "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/me",
+                "method": "GET",
+                "body": null
+              },
+              {
+                "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/me",
+                "method": "GET",
+                "body": null
+              },
+              {
+                "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/me/avatar",
+                "method": "PUT",
+                "body": {
+                  "expected_revision": 7,
+                  "config": {
+                    "contract_version": "1.1.0",
+                    "kind": "avatar_config",
+                    "manifest_id": "mcr_selected_static_20261103",
+                    "manifest_version": 1,
+                    "preset_id": "photo01_front_06",
+                    "representation": "whole_character"
+                  }
+                }
+              },
+              {
+                "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/me",
+                "method": "GET",
+                "body": null
+              },
+              {
+                "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/world-tickets",
+                "method": "POST",
+                "body": null
+              }
+            ],
+            "frames": [
+              {
+                "type": "snapshot",
+                "revision": 7
+              },
+              {
+                "type": "snapshot",
+                "revision": 7
+              },
+              {
+                "type": "delta",
+                "revision": 8
+              }
+            ],
+            "deltaCount": 1,
+            "published": true,
+            "phase": "suspended",
+            "entities": [],
+            "sameCamera": true,
+            "camera": {
+              "following": true,
+              "camera": {
+                "zoom": 1,
+                "scrollX": 0,
+                "scrollY": 105,
+                "width": 378,
+                "height": 791
+              }
+            },
+            "geometry": "sha256:463a46ba69bcb48fc691cc33c76e53a43328473edf8b8b61c235d96043dc9e27",
+            "theme": {
+              "selected": "REVENGE",
+              "pending": null,
+              "phase": "ready",
+              "message": "",
+              "saved": false
+            },
+            "currentRuntime": true,
+            "sameRuntime": true,
+            "runtime": {
+              "disposed": false,
+              "leases": 2,
+              "pending": 0,
+              "cleanupFailures": 0,
+              "decodedAtlases": 1
+            },
+            "retainedCurrent": true,
+            "sockets": 2,
+            "socketPeak": 1,
+            "activeSockets": 0,
+            "canvasPeak": 1,
+            "canvases": 1
+          },
+          "world": {
+            "sceneKeys": [
+              "mcr-map"
+            ],
+            "objects": [
+              {
+                "type": "Image",
+                "key": "mcr-reviewed-map-1-ground"
+              },
+              {
+                "type": "Image",
+                "key": "mcr-reviewed-map-1-details"
+              },
+              {
+                "type": "Image",
+                "key": "mcr-reviewed-map-1-landmarks"
+              },
+              {
+                "type": "Image",
+                "key": "mcr-reviewed-map-1-landmarks"
+              },
+              {
+                "type": "Image",
+                "key": "mcr-reviewed-map-1-landmarks"
+              },
+              {
+                "type": "Image",
+                "key": "mcr-reviewed-map-1-landmarks"
+              },
+              {
+                "type": "Image",
+                "key": "mcr-reviewed-map-1-landmarks"
+              },
+              {
+                "type": "Image",
+                "key": "mcr-reviewed-map-1-landmarks"
+              },
+              {
+                "type": "Image",
+                "key": "mcr-reviewed-map-1-details"
+              },
+              {
+                "type": "Image",
+                "key": "mcr-reviewed-map-1-landmarks"
+              },
+              {
+                "type": "Image",
+                "key": "mcr-reviewed-map-1-landmarks"
+              },
+              {
+                "type": "Image",
+                "key": "mcr-reviewed-map-1-details"
+              },
+              {
+                "type": "Image",
+                "key": "mcr-reviewed-map-1-landmarks"
+              },
+              {
+                "type": "Image",
+                "key": "mcr-reviewed-map-1-details"
+              },
+              {
+                "type": "Image",
+                "key": "mcr-reviewed-map-1-details"
+              },
+              {
+                "type": "Image",
+                "key": "mcr-reviewed-map-1-landmarks"
+              },
+              {
+                "type": "Image",
+                "key": "mcr-reviewed-map-1-details"
+              },
+              {
+                "type": "Image",
+                "key": "mcr-reviewed-map-1-details"
+              },
+              {
+                "type": "Image",
+                "key": "mcr-reviewed-map-1-details"
+              },
+              {
+                "type": "Image",
+                "key": "mcr-reviewed-map-1-details"
+              },
+              {
+                "type": "Image",
+                "key": "mcr-reviewed-map-1-landmarks"
+              },
+              {
+                "type": "Image",
+                "key": "mcr-reviewed-map-1-details"
+              },
+              {
+                "type": "Image",
+                "key": "mcr-reviewed-map-1-landmarks"
+              },
+              {
+                "type": "Image",
+                "key": "mcr-reviewed-map-1-landmarks"
+              },
+              {
+                "type": "Image",
+                "key": "mcr-reviewed-map-1-details"
+              },
+              {
+                "type": "Image",
+                "key": "mcr-reviewed-map-1-details"
+              },
+              {
+                "type": "Image",
+                "key": "mcr-reviewed-map-1-landmarks"
+              },
+              {
+                "type": "Image",
+                "key": "mcr-reviewed-map-1-landmarks"
+              },
+              {
+                "type": "Image",
+                "key": "mcr-reviewed-map-1-landmarks"
+              },
+              {
+                "type": "Image",
+                "key": "mcr-reviewed-map-1-landmarks"
+              }
+            ],
+            "games": 1,
+            "peakGames": 1,
+            "totalObservedGames": 1,
+            "sameGame": true,
+            "sprites": [],
+            "canvases": 1
+          },
+          "decode": {
+            "calls": 5,
+            "resolved": 5,
+            "rejected": 0
+          },
+          "network": {
+            "requests": 322,
+            "transferredBytes": 39378889,
+            "cacheHits": 0,
+            "assetRequests": 2
+          },
+          "loaderCalls": "NOT_INSTRUMENTED_DEFAULT_LOADER_NOT_OVERRIDDEN"
+        },
+        {
+          "name": "customize-warm",
+          "state": {
+            "clock": "2026-11-07T07:00:00.000Z",
+            "defaultProductionLoad": true,
+            "compositionOverride": false,
+            "path": "/me/avatar",
+            "bootstrapVersion": "1.1.0",
+            "manifestPin": {
+              "manifest_id": "mcr_selected_static_20261103",
+              "manifest_version": 1,
+              "content_hash": "sha256:0627c7d178b22535a561e1270db6d8bf9e2383ba84d03a63962e48e565c59b2b"
+            },
+            "privateQueries": 0,
+            "server": {
+              "revision": 8,
+              "config": {
+                "contract_version": "1.1.0",
+                "kind": "avatar_config",
+                "manifest_id": "mcr_selected_static_20261103",
+                "manifest_version": 1,
+                "preset_id": "photo01_front_06",
+                "representation": "whole_character"
+              }
+            },
+            "requests": [
+              {
+                "path": "/api/auth/capabilities",
+                "method": "GET",
+                "body": null
+              },
+              {
+                "path": "/api/auth/login",
+                "method": "POST",
+                "body": null
+              },
+              {
+                "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/bootstrap",
+                "method": "GET",
+                "body": null
+              },
+              {
+                "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/rooms",
+                "method": "GET",
+                "body": null
+              },
+              {
+                "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/world-tickets",
+                "method": "POST",
+                "body": null
+              },
+              {
+                "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/places",
+                "method": "GET",
+                "body": null
+              },
+              {
+                "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/me",
+                "method": "GET",
+                "body": null
+              },
+              {
+                "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/me",
+                "method": "GET",
+                "body": null
+              },
+              {
+                "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/me/avatar",
+                "method": "PUT",
+                "body": {
+                  "expected_revision": 7,
+                  "config": {
+                    "contract_version": "1.1.0",
+                    "kind": "avatar_config",
+                    "manifest_id": "mcr_selected_static_20261103",
+                    "manifest_version": 1,
+                    "preset_id": "photo01_front_06",
+                    "representation": "whole_character"
+                  }
+                }
+              },
+              {
+                "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/me",
+                "method": "GET",
+                "body": null
+              },
+              {
+                "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/world-tickets",
+                "method": "POST",
+                "body": null
+              },
+              {
+                "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/me",
+                "method": "GET",
+                "body": null
+              }
+            ],
+            "frames": [
+              {
+                "type": "snapshot",
+                "revision": 7
+              },
+              {
+                "type": "snapshot",
+                "revision": 7
+              },
+              {
+                "type": "delta",
+                "revision": 8
+              }
+            ],
+            "deltaCount": 1,
+            "published": true,
+            "phase": "suspended",
+            "entities": [],
+            "sameCamera": true,
+            "camera": {
+              "following": true,
+              "camera": {
+                "zoom": 1,
+                "scrollX": 0,
+                "scrollY": 105,
+                "width": 378,
+                "height": 791
+              }
+            },
+            "geometry": "sha256:463a46ba69bcb48fc691cc33c76e53a43328473edf8b8b61c235d96043dc9e27",
+            "theme": {
+              "selected": "REVENGE",
+              "pending": null,
+              "phase": "ready",
+              "message": "",
+              "saved": false
+            },
+            "currentRuntime": true,
+            "sameRuntime": true,
+            "runtime": {
+              "disposed": false,
+              "leases": 5,
+              "pending": 0,
+              "cleanupFailures": 0,
+              "decodedAtlases": 1
+            },
+            "retainedCurrent": true,
+            "sockets": 2,
+            "socketPeak": 1,
+            "activeSockets": 0,
+            "canvasPeak": 1,
+            "canvases": 1
+          },
+          "world": {
+            "sceneKeys": [
+              "mcr-map"
+            ],
+            "objects": [
+              {
+                "type": "Image",
+                "key": "mcr-reviewed-map-1-ground"
+              },
+              {
+                "type": "Image",
+                "key": "mcr-reviewed-map-1-details"
+              },
+              {
+                "type": "Image",
+                "key": "mcr-reviewed-map-1-landmarks"
+              },
+              {
+                "type": "Image",
+                "key": "mcr-reviewed-map-1-landmarks"
+              },
+              {
+                "type": "Image",
+                "key": "mcr-reviewed-map-1-landmarks"
+              },
+              {
+                "type": "Image",
+                "key": "mcr-reviewed-map-1-landmarks"
+              },
+              {
+                "type": "Image",
+                "key": "mcr-reviewed-map-1-landmarks"
+              },
+              {
+                "type": "Image",
+                "key": "mcr-reviewed-map-1-landmarks"
+              },
+              {
+                "type": "Image",
+                "key": "mcr-reviewed-map-1-details"
+              },
+              {
+                "type": "Image",
+                "key": "mcr-reviewed-map-1-landmarks"
+              },
+              {
+                "type": "Image",
+                "key": "mcr-reviewed-map-1-landmarks"
+              },
+              {
+                "type": "Image",
+                "key": "mcr-reviewed-map-1-details"
+              },
+              {
+                "type": "Image",
+                "key": "mcr-reviewed-map-1-landmarks"
+              },
+              {
+                "type": "Image",
+                "key": "mcr-reviewed-map-1-details"
+              },
+              {
+                "type": "Image",
+                "key": "mcr-reviewed-map-1-details"
+              },
+              {
+                "type": "Image",
+                "key": "mcr-reviewed-map-1-landmarks"
+              },
+              {
+                "type": "Image",
+                "key": "mcr-reviewed-map-1-details"
+              },
+              {
+                "type": "Image",
+                "key": "mcr-reviewed-map-1-details"
+              },
+              {
+                "type": "Image",
+                "key": "mcr-reviewed-map-1-details"
+              },
+              {
+                "type": "Image",
+                "key": "mcr-reviewed-map-1-details"
+              },
+              {
+                "type": "Image",
+                "key": "mcr-reviewed-map-1-landmarks"
+              },
+              {
+                "type": "Image",
+                "key": "mcr-reviewed-map-1-details"
+              },
+              {
+                "type": "Image",
+                "key": "mcr-reviewed-map-1-landmarks"
+              },
+              {
+                "type": "Image",
+                "key": "mcr-reviewed-map-1-landmarks"
+              },
+              {
+                "type": "Image",
+                "key": "mcr-reviewed-map-1-details"
+              },
+              {
+                "type": "Image",
+                "key": "mcr-reviewed-map-1-details"
+              },
+              {
+                "type": "Image",
+                "key": "mcr-reviewed-map-1-landmarks"
+              },
+              {
+                "type": "Image",
+                "key": "mcr-reviewed-map-1-landmarks"
+              },
+              {
+                "type": "Image",
+                "key": "mcr-reviewed-map-1-landmarks"
+              },
+              {
+                "type": "Image",
+                "key": "mcr-reviewed-map-1-landmarks"
+              }
+            ],
+            "games": 1,
+            "peakGames": 1,
+            "totalObservedGames": 1,
+            "sameGame": true,
+            "sprites": [],
+            "canvases": 1
+          },
+          "decode": {
+            "calls": 5,
+            "resolved": 5,
+            "rejected": 0
+          },
+          "network": {
+            "requests": 322,
+            "transferredBytes": 39378889,
+            "cacheHits": 0,
+            "assetRequests": 2
+          },
+          "loaderCalls": "NOT_INSTRUMENTED_DEFAULT_LOADER_NOT_OVERRIDDEN"
+        },
+        {
+          "name": "era-Parade",
+          "state": {
+            "clock": "2026-11-07T07:00:00.000Z",
+            "defaultProductionLoad": true,
+            "compositionOverride": false,
+            "path": "/world",
+            "bootstrapVersion": "1.1.0",
+            "manifestPin": {
+              "manifest_id": "mcr_selected_static_20261103",
+              "manifest_version": 1,
+              "content_hash": "sha256:0627c7d178b22535a561e1270db6d8bf9e2383ba84d03a63962e48e565c59b2b"
+            },
+            "privateQueries": 0,
+            "server": {
+              "revision": 8,
+              "config": {
+                "contract_version": "1.1.0",
+                "kind": "avatar_config",
+                "manifest_id": "mcr_selected_static_20261103",
+                "manifest_version": 1,
+                "preset_id": "photo01_front_06",
+                "representation": "whole_character"
+              }
+            },
+            "requests": [
+              {
+                "path": "/api/auth/capabilities",
+                "method": "GET",
+                "body": null
+              },
+              {
+                "path": "/api/auth/login",
+                "method": "POST",
+                "body": null
+              },
+              {
+                "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/bootstrap",
+                "method": "GET",
+                "body": null
+              },
+              {
+                "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/rooms",
+                "method": "GET",
+                "body": null
+              },
+              {
+                "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/world-tickets",
+                "method": "POST",
+                "body": null
+              },
+              {
+                "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/places",
+                "method": "GET",
+                "body": null
+              },
+              {
+                "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/me",
+                "method": "GET",
+                "body": null
+              },
+              {
+                "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/me",
+                "method": "GET",
+                "body": null
+              },
+              {
+                "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/me/avatar",
+                "method": "PUT",
+                "body": {
+                  "expected_revision": 7,
+                  "config": {
+                    "contract_version": "1.1.0",
+                    "kind": "avatar_config",
+                    "manifest_id": "mcr_selected_static_20261103",
+                    "manifest_version": 1,
+                    "preset_id": "photo01_front_06",
+                    "representation": "whole_character"
+                  }
+                }
+              },
+              {
+                "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/me",
+                "method": "GET",
+                "body": null
+              },
+              {
+                "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/world-tickets",
+                "method": "POST",
+                "body": null
+              },
+              {
+                "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/me",
+                "method": "GET",
+                "body": null
+              },
+              {
+                "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/world-tickets",
+                "method": "POST",
+                "body": null
+              }
+            ],
+            "frames": [
+              {
+                "type": "snapshot",
+                "revision": 7
+              },
+              {
+                "type": "snapshot",
+                "revision": 7
+              },
+              {
+                "type": "delta",
+                "revision": 8
+              },
+              {
+                "type": "snapshot",
+                "revision": 8
+              }
+            ],
+            "deltaCount": 1,
+            "published": true,
+            "phase": "live",
+            "entities": [
+              {
+                "self": true,
+                "userId": "00000000-0000-4000-8000-000000000101",
+                "avatar": {
+                  "revision": 8,
+                  "config": {
+                    "contract_version": "1.1.0",
+                    "kind": "avatar_config",
+                    "manifest_id": "mcr_selected_static_20261103",
+                    "manifest_version": 1,
+                    "preset_id": "photo01_front_06",
+                    "representation": "whole_character"
+                  }
+                }
+              },
+              {
+                "self": false,
+                "userId": "00000000-0000-4000-8000-000000000901",
+                "avatar": {
+                  "revision": 1,
+                  "config": {
+                    "contract_version": "1.1.0",
+                    "kind": "avatar_config",
+                    "manifest_id": "mcr_selected_static_20261103",
+                    "manifest_version": 1,
+                    "representation": "whole_character",
+                    "preset_id": "photo01_front_02"
+                  }
+                }
+              },
+              {
+                "self": false,
+                "userId": "00000000-0000-4000-8000-000000000902",
+                "avatar": {
+                  "revision": 1,
+                  "config": {
+                    "contract_version": "1.1.0",
+                    "kind": "avatar_config",
+                    "manifest_id": "mcr_selected_static_20261103",
+                    "manifest_version": 1,
+                    "representation": "whole_character",
+                    "preset_id": "photo01_front_03"
+                  }
+                }
+              },
+              {
+                "self": false,
+                "userId": "00000000-0000-4000-8000-000000000903",
+                "avatar": {
+                  "revision": 1,
+                  "config": {
+                    "contract_version": "1.1.0",
+                    "kind": "avatar_config",
+                    "manifest_id": "mcr_selected_static_20261103",
+                    "manifest_version": 1,
+                    "representation": "whole_character",
+                    "preset_id": "photo01_front_04"
+                  }
+                }
+              },
+              {
+                "self": false,
+                "userId": "00000000-0000-4000-8000-000000000904",
+                "avatar": {
+                  "revision": 1,
+                  "config": {
+                    "contract_version": "1.1.0",
+                    "kind": "avatar_config",
+                    "manifest_id": "mcr_selected_static_20261103",
+                    "manifest_version": 1,
+                    "representation": "whole_character",
+                    "preset_id": "photo01_front_05"
+                  }
+                }
+              },
+              {
+                "self": false,
+                "userId": "00000000-0000-4000-8000-000000000905",
+                "avatar": {
+                  "revision": 1,
+                  "config": {
+                    "contract_version": "1.1.0",
+                    "kind": "avatar_config",
+                    "manifest_id": "mcr_selected_static_20261103",
+                    "manifest_version": 1,
+                    "representation": "whole_character",
+                    "preset_id": "photo01_front_06"
+                  }
+                }
+              }
+            ],
+            "sameCamera": true,
+            "camera": {
+              "following": true,
+              "camera": {
+                "zoom": 1,
+                "scrollX": 0,
+                "scrollY": 235,
+                "width": 378,
+                "height": 570
+              }
+            },
+            "geometry": "sha256:463a46ba69bcb48fc691cc33c76e53a43328473edf8b8b61c235d96043dc9e27",
+            "theme": {
+              "selected": "PARADE",
+              "pending": null,
+              "phase": "ready",
+              "saved": true,
+              "message": "PARADE selected. Saved on this device for this account and event."
+            },
+            "currentRuntime": true,
+            "sameRuntime": true,
+            "runtime": {
+              "disposed": false,
+              "leases": 6,
+              "pending": 0,
+              "cleanupFailures": 0,
+              "decodedAtlases": 1
+            },
+            "retainedCurrent": true,
+            "sockets": 3,
+            "socketPeak": 1,
+            "activeSockets": 1,
+            "canvasPeak": 1,
+            "canvases": 1
+          },
+          "world": {
+            "sceneKeys": [
+              "mcr-map"
+            ],
+            "objects": [
+              {
+                "type": "Image",
+                "key": "mcr-reviewed-map-2-ground"
+              },
+              {
+                "type": "Image",
+                "key": "mcr-reviewed-map-2-details"
+              },
+              {
+                "type": "Image",
+                "key": "mcr-reviewed-map-2-landmarks"
+              },
+              {
+                "type": "Image",
+                "key": "mcr-reviewed-map-2-landmarks"
+              },
+              {
+                "type": "Image",
+                "key": "mcr-reviewed-map-2-landmarks"
+              },
+              {
+                "type": "Image",
+                "key": "mcr-reviewed-map-2-landmarks"
+              },
+              {
+                "type": "Image",
+                "key": "mcr-reviewed-map-2-landmarks"
+              },
+              {
+                "type": "Image",
+                "key": "mcr-reviewed-map-2-landmarks"
+              },
+              {
+                "type": "Image",
+                "key": "mcr-reviewed-map-2-details"
+              },
+              {
+                "type": "Image",
+                "key": "mcr-reviewed-map-2-landmarks"
+              },
+              {
+                "type": "Image",
+                "key": "mcr-reviewed-map-2-landmarks"
+              },
+              {
+                "type": "Image",
+                "key": "mcr-reviewed-map-2-details"
+              },
+              {
+                "type": "Image",
+                "key": "mcr-reviewed-map-2-landmarks"
+              },
+              {
+                "type": "Image",
+                "key": "mcr-reviewed-map-2-details"
+              },
+              {
+                "type": "Image",
+                "key": "mcr-reviewed-map-2-details"
+              },
+              {
+                "type": "Image",
+                "key": "mcr-reviewed-map-2-landmarks"
+              },
+              {
+                "type": "Image",
+                "key": "mcr-reviewed-map-2-details"
+              },
+              {
+                "type": "Sprite",
+                "key": "mcr-avatar-12"
+              },
+              {
+                "type": "Sprite",
+                "key": "mcr-avatar-13"
+              },
+              {
+                "type": "Sprite",
+                "key": "mcr-avatar-14"
+              },
+              {
+                "type": "Image",
+                "key": "mcr-reviewed-map-2-details"
+              },
+              {
+                "type": "Image",
+                "key": "mcr-reviewed-map-2-details"
+              },
+              {
+                "type": "Image",
+                "key": "mcr-reviewed-map-2-details"
+              },
+              {
+                "type": "Image",
+                "key": "mcr-reviewed-map-2-landmarks"
+              },
+              {
+                "type": "Sprite",
+                "key": "mcr-avatar-12"
+              },
+              {
+                "type": "Sprite",
+                "key": "mcr-avatar-15"
+              },
+              {
+                "type": "Sprite",
+                "key": "mcr-avatar-16"
+              },
+              {
+                "type": "Image",
+                "key": "mcr-reviewed-map-2-details"
+              },
+              {
+                "type": "Image",
+                "key": "mcr-reviewed-map-2-landmarks"
+              },
+              {
+                "type": "Image",
+                "key": "mcr-reviewed-map-2-landmarks"
+              },
+              {
+                "type": "Image",
+                "key": "mcr-reviewed-map-2-details"
+              },
+              {
+                "type": "Image",
+                "key": "mcr-reviewed-map-2-details"
+              },
+              {
+                "type": "Image",
+                "key": "mcr-reviewed-map-2-landmarks"
+              },
+              {
+                "type": "Image",
+                "key": "mcr-reviewed-map-2-landmarks"
+              },
+              {
+                "type": "Image",
+                "key": "mcr-reviewed-map-2-landmarks"
+              },
+              {
+                "type": "Image",
+                "key": "mcr-reviewed-map-2-landmarks"
+              }
+            ],
+            "games": 1,
+            "peakGames": 1,
+            "totalObservedGames": 1,
+            "sameGame": true,
+            "sprites": [
+              {
+                "x": 140,
+                "y": 520,
+                "visible": true,
+                "frame": 0,
+                "hash": "sha256:cf5a5d0795af35c637ab4fdfb1709c3e137d54e5a1c4fd7dfefa95cf48d1e6b7"
+              },
+              {
+                "x": 212,
+                "y": 520,
+                "visible": true,
+                "frame": 0,
+                "hash": "sha256:e2b474308916cc8b303110fcfc0d4e269ef7dbf48f97ac854682a3fe39f33219"
+              },
+              {
+                "x": 284,
+                "y": 520,
+                "visible": true,
+                "frame": 0,
+                "hash": "sha256:7dfbd854577e0fc9ed69c1b70d91233e821b7ef0de4bb50657c1641196be4c3f"
+              },
+              {
+                "x": 284,
+                "y": 608,
+                "visible": true,
+                "frame": 0,
+                "hash": "sha256:cf5a5d0795af35c637ab4fdfb1709c3e137d54e5a1c4fd7dfefa95cf48d1e6b7"
+              },
+              {
+                "x": 140,
+                "y": 608,
+                "visible": true,
+                "frame": 0,
+                "hash": "sha256:310be05370c18b8f8e525f85cd6fed2449f90140e08530e26f71ce2d769b76e8"
+              },
+              {
+                "x": 212,
+                "y": 608,
+                "visible": true,
+                "frame": 0,
+                "hash": "sha256:29bfdf98a12ef22ec26e0fe7d6ba3160c897b30b5372c731927fb2e780d0d5f7"
+              }
+            ],
+            "canvases": 1
+          },
+          "decode": {
+            "calls": 9,
+            "resolved": 9,
+            "rejected": 0
+          },
+          "network": {
+            "requests": 326,
+            "transferredBytes": 39914718,
+            "cacheHits": 0,
+            "assetRequests": 2
+          },
+          "loaderCalls": "NOT_INSTRUMENTED_DEFAULT_LOADER_NOT_OVERRIDDEN"
+        },
+        {
+          "name": "era-Danger",
+          "state": {
+            "clock": "2026-11-07T07:00:00.000Z",
+            "defaultProductionLoad": true,
+            "compositionOverride": false,
+            "path": "/world",
+            "bootstrapVersion": "1.1.0",
+            "manifestPin": {
+              "manifest_id": "mcr_selected_static_20261103",
+              "manifest_version": 1,
+              "content_hash": "sha256:0627c7d178b22535a561e1270db6d8bf9e2383ba84d03a63962e48e565c59b2b"
+            },
+            "privateQueries": 0,
+            "server": {
+              "revision": 8,
+              "config": {
+                "contract_version": "1.1.0",
+                "kind": "avatar_config",
+                "manifest_id": "mcr_selected_static_20261103",
+                "manifest_version": 1,
+                "preset_id": "photo01_front_06",
+                "representation": "whole_character"
+              }
+            },
+            "requests": [
+              {
+                "path": "/api/auth/capabilities",
+                "method": "GET",
+                "body": null
+              },
+              {
+                "path": "/api/auth/login",
+                "method": "POST",
+                "body": null
+              },
+              {
+                "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/bootstrap",
+                "method": "GET",
+                "body": null
+              },
+              {
+                "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/rooms",
+                "method": "GET",
+                "body": null
+              },
+              {
+                "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/world-tickets",
+                "method": "POST",
+                "body": null
+              },
+              {
+                "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/places",
+                "method": "GET",
+                "body": null
+              },
+              {
+                "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/me",
+                "method": "GET",
+                "body": null
+              },
+              {
+                "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/me",
+                "method": "GET",
+                "body": null
+              },
+              {
+                "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/me/avatar",
+                "method": "PUT",
+                "body": {
+                  "expected_revision": 7,
+                  "config": {
+                    "contract_version": "1.1.0",
+                    "kind": "avatar_config",
+                    "manifest_id": "mcr_selected_static_20261103",
+                    "manifest_version": 1,
+                    "preset_id": "photo01_front_06",
+                    "representation": "whole_character"
+                  }
+                }
+              },
+              {
+                "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/me",
+                "method": "GET",
+                "body": null
+              },
+              {
+                "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/world-tickets",
+                "method": "POST",
+                "body": null
+              },
+              {
+                "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/me",
+                "method": "GET",
+                "body": null
+              },
+              {
+                "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/world-tickets",
+                "method": "POST",
+                "body": null
+              }
+            ],
+            "frames": [
+              {
+                "type": "snapshot",
+                "revision": 7
+              },
+              {
+                "type": "snapshot",
+                "revision": 7
+              },
+              {
+                "type": "delta",
+                "revision": 8
+              },
+              {
+                "type": "snapshot",
+                "revision": 8
+              }
+            ],
+            "deltaCount": 1,
+            "published": true,
+            "phase": "live",
+            "entities": [
+              {
+                "self": true,
+                "userId": "00000000-0000-4000-8000-000000000101",
+                "avatar": {
+                  "revision": 8,
+                  "config": {
+                    "contract_version": "1.1.0",
+                    "kind": "avatar_config",
+                    "manifest_id": "mcr_selected_static_20261103",
+                    "manifest_version": 1,
+                    "preset_id": "photo01_front_06",
+                    "representation": "whole_character"
+                  }
+                }
+              },
+              {
+                "self": false,
+                "userId": "00000000-0000-4000-8000-000000000901",
+                "avatar": {
+                  "revision": 1,
+                  "config": {
+                    "contract_version": "1.1.0",
+                    "kind": "avatar_config",
+                    "manifest_id": "mcr_selected_static_20261103",
+                    "manifest_version": 1,
+                    "representation": "whole_character",
+                    "preset_id": "photo01_front_02"
+                  }
+                }
+              },
+              {
+                "self": false,
+                "userId": "00000000-0000-4000-8000-000000000902",
+                "avatar": {
+                  "revision": 1,
+                  "config": {
+                    "contract_version": "1.1.0",
+                    "kind": "avatar_config",
+                    "manifest_id": "mcr_selected_static_20261103",
+                    "manifest_version": 1,
+                    "representation": "whole_character",
+                    "preset_id": "photo01_front_03"
+                  }
+                }
+              },
+              {
+                "self": false,
+                "userId": "00000000-0000-4000-8000-000000000903",
+                "avatar": {
+                  "revision": 1,
+                  "config": {
+                    "contract_version": "1.1.0",
+                    "kind": "avatar_config",
+                    "manifest_id": "mcr_selected_static_20261103",
+                    "manifest_version": 1,
+                    "representation": "whole_character",
+                    "preset_id": "photo01_front_04"
+                  }
+                }
+              },
+              {
+                "self": false,
+                "userId": "00000000-0000-4000-8000-000000000904",
+                "avatar": {
+                  "revision": 1,
+                  "config": {
+                    "contract_version": "1.1.0",
+                    "kind": "avatar_config",
+                    "manifest_id": "mcr_selected_static_20261103",
+                    "manifest_version": 1,
+                    "representation": "whole_character",
+                    "preset_id": "photo01_front_05"
+                  }
+                }
+              },
+              {
+                "self": false,
+                "userId": "00000000-0000-4000-8000-000000000905",
+                "avatar": {
+                  "revision": 1,
+                  "config": {
+                    "contract_version": "1.1.0",
+                    "kind": "avatar_config",
+                    "manifest_id": "mcr_selected_static_20261103",
+                    "manifest_version": 1,
+                    "representation": "whole_character",
+                    "preset_id": "photo01_front_06"
+                  }
+                }
+              }
+            ],
+            "sameCamera": true,
+            "camera": {
+              "following": true,
+              "camera": {
+                "zoom": 1,
+                "scrollX": 0,
+                "scrollY": 235,
+                "width": 378,
+                "height": 570
+              }
+            },
+            "geometry": "sha256:463a46ba69bcb48fc691cc33c76e53a43328473edf8b8b61c235d96043dc9e27",
+            "theme": {
+              "selected": "DANGER",
+              "pending": null,
+              "phase": "ready",
+              "saved": true,
+              "message": "DANGER selected. Saved on this device for this account and event."
+            },
+            "currentRuntime": true,
+            "sameRuntime": true,
+            "runtime": {
+              "disposed": false,
+              "leases": 6,
+              "pending": 0,
+              "cleanupFailures": 0,
+              "decodedAtlases": 1
+            },
+            "retainedCurrent": true,
+            "sockets": 3,
+            "socketPeak": 1,
+            "activeSockets": 1,
+            "canvasPeak": 1,
+            "canvases": 1
+          },
+          "world": {
+            "sceneKeys": [
+              "mcr-map"
+            ],
+            "objects": [
+              {
+                "type": "Image",
+                "key": "mcr-reviewed-map-3-ground"
+              },
+              {
+                "type": "Image",
+                "key": "mcr-reviewed-map-3-details"
+              },
+              {
+                "type": "Image",
+                "key": "mcr-reviewed-map-3-landmarks"
+              },
+              {
+                "type": "Image",
+                "key": "mcr-reviewed-map-3-landmarks"
+              },
+              {
+                "type": "Image",
+                "key": "mcr-reviewed-map-3-landmarks"
+              },
+              {
+                "type": "Image",
+                "key": "mcr-reviewed-map-3-landmarks"
+              },
+              {
+                "type": "Image",
+                "key": "mcr-reviewed-map-3-landmarks"
+              },
+              {
+                "type": "Image",
+                "key": "mcr-reviewed-map-3-landmarks"
+              },
+              {
+                "type": "Image",
+                "key": "mcr-reviewed-map-3-details"
+              },
+              {
+                "type": "Image",
+                "key": "mcr-reviewed-map-3-landmarks"
+              },
+              {
+                "type": "Image",
+                "key": "mcr-reviewed-map-3-landmarks"
+              },
+              {
+                "type": "Image",
+                "key": "mcr-reviewed-map-3-details"
+              },
+              {
+                "type": "Image",
+                "key": "mcr-reviewed-map-3-landmarks"
+              },
+              {
+                "type": "Image",
+                "key": "mcr-reviewed-map-3-details"
+              },
+              {
+                "type": "Image",
+                "key": "mcr-reviewed-map-3-details"
+              },
+              {
+                "type": "Image",
+                "key": "mcr-reviewed-map-3-landmarks"
+              },
+              {
+                "type": "Image",
+                "key": "mcr-reviewed-map-3-details"
+              },
+              {
+                "type": "Sprite",
+                "key": "mcr-avatar-12"
+              },
+              {
+                "type": "Sprite",
+                "key": "mcr-avatar-13"
+              },
+              {
+                "type": "Sprite",
+                "key": "mcr-avatar-14"
+              },
+              {
+                "type": "Image",
+                "key": "mcr-reviewed-map-3-details"
+              },
+              {
+                "type": "Image",
+                "key": "mcr-reviewed-map-3-details"
+              },
+              {
+                "type": "Image",
+                "key": "mcr-reviewed-map-3-details"
+              },
+              {
+                "type": "Image",
+                "key": "mcr-reviewed-map-3-landmarks"
+              },
+              {
+                "type": "Sprite",
+                "key": "mcr-avatar-12"
+              },
+              {
+                "type": "Sprite",
+                "key": "mcr-avatar-15"
+              },
+              {
+                "type": "Sprite",
+                "key": "mcr-avatar-16"
+              },
+              {
+                "type": "Image",
+                "key": "mcr-reviewed-map-3-details"
+              },
+              {
+                "type": "Image",
+                "key": "mcr-reviewed-map-3-landmarks"
+              },
+              {
+                "type": "Image",
+                "key": "mcr-reviewed-map-3-landmarks"
+              },
+              {
+                "type": "Image",
+                "key": "mcr-reviewed-map-3-details"
+              },
+              {
+                "type": "Image",
+                "key": "mcr-reviewed-map-3-details"
+              },
+              {
+                "type": "Image",
+                "key": "mcr-reviewed-map-3-landmarks"
+              },
+              {
+                "type": "Image",
+                "key": "mcr-reviewed-map-3-landmarks"
+              },
+              {
+                "type": "Image",
+                "key": "mcr-reviewed-map-3-landmarks"
+              },
+              {
+                "type": "Image",
+                "key": "mcr-reviewed-map-3-landmarks"
+              }
+            ],
+            "games": 1,
+            "peakGames": 1,
+            "totalObservedGames": 1,
+            "sameGame": true,
+            "sprites": [
+              {
+                "x": 140,
+                "y": 520,
+                "visible": true,
+                "frame": 0,
+                "hash": "sha256:cf5a5d0795af35c637ab4fdfb1709c3e137d54e5a1c4fd7dfefa95cf48d1e6b7"
+              },
+              {
+                "x": 212,
+                "y": 520,
+                "visible": true,
+                "frame": 0,
+                "hash": "sha256:e2b474308916cc8b303110fcfc0d4e269ef7dbf48f97ac854682a3fe39f33219"
+              },
+              {
+                "x": 284,
+                "y": 520,
+                "visible": true,
+                "frame": 0,
+                "hash": "sha256:7dfbd854577e0fc9ed69c1b70d91233e821b7ef0de4bb50657c1641196be4c3f"
+              },
+              {
+                "x": 284,
+                "y": 608,
+                "visible": true,
+                "frame": 0,
+                "hash": "sha256:cf5a5d0795af35c637ab4fdfb1709c3e137d54e5a1c4fd7dfefa95cf48d1e6b7"
+              },
+              {
+                "x": 140,
+                "y": 608,
+                "visible": true,
+                "frame": 0,
+                "hash": "sha256:310be05370c18b8f8e525f85cd6fed2449f90140e08530e26f71ce2d769b76e8"
+              },
+              {
+                "x": 212,
+                "y": 608,
+                "visible": true,
+                "frame": 0,
+                "hash": "sha256:29bfdf98a12ef22ec26e0fe7d6ba3160c897b30b5372c731927fb2e780d0d5f7"
+              }
+            ],
+            "canvases": 1
+          },
+          "decode": {
+            "calls": 13,
+            "resolved": 13,
+            "rejected": 0
+          },
+          "network": {
+            "requests": 330,
+            "transferredBytes": 40467802,
+            "cacheHits": 0,
+            "assetRequests": 2
+          },
+          "loaderCalls": "NOT_INSTRUMENTED_DEFAULT_LOADER_NOT_OVERRIDDEN"
+        },
+        {
+          "name": "era-Revenge",
+          "state": {
+            "clock": "2026-11-07T07:00:00.000Z",
+            "defaultProductionLoad": true,
+            "compositionOverride": false,
+            "path": "/world",
+            "bootstrapVersion": "1.1.0",
+            "manifestPin": {
+              "manifest_id": "mcr_selected_static_20261103",
+              "manifest_version": 1,
+              "content_hash": "sha256:0627c7d178b22535a561e1270db6d8bf9e2383ba84d03a63962e48e565c59b2b"
+            },
+            "privateQueries": 0,
+            "server": {
+              "revision": 8,
+              "config": {
+                "contract_version": "1.1.0",
+                "kind": "avatar_config",
+                "manifest_id": "mcr_selected_static_20261103",
+                "manifest_version": 1,
+                "preset_id": "photo01_front_06",
+                "representation": "whole_character"
+              }
+            },
+            "requests": [
+              {
+                "path": "/api/auth/capabilities",
+                "method": "GET",
+                "body": null
+              },
+              {
+                "path": "/api/auth/login",
+                "method": "POST",
+                "body": null
+              },
+              {
+                "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/bootstrap",
+                "method": "GET",
+                "body": null
+              },
+              {
+                "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/rooms",
+                "method": "GET",
+                "body": null
+              },
+              {
+                "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/world-tickets",
+                "method": "POST",
+                "body": null
+              },
+              {
+                "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/places",
+                "method": "GET",
+                "body": null
+              },
+              {
+                "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/me",
+                "method": "GET",
+                "body": null
+              },
+              {
+                "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/me",
+                "method": "GET",
+                "body": null
+              },
+              {
+                "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/me/avatar",
+                "method": "PUT",
+                "body": {
+                  "expected_revision": 7,
+                  "config": {
+                    "contract_version": "1.1.0",
+                    "kind": "avatar_config",
+                    "manifest_id": "mcr_selected_static_20261103",
+                    "manifest_version": 1,
+                    "preset_id": "photo01_front_06",
+                    "representation": "whole_character"
+                  }
+                }
+              },
+              {
+                "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/me",
+                "method": "GET",
+                "body": null
+              },
+              {
+                "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/world-tickets",
+                "method": "POST",
+                "body": null
+              },
+              {
+                "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/me",
+                "method": "GET",
+                "body": null
+              },
+              {
+                "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/world-tickets",
+                "method": "POST",
+                "body": null
+              }
+            ],
+            "frames": [
+              {
+                "type": "snapshot",
+                "revision": 7
+              },
+              {
+                "type": "snapshot",
+                "revision": 7
+              },
+              {
+                "type": "delta",
+                "revision": 8
+              },
+              {
+                "type": "snapshot",
+                "revision": 8
+              }
+            ],
+            "deltaCount": 1,
+            "published": true,
+            "phase": "live",
+            "entities": [
+              {
+                "self": true,
+                "userId": "00000000-0000-4000-8000-000000000101",
+                "avatar": {
+                  "revision": 8,
+                  "config": {
+                    "contract_version": "1.1.0",
+                    "kind": "avatar_config",
+                    "manifest_id": "mcr_selected_static_20261103",
+                    "manifest_version": 1,
+                    "preset_id": "photo01_front_06",
+                    "representation": "whole_character"
+                  }
+                }
+              },
+              {
+                "self": false,
+                "userId": "00000000-0000-4000-8000-000000000901",
+                "avatar": {
+                  "revision": 1,
+                  "config": {
+                    "contract_version": "1.1.0",
+                    "kind": "avatar_config",
+                    "manifest_id": "mcr_selected_static_20261103",
+                    "manifest_version": 1,
+                    "representation": "whole_character",
+                    "preset_id": "photo01_front_02"
+                  }
+                }
+              },
+              {
+                "self": false,
+                "userId": "00000000-0000-4000-8000-000000000902",
+                "avatar": {
+                  "revision": 1,
+                  "config": {
+                    "contract_version": "1.1.0",
+                    "kind": "avatar_config",
+                    "manifest_id": "mcr_selected_static_20261103",
+                    "manifest_version": 1,
+                    "representation": "whole_character",
+                    "preset_id": "photo01_front_03"
+                  }
+                }
+              },
+              {
+                "self": false,
+                "userId": "00000000-0000-4000-8000-000000000903",
+                "avatar": {
+                  "revision": 1,
+                  "config": {
+                    "contract_version": "1.1.0",
+                    "kind": "avatar_config",
+                    "manifest_id": "mcr_selected_static_20261103",
+                    "manifest_version": 1,
+                    "representation": "whole_character",
+                    "preset_id": "photo01_front_04"
+                  }
+                }
+              },
+              {
+                "self": false,
+                "userId": "00000000-0000-4000-8000-000000000904",
+                "avatar": {
+                  "revision": 1,
+                  "config": {
+                    "contract_version": "1.1.0",
+                    "kind": "avatar_config",
+                    "manifest_id": "mcr_selected_static_20261103",
+                    "manifest_version": 1,
+                    "representation": "whole_character",
+                    "preset_id": "photo01_front_05"
+                  }
+                }
+              },
+              {
+                "self": false,
+                "userId": "00000000-0000-4000-8000-000000000905",
+                "avatar": {
+                  "revision": 1,
+                  "config": {
+                    "contract_version": "1.1.0",
+                    "kind": "avatar_config",
+                    "manifest_id": "mcr_selected_static_20261103",
+                    "manifest_version": 1,
+                    "representation": "whole_character",
+                    "preset_id": "photo01_front_06"
+                  }
+                }
+              }
+            ],
+            "sameCamera": true,
+            "camera": {
+              "following": true,
+              "camera": {
+                "zoom": 1,
+                "scrollX": 0,
+                "scrollY": 235,
+                "width": 378,
+                "height": 570
+              }
+            },
+            "geometry": "sha256:463a46ba69bcb48fc691cc33c76e53a43328473edf8b8b61c235d96043dc9e27",
+            "theme": {
+              "selected": "REVENGE",
+              "pending": null,
+              "phase": "ready",
+              "saved": true,
+              "message": "REVENGE selected. Saved on this device for this account and event."
+            },
+            "currentRuntime": true,
+            "sameRuntime": true,
+            "runtime": {
+              "disposed": false,
+              "leases": 6,
+              "pending": 0,
+              "cleanupFailures": 0,
+              "decodedAtlases": 1
+            },
+            "retainedCurrent": true,
+            "sockets": 3,
+            "socketPeak": 1,
+            "activeSockets": 1,
+            "canvasPeak": 1,
+            "canvases": 1
+          },
+          "world": {
+            "sceneKeys": [
+              "mcr-map"
+            ],
+            "objects": [
+              {
+                "type": "Image",
+                "key": "mcr-reviewed-map-4-ground"
+              },
+              {
+                "type": "Image",
+                "key": "mcr-reviewed-map-4-details"
+              },
+              {
+                "type": "Image",
+                "key": "mcr-reviewed-map-4-landmarks"
+              },
+              {
+                "type": "Image",
+                "key": "mcr-reviewed-map-4-landmarks"
+              },
+              {
+                "type": "Image",
+                "key": "mcr-reviewed-map-4-landmarks"
+              },
+              {
+                "type": "Image",
+                "key": "mcr-reviewed-map-4-landmarks"
+              },
+              {
+                "type": "Image",
+                "key": "mcr-reviewed-map-4-landmarks"
+              },
+              {
+                "type": "Image",
+                "key": "mcr-reviewed-map-4-landmarks"
+              },
+              {
+                "type": "Image",
+                "key": "mcr-reviewed-map-4-details"
+              },
+              {
+                "type": "Image",
+                "key": "mcr-reviewed-map-4-landmarks"
+              },
+              {
+                "type": "Image",
+                "key": "mcr-reviewed-map-4-landmarks"
+              },
+              {
+                "type": "Image",
+                "key": "mcr-reviewed-map-4-details"
+              },
+              {
+                "type": "Image",
+                "key": "mcr-reviewed-map-4-landmarks"
+              },
+              {
+                "type": "Image",
+                "key": "mcr-reviewed-map-4-details"
+              },
+              {
+                "type": "Image",
+                "key": "mcr-reviewed-map-4-details"
+              },
+              {
+                "type": "Image",
+                "key": "mcr-reviewed-map-4-landmarks"
+              },
+              {
+                "type": "Image",
+                "key": "mcr-reviewed-map-4-details"
+              },
+              {
+                "type": "Sprite",
+                "key": "mcr-avatar-12"
+              },
+              {
+                "type": "Sprite",
+                "key": "mcr-avatar-13"
+              },
+              {
+                "type": "Sprite",
+                "key": "mcr-avatar-14"
+              },
+              {
+                "type": "Image",
+                "key": "mcr-reviewed-map-4-details"
+              },
+              {
+                "type": "Image",
+                "key": "mcr-reviewed-map-4-details"
+              },
+              {
+                "type": "Image",
+                "key": "mcr-reviewed-map-4-details"
+              },
+              {
+                "type": "Image",
+                "key": "mcr-reviewed-map-4-landmarks"
+              },
+              {
+                "type": "Sprite",
+                "key": "mcr-avatar-12"
+              },
+              {
+                "type": "Sprite",
+                "key": "mcr-avatar-15"
+              },
+              {
+                "type": "Sprite",
+                "key": "mcr-avatar-16"
+              },
+              {
+                "type": "Image",
+                "key": "mcr-reviewed-map-4-details"
+              },
+              {
+                "type": "Image",
+                "key": "mcr-reviewed-map-4-landmarks"
+              },
+              {
+                "type": "Image",
+                "key": "mcr-reviewed-map-4-landmarks"
+              },
+              {
+                "type": "Image",
+                "key": "mcr-reviewed-map-4-details"
+              },
+              {
+                "type": "Image",
+                "key": "mcr-reviewed-map-4-details"
+              },
+              {
+                "type": "Image",
+                "key": "mcr-reviewed-map-4-landmarks"
+              },
+              {
+                "type": "Image",
+                "key": "mcr-reviewed-map-4-landmarks"
+              },
+              {
+                "type": "Image",
+                "key": "mcr-reviewed-map-4-landmarks"
+              },
+              {
+                "type": "Image",
+                "key": "mcr-reviewed-map-4-landmarks"
+              }
+            ],
+            "games": 1,
+            "peakGames": 1,
+            "totalObservedGames": 1,
+            "sameGame": true,
+            "sprites": [
+              {
+                "x": 140,
+                "y": 520,
+                "visible": true,
+                "frame": 0,
+                "hash": "sha256:cf5a5d0795af35c637ab4fdfb1709c3e137d54e5a1c4fd7dfefa95cf48d1e6b7"
+              },
+              {
+                "x": 212,
+                "y": 520,
+                "visible": true,
+                "frame": 0,
+                "hash": "sha256:e2b474308916cc8b303110fcfc0d4e269ef7dbf48f97ac854682a3fe39f33219"
+              },
+              {
+                "x": 284,
+                "y": 520,
+                "visible": true,
+                "frame": 0,
+                "hash": "sha256:7dfbd854577e0fc9ed69c1b70d91233e821b7ef0de4bb50657c1641196be4c3f"
+              },
+              {
+                "x": 284,
+                "y": 608,
+                "visible": true,
+                "frame": 0,
+                "hash": "sha256:cf5a5d0795af35c637ab4fdfb1709c3e137d54e5a1c4fd7dfefa95cf48d1e6b7"
+              },
+              {
+                "x": 140,
+                "y": 608,
+                "visible": true,
+                "frame": 0,
+                "hash": "sha256:310be05370c18b8f8e525f85cd6fed2449f90140e08530e26f71ce2d769b76e8"
+              },
+              {
+                "x": 212,
+                "y": 608,
+                "visible": true,
+                "frame": 0,
+                "hash": "sha256:29bfdf98a12ef22ec26e0fe7d6ba3160c897b30b5372c731927fb2e780d0d5f7"
+              }
+            ],
+            "canvases": 1
+          },
+          "decode": {
+            "calls": 17,
+            "resolved": 17,
+            "rejected": 0
+          },
+          "network": {
+            "requests": 330,
+            "transferredBytes": 40467802,
+            "cacheHits": 0,
+            "assetRequests": 2
+          },
+          "loaderCalls": "NOT_INSTRUMENTED_DEFAULT_LOADER_NOT_OVERRIDDEN"
+        }
+      ],
+      "errors": [],
+      "approvedPixels": [
+        {
+          "preset": "photo01_front_01",
+          "hash": "sha256:a4a6b1ceac075574b988f94f45fe839efc3e14692db73f8fdcfd8131ba3681d5"
+        },
+        {
+          "preset": "photo01_front_02",
+          "hash": "sha256:e2b474308916cc8b303110fcfc0d4e269ef7dbf48f97ac854682a3fe39f33219"
+        },
+        {
+          "preset": "photo01_front_03",
+          "hash": "sha256:7dfbd854577e0fc9ed69c1b70d91233e821b7ef0de4bb50657c1641196be4c3f"
+        },
+        {
+          "preset": "photo01_front_04",
+          "hash": "sha256:310be05370c18b8f8e525f85cd6fed2449f90140e08530e26f71ce2d769b76e8"
+        },
+        {
+          "preset": "photo01_front_05",
+          "hash": "sha256:29bfdf98a12ef22ec26e0fe7d6ba3160c897b30b5372c731927fb2e780d0d5f7"
+        },
+        {
+          "preset": "photo01_front_06",
+          "hash": "sha256:cf5a5d0795af35c637ab4fdfb1709c3e137d54e5a1c4fd7dfefa95cf48d1e6b7"
+        }
+      ],
+      "prePrivacy": {
+        "clock": "2026-11-07T07:00:00.000Z",
+        "defaultProductionLoad": true,
+        "compositionOverride": false,
+        "path": "/world",
+        "bootstrapVersion": "1.1.0",
+        "manifestPin": {
+          "manifest_id": "mcr_selected_static_20261103",
+          "manifest_version": 1,
+          "content_hash": "sha256:0627c7d178b22535a561e1270db6d8bf9e2383ba84d03a63962e48e565c59b2b"
+        },
+        "privateQueries": 0,
+        "server": {
+          "revision": 8,
+          "config": {
+            "contract_version": "1.1.0",
+            "kind": "avatar_config",
+            "manifest_id": "mcr_selected_static_20261103",
+            "manifest_version": 1,
+            "preset_id": "photo01_front_06",
+            "representation": "whole_character"
+          }
+        },
+        "requests": [
+          {
+            "path": "/api/auth/capabilities",
+            "method": "GET",
+            "body": null
+          },
+          {
+            "path": "/api/auth/login",
+            "method": "POST",
+            "body": null
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/bootstrap",
+            "method": "GET",
+            "body": null
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/rooms",
+            "method": "GET",
+            "body": null
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/world-tickets",
+            "method": "POST",
+            "body": null
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/places",
+            "method": "GET",
+            "body": null
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/me",
+            "method": "GET",
+            "body": null
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/me",
+            "method": "GET",
+            "body": null
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/me/avatar",
+            "method": "PUT",
+            "body": {
+              "expected_revision": 7,
+              "config": {
+                "contract_version": "1.1.0",
+                "kind": "avatar_config",
+                "manifest_id": "mcr_selected_static_20261103",
+                "manifest_version": 1,
+                "preset_id": "photo01_front_06",
+                "representation": "whole_character"
+              }
+            }
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/me",
+            "method": "GET",
+            "body": null
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/world-tickets",
+            "method": "POST",
+            "body": null
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/me",
+            "method": "GET",
+            "body": null
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/world-tickets",
+            "method": "POST",
+            "body": null
+          }
+        ],
+        "frames": [
+          {
+            "type": "snapshot",
+            "revision": 7
+          },
+          {
+            "type": "snapshot",
+            "revision": 7
+          },
+          {
+            "type": "delta",
+            "revision": 8
+          },
+          {
+            "type": "snapshot",
+            "revision": 8
+          }
+        ],
+        "deltaCount": 1,
+        "published": true,
+        "phase": "live",
+        "entities": [
+          {
+            "self": true,
+            "userId": "00000000-0000-4000-8000-000000000101",
+            "avatar": {
+              "revision": 8,
+              "config": {
+                "contract_version": "1.1.0",
+                "kind": "avatar_config",
+                "manifest_id": "mcr_selected_static_20261103",
+                "manifest_version": 1,
+                "preset_id": "photo01_front_06",
+                "representation": "whole_character"
+              }
+            }
+          },
+          {
+            "self": false,
+            "userId": "00000000-0000-4000-8000-000000000901",
+            "avatar": {
+              "revision": 1,
+              "config": {
+                "contract_version": "1.1.0",
+                "kind": "avatar_config",
+                "manifest_id": "mcr_selected_static_20261103",
+                "manifest_version": 1,
+                "representation": "whole_character",
+                "preset_id": "photo01_front_02"
+              }
+            }
+          },
+          {
+            "self": false,
+            "userId": "00000000-0000-4000-8000-000000000902",
+            "avatar": {
+              "revision": 1,
+              "config": {
+                "contract_version": "1.1.0",
+                "kind": "avatar_config",
+                "manifest_id": "mcr_selected_static_20261103",
+                "manifest_version": 1,
+                "representation": "whole_character",
+                "preset_id": "photo01_front_03"
+              }
+            }
+          },
+          {
+            "self": false,
+            "userId": "00000000-0000-4000-8000-000000000903",
+            "avatar": {
+              "revision": 1,
+              "config": {
+                "contract_version": "1.1.0",
+                "kind": "avatar_config",
+                "manifest_id": "mcr_selected_static_20261103",
+                "manifest_version": 1,
+                "representation": "whole_character",
+                "preset_id": "photo01_front_04"
+              }
+            }
+          },
+          {
+            "self": false,
+            "userId": "00000000-0000-4000-8000-000000000904",
+            "avatar": {
+              "revision": 1,
+              "config": {
+                "contract_version": "1.1.0",
+                "kind": "avatar_config",
+                "manifest_id": "mcr_selected_static_20261103",
+                "manifest_version": 1,
+                "representation": "whole_character",
+                "preset_id": "photo01_front_05"
+              }
+            }
+          },
+          {
+            "self": false,
+            "userId": "00000000-0000-4000-8000-000000000905",
+            "avatar": {
+              "revision": 1,
+              "config": {
+                "contract_version": "1.1.0",
+                "kind": "avatar_config",
+                "manifest_id": "mcr_selected_static_20261103",
+                "manifest_version": 1,
+                "representation": "whole_character",
+                "preset_id": "photo01_front_06"
+              }
+            }
+          }
+        ],
+        "sameCamera": true,
+        "camera": {
+          "following": true,
+          "camera": {
+            "zoom": 1,
+            "scrollX": 0,
+            "scrollY": 235,
+            "width": 378,
+            "height": 570
+          }
+        },
+        "geometry": "sha256:463a46ba69bcb48fc691cc33c76e53a43328473edf8b8b61c235d96043dc9e27",
+        "theme": {
+          "selected": "REVENGE",
+          "pending": null,
+          "phase": "ready",
+          "saved": true,
+          "message": "REVENGE selected. Saved on this device for this account and event."
+        },
+        "currentRuntime": true,
+        "sameRuntime": true,
+        "runtime": {
+          "disposed": false,
+          "leases": 6,
+          "pending": 0,
+          "cleanupFailures": 0,
+          "decodedAtlases": 1
+        },
+        "retainedCurrent": true,
+        "sockets": 3,
+        "socketPeak": 1,
+        "activeSockets": 1,
+        "canvasPeak": 1,
+        "canvases": 1
+      },
+      "privacy": {
+        "clock": "2026-11-07T07:00:00.000Z",
+        "defaultProductionLoad": true,
+        "compositionOverride": false,
+        "path": "/world",
+        "bootstrapVersion": "1.1.0",
+        "manifestPin": {
+          "manifest_id": "mcr_selected_static_20261103",
+          "manifest_version": 1,
+          "content_hash": "sha256:0627c7d178b22535a561e1270db6d8bf9e2383ba84d03a63962e48e565c59b2b"
+        },
+        "privateQueries": 0,
+        "server": {
+          "revision": 8,
+          "config": {
+            "contract_version": "1.1.0",
+            "kind": "avatar_config",
+            "manifest_id": "mcr_selected_static_20261103",
+            "manifest_version": 1,
+            "preset_id": "photo01_front_06",
+            "representation": "whole_character"
+          }
+        },
+        "requests": [
+          {
+            "path": "/api/auth/capabilities",
+            "method": "GET",
+            "body": null
+          },
+          {
+            "path": "/api/auth/login",
+            "method": "POST",
+            "body": null
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/bootstrap",
+            "method": "GET",
+            "body": null
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/rooms",
+            "method": "GET",
+            "body": null
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/world-tickets",
+            "method": "POST",
+            "body": null
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/places",
+            "method": "GET",
+            "body": null
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/me",
+            "method": "GET",
+            "body": null
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/me",
+            "method": "GET",
+            "body": null
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/me/avatar",
+            "method": "PUT",
+            "body": {
+              "expected_revision": 7,
+              "config": {
+                "contract_version": "1.1.0",
+                "kind": "avatar_config",
+                "manifest_id": "mcr_selected_static_20261103",
+                "manifest_version": 1,
+                "preset_id": "photo01_front_06",
+                "representation": "whole_character"
+              }
+            }
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/me",
+            "method": "GET",
+            "body": null
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/world-tickets",
+            "method": "POST",
+            "body": null
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/me",
+            "method": "GET",
+            "body": null
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/world-tickets",
+            "method": "POST",
+            "body": null
+          }
+        ],
+        "frames": [
+          {
+            "type": "snapshot",
+            "revision": 7
+          },
+          {
+            "type": "snapshot",
+            "revision": 7
+          },
+          {
+            "type": "delta",
+            "revision": 8
+          },
+          {
+            "type": "snapshot",
+            "revision": 8
+          }
+        ],
+        "deltaCount": 1,
+        "published": false,
+        "sameCamera": null,
+        "currentRuntime": false,
+        "sameRuntime": null,
+        "runtime": {
+          "disposed": true,
+          "leases": 0,
+          "pending": 0,
+          "cleanupFailures": 0,
+          "decodedAtlases": 0
+        },
+        "retainedCurrent": false,
+        "sockets": 3,
+        "socketPeak": 1,
+        "activeSockets": 0,
+        "canvasPeak": 1,
+        "canvases": 0
+      },
+      "actualNetworkAssetBodies": [
+        {
+          "path": "/world/avatars/derived-v1/static-release.json",
+          "sha256": "cc53c6852742e9cbb9858a2d0961411e1a9e131d1e30c0f2b73b265e03f91677"
+        },
+        {
+          "path": "/world/avatars/derived-v1/photo01-front-idle-64-e124c88815b22220.png",
+          "sha256": "e124c88815b22220df2f2dc59e2f26b3ceb845e57b77674fd8e55383116d7efe"
+        }
+      ],
+      "cleanup": {
+        "clock": "2026-11-07T07:00:00.000Z",
+        "defaultProductionLoad": true,
+        "compositionOverride": false,
+        "path": "/world",
+        "bootstrapVersion": "1.1.0",
+        "manifestPin": {
+          "manifest_id": "mcr_selected_static_20261103",
+          "manifest_version": 1,
+          "content_hash": "sha256:0627c7d178b22535a561e1270db6d8bf9e2383ba84d03a63962e48e565c59b2b"
+        },
+        "privateQueries": 0,
+        "server": {
+          "revision": 8,
+          "config": {
+            "contract_version": "1.1.0",
+            "kind": "avatar_config",
+            "manifest_id": "mcr_selected_static_20261103",
+            "manifest_version": 1,
+            "preset_id": "photo01_front_06",
+            "representation": "whole_character"
+          }
+        },
+        "requests": [
+          {
+            "path": "/api/auth/capabilities",
+            "method": "GET",
+            "body": null
+          },
+          {
+            "path": "/api/auth/login",
+            "method": "POST",
+            "body": null
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/bootstrap",
+            "method": "GET",
+            "body": null
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/rooms",
+            "method": "GET",
+            "body": null
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/world-tickets",
+            "method": "POST",
+            "body": null
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/places",
+            "method": "GET",
+            "body": null
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/me",
+            "method": "GET",
+            "body": null
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/me",
+            "method": "GET",
+            "body": null
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/me/avatar",
+            "method": "PUT",
+            "body": {
+              "expected_revision": 7,
+              "config": {
+                "contract_version": "1.1.0",
+                "kind": "avatar_config",
+                "manifest_id": "mcr_selected_static_20261103",
+                "manifest_version": 1,
+                "preset_id": "photo01_front_06",
+                "representation": "whole_character"
+              }
+            }
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/me",
+            "method": "GET",
+            "body": null
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/world-tickets",
+            "method": "POST",
+            "body": null
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/me",
+            "method": "GET",
+            "body": null
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/world-tickets",
+            "method": "POST",
+            "body": null
+          }
+        ],
+        "frames": [
+          {
+            "type": "snapshot",
+            "revision": 7
+          },
+          {
+            "type": "snapshot",
+            "revision": 7
+          },
+          {
+            "type": "delta",
+            "revision": 8
+          },
+          {
+            "type": "snapshot",
+            "revision": 8
+          }
+        ],
+        "deltaCount": 1,
+        "published": false,
+        "sameCamera": null,
+        "currentRuntime": false,
+        "sameRuntime": null,
+        "runtime": {
+          "disposed": true,
+          "leases": 0,
+          "pending": 0,
+          "cleanupFailures": 0,
+          "decodedAtlases": 0
+        },
+        "retainedCurrent": false,
+        "sockets": 3,
+        "socketPeak": 1,
+        "activeSockets": 0,
+        "canvasPeak": 1,
+        "canvases": 0
+      }
+    }
+  ],
+  "browser": "156.0.8078.80"
+}

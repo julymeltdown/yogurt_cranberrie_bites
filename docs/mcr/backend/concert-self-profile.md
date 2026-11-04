@@ -219,3 +219,20 @@ controller SHA-256 `9ce31ae9c2fcbad5298013af9a50a5a1243c2b820c2b8715d78da13c8195
 owner metadata SHA-256 `dadd2b3ddab4c19e2eb165def6c2e8e8d9cc079ee3c8fa14b7bdc3aa9beb4b8b`.
 No mutable Cargo target was used for this RPC run. The full assigned goal remains
 active through actual Prepare/Concert decision/reconcile validation and delivery.
+
+## Published SELF contract prerequisite
+
+The dedicated `backend/proto/profile/v1/concert_self_profile.proto` is published
+independently to unblock actual Concert client generation. The exact contract
+compiled in Profile source `5c921e28872ce3d24f7d930f63fdce9572b66ab3`, with the
+production main and test target exiting 0 under Rust 1.88 locked/offline.
+Its guarded Read endpoint also passed the actual Auth/Friend/Profile production
+mTLS read/Track/native-abort probe. Receipt:
+`/private/tmp/mcr-profile-self-906e69ab-20261104/rpc-report-2.json`.
+The protobuf package is `profile.self.v1`; Prost generates `profile.self_.v1.rs`
+because `self` is a Rust keyword.
+
+This two-path prerequisite contains the IDL and this report only. It does not
+enable the SELF runtime, publish the continuing implementation, or certify
+Prepare/Concert decision/reconcile and HTTP delivery. Those remain IN_PROGRESS
+in the assigned developer chat. The earlier schema prerequisite is `cc97f510`.
