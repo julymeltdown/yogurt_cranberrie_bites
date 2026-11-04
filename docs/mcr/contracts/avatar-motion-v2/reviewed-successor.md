@@ -24,7 +24,7 @@ The two new `contracts/assets/v2/reviewed/avatar-{config,manifest}.schema.json`
 paths were explicitly granted separately. Root then granted only exact reviewed
 schema registration in `generate-mcr-core.py::load_schemas` and
 `generate-mcr-domain.py::add_schemas`; no other generator behavior is changed.
-Root remains the integrator. FE153 is the separate generated/public parser consumer.
+Root remains the integrator. FE153 coordinates publication; 26e owns the four public registry/generator/bootstrap files and Motion83 owns admission/parser helpers.
 
 ## Artifact and hash rules
 
@@ -55,7 +55,7 @@ report/checker. It records concrete visual decisions and limits. It does not
 claim all 4800 cases were visually inspected, turn fixture parity into identity
 review, or certify live sockets, devices or public HTTP/WS flows.
 
-## Current evidence and remaining work
+## Pre-build evidence and remaining work (historical checkpoint)
 
 - Visual inspection and independently computed 4800 composition cases: PASS;
   actual receipt `review/visual-review.json`, bounds result `review/seams.json`.
@@ -140,3 +140,21 @@ generator output and bootstrap files; Motion83 owns admission/parser helpers.
 FE153 has the explicit exact 53-path 0dd source publication assignment and will
 publish with its necessary FE consumers to preserve existing schema compilation.
 There is no inferred frontend write or publication authority for this producer.
+
+
+## Executed qualification after the source checkpoint
+
+The exact clean source `917b2d8042e622e4b09a8d66f9fad39a4606b4c8` now has an actual
+Rust and PG16.14 qualification receipt: 19 normal Rust tests, two new native v2
+tests and four existing legacy native tests PASS. Both fresh clusters apply all
+28 available migrations, restart their real postmaster and clean up successfully.
+The new SQL negatives assert the exact representation constraint; legacy 1.0/1.1
+rows remain unchanged through 0044. Source-bound product construction and all
+resource/hash checks execute. Details and initial build-cache failure evidence
+are in [qualification.md](qualification.md) and `qualification/`.
+
+The MEDIA target was released with zero handles before any copied test/PG run.
+The goal API's historical BLOCKED status was not reset. Gateway patch execution,
+coherent master integration, public Auth/HTTP/WS and registry activation remain
+outside the completed producer runtime proof; no ACCEPTED/full-release claim is
+made. The exact committed packet is [reviewed-handoff.json](reviewed-handoff.json).

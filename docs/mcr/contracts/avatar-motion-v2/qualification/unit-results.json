@@ -1,0 +1,22 @@
+[
+  {
+    "target": "concert-domain-avatar",
+    "exit_code": 0,
+    "sha256": "dc749ab7d0115b09944d48cf73209773bc4d64e21482be4b3f0409c33950ed87"
+  },
+  {
+    "target": "concert-domain-avatar_motion_v2",
+    "exit_code": 0,
+    "sha256": "d19ee56167f6ad9af220a017417106ee0b18fc78c42f30bb36c16df004ffcfda"
+  },
+  {
+    "target": "concert-service-avatar",
+    "exit_code": 0,
+    "sha256": "d2d0e9c54b6e8692d107275c8405f48fd117cc42ea327c3f9eefcfb7c84788be"
+  },
+  {
+    "target": "concert-service-avatar_motion_v2_runtime",
+    "exit_code": 0,
+    "sha256": "a1a1b9cd75c29ca7acdec169fe7078e4d6814b6dde6c11c4dd9377dc4abf7cdd"
+  }
+]

@@ -1,0 +1,52 @@
+
+concert-domain-avatar
+
+running 3 tests
+test bounded_unambiguous_input_without_urls_or_extra_fields ... ok
+test exact_wire_and_catalog_layer_membership ... ok
+test selected_six_roundtrip_and_strict_exclusive_union ... ok
+
+test result: ok. 3 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+
+concert-domain-avatar_motion_v2
+
+running 11 tests
+test every_closed_inventory_selection_resolves ... ok
+test every_pinned_resource_is_verified_and_bad_bytes_paths_are_refused ... ok
+test every_slot_boundary_is_closed_and_optional_means_explicit_null_only ... ok
+test exact_frames_direction_aliases_skin_semantics_and_candidate_denial ... ok
+test manifest_mutations_cannot_change_inventory_geometry_source_or_admission ... ok
+test raw_decoder_rejects_duplicate_keys_missing_nullable_and_unbounded_input ... ok
+test reviewed_admission_requires_exact_manifest_review_and_actual_resource_bytes ... ok
+test reviewed_fixtures_round_trip_through_public_selection_and_commands ... ok
+test reviewed_public_parser_refuses_duplicate_headers_and_nested_nullable_slots ... ok
+test shared_config_fixtures_round_trip_and_resolve_without_fallback ... ok
+test shared_invalid_fixtures_are_refused ... ok
+
+test result: ok. 11 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 8.73s
+
+
+concert-service-avatar
+
+running 7 tests
+test native_avatar_restart_persistence ... ignored, requires avatar_smoke.py restarted owned PostgreSQL cluster
+test native_avatar_transactions ... ignored, requires avatar_smoke.py owned PostgreSQL cluster
+test native_selected_avatar_restart_persistence ... ignored, requires avatar_smoke.py postmaster restart
+test native_selected_avatar_transactions ... ignored, requires avatar_smoke.py owned PostgreSQL cluster
+test preference_payload_is_exact_bounded_and_no_character_fields ... ok
+test release_projection_refuses_corruption_and_product_fixture_inventory ... ok
+test witness_metadata_defaults_to_unavailable_and_binds_the_exact_release ... ok
+
+test result: ok. 3 passed; 0 failed; 4 ignored; 0 measured; 0 filtered out; finished in 0.01s
+
+
+concert-service-avatar_motion_v2_runtime
+
+running 4 tests
+test native_motion_v2_restart_persistence ... ignored, runner executes after real postmaster restart
+test native_motion_v2_transactions_cas_constraints_and_rollback ... ignored, requires owned motion-v2 native runner
+test reviewed_product_constructor_binds_actual_review_resources_and_source_bundle ... ok
+test reviewed_product_constructor_rejects_candidate_and_wrong_resource_location ... ok
+
+test result: ok. 2 passed; 0 failed; 2 ignored; 0 measured; 0 filtered out; finished in 1.47s

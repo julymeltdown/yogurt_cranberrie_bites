@@ -1,0 +1,138 @@
+{
+  "task_id": "C06-MOTION-V2-REVIEWED",
+  "status": "CONTRACT_READY",
+  "status_scope": "Producer implementation and source-bound/native qualification in isolated checkout; master integration pending. Not task-wide acceptance or public activation.",
+  "tested_source_commit": "917b2d8042e622e4b09a8d66f9fad39a4606b4c8",
+  "worker_base_commit": "980fc4d85020f297b36fee8195e1ca92079ff33f",
+  "source_contract_commit": "0dd9f443945e6d6232728280d03e83933ac0eef2",
+  "published_shared_source_commit": "d839bc208dfe21f33b4a72c03868952268c34608",
+  "required_candidate_rust_prerequisite": "83b23afd6891bdc9509aae54fc214a9a77039535",
+  "backend_checkpoint_changed_paths": [
+    "backend/crates/concert-domain/src/avatar/mod.rs",
+    "backend/crates/concert-domain/src/avatar_motion_v2/mod.rs",
+    "backend/crates/concert-domain/src/avatar_motion_v2/reviewed.rs",
+    "backend/crates/concert-domain/src/avatar_motion_v2/strict_json.rs",
+    "backend/crates/concert-domain/src/lib.rs",
+    "backend/crates/concert-domain/tests/avatar_motion_v2.rs",
+    "backend/releases/selected-character-motion-v2/reviewed/gateway-response-v2.patch",
+    "backend/releases/selected-character-motion-v2/reviewed/runtime-fixture/bootstrap.json",
+    "backend/releases/selected-character-motion-v2/reviewed/runtime-fixture/theme-danger.json",
+    "backend/releases/selected-character-motion-v2/reviewed/runtime-fixture/theme-parade.json",
+    "backend/releases/selected-character-motion-v2/reviewed/runtime-fixture/theme-revenge.json",
+    "backend/services/concert-service/migrations/0044_avatar_motion_v2.sql",
+    "backend/services/concert-service/src/adapters/out/repository/avatar.rs",
+    "backend/services/concert-service/src/bootstrap/release.rs",
+    "backend/services/concert-service/src/bootstrap/schema.rs",
+    "backend/services/concert-service/src/bootstrap/spatial.rs",
+    "backend/services/concert-service/tests/avatar_motion_v2_runtime.rs",
+    "backend/services/concert-service/tests/avatar_motion_v2_runtime_support/fence.rs",
+    "backend/services/concert-service/tests/avatar_motion_v2_runtime_support/freeze.py",
+    "backend/services/concert-service/tests/avatar_motion_v2_runtime_support/run.py",
+    "docs/mcr/contracts/avatar-motion-v2/build_runtime_fixture.py",
+    "docs/mcr/contracts/avatar-motion-v2/reviewed-successor.md"
+  ],
+  "schema_and_manifest_pins": [
+    {
+      "path": "contracts/assets/v2/reviewed/avatar-config.schema.json",
+      "bytes": 4149,
+      "sha256": "8d4b5772c763a32e58dd49bf5115894703bba603c6e2c01333cef5a86c988c2e"
+    },
+    {
+      "path": "contracts/assets/v2/reviewed/avatar-manifest.schema.json",
+      "bytes": 119959,
+      "sha256": "3fd9bfd589a7f4d2749081ef76057f8bbaf488fbf7385c4cc024ffd01790ccbf"
+    },
+    {
+      "path": "backend/releases/selected-character-motion-v2/reviewed/manifest.json",
+      "bytes": 97407,
+      "sha256": "1342f2b640a8135c2f128713fe1f59adc0b6da8b925a0ac84808b2d8d1ec884d"
+    }
+  ],
+  "runtime_qualification": {
+    "normal_rust_tests_passed": 19,
+    "new_native_tests_passed": 2,
+    "legacy_native_tests_passed": 4,
+    "migrations_per_fresh_cluster": 28,
+    "postgres": "16.14 (Homebrew)",
+    "actual_postmaster_restarts": 2,
+    "owned_clusters_cleaned": 2,
+    "source_bound_product_constructor": "PASS",
+    "actual_resource_hash_positive_and_tamper_negatives": "PASS",
+    "public_parser_fixture_valid_invalid": "15/16 PASS",
+    "all_15_positive_configs_bootstrap_persistence": "PASS",
+    "cas_concurrency": 12,
+    "cas_commits": 1,
+    "cas_conflicts": 11,
+    "sql_exact_representation_constraint_negatives": 9,
+    "candidate_public_admission": "DENIED",
+    "legacy_state_and_revisions_after_0044": "UNCHANGED"
+  },
+  "gateway_consumer_patch": {
+    "artifact": {
+      "path": "backend/releases/selected-character-motion-v2/reviewed/gateway-response-v2.patch",
+      "bytes": 7945,
+      "sha256": "d231d50a208adb660af78cb250f743536f82920d1953ca38648bb43acd00ea8f"
+    },
+    "baseline_commit": "3710a029d083e4b5123df45b82867056f64b3c8b",
+    "target": "backend/services/api-gateway/src/adapters/out/concert_participant/response.rs",
+    "changed_scope": "avatar() plus three dedicated regression groups only",
+    "patch_application": "PASS",
+    "compile_and_execution": "NOT_RUN",
+    "next_owner": "Root1fc coherent Gateway integration/compiler"
+  },
+  "evidence": [
+    {
+      "path": "docs/mcr/contracts/avatar-motion-v2/qualification/build.json",
+      "bytes": 2670,
+      "sha256": "f604bece7c8c1129097e223a2598bb28ee884aee58a3cb1487c7350b54e48f17"
+    },
+    {
+      "path": "docs/mcr/contracts/avatar-motion-v2/qualification/native-legacy.json",
+      "bytes": 4737,
+      "sha256": "381c0b0cb077dc2b0e2c0bcb5aa0430b833ea222683eee881204470d8d73a6ee"
+    },
+    {
+      "path": "docs/mcr/contracts/avatar-motion-v2/qualification/native-v2.json",
+      "bytes": 4663,
+      "sha256": "df8eea869cf4743da8ec7c45d537daf3ad14f325e54cb59b668b2322fc86e1b9"
+    },
+    {
+      "path": "docs/mcr/contracts/avatar-motion-v2/qualification/unit-results.json",
+      "bytes": 629,
+      "sha256": "5f4c4ed585d246b9d408c7e413b9acf90b19970050e10ace32d665d5999f5617"
+    },
+    {
+      "path": "docs/mcr/contracts/avatar-motion-v2/qualification/unit-tests.txt",
+      "bytes": 2634,
+      "sha256": "08c936ec421998ab4140880be74c96e89691a4d4ad3ee9df514371d116e73e94"
+    }
+  ],
+  "preserved": [
+    "docs/source bytes",
+    "supplied originals",
+    "candidate manifest/schema/config bytes",
+    "legacy v1.0/v1.1",
+    "retained manifests/lockfiles/proto",
+    "all frontend implementation",
+    "all non-avatar spatial logic"
+  ],
+  "remaining_gates": [
+    "Root coherent master integration and combined consumer checks",
+    "Gateway patch compile and three test groups",
+    "Real Auth/Friend/public HTTP/WS runtime admission",
+    "Operator registry activation and full AR03/IN release gates"
+  ],
+  "production_activation": "NOT_RUN",
+  "review_receipt_immutability": "Original visual receipt remains pinned; runtime proof is recorded separately, never edited into the frozen visual receipt.",
+  "producer_payload_commits_in_order": [
+    "83b23afd6891bdc9509aae54fc214a9a77039535",
+    "5da616f8e0dd5b42501dd8374765862ddf007acc",
+    "9bdfcf8417298ed7dfec4263e024c984cf6333fb",
+    "d031aac8fa63802db5f9d55e8c921575730b4816",
+    "ec75dcabf19cb92481e23ec222222a625ee53fb8",
+    "b30608962f8d70ad056402eaca5cd2cb6f58a302",
+    "26e58013cab7ce8e81bda303b71e879f803d490a",
+    "917b2d8042e622e4b09a8d66f9fad39a4606b4c8"
+  ],
+  "build_scope_deviation": "Cargo implicitly emitted a non-test concert-service binary alongside selected integration tests; not frozen/run, reported to allocator/integrator, all disk growth included."
+}
