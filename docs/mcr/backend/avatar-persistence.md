@@ -614,8 +614,8 @@ commits are `48b3ec73`, `753083b4`, `f42d8ae0`, and production-only `70d2263f`
 All production peer bytes match the actual a7ace884 joined prefix.
 
 The later failing full-Profile joined test, its driver and its test-only module
-wiring are excluded from this delivery. All five owned executable/controller
-source blobs and migration0035 match the qualified43c0e265 snapshot exactly.
+wiring are excluded from this delivery. All four owned Rust/controller source
+blobs and migration0035 match the qualified43c0e265 snapshot exactly.
 `docs/source/` is unchanged; no frontend, manifest, lockfile or root-composition
 edit is included. The eleven-path scope audit, plan checker and diff check passed.
 Only the designated delivery integrator publishes this handoff to master and
