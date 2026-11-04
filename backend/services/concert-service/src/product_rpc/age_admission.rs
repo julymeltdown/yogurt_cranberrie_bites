@@ -37,14 +37,9 @@ pub(super) fn route(event: Uuid, method: &str, target: &str) -> Result<AgeOperat
 }
 
 #[derive(Deserialize)]
-enum ReturnTarget {
-    #[serde(rename = "AGE_PRIVACY")]
-    AgePrivacy,
-}
-#[derive(Deserialize)]
 #[serde(deny_unknown_fields)]
 struct Start {
-    return_target: ReturnTarget,
+    return_target: String,
 }
 #[derive(Deserialize)]
 #[serde(deny_unknown_fields)]
@@ -84,7 +79,9 @@ pub(super) fn request(input: &ProductRequest, expected: AgeOperation) -> Result<
         AgeOperation::Start => {
             // Parse the original bytes again: Value alone would lose duplicate keys.
             let body: Start = serde_json::from_slice(&input.http_body).map_err(|_| invalid())?;
-            let ReturnTarget::AgePrivacy = body.return_target;
+            if body.return_target != concert_application::age_verification::RETURN_TARGET {
+                return Err(invalid());
+            }
         }
         AgeOperation::Callback => {
             let body: Callback = serde_json::from_slice(&input.http_body).map_err(|_| invalid())?;

@@ -182,6 +182,7 @@ async fn start_body_is_a_closed_object_with_one_fixed_return_target() {
         "{}{}",
         r#"{"return_target":null}"#,
         r#"{"return_target":1}"#,
+        r#"{"return_target":{"AGE_PRIVACY":null}}"#,
         r#"{"return_target":"age_privacy"}"#,
         r#"{"return_target":"https://example.com"}"#,
         r#"{"return_target":"AGE_PRIVACY","actor_id":null}"#,
