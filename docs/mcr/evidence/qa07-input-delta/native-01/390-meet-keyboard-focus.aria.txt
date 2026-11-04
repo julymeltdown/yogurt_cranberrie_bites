@@ -1,0 +1,20 @@
+- banner:
+  - heading "MEET" [level=1]
+  - button "Close MEET": ×
+- main:
+  - navigation "Meet views":
+    - button "Parties" [pressed]
+    - link "People":
+      - /url: /meet/people
+    - button "MY PLAN"
+  - region "Party discovery":
+    - heading "Find your company" [level=2]
+    - alert:
+      - paragraph: Temporarily unavailable. Try reading again later.
+      - button "Read parties again"
+    - group: Filter parties
+    - button "Refresh parties": Refresh
+    - paragraph: JOIN opens party details. The host approves membership; a virtual position does not confirm arrival. Times are Korea Standard Time.
+  - link "Create party":
+    - /url: /meet/parties/new
+- complementary: FROZEN FIXTURE · NO LIVE SERVICE · PORTRAITS UNAVAILABLE

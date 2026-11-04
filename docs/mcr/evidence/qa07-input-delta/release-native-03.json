@@ -1,0 +1,28 @@
+{
+  "job": "QA07-GUARD-SHUTDOWN-20261104T2020Z",
+  "fullEpoch": 1793824021.5667892,
+  "remainingOwnedPids": [],
+  "ownLinkAbsent": true,
+  "ownTempAbsent": true,
+  "port5307": "fresh bind/listen/reuse succeeded then closed",
+  "currentReservation": 0,
+  "free": 17720598528,
+  "withinFullDeadline": true,
+  "result": "PASS_GUARD_SHUTDOWN",
+  "guardsExit": [
+    0,
+    0
+  ],
+  "diskRegressions": 5,
+  "browserContexts": 1,
+  "journeyCells": 0,
+  "actualChromeRaceHandled": [
+    {
+      "epoch": 1793823998.635614,
+      "detail": "du: /private/tmp/mcr-qa07-delta-native-03/playwright-artifacts-DTjF2J: No such file or directory\n",
+      "partialAllocatedBytes": 29859840
+    }
+  ],
+  "preservedPriorWholeMax": 1901942193,
+  "preservedPriorNewMax": 41158065
+}

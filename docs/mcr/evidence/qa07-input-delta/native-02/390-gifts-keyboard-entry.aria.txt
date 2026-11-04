@@ -1,0 +1,29 @@
+- main:
+  - paragraph: QA07 synthetic Gifts input fixture; no real stock or venue.
+  - region "Giveaway discovery":
+    - tablist "Gift collections":
+      - tab "Browse" [selected]
+      - tab "My giving"
+      - tab "My pickups"
+    - tabpanel "Browse":
+      - list:
+        - listitem:
+          - text: No photo
+          - heading "Fan badges" [level=3]:
+            - link "Fan badges":
+              - /url: /gifts/00000000-0000-4000-8000-000000000005
+          - paragraph:
+            - text: by Fixture fan
+            - strong: 1 left of 3
+          - paragraph: Synthetic public reference
+          - paragraph:
+            - time: 17:00
+            - time: 18:00
+            - text: KST
+          - link "Review reservation for Fan badges":
+            - /url: /gifts/00000000-0000-4000-8000-000000000005/reservation
+            - text: Reserve
+      - group: Filter giveaways
+    - paragraph: Availability is checked in the reservation journey. Stock and pickup windows can change.
+    - link "My gifts →":
+      - /url: /gifts/mine

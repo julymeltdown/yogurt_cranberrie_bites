@@ -1,0 +1,30 @@
+{
+  "job": "QA07-AFFECTED-NINE-BROWSER-20261104T2010Z",
+  "fullEpoch": 1793823329.597665,
+  "remainingOwnedPids": [],
+  "ownLinkAbsent": true,
+  "ownTempAbsent": true,
+  "port5307": "bind/listen/reuse succeeded then closed",
+  "currentReservation": 0,
+  "free": 18648489984,
+  "withinFullDeadline": true,
+  "result": "FAILED GUARD FINALIZATION; no finalized native report",
+  "preflight": [
+    {
+      "name": "repair-types",
+      "exit": 0,
+      "signal": null
+    },
+    {
+      "name": "repair-lint",
+      "exit": 0,
+      "signal": null
+    }
+  ],
+  "completeCellObservations": {
+    "passed": 9,
+    "failed": 0,
+    "total": 9
+  },
+  "diagnosis": "Outer du(tmp) raised on Chrome transient TransportSecurity file disappearing during shutdown; guard finally terminated inner/native before final report. All nine complete cell records/images/AX/ARIA preserved in partial report; requires owned guard correction/targeted shutdown validation."
+}

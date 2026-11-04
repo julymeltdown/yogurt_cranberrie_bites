@@ -1,0 +1,45 @@
+{
+  "job": "QA07-GUARD-SHUTDOWN-20261104T2020Z",
+  "round": "native-03",
+  "started": 1793823997.117301,
+  "deadline": 1793824045.561403,
+  "cleanupDeadline": 1793824105.561403,
+  "taskCarryAtStart": 2229785,
+  "ownedGitReservation": 8388608,
+  "peaks": {
+    "durable": 1088193,
+    "temp": 29577997,
+    "new": 40200486,
+    "whole": 1900992806
+  },
+  "floor": 8589934592,
+  "outstandingGrowthReservation": 3758096384,
+  "retainedCheckoutStart": 1421778944,
+  "retainedReadOnlyDepsStart": 438317056,
+  "ownGitMetadataStart": 2068480,
+  "ownGitObjectsStart": 857625,
+  "pid": 22736,
+  "minFree": 17685884928,
+  "lastDescendants": [
+    22736
+  ],
+  "allSeenPids": [
+    22736,
+    22799,
+    22829,
+    22831,
+    22842,
+    22894,
+    22898,
+    22900
+  ],
+  "peakPids": 8,
+  "peakRss": 1663139840,
+  "exitCode": 0,
+  "finished": 1793823999.303839,
+  "ownLinkAbsent": true,
+  "ownTempAbsent": true,
+  "durableBytes": 1088193,
+  "cleanupWithinDeadline": true,
+  "free": 17714745344
+}

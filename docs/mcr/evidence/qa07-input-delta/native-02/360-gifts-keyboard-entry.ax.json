@@ -1,0 +1,278 @@
+[
+  {
+    "role": "RootWebArea",
+    "name": "QA07 changed input fixture"
+  },
+  {
+    "role": "generic",
+    "name": ""
+  },
+  {
+    "role": "main",
+    "name": ""
+  },
+  {
+    "role": "paragraph",
+    "name": ""
+  },
+  {
+    "role": "region",
+    "name": "Giveaway discovery"
+  },
+  {
+    "role": "StaticText",
+    "name": "QA07 synthetic Gifts input fixture; no real stock or venue."
+  },
+  {
+    "role": "tablist",
+    "name": "Gift collections"
+  },
+  {
+    "role": "tabpanel",
+    "name": "BROWSE"
+  },
+  {
+    "role": "sectionfooter",
+    "name": ""
+  },
+  {
+    "role": "InlineTextBox",
+    "name": "QA07 synthetic Gifts input fixture; no real stock "
+  },
+  {
+    "role": "InlineTextBox",
+    "name": "or venue."
+  },
+  {
+    "role": "tab",
+    "name": "BROWSE"
+  },
+  {
+    "role": "tab",
+    "name": "MY GIVING"
+  },
+  {
+    "role": "tab",
+    "name": "MY PICKUPS"
+  },
+  {
+    "role": "list",
+    "name": ""
+  },
+  {
+    "role": "form",
+    "name": ""
+  },
+  {
+    "role": "paragraph",
+    "name": ""
+  },
+  {
+    "role": "link",
+    "name": "My gifts →"
+  },
+  {
+    "role": "StaticText",
+    "name": "BROWSE"
+  },
+  {
+    "role": "StaticText",
+    "name": "MY GIVING"
+  },
+  {
+    "role": "StaticText",
+    "name": "MY PICKUPS"
+  },
+  {
+    "role": "listitem",
+    "name": ""
+  },
+  {
+    "role": "group",
+    "name": ""
+  },
+  {
+    "role": "StaticText",
+    "name": "Availability is checked in the reservation journey. Stock and pickup windows can change."
+  },
+  {
+    "role": "StaticText",
+    "name": "My gifts →"
+  },
+  {
+    "role": "InlineTextBox",
+    "name": "BROWSE"
+  },
+  {
+    "role": "InlineTextBox",
+    "name": "MY GIVING"
+  },
+  {
+    "role": "InlineTextBox",
+    "name": "MY PICKUPS"
+  },
+  {
+    "role": "StaticText",
+    "name": "No photo"
+  },
+  {
+    "role": "heading",
+    "name": "Fan badges"
+  },
+  {
+    "role": "paragraph",
+    "name": ""
+  },
+  {
+    "role": "StaticText",
+    "name": "Synthetic public reference"
+  },
+  {
+    "role": "paragraph",
+    "name": ""
+  },
+  {
+    "role": "generic",
+    "name": ""
+  },
+  {
+    "role": "DisclosureTriangle",
+    "name": "Filter giveaways"
+  },
+  {
+    "role": "InlineTextBox",
+    "name": "Availability is checked in the reservation journey. Stock and pickup windows "
+  },
+  {
+    "role": "InlineTextBox",
+    "name": "can change."
+  },
+  {
+    "role": "InlineTextBox",
+    "name": "My gifts →"
+  },
+  {
+    "role": "InlineTextBox",
+    "name": "No photo"
+  },
+  {
+    "role": "link",
+    "name": "Fan badges"
+  },
+  {
+    "role": "StaticText",
+    "name": "by "
+  },
+  {
+    "role": "StaticText",
+    "name": "Fixture fan"
+  },
+  {
+    "role": "strong",
+    "name": ""
+  },
+  {
+    "role": "InlineTextBox",
+    "name": "Synthetic public reference"
+  },
+  {
+    "role": "time",
+    "name": "7 Nov, 17:00 KST"
+  },
+  {
+    "role": "time",
+    "name": "7 Nov, 18:00 KST"
+  },
+  {
+    "role": "StaticText",
+    "name": " KST"
+  },
+  {
+    "role": "link",
+    "name": "Review reservation for Fan badges"
+  },
+  {
+    "role": "StaticText",
+    "name": "Filter giveaways"
+  },
+  {
+    "role": "StaticText",
+    "name": "Fan badges"
+  },
+  {
+    "role": "InlineTextBox",
+    "name": "by "
+  },
+  {
+    "role": "InlineTextBox",
+    "name": "Fixture fan"
+  },
+  {
+    "role": "StaticText",
+    "name": "1"
+  },
+  {
+    "role": "StaticText",
+    "name": " left"
+  },
+  {
+    "role": "StaticText",
+    "name": "of "
+  },
+  {
+    "role": "StaticText",
+    "name": "3"
+  },
+  {
+    "role": "StaticText",
+    "name": "17:00"
+  },
+  {
+    "role": "StaticText",
+    "name": "18:00"
+  },
+  {
+    "role": "InlineTextBox",
+    "name": " KST"
+  },
+  {
+    "role": "StaticText",
+    "name": "RESERVE"
+  },
+  {
+    "role": "InlineTextBox",
+    "name": "Filter giveaways"
+  },
+  {
+    "role": "InlineTextBox",
+    "name": "Fan badges"
+  },
+  {
+    "role": "InlineTextBox",
+    "name": "1"
+  },
+  {
+    "role": "InlineTextBox",
+    "name": " left"
+  },
+  {
+    "role": "InlineTextBox",
+    "name": "of "
+  },
+  {
+    "role": "InlineTextBox",
+    "name": "3"
+  },
+  {
+    "role": "InlineTextBox",
+    "name": "17:00"
+  },
+  {
+    "role": "InlineTextBox",
+    "name": "18:00"
+  },
+  {
+    "role": "InlineTextBox",
+    "name": "RESERVE"
+  }
+]

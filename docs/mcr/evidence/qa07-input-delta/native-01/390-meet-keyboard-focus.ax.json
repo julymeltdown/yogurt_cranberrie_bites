@@ -1,0 +1,210 @@
+[
+  {
+    "role": "RootWebArea",
+    "name": "MEET reference fixture · no live data"
+  },
+  {
+    "role": "generic",
+    "name": ""
+  },
+  {
+    "role": "banner",
+    "name": ""
+  },
+  {
+    "role": "main",
+    "name": ""
+  },
+  {
+    "role": "complementary",
+    "name": ""
+  },
+  {
+    "role": "heading",
+    "name": "MEET"
+  },
+  {
+    "role": "button",
+    "name": "Close MEET"
+  },
+  {
+    "role": "navigation",
+    "name": "Meet views"
+  },
+  {
+    "role": "region",
+    "name": "Party discovery"
+  },
+  {
+    "role": "sectionfooter",
+    "name": ""
+  },
+  {
+    "role": "StaticText",
+    "name": "FROZEN FIXTURE · NO LIVE SERVICE · PORTRAITS UNAVAILABLE"
+  },
+  {
+    "role": "StaticText",
+    "name": "MEET"
+  },
+  {
+    "role": "StaticText",
+    "name": "×"
+  },
+  {
+    "role": "button",
+    "name": "PARTIES"
+  },
+  {
+    "role": "link",
+    "name": "PEOPLE"
+  },
+  {
+    "role": "button",
+    "name": "MY PLAN"
+  },
+  {
+    "role": "heading",
+    "name": "Find your company"
+  },
+  {
+    "role": "alert",
+    "name": ""
+  },
+  {
+    "role": "group",
+    "name": ""
+  },
+  {
+    "role": "button",
+    "name": "Refresh parties"
+  },
+  {
+    "role": "paragraph",
+    "name": ""
+  },
+  {
+    "role": "link",
+    "name": "CREATE PARTY"
+  },
+  {
+    "role": "InlineTextBox",
+    "name": "FROZEN FIXTURE · NO LIVE SERVICE · PORTRAITS UNAVAILABLE"
+  },
+  {
+    "role": "InlineTextBox",
+    "name": "MEET"
+  },
+  {
+    "role": "InlineTextBox",
+    "name": "×"
+  },
+  {
+    "role": "StaticText",
+    "name": "PARTIES"
+  },
+  {
+    "role": "StaticText",
+    "name": "PEOPLE"
+  },
+  {
+    "role": "StaticText",
+    "name": "MY PLAN"
+  },
+  {
+    "role": "StaticText",
+    "name": "Find your company"
+  },
+  {
+    "role": "paragraph",
+    "name": ""
+  },
+  {
+    "role": "button",
+    "name": "Read parties again"
+  },
+  {
+    "role": "DisclosureTriangle",
+    "name": "Filter parties"
+  },
+  {
+    "role": "StaticText",
+    "name": "Refresh"
+  },
+  {
+    "role": "StaticText",
+    "name": "JOIN opens party details. The host approves membership; a virtual position does not confirm arrival. Times are Korea Standard Time."
+  },
+  {
+    "role": "StaticText",
+    "name": "CREATE PARTY"
+  },
+  {
+    "role": "InlineTextBox",
+    "name": "PARTIES"
+  },
+  {
+    "role": "InlineTextBox",
+    "name": "PEOPLE"
+  },
+  {
+    "role": "InlineTextBox",
+    "name": "MY PLAN"
+  },
+  {
+    "role": "InlineTextBox",
+    "name": "Find your company"
+  },
+  {
+    "role": "StaticText",
+    "name": "Temporarily unavailable. Try reading again later."
+  },
+  {
+    "role": "StaticText",
+    "name": "Read "
+  },
+  {
+    "role": "StaticText",
+    "name": "parties"
+  },
+  {
+    "role": "StaticText",
+    "name": " again"
+  },
+  {
+    "role": "StaticText",
+    "name": "Filter parties"
+  },
+  {
+    "role": "InlineTextBox",
+    "name": "Refresh"
+  },
+  {
+    "role": "InlineTextBox",
+    "name": "JOIN opens party details. The host approves membership; a virtual position does not confirm arrival. Times are Korea Standard Time."
+  },
+  {
+    "role": "InlineTextBox",
+    "name": "CREATE PARTY"
+  },
+  {
+    "role": "InlineTextBox",
+    "name": "Temporarily unavailable. Try reading again later."
+  },
+  {
+    "role": "InlineTextBox",
+    "name": "Read "
+  },
+  {
+    "role": "InlineTextBox",
+    "name": "parties"
+  },
+  {
+    "role": "InlineTextBox",
+    "name": " again"
+  },
+  {
+    "role": "InlineTextBox",
+    "name": "Filter parties"
+  }
+]

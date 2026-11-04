@@ -1,0 +1,533 @@
+{
+  "selection": {
+    "widths": [
+      360,
+      390,
+      430
+    ],
+    "only": null
+  },
+  "task": "QA07_CHANGED_SOFTWARE_DELTA",
+  "candidate": "49c7656203e21b9aff26f57e64b19caddec23687",
+  "job": "QA07-CHANGED-FIFTEEN-BROWSER-20261104T1955Z",
+  "started": "2026-11-04T20:01:21.307Z",
+  "cases": [
+    {
+      "name": "wall-keyboard-tools",
+      "width": 360,
+      "status": "PASS",
+      "observations": [
+        {
+          "label": "Pencil preview",
+          "focus": {
+            "width": 44,
+            "height": 44,
+            "outline": 3,
+            "outlineOffset": -6,
+            "clipped": []
+          }
+        },
+        {
+          "label": "Erase preview",
+          "focus": {
+            "width": 44,
+            "height": 44,
+            "outline": 3,
+            "outlineOffset": -6,
+            "clipped": []
+          }
+        },
+        {
+          "label": "Fill preview",
+          "focus": {
+            "width": 44,
+            "height": 44,
+            "outline": 3,
+            "outlineOffset": -6,
+            "clipped": []
+          }
+        },
+        "Native keyboard selects all tools and DOM coordinates, Enter never sends, Escape cancels. Explicit bounded fill then eligible undo; preview cancel sends nothing. Original pencil commit and fill boundaries reused."
+      ],
+      "motion": {
+        "reduced": true,
+        "inspected": 98,
+        "animated": []
+      },
+      "unnamed": []
+    },
+    {
+      "name": "wall-pointer-cancel",
+      "width": 360,
+      "status": "PASS",
+      "observations": [
+        {
+          "label": "Pencil preview",
+          "cancel": [
+            {
+              "type": "pointerdown",
+              "trusted": true,
+              "pointerType": "touch"
+            },
+            {
+              "type": "pointercancel",
+              "trusted": true,
+              "pointerType": "touch"
+            }
+          ],
+          "drag": [
+            {
+              "type": "pointerdown",
+              "trusted": true,
+              "pointerType": "touch"
+            }
+          ]
+        },
+        {
+          "label": "Erase preview",
+          "cancel": [
+            {
+              "type": "pointerdown",
+              "trusted": true,
+              "pointerType": "touch"
+            },
+            {
+              "type": "pointercancel",
+              "trusted": true,
+              "pointerType": "touch"
+            },
+            {
+              "type": "pointercancel",
+              "trusted": true,
+              "pointerType": "touch"
+            }
+          ],
+          "drag": [
+            {
+              "type": "pointerdown",
+              "trusted": true,
+              "pointerType": "touch"
+            }
+          ]
+        },
+        {
+          "label": "Fill preview",
+          "cancel": [
+            {
+              "type": "pointerdown",
+              "trusted": true,
+              "pointerType": "touch"
+            },
+            {
+              "type": "pointercancel",
+              "trusted": true,
+              "pointerType": "touch"
+            },
+            {
+              "type": "pointercancel",
+              "trusted": true,
+              "pointerType": "touch"
+            }
+          ],
+          "drag": [
+            {
+              "type": "pointerdown",
+              "trusted": true,
+              "pointerType": "touch"
+            }
+          ]
+        },
+        "Trusted touch cancellation and drag for each selected drawing tool make no preview/write. Opaque erase separately confirmed by keyboard."
+      ],
+      "motion": {
+        "reduced": true,
+        "inspected": 98,
+        "animated": []
+      },
+      "unnamed": []
+    },
+    {
+      "name": "gifts-keyboard-entry",
+      "width": 360,
+      "status": "FAIL",
+      "observations": [],
+      "failure": "Error: expect(locator).toBeVisible() failed\n\nLocator: getByRole('link', { name: /^Review reservation for / }).first()\nExpected: visible\nTimeout: 5000ms\nError: element(s) not found\n\nCall log:\n  - Expect \"to.be.visible\" with timeout 5000ms\n  - waiting for getByRole('link', { name: /^Review reservation for / }).first()\n\n    at captureRawStack (/Users/lhs/Desktop/mcr/frontend/node_modules/.pnpm/playwright-core@1.61.1/node_modules/playwright-core/lib/coreBundle.js:3172:17)\n    at callMatcherAsStep (/Users/lhs/Desktop/mcr/frontend/node_modules/.pnpm/playwright@1.61.1/node_modules/playwright/lib/matchers/expect.js:12877:57)\n    at Object.toBeVisible (/Users/lhs/Desktop/mcr/frontend/node_modules/.pnpm/playwright@1.61.1/node_modules/playwright/lib/matchers/expect.js:12867:23)\n    at tabTo (/Users/lhs/Desktop/mcr-worktrees/qa07-input-delta-332b/frontend/e2e/qa07-input-delta/native.mjs:20:53)\n    at /Users/lhs/Desktop/mcr-worktrees/qa07-input-delta-332b/frontend/e2e/qa07-input-delta/native.mjs:36:451\n    at async run (/Users/lhs/Desktop/mcr-worktrees/qa07-input-delta-332b/frontend/e2e/qa07-input-delta/native.mjs:27:354)\n    at async file:///Users/lhs/Desktop/mcr-worktrees/qa07-input-delta-332b/frontend/e2e/qa07-input-delta/native.mjs:36:1",
+      "pageErrors": [],
+      "unnamed": []
+    },
+    {
+      "name": "thread-keyboard",
+      "width": 360,
+      "status": "FAIL",
+      "observations": [],
+      "failure": "Error: expect(locator).toBeEnabled() failed\n\nLocator: getByRole('textbox', { name: 'Comment text', exact: true })\nExpected: enabled\nTimeout: 5000ms\nError: element(s) not found\n\nCall log:\n  - Expect \"to.be.enabled\" with timeout 5000ms\n  - waiting for getByRole('textbox', { name: 'Comment text', exact: true })\n\n    at captureRawStack (/Users/lhs/Desktop/mcr/frontend/node_modules/.pnpm/playwright-core@1.61.1/node_modules/playwright-core/lib/coreBundle.js:3172:17)\n    at callMatcherAsStep (/Users/lhs/Desktop/mcr/frontend/node_modules/.pnpm/playwright@1.61.1/node_modules/playwright/lib/matchers/expect.js:12877:57)\n    at Object.toBeEnabled (/Users/lhs/Desktop/mcr/frontend/node_modules/.pnpm/playwright@1.61.1/node_modules/playwright/lib/matchers/expect.js:12867:23)\n    at /Users/lhs/Desktop/mcr-worktrees/qa07-input-delta-332b/frontend/e2e/qa07-input-delta/native.mjs:37:180\n    at async run (/Users/lhs/Desktop/mcr-worktrees/qa07-input-delta-332b/frontend/e2e/qa07-input-delta/native.mjs:27:354)\n    at async file:///Users/lhs/Desktop/mcr-worktrees/qa07-input-delta-332b/frontend/e2e/qa07-input-delta/native.mjs:37:1",
+      "pageErrors": [],
+      "unnamed": []
+    },
+    {
+      "name": "meet-keyboard-focus",
+      "width": 360,
+      "status": "FAIL",
+      "observations": [],
+      "failure": "Error: expect(locator).toBeVisible() failed\n\nLocator: getByRole('link', { name: 'View details for Area A Queue Group', exact: true })\nExpected: visible\nTimeout: 5000ms\nError: element(s) not found\n\nCall log:\n  - Expect \"to.be.visible\" with timeout 5000ms\n  - waiting for getByRole('link', { name: 'View details for Area A Queue Group', exact: true })\n\n    at captureRawStack (/Users/lhs/Desktop/mcr/frontend/node_modules/.pnpm/playwright-core@1.61.1/node_modules/playwright-core/lib/coreBundle.js:3172:17)\n    at callMatcherAsStep (/Users/lhs/Desktop/mcr/frontend/node_modules/.pnpm/playwright@1.61.1/node_modules/playwright/lib/matchers/expect.js:12877:57)\n    at Object.toBeVisible (/Users/lhs/Desktop/mcr/frontend/node_modules/.pnpm/playwright@1.61.1/node_modules/playwright/lib/matchers/expect.js:12867:23)\n    at /Users/lhs/Desktop/mcr-worktrees/qa07-input-delta-332b/frontend/e2e/qa07-input-delta/native.mjs:38:245\n    at async run (/Users/lhs/Desktop/mcr-worktrees/qa07-input-delta-332b/frontend/e2e/qa07-input-delta/native.mjs:27:354)\n    at async file:///Users/lhs/Desktop/mcr-worktrees/qa07-input-delta-332b/frontend/e2e/qa07-input-delta/native.mjs:38:1",
+      "pageErrors": [],
+      "unnamed": []
+    },
+    {
+      "name": "wall-keyboard-tools",
+      "width": 390,
+      "status": "PASS",
+      "observations": [
+        {
+          "label": "Pencil preview",
+          "focus": {
+            "width": 44,
+            "height": 44,
+            "outline": 3,
+            "outlineOffset": -6,
+            "clipped": []
+          }
+        },
+        {
+          "label": "Erase preview",
+          "focus": {
+            "width": 44,
+            "height": 44,
+            "outline": 3,
+            "outlineOffset": -6,
+            "clipped": []
+          }
+        },
+        {
+          "label": "Fill preview",
+          "focus": {
+            "width": 44,
+            "height": 44,
+            "outline": 3,
+            "outlineOffset": -6,
+            "clipped": []
+          }
+        },
+        "Native keyboard selects all tools and DOM coordinates, Enter never sends, Escape cancels. Explicit bounded fill then eligible undo; preview cancel sends nothing. Original pencil commit and fill boundaries reused."
+      ],
+      "motion": {
+        "reduced": true,
+        "inspected": 98,
+        "animated": []
+      },
+      "unnamed": []
+    },
+    {
+      "name": "wall-pointer-cancel",
+      "width": 390,
+      "status": "PASS",
+      "observations": [
+        {
+          "label": "Pencil preview",
+          "cancel": [
+            {
+              "type": "pointerdown",
+              "trusted": true,
+              "pointerType": "touch"
+            },
+            {
+              "type": "pointercancel",
+              "trusted": true,
+              "pointerType": "touch"
+            }
+          ],
+          "drag": [
+            {
+              "type": "pointerdown",
+              "trusted": true,
+              "pointerType": "touch"
+            }
+          ]
+        },
+        {
+          "label": "Erase preview",
+          "cancel": [
+            {
+              "type": "pointerdown",
+              "trusted": true,
+              "pointerType": "touch"
+            },
+            {
+              "type": "pointercancel",
+              "trusted": true,
+              "pointerType": "touch"
+            },
+            {
+              "type": "pointercancel",
+              "trusted": true,
+              "pointerType": "touch"
+            }
+          ],
+          "drag": [
+            {
+              "type": "pointerdown",
+              "trusted": true,
+              "pointerType": "touch"
+            }
+          ]
+        },
+        {
+          "label": "Fill preview",
+          "cancel": [
+            {
+              "type": "pointerdown",
+              "trusted": true,
+              "pointerType": "touch"
+            },
+            {
+              "type": "pointercancel",
+              "trusted": true,
+              "pointerType": "touch"
+            },
+            {
+              "type": "pointercancel",
+              "trusted": true,
+              "pointerType": "touch"
+            }
+          ],
+          "drag": [
+            {
+              "type": "pointerdown",
+              "trusted": true,
+              "pointerType": "touch"
+            }
+          ]
+        },
+        "Trusted touch cancellation and drag for each selected drawing tool make no preview/write. Opaque erase separately confirmed by keyboard."
+      ],
+      "motion": {
+        "reduced": true,
+        "inspected": 98,
+        "animated": []
+      },
+      "unnamed": []
+    },
+    {
+      "name": "gifts-keyboard-entry",
+      "width": 390,
+      "status": "FAIL",
+      "observations": [],
+      "failure": "Error: expect(locator).toBeVisible() failed\n\nLocator: getByRole('link', { name: /^Review reservation for / }).first()\nExpected: visible\nTimeout: 5000ms\nError: element(s) not found\n\nCall log:\n  - Expect \"to.be.visible\" with timeout 5000ms\n  - waiting for getByRole('link', { name: /^Review reservation for / }).first()\n\n    at captureRawStack (/Users/lhs/Desktop/mcr/frontend/node_modules/.pnpm/playwright-core@1.61.1/node_modules/playwright-core/lib/coreBundle.js:3172:17)\n    at callMatcherAsStep (/Users/lhs/Desktop/mcr/frontend/node_modules/.pnpm/playwright@1.61.1/node_modules/playwright/lib/matchers/expect.js:12877:57)\n    at Object.toBeVisible (/Users/lhs/Desktop/mcr/frontend/node_modules/.pnpm/playwright@1.61.1/node_modules/playwright/lib/matchers/expect.js:12867:23)\n    at tabTo (/Users/lhs/Desktop/mcr-worktrees/qa07-input-delta-332b/frontend/e2e/qa07-input-delta/native.mjs:20:53)\n    at /Users/lhs/Desktop/mcr-worktrees/qa07-input-delta-332b/frontend/e2e/qa07-input-delta/native.mjs:36:451\n    at async run (/Users/lhs/Desktop/mcr-worktrees/qa07-input-delta-332b/frontend/e2e/qa07-input-delta/native.mjs:27:354)\n    at async file:///Users/lhs/Desktop/mcr-worktrees/qa07-input-delta-332b/frontend/e2e/qa07-input-delta/native.mjs:36:1",
+      "pageErrors": [],
+      "unnamed": []
+    },
+    {
+      "name": "thread-keyboard",
+      "width": 390,
+      "status": "FAIL",
+      "observations": [],
+      "failure": "Error: expect(locator).toBeEnabled() failed\n\nLocator: getByRole('textbox', { name: 'Comment text', exact: true })\nExpected: enabled\nTimeout: 5000ms\nError: element(s) not found\n\nCall log:\n  - Expect \"to.be.enabled\" with timeout 5000ms\n  - waiting for getByRole('textbox', { name: 'Comment text', exact: true })\n\n    at captureRawStack (/Users/lhs/Desktop/mcr/frontend/node_modules/.pnpm/playwright-core@1.61.1/node_modules/playwright-core/lib/coreBundle.js:3172:17)\n    at callMatcherAsStep (/Users/lhs/Desktop/mcr/frontend/node_modules/.pnpm/playwright@1.61.1/node_modules/playwright/lib/matchers/expect.js:12877:57)\n    at Object.toBeEnabled (/Users/lhs/Desktop/mcr/frontend/node_modules/.pnpm/playwright@1.61.1/node_modules/playwright/lib/matchers/expect.js:12867:23)\n    at /Users/lhs/Desktop/mcr-worktrees/qa07-input-delta-332b/frontend/e2e/qa07-input-delta/native.mjs:37:180\n    at async run (/Users/lhs/Desktop/mcr-worktrees/qa07-input-delta-332b/frontend/e2e/qa07-input-delta/native.mjs:27:354)\n    at async file:///Users/lhs/Desktop/mcr-worktrees/qa07-input-delta-332b/frontend/e2e/qa07-input-delta/native.mjs:37:1",
+      "pageErrors": [],
+      "unnamed": []
+    },
+    {
+      "name": "meet-keyboard-focus",
+      "width": 390,
+      "status": "FAIL",
+      "observations": [],
+      "failure": "Error: expect(locator).toBeVisible() failed\n\nLocator: getByRole('link', { name: 'View details for Area A Queue Group', exact: true })\nExpected: visible\nTimeout: 5000ms\nError: element(s) not found\n\nCall log:\n  - Expect \"to.be.visible\" with timeout 5000ms\n  - waiting for getByRole('link', { name: 'View details for Area A Queue Group', exact: true })\n\n    at captureRawStack (/Users/lhs/Desktop/mcr/frontend/node_modules/.pnpm/playwright-core@1.61.1/node_modules/playwright-core/lib/coreBundle.js:3172:17)\n    at callMatcherAsStep (/Users/lhs/Desktop/mcr/frontend/node_modules/.pnpm/playwright@1.61.1/node_modules/playwright/lib/matchers/expect.js:12877:57)\n    at Object.toBeVisible (/Users/lhs/Desktop/mcr/frontend/node_modules/.pnpm/playwright@1.61.1/node_modules/playwright/lib/matchers/expect.js:12867:23)\n    at /Users/lhs/Desktop/mcr-worktrees/qa07-input-delta-332b/frontend/e2e/qa07-input-delta/native.mjs:38:245\n    at async run (/Users/lhs/Desktop/mcr-worktrees/qa07-input-delta-332b/frontend/e2e/qa07-input-delta/native.mjs:27:354)\n    at async file:///Users/lhs/Desktop/mcr-worktrees/qa07-input-delta-332b/frontend/e2e/qa07-input-delta/native.mjs:38:1",
+      "pageErrors": [],
+      "unnamed": []
+    },
+    {
+      "name": "wall-keyboard-tools",
+      "width": 430,
+      "status": "PASS",
+      "observations": [
+        {
+          "label": "Pencil preview",
+          "focus": {
+            "width": 44,
+            "height": 44,
+            "outline": 3,
+            "outlineOffset": -6,
+            "clipped": []
+          }
+        },
+        {
+          "label": "Erase preview",
+          "focus": {
+            "width": 44,
+            "height": 44,
+            "outline": 3,
+            "outlineOffset": -6,
+            "clipped": []
+          }
+        },
+        {
+          "label": "Fill preview",
+          "focus": {
+            "width": 44,
+            "height": 44,
+            "outline": 3,
+            "outlineOffset": -6,
+            "clipped": []
+          }
+        },
+        "Native keyboard selects all tools and DOM coordinates, Enter never sends, Escape cancels. Explicit bounded fill then eligible undo; preview cancel sends nothing. Original pencil commit and fill boundaries reused."
+      ],
+      "motion": {
+        "reduced": true,
+        "inspected": 98,
+        "animated": []
+      },
+      "unnamed": []
+    },
+    {
+      "name": "wall-pointer-cancel",
+      "width": 430,
+      "status": "PASS",
+      "observations": [
+        {
+          "label": "Pencil preview",
+          "cancel": [
+            {
+              "type": "pointerdown",
+              "trusted": true,
+              "pointerType": "touch"
+            },
+            {
+              "type": "pointercancel",
+              "trusted": true,
+              "pointerType": "touch"
+            }
+          ],
+          "drag": [
+            {
+              "type": "pointerdown",
+              "trusted": true,
+              "pointerType": "touch"
+            }
+          ]
+        },
+        {
+          "label": "Erase preview",
+          "cancel": [
+            {
+              "type": "pointerdown",
+              "trusted": true,
+              "pointerType": "touch"
+            },
+            {
+              "type": "pointercancel",
+              "trusted": true,
+              "pointerType": "touch"
+            },
+            {
+              "type": "pointercancel",
+              "trusted": true,
+              "pointerType": "touch"
+            }
+          ],
+          "drag": [
+            {
+              "type": "pointerdown",
+              "trusted": true,
+              "pointerType": "touch"
+            }
+          ]
+        },
+        {
+          "label": "Fill preview",
+          "cancel": [
+            {
+              "type": "pointerdown",
+              "trusted": true,
+              "pointerType": "touch"
+            },
+            {
+              "type": "pointercancel",
+              "trusted": true,
+              "pointerType": "touch"
+            },
+            {
+              "type": "pointercancel",
+              "trusted": true,
+              "pointerType": "touch"
+            }
+          ],
+          "drag": [
+            {
+              "type": "pointerdown",
+              "trusted": true,
+              "pointerType": "touch"
+            }
+          ]
+        },
+        "Trusted touch cancellation and drag for each selected drawing tool make no preview/write. Opaque erase separately confirmed by keyboard."
+      ],
+      "motion": {
+        "reduced": true,
+        "inspected": 98,
+        "animated": []
+      },
+      "unnamed": []
+    },
+    {
+      "name": "gifts-keyboard-entry",
+      "width": 430,
+      "status": "FAIL",
+      "observations": [],
+      "failure": "Error: expect(locator).toBeVisible() failed\n\nLocator: getByRole('link', { name: /^Review reservation for / }).first()\nExpected: visible\nTimeout: 5000ms\nError: element(s) not found\n\nCall log:\n  - Expect \"to.be.visible\" with timeout 5000ms\n  - waiting for getByRole('link', { name: /^Review reservation for / }).first()\n\n    at captureRawStack (/Users/lhs/Desktop/mcr/frontend/node_modules/.pnpm/playwright-core@1.61.1/node_modules/playwright-core/lib/coreBundle.js:3172:17)\n    at callMatcherAsStep (/Users/lhs/Desktop/mcr/frontend/node_modules/.pnpm/playwright@1.61.1/node_modules/playwright/lib/matchers/expect.js:12877:57)\n    at Object.toBeVisible (/Users/lhs/Desktop/mcr/frontend/node_modules/.pnpm/playwright@1.61.1/node_modules/playwright/lib/matchers/expect.js:12867:23)\n    at tabTo (/Users/lhs/Desktop/mcr-worktrees/qa07-input-delta-332b/frontend/e2e/qa07-input-delta/native.mjs:20:53)\n    at /Users/lhs/Desktop/mcr-worktrees/qa07-input-delta-332b/frontend/e2e/qa07-input-delta/native.mjs:36:451\n    at async run (/Users/lhs/Desktop/mcr-worktrees/qa07-input-delta-332b/frontend/e2e/qa07-input-delta/native.mjs:27:354)\n    at async file:///Users/lhs/Desktop/mcr-worktrees/qa07-input-delta-332b/frontend/e2e/qa07-input-delta/native.mjs:36:1",
+      "pageErrors": [],
+      "unnamed": []
+    },
+    {
+      "name": "thread-keyboard",
+      "width": 430,
+      "status": "FAIL",
+      "observations": [],
+      "failure": "Error: expect(locator).toBeEnabled() failed\n\nLocator: getByRole('textbox', { name: 'Comment text', exact: true })\nExpected: enabled\nTimeout: 5000ms\nError: element(s) not found\n\nCall log:\n  - Expect \"to.be.enabled\" with timeout 5000ms\n  - waiting for getByRole('textbox', { name: 'Comment text', exact: true })\n\n    at captureRawStack (/Users/lhs/Desktop/mcr/frontend/node_modules/.pnpm/playwright-core@1.61.1/node_modules/playwright-core/lib/coreBundle.js:3172:17)\n    at callMatcherAsStep (/Users/lhs/Desktop/mcr/frontend/node_modules/.pnpm/playwright@1.61.1/node_modules/playwright/lib/matchers/expect.js:12877:57)\n    at Object.toBeEnabled (/Users/lhs/Desktop/mcr/frontend/node_modules/.pnpm/playwright@1.61.1/node_modules/playwright/lib/matchers/expect.js:12867:23)\n    at /Users/lhs/Desktop/mcr-worktrees/qa07-input-delta-332b/frontend/e2e/qa07-input-delta/native.mjs:37:180\n    at async run (/Users/lhs/Desktop/mcr-worktrees/qa07-input-delta-332b/frontend/e2e/qa07-input-delta/native.mjs:27:354)\n    at async file:///Users/lhs/Desktop/mcr-worktrees/qa07-input-delta-332b/frontend/e2e/qa07-input-delta/native.mjs:37:1",
+      "pageErrors": [],
+      "unnamed": []
+    },
+    {
+      "name": "meet-keyboard-focus",
+      "width": 430,
+      "status": "FAIL",
+      "observations": [],
+      "failure": "Error: expect(locator).toBeVisible() failed\n\nLocator: getByRole('link', { name: 'View details for Area A Queue Group', exact: true })\nExpected: visible\nTimeout: 5000ms\nError: element(s) not found\n\nCall log:\n  - Expect \"to.be.visible\" with timeout 5000ms\n  - waiting for getByRole('link', { name: 'View details for Area A Queue Group', exact: true })\n\n    at captureRawStack (/Users/lhs/Desktop/mcr/frontend/node_modules/.pnpm/playwright-core@1.61.1/node_modules/playwright-core/lib/coreBundle.js:3172:17)\n    at callMatcherAsStep (/Users/lhs/Desktop/mcr/frontend/node_modules/.pnpm/playwright@1.61.1/node_modules/playwright/lib/matchers/expect.js:12877:57)\n    at Object.toBeVisible (/Users/lhs/Desktop/mcr/frontend/node_modules/.pnpm/playwright@1.61.1/node_modules/playwright/lib/matchers/expect.js:12867:23)\n    at /Users/lhs/Desktop/mcr-worktrees/qa07-input-delta-332b/frontend/e2e/qa07-input-delta/native.mjs:38:245\n    at async run (/Users/lhs/Desktop/mcr-worktrees/qa07-input-delta-332b/frontend/e2e/qa07-input-delta/native.mjs:27:354)\n    at async file:///Users/lhs/Desktop/mcr-worktrees/qa07-input-delta-332b/frontend/e2e/qa07-input-delta/native.mjs:38:1",
+      "pageErrors": [],
+      "unnamed": []
+    }
+  ],
+  "pins": {
+    "frontend/e2e/qa07-input-delta/native.mjs": "f4b41f547d0808dcfda337729069bceb62550ad4a1a773867c3da036a671c27a",
+    "frontend/e2e/qa07-input-delta/fixture.tsx": "b14f493b1ea8a4b1f2f364f7b72c98863984c949fe587b4672b3a66ef4aecf01",
+    "frontend/src/features/mural/editor/MuralEditor.tsx": "246fd2334511777e452efe4e9be1d21be1c9bf513c1deafd830fdd4a99f07447",
+    "frontend/src/features/mural/editor/input.ts": "5c111dd36e002f7af687c3cb9fc398c9fdb4fd9909fdf85997c8336d268d7ec1",
+    "frontend/src/features/mural/editor/tools.ts": "134f6e9c87716b56b2259544ab33139a40810398d0c16e681d7536681b14789c",
+    "frontend/src/features/mural/editor/controller.ts": "412f821f6c8a7e4b810103abc6c6755422eb4f575cf7bed118862e515b7db795",
+    "frontend/src/features/mural/editor/__tests__/wall-tools-b/preview.tsx": "fb1eb455afdee326d43dba0557ddeef603e415cbac81a63884a2658ac2431aa8",
+    "frontend/src/features/mural/editor/editor.css": "b8bb2cb3c4e12a9719742c2636a035473f9b521531ffad70ff4626fcb98dbfea",
+    "frontend/src/features/mural/editor/tools-b.css": "f91c8578e02d334e4549b506400523a57853a2d951fc771def032f696371bd71",
+    "frontend/src/features/gift-discovery/ui/Gifts.tsx": "7fcfef793f1883117f1b3b1eac2ffe36d1e15834cafbd921619dc10c9468bb5a",
+    "frontend/src/features/gift-discovery/ui/reference-presentation.tsx": "2c71518ba195f9e50f0e9888ab0ef6fe0b2e0d02d969d4e1f4cf1f3165612754",
+    "frontend/src/features/gift-discovery/ui/reference-gifts.css": "0e6e68a6219857b49e308b83f340417bf0db05f012c613fab233759ee076969c",
+    "frontend/src/features/feed-thread/FeedThread.tsx": "5f3059b60a7087d324e83e775784ced89f595db0c19759cc0c3b56e3eb57c49a",
+    "frontend/src/features/party-discovery/ui/PartyDiscovery.tsx": "687d59c29d6155ead1df9152391af9f5422e6441b60b51b15df7084b0582f148",
+    "frontend/src/features/party-discovery/ui/party-discovery.css": "4bcd821855f976b558c5fd979ce759a97cbb1d4032fdf445dfdf3f468833b6db",
+    "frontend/src/features/party-discovery/__tests__/reference/preview.tsx": "5cf5e6eb55ea99cbfde176373a28e61e4a4eee559c73a380505ed1e84240cc8d",
+    "frontend/src/app/navigation.tsx": "2efd2d1236536e663f3fae00f74ecaacaea091a3474c45c47c845afa0a2ff1cc",
+    "frontend/pnpm-lock.yaml": "47ca44459819ad0e887d2f4f93394fdf3b1053b8f45edc9ceb0236981feee1f6",
+    "contracts/domain/v1/operations.json": "f9ee6dcd0e755b8d11179507fa6e0db16bc09e76970313ea5f46743cf8ee409d",
+    "contracts/domain/v1/mural.schema.json": "6ef0fea077a277d9029447ed60e6914a3665308969f91bf4ff4a93097e27d8a9",
+    "contracts/domain/v1/feed.schema.json": "f9b4b8912b2bf4513ab474ad690efdeaa23d64f97b220f9626c5b37c5e2e99ed",
+    "contracts/domain/v1/party.schema.json": "7cbea6af623668a36d641e7498bf52f4869b9bc44594b46e7f4a3806cc907d03",
+    "contracts/domain/v1/giveaway.schema.json": "3a5af6301bb9514623aa7d6e68b3ee27b4b89709836801f4c10741f149a7577d"
+  },
+  "limits": [
+    "Explicitly synthetic authority/HTTP/stock/venue, actual production UI/controllers",
+    "Native desktop Chrome CSS widths, not physical devices or spoken assistive technology",
+    "Unchanged QA07 36-cell baseline and feature checks reused separately; no IN04 or full visual matrix"
+  ],
+  "browser": "156.0.8078.80",
+  "node": "v24.22.2",
+  "finished": "2026-11-04T20:02:19.591Z",
+  "status": "FAIL"
+}

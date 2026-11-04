@@ -1,0 +1,172 @@
+{
+  "baseline": "QA07 current/native.json historical36cellPASS",
+  "baselinePins": "docs/mcr/evidence/accessibility/qa07/current/input-pins.json",
+  "groups": {
+    "shared-sheet": [
+      {
+        "path": "frontend/src/shared/ui/Dialog.tsx",
+        "baseline": "f2c7a386e77652325206bafb4067f024a867754a112f021e3fa499ba78d3ee18",
+        "current": "f2c7a386e77652325206bafb4067f024a867754a112f021e3fa499ba78d3ee18",
+        "identical": true
+      },
+      {
+        "path": "frontend/src/shared/ui/Tabs.tsx",
+        "baseline": "4ee35f9bb32595681107138943b38b5c8fcaee9532cd052985482d19ae5fe1ee",
+        "current": "4ee35f9bb32595681107138943b38b5c8fcaee9532cd052985482d19ae5fe1ee",
+        "identical": true
+      },
+      {
+        "path": "frontend/src/shared/ui/concert-window/concert-window.css",
+        "baseline": "54bc2ca1737e48c589d2456530c529af39a50e6413aace8dec1bfa5ae5564032",
+        "current": "ae2b0c9e1a1e638218823b7e6715a53b5d6af6020069e2c858bb3450da493d3f",
+        "identical": false
+      },
+      {
+        "path": "frontend/src/shared/ui/concert-window/index.tsx",
+        "baseline": "30568e75d61b31644ef105b2ef25fc150de19f7d604bad43615b97d1506efc10",
+        "current": "17aa9096ebe34f7d9c0ab49c669088672135713960fd3a7915eb8ba13b439154",
+        "identical": false
+      },
+      {
+        "path": "frontend/src/shared/ui/controls.tsx",
+        "baseline": "0aca62d6862fa0a0e2cc28d53cf58f184defdc6f7f63afe0484d8c87931c470d",
+        "current": "0aca62d6862fa0a0e2cc28d53cf58f184defdc6f7f63afe0484d8c87931c470d",
+        "identical": true
+      },
+      {
+        "path": "frontend/src/shared/ui/feedback.tsx",
+        "baseline": "b4c0517287e8f139799d6a836b66edd9961c00a6feb44bac173781a75a7f607f",
+        "current": "b4c0517287e8f139799d6a836b66edd9961c00a6feb44bac173781a75a7f607f",
+        "identical": true
+      },
+      {
+        "path": "frontend/src/shared/ui/index.ts",
+        "baseline": "4e34ffa485bd8d73feaaa0ad69ea3b12eeb0e2eccc606a3051cde37a9c3a346f",
+        "current": "4e34ffa485bd8d73feaaa0ad69ea3b12eeb0e2eccc606a3051cde37a9c3a346f",
+        "identical": true
+      },
+      {
+        "path": "frontend/src/shared/ui/modal-focus.ts",
+        "baseline": "b8d0e5833ba7e0724e8233a629e6a64a682faf81df93ed5aba4ee38c86f9d328",
+        "current": "b8d0e5833ba7e0724e8233a629e6a64a682faf81df93ed5aba4ee38c86f9d328",
+        "identical": true
+      }
+    ],
+    "safety": [
+      {
+        "path": "frontend/src/features/safety/Dialog.tsx",
+        "baseline": "8cfdf13e621986fadba50e35ceb16f0515dbf85ab346fb82077e3af2147e4531",
+        "current": "8cfdf13e621986fadba50e35ceb16f0515dbf85ab346fb82077e3af2147e4531",
+        "identical": true
+      },
+      {
+        "path": "frontend/src/features/safety/contract.ts",
+        "baseline": "745f22ba62f469ee3dc630982c78b2402e7b1cffbf92725545e98638405b8c6a",
+        "current": "745f22ba62f469ee3dc630982c78b2402e7b1cffbf92725545e98638405b8c6a",
+        "identical": true
+      },
+      {
+        "path": "frontend/src/features/safety/controller.ts",
+        "baseline": "ea8e95f49ff85fe4988da2aa5dea4d3020c42a793598783fcd5753e25f7f9086",
+        "current": "ea8e95f49ff85fe4988da2aa5dea4d3020c42a793598783fcd5753e25f7f9086",
+        "identical": true
+      },
+      {
+        "path": "frontend/src/features/safety/index.ts",
+        "baseline": "921d0b514ac2712b2779fe261a344db99391bd19632c4dedbe67f38e166ed3f6",
+        "current": "921d0b514ac2712b2779fe261a344db99391bd19632c4dedbe67f38e166ed3f6",
+        "identical": true
+      },
+      {
+        "path": "frontend/src/features/safety/panels.tsx",
+        "baseline": "20ec17735ca3707edc70696c89276cf0c612228d322caa9d76f95e6c4d315875",
+        "current": "2106edf5605dab8d4fab2f37f897f24da7d885097cbbfba19cd9ce64a6903d73",
+        "identical": false
+      },
+      {
+        "path": "frontend/src/features/safety/safety.css",
+        "baseline": "782ea4c4b0a31aeebf42311489454e1b20beb4140e94c94c3a215e592e07489f",
+        "current": "782ea4c4b0a31aeebf42311489454e1b20beb4140e94c94c3a215e592e07489f",
+        "identical": true
+      }
+    ],
+    "pickup": [
+      {
+        "path": "frontend/src/features/gift-pickup/index.ts",
+        "baseline": "123ea5f847aa27a3781771d23e764dcb3e11c6585ea531f417db7b6d7defaf8f",
+        "current": "123ea5f847aa27a3781771d23e764dcb3e11c6585ea531f417db7b6d7defaf8f",
+        "identical": true
+      },
+      {
+        "path": "frontend/src/features/gift-pickup/model/controller.ts",
+        "baseline": "d25ddec12bf16994ec63d689ea3fb021e04d0b0bae3c5e8a0ca9188d4c7237d3",
+        "current": "d25ddec12bf16994ec63d689ea3fb021e04d0b0bae3c5e8a0ca9188d4c7237d3",
+        "identical": true
+      },
+      {
+        "path": "frontend/src/features/gift-pickup/model/journal.ts",
+        "baseline": "94b3b854d3413784740fb20f736894fe147cbe1cfc3bf28c0b8c9e139d483264",
+        "current": "94b3b854d3413784740fb20f736894fe147cbe1cfc3bf28c0b8c9e139d483264",
+        "identical": true
+      },
+      {
+        "path": "frontend/src/features/gift-pickup/ui/GiftPickup.tsx",
+        "baseline": "496faaea6d6d69d306da452b80e976c6cf95fbca6620334f9c99253017575dd7",
+        "current": "496faaea6d6d69d306da452b80e976c6cf95fbca6620334f9c99253017575dd7",
+        "identical": true
+      },
+      {
+        "path": "frontend/src/features/gift-pickup/ui/pickup.css",
+        "baseline": "a8cdf20921d8b4133d1ff300003100c670cc232006a14c1472893ab1c75be791",
+        "current": "a8cdf20921d8b4133d1ff300003100c670cc232006a14c1472893ab1c75be791",
+        "identical": true
+      }
+    ],
+    "social": [
+      {
+        "path": "frontend/src/features/social-sharing/index.ts",
+        "baseline": "030e8036ad14902c239f742dbe6766d633a7cb9a5eae642f865f9baf03e0ec3b",
+        "current": "030e8036ad14902c239f742dbe6766d633a7cb9a5eae642f865f9baf03e0ec3b",
+        "identical": true
+      },
+      {
+        "path": "frontend/src/features/social-sharing/model/contract.ts",
+        "baseline": "eba5001637bc1b1cc5fcb98ec764cc5aa1ac4faf171f8fabac519e2f676e5426",
+        "current": "eba5001637bc1b1cc5fcb98ec764cc5aa1ac4faf171f8fabac519e2f676e5426",
+        "identical": true
+      },
+      {
+        "path": "frontend/src/features/social-sharing/model/controller.ts",
+        "baseline": "a798c5f50cf278a998517c552fc678b818c04ba569e3ff53174560677697e18c",
+        "current": "a798c5f50cf278a998517c552fc678b818c04ba569e3ff53174560677697e18c",
+        "identical": true
+      },
+      {
+        "path": "frontend/src/features/social-sharing/model/runtime.ts",
+        "baseline": "999c074719e88f889130fd7726dbccbc969d2cab15c36d0813f1f54001652b53",
+        "current": "999c074719e88f889130fd7726dbccbc969d2cab15c36d0813f1f54001652b53",
+        "identical": true
+      },
+      {
+        "path": "frontend/src/features/social-sharing/ui/SocialSharing.tsx",
+        "baseline": "51b410255fd7a2bc21c34291d7fb091b830bd6b22e44f5016c7dd8415753cfb6",
+        "current": "51b410255fd7a2bc21c34291d7fb091b830bd6b22e44f5016c7dd8415753cfb6",
+        "identical": true
+      },
+      {
+        "path": "frontend/src/features/social-sharing/ui/sharing.css",
+        "baseline": "4213c99408d0feaaf2a8e39b4ad5876bc7fadfc8123bcdd03562f2ab0c47823c",
+        "current": "4213c99408d0feaaf2a8e39b4ad5876bc7fadfc8123bcdd03562f2ab0c47823c",
+        "identical": true
+      }
+    ],
+    "wall-input": [
+      {
+        "path": "frontend/src/features/mural/editor/input.ts",
+        "baseline": "6e2744b189e6887f34c477a28a7522f5d76c4c3e16ee25cf1141f1c65cf57b04",
+        "current": "5c111dd36e002f7af687c3cb9fc398c9fdb4fd9909fdf85997c8336d268d7ec1",
+        "identical": false
+      }
+    ]
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "assessedEpoch": 1793823499.176665,
+  "method": "Developer opened every full PNG via the local image viewer",
+  "images": [
+    "native-02/360-gifts-keyboard-entry.png",
+    "native-02/360-thread-keyboard.png",
+    "native-02/360-meet-keyboard-focus.png",
+    "native-02/390-gifts-keyboard-entry.png",
+    "native-02/390-thread-keyboard.png",
+    "native-02/390-meet-keyboard-focus.png",
+    "native-02/430-gifts-keyboard-entry.png",
+    "native-02/430-thread-keyboard.png",
+    "native-02/430-meet-keyboard-focus.png"
+  ],
+  "result": "PASS for all nine captured changed-control outcomes; guard finalization remains separate",
+  "observations": [
+    "Gifts: all tabs and the named Reserve action remain readable; browser POP leaves the Reserve focus ring visible at all widths.",
+    "Thread: reaction, report, edit/delete actions, both comments and labeled empty reply input are readable; controls wrap within all widths.",
+    "Meet: Parties/People/MY PLAN, JOIN, Filter parties and Create party remain visible; browser POP leaves the Create focus ring visible at all widths. Portrait placeholder is explicitly unavailable, not generated art.",
+    "Actual native assertions recorded 44px or larger audited targets, no clipped focus outline, no unnamed interactive AX nodes and nonempty reduced-motion scopes with no animation/transition. Meet summary uses existing 3px inward outline with no clipping."
+  ],
+  "limits": [
+    "Final images do not capture every transient focus/confirmation state; raw cell observations record those assertions.",
+    "All nine complete case records are in the unmodified partial report. Outer guard shutdown failed after them; this assessment does not fabricate a finalized native PASS or real Auth/enrollment/device/speech qualification."
+  ]
+}

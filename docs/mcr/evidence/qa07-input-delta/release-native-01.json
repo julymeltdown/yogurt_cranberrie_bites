@@ -1,0 +1,16 @@
+{
+  "job": "QA07-CHANGED-FIFTEEN-BROWSER-20261104T1955Z",
+  "fullEpoch": 1793822557.501533,
+  "remainingOwnedPids": [],
+  "ownLinkAbsent": true,
+  "ownTempAbsent": true,
+  "port5307": "bind/listen/reuse succeeded then closed",
+  "currentReservation": 0,
+  "withinFullDeadline": true,
+  "free": 12743172096,
+  "result": "FAIL retained; no acceptance",
+  "passed": 6,
+  "failed": 9,
+  "total": 15,
+  "failureDiagnosis": "Existing Gifts/Thread/Meet synthetic Auth fixtures do not answer newly enforced canonical enrollment admission GET; source inspected. Requires new owned fixture adapter repair, not bypass or app change."
+}

@@ -1,0 +1,40 @@
+{
+  "job": "QA07-INPUT-DELTA-SOURCE-20261104T1927Z",
+  "round": "source-01",
+  "started": 1793820593.914894,
+  "deadline": 1793820824.6319182,
+  "cleanupDeadline": 1793820884.6319182,
+  "taskCarryAtStart": 73966,
+  "ownedGitReservation": 8388608,
+  "peaks": {
+    "durable": 16085,
+    "temp": 0,
+    "new": 8462574,
+    "whole": 1869209838
+  },
+  "floor": 8589934592,
+  "outstandingGrowthReservation": 1476395008,
+  "retainedCheckoutStart": 1420431360,
+  "retainedReadOnlyDepsStart": 438317056,
+  "ownGitMetadataStart": 2052096,
+  "ownGitObjectsStart": 20718,
+  "pid": 14571,
+  "minFree": 16535764992,
+  "lastDescendants": [
+    14571,
+    14573
+  ],
+  "allSeenPids": [
+    14571,
+    14573
+  ],
+  "peakPids": 2,
+  "peakRss": 876773376,
+  "exitCode": 0,
+  "finished": 1793820597.5953941,
+  "ownLinkAbsent": true,
+  "ownTempAbsent": true,
+  "durableBytes": 19755,
+  "cleanupWithinDeadline": true,
+  "free": 16557735936
+}

@@ -1,0 +1,18 @@
+{
+  "recordedEpoch": 1793820783.651335,
+  "job": "QA07-INPUT-DELTA-SOURCE-20261104T1927Z",
+  "updateReceivedAfterActualFULL": true,
+  "updatedOtherReservations": {
+    "OpsFOLLOWUP1920Rust": 2147483648,
+    "FE34SOURCE1932": 134217728,
+    "PartyUNITCOPIED1932": 67108864
+  },
+  "updatedOtherTotal": 2348810240,
+  "updatedAllIncludingOwn": 2483027968,
+  "actualFreeAtAdmission": 16544698368,
+  "freeAfterUpdatedAll": 14061670400,
+  "requiredAllReserveFloor": 9663676416,
+  "floorStillSatisfied": true,
+  "jobCountsUnchanged": "4global/2SOURCE; actual source already FULL; no new acceptance or replay",
+  "previousAdmissionPreserved": "admission-source-01.json"
+}

@@ -1,0 +1,52 @@
+{
+  "job": "QA07-GUARD-SHUTDOWN-20261104T2020Z",
+  "round": "native-03",
+  "guardReadyEpoch": 1793823996.8863108,
+  "guardianPid": 22705,
+  "deadline": 1793824045.561403,
+  "fullDeadline": 1793824105.561403,
+  "base": {
+    "checkout": 1421774848,
+    "deps": 438317056,
+    "gitmeta": 2068480
+  },
+  "carry": 2225689,
+  "priorWholeMax": 1901942193,
+  "priorNewMax": 41158065,
+  "gitObjects": 857625,
+  "peaks": {
+    "pids": 7,
+    "rss": 1050509312,
+    "tmp": 29859840,
+    "durable": 1355776,
+    "whole": 1901942193,
+    "new": 41158065
+  },
+  "minFree": 17693024256,
+  "innerPid": 22716,
+  "exitCode": 0,
+  "finishedEpoch": 1793823999.829663,
+  "allSeenPids": [
+    22705,
+    22716,
+    22717,
+    22736,
+    22799,
+    22802,
+    22805,
+    22829,
+    22842,
+    23006,
+    23408
+  ],
+  "linkAbsent": true,
+  "tempAbsent": true,
+  "withinFullDeadline": true,
+  "transientDiskRaces": [
+    {
+      "epoch": 1793823998.635614,
+      "detail": "du: /private/tmp/mcr-qa07-delta-native-03/playwright-artifacts-DTjF2J: No such file or directory\n",
+      "partialAllocatedBytes": 29859840
+    }
+  ]
+}

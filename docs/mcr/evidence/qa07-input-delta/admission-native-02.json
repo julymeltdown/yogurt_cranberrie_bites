@@ -1,0 +1,68 @@
+{
+  "job": "QA07-AFFECTED-NINE-BROWSER-20261104T2010Z",
+  "acceptedEpoch": 1793823271.634472,
+  "workDeadline": 1793823571.634472,
+  "fullDeadline": 1793823631.634472,
+  "candidate": "6240363f34ce7b66636318979021f2989ccfef65",
+  "free": 18910404608,
+  "otherReservations": 2885681152,
+  "ownNew": 134217728,
+  "allReservations": 3019898880,
+  "afterAll": 15890505728,
+  "inventory": "Fresh predecessor report: A<=2GiB B<=320MiB D<=128MiB ordinaryBE38+Reportprep<=256MiB combined; no sums of all future A offers.",
+  "predecessor": {
+    "job": "FE19-DENSITY-THREE-CONTEXT-BROWSER-20261104T2010Z",
+    "owner": "01a1a26e-1de2-7b41-a294-c9a79cfded9b",
+    "full": "2026-11-04T20:13:59.955664Z",
+    "resources": 0,
+    "result": "FAIL retained; release independent of acceptance"
+  },
+  "pins": {
+    "docs/mcr/evidence/qa07-input-delta/browser_guard.py": "e199b0d6825339620b02733c0834ae5a775e47822e40d8b9b225fdf522d7bb55",
+    "docs/mcr/evidence/qa07-input-delta/supervise.py": "4a877cbf8b4d63df0a70de098066be512bf8cdbf72895293c8e6d77c144282a2",
+    "frontend/e2e/qa07-input-delta/native.mjs": "76144d46d1786dd95de2bd8ccad4929cf7d366d692f78a42e8c10cef3e0bf52a",
+    "frontend/e2e/qa07-input-delta/fixture.tsx": "c6b1bcc4ca746c479d89b8a6de984b0da41b18b6f5b62b7cf8e2fe46cf498e39"
+  },
+  "selection": {
+    "QA07_REPAIR_ONLY": "1",
+    "widths": [
+      360,
+      390,
+      430
+    ],
+    "scenarios": [
+      "gifts-keyboard-entry",
+      "thread-keyboard",
+      "meet-keyboard-focus"
+    ],
+    "expected": 9,
+    "preflight": [
+      "changedfixturetypes",
+      "scopedlint"
+    ],
+    "reused": 6
+  },
+  "caps": {
+    "work": 300,
+    "cleanup": 60,
+    "allPids": 24,
+    "rss": 4294967296,
+    "whole": 2147483648,
+    "minimumHistoricalWhole": 1900222204,
+    "minimumHistoricalNew": 39446268,
+    "new": 134217728,
+    "tmp": 100663296,
+    "durable": 25165824,
+    "git": 8388608,
+    "startFree": 11811160064,
+    "allReserveFloor": 9663676416,
+    "liveFloor": 8589934592
+  },
+  "slotsAfterMaximum": {
+    "global": 4,
+    "SOURCE": 2,
+    "browser": 2
+  },
+  "port5307": "fresh bind free",
+  "priorFailuresAndCarry": "retained; no old15/Wall6/source4/old36 replay"
+}

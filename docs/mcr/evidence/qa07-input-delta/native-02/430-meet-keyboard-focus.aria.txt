@@ -1,0 +1,30 @@
+- banner:
+  - heading "MEET" [level=1]
+- main:
+  - navigation "Meet views":
+    - button "Parties" [pressed]
+    - link "People":
+      - /url: /meet/people
+    - button "MY PLAN"
+  - region "Party discovery":
+    - heading "Find your company" [level=2]
+    - list:
+      - listitem:
+        - img "Host portrait unavailable"
+        - heading "Area A Queue Group" [level=3]:
+          - link "Area A Queue Group":
+            - /url: /meet/parties/00000000-0000-4000-8000-000000000010
+        - paragraph:
+          - text: Area A ·
+          - time: 17:30
+        - paragraph: Member portraits unavailable
+        - text: 8 spaces. open. Hosted by Jules · fixture. Meeting Nov 8, 5:30 PM GMT+9. 12/20 members
+        - link "View details for Area A Queue Group":
+          - /url: /meet/parties/00000000-0000-4000-8000-000000000010
+          - text: Join
+    - group: Filter parties
+    - button "Refresh parties": Refresh
+    - paragraph: JOIN opens party details. The host approves membership; a virtual position does not confirm arrival. Times are Korea Standard Time.
+  - link "Create party":
+    - /url: /meet/parties/new
+- complementary: QA07 SYNTHETIC ADMISSION AND PARTY · NO LIVE SERVICE · PORTRAITS UNAVAILABLE

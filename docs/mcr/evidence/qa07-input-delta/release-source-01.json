@@ -1,0 +1,13 @@
+{
+  "job": "QA07-INPUT-DELTA-SOURCE-20261104T1927Z",
+  "fullEpoch": 1793820606.08381,
+  "remainingOwnedPids": [],
+  "ownLinkAbsent": true,
+  "ownTempAbsent": true,
+  "portsOwned": 0,
+  "currentReservation": 0,
+  "sourceResult": "PASS: types/lint/syntax/check-plan 4/4",
+  "free": 16630120448,
+  "supervisor": "supervisor-source-01.json",
+  "fullWithinDeadline": true
+}

@@ -1,0 +1,4 @@
+Observed at candidate6240363f34ce7b66636318979021f2989ccfef65; preserved from outer guard execution stderr.
+du: /private/tmp/mcr-qa07-delta-native-02/playwright_chromiumdev_profile-8ZBaUY/Default/.com.google.Chrome.TransportSecurity.YOeNfz: No such file or directory
+subprocess.CalledProcessError: Command [du, -sk, /private/tmp/mcr-qa07-delta-native-02] returned non-zero exit status 1.
+Outer finally cleanup terminated native with143 before final report.json. Nine complete report.partial.json cells and every PNG/AX/ARIA file remain unmodified.

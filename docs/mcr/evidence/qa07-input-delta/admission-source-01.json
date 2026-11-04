@@ -1,0 +1,46 @@
+{
+  "job": "QA07-INPUT-DELTA-SOURCE-20261104T1927Z",
+  "kind": "source",
+  "candidate": "ce04ecb9780bca31a93a0f9d509e2ef2232d2b0f",
+  "acceptedEpoch": 1793820584.6319182,
+  "workDeadline": 1793820824.6319182,
+  "fullDeadline": 1793820884.6319182,
+  "freeAtAdmission": 16544698368,
+  "otherReservations": {
+    "Auth207Rust": 1073741824,
+    "QA06Browser": 268435456,
+    "RootSOURCE1927": 134217728
+  },
+  "otherTotal": 1476395008,
+  "ownNew": 134217728,
+  "allOutstanding": 1610612736,
+  "conservativeJobsBefore": {
+    "global": 3,
+    "SOURCE": 1,
+    "browser": 1
+  },
+  "conservativeJobsAfter": {
+    "global": 4,
+    "SOURCE": 2,
+    "browser": 1
+  },
+  "predecessor": {
+    "job": "CORE-COHERENT-METADATA-SOURCE-20261104T1927Z",
+    "owner": "01a1a533-50a8-7fb2-b3ed-96b941b96bbf",
+    "full": "2026-11-04T19:28:17.325379+00:00",
+    "reservation": 0,
+    "pids": "drained",
+    "temporaryPaths": "absent",
+    "ports": 0
+  },
+  "scope": "additive tsc/lint/Node syntax/check-plan only; no browser/install/build/DB/matrix",
+  "caps": {
+    "pids": 16,
+    "rss": 4294967296,
+    "whole": 2147483648,
+    "new": 134217728,
+    "tmp": 100663296,
+    "durable": 25165824,
+    "git": 8388608
+  }
+}

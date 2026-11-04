@@ -1,0 +1,7 @@
+- main:
+  - paragraph: QA07 synthetic Thread input fixture; no real post or moderation.
+  - region "Post thread":
+    - heading "THREAD" [level=1]
+    - alert:
+      - paragraph: The request failed. Try again when the service is available.
+      - button "Retry read"

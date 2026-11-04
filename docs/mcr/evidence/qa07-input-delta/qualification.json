@@ -1,0 +1,197 @@
+{
+  "qualifiedEpoch": 1793824093.660529,
+  "disposition": "QUALIFIED_CHANGED_SOFTWARE_DELTA; canonical publication pending",
+  "functionalCells": {
+    "passed": 15,
+    "total": 15,
+    "widths": [
+      360,
+      390,
+      430
+    ],
+    "sources": [
+      {
+        "report": "native-01/report.json",
+        "candidate": "49c7656203e21b9aff26f57e64b19caddec23687",
+        "selection": "six passing Wall cells only; original nine failed cells retained"
+      },
+      {
+        "report": "native-02/report.partial.json",
+        "candidate": "6240363f34ce7b66636318979021f2989ccfef65",
+        "selection": "all nine complete passing repaired cells; original job FAILED finalization and remains FAILED"
+      }
+    ]
+  },
+  "guardCorrection": {
+    "report": "native-03/report.json",
+    "candidate": "73a2e74e3a0a78b3b3510342def48af019e676f8",
+    "status": "PASS_GUARD_SHUTDOWN",
+    "diskRegressions": {
+      "status": "PASS",
+      "checks": [
+        "actual allocated blocks counted",
+        "observed private Chrome ENOENT preserves measured subtotal and records race",
+        "permission error remains fatal",
+        "nonprivate missing input remains fatal",
+        "completed private TMP cleanup counts zero"
+      ]
+    },
+    "realChromeRaceHandled": [
+      {
+        "epoch": 1793823998.635614,
+        "detail": "du: /private/tmp/mcr-qa07-delta-native-03/playwright-artifacts-DTjF2J: No such file or directory\n",
+        "partialAllocatedBytes": 29859840
+      }
+    ],
+    "guardsExit": [
+      0,
+      0
+    ],
+    "journeyCells": 0,
+    "closure": "independently verified release-native-03.json"
+  },
+  "visualAssessment": [
+    "visual-assessment-native-01.json",
+    "visual-assessment-native-02.json"
+  ],
+  "sourceQualification": [
+    {
+      "report": "source-01/report.json",
+      "candidate": "ce04ecb9780bca31a93a0f9d509e2ef2232d2b0f",
+      "checks": "types/lint/native syntax/planning consistency"
+    },
+    {
+      "report": "native-02/report.partial.json",
+      "candidate": "6240363f34ce7b66636318979021f2989ccfef65",
+      "checks": "changed fixture types and scoped lint; fixture bytes unchanged since this qualification"
+    }
+  ],
+  "reusedWallSourcePins": {
+    "frontend/src/features/mural/editor/MuralEditor.tsx": "246fd2334511777e452efe4e9be1d21be1c9bf513c1deafd830fdd4a99f07447",
+    "frontend/src/features/mural/editor/input.ts": "5c111dd36e002f7af687c3cb9fc398c9fdb4fd9909fdf85997c8336d268d7ec1",
+    "frontend/src/features/mural/editor/tools.ts": "134f6e9c87716b56b2259544ab33139a40810398d0c16e681d7536681b14789c",
+    "frontend/src/features/mural/editor/controller.ts": "412f821f6c8a7e4b810103abc6c6755422eb4f575cf7bed118862e515b7db795",
+    "frontend/src/features/mural/editor/__tests__/wall-tools-b/preview.tsx": "fb1eb455afdee326d43dba0557ddeef603e415cbac81a63884a2658ac2431aa8",
+    "frontend/src/features/mural/editor/editor.css": "b8bb2cb3c4e12a9719742c2636a035473f9b521531ffad70ff4626fcb98dbfea",
+    "frontend/src/features/mural/editor/tools-b.css": "f91c8578e02d334e4549b506400523a57853a2d951fc771def032f696371bd71"
+  },
+  "repairedCaseInputPinsStillMatch": {
+    "frontend/e2e/qa07-input-delta/fixture.tsx": {
+      "sha256": "c6b1bcc4ca746c479d89b8a6de984b0da41b18b6f5b62b7cf8e2fe46cf498e39",
+      "currentMatches": true
+    },
+    "frontend/src/features/auth/__tests__/enrollment-consent/fixtures.ts": {
+      "sha256": "6b6a5b8f757d626d565fd71a36a891bb4b6a15aaaa23d206a69dc89726a9fbd4",
+      "currentMatches": true
+    },
+    "frontend/src/features/auth/model/enrollment-contract.ts": {
+      "sha256": "407dfaa9f512ca35d474b5f4470a864b082bc24e8b8e6b9a968ceefb9cb7b37b",
+      "currentMatches": true
+    },
+    "frontend/src/features/auth/model/session.ts": {
+      "sha256": "12289039f5d10a0d87b1403220e80dd8a4da2feda8452c5b73a9b241052104f7",
+      "currentMatches": true
+    },
+    "frontend/src/features/mural/editor/MuralEditor.tsx": {
+      "sha256": "246fd2334511777e452efe4e9be1d21be1c9bf513c1deafd830fdd4a99f07447",
+      "currentMatches": true
+    },
+    "frontend/src/features/mural/editor/input.ts": {
+      "sha256": "5c111dd36e002f7af687c3cb9fc398c9fdb4fd9909fdf85997c8336d268d7ec1",
+      "currentMatches": true
+    },
+    "frontend/src/features/mural/editor/tools.ts": {
+      "sha256": "134f6e9c87716b56b2259544ab33139a40810398d0c16e681d7536681b14789c",
+      "currentMatches": true
+    },
+    "frontend/src/features/mural/editor/controller.ts": {
+      "sha256": "412f821f6c8a7e4b810103abc6c6755422eb4f575cf7bed118862e515b7db795",
+      "currentMatches": true
+    },
+    "frontend/src/features/mural/editor/__tests__/wall-tools-b/preview.tsx": {
+      "sha256": "fb1eb455afdee326d43dba0557ddeef603e415cbac81a63884a2658ac2431aa8",
+      "currentMatches": true
+    },
+    "frontend/src/features/mural/editor/editor.css": {
+      "sha256": "b8bb2cb3c4e12a9719742c2636a035473f9b521531ffad70ff4626fcb98dbfea",
+      "currentMatches": true
+    },
+    "frontend/src/features/mural/editor/tools-b.css": {
+      "sha256": "f91c8578e02d334e4549b506400523a57853a2d951fc771def032f696371bd71",
+      "currentMatches": true
+    },
+    "frontend/src/features/gift-discovery/ui/Gifts.tsx": {
+      "sha256": "7fcfef793f1883117f1b3b1eac2ffe36d1e15834cafbd921619dc10c9468bb5a",
+      "currentMatches": true
+    },
+    "frontend/src/features/gift-discovery/ui/reference-presentation.tsx": {
+      "sha256": "2c71518ba195f9e50f0e9888ab0ef6fe0b2e0d02d969d4e1f4cf1f3165612754",
+      "currentMatches": true
+    },
+    "frontend/src/features/gift-discovery/ui/reference-gifts.css": {
+      "sha256": "0e6e68a6219857b49e308b83f340417bf0db05f012c613fab233759ee076969c",
+      "currentMatches": true
+    },
+    "frontend/src/features/feed-thread/FeedThread.tsx": {
+      "sha256": "5f3059b60a7087d324e83e775784ced89f595db0c19759cc0c3b56e3eb57c49a",
+      "currentMatches": true
+    },
+    "frontend/src/features/party-discovery/ui/PartyDiscovery.tsx": {
+      "sha256": "687d59c29d6155ead1df9152391af9f5422e6441b60b51b15df7084b0582f148",
+      "currentMatches": true
+    },
+    "frontend/src/features/party-discovery/ui/party-discovery.css": {
+      "sha256": "4bcd821855f976b558c5fd979ce759a97cbb1d4032fdf445dfdf3f468833b6db",
+      "currentMatches": true
+    },
+    "frontend/src/features/party-discovery/__tests__/reference/preview.tsx": {
+      "sha256": "5cf5e6eb55ea99cbfde176373a28e61e4a4eee559c73a380505ed1e84240cc8d",
+      "currentMatches": true
+    },
+    "frontend/src/app/navigation.tsx": {
+      "sha256": "2efd2d1236536e663f3fae00f74ecaacaea091a3474c45c47c845afa0a2ff1cc",
+      "currentMatches": true
+    },
+    "frontend/pnpm-lock.yaml": {
+      "sha256": "47ca44459819ad0e887d2f4f93394fdf3b1053b8f45edc9ceb0236981feee1f6",
+      "currentMatches": true
+    },
+    "contracts/domain/v1/operations.json": {
+      "sha256": "f9ee6dcd0e755b8d11179507fa6e0db16bc09e76970313ea5f46743cf8ee409d",
+      "currentMatches": true
+    },
+    "contracts/domain/v1/mural.schema.json": {
+      "sha256": "6ef0fea077a277d9029447ed60e6914a3665308969f91bf4ff4a93097e27d8a9",
+      "currentMatches": true
+    },
+    "contracts/domain/v1/feed.schema.json": {
+      "sha256": "f9b4b8912b2bf4513ab474ad690efdeaa23d64f97b220f9626c5b37c5e2e99ed",
+      "currentMatches": true
+    },
+    "contracts/domain/v1/party.schema.json": {
+      "sha256": "7cbea6af623668a36d641e7498bf52f4869b9bc44594b46e7f4a3806cc907d03",
+      "currentMatches": true
+    },
+    "contracts/domain/v1/giveaway.schema.json": {
+      "sha256": "3a5af6301bb9514623aa7d6e68b3ee27b4b89709836801f4c10741f149a7577d",
+      "currentMatches": true
+    }
+  },
+  "nativeHarnessDifference": "Only independent guard regression/shutdown probe control mode added after the nine-cell observations; no settled journey replay. Final executed native source and candidate pinned in native-03/report.json.",
+  "scopeCheck": {
+    "base": "a10e4f409f5727cb25b6cc37d75f499a73e9bb70",
+    "committedFiles": 111,
+    "allAdditiveGrantedPaths": true,
+    "applicationOrOldTestsOrContractsOrArtworkWrites": false
+  },
+  "originalQA07Disposition": "Original36-cell synthetic native baseline reused selectively with source identity limits; changed-software remainder qualified. No blanket current36 rerun or whole original task/device/live/speech/production admission certification.",
+  "unresolvedExternal": [
+    "Physical iOS/Android and hardware keyboard/touch",
+    "Actual screen-reader speech output",
+    "Live canonical two-principal social/pickup",
+    "Production admission and release gates"
+  ],
+  "qa08": "DEFERRED; no performance qualification",
+  "resourceReservation": 0,
+  "publication": "Normal serialized Root153 committed handoff required; not yet published"
+}

@@ -1,0 +1,454 @@
+[
+  {
+    "role": "RootWebArea",
+    "name": "QA07 changed input fixture"
+  },
+  {
+    "role": "generic",
+    "name": ""
+  },
+  {
+    "role": "main",
+    "name": ""
+  },
+  {
+    "role": "paragraph",
+    "name": ""
+  },
+  {
+    "role": "region",
+    "name": "Post thread"
+  },
+  {
+    "role": "StaticText",
+    "name": "QA07 synthetic Thread input fixture; no real post or moderation."
+  },
+  {
+    "role": "heading",
+    "name": "THREAD"
+  },
+  {
+    "role": "article",
+    "name": ""
+  },
+  {
+    "role": "region",
+    "name": "Comments"
+  },
+  {
+    "role": "generic",
+    "name": ""
+  },
+  {
+    "role": "InlineTextBox",
+    "name": "QA07 synthetic Thread input fixture; no real post or "
+  },
+  {
+    "role": "InlineTextBox",
+    "name": "moderation."
+  },
+  {
+    "role": "StaticText",
+    "name": "THREAD"
+  },
+  {
+    "role": "sectionheader",
+    "name": ""
+  },
+  {
+    "role": "paragraph",
+    "name": ""
+  },
+  {
+    "role": "paragraph",
+    "name": ""
+  },
+  {
+    "role": "button",
+    "name": "Remove reaction"
+  },
+  {
+    "role": "button",
+    "name": "Report post"
+  },
+  {
+    "role": "button",
+    "name": "Edit post"
+  },
+  {
+    "role": "button",
+    "name": "Delete post"
+  },
+  {
+    "role": "heading",
+    "name": "Comments"
+  },
+  {
+    "role": "list",
+    "name": ""
+  },
+  {
+    "role": "form",
+    "name": ""
+  },
+  {
+    "role": "paragraph",
+    "name": ""
+  },
+  {
+    "role": "InlineTextBox",
+    "name": "THREAD"
+  },
+  {
+    "role": "image",
+    "name": "Fixture fan: avatar unavailable"
+  },
+  {
+    "role": "strong",
+    "name": ""
+  },
+  {
+    "role": "time",
+    "name": ""
+  },
+  {
+    "role": "StaticText",
+    "name": "See you at the show"
+  },
+  {
+    "role": "StaticText",
+    "name": "1"
+  },
+  {
+    "role": "StaticText",
+    "name": " reactions · "
+  },
+  {
+    "role": "StaticText",
+    "name": "0"
+  },
+  {
+    "role": "StaticText",
+    "name": " comments"
+  },
+  {
+    "role": "StaticText",
+    "name": "Remove reaction"
+  },
+  {
+    "role": "StaticText",
+    "name": "Report post"
+  },
+  {
+    "role": "StaticText",
+    "name": "Edit post"
+  },
+  {
+    "role": "StaticText",
+    "name": "Delete post"
+  },
+  {
+    "role": "StaticText",
+    "name": "Comments"
+  },
+  {
+    "role": "listitem",
+    "name": ""
+  },
+  {
+    "role": "listitem",
+    "name": ""
+  },
+  {
+    "role": "LabelText",
+    "name": ""
+  },
+  {
+    "role": "textbox",
+    "name": "Comment text"
+  },
+  {
+    "role": "paragraph",
+    "name": ""
+  },
+  {
+    "role": "button",
+    "name": "Send comment"
+  },
+  {
+    "role": "StaticText",
+    "name": "The server confirmed this change."
+  },
+  {
+    "role": "StaticText",
+    "name": "F"
+  },
+  {
+    "role": "StaticText",
+    "name": "Fixture fan"
+  },
+  {
+    "role": "StaticText",
+    "name": "Just now"
+  },
+  {
+    "role": "InlineTextBox",
+    "name": "See you at the show"
+  },
+  {
+    "role": "InlineTextBox",
+    "name": "1"
+  },
+  {
+    "role": "InlineTextBox",
+    "name": " reactions · "
+  },
+  {
+    "role": "InlineTextBox",
+    "name": "0"
+  },
+  {
+    "role": "InlineTextBox",
+    "name": " comments"
+  },
+  {
+    "role": "InlineTextBox",
+    "name": "Remove reaction"
+  },
+  {
+    "role": "InlineTextBox",
+    "name": "Report post"
+  },
+  {
+    "role": "InlineTextBox",
+    "name": "Edit post"
+  },
+  {
+    "role": "InlineTextBox",
+    "name": "Delete post"
+  },
+  {
+    "role": "InlineTextBox",
+    "name": "Comments"
+  },
+  {
+    "role": "paragraph",
+    "name": ""
+  },
+  {
+    "role": "paragraph",
+    "name": ""
+  },
+  {
+    "role": "button",
+    "name": "Report comment"
+  },
+  {
+    "role": "button",
+    "name": "Edit comment"
+  },
+  {
+    "role": "button",
+    "name": "Delete comment"
+  },
+  {
+    "role": "paragraph",
+    "name": ""
+  },
+  {
+    "role": "paragraph",
+    "name": ""
+  },
+  {
+    "role": "button",
+    "name": "Report comment"
+  },
+  {
+    "role": "button",
+    "name": "Edit comment"
+  },
+  {
+    "role": "button",
+    "name": "Delete comment"
+  },
+  {
+    "role": "StaticText",
+    "name": "Comment text"
+  },
+  {
+    "role": "generic",
+    "name": ""
+  },
+  {
+    "role": "StaticText",
+    "name": "0"
+  },
+  {
+    "role": "StaticText",
+    "name": " / 1000 characters"
+  },
+  {
+    "role": "StaticText",
+    "name": "Send comment"
+  },
+  {
+    "role": "InlineTextBox",
+    "name": "The server confirmed this change."
+  },
+  {
+    "role": "InlineTextBox",
+    "name": "F"
+  },
+  {
+    "role": "InlineTextBox",
+    "name": "Fixture fan"
+  },
+  {
+    "role": "InlineTextBox",
+    "name": "Just now"
+  },
+  {
+    "role": "strong",
+    "name": ""
+  },
+  {
+    "role": "StaticText",
+    "name": " · "
+  },
+  {
+    "role": "time",
+    "name": ""
+  },
+  {
+    "role": "StaticText",
+    "name": "Synthetic editable reply"
+  },
+  {
+    "role": "StaticText",
+    "name": "Report comment"
+  },
+  {
+    "role": "StaticText",
+    "name": "Edit comment"
+  },
+  {
+    "role": "StaticText",
+    "name": "Delete comment"
+  },
+  {
+    "role": "strong",
+    "name": ""
+  },
+  {
+    "role": "StaticText",
+    "name": " · "
+  },
+  {
+    "role": "time",
+    "name": ""
+  },
+  {
+    "role": "StaticText",
+    "name": "QA07 synthetic keyboard reply"
+  },
+  {
+    "role": "StaticText",
+    "name": "Report comment"
+  },
+  {
+    "role": "StaticText",
+    "name": "Edit comment"
+  },
+  {
+    "role": "StaticText",
+    "name": "Delete comment"
+  },
+  {
+    "role": "InlineTextBox",
+    "name": "Comment text"
+  },
+  {
+    "role": "InlineTextBox",
+    "name": "0"
+  },
+  {
+    "role": "InlineTextBox",
+    "name": " / 1000 characters"
+  },
+  {
+    "role": "InlineTextBox",
+    "name": "Send comment"
+  },
+  {
+    "role": "StaticText",
+    "name": "Fixture fan"
+  },
+  {
+    "role": "InlineTextBox",
+    "name": " · "
+  },
+  {
+    "role": "StaticText",
+    "name": "11/7/2026, 5:00:00 PM"
+  },
+  {
+    "role": "InlineTextBox",
+    "name": "Synthetic editable reply"
+  },
+  {
+    "role": "InlineTextBox",
+    "name": "Report comment"
+  },
+  {
+    "role": "InlineTextBox",
+    "name": "Edit comment"
+  },
+  {
+    "role": "InlineTextBox",
+    "name": "Delete comment"
+  },
+  {
+    "role": "StaticText",
+    "name": "Fixture fan"
+  },
+  {
+    "role": "InlineTextBox",
+    "name": " · "
+  },
+  {
+    "role": "StaticText",
+    "name": "11/7/2026, 5:00:00 PM"
+  },
+  {
+    "role": "InlineTextBox",
+    "name": "QA07 synthetic keyboard reply"
+  },
+  {
+    "role": "InlineTextBox",
+    "name": "Report comment"
+  },
+  {
+    "role": "InlineTextBox",
+    "name": "Edit comment"
+  },
+  {
+    "role": "InlineTextBox",
+    "name": "Delete comment"
+  },
+  {
+    "role": "InlineTextBox",
+    "name": "Fixture fan"
+  },
+  {
+    "role": "InlineTextBox",
+    "name": "11/7/2026, 5:00:00 PM"
+  },
+  {
+    "role": "InlineTextBox",
+    "name": "Fixture fan"
+  },
+  {
+    "role": "InlineTextBox",
+    "name": "11/7/2026, 5:00:00 PM"
+  }
+]

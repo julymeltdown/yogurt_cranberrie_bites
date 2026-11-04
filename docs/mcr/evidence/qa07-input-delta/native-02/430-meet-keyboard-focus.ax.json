@@ -1,0 +1,334 @@
+[
+  {
+    "role": "RootWebArea",
+    "name": "QA07 changed input fixture"
+  },
+  {
+    "role": "generic",
+    "name": ""
+  },
+  {
+    "role": "banner",
+    "name": ""
+  },
+  {
+    "role": "main",
+    "name": ""
+  },
+  {
+    "role": "complementary",
+    "name": ""
+  },
+  {
+    "role": "heading",
+    "name": "MEET"
+  },
+  {
+    "role": "navigation",
+    "name": "Meet views"
+  },
+  {
+    "role": "region",
+    "name": "Party discovery"
+  },
+  {
+    "role": "sectionfooter",
+    "name": ""
+  },
+  {
+    "role": "StaticText",
+    "name": "QA07 SYNTHETIC ADMISSION AND PARTY · NO LIVE SERVICE · PORTRAITS UNAVAILABLE"
+  },
+  {
+    "role": "StaticText",
+    "name": "MEET"
+  },
+  {
+    "role": "button",
+    "name": "PARTIES"
+  },
+  {
+    "role": "link",
+    "name": "PEOPLE"
+  },
+  {
+    "role": "button",
+    "name": "MY PLAN"
+  },
+  {
+    "role": "heading",
+    "name": "Find your company"
+  },
+  {
+    "role": "list",
+    "name": ""
+  },
+  {
+    "role": "group",
+    "name": ""
+  },
+  {
+    "role": "button",
+    "name": "Refresh parties"
+  },
+  {
+    "role": "paragraph",
+    "name": ""
+  },
+  {
+    "role": "link",
+    "name": "CREATE PARTY"
+  },
+  {
+    "role": "InlineTextBox",
+    "name": "QA07 SYNTHETIC ADMISSION AND PARTY · NO LIVE SERVICE · PORTRAITS UNAVAILABLE"
+  },
+  {
+    "role": "InlineTextBox",
+    "name": "MEET"
+  },
+  {
+    "role": "StaticText",
+    "name": "PARTIES"
+  },
+  {
+    "role": "StaticText",
+    "name": "PEOPLE"
+  },
+  {
+    "role": "StaticText",
+    "name": "MY PLAN"
+  },
+  {
+    "role": "StaticText",
+    "name": "Find your company"
+  },
+  {
+    "role": "listitem",
+    "name": ""
+  },
+  {
+    "role": "DisclosureTriangle",
+    "name": "Filter parties"
+  },
+  {
+    "role": "StaticText",
+    "name": "Refresh"
+  },
+  {
+    "role": "StaticText",
+    "name": "JOIN opens party details. The host approves membership; a virtual position does not confirm arrival. Times are Korea Standard Time."
+  },
+  {
+    "role": "StaticText",
+    "name": "CREATE PARTY"
+  },
+  {
+    "role": "InlineTextBox",
+    "name": "PARTIES"
+  },
+  {
+    "role": "InlineTextBox",
+    "name": "PEOPLE"
+  },
+  {
+    "role": "InlineTextBox",
+    "name": "MY PLAN"
+  },
+  {
+    "role": "InlineTextBox",
+    "name": "Find your company"
+  },
+  {
+    "role": "generic",
+    "name": "Host: Jules · fixture"
+  },
+  {
+    "role": "heading",
+    "name": "Area A Queue Group"
+  },
+  {
+    "role": "StaticText",
+    "name": "Area A"
+  },
+  {
+    "role": "StaticText",
+    "name": " · "
+  },
+  {
+    "role": "time",
+    "name": ""
+  },
+  {
+    "role": "paragraph",
+    "name": ""
+  },
+  {
+    "role": "StaticText",
+    "name": "8 spaces"
+  },
+  {
+    "role": "StaticText",
+    "name": ". "
+  },
+  {
+    "role": "StaticText",
+    "name": "open"
+  },
+  {
+    "role": "StaticText",
+    "name": ". Hosted by "
+  },
+  {
+    "role": "StaticText",
+    "name": "Jules · fixture"
+  },
+  {
+    "role": "StaticText",
+    "name": ". Meeting "
+  },
+  {
+    "role": "StaticText",
+    "name": "Nov 8, 5:30 PM GMT+9"
+  },
+  {
+    "role": "StaticText",
+    "name": "."
+  },
+  {
+    "role": "StaticText",
+    "name": "12"
+  },
+  {
+    "role": "StaticText",
+    "name": "/"
+  },
+  {
+    "role": "StaticText",
+    "name": "20"
+  },
+  {
+    "role": "StaticText",
+    "name": "members"
+  },
+  {
+    "role": "link",
+    "name": "View details for Area A Queue Group"
+  },
+  {
+    "role": "StaticText",
+    "name": "Filter parties"
+  },
+  {
+    "role": "InlineTextBox",
+    "name": "Refresh"
+  },
+  {
+    "role": "InlineTextBox",
+    "name": "JOIN opens party details. The host approves membership; a virtual position does not confirm arrival. Times are Korea Standard Time."
+  },
+  {
+    "role": "InlineTextBox",
+    "name": "CREATE PARTY"
+  },
+  {
+    "role": "image",
+    "name": "Host portrait unavailable"
+  },
+  {
+    "role": "link",
+    "name": "Area A Queue Group"
+  },
+  {
+    "role": "InlineTextBox",
+    "name": "Area A"
+  },
+  {
+    "role": "InlineTextBox",
+    "name": " · "
+  },
+  {
+    "role": "StaticText",
+    "name": "17:30"
+  },
+  {
+    "role": "StaticText",
+    "name": "Member portraits unavailable"
+  },
+  {
+    "role": "InlineTextBox",
+    "name": "8 spaces"
+  },
+  {
+    "role": "InlineTextBox",
+    "name": ". "
+  },
+  {
+    "role": "InlineTextBox",
+    "name": "open"
+  },
+  {
+    "role": "InlineTextBox",
+    "name": ". Hosted by "
+  },
+  {
+    "role": "InlineTextBox",
+    "name": "Jules · fixture"
+  },
+  {
+    "role": "InlineTextBox",
+    "name": ". Meeting "
+  },
+  {
+    "role": "InlineTextBox",
+    "name": "Nov 8, 5:30 PM GMT+9"
+  },
+  {
+    "role": "InlineTextBox",
+    "name": "."
+  },
+  {
+    "role": "InlineTextBox",
+    "name": "12"
+  },
+  {
+    "role": "InlineTextBox",
+    "name": "/"
+  },
+  {
+    "role": "InlineTextBox",
+    "name": "20"
+  },
+  {
+    "role": "InlineTextBox",
+    "name": "members"
+  },
+  {
+    "role": "StaticText",
+    "name": "JOIN"
+  },
+  {
+    "role": "InlineTextBox",
+    "name": "Filter parties"
+  },
+  {
+    "role": "StaticText",
+    "name": "Area A Queue Group"
+  },
+  {
+    "role": "InlineTextBox",
+    "name": "17:30"
+  },
+  {
+    "role": "InlineTextBox",
+    "name": "Member portraits unavailable"
+  },
+  {
+    "role": "InlineTextBox",
+    "name": "JOIN"
+  },
+  {
+    "role": "InlineTextBox",
+    "name": "Area A Queue Group"
+  }
+]

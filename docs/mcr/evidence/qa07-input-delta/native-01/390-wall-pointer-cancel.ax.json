@@ -1,0 +1,302 @@
+[
+  {
+    "role": "RootWebArea",
+    "name": "Wall B developer fixture"
+  },
+  {
+    "role": "generic",
+    "name": ""
+  },
+  {
+    "role": "main",
+    "name": ""
+  },
+  {
+    "role": "region",
+    "name": "Wall editor"
+  },
+  {
+    "role": "region",
+    "name": "WALL"
+  },
+  {
+    "role": "sectionheader",
+    "name": ""
+  },
+  {
+    "role": "heading",
+    "name": "THE BLACK PARADE"
+  },
+  {
+    "role": "generic",
+    "name": ""
+  },
+  {
+    "role": "group",
+    "name": "Palette · color 0"
+  },
+  {
+    "role": "paragraph",
+    "name": ""
+  },
+  {
+    "role": "group",
+    "name": "Additional wall view controls"
+  },
+  {
+    "role": "StaticText",
+    "name": "REV 11 · EDITABLE"
+  },
+  {
+    "role": "StaticText",
+    "name": "16 COLORS · SCROLL →"
+  },
+  {
+    "role": "status",
+    "name": "Wall command status"
+  },
+  {
+    "role": "status",
+    "name": "Wall synchronization status"
+  },
+  {
+    "role": "group",
+    "name": ""
+  },
+  {
+    "role": "heading",
+    "name": "WALL"
+  },
+  {
+    "role": "StaticText",
+    "name": "THE BLACK PARADE"
+  },
+  {
+    "role": "group",
+    "name": "Mural pixel preview"
+  },
+  {
+    "role": "group",
+    "name": "Wall view controls"
+  },
+  {
+    "role": "Legend",
+    "name": ""
+  },
+  {
+    "role": "group",
+    "name": "Wall palette"
+  },
+  {
+    "role": "StaticText",
+    "name": "16"
+  },
+  {
+    "role": "StaticText",
+    "name": " server colors. Scroll horizontally or focus this palette and use Left, Right, Home or End. Tab reaches every color."
+  },
+  {
+    "role": "paragraph",
+    "name": ""
+  },
+  {
+    "role": "button",
+    "name": "Pan wall"
+  },
+  {
+    "role": "button",
+    "name": "Fit wall"
+  },
+  {
+    "role": "InlineTextBox",
+    "name": "REV 11 · EDITABLE"
+  },
+  {
+    "role": "InlineTextBox",
+    "name": "16 COLORS · SCROLL →"
+  },
+  {
+    "role": "StaticText",
+    "name": "Select a pixel and color. Confirm when ready."
+  },
+  {
+    "role": "StaticText",
+    "name": "Wall synchronized at revision 11."
+  },
+  {
+    "role": "DisclosureTriangle",
+    "name": "Coordinates & help"
+  },
+  {
+    "role": "StaticText",
+    "name": "WALL"
+  },
+  {
+    "role": "InlineTextBox",
+    "name": "THE BLACK PARADE"
+  },
+  {
+    "role": "button",
+    "name": "Pencil preview"
+  },
+  {
+    "role": "button",
+    "name": "Erase preview"
+  },
+  {
+    "role": "button",
+    "name": "Fill preview"
+  },
+  {
+    "role": "button",
+    "name": "Preview undo of my last action"
+  },
+  {
+    "role": "status",
+    "name": "Zoom level"
+  },
+  {
+    "role": "button",
+    "name": "Zoom in"
+  },
+  {
+    "role": "button",
+    "name": "Zoom out"
+  },
+  {
+    "role": "StaticText",
+    "name": "Palette · color "
+  },
+  {
+    "role": "StaticText",
+    "name": "0"
+  },
+  {
+    "role": "button",
+    "name": "Color 0 #FAF6ED"
+  },
+  {
+    "role": "button",
+    "name": "Color 1 #201D1D"
+  },
+  {
+    "role": "button",
+    "name": "Color 2 #A22635"
+  },
+  {
+    "role": "button",
+    "name": "Color 3 #605952"
+  },
+  {
+    "role": "button",
+    "name": "Color 4 #E5DFD4"
+  },
+  {
+    "role": "button",
+    "name": "Color 5 #713B70"
+  },
+  {
+    "role": "button",
+    "name": "Color 6 #244C69"
+  },
+  {
+    "role": "button",
+    "name": "Color 7 #42736B"
+  },
+  {
+    "role": "button",
+    "name": "Color 8 #7E8245"
+  },
+  {
+    "role": "button",
+    "name": "Color 9 #BD8E46"
+  },
+  {
+    "role": "button",
+    "name": "Color 10 #CF6845"
+  },
+  {
+    "role": "button",
+    "name": "Color 11 #D4A2AC"
+  },
+  {
+    "role": "button",
+    "name": "Color 12 #938EB0"
+  },
+  {
+    "role": "button",
+    "name": "Color 13 #8EBDD0"
+  },
+  {
+    "role": "button",
+    "name": "Color 14 #ACCB96"
+  },
+  {
+    "role": "button",
+    "name": "Color 15 #FFFFFF"
+  },
+  {
+    "role": "InlineTextBox",
+    "name": "16"
+  },
+  {
+    "role": "InlineTextBox",
+    "name": " server colors. Scroll horizontally or focus this palette and use Left, Right, Home or End. Tab reaches every color."
+  },
+  {
+    "role": "StaticText",
+    "name": "511 / 512 changed cells available · shared across all tools and tabs"
+  },
+  {
+    "role": "InlineTextBox",
+    "name": "Select a pixel and color. Confirm when ready."
+  },
+  {
+    "role": "InlineTextBox",
+    "name": "Wall synchronized at revision 11."
+  },
+  {
+    "role": "StaticText",
+    "name": "Coordinates & help"
+  },
+  {
+    "role": "InlineTextBox",
+    "name": "WALL"
+  },
+  {
+    "role": "StaticText",
+    "name": "1"
+  },
+  {
+    "role": "StaticText",
+    "name": "×"
+  },
+  {
+    "role": "InlineTextBox",
+    "name": "Palette · color "
+  },
+  {
+    "role": "InlineTextBox",
+    "name": "0"
+  },
+  {
+    "role": "InlineTextBox",
+    "name": "511 / 512 changed cells available · shared across all tools and "
+  },
+  {
+    "role": "InlineTextBox",
+    "name": "tabs"
+  },
+  {
+    "role": "InlineTextBox",
+    "name": "Coordinates & help"
+  },
+  {
+    "role": "InlineTextBox",
+    "name": "1"
+  },
+  {
+    "role": "InlineTextBox",
+    "name": "×"
+  }
+]

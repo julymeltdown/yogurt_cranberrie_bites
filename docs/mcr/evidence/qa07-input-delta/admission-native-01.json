@@ -1,0 +1,42 @@
+{
+  "job": "QA07-CHANGED-FIFTEEN-BROWSER-20261104T1955Z",
+  "candidate": "49c7656203e21b9aff26f57e64b19caddec23687",
+  "acceptedEpoch": 1793822470.449295,
+  "workDeadline": 1793822950.449295,
+  "fullDeadline": 1793823010.449295,
+  "startFloor": 11811160064,
+  "free": 12818440192,
+  "otherReservations": 2818572288,
+  "ownNew": 134217728,
+  "allReservations": 2952790016,
+  "afterAll": 9865650176,
+  "inventory": "Current A Age2GiB; conservative other B/D128+256MiB; BE38+Report ordinary prep256MiB combined; total others2.625GiB. No sum of all future A offers.",
+  "jobsAfter": {
+    "global": 4,
+    "SOURCE_max": 2,
+    "browser_max": 2
+  },
+  "predecessors": [
+    {
+      "actor": "207",
+      "job": "AUTH-JOINT-207-204-20261104T1955Z",
+      "fullEpoch": 1793822373.780203,
+      "reservation": 0
+    },
+    {
+      "actor": "204",
+      "job": "AUTH-JOINT-207-204-20261104T1955Z",
+      "fullEpoch": 1793822377.3717718,
+      "reservation": 0
+    }
+  ],
+  "guardsBeforeChild": {
+    "docs/mcr/evidence/qa07-input-delta/browser_guard.py": "b599cefb22c98db7792f702d70097091e0740d8c9611b8fc7c942e364bd89974",
+    "docs/mcr/evidence/qa07-input-delta/supervise.py": "4a877cbf8b4d63df0a70de098066be512bf8cdbf72895293c8e6d77c144282a2",
+    "frontend/e2e/qa07-input-delta/native.mjs": "f4b41f547d0808dcfda337729069bceb62550ad4a1a773867c3da036a671c27a",
+    "frontend/e2e/qa07-input-delta/fixture.tsx": "b14f493b1ea8a4b1f2f364f7b72c98863984c949fe587b4672b3a66ef4aecf01"
+  },
+  "scope": "Exactly15 changed cells five scenarios x360/390/430; no baseline36 matrix, live/device/stack claims, build/install/target",
+  "port5307": "fresh bind succeeded",
+  "amendment": "11GiB start authorized while unaccepted; afterALL9/live8 unchanged"
+}

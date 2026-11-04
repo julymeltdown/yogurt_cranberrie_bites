@@ -1,0 +1,40 @@
+- main:
+  - paragraph: QA07 synthetic Thread input fixture; no real post or moderation.
+  - region "Post thread":
+    - heading "THREAD" [level=1]
+    - article:
+      - 'img "Fixture fan: avatar unavailable"': F
+      - strong: Fixture fan
+      - time: Just now
+      - paragraph: See you at the show
+      - paragraph: 1 reactions · 0 comments
+      - button "Remove reaction" [pressed]
+      - button "Report post"
+      - button "Edit post"
+      - button "Delete post"
+    - region "Comments":
+      - heading "Comments" [level=2]
+      - list:
+        - listitem:
+          - paragraph:
+            - strong: Fixture fan
+            - text: ·
+            - time: 11/7/2026, 5:00:00 PM
+          - paragraph: Synthetic editable reply
+          - button "Report comment"
+          - button "Edit comment"
+          - button "Delete comment"
+        - listitem:
+          - paragraph:
+            - strong: Fixture fan
+            - text: ·
+            - time: 11/7/2026, 5:00:00 PM
+          - paragraph: QA07 synthetic keyboard reply
+          - button "Report comment"
+          - button "Edit comment"
+          - button "Delete comment"
+      - text: Comment text
+      - textbox "Comment text"
+      - paragraph: 0 / 1000 characters
+      - button "Send comment" [disabled]
+    - paragraph: The server confirmed this change.

@@ -1,0 +1,58 @@
+{
+  "job": "QA07-GUARD-SHUTDOWN-20261104T2020Z",
+  "candidate": "73a2e74e3a0a78b3b3510342def48af019e676f8",
+  "acceptedEpoch": 1793823985.5614028,
+  "workDeadline": 1793824045.5614028,
+  "fullDeadline": 1793824105.5614028,
+  "free": 17782829056,
+  "otherReservations": 3758096384,
+  "ownNew": 134217728,
+  "allReservations": 3892314112,
+  "afterAll": 13890514944,
+  "inventory": "Latest direct Map2020 release: conservative current ceilings A<=3GiB B<=128MiB D<=128MiB prep<=256MiB combined; future/historical queued holds not summed.",
+  "predecessor": {
+    "job": "FE19-DENSITY-THREE-CONTEXT-BROWSER-20261104T2020Z",
+    "owner": "01a1a26e-1de2-7b41-a294-c9a79cfded9b",
+    "full": "2026-11-04T20:25:42.951091Z",
+    "resources": 0,
+    "result": "PASS3 contexts; all seen PIDs gone"
+  },
+  "pins": {
+    "docs/mcr/evidence/qa07-input-delta/browser_guard.py": "225a8c92670b2a155b03b90ffa1146a5985ff99fb8c6031f754084dc92e0ffad",
+    "docs/mcr/evidence/qa07-input-delta/guard_disk.py": "b5c6e73c353134217d2f740cb9c827fdee0ac55e16607bada2e5c8d4e42a9358",
+    "docs/mcr/evidence/qa07-input-delta/check_guard_disk.py": "45a5d90185caef22445ff79a1ce4aab80a99ab5feeedbe1b9ad56c418e94fadd",
+    "docs/mcr/evidence/qa07-input-delta/supervise.py": "4a877cbf8b4d63df0a70de098066be512bf8cdbf72895293c8e6d77c144282a2",
+    "frontend/e2e/qa07-input-delta/native.mjs": "60260cdd53f78b1d95ab4f2484d9be170db74778c2423425846352105aeeee2d",
+    "frontend/e2e/qa07-input-delta/fixture.tsx": "c6b1bcc4ca746c479d89b8a6de984b0da41b18b6f5b62b7cf8e2fe46cf498e39"
+  },
+  "selection": {
+    "QA07_SHUTDOWN_ONLY": "1",
+    "diskRegressions": 5,
+    "browserContexts": 1,
+    "width": 390,
+    "journeyCells": 0,
+    "noReplay": "15/9/Wall/sourcepreflight/old matrix"
+  },
+  "caps": {
+    "work": 60,
+    "cleanup": 60,
+    "pids": 24,
+    "rss": 4294967296,
+    "whole": 2147483648,
+    "priorWholeMin": 1901942193,
+    "priorNewMin": 41158065,
+    "new": 134217728,
+    "tmp": 100663296,
+    "durable": 25165824,
+    "git": 8388608,
+    "start": 11811160064,
+    "allReserve": 9663676416,
+    "live": 8589934592
+  },
+  "maximumSlotsAfter": {
+    "global": 4,
+    "SOURCE": 2,
+    "browser": 2
+  },
+  "port5307": "fresh bind free"
+}

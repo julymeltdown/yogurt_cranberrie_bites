@@ -1,0 +1,51 @@
+{
+  "job": "QA07-INPUT-DELTA-SOURCE-20261104T1927Z",
+  "checks": [
+    {
+      "name": "types",
+      "command": [
+        "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node",
+        "/Users/lhs/Desktop/mcr/frontend/node_modules/.pnpm/typescript@6.0.3/node_modules/typescript/bin/tsc",
+        "-p",
+        "e2e/qa07-input-delta/tsconfig.json",
+        "--noEmit",
+        "--incremental",
+        "false"
+      ],
+      "exit": 0,
+      "signal": null
+    },
+    {
+      "name": "lint",
+      "command": [
+        "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node",
+        "/Users/lhs/Desktop/mcr-worktrees/qa07-input-delta-332b/frontend/node_modules/oxlint/bin/oxlint",
+        "e2e/qa07-input-delta"
+      ],
+      "exit": 0,
+      "signal": null
+    },
+    {
+      "name": "syntax",
+      "command": [
+        "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node",
+        "--check",
+        "e2e/qa07-input-delta/native.mjs"
+      ],
+      "exit": 0,
+      "signal": null
+    },
+    {
+      "name": "plan",
+      "command": [
+        "python3",
+        "scripts/mcr/check-plan.py"
+      ],
+      "exit": 0,
+      "signal": null
+    }
+  ],
+  "started": "2026-11-04T19:29:53.948Z",
+  "finished": "2026-11-04T19:29:57.525Z",
+  "status": "PASS"
+}

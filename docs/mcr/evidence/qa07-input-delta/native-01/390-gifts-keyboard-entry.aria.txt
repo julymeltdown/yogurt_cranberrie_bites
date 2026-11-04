@@ -1,0 +1,16 @@
+- main:
+  - paragraph: QA07 synthetic Gifts input fixture; no real stock or venue.
+  - region "Giveaway discovery":
+    - tablist "Gift collections":
+      - tab "Browse" [selected]
+      - tab "My giving"
+      - tab "My pickups"
+    - tabpanel "Browse":
+      - alert:
+        - heading "Gift information could not be verified" [level=2]
+        - paragraph: No unverified gift information is shown. You can try again.
+        - button "Try again"
+      - group: Filter giveaways
+    - paragraph: Availability is checked in the reservation journey. Stock and pickup windows can change.
+    - link "My gifts →":
+      - /url: /gifts/mine

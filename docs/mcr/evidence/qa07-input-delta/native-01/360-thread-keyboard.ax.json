@@ -1,0 +1,78 @@
+[
+  {
+    "role": "RootWebArea",
+    "name": "QA07 changed input fixture"
+  },
+  {
+    "role": "generic",
+    "name": ""
+  },
+  {
+    "role": "main",
+    "name": ""
+  },
+  {
+    "role": "paragraph",
+    "name": ""
+  },
+  {
+    "role": "region",
+    "name": "Post thread"
+  },
+  {
+    "role": "StaticText",
+    "name": "QA07 synthetic Thread input fixture; no real post or moderation."
+  },
+  {
+    "role": "heading",
+    "name": "THREAD"
+  },
+  {
+    "role": "alert",
+    "name": ""
+  },
+  {
+    "role": "InlineTextBox",
+    "name": "QA07 synthetic Thread input fixture; no real "
+  },
+  {
+    "role": "InlineTextBox",
+    "name": "post or moderation."
+  },
+  {
+    "role": "StaticText",
+    "name": "THREAD"
+  },
+  {
+    "role": "paragraph",
+    "name": ""
+  },
+  {
+    "role": "button",
+    "name": "Retry read"
+  },
+  {
+    "role": "InlineTextBox",
+    "name": "THREAD"
+  },
+  {
+    "role": "StaticText",
+    "name": "The request failed. Try again when the service is available."
+  },
+  {
+    "role": "StaticText",
+    "name": "Retry read"
+  },
+  {
+    "role": "InlineTextBox",
+    "name": "The request failed. Try again when the "
+  },
+  {
+    "role": "InlineTextBox",
+    "name": "service is available."
+  },
+  {
+    "role": "InlineTextBox",
+    "name": "Retry read"
+  }
+]

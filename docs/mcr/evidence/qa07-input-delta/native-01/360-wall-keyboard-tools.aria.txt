@@ -1,0 +1,42 @@
+- main:
+  - region "Wall editor":
+    - region "Wall":
+      - heading "Wall" [level=2]
+      - heading "THE BLACK PARADE" [level=3]
+      - group "Mural pixel preview"
+      - group "Wall view controls":
+        - button "Pencil preview" [pressed]
+        - button "Erase preview"
+        - button "Fill preview"
+        - button "Preview undo of my last action" [disabled]
+        - status "Zoom level": 1×
+        - button "Zoom in"
+        - button "Zoom out" [disabled]
+      - group "Palette · color 2":
+        - text: Palette · color 2
+        - group "Wall palette":
+          - 'button "Color 0 #FAF6ED"'
+          - 'button "Color 1 #201D1D"'
+          - 'button "Color 2 #A22635" [pressed]'
+          - 'button "Color 3 #605952"'
+          - 'button "Color 4 #E5DFD4"'
+          - 'button "Color 5 #713B70"'
+          - 'button "Color 6 #244C69"'
+          - 'button "Color 7 #42736B"'
+          - 'button "Color 8 #7E8245"'
+          - 'button "Color 9 #BD8E46"'
+          - 'button "Color 10 #CF6845"'
+          - 'button "Color 11 #D4A2AC"'
+          - 'button "Color 12 #938EB0"'
+          - 'button "Color 13 #8EBDD0"'
+          - 'button "Color 14 #ACCB96"'
+          - 'button "Color 15 #FFFFFF"'
+      - paragraph: 16 server colors. Scroll horizontally or focus this palette and use Left, Right, Home or End. Tab reaches every color.
+      - group "Additional wall view controls":
+        - paragraph: 480 / 512 changed cells available · shared across all tools and tabs
+        - button "Pan wall"
+        - button "Fit wall"
+      - text: REV 12 · EDITABLE 16 colors · scroll →
+      - status "Wall command status": Select a pixel and color. Confirm when ready.
+      - status "Wall synchronization status": Wall synchronized at revision 12.
+      - group: Coordinates & help

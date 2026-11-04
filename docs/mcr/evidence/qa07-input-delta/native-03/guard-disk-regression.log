@@ -1,0 +1,1 @@
+{"status": "PASS", "checks": ["actual allocated blocks counted", "observed private Chrome ENOENT preserves measured subtotal and records race", "permission error remains fatal", "nonprivate missing input remains fatal", "completed private TMP cleanup counts zero"]}

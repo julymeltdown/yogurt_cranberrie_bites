@@ -1,0 +1,170 @@
+[
+  {
+    "role": "RootWebArea",
+    "name": "QA07 changed input fixture"
+  },
+  {
+    "role": "generic",
+    "name": ""
+  },
+  {
+    "role": "main",
+    "name": ""
+  },
+  {
+    "role": "paragraph",
+    "name": ""
+  },
+  {
+    "role": "region",
+    "name": "Giveaway discovery"
+  },
+  {
+    "role": "StaticText",
+    "name": "QA07 synthetic Gifts input fixture; no real stock or venue."
+  },
+  {
+    "role": "tablist",
+    "name": "Gift collections"
+  },
+  {
+    "role": "tabpanel",
+    "name": "BROWSE"
+  },
+  {
+    "role": "sectionfooter",
+    "name": ""
+  },
+  {
+    "role": "InlineTextBox",
+    "name": "QA07 synthetic Gifts input fixture; no real stock "
+  },
+  {
+    "role": "InlineTextBox",
+    "name": "or venue."
+  },
+  {
+    "role": "tab",
+    "name": "BROWSE"
+  },
+  {
+    "role": "tab",
+    "name": "MY GIVING"
+  },
+  {
+    "role": "tab",
+    "name": "MY PICKUPS"
+  },
+  {
+    "role": "alert",
+    "name": ""
+  },
+  {
+    "role": "form",
+    "name": ""
+  },
+  {
+    "role": "paragraph",
+    "name": ""
+  },
+  {
+    "role": "link",
+    "name": "My gifts →"
+  },
+  {
+    "role": "StaticText",
+    "name": "BROWSE"
+  },
+  {
+    "role": "StaticText",
+    "name": "MY GIVING"
+  },
+  {
+    "role": "StaticText",
+    "name": "MY PICKUPS"
+  },
+  {
+    "role": "heading",
+    "name": "Gift information could not be verified"
+  },
+  {
+    "role": "paragraph",
+    "name": ""
+  },
+  {
+    "role": "button",
+    "name": "Try again"
+  },
+  {
+    "role": "group",
+    "name": ""
+  },
+  {
+    "role": "StaticText",
+    "name": "Availability is checked in the reservation journey. Stock and pickup windows can change."
+  },
+  {
+    "role": "StaticText",
+    "name": "My gifts →"
+  },
+  {
+    "role": "InlineTextBox",
+    "name": "BROWSE"
+  },
+  {
+    "role": "InlineTextBox",
+    "name": "MY GIVING"
+  },
+  {
+    "role": "InlineTextBox",
+    "name": "MY PICKUPS"
+  },
+  {
+    "role": "StaticText",
+    "name": "Gift information could not be verified"
+  },
+  {
+    "role": "StaticText",
+    "name": "No unverified gift information is shown. You can try again."
+  },
+  {
+    "role": "StaticText",
+    "name": "Try again"
+  },
+  {
+    "role": "DisclosureTriangle",
+    "name": "Filter giveaways"
+  },
+  {
+    "role": "InlineTextBox",
+    "name": "Availability is checked in the reservation journey. Stock and pickup windows "
+  },
+  {
+    "role": "InlineTextBox",
+    "name": "can change."
+  },
+  {
+    "role": "InlineTextBox",
+    "name": "My gifts →"
+  },
+  {
+    "role": "InlineTextBox",
+    "name": "Gift information could not be verified"
+  },
+  {
+    "role": "InlineTextBox",
+    "name": "No unverified gift information is shown. You can try again."
+  },
+  {
+    "role": "InlineTextBox",
+    "name": "Try again"
+  },
+  {
+    "role": "StaticText",
+    "name": "Filter giveaways"
+  },
+  {
+    "role": "InlineTextBox",
+    "name": "Filter giveaways"
+  }
+]

@@ -1,0 +1,482 @@
+{
+  "scope": "QA07 additive changed-input delta evidence; original failed reports retained, qualified composition in qualification.json",
+  "files": {
+    "docs/mcr/evidence/qa07-input-delta/admission-native-01.json": {
+      "bytes": 1734,
+      "sha256": "128fd487a009f456bf9bb81958fc676cffeb3c68ad37c669893d870021e8062d"
+    },
+    "docs/mcr/evidence/qa07-input-delta/admission-native-02.json": {
+      "bytes": 2179,
+      "sha256": "9ea2efe8cc595ebff7edd1edbf26cb1dd370a78ae7fbaac289241aa50b6aa6f5"
+    },
+    "docs/mcr/evidence/qa07-input-delta/admission-native-03.json": {
+      "bytes": 2207,
+      "sha256": "24f94e6fac66cb6bac93a6af02fcdd04858d719f18a5ed04f9a997c52a14329d"
+    },
+    "docs/mcr/evidence/qa07-input-delta/admission-source-01.json": {
+      "bytes": 1200,
+      "sha256": "f2c21f7490021a6836bfb5867351274a3130b6aaff161614f60f0ffd44d61040"
+    },
+    "docs/mcr/evidence/qa07-input-delta/browser_guard.py": {
+      "bytes": 5401,
+      "sha256": "225a8c92670b2a155b03b90ffa1146a5985ff99fb8c6031f754084dc92e0ffad"
+    },
+    "docs/mcr/evidence/qa07-input-delta/check_guard_disk.py": {
+      "bytes": 1701,
+      "sha256": "45a5d90185caef22445ff79a1ce4aab80a99ab5feeedbe1b9ad56c418e94fadd"
+    },
+    "docs/mcr/evidence/qa07-input-delta/guard-error-native-02.txt": {
+      "bytes": 548,
+      "sha256": "eac7bf4cb2bc3c1a80f4262612136039d42014fd1a8c6bd4430bc21c11ef9887"
+    },
+    "docs/mcr/evidence/qa07-input-delta/guard_disk.py": {
+      "bytes": 1311,
+      "sha256": "b5c6e73c353134217d2f740cb9c827fdee0ac55e16607bada2e5c8d4e42a9358"
+    },
+    "docs/mcr/evidence/qa07-input-delta/inventory-source-01-delayed-update.json": {
+      "bytes": 663,
+      "sha256": "e1df67e733bcf3acece58cf7cd5e9b7c5db7b82445851b06e4d031e80443f4f7"
+    },
+    "docs/mcr/evidence/qa07-input-delta/native-01/360-gifts-keyboard-entry.aria.txt": {
+      "bytes": 640,
+      "sha256": "b5a9e785d91d2c2cd9f615c6ecb6f0384b35b6fbea764f3496234a4ed601ca2c"
+    },
+    "docs/mcr/evidence/qa07-input-delta/native-01/360-gifts-keyboard-entry.ax.json": {
+      "bytes": 2911,
+      "sha256": "3129172b722e2bf112aa74680da4460f6e2ebf4fe49d87c58205d373c8eec1cc"
+    },
+    "docs/mcr/evidence/qa07-input-delta/native-01/360-gifts-keyboard-entry.png": {
+      "bytes": 31548,
+      "sha256": "eaf7427bffee02ee711d9ba721a562175cce7523e749c931b9c672344984dddc"
+    },
+    "docs/mcr/evidence/qa07-input-delta/native-01/360-meet-keyboard-focus.aria.txt": {
+      "bytes": 747,
+      "sha256": "2757f884abcdd60506960f5211237317959df02d96e064bd5867e6842e731c88"
+    },
+    "docs/mcr/evidence/qa07-input-delta/native-01/360-meet-keyboard-focus.ax.json": {
+      "bytes": 3433,
+      "sha256": "5221d8c8b1b33d2359d02005017e6e772579116c790171507b33826f25673d75"
+    },
+    "docs/mcr/evidence/qa07-input-delta/native-01/360-meet-keyboard-focus.png": {
+      "bytes": 24224,
+      "sha256": "8aca1cd1ff23816b6d48dd308af1a74c40b71949060699eba3e4b9c52e12d491"
+    },
+    "docs/mcr/evidence/qa07-input-delta/native-01/360-thread-keyboard.aria.txt": {
+      "bytes": 267,
+      "sha256": "1b7891a6abff24cb73c695f2d82081d10990a805da7f57c4db9a4441e040d77f"
+    },
+    "docs/mcr/evidence/qa07-input-delta/native-01/360-thread-keyboard.ax.json": {
+      "bytes": 1278,
+      "sha256": "dfbf785507d59a8c9ca18be02ed887bf05de8dd1ac973951dc688ce667c49078"
+    },
+    "docs/mcr/evidence/qa07-input-delta/native-01/360-thread-keyboard.png": {
+      "bytes": 18778,
+      "sha256": "4c27146e6ce5421a156919fa3df39b0e5b795e4d83e7bd34571fd6051c0f161b"
+    },
+    "docs/mcr/evidence/qa07-input-delta/native-01/360-wall-keyboard-tools.aria.txt": {
+      "bytes": 1805,
+      "sha256": "92fb4a2b2b79fe13823dc49b43932ef7051f3d95286e077316998385209471d4"
+    },
+    "docs/mcr/evidence/qa07-input-delta/native-01/360-wall-keyboard-tools.ax.json": {
+      "bytes": 4945,
+      "sha256": "6ae77d0506cce222fa32610eaa34edb9326298a2ee0e53384bbd7792dc6f34d0"
+    },
+    "docs/mcr/evidence/qa07-input-delta/native-01/360-wall-keyboard-tools.png": {
+      "bytes": 41413,
+      "sha256": "d464c34ee31ccaa6972dd8fc10d7f002afd6229fe5fb2dbe177df89ccd133ade"
+    },
+    "docs/mcr/evidence/qa07-input-delta/native-01/360-wall-pointer-cancel.aria.txt": {
+      "bytes": 1794,
+      "sha256": "392ad97773109e63f757fa3866225697b559d9f9f93404a8fd141b2684188e9d"
+    },
+    "docs/mcr/evidence/qa07-input-delta/native-01/360-wall-pointer-cancel.ax.json": {
+      "bytes": 4945,
+      "sha256": "a6701d62e847c94c8a9722222f327d240b5033d439eea9812168215d7f1cbeb1"
+    },
+    "docs/mcr/evidence/qa07-input-delta/native-01/360-wall-pointer-cancel.png": {
+      "bytes": 41121,
+      "sha256": "8e00d424e3b00616f326ac12182df4680cae7ea9cf56190e3a59d5fc3710afd5"
+    },
+    "docs/mcr/evidence/qa07-input-delta/native-01/390-gifts-keyboard-entry.aria.txt": {
+      "bytes": 640,
+      "sha256": "b5a9e785d91d2c2cd9f615c6ecb6f0384b35b6fbea764f3496234a4ed601ca2c"
+    },
+    "docs/mcr/evidence/qa07-input-delta/native-01/390-gifts-keyboard-entry.ax.json": {
+      "bytes": 2858,
+      "sha256": "a502139c386e8d9595f0621c96a881a77b3ff9b5f218b9c9180bad7af4833de2"
+    },
+    "docs/mcr/evidence/qa07-input-delta/native-01/390-gifts-keyboard-entry.png": {
+      "bytes": 31621,
+      "sha256": "0804170d47b21dd633b76d85ddc8640434607f8729bd3ea8487de822b9b55b25"
+    },
+    "docs/mcr/evidence/qa07-input-delta/native-01/390-meet-keyboard-focus.aria.txt": {
+      "bytes": 747,
+      "sha256": "2757f884abcdd60506960f5211237317959df02d96e064bd5867e6842e731c88"
+    },
+    "docs/mcr/evidence/qa07-input-delta/native-01/390-meet-keyboard-focus.ax.json": {
+      "bytes": 3433,
+      "sha256": "5221d8c8b1b33d2359d02005017e6e772579116c790171507b33826f25673d75"
+    },
+    "docs/mcr/evidence/qa07-input-delta/native-01/390-meet-keyboard-focus.png": {
+      "bytes": 24544,
+      "sha256": "3051ac69d61d5f5fd7990ec5790cb10140994fc9bdfc982d2083d21e47da16cf"
+    },
+    "docs/mcr/evidence/qa07-input-delta/native-01/390-thread-keyboard.aria.txt": {
+      "bytes": 267,
+      "sha256": "1b7891a6abff24cb73c695f2d82081d10990a805da7f57c4db9a4441e040d77f"
+    },
+    "docs/mcr/evidence/qa07-input-delta/native-01/390-thread-keyboard.ax.json": {
+      "bytes": 1278,
+      "sha256": "8e130b5f9eaed5dcc61f5207a5ffd327abc576c484d1e0c0f7b45eac1b920d5a"
+    },
+    "docs/mcr/evidence/qa07-input-delta/native-01/390-thread-keyboard.png": {
+      "bytes": 19024,
+      "sha256": "bfbd43bc529a7dda2ccdef554844c1bdda52cd011e55a060cf84c086158da841"
+    },
+    "docs/mcr/evidence/qa07-input-delta/native-01/390-wall-keyboard-tools.aria.txt": {
+      "bytes": 1805,
+      "sha256": "92fb4a2b2b79fe13823dc49b43932ef7051f3d95286e077316998385209471d4"
+    },
+    "docs/mcr/evidence/qa07-input-delta/native-01/390-wall-keyboard-tools.ax.json": {
+      "bytes": 4945,
+      "sha256": "e21b4f6749debe5ab99f8b3592ce4ef55f041d32c96efdedd5f4e6b102ba7e49"
+    },
+    "docs/mcr/evidence/qa07-input-delta/native-01/390-wall-keyboard-tools.png": {
+      "bytes": 42909,
+      "sha256": "ad9cb5c154ad4d46aeb30b356c860e4557ce6036593fee3567249b7c33a7c734"
+    },
+    "docs/mcr/evidence/qa07-input-delta/native-01/390-wall-pointer-cancel.aria.txt": {
+      "bytes": 1794,
+      "sha256": "392ad97773109e63f757fa3866225697b559d9f9f93404a8fd141b2684188e9d"
+    },
+    "docs/mcr/evidence/qa07-input-delta/native-01/390-wall-pointer-cancel.ax.json": {
+      "bytes": 4945,
+      "sha256": "a924a821b74fb4ee35e31e39f9b7feb5bbfef324ee13d311147c3621fc37b31a"
+    },
+    "docs/mcr/evidence/qa07-input-delta/native-01/390-wall-pointer-cancel.png": {
+      "bytes": 42733,
+      "sha256": "9ba3bb7524ab9edf683962fbe0fb5ecd9808ded00b176fb1a427b0124e7304c4"
+    },
+    "docs/mcr/evidence/qa07-input-delta/native-01/430-gifts-keyboard-entry.aria.txt": {
+      "bytes": 640,
+      "sha256": "b5a9e785d91d2c2cd9f615c6ecb6f0384b35b6fbea764f3496234a4ed601ca2c"
+    },
+    "docs/mcr/evidence/qa07-input-delta/native-01/430-gifts-keyboard-entry.ax.json": {
+      "bytes": 2858,
+      "sha256": "5c8266c46d82a21987cd8e5a9cbcb2a8bbb75ac3521c5139618c46f28d8ef24a"
+    },
+    "docs/mcr/evidence/qa07-input-delta/native-01/430-gifts-keyboard-entry.png": {
+      "bytes": 31513,
+      "sha256": "cea174f9dff0620ff9f383e94bde4b995bd814c68f79061140dbffabe979c6e0"
+    },
+    "docs/mcr/evidence/qa07-input-delta/native-01/430-meet-keyboard-focus.aria.txt": {
+      "bytes": 747,
+      "sha256": "2757f884abcdd60506960f5211237317959df02d96e064bd5867e6842e731c88"
+    },
+    "docs/mcr/evidence/qa07-input-delta/native-01/430-meet-keyboard-focus.ax.json": {
+      "bytes": 3433,
+      "sha256": "5221d8c8b1b33d2359d02005017e6e772579116c790171507b33826f25673d75"
+    },
+    "docs/mcr/evidence/qa07-input-delta/native-01/430-meet-keyboard-focus.png": {
+      "bytes": 24440,
+      "sha256": "1980fd4c902ea7225c7c5e1321fc96d92c5f24e8b093edb99843115b803d966a"
+    },
+    "docs/mcr/evidence/qa07-input-delta/native-01/430-thread-keyboard.aria.txt": {
+      "bytes": 267,
+      "sha256": "1b7891a6abff24cb73c695f2d82081d10990a805da7f57c4db9a4441e040d77f"
+    },
+    "docs/mcr/evidence/qa07-input-delta/native-01/430-thread-keyboard.ax.json": {
+      "bytes": 1278,
+      "sha256": "e7a34c83e80590b6b847a86dcc48b5c00cbd70c6885287d1fdc59a1e7d530eba"
+    },
+    "docs/mcr/evidence/qa07-input-delta/native-01/430-thread-keyboard.png": {
+      "bytes": 18586,
+      "sha256": "620850c160436a3de341486d845b101bcd32dffb38eb26c45b4ba026983a1ee7"
+    },
+    "docs/mcr/evidence/qa07-input-delta/native-01/430-wall-keyboard-tools.aria.txt": {
+      "bytes": 1805,
+      "sha256": "92fb4a2b2b79fe13823dc49b43932ef7051f3d95286e077316998385209471d4"
+    },
+    "docs/mcr/evidence/qa07-input-delta/native-01/430-wall-keyboard-tools.ax.json": {
+      "bytes": 4892,
+      "sha256": "f981ce735e348e5767fdbc87829233d4ce5c7af4d02be01de44d3ba0590b739f"
+    },
+    "docs/mcr/evidence/qa07-input-delta/native-01/430-wall-keyboard-tools.png": {
+      "bytes": 44172,
+      "sha256": "ad0f137a869eca0db1445019936be1c9440094bdf90bcc6308feecc243293702"
+    },
+    "docs/mcr/evidence/qa07-input-delta/native-01/430-wall-pointer-cancel.aria.txt": {
+      "bytes": 1794,
+      "sha256": "392ad97773109e63f757fa3866225697b559d9f9f93404a8fd141b2684188e9d"
+    },
+    "docs/mcr/evidence/qa07-input-delta/native-01/430-wall-pointer-cancel.ax.json": {
+      "bytes": 4892,
+      "sha256": "50f9b8728abe15159b1e5313697292ecd0fe65d9f1262525fd53ffcd7a85bc44"
+    },
+    "docs/mcr/evidence/qa07-input-delta/native-01/430-wall-pointer-cancel.png": {
+      "bytes": 43950,
+      "sha256": "5b71779de4059abd21e7e9ad01b99f90ad070bdd9c911cfd4ca5a781bd0aee98"
+    },
+    "docs/mcr/evidence/qa07-input-delta/native-01/report.json": {
+      "bytes": 26160,
+      "sha256": "e1681150325d2a323be15aac5cd96eccc65012963990bc8d69be1dccddf8c596"
+    },
+    "docs/mcr/evidence/qa07-input-delta/native-01/report.partial.json": {
+      "bytes": 26098,
+      "sha256": "06e04df271ab55638111f897d4dede6d3aae9bc516ca1494a70c00fe551f1ab1"
+    },
+    "docs/mcr/evidence/qa07-input-delta/native-01.log": {
+      "bytes": 11756,
+      "sha256": "a913cf5ea8b5e3cc8823b693261f57a9b4ed0cc5d44dfc5bc0844d4cd416ec55"
+    },
+    "docs/mcr/evidence/qa07-input-delta/native-02/360-gifts-keyboard-entry.aria.txt": {
+      "bytes": 1049,
+      "sha256": "ec0a540c8e49fef69c8b63335dd0a68b97d2fb16658ef6f7a8926af352cb5107"
+    },
+    "docs/mcr/evidence/qa07-input-delta/native-02/360-gifts-keyboard-entry.ax.json": {
+      "bytes": 4211,
+      "sha256": "edde827fa195709648756126327b4f63527d09f7fa6c124089672e8a885c6f3d"
+    },
+    "docs/mcr/evidence/qa07-input-delta/native-02/360-gifts-keyboard-entry.png": {
+      "bytes": 29740,
+      "sha256": "7d749c5eecbb60b97693fd8b62c336797b90a946834275974b54501e48b521e4"
+    },
+    "docs/mcr/evidence/qa07-input-delta/native-02/360-meet-keyboard-focus.aria.txt": {
+      "bytes": 1226,
+      "sha256": "c56f08570f489ce83b321abd73f6d7f505480e31f151a2bb9fe0130e6f5d3743"
+    },
+    "docs/mcr/evidence/qa07-input-delta/native-02/360-meet-keyboard-focus.ax.json": {
+      "bytes": 5331,
+      "sha256": "39b400a4ff825a2995b05e7aac626cf78ddfb7b45d8f1a5a1ece0de54f91798c"
+    },
+    "docs/mcr/evidence/qa07-input-delta/native-02/360-meet-keyboard-focus.png": {
+      "bytes": 27176,
+      "sha256": "f9266e72dc3a57b3100f7cdcb4d5e705306146952187fdefa70069a8a2804de3"
+    },
+    "docs/mcr/evidence/qa07-input-delta/native-02/360-thread-keyboard.aria.txt": {
+      "bytes": 1337,
+      "sha256": "39f9de1beedcf5967a211bf2de6cc69a542da191bff0975b1d6b749e2be41df5"
+    },
+    "docs/mcr/evidence/qa07-input-delta/native-02/360-thread-keyboard.ax.json": {
+      "bytes": 6800,
+      "sha256": "d9cf5dbc84ad1bdb407b798ac57978e5211777cfeacf1c55ad8bf87a99b2c43b"
+    },
+    "docs/mcr/evidence/qa07-input-delta/native-02/360-thread-keyboard.png": {
+      "bytes": 59894,
+      "sha256": "1d9577122a0825287d1098a879995fdf358a665f063ccf63777cabbef4c66f49"
+    },
+    "docs/mcr/evidence/qa07-input-delta/native-02/390-gifts-keyboard-entry.aria.txt": {
+      "bytes": 1049,
+      "sha256": "ec0a540c8e49fef69c8b63335dd0a68b97d2fb16658ef6f7a8926af352cb5107"
+    },
+    "docs/mcr/evidence/qa07-input-delta/native-02/390-gifts-keyboard-entry.ax.json": {
+      "bytes": 4211,
+      "sha256": "71f8a22480452f341abbaaf711570a5653c165dd6b8428c9622c3d6560a4423d"
+    },
+    "docs/mcr/evidence/qa07-input-delta/native-02/390-gifts-keyboard-entry.png": {
+      "bytes": 30647,
+      "sha256": "4a316b8dba052c1addf5579cd049894b836794f4fe62ad0f61edbca23d5f9992"
+    },
+    "docs/mcr/evidence/qa07-input-delta/native-02/390-meet-keyboard-focus.aria.txt": {
+      "bytes": 1226,
+      "sha256": "c56f08570f489ce83b321abd73f6d7f505480e31f151a2bb9fe0130e6f5d3743"
+    },
+    "docs/mcr/evidence/qa07-input-delta/native-02/390-meet-keyboard-focus.ax.json": {
+      "bytes": 5278,
+      "sha256": "9809f089500c933ead94aa5f21e08c42fb15706ffb86611a8b96985833206708"
+    },
+    "docs/mcr/evidence/qa07-input-delta/native-02/390-meet-keyboard-focus.png": {
+      "bytes": 27762,
+      "sha256": "b522ac3f492ea617cf9a3b604e342007269b0899457c850430ce62a77a184027"
+    },
+    "docs/mcr/evidence/qa07-input-delta/native-02/390-thread-keyboard.aria.txt": {
+      "bytes": 1337,
+      "sha256": "39f9de1beedcf5967a211bf2de6cc69a542da191bff0975b1d6b749e2be41df5"
+    },
+    "docs/mcr/evidence/qa07-input-delta/native-02/390-thread-keyboard.ax.json": {
+      "bytes": 6800,
+      "sha256": "dc312fce17b4e3384c7589c85f75a20e0bb2838f040072e43f251e1d0f4cc2db"
+    },
+    "docs/mcr/evidence/qa07-input-delta/native-02/390-thread-keyboard.png": {
+      "bytes": 60089,
+      "sha256": "5d87edd5db093c308a038ec500c60b09610278f835d32d46bde91e5f73aecb1b"
+    },
+    "docs/mcr/evidence/qa07-input-delta/native-02/430-gifts-keyboard-entry.aria.txt": {
+      "bytes": 1049,
+      "sha256": "ec0a540c8e49fef69c8b63335dd0a68b97d2fb16658ef6f7a8926af352cb5107"
+    },
+    "docs/mcr/evidence/qa07-input-delta/native-02/430-gifts-keyboard-entry.ax.json": {
+      "bytes": 4105,
+      "sha256": "6efafc436f29d177bf8ada688305a2f2eb7f9c64ba05ade0fee6cfcae7d5ba1d"
+    },
+    "docs/mcr/evidence/qa07-input-delta/native-02/430-gifts-keyboard-entry.png": {
+      "bytes": 30787,
+      "sha256": "ec8d61ae77f8d933d50a9ef170f476d9bb90762a786d11e0533857c7d503d50a"
+    },
+    "docs/mcr/evidence/qa07-input-delta/native-02/430-meet-keyboard-focus.aria.txt": {
+      "bytes": 1226,
+      "sha256": "c56f08570f489ce83b321abd73f6d7f505480e31f151a2bb9fe0130e6f5d3743"
+    },
+    "docs/mcr/evidence/qa07-input-delta/native-02/430-meet-keyboard-focus.ax.json": {
+      "bytes": 5278,
+      "sha256": "9809f089500c933ead94aa5f21e08c42fb15706ffb86611a8b96985833206708"
+    },
+    "docs/mcr/evidence/qa07-input-delta/native-02/430-meet-keyboard-focus.png": {
+      "bytes": 27641,
+      "sha256": "f4c68150b17f42bbf8d34d0c9455390b8ec382284af5d1098d8ca0663f3179fe"
+    },
+    "docs/mcr/evidence/qa07-input-delta/native-02/430-thread-keyboard.aria.txt": {
+      "bytes": 1337,
+      "sha256": "39f9de1beedcf5967a211bf2de6cc69a542da191bff0975b1d6b749e2be41df5"
+    },
+    "docs/mcr/evidence/qa07-input-delta/native-02/430-thread-keyboard.ax.json": {
+      "bytes": 6800,
+      "sha256": "dc312fce17b4e3384c7589c85f75a20e0bb2838f040072e43f251e1d0f4cc2db"
+    },
+    "docs/mcr/evidence/qa07-input-delta/native-02/430-thread-keyboard.png": {
+      "bytes": 58094,
+      "sha256": "d104af95fa4e1ac16bb872cec3fe7c864e5ed2c84ea39d2f6fd802dbb4905126"
+    },
+    "docs/mcr/evidence/qa07-input-delta/native-02/repair-lint.log": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "docs/mcr/evidence/qa07-input-delta/native-02/repair-types.log": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "docs/mcr/evidence/qa07-input-delta/native-02/report.partial.json": {
+      "bytes": 10279,
+      "sha256": "c2db1522e3afd02dfbf8c55faa77b2569542381468520f58a0a1fa0efb7e1df4"
+    },
+    "docs/mcr/evidence/qa07-input-delta/native-02.log": {
+      "bytes": 522,
+      "sha256": "f1b9878064feb145c4b6752b04d1519c264e6b6bcd2aa1c91e906a8ee15e3b3e"
+    },
+    "docs/mcr/evidence/qa07-input-delta/native-03/guard-disk-regression.log": {
+      "bytes": 266,
+      "sha256": "f40dcaceaaad24f7086c1b5efdcb654e3ed77bf314b6829069bce023d431cbc3"
+    },
+    "docs/mcr/evidence/qa07-input-delta/native-03/report.json": {
+      "bytes": 4540,
+      "sha256": "4799b882eed74b200ec8f4dcffd2d9c788e0863014c5a4ed56923ae3449bbcb4"
+    },
+    "docs/mcr/evidence/qa07-input-delta/native-03.log": {
+      "bytes": 20,
+      "sha256": "917003c8ba58eedf5e500cbe4dac06987a80e518e9a01cf1eee8aa6857ff2514"
+    },
+    "docs/mcr/evidence/qa07-input-delta/outer-native-01.json": {
+      "bytes": 2821,
+      "sha256": "451a5fa6fc276d56f77666aad508ddf0145cd7356dc492651802cd51141e3314"
+    },
+    "docs/mcr/evidence/qa07-input-delta/outer-native-02.json": {
+      "bytes": 1188,
+      "sha256": "982c1af4c6ee835f024919c24d78226842889edfe0434ece645282f72784d79a"
+    },
+    "docs/mcr/evidence/qa07-input-delta/outer-native-03.json": {
+      "bytes": 1103,
+      "sha256": "f71db32ec945e2e62d92e27860234c9095b54d97d1df94635fac2a7dd8341ca6"
+    },
+    "docs/mcr/evidence/qa07-input-delta/qualification.json": {
+      "bytes": 8685,
+      "sha256": "6ad9f75aa4c6c444614a7524285d3441688cbba38efcc2c6df36bf68c2654c8f"
+    },
+    "docs/mcr/evidence/qa07-input-delta/release-native-01.json": {
+      "bytes": 625,
+      "sha256": "69838dd538212ef34a903f4ec91cb55f43ed48194a2370f44cb369af0757902f"
+    },
+    "docs/mcr/evidence/qa07-input-delta/release-native-02.json": {
+      "bytes": 951,
+      "sha256": "f8bb41ad08c34be56a2b35cf091ecf812fc7f797d993e4509afb7032508fb658"
+    },
+    "docs/mcr/evidence/qa07-input-delta/release-native-03.json": {
+      "bytes": 762,
+      "sha256": "8489bfd08a72e247dbc974d4a86ce08c89834532bb8b5ac5405e0bd172a94164"
+    },
+    "docs/mcr/evidence/qa07-input-delta/release-source-01.json": {
+      "bytes": 369,
+      "sha256": "9dc5145ed35e3b7cedc5ef2d01461bcd9fdfc11869923e2675cf27a3d5eb18fc"
+    },
+    "docs/mcr/evidence/qa07-input-delta/reused-source-pins.json": {
+      "bytes": 7621,
+      "sha256": "4a59796d0cf8f0d6f4018a2ff202abc85de2a45432bed0cd966c12516457418b"
+    },
+    "docs/mcr/evidence/qa07-input-delta/source-01/lint.log": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "docs/mcr/evidence/qa07-input-delta/source-01/plan.log": {
+      "bytes": 1435,
+      "sha256": "88606f33d640a29811a4cbdc9748fc0f1e16225b81ad7e697deaf3b20c9b86e1"
+    },
+    "docs/mcr/evidence/qa07-input-delta/source-01/report.json": {
+      "bytes": 1295,
+      "sha256": "d2166e06bef1086d86bc55d4a5fadceea3ad59c4cc189e44dc3da4a64f797772"
+    },
+    "docs/mcr/evidence/qa07-input-delta/source-01/syntax.log": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "docs/mcr/evidence/qa07-input-delta/source-01/types.log": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "docs/mcr/evidence/qa07-input-delta/source-01.log": {
+      "bytes": 940,
+      "sha256": "bedf0b8e3d739a81db75a8a85f36c59501a62ef605bba006ee3ea4d5aaec026f"
+    },
+    "docs/mcr/evidence/qa07-input-delta/source.mjs": {
+      "bytes": 1822,
+      "sha256": "c8d9ffe982e1e3384252e3dd91059c24d9067255537481940b4ed27f8e302d15"
+    },
+    "docs/mcr/evidence/qa07-input-delta/supervise.py": {
+      "bytes": 5442,
+      "sha256": "4a877cbf8b4d63df0a70de098066be512bf8cdbf72895293c8e6d77c144282a2"
+    },
+    "docs/mcr/evidence/qa07-input-delta/supervisor-native-01.json": {
+      "bytes": 1453,
+      "sha256": "67ecb5b098065732f44ce7142de9f2b63613ddc2796ab10677e42d6d2e97bd5d"
+    },
+    "docs/mcr/evidence/qa07-input-delta/supervisor-native-02.json": {
+      "bytes": 1159,
+      "sha256": "cd3b54867044eb597d9c2ed93e3da7e120f57a41691a5e02459fb1454f4c6965"
+    },
+    "docs/mcr/evidence/qa07-input-delta/supervisor-native-03.json": {
+      "bytes": 985,
+      "sha256": "9511c91c84a864e540d83431a2600c00cc563f0ba00488254838d64f0fba5fb0"
+    },
+    "docs/mcr/evidence/qa07-input-delta/supervisor-source-01.json": {
+      "bytes": 921,
+      "sha256": "113dd441d2e7a5348a54bc7e77042e48388549e16c5acf523ed9f7feb8f99ef1"
+    },
+    "docs/mcr/evidence/qa07-input-delta/visual-assessment-native-01.json": {
+      "bytes": 1196,
+      "sha256": "c3d725901af00ce49bf0235b17df76e84269512ef9a4ab5058e264b1dfc96327"
+    },
+    "docs/mcr/evidence/qa07-input-delta/visual-assessment-native-02.json": {
+      "bytes": 1788,
+      "sha256": "65e2e3ad88748297ca64b788b29690417bb3360fefab9da5615a94cc2d25f460"
+    },
+    "docs/mcr/qa/qa07-input-delta.md": {
+      "bytes": 18000,
+      "sha256": "d6bd651637bdd60e2a3e5ea6fab9fde6fe44b8b54f4a4328766be9a95b4e1726"
+    },
+    "frontend/e2e/qa07-input-delta/fixture.html": {
+      "bytes": 241,
+      "sha256": "46c4580351b6cc67e6619ea06c0211ee22300bba19f7ef0360dd62f261d6dff3"
+    },
+    "frontend/e2e/qa07-input-delta/fixture.tsx": {
+      "bytes": 7522,
+      "sha256": "c6b1bcc4ca746c479d89b8a6de984b0da41b18b6f5b62b7cf8e2fe46cf498e39"
+    },
+    "frontend/e2e/qa07-input-delta/native.mjs": {
+      "bytes": 19244,
+      "sha256": "60260cdd53f78b1d95ab4f2484d9be170db74778c2423425846352105aeeee2d"
+    },
+    "frontend/e2e/qa07-input-delta/tsconfig.json": {
+      "bytes": 100,
+      "sha256": "0a0980de1863ba33371488cf23fdc4ee726ab2f6c964cd3f509824b1df2cd5c0"
+    }
+  },
+  "selfExcluded": "artifact-index.json; enclosing Git commit seals this file"
+}

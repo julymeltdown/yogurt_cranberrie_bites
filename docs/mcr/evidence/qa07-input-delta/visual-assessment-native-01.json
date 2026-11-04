@@ -1,0 +1,20 @@
+{
+  "assessedEpoch": 1793822657.400136,
+  "method": "Developer opened and inspected all six full PNGs with local image viewer; separate from automated reports",
+  "images": [
+    "native-01/360-wall-keyboard-tools.png",
+    "native-01/360-wall-pointer-cancel.png",
+    "native-01/390-wall-keyboard-tools.png",
+    "native-01/390-wall-pointer-cancel.png",
+    "native-01/430-wall-keyboard-tools.png",
+    "native-01/430-wall-pointer-cancel.png"
+  ],
+  "result": "PASS for six Wall images only",
+  "observations": [
+    "All widths retain visible tools, palette, view controls, revision/status and coordinate summary inside the panel.",
+    "Fill/undo ends at revision12; opaque erase ends at revision11. Native state assertions establish data changes; images alone do not prove writes.",
+    "Palette intentionally scrolls for16colors; no document horizontal overflow in actual checks.",
+    "Final screenshots do not capture every transient focus state. Actual native tool focus geometry/outlines and trusted pointer cancellation are in report.json observations."
+  ],
+  "limits": "Gifts/Thread/Meet failed before their intended journeys; no visual or browser acceptance for those nine cells."
+}
