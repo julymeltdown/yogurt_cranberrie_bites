@@ -1,6 +1,7 @@
 # CF02 shared Participant and typed Product owner assembly
 
-Status: IN_PROGRESS. Source implemented; build/native validation NOT_RUN.
+Status: CONTRACT_READY. Source and bounded component/native validation complete.
+Normal Root publication and independent publication readback remain pending.
 This component does not activate production mounting or accept full C03/C04/IN01.
 
 ## Ownership and base
@@ -85,7 +86,7 @@ role separation. Outbound relationship/SELF keys also cannot overlap Gateway
 keys or each other. Parity identities remain refused. Construction changes no
 environment variable and does not connect to a database or start a server.
 
-## Native fixture plan and honest limits
+## Native fixture and honest limits
 
 The new ignored native integration host is
 `shared_participant_core_and_real_profile_native`. Its controller must supply
@@ -96,7 +97,7 @@ starts actual Auth relationship/owner, Friend owner, Profile SELF/public/settlem
 and Concert decision/closed-union settlement transports with production guards.
 The source-bound selected release constructor is reused read-only from CF01.
 
-The host is designed to check:
+The passing Round3 host checked:
 
 - Actual Participant Get, canonical Auth/SELF reads and retained inner EOF;
   exact pointer identity of its actual scope in both consumer registries.
@@ -124,17 +125,91 @@ Gateway HTTP/browser, independent owner processes, deployment activation, all
 Product operations, complete Intro dispatch and broad production acceptance
 remain NOT_RUN. No fallback provider or positive fake settlement is used.
 
-## Planned finite validation and provenance
+## Finite validation and provenance
 
-No Cargo/shared target/PG/browser/runtime launch is authorized until a separate
-named resource offer from the allocator is accepted. Only the new integration
-target and existing `participant_runtime_config` target are proposed, Rust1.88,
-locked/offline, at most two jobs, debug 0/incremental off and retained
-contracts-build opt-level2. Freeze exact executables, source/runtime pins and
-live baked migration inputs; honor the offer's target-release, byte/time/free
-space and owned-cluster cleanup boundaries. Commands/exits/evidence will be
-recorded after actual execution, without converting static checks into runtime
-acceptance.
+Three separately named resource rounds were used. Each froze exactly two test
+executables outside the shared target before zero-handle TARGETRELEASE; no
+copied test or owned PostgreSQL process ran before that release. There was no
+after-release target access. The executable/source freeze for the successful
+round is `2d48127b8c629b133b967455bb6729e21db95358`. The following documentation
+commit changes no compiled source or dependency input.
+
+| Round | Frozen source | Build / regular | Actual native result |
+| --- | --- | --- | --- |
+| 1 | `063186f31db4a08b688ba1f45458f7c43de047b3` | Exit 0 / 8 PASS | FAIL. First private URL helper rejected dedicated names containing digits, cleaned up; corrected private adapter then launched host, which lacked inbound caller deadline and failed gRPC 3. Both attempts retained. |
+| 2 | `f318582a860957e463b66372169a50bb75a8982b` | Exit 0 / 8 PASS | FAIL. Shared identity, typed Profile child, expiry/key refusal, common recovery, idempotent EOF and coordinated PATCH assertions passed; final standalone Get terminal assertion failed. No whole-native acceptance claimed. |
+| 3 | `2d48127b8c629b133b967455bb6729e21db95358` | Exit 0 / 8 PASS | PASS. One actual native test, exit 0, including shared and standalone Get/terminal and coordinated PATCH. |
+
+Round1's missing deadline was fixed by the actual `CallDeadlineLayer` and
+propagated remaining-time header in `f318582a`. Round2 led to the narrow
+standalone native-read abort dispatcher and explicit graceful owner/listener
+restart in `2d48127b`; dedicated mutation witness validation remains unchanged.
+Targeted source review of the final production/lifecycle fix reported no
+actionable findings. Review was source-only, not runtime evidence or an approval
+gate. All corrections stay within the exact assigned eight paths.
+
+Round3's first admission failed the fresh 16 GiB gate before any target/job
+access; an incorrectly premature coordination ACCEPT message was immediately
+corrected. The same offer was actually accepted at
+`2026-11-04T09:53:15.082865Z`, with 17,405,906,944 bytes free. Its clock and byte
+baseline were not reset. Carry was conservatively charged at 363,147,264 bytes,
+including the entire earlier measured peak plus source/helpers/evidence.
+
+Actual build command (existing lockfile, offline Rust 1.88, two jobs;
+`MCR_BACKEND_TARGET` identifies the allocator-leased backend target):
+
+```sh
+CARGO_TARGET_DIR="$MCR_BACKEND_TARGET" \
+CARGO_PROFILE_DEV_DEBUG=0 CARGO_PROFILE_TEST_DEBUG=0 CARGO_INCREMENTAL=0 \
+cargo +1.88.0 test --manifest-path backend/Cargo.toml --locked --offline -j 2 \
+  --config profile.dev.package.contracts-build.opt-level=2 -p concert-service \
+  --test shared_participant_composition --test participant_runtime_config \
+  --no-run --message-format=json
+```
+
+Cargo exited 0 in 24.52 seconds; full executable freeze took 25.29 seconds.
+All 3,608 tracked source/runtime/migration inputs matched their Git blob IDs,
+with zero mismatches. Copied artifact SHA256 values:
+
+- `shared_participant_composition`: `5f2e76bd7bbb3cd15be388fe57c60e387395ffa59dbcb10836688a6849fe9cb2`.
+- `participant_runtime_config`: `5c23139a7a26ddfe0c3daf060ec04835fc3251594e3b12c715eaaad6447c4ced`.
+
+The copied configuration executable ran with `--test-threads=1 --nocapture
+--format terse`: exit 0, eight tests passed. The native executable ran with
+`--ignored --exact shared_participant_core_and_real_profile_native
+--test-threads=1 --nocapture --format terse`: exit 0, one test passed in 3.95
+seconds (host 4.165 seconds). The private controller supplied one socket-only,
+marker/inode-owned PostgreSQL 16.14 cluster with four exact databases and real
+mTLS service transports. Migration ledger counts/hashes matched Auth 18,
+Friend 18, Concert 38 and Profile 9. Both actual coordinated writes produced
+`COMMIT` decisions and `COMMITTED` Profile terminal receipts. All four databases
+had zero prepared transactions before cleanup; teardown is not settlement proof.
+
+TARGETRELEASE was `2026-11-04T09:54:18.866939Z`, lsof exit 1 with empty output
+and no open handles. FULLRELEASE was `2026-11-04T09:55:10.807360Z`: owned host,
+postmaster, controller, process group and cluster root independently absent.
+Measured whole-round peak, including all conservative prior carry, was
+519,348,224 bytes versus the 2 GiB cap; native runtime peak was 96,485,376 bytes.
+The copied-test/native guard completed in 8.42 seconds. Acceptance through
+FULLRELEASE took 115.73 seconds, within the 1,200/750/450 second windows and
+reserved cleanup time.
+
+Private local receipts are under `/private/tmp/mcr-cf02-round3-ce0dymlk`:
+`checkpoint.json`, `source-blob-readback.json`, `native.json`,
+`runtime-guard.json`, `full-release.json`, bounded logs and
+`evidence-sha256.json`. Earlier failures remain under
+`/private/tmp/mcr-cf02-k28emvai` and `/private/tmp/mcr-cf02-round2-ntdvlzaq`.
+No private credentials, keys, SQL data or generated native binary are committed.
+Key evidence SHA256 values:
+
+- `native.json`: `f97bd5046e46b569288b222c2601a38689468c043062660ece0f97462c8203c8`.
+- `native-host.log`: `6b7e0287c5b679376807bd8e2ee88664da1559b86bc00ec5645063e9d2df9b85`.
+- `full-release.json`: `320d1942aea94cc8cc43e79a491da90691a67e20f532d4f7be7c07a83ea1aea0`.
+
+Final `rustfmt +1.88.0 --check --config skip_children=true` for all seven
+assigned Rust files, `git diff --check`, and `python3 scripts/mcr/check-plan.py`
+exited 0. The planning check confirms original archive/provenance preservation;
+it does not certify application runtime or deployment.
 
 Adapted/read-only source provenance follows. All source revisions below are
 the exact base `f4349d5a1884c451cabdefc6462fe8e82e6d84fd`; unchanged existing
