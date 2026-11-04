@@ -1,0 +1,18 @@
+{
+  "slot": "ROOT-FEED-FE41-NATIVE-202611041417Z",
+  "accepted": "2026-11-04T14:17:58.146756+00:00",
+  "workDeadline": "2026-11-04T14:23:58.146756+00:00",
+  "hardDeadline": "2026-11-04T14:24:58.146756+00:00",
+  "pin": "32fed3eb41e2b57783cebb78e4aff11d3fa087ba",
+  "freeBytes": 28622770176,
+  "actualRetainedBytes": 108596434,
+  "carryBytes": 118915133,
+  "pins": {
+    "docs/mcr/evidence/feed-root-adoption/supervisor.py": "dc9c36106f014872c96d59dab8a9ba08f824d45c47dfb31871044bc8389c4110",
+    "docs/mcr/evidence/feed-root-adoption/native.mjs": "6b7164f93c732e5789f0d052c6b6908d873ec250fcf7de16c32cd28628044076",
+    "frontend/src/shared/styles/cozy-community-backgrounds-v1.css": "f41dc64630680729de9bd5acc1239a76cf7a34193f383efa1b78a283e48b2b98",
+    "frontend/pnpm-lock.yaml": "47ca44459819ad0e887d2f4f93394fdf3b1053b8f45edc9ceb0236981feee1f6"
+  },
+  "port5292Free": true,
+  "output": "docs/mcr/evidence/feed-root-adoption/combined-round01"
+}

@@ -1,0 +1,4 @@
+/* Fixture frame and native-media policy only; never imported by product code. */
+@import '../reference/preview.css';
+.reference-native-frame .feed-media figure { width: fit-content; max-width: 100%; margin: 0; }
+.reference-native-frame .feed-media img { width: auto; height: auto; max-width: 100%; max-height: none; object-fit: contain; }

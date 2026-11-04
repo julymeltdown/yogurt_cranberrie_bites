@@ -1,0 +1,22 @@
+{
+  "slot": "ROOT-FEED-FE41-NATIVE-202611041417Z",
+  "releasedAt": "2026-11-04T14:24:01.921766+00:00",
+  "originalWorkDeadline": "2026-11-04T14:23:58.146756+00:00",
+  "originalHardDeadline": "2026-11-04T14:24:58.146756+00:00",
+  "status": "FULL_RELEASE_PARTIAL",
+  "fullTypes": "PASS",
+  "Feed12casesSharedPaperFocusShort": "PASS",
+  "FE41FullMatrix": "NOT_COMPLETE",
+  "FE41Observed": "360coverage/offline/stale/manualkeyboardReconnect/freshSnapshot/short/reloadPASS, then harness mistakenly expected404onregisteredHelp route; 390/430 incomplete",
+  "allPriorPacketsImmutable": [
+    "combined-round01",
+    "combined-round01-retry01",
+    "combined-round01-retry02"
+  ],
+  "ownedPidsAbsent": true,
+  "ownLinkAbsent": true,
+  "ownPrivateTempsAbsent": true,
+  "port5292ListenerAbsent": true,
+  "port5292ReuseAddressRebound": true,
+  "freeBytes": 28253663232
+}

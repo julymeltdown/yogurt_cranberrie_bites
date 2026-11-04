@@ -36,11 +36,8 @@
 /* Exact list routes only: include the existing blank surrounding paper without
    giving detail, authoring or pickup screens a new background. */
 :root .shell-panel[data-mcr-panel='feed'] > .shell-panel-body {
-  background-color: #f5d9df;
-  background-image: url('/backgrounds/cute-community-v1/feed-backdrop.svg');
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: 100% 100%;
+  background-color: #f8f5ec;
+  background-image: none;
 }
 
 :root .shell-panel[data-mcr-panel='gifts'] > .shell-panel-body {
