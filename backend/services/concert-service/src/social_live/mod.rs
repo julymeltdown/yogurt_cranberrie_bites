@@ -1,4 +1,5 @@
 //! BE28–30/37 product producer. Root owns dispatch registration and delivery.
+pub mod account_deletion;
 mod cursor;
 pub mod invalidation;
 pub mod keys;
