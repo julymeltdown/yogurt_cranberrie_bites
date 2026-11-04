@@ -299,8 +299,8 @@ impl AvatarRepository for PgAvatarRepository {
             check()?;
             fence.register(identity).await?;
             check()?;
+            check_effect(authority, key, op, digest, Some(fence)).await?;
         }
-        check_effect(authority, key, op, digest, fence).await?;
         let phase: Option<String> = sqlx::query_scalar(
             "select phase from public.concert_events where event_id=$1 for update",
         )
