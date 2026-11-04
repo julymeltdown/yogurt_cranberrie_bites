@@ -115,3 +115,18 @@ new outputs remain under 128KiB and no temp or long-lived process was created.
 this handoff; Customize source and its blocked goal remain unchanged.
 Root and the existing d51f consumer receive these exact immutable asset pins;
 normal Root publication and owned byte readback are still required.
+
+### Resource timing exception
+
+The extraction and direct image inspection passed, but the complete output
+workflow did **not** meet its 60-second allocation. Final documentation,
+accounting and commit finished at 10:14:29.260476 UTC, approximately 65.17
+seconds after the stated acceptance clock and 5.17 seconds after its hard
+deadline. The required 15-second cleanup reserve was not maintained for the
+whole workflow. This is recorded as a timing exception, not an in-budget pass.
+Final charged carry was 222,248 bytes, new assigned files 59,489 bytes,
+temporary output zero, free space 20,114,354,176 bytes, and owned live handles
+zero. Explicit FULLRELEASE and the overrun were reported to 21d, Root and the
+consumer. No extraction, view or check was repeated after release. This timing
+record was added through the separately permitted source/documentation and
+normal committed-handoff path; the PNGs and their validated pixels are unchanged.
