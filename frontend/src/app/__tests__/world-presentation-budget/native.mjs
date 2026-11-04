@@ -54,7 +54,7 @@ const fixture = '/src/app/world-entry/__tests__/reference-scene-v5/preview.html'
 const readState = page => page.evaluate(() => window.__SCENE_V5_ROOT__.state())
 const inspect = page => page.evaluate(() => window.__SCENE_V5_ROOT__.inspectWorld())
 async function budget() {
-  const durable = await bytes(output), working = await bytes(temporary)
+  const durable = await bytes(resolve(root, 'docs/mcr/evidence/world-presentation-budget')), working = await bytes(temporary)
   peakBytes = Math.max(peakBytes, durable + working)
   assert(durable <= 40 * 1024 ** 2, '40MiB durable cap')
   assert(durable + working <= .2 * 1024 ** 3, '0.2GiB workflow cap')
@@ -73,6 +73,12 @@ async function measure(page) {
       notice: document.querySelector('.world-composition-notice')?.textContent,
       overflow: document.documentElement.scrollWidth - innerWidth }
   })
+}
+async function capture(page, name) {
+  // Panel return resizes the retained canvas; allow Phaser to paint before freezing evidence.
+  await page.evaluate(() => new Promise(resolve => requestAnimationFrame(() => requestAnimationFrame(resolve))))
+  await page.waitForTimeout(100)
+  await page.screenshot({ path: resolve(output, name) })
 }
 async function dispose(page) {
   await page.evaluate(() => window.__SCENE_V5_ROOT__.dispose())
@@ -166,7 +172,7 @@ try {
           assert.deepEqual(projection.self, baseline.projection.self, 'Server self unchanged')
         }
         const image = `${mode}-${era.toLowerCase()}-${width}-h${height}.png`
-        await page.screenshot({ path: resolve(output, image) })
+        await capture(page, image)
         const row = { mode, era, width, height, image, metrics, ...single, projection }
         report.cases.push(row)
         if (era === 'PARADE' && width === 390) {
@@ -206,7 +212,7 @@ try {
             await expect(page.locator(`#${id}`)).toBeFocused()
             await assertSingle(page)
           }
-          await page.screenshot({ path: resolve(output, 'tools-expanded-390-h554.png') })
+          await capture(page, 'tools-expanded-390-h554.png')
           await page.keyboard.press('Escape'); await expect(toggle).toBeFocused()
           await page.getByRole('link', { name: 'Skip to content', exact: true }).focus()
           await page.keyboard.press('Enter'); await expect(page.locator('main#shell-content')).toBeFocused()
@@ -214,18 +220,18 @@ try {
             await page.evaluate(path => window.__SCENE_V5_ROOT__.navigate(path), path)
             await expect.poll(async () => (await readState(page)).path).toBe(path)
             await assertSingle(page)
-            await page.screenshot({ path: resolve(output, `route-${path.slice(1)}-390-h554.png`) })
+            await capture(page, `route-${path.slice(1)}-390-h554.png`)
           }
           await page.setViewportSize({ width: 390, height: 420 })
           await expect(toggle).toBeVisible(); await toggle.focus(); await page.keyboard.press('Enter')
           await expect(nav).toBeVisible(); await page.keyboard.press('Escape'); await expect(toggle).toBeFocused()
           report.interactions.push({ name: 'reduced viewport and physical-keyboard disclosure, not a software keyboard', metrics: await measure(page), ...await assertSingle(page) })
-          await page.screenshot({ path: resolve(output, 'keyboard-reduced-390-h420.png') })
+          await capture(page, 'keyboard-reduced-390-h420.png')
           await page.setViewportSize({ width: 390, height: 554 })
           await page.evaluate(() => window.__WORLD_BUDGET_SOCKETS__.at(-1).serverClose(4400))
           const reconnect = page.getByRole('button', { name: 'Reconnect world', exact: true })
           await expect(reconnect).toBeVisible()
-          await page.screenshot({ path: resolve(output, 'disconnected-390-h554.png') })
+          await capture(page, 'disconnected-390-h554.png')
           await reconnect.click(); await expect.poll(async () => (await readState(page)).phase).toBe('live')
           await assertSingle(page)
           assert.deepEqual((await page.evaluate(() => window.__SCENE_V5_ROOT__.cameraProjection())).self, projection.self)
@@ -233,7 +239,7 @@ try {
           await page.evaluate(() => window.__SCENE_V5_ROOT__.suspend())
           await expect.poll(async () => (await readState(page)).activeSockets).toBe(0)
           await expect.poll(async () => (await readState(page)).canvases).toBe(0)
-          await page.screenshot({ path: resolve(output, 'privacy-withdrawn-390-h554.png') })
+          await capture(page, 'privacy-withdrawn-390-h554.png')
           report.interactions.push({ name: 'actual privacy withdrawal', state: await readState(page) })
         }
         row.cleanup = await dispose(page)
@@ -246,7 +252,7 @@ try {
       await page.goto(`${origin}${fixture}?era=PARADE`)
       const retry = page.getByRole('button', { name: 'Try opening world again', exact: true })
       await expect(retry).toBeVisible({ timeout: 30000 })
-      await page.screenshot({ path: resolve(output, 'critical-retry-390-h554.png') })
+      await capture(page, 'critical-retry-390-h554.png')
       await page.unroute('**/world/reference-scene-v2/runtime/spatial-v5/canonical-map.json')
       await retry.click(); await expect.poll(async () => (await readState(page)).phase, { timeout: 30000 }).toBe('live')
       report.interactions.push({ name: 'actual resource failure and retry', ...await assertSingle(page), metrics: await measure(page) })
@@ -259,7 +265,7 @@ try {
       assert.equal(denial.canvases, 0); assert.equal(denial.activeSockets, 0)
       assert.equal(denial.productionAdmitted, false)
       report.interactions.push({ name: 'unchanged production release rejection', state: denial })
-      await denied.screenshot({ path: resolve(output, 'production-denied-390-h554.png') })
+      await capture(denied, 'production-denied-390-h554.png')
       await dispose(denied)
     }
     await server.close(); server = null
