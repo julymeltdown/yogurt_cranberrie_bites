@@ -164,16 +164,8 @@ async fn aggregate_native() -> Result<()> {
         .filter(|x| x.1 == "COMPLETE")
         .map(|x| x.0.as_str())
         .collect::<Vec<_>>();
-    let expected_completed = if restart {
-        vec!["CORE_PREFERENCES_AND_AVATAR", "INTRO_TEXT"]
-    } else {
-        vec!["CORE_PREFERENCES_AND_AVATAR"]
-    };
-    anyhow::ensure!(initially_completed == expected_completed);
-    anyhow::ensure!(
-        rows.iter().filter(|x| x.1 == "INCOMPLETE").count()
-            == PrivateDataCategory::ALL.len() - expected_completed.len()
-    );
+    anyhow::ensure!(initially_completed == vec!["CORE_PREFERENCES_AND_AVATAR"]);
+    anyhow::ensure!(rows.iter().filter(|x| x.1 == "INCOMPLETE").count() == 6);
     let completed: Option<chrono::DateTime<Utc>> = sqlx::query_scalar(
         "select completed_at from concert_private_data_owner_progress where user_id=$1",
     )
@@ -191,18 +183,8 @@ async fn aggregate_native() -> Result<()> {
         .ok_or_else(|| anyhow::anyhow!("progress"))?;
     anyhow::ensure!(progress.cursor == PrivateDataCategory::ALL.len());
     anyhow::ensure!(!progress.completed.is_empty() && !progress.missing.is_empty());
-    let expected_progress = if restart {
-        vec![
-            PrivateDataCategory::CorePreferencesAndAvatar,
-            PrivateDataCategory::IntroText,
-        ]
-    } else {
-        vec![PrivateDataCategory::CorePreferencesAndAvatar]
-    };
-    anyhow::ensure!(progress.completed == expected_progress);
-    anyhow::ensure!(
-        progress.missing.len() == PrivateDataCategory::ALL.len() - expected_progress.len()
-    );
+    anyhow::ensure!(progress.completed == vec![PrivateDataCategory::CorePreferencesAndAvatar]);
+    anyhow::ensure!(progress.missing.len() == 6);
     anyhow::ensure!(progress.command.retention_until == c.retention_until);
     anyhow::ensure!(progress.command.retention_until.timestamp_subsec_nanos() == 123_456_000);
     anyhow::ensure!(progress.fence_revision > 0);
@@ -213,12 +195,12 @@ async fn aggregate_native() -> Result<()> {
     .fetch_one(&p)
     .await?;
     anyhow::ensure!(progress.fence_revision == persisted_fence as u64);
-    if !fenced {
-        let second = coordinator
-            .apply(c.clone(), Instant::now() + WallDuration::from_secs(4))
-            .await;
-        anyhow::ensure!(matches!(second, Err(DeletionFailure::Incomplete)));
-    }
+    // Replay in both processes through a coordinator constructed here. The
+    // restart registry has no core owner, so a core effect here would fail.
+    let second = coordinator
+        .apply(c.clone(), Instant::now() + WallDuration::from_secs(4))
+        .await;
+    anyhow::ensure!(matches!(second, Err(DeletionFailure::Incomplete)));
     let replay_whole_ack: Option<chrono::DateTime<Utc>> = sqlx::query_scalar(
         "select completed_at from concert_private_data_owner_progress where user_id=$1",
     )
@@ -232,7 +214,7 @@ async fn aggregate_native() -> Result<()> {
     .bind(user)
     .fetch_one(&p)
     .await?;
-    anyhow::ensure!(post_replay_complete == expected_progress.len() as i64);
+    anyhow::ensure!(post_replay_complete == 1);
     let core_state: String =
         sqlx::query_scalar("select state from concert_private_data_deletion_core where user_id=$1")
             .bind(user)
@@ -279,13 +261,15 @@ async fn aggregate_native() -> Result<()> {
     let before_version: i32 = sqlx::query_scalar("select category_version from concert_private_data_category_progress where user_id=$1 and state='INCOMPLETE' order by ordinal limit 1").bind(user).fetch_one(&p).await?;
     anyhow::ensure!(before_version == CATEGORY_VERSION);
     anyhow::ensure!(sqlx::query("update concert_private_data_category_progress set category_version=2 where user_id=$1 and state='INCOMPLETE' and ordinal=(select min(ordinal) from concert_private_data_category_progress where user_id=$1 and state='INCOMPLETE')").bind(user).execute(&p).await.is_err());
-    let complete_category: String = sqlx::query_scalar("select category from concert_private_data_category_progress where user_id=$1 and state='COMPLETE' and category<>'INTRO_TEXT' order by ordinal").bind(user).fetch_one(&p).await?;
+    let complete_category: String = sqlx::query_scalar("select category from concert_private_data_category_progress where user_id=$1 and state='COMPLETE' order by ordinal").bind(user).fetch_one(&p).await?;
     anyhow::ensure!(complete_category == "CORE_PREFERENCES_AND_AVATAR");
     // A missing row has no owner revision. The SQL guard admits exactly one
     // positive transition; a later terminal row stays immutable.
     let missing_category: String = sqlx::query_scalar("select category from concert_private_data_category_progress where user_id=$1 and state='INCOMPLETE' order by ordinal limit 1").bind(user).fetch_one(&p).await?;
     anyhow::ensure!(missing_category != "CORE_PREFERENCES_AND_AVATAR");
-    anyhow::ensure!(sqlx::query("update concert_private_data_category_progress set owner_revision=1,state='COMPLETE',completed_at=clock_timestamp() where user_id=$1 and category=$2 and state='INCOMPLETE' and owner_revision is null").bind(user).bind(&missing_category).execute(&p).await?.rows_affected()==1);
+    if restart {
+        anyhow::ensure!(sqlx::query("update concert_private_data_category_progress set owner_revision=1,state='COMPLETE',completed_at=clock_timestamp() where user_id=$1 and category=$2 and state='INCOMPLETE' and owner_revision is null").bind(user).bind(&missing_category).execute(&p).await?.rows_affected()==1);
+    }
     anyhow::ensure!(sqlx::query("update concert_private_data_category_progress set owner_revision=2 where user_id=$1 and category=$2").bind(user).bind(&missing_category).execute(&p).await.is_err());
     anyhow::ensure!(sqlx::query("update concert_private_data_category_progress set completed_at=completed_at + interval '1 microsecond' where user_id=$1 and category=$2").bind(user).bind(&missing_category).execute(&p).await.is_err());
     anyhow::ensure!(sqlx::query("update concert_private_data_category_progress set source_binding=decode(repeat('aa',32),'hex') where user_id=$1 and category=$2").bind(user).bind(&missing_category).execute(&p).await.is_err());

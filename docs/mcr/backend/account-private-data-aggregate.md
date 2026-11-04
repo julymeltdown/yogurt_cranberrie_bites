@@ -131,9 +131,10 @@ restart phase through a newly constructed empty-owner coordinator. Both phases
 exited `0`. The first process erased the actual core rows, committed Core
 `COMPLETE` with six `INCOMPLETE` category rows, retained the common and core
 fences, and withheld the whole receipt. The restart process read those exact
-category, cursor and fence values from durable state without invoking the core
-owner again. It then admitted one exact guarded `INCOMPLETE` to `COMPLETE`
-transition and required the other four categories to remain incomplete. The
+six incomplete categories, cursor and fence values from durable state without
+invoking the core owner again. It then admitted one exact guarded
+`INCOMPLETE` to `COMPLETE` transition and required the other four categories
+to remain incomplete. The
 rewrite, deletion, source rebinding, terminal transition and premature
 whole-ACK checks all passed. The frozen test executable was
 `5448a70c0d41a7af6713ec02a1891ffee9f911ceeadac3c0cca0b19f58eb416b`.
