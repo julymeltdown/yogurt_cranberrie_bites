@@ -17,6 +17,7 @@ def main():
     parser = argparse.ArgumentParser()
     parser.add_argument('--binary', required=True, type=Path)
     parser.add_argument('--sha256', required=True)
+    parser.add_argument('--migration-pins', required=True, type=Path)
     parser.add_argument('--output', required=True, type=Path)
     parser.add_argument('--cluster-root', required=True, type=Path)
     parser.add_argument('--guardian-pid', required=True, type=int)
@@ -31,6 +32,27 @@ def main():
         raise RuntimeError('owned evidence root required')
     if args.binary.is_symlink() or hashlib.sha256(binary.read_bytes()).hexdigest() != args.sha256:
         raise RuntimeError('frozen test binary identity mismatch')
+    # The executables load migrations from their compile checkout at runtime;
+    # an EXE hash alone does not freeze that SQL closure. Verify exact inventories
+    # and bytes from the producing build's source snapshot before starting PG.
+    pins_info = args.migration_pins.lstat()
+    if args.migration_pins.is_symlink() or pins_info.st_uid != os.getuid() or pins_info.st_mode & 0o077:
+        raise RuntimeError('private compiled-source migration pins required')
+    pins = json.loads(args.migration_pins.read_bytes())
+    repository = Path(__file__).resolve().parents[3]
+    migrations = {}
+    for service in ('auth-service', 'api-gateway'):
+        prefix = 'backend/services/' + service + '/migrations/'
+        expected = {name: digest for name, digest in pins['paths'].items()
+                    if name.startswith(prefix) and name.endswith('.sql')}
+        actual = {str(path.relative_to(repository)) for path in (repository/prefix).glob('*.sql')}
+        if not expected or actual != set(expected):
+            raise RuntimeError('runtime migration inventory differs from compiled-source snapshot')
+        for name, digest in expected.items():
+            path = repository/name
+            if path.is_symlink() or hashlib.sha256(path.read_bytes()).hexdigest() != digest:
+                raise RuntimeError('runtime migration bytes differ from compiled-source snapshot')
+        migrations[service] = expected
     if not args.cluster_root.is_absolute() or len(str(args.cluster_root / 'socket')) > 90:
         raise RuntimeError('new short absolute PG root required')
     if not 1 <= args.seconds <= 300 or args.frontend_origin != 'http://localhost:3000':
@@ -50,6 +72,7 @@ def main():
     cluster = pg.Cluster({n: pg.executable(args.pg_bin_dir/n) for n in pg.PG_TOOLS}, args.cluster_root)
     child = None
     report = {'status': 'FAIL', 'binary_sha256': args.sha256,
+              'compiled_source_revision': pins['source'], 'runtime_migration_sha256': migrations,
               'browser_verdict': 'FE_OWNED_NOT_CLAIMED_BY_SERVING_FIXTURE'}
     def interrupted(_signal, _frame):
         raise KeyboardInterrupt('owned browser pairing stopped')
