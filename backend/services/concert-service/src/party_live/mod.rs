@@ -557,7 +557,7 @@ where
                 after = Some(row.position);
                 match project_party(&mut tx, &binding, row.party, &guard).await {
                     Ok(value) => items.push(value),
-                    Err(PartyLiveError::Denied) => continue,
+                    Err(PartyLiveError::Denied | PartyLiveError::ResourceUnavailable) => continue,
                     Err(error) => return Err(error),
                 }
                 if items.len() == usize::from(cursor_binding.limit) {

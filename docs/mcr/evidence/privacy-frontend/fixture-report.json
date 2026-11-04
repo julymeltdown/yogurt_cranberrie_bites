@@ -537,7 +537,7 @@
       "operation": "list",
       "status": "UNSUPPORTED",
       "provenance": "SYNTHETIC_FIXTURE",
-      "evidence": "Public DTO leak-rejection checks are separate; this role/domain operation has no seeded authorization/service fixture in this increment. Backend role/seed contract and feature-specific runtime input required; no result fabricated."
+      "evidence": "Public DTO leak-rejection checks are separate; raw private claim role/operation access has no frozen frontend interface in this increment. Actual backend policy/runtime inputs required; no result fabricated."
     },
     {
       "domain": "claim",
@@ -545,7 +545,7 @@
       "operation": "detail",
       "status": "UNSUPPORTED",
       "provenance": "SYNTHETIC_FIXTURE",
-      "evidence": "Public DTO leak-rejection checks are separate; this role/domain operation has no seeded authorization/service fixture in this increment. Backend role/seed contract and feature-specific runtime input required; no result fabricated."
+      "evidence": "Public DTO leak-rejection checks are separate; raw private claim role/operation access has no frozen frontend interface in this increment. Actual backend policy/runtime inputs required; no result fabricated."
     },
     {
       "domain": "claim",
@@ -553,7 +553,7 @@
       "operation": "mutation",
       "status": "UNSUPPORTED",
       "provenance": "SYNTHETIC_FIXTURE",
-      "evidence": "Public DTO leak-rejection checks are separate; this role/domain operation has no seeded authorization/service fixture in this increment. Backend role/seed contract and feature-specific runtime input required; no result fabricated."
+      "evidence": "Public DTO leak-rejection checks are separate; raw private claim role/operation access has no frozen frontend interface in this increment. Actual backend policy/runtime inputs required; no result fabricated."
     },
     {
       "domain": "claim",
@@ -569,7 +569,7 @@
       "operation": "WS",
       "status": "UNSUPPORTED",
       "provenance": "SYNTHETIC_FIXTURE",
-      "evidence": "Public DTO leak-rejection checks are separate; this role/domain operation has no seeded authorization/service fixture in this increment. Backend role/seed contract and feature-specific runtime input required; no result fabricated."
+      "evidence": "Public DTO leak-rejection checks are separate; raw private claim role/operation access has no frozen frontend interface in this increment. Actual backend policy/runtime inputs required; no result fabricated."
     },
     {
       "domain": "claim",
@@ -577,7 +577,7 @@
       "operation": "list",
       "status": "UNSUPPORTED",
       "provenance": "SYNTHETIC_FIXTURE",
-      "evidence": "Public DTO leak-rejection checks are separate; this role/domain operation has no seeded authorization/service fixture in this increment. Backend role/seed contract and feature-specific runtime input required; no result fabricated."
+      "evidence": "Public DTO leak-rejection checks are separate; raw private claim role/operation access has no frozen frontend interface in this increment. Actual backend policy/runtime inputs required; no result fabricated."
     },
     {
       "domain": "claim",
@@ -585,7 +585,7 @@
       "operation": "detail",
       "status": "UNSUPPORTED",
       "provenance": "SYNTHETIC_FIXTURE",
-      "evidence": "Public DTO leak-rejection checks are separate; this role/domain operation has no seeded authorization/service fixture in this increment. Backend role/seed contract and feature-specific runtime input required; no result fabricated."
+      "evidence": "Public DTO leak-rejection checks are separate; raw private claim role/operation access has no frozen frontend interface in this increment. Actual backend policy/runtime inputs required; no result fabricated."
     },
     {
       "domain": "claim",
@@ -593,7 +593,7 @@
       "operation": "mutation",
       "status": "UNSUPPORTED",
       "provenance": "SYNTHETIC_FIXTURE",
-      "evidence": "Public DTO leak-rejection checks are separate; this role/domain operation has no seeded authorization/service fixture in this increment. Backend role/seed contract and feature-specific runtime input required; no result fabricated."
+      "evidence": "Public DTO leak-rejection checks are separate; raw private claim role/operation access has no frozen frontend interface in this increment. Actual backend policy/runtime inputs required; no result fabricated."
     },
     {
       "domain": "claim",
@@ -609,7 +609,7 @@
       "operation": "WS",
       "status": "UNSUPPORTED",
       "provenance": "SYNTHETIC_FIXTURE",
-      "evidence": "Public DTO leak-rejection checks are separate; this role/domain operation has no seeded authorization/service fixture in this increment. Backend role/seed contract and feature-specific runtime input required; no result fabricated."
+      "evidence": "Public DTO leak-rejection checks are separate; raw private claim role/operation access has no frozen frontend interface in this increment. Actual backend policy/runtime inputs required; no result fabricated."
     },
     {
       "domain": "claim",
@@ -617,7 +617,7 @@
       "operation": "list",
       "status": "UNSUPPORTED",
       "provenance": "SYNTHETIC_FIXTURE",
-      "evidence": "Public DTO leak-rejection checks are separate; this role/domain operation has no seeded authorization/service fixture in this increment. Backend role/seed contract and feature-specific runtime input required; no result fabricated."
+      "evidence": "Public DTO leak-rejection checks are separate; raw private claim role/operation access has no frozen frontend interface in this increment. Actual backend policy/runtime inputs required; no result fabricated."
     },
     {
       "domain": "claim",
@@ -625,7 +625,7 @@
       "operation": "detail",
       "status": "UNSUPPORTED",
       "provenance": "SYNTHETIC_FIXTURE",
-      "evidence": "Public DTO leak-rejection checks are separate; this role/domain operation has no seeded authorization/service fixture in this increment. Backend role/seed contract and feature-specific runtime input required; no result fabricated."
+      "evidence": "Public DTO leak-rejection checks are separate; raw private claim role/operation access has no frozen frontend interface in this increment. Actual backend policy/runtime inputs required; no result fabricated."
     },
     {
       "domain": "claim",
@@ -633,7 +633,7 @@
       "operation": "mutation",
       "status": "UNSUPPORTED",
       "provenance": "SYNTHETIC_FIXTURE",
-      "evidence": "Public DTO leak-rejection checks are separate; this role/domain operation has no seeded authorization/service fixture in this increment. Backend role/seed contract and feature-specific runtime input required; no result fabricated."
+      "evidence": "Public DTO leak-rejection checks are separate; raw private claim role/operation access has no frozen frontend interface in this increment. Actual backend policy/runtime inputs required; no result fabricated."
     },
     {
       "domain": "claim",
@@ -649,7 +649,7 @@
       "operation": "WS",
       "status": "UNSUPPORTED",
       "provenance": "SYNTHETIC_FIXTURE",
-      "evidence": "Public DTO leak-rejection checks are separate; this role/domain operation has no seeded authorization/service fixture in this increment. Backend role/seed contract and feature-specific runtime input required; no result fabricated."
+      "evidence": "Public DTO leak-rejection checks are separate; raw private claim role/operation access has no frozen frontend interface in this increment. Actual backend policy/runtime inputs required; no result fabricated."
     },
     {
       "domain": "claim",
@@ -657,7 +657,7 @@
       "operation": "list",
       "status": "UNSUPPORTED",
       "provenance": "SYNTHETIC_FIXTURE",
-      "evidence": "Public DTO leak-rejection checks are separate; this role/domain operation has no seeded authorization/service fixture in this increment. Backend role/seed contract and feature-specific runtime input required; no result fabricated."
+      "evidence": "Public DTO leak-rejection checks are separate; raw private claim role/operation access has no frozen frontend interface in this increment. Actual backend policy/runtime inputs required; no result fabricated."
     },
     {
       "domain": "claim",
@@ -665,7 +665,7 @@
       "operation": "detail",
       "status": "UNSUPPORTED",
       "provenance": "SYNTHETIC_FIXTURE",
-      "evidence": "Public DTO leak-rejection checks are separate; this role/domain operation has no seeded authorization/service fixture in this increment. Backend role/seed contract and feature-specific runtime input required; no result fabricated."
+      "evidence": "Public DTO leak-rejection checks are separate; raw private claim role/operation access has no frozen frontend interface in this increment. Actual backend policy/runtime inputs required; no result fabricated."
     },
     {
       "domain": "claim",
@@ -673,7 +673,7 @@
       "operation": "mutation",
       "status": "UNSUPPORTED",
       "provenance": "SYNTHETIC_FIXTURE",
-      "evidence": "Public DTO leak-rejection checks are separate; this role/domain operation has no seeded authorization/service fixture in this increment. Backend role/seed contract and feature-specific runtime input required; no result fabricated."
+      "evidence": "Public DTO leak-rejection checks are separate; raw private claim role/operation access has no frozen frontend interface in this increment. Actual backend policy/runtime inputs required; no result fabricated."
     },
     {
       "domain": "claim",
@@ -689,7 +689,7 @@
       "operation": "WS",
       "status": "UNSUPPORTED",
       "provenance": "SYNTHETIC_FIXTURE",
-      "evidence": "Public DTO leak-rejection checks are separate; this role/domain operation has no seeded authorization/service fixture in this increment. Backend role/seed contract and feature-specific runtime input required; no result fabricated."
+      "evidence": "Public DTO leak-rejection checks are separate; raw private claim role/operation access has no frozen frontend interface in this increment. Actual backend policy/runtime inputs required; no result fabricated."
     },
     {
       "domain": "claim",
@@ -697,7 +697,7 @@
       "operation": "list",
       "status": "UNSUPPORTED",
       "provenance": "SYNTHETIC_FIXTURE",
-      "evidence": "Public DTO leak-rejection checks are separate; this role/domain operation has no seeded authorization/service fixture in this increment. Backend role/seed contract and feature-specific runtime input required; no result fabricated."
+      "evidence": "Public DTO leak-rejection checks are separate; raw private claim role/operation access has no frozen frontend interface in this increment. Actual backend policy/runtime inputs required; no result fabricated."
     },
     {
       "domain": "claim",
@@ -705,7 +705,7 @@
       "operation": "detail",
       "status": "UNSUPPORTED",
       "provenance": "SYNTHETIC_FIXTURE",
-      "evidence": "Public DTO leak-rejection checks are separate; this role/domain operation has no seeded authorization/service fixture in this increment. Backend role/seed contract and feature-specific runtime input required; no result fabricated."
+      "evidence": "Public DTO leak-rejection checks are separate; raw private claim role/operation access has no frozen frontend interface in this increment. Actual backend policy/runtime inputs required; no result fabricated."
     },
     {
       "domain": "claim",
@@ -713,7 +713,7 @@
       "operation": "mutation",
       "status": "UNSUPPORTED",
       "provenance": "SYNTHETIC_FIXTURE",
-      "evidence": "Public DTO leak-rejection checks are separate; this role/domain operation has no seeded authorization/service fixture in this increment. Backend role/seed contract and feature-specific runtime input required; no result fabricated."
+      "evidence": "Public DTO leak-rejection checks are separate; raw private claim role/operation access has no frozen frontend interface in this increment. Actual backend policy/runtime inputs required; no result fabricated."
     },
     {
       "domain": "claim",
@@ -729,7 +729,7 @@
       "operation": "WS",
       "status": "UNSUPPORTED",
       "provenance": "SYNTHETIC_FIXTURE",
-      "evidence": "Public DTO leak-rejection checks are separate; this role/domain operation has no seeded authorization/service fixture in this increment. Backend role/seed contract and feature-specific runtime input required; no result fabricated."
+      "evidence": "Public DTO leak-rejection checks are separate; raw private claim role/operation access has no frozen frontend interface in this increment. Actual backend policy/runtime inputs required; no result fabricated."
     },
     {
       "domain": "claim",
@@ -737,7 +737,7 @@
       "operation": "list",
       "status": "UNSUPPORTED",
       "provenance": "SYNTHETIC_FIXTURE",
-      "evidence": "Public DTO leak-rejection checks are separate; this role/domain operation has no seeded authorization/service fixture in this increment. Backend role/seed contract and feature-specific runtime input required; no result fabricated."
+      "evidence": "Public DTO leak-rejection checks are separate; raw private claim role/operation access has no frozen frontend interface in this increment. Actual backend policy/runtime inputs required; no result fabricated."
     },
     {
       "domain": "claim",
@@ -745,7 +745,7 @@
       "operation": "detail",
       "status": "UNSUPPORTED",
       "provenance": "SYNTHETIC_FIXTURE",
-      "evidence": "Public DTO leak-rejection checks are separate; this role/domain operation has no seeded authorization/service fixture in this increment. Backend role/seed contract and feature-specific runtime input required; no result fabricated."
+      "evidence": "Public DTO leak-rejection checks are separate; raw private claim role/operation access has no frozen frontend interface in this increment. Actual backend policy/runtime inputs required; no result fabricated."
     },
     {
       "domain": "claim",
@@ -753,7 +753,7 @@
       "operation": "mutation",
       "status": "UNSUPPORTED",
       "provenance": "SYNTHETIC_FIXTURE",
-      "evidence": "Public DTO leak-rejection checks are separate; this role/domain operation has no seeded authorization/service fixture in this increment. Backend role/seed contract and feature-specific runtime input required; no result fabricated."
+      "evidence": "Public DTO leak-rejection checks are separate; raw private claim role/operation access has no frozen frontend interface in this increment. Actual backend policy/runtime inputs required; no result fabricated."
     },
     {
       "domain": "claim",
@@ -769,7 +769,7 @@
       "operation": "WS",
       "status": "UNSUPPORTED",
       "provenance": "SYNTHETIC_FIXTURE",
-      "evidence": "Public DTO leak-rejection checks are separate; this role/domain operation has no seeded authorization/service fixture in this increment. Backend role/seed contract and feature-specific runtime input required; no result fabricated."
+      "evidence": "Public DTO leak-rejection checks are separate; raw private claim role/operation access has no frozen frontend interface in this increment. Actual backend policy/runtime inputs required; no result fabricated."
     },
     {
       "domain": "claim",
@@ -777,7 +777,7 @@
       "operation": "list",
       "status": "UNSUPPORTED",
       "provenance": "SYNTHETIC_FIXTURE",
-      "evidence": "Public DTO leak-rejection checks are separate; this role/domain operation has no seeded authorization/service fixture in this increment. Backend role/seed contract and feature-specific runtime input required; no result fabricated."
+      "evidence": "Public DTO leak-rejection checks are separate; raw private claim role/operation access has no frozen frontend interface in this increment. Actual backend policy/runtime inputs required; no result fabricated."
     },
     {
       "domain": "claim",
@@ -785,7 +785,7 @@
       "operation": "detail",
       "status": "UNSUPPORTED",
       "provenance": "SYNTHETIC_FIXTURE",
-      "evidence": "Public DTO leak-rejection checks are separate; this role/domain operation has no seeded authorization/service fixture in this increment. Backend role/seed contract and feature-specific runtime input required; no result fabricated."
+      "evidence": "Public DTO leak-rejection checks are separate; raw private claim role/operation access has no frozen frontend interface in this increment. Actual backend policy/runtime inputs required; no result fabricated."
     },
     {
       "domain": "claim",
@@ -793,7 +793,7 @@
       "operation": "mutation",
       "status": "UNSUPPORTED",
       "provenance": "SYNTHETIC_FIXTURE",
-      "evidence": "Public DTO leak-rejection checks are separate; this role/domain operation has no seeded authorization/service fixture in this increment. Backend role/seed contract and feature-specific runtime input required; no result fabricated."
+      "evidence": "Public DTO leak-rejection checks are separate; raw private claim role/operation access has no frozen frontend interface in this increment. Actual backend policy/runtime inputs required; no result fabricated."
     },
     {
       "domain": "claim",
@@ -809,31 +809,31 @@
       "operation": "WS",
       "status": "UNSUPPORTED",
       "provenance": "SYNTHETIC_FIXTURE",
-      "evidence": "Public DTO leak-rejection checks are separate; this role/domain operation has no seeded authorization/service fixture in this increment. Backend role/seed contract and feature-specific runtime input required; no result fabricated."
+      "evidence": "Public DTO leak-rejection checks are separate; raw private claim role/operation access has no frozen frontend interface in this increment. Actual backend policy/runtime inputs required; no result fabricated."
     },
     {
       "domain": "evidence",
       "role": "owner",
       "operation": "list",
-      "status": "UNSUPPORTED",
+      "status": "PASS",
       "provenance": "SYNTHETIC_FIXTURE",
-      "evidence": "Public DTO leak-rejection checks are separate; this role/domain operation has no seeded authorization/service fixture in this increment. Backend role/seed contract and feature-specific runtime input required; no result fabricated."
+      "evidence": "Actual moderation controller and mounted component with absent synthetic moderator lease; no private list/detail/evidence/mutation dispatch or retained data. Not server-role authorization."
     },
     {
       "domain": "evidence",
       "role": "owner",
       "operation": "detail",
-      "status": "UNSUPPORTED",
+      "status": "PASS",
       "provenance": "SYNTHETIC_FIXTURE",
-      "evidence": "Public DTO leak-rejection checks are separate; this role/domain operation has no seeded authorization/service fixture in this increment. Backend role/seed contract and feature-specific runtime input required; no result fabricated."
+      "evidence": "Actual moderation controller and mounted component with absent synthetic moderator lease; no private list/detail/evidence/mutation dispatch or retained data. Not server-role authorization."
     },
     {
       "domain": "evidence",
       "role": "owner",
       "operation": "mutation",
-      "status": "UNSUPPORTED",
+      "status": "PASS",
       "provenance": "SYNTHETIC_FIXTURE",
-      "evidence": "Public DTO leak-rejection checks are separate; this role/domain operation has no seeded authorization/service fixture in this increment. Backend role/seed contract and feature-specific runtime input required; no result fabricated."
+      "evidence": "Actual moderation controller and mounted component with absent synthetic moderator lease; no private list/detail/evidence/mutation dispatch or retained data. Not server-role authorization."
     },
     {
       "domain": "evidence",
@@ -841,7 +841,7 @@
       "operation": "cache",
       "status": "PASS",
       "provenance": "SYNTHETIC_FIXTURE",
-      "evidence": "Actual SessionPort/PrivacyController/Query+Mutation observers, five-domain taint scrubbing, late completion fences and public dehydration. Revocation invoked locally, not WS."
+      "evidence": "Actual moderation controller and mounted component with absent synthetic moderator lease; no private list/detail/evidence/mutation dispatch or retained data. Not server-role authorization."
     },
     {
       "domain": "evidence",
@@ -849,31 +849,31 @@
       "operation": "WS",
       "status": "UNSUPPORTED",
       "provenance": "SYNTHETIC_FIXTURE",
-      "evidence": "Public DTO leak-rejection checks are separate; this role/domain operation has no seeded authorization/service fixture in this increment. Backend role/seed contract and feature-specific runtime input required; no result fabricated."
+      "evidence": "No frozen social privacy/revocation WS message or registered public transport handoff. C05 world revoke is not a social grant event."
     },
     {
       "domain": "evidence",
       "role": "member",
       "operation": "list",
-      "status": "UNSUPPORTED",
+      "status": "PASS",
       "provenance": "SYNTHETIC_FIXTURE",
-      "evidence": "Public DTO leak-rejection checks are separate; this role/domain operation has no seeded authorization/service fixture in this increment. Backend role/seed contract and feature-specific runtime input required; no result fabricated."
+      "evidence": "Actual moderation controller and mounted component with absent synthetic moderator lease; no private list/detail/evidence/mutation dispatch or retained data. Not server-role authorization."
     },
     {
       "domain": "evidence",
       "role": "member",
       "operation": "detail",
-      "status": "UNSUPPORTED",
+      "status": "PASS",
       "provenance": "SYNTHETIC_FIXTURE",
-      "evidence": "Public DTO leak-rejection checks are separate; this role/domain operation has no seeded authorization/service fixture in this increment. Backend role/seed contract and feature-specific runtime input required; no result fabricated."
+      "evidence": "Actual moderation controller and mounted component with absent synthetic moderator lease; no private list/detail/evidence/mutation dispatch or retained data. Not server-role authorization."
     },
     {
       "domain": "evidence",
       "role": "member",
       "operation": "mutation",
-      "status": "UNSUPPORTED",
+      "status": "PASS",
       "provenance": "SYNTHETIC_FIXTURE",
-      "evidence": "Public DTO leak-rejection checks are separate; this role/domain operation has no seeded authorization/service fixture in this increment. Backend role/seed contract and feature-specific runtime input required; no result fabricated."
+      "evidence": "Actual moderation controller and mounted component with absent synthetic moderator lease; no private list/detail/evidence/mutation dispatch or retained data. Not server-role authorization."
     },
     {
       "domain": "evidence",
@@ -881,7 +881,7 @@
       "operation": "cache",
       "status": "PASS",
       "provenance": "SYNTHETIC_FIXTURE",
-      "evidence": "Actual SessionPort/PrivacyController/Query+Mutation observers, five-domain taint scrubbing, late completion fences and public dehydration. Revocation invoked locally, not WS."
+      "evidence": "Actual moderation controller and mounted component with absent synthetic moderator lease; no private list/detail/evidence/mutation dispatch or retained data. Not server-role authorization."
     },
     {
       "domain": "evidence",
@@ -889,31 +889,31 @@
       "operation": "WS",
       "status": "UNSUPPORTED",
       "provenance": "SYNTHETIC_FIXTURE",
-      "evidence": "Public DTO leak-rejection checks are separate; this role/domain operation has no seeded authorization/service fixture in this increment. Backend role/seed contract and feature-specific runtime input required; no result fabricated."
+      "evidence": "No frozen social privacy/revocation WS message or registered public transport handoff. C05 world revoke is not a social grant event."
     },
     {
       "domain": "evidence",
       "role": "stranger",
       "operation": "list",
-      "status": "UNSUPPORTED",
+      "status": "PASS",
       "provenance": "SYNTHETIC_FIXTURE",
-      "evidence": "Public DTO leak-rejection checks are separate; this role/domain operation has no seeded authorization/service fixture in this increment. Backend role/seed contract and feature-specific runtime input required; no result fabricated."
+      "evidence": "Actual moderation controller and mounted component with absent synthetic moderator lease; no private list/detail/evidence/mutation dispatch or retained data. Not server-role authorization."
     },
     {
       "domain": "evidence",
       "role": "stranger",
       "operation": "detail",
-      "status": "UNSUPPORTED",
+      "status": "PASS",
       "provenance": "SYNTHETIC_FIXTURE",
-      "evidence": "Public DTO leak-rejection checks are separate; this role/domain operation has no seeded authorization/service fixture in this increment. Backend role/seed contract and feature-specific runtime input required; no result fabricated."
+      "evidence": "Actual moderation controller and mounted component with absent synthetic moderator lease; no private list/detail/evidence/mutation dispatch or retained data. Not server-role authorization."
     },
     {
       "domain": "evidence",
       "role": "stranger",
       "operation": "mutation",
-      "status": "UNSUPPORTED",
+      "status": "PASS",
       "provenance": "SYNTHETIC_FIXTURE",
-      "evidence": "Public DTO leak-rejection checks are separate; this role/domain operation has no seeded authorization/service fixture in this increment. Backend role/seed contract and feature-specific runtime input required; no result fabricated."
+      "evidence": "Actual moderation controller and mounted component with absent synthetic moderator lease; no private list/detail/evidence/mutation dispatch or retained data. Not server-role authorization."
     },
     {
       "domain": "evidence",
@@ -921,7 +921,7 @@
       "operation": "cache",
       "status": "PASS",
       "provenance": "SYNTHETIC_FIXTURE",
-      "evidence": "Actual SessionPort/PrivacyController/Query+Mutation observers, five-domain taint scrubbing, late completion fences and public dehydration. Revocation invoked locally, not WS."
+      "evidence": "Actual moderation controller and mounted component with absent synthetic moderator lease; no private list/detail/evidence/mutation dispatch or retained data. Not server-role authorization."
     },
     {
       "domain": "evidence",
@@ -929,31 +929,31 @@
       "operation": "WS",
       "status": "UNSUPPORTED",
       "provenance": "SYNTHETIC_FIXTURE",
-      "evidence": "Public DTO leak-rejection checks are separate; this role/domain operation has no seeded authorization/service fixture in this increment. Backend role/seed contract and feature-specific runtime input required; no result fabricated."
+      "evidence": "No frozen social privacy/revocation WS message or registered public transport handoff. C05 world revoke is not a social grant event."
     },
     {
       "domain": "evidence",
       "role": "blocked",
       "operation": "list",
-      "status": "UNSUPPORTED",
+      "status": "PASS",
       "provenance": "SYNTHETIC_FIXTURE",
-      "evidence": "Public DTO leak-rejection checks are separate; this role/domain operation has no seeded authorization/service fixture in this increment. Backend role/seed contract and feature-specific runtime input required; no result fabricated."
+      "evidence": "Actual moderation controller and mounted component with absent synthetic moderator lease; no private list/detail/evidence/mutation dispatch or retained data. Not server-role authorization."
     },
     {
       "domain": "evidence",
       "role": "blocked",
       "operation": "detail",
-      "status": "UNSUPPORTED",
+      "status": "PASS",
       "provenance": "SYNTHETIC_FIXTURE",
-      "evidence": "Public DTO leak-rejection checks are separate; this role/domain operation has no seeded authorization/service fixture in this increment. Backend role/seed contract and feature-specific runtime input required; no result fabricated."
+      "evidence": "Actual moderation controller and mounted component with absent synthetic moderator lease; no private list/detail/evidence/mutation dispatch or retained data. Not server-role authorization."
     },
     {
       "domain": "evidence",
       "role": "blocked",
       "operation": "mutation",
-      "status": "UNSUPPORTED",
+      "status": "PASS",
       "provenance": "SYNTHETIC_FIXTURE",
-      "evidence": "Public DTO leak-rejection checks are separate; this role/domain operation has no seeded authorization/service fixture in this increment. Backend role/seed contract and feature-specific runtime input required; no result fabricated."
+      "evidence": "Actual moderation controller and mounted component with absent synthetic moderator lease; no private list/detail/evidence/mutation dispatch or retained data. Not server-role authorization."
     },
     {
       "domain": "evidence",
@@ -961,7 +961,7 @@
       "operation": "cache",
       "status": "PASS",
       "provenance": "SYNTHETIC_FIXTURE",
-      "evidence": "Actual SessionPort/PrivacyController/Query+Mutation observers, five-domain taint scrubbing, late completion fences and public dehydration. Revocation invoked locally, not WS."
+      "evidence": "Actual moderation controller and mounted component with absent synthetic moderator lease; no private list/detail/evidence/mutation dispatch or retained data. Not server-role authorization."
     },
     {
       "domain": "evidence",
@@ -969,31 +969,31 @@
       "operation": "WS",
       "status": "UNSUPPORTED",
       "provenance": "SYNTHETIC_FIXTURE",
-      "evidence": "Public DTO leak-rejection checks are separate; this role/domain operation has no seeded authorization/service fixture in this increment. Backend role/seed contract and feature-specific runtime input required; no result fabricated."
+      "evidence": "No frozen social privacy/revocation WS message or registered public transport handoff. C05 world revoke is not a social grant event."
     },
     {
       "domain": "evidence",
       "role": "suspended",
       "operation": "list",
-      "status": "UNSUPPORTED",
+      "status": "PASS",
       "provenance": "SYNTHETIC_FIXTURE",
-      "evidence": "Public DTO leak-rejection checks are separate; this role/domain operation has no seeded authorization/service fixture in this increment. Backend role/seed contract and feature-specific runtime input required; no result fabricated."
+      "evidence": "Actual moderation controller and mounted component with absent synthetic moderator lease; no private list/detail/evidence/mutation dispatch or retained data. Not server-role authorization."
     },
     {
       "domain": "evidence",
       "role": "suspended",
       "operation": "detail",
-      "status": "UNSUPPORTED",
+      "status": "PASS",
       "provenance": "SYNTHETIC_FIXTURE",
-      "evidence": "Public DTO leak-rejection checks are separate; this role/domain operation has no seeded authorization/service fixture in this increment. Backend role/seed contract and feature-specific runtime input required; no result fabricated."
+      "evidence": "Actual moderation controller and mounted component with absent synthetic moderator lease; no private list/detail/evidence/mutation dispatch or retained data. Not server-role authorization."
     },
     {
       "domain": "evidence",
       "role": "suspended",
       "operation": "mutation",
-      "status": "UNSUPPORTED",
+      "status": "PASS",
       "provenance": "SYNTHETIC_FIXTURE",
-      "evidence": "Public DTO leak-rejection checks are separate; this role/domain operation has no seeded authorization/service fixture in this increment. Backend role/seed contract and feature-specific runtime input required; no result fabricated."
+      "evidence": "Actual moderation controller and mounted component with absent synthetic moderator lease; no private list/detail/evidence/mutation dispatch or retained data. Not server-role authorization."
     },
     {
       "domain": "evidence",
@@ -1001,7 +1001,7 @@
       "operation": "cache",
       "status": "PASS",
       "provenance": "SYNTHETIC_FIXTURE",
-      "evidence": "Actual SessionPort/PrivacyController/Query+Mutation observers, five-domain taint scrubbing, late completion fences and public dehydration. Revocation invoked locally, not WS."
+      "evidence": "Actual moderation controller and mounted component with absent synthetic moderator lease; no private list/detail/evidence/mutation dispatch or retained data. Not server-role authorization."
     },
     {
       "domain": "evidence",
@@ -1009,31 +1009,31 @@
       "operation": "WS",
       "status": "UNSUPPORTED",
       "provenance": "SYNTHETIC_FIXTURE",
-      "evidence": "Public DTO leak-rejection checks are separate; this role/domain operation has no seeded authorization/service fixture in this increment. Backend role/seed contract and feature-specific runtime input required; no result fabricated."
+      "evidence": "No frozen social privacy/revocation WS message or registered public transport handoff. C05 world revoke is not a social grant event."
     },
     {
       "domain": "evidence",
       "role": "expired",
       "operation": "list",
-      "status": "UNSUPPORTED",
+      "status": "PASS",
       "provenance": "SYNTHETIC_FIXTURE",
-      "evidence": "Public DTO leak-rejection checks are separate; this role/domain operation has no seeded authorization/service fixture in this increment. Backend role/seed contract and feature-specific runtime input required; no result fabricated."
+      "evidence": "Actual moderation controller and mounted component with absent synthetic moderator lease; no private list/detail/evidence/mutation dispatch or retained data. Not server-role authorization."
     },
     {
       "domain": "evidence",
       "role": "expired",
       "operation": "detail",
-      "status": "UNSUPPORTED",
+      "status": "PASS",
       "provenance": "SYNTHETIC_FIXTURE",
-      "evidence": "Public DTO leak-rejection checks are separate; this role/domain operation has no seeded authorization/service fixture in this increment. Backend role/seed contract and feature-specific runtime input required; no result fabricated."
+      "evidence": "Actual moderation controller and mounted component with absent synthetic moderator lease; no private list/detail/evidence/mutation dispatch or retained data. Not server-role authorization."
     },
     {
       "domain": "evidence",
       "role": "expired",
       "operation": "mutation",
-      "status": "UNSUPPORTED",
+      "status": "PASS",
       "provenance": "SYNTHETIC_FIXTURE",
-      "evidence": "Public DTO leak-rejection checks are separate; this role/domain operation has no seeded authorization/service fixture in this increment. Backend role/seed contract and feature-specific runtime input required; no result fabricated."
+      "evidence": "Actual moderation controller and mounted component with absent synthetic moderator lease; no private list/detail/evidence/mutation dispatch or retained data. Not server-role authorization."
     },
     {
       "domain": "evidence",
@@ -1041,7 +1041,7 @@
       "operation": "cache",
       "status": "PASS",
       "provenance": "SYNTHETIC_FIXTURE",
-      "evidence": "Actual SessionPort/PrivacyController/Query+Mutation observers, five-domain taint scrubbing, late completion fences and public dehydration. Revocation invoked locally, not WS."
+      "evidence": "Actual moderation controller and mounted component with absent synthetic moderator lease; no private list/detail/evidence/mutation dispatch or retained data. Not server-role authorization."
     },
     {
       "domain": "evidence",
@@ -1049,31 +1049,31 @@
       "operation": "WS",
       "status": "UNSUPPORTED",
       "provenance": "SYNTHETIC_FIXTURE",
-      "evidence": "Public DTO leak-rejection checks are separate; this role/domain operation has no seeded authorization/service fixture in this increment. Backend role/seed contract and feature-specific runtime input required; no result fabricated."
+      "evidence": "No frozen social privacy/revocation WS message or registered public transport handoff. C05 world revoke is not a social grant event."
     },
     {
       "domain": "evidence",
       "role": "admin",
       "operation": "list",
-      "status": "UNSUPPORTED",
+      "status": "PASS",
       "provenance": "SYNTHETIC_FIXTURE",
-      "evidence": "Public DTO leak-rejection checks are separate; this role/domain operation has no seeded authorization/service fixture in this increment. Backend role/seed contract and feature-specific runtime input required; no result fabricated."
+      "evidence": "Actual moderation controller and mounted component; synthetic moderator lease; private report text/Blob element, native URL revocation, delayed evidence fence and revision-bound mutation. Not real role policy, image decode, mounted product shell or WS."
     },
     {
       "domain": "evidence",
       "role": "admin",
       "operation": "detail",
-      "status": "UNSUPPORTED",
+      "status": "PASS",
       "provenance": "SYNTHETIC_FIXTURE",
-      "evidence": "Public DTO leak-rejection checks are separate; this role/domain operation has no seeded authorization/service fixture in this increment. Backend role/seed contract and feature-specific runtime input required; no result fabricated."
+      "evidence": "Actual moderation controller and mounted component; synthetic moderator lease; private report text/Blob element, native URL revocation, delayed evidence fence and revision-bound mutation. Not real role policy, image decode, mounted product shell or WS."
     },
     {
       "domain": "evidence",
       "role": "admin",
       "operation": "mutation",
-      "status": "UNSUPPORTED",
+      "status": "PASS",
       "provenance": "SYNTHETIC_FIXTURE",
-      "evidence": "Public DTO leak-rejection checks are separate; this role/domain operation has no seeded authorization/service fixture in this increment. Backend role/seed contract and feature-specific runtime input required; no result fabricated."
+      "evidence": "Actual moderation controller and mounted component; synthetic moderator lease; private report text/Blob element, native URL revocation, delayed evidence fence and revision-bound mutation. Not real role policy, image decode, mounted product shell or WS."
     },
     {
       "domain": "evidence",
@@ -1081,7 +1081,7 @@
       "operation": "cache",
       "status": "PASS",
       "provenance": "SYNTHETIC_FIXTURE",
-      "evidence": "Actual SessionPort/PrivacyController/Query+Mutation observers, five-domain taint scrubbing, late completion fences and public dehydration. Revocation invoked locally, not WS."
+      "evidence": "Actual moderation controller and mounted component; synthetic moderator lease; private report text/Blob element, native URL revocation, delayed evidence fence and revision-bound mutation. Not real role policy, image decode, mounted product shell or WS."
     },
     {
       "domain": "evidence",
@@ -1089,7 +1089,7 @@
       "operation": "WS",
       "status": "UNSUPPORTED",
       "provenance": "SYNTHETIC_FIXTURE",
-      "evidence": "Public DTO leak-rejection checks are separate; this role/domain operation has no seeded authorization/service fixture in this increment. Backend role/seed contract and feature-specific runtime input required; no result fabricated."
+      "evidence": "No frozen social privacy/revocation WS message or registered public transport handoff. C05 world revoke is not a social grant event."
     },
     {
       "domain": "beacon",
@@ -1097,23 +1097,23 @@
       "operation": "list",
       "status": "UNSUPPORTED",
       "provenance": "SYNTHETIC_FIXTURE",
-      "evidence": "Public DTO leak-rejection checks are separate; this role/domain operation has no seeded authorization/service fixture in this increment. Backend role/seed contract and feature-specific runtime input required; no result fabricated."
+      "evidence": "UNSUPPORTED: no frozen beacon list operation; direct beacon detail is exercised through the current public interface."
     },
     {
       "domain": "beacon",
       "role": "owner",
       "operation": "detail",
-      "status": "UNSUPPORTED",
+      "status": "PASS",
       "provenance": "SYNTHETIC_FIXTURE",
-      "evidence": "Public DTO leak-rejection checks are separate; this role/domain operation has no seeded authorization/service fixture in this increment. Backend role/seed contract and feature-specific runtime input required; no result fabricated."
+      "evidence": "Actual beacon/places controllers and mounted detail via retained synthetic port fixture; canRead/canWrite audience input, expiry, owner revision-bound revoke, read-only member, authority-loss late read and private draft/DOM cleanup. No actual venue/role policy/public WS/product-shell certification. Beacon list has no frozen operation in this harness."
     },
     {
       "domain": "beacon",
       "role": "owner",
       "operation": "mutation",
-      "status": "UNSUPPORTED",
+      "status": "PASS",
       "provenance": "SYNTHETIC_FIXTURE",
-      "evidence": "Public DTO leak-rejection checks are separate; this role/domain operation has no seeded authorization/service fixture in this increment. Backend role/seed contract and feature-specific runtime input required; no result fabricated."
+      "evidence": "Actual beacon/places controllers and mounted detail via retained synthetic port fixture; canRead/canWrite audience input, expiry, owner revision-bound revoke, read-only member, authority-loss late read and private draft/DOM cleanup. No actual venue/role policy/public WS/product-shell certification. Beacon list has no frozen operation in this harness."
     },
     {
       "domain": "beacon",
@@ -1121,7 +1121,7 @@
       "operation": "cache",
       "status": "PASS",
       "provenance": "SYNTHETIC_FIXTURE",
-      "evidence": "Actual SessionPort/PrivacyController/Query+Mutation observers, five-domain taint scrubbing, late completion fences and public dehydration. Revocation invoked locally, not WS."
+      "evidence": "Actual beacon/places controllers and mounted detail via retained synthetic port fixture; canRead/canWrite audience input, expiry, owner revision-bound revoke, read-only member, authority-loss late read and private draft/DOM cleanup. No actual venue/role policy/public WS/product-shell certification. Beacon list has no frozen operation in this harness."
     },
     {
       "domain": "beacon",
@@ -1129,7 +1129,7 @@
       "operation": "WS",
       "status": "UNSUPPORTED",
       "provenance": "SYNTHETIC_FIXTURE",
-      "evidence": "Public DTO leak-rejection checks are separate; this role/domain operation has no seeded authorization/service fixture in this increment. Backend role/seed contract and feature-specific runtime input required; no result fabricated."
+      "evidence": "No frozen social privacy/revocation WS message or registered public transport handoff. C05 world revoke is not a social grant event."
     },
     {
       "domain": "beacon",
@@ -1137,23 +1137,23 @@
       "operation": "list",
       "status": "UNSUPPORTED",
       "provenance": "SYNTHETIC_FIXTURE",
-      "evidence": "Public DTO leak-rejection checks are separate; this role/domain operation has no seeded authorization/service fixture in this increment. Backend role/seed contract and feature-specific runtime input required; no result fabricated."
+      "evidence": "UNSUPPORTED: no frozen beacon list operation; direct beacon detail is exercised through the current public interface."
     },
     {
       "domain": "beacon",
       "role": "member",
       "operation": "detail",
-      "status": "UNSUPPORTED",
+      "status": "PASS",
       "provenance": "SYNTHETIC_FIXTURE",
-      "evidence": "Public DTO leak-rejection checks are separate; this role/domain operation has no seeded authorization/service fixture in this increment. Backend role/seed contract and feature-specific runtime input required; no result fabricated."
+      "evidence": "Actual beacon/places controllers and mounted detail via retained synthetic port fixture; canRead/canWrite audience input, expiry, owner revision-bound revoke, read-only member, authority-loss late read and private draft/DOM cleanup. No actual venue/role policy/public WS/product-shell certification. Beacon list has no frozen operation in this harness."
     },
     {
       "domain": "beacon",
       "role": "member",
       "operation": "mutation",
-      "status": "UNSUPPORTED",
+      "status": "PASS",
       "provenance": "SYNTHETIC_FIXTURE",
-      "evidence": "Public DTO leak-rejection checks are separate; this role/domain operation has no seeded authorization/service fixture in this increment. Backend role/seed contract and feature-specific runtime input required; no result fabricated."
+      "evidence": "Actual beacon/places controllers and mounted detail via retained synthetic port fixture; canRead/canWrite audience input, expiry, owner revision-bound revoke, read-only member, authority-loss late read and private draft/DOM cleanup. No actual venue/role policy/public WS/product-shell certification. Beacon list has no frozen operation in this harness."
     },
     {
       "domain": "beacon",
@@ -1161,7 +1161,7 @@
       "operation": "cache",
       "status": "PASS",
       "provenance": "SYNTHETIC_FIXTURE",
-      "evidence": "Actual SessionPort/PrivacyController/Query+Mutation observers, five-domain taint scrubbing, late completion fences and public dehydration. Revocation invoked locally, not WS."
+      "evidence": "Actual beacon/places controllers and mounted detail via retained synthetic port fixture; canRead/canWrite audience input, expiry, owner revision-bound revoke, read-only member, authority-loss late read and private draft/DOM cleanup. No actual venue/role policy/public WS/product-shell certification. Beacon list has no frozen operation in this harness."
     },
     {
       "domain": "beacon",
@@ -1169,7 +1169,7 @@
       "operation": "WS",
       "status": "UNSUPPORTED",
       "provenance": "SYNTHETIC_FIXTURE",
-      "evidence": "Public DTO leak-rejection checks are separate; this role/domain operation has no seeded authorization/service fixture in this increment. Backend role/seed contract and feature-specific runtime input required; no result fabricated."
+      "evidence": "No frozen social privacy/revocation WS message or registered public transport handoff. C05 world revoke is not a social grant event."
     },
     {
       "domain": "beacon",
@@ -1177,23 +1177,23 @@
       "operation": "list",
       "status": "UNSUPPORTED",
       "provenance": "SYNTHETIC_FIXTURE",
-      "evidence": "Public DTO leak-rejection checks are separate; this role/domain operation has no seeded authorization/service fixture in this increment. Backend role/seed contract and feature-specific runtime input required; no result fabricated."
+      "evidence": "UNSUPPORTED: no frozen beacon list operation; direct beacon detail is exercised through the current public interface."
     },
     {
       "domain": "beacon",
       "role": "stranger",
       "operation": "detail",
-      "status": "UNSUPPORTED",
+      "status": "PASS",
       "provenance": "SYNTHETIC_FIXTURE",
-      "evidence": "Public DTO leak-rejection checks are separate; this role/domain operation has no seeded authorization/service fixture in this increment. Backend role/seed contract and feature-specific runtime input required; no result fabricated."
+      "evidence": "Actual beacon/places controllers and mounted detail via retained synthetic port fixture; canRead/canWrite audience input, expiry, owner revision-bound revoke, read-only member, authority-loss late read and private draft/DOM cleanup. No actual venue/role policy/public WS/product-shell certification. Beacon list has no frozen operation in this harness."
     },
     {
       "domain": "beacon",
       "role": "stranger",
       "operation": "mutation",
-      "status": "UNSUPPORTED",
+      "status": "PASS",
       "provenance": "SYNTHETIC_FIXTURE",
-      "evidence": "Public DTO leak-rejection checks are separate; this role/domain operation has no seeded authorization/service fixture in this increment. Backend role/seed contract and feature-specific runtime input required; no result fabricated."
+      "evidence": "Actual beacon/places controllers and mounted detail via retained synthetic port fixture; canRead/canWrite audience input, expiry, owner revision-bound revoke, read-only member, authority-loss late read and private draft/DOM cleanup. No actual venue/role policy/public WS/product-shell certification. Beacon list has no frozen operation in this harness."
     },
     {
       "domain": "beacon",
@@ -1201,7 +1201,7 @@
       "operation": "cache",
       "status": "PASS",
       "provenance": "SYNTHETIC_FIXTURE",
-      "evidence": "Actual SessionPort/PrivacyController/Query+Mutation observers, five-domain taint scrubbing, late completion fences and public dehydration. Revocation invoked locally, not WS."
+      "evidence": "Actual beacon/places controllers and mounted detail via retained synthetic port fixture; canRead/canWrite audience input, expiry, owner revision-bound revoke, read-only member, authority-loss late read and private draft/DOM cleanup. No actual venue/role policy/public WS/product-shell certification. Beacon list has no frozen operation in this harness."
     },
     {
       "domain": "beacon",
@@ -1209,7 +1209,7 @@
       "operation": "WS",
       "status": "UNSUPPORTED",
       "provenance": "SYNTHETIC_FIXTURE",
-      "evidence": "Public DTO leak-rejection checks are separate; this role/domain operation has no seeded authorization/service fixture in this increment. Backend role/seed contract and feature-specific runtime input required; no result fabricated."
+      "evidence": "No frozen social privacy/revocation WS message or registered public transport handoff. C05 world revoke is not a social grant event."
     },
     {
       "domain": "beacon",
@@ -1217,23 +1217,23 @@
       "operation": "list",
       "status": "UNSUPPORTED",
       "provenance": "SYNTHETIC_FIXTURE",
-      "evidence": "Public DTO leak-rejection checks are separate; this role/domain operation has no seeded authorization/service fixture in this increment. Backend role/seed contract and feature-specific runtime input required; no result fabricated."
+      "evidence": "UNSUPPORTED: no frozen beacon list operation; direct beacon detail is exercised through the current public interface."
     },
     {
       "domain": "beacon",
       "role": "blocked",
       "operation": "detail",
-      "status": "UNSUPPORTED",
+      "status": "PASS",
       "provenance": "SYNTHETIC_FIXTURE",
-      "evidence": "Public DTO leak-rejection checks are separate; this role/domain operation has no seeded authorization/service fixture in this increment. Backend role/seed contract and feature-specific runtime input required; no result fabricated."
+      "evidence": "Actual beacon/places controllers and mounted detail via retained synthetic port fixture; canRead/canWrite audience input, expiry, owner revision-bound revoke, read-only member, authority-loss late read and private draft/DOM cleanup. No actual venue/role policy/public WS/product-shell certification. Beacon list has no frozen operation in this harness."
     },
     {
       "domain": "beacon",
       "role": "blocked",
       "operation": "mutation",
-      "status": "UNSUPPORTED",
+      "status": "PASS",
       "provenance": "SYNTHETIC_FIXTURE",
-      "evidence": "Public DTO leak-rejection checks are separate; this role/domain operation has no seeded authorization/service fixture in this increment. Backend role/seed contract and feature-specific runtime input required; no result fabricated."
+      "evidence": "Actual beacon/places controllers and mounted detail via retained synthetic port fixture; canRead/canWrite audience input, expiry, owner revision-bound revoke, read-only member, authority-loss late read and private draft/DOM cleanup. No actual venue/role policy/public WS/product-shell certification. Beacon list has no frozen operation in this harness."
     },
     {
       "domain": "beacon",
@@ -1241,7 +1241,7 @@
       "operation": "cache",
       "status": "PASS",
       "provenance": "SYNTHETIC_FIXTURE",
-      "evidence": "Actual SessionPort/PrivacyController/Query+Mutation observers, five-domain taint scrubbing, late completion fences and public dehydration. Revocation invoked locally, not WS."
+      "evidence": "Actual beacon/places controllers and mounted detail via retained synthetic port fixture; canRead/canWrite audience input, expiry, owner revision-bound revoke, read-only member, authority-loss late read and private draft/DOM cleanup. No actual venue/role policy/public WS/product-shell certification. Beacon list has no frozen operation in this harness."
     },
     {
       "domain": "beacon",
@@ -1249,7 +1249,7 @@
       "operation": "WS",
       "status": "UNSUPPORTED",
       "provenance": "SYNTHETIC_FIXTURE",
-      "evidence": "Public DTO leak-rejection checks are separate; this role/domain operation has no seeded authorization/service fixture in this increment. Backend role/seed contract and feature-specific runtime input required; no result fabricated."
+      "evidence": "No frozen social privacy/revocation WS message or registered public transport handoff. C05 world revoke is not a social grant event."
     },
     {
       "domain": "beacon",
@@ -1257,23 +1257,23 @@
       "operation": "list",
       "status": "UNSUPPORTED",
       "provenance": "SYNTHETIC_FIXTURE",
-      "evidence": "Public DTO leak-rejection checks are separate; this role/domain operation has no seeded authorization/service fixture in this increment. Backend role/seed contract and feature-specific runtime input required; no result fabricated."
+      "evidence": "UNSUPPORTED: no frozen beacon list operation; direct beacon detail is exercised through the current public interface."
     },
     {
       "domain": "beacon",
       "role": "suspended",
       "operation": "detail",
-      "status": "UNSUPPORTED",
+      "status": "PASS",
       "provenance": "SYNTHETIC_FIXTURE",
-      "evidence": "Public DTO leak-rejection checks are separate; this role/domain operation has no seeded authorization/service fixture in this increment. Backend role/seed contract and feature-specific runtime input required; no result fabricated."
+      "evidence": "Actual beacon/places controllers and mounted detail via retained synthetic port fixture; canRead/canWrite audience input, expiry, owner revision-bound revoke, read-only member, authority-loss late read and private draft/DOM cleanup. No actual venue/role policy/public WS/product-shell certification. Beacon list has no frozen operation in this harness."
     },
     {
       "domain": "beacon",
       "role": "suspended",
       "operation": "mutation",
-      "status": "UNSUPPORTED",
+      "status": "PASS",
       "provenance": "SYNTHETIC_FIXTURE",
-      "evidence": "Public DTO leak-rejection checks are separate; this role/domain operation has no seeded authorization/service fixture in this increment. Backend role/seed contract and feature-specific runtime input required; no result fabricated."
+      "evidence": "Actual beacon/places controllers and mounted detail via retained synthetic port fixture; canRead/canWrite audience input, expiry, owner revision-bound revoke, read-only member, authority-loss late read and private draft/DOM cleanup. No actual venue/role policy/public WS/product-shell certification. Beacon list has no frozen operation in this harness."
     },
     {
       "domain": "beacon",
@@ -1281,7 +1281,7 @@
       "operation": "cache",
       "status": "PASS",
       "provenance": "SYNTHETIC_FIXTURE",
-      "evidence": "Actual SessionPort/PrivacyController/Query+Mutation observers, five-domain taint scrubbing, late completion fences and public dehydration. Revocation invoked locally, not WS."
+      "evidence": "Actual beacon/places controllers and mounted detail via retained synthetic port fixture; canRead/canWrite audience input, expiry, owner revision-bound revoke, read-only member, authority-loss late read and private draft/DOM cleanup. No actual venue/role policy/public WS/product-shell certification. Beacon list has no frozen operation in this harness."
     },
     {
       "domain": "beacon",
@@ -1289,7 +1289,7 @@
       "operation": "WS",
       "status": "UNSUPPORTED",
       "provenance": "SYNTHETIC_FIXTURE",
-      "evidence": "Public DTO leak-rejection checks are separate; this role/domain operation has no seeded authorization/service fixture in this increment. Backend role/seed contract and feature-specific runtime input required; no result fabricated."
+      "evidence": "No frozen social privacy/revocation WS message or registered public transport handoff. C05 world revoke is not a social grant event."
     },
     {
       "domain": "beacon",
@@ -1297,23 +1297,23 @@
       "operation": "list",
       "status": "UNSUPPORTED",
       "provenance": "SYNTHETIC_FIXTURE",
-      "evidence": "Public DTO leak-rejection checks are separate; this role/domain operation has no seeded authorization/service fixture in this increment. Backend role/seed contract and feature-specific runtime input required; no result fabricated."
+      "evidence": "UNSUPPORTED: no frozen beacon list operation; direct beacon detail is exercised through the current public interface."
     },
     {
       "domain": "beacon",
       "role": "expired",
       "operation": "detail",
-      "status": "UNSUPPORTED",
+      "status": "PASS",
       "provenance": "SYNTHETIC_FIXTURE",
-      "evidence": "Public DTO leak-rejection checks are separate; this role/domain operation has no seeded authorization/service fixture in this increment. Backend role/seed contract and feature-specific runtime input required; no result fabricated."
+      "evidence": "Actual beacon/places controllers and mounted detail via retained synthetic port fixture; canRead/canWrite audience input, expiry, owner revision-bound revoke, read-only member, authority-loss late read and private draft/DOM cleanup. No actual venue/role policy/public WS/product-shell certification. Beacon list has no frozen operation in this harness."
     },
     {
       "domain": "beacon",
       "role": "expired",
       "operation": "mutation",
-      "status": "UNSUPPORTED",
+      "status": "PASS",
       "provenance": "SYNTHETIC_FIXTURE",
-      "evidence": "Public DTO leak-rejection checks are separate; this role/domain operation has no seeded authorization/service fixture in this increment. Backend role/seed contract and feature-specific runtime input required; no result fabricated."
+      "evidence": "Actual beacon/places controllers and mounted detail via retained synthetic port fixture; canRead/canWrite audience input, expiry, owner revision-bound revoke, read-only member, authority-loss late read and private draft/DOM cleanup. No actual venue/role policy/public WS/product-shell certification. Beacon list has no frozen operation in this harness."
     },
     {
       "domain": "beacon",
@@ -1321,7 +1321,7 @@
       "operation": "cache",
       "status": "PASS",
       "provenance": "SYNTHETIC_FIXTURE",
-      "evidence": "Actual SessionPort/PrivacyController/Query+Mutation observers, five-domain taint scrubbing, late completion fences and public dehydration. Revocation invoked locally, not WS."
+      "evidence": "Actual beacon/places controllers and mounted detail via retained synthetic port fixture; canRead/canWrite audience input, expiry, owner revision-bound revoke, read-only member, authority-loss late read and private draft/DOM cleanup. No actual venue/role policy/public WS/product-shell certification. Beacon list has no frozen operation in this harness."
     },
     {
       "domain": "beacon",
@@ -1329,7 +1329,7 @@
       "operation": "WS",
       "status": "UNSUPPORTED",
       "provenance": "SYNTHETIC_FIXTURE",
-      "evidence": "Public DTO leak-rejection checks are separate; this role/domain operation has no seeded authorization/service fixture in this increment. Backend role/seed contract and feature-specific runtime input required; no result fabricated."
+      "evidence": "No frozen social privacy/revocation WS message or registered public transport handoff. C05 world revoke is not a social grant event."
     },
     {
       "domain": "beacon",
@@ -1337,23 +1337,23 @@
       "operation": "list",
       "status": "UNSUPPORTED",
       "provenance": "SYNTHETIC_FIXTURE",
-      "evidence": "Public DTO leak-rejection checks are separate; this role/domain operation has no seeded authorization/service fixture in this increment. Backend role/seed contract and feature-specific runtime input required; no result fabricated."
+      "evidence": "UNSUPPORTED: no frozen beacon list operation; direct beacon detail is exercised through the current public interface."
     },
     {
       "domain": "beacon",
       "role": "admin",
       "operation": "detail",
-      "status": "UNSUPPORTED",
+      "status": "PASS",
       "provenance": "SYNTHETIC_FIXTURE",
-      "evidence": "Public DTO leak-rejection checks are separate; this role/domain operation has no seeded authorization/service fixture in this increment. Backend role/seed contract and feature-specific runtime input required; no result fabricated."
+      "evidence": "Actual beacon/places controllers and mounted detail via retained synthetic port fixture; canRead/canWrite audience input, expiry, owner revision-bound revoke, read-only member, authority-loss late read and private draft/DOM cleanup. No actual venue/role policy/public WS/product-shell certification. Beacon list has no frozen operation in this harness."
     },
     {
       "domain": "beacon",
       "role": "admin",
       "operation": "mutation",
-      "status": "UNSUPPORTED",
+      "status": "PASS",
       "provenance": "SYNTHETIC_FIXTURE",
-      "evidence": "Public DTO leak-rejection checks are separate; this role/domain operation has no seeded authorization/service fixture in this increment. Backend role/seed contract and feature-specific runtime input required; no result fabricated."
+      "evidence": "Actual beacon/places controllers and mounted detail via retained synthetic port fixture; canRead/canWrite audience input, expiry, owner revision-bound revoke, read-only member, authority-loss late read and private draft/DOM cleanup. No actual venue/role policy/public WS/product-shell certification. Beacon list has no frozen operation in this harness."
     },
     {
       "domain": "beacon",
@@ -1361,7 +1361,7 @@
       "operation": "cache",
       "status": "PASS",
       "provenance": "SYNTHETIC_FIXTURE",
-      "evidence": "Actual SessionPort/PrivacyController/Query+Mutation observers, five-domain taint scrubbing, late completion fences and public dehydration. Revocation invoked locally, not WS."
+      "evidence": "Actual beacon/places controllers and mounted detail via retained synthetic port fixture; canRead/canWrite audience input, expiry, owner revision-bound revoke, read-only member, authority-loss late read and private draft/DOM cleanup. No actual venue/role policy/public WS/product-shell certification. Beacon list has no frozen operation in this harness."
     },
     {
       "domain": "beacon",
@@ -1369,31 +1369,31 @@
       "operation": "WS",
       "status": "UNSUPPORTED",
       "provenance": "SYNTHETIC_FIXTURE",
-      "evidence": "Public DTO leak-rejection checks are separate; this role/domain operation has no seeded authorization/service fixture in this increment. Backend role/seed contract and feature-specific runtime input required; no result fabricated."
+      "evidence": "No frozen social privacy/revocation WS message or registered public transport handoff. C05 world revoke is not a social grant event."
     },
     {
       "domain": "recipient",
       "role": "owner",
       "operation": "list",
-      "status": "UNSUPPORTED",
+      "status": "PASS",
       "provenance": "SYNTHETIC_FIXTURE",
-      "evidence": "Public DTO leak-rejection checks are separate; this role/domain operation has no seeded authorization/service fixture in this increment. Backend role/seed contract and feature-specific runtime input required; no result fabricated."
+      "evidence": "Actual SELF activity decoder, pickup controller and mounted component; synthetic public context/HTTP/journal/place authority. Cross-recipient200 rejection, expired/code guards, explicit owner/recipient mutations/readback, context-loss late-response and private-state/DOM cleanup. No real reservation/pickup/backend-role/product-shell/WS certification."
     },
     {
       "domain": "recipient",
       "role": "owner",
       "operation": "detail",
-      "status": "UNSUPPORTED",
+      "status": "PASS",
       "provenance": "SYNTHETIC_FIXTURE",
-      "evidence": "Public DTO leak-rejection checks are separate; this role/domain operation has no seeded authorization/service fixture in this increment. Backend role/seed contract and feature-specific runtime input required; no result fabricated."
+      "evidence": "Actual SELF activity decoder, pickup controller and mounted component; synthetic public context/HTTP/journal/place authority. Cross-recipient200 rejection, expired/code guards, explicit owner/recipient mutations/readback, context-loss late-response and private-state/DOM cleanup. No real reservation/pickup/backend-role/product-shell/WS certification."
     },
     {
       "domain": "recipient",
       "role": "owner",
       "operation": "mutation",
-      "status": "UNSUPPORTED",
+      "status": "PASS",
       "provenance": "SYNTHETIC_FIXTURE",
-      "evidence": "Public DTO leak-rejection checks are separate; this role/domain operation has no seeded authorization/service fixture in this increment. Backend role/seed contract and feature-specific runtime input required; no result fabricated."
+      "evidence": "Actual SELF activity decoder, pickup controller and mounted component; synthetic public context/HTTP/journal/place authority. Cross-recipient200 rejection, expired/code guards, explicit owner/recipient mutations/readback, context-loss late-response and private-state/DOM cleanup. No real reservation/pickup/backend-role/product-shell/WS certification."
     },
     {
       "domain": "recipient",
@@ -1401,7 +1401,7 @@
       "operation": "cache",
       "status": "PASS",
       "provenance": "SYNTHETIC_FIXTURE",
-      "evidence": "Actual SessionPort/PrivacyController/Query+Mutation observers, five-domain taint scrubbing, late completion fences and public dehydration. Revocation invoked locally, not WS."
+      "evidence": "Actual SELF activity decoder, pickup controller and mounted component; synthetic public context/HTTP/journal/place authority. Cross-recipient200 rejection, expired/code guards, explicit owner/recipient mutations/readback, context-loss late-response and private-state/DOM cleanup. No real reservation/pickup/backend-role/product-shell/WS certification."
     },
     {
       "domain": "recipient",
@@ -1409,31 +1409,31 @@
       "operation": "WS",
       "status": "UNSUPPORTED",
       "provenance": "SYNTHETIC_FIXTURE",
-      "evidence": "Public DTO leak-rejection checks are separate; this role/domain operation has no seeded authorization/service fixture in this increment. Backend role/seed contract and feature-specific runtime input required; no result fabricated."
+      "evidence": "No frozen social privacy/revocation WS message or registered public transport handoff. C05 world revoke is not a social grant event."
     },
     {
       "domain": "recipient",
       "role": "member",
       "operation": "list",
-      "status": "UNSUPPORTED",
+      "status": "PASS",
       "provenance": "SYNTHETIC_FIXTURE",
-      "evidence": "Public DTO leak-rejection checks are separate; this role/domain operation has no seeded authorization/service fixture in this increment. Backend role/seed contract and feature-specific runtime input required; no result fabricated."
+      "evidence": "Actual SELF activity decoder, pickup controller and mounted component; synthetic public context/HTTP/journal/place authority. Cross-recipient200 rejection, expired/code guards, explicit owner/recipient mutations/readback, context-loss late-response and private-state/DOM cleanup. No real reservation/pickup/backend-role/product-shell/WS certification."
     },
     {
       "domain": "recipient",
       "role": "member",
       "operation": "detail",
-      "status": "UNSUPPORTED",
+      "status": "PASS",
       "provenance": "SYNTHETIC_FIXTURE",
-      "evidence": "Public DTO leak-rejection checks are separate; this role/domain operation has no seeded authorization/service fixture in this increment. Backend role/seed contract and feature-specific runtime input required; no result fabricated."
+      "evidence": "Actual SELF activity decoder, pickup controller and mounted component; synthetic public context/HTTP/journal/place authority. Cross-recipient200 rejection, expired/code guards, explicit owner/recipient mutations/readback, context-loss late-response and private-state/DOM cleanup. No real reservation/pickup/backend-role/product-shell/WS certification."
     },
     {
       "domain": "recipient",
       "role": "member",
       "operation": "mutation",
-      "status": "UNSUPPORTED",
+      "status": "PASS",
       "provenance": "SYNTHETIC_FIXTURE",
-      "evidence": "Public DTO leak-rejection checks are separate; this role/domain operation has no seeded authorization/service fixture in this increment. Backend role/seed contract and feature-specific runtime input required; no result fabricated."
+      "evidence": "Actual SELF activity decoder, pickup controller and mounted component; synthetic public context/HTTP/journal/place authority. Cross-recipient200 rejection, expired/code guards, explicit owner/recipient mutations/readback, context-loss late-response and private-state/DOM cleanup. No real reservation/pickup/backend-role/product-shell/WS certification."
     },
     {
       "domain": "recipient",
@@ -1441,7 +1441,7 @@
       "operation": "cache",
       "status": "PASS",
       "provenance": "SYNTHETIC_FIXTURE",
-      "evidence": "Actual SessionPort/PrivacyController/Query+Mutation observers, five-domain taint scrubbing, late completion fences and public dehydration. Revocation invoked locally, not WS."
+      "evidence": "Actual SELF activity decoder, pickup controller and mounted component; synthetic public context/HTTP/journal/place authority. Cross-recipient200 rejection, expired/code guards, explicit owner/recipient mutations/readback, context-loss late-response and private-state/DOM cleanup. No real reservation/pickup/backend-role/product-shell/WS certification."
     },
     {
       "domain": "recipient",
@@ -1449,31 +1449,31 @@
       "operation": "WS",
       "status": "UNSUPPORTED",
       "provenance": "SYNTHETIC_FIXTURE",
-      "evidence": "Public DTO leak-rejection checks are separate; this role/domain operation has no seeded authorization/service fixture in this increment. Backend role/seed contract and feature-specific runtime input required; no result fabricated."
+      "evidence": "No frozen social privacy/revocation WS message or registered public transport handoff. C05 world revoke is not a social grant event."
     },
     {
       "domain": "recipient",
       "role": "stranger",
       "operation": "list",
-      "status": "UNSUPPORTED",
+      "status": "PASS",
       "provenance": "SYNTHETIC_FIXTURE",
-      "evidence": "Public DTO leak-rejection checks are separate; this role/domain operation has no seeded authorization/service fixture in this increment. Backend role/seed contract and feature-specific runtime input required; no result fabricated."
+      "evidence": "Actual SELF activity decoder, pickup controller and mounted component; synthetic public context/HTTP/journal/place authority. Cross-recipient200 rejection, expired/code guards, explicit owner/recipient mutations/readback, context-loss late-response and private-state/DOM cleanup. No real reservation/pickup/backend-role/product-shell/WS certification."
     },
     {
       "domain": "recipient",
       "role": "stranger",
       "operation": "detail",
-      "status": "UNSUPPORTED",
+      "status": "PASS",
       "provenance": "SYNTHETIC_FIXTURE",
-      "evidence": "Public DTO leak-rejection checks are separate; this role/domain operation has no seeded authorization/service fixture in this increment. Backend role/seed contract and feature-specific runtime input required; no result fabricated."
+      "evidence": "Actual SELF activity decoder, pickup controller and mounted component; synthetic public context/HTTP/journal/place authority. Cross-recipient200 rejection, expired/code guards, explicit owner/recipient mutations/readback, context-loss late-response and private-state/DOM cleanup. No real reservation/pickup/backend-role/product-shell/WS certification."
     },
     {
       "domain": "recipient",
       "role": "stranger",
       "operation": "mutation",
-      "status": "UNSUPPORTED",
+      "status": "PASS",
       "provenance": "SYNTHETIC_FIXTURE",
-      "evidence": "Public DTO leak-rejection checks are separate; this role/domain operation has no seeded authorization/service fixture in this increment. Backend role/seed contract and feature-specific runtime input required; no result fabricated."
+      "evidence": "Actual SELF activity decoder, pickup controller and mounted component; synthetic public context/HTTP/journal/place authority. Cross-recipient200 rejection, expired/code guards, explicit owner/recipient mutations/readback, context-loss late-response and private-state/DOM cleanup. No real reservation/pickup/backend-role/product-shell/WS certification."
     },
     {
       "domain": "recipient",
@@ -1481,7 +1481,7 @@
       "operation": "cache",
       "status": "PASS",
       "provenance": "SYNTHETIC_FIXTURE",
-      "evidence": "Actual SessionPort/PrivacyController/Query+Mutation observers, five-domain taint scrubbing, late completion fences and public dehydration. Revocation invoked locally, not WS."
+      "evidence": "Actual SELF activity decoder, pickup controller and mounted component; synthetic public context/HTTP/journal/place authority. Cross-recipient200 rejection, expired/code guards, explicit owner/recipient mutations/readback, context-loss late-response and private-state/DOM cleanup. No real reservation/pickup/backend-role/product-shell/WS certification."
     },
     {
       "domain": "recipient",
@@ -1489,31 +1489,31 @@
       "operation": "WS",
       "status": "UNSUPPORTED",
       "provenance": "SYNTHETIC_FIXTURE",
-      "evidence": "Public DTO leak-rejection checks are separate; this role/domain operation has no seeded authorization/service fixture in this increment. Backend role/seed contract and feature-specific runtime input required; no result fabricated."
+      "evidence": "No frozen social privacy/revocation WS message or registered public transport handoff. C05 world revoke is not a social grant event."
     },
     {
       "domain": "recipient",
       "role": "blocked",
       "operation": "list",
-      "status": "UNSUPPORTED",
+      "status": "PASS",
       "provenance": "SYNTHETIC_FIXTURE",
-      "evidence": "Public DTO leak-rejection checks are separate; this role/domain operation has no seeded authorization/service fixture in this increment. Backend role/seed contract and feature-specific runtime input required; no result fabricated."
+      "evidence": "Actual SELF activity decoder, pickup controller and mounted component; synthetic public context/HTTP/journal/place authority. Cross-recipient200 rejection, expired/code guards, explicit owner/recipient mutations/readback, context-loss late-response and private-state/DOM cleanup. No real reservation/pickup/backend-role/product-shell/WS certification."
     },
     {
       "domain": "recipient",
       "role": "blocked",
       "operation": "detail",
-      "status": "UNSUPPORTED",
+      "status": "PASS",
       "provenance": "SYNTHETIC_FIXTURE",
-      "evidence": "Public DTO leak-rejection checks are separate; this role/domain operation has no seeded authorization/service fixture in this increment. Backend role/seed contract and feature-specific runtime input required; no result fabricated."
+      "evidence": "Actual SELF activity decoder, pickup controller and mounted component; synthetic public context/HTTP/journal/place authority. Cross-recipient200 rejection, expired/code guards, explicit owner/recipient mutations/readback, context-loss late-response and private-state/DOM cleanup. No real reservation/pickup/backend-role/product-shell/WS certification."
     },
     {
       "domain": "recipient",
       "role": "blocked",
       "operation": "mutation",
-      "status": "UNSUPPORTED",
+      "status": "PASS",
       "provenance": "SYNTHETIC_FIXTURE",
-      "evidence": "Public DTO leak-rejection checks are separate; this role/domain operation has no seeded authorization/service fixture in this increment. Backend role/seed contract and feature-specific runtime input required; no result fabricated."
+      "evidence": "Actual SELF activity decoder, pickup controller and mounted component; synthetic public context/HTTP/journal/place authority. Cross-recipient200 rejection, expired/code guards, explicit owner/recipient mutations/readback, context-loss late-response and private-state/DOM cleanup. No real reservation/pickup/backend-role/product-shell/WS certification."
     },
     {
       "domain": "recipient",
@@ -1521,7 +1521,7 @@
       "operation": "cache",
       "status": "PASS",
       "provenance": "SYNTHETIC_FIXTURE",
-      "evidence": "Actual SessionPort/PrivacyController/Query+Mutation observers, five-domain taint scrubbing, late completion fences and public dehydration. Revocation invoked locally, not WS."
+      "evidence": "Actual SELF activity decoder, pickup controller and mounted component; synthetic public context/HTTP/journal/place authority. Cross-recipient200 rejection, expired/code guards, explicit owner/recipient mutations/readback, context-loss late-response and private-state/DOM cleanup. No real reservation/pickup/backend-role/product-shell/WS certification."
     },
     {
       "domain": "recipient",
@@ -1529,31 +1529,31 @@
       "operation": "WS",
       "status": "UNSUPPORTED",
       "provenance": "SYNTHETIC_FIXTURE",
-      "evidence": "Public DTO leak-rejection checks are separate; this role/domain operation has no seeded authorization/service fixture in this increment. Backend role/seed contract and feature-specific runtime input required; no result fabricated."
+      "evidence": "No frozen social privacy/revocation WS message or registered public transport handoff. C05 world revoke is not a social grant event."
     },
     {
       "domain": "recipient",
       "role": "suspended",
       "operation": "list",
-      "status": "UNSUPPORTED",
+      "status": "PASS",
       "provenance": "SYNTHETIC_FIXTURE",
-      "evidence": "Public DTO leak-rejection checks are separate; this role/domain operation has no seeded authorization/service fixture in this increment. Backend role/seed contract and feature-specific runtime input required; no result fabricated."
+      "evidence": "Actual SELF activity decoder, pickup controller and mounted component; synthetic public context/HTTP/journal/place authority. Cross-recipient200 rejection, expired/code guards, explicit owner/recipient mutations/readback, context-loss late-response and private-state/DOM cleanup. No real reservation/pickup/backend-role/product-shell/WS certification."
     },
     {
       "domain": "recipient",
       "role": "suspended",
       "operation": "detail",
-      "status": "UNSUPPORTED",
+      "status": "PASS",
       "provenance": "SYNTHETIC_FIXTURE",
-      "evidence": "Public DTO leak-rejection checks are separate; this role/domain operation has no seeded authorization/service fixture in this increment. Backend role/seed contract and feature-specific runtime input required; no result fabricated."
+      "evidence": "Actual SELF activity decoder, pickup controller and mounted component; synthetic public context/HTTP/journal/place authority. Cross-recipient200 rejection, expired/code guards, explicit owner/recipient mutations/readback, context-loss late-response and private-state/DOM cleanup. No real reservation/pickup/backend-role/product-shell/WS certification."
     },
     {
       "domain": "recipient",
       "role": "suspended",
       "operation": "mutation",
-      "status": "UNSUPPORTED",
+      "status": "PASS",
       "provenance": "SYNTHETIC_FIXTURE",
-      "evidence": "Public DTO leak-rejection checks are separate; this role/domain operation has no seeded authorization/service fixture in this increment. Backend role/seed contract and feature-specific runtime input required; no result fabricated."
+      "evidence": "Actual SELF activity decoder, pickup controller and mounted component; synthetic public context/HTTP/journal/place authority. Cross-recipient200 rejection, expired/code guards, explicit owner/recipient mutations/readback, context-loss late-response and private-state/DOM cleanup. No real reservation/pickup/backend-role/product-shell/WS certification."
     },
     {
       "domain": "recipient",
@@ -1561,7 +1561,7 @@
       "operation": "cache",
       "status": "PASS",
       "provenance": "SYNTHETIC_FIXTURE",
-      "evidence": "Actual SessionPort/PrivacyController/Query+Mutation observers, five-domain taint scrubbing, late completion fences and public dehydration. Revocation invoked locally, not WS."
+      "evidence": "Actual SELF activity decoder, pickup controller and mounted component; synthetic public context/HTTP/journal/place authority. Cross-recipient200 rejection, expired/code guards, explicit owner/recipient mutations/readback, context-loss late-response and private-state/DOM cleanup. No real reservation/pickup/backend-role/product-shell/WS certification."
     },
     {
       "domain": "recipient",
@@ -1569,31 +1569,31 @@
       "operation": "WS",
       "status": "UNSUPPORTED",
       "provenance": "SYNTHETIC_FIXTURE",
-      "evidence": "Public DTO leak-rejection checks are separate; this role/domain operation has no seeded authorization/service fixture in this increment. Backend role/seed contract and feature-specific runtime input required; no result fabricated."
+      "evidence": "No frozen social privacy/revocation WS message or registered public transport handoff. C05 world revoke is not a social grant event."
     },
     {
       "domain": "recipient",
       "role": "expired",
       "operation": "list",
-      "status": "UNSUPPORTED",
+      "status": "PASS",
       "provenance": "SYNTHETIC_FIXTURE",
-      "evidence": "Public DTO leak-rejection checks are separate; this role/domain operation has no seeded authorization/service fixture in this increment. Backend role/seed contract and feature-specific runtime input required; no result fabricated."
+      "evidence": "Actual SELF activity decoder, pickup controller and mounted component; synthetic public context/HTTP/journal/place authority. Cross-recipient200 rejection, expired/code guards, explicit owner/recipient mutations/readback, context-loss late-response and private-state/DOM cleanup. No real reservation/pickup/backend-role/product-shell/WS certification."
     },
     {
       "domain": "recipient",
       "role": "expired",
       "operation": "detail",
-      "status": "UNSUPPORTED",
+      "status": "PASS",
       "provenance": "SYNTHETIC_FIXTURE",
-      "evidence": "Public DTO leak-rejection checks are separate; this role/domain operation has no seeded authorization/service fixture in this increment. Backend role/seed contract and feature-specific runtime input required; no result fabricated."
+      "evidence": "Actual SELF activity decoder, pickup controller and mounted component; synthetic public context/HTTP/journal/place authority. Cross-recipient200 rejection, expired/code guards, explicit owner/recipient mutations/readback, context-loss late-response and private-state/DOM cleanup. No real reservation/pickup/backend-role/product-shell/WS certification."
     },
     {
       "domain": "recipient",
       "role": "expired",
       "operation": "mutation",
-      "status": "UNSUPPORTED",
+      "status": "PASS",
       "provenance": "SYNTHETIC_FIXTURE",
-      "evidence": "Public DTO leak-rejection checks are separate; this role/domain operation has no seeded authorization/service fixture in this increment. Backend role/seed contract and feature-specific runtime input required; no result fabricated."
+      "evidence": "Actual SELF activity decoder, pickup controller and mounted component; synthetic public context/HTTP/journal/place authority. Cross-recipient200 rejection, expired/code guards, explicit owner/recipient mutations/readback, context-loss late-response and private-state/DOM cleanup. No real reservation/pickup/backend-role/product-shell/WS certification."
     },
     {
       "domain": "recipient",
@@ -1601,7 +1601,7 @@
       "operation": "cache",
       "status": "PASS",
       "provenance": "SYNTHETIC_FIXTURE",
-      "evidence": "Actual SessionPort/PrivacyController/Query+Mutation observers, five-domain taint scrubbing, late completion fences and public dehydration. Revocation invoked locally, not WS."
+      "evidence": "Actual SELF activity decoder, pickup controller and mounted component; synthetic public context/HTTP/journal/place authority. Cross-recipient200 rejection, expired/code guards, explicit owner/recipient mutations/readback, context-loss late-response and private-state/DOM cleanup. No real reservation/pickup/backend-role/product-shell/WS certification."
     },
     {
       "domain": "recipient",
@@ -1609,31 +1609,31 @@
       "operation": "WS",
       "status": "UNSUPPORTED",
       "provenance": "SYNTHETIC_FIXTURE",
-      "evidence": "Public DTO leak-rejection checks are separate; this role/domain operation has no seeded authorization/service fixture in this increment. Backend role/seed contract and feature-specific runtime input required; no result fabricated."
+      "evidence": "No frozen social privacy/revocation WS message or registered public transport handoff. C05 world revoke is not a social grant event."
     },
     {
       "domain": "recipient",
       "role": "admin",
       "operation": "list",
-      "status": "UNSUPPORTED",
+      "status": "PASS",
       "provenance": "SYNTHETIC_FIXTURE",
-      "evidence": "Public DTO leak-rejection checks are separate; this role/domain operation has no seeded authorization/service fixture in this increment. Backend role/seed contract and feature-specific runtime input required; no result fabricated."
+      "evidence": "Actual SELF activity decoder, pickup controller and mounted component; synthetic public context/HTTP/journal/place authority. Cross-recipient200 rejection, expired/code guards, explicit owner/recipient mutations/readback, context-loss late-response and private-state/DOM cleanup. No real reservation/pickup/backend-role/product-shell/WS certification."
     },
     {
       "domain": "recipient",
       "role": "admin",
       "operation": "detail",
-      "status": "UNSUPPORTED",
+      "status": "PASS",
       "provenance": "SYNTHETIC_FIXTURE",
-      "evidence": "Public DTO leak-rejection checks are separate; this role/domain operation has no seeded authorization/service fixture in this increment. Backend role/seed contract and feature-specific runtime input required; no result fabricated."
+      "evidence": "Actual SELF activity decoder, pickup controller and mounted component; synthetic public context/HTTP/journal/place authority. Cross-recipient200 rejection, expired/code guards, explicit owner/recipient mutations/readback, context-loss late-response and private-state/DOM cleanup. No real reservation/pickup/backend-role/product-shell/WS certification."
     },
     {
       "domain": "recipient",
       "role": "admin",
       "operation": "mutation",
-      "status": "UNSUPPORTED",
+      "status": "PASS",
       "provenance": "SYNTHETIC_FIXTURE",
-      "evidence": "Public DTO leak-rejection checks are separate; this role/domain operation has no seeded authorization/service fixture in this increment. Backend role/seed contract and feature-specific runtime input required; no result fabricated."
+      "evidence": "Actual SELF activity decoder, pickup controller and mounted component; synthetic public context/HTTP/journal/place authority. Cross-recipient200 rejection, expired/code guards, explicit owner/recipient mutations/readback, context-loss late-response and private-state/DOM cleanup. No real reservation/pickup/backend-role/product-shell/WS certification."
     },
     {
       "domain": "recipient",
@@ -1641,7 +1641,7 @@
       "operation": "cache",
       "status": "PASS",
       "provenance": "SYNTHETIC_FIXTURE",
-      "evidence": "Actual SessionPort/PrivacyController/Query+Mutation observers, five-domain taint scrubbing, late completion fences and public dehydration. Revocation invoked locally, not WS."
+      "evidence": "Actual SELF activity decoder, pickup controller and mounted component; synthetic public context/HTTP/journal/place authority. Cross-recipient200 rejection, expired/code guards, explicit owner/recipient mutations/readback, context-loss late-response and private-state/DOM cleanup. No real reservation/pickup/backend-role/product-shell/WS certification."
     },
     {
       "domain": "recipient",
@@ -1649,7 +1649,285 @@
       "operation": "WS",
       "status": "UNSUPPORTED",
       "provenance": "SYNTHETIC_FIXTURE",
-      "evidence": "Public DTO leak-rejection checks are separate; this role/domain operation has no seeded authorization/service fixture in this increment. Backend role/seed contract and feature-specific runtime input required; no result fabricated."
+      "evidence": "No frozen social privacy/revocation WS message or registered public transport handoff. C05 world revoke is not a social grant event."
+    }
+  ],
+  "mountedUI": [
+    {
+      "domain": "handle",
+      "role": "owner",
+      "qualification": "SYNTHETIC_MOUNTED_COMPONENT_ONLY",
+      "assertions": [
+        "before explicit reveal: no private markers in DOM/attributes/control values",
+        "authorized synthetic private text visible",
+        "after consent revoked: no private markers in DOM/attributes/control values",
+        "after blocked late response: no private markers in DOM/attributes/control values",
+        "final revoked or denied state: no private markers in DOM/attributes/control values"
+      ]
+    },
+    {
+      "domain": "handle",
+      "role": "member",
+      "qualification": "SYNTHETIC_MOUNTED_COMPONENT_ONLY",
+      "assertions": [
+        "before explicit reveal: no private markers in DOM/attributes/control values",
+        "authorized synthetic private text visible",
+        "after consent revoked: no private markers in DOM/attributes/control values",
+        "after blocked late response: no private markers in DOM/attributes/control values",
+        "final revoked or denied state: no private markers in DOM/attributes/control values"
+      ]
+    },
+    {
+      "domain": "handle",
+      "role": "stranger",
+      "qualification": "SYNTHETIC_MOUNTED_COMPONENT_ONLY",
+      "assertions": [
+        "before explicit reveal: no private markers in DOM/attributes/control values",
+        "final revoked or denied state: no private markers in DOM/attributes/control values"
+      ]
+    },
+    {
+      "domain": "handle",
+      "role": "blocked",
+      "qualification": "SYNTHETIC_MOUNTED_COMPONENT_ONLY",
+      "assertions": [
+        "before explicit reveal: no private markers in DOM/attributes/control values",
+        "final revoked or denied state: no private markers in DOM/attributes/control values"
+      ]
+    },
+    {
+      "domain": "handle",
+      "role": "suspended",
+      "qualification": "SYNTHETIC_MOUNTED_COMPONENT_ONLY",
+      "assertions": [
+        "before explicit reveal: no private markers in DOM/attributes/control values",
+        "final revoked or denied state: no private markers in DOM/attributes/control values"
+      ]
+    },
+    {
+      "domain": "handle",
+      "role": "expired",
+      "qualification": "SYNTHETIC_MOUNTED_COMPONENT_ONLY",
+      "assertions": [
+        "before explicit reveal: no private markers in DOM/attributes/control values",
+        "final revoked or denied state: no private markers in DOM/attributes/control values"
+      ]
+    },
+    {
+      "domain": "handle",
+      "role": "admin",
+      "qualification": "SYNTHETIC_MOUNTED_COMPONENT_ONLY",
+      "assertions": [
+        "before explicit reveal: no private markers in DOM/attributes/control values",
+        "final revoked or denied state: no private markers in DOM/attributes/control values"
+      ]
+    },
+    {
+      "domain": "evidence",
+      "role": "owner",
+      "qualification": "SYNTHETIC_MOUNTED_COMPONENT_ONLY",
+      "assertions": [
+        "final decided or denied state: no private markers in DOM/attributes/control values",
+        "final decided or denied state: no image element retained"
+      ]
+    },
+    {
+      "domain": "evidence",
+      "role": "member",
+      "qualification": "SYNTHETIC_MOUNTED_COMPONENT_ONLY",
+      "assertions": [
+        "final decided or denied state: no private markers in DOM/attributes/control values",
+        "final decided or denied state: no image element retained"
+      ]
+    },
+    {
+      "domain": "evidence",
+      "role": "stranger",
+      "qualification": "SYNTHETIC_MOUNTED_COMPONENT_ONLY",
+      "assertions": [
+        "final decided or denied state: no private markers in DOM/attributes/control values",
+        "final decided or denied state: no image element retained"
+      ]
+    },
+    {
+      "domain": "evidence",
+      "role": "blocked",
+      "qualification": "SYNTHETIC_MOUNTED_COMPONENT_ONLY",
+      "assertions": [
+        "final decided or denied state: no private markers in DOM/attributes/control values",
+        "final decided or denied state: no image element retained"
+      ]
+    },
+    {
+      "domain": "evidence",
+      "role": "suspended",
+      "qualification": "SYNTHETIC_MOUNTED_COMPONENT_ONLY",
+      "assertions": [
+        "final decided or denied state: no private markers in DOM/attributes/control values",
+        "final decided or denied state: no image element retained"
+      ]
+    },
+    {
+      "domain": "evidence",
+      "role": "expired",
+      "qualification": "SYNTHETIC_MOUNTED_COMPONENT_ONLY",
+      "assertions": [
+        "final decided or denied state: no private markers in DOM/attributes/control values",
+        "final decided or denied state: no image element retained"
+      ]
+    },
+    {
+      "domain": "evidence",
+      "role": "admin",
+      "qualification": "SYNTHETIC_MOUNTED_COMPONENT_ONLY",
+      "assertions": [
+        "authorized synthetic private text visible",
+        "authorized synthetic Blob URL assigned; image decode not qualified",
+        "after suspension: no private markers in DOM/attributes/control values",
+        "after suspension: no image element retained",
+        "after delayed evidence loses lease: no private markers in DOM/attributes/control values",
+        "after lease loss: no image element retained",
+        "final decided or denied state: no private markers in DOM/attributes/control values",
+        "final decided or denied state: no image element retained"
+      ]
+    },
+    {
+      "domain": "recipient",
+      "role": "blocked",
+      "qualification": "SYNTHETIC_MOUNTED_COMPONENT_ONLY",
+      "assertions": [
+        "foreign recipient or denied/expired authority: no private markers in DOM/attributes/control values",
+        "after block: no private markers in DOM/attributes/control values"
+      ]
+    },
+    {
+      "domain": "recipient",
+      "role": "suspended",
+      "qualification": "SYNTHETIC_MOUNTED_COMPONENT_ONLY",
+      "assertions": [
+        "foreign recipient or denied/expired authority: no private markers in DOM/attributes/control values",
+        "after block: no private markers in DOM/attributes/control values"
+      ]
+    },
+    {
+      "domain": "recipient",
+      "role": "owner",
+      "qualification": "SYNTHETIC_MOUNTED_COMPONENT_ONLY",
+      "assertions": [
+        "owner has no recipient-only guidance: no private markers in DOM/attributes/control values",
+        "after block: no private markers in DOM/attributes/control values"
+      ]
+    },
+    {
+      "domain": "recipient",
+      "role": "stranger",
+      "qualification": "SYNTHETIC_MOUNTED_COMPONENT_ONLY",
+      "assertions": [
+        "foreign recipient or denied/expired authority: no private markers in DOM/attributes/control values",
+        "after block: no private markers in DOM/attributes/control values"
+      ]
+    },
+    {
+      "domain": "recipient",
+      "role": "expired",
+      "qualification": "SYNTHETIC_MOUNTED_COMPONENT_ONLY",
+      "assertions": [
+        "foreign recipient or denied/expired authority: no private markers in DOM/attributes/control values",
+        "after block: no private markers in DOM/attributes/control values"
+      ]
+    },
+    {
+      "domain": "recipient",
+      "role": "admin",
+      "qualification": "SYNTHETIC_MOUNTED_COMPONENT_ONLY",
+      "assertions": [
+        "foreign recipient or denied/expired authority: no private markers in DOM/attributes/control values",
+        "after block: no private markers in DOM/attributes/control values"
+      ]
+    },
+    {
+      "domain": "recipient",
+      "role": "member",
+      "qualification": "SYNTHETIC_MOUNTED_COMPONENT_ONLY",
+      "assertions": [
+        "authorized synthetic private text visible",
+        "after context loss and delayed pickup: no private markers in DOM/attributes/control values",
+        "authorized control output visible",
+        "after block: no private markers in DOM/attributes/control values"
+      ]
+    },
+    {
+      "domain": "beacon",
+      "role": "stranger",
+      "qualification": "SYNTHETIC_MOUNTED_COMPONENT_ONLY",
+      "assertions": [
+        "denied or expired detail: no private markers in DOM/attributes/control values",
+        "after privacy block: no private markers in DOM/attributes/control values",
+        "after privacy block: no image element retained"
+      ]
+    },
+    {
+      "domain": "beacon",
+      "role": "blocked",
+      "qualification": "SYNTHETIC_MOUNTED_COMPONENT_ONLY",
+      "assertions": [
+        "denied or expired detail: no private markers in DOM/attributes/control values",
+        "after privacy block: no private markers in DOM/attributes/control values",
+        "after privacy block: no image element retained"
+      ]
+    },
+    {
+      "domain": "beacon",
+      "role": "suspended",
+      "qualification": "SYNTHETIC_MOUNTED_COMPONENT_ONLY",
+      "assertions": [
+        "denied or expired detail: no private markers in DOM/attributes/control values",
+        "after privacy block: no private markers in DOM/attributes/control values",
+        "after privacy block: no image element retained"
+      ]
+    },
+    {
+      "domain": "beacon",
+      "role": "expired",
+      "qualification": "SYNTHETIC_MOUNTED_COMPONENT_ONLY",
+      "assertions": [
+        "denied or expired detail: no private markers in DOM/attributes/control values",
+        "after privacy block: no private markers in DOM/attributes/control values",
+        "after privacy block: no image element retained"
+      ]
+    },
+    {
+      "domain": "beacon",
+      "role": "admin",
+      "qualification": "SYNTHETIC_MOUNTED_COMPONENT_ONLY",
+      "assertions": [
+        "denied or expired detail: no private markers in DOM/attributes/control values",
+        "after privacy block: no private markers in DOM/attributes/control values",
+        "after privacy block: no image element retained"
+      ]
+    },
+    {
+      "domain": "beacon",
+      "role": "owner",
+      "qualification": "SYNTHETIC_MOUNTED_COMPONENT_ONLY",
+      "assertions": [
+        "authorized synthetic private text visible",
+        "after authority loss and delayed detail: no private markers in DOM/attributes/control values",
+        "after owner revocation: no private markers in DOM/attributes/control values",
+        "after privacy block: no private markers in DOM/attributes/control values",
+        "after privacy block: no image element retained"
+      ]
+    },
+    {
+      "domain": "beacon",
+      "role": "member",
+      "qualification": "SYNTHETIC_MOUNTED_COMPONENT_ONLY",
+      "assertions": [
+        "authorized synthetic private text visible",
+        "after authority loss and delayed detail: no private markers in DOM/attributes/control values",
+        "after privacy block: no private markers in DOM/attributes/control values",
+        "after privacy block: no image element retained"
+      ]
     }
   ],
   "projections": [
@@ -1703,7 +1981,7 @@
   ],
   "browser": "156.0.8078.80",
   "node": "v24.22.2",
-  "candidate": "56f514f247e6b2d6b769ecca1aa84b5ef2f057e2",
+  "candidate": "ad5e2eb9038fba67c606f89705f1bd64a8d5dc50",
   "command": "NODE frontend/e2e/privacy/run.mjs",
   "exitCode": 0,
   "sourcePins": {
@@ -1716,6 +1994,10 @@
     "contracts/domain/v1/operations.json": "622c0e0eba6e1c835c5e953a3acd6825f97ed43aff9bc32b982c207fdfe31839",
     "contracts/domain/v1/policy.json": "81b0da4c007543765f120c4ea58163cc1eadea41e10d24db54e1d177ef4e5fbb",
     "contracts/domain/v1/social.schema.json": "b275b36f2ad8eee90922f7ad27cfcbece943773a94831720b6dfca588d0201d2",
+    "contracts/fixtures/assets/map-manifest.json": "0cccde2c009a44cc2355dfa15ef2d030bc7b85be6f58bec7470108dba46562f7",
+    "contracts/fixtures/core/auth-capabilities-disabled.json": "20807e295b679d02d44526869a83d93cd34e18251418e57ba606bc59d9ac1efb",
+    "contracts/fixtures/core/auth-success.json": "32cd1f21e4e33b87945f55c7cafe22e77dbebb8caa17269a6f7eafdbf5ffb5c6",
+    "contracts/fixtures/core/bootstrap-open.json": "d29e699f7b2ca9d6a1dfc34af56590bac5f7c3f103644ab02625b6f1707a17e6",
     "contracts/fixtures/domain/approved-social-request.json": "f4c55a2fb56c7086a03984cb345df491d753c27ceca31b6c1c2545d6cd4c295a",
     "contracts/fixtures/domain/giveaway-management.json": "b2b74d4fa5070458e0e0f52798c6ba55fc39184f4b31c2825a19317b2993f7e3",
     "contracts/fixtures/domain/party-full.json": "55887e502d2e12ef3aeb74f70a1579128cd97f497121a084e46d21d1f8066d74",
@@ -1725,11 +2007,15 @@
     "contracts/generated/mcr-core.openapi.json": "4ea617a4ccf96c72b2e5db99e64666f676048f5baf215a2a05d540ef3bdde542",
     "contracts/generated/mcr-domain.openapi.json": "79a066b88119e53f6f16876d7e3fe59a18ee956be6ed6d2af7ee1efa187e0feb",
     "contracts/realtime/v1/world.schema.json": "1732e627037fe91533ac6f7fe74e36683ce9b846bfbfc020b3cce298ae84df36",
+    "frontend/e2e/privacy/beacon-fixtures.ts": "d916575937cefd93c7cad7165bbe4f666b771dc966c8dfbe680a0057767775b2",
     "frontend/e2e/privacy/browser.ts": "71acb215ffc792ee2d1828e271d69311f33003a48e24275f45790801e97c6796",
-    "frontend/e2e/privacy/fixtures.ts": "9698854362381ab51cae2e00c58252a5c395419b8fd0b9657fbfc6bc1c2cdef9",
+    "frontend/e2e/privacy/evidence-fixtures.ts": "533099e4500f5b3fba0cb027822339c70094e71ceaaf515a32602f9bc0b4fefb",
+    "frontend/e2e/privacy/fixtures.ts": "cd126ffc0c33e48f791d7ce704f94c60c3d754fa761decfbe2da4254c12fd90f",
+    "frontend/e2e/privacy/mounted-ui.ts": "7c3c9f08134b43325ec7c825b0babff11d2ee46bc321bbb3c7c281b9c8dd62d8",
     "frontend/e2e/privacy/oracle.ts": "27c6ed83bc2eeb54c0520abb9e8c4a0099f3c3dbec2ffc9efb4403a83e729344",
-    "frontend/e2e/privacy/run.mjs": "a11c4556a780ce3b9243af9af453265c8b3664e17c21123f72c1786d4df6ead4",
-    "frontend/e2e/privacy/runtime.mjs": "2d558ddc7877be223f9863b857bf17d02ec37451b237863af6614bdfd86ace41",
+    "frontend/e2e/privacy/recipient-fixtures.ts": "7d4bf076d4ac7999c1eecd3c10a349b0572437554c9f9d7675e13ab93c23e26f",
+    "frontend/e2e/privacy/run.mjs": "a57336d1cd1d69d77126f588cf770d12203541e18537a4de5e7086fc23746dbf",
+    "frontend/e2e/privacy/runtime.mjs": "823fd6159bb9506fa87b2e217668b51e56093a2417df4f0844807dcf666cf383",
     "frontend/package.json": "0f7a05587bcf1af5f4d5d077a0c2d90011adc87e1036a61db9ef3acf37c8b7d3",
     "frontend/pnpm-lock.yaml": "47ca44459819ad0e887d2f4f93394fdf3b1053b8f45edc9ceb0236981feee1f6",
     "frontend/src/app/capabilities.ts": "82de5740e6380edb0b6b9397d8f79afe6b50e83e74b5983d1e79a8954d9fdae4",
@@ -1752,6 +2038,12 @@
     "frontend/src/entities/avatar/whole-character/view.tsx": "209ade8b11f93e4f711ffc83b7a663c59f69a54c51c7eff7fb3280ab29e1c324",
     "frontend/src/entities/intro/model/age.ts": "1d1f762dcc6baed4297216c83f380ef7ccbbf29643e512b7abad742c465206b5",
     "frontend/src/entities/intro/model/contract.ts": "8e19d17047d2ed6594d156acf12d3f0f539bafe08e6ee31288f94f31ff0bcaef",
+    "frontend/src/features/admin/reports/model/contract.ts": "6e5b006e65d8366ed6b9be52e54fc4bf92459357440a8f6ad3c2ece95b9d73e8",
+    "frontend/src/features/admin/reports/model/controller.ts": "6eea30d9e0feaf91a20577a2f6d36a19ea1ac8e546824672c749d7c6efc7c65f",
+    "frontend/src/features/admin/reports/model/validate.ts": "e77f65a00a7bd194d697503eb3b492e0872fe497add97b638941e95236b33729",
+    "frontend/src/features/admin/reports/ui/ModerationReview.tsx": "a03bc69c25c073140cb8dbe6c8675ebe520d557b1a313ecabd465d33e1239619",
+    "frontend/src/features/admin/reports/ui/moderation.css": "b9b43dd58fa07677b906c894f2c0d5a0fa52e622cd812507a8f0bdff3ef9c4d0",
+    "frontend/src/features/auth/__tests__/fixtures/data.ts": "00577a6ebb610df3279996d36a88d512d0c4df838a6c11e7877238b1e079986f",
     "frontend/src/features/auth/model/account-deletion.ts": "803f860024f373d5751769a3de6c0c53174694461a4e230334fea81d09c1c008",
     "frontend/src/features/auth/model/bootstrap.ts": "028fce14336c1e8357ce7e836631e1b05fb937a005b178344f0941b7db8fa87e",
     "frontend/src/features/auth/model/contract.ts": "6e367afd4c54e54e8f02d0997f3d6f4450e369adcb13e7254bbefc47e3c5a904",
@@ -1763,16 +2055,41 @@
     "frontend/src/features/auth/model/session.ts": "6665d52e018a8b9b900ed79cce627309889084202498d80420c47fd44a2a44b1",
     "frontend/src/features/event-feed/contract.ts": "69aa62ed8317f4b3a6a2c882d0733fe8229d4a53606fbce185dfc680d37e5a1e",
     "frontend/src/features/gift-discovery/model/contract.ts": "2a931610213c57eb1dc439ac224800e0d86fd8f3a67f4804a9c6c8ceead38cba",
+    "frontend/src/features/gift-pickup/model/controller.ts": "d25ddec12bf16994ec63d689ea3fb021e04d0b0bae3c5e8a0ca9188d4c7237d3",
+    "frontend/src/features/gift-pickup/model/journal.ts": "94b3b854d3413784740fb20f736894fe147cbe1cfc3bf28c0b8c9e139d483264",
+    "frontend/src/features/gift-pickup/ui/GiftPickup.tsx": "496faaea6d6d69d306da452b80e976c6cf95fbca6620334f9c99253017575dd7",
+    "frontend/src/features/gift-pickup/ui/pickup.css": "a8cdf20921d8b4133d1ff300003100c670cc232006a14c1472893ab1c75be791",
+    "frontend/src/features/giveaway-authoring/model/contract.ts": "b0211f60a68ce990b0e8aca7b4ed8514640c73797a67c1cf4347e3b81a3f2315",
+    "frontend/src/features/media/model/upload-controller.ts": "e187899b6e8c4c22956eb1f1849420265603d80d56699c2a0baff76334f3e571",
+    "frontend/src/features/meet-beacon/__tests__/fixtures/harness.ts": "953b18c140c5f3fd09ec7735727c22089400df79a66ab2e4d26ebaff41fd3ca1",
     "frontend/src/features/meet-beacon/model/contract.ts": "2bfbbcd160d0f6ad90874627dd2ff5f5798220275ce811f71f75fd18469824fd",
+    "frontend/src/features/meet-beacon/model/controller.ts": "d8ee07eb9bd021687bdd8b70825e7c632caa00d30513e09db38ebd028e22f784",
+    "frontend/src/features/meet-beacon/model/photo-client.ts": "39158c91d063b0aecfd874080708a67377cf64de66a497aa7231572e4aea1bd5",
+    "frontend/src/features/meet-beacon/model/photo-scope.ts": "1b9a658ab09f5eb07a10291b0ea33913d5857bc1d8e6306c69979c2448719417",
+    "frontend/src/features/meet-beacon/ui/MeetingBeacon.tsx": "ccbc170ff1ade8193fc16667a48527241805f920b2b28acef9558c4392bb3871",
+    "frontend/src/features/meet-beacon/ui/meeting-beacon.css": "69358f493b4ad89f7e237d44f73339f216713e5577c1e0a754fab19a8b390db9",
+    "frontend/src/features/party-authoring/model/contract.ts": "9aa33a2a259ba38c9356aea32817d8864cf1a6a07fc707e60d4fb7f5e71b11b3",
+    "frontend/src/features/party-authoring/model/time.ts": "28cae1b6670072da03c9640ec7c808b4fbe94a2d49a0e7047f6bc9bf9a5a2b51",
     "frontend/src/features/party-discovery/model/contract.ts": "73d3dd2a7e6a09a7edc22bee5c24358ddfeda1049f4c5c35a7b754474508a3b7",
+    "frontend/src/features/places/__tests__/fixtures/data.ts": "f19893c015a971f96e5bc93fa651b84087706ba195d989bd5f37c53e15a79e20",
+    "frontend/src/features/places/model/contract.ts": "9a7ef5be91cb3d470347bdde9177b3f69d1dd37ff075ec2a82dd5337b33718ee",
+    "frontend/src/features/places/model/controller.ts": "48ef5e9ca08fe76f4d6308155a7f46a6098df021dda7a7f09fed1ff7d9172a09",
     "frontend/src/features/safety/contract.ts": "745f22ba62f469ee3dc630982c78b2402e7b1cffbf92725545e98638405b8c6a",
     "frontend/src/features/social-sharing/model/contract.ts": "eba5001637bc1b1cc5fcb98ec764cc5aa1ac4faf171f8fabac519e2f676e5426",
     "frontend/src/features/social-sharing/model/controller.ts": "a798c5f50cf278a998517c552fc678b818c04ba569e3ff53174560677697e18c",
     "frontend/src/features/social-sharing/model/runtime.ts": "999c074719e88f889130fd7726dbccbc969d2cab15c36d0813f1f54001652b53",
+    "frontend/src/features/social-sharing/ui/SocialSharing.tsx": "51b410255fd7a2bc21c34291d7fb091b830bd6b22e44f5016c7dd8415753cfb6",
+    "frontend/src/features/social-sharing/ui/sharing.css": "4213c99408d0feaaf2a8e39b4ad5876bc7fadfc8123bcdd03562f2ab0c47823c",
     "frontend/src/shared/api/domain-operations.generated.ts": "a38ffacb0cc989e62b63f6baecedff113b7ac8f87979dd3773aa2ae26b12ee74",
     "frontend/src/shared/api/domain.ts": "a32887227334720f8d73530ceabc61edcca5f91bde648d81faebe9117d371741",
     "frontend/src/shared/api/errors.ts": "07472139ebdaf6d4325ffaff1111e00f060bb18b16e8957915bb5301194ac0a3",
     "frontend/src/shared/api/http.ts": "441983a9e40cea38ad2f93a5a7101ee22a0d10dc3f50ec9b6ecf878dcd4c70a1",
+    "frontend/src/shared/media/contract.ts": "af30fed17cb420563836623b2613c716668116437d9fd855e1f329e0e79c9dbf",
+    "frontend/src/shared/media/image-policy.ts": "7ae571867a1e2d5d54a3bb571eb11f38636676a45920142db76e3593e370cdb1",
+    "frontend/src/shared/media/prepare-image.ts": "a1ac4b47bdc744afd1065e82bc950a83c0d01c3d7946e098e0e6adb6171db128",
+    "frontend/src/shared/media/preview.ts": "3cab8ce506c6cca2083ff2003c7a406cf30aa77b96ee10cb81a68f3f1b5fc283",
+    "frontend/src/shared/media/read-media.ts": "a91aa13d5a3d074985e50ea2252728ef17b526376c798171138f8bd63f802cd8",
+    "frontend/src/shared/media/transport.ts": "8d71000a955dd035263074a3f961589e8b0f7a8f0bfdb3f708b99a75eb2e841c",
     "frontend/src/shared/query/keys.ts": "3a82ee13efc4162e04e2a3348508c5d12b897d93c8b40554d370578e25e0daef",
     "frontend/src/shared/query/privacy.ts": "9f39e9e25b1c322bbe4b2f19a52d930aa369940757e01611ed632aa11cf2f081",
     "frontend/src/shared/validation/text.ts": "f8034db3685e555779c96c59f18055c65309cbfeb84392448ca70a4636af2f61",

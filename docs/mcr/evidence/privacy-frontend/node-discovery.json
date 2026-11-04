@@ -1,0 +1,86 @@
+{
+  "task": "QA04",
+  "followup": "Node selftest and Vitest collection boundary",
+  "base": "82da09b34f56b5afe8b89cf5d44cff45b4b0b2df",
+  "sourceRename": {
+    "from": "frontend/e2e/privacy/live-gate.test.mjs",
+    "to": "frontend/e2e/privacy/live-gate.node.mjs",
+    "bytesIdentical": true,
+    "sha256": "0777d7d370d1a033f38bf3e5a6bbec977d5fe13b16ed932b3f3234eed2cdcf92"
+  },
+  "commands": [
+    {
+      "command": "NODE --test frontend/e2e/privacy/live-gate.node.mjs",
+      "exitCode": 0,
+      "result": "9/9 PASS",
+      "log": "node-discovery-tests.txt"
+    },
+    {
+      "command": "NODE frontend/e2e/privacy/check-discovery.mjs",
+      "exitCode": 0,
+      "result": "0 privacy Vitest files;2 positive control files;0 test modules executed",
+      "log": "node-discovery.txt"
+    },
+    {
+      "command": "NODE EXISTING_DEPENDENCIES/oxlint/bin/oxlint frontend/e2e/privacy",
+      "exitCode": 0
+    },
+    {
+      "command": [
+        "python3",
+        "scripts/mcr/check-boundaries.py",
+        "--base",
+        "82da09b34f56b5afe8b89cf5d44cff45b4b0b2df",
+        "--lane",
+        "frontend",
+        "--allow-doc",
+        "docs/mcr/evidence/privacy-frontend/README.md",
+        "--allow-doc",
+        "docs/mcr/evidence/privacy-frontend/node-discovery-tests.txt",
+        "--allow-doc",
+        "docs/mcr/evidence/privacy-frontend/node-discovery.json",
+        "--allow-doc",
+        "docs/mcr/evidence/privacy-frontend/node-discovery.txt",
+        "--allow-doc",
+        "frontend/e2e/privacy/README.md"
+      ],
+      "exitCode": 0,
+      "result": "BOUNDARIES PASS: frontend, 8 changes vs 82da09b34f56b5afe8b89cf5d44cff45b4b0b2df; manual assignment/import review required"
+    }
+  ],
+  "configurationQualification": "Inspected actual shared Vitest config and installed defaults; read-only rules mirrored in memory with config:false. No root plugins loaded or unit modules executed. No shared configuration edits.",
+  "historicalBroadDiagnostic": {
+    "sourceCommit": "62b4bf80",
+    "path": "frontend/src/app/__tests__/production-refresh/evidence/broad-diagnostic.log",
+    "bytesUnchanged": true,
+    "status": "NOT_GREEN",
+    "rerun": false
+  },
+  "sourcePins": {
+    "frontend/e2e/privacy/live-gate.node.mjs": "0777d7d370d1a033f38bf3e5a6bbec977d5fe13b16ed932b3f3234eed2cdcf92",
+    "frontend/e2e/privacy/check-discovery.mjs": "658bfaa9e80ce7d8871e60358381d78c5ce3ae892ec409420c6561ee033c2f11",
+    "frontend/e2e/privacy/README.md": "85bc02d31ac497ec5865d70d6388416ea5f5ecd550063fa0ae11701957718877",
+    "frontend/vitest.config.ts": "d16b6672152957059b1e87a896d88cfac2a78e9bfbad95c660deb6cfd17b0963",
+    "frontend/vite.config.ts": "f068812eb2cc54891e2422112ccf14374b2a329c8c1d7d68b6195b7a87f743f8",
+    "frontend/package.json": "0f7a05587bcf1af5f4d5d077a0c2d90011adc87e1036a61db9ef3acf37c8b7d3",
+    "frontend/pnpm-lock.yaml": "47ca44459819ad0e887d2f4f93394fdf3b1053b8f45edc9ceb0236981feee1f6",
+    "frontend/src/app/__tests__/production-refresh/evidence/broad-diagnostic.log": "9a8d3884a46dd042ab35e07d91d3da9de6e36e80f813253e1c5d537d2864ddd2"
+  },
+  "originalQA04": "Unfinished; persistent goal remains BLOCKED on missing real-service principal/seed/HTTP/WS/cache handoff",
+  "nonClaims": [
+    "No broad suite green claim",
+    "No real-service QA04 acceptance",
+    "No shared configuration or application changes",
+    "No new goal or review gate"
+  ],
+  "changedPaths": [
+    "docs/mcr/evidence/privacy-frontend/README.md",
+    "docs/mcr/evidence/privacy-frontend/node-discovery-tests.txt",
+    "docs/mcr/evidence/privacy-frontend/node-discovery.json",
+    "docs/mcr/evidence/privacy-frontend/node-discovery.txt",
+    "frontend/e2e/privacy/README.md",
+    "frontend/e2e/privacy/check-discovery.mjs",
+    "frontend/e2e/privacy/live-gate.node.mjs",
+    "frontend/e2e/privacy/live-gate.test.mjs"
+  ]
+}

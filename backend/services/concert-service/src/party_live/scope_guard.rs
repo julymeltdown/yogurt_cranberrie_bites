@@ -80,8 +80,8 @@ impl PartyLiveOwnerGuard for ScopePartyLiveGuard {
         self.profiles
             .local_subject(&guarded)
             .await
-            .map_err(|_| PartyLiveError::DependencyUnavailable)?;
-        guarded.check().await.map_err(status)
+            .map_err(profile_error)?;
+        guarded.check().await.map_err(subject_status)
     }
 
     async fn public_profile_in(
@@ -97,18 +97,14 @@ impl PartyLiveOwnerGuard for ScopePartyLiveGuard {
             .public_profile_subject(subject)
             .await
             .map_err(status)?;
-        let author = self
-            .profiles
-            .read(&guarded)
-            .await
-            .map_err(|_| PartyLiveError::DependencyUnavailable)?;
+        let author = self.profiles.read(&guarded).await.map_err(profile_error)?;
         if author.user_id != subject || author.json.is_empty() {
             return Err(PartyLiveError::DependencyUnavailable);
         }
         let profile: serde_json::Value = serde_json::from_slice(&author.json)
             .map_err(|_| PartyLiveError::DependencyUnavailable)?;
         crate::adapters::out::public_profile::validate(&profile).map_err(status)?;
-        guarded.check().await.map_err(status)?;
+        guarded.check().await.map_err(subject_status)?;
         Ok(profile)
     }
 
@@ -141,4 +137,19 @@ impl PartyLiveOwnerGuard for ScopePartyLiveGuard {
 
 fn status(_: Status) -> PartyLiveError {
     PartyLiveError::DependencyUnavailable
+}
+
+fn profile_error(error: concert_domain::feed::FeedError) -> PartyLiveError {
+    match error {
+        concert_domain::feed::FeedError::ResourceUnavailable => PartyLiveError::ResourceUnavailable,
+        _ => PartyLiveError::DependencyUnavailable,
+    }
+}
+
+fn subject_status(status: Status) -> PartyLiveError {
+    if status.code() == tonic::Code::NotFound {
+        PartyLiveError::ResourceUnavailable
+    } else {
+        PartyLiveError::DependencyUnavailable
+    }
 }
