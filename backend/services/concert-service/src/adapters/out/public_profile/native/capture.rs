@@ -1,6 +1,6 @@
 //! Adapted read-only from backend/services/concert-service/tests/owner_authority_support/capture.rs at 3e22615eb39a8912c71c7bbcb003930cfc24f373.
 //! Source SHA-256: d8582d7ee9724f96592faff8e66cf3f16bec494c7f46b72746aac4373d15bada.
-//! Public native fixture changes: crate-local paths; Profile allowed in exact owned DB list.
+//! Public native fixture changes: crate-local paths; caller supplies actual release event.
 //! Fixture entrypoint uses the production Gateway signature/workload guard.
 //! It only captures its sealed parent; it cannot construct a positive owner scope.
 use crate::product_rpc::{proto, POLICY};
@@ -44,8 +44,8 @@ impl proto::product_service_server::ProductService for Capture {
 pub(super) async fn binding(
     actor: Uuid,
     family: Uuid,
+    event: Uuid,
 ) -> anyhow::Result<crate::adapters::out::relationship_authority::guarded::GuardBinding> {
-    let event = Uuid::new_v4();
     let request_id = Uuid::new_v4();
     let target = format!("/api/concert/events/{event}/feed");
     let now = chrono::Utc::now().timestamp_micros();

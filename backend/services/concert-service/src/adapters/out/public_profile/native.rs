@@ -1,6 +1,6 @@
-//! Actual owner enrollment, Profile RPC and Concert SQL. The private constructor
-//! skips only product release/art construction; it does not mint authority.
-//! No product-release or Gateway HTTP acceptance is claimed by these cases.
+//! Actual owner enrollment, Profile RPC, source-bound product construction and
+//! Concert SQL. No positive authority is fabricated by the release template.
+//! Gateway HTTP, operator admission and visual acceptance remain separate.
 mod capture;
 mod environment;
 mod owners;
@@ -67,6 +67,33 @@ where
 {
     tokio::spawn(async move { future.await.expect("actual native fixture server") })
 }
+/// Exact published operator candidate; no synthetic catalog or private reader
+/// initializer. The production constructor validates source bytes itself.
+fn product_release() -> anyhow::Result<Arc<concert_application::bootstrap::ValidatedProductRelease>>
+{
+    use crate::bootstrap::{BootstrapFeatures, ProductReleaseBundle};
+    let root = std::path::Path::new(env!("CARGO_MANIFEST_DIR"))
+        .ancestors()
+        .nth(3)
+        .unwrap();
+    let bundle = root.join("backend/releases/operator-bundle/quality-v6");
+    let spatial = root.join("backend/releases/reference-scene-v2/quality-v6");
+    let themes = [
+        bundle.join("theme-revenge.json"),
+        bundle.join("theme-parade.json"),
+        bundle.join("theme-danger.json"),
+    ];
+    ProductReleaseBundle::from_source_bound_files(
+        &bundle.join("bootstrap.json"),
+        &root.join("contracts/fixtures/assets/selected-static/avatar-manifest.json"),
+        &spatial.join("map-manifest.json"),
+        [&themes[0], &themes[1], &themes[2]],
+        BootstrapFeatures::default(),
+        &root.join("frontend/public"),
+        &spatial.join("source-binding.json"),
+    )
+    .map_err(|_| anyhow::anyhow!("Actual source-bound public Profile release unavailable"))
+}
 impl Fixture {
     async fn new() -> anyhow::Result<Self> {
         let auth = environment::pool("auth").await?;
@@ -75,10 +102,16 @@ impl Fixture {
         let profile = environment::pool("profile").await?;
         let (actor, family, subjects) = environment::identities(&auth, 1).await?;
         let subject = subjects[0];
-        let binding = capture::binding(actor, family).await?;
-        let event = binding.event();
+        let release = product_release()?;
+        let document: Value = serde_json::from_slice(release.release().bootstrap_json())?;
+        let event = Uuid::parse_str(
+            document["event"]["event_id"]
+                .as_str()
+                .ok_or_else(|| anyhow::anyhow!("Release event missing"))?,
+        )?;
+        let binding = capture::binding(actor, family, event).await?;
         // Actual database fixtures, never an identity-only positive guard.
-        sqlx::query("insert into concert_events(event_id,slug,title,phase) values($1,$2,'Public native','OPEN')")
+        sqlx::query("insert into concert_events(event_id,slug,title,phase) values($1,$2,'Public native','OPEN') on conflict(event_id) do update set phase='OPEN',revision=concert_events.revision+1")
             .bind(event).bind(format!("native-{}", event.simple())).execute(&concert).await?;
         for user in [actor, subject] {
             sqlx::query("insert into concert_event_admissions(event_id,user_id,state) values($1,$2,'ACTIVE')")
@@ -120,22 +153,14 @@ impl Fixture {
                 .add_service(profile_service)
                 .serve_with_incoming(incoming(listener)),
         );
-        let manifest: Value = serde_json::from_str(include_str!(
-            "../../../../../../../contracts/fixtures/assets/selected-static/avatar-manifest.json"
-        ))?;
-        let reader = Arc::new(PublicProfileReader {
-            pool: concert.clone(),
-            profile: super::profile::ProfileReader::connect(
-                &profile_url,
-                "concert-fixture",
-                Some(&environment::tls(Workload::Concert)?),
-                owners::signer()?,
-            )?,
-            catalog: AvatarCatalog::from_validated_manifest(&manifest)
-                .map_err(|_| anyhow::anyhow!("Selected catalog invalid"))?,
-            event,
-            local: Mutex::new(BTreeMap::new()),
-        });
+        let reader = Arc::new(PublicProfileReader::connect(
+            concert.clone(),
+            release,
+            &profile_url,
+            "concert-fixture",
+            Some(&environment::tls(Workload::Concert)?),
+            owners::signer()?,
+        )?);
         let instance = Uuid::new_v4();
         let keys = Arc::new(ChildRecoveryKeys::new(
             ChildRecoveryKey::new("public-native-v1", &[89; 32])?,

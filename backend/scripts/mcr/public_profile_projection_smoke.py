@@ -25,7 +25,7 @@ def sha(path):
     return hashlib.sha256(Path(path).read_bytes()).hexdigest()
 
 def source_pins():
-    paths = subprocess.check_output(["git", "ls-files", "backend", "contracts"], cwd=ROOT, text=True).splitlines()
+    paths = subprocess.check_output(["git", "ls-files", "backend", "contracts", "frontend/public", "frontend/src/entities/avatar/character-source-pack.json"], cwd=ROOT, text=True).splitlines()
     paths += subprocess.check_output(["git", "ls-files", "--others", "--exclude-standard",
         "backend/services/profile-service/src/concert_public_profile",
         "backend/services/profile-service/src/adapters/in/grpc/concert_public_profile.rs",
@@ -35,7 +35,7 @@ def source_pins():
         "backend/services/concert-service/src/adapters/out/public_profile",
         "backend/services/concert-service/tests/public_profile_projection.rs",
         "backend/scripts/mcr/public_profile_projection_smoke.py"], cwd=ROOT, text=True).splitlines()
-    return {p: sha(ROOT/p) for p in sorted(set(paths)) if Path(p).suffix in {".rs", ".sql", ".proto", ".json", ".toml", ".lock", ".py"} and (ROOT/p).is_file()}
+    return {p: sha(ROOT/p) for p in sorted(set(paths)) if (Path(p).suffix in {".rs", ".sql", ".proto", ".json", ".toml", ".lock", ".py"} or p.startswith("frontend/public/")) and (ROOT/p).is_file()}
 
 def select_artifacts(items, root=ROOT, profile_only=False, joined=False):
     result = {}
@@ -196,7 +196,7 @@ def qualify(path, pg_bin):
             for owner in ("auth","friend","concert","profile"):
                 report["joined_migrations"][owner] = native.check_ledger(cluster,"mcr_canonical_"+owner,native.migration_manifest(ROOT/"backend",owner+"-service"))
             assert cluster.sql("postgres","select count(*) from pg_prepared_xacts;") == "0"
-            report["limits"] = ["Real owner/reader core with selected avatar metadata; private cfg(test) constructor bypasses product release/art construction only", "Actual Gateway HTTP terminal callback and complete Feed/C04 route NOT_RUN", "No production capability or art fidelity claim"]
+            report["limits"] = ["Real owner/reader core through production PublicProfileReader::connect and actual source-bound release; no synthetic/private reader constructor", "Actual Gateway HTTP terminal callback and complete Feed/C04 route NOT_RUN", "No production capability or art fidelity claim"]
         report["result"] = "PASS"
     except BaseException as exc:
         report.update(result="FAIL", failure_type=type(exc).__name__)
