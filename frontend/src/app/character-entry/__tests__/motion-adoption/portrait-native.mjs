@@ -59,11 +59,13 @@ try {
     await page.getByRole('button', { name: 'CUSTOMIZE', exact: true }).click()
     const preview = page.getByRole('img', { name: 'Draft outfit preview', exact: true })
     await expect(preview).toBeVisible()
+    await expect(page.getByRole('group', { name: 'Preset choices' }).locator('canvas:visible')).toHaveCount(6)
     const fixedPresets = await page.getByRole('group', { name: 'Preset choices' }).locator('canvas').evaluateAll(canvases => canvases.map(c => ({ width: c.getBoundingClientRect().width, height: c.getBoundingClientRect().height })))
     assert.equal(fixedPresets.length, 6); assert(fixedPresets.every(c => c.width === 64 && c.height === 64))
     await page.getByRole('button', { name: 'Hair', exact: true }).click()
     await page.getByLabel('Choose hair', { exact: true }).selectOption('hair-5')
     await expect(page.getByRole('button', { name: 'Choose hair 6', exact: true })).toHaveAttribute('aria-pressed', 'true')
+    await expect(page.locator('.mcr-motion-option-grid canvas:visible')).toHaveCount(3)
     const geometry = await page.getByRole('region', { name: 'Avatar editor' }).evaluate(panel => {
       const rect = e => { const r = e.getBoundingClientRect(); return { x: r.x, y: r.y, width: r.width, height: r.height } }
       const canvas = panel.querySelector('.mcr-motion-preview canvas'), frame = panel.querySelector('.mcr-motion-preview')
@@ -77,10 +79,11 @@ try {
     const g = geometry
     assert.equal(g.buffer.width, 64); assert.equal(g.buffer.height, 64); assert.equal(g.smoothing, false)
     assert(Math.abs(g.canvas.width - g.canvas.height) < 0.1)
-    assert(g.canvas.width > 192 && g.canvas.x >= g.frame.x && g.canvas.x + g.canvas.width <= g.frame.x + g.frame.width)
+    assert(Math.abs(g.canvas.width - (g.frame.width - 2)) < 0.1)
+    assert(g.canvas.x >= g.frame.x && g.canvas.x + g.canvas.width <= g.frame.x + g.frame.width)
     assert(g.canvas.y >= g.frame.y && g.canvas.y + g.canvas.height <= g.frame.y + g.frame.height)
     assert.equal(g.categories.length, 5); assert(g.categories.every(c => c.width >= 44 && c.height >= 44 && c.x >= g.canvas.x + g.canvas.width))
-    assert(g.options.every(c => c.width === 56 && c.height === 56)); assert(g.controls.every(c => c.width >= 44 && c.height >= 44))
+    assert.equal(g.options.length, 3); assert(g.options.every(c => c.width === 56 && c.height === 56)); assert(g.controls.every(c => c.width >= 44 && c.height >= 44))
     assert(g.page.scrollWidth <= width)
     await page.getByLabel('View', { exact: true }).selectOption('up'); await expect(preview).toHaveAttribute('data-frame', '15')
     await page.getByLabel('View', { exact: true }).selectOption('down'); await expect(preview).toHaveAttribute('data-frame', '0')
@@ -96,6 +99,7 @@ try {
     const panel = page.getByRole('region', { name: 'Avatar editor' }), file = `component-${width}x${height}.png`
     await panel.screenshot({ path: resolve(output, file) }); report.artifacts[file] = hash(await readFile(resolve(output, file)))
     await page.getByRole('button', { name: 'PROFILE', exact: true }).click()
+    await expect(page.getByRole('img', { name: 'Saved profile avatar', exact: true })).toBeVisible()
     const profile = await page.getByRole('img', { name: 'Saved profile avatar', exact: true }).boundingBox()
     assert.equal(profile.width, 72); assert.equal(profile.height, 72)
     const alive = await state(); assert.equal(alive.mounts, 1); assert.equal(alive.sockets, 0); assert.equal(alive.requests.length, 2)

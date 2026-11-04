@@ -366,3 +366,44 @@ and bootstrap validation using deterministic fixtures. The actual application
 registry remains closed to the staged reviewed release. The real-application
 bundle is delegated to Root153's combined publisher check; no second browser
 capture or local live-service/device proof was started.
+
+
+## QA06 portrait hierarchy correction
+
+QA06 packet `e8dac180`, augmented by source-only technical review `0f4b030f`,
+identifies the fixed 192px draft preview as a ready client presentation issue.
+The unchanged target, prior actual component and comparison hashes were verified
+and the actual unresized comparison was inspected. This does not authorize a
+reference-only sixth layer, palette/random feature or replacement character.
+The technical review is committed as `43075968`.
+
+World recorded the exact implementation lease before application edits in
+`docs/mcr/scrum/world.md`, commit `9ab53082`: only MotionEditor's draft-preview
+size, MotionView's necessary size/local layout style, and stage/figure/preview
+CSS sizing; matching owned geometry tests and AR03 documentation/evidence.
+Implementation source `bae99bb7` gives only the draft preview a responsive `fill`
+size. The canvas uses its parent's available width with automatic square height;
+the preview frame reserves square space. Its intrinsic buffer remains 64×64.
+Preset 64px, option 56px and saved Profile 72px callers are unchanged, as are frame
+extraction, UVs, smoothing, acquire/cleanup, scene clock, categories and all
+interaction/state logic. No generic layout, Root, backend, schema or art changed.
+
+All 290 existing cases pass; 782 full-application TS files report zero
+diagnostics; source/harness lint, harness syntax and diff checks pass.
+`portrait-source-checks.json` records those checks. The geometry-only
+`portrait-native.mjs` requires an explicitly named capture slot and a fresh disk
+preflight before starting its one local Vite/Chrome workflow. It measures square
+canvas bounds/containment, preserved 64×64 buffers and fixed-size callers, five
+44px categories, pose/mode/action hit targets, focus and reachable footer actions
+at 360/390/430, a narrow 320px panel, and reduced 390×420 height. It records actual
+unresized component captures, source pins, lifecycle cleanup and sampled process
+tree RSS; mutation requests are counted and rejected. It reuses the unchanged
+component/Phaser fixture and does not replay the full art matrix.
+
+Native reference qualification is currently NOT_RUN. A new sequential slot was
+requested directly from BackendSL/World with an estimated 256 MiB temporary-disk
+budget and 1.5 GiB process-tree RSS; no prior slot is inherited. An actually
+runnable expiring IN01 consumer takes priority, and no live holder is preempted.
+The portrait source is committed for qualification, with publication held until
+that concrete component check and visual readback finish. Actual public Root,
+service save/reload, live multiuser and device proof remain separate obligations.
