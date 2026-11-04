@@ -11,7 +11,7 @@ import { createWholeCharacterWorldRenderer } from '../../../../world/avatar/whol
 import { isThemeId } from '../../../../features/theme/model/preferences'
 import { referenceFixtureResources } from '../../../../world/reference-scene/__tests__/fixture'
 import { spatialFixtureResources } from '../../../../world/reference-scene/__tests__/spatial-v3/fixture'
-import { getReferenceOverviewMetadata } from '../../../../world/reference-scene'
+import { getReferenceOverviewMetadata, spatialThemeIds } from '../../../../world/reference-scene'
 import { validateManifests } from '../../../../world/map/manifest'
 import { sha256 } from '../../../../world/map/json'
 import { MockSocket } from '../../../../world/network/mock'
@@ -24,7 +24,7 @@ import '../../../../shared/styles/base.css'
 import '../../../shell.css'
 
 const parameters = new URLSearchParams(location.search), initial = parameters.get('era')
-const data = await sceneData(parameters.get('version') === 'legacy' ? 'legacy' : 'spatial', initial === 'REVENGE' || initial === 'DANGER' ? initial : 'PARADE'), requests: { path: string; method: string }[] = [], sockets: Socket[] = []
+const data = await sceneData(parameters.get('version') === 'legacy' ? 'legacy' : 'spatial', initial === 'REVENGE' || initial === 'DANGER' ? initial : 'PARADE', parameters.get('source') === 'derived'), requests: { path: string; method: string }[] = [], sockets: Socket[] = []
 const caches: { diagnostics(): unknown; dispose(): void }[] = []
 const sourceOnly = new URLSearchParams(location.search).get('mode') !== 'production-denied'
 let disposed = false, factoryCalls = 0, socketPeak = 0, canvasPeak = 0, firstCamera: unknown = null
@@ -86,8 +86,8 @@ const ports = createProductionPorts(auth, { origin: location.origin, localInput,
    caches.push(files); request.signal.addEventListener('abort', files.dispose, { once: true })
    const themeId = data.theme.theme_id
    if (!isThemeId(themeId)) throw Error('Invalid fixture era')
-   // Unreviewed original test descriptors cannot authorize optional skins. Each initial era is qualified separately.
-   return { bootstrap: request.bootstrap.document!, privacyScope: request.privacyScope, themeId, availableThemeIds: [themeId],
+   // Only separately derived and validated descriptors carry the real published source qualification.
+   return { bootstrap: request.bootstrap.document!, privacyScope: request.privacyScope, themeId, availableThemeIds: data.derived ? spatialThemeIds : [themeId],
     rooms: rooms(), roomId: rooms().default_room_id, resources: files.resources, movementPolicy: localInput.movementPolicy, zoom: localInput.zoom }
   },
   renderer: createWholeCharacterWorldRenderer({ resolveRuntime(context) {
@@ -104,7 +104,9 @@ function state() {
  if (presentation && !firstCamera) firstCamera = presentation.camera
  const runtime = ports.characters?.read(auth.privacy.capture(), data.avatar)
  const overview = presentation?.overview?.read()
- return { version: data.version, sourceOnly, productionAdmitted: false, originalMapProvenance: data.map.provenance, originalPlaces: data.map.places,
+ return { version: data.version, derived: data.derived, originalThemeProvenance: data.originalThemeProvenance,
+  suppliedThemeProvenance: data.bootstrap.theme_manifests.map(t => t.provenance), sourceOnly, productionAdmitted: false, originalMapProvenance: data.map.provenance, originalPlaces: data.map.places,
+  suppliedThemePins: data.bootstrap.theme_manifests.map(t => ({ themeId: t.theme_id, hash: t.content_hash, mapHash: t.map_content_hash, avatarHash: t.avatar_content_hash })),
   path: router.state.location.pathname, published: !!presentation, factoryCalls, requests, camera: presentation?.camera.read(), sameCamera: presentation ? presentation.camera === firstCamera : null,
   map: presentation?.map.expected, overview, theme: presentation?.theme.read(), metadata: overview ? getReferenceOverviewMetadata(overview) : null,
   sourceCaches: caches.map(c => c.diagnostics()), phase: view?.phase, entities: view?.entities.length,

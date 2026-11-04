@@ -8,11 +8,12 @@ import { contentHash } from '../../../../world/map/json'
 import { validate } from '../../../../world/network/transport/contract'
 import { validateWholeCharacterConfig } from '../../../../entities/avatar/whole-character'
 import type { Snapshot } from '../../../../world/network/WorldTransport'
+import { deriveFixtureThemes } from './qualified-themes'
 
 export const eventId = original.event.event_id, userId = original.participant.user_id
 export const localInput = { revision: 'TEST_ONLY_reference_source', reviewedBy: 'TEST ONLY local intent configuration, not C05 authority',
   movementPolicy: { speedPxPerSecond: 96, footWidthPx: 12, footHeightPx: 8, interactionRadiusPx: 96 }, zoom: 1 }
-export async function sceneData(version: 'legacy' | 'spatial' = 'spatial', initial: SpatialThemeId = 'PARADE') {
+export async function sceneData(version: 'legacy' | 'spatial' = 'spatial', initial: SpatialThemeId = 'PARADE', derived = false) {
   const f = await (version === 'spatial' ? spatialFixture(initial) : referenceFixture()), presets = f.avatar.presets.map(p => validateWholeCharacterConfig(p.config))
   const themes = version === 'spatial' ? await Promise.all(spatialThemeIds.map(async id => (await spatialFixture(id)).theme))
     : [f.theme, ...await Promise.all(original.theme_manifests.filter(t => t.theme_id !== 'PARADE').map(async base => {
@@ -24,13 +25,15 @@ export async function sceneData(version: 'legacy' | 'spatial' = 'spatial', initi
       texture: { image_state: 'NOT_PROVIDED', path: null, sha256: null, width_px: 768, height_px: 1296 } }
     theme.content_hash = await contentHash(theme); return theme
   }))]
+  const originalThemeProvenance = themes.map(t => structuredClone(t.provenance))
+  const suppliedThemes = derived && version === 'spatial' ? await deriveFixtureThemes(f.map, themes, f.avatar) : themes
   const avatar = { revision: 7, config: presets[0]! }
   const bootstrap = { ...structuredClone(original), server_time: '2026-11-07T07:00:00Z', avatar,
-    avatar_manifest: f.avatar, map_manifest: f.map, theme_manifests: themes,
+    avatar_manifest: f.avatar, map_manifest: f.map, theme_manifests: suppliedThemes,
     participant: { ...structuredClone(original.participant), profile: { ...structuredClone(original.participant.profile), display_name: 'Scene fixture fan', avatar },
       preferences: { ...structuredClone(original.participant.preferences), theme: f.theme.theme_id } } }
   bootstrap.capabilities.world = { available: true, reason: null } as unknown as typeof bootstrap.capabilities.world
-  return { ...f, bootstrap, presets, version }
+  return { ...f, bootstrap, presets, version, derived: derived && version === 'spatial', originalThemeProvenance }
 }
 export type SceneData = Awaited<ReturnType<typeof sceneData>>
 export function snapshot(data: SceneData, roomId: string): Snapshot {
