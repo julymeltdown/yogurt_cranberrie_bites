@@ -31,7 +31,7 @@ use auth_service::{
 };
 use chrono::{TimeDelta, Utc};
 use concert_application::world_ticket::*;
-use concert_domain::{AssetId, AuthUserId, EventId, ParticipantKey, Revision};
+use concert_domain::{AuthUserId, EventId, ParticipantKey};
 use concert_service::world::{account_deletion::*, PgWorldRepository};
 use sha2::{Digest, Sha256};
 use sqlx::{
@@ -40,7 +40,7 @@ use sqlx::{
 };
 use std::{
     sync::{
-        atomic::{AtomicUsize, Ordering},
+        atomic::{AtomicBool, AtomicUsize, Ordering},
         Arc,
     },
     time::Duration as WallDuration,
