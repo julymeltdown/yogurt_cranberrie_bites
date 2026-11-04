@@ -137,6 +137,11 @@ impl WorldInvalidationConsumer {
     pub fn new(bridge: Arc<AdmissionBridge>) -> Self {
         Self { bridge }
     }
+    /// Actual native owner scope for selective local fanout. Another event's
+    /// delivery must retain its queue attempt budget for its owning consumer.
+    pub fn event_id(&self) -> Uuid {
+        self.bridge.invalidation_context().3
+    }
     pub fn reject_remote(_: &RemoteInvalidationHint) -> Result<ApplicationAck, ApplyError> {
         Err(ApplyError::UnqualifiedSource)
     }
