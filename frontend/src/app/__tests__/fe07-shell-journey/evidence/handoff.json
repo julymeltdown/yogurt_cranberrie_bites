@@ -35,13 +35,13 @@
     "frontend/src/app/__tests__/fe07-shell-journey/preview.tsx"
   ],
   "payloadSha256": {
-    "docs/mcr/frontend/fe07-shell-journey.md": "231ed9c2173a04c6142605c9bfd0d2051cdbbb3475bcd83c43abaf57777df8d3",
+    "docs/mcr/frontend/fe07-shell-journey.md": "8a7cf2bf583322a2bd2205cdc7122ae015e2fc5be0ba824ba87fd72d636b6dd7",
     "frontend/src/app/__tests__/fe07-shell-journey/evidence/before-boundary.json": "6a4f11079a140949f5c79a5b99c9fd71244bd306d6093e31e1baf5d3ca168ab5",
     "frontend/src/app/__tests__/fe07-shell-journey/evidence/before-boundary.png": "ca71d0f2365da4ec5c4036fd6b3aa79c88ccacbc06843c1bb8327201b783e5e9",
     "frontend/src/app/__tests__/fe07-shell-journey/evidence/before-scroll.json": "64140f63660275ca3642e4c37a15dd09cd10a66ccd2a6e30a0cfa346b2151bf7",
     "frontend/src/app/__tests__/fe07-shell-journey/evidence/before-scroll.png": "25058bc84e76481fd9ec385dcf6c4c7354ef2b74c2a5bf0c476fb838ce5cb0cf",
     "frontend/src/app/__tests__/fe07-shell-journey/evidence/build.log": "0f43d5a94c8f61cc7863d6274a074e4e92d4fcd213068a7fd7022d1c4aa5d7f6",
-    "frontend/src/app/__tests__/fe07-shell-journey/evidence/checks.json": "3aeaca17156d8c781619f5456a87a7ed1fdb9e60874223a5517e9952a04d245a",
+    "frontend/src/app/__tests__/fe07-shell-journey/evidence/checks.json": "adc2e344ae89fbdf31ce32cc2d80297b9b6cc50a34d093d408ca7273e41fcb02",
     "frontend/src/app/__tests__/fe07-shell-journey/evidence/direct-gift-360.png": "36ba6b00ad37fab211dac665ce5fdebfd2bb4c74daecb9c3cd9d6b77ac075f60",
     "frontend/src/app/__tests__/fe07-shell-journey/evidence/direct-gift-390.png": "105f37dcb3b3d49abbde62821b20e1ea0b71023d12ecf391f93c46c4686bf9f4",
     "frontend/src/app/__tests__/fe07-shell-journey/evidence/direct-gift-430.png": "b96cb7631a0177ec93929998e1cdbd5a13a5a5aeaf8624c4d6eede3cd000cdb8",
@@ -60,9 +60,16 @@
     "frontend/src/app/__tests__/fe07-shell-journey/preview.html": "7fb69c11226d3472469904d4b94f73a6c617f2334a5ba60f53a4dfbc1a04bf96",
     "frontend/src/app/__tests__/fe07-shell-journey/preview.tsx": "3df8c98e6d81d34b183e9466c335664c89c8cb311270cdae9a30d1c91541594a"
   },
-  "qualification": "All original FE07 client criteria SATISFIED; final native11/11 and targeted155/155. Actual master publication pending designated integrator; goal ACTIVE.",
+  "qualification": "Whole original FE07 client criteria SATISFIED; native11/11 and targeted155/155. Source and evidence INTEGRATED by designated delivery integrator; independently verified remote ancestry and committed bytes.",
   "provenance": "New test fixture/runner only; existing data helpers/contract fixture imported. Actual app/production composition; immutable selected character originals; no rendering reuse or new dependencies.",
   "conflicts": [],
   "excluded": "No application/backend/contract/root/source-original/manifest/lock/asset writes. Existing old meeting-root test diagnostic preserved; no edit lease.",
-  "publicationOwner": "Root153 /01a1a153-1227-7e72-801f-a2a6b91981e1; owner did not push master"
+  "publicationOwner": "Root153 /01a1a153-1227-7e72-801f-a2a6b91981e1; owner did not push master",
+  "publication": {
+    "verifiedRemote": "d73296f582a459eb94d55123f8480e78b52a0d21",
+    "source": "19ad4ca0e17e4b93ce0f9219e918d15b372950f0",
+    "payload": "59de1ac9547ccd22a94bea8e8f224fe16a8c4eeb",
+    "payloadHashes": 24,
+    "nativeInputs": 16
+  }
 }
