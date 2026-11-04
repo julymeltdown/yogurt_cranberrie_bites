@@ -1,0 +1,27 @@
+{
+  "allocation": "IN03-CONSUMER-SOURCE-202611041207Z",
+  "status": "FULLRELEASE",
+  "releasedUTC": "2026-11-04T12:13:02.707022+00:00",
+  "activeUntilUTC": "2026-11-04T12:14:16Z",
+  "releaseDeadlineUTC": "2026-11-04T12:15:16Z",
+  "ownedNodeProcesses": [],
+  "runnerToolSession": 63832,
+  "runnerExit": 0,
+  "dependencyLinkAbsent": true,
+  "privateTmpAbsent": true,
+  "privateCacheAbsent": true,
+  "browserServerDatabaseOrPortStarted": false,
+  "wholeLimits": {
+    "maxFiles": 200,
+    "maxBytes": 104857600,
+    "initialFloorBytes": 17179869184,
+    "continuousFloorBytes": 8589934592
+  },
+  "originalIN03": "NOT_RUN",
+  "goal": "BLOCKED_ON_REAL_API_AND_INPUTS",
+  "wholeUsage": {
+    "files": 72,
+    "bytes": 212899,
+    "freeBytes": 18544459776
+  }
+}

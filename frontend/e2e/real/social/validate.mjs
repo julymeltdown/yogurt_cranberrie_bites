@@ -18,7 +18,8 @@ assert.ok(/^[a-z0-9-]{1,50}$/.test(runId), 'Invalid run identifier')
 assert.ok([output, dependencies, pinned].every(isAbsolute), 'Allocation and input paths must be absolute')
 assert.ok(!output.startsWith(root) && existsSync(output), 'Use the existing granted private allocation root')
 assert.ok(Number.isFinite(cutoff) && cutoff > Date.now() + 45000 && cutoff < Date.now() + 900000, 'Invalid active cutoff; cleanup reserve is separate')
-const frontend = join(root, 'frontend'), evidence = join(root, 'docs/mcr/evidence/c07-social-client-in03')
+const sourceOnly = process.env.MCR_IN03_SOURCE_CHECK === '1'
+const frontend = join(root, 'frontend'), evidence = join(root, sourceOnly ? 'docs/mcr/evidence/in03-public-journey' : 'docs/mcr/evidence/c07-social-client-in03')
 const link = join(frontend, 'node_modules'), cache = join(output, 'cache'), tmp = join(output, 'tmp')
 const hash = file => createHash('sha256').update(readFileSync(file)).digest('hex')
 const present = path => { try { lstatSync(path); return true } catch (error) { if (error.code === 'ENOENT') return false; throw error } }
@@ -30,10 +31,11 @@ assert.equal(process.version, expectedNode, 'Parent runtime must be the retained
 assert.equal(realpathSync(process.execPath), realpathSync(pinned), 'Invoke the absolute pinned Node binary')
 assert.equal(execFileSync('node', ['--version'], { env, encoding: 'utf8' }).trim(), expectedNode, 'All child PATH probes must resolve pinned Node')
 assert.equal(hash(join(frontend, 'pnpm-lock.yaml')), hash(join(dirname(dependencies), 'pnpm-lock.yaml')), 'Read-only dependency lock mismatch')
-assert.deepEqual(inputManifest(), JSON.parse(readFileSync(join(evidence, 'inputs.json'), 'utf8')), 'Public cohort changed')
+if (!sourceOnly) assert.deepEqual(inputManifest(), JSON.parse(readFileSync(join(evidence, 'inputs.json'), 'utf8')), 'Public cohort changed')
 assert.ok(!present(link) && !present(cache) && !present(tmp), 'Owned setup paths must be absent; never replace another owner')
 const sources = [join(frontend, 'e2e/real/social'), join(frontend, 'e2e/real/social.spec.ts'),
-  join(frontend, 'src/shared/api/__tests__/c07-social-client'), evidence, join(root, 'docs/mcr/frontend/c07-social-client-in03.md')]
+  join(frontend, 'src/shared/api/__tests__/c07-social-client'), evidence, join(root, 'docs/mcr/frontend/c07-social-client-in03.md'),
+  join(root, 'docs/mcr/frontend/in03-public-journey.md'), join(root, 'docs/mcr/evidence/c07-social-client-in03')]
 function usage() {
   const files = new Set()
   const visit = path => {
@@ -51,9 +53,15 @@ assert.ok(initial.freeBytes >= 16 * 1024 ** 3 && initial.files < 200 && initial.
 const summaryPath = join(output, runId + '-summary.json')
 assert.ok(!present(summaryPath), 'Never overwrite an earlier run')
 const summary = { allocation, runId, source: execFileSync('git', ['rev-parse', 'HEAD'], { cwd: root, encoding: 'utf8' }).trim(),
+  mode: sourceOnly ? 'ORIGINAL_IN03_SOURCE_ONLY' : 'BOUNDED_C07', inputs: inputManifest(),
   node: process.version, nodeSha256: hash(pinned), lockSha256: hash(join(frontend, 'pnpm-lock.yaml')), activeUntil: new Date(cutoff).toISOString(), initial, jobs: [], status: 'IN_PROGRESS' }
 const config = 'src/shared/api/__tests__/c07-social-client/vitest.config.ts'
-const jobs = [
+const jobs = sourceOnly ? [
+  ['in03-tsc', ['node_modules/typescript/bin/tsc', '-p', 'e2e/real/social/tsconfig.json', '--noEmit', '--incremental', 'false', '--pretty', 'false'], 0],
+  ['in03-admission-guards', ['--test', 'e2e/real/social/admission-original.test.mjs'], 0],
+  ['in03-admission-syntax', ['--check', 'e2e/real/social/admission.mjs'], 0],
+  ['in03-runner-syntax', ['--check', 'e2e/real/social/validate.mjs'], 0],
+] : [
   ['normal', ['node_modules/vitest/vitest.mjs', 'run', '--configLoader', 'native', '--config', config], 0],
   ['drift', ['node_modules/vitest/vitest.mjs', 'run', 'src/shared/api/__tests__/c07-social-client/drift-probe.test.ts', '--configLoader', 'native', '--config', config], 1],
   ['tsc', ['node_modules/typescript/bin/tsc', '-p', 'src/shared/api/__tests__/c07-social-client/tsconfig.json', '--noEmit', '--incremental', 'false', '--pretty', 'false'], 0],
@@ -89,7 +97,7 @@ try {
     if (name === 'drift') assert.match(readFileSync(log, 'utf8'), /C07 metadata drift createConcertSocialRequest: method/)
     if (name === 'admission') assert.equal(JSON.parse(readFileSync(log, 'utf8')).status, 'NOT_RUN')
   }
-  summary.status = 'FIXTURE_CHECKS_PASSED'; summary.IN03 = 'NOT_RUN'; summary.C07 = 'UNRECONCILED'
+  summary.status = sourceOnly ? 'SOURCE_CHECKS_PASSED' : 'FIXTURE_CHECKS_PASSED'; summary.IN03 = 'NOT_RUN'; summary.C07 = sourceOnly ? 'HISTORICAL_COMPLETE_UNCHANGED' : 'UNRECONCILED'
 } catch (error) { summary.status = 'FAILED'; summary.error = error.message; process.exitCode = 1 }
 finally {
   if (ownsLink) { assert.equal(readlinkSync(link), dependencies); unlinkSync(link) }
