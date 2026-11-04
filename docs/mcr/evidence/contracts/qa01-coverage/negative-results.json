@@ -1,0 +1,184 @@
+[
+  {
+    "command": "run.py",
+    "exit": 0,
+    "receipt": {
+      "task": "QA01",
+      "result": "PASS",
+      "candidate": "c610fbf9d1c9afe0508c236df0e5e69a36a22f1c",
+      "probe": null,
+      "error": null,
+      "fixtures": 121,
+      "responses": 1519,
+      "operations": 134
+    }
+  },
+  {
+    "command": "run.py --probe broken-schema",
+    "exit": 1,
+    "receipt": {
+      "task": "QA01",
+      "result": "FAIL",
+      "candidate": "c610fbf9d1c9afe0508c236df0e5e69a36a22f1c",
+      "probe": "broken-schema",
+      "error": "SchemaError: 'BROKEN_TYPE' is not valid under any of the given schemas\n\nFailed validating 'anyOf' in metaschema['allOf'][3]['properties']['type']:\n    {'anyOf': [{'$ref': '#/$defs/simpleTypes'},\n               {'type': 'array',\n                'items': {'$ref': '#/$defs/simpleTypes'},\n                'minItems': 1,\n                'uniqueItems': True}]}\n\nOn schema['type']:\n    'BROKEN_TYPE'",
+      "fixtures": 0,
+      "responses": 0,
+      "operations": null
+    }
+  },
+  {
+    "command": "run.py --probe unknown-enum",
+    "exit": 1,
+    "receipt": {
+      "task": "QA01",
+      "result": "FAIL",
+      "candidate": "c610fbf9d1c9afe0508c236df0e5e69a36a22f1c",
+      "probe": "unknown-enum",
+      "error": "AssetError: photo01_front_01.json: schema $: {'contract_version': '1.1.0', 'kind': 'avatar_config', 'manifest_id': 'mcr_selected_static_20261103', 'manifest_version': 1, 'representation': 'UNKNOWN_QA01', 'preset_id': 'photo01_front_01'} is not valid under any of the given schemas",
+      "fixtures": 110,
+      "responses": 0,
+      "operations": null
+    }
+  },
+  {
+    "command": "run.py --probe empty-index",
+    "exit": 1,
+    "receipt": {
+      "task": "QA01",
+      "result": "FAIL",
+      "candidate": "c610fbf9d1c9afe0508c236df0e5e69a36a22f1c",
+      "probe": "empty-index",
+      "error": "ValueError: empty fixture index: core",
+      "fixtures": 0,
+      "responses": 0,
+      "operations": null
+    }
+  },
+  {
+    "command": "run.py --probe missing-fixture",
+    "exit": 1,
+    "receipt": {
+      "task": "QA01",
+      "result": "FAIL",
+      "candidate": "c610fbf9d1c9afe0508c236df0e5e69a36a22f1c",
+      "probe": "missing-fixture",
+      "error": "ValueError: unindexed/missing fixture: core",
+      "fixtures": 0,
+      "responses": 0,
+      "operations": null
+    }
+  },
+  {
+    "command": "run.py --probe unindexed-fixture",
+    "exit": 1,
+    "receipt": {
+      "task": "QA01",
+      "result": "FAIL",
+      "candidate": "c610fbf9d1c9afe0508c236df0e5e69a36a22f1c",
+      "probe": "unindexed-fixture",
+      "error": "ValueError: unindexed/missing fixture: core",
+      "fixtures": 0,
+      "responses": 0,
+      "operations": null
+    }
+  },
+  {
+    "command": "run.py --probe missing-operation",
+    "exit": 1,
+    "receipt": {
+      "task": "QA01",
+      "result": "FAIL",
+      "candidate": "c610fbf9d1c9afe0508c236df0e5e69a36a22f1c",
+      "probe": "missing-operation",
+      "error": "ValueError: missing/unexpected operation: ['getAccountDeletion']",
+      "fixtures": 0,
+      "responses": 0,
+      "operations": null
+    }
+  },
+  {
+    "command": "run.py --probe missing-response",
+    "exit": 1,
+    "receipt": {
+      "task": "QA01",
+      "result": "FAIL",
+      "candidate": "c610fbf9d1c9afe0508c236df0e5e69a36a22f1c",
+      "probe": "missing-response",
+      "error": "ValueError: generated OpenAPI drift",
+      "fixtures": 0,
+      "responses": 0,
+      "operations": null
+    }
+  },
+  {
+    "command": "run.py --probe drift",
+    "exit": 1,
+    "receipt": {
+      "task": "QA01",
+      "result": "FAIL",
+      "candidate": "c610fbf9d1c9afe0508c236df0e5e69a36a22f1c",
+      "probe": "drift",
+      "error": "ValueError: generated OpenAPI drift",
+      "fixtures": 0,
+      "responses": 0,
+      "operations": null
+    }
+  },
+  {
+    "command": "run.py --probe broken-ref",
+    "exit": 1,
+    "receipt": {
+      "task": "QA01",
+      "result": "FAIL",
+      "candidate": "c610fbf9d1c9afe0508c236df0e5e69a36a22f1c",
+      "probe": "broken-ref",
+      "error": "Unresolvable: https://contracts.mcr.invalid/missing",
+      "fixtures": 0,
+      "responses": 0,
+      "operations": null
+    }
+  },
+  {
+    "command": "run.py --probe empty-responses",
+    "exit": 1,
+    "receipt": {
+      "task": "QA01",
+      "result": "FAIL",
+      "candidate": "c610fbf9d1c9afe0508c236df0e5e69a36a22f1c",
+      "probe": "empty-responses",
+      "error": "ValueError: empty response coverage: getAccountDeletion",
+      "fixtures": 0,
+      "responses": 0,
+      "operations": null
+    }
+  },
+  {
+    "command": "run.py --probe empty-generated",
+    "exit": 1,
+    "receipt": {
+      "task": "QA01",
+      "result": "FAIL",
+      "candidate": "c610fbf9d1c9afe0508c236df0e5e69a36a22f1c",
+      "probe": "empty-generated",
+      "error": "ValueError: empty generated operation coverage",
+      "fixtures": 0,
+      "responses": 0,
+      "operations": null
+    }
+  },
+  {
+    "command": "run.py --probe pinned-input-drift",
+    "exit": 1,
+    "receipt": {
+      "task": "QA01",
+      "result": "FAIL",
+      "candidate": "c610fbf9d1c9afe0508c236df0e5e69a36a22f1c",
+      "probe": "pinned-input-drift",
+      "error": "ValueError: pinned input drift: ['contracts/core/v1/core.schema.json']",
+      "fixtures": 0,
+      "responses": 0,
+      "operations": null
+    }
+  }
+]
