@@ -1,0 +1,1 @@
+{"result":"MOCK_READY","passed":28,"unsupportedWS":7,"projections":6,"pageErrors":0}

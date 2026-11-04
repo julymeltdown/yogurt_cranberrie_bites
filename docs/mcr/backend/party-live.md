@@ -28,7 +28,7 @@ committed module pin; it cannot be published as a phantom export. Product routes
 the Product RPC operation enum, configuration, proto and root composition remain
 root-owned and are **NOT_RUN**.
 
-The source base is mcr `97f495a079eff2a04820874e062071e84b64d262`. The frozen C04
+The source base is mcr `8d2834592eee51385f048f7ca613bff18c8d0ec7`. The frozen C04
 inputs are `contracts/domain/v1/party.schema.json`
 (`7cbea6af623668a36d641e7498bf52f4869b9bc44594b46e7f4a3806cc907d03`) and
 `contracts/domain/v1/operations.json`
@@ -142,7 +142,8 @@ return the current nonzero authority revision; call the same scope's current
 subject exclusion and Profile reader; and register the Party-bound transaction
 for settlement. `public_profile_in` obtains a `GuardedSubject` from the same
 held scope, calls `PublicProfileReader::read(&subject)`, parses exactly
-`PublicAuthor.json` as `serde_json::Value`, verifies the author ID and the
+`PublicAuthor.json` as `serde_json::Value`, verifies its plain UUID `user_id`
+against the guarded subject and the
 published C03 schema, then rechecks the subject. It retains the same root scope and child. The passed PostgreSQL
 connection is used by Party for its own local transaction registration and
 locks, not as an alternate Profile query channel. The adapter therefore passes
