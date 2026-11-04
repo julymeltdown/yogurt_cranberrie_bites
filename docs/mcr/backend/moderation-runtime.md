@@ -73,12 +73,15 @@ cargo test --locked -p concert-application --lib admin::moderation
 cargo test --locked -p concert-service --lib moderation_live
 cargo test --locked -p concert-service --test moderation_live --no-run
 python3 backend/scripts/mcr/moderation_live_smoke.py \
-  --test-binary <absolute accepted-target/debug/deps/moderation_live-binary> \
-  --accepted-target <absolute freshly accepted target> \
+  --test-binary <absolute owned-frozen-bundle/moderation_live-binary> \
+  --accepted-target <absolute freshly accepted target, provenance only> \
+  --frozen-bundle <absolute owned source-and-executable snapshot> \
   --accepted-lease-id <fresh accepted lease identity> \
   --pg-bin /opt/homebrew/opt/postgresql@16/bin \
   --report <new absolute owned evidence file>
 ```
+
+Before releasing the compile lease, freeze the native executable, source/migration inputs and Cargo JSON outside the shared target in a private owned bundle. Record `be39-build.json` with bundle device/inode, accepted target/lease identity, source commit, executable SHA256 and exact migration SHA384 map. Release the target with no open handles before native work. The harness verifies that bundle and never reopens the shared target during PostgreSQL execution.
 
 The script creates a new private PG16 cluster with no TCP listener and no inherited database/provider credentials. It applies genuine published SQLx baseline migrations, injects a late 0043 DDL collision to prove atomic rollback, migrates/reapplies successfully, runs the nine native tests serially, restarts the owned postmaster and verifies ledger/count/native-identity persistence. Cleanup verifies ownership before stopping/removing only its own cluster. Diagnostics omit passwords and database URLs; the report identifies synthetic owner/role scope explicitly.
 

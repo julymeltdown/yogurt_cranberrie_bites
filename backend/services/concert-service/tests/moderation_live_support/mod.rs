@@ -355,3 +355,30 @@ pub async fn outcomes(pool: &PgPool, receipt: Uuid) -> Vec<String> {
 }
 
 pub mod capture;
+
+/// Read the source snapshot frozen during the accepted compile lease. Never
+/// reopen a shared target or use moving checkout migrations during native work.
+pub fn migration_directory() -> anyhow::Result<PathBuf> {
+    let bundle = PathBuf::from(std::env::var("CONCERT_TEST_FROZEN_BUNDLE")?);
+    let info = std::fs::symlink_metadata(&bundle)?;
+    anyhow::ensure!(
+        bundle.is_absolute()
+            && info.is_dir()
+            && !info.file_type().is_symlink()
+            && info.permissions().mode() & 0o077 == 0,
+        "private frozen bundle required"
+    );
+    let pin: serde_json::Value =
+        serde_json::from_slice(&std::fs::read(bundle.join("be39-build.json"))?)?;
+    anyhow::ensure!(
+        pin["root_device"].as_u64() == Some(info.dev())
+            && pin["root_inode"].as_u64() == Some(info.ino()),
+        "frozen bundle replaced"
+    );
+    let path = bundle.join("source/backend/services/concert-service/migrations");
+    anyhow::ensure!(
+        path.canonicalize()?.starts_with(bundle.canonicalize()?),
+        "foreign migrations refused"
+    );
+    Ok(path)
+}

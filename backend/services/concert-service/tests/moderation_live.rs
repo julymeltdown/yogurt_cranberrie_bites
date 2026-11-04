@@ -28,7 +28,7 @@ async fn published_checkpoint() -> anyhow::Result<()> {
     let baseline = root.join("published-migrations-before-0043");
     std::fs::create_dir(&baseline)?;
     std::fs::set_permissions(&baseline, std::fs::Permissions::from_mode(0o700))?;
-    for entry in std::fs::read_dir(PathBuf::from(env!("CARGO_MANIFEST_DIR")).join("migrations"))? {
+    for entry in std::fs::read_dir(migration_directory()?)? {
         let path = entry?.path();
         let name = path.file_name().unwrap().to_str().unwrap();
         if path.extension().and_then(|v| v.to_str()) == Some("sql") && !name.starts_with("0043_") {
@@ -46,11 +46,7 @@ async fn published_checkpoint() -> anyhow::Result<()> {
 #[ignore = "private harness explicit migration application"]
 async fn apply_migrations() -> anyhow::Result<()> {
     let pool = owned_pool().await?;
-    let m = migration_runtime::load_migrations(std::path::Path::new(concat!(
-        env!("CARGO_MANIFEST_DIR"),
-        "/migrations"
-    )))
-    .await?;
+    let m = migration_runtime::load_migrations(&migration_directory()?).await?;
     m.run(&pool).await?;
     migration_runtime::verify_receipts(&pool, &m).await?;
     pool.close().await;

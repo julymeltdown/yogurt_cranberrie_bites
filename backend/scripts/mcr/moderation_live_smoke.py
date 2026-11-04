@@ -9,7 +9,7 @@ from moderation_live_support import run
 
 def main():
     parser=argparse.ArgumentParser(description=__doc__)
-    for name in ("test-binary","accepted-target","pg-bin","report"):
+    for name in ("test-binary","accepted-target","frozen-bundle","pg-bin","report"):
         parser.add_argument("--"+name,type=Path,required=True)
     parser.add_argument("--accepted-lease-id",required=True)
     args=parser.parse_args()
@@ -18,7 +18,7 @@ def main():
     def interrupted(_signal,_frame):raise KeyboardInterrupt()
     prior=signal.signal(signal.SIGTERM,interrupted)
     try:
-        run(args.test_binary,args.accepted_target,args.pg_bin,args.accepted_lease_id,report)
+        run(args.test_binary,args.accepted_target,args.frozen_bundle,args.pg_bin,args.accepted_lease_id,report)
     finally:
         signal.signal(signal.SIGTERM,prior)
         with args.report.open("x") as stream:json.dump(report,stream,indent=2);stream.write("\n")

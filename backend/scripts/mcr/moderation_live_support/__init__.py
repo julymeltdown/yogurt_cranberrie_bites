@@ -6,6 +6,8 @@ No imported service defaults or inherited provider/database credentials.
 from __future__ import annotations
 import hashlib
 import os
+import json
+import stat
 from pathlib import Path
 import subprocess
 import migration_smoke as migration
@@ -17,17 +19,28 @@ def require(condition, phase):
     if not condition:
         raise RuntimeError(phase)
 
-def run(test_binary, target, pg_bin, lease_id, report):
+def run(test_binary, target, bundle, pg_bin, lease_id, report):
     cluster = None
     try:
         require(bool(lease_id.strip()), "explicit-accepted-lease-required")
-        require(all(p.is_absolute() for p in (test_binary, target, pg_bin)), "absolute-paths-required")
-        target = target.resolve(strict=True)
+        require(all(p.is_absolute() for p in (test_binary, target, bundle, pg_bin)), "absolute-paths-required")
+        # The shared target is provenance only after RELEASE. Never stat/open it
+        # during native execution: use the owned frozen executable/source bundle.
+        info=bundle.lstat()
+        require(stat.S_ISDIR(info.st_mode) and not bundle.is_symlink() and info.st_uid==os.getuid() and info.st_mode & 0o077==0, "private-owned-bundle-required")
+        marker=bundle/"be39-build.json";marker_info=marker.lstat()
+        require(stat.S_ISREG(marker_info.st_mode) and not marker.is_symlink() and marker_info.st_uid==os.getuid() and marker_info.st_mode & 0o077==0, "private-build-marker-required")
+        pin=json.loads(marker.read_text())
+        require(pin["root_device"]==info.st_dev and pin["root_inode"]==info.st_ino and pin["lease_id"]==lease_id and pin["target"]==str(target), "frozen-lease-binding-mismatch")
+        bundle=bundle.resolve(strict=True)
         test_binary = migration.executable(test_binary)
-        require(test_binary.is_relative_to(target), "binary-outside-accepted-target")
+        require(test_binary.is_relative_to(bundle) and not test_binary.is_relative_to(target), "frozen-executable-required")
+        require(hashlib.sha256(test_binary.read_bytes()).hexdigest()==pin["test_binary_sha256"], "frozen-executable-hash-mismatch")
+        manifest=migration.migration_manifest(bundle/"source"/"backend","concert-service")
+        require({str(k):v for k,v in manifest.items()}==pin["migration_sha384"], "frozen-migration-hash-mismatch")
         tools = {name: migration.executable(pg_bin / name) for name in migration.PG_TOOLS}
         report.update(lease_id=lease_id, test_binary_sha256=hashlib.sha256(test_binary.read_bytes()).hexdigest(),
-                      scope="synthetic roles/owner behavior; actual isolated PostgreSQL identities and ledger")
+                      source_commit=pin["source_commit"], scope="synthetic roles/owner behavior; actual isolated PostgreSQL identities and ledger")
         cluster = migration.Cluster(tools)
         report["owned_directory"] = str(cluster.root)
         cluster.init(); cluster.start()
@@ -36,6 +49,7 @@ def run(test_binary, target, pg_bin, lease_id, report):
         url = cluster.url(DATABASE)
         secrets = (cluster.password, url)
         env = {**cluster.env, "CONCERT_TEST_DATABASE_URL": url,
+               "CONCERT_TEST_FROZEN_BUNDLE": str(bundle),
                "CONCERT_TEST_OWNER_ROOT": str(cluster.root), "CONCERT_TEST_OWNER_TOKEN": cluster.token,
                "CONCERT_TEST_OWNER_IDENTITY": f"{cluster.identity[0]}:{cluster.identity[1]}"}
         def native(label, args, count, ignored=0, success=True):
@@ -51,7 +65,6 @@ def run(test_binary, target, pg_bin, lease_id, report):
                 require(f"test result: ok. {count} passed; 0 failed; {ignored} ignored;".encode() in output, label + "-exact-count")
             else:
                 require(result.returncode != 0, label + "-fault-not-observed")
-        manifest = migration.migration_manifest(ROOT / "backend", "concert-service")
         baseline = {k:v for k,v in manifest.items() if k != 43}
         require(43 in manifest, "0043-required")
         native("published-baseline", ["--ignored", "--exact", "published_checkpoint"], 1)
