@@ -29,10 +29,20 @@ use uuid::Uuid;
 struct Settle {
     reader: Arc<PublicProfileReader>,
     local_unavailable: Arc<AtomicBool>,
+    observed_references: Arc<std::sync::Mutex<Vec<ChildRecoveryReference>>>,
 }
 #[async_trait::async_trait]
 impl ChildIntentSettler for Settle {
     async fn recover_one(&self, reference: &ChildRecoveryReference) -> Result<(), tonic::Status> {
+        {
+            let mut saved = self
+                .observed_references
+                .lock()
+                .map_err(|_| tonic::Status::internal("private reference observation"))?;
+            if !saved.contains(reference) {
+                saved.push(reference.clone());
+            }
+        }
         if self.local_unavailable.load(Ordering::SeqCst)
             && matches!(reference, ChildRecoveryReference::LocalPublic { .. })
         {
@@ -69,6 +79,8 @@ pub(super) struct Fixture {
     child_unavailable: Arc<AtomicBool>,
     pub profile_completion_failures: Arc<AtomicUsize>,
     root_url: String,
+    pub read_fault: Arc<super::profile_read_fault::State>,
+    observed_references: Arc<std::sync::Mutex<Vec<ChildRecoveryReference>>>,
     _auth: owners::Running,
     _friend: owners::Running,
     tasks: Vec<tokio::task::JoinHandle<()>>,
@@ -92,6 +104,30 @@ impl Fixture {
         instance: Uuid,
         deny_auth_complete: bool,
         keys: Arc<ChildRecoveryKeys>,
+    ) -> anyhow::Result<Self> {
+        Self::configured(
+            instance,
+            deny_auth_complete,
+            keys,
+            super::profile_read_fault::Mode::None,
+        )
+        .await
+    }
+    pub async fn with_read_fault(
+        instance: Uuid,
+        mode: super::profile_read_fault::Mode,
+    ) -> anyhow::Result<Self> {
+        let keys = Arc::new(ChildRecoveryKeys::new(
+            ChildRecoveryKey::new("public-native-v1", &[89; 32])?,
+            vec![],
+        )?);
+        Self::configured(instance, true, keys, mode).await
+    }
+    async fn configured(
+        instance: Uuid,
+        deny_auth_complete: bool,
+        keys: Arc<ChildRecoveryKeys>,
+        read_mode: super::profile_read_fault::Mode,
     ) -> anyhow::Result<Self> {
         let auth = environment::pool("auth").await?;
         let friend = environment::pool("friend").await?;
@@ -130,6 +166,9 @@ impl Fixture {
             child_unavailable.clone(),
             profile_completion_failures.clone(),
         );
+        let read_fault = Arc::new(super::profile_read_fault::State::new(read_mode));
+        let profile_service =
+            super::profile_read_fault::ReadFault::new(profile_service, read_fault.clone());
         let listener = tokio::net::TcpListener::bind("127.0.0.1:0").await?;
         let profile_url = format!("https://{}", listener.local_addr()?);
         let profile_task = spawn(
@@ -147,6 +186,7 @@ impl Fixture {
             Some(&environment::tls(Workload::Concert)?),
             owners::signer()?,
         )?);
+        let observed_references = Arc::new(std::sync::Mutex::new(Vec::new()));
         let ledger = PgScopeLedger::new(
             concert.clone(),
             instance,
@@ -154,6 +194,7 @@ impl Fixture {
             Arc::new(Settle {
                 reader: reader.clone(),
                 local_unavailable: child_unavailable.clone(),
+                observed_references: observed_references.clone(),
             }),
         )?;
         // Always construct a NEW registry. Restart never activates/rebuilds a lost scope.
@@ -200,10 +241,20 @@ impl Fixture {
             child_unavailable,
             profile_completion_failures,
             root_url,
+            read_fault,
+            observed_references,
             _auth: running_auth,
             _friend: running_friend,
             tasks: vec![profile_task, root_task],
         })
+    }
+    // Captured only when production drain decrypts and validates its durable row.
+    pub fn observed_child_references(&self) -> anyhow::Result<Vec<ChildRecoveryReference>> {
+        Ok(self
+            .observed_references
+            .lock()
+            .map_err(|_| anyhow::anyhow!("private reference lock"))?
+            .clone())
     }
     pub fn make_child_settlement_unavailable(&self) {
         self.child_unavailable.store(true, Ordering::SeqCst);

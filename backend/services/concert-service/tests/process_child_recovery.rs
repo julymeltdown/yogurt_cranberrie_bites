@@ -13,8 +13,14 @@ mod fixture;
 mod missing_key;
 #[path = "process_child_recovery_support/owners.rs"]
 mod owners;
+#[path = "process_child_recovery_support/profile_read_fault.rs"]
+mod profile_read_fault;
 #[path = "process_child_recovery_support/release.rs"]
 mod release;
+#[path = "process_child_recovery_support/uncertain.rs"]
+mod uncertain;
+#[path = "process_child_recovery_support/uncertain_producer.rs"]
+mod uncertain_producer;
 #[path = "process_child_recovery_support/unfinished.rs"]
 mod unfinished;
 
@@ -734,10 +740,56 @@ async fn restart_with_fixture(
     instance: Uuid,
     f: fixture::Fixture,
 ) -> anyhow::Result<()> {
+    restart_expected(
+        run,
+        instance,
+        &f,
+        RestartExpectation {
+            profile_prepared: 1,
+            profile_terminal: "SETTLED",
+        },
+    )
+    .await?;
+    line("MCR_CR01_RESTART_OBSERVED")
+}
+// CR01/CR04 keep their original strict one-prepared/SETTLED expectations.
+// New cases must explicitly select the physical acquisition outcome.
+#[derive(Clone, Copy)]
+struct RestartExpectation {
+    profile_prepared: usize,
+    profile_terminal: &'static str,
+}
+async fn restart_expected(
+    run: Uuid,
+    instance: Uuid,
+    f: &fixture::Fixture,
+    expected: RestartExpectation,
+) -> anyhow::Result<()> {
     let state = load(run)?;
     anyhow::ensure!(
         state.instance == instance && state.old_pid != std::process::id(),
         "physical restart identity required"
+    );
+    for (name, pool) in [
+        ("auth", &f.auth),
+        ("friend", &f.friend),
+        ("concert", &f.concert),
+        ("profile", &f.profile),
+    ] {
+        let count = if name == "profile" {
+            expected.profile_prepared
+        } else {
+            1
+        };
+        anyhow::ensure!(
+            prepared(pool).await?.len() == count
+                && state.prepared.iter().filter(|p| p.owner == name).count() == count,
+            "exact original prepared guard count mismatch"
+        );
+    }
+    anyhow::ensure!(
+        state.prepared.len() == 3 + expected.profile_prepared,
+        "unexpected original prepared owner"
     );
     let view = authority::RootReadView::decode(state.root_view.as_slice())?;
     let capability = proto::ResponseDelivery::decode(state.delivery.as_slice())?;
@@ -771,7 +823,8 @@ async fn restart_with_fixture(
             "prepared child/owner did not survive exact process death"
         );
     }
-    writers(&f, state.subject, true).await?; // After physical restart, before recovery.
+    local_writer(f, state.subject, true).await?;
+    profile_writer(f, state.subject, expected.profile_prepared == 1).await?;
     old_content_denied(&f, &view, state.subject).await?;
     let publisher = DeliveryPublisher::new(f.ledger.clone(), f.registry.clone());
     anyhow::ensure!(
@@ -822,11 +875,11 @@ async fn restart_with_fixture(
         );
     }
     writers(&f, state.subject, false).await?; // After real durable child ACKs, roll back both writes.
-    let settled: i64 = sqlx::query_scalar(
-        "select count(*) from concert_public_profile_children where state='SETTLED'",
-    )
-    .fetch_one(&f.profile)
-    .await?;
+    let settled: i64 =
+        sqlx::query_scalar("select count(*) from concert_public_profile_children where state=$1")
+            .bind(expected.profile_terminal)
+            .fetch_one(&f.profile)
+            .await?;
     anyhow::ensure!(settled == 1, "actual Profile settled receipt missing");
     invariant(&f, &key).await?;
     old_content_denied(&f, &view, state.subject).await?;
@@ -863,7 +916,6 @@ async fn restart_with_fixture(
         complete(publisher, capability).await? == 14,
         "all four native guards settled must still not complete lost-registry Delivery"
     );
-    line("MCR_CR01_RESTART_OBSERVED")?;
     Ok(())
 }
 #[tokio::test]
@@ -888,4 +940,15 @@ async fn process_root_child_recovery_cr01() -> anyhow::Result<()> {
 #[ignore = "requires owned PG16 and source-bound three-process CR04 controller"]
 async fn process_root_child_recovery_cr04() -> anyhow::Result<()> {
     missing_key::run().await
+}
+
+#[tokio::test]
+#[ignore = "requires owned PG16/mTLS and exact CR02 two-process controller; NOT_RUN"]
+async fn process_root_child_recovery_cr02() -> anyhow::Result<()> {
+    uncertain::run(uncertain::Case::LostReply).await
+}
+#[tokio::test]
+#[ignore = "requires owned PG16/mTLS and exact CR05 two-process controller; NOT_RUN"]
+async fn process_root_child_recovery_cr05() -> anyhow::Result<()> {
+    uncertain::run(uncertain::Case::CancelledBeforeDispatch).await
 }
