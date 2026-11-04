@@ -1,5 +1,5 @@
+use self::concert_deletion::{ConcertDeletionSettings, RuntimeDispatcher};
 use crate::adapters::out::cache::session_store::PgRefreshTokenStore;
-use crate::adapters::out::grpc::user_deletion_dispatcher::GrpcUserDeletionDispatcher;
 use crate::adapters::out::mail::reset_mailer::{
     ConfiguredResetMailer, HttpResetMailer, LoggingResetMailer,
 };
@@ -59,6 +59,7 @@ use std::path::PathBuf;
 use std::sync::{Arc, Mutex};
 use uuid::Uuid;
 
+pub mod concert_deletion;
 mod signing_keys;
 
 pub use signing_keys::{MAX_ROTATION_KEYS, MIN_RSA_MODULUS_BITS};
@@ -520,7 +521,7 @@ pub struct AppState {
         ListDeadLetteredUserDeletionsUseCase<Arc<PgUserDeletionSagaRepository>>,
     pub retry_user_deletion: RetryUserDeletionUseCase<Arc<PgUserDeletionSagaRepository>>,
     pub user_deletion_worker:
-        UserDeletionWorker<Arc<PgUserDeletionSagaRepository>, GrpcUserDeletionDispatcher>,
+        UserDeletionWorker<Arc<PgUserDeletionSagaRepository>, RuntimeDispatcher>,
     pub lifecycle_cleanup_worker: AuthLifecycleCleanupWorker<Arc<PgAuthLifecycleCleanupRepository>>,
     pub metrics: Arc<AuthMetrics>,
     /// Whether the duplicate public application routes are served. False in
@@ -674,9 +675,26 @@ pub async fn connect_pool(config: &AppConfig) -> anyhow::Result<PgPool> {
 }
 
 pub async fn build_state(config: &AppConfig, pool: PgPool) -> anyhow::Result<AppState> {
+    build_state_with_deletion_runtime(config, pool, ConcertDeletionSettings::load()?).await
+}
+
+/// Explicit settings are captured once at startup and reused by the actual worker.
+pub async fn build_state_with_deletion_runtime(
+    config: &AppConfig,
+    pool: PgPool,
+    deletion: ConcertDeletionSettings,
+) -> anyhow::Result<AppState> {
+    deletion.validate(config)?;
     let password_work: PasswordWork =
         Arc::new(AdmittedArgon2PasswordWork::new(config.password_work)?);
-    build_state_with_password_work(config, pool, password_work).await
+    build_state_with_deletion_capabilities(
+        config,
+        pool,
+        password_work,
+        Arc::new(SystemAuthRuntime),
+        deletion,
+    )
+    .await
 }
 
 /// Build the service with an explicit password-work instance.
@@ -700,6 +718,25 @@ pub async fn build_state_with_auth_capabilities(
     password_work: PasswordWork,
     auth_runtime: Arc<dyn AuthRuntimePort>,
 ) -> anyhow::Result<AppState> {
+    build_state_with_deletion_capabilities(
+        config,
+        pool,
+        password_work,
+        auth_runtime,
+        ConcertDeletionSettings::load()?,
+    )
+    .await
+}
+
+/// The same production construction with explicit settings and existing Auth capabilities.
+pub async fn build_state_with_deletion_capabilities(
+    config: &AppConfig,
+    pool: PgPool,
+    password_work: PasswordWork,
+    auth_runtime: Arc<dyn AuthRuntimePort>,
+    deletion: ConcertDeletionSettings,
+) -> anyhow::Result<AppState> {
+    deletion.validate(config)?;
     if config.seed_enabled {
         seed_users(&pool).await?;
     }
@@ -747,15 +784,7 @@ pub async fn build_state_with_auth_capabilities(
         AuthLifecycleCleanupUseCase::new(lifecycle_cleanup_repository, auth_runtime.clone()),
         metrics.clone(),
     );
-    let user_deletion_dispatcher = GrpcUserDeletionDispatcher::connect_with_metrics(
-        config.profile_grpc_endpoint.clone(),
-        config.friend_grpc_endpoint.clone(),
-        config.post_grpc_endpoint.clone(),
-        config.notification_grpc_endpoint.clone(),
-        &config.outbound_identity,
-        config.tls_material.as_ref(),
-        metrics.edge_deadline_metrics(),
-    )?;
+    let user_deletion_dispatcher = deletion.dispatcher(config, metrics.edge_deadline_metrics())?;
     let user_deletion_worker = UserDeletionWorker::new(
         user_deletion_repository.clone(),
         user_deletion_dispatcher,

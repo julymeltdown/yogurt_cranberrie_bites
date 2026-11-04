@@ -1,3 +1,4 @@
+pub mod account_deletion_runtime;
 use crate::adapters::out::{repository::PgConcertRepository, SystemClock, UnavailablePolicy};
 use concert_application::ConcertCore;
 use migration_runtime::{MigrationMode, SchemaProbe};

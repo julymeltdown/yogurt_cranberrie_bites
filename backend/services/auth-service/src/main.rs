@@ -4,7 +4,10 @@ use auth_service::adapters::r#in::grpc::server::{
 use auth_service::adapters::r#in::http;
 use auth_service::adapters::r#in::http::server::{bind_http_listeners, serve_http_listeners};
 use auth_service::adapters::r#in::messaging::mail_outbox_worker::EmailOutboxWorker;
-use auth_service::config::{build_state, connect_pool, AppConfig, RuntimeMode};
+use auth_service::config::{
+    build_state_with_deletion_runtime, concert_deletion::ConcertDeletionSettings, connect_pool,
+    AppConfig, RuntimeMode,
+};
 use axum::{extract::State, http::StatusCode, routing::get, Router};
 use platform::readiness::{Probe, Readiness, DATABASE_PROBE_TIMEOUT};
 use sqlx::PgPool;
@@ -27,6 +30,8 @@ async fn main() -> anyhow::Result<()> {
     let telemetry = platform::telemetry::init("auth-service")?;
     platform::shutdown::install_signal_handlers()?;
     let config = AppConfig::load()?;
+    let deletion_settings = ConcertDeletionSettings::load()?;
+    let deletion_source_registry = deletion_settings.startup_source_registry(&config)?;
     let pool = connect_pool(&config).await?;
     let relationship_verifier = platform::actor_delegation::relationship_read::RelationshipReadVerifier::configured_from_env(platform::grpc_auth::Workload::Auth, &config.actor_delegation)?;
     let relationship_service =
@@ -62,11 +67,14 @@ async fn main() -> anyhow::Result<()> {
             )
         })
         .transpose()?;
-    let deletion_source_service =
-        auth_service::adapters::r#in::grpc::concert_deletion_source::configured_server(
-            pool.clone(),
-            config.tls_material.as_ref(),
-        )?;
+    let deletion_source_service = deletion_source_registry
+        .map(|registry| {
+            auth_service::adapters::r#in::grpc::concert_deletion_source::guarded_server(
+                pool.clone(),
+                registry,
+            )
+        })
+        .transpose()?;
     let readiness = readiness(pool.clone()).with_dependencies(vec![
         auth_service::concert_authority::readiness_probe(authority_store.clone()),
         Probe::grpc(
@@ -99,7 +107,8 @@ async fn main() -> anyhow::Result<()> {
         pool.clone(),
         matches!(config.runtime_mode, RuntimeMode::Production),
     )?;
-    let state = Arc::new(build_state(&config, pool).await?);
+    let state =
+        Arc::new(build_state_with_deletion_runtime(&config, pool, deletion_settings).await?);
     let http_router: Router = http::router(state.clone());
     let metrics_router = http::metrics_router(state.metrics.clone()).merge(health);
     let http_listeners = bind_http_listeners(config.http_addr, config.metrics_addr).await?;
