@@ -190,3 +190,19 @@ source archive: `2d8c7976acd26aa24dd18b861b6ee756be8ef37e763995c6481bdc5b2d4fae3
 Copied checks took less than two seconds total, with no roots remaining,
 peak observed whole growth 176,951,296 bytes and minimum free 39,745,662,976 bytes.
 The fixed source still requires a fresh clean-pin allocation and rerun.
+
+## Explicit prerequisite intake
+
+After full release of the first lease and the object-shape fix, Root explicitly
+transferred the exact five-path prerequisite
+`591d908a85a01fe0a494e04c0109bb0bec64a3e1` for serial `cherry-pick -x`.
+It was imported as `ecb088156b6cc5ff0cfbafdc5682381193b177b7`.
+This is an authorized prerequisite intake, not implicit application ownership:
+Auth/Friend/Notification/Concert `build.rs` now resolve their existing proto
+roots using runtime `contracts_build::proto_root()` instead of the previous
+compile-time manifest directory expressions; Root's accompanying
+`build-script-worktree-paths.md` preserves its observed failure and rationale.
+No cleanup, extra artifact, migration, schema or operation scope is acquired.
+The earlier source pin is superseded for the fresh allocation. Runtime fixture
+migration paths still need actual native verification; the proto-path fix
+alone is not evidence that those baked paths point to the current checkout.
