@@ -68,6 +68,7 @@ def owners(cluster):
 
 def reset_read(gateway, event, token, cluster, process, ordinal):
     target = urlsplit(gateway)
+    prep.private_json(cluster.root / f"cancel-arm-{ordinal}.json", {"gate_next_request":True})
     connection = socket.create_connection((target.hostname, target.port), timeout=5)
     try:
         payload = (json.dumps({"expected_revision":1,"preferences":{"theme":"DANGER","low_power":False,
@@ -164,11 +165,19 @@ def run(args):
         for index,(user,_,token) in enumerate(principals,1):
             value = live.public_json(browser,report,f"principal-{index}-bootstrap",f"/api/concert/events/{report['event_id']}/bootstrap",token)
             require(value["participant"]["user_id"] == user,"real-authenticated-bootstrap")
+        normal = live.public_json(browser,report,"normal-c03-read",f"/api/concert/events/{report['event_id']}/me",principals[0][2])
+        require(normal["user_id"] == principals[0][0],"normal-c03-principal")
+        stop = time.monotonic()+5
+        while pending(stack.cluster):
+            require(time.monotonic()<stop,"normal-c03-must-settle-through-real-HTTP-EOF")
+            time.sleep(0.01)
+        require(stack.cluster.sql("mcr_concert","SELECT count(*) FROM concert_product_owner_scopes WHERE phase='ROOT_FINISHED' AND serialized_at IS NOT NULL AND delivery_completed_at IS NOT NULL AND response_abandoned_at IS NULL") == "1","normal-c03-delivery-remains-distinct")
+        report["normal_public_c03"] = "PASS"
         reset_read(descriptor["gateway_url"],report["event_id"],principals[0][2],stack.cluster,process,1)
         report["positive"] = wait_file(stack.cluster.root / "cancel-recovered.json",process)
         require(pending(stack.cluster) == 0,"positive-zero-prepared-fences")
         report["owners_after_positive"] = owners(stack.cluster)
-        require(all(rows == [{"state":"COMPLETED","settled":True,"count":1}] for rows in report["owners_after_positive"].values()),"both-owner-completes")
+        require(all(rows == [{"state":"COMPLETED","settled":True,"count":2}] for rows in report["owners_after_positive"].values()),"both-owner-completes")
         credentials = json.loads(principals[0][1].read_bytes())
         headers,login = browser.request("fresh-login-after-cancellation","/api/auth/login",{"email":credentials["email"],"password":credentials["password"]})
         require(login["userId"] == principals[0][0] and login["accessToken"] and login["refreshToken"] == "","actual-fresh-login-recovered")

@@ -68,6 +68,7 @@ struct Gate {
     observed: mpsc::UnboundedSender<Observed>,
     calls: AtomicUsize,
     pool: PgPool,
+    root: PathBuf,
 }
 #[async_trait::async_trait]
 impl ParticipantDeliveryPublisher for Gate {
@@ -77,6 +78,10 @@ impl ParticipantDeliveryPublisher for Gate {
     ) -> Result<(product_rpc::proto::ResponseDelivery, ResponseScopeToken), Status> {
         // Do not manufacture a capability or consume/replace a response body.
         let published = self.publisher.publish(scope.clone()).await?;
+        let next = self.calls.load(Ordering::SeqCst) + 1;
+        if !self.root.join(format!("cancel-arm-{next}.json")).is_file() {
+            return Ok(published);
+        }
         let index = self.calls.fetch_add(1, Ordering::SeqCst);
         if index == 2 {
             // Deliberate negative producer fixture: an actual native COMMIT
@@ -278,6 +283,7 @@ pub async fn run() -> anyhow::Result<()> {
             observed: sender,
             calls: AtomicUsize::new(0),
             pool: pool.clone(),
+            root: root.clone(),
         }),
     );
     let participant = guard(
