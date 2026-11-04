@@ -147,6 +147,19 @@ route to its incumbent. Motion and QA07 continue undiverted. Privacy
 owner `01a1a202-3ff2-7a93-95c3-374c6df97281` and Social, with no implicit
 shared-config fix lease or demonstrated product-fault claim.
 
+Privacy owner subsequently reported the discovery residual delivered: source
+`647432c2`, publication `f2ab50a57076fadf53a5278ee73be2e26bc43442`, remote
+HEAD verified and clean checkout. Byte-identical Node selftest rename to
+`live-gate.node.mjs` and explicit `node --test` documentation remove its Vitest
+discovery match; nine Node tests pass. Owned discovery probe reports zero
+privacy/two positive social-sharing matches without executing test modules;
+no config/app/other-lane edits, new goal or review. Evidence remains in
+`docs/mcr/evidence/privacy-frontend/node-discovery.json`, companion logs and
+README. Frozen `62b4bf80` broad diagnostic is unchanged, NOT_GREEN and not
+rerun. This closes the collection residual only; original real-service QA04
+goal remains BLOCKED on actual principal/seed/HTTP/WS/cache handoff, with no
+new acceptance/count or counterpart checks requested.
+
 ## Current QA07 ownership and hourly checkpoint
 
 Community released completed caller developer
