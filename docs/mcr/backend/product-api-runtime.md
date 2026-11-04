@@ -248,3 +248,81 @@ The ledger migration SHA-256 is
 The frozen tree also contained the exact four-file optional cooldown contract
 patch `dc4a3f93`, subsequently published unchanged in `faeb6ed4`; it was recorded
 as an additional source pin, not silently attributed to the root commit.
+
+## SDK2 child recovery and system settlement: `3298445a`
+
+This qualified source incorporates SDK2 `c4ad561cd813f0f7f1e14f21cb2ee90592e09eea`
+and published Auth/Friend stores `dc70d62049d8e8430c88b9ebfc6f071740020538`.
+Root commits `28c8a4ec`, `7e7c8128`, and `d7abfed5` add the required child hooks,
+the owner-only ProducerSettlementService, native rollback resolution, and the
+strict registered-operation/key command-status query. No producer is enabled.
+
+`PgScopeLedger::new` now requires explicit `ChildRecoveryKeys` and an actual
+`ChildIntentSettler`; neither has a successful default. The operator supplies a
+nonzero 32-byte AES-256-GCM key and stable ID, with up to three retained prior keys
+for restart/rotation. Closed `PROFILE_PUBLIC` and `LOCAL_PUBLIC` references are
+encrypted before dispatch/PREPARE. Authenticated encryption binds the instance,
+scope, original binding digest, kind, intent UUID, and key ID. Root checks the
+complete original parent/query identity, local producer instance, bounded native
+identity and closed child identifier before admission. Exact duplicates are
+idempotent; altered references, late admission and more than 202 intents fail.
+Completion evidence is immutable, and a pending child blocks the final durable
+delivery receipt even after root work finishes. Recovery releases no DB
+transaction across the configured owner/native adapter call and records each
+actual successful recovery before moving on. Unknown outcomes retain evidence.
+
+`product_rpc::settlement::ProducerSettlementService::new(ledger, resolver)` exposes
+the canonical lease protocol to authenticated Auth/Friend workloads only, with no
+actor grant, 16 concurrent calls, bounded frames and a separate two-second system
+budget. Scope absence returns unfinished. Transaction requests must match the
+durable full identity, original binding and that owner's registration. A lost
+Track acknowledgement can resolve only through actual native ABORTED evidence;
+other outcomes remain UNKNOWN. The concrete `PgNativeAbortResolver` checks the
+configured Concert system identifier/database OID/full XID. A raw COMMITTED XID
+stays UNKNOWN: a producer-specific same-transaction receipt is still required.
+
+Command status accepts exactly `operation_id` and `idempotency_key`, decodes once,
+rejects duplicates/unknown fields and admits registered mutation operations only.
+Its outer canonical operation remains `getConcertCommandStatus`. No browser
+target field is invented. A producer must recover and reauthorize its actual
+durable target before exposing safe receipt metadata. Gift pending/failed reserve
+correlation and other producer-specific status adapters remain separate work.
+
+Both locked/offline Rust 1.88 builds exited 0: Concert library/runtime/ledger test
+artifacts in 26.67 seconds and the Concert binary in 16.10 seconds. Jobs were 2,
+both profile debug settings 0, incremental 0. There were no warnings in the owned
+product paths; inherited World warnings were retained. The allocated MEDIA target
+was released with zero handles and 70,979,026,944 free bytes before native PG ran.
+Four executables and Cargo JSON receipts pin 1,778 source inputs. Current native
+results, from copied binaries only:
+
+| Check | Result | Limit |
+| --- | --- | --- |
+| Full Concert library | Exit 0, 48 passed, 13 ignored | Includes child cipher/AAD/rotation, command parsing and system policy; ignored native gates are not credited |
+| Product runtime | Exit 0, 4 passed | Closed policy/routes/settings |
+| Actual native ledger | Exit 0, 5 passed | Private PG16.14; partial Track loss, real rollback/full XID, raw commit UNKNOWN, encrypted intent retention and failed/successful recovery orchestration |
+| SQL invariants | 26 cases passed, actual restart and cleanup | Includes immutable child evidence and pending-child delivery denial; expected rejection commands exit 1 |
+| Actual current Concert process | Two expected exit-1 refusals | Before DB/listeners for unsupported product opt-ins |
+| Real owner/root mTLS join | **NOT_RUN by this checkpoint** | Owned by the canonical authority developer's separate native fixture |
+| Real Profile child recovery / HTTP producers | **NOT_RUN** | Required before live feature acceptance |
+| Gift private resource child and before-byte expiry gate | **NOT_RUN** | A subsequent explicitly typed SDK increment; never impersonated as an avatar child |
+
+The native child recovery success case uses an explicit service double to test
+durable orchestration after lost handles; it does not certify actual Profile
+recovery. The ledger settlement test uses caller extensions at the service seam;
+it does not certify workload authentication. The earlier Gateway HTTP delivery
+fixtures remain evidence for `b59fea23`, not a fresh SDK2 HTTP run.
+
+SDK2 copied artifact SHA-256 values:
+
+| Artifact | SHA-256 |
+| --- | --- |
+| Concert library | `3166010494f18796ddf9579b0bcf09826d36cb7c7756a94fa295b9c90cd17a6b` |
+| Product runtime | `b456d2fa62892f90e02706feb355219b9e91867f107dd14bc13fd5cac69964cc` |
+| Native ledger | `304303e4a9f04d4d7c2a0e4e82a8bec2a7894ea077976393f9c3a80673ccf72c` |
+| Concert process | `05138b6d3bd2e20d87f82e045580e1e433f778890eba46c50cdf5186201f6315` |
+
+The private `mcr-product-sdk2-native-20261104` evidence directory contains
+`native-boundaries.result.json`, `native-ledger.result.json`, `source-pins.json`,
+per-artifact Cargo receipts and `target-release.json`. These qualify this exact
+SDK2 composition, not later source changes, deployment or whole-product readiness.
