@@ -282,7 +282,7 @@ pub(crate) async fn receipt_in(
 #[cfg(test)]
 mod tests {
     use super::*;
-    fn binding() -> OwnerBinding {
+    pub(super) fn binding() -> OwnerBinding {
         let event = Uuid::from_u128(2);
         OwnerBinding {
             actor_id: Uuid::from_u128(1),
@@ -302,7 +302,7 @@ mod tests {
             body_digest: [3; 32],
         }
     }
-    fn reference(b: &OwnerBinding) -> serde_json::Value {
+    pub(super) fn reference(b: &OwnerBinding) -> serde_json::Value {
         serde_json::json!({"kind":"GIFT_REQUEST_V1","actor_id":b.actor_id,"event_id":b.event_id,
             "request_id":b.request_id,"operation_id":b.operation,"idempotency_key":Uuid::from_u128(6)})
     }
