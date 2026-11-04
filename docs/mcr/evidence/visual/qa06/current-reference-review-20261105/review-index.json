@@ -1,0 +1,99 @@
+{
+  "task": "QA06",
+  "scope": "Retained ten-surface personal comparison and uncovered Wall criterion preparation",
+  "newNativeJobs": 0,
+  "totalBytes": 1703770,
+  "files": [
+    {
+      "path": "docs/mcr/evidence/visual/qa06/current-reference-review-20261105/assessment.json",
+      "sha256": "4af56f1dfabee3643106c23c5156f3d408afb0aaafd637cb6ee3385d15569435",
+      "bytes": 25421
+    },
+    {
+      "path": "docs/mcr/evidence/visual/qa06/current-reference-review-20261105/comparison.html",
+      "sha256": "f183c40b5ccc2acb3eff5b28918328f4e7ba0043f9faeefdacbb09845ff67b4a",
+      "bytes": 12334
+    },
+    {
+      "path": "docs/mcr/evidence/visual/qa06/current-reference-review-20261105/comparison.md",
+      "sha256": "87e6ea72fedc1e83b0064d98a71e12e900f5b8b26e0e06c7731cf168e9818400",
+      "bytes": 8618
+    },
+    {
+      "path": "docs/mcr/evidence/visual/qa06/current-reference-review-20261105/retained/customize.png",
+      "sha256": "0a17816b3e5bfb6c95e6d0d14aa959dda7d88a79a2d669a656eb0c7f4ee5b2c9",
+      "bytes": 48535
+    },
+    {
+      "path": "docs/mcr/evidence/visual/qa06/current-reference-review-20261105/retained/feed.png",
+      "sha256": "b842355a93b5b773aac450ea651210463a5cece6d4a1c8b28ecef186bf0e3eb0",
+      "bytes": 100600
+    },
+    {
+      "path": "docs/mcr/evidence/visual/qa06/current-reference-review-20261105/retained/gifts.png",
+      "sha256": "177daf956144c30dcc9e792909c1bb5b270812e212501a49029e10019bb9d637",
+      "bytes": 56276
+    },
+    {
+      "path": "docs/mcr/evidence/visual/qa06/current-reference-review-20261105/retained/landing.png",
+      "sha256": "1ca2519f3170287211b1252f33d9a3ba86bd75a4d3f52008c1bc87861ee14983",
+      "bytes": 205572
+    },
+    {
+      "path": "docs/mcr/evidence/visual/qa06/current-reference-review-20261105/retained/login-revised-diagnostic.png",
+      "sha256": "3a7e9bfea2cd3a7763a93535be0e20d66922aa72b8b41077ddc01ebd6b29d190",
+      "bytes": 60398
+    },
+    {
+      "path": "docs/mcr/evidence/visual/qa06/current-reference-review-20261105/retained/login.png",
+      "sha256": "73446b50ba840af84f458b85dd1b0681e89f07466913aa06e78d62b76b87955a",
+      "bytes": 60178
+    },
+    {
+      "path": "docs/mcr/evidence/visual/qa06/current-reference-review-20261105/retained/map-forced-focus-parade-390.png",
+      "sha256": "ee6e728bfcc3b87661ae606894e714a4ee46c9ed73db880f3dfa1d12c09662a0",
+      "bytes": 211201
+    },
+    {
+      "path": "docs/mcr/evidence/visual/qa06/current-reference-review-20261105/retained/map-stage-placement-parade-390.png",
+      "sha256": "10c4f85fd8293e3132d84aa5ddd18c9e21a66b01f4b3ec7b70061982e78ebf69",
+      "bytes": 227460
+    },
+    {
+      "path": "docs/mcr/evidence/visual/qa06/current-reference-review-20261105/retained/map.png",
+      "sha256": "d2b3cbc7d77c12f8538919d339c3ece8ffaa085d0710c5c3d16bd62c40d38092",
+      "bytes": 223205
+    },
+    {
+      "path": "docs/mcr/evidence/visual/qa06/current-reference-review-20261105/retained/me.png",
+      "sha256": "0d63de1c562724af09594d0b5de846fd476b684190174ad6de4124d2aef16d22",
+      "bytes": 58546
+    },
+    {
+      "path": "docs/mcr/evidence/visual/qa06/current-reference-review-20261105/retained/meet.png",
+      "sha256": "7197520baaea4ef1f8ac79efea3607a013b1e12aea18f54aea9b0fc0a0ec36d2",
+      "bytes": 74342
+    },
+    {
+      "path": "docs/mcr/evidence/visual/qa06/current-reference-review-20261105/retained/wall.png",
+      "sha256": "bdd5c3dec50e647bf01a69befed0cbb72bd237133e4401ab870a93fd3f244fbf",
+      "bytes": 40085
+    },
+    {
+      "path": "docs/mcr/evidence/visual/qa06/current-reference-review-20261105/retained/world.png",
+      "sha256": "10ecb9ae3f24ddc97872d9a5b2e72d253f93fc4527220d7bc229efacd83a227e",
+      "bytes": 229856
+    },
+    {
+      "path": "docs/mcr/evidence/visual/qa06/current-reference-review-20261105/retained-inputs.json",
+      "sha256": "e6fae5276874595ebc6c9d0061c60784e07eba8be0ccbcef22f962cd78d67403",
+      "bytes": 12611
+    },
+    {
+      "path": "docs/mcr/frontend/mobile-visual-qa06.md",
+      "sha256": "b9d63314db23e65de6631e6056d04d5baf76549204c50090d7a5a6364fc9964a",
+      "bytes": 48532
+    }
+  ],
+  "originalGoalUnfinished": true
+}
