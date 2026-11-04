@@ -15,16 +15,16 @@ test('IN03 real HTTP controller preparation (full IN03 remains NOT_RUN)', async 
       // Dynamic imports use the separately admitted same-origin deployment; never inject tokens/session state.
       const summary = await page.evaluate(async ({ config, role }) => {
         const entryPath = '/e2e/real/social/real-entry.ts'
-        const { openRealSocial } = await import(/* @vite-ignore */ entryPath)
+        const { openRealSocial, waitForController } = await import(/* @vite-ignore */ entryPath)
         const producer = await import(/* @vite-ignore */ config.availabilityModule)
         if (producer.sourceRevision !== config.availabilityRevision || typeof producer.availability !== 'function') throw new Error('NOT_RUN: availability producer revision/export mismatch')
         const harness = await openRealSocial({ ...config.principals[role], eventId: config.eventId }, producer.availability)
         try {
           const { owner, sharing } = harness
           for (const service of ['people', 'feed', 'inbox', 'requests']) if (!owner.available(service)) throw new Error('NOT_RUN: social service unavailable')
-          owner.people.start(); await owner.people.load()
-          owner.feed.start(); await owner.feed.loadFeed()
-          owner.inbox.start(); await owner.inbox.load()
+          owner.people.start(); await waitForController(() => owner.people.read().page.phase, owner.people.subscribe)
+          owner.feed.start(); await waitForController(() => owner.feed.read().feed.phase, owner.feed.subscribe)
+          owner.inbox.start(); await waitForController(() => owner.inbox.read().phase, owner.inbox.subscribe)
           if (role === 'restricted') {
             await sharing.loadRequest(config.resources.approvedRequestId)
             if (await sharing.revealHandle('INSTAGRAM') || sharing.read().secret.data) throw new Error('Restricted principal revealed a private handle')

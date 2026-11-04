@@ -15,9 +15,9 @@ beforeEach(() => {
 afterEach(() => { world.dispose(); vi.restoreAllMocks(); vi.unstubAllGlobals() })
 it('deterministic two-principal discovery/feed/comment/consent/decision/reveal/revoke uses canonical consumers', async () => {
   const a = world.actor(), b = world.actor(recipient)
-  a.owner.people.start(); await a.owner.people.load()
+  a.owner.people.start(); await vi.waitFor(() => expect(a.owner.people.read().page.phase).not.toBe('loading'))
   expect(a.owner.people.read().page.data?.items[0]?.intro_id).toBe(request.intro_id)
-  a.owner.feed.start(); await a.owner.feed.loadFeed()
+  a.owner.feed.start(); await vi.waitFor(() => expect(a.owner.feed.read().feed.phase).toBe('ready'))
   const post = readJSON('contracts/fixtures/domain/public-post.json')
   expect(a.owner.feed.read().feed.data?.items[0]?.post_id).toBe(post.post_id)
   a.owner.thread.start(); a.owner.thread.select(post.post_id)
@@ -41,7 +41,7 @@ it('deterministic two-principal discovery/feed/comment/consent/decision/reveal/r
   expect(world.calls.some(c => c.path.endsWith('/reveal'))).toBe(false)
   expect(await a.sharing.revealHandle('INSTAGRAM')).toBe(true)
   expect(a.sharing.read().secret.data?.handle).toBe('synthetic_private_name')
-  a.owner.inbox.start(); await a.owner.inbox.load(); await a.owner.inbox.loadUnreadCount()
+  a.owner.inbox.start(); await vi.waitFor(() => expect(a.owner.inbox.read().phase).toBe('ready')); await a.owner.inbox.loadUnreadCount()
   expect(a.owner.inbox.read().rows).toHaveLength(1)
   expect(a.owner.inbox.read().count.total).toBe(1)
   expect(await a.sharing.revokeRequest()).toBe(true)
@@ -53,9 +53,11 @@ it.each(['block', 'consent-revoked', 'consent-expired', 'suspended', 'event-clos
   world.approve(); const a = world.actor(); await a.sharing.loadRequest(request.request_id)
   let resolve!: (r: Response) => void
   const delayed = new Promise<Response>(r => { resolve = r })
-  world.override(r => r.url.endsWith('/reveal') ? delayed : undefined)
-  const flight = a.sharing.revealHandle('INSTAGRAM')
+  world.override(r => new URL(r.url).pathname.endsWith('/reveal') ? delayed : undefined)
+  let settled = false
+  const flight = a.sharing.revealHandle('INSTAGRAM').finally(() => { settled = true })
   await vi.waitFor(() => expect(world.calls.some(c => c.path.endsWith('/reveal'))).toBe(true))
+  expect(settled).toBe(false); expect(a.sharing.read().secret.data).toBeNull()
   a.auth.queryClient.setQueryData(privateQueryKey({ ...a.scope, userId: requester }, 'social-reveal', [request.request_id]), { handle: 'synthetic_cache' })
   a.owner.notifyPolicy({ scope: a.scope, reason })
   expect(a.owner.isDisposed()).toBe(true)
@@ -72,7 +74,7 @@ it('foreign policy scope cannot invalidate the current owner; no remote event pr
 })
 it.each([401, 403, 404, 409, 503])('denied HTTP %s sensitive read does not replay, refresh or expose a name', async status => {
   world.approve(); const a = world.actor(); await a.sharing.loadRequest(request.request_id)
-  world.override(r => r.url.endsWith('/reveal') ? Response.json({ code: 'PERMISSION_DENIED', message: 'Denied', details: { reason: 'PERMISSION_DENIED' } }, { status }) : undefined)
+  world.override(r => new URL(r.url).pathname.endsWith('/reveal') ? Response.json({ code: 'PERMISSION_DENIED', message: 'Denied', details: { reason: 'PERMISSION_DENIED' } }, { status }) : undefined)
   expect(await a.sharing.revealHandle('INSTAGRAM')).toBe(false)
   expect(a.sharing.read().secret.data).toBeNull()
   expect(world.calls.filter(c => c.path.endsWith('/reveal'))).toHaveLength(1)
@@ -80,15 +82,15 @@ it.each([401, 403, 404, 409, 503])('denied HTTP %s sensitive read does not repla
 })
 it('expiry and wrong response context fail closed without widening a grant', async () => {
   world.approve(); const a = world.actor(); await a.sharing.loadRequest(request.request_id)
-  world.override(r => r.url.endsWith('/reveal') ? Response.json({ ...secret(), owner_id: requester }) : undefined)
+  world.override(r => new URL(r.url).pathname.endsWith('/reveal') ? Response.json({ ...secret(), owner_id: requester }) : undefined)
   expect(await a.sharing.revealHandle('INSTAGRAM')).toBe(false)
   world.setNow(Date.parse(request.expires_at)); const count = world.calls.length
   expect(await a.sharing.revealHandle('INSTAGRAM')).toBe(false); expect(world.calls).toHaveLength(count)
 })
 it('restricted discovery cannot retain a previous public intro or infer age', async () => {
-  const a = world.actor(); a.owner.people.start(); await a.owner.people.load()
+  const a = world.actor(); a.owner.people.start(); await vi.waitFor(() => expect(a.owner.people.read().page.phase).not.toBe('loading'))
   expect(a.owner.people.read().page.data?.items).toHaveLength(1)
-  world.override(r => r.url.endsWith('/intros') ? Response.json({ code: 'PERMISSION_DENIED', message: 'Restricted', details: { reason: 'PERMISSION_DENIED' } }, { status: 403 }) : undefined)
+  world.override(r => new URL(r.url).pathname.endsWith('/intros') ? Response.json({ code: 'PERMISSION_DENIED', message: 'Restricted', details: { reason: 'PERMISSION_DENIED' } }, { status: 403 }) : undefined)
   await a.owner.people.load(); expect(a.owner.people.read().page.data).toBeNull()
 })
 it('confirmed synthetic HTTP block uses the retained safety policy cleanup', async () => {
@@ -117,8 +119,8 @@ it('foreign event discovery and foreign actor unread count fail closed in their 
     if (r.url.endsWith('/unread-count')) return Response.json({ actor_id: recipient, event_id: request.event_id, unread_total: 1, as_of: '2026-11-07T09:00:00Z' })
     return undefined
   })
-  a.owner.people.start(); await a.owner.people.load()
+  a.owner.people.start(); await vi.waitFor(() => expect(a.owner.people.read().page.phase).not.toBe('loading'))
   expect(a.owner.people.read().page.phase).toBe('error'); expect(a.owner.people.read().page.data).toBeNull()
-  a.owner.inbox.start(); await a.owner.inbox.loadUnreadCount()
+  a.owner.inbox.start(); await a.owner.inbox.loadUnreadCount(); await vi.waitFor(() => expect(a.owner.inbox.read().count.phase).not.toBe('loading'))
   expect(a.owner.inbox.read().count.phase).toBe('error'); expect(a.owner.inbox.read().count.total).toBeNull()
 })

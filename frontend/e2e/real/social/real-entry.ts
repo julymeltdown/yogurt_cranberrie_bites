@@ -4,6 +4,19 @@ import { canonicalSharingRequests } from '../../../src/app/social-composition/sh
 import type { SocialContext, SocialAvailabilityPort } from '../../../src/app/social-composition/ports'
 import { createSocialSharingController } from '../../../src/features/social-sharing/model/controller'
 
+/** start() launches reads; awaiting an overlapping guarded load() does not await that flight. */
+export function waitForController(phase: () => string, subscribe: (listener: () => void) => () => void): Promise<void> {
+  return new Promise((resolve, reject) => {
+    let stop = () => {}
+    const timer = setTimeout(() => { stop(); reject(new Error('NOT_RUN: social controller did not settle')) }, 18000)
+    const check = () => {
+      if (['idle', 'loading'].includes(phase())) return
+      clearTimeout(timer); stop(); resolve()
+    }
+    stop = subscribe(check); check()
+  })
+}
+
 /** Standalone controller harness. Does not mount default App, Phaser, World or a WebSocket. */
 export async function openRealSocial(input: { eventId: string; userId: string; email: string; password: string },
   availability: (context: SocialContext) => SocialAvailabilityPort) {
