@@ -1,0 +1,25 @@
+node:internal/modules/run_main:107
+    triggerUncaughtException(
+    ^
+
+AssertionError [ERR_ASSERTION]: Offscreen media withdrawal changed Feed geometry
++ actual - expected
+
++ [
++   'feed-360x843',
++   'feed-390x843',
++   'feed-430x843',
++   'feed-390x480'
++ ]
+- []
+
+    at file://$WORKTREE/frontend/src/app/feed-entry/__tests__/native.mjs:149:10 {
+  generatedMessage: false,
+  code: 'ERR_ASSERTION',
+  actual: [ 'feed-360x843', 'feed-390x843', 'feed-430x843', 'feed-390x480' ],
+  expected: [],
+  operator: 'deepStrictEqual',
+  diff: 'simple'
+}
+
+Node.js v24.22.2

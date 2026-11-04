@@ -1,0 +1,21 @@
+node:internal/modules/run_main:107
+    triggerUncaughtException(
+    ^
+
+AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
++ actual - expected
+
++ 'rgb(245, 217, 223)'
+- 'rgb(248, 245, 236)'
+         ^
+
+    at file://<WORKTREE>/frontend/src/app/feed-entry/__tests__/native.mjs:53:14 {
+  generatedMessage: true,
+  code: 'ERR_ASSERTION',
+  actual: 'rgb(245, 217, 223)',
+  expected: 'rgb(248, 245, 236)',
+  operator: 'strictEqual',
+  diff: 'simple'
+}
+
+Node.js v24.22.2

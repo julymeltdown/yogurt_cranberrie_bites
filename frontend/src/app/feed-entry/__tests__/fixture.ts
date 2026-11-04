@@ -9,14 +9,15 @@ import { createFeedSocialPorts } from '../production'
 export type FixtureMode = 'loaded' | 'no-readiness' | 'denied-media'
 export const inputRevision = 'eb6e81bd7e5fbeb15613a45e00f1fe896e49f0da'
 export const fixedNow = Date.parse('2026-11-04T12:00:00Z')
+export const selectedPin = Object.freeze({ manifest_id: selected.manifest_id, manifest_version: selected.manifest_version, content_hash: selected.content_hash })
 export const id = (tail: number) => `00000000-0000-4000-8000-${String(tail).padStart(12, '0')}`
 export const mediaInputs = Object.freeze({
   [id(75)]: { path: '/reference-feed-media-v1/reference-card-1.png', sha256: 'a28db3162d4fe822b17d3228ad82866d4eeb0e2524fb606d469ccd925fd7385d', width: 197, height: 67 },
   [id(76)]: { path: '/reference-feed-media-v1/reference-card-2.png', sha256: '2c5863585bce002be0ea0b057f4927d67c6f99e97cc7f5edee6ba9c47589ffdd', width: 197, height: 46 },
 })
-export const rows = parse<{ items: readonly Post[]; next_cursor: null }>('FeedPage', { items: [
-  { ...postInput, post_id: id(92), author: { ...postInput.author, display_name: 'Encore fan', avatar: { revision: 1, config: selected.presets[2]!.config } }, text: 'SEE YOU FOR THE ENCORE!\nAnyone swapping favourite songs?', created_at: new Date(fixedNow - 7_200_000).toISOString(), links: [], media_ids: [id(75)], reaction_count: 42, comment_count: 7 },
-  { ...postInput, post_id: id(91), author: { ...postInput.author, display_name: 'Paper parade', avatar: { revision: 1, config: selected.presets[3]!.config } }, text: 'Trading memories from tonight.\nWhich moment are you keeping?', created_at: new Date(fixedNow - 14_400_000).toISOString(), links: [], media_ids: [id(76)], reaction_count: 27, comment_count: 5 },
+export const rows = parse<{ items: readonly Post[]; next_cursor: null }>('Domain_feed_FeedPage', { items: [
+  { ...postInput, event_id: eventId, post_id: id(92), author: { ...postInput.author, display_name: 'Encore fan', avatar: { revision: 1, config: selected.presets[2]!.config } }, text: 'SEE YOU FOR THE ENCORE!\nAnyone swapping favourite songs?', created_at: new Date(fixedNow - 7_200_000).toISOString(), links: [], media_ids: [id(75)], reaction_count: 42, comment_count: 7 },
+  { ...postInput, event_id: eventId, post_id: id(91), author: { ...postInput.author, display_name: 'Paper parade', avatar: { revision: 1, config: selected.presets[3]!.config } }, text: 'Trading memories from tonight.\nWhich moment are you keeping?', created_at: new Date(fixedNow - 14_400_000).toISOString(), links: [], media_ids: [id(76)], reaction_count: 27, comment_count: 5 },
 ], next_cursor: null }).items
 
 async function sha(value: BufferSource) {
@@ -39,6 +40,8 @@ async function bootstrap() {
 export async function createFeedFixture(mode: FixtureMode) {
   const body = await bootstrap(), login = authResponse(), originalFetch = globalThis.fetch.bind(globalThis)
   const calls: { method: string; path: string; status: number }[] = []
+  const denied = () => Response.json({ code: 'PERMISSION_DENIED', message: 'Synthetic media access denied', details: { reason: 'PERMISSION_DENIED' } }, { status: 403, headers: { 'Cache-Control': 'no-store' } })
+  const unavailable = () => Response.json({ code: 'UNAVAILABLE', message: 'Synthetic dependency unavailable', details: { reason: 'DEPENDENCY_UNAVAILABLE' } }, { status: 503 })
   let disposed = false
   const transport: typeof fetch = async (input, init) => {
     const request = input instanceof Request ? input : new Request(input, init)
@@ -48,10 +51,10 @@ export async function createFeedFixture(mode: FixtureMode) {
     if (path === '/api/auth/capabilities') return done(Response.json(capabilities()))
     if (path === '/api/auth/login' && request.method === 'POST') return done(Response.json(login))
     if (path === '/api/auth/logout' && request.method === 'POST') return done(new Response(null, { status: 204 }))
-    if (request.headers.get('authorization') !== `Bearer ${login.accessToken}`) return done(new Response(null, { status: 403 }))
+    if (request.headers.get('authorization') !== `Bearer ${login.accessToken}`) return done(denied())
     const base = `/api/concert/events/${eventId}`
     if (path === `${base}/bootstrap`) return done(Response.json(body))
-    if (request.method !== 'GET') return done(new Response(null, { status: 503 }))
+    if (request.method !== 'GET') return done(unavailable())
     if (path === `${base}/feed`) {
       const filter = new URL(request.url).searchParams.get('filter')
       return done(Response.json({ items: !filter || ['ALL', 'WITH_MEDIA'].includes(filter) ? rows : [], next_cursor: null }))
@@ -62,7 +65,7 @@ export async function createFeedFixture(mode: FixtureMode) {
     const match = /^\/media\/([^/]+)(\/content)?$/.exec(path.slice(base.length))
     const media = match?.[1] ? mediaInputs[match[1]] : undefined
     if (path.startsWith(base) && media && match) {
-      if (mode === 'denied-media') return done(new Response(null, { status: 403 }))
+      if (mode === 'denied-media') return done(denied())
       if (!match[2]) return done(Response.json({ media_id: match[1], state: 'READY', revision: 1, width: media.width, height: media.height,
         content_type: 'image/png', purpose: 'POST', read_path: `${base}/media/${match[1]}/content` }))
       const response = await originalFetch(media.path, { signal: request.signal, cache: 'no-store' })
@@ -71,7 +74,7 @@ export async function createFeedFixture(mode: FixtureMode) {
       if (await sha(bytes) !== media.sha256) throw new Error('Approved fixture media hash mismatch')
       return done(new Response(bytes, { headers: { 'Content-Type': 'image/png', 'Cache-Control': 'no-store' } }))
     }
-    return done(new Response(null, { status: 503 }))
+    return done(unavailable())
   }
   const auth = createSessionController({ eventId, fetch: transport, qualifiedRefresh: false, cookiePolicy: isolatedCookiePolicy() })
   const listeners = new Set<() => void>()

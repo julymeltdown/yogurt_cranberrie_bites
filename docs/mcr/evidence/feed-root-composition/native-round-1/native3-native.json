@@ -1,0 +1,752 @@
+{
+  "synthetic": true,
+  "browser": "156.0.8078.80",
+  "liveIN03": "NOT_RUN",
+  "results": [
+    {
+      "name": "feed-360x843",
+      "viewport": {
+        "width": 360,
+        "height": 843
+      },
+      "regions": {
+        ".world-shell": {
+          "x": 0,
+          "y": 0,
+          "width": 360,
+          "height": 843,
+          "scrollHeight": 835,
+          "clientHeight": 835,
+          "background": "rgb(255, 243, 236)",
+          "backgroundImage": "none",
+          "overflowY": "hidden",
+          "objectFit": "fill"
+        },
+        ".shell-panel": {
+          "x": 6,
+          "y": 4,
+          "width": 348,
+          "height": 835,
+          "scrollHeight": 829,
+          "clientHeight": 829,
+          "background": "rgb(233, 225, 212)",
+          "backgroundImage": "none",
+          "overflowY": "visible",
+          "objectFit": "fill"
+        },
+        ".mcr-chrome-panel-header": {
+          "x": 9,
+          "y": 7,
+          "width": 342,
+          "height": 48.921875,
+          "scrollHeight": 44,
+          "clientHeight": 43,
+          "background": "rgb(37, 16, 23)",
+          "backgroundImage": "linear-gradient(to right, rgb(37, 16, 23) 7px, rgba(0, 0, 0, 0) 0px, rgba(0, 0, 0, 0) calc(100% - 133px), rgb(37, 16, 23) 0px), linear-gradient(rgb(37, 16, 23) 10px, rgb(233, 225, 212) 0px, rgb(233, 225, 212) 14px, rgba(0, 0, 0, 0) 0px, rgba(0, 0, 0, 0) 31px, rgb(233, 225, 212) 0px, rgb(233, 225, 212) 35px, rgb(37, 16, 23) 0px), linear-gradient(to right, rgb(37, 16, 23) 7px, rgb(233, 225, 212) 0px, rgb(233, 225, 212) 11px, rgb(37, 16, 23) 0px, rgb(37, 16, 23) calc(100% - 137px), rgb(233, 225, 212) 0px, rgb(233, 225, 212) calc(100% - 133px), rgb(37, 16, 23) 0px)",
+          "overflowY": "visible",
+          "objectFit": "fill"
+        },
+        ".shell-panel-body": {
+          "x": 9,
+          "y": 55.921875,
+          "width": 342,
+          "height": 780.078125,
+          "scrollHeight": 799,
+          "clientHeight": 780,
+          "background": "rgb(248, 245, 236)",
+          "backgroundImage": "none",
+          "overflowY": "auto",
+          "objectFit": "fill"
+        },
+        ".event-feed": {
+          "x": 15,
+          "y": 61.921875,
+          "width": 330,
+          "height": 787.3125,
+          "scrollHeight": 787,
+          "clientHeight": 787,
+          "background": "rgb(248, 245, 236)",
+          "backgroundImage": "none",
+          "overflowY": "visible",
+          "objectFit": "fill"
+        },
+        ".feed-footer": {
+          "x": 15,
+          "y": 788.234375,
+          "width": 330,
+          "height": 61,
+          "scrollHeight": 60,
+          "clientHeight": 60,
+          "background": "rgb(248, 245, 236)",
+          "backgroundImage": "none",
+          "overflowY": "visible",
+          "objectFit": "fill"
+        }
+      },
+      "images": [
+        {
+          "x": 30,
+          "y": 284.84375,
+          "width": 220,
+          "height": 74.8125,
+          "scrollHeight": 75,
+          "clientHeight": 75,
+          "background": "rgba(0, 0, 0, 0)",
+          "backgroundImage": "none",
+          "overflowY": "clip",
+          "objectFit": "contain",
+          "naturalWidth": 197,
+          "naturalHeight": 67,
+          "blob": true
+        },
+        {
+          "x": 30,
+          "y": 626.21875,
+          "width": 220,
+          "height": 51.359375,
+          "scrollHeight": 51,
+          "clientHeight": 51,
+          "background": "rgba(0, 0, 0, 0)",
+          "backgroundImage": "none",
+          "overflowY": "clip",
+          "objectFit": "contain",
+          "naturalWidth": 197,
+          "naturalHeight": 46,
+          "blob": true
+        }
+      ],
+      "authors": [
+        {
+          "x": 26,
+          "y": 137.921875,
+          "width": 48,
+          "height": 48,
+          "scrollHeight": 46,
+          "clientHeight": 46,
+          "background": "rgb(221, 210, 193)",
+          "backgroundImage": "none",
+          "overflowY": "hidden",
+          "objectFit": "fill",
+          "canvas": {
+            "x": 27,
+            "y": 138.921875,
+            "width": 46,
+            "height": 46,
+            "scrollHeight": 46,
+            "clientHeight": 46,
+            "background": "rgba(0, 0, 0, 0)",
+            "backgroundImage": "none",
+            "overflowY": "clip",
+            "objectFit": "contain"
+          },
+          "ready": "ready",
+          "paintedPixels": 2110
+        },
+        {
+          "x": 26,
+          "y": 467.578125,
+          "width": 48,
+          "height": 48,
+          "scrollHeight": 46,
+          "clientHeight": 46,
+          "background": "rgb(221, 210, 193)",
+          "backgroundImage": "none",
+          "overflowY": "hidden",
+          "objectFit": "fill",
+          "canvas": {
+            "x": 27,
+            "y": 468.578125,
+            "width": 46,
+            "height": 46,
+            "scrollHeight": 46,
+            "clientHeight": 46,
+            "background": "rgba(0, 0, 0, 0)",
+            "backgroundImage": "none",
+            "overflowY": "clip",
+            "objectFit": "contain"
+          },
+          "ready": "ready",
+          "paintedPixels": 2304
+        }
+      ],
+      "horizontalOverflow": false,
+      "calls": [
+        {
+          "method": "GET",
+          "path": "/api/auth/capabilities",
+          "status": 200
+        },
+        {
+          "method": "POST",
+          "path": "/api/auth/login",
+          "status": 200
+        },
+        {
+          "method": "GET",
+          "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/bootstrap",
+          "status": 200
+        },
+        {
+          "method": "GET",
+          "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/feed",
+          "status": 200
+        },
+        {
+          "method": "GET",
+          "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/notices",
+          "status": 200
+        },
+        {
+          "method": "GET",
+          "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/media/00000000-0000-4000-8000-000000000075",
+          "status": 200
+        },
+        {
+          "method": "GET",
+          "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/media/00000000-0000-4000-8000-000000000076",
+          "status": 200
+        },
+        {
+          "method": "GET",
+          "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/media/00000000-0000-4000-8000-000000000075/content",
+          "status": 200
+        },
+        {
+          "method": "GET",
+          "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/media/00000000-0000-4000-8000-000000000076/content",
+          "status": 200
+        }
+      ],
+      "blobUrls": 3,
+      "characters": {
+        "disposed": false,
+        "leases": 3,
+        "pending": 0,
+        "cleanupFailures": 0,
+        "decodedAtlases": 1
+      },
+      "qualification": {
+        "synthetic": true,
+        "mode": "loaded",
+        "inputRevision": "eb6e81bd7e5fbeb15613a45e00f1fe896e49f0da",
+        "mediaInputs": {
+          "00000000-0000-4000-8000-000000000075": {
+            "path": "/reference-feed-media-v1/reference-card-1.png",
+            "sha256": "a28db3162d4fe822b17d3228ad82866d4eeb0e2524fb606d469ccd925fd7385d",
+            "width": 197,
+            "height": 67
+          },
+          "00000000-0000-4000-8000-000000000076": {
+            "path": "/reference-feed-media-v1/reference-card-2.png",
+            "sha256": "2c5863585bce002be0ea0b057f4927d67c6f99e97cc7f5edee6ba9c47589ffdd",
+            "width": 197,
+            "height": 46
+          }
+        },
+        "liveIN03": "NOT_RUN",
+        "world": "DISABLED",
+        "selectedStatic": "1.1.0"
+      },
+      "composerReachable": true,
+      "readinessWithdrawal": true,
+      "disposedBlobUrls": 0
+    },
+    {
+      "name": "feed-390x843",
+      "viewport": {
+        "width": 390,
+        "height": 843
+      },
+      "regions": {
+        ".world-shell": {
+          "x": 0,
+          "y": 0,
+          "width": 390,
+          "height": 843,
+          "scrollHeight": 835,
+          "clientHeight": 835,
+          "background": "rgb(255, 243, 236)",
+          "backgroundImage": "none",
+          "overflowY": "hidden",
+          "objectFit": "fill"
+        },
+        ".shell-panel": {
+          "x": 6,
+          "y": 4,
+          "width": 378,
+          "height": 835,
+          "scrollHeight": 829,
+          "clientHeight": 829,
+          "background": "rgb(233, 225, 212)",
+          "backgroundImage": "none",
+          "overflowY": "visible",
+          "objectFit": "fill"
+        },
+        ".mcr-chrome-panel-header": {
+          "x": 9,
+          "y": 7,
+          "width": 372,
+          "height": 48.921875,
+          "scrollHeight": 44,
+          "clientHeight": 43,
+          "background": "rgb(37, 16, 23)",
+          "backgroundImage": "linear-gradient(to right, rgb(37, 16, 23) 7px, rgba(0, 0, 0, 0) 0px, rgba(0, 0, 0, 0) calc(100% - 133px), rgb(37, 16, 23) 0px), linear-gradient(rgb(37, 16, 23) 10px, rgb(233, 225, 212) 0px, rgb(233, 225, 212) 14px, rgba(0, 0, 0, 0) 0px, rgba(0, 0, 0, 0) 31px, rgb(233, 225, 212) 0px, rgb(233, 225, 212) 35px, rgb(37, 16, 23) 0px), linear-gradient(to right, rgb(37, 16, 23) 7px, rgb(233, 225, 212) 0px, rgb(233, 225, 212) 11px, rgb(37, 16, 23) 0px, rgb(37, 16, 23) calc(100% - 137px), rgb(233, 225, 212) 0px, rgb(233, 225, 212) calc(100% - 133px), rgb(37, 16, 23) 0px)",
+          "overflowY": "visible",
+          "objectFit": "fill"
+        },
+        ".shell-panel-body": {
+          "x": 9,
+          "y": 55.921875,
+          "width": 372,
+          "height": 780.078125,
+          "scrollHeight": 799,
+          "clientHeight": 780,
+          "background": "rgb(248, 245, 236)",
+          "backgroundImage": "none",
+          "overflowY": "auto",
+          "objectFit": "fill"
+        },
+        ".event-feed": {
+          "x": 15,
+          "y": 61.921875,
+          "width": 360,
+          "height": 787.3125,
+          "scrollHeight": 787,
+          "clientHeight": 787,
+          "background": "rgb(248, 245, 236)",
+          "backgroundImage": "none",
+          "overflowY": "visible",
+          "objectFit": "fill"
+        },
+        ".feed-footer": {
+          "x": 15,
+          "y": 788.234375,
+          "width": 360,
+          "height": 61,
+          "scrollHeight": 60,
+          "clientHeight": 60,
+          "background": "rgb(248, 245, 236)",
+          "backgroundImage": "none",
+          "overflowY": "visible",
+          "objectFit": "fill"
+        }
+      },
+      "images": [
+        {
+          "x": 30,
+          "y": 284.84375,
+          "width": 220,
+          "height": 74.8125,
+          "scrollHeight": 75,
+          "clientHeight": 75,
+          "background": "rgba(0, 0, 0, 0)",
+          "backgroundImage": "none",
+          "overflowY": "clip",
+          "objectFit": "contain",
+          "naturalWidth": 197,
+          "naturalHeight": 67,
+          "blob": true
+        },
+        {
+          "x": 30,
+          "y": 626.21875,
+          "width": 220,
+          "height": 51.359375,
+          "scrollHeight": 51,
+          "clientHeight": 51,
+          "background": "rgba(0, 0, 0, 0)",
+          "backgroundImage": "none",
+          "overflowY": "clip",
+          "objectFit": "contain",
+          "naturalWidth": 197,
+          "naturalHeight": 46,
+          "blob": true
+        }
+      ],
+      "authors": [
+        {
+          "x": 26,
+          "y": 137.921875,
+          "width": 48,
+          "height": 48,
+          "scrollHeight": 46,
+          "clientHeight": 46,
+          "background": "rgb(221, 210, 193)",
+          "backgroundImage": "none",
+          "overflowY": "hidden",
+          "objectFit": "fill",
+          "canvas": {
+            "x": 27,
+            "y": 138.921875,
+            "width": 46,
+            "height": 46,
+            "scrollHeight": 46,
+            "clientHeight": 46,
+            "background": "rgba(0, 0, 0, 0)",
+            "backgroundImage": "none",
+            "overflowY": "clip",
+            "objectFit": "contain"
+          },
+          "ready": "ready",
+          "paintedPixels": 2110
+        },
+        {
+          "x": 26,
+          "y": 467.578125,
+          "width": 48,
+          "height": 48,
+          "scrollHeight": 46,
+          "clientHeight": 46,
+          "background": "rgb(221, 210, 193)",
+          "backgroundImage": "none",
+          "overflowY": "hidden",
+          "objectFit": "fill",
+          "canvas": {
+            "x": 27,
+            "y": 468.578125,
+            "width": 46,
+            "height": 46,
+            "scrollHeight": 46,
+            "clientHeight": 46,
+            "background": "rgba(0, 0, 0, 0)",
+            "backgroundImage": "none",
+            "overflowY": "clip",
+            "objectFit": "contain"
+          },
+          "ready": "ready",
+          "paintedPixels": 2304
+        }
+      ],
+      "horizontalOverflow": false,
+      "calls": [
+        {
+          "method": "GET",
+          "path": "/api/auth/capabilities",
+          "status": 200
+        },
+        {
+          "method": "POST",
+          "path": "/api/auth/login",
+          "status": 200
+        },
+        {
+          "method": "GET",
+          "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/bootstrap",
+          "status": 200
+        },
+        {
+          "method": "GET",
+          "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/feed",
+          "status": 200
+        },
+        {
+          "method": "GET",
+          "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/notices",
+          "status": 200
+        },
+        {
+          "method": "GET",
+          "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/media/00000000-0000-4000-8000-000000000075",
+          "status": 200
+        },
+        {
+          "method": "GET",
+          "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/media/00000000-0000-4000-8000-000000000076",
+          "status": 200
+        },
+        {
+          "method": "GET",
+          "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/media/00000000-0000-4000-8000-000000000075/content",
+          "status": 200
+        },
+        {
+          "method": "GET",
+          "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/media/00000000-0000-4000-8000-000000000076/content",
+          "status": 200
+        }
+      ],
+      "blobUrls": 3,
+      "characters": {
+        "disposed": false,
+        "leases": 3,
+        "pending": 0,
+        "cleanupFailures": 0,
+        "decodedAtlases": 1
+      },
+      "qualification": {
+        "synthetic": true,
+        "mode": "loaded",
+        "inputRevision": "eb6e81bd7e5fbeb15613a45e00f1fe896e49f0da",
+        "mediaInputs": {
+          "00000000-0000-4000-8000-000000000075": {
+            "path": "/reference-feed-media-v1/reference-card-1.png",
+            "sha256": "a28db3162d4fe822b17d3228ad82866d4eeb0e2524fb606d469ccd925fd7385d",
+            "width": 197,
+            "height": 67
+          },
+          "00000000-0000-4000-8000-000000000076": {
+            "path": "/reference-feed-media-v1/reference-card-2.png",
+            "sha256": "2c5863585bce002be0ea0b057f4927d67c6f99e97cc7f5edee6ba9c47589ffdd",
+            "width": 197,
+            "height": 46
+          }
+        },
+        "liveIN03": "NOT_RUN",
+        "world": "DISABLED",
+        "selectedStatic": "1.1.0"
+      },
+      "composerReachable": true,
+      "readinessWithdrawal": true,
+      "disposedBlobUrls": 0
+    },
+    {
+      "name": "feed-430x843",
+      "viewport": {
+        "width": 430,
+        "height": 843
+      },
+      "regions": {
+        ".world-shell": {
+          "x": 0,
+          "y": 0,
+          "width": 430,
+          "height": 843,
+          "scrollHeight": 835,
+          "clientHeight": 835,
+          "background": "rgb(255, 243, 236)",
+          "backgroundImage": "none",
+          "overflowY": "hidden",
+          "objectFit": "fill"
+        },
+        ".shell-panel": {
+          "x": 6,
+          "y": 4,
+          "width": 418,
+          "height": 835,
+          "scrollHeight": 829,
+          "clientHeight": 829,
+          "background": "rgb(233, 225, 212)",
+          "backgroundImage": "none",
+          "overflowY": "visible",
+          "objectFit": "fill"
+        },
+        ".mcr-chrome-panel-header": {
+          "x": 9,
+          "y": 7,
+          "width": 412,
+          "height": 48.921875,
+          "scrollHeight": 44,
+          "clientHeight": 43,
+          "background": "rgb(37, 16, 23)",
+          "backgroundImage": "linear-gradient(to right, rgb(37, 16, 23) 7px, rgba(0, 0, 0, 0) 0px, rgba(0, 0, 0, 0) calc(100% - 133px), rgb(37, 16, 23) 0px), linear-gradient(rgb(37, 16, 23) 10px, rgb(233, 225, 212) 0px, rgb(233, 225, 212) 14px, rgba(0, 0, 0, 0) 0px, rgba(0, 0, 0, 0) 31px, rgb(233, 225, 212) 0px, rgb(233, 225, 212) 35px, rgb(37, 16, 23) 0px), linear-gradient(to right, rgb(37, 16, 23) 7px, rgb(233, 225, 212) 0px, rgb(233, 225, 212) 11px, rgb(37, 16, 23) 0px, rgb(37, 16, 23) calc(100% - 137px), rgb(233, 225, 212) 0px, rgb(233, 225, 212) calc(100% - 133px), rgb(37, 16, 23) 0px)",
+          "overflowY": "visible",
+          "objectFit": "fill"
+        },
+        ".shell-panel-body": {
+          "x": 9,
+          "y": 55.921875,
+          "width": 412,
+          "height": 780.078125,
+          "scrollHeight": 799,
+          "clientHeight": 780,
+          "background": "rgb(248, 245, 236)",
+          "backgroundImage": "none",
+          "overflowY": "auto",
+          "objectFit": "fill"
+        },
+        ".event-feed": {
+          "x": 15,
+          "y": 61.921875,
+          "width": 400,
+          "height": 787.3125,
+          "scrollHeight": 787,
+          "clientHeight": 787,
+          "background": "rgb(248, 245, 236)",
+          "backgroundImage": "none",
+          "overflowY": "visible",
+          "objectFit": "fill"
+        },
+        ".feed-footer": {
+          "x": 15,
+          "y": 788.234375,
+          "width": 400,
+          "height": 61,
+          "scrollHeight": 60,
+          "clientHeight": 60,
+          "background": "rgb(248, 245, 236)",
+          "backgroundImage": "none",
+          "overflowY": "visible",
+          "objectFit": "fill"
+        }
+      },
+      "images": [
+        {
+          "x": 30,
+          "y": 284.84375,
+          "width": 220,
+          "height": 74.8125,
+          "scrollHeight": 75,
+          "clientHeight": 75,
+          "background": "rgba(0, 0, 0, 0)",
+          "backgroundImage": "none",
+          "overflowY": "clip",
+          "objectFit": "contain",
+          "naturalWidth": 197,
+          "naturalHeight": 67,
+          "blob": true
+        },
+        {
+          "x": 30,
+          "y": 626.21875,
+          "width": 220,
+          "height": 51.359375,
+          "scrollHeight": 51,
+          "clientHeight": 51,
+          "background": "rgba(0, 0, 0, 0)",
+          "backgroundImage": "none",
+          "overflowY": "clip",
+          "objectFit": "contain",
+          "naturalWidth": 197,
+          "naturalHeight": 46,
+          "blob": true
+        }
+      ],
+      "authors": [
+        {
+          "x": 26,
+          "y": 137.921875,
+          "width": 48,
+          "height": 48,
+          "scrollHeight": 46,
+          "clientHeight": 46,
+          "background": "rgb(221, 210, 193)",
+          "backgroundImage": "none",
+          "overflowY": "hidden",
+          "objectFit": "fill",
+          "canvas": {
+            "x": 27,
+            "y": 138.921875,
+            "width": 46,
+            "height": 46,
+            "scrollHeight": 46,
+            "clientHeight": 46,
+            "background": "rgba(0, 0, 0, 0)",
+            "backgroundImage": "none",
+            "overflowY": "clip",
+            "objectFit": "contain"
+          },
+          "ready": "ready",
+          "paintedPixels": 2110
+        },
+        {
+          "x": 26,
+          "y": 467.578125,
+          "width": 48,
+          "height": 48,
+          "scrollHeight": 46,
+          "clientHeight": 46,
+          "background": "rgb(221, 210, 193)",
+          "backgroundImage": "none",
+          "overflowY": "hidden",
+          "objectFit": "fill",
+          "canvas": {
+            "x": 27,
+            "y": 468.578125,
+            "width": 46,
+            "height": 46,
+            "scrollHeight": 46,
+            "clientHeight": 46,
+            "background": "rgba(0, 0, 0, 0)",
+            "backgroundImage": "none",
+            "overflowY": "clip",
+            "objectFit": "contain"
+          },
+          "ready": "ready",
+          "paintedPixels": 2304
+        }
+      ],
+      "horizontalOverflow": false,
+      "calls": [
+        {
+          "method": "GET",
+          "path": "/api/auth/capabilities",
+          "status": 200
+        },
+        {
+          "method": "POST",
+          "path": "/api/auth/login",
+          "status": 200
+        },
+        {
+          "method": "GET",
+          "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/bootstrap",
+          "status": 200
+        },
+        {
+          "method": "GET",
+          "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/feed",
+          "status": 200
+        },
+        {
+          "method": "GET",
+          "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/notices",
+          "status": 200
+        },
+        {
+          "method": "GET",
+          "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/media/00000000-0000-4000-8000-000000000075",
+          "status": 200
+        },
+        {
+          "method": "GET",
+          "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/media/00000000-0000-4000-8000-000000000076",
+          "status": 200
+        },
+        {
+          "method": "GET",
+          "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/media/00000000-0000-4000-8000-000000000075/content",
+          "status": 200
+        },
+        {
+          "method": "GET",
+          "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/media/00000000-0000-4000-8000-000000000076/content",
+          "status": 200
+        }
+      ],
+      "blobUrls": 3,
+      "characters": {
+        "disposed": false,
+        "leases": 3,
+        "pending": 0,
+        "cleanupFailures": 0,
+        "decodedAtlases": 1
+      },
+      "qualification": {
+        "synthetic": true,
+        "mode": "loaded",
+        "inputRevision": "eb6e81bd7e5fbeb15613a45e00f1fe896e49f0da",
+        "mediaInputs": {
+          "00000000-0000-4000-8000-000000000075": {
+            "path": "/reference-feed-media-v1/reference-card-1.png",
+            "sha256": "a28db3162d4fe822b17d3228ad82866d4eeb0e2524fb606d469ccd925fd7385d",
+            "width": 197,
+            "height": 67
+          },
+          "00000000-0000-4000-8000-000000000076": {
+            "path": "/reference-feed-media-v1/reference-card-2.png",
+            "sha256": "2c5863585bce002be0ea0b057f4927d67c6f99e97cc7f5edee6ba9c47589ffdd",
+            "width": 197,
+            "height": 46
+          }
+        },
+        "liveIN03": "NOT_RUN",
+        "world": "DISABLED",
+        "selectedStatic": "1.1.0"
+      },
+      "composerReachable": true,
+      "readinessWithdrawal": true,
+      "disposedBlobUrls": 0
+    }
+  ],
+  "errors": []
+}
