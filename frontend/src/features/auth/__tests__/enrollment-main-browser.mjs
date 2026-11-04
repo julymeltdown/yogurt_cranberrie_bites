@@ -1,8 +1,12 @@
 // Actual main-entry Auth/Gateway/mail pairing. This runner starts no DB/service/build.
 // World acceptance remains open until a coherent real concert producer is paired.
 import assert from 'node:assert/strict'
-import { mkdir, readFile, readdir, writeFile, link as linkFile, unlink } from 'node:fs/promises'
+import { mkdir, readFile, readdir, writeFile, link as linkFile, unlink, realpath } from 'node:fs/promises'
 import path from 'node:path'
+import { execFileSync } from 'node:child_process'
+import { createHash } from 'node:crypto'
+import react from '@vitejs/plugin-react'
+import tailwind from '@tailwindcss/vite'
 import { createServer } from 'vite'
 import { chromium } from '@playwright/test'
 const evidence = process.env.MCR_FE10_EVIDENCE, serving = process.env.MCR_FE10_BACKEND_OUTPUT
@@ -23,6 +27,24 @@ for (const service of ['auth-service', 'api-gateway']) {
 }
 assert.match(ready.policyRevision, /^[a-f0-9-]{36}$/)
 assert.equal(ready.verdict, 'SERVING_FIXTURE_ONLY_BROWSER_ACCEPTANCE_REMAINS_FE_OWNED')
+const frontendRepo = process.env.MCR_FE10_FRONTEND_REPO, frontendRevision = process.env.MCR_FE10_FRONTEND_SOURCE
+assert(frontendRepo && path.isAbsolute(frontendRepo), 'Explicit allocated read-only frontend source root required')
+assert.match(frontendRevision ?? '', /^[a-f0-9]{40}$/)
+const loaderRevision = '6d5863097c46d7ecd3d1633fd1423500e17b8867'
+const loaderPath = 'frontend/e2e/runtime-adapters/in04-wall-b/pinned-source.mjs'
+const loaderSha256 = '511808e9963f81a187280c8593280d583852ac13b5e7460e6e1937b0d0d1b09d'
+const loader = execFileSync('git', ['show', `${loaderRevision}:${loaderPath}`], { cwd: frontendRepo, maxBuffer: 1024 ** 2 })
+assert.equal(createHash('sha256').update(loader).digest('hex'), loaderSha256, 'Qualified read-only loader bytes changed')
+const { pinnedSource } = await import(`data:text/javascript;base64,${loader.toString('base64')}`)
+const source = pinnedSource(frontendRepo, frontendRevision), frontendRoot = path.join(frontendRepo, 'frontend')
+const dependencies = await realpath(path.resolve('node_modules'))
+for (const name of ['package.json', 'pnpm-lock.yaml']) {
+  assert((await readFile(path.join(dependencies, '..', name))).equals(source.bytes(`frontend/${name}`)), 'Frontend dependency declarations differ')
+}
+const manifest = JSON.parse(source.bytes('frontend/package.json'))
+const aliases = Object.keys(manifest.dependencies).map(name => ({ find: name, replacement: path.join(dependencies, name) }))
+const mime = { '.svg': 'image/svg+xml', '.json': 'application/json', '.png': 'image/png', '.ttf': 'font/ttf', '.woff2': 'font/woff2', '.webp': 'image/webp', '.mp3': 'audio/mpeg', '.ogg': 'audio/ogg' }
+
 const eventId = process.env.MCR_FE10_EVENT_ID
 assert.match(eventId ?? '', /^[a-f0-9-]{36}$/, 'Explicit event only; does not fabricate a concert producer')
 await mkdir(evidence, { recursive: true })
@@ -104,9 +126,40 @@ async function clean(page, code = '') {
   assert(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth), 'Horizontal overflow')
 }
 try {
-  dev = await createServer({ configLoader: 'runner', cacheDir: process.env.MCR_FE10_CACHE,
+  dev = await createServer({ root: frontendRoot, configFile: false, envFile: false, publicDir: false,
+    cacheDir: process.env.MCR_FE10_CACHE, clearScreen: false, logLevel: 'warn', resolve: { alias: aliases },
+    plugins: [source.plugin, react(), tailwind(), {
+      name: 'fe10-canonical-entry-and-assets',
+      configureServer(instance) {
+        instance.middlewares.use(async (req, res, next) => {
+          try {
+            const pathname = decodeURIComponent(new URL(req.url, ready.frontendOrigin).pathname)
+            if (pathname.startsWith('/api/')) return next()
+            if (req.method !== 'GET' && req.method !== 'HEAD') return next()
+            const publicPath = 'frontend/public' + pathname
+            if (source.files.has(publicPath)) {
+              const body = source.bytes(publicPath)
+              res.setHeader('Content-Type', mime[path.extname(publicPath)] ?? 'application/octet-stream')
+              res.setHeader('Content-Length', body.length); res.setHeader('Cache-Control', 'no-store')
+              res.end(req.method === 'HEAD' ? undefined : body); return
+            }
+            if (pathname === '/index.html' || req.headers.accept?.includes('text/html')) {
+              res.setHeader('Content-Type', 'text/html'); res.setHeader('Cache-Control', 'no-store')
+              const html = await instance.transformIndexHtml(pathname, source.bytes('frontend/index.html').toString())
+              res.end(req.method === 'HEAD' ? undefined : html); return
+            }
+            if (!['/src/', '/@', '/node_modules/'].some(prefix => pathname.startsWith(prefix))) {
+              res.statusCode = 404; res.end(); return
+            }
+            next()
+          } catch { res.statusCode = 503; res.end('Pinned frontend input unavailable') }
+        })
+      },
+    }],
     define: { 'import.meta.env.VITE_MCR_EVENT_ID': JSON.stringify(eventId) },
-    server: { host: 'localhost', port: 3000, strictPort: true,
+    optimizeDeps: { include: [...Object.keys(manifest.dependencies), 'react-dom/client', 'react/jsx-runtime', 'react/jsx-dev-runtime', '@hookform/resolvers/zod'], noDiscovery: true },
+    server: { host: 'localhost', port: 3000, strictPort: true, hmr: false, watch: null, cors: false,
+      fs: { strict: true, allow: [frontendRoot, dependencies, process.env.MCR_FE10_CACHE] },
       proxy: { '/api': { target: ready.gatewayLoopbackOrigin, changeOrigin: false } } } })
   await dev.listen()
   browser = await chromium.launch({ channel: 'chrome', headless: true,
@@ -237,6 +290,7 @@ try {
   assert.deepEqual(errors, [])
   await writeFile(path.join(evidence, 'main-browser-report.json'), JSON.stringify({
     qualification: 'Actual main entry; real Auth RPC/Gateway/private DB and canonical mail-worker local capture; explicit synthetic test policy only',
+    frontendRevision, frontendRepo, loaderRevision, loaderSha256, frontendSourceReceipts: source.receipts(),
     frontendOrigin: ready.frontendOrigin, backendOrigin: ready.gatewayOrigin, upstream: ready.gatewayLoopbackOrigin,
     backendBinarySha256: ready.binarySha256, backendSourceRevision: ready.sourceRevision, runtimeMigrationSha256: ready.runtimeMigrationSha256, initialPolicyRevision: ready.policyRevision, policyRevision: rotated.policyRevision,
     node: process.version, browser: browser.version(), results, calls, wireOutcomes, decisions, errors, sockets,
