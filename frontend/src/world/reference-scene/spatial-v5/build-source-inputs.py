@@ -18,6 +18,55 @@ def canonical(value):
     return json.dumps(value, sort_keys=True, separators=(',', ':'), ensure_ascii=False)
 
 
+LAYOUT_REVISION = '196cd0a2f5e006b4e14b1867b8c51b9a91dbaf19'
+LAYOUT_PATH = 'world/reference-scene-v2/map-layout-v2/'
+
+
+def read_map_layout_v2():
+    """Close both additive MAP inputs without rewriting the frozen World tuple."""
+    folder = PUBLIC / LAYOUT_PATH
+    handoff_raw = (folder / 'handoff.json').read_bytes()
+    assert len(handoff_raw) == 4232 and sha(handoff_raw) == 'sha256:f4094dffd71a661663f34b94874f2a908aaaa7bdf0dbf587a6bee291e8c107c0'
+    handoff = json.loads(handoff_raw)
+    for pin in handoff['files']:
+        raw = (PUBLIC.parent.parent / pin['path']).read_bytes()
+        assert len(raw) == pin['bytes'] and sha(raw) == pin['sha256'], pin['path']
+    def value(name):
+        path = 'frontend/public/' + LAYOUT_PATH + name
+        pin = next(p for p in handoff['files'] if p['path'] == path)
+        return (folder / name).read_bytes(), pin
+    label_raw, label_pin = value('label-presentation.json')
+    plant_raw, plant_pin = value('landscape-presentation.json')
+    labels, plants = json.loads(label_raw), json.loads(plant_raw)
+    source = json.loads((HERE / 'source-inputs.json').read_bytes())
+    for item in [labels, plants]:
+        assert item['geometry_hash'] == source['geometry_hash'] and item['view'] == 'MAP_ONLY'
+        assert item['dimensions'] == dict(width=768, height=1296)
+        assert item['source_layout_version'] == 'map-layout-v2'
+        for pin in item['frozen_inputs'] + [item['base_presentation']]:
+            raw = (PUBLIC.parent.parent / pin['path']).read_bytes()
+            assert len(raw) == pin['bytes'] and sha(raw) == pin['sha256'], pin['path']
+    assert plants['required_label_presentation'] == label_pin
+    assert [(v['label'], v['interaction_id']) for v in labels['labels']] == [(v['label'], v['interaction_id']) for v in source['map_labels']]
+    return labels, plants, label_raw, plant_raw, dict(labels=label_pin, landscape=plant_pin)
+
+
+def document_sha(value):
+    # Mirrors JSON.stringify of these pinned source documents, including key order.
+    return sha(json.dumps(value, ensure_ascii=False, separators=(',', ':')).encode())
+
+
+def build_map_layout_labels():
+    labels, _, raw, _, pair = read_map_layout_v2()
+    (HERE / 'map-labels-source.json').write_bytes(raw)
+    pin = dict(source_revision=LAYOUT_REVISION,
+               presentation=dict(path=LAYOUT_PATH + 'label-presentation.json', bytes=len(raw), sha256=sha(raw)),
+               runtime_font=labels['font'], layout_pair=pair, document_sha256=document_sha(labels),
+               authority='Paired MAP-only layout-v2 display override; no World tuple, identity, destination or admission change.')
+    (HERE / 'map-labels-pins.json').write_text(json.dumps(pin, indent=2) + '\n')
+    print(json.dumps(dict(status='PASS_PAIRED_MAP_LABELS', closed_pins=9, labels=6)))
+
+
 def build():
     pins = {}
 
@@ -132,4 +181,9 @@ def build():
 
 
 if __name__ == '__main__':
-    build()
+    import sys
+    if sys.argv[1:] == ['--map-layout-v2']:
+        build_map_layout_labels()
+    else:
+        assert not sys.argv[1:]
+        build()

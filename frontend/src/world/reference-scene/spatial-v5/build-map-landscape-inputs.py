@@ -10,6 +10,25 @@ BASE = ROOT / 'frontend/public/world/reference-scene-v2/map-landscape-v1'
 sha = lambda raw: 'sha256:' + hashlib.sha256(raw).hexdigest()
 
 
+def build_map_layout_landscape():
+    import runpy
+    builder = runpy.run_path(str(HERE / 'build-source-inputs.py'))
+    _, plants, _, raw, pair = builder['read_map_layout_v2']()
+    source = json.loads((HERE / 'source-inputs.json').read_bytes())
+    assert len(plants['decorations']) == 10
+    for theme in plants['themes']:
+        scene = source['scenes'][theme['theme_id']]
+        assert theme['atlas'] == scene['scenery']['atlases'][0]
+        assert theme['frame'] == scene['frames']['shrub_bed']
+    (HERE / 'map-landscape-source.json').write_bytes(raw)
+    pin = dict(source_revision=builder['LAYOUT_REVISION'],
+               path=builder['LAYOUT_PATH'] + 'landscape-presentation.json', sha256=sha(raw), bytes=len(raw),
+               geometry_hash=source['geometry_hash'], layout_pair=pair, document_sha256=builder['document_sha'](plants),
+               authority='Paired MAP-only layout-v2 planting; no World tuple, resource, place or admission change.')
+    (HERE / 'map-landscape-pin.json').write_text(json.dumps(pin, indent=2) + '\n')
+    print(json.dumps(dict(status='PASS_PAIRED_MAP_LANDSCAPE', closed_pins=9, decorations=10)))
+
+
 def build():
     raw = (BASE / 'handoff.json').read_bytes()
     assert len(raw) == 11496 and sha(raw) == 'sha256:a753907e1e93b9565de487f8164c832eec566c2aa47cfe529b12b785be787f0b'
@@ -46,4 +65,9 @@ def build():
 
 
 if __name__ == '__main__':
-    build()
+    import sys
+    if sys.argv[1:] == ['--map-layout-v2']:
+        build_map_layout_landscape()
+    else:
+        assert not sys.argv[1:]
+        build()

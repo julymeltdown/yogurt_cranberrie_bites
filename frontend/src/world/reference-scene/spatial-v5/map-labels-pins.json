@@ -1,14 +1,27 @@
 {
-  "source_revision": "06562ff1962be525ed929ef431a54bb589860373",
+  "source_revision": "196cd0a2f5e006b4e14b1867b8c51b9a91dbaf19",
   "presentation": {
-    "path": "world/reference-scene-v2/quality-v10/map-label-presentation.json",
-    "bytes": 13881,
-    "sha256": "sha256:850c96b38253f4953778ac4b30d3b10372d091630b09d8a69bc425a28bcc4fd0"
+    "path": "world/reference-scene-v2/map-layout-v2/label-presentation.json",
+    "bytes": 14099,
+    "sha256": "sha256:f5c3207617919fb15a8a2d9707c8cc64765c8289523b403c6e6dbb029b1cda54"
   },
   "runtime_font": {
     "path": "frontend/public/world/reference-scene-v2/map-labels-v1/map-labels-bold.ttf",
     "bytes": 145012,
     "sha256": "sha256:f44e493f61e2d91c2156dd5abc720eeb6274a9c02b11d9097d1ea38d50011e8b"
   },
-  "authority": "MAP-only source presentation for ef52; no C06 extension, admission or new destination."
+  "layout_pair": {
+    "labels": {
+      "path": "frontend/public/world/reference-scene-v2/map-layout-v2/label-presentation.json",
+      "bytes": 14099,
+      "sha256": "sha256:f5c3207617919fb15a8a2d9707c8cc64765c8289523b403c6e6dbb029b1cda54"
+    },
+    "landscape": {
+      "path": "frontend/public/world/reference-scene-v2/map-layout-v2/landscape-presentation.json",
+      "bytes": 13276,
+      "sha256": "sha256:789258ec826a5bb3a2a8ff47deaab9700c207d2bd66ccb735dd3616436c648cf"
+    }
+  },
+  "document_sha256": "sha256:deda3465c6e15ba7ff03a5a493312da9f6110d6dc47f35b212ba1ffc1c3ea559",
+  "authority": "Paired MAP-only layout-v2 display override; no World tuple, identity, destination or admission change."
 }

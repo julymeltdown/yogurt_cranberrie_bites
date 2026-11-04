@@ -44,7 +44,7 @@ it.each(spatialV5ThemeIds)('loads %s on one new canonical geometry, exact packed
   expect(binding.worldCamera.y).toBe(13); expect(binding.loaded.manifest.objects.find(o=>o.id==='northern_hall')!.y).toBe(-94)
   expect(binding.overview.find(o=>o.id==='stage_venue_representation')).toMatchObject({x:185,y:163,width:300,height:210,depth_y:373})
   expect(binding.loaded.manifest.objects.some(o=>o.id==='stage_venue_representation')).toBe(false)
-  expect(getReferenceOverviewMetadata({ geometryHash: map.map.geometry_hash, width:768,height:1296,themeId:id,mapId:map.map.map_id,mapRevision:map.map.map_revision })!.mapLabels[0]).toMatchObject({x:335,y:147})
+  expect(getReferenceOverviewMetadata({ geometryHash: map.map.geometry_hash, width:768,height:1296,themeId:id,mapId:map.map.map_id,mapRevision:map.map.map_revision })!.mapLabels[0]).toMatchObject({x:422,y:201})
   const collision = createCollision(map.map.geometry,{speedPxPerSecond:100,footWidthPx:8,footHeightPx:6,interactionRadiusPx:48})
   for (const interaction of map.map.geometry.interactions) {
     const foot=collision.center(interaction.cell_x,interaction.cell_y)

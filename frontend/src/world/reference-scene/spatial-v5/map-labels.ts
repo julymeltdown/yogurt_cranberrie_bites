@@ -1,5 +1,6 @@
 import presentation from './map-labels-source.json'
 import { sha256 } from '../../map/json'
+import { validateSpatialV5MapLayoutPair, verifySpatialV5MapLayoutPair } from './model'
 
 type Polygon = readonly (readonly number[])[]
 const icons = presentation.icons as Record<string, readonly Polygon[]>
@@ -9,6 +10,7 @@ const fontPath = '/world/reference-scene-v2/map-labels-v1/map-labels-bold.ttf'
 
 /** One public font lease per overview owner; never part of C06's two scene PNGs or private data. */
 export function createSpatialV5Labels() {
+  validateSpatialV5MapLayoutPair()
   const lifetime = new AbortController()
   let disposed = false, face: FontFace | null = null, pending: Promise<void> | undefined
   return {
@@ -16,6 +18,8 @@ export function createSpatialV5Labels() {
       if (disposed) return Promise.reject(Error('Map labels disposed'))
       if (pending) return pending
       pending = (async () => {
+        await verifySpatialV5MapLayoutPair()
+        if (disposed || lifetime.signal.aborted) throw Error('Map labels disposed')
         const timeout = setTimeout(() => lifetime.abort(), 5000)
         try {
           const response = await fetch(new URL(fontPath, location.origin), { signal: lifetime.signal, credentials: 'omit',
