@@ -8,7 +8,7 @@ use concert_service::{
         delivery::{DeliveryPublisher, DeliveryService, POLICY as DELIVERY_POLICY},
         proto,
         scoped::{ProductRepresentation, ScopedProductOwner, ScopedProductProducer},
-        Operation, ProductRpcService, VerifiedProduct, POLICY,
+        Operation, ProductOwner, ProductRpcService, VerifiedProduct, POLICY,
     },
 };
 use http_body_util::BodyExt;
@@ -47,6 +47,8 @@ struct Producer {
     entered: mpsc::UnboundedSender<Arc<OwnerGuardScope>>,
     dropped: Arc<Notify>,
     callback: Mutex<Option<RootReadPermit>>,
+    original_deadline:
+        Mutex<Option<platform::actor_delegation::authority_deadline::AuthorityRpcDeadline>>,
 }
 struct ActualWorkDrop(Arc<Notify>, bool);
 impl Drop for ActualWorkDrop {
@@ -84,10 +86,27 @@ impl ScopedProductProducer for Producer {
             context.deadline().expires_micros(),
             request.authority_expires_unix_micros
         );
-        assert_eq!(context.deadline().stop(), scope.binding().deadline().stop());
+        let original = self
+            .original_deadline
+            .lock()
+            .unwrap()
+            .expect("actual pre-copy deadline captured");
+        assert_eq!(
+            context.deadline().stop(),
+            original.stop(),
+            "owned context preserves exact original monotonic stop"
+        );
+        assert_eq!(
+            context.deadline().expires_micros(),
+            original.expires_micros()
+        );
+        assert!(
+            scope.binding().deadline().stop() <= original.stop(),
+            "guard construction may only shorten the original stop"
+        );
         assert_eq!(
             platform::call_deadline::current(),
-            Some(context.deadline().stop().into_std())
+            Some(scope.binding().deadline().stop().into_std())
         );
         assert!(context.trusted_pickup_context().is_some());
         match context.operation() {
@@ -186,6 +205,23 @@ fn message(actor: Uuid, family: Uuid, suffix: &str) -> proto::ProductRequest {
 }
 const FEED: &str =
     "feed?limit=7&cursor=feed_cursor&filter=WITH_MEDIA&before=2023-11-14T22%3A13%3A20Z";
+// Observe only the already authenticated input, then delegate to the real
+// production owner. This cannot construct or replace verified authority.
+struct ObserveOwner {
+    inner: ScopedProductOwner,
+    producer: Arc<Producer>,
+}
+#[async_trait::async_trait]
+impl ProductOwner for ObserveOwner {
+    async fn dispatch(
+        &self,
+        context: &VerifiedProduct,
+        request: proto::ProductRequest,
+    ) -> Result<tonic::Response<proto::ProductResponse>, Status> {
+        *self.producer.original_deadline.lock().unwrap() = Some(context.deadline());
+        self.inner.dispatch(context, request).await
+    }
+}
 async fn dispatch(
     f: &Fixture,
     producer: Arc<Producer>,
@@ -196,8 +232,12 @@ async fn dispatch(
     let owner = ScopedProductOwner::new(
         Arc::new(f.fence.clone()),
         publisher.unwrap_or_else(|| f.delivery_publisher()),
-        producer,
+        producer.clone(),
     );
+    let owner = ObserveOwner {
+        inner: owner,
+        producer,
+    };
     let service = guard(
         &POLICY,
         proto::product_service_server::ProductServiceServer::new(ProductRpcService::new(Arc::new(
@@ -263,6 +303,7 @@ async fn setup(
         entered: tx,
         dropped: Arc::new(Notify::new()),
         callback: Mutex::new(None),
+        original_deadline: Mutex::new(None),
     });
     Ok((f, producer, rx, message(actor, family, FEED)))
 }
