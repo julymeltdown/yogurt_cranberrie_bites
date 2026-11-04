@@ -1,0 +1,267 @@
+{
+  "status": "INTEGRATED_SOURCE_WITH_HISTORICAL_COMPONENT_QUALIFICATION",
+  "original_source": "03c54fa379e5b468ea5634311714c057408e5bb5",
+  "original_runtime_source": "db25c4fa7db65f5f20b53ee995326b00aec029d3",
+  "merge_commit": "a66637f60e253cecc2754d5c94c50d84a692281d",
+  "common_ancestor": "047d892cc6ad5eec6125322b84cf1efc2380078f",
+  "source_history": "Original owner commits and parent history preserved by merge.",
+  "changed_path_count": 40,
+  "exact_source_postimages": 38,
+  "exceptions": "Only the central Concert manifest and backend lockfile retain concurrent Root Notification/Gateway dependencies while adding Post.",
+  "paths": [
+    {
+      "path": "backend/Cargo.lock",
+      "intake_sha256": "f1d4e9c239d7e7f2ea505faf21ae64cc59428b216fb88b485e1b1c86aa06def9",
+      "source_sha256": "ff71c138e2abe4576004d31c5d3af5b901881ad88a477d8418d244a4903cafd3",
+      "exact_source_postimage": false
+    },
+    {
+      "path": "backend/crates/platform/src/actor_delegation.rs",
+      "intake_sha256": "7e59e6940cb33f7acc148c7fb4687520bd374ef97da1b5e89df8c8e116adcfa0",
+      "source_sha256": "7e59e6940cb33f7acc148c7fb4687520bd374ef97da1b5e89df8c8e116adcfa0",
+      "exact_source_postimage": true
+    },
+    {
+      "path": "backend/crates/platform/src/actor_delegation/root_read_capture_tests.rs",
+      "intake_sha256": "b70c914a4a7cd06fb00bd87fae2d8baaa6d35a48d131de28ecd0f9c889b48996",
+      "source_sha256": "b70c914a4a7cd06fb00bd87fae2d8baaa6d35a48d131de28ecd0f9c889b48996",
+      "exact_source_postimage": true
+    },
+    {
+      "path": "backend/crates/post-application/src/concert_feed/mod.rs",
+      "intake_sha256": "31a9d206ba0bf1d58040dbecd058204f6b22b3579da7ebebaaf589c7d4c08f36",
+      "source_sha256": "31a9d206ba0bf1d58040dbecd058204f6b22b3579da7ebebaaf589c7d4c08f36",
+      "exact_source_postimage": true
+    },
+    {
+      "path": "backend/proto/post/v1/concert_feed.proto",
+      "intake_sha256": "318115395631f2dd4c4ef451779ac152f21a429f44042bd0385af96ded1faf22",
+      "source_sha256": "318115395631f2dd4c4ef451779ac152f21a429f44042bd0385af96ded1faf22",
+      "exact_source_postimage": true
+    },
+    {
+      "path": "backend/scripts/mcr/feed_live_read_smoke.py",
+      "intake_sha256": "4a64de2cc5525bd223c0602976f668309db9364c28ffb63ecd3d289ff3292120",
+      "source_sha256": "4a64de2cc5525bd223c0602976f668309db9364c28ffb63ecd3d289ff3292120",
+      "exact_source_postimage": true
+    },
+    {
+      "path": "backend/scripts/mcr/test_feed_live_read_smoke.py",
+      "intake_sha256": "7a6c82b80d12e17f6f4d22a1a50858dfbf31b70764d160a561ad1b255d36efc3",
+      "source_sha256": "7a6c82b80d12e17f6f4d22a1a50858dfbf31b70764d160a561ad1b255d36efc3",
+      "exact_source_postimage": true
+    },
+    {
+      "path": "backend/services/concert-service/Cargo.toml",
+      "intake_sha256": "d9602ccdfb9faef8a43025c5a242e012cbd6d459fb140196bd17c8a776fc33c2",
+      "source_sha256": "10805ea51178148b92f328555281946addde9866f105eeb25522c6f6f1006218",
+      "exact_source_postimage": false
+    },
+    {
+      "path": "backend/services/concert-service/src/feed/author_filter.rs",
+      "intake_sha256": "52eed2b97692787b5b8f5567643e87618971fda5d6025658f21a49d0293b1264",
+      "source_sha256": "52eed2b97692787b5b8f5567643e87618971fda5d6025658f21a49d0293b1264",
+      "exact_source_postimage": true
+    },
+    {
+      "path": "backend/services/concert-service/src/feed/live_read.rs",
+      "intake_sha256": "fbe6f8c73d6a80eeb2def45398903339583e6497003f26da1df6e92f90a87287",
+      "source_sha256": "fbe6f8c73d6a80eeb2def45398903339583e6497003f26da1df6e92f90a87287",
+      "exact_source_postimage": true
+    },
+    {
+      "path": "backend/services/concert-service/src/feed/mod.rs",
+      "intake_sha256": "cd570924c3061f1cb9379f9acc9303facad5b3c70123e42130c3bc424ae5419c",
+      "source_sha256": "cd570924c3061f1cb9379f9acc9303facad5b3c70123e42130c3bc424ae5419c",
+      "exact_source_postimage": true
+    },
+    {
+      "path": "backend/services/concert-service/src/feed/native_join.rs",
+      "intake_sha256": "8c3e46e2f7dfd735af80188594e72c3fac086cbf281a813b3502818b0f70b060",
+      "source_sha256": "8c3e46e2f7dfd735af80188594e72c3fac086cbf281a813b3502818b0f70b060",
+      "exact_source_postimage": true
+    },
+    {
+      "path": "backend/services/concert-service/src/feed/native_join/capture.rs",
+      "intake_sha256": "f74dfc0f793810a64bef08205ef927b49710ee278785ba0901e6c7dc200f40e6",
+      "source_sha256": "f74dfc0f793810a64bef08205ef927b49710ee278785ba0901e6c7dc200f40e6",
+      "exact_source_postimage": true
+    },
+    {
+      "path": "backend/services/concert-service/src/feed/native_join/environment.rs",
+      "intake_sha256": "b0116f4328c0b3af4df01310c8310de0768d15bf401c6ea61ad20f3860f632ad",
+      "source_sha256": "b0116f4328c0b3af4df01310c8310de0768d15bf401c6ea61ad20f3860f632ad",
+      "exact_source_postimage": true
+    },
+    {
+      "path": "backend/services/concert-service/src/feed/native_join/owners.rs",
+      "intake_sha256": "f6677601c830a6fac868f73fb406907e44efeadec6d45ace0bf1a4493650e590",
+      "source_sha256": "f6677601c830a6fac868f73fb406907e44efeadec6d45ace0bf1a4493650e590",
+      "exact_source_postimage": true
+    },
+    {
+      "path": "backend/services/concert-service/src/feed/native_join/read_cases.rs",
+      "intake_sha256": "eb5caf1459991ef489111307488a2c8a9e49952a3c34fcc136fc95295666ee0f",
+      "source_sha256": "eb5caf1459991ef489111307488a2c8a9e49952a3c34fcc136fc95295666ee0f",
+      "exact_source_postimage": true
+    },
+    {
+      "path": "backend/services/concert-service/src/feed/owner.rs",
+      "intake_sha256": "62a945ac5942b79da0bc9c510e120d6195c41309ad2433a9e092f32219c517aa",
+      "source_sha256": "62a945ac5942b79da0bc9c510e120d6195c41309ad2433a9e092f32219c517aa",
+      "exact_source_postimage": true
+    },
+    {
+      "path": "backend/services/concert-service/src/feed/policy.rs",
+      "intake_sha256": "6480113b0fe89682d993e12b5852423c9fa8c6464c047212e109fc71589e70ee",
+      "source_sha256": "6480113b0fe89682d993e12b5852423c9fa8c6464c047212e109fc71589e70ee",
+      "exact_source_postimage": true
+    },
+    {
+      "path": "backend/services/concert-service/src/feed/qualified_read.rs",
+      "intake_sha256": "f631b2478140f4d5e60af62ce9c638487c72205e364b1b51a436255f626fa249",
+      "source_sha256": "f631b2478140f4d5e60af62ce9c638487c72205e364b1b51a436255f626fa249",
+      "exact_source_postimage": true
+    },
+    {
+      "path": "backend/services/concert-service/src/feed/qualified_transport.rs",
+      "intake_sha256": "415dd63d71437430de6cd26fd412ab78431857dce9a8b00a44e5efc77b488330",
+      "source_sha256": "415dd63d71437430de6cd26fd412ab78431857dce9a8b00a44e5efc77b488330",
+      "exact_source_postimage": true
+    },
+    {
+      "path": "backend/services/concert-service/src/feed/resources.rs",
+      "intake_sha256": "edb6dadfb24826776e3c15bc3f571dacb868e986fd118bd06618fe8acbee9506",
+      "source_sha256": "edb6dadfb24826776e3c15bc3f571dacb868e986fd118bd06618fe8acbee9506",
+      "exact_source_postimage": true
+    },
+    {
+      "path": "backend/services/concert-service/tests/feed_live_read.rs",
+      "intake_sha256": "da618ad69ee101de0e926e9e0bcc28d3d4aec1c28df1eedc4ecb71c4a5ebb857",
+      "source_sha256": "da618ad69ee101de0e926e9e0bcc28d3d4aec1c28df1eedc4ecb71c4a5ebb857",
+      "exact_source_postimage": true
+    },
+    {
+      "path": "backend/services/concert-service/tests/feed_live_read_support/mod.rs",
+      "intake_sha256": "06311ae7ab20d6468da7b82802c9471d3961d51e4986600b9505c3f2e6fef8c9",
+      "source_sha256": "06311ae7ab20d6468da7b82802c9471d3961d51e4986600b9505c3f2e6fef8c9",
+      "exact_source_postimage": true
+    },
+    {
+      "path": "backend/services/concert-service/tests/feed_live_read_support/native_join.py",
+      "intake_sha256": "8c473cfe942f225f03dc5691c51c066eefdcffe8f08a87717b42ce27d383f151",
+      "source_sha256": "8c473cfe942f225f03dc5691c51c066eefdcffe8f08a87717b42ce27d383f151",
+      "exact_source_postimage": true
+    },
+    {
+      "path": "backend/services/concert-service/tests/feed_live_read_support/test_native_join.py",
+      "intake_sha256": "f17b4c82d47b5eee7419644087b202665372b4446dc2ae65bbf3cedb24fd7343",
+      "source_sha256": "f17b4c82d47b5eee7419644087b202665372b4446dc2ae65bbf3cedb24fd7343",
+      "exact_source_postimage": true
+    },
+    {
+      "path": "backend/services/post-service/build.rs",
+      "intake_sha256": "aaa92f4cc0136635fef2c43c2bb9a934c8248aa13b3ccd144d29150006010133",
+      "source_sha256": "aaa92f4cc0136635fef2c43c2bb9a934c8248aa13b3ccd144d29150006010133",
+      "exact_source_postimage": true
+    },
+    {
+      "path": "backend/services/post-service/migrations/0032_concert_feed_read_tracking.sql",
+      "intake_sha256": "96b5477f2d15b933c1c1590b878c9cd4b60c9bd7f115dd8a93cac44ad7104fc4",
+      "source_sha256": "96b5477f2d15b933c1c1590b878c9cd4b60c9bd7f115dd8a93cac44ad7104fc4",
+      "exact_source_postimage": true
+    },
+    {
+      "path": "backend/services/post-service/src/adapters/in/grpc/concert_feed.rs",
+      "intake_sha256": "4cf1d1fad9a08d634d7064b04c3a20e1a0f6d18050ecea8498fdce4a6a2e741a",
+      "source_sha256": "4cf1d1fad9a08d634d7064b04c3a20e1a0f6d18050ecea8498fdce4a6a2e741a",
+      "exact_source_postimage": true
+    },
+    {
+      "path": "backend/services/post-service/src/concert_feed/mod.rs",
+      "intake_sha256": "14ee060032480c0165d9f906de98c93403f9ac72303da102a944f1aaa50f4614",
+      "source_sha256": "14ee060032480c0165d9f906de98c93403f9ac72303da102a944f1aaa50f4614",
+      "exact_source_postimage": true
+    },
+    {
+      "path": "backend/services/post-service/src/concert_feed/query.rs",
+      "intake_sha256": "12e023819a3fda990c660ada09bd0d1efdf4240c63308f693dbb94d4d35c6297",
+      "source_sha256": "12e023819a3fda990c660ada09bd0d1efdf4240c63308f693dbb94d4d35c6297",
+      "exact_source_postimage": true
+    },
+    {
+      "path": "backend/services/post-service/src/concert_feed/read_admission.rs",
+      "intake_sha256": "26db8f613fd407f053d408ea2cfd0736c6ac3d4dea477970f48951d2145b6a41",
+      "source_sha256": "26db8f613fd407f053d408ea2cfd0736c6ac3d4dea477970f48951d2145b6a41",
+      "exact_source_postimage": true
+    },
+    {
+      "path": "backend/services/post-service/src/concert_feed/read_authority.rs",
+      "intake_sha256": "aa5ca471d45ee015b136299ff118e1cb712995ca850d0114e72c7a3194c4485a",
+      "source_sha256": "aa5ca471d45ee015b136299ff118e1cb712995ca850d0114e72c7a3194c4485a",
+      "exact_source_postimage": true
+    },
+    {
+      "path": "backend/services/post-service/src/concert_feed/read_clients.rs",
+      "intake_sha256": "140102edab0474d05adaee23d5e33f59e7f3c4e9f6661fc7c7d82dbdd5895ffd",
+      "source_sha256": "140102edab0474d05adaee23d5e33f59e7f3c4e9f6661fc7c7d82dbdd5895ffd",
+      "exact_source_postimage": true
+    },
+    {
+      "path": "backend/services/post-service/src/concert_feed/read_runtime.rs",
+      "intake_sha256": "260cc62442ecfdbb387b695f129715f8be409267815eab138779de352ecfa81f",
+      "source_sha256": "260cc62442ecfdbb387b695f129715f8be409267815eab138779de352ecfa81f",
+      "exact_source_postimage": true
+    },
+    {
+      "path": "backend/services/post-service/src/concert_feed/read_tracking.rs",
+      "intake_sha256": "4a9199787540ddd49980aef4719e3aa63871841cf8a561e3d50f5513803671f0",
+      "source_sha256": "4a9199787540ddd49980aef4719e3aa63871841cf8a561e3d50f5513803671f0",
+      "exact_source_postimage": true
+    },
+    {
+      "path": "backend/services/post-service/src/concert_feed/read_tracking.sql",
+      "intake_sha256": "96b5477f2d15b933c1c1590b878c9cd4b60c9bd7f115dd8a93cac44ad7104fc4",
+      "source_sha256": "96b5477f2d15b933c1c1590b878c9cd4b60c9bd7f115dd8a93cac44ad7104fc4",
+      "exact_source_postimage": true
+    },
+    {
+      "path": "backend/services/post-service/src/concert_feed/read_tracking_tests.rs",
+      "intake_sha256": "56fbab384317f854f25ab2947aebc9a46c21b23460d8f30d02256012ed03ff7a",
+      "source_sha256": "56fbab384317f854f25ab2947aebc9a46c21b23460d8f30d02256012ed03ff7a",
+      "exact_source_postimage": true
+    },
+    {
+      "path": "backend/services/post-service/src/concert_feed/read_transaction.rs",
+      "intake_sha256": "6b1d53e90678b0a08d92935ef3b25783e5a6ec027aa17b3d7e3739746e8107d7",
+      "source_sha256": "6b1d53e90678b0a08d92935ef3b25783e5a6ec027aa17b3d7e3739746e8107d7",
+      "exact_source_postimage": true
+    },
+    {
+      "path": "backend/services/post-service/src/concert_feed/tests.rs",
+      "intake_sha256": "117f3780b01e2b82dd6a7603dbf4cad2151efe41646b3430260187b4b7122256",
+      "source_sha256": "117f3780b01e2b82dd6a7603dbf4cad2151efe41646b3430260187b4b7122256",
+      "exact_source_postimage": true
+    },
+    {
+      "path": "docs/mcr/backend/feed-live-read.md",
+      "intake_sha256": "b4e784d06980f9e832dbc9016d0c4e369d59d2e7e29ed74cfc4cf52944d172d2",
+      "source_sha256": "b4e784d06980f9e832dbc9016d0c4e369d59d2e7e29ed74cfc4cf52944d172d2",
+      "exact_source_postimage": true
+    }
+  ],
+  "historical_component_evidence": {
+    "case_count": 8,
+    "checkpoint_sha256": "3fc1dab72ded00c746a8a8dd87fc07deaaaca925ab43b721bcb5120b9dc0c94b",
+    "report_sha256": "f5e904b3386a34b5f4266ba6d4414b131d920c402d62bdb92d8c73bf097ce4a2",
+    "verified_receipt_sha256": "a61ada606e4ed63e778b75b65eda73cb1c9b1e0287b38e3b0261279642243946",
+    "scope": "Original five-owner mTLS component harness only, not current public Gateway or main startup."
+  },
+  "current_source_checks": "See root-inbox-post-build.json for current Concert/Post compilation and four configuration tests.",
+  "limitations": [
+    "Feed Product adapter candidate cca1723c is not part of this intake.",
+    "Actual public Gateway Feed/Post flow and original IN03 remain NOT_RUN.",
+    "Post main was compiled, not executed, in the current startup check.",
+    "No frontend or docs/source path was imported in this intake."
+  ]
+}
