@@ -56,12 +56,16 @@ it.each([
   expect(() => decode(JSON.stringify(frame(config)), 'server')).toThrow(WorldTransportError)
 })
 
-it('fails closed when a canonical config reference names an unregistered document', async () => {
+it.each([
+  'https://contracts.mcr.invalid/unregistered.json#/$defs/ReviewedMotionAvatarConfig',
+  'https://contracts.mcr.invalid/assets/v2/reviewed/avatar-config.schema.json#/$defs/UnknownConfig',
+  'https://contracts.mcr.invalid/assets/v2/reviewed/avatar-manifest.schema.json#/$defs/ReviewedMotionAvatarConfig',
+])('fails closed for an unresolved canonical config reference: %s', async ref => {
   vi.resetModules()
   vi.doMock('../../../../../../contracts/core/v1/core.schema.json', async importOriginal => {
     const original = await importOriginal<{ default: { $defs: Record<string, unknown> } }>()
     const copy = structuredClone(original.default)
-    copy.$defs.AvatarState = { type: 'object', properties: { config: { $ref: 'https://contracts.mcr.invalid/unregistered.json#/$defs/ReviewedMotionAvatarConfig' } } }
+    copy.$defs.AvatarState = { type: 'object', properties: { config: { $ref: ref } } }
     return { default: copy }
   })
   try {
