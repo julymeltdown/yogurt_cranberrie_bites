@@ -72,12 +72,17 @@ async fn aggregate_native() -> Result<()> {
     let user = Uuid::from_u128(4200);
     let event = Uuid::from_u128(4300);
     let c = cmd(user);
+    let restart = std::env::var("BE42_AGGREGATE_NATIVE_PHASE").as_deref() == Ok("restart");
     let fenced: bool = sqlx::query_scalar(
         "select exists(select 1 from concert_private_data_owner_progress where user_id=$1)",
     )
     .bind(user)
     .fetch_one(&p)
     .await?;
+    anyhow::ensure!(
+        !restart || fenced,
+        "restart requires an already-fenced database"
+    );
     // Seed exactly once. Create only ordinary profile rows here. The common
     // fence and private core receipt are initialized by the aggregate's public
     // protocol path, not forged by the test fixture.
