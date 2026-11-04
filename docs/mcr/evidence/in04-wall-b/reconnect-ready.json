@@ -1,0 +1,31 @@
+{
+  "task": "IN04-WALL-B-EXPLICIT-RECONNECT",
+  "frozenSourceRevision": "8b8a5502886b604b039c79a7c89d932944a6735e",
+  "sourceQualification": "NOT_RUN",
+  "realIN04": "NOT_RUN",
+  "originalPersistentGoal": "BLOCKED_UNFINISHED",
+  "sourceHashes": {
+    "frontend/e2e/in04-wall-b/reconnect.ts": "112dcf0508a962be2f04db7b7de8f8705f57008125fe0b3224c014b033e4a8dc",
+    "frontend/e2e/in04-wall-b/reconnect-check.ts": "5faf278ad4e7387a15f9f5f7df08fb6715ce1d0434be73453f19df586183e4d2",
+    "frontend/e2e/in04-wall-b/wall-b.spec.ts": "1a651236d5313c9797c12d08f85ddc1625b1b346b7676d4324c14ad156ab8e52",
+    "frontend/e2e/in04-wall-b/validate.py": "de635bb324131387da17af250f7411bd49f9a0b1c6885ff3762f8a965f9c96d6"
+  },
+  "readOnlyPublicRuntimePort": "UNCHANGED; observeRestart(config,{roomEpoch,streamId}) returns existing candidate/environmentId/restartedAt; QA gains no restart command",
+  "queue": "ONE fair SOURCE request to21d; no offer accepted and no resource hold",
+  "plannedProfile": "validate.py --profile reconnect; focused check, scoped strict tsc, changed-TS lint, discovery without browser, missing-config refusal",
+  "old84Replayed": false,
+  "nativeOrVisualOrRuntimeReplayed": false,
+  "lastMeasuredFreeBytes": 14615719936,
+  "requestedStartFloorBytes": 12884901888,
+  "liveFloorBytes": 8589934592,
+  "reserveAfterAllNewBytes": 9663676416,
+  "requestedOwnedAndNewBytesEach": 8388608,
+  "requestedAggregatePids": 8,
+  "requestedRssBytes": 2684354560,
+  "requestedWorkSeconds": 300,
+  "requestedCleanupSeconds": 60,
+  "publisher": "01a1a5d9-332b-7822-a8f7-412e295fa211",
+  "publisherDisposition": "Latest Community/canonical412e receipt5f9f2fc7 retains designated sole publisher412e, RootsSTOP. Direct developer handoff after own qualification/fixes.",
+  "runtimeInterfaceCounterpart": "01a1a153-1227-7e72-801f-a2a6b91981e1",
+  "noReviewOrAcknowledgmentGate": true
+}

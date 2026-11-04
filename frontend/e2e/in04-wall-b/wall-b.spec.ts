@@ -14,6 +14,7 @@ import type { Command, OwnAction } from './helpers.ts'
 import { loadRuntimeAdapter, qualifiedBinding } from './runtime.ts'
 import type { RuntimeAdapter } from './runtime.ts'
 import { verifyWorldTexture } from './world-texture.ts'
+import { captureReconnectBefore, reconnectWorldOnce } from './reconnect.ts'
 
 const START_FLOOR_BYTES = 11 * 1024 ** 3, LIVE_FLOOR_BYTES = 8 * 1024 ** 3, RESIDUAL_BYTES = 9 * 1024 ** 3
 const stages = ['inputs', 'deployment', 'independentActors', 'baseline', 'pencil', 'sharedCooldown', 'opaqueErase', 'boundedFill', 'eligibleUndo', 'reloadBudget', 'remoteInvalidatesUndo', 'lostActionRecovery', 'lostPencilRecovery', 'privateResults', 'unauthorizedModeration', 'pause', 'regionLock', 'restore', 'obsoleteDelta', 'reconnect', 'restartEpoch', 'finalFreeze', 'teardown'] as const
@@ -164,7 +165,7 @@ test('IN04 Wall B real canonical clients, tools, recovery, moderation and freeze
       config = await loadConfig(); requireInputs(config); port = await loadRuntimeAdapter()
       await loadWallContracts(config)
       report.candidate = config.releaseRevision; report.eventId = config.eventId
-      for (const p of ['./wall-b.spec.ts', './helpers.ts', './runtime.ts', './world-texture.ts', '../real/mural-helpers.ts', '../../src/app/mural-entry/owner.ts', '../../src/app/world-entry/production.ts', '../../src/features/mural/editor/MuralEditor.tsx', '../../src/features/mural/sync/tools-http.ts', '../../../contracts/domain/v1/operations.json', '../../../contracts/domain/v1/mural.schema.json', '../../../contracts/generated/mcr-domain.openapi.json', '../../../contracts/realtime/v1/world.schema.json']) report.sourceHashes[p] = hash(await readFile(new URL(p, import.meta.url)))
+      for (const p of ['./wall-b.spec.ts', './helpers.ts', './runtime.ts', './world-texture.ts', './reconnect.ts', '../real/mural-helpers.ts', '../../src/app/mural-entry/owner.ts', '../../src/app/world-entry/production.ts', '../../src/features/mural/editor/MuralEditor.tsx', '../../src/features/mural/sync/tools-http.ts', '../../../contracts/domain/v1/operations.json', '../../../contracts/domain/v1/mural.schema.json', '../../../contracts/generated/mcr-domain.openapi.json', '../../../contracts/realtime/v1/world.schema.json']) report.sourceHashes[p] = hash(await readFile(new URL(p, import.meta.url)))
     })
     await step('deployment', alive)
     await step('independentActors', async () => {
@@ -312,20 +313,20 @@ test('IN04 Wall B real canonical clients, tools, recovery, moderation and freeze
       } finally { await abort?.().catch(() => {}); await page(1).unroute(config.origin + path + '*') }
     })
     await step('reconnect', async () => {
-      const opens = observers[1]!.opens, old = observers[1]!.baseline?.streamId
+      const before = captureReconnectBefore(observers[1]!)
       await contexts[1]!.setOffline(true)
       try { await expect.poll(() => observers[1]!.active).toBe(0); const s = await ready(0); await uiAction(0, paint(s, 12, 10), s, undefined, false, false) }
       finally { await contexts[1]!.setOffline(false) }
-      const reconnect = page(1).getByRole('button', { name: 'Reconnect world', exact: true })
-      if (await reconnect.isVisible() && await reconnect.isEnabled()) await reconnect.click()
-      await expect.poll(() => observers[1]!.opens > opens && observers[1]!.active === 1 && observers[1]!.baseline?.streamId !== old).toBe(true)
+      await reconnectWorldOnce(page(1), observers[1]!, before, false, Math.min(deadline, Date.now() + 15000))
       await converge()
     })
     await step('restartEpoch', async () => {
-      const old = observers.map(o => o.baseline); need(old.every(Boolean), 'REAL_EPOCH_REQUIRED')
+      const old = observers.map(captureReconnectBefore)
       const started = Date.now(), proof = await port.observeRestart(config, { roomEpoch: old[0]!.roomEpoch, streamId: old[0]!.streamId })
       need(proof.candidate === config.releaseRevision && proof.environmentId === config.environmentId && Date.parse(proof.restartedAt) > started && Date.parse(proof.restartedAt) <= Date.now(), 'CURRENT_EXTERNAL_RESTART_PROOF_REQUIRED')
-      await expect.poll(() => observers.every((o, n) => o.baseline && o.baseline.roomEpoch !== old[n]!.roomEpoch && o.baseline.streamId !== old[n]!.streamId), { timeout: config.restartObservationTimeoutMs }).toBe(true)
+      const reconnectDeadline = Math.min(deadline, Date.now() + config.restartObservationTimeoutMs)
+      for (let n = 0; n < 2; n++) await reconnectWorldOnce(page(n), observers[n]!, old[n]!, true, reconnectDeadline)
+      await expect.poll(() => observers.every((o, n) => o.baseline && o.baseline.roomEpoch !== old[n]!.roomEpoch && o.baseline.streamId !== old[n]!.streamId), { timeout: Math.max(1, reconnectDeadline - Date.now()) }).toBe(true)
       await converge()
     })
     await step('finalFreeze', async () => {

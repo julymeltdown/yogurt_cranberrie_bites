@@ -1,8 +1,8 @@
 # IN04 Wall B real integration runner
 
-Status: IN_PROGRESS (published baseline; source-qualified URL correction awaiting publication/live execution).
+Status: IN_PROGRESS (explicit World reconnect source-qualified; awaiting publication and real cohort).
 Published-baseline source checks: PASS (53 helper checks, scoped types/lint,
-discovery and negative preflight). Follow-up source checks: PASS (84 helper checks,
+discovery and negative preflight). Earlier Phaser URL source checks: PASS (84 helper checks,
 scoped types/lint, discovery and negative preflight; one intentional lint warning
 retained). Live IN04 is NOT_RUN. The original persistent
 IN04 goal is BLOCKED and unfinished, freshly inspected on 2026-11-05. The goal's
@@ -443,3 +443,151 @@ source interface; actual serving-app startup and combined IN04 acceptance remain
 NOT_RUN. The direct normal-publication handoff contains the tested correction
 commit and this evidence commit. The original persistent goal remains BLOCKED
 and unfinished until the genuine combined journey can execute.
+
+## Explicit reconnect correction — 2026-11-05
+
+Task IN04-WALL-B-EXPLICIT-RECONNECT resumes the same original unfinished goal and
+exclusive checkout, freshly found clean at `6bac4c4ee1e3ebc441ebf1c596f512acb63135dd`.
+No old evidence, worktree or goal was replaced. The earlier source checks remain
+historical evidence; the new focused round below now passes independently.
+
+The production transport explicitly provides no automatic reconnect. Replication
+`connectionFailure` clears its baseline and enters `closed`, and composition
+renders "World disconnected. Select Reconnect world to continue." The old
+`restartEpoch` only polled replacement epochs, and its earlier offline branch
+made the reconnect click optional. Both are defective runner behavior: the real
+shell makes the host inert while a panel is open; full-panel CSS also hides the
+World viewport. The Main navigation's existing World ShellLink leads to `/world`,
+closes the panel and retains the same shell/World owner. Navigation back to Wall
+restores the editor without replacing that owner.
+
+New own-prefix `reconnect.ts` captures an immutable old actor/event/epoch/stream
+and socket-open count before disturbance. For each affected member it uses the
+actual Main navigation World link, requires the closed panel state and a
+non-inert World host, exposes the real World scene and controls region, requires
+the actual enabled Reconnect world button and closed socket, and clicks once.
+It rejects intervening implicit opens, requires exactly one replacement socket,
+peak/active one, same actor/event, a new stream, and a new epoch after restart
+(the same epoch is required for ordinary offline recovery). It verifies the
+original canvas node before/after reconnect and after actual navigation back to
+Wall. There is no force click, page reload, direct router call, app global,
+synthetic success, retry loop or second World. Both restart members use this
+helper before the retained old/new epoch and full convergence assertions.
+
+Root153 and Root1fc agreed to preserve the exact public read-only port
+`observeRestart(config, {roomEpoch, streamId})` and its existing return shape.
+The backend producer first observes its actual initial inspect, then sends one
+private observer-socket baseline notification with full binding/generation. Its
+observer records only a current, explicitly prearmed external stage; a separate
+guarded managed-owner loop, with separate authority, performs actual PG+Concert
+restart. Duplicate/foreign/stale/unarmed/uncertain sends fail closed, without
+retry. QA never executes restart or gains a restart command/config hook. Root153
+will regenerate the self-contained backend artifact and qualified SHA after
+producer qualification; old embedded artifact7b18 remains historical. This runner
+patch does not change `runtime.ts`, shared helpers or any public port/schema.
+
+Focused `reconnect-check.ts` checks replacement-state negatives, disconnected or
+inert/hidden/disabled controls, missing navigation, original-canvas replacement,
+failed clicks with no replay, and AST wiring of both stages and both restart
+members. Its driver stubs exercise runner failure handling only: no real DOM,
+server, actor, socket, authority or runtime acceptance is claimed. The source
+guardian's new explicit `--profile reconnect` selects only this focused check,
+scoped no-emit types, changed-TypeScript lint, browser-free discovery and missing
+config refusal. The old84 helper matrix and native/visual matrices are not run.
+Default historical guardian behavior remains available unchanged in purpose.
+Fresh source admission requests the current stricter 12GiB floor, retains 8GiB
+live/9GiB ALL_NEW reserve and bounded byte/PID/RSS/deadline/cleanup limits.
+
+Ownership remains the original three runner/doc/evidence prefixes; no app,
+backend, schema, manifest, lockfile, peer checkout or historical evidence is
+written. This developer owns focused qualification/fixes and the frozen committed
+handoff directly to designated sole publisher412e
+(`01a1a5d9-332b-7822-a8f7-412e295fa211`). The latest canonical412e receipt
+`5f9f2fc7` retains that publisher and RootsSTOP; it supersedes earlier BE1fc-sole
+routing. Root153 remains the runtime/interface counterpart, not a publication
+acknowledgment gate. No king/SL review or acknowledgment is required. Actual combined cohort,
+restart and App flow remain NOT_RUN; original persistent goal remains BLOCKED
+and unfinished.
+
+## Explicit reconnect source qualification — 2026-11-04 21:23 UTC
+
+The same pending request received actual finite offer
+`IN04-EXPLICIT-RECONNECT-SOURCE-20261104T2125Z`. Its predecessor sent literal
+`COMMUNITY-CLOCK-RETRY-SOURCE-20261104T2120Z` FULL at 21:20:17.431900 UTC, and
+allocator21d confirmed release and named FE37 owner230 as this round's next
+successor. Actual ACCEPT was `1793827395.727990` (21:23:15.727990 UTC); the work
+and hard deadlines were `1793827695.727990` / `1793827755.727990` (300/360 seconds).
+The token's nominal `2125Z` label was not substituted for actual admission time.
+Both controls finished PASS and FULL at `1793827427.366736`
+(21:23:47.366736 UTC). Literal FULL/resources0 went directly to21d and230 before
+manual documentation, with an informational copy to53d that granted no custody.
+There was no reentry or clock extension.
+
+The corrected accounting is explicit: 8GiB WHOLE covers the complete retained
+checkout, dependencies, Node distribution and shared Git once, including old
+proof. 8MiB NEW covers positive logical/allocated growth of this round. The
+original 8MiB source-preparation/history cap remains separately enforced, without
+rewriting historical receipts or shrinking old carry. Admission measured
+2,630,021,120 retained bytes; the earlier 2,634,715,136-byte high-water remained
+reserved even after the shared Git footprint decreased. That nonshrinking carry
+plus worst-case 8MiB NEW fits within 8GiB. Existing carry was not charged NEW.
+
+The independent primary is retained as
+`docs/mcr/evidence/in04-wall-b/reconnect-primary.py`, SHA-256
+`6d4bd90559095f4aaf85f3818ad6bb52fecef3636727aafb732303b49ac91067`.
+It measures every full root in one deduplicating `du` invocation, preserves
+high-water across attempts, counts all own raw Git history in the preparation
+limit, and enforces live/clock/byte/descendant/RSS limits before and during the
+retained guardian. It complements the unchanged source guardian SHA
+`de635bb324131387da17af250f7411bd49f9a0b1c6885ff3762f8a965f9c96d6`, rather than
+using a source-only byte count as whole-checkout proof. Its Python AST parsed
+before admission; the allocated run exercised the complete primary/guardian
+chain. No feature, port or guard bytes changed during this accepted round.
+
+Fresh free disk was 22,836,658,176 bytes, above the stricter 12GiB start floor.
+ALL_NEW was 4,303,355,904 bytes (allocator's conservative OTHER4GiB plus own8MiB),
+leaving more than 9GiB. Both controls retained the 8GiB live floor, 8 aggregate
+process ceiling and 2.5GiB RSS ceiling. The allocator's current eligible peer
+upper bounds plus this job were 54 ALL / 13.5GiB RSS / global3 / SOURCE2 /
+browser0; higher actual claims remained binding. Retained peers were not
+reinspected or granted authority by this runner.
+
+| Source check | Actual exit / result |
+| --- | --- |
+| Node24 `--experimental-transform-types frontend/e2e/in04-wall-b/reconnect-check.ts` | 0; 32 focused boundary/driver/AST checks PASS |
+| Node24 TypeScript `--noEmit --incremental false -p frontend/e2e/in04-wall-b/tsconfig.json --pretty false` | 0 |
+| Scoped Oxlint on `reconnect.ts`, `reconnect-check.ts`, `wall-b.spec.ts` | 0; no warnings |
+| Playwright `test --config frontend/e2e/in04-wall-b/playwright.config.ts --list` | 0; one real journey discovered, no browser |
+| Node24 `--experimental-transform-types frontend/e2e/in04-wall-b/preflight.ts` | 2, expected 2; missing private config correctly keeps IN04 NOT_RUN |
+
+Exact argv, all source hashes, accepted metadata and both continuous traces are
+retained under
+`docs/mcr/evidence/in04-wall-b/IN04-EXPLICIT-RECONNECT-SOURCE-20261104T2125Z/`.
+The recorded validation HEAD is `a9596b594085e93157553a350cd937c5a4bf8313`; reconnect
+feature source is frozen `8b8a5502886b604b039c79a7c89d932944a6735e`. Every tested
+runner postimage still matches that committed source. The supplementary primary
+was an explicitly pinned resource-evidence artifact, not a change to that
+feature source or the public runtime port. There was one attempt and no failed
+qualification command; all historical failures remain intact.
+
+Primary high-waters: full nonshrinking carry 2,634,715,136 bytes, positive round
+growth 630,784 bytes, own source/preparation plus complete raw history 1,429,219
+bytes (including 694,437 raw Git bytes), conservative process count6, sampled
+RSS568,836,096 bytes. The inner guardian separately sampled RSS607,453,184 bytes
+and its own source/preparation peak864,458 bytes. These are separately sampled
+peaks, not a claim of an exactly simultaneous combined RSS maximum. Both controls
+finished with no descendants, scratch or dependency link. All reservations were
+returned before this documentation; nothing was installed, started as a service,
+run as a browser/native job, or deleted from another owner's resources.
+
+The complete machine-readable outcome is
+`docs/mcr/evidence/in04-wall-b/reconnect-source-qualification.json`.
+`reconnect-ready.json` remains the historical pre-qualification request. This
+source PASS certifies runner preparation and failure handling only. The actual
+production World/Wall navigation, actor isolation, C05 replacement streams/new
+epochs, persistent Phaser canvas, external restart and final multi-client flow
+still require the genuine cohort. Full IN04 remains NOT_RUN and its original
+persistent goal remains BLOCKED and unfinished. The qualified frozen patch and
+source evidence go directly to designated publisher412e; Root153 is the runtime
+and interface counterpart. No king/SL review, acknowledgment or readiness poll
+is a publication prerequisite.

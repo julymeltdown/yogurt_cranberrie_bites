@@ -1,0 +1,24 @@
+{
+  "status": "PASS",
+  "failure": null,
+  "peak": {
+    "fullCarryBytes": 2634715136,
+    "positiveRoundBytes": 630784,
+    "preparationBytes": 1429219,
+    "pids": 6,
+    "rssBytes": 568836096
+  },
+  "finishedEpoch": 1793827427.366736,
+  "remainingDescendants": [],
+  "dependencyLinkRemaining": false,
+  "scratchRemaining": false,
+  "rssAtCleanup": 24297472,
+  "fullRoots": [
+    "/Users/lhs/Desktop/mcr-worktrees/qa-wall-reference-target",
+    "/Users/lhs/Desktop/mcr/frontend/node_modules",
+    "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64",
+    "/Users/lhs/Desktop/mcr/.git"
+  ],
+  "originalPreparationRawGitBytes": 694437,
+  "realIN04": "NOT_RUN"
+}

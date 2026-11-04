@@ -1,0 +1,55 @@
+{
+  "allocation": "IN04-EXPLICIT-RECONNECT-SOURCE-20261104T2125Z",
+  "accepted": true,
+  "accepted_epoch": 1793827395.72799,
+  "work_deadline_epoch": 1793827695.72799,
+  "hard_deadline_epoch": 1793827755.72799,
+  "max_whole_bytes": 8589934592,
+  "max_owned_bytes": 8388608,
+  "max_new_bytes": 8388608,
+  "max_rss_bytes": 2684354560,
+  "max_pids": 8,
+  "start_floor_bytes": 12884901888,
+  "live_floor_bytes": 8589934592,
+  "all_new_bytes": 4303355904,
+  "fresh_free_bytes": 22836658176,
+  "source_head": "a9596b594085e93157553a350cd937c5a4bf8313",
+  "frozen_feature_source": "8b8a5502886b604b039c79a7c89d932944a6735e",
+  "guardian_sha256": "de635bb324131387da17af250f7411bd49f9a0b1c6885ff3762f8a965f9c96d6",
+  "primary_sha256": "6d4bd90559095f4aaf85f3818ad6bb52fecef3636727aafb732303b49ac91067",
+  "profile": "reconnect",
+  "source_preparation_cap_preserved": 8388608,
+  "full_accounting": {
+    "deduplicated_roots": [
+      "/Users/lhs/Desktop/mcr-worktrees/qa-wall-reference-target",
+      "/Users/lhs/Desktop/mcr/frontend/node_modules",
+      "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64",
+      "/Users/lhs/Desktop/mcr/.git"
+    ],
+    "du_kib": [
+      802460,
+      428044,
+      204188,
+      1133688
+    ],
+    "measured_carry_bytes": 2630021120,
+    "prior_known_source_deps_git_kib": [
+      802244,
+      428044,
+      1096960
+    ],
+    "prior_max_bytes": 2634715136,
+    "node_included_bytes": 209088512,
+    "historical_proof": "All prior proof remains inside measured existing checkout; shared Git deduplicated in one du invocation. Prior known source/deps/Git floor plus current Node remains reserved, never charged again as NEW.",
+    "prior_measured_before_admission_bytes": 2634715136
+  },
+  "predecessor": {
+    "id": "COMMUNITY-CLOCK-RETRY-SOURCE-20261104T2120Z",
+    "actual_full": "2026-11-04T21:20:17.431900Z",
+    "resources": 0,
+    "reportedBy": "01a1a53d-36b8-7522-ae11-646f5e6f0b30",
+    "allocator_confirmed": true
+  },
+  "next_successor": "01a1a230-6acc-7e82-9e4b-92506decc745",
+  "other_inventory": "Allocator latest: ABE06fixture eligible1GiB40ALL8GiB RSS, CMapviewport128MiB6ALL3GiB, DArtFULL0, predecessor53dFULL0. Including own8ALL2.5GiB: upper54ALL13.5GiB/global3/SOURCE2/browser0. Conservative OTHER4GiB includes actual/eligible A/C and ordinaryupper1.25GiB; higher literal claims govern. FE37source04 is named next successor, no concurrent own hold."
+}

@@ -1,0 +1,166 @@
+{
+  "task": "IN04-WALL-B-EXPLICIT-RECONNECT",
+  "sourceQualification": "PASS",
+  "focusedChecks": 32,
+  "realIN04": "NOT_RUN",
+  "originalPersistentGoal": "BLOCKED_UNFINISHED",
+  "frozenFeatureSource": "8b8a5502886b604b039c79a7c89d932944a6735e",
+  "validationHead": "a9596b594085e93157553a350cd937c5a4bf8313",
+  "sourceHashes": {
+    "frontend/e2e/in04-wall-b/preflight.ts": "f7e956220d47fce58e027aa56244b5aa2d43ae7ccbe809524c1e81007a30ce28",
+    "frontend/e2e/in04-wall-b/helpers.ts": "785d88de9c55863026fb436b3d9f685db9879b6869b2619d40ac2de554df6602",
+    "frontend/e2e/in04-wall-b/wall-b.spec.ts": "1a651236d5313c9797c12d08f85ddc1625b1b346b7676d4324c14ad156ab8e52",
+    "frontend/e2e/in04-wall-b/world-texture.ts": "0aaf695555282272ebbd1494181a9bec9e8db3ae9de30d346426c84d8831f9ca",
+    "frontend/e2e/in04-wall-b/runtime.ts": "ead4b9c764fe851f93f981360dce811d7ea62c2b936dce92284759b6f46b7bef",
+    "frontend/e2e/in04-wall-b/validate.py": "de635bb324131387da17af250f7411bd49f9a0b1c6885ff3762f8a965f9c96d6",
+    "frontend/e2e/in04-wall-b/.gitignore": "9031d0c7c796f25117a8136fb2a0261584e002e52f42e81e555a2ce1942583a4",
+    "frontend/e2e/in04-wall-b/reconnect-check.ts": "5faf278ad4e7387a15f9f5f7df08fb6715ce1d0434be73453f19df586183e4d2",
+    "frontend/e2e/in04-wall-b/tsconfig.json": "c8966c257a2cc136bd4900832ffceb308deaa3bdd52728a468fafa0a0d26655c",
+    "frontend/e2e/in04-wall-b/playwright.config.ts": "36b77437dc07b02f57e89f445ee8936364f8c870258f2ee802e76849854faf2b",
+    "frontend/e2e/in04-wall-b/check.ts": "1a1294a86354158d1801b6d49e4df7e28e3cff0076625e51934ef48a7b2e9783",
+    "frontend/e2e/in04-wall-b/reconnect.ts": "112dcf0508a962be2f04db7b7de8f8705f57008125fe0b3224c014b033e4a8dc"
+  },
+  "readOnlyDependencyHashes": {
+    "frontend/src/app/WorldShell.tsx": "4d5bb4644423b32529b629d4e6c0fcb53620253a8b424888b7191c6c0ea72904",
+    "frontend/src/app/WorldHost.tsx": "8438ad02ad8d21b3fc0e64d76ea2e47fdfb89d8f7ca5db86e57516678170a491",
+    "frontend/src/app/navigation.tsx": "2efd2d1236536e663f3fae00f74ecaacaea091a3474c45c47c845afa0a2ff1cc",
+    "frontend/src/app/shell-chrome/index.tsx": "498fa45b9f14b784bbc410984bc99728bab02e8782f60b15e604c6bcc8283304",
+    "frontend/src/app/shell.css": "108da146fe93ff3e7bec225a737a2ff304fcb3f38f6015c0c8fca1c659f69a72",
+    "frontend/src/world/composition/index.ts": "8242e0a878742b7d31dfb1f947741b534a97b79bb18391b493d3dbec4eb492fc",
+    "frontend/src/world/network/replication.ts": "568dda7c23f6d66f9cf5c8239bacf1f58ff1744b0746e07d6cc72812f76f1dd2",
+    "frontend/src/world/network/transport/engine.ts": "2bc640aa283b9d1586e5b19f3d0eff05d5e19303fdc78d928a1e2a0855de513d",
+    "frontend/e2e/real/mural-helpers.ts": "b7845326b3306318e7d01a0cdc1213b792cde0c00fe0d96514aacae11566b647",
+    "frontend/e2e/real/world-gate/observer.ts": "96a1520f56ee2104176196c7bb698ce8b20bc4dca46d7290b04207324df20a44"
+  },
+  "readOnlyDependencyRevision": "Assigned local dependency code inherited from 2ff0aab8; current runtime behavior and real UI remain unqualified until actual cohort execution.",
+  "publicRuntimePortChanged": false,
+  "restartAuthority": "Separate guarded managed owner performs external PG+Concert restart. QA only observes existing proof and uses actual production Reconnect world controls.",
+  "old84Replayed": false,
+  "nativeVisualBrowserOrServiceRun": false,
+  "allocation": "IN04-EXPLICIT-RECONNECT-SOURCE-20261104T2125Z",
+  "acceptedEpoch": 1793827395.72799,
+  "workDeadlineEpoch": 1793827695.72799,
+  "hardDeadlineEpoch": 1793827755.72799,
+  "fullEpoch": 1793827427.366736,
+  "fullSentBeforeManualDocumentationTo": [
+    "01a1a21d-39ec-7912-84cb-910058e7a110",
+    "01a1a230-6acc-7e82-9e4b-92506decc745"
+  ],
+  "fullCopySentToPredecessorWithoutCustodyGrant": "01a1a53d-36b8-7522-ae11-646f5e6f0b30",
+  "commands": [
+    {
+      "argv": [
+        "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node",
+        "--experimental-transform-types",
+        "frontend/e2e/in04-wall-b/reconnect-check.ts"
+      ],
+      "exit": 0,
+      "expected": 0
+    },
+    {
+      "argv": [
+        "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node",
+        "frontend/node_modules/typescript/bin/tsc",
+        "--noEmit",
+        "--incremental",
+        "false",
+        "-p",
+        "frontend/e2e/in04-wall-b/tsconfig.json",
+        "--pretty",
+        "false"
+      ],
+      "exit": 0,
+      "expected": 0
+    },
+    {
+      "argv": [
+        "/Users/lhs/Desktop/mcr/frontend/node_modules/.bin/oxlint",
+        "frontend/e2e/in04-wall-b/reconnect.ts",
+        "frontend/e2e/in04-wall-b/reconnect-check.ts",
+        "frontend/e2e/in04-wall-b/wall-b.spec.ts"
+      ],
+      "exit": 0,
+      "expected": 0
+    },
+    {
+      "argv": [
+        "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node",
+        "frontend/node_modules/@playwright/test/cli.js",
+        "test",
+        "--config",
+        "frontend/e2e/in04-wall-b/playwright.config.ts",
+        "--list"
+      ],
+      "exit": 0,
+      "expected": 0
+    },
+    {
+      "argv": [
+        "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node",
+        "--experimental-transform-types",
+        "frontend/e2e/in04-wall-b/preflight.ts"
+      ],
+      "exit": 2,
+      "expected": 2
+    }
+  ],
+  "changedTsLintWarnings": 0,
+  "primarySha256": "6d4bd90559095f4aaf85f3818ad6bb52fecef3636727aafb732303b49ac91067",
+  "guardianSha256": "de635bb324131387da17af250f7411bd49f9a0b1c6885ff3762f8a965f9c96d6",
+  "fullWholeCapBytes": 8589934592,
+  "newRoundCapBytes": 8388608,
+  "originalPreparationHistoryCapBytes": 8388608,
+  "nonshrinkingPriorFullCarryBytes": 2634715136,
+  "primaryPeak": {
+    "fullCarryBytes": 2634715136,
+    "positiveRoundBytes": 630784,
+    "preparationBytes": 1429219,
+    "pids": 6,
+    "rssBytes": 568836096
+  },
+  "guardianPeak": {
+    "ownedBytes": 864458,
+    "positiveNewBytes": 557882,
+    "rssBytes": 607453184,
+    "pids": 2
+  },
+  "allOwnRawGitPreparationBytes": 694437,
+  "cleanup": {
+    "remainingDescendants": [],
+    "dependencyLinkRemaining": false,
+    "scratchRemaining": false,
+    "browserServerPgNativeTargetDescriptorHeld": false
+  },
+  "accounting": "Full existing checkout/deps/Node/shared Git measured in one deduplicating du invocation, old proof retained; carry high-water never shrinks and is not charged NEW. Independent primary additionally counts all own uncompressed source-history objects against preserved preparation cap; retained guardian keeps original cap.",
+  "qualifications": [
+    "32 source boundary/driver/AST checks, not actual UI acceptance",
+    "strict scoped nonincremental tsc0",
+    "changed-TypeScript oxlint0 with no warnings",
+    "one real journey discovered by --list; no browser",
+    "missing private config negative exited2 expected2"
+  ],
+  "limitations": [
+    "No real cohort, C05 reconnect, Phaser lifecycle, external restart, moderation or freeze executed",
+    "Read-only public runtime port and all application/shared dependency bytes unchanged",
+    "No old84/native/visual replay, install, worktree, clone, service, target or cleanup of unrelated resources",
+    "Source qualification is not full IN04 acceptance"
+  ],
+  "publisher": "01a1a5d9-332b-7822-a8f7-412e295fa211",
+  "runtimeInterfaceCounterpart": "01a1a153-1227-7e72-801f-a2a6b91981e1",
+  "publication": "Direct validated committed handoff to standing412e; remote follow-up delivery not yet claimed.",
+  "evidenceSha256": {
+    "docs/mcr/evidence/in04-wall-b/IN04-EXPLICIT-RECONNECT-SOURCE-20261104T2125Z/attempt01/00.log": "31b7afcb82e7ba3b823914996c20a3d66d50e7aff4a3b114dd470cf03abe3611",
+    "docs/mcr/evidence/in04-wall-b/IN04-EXPLICIT-RECONNECT-SOURCE-20261104T2125Z/attempt01/01.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "docs/mcr/evidence/in04-wall-b/IN04-EXPLICIT-RECONNECT-SOURCE-20261104T2125Z/attempt01/02.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "docs/mcr/evidence/in04-wall-b/IN04-EXPLICIT-RECONNECT-SOURCE-20261104T2125Z/attempt01/03.log": "a0dbfb504b405fe72a5d74702c4da9d50f8c139fab98b21fb29b1a908c0a80ea",
+    "docs/mcr/evidence/in04-wall-b/IN04-EXPLICIT-RECONNECT-SOURCE-20261104T2125Z/attempt01/04.log": "f916df7ae1d4eeafc570facb57fbc4cccf12fe550ce42a79972e25b5b9154d66",
+    "docs/mcr/evidence/in04-wall-b/IN04-EXPLICIT-RECONNECT-SOURCE-20261104T2125Z/attempt01/guardian.jsonl": "ede8ec1aeceb726cfb277e34150bbb887c0bdd241bcfe5f308ae5315c0595df4",
+    "docs/mcr/evidence/in04-wall-b/IN04-EXPLICIT-RECONNECT-SOURCE-20261104T2125Z/attempt01/offer.json": "72df17364ba328e044f6e246a6680a8b73767d46b139c8a8bec67b5e5139ca93",
+    "docs/mcr/evidence/in04-wall-b/IN04-EXPLICIT-RECONNECT-SOURCE-20261104T2125Z/attempt01/release.json": "9bd23900ab47e55e43bcb78ac380608b61636c70a0017c7dbb380346cc5b2b24",
+    "docs/mcr/evidence/in04-wall-b/IN04-EXPLICIT-RECONNECT-SOURCE-20261104T2125Z/initial-owned-bytes.json": "783f7448ff7e581b7d8e190173bfe3e56f4853e080f2fa6a33658f7a994681f5",
+    "docs/mcr/evidence/in04-wall-b/IN04-EXPLICIT-RECONNECT-SOURCE-20261104T2125Z/primary-attempt01-inner.log": "9cf4b45547e0f4a77dcfa9cd0e44e0691e60fa63ba5084ae5fca61996a270ec9",
+    "docs/mcr/evidence/in04-wall-b/IN04-EXPLICIT-RECONNECT-SOURCE-20261104T2125Z/primary-attempt01-release.json": "ef0add151fb47e2a0af92811dab318d5ccd29383548c218969c5a355213c5cc7",
+    "docs/mcr/evidence/in04-wall-b/IN04-EXPLICIT-RECONNECT-SOURCE-20261104T2125Z/primary-attempt01.jsonl": "1e6d0d730d0fccff58731a7c1bd55f39b3d221fa5af6744dced0b41a9235639e",
+    "docs/mcr/evidence/in04-wall-b/IN04-EXPLICIT-RECONNECT-SOURCE-20261104T2125Z/primary-initial.json": "45762ae24078fe30ab39fc4cacc25fb98cfc8dbf8fd69671bb2343c93d340a82"
+  }
+}

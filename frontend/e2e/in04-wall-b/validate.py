@@ -64,6 +64,7 @@ def main():
     parser = argparse.ArgumentParser()
     parser.add_argument('--accepted-offer', required=True, type=Path)
     parser.add_argument('--attempt', default='attempt01')
+    parser.add_argument('--profile', choices=('wall-b', 'reconnect'), default='wall-b')
     args = parser.parse_args()
     offer = json.loads(args.accepted_offer.read_text())
     required = {'allocation', 'accepted', 'work_deadline_epoch', 'hard_deadline_epoch', 'max_owned_bytes', 'max_new_bytes', 'max_rss_bytes', 'max_pids', 'live_floor_bytes', 'all_new_bytes'}
@@ -101,9 +102,9 @@ def main():
     env.pop('MCR_IN04_CONFIG', None)  # Missing-input negative must never load real credentials.
     env['MCR_IN04_B_ARTIFACT_ROOT'] = str(out / 'unused-browser-output')
     commands = [
-        ([str(NODE), '--experimental-transform-types', 'frontend/e2e/in04-wall-b/check.ts'], 0),
+        ([str(NODE), '--experimental-transform-types', 'frontend/e2e/in04-wall-b/' + ('reconnect-check.ts' if args.profile == 'reconnect' else 'check.ts')], 0),
         ([str(NODE), 'frontend/node_modules/typescript/bin/tsc', '--noEmit', '--incremental', 'false', '-p', 'frontend/e2e/in04-wall-b/tsconfig.json', '--pretty', 'false'], 0),
-        ([str(DEPS / '.bin/oxlint'), 'frontend/e2e/in04-wall-b'], 0),
+        ([str(DEPS / '.bin/oxlint'), *(['frontend/e2e/in04-wall-b/' + name for name in ('reconnect.ts', 'reconnect-check.ts', 'wall-b.spec.ts')] if args.profile == 'reconnect' else ['frontend/e2e/in04-wall-b'])], 0),
         ([str(NODE), 'frontend/node_modules/@playwright/test/cli.js', 'test', '--config', 'frontend/e2e/in04-wall-b/playwright.config.ts', '--list'], 0),
         ([str(NODE), '--experimental-transform-types', 'frontend/e2e/in04-wall-b/preflight.ts'], 2),
     ]
@@ -164,7 +165,7 @@ def main():
         # ps itself is a transient observer; no persistent child may remain.
         remaining.discard(os.getpid())
         source_hashes = {str(p.relative_to(ROOT)): hashlib.sha256(p.read_bytes()).hexdigest() for p in HERE.glob('*') if p.is_file()}
-        receipt = {'status': outcome, 'realIN04': 'NOT_RUN', 'commands': logs, 'peak': peak, 'finished_epoch': time.time(),
+        receipt = {'profile': args.profile, 'status': outcome, 'realIN04': 'NOT_RUN', 'commands': logs, 'peak': peak, 'finished_epoch': time.time(),
                    'sourceRevision': subprocess.check_output(['git', 'rev-parse', 'HEAD'], cwd=ROOT, text=True).strip(),
                    'sourceHashes': source_hashes, 'dependencyLinkRemaining': os.path.lexists(LINK), 'observedPidsAtCleanup': sorted(remaining),
                    'scratchOrServerAllocated': False, 'rssAtCleanup': rss}
