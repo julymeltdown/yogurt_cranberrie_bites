@@ -59,8 +59,9 @@ fn request(h: &RouteHarness, method: &str, tail: &str, body: impl Into<Body>) ->
     request.body(body.into()).unwrap()
 }
 async fn check(h: &RouteHarness, request: Request<Body>, status: StatusCode, reason: &str) {
+    let target = format!("{} {}", request.method(), request.uri());
     let response = h.transport_router().oneshot(request).await.unwrap();
-    assert_eq!(response.status(), status);
+    assert_eq!(response.status(), status, "{target}");
     for (name, value) in [
         ("cache-control", "no-store"),
         ("pragma", "no-cache"),

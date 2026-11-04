@@ -102,3 +102,28 @@ production service executable, install or new harness is requested.
 Validation commands, exit codes, source pins, limitations and committed handoff
 will be recorded here after execution. The publisher integrates serially and
 the implementation owner verifies actual published ancestry and postimages.
+
+## First validation round and repair
+
+Allocation BE-GW-IN03-BACKEND-202611041037Z tested formatted source
+`eb266909f6dd8d23d8f2e55eb3ecfee530b49d63`. Scoped formatting and the selected
+locked offline Rust 1.88 compilation exited 0. The six filtered Product library
+tests, four retained Product HTTP tests and four retained EOF tests passed. The
+new HTTP binary passed six tests and failed its unknown-suffix test (exit 101):
+an unmounted suffix returned 503 instead of 404. This failure is preserved, not
+counted as a pass. The shared target was unconditionally released before all
+copied runs; the whole round was then fully released with zero private handles
+or test groups and the four closed executable copies removed.
+
+Repair: explicitly close unmounted feature namespaces with C04 404 before the
+shared fallback, using Axum's actual MatchedPath presence. Mounted routes still
+retain the existing authentication, metadata, body and producer boundaries.
+The failing assertion now records the method and target. Repair validation is
+NOT_RUN until a fresh allocation; the first round cannot qualify this revision.
+
+First-round logs, Cargo JSON, source tree/diff, runtime/fixture pins, executable
+hash manifests, accounting and release receipts are retained at
+`/var/folders/j4/41h_5mjj7j9d8f2j2bzcsngw0000gn/T/mcr-gw-in03-azs_rgop`.
+Planning-only check `PYTHONDONTWRITEBYTECODE=1 python3 scripts/mcr/check-plan.py`
+passed with exit 0; it independently verified original source provenance and
+planning exports, not application behavior.

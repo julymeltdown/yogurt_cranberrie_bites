@@ -453,6 +453,13 @@ fn is_product(path: &str) -> bool {
 }
 /// Cover outer transport rejections too, without discarding owner recovery details.
 pub async fn protect_response(request: Request, next: axum::middleware::Next) -> Response {
+    // Router::layer also wraps the shared fallback. Keep unmounted feature
+    // suffixes out of unrelated service middleware and return a closed C04 error.
+    if feature_routes::protects(request.uri().path())
+        && request.extensions().get::<axum::extract::MatchedPath>().is_none()
+    {
+        return error(StatusCode::NOT_FOUND, "RESOURCE_UNAVAILABLE");
+    }
     let protected = is_product(request.uri().path());
     let mut response = next.run(request).await;
     if !protected {
