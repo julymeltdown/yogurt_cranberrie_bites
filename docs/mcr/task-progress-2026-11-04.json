@@ -1,18 +1,18 @@
 {
-  "updated_at": "2026-11-04T09:44:43+09:00",
-  "published_snapshot": "2db32fdf274bee227533774930e8b7207e29e95e",
+  "updated_at": "2026-11-04T09:49:04+09:00",
+  "published_snapshot": "0fa4c767167867496a1bd47ad70c2845113cadec",
   "method": "Management reconciliation of published task dispositions and existing developer/SL receipts; no code/query/visual/test inspection or reruns. Publication ancestry only was checked for task-linked delivery commits.",
   "required_tasks": 112,
   "required_ia_entries": 61,
   "optional_tasks_excluded": 6,
   "counts": {
     "RECORDED_ACCEPTED": 12,
-    "IMPLEMENTATION_EVIDENCED": 74,
+    "IMPLEMENTATION_EVIDENCED": 73,
     "UNRECONCILED": 10,
-    "TASK_CRITERIA_SATISFIED": 11,
+    "TASK_CRITERIA_SATISFIED": 12,
     "OPEN_INTEGRATION_GATE": 5
   },
-  "recorded_task_criteria_outcomes": 23,
+  "recorded_task_criteria_outcomes": 24,
   "implementation_percentage": null,
   "limitations": [
     "12 recorded ACCEPTED dispositions comprise 11 preserved historical records plus the explicit FE08 implementation-owner acceptance; 10 additional task-local SATISFIED dispositions comprise the previous nine frontend records plus original BE25. No new king/SL technical acceptance is asserted.",
@@ -873,13 +873,17 @@
       "id": "FE20",
       "title": "Physical check-in and meeting beacon",
       "lane": "FE-APP",
-      "coverage_bucket": "IMPLEMENTATION_EVIDENCED",
-      "recorded_state": null,
+      "coverage_bucket": "TASK_CRITERIA_SATISFIED",
+      "recorded_state": "MOCK_READY",
       "evidence": [
         "docs/mcr/frontend/meeting-beacon.md"
       ],
-      "note": "Published receipt or owner report records bounded implementation/fixture/component work. Whole original-task completion is partial or not yet reconciled; no additional live/device gate is imposed on a pure task.",
-      "known_task_local_gap": "Photo attachment/upload/persistence; optional photo display does not close this requirement."
+      "note": "The implementation owner explicitly declares original FE20 frontend implementation SATISFIED in the frozen-contract/deterministic-fixture scope, with no feature-local behavior remaining. Published 6c908472 records retained meeting/privacy/physical-arrival safeguards and the completed photo selection, upload, attachment, save, fresh-controller authorized reread, replacement/removal and recovery flow. MOCK_READY is the environment label; no king or SL technical review was performed.",
+      "known_task_local_gap": "Photo attachment/upload/persistence; optional photo display does not close this requirement.",
+      "known_followup": "Separate live integration: BE meeting-photo producer and server authorization, owner-media lifetime/erase/read behavior, Product API root/version admission, operator rights, IN02, devices and multiuser journeys remain with their implementation owners. Actual backend durability, server authority and default photo activation are not inferred.",
+      "published_integration_commits": [
+        "6c908472ec3b6025bcdca9a90eae4db26c90a0b4"
+      ]
     },
     {
       "id": "FE21",
@@ -1330,6 +1334,13 @@
       "owner_chat": "01a1a230-6acc-7e82-9e4b-92506decc745",
       "receipt_commit": "7c2f3af7b9fd7bab2ed2d863cc2262527cc8553e",
       "disposition": "SATISFIED, original frontend contract/fixture criteria; actual bounded goal COMPLETE, separate caller-assembly goal ACTIVE"
+    },
+    {
+      "recorded_at": "2026-11-04T09:49:04+09:00",
+      "task": "FE20",
+      "owner_chat": "01a1a1fe-1ab7-79b0-adbc-d4c025701acb",
+      "receipt_commit": "6c908472ec3b6025bcdca9a90eae4db26c90a0b4",
+      "disposition": "SATISFIED, original frontend contract/fixture criteria; actual bounded goal COMPLETE and checkout clean STOP"
     }
   ]
 }

@@ -22,7 +22,7 @@ export function sampleReceipt(operation = 'createConcertBeacon', state: Receipt[
     idempotency_key: key, state, resource_id: state === 'SUCCEEDED' ? beaconId : null, resource_revision: state === 'SUCCEEDED' ? 1 : null,
     failure_reason: state === 'FAILED' ? 'PERMISSION_DENIED' : null, created_at: '2026-11-07T08:00:00Z', expires_at: '2026-11-08T08:00:00Z', result_status: state === 'SUCCEEDED' ? 200 : null }
 }
-export async function harness() {
+export async function harness(photoClient?: import('../../model/photo-client').MeetingPhotoConfiguration) {
   let time: number | null = Date.parse('2026-11-07T08:00:00Z'), beacon = sampleBeacon(), authority: MeetingAuthority | null = null, photo: QualifiedMeetingPhoto | null = null
   let mode: 'ok' | 'lost' | 'pending' | 'denied' | 'conflict' | 'missing' | 'server' = 'ok'
   let status: Receipt = sampleReceipt()
@@ -55,6 +55,7 @@ export async function harness() {
   for (let i = 0; i < 100 && placesController.read().list.phase !== 'ready'; i++) await new Promise(resolve => setTimeout(resolve, 0))
   if (placesController.read().list.phase !== 'ready') throw new Error('Synthetic FE19 initialization failed')
   const controller = createMeetingBeaconController({ auth, places: placesController, now: () => time, newKey: () => key,
+    ...(photoClient ? { photoClient } : {}),
     authority: { read: () => authority, subscribe: fn => { authorityListeners.add(fn); return () => { authorityListeners.delete(fn) } } },
     photos: { read: () => photo, subscribe: fn => { photoListeners.add(fn); return () => { photoListeners.delete(fn) } } } })
   controller.start()

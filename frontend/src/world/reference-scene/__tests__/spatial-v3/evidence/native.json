@@ -1,0 +1,3723 @@
+{
+  "result": "PASS",
+  "qualification": "Actual spatial-v3/all-three-quality-v6 art/closed C06/Tiled/production Phaser+selected characters/C05 decoder and injected current runtime overview factory, isolated roster/privacy. Candidate NOT_RELEASE_BOUND and NOT_ADMITTED; no live Auth/server/socket, real multiuser, devices or artist visual acceptance.",
+  "testedParent": "72685ad98f26437ce88ec7a51ffde0aa2bc29539",
+  "pins": {
+    "src/world/reference-scene/model.ts": "c8c32f40ffd0124288c4253f1b6733e4ac01afab72fd04a4c2f66573e41d867b",
+    "src/world/reference-scene/loader.ts": "cc879c6c96fd6a26a1cf6f8d32299d5c3449c64629636fa030c96532c99ae920",
+    "src/world/reference-scene/phaser.ts": "b01001452caa199723bbb34f672e7985687f146850f46e28d7bd4801faa707b8",
+    "src/world/reference-scene/overview.ts": "afebcad7e084ac416bd00eb54500aeebf4c64657323541ea606ab1422a15e4c9",
+    "src/world/reference-scene/metadata.ts": "2daa0fc79a059210bab6ba6c4e5a3a9a436a0c7ad8c59965cc15ad0f6542f498",
+    "src/world/reference-scene/index.ts": "6cf86a8b5c55f6a2612669e2addfd85f8849882321d71e3870e5d3a653c6ff99",
+    "src/world/scenes/MapScene.ts": "c172568f4b3c1a01894fbc4e5e41e3c887601fa9c2d3eb0c4c79dc76117a7363",
+    "src/world/runtime.ts": "5acd1bd73385aeae1d0559f1a8e97978c5b939349a5f2cb84bc23b9fbc409868",
+    "src/world/theme/compatibility.ts": "f1aa9bfd3eae5f30f30069609882f385085cdabb97bba005019e8bbe78376b3c",
+    "src/world/map/resources.ts": "106a01f56832bea0fc37facdbe51a44a548bf7765233773f90b38143718e8e2d",
+    "src/world/map/manifest.ts": "d765ce6b7e47a76a2763fde32c6a9e4bde244beb872e761d2c6f73b757cd033c",
+    "src/world/avatar/whole-character.ts": "4e9295799f1a905e53c9866c4621538243bb677ab173f5db6b2ffd3309f8ab85",
+    "src/world/reference-scene/spatial-v3/source-inputs.json": "847d9c92a4ddfa22b8187bb6afe9a9fc2e6e09b1c7fe8e5f85c5a7f5c0d846a9",
+    "src/world/reference-scene/spatial-v3/tile-pin.json": "f20d50e9daa3026972728b8be6dd5d3f84d8c15ad74ac2a75e85edca0651bd48",
+    "src/world/reference-scene/spatial-v3/model.ts": "d4c1c74ca1f92777812af90cdc5a4dcc5bc8411ac6626ebee1fcb95ada90783f",
+    "src/world/reference-scene/spatial-v3/build-source-inputs.py": "3d0d9cb3909a1f105367787fd31bea21a0650629b5e7ce8336af65d04b5f698f",
+    "src/world/reference-scene/__tests__/spatial-v3/fixture.ts": "0bd7d9672e141cc1dbef28167e68905cfac118effcd64e3fa1b6297a3d3c7333",
+    "src/world/reference-scene/__tests__/spatial-v3/native.ts": "5974d6b83c8db47b8c12ae32bb9e990c6913c048d5cd3251309b6fab54bc0aff",
+    "src/world/reference-scene/__tests__/spatial-v3/native.mjs": "d3c6c8a3976bb81689e33346be9d816c07328dcadb602513988338f0f2d1e281",
+    "src/world/reference-scene/__tests__/spatial-v3/native.html": "f5f05a58ec3f029d464e7e09a99f337f4316729700b1e70580226ecd74ff2698",
+    "src/world/reference-scene/__tests__/spatial-v3/model.test.ts": "9b910425ec8ae4ab5902bd5ab1072d693e5ad111945ec6b245465500f89a6a9d",
+    "src/world/reference-scene/__tests__/spatial-v3/theme-gate.test.ts": "be2a253d922440e9934aa8030875382153d9449208f735f08a7907f5e0e15f47",
+    "public/world/reference-scene-v2/runtime/spatial-v3/canonical-map-v4.json": "60364d5f35bcc8ff82931b7e3a0724a4580880d4a481610e90475d73dcb6ceb9",
+    "public/world/reference-scene-v2/runtime/spatial-v3/source-binding-v4.json": "e198560e3c14ae9fb670829f7996a98e5b7f96b61748238ffdac242cdc01318d",
+    "public/world/reference-scene-v2/runtime/spatial-v3/build-tiled.py": "0ae2ddc7e9e6fcad239c70b99ff6759715f7cd18d1489bc01a4d01bf507e174c",
+    "public/world/reference-scene-v2/spatial-v3/geometry-proposal.json": "373dfdb9ee119c5c2ae39b9b5843732e9fb6ca3d7030c2a26f026adc40a1e8dc",
+    "public/world/reference-scene-v2/spatial-v3/integer-projection.json": "da7d0f0023a314b7d20572f403cc2deedda31f5389c4d5dff1f38d47ab73303c",
+    "public/world/reference-scene-v2/quality-v6/manifest.json": "a78fbd045e9123e18ffa01efc669dfef9965bbeccb1cd378b886b9b975247aed",
+    "public/world/reference-scene-v2/quality-v6/ground.png": "e2d9f785d31ea9e9a1888dc8f73d182eca917b54e1924fbf5159bc91be96e795",
+    "public/world/reference-scene-v2/quality-v6/revenge/scenery.json": "319d38c0e29296ed4b1c47ce1e178a5fca7e408dda0545b6ad0f88f6c8f4e40f",
+    "public/world/reference-scene-v2/quality-v6/revenge/layout.json": "3b0ea87623eb4ef022e477dbb12585a3067808d2638cb767af836f05fe297b68",
+    "public/world/reference-scene-v2/quality-v6/revenge/map-metadata.json": "98e2714e60568beac8cf90638f1823e985ef793ae3b05e88876e12c2b7eaa500",
+    "public/world/reference-scene-v2/quality-v6/revenge/resource-inputs.json": "26be991706452a09ce1924bda6711075321dd3b0a98ac168aa669b653fa9c1df",
+    "public/world/reference-scene-v2/quality-v6/revenge/provenance.json": "030052b9f6d2285b42cd6d1c0654ef0c94deea8578e949475aa9ae4dc6286aca",
+    "public/world/reference-scene-v2/quality-v6/revenge/atlas.png": "210f82ccce180d5b5502f5c865b9505097c8960b2d4c82a7fb74411149df7185",
+    "public/world/reference-scene-v2/quality-v6/parade/scenery.json": "7c049ebb8bee5369656de0ce69e49162daa52e3a5678d707cf05a5f9c0938a6b",
+    "public/world/reference-scene-v2/quality-v6/parade/layout.json": "ae05cf49876b148f68c9c0f059aa2919c443eaaf47499a5fc8e5287304c0fc10",
+    "public/world/reference-scene-v2/quality-v6/parade/map-metadata.json": "98e2714e60568beac8cf90638f1823e985ef793ae3b05e88876e12c2b7eaa500",
+    "public/world/reference-scene-v2/quality-v6/parade/resource-inputs.json": "c498abde0a9502cc22244fa83c5625ed3cb00d5e8054e942e40fd3f18416fd8a",
+    "public/world/reference-scene-v2/quality-v6/parade/provenance.json": "f7512a4959f6515910d17d823d94e7be3f8a5ada3f2c49c541eed0c6c669707c",
+    "public/world/reference-scene-v2/quality-v6/parade/atlas.png": "e0bc7f1d88b307fd7dd317eb17aae9c2dd2158d5106dedee8b6c9a0ccffdc272",
+    "public/world/reference-scene-v2/quality-v6/danger/scenery.json": "8dfdf93e47d97392a0002a5755f606c976456355ba60714e14405dd5245a432d",
+    "public/world/reference-scene-v2/quality-v6/danger/layout.json": "8be24044963008d4149521065a3ebf08b1d5c85b3752287d0cdcf4a8ab0fa51d",
+    "public/world/reference-scene-v2/quality-v6/danger/map-metadata.json": "98e2714e60568beac8cf90638f1823e985ef793ae3b05e88876e12c2b7eaa500",
+    "public/world/reference-scene-v2/quality-v6/danger/resource-inputs.json": "a31e5db4abff10e0c2778dac28ea0423ff20ef705a23466e11270c47d5f9e660",
+    "public/world/reference-scene-v2/quality-v6/danger/provenance.json": "2ae398cc9cd4143b44299deb0c0d1c7fb9b436f6378a3b4d60a6918c6324c54c",
+    "public/world/reference-scene-v2/quality-v6/danger/atlas.png": "d5b658101719fd22834b6a4ce2b5502d80f380b7cd3c12bf7bfa8801a0e068ec"
+  },
+  "cases": [
+    {
+      "width": 360,
+      "height": 800,
+      "initial": {
+        "phase": "ready",
+        "mounts": 1,
+        "destroys": 0,
+        "canvases": 1,
+        "decodedImages": 3,
+        "scene": {
+          "textures": 2,
+          "decodedBytes": 8175616,
+          "objects": 23,
+          "peakTextures": 2,
+          "peakDecodedBytes": 8175616
+        },
+        "avatars": {
+          "textures": 6,
+          "sprites": 6,
+          "listeners": 1
+        },
+        "geometry": "sha256:899aca9bd6ce499c6f46aff5eaf21e30ab34b301e988771b978a6fab7c2d469f",
+        "mapId": "mcr_reference_scene_r3",
+        "theme": "PARADE",
+        "camera": {
+          "zoom": 1,
+          "scrollX": 272,
+          "scrollY": 0,
+          "width": 360,
+          "height": 703
+        },
+        "requests": [
+          "http://127.0.0.1:5173/world/reference-scene-v2/runtime/spatial-v3/canonical-map-v4.json",
+          "http://127.0.0.1:5173/world/reference-scene-v2/quality-v6/ground.png",
+          "http://127.0.0.1:5173/world/reference-scene-v2/quality-v6/parade/atlas.png"
+        ],
+        "cache": {
+          "loads": 3,
+          "hits": 1,
+          "coalesced": 0,
+          "residentBytes": 1751279,
+          "entries": 3,
+          "disposed": false
+        },
+        "overview": {
+          "width": 768,
+          "height": 1296,
+          "mapId": "mcr_reference_scene_r3",
+          "mapRevision": 4,
+          "mapHash": "sha256:3e85db2eddb6a0daf217f0975c78a41dd6723e0ffad3c7d927e3e6fd2897fac8",
+          "geometryHash": "sha256:899aca9bd6ce499c6f46aff5eaf21e30ab34b301e988771b978a6fab7c2d469f",
+          "themeId": "PARADE",
+          "themeRevision": 6,
+          "themeHash": "sha256:4b5e0a0a61cbafdd817b681c21ebb4213bcb8450eb25658ce47aacaca9e8a576",
+          "imageUrl": "blob:http://127.0.0.1:5173/84e392e9-44be-45a1-9a63-3e0e579fbd76"
+        },
+        "owner": {
+          "disposed": false,
+          "leases": 6,
+          "pending": 0,
+          "cleanupFailures": 0,
+          "decodedAtlases": 1
+        }
+      },
+      "parity": {
+        "different": 0,
+        "max": 0,
+        "channels": 1012320
+      },
+      "eras": [
+        {
+          "era": "REVENGE",
+          "worldHash": "sha256:3f7477d9d913d6e1038873499e164db71f37cf2d1cf3855fe70b76bed12b8227",
+          "state": {
+            "phase": "ready",
+            "mounts": 1,
+            "destroys": 0,
+            "canvases": 1,
+            "decodedImages": 3,
+            "scene": {
+              "textures": 2,
+              "decodedBytes": 8175616,
+              "objects": 23,
+              "peakTextures": 4,
+              "peakDecodedBytes": 16351232
+            },
+            "avatars": {
+              "textures": 6,
+              "sprites": 6,
+              "listeners": 1
+            },
+            "geometry": "sha256:899aca9bd6ce499c6f46aff5eaf21e30ab34b301e988771b978a6fab7c2d469f",
+            "mapId": "mcr_reference_scene_r3",
+            "theme": "REVENGE",
+            "camera": {
+              "zoom": 1,
+              "scrollX": 272,
+              "scrollY": 0,
+              "width": 360,
+              "height": 703
+            },
+            "requests": [
+              "http://127.0.0.1:5173/world/reference-scene-v2/runtime/spatial-v3/canonical-map-v4.json",
+              "http://127.0.0.1:5173/world/reference-scene-v2/quality-v6/ground.png",
+              "http://127.0.0.1:5173/world/reference-scene-v2/quality-v6/parade/atlas.png",
+              "http://127.0.0.1:5173/world/reference-scene-v2/quality-v6/revenge/atlas.png"
+            ],
+            "cache": {
+              "loads": 4,
+              "hits": 4,
+              "coalesced": 0,
+              "residentBytes": 2927361,
+              "entries": 4,
+              "disposed": false
+            },
+            "overview": {
+              "width": 768,
+              "height": 1296,
+              "mapId": "mcr_reference_scene_r3",
+              "mapRevision": 4,
+              "mapHash": "sha256:3e85db2eddb6a0daf217f0975c78a41dd6723e0ffad3c7d927e3e6fd2897fac8",
+              "geometryHash": "sha256:899aca9bd6ce499c6f46aff5eaf21e30ab34b301e988771b978a6fab7c2d469f",
+              "themeId": "REVENGE",
+              "themeRevision": 6,
+              "themeHash": "sha256:7f869d2e9e61e3ca78cf07b298d3da60f9cdd5f87a7cb9a4200650d90c9ca4db",
+              "imageUrl": "blob:http://127.0.0.1:5173/b90b9e29-4914-4640-ac2e-4d26f5b1d0c7"
+            },
+            "owner": {
+              "disposed": false,
+              "leases": 6,
+              "pending": 0,
+              "cleanupFailures": 0,
+              "decodedAtlases": 1
+            }
+          },
+          "worldPixels": {
+            "different": 0,
+            "max": 0,
+            "channels": 1012320
+          },
+          "mapPixels": {
+            "different": 0,
+            "channels": 3981312,
+            "pins": {
+              "width": 768,
+              "height": 1296,
+              "mapId": "mcr_reference_scene_r3",
+              "mapRevision": 4,
+              "mapHash": "sha256:3e85db2eddb6a0daf217f0975c78a41dd6723e0ffad3c7d927e3e6fd2897fac8",
+              "geometryHash": "sha256:899aca9bd6ce499c6f46aff5eaf21e30ab34b301e988771b978a6fab7c2d469f",
+              "themeId": "REVENGE",
+              "themeRevision": 6,
+              "themeHash": "sha256:7f869d2e9e61e3ca78cf07b298d3da60f9cdd5f87a7cb9a4200650d90c9ca4db",
+              "imageUrl": "blob:http://127.0.0.1:5173/b90b9e29-4914-4640-ac2e-4d26f5b1d0c7"
+            }
+          },
+          "occlusion": [
+            {
+              "foot": {
+                "x": 344,
+                "y": 344
+              },
+              "pixels": {
+                "different": 0,
+                "max": 0,
+                "channels": 1012320
+              },
+              "signature": "sha256:97f339a556b8fd3eb62e3c878de995cd66f1f96aca93cbb12151ddcff48060f7"
+            },
+            {
+              "foot": {
+                "x": 344,
+                "y": 376
+              },
+              "pixels": {
+                "different": 0,
+                "max": 0,
+                "channels": 1012320
+              },
+              "signature": "sha256:e7076ddd9388ccb4604e8b68348bf697d38bcc5c7524d7b350dfc3d38b431e18"
+            }
+          ]
+        },
+        {
+          "era": "DANGER",
+          "worldHash": "sha256:a51a7625bfc287aee852b01183b462d9be157b348a170f401393d3b02d9a5844",
+          "state": {
+            "phase": "ready",
+            "mounts": 1,
+            "destroys": 0,
+            "canvases": 1,
+            "decodedImages": 3,
+            "scene": {
+              "textures": 2,
+              "decodedBytes": 8175616,
+              "objects": 23,
+              "peakTextures": 4,
+              "peakDecodedBytes": 16351232
+            },
+            "avatars": {
+              "textures": 6,
+              "sprites": 6,
+              "listeners": 1
+            },
+            "geometry": "sha256:899aca9bd6ce499c6f46aff5eaf21e30ab34b301e988771b978a6fab7c2d469f",
+            "mapId": "mcr_reference_scene_r3",
+            "theme": "DANGER",
+            "camera": {
+              "zoom": 1,
+              "scrollX": 272,
+              "scrollY": 0,
+              "width": 360,
+              "height": 703
+            },
+            "requests": [
+              "http://127.0.0.1:5173/world/reference-scene-v2/runtime/spatial-v3/canonical-map-v4.json",
+              "http://127.0.0.1:5173/world/reference-scene-v2/quality-v6/ground.png",
+              "http://127.0.0.1:5173/world/reference-scene-v2/quality-v6/parade/atlas.png",
+              "http://127.0.0.1:5173/world/reference-scene-v2/quality-v6/revenge/atlas.png",
+              "http://127.0.0.1:5173/world/reference-scene-v2/quality-v6/danger/atlas.png"
+            ],
+            "cache": {
+              "loads": 5,
+              "hits": 7,
+              "coalesced": 0,
+              "residentBytes": 4108855,
+              "entries": 5,
+              "disposed": false
+            },
+            "overview": {
+              "width": 768,
+              "height": 1296,
+              "mapId": "mcr_reference_scene_r3",
+              "mapRevision": 4,
+              "mapHash": "sha256:3e85db2eddb6a0daf217f0975c78a41dd6723e0ffad3c7d927e3e6fd2897fac8",
+              "geometryHash": "sha256:899aca9bd6ce499c6f46aff5eaf21e30ab34b301e988771b978a6fab7c2d469f",
+              "themeId": "DANGER",
+              "themeRevision": 6,
+              "themeHash": "sha256:94c22e344c05ee098535e33fadd8bafbc777964aa0db4e70aabfe5a91d9b392a",
+              "imageUrl": "blob:http://127.0.0.1:5173/b3a7cdb4-a05b-4e63-aafe-7e1cf3510923"
+            },
+            "owner": {
+              "disposed": false,
+              "leases": 6,
+              "pending": 0,
+              "cleanupFailures": 0,
+              "decodedAtlases": 1
+            }
+          },
+          "worldPixels": {
+            "different": 0,
+            "max": 0,
+            "channels": 1012320
+          },
+          "mapPixels": {
+            "different": 0,
+            "channels": 3981312,
+            "pins": {
+              "width": 768,
+              "height": 1296,
+              "mapId": "mcr_reference_scene_r3",
+              "mapRevision": 4,
+              "mapHash": "sha256:3e85db2eddb6a0daf217f0975c78a41dd6723e0ffad3c7d927e3e6fd2897fac8",
+              "geometryHash": "sha256:899aca9bd6ce499c6f46aff5eaf21e30ab34b301e988771b978a6fab7c2d469f",
+              "themeId": "DANGER",
+              "themeRevision": 6,
+              "themeHash": "sha256:94c22e344c05ee098535e33fadd8bafbc777964aa0db4e70aabfe5a91d9b392a",
+              "imageUrl": "blob:http://127.0.0.1:5173/b3a7cdb4-a05b-4e63-aafe-7e1cf3510923"
+            }
+          },
+          "occlusion": [
+            {
+              "foot": {
+                "x": 344,
+                "y": 344
+              },
+              "pixels": {
+                "different": 0,
+                "max": 0,
+                "channels": 1012320
+              },
+              "signature": "sha256:23f36817c1869095d5ba1e79de711155ce0bb1f07f5f14ab5cf79a160ab4f3f4"
+            },
+            {
+              "foot": {
+                "x": 344,
+                "y": 376
+              },
+              "pixels": {
+                "different": 0,
+                "max": 0,
+                "channels": 1012320
+              },
+              "signature": "sha256:29029b49e76cd5b28a78d11b9b282b9d4e96d8c1a68e21bb61bba1385a087c14"
+            }
+          ]
+        },
+        {
+          "era": "PARADE",
+          "worldHash": "sha256:977701254e5f97d175b4df2923674dc9ec56652cdd6fb1472739ab19b75c8419",
+          "state": {
+            "phase": "ready",
+            "mounts": 1,
+            "destroys": 0,
+            "canvases": 1,
+            "decodedImages": 3,
+            "scene": {
+              "textures": 2,
+              "decodedBytes": 8175616,
+              "objects": 23,
+              "peakTextures": 4,
+              "peakDecodedBytes": 16351232
+            },
+            "avatars": {
+              "textures": 6,
+              "sprites": 6,
+              "listeners": 1
+            },
+            "geometry": "sha256:899aca9bd6ce499c6f46aff5eaf21e30ab34b301e988771b978a6fab7c2d469f",
+            "mapId": "mcr_reference_scene_r3",
+            "theme": "PARADE",
+            "camera": {
+              "zoom": 1,
+              "scrollX": 272,
+              "scrollY": 0,
+              "width": 360,
+              "height": 703
+            },
+            "requests": [
+              "http://127.0.0.1:5173/world/reference-scene-v2/runtime/spatial-v3/canonical-map-v4.json",
+              "http://127.0.0.1:5173/world/reference-scene-v2/quality-v6/ground.png",
+              "http://127.0.0.1:5173/world/reference-scene-v2/quality-v6/parade/atlas.png",
+              "http://127.0.0.1:5173/world/reference-scene-v2/quality-v6/revenge/atlas.png",
+              "http://127.0.0.1:5173/world/reference-scene-v2/quality-v6/danger/atlas.png"
+            ],
+            "cache": {
+              "loads": 5,
+              "hits": 11,
+              "coalesced": 0,
+              "residentBytes": 4108855,
+              "entries": 5,
+              "disposed": false
+            },
+            "overview": {
+              "width": 768,
+              "height": 1296,
+              "mapId": "mcr_reference_scene_r3",
+              "mapRevision": 4,
+              "mapHash": "sha256:3e85db2eddb6a0daf217f0975c78a41dd6723e0ffad3c7d927e3e6fd2897fac8",
+              "geometryHash": "sha256:899aca9bd6ce499c6f46aff5eaf21e30ab34b301e988771b978a6fab7c2d469f",
+              "themeId": "PARADE",
+              "themeRevision": 6,
+              "themeHash": "sha256:4b5e0a0a61cbafdd817b681c21ebb4213bcb8450eb25658ce47aacaca9e8a576",
+              "imageUrl": "blob:http://127.0.0.1:5173/0b5b23f1-7879-4457-b74b-845f244cf602"
+            },
+            "owner": {
+              "disposed": false,
+              "leases": 6,
+              "pending": 0,
+              "cleanupFailures": 0,
+              "decodedAtlases": 1
+            }
+          },
+          "worldPixels": {
+            "different": 0,
+            "max": 0,
+            "channels": 1012320
+          },
+          "mapPixels": {
+            "different": 0,
+            "channels": 3981312,
+            "pins": {
+              "width": 768,
+              "height": 1296,
+              "mapId": "mcr_reference_scene_r3",
+              "mapRevision": 4,
+              "mapHash": "sha256:3e85db2eddb6a0daf217f0975c78a41dd6723e0ffad3c7d927e3e6fd2897fac8",
+              "geometryHash": "sha256:899aca9bd6ce499c6f46aff5eaf21e30ab34b301e988771b978a6fab7c2d469f",
+              "themeId": "PARADE",
+              "themeRevision": 6,
+              "themeHash": "sha256:4b5e0a0a61cbafdd817b681c21ebb4213bcb8450eb25658ce47aacaca9e8a576",
+              "imageUrl": "blob:http://127.0.0.1:5173/0b5b23f1-7879-4457-b74b-845f244cf602"
+            }
+          },
+          "occlusion": [
+            {
+              "foot": {
+                "x": 344,
+                "y": 344
+              },
+              "pixels": {
+                "different": 0,
+                "max": 0,
+                "channels": 1012320
+              },
+              "signature": "sha256:bedccd137a658796d45a0f920eb20b24c18d0388bef3a4e6f242ee058969b465"
+            },
+            {
+              "foot": {
+                "x": 344,
+                "y": 376
+              },
+              "pixels": {
+                "different": 0,
+                "max": 0,
+                "channels": 1012320
+              },
+              "signature": "sha256:803e775198586f914d817d8ef456198f18834848347e46519d7fa6901f500e94"
+            }
+          ]
+        },
+        {
+          "era": "REVENGE",
+          "worldHash": "sha256:3f7477d9d913d6e1038873499e164db71f37cf2d1cf3855fe70b76bed12b8227",
+          "state": {
+            "phase": "ready",
+            "mounts": 1,
+            "destroys": 0,
+            "canvases": 1,
+            "decodedImages": 3,
+            "scene": {
+              "textures": 2,
+              "decodedBytes": 8175616,
+              "objects": 23,
+              "peakTextures": 4,
+              "peakDecodedBytes": 16351232
+            },
+            "avatars": {
+              "textures": 6,
+              "sprites": 6,
+              "listeners": 1
+            },
+            "geometry": "sha256:899aca9bd6ce499c6f46aff5eaf21e30ab34b301e988771b978a6fab7c2d469f",
+            "mapId": "mcr_reference_scene_r3",
+            "theme": "REVENGE",
+            "camera": {
+              "zoom": 1,
+              "scrollX": 272,
+              "scrollY": 0,
+              "width": 360,
+              "height": 703
+            },
+            "requests": [
+              "http://127.0.0.1:5173/world/reference-scene-v2/runtime/spatial-v3/canonical-map-v4.json",
+              "http://127.0.0.1:5173/world/reference-scene-v2/quality-v6/ground.png",
+              "http://127.0.0.1:5173/world/reference-scene-v2/quality-v6/parade/atlas.png",
+              "http://127.0.0.1:5173/world/reference-scene-v2/quality-v6/revenge/atlas.png",
+              "http://127.0.0.1:5173/world/reference-scene-v2/quality-v6/danger/atlas.png"
+            ],
+            "cache": {
+              "loads": 5,
+              "hits": 15,
+              "coalesced": 0,
+              "residentBytes": 4108855,
+              "entries": 5,
+              "disposed": false
+            },
+            "overview": {
+              "width": 768,
+              "height": 1296,
+              "mapId": "mcr_reference_scene_r3",
+              "mapRevision": 4,
+              "mapHash": "sha256:3e85db2eddb6a0daf217f0975c78a41dd6723e0ffad3c7d927e3e6fd2897fac8",
+              "geometryHash": "sha256:899aca9bd6ce499c6f46aff5eaf21e30ab34b301e988771b978a6fab7c2d469f",
+              "themeId": "REVENGE",
+              "themeRevision": 6,
+              "themeHash": "sha256:7f869d2e9e61e3ca78cf07b298d3da60f9cdd5f87a7cb9a4200650d90c9ca4db",
+              "imageUrl": "blob:http://127.0.0.1:5173/0a5bcdd7-51db-4d49-928f-daaa821890e6"
+            },
+            "owner": {
+              "disposed": false,
+              "leases": 6,
+              "pending": 0,
+              "cleanupFailures": 0,
+              "decodedAtlases": 1
+            }
+          },
+          "worldPixels": {
+            "different": 0,
+            "max": 0,
+            "channels": 1012320
+          },
+          "mapPixels": {
+            "different": 0,
+            "channels": 3981312,
+            "pins": {
+              "width": 768,
+              "height": 1296,
+              "mapId": "mcr_reference_scene_r3",
+              "mapRevision": 4,
+              "mapHash": "sha256:3e85db2eddb6a0daf217f0975c78a41dd6723e0ffad3c7d927e3e6fd2897fac8",
+              "geometryHash": "sha256:899aca9bd6ce499c6f46aff5eaf21e30ab34b301e988771b978a6fab7c2d469f",
+              "themeId": "REVENGE",
+              "themeRevision": 6,
+              "themeHash": "sha256:7f869d2e9e61e3ca78cf07b298d3da60f9cdd5f87a7cb9a4200650d90c9ca4db",
+              "imageUrl": "blob:http://127.0.0.1:5173/0a5bcdd7-51db-4d49-928f-daaa821890e6"
+            }
+          },
+          "occlusion": [
+            {
+              "foot": {
+                "x": 344,
+                "y": 344
+              },
+              "pixels": {
+                "different": 0,
+                "max": 0,
+                "channels": 1012320
+              },
+              "signature": "sha256:97f339a556b8fd3eb62e3c878de995cd66f1f96aca93cbb12151ddcff48060f7"
+            },
+            {
+              "foot": {
+                "x": 344,
+                "y": 376
+              },
+              "pixels": {
+                "different": 0,
+                "max": 0,
+                "channels": 1012320
+              },
+              "signature": "sha256:e7076ddd9388ccb4604e8b68348bf697d38bcc5c7524d7b350dfc3d38b431e18"
+            }
+          ]
+        },
+        {
+          "era": "DANGER",
+          "worldHash": "sha256:a51a7625bfc287aee852b01183b462d9be157b348a170f401393d3b02d9a5844",
+          "state": {
+            "phase": "ready",
+            "mounts": 1,
+            "destroys": 0,
+            "canvases": 1,
+            "decodedImages": 3,
+            "scene": {
+              "textures": 2,
+              "decodedBytes": 8175616,
+              "objects": 23,
+              "peakTextures": 4,
+              "peakDecodedBytes": 16351232
+            },
+            "avatars": {
+              "textures": 6,
+              "sprites": 6,
+              "listeners": 1
+            },
+            "geometry": "sha256:899aca9bd6ce499c6f46aff5eaf21e30ab34b301e988771b978a6fab7c2d469f",
+            "mapId": "mcr_reference_scene_r3",
+            "theme": "DANGER",
+            "camera": {
+              "zoom": 1,
+              "scrollX": 272,
+              "scrollY": 0,
+              "width": 360,
+              "height": 703
+            },
+            "requests": [
+              "http://127.0.0.1:5173/world/reference-scene-v2/runtime/spatial-v3/canonical-map-v4.json",
+              "http://127.0.0.1:5173/world/reference-scene-v2/quality-v6/ground.png",
+              "http://127.0.0.1:5173/world/reference-scene-v2/quality-v6/parade/atlas.png",
+              "http://127.0.0.1:5173/world/reference-scene-v2/quality-v6/revenge/atlas.png",
+              "http://127.0.0.1:5173/world/reference-scene-v2/quality-v6/danger/atlas.png"
+            ],
+            "cache": {
+              "loads": 5,
+              "hits": 19,
+              "coalesced": 0,
+              "residentBytes": 4108855,
+              "entries": 5,
+              "disposed": false
+            },
+            "overview": {
+              "width": 768,
+              "height": 1296,
+              "mapId": "mcr_reference_scene_r3",
+              "mapRevision": 4,
+              "mapHash": "sha256:3e85db2eddb6a0daf217f0975c78a41dd6723e0ffad3c7d927e3e6fd2897fac8",
+              "geometryHash": "sha256:899aca9bd6ce499c6f46aff5eaf21e30ab34b301e988771b978a6fab7c2d469f",
+              "themeId": "DANGER",
+              "themeRevision": 6,
+              "themeHash": "sha256:94c22e344c05ee098535e33fadd8bafbc777964aa0db4e70aabfe5a91d9b392a",
+              "imageUrl": "blob:http://127.0.0.1:5173/3f3a0899-75d8-42cf-b95b-5f49e69b919c"
+            },
+            "owner": {
+              "disposed": false,
+              "leases": 6,
+              "pending": 0,
+              "cleanupFailures": 0,
+              "decodedAtlases": 1
+            }
+          },
+          "worldPixels": {
+            "different": 0,
+            "max": 0,
+            "channels": 1012320
+          },
+          "mapPixels": {
+            "different": 0,
+            "channels": 3981312,
+            "pins": {
+              "width": 768,
+              "height": 1296,
+              "mapId": "mcr_reference_scene_r3",
+              "mapRevision": 4,
+              "mapHash": "sha256:3e85db2eddb6a0daf217f0975c78a41dd6723e0ffad3c7d927e3e6fd2897fac8",
+              "geometryHash": "sha256:899aca9bd6ce499c6f46aff5eaf21e30ab34b301e988771b978a6fab7c2d469f",
+              "themeId": "DANGER",
+              "themeRevision": 6,
+              "themeHash": "sha256:94c22e344c05ee098535e33fadd8bafbc777964aa0db4e70aabfe5a91d9b392a",
+              "imageUrl": "blob:http://127.0.0.1:5173/3f3a0899-75d8-42cf-b95b-5f49e69b919c"
+            }
+          },
+          "occlusion": [
+            {
+              "foot": {
+                "x": 344,
+                "y": 344
+              },
+              "pixels": {
+                "different": 0,
+                "max": 0,
+                "channels": 1012320
+              },
+              "signature": "sha256:23f36817c1869095d5ba1e79de711155ce0bb1f07f5f14ab5cf79a160ab4f3f4"
+            },
+            {
+              "foot": {
+                "x": 344,
+                "y": 376
+              },
+              "pixels": {
+                "different": 0,
+                "max": 0,
+                "channels": 1012320
+              },
+              "signature": "sha256:29029b49e76cd5b28a78d11b9b282b9d4e96d8c1a68e21bb61bba1385a087c14"
+            }
+          ]
+        },
+        {
+          "era": "PARADE",
+          "worldHash": "sha256:977701254e5f97d175b4df2923674dc9ec56652cdd6fb1472739ab19b75c8419",
+          "state": {
+            "phase": "ready",
+            "mounts": 1,
+            "destroys": 0,
+            "canvases": 1,
+            "decodedImages": 3,
+            "scene": {
+              "textures": 2,
+              "decodedBytes": 8175616,
+              "objects": 23,
+              "peakTextures": 4,
+              "peakDecodedBytes": 16351232
+            },
+            "avatars": {
+              "textures": 6,
+              "sprites": 6,
+              "listeners": 1
+            },
+            "geometry": "sha256:899aca9bd6ce499c6f46aff5eaf21e30ab34b301e988771b978a6fab7c2d469f",
+            "mapId": "mcr_reference_scene_r3",
+            "theme": "PARADE",
+            "camera": {
+              "zoom": 1,
+              "scrollX": 272,
+              "scrollY": 0,
+              "width": 360,
+              "height": 703
+            },
+            "requests": [
+              "http://127.0.0.1:5173/world/reference-scene-v2/runtime/spatial-v3/canonical-map-v4.json",
+              "http://127.0.0.1:5173/world/reference-scene-v2/quality-v6/ground.png",
+              "http://127.0.0.1:5173/world/reference-scene-v2/quality-v6/parade/atlas.png",
+              "http://127.0.0.1:5173/world/reference-scene-v2/quality-v6/revenge/atlas.png",
+              "http://127.0.0.1:5173/world/reference-scene-v2/quality-v6/danger/atlas.png"
+            ],
+            "cache": {
+              "loads": 5,
+              "hits": 23,
+              "coalesced": 0,
+              "residentBytes": 4108855,
+              "entries": 5,
+              "disposed": false
+            },
+            "overview": {
+              "width": 768,
+              "height": 1296,
+              "mapId": "mcr_reference_scene_r3",
+              "mapRevision": 4,
+              "mapHash": "sha256:3e85db2eddb6a0daf217f0975c78a41dd6723e0ffad3c7d927e3e6fd2897fac8",
+              "geometryHash": "sha256:899aca9bd6ce499c6f46aff5eaf21e30ab34b301e988771b978a6fab7c2d469f",
+              "themeId": "PARADE",
+              "themeRevision": 6,
+              "themeHash": "sha256:4b5e0a0a61cbafdd817b681c21ebb4213bcb8450eb25658ce47aacaca9e8a576",
+              "imageUrl": "blob:http://127.0.0.1:5173/af00893b-0896-43ae-a593-4e5fa95c05c5"
+            },
+            "owner": {
+              "disposed": false,
+              "leases": 6,
+              "pending": 0,
+              "cleanupFailures": 0,
+              "decodedAtlases": 1
+            }
+          },
+          "worldPixels": {
+            "different": 0,
+            "max": 0,
+            "channels": 1012320
+          },
+          "mapPixels": {
+            "different": 0,
+            "channels": 3981312,
+            "pins": {
+              "width": 768,
+              "height": 1296,
+              "mapId": "mcr_reference_scene_r3",
+              "mapRevision": 4,
+              "mapHash": "sha256:3e85db2eddb6a0daf217f0975c78a41dd6723e0ffad3c7d927e3e6fd2897fac8",
+              "geometryHash": "sha256:899aca9bd6ce499c6f46aff5eaf21e30ab34b301e988771b978a6fab7c2d469f",
+              "themeId": "PARADE",
+              "themeRevision": 6,
+              "themeHash": "sha256:4b5e0a0a61cbafdd817b681c21ebb4213bcb8450eb25658ce47aacaca9e8a576",
+              "imageUrl": "blob:http://127.0.0.1:5173/af00893b-0896-43ae-a593-4e5fa95c05c5"
+            }
+          },
+          "occlusion": [
+            {
+              "foot": {
+                "x": 344,
+                "y": 344
+              },
+              "pixels": {
+                "different": 0,
+                "max": 0,
+                "channels": 1012320
+              },
+              "signature": "sha256:bedccd137a658796d45a0f920eb20b24c18d0388bef3a4e6f242ee058969b465"
+            },
+            {
+              "foot": {
+                "x": 344,
+                "y": 376
+              },
+              "pixels": {
+                "different": 0,
+                "max": 0,
+                "channels": 1012320
+              },
+              "signature": "sha256:803e775198586f914d817d8ef456198f18834848347e46519d7fa6901f500e94"
+            }
+          ]
+        }
+      ],
+      "interactions": [
+        {
+          "id": "stage_info",
+          "placeId": "6a5c196b-58e1-47d5-99bb-000000000003",
+          "foot": {
+            "x": 488,
+            "y": 392
+          },
+          "walkable": true,
+          "nearby": [
+            "stage_info"
+          ],
+          "routes": [
+            true,
+            true
+          ]
+        },
+        {
+          "id": "park_info",
+          "placeId": "6a5c196b-58e1-47d5-99bb-000000000002",
+          "foot": {
+            "x": 616,
+            "y": 440
+          },
+          "walkable": true,
+          "nearby": [
+            "park_info"
+          ],
+          "routes": [
+            true,
+            true
+          ]
+        },
+        {
+          "id": "gifts_info",
+          "placeId": "6a5c196b-58e1-47d5-99bb-000000000004",
+          "foot": {
+            "x": 216,
+            "y": 776
+          },
+          "walkable": true,
+          "nearby": [
+            "gifts_info"
+          ],
+          "routes": [
+            true,
+            true
+          ]
+        },
+        {
+          "id": "wall_info",
+          "placeId": "6a5c196b-58e1-47d5-99bb-000000000005",
+          "foot": {
+            "x": 232,
+            "y": 984
+          },
+          "walkable": true,
+          "nearby": [
+            "wall_info"
+          ],
+          "routes": [
+            true,
+            true
+          ]
+        }
+      ],
+      "landmarks": [
+        {
+          "index": 1,
+          "pixels": {
+            "different": 0,
+            "max": 0,
+            "channels": 1012320
+          }
+        },
+        {
+          "index": 2,
+          "pixels": {
+            "different": 0,
+            "max": 0,
+            "channels": 1012320
+          }
+        },
+        {
+          "index": 3,
+          "pixels": {
+            "different": 0,
+            "max": 0,
+            "channels": 1012320
+          }
+        }
+      ],
+      "replaced": {
+        "before": "sha256:fde21e0bd3e5cb9a7ea06bc028898c616eea721ba715c36bd91927bf396cebd2",
+        "after": "sha256:fde21e0bd3e5cb9a7ea06bc028898c616eea721ba715c36bd91927bf396cebd2",
+        "state": {
+          "phase": "ready",
+          "mounts": 1,
+          "destroys": 0,
+          "canvases": 1,
+          "decodedImages": 3,
+          "scene": {
+            "textures": 2,
+            "decodedBytes": 8175616,
+            "objects": 23,
+            "peakTextures": 4,
+            "peakDecodedBytes": 16351232
+          },
+          "avatars": {
+            "textures": 6,
+            "sprites": 6,
+            "listeners": 1
+          },
+          "geometry": "sha256:899aca9bd6ce499c6f46aff5eaf21e30ab34b301e988771b978a6fab7c2d469f",
+          "mapId": "mcr_reference_scene_r3",
+          "theme": "PARADE",
+          "camera": {
+            "zoom": 1,
+            "scrollX": 52,
+            "scrollY": 593,
+            "width": 360,
+            "height": 703
+          },
+          "requests": [
+            "http://127.0.0.1:5173/world/reference-scene-v2/runtime/spatial-v3/canonical-map-v4.json",
+            "http://127.0.0.1:5173/world/reference-scene-v2/quality-v6/ground.png",
+            "http://127.0.0.1:5173/world/reference-scene-v2/quality-v6/parade/atlas.png",
+            "http://127.0.0.1:5173/world/reference-scene-v2/quality-v6/revenge/atlas.png",
+            "http://127.0.0.1:5173/world/reference-scene-v2/quality-v6/danger/atlas.png"
+          ],
+          "cache": {
+            "loads": 5,
+            "hits": 27,
+            "coalesced": 0,
+            "residentBytes": 4108855,
+            "entries": 5,
+            "disposed": false
+          },
+          "overview": null,
+          "owner": {
+            "disposed": false,
+            "leases": 6,
+            "pending": 0,
+            "cleanupFailures": 0,
+            "decodedAtlases": 1
+          }
+        }
+      },
+      "rejected": {
+        "results": [
+          "hash",
+          "geometry",
+          "revision",
+          "theme",
+          "frame",
+          "depth",
+          "asset"
+        ],
+        "signature": "sha256:fde21e0bd3e5cb9a7ea06bc028898c616eea721ba715c36bd91927bf396cebd2",
+        "state": {
+          "phase": "ready",
+          "mounts": 1,
+          "destroys": 0,
+          "canvases": 1,
+          "decodedImages": 3,
+          "scene": {
+            "textures": 2,
+            "decodedBytes": 8175616,
+            "objects": 23,
+            "peakTextures": 4,
+            "peakDecodedBytes": 16351232
+          },
+          "avatars": {
+            "textures": 6,
+            "sprites": 6,
+            "listeners": 1
+          },
+          "geometry": "sha256:899aca9bd6ce499c6f46aff5eaf21e30ab34b301e988771b978a6fab7c2d469f",
+          "mapId": "mcr_reference_scene_r3",
+          "theme": "PARADE",
+          "camera": {
+            "zoom": 1,
+            "scrollX": 52,
+            "scrollY": 593,
+            "width": 360,
+            "height": 703
+          },
+          "requests": [
+            "http://127.0.0.1:5173/world/reference-scene-v2/runtime/spatial-v3/canonical-map-v4.json",
+            "http://127.0.0.1:5173/world/reference-scene-v2/quality-v6/ground.png",
+            "http://127.0.0.1:5173/world/reference-scene-v2/quality-v6/parade/atlas.png",
+            "http://127.0.0.1:5173/world/reference-scene-v2/quality-v6/revenge/atlas.png",
+            "http://127.0.0.1:5173/world/reference-scene-v2/quality-v6/danger/atlas.png"
+          ],
+          "cache": {
+            "loads": 5,
+            "hits": 27,
+            "coalesced": 0,
+            "residentBytes": 4108855,
+            "entries": 5,
+            "disposed": false
+          },
+          "overview": null,
+          "owner": {
+            "disposed": false,
+            "leases": 6,
+            "pending": 0,
+            "cleanupFailures": 0,
+            "decodedAtlases": 1
+          }
+        }
+      },
+      "cancelled": {
+        "before": "sha256:fde21e0bd3e5cb9a7ea06bc028898c616eea721ba715c36bd91927bf396cebd2",
+        "after": "sha256:fde21e0bd3e5cb9a7ea06bc028898c616eea721ba715c36bd91927bf396cebd2",
+        "state": {
+          "phase": "ready",
+          "mounts": 1,
+          "destroys": 0,
+          "canvases": 1,
+          "decodedImages": 3,
+          "scene": {
+            "textures": 2,
+            "decodedBytes": 8175616,
+            "objects": 23,
+            "peakTextures": 4,
+            "peakDecodedBytes": 16351232
+          },
+          "avatars": {
+            "textures": 6,
+            "sprites": 6,
+            "listeners": 1
+          },
+          "geometry": "sha256:899aca9bd6ce499c6f46aff5eaf21e30ab34b301e988771b978a6fab7c2d469f",
+          "mapId": "mcr_reference_scene_r3",
+          "theme": "PARADE",
+          "camera": {
+            "zoom": 1,
+            "scrollX": 52,
+            "scrollY": 593,
+            "width": 360,
+            "height": 703
+          },
+          "requests": [
+            "http://127.0.0.1:5173/world/reference-scene-v2/runtime/spatial-v3/canonical-map-v4.json",
+            "http://127.0.0.1:5173/world/reference-scene-v2/quality-v6/ground.png",
+            "http://127.0.0.1:5173/world/reference-scene-v2/quality-v6/parade/atlas.png",
+            "http://127.0.0.1:5173/world/reference-scene-v2/quality-v6/revenge/atlas.png",
+            "http://127.0.0.1:5173/world/reference-scene-v2/quality-v6/danger/atlas.png"
+          ],
+          "cache": {
+            "loads": 5,
+            "hits": 35,
+            "coalesced": 0,
+            "residentBytes": 4108855,
+            "entries": 5,
+            "disposed": false
+          },
+          "overview": null,
+          "owner": {
+            "disposed": false,
+            "leases": 6,
+            "pending": 0,
+            "cleanupFailures": 0,
+            "decodedAtlases": 1
+          }
+        }
+      },
+      "hidden": {
+        "phase": "ready",
+        "mounts": 1,
+        "destroys": 0,
+        "canvases": 1,
+        "decodedImages": 3,
+        "scene": {
+          "textures": 2,
+          "decodedBytes": 8175616,
+          "objects": 23,
+          "peakTextures": 4,
+          "peakDecodedBytes": 16351232
+        },
+        "avatars": {
+          "textures": 0,
+          "sprites": 0,
+          "listeners": 1
+        },
+        "geometry": "sha256:899aca9bd6ce499c6f46aff5eaf21e30ab34b301e988771b978a6fab7c2d469f",
+        "mapId": "mcr_reference_scene_r3",
+        "theme": "PARADE",
+        "camera": {
+          "zoom": 1,
+          "scrollX": 52,
+          "scrollY": 593,
+          "width": 360,
+          "height": 703
+        },
+        "requests": [
+          "http://127.0.0.1:5173/world/reference-scene-v2/runtime/spatial-v3/canonical-map-v4.json",
+          "http://127.0.0.1:5173/world/reference-scene-v2/quality-v6/ground.png",
+          "http://127.0.0.1:5173/world/reference-scene-v2/quality-v6/parade/atlas.png",
+          "http://127.0.0.1:5173/world/reference-scene-v2/quality-v6/revenge/atlas.png",
+          "http://127.0.0.1:5173/world/reference-scene-v2/quality-v6/danger/atlas.png"
+        ],
+        "cache": {
+          "loads": 5,
+          "hits": 35,
+          "coalesced": 0,
+          "residentBytes": 4108855,
+          "entries": 5,
+          "disposed": false
+        },
+        "overview": null,
+        "owner": {
+          "disposed": false,
+          "leases": 0,
+          "pending": 0,
+          "cleanupFailures": 0,
+          "decodedAtlases": 1
+        }
+      },
+      "revoked": {
+        "phase": "stopped",
+        "mounts": 1,
+        "destroys": 1,
+        "canvases": 0,
+        "decodedImages": 3,
+        "scene": {
+          "textures": 0,
+          "decodedBytes": 0,
+          "objects": 0,
+          "peakTextures": 4,
+          "peakDecodedBytes": 16351232
+        },
+        "avatars": {
+          "textures": 0,
+          "sprites": 0,
+          "listeners": 0
+        },
+        "geometry": "sha256:899aca9bd6ce499c6f46aff5eaf21e30ab34b301e988771b978a6fab7c2d469f",
+        "mapId": "mcr_reference_scene_r3",
+        "theme": "PARADE",
+        "camera": null,
+        "requests": [
+          "http://127.0.0.1:5173/world/reference-scene-v2/runtime/spatial-v3/canonical-map-v4.json",
+          "http://127.0.0.1:5173/world/reference-scene-v2/quality-v6/ground.png",
+          "http://127.0.0.1:5173/world/reference-scene-v2/quality-v6/parade/atlas.png",
+          "http://127.0.0.1:5173/world/reference-scene-v2/quality-v6/revenge/atlas.png",
+          "http://127.0.0.1:5173/world/reference-scene-v2/quality-v6/danger/atlas.png"
+        ],
+        "cache": {
+          "loads": 5,
+          "hits": 35,
+          "coalesced": 0,
+          "residentBytes": 0,
+          "entries": 0,
+          "disposed": true
+        },
+        "overview": null,
+        "owner": {
+          "disposed": true,
+          "leases": 0,
+          "pending": 0,
+          "cleanupFailures": 0,
+          "decodedAtlases": 0
+        }
+      },
+      "cleanup": {
+        "phase": "disposed",
+        "mounts": 1,
+        "destroys": 1,
+        "canvases": 0,
+        "decodedImages": 0,
+        "scene": {
+          "textures": 0,
+          "decodedBytes": 0,
+          "objects": 0,
+          "peakTextures": 4,
+          "peakDecodedBytes": 16351232
+        },
+        "avatars": {
+          "textures": 0,
+          "sprites": 0,
+          "listeners": 0
+        },
+        "geometry": "sha256:899aca9bd6ce499c6f46aff5eaf21e30ab34b301e988771b978a6fab7c2d469f",
+        "mapId": "mcr_reference_scene_r3",
+        "theme": "PARADE",
+        "camera": null,
+        "requests": [
+          "http://127.0.0.1:5173/world/reference-scene-v2/runtime/spatial-v3/canonical-map-v4.json",
+          "http://127.0.0.1:5173/world/reference-scene-v2/quality-v6/ground.png",
+          "http://127.0.0.1:5173/world/reference-scene-v2/quality-v6/parade/atlas.png",
+          "http://127.0.0.1:5173/world/reference-scene-v2/quality-v6/revenge/atlas.png",
+          "http://127.0.0.1:5173/world/reference-scene-v2/quality-v6/danger/atlas.png"
+        ],
+        "cache": {
+          "loads": 5,
+          "hits": 35,
+          "coalesced": 0,
+          "residentBytes": 0,
+          "entries": 0,
+          "disposed": true
+        },
+        "overview": null,
+        "owner": {
+          "disposed": true,
+          "leases": 0,
+          "pending": 0,
+          "cleanupFailures": 0,
+          "decodedAtlases": 0
+        }
+      },
+      "encodes": [
+        {
+          "width": 768,
+          "height": 1296,
+          "bytes": 1801798
+        },
+        {
+          "width": 768,
+          "height": 1296,
+          "bytes": 1788686
+        },
+        {
+          "width": 768,
+          "height": 1296,
+          "bytes": 1799436
+        },
+        {
+          "width": 768,
+          "height": 1296,
+          "bytes": 1801798
+        },
+        {
+          "width": 768,
+          "height": 1296,
+          "bytes": 1788686
+        },
+        {
+          "width": 768,
+          "height": 1296,
+          "bytes": 1799436
+        },
+        {
+          "width": 768,
+          "height": 1296,
+          "bytes": 1801798
+        },
+        {
+          "width": 768,
+          "height": 1296,
+          "bytes": 1801798
+        },
+        {
+          "width": 768,
+          "height": 1296,
+          "bytes": 1801798
+        }
+      ]
+    },
+    {
+      "width": 390,
+      "height": 844,
+      "initial": {
+        "phase": "ready",
+        "mounts": 1,
+        "destroys": 0,
+        "canvases": 1,
+        "decodedImages": 3,
+        "scene": {
+          "textures": 2,
+          "decodedBytes": 8175616,
+          "objects": 23,
+          "peakTextures": 2,
+          "peakDecodedBytes": 8175616
+        },
+        "avatars": {
+          "textures": 6,
+          "sprites": 6,
+          "listeners": 1
+        },
+        "geometry": "sha256:899aca9bd6ce499c6f46aff5eaf21e30ab34b301e988771b978a6fab7c2d469f",
+        "mapId": "mcr_reference_scene_r3",
+        "theme": "PARADE",
+        "camera": {
+          "zoom": 1,
+          "scrollX": 257,
+          "scrollY": 0,
+          "width": 390,
+          "height": 747
+        },
+        "requests": [
+          "http://127.0.0.1:5173/world/reference-scene-v2/runtime/spatial-v3/canonical-map-v4.json",
+          "http://127.0.0.1:5173/world/reference-scene-v2/quality-v6/ground.png",
+          "http://127.0.0.1:5173/world/reference-scene-v2/quality-v6/parade/atlas.png"
+        ],
+        "cache": {
+          "loads": 3,
+          "hits": 1,
+          "coalesced": 0,
+          "residentBytes": 1751279,
+          "entries": 3,
+          "disposed": false
+        },
+        "overview": {
+          "width": 768,
+          "height": 1296,
+          "mapId": "mcr_reference_scene_r3",
+          "mapRevision": 4,
+          "mapHash": "sha256:3e85db2eddb6a0daf217f0975c78a41dd6723e0ffad3c7d927e3e6fd2897fac8",
+          "geometryHash": "sha256:899aca9bd6ce499c6f46aff5eaf21e30ab34b301e988771b978a6fab7c2d469f",
+          "themeId": "PARADE",
+          "themeRevision": 6,
+          "themeHash": "sha256:4b5e0a0a61cbafdd817b681c21ebb4213bcb8450eb25658ce47aacaca9e8a576",
+          "imageUrl": "blob:http://127.0.0.1:5173/675e89ee-b526-48b8-805a-24d22fc3bb70"
+        },
+        "owner": {
+          "disposed": false,
+          "leases": 6,
+          "pending": 0,
+          "cleanupFailures": 0,
+          "decodedAtlases": 1
+        }
+      },
+      "parity": {
+        "different": 0,
+        "max": 0,
+        "channels": 1165320
+      },
+      "eras": [
+        {
+          "era": "REVENGE",
+          "worldHash": "sha256:cc63ddf1a0dd2736e4350b2ce7fde8c979e02e325305cbddf7012d27f2b9668b",
+          "state": {
+            "phase": "ready",
+            "mounts": 1,
+            "destroys": 0,
+            "canvases": 1,
+            "decodedImages": 3,
+            "scene": {
+              "textures": 2,
+              "decodedBytes": 8175616,
+              "objects": 23,
+              "peakTextures": 4,
+              "peakDecodedBytes": 16351232
+            },
+            "avatars": {
+              "textures": 6,
+              "sprites": 6,
+              "listeners": 1
+            },
+            "geometry": "sha256:899aca9bd6ce499c6f46aff5eaf21e30ab34b301e988771b978a6fab7c2d469f",
+            "mapId": "mcr_reference_scene_r3",
+            "theme": "REVENGE",
+            "camera": {
+              "zoom": 1,
+              "scrollX": 257,
+              "scrollY": 0,
+              "width": 390,
+              "height": 747
+            },
+            "requests": [
+              "http://127.0.0.1:5173/world/reference-scene-v2/runtime/spatial-v3/canonical-map-v4.json",
+              "http://127.0.0.1:5173/world/reference-scene-v2/quality-v6/ground.png",
+              "http://127.0.0.1:5173/world/reference-scene-v2/quality-v6/parade/atlas.png",
+              "http://127.0.0.1:5173/world/reference-scene-v2/quality-v6/revenge/atlas.png"
+            ],
+            "cache": {
+              "loads": 4,
+              "hits": 4,
+              "coalesced": 0,
+              "residentBytes": 2927361,
+              "entries": 4,
+              "disposed": false
+            },
+            "overview": {
+              "width": 768,
+              "height": 1296,
+              "mapId": "mcr_reference_scene_r3",
+              "mapRevision": 4,
+              "mapHash": "sha256:3e85db2eddb6a0daf217f0975c78a41dd6723e0ffad3c7d927e3e6fd2897fac8",
+              "geometryHash": "sha256:899aca9bd6ce499c6f46aff5eaf21e30ab34b301e988771b978a6fab7c2d469f",
+              "themeId": "REVENGE",
+              "themeRevision": 6,
+              "themeHash": "sha256:7f869d2e9e61e3ca78cf07b298d3da60f9cdd5f87a7cb9a4200650d90c9ca4db",
+              "imageUrl": "blob:http://127.0.0.1:5173/87c47a54-0954-4e76-b364-2ff625adc2fa"
+            },
+            "owner": {
+              "disposed": false,
+              "leases": 6,
+              "pending": 0,
+              "cleanupFailures": 0,
+              "decodedAtlases": 1
+            }
+          },
+          "worldPixels": {
+            "different": 0,
+            "max": 0,
+            "channels": 1165320
+          },
+          "mapPixels": {
+            "different": 0,
+            "channels": 3981312,
+            "pins": {
+              "width": 768,
+              "height": 1296,
+              "mapId": "mcr_reference_scene_r3",
+              "mapRevision": 4,
+              "mapHash": "sha256:3e85db2eddb6a0daf217f0975c78a41dd6723e0ffad3c7d927e3e6fd2897fac8",
+              "geometryHash": "sha256:899aca9bd6ce499c6f46aff5eaf21e30ab34b301e988771b978a6fab7c2d469f",
+              "themeId": "REVENGE",
+              "themeRevision": 6,
+              "themeHash": "sha256:7f869d2e9e61e3ca78cf07b298d3da60f9cdd5f87a7cb9a4200650d90c9ca4db",
+              "imageUrl": "blob:http://127.0.0.1:5173/87c47a54-0954-4e76-b364-2ff625adc2fa"
+            }
+          },
+          "occlusion": [
+            {
+              "foot": {
+                "x": 344,
+                "y": 344
+              },
+              "pixels": {
+                "different": 0,
+                "max": 0,
+                "channels": 1165320
+              },
+              "signature": "sha256:1b0c6e71f8568663b6a0c459342932289532919b07ed5c30085decc29405a5e1"
+            },
+            {
+              "foot": {
+                "x": 344,
+                "y": 376
+              },
+              "pixels": {
+                "different": 0,
+                "max": 0,
+                "channels": 1165320
+              },
+              "signature": "sha256:8a97a3c6509af3880cd2056d04f9fd36d496e303c0bf55e6c190bc842daf9e8e"
+            }
+          ]
+        },
+        {
+          "era": "DANGER",
+          "worldHash": "sha256:36d3c7f517d6c31fe68a8575550a24f3b7f0879e0fa4f4fc6d890e28b15cd9a7",
+          "state": {
+            "phase": "ready",
+            "mounts": 1,
+            "destroys": 0,
+            "canvases": 1,
+            "decodedImages": 3,
+            "scene": {
+              "textures": 2,
+              "decodedBytes": 8175616,
+              "objects": 23,
+              "peakTextures": 4,
+              "peakDecodedBytes": 16351232
+            },
+            "avatars": {
+              "textures": 6,
+              "sprites": 6,
+              "listeners": 1
+            },
+            "geometry": "sha256:899aca9bd6ce499c6f46aff5eaf21e30ab34b301e988771b978a6fab7c2d469f",
+            "mapId": "mcr_reference_scene_r3",
+            "theme": "DANGER",
+            "camera": {
+              "zoom": 1,
+              "scrollX": 257,
+              "scrollY": 0,
+              "width": 390,
+              "height": 747
+            },
+            "requests": [
+              "http://127.0.0.1:5173/world/reference-scene-v2/runtime/spatial-v3/canonical-map-v4.json",
+              "http://127.0.0.1:5173/world/reference-scene-v2/quality-v6/ground.png",
+              "http://127.0.0.1:5173/world/reference-scene-v2/quality-v6/parade/atlas.png",
+              "http://127.0.0.1:5173/world/reference-scene-v2/quality-v6/revenge/atlas.png",
+              "http://127.0.0.1:5173/world/reference-scene-v2/quality-v6/danger/atlas.png"
+            ],
+            "cache": {
+              "loads": 5,
+              "hits": 7,
+              "coalesced": 0,
+              "residentBytes": 4108855,
+              "entries": 5,
+              "disposed": false
+            },
+            "overview": {
+              "width": 768,
+              "height": 1296,
+              "mapId": "mcr_reference_scene_r3",
+              "mapRevision": 4,
+              "mapHash": "sha256:3e85db2eddb6a0daf217f0975c78a41dd6723e0ffad3c7d927e3e6fd2897fac8",
+              "geometryHash": "sha256:899aca9bd6ce499c6f46aff5eaf21e30ab34b301e988771b978a6fab7c2d469f",
+              "themeId": "DANGER",
+              "themeRevision": 6,
+              "themeHash": "sha256:94c22e344c05ee098535e33fadd8bafbc777964aa0db4e70aabfe5a91d9b392a",
+              "imageUrl": "blob:http://127.0.0.1:5173/0023cbb6-02c3-4036-b3e9-446ab3581dbe"
+            },
+            "owner": {
+              "disposed": false,
+              "leases": 6,
+              "pending": 0,
+              "cleanupFailures": 0,
+              "decodedAtlases": 1
+            }
+          },
+          "worldPixels": {
+            "different": 0,
+            "max": 0,
+            "channels": 1165320
+          },
+          "mapPixels": {
+            "different": 0,
+            "channels": 3981312,
+            "pins": {
+              "width": 768,
+              "height": 1296,
+              "mapId": "mcr_reference_scene_r3",
+              "mapRevision": 4,
+              "mapHash": "sha256:3e85db2eddb6a0daf217f0975c78a41dd6723e0ffad3c7d927e3e6fd2897fac8",
+              "geometryHash": "sha256:899aca9bd6ce499c6f46aff5eaf21e30ab34b301e988771b978a6fab7c2d469f",
+              "themeId": "DANGER",
+              "themeRevision": 6,
+              "themeHash": "sha256:94c22e344c05ee098535e33fadd8bafbc777964aa0db4e70aabfe5a91d9b392a",
+              "imageUrl": "blob:http://127.0.0.1:5173/0023cbb6-02c3-4036-b3e9-446ab3581dbe"
+            }
+          },
+          "occlusion": [
+            {
+              "foot": {
+                "x": 344,
+                "y": 344
+              },
+              "pixels": {
+                "different": 0,
+                "max": 0,
+                "channels": 1165320
+              },
+              "signature": "sha256:3213b551103fc5b134891d1539432af94598c731fbe9628977eb0fa901617558"
+            },
+            {
+              "foot": {
+                "x": 344,
+                "y": 376
+              },
+              "pixels": {
+                "different": 0,
+                "max": 0,
+                "channels": 1165320
+              },
+              "signature": "sha256:685ca86ef44d3b3c2a0528f81bfe0374343bf1e047facd57f0cdb233cf3fea7b"
+            }
+          ]
+        },
+        {
+          "era": "PARADE",
+          "worldHash": "sha256:75ff150a5c1a9543343c0291d7da45c10636d7c0a62253df99a5eb5d895e66e8",
+          "state": {
+            "phase": "ready",
+            "mounts": 1,
+            "destroys": 0,
+            "canvases": 1,
+            "decodedImages": 3,
+            "scene": {
+              "textures": 2,
+              "decodedBytes": 8175616,
+              "objects": 23,
+              "peakTextures": 4,
+              "peakDecodedBytes": 16351232
+            },
+            "avatars": {
+              "textures": 6,
+              "sprites": 6,
+              "listeners": 1
+            },
+            "geometry": "sha256:899aca9bd6ce499c6f46aff5eaf21e30ab34b301e988771b978a6fab7c2d469f",
+            "mapId": "mcr_reference_scene_r3",
+            "theme": "PARADE",
+            "camera": {
+              "zoom": 1,
+              "scrollX": 257,
+              "scrollY": 0,
+              "width": 390,
+              "height": 747
+            },
+            "requests": [
+              "http://127.0.0.1:5173/world/reference-scene-v2/runtime/spatial-v3/canonical-map-v4.json",
+              "http://127.0.0.1:5173/world/reference-scene-v2/quality-v6/ground.png",
+              "http://127.0.0.1:5173/world/reference-scene-v2/quality-v6/parade/atlas.png",
+              "http://127.0.0.1:5173/world/reference-scene-v2/quality-v6/revenge/atlas.png",
+              "http://127.0.0.1:5173/world/reference-scene-v2/quality-v6/danger/atlas.png"
+            ],
+            "cache": {
+              "loads": 5,
+              "hits": 11,
+              "coalesced": 0,
+              "residentBytes": 4108855,
+              "entries": 5,
+              "disposed": false
+            },
+            "overview": {
+              "width": 768,
+              "height": 1296,
+              "mapId": "mcr_reference_scene_r3",
+              "mapRevision": 4,
+              "mapHash": "sha256:3e85db2eddb6a0daf217f0975c78a41dd6723e0ffad3c7d927e3e6fd2897fac8",
+              "geometryHash": "sha256:899aca9bd6ce499c6f46aff5eaf21e30ab34b301e988771b978a6fab7c2d469f",
+              "themeId": "PARADE",
+              "themeRevision": 6,
+              "themeHash": "sha256:4b5e0a0a61cbafdd817b681c21ebb4213bcb8450eb25658ce47aacaca9e8a576",
+              "imageUrl": "blob:http://127.0.0.1:5173/8f6ae14a-f00d-4276-a9c7-a598295511ab"
+            },
+            "owner": {
+              "disposed": false,
+              "leases": 6,
+              "pending": 0,
+              "cleanupFailures": 0,
+              "decodedAtlases": 1
+            }
+          },
+          "worldPixels": {
+            "different": 0,
+            "max": 0,
+            "channels": 1165320
+          },
+          "mapPixels": {
+            "different": 0,
+            "channels": 3981312,
+            "pins": {
+              "width": 768,
+              "height": 1296,
+              "mapId": "mcr_reference_scene_r3",
+              "mapRevision": 4,
+              "mapHash": "sha256:3e85db2eddb6a0daf217f0975c78a41dd6723e0ffad3c7d927e3e6fd2897fac8",
+              "geometryHash": "sha256:899aca9bd6ce499c6f46aff5eaf21e30ab34b301e988771b978a6fab7c2d469f",
+              "themeId": "PARADE",
+              "themeRevision": 6,
+              "themeHash": "sha256:4b5e0a0a61cbafdd817b681c21ebb4213bcb8450eb25658ce47aacaca9e8a576",
+              "imageUrl": "blob:http://127.0.0.1:5173/8f6ae14a-f00d-4276-a9c7-a598295511ab"
+            }
+          },
+          "occlusion": [
+            {
+              "foot": {
+                "x": 344,
+                "y": 344
+              },
+              "pixels": {
+                "different": 0,
+                "max": 0,
+                "channels": 1165320
+              },
+              "signature": "sha256:129775a33a2938dad95f5d62f5f17e876059d232e8c4afe09b934d36e19aa1cb"
+            },
+            {
+              "foot": {
+                "x": 344,
+                "y": 376
+              },
+              "pixels": {
+                "different": 0,
+                "max": 0,
+                "channels": 1165320
+              },
+              "signature": "sha256:8a7d5d6c95c88a1613314b897087ef871f9af772f61dea167c47503b4f4af416"
+            }
+          ]
+        },
+        {
+          "era": "REVENGE",
+          "worldHash": "sha256:cc63ddf1a0dd2736e4350b2ce7fde8c979e02e325305cbddf7012d27f2b9668b",
+          "state": {
+            "phase": "ready",
+            "mounts": 1,
+            "destroys": 0,
+            "canvases": 1,
+            "decodedImages": 3,
+            "scene": {
+              "textures": 2,
+              "decodedBytes": 8175616,
+              "objects": 23,
+              "peakTextures": 4,
+              "peakDecodedBytes": 16351232
+            },
+            "avatars": {
+              "textures": 6,
+              "sprites": 6,
+              "listeners": 1
+            },
+            "geometry": "sha256:899aca9bd6ce499c6f46aff5eaf21e30ab34b301e988771b978a6fab7c2d469f",
+            "mapId": "mcr_reference_scene_r3",
+            "theme": "REVENGE",
+            "camera": {
+              "zoom": 1,
+              "scrollX": 257,
+              "scrollY": 0,
+              "width": 390,
+              "height": 747
+            },
+            "requests": [
+              "http://127.0.0.1:5173/world/reference-scene-v2/runtime/spatial-v3/canonical-map-v4.json",
+              "http://127.0.0.1:5173/world/reference-scene-v2/quality-v6/ground.png",
+              "http://127.0.0.1:5173/world/reference-scene-v2/quality-v6/parade/atlas.png",
+              "http://127.0.0.1:5173/world/reference-scene-v2/quality-v6/revenge/atlas.png",
+              "http://127.0.0.1:5173/world/reference-scene-v2/quality-v6/danger/atlas.png"
+            ],
+            "cache": {
+              "loads": 5,
+              "hits": 15,
+              "coalesced": 0,
+              "residentBytes": 4108855,
+              "entries": 5,
+              "disposed": false
+            },
+            "overview": {
+              "width": 768,
+              "height": 1296,
+              "mapId": "mcr_reference_scene_r3",
+              "mapRevision": 4,
+              "mapHash": "sha256:3e85db2eddb6a0daf217f0975c78a41dd6723e0ffad3c7d927e3e6fd2897fac8",
+              "geometryHash": "sha256:899aca9bd6ce499c6f46aff5eaf21e30ab34b301e988771b978a6fab7c2d469f",
+              "themeId": "REVENGE",
+              "themeRevision": 6,
+              "themeHash": "sha256:7f869d2e9e61e3ca78cf07b298d3da60f9cdd5f87a7cb9a4200650d90c9ca4db",
+              "imageUrl": "blob:http://127.0.0.1:5173/05824ac0-7910-4d63-b3ac-ba596edc94c7"
+            },
+            "owner": {
+              "disposed": false,
+              "leases": 6,
+              "pending": 0,
+              "cleanupFailures": 0,
+              "decodedAtlases": 1
+            }
+          },
+          "worldPixels": {
+            "different": 0,
+            "max": 0,
+            "channels": 1165320
+          },
+          "mapPixels": {
+            "different": 0,
+            "channels": 3981312,
+            "pins": {
+              "width": 768,
+              "height": 1296,
+              "mapId": "mcr_reference_scene_r3",
+              "mapRevision": 4,
+              "mapHash": "sha256:3e85db2eddb6a0daf217f0975c78a41dd6723e0ffad3c7d927e3e6fd2897fac8",
+              "geometryHash": "sha256:899aca9bd6ce499c6f46aff5eaf21e30ab34b301e988771b978a6fab7c2d469f",
+              "themeId": "REVENGE",
+              "themeRevision": 6,
+              "themeHash": "sha256:7f869d2e9e61e3ca78cf07b298d3da60f9cdd5f87a7cb9a4200650d90c9ca4db",
+              "imageUrl": "blob:http://127.0.0.1:5173/05824ac0-7910-4d63-b3ac-ba596edc94c7"
+            }
+          },
+          "occlusion": [
+            {
+              "foot": {
+                "x": 344,
+                "y": 344
+              },
+              "pixels": {
+                "different": 0,
+                "max": 0,
+                "channels": 1165320
+              },
+              "signature": "sha256:1b0c6e71f8568663b6a0c459342932289532919b07ed5c30085decc29405a5e1"
+            },
+            {
+              "foot": {
+                "x": 344,
+                "y": 376
+              },
+              "pixels": {
+                "different": 0,
+                "max": 0,
+                "channels": 1165320
+              },
+              "signature": "sha256:8a97a3c6509af3880cd2056d04f9fd36d496e303c0bf55e6c190bc842daf9e8e"
+            }
+          ]
+        },
+        {
+          "era": "DANGER",
+          "worldHash": "sha256:36d3c7f517d6c31fe68a8575550a24f3b7f0879e0fa4f4fc6d890e28b15cd9a7",
+          "state": {
+            "phase": "ready",
+            "mounts": 1,
+            "destroys": 0,
+            "canvases": 1,
+            "decodedImages": 3,
+            "scene": {
+              "textures": 2,
+              "decodedBytes": 8175616,
+              "objects": 23,
+              "peakTextures": 4,
+              "peakDecodedBytes": 16351232
+            },
+            "avatars": {
+              "textures": 6,
+              "sprites": 6,
+              "listeners": 1
+            },
+            "geometry": "sha256:899aca9bd6ce499c6f46aff5eaf21e30ab34b301e988771b978a6fab7c2d469f",
+            "mapId": "mcr_reference_scene_r3",
+            "theme": "DANGER",
+            "camera": {
+              "zoom": 1,
+              "scrollX": 257,
+              "scrollY": 0,
+              "width": 390,
+              "height": 747
+            },
+            "requests": [
+              "http://127.0.0.1:5173/world/reference-scene-v2/runtime/spatial-v3/canonical-map-v4.json",
+              "http://127.0.0.1:5173/world/reference-scene-v2/quality-v6/ground.png",
+              "http://127.0.0.1:5173/world/reference-scene-v2/quality-v6/parade/atlas.png",
+              "http://127.0.0.1:5173/world/reference-scene-v2/quality-v6/revenge/atlas.png",
+              "http://127.0.0.1:5173/world/reference-scene-v2/quality-v6/danger/atlas.png"
+            ],
+            "cache": {
+              "loads": 5,
+              "hits": 19,
+              "coalesced": 0,
+              "residentBytes": 4108855,
+              "entries": 5,
+              "disposed": false
+            },
+            "overview": {
+              "width": 768,
+              "height": 1296,
+              "mapId": "mcr_reference_scene_r3",
+              "mapRevision": 4,
+              "mapHash": "sha256:3e85db2eddb6a0daf217f0975c78a41dd6723e0ffad3c7d927e3e6fd2897fac8",
+              "geometryHash": "sha256:899aca9bd6ce499c6f46aff5eaf21e30ab34b301e988771b978a6fab7c2d469f",
+              "themeId": "DANGER",
+              "themeRevision": 6,
+              "themeHash": "sha256:94c22e344c05ee098535e33fadd8bafbc777964aa0db4e70aabfe5a91d9b392a",
+              "imageUrl": "blob:http://127.0.0.1:5173/6b230007-cc85-415b-9033-46496ca1e3b3"
+            },
+            "owner": {
+              "disposed": false,
+              "leases": 6,
+              "pending": 0,
+              "cleanupFailures": 0,
+              "decodedAtlases": 1
+            }
+          },
+          "worldPixels": {
+            "different": 0,
+            "max": 0,
+            "channels": 1165320
+          },
+          "mapPixels": {
+            "different": 0,
+            "channels": 3981312,
+            "pins": {
+              "width": 768,
+              "height": 1296,
+              "mapId": "mcr_reference_scene_r3",
+              "mapRevision": 4,
+              "mapHash": "sha256:3e85db2eddb6a0daf217f0975c78a41dd6723e0ffad3c7d927e3e6fd2897fac8",
+              "geometryHash": "sha256:899aca9bd6ce499c6f46aff5eaf21e30ab34b301e988771b978a6fab7c2d469f",
+              "themeId": "DANGER",
+              "themeRevision": 6,
+              "themeHash": "sha256:94c22e344c05ee098535e33fadd8bafbc777964aa0db4e70aabfe5a91d9b392a",
+              "imageUrl": "blob:http://127.0.0.1:5173/6b230007-cc85-415b-9033-46496ca1e3b3"
+            }
+          },
+          "occlusion": [
+            {
+              "foot": {
+                "x": 344,
+                "y": 344
+              },
+              "pixels": {
+                "different": 0,
+                "max": 0,
+                "channels": 1165320
+              },
+              "signature": "sha256:3213b551103fc5b134891d1539432af94598c731fbe9628977eb0fa901617558"
+            },
+            {
+              "foot": {
+                "x": 344,
+                "y": 376
+              },
+              "pixels": {
+                "different": 0,
+                "max": 0,
+                "channels": 1165320
+              },
+              "signature": "sha256:685ca86ef44d3b3c2a0528f81bfe0374343bf1e047facd57f0cdb233cf3fea7b"
+            }
+          ]
+        },
+        {
+          "era": "PARADE",
+          "worldHash": "sha256:75ff150a5c1a9543343c0291d7da45c10636d7c0a62253df99a5eb5d895e66e8",
+          "state": {
+            "phase": "ready",
+            "mounts": 1,
+            "destroys": 0,
+            "canvases": 1,
+            "decodedImages": 3,
+            "scene": {
+              "textures": 2,
+              "decodedBytes": 8175616,
+              "objects": 23,
+              "peakTextures": 4,
+              "peakDecodedBytes": 16351232
+            },
+            "avatars": {
+              "textures": 6,
+              "sprites": 6,
+              "listeners": 1
+            },
+            "geometry": "sha256:899aca9bd6ce499c6f46aff5eaf21e30ab34b301e988771b978a6fab7c2d469f",
+            "mapId": "mcr_reference_scene_r3",
+            "theme": "PARADE",
+            "camera": {
+              "zoom": 1,
+              "scrollX": 257,
+              "scrollY": 0,
+              "width": 390,
+              "height": 747
+            },
+            "requests": [
+              "http://127.0.0.1:5173/world/reference-scene-v2/runtime/spatial-v3/canonical-map-v4.json",
+              "http://127.0.0.1:5173/world/reference-scene-v2/quality-v6/ground.png",
+              "http://127.0.0.1:5173/world/reference-scene-v2/quality-v6/parade/atlas.png",
+              "http://127.0.0.1:5173/world/reference-scene-v2/quality-v6/revenge/atlas.png",
+              "http://127.0.0.1:5173/world/reference-scene-v2/quality-v6/danger/atlas.png"
+            ],
+            "cache": {
+              "loads": 5,
+              "hits": 23,
+              "coalesced": 0,
+              "residentBytes": 4108855,
+              "entries": 5,
+              "disposed": false
+            },
+            "overview": {
+              "width": 768,
+              "height": 1296,
+              "mapId": "mcr_reference_scene_r3",
+              "mapRevision": 4,
+              "mapHash": "sha256:3e85db2eddb6a0daf217f0975c78a41dd6723e0ffad3c7d927e3e6fd2897fac8",
+              "geometryHash": "sha256:899aca9bd6ce499c6f46aff5eaf21e30ab34b301e988771b978a6fab7c2d469f",
+              "themeId": "PARADE",
+              "themeRevision": 6,
+              "themeHash": "sha256:4b5e0a0a61cbafdd817b681c21ebb4213bcb8450eb25658ce47aacaca9e8a576",
+              "imageUrl": "blob:http://127.0.0.1:5173/9bc83aa8-010f-4de8-8959-ff93ed83dbc8"
+            },
+            "owner": {
+              "disposed": false,
+              "leases": 6,
+              "pending": 0,
+              "cleanupFailures": 0,
+              "decodedAtlases": 1
+            }
+          },
+          "worldPixels": {
+            "different": 0,
+            "max": 0,
+            "channels": 1165320
+          },
+          "mapPixels": {
+            "different": 0,
+            "channels": 3981312,
+            "pins": {
+              "width": 768,
+              "height": 1296,
+              "mapId": "mcr_reference_scene_r3",
+              "mapRevision": 4,
+              "mapHash": "sha256:3e85db2eddb6a0daf217f0975c78a41dd6723e0ffad3c7d927e3e6fd2897fac8",
+              "geometryHash": "sha256:899aca9bd6ce499c6f46aff5eaf21e30ab34b301e988771b978a6fab7c2d469f",
+              "themeId": "PARADE",
+              "themeRevision": 6,
+              "themeHash": "sha256:4b5e0a0a61cbafdd817b681c21ebb4213bcb8450eb25658ce47aacaca9e8a576",
+              "imageUrl": "blob:http://127.0.0.1:5173/9bc83aa8-010f-4de8-8959-ff93ed83dbc8"
+            }
+          },
+          "occlusion": [
+            {
+              "foot": {
+                "x": 344,
+                "y": 344
+              },
+              "pixels": {
+                "different": 0,
+                "max": 0,
+                "channels": 1165320
+              },
+              "signature": "sha256:129775a33a2938dad95f5d62f5f17e876059d232e8c4afe09b934d36e19aa1cb"
+            },
+            {
+              "foot": {
+                "x": 344,
+                "y": 376
+              },
+              "pixels": {
+                "different": 0,
+                "max": 0,
+                "channels": 1165320
+              },
+              "signature": "sha256:8a7d5d6c95c88a1613314b897087ef871f9af772f61dea167c47503b4f4af416"
+            }
+          ]
+        }
+      ],
+      "interactions": [
+        {
+          "id": "stage_info",
+          "placeId": "6a5c196b-58e1-47d5-99bb-000000000003",
+          "foot": {
+            "x": 488,
+            "y": 392
+          },
+          "walkable": true,
+          "nearby": [
+            "stage_info"
+          ],
+          "routes": [
+            true,
+            true
+          ]
+        },
+        {
+          "id": "park_info",
+          "placeId": "6a5c196b-58e1-47d5-99bb-000000000002",
+          "foot": {
+            "x": 616,
+            "y": 440
+          },
+          "walkable": true,
+          "nearby": [
+            "park_info"
+          ],
+          "routes": [
+            true,
+            true
+          ]
+        },
+        {
+          "id": "gifts_info",
+          "placeId": "6a5c196b-58e1-47d5-99bb-000000000004",
+          "foot": {
+            "x": 216,
+            "y": 776
+          },
+          "walkable": true,
+          "nearby": [
+            "gifts_info"
+          ],
+          "routes": [
+            true,
+            true
+          ]
+        },
+        {
+          "id": "wall_info",
+          "placeId": "6a5c196b-58e1-47d5-99bb-000000000005",
+          "foot": {
+            "x": 232,
+            "y": 984
+          },
+          "walkable": true,
+          "nearby": [
+            "wall_info"
+          ],
+          "routes": [
+            true,
+            true
+          ]
+        }
+      ],
+      "landmarks": [
+        {
+          "index": 1,
+          "pixels": {
+            "different": 0,
+            "max": 0,
+            "channels": 1165320
+          }
+        },
+        {
+          "index": 2,
+          "pixels": {
+            "different": 0,
+            "max": 0,
+            "channels": 1165320
+          }
+        },
+        {
+          "index": 3,
+          "pixels": {
+            "different": 0,
+            "max": 0,
+            "channels": 1165320
+          }
+        }
+      ],
+      "replaced": {
+        "before": "sha256:0a53f7a4b9039242ab9ca887240d3bf37b12713a7594a022e976bf91cd4722ea",
+        "after": "sha256:0a53f7a4b9039242ab9ca887240d3bf37b12713a7594a022e976bf91cd4722ea",
+        "state": {
+          "phase": "ready",
+          "mounts": 1,
+          "destroys": 0,
+          "canvases": 1,
+          "decodedImages": 3,
+          "scene": {
+            "textures": 2,
+            "decodedBytes": 8175616,
+            "objects": 23,
+            "peakTextures": 4,
+            "peakDecodedBytes": 16351232
+          },
+          "avatars": {
+            "textures": 6,
+            "sprites": 6,
+            "listeners": 1
+          },
+          "geometry": "sha256:899aca9bd6ce499c6f46aff5eaf21e30ab34b301e988771b978a6fab7c2d469f",
+          "mapId": "mcr_reference_scene_r3",
+          "theme": "PARADE",
+          "camera": {
+            "zoom": 1,
+            "scrollX": 37,
+            "scrollY": 549,
+            "width": 390,
+            "height": 747
+          },
+          "requests": [
+            "http://127.0.0.1:5173/world/reference-scene-v2/runtime/spatial-v3/canonical-map-v4.json",
+            "http://127.0.0.1:5173/world/reference-scene-v2/quality-v6/ground.png",
+            "http://127.0.0.1:5173/world/reference-scene-v2/quality-v6/parade/atlas.png",
+            "http://127.0.0.1:5173/world/reference-scene-v2/quality-v6/revenge/atlas.png",
+            "http://127.0.0.1:5173/world/reference-scene-v2/quality-v6/danger/atlas.png"
+          ],
+          "cache": {
+            "loads": 5,
+            "hits": 27,
+            "coalesced": 0,
+            "residentBytes": 4108855,
+            "entries": 5,
+            "disposed": false
+          },
+          "overview": null,
+          "owner": {
+            "disposed": false,
+            "leases": 6,
+            "pending": 0,
+            "cleanupFailures": 0,
+            "decodedAtlases": 1
+          }
+        }
+      },
+      "rejected": {
+        "results": [
+          "hash",
+          "geometry",
+          "revision",
+          "theme",
+          "frame",
+          "depth",
+          "asset"
+        ],
+        "signature": "sha256:0a53f7a4b9039242ab9ca887240d3bf37b12713a7594a022e976bf91cd4722ea",
+        "state": {
+          "phase": "ready",
+          "mounts": 1,
+          "destroys": 0,
+          "canvases": 1,
+          "decodedImages": 3,
+          "scene": {
+            "textures": 2,
+            "decodedBytes": 8175616,
+            "objects": 23,
+            "peakTextures": 4,
+            "peakDecodedBytes": 16351232
+          },
+          "avatars": {
+            "textures": 6,
+            "sprites": 6,
+            "listeners": 1
+          },
+          "geometry": "sha256:899aca9bd6ce499c6f46aff5eaf21e30ab34b301e988771b978a6fab7c2d469f",
+          "mapId": "mcr_reference_scene_r3",
+          "theme": "PARADE",
+          "camera": {
+            "zoom": 1,
+            "scrollX": 37,
+            "scrollY": 549,
+            "width": 390,
+            "height": 747
+          },
+          "requests": [
+            "http://127.0.0.1:5173/world/reference-scene-v2/runtime/spatial-v3/canonical-map-v4.json",
+            "http://127.0.0.1:5173/world/reference-scene-v2/quality-v6/ground.png",
+            "http://127.0.0.1:5173/world/reference-scene-v2/quality-v6/parade/atlas.png",
+            "http://127.0.0.1:5173/world/reference-scene-v2/quality-v6/revenge/atlas.png",
+            "http://127.0.0.1:5173/world/reference-scene-v2/quality-v6/danger/atlas.png"
+          ],
+          "cache": {
+            "loads": 5,
+            "hits": 27,
+            "coalesced": 0,
+            "residentBytes": 4108855,
+            "entries": 5,
+            "disposed": false
+          },
+          "overview": null,
+          "owner": {
+            "disposed": false,
+            "leases": 6,
+            "pending": 0,
+            "cleanupFailures": 0,
+            "decodedAtlases": 1
+          }
+        }
+      },
+      "cancelled": {
+        "before": "sha256:0a53f7a4b9039242ab9ca887240d3bf37b12713a7594a022e976bf91cd4722ea",
+        "after": "sha256:0a53f7a4b9039242ab9ca887240d3bf37b12713a7594a022e976bf91cd4722ea",
+        "state": {
+          "phase": "ready",
+          "mounts": 1,
+          "destroys": 0,
+          "canvases": 1,
+          "decodedImages": 3,
+          "scene": {
+            "textures": 2,
+            "decodedBytes": 8175616,
+            "objects": 23,
+            "peakTextures": 4,
+            "peakDecodedBytes": 16351232
+          },
+          "avatars": {
+            "textures": 6,
+            "sprites": 6,
+            "listeners": 1
+          },
+          "geometry": "sha256:899aca9bd6ce499c6f46aff5eaf21e30ab34b301e988771b978a6fab7c2d469f",
+          "mapId": "mcr_reference_scene_r3",
+          "theme": "PARADE",
+          "camera": {
+            "zoom": 1,
+            "scrollX": 37,
+            "scrollY": 549,
+            "width": 390,
+            "height": 747
+          },
+          "requests": [
+            "http://127.0.0.1:5173/world/reference-scene-v2/runtime/spatial-v3/canonical-map-v4.json",
+            "http://127.0.0.1:5173/world/reference-scene-v2/quality-v6/ground.png",
+            "http://127.0.0.1:5173/world/reference-scene-v2/quality-v6/parade/atlas.png",
+            "http://127.0.0.1:5173/world/reference-scene-v2/quality-v6/revenge/atlas.png",
+            "http://127.0.0.1:5173/world/reference-scene-v2/quality-v6/danger/atlas.png"
+          ],
+          "cache": {
+            "loads": 5,
+            "hits": 35,
+            "coalesced": 0,
+            "residentBytes": 4108855,
+            "entries": 5,
+            "disposed": false
+          },
+          "overview": null,
+          "owner": {
+            "disposed": false,
+            "leases": 6,
+            "pending": 0,
+            "cleanupFailures": 0,
+            "decodedAtlases": 1
+          }
+        }
+      },
+      "hidden": {
+        "phase": "ready",
+        "mounts": 1,
+        "destroys": 0,
+        "canvases": 1,
+        "decodedImages": 3,
+        "scene": {
+          "textures": 2,
+          "decodedBytes": 8175616,
+          "objects": 23,
+          "peakTextures": 4,
+          "peakDecodedBytes": 16351232
+        },
+        "avatars": {
+          "textures": 0,
+          "sprites": 0,
+          "listeners": 1
+        },
+        "geometry": "sha256:899aca9bd6ce499c6f46aff5eaf21e30ab34b301e988771b978a6fab7c2d469f",
+        "mapId": "mcr_reference_scene_r3",
+        "theme": "PARADE",
+        "camera": {
+          "zoom": 1,
+          "scrollX": 37,
+          "scrollY": 549,
+          "width": 390,
+          "height": 747
+        },
+        "requests": [
+          "http://127.0.0.1:5173/world/reference-scene-v2/runtime/spatial-v3/canonical-map-v4.json",
+          "http://127.0.0.1:5173/world/reference-scene-v2/quality-v6/ground.png",
+          "http://127.0.0.1:5173/world/reference-scene-v2/quality-v6/parade/atlas.png",
+          "http://127.0.0.1:5173/world/reference-scene-v2/quality-v6/revenge/atlas.png",
+          "http://127.0.0.1:5173/world/reference-scene-v2/quality-v6/danger/atlas.png"
+        ],
+        "cache": {
+          "loads": 5,
+          "hits": 35,
+          "coalesced": 0,
+          "residentBytes": 4108855,
+          "entries": 5,
+          "disposed": false
+        },
+        "overview": null,
+        "owner": {
+          "disposed": false,
+          "leases": 0,
+          "pending": 0,
+          "cleanupFailures": 0,
+          "decodedAtlases": 1
+        }
+      },
+      "revoked": {
+        "phase": "stopped",
+        "mounts": 1,
+        "destroys": 1,
+        "canvases": 0,
+        "decodedImages": 3,
+        "scene": {
+          "textures": 0,
+          "decodedBytes": 0,
+          "objects": 0,
+          "peakTextures": 4,
+          "peakDecodedBytes": 16351232
+        },
+        "avatars": {
+          "textures": 0,
+          "sprites": 0,
+          "listeners": 0
+        },
+        "geometry": "sha256:899aca9bd6ce499c6f46aff5eaf21e30ab34b301e988771b978a6fab7c2d469f",
+        "mapId": "mcr_reference_scene_r3",
+        "theme": "PARADE",
+        "camera": null,
+        "requests": [
+          "http://127.0.0.1:5173/world/reference-scene-v2/runtime/spatial-v3/canonical-map-v4.json",
+          "http://127.0.0.1:5173/world/reference-scene-v2/quality-v6/ground.png",
+          "http://127.0.0.1:5173/world/reference-scene-v2/quality-v6/parade/atlas.png",
+          "http://127.0.0.1:5173/world/reference-scene-v2/quality-v6/revenge/atlas.png",
+          "http://127.0.0.1:5173/world/reference-scene-v2/quality-v6/danger/atlas.png"
+        ],
+        "cache": {
+          "loads": 5,
+          "hits": 35,
+          "coalesced": 0,
+          "residentBytes": 0,
+          "entries": 0,
+          "disposed": true
+        },
+        "overview": null,
+        "owner": {
+          "disposed": true,
+          "leases": 0,
+          "pending": 0,
+          "cleanupFailures": 0,
+          "decodedAtlases": 0
+        }
+      },
+      "cleanup": {
+        "phase": "disposed",
+        "mounts": 1,
+        "destroys": 1,
+        "canvases": 0,
+        "decodedImages": 0,
+        "scene": {
+          "textures": 0,
+          "decodedBytes": 0,
+          "objects": 0,
+          "peakTextures": 4,
+          "peakDecodedBytes": 16351232
+        },
+        "avatars": {
+          "textures": 0,
+          "sprites": 0,
+          "listeners": 0
+        },
+        "geometry": "sha256:899aca9bd6ce499c6f46aff5eaf21e30ab34b301e988771b978a6fab7c2d469f",
+        "mapId": "mcr_reference_scene_r3",
+        "theme": "PARADE",
+        "camera": null,
+        "requests": [
+          "http://127.0.0.1:5173/world/reference-scene-v2/runtime/spatial-v3/canonical-map-v4.json",
+          "http://127.0.0.1:5173/world/reference-scene-v2/quality-v6/ground.png",
+          "http://127.0.0.1:5173/world/reference-scene-v2/quality-v6/parade/atlas.png",
+          "http://127.0.0.1:5173/world/reference-scene-v2/quality-v6/revenge/atlas.png",
+          "http://127.0.0.1:5173/world/reference-scene-v2/quality-v6/danger/atlas.png"
+        ],
+        "cache": {
+          "loads": 5,
+          "hits": 35,
+          "coalesced": 0,
+          "residentBytes": 0,
+          "entries": 0,
+          "disposed": true
+        },
+        "overview": null,
+        "owner": {
+          "disposed": true,
+          "leases": 0,
+          "pending": 0,
+          "cleanupFailures": 0,
+          "decodedAtlases": 0
+        }
+      },
+      "encodes": [
+        {
+          "width": 768,
+          "height": 1296,
+          "bytes": 1801798
+        },
+        {
+          "width": 768,
+          "height": 1296,
+          "bytes": 1788686
+        },
+        {
+          "width": 768,
+          "height": 1296,
+          "bytes": 1799436
+        },
+        {
+          "width": 768,
+          "height": 1296,
+          "bytes": 1801798
+        },
+        {
+          "width": 768,
+          "height": 1296,
+          "bytes": 1788686
+        },
+        {
+          "width": 768,
+          "height": 1296,
+          "bytes": 1799436
+        },
+        {
+          "width": 768,
+          "height": 1296,
+          "bytes": 1801798
+        },
+        {
+          "width": 768,
+          "height": 1296,
+          "bytes": 1801798
+        },
+        {
+          "width": 768,
+          "height": 1296,
+          "bytes": 1801798
+        }
+      ]
+    },
+    {
+      "width": 430,
+      "height": 932,
+      "initial": {
+        "phase": "ready",
+        "mounts": 1,
+        "destroys": 0,
+        "canvases": 1,
+        "decodedImages": 3,
+        "scene": {
+          "textures": 2,
+          "decodedBytes": 8175616,
+          "objects": 23,
+          "peakTextures": 2,
+          "peakDecodedBytes": 8175616
+        },
+        "avatars": {
+          "textures": 6,
+          "sprites": 6,
+          "listeners": 1
+        },
+        "geometry": "sha256:899aca9bd6ce499c6f46aff5eaf21e30ab34b301e988771b978a6fab7c2d469f",
+        "mapId": "mcr_reference_scene_r3",
+        "theme": "PARADE",
+        "camera": {
+          "zoom": 1,
+          "scrollX": 237,
+          "scrollY": 0,
+          "width": 430,
+          "height": 848
+        },
+        "requests": [
+          "http://127.0.0.1:5173/world/reference-scene-v2/runtime/spatial-v3/canonical-map-v4.json",
+          "http://127.0.0.1:5173/world/reference-scene-v2/quality-v6/ground.png",
+          "http://127.0.0.1:5173/world/reference-scene-v2/quality-v6/parade/atlas.png"
+        ],
+        "cache": {
+          "loads": 3,
+          "hits": 1,
+          "coalesced": 0,
+          "residentBytes": 1751279,
+          "entries": 3,
+          "disposed": false
+        },
+        "overview": {
+          "width": 768,
+          "height": 1296,
+          "mapId": "mcr_reference_scene_r3",
+          "mapRevision": 4,
+          "mapHash": "sha256:3e85db2eddb6a0daf217f0975c78a41dd6723e0ffad3c7d927e3e6fd2897fac8",
+          "geometryHash": "sha256:899aca9bd6ce499c6f46aff5eaf21e30ab34b301e988771b978a6fab7c2d469f",
+          "themeId": "PARADE",
+          "themeRevision": 6,
+          "themeHash": "sha256:4b5e0a0a61cbafdd817b681c21ebb4213bcb8450eb25658ce47aacaca9e8a576",
+          "imageUrl": "blob:http://127.0.0.1:5173/22ce3518-50ea-4eb3-922d-ab31741b6dc9"
+        },
+        "owner": {
+          "disposed": false,
+          "leases": 6,
+          "pending": 0,
+          "cleanupFailures": 0,
+          "decodedAtlases": 1
+        }
+      },
+      "parity": {
+        "different": 0,
+        "max": 0,
+        "channels": 1458560
+      },
+      "eras": [
+        {
+          "era": "REVENGE",
+          "worldHash": "sha256:1f76e7430234203d1262f735737bf015d2ac90cbff766849acc03e2b03f2607d",
+          "state": {
+            "phase": "ready",
+            "mounts": 1,
+            "destroys": 0,
+            "canvases": 1,
+            "decodedImages": 3,
+            "scene": {
+              "textures": 2,
+              "decodedBytes": 8175616,
+              "objects": 23,
+              "peakTextures": 4,
+              "peakDecodedBytes": 16351232
+            },
+            "avatars": {
+              "textures": 6,
+              "sprites": 6,
+              "listeners": 1
+            },
+            "geometry": "sha256:899aca9bd6ce499c6f46aff5eaf21e30ab34b301e988771b978a6fab7c2d469f",
+            "mapId": "mcr_reference_scene_r3",
+            "theme": "REVENGE",
+            "camera": {
+              "zoom": 1,
+              "scrollX": 237,
+              "scrollY": 0,
+              "width": 430,
+              "height": 848
+            },
+            "requests": [
+              "http://127.0.0.1:5173/world/reference-scene-v2/runtime/spatial-v3/canonical-map-v4.json",
+              "http://127.0.0.1:5173/world/reference-scene-v2/quality-v6/ground.png",
+              "http://127.0.0.1:5173/world/reference-scene-v2/quality-v6/parade/atlas.png",
+              "http://127.0.0.1:5173/world/reference-scene-v2/quality-v6/revenge/atlas.png"
+            ],
+            "cache": {
+              "loads": 4,
+              "hits": 4,
+              "coalesced": 0,
+              "residentBytes": 2927361,
+              "entries": 4,
+              "disposed": false
+            },
+            "overview": {
+              "width": 768,
+              "height": 1296,
+              "mapId": "mcr_reference_scene_r3",
+              "mapRevision": 4,
+              "mapHash": "sha256:3e85db2eddb6a0daf217f0975c78a41dd6723e0ffad3c7d927e3e6fd2897fac8",
+              "geometryHash": "sha256:899aca9bd6ce499c6f46aff5eaf21e30ab34b301e988771b978a6fab7c2d469f",
+              "themeId": "REVENGE",
+              "themeRevision": 6,
+              "themeHash": "sha256:7f869d2e9e61e3ca78cf07b298d3da60f9cdd5f87a7cb9a4200650d90c9ca4db",
+              "imageUrl": "blob:http://127.0.0.1:5173/3a4840ad-845e-49ec-a73c-9336f86acd41"
+            },
+            "owner": {
+              "disposed": false,
+              "leases": 6,
+              "pending": 0,
+              "cleanupFailures": 0,
+              "decodedAtlases": 1
+            }
+          },
+          "worldPixels": {
+            "different": 0,
+            "max": 0,
+            "channels": 1458560
+          },
+          "mapPixels": {
+            "different": 0,
+            "channels": 3981312,
+            "pins": {
+              "width": 768,
+              "height": 1296,
+              "mapId": "mcr_reference_scene_r3",
+              "mapRevision": 4,
+              "mapHash": "sha256:3e85db2eddb6a0daf217f0975c78a41dd6723e0ffad3c7d927e3e6fd2897fac8",
+              "geometryHash": "sha256:899aca9bd6ce499c6f46aff5eaf21e30ab34b301e988771b978a6fab7c2d469f",
+              "themeId": "REVENGE",
+              "themeRevision": 6,
+              "themeHash": "sha256:7f869d2e9e61e3ca78cf07b298d3da60f9cdd5f87a7cb9a4200650d90c9ca4db",
+              "imageUrl": "blob:http://127.0.0.1:5173/3a4840ad-845e-49ec-a73c-9336f86acd41"
+            }
+          },
+          "occlusion": [
+            {
+              "foot": {
+                "x": 344,
+                "y": 344
+              },
+              "pixels": {
+                "different": 0,
+                "max": 0,
+                "channels": 1458560
+              },
+              "signature": "sha256:0299617808d2398182ff2ada637c120c38ee9078c1a66fdcb5f545ddddc3a15d"
+            },
+            {
+              "foot": {
+                "x": 344,
+                "y": 376
+              },
+              "pixels": {
+                "different": 0,
+                "max": 0,
+                "channels": 1458560
+              },
+              "signature": "sha256:ea78035920c7ba02b1bf85f7ceba781c54edfc799485be54a6e05e8987dc5856"
+            }
+          ]
+        },
+        {
+          "era": "DANGER",
+          "worldHash": "sha256:a5e165ff269253bd631bee34888b15548aafa5e135f2ac43adcbcf8846481f85",
+          "state": {
+            "phase": "ready",
+            "mounts": 1,
+            "destroys": 0,
+            "canvases": 1,
+            "decodedImages": 3,
+            "scene": {
+              "textures": 2,
+              "decodedBytes": 8175616,
+              "objects": 23,
+              "peakTextures": 4,
+              "peakDecodedBytes": 16351232
+            },
+            "avatars": {
+              "textures": 6,
+              "sprites": 6,
+              "listeners": 1
+            },
+            "geometry": "sha256:899aca9bd6ce499c6f46aff5eaf21e30ab34b301e988771b978a6fab7c2d469f",
+            "mapId": "mcr_reference_scene_r3",
+            "theme": "DANGER",
+            "camera": {
+              "zoom": 1,
+              "scrollX": 237,
+              "scrollY": 0,
+              "width": 430,
+              "height": 848
+            },
+            "requests": [
+              "http://127.0.0.1:5173/world/reference-scene-v2/runtime/spatial-v3/canonical-map-v4.json",
+              "http://127.0.0.1:5173/world/reference-scene-v2/quality-v6/ground.png",
+              "http://127.0.0.1:5173/world/reference-scene-v2/quality-v6/parade/atlas.png",
+              "http://127.0.0.1:5173/world/reference-scene-v2/quality-v6/revenge/atlas.png",
+              "http://127.0.0.1:5173/world/reference-scene-v2/quality-v6/danger/atlas.png"
+            ],
+            "cache": {
+              "loads": 5,
+              "hits": 7,
+              "coalesced": 0,
+              "residentBytes": 4108855,
+              "entries": 5,
+              "disposed": false
+            },
+            "overview": {
+              "width": 768,
+              "height": 1296,
+              "mapId": "mcr_reference_scene_r3",
+              "mapRevision": 4,
+              "mapHash": "sha256:3e85db2eddb6a0daf217f0975c78a41dd6723e0ffad3c7d927e3e6fd2897fac8",
+              "geometryHash": "sha256:899aca9bd6ce499c6f46aff5eaf21e30ab34b301e988771b978a6fab7c2d469f",
+              "themeId": "DANGER",
+              "themeRevision": 6,
+              "themeHash": "sha256:94c22e344c05ee098535e33fadd8bafbc777964aa0db4e70aabfe5a91d9b392a",
+              "imageUrl": "blob:http://127.0.0.1:5173/6bdfddd8-b4da-4434-b6dd-9801819bf10b"
+            },
+            "owner": {
+              "disposed": false,
+              "leases": 6,
+              "pending": 0,
+              "cleanupFailures": 0,
+              "decodedAtlases": 1
+            }
+          },
+          "worldPixels": {
+            "different": 0,
+            "max": 0,
+            "channels": 1458560
+          },
+          "mapPixels": {
+            "different": 0,
+            "channels": 3981312,
+            "pins": {
+              "width": 768,
+              "height": 1296,
+              "mapId": "mcr_reference_scene_r3",
+              "mapRevision": 4,
+              "mapHash": "sha256:3e85db2eddb6a0daf217f0975c78a41dd6723e0ffad3c7d927e3e6fd2897fac8",
+              "geometryHash": "sha256:899aca9bd6ce499c6f46aff5eaf21e30ab34b301e988771b978a6fab7c2d469f",
+              "themeId": "DANGER",
+              "themeRevision": 6,
+              "themeHash": "sha256:94c22e344c05ee098535e33fadd8bafbc777964aa0db4e70aabfe5a91d9b392a",
+              "imageUrl": "blob:http://127.0.0.1:5173/6bdfddd8-b4da-4434-b6dd-9801819bf10b"
+            }
+          },
+          "occlusion": [
+            {
+              "foot": {
+                "x": 344,
+                "y": 344
+              },
+              "pixels": {
+                "different": 0,
+                "max": 0,
+                "channels": 1458560
+              },
+              "signature": "sha256:427edfdec18031d130528b4e69ac7a0cb2693e63f5b2602a6272503f0d5af21c"
+            },
+            {
+              "foot": {
+                "x": 344,
+                "y": 376
+              },
+              "pixels": {
+                "different": 0,
+                "max": 0,
+                "channels": 1458560
+              },
+              "signature": "sha256:4c3390970daad1401e4f3066040f6a359a0f038901e90ddacd5dbaa6c44902ef"
+            }
+          ]
+        },
+        {
+          "era": "PARADE",
+          "worldHash": "sha256:6fdda4aec6d6556fce2fa36158517a5089cbdda591250acef3526011b5fb8dfb",
+          "state": {
+            "phase": "ready",
+            "mounts": 1,
+            "destroys": 0,
+            "canvases": 1,
+            "decodedImages": 3,
+            "scene": {
+              "textures": 2,
+              "decodedBytes": 8175616,
+              "objects": 23,
+              "peakTextures": 4,
+              "peakDecodedBytes": 16351232
+            },
+            "avatars": {
+              "textures": 6,
+              "sprites": 6,
+              "listeners": 1
+            },
+            "geometry": "sha256:899aca9bd6ce499c6f46aff5eaf21e30ab34b301e988771b978a6fab7c2d469f",
+            "mapId": "mcr_reference_scene_r3",
+            "theme": "PARADE",
+            "camera": {
+              "zoom": 1,
+              "scrollX": 237,
+              "scrollY": 0,
+              "width": 430,
+              "height": 848
+            },
+            "requests": [
+              "http://127.0.0.1:5173/world/reference-scene-v2/runtime/spatial-v3/canonical-map-v4.json",
+              "http://127.0.0.1:5173/world/reference-scene-v2/quality-v6/ground.png",
+              "http://127.0.0.1:5173/world/reference-scene-v2/quality-v6/parade/atlas.png",
+              "http://127.0.0.1:5173/world/reference-scene-v2/quality-v6/revenge/atlas.png",
+              "http://127.0.0.1:5173/world/reference-scene-v2/quality-v6/danger/atlas.png"
+            ],
+            "cache": {
+              "loads": 5,
+              "hits": 11,
+              "coalesced": 0,
+              "residentBytes": 4108855,
+              "entries": 5,
+              "disposed": false
+            },
+            "overview": {
+              "width": 768,
+              "height": 1296,
+              "mapId": "mcr_reference_scene_r3",
+              "mapRevision": 4,
+              "mapHash": "sha256:3e85db2eddb6a0daf217f0975c78a41dd6723e0ffad3c7d927e3e6fd2897fac8",
+              "geometryHash": "sha256:899aca9bd6ce499c6f46aff5eaf21e30ab34b301e988771b978a6fab7c2d469f",
+              "themeId": "PARADE",
+              "themeRevision": 6,
+              "themeHash": "sha256:4b5e0a0a61cbafdd817b681c21ebb4213bcb8450eb25658ce47aacaca9e8a576",
+              "imageUrl": "blob:http://127.0.0.1:5173/3d5487b3-6f0e-4826-ad82-d6e39c36b1a2"
+            },
+            "owner": {
+              "disposed": false,
+              "leases": 6,
+              "pending": 0,
+              "cleanupFailures": 0,
+              "decodedAtlases": 1
+            }
+          },
+          "worldPixels": {
+            "different": 0,
+            "max": 0,
+            "channels": 1458560
+          },
+          "mapPixels": {
+            "different": 0,
+            "channels": 3981312,
+            "pins": {
+              "width": 768,
+              "height": 1296,
+              "mapId": "mcr_reference_scene_r3",
+              "mapRevision": 4,
+              "mapHash": "sha256:3e85db2eddb6a0daf217f0975c78a41dd6723e0ffad3c7d927e3e6fd2897fac8",
+              "geometryHash": "sha256:899aca9bd6ce499c6f46aff5eaf21e30ab34b301e988771b978a6fab7c2d469f",
+              "themeId": "PARADE",
+              "themeRevision": 6,
+              "themeHash": "sha256:4b5e0a0a61cbafdd817b681c21ebb4213bcb8450eb25658ce47aacaca9e8a576",
+              "imageUrl": "blob:http://127.0.0.1:5173/3d5487b3-6f0e-4826-ad82-d6e39c36b1a2"
+            }
+          },
+          "occlusion": [
+            {
+              "foot": {
+                "x": 344,
+                "y": 344
+              },
+              "pixels": {
+                "different": 0,
+                "max": 0,
+                "channels": 1458560
+              },
+              "signature": "sha256:f7ad4e02c081afab9ac4b41993680dab51f6ff68cf295c61b40c7c20cef18d43"
+            },
+            {
+              "foot": {
+                "x": 344,
+                "y": 376
+              },
+              "pixels": {
+                "different": 0,
+                "max": 0,
+                "channels": 1458560
+              },
+              "signature": "sha256:c86d53b316e07db0ab4ab10b29d77dfa2ececc05c2b5415e7ae4ed5b83fbdd86"
+            }
+          ]
+        },
+        {
+          "era": "REVENGE",
+          "worldHash": "sha256:1f76e7430234203d1262f735737bf015d2ac90cbff766849acc03e2b03f2607d",
+          "state": {
+            "phase": "ready",
+            "mounts": 1,
+            "destroys": 0,
+            "canvases": 1,
+            "decodedImages": 3,
+            "scene": {
+              "textures": 2,
+              "decodedBytes": 8175616,
+              "objects": 23,
+              "peakTextures": 4,
+              "peakDecodedBytes": 16351232
+            },
+            "avatars": {
+              "textures": 6,
+              "sprites": 6,
+              "listeners": 1
+            },
+            "geometry": "sha256:899aca9bd6ce499c6f46aff5eaf21e30ab34b301e988771b978a6fab7c2d469f",
+            "mapId": "mcr_reference_scene_r3",
+            "theme": "REVENGE",
+            "camera": {
+              "zoom": 1,
+              "scrollX": 237,
+              "scrollY": 0,
+              "width": 430,
+              "height": 848
+            },
+            "requests": [
+              "http://127.0.0.1:5173/world/reference-scene-v2/runtime/spatial-v3/canonical-map-v4.json",
+              "http://127.0.0.1:5173/world/reference-scene-v2/quality-v6/ground.png",
+              "http://127.0.0.1:5173/world/reference-scene-v2/quality-v6/parade/atlas.png",
+              "http://127.0.0.1:5173/world/reference-scene-v2/quality-v6/revenge/atlas.png",
+              "http://127.0.0.1:5173/world/reference-scene-v2/quality-v6/danger/atlas.png"
+            ],
+            "cache": {
+              "loads": 5,
+              "hits": 15,
+              "coalesced": 0,
+              "residentBytes": 4108855,
+              "entries": 5,
+              "disposed": false
+            },
+            "overview": {
+              "width": 768,
+              "height": 1296,
+              "mapId": "mcr_reference_scene_r3",
+              "mapRevision": 4,
+              "mapHash": "sha256:3e85db2eddb6a0daf217f0975c78a41dd6723e0ffad3c7d927e3e6fd2897fac8",
+              "geometryHash": "sha256:899aca9bd6ce499c6f46aff5eaf21e30ab34b301e988771b978a6fab7c2d469f",
+              "themeId": "REVENGE",
+              "themeRevision": 6,
+              "themeHash": "sha256:7f869d2e9e61e3ca78cf07b298d3da60f9cdd5f87a7cb9a4200650d90c9ca4db",
+              "imageUrl": "blob:http://127.0.0.1:5173/a6542d0f-1bc4-4c89-85fa-897bdb91e870"
+            },
+            "owner": {
+              "disposed": false,
+              "leases": 6,
+              "pending": 0,
+              "cleanupFailures": 0,
+              "decodedAtlases": 1
+            }
+          },
+          "worldPixels": {
+            "different": 0,
+            "max": 0,
+            "channels": 1458560
+          },
+          "mapPixels": {
+            "different": 0,
+            "channels": 3981312,
+            "pins": {
+              "width": 768,
+              "height": 1296,
+              "mapId": "mcr_reference_scene_r3",
+              "mapRevision": 4,
+              "mapHash": "sha256:3e85db2eddb6a0daf217f0975c78a41dd6723e0ffad3c7d927e3e6fd2897fac8",
+              "geometryHash": "sha256:899aca9bd6ce499c6f46aff5eaf21e30ab34b301e988771b978a6fab7c2d469f",
+              "themeId": "REVENGE",
+              "themeRevision": 6,
+              "themeHash": "sha256:7f869d2e9e61e3ca78cf07b298d3da60f9cdd5f87a7cb9a4200650d90c9ca4db",
+              "imageUrl": "blob:http://127.0.0.1:5173/a6542d0f-1bc4-4c89-85fa-897bdb91e870"
+            }
+          },
+          "occlusion": [
+            {
+              "foot": {
+                "x": 344,
+                "y": 344
+              },
+              "pixels": {
+                "different": 0,
+                "max": 0,
+                "channels": 1458560
+              },
+              "signature": "sha256:0299617808d2398182ff2ada637c120c38ee9078c1a66fdcb5f545ddddc3a15d"
+            },
+            {
+              "foot": {
+                "x": 344,
+                "y": 376
+              },
+              "pixels": {
+                "different": 0,
+                "max": 0,
+                "channels": 1458560
+              },
+              "signature": "sha256:ea78035920c7ba02b1bf85f7ceba781c54edfc799485be54a6e05e8987dc5856"
+            }
+          ]
+        },
+        {
+          "era": "DANGER",
+          "worldHash": "sha256:a5e165ff269253bd631bee34888b15548aafa5e135f2ac43adcbcf8846481f85",
+          "state": {
+            "phase": "ready",
+            "mounts": 1,
+            "destroys": 0,
+            "canvases": 1,
+            "decodedImages": 3,
+            "scene": {
+              "textures": 2,
+              "decodedBytes": 8175616,
+              "objects": 23,
+              "peakTextures": 4,
+              "peakDecodedBytes": 16351232
+            },
+            "avatars": {
+              "textures": 6,
+              "sprites": 6,
+              "listeners": 1
+            },
+            "geometry": "sha256:899aca9bd6ce499c6f46aff5eaf21e30ab34b301e988771b978a6fab7c2d469f",
+            "mapId": "mcr_reference_scene_r3",
+            "theme": "DANGER",
+            "camera": {
+              "zoom": 1,
+              "scrollX": 237,
+              "scrollY": 0,
+              "width": 430,
+              "height": 848
+            },
+            "requests": [
+              "http://127.0.0.1:5173/world/reference-scene-v2/runtime/spatial-v3/canonical-map-v4.json",
+              "http://127.0.0.1:5173/world/reference-scene-v2/quality-v6/ground.png",
+              "http://127.0.0.1:5173/world/reference-scene-v2/quality-v6/parade/atlas.png",
+              "http://127.0.0.1:5173/world/reference-scene-v2/quality-v6/revenge/atlas.png",
+              "http://127.0.0.1:5173/world/reference-scene-v2/quality-v6/danger/atlas.png"
+            ],
+            "cache": {
+              "loads": 5,
+              "hits": 19,
+              "coalesced": 0,
+              "residentBytes": 4108855,
+              "entries": 5,
+              "disposed": false
+            },
+            "overview": {
+              "width": 768,
+              "height": 1296,
+              "mapId": "mcr_reference_scene_r3",
+              "mapRevision": 4,
+              "mapHash": "sha256:3e85db2eddb6a0daf217f0975c78a41dd6723e0ffad3c7d927e3e6fd2897fac8",
+              "geometryHash": "sha256:899aca9bd6ce499c6f46aff5eaf21e30ab34b301e988771b978a6fab7c2d469f",
+              "themeId": "DANGER",
+              "themeRevision": 6,
+              "themeHash": "sha256:94c22e344c05ee098535e33fadd8bafbc777964aa0db4e70aabfe5a91d9b392a",
+              "imageUrl": "blob:http://127.0.0.1:5173/33231377-3c2d-46ab-9058-ceff86bc379f"
+            },
+            "owner": {
+              "disposed": false,
+              "leases": 6,
+              "pending": 0,
+              "cleanupFailures": 0,
+              "decodedAtlases": 1
+            }
+          },
+          "worldPixels": {
+            "different": 0,
+            "max": 0,
+            "channels": 1458560
+          },
+          "mapPixels": {
+            "different": 0,
+            "channels": 3981312,
+            "pins": {
+              "width": 768,
+              "height": 1296,
+              "mapId": "mcr_reference_scene_r3",
+              "mapRevision": 4,
+              "mapHash": "sha256:3e85db2eddb6a0daf217f0975c78a41dd6723e0ffad3c7d927e3e6fd2897fac8",
+              "geometryHash": "sha256:899aca9bd6ce499c6f46aff5eaf21e30ab34b301e988771b978a6fab7c2d469f",
+              "themeId": "DANGER",
+              "themeRevision": 6,
+              "themeHash": "sha256:94c22e344c05ee098535e33fadd8bafbc777964aa0db4e70aabfe5a91d9b392a",
+              "imageUrl": "blob:http://127.0.0.1:5173/33231377-3c2d-46ab-9058-ceff86bc379f"
+            }
+          },
+          "occlusion": [
+            {
+              "foot": {
+                "x": 344,
+                "y": 344
+              },
+              "pixels": {
+                "different": 0,
+                "max": 0,
+                "channels": 1458560
+              },
+              "signature": "sha256:427edfdec18031d130528b4e69ac7a0cb2693e63f5b2602a6272503f0d5af21c"
+            },
+            {
+              "foot": {
+                "x": 344,
+                "y": 376
+              },
+              "pixels": {
+                "different": 0,
+                "max": 0,
+                "channels": 1458560
+              },
+              "signature": "sha256:4c3390970daad1401e4f3066040f6a359a0f038901e90ddacd5dbaa6c44902ef"
+            }
+          ]
+        },
+        {
+          "era": "PARADE",
+          "worldHash": "sha256:6fdda4aec6d6556fce2fa36158517a5089cbdda591250acef3526011b5fb8dfb",
+          "state": {
+            "phase": "ready",
+            "mounts": 1,
+            "destroys": 0,
+            "canvases": 1,
+            "decodedImages": 3,
+            "scene": {
+              "textures": 2,
+              "decodedBytes": 8175616,
+              "objects": 23,
+              "peakTextures": 4,
+              "peakDecodedBytes": 16351232
+            },
+            "avatars": {
+              "textures": 6,
+              "sprites": 6,
+              "listeners": 1
+            },
+            "geometry": "sha256:899aca9bd6ce499c6f46aff5eaf21e30ab34b301e988771b978a6fab7c2d469f",
+            "mapId": "mcr_reference_scene_r3",
+            "theme": "PARADE",
+            "camera": {
+              "zoom": 1,
+              "scrollX": 237,
+              "scrollY": 0,
+              "width": 430,
+              "height": 848
+            },
+            "requests": [
+              "http://127.0.0.1:5173/world/reference-scene-v2/runtime/spatial-v3/canonical-map-v4.json",
+              "http://127.0.0.1:5173/world/reference-scene-v2/quality-v6/ground.png",
+              "http://127.0.0.1:5173/world/reference-scene-v2/quality-v6/parade/atlas.png",
+              "http://127.0.0.1:5173/world/reference-scene-v2/quality-v6/revenge/atlas.png",
+              "http://127.0.0.1:5173/world/reference-scene-v2/quality-v6/danger/atlas.png"
+            ],
+            "cache": {
+              "loads": 5,
+              "hits": 23,
+              "coalesced": 0,
+              "residentBytes": 4108855,
+              "entries": 5,
+              "disposed": false
+            },
+            "overview": {
+              "width": 768,
+              "height": 1296,
+              "mapId": "mcr_reference_scene_r3",
+              "mapRevision": 4,
+              "mapHash": "sha256:3e85db2eddb6a0daf217f0975c78a41dd6723e0ffad3c7d927e3e6fd2897fac8",
+              "geometryHash": "sha256:899aca9bd6ce499c6f46aff5eaf21e30ab34b301e988771b978a6fab7c2d469f",
+              "themeId": "PARADE",
+              "themeRevision": 6,
+              "themeHash": "sha256:4b5e0a0a61cbafdd817b681c21ebb4213bcb8450eb25658ce47aacaca9e8a576",
+              "imageUrl": "blob:http://127.0.0.1:5173/f5868124-d308-49d3-a860-6992a310519e"
+            },
+            "owner": {
+              "disposed": false,
+              "leases": 6,
+              "pending": 0,
+              "cleanupFailures": 0,
+              "decodedAtlases": 1
+            }
+          },
+          "worldPixels": {
+            "different": 0,
+            "max": 0,
+            "channels": 1458560
+          },
+          "mapPixels": {
+            "different": 0,
+            "channels": 3981312,
+            "pins": {
+              "width": 768,
+              "height": 1296,
+              "mapId": "mcr_reference_scene_r3",
+              "mapRevision": 4,
+              "mapHash": "sha256:3e85db2eddb6a0daf217f0975c78a41dd6723e0ffad3c7d927e3e6fd2897fac8",
+              "geometryHash": "sha256:899aca9bd6ce499c6f46aff5eaf21e30ab34b301e988771b978a6fab7c2d469f",
+              "themeId": "PARADE",
+              "themeRevision": 6,
+              "themeHash": "sha256:4b5e0a0a61cbafdd817b681c21ebb4213bcb8450eb25658ce47aacaca9e8a576",
+              "imageUrl": "blob:http://127.0.0.1:5173/f5868124-d308-49d3-a860-6992a310519e"
+            }
+          },
+          "occlusion": [
+            {
+              "foot": {
+                "x": 344,
+                "y": 344
+              },
+              "pixels": {
+                "different": 0,
+                "max": 0,
+                "channels": 1458560
+              },
+              "signature": "sha256:f7ad4e02c081afab9ac4b41993680dab51f6ff68cf295c61b40c7c20cef18d43"
+            },
+            {
+              "foot": {
+                "x": 344,
+                "y": 376
+              },
+              "pixels": {
+                "different": 0,
+                "max": 0,
+                "channels": 1458560
+              },
+              "signature": "sha256:c86d53b316e07db0ab4ab10b29d77dfa2ececc05c2b5415e7ae4ed5b83fbdd86"
+            }
+          ]
+        }
+      ],
+      "interactions": [
+        {
+          "id": "stage_info",
+          "placeId": "6a5c196b-58e1-47d5-99bb-000000000003",
+          "foot": {
+            "x": 488,
+            "y": 392
+          },
+          "walkable": true,
+          "nearby": [
+            "stage_info"
+          ],
+          "routes": [
+            true,
+            true
+          ]
+        },
+        {
+          "id": "park_info",
+          "placeId": "6a5c196b-58e1-47d5-99bb-000000000002",
+          "foot": {
+            "x": 616,
+            "y": 440
+          },
+          "walkable": true,
+          "nearby": [
+            "park_info"
+          ],
+          "routes": [
+            true,
+            true
+          ]
+        },
+        {
+          "id": "gifts_info",
+          "placeId": "6a5c196b-58e1-47d5-99bb-000000000004",
+          "foot": {
+            "x": 216,
+            "y": 776
+          },
+          "walkable": true,
+          "nearby": [
+            "gifts_info"
+          ],
+          "routes": [
+            true,
+            true
+          ]
+        },
+        {
+          "id": "wall_info",
+          "placeId": "6a5c196b-58e1-47d5-99bb-000000000005",
+          "foot": {
+            "x": 232,
+            "y": 984
+          },
+          "walkable": true,
+          "nearby": [
+            "wall_info"
+          ],
+          "routes": [
+            true,
+            true
+          ]
+        }
+      ],
+      "landmarks": [
+        {
+          "index": 1,
+          "pixels": {
+            "different": 0,
+            "max": 0,
+            "channels": 1458560
+          }
+        },
+        {
+          "index": 2,
+          "pixels": {
+            "different": 0,
+            "max": 0,
+            "channels": 1458560
+          }
+        },
+        {
+          "index": 3,
+          "pixels": {
+            "different": 0,
+            "max": 0,
+            "channels": 1458560
+          }
+        }
+      ],
+      "replaced": {
+        "before": "sha256:7ae216b7130c088fe16f69a3fe86d1c6a719a903556819341a7834832dfcc854",
+        "after": "sha256:7ae216b7130c088fe16f69a3fe86d1c6a719a903556819341a7834832dfcc854",
+        "state": {
+          "phase": "ready",
+          "mounts": 1,
+          "destroys": 0,
+          "canvases": 1,
+          "decodedImages": 3,
+          "scene": {
+            "textures": 2,
+            "decodedBytes": 8175616,
+            "objects": 23,
+            "peakTextures": 4,
+            "peakDecodedBytes": 16351232
+          },
+          "avatars": {
+            "textures": 6,
+            "sprites": 6,
+            "listeners": 1
+          },
+          "geometry": "sha256:899aca9bd6ce499c6f46aff5eaf21e30ab34b301e988771b978a6fab7c2d469f",
+          "mapId": "mcr_reference_scene_r3",
+          "theme": "PARADE",
+          "camera": {
+            "zoom": 1,
+            "scrollX": 17,
+            "scrollY": 448,
+            "width": 430,
+            "height": 848
+          },
+          "requests": [
+            "http://127.0.0.1:5173/world/reference-scene-v2/runtime/spatial-v3/canonical-map-v4.json",
+            "http://127.0.0.1:5173/world/reference-scene-v2/quality-v6/ground.png",
+            "http://127.0.0.1:5173/world/reference-scene-v2/quality-v6/parade/atlas.png",
+            "http://127.0.0.1:5173/world/reference-scene-v2/quality-v6/revenge/atlas.png",
+            "http://127.0.0.1:5173/world/reference-scene-v2/quality-v6/danger/atlas.png"
+          ],
+          "cache": {
+            "loads": 5,
+            "hits": 27,
+            "coalesced": 0,
+            "residentBytes": 4108855,
+            "entries": 5,
+            "disposed": false
+          },
+          "overview": null,
+          "owner": {
+            "disposed": false,
+            "leases": 6,
+            "pending": 0,
+            "cleanupFailures": 0,
+            "decodedAtlases": 1
+          }
+        }
+      },
+      "rejected": {
+        "results": [
+          "hash",
+          "geometry",
+          "revision",
+          "theme",
+          "frame",
+          "depth",
+          "asset"
+        ],
+        "signature": "sha256:7ae216b7130c088fe16f69a3fe86d1c6a719a903556819341a7834832dfcc854",
+        "state": {
+          "phase": "ready",
+          "mounts": 1,
+          "destroys": 0,
+          "canvases": 1,
+          "decodedImages": 3,
+          "scene": {
+            "textures": 2,
+            "decodedBytes": 8175616,
+            "objects": 23,
+            "peakTextures": 4,
+            "peakDecodedBytes": 16351232
+          },
+          "avatars": {
+            "textures": 6,
+            "sprites": 6,
+            "listeners": 1
+          },
+          "geometry": "sha256:899aca9bd6ce499c6f46aff5eaf21e30ab34b301e988771b978a6fab7c2d469f",
+          "mapId": "mcr_reference_scene_r3",
+          "theme": "PARADE",
+          "camera": {
+            "zoom": 1,
+            "scrollX": 17,
+            "scrollY": 448,
+            "width": 430,
+            "height": 848
+          },
+          "requests": [
+            "http://127.0.0.1:5173/world/reference-scene-v2/runtime/spatial-v3/canonical-map-v4.json",
+            "http://127.0.0.1:5173/world/reference-scene-v2/quality-v6/ground.png",
+            "http://127.0.0.1:5173/world/reference-scene-v2/quality-v6/parade/atlas.png",
+            "http://127.0.0.1:5173/world/reference-scene-v2/quality-v6/revenge/atlas.png",
+            "http://127.0.0.1:5173/world/reference-scene-v2/quality-v6/danger/atlas.png"
+          ],
+          "cache": {
+            "loads": 5,
+            "hits": 27,
+            "coalesced": 0,
+            "residentBytes": 4108855,
+            "entries": 5,
+            "disposed": false
+          },
+          "overview": null,
+          "owner": {
+            "disposed": false,
+            "leases": 6,
+            "pending": 0,
+            "cleanupFailures": 0,
+            "decodedAtlases": 1
+          }
+        }
+      },
+      "cancelled": {
+        "before": "sha256:7ae216b7130c088fe16f69a3fe86d1c6a719a903556819341a7834832dfcc854",
+        "after": "sha256:7ae216b7130c088fe16f69a3fe86d1c6a719a903556819341a7834832dfcc854",
+        "state": {
+          "phase": "ready",
+          "mounts": 1,
+          "destroys": 0,
+          "canvases": 1,
+          "decodedImages": 3,
+          "scene": {
+            "textures": 2,
+            "decodedBytes": 8175616,
+            "objects": 23,
+            "peakTextures": 4,
+            "peakDecodedBytes": 16351232
+          },
+          "avatars": {
+            "textures": 6,
+            "sprites": 6,
+            "listeners": 1
+          },
+          "geometry": "sha256:899aca9bd6ce499c6f46aff5eaf21e30ab34b301e988771b978a6fab7c2d469f",
+          "mapId": "mcr_reference_scene_r3",
+          "theme": "PARADE",
+          "camera": {
+            "zoom": 1,
+            "scrollX": 17,
+            "scrollY": 448,
+            "width": 430,
+            "height": 848
+          },
+          "requests": [
+            "http://127.0.0.1:5173/world/reference-scene-v2/runtime/spatial-v3/canonical-map-v4.json",
+            "http://127.0.0.1:5173/world/reference-scene-v2/quality-v6/ground.png",
+            "http://127.0.0.1:5173/world/reference-scene-v2/quality-v6/parade/atlas.png",
+            "http://127.0.0.1:5173/world/reference-scene-v2/quality-v6/revenge/atlas.png",
+            "http://127.0.0.1:5173/world/reference-scene-v2/quality-v6/danger/atlas.png"
+          ],
+          "cache": {
+            "loads": 5,
+            "hits": 35,
+            "coalesced": 0,
+            "residentBytes": 4108855,
+            "entries": 5,
+            "disposed": false
+          },
+          "overview": null,
+          "owner": {
+            "disposed": false,
+            "leases": 6,
+            "pending": 0,
+            "cleanupFailures": 0,
+            "decodedAtlases": 1
+          }
+        }
+      },
+      "hidden": {
+        "phase": "ready",
+        "mounts": 1,
+        "destroys": 0,
+        "canvases": 1,
+        "decodedImages": 3,
+        "scene": {
+          "textures": 2,
+          "decodedBytes": 8175616,
+          "objects": 23,
+          "peakTextures": 4,
+          "peakDecodedBytes": 16351232
+        },
+        "avatars": {
+          "textures": 0,
+          "sprites": 0,
+          "listeners": 1
+        },
+        "geometry": "sha256:899aca9bd6ce499c6f46aff5eaf21e30ab34b301e988771b978a6fab7c2d469f",
+        "mapId": "mcr_reference_scene_r3",
+        "theme": "PARADE",
+        "camera": {
+          "zoom": 1,
+          "scrollX": 17,
+          "scrollY": 448,
+          "width": 430,
+          "height": 848
+        },
+        "requests": [
+          "http://127.0.0.1:5173/world/reference-scene-v2/runtime/spatial-v3/canonical-map-v4.json",
+          "http://127.0.0.1:5173/world/reference-scene-v2/quality-v6/ground.png",
+          "http://127.0.0.1:5173/world/reference-scene-v2/quality-v6/parade/atlas.png",
+          "http://127.0.0.1:5173/world/reference-scene-v2/quality-v6/revenge/atlas.png",
+          "http://127.0.0.1:5173/world/reference-scene-v2/quality-v6/danger/atlas.png"
+        ],
+        "cache": {
+          "loads": 5,
+          "hits": 35,
+          "coalesced": 0,
+          "residentBytes": 4108855,
+          "entries": 5,
+          "disposed": false
+        },
+        "overview": null,
+        "owner": {
+          "disposed": false,
+          "leases": 0,
+          "pending": 0,
+          "cleanupFailures": 0,
+          "decodedAtlases": 1
+        }
+      },
+      "revoked": {
+        "phase": "stopped",
+        "mounts": 1,
+        "destroys": 1,
+        "canvases": 0,
+        "decodedImages": 3,
+        "scene": {
+          "textures": 0,
+          "decodedBytes": 0,
+          "objects": 0,
+          "peakTextures": 4,
+          "peakDecodedBytes": 16351232
+        },
+        "avatars": {
+          "textures": 0,
+          "sprites": 0,
+          "listeners": 0
+        },
+        "geometry": "sha256:899aca9bd6ce499c6f46aff5eaf21e30ab34b301e988771b978a6fab7c2d469f",
+        "mapId": "mcr_reference_scene_r3",
+        "theme": "PARADE",
+        "camera": null,
+        "requests": [
+          "http://127.0.0.1:5173/world/reference-scene-v2/runtime/spatial-v3/canonical-map-v4.json",
+          "http://127.0.0.1:5173/world/reference-scene-v2/quality-v6/ground.png",
+          "http://127.0.0.1:5173/world/reference-scene-v2/quality-v6/parade/atlas.png",
+          "http://127.0.0.1:5173/world/reference-scene-v2/quality-v6/revenge/atlas.png",
+          "http://127.0.0.1:5173/world/reference-scene-v2/quality-v6/danger/atlas.png"
+        ],
+        "cache": {
+          "loads": 5,
+          "hits": 35,
+          "coalesced": 0,
+          "residentBytes": 0,
+          "entries": 0,
+          "disposed": true
+        },
+        "overview": null,
+        "owner": {
+          "disposed": true,
+          "leases": 0,
+          "pending": 0,
+          "cleanupFailures": 0,
+          "decodedAtlases": 0
+        }
+      },
+      "cleanup": {
+        "phase": "disposed",
+        "mounts": 1,
+        "destroys": 1,
+        "canvases": 0,
+        "decodedImages": 0,
+        "scene": {
+          "textures": 0,
+          "decodedBytes": 0,
+          "objects": 0,
+          "peakTextures": 4,
+          "peakDecodedBytes": 16351232
+        },
+        "avatars": {
+          "textures": 0,
+          "sprites": 0,
+          "listeners": 0
+        },
+        "geometry": "sha256:899aca9bd6ce499c6f46aff5eaf21e30ab34b301e988771b978a6fab7c2d469f",
+        "mapId": "mcr_reference_scene_r3",
+        "theme": "PARADE",
+        "camera": null,
+        "requests": [
+          "http://127.0.0.1:5173/world/reference-scene-v2/runtime/spatial-v3/canonical-map-v4.json",
+          "http://127.0.0.1:5173/world/reference-scene-v2/quality-v6/ground.png",
+          "http://127.0.0.1:5173/world/reference-scene-v2/quality-v6/parade/atlas.png",
+          "http://127.0.0.1:5173/world/reference-scene-v2/quality-v6/revenge/atlas.png",
+          "http://127.0.0.1:5173/world/reference-scene-v2/quality-v6/danger/atlas.png"
+        ],
+        "cache": {
+          "loads": 5,
+          "hits": 35,
+          "coalesced": 0,
+          "residentBytes": 0,
+          "entries": 0,
+          "disposed": true
+        },
+        "overview": null,
+        "owner": {
+          "disposed": true,
+          "leases": 0,
+          "pending": 0,
+          "cleanupFailures": 0,
+          "decodedAtlases": 0
+        }
+      },
+      "encodes": [
+        {
+          "width": 768,
+          "height": 1296,
+          "bytes": 1801798
+        },
+        {
+          "width": 768,
+          "height": 1296,
+          "bytes": 1788686
+        },
+        {
+          "width": 768,
+          "height": 1296,
+          "bytes": 1799436
+        },
+        {
+          "width": 768,
+          "height": 1296,
+          "bytes": 1801798
+        },
+        {
+          "width": 768,
+          "height": 1296,
+          "bytes": 1788686
+        },
+        {
+          "width": 768,
+          "height": 1296,
+          "bytes": 1799436
+        },
+        {
+          "width": 768,
+          "height": 1296,
+          "bytes": 1801798
+        },
+        {
+          "width": 768,
+          "height": 1296,
+          "bytes": 1801798
+        },
+        {
+          "width": 768,
+          "height": 1296,
+          "bytes": 1801798
+        }
+      ]
+    }
+  ],
+  "artifacts": {
+    "world-parade-360.jpg": "d618a32c66a980037b093c7566348961cffdaec7827bf4a2235d254b4c70671d",
+    "world-revenge-360.jpg": "81b48cbb68c06648084d5f26c49b72723c214e698b7dfa0617b0fcb660dbb6fe",
+    "map-revenge-360.jpg": "021e937dd8e5c41b77fce4d3881a63a2bc40c3e9b1b52a7e4d5680d67195b841",
+    "world-danger-360.jpg": "9e770c52decabbadc2dd979b45a2b0bd59fb7805c61c97a65633fa86a166f0ee",
+    "map-danger-360.jpg": "709e9dca3ba95294eb9a0286fd5584de31e21eadd5bae56f450af11ff703900a",
+    "map-parade-360.jpg": "58b2b5ec9fab6032ec7e0bef829c0319e46ea0aa136eda59c32f13daa9610cfb",
+    "world-parade-390.jpg": "9b2815305db2257558e832c16a87cc6eec85174f583d3c1b5609f1850b9a452d",
+    "world-revenge-390.jpg": "f660a495d8e134ce2e292b1b58a6532b630c48b8b3bcf95cfa59e79b01e2783d",
+    "map-revenge-390.jpg": "8853326a50b624c552e291c52145ff711eb9d6e8f6f709c7f32b0371df7436d0",
+    "world-danger-390.jpg": "850410ec3d1f64fbe01e36c6cee8c396692b7a42164d154df7cf50ae095dc84f",
+    "map-danger-390.jpg": "2320d394ff056ce69e05f9ef810d35f337ec6ffc948ce511164f2f3b49cd3160",
+    "map-parade-390.jpg": "325ef9989de676035acacfeb93fdfbfb6f333fd4d54a8c6d7f0f67b983330fbf",
+    "landmark1-390.jpg": "b0fd6141165d60be39aa74cd0e7edfa5d94a520164b766187b4ff1d9bafaf8b2",
+    "landmark2-390.jpg": "19681fae9a0ce5f679cc4e2fa67735362d4aae89f24a0ce28cdbba637570fd46",
+    "landmark3-390.jpg": "61811a9a975feadbf1126e3e82fb267b37d4c7f630c525888d2dcade5cd6f14f",
+    "world-parade-430.jpg": "66cb9855333fa82fe33627410595801266f456f56cf218e964301d38803e1550",
+    "world-revenge-430.jpg": "d2637a8a6a0a5734e8eeb35d8791a4b4b6d416fab76774f025f036ca04aae4ff",
+    "map-revenge-430.jpg": "179f5fba47ffdf9c395cba64a04306ad92b803a38882a77926017cbef107167e",
+    "world-danger-430.jpg": "e117e6ccd628b18c60b3f3f993beee445000577c5f07a3af41479ac689212c5e",
+    "map-danger-430.jpg": "06d9c58f6928cbee1d00fd50207d0615e195a78d7b50260b183c3482c1c760dc",
+    "map-parade-430.jpg": "72b7c38806feba4ed254ab2e558c61dca4782268d32dc7687d240b94215f2daf"
+  },
+  "errors": [],
+  "browser": "156.0.8078.80"
+}

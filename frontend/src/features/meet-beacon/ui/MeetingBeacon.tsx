@@ -45,14 +45,33 @@ export function MeetingBeaconForm({ controller, mode = 'create' }: { readonly co
         <label htmlFor={`${id}-identification`}>Identification</label>
         <input id={`${id}-identification`} value={d.identification} required maxLength={240}
           onChange={e => controller.setDraft({ identification: e.target.value, acknowledged: false })} />
-        <p>Use an identifying detail you choose to share. Photo attachment is unavailable.</p>
+        <p>Use an identifying detail you choose to share.</p>
+        {state.photoSupported ? <div className="meeting-photo-draft">
+          <label htmlFor={`${id}-photo`}>Identification photo (optional)</label>
+          <input id={`${id}-photo`} type="file" accept="image/jpeg,image/png,image/webp"
+            disabled={!state.places.find(p => p.id === d.placeId)?.photoAllowed || state.photoDraft?.phase === 'uncertain' || ['preparing', 'initializing', 'uploading', 'finalizing'].includes(state.photoDraft?.phase ?? '')}
+            onChange={e => { const file = e.currentTarget.files?.[0]; e.currentTarget.value = ''; if (file) void controller.selectPhoto(file) }} />
+          <p>Choose a photo you own or have permission to share with this audience. A photo does not confirm physical arrival.</p>
+          {d.placeId && !state.places.find(p => p.id === d.placeId)?.photoAllowed && <p role="status">Photo sharing is unavailable for this place.</p>}
+          {state.photoDraft?.previewUrl && <img src={state.photoDraft.previewUrl} alt="Private meeting photo draft" />}
+          {d.mediaId && <p role="status">Photo selected for this revision. Saving and rereading must confirm the attachment.</p>}
+          {(d.mediaId || state.photoDraft && !['idle', 'cancelled'].includes(state.photoDraft.phase)) && <>
+            <label className="meeting-check"><input type="checkbox" checked={d.photoPermissionAcknowledged}
+              onChange={e => controller.setDraft({ photoPermissionAcknowledged: e.target.checked, acknowledged: false })} />I own this photo or have permission to share it with this audience.</label>
+            {state.photoDraft?.phase === 'prepared' && <button type="button" disabled={!d.photoPermissionAcknowledged} onClick={() => { void controller.uploadPhoto() }}>Upload photo</button>}
+            {state.photoDraft?.phase === 'uncertain' && <><p role="status">Photo upload is unconfirmed. Check its status; it has not been attached.</p><button type="button" onClick={() => { void controller.checkPhotoUpload() }}>Check photo upload status</button></>}
+            {state.photoDraft?.phase === 'failed' && <><p role="alert">Photo upload or preparation failed. It has not been attached.</p><button type="button" onClick={() => { void controller.retryPhotoPreparation() }}>Retry photo preparation</button></>}
+            {['preparing', 'initializing', 'uploading', 'finalizing'].includes(state.photoDraft?.phase ?? '') && <p role="status">{state.photoDraft?.phase === 'preparing' ? 'Preparing photo…' : 'Uploading photo…'}{state.photoDraft?.progress !== null && state.photoDraft?.progress !== undefined ? ` ${Math.round(state.photoDraft.progress)}%` : ''}</p>}
+            <button type="button" onClick={() => controller.removePhoto()}>Remove photo from draft</button>
+          </>}
+        </div> : <p>Photo attachment is unavailable in this connection.</p>}
         <label htmlFor={`${id}-ttl`}>Visible for (seconds)</label>
         <input id={`${id}-ttl`} type="number" min={1} max={state.maxTtlSeconds || 900} step={1} required value={d.ttlSeconds}
           onChange={e => controller.setDraft({ ttlSeconds: e.target.valueAsNumber, acknowledged: false })} />
         <p>Up to {state.maxTtlSeconds || 900} seconds, ending earlier if the event closes. Initial default: 15 minutes.</p>
         <label className="meeting-check"><input type="checkbox" checked={d.acknowledged} required
           onChange={e => controller.setDraft({ acknowledged: e.target.checked })} />I explicitly confirm this real-world description and its audience.</label>
-        <button type="submit">{mode === 'create' ? 'Share check-in' : 'Save new revision'}</button>
+        <button type="submit" disabled={!!state.photoDraft && !['idle', 'cancelled', 'ready'].includes(state.photoDraft.phase)}>{mode === 'create' ? 'Share check-in' : 'Save new revision'}</button>
       </fieldset>
     </form>
     <CommandStatus controller={controller} />
@@ -81,7 +100,8 @@ export function MeetingBeaconDetail({ controller, ownerActions = false }: { read
       </dl>
       {source && <a href={source} target="_blank" rel="noopener noreferrer">Reviewed place source (new tab)</a>}
       <p>Source review: {p.provenance.reviewed_at}. Check current venue guidance; this description does not change venue entry rules.</p>
-      {state.photo ? <figure><img src={state.photo.src} alt={state.photo.alt} referrerPolicy="no-referrer" /><figcaption>Authorized photo for this revision only.</figcaption></figure> : <p>No authorized photo is available for this revision.</p>}
+      {state.photo ? <figure><img src={state.photo.src} alt={state.photo.alt} referrerPolicy="no-referrer" /><figcaption>Authorized photo for this revision only.</figcaption></figure> : <p>{state.photoLoading ? 'Reading the authorized photo for this revision…' : 'No authorized photo is available for this revision.'}</p>}
+      {b.meeting.media_id && !state.photo && !state.photoLoading && state.canRead && <button type="button" onClick={() => { void controller.refresh() }}>Read photo again</button>}
       {state.phase === 'moved' && <button type="button" onClick={() => controller.confirmRevision()}>I have reviewed this revision</button>}
       {ownerActions && current && <div className="meeting-actions">
         <button type="button" disabled={blocked} onClick={() => controller.editCurrent()}>Use current description in update form</button>

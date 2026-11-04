@@ -21,6 +21,9 @@ DB = "mcr_profile_self"
 def artifacts(receipt, frozen_receipt):
     frozen = json.loads(frozen_receipt.read_text())
     require(frozen["cargo_json_sha256"] == digest(receipt), "frozen-build-receipt-mismatch")
+    for name, expected in frozen.get("source_sha256", {}).items():
+        path = ROOT / name
+        require(path.resolve().is_relative_to(ROOT) and digest(path) == expected, "frozen-compile-source-mismatch")
     selected = {}
     finished = 0
     manifest = ROOT / "backend/services/profile-service/Cargo.toml"

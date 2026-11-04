@@ -1,0 +1,66 @@
+syntax = "proto3";
+package profile.self.v1;
+import "authority/v1/lease.proto";
+
+// Both capabilities are inspected against their actual owners. No root completion
+// secret is passed to a Profile child and no caller status grants write authority.
+message SelfScope {
+  authority.lease.v1.GuardBinding binding = 1;
+  authority.lease.v1.GuardView auth_view = 2;
+  authority.lease.v1.GuardView friend_view = 3;
+}
+message ProfileVersion { string epoch = 1; int64 revision = 2; }
+message SelfContent {
+  string user_id = 1;
+  string display_name = 2;
+  optional string bio = 3;
+  ProfileVersion version = 4; // Internal; never the event participant revision.
+}
+message ReadSelfRequest { SelfScope scope = 1; string subject_id = 2; }
+message ReadSelfResponse {
+  SelfContent content = 1;
+  int64 observed_at_unix_micros = 2;
+  int64 expires_unix_micros = 3;
+}
+message PrepareSelfUpdateRequest {
+  SelfScope scope = 1;
+  string subject_id = 2;
+  string operation_id = 3; // Exactly binding.request_id; not a browser header.
+  ProfileVersion expected_version = 4;
+  // Exact signed PATCH E/me bytes. Profile checks digest and derives only the
+  // selected display_name/bio fields; no independently supplied mutation fields.
+  bytes raw_body = 5;
+}
+message PreparedSelfUpdate {
+  string operation_id = 1;
+  string prepared_gid = 2;
+  authority.lease.v1.TransactionIdentity transaction = 3;
+  bytes effect_binding_digest = 4;
+  SelfContent proposed_content = 5; // Prepared, explicitly NOT yet committed.
+}
+message SelfOperationRequest {
+  SelfScope scope = 1;
+  string operation_id = 2;
+}
+enum SelfOperationStatus {
+  SELF_OPERATION_STATUS_UNSPECIFIED = 0;
+  IN_PROGRESS = 1;
+  PREPARED = 2;
+  COMMITTED = 3;
+  ABORTED = 4;
+  UNKNOWN = 5;
+}
+message SelfOperationResponse {
+  string operation_id = 1;
+  SelfOperationStatus status = 2;
+  authority.lease.v1.TransactionIdentity transaction = 3;
+  bytes effect_binding_digest = 4;
+}
+service ConcertSelfProfileService {
+  rpc Read(ReadSelfRequest) returns (ReadSelfResponse);
+  rpc PrepareUpdate(PrepareSelfUpdateRequest) returns (PreparedSelfUpdate);
+  rpc ReadOperation(SelfOperationRequest) returns (SelfOperationResponse);
+  // Queries the configured real coordinator's durable decision. No caller bool
+  // or timeout chooses COMMIT/ABORT. Unknown remains protected for reconciliation.
+  rpc Reconcile(SelfOperationRequest) returns (SelfOperationResponse);
+}

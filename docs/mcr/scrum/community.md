@@ -18,6 +18,15 @@ This disposition was sent to Main for the original-task ledger. The module's
 MOCK_READY environment label does not withhold the met frontend criteria.
 No new task ID, automatic IN04 completion or aggregate count is inferred.
 
+Frontend king subsequently reported central ledger reconciliation published at
+`d8b41aecb4fa9aec139d474aef7fb15eeb6f91ea`: 23 original-task outcomes
+(12 acceptance dispositions plus 11 additional SATISFIED), 74 other
+implementation-evidenced tasks, 10 unreconciled tasks and 5 open IN gates.
+Original FE33 was added once from the `7c2f3af7` owner receipt. Its recorded
+MOCK_READY environment coexists with SATISFIED task criteria. This is the
+king-reported bookkeeping baseline, not a new lane review or task promotion;
+caller assembly, actual production and IN04 remain open.
+
 The primary module goal actually completed (819 seconds), followed by
 `get_goal: null`. The caller grant arrived afterward. The developer then created
 a **NEW unbudgeted ACTIVE** caller-assembly goal, creation receipt `1793752991`;

@@ -257,18 +257,7 @@ fn spatial_binding_rejects_actual_runtime_file_tampering() {
     let scratch = SpatialScratch::new();
     let binding: serde_json::Value =
         serde_json::from_slice(&std::fs::read(&index).unwrap()).unwrap();
-    let mut pins = vec![&binding["geometry_source"], &binding["tilemap_source"]];
-    for scene in binding["scenes"].as_array().unwrap() {
-        pins.push(&scene["scenery_source"]);
-        pins.extend(scene["scene_sources"].as_array().unwrap());
-        pins.extend(scene["runtime_resources"].as_array().unwrap());
-    }
-    for pin in pins {
-        let path = pin["path"].as_str().unwrap();
-        let target = scratch.0.join(path);
-        std::fs::create_dir_all(target.parent().unwrap()).unwrap();
-        std::fs::copy(root.join(path), target).unwrap();
-    }
+    copy_spatial_sources(&binding, &root, &scratch.0);
     concert_service::bootstrap::spatial::load_candidate(&map, &index, &scratch.0).unwrap();
     let path = scratch.0.join(
         binding["scenes"][0]["runtime_resources"][1]["path"]
@@ -280,4 +269,138 @@ fn spatial_binding_rejects_actual_runtime_file_tampering() {
     actual[last] ^= 1;
     std::fs::write(path, actual).unwrap();
     assert!(concert_service::bootstrap::spatial::load_candidate(&map, &index, &scratch.0).is_err());
+}
+
+fn copy_spatial_sources(
+    binding: &serde_json::Value,
+    root: &std::path::Path,
+    destination: &std::path::Path,
+) {
+    let mut pins = vec![&binding["geometry_source"], &binding["tilemap_source"]];
+    for scene in binding["scenes"].as_array().unwrap() {
+        pins.push(&scene["scenery_source"]);
+        pins.extend(scene["scene_sources"].as_array().unwrap());
+        pins.extend(scene["runtime_resources"].as_array().unwrap());
+    }
+    for pin in pins {
+        let path = pin["path"].as_str().unwrap();
+        let target = destination.join(path);
+        std::fs::create_dir_all(target.parent().unwrap()).unwrap();
+        std::fs::copy(root.join(path), target).unwrap();
+    }
+}
+fn quality_v6_paths() -> (std::path::PathBuf, std::path::PathBuf, std::path::PathBuf) {
+    let (map, index, root) = spatial_paths();
+    (
+        map.parent().unwrap().join("quality-v6/map-manifest.json"),
+        index
+            .parent()
+            .unwrap()
+            .join("quality-v6/source-binding.json"),
+        root,
+    )
+}
+#[test]
+fn quality_v6_binds_new_geometry_and_distinct_three_era_bytes() {
+    let (map, index, root) = quality_v6_paths();
+    let candidate =
+        concert_service::bootstrap::spatial::load_candidate(&map, &index, &root).unwrap();
+    assert_eq!(candidate.catalog.manifest.map_revision, 4);
+    assert_eq!(
+        candidate.catalog.manifest.geometry_hash,
+        "sha256:899aca9bd6ce499c6f46aff5eaf21e30ab34b301e988771b978a6fab7c2d469f"
+    );
+    assert_eq!(
+        (candidate.scenery_bytes, candidate.scenery_pixels),
+        (5_147_757, 6_131_712)
+    );
+    assert!(candidate.scenery_within_budget);
+    assert_eq!(candidate.scenes.len(), 3);
+    assert!(candidate
+        .catalog
+        .manifest
+        .places
+        .iter()
+        .all(|p| !p.permits_new_physical_selection()));
+}
+#[test]
+fn spatial_rejects_valid_old_layout_in_new_geometry_binding() {
+    let (map, index, root) = quality_v6_paths();
+    let (_, old_index, _) = spatial_paths();
+    let scratch = SpatialScratch::new();
+    let mut binding: serde_json::Value =
+        serde_json::from_slice(&std::fs::read(index).unwrap()).unwrap();
+    let old: serde_json::Value =
+        serde_json::from_slice(&std::fs::read(old_index).unwrap()).unwrap();
+    let old_layout = old["scenes"][0]["scene_sources"]
+        .as_array()
+        .unwrap()
+        .iter()
+        .find(|pin| pin["path"].as_str().unwrap().ends_with("/layout.json"))
+        .unwrap();
+    let layout = binding["scenes"][0]["scene_sources"]
+        .as_array_mut()
+        .unwrap()
+        .iter_mut()
+        .find(|pin| pin["path"].as_str().unwrap().ends_with("/layout.json"))
+        .unwrap();
+    *layout = old_layout.clone();
+    copy_spatial_sources(&binding, &root, &scratch.0);
+    let index = scratch.write("binding.json", &binding);
+    assert!(concert_service::bootstrap::spatial::load_candidate(&map, &index, &scratch.0).is_err());
+}
+#[test]
+fn spatial_resealed_layout_must_retain_source_footprints_and_scenery_projection() {
+    use sha2::{Digest, Sha256};
+    let (map, index, root) = quality_v6_paths();
+    let original: serde_json::Value =
+        serde_json::from_slice(&std::fs::read(index).unwrap()).unwrap();
+    for case in [
+        "geometry",
+        "footprint",
+        "destination",
+        "frame",
+        "missing",
+        "duplicate",
+        "no_layout",
+    ] {
+        let scratch = SpatialScratch::new();
+        let mut binding = original.clone();
+        copy_spatial_sources(&binding, &root, &scratch.0);
+        let pins = binding["scenes"][0]["scene_sources"]
+            .as_array_mut()
+            .unwrap();
+        let position = pins
+            .iter()
+            .position(|p| p["path"].as_str().unwrap().ends_with("/layout.json"))
+            .unwrap();
+        let path = scratch.0.join(pins[position]["path"].as_str().unwrap());
+        let mut layout: serde_json::Value =
+            serde_json::from_slice(&std::fs::read(&path).unwrap()).unwrap();
+        match case {
+            "geometry" => layout["geometry_hash"] = "sha256:foreign".into(),
+            "footprint" => layout["placements"][0]["footprint"][0][0] = 0.into(),
+            "destination" => layout["placements"][0]["x"] = 161.into(),
+            "frame" => layout["placements"][0]["frame"] = "missing_frame".into(),
+            "missing" => {
+                layout["placements"].as_array_mut().unwrap().pop();
+            }
+            "duplicate" => layout["placements"][1] = layout["placements"][0].clone(),
+            "no_layout" => {
+                pins.remove(position);
+            }
+            _ => unreachable!(),
+        }
+        if case != "no_layout" {
+            let raw = serde_json::to_vec(&layout).unwrap();
+            std::fs::write(&path, &raw).unwrap();
+            pins[position]["sha256"] = format!("sha256:{:x}", Sha256::digest(&raw)).into();
+            pins[position]["bytes"] = (raw.len() as u64).into();
+        }
+        let index = scratch.write("binding.json", &binding);
+        assert!(
+            concert_service::bootstrap::spatial::load_candidate(&map, &index, &scratch.0).is_err(),
+            "{case}"
+        );
+    }
 }
