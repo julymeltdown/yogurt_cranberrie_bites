@@ -71,3 +71,51 @@ fixture test and include an actual two-second publisher-timeout/deferred/retry
 case preserving exact signal identities. The legacy selected-schema runner keeps
 its historical 15-case inventory separate. Full migration-ledger qualification
 does not turn these storage fixtures into canonical admission or provider proof.
+
+
+## First allocated current-schema round (not qualified)
+
+The 2026-11-05 KST 02:29 round froze source `b895c200` after retaining an initial
+compiler exit 101: the retained module harness needed its existing library World
+re-export. The next Cargo invocation exited 0 and froze exactly three executables.
+The target was released at 02:31:05 KST with zero readers and no reentry.
+
+Nine pure checks and actual SQLx application of **all 45 current Concert migrations**
+passed. The first eight-case kernel run exited 101 (seven passed): the retained
+unrelated `setConcertSettings` storage fixture lacked migration 0021's operations
+deadline. Harness-only diagnostics within the original copied-test clock retained
+that failure and excluded it solely to find additional issues. Delivery had six
+passes and three failures: their explicit foreign `closeConcertEvent` storage
+fixtures lacked migration 0018's lifecycle deadline. The factory's membership
+refusal case passed; its held-baseline writer used UPDATE on a generation row
+not yet visible outside the held transaction, so it returned no row rather than
+blocking. No schema or native-witness guard was disabled or amended.
+
+A final clearly labeled **DIAGNOSTIC_ONLY** run excluded those known fixture cases.
+It passed seven kernel checks, the membership factory case, an actual pending
+expiry seed and fresh-owner publication after physical PostgreSQL restart.
+Postmasters changed `53688 -> 54603`; persisted counts were `4|4|22|2|43`, including
+exactly two unpublished non-outbox signals. Prepared transactions were zero at
+all three final restart/cleanup boundaries. This does not qualify the complete
+source or replace the preserved failed cohorts.
+
+All four private clusters were removed. Cumulative copied-native execution was
+30.8242 seconds within the original 360-second allowance. FULL release occurred
+at 02:32:55 KST, 109.914 seconds after target release; independent guard and all
+owned runtime processes exited. Historical artifacts and positive target growth
+**27,181,056 bytes** remain charged; no target reentry occurred. Native fixtures
+are now corrected in source (explicit local operations/lifecycle storage deadlines
+and a contending generation UPSERT); rebuilding/requalifying requires a fresh
+allocation. Status remains **IN_PROGRESS; final cohort NOT_RUN**.
+
+Evidence is retained under `/private/tmp/mcr-social-recovery-so50cci0`:
+
+| Artifact | SHA256 |
+| --- | --- |
+| `all-artifacts.json` | `66a09826bc4505db205953f5a816a766b40175b2dbaa69dff132a9cdaa86f4e5` |
+| `native-report.json` | `f5f0d3274b817831557ddcf01998976b0ea46df2943b504bedc7dcbc1392a56d` |
+| `diagnostic-native-report.json` | `0367e4450dba9dfb2cd2dbb9f2e60aea6d987c7fea5c8fe2a3698fbc2d5ab8c1` |
+| `diagnostic-factory-native-report.json` | `65d192367a85a05a7663b9de5762fcd921d0a64eceb9ba16c0fbfa195ab028b4` |
+| `diagnostic-restart-native-report.json` | `0bce6975906d0b9cadaef2b9f5c6ff11c2ab616a7cd1009dd182cbd0983041d5` |
+| `target-release.json` | `0fb3a2e929c9ead719062c61e29156618c1df877e86b88cf23b1ae602413d174` |
+| `full-release.json` | `16f2ad84593a4dd695cbae5dd97a81ed9eb1ca4084fe3cf3c2be78ec94897a83` |

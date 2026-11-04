@@ -73,6 +73,12 @@ async fn pending(
     op: &str,
 ) -> (Uuid, Uuid) {
     let (receipt, outbox) = (Uuid::new_v4(), Uuid::new_v4());
+    if op == "setConcertSettings" {
+        // Explicit storage fixture deadline required by current migration 0021;
+        // this is not an acquired operations authority or public command proof.
+        sqlx::query("select set_config('mcr.operations_authority_until',(clock_timestamp()+interval '5 seconds')::text,true)")
+            .execute(&mut *c).await.unwrap();
+    }
     sqlx::query("insert into concert_command_receipts(receipt_id,actor_id,event_id,operation_id,idempotency_key,request_hash,target_id,state) values($1,$2,$3,$4,$5,$6,$7,'PENDING')")
         .bind(receipt).bind(a).bind(event).bind(op).bind(Uuid::new_v4()).bind(format!("hmac-sha256:v1:fixture:{}","0".repeat(64))).bind(target).execute(&mut *c).await.unwrap();
     sqlx::query("insert into concert_outbox(outbox_id,receipt_id,event_id,resource_id,resource_revision) values($1,$2,$3,$4,1)")

@@ -131,7 +131,7 @@ async fn held_factory_baseline_excludes_generation_writer_and_ignores_other_even
     let (entered, entered_rx) = tokio::sync::oneshot::channel();
     let mut writer = tokio::spawn(async move {
         entered.send(()).unwrap();
-        sqlx::query("update concert_social_policy_generations set revision=revision+1 where event_id=$1 and actor_id=$2 returning revision")
+        sqlx::query("insert into concert_social_policy_generations as g(event_id,actor_id,revision) values($1,$2,2) on conflict(event_id,actor_id) do update set revision=g.revision+1 returning revision")
             .bind(e).bind(a).fetch_one(&pool).await.unwrap().get::<i64,_>("revision")
     });
     entered_rx.await.unwrap();

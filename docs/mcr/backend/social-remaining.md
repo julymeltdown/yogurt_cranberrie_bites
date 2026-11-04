@@ -1048,3 +1048,12 @@ fixture test and include an actual two-second publisher-timeout/deferred/retry
 case preserving exact signal identities. The legacy selected-schema runner keeps
 its historical 15-case inventory separate. Full migration-ledger qualification
 does not turn these storage fixtures into canonical admission or provider proof.
+
+
+The first current-schema round froze `b895c200`; all 45 SQLx migrations and nine
+pure checks passed. Full native qualification failed on retained storage fixture
+deadlines and one new concurrency fixture; diagnostic-only physical restart
+recovery passed. Failures, limits, exact artifacts and corrective source changes
+are recorded in [factory evidence](social-policy-runtime.md). All resources were
+FULL released with no target reentry. The corrected complete cohort remains
+NOT_RUN pending a new allocation; no whole BE28/29/30/37 or IN03 acceptance follows.

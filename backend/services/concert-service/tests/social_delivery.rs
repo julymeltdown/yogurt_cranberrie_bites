@@ -131,6 +131,12 @@ impl Fixture {
     }
     async fn source(&self, op: &str, revision: i64, request: Option<Uuid>) -> Envelope {
         let mut tx = self.transaction().await;
+        if op == "closeConcertEvent" {
+            // Foreign-job storage fixture only: retain migration 0018's real
+            // deadline guard without claiming an acquired closure authority.
+            sqlx::query("select set_config('mcr.lifecycle_authority_until',(clock_timestamp()+interval '5 seconds')::text,true)")
+                .execute(&mut *tx).await.unwrap();
+        }
         let target = request.unwrap_or(self.peer);
         let e = Envelope {
             outbox_id: Uuid::new_v4(),
