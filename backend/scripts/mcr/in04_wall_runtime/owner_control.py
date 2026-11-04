@@ -136,6 +136,8 @@ class OwnerControls:
         self._check(running=True)
         cluster = self.stack.cluster
         pg = self._pg()
+        need(cluster.sql("mcr_concert", "select coalesce(string_agg(event_id::text,',' order by event_id),'') "
+                         "from concert_events") == self.event)
         # Canonical UUIDs only. These are observations, never a cleanup/reset.
         rooms = source.json_object(cluster.sql("mcr_concert",
             "select coalesce(json_agg(json_build_object('roomId',room_id,'ownerEpoch',owner_epoch,"

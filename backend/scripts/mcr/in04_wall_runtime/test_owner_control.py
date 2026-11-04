@@ -64,10 +64,13 @@ class Cluster:
         self.root, self.data, self.token, self.env = root, root / "data", "private-token", {}
         self.epoch, self.postmaster, self.system, self.foreign = "epoch-1", "start-1", "cluster-1", False
         self.memberships, self.stops, self.starts = [], 0, 0
+        self.events = EVENT
     def assert_owned(self):
         if self.foreign:
             raise ValueError("private raw identity must never be exposed")
     def sql(self, database, query):
+        if "from concert_events" in query:
+            return self.events
         if "pg_control_system" in query:
             return json.dumps({"systemIdentifier": self.system, "postmasterStartedAt": self.postmaster,
                                "dataDirectory": str(self.data)})
@@ -219,6 +222,12 @@ class OwnerCases(unittest.TestCase):
 
     def test_wrong_principal_membership_refused(self):
         self.cluster.memberships = [{"userId": EVENT}]
+        with self.assertRaises(control.source.InputRefusal):
+            self.queue()
+        self.assertEqual(self.child.process.terminations, 0)
+
+    def test_other_event_refuses_global_concert_fault(self):
+        self.cluster.events = EVENT + "," + A
         with self.assertRaises(control.source.InputRefusal):
             self.queue()
         self.assertEqual(self.child.process.terminations, 0)
