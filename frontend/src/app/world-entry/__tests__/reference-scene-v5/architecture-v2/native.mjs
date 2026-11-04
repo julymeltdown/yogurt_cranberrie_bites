@@ -14,6 +14,8 @@ assert(output?.startsWith('/'), 'Set MCR_ARCHITECTURE_V2_OUTPUT to a new absolut
 assert(process.env.MCR_CAPTURE_ALLOCATION, 'A fresh named BackendSL capture allocation is required')
 const disk = await statfs(root); assert(disk.bavail * disk.bsize >= 8 * 1024 ** 3, '8GiB disk floor')
 await mkdir(output, { recursive: false, mode: 0o700 }) // A retry must use a new directory and retain its predecessor.
+const browserTemp=resolve(output,'browser-tmp'),priorTemp=process.env.TMPDIR
+await mkdir(browserTemp,{mode:0o700});process.env.TMPDIR=browserTemp // Include this process's Playwright profile/artifact storage in the cap.
 const labelSource = JSON.parse(await readFile(resolve(frontend, 'src/world/reference-scene/spatial-v5/map-labels-source.json'), 'utf8'))
 const hash = bytes => createHash('sha256').update(bytes).digest('hex')
 const report = { status: 'IN_PROGRESS', qualification: 'ARCHITECTURE_V2_ACTUAL_ROOT_RENDERER_MAP_AND_NEW_EDITABLE_SOURCE_FIXTURES',
@@ -193,7 +195,8 @@ try {
 }catch(error){report.status='FAIL';report.failure=String(error);throw error}
 finally{
  await resourceGuard().catch(error=>{report.resourceFailure=String(error);report.status='FAIL'})
- await browser?.close();await server.close();await rm(resolve(output,'vite-cache'),{recursive:true,force:true});report.cleanup={browserClosed:!browser?.isConnected(),serverClosed:!server.httpServer?.listening}
+ await browser?.close();await server.close();await rm(resolve(output,'vite-cache'),{recursive:true,force:true});await rm(browserTemp,{recursive:true,force:true});if(priorTemp===undefined)delete process.env.TMPDIR;else process.env.TMPDIR=priorTemp
+ report.cleanup={browserClosed:!browser?.isConnected(),serverClosed:!server.httpServer?.listening,ownedCacheAndBrowserTempRemoved:true}
  report.resources={samples:resourceSamples,minimumFreeBytes:Math.min(...resourceSamples.map(s=>s.freeBytes)),maximumNewBytes:Math.max(...resourceSamples.map(s=>s.outputBytes))}
  await writeFile(resolve(output,'native.json'),JSON.stringify(report,null,2)+'\n')
 }
