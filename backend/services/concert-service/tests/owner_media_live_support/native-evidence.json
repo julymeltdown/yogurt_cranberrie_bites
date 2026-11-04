@@ -1,8 +1,10 @@
 {
   "task": "BE-OWNER-MEDIA-LIVE",
   "status": "IN_PROGRESS",
-  "build_source_revision": "71a91da09c95c39a89cfeefc88e376d032e7171d",
+  "build_source_revision": "c32f4c74259d350f5f8c3c0a2e024812c7ce417d",
+  "canonical_sdk_revision": "c4ad561cd813f0f7f1e14f21cb2ee90592e09eea",
   "build_exit_code": 0,
+  "build_duration_seconds": 17.85,
   "toolchain": "rustc 1.88.0 (6b00bc388 2025-06-23)",
   "build_constraints": {
     "jobs": 2,
@@ -11,17 +13,19 @@
     "locked": true,
     "offline": true
   },
-  "artifact_sha256": "5f5fee9b432d35179fccb506ee56941d384c11e483561776789ae9d70ec9cb35",
-  "source_pin_count": 1599,
+  "artifact_sha256": "bced59cda4ac6343266eb690e34a4ef251052eb12fbed41ec836ec07b564257a",
+  "producer_artifact_sha256": "dd8802f460636a902aeec85abacc9468d139c73f269b238d67bf3c2de005c65a",
+  "source_pin_count": 1621,
+  "supplemental_backend_json_pin_count": 27,
   "runtime_tests": {
-    "passed": 10,
+    "passed": 11,
     "failed": 0,
     "ignored": 0
   },
   "runtime_result": "PASS",
   "runtime_cleanup": "PASS",
   "retained_producer_tests": {
-    "passed": 17,
+    "passed": 21,
     "failed": 0,
     "ignored": 1
   },
@@ -35,20 +39,24 @@
   "schema": "PASS",
   "sql_timeout_clamp": "PASS",
   "expiry_source_guards": "PASS",
-  "artifact_boundary_python_tests": {
-    "passed": 6,
-    "exit_code": 0
-  },
+  "target_released_before_postgresql": true,
+  "canonical_media_adapter": "COMPILE_PASS_NATIVE_NOT_RUN",
   "canonical_auth_owner": "NOT_RUN",
   "gateway_concert_http": "NOT_RUN",
   "authority_fixture_only": true,
   "sqlx_runtime_migration_ledger": "NOT_RUN",
   "internal_settlement_resolver": "NATIVE_FIXTURE_PASS",
+  "settlement_reference_version": 2,
   "authenticated_settlement_rpc": "NOT_RUN",
-  "planning_provenance_check": {
-    "result": "PASS",
-    "exit_code": 0
-  },
   "shared_policy_capture": "NATIVE_FIXTURE_PASS",
-  "http_delivery_lifetime": "CONTRACT_ONLY_NOT_RUN"
+  "http_delivery_lifetime": "CONTRACT_ONLY_NOT_RUN",
+  "caller_transaction_read_lock_retention": "NATIVE_FIXTURE_PASS",
+  "target_hint_revalidation": "NATIVE_FIXTURE_PASS",
+  "root_before_media_lock_order": "NATIVE_FIXTURE_PASS",
+  "delete_only_target_erasure_and_rollback": "NATIVE_FIXTURE_PASS",
+  "beacon_purpose": "COMPILE_PASS_FORWARD_DATABASE_MIGRATION_NOT_IN_CHECKPOINT",
+  "meeting_photo_runtime": "NOT_RUN",
+  "production_activation": false,
+  "artifact_boundary_python_tests": "NOT_RERUN_UNCHANGED_SCRIPT",
+  "planning_provenance_check": "NOT_RERUN_THIS_INCREMENT"
 }
