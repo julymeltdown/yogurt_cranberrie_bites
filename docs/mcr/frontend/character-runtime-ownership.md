@@ -1,8 +1,8 @@
 # Character runtime ownership
 
-Status: CONTRACT_READY for the root lifetime registry; application wiring and genuine-character route acceptance remain IN_PROGRESS.
+Status: MOCK_READY for root lifetime and actual default-loader selected-character wiring. See [selected-character root qualification](selected-character-root.md) for developer-run source-pinned native evidence and remaining live-service boundaries.
 
-`frontend/src/app/character-entry/registry.ts` retains one borrowed character runtime for the current canonical Auth privacy scope and manifest pin. Header, Me, Customize and World will obtain the same runtime through this application owner. Closing a view releases that view's render leases. Only registry teardown, a replacement release, canonical privacy cleanup or runtime invalidation releases the shared runtime. The registry creates no Auth, requests, Phaser instance or world connection.
+`frontend/src/app/character-entry/registry.ts` retains one borrowed character runtime for the current canonical Auth privacy scope and manifest pin. Header, Me, Customize and World obtain the same runtime through this application owner. Closing a view releases that view's render leases. Only registry teardown, a replacement release, canonical privacy cleanup or runtime invalidation releases the shared runtime. The registry creates no Auth, requests, Phaser instance or world connection.
 
 The injected runtime factory owns full reviewed manifest, source, hash and image validation. The registry requires a current complete privacy scope and matching bootstrap participant/event before construction or reuse. It rejects synchronous identity changes during construction and destroys the abandoned runtime. Factory failures remain unavailable and do not install a partial owner. The registry is not an independent authorization source or asset fallback.
 

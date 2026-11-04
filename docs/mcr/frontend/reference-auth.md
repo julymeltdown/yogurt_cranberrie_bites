@@ -1,5 +1,33 @@
 # FE-REF-AUTH — screen 2 sign-in
 
+## FE-REF-AUTH-FIDELITY — current delivery, 2026-11-04
+
+Status: **MOCK_READY**. This checkpoint supersedes the historical visual/runtime descriptions below. The actual `/login` entry now has reference-scale heading and labels, a narrower slightly offset form, matched field/button/provider positions, denser newly drawn cemetery silhouettes, original irregular paper grain, and a taller cemetery footer. The Auth-only body rule gives a 6px safe-area-aware frame margin and releases when another route opens. The ordinary symmetric window border remains; there are no decorative vertical rails. `SignIn.tsx`, session/models, contracts, root composition, enrollment consent and other features are unchanged.
+
+The preserved checkout is `/Users/lhs/Desktop/mcr-worktrees/fe-ref-auth-profile`, branch `codex/mcr-fe-ref-auth-fidelity`. Assignment base: `8f89d1905a86143d34ff77d2951fc60651ab2497`; source checkpoint after peer-preserving rebase: `8cf4d29c928bafb9fe9dd8991db132901d9a3179`, parent `1cbb1823c506e7fe04d6754f9698ee855f98bc40`. Exclusive production writes are `frontend/src/features/auth/ui/sign-in.css` and `ui/reference-sign-in/Cemetery.tsx`; evidence/harness writes are inside `auth/__tests__/reference-target/fidelity/`, plus this document. Old source/profile handoffs are preserved. No dependency install, model/contract/root change, backend edit or source-archive edit occurred.
+
+The source target is now available at `docs/mcr/design/reference-target-2026-11-04.png`, SHA-256 `d9a8fae2f96a82253542019ab673589b3938627956eace15c8594c702b5c4617`. Panel bounds are x309/y3/w275/h526, following the published integrated comparison. `fidelity/preimages.json` records original production hashes; `fidelity/evidence/report.json` pins final production, shared dependencies, harness and captures. Scenery and noise are authored code, with no copied upstream rendering, new visual dependency, sampled target pixels, character artwork or product screenshot background. Existing canonical Auth/headless behavior remains its original recorded provenance.
+
+### Actual-route evidence and checks
+
+[Comparison](../../../frontend/src/features/auth/__tests__/reference-target/fidelity/evidence/comparison.html), [390px comparison](../../../frontend/src/features/auth/__tests__/reference-target/fidelity/evidence/comparison-390.png), [native report](../../../frontend/src/features/auth/__tests__/reference-target/fidelity/evidence/report.json) and [command receipt](../../../frontend/src/features/auth/__tests__/reference-target/fidelity/evidence/checks.json) are retained. The comparison displays the preserved target at its own original aspect beside actual app-route captures; labels are outside the product screen.
+
+The owned test server serves only a test entry at the real browser `/login` URL. That entry uses unchanged `createAppRouter`, `createProductionPorts`, canonical Auth, public boundary and base/shell styles. It supplies deterministic capability/login responses and isolated cookie policy; bootstrap is deliberately unavailable. There are no panel/render overrides, invented world availability or real account credentials. Captures are native Chrome 156.0.8078.80 at 360/390/430px, with reference-aspect heights 689/746/822px. Three ready images and only 390px error/pending/unavailable images bound artifact size. Final captures were visually inspected, including the comparison, narrow/wide ready screens and dynamic error footer.
+
+- **156/156 tests in eight files**, exit 0: existing canonical sign-in/session, reference semantics, app routes/shell/direct gift return, public entry, enrollment and recovery.
+- Whole strict TypeScript and scoped authored Oxlint: exit 0.
+- Actual-route fixture production build: exit 0, 455 modules; public assets are not copied. Existing large-chunk warnings are retained in the log. This compiles the real root/lazy graph but is not deployment qualification.
+- Native actual-route matrix: all three widths pass, zero page errors, no horizontal overflow, every Auth control at least 44×44px. It covers native validity, keyboard Enter/focus outline, generic credentials/throttling, immediate password scrub, identity cleanup, single pending submit, close through the real landing route, canonical login and exact gift return, foreign return fallback, signup/reset navigation, disabled providers, unavailable/options-error states, foreground control hits and releasing Auth body spacing on signup. The signed-in landing legitimately redirects to world after a late login; the unchanged component tests independently retain the unmounted-form navigation fence.
+- Planning provenance and UI-origin guards: exit 0. Final scoped boundary and whitespace checks are recorded before publication.
+
+A native clearance assertion initially caught footer graves intruding into the final row; the final layout reserves 66px below content and the three-width assertion passes. At 390px, measured input y244.1, password y327.5, submit y431.5 and provider row y573.3 closely match the target's scaled positions. The 360px screen scrolls vertically by about 52px, and 390px by about 12px, at reference-aspect viewports; controls remain full size and reachable. Error/destination states grow naturally. Browser/fixture caches and the temporary authorized dependency symlink are removed at handoff.
+
+### Qualification and remaining differences
+
+This delivers functioning Auth composition refinements, not pixel identity or project acceptance. Cemetery drawing, exact distressed texture and glyph shapes differ from the supplied raster. The accessible 44px close target and semantic title are retained. Remember-session is omitted because no supported setting exists; provider controls remain disabled with the truthful unavailable explanation. These are deliberate behavioral limits, not hidden successful integration. Real backend/cookie/provider flows, mobile Safari/Android hardware and complete ten-route visual/IN05 acceptance remain **NOT_RUN**. No World, scenery-runtime or backend dependency delayed this independent Auth work. Developers own validation; there is no king/SL approval or technical review gate.
+
+## Historical checkpoints
+
 Status: **MOCK_READY**, 2026-11-04. Production `SignIn.tsx` and scoped CSS now implement the exact reference composition: compact cream window, dark heading and close, newly authored cemetery scenery, centered stacked EMAIL/PASSWORD fields, reference-width red SIGN IN, forgot-password divider, recognizable disabled X/Discord/Google row and create-account footer. No remember-session behavior or provider wire is invented. The screenshot is never an application background. Original source text/art is not copied.
 
 ## Assignment and provenance
