@@ -53,7 +53,7 @@ impl proto::producer_settlement_service_server::ProducerSettlementService for Pe
             .map(Response::new)
     }
 }
-pub(super) struct Running(tokio::task::JoinHandle<()>);
+pub(super) struct Running(tokio::task::JoinHandle<()>, String);
 impl Drop for Running {
     fn drop(&mut self) {
         self.0.abort();
@@ -87,11 +87,11 @@ pub(super) async fn rpc_store(
     let resolver = auth_service::concert_authority::RpcSettlementResolver::new(
         &tls(Workload::Auth)?,
         "auth-fixture",
-        &[(proto::Producer::Concert, url)],
+        &[(proto::Producer::Concert, url.clone())],
     )?;
     Ok((
         PgOwnerAuthority::new(p.clone(), Arc::new(resolver))?,
-        Running(task),
+        Running(task, url),
     ))
 }
 
@@ -100,8 +100,8 @@ pub(super) async fn rpc_store(
 async fn owner_rpc_requires_actual_workload_and_signed_acquisition() -> anyhow::Result<()> {
     use platform::{
         actor_delegation::{
-            relationship_read::{RelationshipReadSigner, RelationshipReadVerifier},
-            request_for, ActorDelegationSigner, ActorDelegationVerifier,
+            relationship_read::RelationshipReadSigner, request_for, ActorDelegationSigner,
+            ActorDelegationVerifier,
         },
         grpc_auth::ServiceIdentityClientInterceptor,
     };
@@ -110,35 +110,18 @@ async fn owner_rpc_requires_actual_workload_and_signed_acquisition() -> anyhow::
     let prod = native::pool(true).await?;
     native::setup(&p, &prod).await?;
     let (actor, _, family) = native::fixture(&p).await?;
-    let b = native::binding(actor, family);
-    let scope = native::scope(&prod, &b).await?;
-    let (store, _producer) = rpc_store(&p, &prod).await?;
+    let (_store, producer) = rpc_store(&p, &prod).await?;
     let gateway = ActorDelegationSigner::from_seed(Workload::Gateway, &[8; 32])?;
+    let gateway_key = gateway.public_key();
     let gateway = ActorDelegationVerifier::new(Workload::Auth, &[gateway.public_key()])?;
     let signer = RelationshipReadSigner::from_seed(&[19; 32], &gateway)?;
-    let verifier = RelationshipReadVerifier::new(Workload::Auth, &[signer.public_key()], &gateway)?;
-    std::env::set_var("CONCERT_SERVICE_CREDENTIAL", "concert-fixture");
-    std::env::set_var("POST_SERVICE_CREDENTIAL", "post-fixture");
-    std::env::set_var("PROFILE_SERVICE_CREDENTIAL", "profile-fixture");
-    let registry = auth_service::concert_authority::owner_caller_registry()?;
-    let listener = tokio::net::TcpListener::bind("127.0.0.1:0").await?;
-    let url = format!("https://{}", listener.local_addr()?);
-    let service = auth_service::adapters::r#in::grpc::concert_authority::guarded_server(
-        store, registry, verifier,
-    )?;
-    let server = tonic::transport::Server::builder()
-        .tls_config(tls(Workload::Auth)?.server_config()?)?
-        .add_service(service);
-    let _owner = Running(tokio::spawn(async move {
-        server
-            .serve_with_incoming(tokio_stream::wrappers::TcpListenerStream::new(listener))
-            .await
-            .unwrap();
-    }));
+    let (_owner, url) = start_main(&signer.public_key(), &gateway_key, &producer.1).await?;
     let channel = tls(Workload::Concert)?
         .endpoint(&url, Workload::Auth)?
         .connect()
         .await?;
+    let b = native::binding(actor, family);
+    let scope = native::scope(&prod, &b).await?;
     let id = ServiceIdentityClientInterceptor::new(Workload::Concert, "concert-fixture")?;
     let mut unsigned = Client::with_interceptor(channel.clone(), id.clone());
     let query = proto::AcquireRequest {
@@ -214,4 +197,114 @@ async fn owner_rpc_requires_actual_workload_and_signed_acquisition() -> anyhow::
     p.close().await;
     prod.close().await;
     Ok(())
+}
+
+struct MainProcess(std::process::Child);
+impl Drop for MainProcess {
+    fn drop(&mut self) {
+        let _ = self.0.kill();
+        let _ = self.0.wait();
+    }
+}
+async fn start_main(
+    read_key: &[u8; 32],
+    gateway_key: &[u8; 32],
+    producer_url: &str,
+) -> anyhow::Result<(MainProcess, String)> {
+    use base64ct::{Base64UrlUnpadded, Encoding};
+    const OWNER: &str = "auth";
+    let root = std::path::PathBuf::from(std::env::var("MCR_AUTHORITY_ROOT")?);
+    let listener = std::net::TcpListener::bind("127.0.0.1:0")?;
+    let address = listener.local_addr()?;
+    drop(listener);
+    let url = format!("https://{address}");
+    let prefix = OWNER.to_ascii_uppercase();
+    let log = root.join(format!("{OWNER}-main.log"));
+    let output = std::fs::File::create(&log)?;
+    let mut command = std::process::Command::new(std::env::var("MCR_AUTHORITY_MAIN_BINARY")?);
+    command
+        .env_clear()
+        .env("PATH", "/usr/bin:/bin")
+        .env("TMPDIR", &root)
+        .env(format!("{prefix}_RUNTIME_MODE"), "parity")
+        .env(
+            format!("{prefix}_DATABASE_URL"),
+            std::env::var("MCR_AUTHORITY_OWNER_URL")?,
+        )
+        .env(format!("{prefix}_GRPC_ADDR"), address.to_string())
+        .env(format!("{prefix}_HTTP_ADDR"), "127.0.0.1:0")
+        .env(format!("{prefix}_METRICS_ADDR"), "127.0.0.1:0")
+        .env(format!("{prefix}_SEED_ENABLED"), "false")
+        .env(
+            format!("{prefix}_GRPC_TLS_CERT_PATH"),
+            root.join("pki").join(format!("{OWNER}.crt")),
+        )
+        .env(
+            format!("{prefix}_GRPC_TLS_KEY_PATH"),
+            root.join("pki").join(format!("{OWNER}.key")),
+        )
+        .env(
+            format!("{prefix}_GRPC_TLS_CA_PATH"),
+            root.join("pki/ca.crt"),
+        )
+        .env(
+            format!("{prefix}_SERVICE_CREDENTIAL"),
+            format!("{OWNER}-fixture"),
+        )
+        .env("CONCERT_SERVICE_CREDENTIAL", "concert-fixture")
+        .env("POST_SERVICE_CREDENTIAL", "post-fixture")
+        .env("PROFILE_SERVICE_CREDENTIAL", "profile-fixture")
+        .env(
+            "ACTOR_DELEGATION_VERIFYING_KEYS",
+            Base64UrlUnpadded::encode_string(gateway_key),
+        )
+        .env(
+            "CONCERT_RELATIONSHIP_VERIFYING_KEYS",
+            Base64UrlUnpadded::encode_string(read_key),
+        )
+        .env("CONCERT_OWNER_AUTHORITY_ENABLED", "true")
+        .env("AUTHORITY_CONCERT_SETTLEMENT_ENDPOINT", producer_url)
+        .stdout(output.try_clone()?)
+        .stderr(output);
+    for suffix in ["PROFILE", "FRIEND", "POST", "NOTIFICATION"] {
+        command.env(
+            format!("{prefix}_{suffix}_GRPC_ENDPOINT"),
+            "https://127.0.0.1:1",
+        );
+    }
+    for key in [
+        "AUTH_LIFECYCLE_CLEANUP_WORKER_ENABLED",
+        "AUTH_USER_DELETION_WORKER_ENABLED",
+        "FRIEND_RECOMMENDATION_WORKER_ENABLED",
+        "FRIEND_RECOMMENDATION_RETENTION_WORKER_ENABLED",
+        "FRIEND_MUTATION_RECEIPT_RETENTION_WORKER_ENABLED",
+    ] {
+        command.env(key, "false");
+    }
+    let mut child = MainProcess(command.spawn()?);
+    let stop = Instant::now() + Duration::from_secs(15);
+    loop {
+        if let Some(status) = child.0.try_wait()? {
+            anyhow::bail!(
+                "actual owner main exited {status}: {}",
+                std::fs::read_to_string(&log)?
+                    .lines()
+                    .rev()
+                    .take(4)
+                    .collect::<Vec<_>>()
+                    .join(" ")
+            );
+        }
+        if tls(Workload::Concert)?
+            .endpoint(&url, Workload::Auth)?
+            .connect()
+            .await
+            .is_ok()
+        {
+            break;
+        }
+        anyhow::ensure!(Instant::now() < stop, "actual owner main did not start");
+        tokio::time::sleep(Duration::from_millis(30)).await;
+    }
+    Ok((child, url))
 }

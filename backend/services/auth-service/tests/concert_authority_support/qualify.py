@@ -52,7 +52,7 @@ def qualify(metadata, pg, report):
         envs={}
         for owner in artifacts:
             for db in [f'mcr_owner_{owner}',f'mcr_owner_{owner}_producer']:execute([str(cluster.tools['createdb']),'--no-password','--maintenance-db=postgres',db],env=cluster.client_env('postgres'),phase='createdb',cwd=cluster.root)
-            envs[owner]={**cluster.env,'MCR_AUTHORITY_ROOT':str(cluster.root),'MCR_AUTHORITY_SYSTEM':system,'MCR_AUTHORITY_OWNER_URL':cluster.url(f'mcr_owner_{owner}'),'MCR_AUTHORITY_PRODUCER_URL':cluster.url(f'mcr_owner_{owner}_producer')}
+            envs[owner]={**cluster.env,'MCR_AUTHORITY_ROOT':str(cluster.root),'MCR_AUTHORITY_SYSTEM':system,'MCR_AUTHORITY_MAIN_BINARY':extras[f'{owner}-server']['path'],'MCR_AUTHORITY_OWNER_URL':cluster.url(f'mcr_owner_{owner}'),'MCR_AUTHORITY_PRODUCER_URL':cluster.url(f'mcr_owner_{owner}_producer')}
         def test(owner,name,pure=False):
             args=[str(artifacts[owner]),'--test-threads=1','--nocapture']
             if not pure:args+=['--ignored','--exact',name]
