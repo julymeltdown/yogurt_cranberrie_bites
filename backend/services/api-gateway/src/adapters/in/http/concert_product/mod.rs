@@ -15,6 +15,7 @@ use axum::{
 use std::sync::{Arc, OnceLock};
 use uuid::Uuid;
 mod disclosure;
+mod feature_routes;
 
 pub fn router(state: Arc<AppState>) -> Router {
     Router::new()
@@ -113,6 +114,7 @@ pub fn router(state: Arc<AppState>) -> Router {
             "/api/concert/events/:event_id/media/:media_id/finalize",
             post(dispatch),
         )
+        .merge(feature_routes::router())
         .with_state(state)
 }
 
@@ -127,6 +129,9 @@ pub(super) fn owns_receipt(method: &Method, path: &str) -> bool {
     };
     if uuid(event).is_none() {
         return false;
+    }
+    if let Some(route) = feature_routes::route(method, path) {
+        return route.mutation();
     }
     if social_route(method, path).is_some() {
         return *method != Method::GET;
@@ -430,7 +435,8 @@ fn is_product(path: &str) -> bool {
     let Some((_, tail)) = suffix.split_once('/') else {
         return false;
     };
-    tail == "feed"
+    feature_routes::protects(path)
+        || tail == "feed"
         || tail == "commands"
         || tail == "parties"
         || tail.starts_with("media/")
@@ -512,7 +518,7 @@ fn request_metadata(
     headers: &HeaderMap,
     origins: &[String],
 ) -> Result<(String, String), (StatusCode, &'static str)> {
-    let mutation = matches!(*method, Method::POST | Method::PUT | Method::DELETE);
+    let mutation = matches!(*method, Method::POST | Method::PUT | Method::PATCH | Method::DELETE);
     if mutation {
         if !single(headers, "origin").is_some_and(|origin| origins.iter().any(|v| v == origin)) {
             return Err((StatusCode::FORBIDDEN, "ORIGIN_NOT_ALLOWED"));
@@ -579,11 +585,19 @@ async fn dispatch(
         return error(StatusCode::BAD_REQUEST, "INVALID_INPUT");
     };
     let method = request.method().clone();
+    let feature = if feature_routes::protects(uri.path()) {
+        match feature_routes::route(&method, uri.path()) {
+            Some(route) if feature_routes::valid_target(route, &uri.to_string()) => Some(route),
+            _ => return error(StatusCode::BAD_REQUEST, "INVALID_INPUT"),
+        }
+    } else {
+        None
+    };
     let client_address = request
         .extensions()
         .get::<super::client_identity::VerifiedClientAddress>()
         .copied();
-    let mutation = matches!(method, Method::POST | Method::PUT | Method::DELETE);
+    let mutation = matches!(method, Method::POST | Method::PUT | Method::PATCH | Method::DELETE);
     let bodyless_delete = method == Method::DELETE;
     let (content_type, idempotency_key) = match request_metadata(
         &method,
@@ -600,6 +614,8 @@ async fn dispatch(
         MAX_BODY
     } else if bodyless_delete {
         0
+    } else if let Some(route) = feature {
+        route.body_limit()
     } else if social_route(&method, uri.path()).is_some() {
         8192
     } else {
