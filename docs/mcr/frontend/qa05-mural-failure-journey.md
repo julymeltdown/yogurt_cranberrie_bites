@@ -87,6 +87,7 @@ node e2e/realtime/mural/native.mjs --candidate FULL_COMMITTED_HEAD
 
 The native runner requires exact committed HEAD, clean tracked source, hashes
 all relevant source/contract inputs, and checks them again at completion. It
+writes a fresh candidate-specific directory without overwriting earlier runs, and
 records exact candidate/tree, Chrome versions, viewport steps, observed states,
 peer requests, raster hashes, source pins and capture hashes. A development-only
 `--development` run is explicitly marked uncommitted; it cannot certify the named

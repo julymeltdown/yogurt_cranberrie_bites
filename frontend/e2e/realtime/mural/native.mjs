@@ -9,9 +9,10 @@ import {chromium,expect} from '@playwright/test'
 import {nativeBrowser} from '../world/qa05/browser.mjs'
 import {muralPeer} from './peer.mjs'
 
-const frontend=resolve(import.meta.dirname,'../../..'),repo=resolve(frontend,'..'),out=resolve(repo,'docs/mcr/evidence/realtime/mural')
+const frontend=resolve(import.meta.dirname,'../../..'),repo=resolve(frontend,'..'),outBase=resolve(repo,'docs/mcr/evidence/realtime/mural')
 const git=(...args)=>execFileSync('git',args,{cwd:repo,encoding:'utf8'}).trim(),hash=b=>createHash('sha256').update(b).digest('hex')
 const development=process.argv.includes('--development'),candidate=git('rev-parse','HEAD'),tree=git('rev-parse','HEAD^{tree}')
+const out=join(outBase,development?'development':'candidate-'+candidate.slice(0,8))
 assert.equal(process.version,'v24.22.2')
 if(!development){assert.equal(process.argv[process.argv.indexOf('--candidate')+1],candidate,'Explicit exact candidate required');assert.equal(git('diff','--name-only','HEAD'),'','Tracked source dirty')}
 const disk=await statfs(repo);assert.ok(disk.bavail*disk.bsize>8*1024**3,'8GiB disk floor')
@@ -19,7 +20,7 @@ const paths=git('ls-files','frontend/src','contracts','frontend/e2e/realtime/wor
 for(const p of ['peer.mjs','native.mjs','data.ts','preview.tsx','preview.html','check-types.mjs','peer.node.mjs'])if(!paths.includes('frontend/e2e/realtime/mural/'+p))paths.push('frontend/e2e/realtime/mural/'+p)
 const pins={}
 for(const p of paths){const bytes=await readFile(join(repo,p));if(!development)assert.equal(hash(execFileSync('git',['show',candidate+':'+p],{cwd:repo,maxBuffer:32*1024**2})),hash(bytes),p);pins[p]=hash(bytes)}
-await mkdir(out,{recursive:true})
+await mkdir(outBase,{recursive:true});await mkdir(out,{recursive:false})
 const temp=await mkdtemp(join(tmpdir(),'mcr-qa05-mural-'))
 const original=JSON.parse(await readFile(join(repo,'contracts/fixtures/core/bootstrap-open.json'),'utf8'))
 let peer=muralPeer(original.event.event_id,original.participant.user_id)
