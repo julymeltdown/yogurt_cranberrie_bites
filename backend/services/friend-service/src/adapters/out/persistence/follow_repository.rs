@@ -71,18 +71,8 @@ impl FollowRepositoryPort for PgFollowRepository {
             tx.commit().await?;
             return Ok(action);
         }
-
-        let blocked: bool = sqlx::query_scalar(
-            "select exists(select 1 from user_blocks where deleted_at is null and ((blocker_id=$1 and blocked_id=$2) or (blocker_id=$2 and blocked_id=$1)))",
-        )
-        .bind(edge.follower_id)
-        .bind(edge.followee_id)
-        .fetch_one(&mut *tx)
-        .await?;
-        if blocked {
-            tx.rollback().await?;
-            return Err(FriendError::PermissionDenied("Blocked relationship".into()).into());
-        }
+        lock_relationship_subjects(&mut tx, edge.follower_id, edge.followee_id).await?;
+        deny_blocked(&mut tx, edge.follower_id, edge.followee_id).await?;
 
         let action = if create_request {
             let row = sqlx::query(
@@ -194,6 +184,9 @@ impl FollowRepositoryPort for PgFollowRepository {
     }
 
     async fn follow(&self, edge: &FollowEdge) -> Result<FollowEdge> {
+        let mut tx = self.pool.begin().await?;
+        lock_relationship_subjects(&mut tx, edge.follower_id, edge.followee_id).await?;
+        deny_blocked(&mut tx, edge.follower_id, edge.followee_id).await?;
         let inserted = sqlx::query(
             r#"
             insert into follows (follower_id, followee_id, created_at)
@@ -213,10 +206,11 @@ impl FollowRepositoryPort for PgFollowRepository {
         .bind(edge.follower_id)
         .bind(edge.followee_id)
         .bind(edge.created_at)
-        .fetch_optional(&self.pool)
+        .fetch_optional(&mut *tx)
         .await?;
 
         if let Some(row) = inserted {
+            tx.commit().await?;
             return Ok(FollowEdge {
                 follower_id: row.get("follower_id"),
                 followee_id: row.get("followee_id"),
@@ -229,8 +223,9 @@ impl FollowRepositoryPort for PgFollowRepository {
         )
         .bind(edge.follower_id)
         .bind(edge.followee_id)
-        .fetch_one(&self.pool)
+        .fetch_one(&mut *tx)
         .await?;
+        tx.commit().await?;
         Ok(FollowEdge {
             follower_id: row.get("follower_id"),
             followee_id: row.get("followee_id"),
@@ -468,6 +463,33 @@ fn map_follow_request(row: sqlx::postgres::PgRow) -> FollowRequest {
     }
 }
 
+/// Use the existing deletion-fence locks BEFORE observing blocks or locking a
+/// request row. Waiting only in the write trigger leaves the earlier READ
+/// COMMITTED block snapshot stale; request-first also inverts block's lock order.
+async fn lock_relationship_subjects(
+    c: &mut sqlx::PgConnection,
+    first: Uuid,
+    second: Uuid,
+) -> Result<()> {
+    sqlx::query("select public.friend_lock_subject_ids($1::uuid[])")
+        .bind(vec![first, second])
+        .execute(c)
+        .await?;
+    Ok(())
+}
+
+async fn blocked(c: &mut sqlx::PgConnection, first: Uuid, second: Uuid) -> Result<bool> {
+    Ok(sqlx::query_scalar("select exists(select 1 from public.user_blocks where deleted_at is null and ((blocker_id=$1 and blocked_id=$2) or (blocker_id=$2 and blocked_id=$1)))")
+        .bind(first).bind(second).fetch_one(c).await?)
+}
+
+async fn deny_blocked(c: &mut sqlx::PgConnection, first: Uuid, second: Uuid) -> Result<()> {
+    if blocked(c, first, second).await? {
+        return Err(FriendError::PermissionDenied("Blocked relationship".into()).into());
+    }
+    Ok(())
+}
+
 #[async_trait]
 impl FollowRequestRepositoryPort for PgFollowRepository {
     async fn create_request(
@@ -476,6 +498,9 @@ impl FollowRequestRepositoryPort for PgFollowRepository {
         followee_id: Uuid,
         created_at: DateTime<Utc>,
     ) -> Result<FollowRequest> {
+        let mut tx = self.pool.begin().await?;
+        lock_relationship_subjects(&mut tx, follower_id, followee_id).await?;
+        deny_blocked(&mut tx, follower_id, followee_id).await?;
         let row = sqlx::query(
             r#"
             insert into follow_requests (id, follower_id, followee_id, status, created_at)
@@ -489,8 +514,9 @@ impl FollowRequestRepositoryPort for PgFollowRepository {
         .bind(follower_id)
         .bind(followee_id)
         .bind(created_at)
-        .fetch_one(&self.pool)
+        .fetch_one(&mut *tx)
         .await?;
+        tx.commit().await?;
         Ok(map_follow_request(row))
     }
 
@@ -501,6 +527,19 @@ impl FollowRequestRepositoryPort for PgFollowRepository {
         decided_at: DateTime<Utc>,
     ) -> Result<AcceptFollowRequestOutcome> {
         let mut tx = self.pool.begin().await?;
+        // Discover immutable scope without holding the request row. Re-read it
+        // under FOR UPDATE only after the canonical subject locks are held.
+        let pair: Option<(Uuid, Uuid)> = sqlx::query_as(
+            "select follower_id,followee_id from follow_requests where id=$1 and followee_id=$2",
+        )
+        .bind(request_id)
+        .bind(actor_id)
+        .fetch_optional(&mut *tx)
+        .await?;
+        let Some((follower, followee)) = pair else {
+            return Ok(AcceptFollowRequestOutcome::NotFound);
+        };
+        lock_relationship_subjects(&mut tx, follower, followee).await?;
         let row = sqlx::query(
             r#"
             select id, follower_id, followee_id, status, created_at, decided_at
@@ -518,6 +557,12 @@ impl FollowRequestRepositoryPort for PgFollowRepository {
             return Ok(AcceptFollowRequestOutcome::NotFound);
         };
         let mut request = map_follow_request(row);
+        if (request.follower_id, request.followee_id) != (follower, followee) {
+            return Ok(AcceptFollowRequestOutcome::NotFound);
+        }
+        if blocked(&mut tx, follower, followee).await? {
+            return Ok(AcceptFollowRequestOutcome::Blocked);
+        }
         if request.status == FollowRequestStatus::Accepted {
             let edge_row = sqlx::query(
                 "select follower_id, followee_id, created_at from follows where follower_id=$1 and followee_id=$2 and deleted_at is null",
@@ -542,17 +587,6 @@ impl FollowRequestRepositoryPort for PgFollowRepository {
         if request.status != FollowRequestStatus::Pending {
             tx.rollback().await?;
             return Ok(AcceptFollowRequestOutcome::NotFound);
-        }
-        let blocked: bool = sqlx::query_scalar(
-            r#"select exists(select 1 from user_blocks where deleted_at is null and ((blocker_id=$1 and blocked_id=$2) or (blocker_id=$2 and blocked_id=$1)))"#,
-        )
-        .bind(request.follower_id)
-        .bind(request.followee_id)
-        .fetch_one(&mut *tx)
-        .await?;
-        if blocked {
-            tx.rollback().await?;
-            return Ok(AcceptFollowRequestOutcome::Blocked);
         }
         sqlx::query("update follow_requests set status='ACCEPTED', decided_at=$2 where id=$1")
             .bind(request_id)
@@ -717,6 +751,7 @@ impl RelationshipPolicyRepositoryPort for PgFollowRepository {
         created_at: DateTime<Utc>,
     ) -> Result<RelationshipPolicy> {
         let mut tx = self.pool.begin().await?;
+        lock_relationship_subjects(&mut tx, blocker_id, blocked_id).await?;
         sqlx::query(
             r#"insert into user_blocks (blocker_id,blocked_id,created_at,deleted_at)
                values ($1,$2,$3,null)
@@ -735,8 +770,11 @@ impl RelationshipPolicyRepositoryPort for PgFollowRepository {
     }
 
     async fn unblock(&self, blocker_id: Uuid, blocked_id: Uuid) -> Result<RelationshipPolicy> {
+        let mut tx = self.pool.begin().await?;
+        lock_relationship_subjects(&mut tx, blocker_id, blocked_id).await?;
         sqlx::query("update user_blocks set deleted_at=now() where blocker_id=$1 and blocked_id=$2 and deleted_at is null")
-            .bind(blocker_id).bind(blocked_id).execute(&self.pool).await?;
+            .bind(blocker_id).bind(blocked_id).execute(&mut *tx).await?;
+        tx.commit().await?;
         self.policy(blocker_id, blocked_id).await
     }
 
