@@ -391,7 +391,7 @@ async fn native_guarded_coordinator_cas_rollback_and_decision_recovery() -> anyh
             )),
         )
         .await?;
-        let (code, _) = collected(response).await;
+        let (code, _) = collected(response.map(tonic::body::Body::new)).await;
         assert_eq!(
             code,
             match mode {
@@ -471,7 +471,7 @@ async fn native_guarded_coordinator_cas_rollback_and_decision_recovery() -> anyh
                 )),
             )
             .await?;
-            let (code, bytes) = collected(response).await;
+            let (code, bytes) = collected(response.map(tonic::body::Body::new)).await;
             assert_eq!(code, tonic::Code::Ok);
             let reply = proto::ParticipantDecisionResponse::decode(&bytes[5..])?;
             assert_eq!(reply.query, Some(query));
