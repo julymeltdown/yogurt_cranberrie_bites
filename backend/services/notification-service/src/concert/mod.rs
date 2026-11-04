@@ -2,6 +2,7 @@
 //! No default production authority or actor-forwarding shortcut is installed.
 pub mod authority;
 pub mod delivery;
+pub mod deletion_owner;
 mod repository;
 pub mod target_client;
 pub mod transport;
