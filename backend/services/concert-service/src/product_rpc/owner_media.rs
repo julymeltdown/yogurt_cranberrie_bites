@@ -82,21 +82,21 @@ impl ProductOwner for OwnerMediaRuntime {
         let result = OwnerMediaRuntime::dispatch(self, input).await;
         context.check()?;
         let body = match result {
-            Ok(OwnerMediaReply::Json { status, body }) => Ok(proto::ProductResponse {
+            Ok(OwnerMediaReply::Json { status, body }) => proto::ProductResponse {
                 status: status.into(),
                 delivery: None,
                 content_type: "application/json".into(),
                 body: serde_json::to_vec(&body)
                     .map_err(|_| Status::internal("Invalid media representation"))?,
-            }),
-            Ok(OwnerMediaReply::Image(image)) => Ok(proto::ProductResponse {
+            },
+            Ok(OwnerMediaReply::Image(image)) => proto::ProductResponse {
                 status: 200,
                 delivery: None,
                 content_type: image.metadata.mime.as_str().into(),
                 body: image.bytes,
-            }),
-            Err(error) => Ok(failure(context, error)),
-        }?;
+            },
+            Err(error) => failure(context, error),
+        };
         Ok(Response::new(body))
     }
 }

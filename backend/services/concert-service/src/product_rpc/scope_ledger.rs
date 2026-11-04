@@ -90,9 +90,13 @@ impl PgScopeLedger {
     pub fn instance(&self) -> Uuid {
         self.instance
     }
-    async fn transaction(&self) -> Result<Transaction<'_, Postgres>, Status> {
+    async fn transaction(&self) -> Result<Transaction<'static, Postgres>, Status> {
         let mut tx = self.pool.begin().await.map_err(unavailable)?;
-        sqlx::raw_sql("SET LOCAL lock_timeout='250ms'; SET LOCAL statement_timeout='750ms'")
+        sqlx::query("SET LOCAL lock_timeout='250ms'")
+            .execute(&mut *tx)
+            .await
+            .map_err(unavailable)?;
+        sqlx::query("SET LOCAL statement_timeout='750ms'")
             .execute(&mut *tx)
             .await
             .map_err(unavailable)?;
