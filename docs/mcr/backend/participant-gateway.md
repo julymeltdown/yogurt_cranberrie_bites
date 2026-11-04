@@ -353,3 +353,72 @@ Validation so far: Python driver AST parse and Rust 1.88.0 formatting pass;
 compilation, native cancellation/login qualification and committed handoff remain
 NOT_RUN pending the CR08 dependency and named resource allocation. Root owns
 production composition, serial master publication and the browser IN01 rerun.
+
+### C03-CANCEL01 native qualification
+
+The qualification status is now INTEGRATED for the dedicated real native HTTP
+fixture. The earlier NOT_RUN checkpoint above remains historical. Compiled
+source is `f8aeca1f541fbb82777089e9281c333479c25f74`, containing Participant commits
+`16f017f8`, `128ed564`, `f8aeca1f` and Canonical `2e721109` consumed as `c43b9bce`.
+Root takes the Participant commits separately; it must not duplicate CR08.
+
+Under named lease `C03-CANCEL01-BACKEND-202611040509Z`, the exact command was
+`cargo +1.88.0 test -p concert-service --test participant_cancellation --no-run --locked --offline --message-format=json`
+with jobs 2, incremental 0, and dev/test debug 0. Attempt one exited 101 in 4.37 s:
+borrowed target artifacts retained another worktree's absolute proto paths and
+old application metadata, despite the required exports existing in current
+source. The failed Cargo JSON and stderr remain preserved. The authorized repair
+cleaned only `contracts-build`, `concert-domain` and `concert-application` (66
+files, 39 MiB), with no source changes. Attempt two exited 0 in 30.74 s. Exactly
+one requested test executable was copied and verified outside the build target;
+its SHA256 is
+`9a0bb77d3bef921a5302c656e99804ef6d6ec4b372bec3d1a9d92612d20f0f73`.
+The target was explicitly released with zero handles/processes before native
+execution. The portable [qualification receipt](../../../backend/services/concert-service/tests/participant_cancellation_support/qualification.json)
+contains all 1772 build/controller source hashes, exact contract hashes, peer
+binary hashes, command results, incident/report hashes, and limitations.
+
+The copied native controller exited 0 in 23.73 s against the frozen 3710 Gateway
+and actual Auth, Friend, Profile, Post and Notification MAIN processes, using a
+new owned PostgreSQL 16.14 cluster and fresh mTLS keys. Three independent users
+completed actual signup, delivered email verification, login, Profile update and
+public Bootstrap. The normal public C03 GET returned 200 and completed its
+original HTTP EOF/owner path, with serialization and delivery recorded and no
+abandonment. The first gated GET was interrupted by a real public TCP reset
+after actual delivery publication. Its supervisor recorded abandonment and
+settlement while both serialization and delivery remained NULL. Auth and Friend
+each held two COMPLETED scopes (normal plus interrupted), with zero prepared
+transactions. A subsequent real `/api/auth/login` returned 200 with the same
+canonical principal and a fresh access token; no SQL identity or refresh-token
+insertion substituted for login.
+
+The second actual GET retained an admitted callback for 4.5 s, beyond both the
+original request TTL and CR08's two-second cleanup budget. It remained SEALED
+with neither cancellation proof and with both owner fences held. Releasing the
+actual callback after that bounded cleanup did not invent a later receipt. The
+third actual PATCH registered and committed a real Concert transaction without
+a Participant effect witness, using the exact request settlement reference.
+The native resolver returned UNKNOWN with empty receipt evidence. Its root
+could truthfully finish abandoned work, but cancellation settlement remained
+NULL and both owner fences stayed held. Four prepared fences remained across
+the two negative cases before disposable shutdown. Owner `scope_settlement`
+alone was not treated as completion: the unknown-native leases remained SEALED
+even after their root-work proof existed.
+
+The Rust host passed its exact ignored test. Every retained MAIN and Redis
+stopped unforced with exit 0; owned cleanup passed, and independent checks found
+all recorded process IDs and the owned root absent. No prepared rollback,
+manual completion RPC, synthetic EOF, mutation retry, or TTL-based release was
+used. Expected negative fences disappeared only with whole-cluster teardown;
+that teardown is not recovery proof. Measured whole-workflow growth peaked at
+220,311,552 bytes under the 1.4 GiB bound, with about 39.2 GB free afterward. The
+private capacity observer raced with directory removal during successful final
+cleanup; its last sampled peak and this limitation are preserved separately
+from the passing product/host results and independently verified cleanup.
+
+Planning/provenance, Python AST, Rust 1.88 formatting, changed-path checks and
+`git diff --check` pass. This demonstrates cancellation handling at a controlled
+post-publication interruption point through actual HTTP and native owners.
+Spontaneous browser timing, production runtime activation, the same-candidate
+IN01 browser rerun, release acceptance and final master publication remain
+Root/FE obligations; none are inferred from this dedicated integration fixture.
