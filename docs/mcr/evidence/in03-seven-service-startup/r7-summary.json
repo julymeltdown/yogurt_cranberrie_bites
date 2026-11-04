@@ -1,0 +1,192 @@
+{
+  "format": "mcr-seven-service-functional-startup/1",
+  "qualification": "INTEGRATED_STARTUP_ONLY",
+  "helper_source_revision": "18076c951a7283354c869caaf64d40491ca52d75",
+  "binary_sources": {
+    "api-gateway": "18076c951a7283354c869caaf64d40491ca52d75",
+    "auth-service": "18076c951a7283354c869caaf64d40491ca52d75",
+    "concert-service": "18076c951a7283354c869caaf64d40491ca52d75",
+    "friend-service": "18076c951a7283354c869caaf64d40491ca52d75",
+    "notification-service": "18076c951a7283354c869caaf64d40491ca52d75",
+    "post-service": "18076c951a7283354c869caaf64d40491ca52d75",
+    "profile-service": "18076c951a7283354c869caaf64d40491ca52d75"
+  },
+  "binary_sha256": {
+    "api-gateway": "53ee13c075ca2f5bb2182ac4eacf7b8086f469c07fb1e4164db31083d56b53d2",
+    "auth-service": "258cbeba9cd7f2f6e37244c8b790903a58ae34718c2737de6b722a48efae1c3b",
+    "concert-service": "d45899bb068c07b548f52822d17a9cc30d326fa9be10ccf9f0134f47846cac62",
+    "friend-service": "65fdce0b6ae464aa5d0087b46220bad58a9de2b0fdf80da8cc20a9e44a1b82e3",
+    "notification-service": "e68bc03e8150ca3d748f088e2aed9dc3edbad089ad17a724847692616ae12ac9",
+    "post-service": "5348610b61a8082d68c8359f821c4a9f93f41991fddc0acdceedcac4cd049dd5",
+    "profile-service": "1ba28b2a6d517bbbacb5f784eeabec92b3e25225dab7213cf60bf09b5e36c97f"
+  },
+  "command_exit_code": 0,
+  "actual_seven_service_readiness": "PASS",
+  "statuses": {
+    "principal-1-signup": 200,
+    "principal-1-verify": 200,
+    "principal-1-login": 200,
+    "principal-2-signup": 200,
+    "principal-2-verify": 200,
+    "principal-2-login": 200,
+    "principal-3-signup": 200,
+    "principal-3-verify": 200,
+    "principal-3-login": 200,
+    "principal-1-profile": 200,
+    "principal-2-profile": 200,
+    "principal-3-profile": 200,
+    "principal-1-canonical-bootstrap": 200,
+    "principal-2-canonical-bootstrap": 200,
+    "principal-3-canonical-bootstrap": 200,
+    "post-admission-bootstrap-retention": 200
+  },
+  "original_in03_journey": "NOT_RUN",
+  "acceptance": "NOT_CLAIMED",
+  "result": "PARTIAL",
+  "cleanup": "PASS",
+  "prepared_before_cleanup": 0,
+  "full_c03_retained_or_hashed": false,
+  "public_projection_sha256": "c1606256a0a061aff988ff9dd14e3d11534bdbc5e8875b123dbf196360520e3f",
+  "resource_bounds": {
+    "max_sampled_whole_bytes": 7753814016,
+    "hard_whole_bytes": 10737418240,
+    "retained_carry_bytes": 7610896384,
+    "cleanup_reserve_seconds": 240,
+    "start_free_floor_bytes": 12884901888,
+    "continuous_stop_floor_bytes": 8589934592,
+    "owned_process_cap": 44,
+    "max_sampled_owned_processes": 39,
+    "started_at": "2026-11-04T17:27:56.763695+00:00",
+    "work_deadline_at": "2026-11-04T17:43:25.084316+00:00",
+    "hard_deadline_at": "2026-11-04T17:47:25.084316+00:00",
+    "phase_cutoffs": [
+      {
+        "name": "native-startup",
+        "started_at": "2026-11-04T17:27:56.763876+00:00",
+        "deadline_at": "2026-11-04T17:30:56.763879+00:00"
+      },
+      {
+        "name": "seven-service-native-startup",
+        "started_at": "2026-11-04T17:27:56.792028+00:00",
+        "deadline_at": "2026-11-04T17:31:56.792043+00:00"
+      },
+      {
+        "name": "real-auth-and-public-c03",
+        "started_at": "2026-11-04T17:28:09.921491+00:00",
+        "deadline_at": "2026-11-04T17:30:09.921501+00:00"
+      },
+      {
+        "name": "existing-fe209-original-in03-consumer",
+        "started_at": "2026-11-04T17:28:19.573485+00:00",
+        "deadline_at": "2026-11-04T17:38:19.573492+00:00"
+      }
+    ],
+    "failure": null,
+    "sample_interval_seconds": 0.5,
+    "initial_floor_policy_offer": "ROOT-IN03-DIAGNOSTIC-COPIED-CONTINUE-202611041655Z-R7"
+  },
+  "full_release_utc": "2026-11-04T17:35:40.742499+00:00",
+  "all_owned_handles": 0,
+  "all_service_exits_zero_unforced": true,
+  "stop_reason": "Owner requested protocol shutdown after missing consumer prerequisites were confirmed; unused hold returned early.",
+  "source_report_sha256": "33bb3b53be23b105c73d8485febabb1215b52d562dc4b08bff3c3584e2599c39",
+  "prior_rounds": [
+    {
+      "round": "short-socket",
+      "private_evidence_retained": true,
+      "result": "FAIL",
+      "failure_type": "Failure",
+      "failure_label": "native-stack-operation-failed",
+      "guard_failure": null,
+      "cleanup": "PASS",
+      "supervisor_exit_code": 1,
+      "full_release_utc": "2026-11-04T16:47:40.901768+00:00"
+    },
+    {
+      "round": "schema-diagnostic",
+      "private_evidence_retained": true,
+      "result": "FAIL",
+      "failure_type": "Failure",
+      "failure_label": "native-stack-operation-failed",
+      "guard_failure": null,
+      "cleanup": "PASS",
+      "supervisor_exit_code": 1,
+      "full_release_utc": "2026-11-04T16:55:45.355800+00:00"
+    },
+    {
+      "round": "strict-venv",
+      "private_evidence_retained": true,
+      "result": "FAIL",
+      "failure_type": "KeyboardInterrupt",
+      "failure_label": "native-stack-operation-failed",
+      "guard_failure": "qualification-resource-bound",
+      "cleanup": "PASS",
+      "supervisor_exit_code": 1,
+      "full_release_utc": "2026-11-04T17:00:38.561758+00:00"
+    },
+    {
+      "round": "bounded-auxiliary",
+      "private_evidence_retained": true,
+      "result": "FAIL",
+      "failure_type": "KeyboardInterrupt",
+      "failure_label": "native-stack-operation-failed",
+      "guard_failure": "qualification-resource-bound",
+      "cleanup": "PASS",
+      "supervisor_exit_code": 1,
+      "full_release_utc": "2026-11-04T17:05:26.678330+00:00"
+    },
+    {
+      "round": "custody-refusal",
+      "private_evidence_retained": true,
+      "supervisor_exit_code": 2,
+      "full_release_utc": "2026-11-04T17:18:51.120499+00:00"
+    },
+    {
+      "round": "global-pg-limit",
+      "private_evidence_retained": true,
+      "result": "FAIL",
+      "failure_type": "SmokeError",
+      "failure_label": "native-stack-operation-failed",
+      "guard_failure": null,
+      "cleanup": "PASS",
+      "supervisor_exit_code": 1,
+      "full_release_utc": "2026-11-04T17:22:25.415510+00:00"
+    },
+    {
+      "round": "journal-config-refusal",
+      "private_evidence_retained": true,
+      "result": "FAIL",
+      "failure_type": "SmokeError",
+      "failure_label": "native-stack-operation-failed",
+      "guard_failure": null,
+      "cleanup": "PASS",
+      "supervisor_exit_code": 1,
+      "full_release_utc": "2026-11-04T17:25:05.027454+00:00"
+    }
+  ],
+  "operational_pool_settings": {
+    "AUTH_DB_POOL_MAX_CONNECTIONS": 3,
+    "FRIEND_DB_POOL_MAX_CONNECTIONS": 3,
+    "PROFILE_DB_POOL_MAX_CONNECTIONS": 2,
+    "NOTIFICATION_DB_POOL_MAX_CONNECTIONS": 2,
+    "POST_DB_POOL_MAX_CONNECTIONS": 3,
+    "GATEWAY_DB_POOL_MAX_CONNECTIONS": 2,
+    "GATEWAY_JOURNAL_DB_POOL_MAX_CONNECTIONS": 2,
+    "GATEWAY_BACKGROUND_DB_POOL_MAX_CONNECTIONS": 1,
+    "CONCERT_FIXED_POOL_MAX": 8
+  },
+  "owned_postgres_settings": {
+    "max_connections": 64,
+    "max_prepared_transactions": 128,
+    "autovacuum": false,
+    "max_logical_replication_workers": 0
+  },
+  "limitations": [
+    "Native run used retained source18076 mains and an operational wrapper supplying the pool settings; the subsequent helper patch is covered separately by18 pure tests.",
+    "No verified age or operator provider was manufactured.",
+    "C03 advertised only World; Feed/Social/mutations were FEATURE_DISABLED despite managed handlers.",
+    "Intro/Post/server-expired-request/denial scenario resources and admitted same-origin frontend were absent.",
+    "No original IN03, two-client IN04, new Party/Gift/OwnReports/Wall activation, device, load or performance acceptance.",
+    "Owned ephemeral PostgreSQL maintenance/replication disabled only for this functional round; no production tuning claim."
+  ]
+}
