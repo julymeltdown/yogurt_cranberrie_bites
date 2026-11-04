@@ -51,8 +51,15 @@ class QualificationGuard:
         self.deadline = self.started_monotonic + args.whole_timeout_seconds - CLEANUP_RESERVE_SECONDS
         self.hard_deadline = self.deadline + CLEANUP_RESERVE_SECONDS
         self.started_at = datetime.now(timezone.utc)
-        self.work_deadline_at = self.started_at + timedelta(seconds=args.whole_timeout_seconds - CLEANUP_RESERVE_SECONDS)
-        self.hard_deadline_at = self.started_at + timedelta(seconds=args.whole_timeout_seconds)
+        accepted_work = getattr(args, "allocation_work_deadline_epoch", None)
+        accepted_release = getattr(args, "allocation_release_deadline_epoch", None)
+        if accepted_work is not None and accepted_release is not None:
+            now = self.started_at.timestamp()
+            self.hard_deadline = min(self.hard_deadline, self.started_monotonic + accepted_release - now)
+            self.deadline = min(self.deadline, self.started_monotonic + accepted_work - now,
+                                self.hard_deadline - CLEANUP_RESERVE_SECONDS)
+        self.work_deadline_at = self.started_at + timedelta(seconds=self.deadline - self.started_monotonic)
+        self.hard_deadline_at = self.started_at + timedelta(seconds=self.hard_deadline - self.started_monotonic)
         self.phase_history, self.phase_deadline = [], self.deadline
         self.process_peak = 0
         self.process_limit = getattr(args, "max_owned_processes", 32)
@@ -361,6 +368,8 @@ def restart_owned_concert(stack, child, env, binary, names, records):
     stopped = child.stop()
     prep.auth.require(stopped.get("exit_code") == 0 and not stopped.get("forced")
                       and not stopped.get("unexpected_exit"), "qualification-restart-stop")
+    record = {"before_pid": before, "stop": stopped}
+    records.append(record)
     ports, replacement = RestartPorts(), None
     fresh_env = {**env, "CONCERT_WORLD_OWNER_ID": str(uuid4()),
                  "CONCERT_PRODUCER_INSTANCE_ID": str(uuid4())}
@@ -374,12 +383,33 @@ def restart_owned_concert(stack, child, env, binary, names, records):
         replacement.wait_listeners()
         status, _ = dev.runtime.http_probe(replacement, "metrics", "/readyz")
         prep.auth.require(status == 200 and replacement.process.pid != before, "qualification-restart-ready")
-        records.append({"before_pid": before, "after_pid": replacement.process.pid,
-                        "stop": stopped, "ready_status": status})
+        record.update(after_pid=replacement.process.pid, ready_status=status)
         return replacement, fresh_env
-    except BaseException:
+    except BaseException as error:
+        # Diagnostics can contain private endpoints or credentials. Inspect in
+        # RAM, returning only exact public source labels, never arbitrary text.
+        diagnostic = error.detail.get("diagnostic", "") if isinstance(error, dev.SmokeError) else ""
+        labels = {
+            "Concert health listener bind failed": "health-listener-bind",
+            "Address already in use": "address-in-use",
+            "World owner startup unavailable": "world-owner-startup",
+            "World startup replay unavailable": "world-startup-replay",
+            "World startup authority unavailable": "world-startup-authority",
+            "World startup readiness failed": "world-startup-readiness",
+            "World startup readiness timed out": "world-startup-timeout",
+            "World replay bootstrap unavailable": "world-replay-bootstrap",
+            "World owner construction failed": "world-owner-construction",
+            "World Auth replay source is unavailable": "world-auth-replay-source",
+            "World Friend replay source is unavailable": "world-friend-replay-source",
+        }
+        phase = error.detail.get("phase") if isinstance(error, dev.SmokeError) else None
+        record["replacement_failure"] = {
+            "phase": phase if phase in ("concert-service:startup", "concert-service:listeners",
+                                        "listener-ownership", "ownership") else "unclassified",
+            "public_source_labels": [label for text, label in labels.items() if text in diagnostic],
+        }
         if replacement is not None:
-            records.append({"failed_replacement_cleanup": replacement.stop()})
+            record["failed_replacement_cleanup"] = replacement.stop()
         raise
     finally:
         ports.close()
@@ -793,6 +823,10 @@ def main():
     parser.add_argument("--qa08-provisioning-budget", choices=("signup=400,login=200",),
                         help="QA08 only: normal ephemeral test budget coordinated with Auth/runtime owners; execution needs a fresh resource offer")
     parser.add_argument("--whole-timeout-seconds", type=float, default=600)
+    parser.add_argument("--allocation-work-deadline-epoch", type=float,
+                        help="absolute active cutoff from the original actual ACCEPT; qualification required")
+    parser.add_argument("--allocation-release-deadline-epoch", type=float,
+                        help="absolute release cutoff from the original actual ACCEPT; qualification required")
     parser.add_argument("--whole-byte-limit", type=int, help="whole carry plus outputs cap from the fresh resource offer")
     parser.add_argument("--retained-carry-bytes", type=int, help="measured reusable cohort/source/proof carry from the fresh offer")
     parser.add_argument("--max-owned-processes", type=int, default=32,
@@ -832,6 +866,12 @@ def validate_qualification_arguments(args):
         integer(args.whole_byte_limit, 1, 4 * 1024**3, "qualification-whole-byte-limit")
         integer(args.retained_carry_bytes, 309342208, args.whole_byte_limit - 1, "qualification-retained-carry")
         integer(getattr(args, "max_owned_processes", 32), 16, 128, "qualification-owned-process-limit")
+        now = time.time()
+        work = number(getattr(args, "allocation_work_deadline_epoch", None), now, now + 3600,
+                      "qualification-absolute-work-cutoff")
+        release = number(getattr(args, "allocation_release_deadline_epoch", None), now, now + 3600,
+                         "qualification-absolute-release-cutoff")
+        prep.auth.require(release - work >= CLEANUP_RESERVE_SECONDS, "qualification-absolute-cleanup-reserve")
 
 
 if __name__ == "__main__":

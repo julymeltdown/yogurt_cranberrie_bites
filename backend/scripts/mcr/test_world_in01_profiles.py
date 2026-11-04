@@ -3,6 +3,7 @@ import copy
 import json
 import re
 import tempfile
+import time
 from pathlib import Path
 from types import SimpleNamespace as NS
 import unittest
@@ -19,11 +20,13 @@ from world_capacity_support.transport import Contracts
 
 
 def arguments(profile="qa05"):
+    now = time.time()
     return NS(qualification_profile=profile, allocation_id="FIXTURE-NOT-ACTUAL-ALLOCATION",
               provision_timeout_seconds=120, probe_timeout_seconds=300, measurement_seconds=20,
               input_hz=15, arrival_concurrency=4, restart_world=False,
               qa08_provisioning_budget="signup=400,login=200" if profile == "qa08" else None,
               whole_timeout_seconds=600, whole_byte_limit=1073741824, retained_carry_bytes=309342208,
+              allocation_work_deadline_epoch=now+360, allocation_release_deadline_epoch=now+600,
               retain_public_projection=False,
               frontend_source_revision=None,
               browser_origin="http://localhost:5173", world=True, hold_seconds=0)
@@ -211,6 +214,42 @@ class ProfileTests(unittest.TestCase):
             with self.assertRaises(prep.auth.CheckFailure): ports.reserve("concert-service:world", 31003)
             ports.close()
         handle.close.assert_called_once()
+
+    def test_failed_restart_retains_owned_stop_and_only_public_failure_labels(self):
+        child = NS(process=NS(pid=123), stop=Mock(return_value={"exit_code": 0, "forced": False}))
+        failure = live.dev.SmokeError("concert-service:startup",
+            "World startup replay unavailable SECRET-TOKEN https://private.invalid")
+        replacement = NS(process=NS(pid=124), wait_listeners=Mock(side_effect=failure),
+                         stop=Mock(return_value={"exit_code": 1, "unexpected_exit": True}))
+        names = ["concert-service:grpc", "concert-service:metrics", "concert-service:world"]
+        stack = NS(cluster=NS(assert_owned=Mock()), ports=NS(ports=dict(zip(names, [31001,31002,31003]))))
+        records = []
+        with patch.object(live, "RestartPorts"), patch.object(live.dev.runtime, "Child", return_value=replacement):
+            with self.assertRaises(live.dev.SmokeError):
+                live.restart_owned_concert(stack, child, {}, Path("/not-executed"), names, records)
+        self.assertEqual(records[0]["stop"]["exit_code"], 0)
+        self.assertEqual(records[0]["replacement_failure"]["public_source_labels"], ["world-startup-replay"])
+        self.assertEqual(records[0]["failed_replacement_cleanup"]["exit_code"], 1)
+        self.assertNotIn("SECRET", json.dumps(records))
+        self.assertNotIn("private.invalid", json.dumps(records))
+
+    def test_original_accept_cutoffs_survive_delayed_start_and_retry(self):
+        args = arguments()
+        with tempfile.TemporaryDirectory() as directory:
+            args.report = Path(directory) / "report.json"
+            now = time.time()
+            args.allocation_work_deadline_epoch = now + 10
+            args.allocation_release_deadline_epoch = now + 250
+            guard = live.QualificationGuard(args, NS(cluster=None))
+            self.assertLessEqual(guard.deadline - guard.started_monotonic, 10)
+            self.assertLessEqual(guard.hard_deadline_at.timestamp(), now + 250.001)
+            self.assertGreaterEqual(guard.hard_deadline - guard.deadline, 240)
+            args.allocation_work_deadline_epoch = now - 1
+            with self.assertRaisesRegex(Failure, "absolute-work-cutoff"):
+                live.validate_qualification_arguments(args)
+            args.allocation_work_deadline_epoch = now + 20
+            with self.assertRaisesRegex(prep.auth.CheckFailure, "absolute-cleanup-reserve"):
+                live.validate_qualification_arguments(args)
 
     def test_guard_counts_carry_outputs_and_deadline_without_starting_thread(self):
         args = arguments()
