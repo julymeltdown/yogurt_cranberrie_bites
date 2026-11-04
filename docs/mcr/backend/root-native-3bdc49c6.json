@@ -1,0 +1,102 @@
+{
+  "status": "PARTIAL",
+  "source_commit": "3bdc49c63c9bef57dec8bcf04ed1d1b7af671be1",
+  "source_pins_sha256": "d98081669834c84bd7ccf14aabfe5cc228a07c7d19ae2690abf7c031ce80c43c",
+  "rustc": "1.88.0",
+  "locked": true,
+  "offline": true,
+  "jobs": 2,
+  "debug": 0,
+  "incremental": false,
+  "builds": [
+    {
+      "phase": "gateway-lib",
+      "exit_code": 0,
+      "seconds": 24.8,
+      "artifact_sha256": "56c77b2dc3c5c9055f663a37207b7f19863e04544821e7a7d30fc4fe78ef23e6",
+      "cargo_json_sha256": "11bfca62f8b104e51ca64540e1e75baf361de38bb3c7695094974df4739a2741",
+      "command": "cargo +1.88.0 test --manifest-path backend/Cargo.toml --locked --offline -j 2 --message-format=json -p api-gateway --lib --no-run"
+    },
+    {
+      "phase": "gateway-bin",
+      "exit_code": 0,
+      "seconds": 18.87,
+      "artifact_sha256": "687df56766a3a10a08a187c6c54e32491222a40ac162f5c8f6230eb22ae1c510",
+      "cargo_json_sha256": "23bb624892c14865c5079341d30317277f99f4d64db5c9e8c42bcc803e586563",
+      "command": "cargo +1.88.0 build --manifest-path backend/Cargo.toml --locked --offline -j 2 --message-format=json -p api-gateway --bin api-gateway"
+    },
+    {
+      "phase": "concert-lib",
+      "exit_code": 0,
+      "seconds": 39.16,
+      "artifact_sha256": "288ccdcc4aff605c6fa1731f460db3cfc18e5e49d71c20fdba3df12a0826d416",
+      "cargo_json_sha256": "17042951610b065e039ac5211864cb42ca696ed990653eb53e081b8ba1cc6f8a",
+      "command": "cargo +1.88.0 test --manifest-path backend/Cargo.toml --locked --offline -j 2 --message-format=json -p concert-service --lib --no-run"
+    }
+  ],
+  "failed_attempts": [
+    {
+      "phase": "concert-lib-1",
+      "exit_code": 101,
+      "cause": "Cached contracts-build dependency embedded another worktree protobuf path; package-only contracts-build/Auth/Profile clean, unchanged source retry passed."
+    }
+  ],
+  "release_before_tests": {
+    "released_at": "2026-11-04T02:49:11.384620+00:00",
+    "target_handles": 0,
+    "free_bytes": 15346204672
+  },
+  "focused_tests": [
+    {
+      "binary": "gateway-lib-tests",
+      "selector": "config::hardening_tests::participant_release_requires_an_explicit_endpoint_and_canonical_digest",
+      "exit_code": 0,
+      "seconds": 0.01,
+      "summary": [
+        "test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 132 filtered out; finished in 0.00s"
+      ]
+    },
+    {
+      "binary": "gateway-lib-tests",
+      "selector": "adapters::r#in::http::response_disclosure::tests::",
+      "exit_code": 0,
+      "seconds": 0.01,
+      "summary": [
+        "test result: ok. 3 passed; 0 failed; 0 ignored; 0 measured; 130 filtered out; finished in 0.00s"
+      ]
+    },
+    {
+      "binary": "concert-lib-tests",
+      "selector": "adapters::out::relationship_authority::guarded::child::tests::",
+      "exit_code": 0,
+      "seconds": 0.01,
+      "summary": [
+        "test result: ok. 4 passed; 0 failed; 0 ignored; 0 measured; 89 filtered out; finished in 0.00s"
+      ]
+    },
+    {
+      "binary": "concert-lib-tests",
+      "selector": "product_rpc::",
+      "exit_code": 0,
+      "seconds": 0.01,
+      "summary": [
+        "test result: ok. 7 passed; 0 failed; 0 ignored; 0 measured; 86 filtered out; finished in 0.00s"
+      ]
+    },
+    {
+      "binary": "concert-lib-tests",
+      "selector": "participant::live::",
+      "exit_code": 0,
+      "seconds": 0.33,
+      "summary": [
+        "test result: ok. 8 passed; 0 failed; 4 ignored; 0 measured; 81 filtered out; finished in 0.32s"
+      ]
+    }
+  ],
+  "limitations": [
+    "23 focused tests passed; four existing database/native tests remained explicitly ignored by their copied lib inventory.",
+    "No production World socket or browser journey performed by this receipt.",
+    "No actual C03 public save/reload or native owner settlement claim.",
+    "Participant production factory and World readiness followups are not present in this source."
+  ]
+}
