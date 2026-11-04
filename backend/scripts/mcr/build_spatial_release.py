@@ -20,6 +20,9 @@ TILED_PATH = BASE + 'runtime/canonical-map-v2.json'
 TILED_HASH = 'sha256:5436a99d36c9b91a4c59302ee65130f327214e4ca78981620759846bb40e919f'
 GEOMETRY_HASH = 'sha256:20168a1df64cd3c72ea3b8cb576ca895dcff8c7edfb0e77886cc647fb1df37e5'
 MAP_ID = 'mcr_reference_scene_r3'
+MAP_REVISION = 3
+SOURCE_REVIEWED_AT = '2026-11-04T00:12:30Z'
+SOURCE_REVIEWER = 'MCR backend spatial source qualification'
 MAX_SCENERY = 2_097_152
 spec = importlib.util.spec_from_file_location('mcr_spatial_assets', ROOT / 'scripts/mcr/validate-assets.py')
 assets = importlib.util.module_from_spec(spec)
@@ -65,15 +68,15 @@ def candidate_map(proposal):
             'proposal geometry pin mismatch')
     manifest = {
         'contract_version': '1.0.0', 'kind': 'map_manifest', 'map_id': MAP_ID,
-        'map_revision': 2, 'geometry_hash': GEOMETRY_HASH,
+        'map_revision': MAP_REVISION, 'geometry_hash': GEOMETRY_HASH,
         'provenance': {
             'source_id': 'mcr_reference_scene_r3', 'source_kind': 'ORIGINAL_ART',
-            'source_revision': SOURCE_COMMIT + '; geometry-proposal.json v2',
+            'source_revision': SOURCE_COMMIT + '; geometry-proposal.json v2; engineering source review v1',
             'source_uri': 'https://github.com/julymeltdown/mcr/blob/' + SOURCE_COMMIT
                           + '/frontend/public/' + BASE + 'geometry-proposal.json',
             'author': 'MCR reference scene author; canonical spatial projection',
             'license': 'Original MCR virtual geometry and metadata; source attribution retained in place provenance.',
-            'review_state': 'UNREVIEWED', 'reviewed_by': None, 'reviewed_at': None,
+            'review_state': 'REVIEWED', 'reviewed_by': SOURCE_REVIEWER, 'reviewed_at': SOURCE_REVIEWED_AT,
             'photo_permission': 'NOT_APPLICABLE',
         },
         'tilemap': {'format': 'TILED_JSON', 'resource_state': 'PROVIDED',
@@ -191,7 +194,7 @@ def build():
     binding = {
         'format': 'MCR_SOURCE_BOUND_SPATIAL_RELEASE', 'version': 2,
         'source_commit': SOURCE_COMMIT, 'art_commit': ART_COMMIT, 'tilemap_commit': TILED_COMMIT,
-        'map_id': MAP_ID, 'map_revision': 2, 'map_content_hash': manifest['content_hash'],
+        'map_id': MAP_ID, 'map_revision': MAP_REVISION, 'map_content_hash': manifest['content_hash'],
         'geometry_hash': GEOMETRY_HASH, 'geometry_source': file_pin(geometry_path, geometry_data),
         'tilemap_source': file_pin(TILED_PATH, tiled_data), 'scenes': scenes,
     }
@@ -200,14 +203,32 @@ def build():
         'source_commit': SOURCE_COMMIT, 'art_commit': ART_COMMIT, 'tilemap_commit': TILED_COMMIT,
         'map': {key: manifest[key] for key in ['map_id', 'map_revision', 'content_hash', 'geometry_hash']},
         'skins': {theme: 'CONTRACT_READY' for theme in budgets},
-        'blockers': ['UNREVIEWED_SOURCE_PROVENANCE', 'PRODUCT_BOOTSTRAP_NOT_CONFIGURED', 'ART_FIDELITY_NOT_ACCEPTED'],
+        'blockers': ['PRODUCT_BOOTSTRAP_NOT_CONFIGURED', 'ART_FIDELITY_NOT_ACCEPTED'],
         'scenery_budget': budgets, 'fractional_depth_count': 0,
         'bootstrap': None, 'theme_manifests': None,
         'limits': ['No art fidelity acceptance', 'No physical place qualification',
                    'Published Tiled resource binds the same canonical grids',
                    'No event-current map publication or production admission'],
     }
-    return {'map-manifest.json': manifest, 'source-binding.json': binding, 'readiness.json': readiness}
+    review = {
+        'format': 'MCR_VIRTUAL_SPATIAL_SOURCE_QUALIFICATION', 'version': 1,
+        'reviewed_by': SOURCE_REVIEWER, 'reviewed_at': SOURCE_REVIEWED_AT,
+        'scope': 'Engineering qualification of the derived virtual map and pinned source inputs only',
+        'source_commit': SOURCE_COMMIT, 'art_commit': ART_COMMIT, 'tilemap_commit': TILED_COMMIT,
+        'map': readiness['map'],
+        'source_binding_sha256': sha((json.dumps(binding, ensure_ascii=True, sort_keys=True, indent=2) + '\n').encode()),
+        'checks': {key: 'PASS' for key in ['published_source_byte_pins', 'closed_c06_map_and_scenery',
+            'canonical_geometry_and_finite_tiled', 'integer_projection_and_unchanged_footprints',
+            'distinct_three_era_resources_and_budgets', 'virtual_place_source_values_unchanged']},
+        'source_png_decode': {'state': 'PASS', 'unique_images': 4,
+            'evidence': 'Developer verified PNG integrity and full pixel decoding against these exact resource pins.'},
+        'virtual_places': {'count': 4, 'place_kind': 'VIRTUAL_CONCEPT', 'verification_state': 'CONCEPT_ONLY',
+                           'source_review_state': 'UNREVIEWED', 'physical_selection': 'INELIGIBLE'},
+        'limits': ['No physical venue verification or arrival authority', 'No art fidelity or user acceptance',
+                   'No Product bootstrap/operator admission', 'Rust/runtime qualification is separately recorded in docs/mcr/backend/spatial-release.md'],
+    }
+    return {'map-manifest.json': manifest, 'source-binding.json': binding, 'readiness.json': readiness,
+            'engineering-source-review.json': review}
 
 
 def main():

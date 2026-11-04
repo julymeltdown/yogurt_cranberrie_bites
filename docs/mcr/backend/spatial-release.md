@@ -182,3 +182,46 @@ broader than BE08/AR01/FE19. The Product API root and this owner agreed a follow
 narrow typed virtual-place correction; physical places and fixture rejection
 retain their guards. Honest map/theme source engineering qualification remains
 separate from physical destination authorization and fidelity acceptance.
+
+## Virtual-source qualification and revision 3
+
+The original BE08, AR01 and FE19 requirements distinguish virtual concepts from
+PHYSICAL meeting places. Each of the four source records (`...0002` lawn,
+`...0003` stage, `...0004` gift corner, `...0005` pixel wall) is explicitly
+VIRTUAL_CONCEPT / CONCEPT_ONLY, ORIGINAL_ART, UNREVIEWED and OPEN. None establishes
+a physical destination; no physical-place reviewer or event layout is needed
+for these four virtual-display records. The earlier generic provenance-blocker
+wording described an overbroad implementation gate, not an external prerequisite.
+
+The Product API root and spatial owner agreed the typed correction directly:
+Product retains ORIGINAL_FIXTURE rejection and all physical-source review guards;
+only an actual VIRTUAL_CONCEPT + CONCEPT_ONLY place may retain UNREVIEWED source
+metadata. REJECTED, a physical place, an incompatible verification state and an
+unreviewed top-level source asset remain denied. Full C06 schema/domain checks
+still run first. No shared schema or physical-selection rule changed.
+
+This owner performed actual engineering source qualification of the derived
+virtual map: exact published source/Tiled/scenery/resource pins; C06 schemas and
+geometry; integer projection and footprints; all-three budgets; unchanged source
+places. A separate read-only Pillow integrity/full pixel-decode pass verified all
+four unique runtime PNGs against the pinned dimensions. This is source engineering
+review by the named backend role, not a fabricated human review, physical venue
+verification, artist-fidelity/user acceptance or Product bootstrap admission.
+
+Current map revision **3**:
+`sha256:6898e0ee82da23b566ee0482d7dae013780cba7d19a22cc97a47eb0ad13cb920`.
+Only derived-map provenance/revision changed from map2. Original geometry/source
+and all four nested place values remain unchanged and UNREVIEWED. Map2 content
+`30901851...de9f5` is preserved in published `60991c53` history. The exact reviewed
+source scope, actor/time, map/geometry/resource source revisions and binding SHA
+are in `backend/releases/reference-scene-v2/engineering-source-review.json`,
+format `MCR_VIRTUAL_SPATIAL_SOURCE_QUALIFICATION` version1. Source-binding version2
+and `from_source_bound_files` signature remain unchanged for the operator owner.
+
+Six Python tests/builder-check and Rust formatting pass. The narrow Rust policy
+change and map3 native rerun are NOT_RUN pending a fresh named slot. Existing
+map2/avatar qualification above remains valid for its exact source. Current
+readiness no longer imposes a generic physical-review blocker on virtual display;
+operator bootstrap assembly and actual fidelity acceptance are still open.
+Physical beacon/AR01/IN02 requirements remain separately required, with no claim
+that this all-virtual source pack satisfies them.

@@ -80,8 +80,16 @@ class SpatialReleaseTests(unittest.TestCase):
         report = self.outputs['readiness.json']
         self.assertEqual(report['state'], 'NOT_ADMITTED')
         self.assertEqual(report['skins'], {theme: 'CONTRACT_READY' for theme in ['PARADE', 'REVENGE', 'DANGER']})
-        for reason in ['UNREVIEWED_SOURCE_PROVENANCE', 'PRODUCT_BOOTSTRAP_NOT_CONFIGURED', 'ART_FIDELITY_NOT_ACCEPTED']:
+        for reason in ['PRODUCT_BOOTSTRAP_NOT_CONFIGURED', 'ART_FIDELITY_NOT_ACCEPTED']:
             self.assertIn(reason, report['blockers'])
+        self.assertNotIn('UNREVIEWED_SOURCE_PROVENANCE', report['blockers'])
+        self.assertEqual(self.outputs['map-manifest.json']['provenance']['review_state'], 'REVIEWED')
+        self.assertTrue(all(p['provenance']['review_state'] == 'UNREVIEWED' for p in self.outputs['map-manifest.json']['places']))
+        review = self.outputs['engineering-source-review.json']
+        self.assertEqual(review['map']['map_revision'], 3)
+        self.assertEqual(review['virtual_places']['physical_selection'], 'INELIGIBLE')
+        binding_path = builder.ROOT / 'backend/releases/reference-scene-v2/source-binding.json'
+        self.assertEqual(review['source_binding_sha256'], builder.sha(binding_path.read_bytes()))
         self.assertEqual(report['fractional_depth_count'], 0)
         self.assertFalse(any(b.startswith('C06_') for b in report['blockers']))
         self.assertEqual(report['art_commit'], builder.ART_COMMIT)

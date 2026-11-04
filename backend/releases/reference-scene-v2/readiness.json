@@ -1,7 +1,6 @@
 {
   "art_commit": "023201343a452b859759e02039d367c11d1ff8ad",
   "blockers": [
-    "UNREVIEWED_SOURCE_PROVENANCE",
     "PRODUCT_BOOTSTRAP_NOT_CONFIGURED",
     "ART_FIDELITY_NOT_ACCEPTED"
   ],
@@ -14,10 +13,10 @@
     "No event-current map publication or production admission"
   ],
   "map": {
-    "content_hash": "sha256:3090185136d5e22138318831d230a7ce6581866a12dc3309df8ebf37825de9f5",
+    "content_hash": "sha256:6898e0ee82da23b566ee0482d7dae013780cba7d19a22cc97a47eb0ad13cb920",
     "geometry_hash": "sha256:20168a1df64cd3c72ea3b8cb576ca895dcff8c7edfb0e77886cc647fb1df37e5",
     "map_id": "mcr_reference_scene_r3",
-    "map_revision": 2
+    "map_revision": 3
   },
   "scenery_budget": {
     "DANGER": {

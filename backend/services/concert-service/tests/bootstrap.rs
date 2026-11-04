@@ -723,7 +723,7 @@ async fn native_spatial_candidate_transactions() {
         .publish_release(event, candidate.catalog.clone())
         .await
         .unwrap();
-    assert_eq!(first.map_revision, 2);
+    assert_eq!(first.map_revision, 3);
     assert_eq!(first.map_id, "mcr_reference_scene_r3");
     let read = repo.catalog(event).await.unwrap().unwrap();
     assert_eq!(read.release, candidate.catalog);
@@ -751,7 +751,7 @@ async fn native_spatial_candidate_transactions() {
             SelectionOutcome::ConceptOnly
         );
         assert_eq!(
-            repo.select_physical(event, place.id, again.revision, 3)
+            repo.select_physical(event, place.id, again.revision, 4)
                 .await
                 .unwrap(),
             SelectionOutcome::MapMismatch
