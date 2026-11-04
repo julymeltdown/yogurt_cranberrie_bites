@@ -290,3 +290,13 @@ Root explicitly transferred only that test hunk: the inventory is now 62 and
 checks all three new Wall POST paths, preserving unknown/read-operation refusal
 and every other case. The original failure is retained in the allocation logs;
 this paragraph does not claim its rerun or subsequent runtime checks passed.
+
+The application rerun passed eight cases. Service compilation initially reused
+cross-checkout domain/application artifacts missing the public Wall modules;
+refreshing only the four already-owned mural module timestamps preserved their
+bytes/mode/ownership and caused a successful configuration compile/rerun. The
+metadata and original failure remain in private allocation evidence. Native
+qualification can emit a new private `--live-owner` receipt containing its exact
+cluster inode and marker hash, allowing an independent deadline guardian to
+rescue only that owned cluster. Contract runtime checks use the retained strict
+Python environment with URI and date-time checkers, without dependency changes.

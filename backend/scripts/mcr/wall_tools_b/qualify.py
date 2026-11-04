@@ -80,7 +80,8 @@ def profile_pki(cluster: Cluster) -> None:
         execute([str(openssl),*args],env=cluster.env,cwd=directory,phase="fixture-profile-pki",timeout=30)
     (directory/"profile.key").chmod(0o600)
 
-def qualify(checkpoint: dict, pg: Path, report: dict, budget: NativeBudget) -> None:
+def qualify(checkpoint: dict, pg: Path, report: dict, budget: NativeBudget,
+            live_owner: Path | None = None) -> None:
     commit = subprocess.check_output(["git", "rev-parse", "HEAD"], cwd=ROOT, text=True).strip()
     if checkpoint["source_commit"] != commit or checkpoint["source_sha256"] != source_manifest():
         raise SmokeError("preflight", "source checkpoint changed")
@@ -93,6 +94,15 @@ def qualify(checkpoint: dict, pg: Path, report: dict, budget: NativeBudget) -> N
     report.update(source_commit=commit, source_sha256=checkpoint["source_sha256"],
                   binary_sha256=checkpoint["binary_sha256"], owned_root=str(cluster.root), phases={})
     try:
+        if live_owner is not None:
+            # An independent deadline guardian can rescue only this exact owned
+            # cluster if the controller itself stops responding. No secret or
+            # peer database location is disclosed in the ownership receipt.
+            with live_owner.open("x") as stream:
+                live_owner.chmod(0o600)
+                json.dump({"owned_root": str(cluster.root),
+                           "owner_identity": list(cluster.identity),
+                           "marker_sha256": sha(cluster.marker)}, stream)
         budget.check(cluster)
         cluster.init()
         budget.check(cluster)
@@ -172,16 +182,21 @@ def main() -> int:
     parser.add_argument("--deadline-unix", type=float, required=True)
     parser.add_argument("--min-free-bytes", type=int, required=True)
     parser.add_argument("--max-owned-bytes", type=int, required=True)
+    parser.add_argument("--live-owner", type=Path,
+                        help="new private ownership receipt for an independent deadline guardian")
     args = parser.parse_args()
     if not args.report.is_absolute() or args.report.exists() or not args.pg_bin_dir.is_absolute():
         parser.error("new absolute report and explicit absolute PG directory required")
+    if args.live_owner is not None and (not args.live_owner.is_absolute() or args.live_owner.exists()):
+        parser.error("new absolute live ownership receipt required")
     report = {"status": "FAIL", "limitations": [
         "Canonical Wall Product facade and actual Auth/Friend native transaction coverage; no fabricated MuralAuthority success.",
         "Actual startup/Gateway HTTP, persistent Phaser, two-client world and complete IN04 remain NOT_RUN.",
         "Performance/load qualification is DEFERRED_BY_USER."]}
     try:
         budget=NativeBudget(args.lease_id,args.deadline_unix,args.min_free_bytes,args.max_owned_bytes)
-        qualify(json.loads(args.checkpoint.read_text()), args.pg_bin_dir, report, budget)
+        qualify(json.loads(args.checkpoint.read_text()), args.pg_bin_dir, report, budget,
+                args.live_owner)
         report["status"] = "PASS"
     except SmokeError as error:
         report["failure"] = error.detail
