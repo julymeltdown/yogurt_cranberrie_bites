@@ -1,0 +1,238 @@
+{
+  "status": "IN_PROGRESS",
+  "scope": "Expired e692 World hold and partial actual browser IN01; canonical cancellation availability defect remains open",
+  "binary_source": "e6921cf285d9729cfa8c86351e1ce61b357398f2",
+  "concert_binary_sha256": "ea5eaef68ae1ec50fada5c18dc31bff9c0908a79c1c1d20ec854f2df7170c5f8",
+  "raw_final_report_sha256": "9c015a198562f8acc1b2d566ef85bedc3dac9d4251451922b845b00a5e469eef",
+  "driver_browser_field": "NOT_RUN: external frontend journey is recorded separately, not by the backend driver",
+  "frontend_publication": "400a31106705065acfcc85964988b29cb55ac4c2",
+  "frontend_evidence": "docs/mcr/evidence/in01-world-browser",
+  "browser_passes": [
+    "Two fresh real App logins, shared authorized World, bidirectional movement and input acknowledgement",
+    "Six persistent panels for each principal with stable host/canvas/socket and covered-world input suppression"
+  ],
+  "browser_remaining": [
+    "Theme",
+    "Customization",
+    "Reconnect",
+    "Actual single-game qualification",
+    "Remaining actual-art checks"
+  ],
+  "failure": {
+    "gateway_login_status": 504,
+    "auth_lock_timeout_at": "2026-11-04T04:45:54.840727Z",
+    "relation": "auth_concert_relationship_revision",
+    "statement": "refresh_tokens insertion blocked by singleton revision locking",
+    "causal_cancellation_reproduction": "NOT_RUN; interrupted request is a hypothesis, not a proven trigger"
+  },
+  "owner_read_only_observation": {
+    "observed_at": "2026-11-04T04:48:52.370602+00:00",
+    "read_only": true,
+    "observations": {
+      "mcr_auth": {
+        "leases": [
+          {
+            "state": "SEALED",
+            "n": 1,
+            "expired": 1
+          },
+          {
+            "state": "COMPLETED",
+            "n": 17,
+            "expired": 17
+          }
+        ],
+        "participants": [
+          {
+            "state": "COMMITTED",
+            "n": 8
+          },
+          {
+            "state": "ABORTED",
+            "n": 25
+          }
+        ],
+        "prepared": [
+          {
+            "gid_hash": "7f0768adb0f358ba51f1ac5b60379eeb",
+            "xid": "24419",
+            "age_seconds": 267
+          }
+        ],
+        "locks": [
+          {
+            "mode": "AccessShareLock",
+            "granted": true,
+            "pid": null,
+            "transactionid": null
+          },
+          {
+            "mode": "RowShareLock",
+            "granted": true,
+            "pid": null,
+            "transactionid": null
+          }
+        ]
+      },
+      "mcr_friend": {
+        "leases": [
+          {
+            "state": "SEALED",
+            "n": 1,
+            "expired": 1
+          },
+          {
+            "state": "COMPLETED",
+            "n": 17,
+            "expired": 17
+          }
+        ],
+        "participants": [
+          {
+            "state": "COMMITTED",
+            "n": 8
+          },
+          {
+            "state": "ABORTED",
+            "n": 25
+          }
+        ]
+      },
+      "mcr_concert": {
+        "roots": [
+          {
+            "phase": "ROOT_FINISHED",
+            "serialized": true,
+            "delivered": true,
+            "n": 17
+          },
+          {
+            "phase": "ACTIVE",
+            "serialized": false,
+            "delivered": false,
+            "n": 1
+          }
+        ],
+        "memberships": 0,
+        "prepared": 2
+      }
+    }
+  },
+  "active_root_read_only_observation": {
+    "observed_at": "2026-11-04T04:50:19.491083+00:00",
+    "read_only": true,
+    "active_roots": [
+      {
+        "scope_hash": "707aab28772554e5bd62ee1e82be0c34",
+        "operation": "getConcertParticipant",
+        "method": "GET",
+        "created_at": "2026-11-04T13:44:25.018766+09:00",
+        "phase": "ACTIVE",
+        "delivery_published": true,
+        "serialized": false,
+        "tracked_transactions": 0,
+        "child_intents": 0
+      }
+    ]
+  },
+  "forensic_sha256": {
+    "auth-login-timeout-e692-1.json": "eb84a5119a366a11f173f8af3515547d3bb68e1da0ebbd7fd4c62b1b504f143e",
+    "auth-login-timeout-active-root-e692-1.json": "d10197b046ac12103474d557fd00877086beb107003fe8202e2ded2db4131358",
+    "incident-e692-auth-timeout/manifest.json": "6cde53768af73c6239fa381b6404952ab926080d1513ab4cf280a3f377e077f4"
+  },
+  "retained_service_diagnostics": {
+    "captured_at": "2026-11-04T04:54:04.324945+00:00",
+    "scope": "Owned service diagnostics before ordinary isolated-stack expiry; no recovery or settlement claim",
+    "files": {
+      "api-gateway-bc49df9f.log": {
+        "original_sha256": "bd9f8588687bc734444de7d98bd05130c287e3863100a880e1371dcc43f76c44",
+        "redacted_file": "api-gateway.redacted.log",
+        "redacted_sha256": "bd9f8588687bc734444de7d98bd05130c287e3863100a880e1371dcc43f76c44",
+        "bytes": 7709
+      },
+      "auth-service-7ec7fc1a.log": {
+        "original_sha256": "2512c9f507b96d5619237a02a7f3f66eb0673c8eb8e50024ea3f66c56d32f7c9",
+        "redacted_file": "auth-service.redacted.log",
+        "redacted_sha256": "2512c9f507b96d5619237a02a7f3f66eb0673c8eb8e50024ea3f66c56d32f7c9",
+        "bytes": 256
+      },
+      "concert-service-524cd752.log": {
+        "original_sha256": "048d40c5eddbf775be278eb11c38f0fc79fcf7cee94417952fa55e7c7c0b024b",
+        "redacted_file": "concert-service.redacted.log",
+        "redacted_sha256": "048d40c5eddbf775be278eb11c38f0fc79fcf7cee94417952fa55e7c7c0b024b",
+        "bytes": 79
+      },
+      "postgres.log": {
+        "original_sha256": "46e8f7c8f0d53374c5e46edbeb6a1b018ea3cee1231dde5c9a0db8024bc4bd6f",
+        "redacted_file": "postgres.redacted.log",
+        "redacted_sha256": "46e8f7c8f0d53374c5e46edbeb6a1b018ea3cee1231dde5c9a0db8024bc4bd6f",
+        "bytes": 5736
+      }
+    }
+  },
+  "teardown": {
+    "hard_expiry": "2026-11-04T04:55:00.941230Z",
+    "finished_at": "2026-11-04T04:55:01.609653+00:00",
+    "concert_stop": {
+      "pid": 92421,
+      "forced": false,
+      "exit_code": 0
+    },
+    "service_stops": [
+      {
+        "service": "local-mail",
+        "resource": "in_process_mail_sink",
+        "exit_code": 0,
+        "forced": false
+      },
+      {
+        "service": "api-gateway",
+        "pid": 92334,
+        "forced": false,
+        "exit_code": 0
+      },
+      {
+        "service": "auth-service",
+        "pid": 92318,
+        "forced": false,
+        "exit_code": 0
+      },
+      {
+        "service": "post-service",
+        "pid": 92307,
+        "forced": false,
+        "exit_code": 0
+      },
+      {
+        "service": "friend-service",
+        "pid": 92296,
+        "forced": false,
+        "exit_code": 0
+      },
+      {
+        "service": "notification-service",
+        "pid": 92288,
+        "forced": false,
+        "exit_code": 0
+      },
+      {
+        "service": "profile-service",
+        "pid": 92280,
+        "forced": false,
+        "exit_code": 0
+      },
+      {
+        "service": "redis",
+        "pid": 92271,
+        "forced": false,
+        "exit_code": 0
+      }
+    ],
+    "cleanup": "PASS",
+    "owned_cluster_absent": true,
+    "forced_process_stops": 0,
+    "prepared_transactions_manually_modified": false,
+    "recovery_acceptance": false
+  },
+  "next_gate": "CR08 plus C03-CANCEL01 supervised cancellation proof, coherent compile/native interrupted-request qualification, fresh resource allocation and immutable runtime inputs; no expiry-based release or false HTTP delivery."
+}
