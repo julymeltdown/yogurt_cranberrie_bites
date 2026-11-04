@@ -260,6 +260,55 @@ staffing is independent and requires an exact disjoint grant/actual acceptance;
 no unfinished goal reset, archive or completion is inferred from a chat alone.
 Owner report: `docs/mcr/frontend/fe21-fe24-client-delivery.md`.
 
+### Exact original FE32 client completion grant BEFORE dispatch
+
+World explicitly confirms NO incumbent/reservation on
+`frontend/src/features/mural/editor/**` or FE32 owner documentation. Prior
+editor author213 is stopped/Backend-allocated; current compact204 is completed/
+idle, goal COMPLETE→null, old Party/Gift scope returned and checkout clean.
+Community grants sole receiving204 a NEW original FE32 finish-to-delivery scope.
+Preserve isolated `/Users/lhs/Desktop/mcr-worktrees/fe-ref-feed`, old Party/Gift
+branches/evidence; NEW `codex/mcr-fe-FE32-client` from fresh actual published
+master containing `4bf9022f`. Receiver verifies clean state/new branch and
+reports exact fetched base before writes. Fresh compatible goal audit required:
+prior COMPLETE/null → NEW truthful UNBUDGETED goal; aligned unfinished reused
+only, incompatible unfinished preserved/reported without reset/pause/false
+completion. English only, selected model/reasoning unchanged.
+
+EXACT exclusive writes: `frontend/src/features/mural/editor/**`, existing
+`docs/mcr/frontend/mural-editor.md`, NEW
+`frontend/e2e/community-client/fe32/**`, NEW
+`docs/mcr/evidence/fe32-client/**`, NEW
+`docs/mcr/frontend/fe32-client-delivery.md`. New prefixes verified absent in
+published Git metadata; receiving actual absence audit required. No FE33 model/
+sync/world-texture/entry-lifecycle, admin/closure/archive, root/app/router/
+composition/world-panels/Phaser/MAP/WorldShell/shared/contract/generated/
+manifest/lockfile/CI/backend or other doc ownership. Any necessary outside
+file/function hunk is named directly to its actual Root/World incumbent and
+allocated exactly BEFORE edits; independent work continues without a review
+or live-service gate. No old Party/Gift or historical wire rights persist.
+
+Objective: implementation owner reconciles current source/existing FE32 owner
+report with ALL original grid/palette/pan-zoom/pixel-preview/explicit-confirm,
+touch disambiguation/DOM controls, drag-does-not-place and 360px bounds/color/
+cooldown criteria; complete any missing behavior, meaningful current affected
+logic/interaction/native qualification and concrete fixes, honest individual
+criterion/environment limits, provenance/docs/scoped commits/direct Root153
+handoff/non-force publication/fresh remote ancestry+all final payload equality
+and clean STOP/returned resources/leases. Preserve satisfied FE33 independently;
+actual server/HTTP/multiuser/device/IN04 is separate, not a new FE32 gate.
+Existing owner report and FE05/C04 inputs support immediate frozen-client work.
+No forced code changes if original behavior is already demonstrably complete,
+no documentation-only waiting goal, no missing required behavior hidden by a
+bounded test. New explicit human target reference and genuine MCR content
+steering applies at this natural developer-owned fidelity handoff; actual
+reference comparison stays distinct from renderer/unit/native capture counts.
+Developer owns all source inspection, technical choices, validation and fixes;
+SL performs no implementation/visual review or rerun. Browser/build only under
+single21d named slot, own minimum/peak/duration/output request, fresh >=16GiB
+start/8GiB stop/process audit/hard0.2GiB new output and serial resource closure.
+Actual receiving branch/base/goal/path acceptance is PENDING, not dispatch proof.
+
 ### Current QA06 shared evidence and explicit design direction
 
 QA06 remains World-owned IN_PROGRESS; latest bounded readback turn is idle,
