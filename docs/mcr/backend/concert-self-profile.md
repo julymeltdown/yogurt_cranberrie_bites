@@ -270,7 +270,7 @@ and fetched remote ancestry was verified. Exact Profile manifest/lock slot was
 returned to ProductAPIroot after that publication. Existing Profile registration
 ownership remains with owner205.
 
-## Next actual Prepare probe source
+## Prepare probe source before qualification
 
 A separate ignored `native_prepare` probe and `concert_self_profile_rpc.py --case
 prepare` are staged for the next allocated target. They use actual Auth/Friend
@@ -336,3 +336,62 @@ terminal cross-store delivery. Relevant source-bound receipts are in
 `docs/mcr/backend/participant-live-evidence/`; the full real owner/Profile Journal
 join remains assigned to owner209. No Cargo target or private PG was used by
 this chat to consume the publication.
+
+## Actual Prepare and CAS-abort qualification
+
+Source `a8776a61f853f4552825eb41e965f29f2274625e` consumes the coherent
+`cb057d43` Participant contract and unchanged published Party compatibility fix
+`f0d0663a` (local cherry-pick `6229c543`). It built both the Profile integration
+test target and production binary with Rust 1.88, locked/offline, one job, debug
+0 and incremental disabled; both exited 0 with no warnings. The first test
+compile found a concrete alias-induced double interceptor in the new probe;
+`a8776a61` fixes only that test constructor. The first preflight refused an
+incorrect source root before Cargo ran. Artifact freezing also refused duplicate
+production-bin emissions across the test/build commands, then verified that both
+refer to the same exact executable and source before copying. Failed attempts
+are retained alongside the successful receipts.
+
+The MEDIA allocation was explicitly released after copies and hashes, with no
+Cargo-lock handles and over 56 GiB free, before any PostgreSQL fixture started.
+All native work ran from private copies. Eight deterministic tests passed. The
+current binary passed three native storage tests, all nine migration checksums,
+empty-store refusal, migrate/verify/reapply, prepared persistence across restart,
+post-restart verification and owned-cluster cleanup.
+
+Three independent actual Auth/Friend/Profile MAIN mTLS fixtures passed. Each
+used exact frozen owner publication `dc70d620`, fresh private identities, separate
+keys, explicit endpoints and socket-only PostgreSQL 16.14:
+
+- `--case prepare`: actual Acquire/Check/Track and protected Read/Prepare;
+  body-digest mismatch refused before registration; prepared content and receipt
+  invisible outside the native transaction; exact native identity/GID/effect;
+  duplicate operation refused; fresh signed ReadOperation after original expiry;
+  altered original binding refused; unavailable Concert decision retains Profile
+  preparation and both actual owner guards. No rollback decision is guessed.
+- `--case conflict`: a valid stale internal Profile CAS token reaches the actual
+  registered/Tracked transaction, whose native XID is then observed ABORTED.
+  Fresh status and Reconcile after original expiry preserve that native proof,
+  with no write receipt and no invented Concert decision. The RPC error alone
+  never supplies settlement proof. Root unavailability still retains both guards.
+- `--case read`: the prior real-owner read/Track/native rollback settlement probe
+  passes against the current binary and migrations, including wrong subject and
+  wrong Friend credential refusal, one durable read reference and no write receipt.
+
+All migrate/verify commands and exact native test invocations exited 0. Each
+fixture's three production services shut down normally with exit 0 and no forced
+stops; all marker/inode-owned PG roots were removed. Evidence:
+`/private/tmp/mcr-profile-self-6229c543-20261104/qualification-summary.json`,
+`prepare-report-1.json`, `conflict-report-1.json`, `read-report-1.json`,
+`native-report-1.json`, Cargo command/JSON/exit receipts and 1559 compile-input hashes.
+Frozen test SHA-256:
+`b4543d45944064e08edd6fac4854f3586ee5d345ae3ad26c99ae34a5bc3bfd17`;
+production Profile SHA-256:
+`b70fcd6b8a52aef19e516f0a7a53253958bbe1d0da04f9cf7c3187a852f42a32`.
+
+Status remains IN_PROGRESS for the full BE-PROFILE-SELF objective. These probes
+use trusted fixture root envelopes and intentionally unavailable Concert root/
+decision endpoints. Actual ParticipantProfileJournal terminal commit/abort join,
+root HTTP body completion/release and signed-in HTTP save/reload remain NOT_RUN.
+Owner209 retains the actual joined driver; it has received the current frozen
+Profile binary and receipts. Goal API still reports BLOCKED after the explicit
+resource-resume message; no false ACTIVE/reset/complete transition is asserted.
