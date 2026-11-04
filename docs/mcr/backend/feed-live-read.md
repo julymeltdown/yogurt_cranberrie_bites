@@ -154,8 +154,9 @@ configuration fallback is introduced. Links/media remain unavailable until their
 actual owner authority is qualified; that gap cannot be filtered into false empty
 success.
 
-Concert feed policy/resources/comment filtering source remains unexported and
-uncompiled, pending the actual joined PublicProfile reader. Policy and projection
+Concert feed policy/resources source remains unexported and uncompiled, pending
+the actual joined PublicProfile reader. The generic comment filtering adapter
+is exported for its independent adapter test, but is not compiled yet. Policy and projection
 share the same retained local child guard; they do not open a second relationship
 pair transaction. Comment filtering validates the complete raw owner batch before
 filtering authors and retains the original scan boundary. The viewing actor's own
@@ -205,3 +206,13 @@ Future before dates are accepted under the frozen query schema: cursor AAD keeps
 the original value, while the first internal snapshot is clipped to current time.
 The adapter case verifies fixed-snapshot continuation and rejects changed before
 bindings. These new Rust assertions still require actual execution.
+
+The pending adapter inventory is now 20 Rust cases (9 facade/filter, 8 Post
+codec/registry, 3 wire), distinct from the historical 19-case published receipt.
+The additional case preserves a filtered comment scan boundary and checks that
+a projection outage, malformed public author or foreign-parent raw batch cannot
+be hidden by author filtering. No new Rust PASS claim is made before execution.
+The native runner requires --native-config private JSON tied to the disposable
+controller marker/token, directory inode and exact socket-only database URL.
+Rust fixtures independently check those bindings and actual server directories
+before creating their isolated schema.

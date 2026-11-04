@@ -11,7 +11,7 @@ import subprocess
 from urllib.parse import parse_qs, urlsplit
 
 ROOT = Path(__file__).resolve().parents[3]
-REQUIRED = {"feed_live_read": 8, "concert_feed_live_read": 8, "feed_wire": 3}
+REQUIRED = {"feed_live_read": 9, "concert_feed_live_read": 8, "feed_wire": 3}
 NATIVE_CASES = {
     "concert_feed::read_tracking::tests::native_lost_track_ack_uses_actual_aborted_transaction_and_exact_owner_binding",
     "concert_feed::read_tracking::tests::native_committed_transaction_without_exact_same_transaction_witness_stays_unknown",

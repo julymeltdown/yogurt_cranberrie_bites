@@ -297,3 +297,47 @@ async fn invalid_limits_deny_before_owner_and_future_before_preserves_snapshot_a
     );
     assert_eq!(state.calls.load(Ordering::SeqCst), calls);
 }
+
+#[tokio::test]
+async fn comment_author_filter_retains_scan_boundary_and_cannot_hide_outage_or_malformed_owner_batch(
+) {
+    use concert_application::feed::CommentReader;
+    use concert_domain::feed::Window;
+    use concert_service::feed::author_filter::AuthorFilteredReader;
+    let ctx = context();
+    let state = State::new(ctx);
+    state.more.store(true, Ordering::SeqCst);
+    state.deny_author.store(true, Ordering::SeqCst);
+    let reader = AuthorFilteredReader::new(Reader(state.clone()), Resources(state.clone()));
+    let window = Window {
+        upper: chrono::Utc::now(),
+        after: None,
+    };
+    let page = reader
+        .comments(ctx, state.post.id, window, 20)
+        .await
+        .unwrap();
+    assert!(page.items.is_empty());
+    assert!(page.has_more);
+    assert_eq!(page.scanned_through, Some(state.comment.position()));
+    state.deny_author.store(false, Ordering::SeqCst);
+    state.missing_author.store(true, Ordering::SeqCst);
+    assert!(matches!(
+        reader.comments(ctx, state.post.id, window, 20).await,
+        Err(FeedError::DependencyUnavailable)
+    ));
+    state.missing_author.store(false, Ordering::SeqCst);
+    state.invalid_author.store(true, Ordering::SeqCst);
+    assert!(matches!(
+        reader.comments(ctx, state.post.id, window, 20).await,
+        Err(FeedError::DependencyUnavailable)
+    ));
+    let mut foreign = State::new(ctx);
+    Arc::get_mut(&mut foreign).unwrap().comment.post = Uuid::from_u128(999);
+    foreign.deny_author.store(true, Ordering::SeqCst);
+    let reader = AuthorFilteredReader::new(Reader(foreign.clone()), Resources(foreign.clone()));
+    assert!(matches!(
+        reader.comments(ctx, foreign.post.id, window, 20).await,
+        Err(FeedError::DependencyUnavailable)
+    ));
+}

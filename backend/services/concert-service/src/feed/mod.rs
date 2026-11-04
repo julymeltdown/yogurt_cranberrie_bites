@@ -1,4 +1,5 @@
 //! Feed-owned transport helpers. Root HTTP/RPC composition belongs to delivery.
+pub mod author_filter;
 pub mod cursor;
 pub mod live_read;
 pub mod owner;
