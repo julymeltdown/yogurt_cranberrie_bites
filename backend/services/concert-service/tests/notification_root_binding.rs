@@ -1,6 +1,7 @@
 //! NB01 real PostgreSQL lookup mechanics, not canonical-owner/public acceptance.
 #[path = "notification_root_binding_support/mod.rs"]
 mod support;
+use concert_service as binding_test_types;
 use concert_service::{
     adapters::out::relationship_authority::guarded::{proto, wire_binding_digest, ScopeRegistry},
     notification_live::NotificationRecoveryBinding,

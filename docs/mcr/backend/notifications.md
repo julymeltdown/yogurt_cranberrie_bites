@@ -974,3 +974,69 @@ Root still owns runtime/client/settler/public operation composition and the actu
 canonical owner/transaction authority and authenticated four-operation vertical
 journeys. BE33 overall and its original persistent goal remain unfinished; this
 handoff makes no public activation, product acceptance or master-push claim.
+
+
+## NB02 — acyclic crate-private binding reader
+
+Status: `IN_PROGRESS`; source refactor complete, fresh native validation `NOT_RUN`
+pending a named backend-SL allocation and explicit acceptance. Original NB01
+receipts and its documentation above remain immutable historical qualification.
+
+Base: qualified NB01 `164ac70ffd6c996cca3b93737ee6f2d9677a8988`, same isolated
+`codex/mcr-be-NB01` worktree, exclusive NB02 ownership. Root confirmed the actual
+assembly comparison commit is `d0f063d18a0549935f80a536077c30962d89f9e9` (2,151
+recorded input hashes); its `config/canonical_runtime.rs` constructor takes the
+actual child settler before constructing the ledger and registry. A Notification
+client whose recovery provider required that ledger created a constructor cycle.
+
+The new crate-private `PgNotificationBindingReader` holds exactly the configured
+`PgPool` clone and immutable instance UUID. Its constructor rejects nil instances
+without database I/O; it holds no ledger, child keys, settler, registry, callback
+or owner authority. Root can build this reader, then the actual Notification
+client and composite settler, then its one canonical core using the same pool
+and instance. `PgPool::clone` shares the existing pool. The narrow parent change
+is only `pub(crate) use notification_binding::PgNotificationBindingReader;`.
+Root's factory remains within the service library; visibility is not widened
+for binaries or integration tests. Root core/factory/settler wiring is outside
+this patch and remains separately unqualified here.
+
+The original `PgScopeLedger` trait implementation now delegates to the reader.
+Only the reader contains the lookup algorithm. Its complete NB01 lookup body is
+byte-for-byte retained, SHA-256
+`8d92c206064d2ca0842c04ce661356dd1b2408f7b70c42dc8fac863bfef6841c`.
+The reader's private transaction bootstrap preserves pool acquisition and the
+250 ms lock/750 ms statement timeouts within the existing caller-shortened
+750 ms whole lookup limit. All-phase ambiguity refusal, unique ROOT_FINISHED,
+exact stored full-binding validation, own-subject, original expired wire fields,
+closed operations and unavailable refusals remain unchanged. No registration,
+expiry renewal, transaction/remote proof or content authority is introduced.
+
+All seven original ledger-facing native test bodies remain byte-identical;
+they now exercise the sole reader implementation through delegation. The strict
+owned fixture is shared using a parent crate alias so library tests can exercise
+the actual private type without exporting it. Three additional private tests
+cover: nil-instance refusal and sharing the existing pool; exact reader/ledger
+wire and unavailable-result equivalence; and constructing/dropping the actual
+lazy Notification client with a typed recovery reader before any ledger or
+settler, checking that client ownership releases the reader. That transport test
+constructs no server and invokes no RPC or authority proof. Synthetic historical
+rows retain their original mechanics-only meaning and rejecting settler guard.
+
+The committed runner now requires two separately identified, hash-bound Cargo
+artifacts at the same complete source pin: the seven-test integration executable
+and the library test executable filtered to the three private NB02 tests. It runs
+them serially in one new socket-only owned PostgreSQL16 fixture using unchanged
+migrations 0028/0048 and original strict ownership checks, then verifies owned
+cleanup. Running only the old seven-test artifact cannot qualify NB02.
+
+Changed paths are the same six assigned paths as NB01: the binding module, narrow
+parent re-export, original integration test crate alias, strict fixture module,
+owned runner and this appended document section. No public API/proto/DTO, caller
+policy, main, settler, registry, CR08, manifest, lockfile or cross-lane path changes
+are included. Fresh build/native receipts will be recorded separately below;
+NB01's `f020...`/`a01d...` receipts do not certify the refactor.
+
+The aligned persistent BE33 goal was inspected and execution explicitly resumed
+under this follow-up grant. The goal API still reports its historical `BLOCKED`
+state; it was not reset, budgeted or falsely completed. BE33 and the four real
+public verticals remain unfinished; NB02 only unblocks Root's typed factory.

@@ -1,7 +1,8 @@
-//! Strict owned fixture adapted from product_scope_ledger.rs and
-//! owner_authority_support/environment.rs at Root 73e89bce. Synthetic scope
-//! rows exercise lookup mechanics, never canonical owner admission.
-use concert_service::{
+// Strict owned fixture adapted from product_scope_ledger.rs and
+// owner_authority_support/environment.rs at Root 73e89bce. Synthetic scope
+// rows exercise lookup mechanics, never canonical owner admission. The parent
+// alias permits reuse inside private library tests without exporting the reader.
+use super::binding_test_types::{
     adapters::out::relationship_authority::guarded::{ChildQuery, ChildRecoveryReference},
     product_rpc::scope_ledger::{
         ChildIntentSettler, ChildRecoveryKey, ChildRecoveryKeys, PgScopeLedger,
