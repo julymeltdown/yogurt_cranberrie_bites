@@ -1,0 +1,67 @@
+{
+  "format": "MCR_ARCHITECTURE_PARTIAL_SOURCE_COMPARISON",
+  "task_ids": ["AR02", "AR04"],
+  "status": "PARTIAL_DIAGNOSTIC_NOT_ACCEPTED",
+  "frame": {
+    "owner": "Root153 architecture consumer",
+    "retained_repo_relative_path": "docs/mcr/evidence/reference-scene-v5/architecture-v2/native-01/renderer-revenge-360.png",
+    "publication": "UNPUBLISHED_RETAINED_OWNER_ARTIFACT",
+    "bytes": 517101,
+    "sha256": "a36f915dfe26822a00dac0b18dd100ee229e91115ca493e1d16d7edb33c1bb5d",
+    "dimensions_independently_read": [360, 800],
+    "canvas_dimensions_owner_reported": [360, 703],
+    "view": "WORLD",
+    "era": "REVENGE",
+    "capture_source_commit": "a0c88b5c7db6eb456b71efd559bad15d5371d0b4",
+    "save_time_owner_reported_utc": "2026-11-04T05:09:49.090309Z",
+    "attempt_status": "FAIL_IN_NEXT_PARADE_CASE",
+    "privacy_owner_qualified": "Fixed six synthetic selected characters; no real identity, private message, token or physical location."
+  },
+  "reference": {
+    "path": "docs/mcr/design/reference-target-2026-11-04.png",
+    "bytes": 2967126,
+    "sha256": "d9a8fae2f96a82253542019ab673589b3938627956eace15c8594c702b5c4617",
+    "dimensions": [1536, 1024],
+    "world_scenery_crop": [597, 94, 354, 360],
+    "map_scenery_crop": [975, 95, 248, 420],
+    "depicted_era": "PARADE"
+  },
+  "source_readback": {
+    "published_source_commit": "921cb3d850925a489302ebcc5483fba71ac835a5",
+    "published_source_is_capture_ancestor": true,
+    "architecture_folder_git_postimages_exact_at_capture": 25,
+    "runtime_adapter_oracle_rerun": "NOT_RUN_BY_ART"
+  },
+  "findings": [
+    {
+      "id": "ART-DIAG-01-FORM",
+      "observation": "The lower-center meeting hall visibly retains two stacked facade window levels with a smaller roof share; the new architectural form survives actual scene rendering.",
+      "limit": "A visible form correction is not target-massing or whole-scene acceptance."
+    },
+    {
+      "id": "ART-DIAG-01-COVERAGE",
+      "observation": "This World view does not expose the MAP central west_hall representation. Other edge buildings are only partially visible.",
+      "limit": "The known narrower west_hall silhouette, complete four-building shapes and MAP label/building occlusion remain unverified by this frame. Edge cropping alone is not a source-image clipping defect."
+    },
+    {
+      "id": "ART-DIAG-01-COMPOSITION",
+      "observation": "The retained tall World viewport shows lower streets, lawn islands and buildings outside the reference's near-square World scenery crop. The original MAP also has denser architectural and planting masses than the earlier baseline.",
+      "limit": "This is not an equal-aspect or same-era pair. Do not move canonical roads, camera, feet or fixtures to make these unmatched frames coincide. Actual matching MAP/World comparisons remain required."
+    },
+    {
+      "id": "ART-DIAG-01-OCCLUSION",
+      "observation": "Root reports zero differences in this completed REVENGE World/MAP case and ten clear-foot depth probes before the screenshot. The next PARADE case failed with50 avatar-overlap channels.",
+      "limit": "These are owner-reported bounded results, not independently rerun ART checks. Root retains consumer/oracle/paint-order diagnosis; no source-pixel or production-feet defect is established by the later failure."
+    }
+  ],
+  "action": "Retain the published source correction. No additional raster, geometry or placement correction is established by this partial unequal-aspect World frame. Continue source comparison with Root's next existing pinned complete MAP/World outputs; no second export, browser, new resource job or manager review gate.",
+  "open_criteria": [
+    "All-era architecture and west_hall massing",
+    "Scene density and original-reference composition",
+    "Complete visibility, occlusion and source-foot comparisons",
+    "Actual consumer and native matrix completion",
+    "360/390/430 matching application comparisons",
+    "Full original-reference fidelity"
+  ],
+  "goal_metadata": "Existing aligned original goal remains BLOCKED; not reset or completed."
+}

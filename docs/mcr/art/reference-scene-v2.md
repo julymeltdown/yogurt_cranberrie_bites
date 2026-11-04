@@ -449,3 +449,29 @@ Tesseract project, native scene export, consumer edit or new capture is included
 Existing paired label/planting sidecars retain their original resource pins;
 new atlas adoption requires an explicitly assigned matching pin closure.
 Full scene massing/density, occlusion and mobile reference fidelity remain open.
+
+## AR02/AR04 retained partial World diagnostic
+
+The existing Root153 native01 REVENGE frame is517,101B, SHA
+`a36f915dfe26822a00dac0b18dd100ee229e91115ca493e1d16d7edb33c1bb5d`,
+actual360×800. ART independently checked these bytes and viewed the original
+alongside the unchanged target. Published architecture source921cb3d8 is an
+ancestor of capture sourcea0c88b5c, and all25 architecture-folder Git postimages
+match at capture. This is an unpublished retained owner artifact, not a new
+ART render. `architecture-v2/diagnostics/native-01-revenge-360.json` and `.md`
+record exact inputs, findings and limits without copying the image.
+
+The visible meeting hall's two-storey façade and reduced roof share survive
+actual rendering. The MAP main `west_hall` representation is not shown, so its
+known narrower massing remains open. The reported360×703 World canvas differs
+from the reference354×360 PARADE World scenery crop; the extra lower streets,
+lawn and architecture cannot justify camera, road, canonical-foot or fixture
+changes. This frame does not establish a further raster correction.
+
+Root reports zero differences in this completed REVENGE case and ten clear-foot
+building-depth comparisons; ART did not rerun them. The next PARADE overlap case
+failed50 channels, leaving native01 as a whole **FAIL**. Consumer/oracle diagnosis
+remains with Root. No all-era, native, runtime, occlusion, mobile or whole-fidelity
+acceptance follows. The original AR02/AR04 criteria remain open under the same
+goal, whose metadata remains **BLOCKED**. No additional browser/export/resource
+job or manager review gate was introduced.
