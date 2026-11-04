@@ -1,0 +1,41 @@
+{
+  "status": "CONTRACT_READY",
+  "source_commit": "1f87d376802c27544c563719517606b50a13c1e4",
+  "qualified_source": "547eef93f72d3a72ae4af639d0aede7d3bbcfc2d",
+  "base": "f94602daf07aedb54e620435f008d29a23ed18b8",
+  "exact_owner_postimages": 6,
+  "paths": [
+    "backend/services/concert-service/src/product_rpc/age_admission.rs",
+    "backend/services/concert-service/src/product_rpc/mod.rs",
+    "backend/services/concert-service/src/product_rpc/owner_media.rs",
+    "backend/services/concert-service/src/product_rpc/query.rs",
+    "backend/services/concert-service/tests/age_product_admission.rs",
+    "docs/mcr/backend/age-product-admission.md"
+  ],
+  "publisher_commits": [
+    "89d87bb0",
+    "0965e83d",
+    "7c7d70a6"
+  ],
+  "owner_validation": {
+    "age_guarded_rpc": 9,
+    "age_actual_signed_mtls": 1,
+    "retained_cf03_guarded": 10,
+    "retained_cf03_mtls": 1,
+    "failed": 0,
+    "qualification_sha256": "69754502df99f6bed41e5034af0544f75175492db11792f0cba2ac31ed21c3f5",
+    "full_release_sha256": "113f2d95f02c347abb9d36b0a6077751cdbaad426cb7b43b04e18bae6366e711",
+    "stale_build_script_repairs": "Two exact worker-local mtime-only corrections, byte-identical source; initial failures retained. No cache cleanup or source content repair."
+  },
+  "operations": [
+    "GetStatus",
+    "Start",
+    "Callback"
+  ],
+  "limitations": [
+    "Typed transport/admission only; recording producer is not actual AgeRuntime composition.",
+    "No erase route or positive provider claim.",
+    "Actual Gateway mount is a separate implementation assignment.",
+    "Real provider input/positive verification and full original IN03 remain NOT_RUN."
+  ]
+}
