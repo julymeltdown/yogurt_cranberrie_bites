@@ -77,5 +77,17 @@ attempted to seed fenced rows after restart; that failed attempt is retained.
 Evidence is under `/Users/lhs/Desktop/mcr-evidence/be42-private-data-restart-202611041534Z`.
 This qualifies only the bounded core leaf.
 
+The final merged tree `7acf9b85a344429aa3e587a5469af74251b2e7bc` added one
+peer migration after that pass. Fresh allocation
+`BE42-PRIVATE-DATA-44LEDGER-BACKEND-202611041544Z` recompiled this exact tree
+with Rust 1.88.0, two jobs, locked/offline dependencies, and the same three
+tests. After zero-handle target release, copied checks passed three plus two
+cases. A fresh PostgreSQL 16.14 database applied 44 migrations and recorded
+`COMPLETE|131|131|131`, 131 neutralized participants, 131 removed avatars,
+one fence and zero prepared transactions. Physical restart and replay without
+reseeding retained the same receipt and state. The owned database was then
+stopped and removed, with zero target handles. Evidence is under
+`/Users/lhs/Desktop/mcr-evidence/be42-private-data-44ledger-202611041544Z`.
+
 This leaf does not provide canonical Auth transport, production route wiring,
 foreign service database writes, or full BE42/IN02 acceptance.
