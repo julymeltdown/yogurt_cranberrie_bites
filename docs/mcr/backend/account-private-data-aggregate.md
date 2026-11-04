@@ -173,6 +173,17 @@ fixture change is committed at `a9a6bf2d2` but needs a fresh compiled native
 executable and a fresh two-phase PostgreSQL restart. No older executable or
 pass is reused for this pin.
 
+After the two corrective commits, the allocator issued
+`PRIVATE-DATA-FIXTURE-REBUILD-MEDIA-20261104T1943Z` as a compile-and-freeze-only
+successor with a 1 GiB new-growth cap and a 24 GiB whole cap. The measured
+retained footprint before admission was 23,153,713,152 bytes: the shared target,
+this worktree, current and historical evidence, and the main Git object store.
+That leaves 615,324,544 bytes below the whole ceiling, less than the issued
+1 GiB new-growth allowance. The shared Git store belongs to the root checkout
+and cannot be reclaimed by this worker. The target therefore remained unused
+and the round did not start. This is a resource-admission limitation, not a
+native pass or a source result.
+
 The owned evidence is under
 `/Users/lhs/Desktop/mcr-evidence/be42-private-data-aggregate-rebased-202611041802Z`
 and the current guard/fixture evidence is under
