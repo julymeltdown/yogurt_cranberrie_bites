@@ -1,0 +1,251 @@
+{
+  "result": "PASS",
+  "qualification": "Actual Landing/PublicFrame and createAppRoutes, explicit synthetic MemorySession/document fixtures; actual production unavailable route also checked. Actual main.tsx anonymous entry also checked with explicit event/HTTP fixtures. No live auth/world/physical-device or all-ten-screen acceptance.",
+  "cases": [
+    {
+      "width": 360,
+      "height": 800,
+      "geometry": {
+        "figureWidths": [
+          127.72500610351562,
+          127.72500610351562,
+          127.72499084472656,
+          127.72499084472656
+        ],
+        "poster": {
+          "x": 6,
+          "y": 50,
+          "width": 348,
+          "height": 584.859375
+        },
+        "wordmark": {
+          "x": 12,
+          "y": 50,
+          "width": 336,
+          "height": 578.859375
+        },
+        "scene": {
+          "x": 12,
+          "y": 50,
+          "width": 336,
+          "height": 578.859375
+        },
+        "crowd": {
+          "x": 32.15625,
+          "y": 310.484375,
+          "width": 295.671875,
+          "height": 156.28125
+        },
+        "copy": {
+          "x": 76.609375,
+          "y": 474.890625,
+          "width": 217.328125,
+          "height": 79.96875
+        },
+        "cta": {
+          "x": 44.890625,
+          "y": 565.109375,
+          "width": 277.25,
+          "height": 45.8125
+        },
+        "overflow": false
+      },
+      "approvedArtworkRequired": true,
+      "sameDocumentRouteRemountRequests": [
+        "/world/avatars/derived-v1/static-release.json",
+        "/world/avatars/derived-v1/photo01-front-idle-64-e124c88815b22220.png"
+      ],
+      "publicAssetRequestsIncludingFullReloads": [
+        "/world/avatars/derived-v1/static-release.json",
+        "/world/avatars/derived-v1/photo01-front-idle-64-e124c88815b22220.png",
+        "/world/avatars/derived-v1/static-release.json",
+        "/world/avatars/derived-v1/photo01-front-idle-64-e124c88815b22220.png",
+        "/world/avatars/derived-v1/static-release.json",
+        "/world/avatars/derived-v1/photo01-front-idle-64-e124c88815b22220.png"
+      ]
+    },
+    {
+      "width": 390,
+      "height": 844,
+      "geometry": {
+        "figureWidths": [
+          139.125,
+          139.125,
+          139.125,
+          139.125
+        ],
+        "poster": {
+          "x": 6,
+          "y": 50,
+          "width": 378,
+          "height": 635.28125
+        },
+        "wordmark": {
+          "x": 12,
+          "y": 50,
+          "width": 366,
+          "height": 629.28125
+        },
+        "scene": {
+          "x": 12,
+          "y": 50,
+          "width": 366,
+          "height": 629.28125
+        },
+        "crowd": {
+          "x": 33.953125,
+          "y": 333.171875,
+          "width": 322.078125,
+          "height": 169.890625
+        },
+        "copy": {
+          "x": 82.375,
+          "y": 511.890625,
+          "width": 236.734375,
+          "height": 86.921875
+        },
+        "cta": {
+          "x": 47.828125,
+          "y": 609.875,
+          "width": 302,
+          "height": 49.90625
+        },
+        "overflow": false
+      },
+      "approvedArtworkRequired": true,
+      "sameDocumentRouteRemountRequests": [
+        "/world/avatars/derived-v1/static-release.json",
+        "/world/avatars/derived-v1/photo01-front-idle-64-e124c88815b22220.png"
+      ],
+      "publicAssetRequestsIncludingFullReloads": [
+        "/world/avatars/derived-v1/static-release.json",
+        "/world/avatars/derived-v1/photo01-front-idle-64-e124c88815b22220.png",
+        "/world/avatars/derived-v1/static-release.json",
+        "/world/avatars/derived-v1/photo01-front-idle-64-e124c88815b22220.png",
+        "/world/avatars/derived-v1/static-release.json",
+        "/world/avatars/derived-v1/photo01-front-idle-64-e124c88815b22220.png"
+      ]
+    },
+    {
+      "width": 430,
+      "height": 932,
+      "geometry": {
+        "figureWidths": [
+          154.33123779296875,
+          154.33123779296875,
+          154.33126831054688,
+          154.33126831054688
+        ],
+        "poster": {
+          "x": 6,
+          "y": 50,
+          "width": 418,
+          "height": 702.515625
+        },
+        "wordmark": {
+          "x": 12,
+          "y": 50,
+          "width": 406,
+          "height": 696.515625
+        },
+        "scene": {
+          "x": 12,
+          "y": 50,
+          "width": 406,
+          "height": 696.515625
+        },
+        "crowd": {
+          "x": 36.359375,
+          "y": 363.421875,
+          "width": 357.265625,
+          "height": 188.046875
+        },
+        "copy": {
+          "x": 90.0625,
+          "y": 561.25,
+          "width": 262.609375,
+          "height": 96.21875
+        },
+        "cta": {
+          "x": 51.734375,
+          "y": 669.578125,
+          "width": 335.015625,
+          "height": 55.359375
+        },
+        "overflow": false
+      },
+      "approvedArtworkRequired": true,
+      "sameDocumentRouteRemountRequests": [
+        "/world/avatars/derived-v1/static-release.json",
+        "/world/avatars/derived-v1/photo01-front-idle-64-e124c88815b22220.png"
+      ],
+      "publicAssetRequestsIncludingFullReloads": [
+        "/world/avatars/derived-v1/static-release.json",
+        "/world/avatars/derived-v1/photo01-front-idle-64-e124c88815b22220.png",
+        "/world/avatars/derived-v1/static-release.json",
+        "/world/avatars/derived-v1/photo01-front-idle-64-e124c88815b22220.png",
+        "/world/avatars/derived-v1/static-release.json",
+        "/world/avatars/derived-v1/photo01-front-idle-64-e124c88815b22220.png"
+      ]
+    }
+  ],
+  "screenshots": [
+    "landing-360.png",
+    "poster-360.png",
+    "production-unavailable-360.png",
+    "landing-390.png",
+    "poster-390.png",
+    "foreground-390.png",
+    "production-unavailable-390.png",
+    "landing-430.png",
+    "poster-430.png",
+    "production-unavailable-430.png",
+    "comparison-390.png",
+    "actual-entry-anonymous-360.png",
+    "actual-entry-anonymous-390.png",
+    "actual-entry-anonymous-430.png"
+  ],
+  "errors": [],
+  "actualEntry": [
+    {
+      "width": 360,
+      "apiRequests": [
+        "/api/auth/capabilities"
+      ],
+      "sameDocumentArtworkRequests": [
+        "/world/avatars/derived-v1/static-release.json",
+        "/world/avatars/derived-v1/photo01-front-idle-64-e124c88815b22220.png"
+      ],
+      "missingArtworkCase": false,
+      "result": "PASS",
+      "limitation": "Actual public entry with a configured synthetic event and intercepted disabled-capabilities response; no live provider."
+    },
+    {
+      "width": 390,
+      "apiRequests": [
+        "/api/auth/capabilities",
+        "/api/auth/capabilities"
+      ],
+      "sameDocumentArtworkRequests": [
+        "/world/avatars/derived-v1/static-release.json",
+        "/world/avatars/derived-v1/photo01-front-idle-64-e124c88815b22220.png"
+      ],
+      "missingArtworkCase": true,
+      "result": "PASS",
+      "limitation": "Actual public entry with a configured synthetic event and intercepted disabled-capabilities response; no live provider."
+    },
+    {
+      "width": 430,
+      "apiRequests": [
+        "/api/auth/capabilities"
+      ],
+      "sameDocumentArtworkRequests": [
+        "/world/avatars/derived-v1/static-release.json",
+        "/world/avatars/derived-v1/photo01-front-idle-64-e124c88815b22220.png"
+      ],
+      "missingArtworkCase": false,
+      "result": "PASS",
+      "limitation": "Actual public entry with a configured synthetic event and intercepted disabled-capabilities response; no live provider."
+    }
+  ]
+}

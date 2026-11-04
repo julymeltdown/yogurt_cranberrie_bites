@@ -121,3 +121,9 @@ Cargo JSON/commands, private frozen binaries and receipts, source hashes,
 `deterministic-1.log`, `native-report-1.json` and `target-release-2.json`.
 MEDIA was released after executable/source freeze and before native execution,
 under the explicit slice grant; PostgreSQL ran only from private binary copies.
+
+The schema-only prerequisite was published independently to `master` as
+`cc97f510703ca360b167ab448cf19a7848814dec`; fetched remote ancestry was verified.
+It contains only 0008, the two owned native/schema controllers and their scope
+report. Continuing RPC implementation is preserved on this development branch;
+publishing the prerequisite did not complete BE-PROFILE-SELF.
