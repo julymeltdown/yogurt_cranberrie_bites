@@ -1,0 +1,18 @@
+node:internal/modules/run_main:107
+    triggerUncaughtException(
+    ^
+
+AssertionError [ERR_ASSERTION]: {"stage":"startup","message":"TypeError: Cannot read properties of undefined (reading 'launch')","stack":"TypeError: Cannot read properties of undefined (reading 'launch')\n    at file:///Users/lhs/Desktop/mcr-worktrees/art-runtime/frontend/src/features/avatar/__tests__/integration-continuity/native.mjs:41:51\n    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)"}
+
+'FAIL' !== 'PASS'
+
+    at file:///Users/lhs/Desktop/mcr-worktrees/art-runtime/frontend/src/features/avatar/__tests__/integration-continuity/native.mjs:110:8 {
+  generatedMessage: false,
+  code: 'ERR_ASSERTION',
+  actual: 'FAIL',
+  expected: 'PASS',
+  operator: 'strictEqual',
+  diff: 'simple'
+}
+
+Node.js v24.22.2

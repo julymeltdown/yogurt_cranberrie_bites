@@ -1,0 +1,16 @@
+{
+  "result": "FAIL",
+  "qualification": "ACTUAL_MAIN_CONTROLLED_HTTP_C05_NOT_LIVE",
+  "viewport": {
+    "width": 390,
+    "height": 844
+  },
+  "errors": [],
+  "screenshots": [],
+  "failure": {
+    "stage": "startup",
+    "message": "TypeError: Cannot read properties of undefined (reading 'launch')",
+    "stack": "TypeError: Cannot read properties of undefined (reading 'launch')\n    at file:///Users/lhs/Desktop/mcr-worktrees/art-runtime/frontend/src/features/avatar/__tests__/integration-continuity/native.mjs:41:51\n    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)"
+  },
+  "resourcesClosed": true
+}

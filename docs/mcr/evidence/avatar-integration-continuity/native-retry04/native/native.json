@@ -1,0 +1,61 @@
+{
+  "result": "FAIL",
+  "qualification": "ACTUAL_MAIN_CONTROLLED_HTTP_C05_NOT_LIVE",
+  "viewport": {
+    "width": 390,
+    "height": 844
+  },
+  "errors": [],
+  "screenshots": [
+    "cancel-restores-persisted.png",
+    "conflict-preserves-draft.png",
+    "cancel-uses-latest-server-outfit.png"
+  ],
+  "browser": "156.0.8078.80",
+  "remote": {
+    "revision": 10,
+    "config": {
+      "contract_version": "2.0.0",
+      "kind": "avatar_config",
+      "manifest_id": "mcr_selected_motion_reviewed_20261104",
+      "manifest_version": 2,
+      "representation": "motion_preset",
+      "preset_id": "motion_v2_photo01_front_05"
+    }
+  },
+  "requests": {
+    "remote": {
+      "revision": 10,
+      "config": {
+        "contract_version": "2.0.0",
+        "kind": "avatar_config",
+        "manifest_id": "mcr_selected_motion_reviewed_20261104",
+        "manifest_version": 2,
+        "representation": "motion_preset",
+        "preset_id": "motion_v2_photo01_front_05"
+      }
+    },
+    "requests": [
+      {
+        "method": "PUT",
+        "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/me/avatar",
+        "expectedRevision": 7
+      },
+      {
+        "method": "GET",
+        "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/me"
+      },
+      {
+        "method": "GET",
+        "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/me"
+      }
+    ],
+    "admissionReads": 2
+  },
+  "failure": {
+    "stage": "optimistic-conflict",
+    "message": "AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:\n\n2 !== 1\n",
+    "stack": "AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:\n\n2 !== 1\n\n    at file:///Users/lhs/Desktop/mcr-worktrees/art-runtime/frontend/src/features/avatar/__tests__/integration-continuity/native.mjs:104:10"
+  },
+  "resourcesClosed": true
+}

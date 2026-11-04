@@ -1,0 +1,18 @@
+node:internal/modules/run_main:107
+    triggerUncaughtException(
+    ^
+
+AssertionError [ERR_ASSERTION]: {"stage":"optimistic-conflict","message":"AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:\n\n2 !== 1\n","stack":"AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:\n\n2 !== 1\n\n    at file:///Users/lhs/Desktop/mcr-worktrees/art-runtime/frontend/src/features/avatar/__tests__/integration-continuity/native.mjs:104:10"}
+
+'FAIL' !== 'PASS'
+
+    at file:///Users/lhs/Desktop/mcr-worktrees/art-runtime/frontend/src/features/avatar/__tests__/integration-continuity/native.mjs:114:8 {
+  generatedMessage: false,
+  code: 'ERR_ASSERTION',
+  actual: 'FAIL',
+  expected: 'PASS',
+  operator: 'strictEqual',
+  diff: 'simple'
+}
+
+Node.js v24.22.2

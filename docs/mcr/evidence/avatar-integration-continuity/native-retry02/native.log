@@ -1,0 +1,19 @@
+file:///Users/lhs/Desktop/mcr/frontend/node_modules/.pnpm/rolldown@1.1.4/node_modules/rolldown/dist/shared/error-BlQ0-ek7.mjs:48
+	const wrapper = new Error(summary);
+	                ^
+
+Error: Error during dependency optimization:
+
+Build failed with 1 error:
+
+[31m[UNLOADABLE_DEPENDENCY] [0mCould not load ../../../mcr/frontend/node_modules/.pnpm/zod@4.4.3/node_modules/zod/index.cjs/v4/core
+ - Not a directory (os error 20) in ../../../mcr/frontend/node_modules/.pnpm/@hookform+resolvers@5.4.0_react-hook-form@7.80.0_react@19.2.7_/node_modules/@hookform/resolvers/zod/dist/zod.js at 365..378
+
+    at aggregateBindingErrorsIntoJsError (file:///Users/lhs/Desktop/mcr/frontend/node_modules/.pnpm/rolldown@1.1.4/node_modules/rolldown/dist/shared/error-BlQ0-ek7.mjs:48:18)
+    at unwrapBindingResult (file:///Users/lhs/Desktop/mcr/frontend/node_modules/.pnpm/rolldown@1.1.4/node_modules/rolldown/dist/shared/error-BlQ0-ek7.mjs:18:128)
+    at #build (file:///Users/lhs/Desktop/mcr/frontend/node_modules/.pnpm/rolldown@1.1.4/node_modules/rolldown/dist/shared/rolldown-build-aV0QeeTW.mjs:3256:34)
+    at async Object.build (file:///Users/lhs/Desktop/mcr/frontend/node_modules/.pnpm/vite@8.1.3_@types+node@24.13.2_jiti@2.7.0/node_modules/vite/dist/node/chunks/node.js:31212:11) {
+  errors: [Getter/Setter]
+}
+
+Node.js v24.22.2

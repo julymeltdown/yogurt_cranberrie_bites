@@ -1,0 +1,36 @@
+{
+  "offer": "AVATAR-CANCEL-390-NATIVE-20261104T2010Z",
+  "actualFULL": "2026-11-04T20:13:16.661171+00:00",
+  "qualifiedNativeSource": "4d6ff4dd62e0d253097f0f899969e7d70ea4f0c5",
+  "native": "PASS",
+  "qualification": "ACTUAL_MAIN_CONTROLLED_HTTP_C05_NOT_LIVE",
+  "viewport": {
+    "width": 390,
+    "height": 844
+  },
+  "attempts": 6,
+  "failedAttemptsRetained": 5,
+  "checks": {
+    "cancelWithoutWrite": true,
+    "conflictDraftRetained": true,
+    "explicitLatestRead": true,
+    "keepDraft": true,
+    "cancelUsesLatest": true,
+    "noDuplicateWrite": true
+  },
+  "peaks": {
+    "processPeak": 14,
+    "rssPeak": 2685861888,
+    "newPeak": 33548098,
+    "wholePeak": 230740437,
+    "temporaryPeak": 30316369,
+    "durablePeak": 785845
+  },
+  "guardBreaches": [],
+  "aliveOwnedPids": [],
+  "allTemporaryRootsAbsent": true,
+  "dependencyLinkAbsent": true,
+  "resourcesHeld": 0,
+  "finalFree": 19255062528,
+  "report": "native-retry05/native/native.json"
+}
