@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="160" height="96" viewBox="0 0 160 96" shape-rendering="crispEdges">
+  <title>Ribbon-wrapped stationery parcel</title>
+  <desc>Transparent noninteractive pixel ornament. This decoration does not represent giveaway stock or product imagery.</desc>
+  <g stroke="#806674" stroke-width="2" stroke-linejoin="round">
+    <path fill="#e1d5e9" d="M48 45h57v37H48z"/>
+    <path fill="#f0e5f4" d="M44 36h65v14H44z"/>
+    <path fill="#d99cab" d="M72 37h10v45H72z"/>
+    <path fill="#e9b8c5" d="M76 34 61 18h-9l-6 7 2 8 9 6 18-1m4-4 15-16h9l6 7-2 8-9 6-18-1"/>
+    <path fill="none" d="m55 27 19 9m27-9-20 9"/>
+    <path fill="#f6d7dc" d="M72 30h10v10H72z"/>
+  </g>
+  <path fill="#fff3e8" stroke="#ba939e" stroke-width="2" d="m106 58 13 6v15h-16V64z"/>
+  <path fill="#bd758c" d="M108 67h3v2h3v-2h3v6h-3v3h-3v-3h-3z"/>
+  <g fill="#b4bea7">
+    <path d="M24 44h3v4h4v3h-4v4h-3v-4h-4v-3h4zM127 22h2v3h3v2h-3v3h-2v-3h-3v-2h3z"/>
+  </g>
+  <g fill="#c6a6b6"><path d="M28 75h2v2h-2zm107-20h3v3h-3zm-20-43h2v2h-2zM40 18h2v2h-2z"/></g>
+</svg>

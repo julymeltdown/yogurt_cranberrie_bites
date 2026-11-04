@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="160" height="96" viewBox="0 0 160 96" shape-rendering="crispEdges">
+  <title>Ribbon and heart garland</title>
+  <desc>Transparent decorative pixel ribbon, stars, and cloud. No characters, places, or arrival claims.</desc>
+  <path d="M12 39q68 29 136-3" fill="none" stroke="#bca2ae" stroke-width="2"/>
+  <g fill="#d99cab" stroke="#8c6475" stroke-width="2" stroke-linejoin="round">
+    <path d="M58 30h7l13 9-2 11-16 4-7-5V35zm44 0h-7l-13 9 2 11 16 4 7-5V35z"/>
+    <path d="m72 48-7 24 9-3 6 6 3-25m5-2 8 24-9-3-6 6-3-25"/>
+    <path d="M75 38h10v14H75z" fill="#f6d7dc"/>
+  </g>
+  <g fill="#c7b7d6">
+    <path d="M27 47h4v3h4v-3h4v3h3v6h-3v3h-3v3h-6v-3h-3v-3h-3v-6h3zM119 46h3v3h3v-3h3v3h3v5h-3v3h-3v3h-3v-3h-3v-3h-3v-5h3z"/>
+  </g>
+  <path fill="#fff3e8" stroke="#b6bfa9" stroke-width="2" d="M16 78v-6h6v-6h9v3h6v6h5v7H16z"/>
+  <g fill="#c2a2ae">
+    <path d="M32 18h3v4h4v3h-4v4h-3v-4h-4v-3h4zm95-1h2v3h3v2h-3v3h-2v-3h-3v-2h3zM144 70h2v2h-2zM111 79h2v2h-2z"/>
+  </g>
+</svg>
