@@ -46,6 +46,8 @@ def footprint(path):
         return total
     except FileNotFoundError: return 0
 MIB = 1024**2
+START_FLOOR_BYTES = 11*1024**3  # Allocator21d future bounded-job policy; never changes an accepted round.
+LIVE_FLOOR_BYTES = 8*1024**3
 
 def now():
     return dt.datetime.now(dt.UTC).isoformat()
@@ -67,10 +69,10 @@ def preflight():
                 git_dir_bytes=footprint(private_git), owned_object_ranges=ranges, owned_object_count=len(owned_objects), free_bytes=shutil.disk_usage(ROOT).free)
 
 def guard(prefix, owner, work_end, hard_end):
-    observed, peaks, reason = {}, {}, None
+    observed, peaks, reason, samples = {}, {}, None, 0
     minimum_free = shutil.disk_usage(ROOT).free
     while time.time() < hard_end:
-        sampled=time.monotonic()
+        sampled=time.monotonic(); first_sample=samples==0; samples+=1
         state = json.loads((prefix/'state.json').read_text()); live_rows = rows(); selected = {owner}
         selected.update(pid for pid,row in live_rows.items() if str(pid) in observed and row['uid']==observed[str(pid)]['uid'] and row['started']==observed[str(pid)]['started'])
         for _ in live_rows:
@@ -82,18 +84,20 @@ def guard(prefix, owner, work_end, hard_end):
         other = max(0,footprint(ROOT)-state['source_bytes'])+max(0,footprint(Path(state['git_dir']))-state['git_dir_bytes'])
         new = tmp+durable+other+state.get('new_offset',0)
         values = dict(pids=len(live),rss=sum(r['rss']*1024 for r in live.values()),temporary=tmp,durable=durable,other=other,new_total=new,
-                      whole=state['source_bytes']+state['deps_bytes']+state['git_bytes']+new-state.get('new_offset',0))
+                      whole=max(state.get('whole_floor',0),state['source_bytes']+state['deps_bytes']+state['git_bytes']+new-state.get('new_offset',0)))
         for key,value in values.items(): peaks[key]=max(peaks.get(key,0),value)
         free = shutil.disk_usage(ROOT).free; minimum_free=min(free,minimum_free)
         if not reason:
             if any(values[k]>v for k,v in state['limits'].items()): reason='resource limit'
-            elif free<8*1024**3: reason='running disk floor'
+            elif first_sample and free<state['start_floor_bytes']: reason='start disk floor'
+            elif free<state['live_floor_bytes']: reason='running disk floor'
             elif time.time()>=work_end and not state.get('work_done'): reason='work deadline'
-            if reason:
+            if reason and not first_sample:
                 stop_owned(observed,{owner,os.getpid()})
                 try: os.kill(owner,signal.SIGTERM)
                 except ProcessLookupError: pass
         write(prefix/'guard.json',dict(peaks=peaks,reason=reason,minimum_free_bytes=minimum_free,observed_processes=observed,live_pids=list(live),sampled_at=now(),sample_seconds=time.monotonic()-sampled))
+        if first_sample and reason: return  # Parent checks this before creating any workload/link.
         if not state['running']: return
         time.sleep(max(0,.2-(time.monotonic()-sampled)))
     stop_owned(observed,{os.getpid()},force=True)
@@ -101,12 +105,14 @@ def guard(prefix, owner, work_end, hard_end):
 def run(prefix,kind,pin,offer,accepted,work_seconds,total_seconds):
     start=dt.datetime.fromisoformat(accepted).timestamp(); work_end=start+work_seconds; hard_end=start+total_seconds
     assert time.time()<work_end and not prefix.exists()
-    p=preflight(); assert p['clean'] and p['pin']==pin and p['free_bytes']>=12*1024**3
+    p=preflight(); assert p['clean'] and p['pin']==pin and p['free_bytes']>=START_FLOOR_BYTES
     limits=dict(pids=8 if kind=='source' else 32,rss=(3 if kind=='source' else 4)*1024**3,whole=2560*MIB,
                 temporary=(80 if kind=='source' else 200)*MIB,durable=24*MIB,other=16*MIB,new_total=(128 if kind=='source' else 240)*MIB)
     assert p['source_bytes']+p['deps_bytes']+p['git_bytes']<limits['whole']
     assert p['free_bytes']-limits['new_total']>=9*1024**3
-    prefix.mkdir(); (prefix/'work').mkdir(); state={**p,'limits':limits,'running':True,'work_done':False,'new_offset':int(os.environ.get('ADMIN_RETAINED_NEW_BYTES','0'))}
+    admission=json.loads(os.environ.get('ADMIN_ADMISSION_JSON','{}'))
+    prefix.mkdir(); (prefix/'work').mkdir(); state={**p,'limits':limits,'running':True,'work_done':False,'new_offset':int(os.environ.get('ADMIN_RETAINED_NEW_BYTES','0')),
+      'start_floor_bytes':START_FLOOR_BYTES,'live_floor_bytes':LIVE_FLOOR_BYTES,'whole_floor':int(admission.get('accounted_whole_floor_bytes',0))}
     with socket.socket() as s: s.bind(('127.0.0.1',int(os.environ.get('ADMIN_FIXED_PORT','0')))); port=s.getsockname()[1]
     write(prefix/'control.json',dict(offer=offer,kind=kind,pin=pin,accepted_at=accepted,port=port,work_end=work_end,hard_end=hard_end,preflight=p,limits=limits,admission=json.loads(os.environ.get('ADMIN_ADMISSION_JSON','{}')),
           readset_sha256={str(f.relative_to(ROOT)):hashlib.sha256(f.read_bytes()).hexdigest() for f in [*Path(__file__).parent.parent.rglob('*'),ROOT/'frontend/src/app/ports.ts',ROOT/'frontend/src/app/AdminBoundary.tsx'] if f.is_file()}))
@@ -120,6 +126,7 @@ def run(prefix,kind,pin,offer,accepted,work_seconds,total_seconds):
     def interrupt(_s,_f): raise RuntimeError('independent guard stopped round')
     signal.signal(signal.SIGTERM,interrupt)
     try:
+        assert json.loads((prefix/'guard.json').read_text())['reason'] is None, 'guardian rejected before workload'
         for lock in [FRONT/'pnpm-lock.yaml',DEPS.parent/'pnpm-lock.yaml']: assert hashlib.sha256(lock.read_bytes()).hexdigest()==LOCK
         assert not (FRONT/'node_modules').exists() and not (FRONT/'node_modules').is_symlink()
         (FRONT/'node_modules').symlink_to(DEPS,target_is_directory=True);created_link=True
