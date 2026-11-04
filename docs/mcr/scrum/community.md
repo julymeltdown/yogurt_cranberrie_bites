@@ -70,7 +70,7 @@ This establishes staffing/progress, not an original criterion completion.
 | FE26 | Former authoring owner `6ec9`; last explicit frontend criteria SATISFIED | Public pickup and actual route-fixture pointers now sent directly to QA06/World; historical `d127b74` → `941d36c`, KST `d8778b8` explicitly labeled historical, not current requalification | No identified original client gap in retained receipt: intent/hold/expiry/code/claim/cancel and timeout/reload/no-fake-success. QA06 owner pins usable current fixtures; Gift `267`/root `1fc` supply genuine authority. No FE31 substitution or live/device promotion |
 | FE27 | Social ledger retains original SATISFIED/MOCK_READY; bounded latest fidelity owner `202` complete/null/clean STOP/returned leases/archived; no Community feature lease | Existing `9f72a71`/`cf7836a`/`a413e69` retained. Since checkpoint, Social reports bounded source `576f9848` → `ddd279e4`, final receipt `203db3a4` → `6393b451`, all 44 final payloads owner-verified; duplicate root action/bottom compose repair with owner native three widths/244 affected tests | No identified original fixture criterion gap in Social's explicit receipt. QA06 postfix evidence is published with unfinished whole-visual acceptance preserved; real Feed/media providers and IN03 remain separate. Actual evidence/ownership primary is Social, not a new Community acceptance or count |
 | FE28 | Social ledger retains original SATISFIED/MOCK_READY; historical Social author has no new lease | Existing published `5bc0055`/`a413e69`/`b392f56` owner registry pointers newly reconciled here; no new original-task delivery inferred this hour | Original composer/thread/recovery/privacy criteria already recorded in Social owner evidence; no known task-local gap in that receipt. Real service/media and QA04/IN03 are separate dependencies, not grounds for withholding fixture-satisfied original criteria |
-| FE32 | IN_PROGRESS under owner204; original-criterion disposition remains UNRECONCILED pending explicit task-level owner receipt; SAME goal ACTIVE | Source `21ceef6080c302ca8d7a92ef6045db88c7d5bf70`; 136 affected tests and owner component+C04 synthetic native 360/390/430 PASS, 15 PNGs/all 16,384 cell centers match supplied snapshot. Serial production build exit0 after native resource closure. Two prior regressions fixed; slot FULLY RELEASED | Owner finishes documentation/sealing/exact scoped Root153 handoff, publication and fresh remote ancestry/all-payload readback. Six selected captures inspected by owner; synthetic art/internal pixel agreement does not certify original target fidelity. No actual-root/live/device/FE33/IN04 promotion; no further native/build requested |
+| FE32 | MOCK_READY; all original pure-client criteria individually SATISFIED per owner204; SAME goal ACTIVE for publication/readback, writer quiescent | Base `1c6b8eba` → tip `0db20367e1b4cfa74be48e6a141d72e02175e7ce`, four ordered commits/exact 36-path manifest READY direct Root153. Two reproduced/fixed touch/cooldown regressions; owner 136 tests/11 files, app+fixture types/lint/build/origin/plan PASS; component+canonicalHTTP+C04 synthetic three-width native PASS/15 captures, 21 runtime hashes match | Root153 publishes exact validated handoff; owner fresh remote ancestry/all 36 latest payload equality then actual same-goal completion/clean STOP/exact leases return. Source checkout/resources/link clean, capacity fully released. Full reference art/actual root/live/device/FE33/IN04 remain separately bounded; no new scope or review gate |
 | FE33 | Former owner `230`, now Backend allocator-owned; original frozen-client criteria SATISFIED | Published module `7c2f3af7` and caller `eeae69be` fixture references routed to QA06/World; no new original outcome | No identified original frozen-client gap. Ordinary production remains closed without supplier. Wall `21e`, root `1fc`, SDK `207`, BE World `20f` and FE Root153 own genuine inputs/activation; IN04 separate |
 | FE37 | Bounded repair owner `26e` COMPLETE/null/STOP; whole-task UNRECONCILED | No new parent receipt; decoder/route regressions published `047d892c` retained | Moderator report/member/content/reason/role-route and truthful failure criteria require the implementation owner's whole-task receipt. Bounded canonical decoder fix is delivered, not whole FE37 acceptance; Root supplies actual role inputs |
 | FE38 | Current frontend whole-task owner/disposition UNRECONCILED | Existing operator work retained; no fresh exact task pin supplied | Event/settings/place review/closure/notices/capability/audit, risky confirmation/stale conflict/source provenance remain to reconcile with actual owner; Root `1fc` is composition dependency contact. No fabricated NOT_STARTED conclusion |
@@ -382,6 +382,35 @@ clean `be-party-runtime`, and explicitly released DIRECTWorld as SOLE next
 allocator for required Root-defined QA06 frame/footer work. Community had no
 current source lease or authority to transfer; no implicit FE32/backend/shared
 rights or actual new FE goal/checkout acceptance is claimed.204 stays FE32.
+
+### Explicit original FE32 criterion receipt and committed READY handoff
+
+Owner204 now individually reports ALL ORIGINAL FE32 PURE-CLIENT CRITERIA
+SATISFIED at MOCK_READY. This is an explicit responsible-developer criterion
+receipt, not an SL inference from the passing native run. Published base
+`1c6b8ebaf9ac054ce7708e01fd60345b6fced376` → committed tip
+`0db20367e1b4cfa74be48e6a141d72e02175e7ce`, four ordered scoped commits and
+exact36-path manifest sent DIRECT Root153. Owner report
+`docs/mcr/frontend/fe32-client-delivery.md` preserves grid/palette/pan/zoom/
+preview/explicit confirm/touch disambiguation/DOM/no-drag-placement/360px
+bounds-color-cooldown dispositions and frozen-contract/environment limits.
+The two demonstrated fixes remain third-held-touch tracking and preservation
+of a newer authoritative cooldown against delayed acknowledgment.
+
+Owner reports136tests/11files, application+fixture TypeScript/lint/build/
+source-origin/planning PASS; component+canonical HTTP+C04 synthetic native
+three widths PASS/15captures,21runtime hashes current-match and fresh relevant
+remote-input drift ZERO. Actual target comparison preserved existing composition;
+no forced UI/source change or fabricated art. Full reference-art equivalence,
+actual-root/live/device/FE33/IN04 qualification stays separately bounded.
+
+Writer quiescent and checkout CLEAN, own resources and dependency link gone,
+capacity already FULLY RELEASED. SAME NEW unbudgeted FE32 goal stays ACTIVE
+pending actual Root publication plus independent fresh remote ancestry/all36
+latest delivered payload equality and clean STOP/exact lease RETURN. No
+terminal/archive/reallocation yet, no extra review/approval gate or new scope.
+Original-ID criterion change is batched into the next hourly King digest;
+four helper commits are not four tasks and no aggregate count is recomputed.
 
 ### Current QA06 shared evidence and explicit design direction
 
