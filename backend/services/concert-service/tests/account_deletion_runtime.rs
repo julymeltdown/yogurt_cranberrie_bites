@@ -185,6 +185,28 @@ async fn factory_off_has_no_service_and_managed_has_no_plaintext_or_missing_tls(
         LiveDeletionOwners::default()
     )
     .is_err());
+    for endpoint in [
+        "http://auth.example",
+        "https://user@auth.example",
+        "https://auth.example/path",
+        "https://auth.example?query=secret",
+    ] {
+        let error = AccountDeletionRuntime::compose(
+            AccountDeletionSettings::Managed,
+            p.clone(),
+            endpoint,
+            None,
+            CONCERT,
+            AuthDeletionCallers::from_credentials(AUTH, None)?,
+            LiveDeletionOwners::default(),
+        )
+        .err()
+        .unwrap();
+        assert_eq!(
+            error.to_string(),
+            "Canonical Auth deletion endpoint must be an explicit HTTPS origin"
+        );
+    }
     let empty = TlsMaterial::from_pem(Vec::new(), Vec::new(), Vec::new());
     assert!(AccountDeletionRuntime::compose(
         AccountDeletionSettings::Managed,

@@ -115,6 +115,17 @@ impl AccountDeletionRuntime {
         if settings == AccountDeletionSettings::Off {
             return Ok(None);
         }
+        let uri: tonic::codegen::http::Uri = auth_endpoint.parse().map_err(|_| {
+            anyhow::anyhow!("Canonical Auth deletion endpoint must be an explicit HTTPS origin")
+        })?;
+        anyhow::ensure!(
+            uri.scheme_str() == Some("https")
+                && uri
+                    .authority()
+                    .is_some_and(|a| !a.host().is_empty() && !a.as_str().contains('@'))
+                && uri.path_and_query().is_none_or(|p| p.as_str() == "/"),
+            "Canonical Auth deletion endpoint must be an explicit HTTPS origin"
+        );
         let tls = tls.ok_or_else(|| {
             anyhow::anyhow!("Managed account deletion requires canonical internal mTLS")
         })?;
