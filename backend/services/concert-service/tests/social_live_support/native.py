@@ -4,6 +4,7 @@ from __future__ import annotations
 import argparse
 import importlib.util
 import json
+import re
 from pathlib import Path
 import shutil
 import subprocess
@@ -51,7 +52,7 @@ def run(args,report):
     try:
         cluster.init()
         # Owned cluster only; exercise actual read-only prepared exclusions.
-        with (cluster.data/'postgresql.conf').open('a') as config:config.write('\nmax_prepared_transactions=256\nmax_connections=24\nshared_buffers=32MB\nwork_mem=2MB\nmax_worker_processes=0\nmax_parallel_workers=0\nmax_wal_senders=0\nautovacuum=off\n')
+        with (cluster.data/'postgresql.conf').open('a') as config:config.write("\nmax_prepared_transactions=256\nmax_connections=24\nshared_buffers=32MB\nwork_mem=2MB\nmax_worker_processes=0\nmax_parallel_workers=0\nmax_wal_senders=0\nautovacuum=off\nlog_line_prefix='MCR_SQLSTATE=%e '\nlog_min_error_statement=panic\n")
         cluster.start()
         report['postgres_version']=cluster.sql('postgres','show server_version;')
         if int(cluster.sql('postgres','show server_version_num;'))//10000!=16:raise SmokeError('preflight','PG16 required')
@@ -97,6 +98,21 @@ def run(args,report):
         if source_manifest()!=meta['source_sha256']:raise SmokeError('source','source changed during run')
     finally:
         try:
+            # SQL adapters intentionally erase raw database errors. Preserve
+            # only bounded SQLSTATE, known identifier-only errors and function
+            # context; never statements, parameters, DETAIL rows or credentials.
+            log=cluster.root/'postgres.log'
+            safe=[]
+            if log.is_file():
+                for line in log.read_text(errors='replace').splitlines():
+                    match=re.search(r'MCR_SQLSTATE=([0-9A-Z]{5})\s+ERROR:\s+(.*)',line)
+                    if match:
+                        message=match[2]
+                        known=re.fullmatch(r'(query returned (no|more than one) rows|record "[a-zA-Z_0-9]+" (has no field "[a-zA-Z_0-9]+"|is not assigned yet)|column reference "[a-zA-Z_0-9]+" is ambiguous|operator does not exist: [a-zA-Z_0-9 =\[\]]+|relationship authority expired(?: during policy generation)?|unbound social policy outcome)',message)
+                        safe.append({'sqlstate':match[1],'message':message if known else 'Database error; raw text omitted'})
+                    context=re.search(r'CONTEXT:\s+(PL/pgSQL function [a-zA-Z_0-9.]+\([a-zA-Z_0-9, ]*\) line [0-9]+ at [A-Z ]+)$',line)
+                    if context:safe.append({'context':context[1]})
+            report['postgres_diagnostics']=safe[-100:]
             if cluster.started:prepared_zero('before-teardown-finally')
         finally:
             cluster.cleanup();report['cleanup']={'status':'PASS','owned_root_absent':not cluster.root.exists()}
