@@ -1,0 +1,1 @@
+QA04 strict harness/transitive public-interface types: PASS

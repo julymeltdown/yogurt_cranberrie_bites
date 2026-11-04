@@ -21,9 +21,9 @@
   ],
   "format": "MCR_OPERATOR_BUNDLE_CANDIDATE",
   "generator": {
-    "bytes": 12263,
+    "bytes": 12297,
     "path": "backend/scripts/mcr/build_operator_bundle.py",
-    "sha256": "sha256:5eac38fcae44dadbfa41faa6f21448ed6d3d67b7667804538b1faddd4f3ccdbb"
+    "sha256": "sha256:b2dd760813f80fbba726a1d0407c093ab01a945a66d6423b4dd47168e9851aa5"
   },
   "limits": [
     "Source provenance applies to exact supplied scene inputs only.",
@@ -36,7 +36,7 @@
     "path": "backend/releases/reference-scene-v2/quality-v6/map-manifest.json",
     "sha256": "sha256:81f6890b114a75a2885032c4f5c38a7fac685203fbde9a4481eef6b9c2bbb632"
   },
-  "not_run": [
+  "not_certified_by_builder": [
     "Rust from_source_bound_files constructor",
     "Gateway HTTP",
     "operator admission",

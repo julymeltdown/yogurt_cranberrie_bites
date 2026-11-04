@@ -181,7 +181,7 @@ def build():
         'checks': ['C03 Bootstrap schema and invariants', 'C06 complete bundle schema/hash/bindings',
                    'exact reviewed source qualification and source binding', 'all scene source hashes/sizes',
                    'PNG full decode/dimensions/hash', 'selected avatar original/derived source identity'],
-        'not_run': ['Rust from_source_bound_files constructor', 'Gateway HTTP', 'operator admission', 'visual fidelity acceptance'],
+        'not_certified_by_builder': ['Rust from_source_bound_files constructor', 'Gateway HTTP', 'operator admission', 'visual fidelity acceptance'],
         'limits': ['Source provenance applies to exact supplied scene inputs only.',
                    'Original virtual places remain UNREVIEWED/VIRTUAL_CONCEPT/CONCEPT_ONLY.',
                    'The validation event/actor are inert template identities, not real admission or authorization.',
@@ -205,7 +205,7 @@ def main():
                 destination.parent.mkdir(parents=True, exist_ok=True)
                 destination.write_bytes(data)
         print(json.dumps({'result': 'PASS', 'outputs': len(result), 'admission': 'NOT_ADMITTED',
-                          'rust_constructor': 'NOT_RUN', 'gateway_http': 'NOT_RUN'}))
+                          'rust_constructor': 'NOT_CERTIFIED_BY_BUILDER', 'gateway_http': 'NOT_RUN'}))
         return 0
     except (OSError, ValueError, KeyError, StopIteration) as error:
         print('OPERATOR BUNDLE FAIL: ' + str(error), file=sys.stderr)
