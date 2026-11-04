@@ -304,3 +304,8 @@ This does **not** complete original task BE04 or its real Product admission
 criteria. Current public participant/owner-grant composition remains with
 Participant209 and the Product API root; their actual owner/admission evidence
 must qualify those separate flows. Whole-task and release status are unchanged.
+
+The map4 native case also publishes the old map3 first in the same isolated
+database/event, adopts map4, then checks immutable map3 bytes/geometry remain
+stored and stale map3 selections fail. The restart case checks exact map4 state.
+This authored regression remains NOT_RUN until its frozen-binary qualification.
