@@ -66,6 +66,12 @@ snapshot older than a later coordinated committed revision. Live reads still nee
 the local-snapshot, fresh-Profile, final-gate ordering when composed. The real
 Profile client alone will construct the internal terminal receipt after validating
 the canonical response; an HTTP boolean cannot clear this gate.
+The exact original owner-binding protobuf is also persisted without the token or
+raw Profile text. Recovery checks its canonical fingerprint against the immutable
+registry and uses it only to query an existing operation with fresh bounded system
+credentials. It cannot acquire a renewed read/write grant from the expired binding.
+The journal's product constructor now requires the actual validated deployed
+release; begin rejects a different request release before effects.
 
 The new Rust journal captures that identity from its own actual transaction,
 registers it before protected effects, durably inserts PENDING on a separate
@@ -118,6 +124,15 @@ qualification build. The adapter itself is still NOT_RUN. It binds the exact sea
 parent, request, release and original deadline to the real OwnerGuardScope and
 registers the repository's actual transaction. It owns no completion/release API.
 This source is not a qualified real authority adapter yet.
+
+The qualified canonical avatar handoff `60991c53` is now consumed. The only
+repository merge difference was its fixture checkpoint-count correction; the
+qualified canonical file was retained exactly. The new typed SELF client is staged
+in `live/profile.rs`, unexported until qualified producer/generation inputs arrive.
+It uses shared platform keys, exact held-owner views, original deadlines, actual
+Profile versions and prepared transaction identity, and a durable marker before
+PrepareUpdate. Recovery only queries persisted original operations with a fresh
+bounded signature; it cannot recreate a mutation. This client is NOT_RUN.
 
 New journal/resolver Rust compile and native application test: NOT_RUN. Actual live
 owner mutation, root/Gateway composition, browser and full signed-in multiuser

@@ -114,7 +114,7 @@ impl proto::concert_participant_service_server::ConcertParticipantService for En
             event_id: context.key().event_id.uuid(),
             session_family_id: context.session_family_id(),
             request_id: context.request_id(),
-            operation: "participant.update".into(),
+            operation: "updateConcertParticipant".into(),
             expires_unix_micros: context.deadline().expires_micros(),
             parent_digest: parent.parent_digest(),
             parent_body_digest: parent.request_digest(),
@@ -125,7 +125,7 @@ impl proto::concert_participant_service_server::ConcertParticipantService for En
         };
         binding.matches_parent(parent)?;
         let digest = binding.digest()?;
-        let journal = ParticipantProfileJournal::new(self.pool.clone());
+        let journal = ParticipantProfileJournal::for_fixture(self.pool.clone());
         let mut tx = journal
             .begin(
                 &context,

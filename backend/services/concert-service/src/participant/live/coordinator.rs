@@ -2,12 +2,16 @@
 //! This module is not product composition. The actual owner-scope adapter must
 //! enroll the same connection's transaction before protected effects.
 use super::update::{Field, ParticipantUpdate};
+use crate::adapters::out::relationship_authority::guarded::{
+    proto as lease, wire_binding_digest, GuardBinding,
+};
 use crate::participant::context::VerifiedParticipantRequest;
 use crate::participant::Operation;
 use async_trait::async_trait;
 use chrono::{DateTime, Utc};
 use concert_application::avatar::AvatarError;
 use concert_domain::{EventPhase, Preferences, Revision};
+use prost::Message;
 use sha2::{Digest, Sha256};
 use sqlx::{PgPool, Postgres, Row, Transaction};
 use uuid::Uuid;
@@ -179,6 +183,7 @@ struct Binding {
     parent_digest: [u8; 32],
     body_digest: [u8; 32],
     guard_digest: [u8; 32],
+    owner_binding_proto: Vec<u8>,
     release: String,
 }
 impl Binding {
@@ -189,6 +194,22 @@ impl Binding {
         let parent = request
             .parent_authority()
             .map_err(|_| AvatarError::Denied)?;
+        let canonical = GuardBinding::from_parent(
+            parent,
+            request.key().user_id.uuid(),
+            request.key().event_id.uuid(),
+            request.session_family_id(),
+            request.request_id(),
+            super::guarded::operation_label(request.operation()),
+            request.http_method(),
+            request.http_target(),
+            request.body_sha256(),
+            request.deadline(),
+        )
+        .map_err(|_| AvatarError::Denied)?;
+        if canonical.digest() != guard_digest {
+            return Err(AvatarError::Denied);
+        }
         Ok(Self {
             actor: request.key().user_id.uuid(),
             event: request.key().event_id.uuid(),
@@ -197,6 +218,7 @@ impl Binding {
             parent_digest: parent.parent_digest(),
             body_digest: request.body_sha256(),
             guard_digest,
+            owner_binding_proto: canonical.wire([]).encode_to_vec(),
             release: request.release_digest().into(),
         })
     }
@@ -218,6 +240,13 @@ impl Binding {
 
 pub struct ParticipantProfileJournal {
     pool: PgPool,
+    release_digest: String,
+}
+pub(crate) struct RecoveryOperation {
+    pub operation: Uuid,
+    pub actor: Uuid,
+    pub binding: lease::GuardBinding,
+    pub expected_profile: ExpectedProfileEffect,
 }
 pub struct ParticipantProfileTransaction {
     tx: Transaction<'static, Postgres>,
@@ -229,9 +258,84 @@ pub struct ParticipantProfileTransaction {
     preferences: Option<Preferences>,
 }
 impl ParticipantProfileJournal {
-    /// Runtime must provide the isolated Concert database with migration 0027.
-    pub fn new(pool: PgPool) -> Self {
-        Self { pool }
+    /// Runtime must supply the actual validated deployed release and isolated
+    /// Concert database with migration 0027. A signed client digest is not enough.
+    pub fn from_product(
+        pool: PgPool,
+        release: &concert_application::bootstrap::ValidatedProductRelease,
+    ) -> Result<Self, AvatarError> {
+        let digest = release.source_digest();
+        if digest.len() != 64
+            || !digest
+                .bytes()
+                .all(|byte| byte.is_ascii_digit() || (b'a'..=b'f').contains(&byte))
+        {
+            return Err(AvatarError::Unavailable);
+        }
+        Ok(Self {
+            pool,
+            release_digest: digest.into(),
+        })
+    }
+    #[cfg(test)]
+    pub(super) fn for_fixture(pool: PgPool) -> Self {
+        Self {
+            pool,
+            release_digest: "a".repeat(64),
+        }
+    }
+
+    /// Restore only a registered immutable original operation. The old binding
+    /// permits a bounded terminal query, never another read or mutation grant.
+    pub(crate) async fn recovery_operation(
+        &self,
+        operation: Uuid,
+    ) -> Result<RecoveryOperation, AvatarError> {
+        let row=sqlx::query("select actor_id,event_id,session_family_id,parent_digest,body_digest,guard_binding_digest,owner_binding_proto,profile_epoch,profile_revision,profile_prepared_gid,profile_effect_digest from public.concert_participant_profile_operations where operation_id=$1")
+            .bind(operation).fetch_optional(&self.pool).await.map_err(unavailable)?.ok_or(AvatarError::Missing)?;
+        let bytes: Vec<u8> = row.try_get("owner_binding_proto").map_err(unavailable)?;
+        let binding =
+            lease::GuardBinding::decode(bytes.as_slice()).map_err(|_| AvatarError::InvalidState)?;
+        let actual = wire_binding_digest(&binding).map_err(|_| AvatarError::InvalidState)?;
+        let digest: Vec<u8> = row.try_get("guard_binding_digest").map_err(unavailable)?;
+        let actor: Uuid = row.try_get("actor_id").map_err(unavailable)?;
+        let event: Uuid = row.try_get("event_id").map_err(unavailable)?;
+        let family: Uuid = row.try_get("session_family_id").map_err(unavailable)?;
+        let parent: Vec<u8> = row.try_get("parent_digest").map_err(unavailable)?;
+        let body: Vec<u8> = row.try_get("body_digest").map_err(unavailable)?;
+        if digest.as_slice() != actual
+            || binding.actor_id != actor.to_string()
+            || binding.event_id != event.to_string()
+            || binding.session_family_id != family.to_string()
+            || binding.request_id != operation.to_string()
+            || binding.parent_digest != parent
+            || binding.body_digest != body
+            || binding.operation != "updateConcertParticipant"
+            || binding.http_method != "PATCH"
+            || binding.http_target != format!("/api/concert/events/{event}/me")
+        {
+            return Err(AvatarError::InvalidState);
+        }
+        let version = CanonicalProfileVersion {
+            epoch: row.try_get("profile_epoch").map_err(unavailable)?,
+            revision: Revision::new(row.try_get("profile_revision").map_err(unavailable)?)
+                .map_err(|_| AvatarError::InvalidState)?,
+        };
+        let effect: Vec<u8> = row.try_get("profile_effect_digest").map_err(unavailable)?;
+        let gid: String = row.try_get("profile_prepared_gid").map_err(unavailable)?;
+        if version.epoch.is_nil() || gid != format!("mcr_sp_{}", operation.simple()) {
+            return Err(AvatarError::InvalidState);
+        }
+        Ok(RecoveryOperation {
+            operation,
+            actor,
+            binding,
+            expected_profile: ExpectedProfileEffect {
+                version,
+                gid,
+                digest: effect.try_into().map_err(|_| AvatarError::InvalidState)?,
+            },
+        })
     }
 
     pub async fn begin(
@@ -241,6 +345,9 @@ impl ParticipantProfileJournal {
         profile_version: CanonicalProfileVersion,
         authority: &dyn CoordinatorAuthority,
     ) -> Result<ParticipantProfileTransaction, AvatarError> {
+        if request.release_digest() != self.release_digest {
+            return Err(AvatarError::Unavailable);
+        }
         authority.check(request).await?;
         let binding = Binding::capture(request, guard_digest)?;
         let update = ParticipantUpdate::parse(request.raw_body())?;
@@ -260,12 +367,12 @@ impl ParticipantProfileJournal {
         authority.check(request).await?;
         // This registry write commits independently BEFORE either protected
         // effect. The captured XID belongs to `tx`, never this pool connection.
-        sqlx::query("insert into public.concert_participant_profile_operations(operation_id,actor_id,event_id,session_family_id,parent_digest,body_digest,guard_binding_digest,release_digest,expected_revision,concert_system_identifier,concert_database_oid,concert_full_xid,concert_backend_pid,concert_backend_started,profile_epoch,profile_revision,profile_prepared_gid,profile_effect_digest) values($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,$14,$15,$16,$17,$18)")
+        sqlx::query("insert into public.concert_participant_profile_operations(operation_id,actor_id,event_id,session_family_id,parent_digest,body_digest,guard_binding_digest,release_digest,expected_revision,concert_system_identifier,concert_database_oid,concert_full_xid,concert_backend_pid,concert_backend_started,profile_epoch,profile_revision,profile_prepared_gid,profile_effect_digest,owner_binding_proto) values($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,$14,$15,$16,$17,$18,$19)")
             .bind(binding.operation).bind(binding.actor).bind(binding.event).bind(binding.family)
             .bind(binding.parent_digest.as_slice()).bind(binding.body_digest.as_slice()).bind(binding.guard_digest.as_slice()).bind(&binding.release)
             .bind(update.expected_revision.get()).bind(&native.system_identifier).bind(i64::from(native.database_oid)).bind(&native.full_xid)
             .bind(native.backend_pid).bind(native.backend_started).bind(profile_version.epoch).bind(profile_version.revision.get())
-            .bind(&expected_profile.gid).bind(expected_profile.digest.as_slice()).execute(&self.pool).await.map_err(registry_error)?;
+            .bind(&expected_profile.gid).bind(expected_profile.digest.as_slice()).bind(&binding.owner_binding_proto).execute(&self.pool).await.map_err(registry_error)?;
         authority.check(request).await?;
         Ok(ParticipantProfileTransaction {
             tx,

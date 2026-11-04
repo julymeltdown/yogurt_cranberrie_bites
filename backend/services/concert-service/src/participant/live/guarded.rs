@@ -93,7 +93,10 @@ impl BoundParticipantAuthority {
         self.scope.authority_revision().map_err(owner_error)?;
         Ok(())
     }
-    async fn check_live(&self, request: &VerifiedParticipantRequest) -> Result<(), AvatarError> {
+    pub(crate) async fn check_live(
+        &self,
+        request: &VerifiedParticipantRequest,
+    ) -> Result<(), AvatarError> {
         self.check_bound(request)?;
         self.scope
             .check_subject(PolicyQuery {

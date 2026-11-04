@@ -9,6 +9,7 @@ CREATE TABLE public.concert_participant_profile_operations (
     parent_digest bytea NOT NULL CHECK (octet_length(parent_digest) = 32),
     body_digest bytea NOT NULL CHECK (octet_length(body_digest) = 32),
     guard_binding_digest bytea NOT NULL CHECK (octet_length(guard_binding_digest) = 32),
+    owner_binding_proto bytea NOT NULL CHECK (octet_length(owner_binding_proto) BETWEEN 1 AND 32768),
     release_digest text NOT NULL CHECK (release_digest ~ '^[0-9a-f]{64}$'),
     expected_revision bigint NOT NULL CHECK (expected_revision BETWEEN 1 AND 9007199254740990),
     concert_system_identifier text NOT NULL CHECK (concert_system_identifier ~ '^[1-9][0-9]{0,19}$'),
@@ -42,6 +43,7 @@ BEGIN
        OR OLD.parent_digest IS DISTINCT FROM NEW.parent_digest
        OR OLD.body_digest IS DISTINCT FROM NEW.body_digest
        OR OLD.guard_binding_digest IS DISTINCT FROM NEW.guard_binding_digest
+       OR OLD.owner_binding_proto IS DISTINCT FROM NEW.owner_binding_proto
        OR OLD.release_digest IS DISTINCT FROM NEW.release_digest
        OR OLD.expected_revision IS DISTINCT FROM NEW.expected_revision
        OR OLD.concert_system_identifier IS DISTINCT FROM NEW.concert_system_identifier

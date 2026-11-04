@@ -87,12 +87,12 @@ def register(cluster, session):
     gid = "mcr_sp_" + operation.hex
     cluster.sql(DATABASE, f"""INSERT INTO public.concert_participant_profile_operations(
       operation_id,actor_id,event_id,session_family_id,parent_digest,body_digest,
-      guard_binding_digest,release_digest,expected_revision,
+      guard_binding_digest,owner_binding_proto,release_digest,expected_revision,
       concert_system_identifier,concert_database_oid,concert_full_xid,
       concert_backend_pid,concert_backend_started,profile_epoch,profile_revision,
       profile_prepared_gid,profile_effect_digest)
       VALUES('{operation}','{actor}','{event}','{family}',decode(repeat('11',32),'hex'),
-      decode(repeat('22',32),'hex'),decode(repeat('33',32),'hex'),repeat('a',64),1,
+      decode(repeat('22',32),'hex'),decode(repeat('33',32),'hex'),decode('01','hex'),repeat('a',64),1,
       '{identity['system_identifier']}',{identity['database_oid']},'{identity['full_xid']}',
       {identity['pid']},'{identity['started']}','{epoch}',1,'{gid}',decode(repeat('44',32),'hex'));""")
     return str(operation), identity
