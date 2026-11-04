@@ -277,8 +277,49 @@ def build(inputs=BASELINE):
         'limits': ['No physical venue verification or arrival authority', 'No art fidelity or user acceptance',
                    'No Product bootstrap/operator admission', 'Rust/runtime qualification is separately recorded in docs/mcr/backend/spatial-release.md'],
     }
-    return {'map-manifest.json': manifest, 'source-binding.json': binding, 'readiness.json': readiness,
-            'engineering-source-review.json': review}
+    outputs = {'map-manifest.json': manifest, 'source-binding.json': binding, 'readiness.json': readiness,
+               'engineering-source-review.json': review}
+    if inputs == QUALITY_V6:
+        # A separate source-level review for exact scenery/texture inputs. This
+        # neither rewrites artist records nor reviews arbitrary theme/avatar DTOs.
+        qualified = []
+        for scene in scenes:
+            theme_id = scene['theme_id']
+            provenance = {
+                'source_id': 'mcr_quality_v6_' + theme_id.lower() + '_scenery',
+                'source_kind': 'ORIGINAL_ART',
+                'source_revision': inputs.art_commit + '; scenery ' + scene['scenery_source']['sha256']
+                    + '; source-binding ' + review['source_binding_sha256'],
+                'source_uri': 'https://github.com/julymeltdown/mcr/blob/' + inputs.art_commit
+                    + '/frontend/public/' + scene['scenery_source']['path'],
+                'author': 'MCR reference scene source author; source-bound scenery packaging',
+                'license': 'Original MCR virtual scenery source inputs; attribution retained in pinned artist documents.',
+                'review_state': 'REVIEWED', 'reviewed_by': SOURCE_REVIEWER,
+                'reviewed_at': '2026-11-04T00:58:55Z', 'photo_permission': 'NOT_APPLICABLE',
+            }
+            assets.Draft202012Validator({'$ref': '#/components/schemas/Provenance',
+                                        'components': api['components']}).validate(provenance)
+            qualified.append({'theme_id': theme_id, 'source_provenance': provenance,
+                'scenery_source': scene['scenery_source'], 'runtime_resources': scene['runtime_resources'],
+                'scenery_budget': budgets[theme_id]})
+        outputs['scene-source-qualification.json'] = {
+            'format': 'MCR_SPATIAL_SCENE_SOURCE_QUALIFICATION', 'version': 1,
+            'state': 'CONTRACT_READY', 'admission': 'NOT_ADMITTED',
+            'scope': 'Engineering source qualification of exact per-era scenery and texture inputs for derived virtual theme descriptors',
+            'map': readiness['map'], 'art_commit': inputs.art_commit,
+            'source_binding_sha256': review['source_binding_sha256'],
+            'engineering_source_review_sha256': sha((json.dumps(review, ensure_ascii=True, sort_keys=True, indent=2) + '\n').encode()),
+            'scenes': qualified,
+            'consumer_obligations': [
+                'Use only the exact supplied scenery/texture pins with this canonical map identity',
+                'Retain original artist source provenance and original virtual place records unchanged',
+                'A derived ThemeManifest producer must validate its complete body, map/avatar bindings and content hash',
+                'These source_provenance values describe reviewed source inputs; they do not qualify arbitrary theme fields or avatar data',
+            ],
+            'limits': ['No supplied ThemeManifest or Bootstrap', 'No art fidelity or user acceptance',
+                       'No physical venue verification or arrival authority', 'No Product/operator admission'],
+        }
+    return outputs
 
 
 def main():
