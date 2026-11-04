@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import hashlib
+from contextlib import ExitStack
 import json
 import os
 from pathlib import Path
@@ -315,6 +316,134 @@ class ManagedProfileEntry(unittest.TestCase):
             with patch.object(stack, "load_helpers", side_effect=AssertionError("services imported")):
                 with self.assertRaisesRegex(stack.InputRefusal, "^managed-profile-incomplete$"):
                     stack.run(SimpleNamespace(in04_managed_inputs=path), managed=object())
+
+
+class ManagedProfileLifecycle(unittest.TestCase):
+    """Exercise the actual launcher control flow with no native/product helpers."""
+
+    def run_fixture(self, hooks):
+        from in04_wall_runtime import attachment as attachment_module
+
+        events, written, captured = [], [], {}
+        with tempfile.TemporaryDirectory(prefix="mcr-managed-hooks-") as directory:
+            root = Path(directory).resolve()
+            config = {"version": 1, "helper_source": {"root": str(root), "revision": "a" * 40},
+                "binaries": {}, "pg_bin_dir": str(root), "redis_binary": str(root / "redis"),
+                "openssl_binary": str(root / "openssl")}
+            args = SimpleNamespace(in04_managed_inputs=root / "profile.json", inputs=root / "inputs.json",
+                report=root / "report.json", browser_origin="http://127.0.0.1:3000", allocation_id="source-hooks",
+                startup_timeout_seconds=60, provision_timeout_seconds=60, hold_seconds=120,
+                allocation_work_deadline_epoch=stack.time.time() + 300)
+            owner = SimpleNamespace(cluster=SimpleNamespace(root=root, token="owner"), children={}, rows={},
+                report={"services": []}, health=lambda: events.append("stack-health"),
+                ports=SimpleNamespace(address=lambda _: "127.0.0.1:1", url=lambda _: "http://127.0.0.1:1"),
+                start=lambda: {"gateway_url": "http://127.0.0.1:1"}, descriptor=lambda: {"services": {}})
+            control = SimpleNamespace(stopping=False)
+            def stop():
+                events.append("stop-control")
+                control.stopping = True
+            control.handle_request = stop
+            guard = SimpleNamespace(deadline=stack.time.monotonic() + 300,
+                hard_deadline=stack.time.monotonic() + 500, failure=None,
+                start=lambda: None, phase=lambda *_: None, check=lambda: None)
+            runtime = SimpleNamespace(readiness_value=None, Child=lambda *_: SimpleNamespace(wait_listeners=lambda: None))
+            migration = SimpleNamespace(preflight=None)
+            def write_fd(fd, report):
+                written.append(report.copy())
+                os.close(fd)
+            dev = SimpleNamespace(local_origin=lambda _: None, DevStack=lambda *_: owner,
+                development_environments=None, runtime=runtime, migration=migration,
+                Control=lambda _: control, write_fd=write_fd)
+            world = SimpleNamespace(QualificationGuard=lambda *_: guard,
+                initialize_profiles=lambda *_: None, retain_public_projection=lambda *_: {})
+            prep = SimpleNamespace(current_readiness=None, auth=SimpleNamespace(Browser=lambda *_: SimpleNamespace()),
+                private_json=lambda *_: events.append("private-handoff"))
+            def before_start(**kw):
+                captured["context"] = kw["context"]
+                kw["context"].update(env={}, event="event", rooms=[], digest="digest", release={},
+                                     migration_package=root / "migrations")
+            profile = SimpleNamespace(before_start=before_start, configure_environment=lambda **_: None,
+                principal=lambda **kw: (f"actor-{kw['ordinal']}", root / f"credentials-{kw['ordinal']}",
+                                       f"canonical-secret-bearer-{kw['ordinal']}"),
+                auth_provenance=lambda **_: {"expiresAt": stack.time.time() + 120},
+                after_principals=lambda **_: {})
+            actual_attachment = SimpleNamespace(poll=lambda: events.append("attachment-poll"),
+                health=lambda _: events.append("attachment-health"), handoff=lambda: {},
+                close=lambda: events.append("attachment-close"))
+            def construct(**kw):
+                self.assertIs(kw["context"], captured["context"])
+                events.append("attachment-constructed")
+                return actual_attachment
+            def hook(name):
+                def invoke(**kw):
+                    self.assertIs(kw["attachment"], actual_attachment)
+                    self.assertIs(kw["context"], captured["context"])
+                    self.assertIs(kw["args"], args)
+                    self.assertEqual(set(kw), {"attachment", "context", "args"})
+                    events.append(name)
+                    if hooks == name + "-failure":
+                        raise RuntimeError("injected profile failure")
+                return invoke
+            if hooks == "noncallable":
+                profile.attachment_ready, profile.poll = "not-a-hook", False
+            elif hooks != "absent":
+                profile.attachment_ready, profile.poll = hook("profile-ready"), hook("profile-poll")
+            pins = {name: SimpleNamespace(path=root / name, source="a" * 40, sha256="b" * 64)
+                    for name in stack.SERVICES}
+            def cleanup(*_):
+                events.append("stack-cleanup")
+                return {"cleanup": "PASS", "prepared_before_cleanup": "0"}
+            with ExitStack() as patches:
+                for name, replacement in {
+                    "private_input": lambda _: json.dumps(config).encode(),
+                    "validate_sources": lambda *_: {}, "admitted_cohort": lambda _: (pins, {}),
+                    "advanced_sources": lambda *_: None, "migration_inputs": lambda *_: {"concert-service": {}},
+                    "source_bytes": lambda *_: b"CONCERT_MIGRATION_DIRECTORY",
+                    "load_helpers": lambda _: (world, prep, dev),
+                    "verify_migration_package": lambda *_: None, "cleanup_owned": cleanup,
+                }.items():
+                    patches.enter_context(patch.object(stack, name, replacement))
+                patches.enter_context(patch.object(attachment_module, "ManagedAttachment", side_effect=construct))
+                patches.enter_context(patch("builtins.print"))
+                result = stack.run(args, managed=profile)
+        return result, events, written
+
+    def test_optional_hooks_receive_actual_objects_in_lifecycle_order(self):
+        result, events, reports = self.run_fixture("enabled")
+        self.assertEqual(result, 0)
+        self.assertEqual(events, ["stack-health", "attachment-constructed", "profile-ready", "private-handoff",
+            "private-handoff", "attachment-poll", "profile-poll", "attachment-health", "stop-control",
+            "attachment-close", "stack-cleanup"])
+        self.assertEqual(reports[0]["result"], "PARTIAL")
+
+    def test_profile_without_optional_hooks_keeps_existing_loop(self):
+        result, events, _ = self.run_fixture("absent")
+        self.assertEqual(result, 0)
+        self.assertNotIn("profile-ready", events)
+        self.assertNotIn("profile-poll", events)
+        self.assertLess(events.index("attachment-poll"), events.index("attachment-health"))
+
+    def test_noncallable_optional_attributes_do_not_activate_hooks(self):
+        result, events, _ = self.run_fixture("noncallable")
+        self.assertEqual(result, 0)
+        self.assertNotIn("profile-ready", events)
+        self.assertNotIn("profile-poll", events)
+
+    def test_ready_failure_prevents_publication_and_cleans_both_owners(self):
+        result, events, reports = self.run_fixture("profile-ready-failure")
+        self.assertEqual(result, 1)
+        self.assertNotIn("private-handoff", events)
+        self.assertNotIn("attachment-poll", events)
+        self.assertEqual(events[-2:], ["attachment-close", "stack-cleanup"])
+        self.assertEqual(reports[0]["failure"], "native-stack-operation-failed")
+
+    def test_poll_failure_prevents_health_claim_and_cleans_both_owners(self):
+        result, events, reports = self.run_fixture("profile-poll-failure")
+        self.assertEqual(result, 1)
+        self.assertNotIn("attachment-health", events)
+        self.assertNotIn("stop-control", events)
+        self.assertEqual(events[-2:], ["attachment-close", "stack-cleanup"])
+        self.assertEqual(reports[0]["failure"], "native-stack-operation-failed")
 
 
 class ImmutableSources(unittest.TestCase):

@@ -616,6 +616,9 @@ def run(args, managed=None):
                 attachment = ManagedAttachment(inputs=attachment_inputs, stack=stack, browser=browser,
                     guard=guard, pins=pins, manifests=manifests, context=context, principals=principals,
                     source_root=root, candidate=revision, origin=args.browser_origin, expires_at=expires_at)
+                attachment_ready = getattr(managed, "attachment_ready", None)
+                if callable(attachment_ready):
+                    attachment_ready(attachment=attachment, context=context, args=args)
         control = dev.Control(stack)
         private = {**stack.descriptor(), "browser_origin": args.browser_origin, "event_id": context["event"],
             "auth_http": "Gateway /api/auth/*; canonical private local HTTP mail fixture",
@@ -664,6 +667,9 @@ def run(args, managed=None):
                     stack.health()
                 else:
                     attachment.poll()
+                    managed_poll = getattr(managed, "poll", None)
+                    if callable(managed_poll):
+                        managed_poll(attachment=attachment, context=context, args=args)
                     attachment.health(stack.health)
                 control.handle_request()
     except BaseException as error:

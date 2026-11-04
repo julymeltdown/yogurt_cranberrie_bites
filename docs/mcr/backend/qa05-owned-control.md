@@ -349,3 +349,96 @@ Rust executable or require an otherwise unnecessary Rust rebuild.
 Actual Enrollment/role/checkpoint provider attachment, managed same-stack faults,
 PG restart and App convergence remain NOT_RUN. Root's real profile must be
 present and valid; source construction does not certify any of those outcomes.
+
+## Optional owner-profile lifecycle continuation
+
+After the qualified 39-case handoff was frozen, Root1fc explicitly assigned a
+separate three-path continuation: two optional hook call sites in
+`in03_stack_runtime.py::run`, focused lifecycle cases in
+`test_in03_stack_runtime.py`, and this documentation. The existing active goal
+continues; completion requires implemented hooks, relevant developer validation
+and fixes, documented provenance, committed handoff and Root publication. The
+previous qualified source commit and receipts remain unchanged.
+
+An actual managed profile may expose callable keyword-only hooks:
+
+- `attachment_ready(attachment, context, args)` runs immediately after successful
+  attachment construction, before the private ready handoff is published.
+- `poll(attachment, context, args)` runs after the attachment's guarded poll and
+  before the attachment's health check on each existing owner-loop iteration.
+
+Both receive the actual existing attachment, shared RAM context and argument
+objects. Absent or noncallable optional attributes leave the previous behavior
+intact. Exceptions remain within the launcher's existing failure/cleanup owner:
+ready-hook failure cannot publish readiness; poll-hook failure cannot claim
+post-hook health, and both attachment and stack cleanup are attempted.
+
+Root retains `observer.py`, `runtime.mjs`, `launch.py` and the actual profile.
+Its proposed read-only `restart-baseline` notification records a validated
+baseline only. Root's separately prearmed profile owns any actual restart queue
+through the guarded owner loop. These two hooks introduce no new public port,
+CLI flag, private profile schema, observer restart authority, timer, stack or
+cohort. This continuation does not implement or certify Root's notification or
+restart decision.
+
+Five focused cases exercise the actual `run` control flow using synthetic
+service boundaries: exact hook object identity and ordering, missing optional
+hooks, noncallable attributes, ready failure before publication, and poll failure
+before health. They start no native helpers, product services, Auth, PG or
+browser. These cases were NOT_RUN at preparation; their subsequent fresh
+qualification is recorded below. The prior 39-case matrix is reused rather than
+repeated without cause.
+
+### Optional lifecycle qualification and handoff
+
+The five new `ManagedProfileLifecycle` cases passed on source commit
+`fa95f0dbad1524f6408d511c4616628f26272378`, parent
+`d4300acb5af2104b171dcdf78f2736e02af660e0`. The single command exited 0:
+
+```text
+/Library/Frameworks/Python.framework/Versions/3.14/bin/python3 -B -W error::ResourceWarning backend/scripts/mcr/test_in03_stack_runtime.py ManagedProfileLifecycle -v
+```
+
+The test log reports five cases in 0.048 seconds. The unchanged attachment/control
+source matrices were not rerun. All 135 source/helper/controller pins matched
+before and after execution; Root's four read-only dependencies remain exact
+Root9022 copies. No product service, real Auth, PG, browser or Rust process ran.
+
+Fresh offer `QA05-MANAGED-HOOKS-SOURCE-20261104T2140Z` followed FE37's actual
+FULL at 2026-11-04 21:04:25.723637 UTC. Its release and outer-release receipts
+from source `77ca88b042a0dba936c7d41f0693fcf480228b7d` showed all owned resources
+released; the copied outer receipt SHA-256 is
+`bd60dcb3ffaa3fcbe17c5662dfc21093fe6a03b256ead8859ceccedd4cd87b7a`.
+This World round was accepted at epoch `1793826571.2151418` (2026-11-05
+06:09:31.215142 KST) and reached literal FULL at `1793826580.285345`
+(06:09:40.285345 KST). Evidence is retained at
+`/private/tmp/mcr-world-managed-hooks-20261105`, including `accepted.json`,
+`check-0.log`, `source-pins.json`, `guard-receipt.json` and `full-release.json`.
+The FULL receipt SHA-256 is
+`a65e391b0e7e2d1baec5afb29fe5af277fe8233c240282b3f6f31a5da56427ef`.
+
+The primary controller and independent controller both reported no failure.
+Combined supervisor duration was 0.782804792 seconds; observed maxima were NEW
+65536 bytes, WHOLE 9950687232 bytes, four processes and 84574208 RSS bytes.
+Minimum free during execution was 14010351616 bytes; admission free was
+13318537216 bytes, with 11036835840 bytes remaining after all reserved NEW.
+All owned groups and the independent controller were reaped, no owned PG
+remained and target access was NONE. Literal FULL was sent to allocator21d and
+the named FE83 successor before documentation. No reservation or live workflow
+remains; this offer is spent. Future accounting retains at least this WHOLE peak
+plus subsequent growth.
+
+The original attachment is already published: publisher412e verified the exact
+five-path mapping `d4300acb5af2104b171dcdf78f2736e02af660e0` to
+`bf839af5dd4c6bf7927374c40fa87a9afde1df17`, on master
+`5d962c03a03ec559d304eb5ea87ee301a18d5ce9`, with fresh fetch/remote agreement,
+ancestry and path postimages. Its receipt is
+`/private/tmp/mcr-publisher-412e-attachment-register-receipt.json`. Root's
+unqualified observer/profile/launch dependencies were excluded. This optional
+hook follow-up is a separate three-path handoff to the same named publishing
+developer; no king/SL review or acknowledgment gate applies.
+
+Actual managed profile startup, baseline notification, owner-queued restart,
+canonical-session recovery and App convergence remain NOT_RUN. Root owns those
+real profile/window outcomes, with the relevant implementation counterparts.
+Passing synthetic lifecycle cases does not close those requirements.
