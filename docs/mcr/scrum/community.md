@@ -994,6 +994,30 @@ was withdrawn after the developer denied it. The retained manifest names a
 worker branch, not a verified chat sender. New Gift staffing above is explicit;
 SELF/Auth scope is unchanged.
 
+## Exact World presentation incumbent clearance
+
+World requested actual incumbent truth for a separate ready presentation
+correction. Community has NO current writer, new allocation or reservation on
+`frontend/src/world/composition/index.ts` mount/renderStatus summary
+presentation/state-hook hunks, `frontend/src/app/shell.css` closed-world
+stage/tools plus composition-summary/controls-stage presentation hunks, or
+the `WorldShell` closed-world-tools branch. No Community conflict is recorded.
+Former `230` FE33 caller composition hunks were explicitly returned at the
+published handoff; they were lifecycle/factory/release bindings, not a current
+summary-presentation reservation. Former `204` Party CSS-only repair is
+complete/null/clean STOP/archived with leases returned and never granted
+shell CSS/WorldShell presentation rights. `26e` is World-owned now, not a
+Community incumbent or reservation on these paths.
+
+This relinquishes any residual historical Community reservation ONLY; it
+does not create a global whole-file grant or expand a worker's active goal.
+World records the exact disjoint receiving allocation before writes and
+obtains Social's actual WorldShell-branch clearance separately. Live status,
+retry/privacy/virtual-physical notice, lifecycle/DTO/replication/camera/FE33
+mural semantics remain excluded from a presentation lease; no MAP/panels/
+footer/global typography rights follow. No Community worker stop, technical
+review, validation rerun or King acknowledgment is needed.
+
 ## Current frontend capture queue
 
 World relayed the explicit queue: ONLY ONE browser/native capture workflow
