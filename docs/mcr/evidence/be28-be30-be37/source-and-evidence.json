@@ -1,0 +1,127 @@
+{
+  "status": "IN_PROGRESS_ORIGINAL_TASKS_NOT_ACCEPTED",
+  "recorded_epoch": 1793826533.9160619,
+  "retained_base": "2ce48fa49046ab208705fbcf1ed837d368dd6390",
+  "published_reference": "5f9f2fc773905011447faedf22125610b007e19a",
+  "kind": "STATIC_READSET_AND_REUSED_COMPONENT_RECEIPTS_NOT_NEW_EXECUTION",
+  "source": [
+    {
+      "path": "backend/crates/concert-domain/src/relationship/social.rs",
+      "published_sha256": "dfa3eea9e782da6fd098eaccf3edb9daabe3ebfb7efd306122927957a4fba6e5",
+      "retained_sha256": "dfa3eea9e782da6fd098eaccf3edb9daabe3ebfb7efd306122927957a4fba6e5",
+      "identical": true
+    },
+    {
+      "path": "backend/services/concert-service/src/relationship/social.rs",
+      "published_sha256": "2e75e575cb491811e90b4fe6f60c4caa206a223e4d48d7e8126781ecfe325a5a",
+      "retained_sha256": "2e75e575cb491811e90b4fe6f60c4caa206a223e4d48d7e8126781ecfe325a5a",
+      "identical": true
+    },
+    {
+      "path": "backend/services/concert-service/src/relationship/crypto.rs",
+      "published_sha256": "5e6c461eb8198b4d3b26782b7e6ea5d6792ea6808a96e4cbb3936576eca2eb2f",
+      "retained_sha256": "5e6c461eb8198b4d3b26782b7e6ea5d6792ea6808a96e4cbb3936576eca2eb2f",
+      "identical": true
+    },
+    {
+      "path": "backend/services/concert-service/src/relationship/eligibility.rs",
+      "published_sha256": "ed44f1bc83bae49a12693ba134437e1f4c69830aaee5db97c3e406c7eee4075f",
+      "retained_sha256": "ed44f1bc83bae49a12693ba134437e1f4c69830aaee5db97c3e406c7eee4075f",
+      "identical": true
+    },
+    {
+      "path": "backend/services/concert-service/src/social_live/producer.rs",
+      "published_sha256": "128f5cdb7b9ce0ad429d706b79b2c7a5a9596592d9f738035090d03ddf0732a9",
+      "retained_sha256": "128f5cdb7b9ce0ad429d706b79b2c7a5a9596592d9f738035090d03ddf0732a9",
+      "identical": true
+    },
+    {
+      "path": "backend/services/concert-service/src/social_live/protocol.rs",
+      "published_sha256": "782be96e0d102e353ba79557811447cfee5befe7b2611ce45ab9e75c8d9e36d1",
+      "retained_sha256": "782be96e0d102e353ba79557811447cfee5befe7b2611ce45ab9e75c8d9e36d1",
+      "identical": true
+    },
+    {
+      "path": "backend/services/concert-service/src/social_live/keys.rs",
+      "published_sha256": "d06f483c574d38b59be54bb0747deb024e0c465395b5f4aa52cfad669d830767",
+      "retained_sha256": "d06f483c574d38b59be54bb0747deb024e0c465395b5f4aa52cfad669d830767",
+      "identical": true
+    },
+    {
+      "path": "backend/services/concert-service/src/social_live/provenance.rs",
+      "published_sha256": "16469da793ba46376bc207909a1fab78287252e3a9dbb8dffbab7f8261bf2740",
+      "retained_sha256": "16469da793ba46376bc207909a1fab78287252e3a9dbb8dffbab7f8261bf2740",
+      "identical": true
+    },
+    {
+      "path": "backend/services/concert-service/src/social_live/read_child.rs",
+      "published_sha256": "e3275270c39641f482f09a80e967fed846c505e97abbd98ef9529c812f24071a",
+      "retained_sha256": "e3275270c39641f482f09a80e967fed846c505e97abbd98ef9529c812f24071a",
+      "identical": true
+    },
+    {
+      "path": "backend/services/concert-service/src/social_live/witness.rs",
+      "published_sha256": "730ed42397ae209ae0dcf3ca3ce65fd7a1a41c42eaed86eac654c885516ae700",
+      "retained_sha256": "730ed42397ae209ae0dcf3ca3ce65fd7a1a41c42eaed86eac654c885516ae700",
+      "identical": true
+    },
+    {
+      "path": "backend/services/concert-service/src/social_live/invalidation.rs",
+      "published_sha256": "9aae224b0d6f7b312742ca9c96b6da1d6d5554c6b40bfbba22ad7066a09be4b8",
+      "retained_sha256": "b20e5541312204825198c88bfbf2f26cabdd8bc398970787239586fc17ad62c2",
+      "identical": false
+    },
+    {
+      "path": "backend/services/concert-service/src/adapters/out/relationship_authority/guarded/scope.rs",
+      "published_sha256": "f7514e348bd271c8738753c9a5b3b3f490274c7f22218d0004bb0ae55e6fe507",
+      "retained_sha256": "f7514e348bd271c8738753c9a5b3b3f490274c7f22218d0004bb0ae55e6fe507",
+      "identical": true
+    }
+  ],
+  "receipts_rehashed": [
+    {
+      "path": "/private/tmp/mcr-social-0051-create-saffwf8h/native-report.json",
+      "present": false,
+      "sha256": null
+    },
+    {
+      "path": "/private/tmp/mcr-social-0051-create-saffwf8h/full-release.json",
+      "present": false,
+      "sha256": null
+    },
+    {
+      "path": "/private/tmp/mcr-social-sharing-f_ut5nyi/social-report.json",
+      "present": true,
+      "sha256": "17b862bc0fc39d05847dd22d3a37312a69f43c4b7f7a70f0fde02122dc257f85"
+    },
+    {
+      "path": "/private/tmp/mcr-social-sharing-f_ut5nyi/sharing-report.json",
+      "present": true,
+      "sha256": "653d3019eb4883568422ff40bb73d0e8b3e03887e62f7c3babdfc02e3540c188"
+    },
+    {
+      "path": "/private/tmp/mcr-social-sharing-f_ut5nyi/full-release.json",
+      "present": true,
+      "sha256": "0d7c7f3c0fece0b9a08e0e2f76c723588d333ace7c678c4a70a3cd7b00bf2090"
+    },
+    {
+      "path": "/private/tmp/mcr-social-copied-pjvn8yqd/native-report.json",
+      "present": true,
+      "sha256": "9f4179dc2f1dc87d9ebad7a65e5be81161bf97a27bb7aae27d9374d2eb6e8f9a"
+    }
+  ],
+  "source_difference": "invalidation.rs differs only by retained unpublished BE39 publish_moderation_in helper; canonical Social invalidation implementation is otherwise unchanged. No unpublished moderation helper was copied into publication.",
+  "remaining": "Current mounted Root canonical HTTP/WS/cache Social cohort; qualified executable/helper/profile/private principal descriptor and existing-event stage unavailable from actual owners. Positive external-age scenarios require genuine claims; independent denials are not blanket-held by that requirement.",
+  "frozen_be38": "2acfba0b032be45272c895a2126c6bce28c64658",
+  "new_execution": "NOT_RUN",
+  "goal": "Reuse aligned unfinished original Social goal, currently API status blocked; no new goal or false completion/reset.",
+  "handoff_checks": {
+    "kind": "DOCUMENTATION_AND_EXISTING_HASH_CONSISTENCY_ONLY",
+    "source_files": 12,
+    "receipt_files_present": 4,
+    "receipt_files_absent": 2,
+    "result": "PASS",
+    "exit_code": 0,
+    "new_product_execution": "NOT_RUN"
+  }
+}
