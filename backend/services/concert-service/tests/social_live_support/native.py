@@ -110,7 +110,7 @@ def run(args,report):
                         message=match[2]
                         known=re.fullmatch(r'(query returned (no|more than one) rows|record "[a-zA-Z_0-9]+" (has no field "[a-zA-Z_0-9]+"|is not assigned yet)|column reference "[a-zA-Z_0-9]+" is ambiguous|operator does not exist: [a-zA-Z_0-9 =\[\]]+|relationship authority expired(?: during policy generation)?|unbound social policy outcome)',message)
                         safe.append({'sqlstate':match[1],'message':message if known else 'Database error; raw text omitted'})
-                    context=re.search(r'CONTEXT:\s+(PL/pgSQL function [a-zA-Z_0-9.]+\([a-zA-Z_0-9, ]*\) line [0-9]+ at [A-Z ]+)$',line)
+                    context=re.search(r'CONTEXT:\s+(PL/pgSQL function [a-zA-Z_0-9.]+\([a-zA-Z_0-9, ]*\) line [0-9]+ at [A-Za-z ]+)$',line)
                     if context:safe.append({'context':context[1]})
             report['postgres_diagnostics']=safe[-100:]
             if cluster.started:prepared_zero('before-teardown-finally')
