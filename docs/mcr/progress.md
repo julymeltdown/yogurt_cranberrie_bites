@@ -1,6 +1,6 @@
 # Execution record — functional delivery
 
-Updated **2026-11-05T03:25:55+09:00** for the user's full 112-task replan. The [revised plan](functional-delivery-plan.md) and [machine register](task-progress-2026-11-04.json) are the current execution and progress references. The original specification/source and historical acceptance evidence remain intact.
+Updated **2026-11-05T03:42:03+09:00** for the user's full 112-task replan. The [revised plan](functional-delivery-plan.md) and [machine register](task-progress-2026-11-04.json) are the current execution and progress references. The original specification/source and historical acceptance evidence remain intact.
 
 ## Current progress
 
@@ -8,24 +8,24 @@ Updated **2026-11-05T03:25:55+09:00** for the user's full 112-task replan. The [
 | --- | --- |
 | Original required tasks | 112 |
 | Active functional-delivery tasks | 111 |
-| Complete under revised scope | **40/111 (36.0%)** |
-| Remaining active tasks | **71** |
+| Complete under revised scope | **41/111 (36.9%)** |
+| Remaining active tasks | **70** |
 | Deferred by user | **QA08: 1; not passed or complete** |
 | Historical original-task criteria baseline | 39/112, preserved |
-| Current original-task criteria outcomes | 47/112, including eight newly published closures |
+| Current original-task criteria outcomes | 48/112, including nine newly published closures |
 | Historically closed IDs with current deltas | 7 |
 | Required IA entries | 61, all retained; full readiness reconciliation remains open |
 | Integrated outcomes | IN01 historically accepted; IN02/IN04/IN05 open; IN03 awaiting authorized provider/claims input |
 | Product delivery decision | NOT_READY |
 
-This is an unweighted task-count fraction, not an effort estimate or a claim that 36.0% of the product is usable. The former 11 count omitted later explicit owner dispositions. The 39 historical outcomes include completed contract, fixture and policy work; they are not 39 accepted live features. Seven affected historical IDs retain current work. Eight new original-task closures (C07, FE03, FE04, FE11, FE16, AR03, FE35, C06) bring the current revised count to 40. No completed work was erased, and bounded helper deliveries did not inflate the total.
+This is an unweighted task-count fraction, not an effort estimate or a claim that 36.9% of the product is usable. The former 11 count omitted later explicit owner dispositions. The 39 historical outcomes include completed contract, fixture and policy work; they are not 39 accepted live features. Seven affected historical IDs retain current work. Nine new original-task closures (C07, FE03, FE04, FE11, FE16, AR03, FE35, C06, FE17) bring the current revised count to 41. No completed work was erased, and bounded helper deliveries did not inflate the total.
 
 | Revised state | Count |
 | --- | ---: |
-| DONE | 40 |
+| DONE | 41 |
 | IN_PROGRESS | 57 |
 | WAITING_INPUT | 3 |
-| OPEN | 4 |
+| OPEN | 3 |
 | REOPENED | 7 |
 | DEFERRED_BY_USER | 1 |
 
@@ -73,7 +73,7 @@ IN03 is **WAITING_INPUT** for genuine authorized age-claim/provider provenance f
 - The prior recovery figure was 18.19 GB (about 16.94 GiB), not 18.19 GiB. By 2026-11-04T16:43:56Z, resource lead 21d recorded actual acceptance of C07 SOURCE-B, Map SOURCE-A, AR03 browser B1, Gifts browser B2 and Root IN03 copied-native. Last-admission free space was 13.57 GiB, leaving 12.01 GiB after the declared combined new-growth reservations. That was a historical admission snapshot. Subsequent owner reports record resumed Rust work and passing scoped Party, C07, Gifts and BE42 runtime increments. Use fresh measurements for each new admission; these increments do not close their whole parent features.
 - All 112 task IDs and61 IA entries remain. QA08 stays DEFERRED_BY_USER. Existing owner evidence and original outcomes remain in the register and Git history; generated exports stay PLANNING_ONLY.
 
-Current staffing: FE17/motion83, FE31/36/default sharing and safety21e, FE39/default Admin53d, FE34/Profile213, FE37/moderation230 and FE38/operations092f retain explicit scopes. FE35 original client acceptance is closed; FE37 feature work awaits actual backend producers and app composition. World20f owns the separate motion producer. Completed CI50a8 has a new enrollment-related generated-output assignment, with fresh exclusive checkout custody because its old loan was returned. QA06 and deletion/domain owners continue their existing work. Source-pin-only backend resource reapproval is removed; actual capacity admission still applies. No king acknowledgment or technical review gates delivery.
+Current staffing: FE17 is complete and its developer83 is reassigned original FE41 lifecycle work through Root153's exact scope transfer. Existing21e owns FE31/36 default sharing and safety,53d default Admin,213 Profile,230 the blocked moderation feature remainder and092f operations. Original IN04 QA e2a9 is restored for missing Wall B runner source work while live inputs remain unavailable. World20f owns real motion;50a8 qualifies newly changed Enrollment/C05 inputs. Backend/domain and QA06 owners retain their scopes. All delivery remains independent of king acknowledgment or technical review.
 
 ## Next outcomes
 
