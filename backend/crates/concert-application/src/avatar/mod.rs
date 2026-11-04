@@ -29,12 +29,32 @@ pub struct AvatarGrant {
     pub operation: AvatarOperation,
     pub release_digest: String,
 }
+/// Identity captured by the repository from its actual effect transaction.
+/// Request/release binding and scope settlement remain the fence owner's duty.
+#[derive(Clone, Debug, PartialEq, Eq)]
+pub struct AvatarTransactionIdentity {
+    pub system_identifier: String,
+    pub database_oid: u32,
+    pub full_xid: String,
+    pub backend_pid: i32,
+    pub backend_started: chrono::DateTime<chrono::Utc>,
+}
+#[async_trait]
+pub trait AvatarEffectFence: Send + Sync {
+    async fn register(&self, transaction: AvatarTransactionIdentity) -> Result<(), AvatarError>;
+    async fn check(&self) -> Result<(), AvatarError>;
+}
 /// Implementations must check a verified canonical actor, exact event/HTTP
 /// target, live bounded authority, current release and server capability.
 /// Called after every await and immediately before commit. Client booleans,
 /// bootstrap read assertions and fixture metadata alone cannot implement this.
 pub trait AvatarAuthority: Send + Sync {
     fn check(&self) -> Result<AvatarGrant, AvatarError>;
+    /// Product writes require a real held-scope fence. The default preserves
+    /// read-only and explicitly synthetic fixture implementations.
+    fn effect_fence(&self) -> Option<&dyn AvatarEffectFence> {
+        None
+    }
 }
 pub fn authorize(
     authority: &dyn AvatarAuthority,

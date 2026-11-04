@@ -1,6 +1,6 @@
 {
   "status": "MOCK_READY",
-  "candidate": "8cf4d29c928bafb9fe9dd8991db132901d9a3179",
+  "candidate": "4c76934825a129e3430031678b75f3967ce80317",
   "referenceSha256": "d9a8fae2f96a82253542019ab673589b3938627956eace15c8594c702b5c4617",
   "browser": "156.0.8078.80",
   "composition": "Actual createAppRouter/createProductionPorts on real /login browser URL; no rendering/composition override; synthetic Auth HTTP/cookie policy; bootstrap deliberately denied",
@@ -12,47 +12,64 @@
           "x": 6,
           "y": 6,
           "width": 348,
-          "height": 729.171875
+          "height": 733.46875
         },
         "heading": {
           "x": 51.734375,
           "y": 160,
           "width": 263.328125,
-          "height": 37.609375
+          "height": 37.625
         },
         "email": {
           "x": 51.734375,
-          "y": 229.34375,
+          "y": 229.359375,
           "width": 263.328125,
           "height": 44
         },
         "password": {
           "x": 51.734375,
-          "y": 311.078125,
+          "y": 311.09375,
           "width": 263.328125,
           "height": 44
         },
         "submit": {
           "x": 51.734375,
-          "y": 415.078125,
+          "y": 415.09375,
           "width": 263.328125,
-          "height": 45.5
+          "height": 45.4375
         },
         "providers": {
           "x": 51.734375,
-          "y": 556.875,
+          "y": 561.171875,
           "width": 263.328125,
           "height": 48
         },
         "create": {
           "x": 41.734375,
-          "y": 622.171875,
+          "y": 626.46875,
           "width": 283.328125,
           "height": 44
         },
         "overflow": false,
-        "scrollHeight": 741,
+        "scrollHeight": 745,
         "viewportHeight": 689
+      },
+      "printAssets": {
+        "font": true,
+        "family": "\"MCR Auth Print\", \"Arial Narrow\", sans-serif",
+        "faces": [
+          "loaded"
+        ],
+        "images": [
+          {
+            "width": 2172,
+            "height": 724
+          },
+          {
+            "width": 2172,
+            "height": 724
+          }
+        ]
       },
       "actualBrowserRoutes": "PASS",
       "nativeValidityKeyboard": "PASS",
@@ -68,47 +85,64 @@
           "x": 6,
           "y": 6,
           "width": 378,
-          "height": 745.609375
+          "height": 749.96875
         },
         "heading": {
           "x": 55.5,
-          "y": 169.859375,
+          "y": 169.875,
           "width": 286.4375,
           "height": 40.75
         },
         "email": {
           "x": 55.5,
-          "y": 244.0625,
+          "y": 244.109375,
           "width": 286.4375,
           "height": 44
         },
         "password": {
           "x": 55.5,
-          "y": 327.515625,
+          "y": 327.59375,
           "width": 286.4375,
           "height": 44
         },
         "submit": {
           "x": 55.5,
-          "y": 431.515625,
+          "y": 431.59375,
           "width": 286.4375,
-          "height": 45.5
+          "height": 45.4375
         },
         "providers": {
           "x": 55.5,
-          "y": 573.3125,
+          "y": 577.671875,
           "width": 286.4375,
           "height": 48
         },
         "create": {
           "x": 45.5,
-          "y": 638.609375,
+          "y": 642.96875,
           "width": 306.4375,
           "height": 44
         },
         "overflow": false,
-        "scrollHeight": 758,
+        "scrollHeight": 762,
         "viewportHeight": 746
+      },
+      "printAssets": {
+        "font": true,
+        "family": "\"MCR Auth Print\", \"Arial Narrow\", sans-serif",
+        "faces": [
+          "loaded"
+        ],
+        "images": [
+          {
+            "width": 2172,
+            "height": 724
+          },
+          {
+            "width": 2172,
+            "height": 724
+          }
+        ]
       },
       "actualBrowserRoutes": "PASS",
       "nativeValidityKeyboard": "PASS",
@@ -130,41 +164,58 @@
           "x": 60.484375,
           "y": 183,
           "width": 317.234375,
-          "height": 44.921875
+          "height": 44.390625
         },
         "email": {
           "x": 60.484375,
-          "y": 262.921875,
+          "y": 262.8125,
           "width": 317.234375,
           "height": 44
         },
         "password": {
           "x": 60.484375,
-          "y": 347.921875,
+          "y": 348.234375,
           "width": 317.234375,
           "height": 44
         },
         "submit": {
           "x": 60.484375,
-          "y": 451.921875,
+          "y": 452.234375,
           "width": 317.234375,
-          "height": 45.5
+          "height": 45.4375
         },
         "providers": {
           "x": 60.484375,
-          "y": 593.71875,
+          "y": 598.3125,
           "width": 317.234375,
           "height": 48
         },
         "create": {
           "x": 50.484375,
-          "y": 659.015625,
+          "y": 663.609375,
           "width": 337.234375,
           "height": 44
         },
         "overflow": false,
         "scrollHeight": 822,
         "viewportHeight": 822
+      },
+      "printAssets": {
+        "font": true,
+        "family": "\"MCR Auth Print\", \"Arial Narrow\", sans-serif",
+        "faces": [
+          "loaded"
+        ],
+        "images": [
+          {
+            "width": 2172,
+            "height": 724
+          },
+          {
+            "width": 2172,
+            "height": 724
+          }
+        ]
       },
       "actualBrowserRoutes": "PASS",
       "nativeValidityKeyboard": "PASS",
@@ -177,9 +228,9 @@
   "errors": [],
   "sources": {
     "frontend/src/features/auth/ui/SignIn.tsx": "cb1d6a52d8cec34f8b149d2037212996a6e1627eaf06f2cbcb432d5f297ab7ea",
-    "frontend/src/features/auth/ui/sign-in.css": "bfd29a634751cf5d460e302c466f00fc91231db1d6afa273b49d0ab044bfbc4f",
-    "frontend/src/features/auth/ui/reference-sign-in/Cemetery.tsx": "9487f3e648726145a89ec460953787a01f6b8f81a20b0e8a7d8691bd2615a240",
-    "frontend/src/features/auth/ui/reference-sign-in/ProviderMark.tsx": "5121bdbae5d0ca5b6cb71d8a35c5de819a6e9ec5f42e62a2b18905c46f15c246",
+    "frontend/src/features/auth/ui/sign-in.css": "fec70a0073a19b7b1bdeeb0299b4790e3127d2cb436786cdeb29841cf165c7d5",
+    "frontend/src/features/auth/ui/reference-sign-in/Cemetery.tsx": "02f36167314327acb0f758e0698abe1ed3314f3351a35a7931cbabaf98f50588",
+    "frontend/src/features/auth/ui/reference-sign-in/ProviderMark.tsx": "ef51be71f52d9c19d90af787def66d9a3d9c6f80ed59210ca9a2798de5e308f3",
     "frontend/src/app/router.tsx": "8ce076a0c8929b3cb7dbf16e3683f2e1c3fab77be7385b519a36f282d8119eba",
     "frontend/src/app/PublicBoundary.tsx": "4398d717e9a6a19768f69904d08e96559188ba99c53cc621c3b4214c3393eeb9",
     "frontend/src/app/ports.ts": "ecd97ae81cd65ba7e2078fc949f607cd4662cdaa9cb1e3af015eb63417dbaa59",
@@ -187,34 +238,37 @@
     "frontend/src/shared/styles/base.css": "b360af38fefb8651262d2cfccc91e5a71d5691da8831d5dda6349a88ab9a8d42",
     "frontend/src/features/auth/model/session.ts": "6665d52e018a8b9b900ed79cce627309889084202498d80420c47fd44a2a44b1",
     "frontend/src/features/auth/__tests__/reference-target/fidelity/app.tsx": "78948a413a4c00092d47f312a61a395366f1c0799fade8c3fcd0cf04043a9d77",
-    "frontend/src/features/auth/__tests__/reference-target/fidelity/native.mjs": "89e9c09c4eb02f4a5a188b4039161a2f0fe4bcc97ec45cf1140ec1a82ee6d2db",
-    "frontend/src/features/auth/__tests__/reference-target/fidelity/app.html": "c8779d8be84c2ae57f4ce5f5cf73240fb9e90f71fd227a03aa5791bc00b9e3f2",
-    "frontend/src/features/auth/__tests__/reference-target/fidelity/checks.ts": "fa3d95ff760587b62c354a53acfb82d13bea1747d31d6d88f27721be04cf3700",
-    "frontend/src/features/auth/__tests__/reference-target/fidelity/build.mjs": "452e3cf0389971ad643a32548738a83ec59a67cca96e5ac564cf6b8457845f06",
-    "frontend/src/features/auth/__tests__/reference-target/fidelity/preimages.json": "de360e7c4f49d7da42e778ce73f68e58822bd07cb0f6de4a067e5e16848281a7"
+    "frontend/src/features/auth/__tests__/reference-target/fidelity/native.mjs": "b66ebd1d56739d674f2d39ae6836bc7432a09c4d9dc6ba7dd11eff03d50d9bbc",
+    "frontend/src/features/auth/ui/reference-sign-in/artwork/build-surfaces.mjs": "8f72835bc2cb184a1b117ec78c8e6e878983daf7af9d1d1c6582d7dc944e0b6a",
+    "frontend/src/features/auth/ui/reference-sign-in/artwork/cemetery-bottom-v1.png": "104e4b1acdb16ac40c671e62fd858917b1507b87935d43a80334fe7622bb4c92",
+    "frontend/src/features/auth/ui/reference-sign-in/artwork/cemetery-top-v1.png": "230480492acf6eb841c4aa1dbb66e622e8ef866aed2694f91308d50572b6b072",
+    "frontend/src/features/auth/ui/reference-sign-in/artwork/frame-print.svg": "4b5a02fb4d8b1af8d62c126d094dca2a23ec4ee117dafc1649192a4edbe20f00",
+    "frontend/src/features/auth/ui/reference-sign-in/artwork/paper-print.svg": "b9cb21787f67b4f2319dda329fefb803b9bdf103f17cc44de65267c04dc57960",
+    "frontend/src/features/auth/ui/reference-sign-in/artwork/provenance.json": "f32023343c72f95716fde3501c8d697396f197533f686ae33961a981f9ffe3d8",
+    "frontend/src/features/auth/ui/reference-sign-in/artwork/red-ink.svg": "f2d413558c73423e776155d48eadc9907160a9a7fd4b8cddbfe0840a7f70cf4b",
+    "frontend/src/features/auth/ui/reference-sign-in/typography/RobotoCondensed-variable.ttf": "dace262afcee68a5276f200d8026c57221735c0118ab5fda8c2c0d3dc409a8d0",
+    "frontend/src/features/auth/ui/reference-sign-in/typography/build-print.py": "e237d672b4eb1614121f432b84a1b05df0516b2b2f6b0a37db678892ae82eff8",
+    "frontend/src/features/auth/ui/reference-sign-in/typography/mcr-auth-print.woff": "cb8969bdfb81ea7cb9e5d4b2d3918a84ae41adae5a4ab89986887f51455acf63",
+    "frontend/src/features/auth/ui/reference-sign-in/typography/robotocondensed-OFL.txt": "0e4cc6ece88573545be2ed25835363662a6182ba4a4c1b5c8feda52add30e8a6",
+    "frontend/src/features/auth/ui/reference-sign-in/typography/sources.json": "2eb564e0072e764cd3c4402a923c90929fb478655a16e6813078e1689893782a",
+    "frontend/src/features/auth/__tests__/reference-target/fidelity/artwork/check-assets.py": "54ca8c34144c4221979c1b77f990fea04d2ddcbdc741ad3076344ebefc718f24",
+    "frontend/src/features/auth/__tests__/reference-target/fidelity/artwork/preimages.json": "f1ffe87d18de1b8ab3c88a73b5155be2d6c322e4b41350b6265ee1a73ab5519b",
+    "contracts/generated/mcr-core.openapi.json": "4ea617a4ccf96c72b2e5db99e64666f676048f5baf215a2a05d540ef3bdde542",
+    "contracts/generated/mcr-domain.openapi.json": "ef678d3445e5ee5ed3b90594ef1decc1d53b342166b10a91c4d9c9b3f20aa057",
+    "contracts/fixtures/core/auth-success.json": "32cd1f21e4e33b87945f55c7cafe22e77dbebb8caa17269a6f7eafdbf5ffb5c6",
+    "contracts/fixtures/core/auth-capabilities-disabled.json": "20807e295b679d02d44526869a83d93cd34e18251418e57ba606bc59d9ac1efb"
   },
   "captures": {
-    "frontend/src/features/auth/__tests__/reference-target/fidelity/evidence/login-360.png": "154757d02ae0ceb11ec293a60c471370af87df777ba04599ec76f110a8a2ab6b",
-    "frontend/src/features/auth/__tests__/reference-target/fidelity/evidence/login-390.png": "1d52a891781b1e2eb4e5a7a6cfb2e71d7b20f4410ff7a962c2ebe97106b96502",
-    "frontend/src/features/auth/__tests__/reference-target/fidelity/evidence/credentials-error-390.png": "4679d0a1347a6d2f8955114fdf883c4ee9d8a55ebd580a0b9e3212f2675a868e",
-    "frontend/src/features/auth/__tests__/reference-target/fidelity/evidence/pending-390.png": "4f9f353126268bd56e2a78993eb738f02dd872dd7805bddf9cfdde594e2ce178",
-    "frontend/src/features/auth/__tests__/reference-target/fidelity/evidence/unavailable-390.png": "c24262aedeb4f32bf26578976bf61985c702f82dc64cf97e5d6880967bf40114",
-    "frontend/src/features/auth/__tests__/reference-target/fidelity/evidence/login-430.png": "a08d19658079e4328a6b00048878e2adbe9b4cdc25957fa47089e7564608b4b8",
-    "frontend/src/features/auth/__tests__/reference-target/fidelity/evidence/comparison-390.png": "7bbd570e57be4f5102983816e8bf1f89422239fc0b3c75f4a6084ed216f37041"
+    "frontend/src/features/auth/__tests__/reference-target/fidelity/evidence/login-360.png": "1fd7593636f8878f90c9a26dbd7d99a5eb9a967b8bdc96352cbbe06b1ca4c389",
+    "frontend/src/features/auth/__tests__/reference-target/fidelity/evidence/login-390.png": "e327718962f5a8768340a89f7a3f47d645538fc4015880200aba2186648f817d",
+    "frontend/src/features/auth/__tests__/reference-target/fidelity/evidence/credentials-error-390.png": "1d8bd5b2f054825f5bc6057cc81b00965e66696579cf59e95e3773d91845c67e",
+    "frontend/src/features/auth/__tests__/reference-target/fidelity/evidence/pending-390.png": "d436fedb49552b2409138a8d5dd55cb398a7acb142d39dddbffc1c1973fb9cc0",
+    "frontend/src/features/auth/__tests__/reference-target/fidelity/evidence/unavailable-390.png": "0e093a9049bcb2050c8dda0fb67b963fcb0522a1382e28cdaf5c9db3ec9d7745",
+    "frontend/src/features/auth/__tests__/reference-target/fidelity/evidence/login-430.png": "c5fdafd24869f5472496ad6faed6931dd0c0d25c14f82ab43081b7058ad6f3a6",
+    "frontend/src/features/auth/__tests__/reference-target/fidelity/evidence/comparison-390.png": "51c978b96ce785ee751791ce9c0b98688a00354ee15c77f5cfccf4eeceb5536f"
   },
-  "limits": "No live backend/provider, mobile hardware, or world qualification. Visual comparison is developer inspection, not pixel identity or complete ten-route acceptance.",
-  "visualInspection": {
-    "widths": [
-      360,
-      390,
-      430
-    ],
-    "states": [
-      "ready",
-      "credentials-error",
-      "unavailable"
-    ],
-    "comparison": "comparison.html and comparison-390.png; preserved target at original individual phone aspect",
-    "result": "Functional reference composition refined; exact print texture/drawing remains an explicit visual difference. No whole-project visual acceptance claim."
-  }
+  "limits": "No live backend/provider, mobile hardware, or world qualification. Visual comparison is developer inspection, authored asset match rather than identical raster pixels; complete ten-route acceptance is separate.",
+  "task": "FE-REF-AUTH-ARTWORK-MATCH",
+  "staticReferenceMatch": "PASS",
+  "visualReview": "artwork-review.json"
 }

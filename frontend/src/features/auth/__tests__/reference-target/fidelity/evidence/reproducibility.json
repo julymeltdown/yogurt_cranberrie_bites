@@ -1,0 +1,20 @@
+{
+  "status": "PASS",
+  "commands": [
+    {
+      "command": "python3 frontend/src/features/auth/ui/reference-sign-in/typography/build-print.py",
+      "exitCode": 0
+    },
+    {
+      "command": "NODE frontend/src/features/auth/ui/reference-sign-in/artwork/build-surfaces.mjs",
+      "exitCode": 0
+    }
+  ],
+  "beforeAndAfterSha256": {
+    "frontend/src/features/auth/ui/reference-sign-in/typography/mcr-auth-print.woff": "cb8969bdfb81ea7cb9e5d4b2d3918a84ae41adae5a4ab89986887f51455acf63",
+    "frontend/src/features/auth/ui/reference-sign-in/artwork/frame-print.svg": "4b5a02fb4d8b1af8d62c126d094dca2a23ec4ee117dafc1649192a4edbe20f00",
+    "frontend/src/features/auth/ui/reference-sign-in/artwork/paper-print.svg": "b9cb21787f67b4f2319dda329fefb803b9bdf103f17cc44de65267c04dc57960",
+    "frontend/src/features/auth/ui/reference-sign-in/artwork/red-ink.svg": "f2d413558c73423e776155d48eadc9907160a9a7fd4b8cddbfe0840a7f70cf4b"
+  },
+  "dependencyInstallation": "NONE; existing FontTools4.62.1 and Node24.22.2"
+}
