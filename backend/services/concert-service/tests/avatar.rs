@@ -38,7 +38,10 @@ async fn native_avatar_reads_share_presence_fences_and_writes_still_wait() {
     let own = key(event, user);
     support::seed(&pool, event).await;
     BootstrapPostgresRepository::new(pool.clone())
-        .bootstrap(&support::admission(event, user), release.release().defaults())
+        .bootstrap(
+            &support::admission(event, user),
+            release.release().defaults(),
+        )
         .await
         .unwrap();
     let service = Arc::new(
@@ -62,8 +65,10 @@ async fn native_avatar_reads_share_presence_fences_and_writes_still_wait() {
             .fetch_one(&mut *held)
             .await
             .unwrap();
-        let authority = support::Authority::new(own, AvatarOperation::Read, service.release_digest());
-        let read = tokio::time::timeout(Duration::from_secs(2), service.read(own, &authority)).await;
+        let authority =
+            support::Authority::new(own, AvatarOperation::Read, service.release_digest());
+        let read =
+            tokio::time::timeout(Duration::from_secs(2), service.read(own, &authority)).await;
         if !matches!(&read, Ok(Ok(_))) {
             held.rollback().await.unwrap();
             pool.close().await;
