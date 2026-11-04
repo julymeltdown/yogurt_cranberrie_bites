@@ -88,14 +88,20 @@ try {
     const page = await context.newPage(), errors = []
     page.on('pageerror', e => errors.push(e.message))
     await page.addInitScript(() => {
-      window.__archiveSocketCalls = 0
+      window.__archiveSocketProtocols = []
       const Original = window.WebSocket
-      window.WebSocket = class extends Original { constructor(...args) { super(...args); window.__archiveSocketCalls++ } }
+      window.WebSocket = class extends Original { constructor(...args) {
+        super(...args)
+        // Vite's explicit development transport is fixture infrastructure.
+        // Record only protocols, never its URL/token; reject every other socket.
+        window.__archiveSocketProtocols.push(args[1] ?? null)
+      } }
     })
     await page.goto(url)
     await expect(page.getByText('We sang every word.', { exact: false })).toBeVisible()
     assert.equal(await page.evaluate(() => window.__ARCHIVE_ROOT__.worldMounts()), 0)
-    assert.equal(await page.evaluate(() => window.__archiveSocketCalls), 0)
+    const socketProtocols = await page.evaluate(() => window.__archiveSocketProtocols)
+    assert.deepEqual(socketProtocols.filter(protocol => protocol !== 'vite-hmr'), [])
     assert.equal(await page.locator('canvas').count(), 1)
     const pixel = () => page.locator('canvas').evaluate(c => Array.from(c.getContext('2d').getImageData(1, 1, 1, 1).data))
     assert.deepEqual(await pixel(), [21, 23, 28, 255])
@@ -131,8 +137,9 @@ try {
     assert(requests.every(r => r.method === 'GET' && r.credentials === 'omit' && r.cache === 'no-store' && !r.authorization && !r.cookie
       && r.path === '/api/concert/events/00000000-0000-4000-8000-000000000001/archive'))
     assert.deepEqual(errors, [])
-    report.cases.push({ width, height, result: 'PASS', errors, requests, screenshot: file,
-      screenshotSha256: hash(await readFile(resolve(out, file))), checks: ['actual default PublicBoundary', 'public-only GET', 'frozen pixels', '44px targets', 'pagination/focus', 'media unavailable', 'generation reload', 'withdrawal/privacy/offline', 'empty', 'zero world/socket'] })
+    assert.deepEqual((await page.evaluate(() => window.__archiveSocketProtocols)).filter(protocol => protocol !== 'vite-hmr'), [])
+    report.cases.push({ width, height, result: 'PASS', errors, requests, fixtureSocketProtocols: socketProtocols, applicationSockets: 0, screenshot: file,
+      screenshotSha256: hash(await readFile(resolve(out, file))), checks: ['actual default PublicBoundary', 'public-only GET', 'frozen pixels', '44px targets', 'pagination/focus', 'media unavailable', 'generation reload', 'withdrawal/privacy/offline', 'empty', 'zero world/application socket; Vite fixture socket classified separately'] })
     await page.evaluate(() => window.__ARCHIVE_ROOT__.dispose())
     await context.close()
   }

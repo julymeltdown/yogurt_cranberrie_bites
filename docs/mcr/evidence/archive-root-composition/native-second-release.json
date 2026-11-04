@@ -1,0 +1,15 @@
+{
+  "slot": "ARCHIVE-ROOT-204-202611040859Z",
+  "releaseClock": "2026-11-04T09:00:35Z",
+  "syntaxExit": 0,
+  "nativeExit": 1,
+  "reason": "Unexpected socket count 1 at first viewport before captures; world mount count was zero. Vite development socket needs separate fixture classification. No automatic retry.",
+  "sampledPeakWholeBytes": 29287936,
+  "sampledPeakTemporaryBytes": 29283548,
+  "minimumFreeGiB": 28.766586303710938,
+  "durableBytes": 10922,
+  "finalFreeGiB": 28.78579330444336,
+  "ownedProcessMatches": [],
+  "ownDepsAbsent": true,
+  "ownTempDirectories": []
+}
