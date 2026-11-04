@@ -1,17 +1,32 @@
+import { matchPath } from 'react-router-dom'
 import { createEventFeedController, type ResourceLink } from '../../features/event-feed'
 import { createFeedThreadController } from '../../features/feed-thread'
 import { createInboxController } from '../../features/inbox'
 import { targetRequest } from '../../features/inbox/model/targets'
 import { createPeopleController } from '../../features/people'
 import { createIntroController } from '../../features/intro'
+import { emptyDraft as emptyIntroDraft, fromIntro, sameDraft } from '../../features/intro/contract'
 import { createAgeStatusController } from '../../features/age-status'
-import { canonicalId, safeReturnTarget } from '../routes'
+import { adminPaths, canonicalId, publicPaths, safeReturnTarget } from '../routes'
 import { validCapabilities } from '../capabilities'
 import { socialRoute } from './routes'
 import { services, type SocialOptions, type SocialService, type RequestsModule, type SocialPolicyNotification } from './ports'
 import type { PrivacyScope } from '../../shared/query/privacy'
 export interface SocialView { readonly phase: 'ready' | 'withdrawn'; readonly path: string | null; readonly notice: 'command' | 'draft' | 'unavailable' | null; readonly version: number }
 export const sameScope = (a: PrivacyScope, b: PrivacyScope) => a.userId === b.userId && a.eventId === b.eventId && a.generation === b.generation && a.policyGeneration === b.policyGeneration && a.gate === b.gate
+/** Ordinary shell exits are distinct from participant-only sign-in return targets.
+ * The destination boundary still performs its own current Auth/role checks.
+ */
+function isShellExit(path: string) {
+  if (!path.startsWith('/') || path.startsWith('//') || path.length > 512 || /[\\%?#\s]/.test(path)
+    || [...path].some(c => c.charCodeAt(0) < 32 || c.charCodeAt(0) === 127)
+    || path.split('/').some(segment => segment === '.' || segment === '..')) return false
+  return [...publicPaths, ...adminPaths].some(pattern => {
+    const match = matchPath({ path: pattern, caseSensitive: true, end: true }, path)
+    return !!match && Object.entries(match.params).every(([key, value]) => value !== undefined
+      && (key === 'userId' ? canonicalId(value) : /^[a-z][a-z-]{0,31}$/.test(value)))
+  })
+}
 /** One shell lease, canonical controllers only; never constructs Auth/cache/world/socket. */
 export function createSocialOwner(options: SocialOptions) {
   const { auth, bootstrap, scope, availability } = options
@@ -51,10 +66,15 @@ export function createSocialOwner(options: SocialOptions) {
   function locked() { return ['sending', 'pending', 'uncertain'].includes(thread.read().mutation.phase) || ['sending', 'uncertain', 'checking', 'retired'].includes(inbox.read().command.phase)
     || intro.read().command.locked || age.read().command.locked || age.read().pending !== null || !!requests?.read().locked || !!media && ['initializing', 'uploading', 'finalizing', 'uncertain'].includes(media.upload.read().phase) }
   function navigationReason(path: string): SocialView['notice'] {
-    if (!live() || safeReturnTarget(path, '') !== path || !path) return 'unavailable'
+    const exitsShell = isShellExit(path)
+    if (!live() || !path || !exitsShell && safeReturnTarget(path, '') !== path) return 'unavailable'
     if (path === view.path) return null
     if (locked()) return 'command'
     const next = socialRoute(path), state = thread.read()
+    const introduction = intro.read()
+    if (exitsShell && (state.draft.text !== '' || state.draft.media_ids.length > 0 || state.draft.links.length > 0 || state.draft.edit
+      || state.reply.text !== '' || state.reply.edit || media && !['idle', 'cancelled'].includes(media.upload.read().phase)
+      || !sameDraft(introduction.draft, introduction.saved ? fromIntro(introduction.saved) : emptyIntroDraft()))) return 'draft'
     const changesPost = next && (next.kind === 'thread' || next.kind === 'edit') && next.id !== state.selectedId
     if (changesPost && (state.reply.text !== '' || state.draft.edit || next.kind === 'edit' && state.draft.text !== '') || next?.kind === 'compose' && state.draft.edit) return 'draft'
     return null

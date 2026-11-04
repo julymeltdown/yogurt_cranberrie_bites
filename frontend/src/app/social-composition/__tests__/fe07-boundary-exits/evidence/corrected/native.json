@@ -1,0 +1,2330 @@
+{
+  "candidate": "a978d4ed57d7f7eac28b494e3e8550812791f1da",
+  "pins": {
+    "src/app/social-composition/owner.ts": "297e0402027a6e964976b12239301cbdb6dc7ddafa3b320e54ba6f6f1e504948",
+    "src/app/social-composition/navigation.tsx": "13fdc6d570dd79db90f2310b320637ac86757fee817a561eb13cf59bde3c3902",
+    "src/app/social-composition/provider.tsx": "21a3c2d3660ffc27f7953436782a6d050bc2cc9fb051f040558c522f77dda219",
+    "src/app/routes.ts": "a7b2d75c2ea7a41a0b5e699731f48fba2ce00b29cd272370183b56287cadea3c",
+    "src/app/router.tsx": "8ce076a0c8929b3cb7dbf16e3683f2e1c3fab77be7385b519a36f282d8119eba",
+    "src/app/WorldShell.tsx": "9ab07b46c077bde4381ea2ec5918c146e2d05dfe7dc355bafad7448d9ff2d5f9",
+    "src/app/AdminBoundary.tsx": "e37ab281a58f8c57d844ea4e81d1f87b47b6dadafd7b53e21e09b0264ae6e4bb",
+    "src/app/social-composition/__tests__/fe07-boundary-exits/preview.tsx": "e9bc92735b6936474c1a16712ba4a4dcefbeac74efe47cba7db0fb0f972b941c",
+    "src/app/social-composition/__tests__/fe07-boundary-exits/native.mjs": "83e4afc349c1151272e59cb2934cd1203209a8266c2cb6c9abf78e08d9aaede4",
+    "pnpm-lock.yaml": "47ca44459819ad0e887d2f4f93394fdf3b1053b8f45edc9ceb0236981feee1f6"
+  },
+  "browser": "156.0.8078.80",
+  "qualification": "Actual createAppRouter/browser history, canonical Auth, StrictMode, default production ports and real Phaser. Synthetic HTTP/C05/identity. Not live backend, physical devices, real server admin permission, movement/admission or whole FE07 acceptance.",
+  "cases": [
+    {
+      "width": 360,
+      "scenario": "clean",
+      "status": "PASS",
+      "before": {
+        "path": "/world",
+        "search": "",
+        "action": "POP",
+        "historyLength": 2,
+        "auth": "ready",
+        "bootstrapHeld": false,
+        "requests": [
+          {
+            "path": "/api/auth/capabilities",
+            "method": "GET",
+            "protected": false
+          },
+          {
+            "path": "/api/auth/login",
+            "method": "POST",
+            "protected": false
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/bootstrap",
+            "method": "GET",
+            "protected": true
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/rooms",
+            "method": "GET",
+            "protected": true
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/world-tickets",
+            "method": "POST",
+            "protected": true
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/places",
+            "method": "GET",
+            "protected": true
+          }
+        ],
+        "games": 1,
+        "knownGames": 1,
+        "peakGames": 1,
+        "sameGame": true,
+        "sockets": 1,
+        "activeSockets": 1,
+        "peakSockets": 1,
+        "sameCamera": true,
+        "camera": {
+          "following": true,
+          "camera": {
+            "zoom": 1,
+            "scrollX": 0,
+            "scrollY": 235,
+            "width": 348,
+            "height": 570
+          }
+        },
+        "room": "00000000-0000-4000-8000-000000000011",
+        "position": {
+          "x": 140,
+          "y": 520
+        },
+        "phase": "live",
+        "canvases": 1,
+        "inputTypes": [
+          "authenticate",
+          "input"
+        ],
+        "userId": "00000000-0000-4000-8000-000000000101"
+      },
+      "publicExit": {
+        "path": "/legal/privacy",
+        "search": "",
+        "action": "PUSH",
+        "historyLength": 3,
+        "auth": "ready",
+        "bootstrapHeld": false,
+        "requests": [
+          {
+            "path": "/api/auth/capabilities",
+            "method": "GET",
+            "protected": false
+          },
+          {
+            "path": "/api/auth/login",
+            "method": "POST",
+            "protected": false
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/bootstrap",
+            "method": "GET",
+            "protected": true
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/rooms",
+            "method": "GET",
+            "protected": true
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/world-tickets",
+            "method": "POST",
+            "protected": true
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/places",
+            "method": "GET",
+            "protected": true
+          }
+        ],
+        "games": 0,
+        "knownGames": 1,
+        "peakGames": 1,
+        "sameGame": false,
+        "sockets": 1,
+        "activeSockets": 0,
+        "peakSockets": 1,
+        "sameCamera": null,
+        "canvases": 0,
+        "inputTypes": [
+          "authenticate",
+          "input"
+        ],
+        "userId": "00000000-0000-4000-8000-000000000101"
+      },
+      "returned": {
+        "path": "/world",
+        "search": "",
+        "action": "POP",
+        "historyLength": 3,
+        "auth": "ready",
+        "bootstrapHeld": false,
+        "requests": [
+          {
+            "path": "/api/auth/capabilities",
+            "method": "GET",
+            "protected": false
+          },
+          {
+            "path": "/api/auth/login",
+            "method": "POST",
+            "protected": false
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/bootstrap",
+            "method": "GET",
+            "protected": true
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/rooms",
+            "method": "GET",
+            "protected": true
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/world-tickets",
+            "method": "POST",
+            "protected": true
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/places",
+            "method": "GET",
+            "protected": true
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/bootstrap",
+            "method": "GET",
+            "protected": true
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/rooms",
+            "method": "GET",
+            "protected": true
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/world-tickets",
+            "method": "POST",
+            "protected": true
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/places",
+            "method": "GET",
+            "protected": true
+          }
+        ],
+        "games": 1,
+        "knownGames": 2,
+        "peakGames": 1,
+        "sameGame": false,
+        "sockets": 2,
+        "activeSockets": 1,
+        "peakSockets": 1,
+        "sameCamera": false,
+        "camera": {
+          "following": true,
+          "camera": {
+            "zoom": 1,
+            "scrollX": 0,
+            "scrollY": 235,
+            "width": 348,
+            "height": 570
+          }
+        },
+        "room": "00000000-0000-4000-8000-000000000011",
+        "position": {
+          "x": 140,
+          "y": 520
+        },
+        "phase": "live",
+        "canvases": 1,
+        "inputTypes": [
+          "authenticate",
+          "input",
+          "authenticate",
+          "input"
+        ],
+        "userId": "00000000-0000-4000-8000-000000000101"
+      },
+      "adminExit": {
+        "path": "/admin/reports",
+        "search": "",
+        "action": "PUSH",
+        "historyLength": 3,
+        "auth": "ready",
+        "bootstrapHeld": false,
+        "requests": [
+          {
+            "path": "/api/auth/capabilities",
+            "method": "GET",
+            "protected": false
+          },
+          {
+            "path": "/api/auth/login",
+            "method": "POST",
+            "protected": false
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/bootstrap",
+            "method": "GET",
+            "protected": true
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/rooms",
+            "method": "GET",
+            "protected": true
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/world-tickets",
+            "method": "POST",
+            "protected": true
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/places",
+            "method": "GET",
+            "protected": true
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/bootstrap",
+            "method": "GET",
+            "protected": true
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/rooms",
+            "method": "GET",
+            "protected": true
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/world-tickets",
+            "method": "POST",
+            "protected": true
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/places",
+            "method": "GET",
+            "protected": true
+          }
+        ],
+        "games": 0,
+        "knownGames": 2,
+        "peakGames": 1,
+        "sameGame": false,
+        "sockets": 2,
+        "activeSockets": 0,
+        "peakSockets": 1,
+        "sameCamera": null,
+        "canvases": 0,
+        "inputTypes": [
+          "authenticate",
+          "input",
+          "authenticate",
+          "input"
+        ],
+        "userId": "00000000-0000-4000-8000-000000000101"
+      },
+      "disposed": {
+        "path": "/admin/reports",
+        "search": "",
+        "action": "PUSH",
+        "historyLength": 3,
+        "auth": "anonymous",
+        "bootstrapHeld": false,
+        "requests": [
+          {
+            "path": "/api/auth/capabilities",
+            "method": "GET",
+            "protected": false
+          },
+          {
+            "path": "/api/auth/login",
+            "method": "POST",
+            "protected": false
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/bootstrap",
+            "method": "GET",
+            "protected": true
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/rooms",
+            "method": "GET",
+            "protected": true
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/world-tickets",
+            "method": "POST",
+            "protected": true
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/places",
+            "method": "GET",
+            "protected": true
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/bootstrap",
+            "method": "GET",
+            "protected": true
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/rooms",
+            "method": "GET",
+            "protected": true
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/world-tickets",
+            "method": "POST",
+            "protected": true
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/places",
+            "method": "GET",
+            "protected": true
+          }
+        ],
+        "games": 0,
+        "knownGames": 2,
+        "peakGames": 1,
+        "sameGame": false,
+        "sockets": 2,
+        "activeSockets": 0,
+        "peakSockets": 1,
+        "sameCamera": null,
+        "canvases": 0,
+        "inputTypes": [
+          "authenticate",
+          "input",
+          "authenticate",
+          "input"
+        ],
+        "userId": "00000000-0000-4000-8000-000000000101"
+      }
+    },
+    {
+      "width": 360,
+      "scenario": "restored-profile",
+      "status": "PASS",
+      "before": {
+        "path": "/world",
+        "search": "",
+        "action": "PUSH",
+        "historyLength": 6,
+        "auth": "ready",
+        "bootstrapHeld": false,
+        "requests": [
+          {
+            "path": "/api/auth/capabilities",
+            "method": "GET",
+            "protected": false
+          },
+          {
+            "path": "/api/auth/login",
+            "method": "POST",
+            "protected": false
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/bootstrap",
+            "method": "GET",
+            "protected": true
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/rooms",
+            "method": "GET",
+            "protected": true
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/world-tickets",
+            "method": "POST",
+            "protected": true
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/places",
+            "method": "GET",
+            "protected": true
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/me",
+            "method": "GET",
+            "protected": true
+          }
+        ],
+        "games": 1,
+        "knownGames": 1,
+        "peakGames": 1,
+        "sameGame": true,
+        "sockets": 1,
+        "activeSockets": 1,
+        "peakSockets": 1,
+        "sameCamera": true,
+        "camera": {
+          "following": true,
+          "camera": {
+            "zoom": 1,
+            "scrollX": 0,
+            "scrollY": 235,
+            "width": 348,
+            "height": 570
+          }
+        },
+        "room": "00000000-0000-4000-8000-000000000011",
+        "position": {
+          "x": 140,
+          "y": 520
+        },
+        "phase": "live",
+        "canvases": 1,
+        "inputTypes": [
+          "authenticate",
+          "input"
+        ],
+        "userId": "00000000-0000-4000-8000-000000000101"
+      },
+      "publicExit": {
+        "path": "/legal/privacy",
+        "search": "",
+        "action": "PUSH",
+        "historyLength": 7,
+        "auth": "ready",
+        "bootstrapHeld": false,
+        "requests": [
+          {
+            "path": "/api/auth/capabilities",
+            "method": "GET",
+            "protected": false
+          },
+          {
+            "path": "/api/auth/login",
+            "method": "POST",
+            "protected": false
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/bootstrap",
+            "method": "GET",
+            "protected": true
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/rooms",
+            "method": "GET",
+            "protected": true
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/world-tickets",
+            "method": "POST",
+            "protected": true
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/places",
+            "method": "GET",
+            "protected": true
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/me",
+            "method": "GET",
+            "protected": true
+          }
+        ],
+        "games": 0,
+        "knownGames": 1,
+        "peakGames": 1,
+        "sameGame": false,
+        "sockets": 1,
+        "activeSockets": 0,
+        "peakSockets": 1,
+        "sameCamera": null,
+        "canvases": 0,
+        "inputTypes": [
+          "authenticate",
+          "input"
+        ],
+        "userId": "00000000-0000-4000-8000-000000000101"
+      },
+      "returned": {
+        "path": "/world",
+        "search": "",
+        "action": "POP",
+        "historyLength": 7,
+        "auth": "ready",
+        "bootstrapHeld": false,
+        "requests": [
+          {
+            "path": "/api/auth/capabilities",
+            "method": "GET",
+            "protected": false
+          },
+          {
+            "path": "/api/auth/login",
+            "method": "POST",
+            "protected": false
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/bootstrap",
+            "method": "GET",
+            "protected": true
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/rooms",
+            "method": "GET",
+            "protected": true
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/world-tickets",
+            "method": "POST",
+            "protected": true
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/places",
+            "method": "GET",
+            "protected": true
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/me",
+            "method": "GET",
+            "protected": true
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/bootstrap",
+            "method": "GET",
+            "protected": true
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/rooms",
+            "method": "GET",
+            "protected": true
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/world-tickets",
+            "method": "POST",
+            "protected": true
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/places",
+            "method": "GET",
+            "protected": true
+          }
+        ],
+        "games": 1,
+        "knownGames": 2,
+        "peakGames": 1,
+        "sameGame": false,
+        "sockets": 2,
+        "activeSockets": 1,
+        "peakSockets": 1,
+        "sameCamera": false,
+        "camera": {
+          "following": true,
+          "camera": {
+            "zoom": 1,
+            "scrollX": 0,
+            "scrollY": 235,
+            "width": 348,
+            "height": 570
+          }
+        },
+        "room": "00000000-0000-4000-8000-000000000011",
+        "position": {
+          "x": 140,
+          "y": 520
+        },
+        "phase": "live",
+        "canvases": 1,
+        "inputTypes": [
+          "authenticate",
+          "input",
+          "authenticate",
+          "input"
+        ],
+        "userId": "00000000-0000-4000-8000-000000000101"
+      },
+      "adminExit": {
+        "path": "/admin/reports",
+        "search": "",
+        "action": "PUSH",
+        "historyLength": 7,
+        "auth": "ready",
+        "bootstrapHeld": false,
+        "requests": [
+          {
+            "path": "/api/auth/capabilities",
+            "method": "GET",
+            "protected": false
+          },
+          {
+            "path": "/api/auth/login",
+            "method": "POST",
+            "protected": false
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/bootstrap",
+            "method": "GET",
+            "protected": true
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/rooms",
+            "method": "GET",
+            "protected": true
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/world-tickets",
+            "method": "POST",
+            "protected": true
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/places",
+            "method": "GET",
+            "protected": true
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/me",
+            "method": "GET",
+            "protected": true
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/bootstrap",
+            "method": "GET",
+            "protected": true
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/rooms",
+            "method": "GET",
+            "protected": true
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/world-tickets",
+            "method": "POST",
+            "protected": true
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/places",
+            "method": "GET",
+            "protected": true
+          }
+        ],
+        "games": 0,
+        "knownGames": 2,
+        "peakGames": 1,
+        "sameGame": false,
+        "sockets": 2,
+        "activeSockets": 0,
+        "peakSockets": 1,
+        "sameCamera": null,
+        "canvases": 0,
+        "inputTypes": [
+          "authenticate",
+          "input",
+          "authenticate",
+          "input"
+        ],
+        "userId": "00000000-0000-4000-8000-000000000101"
+      },
+      "disposed": {
+        "path": "/admin/reports",
+        "search": "",
+        "action": "PUSH",
+        "historyLength": 7,
+        "auth": "anonymous",
+        "bootstrapHeld": false,
+        "requests": [
+          {
+            "path": "/api/auth/capabilities",
+            "method": "GET",
+            "protected": false
+          },
+          {
+            "path": "/api/auth/login",
+            "method": "POST",
+            "protected": false
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/bootstrap",
+            "method": "GET",
+            "protected": true
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/rooms",
+            "method": "GET",
+            "protected": true
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/world-tickets",
+            "method": "POST",
+            "protected": true
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/places",
+            "method": "GET",
+            "protected": true
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/me",
+            "method": "GET",
+            "protected": true
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/bootstrap",
+            "method": "GET",
+            "protected": true
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/rooms",
+            "method": "GET",
+            "protected": true
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/world-tickets",
+            "method": "POST",
+            "protected": true
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/places",
+            "method": "GET",
+            "protected": true
+          }
+        ],
+        "games": 0,
+        "knownGames": 2,
+        "peakGames": 1,
+        "sameGame": false,
+        "sockets": 2,
+        "activeSockets": 0,
+        "peakSockets": 1,
+        "sameCamera": null,
+        "canvases": 0,
+        "inputTypes": [
+          "authenticate",
+          "input",
+          "authenticate",
+          "input"
+        ],
+        "userId": "00000000-0000-4000-8000-000000000101"
+      }
+    },
+    {
+      "width": 390,
+      "scenario": "clean",
+      "status": "PASS",
+      "before": {
+        "path": "/world",
+        "search": "",
+        "action": "POP",
+        "historyLength": 2,
+        "auth": "ready",
+        "bootstrapHeld": false,
+        "requests": [
+          {
+            "path": "/api/auth/capabilities",
+            "method": "GET",
+            "protected": false
+          },
+          {
+            "path": "/api/auth/login",
+            "method": "POST",
+            "protected": false
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/bootstrap",
+            "method": "GET",
+            "protected": true
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/rooms",
+            "method": "GET",
+            "protected": true
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/world-tickets",
+            "method": "POST",
+            "protected": true
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/places",
+            "method": "GET",
+            "protected": true
+          }
+        ],
+        "games": 1,
+        "knownGames": 1,
+        "peakGames": 1,
+        "sameGame": true,
+        "sockets": 1,
+        "activeSockets": 1,
+        "peakSockets": 1,
+        "sameCamera": true,
+        "camera": {
+          "following": true,
+          "camera": {
+            "zoom": 1,
+            "scrollX": 0,
+            "scrollY": 235,
+            "width": 378,
+            "height": 570
+          }
+        },
+        "room": "00000000-0000-4000-8000-000000000011",
+        "position": {
+          "x": 140,
+          "y": 520
+        },
+        "phase": "live",
+        "canvases": 1,
+        "inputTypes": [
+          "authenticate"
+        ],
+        "userId": "00000000-0000-4000-8000-000000000101"
+      },
+      "publicExit": {
+        "path": "/legal/privacy",
+        "search": "",
+        "action": "PUSH",
+        "historyLength": 3,
+        "auth": "ready",
+        "bootstrapHeld": false,
+        "requests": [
+          {
+            "path": "/api/auth/capabilities",
+            "method": "GET",
+            "protected": false
+          },
+          {
+            "path": "/api/auth/login",
+            "method": "POST",
+            "protected": false
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/bootstrap",
+            "method": "GET",
+            "protected": true
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/rooms",
+            "method": "GET",
+            "protected": true
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/world-tickets",
+            "method": "POST",
+            "protected": true
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/places",
+            "method": "GET",
+            "protected": true
+          }
+        ],
+        "games": 0,
+        "knownGames": 1,
+        "peakGames": 1,
+        "sameGame": false,
+        "sockets": 1,
+        "activeSockets": 0,
+        "peakSockets": 1,
+        "sameCamera": null,
+        "canvases": 0,
+        "inputTypes": [
+          "authenticate",
+          "input"
+        ],
+        "userId": "00000000-0000-4000-8000-000000000101"
+      },
+      "returned": {
+        "path": "/world",
+        "search": "",
+        "action": "POP",
+        "historyLength": 3,
+        "auth": "ready",
+        "bootstrapHeld": false,
+        "requests": [
+          {
+            "path": "/api/auth/capabilities",
+            "method": "GET",
+            "protected": false
+          },
+          {
+            "path": "/api/auth/login",
+            "method": "POST",
+            "protected": false
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/bootstrap",
+            "method": "GET",
+            "protected": true
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/rooms",
+            "method": "GET",
+            "protected": true
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/world-tickets",
+            "method": "POST",
+            "protected": true
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/places",
+            "method": "GET",
+            "protected": true
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/bootstrap",
+            "method": "GET",
+            "protected": true
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/rooms",
+            "method": "GET",
+            "protected": true
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/world-tickets",
+            "method": "POST",
+            "protected": true
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/places",
+            "method": "GET",
+            "protected": true
+          }
+        ],
+        "games": 1,
+        "knownGames": 2,
+        "peakGames": 1,
+        "sameGame": false,
+        "sockets": 2,
+        "activeSockets": 1,
+        "peakSockets": 1,
+        "sameCamera": false,
+        "camera": {
+          "following": true,
+          "camera": {
+            "zoom": 1,
+            "scrollX": 0,
+            "scrollY": 235,
+            "width": 378,
+            "height": 570
+          }
+        },
+        "room": "00000000-0000-4000-8000-000000000011",
+        "position": {
+          "x": 140,
+          "y": 520
+        },
+        "phase": "live",
+        "canvases": 1,
+        "inputTypes": [
+          "authenticate",
+          "input",
+          "authenticate",
+          "input"
+        ],
+        "userId": "00000000-0000-4000-8000-000000000101"
+      },
+      "adminExit": {
+        "path": "/admin/reports",
+        "search": "",
+        "action": "PUSH",
+        "historyLength": 3,
+        "auth": "ready",
+        "bootstrapHeld": false,
+        "requests": [
+          {
+            "path": "/api/auth/capabilities",
+            "method": "GET",
+            "protected": false
+          },
+          {
+            "path": "/api/auth/login",
+            "method": "POST",
+            "protected": false
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/bootstrap",
+            "method": "GET",
+            "protected": true
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/rooms",
+            "method": "GET",
+            "protected": true
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/world-tickets",
+            "method": "POST",
+            "protected": true
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/places",
+            "method": "GET",
+            "protected": true
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/bootstrap",
+            "method": "GET",
+            "protected": true
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/rooms",
+            "method": "GET",
+            "protected": true
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/world-tickets",
+            "method": "POST",
+            "protected": true
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/places",
+            "method": "GET",
+            "protected": true
+          }
+        ],
+        "games": 0,
+        "knownGames": 2,
+        "peakGames": 1,
+        "sameGame": false,
+        "sockets": 2,
+        "activeSockets": 0,
+        "peakSockets": 1,
+        "sameCamera": null,
+        "canvases": 0,
+        "inputTypes": [
+          "authenticate",
+          "input",
+          "authenticate",
+          "input"
+        ],
+        "userId": "00000000-0000-4000-8000-000000000101"
+      },
+      "disposed": {
+        "path": "/admin/reports",
+        "search": "",
+        "action": "PUSH",
+        "historyLength": 3,
+        "auth": "anonymous",
+        "bootstrapHeld": false,
+        "requests": [
+          {
+            "path": "/api/auth/capabilities",
+            "method": "GET",
+            "protected": false
+          },
+          {
+            "path": "/api/auth/login",
+            "method": "POST",
+            "protected": false
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/bootstrap",
+            "method": "GET",
+            "protected": true
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/rooms",
+            "method": "GET",
+            "protected": true
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/world-tickets",
+            "method": "POST",
+            "protected": true
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/places",
+            "method": "GET",
+            "protected": true
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/bootstrap",
+            "method": "GET",
+            "protected": true
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/rooms",
+            "method": "GET",
+            "protected": true
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/world-tickets",
+            "method": "POST",
+            "protected": true
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/places",
+            "method": "GET",
+            "protected": true
+          }
+        ],
+        "games": 0,
+        "knownGames": 2,
+        "peakGames": 1,
+        "sameGame": false,
+        "sockets": 2,
+        "activeSockets": 0,
+        "peakSockets": 1,
+        "sameCamera": null,
+        "canvases": 0,
+        "inputTypes": [
+          "authenticate",
+          "input",
+          "authenticate",
+          "input"
+        ],
+        "userId": "00000000-0000-4000-8000-000000000101"
+      }
+    },
+    {
+      "width": 390,
+      "scenario": "restored-profile",
+      "status": "PASS",
+      "before": {
+        "path": "/world",
+        "search": "",
+        "action": "PUSH",
+        "historyLength": 6,
+        "auth": "ready",
+        "bootstrapHeld": false,
+        "requests": [
+          {
+            "path": "/api/auth/capabilities",
+            "method": "GET",
+            "protected": false
+          },
+          {
+            "path": "/api/auth/login",
+            "method": "POST",
+            "protected": false
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/bootstrap",
+            "method": "GET",
+            "protected": true
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/rooms",
+            "method": "GET",
+            "protected": true
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/world-tickets",
+            "method": "POST",
+            "protected": true
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/places",
+            "method": "GET",
+            "protected": true
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/me",
+            "method": "GET",
+            "protected": true
+          }
+        ],
+        "games": 1,
+        "knownGames": 1,
+        "peakGames": 1,
+        "sameGame": true,
+        "sockets": 1,
+        "activeSockets": 1,
+        "peakSockets": 1,
+        "sameCamera": true,
+        "camera": {
+          "following": true,
+          "camera": {
+            "zoom": 1,
+            "scrollX": 0,
+            "scrollY": 235,
+            "width": 378,
+            "height": 570
+          }
+        },
+        "room": "00000000-0000-4000-8000-000000000011",
+        "position": {
+          "x": 140,
+          "y": 520
+        },
+        "phase": "live",
+        "canvases": 1,
+        "inputTypes": [
+          "authenticate",
+          "input"
+        ],
+        "userId": "00000000-0000-4000-8000-000000000101"
+      },
+      "publicExit": {
+        "path": "/legal/privacy",
+        "search": "",
+        "action": "PUSH",
+        "historyLength": 7,
+        "auth": "ready",
+        "bootstrapHeld": false,
+        "requests": [
+          {
+            "path": "/api/auth/capabilities",
+            "method": "GET",
+            "protected": false
+          },
+          {
+            "path": "/api/auth/login",
+            "method": "POST",
+            "protected": false
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/bootstrap",
+            "method": "GET",
+            "protected": true
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/rooms",
+            "method": "GET",
+            "protected": true
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/world-tickets",
+            "method": "POST",
+            "protected": true
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/places",
+            "method": "GET",
+            "protected": true
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/me",
+            "method": "GET",
+            "protected": true
+          }
+        ],
+        "games": 0,
+        "knownGames": 1,
+        "peakGames": 1,
+        "sameGame": false,
+        "sockets": 1,
+        "activeSockets": 0,
+        "peakSockets": 1,
+        "sameCamera": null,
+        "canvases": 0,
+        "inputTypes": [
+          "authenticate",
+          "input"
+        ],
+        "userId": "00000000-0000-4000-8000-000000000101"
+      },
+      "returned": {
+        "path": "/world",
+        "search": "",
+        "action": "POP",
+        "historyLength": 7,
+        "auth": "ready",
+        "bootstrapHeld": false,
+        "requests": [
+          {
+            "path": "/api/auth/capabilities",
+            "method": "GET",
+            "protected": false
+          },
+          {
+            "path": "/api/auth/login",
+            "method": "POST",
+            "protected": false
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/bootstrap",
+            "method": "GET",
+            "protected": true
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/rooms",
+            "method": "GET",
+            "protected": true
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/world-tickets",
+            "method": "POST",
+            "protected": true
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/places",
+            "method": "GET",
+            "protected": true
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/me",
+            "method": "GET",
+            "protected": true
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/bootstrap",
+            "method": "GET",
+            "protected": true
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/rooms",
+            "method": "GET",
+            "protected": true
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/world-tickets",
+            "method": "POST",
+            "protected": true
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/places",
+            "method": "GET",
+            "protected": true
+          }
+        ],
+        "games": 1,
+        "knownGames": 2,
+        "peakGames": 1,
+        "sameGame": false,
+        "sockets": 2,
+        "activeSockets": 1,
+        "peakSockets": 1,
+        "sameCamera": false,
+        "camera": {
+          "following": true,
+          "camera": {
+            "zoom": 1,
+            "scrollX": 0,
+            "scrollY": 235,
+            "width": 378,
+            "height": 570
+          }
+        },
+        "room": "00000000-0000-4000-8000-000000000011",
+        "position": {
+          "x": 140,
+          "y": 520
+        },
+        "phase": "live",
+        "canvases": 1,
+        "inputTypes": [
+          "authenticate",
+          "input",
+          "authenticate",
+          "input"
+        ],
+        "userId": "00000000-0000-4000-8000-000000000101"
+      },
+      "adminExit": {
+        "path": "/admin/reports",
+        "search": "",
+        "action": "PUSH",
+        "historyLength": 7,
+        "auth": "ready",
+        "bootstrapHeld": false,
+        "requests": [
+          {
+            "path": "/api/auth/capabilities",
+            "method": "GET",
+            "protected": false
+          },
+          {
+            "path": "/api/auth/login",
+            "method": "POST",
+            "protected": false
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/bootstrap",
+            "method": "GET",
+            "protected": true
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/rooms",
+            "method": "GET",
+            "protected": true
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/world-tickets",
+            "method": "POST",
+            "protected": true
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/places",
+            "method": "GET",
+            "protected": true
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/me",
+            "method": "GET",
+            "protected": true
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/bootstrap",
+            "method": "GET",
+            "protected": true
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/rooms",
+            "method": "GET",
+            "protected": true
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/world-tickets",
+            "method": "POST",
+            "protected": true
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/places",
+            "method": "GET",
+            "protected": true
+          }
+        ],
+        "games": 0,
+        "knownGames": 2,
+        "peakGames": 1,
+        "sameGame": false,
+        "sockets": 2,
+        "activeSockets": 0,
+        "peakSockets": 1,
+        "sameCamera": null,
+        "canvases": 0,
+        "inputTypes": [
+          "authenticate",
+          "input",
+          "authenticate",
+          "input"
+        ],
+        "userId": "00000000-0000-4000-8000-000000000101"
+      },
+      "disposed": {
+        "path": "/admin/reports",
+        "search": "",
+        "action": "PUSH",
+        "historyLength": 7,
+        "auth": "anonymous",
+        "bootstrapHeld": false,
+        "requests": [
+          {
+            "path": "/api/auth/capabilities",
+            "method": "GET",
+            "protected": false
+          },
+          {
+            "path": "/api/auth/login",
+            "method": "POST",
+            "protected": false
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/bootstrap",
+            "method": "GET",
+            "protected": true
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/rooms",
+            "method": "GET",
+            "protected": true
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/world-tickets",
+            "method": "POST",
+            "protected": true
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/places",
+            "method": "GET",
+            "protected": true
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/me",
+            "method": "GET",
+            "protected": true
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/bootstrap",
+            "method": "GET",
+            "protected": true
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/rooms",
+            "method": "GET",
+            "protected": true
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/world-tickets",
+            "method": "POST",
+            "protected": true
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/places",
+            "method": "GET",
+            "protected": true
+          }
+        ],
+        "games": 0,
+        "knownGames": 2,
+        "peakGames": 1,
+        "sameGame": false,
+        "sockets": 2,
+        "activeSockets": 0,
+        "peakSockets": 1,
+        "sameCamera": null,
+        "canvases": 0,
+        "inputTypes": [
+          "authenticate",
+          "input",
+          "authenticate",
+          "input"
+        ],
+        "userId": "00000000-0000-4000-8000-000000000101"
+      }
+    },
+    {
+      "width": 430,
+      "scenario": "clean",
+      "status": "PASS",
+      "before": {
+        "path": "/world",
+        "search": "",
+        "action": "POP",
+        "historyLength": 2,
+        "auth": "ready",
+        "bootstrapHeld": false,
+        "requests": [
+          {
+            "path": "/api/auth/capabilities",
+            "method": "GET",
+            "protected": false
+          },
+          {
+            "path": "/api/auth/login",
+            "method": "POST",
+            "protected": false
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/bootstrap",
+            "method": "GET",
+            "protected": true
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/rooms",
+            "method": "GET",
+            "protected": true
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/world-tickets",
+            "method": "POST",
+            "protected": true
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/places",
+            "method": "GET",
+            "protected": true
+          }
+        ],
+        "games": 1,
+        "knownGames": 1,
+        "peakGames": 1,
+        "sameGame": true,
+        "sockets": 1,
+        "activeSockets": 1,
+        "peakSockets": 1,
+        "sameCamera": true,
+        "camera": {
+          "following": true,
+          "camera": {
+            "zoom": 1,
+            "scrollX": 0,
+            "scrollY": 235,
+            "width": 418,
+            "height": 570
+          }
+        },
+        "room": "00000000-0000-4000-8000-000000000011",
+        "position": {
+          "x": 140,
+          "y": 520
+        },
+        "phase": "live",
+        "canvases": 1,
+        "inputTypes": [
+          "authenticate"
+        ],
+        "userId": "00000000-0000-4000-8000-000000000101"
+      },
+      "publicExit": {
+        "path": "/legal/privacy",
+        "search": "",
+        "action": "PUSH",
+        "historyLength": 3,
+        "auth": "ready",
+        "bootstrapHeld": false,
+        "requests": [
+          {
+            "path": "/api/auth/capabilities",
+            "method": "GET",
+            "protected": false
+          },
+          {
+            "path": "/api/auth/login",
+            "method": "POST",
+            "protected": false
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/bootstrap",
+            "method": "GET",
+            "protected": true
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/rooms",
+            "method": "GET",
+            "protected": true
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/world-tickets",
+            "method": "POST",
+            "protected": true
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/places",
+            "method": "GET",
+            "protected": true
+          }
+        ],
+        "games": 0,
+        "knownGames": 1,
+        "peakGames": 1,
+        "sameGame": false,
+        "sockets": 1,
+        "activeSockets": 0,
+        "peakSockets": 1,
+        "sameCamera": null,
+        "canvases": 0,
+        "inputTypes": [
+          "authenticate",
+          "input"
+        ],
+        "userId": "00000000-0000-4000-8000-000000000101"
+      },
+      "returned": {
+        "path": "/world",
+        "search": "",
+        "action": "POP",
+        "historyLength": 3,
+        "auth": "ready",
+        "bootstrapHeld": false,
+        "requests": [
+          {
+            "path": "/api/auth/capabilities",
+            "method": "GET",
+            "protected": false
+          },
+          {
+            "path": "/api/auth/login",
+            "method": "POST",
+            "protected": false
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/bootstrap",
+            "method": "GET",
+            "protected": true
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/rooms",
+            "method": "GET",
+            "protected": true
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/world-tickets",
+            "method": "POST",
+            "protected": true
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/places",
+            "method": "GET",
+            "protected": true
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/bootstrap",
+            "method": "GET",
+            "protected": true
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/rooms",
+            "method": "GET",
+            "protected": true
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/world-tickets",
+            "method": "POST",
+            "protected": true
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/places",
+            "method": "GET",
+            "protected": true
+          }
+        ],
+        "games": 1,
+        "knownGames": 2,
+        "peakGames": 1,
+        "sameGame": false,
+        "sockets": 2,
+        "activeSockets": 1,
+        "peakSockets": 1,
+        "sameCamera": false,
+        "camera": {
+          "following": true,
+          "camera": {
+            "zoom": 1,
+            "scrollX": 0,
+            "scrollY": 235,
+            "width": 418,
+            "height": 570
+          }
+        },
+        "room": "00000000-0000-4000-8000-000000000011",
+        "position": {
+          "x": 140,
+          "y": 520
+        },
+        "phase": "live",
+        "canvases": 1,
+        "inputTypes": [
+          "authenticate",
+          "input",
+          "authenticate",
+          "input"
+        ],
+        "userId": "00000000-0000-4000-8000-000000000101"
+      },
+      "adminExit": {
+        "path": "/admin/reports",
+        "search": "",
+        "action": "PUSH",
+        "historyLength": 3,
+        "auth": "ready",
+        "bootstrapHeld": false,
+        "requests": [
+          {
+            "path": "/api/auth/capabilities",
+            "method": "GET",
+            "protected": false
+          },
+          {
+            "path": "/api/auth/login",
+            "method": "POST",
+            "protected": false
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/bootstrap",
+            "method": "GET",
+            "protected": true
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/rooms",
+            "method": "GET",
+            "protected": true
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/world-tickets",
+            "method": "POST",
+            "protected": true
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/places",
+            "method": "GET",
+            "protected": true
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/bootstrap",
+            "method": "GET",
+            "protected": true
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/rooms",
+            "method": "GET",
+            "protected": true
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/world-tickets",
+            "method": "POST",
+            "protected": true
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/places",
+            "method": "GET",
+            "protected": true
+          }
+        ],
+        "games": 0,
+        "knownGames": 2,
+        "peakGames": 1,
+        "sameGame": false,
+        "sockets": 2,
+        "activeSockets": 0,
+        "peakSockets": 1,
+        "sameCamera": null,
+        "canvases": 0,
+        "inputTypes": [
+          "authenticate",
+          "input",
+          "authenticate",
+          "input"
+        ],
+        "userId": "00000000-0000-4000-8000-000000000101"
+      },
+      "disposed": {
+        "path": "/admin/reports",
+        "search": "",
+        "action": "PUSH",
+        "historyLength": 3,
+        "auth": "anonymous",
+        "bootstrapHeld": false,
+        "requests": [
+          {
+            "path": "/api/auth/capabilities",
+            "method": "GET",
+            "protected": false
+          },
+          {
+            "path": "/api/auth/login",
+            "method": "POST",
+            "protected": false
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/bootstrap",
+            "method": "GET",
+            "protected": true
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/rooms",
+            "method": "GET",
+            "protected": true
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/world-tickets",
+            "method": "POST",
+            "protected": true
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/places",
+            "method": "GET",
+            "protected": true
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/bootstrap",
+            "method": "GET",
+            "protected": true
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/rooms",
+            "method": "GET",
+            "protected": true
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/world-tickets",
+            "method": "POST",
+            "protected": true
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/places",
+            "method": "GET",
+            "protected": true
+          }
+        ],
+        "games": 0,
+        "knownGames": 2,
+        "peakGames": 1,
+        "sameGame": false,
+        "sockets": 2,
+        "activeSockets": 0,
+        "peakSockets": 1,
+        "sameCamera": null,
+        "canvases": 0,
+        "inputTypes": [
+          "authenticate",
+          "input",
+          "authenticate",
+          "input"
+        ],
+        "userId": "00000000-0000-4000-8000-000000000101"
+      }
+    },
+    {
+      "width": 430,
+      "scenario": "restored-profile",
+      "status": "PASS",
+      "before": {
+        "path": "/world",
+        "search": "",
+        "action": "PUSH",
+        "historyLength": 6,
+        "auth": "ready",
+        "bootstrapHeld": false,
+        "requests": [
+          {
+            "path": "/api/auth/capabilities",
+            "method": "GET",
+            "protected": false
+          },
+          {
+            "path": "/api/auth/login",
+            "method": "POST",
+            "protected": false
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/bootstrap",
+            "method": "GET",
+            "protected": true
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/rooms",
+            "method": "GET",
+            "protected": true
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/world-tickets",
+            "method": "POST",
+            "protected": true
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/places",
+            "method": "GET",
+            "protected": true
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/me",
+            "method": "GET",
+            "protected": true
+          }
+        ],
+        "games": 1,
+        "knownGames": 1,
+        "peakGames": 1,
+        "sameGame": true,
+        "sockets": 1,
+        "activeSockets": 1,
+        "peakSockets": 1,
+        "sameCamera": true,
+        "camera": {
+          "following": true,
+          "camera": {
+            "zoom": 1,
+            "scrollX": 0,
+            "scrollY": 235,
+            "width": 418,
+            "height": 570
+          }
+        },
+        "room": "00000000-0000-4000-8000-000000000011",
+        "position": {
+          "x": 140,
+          "y": 520
+        },
+        "phase": "live",
+        "canvases": 1,
+        "inputTypes": [
+          "authenticate",
+          "input"
+        ],
+        "userId": "00000000-0000-4000-8000-000000000101"
+      },
+      "publicExit": {
+        "path": "/legal/privacy",
+        "search": "",
+        "action": "PUSH",
+        "historyLength": 7,
+        "auth": "ready",
+        "bootstrapHeld": false,
+        "requests": [
+          {
+            "path": "/api/auth/capabilities",
+            "method": "GET",
+            "protected": false
+          },
+          {
+            "path": "/api/auth/login",
+            "method": "POST",
+            "protected": false
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/bootstrap",
+            "method": "GET",
+            "protected": true
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/rooms",
+            "method": "GET",
+            "protected": true
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/world-tickets",
+            "method": "POST",
+            "protected": true
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/places",
+            "method": "GET",
+            "protected": true
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/me",
+            "method": "GET",
+            "protected": true
+          }
+        ],
+        "games": 0,
+        "knownGames": 1,
+        "peakGames": 1,
+        "sameGame": false,
+        "sockets": 1,
+        "activeSockets": 0,
+        "peakSockets": 1,
+        "sameCamera": null,
+        "canvases": 0,
+        "inputTypes": [
+          "authenticate",
+          "input"
+        ],
+        "userId": "00000000-0000-4000-8000-000000000101"
+      },
+      "returned": {
+        "path": "/world",
+        "search": "",
+        "action": "POP",
+        "historyLength": 7,
+        "auth": "ready",
+        "bootstrapHeld": false,
+        "requests": [
+          {
+            "path": "/api/auth/capabilities",
+            "method": "GET",
+            "protected": false
+          },
+          {
+            "path": "/api/auth/login",
+            "method": "POST",
+            "protected": false
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/bootstrap",
+            "method": "GET",
+            "protected": true
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/rooms",
+            "method": "GET",
+            "protected": true
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/world-tickets",
+            "method": "POST",
+            "protected": true
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/places",
+            "method": "GET",
+            "protected": true
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/me",
+            "method": "GET",
+            "protected": true
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/bootstrap",
+            "method": "GET",
+            "protected": true
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/rooms",
+            "method": "GET",
+            "protected": true
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/world-tickets",
+            "method": "POST",
+            "protected": true
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/places",
+            "method": "GET",
+            "protected": true
+          }
+        ],
+        "games": 1,
+        "knownGames": 2,
+        "peakGames": 1,
+        "sameGame": false,
+        "sockets": 2,
+        "activeSockets": 1,
+        "peakSockets": 1,
+        "sameCamera": false,
+        "camera": {
+          "following": true,
+          "camera": {
+            "zoom": 1,
+            "scrollX": 0,
+            "scrollY": 235,
+            "width": 418,
+            "height": 570
+          }
+        },
+        "room": "00000000-0000-4000-8000-000000000011",
+        "position": {
+          "x": 140,
+          "y": 520
+        },
+        "phase": "live",
+        "canvases": 1,
+        "inputTypes": [
+          "authenticate",
+          "input",
+          "authenticate",
+          "input"
+        ],
+        "userId": "00000000-0000-4000-8000-000000000101"
+      },
+      "adminExit": {
+        "path": "/admin/reports",
+        "search": "",
+        "action": "PUSH",
+        "historyLength": 7,
+        "auth": "ready",
+        "bootstrapHeld": false,
+        "requests": [
+          {
+            "path": "/api/auth/capabilities",
+            "method": "GET",
+            "protected": false
+          },
+          {
+            "path": "/api/auth/login",
+            "method": "POST",
+            "protected": false
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/bootstrap",
+            "method": "GET",
+            "protected": true
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/rooms",
+            "method": "GET",
+            "protected": true
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/world-tickets",
+            "method": "POST",
+            "protected": true
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/places",
+            "method": "GET",
+            "protected": true
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/me",
+            "method": "GET",
+            "protected": true
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/bootstrap",
+            "method": "GET",
+            "protected": true
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/rooms",
+            "method": "GET",
+            "protected": true
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/world-tickets",
+            "method": "POST",
+            "protected": true
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/places",
+            "method": "GET",
+            "protected": true
+          }
+        ],
+        "games": 0,
+        "knownGames": 2,
+        "peakGames": 1,
+        "sameGame": false,
+        "sockets": 2,
+        "activeSockets": 0,
+        "peakSockets": 1,
+        "sameCamera": null,
+        "canvases": 0,
+        "inputTypes": [
+          "authenticate",
+          "input",
+          "authenticate",
+          "input"
+        ],
+        "userId": "00000000-0000-4000-8000-000000000101"
+      },
+      "disposed": {
+        "path": "/admin/reports",
+        "search": "",
+        "action": "PUSH",
+        "historyLength": 7,
+        "auth": "anonymous",
+        "bootstrapHeld": false,
+        "requests": [
+          {
+            "path": "/api/auth/capabilities",
+            "method": "GET",
+            "protected": false
+          },
+          {
+            "path": "/api/auth/login",
+            "method": "POST",
+            "protected": false
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/bootstrap",
+            "method": "GET",
+            "protected": true
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/rooms",
+            "method": "GET",
+            "protected": true
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/world-tickets",
+            "method": "POST",
+            "protected": true
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/places",
+            "method": "GET",
+            "protected": true
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/me",
+            "method": "GET",
+            "protected": true
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/bootstrap",
+            "method": "GET",
+            "protected": true
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/rooms",
+            "method": "GET",
+            "protected": true
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/world-tickets",
+            "method": "POST",
+            "protected": true
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/places",
+            "method": "GET",
+            "protected": true
+          }
+        ],
+        "games": 0,
+        "knownGames": 2,
+        "peakGames": 1,
+        "sameGame": false,
+        "sockets": 2,
+        "activeSockets": 0,
+        "peakSockets": 1,
+        "sameCamera": null,
+        "canvases": 0,
+        "inputTypes": [
+          "authenticate",
+          "input",
+          "authenticate",
+          "input"
+        ],
+        "userId": "00000000-0000-4000-8000-000000000101"
+      }
+    }
+  ]
+}
