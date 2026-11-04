@@ -1,0 +1,118 @@
+{
+  "status": "IN_PROGRESS",
+  "producer_probe": "COMPLETED",
+  "producer_overall": "PARTIAL",
+  "source_base": "fa0cab0b1fe0b94d404162524277581aaa449f36",
+  "publication_base": "2bd046796acdf32a05e6ed04e4d95e12c9909481",
+  "mapping": [
+    {
+      "source": "20382ffc7bfc98c9803bc3aa2108d084f4cfb98e",
+      "delivered": "a2821847eaf9cca0a1374d58fa82a0161b0634f0",
+      "paths": [
+        "backend/scripts/mcr/test_world_in01_profiles.py",
+        "backend/scripts/mcr/world_in01_live.py"
+      ]
+    },
+    {
+      "source": "8da06969acfe46409e929dc9812bef00f8338ca0",
+      "delivered": "7d32d65771c24d09f671ec33d86a6db441cea315",
+      "paths": [
+        "backend/scripts/mcr/test_world_live_failure_probe.py",
+        "backend/scripts/mcr/world_capacity_support/scenarios.py"
+      ]
+    },
+    {
+      "source": "dd205b3afb985a586e42879633ead0ed5524e9fb",
+      "delivered": "801220423c2f88f6ea837e30bf14a92ed33a7809",
+      "paths": [
+        "docs/mcr/backend/world-capacity-qualification.md"
+      ]
+    },
+    {
+      "source": "88fa2bb4e6f49efc9051284ba4c4302126e129b3",
+      "delivered": "dab617f809fa03f0fbda0779be98932a7cf0d1c5",
+      "paths": [
+        "docs/mcr/backend/world-capacity-qualification.md"
+      ]
+    },
+    {
+      "source": "80a47e744aef0af542b3d937fb3a3b70dca5cf37",
+      "delivered": "745d98f2b043fc92d6302965abf87ff39664129f",
+      "paths": [
+        "docs/mcr/backend/world-capacity-qualification.md"
+      ]
+    },
+    {
+      "source": "09c0dfe551a2d7818e6cbb8c3a1cf9a582dae21a",
+      "delivered": "62490b55bb41cecb6a716d29f57b5d406975301d",
+      "paths": [
+        "docs/mcr/backend/world-capacity-qualification.md"
+      ]
+    }
+  ],
+  "final_owned_postimages_match": true,
+  "changed_paths": [
+    "backend/scripts/mcr/test_world_in01_profiles.py",
+    "backend/scripts/mcr/test_world_live_failure_probe.py",
+    "backend/scripts/mcr/world_capacity_support/scenarios.py",
+    "backend/scripts/mcr/world_in01_live.py",
+    "docs/mcr/backend/world-capacity-qualification.md"
+  ],
+  "root_validation": {
+    "command": "/private/tmp/mcr-contracts-admission/bin/python -B -m unittest test_world_capacity_probe test_world_in01_profiles test_world_live_failure_probe",
+    "cwd": "backend/scripts/mcr",
+    "exit_code": 0,
+    "passed": 58,
+    "elapsed_seconds": 5.563,
+    "output_sha256": "2383f98dd387b28ce51a9404b6afce1b752dc58aa23fdad13e0cc93c1a3fe0ef",
+    "earlier_unpinned_python_attempt": "Python3.14 discover22: two schema-validation environment errors; not used for qualification; pinned environment retry passed"
+  },
+  "runtime": {
+    "allocation": "QA05-PAIR80-RUNTIME51-202611041226Z",
+    "accepted_at": "2026-11-04T12:31:34.335234Z",
+    "full_released_at": "2026-11-04T12:37:23.681191Z",
+    "attempts": [
+      "FAIL",
+      "FAIL",
+      "COMPLETED/PARTIAL"
+    ],
+    "observed": [
+      "real canonical Auth pair",
+      "ticket replay rejection",
+      "application gap recovery",
+      "read pause",
+      "room switch",
+      "controlled World restart after natural room-owner lease expiry",
+      "changed public epochs",
+      "two scheduled reconnects"
+    ],
+    "membership_final": 0,
+    "prepared_final": 0,
+    "cleanup": "PASS",
+    "producer_report_sha256": "88bd0fa2f02e6f29a9d4e38620a1743bad1aaefa1564083beb41d35f5ac1f0b2",
+    "release_receipt_sha256": "fda512681d226bbd47be1d1b8c90602168b2591d0bf9f1f01447f2edaab60960"
+  },
+  "projection": {
+    "bytes": 22068,
+    "sha256": "c1606256a0a061aff988ff9dd14e3d11534bdbc5e8875b123dbf196360520e3f",
+    "fidelity": "NOT_BYTE_EXACT_FULL_C03",
+    "complete_manifests": false,
+    "raw_full_c03_retained_or_hashed": false,
+    "provenance": "Sanitized sibling report3.json post_admission_projection, not embedded fields in the eight-key projection",
+    "consumer_copy": "docs/mcr/evidence/map-production-binding/qa05-rw5-public-resource-projection.json"
+  },
+  "qa08": {
+    "scope": "200 real canonical Auth principals, four capacity50 rooms; original mobile/network/recovery obligations retained",
+    "status": "NOT_RUN",
+    "runtime51_offers": [
+      "1239 UNUSED",
+      "1246 UNUSED: failed start free floor before actual ACCEPT; RW6 released12:49:21.416592Z"
+    ]
+  },
+  "limitations": [
+    "No full QA05 acceptance",
+    "No QA08 acceptance",
+    "No browser/mobile/network qualification",
+    "No IN03 or new Social/Feed/main qualification"
+  ]
+}
