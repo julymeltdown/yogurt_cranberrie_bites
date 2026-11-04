@@ -52,6 +52,7 @@
     "contracts/fixtures/assets/motion-v2/valid/preset-06.json",
     "docs/mcr/contracts/avatar-motion-v2/README.md",
     "docs/mcr/contracts/avatar-motion-v2/build_catalog.py",
+    "docs/mcr/contracts/avatar-motion-v2/eligibility-boundary.md",
     "docs/mcr/contracts/avatar-motion-v2/handoff.json",
     "docs/mcr/contracts/avatar-motion-v2/validate.py",
     "docs/mcr/contracts/avatar-motion-v2/validation.md"
@@ -184,5 +185,6 @@
     },
     "reported_no_mapping_mismatch": true,
     "limitation": "Independent consumer fixture evidence, not producer Rust execution or public production admission; exact producer34pins retained."
-  }
+  },
+  "eligibility_boundary": "docs/mcr/contracts/avatar-motion-v2/eligibility-boundary.md"
 }
