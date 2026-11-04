@@ -27,10 +27,12 @@ async function bytes(path) {
 async function preflight(ownedProfile = '') {
   const disk = await statfs(root), available = disk.bavail * disk.bsize
   assert(available >= 8 * 1024 ** 3, 'Fresh 8GiB floor')
-  const peers = execFileSync('ps', ['-axo', 'pid=,command='], { encoding: 'utf8' }).split('\n')
-    .filter(line => line.includes('--remote-debugging-pipe') && (!ownedProfile || !line.includes(ownedProfile)))
-  assert.equal(peers.length, 0, 'Another controlled browser is active; do not preempt it')
-  return { availableBytes: available, otherControlledBrowsers: peers.length }
+  const chrome = execFileSync('ps', ['-axo', 'pid=,command='], { encoding: 'utf8' }).split('\n')
+    .filter(line => line.includes('--remote-debugging-pipe') && line.includes('/Google Chrome.app/Contents/MacOS/Google Chrome '))
+  const interactive = chrome.filter(line => /--user-data-dir=\S*mcp-chrome-/.test(line))
+  const peers = chrome.filter(line => !interactive.includes(line) && (!ownedProfile || !line.includes(ownedProfile)))
+  assert.equal(peers.length, 0, 'Another validation Chrome is active; do not preempt it')
+  return { availableBytes: available, otherValidationChromeRoots: peers.length, existingInteractiveChromeRootsPreserved: interactive.length }
 }
 const report = { status: 'IN_PROGRESS', slot, base, candidate: git('rev-parse', 'HEAD').toString().trim(),
   qualification: 'ACTUAL_ROOT_DEFAULT_PHASER_WITH_UNREVIEWED_SOURCE_FIXTURE', sourcePins: {}, inputs: {}, cases: [], interactions: [],
