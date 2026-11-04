@@ -15,7 +15,7 @@ const calls = { policy: 0, attempts: 0, signup: 0, verify: 0, resend: 0 }, resul
 let mode = 'success', browser, attemptExpiry = new Date(Date.now() + 600_000).toISOString()
 const stamp = () => { const time = Date.now(); return { serverTime: new Date(time).toISOString(), expiresAt: new Date(time + 600_000).toISOString() } }
 const accepted = () => { const t = stamp(); return { status: 'ACCEPTED', attemptId, ...t, expiresAt: attemptExpiry, resendAvailableAt: new Date(Date.parse(t.serverTime) + 3000).toISOString() } }
-const dev = await createServer({ cacheDir: path.join(evidence, 'vite-cache'), server: { host: '127.0.0.1', port: 0, strictPort: false },
+const dev = await createServer({ configLoader: 'runner', cacheDir: process.env.MCR_FE10_CACHE ?? path.join(evidence, 'vite-cache'), server: { host: '127.0.0.1', port: 0, strictPort: false },
   plugins: [{ name: 'fe10-explicit-synthetic-http', configureServer(server) {
     server.middlewares.use(async (req, res, next) => {
       if (!req.url?.startsWith('/api/')) return next()
