@@ -107,8 +107,9 @@ feed acceptance, BE31/BE32 completion or IN01 acceptance.
 
 ## Unpublished qualified producer source
 
-The branch now contains a concrete production composition, not yet compiled or
-qualified. The earlier 19 Rust cases cover only the published adapter checkpoint.
+The branch now contains a concrete Post production composition, compiled at the
+checkpoint below. Concert policy/resources and the joined production path remain
+unqualified. The earlier 19 Rust cases cover only the published adapter checkpoint.
 
 Post request admission requires the sealed verified read proof, independently
 verified Concert caller, exact original actor/event/session/request/deadline and
@@ -164,8 +165,9 @@ profile need not be public. Actual public-author projection is still required.
 
 The qualified importing IDL and Post two-pass build are on this task branch.
 The composer delegated the exact Post build path and owns matching Concert/root
-composition. Export, compilation, actual native PostgreSQL/guarded transport,
-joined HTTP acceptance and final direct publication remain open. No live Feed,
+composition. Remaining Concert exports/compilation, real guarded transport,
+joined HTTP acceptance and final direct publication remain open. The Post
+compilation and native storage-only results are recorded below. No live Feed,
 BE31/BE32 or IN01 acceptance is claimed by these source changes.
 
 The task also contains a scoped Concert-to-Post transport using the dedicated
@@ -179,7 +181,7 @@ acknowledgement ordering plus exact same-transaction committed witness, and
 expiry maintenance that preserves live/unknown outcomes. These
 explicitly use fixture acknowledgements to test the producer store; they cannot
 qualify real owner exclusion or guarded HTTP. They require an explicitly leased
-PostgreSQL controller and have NOT_RUN status until executed. The frozen runner's
+PostgreSQL controller; their actual storage-only execution is recorded below. The frozen runner's
 --post-native-storage mode pins one exact library binary/source inventory and
 executes all five exact cases, refusing zero execution or skipped success.
 Its ten Python preflight cases pass. Concurrent qualified reads reserve a
@@ -224,4 +226,52 @@ settlement mutex from admission; this Feed slice does not implement HeldChildGua
 or supply a ScopeLifecycle. Those root/Profile implementations remain with their
 owners. The merge changed no owned Feed/Post producer source. No Cargo target or
 PostgreSQL controller was allocated or accessed for this compatibility check;
-new Rust/native/joined HTTP checks remain NOT_RUN.
+this compatibility check itself did not execute Rust, native or joined HTTP checks.
+
+
+## Qualified Post compilation and native storage checkpoint
+
+Exact clean source: `4552ccf95695d8a3ff311a3a65b9a767e27ecba0`.
+The Post build isolates canonical authority messages in `OUT_DIR/owner_authority`
+before generating importing services. This prevents tonic's imported service pass
+from overwriting the canonical message output. The transport can access its
+crate-private read admission module. No default toolchain, dependency install or
+additional target was used.
+
+Rust 1.88 with the existing MEDIA target, locked/offline jobs 2, dev/test debug 0
+and incremental 0 compiled Post's library and `concert_feed_live_read` integration
+binary with **zero warnings**. The copied executables passed the exact eight Post
+adapter cases and three owner-client cases. This is not the unexecuted 20-case
+Concert/Post/wire inventory. MEDIA was unconditionally released after copying
+both binaries and 1,511 pinned source files and verifying zero open target
+handles. Native execution subsequently used only the external copies.
+
+The five exact ignored native storage cases then executed individually against
+an exclusively owned PostgreSQL 16.14 socket-only instance: **5 passed, zero
+failed or skipped**. Actual full-xid status, missing/exact committed witness,
+lost acknowledgement, durable owner acknowledgements, expiry maintenance and
+the filtered 99-row comment continuation were exercised. Fixture owner
+acknowledgements and the test-only policy do not qualify real canonical owner
+RPCs, exclusions, root composition or Gateway HTTP response completion.
+
+The controller verified zero prepared transactions and zero leftover test schemas,
+stopped and removed its marker/token/inode-bound instance, and removed its private
+connection configuration. Cleanup: **PASS**. No shared PostgreSQL instance or
+foreign data directory was used.
+
+External evidence: `/private/tmp/mcr-feed-qualified-20261104/` contains
+`post-v3-cargo.jsonl`, `post-v3-cargo.stderr`, `post-binaries.json`,
+`source-manifest.json`, `post-checkpoint.json`, `native-binaries.json`,
+`native-report.json` and `native-controller-report.json`. Native report SHA-256:
+`e73c97c6f92222c1ba61bb0e27c5f733c0ff6b11e14dd34e76a37114d1064f31`.
+The copied library SHA-256 is
+`522912cbd9e50159fb0afc7920022ab647a38fc3d59722ced6f0e94702d76c74`;
+the copied integration binary SHA-256 is
+`3495bc1b7c518ebe9828b0cbfbe10d0f7b2db04dc967b93c97358ac2a0e3be79`.
+
+Real guarded integration and live HTTP remain **NOT_RUN**. Before publication,
+the importing Post IDL also requires the coherent Concert build/include fix owned
+by participant `01a1a209-80da-7e53-a295-b64cfe09c1d7`; publishing it alone would
+expose the same canonical overwrite in Concert. The remaining independent
+Concert nine adapter cases and three wire cases need their own fresh target lease.
+No live Feed, BE31/BE32 or IN01 acceptance is claimed.
