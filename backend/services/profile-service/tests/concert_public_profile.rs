@@ -76,6 +76,37 @@ async fn signed_scope_mutation_and_wrong_purpose_are_denied_before_owner() -> an
     s.stop().await
 }
 #[tokio::test]
+async fn caller_intent_is_required_canonical_and_exactly_scope_bound_before_owner(
+) -> anyhow::Result<()> {
+    let (mut s, owner) = controlled(Mode::Success).await?;
+    let original = message(Uuid::new_v4());
+    for index in 0..8 {
+        let mut m = original.clone();
+        match index {
+            0 => m.child_id.clear(),
+            1 => m.completion_secret.clear(),
+            2 => m.child_id = message(Uuid::new_v4()).child_id,
+            3 => m.completion_secret = Uuid::nil().simple().to_string(),
+            4 => m.completion_secret = "ABCDEFABCDEFABCDEFABCDEFABCDEFAB".into(),
+            5 => {
+                let end = m.child_id.len() - 32;
+                m.child_id
+                    .replace_range(end.., &Uuid::nil().simple().to_string());
+            }
+            6 => m.child_id.push_str("' ; rollback prepared"),
+            _ => m.subject_id = Uuid::new_v4().to_string(),
+        }
+        // Freshly sign the malformed complete body: this tests semantic intent
+        // binding in the actual owner handler, beyond signature tampering.
+        assert_eq!(
+            call(&mut s, m).await.unwrap_err().code(),
+            Code::InvalidArgument
+        );
+    }
+    assert_eq!(owner.calls.load(Ordering::SeqCst), 0);
+    s.stop().await
+}
+#[tokio::test]
 async fn proof_caller_audience_method_replay_and_constructed_extensions_do_not_bypass(
 ) -> anyhow::Result<()> {
     use platform::{actor_delegation::ActorDelegationSigner, grpc_auth::Workload};
