@@ -19,7 +19,9 @@ This owner changes only age application/provider subtrees, the named migration,
 new age runtime tests/support, this document, and exact delegated module exports
 and the `age_claims.rs` aliases needed by its retained path-included adapter. Exact
 additional test grants declare accepted fixture provenance in the old reader
-authority and the old unavailable-provider producer initializer.
+authority (including its commit-delay wrapper) and the old unavailable-provider
+producer initializer. Root additionally delegated the exact disclosure deadline
+hook in `relationship_authority/guarded/scope.rs`.
 Root owns Operation variants, Gateway/Concert HTTP dispatch, process config,
 capability composition, and the composite settlement resolver. Intro owns its
 read/write policy, row locks, routes, schema and runtime acceptance.
@@ -87,7 +89,17 @@ The returned `PendingAgeProjection<T>` keeps its value private. The caller must
 commit the SAME transaction, discard the value on rollback or uncertain commit,
 and call synchronous `.after_commit()` before returning its DTO. That performs
 expiry/request/Seoul-birthday checks after commit. It is not a claim lease and
-cannot authorize another read. The legacy `ClaimReader::read` still denies.
+cannot authorize another read.
+
+Before private projection, the scoped authority also calls
+`OwnerGuardScope::limit_disclosure_until(DateTime<Utc>)`. Own VERIFIED status uses
+the same hook. The held scope retains both wall expiry and its captured monotonic
+stop; repeated limits only shorten either clock. Invalid, expired and sealed
+scopes reject the call. Root SDK3 folds this policy boundary into its existing
+`disclosure_ceiling()` and `content_expires_unix_micros` response metadata. This
+closes the interval between known COMMIT and the transport disclosure boundary
+without renewing authority or changing settlement. Stable expired/revoked status
+responses use the original request ceiling because they disclose no valid claim. The legacy `ClaimReader::read` still denies.
 
 Unknown, expired, unsupported or unavailable verification denies only restricted
 rows; a source dependency failure fails the projection. A current persisted
@@ -119,6 +131,17 @@ remain separate, explicitly recorded acceptance boundaries.
 
 ## Qualification record
 
-Pending the current named-target queue. No native, HTTP, commercial-provider,
-restart, browser, whole-product or global task-count acceptance is claimed by
-these source commits.
+Fresh qualification is pending the coherent Root SDK3 source and named-target
+slice. Earlier frozen producer `1fd2f14a1a2de949f5caa068f0e7145a3b2709e5`
+passed all five then-existing canonical native cases and retained application
+10/producer16 cases. Its first controller run had an inventory parsing defect;
+the corrected run exposed a missing trust-policy delegation in the retained
+reader commit-delay fixture. The additive fixture correction is `edc1e729`;
+these partial receipts do not qualify the current source or the full reader and
+restart inventory. Failed reports remain preserved in the private artifact
+directory.
+
+The current inventory requires six canonical cases, retained application10,
+producer16, reader11, and one durable case after an actual PostgreSQL restart.
+HTTP, commercial-provider, external callback, browser, whole-product and global
+task-count acceptance remain outside these source/core qualification claims.
