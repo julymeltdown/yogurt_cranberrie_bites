@@ -1,0 +1,10 @@
+{
+  "failedRound": "round-01 exit1/FULL;0PNG;0loadedproduction sources",
+  "cause": "Vite Pre-transform failed /wall-software-preview.ts because relative HTMLmoduleURL was resolved under /login. OwnHTMLentry routing error before Auth rendered.",
+  "fix": "Absolute /e2e/visual/qa06/wall-software-preview.ts; no product/Auth/bypass/renderer change",
+  "htmlBefore": "9f2ab46668cc5b972bd703cacddbd745a620477361751e19ebde8d532680db92",
+  "htmlAfter": "f06f846057186f91cef690a2b69049141c2efd1a9e671f1c527ef50b84c4c5fe",
+  "sameOriginalWorkDeadline": 1793824057.913723,
+  "sameCaps": true,
+  "failedReportAndLogPreserved": true
+}

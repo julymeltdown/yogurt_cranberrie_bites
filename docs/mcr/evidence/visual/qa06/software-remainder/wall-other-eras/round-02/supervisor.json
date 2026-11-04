@@ -1,0 +1,54 @@
+{
+  "job": "QA06-WALL-TWO-ERAS-BROWSER-20261104T2015Z",
+  "round": "round-02",
+  "started": 1793823821.044058,
+  "workDeadline": 1793824057.913723,
+  "cleanupDeadline": 1793824117.913723,
+  "candidate": "766f5694eee47f243b2775111561b9b924ca299e",
+  "carriedWholeBytes": 1306968064,
+  "actualPhysicalCarryBytes": 1306968064,
+  "originalJobCarryBytes": 1306935296,
+  "retainedDependencyBytes": 438317056,
+  "aggregateNewReserve": 2529394688,
+  "caps": {
+    "whole": 2147483648,
+    "new": 268435456,
+    "temp": 209715200,
+    "durable": 33554432,
+    "allPids": 24,
+    "rss": 4294967296,
+    "pngs": 8
+  },
+  "peaks": {
+    "temp": 30302360,
+    "durable": 294912,
+    "allPids": 11,
+    "rss": 2657583104,
+    "pngs": 2,
+    "new": 30453912,
+    "whole": 1337389208
+  },
+  "commands": [
+    [
+      "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node",
+      "--check",
+      "/Users/lhs/Desktop/mcr-worktrees/fe-ref-public/frontend/e2e/visual/qa06/wall-other-eras.mjs"
+    ],
+    [
+      "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node",
+      "/Users/lhs/Desktop/mcr-worktrees/fe-ref-public/frontend/e2e/visual/qa06/wall-other-eras.mjs"
+    ]
+  ],
+  "minFree": 18007420928,
+  "currentCarry": 1307086848,
+  "wholeMeasuredAt": 1793823833.373784,
+  "exitCode": 0,
+  "remainingOwnedPids": [],
+  "finished": 1793823836.255452,
+  "ownLinkAbsent": true,
+  "ownTempAbsent": true,
+  "portClosed": true,
+  "cleanupWithinDeadline": true,
+  "finalFree": 18037821440,
+  "FULL": true
+}

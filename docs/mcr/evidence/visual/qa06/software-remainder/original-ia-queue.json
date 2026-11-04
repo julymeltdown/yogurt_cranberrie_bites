@@ -696,11 +696,12 @@
         430
       ],
       "requiredSkins": "REVENGE/PARADE/DANGER on authenticated shell; public/admin applicability recorded per owner",
-      "disposition": "OPEN_ORIGINAL_SOFTWARE_STATES; owner-scoped evidence is not a blanket61IA pass",
+      "disposition": "MOCK_READY_BOUNDED_APPROVED_MOTIF_ONLY; original explicitcommit/cooldown/paused/frozen and other applicable states remain owner-qualified/open",
       "reuse": [
-        "wall-approved-motif round02 actualApp REVENGE360/390/430 +short390 source5b0 published1a1db340 controlledsnapshot; no live/worldpixel oracle"
+        "wall-approved-motif round02 actualApp REVENGE360/390/430 +short390 source5b0 published1a1db340 controlledsnapshot; no live/worldpixel oracle",
+        "wall-other-eras round02 actualApp PARADE390/DANGER430 candidate766f5694; controlledC04approved editorRGBA; priorREVENGE/shortheight reused; no live/worldpixel oracle"
       ],
-      "next": "Retain exact listed original states; identify applicable existing owner-qualified state/source cohort before selecting minimal uncovered leaf; not blocked on physicaldevices"
+      "next": "Reuse owner-qualified original mutation/state evidence by source/contract; do not repeat approved-motif matrix or claim fullR01/all61IA acceptance."
     },
     {
       "ia": "U01",
@@ -1126,11 +1127,9 @@
     }
   ],
   "queueOrder": [
-    "W05 nondefault eras",
-    "W06 dedicated panel and local persistence",
-    "U07 software-width draft/cancel",
-    "W08 when21e source ready",
-    "remaining exact state leaves using source-bound owner reuse"
+    "Delivered bounded W05/W06/U07/G07/W08/R01 software leaves; no blanket61IA pass",
+    "Remaining exact original state leaves using source-bound responsible-owner reuse",
+    "Physical/device/keyboard/safearea and live/full-reference original obligations remain open"
   ],
   "physicalQuestion": "Already pending; no repoll",
   "originalGoal": "1793759287 BLOCKED/aligned/unfinished",

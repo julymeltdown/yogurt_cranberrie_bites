@@ -1,0 +1,142 @@
+{
+  "task": "QA06",
+  "case": "QA06-WALL-APPROVED-MOTIF-OTHER-ERAS",
+  "job": "QA06-WALL-TWO-ERAS-BROWSER-20261104T2015Z",
+  "cohort": "wall-other-eras",
+  "admission": {
+    "job": "QA06-WALL-TWO-ERAS-BROWSER-20261104T2015Z",
+    "issuer": "21d fresh literal eligibleinventory after BOTHAuth2015FULL",
+    "candidate": "766f5694eee47f243b2775111561b9b924ca299e",
+    "cohort": "wall-other-eras",
+    "acceptedAt": 1793823757.913723,
+    "workDeadline": 1793824057.913723,
+    "cleanupDeadline": 1793824117.913723,
+    "startFloorBytes": 11811160064,
+    "liveFloorBytes": 8589934592,
+    "afterAllReservedFloorBytes": 9663676416,
+    "actualPhysicalCarryBytes": 1306931200,
+    "chargedCarryBytes": 1306931200,
+    "historicalCarryFloorBytes": 1306640384,
+    "freeBytes": 18283343872,
+    "otherWorstNewBytes": 2260959232,
+    "aggregateWorstNewBytes": 2529394688,
+    "afterAllReservedBytes": 15753949184,
+    "allInventory": [
+      "A Media1846 actualACCEPT20:18:35.096944 NEW1.75GiB1879048192 targetnotreportedreleased",
+      "B BE38SQL2015 eligible128MiB",
+      "C thisQA06Wall2015 eligible256MiB",
+      "D ArtistREPAIR2020 eligible64MiB afterAdminFULL20:19:12.934460",
+      "ordinaryprep180584448B COMBINED countedonce"
+    ],
+    "eligibility": "Auth2015BE FULL1793823571.8324711 andFE FULL1793823544.297354; both workflow/PG/RPC/HTTP/mail/3000/link/TMP/guardian0, no docs/ACKgate",
+    "futureNotCurrent": "Lifecycle3GiB only afterMediaactualrelease andfreeglobalposition, no currentphantom3; oldAuth/Admin/Artist/Legacyclaims0",
+    "globalJobs": 4,
+    "sourceJobs": 2,
+    "browserJobs": 1,
+    "ceilings": {
+      "global": 4,
+      "source": 2,
+      "browser": 2
+    },
+    "all70OriginalHashes": "PASS",
+    "port19878Free": true,
+    "protectedProductPathsClean": true,
+    "guardSha256": "35b5b03d62d2f5a6953a4ad6cf5758f28842f9f77c05c4465f4c596af8930176",
+    "runnerSha256": "89fcb81b9c2575a936cbc0b3230ab237c71cc6eae3ed319130f721e5e56163fa",
+    "fixtureSha256": "d19b88bb055ae3687e766050acf283fb81b0294ba517a23725a8923a56cfd948",
+    "htmlSha256": "9f2ab46668cc5b972bd703cacddbd745a620477361751e19ebde8d532680db92",
+    "cohortSha256": "382f86150628b47d010613f1a5e4a8ff008ff6152d488e610a07194f43535057",
+    "caps": {
+      "WHOLE": 2147483648,
+      "NEW": 268435456,
+      "TEMP": 209715200,
+      "durable": 33554432,
+      "ALLPIDs": 24,
+      "RSS": 4294967296,
+      "allPNGs": 8
+    },
+    "cases": "ExactPARADE390/DANGER430 approvedmotif2cases2plannedPNG; noREVENGE/shortheight replay or otherwork"
+  },
+  "cohortSha256": "382f86150628b47d010613f1a5e4a8ff008ff6152d488e610a07194f43535057",
+  "candidate": "766f5694eee47f243b2775111561b9b924ca299e",
+  "status": "INCOMPLETE_OR_FAILED",
+  "startedAt": "2026-11-04T20:22:39.595Z",
+  "qualification": "ACTUAL_MAIN_CANONICAL_UI_LOGIN_EXISTING_HTTP_C05_FIXTURE_APPROVED_ART_AS_SYNTHETIC_C04_SNAPSHOT_NOT_LIVE",
+  "physicalIOS": "NOT_RUN",
+  "physicalAndroid": "NOT_RUN",
+  "softwareKeyboard": "NOT_RUN",
+  "hardwareSafeArea": "NOT_RUN",
+  "otherEras": "REVENGE_REUSED_1a1db340_NOT_RERUN",
+  "runnerSha256": "89fcb81b9c2575a936cbc0b3230ab237c71cc6eae3ed319130f721e5e56163fa",
+  "sourceReadset": {},
+  "assetReadset": {},
+  "cases": [
+    {
+      "width": 390,
+      "era": "PARADE",
+      "height": 844,
+      "status": "FAIL",
+      "errors": [],
+      "error": "locator.fill: Timeout 15000ms exceeded.\nCall log:\n\u001b[2m  - waiting for getByLabel('Email', { exact: true })\u001b[22m\n",
+      "renderedText": ""
+    }
+  ],
+  "errors": [
+    {
+      "width": 390,
+      "error": "locator.fill: Timeout 15000ms exceeded.\nCall log:\n\u001b[2m  - waiting for getByLabel('Email', { exact: true })\u001b[22m\n"
+    }
+  ],
+  "approvedPack": {
+    "path": "frontend/public/wall/initial-motif-v1/",
+    "manifestSha256": "3f1aa318f0e4b7d8fa7f079b1101f7386619291a8dbb3bb04ef70820952f34ce",
+    "pixelsSha256": "f29eaf4ea632e2a34b6dd4fdfdc6f8a3d07ab780af96e19c2a64c28faf42c721",
+    "paletteSha256": "9d6f27f9d60773877053459e47766017d0be0f3f4c7f889fff97ffca60e2247d",
+    "expected128RGBA": "4b3846029b0e9b0c5bdf2ca602efba2a4c2219f6bc20db5df548af3262074590"
+  },
+  "headlessFixture": {
+    "path": "/e2e/visual/qa06/wall-software-preview.ts",
+    "sha256": "d19b88bb055ae3687e766050acf283fb81b0294ba517a23725a8923a56cfd948"
+  },
+  "limits": [
+    "Exact published art as explicitly synthetic server read data, not backend provisioning/real authority/live snapshot.",
+    "Own headless fixture derives existing actual-main/C05/placement setup; adds only existing Auth admission() response through canonical authenticatedGET/decoder/gate. No Auth/provider/gate/model or renderer override.",
+    "Only new approved-motif state PARADE390/DANGER430; priorREVENGE360/390/430 plus short390 qualified unchanged component layout reused; no unchanged all-screen matrix or other-era claim.",
+    "No paint/fill/erase/undo/submit/save/upload. Toolbar/palette/fit and DOM focus/scroll only.",
+    "No new reduced420 case: historical REVENGE short-height reused; no physical keyboard/safe-area claim.",
+    "Whole original QA06, full61IA/live/full-reference/device acceptance remain open."
+  ],
+  "existingPlacementReceipt": {
+    "path": "docs/mcr/evidence/mural-production-binding/backoff-native-01/run/capture/report.json",
+    "sha256": "cec3d134320c1012dc708dcdefac83d5445fb4215323f28ae859da17257bec3d"
+  },
+  "fixturePlacement": {
+    "version": 1,
+    "kind": "PRODUCT_VIRTUAL",
+    "sourceRevision": "122ec874075509566e41eebefa7d290ce5741626",
+    "placementHash": "sha256:cbfb6fd02b9ca1b376f48afdecb8ff9801c0664bb20dcfc402b94b0dc64ac0f0",
+    "map": {
+      "id": "paradise_virtual_courtyard",
+      "revision": 1,
+      "contentHash": "sha256:394d3ec80372443eb2adaf2adcf0a7ed017bdd89b6f5128fbee27f72c67fe413",
+      "geometryHash": "sha256:463a46ba69bcb48fc691cc33c76e53a43328473edf8b8b61c235d96043dc9e27",
+      "widthPx": 1152,
+      "heightPx": 896
+    },
+    "anchor": {
+      "x": 312,
+      "y": 624,
+      "width": 128,
+      "height": 128,
+      "depth": 0.5
+    },
+    "textureKey": "mcr-product-virtual-wall-map4-r4-v1"
+  },
+  "browser": "156.0.8078.80",
+  "cleanup": {
+    "browserDisconnected": true,
+    "serverCloseResolved": true,
+    "serverCloseMs": 1
+  },
+  "finishedAt": "2026-11-04T20:22:55.591Z"
+}

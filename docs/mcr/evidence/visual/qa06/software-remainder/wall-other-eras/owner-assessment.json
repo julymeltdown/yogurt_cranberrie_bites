@@ -1,0 +1,120 @@
+{
+  "task": "QA06",
+  "state": "MOCK_READY",
+  "candidate": "766f5694eee47f243b2775111561b9b924ca299e",
+  "scope": "R01 approved initial Wall motif, actual App, PARADE390x844 and DANGER430x844 only",
+  "states": [
+    {
+      "era": "PARADE",
+      "width": 390,
+      "height": 844,
+      "status": "PASS",
+      "screenshot": {
+        "path": "wall-approved-motif-parade-390-844.png",
+        "sha256": "1ebf55654e955f55da8b6b9afdac7d6c4b52f7302846ee85918eb69336cdec60",
+        "bytes": 34137
+      }
+    },
+    {
+      "era": "DANGER",
+      "width": 430,
+      "height": 844,
+      "status": "PASS",
+      "screenshot": {
+        "path": "wall-approved-motif-danger-430-844.png",
+        "sha256": "23550e7da06a37888a5924792248b875d7fcd9548e0d074f18496ee57f7c9c4d",
+        "bytes": 33102
+      }
+    }
+  ],
+  "actualRunWindow": {
+    "start": "2026-11-04T20:23:41.685Z",
+    "finish": "2026-11-04T20:23:55.750Z",
+    "perScreenshotTimestamp": "NOT_INSTRUMENTED; report run window only, no invented individual capture timestamps"
+  },
+  "behavior": [
+    "Canonical UI login, authenticated admission GET through existing exact Auth fixture DTO, strict decoder and AdmissionBoundary; actual main/router/World retained.",
+    "Approved128x128/16-color pack changes only palette/pixels of successful explicitly synthetic C04 snapshot read. Editor RGBA equals approved expectation in both cases.",
+    "Five sampled toolbar controls and both palette ends44px; center-hit/scroll reach and keyboard palette focus pass; no horizontal overflow.",
+    "Same World canvas, one game/canvas/mural, socketpeak1; signout active sockets0/blobURLs0.",
+    "No added nonGET after initial login/world-ticket setup; no paint/fill/erase/undo/commit/submit/save/upload."
+  ],
+  "inspection": {
+    "by": "Responsible QA06 implementation/validation owner",
+    "method": "Directly viewed both saved round02 PNGs individually after FULL; no new capture/runtime",
+    "observations": [
+      "PARADE390 approved motif remains legible with complete editor frame/title/tool column, visible palette segment, revision/status and Coordinates & help.",
+      "DANGER430 larger proportional canvas, legible motif and controls/status; decorative pastel shell remains truthful existing styling.",
+      "Palette is intentionally horizontally scrollable; final palette element was separately scrolled/asserted. No claim every color is simultaneously visible.",
+      "Selected runtime eras asserted by driver; shared editor appearance does not imply distinct panel skin designs."
+    ]
+  },
+  "reuse": [
+    "Prior published1a1db340 REVENGE360/390/430 plus390x420 approved-motif qualification reused within original source/state limits, not replayed.",
+    "Existing published default-main mural placement/C05 receipt reused; world-mural full motif pixels were not accepted by this editor oracle.",
+    "Prior sixteen bounded software states remain published: nineNearby/Theme fcac0bed, fiveSettings/MyGifts dc713e65, twoHelp2cc7f5ded62491fc5d5b9d17dd5cb0691bc10d0c. This pair adds2, not a61IA blanket pass."
+  ],
+  "failure": {
+    "round01": "Native exit1/FULL, zeroPNG and zero loaded production sources. Relative fixture HTML script resolved from /login to wrong root module URL; Auth never rendered.",
+    "repair": "Only owned HTML changed to absolute /e2e/visual/qa06/wall-software-preview.ts. Original failed report/log/HTML hashes preserved in round01-diagnosis.json.",
+    "round02": "Same accepted clock/caps/cohort; no extension/source replacement. Native and syntax exit0,2PASS."
+  },
+  "custody": "custody.json:455loaded source pins/31public assets/2PNGs67239bytes/all70originalfiles7239136bytes unchanged; protected product/art/contracts/manifests/locks untouched",
+  "validation": {
+    "syntaxExit": 0,
+    "nativeExit": 0,
+    "planning": "See validation.json for actual Python planning exit/result; not live/device acceptance",
+    "reports": [
+      "round-01/report.json",
+      "round-01/supervisor.json",
+      "round-02/report.json",
+      "round-02/supervisor.json"
+    ],
+    "guardInvocationTemplate": "python3 frontend/e2e/visual/qa06/wall-software-guard.py --job QA06-WALL-TWO-ERAS-BROWSER-20261104T2015Z --round ROUND --cohort wall-other-eras --admission docs/mcr/evidence/visual/qa06/software-remainder/wall-other-eras/admission-ROUND.json --deadline 1793824057.913723 --port 19878 --aggregate-reserve 2529394688 --candidate 766f5694eee47f243b2775111561b9b924ca299e",
+    "actualCommands": [
+      [
+        "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node",
+        "--check",
+        "/Users/lhs/Desktop/mcr-worktrees/fe-ref-public/frontend/e2e/visual/qa06/wall-other-eras.mjs"
+      ],
+      [
+        "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node",
+        "/Users/lhs/Desktop/mcr-worktrees/fe-ref-public/frontend/e2e/visual/qa06/wall-other-eras.mjs"
+      ]
+    ]
+  },
+  "release": {
+    "FULL": true,
+    "epoch": 1793823836.255452,
+    "utc": "2026-11-04T20:23:56.255452Z",
+    "kst": "2026-11-05T05:23:56.255452+09:00",
+    "ownedPids": [],
+    "port19878Closed": true,
+    "linkAbsent": true,
+    "tempAbsent": true,
+    "newReservationBytes": 0,
+    "peaks": {
+      "temp": 30302360,
+      "durable": 294912,
+      "allPids": 11,
+      "rss": 2657583104,
+      "pngs": 2,
+      "new": 30453912,
+      "whole": 1337389208
+    },
+    "originalDeadlinesUnchanged": true,
+    "routing": "Literal FULL sent Map26e then21d before existing-image inspection/docs/commit. Routine outcome to Community; no per-round King385 packet under latest hourly-batch direction."
+  },
+  "allocationUpdate": "allocation-update.json preserves accepted stronger reserve and later lower eligible future-growth inventory without retroediting receipts",
+  "limits": [
+    "Exact published art as explicitly synthetic server read data, not backend provisioning/real authority/live snapshot.",
+    "Own headless fixture derives existing actual-main/C05/placement setup; adds only existing Auth admission() response through canonical authenticatedGET/decoder/gate. No Auth/provider/gate/model or renderer override.",
+    "Only new approved-motif state PARADE390/DANGER430; priorREVENGE360/390/430 plus short390 qualified unchanged component layout reused; no unchanged all-screen matrix or other-era claim.",
+    "No paint/fill/erase/undo/submit/save/upload. Toolbar/palette/fit and DOM focus/scroll only.",
+    "No new reduced420 case: historical REVENGE short-height reused; no physical keyboard/safe-area claim.",
+    "Whole original QA06, full61IA/live/full-reference/device acceptance remain open.",
+    "Actual iOS Safari/Android Chrome, real software keyboard/hardware safe area, live/backend/multiuser authorization remain NOT_RUN/open; original pending physical connection question not repeated.",
+    "All61requiredIA, full-reference fidelity and unexecuted individual width/skin/state combinations remain open; original goal1793759287 freshly read BLOCKED/aligned/unfinished, metadata preserved."
+  ],
+  "next": "Direct single committed handoff to Root153 normal publisher; no king/SL/QA review or ACK. No runtime/resource held for documentation/publication."
+}

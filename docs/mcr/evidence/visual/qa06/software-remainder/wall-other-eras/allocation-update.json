@@ -1,0 +1,19 @@
+{
+  "source": "21d post-ACCEPT allocation message; reported Media actual target release20:19:58.232538 but copied workflow1 still live",
+  "originalAcceptedAllNewBytes": 2529394688,
+  "updatedEligibleAllNewBytes": 1132695552,
+  "updatedOtherNewBytes": 864260096,
+  "components": {
+    "MediaRemainingFutureNew": 482349056,
+    "BE38SQL2015": 134217728,
+    "QA06Wall2015": 268435456,
+    "ArtistREPAIR2020": 67108864,
+    "ordinaryPreparationCombinedOnce": 180584448
+  },
+  "chronology": "Received after actual ACCEPT1793823757.913723; original admission and executed reports remain immutable. Monitor retained stronger original reserve2529394688 throughout both rounds.",
+  "futureNotCurrent": "Lifecycle3GiB requires actual returned workflow/global position and fresh ALL inventory; no phantom fifth job or extra3GiB was charged in this run.",
+  "noExtension": true,
+  "workDeadline": 1793824057.913723,
+  "cleanupDeadline": 1793824117.913723,
+  "routing": "Literal FULL sent Map26e then21d before existing-image inspection/docs/commit. Routine outcome to Community; no per-round King385 packet under latest hourly-batch direction."
+}

@@ -1,0 +1,2 @@
+5:22:40 AM [vite] (client) Pre-transform error: Failed to load url /wall-software-preview.ts (resolved id: /wall-software-preview.ts). Does the file exist?
+{"status":"INCOMPLETE_OR_FAILED","cases":1,"errors":[{"width":390,"error":"locator.fill: Timeout 15000ms exceeded.\nCall log:\n\u001b[2m  - waiting for getByLabel('Email', { exact: true })\u001b[22m\n"}]}

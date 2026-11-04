@@ -1,5 +1,5 @@
 {
-  "state": "PREPARED_NOT_RUN",
+  "state": "MOCK_READY_BOUNDED_TWO_CASES",
   "sourceBase": "7f48a3e12efd9e1b6302a12710963607fd16216d",
   "files": {
     "frontend/e2e/visual/qa06/wall-other-eras.mjs": {
@@ -15,8 +15,8 @@
       "sha256": "d19b88bb055ae3687e766050acf283fb81b0294ba517a23725a8923a56cfd948"
     },
     "frontend/e2e/visual/qa06/wall-software-preview.html": {
-      "bytes": 284,
-      "sha256": "9f2ab46668cc5b972bd703cacddbd745a620477361751e19ebde8d532680db92"
+      "bytes": 299,
+      "sha256": "f06f846057186f91cef690a2b69049141c2efd1a9e671f1c527ef50b84c4c5fe"
     },
     "frontend/e2e/visual/qa06/cohorts/wall-other-eras.json": {
       "bytes": 684,
@@ -43,5 +43,32 @@
     }
   ],
   "approvedArt": "Exact initial-motif-v1 palette/pixels supplied as explicit syntheticC04successfulread; priorapprovedRGBA expectation unchanged",
-  "validation": "PythonAST/importexistenceonly; Node/runtimeNOT_RUN pendinglaterfreshallocation; not currentSettingsjob"
+  "validation": "wall-other-eras/owner-assessment.json supersedes PREPARED_NOT_RUN for exactPARADE390/DANGER430; native/syntax0,2PASS; preserved failure/HTMLrepair. Wholegoal remains unfinished.",
+  "historicalPreparation": {
+    "state": "PREPARED_NOT_RUN",
+    "files": {
+      "frontend/e2e/visual/qa06/wall-other-eras.mjs": {
+        "bytes": 16264,
+        "sha256": "89fcb81b9c2575a936cbc0b3230ab237c71cc6eae3ed319130f721e5e56163fa"
+      },
+      "frontend/e2e/visual/qa06/wall-software-guard.py": {
+        "bytes": 8711,
+        "sha256": "35b5b03d62d2f5a6953a4ad6cf5758f28842f9f77c05c4465f4c596af8930176"
+      },
+      "frontend/e2e/visual/qa06/wall-software-preview.ts": {
+        "bytes": 12931,
+        "sha256": "d19b88bb055ae3687e766050acf283fb81b0294ba517a23725a8923a56cfd948"
+      },
+      "frontend/e2e/visual/qa06/wall-software-preview.html": {
+        "bytes": 284,
+        "sha256": "9f2ab46668cc5b972bd703cacddbd745a620477361751e19ebde8d532680db92"
+      },
+      "frontend/e2e/visual/qa06/cohorts/wall-other-eras.json": {
+        "bytes": 684,
+        "sha256": "382f86150628b47d010613f1a5e4a8ff008ff6152d488e610a07194f43535057"
+      }
+    },
+    "validation": "PythonAST/importexistenceonly; Node/runtimeNOT_RUN pendinglaterfreshallocation; not currentSettingsjob"
+  },
+  "candidate": "766f5694eee47f243b2775111561b9b924ca299e"
 }

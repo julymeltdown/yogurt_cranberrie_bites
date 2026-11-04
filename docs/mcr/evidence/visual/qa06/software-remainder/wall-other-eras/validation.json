@@ -1,0 +1,20 @@
+{
+  "planning": {
+    "command": "python3 scripts/mcr/check-plan.py",
+    "exitCode": 0,
+    "result": "PASS",
+    "scope": "Planning provenance/exporter/routing only; not application/live/device proof"
+  },
+  "native": {
+    "round01ExitCode": 1,
+    "round02SyntaxExitCode": 0,
+    "round02NativeExitCode": 0,
+    "round02Status": "MOCK_READY",
+    "passingCases": 2
+  },
+  "diffCheck": {
+    "command": "git diff --check -- frontend/e2e/visual/qa06 docs/mcr/evidence/visual/qa06 docs/mcr/frontend/mobile-visual-qa06.md",
+    "exitCode": 0,
+    "performedBeforeCommit": true
+  }
+}

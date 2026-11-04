@@ -1,0 +1,37 @@
+{
+  "status": "PASS",
+  "candidate": "766f5694eee47f243b2775111561b9b924ca299e",
+  "loadedSourceFiles": 455,
+  "publicAssets": 31,
+  "screenshots": 2,
+  "screenshotLogicalBytes": 67239,
+  "preservedOriginalFiles": 70,
+  "preservedOriginalLogicalBytes": 7239136,
+  "checks": [
+    "Loaded source and public asset SHA/bytes match unchanged candidate (sparse absent files read from Git)",
+    "Both PNG hashes/bytes/native dimensions match raw report",
+    "Approved editor RGBA/control geometry/same canvas/one socket/disposal match raw successful cases",
+    "Driver/guard/headless fixture/HTML hashes equal admission-round-02",
+    "All70 original local files byte-identical",
+    "Only tracked change before this qualification is owned HTML entry URL",
+    "FULL cleanup within original work/cleanup deadlines"
+  ],
+  "reports": {
+    "docs/mcr/evidence/visual/qa06/software-remainder/wall-other-eras/round-01/report.json": {
+      "sha256": "4f9478e89d5ee13978f5cee9ea1ca16f65bb63568f65e55cd24adfa03c77a1af",
+      "bytes": 6287
+    },
+    "docs/mcr/evidence/visual/qa06/software-remainder/wall-other-eras/round-01/supervisor.json": {
+      "sha256": "068ce1ea4c83e22c8f71bd8cb7f7d21016fe7382b25f4d3d879f86d6e328b362",
+      "bytes": 1508
+    },
+    "docs/mcr/evidence/visual/qa06/software-remainder/wall-other-eras/round-02/report.json": {
+      "sha256": "11f18fa724097b40462e2b709f90c5ff2df6dc3bba1c9570e53145148973be7a",
+      "bytes": 89709
+    },
+    "docs/mcr/evidence/visual/qa06/software-remainder/wall-other-eras/round-02/supervisor.json": {
+      "sha256": "37293850339c373672fd07edc7aa4b644d14eae820cb2fef4a827ecae5745389",
+      "bytes": 1508
+    }
+  }
+}
