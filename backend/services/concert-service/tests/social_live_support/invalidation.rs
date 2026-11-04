@@ -185,6 +185,25 @@ async fn held_baseline_fences_a_concurrent_source_commit_until_stream_registrati
         .unwrap()
         .unwrap();
     assert_eq!(s.baseline(e, a).await.unwrap(), 2);
+    // A bootstrap lock must not extend an existing absolute proof deadline.
+    let guard = s.held_baseline(e, a).await.unwrap();
+    let pool = p.clone();
+    let (ready, wait) = tokio::sync::oneshot::channel();
+    let task = tokio::spawn(async move {
+        let mut tx = pool.begin().await.unwrap();
+        sqlx::query("select set_config('mcr.relationship_authority_until',(clock_timestamp()+interval '100 milliseconds')::text,true)")
+            .execute(&mut *tx).await.unwrap();
+        let (r, _) = pending(&mut tx, e, a, b, "blockConcertUser").await;
+        succeed(&mut tx, r).await;
+        ready.send(()).unwrap();
+        tx.commit().await
+    });
+    wait.await.unwrap();
+    tokio::time::sleep(std::time::Duration::from_millis(150)).await;
+    guard.commit().await.unwrap();
+    assert!(task.await.unwrap().is_err());
+    assert_eq!(s.baseline(e, a).await.unwrap(), 2);
+    assert_eq!(s.baseline(e, b).await.unwrap(), 2);
     p.close().await;
 }
 

@@ -34,7 +34,7 @@ CREATE INDEX concert_social_policy_pending ON public.concert_social_policy_signa
 -- Keep source snapshots after ordinary outbox pruning. They contain no ciphertext,
 -- handle, credential or body; original queue UUIDs never enter the public frame.
 CREATE FUNCTION public.concert_social_policy_from_outbox() RETURNS trigger LANGUAGE plpgsql AS $$
-DECLARE r public.concert_command_receipts%ROWTYPE; o public.concert_outbox%ROWTYPE; audience uuid[]; who uuid; why text; gen bigint;
+DECLARE r public.concert_command_receipts%ROWTYPE; o public.concert_outbox%ROWTYPE; audience uuid[]; who uuid; why text; gen bigint; authority_until timestamptz;
 BEGIN
  IF NEW.kind<>'RESOURCE_INVALIDATED' OR NEW.receipt_id IS NULL THEN RETURN NEW; END IF;
  SELECT * INTO STRICT r FROM public.concert_command_receipts WHERE receipt_id=NEW.receipt_id;
@@ -79,6 +79,13 @@ BEGIN
    source_outbox,source_receipt,source_operation,source_resource,source_revision)
    VALUES(gen_random_uuid(),r.event_id,who,gen,why,o.outbox_id,r.receipt_id,r.operation_id,r.target_id,r.resource_revision);
  END LOOP;
+ -- Generation locks can wait behind a held bootstrap. Do not let that new
+ -- wait extend an existing retained authority deadline checked earlier during
+ -- deferred guards. Missing metadata-only fixture context grants no authority.
+ authority_until:=nullif(current_setting('mcr.relationship_authority_until',true),'')::timestamptz;
+ IF authority_until IS NOT NULL AND clock_timestamp()>=authority_until THEN
+  RAISE EXCEPTION 'relationship authority expired during policy generation' USING ERRCODE='23514';
+ END IF;
  RETURN NEW;
 END $$;
 -- Deferred until the retained receipt has reached its final outcome. Receipt-
