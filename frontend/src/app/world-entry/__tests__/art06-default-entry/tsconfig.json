@@ -1,0 +1,16 @@
+{
+  "extends": "../map-presentation-v2/tsconfig.json",
+  "compilerOptions": {
+    "incremental": true
+  },
+  "include": [
+    "./preview.ts",
+    "./intake.test.ts",
+    "../map-presentation-v2/*.ts",
+    "../map-presentation-v2/*.tsx",
+    "../../map-presentation-v2/*.ts",
+    "../../reference-scene-overview.ts",
+    "../../../../features/places/ui/IllustratedMap.tsx"
+  ],
+  "exclude": []
+}

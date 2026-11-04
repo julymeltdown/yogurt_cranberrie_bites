@@ -1,0 +1,147 @@
+{
+  "status": "BOUNDED_ART06_NATIVE_PASS_FULL_REFERENCE_GAPS_OPEN",
+  "sourceQualified": "bd6e4517ba641d5ef6d15e6ea4878a94fc93a06c",
+  "nativeCandidate": "9523b0b5a036fc73ba4801b5e84ac254fcacefac",
+  "presentationHash": "sha256:d8437dda63dd5f0cb554bcfcc1c267782db6630fab39c541291bb3c368d154b6",
+  "reportSha256": "e2303d374f70f1e3531e50c4bbde716fae32925fdfb5d98c1b6b94b6ed5392ab",
+  "reference": {
+    "path": "docs/mcr/design/reference-target-2026-11-04.png",
+    "sha256": "d9a8fae2f96a82253542019ab673589b3938627956eace15c8594c702b5c4617",
+    "target": "Fourth overhead Map panel; warmer/cuter palette direction is retained"
+  },
+  "images": [
+    {
+      "path": "docs/mcr/evidence/map-art06-default-app/native02/art06-danger-360.png",
+      "bytes": 201182,
+      "sha256": "6ffe6a71c142ed26f5c2e60d5590d496e2851ab8c3ef6e9e0abc591219a6cb0e",
+      "directlyOpened": true
+    },
+    {
+      "path": "docs/mcr/evidence/map-art06-default-app/native02/art06-danger-390.png",
+      "bytes": 221603,
+      "sha256": "7dfc4dcc9377ce4e7ff0f1e9d7d12944579b089387aa3912f768e758c44b8c4b",
+      "directlyOpened": true
+    },
+    {
+      "path": "docs/mcr/evidence/map-art06-default-app/native02/art06-danger-430.png",
+      "bytes": 262094,
+      "sha256": "0d0c39a5530a087cdd7a091d6689b98edf227eb1956e23ac89dd57d36a11e56d",
+      "directlyOpened": true
+    },
+    {
+      "path": "docs/mcr/evidence/map-art06-default-app/native02/art06-parade-360.png",
+      "bytes": 202792,
+      "sha256": "7df2fcb40bf6b11d79b7d0d9a3bb64d05595cdfa0aec750067e4e5d7527eec0f",
+      "directlyOpened": true
+    },
+    {
+      "path": "docs/mcr/evidence/map-art06-default-app/native02/art06-parade-390-short.png",
+      "bytes": 86450,
+      "sha256": "f222e8c1b1da6d3ad195d94adcfa3b5fb7308aa54d0b63957213b40c862296b3",
+      "directlyOpened": true
+    },
+    {
+      "path": "docs/mcr/evidence/map-art06-default-app/native02/art06-parade-390.png",
+      "bytes": 223205,
+      "sha256": "d2b3cbc7d77c12f8538919d339c3ece8ffaa085d0710c5c3d16bd62c40d38092",
+      "directlyOpened": true
+    },
+    {
+      "path": "docs/mcr/evidence/map-art06-default-app/native02/art06-parade-430.png",
+      "bytes": 264186,
+      "sha256": "4db3a895d2713ba6e96fab71b753d9a7560206e38a64acfe58377a74309a207b",
+      "directlyOpened": true
+    },
+    {
+      "path": "docs/mcr/evidence/map-art06-default-app/native02/art06-revenge-360.png",
+      "bytes": 200243,
+      "sha256": "a6c7d17166f62c9a1084ae04646c085fba5374fee493585158f6f4d22a802068",
+      "directlyOpened": true
+    },
+    {
+      "path": "docs/mcr/evidence/map-art06-default-app/native02/art06-revenge-390.png",
+      "bytes": 220408,
+      "sha256": "ad6dc5140013bdc0d94f342e0bddbeecc1eb7104c47fb9d3e74a2f113a7cfd56",
+      "directlyOpened": true
+    },
+    {
+      "path": "docs/mcr/evidence/map-art06-default-app/native02/art06-revenge-430.png",
+      "bytes": 260071,
+      "sha256": "9d160579cbf911cc2b5a335f7ad0b3db13d4d069b91104d2242ca531f4d8a48f",
+      "directlyOpened": true
+    },
+    {
+      "path": "docs/mcr/evidence/map-art06-default-app/native02/forced-focus-parade-390-short.png",
+      "bytes": 80404,
+      "sha256": "b1536cd8b02c2f50f7dd974adc7f819832c2c1f01030a101caac3b9502b25c7b",
+      "directlyOpened": true
+    },
+    {
+      "path": "docs/mcr/evidence/map-art06-default-app/native02/forced-focus-parade-390.png",
+      "bytes": 210204,
+      "sha256": "803deaab9b70a4926f9df64a84ffbe8b915cedfdf98ca433a3d866af207b1252",
+      "directlyOpened": true
+    }
+  ],
+  "retainedArt05Comparisons": [
+    {
+      "commit": "ff96d53eb817c93dd1bafb5c4f125630f995413b",
+      "path": "docs/mcr/evidence/map-art05-default-app/round04/art05-revenge-390.png",
+      "sha256": "09887427a4b31fdda37dd96c885c7b57e70a24be06be2be7ba490b044fce74d1",
+      "directlyOpenedReadOnly": true
+    },
+    {
+      "commit": "ff96d53eb817c93dd1bafb5c4f125630f995413b",
+      "path": "docs/mcr/evidence/map-art05-default-app/round04/art05-parade-360.png",
+      "sha256": "3eb451df8d026f9272a51ffc4badb63180086f60803f4b640b62a34f24ba6637",
+      "directlyOpenedReadOnly": true
+    },
+    {
+      "commit": "ff96d53eb817c93dd1bafb5c4f125630f995413b",
+      "path": "docs/mcr/evidence/map-art05-default-app/round04/art05-parade-390.png",
+      "sha256": "ada42b697e80bd107d269e5f47ef19a60bf36ceb2101b0642d3f5018eecbb102",
+      "directlyOpenedReadOnly": true
+    },
+    {
+      "commit": "ff96d53eb817c93dd1bafb5c4f125630f995413b",
+      "path": "docs/mcr/evidence/map-art05-default-app/round04/art05-parade-430.png",
+      "sha256": "9db3f353cf293bf6ed59fae8c180aa7112a3f7a887a19fd1e737be2e384dcbc8",
+      "directlyOpenedReadOnly": true
+    },
+    {
+      "commit": "ff96d53eb817c93dd1bafb5c4f125630f995413b",
+      "path": "docs/mcr/evidence/map-art05-default-app/round04/art05-parade-390-short.png",
+      "sha256": "8fcd195aa79edfd748c5c88dcc928d028abef4250dce9756e70f420a0aa09c87",
+      "directlyOpenedReadOnly": true
+    }
+  ],
+  "counts": {
+    "contexts": 10,
+    "captures": 12,
+    "exactNonlabelPixelsPerContext": 833600,
+    "mismatches": 0,
+    "worldSameAppRgbaObjectsCameraPairs": 10,
+    "worldObjects": 29,
+    "routeKeyboardBackFocusCases": 40,
+    "controlsAtLeast44CssPixels": 60,
+    "originalFontMetricRows": 60,
+    "loadedHeaderSvgObservations": 30
+  },
+  "findings": [
+    "Connected narrower roof volumes and facade changes are visible around the top buildings, central building row and lower-left structures at all three widths/eras. They reduce repeated broad roof planes, but the central architecture remains a long band.",
+    "Small courtyard-edge planters are visible around PLAZA and MEET. Their fine detail and the new paving faces remain subtle at360; the overall scene still has large label-reserved empty lawns.",
+    "Retained canonical square markers cover portions of the central facade and some smaller buildings; no World authority, marker identity or geometry was moved to expose new art.",
+    "Full-height labels remain readable at16.979/18.542/20.625 CSSpx for360/390/430. Short390 retains13.826px type and local scrolling; all six labels are not simultaneously visible. Caption and toolbar stay visible.",
+    "Normal and short390 forced-color focus remains a visible solid>=3px Fit-map outline. All four virtual target rectangles and all six controls meet44px and routes retain one incumbent canvas/socket.",
+    "Three actual header SVGs load in all ten contexts from the canonical base, with no post-run icon input amendment or replay.",
+    "Broad pale path intersections, reserved lawns, long architecture, portrait contain bands and framing remain materially different from the compact fourth target. Full reference acceptance is open; the retained warmer/cuter palette is not independently changed to match target darkness.",
+    "Actual controlled main/login/default providers and guards remain in use. World invariance compares this same App before/after Map/routes, not ART05 framebuffer equivalence; no live/operator/multiuser/device acceptance."
+  ],
+  "fullReleaseAt": "2026-11-04T17:41:49.981236+00:00",
+  "limits": [
+    "Only explicit eligible-attendee HTTP/C05 fixtures; no real operator/admission/live/device claim.",
+    "Changed ART06 only, no ART04 replay/build; original Map4/geometry/theme/avatar pins.",
+    "World invariance compares the same actual App before/after Map/control/route navigation; no historical framebuffer equivalence claim.",
+    "Full ten-screen fidelity remains open."
+  ]
+}

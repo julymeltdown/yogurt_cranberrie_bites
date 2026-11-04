@@ -1,0 +1,97 @@
+{
+  "lease": "ART06-MAP-BROWSER1-20261104T1736Z",
+  "acceptedAt": "2026-11-04T17:38:14.609746+00:00",
+  "activeDeadline": "2026-11-04T17:43:14.609746+00:00",
+  "hardDeadline": "2026-11-04T17:44:14.609746+00:00",
+  "candidate": "2f52fde06ea208b263095b23624b49cd7576b445",
+  "qualifiedSource": "bd6e4517ba641d5ef6d15e6ea4878a94fc93a06c",
+  "presentationHash": "sha256:d8437dda63dd5f0cb554bcfcc1c267782db6630fab39c541291bb3c368d154b6",
+  "guardSha256": "7bc6a2655e22a84540621cacf230a35746397bf5c67d574aee4b27c4d5fec8ec",
+  "driverSha256": "7a863ea79ddabb7c8079ad13d57a9e123fe19fd1702e69b91eebf401045ebb7a",
+  "readsetSha256": "129597c61d575eff6fcfd3dd97dca66490f5ef6686a01247a0737792c3301cb5",
+  "lockSha256": "47ca44459819ad0e887d2f4f93394fdf3b1053b8f45edc9ceb0236981feee1f6",
+  "artSource": "af298e3246096c4b7a3ae5c7e439f5f33988a6be",
+  "packPins": [
+    {
+      "path": "frontend/public/world/map-reference-composition-v1/build.py",
+      "preimageSha256": "369d0c9f5ac0046abebab2a6c3a7004d2d44ce7303d5a5826e8e3e075767c047",
+      "bytes": 42327,
+      "sha256": "6bf696b7c3edd5adf35e0b5995ca9cd33f915e87898de0e9266f2923cffc0433"
+    },
+    {
+      "path": "frontend/public/world/map-reference-composition-v1/README.md",
+      "preimageSha256": "df104147260c16b3e3c271e42c08dff302c36dc4de6f5a575686a24b10361a90",
+      "bytes": 19870,
+      "sha256": "dd5915ec730d780b20f9d164328760c39520dfdd57b5c2c0ee26c32bf1d9060c"
+    },
+    {
+      "path": "frontend/public/world/map-reference-composition-v1/layout.json",
+      "preimageSha256": "ea467e5e9b8b689c23a1ff13032192f686068b82d0b3d15338e664a2eac4f8b1",
+      "bytes": 98497,
+      "sha256": "77da03bcddba15cb88a250a3cad4dbe9bdfadac519af1f1d4ac22623a8aa6141"
+    },
+    {
+      "path": "frontend/public/world/map-reference-composition-v1/source-provenance.json",
+      "preimageSha256": "282803af862cc3e2ff413cc45b603813f672caa5a8e53a2b5416e95725018d2a",
+      "bytes": 69597,
+      "sha256": "0b9c5663e1fa182aae4012be465c448832ff798f926e930ee33c08cd456c084e"
+    },
+    {
+      "path": "frontend/public/world/map-reference-composition-v1/revenge-scene.png",
+      "preimageSha256": "ebb27be3cfa4e2b56426f8bdc6fbe806121ff5e0c2174e3df731d3823451938c",
+      "bytes": 709200,
+      "sha256": "0b6da66ac646ec28469c29d309f62e725ba24d48eee9b4b24e0c0383aedd3083"
+    },
+    {
+      "path": "frontend/public/world/map-reference-composition-v1/revenge-scene.svg",
+      "preimageSha256": "54ca7c00a8be0685ab236290442904229c0e2698b8a62b9294ac00fb91a61a29",
+      "bytes": 1906901,
+      "sha256": "d3b6bb973996848be191579f3a8f018efda8cea4f8fe428c99f48f1721b1e0ed"
+    },
+    {
+      "path": "frontend/public/world/map-reference-composition-v1/parade-scene.png",
+      "preimageSha256": "b523405660ebc40d247bba7d24d1a862bd89177c76bd6551472996fea6d795b4",
+      "bytes": 726705,
+      "sha256": "1d7cc73a1cdaf0931d446206a5424dd8f131c5c819e1f147a0a150583e98b493"
+    },
+    {
+      "path": "frontend/public/world/map-reference-composition-v1/parade-scene.svg",
+      "preimageSha256": "06af5eec689d129407eb5669d9780dbc04e1a8c366163af0d620756578b772b7",
+      "bytes": 1939349,
+      "sha256": "2d75bd6c760e140abc39da9bf6e0079edede28aeb0935ad8bc52bfffee92855c"
+    },
+    {
+      "path": "frontend/public/world/map-reference-composition-v1/danger-scene.png",
+      "preimageSha256": "1ac966073fcc98ab48fafee731277d6428df8dbbe54af692441bf14ba34ed85e",
+      "bytes": 716175,
+      "sha256": "8846875dabb8a48df8b8d8d5433eab5f682e215c02ac50a0fb6dcc2d7da54edf"
+    },
+    {
+      "path": "frontend/public/world/map-reference-composition-v1/danger-scene.svg",
+      "preimageSha256": "ec4b3fb22e3613a4a821f7e57b9d0e6af450a32f29c544033905342d406848d5",
+      "bytes": 1909113,
+      "sha256": "27ab6aa807bc6c63a6bff3c82d6d70189f20d3f93b7a09a536cf92c044e394a1"
+    }
+  ],
+  "freeBytes": 27089956864,
+  "otherWorstGrowthBytes": 3221225472,
+  "ownWorstGrowthBytes": 209715200,
+  "reservedMarginBytes": 23659016192,
+  "retainedCheckoutBytes": 803900645,
+  "dependenciesBytes": 408236853,
+  "retainedPhysicalBytes": 1260195840,
+  "nonShrinkingWholeFloorBytes": 1294991360,
+  "port": 5322,
+  "tmp": "/private/tmp/mcr-art06-native-1736",
+  "predecessorFull": "2026-11-04T17:33:14Z",
+  "guardSamplingSeconds": 0.1,
+  "limits": {
+    "processes": 16,
+    "rssBytes": 3758096384,
+    "wholeBytes": 2147483648,
+    "newBytes": 209715200,
+    "tmpBytes": 209715200,
+    "workSeconds": 300,
+    "cleanupSeconds": 60
+  }
+}

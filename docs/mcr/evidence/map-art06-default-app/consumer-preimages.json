@@ -1,0 +1,32 @@
+[
+  {
+    "path": "frontend/src/world/reference-scene/map4-service-v2/layout-source.json",
+    "preimageSha256": "ea467e5e9b8b689c23a1ff13032192f686068b82d0b3d15338e664a2eac4f8b1",
+    "authoredSha256": "77da03bcddba15cb88a250a3cad4dbe9bdfadac519af1f1d4ac22623a8aa6141",
+    "sameBeforeRegistration": false
+  },
+  {
+    "path": "frontend/src/world/reference-scene/map4-service-v2/registration.ts",
+    "preimageSha256": "cddd2636fbc1370d028e381642e29387c1e29a30811ffeba5a50f800eac56a96",
+    "authoredSha256": "cddd2636fbc1370d028e381642e29387c1e29a30811ffeba5a50f800eac56a96",
+    "sameBeforeRegistration": true
+  },
+  {
+    "path": "frontend/src/world/reference-scene/map4-service-v2/resources.json",
+    "preimageSha256": "9071d1b91ed7d5194be6b896fce8081a645280652a62e00a62eabf4e40d7b7df",
+    "authoredSha256": "20ceb507356f4426a20c82418e2a52b1efdce7c5ee00050fc422c2bfd8c8b4ee",
+    "sameBeforeRegistration": false
+  },
+  {
+    "path": "frontend/src/app/world-entry/__tests__/map-presentation-v2/register.mjs",
+    "preimageSha256": "8d2c3b5e2714d0e91a3473410042b1fe6487729d8742e6537a24b8e5b3f37c57",
+    "authoredSha256": "e97ced71ba674c5fb3c8668f7409d35c96ecdeac1167b0ce652cf97fdb52bb1a",
+    "sameBeforeRegistration": false
+  },
+  {
+    "path": "frontend/src/app/world-entry/__tests__/map-presentation-v2/registration.test.ts",
+    "preimageSha256": "0daae0b5da2bec71b096febbc1b595d0ef760f3f9a1b0af10e2b8b76aa9cdc50",
+    "authoredSha256": "ed63f26fc27f49c659eddbc5c6c010585c9c3f1ccdbba6318e17e2bcf11f3f54",
+    "sameBeforeRegistration": false
+  }
+]

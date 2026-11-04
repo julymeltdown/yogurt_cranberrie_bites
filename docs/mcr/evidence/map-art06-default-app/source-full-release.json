@@ -1,0 +1,22 @@
+{
+  "status": "FULL_RELEASED",
+  "lease": "ART06-MAP-SOURCE-A-20261104T1732Z",
+  "at": "2026-11-04T17:34:52.023428+00:00",
+  "livePids": [],
+  "portsCreated": 0,
+  "ownedLinkAbsent": true,
+  "privateTmpAbsent": true,
+  "peak": {
+    "processes": 2,
+    "rssBytes": 1028636672,
+    "newBytes": 43855147,
+    "tmpBytes": 1587201,
+    "wholeBytes": 1247261514
+  },
+  "final": {
+    "newBytes": 42272100,
+    "tmpBytes": 0,
+    "wholeBytes": 1245674673
+  },
+  "freeBytes": 27439939584
+}

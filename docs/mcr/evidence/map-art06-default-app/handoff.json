@@ -1,0 +1,35 @@
+{
+  "publisher": "Root153",
+  "base": "ff96d53eb817c93dd1bafb5c4f125630f995413b",
+  "artSource": "af298e3246096c4b7a3ae5c7e439f5f33988a6be",
+  "recipeParent": "b4a4717867cd9755e58e03422b33300781fd0716",
+  "sourceQualified": "bd6e4517ba641d5ef6d15e6ea4878a94fc93a06c",
+  "nativeQualified": "9523b0b5a036fc73ba4801b5e84ac254fcacefac",
+  "presentationHash": "sha256:d8437dda63dd5f0cb554bcfcc1c267782db6630fab39c541291bb3c368d154b6",
+  "status": "BOUNDED_NATIVE_QUALIFIED_FULL_REFERENCE_GAPS_OPEN",
+  "publishPaths": [
+    "frontend/src/world/reference-scene/map4-service-v2/layout-source.json",
+    "frontend/src/world/reference-scene/map4-service-v2/registration.ts",
+    "frontend/src/world/reference-scene/map4-service-v2/resources.json",
+    "frontend/src/app/world-entry/__tests__/map-presentation-v2/register.mjs",
+    "frontend/src/app/world-entry/__tests__/map-presentation-v2/registration.test.ts",
+    "frontend/public/world/map-reference-composition-v1/",
+    "frontend/src/app/world-entry/__tests__/art06-default-entry/",
+    "docs/mcr/frontend/map-art06-default-app.md",
+    "docs/mcr/evidence/map-art06-default-app/"
+  ],
+  "source36PinsSha256": "46ffd8a0fd5cd55b817bda05d325cec330304d1540ca31a8047d0f8ebb04e0c5",
+  "nativeReadsetSha256": "1e4af56d6a6e97ffebd21fa1ab5729076e68756738510cb82d862b6592fff85c",
+  "reportSha256": "e2303d374f70f1e3531e50c4bbde716fae32925fdfb5d98c1b6b94b6ed5392ab",
+  "originalCurrentAccessorUnchanged": true,
+  "worldStylesCharactersChromeSharedRootUnchanged": true,
+  "sourceFullAt": "2026-11-04T17:34:52.023428Z",
+  "nativeFullAt": "2026-11-04T17:41:49.981236+00:00",
+  "goalStatus": "Same historical BLOCKED unfinished broad objective; no reset/false completion",
+  "limits": [
+    "Only explicit eligible-attendee HTTP/C05 fixtures; no real operator/admission/live/device claim.",
+    "Changed ART06 only, no ART04 replay/build; original Map4/geometry/theme/avatar pins.",
+    "World invariance compares the same actual App before/after Map/control/route navigation; no historical framebuffer equivalence claim.",
+    "Full ten-screen fidelity remains open."
+  ]
+}

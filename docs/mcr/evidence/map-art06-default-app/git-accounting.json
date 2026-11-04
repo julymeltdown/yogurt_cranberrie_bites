@@ -1,0 +1,7 @@
+{
+  "method": "Union of retained af7/e587/current branch objects excluding shared published ff96 ancestry; new native objects additionally covered by unchanged32MiB reserve",
+  "objects": 1914,
+  "logicalBytes": 37136637,
+  "storedBytes": 8984936,
+  "nonShrinkingReserveBytes": 33554432
+}

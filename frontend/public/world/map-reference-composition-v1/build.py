@@ -15,9 +15,9 @@ HERE = Path(__file__).resolve().parent
 ROOT = HERE.parents[3]
 BASE = 'frontend/public/world/reference-scene-v2/'
 VERSION = 'map4-reference-composition-v1'
-RECIPE_REVISION = 'reference-correction-05'
+RECIPE_REVISION = 'reference-correction-06'
 # Keep the consumer's layout identity/schema; a future intake must pin new bytes.
-PREVIOUS_HANDOFF = '97d9d3f40e0d17ab536ac696bdb2140093225f6a'
+PREVIOUS_HANDOFF = '77a4d405f65f82dc14edda98d2447d5f0ed302b7'
 FACADE_SOURCE_START = 0.54
 FACADE_HEIGHT_SCALE = 0.80
 ROOF_EAVE = 0.65
@@ -109,6 +109,35 @@ INFILL = [
     ('meet_east_annex', 'west_hall', 584, 888, 86, 64),
     ('south_courtyard', 'north_hall', 248, 1176, 86, 64),
 ]
+# Existing retained facade variants, without changing any building slot.
+FACADE_VARIANTS = {
+    'stage_east_wing': 'meeting_pavilion',
+    'edge_venue_03': 'meeting_pavilion',
+    'edge_venue_04': 'giveaway_pavilion',
+    'edge_venue_07': 'meeting_pavilion',
+    'edge_venue_09': 'west_hall',
+    'east_arcade': 'giveaway_pavilion',
+    'central_workshop': 'north_hall',
+    'south_courtyard': 'meeting_pavilion',
+}
+# Unequal pocket groups sit beside reserves, not on a repeated perimeter ring.
+# Geometry checks in the allocated source build omit an unsuitable candidate.
+COURTYARD_DETAILS = [
+    ('stage_west_planter', 'shrub_bed', 204, 214, 40, 24),
+    ('stage_east_planter', 'shrub_bed', 592, 210, 48, 26),
+    ('stage_north_seating', 'plaza_furniture', 350, 103, 58, 30),
+    ('plaza_west_seating', 'plaza_furniture', 207, 483, 38, 27),
+    ('plaza_east_planter', 'shrub_bed', 418, 474, 38, 25),
+    ('plaza_south_seating', 'plaza_furniture', 293, 568, 62, 30),
+    ('plaza_north_east_planter', 'shrub_bed', 416, 418, 43, 24),
+    ('feed_north_planter', 'shrub_bed', 588, 605, 49, 25),
+    ('wall_east_planter', 'shrub_bed', 285, 678, 34, 25),
+    ('meet_north_west_seating', 'plaza_furniture', 284, 843, 42, 28),
+    ('meet_east_planter', 'shrub_bed', 511, 906, 31, 23),
+    ('meet_south_seating', 'plaza_furniture', 348, 995, 57, 28),
+    ('gifts_west_planter', 'shrub_bed', 344, 1112, 32, 24),
+    ('gifts_east_planter', 'shrub_bed', 657, 1225, 47, 26),
+]
 
 
 def digest(data):
@@ -151,6 +180,7 @@ def placements():
     rows = []
 
     def add(name, frame, x, y, w, h, essential=False, crop_role='whole'):
+        frame = FACADE_VARIANTS.get(name, frame)
         rect = [x, y, w, h]
         if not essential and any(intersects(rect, e) for e in exclusions()):
             return
@@ -212,6 +242,20 @@ def placements():
                              ('meet_courtyard_seating', 344, 840, 62, 28),
                              ('south_courtyard_seating', 348, 1044, 58, 32)]:
         add(name, 'plaza_furniture', x, y, w, h)
+    occupied = [row['rect'] for row in rows if row['frame'] not in TREES]
+    for name, frame, x, y, w, h in COURTYARD_DETAILS:
+        rect = [x, y, w, h]
+        center = (x+w/2, y+h/2)
+        radius = math.hypot(w/2, h/2)
+        if any(intersects(rect, box) for box in occupied + exclusions()):
+            continue
+        if any(math.dist(center, (ax, ay)) < radius+32 for _, ax, ay, _, _ in CANONICAL):
+            continue
+        if any(segment_distance(center, a, b) < PATH_WIDTHS[0]/2+radius+3
+               for path in PATHS for a, b in zip(path, path[1:])):
+            continue
+        add(name, frame, x, y, w, h)
+        occupied.append(rect)
     # Unequal, overlapping groups sit within/along planting, not a regular ring.
     groves = [(68, 181), (211, 108), (568, 105), (654, 440), (88, 481),
               (269, 415), (393, 565), (467, 626), (536, 737), (667, 802),
@@ -310,10 +354,35 @@ def surface(era):
         for dx, dy in [(0, -3), (-3, 0), (3, 0), (0, 3)]:
             rect(x+dx, y+dy, 3, 3, color)
         rect(x, y, 3, 3, '#f9edc1')
-    return image, svg, 0
+    # Small stone faces stay entirely within the already painted path/ring.
+    # No path edge, garden boundary, lawn or reserved label pixel is repainted.
+    stone_count = 0
+    pavement = {tuple(bytes.fromhex(palette[key][1:])): palette[key] for key in ('path', 'ring')}
+    for y in range(5, SIZE[1]-7, 10):
+        for x in range(4+(y//10 % 3)*4, SIZE[0]-10, 13):
+            rect_ = [x, y, 9, 6]
+            if any(intersects(rect_, box) for box in exclusions()):
+                continue
+            if any(math.dist((x+4, y+3), (ax, ay)) < 34 for _, ax, ay, _, _ in CANONICAL):
+                continue
+            original = pixels[x, y][:3]
+            if original not in pavement or not all(pixels[x+dx, y+dy][:3] == original for dx in range(9) for dy in range(6)):
+                continue
+            n = (x*37+y*19) % 11
+            if n > 7:
+                continue
+            tone = mix(pavement[original], palette['pathEdge'], 0.10+0.06*(n % 3))
+            points = [(x, y+1), (x+6, y), (x+8, y+2), (x+7, y+5), (x+1, y+5)]
+            draw.polygon(points, fill=tone)
+            encoded = ' '.join(f'{px},{py}' for px, py in points)
+            svg.append(f'<polygon points="{encoded}" fill="{tone}"/>')
+            stone_count += 1
+    return image, svg, 0, stone_count
 
 
 def roof_profile(name):
+    if name.endswith('stage_central_hall_bay_1'):
+        return 'cross_gable'
     if name.endswith('stage_central_hall'):
         return 'cross_gable'
     if name.endswith('stage_west_wing'):
@@ -323,7 +392,33 @@ def roof_profile(name):
     return ['hip', 'long_gable', 'cross_gable', 'pavilion'][sum(name.encode()) % 4]
 
 
+def roof_modules(name, w, h):
+    """Connected narrow volumes inside the existing building footprint."""
+    if w >= 220 or name.endswith('stage_central_hall'):
+        shares, scales = (0.34, 0.40, 0.26), (0.83, 1.0, 0.76)
+    elif w >= 150:
+        shares, scales = (0.58, 0.42), (0.86, 0.98)
+    else:
+        shares, scales = (1.0,), (0.91,)
+    used, result = 0, []
+    for index, (share, scale) in enumerate(zip(shares, scales)):
+        right = w if index == len(shares)-1 else round(w*sum(shares[:index+1]))
+        left = used + (2 if index else 0)
+        height = max(12, round(h*scale*math.sqrt(share)))
+        top = round(ROOF_EAVE*(h-height))
+        result.append({'id': name+'_bay_'+str(index), 'rect': [left, top, right-left, height]})
+        used = right
+    return result
+
+
 def overhead_roof(canvas, svg, name, x, y, w, h, palette):
+    for module in roof_modules(name, w, h):
+        dx, dy, width, height = module['rect']
+        assert 0 <= dx and dx+width <= w and 0 <= dy and dy+height <= h
+        roof_module(canvas, svg, module['id'], x+dx, y+dy, width, height, palette)
+
+
+def roof_module(canvas, svg, name, x, y, w, h, palette):
     """Original pixel architecture: varied profiles, tile relief and small details."""
     draw = ImageDraw.Draw(canvas)
     profile = roof_profile(name)
@@ -433,9 +528,9 @@ def produce():
     decorations = placements()
     canopy_frames = {row['frame'] for row in decorations if row['crop_role'] == 'canopy'}
     assert canopy_frames <= TREES
-    outputs, assets, crops, planted_areas = {}, [], [], {}
+    outputs, assets, crops, planted_areas, pavement_details, roof_layers = {}, [], [], {}, {}, []
     for era in THEMES:
-        base, vectors, planted_areas[era] = surface(era)
+        base, vectors, planted_areas[era], pavement_details[era] = surface(era)
         frames = derivatives['eras'][era]['frame_rects'] if era in derivatives['eras'] else parade['frame_rects']
         source_name = BASE + 'map-cozy-v1/' + era.lower() + '/atlas.png'
         atlas_bytes = data[source_name]
@@ -475,6 +570,11 @@ def produce():
             canvas.alpha_composite(resized, (dx, dy+trim_dest))
             svg.append(f'<svg id="{row["id"]}" x="{dx}" y="{dy+trim_dest}" width="{rw}" height="{rh-trim_dest}" viewBox="{sx} {sy+trim_source} {sw} {source_end-trim_source}" preserveAspectRatio="none"><use xlink:href="#atlas"/></svg>')
             if frame in VENUES:
+                for module in roof_modules(row['id'], rw, rh):
+                    mx, my, mw, mh = module['rect']
+                    roof_layers.append({'themeId': era, 'parent': row['id'],
+                                        'moduleId': module['id'], 'profile': roof_profile(module['id']),
+                                        'rect': [dx+mx, dy+my, mw, mh]})
                 overhead_roof(canvas, svg, row['id'], dx, dy, rw, rh, PALETTES[era])
         svg.append('</g></svg>\n')
         png = io.BytesIO()
@@ -524,12 +624,20 @@ def produce():
                                       'roofEaveFraction': ROOF_EAVE,
                                       'roofCoordinateQuantumPx': 2,
                                       'roofTextureCellPx': [8, 6],
-                                      'policy': 'ORIGINAL_MAP_ONLY_PIXEL_HIP_ROOF_NO_WORLD_ATLAS_MUTATION'},
+                                      'policy': 'ORIGINAL_MAP_ONLY_CONNECTED_ROOF_VOLUMES_NO_WORLD_ATLAS_MUTATION'},
                   'architectureFollowup': {
-                      'basis': 'Actual ART04 default App reference comparison: repeated uniform roofs and sparse architecture',
-                      'roofProfiles': {row['id']: roof_profile(row['id']) for row in decorations if row['frame'] in VENUES},
-                      'details': ['stepped eaves', 'staggered tile relief', 'cross gables', 'dormer/skylight groups', 'brick chimneys'],
-                      'infillSlots': [{'id': 'map_only_'+name, 'frame': frame, 'rect': [x, y, w, h]} for name, frame, x, y, w, h in INFILL],
+                      'basis': 'Actual ART05 source-image assessment and retained ART04 App reference comparison: broad roofs, repeated facades and sparse courtyards',
+                      'roofModuleLayers': roof_layers,
+                      'roofModulePolicy': 'UP_TO_THREE_CONNECTED_NARROW_VOLUMES_WITHIN_UNCHANGED_BUILDING_SLOT',
+                      'roofModuleFractions': {'three': [0.34, 0.40, 0.26], 'two': [0.58, 0.42], 'gapPx': 2},
+                      'roofModuleHeightPolicy': 'PARENT_HEIGHT_TIMES_SCALE_TIMES_SQRT_BAY_SHARE_COMMON_EAVE_BASE',
+                      'facadeVariants': FACADE_VARIANTS,
+                      'courtyardDetailCandidates': len(COURTYARD_DETAILS),
+                      'courtyardDetailsPlaced': [row['id'] for row in decorations if row['id'] in {'map_only_'+p[0] for p in COURTYARD_DETAILS}],
+                      'pavementStonesByTheme': pavement_details,
+                      'pavementPolicy': 'EXISTING_PATH_AND_GARDEN_RING_PAINT_ONLY_LABEL_AND_CANONICAL_EXCLUSIONS',
+                      'details': ['connected narrow roof volumes', 'retained varied facade crops', 'courtyard seating/planters', 'small path/ring stone faces', 'stepped eaves', 'staggered tile relief', 'dormer/skylight groups', 'brick chimneys'],
+                      'infillSlots': [{'id': 'map_only_'+name, 'frame': FACADE_VARIANTS.get(name, frame), 'rect': [x, y, w, h]} for name, frame, x, y, w, h in INFILL],
                       'infillPathCenterlineClearancePx': 82,
                       'infillCanonicalCenterClearancePx': 84,
                       'facadePolicy': 'EXACT_ORIGINAL_CROP_RGBA_EXISTING_PROJECTION_NO_RECOLOR',

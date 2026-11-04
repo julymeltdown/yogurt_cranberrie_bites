@@ -3,8 +3,8 @@
   "status": "SOURCE_VALIDATED_NATIVE_NOT_RUN",
   "version": "map4-reference-composition-v1",
   "sourceBaseCommit": "6bb850755f1b6540a8d013f84106c673c5567069",
-  "previousSourceCandidate": "97d9d3f40e0d17ab536ac696bdb2140093225f6a",
-  "recipeRevision": "reference-correction-05",
+  "previousSourceCandidate": "77a4d405f65f82dc14edda98d2447d5f0ed302b7",
+  "recipeRevision": "reference-correction-06",
   "sourceInputs": [
     {
       "path": "frontend/public/world/reference-scene-v2/map-cozy-v1/parade/atlas.png",
@@ -232,6 +232,27 @@
     },
     {
       "themeId": "REVENGE",
+      "frame": "shrub_bed",
+      "atlas": {
+        "path": "frontend/public/world/reference-scene-v2/map-cozy-v1/revenge/atlas.png",
+        "bytes": 1176781,
+        "sha256": "sha256:54b5a72a1e16062f84248602f8bebaee500ca086fb58285b1689d665618dfdbd"
+      },
+      "sourceRect": {
+        "x": 774,
+        "y": 819,
+        "width": 244,
+        "height": 154
+      },
+      "rgbaSha256": "sha256:3235ea082656b309847650aad77aaf5591de1be0d859fe7c6256563e7387a7d9",
+      "alphaPolicy": "EXACT_CROP_RGBA_NO_RETOUCH",
+      "usedFacadeSourceRect": null,
+      "facadeRgbaSha256": null,
+      "usedCanopySourceRect": null,
+      "canopyRgbaSha256": null
+    },
+    {
+      "themeId": "REVENGE",
       "frame": "tree_red",
       "atlas": {
         "path": "frontend/public/world/reference-scene-v2/map-cozy-v1/revenge/atlas.png",
@@ -308,27 +329,6 @@
         "height": 224
       },
       "rgbaSha256": "sha256:fe8ccfaa8b18a727b65c803c3e78e63a016263dad256782115de7118db530536",
-      "alphaPolicy": "EXACT_CROP_RGBA_NO_RETOUCH",
-      "usedFacadeSourceRect": null,
-      "facadeRgbaSha256": null,
-      "usedCanopySourceRect": null,
-      "canopyRgbaSha256": null
-    },
-    {
-      "themeId": "REVENGE",
-      "frame": "shrub_bed",
-      "atlas": {
-        "path": "frontend/public/world/reference-scene-v2/map-cozy-v1/revenge/atlas.png",
-        "bytes": 1176781,
-        "sha256": "sha256:54b5a72a1e16062f84248602f8bebaee500ca086fb58285b1689d665618dfdbd"
-      },
-      "sourceRect": {
-        "x": 774,
-        "y": 819,
-        "width": 244,
-        "height": 154
-      },
-      "rgbaSha256": "sha256:3235ea082656b309847650aad77aaf5591de1be0d859fe7c6256563e7387a7d9",
       "alphaPolicy": "EXACT_CROP_RGBA_NO_RETOUCH",
       "usedFacadeSourceRect": null,
       "facadeRgbaSha256": null,
@@ -514,6 +514,27 @@
     },
     {
       "themeId": "PARADE",
+      "frame": "shrub_bed",
+      "atlas": {
+        "path": "frontend/public/world/reference-scene-v2/map-cozy-v1/parade/atlas.png",
+        "bytes": 1201118,
+        "sha256": "sha256:9c77e42eb377fbab1df485d6c1e8e47221ac33aebbc03e9aecba3cc7bbcded9f"
+      },
+      "sourceRect": {
+        "x": 774,
+        "y": 818,
+        "width": 244,
+        "height": 156
+      },
+      "rgbaSha256": "sha256:10a75b9871e8f976a341d612056bef2906a15361626b9426dfb8e35be2c3718f",
+      "alphaPolicy": "EXACT_CROP_RGBA_NO_RETOUCH",
+      "usedFacadeSourceRect": null,
+      "facadeRgbaSha256": null,
+      "usedCanopySourceRect": null,
+      "canopyRgbaSha256": null
+    },
+    {
+      "themeId": "PARADE",
       "frame": "tree_red",
       "atlas": {
         "path": "frontend/public/world/reference-scene-v2/map-cozy-v1/parade/atlas.png",
@@ -590,27 +611,6 @@
         "height": 224
       },
       "rgbaSha256": "sha256:2a04d91132e8e16ef29ad2cbc35c613bab542f3acf4e9c3c43ca1b8cbd462a24",
-      "alphaPolicy": "EXACT_CROP_RGBA_NO_RETOUCH",
-      "usedFacadeSourceRect": null,
-      "facadeRgbaSha256": null,
-      "usedCanopySourceRect": null,
-      "canopyRgbaSha256": null
-    },
-    {
-      "themeId": "PARADE",
-      "frame": "shrub_bed",
-      "atlas": {
-        "path": "frontend/public/world/reference-scene-v2/map-cozy-v1/parade/atlas.png",
-        "bytes": 1201118,
-        "sha256": "sha256:9c77e42eb377fbab1df485d6c1e8e47221ac33aebbc03e9aecba3cc7bbcded9f"
-      },
-      "sourceRect": {
-        "x": 774,
-        "y": 818,
-        "width": 244,
-        "height": 156
-      },
-      "rgbaSha256": "sha256:10a75b9871e8f976a341d612056bef2906a15361626b9426dfb8e35be2c3718f",
       "alphaPolicy": "EXACT_CROP_RGBA_NO_RETOUCH",
       "usedFacadeSourceRect": null,
       "facadeRgbaSha256": null,
@@ -796,6 +796,27 @@
     },
     {
       "themeId": "DANGER",
+      "frame": "shrub_bed",
+      "atlas": {
+        "path": "frontend/public/world/reference-scene-v2/map-cozy-v1/danger/atlas.png",
+        "bytes": 1178440,
+        "sha256": "sha256:3184e26c5b83cf95c31f692b3087112faa93a0ef270bd5416e36fc9952d9a17a"
+      },
+      "sourceRect": {
+        "x": 774,
+        "y": 819,
+        "width": 244,
+        "height": 154
+      },
+      "rgbaSha256": "sha256:6a3c69876cac8081b8c80d533373a6c615fb95f58063aa93d5afd0310031450f",
+      "alphaPolicy": "EXACT_CROP_RGBA_NO_RETOUCH",
+      "usedFacadeSourceRect": null,
+      "facadeRgbaSha256": null,
+      "usedCanopySourceRect": null,
+      "canopyRgbaSha256": null
+    },
+    {
+      "themeId": "DANGER",
       "frame": "tree_red",
       "atlas": {
         "path": "frontend/public/world/reference-scene-v2/map-cozy-v1/danger/atlas.png",
@@ -877,70 +898,49 @@
       "facadeRgbaSha256": null,
       "usedCanopySourceRect": null,
       "canopyRgbaSha256": null
-    },
-    {
-      "themeId": "DANGER",
-      "frame": "shrub_bed",
-      "atlas": {
-        "path": "frontend/public/world/reference-scene-v2/map-cozy-v1/danger/atlas.png",
-        "bytes": 1178440,
-        "sha256": "sha256:3184e26c5b83cf95c31f692b3087112faa93a0ef270bd5416e36fc9952d9a17a"
-      },
-      "sourceRect": {
-        "x": 774,
-        "y": 819,
-        "width": 244,
-        "height": 154
-      },
-      "rgbaSha256": "sha256:6a3c69876cac8081b8c80d533373a6c615fb95f58063aa93d5afd0310031450f",
-      "alphaPolicy": "EXACT_CROP_RGBA_NO_RETOUCH",
-      "usedFacadeSourceRect": null,
-      "facadeRgbaSha256": null,
-      "usedCanopySourceRect": null,
-      "canopyRgbaSha256": null
     }
   ],
   "outputs": [
     {
       "path": "frontend/public/world/map-reference-composition-v1/revenge-scene.png",
-      "bytes": 668934,
-      "sha256": "sha256:ebb27be3cfa4e2b56426f8bdc6fbe806121ff5e0c2174e3df731d3823451938c"
+      "bytes": 709200,
+      "sha256": "sha256:0b6da66ac646ec28469c29d309f62e725ba24d48eee9b4b24e0c0383aedd3083"
     },
     {
       "path": "frontend/public/world/map-reference-composition-v1/revenge-scene.svg",
-      "bytes": 1934634,
-      "sha256": "sha256:54ca7c00a8be0685ab236290442904229c0e2698b8a62b9294ac00fb91a61a29"
+      "bytes": 1906901,
+      "sha256": "sha256:d3b6bb973996848be191579f3a8f018efda8cea4f8fe428c99f48f1721b1e0ed"
     },
     {
       "path": "frontend/public/world/map-reference-composition-v1/parade-scene.png",
-      "bytes": 685505,
-      "sha256": "sha256:b523405660ebc40d247bba7d24d1a862bd89177c76bd6551472996fea6d795b4"
+      "bytes": 726705,
+      "sha256": "sha256:1d7cc73a1cdaf0931d446206a5424dd8f131c5c819e1f147a0a150583e98b493"
     },
     {
       "path": "frontend/public/world/map-reference-composition-v1/parade-scene.svg",
-      "bytes": 1967082,
-      "sha256": "sha256:06af5eec689d129407eb5669d9780dbc04e1a8c366163af0d620756578b772b7"
+      "bytes": 1939349,
+      "sha256": "sha256:2d75bd6c760e140abc39da9bf6e0079edede28aeb0935ad8bc52bfffee92855c"
     },
     {
       "path": "frontend/public/world/map-reference-composition-v1/danger-scene.png",
-      "bytes": 675662,
-      "sha256": "sha256:1ac966073fcc98ab48fafee731277d6428df8dbbe54af692441bf14ba34ed85e"
+      "bytes": 716175,
+      "sha256": "sha256:8846875dabb8a48df8b8d8d5433eab5f682e215c02ac50a0fb6dcc2d7da54edf"
     },
     {
       "path": "frontend/public/world/map-reference-composition-v1/danger-scene.svg",
-      "bytes": 1936846,
-      "sha256": "sha256:ec4b3fb22e3613a4a821f7e57b9d0e6af450a32f29c544033905342d406848d5"
+      "bytes": 1909113,
+      "sha256": "sha256:27ab6aa807bc6c63a6bff3c82d6d70189f20d3f93b7a09a536cf92c044e394a1"
     },
     {
       "path": "frontend/public/world/map-reference-composition-v1/layout.json",
-      "bytes": 95579,
-      "sha256": "sha256:ea467e5e9b8b689c23a1ff13032192f686068b82d0b3d15338e664a2eac4f8b1"
+      "bytes": 98497,
+      "sha256": "sha256:77da03bcddba15cb88a250a3cad4dbe9bdfadac519af1f1d4ac22623a8aa6141"
     }
   ],
   "recipe": {
     "path": "frontend/public/world/map-reference-composition-v1/build.py",
-    "bytes": 36363,
-    "sha256": "sha256:369d0c9f5ac0046abebab2a6c3a7004d2d44ce7303d5a5826e8e3e075767c047"
+    "bytes": 42327,
+    "sha256": "sha256:6bf696b7c3edd5adf35e0b5995ca9cd33f915e87898de0e9266f2923cffc0433"
   },
   "referenceUse": "DIRECT_VISUAL_INSPECTION_ONLY_NO_REFERENCE_PIXELS_SAMPLED",
   "authorship": "New editable paths/gardens/placement geometry; retained original built-in generated warm atlas crops. No new generation, stock, character or font input.",
@@ -954,36 +954,1249 @@
       8,
       6
     ],
-    "policy": "ORIGINAL_MAP_ONLY_PIXEL_HIP_ROOF_NO_WORLD_ATLAS_MUTATION"
+    "policy": "ORIGINAL_MAP_ONLY_CONNECTED_ROOF_VOLUMES_NO_WORLD_ATLAS_MUTATION"
   },
   "architectureFollowup": {
-    "basis": "Actual ART04 default App reference comparison: repeated uniform roofs and sparse architecture",
-    "roofProfiles": {
-      "map_only_edge_venue_01": "long_gable",
-      "map_only_edge_venue_00": "hip",
-      "map_only_edge_venue_02": "cross_gable",
-      "map_only_north_east_annex": "cross_gable",
-      "map_only_north_west_annex": "hip",
-      "map_only_stage_west_wing": "long_gable",
-      "map_only_stage_east_wing": "hip",
-      "map_only_stage_central_hall": "cross_gable",
-      "map_only_edge_venue_03": "pavilion",
-      "map_only_edge_venue_04": "hip",
-      "map_only_east_arcade": "cross_gable",
-      "map_only_east_courtyard": "pavilion",
-      "map_only_central_workshop": "pavilion",
-      "map_only_central_kiosk": "pavilion",
-      "map_only_meet_east_annex": "cross_gable",
-      "map_only_edge_venue_10": "long_gable",
-      "map_only_edge_venue_07": "pavilion",
-      "map_only_south_courtyard": "long_gable",
-      "map_only_edge_venue_11": "cross_gable",
-      "map_only_edge_venue_09": "long_gable"
+    "basis": "Actual ART05 source-image assessment and retained ART04 App reference comparison: broad roofs, repeated facades and sparse courtyards",
+    "roofModuleLayers": [
+      {
+        "themeId": "REVENGE",
+        "parent": "map_only_edge_venue_01",
+        "moduleId": "map_only_edge_venue_01_bay_0",
+        "profile": "pavilion",
+        "rect": [
+          260,
+          -18,
+          117,
+          97
+        ]
+      },
+      {
+        "themeId": "REVENGE",
+        "parent": "map_only_edge_venue_01",
+        "moduleId": "map_only_edge_venue_01_bay_1",
+        "profile": "hip",
+        "rect": [
+          379,
+          -16,
+          82,
+          94
+        ]
+      },
+      {
+        "themeId": "REVENGE",
+        "parent": "map_only_edge_venue_00",
+        "moduleId": "map_only_edge_venue_00_bay_0",
+        "profile": "cross_gable",
+        "rect": [
+          -40,
+          1,
+          120,
+          100
+        ]
+      },
+      {
+        "themeId": "REVENGE",
+        "parent": "map_only_edge_venue_00",
+        "moduleId": "map_only_edge_venue_00_bay_1",
+        "profile": "pavilion",
+        "rect": [
+          82,
+          3,
+          85,
+          97
+        ]
+      },
+      {
+        "themeId": "REVENGE",
+        "parent": "map_only_edge_venue_02",
+        "moduleId": "map_only_edge_venue_02_bay_0",
+        "profile": "hip",
+        "rect": [
+          600,
+          14,
+          112,
+          93
+        ]
+      },
+      {
+        "themeId": "REVENGE",
+        "parent": "map_only_edge_venue_02",
+        "moduleId": "map_only_edge_venue_02_bay_1",
+        "profile": "long_gable",
+        "rect": [
+          714,
+          16,
+          79,
+          90
+        ]
+      },
+      {
+        "themeId": "REVENGE",
+        "parent": "map_only_north_east_annex",
+        "moduleId": "map_only_north_east_annex_bay_0",
+        "profile": "hip",
+        "rect": [
+          576,
+          141,
+          86,
+          57
+        ]
+      },
+      {
+        "themeId": "REVENGE",
+        "parent": "map_only_north_west_annex",
+        "moduleId": "map_only_north_west_annex_bay_0",
+        "profile": "cross_gable",
+        "rect": [
+          8,
+          141,
+          86,
+          57
+        ]
+      },
+      {
+        "themeId": "REVENGE",
+        "parent": "map_only_stage_west_wing",
+        "moduleId": "map_only_stage_west_wing_bay_0",
+        "profile": "cross_gable",
+        "rect": [
+          159,
+          300,
+          95,
+          79
+        ]
+      },
+      {
+        "themeId": "REVENGE",
+        "parent": "map_only_stage_west_wing",
+        "moduleId": "map_only_stage_west_wing_bay_1",
+        "profile": "pavilion",
+        "rect": [
+          256,
+          302,
+          67,
+          77
+        ]
+      },
+      {
+        "themeId": "REVENGE",
+        "parent": "map_only_stage_east_wing",
+        "moduleId": "map_only_stage_east_wing_bay_0",
+        "profile": "hip",
+        "rect": [
+          456,
+          303,
+          93,
+          78
+        ]
+      },
+      {
+        "themeId": "REVENGE",
+        "parent": "map_only_stage_east_wing",
+        "moduleId": "map_only_stage_east_wing_bay_1",
+        "profile": "long_gable",
+        "rect": [
+          551,
+          304,
+          66,
+          76
+        ]
+      },
+      {
+        "themeId": "REVENGE",
+        "parent": "map_only_stage_central_hall",
+        "moduleId": "map_only_stage_central_hall_bay_0",
+        "profile": "hip",
+        "rect": [
+          307,
+          304,
+          68,
+          71
+        ]
+      },
+      {
+        "themeId": "REVENGE",
+        "parent": "map_only_stage_central_hall",
+        "moduleId": "map_only_stage_central_hall_bay_1",
+        "profile": "cross_gable",
+        "rect": [
+          377,
+          290,
+          77,
+          93
+        ]
+      },
+      {
+        "themeId": "REVENGE",
+        "parent": "map_only_stage_central_hall",
+        "moduleId": "map_only_stage_central_hall_bay_2",
+        "profile": "cross_gable",
+        "rect": [
+          456,
+          313,
+          50,
+          57
+        ]
+      },
+      {
+        "themeId": "REVENGE",
+        "parent": "map_only_edge_venue_03",
+        "moduleId": "map_only_edge_venue_03_bay_0",
+        "profile": "long_gable",
+        "rect": [
+          -68,
+          361,
+          101,
+          84
+        ]
+      },
+      {
+        "themeId": "REVENGE",
+        "parent": "map_only_edge_venue_03",
+        "moduleId": "map_only_edge_venue_03_bay_1",
+        "profile": "cross_gable",
+        "rect": [
+          35,
+          363,
+          71,
+          81
+        ]
+      },
+      {
+        "themeId": "REVENGE",
+        "parent": "map_only_edge_venue_04",
+        "moduleId": "map_only_edge_venue_04_bay_0",
+        "profile": "cross_gable",
+        "rect": [
+          687,
+          358,
+          106,
+          88
+        ]
+      },
+      {
+        "themeId": "REVENGE",
+        "parent": "map_only_edge_venue_04",
+        "moduleId": "map_only_edge_venue_04_bay_1",
+        "profile": "pavilion",
+        "rect": [
+          795,
+          360,
+          74,
+          85
+        ]
+      },
+      {
+        "themeId": "REVENGE",
+        "parent": "map_only_east_arcade",
+        "moduleId": "map_only_east_arcade_bay_0",
+        "profile": "hip",
+        "rect": [
+          648,
+          477,
+          86,
+          57
+        ]
+      },
+      {
+        "themeId": "REVENGE",
+        "parent": "map_only_east_courtyard",
+        "moduleId": "map_only_east_courtyard_bay_0",
+        "profile": "long_gable",
+        "rect": [
+          552,
+          525,
+          86,
+          57
+        ]
+      },
+      {
+        "themeId": "REVENGE",
+        "parent": "map_only_central_workshop",
+        "moduleId": "map_only_central_workshop_bay_0",
+        "profile": "long_gable",
+        "rect": [
+          440,
+          621,
+          86,
+          57
+        ]
+      },
+      {
+        "themeId": "REVENGE",
+        "parent": "map_only_central_kiosk",
+        "moduleId": "map_only_central_kiosk_bay_0",
+        "profile": "long_gable",
+        "rect": [
+          360,
+          685,
+          86,
+          57
+        ]
+      },
+      {
+        "themeId": "REVENGE",
+        "parent": "map_only_meet_east_annex",
+        "moduleId": "map_only_meet_east_annex_bay_0",
+        "profile": "hip",
+        "rect": [
+          584,
+          893,
+          86,
+          57
+        ]
+      },
+      {
+        "themeId": "REVENGE",
+        "parent": "map_only_edge_venue_10",
+        "moduleId": "map_only_edge_venue_10_bay_0",
+        "profile": "pavilion",
+        "rect": [
+          488,
+          1017,
+          123,
+          83
+        ]
+      },
+      {
+        "themeId": "REVENGE",
+        "parent": "map_only_edge_venue_07",
+        "moduleId": "map_only_edge_venue_07_bay_0",
+        "profile": "long_gable",
+        "rect": [
+          -61,
+          1008,
+          79,
+          82
+        ]
+      },
+      {
+        "themeId": "REVENGE",
+        "parent": "map_only_edge_venue_07",
+        "moduleId": "map_only_edge_venue_07_bay_1",
+        "profile": "cross_gable",
+        "rect": [
+          20,
+          991,
+          90,
+          108
+        ]
+      },
+      {
+        "themeId": "REVENGE",
+        "parent": "map_only_edge_venue_07",
+        "moduleId": "map_only_edge_venue_07_bay_2",
+        "profile": "pavilion",
+        "rect": [
+          112,
+          1019,
+          58,
+          66
+        ]
+      },
+      {
+        "themeId": "REVENGE",
+        "parent": "map_only_south_courtyard",
+        "moduleId": "map_only_south_courtyard_bay_0",
+        "profile": "pavilion",
+        "rect": [
+          248,
+          1181,
+          86,
+          57
+        ]
+      },
+      {
+        "themeId": "REVENGE",
+        "parent": "map_only_edge_venue_11",
+        "moduleId": "map_only_edge_venue_11_bay_0",
+        "profile": "hip",
+        "rect": [
+          728,
+          1167,
+          103,
+          86
+        ]
+      },
+      {
+        "themeId": "REVENGE",
+        "parent": "map_only_edge_venue_11",
+        "moduleId": "map_only_edge_venue_11_bay_1",
+        "profile": "long_gable",
+        "rect": [
+          833,
+          1169,
+          73,
+          83
+        ]
+      },
+      {
+        "themeId": "REVENGE",
+        "parent": "map_only_edge_venue_09",
+        "moduleId": "map_only_edge_venue_09_bay_0",
+        "profile": "pavilion",
+        "rect": [
+          -21,
+          1192,
+          113,
+          94
+        ]
+      },
+      {
+        "themeId": "REVENGE",
+        "parent": "map_only_edge_venue_09",
+        "moduleId": "map_only_edge_venue_09_bay_1",
+        "profile": "hip",
+        "rect": [
+          94,
+          1194,
+          80,
+          91
+        ]
+      },
+      {
+        "themeId": "PARADE",
+        "parent": "map_only_edge_venue_01",
+        "moduleId": "map_only_edge_venue_01_bay_0",
+        "profile": "pavilion",
+        "rect": [
+          260,
+          -18,
+          117,
+          97
+        ]
+      },
+      {
+        "themeId": "PARADE",
+        "parent": "map_only_edge_venue_01",
+        "moduleId": "map_only_edge_venue_01_bay_1",
+        "profile": "hip",
+        "rect": [
+          379,
+          -16,
+          82,
+          94
+        ]
+      },
+      {
+        "themeId": "PARADE",
+        "parent": "map_only_edge_venue_00",
+        "moduleId": "map_only_edge_venue_00_bay_0",
+        "profile": "cross_gable",
+        "rect": [
+          -40,
+          1,
+          120,
+          100
+        ]
+      },
+      {
+        "themeId": "PARADE",
+        "parent": "map_only_edge_venue_00",
+        "moduleId": "map_only_edge_venue_00_bay_1",
+        "profile": "pavilion",
+        "rect": [
+          82,
+          3,
+          85,
+          97
+        ]
+      },
+      {
+        "themeId": "PARADE",
+        "parent": "map_only_edge_venue_02",
+        "moduleId": "map_only_edge_venue_02_bay_0",
+        "profile": "hip",
+        "rect": [
+          600,
+          14,
+          112,
+          93
+        ]
+      },
+      {
+        "themeId": "PARADE",
+        "parent": "map_only_edge_venue_02",
+        "moduleId": "map_only_edge_venue_02_bay_1",
+        "profile": "long_gable",
+        "rect": [
+          714,
+          16,
+          79,
+          90
+        ]
+      },
+      {
+        "themeId": "PARADE",
+        "parent": "map_only_north_east_annex",
+        "moduleId": "map_only_north_east_annex_bay_0",
+        "profile": "hip",
+        "rect": [
+          576,
+          141,
+          86,
+          57
+        ]
+      },
+      {
+        "themeId": "PARADE",
+        "parent": "map_only_north_west_annex",
+        "moduleId": "map_only_north_west_annex_bay_0",
+        "profile": "cross_gable",
+        "rect": [
+          8,
+          141,
+          86,
+          57
+        ]
+      },
+      {
+        "themeId": "PARADE",
+        "parent": "map_only_stage_west_wing",
+        "moduleId": "map_only_stage_west_wing_bay_0",
+        "profile": "cross_gable",
+        "rect": [
+          159,
+          300,
+          95,
+          79
+        ]
+      },
+      {
+        "themeId": "PARADE",
+        "parent": "map_only_stage_west_wing",
+        "moduleId": "map_only_stage_west_wing_bay_1",
+        "profile": "pavilion",
+        "rect": [
+          256,
+          302,
+          67,
+          77
+        ]
+      },
+      {
+        "themeId": "PARADE",
+        "parent": "map_only_stage_east_wing",
+        "moduleId": "map_only_stage_east_wing_bay_0",
+        "profile": "hip",
+        "rect": [
+          456,
+          303,
+          93,
+          78
+        ]
+      },
+      {
+        "themeId": "PARADE",
+        "parent": "map_only_stage_east_wing",
+        "moduleId": "map_only_stage_east_wing_bay_1",
+        "profile": "long_gable",
+        "rect": [
+          551,
+          304,
+          66,
+          76
+        ]
+      },
+      {
+        "themeId": "PARADE",
+        "parent": "map_only_stage_central_hall",
+        "moduleId": "map_only_stage_central_hall_bay_0",
+        "profile": "hip",
+        "rect": [
+          307,
+          304,
+          68,
+          71
+        ]
+      },
+      {
+        "themeId": "PARADE",
+        "parent": "map_only_stage_central_hall",
+        "moduleId": "map_only_stage_central_hall_bay_1",
+        "profile": "cross_gable",
+        "rect": [
+          377,
+          290,
+          77,
+          93
+        ]
+      },
+      {
+        "themeId": "PARADE",
+        "parent": "map_only_stage_central_hall",
+        "moduleId": "map_only_stage_central_hall_bay_2",
+        "profile": "cross_gable",
+        "rect": [
+          456,
+          313,
+          50,
+          57
+        ]
+      },
+      {
+        "themeId": "PARADE",
+        "parent": "map_only_edge_venue_03",
+        "moduleId": "map_only_edge_venue_03_bay_0",
+        "profile": "long_gable",
+        "rect": [
+          -68,
+          361,
+          101,
+          84
+        ]
+      },
+      {
+        "themeId": "PARADE",
+        "parent": "map_only_edge_venue_03",
+        "moduleId": "map_only_edge_venue_03_bay_1",
+        "profile": "cross_gable",
+        "rect": [
+          35,
+          363,
+          71,
+          81
+        ]
+      },
+      {
+        "themeId": "PARADE",
+        "parent": "map_only_edge_venue_04",
+        "moduleId": "map_only_edge_venue_04_bay_0",
+        "profile": "cross_gable",
+        "rect": [
+          687,
+          358,
+          106,
+          88
+        ]
+      },
+      {
+        "themeId": "PARADE",
+        "parent": "map_only_edge_venue_04",
+        "moduleId": "map_only_edge_venue_04_bay_1",
+        "profile": "pavilion",
+        "rect": [
+          795,
+          360,
+          74,
+          85
+        ]
+      },
+      {
+        "themeId": "PARADE",
+        "parent": "map_only_east_arcade",
+        "moduleId": "map_only_east_arcade_bay_0",
+        "profile": "hip",
+        "rect": [
+          648,
+          477,
+          86,
+          57
+        ]
+      },
+      {
+        "themeId": "PARADE",
+        "parent": "map_only_east_courtyard",
+        "moduleId": "map_only_east_courtyard_bay_0",
+        "profile": "long_gable",
+        "rect": [
+          552,
+          525,
+          86,
+          57
+        ]
+      },
+      {
+        "themeId": "PARADE",
+        "parent": "map_only_central_workshop",
+        "moduleId": "map_only_central_workshop_bay_0",
+        "profile": "long_gable",
+        "rect": [
+          440,
+          621,
+          86,
+          57
+        ]
+      },
+      {
+        "themeId": "PARADE",
+        "parent": "map_only_central_kiosk",
+        "moduleId": "map_only_central_kiosk_bay_0",
+        "profile": "long_gable",
+        "rect": [
+          360,
+          685,
+          86,
+          57
+        ]
+      },
+      {
+        "themeId": "PARADE",
+        "parent": "map_only_meet_east_annex",
+        "moduleId": "map_only_meet_east_annex_bay_0",
+        "profile": "hip",
+        "rect": [
+          584,
+          893,
+          86,
+          57
+        ]
+      },
+      {
+        "themeId": "PARADE",
+        "parent": "map_only_edge_venue_10",
+        "moduleId": "map_only_edge_venue_10_bay_0",
+        "profile": "pavilion",
+        "rect": [
+          488,
+          1017,
+          123,
+          83
+        ]
+      },
+      {
+        "themeId": "PARADE",
+        "parent": "map_only_edge_venue_07",
+        "moduleId": "map_only_edge_venue_07_bay_0",
+        "profile": "long_gable",
+        "rect": [
+          -61,
+          1008,
+          79,
+          82
+        ]
+      },
+      {
+        "themeId": "PARADE",
+        "parent": "map_only_edge_venue_07",
+        "moduleId": "map_only_edge_venue_07_bay_1",
+        "profile": "cross_gable",
+        "rect": [
+          20,
+          991,
+          90,
+          108
+        ]
+      },
+      {
+        "themeId": "PARADE",
+        "parent": "map_only_edge_venue_07",
+        "moduleId": "map_only_edge_venue_07_bay_2",
+        "profile": "pavilion",
+        "rect": [
+          112,
+          1019,
+          58,
+          66
+        ]
+      },
+      {
+        "themeId": "PARADE",
+        "parent": "map_only_south_courtyard",
+        "moduleId": "map_only_south_courtyard_bay_0",
+        "profile": "pavilion",
+        "rect": [
+          248,
+          1181,
+          86,
+          57
+        ]
+      },
+      {
+        "themeId": "PARADE",
+        "parent": "map_only_edge_venue_11",
+        "moduleId": "map_only_edge_venue_11_bay_0",
+        "profile": "hip",
+        "rect": [
+          728,
+          1167,
+          103,
+          86
+        ]
+      },
+      {
+        "themeId": "PARADE",
+        "parent": "map_only_edge_venue_11",
+        "moduleId": "map_only_edge_venue_11_bay_1",
+        "profile": "long_gable",
+        "rect": [
+          833,
+          1169,
+          73,
+          83
+        ]
+      },
+      {
+        "themeId": "PARADE",
+        "parent": "map_only_edge_venue_09",
+        "moduleId": "map_only_edge_venue_09_bay_0",
+        "profile": "pavilion",
+        "rect": [
+          -21,
+          1192,
+          113,
+          94
+        ]
+      },
+      {
+        "themeId": "PARADE",
+        "parent": "map_only_edge_venue_09",
+        "moduleId": "map_only_edge_venue_09_bay_1",
+        "profile": "hip",
+        "rect": [
+          94,
+          1194,
+          80,
+          91
+        ]
+      },
+      {
+        "themeId": "DANGER",
+        "parent": "map_only_edge_venue_01",
+        "moduleId": "map_only_edge_venue_01_bay_0",
+        "profile": "pavilion",
+        "rect": [
+          260,
+          -18,
+          117,
+          97
+        ]
+      },
+      {
+        "themeId": "DANGER",
+        "parent": "map_only_edge_venue_01",
+        "moduleId": "map_only_edge_venue_01_bay_1",
+        "profile": "hip",
+        "rect": [
+          379,
+          -16,
+          82,
+          94
+        ]
+      },
+      {
+        "themeId": "DANGER",
+        "parent": "map_only_edge_venue_00",
+        "moduleId": "map_only_edge_venue_00_bay_0",
+        "profile": "cross_gable",
+        "rect": [
+          -40,
+          1,
+          120,
+          100
+        ]
+      },
+      {
+        "themeId": "DANGER",
+        "parent": "map_only_edge_venue_00",
+        "moduleId": "map_only_edge_venue_00_bay_1",
+        "profile": "pavilion",
+        "rect": [
+          82,
+          3,
+          85,
+          97
+        ]
+      },
+      {
+        "themeId": "DANGER",
+        "parent": "map_only_edge_venue_02",
+        "moduleId": "map_only_edge_venue_02_bay_0",
+        "profile": "hip",
+        "rect": [
+          600,
+          14,
+          112,
+          93
+        ]
+      },
+      {
+        "themeId": "DANGER",
+        "parent": "map_only_edge_venue_02",
+        "moduleId": "map_only_edge_venue_02_bay_1",
+        "profile": "long_gable",
+        "rect": [
+          714,
+          16,
+          79,
+          90
+        ]
+      },
+      {
+        "themeId": "DANGER",
+        "parent": "map_only_north_east_annex",
+        "moduleId": "map_only_north_east_annex_bay_0",
+        "profile": "hip",
+        "rect": [
+          576,
+          141,
+          86,
+          57
+        ]
+      },
+      {
+        "themeId": "DANGER",
+        "parent": "map_only_north_west_annex",
+        "moduleId": "map_only_north_west_annex_bay_0",
+        "profile": "cross_gable",
+        "rect": [
+          8,
+          141,
+          86,
+          57
+        ]
+      },
+      {
+        "themeId": "DANGER",
+        "parent": "map_only_stage_west_wing",
+        "moduleId": "map_only_stage_west_wing_bay_0",
+        "profile": "cross_gable",
+        "rect": [
+          159,
+          300,
+          95,
+          79
+        ]
+      },
+      {
+        "themeId": "DANGER",
+        "parent": "map_only_stage_west_wing",
+        "moduleId": "map_only_stage_west_wing_bay_1",
+        "profile": "pavilion",
+        "rect": [
+          256,
+          302,
+          67,
+          77
+        ]
+      },
+      {
+        "themeId": "DANGER",
+        "parent": "map_only_stage_east_wing",
+        "moduleId": "map_only_stage_east_wing_bay_0",
+        "profile": "hip",
+        "rect": [
+          456,
+          303,
+          93,
+          78
+        ]
+      },
+      {
+        "themeId": "DANGER",
+        "parent": "map_only_stage_east_wing",
+        "moduleId": "map_only_stage_east_wing_bay_1",
+        "profile": "long_gable",
+        "rect": [
+          551,
+          304,
+          66,
+          76
+        ]
+      },
+      {
+        "themeId": "DANGER",
+        "parent": "map_only_stage_central_hall",
+        "moduleId": "map_only_stage_central_hall_bay_0",
+        "profile": "hip",
+        "rect": [
+          307,
+          304,
+          68,
+          71
+        ]
+      },
+      {
+        "themeId": "DANGER",
+        "parent": "map_only_stage_central_hall",
+        "moduleId": "map_only_stage_central_hall_bay_1",
+        "profile": "cross_gable",
+        "rect": [
+          377,
+          290,
+          77,
+          93
+        ]
+      },
+      {
+        "themeId": "DANGER",
+        "parent": "map_only_stage_central_hall",
+        "moduleId": "map_only_stage_central_hall_bay_2",
+        "profile": "cross_gable",
+        "rect": [
+          456,
+          313,
+          50,
+          57
+        ]
+      },
+      {
+        "themeId": "DANGER",
+        "parent": "map_only_edge_venue_03",
+        "moduleId": "map_only_edge_venue_03_bay_0",
+        "profile": "long_gable",
+        "rect": [
+          -68,
+          361,
+          101,
+          84
+        ]
+      },
+      {
+        "themeId": "DANGER",
+        "parent": "map_only_edge_venue_03",
+        "moduleId": "map_only_edge_venue_03_bay_1",
+        "profile": "cross_gable",
+        "rect": [
+          35,
+          363,
+          71,
+          81
+        ]
+      },
+      {
+        "themeId": "DANGER",
+        "parent": "map_only_edge_venue_04",
+        "moduleId": "map_only_edge_venue_04_bay_0",
+        "profile": "cross_gable",
+        "rect": [
+          687,
+          358,
+          106,
+          88
+        ]
+      },
+      {
+        "themeId": "DANGER",
+        "parent": "map_only_edge_venue_04",
+        "moduleId": "map_only_edge_venue_04_bay_1",
+        "profile": "pavilion",
+        "rect": [
+          795,
+          360,
+          74,
+          85
+        ]
+      },
+      {
+        "themeId": "DANGER",
+        "parent": "map_only_east_arcade",
+        "moduleId": "map_only_east_arcade_bay_0",
+        "profile": "hip",
+        "rect": [
+          648,
+          477,
+          86,
+          57
+        ]
+      },
+      {
+        "themeId": "DANGER",
+        "parent": "map_only_east_courtyard",
+        "moduleId": "map_only_east_courtyard_bay_0",
+        "profile": "long_gable",
+        "rect": [
+          552,
+          525,
+          86,
+          57
+        ]
+      },
+      {
+        "themeId": "DANGER",
+        "parent": "map_only_central_workshop",
+        "moduleId": "map_only_central_workshop_bay_0",
+        "profile": "long_gable",
+        "rect": [
+          440,
+          621,
+          86,
+          57
+        ]
+      },
+      {
+        "themeId": "DANGER",
+        "parent": "map_only_central_kiosk",
+        "moduleId": "map_only_central_kiosk_bay_0",
+        "profile": "long_gable",
+        "rect": [
+          360,
+          685,
+          86,
+          57
+        ]
+      },
+      {
+        "themeId": "DANGER",
+        "parent": "map_only_meet_east_annex",
+        "moduleId": "map_only_meet_east_annex_bay_0",
+        "profile": "hip",
+        "rect": [
+          584,
+          893,
+          86,
+          57
+        ]
+      },
+      {
+        "themeId": "DANGER",
+        "parent": "map_only_edge_venue_10",
+        "moduleId": "map_only_edge_venue_10_bay_0",
+        "profile": "pavilion",
+        "rect": [
+          488,
+          1017,
+          123,
+          83
+        ]
+      },
+      {
+        "themeId": "DANGER",
+        "parent": "map_only_edge_venue_07",
+        "moduleId": "map_only_edge_venue_07_bay_0",
+        "profile": "long_gable",
+        "rect": [
+          -61,
+          1008,
+          79,
+          82
+        ]
+      },
+      {
+        "themeId": "DANGER",
+        "parent": "map_only_edge_venue_07",
+        "moduleId": "map_only_edge_venue_07_bay_1",
+        "profile": "cross_gable",
+        "rect": [
+          20,
+          991,
+          90,
+          108
+        ]
+      },
+      {
+        "themeId": "DANGER",
+        "parent": "map_only_edge_venue_07",
+        "moduleId": "map_only_edge_venue_07_bay_2",
+        "profile": "pavilion",
+        "rect": [
+          112,
+          1019,
+          58,
+          66
+        ]
+      },
+      {
+        "themeId": "DANGER",
+        "parent": "map_only_south_courtyard",
+        "moduleId": "map_only_south_courtyard_bay_0",
+        "profile": "pavilion",
+        "rect": [
+          248,
+          1181,
+          86,
+          57
+        ]
+      },
+      {
+        "themeId": "DANGER",
+        "parent": "map_only_edge_venue_11",
+        "moduleId": "map_only_edge_venue_11_bay_0",
+        "profile": "hip",
+        "rect": [
+          728,
+          1167,
+          103,
+          86
+        ]
+      },
+      {
+        "themeId": "DANGER",
+        "parent": "map_only_edge_venue_11",
+        "moduleId": "map_only_edge_venue_11_bay_1",
+        "profile": "long_gable",
+        "rect": [
+          833,
+          1169,
+          73,
+          83
+        ]
+      },
+      {
+        "themeId": "DANGER",
+        "parent": "map_only_edge_venue_09",
+        "moduleId": "map_only_edge_venue_09_bay_0",
+        "profile": "pavilion",
+        "rect": [
+          -21,
+          1192,
+          113,
+          94
+        ]
+      },
+      {
+        "themeId": "DANGER",
+        "parent": "map_only_edge_venue_09",
+        "moduleId": "map_only_edge_venue_09_bay_1",
+        "profile": "hip",
+        "rect": [
+          94,
+          1194,
+          80,
+          91
+        ]
+      }
+    ],
+    "roofModulePolicy": "UP_TO_THREE_CONNECTED_NARROW_VOLUMES_WITHIN_UNCHANGED_BUILDING_SLOT",
+    "roofModuleFractions": {
+      "three": [
+        0.34,
+        0.4,
+        0.26
+      ],
+      "two": [
+        0.58,
+        0.42
+      ],
+      "gapPx": 2
     },
+    "roofModuleHeightPolicy": "PARENT_HEIGHT_TIMES_SCALE_TIMES_SQRT_BAY_SHARE_COMMON_EAVE_BASE",
+    "facadeVariants": {
+      "stage_east_wing": "meeting_pavilion",
+      "edge_venue_03": "meeting_pavilion",
+      "edge_venue_04": "giveaway_pavilion",
+      "edge_venue_07": "meeting_pavilion",
+      "edge_venue_09": "west_hall",
+      "east_arcade": "giveaway_pavilion",
+      "central_workshop": "north_hall",
+      "south_courtyard": "meeting_pavilion"
+    },
+    "courtyardDetailCandidates": 14,
+    "courtyardDetailsPlaced": [
+      "map_only_stage_west_planter",
+      "map_only_plaza_east_planter",
+      "map_only_plaza_west_seating",
+      "map_only_plaza_south_seating",
+      "map_only_feed_north_planter",
+      "map_only_meet_north_west_seating",
+      "map_only_meet_east_planter",
+      "map_only_meet_south_seating",
+      "map_only_gifts_east_planter"
+    ],
+    "pavementStonesByTheme": {
+      "REVENGE": 441,
+      "PARADE": 441,
+      "DANGER": 441
+    },
+    "pavementPolicy": "EXISTING_PATH_AND_GARDEN_RING_PAINT_ONLY_LABEL_AND_CANONICAL_EXCLUSIONS",
     "details": [
+      "connected narrow roof volumes",
+      "retained varied facade crops",
+      "courtyard seating/planters",
+      "small path/ring stone faces",
       "stepped eaves",
       "staggered tile relief",
-      "cross gables",
       "dormer/skylight groups",
       "brick chimneys"
     ],
@@ -1010,7 +2223,7 @@
       },
       {
         "id": "map_only_east_arcade",
-        "frame": "north_hall",
+        "frame": "giveaway_pavilion",
         "rect": [
           648,
           472,
@@ -1030,7 +2243,7 @@
       },
       {
         "id": "map_only_central_workshop",
-        "frame": "meeting_pavilion",
+        "frame": "north_hall",
         "rect": [
           440,
           616,
@@ -1060,7 +2273,7 @@
       },
       {
         "id": "map_only_south_courtyard",
-        "frame": "north_hall",
+        "frame": "meeting_pavilion",
         "rect": [
           248,
           1176,

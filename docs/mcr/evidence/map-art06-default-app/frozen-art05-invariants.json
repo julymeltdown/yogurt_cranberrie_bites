@@ -1,0 +1,788 @@
+{
+  "schemaVersion": 1,
+  "version": "map4-reference-composition-v1",
+  "coordinateSpace": "MAP_ILLUSTRATION_ONLY",
+  "renderMode": "full-composition",
+  "dimensions": {
+    "width": 768,
+    "height": 1296
+  },
+  "originalMap4": {
+    "mapId": "mcr_reference_scene_r3",
+    "mapRevision": 4,
+    "mapContentHash": "sha256:736afd273a067f6c40db76b8cc54412416fba88984a50d9a6b6738d869831fb8",
+    "geometryHash": "sha256:899aca9bd6ce499c6f46aff5eaf21e30ab34b301e988771b978a6fab7c2d469f",
+    "sourceBinding": {
+      "path": "frontend/src/app/world-entry/__tests__/reference-scene-root/source-inputs/source-binding.json",
+      "bytes": 11519,
+      "sha256": "sha256:0f15f5614d5502442a4e58cc995041f7ee1f2f906e21d4b630db7b13af65ee6b"
+    },
+    "themes": [
+      {
+        "themeId": "REVENGE",
+        "themeRevision": 1,
+        "themeContentHash": "sha256:2c456a8cb4b601a66c07577fa105136e11b1d4e4d9c401eb7e3181fed706e04f"
+      },
+      {
+        "themeId": "PARADE",
+        "themeRevision": 1,
+        "themeContentHash": "sha256:334011156771af9cfa199671f4977c517921bb877928245f501ecde3a55f163b"
+      },
+      {
+        "themeId": "DANGER",
+        "themeRevision": 1,
+        "themeContentHash": "sha256:fdf92937e87445ca82826da062d7d21e673dd9e6d463a36e9d95b7acce55546a"
+      }
+    ]
+  },
+  "serviceLabelAnchors": [
+    {
+      "key": "main_stage",
+      "x": 410,
+      "y": 195,
+      "width": 312,
+      "exclusionRect": {
+        "x": 246,
+        "y": 139,
+        "width": 328,
+        "height": 112
+      }
+    },
+    {
+      "key": "plaza",
+      "x": 329,
+      "y": 502,
+      "width": 143,
+      "exclusionRect": {
+        "x": 250,
+        "y": 446,
+        "width": 159,
+        "height": 112
+      }
+    },
+    {
+      "key": "wall",
+      "x": 160,
+      "y": 709,
+      "width": 221,
+      "exclusionRect": {
+        "x": 42,
+        "y": 653,
+        "width": 237,
+        "height": 112
+      }
+    },
+    {
+      "key": "feed",
+      "x": 641,
+      "y": 692,
+      "width": 192,
+      "exclusionRect": {
+        "x": 537,
+        "y": 636,
+        "width": 208,
+        "height": 112
+      }
+    },
+    {
+      "key": "meet",
+      "x": 376,
+      "y": 933,
+      "width": 240,
+      "exclusionRect": {
+        "x": 248,
+        "y": 877,
+        "width": 256,
+        "height": 112
+      }
+    },
+    {
+      "key": "gifts",
+      "x": 515,
+      "y": 1160,
+      "width": 240,
+      "exclusionRect": {
+        "x": 387,
+        "y": 1104,
+        "width": 256,
+        "height": 112
+      }
+    }
+  ],
+  "canonicalDisplayAnchors": [
+    {
+      "interactionId": "stage_info",
+      "x": 410,
+      "y": 403,
+      "worldCell": {
+        "x": 30,
+        "y": 24
+      },
+      "authority": "EXISTING_CANONICAL_IDENTITY_ONLY"
+    },
+    {
+      "interactionId": "park_info",
+      "x": 646,
+      "y": 428,
+      "worldCell": {
+        "x": 38,
+        "y": 27
+      },
+      "authority": "EXISTING_CANONICAL_IDENTITY_ONLY"
+    },
+    {
+      "interactionId": "gifts_info",
+      "x": 523,
+      "y": 1230,
+      "worldCell": {
+        "x": 13,
+        "y": 48
+      },
+      "authority": "EXISTING_CANONICAL_IDENTITY_ONLY"
+    },
+    {
+      "interactionId": "wall_info",
+      "x": 143,
+      "y": 794,
+      "worldCell": {
+        "x": 14,
+        "y": 61
+      },
+      "authority": "EXISTING_CANONICAL_IDENTITY_ONLY"
+    }
+  ],
+  "sourceInputs": [
+    {
+      "path": "frontend/public/world/reference-scene-v2/map-cozy-v1/parade/atlas.png",
+      "bytes": 1201118,
+      "sha256": "sha256:9c77e42eb377fbab1df485d6c1e8e47221ac33aebbc03e9aecba3cc7bbcded9f"
+    },
+    {
+      "path": "frontend/public/world/reference-scene-v2/map-cozy-v1/revenge/atlas.png",
+      "bytes": 1176781,
+      "sha256": "sha256:54b5a72a1e16062f84248602f8bebaee500ca086fb58285b1689d665618dfdbd"
+    },
+    {
+      "path": "frontend/public/world/reference-scene-v2/map-cozy-v1/danger/atlas.png",
+      "bytes": 1178440,
+      "sha256": "sha256:3184e26c5b83cf95c31f692b3087112faa93a0ef270bd5416e36fc9952d9a17a"
+    },
+    {
+      "path": "frontend/public/world/reference-scene-v2/map-cozy-v1/era-derivatives.json",
+      "bytes": 32665,
+      "sha256": "sha256:4cb98c6ba28535427b4c3ed8e122e317a0f0cd1e278d2b9cb56aaf52836b5fa0"
+    },
+    {
+      "path": "frontend/public/world/reference-scene-v2/map-cozy-v1/source-registration.json",
+      "bytes": 16615,
+      "sha256": "sha256:f38f19148b8d9ee80dc7340de2ae1fa4388583977aeff1c0602514b006792121"
+    },
+    {
+      "path": "frontend/public/world/reference-scene-v2/map-cozy-v1/presentation.json",
+      "bytes": 14186,
+      "sha256": "sha256:b3c08ea713e7413539c976a49c5f1267bee3345f8cc2d1dafb99fede8e733a0a"
+    },
+    {
+      "path": "frontend/src/world/reference-scene/spatial-v3/source-inputs.json",
+      "bytes": 47336,
+      "sha256": "sha256:847d9c92a4ddfa22b8187bb6afe9a9fc2e6e09b1c7fe8e5f85c5a7f5c0d846a9"
+    },
+    {
+      "path": "frontend/src/app/world-entry/__tests__/reference-scene-root/source-inputs/source-binding.json",
+      "bytes": 11519,
+      "sha256": "sha256:0f15f5614d5502442a4e58cc995041f7ee1f2f906e21d4b630db7b13af65ee6b"
+    },
+    {
+      "path": "docs/mcr/design/reference-target-2026-11-04.png",
+      "bytes": 2967126,
+      "sha256": "sha256:d9a8fae2f96a82253542019ab673589b3938627956eace15c8594c702b5c4617"
+    }
+  ],
+  "paths": [
+    [
+      [
+        -60,
+        420
+      ],
+      [
+        305,
+        42
+      ],
+      [
+        540,
+        -45
+      ]
+    ],
+    [
+      [
+        -55,
+        1030
+      ],
+      [
+        325,
+        667
+      ],
+      [
+        820,
+        245
+      ]
+    ],
+    [
+      [
+        -50,
+        425
+      ],
+      [
+        248,
+        697
+      ],
+      [
+        820,
+        1305
+      ]
+    ],
+    [
+      [
+        240,
+        -50
+      ],
+      [
+        514,
+        215
+      ],
+      [
+        810,
+        420
+      ]
+    ],
+    [
+      [
+        -30,
+        1190
+      ],
+      [
+        241,
+        1006
+      ],
+      [
+        435,
+        796
+      ],
+      [
+        818,
+        867
+      ]
+    ],
+    [
+      [
+        190,
+        267
+      ],
+      [
+        352,
+        355
+      ],
+      [
+        566,
+        353
+      ],
+      [
+        783,
+        150
+      ]
+    ],
+    [
+      [
+        44,
+        1299
+      ],
+      [
+        194,
+        1139
+      ],
+      [
+        422,
+        1100
+      ],
+      [
+        780,
+        1100
+      ]
+    ]
+  ],
+  "gardenParcels": [
+    [
+      [
+        260,
+        390
+      ],
+      [
+        406,
+        405
+      ],
+      [
+        484,
+        494
+      ],
+      [
+        395,
+        608
+      ],
+      [
+        217,
+        574
+      ],
+      [
+        188,
+        462
+      ]
+    ],
+    [
+      [
+        292,
+        778
+      ],
+      [
+        469,
+        806
+      ],
+      [
+        548,
+        929
+      ],
+      [
+        433,
+        1035
+      ],
+      [
+        274,
+        977
+      ],
+      [
+        235,
+        873
+      ]
+    ]
+  ],
+  "authority": {
+    "physicalArrival": false,
+    "physicalRoutes": false,
+    "retailAvailability": false,
+    "canonicalIdentityMutation": false,
+    "worldGeometryMutation": false,
+    "serviceAnchors": "NONCANONICAL_VIRTUAL_SEMANTICS_RUNTIME_OWNER_BINDS_EXISTING_FEATURE_LINKS",
+    "displayMapping": "EXPLICIT_OVERVIEW_ILLUSTRATION_ONLY_NOT_SERVER_COORDINATES"
+  },
+  "plantingParcels": [
+    [
+      [
+        0,
+        106
+      ],
+      [
+        94,
+        110
+      ],
+      [
+        146,
+        174
+      ],
+      [
+        128,
+        280
+      ],
+      [
+        35,
+        310
+      ],
+      [
+        0,
+        256
+      ]
+    ],
+    [
+      [
+        173,
+        70
+      ],
+      [
+        248,
+        91
+      ],
+      [
+        309,
+        115
+      ],
+      [
+        282,
+        193
+      ],
+      [
+        184,
+        218
+      ],
+      [
+        143,
+        160
+      ]
+    ],
+    [
+      [
+        455,
+        74
+      ],
+      [
+        573,
+        70
+      ],
+      [
+        650,
+        133
+      ],
+      [
+        651,
+        256
+      ],
+      [
+        555,
+        253
+      ],
+      [
+        521,
+        167
+      ]
+    ],
+    [
+      [
+        625,
+        383
+      ],
+      [
+        768,
+        390
+      ],
+      [
+        768,
+        545
+      ],
+      [
+        685,
+        573
+      ],
+      [
+        586,
+        510
+      ],
+      [
+        570,
+        442
+      ]
+    ],
+    [
+      [
+        0,
+        400
+      ],
+      [
+        114,
+        387
+      ],
+      [
+        177,
+        448
+      ],
+      [
+        162,
+        566
+      ],
+      [
+        50,
+        592
+      ],
+      [
+        0,
+        536
+      ]
+    ],
+    [
+      [
+        253,
+        402
+      ],
+      [
+        369,
+        416
+      ],
+      [
+        440,
+        452
+      ],
+      [
+        451,
+        526
+      ],
+      [
+        382,
+        585
+      ],
+      [
+        239,
+        558
+      ],
+      [
+        204,
+        468
+      ]
+    ],
+    [
+      [
+        92,
+        580
+      ],
+      [
+        183,
+        594
+      ],
+      [
+        243,
+        635
+      ],
+      [
+        212,
+        682
+      ],
+      [
+        125,
+        659
+      ],
+      [
+        62,
+        622
+      ]
+    ],
+    [
+      [
+        441,
+        575
+      ],
+      [
+        541,
+        563
+      ],
+      [
+        621,
+        600
+      ],
+      [
+        613,
+        729
+      ],
+      [
+        522,
+        776
+      ],
+      [
+        426,
+        731
+      ],
+      [
+        392,
+        640
+      ]
+    ],
+    [
+      [
+        658,
+        741
+      ],
+      [
+        768,
+        730
+      ],
+      [
+        768,
+        863
+      ],
+      [
+        657,
+        894
+      ],
+      [
+        586,
+        851
+      ],
+      [
+        605,
+        795
+      ]
+    ],
+    [
+      [
+        0,
+        789
+      ],
+      [
+        100,
+        783
+      ],
+      [
+        198,
+        837
+      ],
+      [
+        213,
+        955
+      ],
+      [
+        147,
+        1002
+      ],
+      [
+        32,
+        947
+      ],
+      [
+        0,
+        887
+      ]
+    ],
+    [
+      [
+        295,
+        795
+      ],
+      [
+        398,
+        817
+      ],
+      [
+        468,
+        859
+      ],
+      [
+        494,
+        949
+      ],
+      [
+        414,
+        1014
+      ],
+      [
+        287,
+        972
+      ],
+      [
+        252,
+        869
+      ]
+    ],
+    [
+      [
+        541,
+        870
+      ],
+      [
+        628,
+        901
+      ],
+      [
+        703,
+        942
+      ],
+      [
+        714,
+        1035
+      ],
+      [
+        631,
+        1066
+      ],
+      [
+        548,
+        1019
+      ],
+      [
+        526,
+        958
+      ]
+    ],
+    [
+      [
+        180,
+        1008
+      ],
+      [
+        274,
+        1036
+      ],
+      [
+        333,
+        1081
+      ],
+      [
+        292,
+        1150
+      ],
+      [
+        201,
+        1182
+      ],
+      [
+        146,
+        1110
+      ]
+    ],
+    [
+      [
+        310,
+        1154
+      ],
+      [
+        411,
+        1139
+      ],
+      [
+        495,
+        1205
+      ],
+      [
+        502,
+        1296
+      ],
+      [
+        339,
+        1296
+      ],
+      [
+        278,
+        1248
+      ]
+    ],
+    [
+      [
+        606,
+        1157
+      ],
+      [
+        713,
+        1167
+      ],
+      [
+        768,
+        1225
+      ],
+      [
+        768,
+        1296
+      ],
+      [
+        582,
+        1296
+      ],
+      [
+        563,
+        1224
+      ]
+    ]
+  ]
+}

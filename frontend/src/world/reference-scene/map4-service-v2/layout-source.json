@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "version": "map4-reference-composition-v1",
-  "recipeRevision": "reference-correction-05",
+  "recipeRevision": "reference-correction-06",
   "coordinateSpace": "MAP_ILLUSTRATION_ONLY",
   "renderMode": "full-composition",
   "dimensions": {
@@ -156,8 +156,8 @@
     {
       "themeId": "REVENGE",
       "path": "world/map-reference-composition-v1/revenge-scene.png",
-      "bytes": 668934,
-      "sha256": "sha256:ebb27be3cfa4e2b56426f8bdc6fbe806121ff5e0c2174e3df731d3823451938c",
+      "bytes": 709200,
+      "sha256": "sha256:0b6da66ac646ec28469c29d309f62e725ba24d48eee9b4b24e0c0383aedd3083",
       "width": 768,
       "height": 1296,
       "mime": "image/png"
@@ -165,8 +165,8 @@
     {
       "themeId": "PARADE",
       "path": "world/map-reference-composition-v1/parade-scene.png",
-      "bytes": 685505,
-      "sha256": "sha256:b523405660ebc40d247bba7d24d1a862bd89177c76bd6551472996fea6d795b4",
+      "bytes": 726705,
+      "sha256": "sha256:1d7cc73a1cdaf0931d446206a5424dd8f131c5c819e1f147a0a150583e98b493",
       "width": 768,
       "height": 1296,
       "mime": "image/png"
@@ -174,8 +174,8 @@
     {
       "themeId": "DANGER",
       "path": "world/map-reference-composition-v1/danger-scene.png",
-      "bytes": 675662,
-      "sha256": "sha256:1ac966073fcc98ab48fafee731277d6428df8dbbe54af692441bf14ba34ed85e",
+      "bytes": 716175,
+      "sha256": "sha256:8846875dabb8a48df8b8d8d5433eab5f682e215c02ac50a0fb6dcc2d7da54edf",
       "width": 768,
       "height": 1296,
       "mime": "image/png"
@@ -726,6 +726,22 @@
       "crop_role": "whole"
     },
     {
+      "id": "map_only_stage_west_planter",
+      "frame": "shrub_bed",
+      "rect": [
+        204,
+        214,
+        40,
+        24
+      ],
+      "depth_y": 238,
+      "interactive": false,
+      "place_id": null,
+      "interaction_id": null,
+      "world_solid": false,
+      "crop_role": "whole"
+    },
+    {
       "id": "map_only_interior_tree_21",
       "frame": "tree_yellow",
       "rect": [
@@ -951,7 +967,7 @@
     },
     {
       "id": "map_only_stage_east_wing",
-      "frame": "north_hall",
+      "frame": "meeting_pavilion",
       "rect": [
         456,
         276,
@@ -1127,7 +1143,7 @@
     },
     {
       "id": "map_only_edge_venue_03",
-      "frame": "west_hall",
+      "frame": "meeting_pavilion",
       "rect": [
         -68,
         313,
@@ -1159,7 +1175,7 @@
     },
     {
       "id": "map_only_edge_venue_04",
-      "frame": "north_hall",
+      "frame": "giveaway_pavilion",
       "rect": [
         687,
         314,
@@ -1302,6 +1318,22 @@
       "crop_role": "canopy"
     },
     {
+      "id": "map_only_plaza_east_planter",
+      "frame": "shrub_bed",
+      "rect": [
+        418,
+        474,
+        38,
+        25
+      ],
+      "depth_y": 499,
+      "interactive": false,
+      "place_id": null,
+      "interaction_id": null,
+      "world_solid": false,
+      "crop_role": "whole"
+    },
+    {
       "id": "map_only_grove_03_tree_4",
       "frame": "tree_green",
       "rect": [
@@ -1348,6 +1380,22 @@
       "interaction_id": null,
       "world_solid": false,
       "crop_role": "canopy"
+    },
+    {
+      "id": "map_only_plaza_west_seating",
+      "frame": "plaza_furniture",
+      "rect": [
+        207,
+        483,
+        38,
+        27
+      ],
+      "depth_y": 510,
+      "interactive": false,
+      "place_id": null,
+      "interaction_id": null,
+      "world_solid": false,
+      "crop_role": "whole"
     },
     {
       "id": "map_only_grove_04_tree_2",
@@ -1447,7 +1495,7 @@
     },
     {
       "id": "map_only_east_arcade",
-      "frame": "north_hall",
+      "frame": "giveaway_pavilion",
       "rect": [
         648,
         472,
@@ -1686,6 +1734,22 @@
       "crop_role": "whole"
     },
     {
+      "id": "map_only_plaza_south_seating",
+      "frame": "plaza_furniture",
+      "rect": [
+        293,
+        568,
+        62,
+        30
+      ],
+      "depth_y": 598,
+      "interactive": false,
+      "place_id": null,
+      "interaction_id": null,
+      "world_solid": false,
+      "crop_role": "whole"
+    },
+    {
       "id": "map_only_grove_06_tree_2",
       "frame": "tree_yellow",
       "rect": [
@@ -1846,6 +1910,22 @@
       "crop_role": "whole"
     },
     {
+      "id": "map_only_feed_north_planter",
+      "frame": "shrub_bed",
+      "rect": [
+        588,
+        605,
+        49,
+        25
+      ],
+      "depth_y": 630,
+      "interactive": false,
+      "place_id": null,
+      "interaction_id": null,
+      "world_solid": false,
+      "crop_role": "whole"
+    },
+    {
       "id": "map_only_grove_06_tree_3",
       "frame": "tree_green",
       "rect": [
@@ -1943,7 +2023,7 @@
     },
     {
       "id": "map_only_central_workshop",
-      "frame": "meeting_pavilion",
+      "frame": "north_hall",
       "rect": [
         440,
         616,
@@ -2598,6 +2678,22 @@
       "crop_role": "whole"
     },
     {
+      "id": "map_only_meet_north_west_seating",
+      "frame": "plaza_furniture",
+      "rect": [
+        284,
+        843,
+        42,
+        28
+      ],
+      "depth_y": 871,
+      "interactive": false,
+      "place_id": null,
+      "interaction_id": null,
+      "world_solid": false,
+      "crop_role": "whole"
+    },
+    {
       "id": "map_only_grove_11_tree_4",
       "frame": "tree_green",
       "rect": [
@@ -2788,6 +2884,22 @@
       "interaction_id": null,
       "world_solid": false,
       "crop_role": "canopy"
+    },
+    {
+      "id": "map_only_meet_east_planter",
+      "frame": "shrub_bed",
+      "rect": [
+        511,
+        906,
+        31,
+        23
+      ],
+      "depth_y": 929,
+      "interactive": false,
+      "place_id": null,
+      "interaction_id": null,
+      "world_solid": false,
+      "crop_role": "whole"
     },
     {
       "id": "map_only_grove_10_tree_4",
@@ -3206,6 +3318,22 @@
       "crop_role": "whole"
     },
     {
+      "id": "map_only_meet_south_seating",
+      "frame": "plaza_furniture",
+      "rect": [
+        348,
+        995,
+        57,
+        28
+      ],
+      "depth_y": 1023,
+      "interactive": false,
+      "place_id": null,
+      "interaction_id": null,
+      "world_solid": false,
+      "crop_role": "whole"
+    },
+    {
       "id": "map_only_west_edge_tree_15",
       "frame": "tree_red",
       "rect": [
@@ -3479,7 +3607,7 @@
     },
     {
       "id": "map_only_edge_venue_07",
-      "frame": "west_hall",
+      "frame": "meeting_pavilion",
       "rect": [
         -61,
         929,
@@ -3655,7 +3783,7 @@
     },
     {
       "id": "map_only_south_courtyard",
-      "frame": "north_hall",
+      "frame": "meeting_pavilion",
       "rect": [
         248,
         1176,
@@ -3727,6 +3855,22 @@
         36
       ],
       "depth_y": 1250,
+      "interactive": false,
+      "place_id": null,
+      "interaction_id": null,
+      "world_solid": false,
+      "crop_role": "whole"
+    },
+    {
+      "id": "map_only_gifts_east_planter",
+      "frame": "shrub_bed",
+      "rect": [
+        657,
+        1225,
+        47,
+        26
+      ],
+      "depth_y": 1251,
       "interactive": false,
       "place_id": null,
       "interaction_id": null,
@@ -4343,7 +4487,7 @@
     },
     {
       "id": "map_only_edge_venue_09",
-      "frame": "north_hall",
+      "frame": "west_hall",
       "rect": [
         -21,
         1154,

@@ -1,0 +1,28 @@
+{
+  "lease": "ART06-MAP-SOURCE-A-20261104T1732Z",
+  "acceptedAt": "2026-11-04T17:33:47.113155+00:00",
+  "activeDeadline": "2026-11-04T17:38:47.113155+00:00",
+  "hardDeadline": "2026-11-04T17:39:47.113155+00:00",
+  "candidate": "0a1c29fb660d227f112b76f404d07b45152c2247",
+  "preparation": "1b98ff1b",
+  "capFix": "82ebfb1b",
+  "guardSha256": "cbca7ee2e22dfcbee1f402156d219565126d1866b6ed34e08223e976fb28bbe1",
+  "freeBytes": 27687428096,
+  "otherOutstandingNewBytes": 343932928,
+  "ownWorstNewBytes": 134217728,
+  "reservedMarginBytes": 27209277440,
+  "retainedCheckoutBytes": 803871950,
+  "retainedDependenciesBytes": 408236853,
+  "nonShrinkingWholeFloorBytes": 1245663235,
+  "gitReserveBytes": 33554432,
+  "limits": {
+    "processes": 6,
+    "rssBytes": 2684354560,
+    "wholeBytes": 2147483648,
+    "newBytes": 134217728,
+    "tmpBytes": 100663296,
+    "workSeconds": 300,
+    "cleanupSeconds": 60
+  },
+  "predecessorFull": "2026-11-04T17:28:05Z"
+}

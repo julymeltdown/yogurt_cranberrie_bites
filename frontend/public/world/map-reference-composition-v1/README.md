@@ -1,8 +1,11 @@
 # Map4 reference composition v1
 
-Recipe status: **SOURCE_VALIDATED_NATIVE_NOT_RUN**, `reference-correction-05`.
-The eight saved generated files are the separately validated correction05
-candidate. Qualified correction04 remains preserved at97d9d3f4 with its own
+Recipe status: **SOURCE_VALIDATED_NATIVE_NOT_RUN**, `reference-correction-06`.
+The eight saved generated files depict the frozen06 recipe at authoring source
+b4a4717867cd9755e58e03422b33300781fd0716. Build, deterministic verification and
+three-full/nine-scaled source inspection passed under the allocation below.
+Frozen correction05 at77a4d405 and its separate consumer qualification remain
+preserved. Qualified correction04 remains at97d9d3f4 with its own
 later App captures/publication; correction03 at94c47a8b, correction02 at1f2f9ff6.
 No consumer's qualified scene/paint combination is implicitly replaced.
 Immutable8fcd1287 and46180268 handoffs remain preserved in Git history.
@@ -221,6 +224,60 @@ stayed within96MiB/4MiB/512MiB; max ALL-owned processes4, one sequential child.
 The retained preview/output hashes, commands, source pins, failure and limitations
 are recorded in the ART document. Temporary previews are not durable evidence,
 App captures or proof of runtime labels, World invariance or physical admission.
+
+Correction06 continues the original reference-density work from actual05 source
+inspection as one connected-roof/courtyard correction:
+
+- Broad roof planes become two or three narrower joined volumes inside existing
+  building slots, with unequal heights and2px valleys. The central hall has three
+  volumes and a middle cross gable. Narrow buildings keep one recessed roof.
+  Exact original facade crops retain their current projection and base position;
+  roof masses change without moving paths, architecture slots or label reserves.
+- Eight named buildings use different retained original facade frames to break
+  repeated door/window rows. No source RGB/alpha, original atlas, character,
+  geometry, identity, anchor or label-exclusion change is introduced.
+- Fourteen authored courtyard furniture/planter candidates form unequal pocket
+  groups beside reserved label ground. The allocated builder accepted nine,
+  filtering overlaps with existing objects/exclusions, canonical centers and
+  path paint. The unchanged261 incumbent placements remain, with only the eight
+  declared facade-frame substitutions; total placements are270.
+- Small irregular stone faces texture only already-painted path cores and
+  garden rings. Every stone's full footprint must retain the same original
+  paving color; lawn, path edges, garden geometry, exact label reserves and
+  canonical clearances remain untouched. There is no new parcel substrate.
+
+Complete source foliage, original crop pins, all supplied originals, approved
+warm era direction, Map4 tuples, source/World geometry, six112px exclusions,
+four canonical mappings and existing seven path widths/centerlines remain
+unchanged. Provenance lists99 actual roof modules across the three eras,
+eight facade variants, nine placed courtyard IDs and441 stone faces per era.
+All18 label-reserved raster regions are byte-exact05, all original crop-pin
+records are exact05, and13 layout identity/geometry/authority fields are unchanged.
+
+The accepted `ART06-SOURCE-A-DIRECT-NEXT-202611041700Z` run pinned authoring
+sourceb4a47178 and absolute Python3.14.3/Pillow12.2.0. Build, `--verify` and
+the frozen868-byte preview child each exited0 first try, with no warnings.
+All eight generated outputs reproduced exactly, totaling8,075,537bytes.
+Artist directly inspected all three full PNGs and nine nearest source previews
+at360x608/390x658/430x726. Smaller roof volumes and additional pocket details
+are visible in each era; at360px the tiny roof/paving accents are subtle. Broad
+reserved lawns, long central architecture and large path junctions still differ
+from the compact reference. Original foliage still overlaps some small buildings.
+This is an assessed source increment, not final visual/reference acceptance.
+
+Original ACCEPT17:03:24Z/WORK17:05:24Z/HARD17:07:24Z on2026-11-04 were retained.
+Work ended17:03:26.638970Z; cleanup PASS17:04:12.319336Z removed all nine previews
+and private directory. Independent FULL17:04:29.080697Z confirmed zero owned
+processes/TMP and all nine input/eight output/recipe descriptors exact.
+Peaks: WHOLE94,137,867bytes including80MiB conservative carry, TMP2,050,206bytes,
+RSS157,466,624bytes including16MiB reserve, max4 ALL-owned processes.
+Fresh starting free26,871,558,144bytes and minimum24,521,756,672 exceeded12/8GiB
+floors. No breach, retry, deadline extension or resource job remains.
+
+Changed-source atomic consumer registration and Root's candidate-specific native
+comparison remain required; ART05 acceptance cannot qualify06 pixels. Keep the
+qualified original40px label style/78hits/112px exclusions and existing semantics.
+The ART document records exact source/output/preview pins and release evidence.
 
 Run only inside a fresh accepted source-output allocation:
 
