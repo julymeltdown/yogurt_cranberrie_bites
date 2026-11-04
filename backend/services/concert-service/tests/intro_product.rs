@@ -801,7 +801,7 @@ async fn canonical_intro_edit_revokes_consent_atomically_with_receipt_outbox() -
 fn cursor_encryption_binding_and_original_fence_expiry() {
     use concert_application::intro::cursor::{CursorBinding, CursorCodec, CursorWindow};
     let codec = IntroCursor::new([71; 32]).unwrap();
-    let now = Utc::now();
+    let now = DateTime::from_timestamp_micros(Utc::now().timestamp_micros()).unwrap();
     let b = CursorBinding {
         actor: Uuid::new_v4(),
         event: Uuid::new_v4(),
