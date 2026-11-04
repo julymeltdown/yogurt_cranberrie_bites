@@ -12,7 +12,7 @@ PUBLIC = ROOT / 'frontend/public/world/avatars/derived-v1/motion-candidates-v1'
 EVIDENCE = ROOT / 'docs/mcr/art/evidence/motion-candidates-v1'
 BASE = 'a3526254a716e14e3134de551c3b277379a1096f'
 NODE = os.environ.get('MCR_ART_NODE') or shutil.which('node')
-PLAYWRIGHT = Path(os.environ['MCR_ART_PLAYWRIGHT']).resolve()
+PLAYWRIGHT = Path(os.environ['MCR_ART_PLAYWRIGHT']).absolute()
 OXLINT = PLAYWRIGHT.parents[2] / '.bin/oxlint'
 checks = []
 
