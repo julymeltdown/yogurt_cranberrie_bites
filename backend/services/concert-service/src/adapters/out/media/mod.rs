@@ -16,6 +16,24 @@ use uuid::Uuid;
 /// authority. A stale fence, deleted/revoked account or unknown owner fails closed.
 #[async_trait]
 pub trait MediaAuthority: Send + Sync {
+    /// Acquire current event/admission/target roots in the writer's order BEFORE
+    /// media row locks. `target` comes from an untrusted internal lookup hint;
+    /// it grants no access. The caller rechecks that hint after locking media.
+    /// Linked consumers must explicitly implement this port; final authorize_in
+    /// may only recheck already-held target roots, never acquire another target.
+    async fn prelock_target_in(
+        &self,
+        _c: &mut PgConnection,
+        _context: Context,
+        _owner: Uuid,
+        target: Option<Target>,
+    ) -> Result<(), CommandError> {
+        if target.is_some() {
+            Err(CommandError::Unavailable)
+        } else {
+            Ok(())
+        }
+    }
     async fn authorize_in(
         &self,
         c: &mut PgConnection,
@@ -124,8 +142,26 @@ async fn stored(
     event: Uuid,
     id: Uuid,
 ) -> Result<Option<Stored>, CommandError> {
-    let row=sqlx::query("select owner_id,purpose,content_type,state,revision,policy_event_revision,policy_relationship_revision,policy_authority_revision,expires_at<=clock_timestamp() expired,orphan_at<=clock_timestamp() orphaned,target_id from public.concert_media where event_id=$1 and media_id=$2 for update")
- .bind(event).bind(id).fetch_optional(c).await.map_err(unavailable)?;
+    stored_snapshot(c, event, id, true).await
+}
+async fn stored_snapshot(
+    c: &mut PgConnection,
+    event: Uuid,
+    id: Uuid,
+    lock: bool,
+) -> Result<Option<Stored>, CommandError> {
+    const LOOKUP: &str = "select owner_id,purpose,content_type,state,revision,policy_event_revision,policy_relationship_revision,policy_authority_revision,expires_at<=clock_timestamp() expired,orphan_at<=clock_timestamp() orphaned,target_id from public.concert_media where event_id=$1 and media_id=$2";
+    let query = if lock {
+        format!("{LOOKUP} for update")
+    } else {
+        LOOKUP.into()
+    };
+    let row = sqlx::query(&query)
+        .bind(event)
+        .bind(id)
+        .fetch_optional(c)
+        .await
+        .map_err(unavailable)?;
     row.map(|r| {
         let purpose = Purpose::parse(&r.try_get::<String, _>("purpose").map_err(invalid)?)?;
         Ok(Stored {
@@ -160,6 +196,29 @@ fn live(v: &Stored) -> Result<(), CommandError> {
     }
     Ok(())
 }
+async fn prelocked_stored_in(
+    c: &mut PgConnection,
+    context: Context,
+    id: Uuid,
+    authority: &dyn MediaAuthority,
+) -> Result<Option<Stored>, CommandError> {
+    let hint = stored_snapshot(c, context.event, id, false).await?;
+    authority
+        .prelock_target_in(
+            c,
+            context,
+            hint.as_ref().map_or(context.actor, |v| v.owner),
+            hint.as_ref().and_then(|v| v.target),
+        )
+        .await?;
+    let locked = stored(c, context.event, id).await?;
+    let identity = |v: &Stored| (v.owner, v.purpose, v.target, v.revision);
+    if locked.as_ref().map(identity) != hint.as_ref().map(identity) {
+        // Never follow a changed linkage while holding the media lock.
+        return Err(CommandError::Denied);
+    }
+    Ok(locked)
+}
 #[async_trait]
 impl CommandProducer for Producer<'_> {
     async fn authorize(
@@ -189,7 +248,7 @@ impl CommandProducer for Producer<'_> {
         {
             return Err(CommandError::Denied);
         }
-        let value = stored(c, s.event, id).await?;
+        let value = prelocked_stored_in(c, self.context, id, self.authority).await?;
         let (owner, target) = if let Some(v) = &value {
             if v.owner != s.actor
                 || (!matches!(self.action, Action::Recover(_)) && v.policy != self.context.policy)
@@ -498,24 +557,26 @@ impl PgMedia {
     /// Must be called by a bounded streaming HTTP adapter; neither this API nor a Content-Length
     /// check grants permission to buffer an unlimited body before dispatch.
     pub async fn read(&self, context: Context, id: Uuid) -> Result<PrivateImage, CommandError> {
-        context.validate()?;
         let mut tx = self.pool.begin().await.map_err(unavailable)?;
-        limit_sql_in(&mut tx).await?;
-        let v = stored(&mut tx, context.event, id)
-            .await?
-            .ok_or(CommandError::Denied)?;
-        live(&v)?;
-        if v.state != "READY" || (v.owner != context.actor && v.target.is_none()) {
-            return Err(CommandError::Denied);
-        }
-        self.authority
-            .authorize_in(&mut tx, context, Access::Read(v.purpose), v.owner, v.target)
-            .await?;
+        let result = self.read_in(&mut tx, context, id).await?;
+        tx.commit().await.map_err(unavailable)?;
+        Ok(result)
+    }
+    /// Caller retains canonical authority and this SAME transaction through
+    /// commit and qualified delivery. Already-held target roots are rechecked;
+    /// neither this port nor a returned image releases them.
+    pub async fn read_in(
+        &self,
+        c: &mut PgConnection,
+        context: Context,
+        id: Uuid,
+    ) -> Result<PrivateImage, CommandError> {
+        let v = self.read_authorized_in(c, context, id).await?;
         let row = sqlx::query(
             "select sanitized,width,height from public.concert_media where media_id=$1 and (target_id is not null or orphan_at>clock_timestamp())",
         )
         .bind(id)
-        .fetch_optional(&mut *tx)
+        .fetch_optional(c)
         .await
         .map_err(unavailable)?.ok_or(CommandError::Expired)?;
         let bytes: Vec<u8> = row.try_get("sanitized").map_err(invalid)?;
@@ -528,27 +589,25 @@ impl PgMedia {
             width: row.try_get::<i32, _>("width").map_err(invalid)? as u32,
             height: row.try_get::<i32, _>("height").map_err(invalid)? as u32,
         };
-        tx.commit().await.map_err(unavailable)?;
         Ok(PrivateImage { metadata, bytes })
     }
     /// Metadata uses the same current authority and expiry checks as content, without
     /// copying image bytes into a JSON/RPC metadata response.
     pub async fn metadata(&self, context: Context, id: Uuid) -> Result<Metadata, CommandError> {
-        context.validate()?;
         let mut tx = self.pool.begin().await.map_err(unavailable)?;
-        limit_sql_in(&mut tx).await?;
-        let v = stored(&mut tx, context.event, id)
-            .await?
-            .ok_or(CommandError::Denied)?;
-        live(&v)?;
-        if v.state != "READY" || (v.owner != context.actor && v.target.is_none()) {
-            return Err(CommandError::Denied);
-        }
-        self.authority
-            .authorize_in(&mut tx, context, Access::Read(v.purpose), v.owner, v.target)
-            .await?;
+        let result = self.metadata_in(&mut tx, context, id).await?;
+        tx.commit().await.map_err(unavailable)?;
+        Ok(result)
+    }
+    pub async fn metadata_in(
+        &self,
+        c: &mut PgConnection,
+        context: Context,
+        id: Uuid,
+    ) -> Result<Metadata, CommandError> {
+        let v = self.read_authorized_in(c, context, id).await?;
         let row = sqlx::query("select width,height from public.concert_media where media_id=$1 and (target_id is not null or orphan_at>clock_timestamp())")
-            .bind(id).fetch_optional(&mut *tx).await.map_err(unavailable)?.ok_or(CommandError::Expired)?;
+            .bind(id).fetch_optional(c).await.map_err(unavailable)?.ok_or(CommandError::Expired)?;
         let result = Metadata {
             media_id: id,
             event: context.event,
@@ -558,8 +617,28 @@ impl PgMedia {
             width: row.try_get::<i32, _>("width").map_err(invalid)? as u32,
             height: row.try_get::<i32, _>("height").map_err(invalid)? as u32,
         };
-        tx.commit().await.map_err(unavailable)?;
         Ok(result)
+    }
+
+    async fn read_authorized_in(
+        &self,
+        c: &mut PgConnection,
+        context: Context,
+        id: Uuid,
+    ) -> Result<Stored, CommandError> {
+        context.validate()?;
+        limit_sql_in(c).await?;
+        let v = prelocked_stored_in(c, context, id, self.authority.as_ref())
+            .await?
+            .ok_or(CommandError::Denied)?;
+        live(&v)?;
+        if v.state != "READY" || (v.owner != context.actor && v.target.is_none()) {
+            return Err(CommandError::Denied);
+        }
+        self.authority
+            .authorize_in(c, context, Access::Read(v.purpose), v.owner, v.target)
+            .await?;
+        Ok(v)
     }
 
     /// Internal canonical command-status resolver. The resource is obtained from the
@@ -599,6 +678,9 @@ impl PgMedia {
         if target.resource.is_nil() {
             return Err(CommandError::InvalidInput);
         }
+        self.authority
+            .prelock_target_in(c, context, context.actor, Some(target))
+            .await?;
         let v = stored(c, context.event, id)
             .await?
             .ok_or(CommandError::Denied)?;
@@ -631,6 +713,89 @@ impl PgMedia {
             revision: v.revision + if v.target.is_none() { 1 } else { 0 },
         })
     }
+
+    /// Bounded old/new attachment lock set, before BE15 budget and any effects.
+    /// Root/association locks must already be held in the target writer's order.
+    /// This grants neither Read, Link nor Delete: each effect separately checks
+    /// its actual authority, allowing privacy-reducing Delete without old Read.
+    pub async fn lock_owned_in(
+        &self,
+        c: &mut PgConnection,
+        context: Context,
+        ids: &[Uuid],
+        target: Target,
+    ) -> Result<(), CommandError> {
+        context.validate()?;
+        limit_sql_in(c).await?;
+        if ids.is_empty()
+            || ids.len() > 2
+            || ids.iter().any(Uuid::is_nil)
+            || target.resource.is_nil()
+        {
+            return Err(CommandError::InvalidInput);
+        }
+        self.authority
+            .prelock_target_in(c, context, context.actor, Some(target))
+            .await?;
+        let mut ids = ids.to_vec();
+        ids.sort_unstable();
+        ids.dedup();
+        for id in ids {
+            let v = stored(c, context.event, id)
+                .await?
+                .ok_or(CommandError::Denied)?;
+            if v.owner != context.actor
+                || v.purpose != target.purpose
+                || v.state != "READY"
+                || v.target.is_some_and(|actual| actual != target)
+            {
+                return Err(CommandError::Denied);
+            }
+        }
+        Ok(())
+    }
+
+    /// Irrevocable per-target erasure on the caller's current authorized TX.
+    /// Caller serializes its association/receipt and invokes this ONCE. A deleted
+    /// row has no target metadata and cannot authorize a repeated erase by itself.
+    /// Replacement callers process old/new media in deterministic UUID order.
+    pub async fn erase_target_in(
+        &self,
+        c: &mut PgConnection,
+        context: Context,
+        id: Uuid,
+        target: Target,
+    ) -> Result<SafeReference, CommandError> {
+        context.validate()?;
+        limit_sql_in(c).await?;
+        if id.is_nil() || target.resource.is_nil() {
+            return Err(CommandError::InvalidInput);
+        }
+        self.authority
+            .prelock_target_in(c, context, context.actor, Some(target))
+            .await?;
+        let v = stored(c, context.event, id)
+            .await?
+            .ok_or(CommandError::Denied)?;
+        if v.owner != context.actor
+            || v.purpose != target.purpose
+            || v.target != Some(target)
+            || v.state != "READY"
+        {
+            return Err(CommandError::Denied);
+        }
+        // Privacy-reducing removal uses CURRENT Delete authority. An old stored
+        // policy stamp or elapsed upload TTL must not prevent authorized erasure.
+        self.authority
+            .authorize_in(c, context, Access::Delete(v.purpose), v.owner, v.target)
+            .await?;
+        let revision: i64 = sqlx::query_scalar("update public.concert_media set state='DELETED',staged=null,sanitized=null,width=null,height=null,target_id=null,revision=revision+1 where event_id=$1 and media_id=$2 returning revision")
+            .bind(context.event).bind(id).fetch_one(c).await.map_err(unavailable)?;
+        Ok(SafeReference {
+            resource: id,
+            revision,
+        })
+    }
     /// Privileged account-deletion transaction port. Not a browser delete endpoint.
     /// Caller owns global deletion authority and its receipt/outbox; physically clears both
     /// byte columns, leaves a non-readable tombstone so old receipts never resurrect media.
@@ -656,7 +821,7 @@ impl PgMedia {
         context.validate()?;
         let mut tx = self.pool.begin().await.map_err(unavailable)?;
         limit_sql_in(&mut tx).await?;
-        let v = stored(&mut tx, context.event, id)
+        let v = prelocked_stored_in(&mut tx, context, id, self.authority.as_ref())
             .await?
             .ok_or(CommandError::Denied)?;
         live(&v)?;
