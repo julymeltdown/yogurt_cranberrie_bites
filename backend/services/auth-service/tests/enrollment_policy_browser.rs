@@ -237,6 +237,10 @@ async fn paired_browser_fixture_uses_real_auth_rpc_gateway_and_mail() -> anyhow:
         &output.join("browser-ready.json"),
         &json!({
             "gatewayOrigin":gateway_origin,"frontendOrigin":frontend,"policyRevision":policy.revision,
+            "binarySha256":std::env::var("MCR_ENROLLMENT_BROWSER_BINARY_SHA256")?,
+            "sourceRevision":std::env::var("MCR_ENROLLMENT_BROWSER_SOURCE_REVISION")?,
+            "runtimeMigrationSha256":serde_json::from_str::<Value>(&std::env::var("MCR_ENROLLMENT_BROWSER_RUNTIME_SQL")?)?,
+            "runtimeMigrationPaths":serde_json::from_str::<Value>(&std::env::var("MCR_ENROLLMENT_BROWSER_RUNTIME_SQL_PATHS")?)?,
             "syntheticPolicyOnly":true,"mailCapturePattern":"browser-mail-N.json",
             "verdict":"SERVING_FIXTURE_ONLY_BROWSER_ACCEPTANCE_REMAINS_FE_OWNED"
         }),

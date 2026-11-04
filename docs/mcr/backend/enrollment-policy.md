@@ -74,3 +74,5 @@ The actual mail worker sends to the owned local capture. Private `browser-mail-N
 
 
 The browser fixture controller additionally requires `--migration-pins` pointing to its producing build's private compiled-source `source-sql-pins.json`. Auth and Gateway migrations are runtime reads from the compile checkout, not embedded SQL proof. Before creating PG or any serving child, the controller refuses an added/missing SQL file or changed byte versus the exact producing-source inventory, and records the actual runtime SQL SHA256 closure in its separate serving report. The source-only Sessions additions do not alter the qualified Auth/Gateway application source or their runtime SQL. This controller guard itself remains NOT_RUN until the fresh queued boot round.
+
+The source-authored `browser-ready.json` now also carries the controller-verified `binarySha256`, producing `sourceRevision`, actual `runtimeMigrationPaths` and complete `runtimeMigrationSha256` inventories. The controller verifies those SQL inputs again after serving; drift fails the round. These bindings are fixture provenance, not frontend acceptance. This updated test/helper has not yet compiled or run.

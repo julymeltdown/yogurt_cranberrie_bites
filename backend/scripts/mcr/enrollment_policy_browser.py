@@ -91,7 +91,12 @@ def main():
                'AUTH_RUNTIME_TEST_INITDB_SYSTEM_IDENTIFIER': cluster.sql('postgres', 'select system_identifier::text from pg_control_system();'),
                'MCR_ENROLLMENT_BROWSER_OUTPUT': str(output),
                'MCR_ENROLLMENT_BROWSER_SECONDS': str(seconds),
-               'MCR_ENROLLMENT_BROWSER_FRONTEND_ORIGIN': args.frontend_origin}
+               'MCR_ENROLLMENT_BROWSER_FRONTEND_ORIGIN': args.frontend_origin,
+               'MCR_ENROLLMENT_BROWSER_BINARY_SHA256': args.sha256,
+               'MCR_ENROLLMENT_BROWSER_SOURCE_REVISION': pins['source'],
+               'MCR_ENROLLMENT_BROWSER_RUNTIME_SQL': json.dumps(migrations),
+               'MCR_ENROLLMENT_BROWSER_RUNTIME_SQL_PATHS': json.dumps({service:
+                   str(repository/'backend/services'/service/'migrations') for service in migrations})}
         with (output/'browser-fixture.log').open('wb') as log:
             child = subprocess.Popen([str(binary), '--ignored', '--exact',
                 'paired_browser_fixture_uses_real_auth_rpc_gateway_and_mail', '--nocapture', '--test-threads=1'],
@@ -101,6 +106,13 @@ def main():
         report['test_exit_code'] = code
         if code != 0:
             raise RuntimeError('serving fixture failed; see owned fixture log')
+        for service, expected in migrations.items():
+            directory = repository/'backend/services'/service/'migrations'
+            if {str(path.relative_to(repository)) for path in directory.glob('*.sql')} != set(expected):
+                raise RuntimeError('runtime migration inventory changed during serving')
+            if any((repository/name).is_symlink() or hashlib.sha256((repository/name).read_bytes()).hexdigest()!=digest
+                   for name,digest in expected.items()):
+                raise RuntimeError('runtime migration bytes changed during serving')
         report['status'] = 'SERVING_STOPPED'
         report['prepared_transactions'] = int(cluster.sql('postgres','select count(*) from pg_prepared_xacts;'))
         if report['prepared_transactions']:
