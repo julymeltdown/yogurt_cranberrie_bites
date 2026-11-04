@@ -1,9 +1,11 @@
 # BE26 canonical age runtime
 
-Status: IN_PROGRESS. Authored source is not native or HTTP acceptance. This
-successor registers the retained Concert-owned BE26 implementation; it creates
-no Auth claim store and does not require a commercial provider to compose the
-unavailable runtime.
+Status: canonical runtime qualification PASS (43 regular tests plus one durable
+restart case). This registers the retained Concert-owned BE26 implementation
+without a new Auth claim store or commercial-provider prerequisite. Public C04
+HTTP routing, external provider activation and browser delivery remain separate
+Root/provider integration boundaries. Master publication is owned by the
+designated integrator; its verified ancestry receipt is recorded after delivery.
 
 ## Source and ownership
 
@@ -20,7 +22,7 @@ new age runtime tests/support, this document, and exact delegated module exports
 and the `age_claims.rs` aliases needed by its retained path-included adapter. Exact
 additional test grants declare accepted fixture provenance in the old reader
 authority (including its commit-delay wrapper) and the old unavailable-provider
-producer initializer. Root additionally delegated the exact disclosure deadline
+producer initializer and the durable restart verifier initializer. Root additionally delegated the exact disclosure deadline
 hook in `relationship_authority/guarded/scope.rs`.
 Root owns Operation variants, Gateway/Concert HTTP dispatch, process config,
 capability composition, and the composite settlement resolver. Intro owns its
@@ -131,17 +133,117 @@ remain separate, explicitly recorded acceptance boundaries.
 
 ## Qualification record
 
-Fresh qualification is pending the coherent Root SDK3 source and named-target
-slice. Earlier frozen producer `1fd2f14a1a2de949f5caa068f0e7145a3b2709e5`
-passed all five then-existing canonical native cases and retained application
-10/producer16 cases. Its first controller run had an inventory parsing defect;
-the corrected run exposed a missing trust-policy delegation in the retained
-reader commit-delay fixture. The additive fixture correction is `edc1e729`;
-these partial receipts do not qualify the current source or the full reader and
-restart inventory. Failed reports remain preserved in the private artifact
-directory.
+Qualified source/controller: `d85da0923cca495931b41b2253cacf8d2c3aace4`.
+Canonical runtime, application and reader binaries were compiled at
+`7c0ea9539129e54e4624c51abb0087ffc68a74c2`, which incorporates actual Root
+SDK `25a8742638d47f940b44df638d7cca968ad96af1`. The only source delta to
+`d85da092` is the explicitly granted accepted fixture source initializer in
+`age_claims.rs::durable_restart_verify`. Its producer binary was rebuilt at that
+new pin; the other three frozen copies were retained unchanged. The derived
+checkpoint verifies that exact one-file, one-initializer delta and records every
+binary source separately. Cargo reported `fresh=false` for all four successful
+emitted test artifacts; dependency-cache reuse is not advertised as recompiling
+every dependency.
 
-The current inventory requires six canonical cases, retained application10,
-producer16, reader11, and one durable case after an actual PostgreSQL restart.
-HTTP, commercial-provider, external callback, browser, whole-product and global
-task-count acceptance remain outside these source/core qualification claims.
+Rust 1.88.0, locked/offline Cargo, two jobs, debug information disabled and
+incremental compilation disabled were used. The two named media allocations
+were accepted only for the exact test targets below, with fresh disk/process/
+handle preflights. Successful service/application builds took 20.39s/2.58s;
+the fixture-only producer rebuild took 17.00s. Actual shared-cache failures
+(proto include paths from another checkout and stale application ABI metadata)
+were preserved, then repaired only with evidenced `contracts-build` and
+`concert-application` package-scoped cleans. No global cleanup, new target,
+dependency or lockfile change was used.
+
+```sh
+# Only while holding the named target allocation; debug=0, incremental=0, jobs=2.
+cargo +1.88.0 test --offline --locked -j2 -p concert-service \
+  --test age_runtime --test age_claims --test age_claim_reader \
+  --no-run --message-format=json
+cargo +1.88.0 test --offline --locked -j2 -p concert-application \
+  --test age_verification --no-run --message-format=json
+# Fixture-only rebuild under its subsequent ONE-artifact allocation:
+cargo +1.88.0 test --offline --locked -j2 -p concert-service \
+  --test age_claims --no-run --message-format=json
+```
+
+Each executable was copied outside the target and SHA-256 checked before the
+unconditional target release/no-handles receipt. Only after release did
+`tests/age_runtime_support/qualify.py` run the copied binaries against a newly
+owned socket-only PostgreSQL 16.14 cluster. No ambient or live database URL was
+used. All six exact canonical cases passed, followed by retained application10,
+producer16 and reader11. The one ignored producer case was then executed
+explicitly after a real PostgreSQL stop/start: `durable_restart_verify` passed.
+Postmaster PID changed from 81117 to 82336 and its start time changed. Registered
+migration ledgers matched Auth17/Friend17/Concert29. No prepared transactions
+remained in the canonical databases; cleanup passed and the owned root is absent.
+
+| Original criterion / invariant | Actual passing evidence |
+| --- | --- |
+| Seoul next-birthday and expiry | Application `seoul_birthday_expiry_and_missing_provider_remain_separate`; producer `persisted_100_to_101_transition_is_exact_seoul_midnight`; reader `exact_seoul_boundary_rejects_projection_crossing_birthday` |
+| Canonical newest replacement, no fallback | Producer `canonical_replacement_expiry_revocation_and_seoul_age_are_persistent`; reader `newest_expired_revoked_replaced_unsupported_never_falls_back`; canonical untrusted-newest case |
+| Canonical callback-to-user/session binding and replay | Application `provider_proof_must_match_every_binding`; producer foreign-binding, atomic callback/replay and race cases; canonical `configured_canonical_callback_replay_and_unavailable_status` |
+| Missing provider fails closed; accepted claims survive outage | Application unavailable verifier case; producer explicit trusted-outage case; canonical unavailable erasure and accepted-source outage/newest cases |
+| Current owner authority and same transaction projection | Canonical foreign/unregistered denial and actual registered native identity/claim-lock case; reader source-loss, revocation, cancellation and commit-expiry cases |
+| Age validity persists to Root disclosure | Canonical `age_expiry_shortens_actual_root_disclosure_ceiling`, including repeated limit, original authority still live at age expiry, and sealed-scope denial |
+| Registered persistence survives restart | Actual migrations, native witness settlement, producer restart seed and explicit postmaster restart verification |
+
+The canonical verifier remains explicitly synthetic (`synthetic`,
+`synthetic-v1`); legacy fixtures use (`fixture`, `fixture-v1`). Dedicated
+provenance/timing cases label their direct private records synthetic. They prove
+canonical runtime behavior and persisted-source policy, not an external provider
+or real public-principal verification. No credentials, DOB or proof values are
+part of these receipts or public response DTOs.
+
+### Immutable evidence
+
+Private artifact directory: `mcr-age-runtime-sdk3-n1fibr_g`; the local absolute
+locator is `/private/tmp/mcr-be26-sdk3-artifacts`. The final native receipt is
+`native-2.json` and the exact mixed-source manifest is
+`frozen-2/checkpoint.json`. Original build JSON, stderr, preflight/release
+receipts, all four old/new frozen copies and failed native reports remain there.
+The earlier partial directory `mcr-age-runtime-build-do414p8a` also remains
+preserved. No failed receipt was overwritten or converted to PASS.
+
+| Evidence | SHA-256 |
+| --- | --- |
+| `native-2.json` | `a4a331d7e99f7d7301d66f5ebcfbd790dff5116b6f5aaa113525a81b61b56bfb` |
+| `frozen-2/checkpoint.json` | `df74eead08d35adfacb82709d7a9d8d3c62423b157893f395a78cec22a1f54f8` |
+| `native-1.json` | `2371c97017b35c30d5c6dd0e436b8cfea4d864659a7901ac78303a1d7e755d04` |
+| `service-3.jsonl` | `6fbed3027ad250a9ebfbe74488162a4200840c830dc583ecbf260b576068239d` |
+| `application.jsonl` | `470e92b531a358990a148a0f8591cff9913dffe6f233f3864558b6f566dc5e68` |
+| `restart-fixture-3.jsonl` | `9f9c6141e40ccdd1eec5a6f934c16a7d0f5d9a75794e966121465fb8508663c2` |
+
+| Executable | Binary source | SHA-256 |
+| --- | --- | --- |
+| `age_runtime` | `7c0ea9539129e54e4624c51abb0087ffc68a74c2` | `f0c4550fd3bccebdedbeb03a0811cc15bab1f49dad355b23f4234332644e29e1` |
+| `age_claim_reader` | `7c0ea9539129e54e4624c51abb0087ffc68a74c2` | `55b26ca6de9e8e5ca62e84fc5dbc4fc234632ba4c5924e92c74ad67945bb4c22` |
+| `age_claims` | `d85da0923cca495931b41b2253cacf8d2c3aace4` | `47dfd127da8370ec7492af0e48b3a9fc88ba317898121f80b841d5d2df069ef7` |
+| `age_verification` | `7c0ea9539129e54e4624c51abb0087ffc68a74c2` | `c51209048f032b3ecc4b9fb6548f18a50b0ffdfd3671162731078c2103b6b843` |
+
+Contract inputs are unchanged at both binary source pins and the final fixture
+controller pin. Full backend/protocol/contract JSON hashes are retained in each
+checkpoint; relevant frozen C04 inputs are:
+
+| Contract | SHA-256 |
+| --- | --- |
+| `contracts/domain/v1/operations.json` | `622c0e0eba6e1c835c5e953a3acd6825f97ed43aff9bc32b982c207fdfe31839` |
+| `contracts/generated/mcr-domain.openapi.json` | `79a066b88119e53f6f16876d7e3fe59a18ee956be6ed6d2af7ee1efa187e0feb` |
+
+### Delivery and remaining integration boundaries
+
+The owner publishes `codex/mcr-be-age-runtime` directly without force. Only the
+designated Root integrator routes it to master; the owner verifies remote HEAD
+and ancestry afterward and retains `master-delivery.json` in the private
+artifact directory. Documentation-only delivery commits do not change the
+qualified runtime or contract inputs.
+
+Root must compose the actual public age Operation variants, HTTP dispatch,
+process/provider configuration, truthful capability input and composite native
+resolver. Intro consumes the exact same-transaction projector described above.
+The existing unavailable runtime has no production proof verifier selected;
+activation requires an independently verifying server adapter and its explicit
+accepted source policy. These open public composition/provider/browser boundaries
+do not replace the completed original persistence criteria with an external
+commercial-provider or whole-World prerequisite. No IN03, whole-product, release,
+real-provider or browser acceptance is claimed here.
