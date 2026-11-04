@@ -41,7 +41,10 @@ BEGIN
  IF r.operation_id NOT IN ('setConcertHandle','removeConcertHandle','createConcertSocialRequest',
   'decideConcertSocialRequest','cancelConcertSocialRequest','revokeConcertSocialRequest',
   'setConcertIntro','publishConcertIntro','closeConcertIntro','blockConcertUser','unblockConcertUser') THEN RETURN NEW; END IF;
- IF r.state<>'SUCCEEDED' OR r.result_status<>200 OR r.resource_id IS DISTINCT FROM r.target_id OR r.resource_revision IS NULL THEN
+ -- The retained kernel records creation as 201. The public producer projects
+ -- its frozen representation as HTTP 200; that wire status is not this receipt.
+ IF r.state<>'SUCCEEDED' OR r.result_status<>(CASE WHEN r.operation_id='createConcertSocialRequest' THEN 201 ELSE 200 END)
+  OR r.resource_id IS DISTINCT FROM r.target_id OR r.resource_revision IS NULL THEN
   RAISE EXCEPTION 'unbound social policy outcome';
  END IF;
  SELECT * INTO STRICT o FROM public.concert_outbox q WHERE q.outbox_id=NEW.outbox_id AND q.receipt_id=r.receipt_id

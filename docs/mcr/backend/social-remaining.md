@@ -895,3 +895,33 @@ context before removing its cluster, because the adapter correctly hides raw
 SQL errors. Statements, parameters and DETAIL rows are excluded. That
 instrumented successor is **NOT_RUN** and needs a fresh allocation; neither the
 failure nor its underlying cause is relabeled as resolved.
+
+### Diagnostic round — exact internal creation status identified
+
+Source `eb88183297a4dba510cccba58c39e72bca37066c` compiled and froze all four
+artifacts under `SOCIAL-0051-DIAGNOSTIC-MEDIA-202611041158Z`. Ten pure checks
+and all 15 live native checks passed; the retained Social phase again reached
+6 passed/2 failed, with receipt/restart phases NOT_RUN. The bounded sanitized
+database log captured SQLSTATE P0001, `unbound social policy outcome`, in
+`concert_social_policy_from_outbox` line 10 for both failures. Other captured
+constraint/lock errors belong to explicit negative native cases.
+
+The retained `relationship/social.rs` creation kernel records a successful
+receipt with status **201**; `social_live/producer.rs` projects its frozen
+public representation with HTTP **200**. The invalidation trigger incorrectly
+conflated those statuses. The repaired trigger accepts internal 201 only for
+`createConcertSocialRequest`, and still requires 200 for the other exact listed
+operations. No public contract, kernel, authorization or provenance changes.
+This SQL repair is **NOT_RUN** until its own fresh allocation/freeze/rerun.
+
+The target was unconditionally released at 11:59:24 UTC; full release followed
+at 12:00:20 UTC. Prepared-zero was explicitly observed in finally, owned cluster
+cleanup passed and fresh process inspection was empty. No target access followed
+release. Peak whole usage was 1,658,810,368 bytes, including all historical
+carry/prior growth. Failed evidence stays in `mcr-social-0051-diagnostic-d08d8xh1`:
+`native-report.json` SHA256
+`ec7d98a592b3b3d0f1b5f52d41f022a987b2954bf1da086713eec5704382c933`;
+`all-artifacts.json`
+`ebddf0c4abbb7a44adfb56b920800ae3df29626ecba7e27305548511aa4c00e3`;
+`full-release.json`
+`5ddaa15bf00e9c72f4af243db531fd6917c79a61319459d78371039358cfbe5a`.
