@@ -118,7 +118,7 @@ pub(super) async fn budget(
         .ok_or_else(unavailable)?;
     crate::relationship::pin_deadline(&mut **tx, until)
         .await
-        .map_err(dependency_error)?;
+        .map_err(|_| unavailable())?;
     sqlx::query("select set_config('statement_timeout',$1,true)")
         .bind(millis.to_string())
         .execute(&mut **tx)
