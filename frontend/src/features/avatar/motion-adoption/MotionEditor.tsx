@@ -57,7 +57,7 @@ export function MotionEditor<C>({ controller }: { readonly controller: MotionEdi
       <div className="mcr-motion-stage">
       <div className="mcr-motion-figure"><div className="mcr-motion-preview">
         {draft && !['idle', 'unavailable', 'disposed'].includes(state.phase)
-          ? <MotionView runtime={controller.runtime} config={draft} direction={direction} walking={walking} size={192} label="Draft outfit preview" />
+          ? <MotionView runtime={controller.runtime} config={draft} direction={direction} walking={walking} size="fill" label="Draft outfit preview" />
           : <p>{busy ? 'Loading your character…' : 'Character preview unavailable'}</p>}
       </div>
       <div className="mcr-motion-pose">

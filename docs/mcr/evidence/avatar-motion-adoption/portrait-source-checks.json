@@ -1,0 +1,31 @@
+{
+  "result": "PASS_SOURCE_CHECKS_NATIVE_NOT_RUN",
+  "scope": "World granted three portrait presentation files plus owned geometry tests/docs; no other application edits",
+  "checks": [
+    {
+      "name": "unit",
+      "command": "MCR_FRONTEND_DEPENDENCIES=<retained-frontend> <node24> <retained-frontend>/node_modules/vitest/vitest.mjs run --configLoader runner --root <checkout>/frontend --config <checkout>/frontend/src/world/avatar/__tests__/motion-adoption/vitest.config.mjs",
+      "exit": 0,
+      "output": "\n RUN  v4.1.9 <checkout>/frontend\n\n\n Test Files  11 passed (11)\n      Tests  290 passed (290)\n   Start at  13:31:41\n   Duration  3.07s (transform 357ms, setup 0ms, import 723ms, tests 855ms, environment 723ms)\n\n"
+    },
+    {
+      "name": "application-types",
+      "command": "MCR_FRONTEND_DEPENDENCIES=<retained-frontend> <node24> frontend/src/world/avatar/__tests__/motion-adoption/typecheck.mjs --application",
+      "exit": 0,
+      "output": "{\"files\":782,\"diagnostics\":0}\n"
+    },
+    {
+      "name": "lint",
+      "command": "<node24> <retained-frontend>/node_modules/oxlint/bin/oxlint frontend/src/features/avatar/motion-adoption/MotionEditor.tsx frontend/src/features/avatar/motion-adoption/MotionView.tsx frontend/src/features/avatar/motion-adoption/motion.css",
+      "exit": 0,
+      "output": ""
+    }
+  ],
+  "harnessChecks": {
+    "lintExit": 0,
+    "nodeSyntaxExit": 0,
+    "diffCheckExit": 0
+  },
+  "native": "NOT_RUN; named sequential resource allocation and fresh preflight required",
+  "build": "NOT_RUN; no output-heavy build requested for this layout-only change"
+}
