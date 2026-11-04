@@ -132,11 +132,16 @@ impl QualifiedReadRuntime {
                     upper,
                     after,
                     limit,
-                } => ReadResult::Comments(read_wire::comments(
-                    owner
-                        .comments_in(&a.context, post, upper, after, limit, tx)
-                        .await?,
-                )),
+                } => {
+                    // Reserve one of the 100 nonactor subject slots for the
+                    // actual parent author. Scanning 99+1 preserves real lookahead
+                    // and continuation while public limit/cursor binding stays 100.
+                    ReadResult::Comments(read_wire::comments(
+                        owner
+                            .comments_in(&a.context, post, upper, after, limit.min(99), tx)
+                            .await?,
+                    ))
+                }
             };
             // Root scope still owns every actual child guard through C04
             // assembly and HTTP completion. Post never completes that scope.

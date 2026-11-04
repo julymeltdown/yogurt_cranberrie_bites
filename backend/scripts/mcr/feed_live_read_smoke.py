@@ -15,6 +15,7 @@ NATIVE_CASES = {
     "concert_feed::read_tracking::tests::native_lost_track_ack_uses_actual_aborted_transaction_and_exact_owner_binding",
     "concert_feed::read_tracking::tests::native_committed_transaction_without_exact_same_transaction_witness_stays_unknown",
     "concert_feed::read_tracking::tests::native_both_durable_acknowledgements_and_exact_committed_witness_are_required",
+    "concert_feed::read_tracking::tests::native_expiry_reclaims_only_proven_terminal_work_never_a_live_or_unknown_transaction",
 }
 
 class PreflightError(Exception):

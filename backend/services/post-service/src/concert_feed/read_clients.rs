@@ -134,7 +134,7 @@ impl ReadClients {
                 .clone()
                 .check_subject(request)
                 .await
-                .map_err(remote)?,
+                .map_err(root_remote)?,
         )?;
         a.check()?;
         if local.scope.as_ref() != root.scope.as_ref()
@@ -256,9 +256,16 @@ fn reply<T>(response: Response<T>) -> Result<T, Error> {
     }
     Ok(response.into_inner())
 }
-fn remote(status: tonic::Status) -> Error {
+fn remote(_: tonic::Status) -> Error {
+    // An invalid/unavailable owner view is not a denied content author. Only
+    // explicit checked owner states below can produce a filterable denial.
+    Error::Unavailable
+}
+fn root_remote(status: tonic::Status) -> Error {
     match status.code() {
-        tonic::Code::NotFound | tonic::Code::PermissionDenied => Error::Forbidden,
+        // Reserved by the root callback for a currently inaccessible subject.
+        // Invalid scope/view/caller is PermissionDenied and fails the operation.
+        tonic::Code::NotFound => Error::Forbidden,
         _ => Error::Unavailable,
     }
 }
@@ -294,4 +301,58 @@ fn state(states: &[wire::SubjectState], subject: Uuid) -> Result<&wire::SubjectS
         }
     }
     found.ok_or(Error::Authority)
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+    #[test]
+    fn invalid_owner_views_and_root_scope_failures_cannot_be_filtered_into_empty_success() {
+        for code in [
+            tonic::Code::NotFound,
+            tonic::Code::PermissionDenied,
+            tonic::Code::Unavailable,
+            tonic::Code::DeadlineExceeded,
+        ] {
+            assert_eq!(
+                remote(tonic::Status::new(code, "private detail")),
+                Error::Unavailable
+            );
+        }
+        assert_eq!(
+            root_remote(tonic::Status::permission_denied("scope invalid")),
+            Error::Unavailable
+        );
+        assert_eq!(
+            root_remote(tonic::Status::not_found("subject unavailable")),
+            Error::Forbidden
+        );
+    }
+    #[test]
+    fn successful_dependency_response_requires_explicit_no_store_metadata() {
+        assert!(matches!(reply(Response::new(())), Err(Error::Unavailable)));
+        let mut r = Response::new(());
+        r.metadata_mut()
+            .insert("cache-control", "no-store".parse().unwrap());
+        assert!(reply(r).is_ok());
+    }
+    #[test]
+    fn ambiguous_subject_vectors_cannot_attest_an_author() {
+        let user = Uuid::new_v4();
+        let row = wire::SubjectState {
+            user_id: user.to_string(),
+            active: true,
+            actor_blocks_subject: false,
+            subject_blocks_actor: false,
+            security_revision: 1,
+        };
+        assert!(state(&[row.clone()], user).is_ok());
+        assert!(matches!(
+            state(&[row.clone(), row.clone()], user),
+            Err(Error::Authority)
+        ));
+        let mut malformed = row;
+        malformed.user_id = Uuid::nil().to_string();
+        assert!(matches!(state(&[malformed], user), Err(Error::Authority)));
+    }
 }

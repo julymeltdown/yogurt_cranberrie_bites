@@ -286,3 +286,42 @@ async fn native_both_durable_acknowledgements_and_exact_committed_witness_are_re
     ));
     db.finish().await
 }
+
+#[tokio::test]
+#[ignore = "requires explicitly leased native PostgreSQL; storage evidence only"]
+async fn native_expiry_reclaims_only_proven_terminal_work_never_a_live_or_unknown_transaction(
+) -> anyhow::Result<()> {
+    let db = Database::start().await?;
+    let store = TrackingStore::new(db.pool.clone(), Uuid::new_v4())?;
+    let a = admission();
+    let mut aborted = db.pool.begin().await?;
+    let aborted_id = captured(&mut aborted, &store).await;
+    store.begin(&a, aborted_id.clone()).await?;
+    aborted.rollback().await?;
+    let mut live = db.pool.begin().await?;
+    let live_id = captured(&mut live, &store).await;
+    store.begin(&a, live_id.clone()).await?;
+    let mut committed = db.pool.begin().await?;
+    let unknown_id = captured(&mut committed, &store).await;
+    store.begin(&a, unknown_id.clone()).await?;
+    committed.commit().await?;
+    // Wait through the actual original deadline; expiry alone cannot turn the
+    // still-open transaction or a commit lacking its witness into an abort.
+    tokio::time::sleep(Duration::from_secs(5)).await;
+    store.reap(stop()).await?;
+    for (identity, expected) in [
+        (&aborted_id, Some("ABORTED")),
+        (&live_id, None),
+        (&unknown_id, None),
+    ] {
+        let status: Option<String> = sqlx::query_scalar(
+            "select terminal_status from post_concert_read_tracking where settlement_reference=$1",
+        )
+        .bind(identity.settlement_reference().to_vec())
+        .fetch_one(&db.pool)
+        .await?;
+        assert_eq!(status.as_deref(), expected);
+    }
+    live.rollback().await?;
+    db.finish().await
+}

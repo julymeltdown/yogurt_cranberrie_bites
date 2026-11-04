@@ -172,14 +172,26 @@ signer, fixed Post mTLS identity, all four qualified envelopes and the original
 scope deadline. It supplies the actual scope views/root capability and requires
 no-store responses. Mutation and receipt methods retain unavailable defaults.
 
-Three authored native Post storage cases cover a lost Track acknowledgement
+Four authored native Post storage cases cover a lost Track acknowledgement
 followed by actual rollback, committed-without-witness refusal, and durable
-acknowledgement ordering plus exact same-transaction committed witness. These
+acknowledgement ordering plus exact same-transaction committed witness, and
+expiry maintenance that preserves live/unknown outcomes. These
 explicitly use fixture acknowledgements to test the producer store; they cannot
 qualify real owner exclusion or guarded HTTP. They require an explicitly leased
 PostgreSQL controller and have NOT_RUN status until executed. The frozen runner's
 --post-native-storage mode pins one exact library binary/source inventory and
-executes all three exact cases, refusing zero execution or skipped success.
+executes all four exact cases, refusing zero execution or skipped success.
 Its nine Python preflight cases pass. Concurrent qualified reads reserve a
 bounded half-pool permit before opening their protected connection, leaving
 control connections for durable acknowledgement writes.
+
+Owner Check/Track transport failures and invalid root capabilities fail the whole
+read. Only explicit checked eligibility/block facts or the root callback's
+reserved NOT_FOUND subject-denial response are filterable; an invalid guard
+cannot manufacture an empty successful page. Qualified comment scans reserve
+one nonactor subject slot for the parent author, scanning at most 99 rows with
+real SQL lookahead while keeping the public requested limit/cursor binding.
+Expired pending records are examined in bounded batches against actual owned
+PostgreSQL status; only proven aborts or commits with the exact witness free
+pending capacity. Expiry never supplies an outcome or releases an owner guard.
+Different producer instances remain unknown and require explicit recovery.

@@ -59,6 +59,10 @@ impl TrackingStore {
         let auth = a.authority.auth.as_ref().ok_or(Error::Authority)?;
         let friend = a.authority.friend.as_ref().ok_or(Error::Authority)?;
         let witness = super::digest(&(Uuid::new_v4(), Uuid::new_v4()))?;
+        // Cancelled attempts may have no owner registration to trigger an RPC
+        // resolution. Reclaim capacity only from actual terminal SQL evidence;
+        // expiration selects candidates and is never itself outcome evidence.
+        self.reap(a.deadline.stop()).await?;
         let mut tx = self.pool.begin().await.map_err(storage)?;
         // Serialize admission to enforce the bounded unresolved-work limit.
         sqlx::query("select pg_advisory_xact_lock(7728319491591)")
@@ -87,6 +91,36 @@ impl TrackingStore {
             binding_digest: auth.binding_digest.clone(),
             witness,
         })
+    }
+    async fn reap(&self, stop: tokio::time::Instant) -> Result<(), Error> {
+        let rows=sqlx::query("select settlement_reference,transaction_bytes,binding_digest,witness from post_concert_read_tracking where producer_instance_id=$1 and terminal_status is null and expires_at < clock_timestamp() order by expires_at limit 8")
+            .bind(self.instance).fetch_all(&self.pool).await.map_err(storage)?;
+        for row in rows {
+            let bytes: Vec<u8> = row.try_get("transaction_bytes").map_err(storage)?;
+            let identity = CapturedReadTransaction::from_record(&bytes)?;
+            let reference: Vec<u8> = row.try_get("settlement_reference").map_err(storage)?;
+            if reference != identity.settlement_reference() {
+                return Err(Error::Unavailable);
+            }
+            let state = read_transaction::resolve(&self.pool, &identity, self.instance, stop).await;
+            let label = match state {
+                ReadTransactionState::Aborted => "ABORTED",
+                ReadTransactionState::Committed => {
+                    let binding: Vec<u8> = row.try_get("binding_digest").map_err(storage)?;
+                    let witness: Vec<u8> = row.try_get("witness").map_err(storage)?;
+                    let exists:bool=sqlx::query_scalar("select exists(select 1 from post_concert_read_terminal_witness where settlement_reference=$1 and transaction_bytes=$2 and binding_digest=$3 and witness=$4)")
+                        .bind(identity.settlement_reference().to_vec()).bind(&bytes).bind(binding).bind(witness).fetch_one(&self.pool).await.map_err(storage)?;
+                    if !exists {
+                        continue;
+                    }
+                    "COMMITTED"
+                }
+                _ => continue,
+            };
+            sqlx::query("update post_concert_read_tracking set terminal_status=$1 where settlement_reference=$2 and producer_instance_id=$3 and terminal_status is null")
+                .bind(label).bind(identity.settlement_reference().to_vec()).bind(self.instance).execute(&self.pool).await.map_err(storage)?;
+        }
+        Ok(())
     }
     /// Only a workload verified by the guarded settlement server may call this.
     /// A received UUID is a lookup binding, never the authority for an outcome.
