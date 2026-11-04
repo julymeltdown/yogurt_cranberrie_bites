@@ -1,6 +1,21 @@
-# Active chat ownership
+# Chat ownership history and current routing
 
-## Current delivery authority — 2026-11-04
+## Current routing
+
+Use [current coordination roles](king-coordination.md), the latest accepted
+developer handoffs and each SL's lane record for current ownership. All allocation
+tables and target-holder snapshots below are historical. They do not grant a
+current file lease or supersede a later explicit transfer.
+
+Developers own implementation, validation, integration and direct non-force
+publication. Kings and SLs coordinate progress, dependencies and staffing; they
+do not review code, queries or tests. Preserve the user's selected models and
+reasoning settings. The [hourly SL task checks](sl-hourly-progress.md) track each
+original assigned task without adding a review or approval queue.
+
+## Historical allocations
+
+### Delivery allocation snapshot — 2026-11-04 (historical)
 
 This section supersedes all historical allocations and main-review gates below.
 The delivery integrator `01a1a1fc-7f3d-7ff1-9416-e3435c8a6f08` exclusively owns
