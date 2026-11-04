@@ -1,11 +1,21 @@
 {
   "admission": "NOT_ADMITTED",
+  "backend_allocation_record": {
+    "bytes": 502,
+    "path": "frontend/src/world/reference-scene/spatial-v5/backend-allocation.json",
+    "sha256": "sha256:6b48366434524390a031cf29ea609794b2797d494132f2719c0c18e4b34d8060"
+  },
   "descriptor": {
     "bytes": 56822,
     "path": "frontend/src/world/reference-scene/spatial-v5/source-inputs.json",
     "sha256": "sha256:6a28b3578eb5c5caa317e2078a10166987143d3b05c43441442344db56944e9b"
   },
   "format": "MCR_SPATIAL_FRONTEND_SOURCE_COMPATIBILITY",
+  "frontend_allocation_binding": {
+    "bytes": 16840,
+    "path": "world/reference-scene-v2/runtime/spatial-v5/source-binding.json",
+    "sha256": "sha256:8cb8d18a9c6bc07eead30e7a2474ca5fb9adb3f23ddade911840aad6bf134041"
+  },
   "frontend_binding": {
     "bytes": 16314,
     "path": "world/reference-scene-v2/runtime/spatial-v5/source-binding.json",
@@ -13,6 +23,8 @@
   },
   "frontend_candidate_revision_at_pin": null,
   "frontend_commit": "473534296490bbcd4c63a4a0eb85ce7fdd57215a",
+  "frontend_metadata_candidate_revision": 6,
+  "frontend_metadata_commit": "5d3e81f125dd6bf7f507dcf96914f6878c8fe6f4",
   "geometry_hash": "sha256:ef52c8b05af6a882f2e82285c9879c9a4cb78ab513336e4bb3cd483c9b123395",
   "limits": [
     "Immutable source descriptor comparison only",

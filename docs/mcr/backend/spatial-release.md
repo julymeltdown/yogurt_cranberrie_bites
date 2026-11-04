@@ -676,3 +676,30 @@ map 5→6 publication/adoption, immutable same-ID/revision conflict with no curr
 head advance, stale map 5 refusal, and exact map 6 plus old map 5 bytes retained
 across a real postmaster restart. A fresh named build offer is still required;
 no target or database is held. Candidate readiness remains NOT_ADMITTED.
+
+### V10 allocated frontend metadata checkpoint
+
+Frontend metadata-only commit `5d3e81f125dd6bf7f507dcf96914f6878c8fe6f4`
+was published as `135ab0fe` under master `8502c143` and materialized by
+merge `4e9c576a`. Its current source binding is 16840 bytes, SHA256
+`8cb8d18a9c6bc07eead30e7a2474ca5fb9adb3f23ddade911840aad6bf134041`.
+The separate 502-byte backend-allocation record has SHA256
+`6b48366434524390a031cf29ea609794b2797d494132f2719c0c18e4b34d8060`.
+Both name actual revision 6 and the committed `390bb9a5` reservation with
+SHA256 `771fabbcc0243cff645a2f7588fcaa4d68f056663b2b3ede5d86e2024d213317`.
+The generator verifies exact published/current metadata bytes and permits
+only `candidate_map` and `backend_allocation` to differ from the original
+binding. Historical commit `47353429` retains its original null allocation;
+its Tiled and descriptor remain the frozen source tuple. No source repin,
+backend-authored frontend edit, database publication or admission is implied.
+
+The compatibility receipt now distinguishes these two frontend checkpoints:
+4514 bytes, SHA256
+`e22c107e99d2afd80e5565bf8d6f17936091a42afe3cb06b7b1f34cbaeed6c70`.
+MapManifest, backend source-binding, engineering review and scene qualification
+bytes are unchanged from the preceding v10 source checkpoint. All 23 Python
+tests pass (21.757 seconds), including refusal of a historical pending binding
+in place of allocated metadata. Exact generation checks pass for all four
+candidates (exit 0). Native compilation and PostgreSQL remain NOT_RUN pending
+a fresh named build lease; no target or database is held. NOT_ADMITTED remains
+unchanged.

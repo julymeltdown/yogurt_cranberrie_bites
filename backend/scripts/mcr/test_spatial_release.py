@@ -275,6 +275,8 @@ class QualityV10Tests(unittest.TestCase):
         compatibility = self.outputs['frontend-source-compatibility.json']
         self.assertEqual(compatibility['source_input_pins_verified'], 44)
         self.assertIsNone(compatibility['frontend_candidate_revision_at_pin'])
+        self.assertEqual(compatibility['frontend_metadata_candidate_revision'], 6)
+        self.assertEqual(compatibility['frontend_metadata_commit'], builder.V10_METADATA_COMMIT)
         for scene in compatibility['scenes']:
             self.assertEqual((scene['world_objects'], scene['map_objects']), (34, 39))
             self.assertEqual(len(scene['runtime_resources']), 2)
@@ -318,6 +320,18 @@ class QualityV10Tests(unittest.TestCase):
         reservation = builder.verify_v10_reservation(builder.QUALITY_V10)
         self.assertEqual(reservation['map_revision'], 6)
         self.assertIsNone(reservation['frontend_candidate_revision_at_pin'])
+
+    def test_historical_pending_binding_cannot_replace_allocated_current_metadata(self):
+        original = builder.published_input
+        def swapped(path, revision=builder.SOURCE_COMMIT):
+            if path == builder.BASE + 'runtime/spatial-v5/source-binding.json' and revision == builder.V10_METADATA_COMMIT:
+                return builder.subprocess.check_output(
+                    ['git', 'show', builder.QUALITY_V10.tiled_commit + ':frontend/public/' + path], cwd=builder.ROOT)
+            return original(path, revision)
+        with patch.object(builder, 'published_input', side_effect=swapped):
+            with self.assertRaisesRegex(ValueError, 'allocation binding drift'):
+                builder.verify_v10_frontend(builder.QUALITY_V10,
+                    builder.verify_v10_reservation(builder.QUALITY_V10), self.outputs['source-binding.json']['scenes'])
 
 
 def verify_native_candidate(stdout, expected):

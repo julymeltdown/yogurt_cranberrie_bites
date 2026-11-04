@@ -90,6 +90,7 @@ QUALITY_V10 = Inputs(
 )
 CANDIDATES = {'baseline': BASELINE, 'quality-v6': QUALITY_V6, 'quality-v8': QUALITY_V8,
               'quality-v10': QUALITY_V10}
+V10_METADATA_COMMIT = '5d3e81f125dd6bf7f507dcf96914f6878c8fe6f4'
 spec = importlib.util.spec_from_file_location('mcr_spatial_assets', ROOT / 'scripts/mcr/validate-assets.py')
 assets = importlib.util.module_from_spec(spec)
 spec.loader.exec_module(assets)
@@ -251,12 +252,35 @@ def verify_v10_frontend(inputs, reservation, scenes):
             and sha(raw) == reservation['frontend_descriptor_sha256'], 'v10 frontend descriptor drift')
     descriptor = json.loads(raw)
     binding_path = BASE + 'runtime/spatial-v5/source-binding.json'
-    binding_raw = published_input(binding_path, inputs.tiled_commit)
-    require(sha(binding_raw) == reservation['frontend_binding_sha256'], 'v10 frontend binding drift')
+    historical_raw = subprocess.check_output(
+        ['git', 'show', inputs.tiled_commit + ':frontend/public/' + binding_path], cwd=ROOT)
+    require(sha(historical_raw) == reservation['frontend_binding_sha256'], 'v10 historical frontend binding drift')
+    historical = json.loads(historical_raw)
+    binding_raw = published_input(binding_path, V10_METADATA_COMMIT)
+    require(sha(binding_raw) == 'sha256:8cb8d18a9c6bc07eead30e7a2474ca5fb9adb3f23ddade911840aad6bf134041',
+            'v10 frontend allocation binding drift')
     binding = json.loads(binding_raw)
+    allocation_path = 'frontend/src/world/reference-scene/spatial-v5/backend-allocation.json'
+    allocation_raw = subprocess.check_output(['git', 'show', V10_METADATA_COMMIT + ':' + allocation_path], cwd=ROOT)
+    require(allocation_raw == (ROOT / allocation_path).read_bytes()
+            and sha(allocation_raw) == 'sha256:6b48366434524390a031cf29ea609794b2797d494132f2719c0c18e4b34d8060',
+            'v10 frontend allocation evidence drift')
+    allocation = json.loads(allocation_raw)
+    require(allocation == binding['backend_allocation']
+            and allocation['map_id'] == MAP_ID and allocation['map_revision'] == inputs.map_revision
+            and allocation['geometry_hash'] == inputs.geometry_hash
+            and allocation['commit'] == '390bb9a57c2ede32b814e8c36f8d1c85a10a99a2'
+            and allocation['evidence_path'] == 'backend/releases/reference-scene-v2/quality-v10/revision-reservation.json'
+            and allocation['evidence_sha256'] == 'sha256:771fabbcc0243cff645a2f7588fcaa4d68f056663b2b3ede5d86e2024d213317'
+            and {k: v for k, v in binding.items() if k not in ('candidate_map', 'backend_allocation')}
+                == {k: v for k, v in historical.items() if k not in ('candidate_map', 'backend_allocation')},
+            'v10 allocation metadata changes the immutable source tuple or reservation')
     proposal = json.loads(published_input(inputs.geometry_path, inputs.source_commit))
-    require(binding['candidate_map']['map_revision'] is None
+    require(historical['candidate_map']['map_revision'] is None
+            and binding['candidate_map']['map_id'] == descriptor['map_id'] == MAP_ID
+            and binding['candidate_map']['map_revision'] == inputs.map_revision
             and binding['candidate_map']['minimum_map_revision'] == 6
+            and binding['candidate_map']['geometry_hash'] == inputs.geometry_hash
             and binding['status'] == 'NOT_RELEASE_BOUND' and binding['production_status'] == 'NOT_ADMITTED'
             and descriptor['geometry'] == proposal['geometry']
             and descriptor['geometry_hash'] == inputs.geometry_hash and descriptor['places'] == proposal['places'],
@@ -284,10 +308,13 @@ def verify_v10_frontend(inputs, reservation, scenes):
             'state': 'CONTRACT_READY', 'admission': 'NOT_ADMITTED', 'map_id': MAP_ID,
             'map_revision': inputs.map_revision, 'geometry_hash': inputs.geometry_hash,
             'frontend_commit': inputs.tiled_commit, 'descriptor': file_pin(path, raw),
-            'frontend_binding': file_pin(binding_path, binding_raw), 'source_input_pins_verified': 44,
+            'frontend_binding': file_pin(binding_path, historical_raw), 'source_input_pins_verified': 44,
+            'frontend_metadata_commit': V10_METADATA_COMMIT,
+            'frontend_allocation_binding': file_pin(binding_path, binding_raw),
+            'backend_allocation_record': file_pin(allocation_path, allocation_raw),
             'reservation_commit': '390bb9a57c2ede32b814e8c36f8d1c85a10a99a2',
             'reservation_sha256': 'sha256:771fabbcc0243cff645a2f7588fcaa4d68f056663b2b3ede5d86e2024d213317',
-            'frontend_candidate_revision_at_pin': None, 'scenes': matched,
+            'frontend_candidate_revision_at_pin': None, 'frontend_metadata_candidate_revision': 6, 'scenes': matched,
             'limits': ['Immutable source descriptor comparison only', 'No frontend/runtime or art-fidelity acceptance',
                        'No supplied ThemeManifest, Bootstrap or Product/operator admission']}
 
