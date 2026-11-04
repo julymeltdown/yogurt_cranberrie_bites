@@ -1,6 +1,6 @@
 {
   "base": "30a9c07bb1c0b0a7d1bd76d6c85dfc072bcd3694",
-  "compiled_candidate": "57da6bf7e2da80c46b1e67365b5a1659394b7a44",
+  "compiled_candidate": "ec39c8fccfc60cc2420f71a60797d9ec562d2656",
   "purpose": "READY source manifest only; no build or native execution claimed",
   "sha256": {
     "backend/.cargo/config.toml": "fe3fa4be90cac8acd1b0e36270ef4bb83ad0609ecbe3127cc99b78ab65962044",
@@ -1186,7 +1186,7 @@
     "backend/services/concert-service/src/gift_live/resources.rs": "48aa4f5b31cb4219fc1493588a932458ea80247e980347c11ece4ebe43238b4b",
     "backend/services/concert-service/src/gift_live/response.rs": "0f4853ba6270d7d9fb99dba1b581ed96c281e51ffc3b3c950bbac76d913e9a1d",
     "backend/services/concert-service/src/gift_live/runtime.rs": "28f953cf4792ae312a42afc36b287476b068143ff5e3ddeae683119acfcad3d5",
-    "backend/services/concert-service/src/gift_live/settlement.rs": "1f4bc1da771a7b64b2b013b01ba618db1df59c93de35510e39fc78292dd35936",
+    "backend/services/concert-service/src/gift_live/settlement.rs": "bdb989d4dbe81274ab76432a10282671dace9eb44312e77af23548c99ba92130",
     "backend/services/concert-service/src/gift_live/status.rs": "33122c4fcfd17796533b48197ee9e59b8f8e8f98f4a169c36c42be3936dbfd91",
     "backend/services/concert-service/src/health.rs": "7e83457576f5a74fd58d636c422f0d85963755855454572ab066ef4514e66680",
     "backend/services/concert-service/src/in01_catalog.rs": "847eee1faa1b7002f01f0589d5cbb9b1cc0795e03cf41b20a5ecd45a4f9e5ba7",
