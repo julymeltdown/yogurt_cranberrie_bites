@@ -1,0 +1,104 @@
+{
+  "candidate": "4e491a4509e9cab6a3e28364db616bdab9c157f5",
+  "baseline": "7c25078f118da53dd9a524d0a58e707cca190f0f",
+  "native": "native-02/report.json",
+  "failedNative": "native-01/report.json",
+  "eras": [
+    "PARADE"
+  ],
+  "otherEras": "UNCHANGED",
+  "status": "CAPTURED_PENDING_OWNER_VISUAL_INSPECTION",
+  "artifacts": [
+    {
+      "path": "docs/mcr/evidence/reference-scene-v5/map-cozy-v1/native-01/driver.log.gz",
+      "bytes": 260,
+      "sha256": "767098e1fcd21dabeb11bcd6f89e2429db0c73d770ab3d484522727f6bfe15ad"
+    },
+    {
+      "path": "docs/mcr/evidence/reference-scene-v5/map-cozy-v1/native-01/report.json",
+      "bytes": 258243,
+      "sha256": "e913ae8c744be02942e5314add9fb93b9ca9beca0d218ac061948dff572eaeba"
+    },
+    {
+      "path": "docs/mcr/evidence/reference-scene-v5/map-cozy-v1/native-02/baseline-map-parade-390.png",
+      "bytes": 410326,
+      "sha256": "87ab843422292a7701e2a3fe39a4419ef95e52721c6c2b052b617c6c2d135b01"
+    },
+    {
+      "path": "docs/mcr/evidence/reference-scene-v5/map-cozy-v1/native-02/baseline-world-parade-390.png",
+      "bytes": 481182,
+      "sha256": "769a0a014e7df8e1027ded36ed38a9361446e39bef01ea05e8aa3cd511c872b4"
+    },
+    {
+      "path": "docs/mcr/evidence/reference-scene-v5/map-cozy-v1/native-02/candidate-map-parade-360.png",
+      "bytes": 341441,
+      "sha256": "77cdb1d97dd80766fa106ac072b858cf6f0928b3cd2e2b13355c095befead3f6"
+    },
+    {
+      "path": "docs/mcr/evidence/reference-scene-v5/map-cozy-v1/native-02/candidate-map-parade-390.png",
+      "bytes": 386020,
+      "sha256": "62114b928572cb7462f877f828c2b5ba2c7130b36181632d231eb8673a52a473"
+    },
+    {
+      "path": "docs/mcr/evidence/reference-scene-v5/map-cozy-v1/native-02/candidate-map-parade-430.png",
+      "bytes": 450543,
+      "sha256": "b079040d09b6ac0f6928e860bec82cbf36000c5e211d32f4cd07a5ed5b866c6e"
+    },
+    {
+      "path": "docs/mcr/evidence/reference-scene-v5/map-cozy-v1/native-02/candidate-world-parade-360.png",
+      "bytes": 427242,
+      "sha256": "c41e1e7b035d83ddd5865056fd471289e7af95024d8e9a678bb7406256bf6edb"
+    },
+    {
+      "path": "docs/mcr/evidence/reference-scene-v5/map-cozy-v1/native-02/candidate-world-parade-390.png",
+      "bytes": 449001,
+      "sha256": "ff25b45a3d9f05729705fe628a82ea8ecfcda3392dde63b6951de754c2c829a8"
+    },
+    {
+      "path": "docs/mcr/evidence/reference-scene-v5/map-cozy-v1/native-02/candidate-world-parade-430.png",
+      "bytes": 496509,
+      "sha256": "4783bc10b6bc79b9f8cd27fffbe8a1087b50aff8dc378d20f9077b6a463ed2cb"
+    },
+    {
+      "path": "docs/mcr/evidence/reference-scene-v5/map-cozy-v1/native-02/driver.log.gz",
+      "bytes": 730,
+      "sha256": "55db3ba42347ad1eb2e96c36c78dff0ad637190e35d78371a53a79fa01f686c6"
+    },
+    {
+      "path": "docs/mcr/evidence/reference-scene-v5/map-cozy-v1/native-02/report.json",
+      "bytes": 342952,
+      "sha256": "b3c95586c94dfd696ffb034bb19f7fd239907d60687090fa1deb10a1de18a7fb"
+    },
+    {
+      "path": "docs/mcr/evidence/reference-scene-v5/map-cozy-v1/source-01/ground-export.log.gz",
+      "bytes": 370,
+      "sha256": "2954a0157297accdaba412878fb3ba19635ece51947df0d360224e2c76781204"
+    },
+    {
+      "path": "docs/mcr/evidence/reference-scene-v5/map-cozy-v1/source-01/lint.log.gz",
+      "bytes": 172,
+      "sha256": "7973d6bbf30f26194e19987bd806a3981e42b04bc65b7b3de299c377659a7c5d"
+    },
+    {
+      "path": "docs/mcr/evidence/reference-scene-v5/map-cozy-v1/source-01/report.json.gz",
+      "bytes": 514,
+      "sha256": "7ff66b69badedc0e30345b91168f852f1cbe360e8a27b7092009f0559cae8703"
+    },
+    {
+      "path": "docs/mcr/evidence/reference-scene-v5/map-cozy-v1/source-01/tests.log.gz",
+      "bytes": 201,
+      "sha256": "5545197c90f54faa0180b357b377515d9387c0888c5f2e78fe0b076c22b9a743"
+    },
+    {
+      "path": "docs/mcr/evidence/reference-scene-v5/map-cozy-v1/source-01/types.log.gz",
+      "bytes": 20,
+      "sha256": "9ceffb7310338057cfe71a4ae1e2c98d2c485d81cdef906532a801f457a38d64"
+    }
+  ],
+  "characterProof": "Six incumbent sprite source RGBA/frame/position/origin/size and camera equal at390; six sprites and strict51-object MAP oracle at all candidate widths. No character art/renderer/layout changes.",
+  "limits": [
+    "SyntheticC03/C05map7005; NOT_ADMITTED retained; no live/device/release acceptance.",
+    "Neutral read-only characters.ts uses candidate probe in both modes; baseline production and public assets exact7c.",
+    "First native01 failed alternate Phaser diagnostic and produced zero PNGs; native02 is independent new time/source qualification."
+  ]
+}
