@@ -1,4 +1,4 @@
-"""Bounded offline producer regressions. No Auth, PG, native child or listener runs."""
+"""Bounded offline regressions. No Auth, PG, native service or listener runs."""
 import copy
 import json
 import re
@@ -105,13 +105,15 @@ class ProfileTests(unittest.TestCase):
                 with patch.object(prep.dev.migration, "executable", side_effect=lambda p:p), \
                      patch.object(prep.dev.migration, "execute"), \
                      patch.object(prep.dev.migration, "migration_manifest", return_value={}), \
-                     patch.object(prep.dev.migration, "check_ledger", return_value=37), \
+                     patch.object(prep.dev.migration, "check_ledger", return_value=37) as ledger, \
                      patch.object(prep.dev.runtime, "digest", return_value="0"*64), \
                      patch.object(Path, "read_bytes", return_value=json.dumps(bootstrap).encode()), \
                      patch.object(Path, "read_text", return_value="SCHEMA-FIXTURE"), \
                      patch.object(prep, "release_inputs", return_value={}), \
                      patch.object(prep, "private_json") as persist:
-                    prep.seed_concert(NS(cluster=cluster), Path("/not-executed"), {}, False, profile)
+                    runtime_manifest = {49: "a"*96} if profile == "qa05" else None  # Fixture override, not a runtime ledger.
+                    prep.seed_concert(NS(cluster=cluster), Path("/not-executed"), {}, False, profile, runtime_manifest=runtime_manifest)
+                    self.assertEqual(ledger.call_args.args[2], runtime_manifest if runtime_manifest is not None else {})
                 rooms = json.loads(persist.call_args.args[1]["CONCERT_WORLD_ROOMS_JSON"])
                 self.assertEqual([r["capacity"] for r in rooms], capacities)
                 self.assertEqual(len({r["room_id"] for r in rooms}), len(rooms))
@@ -251,6 +253,51 @@ class ProfileTests(unittest.TestCase):
             self.assertEqual(guard.process_peak, 3)
             with patch.object(live.subprocess, "run", return_value=NS(stdout="\n".join(f"{n} 100" for n in range(200,233)))):
                 with self.assertRaisesRegex(prep.auth.CheckFailure, "process-cap"): guard.process_check()
+
+    def test_runtime_migration_overlay_keeps_binary_source_and_exact_ledger_guard(self):
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory).resolve() / "backend/services/post-service/migrations"
+            root.mkdir(parents=True)
+            for n in range(1,32): (root / f"{n:04d}_fixture.sql").write_text(f"fixture migration {n}")
+            original = {"post-service": live.dev.migration.migration_manifest(root.parents[2], "post-service"),
+                        "auth-service": {1: "b"*96}}
+            raw = live.subprocess.run(["/usr/bin/git", "show", live.POST_RUNTIME_MIGRATION_SOURCE+":"+live.POST_RUNTIME_MIGRATION_PATH],
+                cwd=live.ROOT, capture_output=True, check=True).stdout  # Public source metadata only.
+            (root / "0032_fixture.sql").write_bytes(raw)
+            concert = root.parents[1] / "concert-service/migrations"
+            concert.mkdir(parents=True)
+            for n in range(1,38): (concert / f"{n:04d}_fixture.sql").write_text(f"concert fixture {n}")
+            original["concert-service"] = live.dev.migration.migration_manifest(concert.parents[2], "concert-service")
+            raw49 = live.subprocess.run(["/usr/bin/git", "show", live.CONCERT_RUNTIME_MIGRATION_SOURCE+":"+live.CONCERT_RUNTIME_MIGRATION_PATH],
+                cwd=live.ROOT, capture_output=True, check=True).stdout
+            (concert / "0049_fixture.sql").write_bytes(raw49)
+            with patch.object(live, "POST_RUNTIME_MIGRATION_ROOT", root):
+                bound, receipt = live.qualified_runtime_migrations(original)
+                (root / "0001_fixture.sql").write_text("changed runtime input")
+                with self.assertRaisesRegex(prep.auth.CheckFailure, "runtime-migration-manifest"):
+                    live.qualified_runtime_migrations(original)
+                (root / "0001_fixture.sql").write_text("fixture migration 1")
+                (concert / "0001_fixture.sql").write_text("changed concert runtime input")
+                with self.assertRaisesRegex(prep.auth.CheckFailure, "concert-runtime-manifest"):
+                    live.qualified_runtime_migrations(original)
+        self.assertNotIn(32, original["post-service"])
+        self.assertEqual(len(bound["post-service"]), 32)
+        self.assertEqual(bound["post-service"][32], live.POST_RUNTIME_MIGRATION_SHA384)
+        self.assertEqual(bound["post-service"][31], original["post-service"][31])
+        self.assertEqual(bound["auth-service"], original["auth-service"])
+        self.assertEqual(receipt["compiled_source_unchanged"], "d0f063d18a0549935f80a536077c30962d89f9e9")
+        self.assertEqual(receipt["runtime_input_source_revision"], live.POST_RUNTIME_MIGRATION_SOURCE)
+        self.assertEqual(receipt["generic_ledger_check"], "UNCHANGED_EXACT_MATCH")
+        self.assertEqual(len(bound["concert-service"]), 38)
+        self.assertNotIn(49, original["concert-service"])
+        self.assertEqual(receipt["concert_runtime_input"]["runtime_input_source_revision"], live.CONCERT_RUNTIME_MIGRATION_SOURCE)
+        with self.assertRaisesRegex(prep.auth.CheckFailure, "runtime-versions"):
+            live.qualified_runtime_migrations({"post-service": {**bound["post-service"], 33: "a"*96}})
+
+    def test_runtime_migration_overlay_refuses_wrong_public_source(self):
+        with patch.object(live.subprocess, "run", return_value=NS(stdout=b"unqualified SQL")):
+            with self.assertRaisesRegex(prep.auth.CheckFailure, "runtime-migration-source"):
+                live.qualified_runtime_migrations({"post-service": {n: "a"*96 for n in range(1,32)}})
 
     def test_retained_snapshot_is_actual_validated_private_and_never_flag_flipped(self):
         bootstrap = json.loads((prep.RELEASE / "bootstrap.json").read_bytes())

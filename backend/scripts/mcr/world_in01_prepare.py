@@ -158,7 +158,7 @@ def initialize_profiles(browser, report, principals):
         auth.require(result["userId"] == user, "public-profile-owner-identity")
 
 
-def seed_concert(stack, binary, report, publish_catalog, profile="in01"):
+def seed_concert(stack, binary, report, publish_catalog, profile="in01", *, runtime_manifest=None):
     """Use the real migration command; seed only this invocation's new database."""
     spec = producer_profile(profile)
     cluster = stack.cluster
@@ -171,7 +171,7 @@ def seed_concert(stack, binary, report, publish_catalog, profile="in01"):
     env = {**cluster.env, "CONCERT_DATABASE_URL": cluster.url(database)}
     for flag in ("--migrate", "--verify-migrations"):
         dev.migration.execute([str(binary), flag], env=env, cwd=cluster.root, phase="concert" + flag)
-    manifest = dev.migration.migration_manifest(ROOT / "backend", "concert-service")
+    manifest = dev.migration.migration_manifest(ROOT / "backend", "concert-service") if runtime_manifest is None else runtime_manifest
     count = dev.migration.check_ledger(cluster, database, manifest)
     probe = (ROOT / "backend/services/concert-service/src/config/schema-probe.sql").read_text()
     auth.require(cluster.sql(database, probe) == "t", "current-concert-schema-probe")

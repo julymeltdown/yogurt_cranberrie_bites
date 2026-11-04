@@ -27,6 +27,13 @@ import world_in01_prepare as prep
 
 ROOT = prep.ROOT
 CLEANUP_RESERVE_SECONDS = 240  # Covers bounded direct-child stops plus both PG stop attempts.
+POST_RUNTIME_MIGRATION_SOURCE = "39b2d20d7b313f6976702fc8b2996c28e7ef743a"
+POST_RUNTIME_MIGRATION_PATH = "backend/services/post-service/migrations/0032_concert_feed_read_tracking.sql"
+POST_RUNTIME_MIGRATION_SHA384 = "1c4b8a79cffb2fab5597e3f0cc834a85310a3845afe65b8c8547d36d48dd3280c1769d3edf619a9e50227ea8c7432fd5"
+POST_RUNTIME_MIGRATION_ROOT = Path("/Users/lhs/Desktop/mcr-worktrees/be-media-combined/backend/services/post-service/migrations")
+CONCERT_RUNTIME_MIGRATION_SOURCE = "efcd865121e8a8db4db482b661a878c1f56071e0"
+CONCERT_RUNTIME_MIGRATION_PATH = "backend/services/concert-service/migrations/0049_intro_native_witness.sql"
+CONCERT_RUNTIME_MIGRATION_SHA384 = "2c292352935615e7569206712ff88c001e6a64e35d32ac135b26b86999d710468492248df2a3338c08bbe2811bc05bca"
 
 
 class QualificationGuard:
@@ -185,6 +192,60 @@ def qualification_config(args, descriptor, context, principals, bootstrap, ws_ur
             config["faults"].append("world_restart")
     validate_config(config, capacity)
     return config
+
+
+def qualified_runtime_migrations(manifests):
+    """Pin the public runtime-input overlay; keep compiled-binary provenance intact.
+
+    Post's migration command reads its baked build directory at runtime. The
+    owner froze that directory after migration 32 was delivered. Read only the
+    exact committed SQL into memory; never author/copy SQL or alter the ledger.
+    """
+    result = subprocess.run(["/usr/bin/git", "show", POST_RUNTIME_MIGRATION_SOURCE + ":" + POST_RUNTIME_MIGRATION_PATH],
+                            cwd=ROOT, env={"PATH": "/usr/bin:/bin"}, capture_output=True, timeout=5, check=True)
+    raw = result.stdout
+    prep.auth.require(len(raw) == 1585 and hashlib.sha384(raw).hexdigest() == POST_RUNTIME_MIGRATION_SHA384,
+                      "qualification-runtime-migration-source")
+    post = dict(manifests["post-service"])
+    prep.auth.require(set(post) in (set(range(1, 32)), set(range(1, 33))), "qualification-post-runtime-versions")
+    prep.auth.require(32 not in post or post[32] == POST_RUNTIME_MIGRATION_SHA384, "qualification-post-runtime-checksum")
+    post[32] = POST_RUNTIME_MIGRATION_SHA384
+    directory = POST_RUNTIME_MIGRATION_ROOT
+    prep.auth.require(directory.is_dir() and directory.resolve() == directory,
+                      "qualification-runtime-migration-directory")
+    for path in directory.glob("*.sql"):
+        prep.auth.require(path.is_file() and not path.is_symlink(), "qualification-runtime-migration-file")
+    actual = dev.migration.migration_manifest(directory.parents[2], "post-service")
+    prep.auth.require(actual == post, "qualification-runtime-migration-manifest")
+    bound = {**manifests, "post-service": post}
+    receipt = {"service": "post-service", "compiled_source_unchanged": "d0f063d18a0549935f80a536077c30962d89f9e9",
+        "mechanism": "CARGO_MANIFEST_DIR_MIGRATIONS_READ_AT_RUNTIME", "runtime_input_source_revision": POST_RUNTIME_MIGRATION_SOURCE,
+        "runtime_input_path": POST_RUNTIME_MIGRATION_PATH, "runtime_input_bytes": len(raw),
+        "actual_runtime_directory": str(directory), "actual_all_32_disk_checksums": "MATCH_EXPECTED",
+        "runtime_input_sha384": POST_RUNTIME_MIGRATION_SHA384, "materialization": "READ_ONLY_COMMITTED_SQL_IN_MEMORY",
+        "expected_migrations": 32, "expected_manifest_sha384": post, "generic_ledger_check": "UNCHANGED_EXACT_MATCH"}
+    if "concert-service" in manifests:
+        raw = subprocess.run(["/usr/bin/git", "show", CONCERT_RUNTIME_MIGRATION_SOURCE + ":" + CONCERT_RUNTIME_MIGRATION_PATH],
+            cwd=ROOT, env={"PATH": "/usr/bin:/bin"}, capture_output=True, timeout=5, check=True).stdout
+        prep.auth.require(len(raw) == 8384 and hashlib.sha384(raw).hexdigest() == CONCERT_RUNTIME_MIGRATION_SHA384,
+                          "qualification-concert-runtime-source")
+        concert = dict(manifests["concert-service"])
+        prep.auth.require(len(concert) in (37, 38) and (49 not in concert or concert[49] == CONCERT_RUNTIME_MIGRATION_SHA384),
+                          "qualification-concert-runtime-versions")
+        concert[49] = CONCERT_RUNTIME_MIGRATION_SHA384
+        directory = POST_RUNTIME_MIGRATION_ROOT.parents[1] / "concert-service/migrations"
+        prep.auth.require(directory.is_dir() and directory.resolve() == directory, "qualification-concert-runtime-directory")
+        for path in directory.glob("*.sql"):
+            prep.auth.require(path.is_file() and not path.is_symlink(), "qualification-concert-runtime-file")
+        actual = dev.migration.migration_manifest(directory.parents[2], "concert-service")
+        prep.auth.require(actual == concert, "qualification-concert-runtime-manifest")
+        bound["concert-service"] = concert
+        receipt["concert_runtime_input"] = {"compiled_source_unchanged": "7cd1e900d6bd1b4994482819486c828e43736822",
+            "runtime_input_source_revision": CONCERT_RUNTIME_MIGRATION_SOURCE, "runtime_input_path": CONCERT_RUNTIME_MIGRATION_PATH,
+            "runtime_input_sha384": CONCERT_RUNTIME_MIGRATION_SHA384, "runtime_input_bytes": len(raw),
+            "actual_runtime_directory": str(directory), "actual_all_38_disk_checksums": "MATCH_EXPECTED",
+            "expected_migrations": 38, "expected_manifest_sha384": concert, "generic_ledger_check": "UNCHANGED_EXACT_MATCH"}
+    return bound, receipt
 
 
 def membership_observation(cluster, event):
@@ -426,6 +487,16 @@ def run(args):
     context = {}
     original = dev.development_environments
     original_ledger = dev.migration.check_ledger
+    original_preflight = dev.migration.preflight
+
+    def preflight(bin_dir, pg_dir):
+        binaries, tools, manifests = original_preflight(bin_dir, pg_dir)
+        if profile != "in01":
+            manifests["concert-service"] = dev.migration.migration_manifest(ROOT / "backend", "concert-service")
+            manifests, receipt = qualified_runtime_migrations(manifests)
+            context["concert_runtime_manifest"] = manifests.pop("concert-service")
+            report["qualified_runtime_migration_inputs"] = receipt
+        return binaries, tools, manifests
 
     def ledger(cluster, database, expected):
         try:
@@ -480,7 +551,8 @@ def run(args):
             PROFILE_PARTICIPANT_DECISION_SIGNING_SEED=decision[0],
             PROFILE_SELF_AUTH_GRPC_ENDPOINT=urls["auth"], PROFILE_SELF_FRIEND_GRPC_ENDPOINT=urls["friend"],
             PROFILE_SELF_CONCERT_GRPC_ENDPOINT=urls["concert"])
-        inputs_path = prep.seed_concert(stack, args.concert_bin, report, True, profile=profile)
+        inputs_path = prep.seed_concert(stack, args.concert_bin, report, True, profile=profile,
+                                       runtime_manifest=context.get("concert_runtime_manifest"))
         inputs = json.loads(inputs_path.read_bytes())
         release = inputs.pop("release_inputs")
         inputs.pop("world_activation")
@@ -529,6 +601,7 @@ def run(args):
             guard.start()
         with patch.object(dev.runtime, "readiness_value", prep.current_readiness), \
                 patch.object(dev, "development_environments", environments), \
+                patch.object(dev.migration, "preflight", preflight), \
                 patch.object(dev.migration, "check_ledger", ledger):
             descriptor = stack.start()
         browser = prep.auth.Browser(descriptor["gateway_url"], report)
