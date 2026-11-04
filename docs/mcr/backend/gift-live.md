@@ -68,7 +68,7 @@ idempotency_key, exact_body)`. The intended runtime replies use closed
 no-store, original signed parent, origin/browser intent and transport authentication.
 No Gift route or feature flag is enabled by this source checkpoint.
 
-Canonical authority owner 207 reports its guard is still IN_PROGRESS/source-only.
+Canonical authority SDK is published and compiled at `888cb6bd30846d891286b92a9a66e921e8d1ce78`; actual full owner/HTTP acceptance remains open.
 Its concrete source API accepts root-supplied `Arc<OwnerGuardScope>`;
 `register_transaction_in` registers the actual same-connection Concert transaction
 and `GuardedAuthority` refuses unregistered transactions. `scope.run` never
@@ -79,7 +79,7 @@ state and HTTP-body completion; unknown/cancelled settlement remains quarantined
 ReadCurrent observations alone do not satisfy this contract. Concert internal
 gRPC serialization is not browser HTTP body completion. Root retains an opaque
 delivery capability and exact Gateway-only terminal callback; only that callback
-may finish the response scope. These unpublished dependencies are not imported.
+may finish the response scope. The published SDK is incorporated; root HTTP completion and Concert PublicProfile reader dependencies remain unqualified.
 
 Media owner warns that BE37 pair stamps cannot replace uploader policy semantics:
 media relationship revision is event-admission restriction revision; authority
@@ -119,3 +119,14 @@ settlement, mandatory Gift media authority, orchestration/public-profile project
 bounded cursor handling, exact safe error/receipt responses, real PostgreSQL
 stock/expiry/idempotency/claim interleavings, real owner and server-entry qualification.
 Mocks or isolated units will not certify live Gifts or the two-user IN02 journey.
+
+Current source additionally wraps actual SDK `GuardedAuthority` with same-connection
+`register_transaction_in` before every policy check. The SDK requires BOTH owner
+Track acknowledgements and durable confirmation before returning. Current SDK
+repeated registration is owner-idempotent; SDK-owned full-identity deduplication
+is pending, with no local PID/connection cache invented here. Exact actor/event/
+session/request/operation/method/target/body digest and nonextended deadline are
+checked against the actual root-supplied scope. Safety cancellation applies the
+retained Safety field at receipt authorization as well as apply, preventing the
+retained generic ReadGifts callback from accidentally blocking that exact safety
+operation after feature shutdown. This adapter is not yet runtime-qualified.
