@@ -1,7 +1,7 @@
 # Shared frame and footer — preserved baseline
 
-Status: **IN_PROGRESS**. The original frame baseline is published. The first
-background-only source pass is prepared; its new native comparison is **NOT_RUN**.
+Status: **IN_PROGRESS**. The original frame baseline is published. Root captured
+the first background pass; corrected-source native verification is **NOT_RUN**.
 This bounded QA06-HUMAN-FRAME-FOOTER-01 correction supports AR02/AR04 and does
 not close the original QA06, AR02, AR03, AR04 or any IN gate.
 
@@ -44,14 +44,32 @@ The original red ring itself remains below3:1; this is baseline preservation,
 not a claim of full focus-contrast compliance. New corrected-source rendered
 verification remains pending and the c8a images keep their actual old palette.
 
+The independent review is recorded in
+[`owner-review.json`](../evidence/reference-frame-footer/background-review-c8a731e5/owner-review.json),
+alongside a byte-identical copy of Root's actual report (SHA-256
+`59e0f2540a1fdc79f240230048385fda678c1029e9d3df3ab2a209320ae86da1`).
+All16 screenshot hashes and bytes were checked against that report. All eight
+saved control, document-image and text metric pairs compare equal. The owner
+directly viewed all16 PNGs; this inspection reused saved evidence and launched
+no browser. Document-image metrics exclude CSS imagery and canvas sprites;
+they do not certify every rendered character pixel. World/Map,360/430 widths,
+other skins, real devices and live service flows remain unqualified here.
+
+The new `background-contrast.test.ts` adds two CSS-backed contrast regressions
+and a negative control reproducing the observed first-pass failure. It checks
+the frozen red ring and heading text against their historical background
+pairings. It is prepared for Root's next source-check cohort and is currently
+**NOT_RUN**. It is separate from screenshot acceptance and full accessibility
+verification; no extra broad suite or native allocation has been launched.
+
 The fourth paint was left untouched until World explicitly recorded the exact
 `.world-shell::after` background-color/image/size extension at `2ccf628c`.
 The owner read and accepted that record before editing. No pseudo-element
 geometry, padding, border, position, z-index, pointer behavior or mask changed.
 Further panel backdrop work is a distinct later source pass.
 
-`git diff --check` passes for these source edits. No native/build/browser or
-install has run. The first actual390px before/after World and MAP views will
+`git diff --check` passes for these source edits. This owner has launched no
+native/build/browser or install job. The first actual390px before/after World and MAP views will
 use Root's coordinated new-background candidate and a fresh21d resource offer;
 the returned0612 offer grants no launch. Root's scenery tuple is separate and
 must be pinned by its actual source/hashes. The owner will inspect real saved

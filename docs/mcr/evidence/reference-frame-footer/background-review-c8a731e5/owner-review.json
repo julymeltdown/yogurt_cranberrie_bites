@@ -1,0 +1,339 @@
+{
+  "task": "QA06 shared background paint",
+  "status": "IN_PROGRESS",
+  "reviewedAt": "2026-11-04T06:42:44.034905+00:00",
+  "candidate": "c8a731e5c7f03c3fbcbd0581c6e872429806fa22",
+  "job": "PANEL-COZY-202611040632Z",
+  "captureTime": {
+    "startedAt": "2026-11-04T06:33:32.440Z",
+    "finishedAt": "2026-11-04T06:34:13.328Z"
+  },
+  "sourceReport": {
+    "path": "docs/mcr/evidence/cozy-backgrounds-v1/native-01/report.json",
+    "sha256": "59e0f2540a1fdc79f240230048385fda678c1029e9d3df3ab2a209320ae86da1",
+    "copiedByteForByte": true
+  },
+  "baselinePolicy": "Same candidate and fixture, restoring ONLY four background integration files to exact base bytes. Meet typography identical in both captures.",
+  "qualification": "Actual default router/Auth/Phaser; QA06 DEV synthetic HTTP/C05/local admission only. Guarded Wall remains guarded; no live service or physical device acceptance.",
+  "method": "Independent direct viewing of all16 original PNGs and exact humanJPEG; hash/byte verification; comparison of saved control/image/text metrics; saved ME pixel sampling. No new browser/export/install/test job.",
+  "screenshots": [
+    {
+      "id": "landing",
+      "mode": "baseline",
+      "path": "docs/mcr/evidence/cozy-backgrounds-v1/native-01/baseline-landing-390.png",
+      "sha256": "dbb09ff5b80b7ceb578c17778b3021722655ff2c55f9af1904ded21345e288cc",
+      "bytes": 248289,
+      "startedAt": "2026-11-04T06:33:33.063Z",
+      "finishedAt": "2026-11-04T06:33:35.278Z",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "documentImageCount": 0,
+      "hashedDocumentImageCount": 0
+    },
+    {
+      "id": "landing",
+      "mode": "candidate",
+      "path": "docs/mcr/evidence/cozy-backgrounds-v1/native-01/candidate-landing-390.png",
+      "sha256": "daae6b6d413ded95bec493383444cc3860fa121c456e07c8fd462d3ad825fbb2",
+      "bytes": 221267,
+      "startedAt": "2026-11-04T06:33:35.389Z",
+      "finishedAt": "2026-11-04T06:33:37.694Z",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "documentImageCount": 0,
+      "hashedDocumentImageCount": 0
+    },
+    {
+      "id": "login",
+      "mode": "baseline",
+      "path": "docs/mcr/evidence/cozy-backgrounds-v1/native-01/baseline-login-390.png",
+      "sha256": "bf98a92a890b1f1c9c34019c0675b143d260f2225ca1a51fa18344c50bb6979e",
+      "bytes": 363464,
+      "startedAt": "2026-11-04T06:33:37.809Z",
+      "finishedAt": "2026-11-04T06:33:39.842Z",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "documentImageCount": 0,
+      "hashedDocumentImageCount": 0
+    },
+    {
+      "id": "customize",
+      "mode": "baseline",
+      "path": "docs/mcr/evidence/cozy-backgrounds-v1/native-01/baseline-customize-390.png",
+      "sha256": "1c7f1bcf709449da0a36c9a0a949f37cd5dc0f77be4dafbff774e8f1985098b2",
+      "bytes": 62382,
+      "startedAt": "2026-11-04T06:33:39.952Z",
+      "finishedAt": "2026-11-04T06:33:43.679Z",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "documentImageCount": 0,
+      "hashedDocumentImageCount": 0
+    },
+    {
+      "id": "feed",
+      "mode": "baseline",
+      "path": "docs/mcr/evidence/cozy-backgrounds-v1/native-01/baseline-feed-390.png",
+      "sha256": "e4d99d561d4c3b2ee5c52a60682920190885fea104efe286faf22e3d7f183851",
+      "bytes": 63839,
+      "startedAt": "2026-11-04T06:33:43.791Z",
+      "finishedAt": "2026-11-04T06:33:45.998Z",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "documentImageCount": 0,
+      "hashedDocumentImageCount": 0
+    },
+    {
+      "id": "meet",
+      "mode": "baseline",
+      "path": "docs/mcr/evidence/cozy-backgrounds-v1/native-01/baseline-meet-390.png",
+      "sha256": "2d2fa482226c4b39f4c8ea958376957372c84c25c303d2819e37ab4a36a1e9cc",
+      "bytes": 100776,
+      "startedAt": "2026-11-04T06:33:46.113Z",
+      "finishedAt": "2026-11-04T06:33:48.308Z",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "documentImageCount": 0,
+      "hashedDocumentImageCount": 0
+    },
+    {
+      "id": "gifts",
+      "mode": "baseline",
+      "path": "docs/mcr/evidence/cozy-backgrounds-v1/native-01/baseline-gifts-390.png",
+      "sha256": "a9c8c7dff188c9262d132caec9302f40e2c3426ba4dd271447ed1df7cdd51f02",
+      "bytes": 98202,
+      "startedAt": "2026-11-04T06:33:48.400Z",
+      "finishedAt": "2026-11-04T06:33:50.618Z",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "documentImageCount": 0,
+      "hashedDocumentImageCount": 0
+    },
+    {
+      "id": "wall",
+      "mode": "baseline",
+      "path": "docs/mcr/evidence/cozy-backgrounds-v1/native-01/baseline-wall-390.png",
+      "sha256": "6ee53f544d8b1619e23c2fda7dba413afb19b9ce6b7c4509fdf1419904bb4bea",
+      "bytes": 61924,
+      "startedAt": "2026-11-04T06:33:50.745Z",
+      "finishedAt": "2026-11-04T06:33:52.969Z",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "documentImageCount": 0,
+      "hashedDocumentImageCount": 0
+    },
+    {
+      "id": "me",
+      "mode": "baseline",
+      "path": "docs/mcr/evidence/cozy-backgrounds-v1/native-01/baseline-me-390.png",
+      "sha256": "82a4dc4db9e98e776cd67a1184f9e9abad0d6aacb94e8f27e08c93954c93cb54",
+      "bytes": 66609,
+      "startedAt": "2026-11-04T06:33:53.068Z",
+      "finishedAt": "2026-11-04T06:33:55.296Z",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "documentImageCount": 0,
+      "hashedDocumentImageCount": 0
+    },
+    {
+      "id": "login",
+      "mode": "candidate",
+      "path": "docs/mcr/evidence/cozy-backgrounds-v1/native-01/candidate-login-390.png",
+      "sha256": "c8d74794b59ea9674662b73dd857e51ad3737a8ed042918bfd491b20d5b0f7e5",
+      "bytes": 60783,
+      "startedAt": "2026-11-04T06:33:55.429Z",
+      "finishedAt": "2026-11-04T06:33:57.634Z",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "documentImageCount": 0,
+      "hashedDocumentImageCount": 0
+    },
+    {
+      "id": "customize",
+      "mode": "candidate",
+      "path": "docs/mcr/evidence/cozy-backgrounds-v1/native-01/candidate-customize-390.png",
+      "sha256": "a3a54afe233b4fd49f91afa8c33506c2a4039ef0cfae915e367ebea3bb596175",
+      "bytes": 58007,
+      "startedAt": "2026-11-04T06:33:57.741Z",
+      "finishedAt": "2026-11-04T06:34:01.409Z",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "documentImageCount": 0,
+      "hashedDocumentImageCount": 0
+    },
+    {
+      "id": "feed",
+      "mode": "candidate",
+      "path": "docs/mcr/evidence/cozy-backgrounds-v1/native-01/candidate-feed-390.png",
+      "sha256": "40420f102f2cefc4fae6e9dad0fe3a6314425176f1e0238a1cd0a6ac5c4d7022",
+      "bytes": 59392,
+      "startedAt": "2026-11-04T06:34:01.520Z",
+      "finishedAt": "2026-11-04T06:34:03.741Z",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "documentImageCount": 0,
+      "hashedDocumentImageCount": 0
+    },
+    {
+      "id": "meet",
+      "mode": "candidate",
+      "path": "docs/mcr/evidence/cozy-backgrounds-v1/native-01/candidate-meet-390.png",
+      "sha256": "8cb3333b58838bc6cc73e08dd85f43198480d4eb603436d6bb081a0f004c97d7",
+      "bytes": 64736,
+      "startedAt": "2026-11-04T06:34:03.841Z",
+      "finishedAt": "2026-11-04T06:34:06.058Z",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "documentImageCount": 0,
+      "hashedDocumentImageCount": 0
+    },
+    {
+      "id": "gifts",
+      "mode": "candidate",
+      "path": "docs/mcr/evidence/cozy-backgrounds-v1/native-01/candidate-gifts-390.png",
+      "sha256": "d9a42c33136e67d4ae6ca60bf3caa95811e55bbbad3309ffee36493b54c24679",
+      "bytes": 81454,
+      "startedAt": "2026-11-04T06:34:06.158Z",
+      "finishedAt": "2026-11-04T06:34:08.385Z",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "documentImageCount": 0,
+      "hashedDocumentImageCount": 0
+    },
+    {
+      "id": "wall",
+      "mode": "candidate",
+      "path": "docs/mcr/evidence/cozy-backgrounds-v1/native-01/candidate-wall-390.png",
+      "sha256": "bd085e3bbab0b848a77f3c7e3ac76207aa7b37c64e336cd4289edc2f42397b40",
+      "bytes": 23249,
+      "startedAt": "2026-11-04T06:34:08.494Z",
+      "finishedAt": "2026-11-04T06:34:10.695Z",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "documentImageCount": 0,
+      "hashedDocumentImageCount": 0
+    },
+    {
+      "id": "me",
+      "mode": "candidate",
+      "path": "docs/mcr/evidence/cozy-backgrounds-v1/native-01/candidate-me-390.png",
+      "sha256": "d3f97daa18096a42033c1be905a7f30d41b32ba25f561f8255da65ff3a6a8bbb",
+      "bytes": 77576,
+      "startedAt": "2026-11-04T06:34:10.816Z",
+      "finishedAt": "2026-11-04T06:34:13.060Z",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "documentImageCount": 0,
+      "hashedDocumentImageCount": 0
+    }
+  ],
+  "findings": [
+    {
+      "id": "BG-FOCUS-01",
+      "severity": "REGRESSION",
+      "scope": "Owned shared header background only",
+      "evidence": {
+        "screen": "me",
+        "ringPoint": [
+          21,
+          22
+        ],
+        "backgroundPoint": [
+          230,
+          30
+        ],
+        "ringRGB": [
+          162,
+          35,
+          43
+        ],
+        "baselineBackgroundRGB": [
+          25,
+          24,
+          23
+        ],
+        "candidateBackgroundRGB": [
+          97,
+          66,
+          82
+        ]
+      },
+      "observedContrast": {
+        "baselineRing": 2.3739162164624363,
+        "candidateRing": 1.1669169965994337,
+        "candidateHeadingText": 7.308915391179989
+      },
+      "fixCommit": "485bcb979bb564deaeecbb6b5bc30b68014bf259",
+      "fix": "Only two owned header BACKGROUND declarations changed to #251017; foreground/focus/controls/layout frozen",
+      "expectedContrastFromSource": {
+        "ring": 2.4130529038019013,
+        "headingText": 15.114013729961503
+      },
+      "renderedFix": "NOT_RUN"
+    }
+  ],
+  "observations": {
+    "landing": "Warm night-garden/cloud background is visibly cuter than old cemetery treatment; logo/selected character strip/action placement visually retained. Background author/source freeze remains separately owned.",
+    "login": "Pastel paper/clouds/flowers replace cemetery background; actual fields/provider-unavailable state/readability retained. Shared header paint does not own this auth titlebar.",
+    "customize": "Pastel surrounding paper is restrained; selected full character and control geometry unchanged in saved pair. No crop/scale/pose/atlas change accepted or inferred.",
+    "feed": "Pink post/footer background is warmer; text/actions remain readable with truthful single text-only fixture post. Shared berry header exposes BG-FOCUS-01.",
+    "meet": "Peach/pastel cloud backdrop is visibly softer; all three rows, actual unavailable creation state and footer foreground retained. The same Meet typography appears in both sides.",
+    "gifts": "Lavender product-row backdrops are softer; honest no-photo placeholders/quantities/actions remain. Old marching silhouettes remain frozen foreground.",
+    "wall": "Warm stationery backdrop behind truthful unavailable guard; this is not editor acceptance.",
+    "me": "Warm ribbon/profile background is cuter; unchanged actor crop/scale, bio/actions/tabs and cold activity state retained. Existing textured body remains, not a shared-body repaint claim."
+  },
+  "preservation": {
+    "hashesChecked": 16,
+    "candidateControlRectTypeColorStatePairsChecked": 8,
+    "candidateDocumentImageSourceRectRGBAPairsChecked": 8,
+    "candidateTextPairsChecked": 8,
+    "allComparisonsEqual": true,
+    "ownApplicationDiff": "Only four allocated background declarations versus7c25078f; no character/footer/feature/world edits"
+  },
+  "limits": [
+    "Exact3-paint c8a cohort: laterfacb perimeter and485b header correction are not in these PNGs",
+    "World/Map not captured by this8-route packet",
+    "390x844 desktopChrome syntheticQA06 fixture only; no360/430/all-skin/device/live acceptance",
+    "Tab reached outlined element; full44px/reachability/forced-colors/authstates not qualified by this packet",
+    "document.images RGBA does not cover CSS background images or canvas sprites; immutable source freeze and direct visual checks remain separate",
+    "Original focus-ring2.37 baseline is below3:1; source correction preserves baseline and is not full WCAG certification",
+    "Root/publication and fresh own remote verification for new paint/fixes still pending"
+  ],
+  "next": [
+    "Integratefacb02ba then485bcb97 plus targeted contrast regressions",
+    "Inspect corrected computed/header pixel values in next bounded Root followup",
+    "Inspect first actual new World/Map390cohort and affected widths/skins without blindduplicate matrix",
+    "Publish owner source/evidence/doc throughRoot, fresh own remote/postimage verification and lease return"
+  ]
+}
