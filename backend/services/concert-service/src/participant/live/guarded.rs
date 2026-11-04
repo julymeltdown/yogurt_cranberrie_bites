@@ -29,9 +29,9 @@ pub struct BoundParticipantAuthority {
 }
 pub fn operation_label(operation: Operation) -> &'static str {
     match operation {
-        Operation::GetParticipant => "participant.read",
-        Operation::SetAvatar => "participant.avatar",
-        Operation::UpdatePreferences => "participant.update",
+        Operation::GetParticipant => "getConcertParticipant",
+        Operation::SetAvatar => "setConcertAvatar",
+        Operation::UpdatePreferences => "updateConcertParticipant",
     }
 }
 impl BoundParticipantAuthority {
