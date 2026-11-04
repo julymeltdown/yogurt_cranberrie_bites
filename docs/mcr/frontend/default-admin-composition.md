@@ -4,7 +4,7 @@ This bounded assignment replaces the default Admin placeholder with canonical
 production composition of the published Event, Places, Audit, Wall and Closure
 consumers. Source is authored from canonical
 `306626d49cd8b55916cf973ab6eea06569ec98d4` in the retained isolated checkout.
-The completed FE39 branch at `7d4b8b8b` is preserved. Validation and publication
+The completed FE39 branch at `7d4b8b8b` is preserved. Source checks have passed; native qualification and publication
 are pending; this document does not claim current live producer acceptance.
 
 The production ports retain one full-privacy-scope owner above sibling Admin
@@ -74,3 +74,20 @@ fixture request counts include admission, but the earlier suite remains qualifie
 only at its recorded source. It is not replayed or relabeled as current-cut proof.
 One combined full types/lint/syntax round and the changed current-main native
 journey supply the new intake boundary proof.
+
+The remaining current-cut source checks passed at `321a44dff`: full TypeScript
+(`--noEmit --incremental false --allowImportingTsExtensions`), scoped oxlint with
+`--deny-warnings`, and native MJS syntax. The finite global-controller continuity
+offer was `ADMIN-THREE-SOURCE-20261104T1910Z`, accepted at
+19:08:33.192288Z and fully released at 19:08:43.247576Z. Both earlier source
+offers remained unaccepted: 1855 failed the reserve arithmetic before acceptance,
+and 1859 expired during inventory/message recovery. Neither started a workload.
+The current source round reserved all potential Wall 2 GiB and Social copy 512 MiB
+growth plus its own 128 MiB. Fresh free space 18,468,732,928 bytes left
+15,650,160,640 bytes after all growth. The conservative 12 GiB combined start,
+9 GiB reserve and 8 GiB live floors held. Independent guard peaks were four
+processes, 1,923,170,304 RSS bytes, 2,216,676,560 accounted WHOLE bytes, and
+32,515,041 NEW bytes including 31,122,401 retained carry. Cleanup confirmed no
+owned children, dependency link or private workload TMP, an empty port listener
+and successful rebind. Raw control, commands, logs and release are retained under
+`source-02-current-types-lint-syntax`; no passing suite was replayed.

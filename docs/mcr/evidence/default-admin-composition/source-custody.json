@@ -3,7 +3,7 @@
   "branch": "codex/mcr-fe-default-admin-composition",
   "preservedBranch": "codex/mcr-fe-FE39-current-20261105",
   "preservedSource": "7d4b8b8baf2675cd5282d7e6e4cb87570258e0c2",
-  "qualification": "21_FOCUSED_PASS_REMAINING_TYPES_LINT_SYNTAX_PENDING",
+  "qualification": "FOCUSED_21_PRIOR_READSET_PASS_CURRENT_TYPES_LINT_SYNTAX_PASS_NATIVE_PENDING",
   "scope": "Default Admin canonical consumer composition and changed boundary only",
   "actualProducer205": "NOT_QUALIFIED",
   "productionRoleRegistration": "ABSENT_FAIL_CLOSED_NO_FALLBACK",
@@ -22,5 +22,15 @@
   },
   "canonicalIntake": "1a1db34065a190790459e4be41891750ab46d882",
   "currentAdmission": "Registered canonical Auth admission; existing AdmissionBoundary borrowed; controlledHTTP only/noidentityinjection",
-  "old21CaseDisposition": "PASS only at97befb78 immutable readset; no current-cut21 replay"
+  "old21CaseDisposition": "PASS only at97befb78 immutable readset; no current-cut21 replay",
+  "remainingSource": {
+    "pin": "321a44dffce8ec2f9f261ab84d850228d196557e",
+    "offer": "ADMIN-THREE-SOURCE-20261104T1910Z",
+    "types": "PASS",
+    "lint": "PASS_DENY_WARNINGS",
+    "nativeSyntax": "PASS",
+    "release": "source-02-current-types-lint-syntax/release.json",
+    "passingSuiteReplay": false,
+    "accountedWholeHighwaterBytes": 2216676560
+  }
 }
