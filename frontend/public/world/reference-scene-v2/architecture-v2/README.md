@@ -1,6 +1,8 @@
 # Architecture v2 source candidate
 
-Status: **SOURCE_CANDIDATE_CORE_CUTOUTS_VERIFIED_PACKING_NOT_RUN**.
+Current derivative status: **CONTRACT_READY_SOURCE_DERIVATIVES_RUNTIME_NOT_RUN**.
+The immutable source-inspection record retains its earlier source-only status
+**SOURCE_CANDIDATE_CORE_CUTOUTS_VERIFIED_PACKING_NOT_RUN**.
 
 `venue-sheet.png` is an original built-in imagegen output, copied byte for byte
 from its provider output. The final prompt is `prompt.md`; generation mode,
@@ -43,3 +45,26 @@ runtime, root, geometry or character changes. A separately budgeted allocation
 is required for any subsequent output job. Goal metadata remains BLOCKED while
 this explicitly resumed source work proceeds; the original unfinished goal
 is neither replaced nor completed. No new critic score or release acceptance.
+
+## Deterministic atlas derivatives
+
+Separately allocated ART-ARCH-ATLAS-02 creates three1024×1024 runtime atlases,
+three2048×2048 padded raster counterparts and12 small per-era JSON files.
+`atlas-handoff.json` pins all18 outputs (7,921,243B). The padded counterparts are
+raster packaging inputs, not native projects or native scene renders.
+
+`build-atlases.py --verify` reconstructs each expected frame from the immutable
+source crops and compares every saved RGBA pixel. Other12 frames and every
+pixel outside the four building rectangles equal the original atlas exactly.
+All16 frame rectangles and all layout fields except source-path/descriptive
+metadata are frozen. Ground,34 WORLD placements, MAP destinations, footprints,
+depths, interaction IDs and cameras remain unchanged. Per-era runtime budgets
+are REVENGE1,821,253B, PARADE1,833,584B and DANGER1,820,611B, each2,043,904pixels,
+within existing2MiB/2,097,152pixel limits.
+
+The output atlas visibly retains the taller façade floors after uniform nearest
+packing. Actual scene massing, visibility/occlusion, native composition and
+360/390/430 application comparisons are **NOT_RUN**. Existing label and planting
+sidecars pin old resources: a future explicitly owned consumer patch must close
+the matching new resource/source pins rather than silently mix versions.
+Reserved `runtime/**` and the current Root eight-file MAP lease remain untouched.

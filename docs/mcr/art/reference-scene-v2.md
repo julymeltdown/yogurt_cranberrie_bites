@@ -422,3 +422,30 @@ consumer adoption and mobile target comparisons are **NOT_RUN**. These require
 separate resource allocations and exact consumer ownership. The original goal
 metadata remains **BLOCKED**, reused without reset or false completion while
 explicitly resumed source corrections proceed.
+
+## Architecture atlas derivatives
+
+Named ART-ARCH-ATLAS-02 separately allocated deterministic atlas work only,
+hard64MiB peak/24MiB net output. Own fresh pre-job capacity was10,452,652,032B,
+above8GiB+64MiB. Additive `architecture-v2/{revenge,parade,danger}/` contains
+three1024×1024 atlases, three2048×2048 padded raster counterparts and12 JSON
+layout/scenery/resource/provenance files. All18 derivative outputs total
+7,921,243B and are closed by `architecture-v2/atlas-handoff.json`.
+
+The original source sheet is cropped using the recorded rectangles, uniformly
+nearest-scaled and centered/bottom-aligned inside the unchanged244×180 frames.
+Every saved atlas RGBA pixel matches that reconstruction. The other12 frames
+and all pixels outside the four building rectangles equal the old atlas exactly;
+all16 frame rectangles,34 WORLD placements/footprints/depths/interactions, MAP
+representations, cameras and ef52 geometry are preserved. Original ground is
+referenced rather than copied. Padded raster counterparts preserve exact atlas
+pixels top-left and transparency elsewhere; they are not native scene exports.
+
+Runtime resources retain two PNGs and2,043,904pixels per era. Total bytes are
+REVENGE1,821,253/PARADE1,833,584/DANGER1,820,611, below the existing2MiB limit.
+Build and independent saved-byte reconstruction verification exit0. The actual
+PARADE atlas was inspected: the taller floor levels survive packing. No browser,
+Tesseract project, native scene export, consumer edit or new capture is included.
+Existing paired label/planting sidecars retain their original resource pins;
+new atlas adoption requires an explicitly assigned matching pin closure.
+Full scene massing/density, occlusion and mobile reference fidelity remain open.

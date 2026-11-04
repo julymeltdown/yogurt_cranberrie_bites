@@ -1,0 +1,214 @@
+{
+  "format": "MCR_ARCHITECTURE_V2_ATLAS_DERIVATIVE",
+  "status": "SOURCE_ONLY_NOT_RELEASE_BOUND",
+  "theme_id": "REVENGE",
+  "geometry_hash": "sha256:ef52c8b05af6a882f2e82285c9879c9a4cb78ab513336e4bb3cd483c9b123395",
+  "base_source_commit": "1bcf52081f8c6ed7dfdc0dceba90e7d5155579fa",
+  "inputs": [
+    {
+      "path": "frontend/public/world/reference-scene-v2/architecture-v2/venue-sheet.png",
+      "sha256": "sha256:ef8f0a5c05702940bae39b0e4661f6a5223f8afd1e351a96f9d28186e0d4769a",
+      "bytes": 2759982
+    },
+    {
+      "path": "frontend/public/world/reference-scene-v2/architecture-v2/source-metadata.json",
+      "sha256": "sha256:fe758f02f44a048ec8e187b0fe8496180672e4c2745f7c465b4bb05ecda12dc5",
+      "bytes": 8422
+    },
+    {
+      "path": "frontend/public/world/reference-scene-v2/quality-v8/revenge/atlas.png",
+      "sha256": "sha256:ee93dcde891054f6ef965d182af8237a09d10464ba762d017168d2bd9326bccd",
+      "bytes": 1203841
+    },
+    {
+      "path": "frontend/public/world/reference-scene-v2/quality-v10/revenge/layout.json",
+      "sha256": "sha256:96c42600750bc582269114abd1a402c45c23e45229d20cbf8a084dfe58102553",
+      "bytes": 25423
+    },
+    {
+      "path": "frontend/public/world/reference-scene-v2/quality-v10/revenge/scenery.json",
+      "sha256": "sha256:ecdc17d2a010e3697b5b813fdd079d5cd4d44b2d0ee09d6b81272c2ffecfc9d5",
+      "bytes": 10456
+    },
+    {
+      "path": "frontend/public/world/reference-scene-v2/quality-v10/ground.png",
+      "sha256": "sha256:dd70d8fb02e1c6e57e9a9f9e96d69dc7c15999bc076678a7075161281c929887",
+      "bytes": 549155
+    }
+  ],
+  "transforms": [
+    {
+      "frame": "meeting_pavilion",
+      "source_rect": [
+        34,
+        15,
+        365,
+        292
+      ],
+      "frame_rect": {
+        "x": 6,
+        "y": 550,
+        "width": 244,
+        "height": 180
+      },
+      "packed_rect": [
+        18,
+        552,
+        220,
+        176
+      ],
+      "scale": 0.6027397260273972,
+      "resampling": "nearest",
+      "rounding": "nearest ties away from zero",
+      "source_rgba_policy": "Exact crop RGBA, no thresholding or repaint; recorded rectangle omits exterior faint residue.",
+      "padding": "Transparent, horizontally centered, bottom-aligned2px."
+    },
+    {
+      "frame": "giveaway_pavilion",
+      "source_rect": [
+        40,
+        328,
+        359,
+        301
+      ],
+      "frame_rect": {
+        "x": 262,
+        "y": 550,
+        "width": 244,
+        "height": 180
+      },
+      "packed_rect": [
+        279,
+        552,
+        210,
+        176
+      ],
+      "scale": 0.584717607973422,
+      "resampling": "nearest",
+      "rounding": "nearest ties away from zero",
+      "source_rgba_policy": "Exact crop RGBA, no thresholding or repaint; recorded rectangle omits exterior faint residue.",
+      "padding": "Transparent, horizontally centered, bottom-aligned2px."
+    },
+    {
+      "frame": "north_hall",
+      "source_rect": [
+        25,
+        649,
+        378,
+        260
+      ],
+      "frame_rect": {
+        "x": 518,
+        "y": 550,
+        "width": 244,
+        "height": 180
+      },
+      "packed_rect": [
+        520,
+        563,
+        240,
+        165
+      ],
+      "scale": 0.6349206349206349,
+      "resampling": "nearest",
+      "rounding": "nearest ties away from zero",
+      "source_rgba_policy": "Exact crop RGBA, no thresholding or repaint; recorded rectangle omits exterior faint residue.",
+      "padding": "Transparent, horizontally centered, bottom-aligned2px."
+    },
+    {
+      "frame": "west_hall",
+      "source_rect": [
+        35,
+        926,
+        363,
+        322
+      ],
+      "frame_rect": {
+        "x": 774,
+        "y": 550,
+        "width": 244,
+        "height": 180
+      },
+      "packed_rect": [
+        797,
+        552,
+        198,
+        176
+      ],
+      "scale": 0.546583850931677,
+      "resampling": "nearest",
+      "rounding": "nearest ties away from zero",
+      "source_rgba_policy": "Exact crop RGBA, no thresholding or repaint; recorded rectangle omits exterior faint residue.",
+      "padding": "Transparent, horizontally centered, bottom-aligned2px."
+    }
+  ],
+  "unchanged_frames": [
+    {
+      "frame": "stage",
+      "rgba_sha256": "00c6d53126461e3cbf4a6418cb9ea1c412dd4e2e3d1997588eae18474dd744b8"
+    },
+    {
+      "frame": "white_merch_booth",
+      "rgba_sha256": "5a89f116ba48f048b527903058100013f78100dd85078848f221afe5765508c6"
+    },
+    {
+      "frame": "white_food_booth",
+      "rgba_sha256": "642f6e5aa033300eef7140802bb30faf7e535e8e604035fda0cd300410d04bb2"
+    },
+    {
+      "frame": "park_plaque",
+      "rgba_sha256": "e6f1067892427bf7897f4494a4e32b31d4f7dfbf94b0b78b732f7b14d1179fc7"
+    },
+    {
+      "frame": "tree_green",
+      "rgba_sha256": "195cbffc63257afca0a5d8f5b1f2f1ba35a0e87cc56ecbf69dc5848fd5e81d3b"
+    },
+    {
+      "frame": "tree_yellow",
+      "rgba_sha256": "93ac7bf9e839e705f2cc26a2da1cca53cbb7534612ac785f374893fefb39644b"
+    },
+    {
+      "frame": "tree_dark",
+      "rgba_sha256": "041f1a8d419f24dcb22807c7a4567704ef8e17141abfcde66c954c19ff635c8c"
+    },
+    {
+      "frame": "tree_red",
+      "rgba_sha256": "04bb4abdcac4f59531e88b4de49be3a1440f311e2ba525f4ff11e5a46519726c"
+    },
+    {
+      "frame": "food_counter",
+      "rgba_sha256": "5c11610dd598f22aa36d3475e52b0f70a082c5aba54cb9340ccd6acdb4b6dcab"
+    },
+    {
+      "frame": "plaza_furniture",
+      "rgba_sha256": "a2a7f6d41958ce93841605ab6cd69fed79bbe59d6b77af67676c01de167b1143"
+    },
+    {
+      "frame": "cross_banner",
+      "rgba_sha256": "e54d4a7652ae802bfb5b8393d8bf0e42d120642574dc118ebc06129da8f0c919"
+    },
+    {
+      "frame": "shrub_bed",
+      "rgba_sha256": "cafe3938c195a7a60b7cc0a6c3a47a4424aa34026c4f118648c9713db51a4545"
+    }
+  ],
+  "outside_four_frames_exact_rgba": true,
+  "native_padding": {
+    "source_rect": [
+      0,
+      0,
+      1024,
+      1024
+    ],
+    "size": [
+      2048,
+      2048
+    ],
+    "policy": "Exact atlas top-left, all other pixels transparent; raster derivative only, not a native scene export."
+  },
+  "limits": [
+    "No native project, scene export, browser or consumer qualification.",
+    "No current MAP layout/planting source pins are silently rebound.",
+    "Geometry, server feet, approved characters and release admission unchanged."
+  ]
+}
