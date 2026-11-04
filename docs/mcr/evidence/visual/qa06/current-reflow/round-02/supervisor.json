@@ -1,0 +1,51 @@
+{
+  "job": "QA06-REFLOW-BROWSER1-20261104T1807Z",
+  "round": "round-02",
+  "started": 1793815717.182505,
+  "workDeadline": 1793815954.178505,
+  "cleanupDeadline": 1793816014.178505,
+  "candidate": "e4e118c474fb79277e2f86c02f41797e2c8ae1ce",
+  "carriedWholeBytes": 1283055616,
+  "originalJobCarryBytes": 1282785280,
+  "retainedDependencyBytes": 438317056,
+  "aggregateNewReserve": 3087007744,
+  "caps": {
+    "whole": 2147483648,
+    "new": 268435456,
+    "temp": 209715200,
+    "durable": 33554432,
+    "allPids": 24,
+    "rss": 4294967296
+  },
+  "peaks": {
+    "temp": 30302361,
+    "durable": 1060864,
+    "allPids": 11,
+    "rss": 2496217088,
+    "new": 31117465,
+    "whole": 1313902745
+  },
+  "commands": [
+    [
+      "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node",
+      "--check",
+      "/Users/lhs/Desktop/mcr-worktrees/fe-ref-public/frontend/e2e/visual/qa06/reflow.mjs"
+    ],
+    [
+      "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node",
+      "/Users/lhs/Desktop/mcr-worktrees/fe-ref-public/frontend/e2e/visual/qa06/reflow.mjs"
+    ]
+  ],
+  "minFree": 19182751744,
+  "currentCarry": 1283600384,
+  "wholeMeasuredAt": 1793815733.4761128,
+  "exitCode": 0,
+  "remainingOwnedPids": [],
+  "finished": 1793815736.3281689,
+  "ownLinkAbsent": true,
+  "ownTempAbsent": true,
+  "portClosed": true,
+  "cleanupWithinDeadline": true,
+  "finalFree": 19190423552,
+  "FULL": true
+}

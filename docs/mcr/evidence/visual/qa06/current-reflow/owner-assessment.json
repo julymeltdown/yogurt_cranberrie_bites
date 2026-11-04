@@ -1,0 +1,350 @@
+{
+  "task": "QA06",
+  "status": "MOCK_READY",
+  "originalGoal": {
+    "createdAt": 1793759287,
+    "status": "BLOCKED",
+    "unfinished": true
+  },
+  "candidate": "e4e118c474fb79277e2f86c02f41797e2c8ae1ce",
+  "canonicalBase": "827877828684fdd5e6cda56a85fd11f6f526daf7",
+  "browser": "156.0.8078.80",
+  "node": "24.22.2",
+  "fixture": {
+    "path": "/src/app/community-adoption/__tests__/native/preview.html",
+    "sha256": "50f62d2310f71004489e8b44017cebce8447260a8721c8501ffed594c16a492b"
+  },
+  "ownRunnerSha256": "cca6584995c32941a41329d3d9186520701eb17f0406c5a7052a9bff260a7d4c",
+  "ownGuardSha256": "330d9e491a002446e89b7caeb655cd36b1fee003922289c7e2cee69e8825e681",
+  "sourceFilesChecked": 409,
+  "assetFilesChecked": 19,
+  "cases": [
+    {
+      "route": "/me/profile",
+      "width": 360,
+      "heights": [
+        420,
+        844
+      ],
+      "status": "PASS",
+      "formQualification": "DESKTOP_RESIZE_INPUT_REACHABILITY_ONLY",
+      "primary": {
+        "rect": {
+          "x": 16,
+          "y": 245.359375,
+          "width": 142.21875,
+          "height": 44
+        },
+        "disabled": false,
+        "label": "SAVE PROFILE"
+      },
+      "parent": "/me",
+      "sameCanvas": true,
+      "socketPeak": 1,
+      "newDomainMutations": 0,
+      "cleanup": {
+        "canvases": 0,
+        "activeSockets": 0,
+        "disposed": true
+      }
+    },
+    {
+      "route": "/gifts/new",
+      "width": 360,
+      "heights": [
+        420,
+        844
+      ],
+      "status": "PASS",
+      "formQualification": "DESKTOP_RESIZE_INPUT_REACHABILITY_ONLY",
+      "primary": {
+        "rect": {
+          "x": 26,
+          "y": 213.15625,
+          "width": 308,
+          "height": 46.78125
+        },
+        "disabled": false,
+        "label": "Create giveaway draft"
+      },
+      "parent": "/gifts",
+      "sameCanvas": true,
+      "socketPeak": 1,
+      "newDomainMutations": 0,
+      "cleanup": {
+        "canvases": 0,
+        "activeSockets": 0,
+        "disposed": true
+      }
+    },
+    {
+      "route": "/me/profile",
+      "width": 390,
+      "heights": [
+        420,
+        844
+      ],
+      "status": "PASS",
+      "formQualification": "DESKTOP_RESIZE_INPUT_REACHABILITY_ONLY",
+      "primary": {
+        "rect": {
+          "x": 16,
+          "y": 245.359375,
+          "width": 155.546875,
+          "height": 44
+        },
+        "disabled": false,
+        "label": "SAVE PROFILE"
+      },
+      "parent": "/me",
+      "sameCanvas": true,
+      "socketPeak": 1,
+      "newDomainMutations": 0,
+      "cleanup": {
+        "canvases": 0,
+        "activeSockets": 0,
+        "disposed": true
+      }
+    },
+    {
+      "route": "/gifts/new",
+      "width": 390,
+      "heights": [
+        420,
+        844
+      ],
+      "status": "PASS",
+      "formQualification": "DESKTOP_RESIZE_INPUT_REACHABILITY_ONLY",
+      "primary": {
+        "rect": {
+          "x": 26,
+          "y": 213.15625,
+          "width": 338,
+          "height": 46.78125
+        },
+        "disabled": false,
+        "label": "Create giveaway draft"
+      },
+      "parent": "/gifts",
+      "sameCanvas": true,
+      "socketPeak": 1,
+      "newDomainMutations": 0,
+      "cleanup": {
+        "canvases": 0,
+        "activeSockets": 0,
+        "disposed": true
+      }
+    },
+    {
+      "route": "/me/profile",
+      "width": 430,
+      "heights": [
+        420,
+        844
+      ],
+      "status": "PASS",
+      "formQualification": "DESKTOP_RESIZE_INPUT_REACHABILITY_ONLY",
+      "primary": {
+        "rect": {
+          "x": 16,
+          "y": 245.359375,
+          "width": 173.328125,
+          "height": 44
+        },
+        "disabled": false,
+        "label": "SAVE PROFILE"
+      },
+      "parent": "/me",
+      "sameCanvas": true,
+      "socketPeak": 1,
+      "newDomainMutations": 0,
+      "cleanup": {
+        "canvases": 0,
+        "activeSockets": 0,
+        "disposed": true
+      }
+    },
+    {
+      "route": "/gifts/new",
+      "width": 430,
+      "heights": [
+        420,
+        844
+      ],
+      "status": "PASS",
+      "formQualification": "DESKTOP_RESIZE_INPUT_REACHABILITY_ONLY",
+      "primary": {
+        "rect": {
+          "x": 26,
+          "y": 213.765625,
+          "width": 378,
+          "height": 46.78125
+        },
+        "disabled": false,
+        "label": "Create giveaway draft"
+      },
+      "parent": "/gifts",
+      "sameCanvas": true,
+      "socketPeak": 1,
+      "newDomainMutations": 0,
+      "cleanup": {
+        "canvases": 0,
+        "activeSockets": 0,
+        "disposed": true
+      }
+    }
+  ],
+  "directVisualAssessment": {
+    "all12SavedCapturesViewed": true,
+    "Profile": "Focused draft and optional bio are legible. At420 the panel body scrolls; Save is reachable after actual scroll/hit test. At844 the Save/Cancel controls and truthful unavailable optional extension copy are visible. No decorative left rail added.",
+    "Giveaway": "Focused title and real draft form render. At420 the form body continues below viewport and scrolls; primary action was scrolled into view and center hit-tested. At844 quantity and KST fields remain legible; primary action is still below initial fold. Dense ten-screen target parity is not established by these nested form captures.",
+    "captureReuse": "Round01 Profile360420/844 images reused explicitly in round02. Same product, fixture, input and viewport; round02 repeats all assertions. Exactly12 physical PNGs total; no failed artifact overwritten.",
+    "focusLimit": "Input focus is asserted through420 and recorded restored844. Parent/root return-focus snapshots are diagnostic only, not settled focus-restoration assertions; Profile360 root snapshot was BODY. No product defect inferred from that immediate sample."
+  },
+  "diagnostic": {
+    "round01Exit": 1,
+    "cause": "Owned harness wrongly expected nested Back to go directly/world; actual canonical parents are/me and/gifts.",
+    "productDefect": false,
+    "repair": "Assert parent first, record focus, click Back again to/world; preserve original report and captures.",
+    "round02Exit": 0,
+    "sameLeaseNoExtension": true,
+    "accounting": "Original job carry and all durable output included across repair, no failed-carry subtraction."
+  },
+  "commands": [
+    {
+      "command": "Node24.22.2 --check frontend/e2e/visual/qa06/reflow.mjs",
+      "exit": 0
+    },
+    {
+      "command": "reflow-guard.py round-01 (exact offered command in supervisor/admission)",
+      "exit": 1
+    },
+    {
+      "command": "reflow-guard.py round-02 (same job, reserve, fixed deadline)",
+      "exit": 0
+    },
+    {
+      "command": "python3 scripts/mcr/check-plan.py",
+      "exit": 0,
+      "limit": "Planning/source archive only"
+    },
+    {
+      "command": "Python saved artifact/source/asset/preservation verifier",
+      "exit": 0
+    },
+    {
+      "command": "git diff --check",
+      "exit": 0
+    }
+  ],
+  "resourceReceipt": "round-02/supervisor.json",
+  "resourceFullRelease": true,
+  "remaining": {
+    "iOSSafari": "NOT_RUN: connected inventory only; prior Mirroring question pending, no retry before user confirmation",
+    "AndroidChrome": "NOT_RUN: existing SDK enumeration zero connected devices",
+    "softwareKeyboard": "NOT_RUN",
+    "hardwareSafeArea": "NOT_RUN",
+    "allThreeSkins": "This new round PARADE only; published owner all-era map/shared coverage reused with explicit limits",
+    "fullTenScreenFidelity": "OPEN; exact component target still binding, existing bounded owner dispositions reused",
+    "liveBackend": "NOT_RUN; synthetic HTTP/C05/clock boundary, no submit/save/upload",
+    "wholeQA06": "UNFINISHED; no completion, scope cut or extra approval gate"
+  },
+  "images": [
+    {
+      "path": "docs/mcr/evidence/visual/qa06/current-reflow/round-01/profile-360-420.png",
+      "sha256": "49adeeb2640f6b8efcca660ea38c4f6cbb378dc26c91e6eb24301c6782fd744a",
+      "bytes": 43460,
+      "width": 360,
+      "height": 420,
+      "directlyViewed": true
+    },
+    {
+      "path": "docs/mcr/evidence/visual/qa06/current-reflow/round-01/profile-360-844.png",
+      "sha256": "213776a15a4e866fc9f648c3380d2269a2452a7c289c777da4f66b4365825636",
+      "bytes": 85281,
+      "width": 360,
+      "height": 844,
+      "directlyViewed": true
+    },
+    {
+      "path": "docs/mcr/evidence/visual/qa06/current-reflow/round-02/giveaway-360-420.png",
+      "sha256": "de6df1781b6b399d98df74ba4ac0ab4e38b060fa92c22a0e2894c59eef3e908d",
+      "bytes": 30888,
+      "width": 360,
+      "height": 420,
+      "directlyViewed": true
+    },
+    {
+      "path": "docs/mcr/evidence/visual/qa06/current-reflow/round-02/giveaway-360-844.png",
+      "sha256": "a1ef8f2b09431c94b34f8938afdf5df9986d483b2433aff1ad7637b256ef8d9f",
+      "bytes": 48010,
+      "width": 360,
+      "height": 844,
+      "directlyViewed": true
+    },
+    {
+      "path": "docs/mcr/evidence/visual/qa06/current-reflow/round-02/giveaway-390-420.png",
+      "sha256": "6853cf0cb05fe11bc725c4a1556d87ce5918c0f1c0c9fbe92fcd2b9e1d81e247",
+      "bytes": 31488,
+      "width": 390,
+      "height": 420,
+      "directlyViewed": true
+    },
+    {
+      "path": "docs/mcr/evidence/visual/qa06/current-reflow/round-02/giveaway-390-844.png",
+      "sha256": "475dd6dda38f76252d316e7ff59dbed73c4da2eff2c83b9c73f486e3d0b4919c",
+      "bytes": 48850,
+      "width": 390,
+      "height": 844,
+      "directlyViewed": true
+    },
+    {
+      "path": "docs/mcr/evidence/visual/qa06/current-reflow/round-02/giveaway-430-420.png",
+      "sha256": "febf934935e43bb28a9af34e11fd79baeed02dbab4f6aaa3f5e7c782ec310cad",
+      "bytes": 31178,
+      "width": 430,
+      "height": 420,
+      "directlyViewed": true
+    },
+    {
+      "path": "docs/mcr/evidence/visual/qa06/current-reflow/round-02/giveaway-430-844.png",
+      "sha256": "772a9a07e9f82aaab74b0c6e97d48d703baac1273a52f37964918f6bb81f75a1",
+      "bytes": 48529,
+      "width": 430,
+      "height": 844,
+      "directlyViewed": true
+    },
+    {
+      "path": "docs/mcr/evidence/visual/qa06/current-reflow/round-02/profile-390-420.png",
+      "sha256": "1865bc2482114f4589e5e95d98f9fea14b5ab85570a69f08ba72a667c87756cc",
+      "bytes": 44736,
+      "width": 390,
+      "height": 420,
+      "directlyViewed": true
+    },
+    {
+      "path": "docs/mcr/evidence/visual/qa06/current-reflow/round-02/profile-390-844.png",
+      "sha256": "fb5363a6eee4391af55a12e7b7b9a3eb7c291e23eae8909facfb16e1b1d059d9",
+      "bytes": 88002,
+      "width": 390,
+      "height": 844,
+      "directlyViewed": true
+    },
+    {
+      "path": "docs/mcr/evidence/visual/qa06/current-reflow/round-02/profile-430-420.png",
+      "sha256": "7ab53b0ab86fa608a45864ae1cb0c0fa373fe4723bf20116e1074de5e3b75d8a",
+      "bytes": 46372,
+      "width": 430,
+      "height": 420,
+      "directlyViewed": true
+    },
+    {
+      "path": "docs/mcr/evidence/visual/qa06/current-reflow/round-02/profile-430-844.png",
+      "sha256": "50d19b8686c7399566cb586f0083bb121233624bd988e282ac4adca0eea9ee18",
+      "bytes": 92194,
+      "width": 430,
+      "height": 844,
+      "directlyViewed": true
+    }
+  ]
+}

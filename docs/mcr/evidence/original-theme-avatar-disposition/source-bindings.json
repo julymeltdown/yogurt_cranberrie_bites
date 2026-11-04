@@ -1,0 +1,138 @@
+{
+  "qualification": "STATIC_CURRENT_SOURCE_RECONCILIATION_REUSING_SEPARATELY_PINNED_DEVELOPER_RUNS",
+  "canonicalBase": "1be2c6873d482477a817005c0829f6af8d3c5128",
+  "noNewRuntime": true,
+  "pins": [
+    {
+      "path": "frontend/src/features/theme/model/controller.ts",
+      "source": "1be2c6873d482477a817005c0829f6af8d3c5128",
+      "bytes": 5483,
+      "sha256": "879105b2e39a63b6b206c9955a650b7867bcc9ada76c5c350c1286e38da2ac96"
+    },
+    {
+      "path": "frontend/src/world/runtime.ts",
+      "source": "1be2c6873d482477a817005c0829f6af8d3c5128",
+      "bytes": 14730,
+      "sha256": "47fc58ab147702a4e90cf9a28aa101a999177b9af86f6bc0815ecbe36424776f"
+    },
+    {
+      "path": "frontend/src/world/theme/loader.ts",
+      "source": "1be2c6873d482477a817005c0829f6af8d3c5128",
+      "bytes": 449,
+      "sha256": "bbddb7db35fcb682eff83ca7d1375814d125b2e50275b5e5f35aafb77fe91053"
+    },
+    {
+      "path": "frontend/src/world/composition/index.ts",
+      "source": "1be2c6873d482477a817005c0829f6af8d3c5128",
+      "bytes": 22217,
+      "sha256": "8242e0a878742b7d31dfb1f947741b534a97b79bb18391b493d3dbec4eb492fc"
+    },
+    {
+      "path": "frontend/src/entities/avatar/runtime/motion-adoption/compositor.ts",
+      "source": "1be2c6873d482477a817005c0829f6af8d3c5128",
+      "bytes": 6075,
+      "sha256": "3a6f100b87db1db560755cf17b06d83a6e5f67712b049c71004b953651cbe735"
+    },
+    {
+      "path": "frontend/src/entities/avatar/runtime/motion-adoption/reviewed-production.ts",
+      "source": "1be2c6873d482477a817005c0829f6af8d3c5128",
+      "bytes": 5015,
+      "sha256": "dcae35f22db0ce3f20eb52213271d59a25f290a74413a74518eb1708cc92e36c"
+    },
+    {
+      "path": "frontend/src/features/avatar/motion-adoption/controller.ts",
+      "source": "1be2c6873d482477a817005c0829f6af8d3c5128",
+      "bytes": 11452,
+      "sha256": "c092f03427278bb935520651e5f02c46e2e29f2b0a47248a539197fc10793045"
+    },
+    {
+      "path": "frontend/src/features/avatar/motion-adoption/production-owner.ts",
+      "source": "1be2c6873d482477a817005c0829f6af8d3c5128",
+      "bytes": 2743,
+      "sha256": "242697db46552de8233c47a2a8eb80eb5eec5b9312cd147494265967637a52db"
+    },
+    {
+      "path": "frontend/src/features/avatar/motion-adoption/production-persistence.ts",
+      "source": "1be2c6873d482477a817005c0829f6af8d3c5128",
+      "bytes": 3583,
+      "sha256": "c372f14cde10b3886bc156991ee3780673b4d9d024d86e040492a3b02dd1024b"
+    },
+    {
+      "path": "frontend/src/features/avatar/__tests__/reviewed-production/controller.test.tsx",
+      "source": "1be2c6873d482477a817005c0829f6af8d3c5128",
+      "bytes": 7606,
+      "sha256": "4d72db95693f40d094f4a6c6bc45c291da0b4b4635d0408410f3c19f44708113"
+    },
+    {
+      "path": "frontend/src/app/character-entry/registry.ts",
+      "source": "1be2c6873d482477a817005c0829f6af8d3c5128",
+      "bytes": 3788,
+      "sha256": "f8ee9ada9d646e8977dcd22a58a753e1ea79c2002f5d3e050ca78fc16fa846ee"
+    },
+    {
+      "path": "frontend/src/app/world-entry/production.ts",
+      "source": "1be2c6873d482477a817005c0829f6af8d3c5128",
+      "bytes": 10247,
+      "sha256": "bd3b199b680f0df417763679ac85a680efd8022eec1c94946882f92001877967"
+    },
+    {
+      "path": "frontend/src/world/avatar/motion-adoption/renderer.ts",
+      "source": "1be2c6873d482477a817005c0829f6af8d3c5128",
+      "bytes": 8976,
+      "sha256": "088a7550c133cdf22b66782f9259c7b18401c6b4c10ba46a2f482ea0274420aa"
+    },
+    {
+      "path": "docs/mcr/frontend/reviewed-persistence-motion.md",
+      "source": "1be2c6873d482477a817005c0829f6af8d3c5128",
+      "bytes": 14663,
+      "sha256": "22fc863ff8e6aae576d7916835cede70b7858168db64497b5d49de9c5d1a110e"
+    },
+    {
+      "path": "docs/mcr/evidence/reviewed-persistence-motion/handoff.json",
+      "source": "1be2c6873d482477a817005c0829f6af8d3c5128",
+      "bytes": 13406,
+      "sha256": "c5a7a79befd12f182ea395a7657dc602448077a2bbd6a5996c2344933fcca954"
+    },
+    {
+      "path": "docs/mcr/evidence/reviewed-persistence-motion/browser-retry04/native/2026-11-04T16-46-52-781Z-native.json",
+      "source": "1be2c6873d482477a817005c0829f6af8d3c5128",
+      "bytes": 51392,
+      "sha256": "beb18dce1d58b376c64098726bb5adfc78f0e81e8f488a2642d4a4ea9952bf03"
+    },
+    {
+      "path": "docs/mcr/evidence/theme-integration/index.json",
+      "source": "1be2c6873d482477a817005c0829f6af8d3c5128",
+      "bytes": 7661,
+      "sha256": "4c94961bdb3e2dd2da228cfb4dedc1b43ba154c1b4845522b61fb91381c4628e"
+    },
+    {
+      "path": "docs/mcr/art/evidence/selected-character-original-completion/criterion-disposition.json",
+      "source": "1be2c6873d482477a817005c0829f6af8d3c5128",
+      "bytes": 23417,
+      "sha256": "ed06eb6947e0b57da829a064706caf225b61eafb41415c3c32114f60c87046d4"
+    },
+    {
+      "path": "docs/mcr/evidence/map-art06-default-app/source-pins.json",
+      "source": "1be2c6873d482477a817005c0829f6af8d3c5128",
+      "bytes": 7343,
+      "sha256": "46ffd8a0fd5cd55b817bda05d325cec330304d1540ca31a8047d0f8ebb04e0c5"
+    },
+    {
+      "path": "docs/mcr/frontend/selected-character-root.md",
+      "source": "1be2c6873d482477a817005c0829f6af8d3c5128",
+      "bytes": 10807,
+      "sha256": "4111c93eff86345786a8b5ecd7f29197cf1cc3586fc9d936f0c252dfcd52cc54"
+    }
+  ],
+  "dispositions": {
+    "FE06": "Original theme functional client behavior delivered; Map composition/reference density remains separate active work. Device-local preference only, no BE07 preference sync claim.",
+    "FE12": "Original shared compositor/parser/anchor/cache/Profile/World client criteria delivered on reviewed source; actual-main controlled HTTP/C05 hard reload/self/peer evidence published3b91525d.",
+    "FE13": "Original editor catalog/draft/reset/cancel/conflict/uncertainty/explicit save/persisted reentry client criteria delivered; no new missing client leaf identified."
+  },
+  "open": [
+    "Live server/database persistence and real multiuser IN01 retain backend/integration owners.",
+    "Physical devices and full reference acceptance remain separate qualifications; no blanket pure-client completion dependency.",
+    "Map26e focused stage occlusion actual native pending; Artist231 new density derivative source-authoring; contain bands remain consumer sizing."
+  ],
+  "owner": "Root153 canonical composition; Motion83 solely FE17, not editor ownership"
+}

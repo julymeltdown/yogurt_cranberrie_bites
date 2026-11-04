@@ -1,0 +1,15 @@
+{
+  "originalPacket": {
+    "source": "d762018bfbdab43af08f8fea29dc4c3b5fa932c9",
+    "published": "a9c04eb256e7b50e6efc99bfd076eca9a8293100",
+    "scopedPaths": 55,
+    "allScopedModesAndBlobsExact": true,
+    "canonicalReceipt": "/private/tmp/mcr-root-operations-account-ci-publication-receipt.json",
+    "receiptSha256AtVerification": "72601aac5279a6c706cc2fd8fa50a88ac1daabbcc44fb2bba389fc3e64a7ce6b",
+    "privateRootPreserved": true
+  },
+  "terminalFix": {
+    "source": "e0be061fc66c20b7a4e5e3927eda098da3babdbe",
+    "publication": "PENDING_NORMAL_ROOT_FOLLOWUP_RECEIPT"
+  }
+}

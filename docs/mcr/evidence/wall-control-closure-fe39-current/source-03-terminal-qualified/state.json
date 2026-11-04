@@ -1,0 +1,23 @@
+{
+  "at": "2026-11-04T18:10:08.325131+00:00",
+  "pin": "e0be061fc66c20b7a4e5e3927eda098da3babdbe",
+  "clean": true,
+  "source_bytes": 1394450432,
+  "deps_bytes": 789164032,
+  "git_bytes": 2878985,
+  "git_dir": "/Users/lhs/Desktop/mcr/.git/worktrees/fe-gifts-media-detail",
+  "git_dir_bytes": 1945600,
+  "free_bytes": 19128332288,
+  "limits": {
+    "pids": 8,
+    "rss": 3221225472,
+    "whole": 2684354560,
+    "temporary": 83886080,
+    "durable": 25165824,
+    "other": 16777216,
+    "new_total": 134217728
+  },
+  "running": false,
+  "work_done": true,
+  "new_offset": 1968733
+}

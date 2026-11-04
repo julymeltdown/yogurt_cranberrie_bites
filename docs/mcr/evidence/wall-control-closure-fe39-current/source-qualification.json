@@ -11,14 +11,25 @@
   "unchangedTestsReplayed": false,
   "fixtureOnlyRepair": "7aecd87b5ea61f5bd54aeacdbe97e86e6f888f59",
   "native": "PASS_3_CONTEXTS_12_INSPECTED_CAPTURES",
-  "currentHashes": {
+  "typeFailureRetained": "source-01-baseline-type-failure",
+  "qualifiedChecksAndRelease": "source-02-qualified/release.json",
+  "nativeSource": "db917d13abac5a22a946ed068edefb32b2a1da9d",
+  "originalPacketHashes": {
     "frontend/src/app/admin-entry/mural-closure/index.ts": "a28b03a9fece882620b5aeebc7fad1075377b5c2454f21a0b304cc43cbebe3ef",
     "frontend/src/app/admin-entry/mural-closure/MuralClosurePanel.tsx": "93c69e4ebcced9f7f8446023d2f0fb07f56088ad1524739522dafb7c0db58dbf",
     "frontend/src/features/admin/mural/transport.ts": "f473f04ffa9e3d5dbf0129025e5ae46fbac18d3ce1009bc46a85409feac33b87",
     "frontend/src/app/admin-entry/mural-closure/__tests__/entry.test.tsx": "39e0d76739ff95cb34d1496e779e2ddd94b6824fc139b8f422edac6118e5b824",
     "frontend/src/app/admin-entry/mural-closure/__tests__/native.mjs": "94de51c3a4fe011f5bd5846cb5dd5369973ea932e916adb3a8ea836f577564a1"
   },
-  "typeFailureRetained": "source-01-baseline-type-failure",
-  "qualifiedChecksAndRelease": "source-02-qualified/release.json",
-  "nativeSource": "db917d13abac5a22a946ed068edefb32b2a1da9d"
+  "terminalFix": "terminal-fix-qualification.json",
+  "currentHashes": {
+    "frontend/src/app/admin-entry/mural-closure/index.ts": "a28b03a9fece882620b5aeebc7fad1075377b5c2454f21a0b304cc43cbebe3ef",
+    "frontend/src/app/admin-entry/mural-closure/MuralClosurePanel.tsx": "93c69e4ebcced9f7f8446023d2f0fb07f56088ad1524739522dafb7c0db58dbf",
+    "frontend/src/features/admin/mural/transport.ts": "f473f04ffa9e3d5dbf0129025e5ae46fbac18d3ce1009bc46a85409feac33b87",
+    "frontend/src/app/admin-entry/mural-closure/__tests__/entry.test.tsx": "94664a2a35852263ccbce2a59ae9481807fb8f42e53541c4ee1b21883a79a708",
+    "frontend/src/app/admin-entry/mural-closure/__tests__/native.mjs": "94de51c3a4fe011f5bd5846cb5dd5369973ea932e916adb3a8ea836f577564a1",
+    "frontend/src/features/admin/mural/owner.ts": "50d62894fb1ef2f7b8718bd09fe336a3b53085e7c6fcac9285738e6f6b042f03",
+    "frontend/src/app/admin-entry/mural-closure/__tests__/round.py": "1432ab6f7fa89a134c427875a9e85145738d3afe320f48eaec3237b529f36df4"
+  },
+  "nativeHashBoundary": "Original native qualification stays pinned to db917d13; owner.ts now has an early return verified by source-03 only. No changed-owner native claim."
 }

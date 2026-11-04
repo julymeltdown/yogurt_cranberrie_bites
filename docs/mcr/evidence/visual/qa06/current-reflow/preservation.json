@@ -1,0 +1,289 @@
+{
+  "task": "QA06",
+  "originalFileCount": 70,
+  "originalLogicalBytes": 7239136,
+  "allByteIdentical": true,
+  "mismatches": [],
+  "preservedOriginalLocalFiles": {
+    "__pycache__/MCR_EXPORT_PLAN_EN.cpython-314.pyc": {
+      "bytes": 18848,
+      "sha256": "b9732541f0fdd61a76e40654d8dbcc64c923cb7642a38632afcb2db38c113b10"
+    },
+    "docs/mcr/evidence/visual/qa06/consumers-v1/gift-pickup-390-reduced420.png": {
+      "bytes": 28722,
+      "sha256": "177d5eb0fc97f3f6bbd0c03e794c12de9c31ff3a4e98c0e26b6d3264af2b548a"
+    },
+    "docs/mcr/evidence/visual/qa06/consumers-v1/gift-pickup-390.png": {
+      "bytes": 55415,
+      "sha256": "5c80d3874525805a08a69d0bc51406c1429013f24fd1ad2147eac911b5e0b9a0"
+    },
+    "docs/mcr/evidence/visual/qa06/consumers-v1/gift-pickup-430-reduced420.png": {
+      "bytes": 29644,
+      "sha256": "ce2508d0f20e44282dbc0606411727e29c363866428a7ad8b5c3f4628c465781"
+    },
+    "docs/mcr/evidence/visual/qa06/consumers-v1/gift-pickup-430.png": {
+      "bytes": 56907,
+      "sha256": "26281eb5cb251545ab93566d2ba6ed8d7f5567248ed8c48bffefff2feb687a6c"
+    },
+    "docs/mcr/evidence/visual/qa06/consumers-v1/report.partial.json": {
+      "bytes": 26210,
+      "sha256": "6fdc99720bb9fbca6b65c4abf7d45428e876a479bb1cc6b741be024cfe8ce262"
+    },
+    "docs/mcr/evidence/visual/qa06/consumers-v1/wall-caller-360.png": {
+      "bytes": 52767,
+      "sha256": "1269b0b3365ae605a57f284f11891ec584c38c79c61a88be2af31aa7eec3f310"
+    },
+    "docs/mcr/evidence/visual/qa06/consumers-v1/wall-caller-390.png": {
+      "bytes": 51612,
+      "sha256": "23676c765159542a6d6b737388cd2898c2f20dec2ebe2a8607932de4ee54f5c7"
+    },
+    "docs/mcr/evidence/visual/qa06/consumers-v1/wall-caller-430.png": {
+      "bytes": 50190,
+      "sha256": "cd1c71f4772f4abb6f2b584fd0fdaf3bbf8f47402d7af74ba63f517035846944"
+    },
+    "docs/mcr/evidence/visual/qa06/consumers-v2/gift-pickup-360-reduced420.png": {
+      "bytes": 29116,
+      "sha256": "1c718ff7a104586790919cfe6d7e0239285205a5692e02e5aa7120076fac7db2"
+    },
+    "docs/mcr/evidence/visual/qa06/consumers-v2/gift-pickup-360.png": {
+      "bytes": 54463,
+      "sha256": "3c436ceb99b198454802389b752dbbfaf54ffbecfde35e82e719753a8daafa28"
+    },
+    "docs/mcr/evidence/visual/qa06/consumers-v2/gift-pickup-390-reduced420.png": {
+      "bytes": 28505,
+      "sha256": "ae14d4c928b69dd07305408287ff77d2046b0fdfe5416313b5d3b08e37d620fd"
+    },
+    "docs/mcr/evidence/visual/qa06/consumers-v2/gift-pickup-390.png": {
+      "bytes": 55415,
+      "sha256": "5c80d3874525805a08a69d0bc51406c1429013f24fd1ad2147eac911b5e0b9a0"
+    },
+    "docs/mcr/evidence/visual/qa06/consumers-v2/report.partial.json": {
+      "bytes": 17208,
+      "sha256": "0a662c48af2b886f5fbbbb3da9122a3c24a56ffecdedbc5608d6d59497b024bd"
+    },
+    "docs/mcr/evidence/visual/qa06/consumers-v2/wall-caller-360.png": {
+      "bytes": 52767,
+      "sha256": "1269b0b3365ae605a57f284f11891ec584c38c79c61a88be2af31aa7eec3f310"
+    },
+    "docs/mcr/evidence/visual/qa06/consumers-v2/wall-caller-390.png": {
+      "bytes": 51612,
+      "sha256": "23676c765159542a6d6b737388cd2898c2f20dec2ebe2a8607932de4ee54f5c7"
+    },
+    "docs/mcr/evidence/visual/qa06/consumers-v4/report.json": {
+      "bytes": 2098,
+      "sha256": "28efcd71a2d663062c654432f4f235b669a46fb9634f46c568e1d5ef836761fc"
+    },
+    "docs/mcr/evidence/visual/qa06/modal-debug-360/modal-closed-revenge-360.png": {
+      "bytes": 168008,
+      "sha256": "f6a17ea07832989fa4825d70ce93eda84880d8a21d422c05a348b9881a0c14f6"
+    },
+    "docs/mcr/evidence/visual/qa06/modal-debug-360/modal-search-revenge-360.png": {
+      "bytes": 27407,
+      "sha256": "b833eb7a966dc167c1f56247c9a8051437d060a5e458e09a1af9ae0a8f10a84a"
+    },
+    "docs/mcr/evidence/visual/qa06/modal-debug-360/report.json": {
+      "bytes": 4543,
+      "sha256": "af68015843f365759cf3d513d96a58ba955fec380e80814f4e943ec9d2fc0ee7"
+    },
+    "docs/mcr/evidence/visual/qa06/modal-v1/modal-search-danger-360.png": {
+      "bytes": 27411,
+      "sha256": "f7366db5a09bd0966d7a678449c87b638470c1cb15898f202997d6255a75f83a"
+    },
+    "docs/mcr/evidence/visual/qa06/modal-v1/modal-search-danger-390.png": {
+      "bytes": 27582,
+      "sha256": "7077968761e319a9e3d76829740c31e605af43bbe496719c9b716b76125b2874"
+    },
+    "docs/mcr/evidence/visual/qa06/modal-v1/modal-search-danger-430.png": {
+      "bytes": 29118,
+      "sha256": "ae591e721c231855dd3f5c1535e8c9cbb8c55bd08f2523f9546bfc768b28f7b9"
+    },
+    "docs/mcr/evidence/visual/qa06/modal-v1/modal-search-parade-360.png": {
+      "bytes": 27407,
+      "sha256": "9873782231c90567573f905705afdd66d28a82d67d1950436ddf238236e6b4e3"
+    },
+    "docs/mcr/evidence/visual/qa06/modal-v1/modal-search-parade-390.png": {
+      "bytes": 27584,
+      "sha256": "9cf39dfdf974b16de17e0c0882a670f30c266a47fc4b271de485d8cb52362e69"
+    },
+    "docs/mcr/evidence/visual/qa06/modal-v1/modal-search-parade-430.png": {
+      "bytes": 29106,
+      "sha256": "20fbf6113f93b2da9f3d7a00c963fbf833c31c5cabe3758984b46a8402764e2a"
+    },
+    "docs/mcr/evidence/visual/qa06/modal-v1/modal-search-revenge-360.png": {
+      "bytes": 27407,
+      "sha256": "b833eb7a966dc167c1f56247c9a8051437d060a5e458e09a1af9ae0a8f10a84a"
+    },
+    "docs/mcr/evidence/visual/qa06/modal-v1/modal-search-revenge-390.png": {
+      "bytes": 27585,
+      "sha256": "3eb377156a5ba264e74740c62fdd746f7d6257361a6c1500f6cae1bc5236b624"
+    },
+    "docs/mcr/evidence/visual/qa06/modal-v1/modal-search-revenge-430.png": {
+      "bytes": 29128,
+      "sha256": "97977bec4bdaae97df9e01947344299cd131c37bc75214554e7bc761b1a43d9b"
+    },
+    "docs/mcr/evidence/visual/qa06/modal-v1/report.json": {
+      "bytes": 17785,
+      "sha256": "a4a95c078c5f96d273e99e9c5713e6f88e08e8e93b148990c297302a37838bb8"
+    },
+    "docs/mcr/evidence/visual/qa06/smoke-390/landing-revenge-390.png": {
+      "bytes": 248289,
+      "sha256": "dbb09ff5b80b7ceb578c17778b3021722655ff2c55f9af1904ded21345e288cc"
+    },
+    "docs/mcr/evidence/visual/qa06/smoke-390/login-revenge-390-reduced420.png": {
+      "bytes": 199196,
+      "sha256": "7205188bcc0fb1f7668f0fde46341797b7fc14921694686df109fea5a973dd50"
+    },
+    "docs/mcr/evidence/visual/qa06/smoke-390/login-revenge-390.png": {
+      "bytes": 368543,
+      "sha256": "ea52a7559e8bcba3b79f3630b1cec7af429ee07fada24d79defb58fa6fa2bd7a"
+    },
+    "docs/mcr/evidence/visual/qa06/smoke-390/report.json": {
+      "bytes": 36999,
+      "sha256": "8d9aa3db959fd97b59120a9ac9374f9fc9a55664e565988ae6e751847e2e5a18"
+    },
+    "docs/mcr/evidence/visual/qa06/smoke-390/report.partial.json": {
+      "bytes": 36955,
+      "sha256": "e12f9f25c1276aa92105e199d29c410672aa2036e8baa7b0994d80ffe4aebdc3"
+    },
+    "docs/mcr/evidence/visual/qa06/smoke-390/world-revenge-390.png": {
+      "bytes": 210070,
+      "sha256": "168152eafc8182691125732838f17801aee31b0e31290222c42f478345171b28"
+    },
+    "docs/mcr/evidence/visual/qa06/smoke2-390/customize-revenge-390-reduced420.png": {
+      "bytes": 38677,
+      "sha256": "cbf94efdf5f1f470ecc352769e57f9fb866508fec1c615687f4c5c66f5a8cc13"
+    },
+    "docs/mcr/evidence/visual/qa06/smoke2-390/customize-revenge-390.png": {
+      "bytes": 61268,
+      "sha256": "b6d320887196179f18b3dc0b6ae81648080b56d390ae23af9baa86c83f25e677"
+    },
+    "docs/mcr/evidence/visual/qa06/smoke2-390/feed-revenge-390-reduced420.png": {
+      "bytes": 37662,
+      "sha256": "426c3758f72f168ce6d66bef8b12cd7cc2d6314950d0143860fa1a12212ebb5e"
+    },
+    "docs/mcr/evidence/visual/qa06/smoke2-390/feed-revenge-390.png": {
+      "bytes": 62634,
+      "sha256": "2ac956c4c04dcd468721a158684dc59a2b7b8c8b3c43f3b136170c9b46faaed1"
+    },
+    "docs/mcr/evidence/visual/qa06/smoke2-390/gifts-revenge-390.png": {
+      "bytes": 97300,
+      "sha256": "df524cccd38b991e699085939d17229f8702ee6c884411922918dd262a0bab10"
+    },
+    "docs/mcr/evidence/visual/qa06/smoke2-390/landing-revenge-390.png": {
+      "bytes": 248289,
+      "sha256": "dbb09ff5b80b7ceb578c17778b3021722655ff2c55f9af1904ded21345e288cc"
+    },
+    "docs/mcr/evidence/visual/qa06/smoke2-390/login-revenge-390-reduced420.png": {
+      "bytes": 199196,
+      "sha256": "7205188bcc0fb1f7668f0fde46341797b7fc14921694686df109fea5a973dd50"
+    },
+    "docs/mcr/evidence/visual/qa06/smoke2-390/login-revenge-390.png": {
+      "bytes": 368543,
+      "sha256": "ea52a7559e8bcba3b79f3630b1cec7af429ee07fada24d79defb58fa6fa2bd7a"
+    },
+    "docs/mcr/evidence/visual/qa06/smoke2-390/map-revenge-390-reduced420.png": {
+      "bytes": 86888,
+      "sha256": "839ad00cc9ce22e8d93c0a3dc2296132fb7d132f8df98a66637bbc3e2f06430f"
+    },
+    "docs/mcr/evidence/visual/qa06/smoke2-390/map-revenge-390.png": {
+      "bytes": 162846,
+      "sha256": "fff9ab6af83bf3e4461201372ad6d40e62627efeb3472ab87058744b70fabe25"
+    },
+    "docs/mcr/evidence/visual/qa06/smoke2-390/me-revenge-390.png": {
+      "bytes": 73424,
+      "sha256": "6f59de1d34b97194ccfebb9dd2c4eff46d5332bb75a9c1903b5a2a7d4dd5953c"
+    },
+    "docs/mcr/evidence/visual/qa06/smoke2-390/meet-revenge-390.png": {
+      "bytes": 96449,
+      "sha256": "e646c50ee6a0a1314f8527838820ace303f90ad0384eed9077663ec2031bd7da"
+    },
+    "docs/mcr/evidence/visual/qa06/smoke2-390/report.json": {
+      "bytes": 150030,
+      "sha256": "df12df9d57bf98f2c2a2a7e0d4972f9836cdef0f87a97d1e0c5f921e6ac73248"
+    },
+    "docs/mcr/evidence/visual/qa06/smoke2-390/report.partial.json": {
+      "bytes": 149984,
+      "sha256": "60f4adb3876b2f3530bcf131f4c18d9d1037c4bdfe71d99871ba0013836dfb57"
+    },
+    "docs/mcr/evidence/visual/qa06/smoke2-390/wall-revenge-390.png": {
+      "bytes": 58727,
+      "sha256": "8b9e8e4e21ea42bf2c83710d15c31179868988727b01f493119757a651ebb3e6"
+    },
+    "docs/mcr/evidence/visual/qa06/smoke2-390/world-revenge-390.png": {
+      "bytes": 210070,
+      "sha256": "168152eafc8182691125732838f17801aee31b0e31290222c42f478345171b28"
+    },
+    "docs/mcr/evidence/visual/qa06/smoke3-390/customize-revenge-390-reduced420.png": {
+      "bytes": 38423,
+      "sha256": "442c9bedb0bdbd72952000d32b545087d9a1fe00307b81601321e9e9dd90dd12"
+    },
+    "docs/mcr/evidence/visual/qa06/smoke3-390/customize-revenge-390.png": {
+      "bytes": 61268,
+      "sha256": "b6d320887196179f18b3dc0b6ae81648080b56d390ae23af9baa86c83f25e677"
+    },
+    "docs/mcr/evidence/visual/qa06/smoke3-390/feed-revenge-390-reduced420.png": {
+      "bytes": 32175,
+      "sha256": "301d8bb2f51961040943f8097369b0297bd894429020a60b64caeb613d5ef9c0"
+    },
+    "docs/mcr/evidence/visual/qa06/smoke3-390/feed-revenge-390.png": {
+      "bytes": 62634,
+      "sha256": "2ac956c4c04dcd468721a158684dc59a2b7b8c8b3c43f3b136170c9b46faaed1"
+    },
+    "docs/mcr/evidence/visual/qa06/smoke3-390/gifts-revenge-390.png": {
+      "bytes": 97300,
+      "sha256": "df524cccd38b991e699085939d17229f8702ee6c884411922918dd262a0bab10"
+    },
+    "docs/mcr/evidence/visual/qa06/smoke3-390/landing-revenge-390.png": {
+      "bytes": 248289,
+      "sha256": "dbb09ff5b80b7ceb578c17778b3021722655ff2c55f9af1904ded21345e288cc"
+    },
+    "docs/mcr/evidence/visual/qa06/smoke3-390/login-revenge-390-reduced420.png": {
+      "bytes": 199502,
+      "sha256": "b0d529c6f6285b50d89cc66d66fdcb53e77745e6c21b90ce9bbdf6e927acc848"
+    },
+    "docs/mcr/evidence/visual/qa06/smoke3-390/login-revenge-390.png": {
+      "bytes": 368543,
+      "sha256": "ea52a7559e8bcba3b79f3630b1cec7af429ee07fada24d79defb58fa6fa2bd7a"
+    },
+    "docs/mcr/evidence/visual/qa06/smoke3-390/map-revenge-390-reduced420.png": {
+      "bytes": 85895,
+      "sha256": "3c3ccb3aa7d8893d76bd17d36fb0b0a733ddf8c23b6d8c4fe0d66951cb86358c"
+    },
+    "docs/mcr/evidence/visual/qa06/smoke3-390/map-revenge-390.png": {
+      "bytes": 162839,
+      "sha256": "9beacd7938fe6638d540fb8ddf95775576fa1cf8404b8a1a47c3e32f09034ae2"
+    },
+    "docs/mcr/evidence/visual/qa06/smoke3-390/me-revenge-390.png": {
+      "bytes": 73424,
+      "sha256": "6f59de1d34b97194ccfebb9dd2c4eff46d5332bb75a9c1903b5a2a7d4dd5953c"
+    },
+    "docs/mcr/evidence/visual/qa06/smoke3-390/meet-revenge-390.png": {
+      "bytes": 96449,
+      "sha256": "e646c50ee6a0a1314f8527838820ace303f90ad0384eed9077663ec2031bd7da"
+    },
+    "docs/mcr/evidence/visual/qa06/smoke3-390/report.json": {
+      "bytes": 181695,
+      "sha256": "50a1c755f5acc67422370a294324c86e0b4a296508f7ed71d13b35f096c687b6"
+    },
+    "docs/mcr/evidence/visual/qa06/smoke3-390/report.partial.json": {
+      "bytes": 181649,
+      "sha256": "e7812180ff39a3af8ae338ff09d42f046566a2c634ef5dd2255608d5700a5a5a"
+    },
+    "docs/mcr/evidence/visual/qa06/smoke3-390/spatial-v4-map-revenge-390.png": {
+      "bytes": 431002,
+      "sha256": "d85bac8a9d393b0307efc8889390ab475917f972ea0f1abc000ec5a28fd65dc7"
+    },
+    "docs/mcr/evidence/visual/qa06/smoke3-390/spatial-v4-world-revenge-390.png": {
+      "bytes": 315643,
+      "sha256": "9a2ddc8302d755800038a60fd23fcc0e12cbeacdf77d474a495b7f92cd959cd9"
+    },
+    "docs/mcr/evidence/visual/qa06/smoke3-390/wall-revenge-390.png": {
+      "bytes": 58727,
+      "sha256": "8b9e8e4e21ea42bf2c83710d15c31179868988727b01f493119757a651ebb3e6"
+    },
+    "docs/mcr/evidence/visual/qa06/smoke3-390/world-revenge-390.png": {
+      "bytes": 210070,
+      "sha256": "168152eafc8182691125732838f17801aee31b0e31290222c42f478345171b28"
+    }
+  }
+}

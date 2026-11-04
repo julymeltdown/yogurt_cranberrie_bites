@@ -1,0 +1,42 @@
+{
+  "source": "e0be061fc66c20b7a4e5e3927eda098da3babdbe",
+  "result": "PASS",
+  "targetedTests": 3,
+  "unchangedTestsSkipped": 8,
+  "filter": "replacement disposes both controllers",
+  "fullFrontendTypes": "PASS",
+  "scopedLintIncludingOwner": "PASS",
+  "nativeSyntax": "PASS",
+  "regression": "Canonical privacy advance snapshots callbacks; parent disposal precedes an already scheduled child callback. Return when owner has ended, keeping both controllers disposed and data null for actor/event/policy replacements.",
+  "acceptedAt": "2026-11-04T18:10:08.221703+00:00",
+  "fullAt": "2026-11-04T18:10:19.082852+00:00",
+  "admission": {
+    "at": "2026-11-04T18:10:07.625885+00:00",
+    "pin": "e0be061fc66c20b7a4e5e3927eda098da3babdbe",
+    "clean": true,
+    "source_bytes": 1394450432,
+    "deps_bytes": 789164032,
+    "git_bytes": 2878985,
+    "git_dir": "/Users/lhs/Desktop/mcr/.git/worktrees/fe-gifts-media-detail",
+    "git_dir_bytes": 1945600,
+    "free_bytes": 19129475072,
+    "offer": "FE39-PRIVACY-FIX-SOURCE-A-20261104T180955Z",
+    "accepted_at": "2026-11-04T18:10:08.221703+00:00",
+    "other_reserved_bytes": 2952790016,
+    "own_new_bytes": 134217728,
+    "remaining_after_all_growth_bytes": 16042467328,
+    "retained_new_offset_bytes": 1968733,
+    "node_sha256": "b6fb419f0f43bb2fbca273700294dd2f3b685a64b60e8417c295f47646a70e4a",
+    "lock_sha256": "47ca44459819ad0e887d2f4f93394fdf3b1053b8f45edc9ceb0236981feee1f6",
+    "work_deadline": "2026-11-04T18:12:08.221703+00:00",
+    "hard_deadline": "2026-11-04T18:13:08.221703+00:00",
+    "source_stage": "terminal_3_only_plus_types_lint_syntax"
+  },
+  "release": "source-03-terminal-qualified/release.json",
+  "nativeDisposition": "No native replay: original native journeys perform role-context withdrawal then explicit disposal and do not invoke the changed already-ended privacy callback. Original 3 contexts/12 viewed images retain their original immutable source qualification; current owner.ts differs and this changed branch has targeted source proof only.",
+  "currentHashes": {
+    "frontend/src/features/admin/mural/owner.ts": "50d62894fb1ef2f7b8718bd09fe336a3b53085e7c6fcac9285738e6f6b042f03",
+    "frontend/src/app/admin-entry/mural-closure/__tests__/entry.test.tsx": "94664a2a35852263ccbce2a59ae9481807fb8f42e53541c4ee1b21883a79a708",
+    "frontend/src/app/admin-entry/mural-closure/__tests__/round.py": "1432ab6f7fa89a134c427875a9e85145738d3afe320f48eaec3237b529f36df4"
+  }
+}

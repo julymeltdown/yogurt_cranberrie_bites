@@ -258,3 +258,125 @@ role/clock/evidence composition, server denial/downstream failure and live
 operator acceptance remain open with the named producers. An exact new adapter
 leaf may be delegated after the contract is usable; no shared write rights are
 implied. The same persistent goal remains ACTIVE through these required duties.
+
+## Published consumers and remaining protected-evidence contract
+
+Update at 2026-11-05 03:07 KST. This section supersedes the earlier proposal and
+publication status; historical qualification receipts above remain unchanged.
+Root153 published the exact qualified FE37 source `f72941b329aadaa558cd75238345401a893af602`
+at `cf1ca629a33ece977f8b5b1b6faf6152b35e5dbd`, preserving the 65 source assertions
+and 27 synthetic native cases. FE38 was separately delivered by its transferred
+owner at `84e32f6`; that owner is complete/archived and has no current write lease.
+
+Root subsequently granted this owner the exact new `app/operations-entry/**`
+consumer leaf and its separate report/evidence prefixes. The frozen C04 source
+`3a089a3b` now registers `getOwnConcertOperationsAccess`; its strict V1 decoder
+and canonical Auth/privacy consumer were qualified with 37 passing tests, full
+frontend TypeScript and scoped lint. Source `f10455de2c1f023be855f38c5e383013ece1e0dc`
+was published as exact 16 paths at `9a44bc296ef46bbc9da781ae095a80a2cd016fe0`.
+Root's canonical receipt records normal nonforce remote master
+`a9c04eb256e7b50e6efc99bfd076eca9a8293100`, exact scoped modes/blobs, and preserved
+private Root state. Receipt locations are
+`/private/tmp/mcr-root-profile-motif-publication-receipt.json` (FE37) and
+`/private/tmp/mcr-root-operations-account-ci-publication-receipt.json` (common).
+The common consumer's complete implementation, failed first run, repair,
+successful source run and resource inventory correction are recorded in
+`operations-entry.md` and `../evidence/operations-entry/`. No runtime was rerun
+for this documentation update, and no additional correctness ACK is required.
+
+Root retains actual AdminBoundary/router/main/ports mounting and the separate
+authorized `getConcertSettings` join for event phase/revision. A published role
+consumer does not establish a qualified production role issuer or command,
+event, place or evidence authority. Those integration criteria remain OPEN.
+
+### Static protected-evidence trace
+
+Read-only Git-object inspection used immutable published source
+`b97608d4235eb7f82cba29c4807e219f7f606e3c`. This is static source evidence, not
+an HTTP journey or a claim about an enabled production media composition.
+
+| Source | Observed behavior and implication |
+| --- | --- |
+| `backend/services/concert-service/src/operations_live/owners.rs:44` | `ScopedReportEvidence::check_in` accepts `CreateReport` and validates target/READY evidence at creation. It is not a moderator byte-read port. With no provider, the built-in path permits only a USER target with an empty evidence list. |
+| `backend/services/concert-service/src/media_runtime/mod.rs:293` | `BoundOwnerAuthority` rejects a different media owner or any linked target in both prelock and authorize. Existing uploader-only runtime cannot be reused as positive moderator access to a linked REPORT image. |
+| `backend/services/concert-service/src/media_runtime/canonical.rs:104` | Canonical uploader authority checks `SafetySelf`; it does not grant report target/audience or moderator authority. |
+| `backend/services/concert-service/src/adapters/out/media/mod.rs:621` | The repository's authorized read requires READY and invokes its injected `MediaAuthority`, after target prelocking and linkage recheck. The reusable repository hook does not supply the missing privileged policy itself. |
+| `frontend/src/shared/media/contract.ts` and `frontend/src/shared/media/read-media.ts` | REPORT purpose and the canonical content read path already exist. Their shape checks and generic metadata/content sequence do not establish actual report association or a retained moderator delivery fence. |
+| `frontend/src/features/admin/reports/model/controller.ts:20` | Existing `EvidencePort.open({scope,reportId,mediaId,signal})` returns `{mediaId,blob}`. The controller checks the selected report's media list and current authority, rejects late completion, and revokes private Blob URLs on withdrawal. These client checks supplement server authorization. |
+
+Backend205 confirmed this trace and the named existing Media213 hook:
+`PgMedia::read_in` plus a request-bound `MediaAuthority`. Current
+`BoundOwnerAuthority` remains uploader-only. The planned backend-owned
+`public_access/report_evidence.rs` must integrate actual BE42
+`lock_live_media_users_in` for actor and actual media owner in sorted order
+before event/target/media roots. Actual report association/revision, current
+operations role, READY/REPORT checks and native retained child authority must
+survive through Root's HTTP body terminal. This is producer coordination,
+not an immutable implementation or a qualified byte-operation contract.
+
+Next concrete ownership: backend205 and Media213 provide that immutable
+producer and registered operation/interface; backend Root retains the canonical
+scope and HTTP-terminal composition; frontend Root153 binds the resulting
+authorized byte reader to the existing EvidencePort and mounts the qualified
+role/settings consumers. No generic Media URL, client role-only adapter, new
+endpoint or positive fallback is invented here. Original FE37 production
+role/evidence/route acceptance remains OPEN under the same ACTIVE goal.
+
+### Original O05/O06 serving composition and actual owner
+
+The same immutable `b97608d4` source was traced beyond the browser role and
+evidence ports. `moderation_live/runtime.rs:50-62` requires an actual
+`EventRoleProvider::acquire_for_root_terminal` on the canonical scope before
+dispatch. Lines181-188 require the real directory for member/content rows.
+`moderation_live/ports.rs:149-172` declares optional native event restriction,
+World termination, private authority revocation and post/party/giveaway/intro
+content owners; absent ports return Unavailable. Retained components and wire
+schemas therefore cannot establish an enabled member/content service.
+
+Source search found no `moderation_live`/`ModerationRuntime` composition in the
+current concert-service main/config/ProductRPC paths. Backend Root1fc explicitly
+confirmed that these retained components are not served by the current public
+main/ProductRPC and assigned existing backend205 the exact original O05/O06
+production composition scope. Actual serving World handle owner207 and
+publisher16e are typed counterparts, not substitute successful owners. This is
+the current concrete ownership amendment, not a new frontend/backend write grant
+for this checkout.
+
+| Original requirement | Missing production proof and next responsible owner |
+| --- | --- |
+| O05 minimal member review and event suspension | Backend205 must compose the current authorized directory, role fence and actual event restriction owner. Frontend Root153 then binds the existing member controller under the fixed current scope. |
+| O05 affected connection termination | Backend205 must integrate actual serving World termination and private authority revocation, with event-scoped effects and native outcome/receipt identity. Client row changes or a role projection cannot prove the affected connection ended. |
+| O06 hide/restore the specified content types | Backend205 must bind the actual native content owners and directory, current target revision and durable outcomes. Frontend Root153 must exercise the existing typed actions against that served composition, including failure/pending/status behavior. |
+
+The role/time consumer's 37 source tests and FE37's 65 source/27 synthetic native
+cases remain valid at their pinned sources. They do not qualify this missing
+public serving composition, downstream effects, actual affected World session
+termination or real-main journeys. Backend205's qualified immutable handoff is
+the next input; frontend Root153 retains the mount. No additional frontend proof
+job or review/ACK is introduced while those actual producers are absent.
+
+### Original O04 report-decision producer
+
+One further production gap was verified against immutable delivered
+`1be2c6873d482477a817005c0829f6af8d3c5128`. The relevant operations/moderation,
+report repository, admin Action and command registry sources are unchanged from
+the `b97608d4` trace above. `commands/registry.rs:320` registers
+`decideConcertReport` at the existing POST
+`/api/concert/events/{eventId}/admin/reports/{reportId}/decision`, but the
+application's admin `Action` enum has no report-decision action. The retained
+`operations_live::Operation` covers report creation, own list, privileged queue
+and detail, with no decision dispatch. `PgReports` exposes create/own/queue/detail
+and ends its implementation without a decision producer. The separate moderation
+parser covers users/content/audit. This is stronger than missing runtime proof:
+the inspected published source does not implement the registered decision path.
+
+Backend205 received this exact source finding for its original FE37 composition.
+The existing frozen frontend request already sends expected revision, decision
+RESOLVED or DISMISSED, factual note and one idempotency key. Backend must supply
+the real current-role-fenced report transition, revision CAS, audit, durable
+outcome and original-command status resolution at that existing contract.
+The frontend already rejects a wrong report, nonadvancing revision or wrong
+terminal state and retains pending/unknown outcomes without replay. Public report
+creation/replay/conflict/status work does not qualify O04 moderator decisions;
+that actual producer and served journey remain OPEN alongside the private bytes.
+No endpoint or frontend success fallback is added to conceal this missing path.
