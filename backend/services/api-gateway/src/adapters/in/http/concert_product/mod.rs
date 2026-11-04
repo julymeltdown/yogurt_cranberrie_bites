@@ -518,7 +518,10 @@ fn request_metadata(
     headers: &HeaderMap,
     origins: &[String],
 ) -> Result<(String, String), (StatusCode, &'static str)> {
-    let mutation = matches!(*method, Method::POST | Method::PUT | Method::PATCH | Method::DELETE);
+    let mutation = matches!(
+        *method,
+        Method::POST | Method::PUT | Method::PATCH | Method::DELETE
+    );
     if mutation {
         if !single(headers, "origin").is_some_and(|origin| origins.iter().any(|v| v == origin)) {
             return Err((StatusCode::FORBIDDEN, "ORIGIN_NOT_ALLOWED"));
@@ -597,7 +600,10 @@ async fn dispatch(
         .extensions()
         .get::<super::client_identity::VerifiedClientAddress>()
         .copied();
-    let mutation = matches!(method, Method::POST | Method::PUT | Method::PATCH | Method::DELETE);
+    let mutation = matches!(
+        method,
+        Method::POST | Method::PUT | Method::PATCH | Method::DELETE
+    );
     let bodyless_delete = method == Method::DELETE;
     let (content_type, idempotency_key) = match request_metadata(
         &method,
