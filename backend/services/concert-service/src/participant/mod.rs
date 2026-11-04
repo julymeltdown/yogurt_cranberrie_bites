@@ -102,6 +102,7 @@ impl ParticipantService {
             response_json: bytes,
             delivery: None,
             failure: None,
+            content_expires_unix_micros: 0,
         });
         response
             .metadata_mut()

@@ -23,6 +23,7 @@ message ParticipantResponse {
   bytes response_json = 1;
   concert.product.v1.ResponseDelivery delivery = 2; // Internal; never public JSON/headers.
   ParticipantFailure failure = 3; // Mutually exclusive with response_json.
+  int64 content_expires_unix_micros = 4; // Actual root-wide ceiling; internal, never browser JSON/headers.
 }
 // Closed sanitized error envelope after delivery publication. No diagnostic,
 // private payload, or caller-selected text crosses this internal boundary.

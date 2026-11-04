@@ -207,6 +207,10 @@ async fn dispatch(
         Ok(v) => v,
         Err(_) => return error(StatusCode::UNAUTHORIZED, "AUTHENTICATION_REQUIRED"),
     };
+    let original = match context.rpc_deadline() {
+        Ok(v) => v,
+        Err(_) => return error(StatusCode::GATEWAY_TIMEOUT, "DEADLINE_EXCEEDED"),
+    };
     let value = match state
         .client
         .dispatch(
@@ -234,7 +238,7 @@ async fn dispatch(
         Some(v) => v,
         None => return error(StatusCode::SERVICE_UNAVAILABLE, "DEPENDENCY_UNAVAILABLE"),
     };
-    let mut response = match value.failure {
+    let response = match value.failure {
         Some(f) => match failure_status(&f) {
             Ok((status, reason)) => error(status, reason),
             Err(e) => return rpc_error(e),
@@ -248,6 +252,16 @@ async fn dispatch(
             r
         }
     };
+    let (parts, body) = response.into_parts();
+    let body = match super::response_disclosure::DisclosureBody::new(
+        body,
+        value.content_expires_unix_micros,
+        original,
+    ) {
+        Ok(body) => body,
+        Err(e) => return rpc_error(e),
+    };
+    let mut response = Response::from_parts(parts, Body::new(body));
     // This same token survives both success and closed error representations.
     // Only Root's actual outer HTTP EOF layer may complete it.
     response.extensions_mut().insert(delivery);

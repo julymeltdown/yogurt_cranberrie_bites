@@ -4,15 +4,12 @@
 mod gateway_support;
 #[path = "concert_participant_support/identity.rs"]
 mod identity;
-use api_gateway::{
-    adapters::{
-        out::{
-            concert_participant::{self as client, proto, Operation},
-            concert_product::proto as product,
-        },
-        r#in::http::{concert_participant as http, RequestDeadline},
+use api_gateway::adapters::{
+    out::{
+        concert_participant::{self as client, proto, Operation},
+        concert_product::proto as product,
     },
-    config::AppState,
+    r#in::http::{concert_participant as http, RequestDeadline},
 };
 use axum::{
     body::{to_bytes, Body},
@@ -79,6 +76,7 @@ impl Peer {
             r.get_ref().user_id
         );
         assert!(!r.metadata().contains_key("authorization"));
+        let expires = r.get_ref().authority_expires_unix_micros;
         self.0.requests.lock().unwrap().push(r.into_inner());
         let mode = self.0.mode.load(Ordering::SeqCst);
         let mut result = proto::ParticipantResponse {
@@ -86,6 +84,13 @@ impl Peer {
                 .unwrap(),
             delivery: Some(cap()),
             failure: None,
+            content_expires_unix_micros: if mode == 4 {
+                0
+            } else if mode == 3 {
+                expires.min(chrono::Utc::now().timestamp_micros() + 250_000)
+            } else {
+                expires
+            },
         };
         if mode == 1 {
             result.response_json.clear();
@@ -327,6 +332,16 @@ async fn typed_conflict_keeps_delivery_but_dropped_and_invalid_bodies_never_comp
     let bytes = to_bytes(r.into_body(), 16384).await.unwrap();
     assert!(!String::from_utf8_lossy(&bytes).contains("PRIVATE_OWNER_CANARY"));
     assert_eq!(h.seen.completions.load(Ordering::SeqCst), 1);
+    h.seen.mode.store(4, Ordering::SeqCst);
+    let r = h
+        .router
+        .clone()
+        .oneshot(h.request("GET", "", ""))
+        .await
+        .unwrap();
+    assert_eq!(r.status(), StatusCode::SERVICE_UNAVAILABLE);
+    let _ = to_bytes(r.into_body(), 16384).await.unwrap();
+    assert_eq!(h.seen.completions.load(Ordering::SeqCst), 1);
     h.close().await;
 }
 #[tokio::test]
@@ -402,4 +417,40 @@ fn response_allowlist_rejects_cross_identity_private_content_and_mismatched_fail
         "bad-release"
     )
     .is_err());
+}
+
+#[tokio::test]
+async fn response_wide_earlier_expiry_withholds_unpolled_data_without_completing_owner() {
+    let h = Fixture::new().await;
+    h.seen.mode.store(3, Ordering::SeqCst);
+    let r = h
+        .router
+        .clone()
+        .oneshot(h.request("GET", "", ""))
+        .await
+        .unwrap();
+    assert_eq!(r.status(), StatusCode::OK);
+    tokio::time::sleep(Duration::from_millis(300)).await;
+    assert!(to_bytes(r.into_body(), 16384).await.is_err());
+    assert_eq!(h.seen.completions.load(Ordering::SeqCst), 0);
+    h.close().await;
+}
+
+#[tokio::test]
+async fn eof_after_valid_data_still_settles_when_content_ceiling_has_expired() {
+    let h = Fixture::new().await;
+    h.seen.mode.store(3, Ordering::SeqCst);
+    let r = h
+        .router
+        .clone()
+        .oneshot(h.request("GET", "", ""))
+        .await
+        .unwrap();
+    let mut body = r.into_body();
+    assert!(body.frame().await.unwrap().unwrap().is_data());
+    assert_eq!(h.seen.completions.load(Ordering::SeqCst), 0);
+    tokio::time::sleep(Duration::from_millis(300)).await;
+    assert!(body.frame().await.is_none());
+    assert_eq!(h.seen.completions.load(Ordering::SeqCst), 1);
+    h.close().await;
 }

@@ -44,3 +44,23 @@ refusal and pre-dispatch browser/auth/body refusal. It cannot certify a real
 canonical-owner/public-stack flow. The reusable controlled identity fixture is
 copied from `tests/concert_identity_composition.rs` at88de486f, without its test
 cases or synthetic context constructor; production never imports it.
+
+Root granted the exact response-wide disclosure extension after the draft:
+ParticipantResponse field4 carries the actual scope ceiling, captured after
+success or typed failure with the original scope Arc retained. Gateway refuses
+absent, expired or extended ceilings and wraps both forms of response with the
+shared DisclosureBody. The original C04 implementation and its three tests move
+unchanged except crate visibility to `http/response_disclosure.rs`; the former
+private C04 path is a narrow re-export shim. Party-owned C04 route code is
+unchanged. Source provenance: Root published07791018 (which contains4d5c044's
+qualified body guard and existing http-body workspace dependency). No new
+manifest or lockfile change is required.
+
+The new tests additionally cover actual C03 data withheld after an earlier
+response ceiling expires and fresh EOF settlement after already consumed valid
+data. The same original wall/monotonic bounds are retained. Production fields
+are never copied into browser headers or JSON. The earlier draft caveat about a
+missing body guard is resolved in source; source/build/runtime qualification is
+still pending. Both Gateway and Participant compile/native evidence are required
+for this additive internal-wire revision. Phase A/test response initializers
+explicitly use zero, which the real Gateway refuses for public disclosure.

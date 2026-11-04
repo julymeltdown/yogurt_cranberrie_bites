@@ -117,6 +117,11 @@ impl Client {
                 == Some("no-store")
         );
         let value = response.into_inner();
+        anyhow::ensure!(
+            value.content_expires_unix_micros > chrono::Utc::now().timestamp_micros()
+                && value.content_expires_unix_micros <= now + 1_800_000,
+            "actual response-wide disclosure ceiling required"
+        );
         let capability = value
             .delivery
             .clone()

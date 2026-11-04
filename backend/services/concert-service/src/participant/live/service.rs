@@ -125,7 +125,7 @@ impl GuardedParticipantService {
         // for independent native settlement; no handler cleanup releases it.
         let producer = scope.producer_scope();
         let binding_digest = scope.binding().digest();
-        let (delivery, token) = self.delivery.publish(scope).await?;
+        let (delivery, token) = self.delivery.publish(scope.clone()).await?;
         if delivery.instance_id != producer.instance_id
             || delivery.scope_id != producer.scope_id
             || delivery.binding_digest.as_slice() != binding_digest
@@ -158,6 +158,7 @@ impl GuardedParticipantService {
             response_json: bytes,
             delivery: Some(delivery),
             failure,
+            content_expires_unix_micros: scope.disclosure_ceiling()?.expires_micros(),
         });
         response.extensions_mut().insert(token);
         response

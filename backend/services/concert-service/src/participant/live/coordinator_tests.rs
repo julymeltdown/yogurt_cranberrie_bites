@@ -227,6 +227,7 @@ impl proto::concert_participant_service_server::ConcertParticipantService for En
         Ok(Response::new(proto::ParticipantResponse {
             delivery: None,
             failure: None,
+            content_expires_unix_micros: 0,
             response_json: next.get().to_string().into_bytes(),
         }))
     }

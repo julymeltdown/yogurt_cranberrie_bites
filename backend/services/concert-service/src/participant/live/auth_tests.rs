@@ -159,6 +159,7 @@ impl proto::concert_participant_service_server::ConcertParticipantService for En
         let mut response = Response::new(proto::ParticipantResponse {
             delivery: None,
             failure: None,
+            content_expires_unix_micros: 0,
             response_json: serde_json::to_vec(&serde_json::json!({"user_id":auth.user_id,"session_family_id":auth.session_family_id})).unwrap()
         });
         response

@@ -195,6 +195,11 @@ impl GrpcConcertParticipantClient {
                 return Err(Status::unavailable("Participant response unavailable"));
             }
             let value = response.into_inner();
+            if value.content_expires_unix_micros <= chrono::Utc::now().timestamp_micros()
+                || value.content_expires_unix_micros > expires
+            {
+                return Err(Status::unavailable("Participant disclosure unavailable"));
+            }
             let capability = value
                 .delivery
                 .as_ref()
