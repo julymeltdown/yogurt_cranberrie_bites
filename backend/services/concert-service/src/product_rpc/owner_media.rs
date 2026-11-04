@@ -59,6 +59,13 @@ impl ProductOwner for OwnerMediaRuntime {
             | Operation::CreateParty => {
                 return Err(Status::unavailable("Product producer unavailable"));
             }
+            Operation::ApplyParty(_)
+            | Operation::DecidePartyApplication(_)
+            | Operation::CancelPartyApplication(_)
+            | Operation::RemovePartyMember(_, _)
+            | Operation::CancelParty(_) => {
+                return Err(Status::unavailable("Product producer unavailable"));
+            }
         };
         context.check()?;
         let input = OwnerMediaRequest::from_verified(

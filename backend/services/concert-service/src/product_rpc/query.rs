@@ -36,6 +36,54 @@ pub(super) fn command_status(target: &str) -> Result<CommandStatusQuery, Status>
     })
 }
 
+/// Strict C04 form query for the two bodyless DELETE commands. Query presence
+/// is required and every expected revision appears exactly once.
+pub(super) fn party_command(target: &str, operation: super::Operation) -> Result<(), Status> {
+    let fields: &[&str] = match operation {
+        super::Operation::CancelPartyApplication(_) => &["expected_revision"],
+        super::Operation::RemovePartyMember(_, _) => &["expected_revision", "party_revision"],
+        _ => return Ok(()),
+    };
+    let query = target
+        .split_once('?')
+        .map(|(_, value)| value)
+        .ok_or_else(invalid)?;
+    let mut seen = 0u8;
+    for pair in query.split('&') {
+        let (name, value) = pair.split_once('=').ok_or_else(invalid)?;
+        let name = decode_without_plus(name)?;
+        let value = decode_without_plus(value)?;
+        let bit = fields
+            .iter()
+            .position(|field| *field == name)
+            .filter(|position| seen & (1 << position) == 0)
+            .ok_or_else(invalid)?;
+        seen |= 1 << bit;
+        if value.is_empty()
+            || (value.len() > 1 && value.starts_with('0'))
+            || !value.bytes().all(|byte| byte.is_ascii_digit())
+            || value
+                .parse::<i64>()
+                .ok()
+                .is_none_or(|revision| !(1..=9_007_199_254_740_991).contains(&revision))
+        {
+            return Err(invalid());
+        }
+    }
+    if (seen as usize) == (1usize << fields.len()) - 1 {
+        Ok(())
+    } else {
+        Err(invalid())
+    }
+}
+
+fn decode_without_plus(value: &str) -> Result<String, Status> {
+    if value.contains('+') {
+        return Err(invalid());
+    }
+    decode(value)
+}
+
 fn invalid() -> Status {
     Status::invalid_argument("Invalid Concert product query")
 }

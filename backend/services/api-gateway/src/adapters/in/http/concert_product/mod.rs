@@ -9,7 +9,7 @@ use axum::{
     extract::{OriginalUri, Request, State},
     http::{header, HeaderMap, HeaderValue, Method, StatusCode},
     response::{IntoResponse, Response},
-    routing::{get, post, put},
+    routing::{delete, get, post, put},
     Json, Router,
 };
 use std::sync::{Arc, OnceLock};
@@ -34,6 +34,26 @@ pub fn router(state: Arc<AppState>) -> Router {
         .route(
             "/api/concert/events/:event_id/parties/:party_id",
             get(dispatch),
+        )
+        .route(
+            "/api/concert/events/:event_id/parties/:party_id/applications",
+            post(dispatch),
+        )
+        .route(
+            "/api/concert/events/:event_id/party-applications/:application_id/decision",
+            post(dispatch),
+        )
+        .route(
+            "/api/concert/events/:event_id/party-applications/:application_id",
+            delete(dispatch),
+        )
+        .route(
+            "/api/concert/events/:event_id/parties/:party_id/members/:user_id",
+            delete(dispatch),
+        )
+        .route(
+            "/api/concert/events/:event_id/parties/:party_id/cancel",
+            post(dispatch),
         )
         .route("/api/concert/events/:event_id/commands", get(dispatch))
         .route(
@@ -75,6 +95,20 @@ pub(super) fn owns_receipt(method: &Method, path: &str) -> bool {
         return true;
     }
     let pieces: Vec<_> = tail.split('/').collect();
+    if (method == Method::POST
+        && matches!(pieces.as_slice(), ["parties", party, "applications"] if uuid(party).is_some()))
+        || (method == Method::POST
+            && matches!(pieces.as_slice(), ["parties", party, "cancel"] if uuid(party).is_some()))
+        || (method == Method::POST
+            && matches!(pieces.as_slice(), ["party-applications", application, "decision"] if uuid(application).is_some()))
+        || (method == Method::DELETE
+            && matches!(pieces.as_slice(), ["party-applications", application] if uuid(application).is_some()))
+        || (method == Method::DELETE
+            && matches!(pieces.as_slice(), ["parties", party, "members", user] if uuid(party).is_some() && uuid(user).is_some()))
+    {
+        return true;
+    }
+    let pieces: Vec<_> = tail.split('/').collect();
     if pieces.len() != 3 || pieces[0] != "media" || uuid(pieces[1]).is_none() {
         return false;
     }
@@ -85,6 +119,81 @@ pub(super) fn owns_receipt(method: &Method, path: &str) -> bool {
 #[cfg(test)]
 mod receipt_scope_tests {
     use super::*;
+    #[test]
+    fn party_mutations_have_exact_receipt_ownership_and_protected_errors() {
+        let root = format!("/api/concert/events/{}", Uuid::new_v4());
+        let party = Uuid::new_v4();
+        let application = Uuid::new_v4();
+        let user = Uuid::new_v4();
+        for (method, tail) in [
+            (Method::POST, format!("parties/{party}/applications")),
+            (
+                Method::POST,
+                format!("party-applications/{application}/decision"),
+            ),
+            (Method::DELETE, format!("party-applications/{application}")),
+            (Method::DELETE, format!("parties/{party}/members/{user}")),
+            (Method::POST, format!("parties/{party}/cancel")),
+        ] {
+            let path = format!("{root}/{tail}");
+            assert!(owns_receipt(&method, &path));
+            assert!(is_product(&path));
+            assert!(!owns_receipt(&Method::GET, &path));
+            assert!(!owns_receipt(&method, &format!("{path}/extra")));
+        }
+    }
+
+    #[test]
+    fn party_delete_requires_origin_intent_and_single_canonical_key_without_content_type() {
+        let origins = vec!["https://mcr.example".to_owned()];
+        let path = "/api/concert/events/00000000-0000-4000-8000-000000000001/party-applications/00000000-0000-4000-8000-000000000002";
+        let mut h = HeaderMap::new();
+        assert_eq!(
+            request_metadata(&Method::DELETE, path, &h, &origins)
+                .unwrap_err()
+                .1,
+            "ORIGIN_NOT_ALLOWED"
+        );
+        h.insert("origin", HeaderValue::from_static("https://mcr.example"));
+        assert_eq!(
+            request_metadata(&Method::DELETE, path, &h, &origins)
+                .unwrap_err()
+                .1,
+            "BROWSER_INTENT_REQUIRED"
+        );
+        h.insert("x-mcr-intent", HeaderValue::from_static("browser"));
+        assert_eq!(
+            request_metadata(&Method::DELETE, path, &h, &origins)
+                .unwrap_err()
+                .1,
+            "INVALID_INPUT"
+        );
+        h.insert(
+            "idempotency-key",
+            HeaderValue::from_str(&Uuid::new_v4().to_string()).unwrap(),
+        );
+        assert!(request_metadata(&Method::DELETE, path, &h, &origins).is_ok());
+        h.append(
+            "idempotency-key",
+            HeaderValue::from_str(&Uuid::new_v4().to_string()).unwrap(),
+        );
+        assert!(request_metadata(&Method::DELETE, path, &h, &origins).is_err());
+        h.remove("idempotency-key");
+        h.insert(
+            "idempotency-key",
+            HeaderValue::from_str(&Uuid::new_v4().to_string()).unwrap(),
+        );
+        h.insert("content-type", HeaderValue::from_static("application/json"));
+        assert!(request_metadata(&Method::DELETE, path, &h, &origins).is_err());
+        h.remove("content-type");
+        h.append("origin", HeaderValue::from_static("https://mcr.example"));
+        assert_eq!(
+            request_metadata(&Method::DELETE, path, &h, &origins)
+                .unwrap_err()
+                .1,
+            "ORIGIN_NOT_ALLOWED"
+        );
+    }
     #[test]
     fn journal_bypass_is_exclusive_to_canonical_c04_media_mutations() {
         let event = Uuid::new_v4();
@@ -172,6 +281,7 @@ fn is_product(path: &str) -> bool {
         || tail.starts_with("media/")
         || tail.starts_with("posts/")
         || tail.starts_with("parties/")
+        || tail.starts_with("party-applications/")
 }
 /// Cover outer transport rejections too, without discarding owner recovery details.
 pub async fn protect_response(request: Request, next: axum::middleware::Next) -> Response {
@@ -233,6 +343,56 @@ fn rpc_error(status: tonic::Status) -> Response {
     };
     error(code, reason)
 }
+// Shared by the live handler and focused boundary tests.
+fn request_metadata(
+    method: &Method,
+    path: &str,
+    headers: &HeaderMap,
+    origins: &[String],
+) -> Result<(String, String), (StatusCode, &'static str)> {
+    let mutation = matches!(*method, Method::POST | Method::PUT | Method::DELETE);
+    if mutation {
+        if !single(headers, "origin").is_some_and(|origin| origins.iter().any(|v| v == origin)) {
+            return Err((StatusCode::FORBIDDEN, "ORIGIN_NOT_ALLOWED"));
+        }
+        if single(headers, "x-mcr-intent") != Some("browser") {
+            return Err((StatusCode::FORBIDDEN, "BROWSER_INTENT_REQUIRED"));
+        }
+    }
+    let bodyless_delete = *method == Method::DELETE;
+    let content_type = if bodyless_delete {
+        if headers.contains_key("content-type") {
+            return Err((StatusCode::BAD_REQUEST, "INVALID_INPUT"));
+        }
+        "".to_owned()
+    } else {
+        single(headers, "content-type").unwrap_or("").to_owned()
+    };
+    let idempotency_key = single(headers, "idempotency-key").unwrap_or("").to_owned();
+    if mutation && uuid(&idempotency_key).is_none() {
+        return Err((StatusCode::BAD_REQUEST, "INVALID_INPUT"));
+    }
+    if mutation
+        && !bodyless_delete
+        && !(if path.ends_with("/bytes") {
+            matches!(
+                content_type.as_str(),
+                "image/jpeg" | "image/png" | "image/webp"
+            )
+        } else {
+            content_type == "application/json"
+        })
+    {
+        return Err((StatusCode::UNSUPPORTED_MEDIA_TYPE, "INVALID_MEDIA_TYPE"));
+    }
+    if !mutation
+        && (headers.contains_key("content-type") || headers.contains_key("idempotency-key"))
+    {
+        return Err((StatusCode::BAD_REQUEST, "INVALID_INPUT"));
+    }
+    Ok((content_type, idempotency_key))
+}
+
 async fn dispatch(
     State(state): State<Arc<AppState>>,
     OriginalUri(uri): OriginalUri,
@@ -257,46 +417,27 @@ async fn dispatch(
         return error(StatusCode::BAD_REQUEST, "INVALID_INPUT");
     };
     let method = request.method().clone();
-    let client_address = request.extensions()
-        .get::<super::client_identity::VerifiedClientAddress>().copied();
-    let mutation = matches!(method, Method::POST | Method::PUT);
-    let headers = request.headers();
-    if mutation {
-        if !single(headers, "origin")
-            .is_some_and(|origin| state.browser_auth_origins.iter().any(|v| v == origin))
-        {
-            return error(StatusCode::FORBIDDEN, "ORIGIN_NOT_ALLOWED");
-        }
-        if single(headers, "x-mcr-intent") != Some("browser") {
-            return error(StatusCode::FORBIDDEN, "BROWSER_INTENT_REQUIRED");
-        }
-    }
-    let content_type = single(headers, "content-type").unwrap_or("").to_owned();
-    let idempotency_key = single(headers, "idempotency-key").unwrap_or("").to_owned();
-    if mutation && uuid(&idempotency_key).is_none() {
-        return error(StatusCode::BAD_REQUEST, "INVALID_INPUT");
-    }
-    if mutation
-        && !(if uri.path().ends_with("/bytes") {
-            matches!(
-                content_type.as_str(),
-                "image/jpeg" | "image/png" | "image/webp"
-            )
-        } else {
-            content_type == "application/json"
-        })
-    {
-        return error(StatusCode::UNSUPPORTED_MEDIA_TYPE, "INVALID_MEDIA_TYPE");
-    }
-    if !mutation
-        && (headers.contains_key("content-type") || headers.contains_key("idempotency-key"))
-    {
-        return error(StatusCode::BAD_REQUEST, "INVALID_INPUT");
-    }
+    let client_address = request
+        .extensions()
+        .get::<super::client_identity::VerifiedClientAddress>()
+        .copied();
+    let mutation = matches!(method, Method::POST | Method::PUT | Method::DELETE);
+    let bodyless_delete = method == Method::DELETE;
+    let (content_type, idempotency_key) = match request_metadata(
+        &method,
+        uri.path(),
+        request.headers(),
+        &state.browser_auth_origins,
+    ) {
+        Ok(value) => value,
+        Err((status, reason)) => return error(status, reason),
+    };
     let limit = if !mutation {
         0
     } else if uri.path().ends_with("/bytes") {
         MAX_BODY
+    } else if bodyless_delete {
+        0
     } else {
         65536
     };
@@ -382,7 +523,9 @@ async fn dispatch(
         Err(_) => return error(StatusCode::UNAUTHORIZED, "AUTHENTICATION_REQUIRED"),
     };
     let body = match disclosure::DisclosureBody::new(
-        Body::from(result.body), result.content_expires_unix_micros, original,
+        Body::from(result.body),
+        result.content_expires_unix_micros,
+        original,
     ) {
         Ok(body) => Body::new(body),
         Err(_) => return error(StatusCode::SERVICE_UNAVAILABLE, "DEPENDENCY_UNAVAILABLE"),
