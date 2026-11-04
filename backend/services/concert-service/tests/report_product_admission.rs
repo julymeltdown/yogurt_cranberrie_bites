@@ -116,7 +116,6 @@ async fn frozen_own_report_read_preserves_original_bodyless_signed_query() {
     assert_eq!(frozen["cache_control"], "no-store");
     for query in [
         "",
-        "?",
         "?limit=1&state=OPEN",
         "?state=IN_REVIEW&limit=100",
         "?cursor=ab12&limit=20",
@@ -141,6 +140,7 @@ async fn frozen_own_report_read_preserves_original_bodyless_signed_query() {
 #[tokio::test]
 async fn own_report_read_rejects_privileged_filters_ambiguous_queries_and_payloads() {
     for query in [
+        "?",
         "?limit=0",
         "?limit=101",
         "?limit=01",

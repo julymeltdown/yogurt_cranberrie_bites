@@ -82,9 +82,11 @@ impl ReportOperation {
 // Match the retained Operations wire's canonical raw query. Keep the original
 // target bytes for the signed parent, owner binding and authenticated cursor.
 fn own_query(target: &str) -> Result<(), Status> {
-    let raw = target.split_once('?').map_or("", |(_, query)| query);
-    if raw.is_empty() {
+    let Some((_, raw)) = target.split_once('?') else {
         return Ok(());
+    };
+    if raw.is_empty() {
+        return Err(invalid());
     }
     let mut seen = std::collections::BTreeSet::new();
     for part in raw.split('&') {
