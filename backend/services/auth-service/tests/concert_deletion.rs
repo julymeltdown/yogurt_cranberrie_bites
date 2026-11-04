@@ -130,6 +130,100 @@ fn owners(owner: Arc<Owner>) -> ConcertDeletionOwners {
         private_data: Some(owner),
     }
 }
+
+struct ClockOwner {
+    seen: Mutex<Vec<std::time::Instant>>,
+    never_reply: bool,
+}
+#[async_trait]
+impl ConcertTicketDeletionPort for ClockOwner {
+    async fn apply(
+        &self,
+        command: ConcertDeletionCommand,
+    ) -> Result<ConcertDeletionAcknowledgement, ConcertDeletionFailure> {
+        let original = platform::call_deadline::current().expect("dispatch clock is required");
+        self.seen.lock().unwrap().push(original);
+        tokio::task::yield_now().await;
+        tokio::time::sleep(StdDuration::from_millis(2)).await;
+        self.seen
+            .lock()
+            .unwrap()
+            .push(platform::call_deadline::current().expect("clock across await"));
+        if self.never_reply {
+            return std::future::pending().await;
+        }
+        Ok(ConcertDeletionAcknowledgement {
+            command,
+            fence_revision: 1,
+        })
+    }
+}
+
+#[tokio::test]
+async fn dispatch_exposes_one_original_clock_across_await() {
+    let owner = Arc::new(ClockOwner {
+        seen: Mutex::new(Vec::new()),
+        never_reply: false,
+    });
+    let d = ConcertDeletionDispatcher::new(
+        Legacy,
+        ConcertDeletionOwners {
+            tickets: Some(owner.clone()),
+            ..Default::default()
+        },
+        StdDuration::from_secs(1),
+    )
+    .unwrap();
+    let before = std::time::Instant::now();
+    d.dispatch(command(ConcertDeletionTarget::Tickets))
+        .await
+        .unwrap();
+    let seen = owner.seen.lock().unwrap();
+    assert_eq!(seen.len(), 2);
+    assert_eq!(seen[0], seen[1]);
+    assert!(seen[0] > before && seen[0] <= std::time::Instant::now() + StdDuration::from_secs(1));
+    assert!(
+        platform::call_deadline::current().is_none(),
+        "dispatch scope must not leak"
+    );
+}
+
+#[tokio::test]
+async fn earlier_parent_expires_without_renewal_or_a_second_owner_call() {
+    let owner = Arc::new(ClockOwner {
+        seen: Mutex::new(Vec::new()),
+        never_reply: true,
+    });
+    let d = ConcertDeletionDispatcher::new(
+        Legacy,
+        ConcertDeletionOwners {
+            tickets: Some(owner.clone()),
+            ..Default::default()
+        },
+        StdDuration::from_secs(1),
+    )
+    .unwrap();
+    let parent = std::time::Instant::now() + StdDuration::from_millis(30);
+    platform::call_deadline::scope(parent, async {
+        assert_eq!(
+            d.dispatch(command(ConcertDeletionTarget::Tickets)).await,
+            Err(AuthError::DependencyUnavailable)
+        );
+        let count = owner.seen.lock().unwrap().len();
+        assert!(count > 0);
+        assert!(owner.seen.lock().unwrap().iter().all(|v| *v == parent));
+        assert_eq!(
+            d.dispatch(command(ConcertDeletionTarget::Tickets)).await,
+            Err(AuthError::DependencyUnavailable)
+        );
+        assert_eq!(
+            owner.seen.lock().unwrap().len(),
+            count,
+            "expired parent cannot be renewed"
+        );
+    })
+    .await;
+}
 fn command(target: ConcertDeletionTarget) -> ConcertDeletionCommand {
     ConcertDeletionCommand {
         key: ConcertDeletionKey {

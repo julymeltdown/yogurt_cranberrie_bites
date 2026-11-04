@@ -36,6 +36,19 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
             &[contracts_build::proto_root()],
         )?;
     println!("cargo:rerun-if-changed={}", deletion_source_proto.display());
+    let deletion_apply_proto = contracts_build::proto_root().join("concert/v1/account_deletion.proto");
+    let deletion_apply_output =
+        std::path::PathBuf::from(std::env::var("OUT_DIR")?).join("account_deletion");
+    std::fs::create_dir_all(&deletion_apply_output)?;
+    tonic_prost_build::configure()
+        .build_server(true)
+        .build_client(true)
+        .out_dir(&deletion_apply_output)
+        .compile_protos(
+            &[deletion_apply_proto.clone()],
+            &[contracts_build::proto_root()],
+        )?;
+    println!("cargo:rerun-if-changed={}", deletion_apply_proto.display());
     tonic_prost_build::configure()
         .build_server(true)
         .build_client(true)

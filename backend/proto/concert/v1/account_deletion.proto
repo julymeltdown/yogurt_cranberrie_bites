@@ -1,0 +1,36 @@
+syntax = "proto3";
+package concert.account_deletion.v1;
+
+// Background Auth workload only; never impersonates a Gateway actor.
+enum Target {
+  TARGET_UNSPECIFIED = 0;
+  TARGET_TICKETS = 1;
+  TARGET_SESSIONS = 2;
+  TARGET_SHARING = 3;
+  TARGET_PRIVATE_DATA = 4;
+}
+message Command {
+  string saga_id = 1;
+  string user_id = 2;
+  string actor_id = 3;
+  Target target = 4;
+  int64 retention_seconds = 5;
+  int32 retention_nanos = 6;
+}
+message ApplyRequest {
+  Command command = 1;
+  bytes request_nonce = 2;
+  int64 expires_unix_micros = 3;
+}
+// Emitted only after the actual injected owner commits/drains. Incomplete is
+// an RPC failure, never a partial/queued/boolean success response.
+message ApplyResponse {
+  Command command = 1;
+  uint64 fence_revision = 2;
+  bytes source_binding = 3;
+  bytes request_nonce = 4;
+  int64 expires_unix_micros = 5;
+}
+service AccountDeletionService {
+  rpc Apply(ApplyRequest) returns (ApplyResponse);
+}
