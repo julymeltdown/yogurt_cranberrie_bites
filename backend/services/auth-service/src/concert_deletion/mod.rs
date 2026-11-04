@@ -47,6 +47,12 @@ impl<D> ConcertDeletionDispatcher<D> {
     }
 
     pub async fn dispatch(&self, command: ConcertDeletionCommand) -> AuthResult<()> {
+        let now = std::time::Instant::now();
+        let original = platform::call_deadline::current()
+            .map_or(now + self.deadline, |parent| parent.min(now + self.deadline));
+        if original <= now {
+            return Err(AuthError::DependencyUnavailable);
+        }
         command
             .validate()
             .map_err(|_| AuthError::InvalidInput("Invalid Concert deletion command"))?;
@@ -86,11 +92,14 @@ impl<D> ConcertDeletionDispatcher<D> {
                 }
             }
         };
-        let receipt = tokio::time::timeout(self.deadline, apply)
-            .await
-            .map_err(|_| AuthError::DependencyUnavailable)?
-            .map_err(|_| AuthError::DependencyUnavailable)?;
-        if !receipt.verifies(&command) {
+        let receipt = tokio::time::timeout_at(
+            tokio::time::Instant::from_std(original),
+            platform::call_deadline::scope(original, apply),
+        )
+        .await
+        .map_err(|_| AuthError::DependencyUnavailable)?
+        .map_err(|_| AuthError::DependencyUnavailable)?;
+        if std::time::Instant::now() >= original || !receipt.verifies(&command) {
             return Err(AuthError::DependencyUnavailable);
         }
         Ok(())
