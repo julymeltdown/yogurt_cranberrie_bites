@@ -1,0 +1,4 @@
+{
+  "extends": "../../../../tsconfig.json",
+  "include": ["social-policy-wire.test.ts", "social-policy-wire.config.ts", "../transport/engine.ts", "../transport/contract.ts"]
+}

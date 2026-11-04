@@ -299,7 +299,10 @@ export class TransportEngine implements WorldTransport {
         this.roster = roster; this.sequence = frame.streamSeq; this.tick = frame.serverTick; this.ack = frame.ackInputSeq
       } else {
         if ('streamId' in frame) ensure(frame.streamId === b.streamId)
-        if (frame.type === 'switchRejected') {
+        if (frame.type === 'policy.baseline' || frame.type === 'policy.invalidate') {
+          // Metadata borrows this authenticated stream; it never grants World or HTTP authority.
+          ensure(frame.eventId === b.eventId)
+        } else if (frame.type === 'switchRejected') {
           ensure(this.pending?.sent && this.pending.type === 'switchRoom' && this.pending.requestId === frame.requestId)
           this.pending = null; this.clearTimer('control'); this.stateTo('live')
         } else if (frame.type === 'resyncRequired') {

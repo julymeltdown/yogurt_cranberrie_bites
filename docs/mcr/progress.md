@@ -1,6 +1,6 @@
 # Execution record
 
-Updated **2026-11-04T18:59:39+09:00** from the two 09:52Z portfolio rollups and published history through `bb1345b5`. Main records owner dispositions and publication metadata only, with no code/query/test/screenshot re-review. All **112 required tasks and 61 required IA entries** remain in scope.
+Updated **2026-11-04T19:56:00+09:00** from the frontend 10:50Z hourly rollup, later live owner/lead outcomes through 10:54Z, and published history through 02bd4620. Backend original-task dispositions retain the latest complete 09:52Z census pending its next ordinary digest. Main records owner dispositions and publication metadata only, with no code/query/test/screenshot re-review. All **112 required tasks and 61 required IA entries** remain in scope.
 
 ## Current task accounting
 
@@ -77,6 +77,28 @@ This reconciliation preserves the owners' actual dispositions: FE08 is explicitl
 | Release | Existing lane-level source/native/browser receipts are preserved. | **IN01 completed; IN02–IN05 remain open.** Real devices, accessibility, capacity/recovery, qualified real-stack startup, remaining physical-place/operator inputs and full 61-entry IA accounting remain open. |
 
 ## Portfolio and staffing update
+
+The frontend 10:50Z hourly rollup reports **zero new unique original-task closures**. Backend's latest full per-task census remains 09:52Z; subsequent live reports establish bounded delivery, not a new original-task census. The recorded total therefore stays **39/112**: 13 acceptance dispositions and 26 additional original-task criteria outcomes. FE40 remains counted once. C07 and QA10 remain unreconciled; original IN01 remains accepted and IN02–IN05 remain open.
+
+| Major work | Current owner-reported outcome | Remaining action/owner |
+| --- | --- | --- |
+| Backend production composition | CF02/CF03 and actual combined Intro/Participant startup now passed owner qualification; startup receipt eb9c03cc is published. Inbox/Post checks also passed. | Gateway's route case remains with its implementation owner. Distinct existing developers own notification ingress/fanout, target authority and Gateway routing. Real age-provider/social, public HTTP and actual IN03 work continue. No startup/component result is promoted to an original integration closure. |
+| Reference frontend | Profile CSS 6d1b5b36, Customize background through 145a8e93, native Feed assets bdcdc184 and panel titles 5132e93b are published. Giveaway CSS 78f51c50 is published through 02bd4620. | Nine CSS workers report directly to Root153. Sign-in/Landing/Map recaptures, Meet/Wall/Customize CSS and Feed intrinsic/reference-media rounds remain assigned. Missing Giveaway photos/shared chrome and whole ten-screen fidelity remain open. |
+| Map and avatar integration | Map4 retains its correctly failed disabled-fixture attempts. Owner26e committed eligible-attendee synthetic input/boundary work at 3aca2225; AR03 adapter source is also committed. | Map validation/native capture/publication are NOT_RUN under the disk floor; no runtime lease is held. Real public C03 admission is a separate requirement. Avatar validation/root composition remain open. Root uses the interval for separate Social source work. |
+| Wall tools | Complete proposal a9dd6376 is published and the human A/B choice has been asked. Static THE BLACK PARADE caption is independently authorized. | Expanded erase/fill/committed-undo waits for an actual human answer; no preselection or elapsed-time default. Other UI work continues. |
+| Capacity and custody | New native jobs remain below the 16 GiB start floor. The removed Title/Focus checkout was reportedly 1,253,376 allocated bytes; actual filesystem/APFS free-space change was not measured. A wrong-recipient cleanup removed that reportedly clean completed checkout. | At 10:58Z the actual owner reconciled actor0644 / dispatcher153 / owner50a8 and confirmed tracked source, branch and canonical evidence reachable; original delivery stays COMPLETE. Full discarded local/private-state preservation is UNPROVEN because no pre-removal archive exists. Root153 stops retirement dispatch; resource21d handles unaffected safe candidates through actual owners. No king release, threshold reduction or blanket cleanup. |
+| Original integration/release | No new original IN02–IN05, whole C07, QA05/QA08 or full QA06 closure is reported. | Existing owners continue the real-stack, multiuser, physical-device, load/recovery, exact-reference and final 61-entry IA obligations. |
+
+The 10:53Z recent 50-chat sample contains 38 MCR chats: 4 active coordinators, 7 active developer/art/QA chats, 10 idle and 17 not loaded. Activity is not source-writing throughput, goal completion or proof of abandonment. Existing leads reuse ready related owners; adding chats/checkouts behind the same disk constraint does not increase validation capacity.
+
+Feed reference fixtures use each native-resolution supplied-image crop as the complete fixture image, with true dimensions in both card and detail. No unavailable high-resolution original or generated content is implied. These are explicitly local qualification fixtures, not real user posts; production authorization stays unchanged. Root owns non-CSS wiring, while the existing d51f worker remains CSS-only.
+
+The nine foreground screens remain Landing, Sign in, Map, Customize, Feed, Meet, Giveaway, Wall and My Profile. World, character artwork and separately assigned backgrounds retain distinct ownership. Original reference fidelity and backend integration are both required and receive fair bounded rounds.
+
+Root153 reports the three stale startup governance documents synchronized to published f94602da without changing application code, branch or HEAD. No king/SL inspection, acknowledgment or central-ledger update is a delivery prerequisite. The custody exception is an operational ownership issue, not a new approval stage.
+
+## Prior portfolio update — 09:52Z
+
 
 The 09:52Z owner/SL rollups add **no new unique original-task closure**. The current total stays **39/112**:13 recorded acceptance dispositions and26 additional task-criteria outcomes. FE40's final owner closure, source `bd20356a`, publication `4d501d92` and readback `baad4944` strengthen its already-counted MOCK_READY client row. Counting that row again would inflate progress. C07 and QA10 remain unreconciled; original IN01 remains accepted and IN02–IN05 remain open.
 
