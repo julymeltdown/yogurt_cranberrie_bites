@@ -51,3 +51,5 @@ Pinned contract bytes at the base (no amendments):
 - `contracts/generated/mcr-domain.openapi.json`: `905d6f5b6f66f95cb68499a5fbfb32802539fce515f421226d79cb375ecfb887`.
 
 Actual build/native artifact IDs and exit codes will be appended after execution. Source readiness is not acceptance.
+
+Coordinated prerequisite intake before any accepted build: Root explicitly authorized serial `cherry-pick -x 591d908a85a01fe0a494e04c0109bb0bec64a3e1`, producing `d8a841acd1e05eef7af2de89c3cdb46a5317a985`. Its exact outside-assignment paths are Auth/Friend/Notification/Concert `build.rs` and `docs/mcr/backend/build-script-worktree-paths.md`. These replace compile-time protocol/include worktree paths with the existing runtime contracts-build helper to fix Root's observed cache/protoc shadowing. No target cleanup or additional artifact scope was granted. This prerequisite is already Root-owned delivery; the BE27 handoff must avoid duplicating it. Runtime migration inputs still require live source and baked-path pins.
