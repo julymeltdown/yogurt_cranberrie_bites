@@ -164,8 +164,11 @@ including restart and cleanup. It does not use Cargo or a shared target. The fir
 run exposed a test-harness PL/pgSQL `SELECT` without a destination after four cases;
 the harness was corrected to `PERFORM`. The next run passed ten cases and cleanup.
 The final run passed all eleven cases, including an exact duplicate, with PG
-16.14, command exit 0 and cleanup PASS. Committed `target-sql-evidence.json`
-records that authoring snapshot and all exact migration hashes; 0033 SHA-256 is
+16.14, command exit 0 and cleanup PASS. After incorporating published Profile/root
+changes, the complete Concert migration set was rerun at clean committed source
+`f4418be168939912a600046b3c70bc74bfbe4dfa`: eleven cases PASS and cleanup PASS.
+Committed `target-sql-evidence.json` records that source and all exact migration
+hashes; 0033 SHA-256 is
 `f3f07358a78b7d515788f6fe289b6a42bb9b0951035d26cb754278c44844bb12`.
 This is SQL proof, not compilation of the Rust caller. Rust correlation/status
 tests remain NOT_RUN pending allocation.
