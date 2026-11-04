@@ -1676,12 +1676,14 @@
       "Public production authorities/providers and actual HTTP/multiuser IN02-IN04 journeys remain open; passing startup/component checks do not close them.",
       "Full ten-screen reference parity, QA06, physical devices, original load/recovery and final61-entry IA/release obligations remain open."
     ],
-    "resource_state": "The removed completed Title/Focus checkout was only1.2MiB and did not recover usable headroom. Resource21d is coordinating larger completed-checkout candidates with their actual owners;16GiB start and8GiB running floors remain unchanged. Source work/publication continue where feasible.",
+    "resource_state": "New native validation starts remain below16GiB. The removed Title/Focus checkout was reportedly1,253,376 allocated bytes; actual filesystem/APFS free-space change was not measured. Resource21d owns safe larger candidates through their actual owners. The16GiB start and8GiB running floors remain unchanged; source/publication continue where feasible.",
     "custody_exception": {
-      "state": "OPEN_OWNER_RECONCILIATION",
-      "report": "A misrouted cleanup message caused another chat to remove the reportedly clean completed Title/Focus checkout. Root reports reachable branch/canonical evidence preserved; actual owner must reconcile exact path, unique data and whether any active checkout was touched.",
-      "owner": "Resource21d coordinates Root153 and the already assigned cleanup owner; no duplicate audit owner.",
-      "routing": "Affected retirement dispatch route pauses until recipient/path ownership is reconciled. Unaffected development/publication continue. Owner disposition can resume authorized safe retirement without king acknowledgment."
+      "state": "OWNER_RECONCILED_WITH_PRESERVATION_GAP",
+      "report": "Actual Title/Focus owner confirms original delivery COMPLETE unchanged and retained tracked source/branch/canonical evidence reachable. No pre-removal private/admin/index/sparse/xattr/local-config/reflog archive exists in the owner disposition; all discarded local-state preservation is UNPROVEN. The post-incident manifest is not a discarded-state backup.",
+      "owner": "Actual owner50a8 reconciled actor0644 and misrouted dispatcher153. Resource21d coordinates unaffected safe candidates; no duplicate audit owner or king technical review.",
+      "routing": "Root153 has stopped further retirement dispatch; the affected route remains paused. Unaffected source/publication and properly assigned safe cleanup continue without king release/acknowledgment.",
+      "updated_at": "2026-11-04T10:58:35Z",
+      "capacity_evidence": "Actor reported1,253,376 allocated worktree bytes. Actual filesystem/APFS free-space delta was NOT_MEASURED."
     },
     "wall_product_decision": {
       "state": "AWAITING_USER_CHOICE",
