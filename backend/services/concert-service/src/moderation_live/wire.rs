@@ -36,14 +36,15 @@ impl ModerationRequest {
         f: &ProductRequest,
     ) -> Result<Self, CommandError> {
         scope.check().map_err(|_| CommandError::Denied)?;
-        if canonical(&f.user_id) != Some(scope.actor())
+        if scope.parent_method.as_ref() != "/concert.product.v1.ProductService/Dispatch"
+            || canonical(&f.user_id) != Some(scope.actor())
             || canonical(&f.event_id) != Some(scope.event())
             || canonical(&f.session_family_id) != Some(scope.session_family())
             || canonical(&f.request_id) != Some(scope.request_id())
             || f.http_method != scope.http_method()
             || f.http_target != scope.http_target()
             || Sha256::digest(&f.http_body).as_slice() != scope.body_digest()
-            || Sha256::digest(f.encode_to_vec()).as_slice() != scope.parent_body_digest
+            || parent_frame_digest(f)? != scope.parent_body_digest
         {
             return Err(CommandError::Denied);
         }
@@ -78,6 +79,17 @@ impl ModerationRequest {
         r.digest = h.finalize().into();
         Ok(r)
     }
+}
+// VerifiedParentAuthority::request_digest hashes the admitted gRPC body,
+// including its uncompressed flag and big-endian unary message length.
+fn parent_frame_digest(f: &ProductRequest) -> Result<[u8; 32], CommandError> {
+    let body = f.encode_to_vec();
+    let length = u32::try_from(body.len()).map_err(|_| CommandError::InvalidInput)?;
+    let mut hash = Sha256::new();
+    hash.update([0]);
+    hash.update(length.to_be_bytes());
+    hash.update(body);
+    Ok(hash.finalize().into())
 }
 pub fn parse(
     event: Uuid,

@@ -12,7 +12,7 @@ Read-only provenance:
 
 - Retained BE15 `commands`/`repository::receipt` supplies registered operations, canonical server-HMAC fingerprints, key rotation, authorization-before-replay, fixed 86400-second expiry and tombstones.
 - Retained BE38 `event_operations` supplies the fenced-role ABI, transaction deadline pinning and legacy audit source. No positive event-role provider is inferred from that ABI.
-- Operations owner unpublished `8f9197b9d96656a55bb75d7a8f1c9b1642881437` informed full ProductRequest scope binding. Its subsequent `2f00616e4e11e66d364224d4f1a99092aac36da2` correction establishes same-connection role/evidence interfaces. Those private modules are not dependencies or qualification evidence.
+- Operations owner unpublished `8f9197b9d96656a55bb75d7a8f1c9b1642881437` informed the ProductRequest binding structure. Current source tracing corrected its payload-only digest pattern: the actual sealed parent hashes the complete admitted uncompressed gRPC frame (flag, length and protobuf message). Its subsequent `2f00616e4e11e66d364224d4f1a99092aac36da2` correction establishes same-connection role/evidence interfaces. Those private modules are not dependencies or qualification evidence.
 - Retained canonical `OwnerGuardScope`, `GuardedAuthority`, `ProducerTransaction`, and `ScopedProductProducer` supply the actual Root guard/producer interfaces. No second scope is acquired or completed here.
 - Native harness ownership checks follow retained `tests/event_operations.rs`; Python reuses `migration_smoke.Cluster` at the task base. Marker/token, UID, inode, private socket, exact database and server data-directory checks precede native mutations. No SQLx ledger rows are manufactured.
 
@@ -30,7 +30,7 @@ There is no frozen `getConcertAdminUser` operation. Unsupported routes, query ke
 
 ## Canonical authority and provider ABI
 
-`ModerationRuntime::new(pool, owners, roles, fingerprint_keys, cursor_key)` implements the existing `ScopedProductProducer`. Its public dispatch accepts the already-held `Arc<OwnerGuardScope>` and original `ProductRequest`. It verifies actor, event, session family, request ID, operation, method, target, HTTP body digest, SHA256 of the full prost ProductRequest and all original deadlines/observation bounds. A detached or altered frame cannot reuse the scope.
+`ModerationRuntime::new(pool, owners, roles, fingerprint_keys, cursor_key)` implements the existing `ScopedProductProducer`. Its public dispatch accepts the already-held `Arc<OwnerGuardScope>` and original `ProductRequest`. It verifies actor, event, session family, request ID, operation, method, target, HTTP body digest, SHA256 of the exact uncompressed unary gRPC frame containing the full prost ProductRequest and all original deadlines/observation bounds. A detached or altered frame cannot reuse the scope.
 
 `EventRoleProvider::acquire_for_root_terminal(scope)` must acquire the real event-role owner's revision/revocation/disclosure fence and retain it in Root's lifecycle through the actual HTTP terminal, including cancellation and lost responses. Merely returning an `Arc` to this dispatcher is insufficient. `EventRoleFence` binds the canonical Root digest, supplies same-connection `check_in` and target-role checks, and checks disclosure. Headers, JWT role claims, membership, bootstrap or profile fields never supply privileged roles. `roles: None` returns affected-operation unavailable before database/owner effects. This patch intentionally supplies no fabricated production role provider.
 
@@ -99,3 +99,5 @@ Synthetic native fixtures do not qualify actual Concert admission changes, World
 - `contracts/domain/v1/admin.schema.json` SHA256 `953e78a482d998e35c9612c30467600adcead3c9e9d4fb6ab7679a2164aef640`.
 - `contracts/domain/v1/policy.json` SHA256 `81b0da4c007543765f120c4ea58163cc1eadea41e10d24db54e1d177ef4e5fbb`.
 - `contracts/generated/mcr-domain.openapi.json` SHA256 `79a066b88119e53f6f16876d7e3fe59a18ee956be6ed6d2af7ee1efa187e0feb`.
+
+- Source correction after checkpoint `db360d67`: traced `VerifiedParentAuthority::request_digest` and the admitting interceptor; compare SHA256 of flag + big-endian message length + full prost message, and require the ProductService Dispatch parent method. The signature-verified parent test covers the actual frame boundary. Execution remains pending the fresh target lease.
