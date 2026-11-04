@@ -120,3 +120,40 @@ Initial failure logs remain: runtime-1 aborts after two incorrect stationary-roo
 `final-receipt.json` SHA256 is `7ec01ee2e32ec1d337a2c49d39587b3b5293743bdc5963a12f0f104d9030692d`. It binds source stability, immutable artifacts, commands/exits, 62 passed cases, ordinary ignored counts, explicit DB executions, logs, limitations and cleanup. All final handles are terminal; private fixture roots `/private/tmp/mcr-pg-oa9cl7cd` and the root recorded by `auth-bridge-4.json` are removed. Process scan finds no retaining Cargo/rustc/native/DB process for the target/evidence/fixtures. Scoped rustfmt 1.88, `git diff --check` and `python3 scripts/mcr/check-plan.py` exit 0. The planning check is not application acceptance.
 
 This candidate closes the local successful-switch runtime gate and connects the qualified sealed Auth port. Production Profile/recipient composition and remote invalidation semantics remain unavailable. No real Gateway two-account/product-art/device/load/IN01 or release acceptance is claimed; the assigned goal remains active for required unfinished production work. Main alone integrates/pushes this committed handoff. The shared target is released explicitly after the source-bound native checkpoint, with no further Cargo work without a new lease.
+
+
+## WORLD-IN01-PROBE public two-principal helper
+
+Root assigned this independent source-only validation increment at clean parent `c1bde74fb19c3042d5356e6ef0fe156ecf1bc4c9`. Exact writable paths are new `backend/scripts/mcr/world_two_principal_probe.py`, new dedicated stdlib test `backend/scripts/mcr/test_world_two_principal_probe.py`, and this append. No application, contract, manifest, root launcher, source archive, selected artwork or database files change. No Cargo target, compilation, installation or private database was used. The existing persistent runtime goal was inspected and remains historically `BLOCKED`; this aligned manual continuation does not reset or falsely complete it.
+
+Callable API:
+
+```python
+from world_two_principal_probe import run_probe
+
+result = run_probe(
+    gateway_url=gateway_url,
+    browser_origin=browser_origin,
+    event_id=actual_event_id,
+    room_id=actual_room_id,
+    bearer_tokens=[first_public_auth_access_token, second_public_auth_access_token],
+    ws_url=actual_world_ws_url,
+    bootstrap=actual_public_world_enabled_bootstrap_document,
+    timeout=20.0,
+)
+# Root records result with its own genuine Auth/service/source/binary provenance.
+```
+
+Network targets must be numeric HTTP(S)/WS(S) origins, with the WebSocket path exactly `/world-ws`, no query, credentials or subprotocol. This matches Root's owned loopback launcher and keeps external DNS resolution outside the probe. The separate browser Origin may use its configured hostname. The default total operation budget is 20 seconds, configurable from 1 to 45; individual socket waits are capped at three seconds and close handshakes at one second within the existing deadline. HTTP JSON is bounded to 2 MiB, server C05 messages to 65,536 bytes and client messages to 4,096 bytes, with bounded fragment/message counts. No unbounded retries are made. CLI use accepts the same argument object through stdin and emits only a sanitized JSON result; credentials must never be placed in command arguments or saved reports.
+
+The helper re-reads actual public C03 bootstrap with each supplied bearer, requires two distinct canonical participant/profile identities and actual World capability, and compares the complete map and avatar manifests with the supplied qualified bootstrap. It preserves canonical map revision 4 and the approved selected-static avatar release. It requests tickets only through public `POST /api/concert/events/{event}/world-tickets`, sending the exact five snake-case resource/room fields, bearer, configured Origin and `X-MCR-Intent: browser`. Exact response fields, resource/room/event bindings, ticket syntax, expiry, protocol, path and authentication timeout are checked. Tickets enter only the initial C05 text `authenticate` frame, never the URL, cookie, subprotocol or report.
+
+It verifies a separate initial authoritative snapshot for each actual actor, distinct recipient streams in one room epoch, mutual membership, continuous per-stream sequence, monotonic server ticks and consumed-input acknowledgements. A single cardinal intent is sent for actor A; actor B must observe actual displacement. A stop intent must be consumed, both clients must agree on the stopped position, and idle actor B must remain stationary. Positions must stay inside the exact bootstrap collision grid. Source-specific BE12 bounds are eight pixels per server tick and at most forty pixels for one 250 ms held intent, with movement along the submitted direction. These source checks add no new C05 prediction profile, V10/artwork or optional-product gate. The helper never submits coordinates, durations, timestamps or actor identifiers as movement authority.
+
+There is no public membership-release route in the inspected C05 router. The helper closes actor A with a bounded native close handshake, requires actor B to observe A's removal while retaining its own membership, and then closes B. Every failure closes all opened sockets. Close acknowledgements and first-actor peer removal are reported; this does not assert a SQL cleanup inspection for the final actor. Errors and results contain fixed check labels, counts and outcomes only, without bearer/ticket values, raw bodies, names, identities, cookies, endpoints or arbitrary exception text. The runtime has no installed `websocket`/`websockets` Python client, so the helper uses a focused stdlib RFC6455 transport: random masked client frames, verified Upgrade accept, no negotiated extensions, text fragmentation, interleaved ping/pong, strict flags/minimal lengths and bounded payloads. Application C05 pings receive exact C05 pongs.
+
+Validation command: `python3 -B -m unittest discover -s backend/scripts/mcr -p test_world_two_principal_probe.py -v`, exit **0**, **10 tests passing** (last run 0.629 seconds). The synthetic loopback HTTP/WebSocket fixture exercises the entire two-client movement/ACK/removal/close flow. Sixteen negative fixture scenarios cover duplicate actor, changed release, wrong ticket binding/type, wrong snapshot identity/room, invalid Upgrade, sequence/epoch/ACK errors, teleport, unapproved avatar, extra fields, duplicate players, cache policy and HTTP denial. Additional transport cases cover masking, fragmented text and interleaved ping, C05 pong, UTF-8/duplicate/nonfinite JSON rejection, invalid/reserved/masked/binary/oversized frames, partial-frame deadlines, chunked/EOF HTTP bodies and a stalled partial HTTP body. `git diff --check` passes.
+
+Inspected boundary revisions: C05 schema SHA-256 `1732e627037fe91533ac6f7fe74e36683ce9b846bfbfc020b3cce298ae84df36`; Gateway `concert_world.rs` SHA-256 `3e2362131442f127b532b86496025e1c9013659b5ce48555a0ee2582468edc49`; Concert `world_ws.rs` SHA-256 `2717e66a1d30d78e63d66668f5f845ed13f4261e2c6f602ecbc4bb076178ef91`. Helper SHA-256 `7faef114364ad8d376be9a5c35a55bf4f9a9b9442c753cc0c452c81da7255b41`; dedicated test SHA-256 `a7350de5be0496acaa2f300fea9a4eb3103e392e1a0473af9cdc1c7283b487e2`.
+
+Status: **MOCK_READY/source-qualified helper; actual IN01 NOT_RUN here**. Synthetic tokens, fixtures and PASS results validate the probe only. Root owns the invocation against genuine signup/verification/login principals and the freshly frozen production stack, current readiness/recovery composition, public C03 success, service/binary/source pins and owned cleanup. No public two-user or product acceptance is inferred from these tests. Root receives the committed helper directly and retains launcher composition; this owner retains concrete helper fixes without an SL/King review or acknowledgment gate.
