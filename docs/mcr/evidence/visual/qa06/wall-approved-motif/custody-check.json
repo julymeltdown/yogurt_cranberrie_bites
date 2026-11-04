@@ -1,0 +1,68 @@
+{
+  "sourceFiles": 444,
+  "servedAssets": 23,
+  "sourceMismatches": [],
+  "assetMismatches": [],
+  "screenshots": [
+    {
+      "path": "round-01/wall-approved-motif-360-844.png",
+      "bytes": 33760,
+      "sha256": "49d812e43bc309c597c411b0f4079f9f4732ddedd1255a7952a91c8d877e0a83",
+      "width": 360,
+      "height": 844
+    },
+    {
+      "path": "round-01/wall-approved-motif-390-844.png",
+      "bytes": 34137,
+      "sha256": "1ebf55654e955f55da8b6b9afdac7d6c4b52f7302846ee85918eb69336cdec60",
+      "width": 390,
+      "height": 844
+    },
+    {
+      "path": "round-01/wall-approved-motif-390-420.png",
+      "bytes": 22857,
+      "sha256": "c5fec0d8232f000f5d1c0cd7af0dac757b14746cdb6444b76ba11377b3bc84d9",
+      "width": 390,
+      "height": 420
+    },
+    {
+      "path": "round-01/wall-approved-motif-430-844.png",
+      "bytes": 33102,
+      "sha256": "23550e7da06a37888a5924792248b875d7fcd9548e0d074f18496ee57f7c9c4d",
+      "width": 430,
+      "height": 844
+    },
+    {
+      "path": "round-02/wall-approved-motif-360-844.png",
+      "bytes": 33760,
+      "sha256": "49d812e43bc309c597c411b0f4079f9f4732ddedd1255a7952a91c8d877e0a83",
+      "width": 360,
+      "height": 844
+    },
+    {
+      "path": "round-02/wall-approved-motif-390-844.png",
+      "bytes": 34137,
+      "sha256": "1ebf55654e955f55da8b6b9afdac7d6c4b52f7302846ee85918eb69336cdec60",
+      "width": 390,
+      "height": 844
+    },
+    {
+      "path": "round-02/wall-approved-motif-390-420.png",
+      "bytes": 22857,
+      "sha256": "c5fec0d8232f000f5d1c0cd7af0dac757b14746cdb6444b76ba11377b3bc84d9",
+      "width": 390,
+      "height": 420
+    },
+    {
+      "path": "round-02/wall-approved-motif-430-844.png",
+      "bytes": 33102,
+      "sha256": "23550e7da06a37888a5924792248b875d7fcd9548e0d074f18496ee57f7c9c4d",
+      "width": 430,
+      "height": 844
+    }
+  ],
+  "originalFiles": 70,
+  "originalMismatches": [],
+  "pngBytes": 247712,
+  "status": "PASS"
+}

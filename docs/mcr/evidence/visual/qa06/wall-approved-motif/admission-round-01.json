@@ -1,0 +1,20 @@
+{
+  "job": "QA06-WALL-MOTIF-B1-20261104T1835Z",
+  "admissionEpoch": 1793817403.814703,
+  "workDeadline": 1793817703.814703,
+  "cleanupDeadline": 1793817763.814703,
+  "candidate": "5b0c5136dcb173f8af79a25b11dc960ba58a0f2b",
+  "actualPhysicalCarryBytes": 1285554176,
+  "nonshrinkingHistoricalCarryFloor": 1285545984,
+  "chargedCarryBytes": 1285554176,
+  "freeBytes": 14940762112,
+  "otherWorstNewBytes": 2952790016,
+  "aggregateWorstNewBytes": 3221225472,
+  "afterAllReservedBytes": 11719536640,
+  "all70OriginalBytesPreserved": true,
+  "allInputPinsExact": true,
+  "port19877Free": true,
+  "ownDependencyLinkAbsent": true,
+  "ownTemporaryAbsent": true,
+  "scopeUnchanged": true
+}

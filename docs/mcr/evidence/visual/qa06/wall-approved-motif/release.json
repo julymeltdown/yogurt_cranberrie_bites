@@ -1,0 +1,28 @@
+{
+  "job": "QA06-WALL-MOTIF-B1-20261104T1835Z",
+  "acceptedAt": 1793817403.814703,
+  "workDeadline": 1793817703.814703,
+  "cleanupDeadline": 1793817763.814703,
+  "fullCleanupAt": 1793817662.7243469,
+  "FULL": true,
+  "round01Exit": 143,
+  "round02Exit": 0,
+  "remainingOwnedPids": [],
+  "port19877Closed": true,
+  "ownLinkAbsent": true,
+  "ownTempAbsent": true,
+  "newReservationBytes": 0,
+  "slotHeld": false,
+  "combinedPeaks": {
+    "temp": 30302362,
+    "durable": 479232,
+    "allPids": 12,
+    "rss": 2742894592,
+    "pngs": 8,
+    "new": 30724250,
+    "whole": 1316282522
+  },
+  "finalFreeBytes": 15328489472,
+  "pngsIncludingFailedCarry": 8,
+  "notification": "Immediate FULL RELEASE sent to Social before documentation; same accepted fixed clock, no extension or correctness approval"
+}

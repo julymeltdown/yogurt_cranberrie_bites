@@ -1,0 +1,137 @@
+{
+  "task": "QA06",
+  "case": "QA06-WALL-APPROVED-MOTIF",
+  "status": "PREPARED_NOT_RUN_PENDING_FRESH_FINITE_SOCIAL_ADMISSION",
+  "originalGoal": {
+    "createdAt": 1793759287,
+    "actualStatus": "BLOCKED",
+    "aligned": true,
+    "unfinished": true,
+    "reset": false
+  },
+  "canonicalBase": "7d2f948a2367e951fc484f7f7f390ba9c40facfd",
+  "branch": "codex/mcr-qa-QA06-wall-seed-20261105",
+  "checkout": "fe-ref-public",
+  "preservedPriorBranch": "codex/mcr-qa-QA06-mobile-20261105@4d69aa9185592980d3e6b614a7cd5c6f30a2a12d",
+  "preservedOriginalBranch": "codex/mcr-qa-QA06-mobile-visual@5b96b995e904ed0798c26206ca86e3c1b68d1010",
+  "original70FilesByteIdentical": true,
+  "purpose": "Only uncovered actual-App approved-motif rendering state after personal all-ten retained-source comparison; no duplicate capture project or global matrix",
+  "ownerReuseDisposition": "Root153 and WALL202 explicitly report no compatible existing actual-App approved-motif image/report; art/seed source qualification reused, not UI acceptance",
+  "scope": {
+    "route": "/wall",
+    "widths": [
+      360,
+      390,
+      430
+    ],
+    "height": 844,
+    "additionalShort390": 420,
+    "era": "REVENGE",
+    "eraReason": "Existing unchanged actual-main fixture bootstrap defaultsREVENGE. Keep real baseline; do not forcePARADE by Auth/C03/C05 changes or a preference-write. Earlier planning namedPARADE; actual current baseline is disclosed. Original3skin requirements remain open.",
+    "maxSuccessfulCaptures": 4,
+    "maxJobCapturesIncludingFailedCarry": 8,
+    "syntheticAdapter": "Only existing successful GET/mural/snapshot palette/pixels; exact approved128x128 bytes. Original metadata,event/revision/auth/clock/tools/C05 pass through unchanged. Existing fixture original native-fetch fallback preserved.",
+    "domainWrites": "None, including no theme/preferences command. Canonical UI login/world ticket/signout are explicit fixture transport boundaries.",
+    "claimsNotMade": [
+      "operator provisioning",
+      "live authoritative server snapshot",
+      "backend identity/arrival",
+      "other eras",
+      "real keyboard",
+      "hardware safe area",
+      "physical Safari/Android",
+      "fullreference",
+      "61IA",
+      "wholeQA06"
+    ]
+  },
+  "inputPins": [
+    {
+      "path": "frontend/public/wall/initial-motif-v1/manifest.json",
+      "sha256": "3f1aa318f0e4b7d8fa7f079b1101f7386619291a8dbb3bb04ef70820952f34ce",
+      "bytes": 1424
+    },
+    {
+      "path": "frontend/public/wall/initial-motif-v1/palette.json",
+      "sha256": "9d6f27f9d60773877053459e47766017d0be0f3f4c7f889fff97ffca60e2247d",
+      "bytes": 211
+    },
+    {
+      "path": "frontend/public/wall/initial-motif-v1/pixels.bin",
+      "sha256": "f29eaf4ea632e2a34b6dd4fdfdc6f8a3d07ab780af96e19c2a64c28faf42c721",
+      "bytes": 16384
+    },
+    {
+      "path": "frontend/src/app/world-entry/mural-production/__tests__/default-entry/preview.ts",
+      "sha256": "e2af02c405caef3143e7cb0c5eddc69b2ecdf14a5bf6e27d91dce03b2c5376ee",
+      "bytes": 12382
+    },
+    {
+      "path": "frontend/src/app/world-entry/mural-production/__tests__/default-entry/preview.html",
+      "sha256": "e55893b49528caa08738e5dcc5735f5669304935df8454ee1c4cd78efdccbfd8",
+      "bytes": 344
+    },
+    {
+      "path": "frontend/src/app/world-entry/mural-production/__tests__/default-entry/native.mjs",
+      "sha256": "5834830a1350078d7ed1f59263dce8044b53605f8c6a1c3f4ae81822f224e416",
+      "bytes": 14673
+    },
+    {
+      "path": "frontend/src/app/world-entry/mural-production/placement.json",
+      "sha256": "0bca5013f8b38a535728d68cb06c3905e4a18e1e79a09cf797cc6161a59fe02c",
+      "bytes": 663
+    }
+  ],
+  "sourceProvenance": [
+    {
+      "source": "c18d1bfe42aabb8c006f2cde1ad860d799a55cc7",
+      "path": "frontend/e2e/visual/qa06/reflow-guard.py",
+      "destination": "frontend/e2e/visual/qa06/wall-seed-guard.py",
+      "adaptation": "Own guard sibling case/output/env/driver labels and8PNG aggregate cap; original job carry/deadlines/WHOLE/NEW/TEMP/PIDs/RSS/floors unchanged."
+    },
+    {
+      "source": "7d2f948a2367e951fc484f7f7f390ba9c40facfd",
+      "path": "frontend/src/app/world-entry/mural-production/__tests__/default-entry/native.mjs",
+      "destination": "frontend/e2e/visual/qa06/wall-seed.mjs",
+      "adaptation": "Read-only existing actual-main fixture/config/canonical login/signout; source-bound public serving and approved C04 read adapter, not renderer copied/replaced."
+    }
+  ],
+  "stageReceipt": {
+    "owner": "1d34b5af06016058ca8d40d71ed62ea0d440be02",
+    "published": "aeb7512b6949ef02aaf4c8d6c67f7efb94964728",
+    "nativeCandidate": "fbbfe633",
+    "finalReport": "docs/mcr/evidence/map-stage-placement/native02/report.json",
+    "native01": "OWNER_REJECTED_NOT_ACCEPTANCE",
+    "sourcePack10Unchanged": true,
+    "oldConsumer36AllUnchanged": false,
+    "noNewMapJob": true
+  },
+  "guard": {
+    "pythonAST": "PASS",
+    "nodeSyntaxRuntime": "NOT_RUN until accepted guard allocation",
+    "actualCarryBytes": 1285545984,
+    "caps": {
+      "WHOLE": 2147483648,
+      "NEW": 268435456,
+      "TEMP": 209715200,
+      "durable": 33554432,
+      "ALLPIDs": 24,
+      "RSS": 4294967296,
+      "allJobPNGs": 8
+    },
+    "workSeconds": 300,
+    "cleanupSeconds": 60,
+    "startFreeGiB": 12,
+    "liveFreeGiB": 8,
+    "freeMinusAllAcceptedNewGiB": 9
+  },
+  "ownership": [
+    "frontend/e2e/visual/qa06/**",
+    "docs/mcr/evidence/visual/qa06/**",
+    "docs/mcr/frontend/mobile-visual-qa06.md"
+  ],
+  "noSlotHeld": true,
+  "noProductOrExistingFixtureWrites": true,
+  "publisher": "Root153",
+  "noManagerApprovalGate": true
+}
