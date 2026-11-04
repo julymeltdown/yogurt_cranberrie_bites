@@ -1,30 +1,36 @@
-# Parallel execution and review plan
+# Parallel execution and delivery plan
 
 ## Current checkpoint
 
 The [current progress reconciliation](progress.md#current-task-accounting) records
-33 task-criteria outcomes: 12 recorded acceptance dispositions plus 21 additional
+34 task-criteria outcomes: 12 recorded acceptance dispositions plus 22 additional
 task-local criteria closures. Exact owner states are preserved, including FE07 and FE15
 INTEGRATED. The latest owner-declared original-task closures are FE14, FE19, QA01,
-QA02, FE09, FE15, QA07, BE12 and FE07. Another 65 original tasks
+QA02, FE09, FE15, QA07, BE12, FE07 and BE26. Another 64 original tasks
 have partial or unreconciled implementation evidence, 9 statuses remain
 unreconciled, and all 5 IN gates remain open. The [112-row register](task-progress-2026-11-04.json)
 states the evidence and limitations. Historical 11/112 statements later in this
 document are not current implementation progress, and no effort-weighted
 completion percentage is asserted.
 
-The user's latest 2026-11-04 coordination instruction supersedes historical
-single-integrator and per-handoff review rules below. Assigned owners validate,
-commit and non-force push their exclusive scopes directly to master. Developers
-own all implementation validation: code, queries, tests, runtime evidence and
-fixes. They choose and perform the necessary checks and resolve technical
-interfaces directly with relevant implementation owners. Kings and SLs must not
-inspect, review or validate implementation or queries, rerun tests, or impose a
-separate QA, review or approval stage. Kings track priorities, staffing, major
-milestones and periodic commit/push progress; SLs track the broad feature picture,
-dependencies and staffing. Required scope and developer verification duties remain
-unchanged. Shared paths retain one explicit writer and physical build slots remain
-coordinated. A king receiving a review or verification request must decline: "I don't perform reviews. The responsible developer owns validation; please resolve this with the implementation owner." SLs likewise do not review code, queries or tests. No work waits for king or SL review. Staffing, priority, ownership conflicts and missing product decisions may still be escalated. See [current delivery policy](king-coordination.md).
+The current coordination model has no king or SL technical review stage.
+Developers implement, validate, resolve technical interfaces and commit their
+assigned scopes. Designated backend and frontend/art delivery integrators handle
+normal non-force publication while the publishing-policy clarification remains
+unresolved; delivery does not wait for a king/SL acknowledgment or ledger edit.
+Shared paths retain one explicit writer and physical build slots remain
+coordinated. Required scope and developer validation duties are unchanged.
+
+SLs manage feature dependencies, staffing and resource queues autonomously.
+Kings manage major milestones and unresolved cross-lane issues. Routine handoffs
+stay with the SL, technical counterpart or integrator; leads provide one hourly
+digest and main updates the central register in batches. Escalate immediately
+only for an unresolved cross-lane conflict, genuinely unattended critical work
+or a necessary human decision. Routine receipts do not require replies.
+
+A king or SL receiving a technical review request must decline: "I don't perform
+reviews. The responsible developer owns validation; please resolve this with
+the implementation owner." See the current [milestone and staffing snapshot](progress.md#hourly-milestone-and-dependency-snapshot).
 
 ## Historical execution plan (superseded where noted above)
 

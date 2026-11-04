@@ -1,0 +1,42 @@
+[
+  {
+    "file": "frontend/e2e/visual/qa06/fidelity-review.mjs",
+    "exitCode": 0,
+    "output": ""
+  },
+  {
+    "file": "frontend/e2e/visual/qa06/fidelity.mjs",
+    "exitCode": 0,
+    "output": ""
+  },
+  {
+    "file": "frontend/e2e/visual/qa06/resources.mjs",
+    "exitCode": 0,
+    "output": ""
+  },
+  {
+    "file": "frontend/e2e/visual/qa06/modal.mjs",
+    "exitCode": 0,
+    "output": ""
+  },
+  {
+    "file": "frontend/e2e/visual/qa06/native.mjs",
+    "exitCode": 0,
+    "output": ""
+  },
+  {
+    "file": "frontend/e2e/visual/qa06/review.mjs",
+    "exitCode": 0,
+    "output": ""
+  },
+  {
+    "file": "frontend/e2e/visual/qa06/comparison.mjs",
+    "exitCode": 0,
+    "output": ""
+  },
+  {
+    "file": "frontend/e2e/visual/qa06/consumers.mjs",
+    "exitCode": 0,
+    "output": ""
+  }
+]

@@ -1,0 +1,158 @@
+{
+  "status": "ACCEPTED_BOUNDED_CANONICAL_BOUNDARY",
+  "node": "24.22.2",
+  "candidate": "4cda0cecaf1d59c62a61b3634d539cf8dc868e99",
+  "working_tree_delta": "Only network boundary test fixture object guard; exact final content is committed in evidence handoff",
+  "producer": "0dd9f443945e6d6232728280d03e83933ac0eef2",
+  "motion_helpers": "24c573fb6656c0a4a9ea72111907deb831ab3bf1",
+  "motion_parser": "34ef8fbbd4fd59f2f806abd1c93308567cce2008",
+  "boundary_source": [
+    "7dc84e84358275d23edf41b592bfae4ef381430b",
+    "789b84c307674812a81e67ad59badc83fab8f532"
+  ],
+  "tests": 558,
+  "test_files": 18,
+  "application_types": "PASS_ZERO_DIAGNOSTICS",
+  "review": {
+    "owner": "Motion83",
+    "reviewed_commit": "789b84c307674812a81e67ad59badc83fab8f532",
+    "scope": "Reviewed2 Auth validation ordering and absence of runtime admission authority",
+    "findings": []
+  },
+  "checks": [
+    {
+      "name": "plan",
+      "cwd": "repository",
+      "command": [
+        "python3",
+        "scripts/mcr/check-plan.py"
+      ],
+      "exit_code": 0
+    },
+    {
+      "name": "ui-origin",
+      "cwd": "repository",
+      "command": [
+        "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node",
+        "scripts/mcr/check-ui-origin.mjs"
+      ],
+      "exit_code": 0
+    },
+    {
+      "name": "scope-whitespace",
+      "cwd": "repository",
+      "command": [
+        "git",
+        "diff",
+        "--check"
+      ],
+      "exit_code": 0
+    },
+    {
+      "name": "tests",
+      "cwd": "frontend",
+      "command": [
+        "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node",
+        "./node_modules/vitest/vitest.mjs",
+        "run",
+        "--configLoader",
+        "runner",
+        "--no-cache",
+        "--maxWorkers",
+        "2",
+        "src/world/network/__tests__/reviewed-motion-v2/boundary.test.ts",
+        "src/features/auth/model/__tests__/reviewed-motion-v2/bootstrap.test.ts",
+        "src/world/network/__tests__/transport.test.ts",
+        "src/world/network/__tests__/replication.test.ts",
+        "src/entities/avatar/whole-admission/__tests__",
+        "src/features/auth/__tests__/contract.test.ts",
+        "src/world/avatar/__tests__/motion-adoption",
+        "src/app/character-entry/__tests__/motion-adoption"
+      ],
+      "exit_code": 0
+    },
+    {
+      "name": "types",
+      "cwd": "frontend",
+      "command": [
+        "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node",
+        "./node_modules/typescript/bin/tsc",
+        "--project",
+        "tsconfig.json",
+        "--incremental",
+        "false",
+        "--pretty",
+        "false"
+      ],
+      "exit_code": 0
+    },
+    {
+      "name": "lint",
+      "cwd": "frontend",
+      "command": [
+        "./node_modules/.bin/oxlint",
+        "src/world/network/__tests__/reviewed-motion-v2",
+        "src/features/auth/model/__tests__/reviewed-motion-v2",
+        "src/world/network/transport/contract.ts",
+        "src/features/auth/model/bootstrap.ts"
+      ],
+      "exit_code": 0
+    }
+  ],
+  "build": {
+    "status": "PASS",
+    "owner": "Root153",
+    "candidate": "d5c0c9d188f68acb749d7ed2940706f34b2a8be1",
+    "includes_published_source": "0b8243299c9a8c3099351364d518bbd96fc38a7f",
+    "command": "PATH=/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin:$PATH MCR_FRONTEND_DEPENDENCIES=/Users/lhs/Desktop/mcr/frontend node frontend/src/world/avatar/__tests__/motion-adoption/build.mjs --application",
+    "cwd": "fe-reference-root",
+    "exit_code": 0,
+    "log_sha256": "3547a653632242465a6b95978d31784c1db6fdd67bbd67158ea41ab7840051a5",
+    "log": "{\"result\":\"PASS\",\"qualification\":\"Optimized actual index.html/main.tsx application build with retained React/Tailwind plugins. Positive v2 Root/runtime admission remains NOT_RUN.\",\"outputs\":1}\n",
+    "scope": "Actual index.html/main.tsx React+Tailwind optimized application bundle; copyPublicDir:false",
+    "boundary_source_pins": [
+      {
+        "path": "frontend/src/world/network/__tests__/generate-types.mjs",
+        "sha256": "d25c8c6d97e8a96099d944f9696152e18d64d758e3dabd6303f9742f6756b7d0",
+        "byte_equal": true
+      },
+      {
+        "path": "frontend/src/world/network/transport/contract.ts",
+        "sha256": "88d4ee20ef0c54cfbfdd5a62854084365ae83d36e6774eaeea962560bf077d3e",
+        "byte_equal": true
+      },
+      {
+        "path": "frontend/src/world/network/transport/wire-types.ts",
+        "sha256": "95c99ff1f253176fc7ed8a977e9bd8f71e72820e4eef27becd23a54c6e639b54",
+        "byte_equal": true
+      },
+      {
+        "path": "frontend/src/features/auth/model/bootstrap.ts",
+        "sha256": "3398f1263e31a8ac315d7f0bb95eb567ccca3dcfa57ab9c33907473a87ce09a2",
+        "byte_equal": true
+      },
+      {
+        "path": "frontend/src/world/network/__tests__/reviewed-motion-v2/boundary.test.ts",
+        "sha256": "a3038b9bea67b2c8ded4e48860d67264c8a002faee091c4719f6ea2b9886fc2f",
+        "byte_equal": true
+      },
+      {
+        "path": "frontend/src/features/auth/model/__tests__/reviewed-motion-v2/bootstrap.test.ts",
+        "sha256": "b6a2496e12c833bc9e99b3e59e53c7e582a7628bf864b9835be702078c84c732",
+        "byte_equal": true
+      }
+    ],
+    "output_cleanup": "Publisher build.mjs finally removes owned temporary output/cache",
+    "standalone_build_started": false
+  },
+  "limits": [
+    "No backend eligibility or default-release activation",
+    "No actual device or multiuser/load qualification",
+    "No whole AR03/FE12/IN05 acceptance"
+  ],
+  "source_publication": {
+    "verified_master": "0b8243299c9a8c3099351364d518bbd96fc38a7f",
+    "all30_source_payloads_exact": true,
+    "final_receipt_only_followup": "Pending publisher serialization; same documentation/evidence paths only"
+  }
+}

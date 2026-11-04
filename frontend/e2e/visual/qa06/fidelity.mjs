@@ -1,0 +1,44 @@
+import {requireCaptureSpace,reservePort,temporaryCache,clearTemporaryCache} from './resources.mjs'
+// Actual equal-aspect captures for developer comparison. No numerical fidelity score.
+import assert from 'node:assert/strict'
+import {execFileSync} from 'node:child_process'
+import {readFile,writeFile,mkdir} from 'node:fs/promises'
+import {createHash} from 'node:crypto'
+import {resolve,extname} from 'node:path'
+import {createServer} from 'vite'
+import {chromium,expect} from '@playwright/test'
+import {CASES,viewportFor,REFERENCE_SHA256} from '../../reference-integrated/cases.mjs'
+const repo=resolve(import.meta.dirname,'../../../..'),out=process.env.QA06_FIDELITY_OUTPUT
+assert(out?.startsWith(resolve(repo,'docs/mcr/evidence/visual/qa06/')+'/'));await requireCaptureSpace(repo);await mkdir(out,{mode:0o700})
+const git=(...args)=>execFileSync('git',args,{cwd:repo,maxBuffer:64*1024*1024}),hash=b=>createHash('sha256').update(b).digest('hex'),tracked=new Set(git('ls-files','frontend/public').toString().trim().split('\n')),cache=new Map()
+const cacheDir=temporaryCache('fidelity'),port=await reservePort()
+const server=await createServer({root:resolve(repo,'frontend'),configLoader:'runner',logLevel:'error',resolve:{dedupe:['react','react-dom']},cacheDir,
+ plugins:[{name:'readonly-sparse-assets',configureServer(s){s.middlewares.use((req,res,next)=>{const path='frontend/public'+decodeURIComponent(new URL(req.url,'http://localhost').pathname)
+ if(!tracked.has(path)||!['.png','.ttf'].includes(extname(path)))return next()
+ try{if(!cache.has(path))cache.set(path,git('show','HEAD:'+path));res.setHeader('Content-Type',extname(path)==='.ttf'?'font/ttf':'image/png');res.end(cache.get(path))}catch(e){next(e)}
+ })}}],server:{host:'127.0.0.1',port,strictPort:true,hmr:false}})
+const report={task:'QA06',candidate:git('rev-parse','HEAD').toString().trim(),harnessSha256:hash(await readFile(new URL(import.meta.url))),referenceSha256:REFERENCE_SHA256,status:'IN_PROGRESS',qualification:'DESKTOP_EQUAL_ASPECT_ACTUAL_UI_FOR_DEVELOPER_COMPARISON_NOT_FIDELITY_ACCEPTANCE',cases:[],source:[]}
+let browser
+try{await server.listen();browser=await chromium.launch({channel:'chrome',headless:true});report.browser=browser.version();const base=server.resolvedUrls.local[0]
+ for(const item of CASES){const viewport=viewportFor(item,390),context=await browser.newContext({viewport,hasTouch:true,isMobile:true,reducedMotion:'reduce'}),page=await context.newPage(),errors=[];page.on('pageerror',e=>errors.push(e.message));const c={id:item.id,route:item.route,viewport,referenceCrop:item.rect,errors,status:'IN_PROGRESS'}
+  try{await page.clock.setFixedTime(new Date('2026-11-07T07:00:00Z'));await page.goto(base+'e2e/visual/qa06/preview.html?'+new URLSearchParams({entry:item.route,era:item.id==='world'||item.id==='map'?'PARADE':'REVENGE'}));await page.waitForFunction(()=>window.__QA06__)
+   if(!item.public)await expect.poll(()=>page.evaluate(()=>window.__QA06__.state().published)).toBe(true)
+   await page.waitForLoadState('networkidle');await page.evaluate(()=>document.fonts.ready);c.state=await page.evaluate(()=>window.__QA06__.state());c.screenshot=`equal-${item.id}-390.png`;await page.screenshot({path:resolve(out,c.screenshot)});assert.deepEqual(errors,[]);c.status='CAPTURED'
+  }catch(e){c.status='FAIL';c.error=e.message}finally{await page.evaluate(()=>window.__QA06__?.dispose()).catch(()=>{});await context.close()}
+  report.cases.push(c);console.log(JSON.stringify({id:item.id,status:c.status,error:c.error}))
+ }
+ for(const height of [844,viewportFor(CASES.find(c=>c.id==='world'),390).height,viewportFor(CASES.find(c=>c.id==='map'),390).height]){
+  const context=await browser.newContext({viewport:{width:390,height},hasTouch:true,isMobile:true,reducedMotion:'reduce'}),page=await context.newPage(),errors=[];page.on('pageerror',e=>errors.push(e.message));const c={height,era:'PARADE',version:'spatial-v4',qualification:'EXPLICIT_UNREVIEWED_SOURCE_FIXTURE',errors,status:'IN_PROGRESS'}
+  try{await page.clock.setFixedTime(new Date('2026-11-07T07:00:00Z'));await page.goto(base+'src/app/world-entry/__tests__/reference-scene-v4/preview.html?era=PARADE');await expect.poll(()=>page.evaluate(()=>window.__SCENE_V4_ROOT__?.state().overview?.themeId),{timeout:25000}).toBe('PARADE');await page.waitForLoadState('networkidle')
+   c.worldScreenshot=`source-world-parade-390-h${height}.png`;await page.screenshot({path:resolve(out,c.worldScreenshot)});c.worldState=await page.evaluate(()=>window.__SCENE_V4_ROOT__.state())
+   await page.evaluate(()=>window.__SCENE_V4_ROOT__.navigate('/world/map'));const image=page.getByAltText('PARADE illustrated virtual map',{exact:true});await expect(image).toBeVisible()
+   const rects=()=>page.evaluate(()=>{const rect=e=>{const r=e.getBoundingClientRect();return {left:r.left,top:r.top,right:r.right,bottom:r.bottom,width:r.width,height:r.height}};return {image:rect(document.querySelector('.places-map-plane > img')),viewport:rect(document.querySelector('.places-map-viewport'))}})
+   c.initialMap=await rects();c.initialMapScreenshot=`source-map-initial-390-h${height}.png`;await page.screenshot({path:resolve(out,c.initialMapScreenshot)})
+   await page.getByRole('button',{name:'Fit map',exact:true}).click();c.fittedMap=await rects();c.fittedMapScreenshot=`source-map-fitted-390-h${height}.png`;await page.screenshot({path:resolve(out,c.fittedMapScreenshot)})
+   assert.deepEqual(errors,[]);c.status='CAPTURED'
+  }catch(e){c.status='FAIL';c.error=e.message}finally{await page.evaluate(()=>window.__SCENE_V4_ROOT__?.dispose()).catch(()=>{});await context.close()}
+  report.source.push(c);console.log(JSON.stringify({height,status:c.status,error:c.error}))
+ }
+ report.status=[...report.cases,...report.source].every(c=>c.status==='CAPTURED')?'CAPTURED_FOR_DEVELOPER_COMPARISON':'FAIL'
+}finally{await writeFile(resolve(out,'report.json'),JSON.stringify(report,null,2)+'\n');await browser?.close();await server.close();await clearTemporaryCache(cacheDir)}
+if(report.status==='FAIL')process.exitCode=1

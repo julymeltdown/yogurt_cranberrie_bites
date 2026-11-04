@@ -1,0 +1,118 @@
+{
+  "commands": [
+    {
+      "command": [
+        "tsrct",
+        "project",
+        "checkout",
+        "--project",
+        "map-landscape-v1/parade-map.tsrct",
+        "--output",
+        "map-landscape-v1/parade-map-editable.json"
+      ],
+      "exit_code": 0
+    },
+    {
+      "command": [
+        "tsrct",
+        "project",
+        "commit",
+        "--project",
+        "map-landscape-v1/parade-map.tsrct",
+        "--file",
+        "map-landscape-v1/parade-map-editable.json"
+      ],
+      "exit_code": 0
+    },
+    {
+      "command": [
+        "tsrct",
+        "preview",
+        "--project",
+        "map-landscape-v1/parade-map.tsrct",
+        "--time",
+        "1",
+        "--output",
+        "map-landscape-v1/parade-map-native.png"
+      ],
+      "exit_code": 0
+    },
+    {
+      "command": [
+        "tsrct",
+        "project",
+        "checkout",
+        "--project",
+        "map-landscape-v1/revenge-map.tsrct",
+        "--output",
+        "map-landscape-v1/revenge-map-editable.json"
+      ],
+      "exit_code": 0
+    },
+    {
+      "command": [
+        "tsrct",
+        "project",
+        "commit",
+        "--project",
+        "map-landscape-v1/revenge-map.tsrct",
+        "--file",
+        "map-landscape-v1/revenge-map-editable.json"
+      ],
+      "exit_code": 0
+    },
+    {
+      "command": [
+        "tsrct",
+        "preview",
+        "--project",
+        "map-landscape-v1/revenge-map.tsrct",
+        "--time",
+        "1",
+        "--output",
+        "map-landscape-v1/revenge-map-native.png"
+      ],
+      "exit_code": 0
+    },
+    {
+      "command": [
+        "tsrct",
+        "project",
+        "checkout",
+        "--project",
+        "map-landscape-v1/danger-map.tsrct",
+        "--output",
+        "map-landscape-v1/danger-map-editable.json"
+      ],
+      "exit_code": 0
+    },
+    {
+      "command": [
+        "tsrct",
+        "project",
+        "commit",
+        "--project",
+        "map-landscape-v1/danger-map.tsrct",
+        "--file",
+        "map-landscape-v1/danger-map-editable.json"
+      ],
+      "exit_code": 0
+    },
+    {
+      "command": [
+        "tsrct",
+        "preview",
+        "--project",
+        "map-landscape-v1/danger-map.tsrct",
+        "--time",
+        "1",
+        "--output",
+        "map-landscape-v1/danger-map-native.png"
+      ],
+      "exit_code": 0
+    }
+  ],
+  "native_viewer": "Open requested near start; UI queued is not a render proof. Actual CLI PNG exports are checked separately.",
+  "source_integrity": "Existing base native layers and IDs stay exact when the ten added illustration layers are removed. Packaged atlas/ground/font bytes are unchanged.",
+  "renderer": "Installed Tesseract0.4.0; full2048 native atlas plus explicit rectangular crop masks, matching the existing padding workaround."
+}

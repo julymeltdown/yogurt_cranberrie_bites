@@ -1,0 +1,26 @@
+{
+  "node": "v24.22.2",
+  "wire_sha256": "95c99ff1f253176fc7ed8a977e9bd8f71e72820e4eef27becd23a54c6e639b54",
+  "reproduces_checked_in_bytes": true,
+  "results": [
+    {
+      "command": [
+        "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node",
+        "frontend/src/world/network/__tests__/generate-types.mjs"
+      ],
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node",
+        "frontend/src/world/network/__tests__/generate-types.mjs",
+        "--check"
+      ],
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": ""
+    }
+  ]
+}

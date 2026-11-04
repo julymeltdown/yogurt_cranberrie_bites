@@ -1,0 +1,141 @@
+{
+  "commit": "ae41db9db2493c259c72ef461844a3ff1019a1f6",
+  "files": {
+    "backend/releases/selected-character-motion-v2/manifest.json": {
+      "bytes": 95128,
+      "sha256": "9a555f726a9e421f14ed876117be87bb1bb8fa128ac401ab38f8927760776fd6"
+    },
+    "contracts/assets/v2/avatar-config.schema.json": {
+      "bytes": 3543,
+      "sha256": "3cbfd3185113d7f4913de89b0e04d67046dbab64b3f90c0b5f14a261afc6a78b"
+    },
+    "contracts/assets/v2/avatar-manifest.schema.json": {
+      "bytes": 102672,
+      "sha256": "8fc206f00d263ed9465cad932768075a1a0ca61d927e98ccc2aa8e9e7ef0d54f"
+    },
+    "contracts/fixtures/assets/motion-v2/invalid/body-overflow.json": {
+      "bytes": 367,
+      "sha256": "27d33a76905ffb8fb9d5ca4633d3e45bbfb9bb88c09c0ffba03f0d8fda6e787f"
+    },
+    "contracts/fixtures/assets/motion-v2/invalid/float-revision.json": {
+      "bytes": 369,
+      "sha256": "1faf929416c474f2c223f74c16658f43a773c36099e91dda24418ec14afe002f"
+    },
+    "contracts/fixtures/assets/motion-v2/invalid/legacy-id.json": {
+      "bytes": 357,
+      "sha256": "32202a9d91bd9bb37a69d1f3f128a1f92cd2696d5f183f3409780e1f849e5221"
+    },
+    "contracts/fixtures/assets/motion-v2/invalid/missing-outfit.json": {
+      "bytes": 331,
+      "sha256": "b8d3c7d1e75989448b02c99014b5ab477d64dbf92f280d85dcfc98450bff8748"
+    },
+    "contracts/fixtures/assets/motion-v2/invalid/mixed-representation.json": {
+      "bytes": 412,
+      "sha256": "b3b44e7ac0d669f43dadb9bb5070e6136c38512092d02498715fe7161d78b8d1"
+    },
+    "contracts/fixtures/assets/motion-v2/invalid/null-body.json": {
+      "bytes": 353,
+      "sha256": "5aa81a994a1f083e7ac0c11688a65238824c0ee5b0a541003ba4ac33e4a26190"
+    },
+    "contracts/fixtures/assets/motion-v2/invalid/preset-mixed-items.json": {
+      "bytes": 411,
+      "sha256": "24cf9a48df59ff3d83800d2e49e358f71d09c2625f34ed4b41d2adc37c5a1a54"
+    },
+    "contracts/fixtures/assets/motion-v2/invalid/skin-tone.json": {
+      "bytes": 397,
+      "sha256": "8d736a998fed5dc7abbc823b29eab60604ab5e8e01a333cfd474badefd650c65"
+    },
+    "contracts/fixtures/assets/motion-v2/invalid/unknown-manifest.json": {
+      "bytes": 344,
+      "sha256": "f22457f39ccfe2b792599bd29370d0313b61070cdc848849051c4615cce51e74"
+    },
+    "contracts/fixtures/assets/motion-v2/invalid/unknown-nested.json": {
+      "bytes": 390,
+      "sha256": "9de29b98bbb62bb44d8bf05e24f8c91c83c69c2380e161134ca8b684d8a853e0"
+    },
+    "contracts/fixtures/assets/motion-v2/invalid/unknown-preset.json": {
+      "bytes": 217,
+      "sha256": "8ed748e23cc7d792d5605e3bfa6dfac6f560eccb89ae2620a5b5257a0a53d6c3"
+    },
+    "contracts/fixtures/assets/motion-v2/invalid/url.json": {
+      "bytes": 415,
+      "sha256": "f8b161d35345896ef59124d28e0a6940a6777bff5d433b16725d88aa1ad0d589"
+    },
+    "contracts/fixtures/assets/motion-v2/invalid/wrong-kind.json": {
+      "bytes": 369,
+      "sha256": "e76653d1deb3759a54f308e96c8c904213020a3ab931722dc367dd177936ab86"
+    },
+    "contracts/fixtures/assets/motion-v2/invalid/wrong-revision.json": {
+      "bytes": 367,
+      "sha256": "b1e4f3ffd20a873314d8f77c3b7627bdd615ca689cd9d01d9031ea140b7225d3"
+    },
+    "contracts/fixtures/assets/motion-v2/invalid/wrong-slot.json": {
+      "bytes": 367,
+      "sha256": "bf189386174ede081df6524a81011459854274cdd9ff78aec88a650fbf1460c4"
+    },
+    "contracts/fixtures/assets/motion-v2/invalid/wrong-version.json": {
+      "bytes": 367,
+      "sha256": "10bdbefe43ccdaecdde298f7d62b907916bb05fd85c29df296176867468c9e26"
+    },
+    "contracts/fixtures/assets/motion-v2/valid/layered-body-0.json": {
+      "bytes": 367,
+      "sha256": "1db582ab6f44dc411f087d119f87e413a466c4011013dab7e2767e1bde5971c7"
+    },
+    "contracts/fixtures/assets/motion-v2/valid/layered-body-1.json": {
+      "bytes": 332,
+      "sha256": "caddb2f2297905175c39280361c2143b647df4210b63700d0dfb30079eb92075"
+    },
+    "contracts/fixtures/assets/motion-v2/valid/layered-body-2.json": {
+      "bytes": 367,
+      "sha256": "181091d5da7fc02f014a9f1cf1f79ecf9db84b215d769db35f17e538d408ae18"
+    },
+    "contracts/fixtures/assets/motion-v2/valid/layered-body-3.json": {
+      "bytes": 332,
+      "sha256": "106e415ec0673cc1a79be3fc3befed209bb2d03670d3ab0dd6fad228038487fc"
+    },
+    "contracts/fixtures/assets/motion-v2/valid/layered-body-4.json": {
+      "bytes": 367,
+      "sha256": "544a2927ddecdc70467894e31365213c16ed6442830c6c64b252595a24607692"
+    },
+    "contracts/fixtures/assets/motion-v2/valid/layered-body-5.json": {
+      "bytes": 332,
+      "sha256": "f7e0ca2d17369f198887e00acab3e5176982ca8f0918d36d1a237d7ff386b620"
+    },
+    "contracts/fixtures/assets/motion-v2/valid/layered-body-6.json": {
+      "bytes": 367,
+      "sha256": "e7c51e3780f433c6d82d9a702cd21e024ef6cb519b61d29ba12bbbf177dbf5a9"
+    },
+    "contracts/fixtures/assets/motion-v2/valid/layered-body-7.json": {
+      "bytes": 332,
+      "sha256": "10c32e678820fad0e77440571b79dbdfdabdde2ceba33d14f19f17cc130141b2"
+    },
+    "contracts/fixtures/assets/motion-v2/valid/layered-max.json": {
+      "bytes": 367,
+      "sha256": "7cb4b5b152af1dbb4d03d160c0ac15be28735b448edf462d7e28e90c0a0bf5cd"
+    },
+    "contracts/fixtures/assets/motion-v2/valid/preset-01.json": {
+      "bytes": 217,
+      "sha256": "405506bc4f9465f90586108e051a1bf4796ded4f6bb200174d1e20c9ebb04595"
+    },
+    "contracts/fixtures/assets/motion-v2/valid/preset-02.json": {
+      "bytes": 217,
+      "sha256": "ebaf17e5829c09f21a3906da4b92b7b815c2d5b1da60a99212fa223190e82882"
+    },
+    "contracts/fixtures/assets/motion-v2/valid/preset-03.json": {
+      "bytes": 217,
+      "sha256": "2cc0484346bc665a6705fafab51a1204e625a6bc0cc7b764bf9d42d8494e2b67"
+    },
+    "contracts/fixtures/assets/motion-v2/valid/preset-04.json": {
+      "bytes": 217,
+      "sha256": "8a1c0f8c7beecf03972b1582c3f9a3b60130d6a2b1170da4a3932bf0817c5496"
+    },
+    "contracts/fixtures/assets/motion-v2/valid/preset-05.json": {
+      "bytes": 217,
+      "sha256": "dec0314f3f248b1d00e9977e53c9e4bb8a912415da1a80158bcf1720b4875cb0"
+    },
+    "contracts/fixtures/assets/motion-v2/valid/preset-06.json": {
+      "bytes": 217,
+      "sha256": "cbb43c19963d43a9b25c279fd75964c52e9cfa1b75ba3c45f49970198ca01ede"
+    }
+  }
+}

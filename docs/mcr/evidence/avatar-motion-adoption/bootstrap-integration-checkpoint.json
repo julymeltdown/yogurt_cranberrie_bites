@@ -1,0 +1,91 @@
+{
+  "result": "CONTRACT_READY_CANONICAL_BOOTSTRAP_FIXTURES",
+  "recordedAt": "2026-11-04T03:44:30.879215+00:00",
+  "parent": "19bad76441ed1d7a68f47a7094efca382b2345fe",
+  "dependencies": {
+    "producer": "0dd9f443945e6d6232728280d03e83933ac0eef2",
+    "parser": "34ef8fbbd4fd59f2f806abd1c93308567cce2008",
+    "bootstrap": "789b84c307674812a81e67ad59badc83fab8f532"
+  },
+  "authoredSourcePaths": [
+    "frontend/src/world/avatar/__tests__/motion-adoption/vitest.config.mjs"
+  ],
+  "consumedSourcePins": {
+    "frontend/src/features/auth/model/bootstrap.ts": "3398f1263e31a8ac315d7f0bb95eb567ccca3dcfa57ab9c33907473a87ce09a2",
+    "frontend/src/features/auth/model/__tests__/reviewed-motion-v2/bootstrap.test.ts": "b6a2496e12c833bc9e99b3e59e53c7e582a7628bf864b9835be702078c84c732",
+    "frontend/src/world/network/__tests__/reviewed-motion-v2/boundary.test.ts": "20954fb66d99b6f008532f73267cb87d6d26a70406af33b292604db6cfdf130f",
+    "frontend/src/entities/avatar/whole-admission/index.ts": "7677fa0d1c84e5657280988e0ba7e0ed455dad03aeeb9d10694df84d9d798165",
+    "frontend/src/world/avatar/__tests__/motion-adoption/vitest.config.mjs": "a11c86d4d237a08854d4104ae461c89830061a9da6ce7b43a36c1f7d94d2ab9b"
+  },
+  "checks": [
+    {
+      "name": "unit",
+      "command": "<node24> <retained-frontend>/node_modules/.pnpm/vitest@4.1.9_@types+node@24.13.2_jsdom@29.1.1_msw@2.14.6_@types+node@24.13.2_typescript_67338a2989bf71c5b75b87305b6eead5/node_modules/vitest/vitest.mjs run --configLoader runner --root <checkout>/frontend --config <checkout>/frontend/src/world/avatar/__tests__/motion-adoption/vitest.config.mjs",
+      "exit": 0,
+      "error": null
+    },
+    {
+      "name": "types",
+      "command": "<node24> <checkout>/frontend/src/world/avatar/__tests__/motion-adoption/typecheck.mjs",
+      "exit": 0,
+      "error": null
+    },
+    {
+      "name": "application-types",
+      "command": "<node24> <checkout>/frontend/src/world/avatar/__tests__/motion-adoption/typecheck.mjs --application",
+      "exit": 0,
+      "error": null
+    },
+    {
+      "name": "lint",
+      "command": "<node24> <retained-frontend>/node_modules/oxlint/bin/oxlint <checkout>/frontend/src/entities/avatar/runtime/motion-adoption <checkout>/frontend/src/world/avatar/motion-adoption <checkout>/frontend/src/features/avatar/motion-adoption <checkout>/frontend/src/world/avatar/__tests__/motion-adoption <checkout>/frontend/src/features/avatar/__tests__/motion-adoption <checkout>/frontend/src/app/character-entry/__tests__/motion-adoption <checkout>/frontend/src/entities/avatar/whole-admission/index.ts <checkout>/frontend/src/entities/avatar/whole-admission/__tests__/admission.test.ts",
+      "exit": 0,
+      "error": null
+    },
+    {
+      "name": "build",
+      "command": "<node24> <checkout>/frontend/src/world/avatar/__tests__/motion-adoption/build.mjs",
+      "exit": 0,
+      "error": null
+    },
+    {
+      "name": "plan",
+      "command": "python3 <checkout>/scripts/mcr/check-plan.py",
+      "exit": 0,
+      "error": null
+    },
+    {
+      "name": "ui-origin",
+      "command": "<node24> <checkout>/scripts/mcr/check-ui-origin.mjs",
+      "exit": 0,
+      "error": null
+    }
+  ],
+  "unit": {
+    "tests": 290,
+    "suites": 11,
+    "result": "PASS",
+    "includes": "45 bootstrap cases,58 canonical C05 boundary cases, legacy admission and motion/public parser suites"
+  },
+  "scopedTypes": {
+    "files": 23,
+    "diagnostics": 0
+  },
+  "applicationTypes": {
+    "files": 782,
+    "diagnostics": 0
+  },
+  "technicalReview": "789b84c3 delegates only after canonical public const and bundle hash validation; no registry allocation or eligibility promotion; no concrete issue found",
+  "limits": [
+    "Deterministic fixture bootstrap validation only",
+    "Actual production registry rejects staged reviewed release",
+    "Actual service save/reload/reconcile NOT_RUN",
+    "Positive production Root NOT_RUN",
+    "Two-account live World NOT_RUN",
+    "Physical device NOT_RUN",
+    "New browser capture NOT_RUN",
+    "Real application bundle delegated to designated integrator"
+  ],
+  "goal": "Original AR03 remains unfinished/BLOCKED; no goal reset/completion",
+  "delivery": "Separate scoped verification follow-up; do not replay bootstrap dependency as authored AR03 source"
+}

@@ -4,7 +4,7 @@
   "checks": [
     {
       "name": "unit",
-      "command": "<node24> <retained-frontend>/node_modules/.pnpm/vitest@4.1.9_@types+node@24.13.2_jsdom@29.1.1_msw@2.14.6_@types+node@24.13.2_typescript_67338a2989bf71c5b75b87305b6eead5/node_modules/vitest/vitest.mjs run --root <checkout>/frontend --config <checkout>/frontend/src/world/avatar/__tests__/motion-adoption/vitest.config.mjs",
+      "command": "<node24> <retained-frontend>/node_modules/.pnpm/vitest@4.1.9_@types+node@24.13.2_jsdom@29.1.1_msw@2.14.6_@types+node@24.13.2_typescript_67338a2989bf71c5b75b87305b6eead5/node_modules/vitest/vitest.mjs run --configLoader runner --root <checkout>/frontend --config <checkout>/frontend/src/world/avatar/__tests__/motion-adoption/vitest.config.mjs",
       "exit": 0,
       "error": null
     },
@@ -15,8 +15,14 @@
       "error": null
     },
     {
+      "name": "application-types",
+      "command": "<node24> <checkout>/frontend/src/world/avatar/__tests__/motion-adoption/typecheck.mjs --application",
+      "exit": 0,
+      "error": null
+    },
+    {
       "name": "lint",
-      "command": "<node24> <retained-frontend>/node_modules/oxlint/bin/oxlint <checkout>/frontend/src/entities/avatar/runtime/motion-adoption <checkout>/frontend/src/world/avatar/motion-adoption <checkout>/frontend/src/features/avatar/motion-adoption <checkout>/frontend/src/world/avatar/__tests__/motion-adoption <checkout>/frontend/src/features/avatar/__tests__/motion-adoption <checkout>/frontend/src/app/character-entry/__tests__/motion-adoption",
+      "command": "<node24> <retained-frontend>/node_modules/oxlint/bin/oxlint <checkout>/frontend/src/entities/avatar/runtime/motion-adoption <checkout>/frontend/src/world/avatar/motion-adoption <checkout>/frontend/src/features/avatar/motion-adoption <checkout>/frontend/src/world/avatar/__tests__/motion-adoption <checkout>/frontend/src/features/avatar/__tests__/motion-adoption <checkout>/frontend/src/app/character-entry/__tests__/motion-adoption <checkout>/frontend/src/entities/avatar/whole-admission/index.ts <checkout>/frontend/src/entities/avatar/whole-admission/__tests__/admission.test.ts",
       "exit": 0,
       "error": null
     },
@@ -37,36 +43,43 @@
       "command": "<node24> <checkout>/scripts/mcr/check-ui-origin.mjs",
       "exit": 0,
       "error": null
-    },
-    {
-      "name": "native",
-      "command": "<node24> <checkout>/frontend/src/app/character-entry/__tests__/motion-adoption/native.mjs",
-      "exit": 0,
-      "error": null
     }
   ],
   "sourcePins": {
     "frontend/src/entities/avatar/runtime/motion-adoption/art.ts": "3bc23478c870cf61894d99c735d38ec9ea76a981ee3582bb1fa7e7ad666f4d47",
     "frontend/src/entities/avatar/runtime/motion-adoption/compositor.ts": "3a6f100b87db1db560755cf17b06d83a6e5f67712b049c71004b953651cbe735",
+    "frontend/src/entities/avatar/runtime/motion-adoption/reviewed-config.ts": "450a5f52f167e062edbabf6f49cded29c2c7791a937942640ba318092eba6283",
+    "frontend/src/entities/avatar/runtime/motion-adoption/reviewed-manifest.ts": "e0ef0a99005364a7b77a177b1ff15b1101e3cad4a7f5d7af3843382332628eb0",
     "frontend/src/entities/avatar/runtime/motion-adoption/runtime.ts": "29a5d283ff994a006893ab5bae52752aac88214324c79ff8ee1b8c789d6f9dc2",
+    "frontend/src/entities/avatar/runtime/motion-adoption/v2-candidate.ts": "f807e183cfb529e953c4a01f57c3ba2ec4c2aca3d36bd0d02b5ba2de5246dee5",
+    "frontend/src/entities/avatar/runtime/motion-adoption/v2.ts": "6e12736e28fed01b20c0a309b6e8a15d05c439f65af5ba77fbe4b8a884b13167",
     "frontend/src/world/avatar/motion-adoption/renderer.ts": "c577561c2f051390ae4d2f1340391f68a3ab92d7b965698598d6408ca3b07f2c",
-    "frontend/src/features/avatar/motion-adoption/MotionEditor.tsx": "b81b222a0bffdce45bc8f8d399dfe1734875931c2fe3f6ced6a0ac9502970315",
+    "frontend/src/features/avatar/motion-adoption/MotionEditor.tsx": "086e081eb9f63729fca1641f63baf5eb07e5db64eb95f32f16b9823216eca2ae",
     "frontend/src/features/avatar/motion-adoption/MotionOption.tsx": "e7661142a711a88331a63f0008693cfa6a792d91f4559374c4d83cb013bad5b6",
     "frontend/src/features/avatar/motion-adoption/MotionView.tsx": "39ba203d0d4110af82b78ea53fb26b5cb776b3c5d5a22e05949356b5338e7b30",
     "frontend/src/features/avatar/motion-adoption/controller.ts": "f98ecc2085efc532112beceaae22e764417ea0db2ffd594873783e839b3fd555",
-    "frontend/src/features/avatar/motion-adoption/motion.css": "7252bc282eaa9b248651ae33c8e23c15a51db7949d007910d836a41746a01a7b",
+    "frontend/src/features/avatar/motion-adoption/motion.css": "e876d73bc32bba8fb674c618dbbdf06ce0ff102bcacf86ed60720fbcd5a5d214",
     "frontend/src/world/avatar/__tests__/motion-adoption/art.test.ts": "f18c432790522ff6c25dd4143ec81726032acda127f62608f6aa026707f46534",
-    "frontend/src/world/avatar/__tests__/motion-adoption/build.mjs": "305d487e8ea1a072350cf4c16d9e095a9b601f4fdd524d48d95f03c3f8a38801",
-    "frontend/src/world/avatar/__tests__/motion-adoption/qualify.mjs": "56fac991d89070de13283b6c6c74d1efdbdffdeb28be521c9cceccda9471ec51",
+    "frontend/src/world/avatar/__tests__/motion-adoption/build.mjs": "f71df7efab72d592498885075cd44a7195a251ed71c856ed2b3a4f13a2e6d7be",
+    "frontend/src/world/avatar/__tests__/motion-adoption/producer-inputs.json": "9dfe89ee8597452a26bc7b14ebc6a2c0f17d8dd93964daebea668e461654a0aa",
+    "frontend/src/world/avatar/__tests__/motion-adoption/producer-inputs.ts": "e842597a36803de08a23e1abc2622bc9de9a457198aa2e8019e2611b3d9e6e31",
+    "frontend/src/world/avatar/__tests__/motion-adoption/public-reviewed.test.ts": "129110b7ddc5b68fd1ba94ef1b3e87779a4ab3f47e77e1ecb90832ae3f30780a",
+    "frontend/src/world/avatar/__tests__/motion-adoption/qualify.mjs": "033e73491bb7cdd48b08761f4bd4004a2e3bbcd94ba5c769132f06b50f795023",
     "frontend/src/world/avatar/__tests__/motion-adoption/renderer.test.ts": "9a0e72545ce54d296114dd3847d9b249b98b22c35f623f3584dac41dbfffb665",
+    "frontend/src/world/avatar/__tests__/motion-adoption/reviewed-inputs.json": "0f5b0dd962be2ff9e162cb6b7f9e0453a653a0f09a06acd89bb0023e9230ad87",
+    "frontend/src/world/avatar/__tests__/motion-adoption/reviewed.test.ts": "da0f5ac7b793ed7f7c3adea945a7c27556e76deb6c01b8a006d64799bc30e8a1",
     "frontend/src/world/avatar/__tests__/motion-adoption/test-authority.ts": "88a37fcccf152f6e03c8a6a13909f070892686cb4df4047254af9a5fffde97e0",
-    "frontend/src/world/avatar/__tests__/motion-adoption/typecheck.mjs": "cbdf2861da733f9bbbb52f7de2913cfccbcb48e078ed8ecdf43f53f218d99a34",
-    "frontend/src/world/avatar/__tests__/motion-adoption/vitest.config.mjs": "cb97f87afa7e6519e553513cc8b3084e98f90778dcda0537f71cf52bd6e233cc",
+    "frontend/src/world/avatar/__tests__/motion-adoption/typecheck.mjs": "4cbcb57e175101a3fabbcbd67604c223d2604e24732f9d6e3331583a0d624aa1",
+    "frontend/src/world/avatar/__tests__/motion-adoption/v2-producer.test.ts": "77160adcd097bcf14d3aa7804dc58d99e10f63fbebdc616b71e3230344b7dc72",
+    "frontend/src/world/avatar/__tests__/motion-adoption/v2.test.ts": "dc78fa64dc98276958c7df67a08e7891c047cd7931dd748f00e0c1ed28862fd2",
+    "frontend/src/world/avatar/__tests__/motion-adoption/vitest.config.mjs": "a11c86d4d237a08854d4104ae461c89830061a9da6ce7b43a36c1f7d94d2ab9b",
     "frontend/src/features/avatar/__tests__/motion-adoption/controller.test.tsx": "696240e5b3b9b20e06529342bd64061e13e9b2852d25a488a2d14391ea758a6a",
     "frontend/src/app/character-entry/__tests__/motion-adoption/fixture.css": "de2db1f5e6913c8395dbee27459da90b372774850a17cd30da4a61e0ce2a27fd",
     "frontend/src/app/character-entry/__tests__/motion-adoption/fixture.html": "12c59aa5a9d241fc0386f98a20db69e284d52f0d23682ea4d13e0b312c80ff2d",
-    "frontend/src/app/character-entry/__tests__/motion-adoption/fixture.tsx": "12c33a45da0394fec2d89da16f357262d1e60fe63eba2f31069a19fe47a2e0f3",
-    "frontend/src/app/character-entry/__tests__/motion-adoption/native.mjs": "3d0bad2d55e496d1c64ca770dac2e4d6c2b6217498306adcd0c0a6036e6b2b17"
-  },
-  "postQualificationNote": "Only qualifier log-output trailing whitespace normalization changed after PASS; executable/source behavior under qualification unchanged. Wrapper syntax/lint rechecked."
+    "frontend/src/app/character-entry/__tests__/motion-adoption/fixture.tsx": "97eeea2b778eaaead074ea26c9cc4427b4ddb152059e98b54a9fb4ce19e26146",
+    "frontend/src/app/character-entry/__tests__/motion-adoption/native.mjs": "d9ec81444927a714296f2ef1a4b30a13002a40a62f097a446d5d58d7c8c65b12",
+    "frontend/src/app/character-entry/__tests__/motion-adoption/root-denial.test.ts": "a7781ae5a29973543866bc11af315a50a17e6824dd08bc24f7d1237e77880eb1",
+    "frontend/src/entities/avatar/whole-admission/index.ts": "7677fa0d1c84e5657280988e0ba7e0ed455dad03aeeb9d10694df84d9d798165",
+    "frontend/src/entities/avatar/whole-admission/__tests__/admission.test.ts": "78ff3d36d5f17fd238f0b71bd846b367187f3b2175473cf090dd0d14bbc8164a"
+  }
 }

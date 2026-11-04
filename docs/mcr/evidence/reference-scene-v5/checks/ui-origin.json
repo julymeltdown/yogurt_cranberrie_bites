@@ -1,0 +1,11 @@
+{
+  "task": "C08",
+  "result": "PASS",
+  "source_revision": "5eecdcaffd1a9d505b9ab2a974f8d5623217e90a",
+  "inventory_sha256": "9d1202211cd136948a7afeb5588238ba9de13613980dab42616011f47762a079",
+  "files_scanned": 3282,
+  "content_files": 3274,
+  "reviewed_extracts": 4,
+  "violations": [],
+  "scope": "Exact bytes and static imports only; manual source/visual review and QA02 remain required"
+}

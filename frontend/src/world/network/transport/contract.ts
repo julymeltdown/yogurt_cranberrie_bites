@@ -3,6 +3,8 @@ import world from '../../../../../contracts/realtime/v1/world.schema.json'
 import core from '../../../../../contracts/core/v1/core.schema.json'
 import avatar from '../../../../../contracts/assets/v1/avatar-config.schema.json'
 import common from '../../../../../contracts/assets/v1/common.schema.json'
+import reviewedAvatar from '../../../../../contracts/assets/v2/reviewed/avatar-config.schema.json'
+import reviewedManifest from '../../../../../contracts/assets/v2/reviewed/avatar-manifest.schema.json'
 import policy from '../../../../../contracts/realtime/v1/policy.json'
 import type { ClientMessage, ServerMessage, WorldTicketResponse } from './wire-types'
 export { policy }
@@ -16,7 +18,7 @@ export function ensure(value: unknown, code = 4400): asserts value {
 }
 type Schema = { [key: string]: unknown }
 const record = (v: unknown): Schema => { ensure(v && typeof v === 'object' && !Array.isArray(v)); return v as Schema }
-const docs = [world, core, avatar, common] as { $id: string; $defs: Record<string, unknown> }[]
+const docs = [world, core, avatar, common, reviewedAvatar, reviewedManifest] as { $id: string; $defs: Record<string, unknown> }[]
 const cache = new Map<string, (value: unknown) => boolean>()
 const keywords = new Set(['$ref', 'type', 'const', 'enum', 'properties', 'required', 'additionalProperties', 'items', 'minItems', 'maxItems', 'uniqueItems', 'minLength', 'maxLength', 'pattern', 'format', 'minimum', 'maximum', 'anyOf', 'oneOf'])
 function compile(input: unknown, doc: typeof docs[number]): (v: unknown) => boolean {

@@ -1,0 +1,10 @@
+
+ RUN  v4.1.9 /Users/lhs/Desktop/mcr-worktrees/fe-reference-root/frontend
+
+(node:80449) [DEP0129] DeprecationWarning: _channel is deprecated. Use ChildProcess.channel instead.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+
+ Test Files  34 passed (34)
+      Tests  403 passed (403)
+   Start at  12:41:37
+   Duration  2.34s (transform 3.28s, setup 0ms, import 6.09s, tests 10.79s, environment 3.50s)

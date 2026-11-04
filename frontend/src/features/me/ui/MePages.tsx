@@ -29,8 +29,11 @@ export function MeHub({ controller, auth, thumbnailSource, activity, renderAvata
       </nav>
     </div>
     <nav className="me-activity-navigation" aria-label="Your activity"><span aria-current="page">Activity</span><ShellLink id="me-parties" to="/meet" aria-label="Parties and MY PLAN">Parties</ShellLink><ShellLink id="me-gifts" to="/gifts/mine" aria-label="My gifts">Gifts</ShellLink></nav>
-    {s.participant && <ProfileActivity subject={s.participant.user_id} privacy={auth.privacy} input={activity} />}
-    <details className="me-profile-options"><summary>Profile options</summary><p className="me-optionality">Profile details are optional. You can enter the world without completing them.</p><ShellLink id="me-settings" to="/me/settings">Settings</ShellLink><div className="me-status"><MeStatus controller={controller} /></div></details>
+    {s.participant && <ProfileActivity subject={s.participant.user_id} privacy={auth.privacy} input={activity} browseFeed />}
+    <details className="me-profile-options"><summary>Profile options</summary><nav className="me-account-links" aria-label="More account options">
+      <ShellLink id="me-settings" to="/me/settings">Settings</ShellLink><ShellLink id="me-age" to="/me/age">Age &amp; privacy</ShellLink>
+      <ShellLink id="me-blocks" to="/me/blocks">Blocked users</ShellLink><ShellLink id="me-account" to="/me/account">Account</ShellLink>
+    </nav><p className="me-optionality">Profile details are optional. You can enter the world without completing them.</p><div className="me-status"><MeStatus controller={controller} /></div></details>
   </ConcertWindow>
   </section>
 }

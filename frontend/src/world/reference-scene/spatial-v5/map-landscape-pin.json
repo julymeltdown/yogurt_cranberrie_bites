@@ -1,0 +1,8 @@
+{
+  "source_revision": "f19027fa96abd90eb11ffda825deda95c3091647",
+  "path": "world/reference-scene-v2/map-landscape-v1/presentation.json",
+  "sha256": "sha256:90402525366769febb1f8d5b779d9b293e4680858f105c88af4bf808965cc35e",
+  "bytes": 12497,
+  "geometry_hash": "sha256:ef52c8b05af6a882f2e82285c9879c9a4cb78ab513336e4bb3cd483c9b123395",
+  "authority": "MAP-only decoration, no additional PNG/font/World solids/place/interaction/admission."
+}

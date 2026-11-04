@@ -1,0 +1,201 @@
+{
+  "observed_remote_master": "a67fc1342b351750ce766a783052c470dc9a9907",
+  "remote_check": "git fetch origin master; git ls-remote origin refs/heads/master; git rev-parse origin/master",
+  "source_boundary": "7dc84e84358275d23edf41b592bfae4ef381430b",
+  "published_boundary": "a67fc1342b351750ce766a783052c470dc9a9907",
+  "source_producer": "0dd9f443945e6d6232728280d03e83933ac0eef2",
+  "published_producer": "d839bc208dfe21f33b4a72c03868952268c34608",
+  "source_helpers": "24c573fb6656c0a4a9ea72111907deb831ab3bf1",
+  "published_helpers": "fe6a7a1ddce2ee929b0fecbcf0432e4d4bcefe08",
+  "scope": "First boundary source only; bootstrap follow-up and final evidence pending",
+  "paths": [
+    {
+      "path": "frontend/src/world/network/__tests__/generate-types.mjs",
+      "sha256": "d25c8c6d97e8a96099d944f9696152e18d64d758e3dabd6303f9742f6756b7d0",
+      "byte_equal": true
+    },
+    {
+      "path": "frontend/src/world/network/__tests__/reviewed-motion-v2/boundary.test.ts",
+      "sha256": "f80d39dc9aa7913332f9f70852175e5460ec5709e56459a15e5bd01e96b1347f",
+      "byte_equal": true
+    },
+    {
+      "path": "frontend/src/world/network/transport/contract.ts",
+      "sha256": "88d4ee20ef0c54cfbfdd5a62854084365ae83d36e6774eaeea962560bf077d3e",
+      "byte_equal": true
+    },
+    {
+      "path": "frontend/src/world/network/transport/wire-types.ts",
+      "sha256": "95c99ff1f253176fc7ed8a977e9bd8f71e72820e4eef27becd23a54c6e639b54",
+      "byte_equal": true
+    }
+  ],
+  "qualified_followup_publication": {
+    "observed_remote_master": "0b8243299c9a8c3099351364d518bbd96fc38a7f",
+    "publisher_receipt": "0b8243299c9a8c3099351364d518bbd96fc38a7f",
+    "local_qualified_source": "10c3182cf5f98736bcea0902dffbb1745d9a1968",
+    "source_mappings": {
+      "789b84c307674812a81e67ad59badc83fab8f532": "1f89ccf737cb95a37ca19587b3a9794607609a34",
+      "10c3182cf5f98736bcea0902dffbb1745d9a1968": "0be727185d57366ade2f09ec3eb1e5fcb5b191c7"
+    },
+    "dependency_mappings": {
+      "34ef8fbbd4fd59f2f806abd1c93308567cce2008": "40c3bdbee0bfe800b464e89e489c59085ddcf35a",
+      "11e486f5dcd44ce609b6f8668fad5456d026f184": "fbeaa5e327600f36d847215fc2338ff6509be6e7"
+    },
+    "ancestry_check_exit_code": 0,
+    "paths": [
+      {
+        "path": "docs/mcr/evidence/avatar-motion-boundary/bootstrap-pending-parser.log",
+        "sha256": "4964d8eee4804eb3d95001404fed6b4e66b923466a4e907f426ae2adf6e32e59",
+        "byte_equal": true
+      },
+      {
+        "path": "docs/mcr/evidence/avatar-motion-boundary/first-publication.json",
+        "sha256": "4ac9de4616abcf0f428d1124c1fe840cd57c6234069a170d815760c4384ffc93",
+        "byte_equal": true
+      },
+      {
+        "path": "docs/mcr/evidence/avatar-motion-boundary/generation.json",
+        "sha256": "8b072f12bf9e95430775136528230644b79c5567b60532b23e3cd123e615180e",
+        "byte_equal": true
+      },
+      {
+        "path": "docs/mcr/evidence/avatar-motion-boundary/generation.log",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "byte_equal": true
+      },
+      {
+        "path": "docs/mcr/evidence/avatar-motion-boundary/legacy-and-wire.log",
+        "sha256": "23e2c310ec5e10d9d25372026569e37f239b93713b88cc9aae4a36081e32394d",
+        "byte_equal": true
+      },
+      {
+        "path": "docs/mcr/evidence/avatar-motion-boundary/lint-command.json",
+        "sha256": "ec7029965104978b5b454735d89e6ebb7dbafb2dd09c48438d7b006aaec8b83f",
+        "byte_equal": true
+      },
+      {
+        "path": "docs/mcr/evidence/avatar-motion-boundary/lint-final.log",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "byte_equal": true
+      },
+      {
+        "path": "docs/mcr/evidence/avatar-motion-boundary/lint.log",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "byte_equal": true
+      },
+      {
+        "path": "docs/mcr/evidence/avatar-motion-boundary/plan-final.log",
+        "sha256": "88606f33d640a29811a4cbdc9748fc0f1e16225b81ad7e697deaf3b20c9b86e1",
+        "byte_equal": true
+      },
+      {
+        "path": "docs/mcr/evidence/avatar-motion-boundary/plan.json",
+        "sha256": "88606f33d640a29811a4cbdc9748fc0f1e16225b81ad7e697deaf3b20c9b86e1",
+        "byte_equal": true
+      },
+      {
+        "path": "docs/mcr/evidence/avatar-motion-boundary/producer-provenance.json",
+        "sha256": "f40960444d4b7fd7e0eb9d4a470405b78afd206a821152de8bea868a42a38dee",
+        "byte_equal": true
+      },
+      {
+        "path": "docs/mcr/evidence/avatar-motion-boundary/qualification.json",
+        "sha256": "f752e81f687a069d72d85dfbb6e1a624cb6961e3ca60f6b7f25b038d2fbf02a9",
+        "byte_equal": true
+      },
+      {
+        "path": "docs/mcr/evidence/avatar-motion-boundary/scope-whitespace-final.log",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "byte_equal": true
+      },
+      {
+        "path": "docs/mcr/evidence/avatar-motion-boundary/scope.json",
+        "sha256": "239a2eb6dfa6ffbaef8d905abd66fecee8ac4a03cf98a2047594665f5b8cd884",
+        "byte_equal": true
+      },
+      {
+        "path": "docs/mcr/evidence/avatar-motion-boundary/tests-command.json",
+        "sha256": "932ccf8e80abfe46dcb90a1e78c1928081bd2785e5d1d258cf7146a556ced395",
+        "byte_equal": true
+      },
+      {
+        "path": "docs/mcr/evidence/avatar-motion-boundary/tests-final.log",
+        "sha256": "45557f5974f80dcbd4533a549a0298b68f2ba4aed50b9130339e3788c6518488",
+        "byte_equal": true
+      },
+      {
+        "path": "docs/mcr/evidence/avatar-motion-boundary/types-before-motion.log",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "byte_equal": true
+      },
+      {
+        "path": "docs/mcr/evidence/avatar-motion-boundary/types-command.json",
+        "sha256": "5ffb5af738a2bad2849fd5280340a3b1e5a3285603c711cd49a43c7bfbe3aba8",
+        "byte_equal": true
+      },
+      {
+        "path": "docs/mcr/evidence/avatar-motion-boundary/types-final.log",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "byte_equal": true
+      },
+      {
+        "path": "docs/mcr/evidence/avatar-motion-boundary/types-pending-parser.log",
+        "sha256": "05827e204845c0c96a7ea322c910253181014f05292aefcac0db1470216cd02f",
+        "byte_equal": true
+      },
+      {
+        "path": "docs/mcr/evidence/avatar-motion-boundary/ui-origin-final.log",
+        "sha256": "2df7ea8bca00565b7e7692b447b65f0822bf8bce81f3ec51d2a0147472343905",
+        "byte_equal": true
+      },
+      {
+        "path": "docs/mcr/evidence/avatar-motion-boundary/ui-origin.log",
+        "sha256": "2658a51f1edf3c74d786ce6ddbcfdaf6f5618aa88f55b9a6d43c34477d1e46a4",
+        "byte_equal": true
+      },
+      {
+        "path": "docs/mcr/evidence/avatar-motion-boundary/wire.log",
+        "sha256": "7dc3bcd4d240e7d7f3566bd547cf4c4d0a05a0684e792d9c6638700d074e33f5",
+        "byte_equal": true
+      },
+      {
+        "path": "docs/mcr/frontend/reviewed-motion-v2-boundary.md",
+        "sha256": "88ce441552f13fcdef8901fe1ed2b33075c7d2c1e15fd6c9b18191b58bd218af",
+        "byte_equal": true
+      },
+      {
+        "path": "frontend/src/features/auth/model/__tests__/reviewed-motion-v2/bootstrap.test.ts",
+        "sha256": "b6a2496e12c833bc9e99b3e59e53c7e582a7628bf864b9835be702078c84c732",
+        "byte_equal": true
+      },
+      {
+        "path": "frontend/src/features/auth/model/bootstrap.ts",
+        "sha256": "3398f1263e31a8ac315d7f0bb95eb567ccca3dcfa57ab9c33907473a87ce09a2",
+        "byte_equal": true
+      },
+      {
+        "path": "frontend/src/world/network/__tests__/generate-types.mjs",
+        "sha256": "d25c8c6d97e8a96099d944f9696152e18d64d758e3dabd6303f9742f6756b7d0",
+        "byte_equal": true
+      },
+      {
+        "path": "frontend/src/world/network/__tests__/reviewed-motion-v2/boundary.test.ts",
+        "sha256": "a3038b9bea67b2c8ded4e48860d67264c8a002faee091c4719f6ea2b9886fc2f",
+        "byte_equal": true
+      },
+      {
+        "path": "frontend/src/world/network/transport/contract.ts",
+        "sha256": "88d4ee20ef0c54cfbfdd5a62854084365ae83d36e6774eaeea962560bf077d3e",
+        "byte_equal": true
+      },
+      {
+        "path": "frontend/src/world/network/transport/wire-types.ts",
+        "sha256": "95c99ff1f253176fc7ed8a977e9bd8f71e72820e4eef27becd23a54c6e639b54",
+        "byte_equal": true
+      }
+    ],
+    "source_activation": "NONE",
+    "remaining": "Receipt-only metadata serialization; implementation/build/30 source payloads already verified"
+  }
+}

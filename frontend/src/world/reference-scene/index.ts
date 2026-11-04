@@ -8,3 +8,6 @@ export { spatialSceneIdentity, spatialThemeIds, getSpatialScenery, isSpatialRefe
 export type { SpatialThemeId } from './spatial-v3/model'
 export { spatialV4SceneIdentity, spatialV4ThemeIds, getSpatialV4Scenery, isSpatialV4ReferenceClaim } from './spatial-v4/model'
 export type { SpatialV4ThemeId } from './spatial-v4/model'
+
+export { spatialV5SceneIdentity, spatialV5ThemeIds, getSpatialV5Scenery, isSpatialV5ReferenceClaim } from './spatial-v5/model'
+export type { SpatialV5ThemeId } from './spatial-v5/model'

@@ -1,0 +1,5 @@
+{
+  "extends": "../../../tsconfig.json",
+  "compilerOptions": { "tsBuildInfoFile": "/tmp/mcr-qa06.tsbuildinfo" },
+  "include": ["preview.tsx"]
+}

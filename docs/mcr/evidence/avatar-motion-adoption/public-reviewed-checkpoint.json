@@ -1,0 +1,117 @@
+{
+  "result": "CONTRACT_READY_REVIEWED_PUBLIC_DTO_NOT_RUNTIME_ADMISSION",
+  "recordedAt": "2026-11-04T03:42:37.710624+00:00",
+  "parent": "aeb03fe3634bd43153d3445698355c6fed96c83f",
+  "branch": "codex/mcr-fe-AR03-reviewed-admission",
+  "dependencies": {
+    "producerSource": "0dd9f443945e6d6232728280d03e83933ac0eef2",
+    "helperSource": "24c573fb6656c0a4a9ea72111907deb831ab3bf1",
+    "boundarySource": "7dc84e84358275d23edf41b592bfae4ef381430b",
+    "localDependencyBase": "aeb03fe3",
+    "publishedBoundary": "a67fc1342b351750ce766a783052c470dc9a9907"
+  },
+  "ownership": {
+    "publicParser": "existing five functions plus necessary imports/types; only parseConfig/validateConfig/validateManifest require source edits",
+    "legacyTest": "World recorded exact two hunk adaptations in e847e431; every existing assertion retained",
+    "newTestsAndTools": "assigned motion-adoption test prefixes",
+    "otherAuthoredPaths": "none"
+  },
+  "sourcePaths": [
+    "frontend/src/entities/avatar/whole-admission/index.ts",
+    "frontend/src/entities/avatar/whole-admission/__tests__/admission.test.ts",
+    "frontend/src/world/avatar/__tests__/motion-adoption/public-reviewed.test.ts",
+    "frontend/src/app/character-entry/__tests__/motion-adoption/root-denial.test.ts",
+    "frontend/src/world/avatar/__tests__/motion-adoption/vitest.config.mjs",
+    "frontend/src/world/avatar/__tests__/motion-adoption/qualify.mjs"
+  ],
+  "sourcePins": {
+    "frontend/src/entities/avatar/whole-admission/index.ts": "7677fa0d1c84e5657280988e0ba7e0ed455dad03aeeb9d10694df84d9d798165",
+    "frontend/src/entities/avatar/whole-admission/__tests__/admission.test.ts": "78ff3d36d5f17fd238f0b71bd846b367187f3b2175473cf090dd0d14bbc8164a",
+    "frontend/src/world/avatar/__tests__/motion-adoption/public-reviewed.test.ts": "129110b7ddc5b68fd1ba94ef1b3e87779a4ab3f47e77e1ecb90832ae3f30780a",
+    "frontend/src/app/character-entry/__tests__/motion-adoption/root-denial.test.ts": "a7781ae5a29973543866bc11af315a50a17e6824dd08bc24f7d1237e77880eb1",
+    "frontend/src/world/avatar/__tests__/motion-adoption/vitest.config.mjs": "4fb9125eb6b6432cfe68ed60ef009b493a8eeb4f59f69ecc3db116d7ad66ca7e",
+    "frontend/src/world/avatar/__tests__/motion-adoption/qualify.mjs": "033e73491bb7cdd48b08761f4bd4004a2e3bbcd94ba5c769132f06b50f795023"
+  },
+  "checks": [
+    {
+      "name": "unit",
+      "command": "<node24> <retained-frontend>/node_modules/.pnpm/vitest@4.1.9_@types+node@24.13.2_jsdom@29.1.1_msw@2.14.6_@types+node@24.13.2_typescript_67338a2989bf71c5b75b87305b6eead5/node_modules/vitest/vitest.mjs run --configLoader runner --root <checkout>/frontend --config <checkout>/frontend/src/world/avatar/__tests__/motion-adoption/vitest.config.mjs",
+      "exit": 0,
+      "error": null
+    },
+    {
+      "name": "types",
+      "command": "<node24> <checkout>/frontend/src/world/avatar/__tests__/motion-adoption/typecheck.mjs",
+      "exit": 0,
+      "error": null
+    },
+    {
+      "name": "application-types",
+      "command": "<node24> <checkout>/frontend/src/world/avatar/__tests__/motion-adoption/typecheck.mjs --application",
+      "exit": 0,
+      "error": null
+    },
+    {
+      "name": "lint",
+      "command": "<node24> <retained-frontend>/node_modules/oxlint/bin/oxlint <checkout>/frontend/src/entities/avatar/runtime/motion-adoption <checkout>/frontend/src/world/avatar/motion-adoption <checkout>/frontend/src/features/avatar/motion-adoption <checkout>/frontend/src/world/avatar/__tests__/motion-adoption <checkout>/frontend/src/features/avatar/__tests__/motion-adoption <checkout>/frontend/src/app/character-entry/__tests__/motion-adoption <checkout>/frontend/src/entities/avatar/whole-admission/index.ts <checkout>/frontend/src/entities/avatar/whole-admission/__tests__/admission.test.ts",
+      "exit": 0,
+      "error": null
+    },
+    {
+      "name": "build",
+      "command": "<node24> <checkout>/frontend/src/world/avatar/__tests__/motion-adoption/build.mjs",
+      "exit": 0,
+      "error": null
+    },
+    {
+      "name": "plan",
+      "command": "python3 <checkout>/scripts/mcr/check-plan.py",
+      "exit": 0,
+      "error": null
+    },
+    {
+      "name": "ui-origin",
+      "command": "<node24> <checkout>/scripts/mcr/check-ui-origin.mjs",
+      "exit": 0,
+      "error": null
+    }
+  ],
+  "tests": 243,
+  "suites": 10,
+  "scopedTypes": {
+    "files": 23,
+    "diagnostics": 0
+  },
+  "applicationTypes": {
+    "files": 781,
+    "diagnostics": 0
+  },
+  "publicBehavior": [
+    "canonical AvatarState.config exact type equality",
+    "31 reviewed config fixtures through public decoders",
+    "full canonical reviewed manifest hash and frozen ownership",
+    "preset exact embedded config and item slot membership",
+    "strict JSON/error/revision/private field denial",
+    "legacy layered/whole-character preservation",
+    "actual Root registry denies staged reviewed manifest without network allocation"
+  ],
+  "publicationVerification": {
+    "fetchedMaster": "14f04a12edad80149740055a11740a1a55e40507",
+    "lsRemote": "14f04a12edad80149740055a11740a1a55e40507",
+    "helperExactPayloadFiles": 12,
+    "reviewedProducerPins": 36,
+    "boundaryExactPayloadFiles": 4,
+    "note": "Verifies prior dependencies, not publication of this new parser source."
+  },
+  "notRun": [
+    "Auth bootstrap successor combined proof pending separate owner commit consumption",
+    "new native capture",
+    "positive production Root admission",
+    "actual service save/reload/reconcile",
+    "two-account live World",
+    "physical device",
+    "release acceptance"
+  ],
+  "goal": "Original AR03 unfinished; recorded BLOCKED, not reset or completed",
+  "publication": "Only Root153 integrator; new source receipt required separately"
+}

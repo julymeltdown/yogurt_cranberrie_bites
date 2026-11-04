@@ -1,0 +1,16 @@
+node:internal/modules/run_main:107
+    triggerUncaughtException(
+    ^
+
+AssertionError [ERR_ASSERTION]: Authored camera projection: {"self":{"x":472,"y":440},"surface":{"left":6,"top":109,"right":424,"bottom":679},"points":[{"world":{"x":160,"y":13},"client":{"x":5.999999320670369,"y":118.30478986158762},"roundtrip":null},{"world":{"x":744,"y":13},"client":{"x":424.00000599639066,"y":118.30478986158762},"roundtrip":null},{"world":{"x":160,"y":597},"client":{"x":5.999999320670369,"y":536.3047965373079},"roundtrip":null},{"world":{"x":744,"y":597},"client":{"x":424.00000599639066,"y":536.3047965373079},"roundtrip":null},{"world":{"x":472,"y":440},"client":{"x":229.31507138030173,"y":423.9315070714036},"roundtrip":{"x":472,"y":440}}]}
+    at assertProjection (file:///Users/lhs/Desktop/mcr-worktrees/fe-reference-root/frontend/src/app/world-entry/__tests__/reference-scene-v5/native.mjs:43:5)
+    at file:///Users/lhs/Desktop/mcr-worktrees/fe-reference-root/frontend/src/app/world-entry/__tests__/reference-scene-v5/native.mjs:84:115 {
+  generatedMessage: false,
+  code: 'ERR_ASSERTION',
+  actual: null,
+  expected: true,
+  operator: '==',
+  diff: 'simple'
+}
+
+Node.js v24.22.2

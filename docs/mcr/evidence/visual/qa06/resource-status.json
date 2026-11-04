@@ -1,0 +1,38 @@
+{
+  "task": "QA06",
+  "historicalHold": {
+    "freeGiB": 7.53,
+    "floorGiB": 8,
+    "ownedTemporaryCachesRemovedMiB": 258.2,
+    "matrixV2": "Guard denied before capture"
+  },
+  "recovery": {
+    "coordinator": "Backend SL",
+    "coordinatorReleaseReceived": true,
+    "freshOwnFreeGiB": 10.543,
+    "activeOwnRunnersBeforeStart": 0,
+    "boundedRunBudgetMiB": 100,
+    "resumedOutput": "matrix-v3"
+  },
+  "noSharedPurge": true,
+  "noPeerTermination": true,
+  "noFloorWaiver": true,
+  "duringRunSamples": [
+    {
+      "time": "2026-11-04T03:12:12.039035+00:00",
+      "freeGiB": 9.573,
+      "floorPass": true
+    }
+  ],
+  "events": [
+    {
+      "at": "2026-11-04T03:19:23.874816+00:00",
+      "freeBytes": 8328232960,
+      "freeGiB": 7.7562713623046875,
+      "guardGiB": 8,
+      "action": "consumers-v5 refused before mkdir/server/browser; no app capture active; motion and post-fix capture held; coordinator escalation",
+      "ownSession": 46973,
+      "exitCode": 1
+    }
+  ]
+}

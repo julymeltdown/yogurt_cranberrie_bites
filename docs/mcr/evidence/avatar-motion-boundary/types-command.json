@@ -1,0 +1,14 @@
+{
+  "cwd": "frontend",
+  "command": [
+    "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node",
+    "./node_modules/typescript/bin/tsc",
+    "--project",
+    "tsconfig.json",
+    "--incremental",
+    "false",
+    "--pretty",
+    "false"
+  ],
+  "exit_code": 0
+}

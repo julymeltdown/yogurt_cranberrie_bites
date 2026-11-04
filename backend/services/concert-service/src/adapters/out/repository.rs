@@ -1,3 +1,4 @@
+pub mod audit;
 pub mod report;
 pub mod event_operations;
 pub mod outbox;

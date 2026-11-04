@@ -20,6 +20,13 @@ const messages: Record<Exclude<MotionNotice, null>, string> = {
 const equal = (a: unknown, b: unknown) => canonicalJson(a as Record<string, unknown>) === canonicalJson(b as Record<string, unknown>)
 const layerLabels: Record<MotionLayer, string> = { body: 'Skin / body', hair: 'Hair', eyes: 'Eyes', outfit: 'Outfit', accessory: 'Accessory' }
 const label = (key: string) => `${key.split('-')[0]} ${Number(key.split('-').at(-1)) + 1}`
+const categoryPaths: Record<MotionLayer, string> = {
+  hair: 'M4 19V11a8 8 0 0 1 16 0v8l-4-2v-6l-4-4-3 5H7v5z',
+  outfit: 'M8 4 3 7l2 5 3-1v9h8v-9l3 1 2-5-5-3c0 4-8 4-8 0Z',
+  accessory: 'M3 10h5l2 2h4l2-2h5v5l-2 2h-3l-2-5h-4l-2 5H5l-2-2Zm0 0L1 8m20 2 2-2',
+  body: 'M12 3a4 4 0 1 1 0 8 4 4 0 0 1 0-8Zm-7 18v-3a7 7 0 0 1 14 0v3',
+  eyes: 'M2 12s4-6 10-6 10 6 10 6-4 6-10 6S2 12 2 12Zm10-3a3 3 0 1 1 0 6 3 3 0 0 1 0-6Z',
+}
 export function MotionEditor<C>({ controller }: { readonly controller: MotionEditorController<C> }) {
   const state = useSyncExternalStore(controller.subscribe, controller.read, controller.read), id = useId()
   const [direction, setDirection] = useState<MotionDirection>('down'), [walking, setWalking] = useState(false)
@@ -32,39 +39,54 @@ export function MotionEditor<C>({ controller }: { readonly controller: MotionEdi
   const items = catalog?.items.filter(item => item.kind === category) ?? [], last = Math.max(0, Math.ceil(items.length / 3) - 1), current = Math.min(page, last)
   const chooseItem = (kind: MotionLayer, key: string | null) => {
     if (selected?.mode !== 'wardrobe') return
+    if (kind === category) setPage(Math.floor(Math.max(0, items.findIndex(item => item.key === key)) / 3))
     void controller.choose({ ...selected, [kind]: key } as MotionSelection)
+  }
+  const dressUp = () => {
+    if (!catalog || selected?.mode === 'wardrobe') return
+    setPage(0)
+    void controller.choose({ mode: 'wardrobe', body: catalog.items.find(i => i.kind === 'body')!.key,
+      hair: catalog.items.find(i => i.kind === 'hair')!.key, eyes: catalog.items.find(i => i.kind === 'eyes')!.key,
+      outfit: catalog.items.find(i => i.kind === 'outfit')!.key, accessory: null })
   }
   return <section className="mcr-motion-editor" aria-label="Avatar editor" aria-busy={busy}>
     <ConcertWindow title="CUSTOMIZE" headingLevel={1} icon="me" footer={<div className="mcr-motion-actions">
       <ConcertAction tone="paper" aria-label="Reset draft" disabled={!editable || !!state.candidate} onClick={() => controller.reset()}>Reset</ConcertAction>
       <ConcertAction aria-label="Save outfit" pending={state.phase === 'saving'} disabled={!editable || !dirty || state.needsReconciliation} onClick={() => void controller.save()}>Save</ConcertAction>
     </div>}>
-      <div className="mcr-motion-preview">
+      <div className="mcr-motion-stage">
+      <div className="mcr-motion-figure"><div className="mcr-motion-preview">
         {draft && !['idle', 'unavailable', 'disposed'].includes(state.phase)
           ? <MotionView runtime={controller.runtime} config={draft} direction={direction} walking={walking} size={192} label="Draft outfit preview" />
           : <p>{busy ? 'Loading your character…' : 'Character preview unavailable'}</p>}
       </div>
       <div className="mcr-motion-pose">
-        <label htmlFor={`${id}-direction`}>View</label><select id={`${id}-direction`} value={direction} onChange={e => setDirection(e.target.value as MotionDirection)}>
+        <select aria-label="View" id={`${id}-direction`} value={direction} onChange={e => setDirection(e.target.value as MotionDirection)}>
           <option value="down">Front</option><option value="left">Left</option><option value="right">Right</option><option value="up">Rear</option>
         </select>
-        <button type="button" aria-pressed={walking} disabled={!draft} onClick={() => setWalking(!walking)}>{walking ? 'Stop walking' : 'Preview walk'}</button>
+        <button type="button" aria-label={walking ? 'Stop walking' : 'Preview walk'} aria-pressed={walking} disabled={!draft} onClick={() => setWalking(!walking)}>{walking ? 'Stop walk' : 'Walk'}</button>
+      </div></div>
+      {catalog && draft && <div className="mcr-motion-categories" role="group" aria-label="Clothing categories">
+        {(['hair', 'outfit', 'accessory', 'body', 'eyes'] as const).map(kind => <button type="button" key={kind} aria-label={layerLabels[kind]}
+          disabled={!editable} aria-pressed={selected?.mode === 'wardrobe' && category === kind} onClick={() => {
+            setCategory(kind)
+            const choices = catalog.items.filter(item => item.kind === kind)
+            setPage(selected?.mode === 'wardrobe' ? Math.floor(Math.max(0, choices.findIndex(item => item.key === selected[kind])) / 3) : 0)
+            if (selected?.mode !== 'wardrobe') dressUp()
+          }}><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinejoin="round" strokeLinecap="round"><path d={categoryPaths[kind]} /></svg>
+          <span>{layerLabels[kind]}</span></button>)}
+      </div>}
       </div>
       {catalog && draft && <>
         <div className="mcr-motion-mode" role="group" aria-label="Character mode">
-          <button type="button" disabled={!editable} aria-pressed={selected?.mode === 'preset'} onClick={() => controller.selectPreset(catalog.presets[0]!.id)}>Presets</button>
-          <button type="button" disabled={!editable} aria-pressed={selected?.mode === 'wardrobe'} onClick={() => void controller.choose({ mode: 'wardrobe',
-            body: catalog.items.find(i => i.kind === 'body')!.key, hair: catalog.items.find(i => i.kind === 'hair')!.key,
-            eyes: catalog.items.find(i => i.kind === 'eyes')!.key, outfit: catalog.items.find(i => i.kind === 'outfit')!.key, accessory: null })}>Dress up</button>
+          <button type="button" disabled={!editable} aria-pressed={selected?.mode === 'preset'} onClick={() => { if (selected?.mode !== 'preset') controller.selectPreset(catalog.presets[0]!.id) }}>Presets</button>
+          <button type="button" disabled={!editable} aria-pressed={selected?.mode === 'wardrobe'} onClick={dressUp}>Dress up</button>
         </div>
         {selected?.mode === 'preset' ? <div className="mcr-motion-presets" role="group" aria-label="Preset choices">
           {catalog.presets.map(preset => <button key={preset.id} type="button" aria-label={`Choose ${preset.label}`} disabled={!editable} aria-pressed={equal(draft, preset.config)} onClick={() => controller.selectPreset(preset.id)}>
             <MotionView runtime={controller.runtime} config={preset.config} size={64} label={preset.label} /><span>{preset.label}</span>
           </button>)}
         </div> : <>
-          <div className="mcr-motion-categories" role="group" aria-label="Clothing categories">
-            {(['hair', 'outfit', 'accessory', 'body', 'eyes'] as const).map(kind => <button type="button" key={kind} aria-pressed={category === kind} onClick={() => { setCategory(kind); setPage(0) }}>{layerLabels[kind]}</button>)}
-          </div>
           <section className="mcr-motion-options" aria-label={layerLabels[category]}>
             <header><h2>{layerLabels[category]}</h2><span>{items.length} choices</span></header>
             <div className="mcr-motion-option-row">

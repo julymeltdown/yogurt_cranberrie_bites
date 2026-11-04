@@ -1,0 +1,50 @@
+// Native modal focus/scroll/hit proof at reduced desktop height. No software-keyboard claim.
+import assert from 'node:assert/strict'
+import {execFileSync} from 'node:child_process'
+import {readFile,writeFile,mkdir} from 'node:fs/promises'
+import {createHash} from 'node:crypto'
+import {resolve,extname} from 'node:path'
+import {createServer} from 'vite'
+import {chromium,expect} from '@playwright/test'
+const repo=resolve(import.meta.dirname,'../../../..'),out=process.env.QA06_MODAL_OUTPUT
+assert(out?.startsWith(resolve(repo,'docs/mcr/evidence/visual/qa06/')+'/'))
+await mkdir(out,{mode:0o700})
+const git=(...args)=>execFileSync('git',args,{cwd:repo,maxBuffer:64*1024*1024}),tracked=new Set(git('ls-files','frontend/public').toString().trim().split('\n')),cache=new Map()
+const server=await createServer({root:resolve(repo,'frontend'),configLoader:'runner',logLevel:'error',cacheDir:`/tmp/mcr-qa06-modal-${process.pid}`,
+ plugins:[{name:'readonly-sparse-assets',configureServer(s){s.middlewares.use((req,res,next)=>{const path='frontend/public'+decodeURIComponent(new URL(req.url,'http://localhost').pathname)
+  if(!tracked.has(path)||!['.png','.ttf'].includes(extname(path)))return next()
+  try{if(!cache.has(path))cache.set(path,git('show','HEAD:'+path));res.setHeader('Content-Type',extname(path)==='.ttf'?'font/ttf':'image/png');res.end(cache.get(path))}catch(e){next(e)}
+ })}}],server:{host:'127.0.0.1',port:0,hmr:false}})
+const report={task:'QA06',qualification:'DESKTOP_NATIVE_MODAL_ACTIVE_SCOPE_ONLY',candidate:git('rev-parse','HEAD').toString().trim(),harnessSha256:createHash('sha256').update(await readFile(new URL(import.meta.url))).digest('hex'),cases:[],status:'IN_PROGRESS',physicalKeyboard:'NOT_RUN'}
+let browser
+try{await server.listen();browser=await chromium.launch({channel:'chrome',headless:true});report.browser=browser.version()
+ for(const width of (process.env.QA06_WIDTHS?process.env.QA06_WIDTHS.split(',').map(Number):[360,390,430]))for(const era of (process.env.QA06_ERAS?process.env.QA06_ERAS.split(','):['REVENGE','PARADE','DANGER'])){
+  const context=await browser.newContext({viewport:{width,height:844},hasTouch:true,isMobile:true,reducedMotion:'reduce'}),page=await context.newPage(),errors=[];page.on('pageerror',e=>errors.push(e.message))
+  const entry={width,era,errors,status:'IN_PROGRESS'}
+  try{await page.clock.setFixedTime(new Date('2026-11-07T07:00:00Z'));await page.goto(server.resolvedUrls.local[0]+`src/app/world-entry/__tests__/reference-scene-v4/preview.html?era=${era}`)
+   await expect.poll(()=>page.evaluate(()=>window.__SCENE_V4_ROOT__?.state().overview?.themeId),{timeout:25000}).toBe(era)
+   await page.evaluate(()=>window.__SCENE_V4_ROOT__.navigate('/world/map'));await expect(page.getByRole('button',{name:'Places',exact:true})).toBeVisible()
+   await page.setViewportSize({width,height:420});await page.getByRole('button',{name:'Places',exact:true}).click()
+   const dialog=page.locator('dialog:modal');await expect(dialog).toBeVisible()
+   const search=dialog.getByRole('searchbox',{name:'Find a place',exact:true});await search.focus();await expect(search).toBeFocused()
+   entry.initialScreenshot=`modal-search-${era.toLowerCase()}-${width}.png`;await page.screenshot({path:resolve(out,entry.initialScreenshot)})
+   entry.backgroundFocusBlocked=await page.getByRole('button',{name:'Reduce panel',exact:true}).evaluate(e=>{e.focus();return document.activeElement!==e&&!!document.activeElement.closest('dialog:modal')})
+   assert.equal(entry.backgroundFocusBlocked,true)
+   entry.controls=[]
+   const controls=dialog.locator('button:not(:disabled),a[href],input:not(:disabled),textarea:not(:disabled),select:not(:disabled)')
+   for(const el of await controls.all()){await el.focus();await el.scrollIntoViewIfNeeded();const probe=await el.evaluate(e=>{const r=e.getBoundingClientRect(),d=e.closest('dialog:modal').getBoundingClientRect(),hit=document.elementFromPoint(r.left+r.width/2,r.top+r.height/2)
+    const reachable=[.15,.5,.85].some(dx=>[.15,.5,.85].some(dy=>{const px=r.left+r.width*dx,py=r.top+r.height*dy,h=document.elementFromPoint(px,py);return px>=0&&px<innerWidth&&py>=0&&py<innerHeight&&(h===e||e.contains(h))}))
+    return {reachable,rect:{top:r.top,bottom:r.bottom,left:r.left,right:r.right},dialogRect:{top:d.top,bottom:d.bottom},name:e.getAttribute('aria-label')||e.textContent||e.tagName,width:r.width,height:r.height,focused:document.activeElement===e,inDialog:!!e.closest('dialog:modal'),fullyVisible:r.top>=Math.max(0,d.top)-1&&r.bottom<=Math.min(innerHeight,d.bottom)+1,centerHit:hit===e||e.contains(hit)}})
+    entry.controls.push(probe);assert(probe.focused&&probe.inDialog&&probe.fullyVisible&&probe.reachable,JSON.stringify(probe));assert(probe.width>=44&&probe.height>=44)
+   }
+   await search.focus();await page.keyboard.press('Shift+Tab');entry.reverseTabInside=await dialog.evaluate(e=>e.contains(document.activeElement));assert.equal(entry.reverseTabInside,true)
+   await page.getByRole('button',{name:'Close map information',exact:true}).click();await expect(dialog).toHaveCount(0);await expect(page.getByRole('button',{name:'Places',exact:true})).toBeFocused();entry.returnedFocus='Places'
+   entry.closedScreenshot=`modal-closed-${era.toLowerCase()}-${width}.png`;await page.screenshot({path:resolve(out,entry.closedScreenshot)})
+   assert.deepEqual(errors,[]);entry.status='PASS'
+  }catch(e){entry.status='FAIL';entry.error=e.message}
+  finally{await page.evaluate(()=>window.__SCENE_V4_ROOT__?.dispose()).catch(()=>{});await context.close()}
+  report.cases.push(entry);console.log(JSON.stringify({width,era,status:entry.status,error:entry.error}))
+ }
+ report.status=report.cases.every(c=>c.status==='PASS')?'PASS':'FAIL'
+}finally{await writeFile(resolve(out,'report.json'),JSON.stringify(report,null,2)+'\n');await browser?.close();await server.close()}
+if(report.status!=='PASS')process.exitCode=1

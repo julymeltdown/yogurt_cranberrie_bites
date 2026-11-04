@@ -1,0 +1,17 @@
+{
+  "status": "PASS_V10_SOURCE_PUBLICATION_ONLY",
+  "master_snapshot": "63c8521cf43d7d4ab7e6fa570c819c1fe934ab26",
+  "owner_commits": [
+    "a24cc7516db1d058dc312b139a1410da4c68573b",
+    "c76f5ec3276792dea38318500638e884462fb17a"
+  ],
+  "published_commits": [
+    "c7b0cb013e5ab1d9f8cac08be1d0046c249e1cd4",
+    "06562ff1962be525ed929ef431a54bb589860373"
+  ],
+  "mapped_ancestry": "PASS",
+  "exact_changed_path_blobs": 107,
+  "closed_git_byte_pins": 105,
+  "runtime_adoption": "NOT_ASSERTED",
+  "fidelity_acceptance": "NOT_ASSERTED"
+}

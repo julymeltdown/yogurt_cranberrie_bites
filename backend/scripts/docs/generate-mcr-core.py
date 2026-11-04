@@ -53,6 +53,9 @@ def json_schema(value):
 def load_schemas(root=ROOT):
     files = sorted((root / "contracts/assets/v1").glob("*.schema.json"))
     files += sorted((root / "contracts/core/v1").glob("*.schema.json"))
+    # C06 reviewed successor only; the immutable candidate is never public.
+    files += [root / "contracts/assets/v2/reviewed" / name for name in
+              ("avatar-config.schema.json", "avatar-manifest.schema.json")]
     if len(files) < 6:
         raise ValueError("Core and reviewed asset contract inputs are required")
     documents = [json.loads(file.read_text()) for file in files]

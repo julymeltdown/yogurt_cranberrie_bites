@@ -1,0 +1,198 @@
+{
+  "phase": "before",
+  "base": "819d30c3cb32915862281d30cddbe5b7c9bd53cb",
+  "clock": "2026-11-07T07:00:00.000Z",
+  "diskFreeGiB": 10.052982330322266,
+  "qualification": "DESKTOP_CHROME_SYNTHETIC_HTTP_C05_ONLY",
+  "physicalIOS": "NOT_RUN",
+  "physicalAndroid": "NOT_RUN",
+  "sourceHashes": {
+    "src/features/party-discovery/ui/party-discovery.css": "56adebbc5aa174b62c229e91377ed92065fd7c823078a281be176b64875949fd",
+    "src/features/party-discovery/ui/PartyDiscovery.tsx": "687d59c29d6155ead1df9152391af9f5422e6441b60b51b15df7084b0582f148",
+    "e2e/reference-integrated/data.ts": "186ca7d28cca66f2eab4fe87f95fc76e5a4acca432b109abb7216ddfc404a994",
+    "e2e/reference-integrated/whole/data.ts": "8031884ce211e04272a20d66db4427b67a192a197a766d14a6f848765cc99d33",
+    "src/app/WorldShell.tsx": "9ab07b46c077bde4381ea2ec5918c146e2d05dfe7dc355bafad7448d9ff2d5f9",
+    "src/app/shell.css": "8bed1fbb014dfd0dfe31adcf015aa2bf78814ae08b4ea65623f0412569e3a056",
+    "src/app/shell-chrome/shell-chrome.css": "759a7749c7e1bceb8b8ebfe6500128d1ef39b0b4cd4aac3ae142ee782d525a21",
+    "preview.tsx": "ce889431a8077e6e954d3a7685766b7a00454ab8cd201220aaec5987dc1f1309",
+    "preview.html": "79d3eacec2fa69eba2c798f0e4968a2652bcd395be92bf25df259071e9d48ef8",
+    "native.mjs": "d6477cf749bd231db35b2b99848aa6c8849b237d27253b4c790244d8ca7b3e80"
+  },
+  "cases": [
+    {
+      "width": 390,
+      "height": 637,
+      "initial": {
+        "body": {
+          "x": 9,
+          "y": 53,
+          "width": 372,
+          "height": 510.703125,
+          "bottom": 563.703125,
+          "right": 381,
+          "scrollTop": 0,
+          "scrollHeight": 689,
+          "clientHeight": 511
+        },
+        "feature": {
+          "x": 15,
+          "y": 59,
+          "width": 360,
+          "height": 538.75,
+          "bottom": 597.75,
+          "right": 375
+        },
+        "action": {
+          "x": 77,
+          "y": 528,
+          "width": 236,
+          "height": 46,
+          "bottom": 574,
+          "right": 313,
+          "visible": false,
+          "hit": true
+        },
+        "copy": {
+          "x": 118.78125,
+          "y": 579,
+          "width": 152.4375,
+          "height": 13.75,
+          "bottom": 592.75,
+          "right": 271.21875,
+          "visible": false,
+          "hit": false
+        },
+        "disabled": true,
+        "rows": [
+          {
+            "x": 15,
+            "y": 111,
+            "width": 360,
+            "height": 110,
+            "bottom": 221,
+            "right": 375
+          },
+          {
+            "x": 15,
+            "y": 226,
+            "width": 360,
+            "height": 110,
+            "bottom": 336,
+            "right": 375
+          },
+          {
+            "x": 15,
+            "y": 341,
+            "width": 360,
+            "height": 110,
+            "bottom": 451,
+            "right": 375
+          }
+        ],
+        "overflow": false,
+        "footer": {
+          "x": 9,
+          "y": 563.703125,
+          "width": 372,
+          "height": 66.296875,
+          "bottom": 630,
+          "right": 381
+        },
+        "state": {
+          "path": "/meet",
+          "published": true,
+          "theme": {
+            "selected": "REVENGE",
+            "pending": null,
+            "phase": "ready",
+            "message": "",
+            "saved": false
+          },
+          "camera": {
+            "following": true,
+            "camera": {
+              "zoom": 1,
+              "scrollX": 71.92000000000002,
+              "scrollY": 299.38,
+              "width": 378,
+              "height": 584
+            }
+          },
+          "phase": "suspended",
+          "entities": 0,
+          "avatarPin": {
+            "manifest_id": "mcr_selected_static_20261103",
+            "manifest_version": 1,
+            "content_hash": "sha256:0627c7d178b22535a561e1270db6d8bf9e2383ba84d03a63962e48e565c59b2b"
+          },
+          "requests": [
+            {
+              "path": "/api/auth/capabilities",
+              "method": "GET"
+            },
+            {
+              "path": "/api/auth/login",
+              "method": "POST"
+            },
+            {
+              "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/bootstrap",
+              "method": "GET"
+            },
+            {
+              "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/parties",
+              "method": "GET"
+            },
+            {
+              "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/me/parties",
+              "method": "GET"
+            },
+            {
+              "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/rooms",
+              "method": "GET"
+            },
+            {
+              "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/places",
+              "method": "GET"
+            }
+          ],
+          "sockets": 0,
+          "activeSockets": 0,
+          "socketPeak": 0,
+          "canvases": 1,
+          "disposed": false
+        }
+      },
+      "errors": []
+    }
+  ],
+  "assetReads": [
+    {
+      "path": "frontend/public/world/avatars/derived-v1/photo01-front-idle-64-e124c88815b22220.png",
+      "sha256": "e124c88815b22220df2f2dc59e2f26b3ceb845e57b77674fd8e55383116d7efe",
+      "bytes": 36030
+    },
+    {
+      "path": "frontend/public/world/themes/revenge.png",
+      "sha256": "245049897f87ace9e82a7e2676654708ac3e4aa8a297d11dedbcb9275c064da6",
+      "bytes": 4975
+    },
+    {
+      "path": "frontend/public/world/illustrated/revenge-ground.png",
+      "sha256": "aa889f913f8b518409529130fd6710f78f12cb40f28d746ce83c4a01a04aab8e",
+      "bytes": 96285
+    },
+    {
+      "path": "frontend/public/world/illustrated/revenge-landmarks-atlas.png",
+      "sha256": "0c2ff90ddf18a61791ca2825a25361c536e5fd8d3a86f927aeea5150db292879",
+      "bytes": 445101
+    },
+    {
+      "path": "frontend/public/world/illustrated-runtime/revenge-details.png",
+      "sha256": "84cd918700d99f1bfabcde38a7d48d43b51bf5ef19d431b50cc9c11e0c0a3bcd",
+      "bytes": 10119
+    }
+  ],
+  "browser": "156.0.8078.80",
+  "node": "v24.22.2",
+  "status": "PASS"
+}

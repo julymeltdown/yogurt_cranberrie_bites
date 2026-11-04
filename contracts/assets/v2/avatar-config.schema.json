@@ -1,0 +1,138 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://mcr.example/contracts/assets/v2/avatar-config.schema.json",
+  "title": "MCR selected-source motion AvatarConfig 2.0.0",
+  "oneOf": [
+    {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "contract_version",
+        "kind",
+        "manifest_id",
+        "manifest_version",
+        "representation",
+        "preset_id"
+      ],
+      "properties": {
+        "contract_version": {
+          "const": "2.0.0"
+        },
+        "kind": {
+          "const": "avatar_config"
+        },
+        "manifest_id": {
+          "const": "mcr_selected_motion_20261103"
+        },
+        "manifest_version": {
+          "const": 1
+        },
+        "representation": {
+          "const": "motion_preset"
+        },
+        "preset_id": {
+          "enum": [
+            "motion_v2_photo01_front_01",
+            "motion_v2_photo01_front_02",
+            "motion_v2_photo01_front_03",
+            "motion_v2_photo01_front_04",
+            "motion_v2_photo01_front_05",
+            "motion_v2_photo01_front_06"
+          ]
+        }
+      }
+    },
+    {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "contract_version",
+        "kind",
+        "manifest_id",
+        "manifest_version",
+        "representation",
+        "item_ids"
+      ],
+      "properties": {
+        "contract_version": {
+          "const": "2.0.0"
+        },
+        "kind": {
+          "const": "avatar_config"
+        },
+        "manifest_id": {
+          "const": "mcr_selected_motion_20261103"
+        },
+        "manifest_version": {
+          "const": 1
+        },
+        "representation": {
+          "const": "motion_layered"
+        },
+        "item_ids": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "body",
+            "eyes",
+            "hair",
+            "outfit",
+            "accessory"
+          ],
+          "properties": {
+            "body": {
+              "enum": [
+                "motion_v2_body_0",
+                "motion_v2_body_1",
+                "motion_v2_body_2",
+                "motion_v2_body_3",
+                "motion_v2_body_4",
+                "motion_v2_body_5",
+                "motion_v2_body_6",
+                "motion_v2_body_7"
+              ]
+            },
+            "eyes": {
+              "enum": [
+                "motion_v2_eyes_0",
+                "motion_v2_eyes_1",
+                "motion_v2_eyes_2",
+                "motion_v2_eyes_3"
+              ]
+            },
+            "hair": {
+              "enum": [
+                "motion_v2_hair_0",
+                "motion_v2_hair_1",
+                "motion_v2_hair_2",
+                "motion_v2_hair_3",
+                "motion_v2_hair_4",
+                "motion_v2_hair_5"
+              ]
+            },
+            "outfit": {
+              "enum": [
+                "motion_v2_outfit_0",
+                "motion_v2_outfit_1",
+                "motion_v2_outfit_2",
+                "motion_v2_outfit_3",
+                "motion_v2_outfit_4",
+                "motion_v2_outfit_5",
+                null
+              ]
+            },
+            "accessory": {
+              "enum": [
+                "motion_v2_accessory_0",
+                "motion_v2_accessory_1",
+                "motion_v2_accessory_2",
+                "motion_v2_accessory_3",
+                null
+              ]
+            }
+          }
+        }
+      }
+    }
+  ]
+}

@@ -1,4 +1,5 @@
 import { getSpatialOverviewMetadata } from './spatial-v3/model'
+import { getSpatialV5OverviewMetadata } from './spatial-v5/model'
 import { getSpatialV4OverviewMetadata } from './spatial-v4/model'
 /** Frozen projection of artist milestone 8f89d190; these are virtual illustration coordinates. */
 export const referenceSceneIdentity = Object.freeze({
@@ -25,5 +26,5 @@ const metadata = Object.freeze({ ...referenceSceneIdentity, mapLabels })
 export function getReferenceOverviewMetadata(identity: ReferenceOverviewIdentity) {
   return identity.geometryHash === metadata.geometryHash && identity.width === metadata.width
     && identity.height === metadata.height && identity.themeId === metadata.themeId ? metadata
-    : getSpatialV4OverviewMetadata(identity) ?? getSpatialOverviewMetadata(identity)
+    : getSpatialV5OverviewMetadata(identity) ?? getSpatialV4OverviewMetadata(identity) ?? getSpatialOverviewMetadata(identity)
 }

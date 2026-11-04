@@ -5,6 +5,7 @@ import { mkdir, mkdtemp, readFile, writeFile, rm } from 'node:fs/promises'
 import { createHash } from 'node:crypto'
 import { execFileSync } from 'node:child_process'
 import { aliases } from '../../../../world/avatar/__tests__/motion-adoption/vitest.config.mjs'
+import { producerInputs, readPinnedProducer } from '../../../../world/avatar/__tests__/motion-adoption/producer-inputs.ts'
 
 const dependencies = process.env.MCR_FRONTEND_DEPENDENCIES
 if (!dependencies) throw Error('Set MCR_FRONTEND_DEPENDENCIES')
@@ -13,27 +14,33 @@ const { createServer } = require('vite'), { chromium, expect } = require('@playw
 const root = resolve(import.meta.dirname, '../../../../..'), output = resolve(root, '../docs/mcr/evidence/avatar-motion-adoption')
 await mkdir(output, { recursive: true }); const cache = await mkdtemp('/private/tmp/mcr-motion-native-')
 const hash = bytes => createHash('sha256').update(bytes).digest('hex')
-const descriptor = JSON.parse(await readFile(resolve(root, 'public/world/avatars/derived-v1/motion-candidates-v1/combined-release-candidate.json')))
-const presets = [...new Set(descriptor.presets.frames.map(frame => frame.preset))]
-const config = selection => ({ testOnlyContract: 'mcr-motion-fixture-v1', selection })
+const producerCommit = producerInputs.commit
+const producer = readPinnedProducer
+const candidateBytes = producer('backend/releases/selected-character-motion-v2/manifest.json')
+assert.equal(candidateBytes.length, 95128); assert.equal(hash(candidateBytes), '9a555f726a9e421f14ed876117be87bb1bb8fa128ac401ab38f8927760776fd6')
+const presets = Array.from({ length: 6 }, (_, i) => JSON.parse(new TextDecoder().decode(producer(`contracts/fixtures/assets/motion-v2/valid/preset-0${i + 1}.json`))))
 let saved, mode = 'ok'
-const reset = () => { saved = { revision: 1, config: config({ mode: 'preset', preset: presets[0] }) }; mode = 'ok' }
+const reset = () => { saved = { revision: 1, config: presets[0] }; mode = 'ok' }
 reset()
 const report = { result: 'FAIL', qualification: 'MOCK_READY: new editor/controller/runtime and actual incumbent Phaser scene under explicit TEST_ONLY local authority and deterministic HTTP fixture. Not application Root/public C05/production admission, live socket/service, physical device or multiuser acceptance.',
   parent: execFileSync('git', ['rev-parse', 'HEAD'], { cwd: root, encoding: 'utf8' }).trim(), cases: [], errors: [], artifacts: {} }
+report.producer = { commit: producerCommit, manifestSha256: hash(candidateBytes), productionEligible: false, wireContract: '2.0.0', qualification: 'TEST_ONLY' }
 const reply = (res, status, value) => { res.writeHead(status, { 'Content-Type': 'application/json', 'Cache-Control': 'no-store' }); res.end(JSON.stringify(value)) }
 const server = await createServer({ configFile: false, root, cacheDir: cache, logLevel: 'error',
   resolve: { alias: Object.entries(aliases).sort(([a], [b]) => b.length - a.length).map(([find, replacement]) => ({ find, replacement })) },
   server: { host: '127.0.0.1', port: 0, fs: { allow: [root, resolve(root, '..'), dependencies] } },
   plugins: [{ name: 'explicit-test-only-motion-http', configureServer(server) {
     server.middlewares.use(async (req, res, next) => {
+      if (req.url === '/__motion/candidate') {
+        res.writeHead(200, { 'Content-Type': 'application/json', 'Cache-Control': 'no-store' }); res.end(candidateBytes); return
+      }
       if (req.url === '/tools/wardrobe-review.mjs') {
         res.writeHead(200, { 'Content-Type': 'text/javascript', 'Cache-Control': 'no-store' })
         res.end(await readFile(resolve(root, 'src/entities/avatar/derived-assets/motion-candidates-v1/wardrobe-review.mjs'))); return
       }
       if (req.url?.startsWith('/__motion/mode?')) {
         mode = new URL(req.url, 'http://fixture.test').searchParams.get('value')
-        if (mode === 'rebase') { saved = { revision: saved.revision + 1, config: config({ mode: 'preset', preset: presets[5] }) }; mode = 'ok' }
+        if (mode === 'rebase') { saved = { revision: saved.revision + 1, config: presets[5] }; mode = 'ok' }
         return reply(res, 200, {})
       }
       if (req.url !== '/__motion/me') return next()
@@ -41,17 +48,10 @@ const server = await createServer({ configFile: false, root, cacheDir: cache, lo
       if (req.method !== 'PUT') return reply(res, 405, {})
       const chunks = []; for await (const part of req) chunks.push(part)
       try {
-        const body = JSON.parse(Buffer.concat(chunks).toString()), c = body.config, s = c.selection
-        assert.deepEqual(Object.keys(body).sort(), ['config', 'expected_revision']); assert.deepEqual(Object.keys(c).sort(), ['selection', 'testOnlyContract'])
-        assert.equal(c.testOnlyContract, 'mcr-motion-fixture-v1')
-        if (s.mode === 'preset') { assert.deepEqual(Object.keys(s).sort(), ['mode', 'preset']); assert(presets.includes(s.preset)) }
-        else {
-          assert.equal(s.mode, 'wardrobe'); assert.deepEqual(Object.keys(s).sort(), ['accessory', 'body', 'eyes', 'hair', 'mode', 'outfit'])
-          for (const layer of ['body', 'eyes', 'hair', 'outfit', 'accessory']) {
-            if (['outfit', 'accessory'].includes(layer) && s[layer] === null) continue
-            assert(descriptor.wardrobe.items.some(item => item.kind === layer && item.key === s[layer]))
-          }
-        }
+        const body = JSON.parse(Buffer.concat(chunks).toString())
+        assert.deepEqual(Object.keys(body).sort(), ['config', 'expected_revision'])
+        const { decodeMotionV2Config } = await server.ssrLoadModule('/src/entities/avatar/runtime/motion-adoption/v2.ts')
+        const c = decodeMotionV2Config(body.config)
         if (mode === 'denied') return reply(res, 403, { code: 'DENIED', message: 'Denied', details: { reason: 'PERMISSION_DENIED' } })
         if (mode === 'conflict' || body.expected_revision !== saved.revision) return reply(res, 409, { code: 'CONFLICT', message: 'Changed', details: { reason: 'VERSION_CONFLICT', current_revision: saved.revision } })
         saved = { revision: saved.revision + 1, config: c }
@@ -96,13 +96,17 @@ try {
     }
     stage = `${width}/controls`; await page.getByRole('button', { name: 'CUSTOMIZE', exact: true }).click()
     await expect(page.getByRole('img', { name: 'Draft outfit preview', exact: true })).toBeVisible()
-    await page.getByRole('button', { name: 'Dress up', exact: true }).click()
+    // Selecting an actual category from preset mode explicitly starts a wardrobe draft.
+    await page.getByRole('button', { name: width === 360 ? 'Hair' : 'Dress up', exact: true }).click()
+    await expect.poll(async () => (await state()).controller.draft?.representation).toBe('motion_layered')
+    assert.equal((await state()).saved.config.representation, 'motion_preset')
     await page.getByRole('button', { name: 'Skin / body', exact: true }).click(); await page.getByLabel('Choose skin / body', { exact: true }).selectOption('body-7')
     await page.getByRole('button', { name: 'Hair', exact: true }).click(); await page.getByLabel('Choose hair', { exact: true }).selectOption('hair-5')
     await page.getByRole('button', { name: 'Eyes', exact: true }).click(); await page.getByLabel('Choose eyes', { exact: true }).selectOption('eyes-3')
     await page.getByRole('button', { name: 'Outfit', exact: true }).click(); await page.getByLabel('Choose outfit', { exact: true }).selectOption('outfit-5')
     await page.getByRole('button', { name: 'Accessory', exact: true }).click(); await page.getByLabel('Choose accessory', { exact: true }).selectOption('accessory-2')
-    const draft = (await state()).controller.draft; assert.deepEqual(draft.selection, { mode: 'wardrobe', body: 'body-7', eyes: 'eyes-3', hair: 'hair-5', outfit: 'outfit-5', accessory: 'accessory-2' })
+    const draft = (await state()).controller.draft; assert.equal(draft.contract_version, '2.0.0'); assert.equal(draft.representation, 'motion_layered')
+    assert.deepEqual(draft.item_ids, { body: 'motion_v2_body_7', eyes: 'motion_v2_eyes_3', hair: 'motion_v2_hair_5', outfit: 'motion_v2_outfit_5', accessory: 'motion_v2_accessory_2' })
     const directionFrames = []
     await page.getByRole('button', { name: 'Preview walk', exact: true }).click()
     for (const direction of ['down', 'left', 'right', 'up']) {
@@ -119,6 +123,30 @@ try {
       assert.equal(await page.getByRole('img', { name: 'Draft outfit preview', exact: true }).evaluate(canvas => canvas.toDataURL()), preview)
       assert(await noOverflow()); const file = `customize-${width}-${['revenge', 'parade', 'danger'][index]}.jpg`
       await page.screenshot({ path: resolve(output, file), type: 'jpeg', quality: 86, fullPage: true }); report.artifacts[file] = hash(await readFile(resolve(output, file)))
+    }
+    if (width === 390) {
+      await page.getByRole('button', { name: 'Hair', exact: true }).click()
+      await expect(page.getByRole('button', { name: 'Choose hair 6', exact: true })).toHaveAttribute('aria-pressed', 'true')
+      await page.getByRole('button', { name: 'Dress up', exact: true }).click()
+      assert.deepEqual((await state()).controller.draft, draft)
+      await page.getByLabel('View', { exact: true }).selectOption('down')
+      await expect(page.getByRole('img', { name: 'Draft outfit preview', exact: true })).toHaveAttribute('data-frame', '0')
+      const rail = await page.getByRole('group', { name: 'Clothing categories', exact: true }).boundingBox()
+      const previewBox = await page.getByRole('img', { name: 'Draft outfit preview', exact: true }).boundingBox()
+      const controls = await page.getByRole('group', { name: 'Clothing categories', exact: true }).getByRole('button').evaluateAll(buttons => buttons.map(button => {
+        const r = button.getBoundingClientRect(); return { label: button.getAttribute('aria-label'), x: r.x, y: r.y, width: r.width, height: r.height }
+      }))
+      assert.equal(controls.length, 5); assert(controls.every((button, i) => button.width >= 44 && button.height >= 44 && (!i || button.y > controls[i - 1].y)))
+      assert(previewBox.x + previewBox.width <= rail.x)
+      const panel = page.getByRole('region', { name: 'Avatar editor', exact: true }), panelBox = await panel.boundingBox()
+      assert(panelBox.height <= 698)
+      const file = 'customize-reference-fit-390.jpg'
+      await panel.screenshot({ path: resolve(output, file), type: 'jpeg', quality: 90 }); report.artifacts[file] = hash(await readFile(resolve(output, file)))
+      report.referenceFit = { qualification: 'Actual candidate component at 390px viewport, not production Root or legacy-character substitution', viewportWidth: width, panel: panelBox,
+        rightCategoryRail: controls, preview: previewBox, selectedSourceConfig: draft, artifact: file }
+      await page.getByRole('button', { name: 'Accessory', exact: true }).click()
+      await page.getByLabel('View', { exact: true }).selectOption('up')
+      await expect(page.getByRole('img', { name: 'Draft outfit preview', exact: true })).toHaveAttribute('data-frame', '15')
     }
     stage = `${width}/save`; await page.getByRole('button', { name: 'Save outfit', exact: true }).click(); await expect(page.getByText('Outfit saved.', { exact: true })).toBeVisible()
     assert.deepEqual((await state()).saved.config, draft)
@@ -137,7 +165,7 @@ try {
     const geometry = (await state()).geometry
     for (const index of [0, 1, 2]) { await invoke('theme', index); assert.equal((await state()).geometry, geometry); assert.equal((await state()).requests.length, 2); assert.equal((await state()).mounts, 1) }
     stage = `${width}/uncertain`; await page.getByRole('button', { name: 'CUSTOMIZE', exact: true }).click(); await expect(page.getByRole('img', { name: 'Draft outfit preview', exact: true })).toBeVisible()
-    await page.getByRole('button', { name: 'Presets', exact: true }).click(); await page.getByRole('button', { name: 'Choose Character 3', exact: true }).click()
+    await page.getByRole('button', { name: 'Presets', exact: true }).click(); await page.getByRole('button', { name: 'Choose Preset 3', exact: true }).click()
     await modeTo('uncertain'); await page.getByRole('button', { name: 'Save outfit', exact: true }).click()
     await expect(page.getByText('The save result is unknown. Check the saved outfit before another save.', { exact: true })).toBeVisible()
     await expect(page.getByRole('button', { name: 'Save outfit', exact: true })).toBeDisabled()

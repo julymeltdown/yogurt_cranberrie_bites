@@ -1,0 +1,31 @@
+{
+  "result": "PASS_APPLICATION_BUNDLE_ONLY",
+  "recordedAt": "2026-11-04T03:53:45.450938+00:00",
+  "candidate": "d5c0c9d188f68acb749d7ed2940706f34b2a8be1",
+  "publishedDependency": "0b8243299c9a8c3099351364d518bbd96fc38a7f",
+  "publishedDependencyAncestorVerified": true,
+  "latestPublishedPayloadBlobsVerified": 41,
+  "runner": "Root153 designated integrator",
+  "nodeVersion": "24.22.2",
+  "commandSanitized": "PATH=<node24-bin>:$PATH MCR_FRONTEND_DEPENDENCIES=<retained-frontend> node frontend/src/world/avatar/__tests__/motion-adoption/build.mjs --application",
+  "runnerCwd": "fe-reference-root",
+  "reportedExit": 0,
+  "logResultIndependentlyRead": {
+    "result": "PASS",
+    "qualification": "Optimized actual index.html/main.tsx application build with retained React/Tailwind plugins. Positive v2 Root/runtime admission remains NOT_RUN.",
+    "outputs": 1
+  },
+  "log": "docs/mcr/evidence/avatar-motion-adoption/reviewed-application-build.log",
+  "logBytes": 193,
+  "logSha256": "3547a653632242465a6b95978d31784c1db6fdd67bbd67158ea41ab7840051a5",
+  "buildScriptSha256": "f71df7efab72d592498885075cd44a7195a251ed71c856ed2b3a4f13a2e6d7be",
+  "method": "Actual index.html/main.tsx optimized application build with retained React and Tailwind plugins; copyPublicDir:false; temporary output/cache cleaned by runner finally. No duplicate owner build run.",
+  "notProven": [
+    "production Root/runtime admission",
+    "actual service save/reload/reconciliation",
+    "two-account live World",
+    "physical device",
+    "release acceptance"
+  ],
+  "goal": "Original AR03 remains unfinished; build-only evidence does not complete it"
+}

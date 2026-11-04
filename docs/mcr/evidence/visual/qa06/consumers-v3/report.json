@@ -1,0 +1,963 @@
+{
+  "task": "QA06",
+  "status": "LABELED_CONSUMERS_CAPTURED",
+  "candidate": "980fc4d85020f297b36fee8195e1ca92079ff33f",
+  "harnessSha256": "94aee671f70b66ad597e3812f08b0b52ae83efd0fab5abd7486d7278f2a286b9",
+  "sourceHashes": {
+    "frontend/src/world/mural-entry-lifecycle/__tests__/assembly-data.ts": "8a041798cefd3492cb9f3ec8f1e508ed3700718bb8598681c2ccc7e35b3f56f5",
+    "frontend/src/world/mural-entry-lifecycle/__tests__/assembly-native.tsx": "562353a7d1795fc335ca4a980897dc7a33d73bd0cbcb5b7e04d94a0551779e65",
+    "frontend/src/world/mural-entry-lifecycle/__tests__/assembly-native.html": "4dca787a68f818c813550b4a69c1dd9816e435c1172a4c903d0529101618ff69",
+    "frontend/src/world/mural-entry-lifecycle/source.ts": "dc564b568228413226d510995029c1334cc17bb6bf93f58cca18fcc3a3675458",
+    "frontend/src/app/mural-entry/provider.tsx": "975918620fb178f68e2af0110a494926ef5aee28fb044b50549ecc1a7e646d60",
+    "frontend/src/app/community-entry/__tests__/preview.tsx": "1e022781434d8a641a17d1c50639fca066a92b341e9037f07e1a75eab333030c",
+    "frontend/src/app/community-entry/__tests__/fixture.ts": "71cc1a32a52cc8fb874f94d9bce5a16d55c597b6cc188e7093de7a56e3b233ef",
+    "frontend/src/features/people/__tests__/fixtures/harness.ts": "99b8d351a0025e9f25629a01094d59b6b7ced06e92f0bb39fca054603951bcf3",
+    "frontend/src/features/people/__tests__/fixtures/preview.tsx": "4a018ff7d8c7c8b509f7f6710ef597c64b6eed1583bf09b1e9a5a4cc7a89533b",
+    "frontend/src/app/social-composition/__tests__/fixtures.ts": "69c1110092ae076ed05ba831d86da7f67fb96816cc060661d146aeb228fb924f"
+  },
+  "cases": [
+    {
+      "kind": "wall-caller",
+      "width": 360,
+      "status": "CAPTURED",
+      "errors": [],
+      "state": {
+        "phase": "live",
+        "available": true,
+        "revision": 10,
+        "command": null,
+        "editor": "idle",
+        "posts": [],
+        "created": 1,
+        "active": 1,
+        "peak": 1,
+        "sockets": 1,
+        "socketCount": 1,
+        "factoryCalls": 1,
+        "sourceStops": 0,
+        "sourceListeners": 1
+      },
+      "world": {
+        "texture": true,
+        "objects": 1
+      },
+      "metrics": {
+        "width": 360,
+        "height": 844,
+        "scrollWidth": 360,
+        "headings": [
+          "Wall"
+        ],
+        "images": [],
+        "bodyText": "SYNTHETIC FE33 caller assembly. Actual production adapter, World composition, MapScene/Phaser and WorldPanels. Fixture resources, admission, HTTP, anchor and eligibility; no live server.\n\nInteract: Virtual fixture landmark\n⌖\nRecenter\nControls & help\n\nMovement paused.\n\nConnected. Avatar artwork is unavailable.\n\nVirtual position is not physical arrival.\n\nWithdraw fixture qualificationSupply fresh fixture qualificationInvalidate fixture privacy\nWALL\n128 × 128 PIXEL WALL\n1×\nPalette · color 0\n✓\n\n16 server colors. Scroll horizontally or focus this palette and use Left, Right, Home or End. Tab reaches every color.\n\nREV 10 · EDITABLE\n16 COLORS · SCROLL →\n\nSelect a pixel and color. Confirm when ready.\n\nWall synchronized at revision 10.\n\nCoordinates & help"
+      },
+      "screenshot": "wall-caller-360.png"
+    },
+    {
+      "kind": "gift-pickup",
+      "width": 360,
+      "status": "CAPTURED",
+      "errors": [],
+      "state": {
+        "writes": 0,
+        "reads": 3,
+        "journal": null,
+        "subscriptions": {
+          "ports": 2,
+          "clock": 1
+        }
+      },
+      "metrics": {
+        "width": 360,
+        "height": 844,
+        "scrollWidth": 360,
+        "headings": [
+          "Make something worth sharing",
+          "Photo",
+          "Inventory and reservations",
+          "Private pickup instructions",
+          "Fan badges",
+          "Reservation status",
+          "Confirm physical collection"
+        ],
+        "images": [],
+        "bodyText": "SYNTHETIC ADAPTER FIXTURE\nFictional people, places, time and policy. No real venue or pickup guidance.\n\nparty\ngiveaway\nmanageParty\nrally\nmanage\nreserve\npickup\n\nGIFTS / OWNER TOOLS\n\nMake something worth sharing\n\nCreate a draft, then publish when the pickup plan is ready. Times use Korea Standard Time (KST).\n\nItem and pickup window\nItem title\nDescription\nTotal quantity\nPickup start (KST)\nPickup end (KST)\nPublic pickup place\nChoose a qualified place\nSYNTHETIC qualified gift place\nSYNTHETIC party place\nPublication state\nDraft\nOpen reservations\nPaused\nCompleted\nCancelled\nPhoto\n\nImage upload is unavailable. You can save a text-only draft.\n\nUse no photo\nI confirm cancellation will revoke outstanding pickup access.\nSave giveaway changes\nSave session draft\nRestore draft\n\nInventory and reservations\n\n1 available · 1 reserved · 1 claimed\n\nAuthorized reservation page\nReservation\tState\tExpiry (KST)\tPickup\nReservation 1\tREADY\t07 Nov 2026, 18:15 KST\tOpen pickup 1\nPrivate pickup instructions\n\nA qualified pickup plan is unavailable. Configure reviewed instructions before publication.\n\nConfirm and save qualified physical pickup plan\n\nGIFTS / YOUR PICKUP\n\nFan badges\n\nA reservation holds an item. Only a server-confirmed collection completes pickup.\n\nRead current reservation\nReservation status\n\nREADY\n\nExpiry: 07 Nov 2026, 18:15 KST.\n\nCancel this reservation and release the held item.\nConfirm reservation cancellation\nConfirm physical collection\nRecipient’s six-digit code\nConfirm one-time collection"
+      },
+      "screenshot": "gift-pickup-360.png",
+      "reducedOverflow": false,
+      "reducedScreenshot": "gift-pickup-360-reduced420.png"
+    },
+    {
+      "kind": "intro",
+      "width": 360,
+      "status": "CAPTURED",
+      "errors": [],
+      "state": {
+        "path": "/meet/intro/edit",
+        "published": true,
+        "theme": {
+          "selected": "REVENGE",
+          "pending": null,
+          "phase": "ready",
+          "message": "",
+          "saved": false
+        },
+        "camera": {
+          "following": true,
+          "camera": {
+            "zoom": 1,
+            "scrollX": 82.72000000000003,
+            "scrollY": 105,
+            "width": 348,
+            "height": 791
+          }
+        },
+        "phase": "suspended",
+        "entities": 0,
+        "avatarPin": {
+          "manifest_id": "mcr_selected_static_20261103",
+          "manifest_version": 1,
+          "content_hash": "sha256:0627c7d178b22535a561e1270db6d8bf9e2383ba84d03a63962e48e565c59b2b"
+        },
+        "requests": [
+          {
+            "path": "/api/auth/capabilities",
+            "method": "GET"
+          },
+          {
+            "path": "/api/auth/login",
+            "method": "POST"
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/bootstrap",
+            "method": "GET"
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/me/intro",
+            "method": "GET"
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/rooms",
+            "method": "GET"
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/places",
+            "method": "GET"
+          }
+        ],
+        "sockets": 0,
+        "activeSockets": 0,
+        "socketPeak": 0,
+        "canvases": 1,
+        "disposed": false
+      },
+      "metrics": {
+        "width": 360,
+        "height": 844,
+        "scrollWidth": 360,
+        "headings": [
+          "Your intro",
+          "YOUR INTRO"
+        ],
+        "images": [],
+        "bodyText": "Skip to content\nYOUR INTRO\n−\n▾\nBack to people\nYOUR INTRO\n\nIntroduce yourself. Your audience conditions stay private and are enforced by the server.\n\nSaved state: DRAFT\n\nIntroduction\n\n19 / 1,000 Unicode code points.\n\nPrivate audience conditions\n\nLeave both bounds empty for no age condition. Otherwise use a minimum inclusive age and a maximum exclusive age. These are service sharing conditions, not concert admission rules.\n\nMinimum age · inclusive\nMaximum age · exclusive\n\nUnknown, expired or unavailable verification cannot satisfy a restricted audience.\n\nExpiry · UTC (optional)\nSave introduction\nCancel changes\nPublish introduction\nClose introduction\nLoad latest introduction\n\nClosing removes future discovery and sharing access. It cannot erase information someone already saw.\n\nAge & privacy"
+      },
+      "screenshot": "intro-360.png",
+      "reducedOverflow": false,
+      "reducedScreenshot": "intro-360-reduced420.png"
+    },
+    {
+      "kind": "profile",
+      "width": 360,
+      "status": "CAPTURED",
+      "errors": [],
+      "state": {
+        "path": "/people/00000000-0000-4000-8000-000000000101",
+        "published": true,
+        "theme": {
+          "selected": "REVENGE",
+          "pending": null,
+          "phase": "ready",
+          "message": "",
+          "saved": false
+        },
+        "camera": {
+          "following": true,
+          "camera": {
+            "zoom": 1,
+            "scrollX": 82.72000000000003,
+            "scrollY": 105,
+            "width": 348,
+            "height": 791
+          }
+        },
+        "phase": "suspended",
+        "entities": 0,
+        "avatarPin": {
+          "manifest_id": "mcr_selected_static_20261103",
+          "manifest_version": 1,
+          "content_hash": "sha256:0627c7d178b22535a561e1270db6d8bf9e2383ba84d03a63962e48e565c59b2b"
+        },
+        "requests": [
+          {
+            "path": "/api/auth/capabilities",
+            "method": "GET"
+          },
+          {
+            "path": "/api/auth/login",
+            "method": "POST"
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/bootstrap",
+            "method": "GET"
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/intros",
+            "method": "GET"
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/people/00000000-0000-4000-8000-000000000101",
+            "method": "GET"
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/rooms",
+            "method": "GET"
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/places",
+            "method": "GET"
+          }
+        ],
+        "sockets": 0,
+        "activeSockets": 0,
+        "socketPeak": 0,
+        "canvases": 1,
+        "disposed": false
+      },
+      "metrics": {
+        "width": 360,
+        "height": 844,
+        "scrollWidth": 360,
+        "headings": [
+          "Profile",
+          "Profile",
+          "Fixture fan"
+        ],
+        "images": [],
+        "bodyText": "Skip to content\nPROFILE\n−\n▾\nPROFILE\nFixture fan\n\nNo bio shared.\n\nACTIVITY\nPARTIES\nGIFTS\n\nRecent activity is unavailable in this connection.\n\nSocial handles and verified age are private. Sharing requires mutual consent.\n\nSome account actions are currently unavailable.\n\nManage blocks\nBack to people"
+      },
+      "screenshot": "profile-360.png"
+    },
+    {
+      "kind": "age",
+      "width": 360,
+      "status": "CAPTURED",
+      "errors": [],
+      "state": {
+        "path": "/me/age",
+        "published": true,
+        "theme": {
+          "selected": "REVENGE",
+          "pending": null,
+          "phase": "ready",
+          "message": "",
+          "saved": false
+        },
+        "camera": {
+          "following": true,
+          "camera": {
+            "zoom": 1,
+            "scrollX": 82.72000000000003,
+            "scrollY": 105,
+            "width": 348,
+            "height": 791
+          }
+        },
+        "phase": "suspended",
+        "entities": 0,
+        "avatarPin": {
+          "manifest_id": "mcr_selected_static_20261103",
+          "manifest_version": 1,
+          "content_hash": "sha256:0627c7d178b22535a561e1270db6d8bf9e2383ba84d03a63962e48e565c59b2b"
+        },
+        "requests": [
+          {
+            "path": "/api/auth/capabilities",
+            "method": "GET"
+          },
+          {
+            "path": "/api/auth/login",
+            "method": "POST"
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/bootstrap",
+            "method": "GET"
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/me/age-status",
+            "method": "GET"
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/rooms",
+            "method": "GET"
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/places",
+            "method": "GET"
+          }
+        ],
+        "sockets": 0,
+        "activeSockets": 0,
+        "socketPeak": 0,
+        "canvases": 1,
+        "disposed": false
+      },
+      "metrics": {
+        "width": 360,
+        "height": 844,
+        "scrollWidth": 360,
+        "headings": [
+          "Age & privacy",
+          "AGE & PRIVACY",
+          "Not verified"
+        ],
+        "images": [],
+        "bodyText": "Skip to content\nAGE & PRIVACY\n−\n▾\nAGE & PRIVACY\n\nVerified age and claims stay private. Sharing eligibility is checked by the server for each request.\n\nNot verified\n\nSelf-declared information does not grant verified status. Unavailable verification never unlocks restricted content, and does not by itself block basic world use.\n\nStart verification\nRefresh age status\n\nVerification is currently unavailable. You can check again later.\n\nService sharing conditions are separate from ticket or event admission rules.\n\nBack to people"
+      },
+      "screenshot": "age-360.png",
+      "reducedOverflow": false,
+      "reducedScreenshot": "age-360-reduced420.png"
+    },
+    {
+      "kind": "wall-caller",
+      "width": 390,
+      "status": "CAPTURED",
+      "errors": [],
+      "state": {
+        "phase": "live",
+        "available": true,
+        "revision": 10,
+        "command": null,
+        "editor": "idle",
+        "posts": [],
+        "created": 1,
+        "active": 1,
+        "peak": 1,
+        "sockets": 1,
+        "socketCount": 1,
+        "factoryCalls": 1,
+        "sourceStops": 0,
+        "sourceListeners": 1
+      },
+      "world": {
+        "texture": true,
+        "objects": 1
+      },
+      "metrics": {
+        "width": 390,
+        "height": 844,
+        "scrollWidth": 390,
+        "headings": [
+          "Wall"
+        ],
+        "images": [],
+        "bodyText": "SYNTHETIC FE33 caller assembly. Actual production adapter, World composition, MapScene/Phaser and WorldPanels. Fixture resources, admission, HTTP, anchor and eligibility; no live server.\n\nInteract: Virtual fixture landmark\n⌖\nRecenter\nControls & help\n\nMovement paused.\n\nConnected. Avatar artwork is unavailable.\n\nVirtual position is not physical arrival.\n\nWithdraw fixture qualificationSupply fresh fixture qualificationInvalidate fixture privacy\nWALL\n128 × 128 PIXEL WALL\n1×\nPalette · color 0\n✓\n\n16 server colors. Scroll horizontally or focus this palette and use Left, Right, Home or End. Tab reaches every color.\n\nREV 10 · EDITABLE\n16 COLORS · SCROLL →\n\nSelect a pixel and color. Confirm when ready.\n\nWall synchronized at revision 10.\n\nCoordinates & help"
+      },
+      "screenshot": "wall-caller-390.png"
+    },
+    {
+      "kind": "gift-pickup",
+      "width": 390,
+      "status": "CAPTURED",
+      "errors": [],
+      "state": {
+        "writes": 0,
+        "reads": 3,
+        "journal": null,
+        "subscriptions": {
+          "ports": 2,
+          "clock": 1
+        }
+      },
+      "metrics": {
+        "width": 390,
+        "height": 844,
+        "scrollWidth": 390,
+        "headings": [
+          "Make something worth sharing",
+          "Photo",
+          "Inventory and reservations",
+          "Private pickup instructions",
+          "Fan badges",
+          "Reservation status",
+          "Confirm physical collection"
+        ],
+        "images": [],
+        "bodyText": "SYNTHETIC ADAPTER FIXTURE\nFictional people, places, time and policy. No real venue or pickup guidance.\n\nparty\ngiveaway\nmanageParty\nrally\nmanage\nreserve\npickup\n\nGIFTS / OWNER TOOLS\n\nMake something worth sharing\n\nCreate a draft, then publish when the pickup plan is ready. Times use Korea Standard Time (KST).\n\nItem and pickup window\nItem title\nDescription\nTotal quantity\nPickup start (KST)\nPickup end (KST)\nPublic pickup place\nChoose a qualified place\nSYNTHETIC qualified gift place\nSYNTHETIC party place\nPublication state\nDraft\nOpen reservations\nPaused\nCompleted\nCancelled\nPhoto\n\nImage upload is unavailable. You can save a text-only draft.\n\nUse no photo\nI confirm cancellation will revoke outstanding pickup access.\nSave giveaway changes\nSave session draft\nRestore draft\n\nInventory and reservations\n\n1 available · 1 reserved · 1 claimed\n\nAuthorized reservation page\nReservation\tState\tExpiry (KST)\tPickup\nReservation 1\tREADY\t07 Nov 2026, 18:15 KST\tOpen pickup 1\nPrivate pickup instructions\n\nA qualified pickup plan is unavailable. Configure reviewed instructions before publication.\n\nConfirm and save qualified physical pickup plan\n\nGIFTS / YOUR PICKUP\n\nFan badges\n\nA reservation holds an item. Only a server-confirmed collection completes pickup.\n\nRead current reservation\nReservation status\n\nREADY\n\nExpiry: 07 Nov 2026, 18:15 KST.\n\nCancel this reservation and release the held item.\nConfirm reservation cancellation\nConfirm physical collection\nRecipient’s six-digit code\nConfirm one-time collection"
+      },
+      "screenshot": "gift-pickup-390.png",
+      "reducedOverflow": false,
+      "reducedScreenshot": "gift-pickup-390-reduced420.png"
+    },
+    {
+      "kind": "intro",
+      "width": 390,
+      "status": "CAPTURED",
+      "errors": [],
+      "state": {
+        "path": "/meet/intro/edit",
+        "published": true,
+        "theme": {
+          "selected": "REVENGE",
+          "pending": null,
+          "phase": "ready",
+          "message": "",
+          "saved": false
+        },
+        "camera": {
+          "following": true,
+          "camera": {
+            "zoom": 1,
+            "scrollX": 71.92000000000002,
+            "scrollY": 105,
+            "width": 378,
+            "height": 791
+          }
+        },
+        "phase": "suspended",
+        "entities": 0,
+        "avatarPin": {
+          "manifest_id": "mcr_selected_static_20261103",
+          "manifest_version": 1,
+          "content_hash": "sha256:0627c7d178b22535a561e1270db6d8bf9e2383ba84d03a63962e48e565c59b2b"
+        },
+        "requests": [
+          {
+            "path": "/api/auth/capabilities",
+            "method": "GET"
+          },
+          {
+            "path": "/api/auth/login",
+            "method": "POST"
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/bootstrap",
+            "method": "GET"
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/me/intro",
+            "method": "GET"
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/rooms",
+            "method": "GET"
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/places",
+            "method": "GET"
+          }
+        ],
+        "sockets": 0,
+        "activeSockets": 0,
+        "socketPeak": 0,
+        "canvases": 1,
+        "disposed": false
+      },
+      "metrics": {
+        "width": 390,
+        "height": 844,
+        "scrollWidth": 390,
+        "headings": [
+          "Your intro",
+          "YOUR INTRO"
+        ],
+        "images": [],
+        "bodyText": "Skip to content\nYOUR INTRO\n−\n▾\nBack to people\nYOUR INTRO\n\nIntroduce yourself. Your audience conditions stay private and are enforced by the server.\n\nSaved state: DRAFT\n\nIntroduction\n\n19 / 1,000 Unicode code points.\n\nPrivate audience conditions\n\nLeave both bounds empty for no age condition. Otherwise use a minimum inclusive age and a maximum exclusive age. These are service sharing conditions, not concert admission rules.\n\nMinimum age · inclusive\nMaximum age · exclusive\n\nUnknown, expired or unavailable verification cannot satisfy a restricted audience.\n\nExpiry · UTC (optional)\nSave introduction\nCancel changes\nPublish introduction\nClose introduction\nLoad latest introduction\n\nClosing removes future discovery and sharing access. It cannot erase information someone already saw.\n\nAge & privacy"
+      },
+      "screenshot": "intro-390.png",
+      "reducedOverflow": false,
+      "reducedScreenshot": "intro-390-reduced420.png"
+    },
+    {
+      "kind": "profile",
+      "width": 390,
+      "status": "CAPTURED",
+      "errors": [],
+      "state": {
+        "path": "/people/00000000-0000-4000-8000-000000000101",
+        "published": true,
+        "theme": {
+          "selected": "REVENGE",
+          "pending": null,
+          "phase": "ready",
+          "message": "",
+          "saved": false
+        },
+        "camera": {
+          "following": true,
+          "camera": {
+            "zoom": 1,
+            "scrollX": 71.92000000000002,
+            "scrollY": 105,
+            "width": 378,
+            "height": 791
+          }
+        },
+        "phase": "suspended",
+        "entities": 0,
+        "avatarPin": {
+          "manifest_id": "mcr_selected_static_20261103",
+          "manifest_version": 1,
+          "content_hash": "sha256:0627c7d178b22535a561e1270db6d8bf9e2383ba84d03a63962e48e565c59b2b"
+        },
+        "requests": [
+          {
+            "path": "/api/auth/capabilities",
+            "method": "GET"
+          },
+          {
+            "path": "/api/auth/login",
+            "method": "POST"
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/bootstrap",
+            "method": "GET"
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/intros",
+            "method": "GET"
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/people/00000000-0000-4000-8000-000000000101",
+            "method": "GET"
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/rooms",
+            "method": "GET"
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/places",
+            "method": "GET"
+          }
+        ],
+        "sockets": 0,
+        "activeSockets": 0,
+        "socketPeak": 0,
+        "canvases": 1,
+        "disposed": false
+      },
+      "metrics": {
+        "width": 390,
+        "height": 844,
+        "scrollWidth": 390,
+        "headings": [
+          "Profile",
+          "Profile",
+          "Fixture fan"
+        ],
+        "images": [],
+        "bodyText": "Skip to content\nPROFILE\n−\n▾\nPROFILE\nFixture fan\n\nNo bio shared.\n\nACTIVITY\nPARTIES\nGIFTS\n\nRecent activity is unavailable in this connection.\n\nSocial handles and verified age are private. Sharing requires mutual consent.\n\nSome account actions are currently unavailable.\n\nManage blocks\nBack to people"
+      },
+      "screenshot": "profile-390.png"
+    },
+    {
+      "kind": "age",
+      "width": 390,
+      "status": "CAPTURED",
+      "errors": [],
+      "state": {
+        "path": "/me/age",
+        "published": true,
+        "theme": {
+          "selected": "REVENGE",
+          "pending": null,
+          "phase": "ready",
+          "message": "",
+          "saved": false
+        },
+        "camera": {
+          "following": true,
+          "camera": {
+            "zoom": 1,
+            "scrollX": 71.92000000000002,
+            "scrollY": 105,
+            "width": 378,
+            "height": 791
+          }
+        },
+        "phase": "suspended",
+        "entities": 0,
+        "avatarPin": {
+          "manifest_id": "mcr_selected_static_20261103",
+          "manifest_version": 1,
+          "content_hash": "sha256:0627c7d178b22535a561e1270db6d8bf9e2383ba84d03a63962e48e565c59b2b"
+        },
+        "requests": [
+          {
+            "path": "/api/auth/capabilities",
+            "method": "GET"
+          },
+          {
+            "path": "/api/auth/login",
+            "method": "POST"
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/bootstrap",
+            "method": "GET"
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/me/age-status",
+            "method": "GET"
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/rooms",
+            "method": "GET"
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/places",
+            "method": "GET"
+          }
+        ],
+        "sockets": 0,
+        "activeSockets": 0,
+        "socketPeak": 0,
+        "canvases": 1,
+        "disposed": false
+      },
+      "metrics": {
+        "width": 390,
+        "height": 844,
+        "scrollWidth": 390,
+        "headings": [
+          "Age & privacy",
+          "AGE & PRIVACY",
+          "Not verified"
+        ],
+        "images": [],
+        "bodyText": "Skip to content\nAGE & PRIVACY\n−\n▾\nAGE & PRIVACY\n\nVerified age and claims stay private. Sharing eligibility is checked by the server for each request.\n\nNot verified\n\nSelf-declared information does not grant verified status. Unavailable verification never unlocks restricted content, and does not by itself block basic world use.\n\nStart verification\nRefresh age status\n\nVerification is currently unavailable. You can check again later.\n\nService sharing conditions are separate from ticket or event admission rules.\n\nBack to people"
+      },
+      "screenshot": "age-390.png",
+      "reducedOverflow": false,
+      "reducedScreenshot": "age-390-reduced420.png"
+    },
+    {
+      "kind": "wall-caller",
+      "width": 430,
+      "status": "CAPTURED",
+      "errors": [],
+      "state": {
+        "phase": "live",
+        "available": true,
+        "revision": 10,
+        "command": null,
+        "editor": "idle",
+        "posts": [],
+        "created": 1,
+        "active": 1,
+        "peak": 1,
+        "sockets": 1,
+        "socketCount": 1,
+        "factoryCalls": 1,
+        "sourceStops": 0,
+        "sourceListeners": 1
+      },
+      "world": {
+        "texture": true,
+        "objects": 1
+      },
+      "metrics": {
+        "width": 430,
+        "height": 844,
+        "scrollWidth": 430,
+        "headings": [
+          "Wall"
+        ],
+        "images": [],
+        "bodyText": "SYNTHETIC FE33 caller assembly. Actual production adapter, World composition, MapScene/Phaser and WorldPanels. Fixture resources, admission, HTTP, anchor and eligibility; no live server.\n\nInteract: Virtual fixture landmark\n⌖\nRecenter\nControls & help\n\nMovement paused.\n\nConnected. Avatar artwork is unavailable.\n\nVirtual position is not physical arrival.\n\nWithdraw fixture qualificationSupply fresh fixture qualificationInvalidate fixture privacy\nWALL\n128 × 128 PIXEL WALL\n1×\nPalette · color 0\n✓\n\n16 server colors. Scroll horizontally or focus this palette and use Left, Right, Home or End. Tab reaches every color.\n\nREV 10 · EDITABLE\n16 COLORS · SCROLL →\n\nSelect a pixel and color. Confirm when ready.\n\nWall synchronized at revision 10.\n\nCoordinates & help"
+      },
+      "screenshot": "wall-caller-430.png"
+    },
+    {
+      "kind": "gift-pickup",
+      "width": 430,
+      "status": "CAPTURED",
+      "errors": [],
+      "state": {
+        "writes": 0,
+        "reads": 3,
+        "journal": null,
+        "subscriptions": {
+          "ports": 2,
+          "clock": 1
+        }
+      },
+      "metrics": {
+        "width": 430,
+        "height": 844,
+        "scrollWidth": 430,
+        "headings": [
+          "Make something worth sharing",
+          "Photo",
+          "Inventory and reservations",
+          "Private pickup instructions",
+          "Fan badges",
+          "Reservation status",
+          "Confirm physical collection"
+        ],
+        "images": [],
+        "bodyText": "SYNTHETIC ADAPTER FIXTURE\nFictional people, places, time and policy. No real venue or pickup guidance.\n\nparty\ngiveaway\nmanageParty\nrally\nmanage\nreserve\npickup\n\nGIFTS / OWNER TOOLS\n\nMake something worth sharing\n\nCreate a draft, then publish when the pickup plan is ready. Times use Korea Standard Time (KST).\n\nItem and pickup window\nItem title\nDescription\nTotal quantity\nPickup start (KST)\nPickup end (KST)\nPublic pickup place\nChoose a qualified place\nSYNTHETIC qualified gift place\nSYNTHETIC party place\nPublication state\nDraft\nOpen reservations\nPaused\nCompleted\nCancelled\nPhoto\n\nImage upload is unavailable. You can save a text-only draft.\n\nUse no photo\nI confirm cancellation will revoke outstanding pickup access.\nSave giveaway changes\nSave session draft\nRestore draft\n\nInventory and reservations\n\n1 available · 1 reserved · 1 claimed\n\nAuthorized reservation page\nReservation\tState\tExpiry (KST)\tPickup\nReservation 1\tREADY\t07 Nov 2026, 18:15 KST\tOpen pickup 1\nPrivate pickup instructions\n\nA qualified pickup plan is unavailable. Configure reviewed instructions before publication.\n\nConfirm and save qualified physical pickup plan\n\nGIFTS / YOUR PICKUP\n\nFan badges\n\nA reservation holds an item. Only a server-confirmed collection completes pickup.\n\nRead current reservation\nReservation status\n\nREADY\n\nExpiry: 07 Nov 2026, 18:15 KST.\n\nCancel this reservation and release the held item.\nConfirm reservation cancellation\nConfirm physical collection\nRecipient’s six-digit code\nConfirm one-time collection"
+      },
+      "screenshot": "gift-pickup-430.png",
+      "reducedOverflow": false,
+      "reducedScreenshot": "gift-pickup-430-reduced420.png"
+    },
+    {
+      "kind": "intro",
+      "width": 430,
+      "status": "CAPTURED",
+      "errors": [],
+      "state": {
+        "path": "/meet/intro/edit",
+        "published": true,
+        "theme": {
+          "selected": "REVENGE",
+          "pending": null,
+          "phase": "ready",
+          "message": "",
+          "saved": false
+        },
+        "camera": {
+          "following": true,
+          "camera": {
+            "zoom": 1,
+            "scrollX": 57.51999999999998,
+            "scrollY": 105,
+            "width": 418,
+            "height": 791
+          }
+        },
+        "phase": "suspended",
+        "entities": 0,
+        "avatarPin": {
+          "manifest_id": "mcr_selected_static_20261103",
+          "manifest_version": 1,
+          "content_hash": "sha256:0627c7d178b22535a561e1270db6d8bf9e2383ba84d03a63962e48e565c59b2b"
+        },
+        "requests": [
+          {
+            "path": "/api/auth/capabilities",
+            "method": "GET"
+          },
+          {
+            "path": "/api/auth/login",
+            "method": "POST"
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/bootstrap",
+            "method": "GET"
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/me/intro",
+            "method": "GET"
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/rooms",
+            "method": "GET"
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/places",
+            "method": "GET"
+          }
+        ],
+        "sockets": 0,
+        "activeSockets": 0,
+        "socketPeak": 0,
+        "canvases": 1,
+        "disposed": false
+      },
+      "metrics": {
+        "width": 430,
+        "height": 844,
+        "scrollWidth": 430,
+        "headings": [
+          "Your intro",
+          "YOUR INTRO"
+        ],
+        "images": [],
+        "bodyText": "Skip to content\nYOUR INTRO\n−\n▾\nBack to people\nYOUR INTRO\n\nIntroduce yourself. Your audience conditions stay private and are enforced by the server.\n\nSaved state: DRAFT\n\nIntroduction\n\n19 / 1,000 Unicode code points.\n\nPrivate audience conditions\n\nLeave both bounds empty for no age condition. Otherwise use a minimum inclusive age and a maximum exclusive age. These are service sharing conditions, not concert admission rules.\n\nMinimum age · inclusive\nMaximum age · exclusive\n\nUnknown, expired or unavailable verification cannot satisfy a restricted audience.\n\nExpiry · UTC (optional)\nSave introduction\nCancel changes\nPublish introduction\nClose introduction\nLoad latest introduction\n\nClosing removes future discovery and sharing access. It cannot erase information someone already saw.\n\nAge & privacy"
+      },
+      "screenshot": "intro-430.png",
+      "reducedOverflow": false,
+      "reducedScreenshot": "intro-430-reduced420.png"
+    },
+    {
+      "kind": "profile",
+      "width": 430,
+      "status": "CAPTURED",
+      "errors": [],
+      "state": {
+        "path": "/people/00000000-0000-4000-8000-000000000101",
+        "published": true,
+        "theme": {
+          "selected": "REVENGE",
+          "pending": null,
+          "phase": "ready",
+          "message": "",
+          "saved": false
+        },
+        "camera": {
+          "following": true,
+          "camera": {
+            "zoom": 1,
+            "scrollX": 57.51999999999998,
+            "scrollY": 105,
+            "width": 418,
+            "height": 791
+          }
+        },
+        "phase": "suspended",
+        "entities": 0,
+        "avatarPin": {
+          "manifest_id": "mcr_selected_static_20261103",
+          "manifest_version": 1,
+          "content_hash": "sha256:0627c7d178b22535a561e1270db6d8bf9e2383ba84d03a63962e48e565c59b2b"
+        },
+        "requests": [
+          {
+            "path": "/api/auth/capabilities",
+            "method": "GET"
+          },
+          {
+            "path": "/api/auth/login",
+            "method": "POST"
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/bootstrap",
+            "method": "GET"
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/intros",
+            "method": "GET"
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/people/00000000-0000-4000-8000-000000000101",
+            "method": "GET"
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/rooms",
+            "method": "GET"
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/places",
+            "method": "GET"
+          }
+        ],
+        "sockets": 0,
+        "activeSockets": 0,
+        "socketPeak": 0,
+        "canvases": 1,
+        "disposed": false
+      },
+      "metrics": {
+        "width": 430,
+        "height": 844,
+        "scrollWidth": 430,
+        "headings": [
+          "Profile",
+          "Profile",
+          "Fixture fan"
+        ],
+        "images": [],
+        "bodyText": "Skip to content\nPROFILE\n−\n▾\nPROFILE\nFixture fan\n\nNo bio shared.\n\nACTIVITY\nPARTIES\nGIFTS\n\nRecent activity is unavailable in this connection.\n\nSocial handles and verified age are private. Sharing requires mutual consent.\n\nSome account actions are currently unavailable.\n\nManage blocks\nBack to people"
+      },
+      "screenshot": "profile-430.png"
+    },
+    {
+      "kind": "age",
+      "width": 430,
+      "status": "CAPTURED",
+      "errors": [],
+      "state": {
+        "path": "/me/age",
+        "published": true,
+        "theme": {
+          "selected": "REVENGE",
+          "pending": null,
+          "phase": "ready",
+          "message": "",
+          "saved": false
+        },
+        "camera": {
+          "following": true,
+          "camera": {
+            "zoom": 1,
+            "scrollX": 57.51999999999998,
+            "scrollY": 105,
+            "width": 418,
+            "height": 791
+          }
+        },
+        "phase": "suspended",
+        "entities": 0,
+        "avatarPin": {
+          "manifest_id": "mcr_selected_static_20261103",
+          "manifest_version": 1,
+          "content_hash": "sha256:0627c7d178b22535a561e1270db6d8bf9e2383ba84d03a63962e48e565c59b2b"
+        },
+        "requests": [
+          {
+            "path": "/api/auth/capabilities",
+            "method": "GET"
+          },
+          {
+            "path": "/api/auth/login",
+            "method": "POST"
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/bootstrap",
+            "method": "GET"
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/me/age-status",
+            "method": "GET"
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/rooms",
+            "method": "GET"
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/places",
+            "method": "GET"
+          }
+        ],
+        "sockets": 0,
+        "activeSockets": 0,
+        "socketPeak": 0,
+        "canvases": 1,
+        "disposed": false
+      },
+      "metrics": {
+        "width": 430,
+        "height": 844,
+        "scrollWidth": 430,
+        "headings": [
+          "Age & privacy",
+          "AGE & PRIVACY",
+          "Not verified"
+        ],
+        "images": [],
+        "bodyText": "Skip to content\nAGE & PRIVACY\n−\n▾\nAGE & PRIVACY\n\nVerified age and claims stay private. Sharing eligibility is checked by the server for each request.\n\nNot verified\n\nSelf-declared information does not grant verified status. Unavailable verification never unlocks restricted content, and does not by itself block basic world use.\n\nStart verification\nRefresh age status\n\nVerification is currently unavailable. You can check again later.\n\nService sharing conditions are separate from ticket or event admission rules.\n\nBack to people"
+      },
+      "screenshot": "age-430.png",
+      "reducedOverflow": false,
+      "reducedScreenshot": "age-430-reduced420.png"
+    }
+  ],
+  "limits": [
+    "Desktop Chrome only; no actual devices/software keyboard/hardware safe area",
+    "Wall uses existing geometric, synthetic Auth/anchor/eligibility/HTTP caller assembly; NOT ordinary production/default-shell activation or reference-art approval",
+    "FE26 uses existing synthetic route-adapter fixture; reviewed physical authority is a test input",
+    "FE30 uses QA06 actual app/default-loader fixture with synthetic social data and selected whole-character identity; no verified provider authority"
+  ],
+  "browser": "156.0.8078.80"
+}

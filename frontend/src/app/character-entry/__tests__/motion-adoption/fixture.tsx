@@ -7,7 +7,8 @@ import { createMotionRuntime } from '../../../../entities/avatar/runtime/motion-
 import { createMotionEditorController, type MotionAvatarState } from '../../../../features/avatar/motion-adoption/controller'
 import { MotionEditor } from '../../../../features/avatar/motion-adoption/MotionEditor'
 import { MotionView } from '../../../../features/avatar/motion-adoption/MotionView'
-import { testMotionAuthority, testMotionPin, type TestMotionConfig } from '../../../../world/avatar/__tests__/motion-adoption/test-authority'
+import { createMotionV2CandidateAuthority, decodeMotionV2Candidate } from '../../../../entities/avatar/runtime/motion-adoption/v2-candidate'
+import { motionV2Selection, type MotionV2Config } from '../../../../entities/avatar/runtime/motion-adoption/v2'
 import { createMotionWorldRenderer } from '../../../../world/avatar/motion-adoption/renderer'
 import { illustratedReleases } from '../../../../world/__tests__/illustrated/fixtures'
 import { createAssetResources, loadMap, type LoadedMap } from '../../../../world/map/resources'
@@ -28,9 +29,13 @@ auth.session.replace(auth.session.read().generation, { userId, eventId, accessTo
 const scope = auth.privacy.capture(), abort = new AbortController(), requests: string[] = []
 const loadedArt = await loadMotionArtwork({ origin: location.origin, signal: abort.signal,
   fetch: (input, init) => { requests.push(String(input)); return fetch(input, init) } })
-const authority = testMotionAuthority(loadedArt.art)
+const candidateResponse = await fetch('/__motion/candidate', { credentials: 'omit', cache: 'no-store', signal: abort.signal })
+if (!candidateResponse.ok) throw Error('Pinned candidate unavailable')
+const candidate = await decodeMotionV2Candidate(new Uint8Array(await candidateResponse.arrayBuffer()))
+const authority = createMotionV2CandidateAuthority(candidate)
+const testMotionPin = Object.freeze({ manifest_id: authority.manifestId, manifest_version: authority.manifestVersion, content_hash: authority.manifestHash })
 const owner = createMotionRuntime({ authority, scope, privacy: auth.privacy, origin: location.origin, load: async () => loadedArt })
-async function request(method: 'GET' | 'PUT', body?: unknown): Promise<MotionAvatarState<TestMotionConfig>> {
+async function request(method: 'GET' | 'PUT', body?: unknown): Promise<MotionAvatarState<MotionV2Config>> {
   const response = await fetch('/__motion/me', { method, credentials: 'omit', cache: 'no-store', signal: abort.signal,
     ...(body ? { headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(body) } : {}) })
   const value = await response.json()
@@ -116,7 +121,9 @@ Object.assign(window, { motionJourney: {
       for (let direction = 0; direction < 4; direction++) {
         const phases = new Set<string>()
         for (let phase = 0; phase < 5; phase++) {
-          const index = loadedArt.art.descriptor.presets.frames.find(frame => frame.preset === preset.id && frame.direction === ['front', 'left', 'right', 'rear'][direction] && frame.phase === phase)!.atlasIndex
+          const selected = motionV2Selection(preset.config)
+          if (selected.mode !== 'preset') throw Error('Wrong preset branch')
+          const index = loadedArt.art.descriptor.presets.frames.find(frame => frame.preset === selected.preset && frame.direction === ['front', 'left', 'right', 'rear'][direction] && frame.phase === phase)!.atlasIndex
           a.clearRect(0, 0, 64, 64); b.clearRect(0, 0, 64, 64)
           a.drawImage(loadedArt.image, index % 20 * 64, Math.floor(index / 20) * 64, 64, 64, 0, 0, 64, 64)
           b.drawImage(render.canvas, phase * 64, direction * 64, 64, 64, 0, 0, 64, 64)

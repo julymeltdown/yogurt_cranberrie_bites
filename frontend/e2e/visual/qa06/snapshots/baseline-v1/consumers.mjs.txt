@@ -1,0 +1,53 @@
+// Independent labeled ready-consumer captures. Never promotes synthetic qualification to production.
+import assert from 'node:assert/strict'
+import {execFileSync} from 'node:child_process'
+import {readFile,writeFile,mkdir} from 'node:fs/promises'
+import {createHash} from 'node:crypto'
+import {resolve,extname} from 'node:path'
+import {createServer} from 'vite'
+import {chromium,expect} from '@playwright/test'
+const repo=resolve(import.meta.dirname,'../../../..'),out=process.env.QA06_CONSUMER_OUTPUT
+assert(out?.startsWith(resolve(repo,'docs/mcr/evidence/visual/qa06/')+'/'));await mkdir(out,{mode:0o700})
+const git=(...args)=>execFileSync('git',args,{cwd:repo,maxBuffer:64*1024*1024}),hash=b=>createHash('sha256').update(b).digest('hex'),tracked=new Set(git('ls-files','frontend/public').toString().trim().split('\n')),cache=new Map()
+const paths=['frontend/src/world/mural-entry-lifecycle/__tests__/assembly-data.ts','frontend/src/world/mural-entry-lifecycle/__tests__/assembly-native.tsx','frontend/src/world/mural-entry-lifecycle/__tests__/assembly-native.html','frontend/src/world/mural-entry-lifecycle/source.ts','frontend/src/app/mural-entry/provider.tsx','frontend/src/app/community-entry/__tests__/preview.tsx','frontend/src/app/community-entry/__tests__/fixture.ts','frontend/src/features/people/__tests__/fixtures/harness.ts','frontend/src/features/people/__tests__/fixtures/preview.tsx','frontend/src/app/social-composition/__tests__/fixtures.ts']
+const report={task:'QA06',status:'IN_PROGRESS',candidate:git('rev-parse','HEAD').toString().trim(),harnessSha256:hash(await readFile(new URL(import.meta.url))),sourceHashes:Object.fromEntries(paths.map(p=>[p,hash(git('show','HEAD:'+p))])),cases:[],limits:['Desktop Chrome only; no actual devices/software keyboard/hardware safe area','Wall uses existing geometric, synthetic Auth/anchor/eligibility/HTTP caller assembly; NOT ordinary production/default-shell activation or reference-art approval','FE26 uses existing synthetic route-adapter fixture; reviewed physical authority is a test input','FE30 uses QA06 actual app/default-loader fixture with synthetic social data and selected whole-character identity; no verified provider authority']}
+const server=await createServer({root:resolve(repo,'frontend'),configLoader:'runner',logLevel:'error',resolve:{dedupe:['react','react-dom','react-hook-form']},optimizeDeps:{include:['react','react/jsx-runtime','react/jsx-dev-runtime','react-dom','react-dom/client','react-hook-form']},cacheDir:`/tmp/mcr-qa06-consumers-${process.pid}`,
+ plugins:[{name:'readonly-sparse-assets',configureServer(s){s.middlewares.use((req,res,next)=>{const path='frontend/public'+decodeURIComponent(new URL(req.url,'http://localhost').pathname)
+ if(!tracked.has(path)||!['.png','.ttf'].includes(extname(path)))return next()
+ try{if(!cache.has(path))cache.set(path,git('show','HEAD:'+path));res.setHeader('Content-Type',extname(path)==='.ttf'?'font/ttf':'image/png');res.end(cache.get(path))}catch(e){next(e)}
+ })}}],server:{host:'127.0.0.1',port:0,hmr:false}})
+let browser
+try{await server.listen();browser=await chromium.launch({channel:'chrome',headless:true});report.browser=browser.version();const base=server.resolvedUrls.local[0]
+ for(const width of [360,390,430])for(const kind of ['wall-caller','gift-pickup','intro','profile','age']){
+  const context=await browser.newContext({viewport:{width,height:844},hasTouch:true,isMobile:true,reducedMotion:'reduce'}),page=await context.newPage(),errors=[];page.on('pageerror',e=>errors.push(e.message));page.setDefaultTimeout(15000)
+  const entry={kind,width,status:'IN_PROGRESS',errors}
+  try{await page.clock.setFixedTime(new Date('2026-11-07T07:00:00Z'))
+   if(kind==='wall-caller'){
+    await page.goto(base+'src/world/mural-entry-lifecycle/__tests__/assembly-native.html');await expect(page.getByText('REV 10 · EDITABLE',{exact:true})).toBeVisible()
+    entry.state=await page.evaluate(()=>window.__MURAL_ASSEMBLY__.read());entry.world=await page.evaluate(()=>window.__MURAL_ASSEMBLY__.inspect());assert.equal(entry.state.created,1);assert.equal(entry.state.socketCount,1);assert.equal(entry.world.objects,1)
+    assert.equal(entry.state.posts.length,0);await expect(page.getByRole('group',{name:'Mural pixel preview',exact:true})).toBeVisible()
+   }else if(kind==='gift-pickup'){
+    await page.goto(base+'src/app/community-entry/__tests__/preview.html?owner=1&start=manage');await page.getByRole('button',{name:'Open pickup 1',exact:true}).click()
+    await expect(page.getByLabel('Recipient’s six-digit code')).toBeVisible();entry.state=await page.evaluate(()=>window.__COMMUNITY_ENTRY__.state());assert.equal(entry.state.writes,0)
+   }else{
+    const route={intro:'/meet/intro/edit',profile:'/people/00000000-0000-4000-8000-000000000101',age:'/me/age'}[kind]
+    await page.goto(base+'e2e/visual/qa06/preview.html?'+new URLSearchParams({entry:route,era:'REVENGE'}));await page.waitForFunction(()=>window.__QA06__);await expect.poll(()=>page.evaluate(()=>window.__QA06__.state().published)).toBe(true)
+    await page.waitForLoadState('networkidle');entry.state=await page.evaluate(()=>window.__QA06__.state());assert.equal(entry.state.path,route)
+    await expect(page.locator('#panel-title')).toBeVisible()
+   }
+   await page.waitForLoadState('networkidle');await page.evaluate(()=>document.fonts.ready)
+   entry.metrics=await page.evaluate(()=>({width:innerWidth,height:innerHeight,scrollWidth:document.documentElement.scrollWidth,headings:[...document.querySelectorAll('h1,h2')].map(e=>e.textContent),images:[...document.images].map(i=>({alt:i.alt,loaded:i.complete&&i.naturalWidth>0})),bodyText:document.body.innerText.slice(0,3000)}))
+   assert(entry.metrics.scrollWidth<=width);assert(entry.metrics.images.every(i=>i.loaded));assert.deepEqual(errors,[])
+   entry.screenshot=`${kind}-${width}.png`;await page.screenshot({path:resolve(out,entry.screenshot)})
+   if(kind==='gift-pickup'||kind==='intro'||kind==='age'){
+    const field=page.locator('input:visible:not(:disabled),textarea:visible:not(:disabled)').first();if(await field.count()){await field.focus();await expect(field).toBeFocused()}
+    await page.setViewportSize({width,height:420});entry.reducedOverflow=await page.evaluate(()=>document.documentElement.scrollWidth>innerWidth);assert.equal(entry.reducedOverflow,false);entry.reducedScreenshot=`${kind}-${width}-reduced420.png`;await page.screenshot({path:resolve(out,entry.reducedScreenshot)})
+   }
+   entry.status='CAPTURED'
+  }catch(e){entry.status='FAIL';entry.error=e.message}
+  finally{await page.evaluate(()=>{window.__QA06__?.dispose();window.__MURAL_ASSEMBLY__?.dispose();window.__COMMUNITY_ENTRY__?.dispose()}).catch(()=>{});await context.close()}
+  report.cases.push(entry);console.log(JSON.stringify({kind,width,status:entry.status,error:entry.error}));await writeFile(resolve(out,'report.partial.json'),JSON.stringify(report,null,2)+'\n')
+ }
+ report.status=report.cases.every(c=>c.status==='CAPTURED')?'LABELED_CONSUMERS_CAPTURED':'OPEN_FAILURES'
+}finally{await writeFile(resolve(out,'report.json'),JSON.stringify(report,null,2)+'\n');await browser?.close();await server.close()}
+if(report.status==='OPEN_FAILURES')process.exitCode=1

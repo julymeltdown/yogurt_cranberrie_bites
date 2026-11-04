@@ -2,7 +2,7 @@
 import { readFileSync, writeFileSync } from 'node:fs'
 import { createHash } from 'node:crypto'
 const root = new URL('../../../../../', import.meta.url)
-const paths = ['contracts/realtime/v1/world.schema.json', 'contracts/core/v1/core.schema.json', 'contracts/assets/v1/avatar-config.schema.json', 'contracts/assets/v1/common.schema.json']
+const paths = ['contracts/realtime/v1/world.schema.json', 'contracts/core/v1/core.schema.json', 'contracts/assets/v1/avatar-config.schema.json', 'contracts/assets/v1/common.schema.json', 'contracts/assets/v2/reviewed/avatar-config.schema.json', 'contracts/assets/v2/reviewed/avatar-manifest.schema.json']
 const docs = paths.map(p => JSON.parse(readFileSync(new URL(p, root))))
 const names = new Map(), definitions = []
 function refName(ref, doc) {

@@ -1,0 +1,11 @@
+{
+  "cwd": "frontend",
+  "command": [
+    "./node_modules/.bin/oxlint",
+    "src/world/network/__tests__/reviewed-motion-v2",
+    "src/features/auth/model/__tests__/reviewed-motion-v2",
+    "src/world/network/transport/contract.ts",
+    "src/features/auth/model/bootstrap.ts"
+  ],
+  "exit_code": 0
+}

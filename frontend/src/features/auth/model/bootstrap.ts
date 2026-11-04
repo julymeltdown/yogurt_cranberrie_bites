@@ -35,6 +35,12 @@ async function validateBundle(bootstrap: ObjectValue) {
     })
     requireValue(checked.contract_version === '1.1.0')
     validateAvatarConfig(object(bootstrap.avatar).config, checked)
+  } else if (avatar.contract_version === '2.0.0') {
+    const checked = await validateAvatarManifest(canonicalJson(avatar), {
+      manifest_id: text(avatar.manifest_id), manifest_version: number(avatar.manifest_version), content_hash: text(avatar.content_hash),
+    })
+    requireValue(checked.contract_version === '2.0.0')
+    validateAvatarConfig(object(bootstrap.avatar).config, checked)
   } else {
     requireValue(avatar.contract_version === '1.0.0')
     const atlas = object(avatar.atlas), texture = object(atlas.texture)

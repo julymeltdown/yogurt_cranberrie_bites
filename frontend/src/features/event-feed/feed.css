@@ -15,7 +15,7 @@
 .feed-image { display: block; max-width: 100%; height: auto; }
 
 /* The shell owns its frame, titlebar and 6px body inset. Feed owns only content. */
-.feed-browse { display: flex; flex-direction: column; width: 100%; max-width: none; min-height: 100%; margin: 0; padding: 0; color: #201b18; font: 14px/1.35 "Arial Narrow", "Helvetica Neue", Arial, sans-serif; }
+.feed-browse { display: flex; flex-direction: column; width: 100%; max-width: none; min-height: var(--mcr-panel-available-height, 100%); margin: 0; padding: 0; color: #201b18; font: 14px/1.35 "Arial Narrow", "Helvetica Neue", Arial, sans-serif; }
 .feed-browse *, .feed-browse *::before, .feed-browse *::after { box-sizing: border-box; }
 .feed-browse button, .feed-browse summary { min-height: 44px; min-width: 44px; margin: 0; border-radius: 2px; font: inherit; color: inherit; }
 .feed-browse button { cursor: pointer; }

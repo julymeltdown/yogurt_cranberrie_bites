@@ -1,0 +1,398 @@
+{
+  "format": "MCR_REFERENCE_SCENE_SPATIAL5_PUBLIC_INPUTS",
+  "version": 1,
+  "status": "NOT_RELEASE_BOUND",
+  "production_status": "NOT_ADMITTED",
+  "source_revision": "06562ff1962be525ed929ef431a54bb589860373",
+  "candidate_map": {
+    "map_id": "mcr_reference_scene_r3",
+    "map_revision": 6,
+    "minimum_map_revision": 6,
+    "geometry_hash": "sha256:ef52c8b05af6a882f2e82285c9879c9a4cb78ab513336e4bb3cd483c9b123395",
+    "allocation": "ALLOCATED_BY_CANONICAL_BACKEND_PRODUCER_NOT_RELEASED"
+  },
+  "backend_allocation": {
+    "map_id": "mcr_reference_scene_r3",
+    "map_revision": 6,
+    "geometry_hash": "sha256:ef52c8b05af6a882f2e82285c9879c9a4cb78ab513336e4bb3cd483c9b123395",
+    "commit": "390bb9a57c2ede32b814e8c36f8d1c85a10a99a2",
+    "evidence_path": "backend/releases/reference-scene-v2/quality-v10/revision-reservation.json",
+    "evidence_sha256": "sha256:771fabbcc0243cff645a2f7588fcaa4d68f056663b2b3ede5d86e2024d213317",
+    "authority": "SOURCE_IDENTITY_ONLY; no database/event-current selection, release or admission"
+  },
+  "source_inputs": [
+    {
+      "path": "world/reference-scene-v2/quality-v10/handoff.json",
+      "sha256": "sha256:ac8abde55c18e9c28580a97a0f996b29d83c1daadf45b190511ccec792c0fcfd"
+    },
+    {
+      "path": "world/reference-scene-v2/quality-v10/manifest.json",
+      "sha256": "sha256:9048d45753f4d47828082c422061ed17418f8bfb93b51cf3e9879e821eeb0cf6"
+    },
+    {
+      "path": "world/reference-scene-v2/spatial-v5/geometry-proposal.json",
+      "sha256": "sha256:a2cdd0e60c1f9cc7c3f093643760000e91a01e1fadffb51f9a76bd2c3a7a3a0f"
+    },
+    {
+      "path": "world/reference-scene-v2/spatial-v5/integer-projection.json",
+      "sha256": "sha256:ce72d8311287067d8c280f136c852a4f0024610f6550a83b12d42e4df2b82651"
+    },
+    {
+      "path": "world/reference-scene-v2/spatial-v5/revision-evidence.json",
+      "sha256": "sha256:2e6536b87fb6614c6c865996c68b1ad9d350a62baec1bc54ddf1f42c216439b5"
+    },
+    {
+      "path": "world/reference-scene-v2/quality-v8/manifest.json",
+      "sha256": "sha256:0aa7ffc44d4fa69ad8d0ac9dfb8ab30907ce0e785aa461a03a1452b8461518d6"
+    },
+    {
+      "path": "world/reference-scene-v2/quality-v10/ground.png",
+      "sha256": "sha256:dd70d8fb02e1c6e57e9a9f9e96d69dc7c15999bc076678a7075161281c929887"
+    },
+    {
+      "path": "world/reference-scene-v2/quality-v10/ground-native.png",
+      "sha256": "sha256:4426158f4e7cc771e42ad5352ca5365563f2660d46a862a14d8c227844b91646"
+    },
+    {
+      "path": "world/reference-scene-v2/quality-v10/ground-layout.svg",
+      "sha256": "sha256:25fff0d51f12251b34bf072cf4e32f2c8281f65ce676836c6f7998740da64a24"
+    },
+    {
+      "path": "world/reference-scene-v2/quality-v10/ground-editable.json",
+      "sha256": "sha256:f48685271af8fd4428779ea646861e8bbfbdc4f6a2d3a6e607346d88513a7802"
+    },
+    {
+      "path": "world/reference-scene-v2/quality-v10/ground.tsrct",
+      "sha256": "sha256:029459d045d4c096c00d4e7659bb97977144764560074e1427d70085507c70b0"
+    },
+    {
+      "path": "world/reference-scene-v2/quality-v10/route-edges.json",
+      "sha256": "sha256:b1720b5c2ecfa019b0d2ca58246408cf31d00b915e9816d01914e11149eb8b52"
+    },
+    {
+      "path": "world/reference-scene-v2/quality-v10/ground-native-evidence.json",
+      "sha256": "sha256:10837e3e7e558d70d2e08efb2b592a22032db97c00b09f37334c4a515e9c1a40"
+    },
+    {
+      "path": "world/reference-scene-v2/quality-v10/material-ground.png",
+      "sha256": "sha256:d21c4efb881d747605dcc0c89a71aeb5acdda273dc5a0d767ae50abc6457f9bc"
+    },
+    {
+      "path": "world/reference-scene-v2/quality-v10/material-ground-native.png",
+      "sha256": "sha256:51459c831dd0bb9392c58e1ad87b6ff48eecbbea2584d250d51c99c2a849bc7e"
+    },
+    {
+      "path": "world/reference-scene-v2/quality-v10/material-ground-editable.json",
+      "sha256": "sha256:543c302a2b021ecfc38f1edcf1cbe058023fdab20f90cd39e3f9d6be1d8031bb"
+    },
+    {
+      "path": "world/reference-scene-v2/quality-v10/material-ground.tsrct",
+      "sha256": "sha256:eddc0a9bc652c67d578e6a8d0ce79232a525138b186e72d94f816a7dc760274f"
+    },
+    {
+      "path": "world/reference-scene-v2/quality-v10/material-ground-evidence.json",
+      "sha256": "sha256:da7a1ab293727e345ba41fbb578e17656edfeac8899063ae5d9c1412b99ab343"
+    },
+    {
+      "path": "world/reference-scene-v2/quality-v10/surface-native.png",
+      "sha256": "sha256:d5f4e8fd42cab7d0524a7553eb2056dc197e106ee382ffb62ea58f6cf958a40b"
+    },
+    {
+      "path": "world/reference-scene-v2/quality-v10/revenge/scenery.json",
+      "sha256": "sha256:ecdc17d2a010e3697b5b813fdd079d5cd4d44b2d0ee09d6b81272c2ffecfc9d5"
+    },
+    {
+      "path": "world/reference-scene-v2/quality-v10/revenge/layout.json",
+      "sha256": "sha256:96c42600750bc582269114abd1a402c45c23e45229d20cbf8a084dfe58102553"
+    },
+    {
+      "path": "world/reference-scene-v2/quality-v10/revenge/map-metadata.json",
+      "sha256": "sha256:5faed0c0c3977fff68bc9abce97a2d8f5b60346d328ceddc70d7b76f474b82b6"
+    },
+    {
+      "path": "world/reference-scene-v2/quality-v10/revenge/resource-inputs.json",
+      "sha256": "sha256:7acfe8c717b1872b54f6d9b5261ba12cfe48ceae92d0dc34a8590e8ce032585a"
+    },
+    {
+      "path": "world/reference-scene-v2/quality-v10/revenge/provenance.json",
+      "sha256": "sha256:5d06c136f9373938121dcfd0be342962c9bacbf1422f2190bbfc422c09b4dacd"
+    },
+    {
+      "path": "world/reference-scene-v2/quality-v10/revenge/atlas.png",
+      "sha256": "sha256:ee93dcde891054f6ef965d182af8237a09d10464ba762d017168d2bd9326bccd"
+    },
+    {
+      "path": "world/reference-scene-v2/quality-v10/revenge/native-atlas.png",
+      "sha256": "sha256:5a9ee2dff0acc53a7e7f945e8dae7d992e629a192b4b3157e0c991731179e018"
+    },
+    {
+      "path": "world/reference-scene-v2/quality-v8/revenge/atlas.png",
+      "sha256": "sha256:ee93dcde891054f6ef965d182af8237a09d10464ba762d017168d2bd9326bccd"
+    },
+    {
+      "path": "world/reference-scene-v2/quality-v10/parade/scenery.json",
+      "sha256": "sha256:0c304c9d5e64e5652af20e412d4403890a7388a010101af7fbf3bab589faa855"
+    },
+    {
+      "path": "world/reference-scene-v2/quality-v10/parade/layout.json",
+      "sha256": "sha256:4d459ce7d17df9bd3bbca9debe128df6ad3770d80425777e334b7725addf5465"
+    },
+    {
+      "path": "world/reference-scene-v2/quality-v10/parade/map-metadata.json",
+      "sha256": "sha256:5faed0c0c3977fff68bc9abce97a2d8f5b60346d328ceddc70d7b76f474b82b6"
+    },
+    {
+      "path": "world/reference-scene-v2/quality-v10/parade/resource-inputs.json",
+      "sha256": "sha256:6517f5276bf9896287843aac8eb48a49db576fb4d0e790a50c2b985520ac3615"
+    },
+    {
+      "path": "world/reference-scene-v2/quality-v10/parade/provenance.json",
+      "sha256": "sha256:e27d493cb857c0b90132dafa26e213e2f9dfe93897df91a4aa744ed29cda9dfd"
+    },
+    {
+      "path": "world/reference-scene-v2/quality-v10/parade/atlas.png",
+      "sha256": "sha256:0428f976140a3ee1d59368d3016efae605a6e2b7b1470233f523e7721ec806c1"
+    },
+    {
+      "path": "world/reference-scene-v2/quality-v10/parade/native-atlas.png",
+      "sha256": "sha256:f62569baaab7eecbbf236c0a7026f8c1014a438cd1f192d5366d8ed3fcaa5d32"
+    },
+    {
+      "path": "world/reference-scene-v2/quality-v8/parade/atlas.png",
+      "sha256": "sha256:0428f976140a3ee1d59368d3016efae605a6e2b7b1470233f523e7721ec806c1"
+    },
+    {
+      "path": "world/reference-scene-v2/quality-v10/danger/scenery.json",
+      "sha256": "sha256:1f64295a45a9698c75f5d008e42753896c783000698fa5b44e7dde6e8f0b6990"
+    },
+    {
+      "path": "world/reference-scene-v2/quality-v10/danger/layout.json",
+      "sha256": "sha256:3216dcf4845fef5f95532fc25baaf027517926c305bce483dee29cb9ef5e0df8"
+    },
+    {
+      "path": "world/reference-scene-v2/quality-v10/danger/map-metadata.json",
+      "sha256": "sha256:5faed0c0c3977fff68bc9abce97a2d8f5b60346d328ceddc70d7b76f474b82b6"
+    },
+    {
+      "path": "world/reference-scene-v2/quality-v10/danger/resource-inputs.json",
+      "sha256": "sha256:4c0339c9304b039c2dafb32412878640ef056560a6b70de474a848893d8fa6d3"
+    },
+    {
+      "path": "world/reference-scene-v2/quality-v10/danger/provenance.json",
+      "sha256": "sha256:b6c2dd272facd3ab8025a22287e1d0d5773090d54f90a991dd8a0989f62e4d0c"
+    },
+    {
+      "path": "world/reference-scene-v2/quality-v10/danger/atlas.png",
+      "sha256": "sha256:61948cb2f642de55721257fd4104fad4a7162a49c5fcf5bef9ed4d81d969ba12"
+    },
+    {
+      "path": "world/reference-scene-v2/quality-v10/danger/native-atlas.png",
+      "sha256": "sha256:31c7ae3bb8ddaa70e8d72eac7280843b57b9df438f5235c660f256d68cb9a1e7"
+    },
+    {
+      "path": "world/reference-scene-v2/quality-v8/danger/atlas.png",
+      "sha256": "sha256:61948cb2f642de55721257fd4104fad4a7162a49c5fcf5bef9ed4d81d969ba12"
+    },
+    {
+      "path": "world/reference-scene-v2/quality-v10/map-label-presentation.json",
+      "sha256": "sha256:850c96b38253f4953778ac4b30d3b10372d091630b09d8a69bc425a28bcc4fd0"
+    }
+  ],
+  "tilemap": {
+    "path": "world/reference-scene-v2/runtime/spatial-v5/canonical-map.json",
+    "sha256": "sha256:e5837dfe08a8d2f1f7cdb4428b87965b4a7c6ecdb1458b8fe910e3f4c2112078",
+    "bytes": 24058,
+    "format": "TILED_JSON"
+  },
+  "scenes": [
+    {
+      "theme_id": "REVENGE",
+      "sources": [
+        {
+          "path": "world/reference-scene-v2/quality-v10/revenge/scenery.json",
+          "sha256": "sha256:ecdc17d2a010e3697b5b813fdd079d5cd4d44b2d0ee09d6b81272c2ffecfc9d5",
+          "bytes": 10456
+        },
+        {
+          "path": "world/reference-scene-v2/quality-v10/revenge/layout.json",
+          "sha256": "sha256:96c42600750bc582269114abd1a402c45c23e45229d20cbf8a084dfe58102553",
+          "bytes": 25423
+        },
+        {
+          "path": "world/reference-scene-v2/quality-v10/revenge/map-metadata.json",
+          "sha256": "sha256:5faed0c0c3977fff68bc9abce97a2d8f5b60346d328ceddc70d7b76f474b82b6",
+          "bytes": 8692
+        },
+        {
+          "path": "world/reference-scene-v2/quality-v10/revenge/resource-inputs.json",
+          "sha256": "sha256:7acfe8c717b1872b54f6d9b5261ba12cfe48ceae92d0dc34a8590e8ce032585a",
+          "bytes": 1102
+        },
+        {
+          "path": "world/reference-scene-v2/quality-v10/revenge/provenance.json",
+          "sha256": "sha256:5d06c136f9373938121dcfd0be342962c9bacbf1422f2190bbfc422c09b4dacd",
+          "bytes": 1366
+        },
+        {
+          "path": "world/reference-scene-v2/quality-v10/revenge/atlas.png",
+          "sha256": "sha256:ee93dcde891054f6ef965d182af8237a09d10464ba762d017168d2bd9326bccd",
+          "bytes": 1203841
+        },
+        {
+          "path": "world/reference-scene-v2/quality-v10/revenge/native-atlas.png",
+          "sha256": "sha256:5a9ee2dff0acc53a7e7f945e8dae7d992e629a192b4b3157e0c991731179e018",
+          "bytes": 1248600
+        }
+      ],
+      "runtime_resources": [
+        {
+          "id": "quality_v10_route_edge_ground",
+          "path": "world/reference-scene-v2/quality-v10/ground.png",
+          "sha256": "sha256:dd70d8fb02e1c6e57e9a9f9e96d69dc7c15999bc076678a7075161281c929887",
+          "width_px": 768,
+          "height_px": 1296,
+          "bytes": 549155
+        },
+        {
+          "id": "revenge_quality_v8_atlas",
+          "path": "world/reference-scene-v2/quality-v8/revenge/atlas.png",
+          "sha256": "sha256:ee93dcde891054f6ef965d182af8237a09d10464ba762d017168d2bd9326bccd",
+          "width_px": 1024,
+          "height_px": 1024,
+          "bytes": 1203841
+        }
+      ]
+    },
+    {
+      "theme_id": "PARADE",
+      "sources": [
+        {
+          "path": "world/reference-scene-v2/quality-v10/parade/scenery.json",
+          "sha256": "sha256:0c304c9d5e64e5652af20e412d4403890a7388a010101af7fbf3bab589faa855",
+          "bytes": 10420
+        },
+        {
+          "path": "world/reference-scene-v2/quality-v10/parade/layout.json",
+          "sha256": "sha256:4d459ce7d17df9bd3bbca9debe128df6ad3770d80425777e334b7725addf5465",
+          "bytes": 25422
+        },
+        {
+          "path": "world/reference-scene-v2/quality-v10/parade/map-metadata.json",
+          "sha256": "sha256:5faed0c0c3977fff68bc9abce97a2d8f5b60346d328ceddc70d7b76f474b82b6",
+          "bytes": 8692
+        },
+        {
+          "path": "world/reference-scene-v2/quality-v10/parade/resource-inputs.json",
+          "sha256": "sha256:6517f5276bf9896287843aac8eb48a49db576fb4d0e790a50c2b985520ac3615",
+          "bytes": 1099
+        },
+        {
+          "path": "world/reference-scene-v2/quality-v10/parade/provenance.json",
+          "sha256": "sha256:e27d493cb857c0b90132dafa26e213e2f9dfe93897df91a4aa744ed29cda9dfd",
+          "bytes": 1365
+        },
+        {
+          "path": "world/reference-scene-v2/quality-v10/parade/atlas.png",
+          "sha256": "sha256:0428f976140a3ee1d59368d3016efae605a6e2b7b1470233f523e7721ec806c1",
+          "bytes": 1215028
+        },
+        {
+          "path": "world/reference-scene-v2/quality-v10/parade/native-atlas.png",
+          "sha256": "sha256:f62569baaab7eecbbf236c0a7026f8c1014a438cd1f192d5366d8ed3fcaa5d32",
+          "bytes": 1259947
+        }
+      ],
+      "runtime_resources": [
+        {
+          "id": "quality_v10_route_edge_ground",
+          "path": "world/reference-scene-v2/quality-v10/ground.png",
+          "sha256": "sha256:dd70d8fb02e1c6e57e9a9f9e96d69dc7c15999bc076678a7075161281c929887",
+          "width_px": 768,
+          "height_px": 1296,
+          "bytes": 549155
+        },
+        {
+          "id": "parade_quality_v8_atlas",
+          "path": "world/reference-scene-v2/quality-v8/parade/atlas.png",
+          "sha256": "sha256:0428f976140a3ee1d59368d3016efae605a6e2b7b1470233f523e7721ec806c1",
+          "width_px": 1024,
+          "height_px": 1024,
+          "bytes": 1215028
+        }
+      ]
+    },
+    {
+      "theme_id": "DANGER",
+      "sources": [
+        {
+          "path": "world/reference-scene-v2/quality-v10/danger/scenery.json",
+          "sha256": "sha256:1f64295a45a9698c75f5d008e42753896c783000698fa5b44e7dde6e8f0b6990",
+          "bytes": 10420
+        },
+        {
+          "path": "world/reference-scene-v2/quality-v10/danger/layout.json",
+          "sha256": "sha256:3216dcf4845fef5f95532fc25baaf027517926c305bce483dee29cb9ef5e0df8",
+          "bytes": 25422
+        },
+        {
+          "path": "world/reference-scene-v2/quality-v10/danger/map-metadata.json",
+          "sha256": "sha256:5faed0c0c3977fff68bc9abce97a2d8f5b60346d328ceddc70d7b76f474b82b6",
+          "bytes": 8692
+        },
+        {
+          "path": "world/reference-scene-v2/quality-v10/danger/resource-inputs.json",
+          "sha256": "sha256:4c0339c9304b039c2dafb32412878640ef056560a6b70de474a848893d8fa6d3",
+          "bytes": 1099
+        },
+        {
+          "path": "world/reference-scene-v2/quality-v10/danger/provenance.json",
+          "sha256": "sha256:b6c2dd272facd3ab8025a22287e1d0d5773090d54f90a991dd8a0989f62e4d0c",
+          "bytes": 1365
+        },
+        {
+          "path": "world/reference-scene-v2/quality-v10/danger/atlas.png",
+          "sha256": "sha256:61948cb2f642de55721257fd4104fad4a7162a49c5fcf5bef9ed4d81d969ba12",
+          "bytes": 1201333
+        },
+        {
+          "path": "world/reference-scene-v2/quality-v10/danger/native-atlas.png",
+          "sha256": "sha256:31c7ae3bb8ddaa70e8d72eac7280843b57b9df438f5235c660f256d68cb9a1e7",
+          "bytes": 1245239
+        }
+      ],
+      "runtime_resources": [
+        {
+          "id": "quality_v10_route_edge_ground",
+          "path": "world/reference-scene-v2/quality-v10/ground.png",
+          "sha256": "sha256:dd70d8fb02e1c6e57e9a9f9e96d69dc7c15999bc076678a7075161281c929887",
+          "width_px": 768,
+          "height_px": 1296,
+          "bytes": 549155
+        },
+        {
+          "id": "danger_quality_v8_atlas",
+          "path": "world/reference-scene-v2/quality-v8/danger/atlas.png",
+          "sha256": "sha256:61948cb2f642de55721257fd4104fad4a7162a49c5fcf5bef9ed4d81d969ba12",
+          "width_px": 1024,
+          "height_px": 1024,
+          "bytes": 1201333
+        }
+      ]
+    }
+  ],
+  "map_presentation": {
+    "source_revision": "06562ff1962be525ed929ef431a54bb589860373",
+    "presentation": {
+      "path": "world/reference-scene-v2/quality-v10/map-label-presentation.json",
+      "bytes": 13881,
+      "sha256": "sha256:850c96b38253f4953778ac4b30d3b10372d091630b09d8a69bc425a28bcc4fd0"
+    },
+    "runtime_font": {
+      "path": "frontend/public/world/reference-scene-v2/map-labels-v1/map-labels-bold.ttf",
+      "bytes": 145012,
+      "sha256": "sha256:f44e493f61e2d91c2156dd5abc720eeb6274a9c02b11d9097d1ea38d50011e8b"
+    },
+    "authority": "MAP-only source presentation for ef52; no C06 extension, admission or new destination."
+  },
+  "authority": "Exact public source bytes only; minimum6 is a constraint, not a server reservation or release/source-review/physical admission."
+}

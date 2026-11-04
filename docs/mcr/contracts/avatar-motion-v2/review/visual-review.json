@@ -1,0 +1,156 @@
+{
+  "review_id": "mcr_motion_visual_20261104_01",
+  "reviewed_date": "2026-11-04",
+  "reviewer": "Codex C06 producer 01a1a21e-ab80-7012-b9fa-cdb69eed097b, explicitly assigned by canonical owner",
+  "decision": "VISUAL_ACCEPTED",
+  "production_runtime_admission": "PENDING_TYPED_AND_RUNTIME_QUALIFICATION",
+  "candidate_manifest": {
+    "path": "backend/releases/selected-character-motion-v2/manifest.json",
+    "sha256": "9a555f726a9e421f14ed876117be87bb1bb8fa128ac401ab38f8927760776fd6",
+    "bytes": 95128
+  },
+  "atlas_sha256": "1cd8f05af8d76d58243e2f6e143961953b4d4291fdd553df8c8d33aabd700dbd",
+  "source_pack_id": "mcr_user_characters_20261103",
+  "source_pack_revision": 3,
+  "inspected_resources": [
+    {
+      "path": "frontend/public/world/avatars/supplied-v1/photo-01.jpg",
+      "sha256": "67448360482a0dd68172d6089378a002190142bb8bd804818c89a86370154311",
+      "bytes": 168045
+    },
+    {
+      "path": "frontend/public/world/avatars/supplied-v1/photo-02.jpg",
+      "sha256": "cb66e99ef86893e542728864933a694663cc4bdee9440df52de64a9323a46489",
+      "bytes": 166375
+    },
+    {
+      "path": "frontend/public/world/avatars/supplied-v1/photo-04.jpg",
+      "sha256": "87cdfbff215758c12d7042a7c435a17a6cdccb7637b0542dd9e0508d832e2a63",
+      "bytes": 189238
+    },
+    {
+      "path": "frontend/public/world/avatars/supplied-v1/photo-05.jpg",
+      "sha256": "681f566ab7ef081fa7f8a39ea0c3367cc822ea31f1bcfe3065f2755679950027",
+      "bytes": 185536
+    },
+    {
+      "path": "frontend/public/world/avatars/supplied-v1/photo-06.jpg",
+      "sha256": "a5fa9ecebf1ce7f36d1cb3eb50c5a21d75fe817797d9f1cd330d252b3677845f",
+      "bytes": 193901
+    },
+    {
+      "path": "frontend/public/world/avatars/supplied-v1/photo-09.jpg",
+      "sha256": "e4e857fb1a7f98d1a52538f47738b8fe01f0e352be0cd71e7b2f9e36ae4008c8",
+      "bytes": 142915
+    },
+    {
+      "path": "frontend/public/world/avatars/supplied-v1/photo-19.jpg",
+      "sha256": "856135f8c8b970f711b1ccdf1c071151a54037e07827bae6b518465e18d6c1ad",
+      "bytes": 240144
+    },
+    {
+      "path": "frontend/public/world/avatars/derived-v1/motion-candidates-v1/avatar-candidates-64-1cd8f05af8d76d58.png",
+      "sha256": "1cd8f05af8d76d58243e2f6e143961953b4d4291fdd553df8c8d33aabd700dbd",
+      "bytes": 470010
+    },
+    {
+      "path": "docs/mcr/art/evidence/motion-candidates-v1/wardrobe-six-looks.jpg",
+      "sha256": "8701b365deb630295a3ab05ed993a5578dc4e623a9f07626f7e6345c0e4f2337",
+      "bytes": 171287
+    },
+    {
+      "path": "docs/mcr/art/evidence/motion-candidates-v1/gait-390-revenge.jpg",
+      "sha256": "679585b4ecf72956e70df0d9434b683aa31ef2af1ec8254c13d139bca3c87b3f",
+      "bytes": 88938
+    },
+    {
+      "path": "docs/mcr/art/evidence/motion-candidates-v1/direction-390-parade-left.jpg",
+      "sha256": "01002862f5d5a2ad074e1e497d887231e1f1729fc775d65d576f49e83f446eb4",
+      "bytes": 68839
+    },
+    {
+      "path": "docs/mcr/art/evidence/motion-candidates-v1/wardrobe-430-danger-right.jpg",
+      "sha256": "53a51d9147ad2da2e0619344e96cdc3a0b95b55feb53086969705796864ef9b0",
+      "bytes": 99467
+    },
+    {
+      "path": "docs/mcr/art/evidence/motion-candidates-v1/wardrobe-360-parade-front.jpg",
+      "sha256": "2f6f868ab29be69fedea2edde556d07225674669020c96c981e60e9f58beb7d1",
+      "bytes": 95232
+    },
+    {
+      "path": "docs/mcr/contracts/avatar-motion-v2/review/customize-360-revenge.jpg",
+      "sha256": "c1a9e542a619988f32ca5f0239e5d781bbdadb38b3872a522d97ad805cc8f94e",
+      "bytes": 83213
+    },
+    {
+      "path": "docs/mcr/contracts/avatar-motion-v2/review/customize-390-parade.jpg",
+      "sha256": "f6b4d92aaaf8985fd5e1c8b95d9e7fce7b0d259e110b416a6cdf982589c9fba9",
+      "bytes": 87855
+    },
+    {
+      "path": "docs/mcr/contracts/avatar-motion-v2/review/customize-430-danger.jpg",
+      "sha256": "42301c25b98ae3430c2cc5d3b986d890f596c7ca8a774b11679c9aeb5a8c8e64",
+      "bytes": 93036
+    }
+  ],
+  "additional_seam_report": {
+    "path": "docs/mcr/contracts/avatar-motion-v2/review/seams.json",
+    "sha256": "1181d1f5bd46c5a9e718a026528ec46d0f148457f806733a469ebc4998528362",
+    "bytes": 693
+  },
+  "additional_seam_checker": {
+    "path": "docs/mcr/contracts/avatar-motion-v2/review/check_seams.py",
+    "sha256": "be8b7841376318ecc7b9278508584c2fb2150e02e0993d52e66beb2235ecfd5c",
+    "bytes": 3714
+  },
+  "consumer_source_commit": "df0522fa7fa93fd9f66db3a8b0ec38b95db0d6ee",
+  "art_source_commit": "bb7d21b3e931a9dc88056c1c1c436eb9817292da",
+  "concrete_findings": [
+    {
+      "criterion": "Six selected identities",
+      "decision": "ACCEPT",
+      "observation": "Black swept hair/red tie, blond band jacket, red hair/goggles, black bob/red stripes, brown tousled hair/black jacket and curly black hair/teal-yellow jacket remain recognizable against photo_01. Authored side/rear hair silhouettes and costumes retain these distinctions."
+    },
+    {
+      "criterion": "Source-derived components",
+      "decision": "ACCEPT",
+      "observation": "Atlas and coordinated looks preserve selected palette families, six hair silhouettes, four eye cutouts, six costume motifs and bow/ears/headphone accessories. Photo_02 eight skin palettes remain ordered from pale to dark. Body and component surfaces are authored reconstruction, not supplied exact pixels."
+    },
+    {
+      "criterion": "Gait, facing and anchor",
+      "decision": "ACCEPT",
+      "observation": "Inspected idle/walk strips show alternating articulated limbs with a stable head and foot. Left/right facial direction is distinct; rear has hair/outfit backs and no visible eye. No visible clipping or sideways identity substitution in inspected samples. 4800 computed compositions independently retain exclusive maxY60 and all bounds inside the64px cell."
+    },
+    {
+      "criterion": "Layers, cuff and optional cases",
+      "decision": "ACCEPT",
+      "observation": "Inspected dressed front/side/rear samples show visible hands in body skin color, clothing above the semantic hands and the body hidden below y42. The independent4800case analysis covers all960 skin-outfit-gait cases,960 undressed body-hair-gait cases and2880 optional accessory/eye/hair/light-dark overlaps, including outfit:null. This is computed seam coverage, not4800 human-viewed screenshots."
+    },
+    {
+      "criterion": "Three themes and mobile scale",
+      "decision": "ACCEPT",
+      "observation": "Inspected frozen360Revenge/390Parade/430Danger native captures and art56/64/72px contexts. Faces, outlines and costume colors remain readable; large heads/short limbs retain the intended proportions. Black clothing stays outlined against terrain. These are fixture captures with no live sockets."
+    },
+    {
+      "criterion": "Source fringe and reconstruction fidelity",
+      "decision": "ACCEPT_WITH_DISCLOSED_LIMITATION",
+      "observation": "Supplied JPEG edge softness remains in front source pixels; it is not repainted or described as new crisp original art. New side/rear pixels remain labeled authored. The source-faithful reconstruction method is already authorized; no new method approval is requested."
+    }
+  ],
+  "corrections_required": [],
+  "coverage_limits": [
+    "Visual judgment covers the inspected pinned source/contact sheets/atlas/strips and three frozen mobile captures; computed coverage is separately identified.",
+    "1176RGBA consumer checks establish pairwise parity, not all possible looks or visual identity judgment.",
+    "Editor reference-layout parity, live services, two-account flows, device and release acceptance are not certified here."
+  ],
+  "originals_modified": false,
+  "art_generated": false,
+  "successor_reservation": {
+    "manifest_id": "mcr_selected_motion_reviewed_20261104",
+    "manifest_version": 2,
+    "authority": "Canonical C06 owner Root1fc explicit2026-11-04 grant; exact reviewed schema paths separately granted",
+    "collision_check": "rg -l mcr_selected_motion_reviewed_20261104 contracts backend/releases: no matches before creating successor; published origin/master819d30c3cb32915862281d30cddbe5b7c9bd53cb",
+    "candidate_preserved": true
+  }
+}

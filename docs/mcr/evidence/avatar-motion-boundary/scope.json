@@ -1,0 +1,61 @@
+{
+  "allocation": "30c6fba3d0e12f3ab48105c8909c5765b23b81ec",
+  "authored_commits": [
+    {
+      "commit": "7dc84e84358275d23edf41b592bfae4ef381430b",
+      "parent": "f61e087b794d997b583bd941d7f85c57eec0f065",
+      "paths": [
+        "frontend/src/world/network/__tests__/generate-types.mjs",
+        "frontend/src/world/network/__tests__/reviewed-motion-v2/boundary.test.ts",
+        "frontend/src/world/network/transport/contract.ts",
+        "frontend/src/world/network/transport/wire-types.ts"
+      ]
+    },
+    {
+      "commit": "789b84c307674812a81e67ad59badc83fab8f532",
+      "parent": "7dc84e84358275d23edf41b592bfae4ef381430b",
+      "paths": [
+        "frontend/src/features/auth/model/__tests__/reviewed-motion-v2/bootstrap.test.ts",
+        "frontend/src/features/auth/model/bootstrap.ts",
+        "frontend/src/world/network/__tests__/reviewed-motion-v2/boundary.test.ts"
+      ]
+    },
+    {
+      "commit": "10c3182cf5f98736bcea0902dffbb1745d9a1968",
+      "parent": "4cda0cecaf1d59c62a61b3634d539cf8dc868e99",
+      "paths": [
+        "docs/mcr/evidence/avatar-motion-boundary/bootstrap-pending-parser.log",
+        "docs/mcr/evidence/avatar-motion-boundary/first-publication.json",
+        "docs/mcr/evidence/avatar-motion-boundary/generation.json",
+        "docs/mcr/evidence/avatar-motion-boundary/generation.log",
+        "docs/mcr/evidence/avatar-motion-boundary/legacy-and-wire.log",
+        "docs/mcr/evidence/avatar-motion-boundary/lint-command.json",
+        "docs/mcr/evidence/avatar-motion-boundary/lint-final.log",
+        "docs/mcr/evidence/avatar-motion-boundary/lint.log",
+        "docs/mcr/evidence/avatar-motion-boundary/plan-final.log",
+        "docs/mcr/evidence/avatar-motion-boundary/plan.json",
+        "docs/mcr/evidence/avatar-motion-boundary/producer-provenance.json",
+        "docs/mcr/evidence/avatar-motion-boundary/qualification.json",
+        "docs/mcr/evidence/avatar-motion-boundary/scope-whitespace-final.log",
+        "docs/mcr/evidence/avatar-motion-boundary/scope.json",
+        "docs/mcr/evidence/avatar-motion-boundary/tests-command.json",
+        "docs/mcr/evidence/avatar-motion-boundary/tests-final.log",
+        "docs/mcr/evidence/avatar-motion-boundary/types-before-motion.log",
+        "docs/mcr/evidence/avatar-motion-boundary/types-command.json",
+        "docs/mcr/evidence/avatar-motion-boundary/types-final.log",
+        "docs/mcr/evidence/avatar-motion-boundary/types-pending-parser.log",
+        "docs/mcr/evidence/avatar-motion-boundary/ui-origin-final.log",
+        "docs/mcr/evidence/avatar-motion-boundary/ui-origin.log",
+        "docs/mcr/evidence/avatar-motion-boundary/wire.log",
+        "docs/mcr/frontend/reviewed-motion-v2-boundary.md",
+        "frontend/src/world/network/__tests__/reviewed-motion-v2/boundary.test.ts"
+      ]
+    }
+  ],
+  "scope_check": "PASS",
+  "auth_contract_evaluator_modified": false,
+  "legacy_avatar_schema_modified": false,
+  "parser_modified_by_this_owner": false,
+  "distinct_paths": 30,
+  "qualification_receipt_followup_scope": "Only existing boundary documentation and evidence paths; no application code changes"
+}

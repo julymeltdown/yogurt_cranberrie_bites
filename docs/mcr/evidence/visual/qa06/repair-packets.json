@@ -1,0 +1,111 @@
+{
+  "task": "QA06",
+  "candidate": "980fc4d85020f297b36fee8195e1ca92079ff33f",
+  "referenceSha256": "d9a8fae2f96a82253542019ab673589b3938627956eace15c8594c702b5c4617",
+  "sourceHashes": {
+    "frontend/src/features/party-discovery/ui/party-discovery.css": "56adebbc5aa174b62c229e91377ed92065fd7c823078a281be176b64875949fd",
+    "frontend/src/features/party-discovery/ui/PartyDiscovery.tsx": "687d59c29d6155ead1df9152391af9f5422e6441b60b51b15df7084b0582f148",
+    "frontend/src/app/WorldShell.tsx": "9ab07b46c077bde4381ea2ec5918c146e2d05dfe7dc355bafad7448d9ff2d5f9",
+    "frontend/src/app/shell.css": "8bed1fbb014dfd0dfe31adcf015aa2bf78814ae08b4ea65623f0412569e3a056",
+    "frontend/src/app/shell-chrome/shell-chrome.css": "759a7749c7e1bceb8b8ebfe6500128d1ef39b0b4cd4aac3ae142ee782d525a21",
+    "frontend/src/app/shell-chrome/parade-footer.tsx": "7ccff5284eeb2a7851584694f9690835fa13e37746d9d68f0b2b10b8882afc2d",
+    "frontend/src/app/CommunityFeatures.tsx": "362c3f8a3b3f3187d9310013d0351c60d55c7771f6024b6afdbff3f5422d6e4b",
+    "frontend/src/app/routes.ts": "a7b2d75c2ea7a41a0b5e699731f48fba2ce00b29cd272370183b56287cadea3c",
+    "frontend/src/features/event-feed/EventFeed.tsx": "7966aaf91af0894a8aca181b2e7385b0e56788032116dad22e266d6b34eb20ae",
+    "frontend/src/features/event-feed/feed.css": "d310ea2abe043a0a79e570f826b0cafd15a541162431fedb082bdf97879e7880",
+    "frontend/src/features/me/ui/MePages.tsx": "c8a3e51196241db3c72537f07d6eb18f86bba5691505116fca7954be381f789b",
+    "frontend/src/app/character-entry/activity.ts": "bdde34c4bd8bda70baad74b98d8e58200e2f8cf926fe590fa88be039cb98756b"
+  },
+  "repairs": [
+    {
+      "id": "QA06-MEET-CTA",
+      "originalTasks": [
+        "FE21",
+        "FE23",
+        "QA06"
+      ],
+      "status": "IN_PROGRESS",
+      "allocator": "Community SL",
+      "implementationOwner": "Exclusive bounded successor assignment pending; no existing source rights inferred",
+      "before": "fidelity-v1/compare-meet-390.png",
+      "viewport": {
+        "width": 390,
+        "height": 637
+      },
+      "reproduce": "Open actual /meet with three validated synthetic Party rows, full panel, initial scroll0. Current Create Party action is clipped at the lower scroll-body boundary immediately above the fixed ParadeFooter; its unavailable copy is below the initial visible area. Target shows the full primary action. Disabled capability is a separate state, not the clip defect.",
+      "primaryPaths": [
+        "frontend/src/features/party-discovery/ui/party-discovery.css:12,23,44-48",
+        "frontend/src/features/party-discovery/ui/PartyDiscovery.tsx:124-143"
+      ],
+      "readOnlySharedContext": [
+        "frontend/src/app/WorldShell.tsx:120-159 PanelFrame",
+        "frontend/src/app/shell.css:44,96,108",
+        "frontend/src/app/shell-chrome/shell-chrome.css:39-40",
+        "frontend/src/app/shell-chrome/parade-footer.tsx"
+      ],
+      "scopeRule": "Feature CSS fixes may be independent. Any root/shared/presentation capability projection needs an exact separate grant; QA06 grants none. Implementation owner diagnoses actual fix.",
+      "postFixQualification": "Use exact delivered source/commit, same three-row input and viewport390x637 plus360/390/430x844 and reduced420; retain before/after capture, actual action and scroll visibility,44px targets, no overflow, all available routes reachable. Do not fabricate members, physical places or capability authority.",
+      "excluded": [
+        "No Meet/Gifts row-height defect: equal-aspect inspection corrected that first impression",
+        "Optional member portraits absent from current public fixture are not fabricated",
+        "Gifts Reserve disabled in baseline-v1 was QA fixture self-owner binding, not a production bug"
+      ]
+    },
+    {
+      "id": "QA06-FEED-COMPOSE",
+      "originalTasks": [
+        "FE27",
+        "FE34",
+        "QA06"
+      ],
+      "status": "IN_PROGRESS",
+      "implementationOwner": "01a1a202-375e-7401-bfa1-ff8721e90ed6",
+      "before": "fidelity-v1/compare-feed-390.png",
+      "observed": "One short post leaves the real red compose action directly below the row, with a second generic New post arrow row and a large blank lower panel. Reference has a single primary compose action at panel bottom.",
+      "featurePaths": [
+        "frontend/src/features/event-feed/EventFeed.tsx:76-80",
+        "frontend/src/features/event-feed/feed.css:50-51"
+      ],
+      "sharedPaths": [
+        "frontend/src/app/WorldShell.tsx:161-175 PanelScreen route.links",
+        "frontend/src/app/routes.ts:26 context only"
+      ],
+      "scopeRule": "Social recorded an exact PanelScreen conditional-only transfer to202 for /feed and /me with real children; no routes.ts or other root ownership. QA06 does not edit it.",
+      "postFixQualification": "Independently capture actual committed fix with short/long/read-only feeds at all3widths, reference aspect and844/420. Single appropriate compose entry, genuine functional navigation, no lost generic fallback or authorization/privacy behavior.",
+      "excluded": [
+        "Optional empty media and one-page row count are fixture data, not a request to fabricate target photos or posts"
+      ]
+    },
+    {
+      "id": "QA06-ME-NAV",
+      "originalTasks": [
+        "FE34",
+        "QA06"
+      ],
+      "status": "IN_PROGRESS",
+      "implementationOwner": "01a1a202-375e-7401-bfa1-ff8721e90ed6",
+      "before": "fidelity-v1/compare-me-390.png;matrix-v1/me-revenge-390.png",
+      "observed": "Actual profile has existing action icons and Profile options, then generic repeated section links in the standard844px panel. Cold activity is explicitly unavailable because no current feed page has been loaded; that data state is not a layout bug or permission to invent reserved/joined history.",
+      "paths": [
+        "frontend/src/app/WorldShell.tsx:161-175",
+        "frontend/src/app/routes.ts:50-53 context only",
+        "frontend/src/features/me/ui/MePages.tsx:17-36",
+        "frontend/src/app/character-entry/activity.ts"
+      ],
+      "postFixQualification": "Actual source fix must retain compact profile/actions/tabs, genuine optional and unavailable activity, all destinations, draft/privacy/history protections. AR03 character/account hunks remain separate."
+    },
+    {
+      "id": "QA06-WORLD-MAP",
+      "originalTasks": [
+        "AR02",
+        "QA06"
+      ],
+      "status": "IN_PROGRESS",
+      "implementationOwner": "01a1a153-1227-7e72-801f-a2a6b91981e1",
+      "before": "matrix-v1/source-contact-sheet.png;fidelity-v1/source-map-initial-390-h844.png;fidelity-v1/source-map-fitted-390-h844.png",
+      "observed": "Default-loader baseline uses old sparse studio scenery, unlike the target festival layout. Separate spatial-v4/quality-v8 source is closer but stage is clipped left at default self camera. MAP initial zoom crops image horizontally: image x-18..407.47 vs viewport17..373 at390x844. Actual Fit map contains image356x600.75 in356x718 viewport.",
+      "unresolvedSourceDelta": "Corrected diagonal v10 SOURCE and MAP-only planting9ff741f944b9b85f3868e6c18a3f26ecd320e407 have not been adopted in this pinned v8 runtime baseline. Source publication/new goal/native-source checks alone do not resolve fidelity.",
+      "postFixQualification": "Capture actual published v10 consumer/default framing and initial/Reset-fit behavior against unchanged references, all3widths/eras; verify actual MAP planting adoption/pins and stage/diagonal geometry. Preserve unadmitted production guard and selected art."
+    }
+  ]
+}

@@ -1,0 +1,42 @@
+[
+  {
+    "source_base": "93ef0d895dcc4b247b727e2cccba0bb84576b262",
+    "source_path": "frontend/src/world/mural-entry-lifecycle/__tests__/assembly-data.ts",
+    "source_blob": "bae64a1a8141544333a9089edd82f4cab14d9233",
+    "source_sha256": "8a041798cefd3492cb9f3ec8f1e508ed3700718bb8598681c2ccc7e35b3f56f5",
+    "destination": "frontend/e2e/realtime/mural/data.ts",
+    "reuse": "MCR fixture pattern/interface adaptation or read-only helper; no legacy UI reuse"
+  },
+  {
+    "source_base": "93ef0d895dcc4b247b727e2cccba0bb84576b262",
+    "source_path": "frontend/src/world/mural-entry-lifecycle/__tests__/assembly-native.tsx",
+    "source_blob": "dd146e2a472ef85281873bf2d61d1f7104484e6d",
+    "source_sha256": "562353a7d1795fc335ca4a980897dc7a33d73bd0cbcb5b7e04d94a0551779e65",
+    "destination": "frontend/e2e/realtime/mural/preview.tsx",
+    "reuse": "MCR fixture pattern/interface adaptation or read-only helper; no legacy UI reuse"
+  },
+  {
+    "source_base": "93ef0d895dcc4b247b727e2cccba0bb84576b262",
+    "source_path": "frontend/src/features/mural/editor/__tests__/fixture.ts",
+    "source_blob": "3e9373ff11c379365c416012af03f28a17990d4f",
+    "source_sha256": "ba6fa5bd95472e078f4c4a5a1c0eebe4b25f6a56c81c4cac74eaf79eb92a2bf4",
+    "destination": "frontend/e2e/realtime/mural/peer.mjs",
+    "reuse": "MCR fixture pattern/interface adaptation or read-only helper; no legacy UI reuse"
+  },
+  {
+    "source_base": "93ef0d895dcc4b247b727e2cccba0bb84576b262",
+    "source_path": "frontend/e2e/realtime/world/qa05/browser.mjs",
+    "source_blob": "fb68d7ca36145c6903976904d57eabf2acf15177",
+    "source_sha256": "b43f448a5cb7158e8affe4c354d6cc053d10f209619baa03f7295db826725e32",
+    "destination": "read-only native visibility helper",
+    "reuse": "MCR fixture pattern/interface adaptation or read-only helper; no legacy UI reuse"
+  },
+  {
+    "source_base": "93ef0d895dcc4b247b727e2cccba0bb84576b262",
+    "source_path": "frontend/e2e/realtime/world/qa05/check-types.mjs",
+    "source_blob": "37b96e48d26e9cd5e174701397fcfc6369fa840c",
+    "source_sha256": "c2eb63b762bb0576024f86cd7f1f2e909d314fcbc29d45f95c98274760f493e4",
+    "destination": "frontend/e2e/realtime/mural/check-types.mjs",
+    "reuse": "MCR fixture pattern/interface adaptation or read-only helper; no legacy UI reuse"
+  }
+]

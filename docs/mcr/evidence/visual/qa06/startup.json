@@ -1,0 +1,44 @@
+{
+  "task": "QA06",
+  "state": "IN_PROGRESS",
+  "base": "980fc4d85020f297b36fee8195e1ca92079ff33f",
+  "reference": {
+    "originalPath": "docs/mcr/design/reference-target-2026-11-04.png",
+    "copyPath": "reference-target.png",
+    "sha256": "d9a8fae2f96a82253542019ab673589b3938627956eace15c8594c702b5c4617",
+    "originalPreserved": true,
+    "screens": 10
+  },
+  "devices": {
+    "iOSSafari": {
+      "status": "NOT_RUN",
+      "physicalDevice": "iPhone 17 observed by devicectl, state unavailable",
+      "mirroring": "not-running",
+      "userConnectionRequested": true,
+      "noConnectionPolling": true
+    },
+    "androidChrome": {
+      "status": "NOT_RUN",
+      "adbAvailable": false,
+      "physicalDeviceAvailability": "User input pending"
+    }
+  },
+  "coveragePlanned": {
+    "widths": [
+      360,
+      390,
+      430
+    ],
+    "skins": [
+      "REVENGE",
+      "PARADE",
+      "DANGER"
+    ],
+    "physicalDeviceEmulationIsAcceptance": false
+  },
+  "scope": [
+    "frontend/e2e/visual/qa06/**",
+    "docs/mcr/evidence/visual/qa06/**",
+    "docs/mcr/frontend/mobile-visual-qa06.md"
+  ]
+}

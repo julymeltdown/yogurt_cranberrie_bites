@@ -5,8 +5,10 @@ import { ConcertIcon } from '../../../shared/ui/concert-window'
 import type { PlacesController, PlacesState } from '../model/controller'
 import { physicalStatus } from '../model/contract'
 import { getReferenceOverviewMetadata } from '../../../world/reference-scene'
+import { getSpatialV5OverviewMetadata } from '../../../world/reference-scene/spatial-v5/model'
 import { mapViewport, overviewIdentity } from './reference-scene/viewport'
 import { referenceAnnotations, type AnnotationRect } from './reference-scene/annotations'
+import { spatialV5LabelObstacles, spatialV5ZoomTop } from './reference-scene/spatial-v5-label-obstacles'
 import { spatialV4LabelObstacles, spatialV4ZoomBottom } from './reference-scene/spatial-v4-label-obstacles'
 
 function LandmarkIcon({ interaction }: { interaction: string }) {
@@ -36,7 +38,7 @@ function IllustratedViewport({ controller, state, fallback, legend }: MapProps) 
   const zoomControls = useRef<HTMLDivElement>(null), caption = useRef<HTMLDivElement>(null)
   const [obstacles, setObstacles] = useState<AnnotationRect[]>([])
   const returnFocus = useRef<HTMLElement | null>(null), drag = useRef<{ x: number; y: number; left: number; top: number } | null>(null)
-  const [size, setSize] = useState({ width: 360, height: 600 }), [zoom, setZoom] = useState<number | 'fit'>(1)
+  const [size, setSize] = useState({ width: 360, height: 600 }), [zoom, setZoom] = useState<number | 'fit'>(() => getSpatialV5OverviewMetadata(image) ? 'fit' : 1)
   const saved = selections.get(controller), navigation = useNavigationType(), restored = useRef(false)
   const [loaded, setLoaded] = useState(''), [failed, setFailed] = useState(''), [selected, setSelected] = useState<string | null>(saved?.mapHash === map.content_hash ? saved.id : null)
   const [panel, setPanel] = useState<'places' | 'legend' | null>(null), [search, setSearch] = useState('')
@@ -64,7 +66,8 @@ function IllustratedViewport({ controller, state, fallback, legend }: MapProps) 
   const portrait = image.height > image.width
   const view = { left: scroll.left - (portrait ? offsetX : 0), top: scroll.top - (portrait ? offsetY : 0),
     width: size.width, height: size.height }
-  const labelObstacles = reference ? spatialV4LabelObstacles(image, width, height) : []
+  const v5LabelObstacles = reference ? spatialV5LabelObstacles(image, width, height) : []
+  const labelObstacles = v5LabelObstacles.length ? v5LabelObstacles : reference ? spatialV4LabelObstacles(image, width, height) : []
   function paintedLabel(id: string) {
     const place = items.find(p => p.place_id === id)
     if (place?.closure_state !== 'OPEN' || state.unavailablePlaceIds.includes(id)) return undefined
@@ -135,18 +138,22 @@ function IllustratedViewport({ controller, state, fallback, legend }: MapProps) 
           if (!point) return null
           const unavailable = state.unavailablePlaceIds.includes(place.place_id)
           const painted = paintedLabel(place.place_id)
+          const compact = !!v5LabelObstacles.length && !painted
+          const statusBadge = compact ? { position: 'absolute' as const, right: 0, bottom: 0, width: 14, height: 14, gridColumn: 'auto', display: 'grid', placeItems: 'center', background: '#f2e9d5', color: '#921f28', border: '1px solid currentColor', fontSize: 11 } : undefined
           const label = plaques.get(place.place_id)!
           return <ShellLink id={`map-place-${place.place_id}`} key={place.place_id} className="places-map-plaque" to={`/world/places/${place.place_id}`}
             data-map-painted-label={painted ? point.interaction_id : undefined}
+            data-map-compact-marker={compact ? point.interaction_id : undefined}
             style={painted ? { left: painted.left, top: painted.top - Math.max(0, 44 - painted.height) / 2,
               width: painted.width, height: Math.max(44, painted.height), maxWidth: 'none', minHeight: 44,
               transform: 'none', padding: 0, borderColor: 'transparent', background: 'transparent', boxShadow: 'none' }
+              : compact ? { left: label.x, top: label.y, width: 44, height: 44, minHeight: 44, maxWidth: 'none', padding: 0, gridTemplateColumns: '24px', justifyContent: 'center', border: 0, boxShadow: 'none', background: 'linear-gradient(#f2e9d5,#f2e9d5) center/32px 32px no-repeat' }
               : { left: label.x, top: label.y }} onPointerDown={() => select(place.place_id)}
             aria-label={`View ${place.label}${place.closure_state === 'CLOSED' ? ' — closed' : unavailable ? ' — unavailable' : ''}`} title={place.label}
             data-status={place.closure_state === 'CLOSED' ? 'closed' : unavailable ? 'unavailable' : 'open'} onFocus={() => select(place.place_id)}>
             {painted ? <span style={{ position: 'absolute', width: 1, height: 1, overflow: 'hidden', clipPath: 'inset(50%)' }}>{place.label}</span>
-              : <><LandmarkIcon interaction={point.interaction_id} /><span>{place.label}</span></>}
-            {place.closure_state === 'CLOSED' && <small>Closed</small>}{unavailable && <small>Unavailable</small>}
+              : <><LandmarkIcon interaction={point.interaction_id} /><span style={compact ? { position: 'absolute', width: 1, height: 1, overflow: 'hidden', clipPath: 'inset(50%)' } : undefined}>{place.label}</span></>}
+            {place.closure_state === 'CLOSED' && <small style={statusBadge} aria-hidden={compact || undefined}>{compact ? '×' : 'Closed'}</small>}{unavailable && <small style={statusBadge} aria-hidden={compact || undefined}>{compact ? '!' : 'Unavailable'}</small>}
           </ShellLink>
         })}
         {ready && target && <span className="places-map-pin" role="img" aria-label={`Selected virtual location: ${current!.label}`}
@@ -155,16 +162,16 @@ function IllustratedViewport({ controller, state, fallback, legend }: MapProps) 
         </span>}
       </div>
     </div>
-    <div ref={zoomControls} className="places-map-zoom" style={labelObstacles.length ? { bottom: spatialV4ZoomBottom(view, labelObstacles) } : undefined} aria-label="Map view zoom">
+    <div ref={zoomControls} className="places-map-zoom" style={labelObstacles.length ? v5LabelObstacles.length ? { top: spatialV5ZoomTop(view, labelObstacles), bottom: 'auto' } : { bottom: spatialV4ZoomBottom(view, labelObstacles) } : undefined} aria-label="Map view zoom">
       <button type="button" aria-label="Zoom in map view" disabled={effectiveZoom >= 3 || !ready} onClick={() => setZoom(clamp(effectiveZoom + .25, minZoom, 3))}>+</button>
       <button type="button" aria-label="Zoom out map view" disabled={effectiveZoom <= minZoom || !ready} onClick={() => setZoom(clamp(effectiveZoom - .25, minZoom, 3))}>−</button>
     </div>
-    <div ref={caption} className="places-map-caption" role="status">{current ? `${current.label} · ${supported ? 'virtual target selected' : physicalStatus(current)}` : 'Virtual map · select a landmark'}<span>No physical arrival is implied.</span></div>
+    <div ref={caption} className="places-map-caption" style={v5LabelObstacles.length ? { position: 'relative', bottom: 'auto', flexShrink: 0 } : undefined} role="status">{current ? `${current.label} · ${supported ? 'virtual target selected' : physicalStatus(current)}` : 'Virtual map · select a landmark'}<span>No physical arrival is implied.</span></div>
     <div className="places-map-tools">
       <button type="button" onClick={event => { returnFocus.current = event.currentTarget; setPanel('places') }}><ConcertIcon name="world" />Places</button>
       <button type="button" onClick={event => { returnFocus.current = event.currentTarget; setPanel('legend') }}>Legend</button>
       <button type="button" disabled={!ready} onClick={() => { setZoom('fit'); setReset(r => r + 1) }}>Fit map</button>
-      <button type="button" disabled={!ready} onClick={() => { setZoom(1); selections.delete(controller); setSelected(null); setReset(r => r + 1) }}>Reset view</button>
+      <button type="button" disabled={!ready} onClick={() => { setZoom(getSpatialV5OverviewMetadata(image) ? 'fit' : 1); selections.delete(controller); setSelected(null); setReset(r => r + 1) }}>Reset view</button>
     </div>
     <dialog ref={sheet} className="places-map-sheet" aria-labelledby="places-map-sheet-title"
       onKeyDown={event => { if (event.key === 'Escape') { event.preventDefault(); event.stopPropagation(); setPanel(null) } }}

@@ -1,0 +1,74 @@
+{
+  "candidate": "980fc4d85020f297b36fee8195e1ca92079ff33f",
+  "files": {
+    "frontend/e2e/reference-integrated/cases.mjs": {
+      "sha256": "42cade307692c1df905152b7f5d2e8c62ad9841c712b9f82e597c15d4ef71b80",
+      "bytes": 2686
+    },
+    "frontend/e2e/reference-integrated/data.ts": {
+      "sha256": "186ca7d28cca66f2eab4fe87f95fc76e5a4acca432b109abb7216ddfc404a994",
+      "bytes": 2111
+    },
+    "frontend/e2e/reference-integrated/whole/data.ts": {
+      "sha256": "8031884ce211e04272a20d66db4427b67a192a197a766d14a6f848765cc99d33",
+      "bytes": 4237
+    },
+    "frontend/src/app/__tests__/fe07-shell-journey/preview.tsx": {
+      "sha256": "3df8c98e6d81d34b183e9466c335664c89c8cb311270cdae9a30d1c91541594a",
+      "bytes": 8167
+    },
+    "frontend/src/app/social-composition/__tests__/fixtures.ts": {
+      "sha256": "69c1110092ae076ed05ba831d86da7f67fb96816cc060661d146aeb228fb924f",
+      "bytes": 3949
+    },
+    "frontend/src/app/world-entry/__tests__/reference-scene-v4/preview.tsx": {
+      "sha256": "62c3edba69cb50d9813fc725fe57e2547a652aa7708b9256a191508330474ba6",
+      "bytes": 11114
+    },
+    "frontend/src/app/world-entry/__tests__/reference-scene-v4/data.ts": {
+      "sha256": "82f16386b998690c9bc47ab4160b9c73a759321c5c5156f7486990fca151dbb7",
+      "bytes": 3525
+    },
+    "frontend/src/world/reference-scene/__tests__/spatial-v4/fixture.ts": {
+      "sha256": "d081656eda4ff84c1cc1854aa2df6dda10acf3f3866b78612a5bef3f8f3b5ca7",
+      "bytes": 2781
+    },
+    "frontend/src/entities/avatar/character-source-pack.json": {
+      "sha256": "f8d6c83818bced007f71af1f59dbc53cd88115c5dab0112fc302d8469a4fdc6f",
+      "bytes": 21539
+    },
+    "frontend/src/entities/avatar/selected-static/release.ts": {
+      "sha256": "49a642d786650846a5805486b6f9c7ad3968d4a1ee464990975375f31f8fae8e",
+      "bytes": 6366
+    },
+    "contracts/fixtures/assets/selected-static/avatar-manifest.json": {
+      "sha256": "04b0815c5ad66729c578236b010974e44274e6562a9e9dd4599a861e2eed485e",
+      "bytes": 4166
+    },
+    "contracts/fixtures/core/bootstrap-open.json": {
+      "sha256": "d29e699f7b2ca9d6a1dfc34af56590bac5f7c3f103644ab02625b6f1707a17e6",
+      "bytes": 14362
+    },
+    "contracts/fixtures/realtime/movement-heartbeat.json": {
+      "sha256": "fba34f3b7cba90286ae3b1a1ecd6578a79da496e79d88b920b89bd7d783499dd",
+      "bytes": 6083
+    },
+    "contracts/generated/mcr-core.openapi.json": {
+      "sha256": "4ea617a4ccf96c72b2e5db99e64666f676048f5baf215a2a05d540ef3bdde542",
+      "bytes": 285990
+    },
+    "contracts/generated/mcr-domain.openapi.json": {
+      "sha256": "79a066b88119e53f6f16876d7e3fe59a18ee956be6ed6d2af7ee1efa187e0feb",
+      "bytes": 1946605
+    },
+    "frontend/public/world/reference-scene-v2/runtime/spatial-v4/source-binding.json": {
+      "sha256": "a8a6db27a51a13fd49b8624b5227c11e92c0a64b728c653434d8274997ea2c5b",
+      "bytes": 18868
+    },
+    "frontend/public/world/reference-scene-v2/runtime/spatial-v4/canonical-map.json": {
+      "sha256": "c589b9b01c3e9f7162ccf7443782363bc9c132dd807b5fe15557686df584cf6f",
+      "bytes": 24058
+    }
+  },
+  "limits": "Exact source/contract pins; no authority or product admission is created"
+}

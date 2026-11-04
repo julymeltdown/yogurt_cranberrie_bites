@@ -1,0 +1,14 @@
+{
+  "source_revision": "06562ff1962be525ed929ef431a54bb589860373",
+  "presentation": {
+    "path": "world/reference-scene-v2/quality-v10/map-label-presentation.json",
+    "bytes": 13881,
+    "sha256": "sha256:850c96b38253f4953778ac4b30d3b10372d091630b09d8a69bc425a28bcc4fd0"
+  },
+  "runtime_font": {
+    "path": "frontend/public/world/reference-scene-v2/map-labels-v1/map-labels-bold.ttf",
+    "bytes": 145012,
+    "sha256": "sha256:f44e493f61e2d91c2156dd5abc720eeb6274a9c02b11d9097d1ea38d50011e8b"
+  },
+  "authority": "MAP-only source presentation for ef52; no C06 extension, admission or new destination."
+}

@@ -1,0 +1,3 @@
+before: PASS 1007 source/contract/driver pins, all captures, 5 exact Git asset pins
+after: PASS 1007 source/contract/driver pins, all captures, 5 exact Git asset pins
+PASS exact ownership for 41 staged paths; unrelated protected paths unchanged

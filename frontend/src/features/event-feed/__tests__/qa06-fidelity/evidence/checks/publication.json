@@ -1,0 +1,80 @@
+{
+  "status": "PASS",
+  "source": "576f98489ca68576790d4bd90c32409f25abaf23",
+  "published": "ddd279e48e4ea7fefd94ddcf008e1939946e42fb",
+  "verifiedRemoteHead": "ddd279e48e4ea7fefd94ddcf008e1939946e42fb",
+  "payloadPaths": [
+    "docs/mcr/frontend/feed-me-qa06-fidelity.md",
+    "frontend/src/app/WorldShell.tsx",
+    "frontend/src/app/__tests__/qa06-feed-me-fidelity/navigation.test.tsx",
+    "frontend/src/features/event-feed/__tests__/qa06-fidelity/evidence/after/feed-long-360.png",
+    "frontend/src/features/event-feed/__tests__/qa06-fidelity/evidence/after/feed-long-390.png",
+    "frontend/src/features/event-feed/__tests__/qa06-fidelity/evidence/after/feed-long-430.png",
+    "frontend/src/features/event-feed/__tests__/qa06-fidelity/evidence/after/feed-short-360.png",
+    "frontend/src/features/event-feed/__tests__/qa06-fidelity/evidence/after/feed-short-390.png",
+    "frontend/src/features/event-feed/__tests__/qa06-fidelity/evidence/after/feed-short-430.png",
+    "frontend/src/features/event-feed/__tests__/qa06-fidelity/evidence/after/me-cold-360.png",
+    "frontend/src/features/event-feed/__tests__/qa06-fidelity/evidence/after/me-cold-390.png",
+    "frontend/src/features/event-feed/__tests__/qa06-fidelity/evidence/after/me-cold-430.png",
+    "frontend/src/features/event-feed/__tests__/qa06-fidelity/evidence/after/me-loaded-activity-360.png",
+    "frontend/src/features/event-feed/__tests__/qa06-fidelity/evidence/after/me-loaded-activity-390.png",
+    "frontend/src/features/event-feed/__tests__/qa06-fidelity/evidence/after/me-loaded-activity-430.png",
+    "frontend/src/features/event-feed/__tests__/qa06-fidelity/evidence/after/report.json",
+    "frontend/src/features/event-feed/__tests__/qa06-fidelity/evidence/before/feed-short-390.png",
+    "frontend/src/features/event-feed/__tests__/qa06-fidelity/evidence/before/me-cold-390.png",
+    "frontend/src/features/event-feed/__tests__/qa06-fidelity/evidence/before/native.mjs.snapshot",
+    "frontend/src/features/event-feed/__tests__/qa06-fidelity/evidence/before/preview.html.snapshot",
+    "frontend/src/features/event-feed/__tests__/qa06-fidelity/evidence/before/preview.tsx.snapshot",
+    "frontend/src/features/event-feed/__tests__/qa06-fidelity/evidence/before/report.json",
+    "frontend/src/features/event-feed/__tests__/qa06-fidelity/evidence/checks/after.log",
+    "frontend/src/features/event-feed/__tests__/qa06-fidelity/evidence/checks/before.log",
+    "frontend/src/features/event-feed/__tests__/qa06-fidelity/evidence/checks/boundaries.log",
+    "frontend/src/features/event-feed/__tests__/qa06-fidelity/evidence/checks/build.log",
+    "frontend/src/features/event-feed/__tests__/qa06-fidelity/evidence/checks/focused.log",
+    "frontend/src/features/event-feed/__tests__/qa06-fidelity/evidence/checks/lint.log",
+    "frontend/src/features/event-feed/__tests__/qa06-fidelity/evidence/checks/origin.log",
+    "frontend/src/features/event-feed/__tests__/qa06-fidelity/evidence/checks/payload-pins.log",
+    "frontend/src/features/event-feed/__tests__/qa06-fidelity/evidence/checks/plan.log",
+    "frontend/src/features/event-feed/__tests__/qa06-fidelity/evidence/checks/red.log",
+    "frontend/src/features/event-feed/__tests__/qa06-fidelity/evidence/checks/regression.log",
+    "frontend/src/features/event-feed/__tests__/qa06-fidelity/evidence/checks/typecheck.log",
+    "frontend/src/features/event-feed/__tests__/qa06-fidelity/native.mjs",
+    "frontend/src/features/event-feed/__tests__/qa06-fidelity/preview.html",
+    "frontend/src/features/event-feed/__tests__/qa06-fidelity/preview.tsx",
+    "frontend/src/features/event-feed/feed.css",
+    "frontend/src/features/me/__tests__/qa06-fidelity/presentation.test.tsx",
+    "frontend/src/features/me/__tests__/visual-adoption/presentation.test.tsx",
+    "frontend/src/features/me/ui/MePages.tsx",
+    "frontend/src/features/me/ui/me.css",
+    "frontend/src/features/me/ui/reference-profile/ProfileActivity.tsx"
+  ],
+  "payloadPathCount": 43,
+  "payloadExact": true,
+  "publishedAncestorOfRemote": true,
+  "candidatePinnedSourceCount": 1007,
+  "publishedMatchingSourcePins": 1003,
+  "concurrentSourceDrift": [
+    {
+      "path": "frontend/src/app/character-entry/__tests__/motion-adoption/fixture.tsx",
+      "candidateSha256": "12c33a45da0394fec2d89da16f357262d1e60fe63eba2f31069a19fe47a2e0f3",
+      "publishedSha256": "97eeea2b778eaaead074ea26c9cc4427b4ddb152059e98b54a9fb4ce19e26146"
+    },
+    {
+      "path": "frontend/src/features/avatar/motion-adoption/MotionEditor.tsx",
+      "candidateSha256": "b81b222a0bffdce45bc8f8d399dfe1734875931c2fe3f6ced6a0ac9502970315",
+      "publishedSha256": "086e081eb9f63729fca1641f63baf5eb07e5db64eb95f32f16b9823216eca2ae"
+    },
+    {
+      "path": "frontend/src/features/avatar/motion-adoption/motion.css",
+      "candidateSha256": "7252bc282eaa9b248651ae33c8e23c15a51db7949d007910d836a41746a01a7b",
+      "publishedSha256": "e876d73bc32bba8fb674c618dbbdf06ce0ff102bcacf86ed60720fbcd5a5d214"
+    },
+    {
+      "path": "frontend/src/features/party-discovery/ui/party-discovery.css",
+      "candidateSha256": "56adebbc5aa174b62c229e91377ed92065fd7c823078a281be176b64875949fd",
+      "publishedSha256": "6e7c259074016d9f05d90cba8a3355403906a4330a384548302c8abe2b564e54"
+    }
+  ],
+  "selectedAssetsExact": 5,
+  "qualification": "Worker native source is pinned in its report. Concurrent changes are listed explicitly; publisher owns combined integration checks. Not fresh native proof of this published whole tree."
+}

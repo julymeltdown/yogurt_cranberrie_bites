@@ -1,0 +1,253 @@
+{
+  "status": "FAIL",
+  "candidate": "93ef0d895dcc4b247b727e2cccba0bb84576b262",
+  "tree": "d8fddffda3c43d569754d7ea79eebb1759b8264a",
+  "development": true,
+  "error": "locator.click: Timeout 30000ms exceeded.\nCall log:\n\u001b[2m  - waiting for getByRole('button', { name: 'Confirm pixel', exact: true })\u001b[22m\n\u001b[2m    - locator resolved to <button type=\"button\" class=\"concert-kit concert-action concert-action--red mcr-mural__confirm\">Confirm pixel</button>\u001b[22m\n\u001b[2m  - attempting click action\u001b[22m\n\u001b[2m    2 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is visible, enabled and stable\u001b[22m\n\u001b[2m      - scrolling into view if needed\u001b[22m\n\u001b[2m      - done scrolling\u001b[22m\n\u001b[2m      - <button disabled type=\"button\" class=\"world-interact\" aria-label=\"Interact: Virtual fixture landmark\">Interact: Virtual fixture landmark</button> from <div id=\"world\">…</div> subtree intercepts pointer events\u001b[22m\n\u001b[2m    - retrying click action\u001b[22m\n\u001b[2m    - waiting 20ms\u001b[22m\n\u001b[2m    2 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is visible, enabled and stable\u001b[22m\n\u001b[2m      - scrolling into view if needed\u001b[22m\n\u001b[2m      - done scrolling\u001b[22m\n\u001b[2m      - <button disabled type=\"button\" class=\"world-interact\" aria-label=\"Interact: Virtual fixture landmark\">Interact: Virtual fixture landmark</button> from <div id=\"world\">…</div> subtree intercepts pointer events\u001b[22m\n\u001b[2m    - retrying click action\u001b[22m\n\u001b[2m      - waiting 100ms\u001b[22m\n\u001b[2m    28 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m       - element is visible, enabled and stable\u001b[22m\n\u001b[2m       - scrolling into view if needed\u001b[22m\n\u001b[2m       - done scrolling\u001b[22m\n\u001b[2m       - <button disabled type=\"button\" class=\"world-interact\" aria-label=\"Interact: Virtual fixture landmark\">Interact: Virtual fixture landmark</button> from <div id=\"world\">…</div> subtree intercepts pointer events\u001b[22m\n\u001b[2m     - retrying click action\u001b[22m\n\u001b[2m       - waiting 500ms\u001b[22m\n\u001b[2m    - waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m    - element is not stable\u001b[22m\n\u001b[2m  - retrying click action\u001b[22m\n\u001b[2m    - waiting 500ms\u001b[22m\n\u001b[2m    - waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m  - element was detached from the DOM, retrying\u001b[22m\n\n    at /Users/lhs/Desktop/mcr-worktrees/fe-ref-customize/frontend/e2e/realtime/mural/native.mjs:62:140",
+  "cases": [],
+  "errors": [],
+  "peer": {
+    "active": 0,
+    "peak": 1,
+    "heldPeak": 0,
+    "posts": 0,
+    "replayedPosts": 0,
+    "aborted": 0,
+    "pending": 0,
+    "holds": 0,
+    "generation": 1,
+    "revision": 528,
+    "log": [
+      {
+        "client": "b",
+        "kind": "snapshot",
+        "method": "GET",
+        "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/mural/snapshot",
+        "generation": 1,
+        "status": 200,
+        "revision": 10,
+        "aborted": false
+      },
+      {
+        "client": "a",
+        "kind": "snapshot",
+        "method": "GET",
+        "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/mural/snapshot",
+        "generation": 1,
+        "status": 200,
+        "revision": 10,
+        "aborted": false
+      },
+      {
+        "client": "a",
+        "kind": "snapshot",
+        "method": "GET",
+        "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/mural/snapshot",
+        "generation": 1,
+        "status": 200,
+        "revision": 14,
+        "aborted": false
+      },
+      {
+        "client": "b",
+        "kind": "delta",
+        "method": "GET",
+        "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/mural/operations",
+        "generation": 1,
+        "status": 200,
+        "revision": 14,
+        "aborted": false
+      },
+      {
+        "client": "a",
+        "kind": "delta",
+        "method": "GET",
+        "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/mural/operations",
+        "generation": 1,
+        "status": 200,
+        "revision": 14,
+        "aborted": false
+      },
+      {
+        "client": "a",
+        "kind": "snapshot",
+        "method": "GET",
+        "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/mural/snapshot",
+        "generation": 1,
+        "status": 200,
+        "revision": 528,
+        "aborted": false
+      },
+      {
+        "client": "b",
+        "kind": "delta",
+        "method": "GET",
+        "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/mural/operations",
+        "generation": 1,
+        "status": 200,
+        "revision": 528,
+        "aborted": false
+      },
+      {
+        "client": "b",
+        "kind": "snapshot",
+        "method": "GET",
+        "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/mural/snapshot",
+        "generation": 1,
+        "status": 200,
+        "revision": 528,
+        "aborted": false
+      },
+      {
+        "client": "a",
+        "kind": "delta",
+        "method": "GET",
+        "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/mural/operations",
+        "generation": 1,
+        "status": 200,
+        "revision": 528,
+        "aborted": false
+      },
+      {
+        "client": "b",
+        "kind": "delta",
+        "method": "GET",
+        "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/mural/operations",
+        "generation": 1,
+        "status": 200,
+        "revision": 528,
+        "aborted": false
+      },
+      {
+        "client": "a",
+        "kind": "delta",
+        "method": "GET",
+        "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/mural/operations",
+        "generation": 1,
+        "status": 200,
+        "revision": 528,
+        "aborted": false
+      },
+      {
+        "client": "b",
+        "kind": "delta",
+        "method": "GET",
+        "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/mural/operations",
+        "generation": 1,
+        "status": 200,
+        "revision": 528,
+        "aborted": false
+      },
+      {
+        "client": "a",
+        "kind": "delta",
+        "method": "GET",
+        "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/mural/operations",
+        "generation": 1,
+        "status": 200,
+        "revision": 528,
+        "aborted": false
+      },
+      {
+        "client": "b",
+        "kind": "delta",
+        "method": "GET",
+        "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/mural/operations",
+        "generation": 1,
+        "status": 200,
+        "revision": 528,
+        "aborted": false
+      },
+      {
+        "client": "a",
+        "kind": "delta",
+        "method": "GET",
+        "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/mural/operations",
+        "generation": 1,
+        "status": 200,
+        "revision": 528,
+        "aborted": false
+      },
+      {
+        "client": "b",
+        "kind": "delta",
+        "method": "GET",
+        "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/mural/operations",
+        "generation": 1,
+        "status": 200,
+        "revision": 528,
+        "aborted": false
+      },
+      {
+        "client": "a",
+        "kind": "delta",
+        "method": "GET",
+        "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/mural/operations",
+        "generation": 1,
+        "status": 200,
+        "revision": 528,
+        "aborted": false
+      },
+      {
+        "client": "b",
+        "kind": "delta",
+        "method": "GET",
+        "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/mural/operations",
+        "generation": 1,
+        "status": 200,
+        "revision": 528,
+        "aborted": false
+      },
+      {
+        "client": "a",
+        "kind": "delta",
+        "method": "GET",
+        "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/mural/operations",
+        "generation": 1,
+        "status": 200,
+        "revision": 528,
+        "aborted": false
+      },
+      {
+        "client": "b",
+        "kind": "delta",
+        "method": "GET",
+        "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/mural/operations",
+        "generation": 1,
+        "status": 200,
+        "revision": 528,
+        "aborted": false
+      },
+      {
+        "client": "a",
+        "kind": "delta",
+        "method": "GET",
+        "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/mural/operations",
+        "generation": 1,
+        "status": 200,
+        "revision": 528,
+        "aborted": false
+      },
+      {
+        "client": "b",
+        "kind": "delta",
+        "method": "GET",
+        "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/mural/operations",
+        "generation": 1,
+        "status": 200,
+        "revision": 528,
+        "aborted": false
+      },
+      {
+        "client": "a",
+        "kind": "delta",
+        "method": "GET",
+        "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/mural/operations",
+        "generation": 1,
+        "status": 200,
+        "revision": 528,
+        "aborted": false
+      }
+    ]
+  }
+}

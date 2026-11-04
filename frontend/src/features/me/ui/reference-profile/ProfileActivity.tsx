@@ -19,10 +19,10 @@ export function qualifiedProfilePosts(input: ProfileActivityInput | undefined, s
     return page.items.filter(p => p.author.user_id === subject).slice(0, 2)
   } catch { return null }
 }
-export function ProfileActivity({ input, subject, privacy }: { input?: ProfileActivityInput | undefined; subject: string; privacy?: ActivityPrivacy | undefined }) {
+export function ProfileActivity({ input, subject, privacy, browseFeed = false }: { input?: ProfileActivityInput | undefined; subject: string; privacy?: ActivityPrivacy | undefined; browseFeed?: boolean }) {
   const posts = qualifiedProfilePosts(input, subject, privacy)
   return <section className="reference-activity" aria-label="Recent profile activity">
-    {posts === null ? <p className="reference-activity__notice" role="status">Recent activity is unavailable in this connection.</p>
+    {posts === null ? <><p className="reference-activity__notice" role="status">Recent activity is unavailable in this connection.</p>{browseFeed && <ShellLink to="/feed" className="me-activity-load">Open feed</ShellLink>}</>
       : <><p className="reference-activity__scope">Recent posts from the loaded event feed page. This is a partial view of activity.</p>
         {posts.length ? <ul className="reference-activity__list">{posts.map(post => <li key={post.post_id}>
           <span className="reference-activity__visual" aria-hidden="true"><ConcertIcon name="feed" /></span>

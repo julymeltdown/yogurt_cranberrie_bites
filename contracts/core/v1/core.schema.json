@@ -60,7 +60,14 @@
           "minimum": 1
         },
         "config": {
-          "$ref": "https://contracts.mcr.invalid/assets/v1/avatar-config.schema.json#/$defs/AvatarConfig"
+          "oneOf": [
+            {
+              "$ref": "https://contracts.mcr.invalid/assets/v1/avatar-config.schema.json#/$defs/AvatarConfig"
+            },
+            {
+              "$ref": "https://contracts.mcr.invalid/assets/v2/reviewed/avatar-config.schema.json#/$defs/ReviewedMotionAvatarConfig"
+            }
+          ]
         }
       },
       "required": [
@@ -355,7 +362,14 @@
           "$ref": "https://contracts.mcr.invalid/assets/v1/map-manifest.schema.json#/$defs/MapManifest"
         },
         "avatar_manifest": {
-          "$ref": "https://contracts.mcr.invalid/assets/v1/avatar-manifest.schema.json#/$defs/AvatarManifest"
+          "oneOf": [
+            {
+              "$ref": "https://contracts.mcr.invalid/assets/v1/avatar-manifest.schema.json#/$defs/AvatarManifest"
+            },
+            {
+              "$ref": "https://contracts.mcr.invalid/assets/v2/reviewed/avatar-manifest.schema.json#/$defs/ReviewedMotionAvatarManifest"
+            }
+          ]
         },
         "server_time": {
           "$ref": "#/$defs/UtcTimestamp"
@@ -424,7 +438,14 @@
           "minimum": 1
         },
         "config": {
-          "$ref": "https://contracts.mcr.invalid/assets/v1/avatar-config.schema.json#/$defs/AvatarConfig"
+          "oneOf": [
+            {
+              "$ref": "https://contracts.mcr.invalid/assets/v1/avatar-config.schema.json#/$defs/AvatarConfig"
+            },
+            {
+              "$ref": "https://contracts.mcr.invalid/assets/v2/reviewed/avatar-config.schema.json#/$defs/ReviewedMotionAvatarConfig"
+            }
+          ]
         }
       },
       "required": [

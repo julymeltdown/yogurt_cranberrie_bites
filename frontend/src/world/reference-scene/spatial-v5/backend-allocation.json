@@ -1,0 +1,9 @@
+{
+  "map_id": "mcr_reference_scene_r3",
+  "map_revision": 6,
+  "geometry_hash": "sha256:ef52c8b05af6a882f2e82285c9879c9a4cb78ab513336e4bb3cd483c9b123395",
+  "commit": "390bb9a57c2ede32b814e8c36f8d1c85a10a99a2",
+  "evidence_path": "backend/releases/reference-scene-v2/quality-v10/revision-reservation.json",
+  "evidence_sha256": "sha256:771fabbcc0243cff645a2f7588fcaa4d68f056663b2b3ede5d86e2024d213317",
+  "authority": "SOURCE_IDENTITY_ONLY; no database/event-current selection, release or admission"
+}

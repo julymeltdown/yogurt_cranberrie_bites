@@ -1,0 +1,18 @@
+node:internal/modules/run_main:107
+    triggerUncaughtException(
+    ^
+
+AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+
+208 !== 0
+
+    at file:///Users/lhs/Desktop/mcr-worktrees/fe-reference-root/frontend/src/world/reference-scene/__tests__/spatial-v5/native.mjs:38:146 {
+  generatedMessage: true,
+  code: 'ERR_ASSERTION',
+  actual: 208,
+  expected: 0,
+  operator: 'strictEqual',
+  diff: 'simple'
+}
+
+Node.js v24.22.2

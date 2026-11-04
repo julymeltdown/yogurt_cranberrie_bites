@@ -1,0 +1,75 @@
+
+ RUN  v4.1.9 /Users/lhs/Desktop/mcr-worktrees/fe-ref-customize/frontend
+
+ ❯ src/features/auth/model/__tests__/reviewed-motion-v2/bootstrap.test.ts (45 tests | 16 failed) 120ms
+   × validates and freezes the reviewed2 structural bundle ../../../../../../../contracts/fixtures/assets/motion-v2/reviewed/valid/layered-body-0.json without granting release authority 8ms
+   × validates and freezes the reviewed2 structural bundle ../../../../../../../contracts/fixtures/assets/motion-v2/reviewed/valid/layered-body-1.json without granting release authority 5ms
+   × validates and freezes the reviewed2 structural bundle ../../../../../../../contracts/fixtures/assets/motion-v2/reviewed/valid/layered-body-2.json without granting release authority 5ms
+   × validates and freezes the reviewed2 structural bundle ../../../../../../../contracts/fixtures/assets/motion-v2/reviewed/valid/layered-body-3.json without granting release authority 5ms
+   × validates and freezes the reviewed2 structural bundle ../../../../../../../contracts/fixtures/assets/motion-v2/reviewed/valid/layered-body-4.json without granting release authority 5ms
+   × validates and freezes the reviewed2 structural bundle ../../../../../../../contracts/fixtures/assets/motion-v2/reviewed/valid/layered-body-5.json without granting release authority 5ms
+   × validates and freezes the reviewed2 structural bundle ../../../../../../../contracts/fixtures/assets/motion-v2/reviewed/valid/layered-body-6.json without granting release authority 5ms
+   × validates and freezes the reviewed2 structural bundle ../../../../../../../contracts/fixtures/assets/motion-v2/reviewed/valid/layered-body-7.json without granting release authority 5ms
+   × validates and freezes the reviewed2 structural bundle ../../../../../../../contracts/fixtures/assets/motion-v2/reviewed/valid/layered-max.json without granting release authority 4ms
+   × validates and freezes the reviewed2 structural bundle ../../../../../../../contracts/fixtures/assets/motion-v2/reviewed/valid/preset-01.json without granting release authority 5ms
+   × validates and freezes the reviewed2 structural bundle ../../../../../../../contracts/fixtures/assets/motion-v2/reviewed/valid/preset-02.json without granting release authority 5ms
+   × validates and freezes the reviewed2 structural bundle ../../../../../../../contracts/fixtures/assets/motion-v2/reviewed/valid/preset-03.json without granting release authority 4ms
+   × validates and freezes the reviewed2 structural bundle ../../../../../../../contracts/fixtures/assets/motion-v2/reviewed/valid/preset-04.json without granting release authority 4ms
+   × validates and freezes the reviewed2 structural bundle ../../../../../../../contracts/fixtures/assets/motion-v2/reviewed/valid/preset-05.json without granting release authority 4ms
+   × validates and freezes the reviewed2 structural bundle ../../../../../../../contracts/fixtures/assets/motion-v2/reviewed/valid/preset-06.json without granting release authority 4ms
+   × owns caller bytes before asynchronous bundle verification 4ms
+
+⎯⎯⎯⎯⎯⎯ Failed Tests 16 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  src/features/auth/model/__tests__/reviewed-motion-v2/bootstrap.test.ts > validates and freezes the reviewed2 structural bundle ../../../../../../../contracts/fixtures/assets/motion-v2/reviewed/valid/layered-body-0.json without granting release authority
+ FAIL  src/features/auth/model/__tests__/reviewed-motion-v2/bootstrap.test.ts > validates and freezes the reviewed2 structural bundle ../../../../../../../contracts/fixtures/assets/motion-v2/reviewed/valid/layered-body-1.json without granting release authority
+ FAIL  src/features/auth/model/__tests__/reviewed-motion-v2/bootstrap.test.ts > validates and freezes the reviewed2 structural bundle ../../../../../../../contracts/fixtures/assets/motion-v2/reviewed/valid/layered-body-2.json without granting release authority
+ FAIL  src/features/auth/model/__tests__/reviewed-motion-v2/bootstrap.test.ts > validates and freezes the reviewed2 structural bundle ../../../../../../../contracts/fixtures/assets/motion-v2/reviewed/valid/layered-body-3.json without granting release authority
+ FAIL  src/features/auth/model/__tests__/reviewed-motion-v2/bootstrap.test.ts > validates and freezes the reviewed2 structural bundle ../../../../../../../contracts/fixtures/assets/motion-v2/reviewed/valid/layered-body-4.json without granting release authority
+ FAIL  src/features/auth/model/__tests__/reviewed-motion-v2/bootstrap.test.ts > validates and freezes the reviewed2 structural bundle ../../../../../../../contracts/fixtures/assets/motion-v2/reviewed/valid/layered-body-5.json without granting release authority
+ FAIL  src/features/auth/model/__tests__/reviewed-motion-v2/bootstrap.test.ts > validates and freezes the reviewed2 structural bundle ../../../../../../../contracts/fixtures/assets/motion-v2/reviewed/valid/layered-body-6.json without granting release authority
+ FAIL  src/features/auth/model/__tests__/reviewed-motion-v2/bootstrap.test.ts > validates and freezes the reviewed2 structural bundle ../../../../../../../contracts/fixtures/assets/motion-v2/reviewed/valid/layered-body-7.json without granting release authority
+ FAIL  src/features/auth/model/__tests__/reviewed-motion-v2/bootstrap.test.ts > validates and freezes the reviewed2 structural bundle ../../../../../../../contracts/fixtures/assets/motion-v2/reviewed/valid/layered-max.json without granting release authority
+ FAIL  src/features/auth/model/__tests__/reviewed-motion-v2/bootstrap.test.ts > validates and freezes the reviewed2 structural bundle ../../../../../../../contracts/fixtures/assets/motion-v2/reviewed/valid/preset-01.json without granting release authority
+ FAIL  src/features/auth/model/__tests__/reviewed-motion-v2/bootstrap.test.ts > validates and freezes the reviewed2 structural bundle ../../../../../../../contracts/fixtures/assets/motion-v2/reviewed/valid/preset-02.json without granting release authority
+ FAIL  src/features/auth/model/__tests__/reviewed-motion-v2/bootstrap.test.ts > validates and freezes the reviewed2 structural bundle ../../../../../../../contracts/fixtures/assets/motion-v2/reviewed/valid/preset-03.json without granting release authority
+ FAIL  src/features/auth/model/__tests__/reviewed-motion-v2/bootstrap.test.ts > validates and freezes the reviewed2 structural bundle ../../../../../../../contracts/fixtures/assets/motion-v2/reviewed/valid/preset-04.json without granting release authority
+ FAIL  src/features/auth/model/__tests__/reviewed-motion-v2/bootstrap.test.ts > validates and freezes the reviewed2 structural bundle ../../../../../../../contracts/fixtures/assets/motion-v2/reviewed/valid/preset-05.json without granting release authority
+ FAIL  src/features/auth/model/__tests__/reviewed-motion-v2/bootstrap.test.ts > validates and freezes the reviewed2 structural bundle ../../../../../../../contracts/fixtures/assets/motion-v2/reviewed/valid/preset-06.json without granting release authority
+AvatarError: Avatar invalid
+ ❯ ensure src/entities/avatar/runtime/contract.ts:22:75
+     20|   constructor(readonly reason: 'invalid' | 'version' | 'unavailable' |…
+     21| }
+     22| export function ensure(value: unknown): asserts value { if (!value) th…
+       |                                                                           ^
+     23| export function validateConfig(value: unknown, manifest: AvatarManifes…
+     24|   ensure(schemaValid(value, 'config'))
+ ❯ validateManifest src/entities/avatar/whole-admission/index.ts:61:5
+ ❯ validateBundle src/features/auth/model/bootstrap.ts:39:27
+ ❯ decodeBootstrap src/features/auth/model/bootstrap.ts:114:3
+ ❯ src/features/auth/model/__tests__/reviewed-motion-v2/bootstrap.test.ts:41:19
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/16]⎯
+
+ FAIL  src/features/auth/model/__tests__/reviewed-motion-v2/bootstrap.test.ts > owns caller bytes before asynchronous bundle verification
+AvatarError: Avatar invalid
+ ❯ ensure src/entities/avatar/runtime/contract.ts:22:75
+     20|   constructor(readonly reason: 'invalid' | 'version' | 'unavailable' |…
+     21| }
+     22| export function ensure(value: unknown): asserts value { if (!value) th…
+       |                                                                           ^
+     23| export function validateConfig(value: unknown, manifest: AvatarManifes…
+     24|   ensure(schemaValid(value, 'config'))
+ ❯ validateManifest src/entities/avatar/whole-admission/index.ts:61:5
+ ❯ validateBundle src/features/auth/model/bootstrap.ts:39:27
+ ❯ decodeBootstrap src/features/auth/model/bootstrap.ts:114:3
+ ❯ src/features/auth/model/__tests__/reviewed-motion-v2/bootstrap.test.ts:83:11
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/16]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  16 failed | 29 passed (45)
+   Start at  12:33:40
+   Duration  334ms (transform 94ms, setup 0ms, import 142ms, tests 120ms, environment 0ms)
+
