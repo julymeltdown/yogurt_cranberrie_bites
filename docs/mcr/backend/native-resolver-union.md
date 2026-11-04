@@ -1,7 +1,7 @@
 # CU01 native resolver union
 
-Status: IN_PROGRESS. Source implementation is present; compilation and native
-PostgreSQL qualification are NOT_RUN pending a fresh named resource allocation.
+Status: CONTRACT_READY. The closed resolver component compiled and passed owned
+PostgreSQL qualification at the exact source revision recorded below.
 This is a bounded BE15/BE44 contribution, not acceptance of either parent task.
 
 ## Scope and provenance
@@ -85,14 +85,15 @@ or native PG resource may be touched without a fresh named OFFER/ACCEPT.
 - `git diff --check`: exit 0 before source handoff.
 - Rust 1.88.0 rustfmt on only the new Rust module/test/support: exit 0.
 - Python AST parse of the new controller: exit 0.
-- `cargo +1.88.0 test -p concert-service --test native_resolver_union --no-run --locked --offline --message-format=json`: NOT_RUN.
-- Frozen artifact route/constructor tests and owned native PG16 case: NOT_RUN.
+- `cargo +1.88.0 test -p concert-service --test native_resolver_union --no-run --locked --offline --message-format=json`: exit 0 at the qualified source below.
+- Frozen artifact route/constructor tests: 3 passed, exit 0; owned native PG16
+  case: 1 passed, exit 0 at the qualified source below.
 - Combined Root activation, full parent acceptance, browser/multiuser flows and
   final remote publication: NOT_RUN by CU01.
 
-Qualification receipts and committed handoff ancestry will be appended after
-fresh execution. Root's final publication and owned postimages must be verified
-before this chat's persistent goal completes.
+The qualification receipt is committed alongside the support fixture. Root's
+final publication and owned postimages must be verified before this chat's
+persistent goal completes.
 
 ## Preserved first compile failure
 
@@ -117,3 +118,53 @@ that `client_env(postgres)` caused this refusal was incorrect; that helper call
 is valid. The follow-up uses `mcr_concert_cu`, without broadening the retained
 cluster policy. Whole-owned cluster cleanup passed and its root is absent.
 Neither route tests nor native qualification receive credit from this run.
+
+## Exact successful qualification and handoff
+
+Source `d20a1a2d239f14f9d2c3915a91db39a439c7aeca` passed under the fresh named
+`CU01-MEDIA4-202611040645Z` allocation. Cargo exit 0 in 33.414 seconds produced
+one requested executable (SHA256
+`bca4ee184711660d43de22b4fdf33e723598fe709cd83d187c27030dd08a4b44`).
+Rust 1.88.0, locked/offline, jobs 2, debug 0, incremental 0 and explicit
+`--config profile.dev.package.contracts-build.opt-level=2` were retained.
+The exact Cargo argument list, environment, artifact metadata and receipt hashes
+are in `tests/native_resolver_union_support/qualification.json`.
+
+The copied binary's three owner manifest paths were inspected and their live
+SQL migrations matched the qualified source. All 2,249 complete compile/runtime
+input hashes and 1,791 controller input hashes were independently reread, along
+with the executable hash. Target release proved zero handles and no Cargo/rustc
+processes before any copied tests/PostgreSQL; the target was never read afterward.
+The successful controller command used the new support `native.py`, the exact
+compiled checkpoint, PG16 tools, a new report, `--hard-whole-bytes 1288490188`
+and `--fixed-target-growth 177496064` (including prior retained growth/logs).
+
+The frozen artifact's default invocation (`--test-threads=1 --nocapture`) passed
+all three route/constructor tests with the native case explicitly ignored. The
+separate `--ignored --exact
+native::actual_producer_witnesses_dispatch_without_unknown_or_error_fallback
+--test-threads=1 --nocapture` invocation passed against owned PostgreSQL 16.14
+and actual canonical owner mTLS services in 1.334 controller-measured seconds.
+The migration ledgers matched all 18 Auth, 18 Friend and 37 Concert migrations.
+Four producer-specific witnessed commits resolved COMMITTED; foreign instance,
+system, database and effect bindings were refused. Actual open/aborted XIDs
+resolved IN_PROGRESS/ABORTED. Unsupported unwitnessed COMMIT stayed UNKNOWN.
+A selected Participant UNKNOWN did not fall through to the abort resolver; a
+selected Social storage error remained UNAVAILABLE. Four expected unresolved
+owner fences remained until whole-owned teardown; cleanup passed and the root
+is absent. No settlement claim is inferred from that cleanup.
+
+Maximum sampled whole additional allocation was 312,614,912 bytes, including
+prior retained attempts, new target growth, frozen copies, receipts, the owned
+three-database cluster, mTLS and temporary files. The hard limit was
+1,288,490,188 bytes, with a 16 GiB start requirement and continuous 8 GiB stop
+floor. Setup and tests were observed; no unsampled peak is inferred. All
+resources are released. Original failed receipts/logs are retained with hashes.
+
+Delivery ancestry is the exact base -> `4a7812f0` implementation -> `3520652d`
+parsed request fixture -> `45a2c8ca` capture import fix -> `d20a1a2d` namespace
+and setup observer fix -> this evidence/documentation successor. Production union
+code is unchanged after `4a7812f0`. Root's separately granted build-script
+prerequisite `591d908a85a01fe0a494e04c0109bb0bec64a3e1` arrived during the frozen
+workflow and was not silently included or qualified by these results. Root owns
+its existing integration and subsequent combined qualification.
