@@ -1,0 +1,76 @@
+{
+  "task": "ART-SCREEN-COM01",
+  "base": "7c25078f118da53dd9a524d0a58e707cca190f0f",
+  "stage": "BACKGROUND_SOURCE_IMPLEMENTED_RUNTIME_NOT_RUN",
+  "selectorPropertyBoundary": "PASS",
+  "closedSvgSourceAudit": "PASS",
+  "assetHashDimensionPins": "PASS",
+  "allExistingTrackedSourceUnchanged": true,
+  "assetSources": [
+    {
+      "selector": ":root .feed-browse .feed-post",
+      "url": "/backgrounds/cute-community-v1/feed-backdrop.svg",
+      "sourceCommit": "2a5c67e5d269db818431b28dcef1217b9782b71f",
+      "sourcePath": "frontend/public/backgrounds/cute-community-v1/feed-backdrop.svg",
+      "sha256": "04665cf94e6adda3ca3137070bd35789930e7df927309e1b50a57d41722c1cb8",
+      "bytes": 964,
+      "viewBox": "0 0 390 640",
+      "fallback": "#f5d9df"
+    },
+    {
+      "selector": ":root .feed-browse .feed-footer",
+      "url": "/backgrounds/cute-community-v1/feed-backdrop.svg",
+      "sourceCommit": "2a5c67e5d269db818431b28dcef1217b9782b71f",
+      "sourcePath": "frontend/public/backgrounds/cute-community-v1/feed-backdrop.svg",
+      "sha256": "04665cf94e6adda3ca3137070bd35789930e7df927309e1b50a57d41722c1cb8",
+      "bytes": 964,
+      "viewBox": "0 0 390 640",
+      "fallback": "#f5d9df"
+    },
+    {
+      "selector": ":root .party-browse",
+      "url": "/backgrounds/cute-community-v1/meet-backdrop.svg",
+      "sourceCommit": "2a5c67e5d269db818431b28dcef1217b9782b71f",
+      "sourcePath": "frontend/public/backgrounds/cute-community-v1/meet-backdrop.svg",
+      "sha256": "9aec4b75eddf1be6eb3c2006f44aa8cfee18755d238589df5dbe9648ec7a8367",
+      "bytes": 962,
+      "viewBox": "0 0 390 640",
+      "fallback": "#f5dccd"
+    },
+    {
+      "selector": ":root .gifts-reference .gift-reference-row",
+      "url": "/backgrounds/cute-community-v1/gifts-backdrop.svg",
+      "sourceCommit": "2a5c67e5d269db818431b28dcef1217b9782b71f",
+      "sourcePath": "frontend/public/backgrounds/cute-community-v1/gifts-backdrop.svg",
+      "sha256": "3ac5abfa9432e0feeb1f6b8db781ea1c4609f4fadb678b51636c467ceb27e86c",
+      "bytes": 984,
+      "viewBox": "0 0 390 640",
+      "fallback": "#e9dfee"
+    },
+    {
+      "selector": ":root .shell-panel[data-mcr-panel='wall'] > .shell-panel-body",
+      "url": "/backgrounds/cute-wall-me-v1/wall-stationery.svg",
+      "sourceCommit": "8ff3a58f556bf2811ad1415cd31c5ba1953ccd58",
+      "sourcePath": "frontend/public/backgrounds/cute-wall-me-v1/wall-stationery.svg",
+      "sha256": "1929fda18afe73000f79a44a7cb37c5504bee42d450bff343a562baa85e2e227",
+      "bytes": 2639,
+      "viewBox": "0 0 390 180",
+      "fallback": "#fff0de"
+    }
+  ],
+  "rootWiring": "PENDING",
+  "browser": "NOT_RUN",
+  "nativeDevice": "NOT_RUN",
+  "publication": "NOT_RUN",
+  "stylesheetSha256": "d4a5fab78e9ccc423245cdd8f1ac4c2c696c388892b6f87c2356577a474c17f6",
+  "commands": [
+    {
+      "command": "python3 scripts/mcr/check-plan.py",
+      "exitCode": 0
+    },
+    {
+      "command": "Python stdlib exact selector/property/URL mapping and Git-pinned SVG hash/dimension/closed-resource audit",
+      "exitCode": 0
+    }
+  ]
+}
