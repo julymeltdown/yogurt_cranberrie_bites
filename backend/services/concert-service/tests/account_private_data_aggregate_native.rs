@@ -164,11 +164,16 @@ async fn aggregate_native() -> Result<()> {
         .filter(|x| x.1 == "COMPLETE")
         .map(|x| x.0.as_str())
         .collect::<Vec<_>>();
-    anyhow::ensure!(initially_completed == vec!["CORE_PREFERENCES_AND_AVATAR"]);
-    anyhow::ensure!(rows.iter().filter(|x| x.1 == "INCOMPLETE").count() == 6);
-    anyhow::ensure!(rows
-        .iter()
-        .any(|x| x.0 == "INTRO_TEXT" && x.1 == "INCOMPLETE"));
+    let expected_completed = if restart {
+        vec!["CORE_PREFERENCES_AND_AVATAR", "INTRO_TEXT"]
+    } else {
+        vec!["CORE_PREFERENCES_AND_AVATAR"]
+    };
+    anyhow::ensure!(initially_completed == expected_completed);
+    anyhow::ensure!(
+        rows.iter().filter(|x| x.1 == "INCOMPLETE").count()
+            == PrivateDataCategory::ALL.len() - expected_completed.len()
+    );
     let completed: Option<chrono::DateTime<Utc>> = sqlx::query_scalar(
         "select completed_at from concert_private_data_owner_progress where user_id=$1",
     )
