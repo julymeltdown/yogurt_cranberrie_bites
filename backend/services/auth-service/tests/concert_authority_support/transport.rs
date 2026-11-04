@@ -224,7 +224,7 @@ async fn start_main(
     gateway_key: &[u8; 32],
     producer_url: &str,
 ) -> anyhow::Result<(MainProcess, String)> {
-    use base64ct::{Base64UrlUnpadded, Encoding};
+    use base64ct::{Base64, Encoding};
     const OWNER: &str = "auth";
     let root = std::path::PathBuf::from(std::env::var("MCR_AUTHORITY_ROOT")?);
     let listener = std::net::TcpListener::bind("127.0.0.1:0")?;
@@ -269,11 +269,11 @@ async fn start_main(
         .env("PROFILE_SERVICE_CREDENTIAL", "profile-fixture")
         .env(
             "ACTOR_DELEGATION_VERIFYING_KEYS",
-            Base64UrlUnpadded::encode_string(gateway_key),
+            Base64::encode_string(gateway_key),
         )
         .env(
             "CONCERT_RELATIONSHIP_VERIFYING_KEYS",
-            Base64UrlUnpadded::encode_string(read_key),
+            Base64::encode_string(read_key),
         )
         .env("CONCERT_OWNER_AUTHORITY_ENABLED", "true")
         .env("AUTHORITY_CONCERT_SETTLEMENT_ENDPOINT", producer_url)
