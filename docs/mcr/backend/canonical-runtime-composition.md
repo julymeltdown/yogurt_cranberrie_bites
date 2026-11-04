@@ -58,3 +58,27 @@ After the named MEDIA target was unconditionally released with zero handles and 
 This is actual focused constructor/negative-caller evidence under Root's revision, not a claim that `73082c9b` was compiled or that production recovery is activated. The same cohort's first actual cancellation native case failed before producer work on a reserved owner-policy validation mismatch; its exact owned fixture cleanup passed. Read-only source inspection found the actual Auth/Friend owner policies already include Notification in the same order as the platform policy, and the fixture delegates the production guarded server rather than declaring its own caller list. Frozen Cargo JSON marks the test-profile platform library fresh while rebuilding both actual owner libraries; the production-main build uses a different platform artifact. Stale linked dependency metadata is a concrete repair candidate, not yet a proven cause at this checkpoint. No production authentication rule, owner caller permission, or fixture allowlist is weakened.
 
 A repaired coherent cohort and its actual native receipts remain required. Record any fresh constructor rerun as a new exact artifact/receipt rather than upgrading this first cohort's failed native result. The full canonical objective still requires the typed cross-producer composition, native resolver union, main worker supervision and scoped validated master delivery described above.
+
+
+## Fresh constructor rerun after platform repair
+
+The repaired seven-artifact cohort qualifies the three constructor tests at unchanged Root source `d0f063d18a0549935f80a536077c30962d89f9e9`. Earlier NOT_RUN authoring statements and first-cohort failure discussion above remain historical checkpoints. The core and test entrypoint remain byte-identical to the original `73082c9b06f1aef7481d9069eab563a8ece77b09` handoff, with the source hashes recorded above.
+
+Root used the named `ROOT-SEVEN-CACHE-REPAIR-D0F-20261104` allocation and cleaned only the `platform` package. Source revision and bytes were unchanged. The repaired first test compile records platform and the actual Auth/Friend libraries as `fresh: false`. Its observer raced deletion of an ephemeral compiler file; that interrupted attempt receives no validation credit. Root stopped only its owned process group 7571, preserved the failure, repaired the observer and retried within the same allocation. The successful retry reused artifacts rebuilt during that same repair attempt, exited 0 in 22.5 seconds and did not reuse the original stale platform artifact. Debug information and incremental compilation were disabled. No owner policy or fixture permission changed.
+
+All seven artifacts compiled successfully and were copied outside target. Target release at `2026-11-04T05:34:09.719291+00:00` recorded zero open handles and no compiler processes before copied tests or PostgreSQL startup. No resource abort occurred. Independent implementation-owner readback compared all 2,151 frozen source hashes to the exact Git tree, checked the 1,515 core checkpoint hashes as its subset, and rehashed all seven executables. This required no target access or separate allocation.
+
+The original combined cohort's pre-producer owner-policy failure is preserved. Its test-profile platform artifact was marked fresh while rebuilding the owners; main used a different platform artifact. Package-only repair and the later nine-case native PASS resolve that exact mismatch without weakening production policies. Source pins alone do not prove every cached dependency's compiled revision. See `canonical-cancellation.md` for the exact command and native case/clean/observer receipt digests.
+
+After release, `canonical-runtime-tests --test-threads=1` exited 0: three passed, zero failed, zero ignored. The actual tests were `core_factories_preserve_actual_verified_caller_requirements`, `feature_clones_share_the_existing_registry_and_instance`, and `nil_instance_is_rejected_without_database_or_child_dispatch`. The copied executable is 14,194,240 bytes, SHA-256 `466ad9550b0968729970b23d05fc7782ce0d17ec74f11885f18128377c31b635`. Exact focused log SHA-256: `f08ac9455bd18b2e277457fc937fbe166c0ca082869bef9763b3e7ef266d7d48`. Both were independently rehashed and matched the released artifact manifest and execution receipt. No separate historical CR07 rebuild was needed.
+
+Portable receipt identities from cohort `mcr-root-seven-repair-d0f063d1-5fp4vkh7`:
+
+| Receipt | SHA-256 |
+| --- | --- |
+| `source-pins.json` | `da1057e2e3a5d77292e91926cc006f3aba6a8c6e2fdf3b0561e888383ff08692` |
+| `concert-tests-2-receipt.json` | `8375a8c94f2a84e03d429f4917ffc207d1a2f31c1970176d78f95a61776aa7bf` |
+| `target-release.json` | `2e7185253fd539348ebb89c4256cff724407bcf8513ab6916c266d8cdd3f49db` |
+| `pure-test-receipts.json` | `9192dc66934e5d5d7fb05d29862d20dc0d16d214b079a96d23ef49375aa314da` |
+
+The repaired cohort also passed all nine actual PG16/mTLS core cancellation cases, each with owned cleanup PASS. The repaired Participant C03 attempt stopped during migration preflight: retained expectations used Auth 17 while the current manifest contains 18. Actual protected HTTP cancellation was NOT_RUN, prepared count was zero, and owned cleanup passed. These core results do not qualify C03. Typed cross-producer composition, native resolver coverage, supervised child recovery in production main, browser flow and scoped validated master delivery remain open.
