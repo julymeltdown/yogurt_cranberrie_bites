@@ -272,7 +272,28 @@ def run(args):
     stack_args.hold_seconds = max(60, args.hold_seconds)
     world, _, dev = launcher.load_helpers(ROOT)
     original_projection, original_control = world.retain_public_projection, dev.Control
-    context = {}
+    context, owned_processes, owned_roots = {}, [], []
+    original_cluster, original_child = dev.migration.Cluster, dev.runtime.Child
+    custody = args.report.with_suffix(".owner.json")
+
+    def owner_receipt():
+        value = {"roots": [{"root": str(c.root), "identity": list(c.identity), "token": c.token}
+                           for c in owned_roots], "service_pids": owned_processes}
+        fd = os.open(custody, os.O_WRONLY | os.O_CREAT | os.O_TRUNC | os.O_NOFOLLOW, 0o600)
+        with os.fdopen(fd, "w") as stream:
+            json.dump(value, stream)
+
+    def cluster(*values, **kwargs):
+        owned = original_cluster(*values, **kwargs)
+        owned_roots.append(owned)
+        owner_receipt()  # Before initdb/postmaster: the independent guardian knows custody.
+        return owned
+
+    def child(*values, **kwargs):
+        owned = original_child(*values, **kwargs)
+        owned_processes.append(owned.process.pid)
+        owner_receipt()
+        return owned
 
     def authenticate(stack, browser, original_report, principals, event, *rest):
         provenance = original_auth(stack, browser, original_report, principals, event, *rest)
@@ -293,13 +314,23 @@ def run(args):
     try:
         with patch.object(launcher, "auth_provenance", authenticate), patch.object(launcher, "managed_features",
                 lambda *values: report_features(original_features, *values)), \
-                patch.object(world, "retain_public_projection", project), patch.object(dev, "Control", control):
+                patch.object(world, "retain_public_projection", project), patch.object(dev, "Control", control), \
+                patch.object(dev.migration, "Cluster", cluster), patch.object(dev.runtime, "Child", child):
             code = STACK_RUN(stack_args)
         stack_report = launcher.json_object(launcher.private_input(stack_args.report))
         result["stack"] = {k: stack_report.get(k) for k in
                            ("result", "failure", "failure_type", "cleanup", "prepared_before_cleanup", "process_stops", "resource_bounds", "source_revision", "cohort")}
         require(code == 0 and result["journey"] == "PASS" and stack_report["cleanup"] == "PASS"
                 and stack_report.get("prepared_before_cleanup") == "0", "actual-stack-and-journey-cleanup")
+        require(all(not c.root.exists() for c in owned_roots), "exact-owned-stack-roots-absent")
+        for pid in owned_processes:
+            try:
+                os.kill(pid, 0)
+            except ProcessLookupError:
+                continue
+            require(False, "owned-service-process-still-alive")
+        result["owned_roots_absent"] = True
+        result["owned_service_processes_absent"] = True
         result["result"] = "PASS"
     except Exception as error:
         result.update(failure=error.args[0] if isinstance(error, launcher.InputRefusal) else "report-http-operation-failed",
