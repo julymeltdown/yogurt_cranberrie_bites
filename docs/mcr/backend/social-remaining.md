@@ -857,3 +857,41 @@ relationship deadline to the retained SQL guard, explicitly without claiming
 canonical authority. The runner records prepared-zero in `finally` before
 teardown even when native checks fail. These repairs require a **fresh build
 allocation and rerun**; no post-release executable rebuild or test occurred.
+
+### Repaired candidate qualification — retained request-creation failure open
+
+Source `2362ddf946b426e176221068ce9f8e9ec8c96f3d` compiled successfully under
+`SOCIAL-0051-REPAIR-MEDIA-202611041145Z` in 3.71 seconds. This candidate also
+rechecks an existing absolute relationship deadline after generation lock waits;
+the native rollback scenario passed. The unchanged library/remaining/receipt
+executables were genuinely Cargo-fresh and copied from the newly leased target;
+the changed live executable rebuilt. No old external copy was a build input.
+All source/runtime/contract/fixture/migration hashes and four new external copies
+were frozen before unconditional target release at 11:49:31 UTC.
+
+Two library and eight live pure checks passed. **All 15 live native checks
+passed**, including all five new invalidation cases and the retained
+savepoint/witness/Intro cases. The next retained Social phase was **6 passed,
+2 failed**: both failed at `SocialService::create` with the intentionally opaque
+`Unavailable` adapter error. Receipt tests and physical restart remained
+**NOT_RUN**. This is not a qualified handoff or public sharing acceptance.
+
+The final `pg_prepared_xacts` count was explicitly **0**, PostgreSQL cleanup
+passed, the owned root was absent and fresh process inspection found zero owned
+runtime processes. Full release occurred at 11:50:35 UTC. Peak sampled whole
+allocation was 1,531,248,640 bytes, including all retained artifacts and known
+prior positive target growth. No target access followed its earlier release.
+
+The unchanged failed evidence is in `mcr-social-0051-repair-fglca509`:
+`all-artifacts.json` SHA256
+`19f5ca264d4a6f763dba4e7b4b73bd2e2429eeccb05566cec423ca61c30319bc`;
+`native-report.json`
+`9c7c366352815778f44e01177e1a8c634408d2e1aba59ce5131c94bc4ffb44cb`;
+`full-release.json`
+`f4f371093ed2dfa833951e8799d49fc6968ccf06cd95d490887ea2901247fbfa`.
+
+The owned runner now preserves bounded sanitized PostgreSQL SQLSTATE/function
+context before removing its cluster, because the adapter correctly hides raw
+SQL errors. Statements, parameters and DETAIL rows are excluded. That
+instrumented successor is **NOT_RUN** and needs a fresh allocation; neither the
+failure nor its underlying cause is relabeled as resolved.
