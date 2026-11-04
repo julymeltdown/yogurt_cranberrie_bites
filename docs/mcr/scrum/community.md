@@ -26,76 +26,265 @@ milestones, ready unstaffed work, blockers/decisions and links to owner records.
 Immediate escalation is limited to cross-lane conflicts unresolved directly,
 genuinely unattended critical work or human-required product/access decisions.
 
-## Hourly reconciliation — 2026-11-04 15:36 KST
+## Hourly reconciliation — 2026-11-04 16:39 KST
 
 This checkpoint uses compact current chat snapshots and existing implementation-
-owner reports, refreshed through 15:42 KST. SL performed no implementation,
-query, visual, runtime or application checks. Original IDs are deduplicated;
-helper goals, repairs and commits are not additional tasks. UNRECONCILED means
-missing current criterion-level disposition, never zero progress or NOT_STARTED.
-The QA/IN table below retains QA01/QA05/QA06/QA07/QA08/QA09/QA10/IN04/IN05;
-IN02 is recorded in this table. All 112 tasks and 61 IA entries remain required.
+owner reports. SL performed no implementation, query, visual, runtime or
+application checks. Every original ID remains in the FE/IN table here or the
+QA/IN table below, with owner, disposition, delivered evidence, outstanding
+criteria/dependency, next action and publication state. Rows without an explicit
+new checkpoint increment retain their latest owner receipt; historical repairs
+are not this hour's new progress. Missing current evidence is UNRECONCILED,
+not zero progress or NOT_STARTED. All 112 tasks and 61 IA entries remain required.
 
-New original-task outcome since the 14:34 checkpoint: FE32's implementation
-owner explicitly satisfies every original pure-client criterion at MOCK_READY.
-Root publication and independent owner remote readback are complete; all four
-ancestors, 36 latest delivered payloads and 21 native hashes were verified.
-The actual aligned goal is COMPLETE, immediate goal readback null, checkout
-clean/stopped, exact source leases returned and validation resources released.
-The owner fixed held-third-touch recovery and stale placement-ack cooldown
-regressions. This closes FE32's original client criteria only; public-root,
-FE33, actual IN04, device and full-reference obligations remain separate.
-Owner evidence: `docs/mcr/frontend/fe32-client-delivery.md`.
+No additional original-task completion change is evidenced since 15:36 KST.
+The subsequent exact FE09 owner-classification assignment below supersedes
+this checkpoint's free204 staffing state; it does not reopen FE09 by assumption.
+FE21/FE24/FE32 original client criteria and the bounded Meet typography goal
+were already delivered/published/closed and are not counted again. Terminal204
+remains preserved ARCHIVED, without source rights, new work or unfinished goal.
+Its latest actual turn still confirms COMPLETE/null/clean STOP/returned leases.
+Community remains sole next allocator. FE37–40 retain historical substantive
+owner deliveries but no new whole-task criterion receipt or confirmed ready
+unowned implementation gap. FE39's old retry blocker remains superseded by
+already-delivered retry work. Direct current-gap/lease intake remains with
+Root/former allocators; no duplicate worker, filler goal or extra chat is created.
 
-The separate QA06 Meet typography leaf is also published and independently
-read back, with actual goal COMPLETE/null, clean STOP and returned leases.
-Its owner reports eight bounded native views and preserves the pinned capture
-cohort separately from subsequent shared-frame/background changes. This is
-neither another FE21 completion nor whole QA06 acceptance. FE21/FE24 client
-completion was already reported in the previous hourly digest and is not
-counted again. Owner evidence: `docs/mcr/frontend/qa06-meet-type.md`.
+New QA06 comparison delivery: owner1ab7 independently verified publication at
+`e2375727`, imported ancestry and all16 final comparison files including four
+image hashes and the original human JPEG. The bounded comparison handoff is
+complete, while its actual original QA06 goal remains unfinished. Owner record:
+`docs/mcr/evidence/visual/qa06/human-reference-20261104/comparison.md`.
+This is not original QA06 completion or a second Meet/FE32 acceptance.
 
-The human's newer backgrounds-only work has active separate asset/CSS owners.
-Root supplied the exact COM01 shared-leaf grant and Wall semantic hook before
-writes; the CSS owner confirms the initial candidate published at `c8a731e5`.
-Eight actual 390px screen pairs were captured. Owner findings now require
-Feed/Gifts letterbox and dominant old-paper background corrections; targeted
-CSS/assets are underway or handed off, pending integration/fresh verification.
-The initial HTML-image comparison omitted canvas/CSS-rendered characters and
-MUST NOT be treated as character-pixel proof. Root owns that follow-up, with
-responsive/interaction and World/Map delivery still open. No whole QA06 closure
-or broad character-pixel claim follows the first pass. Source characters,
-controls, typography and layout remain protected by the human direction.
+Background follow-through progressed from the prior known first-pass findings.
+Root reports the first actual Parade World/Map390 before/after cue delivered
+with preserved character textures/geometry, and corrected panel source frozen
+at `8972b0b6` for a bounded follow-up. At the current owner snapshot all eight
+corrected390 baseline/candidate pairs pass their preservation/error checks.
+Customize, Feed and Me now have direct character CANVAS RGBA/rectangle/size
+comparisons, so this new cohort addresses the initial HTML-only proof omission;
+the first packet's omission remains recorded rather than retroactively waived.
+All four Me focus pixel-contrast checks and forced-colors checks passed in the
+owner report. A final compact Root snapshot now reports all60 captures completed,24 matched
+route/width pairs preserved, no overflow/page errors, every screenshot and729
+loaded source pins verified, and browser/server/temp/link fully released. This
+updates the earlier running360/430 state. Final committed immutable packet,
+owner composition/contrast/fix/readback and publication closure are still not
+inferred from the successful run. Root owns retention/publication and direct
+owner resumption; synthetic data remains qualified.
 
-Staffing: terminal204 is preserved ARCHIVED with no unfinished goal or source
-rights; Community is sole next allocator and can reuse it for a genuine ready
-original implementation leaf. FE37–40 retain substantial historical owner
-reports, but no current missing original implementation criterion plus exact
-unowned lease has yet been established. FE39's old retry blocker was already
-superseded by delivered retry work. Current-gap/lease intake is directly with
-Root and former allocators; no duplicate worker, filler task, backend/device
-barrier or new chat is created. World/Social separately coordinate FE06/FE34
-runtime preferences; no Community ownership transfer is inferred. Other
-original task dispositions and published evidence remain as recorded below.
+COM01/UI/Screen Art retain BLOCKED unfinished goals and preserved source;
+they are not free developers to reset/reallocate. Root explicitly holds their
+reactivation until the final committed immutable packet. No worker is restarted
+because a poll timed out or given a second browser job. Their queued follow-up
+is owned; no user decision or unresolved cross-lane conflict is identified.
+Owner evidence cohort: `docs/mcr/evidence/cozy-backgrounds-v1/native-02/`.
+
+Separate live integration remains separate: Product root1fc published the
+partial genuine-service result/cleanup at `175112b2` and owns serial/concurrent
+`/me` availability diagnosis with the same qualified binaries, genuine Auth
+and request deadlines. World retains incomplete IN01; Social's FE34 DOM/native
+checks remain open. These findings do not reopen satisfied Community frozen-
+client criteria or certify IN02/IN04. Wall21e still reports C06 local parity,
+Gateway uncompiled and publication/activation pending; Gift267 retains existing
+production-authority/transport dependencies. SDK207's preserved CF01 intake is
+blocked, not a completed supplier or available worker. Next real journey scope
+must use owner-confirmed candidate interfaces and the named resource queue.
+
+Management publication: the previous queued final Community payload at local
+`70b4effe` is byte-identical to `origin/master` `175112b2` after Root's natural
+consolidation. This confirms document publication only, not application/task
+acceptance. The old branch/commits are preserved; this checkpoint starts a new
+isolated management branch on that published base and does not replay them.
 
 | Original ID | Owner / current task-level disposition | Work since previous checkpoint / latest retained publication | Remaining original criteria, dependency owner and next action |
 |---|---|---|---|
+| FE09 | Original task-local SATISFIED retained;204 accepted NEW unbudgeted ACTIVE bounded owner-disposition goal | Current owner finds supported expiry-clear/request-policy design, no original gap or product edit; session.ts unchanged. SourceREADY `f3bdc853418f06341cc08de8ec665958fe74a909`,11 new files/four new prefixes; owner reports6 new+75 retained tests/noemit/lint/plan/diff PASS.29 input pins/no runtime-contract drift. No product edit; base `39c68d1d`, Root publication and fresh owner proof PENDING | Deliver bounded docs/committed Root handoff/publication/readback. Main07:55UTC resolved scope: proposed long-runtime gate withdrawn; expiry observation NOT_RUN informational/nonblocking. No new renewal/reload behavior or900s/30min IN01 criterion.204 finishes bounded disposition/publication/readback;202 preserved archived, root1fc owns actual `/me`504/customization |
 | FE20 | Former owner `3ff2`; SATISFIED at MOCK_READY per explicit photo-completion receipt; no current Community writer | No newer task receipt; published `6c908472` retained | No identified original frontend gap in that receipt. Genuine provider/IN02 qualification stays with Product root `1fc`; do not reopen frozen criteria or divert the owner's later Auth scope |
 | FE21 | MOCK_READY; original pure-client criteria SATISFIED by owner204; actual goal COMPLETE → fresh null / clean STOP / exact leases returned | No new original completion; previous five source commits through `531c4672` published through `4bf9022f`, 52 payloads owner-verified. Separate bounded Meet typography source `e9912f13`/`0d0b76dc` is published as `1b94fcb8`/`a8fd53c1` under `c8a731e5`, all 21 payloads independently verified; actual goal COMPLETE/null/STOP. It does not recount original FE21 | No original pure-client gap remains in explicit receipt. Publication and owner readback complete. Real IN02 remains separate with Product root1fc and producer owners; no device/live promotion or SL review |
 | FE22 | Former authoring owner `6ec9`, now Backend-allocated; last explicit frontend criteria SATISFIED | No new delivery; source `1c38ad4` → published `e82a220`, final KST correction `d8778b8` retained | No identified task-local gap: form/validation/draft/conflict criteria met in retained receipt. Root `1fc` owns actual producer/configuration; real IN02 remains separate; no old writer wake |
 | FE23 | Former authoring owner `6ec9`; last explicit frontend criteria SATISFIED; bounded QA06 follow-up `204` complete/null/clean STOP | Original `7342058`/`58e18ab` → `aa103a8`/`48bb3e8`, KST `d8778b8` retained. Shared Party-action visual repair `30e52fac` delivered as described once under FE21; no new whole-parent outcome | No identified original member-decision/rally/conflict/removal/moved-card gap in retained receipt. Shared QA06 published postfix is independently VERIFIED as recorded under FE21; Product root/Gift counterparts own real IN02 inputs, not a new original frontend gate |
-| FE24 | MOCK_READY; original pure-client criteria SATISFIED by same owner; same goal actually COMPLETE/null/STOP and leases returned | Joint published `4bf9022f`, source tip `531c4672`, all 52 payloads verified once. Gifts context-replacement reload and My gifts restored-access reload fixed. Owner original list/detail/GIVING-RECEIVING/filter/eligibility/recipient-privacy/invalid-state criteria satisfied; 148 tests and three-width actual-root native evidence retained | No original pure-client gap remains in receipt. Published and independently read back; no new helper count. Gift267/Product root1fc retain genuine producers/IN02, with FE25/26 unchanged |
+| FE24 | MOCK_READY; original pure-client criteria SATISFIED by same owner; same goal actually COMPLETE/null/STOP and leases returned | No new original outcome this hour; joint published `4bf9022f`, source tip `531c4672`, all 52 payloads verified once. Gifts context-replacement reload and My gifts restored-access reload fixed. Owner original list/detail/GIVING-RECEIVING/filter/eligibility/recipient-privacy/invalid-state criteria satisfied; 148 tests and three-width actual-root native evidence retained | No original pure-client gap remains in receipt. Published and independently read back; no new helper count. Gift267/Product root1fc retain genuine producers/IN02, with FE25/26 unchanged |
 | FE25 | Former authoring owner `6ec9`; last explicit frontend criteria SATISFIED | No new delivery; `dee1392` → `95d9f37`, KST `d8778b8` retained | No identified task-local form/photo/inventory/conflict/owner-route gap in receipt. Qualified upload may be frozen; actual BE24/root upload is a separate integration responsibility, not a new original-task prerequisite |
-| FE26 | Former authoring owner `6ec9`; last explicit frontend criteria SATISFIED | Public pickup and actual route-fixture pointers now sent directly to QA06/World; historical `d127b74` → `941d36c`, KST `d8778b8` explicitly labeled historical, not current requalification | No identified original client gap in retained receipt: intent/hold/expiry/code/claim/cancel and timeout/reload/no-fake-success. QA06 owner pins usable current fixtures; Gift `267`/root `1fc` supply genuine authority. No FE31 substitution or live/device promotion |
+| FE26 | Former authoring owner `6ec9`; last explicit frontend criteria SATISFIED | No new original receipt; public pickup/route-fixture pointers previously sent to QA06/World; historical `d127b74` → `941d36c`, KST `d8778b8` explicitly labeled historical, not current requalification | No identified original client gap in retained receipt: intent/hold/expiry/code/claim/cancel and timeout/reload/no-fake-success. QA06 owner pins usable current fixtures; Gift `267`/root `1fc` supply genuine authority. No FE31 substitution or live/device promotion |
 | FE27 | Social ledger retains original SATISFIED/MOCK_READY; bounded latest fidelity owner `202` complete/null/clean STOP/returned leases/archived; no Community feature lease | Existing `9f72a71`/`cf7836a`/`a413e69` retained. Retained Social bounded source `576f9848` → `ddd279e4`, final receipt `203db3a4` → `6393b451`, all 44 final payloads owner-verified; duplicate root action/bottom compose repair with owner native three widths/244 affected tests | No identified original fixture criterion gap in Social's explicit receipt. QA06 postfix evidence is published with unfinished whole-visual acceptance preserved; real Feed/media providers and IN03 remain separate. Actual evidence/ownership primary is Social, not a new Community acceptance or count |
-| FE28 | Social ledger retains original SATISFIED/MOCK_READY; historical Social author has no new lease | Existing published `5bc0055`/`a413e69`/`b392f56` owner registry pointers newly reconciled here; no new original-task delivery inferred this hour | Original composer/thread/recovery/privacy criteria already recorded in Social owner evidence; no known task-local gap in that receipt. Real service/media and QA04/IN03 are separate dependencies, not grounds for withholding fixture-satisfied original criteria |
-| FE32 | MOCK_READY; all original pure-client criteria SATISFIED per owner204; actual SAME goal COMPLETE → fresh null / clean STOP / exact leases returned | Source tip `0db20367` published through master `4af1c86863698e311d286039a0702d5b2517c1c3`; actual Root receipt and independent owner readback agree: all four ancestors, all 36 latest payloads, 21 native hashes. Owner 136 tests/native/build and publisher 148 tests/types/lint PASS retained | No original pure-client gap or delivery work remains in explicit owner receipt. Scope preserved clean; resources/capacity/leases released. Public-root/live/device/FE33/IN04/full-reference remain separate. QA06 supplement `1cd494af` is committed evidence reconciliation, not duplicate editor acceptance/capture |
+| FE28 | Social ledger retains original SATISFIED/MOCK_READY; historical Social author has no new lease | Existing published `5bc0055`/`a413e69`/`b392f56` owner registry pointers retained; no new original-task delivery inferred this hour | Original composer/thread/recovery/privacy criteria already recorded in Social owner evidence; no known task-local gap in that receipt. Real service/media and QA04/IN03 are separate dependencies, not grounds for withholding fixture-satisfied original criteria |
+| FE32 | MOCK_READY; all original pure-client criteria SATISFIED per owner204; actual SAME goal COMPLETE → fresh null / clean STOP / exact leases returned | No new original outcome this hour; source tip `0db20367` published through master `4af1c86863698e311d286039a0702d5b2517c1c3`; actual Root receipt and independent owner readback agree: all four ancestors, all 36 latest payloads, 21 native hashes. Owner 136 tests/native/build and publisher 148 tests/types/lint PASS retained | No original pure-client gap or delivery work remains in explicit owner receipt. Scope preserved clean; resources/capacity/leases released. Public-root/live/device/FE33/IN04/full-reference remain separate. QA06 supplement `1cd494af` is committed evidence reconciliation, not duplicate editor acceptance/capture |
 | FE33 | Former owner `230`, now Backend allocator-owned; original frozen-client criteria SATISFIED | Published module `7c2f3af7` and caller `eeae69be` fixture references routed to QA06/World; no new original outcome | No identified original frozen-client gap. Ordinary production remains closed without supplier. Wall `21e`, root `1fc`, SDK `207`, BE World `20f` and FE Root153 own genuine inputs/activation; IN04 separate |
 | FE37 | Former bounded repair owner `26e`, now World-allocated; whole-task owner/disposition UNRECONCILED | Existing moderation owner report records substantial MOCK_READY delivery; no new whole-parent receipt. Decoder/route regressions published `047d892c` retained | Moderator report/member/content/reason/role-route and truthful failure criteria require the implementation owner's whole-task receipt. Bounded canonical decoder fix is delivered, not whole FE37 acceptance; Root supplies actual role inputs |
 | FE38 | Current frontend whole-task owner/disposition UNRECONCILED; former owner `3ff2` now Social-allocated | Recovered `event-operations.md` bounded MOCK_READY delivery retained; no fresh whole-task criterion/pin receipt | Event/settings/place review/closure/notices/capability/audit, risky confirmation/stale conflict/source provenance remain to reconcile with actual owner; Root `1fc` is composition dependency contact. No fabricated NOT_STARTED conclusion |
-| FE39 | Current whole-task owner/criterion disposition UNRECONCILED; historical retry blocker superseded by delivered owner increment | `closure-resume.md`/integration report source `e78d9dd`+`93a984e` → `b880c55`/`5c92862`,118affected checks/native fixture evidence and actual goal completion; prior `wall-control-closure.md` retry BLOCKED prose is historical. Latest BE Wall C06/Gateway dependency report remains separately bounded | Reconcile current original pause/lock/restore-confirmation and partial-closure retry disposition from responsible owner; do not create duplicate retry work already delivered. Root153 owns exact current FE lease/current gap intake; genuine operator/closure integration stays21e/1fc, no generic live/device gate on frozen criteria |
+| FE39 | Current whole-task owner/criterion disposition UNRECONCILED; historical retry blocker superseded by delivered owner increment | `closure-resume.md`/integration report source `e78d9dd`+`93a984e` → `b880c55`/`5c92862`,118affected checks/native fixture evidence and actual goal completion; prior `wall-control-closure.md` retry BLOCKED prose is historical. Current Wall21e snapshot still reports C06 local parity; Gateway uncompiled, publication/activation pending | Reconcile current original pause/lock/restore-confirmation and partial-closure retry disposition from responsible owner; do not create duplicate retry work already delivered. Root153 owns exact current FE lease/current gap intake; genuine operator/closure integration stays21e/1fc, no generic live/device gate on frozen criteria |
 | FE40 | Current frontend whole-task owner/disposition UNRECONCILED; historical Motion owner preserved with unrelated unfinished AR03 goal | Existing `archive.md` explicitly records complete assigned read-only feature/task-local fixture criteria at MOCK_READY; no fresh whole-task criterion/pin receipt | Reconcile permitted final mural/feed, removed write/private controls, absent handles/beacons and inaccessible deleted content against actual owner receipt. Root owns actual final/closed candidate interfaces; no archive acceptance inferred from Wall delivery |
 | IN02 | Real journey task NOT_RUN in latest retained lane receipt; former `6ec9` harness work preserved, no current Community writer | No new real two-client receipt or exact publication pin; earlier harness activity is not full journey acceptance | Party approval, physical rally/beacon, reservation and confirmed pickup against real services remain open. Product root `1fc`, Gift `267` and actual IN01/party producer owners supply interfaces; next genuinely ready isolated owner receives exact real-spec lease. Virtual walking never establishes physical arrival |
+
+## FE09 owner classification residual — exact pre-write allocation
+
+Root153/202 routed a concrete observation: the retained session controller
+clears on access expiry, qualified refresh is request-policy driven, and cookie
+bootstrap restoration needs classification against the actual spec. This is
+NOT yet a confirmed defect. Root's refinement explicitly preserves prior
+FE09 task-local SATISFIED and existing 401/single-flight/409 evidence until the
+implementation owner identifies an actual original gap. IN01 does not require
+900s/30min natural expiry; no longer runtime criterion or job is added. Its
+actual customization `/me`504 remains Backend root1fc's separate diagnosis.
+
+Social explicitly confirms NO current Auth product-model writer/lease or
+conflicting reservation.3ff2 retains unfinished QA04 test/doc-only work;202
+retains archived unfinished IN01, neither is free/resettable. Root's prior
+FE09 scope is main.tsx/production-refresh only, no session.ts rights. Terminal
+compatible204 remains actually COMPLETE/null/STOP, no successor, and Community
+is sole next allocator. Its old Meet/FE32 checkouts and commits are preserved.
+
+Community records exact lease BEFORE dispatch/writes to204, original ID FE09
+only: isolated NEW `/Users/lhs/Desktop/mcr-worktrees/fe-auth-natural-renewal-204`,
+branch `codex/mcr-fe-FE09-renewal-disposition`, published base
+`39c68d1dcd85a618ec0c56287d8451c6ffe13dbd`. Exclusive source is existing
+`frontend/src/features/auth/model/session.ts` renewal/lifetime/bootstrap hunks
+only; NEW `frontend/src/features/auth/__tests__/fe09-renewal-disposition/**`,
+`frontend/e2e/fe09-renewal-disposition/**`,
+`docs/mcr/evidence/fe09-renewal-disposition/**` and
+`docs/mcr/frontend/fe09-renewal-disposition.md`. No App/main/router/shared transport,
+cookie-policy/other Auth model/UI, manifests/lockfiles/contracts/backend or
+old tests are granted. Additional necessary seams go directly to the actual
+technical owner/Root for exact scope before edits; no SL code review.
+
+Objective: classify observed behavior against original FE09 explicit refresh/
+bootstrap adapter, memory authority, single-flight, safe cleanup/privacy and
+truthful states; implement only a confirmed original behavior gap, otherwise
+record a supported limitation without inventing one. Developer owns source/
+contract inspection, criterion disposition, meaningful relevant single-flight/
+privacy/cancellation/conflict regressions, truthful evidence/documentation,
+scoped commits, concrete owner findings/fixes, direct designated Root handoff,
+publication receipt and fresh remote verification. No genuine proof through
+injected401/Auth, shortenedTTL, alteredclock/JWT or token seeding. No new30min
+runtime/IN01 gate, generic backend prerequisite or duplicate capture job.
+Fixture evidence remains explicitly bounded. Resource21d owns any necessary
+named native slot; source work proceeds independently.
+
+Receiving developer must inspect actual goal, create a new aligned unbudgeted
+persistent goal only after verifying no unfinished goal exists, and continue
+until committed delivery/publication/readback. Preserve an incompatible goal
+without pause/reset/false completion and report the conflict. Dispatch and
+actual goal/scope acceptance are tracked separately; no acceptance is inferred
+from this pre-write record.
+
+### Actual FE09 receiving acceptance
+
+Owner204 confirms initial actual get_goal null, then NEW aligned unbudgeted
+ACTIVE goal createdAt1793778508 with immediate ACTIVE readback. The tool exposes
+chat ID/createdAt, not a separate UUID; none is invented. Actual current chat
+`01a1a204-c583-7670-965a-4891b8b1289e`, fresh cwd/branch/full HEAD match the
+exact grant above; checkout clean, independent fetch/ls-remote agree on full
+`39c68d1d` base and all four new prefixes absent. Owner explicitly accepts the
+conditional session.ts minimal-original-gap scope and all four new prefixes;
+old Meet/FE32 leases remain returned. No source writes at acceptance. Current
+activity is owner classification of actual original FE09/spec7.2/reports/code/
+contracts, with no assumed proactive renewal/reload restore/long run. This is
+actual staffed progress of the residual, not a changed original FE09 outcome.
+
+### Verified resource-planning source and resolved scope boundary
+
+PROVENANCE CORRECTION:21d verified Main's resource-planning coordination message,
+not a separate direct/verbatim human07:31 request. Source Main chat
+`01a19e5c-e9c6-7973-a53b-a6d19141620f`, turn
+`01a1a56d-26d2-77e3-9344-83b07fe83d62`, send call
+`exec-28e92149-b52d-4aea-aa16-66447e353651`. It directs Root1fc and consumer202
+to coordinate a later finite allocation sufficient for remaining genuine
+expiry/refresh coverage UNDER APPLICABLE EXISTING task/gate criteria, preserving
+NOT_RUN and rejecting fabricated expiry/synthetic401/shorter passing slices.
+It does not establish proactive renewal, reload resume or a new expected
+successful-refresh outcome. No unrelated original task acquires a new gate.
+
+The earlier relay's separate-human-request shorthand and Community's resulting
+mandatory new15min FE09 proof allocation overstated the verified authority;
+those assertions are withdrawn transparently. Source correction was sent
+DIRECT204/Root/21d. Same actual ACTIVE goal/work/leases remain preserved; no
+reset, pause, false completion or silent new product behavior follows.204's
+real bounded original-criterion assessment, meaningful validation, docs,
+committed Root handoff/publication and remote readback continue. It must not
+be artificially held open solely by an unsupported new requirement; actual
+remaining required work and any exact accepted handoff stay truthful.
+
+CURRENT owner39c68 source/contracts finding: capability-only startup, expiry
+removing memory authority and eligibleGET401 single-flight are supported
+retained design. No original criterion gap/product edit established; session.ts
+is unchanged. Owner reports six combined boundary fixtures/noemit/lint PASS,
+disposition/evidence source now committed as recorded below, same goal ACTIVE
+through publication and fresh owner readback. Prior FE09 task-local SATISFIED and original request-policy evidence
+remain intact; this is bounded new evidence, not another task completion.
+
+RESOLVED by Main's explicit07:55UTC(16:55KST) clarification relayed21d:
+the earlier allocation was conditional on EXISTING requirements, not a new
+human requirement. The proposed long-runtime follow-up is WITHDRAWN as a
+required gate; no900-second IN01 duration, newly successful automatic renewal,
+proactive refresh or cookie/reload restoration is required. No reservation
+solely to observe expiry is needed or exists. Genuine expiry/cleanup, if
+encountered in an otherwise justified existing test, is reported honestly;
+its NOT_RUN is INFORMATIONAL and must not block original IN01 by itself.
+
+Owner204 can finish the SAME bounded truthful disposition/fixtures/docs and
+required Root publication/readback without altering intended expiry behavior
+or waiting on a long run/reconciliation. Current goal/source leases remain
+preserved; no reset, pause, false completion or extra user/technical approval
+is introduced. Clarification sent DIRECT204, no archived202 wake.202 remains
+original IN01 consumer until concrete current inputs/offer; actual original
+IN01 blocker is `/me`504/customization with Backend root1fc. Existing finite
+panel/era/preferences allocations continue independently. Existing Auth/IN01
+harnesses remain read-only to204; no fake expiry/Auth proof is introduced.
+Backend's14 serial/concurrent `/me`200 checks lacked App-activeWorld load and
+did not resolve actorA `/me`504/noPUT; later diagnostic increments remain the
+backend owner's responsibility. Auth classification does not block unrelated
+World/panels/eras/Settings source work.
+
+### FE09 committed source handoff — publication pending
+
+Owner204 reports sourceREADY commit
+`f3bdc853418f06341cc08de8ec665958fe74a909`, sent DIRECT designated Root153
+for normal serialized publication.11 NEW files are confined to the four
+allocated new prefixes; existing session.ts is unchanged, no original criterion
+gap/product edit established, prior task-local SATISFIED preserved. Owner
+reports6 new combined boundary plus75 relevant retained tests PASS, noemit/
+lint/plan/diff exit0,29 pinned inputs and no runtime/contract drift. These are
+implementation-owner validation reports; SL inspected/reran none of them.
+Report: `docs/mcr/frontend/fe09-renewal-disposition.md`.
+
+Exact isolated checkout/branch/base remain as allocated above, clean at source
+handoff. SAME actual unbudgeted goal createdAt1793778508 remains ACTIVE through
+Root publication, fresh independent owner remote ancestry/payload verification,
+clean STOP and exact five source/test/runner/evidence/doc leases returned. No
+publication receipt or terminal goal outcome is inferred from source commit.
+Main07:55 scope correction is fully recorded: long-runtime gate withdrawn,
+expiry observation NOT_RUN informational, no new human requirement/900sIN01/
+proactive/reload/successful-renewal behavior. No native offer/reservation or202
+wake. Owner already routed the source handoff; SL does not duplicate its raw
+test/hash/goal packet to Root/Main/King. Next material update is actual owner
+publication/readback/goal closure or a concrete integration finding.
+
+## Immutable corrected background packet handoff
+
+UI integration SL reports Root commit
+`5186f11017185a040e4ccde1c59589e140563ef0` retains the actual immutable
+`/Users/lhs/Desktop/mcr-worktrees/fe-delivery-publish/docs/mcr/evidence/cozy-backgrounds-v1/native-02/`
+report/capture packet and baseline/candidate assets. Owner reports60PNGs/exit0,
+eight routes at360/390/430, Me focus/forced colors/Auth states and direct canvas
+rect/dimension/RGBA invariance, zero errors/overflow. Raw owner visual disposition
+is still pending. Corrected written coverage: LANDING has FOUR CSS-rendered
+character spans at EACH width, each matching baseline.390 canvas counts are
+Customize4/Feed1/Meet3/Me1; the other four routes have zero CANVAS, not zero
+CSS characters. Raw report/assertions were correct; earlier written all-route
+CSS-zero claim is withdrawn. No recapture/review job is needed for this prose
+correction. SyntheticHTTP/C05/local admission, guarded Wall and no live
+profile-save/device claim remain explicit. Root is sole custodian: no copies,
+restores, SL visual inspection or duplicate recaptures. ScreenSL reactivates the
+five original source/adoption owners for their own findings/fixes/delivery.
+
+Community routes Meet/Gifts availability/stock/access guards and actual
+navigation/Back/focus-return semantics to Root's already-planned36 World/Map
+matrix/four destination routes. Concrete compatibility findings go to current
+implementation owners/Root with this retained packet; no old204 feature rights
+or background scope are revived. These accepted deliveries do not create whole
+QA06 completion or a new original task count.
 
 ## Current FE21/FE24 original-client delivery assignment
 
@@ -1763,7 +1952,7 @@ handoffs and never falsely complete, reset or relabel them.
 | QA07 (World-owned; Community input contribution) | `230`; closed/published `ced8ec12` per Main record | Original QA07 closure is reported; no additional lane count is computed | World owns final task evidence and lifecycle; developer subsequently accepted QA08, so QA07 closure does not confer current availability |
 | QA08 frontend contribution (World-owned) | `230`; bounded goal COMPLETE then null/clean STOP/all leases returned; original task PARTIAL | Package `81196de6` published as `32def3dc` under master `980fc4d8`; owner actual COMPLETE/null/STOP receipt confirmed, historical baseline distinct from current narrow compatibility probe | Physical-mobile/real-service capacity proof remain NOT_RUN; World explicitly released context; Backend staffing is sole next BE39 allocator, startup pending; Community made no assignment or reservation |
 | QA05 | Original task PARTIAL / IN_PROGRESS; bounded World and mural contributions published. Mural goal `1793760667` actually COMPLETE 21m20s then fresh COMPLETE OBJECT/clean STOP/returned leases; context `26e` has since completed World canonical/presentation and FE18 work; World now coordinates the FE06/FE34 runtime producer leaf, no current QA05 lease | World source `a9517e04`. Mural corrected 29 paths (7 source/1 doc/21 evidence), serial source through `f7a0bbc9` published as `1ccb116b`/`c23937d3`/`3bc7dd4b`/`83d3df86` under `8502c143`. Owner fresh ancestry/all 29 payloads/six PNG hashes verified. Frozen `7195d78c` native three widths/34 checkpoints/1,261 pins and 124 tests/six files/two probes/other scoped checks PASS with initial failures and fixture limits retained | Allocated mural contribution delivered; no Community reservation or source rights. World owns remaining whole-QA05 criterion reconciliation: real ticket/server restart/room membership remain open; device/IN04 separate. World canonical contribution is now delivered; subsequent World presentation goal `1793766233` is complete; FE18 has subsequently finished and World coordinates the next FE06/FE34 producer allocation, not a QA05 result or Community lease. `21e` owns real Wall inputs; `21d` sole disk coordinator |
-| QA06 (World-owned; Community input/repair contribution) | Original QA06 unfinished under World/1ab7; bounded Meet owner204 actually COMPLETE→null/cleanSTOP/allleasesRETURNED/preservedARCHIVED;213 and background owners remain separate | Source `e9912f13`+`0d0b76dc` published as `1b94fcb8`/`a8fd53c1` under `c8a731e5`; independent owner all21payloads/2ancestors exact,23local nativepins retained/18currentremote+5knownexternaldrift.71affectedchecks/eightnativeviews retained; publisher74checks/types/lint PASS | No remaining Meet leaf delivery work in owner receipt. World/QA06 and background owners retain whole ten-screen target/mobile/guards/reference disposition, with source/capture cohorts separate.204 available for concrete next original scope only; no waiting goal or background/source rights |
+| QA06 (World-owned; Community input/repair contribution) | Original QA06 unfinished under World/1ab7; Meet204 complete/null/STOP/leases returned/archived; background COM01/UI/Screen Art goals BLOCKED unfinished pending final Root packet | New comparison-owner verified `e2375727` ancestry/all16 final files/four image hashes/original JPEG. Meet published `c8a731e5` receipt retained. Root frozen `8972b0b6` follow-up reports all60 captures/24 route-width pairs complete, direct canvas preservation/Me focus contrast/forced colors PASS,729 source pins verified and full resource release; immutable packet/publication receipt still pending | Root completes/commits immutable native-02 packet and resumes existing asset/CSS owners for owner validation/fixes/publication readback. Whole original reference/responsive/public-flow/device criteria stay open; no first HTML-only packet character proof or full QA06 promotion.204 has no background/source rights and is reserved only for a genuine next exact ready scope |
 | QA09 | Original whole-task disposition UNRECONCILED; frontend contribution unallocated, not evidence of zero whole-task progress; backend primary `267` at natural Gift/operator handoff | No new full-rehearsal receipt. Cover resumable partial closure/retry and frontend lifecycle around actual database restart/backup restoration, outbox replay, pending pickup and deletion; supporting restart tests do not certify whole task | Product root `1fc` owns BE44 restore/outbox interfaces, Social backend `16e1` BE42 deletion; FE39 frozen closure/retry input and exact shared recovery child-prefix lease required. Frozen-contract authoring can proceed independently when allocated; actual rehearsal requires candidate interfaces and scoped backup resources. No frontend contribution commit/push reported |
 | QA10 frontend provenance contribution | `26e` bounded frontend contribution DELIVERED; SAME goal `1793757526` COMPLETE then null/clean STOP/all leases returned; whole original QA10 PARTIAL; Product root `1fc` remains sole `scripts/mcr/release-check.sh` implementation owner | Own published-candidate ten-gate frontend PASS/PARTIAL, 3,503 Vitest + 22 Node tests PASS; backend/service/device/three real journeys remain NOT_RUN. Candidate versions, genuine checks, production mock/secret exclusion, task-to-commit evidence. Missing evidence stays NOT_RUN/BLOCKED and stale revisions cannot replace current candidate | BE43 remains root's hardening increment; QA01/QA02 same-candidate evidence required. Exact NEW `frontend/e2e/release/qa10/**`, `docs/mcr/evidence/release/qa10/**` and new release-candidate doc only. No release-script grant; only exact separately allocated loader hunk in an existing shared test. Serial handoff through `544d45ae` published by Root under `980fc4d8`; owner post-repair full qualification PASS reported; final evidence `d6009343` published as `d165dd7a` under `a9517e04`, actual owner ancestry and COMPLETE/null/STOP receipt confirmed |
 | IN04 frontend real mural journey | Frontend real-journey writer pending exact ready allocation; backend Wall primary `21e`; NOT_RUN | FE33 original criteria SATISFIED and caller gap closed. Actual multiple-client paint/cooldown/pause/restore/final-freeze journey and unauthorized-moderation rejection remain unexecuted | Exact `frontend/e2e/real/mural.spec.ts` lease not yet granted. Wall/root HTTP+WS, BE40 pause/lock/restore/audit/new revision and genuine supplier remain open; implementation contacts `21e`, root `1fc`, canonical `207`, World `20f`. No IN04 commit/push or acceptance |

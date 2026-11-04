@@ -1,0 +1,146 @@
+{
+  "assignmentBase": "39c68d1dcd85a618ec0c56287d8451c6ffe13dbd",
+  "scope": "Original FE09/spec7.2 disposition; Main07:55UTC withdrew proposed long-runtime gate; genuine expiry observation NOT_RUN informational only",
+  "productChanges": [],
+  "sourcePins": {
+    "AGENTS.md": {
+      "sha256": "1c44f8c1ec729a8a533991cd877877da8ea93f7c0471d0f828eb2dd0f1ee4948",
+      "lastRevision": "d2a5fbddb781bcd1ac87e830a45405fd3c39c0f8"
+    },
+    "MCR_IMPLEMENTATION_PLAN_V2_EN.md": {
+      "sha256": "e19732ac9c5c5d5397652bf047645da0640ec72c97f59869974680c4e7f69a36",
+      "lastRevision": "f5b97aca2b002484fc4cbdd7581c723392df10c6"
+    },
+    "docs/mcr/project-assessment.md": {
+      "sha256": "e8203528b95d46faa2bfd92d2929e5723b99f52df61dc6febd613696d69ca807",
+      "lastRevision": "f5b97aca2b002484fc4cbdd7581c723392df10c6"
+    },
+    "docs/mcr/execution-plan.md": {
+      "sha256": "63771412101aecb788ba59fe0a8a665420ab2a28906ef2d147b3c4852761f45f",
+      "lastRevision": "49ac314e4cc8cae26a032618743274eb21d26567"
+    },
+    "docs/mcr/frontend/production-refresh.md": {
+      "sha256": "22ac3c51e7a2070d504a54110dce995e8443d4fd420f9b9dda0b1bf8f735f729",
+      "lastRevision": "dc88c2489dc2ec475f3375de480cfe3206874d46"
+    },
+    "docs/mcr/frontend/session-sign-in.md": {
+      "sha256": "ee8f27236dc6dd14e5534eebb3cba01d988f419ece5e0315f9bb78c8fca36f74",
+      "lastRevision": "a9e130eb18e9c6b8ad9de3dcb0b140a285ab9f17"
+    },
+    "docs/mcr/frontend/auth-contract-review.md": {
+      "sha256": "1eb3a42c1e72985076c8b0bdf139703d15c7012f4d3ccc5c3d87fc4540b924bf",
+      "lastRevision": "46fe1a212826d861123565181dcd45b134a4e7f0"
+    },
+    "backend/docs/api/browser-refresh-contract.md": {
+      "sha256": "51929ffa649f0b0c69f69050d8899283c221361e8ea72f608ccbfb67a2d9c359",
+      "lastRevision": "a37bc4f72016511b860a66d642de8721dcb86fdd"
+    },
+    "frontend/src/main.tsx": {
+      "sha256": "9c5bc96f45a5e8ce3e3c42536ce990c4cf9c2c2c5f2a9d35b524f89e76f8e715",
+      "lastRevision": "dc88c2489dc2ec475f3375de480cfe3206874d46"
+    },
+    "frontend/src/features/auth/model/session.ts": {
+      "sha256": "6665d52e018a8b9b900ed79cce627309889084202498d80420c47fd44a2a44b1",
+      "lastRevision": "c723ee4ee7d826c67d4694a1fd96b9d9463c06bb"
+    },
+    "frontend/src/features/auth/model/bootstrap.ts": {
+      "sha256": "3398f1263e31a8ac315d7f0bb95eb567ccca3dcfa57ab9c33907473a87ce09a2",
+      "lastRevision": "1f89ccf737cb95a37ca19587b3a9794607609a34"
+    },
+    "frontend/src/features/auth/model/contract.ts": {
+      "sha256": "6e367afd4c54e54e8f02d0997f3d6f4450e369adcb13e7254bbefc47e3c5a904",
+      "lastRevision": "58824c4f8ece5a32afba5fd63c6272cb95e569f5"
+    },
+    "frontend/src/features/auth/model/cookie-policy.ts": {
+      "sha256": "852325e7b5e5697f39ae1c14e5de11c6c03581472274c51d3f41aff7469121dd",
+      "lastRevision": "d290391160bc99b1a6931e2ece45b61c2a31c885"
+    },
+    "frontend/src/shared/api/http.ts": {
+      "sha256": "441983a9e40cea38ad2f93a5a7101ee22a0d10dc3f50ec9b6ecf878dcd4c70a1",
+      "lastRevision": "a56f043f9d059cfc98e68278bb2119a6ca20f9ef"
+    },
+    "frontend/src/shared/api/errors.ts": {
+      "sha256": "07472139ebdaf6d4325ffaff1111e00f060bb18b16e8957915bb5301194ac0a3",
+      "lastRevision": "faeb6ed4939a623627d1e9ac2c5016b986a2efea"
+    },
+    "frontend/src/shared/query/privacy.ts": {
+      "sha256": "9f39e9e25b1c322bbe4b2f19a52d930aa369940757e01611ed632aa11cf2f081",
+      "lastRevision": "4207792d7f2ae1b1b6676e724e1712e43d72de43"
+    },
+    "frontend/src/shared/query/keys.ts": {
+      "sha256": "3a82ee13efc4162e04e2a3348508c5d12b897d93c8b40554d370578e25e0daef",
+      "lastRevision": "4207792d7f2ae1b1b6676e724e1712e43d72de43"
+    },
+    "frontend/src/app/ports.ts": {
+      "sha256": "ecd97ae81cd65ba7e2078fc949f607cd4662cdaa9cb1e3af015eb63417dbaa59",
+      "lastRevision": "d8b7c36d7b9875c7623a7d4d28aafce3a05628d9"
+    },
+    "frontend/src/features/auth/__tests__/fixtures/data.ts": {
+      "sha256": "00577a6ebb610df3279996d36a88d512d0c4df838a6c11e7877238b1e079986f",
+      "lastRevision": "26cacaeaf07ec2cdc9d18721021eb25ae4351b37"
+    },
+    "frontend/src/features/auth/__tests__/session.test.ts": {
+      "sha256": "2d45597a5f96c4c481ae9378e10dc366506894685758140739fd2f6ed61764cb",
+      "lastRevision": "a9e130eb18e9c6b8ad9de3dcb0b140a285ab9f17"
+    },
+    "frontend/src/features/auth/__tests__/sensitive-read.test.ts": {
+      "sha256": "3a2165d45511bf9aff053a330975b8973cf55237bd24269c5dc387e0c856bf9a",
+      "lastRevision": "7e7179b0fc72d579857ad5d352329762157fb84b"
+    },
+    "frontend/src/features/auth/__tests__/cookie-policy.test.ts": {
+      "sha256": "28bf2dc96019107745b0eb282717604b24f9a448bd86a55def1762134d858b4b",
+      "lastRevision": "26cacaeaf07ec2cdc9d18721021eb25ae4351b37"
+    },
+    "frontend/src/features/auth/__tests__/domain-request.test.ts": {
+      "sha256": "85da1d3bd91ae98acd52258cb0f5db40b41fd0e0ac2867e58856fed1a2f3936d",
+      "lastRevision": "2645b6f4cc639837932fb9f8480046533987a3de"
+    },
+    "contracts/generated/mcr-core.openapi.json": {
+      "sha256": "5b62b6e545f2ac5c367bd189bed6c509b76b4383f47b016d7b075c88f2742978",
+      "lastRevision": "d839bc208dfe21f33b4a72c03868952268c34608"
+    },
+    "contracts/fixtures/core/auth-success.json": {
+      "sha256": "32cd1f21e4e33b87945f55c7cafe22e77dbebb8caa17269a6f7eafdbf5ffb5c6",
+      "lastRevision": "325e39caf31f60992076448c0f58573432dbdec1"
+    },
+    "contracts/fixtures/core/bootstrap-open.json": {
+      "sha256": "d29e699f7b2ca9d6a1dfc34af56590bac5f7c3f103644ab02625b6f1707a17e6",
+      "lastRevision": "325e39caf31f60992076448c0f58573432dbdec1"
+    },
+    "frontend/pnpm-lock.yaml": {
+      "sha256": "47ca44459819ad0e887d2f4f93394fdf3b1053b8f45edc9ceb0236981feee1f6",
+      "lastRevision": "605b858b3baa2bb93ce4a01a6620cd25bc648c14"
+    },
+    "frontend/src/features/auth/ui/SignIn.tsx": {
+      "sha256": "cb1d6a52d8cec34f8b149d2037212996a6e1627eaf06f2cbcb432d5f297ab7ea",
+      "lastRevision": "51d89f71df962ed87b65667297bf9df690c67104"
+    },
+    "frontend/src/app/PublicBoundary.tsx": {
+      "sha256": "4398d717e9a6a19768f69904d08e96559188ba99c53cc621c3b4214c3393eeb9",
+      "lastRevision": "b756e9d9d16e1541d8155e09537fcb142317aa44"
+    }
+  },
+  "newAuthoring": {
+    "destination": "frontend/src/features/auth/__tests__/fe09-renewal-disposition/boundaries.test.ts",
+    "origin": "New combination scenarios; read-only use/adaptation of retained session.test.ts fixture setup and private-observer qualification concepts",
+    "dependencies": [
+      "retained vitest",
+      "retained @tanstack/react-query",
+      "existing isolatedCookiePolicy/public-contract fixture helpers"
+    ],
+    "newDependencies": false,
+    "sha256": "56c0be415a8e3388d3720163a650a11e29ea79d0d98917a31de52f84ffdf6f28"
+  },
+  "followUpProvenance": {
+    "status": "NOT_RUN",
+    "coordinationSourceThread": "01a19e5c-e9c6-7973-a53b-a6d19141620f",
+    "turn": "01a1a56d-26d2-77e3-9344-83b07fe83d62",
+    "sendCall": "exec-28e92149-b52d-4aea-aa16-66447e353651",
+    "reportedBy": "BackendSL21d, verified exact Main coordination wording; no separate verbatim human quote available",
+    "constraint": "Applicable existing task/gate criteria only; no forced expiry/synthetic401/shorter passing slice; no inferred proactive/reload success requirement",
+    "expectedOutcome": "Intended fail-closed behavior preserved; no new successful automatic-renewal/proactive/reload outcome required",
+    "runtimeOwner": "BackendRoot1fc; no active qualified descriptor or reservation at handoff",
+    "allocationCorrection": "Community withdrew overstated new-human-requirement/mandatory FE09 allocation; Main07:55UTC explicitly withdrew long-runtime follow-up as required gate; no further reconciliation or reservation required for bounded disposition",
+    "mainClarification": "Earlier resource direction was conditional on existing requirements, not a new human requirement; no900s IN01 duration, successful automatic renewal, proactive refresh or cookie/reload restoration; expiry/cleanup NOT_RUN informational; actual IN01/me504-customization remains independent"
+  }
+}

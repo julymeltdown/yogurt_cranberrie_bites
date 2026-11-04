@@ -1,0 +1,908 @@
+{
+  "task": "ART-SCREEN-COM01",
+  "packetCommit": "5186f11017185a040e4ccde1c59589e140563ef0",
+  "production": "8972b0b634035055eb023dbc2f786e4463b172e5",
+  "method": "Read-only original PNG RGB point sampling (Pillow12.2.0) and WCAG source-paint bound recalculation. Exact fixed production SVG paints equal prior closed vectors. Every SVG hex paint treated opaque; dark foreground values come from owning source, not browser-computed body values. Points are intentionally quiet background locations, not text or focus samples.",
+  "disposition": "SOURCE_BOUND_AND_ACTUAL_BACKGROUND_SAMPLES_ONLY",
+  "routes": [
+    {
+      "route": "/feed",
+      "asset": "frontend/public/backgrounds/cute-community-v1/feed-backdrop.svg",
+      "actualProductionSha256": "ebafd41c3f4954eb91c1549541f1f1c1d0a5209b7c04fc9d314a98515c445234",
+      "sourceColorsUnchangedFromClosedVectors": true,
+      "vectors": {
+        "body": {
+          "minimumUnblendedSvgPaintRatio": 12.32,
+          "browserComputedForegroundCaptured": false,
+          "closedSourceForegroundAssumption": "#201b18"
+        },
+        "reacted": {
+          "minimumUnblendedSvgPaintRatio": 5.497,
+          "browserComputedForegroundCaptured": false,
+          "closedSourceForegroundAssumption": "#a0222c"
+        },
+        "focus": {
+          "minimumUnblendedSvgPaintRatio": 5.754,
+          "browserComputedForegroundCaptured": false,
+          "closedSourceForegroundAssumption": "#9b202c"
+        }
+      },
+      "actualPngBackgroundPoints": [
+        {
+          "width": 390,
+          "png": "candidate-feed-390.png",
+          "points": [
+            {
+              "xy": [
+                195,
+                550
+              ],
+              "rgb": [
+                255,
+                243,
+                232
+              ],
+              "hex": "#fff3e8"
+            },
+            {
+              "xy": [
+                195,
+                650
+              ],
+              "rgb": [
+                248,
+                222,
+                210
+              ],
+              "hex": "#f8ded2"
+            },
+            {
+              "xy": [
+                195,
+                750
+              ],
+              "rgb": [
+                248,
+                222,
+                210
+              ],
+              "hex": "#f8ded2"
+            },
+            {
+              "xy": [
+                20,
+                600
+              ],
+              "rgb": [
+                255,
+                243,
+                232
+              ],
+              "hex": "#fff3e8"
+            },
+            {
+              "xy": [
+                370,
+                600
+              ],
+              "rgb": [
+                255,
+                243,
+                232
+              ],
+              "hex": "#fff3e8"
+            }
+          ]
+        },
+        {
+          "width": 360,
+          "png": "candidate-feed-360.png",
+          "points": [
+            {
+              "xy": [
+                180,
+                550
+              ],
+              "rgb": [
+                255,
+                243,
+                232
+              ],
+              "hex": "#fff3e8"
+            },
+            {
+              "xy": [
+                180,
+                650
+              ],
+              "rgb": [
+                248,
+                222,
+                210
+              ],
+              "hex": "#f8ded2"
+            },
+            {
+              "xy": [
+                180,
+                750
+              ],
+              "rgb": [
+                248,
+                222,
+                210
+              ],
+              "hex": "#f8ded2"
+            },
+            {
+              "xy": [
+                20,
+                600
+              ],
+              "rgb": [
+                255,
+                243,
+                232
+              ],
+              "hex": "#fff3e8"
+            },
+            {
+              "xy": [
+                340,
+                600
+              ],
+              "rgb": [
+                255,
+                243,
+                232
+              ],
+              "hex": "#fff3e8"
+            }
+          ]
+        },
+        {
+          "width": 430,
+          "png": "candidate-feed-430.png",
+          "points": [
+            {
+              "xy": [
+                215,
+                550
+              ],
+              "rgb": [
+                255,
+                243,
+                232
+              ],
+              "hex": "#fff3e8"
+            },
+            {
+              "xy": [
+                215,
+                650
+              ],
+              "rgb": [
+                248,
+                222,
+                210
+              ],
+              "hex": "#f8ded2"
+            },
+            {
+              "xy": [
+                215,
+                750
+              ],
+              "rgb": [
+                248,
+                222,
+                210
+              ],
+              "hex": "#f8ded2"
+            },
+            {
+              "xy": [
+                20,
+                600
+              ],
+              "rgb": [
+                255,
+                243,
+                232
+              ],
+              "hex": "#fff3e8"
+            },
+            {
+              "xy": [
+                410,
+                600
+              ],
+              "rgb": [
+                255,
+                243,
+                232
+              ],
+              "hex": "#fff3e8"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "route": "/meet",
+      "asset": "frontend/public/backgrounds/cute-community-v1/meet-backdrop.svg",
+      "actualProductionSha256": "b792df37b1a31a5abd681096fcac6e0541b5de0ee9422cd2408b98414b158ca8",
+      "sourceColorsUnchangedFromClosedVectors": true,
+      "vectors": {
+        "body": {
+          "minimumUnblendedSvgPaintRatio": 12.287,
+          "browserComputedForegroundCaptured": false,
+          "closedSourceForegroundAssumption": "#211b18"
+        },
+        "hint": {
+          "minimumUnblendedSvgPaintRatio": 4.882,
+          "browserComputedForegroundCaptured": false,
+          "closedSourceForegroundAssumption": "#67594b"
+        },
+        "tool": {
+          "minimumUnblendedSvgPaintRatio": 6.563,
+          "browserComputedForegroundCaptured": false,
+          "closedSourceForegroundAssumption": "#574537"
+        },
+        "focus": {
+          "minimumUnblendedSvgPaintRatio": 5.399,
+          "browserComputedForegroundCaptured": false,
+          "closedSourceForegroundAssumption": "#a3212b"
+        }
+      },
+      "actualPngBackgroundPoints": [
+        {
+          "width": 390,
+          "png": "candidate-meet-390.png",
+          "points": [
+            {
+              "xy": [
+                195,
+                550
+              ],
+              "rgb": [
+                255,
+                243,
+                232
+              ],
+              "hex": "#fff3e8"
+            },
+            {
+              "xy": [
+                195,
+                650
+              ],
+              "rgb": [
+                238,
+                222,
+                234
+              ],
+              "hex": "#eedeea"
+            },
+            {
+              "xy": [
+                195,
+                750
+              ],
+              "rgb": [
+                238,
+                222,
+                234
+              ],
+              "hex": "#eedeea"
+            },
+            {
+              "xy": [
+                20,
+                600
+              ],
+              "rgb": [
+                255,
+                243,
+                232
+              ],
+              "hex": "#fff3e8"
+            },
+            {
+              "xy": [
+                370,
+                600
+              ],
+              "rgb": [
+                255,
+                243,
+                232
+              ],
+              "hex": "#fff3e8"
+            }
+          ]
+        },
+        {
+          "width": 360,
+          "png": "candidate-meet-360.png",
+          "points": [
+            {
+              "xy": [
+                180,
+                550
+              ],
+              "rgb": [
+                255,
+                243,
+                232
+              ],
+              "hex": "#fff3e8"
+            },
+            {
+              "xy": [
+                180,
+                650
+              ],
+              "rgb": [
+                238,
+                222,
+                234
+              ],
+              "hex": "#eedeea"
+            },
+            {
+              "xy": [
+                180,
+                750
+              ],
+              "rgb": [
+                238,
+                222,
+                234
+              ],
+              "hex": "#eedeea"
+            },
+            {
+              "xy": [
+                20,
+                600
+              ],
+              "rgb": [
+                255,
+                243,
+                232
+              ],
+              "hex": "#fff3e8"
+            },
+            {
+              "xy": [
+                340,
+                600
+              ],
+              "rgb": [
+                255,
+                243,
+                232
+              ],
+              "hex": "#fff3e8"
+            }
+          ]
+        },
+        {
+          "width": 430,
+          "png": "candidate-meet-430.png",
+          "points": [
+            {
+              "xy": [
+                215,
+                550
+              ],
+              "rgb": [
+                255,
+                243,
+                232
+              ],
+              "hex": "#fff3e8"
+            },
+            {
+              "xy": [
+                215,
+                650
+              ],
+              "rgb": [
+                238,
+                222,
+                234
+              ],
+              "hex": "#eedeea"
+            },
+            {
+              "xy": [
+                215,
+                750
+              ],
+              "rgb": [
+                238,
+                222,
+                234
+              ],
+              "hex": "#eedeea"
+            },
+            {
+              "xy": [
+                20,
+                600
+              ],
+              "rgb": [
+                255,
+                243,
+                232
+              ],
+              "hex": "#fff3e8"
+            },
+            {
+              "xy": [
+                410,
+                600
+              ],
+              "rgb": [
+                255,
+                243,
+                232
+              ],
+              "hex": "#fff3e8"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "route": "/gifts",
+      "asset": "frontend/public/backgrounds/cute-community-v1/gifts-backdrop.svg",
+      "actualProductionSha256": "24fee1dd690452a053bdde2ad0928713979e24c67ed0e68ce767795f3a205de4",
+      "sourceColorsUnchangedFromClosedVectors": true,
+      "vectors": {
+        "bodyDefaultToken": {
+          "minimumUnblendedSvgPaintRatio": 12.089,
+          "browserComputedForegroundCaptured": false,
+          "closedSourceForegroundAssumption": "#201d1d"
+        },
+        "note": {
+          "minimumUnblendedSvgPaintRatio": 5.886,
+          "browserComputedForegroundCaptured": false,
+          "closedSourceForegroundAssumption": "#5a4d43"
+        },
+        "focus": {
+          "minimumUnblendedSvgPaintRatio": 5.194,
+          "browserComputedForegroundCaptured": false,
+          "closedSourceForegroundAssumption": "#a6252b"
+        }
+      },
+      "actualPngBackgroundPoints": [
+        {
+          "width": 390,
+          "png": "candidate-gifts-390.png",
+          "points": [
+            {
+              "xy": [
+                195,
+                550
+              ],
+              "rgb": [
+                255,
+                243,
+                232
+              ],
+              "hex": "#fff3e8"
+            },
+            {
+              "xy": [
+                195,
+                650
+              ],
+              "rgb": [
+                248,
+                224,
+                210
+              ],
+              "hex": "#f8e0d2"
+            },
+            {
+              "xy": [
+                195,
+                750
+              ],
+              "rgb": [
+                248,
+                224,
+                210
+              ],
+              "hex": "#f8e0d2"
+            },
+            {
+              "xy": [
+                20,
+                600
+              ],
+              "rgb": [
+                255,
+                243,
+                232
+              ],
+              "hex": "#fff3e8"
+            },
+            {
+              "xy": [
+                370,
+                600
+              ],
+              "rgb": [
+                255,
+                243,
+                232
+              ],
+              "hex": "#fff3e8"
+            }
+          ]
+        },
+        {
+          "width": 360,
+          "png": "candidate-gifts-360.png",
+          "points": [
+            {
+              "xy": [
+                180,
+                550
+              ],
+              "rgb": [
+                255,
+                243,
+                232
+              ],
+              "hex": "#fff3e8"
+            },
+            {
+              "xy": [
+                180,
+                650
+              ],
+              "rgb": [
+                248,
+                224,
+                210
+              ],
+              "hex": "#f8e0d2"
+            },
+            {
+              "xy": [
+                180,
+                750
+              ],
+              "rgb": [
+                248,
+                224,
+                210
+              ],
+              "hex": "#f8e0d2"
+            },
+            {
+              "xy": [
+                20,
+                600
+              ],
+              "rgb": [
+                255,
+                243,
+                232
+              ],
+              "hex": "#fff3e8"
+            },
+            {
+              "xy": [
+                340,
+                600
+              ],
+              "rgb": [
+                255,
+                243,
+                232
+              ],
+              "hex": "#fff3e8"
+            }
+          ]
+        },
+        {
+          "width": 430,
+          "png": "candidate-gifts-430.png",
+          "points": [
+            {
+              "xy": [
+                215,
+                550
+              ],
+              "rgb": [
+                255,
+                243,
+                232
+              ],
+              "hex": "#fff3e8"
+            },
+            {
+              "xy": [
+                215,
+                650
+              ],
+              "rgb": [
+                248,
+                224,
+                210
+              ],
+              "hex": "#f8e0d2"
+            },
+            {
+              "xy": [
+                215,
+                750
+              ],
+              "rgb": [
+                248,
+                224,
+                210
+              ],
+              "hex": "#f8e0d2"
+            },
+            {
+              "xy": [
+                20,
+                600
+              ],
+              "rgb": [
+                255,
+                243,
+                232
+              ],
+              "hex": "#fff3e8"
+            },
+            {
+              "xy": [
+                410,
+                600
+              ],
+              "rgb": [
+                255,
+                243,
+                232
+              ],
+              "hex": "#fff3e8"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "route": "/wall",
+      "asset": "frontend/public/backgrounds/cute-wall-me-v1/wall-stationery.svg",
+      "actualProductionSha256": "1929fda18afe73000f79a44a7cb37c5504bee42d450bff343a562baa85e2e227",
+      "sourceColorsUnchangedFromClosedVectors": true,
+      "vectors": {
+        "bodyDefaultToken": {
+          "minimumUnblendedSvgPaintRatio": 7.362,
+          "browserComputedForegroundCaptured": false,
+          "closedSourceForegroundAssumption": "#201d1d"
+        },
+        "rootFocus": {
+          "minimumUnblendedSvgPaintRatio": 3.286,
+          "browserComputedForegroundCaptured": false,
+          "closedSourceForegroundAssumption": "#a2232b"
+        }
+      },
+      "actualPngBackgroundPoints": [
+        {
+          "width": 390,
+          "png": "candidate-wall-390.png",
+          "points": [
+            {
+              "xy": [
+                195,
+                550
+              ],
+              "rgb": [
+                255,
+                240,
+                222
+              ],
+              "hex": "#fff0de"
+            },
+            {
+              "xy": [
+                195,
+                650
+              ],
+              "rgb": [
+                255,
+                240,
+                222
+              ],
+              "hex": "#fff0de"
+            },
+            {
+              "xy": [
+                195,
+                750
+              ],
+              "rgb": [
+                255,
+                240,
+                222
+              ],
+              "hex": "#fff0de"
+            },
+            {
+              "xy": [
+                20,
+                600
+              ],
+              "rgb": [
+                255,
+                240,
+                222
+              ],
+              "hex": "#fff0de"
+            },
+            {
+              "xy": [
+                370,
+                600
+              ],
+              "rgb": [
+                255,
+                240,
+                222
+              ],
+              "hex": "#fff0de"
+            }
+          ]
+        },
+        {
+          "width": 360,
+          "png": "candidate-wall-360.png",
+          "points": [
+            {
+              "xy": [
+                180,
+                550
+              ],
+              "rgb": [
+                255,
+                240,
+                222
+              ],
+              "hex": "#fff0de"
+            },
+            {
+              "xy": [
+                180,
+                650
+              ],
+              "rgb": [
+                255,
+                240,
+                222
+              ],
+              "hex": "#fff0de"
+            },
+            {
+              "xy": [
+                180,
+                750
+              ],
+              "rgb": [
+                255,
+                240,
+                222
+              ],
+              "hex": "#fff0de"
+            },
+            {
+              "xy": [
+                20,
+                600
+              ],
+              "rgb": [
+                255,
+                240,
+                222
+              ],
+              "hex": "#fff0de"
+            },
+            {
+              "xy": [
+                340,
+                600
+              ],
+              "rgb": [
+                255,
+                240,
+                222
+              ],
+              "hex": "#fff0de"
+            }
+          ]
+        },
+        {
+          "width": 430,
+          "png": "candidate-wall-430.png",
+          "points": [
+            {
+              "xy": [
+                215,
+                550
+              ],
+              "rgb": [
+                255,
+                240,
+                222
+              ],
+              "hex": "#fff0de"
+            },
+            {
+              "xy": [
+                215,
+                650
+              ],
+              "rgb": [
+                255,
+                240,
+                222
+              ],
+              "hex": "#fff0de"
+            },
+            {
+              "xy": [
+                215,
+                750
+              ],
+              "rgb": [
+                255,
+                240,
+                222
+              ],
+              "hex": "#fff0de"
+            },
+            {
+              "xy": [
+                20,
+                600
+              ],
+              "rgb": [
+                255,
+                240,
+                222
+              ],
+              "hex": "#fff0de"
+            },
+            {
+              "xy": [
+                410,
+                600
+              ],
+              "rgb": [
+                255,
+                240,
+                222
+              ],
+              "hex": "#fff0de"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "limits": [
+    "Not measured rendered text/focus contrast; no browser or image generated.",
+    "Solid non-gradient paint bound applies to source colors on their own SVG field; ancestor opacity/theme/overlay inheritance still needs computed evidence.",
+    "Actual sampled lower Wall pixels all #fff0de corroborate insufficient playful lower coverage; artist correction pending.",
+    "Source focus-color bound cannot establish actual focused outline visibility, clipping or inherited focus color."
+  ],
+  "commandExitCode": 0
+}

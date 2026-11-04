@@ -104,7 +104,7 @@
   "limits": [
     "Static source validation only; no SVG decode or actual rendered contrast evidence",
     "Root alone integrates assets/imports and publishes; no root imports authored here",
-    "Corrected paint before/after390,360/430 and four focused Me links NOT_RUN; original390 evidence is separate",
+    "Actual corrected 390/360/430 and four focused Me links at390 are recorded separately in owner-native-02.json; this checker is static only",
     "Visual acceptance and physical-device/live-flow qualification remain unproven"
   ]
 }

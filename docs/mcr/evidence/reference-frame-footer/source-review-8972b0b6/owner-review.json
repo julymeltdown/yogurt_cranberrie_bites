@@ -1,0 +1,112 @@
+{
+  "task": "QA06 shared paint source validation",
+  "status": "PASS",
+  "mode": "QUALIFIED_INTEGRATOR_REUSE",
+  "reviewedAt": "2026-11-04T07:20:22.212858+00:00",
+  "source": "8972b0b634035055eb023dbc2f786e4463b172e5",
+  "rootWorktree": "/Users/lhs/Desktop/mcr-worktrees/fe-delivery-publish",
+  "scope": "Selected11testfiles/206tests include exact owner3contrast regressions; full frontend TypeScript; scoped lint includes exact new test. This is not the full unit suite or native visual acceptance.",
+  "artifacts": {
+    "report.json": {
+      "originalPath": "/private/tmp/mcr-composed-preferences-source03-results/report.json",
+      "bytes": 2594,
+      "sha256": "9829a052a3fff990624d1a7cf1908159854947a8c630461e3af277f95ab0f661"
+    },
+    "1.log": {
+      "originalPath": "/private/tmp/mcr-composed-preferences-source03-results/1.log",
+      "bytes": 255,
+      "sha256": "b103701dda7cdd67ec2fd69a4ba027f5ea3e8889436010c7081ed896c7b2835d",
+      "storedAs": "1.log.gz",
+      "decompressedByteExact": true,
+      "compressedBytes": 211,
+      "compressedSha256": "c838c96e66adc64e604c49a465f32976a79202fc61c214831a185ea0769dc92e"
+    },
+    "2.log": {
+      "originalPath": "/private/tmp/mcr-composed-preferences-source03-results/2.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "3.log": {
+      "originalPath": "/private/tmp/mcr-composed-preferences-source03-results/3.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  },
+  "sourcePins": {
+    "frontend/src/app/shell.css": {
+      "sha256": "c0b2052693ac51575b877714640beefbe4007f6a33c9b64482ea47aa8ed022ee",
+      "bytes": 12105,
+      "exactOwnerPostimage": true
+    },
+    "frontend/src/app/shell-chrome/shell-chrome.css": {
+      "sha256": "08614a9b3263d7cbb27af4d59aaabc0ee4db07943812faa0e04bdba7f720291d",
+      "bytes": 5451,
+      "exactOwnerPostimage": true
+    },
+    "frontend/src/shared/ui/concert-window/concert-window.css": {
+      "sha256": "ae2b0c9e1a1e638218823b7e6715a53b5d6af6020069e2c858bb3450da493d3f",
+      "bytes": 7210,
+      "exactOwnerPostimage": true
+    },
+    "frontend/src/app/shell-chrome/parade-footer.tsx": {
+      "sha256": "6f3b1f838987dbe470e1c92e589718d60de8d70ff7a1d369b0dc0607df3b9b41",
+      "bytes": 3030,
+      "exactOwnerPostimage": true
+    },
+    "frontend/src/app/__tests__/reference-frame-footer/background-contrast.test.ts": {
+      "sha256": "f38a7d0491537cfa7f4b28e35a39595504e14913bbf2462e84eb44666a142fb1",
+      "bytes": 1855,
+      "exactOwnerPostimage": true
+    }
+  },
+  "checks": {
+    "unit": {
+      "exitCode": 0,
+      "testFiles": 11,
+      "tests": 206,
+      "ownerContrastRegressions": 3,
+      "skipped": 0
+    },
+    "typescript": {
+      "exitCode": 0,
+      "project": "frontend/tsconfig.json",
+      "incremental": false
+    },
+    "scopedLint": {
+      "exitCode": 0,
+      "ownerFile": "frontend/src/app/__tests__/reference-frame-footer/background-contrast.test.ts"
+    }
+  },
+  "resourceQualification": "Executed by Root, not this owner. Report records16.16sec/20.04MiB peak/temporary+link cleanup; named resource allocation receipt remains with Root/21d. No independent owner queue or launch.",
+  "previousAttempts": [
+    {
+      "source": "44d168f25342c3dac2394f4d5da9adabd6544bc6",
+      "overall": "FAIL",
+      "tests": {
+        "passed": 183,
+        "failed": 3,
+        "skipped": 13
+      },
+      "reasons": [
+        "Wrong Python validator environment",
+        "Lazy account-route default1000ms wait"
+      ],
+      "typeLint": "NOT_RUN"
+    },
+    {
+      "source": "6eebba3e03910607007143a309b4c9aab4caa513",
+      "overall": "FAIL_BEFORE_TESTS",
+      "reason": "Runner setup used a package path absent from pnpm top-level layout"
+    }
+  ],
+  "ownerHelper": {
+    "commit": "c8c380ab",
+    "status": "UNEXECUTED_NOT_QUEUED",
+    "reason": "21d confirmed contrast tests in Root composed batch; duplicate execution withdrawn before any ACCEPT or launch"
+  },
+  "remaining": [
+    "Corrected all8panel responsive visual/character/focus/Auth evidence",
+    "Publish new tests and final owner docs/evidence",
+    "Fresh own final remote/ancestry/postimage verification and lease return"
+  ]
+}

@@ -1,10 +1,100 @@
 # Shared frame and footer — preserved baseline
 
-Status: **IN_PROGRESS**. The original frame baseline is published. Root captured
-the first background pass and corrected World/Map shared paint. Remaining panel
-follow-up, source-check receipt and final publication verification are pending.
+Status: **IN_PROGRESS — final publication/readback pending**. The bounded owned
+shared-background visual scope is **ACCEPTED** after direct inspection of Root's
+corrected60-image packet. Qualified source validation passes at8972b0b6.
+Shared CSS writes are stopped and the exact lease is returned to World/Root;
+this owner retains only its assigned documentation/evidence writer paths.
 This bounded QA06-HUMAN-FRAME-FOOTER-01 correction supports AR02/AR04 and does
 not close the original QA06, AR02, AR03, AR04 or any IN gate.
+
+## Final corrected saved-packet review
+
+Root retained the canonical packet in commit
+`5186f11017185a040e4ccde1c59589e140563ef0`, under
+[`cozy-backgrounds-v1/native-02`](../evidence/cozy-backgrounds-v1/native-02/capture-packet.json).
+Job `PANEL-CORRECTED-202611040733Z` actually ran
+07:38:12.062–07:40:02.112UTC. Production/fixture/assets are pinned to
+`8972b0b634035055eb023dbc2f786e4463b172e5`; runner revision is
+`e237572719602da6a1a08b7fe0579b0e9c96da1f`, with external driver SHA-256
+`58f553d9abfcfab1cac4e67ccf86c378493ec337d5c17f55749673957ba6dbde`.
+Raw report SHA-256 is
+`7f34e10279212d5f5d01017cbd644f02a33bd8939393b30818326ab2a489395b`.
+Its historical `CAPTURED_PENDING_OWNER_VISUAL_INSPECTION` status is preserved;
+the separate owner decision is recorded in
+[`corrected-panel-review-8972b0b6.json`](../evidence/reference-frame-footer/corrected-panel-review-8972b0b6.json).
+Root alone retains this packet. The owner created no duplicate report/PNG
+copies, browser job, helper run or resource holding.
+
+The owner directly viewed all60 saved PNGs and independently verified all65
+packet artifact hashes/bytes and729 loaded Git source/asset pins. All48 core
+cases have zero reported browser errors or horizontal overflow; all24 paired
+control, document-image, text and character-record comparisons are equal.
+The baseline uses the same8972 production/fixture source, restoring only four
+background integration files to7c; it is not a whole-app7c baseline. Meet
+typography is identical between the two modes.
+
+| Route | 360×844 | 390×844 | 430×844 | Source qualification |
+| --- | --- | --- | --- | --- |
+| Landing `/` | Paired | Paired | Paired |8972 corrected packet |
+| Login `/login` | Paired | Paired | Paired |8972 corrected packet |
+| Customize `/me/avatar` | Paired | Paired | Paired |8972 corrected packet |
+| Feed `/feed` | Paired | Paired | Paired |8972 corrected packet |
+| Meet `/meet` | Paired | Paired | Paired |8972 corrected packet |
+| Gifts `/gifts` | Paired | Paired | Paired |8972 corrected packet |
+| Wall `/wall` | Paired guard | Paired guard | Paired guard |8972; no editor claim |
+| Me `/me` | Paired | Paired + focus | Paired |8972 corrected packet |
+| World | Candidate viewed | Paired | Candidate viewed |4e491a45; exact four shared postimages |
+| Map | Candidate viewed | Paired | Candidate viewed |4e491a45; exact four shared postimages |
+
+The owned shared-header/perimeter decision is **ACCEPTED**: all three widths
+show a clean symmetric pastel perimeter, readable dark-berry header and stable
+control/frame placement. Warm paper and pastel scenery make the backgrounds
+noticeably softer and cuter. Characters, crops and the existing marching
+footer stay familiar and unchanged within this owner's source scope. No new
+decorative left accent bar was introduced. Leaf artwork and the complete
+collage-wide visual direction remain their owners' acceptance scope.
+
+Actual saved header pixels at every width retain ring `#a2232b` at(21,22),
+change the backing at(100,15) from `#191817` to `#251017`, and render pastel
+perimeter `#f1ccd9` at(6,6). BG-FOCUS-01 is rendered-fix verified:2.37→2.41:1.
+Both values remain below3:1, so this preserves baseline visibility without
+claiming full focus-contrast compliance. The four Me icon focus captures at390
+retain48×44 controls and the same3px solid outline/3px offset. Their sampled
+minimum contrast changes from2.29:1 to5.64/6.23/5.84/5.54:1. The owner checked
+all32 backing/focus samples against actual saved PNG pixels. The saved Me
+forced-colors/reduced-motion state and three Auth pending/error/options-
+unavailable states are readable in their actual390 captures.
+
+Landing records four CSS character spans with equal source hashes, geometry
+and crop/size; Customize4, Feed1, Meet3 and Me1 non-world canvas records also
+compare equal at390. Empty arrays do not certify character pixels, and these
+records are not comprehensive SVG/footer raster equality. Direct visual
+inspection and frozen-source/asset checks remain separate evidence.
+
+The targeted Community430 review found no concrete **shared-frame** clipping
+in Meet/Gifts/Wall. Those images capture title-button focus only. Community
+leaf-control focus contrast/clipping remains **OPEN**, and no Community
+forced-colors image exists in this packet; Me measurements do not close those
+issues. Root and the QA coordinator received this limitation directly. Meet
+content may extend below the viewport; horizontal-overflow checks do not
+certify offscreen focus traversal. No new capture was requested.
+
+This is actual application rendering with controlled synthetic HTTP/C05/local
+admission. Wall stays a guard. Other eras, live authority/API/multiuser flows,
+Profile/avatar save, the Wall editor and physical devices remain **NOT_RUN**
+or outside this decision. The separate World/Map reuse retains its original
+source/time qualifications below; later Map leaf changes are not certified by
+that cohort. The Root report records browser/server/temp cleanup; owner active
+jobs, dependency links and resource holdings are zero.
+
+No further owned application changes are needed. The shared CSS lease is
+returned; final Root publication of this review/document, source receipt
+`dd60770e` and the previously committed nine historical reference/reuse files,
+followed by fresh owner remote/ancestry/postimage verification, remains required
+before completing this development goal. This is a publication handoff, not
+an additional main-chat or scrum-lead approval gate. Older status statements
+below describe their actual historical cohorts.
 
 ## Current background-only source pass
 
@@ -59,9 +149,9 @@ other skins, real devices and live service flows remain unqualified here.
 The new `background-contrast.test.ts` adds two CSS-backed contrast regressions
 and a negative control reproducing the observed first-pass failure. It checks
 the frozen red ring and heading text against their historical background
-pairings. It is prepared for Root's next source-check cohort and is currently
-**NOT_RUN**. It is separate from screenshot acceptance and full accessibility
-verification; no extra broad suite or native allocation has been launched.
+pairings. All three regressions are included in Root's passing8972b0b6 source
+cohort, detailed below. They are separate from screenshot acceptance and full
+accessibility verification; this owner launched no duplicate source/native job.
 
 The fourth paint was left untouched until World explicitly recorded the exact
 `.world-shell::after` background-color/image/size extension at `2ccf628c`.
@@ -100,7 +190,7 @@ Actual390 Map PNG samples retain red ring `#a2232b` at(21,22), while its
 background at(230,30) changes from `#191817` to the corrected `#251017`.
 Calculated ring contrast is2.37→2.41:1. The pastel perimeter is also actually
 rendered. BG-FOCUS-01 is therefore rendered-fix verified for this Map cohort;
-the targeted test execution and remaining panel follow-up remain pending.
+the targeted tests now pass as recorded below. Remaining panel follow-up is open.
 
 This uses the actual root/Places/Phaser renderer with synthetic C03/C05
 map7005 and NOT_ADMITTED provenance. Other eras, live authority and devices
@@ -122,9 +212,36 @@ for byte. Commands and hashes are recorded in
 
 This verifies publication of application source. The new regression/review
 handoff is integrated asb4258353 but is not yet on that master; the World/Map
-review handoff afa20482 also awaits publication. Targeted test execution and
-remaining panel follow-up are still pending. The goal and CSS lease remain
+review handoff afa20482 also awaits publication. Targeted tests now pass;
+remaining panel follow-up and final documentation publication are still pending.
+The goal and CSS lease remain
 active until those gates and final remote evidence/doc verification complete.
+
+## Qualified source validation
+
+Root source `8972b0b634035055eb023dbc2f786e4463b172e5` passed the composed
+checks at07:16:56.885–07:17:13.006UTC:206 tests /11 files, full frontend
+TypeScript with incremental output disabled, and scoped lint, all exit0.
+The actual Vitest command includes `background-contrast.test.ts`; all three
+owner contrast regressions pass in that cohort. Scoped lint includes that same
+file. The owner checked all four application postimages and the new test
+byte-for-byte against the tested Git source. This qualifies the integrator's
+results for the shared paint scope without a duplicate full TypeScript run.
+
+[`source-review-8972b0b6`](../evidence/reference-frame-footer/source-review-8972b0b6/owner-review.json)
+retains the byte-identical original report and three logs (the unit log is
+losslessly gzipped), commands/exit codes,
+source hashes, check scope and cleanup. The source workflow took16.16seconds,
+peaked at21012480 new bytes and recorded its owned temporary path and dependency
+link removed. The named resource receipt remains with Root/BackendSL21d.
+This is selected test coverage, not the entire unit suite or browser acceptance.
+
+The first batch failed on the Python validator environment and lazy-route wait;
+the second failed during runner package-path setup before tests. Those attempts
+are not relabeled as passes. Root corrected the runner and used the retained
+installed dependencies. Owner helperc8c380ab was prepared concurrently but never
+queued, accepted or launched after21d confirmed the shared Root batch. This
+owner has still created no native/build/install/browser process or resource hold.
 
 ## Superseding human direction — 2026-11-04 06:10 UTC
 

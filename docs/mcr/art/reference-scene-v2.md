@@ -731,3 +731,52 @@ consumer extension. Generated source differences do not establish visible
 in-app era distinction. Actual REVENGE/DANGER390px World/Map scenes, relevant
 360/430px views, all-ten background acceptance and original functional/live/
 device/public-flow obligations remain open under the same unfinished goal.
+
+### ART-BG-ERA-PUB-01 publication verification
+
+Artist independently verified publication at 2026-11-04T07:58:07Z from
+`codex/mcr-art-map-cozy-v1`, with clean HEAD
+`aa7d09a498f5d6e0c5c30294155d7a4e55af6bf6`. The original unfinished goal
+remains `blocked`; this receipt does not reset or complete it.
+
+Observed source, published mapping and remote master respectively:
+
+- Source: `aa7d09a498f5d6e0c5c30294155d7a4e55af6bf6`.
+- Published mapping: `0e156ae686a9cae71704bc096b2e488b9a81ae82`.
+- Master: `aea02a262f7d834be7ef2267368812520a5d9c0c`.
+
+Commands executed in the ART checkout, with observed results:
+
+- `git fetch origin master`, `git rev-parse origin/master` and
+  `git ls-remote origin refs/heads/master`: exit 0; fetched and independently
+  advertised master both equal the master SHA above.
+- `git rev-parse --verify '0e156ae6^{commit}'`: exit 0; resolved the full
+  published mapping above.
+- `git diff-tree --no-commit-id --name-only -r aa7d09a498f5d6e0c5c30294155d7a4e55af6bf6`:
+  exit 0; exactly seven paths: this document and the source prefix's README,
+  presentation, handoff, era provenance and two new era atlases.
+- A `python3` verifier invoked `git show <ref>:<path>` through
+  `subprocess.check_output`, compared raw bytes, and used `hashlib.sha256`
+  against `handoff.json` pins: exit 0. All seven changed postimages match at
+  source, mapping and master. All thirteen payload byte counts and hashes pass
+  independently at each ref, 39/39 checks. The identical handoff is 3174 bytes,
+  SHA256 `a9f493017a0780d2a92d3376fbdf2c45cffe6570cd5948786a1c1283c7334978`.
+- The same verifier compared all eight original PARADE inputs (source sheet,
+  PARADE atlas and ground, registration, SVG, ground provenance, prompt and
+  build recipe): 8/8 byte-identical across original source `70f22a68`, original
+  publication `97c65b8e`, latest source, latest mapping and master; exit 0.
+- `git merge-base --is-ancestor <older> <newer>`: exit 0 for original source
+  `70f22a68` to latest own source, original published mapping `97c65b8e` to
+  latest published mapping, and both published mappings to observed master.
+  Each original own source commit (`70f22a68` and `aa7d09a4`) to master returns
+  exit 1, as expected for these separately published mappings. Earlier
+  "source/master ancestry" shorthand refers to mapped publication ancestry;
+  it must not be read as original source commits being master ancestors.
+
+This receipt changes only this document. Source files, metadata and media stay
+frozen. No Root tests, consumer/runtime checks, build execution, image decoding,
+new-era pixel inspection, browser, image generation, capture or resource
+allocation occurred. New three-era visual inspection is `NOT_RUN`; the pending
+36-PNG packet is a separate assignment. No resources are held. Publication byte
+proof does not establish all-era visual acceptance or resolve the original
+functional/live/device/public-flow obligations.

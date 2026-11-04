@@ -12,7 +12,7 @@ unreconciled, and all 5 IN gates remain open. The [112-row register](task-progre
 states the evidence and limitations. Historical 11/112 statements later in this
 document are not current implementation progress, and no effort-weighted
 completion percentage is asserted.
-Five stale backend coverage labels now reflect partial implementation; this adds no completed tasks. IN01 is IN_PROGRESS after the current-source partial live run, with customization504 and genuine-expiry refresh still unresolved.
+Five stale backend coverage labels now reflect partial implementation; this adds no completed tasks. IN01 is IN_PROGRESS after the current-source partial live run, with customization504 unresolved. Natural-expiry observation is NOT_RUN but is not an extra original IN01 criterion; no mandatory900-second run or new renewal/reload behavior is authorised.
 
 The current coordination model has no king or SL technical review stage.
 Developers implement, validate, resolve technical interfaces and commit their

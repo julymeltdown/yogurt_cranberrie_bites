@@ -1,6 +1,9 @@
 # ART-SCREEN-ID01 — identity background adoption
 
-Status: **IN_PROGRESS**. Implementation and rendered visual acceptance are unfinished.
+Status: **INTEGRATED**. The four-screen background implementation and scoped
+visual checks pass on frozen production `8972b0b6` at 360/390/430px. The final
+owned evidence handoff and its publication receipt remain to be delivered.
+This does not certify full IA, live-service, device or release acceptance.
 
 ## Ownership and baseline
 
@@ -288,3 +291,134 @@ all four original outline boxes lie inside the shelf and reproducing the
 2.288089 fallback and 4.583275 conservative shelf ratios. The exact CSS diff
 is one fallback declaration across four assigned CSS/doc/evidence paths;
 `git diff --check` exits 0. No browser or capture job was started.
+
+## Corrected native02 disposition
+
+The owner directly inspected the actual immutable packet
+`5186f11017185a040e4ccde1c59589e140563ef0`, retained in
+`docs/mcr/evidence/cozy-backgrounds-v1/native-02/`. Its production/fixture/asset
+revision is `8972b0b634035055eb023dbc2f786e4463b172e5`; runner revision is
+`e237572719602da6a1a08b7fe0579b0e9c96da1f`; driver SHA-256 is
+`58f553d9abfcfab1cac4e67ccf86c378493ec337d5c17f55749673957ba6dbde`.
+Job `PANEL-CORRECTED-202611040733Z` ran on 2026-11-04 from
+07:38:12.062 to 07:40:02.112 UTC, exit 0, Chrome `156.0.8078.80`.
+Raw report SHA-256 is
+`7f34e10279212d5f5d01017cbd644f02a33bd8939393b30818326ab2a489395b`;
+capture-manifest SHA-256 is
+`ba34f05a25a30b42475fa13c1349576bdc0480a69eb4aeec1d444b7d91dc16fe`.
+
+The comparison restores only the same four paint integration files to
+`7c25078f` for baseline, keeping all other production and fixture source at
+`8972b0b6` in both modes. It uses actual application components with controlled
+synthetic HTTP/C05/local admission. It is not a whole historical revision
+replay or live-service/device qualification.
+
+All 24 owned core PNGs were viewed in order: 390px before/after first, followed
+by 360px and 430px pairs. The eight actual Me icon-focus PNGs, Me forced-colors
+PNG and three Auth-state PNGs were also viewed: **36 owned captures** total.
+The source collage JPEG (`2b3988d5…f12d23`) and the preserved ten-screen PNG
+(`d9a8fae2f96a82253542019ab673589b3938627956eace15c8594c702b5c4617`)
+were reinspected. The following disposition applies to background adoption
+only, within the frozen character, geometry, type and control constraints.
+
+| Route | 360 / 390 / 430px visual disposition |
+| --- | --- |
+| A01 Landing | PASS: broad dusty-rose/plum fields, large cream moon and blush/lilac clouds visibly soften the former black cemetery poster and the collage. The light wordmark and copy stay on dark fields. The four selected characters and entry action retain their composition. |
+| A02 Sign in | PASS: broad vanilla/peach/lilac/sage paper, top clouds and lower garden replace the cemetery scenery across the form. Headings, labels, actions and provider-unavailable copy remain readable. |
+| U02 Customize | PASS: the formerly unpainted lower body now has large peach/lilac/cream fields and a soft garden edge at every width. This is a dominant surrounding-paper change, rather than tiny ornament. The preview, four direct character canvases, choices and controls remain intact. |
+| U01 Me | PASS: berry upper paper, a light cloud shelf behind all four header links, and broad blush scrapbook paper/clouds visibly soften both the old UI and collage. Bottom placement exposes the large ornament in the sparse lower body. The portrait, controls and existing footer silhouette remain intact; unavailable activity stays truthful. |
+
+No additional asset or CSS defect was found. The Entry asset owner separately
+reported the same all-width background disposition for A01/A02/U02 and no
+required source-art revision. The earlier Customize surround and Me placement/
+focus-backing findings are resolved by actual corrected composition, not merely
+by the presence of their URLs.
+
+### Preservation and accessibility evidence
+
+`evidence/art-screen-id01/owner-native-02.json` records the exact case data and
+artifact/provenance checks. Its reproducible read-only auditor is:
+
+```sh
+python3 docs/mcr/evidence/art-screen-id01/validate-native02.py
+```
+
+It exits 0, independently verifying all 60 packet artifacts against their
+manifest and immutable Git blobs, all 729 recorded loaded source/asset pins
+against Git objects, and all 12 owned route/width before/after pairs. For those
+pairs the complete recorded control rectangles/font/color/state, body text,
+HTML images and actual character records are identical. All recorded controls
+are at least 44×44px, with 8 Landing, 9 Sign in, 15 Customize and 15 Me controls
+per case. There are no recorded errors or horizontal overflow. The ordinary
+core check records one Tab and a solid focus outline; it does not certify a
+complete keyboard traversal of every product flow.
+
+Actual character coverage is **four Landing CSS spans**, zero Sign in character
+elements, **four Customize direct canvases** and **one Me direct canvas**, in
+each mode and at each width. Canvas RGBA hashes, backing dimensions and display
+rectangles match exactly. All four Landing spans match their resolved
+36,030-byte selected sprite source (`e124c888…d7efe`), rectangles, UV positions,
+background sizes and pixelated rendering. The earlier coordination claim that
+all span counts were zero was corrected by Root; the raw report already had
+the four nonempty Landing records and was not rewritten. Empty `images` arrays
+are not used as character proof. A direct Git diff from `7c25078f` to `8972b0b6`
+also finds no changes under the avatar entities/assets, avatar feature, public
+UI or Auth UI source paths.
+
+All four Me header links were actually focused at 390px. Their unchanged 3px
+red outlines with 3px offset remain visible and retain their geometry. Exact
+PNG pixel reads reproduce the four-side sampled minimum contrast values:
+
+| Header link | Baseline minimum | Corrected minimum |
+| --- | --- | --- |
+| Edit profile | 2.2881:1 | 5.6374:1 |
+| Dress up | 2.2881:1 | 6.2343:1 |
+| Manage private social links | 2.2881:1 | 5.8360:1 |
+| Sharing requests | 2.2881:1 | 5.5357:1 |
+
+The 360/430px core PNGs separately show the same link geometry and light shelf.
+Read-only samples at their outline footprint coordinates have backing contrast
+of at least 4.8097:1 to the unchanged red. Those are backing-only checks, not
+additional actual focused-state captures. The 390px forced-colors/reduced-motion
+capture shows a visible system focus ring and readable controls/text; it is not
+an all-screen forced-colors audit.
+
+Actual 390px Auth pending, denied-credentials error and options-unavailable
+captures show truthful status text, the appropriate disabled controls and
+visible focus. Recorded targets remain at least 44px and have no page errors.
+Observed pending/error glyph cores (`#791d25`) against the sampled paper fields
+give at least 8.1389:1; unavailable status text gives at least 13.8502:1.
+Other bounded PNG samples include Landing tagline 9.2058:1, Sign in heading
+15.9312:1, Me name 9.1294:1, Me bio 15.0424:1 and Customize Random 14.2484:1.
+Disabled Save remains 4.4972:1, not rounded into a 4.5:1 pass. These are selected
+observed glyph/backing samples, not a global accessibility certification or
+evidence of an enabled Save/live account flow.
+
+### Source cut and delivery
+
+The PostCSS-imported identity/community CSS leaves are absent from the raw
+Vite load-hook list. Supplemental attestation
+`2579ac15cb1d934de3f7a081cc7f2fb96498b5ac` records their identical tracked
+runner/production blobs. The auditor independently verifies those blobs,
+hashes and byte counts, the retained `guard.py.snapshot` prebrowser clean-HEAD/
+empty-status assertions, and the `guard.json` successful e237 result. Combined
+with the observed paint and Root's sole-writer/no-source-mutation receipt, this
+supports capture cut identity by clean-checkout inference. It is explicitly
+**not** an individual imported-leaf Vite load-hook read receipt; the raw 729
+records remain unchanged.
+
+The owned CSS and all seven closed assets are byte-identical on published
+master `aea02a262f7d834be7ef2267368812520a5d9c0c`; frozen `8972b0b6` is an
+ancestor of that publication (exit 0). Source deliveries are `e0707c88`
+(initial CSS), `3b429555` (Customize outer paper), `7c55b4e2` and `948fdeea`
+(Me outer paper/placement), `21493621` (closed light-shelf asset), and
+`f86c99bd570f5d104b6d9d6093c821f923fd8cce` (fallback and revised pins).
+This owner's original implementation handoffs through `d2f9c8e5` remain
+preserved. Root owns final publication of this evidence handoff.
+
+`validate-source.py` also exits 0 for the unchanged 20-selector/seven-asset
+boundary; `git diff --check` exits 0. No new browser, native, build, test matrix,
+packet restoration or artifact copy was started by this owner. Browser/server
+closure and temp cleanup are recorded by the original allocated job. No live
+multiuser flow, physical device, Profile/avatar save, Me504 behavior, whole IA
+acceptance or release acceptance is claimed by this bounded background task.

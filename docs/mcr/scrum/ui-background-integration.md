@@ -1,9 +1,11 @@
 # UI background integration coordination
 
-Date: 2026-11-04 (Asia/Seoul). Status: **IN_PROGRESS**. The coordination goal is
-actually ACTIVE and unbudgeted. All ten screens have an initial actual 390px
-capture, but corrected panel validation, remaining widths, three-era completion,
-owner visual dispositions, publication receipts and fixes remain open.
+Date: 2026-11-04 (Asia/Seoul). Delivery status: **IN_PROGRESS**. The fresh
+corrected eight-panel packet resolved the former allocation dependency; Root and
+the frontend king resumed this same assignment. The full goal is unfinished and
+unbudgeted. Stored goal metadata still reads BLOCKED; the available status API
+cannot reset it to active. No goal was replaced or falsely completed. Corrected
+panel owner dispositions, three-era completion, publication and fixes remain open.
 
 ## Direction and immutable boundaries
 
@@ -67,20 +69,21 @@ Artist231's single scenery tuple serves both World and Map.
 
 ## Ten-screen evidence and open work
 
-| Screen | Initial actual 390px result / owner | Remaining scoped evidence |
+| Screen | Actual packet / owner finding | Remaining scoped evidence |
 | --- | --- | --- |
-| Landing A01 | Captured; ID01/Entry report clear rose/cloud/moon change. | Fixed-cohort 360/430, copy contrast, CSS-rendered character spans and actual controls. |
-| Sign in A02 | Captured; owner reports clear pastel change. | Relevant auth/unavailable/error states, contrast, 360/430 and preservation. |
+| Landing A01 | Initial owner reports clear rose/cloud/moon change; corrected native02 pairs captured at all three widths. | Fresh owner visual/contrast disposition and functional compatibility limits. |
+| Sign in A02 | Initial owner reports pastel change; corrected native02 includes all widths plus three Auth states. | Fresh owner visual/state disposition and functional compatibility limits. |
 | World W01 | PARADE 390px pair plus 360/430 candidates passed per Root; artist confirms warmer cue at all three widths. | Matched 360/430 before/after evidence, REVENGE/DANGER adoption/captures and publication. |
 | Map W02 | Same width coverage; four 44px targets match; artist reports no new atlas defect across widths. | Matched 360/430 before/after evidence, olive fit-band disposition, remaining eras and publication. |
-| Customize U02 | Captured; lower unchanged paper exposed a real gap. | Committed outer-paper fix recheck, actual wrapper, character canvas and 360/430. |
-| Feed F01 | Captured; SVG letterboxing and old lower paper found. | Fixed SVG/body cohort, contrast, preservation, navigation and 360/430. |
-| Meet M01 | Captured; first owner comparison reports intended broad treatment. | Responsive/state/contrast/navigation evidence; no broad acceptance from one view. |
-| Gifts G01 | Captured; SVG letterboxing and old lower paper found. | Fixed SVG/body cohort, stock/access guards, navigation and 360/430. |
-| Wall R01 | Captured; first owner comparison reports intended guarded stationery. | Truthful guard and mural preservation, navigation, contrast and 360/430. |
-| Me/Profile U01 | Captured; upper change present, lower coverage/focus gaps found. | Outer placement, new focus asset/fallback, four focused links, canvas and 360/430. |
+| Customize U02 | Original lower-paper gap fixed in source; native02 has all width pairs and four visible 390px canvases preserved per Root. | Fresh owner visual disposition of lower coverage and compatibility limits. |
+| Feed F01 | Original fit/lower-paper gap fixed in source; native02 all width pairs and one visible 390px canvas preserved per Root. | Fresh owner visual/contrast disposition and navigation evidence. |
+| Meet M01 | Native02 all width pairs; three visible 390px canvases preserved per Root. | Fresh owner visual/state/contrast disposition and navigation evidence. |
+| Gifts G01 | Original fit/lower-paper gap fixed in source; native02 all width pairs. | Fresh owner visual/contrast disposition, stock/access limitations and navigation evidence. |
+| Wall R01 | Native02 all width pairs retain truthful guard; owner delivered taller same-URL field fix `18e6e4db`. | Closed consumer pins, affected-width capture and owner disposition; guard cannot certify live mural content. |
+| Me/Profile U01 | Native02 all width pairs, one visible 390px canvas and four focus contrast checks passed per Root. | Fresh owner visual/coverage/focus disposition; no live Profile-save claim. |
 
-No all-ten visual acceptance is claimed. Relevant 360/430 background comparisons
+No all-ten visual acceptance is claimed. Corrected panel images exist at all
+widths, but source-owner visual dispositions and World/Map matched comparisons
 remain open. Owner-chosen checks must retain actual FEED/WALL/MEET/GIFTS
 navigation/back/guards, one Phaser/connection per active shell, loading/failure
 cleanup, keyboard/focus, contrast and 44px targets. Synthetic flows do not close
@@ -112,7 +115,7 @@ No rerun, reconstruction or replacement timestamp was required.
 
 Important correction: the first packet's image arrays are empty for these routes.
 HTML-image equality does **not** prove actual canvas/CSS-span character pixels.
-Root owns explicit nonempty coverage in the next allocated check. ID01's later
+Root's corrected native02 packet now supplies explicit canvas coverage. ID01's earlier
 pixel comparison proves only the opaque Me portrait interior and Customize
 preview interior match in the first 390px pair. Do not generalize that result.
 
@@ -120,9 +123,93 @@ Concrete fixes are source-owned: Community SVG aspect handling prevents cloud
 letterboxing; COM01 broad body rules cover Feed/Gifts lower areas; ID01 outer
 paper and placement cover Customize/Me; Wall/Me focus source paints light paper
 behind four Me focus outlines while preserving upper art and focus styles.
-Root must capture the affected focused state, not close it from color/source
-checks. The focus asset also requires ID01's exact fallback/pin update before
-this cohort's next capture. Original findings remain immutable.
+The corrected native02 packet captures the affected focused states after the
+source asset and ID01 fallback/pin fix. Original findings remain immutable.
+
+Root froze the corrected panel matrix in
+`8972b0b634035055eb023dbc2f786e4463b172e5`, retained across publication merges
+by `e237572719602da6a1a08b7fe0579b0e9c96da1f`. Reported combined checks passed:
+206 tests in eleven files, full TypeScript and scoped lint.
+
+## Corrected panel packet: actual, pending owner visual disposition
+
+Root committed immutable evidence `5186f11017185a040e4ccde1c59589e140563ef0`.
+Canonical retained prefix:
+`/Users/lhs/Desktop/mcr-worktrees/fe-delivery-publish/docs/mcr/evidence/cozy-backgrounds-v1/native-02/`.
+It holds `report.json`, `capture-packet.json`, baseline/candidate PNGs. Raw report
+SHA-256: `7f34e10279212d5f5d01017cbd644f02a33bd8939393b30818326ab2a489395b`.
+Source/fixture/assets are frozen `8972b0b6`, runner `e2375727`, driver `58f553`.
+Actual run: 07:38:12.062–07:40:02.112 UTC, 110.49 seconds, exit 0.
+
+Root reports all sixty PNGs retained: 48 core captures (eight screens × three
+widths × two modes), eight Me focus, forced-color and three Auth states. All 24
+matched route/width pairs preserve controls, type, text, HTML images, and direct
+visible character-canvas RGBA, rectangles and dimensions; zero page errors or
+overflow. Actual 390px canvas counts are Customize 4, Feed 1, Meet 3, Me 1; the
+other four routes explicitly have no canvas. Root subsequently corrected its
+written CSS-span summary: Landing has four CSS-rendered character spans at each
+width, all identical to baseline. Raw data/assertions were already correct; the
+earlier claim of zero CSS spans everywhere was a reporting error and is withdrawn.
+Both actual canvas and CSS-span coverage are explicit, not empty-array inference.
+The four Me outline minimum contrast ratios are 5.637/6.234/5.836/5.536, each at
+least baseline. Forced-color and Auth pending/error/options-unavailable states
+are actual captures. Root independently checked all sixty files and 729 loaded
+Git pins; its full resource release was 07:40:02.268 UTC. No owner browser,
+restoration, copy or recapture is requested.
+
+This is controlled synthetic HTTP/C05/local admission only. The Wall guard is
+still a guard; no live `/me` 504, Profile-save, multiuser or device claim follows.
+Raw status remains `CAPTURED_PENDING_OWNER_VISUAL_INSPECTION`. UI SL tracks the
+developer report without inspecting implementation, report assertions or images.
+A first publication check at master `175112b2` returned ancestry 1. A subsequent
+fresh fetch now finds `aea02a262f7d834be7ef2267368812520a5d9c0c`, and
+`5186f110` ancestry is 0: the corrected packet is published. Screen Art SL
+reactivated the original five owners for bounded visual/metadata/fix handoffs.
+UI SL routed concrete
+functional compatibility gaps through Social/World/Community SLs to existing
+developers; the leads do not review images, code or tests, and no second browser
+or mandatory approval stage is introduced.
+
+UI SL's working activity snapshot confirmed all five original panel owners
+actually active on native02. Entry reports the intended three-screen change at
+all widths and readable captured Auth states, pending its final pins/disposition.
+ID01 reports broad Customize/Me coverage and a visible light Me shelf, with final
+width/state checks ongoing. Community art reports corrected full-width clouds
+and lower Feed coverage at 390px, with other widths still being checked. Wall/Me
+reports Me's larger bow/cloud field and focus shelf visible; mostly plain lower
+guarded Wall was initially under its width assessment. Owners subsequently
+classified it as a remaining background defect. The original Wall asset owner
+is adding broad low-contrast shapes at the same URL; this is an actual source
+fix assignment, not a lead visual verdict. Screen SL coordinates closed new
+asset pins with COM01's owned checker/documentation and Root, preserving the old
+immutable native02 cohort. Root chooses the finite affected-width follow-up
+and community focus measurements; no extra source writer or full-matrix rerun
+is imposed by this SL.
+The asset owner has now delivered
+`18e6e4db2f2e6384c796453d6e63caedc11875e8`; COM01 is updating its owned pins and
+evidence. Source validation does not establish the changed Wall's visual result:
+the affected 360/390/430 captures and owner disposition remain required.
+COM01 reports all 24 owned core images inspected at all widths and no CSS/asset
+defect requiring a change. It separately reports only first-Tab outline-style
+evidence on COM routes: rendered focus contrast/clipping are not measured. The
+owner sent that concrete coverage gap to Root; it remains required work, distinct
+from the Me four-link focus measurements and from completed background checks.
+These were attributed partial owner findings, not an SL visual inspection.
+The subsequent clean committed handoffs are Entry `44628521`, Community
+`f297b8fa`, ID01 `45082068`, COM01 `f414d695` plus taller-Wall pin consumption
+`58cd06e5`, and Wall/Me source fix `18e6e4db`. Entry and ID01 explicitly report
+their scoped all-width visual checks passed without further artwork/CSS fixes.
+COM01 reports the taller Wall works with unchanged consumer layout geometry;
+its updated source pin is closed. The new same-URL SVG is 390×780, 4,500 bytes,
+SHA-256 `22e2de672776682693bca71c57f501f2450bc9a28bc6314df44c26d6d193efc7`.
+Screen SL reports all five clean handoffs delivered directly to Root and all
+five archived again with full unfinished goals preserved. UI SL's fresh activity
+snapshots confirm all five notLoaded after that archival; an interrupted turn
+from archival is not inferred to invalidate the delivered handoff. Screen SL
+retains exclusive reactivation management for actual new packet/publication input.
+Affected Wall captures, finite Community text/focus/summary-target/forced-color
+evidence, relevant owner dispositions and natural publication/readbacks remain
+required. No whole sixty-image rerun or source proposal approval is imposed.
 
 ## World/Map source and first actual capture
 
@@ -170,9 +257,12 @@ separate worker browser is requested. Fixed-panel coverage uses the same distinc
 UI SL's commit-log/ancestry check confirms published source
 `97c65b8e8120eb46e72c958d1816383f31689378` and descriptor consumer
 `423b9113ccf0da0dc7537d2a194c0e27e1c04a9c` on `origin/master` (exit 0).
-Evidence commit `a49e18ef` was not yet an ancestor at that check (exit 1), so its
-publication remains open. This distinguishes source publication from evidence
-delivery and visual completion.
+The earlier evidence-publication gap is now closed: a fresh fetch found
+`origin/master` at `e237572719602da6a1a08b7fe0579b0e9c96da1f`, and ancestry
+checks for that checkpoint and `a49e18ef` both exited 0. The incumbent-Phaser
+probe `2de410a33ff697246c8195b7d844c0721d9e252c` is also in its published log.
+This proves delivery of the original PARADE packet, not the pending matched
+360/430 pairs or new-era qualification.
 
 Historical Map before: `6ca52f8851473090479f1c13a33e879b6cd099d0`, captured
 2026-11-04 15:05:14 KST, synthetic 390px, at
@@ -192,9 +282,28 @@ their totals are 2,027,630 and 2,029,289 bytes, both below 2 MiB.
 recipes and unchanged alpha; actual full release was 07:01:02 UTC, with
 2,405,246 changed output bytes, no temporary bytes or remaining owned process.
 No generation/browser/server/ground export occurred. Root received the exact
-technical handoff directly; era consumer adoption, publication and actual native
-REVENGE/DANGER captures remain open. Per-era frame coordinates differ, so the
-new source does not imply automatic consumer admission.
+technical handoff directly. Per-era frame coordinates differ, so source closure
+alone did not automatically admit the consumer. Root's earlier local import
+`26162a86` and prepared consumer `3c9bea05` were subsequently published as source
+`0e156ae686a9cae71704bc096b2e488b9a81ae82` and consumer `32ce34dd`, with sealed
+consumer/source proof `2579ac15cb1d934de3f7a081cc7f2fb96498b5ac`. Fresh master is
+`aea02a262f7d834be7ef2267368812520a5d9c0c`; UI SL's ancestry checks for source
+and proof both exited 0. Root reports all seven source postimages and thirteen
+payload pins match; Artist231 performs its own source-publication verification.
+`ROOT-ERA-SOURCE-202611040744Z` fully released after 121 tests, full TypeScript,
+scoped lint and thirteen-pin checks passed per Root.
+
+The new World/Map matrix is 36 PNGs in eighteen contexts: paired baseline and
+candidate at all three widths for all three eras, plus owner-chosen route/back/
+focus-return checks. Fresh `ERA-WORLD-MAP-NATIVE-202611040754Z` is an actual
+offer to Root. Root now reports all thirty-six captures passed: each era and
+width preserves actual character textures/geometry, camera, labels and 44px
+targets; each era's four feature destinations/history focus-return checks pass,
+and every Map matches the independent 51-object composition. These are controlled
+fixtures, not live/device evidence. Immutable packet ref, actual release receipt,
+artist's visual inspection and publication are not yet recorded here; no visual
+acceptance follows from the runtime assertions. UI SL routed the real ready
+related packet to World Art SL for the same artist after source-proof closure.
 Same artist/branch/worktree; original aligned BLOCKED goal metadata is preserved
 without false completion or reset while explicitly assigned work continues.
 
@@ -207,10 +316,17 @@ They do not restore sparse PNGs, launch browsers or loop on unchanged artifacts.
 All capture/export/output jobs use 21d's fresh named offer and actual accept/release.
 Ready panel captures need not wait for World/Map or all ten screens; no full-wave
 barrier and no automatic unnecessary full matrix. Remaining widths still apply.
+After repeated composed-run setup fixes and added runtime work, UI SL routed the
+scheduling dependency to the frontend king. The king's actual follow-up set a
+finite corrected eight-panel candidate boundary with Root, separate from
+REVENGE/DANGER and unrelated settings work. This is a delivery scheduling
+decision, not a lead validation gate or proof that the new packet has run.
 
 Screen SL preserved clean source receipts and archived idle waiters. Concrete
 focus work correctly reopened ID01, then its clean handoff closed and all five
-are archived again; UI SL checked the current archived-chat listing:
+were archived again; UI SL checked that archived-chat listing. This is the
+preserved pre-native02 roster; Screen SL now owns reactivation against the actual
+fresh packet, so these archive entries are historical rather than current claims:
 
 | Owner | Preserved head / goal | Current resource disposition |
 | --- | --- | --- |
@@ -226,6 +342,11 @@ release; UI SL independently confirmed the actual archived listing. Its original
 unfinished BLOCKED goal was preserved. Reopen the same context only for a concrete
 master-publication receipt requiring source-owner pin/ancestry checks, a fresh
 retained era adoption packet or an actual source finding. No unchanged polling.
+World Art SL now actually unarchived the same artist for
+`ART-BG-ERA-PUB-01`: its own fresh source/master verification and existing ART
+document receipt only. A fresh active turn is confirmed; no media/native job or
+new writer is authorized by that source-publication assignment. Actual goal
+readback remains the artist's responsibility, with no false completion/reset.
 Artist231's era source scope is outside the panel waiting roster. Reuse context for
 concrete fixes, preserve scopes, and never create duplicate writers or browser jobs.
 Managed checkout materialization needs a fresh check on reactivation: ID01's
@@ -245,7 +366,34 @@ paths, reconciled peer history and verified non-force ancestry. No king/SL revie
 or acknowledgment is required. Source publication and scoped fixture evidence do
 not complete the 112 required tasks, 61 IA entries or real release gates.
 
-This goal remains ACTIVE until all ten background adoptions, relevant 390/360/430
+Root published this document's `bb0fafb9` snapshot via `8d684022` in checkpoint
+`e2375727`. UI SL's fresh fetch and ancestry checks for the checkpoint, original
+PARADE evidence and `8d684022` all exited 0. Git blob IDs for the owned document
+at `bb0fafb9` and `8d684022` both equal
+`06e268897a4180284a06450cab874d66c638307e`, independently confirming the exact
+delivered postimage. Later finite-boundary/current receipt notes remain for the
+next natural documentation publication; no lead publishing queue is introduced.
+
+## Resumed assignment and preserved scope
+
+The prior shared-browser dependency persisted for three consecutive goal turns;
+UI coordination recorded BLOCKED in `cf8f879e` and Screen Art SL in `507474ae`,
+preserving the complete assignment. IN01's exclusive ready allocation was real,
+not a speculative full-wave barrier. Root's actual completed native02 packet now
+resolves that dependency. Root and the frontend king explicitly resumed this
+same context; Screen Art SL is likewise working again. The stored goal metadata
+still reads BLOCKED because no available status tool can resume it. Work proceeds
+within the original unfinished objective without creating/replacing a goal or
+pretending completion. Any renewed blocked audit starts fresh after this input.
+
+Screen Art SL owns relevant panel-owner reactivation; World Art SL/Artist231
+handles actual new-era adoption/publication input. Reuse the original context
+and exclusive branches, checking materialized checkouts before any write. Root
+remains sole capture custodian and publisher. The separate 36-image era matrix,
+owner visual/fix handoffs and publication receipts remain required. No duplicate
+browser, source replacement, extra approval or scope cut follows from resumption.
+
+The goal remains unfinished until all ten background adoptions, relevant 390/360/430
 comparisons and states, actual character preservation and functional evidence,
 three-era work, owner fixes/dispositions, committed documentation and publication
 readbacks are delivered. Current missing evidence is not converted into acceptance.

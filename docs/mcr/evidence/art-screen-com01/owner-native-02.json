@@ -1,0 +1,68 @@
+{
+  "task": "ART-SCREEN-COM01",
+  "packetCommit": "5186f11017185a040e4ccde1c59589e140563ef0",
+  "sourceCandidate": "8972b0b634035055eb023dbc2f786e4463b172e5",
+  "job": "PANEL-CORRECTED-202611040733Z",
+  "rawReportSha256": "7f34e10279212d5f5d01017cbd644f02a33bd8939393b30818326ab2a489395b",
+  "inspectionOrder": "All eight owned390 images first; then eight360 and eight430, read in canonical location, plus original1280x853 human reference. No copies/reconstruction/captures.",
+  "reference": {
+    "path": "docs/mcr/evidence/visual/qa06/human-reference-20261104/reference-human.jpg",
+    "sha256": "2b3988d546f87b813d78ca13bf267730a6dd19118bd6535a2d3c3032b6f12d23"
+  },
+  "dispositions": [
+    {
+      "task": "F01",
+      "widths": [
+        390,
+        360,
+        430
+      ],
+      "visual": "PASS_CAPTURED_BACKGROUND_SCOPE",
+      "findings": "Broad blush/ivory/lilac cloud shapes span the full post/footer and list-route body. Original vertical artwork strip and untouched lower paper are gone. Large lower field has visible peach scallops at all widths. Text-only fixture and exact same selected character remain truthful; no real attached media was exercised."
+    },
+    {
+      "task": "M01",
+      "widths": [
+        390,
+        360,
+        430
+      ],
+      "visual": "PASS_CAPTURED_BACKGROUND_SCOPE",
+      "findings": "Broad sage/peach upper shapes, quiet ivory middle and lilac lower scallops visibly soften the entire Meet container relative to old distressed paper and supplied collage. Three rows, portraits, headings, details controls and unavailable creation state remain intact; no membership or arrival claim is inferred."
+    },
+    {
+      "task": "G01",
+      "widths": [
+        390,
+        360,
+        430
+      ],
+      "visual": "PASS_CAPTURED_BACKGROUND_SCOPE",
+      "findings": "Lilac/blush/warm cloud fields fill all three gift rows and lower route body, with no letterboxed stripe. Source-size placeholders truthfully show No photo. Counts, reservation controls and footer navigation stay fixed; no real product media or reservation command was exercised."
+    },
+    {
+      "task": "R01",
+      "widths": [
+        390,
+        360,
+        430
+      ],
+      "visual": "NEEDS_CORRECTION",
+      "findings": "Warm top scallops/clouds/ribbon and unchanged unavailable guard are legible, but approximately600px of lower body remains flat cream. This falls short of latest dominant playful background requirement. Wall/Me asset owner independently found the same gap and is authoring tall lower cloud/bow shapes at the same URL; current center top/100%auto/no-repeat mapping stays valid. New asset source and Root390/360/430 evidence are required; no editor was mounted."
+    }
+  ],
+  "technicalEvidence": "native-02-validation.json",
+  "sourceAndBackgroundInference": "native-02-paint-inference.json",
+  "initialAllFourPassReceipt": "Superseded for Wall: initial warm/guarded appearance assessment omitted strict lower-field density requirement. Root and artist notified of correction.",
+  "accessibilityOpen": [
+    "Computed actual body foreground/opacity/background inheritance and text contrast",
+    "Real representative focused control ring color/geometry/backing contrast/clipping per route",
+    "Forced-colors readability/focus per owned route",
+    "Details/summary targets omitted from previous controls query"
+  ],
+  "publication": {
+    "observedMaster": "39c68d1dcd85a618ec0c56287d8451c6ffe13dbd",
+    "observation": "Fresh git ls-remote matched Root receipt; git merge-base --is-ancestor production and packet each exit0. Published CSS exact productionSHA d26dd8... unchanged a37 source. This does not publish future Wall correction or this new owner evidence."
+  },
+  "goal": "Existing full objective retained. Tool reports BLOCKED; no reset/budget/false completion. Current validation work proceeds on supplied new packet; completion remains pending correction/accessibility/publication."
+}

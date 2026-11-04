@@ -296,7 +296,7 @@ document blob `f2d6843b332c0c03aaff9522923099166c3d5741`. Latest source/evidence
 corrections and this evolving record still require their final owner-bound
 publication receipts; metadata publication alone does not close native checks.
 
-## Delivery criteria
+## Corrected-panel capture boundary
 
 The subsequent metadata-only fetch observed delivery master
 `eb02a2e13e7c3d2d4866071aa9cf077dda13d0dc`; the latest published commit touching
@@ -310,6 +310,273 @@ output lease, independent of completing all World/MAP eras. This is a scheduling
 handoff, not proof of a capture allocation or completed validation. Root retains
 exclusive capture/retention ownership; all five archived panel owners resume
 only on relevant fresh evidence or concrete source work.
+
+The UI integration SL subsequently reported the scheduling resolution, and a
+fresh frontendKing live snapshot directly confirmed: the corrected eight-panel
+candidate will be pinned and checked separately from REVENGE/DANGER, so unrelated
+settings work cannot keep moving the screenshot candidate. This resolves the
+candidate-boundary coordination issue; it is not a named resource lease, retained
+packet, developer validation result or publication receipt. Root's task remains
+live, and the five source owners remain archived until relevant fresh input.
+No duplicate scheduling request or capture workflow is needed.
+
+Root subsequently delivered a concrete publication and queue checkpoint:
+
+- Fresh fetch and `git ls-remote origin refs/heads/master` both identified
+  `e237572719602da6a1a08b7fe0579b0e9c96da1f` (exit 0). The coordination path's
+  remote blob exactly matches `f9e08876`:
+  `2a31ff08cf8dc6c11b8727b3b3445aa0ac1c4dce`. The later boundary note in
+  `080248e1` and this subsequent receipt still require final publication.
+- Root reports source handoff mappings: Me `77d8e260` through `21493621`, ID01
+  `d2f9c8e5` postimages through `f86c99bd`, and the Community body/fit fixes are
+  published. These are the publishing implementation owner's receipts, not SL
+  inspection of application code or technical validation.
+- Commit metadata identifies the frozen panel checkpoint as
+  `8972b0b634035055eb023dbc2f786e4463b172e5`. Root reports 206 combined tests,
+  full TypeScript and scoped lint passing. Its finite run covers all eight
+  routes at 360/390/430 with 48 core before/after PNGs, eight Me focus-icon
+  cases, forced-colors and three Auth cases: 60 PNGs total, 240 seconds and
+  0.2 GiB cap. It retains the explicit source through publication merges.
+- One browser workflow is queued with resource owner21d; the actual IN01
+  descriptor has priority. There is no further FE34 source expansion and no
+  all-era prerequisite. This is a queued bounded run, not evidence that capture
+  started or passed. All five panel source owners remain archived pending the
+  actual retained packet.
+
+The same external capture dependency remained through three consecutive goal
+continuations after that checkpoint. Fresh live snapshots now report that the
+Auth/World test window is ready and has priority for the shared browser slot;
+Root retains the frozen panel source and will resume it afterward. There is no
+active panel capture handle or retained corrected packet yet. UI integration SL
+has already asked the resource owner to use a safe gap if available, so no
+duplicate scheduling request is needed. All scoped source work is handed off,
+all five source owners are archived, and this SL cannot advance their required
+validation without that new external evidence. The coordination goal is
+therefore eligible for BLOCKED under the repeated-blocker audit, with its full
+eight-screen objective and remaining requirements preserved. Resume this SL
+when Root supplies the immutable corrected packet or a concrete source finding;
+selectively reopen the relevant owners, then finish their validation/fixes,
+documentation and committed publication receipts. This does not mark any
+required work complete or pause the upstream capture workflow.
+
+## Corrected packet received and owners resumed
+
+The capture dependency above is resolved. Root delivered immutable commit
+`5186f11017185a040e4ccde1c59589e140563ef0`; Git metadata confirms the object
+exists. Canonical retained directory:
+`/Users/lhs/Desktop/mcr-worktrees/fe-delivery-publish/docs/mcr/evidence/cozy-backgrounds-v1/native-02/`.
+The report and `capture-packet.json` identify the baseline/candidate PNGs. Root
+reports raw report SHA-256
+`7f34e10279212d5f5d01017cbd644f02a33bd8939393b30818326ab2a489395b`, frozen
+production/fixtures/assets `8972b0b634035055eb023dbc2f786e4463b172e5`, runner
+`e2375727` and driver `58f553`. Actual capture interval was
+2026-11-04 07:38:12.062–07:40:02.112 UTC (16:38:12.062–16:40:02.112 KST),
+exit 0, 110.49 seconds. Root reports all 60 PNGs retained, zero page errors or
+overflow, preserved controls/type/text/HTML images and direct visible-character
+canvas RGBA/rect/dimensions, four Me focus contrast minima at least baseline,
+and actual forced-colors/pending/error/options-unavailable states. The 390px
+canvas counts are Customize 4, Feed 1, Meet 3, Me 1; the other four routes
+explicitly have zero canvases. Root's initial summary said zero CSS spans; its
+later correction confirms Landing has FOUR CSS spans in both modes at every
+width, with all other routes zero. Empty arrays are not character-preservation
+proof. These are implementation-owner technical receipts, not SL validation.
+
+Raw status remains `CAPTURED_PENDING_OWNER_VISUAL_INSPECTION`. Controlled
+synthetic HTTP/C05/local-admission fixtures do not prove live services, profile
+save, Me 504 recovery or physical devices; Wall still shows its truthful guard.
+Root alone retains/materializes the packet, with no owner restores, copies or
+new capture workflows. Root reports all 60 PNGs and 729 loaded Git pins checked,
+complete Chrome/Vite/profile/cache/tmp/process release, and publication queued
+for the next natural batch.
+
+The SL unarchived and sent the new packet to all five original owners, retaining
+their exact paths, branches and unfinished objectives. Fresh live snapshots
+confirm all five are working on the new assignment rather than merely receiving
+a message:
+
+| Owner | Resumed cases and remaining duties |
+| --- | --- |
+| Entry art | A01/A02/U02 at 360/390/430, Auth states and Customize lower field; own asset fixes/docs and publication receipt. |
+| Community art | F01/M01/G01 at all widths, fit/coverage and Feed lower field; own asset fixes/docs and publication receipt. |
+| Wall/Me art | R01/U01 at all widths, four focused Me header links/forced colors, guarded Wall and portrait preservation; own asset fixes/docs and publication receipt. |
+| ID01 | Four identity routes, all widths/Auth/Me focus/direct canvases; exact background-only CSS fixes, evidence/docs and publication receipt. |
+| COM01 | Four Community routes, all widths/guard/focus/contrast/media; exact background-only CSS fixes, evidence/docs and publication receipt. |
+
+Developers compare the actual new before/after images with the user's visibly
+cuter-than-current-and-collage requirement, including broad/sparse lower fields.
+They resolve real asset/consumer findings directly within existing disjoint
+grants. SLs perform no technical/visual inspection or approval. Worktree claims
+must be checked because archival may remove materialization. The full original
+goal is preserved; its stored status still read BLOCKED on receipt, and the
+available status tool cannot set ACTIVE. Coordination work has resumed without
+resetting or falsely completing that record. Owner goal states, findings and
+final publication evidence remain to be collected.
+
+Community art reports actual inspection of all 18 F01/M01/G01 before/after PNGs
+at 360/390/430: fixed fields fill the rows, Feed's sparse lower surface and
+Gifts body have broad warm/cloud-shaped coverage, no vertical stripe or
+old-paper gap remains, and Meet's lilac/peach field stays legible. No new
+asset/CSS fix is indicated by that owner; its pins/preservation/targets/contrast
+and committed evidence are still being finalized. It preserved its full BLOCKED
+goal and recreated only the unclaimed source branch at
+`/Users/lhs/Desktop/mcr-worktrees/art-cute-community-v1`, starting clean
+`25cd2bc6`. Entry likewise reports the full BLOCKED goal preserved and only its
+own unclaimed `ac70` checkout recreated clean at `0f171b1a`. No packet changes
+were made. These are owner findings, not a lead visual acceptance decision.
+
+ID01 reports its clean `2251` checkout survived and its full goal remains
+BLOCKED. It directly viewed all 24 owned core PNGs, eight Me focus PNGs,
+forced-colors, three Auth states and the source collage: broad warm/playful
+fields are visible at all widths, the Me shelf/rings are clear and no owned
+visual defect has been identified. Its independent record/pin/contrast checks
+remain in progress. Crucially, ID01 reports FOUR selected static CSS spans on
+Landing at each width, contradicting Root's summarized zero-CSS-span claim
+above. The SL routed this exact evidence discrepancy directly to Root and
+ID01 for raw-record coverage and truthful correction. Do not treat the zero
+summary as settled proof or infer character preservation from an empty array;
+no automatic recapture or SL inspection is authorized by this discrepancy.
+
+Root and ID01 resolved the CSS discrepancy directly: Root's summary was wrong;
+the unchanged raw report already records four Landing CSS spans per mode at
+all three widths, with exact paired source SHA/UV/rect/rendering. Other CSS-span
+counts are zero and the reported canvas counts above remain correct. Root is
+correcting authored qualification/communication without rewriting raw evidence
+or recapturing. Root also reports nested PostCSS leaf closure from clean
+runner `e2375727` physical Git bytes equal to frozen `8972b0b6`, and is sealing
+an explicit supplemental attestation; it does not claim individual load hooks.
+Final owner committed evidence and that attestation still need their receipts.
+
+The Wall/Me owner and COM01 subsequently identified an actual remaining R01
+background issue: the lower guarded field is mostly plain cream, falling short
+of the broad playful treatment. COM01 revised Wall to needs correction while
+retaining its bounded Feed/Meet/Gifts disposition. The asset owner is changing
+only its owned Wall artwork at the same URL with broad low-contrast lower
+shapes; no consumer geometry change or new shared-file grant is implied. Root
+received the concrete follow-up and will import the committed handoff and own
+the necessary affected capture. Previously ready owner documentation need not
+wait for this fix, and the native-02 packet remains immutable.
+
+UI integration SL also reports COM01 has routed a separate concrete evidence
+gap directly to Root: a first-Tab style check does not establish rendered
+Community-route focus contrast/clipping. Preserve that gap separately from the
+four measured Me header outlines. Root and the implementation owner choose the
+finite targeted evidence/fixes needed; no SL technical review, new writer or
+default full-matrix recapture is introduced.
+
+### Native-02 committed owner handoffs
+
+| Owner | Delivered commit / exact paths | Owner disposition and remaining limits |
+| --- | --- | --- |
+| Entry art | `4462852122b834a2939c6f0e43db6b0062cace34`; only `docs/mcr/art/cute-entry-backgrounds.md`; clean `ac70` | All 18 A01/A02/U02 paired PNGs at 360/390/430 plus three Auth captures directly viewed; owner PASS, Customize lower surround resolved and no new asset/CSS fix. All 21 hashes checked against immutable packet; four Landing CSS spans and four Customize canvases, paired controls/text/geometry and preview interior preservation explicitly recorded. Queried targets at least 44px, nine first-focus style records, bounded sampled Auth text/focus contrast. Source verifier and diff check exit 0; no artwork/application/packet change. Final doc SHA-256 `bd38a1e8770b58538424b0d94565ce9128a40e61b27f91dd33dc934ca7bac17e`. Remote publication/readback remains required; original BLOCKED goal preserved. |
+| Community art | `f297b8fa850bc62c32f3c61b08d7abe3518c1c54`; only `docs/mcr/art/cute-community-backgrounds.md` and `frontend/public/backgrounds/cute-community-v1/manifest.json`; clean isolated checkout | All 18 F01/M01/G01 paired PNGs at all widths directly viewed against reference; owner PASS on row-fit/lower-field fixes, no new SVG/CSS fix. Raw report, all 18 PNGs, seven SVG pins, direct character/control/text records and queried 44px targets checked; diff check exit 0. Manifest distinguishes integrated contribution from whole-feature acceptance. First-Tab style only and source contrast arithmetic do not prove browser-computed rendered text/focus contrast, unseen controls/states or exhaustive forced colors; those limits remain explicit. Remote publication/readback and relevant outstanding evidence remain required; full original goal preserved. |
+
+Both source owners sent Root their exact handoffs directly. They have no ready
+source work while awaiting publication/relevant new evidence, so preserve their
+branches/commits/goals and archive rather than repeat unchanged-packet waits.
+ID01, COM01 and Wall/Me remain on concrete evidence/source work. Root remains
+the sole publisher, and no SL implementation validation is added.
+
+COM01 delivered `f414d69586596b52d8c9b0d814514571f35b6ec8` from preserved
+`cd6af94c`: only its assigned document and four evidence files
+(`verify-native-02.py`, `native-02-validation.json`,
+`native-02-paint-inference.json`, `owner-native-02.json`). CSS `a37e65cc` remains
+unchanged, SHA-256
+`d26dd8fbee928539f2689ccd9bb6269e4cb964c58b78e8cc86afbd894f228504`.
+The owner inspected all 24 Community PNGs against the collage and independently
+checked their disk/report/manifest/Git pins, 12 paired control/text/image/direct
+canvas records, 189 queried candidate controls at least 44px, zero overflow or
+errors and exact production CSS/four assets (exit 0). Its 60 sampled background
+points/source-paint bounds are explicitly inference, not browser-computed
+body/focus proof. Feed/Meet/Gifts pass the captured background scope; Wall needs
+correction. Summary elements were absent from the prior control query, so that
+query cannot close all target requirements.
+
+Root has the owner's finite four-route 390px candidate-only accessibility
+request, with actual production body/target selectors supplied directly:
+Feed post copy/tools summary; Meet unavailable-members text/tools button and
+filter summary; Gifts footnote/filter summary; Wall status text and existing
+unique back-header button. Wall has no body control or mural mount in this
+guarded fixture. Rendered text/focus backing and clipping, own-route forced
+colors and summary target measurements remain open. COM01 retains its exact
+pin/checker/docs scope to consume the closed Wall correction and fresh evidence;
+no extra writer, browser job or SL approval is added. Its new evidence and future
+Wall source correction still require publication/readback.
+
+### Closed tall-Wall source correction
+
+A commit-log metadata check and the Wall owner's actual handoff identify
+`18e6e4db2f2e6384c796453d6e63caedc11875e8` on its existing exclusive branch,
+with clean checkout. Exactly two owned paths changed:
+`frontend/public/backgrounds/cute-wall-me-v1/wall-stationery.svg` and
+`docs/mcr/art/cute-wall-me-backgrounds.md`. The same Wall URL is now 390×780,
+viewBox `0 0 390 780`, 4,500 bytes, SHA-256
+`22e2de672776682693bca71c57f501f2450bc9a28bc6314df44c26d6d193efc7`.
+The owner reports the existing top ornament geometry/paints retained, with new
+broad blush/sage/lilac forms, lower ribbon/music details below y258. Existing
+center-top / 100%-auto / no-repeat / cream fallback consumption is unchanged.
+Source XML/reference/inert-content/top-geometry/palette and diff checks pass;
+source dark-text contrast lower bound is 7.364:1. These are source-owner results,
+not fresh rendered Wall qualification. Me assets remain the exact native-02
+tested `29ad1cb9…` / `98c351c1…` payloads; the owner reports Me scoped PASS and
+Wall native-02 NEEDS_CORRECTION, with its actual full goal ACTIVE.
+
+The owner sent Root and COM01 the closed handoff directly. COM01 was briefly
+archived after its clean `f414d695` handoff, then reactivated as soon as this real
+new source commit existed, to consume its exact pin/checker/docs scope. Preserve
+native-02's old Wall pin and disposition; do not silently reinterpret that
+frozen packet as showing the tall artwork. Root alone imports and captures the
+affected Wall at 390/360/430, alongside the necessary finite accessibility
+follow-up. The Wall source owner has no further ready work until that retained
+packet/publication evidence and is archived with its commit/goal preserved.
+
+COM01 closed the consumer-source handoff in
+`58cd06e5d582271ae735b00bc4ed47485fb422bb`, with clean reclaimed `06af` checkout.
+Exactly three owned paths changed: its document and
+`verify-wall-tall-source.py` / `wall-tall-source.json`. Its owner independently
+verified the immutable `18e6e4db` SVG dimensions/bytes/hash, retained top artwork,
+closed paints/local references/inert content and unchanged existing CSS mapping
+(checker/diff exit 0). Conservative source color bounds and native-02 geometry
+projection are explicitly not runtime-computed contrast or visual proof.
+Frozen native-02 keeps the old Wall asset pin, checker and NEEDS_CORRECTION
+disposition. The owner requires fresh changed-Wall 390/360/430 plus the finite
+representative contrast/focus/forced-colors evidence and publication readback.
+Its full BLOCKED goal is unchanged. With that concrete source task closed,
+COM01 is again archived until relevant actual Root evidence or publication;
+there is no remaining source-proposal or acknowledgment dependency.
+
+ID01 delivered its final bounded native-02 evidence in
+`4508206801505eb80d7495c40adcf5b03103ff2c`, clean `2251`. Commit path metadata
+lists exactly five owned paths: `docs/mcr/art-screen-id01.md` and
+`owner-native-02.json`, `source-validation.json`, `validate-native02.py`,
+`validate-source.py` under its evidence directory. No CSS/assets/root/characters
+changed. The owner directly viewed all 24 identity core PNGs, eight Me focus,
+forced-colors and three Auth states plus the collage/ten-screen target; all four
+background dispositions pass the frozen foreground/geometry scope, with no
+remaining source defect. It independently checked all 60 artifacts, 729 pins
+and 12 owned paired records (exit 0), including actual Landing four CSS spans,
+Customize four canvases, Me one and Login zero.
+
+Its actual 390px focus sampled minima are 5.6374/6.2343/5.8360/5.5357 versus
+baseline 2.2881. The 360/430 samples are backing-only, at least 4.8097, not
+focused-state captures; Auth pending/error observed glyph/backing samples are
+at least 8.1389, with selected-state/spot limits retained. Nested CSS supplement
+`2579…` was independently checked as clean-checkout inference with observed
+paint, not individual Vite leaf-load receipts or an additional raw pin. The
+20-selector/seven-asset static checker and diff checks pass. These are owner
+results, not SL technical validation or full IA/live/device acceptance.
+
+ID01 already sent Root its exact handoff and still requires actual final owned
+evidence publication/readback before completing its original BLOCKED goal. It
+is archived pending that new receipt. All five panel source/adoption owners are
+now archived again with clean committed handoffs and unchanged full objectives;
+four last reported stored BLOCKED goals and Wall/Me last reported ACTIVE.
+Reactivate only relevant actual Root Wall/accessibility evidence or concrete
+publication receipts, preserve their isolated branches and check materialization
+claims, then let each owner perform its own remaining disposition/fixes/readback.
+The corrected Wall source and its consumer closure are ready; no source-proposal
+wait, extra writer, SL review or default all-60 rerun is required.
+
+## Delivery criteria
 
 1. Each developer reads the working agreements, specification, assessment,
    execution plan and selected-character guidance; inspects its actual goal;
@@ -347,15 +614,15 @@ Social/Community functional NOCLAIM and Root's exact partial source grants are
 recorded above. U02 functional clearance, Root's exact extension and actual
 receiving acceptance arrived. A fresh metadata-only fetch/log/ancestry check
 (exit 0) first confirmed `origin/master` at initial source candidate
-`c8a731e5c7f03c3fbcbd0581c6e872429806fa22`; a later metadata-only fetch now
-confirms `49ac314e4cc8cae26a032618743274eb21d26567` as recorded above. These are
-publication observations, not SL implementation validation. Final correction
-publication receipts remain open. The resource
-coordinator has been asked for immutable
-before frames and a serialized capture plan. The first eight-screen 390px report
-and owner inspections exist with concrete open fixes. The transient PNG path
-issue is resolved through immutable artifact `16bf30c6`; use exact Git bytes for
-reinspection rather than depend on sparse worktree materialization. Responsive,
-additional interaction/contrast checks and correction publication remain NOT_RUN;
-committed source handoffs are listed separately above. No visual acceptance or
-task/release closure is claimed.
+`c8a731e5c7f03c3fbcbd0581c6e872429806fa22`, subsequently `49ac314e` and then
+`e237572719602da6a1a08b7fe0579b0e9c96da1f`. These are publication observations,
+not SL implementation validation. Root's source-publication receipts and the
+corrected retained `5186f110` packet are recorded above. Required widths and
+additional captured states now exist; they are no longer NOT_RUN. All five
+implementation owners are inspecting the new packet, documenting dispositions,
+checking relevant preservation/contrast bounds and preparing committed
+handoffs. Any new findings, the Landing CSS-span coverage discrepancy, final
+owner evidence/publication readback and the latest coordination-document
+publication remain open. The original transient PNG path issue was resolved
+through immutable artifact `16bf30c6`; Root remains sole packet custodian.
+No overall visual acceptance or task/release closure is claimed.

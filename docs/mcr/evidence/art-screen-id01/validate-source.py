@@ -106,7 +106,7 @@ report = {'task': 'ART-SCREEN-ID01', 'status': 'IN_PROGRESS',
                      'svgLocalInertSource': 'PASS', 'allSevenAssetsConsumed': 'PASS'},
           'limits': ['Static source validation only; no SVG decode or actual rendered contrast evidence',
                      'Root alone integrates assets/imports and publishes; no root imports authored here',
-                     'Corrected paint before/after390,360/430 and four focused Me links NOT_RUN; original390 evidence is separate',
+                     'Actual corrected 390/360/430 and four focused Me links at390 are recorded separately in owner-native-02.json; this checker is static only',
                      'Visual acceptance and physical-device/live-flow qualification remain unproven']}
 (ROOT / 'docs/mcr/evidence/art-screen-id01/source-validation.json').write_text(json.dumps(report, indent=2) + '\n')
 print(json.dumps({'selectors': len(seen), 'assets': len(pins), 'checks': report['checks']}))

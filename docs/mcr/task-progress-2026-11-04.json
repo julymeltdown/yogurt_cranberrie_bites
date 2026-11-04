@@ -1,6 +1,6 @@
 {
-  "updated_at": "2026-11-04T16:45:38+09:00",
-  "published_snapshot": "175112b231136f8137194658dd56a9d46d1c3620",
+  "updated_at": "2026-11-04T16:55:21+09:00",
+  "published_snapshot": "aea02a262f7d834be7ef2267368812520a5d9c0c",
   "method": "Management reconciliation of published task dispositions and existing developer/SL receipts; no code/query/visual/test inspection or reruns. Publication ancestry only was checked for task-linked delivery commits.",
   "required_tasks": 112,
   "required_ia_entries": 61,
@@ -672,7 +672,7 @@
         "docs/mcr/backend/root-native-34fa7a6d.json"
       ],
       "note": "Original BE43 remains IN_PROGRESS. The Backend SL original-task row and published Root qualification establish bounded boundary/cancellation/recovery implementation. Neither the component checks nor the partial current live run close the full hardening task.",
-      "known_followup": "Current-source IN01 is incomplete after two /me504 responses. Root owns actual concurrent-request diagnosis; the existing frontend Auth owner assesses the reported local-expiry renewal path. Real expiry/refresh and remaining original criteria are unverified. A longer allocation alone is not treated as a fix.",
+      "known_followup": "Current-source IN01 is incomplete after /me504 blocked customization; Root owns diagnosis. Remaining original boundary/startup criteria remain independently open. No mandatory900-second IN01 duration, proactive-renewal or reload-restoration requirement is added; natural-expiry observation NOT_RUN is informational where not an original criterion.",
       "published_integration_commits": [
         "e1367abd72b511c8c57b2e9e6c78a8098733ae46",
         "eb02a2e13e7c3d2d4866071aa9cf077dda13d0dc"
@@ -689,7 +689,7 @@
         "docs/mcr/backend/root-native-34fa7a6d.json"
       ],
       "note": "Original BE44 remains IN_PROGRESS. The Backend SL original-task row and published coherent startup/native qualification establish implementation evidence. A finite live cohort ran, but this is not full original reproducible-stack acceptance.",
-      "known_followup": "Current-source IN01 is incomplete after two /me504 responses. Root owns actual concurrent-request diagnosis; the existing frontend Auth owner assesses the reported local-expiry renewal path. Real expiry/refresh and remaining original criteria are unverified. A longer allocation alone is not treated as a fix.",
+      "known_followup": "Current-source IN01 is incomplete after /me504 blocked customization; Root owns diagnosis. Remaining original boundary/startup criteria remain independently open. No mandatory900-second IN01 duration, proactive-renewal or reload-restoration requirement is added; natural-expiry observation NOT_RUN is informational where not an original criterion.",
       "published_integration_commits": [
         "e1367abd72b511c8c57b2e9e6c78a8098733ae46",
         "eb02a2e13e7c3d2d4866071aa9cf077dda13d0dc"
@@ -1381,7 +1381,7 @@
         "docs/mcr/backend/root-world-eb02-attempt10.json"
       ],
       "note": "Current published-source real two-user attempt10 ran07:28:46\u201307:30:31UTC. Owners report login, room entry, movement, six panels, theme,91.4seconds of sustained activity and real reconnect passed. Two actorA /me GET504 responses blocked customization; expiry-driven refresh NOT_RUN. The gate is incomplete, not NOT_RUN as a whole.",
-      "known_followup": "Backend Root owns concurrent /me timeout diagnosis. The existing frontend Auth owner receives the reported local-expiry/401-renewal issue through Root153. Only after those actual prerequisites are ready will the existing consumer receive a sufficient finite genuine-expiry/full-remaining-flow allocation. All old browser/backend resources were released at the fixed expiry.",
+      "known_followup": "Backend Root owns /me504 diagnosis and the actual customization remainder. The Auth implementation owner and World SL reconcile no original proactive-renewal, reload-restoration or mandatory900-second IN01 requirement. The main agent withdrew its conditional long-allocation proposal as a mandatory gate. Natural-expiry observation NOT_RUN does not itself block IN01; do not alter intended expiry behavior merely to create that test.",
       "owner_chat": "01a1a202-375e-7401-bfa1-ff8721e90ed6",
       "reported_source_pins": {
         "backend": "eb02a2e13e7c3d2d4866071aa9cf077dda13d0dc",
@@ -1579,6 +1579,15 @@
       "from": "NOT_RUN",
       "to": "IN_PROGRESS",
       "basis": "Actual current-source partial live attempt; OPEN_INTEGRATION_GATE unchanged."
+    }
+  ],
+  "scope_clarifications": [
+    {
+      "recorded_at": "2026-11-04T16:55:21+09:00",
+      "topic": "Expiry observation and IN01 scope",
+      "authority": "Main conditional resource-coordination message, not a new human requirement. Implementation-owner/World SL reconciliation of original FE09/IN01 requirements.",
+      "decision": "Withdraw mandatory long-runtime follow-up. No added900-second duration, proactive renewal or cookie/reload restoration. Honest observation may be recorded in an otherwise justified existing test; NOT_RUN is not an extra IN01 blocker. Current known original IN01 blocker is /me504/customization.",
+      "propagation": "Backend SL and Frontend KING received exact clarification; Backend SL owns cascade to Root153, World/Community SLs and owner204."
     }
   ]
 }

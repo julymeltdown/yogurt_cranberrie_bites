@@ -64,7 +64,7 @@ This reconciliation preserves the owners' actual dispositions: FE08 is explicitl
 
 | Feature | Published or owner-reported delivery | Required remainder |
 | --- | --- | --- |
-| Actual Auth → Profile → public bootstrap | Earlier real Auth/Profile/bootstrap evidence is retained. The coherent recovery/native checkpoint is now published at `eb02a2e1`, with owner qualification receipt `e1367abd`; main verified publication metadata only. | Current-source IN01 attempt10 passed login/World and sustained/reconnect checks but two actorA `/me` GETs returned504, blocking customization. Root owns diagnosis. Genuine expiry-driven refresh is NOT_RUN; no full IN01 acceptance. |
+| Actual Auth → Profile → public bootstrap | Earlier real Auth/Profile/bootstrap evidence is retained. The coherent recovery/native checkpoint is now published at `eb02a2e1`, with owner qualification receipt `e1367abd`; main verified publication metadata only. | Current-source IN01 attempt10 passed login/World and sustained/reconnect checks but two actorA `/me` GETs returned504, blocking customization. Root owns diagnosis. Expiry observation is NOT_RUN and adds no extra IN01 criterion; no full IN01 acceptance. |
 | Selected characters and root integration | Canonical avatar persistence `b13d79e6`, participant increment `0313afa5`, whole editor `c3f411ad`, default-root character flow `9fc3a299` / `903773b8`, authorized portrait/media binding `9dacd962`. | Actual live identity/Profile/authority journeys, all original avatar capabilities, directional/walk/layered art and full device/visual acceptance. |
 | Ten-screen design and updated background direction | Auth refinement `08d1b1c0` and required artwork `1249430f`, Landing `d5ec766d` and artwork `b01eb708`, Map `f4b40808`, Gifts `9055af1e`, Profile/party/feed portrait delivery `9dacd962`; existing browser-fixture records are retained. | Auth and Landing owners report their required artwork increments delivered. Original FE09 production refresh caller is now delivered in `62b4bf80`; FE08 and FE09 task-local criteria are recorded satisfied. The combined live frontend/service journey remains separate. The human later changed the background target to visibly cuter backgrounds while preserving composition/functions and leaving characters untouched. All ten screens still require owner visual qualification; fixture success is not complete visual acceptance. |
 | Three-era scenery and map | Original scene/Map integration remains published. The updated Parade environment and bounded before/after World+Map evidence at360/390/430px are delivered through `e2375727`; the owner reports character pixels and positions preserved. | Revenge/Danger artwork and the corrected three-era capture candidate are source-ready, but their new actual native images remain pending. Final design, Product/art/theme admission and physical-place AR01/beacon/IN02 criteria are separate; virtual navigation does not create physical eligibility. |
@@ -103,16 +103,23 @@ request-deadline diagnosis through a fresh240-second/1-GiB offer; acceptance of
 that diagnostic is not yet claimed. Its database observations are
 developer-reported only and do not establish a resolved cause.
 
-Genuine access-token expiry takes15minutes, beyond the remaining live window.
-Expiry-driven refresh is **NOT_RUN**. The consumer also reports that the current
-Auth session clears locally at expiry while renewal is invoked through401
-handling, so a longer hold alone may not exercise genuine renewal. Root153 is
-routing that issue to the existing Auth implementation owner; the test worker
-has no App write grant. After actual `/me` and renewal readiness, the resource
-lead will coordinate a separate finite allocation covering genuine900-second
-expiry, the remaining applicable flow and cleanup. No forced expiry, synthetic
-401, token/clock injection, raw Auth bypass or unrelated added criterion is
-authorised.
+Scope clarification recorded **2026-11-04T16:55:21+09:00**: genuine access-token expiry takes
+15minutes and was not observed in attempt10. The implementation owner and World
+SL reconcile that original FE09/IN01 do not require proactive renewal, cookie
+restoration after reload, or a mandatory900-second IN01 duration. Current local
+expiry cleanup and401-based recovery must be judged against their original
+criteria; a new feature is not authorised just to manufacture an expiry test.
+
+The main agent's earlier resource-planning direction was conditional coordination,
+**not a new human requirement**. Its proposed long follow-up is withdrawn as a
+mandatory gate. No runtime reservation is needed solely to observe expiry.
+An observation encountered in an otherwise justified existing test must record
+actual behavior honestly; **NOT_RUN does not itself block original IN01**.
+The current known IN01 blocker is `/me`504/customization. Backend SL and
+Frontend KING received this clarification; it is being propagated to the
+implementation owners and World/Community leads without a new approval queue.
+Owner204 may finish its truthful bounded disposition/fixtures/docs without
+adding proactive renewal or reload restoration.
 
 The human's latest visual direction remains **noticeably cuter backgrounds on
 all ten screens, with characters untouched**. Composition, actual functions,
