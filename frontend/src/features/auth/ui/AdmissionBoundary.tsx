@@ -9,6 +9,9 @@ export function AdmissionBoundary({ children }: { children: ReactNode }) {
   const auth = usePorts().auth
   const state = useSyncExternalStore(auth?.subscribe ?? noSubscribe, auth?.read ?? noSnapshot)
   if (!auth || !auth.session.read().userId || state?.admission === 'ADMITTED') return children
+  // Keep the active sign-in form mounted while its canonical read completes, so
+  // its existing safe continuation remains live. It cannot mount a private shell.
+  if (state?.admission === 'checking' && state.pending === 'login') return children
   if (state?.admission === 'CONSENT_REQUIRED') return <ConsentAdmission onAdmitted={() => { void auth.checkAdmission() }} />
   const checking = state?.admission === 'checking', inactive = state?.admission === 'ACCOUNT_INACTIVE'
   return <main className="auth-enrollment" id="main" tabIndex={-1}>

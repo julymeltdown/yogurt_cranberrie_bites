@@ -69,3 +69,12 @@ it.each(['POLICY_UNAVAILABLE', 'ACCOUNT_INACTIVE'])('shows truthful %s and leave
   expect(screen.getByRole('heading', { name: decision === 'POLICY_UNAVAILABLE' ? 'World entry paused' : 'Account entry unavailable' })).toBeVisible()
   expect(commands.some(r => r.method === 'POST')).toBe(false)
 })
+
+it('preserves the existing safe automatic continuation for an already-admitted canonical login', async () => {
+  const { commands, router } = await setup('ADMITTED', '/login')
+  fireEvent.change(screen.getByLabelText('Email'), { target: { value: 'test@example.invalid' } })
+  fireEvent.change(screen.getByLabelText('Password'), { target: { value: 'test-password' } })
+  fireEvent.submit(screen.getByRole('form', { name: 'Email sign-in' }))
+  expect(await screen.findByRole('heading', { name: 'Protected destination' })).toBeVisible()
+  expect(router.state.location.pathname).toBe('/world'); expect(commands.filter(r => r.url.endsWith('/login'))).toHaveLength(1)
+})

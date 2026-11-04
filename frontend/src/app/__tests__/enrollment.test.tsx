@@ -79,7 +79,7 @@ it('treats unusable challenge generically and resends with attempt/idempotency r
   fillVerify(); fireEvent.submit(screen.getByRole('form'))
   await screen.findByText(/It may be invalid, expired or already used/); expect(screen.getByLabelText('Verification code')).toHaveValue('')
   fireEvent.click(screen.getByRole('button', { name: 'Request another code' }))
-  await screen.findByText(/Account creation and email delivery are not confirmed/)
+  await screen.findByText('Request accepted. Email delivery is not confirmed. Use the latest code if instructions arrive.')
   expect(await requests[1]!.json()).toEqual({ attemptId, idempotencyKey: expect.any(String) })
   expect(screen.getByRole('button', { name: 'Request another code' })).toBeDisabled()
 })
