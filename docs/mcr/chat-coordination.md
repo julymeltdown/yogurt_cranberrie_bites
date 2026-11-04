@@ -7,11 +7,19 @@ developer handoffs and each SL's lane record for current ownership. All allocati
 tables and target-holder snapshots below are historical. They do not grant a
 current file lease or supersede a later explicit transfer.
 
-Developers own implementation, validation, integration and direct non-force
-publication. Kings and SLs coordinate progress, dependencies and staffing; they
+Developers own implementation and validation; the publishing developer named
+in each current assignment handles integration and non-force publication. Kings and SLs coordinate progress, dependencies and staffing; they
 do not review code, queries or tests. Preserve the user's selected models and
 reasoning settings. The [hourly SL task checks](sl-hourly-progress.md) track each
 original assigned task without adding a review or approval queue.
+
+Old parent/main/king/SL review or ACK clauses in historical assignments and goals
+are superseded by the latest human direction. Carry that explicit override on
+every resumed assignment; do not reset goals or weaken required validation.
+Technical handoffs go to the responsible implementation owner or named publisher,
+not a king. Resource-slot, developer-validation and publication waits are separate
+states and must not be described as waiting for king review. Central accounting
+never blocks delivery or the next ready assignment.
 
 ## Historical allocations
 

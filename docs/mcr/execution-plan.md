@@ -17,8 +17,9 @@ Five earlier backend coverage corrections and the latest QA05/QA08 IN_PROGRESS/P
 The current coordination model has no king or SL technical review stage.
 Developers implement, validate, resolve technical interfaces and commit their
 assigned scopes. Designated backend and frontend/art delivery integrators handle
-normal non-force publication while the publishing-policy clarification remains
-unresolved; delivery does not wait for a king/SL acknowledgment or ledger edit.
+normal non-force publication under their existing assignment leases; this is
+publication routing, not an unresolved king permission. Delivery never waits
+for a king/SL inspection, acknowledgment or ledger edit.
 Shared paths retain one explicit writer and physical build slots remain
 coordinated. Required scope and developer validation duties are unchanged.
 
@@ -59,6 +60,22 @@ do not certify canvas/CSS-image preservation or final visual acceptance.
 A king or SL receiving a technical review request must decline: "I don't perform
 reviews. The responsible developer owns validation; please resolve this with
 the implementation owner." See the current [milestone and staffing snapshot](progress.md#portfolio-and-staffing-update).
+
+## Current instruction and queue boundaries
+
+Legacy parent/main/king/SL review or acknowledgment clauses in historical goals,
+assignments and worktree instructions are superseded. A lead includes that
+explicit override whenever it resumes a worker. Original scope, developer
+validation, required fixes, publication and truthful goal metadata remain intact.
+No blanket rebase, peer-worktree overwrite or fabricated goal completion is needed.
+
+Kings record responsible-owner/SL original-task dispositions and periodically
+check publication metadata. They do not reinspect individual technical packets
+for progress accounting. Routine evidence goes to the technical counterpart or
+assigned publisher. Resource admission, developer validation and publication
+are distinct queues; none is king approval. Resource allocators schedule usable
+bounded rounds with owner-controlled repairs inside the accepted lease. Existing
+limits, cleanup and release/requeue duties are unchanged.
 
 ## Historical execution plan (superseded where noted above)
 

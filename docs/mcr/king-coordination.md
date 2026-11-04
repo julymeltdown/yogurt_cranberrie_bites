@@ -10,14 +10,14 @@ required IA entries remain in scope.
 | Backend king | `01a19e5c-e9c6-7973-a53b-a6d19141620f` | Backend and project priorities, major milestones, staffing escalation and periodic publication tracking. The `delivery-checkpoints` checkout is for management documentation, not application implementation. |
 | Frontend king | `01a1a385-9f32-73c2-8715-ff54bd1e0497` | Frontend/art priorities, reference-design delivery, major dependencies and staffing through frontend SLs. Frontend root/shared implementation belongs to its assigned developer. |
 
-The user's latest instruction removes per-commit review and publishing queues
-for both kings and SLs. Every assigned implementation owner may validate, commit
-and publish its exclusive scope directly to `julymeltdown/mcr` `master`.
-Use separate branches/checkouts, explicit staged paths and non-force pushes.
-Reconcile remote history, preserve peer commits, run affected checks and verify
-remote ancestry. Report delivered SHA, paths, evidence and remaining limits.
-Cross-lane contract changes keep one explicit writer; needing a shared file does
-not grant ownership. Escalate actual scope conflicts, not routine publication.
+The current assignment names the publishing developer. Existing handoffs to the
+backend/frontend delivery integrators continue directly; they are executable
+publication routes, not manager review or permission. A source owner also acts
+as publisher when explicitly assigned that role. This document does not change
+current publisher or shared-file leases. Use isolated checkouts, explicit staged
+paths, normal non-force publication and owner-verified remote delivery.
+Kings and SLs are not mandatory publishers or acknowledgment gates. Escalate
+actual scope conflicts, not ordinary ready patches.
 
 The human's latest 2026-11-04 instruction assigns all implementation validation
 to developers: code, queries, tests, runtime evidence and fixes. Implementation
@@ -30,6 +30,35 @@ the broad feature picture, dependencies and staffing. Required product scope,
 validation evidence and truthful persistent goals remain unchanged.
 
 A king receiving a review or verification request must decline: "I don't perform reviews. The responsible developer owns validation; please resolve this with the implementation owner." SLs likewise do not review code, queries or tests. No work waits for king or SL review. Staffing, priority, ownership conflicts and missing product decisions may still be escalated.
+
+## Superseding legacy review gates
+
+The 2026-11-04 workflow check found conflicting policy copies: the startup
+checkout still required an integrator to push "reviewed work", while newer
+instructions prohibited king/SL review. A snapshot of246 worktrees found164
+copies with legacy gate phrases; many were historical, not active waits. The
+active examples traced were resource-slot and publication handoffs, not a
+substantiated current king technical-approval hold. Historical records remain
+unchanged; they cannot create a new manager review requirement.
+
+At every worker resume or ownership transfer, explicitly supersede any old
+"parent review", "main approval" or "king/SL ACK" completion clause. Preserve
+original criteria, validation, publication and honest goal state. Frozen source
+need not be rebased to obey the latest human direction. Owners refresh local
+governance text safely within their own leases; do not rewrite all old worktrees.
+
+Technical handoffs go directly to the implementation counterpart or assigned
+publisher. Kings consume hourly owner/SL feature dispositions and periodic Git
+publication metadata, not individual qualification packets, screenshots, query
+outputs or review requests. A king's ledger reconciliation does not grant or
+withhold delivery acceptance. Own management-document integrity checks are not
+implementation review. Routine receipts require no reply.
+
+Resource-slot admission remains a separate operational queue. Allocate a usable
+bounded developer-validation round, including repairs within the accepted scope
+and budget; do not turn each technical fix into a correctness approval request.
+Current limits and cleanup obligations still apply. Expired workloads stop and
+requeue without implicit extensions or a king decision.
 
 ## SL dispatch lanes
 
@@ -59,7 +88,7 @@ existing backend build-target queues and actual handoffs; frontend work does not
 need those slots. Routine allocations do not wait for a king.
 
 Earlier handoff instructions assigning integration to a king are historical.
-Assigned implementation owners handle integration and publication directly.
+The implementation/publishing owners named in current assignments handle integration and publication without king/SL inspection.
 Technical contracts and interface decisions belong to those owners; kings
 resolve product priorities or unresolved staffing conflicts. Current allocations
 belong in their lane records rather than a second central approval queue.
