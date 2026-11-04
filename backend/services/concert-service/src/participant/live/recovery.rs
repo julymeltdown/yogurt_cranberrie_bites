@@ -37,9 +37,7 @@ impl ParticipantRecovery {
             let page = match page {
                 Ok(Ok(page)) => page,
                 _ => {
-                    tracing::warn!(
-                        "Participant recovery scan unavailable; existing operations retained"
-                    );
+                    // No error releases an operation or changes visibility.
                     continue;
                 }
             };
@@ -59,11 +57,8 @@ impl ParticipantRecovery {
                 };
                 tokio::select! {
                     _ = shutdown.changed() => return,
-                    result = tokio::time::timeout(Duration::from_secs(4), settle) => {
-                        if !matches!(result, Ok(Ok(()))) {
-                            tracing::debug!("Participant operation remains unresolved; no visibility or authority released");
-                        }
-                    }
+                    // Unknown/failed outcomes remain durable for the next scan.
+                    _ = tokio::time::timeout(Duration::from_secs(4), settle) => {}
                 }
             }
         }
