@@ -88,8 +88,8 @@ def verify_pin(path):
         binary = Path(artifact["binary"])
         if binary.is_symlink() or binary.resolve().parent != out or binary.name != name or sha(binary) != artifact["sha256"]:
             raise ValueError("frozen executable mismatch")
-    if any(sha(ROOT/p) != value for p, value in report["source_sha256"].items()):
-        raise ValueError("source changed after artifact pin")
+    if report["source_sha256"] != source_pins():
+        raise ValueError("source inventory or bytes changed after artifact pin")
     return out, report
 
 def qualify(path, pg_bin):
