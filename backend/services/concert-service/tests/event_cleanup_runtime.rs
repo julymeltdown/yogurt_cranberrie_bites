@@ -34,7 +34,9 @@ fn event_cleanup_config_has_no_enabled_or_unbounded_default() {
 #[ignore = "owned event_cleanup/run.py fixture only"]
 async fn event_cleanup_fixture_prepare() {
     let pool = pool().await;
-    let migrations = std::path::Path::new(env!("CARGO_MANIFEST_DIR")).join("migrations");
+    let migrations = std::path::PathBuf::from(
+        std::env::var("MCR_EVENT_CLEANUP_MIGRATIONS").expect("frozen migration directory required"),
+    );
     let full = Migrator::new(migrations).await.unwrap();
     assert_eq!(full.iter().filter(|m| m.version == 46).count(), 1);
     let baseline = Migrator {

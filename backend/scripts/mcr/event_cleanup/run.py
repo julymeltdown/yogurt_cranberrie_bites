@@ -11,7 +11,7 @@ import subprocess
 import tempfile
 import uuid
 
-PG=Path('/opt/homebrew/opt/postgresql@16/bin')
+PG=Path(os.environ.get('MCR_EVENT_CLEANUP_PG_BIN','/opt/homebrew/opt/postgresql@17/bin'))
 def sha(p):return hashlib.sha256(p.read_bytes()).hexdigest()
 def main():
     parser=argparse.ArgumentParser();mode=parser.add_mutually_exclusive_group(required=True);mode.add_argument('--frozen',type=Path);mode.add_argument('--sql-only',action='store_true');a=parser.parse_args()
@@ -23,14 +23,18 @@ def main():
         frozen=a.frozen.resolve();receipt=json.loads((frozen/'freeze.json').read_text())
     for name,info in receipt['binaries'].items():
         path=frozen/'bin'/name;assert sha(path)==info['sha256'] and path.stat().st_size==info['size']
+    if not a.sql_only:
+        actual={p.name:sha(p) for p in sorted((frozen/'migrations').glob('*.sql'))}
+        assert actual==receipt['migrations'],'frozen migration hashes changed'
     logs=frozen/'native';logs.mkdir(mode=0o700)
     root=Path(tempfile.mkdtemp(prefix='mcr-event-cleanup-',dir='/private/tmp')).resolve()
     root_stat=root.stat();token=uuid.uuid4().hex;(root/'owner').write_text(token)
+    (logs/'cluster.json').write_text(json.dumps({'root':str(root),'identity':[root_stat.st_dev,root_stat.st_ino,root_stat.st_uid],'token':token})+'\n')
     socket=root/'socket';socket.mkdir();data=root/'data'
     record={'status':'IN_PROGRESS','checks':[],'source':receipt['source'],'binaries':receipt['binaries'],'cluster':str(root),'cleanup':False}
     started=False
     env={k:v for k,v in os.environ.items() if not k.startswith(('PG','DATABASE','CONCERT_DATABASE','MCR_'))}
-    env.update(MCR_EVENT_CLEANUP_SOCKET=str(socket),MCR_EVENT_CLEANUP_OWNER=token,RUST_BACKTRACE='1')
+    env.update(MCR_EVENT_CLEANUP_SOCKET=str(socket),MCR_EVENT_CLEANUP_OWNER=token,MCR_EVENT_CLEANUP_MIGRATIONS=str(frozen/'migrations'),RUST_BACKTRACE='1')
     def run(name,cmd,timeout=60,check=True):
         proc=subprocess.run([str(v) for v in cmd],env=env,capture_output=True,text=True,timeout=timeout)
         (logs/f'{name}.stdout').write_text(proc.stdout);(logs/f'{name}.stderr').write_text(proc.stderr)
@@ -42,14 +46,14 @@ def main():
         out=run(name,[PG/'psql','-X','-v','ON_ERROR_STOP=1','-v',f'fixture_owner={token}','-At','-h',socket,'-p','55446','-U','mcr_event_cleanup_fixture','-d','mcr_event_cleanup_fixture','-f',path])
         record['checks'][-1]['assertions']=[line for line in out.splitlines() if line.startswith('SQL_GUARD_PASS:')]
         assert record['checks'][-1]['assertions'], 'SQL guard file ran no assertions'
-    def native(name,filter_name,ignored=True):
-        out=run(name,[frozen/'bin'/'event_cleanup_runtime',filter_name,*(['--ignored'] if ignored else []),'--nocapture','--test-threads=1'],timeout=120)
+    def native(name,filter_name,ignored=True,exclude_restart=False):
+        out=run(name,[frozen/'bin'/'event_cleanup_runtime',filter_name,*(['--ignored'] if ignored else []),*(['--skip','event_cleanup_local_restart_'] if exclude_restart else []),'--nocapture','--test-threads=1'],timeout=120)
         match=re.search(r'test result: ok\. (\d+) passed; 0 failed;',out);assert match and int(match.group(1))>0,f'no tests ran: {name}'
         record['checks'][-1]['passed']=int(match.group(1))
         if 'BE41_CLEANUP_SOURCE_PIN=' in out:
             assert receipt['source']['owned_source_pin'] in out,'frozen binary/source pin mismatch'
     try:
-        version=run('pg-version',[PG/'postgres','--version']);assert '16.' in version
+        version=run('pg-version',[PG/'postgres','--version']);assert '17.' in version
         if not a.sql_only:
             out=run('application',[frozen/'bin'/'event_cleanup','--nocapture']);assert '4 passed; 0 failed' in out
             native('config','event_cleanup_config_',False)
@@ -71,7 +75,9 @@ def main():
         else:
             native('migrations','event_cleanup_fixture_prepare')
             native('runtime','event_cleanup_runtime_')
+            native('local-owners','event_cleanup_local_',exclude_restart=True)
             native('restart-prepare','event_cleanup_restart_prepare')
+            native('local-restart-prepare','event_cleanup_local_restart_prepare')
         before=sql('before-restart','select pg_postmaster_start_time(), pg_backend_pid();').strip();pid_before=int((data/'postmaster.pid').read_text().splitlines()[0])
         run('pg-stop-restart',[PG/'pg_ctl','-D',data,'-m','fast','-w','stop']);started=False
         run('pg-start-restart',[PG/'pg_ctl','-D',data,'-l',root/'postgres.log','-w','start']);started=True
@@ -81,6 +87,7 @@ def main():
             sql_file('schema-resume',Path(__file__).with_name('schema_resume.sql'))
         else:
             native('restart-verify','event_cleanup_restart_verify')
+            native('local-restart-verify','event_cleanup_local_restart_verify')
         assert sql('prepared','select count(*) from pg_prepared_xacts;').strip()=='0'
         record['status']='PASS_SQL_ONLY' if a.sql_only else 'PASS'
     except BaseException as error:
