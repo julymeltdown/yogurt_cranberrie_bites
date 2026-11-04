@@ -4,3 +4,5 @@ export { referenceSceneFor, requireReferenceScene, referenceScenery } from './mo
 export type { ReferenceSceneBinding } from './model'
 export { loadReferenceScene } from './loader'
 export { createReferenceSceneOverview, drawReferenceOverview } from './overview'
+export { spatialSceneIdentity, spatialThemeIds, getSpatialScenery, isSpatialReferenceClaim } from './spatial-v3/model'
+export type { SpatialThemeId } from './spatial-v3/model'

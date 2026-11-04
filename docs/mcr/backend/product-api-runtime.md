@@ -49,6 +49,11 @@ The route set currently authored is:
 | Method | Event-relative path | Producer boundary |
 | --- | --- | --- |
 | GET | `/feed` | Event Feed read, not inherited `/api/feed` |
+| GET | `/posts/{postId}` | Guarded Post detail |
+| GET | `/posts/{postId}/comments` | Guarded comment page |
+| GET | `/parties` | Party list |
+| GET | `/parties/{partyId}` | Party detail |
+| POST | `/parties` | Receipt-backed party creation |
 | POST | `/media/uploads` | `initConcertUpload` |
 | PUT | `/media/{mediaId}/bytes` | `putConcertUploadBytes` |
 | POST | `/media/{mediaId}/finalize` | `finalizeConcertUpload` |
@@ -70,7 +75,7 @@ canonical UUID idempotency key. All responses use `no-store`; private image
 responses additionally use `nosniff`, inline disposition and same-origin resource
 policy. Transport failures expose fixed C04 errors without dependency diagnostics.
 
-Only the three exact media mutation method/path tuples bypass the inherited
+Only the three exact media mutation method/path tuples and party creation bypass the inherited
 Gateway journal. Concert owns their durable receipts; private image bytes must
 not be buffered into a second Gateway replay record. All other retained mutation
 and idempotency behavior remains in place. This narrow `server.rs`/HTTP root
@@ -178,3 +183,195 @@ These bounded results qualify the transport and fail-closed startup checkpoint.
 They do not qualify the currently missing production owner constructors, actual
 multi-service HTTP journey or acceptance of the whole assignment. Required work
 continues without holding an idle build lease.
+
+## Durable delivery checkpoint: `b59fea237d7514315f0c4121762a493640410dd8`
+
+This later checkpoint uses the published canonical SDK1
+`888cb6bd30846d891286b92a9a66e921e8d1ce78`. It adds the root-owned
+`0028_product_owner_scope_lifecycle.sql`, `product_rpc/scope_ledger.rs`,
+`scope_lifecycle.rs`, and `delivery.rs`; internal Product delivery IDL; and the
+Gateway's outer retained HTTP body layer. All product modes remain closed.
+The Post/party routes above are source composition, not available producers.
+
+The actual canonical scope must be registered durably before acquisition, and a
+private delivery capability must be bound before protected producer work.
+Concert gRPC EOF records serialization only. Gateway's actual terminal HTTP body
+production invokes the workload-only completion RPC with a separate bounded
+system deadline. Neither browser cancellation nor an expired actor deadline
+certifies completion. A finished-root marker does not attest owner transaction
+settlement. A separate durable completed receipt is written only after the actual
+canonical scope finishes its owner and child settlement; absent memory or a lost
+receipt stays unknown. This boundary proves server body production, not browser
+receipt or rendering.
+
+Transactions persist their exact native identity and opaque producer settlement
+reference before owner Track calls. Auth and Friend acknowledgements are recorded
+separately; both must match before producer effects. Sealing bars late
+registration, capacity never evicts unfinished scopes, and bindings/evidence
+cannot be rewritten or deleted. SQL and Rust fixtures use synthetic owner
+bindings: they do not mint or qualify real owner authority.
+
+The exclusively allocated BACKEND target was released after three successful
+locked/offline Rust 1.88 builds (Concert tests, Gateway tests, Concert binary),
+jobs 2, profile debug 0, incremental 0. Seven executables, Cargo JSON receipts and
+715 source-file pins were copied to a private evidence directory before release.
+The initial cached contracts-build helper referenced another worker's absolute
+proto path. Cleaning only affected package artifacts corrected the cache issue.
+A subsequent compile found and fixed an ambiguous media response Result and a
+SQLx async-trait transaction lifetime/Send issue. The same builds then exited 0.
+Release verification found zero target handles and 76,092,981,248 free bytes.
+
+| Actual copied-binary or isolated PG check | Result | Qualification boundary |
+| --- | --- | --- |
+| Concert strict Feed/comment query parser | Exit 0, 3 tests | Includes exact query decoding and closed bounds |
+| Concert product runtime | Exit 0, 4 tests | Closed routing, policy and startup settings |
+| Gateway product HTTP transport | Exit 0, 4 tests | Actual loopback transport with service doubles |
+| Gateway terminal delivery | Exit 0, 4 tests | EOF, cancellation, expired browser deadline, unknown completion and malformed capability; service doubles |
+| Gateway exact receipt scope | Exit 0, 1 test | Retained receipt boundary |
+| Native Rust scope ledger | Exit 0, 3 tests | Actual private PG transactions; real in-progress/aborted XID evidence remains distinct from root markers |
+| Ledger migration and SQL invariants | Exit 0, 17 cases | Includes actual PG restart and cleanup; rejection cases intentionally exit 1 |
+| Current copied Concert startup | Exit 1 as required, 2 cases | Both product modes fail with the expected guarded-composition error before DB/listener exposure |
+| Real canonical owners / joined producer / end-to-end HTTP | **NOT_RUN** | Required before enabling product modes |
+| SDK2 child intents / restart recovery | **NOT_RUN** | Later published SDK2 is not qualified by these SDK1 artifacts |
+
+Exact private evidence basenames are `native-boundaries.result.json`,
+`native-ledger.result.json`, `startup.result.json`, `source-pins.json`,
+`binaries.json`, per-executable `.receipt.json`, and `target-release.json`.
+The native ledger SHA-256 is
+`a7734e80d93870b47b7506b5d227b6c639cb499693b3f4be2510a5fa3838b8cf`;
+Gateway terminal delivery is
+`059630c2f93b53eb4767f32966b341e5a7d65cc605c8fe9d0702a7461744a058`;
+Concert binary is
+`f94e88931ec83237f0bc684586d33842b511f56657a736bd80ca35a4000c845b`.
+The ledger migration SHA-256 is
+`31d0501b54bd08bb9650e4beaa003b4739949bc78c97c070cca06711160cd628`.
+The frozen tree also contained the exact four-file optional cooldown contract
+patch `dc4a3f93`, subsequently published unchanged in `faeb6ed4`; it was recorded
+as an additional source pin, not silently attributed to the root commit.
+
+## SDK2 child recovery and system settlement: `3298445a`
+
+This qualified source incorporates SDK2 `c4ad561cd813f0f7f1e14f21cb2ee90592e09eea`
+and published Auth/Friend stores `dc70d62049d8e8430c88b9ebfc6f071740020538`.
+Root commits `28c8a4ec`, `7e7c8128`, and `d7abfed5` add the required child hooks,
+the owner-only ProducerSettlementService, native rollback resolution, and the
+strict registered-operation/key command-status query. No producer is enabled.
+
+`PgScopeLedger::new` now requires explicit `ChildRecoveryKeys` and an actual
+`ChildIntentSettler`; neither has a successful default. The operator supplies a
+nonzero 32-byte AES-256-GCM key and stable ID, with up to three retained prior keys
+for restart/rotation. Closed `PROFILE_PUBLIC` and `LOCAL_PUBLIC` references are
+encrypted before dispatch/PREPARE. Authenticated encryption binds the instance,
+scope, original binding digest, kind, intent UUID, and key ID. Root checks the
+complete original parent/query identity, local producer instance, bounded native
+identity and closed child identifier before admission. Exact duplicates are
+idempotent; altered references, late admission and more than 202 intents fail.
+Completion evidence is immutable, and a pending child blocks the final durable
+delivery receipt even after root work finishes. Recovery releases no DB
+transaction across the configured owner/native adapter call and records each
+actual successful recovery before moving on. Unknown outcomes retain evidence.
+
+`product_rpc::settlement::ProducerSettlementService::new(ledger, resolver)` exposes
+the canonical lease protocol to authenticated Auth/Friend workloads only, with no
+actor grant, 16 concurrent calls, bounded frames and a separate two-second system
+budget. Scope absence returns unfinished. Transaction requests must match the
+durable full identity, original binding and that owner's registration. A lost
+Track acknowledgement can resolve only through actual native ABORTED evidence;
+other outcomes remain UNKNOWN. The concrete `PgNativeAbortResolver` checks the
+configured Concert system identifier/database OID/full XID. A raw COMMITTED XID
+stays UNKNOWN: a producer-specific same-transaction receipt is still required.
+
+Command status accepts exactly `operation_id` and `idempotency_key`, decodes once,
+rejects duplicates/unknown fields and admits registered mutation operations only.
+Its outer canonical operation remains `getConcertCommandStatus`. No browser
+target field is invented. A producer must recover and reauthorize its actual
+durable target before exposing safe receipt metadata. Gift pending/failed reserve
+correlation and other producer-specific status adapters remain separate work.
+
+Both locked/offline Rust 1.88 builds exited 0: Concert library/runtime/ledger test
+artifacts in 26.67 seconds and the Concert binary in 16.10 seconds. Jobs were 2,
+both profile debug settings 0, incremental 0. There were no warnings in the owned
+product paths; inherited World warnings were retained. The allocated MEDIA target
+was released with zero handles and 70,979,026,944 free bytes before native PG ran.
+Four executables and Cargo JSON receipts pin 1,778 source inputs. Current native
+results, from copied binaries only:
+
+| Check | Result | Limit |
+| --- | --- | --- |
+| Full Concert library | Exit 0, 48 passed, 13 ignored | Includes child cipher/AAD/rotation, command parsing and system policy; ignored native gates are not credited |
+| Product runtime | Exit 0, 4 passed | Closed policy/routes/settings |
+| Actual native ledger | Exit 0, 5 passed | Private PG16.14; partial Track loss, real rollback/full XID, raw commit UNKNOWN, encrypted intent retention and failed/successful recovery orchestration |
+| SQL invariants | 26 cases passed, actual restart and cleanup | Includes immutable child evidence and pending-child delivery denial; expected rejection commands exit 1 |
+| Actual current Concert process | Two expected exit-1 refusals | Before DB/listeners for unsupported product opt-ins |
+| Real owner/root mTLS join | **NOT_RUN by this checkpoint** | Owned by the canonical authority developer's separate native fixture |
+| Real Profile child recovery / HTTP producers | **NOT_RUN** | Required before live feature acceptance |
+| Gift private resource child and before-byte expiry gate | **NOT_RUN** | A subsequent explicitly typed SDK increment; never impersonated as an avatar child |
+
+The native child recovery success case uses an explicit service double to test
+durable orchestration after lost handles; it does not certify actual Profile
+recovery. The ledger settlement test uses caller extensions at the service seam;
+it does not certify workload authentication. The earlier Gateway HTTP delivery
+fixtures remain evidence for `b59fea23`, not a fresh SDK2 HTTP run.
+
+SDK2 copied artifact SHA-256 values:
+
+| Artifact | SHA-256 |
+| --- | --- |
+| Concert library | `3166010494f18796ddf9579b0bcf09826d36cb7c7756a94fa295b9c90cd17a6b` |
+| Product runtime | `b456d2fa62892f90e02706feb355219b9e91867f107dd14bc13fd5cac69964cc` |
+| Native ledger | `304303e4a9f04d4d7c2a0e4e82a8bec2a7894ea077976393f9c3a80673ccf72c` |
+| Concert process | `05138b6d3bd2e20d87f82e045580e1e433f778890eba46c50cdf5186201f6315` |
+
+The private `mcr-product-sdk2-native-20261104` evidence directory contains
+`native-boundaries.result.json`, `native-ledger.result.json`, `source-pins.json`,
+per-artifact Cargo receipts and `target-release.json`. These qualify this exact
+SDK2 composition, not later source changes, deployment or whole-product readiness.
+
+
+## Distinct effect identity and scoped delivery: `188db7c9`
+
+Source commits `cc4c9acf` and `d005b272` were compiled at
+`188db7c9b01ed30d63e2dd3d9272b11dad1bef31`. A producer's native effect digest
+need not equal its enclosing owner guard digest. The ledger now binds the
+original scope digest separately and compares the complete registered transaction
+identity at tracking, confirmation and settlement. Altered identities and wrong
+owner registrations remain denied. Two native ledger cases use distinct digests.
+
+`ScopedProductOwner` acquires one actual canonical scope and persists its delivery
+capability before constructing the producer future. Successful representations
+and normalized produced errors carry the same private capability and response
+token through serialization. This wrapper does not complete owner exclusion on
+return; actual terminal delivery and native settlement remain required.
+
+Fresh Rust 1.88 locked/offline builds used jobs=2, debug=0, incremental=0.
+The first attempt failed because cached `contracts-build` supplied another
+checkout's absolute proto include directory. Cleaning only contracts-build and
+Auth/Friend/Profile artifacts repaired this; the unchanged source retry and
+Concert binary build both exited 0. All 1,809 recorded input hashes remained
+unchanged during compilation. Four copied executable artifacts were frozen in
+`/private/tmp/mcr-product-effect-native-20261104`, with Cargo JSON and full input
+receipts. The shared build target was released with zero open handles and
+69,326,716,928 free bytes before starting PostgreSQL.
+
+| Check | Actual result | Limit |
+| --- | --- | --- |
+| Concert library | Exit 0, 48 passed, 13 ignored | Ignored native gates receive no credit |
+| Product runtime | Exit 0, 4 passed | Configuration tests |
+| Native ledger | Exit 0, 5 passed | Real private PostgreSQL16; service-caller extensions and child recovery fixture remain explicit doubles |
+| SQL lifecycle | 26 checks passed, restart and cleanup passed | No real owner RPC or HTTP proof |
+| Product opt-in startup | Both exit 1 before DB/listener with missing guarded bootstrap | Product modes remain closed |
+| New scoped wrapper with real owners and Gateway HTTP | NOT_RUN | Required follow-up; compilation alone does not prove terminal delivery |
+
+Copied artifact SHA-256:
+
+- concert-lib-tests: `0c7fb9b6cc1e47eeccd8a47acd3d46f3803409f843217e02e5fe03468211af37`
+- product-runtime-tests: `7546e66e4fafcf7d1400a1c18fc7a1fd6fec55b4b45260ff1cac1b15d60e3de4`
+- product-scope-ledger-tests: `9f12286d4c34d637bce5defd757bbd128d8136240f955aefd3ac279135edd3a4`
+- concert-service: `dff6ba30fead9bedd54208758f2a85e9ca4c2a610bb392749de56065d586471b`
+
+Commands: the prior SDK2 bounded Cargo test/bin commands were repeated against
+this source. `product_scope_ledger_smoke.py` used the new copied ledger executable
+and its receipt, returning PASS/cleanup PASS. Copied library/runtime binaries ran
+with `--test-threads=1`. `python3 scripts/mcr/check-plan.py` and `git diff --check`
+exited 0. Initial startup probes omitted required local metrics configuration;
+those refusals were not credited, and corrected explicit-local probes were run.

@@ -2999,6 +2999,7 @@ dependencies = [
  "protoc-bin-vendored",
  "serde",
  "serde_json",
+ "sha2",
  "sqlx",
  "test-support",
  "testcontainers",

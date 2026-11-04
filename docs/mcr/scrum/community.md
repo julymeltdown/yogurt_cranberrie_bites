@@ -6,7 +6,7 @@ ownership allocations. This is management bookkeeping, not implementation,
 query, visual, test or runtime review. Developers own all qualification, fixes
 and direct non-force publication. No work waits for king/SL technical approval.
 
-## Current original FE33 disposition and active caller assignment
+## Current original FE33 disposition and delivered caller assignment
 
 **Original FE33 frontend criteria: SATISFIED in frozen contract/fixture scope**,
 reported by developer `01a1a230-6acc-7e82-9e4b-92506decc745` at published
@@ -18,6 +18,16 @@ This disposition was sent to Main for the original-task ledger. The module's
 MOCK_READY environment label does not withhold the met frontend criteria.
 No new task ID, automatic IN04 completion or aggregate count is inferred.
 
+Frontend king subsequently reported central ledger reconciliation published at
+`c6eb8c6d6c642a07297e83f8ee3340d6a2440722`: 24 original-task outcomes
+(12 acceptance dispositions plus 12 additional SATISFIED), 73 other
+implementation-evidenced tasks, 10 unreconciled tasks and 5 open IN gates.
+Original FE33 was added once from the `7c2f3af7` owner receipt. Its recorded
+MOCK_READY environment coexists with SATISFIED task criteria. This is the
+king-reported bookkeeping baseline, adding FE20 once from `6c908472`, not a new
+lane review or task promotion. Actual production and IN04 remain open; the
+separate caller delivery below adds no original-task outcome.
+
 The primary module goal actually completed (819 seconds), followed by
 `get_goal: null`. The caller grant arrived afterward. The developer then created
 a **NEW unbudgeted ACTIVE** caller-assembly goal, creation receipt `1793752991`;
@@ -25,19 +35,29 @@ no false continuation or reset of the completed goal occurred.
 
 | Assignment | Owner / lifecycle | Completed work / publication | Remaining assigned behavior and next action |
 |---|---|---|---|
-| FE33 caller assembly; separate follow-up to met original client criteria | `01a1a230-6acc-7e82-9e4b-92506decc745`; ACTIVE new goal | Original module `7c2f3af7` reported published and clean; caller branch `codex/mcr-fe-FE33-mural-caller-assembly` starts at that exact source | Connect the explicitly supplied lifecycle presentation to the actual WorldPanels caller within the two allocated hunks; developer implements, qualifies, commits and publishes directly, then reports exact remaining production dependency |
+| FE33 caller assembly; separate follow-up to met original client criteria | `01a1a230-6acc-7e82-9e4b-92506decc745`; goal COMPLETE, then null; clean STOP | Implementation `ebf0473dd8f2123b74d77ca3f4de3da5abd0df9a`, final receipt/master `eeae69be3ebb7fafafa92f5e6b8f4141797ed102`, publication/remote match reported by owner | Allocated caller gap closed; exact two-hunk lease returned. Genuine production supplier remains separately owned; no IN04 claim |
 
 Isolated checkout: `/Users/lhs/Desktop/mcr-worktrees/fe-ref-gifts`. The developer
 reported clean startup, no prior writer/WIP collision, and accepted the exact
-lease. The caller goal remains active; no caller-assembly commit/push is yet
-reported in this record.
+lease. Final goal receipt: `update_goal(complete)` succeeded for goal
+`1793752991`, 774 seconds, followed by `get_goal: null`. Owner reported resource
+cleanup and no remaining owned work; the completed chat is archived, with no
+waiting goal. Its two-hunk lease is returned, not implicitly reassigned.
 
-### Effective exclusive lease: two existing-file hunks
+Owner reports optional `WorldCompositionOptions.mural` qualification factory and
+`presentation.mural` connected to the actual WorldPanels provider; omitted
+supplier remains closed. Reported qualification includes 385 tests/16 files,
+TypeScript/lint and native default MapScene/Phaser at 360/390/430 plus omitted
+source, one game/socket/factory, retained lost-POST key and privacy cleanup.
+These are developer receipts, not independently rerun manager checks. Evidence
+remains in the assigned lifecycle subtree and lane note. No live producer,
+database, admitted socket, physical device, art or IN04 acceptance is asserted.
+
+### Delivered and returned lease: two existing-file hunks
 
 Frontend king recorded the allocation from former root writer
 `01a1a153-1227-7e72-801f-a2a6b91981e1`'s explicit COMPLETE/null/clean-STOP release.
-Developer `01a1a230-6acc-7e82-9e4b-92506decc745` is the sole active writer through
-committed handoff/STOP for ONLY:
+Developer `01a1a230-6acc-7e82-9e4b-92506decc745` delivered and returned ONLY:
 
 - `frontend/src/world/composition/index.ts`: additive lifecycle import/type,
   optional explicitly supplied qualification-source factory, borrowed
@@ -54,8 +74,9 @@ Existing runtime/MapScene/resolver/reference-overview/ports/router/main files,
 existing tests and queued v3 adoption remain excluded. New tests, fixtures and
 native evidence stay under `frontend/src/world/mural-entry-lifecycle/**`;
 `docs/mcr/frontend/mural-entry-lifecycle.md` remains the owned lane note.
-No allocation or approval request is pending. Future root/v3 writers must
-coordinate these exact hunks before any ownership change.
+No caller allocation or approval request is pending. Root153's current v3
+increment explicitly excludes both files; returning this lease does not expand
+that increment. Future writers need an exact named ownership transfer.
 
 ### Actual production dependency remains separate
 
@@ -67,7 +88,7 @@ interfaces, not a blanket barrier to frozen client work:
 
 | Dependency | Named implementation contact | Last handoff / next action |
 |---|---|---|
-| Wall producer and writable authority increment | `01a1a21e-ab80-7012-b9fa-cdb69eed097b` (BE-WALL-LIVE) | Frozen C04/MuralEntryRelease handoff delivered directly to FE33; actual qualified producer publication is not established by the receipts in this record |
+| Wall producer and writable authority increment | `01a1a21e-ab80-7012-b9fa-cdb69eed097b` (BE-WALL-LIVE) | Qualified fixture handoff at clean branch `codex/mcr-be-wall-live`, HEAD `57dc31e1`, delivered directly to Product root. Owner reports actual canonical PreparedWallFence compiled, private PostgreSQL 16.14 ten checks PASS/zero FAIL or ignored plus cleanup, harness seven PASS. Four frozen C04 wire APIs retain original-key/exact-body semantics and corrected optional cooldown hint. This receipt does not establish remote publication, production supplier/anchor/eligibility or actual root HTTP/completion; real IN04 remains NOT_RUN |
 | Product/Gateway mappings and production entry composition | `01a1a1fc-7f3d-7ff1-9416-e3435c8a6f08` | Supply actual producer/configuration handoff; route existence does not confer availability |
 | Canonical held authority | `01a1a207-f012-7343-a24b-12b9c544973f` | Technical interface and qualification belong to the implementation owners |
 | Actual incumbent World binding | `01a1a20f-8d37-71c3-a429-8a55bb6d6c49` | Resolve genuine connection/binding inputs directly with implementation owners |
@@ -78,6 +99,107 @@ not an added condition on the already satisfied original FE33 fixture criteria.
 
 ## Other material lane outcomes and ownership boundaries
 
+### Original QA/IN implementation staffing
+
+These are contributions to the original 112 tasks, not new reviewer roles or
+manager approval gates. Reservations below are NOT_STARTED/NOT_RUN until an
+exact ready scope is accepted and actual goal startup is reported. No reserved
+developer has an active waiting goal. Each implementation owner qualifies,
+fixes, documents, commits and publishes its own deliverable. No new application
+checks or implementation inspection were performed by this coordinator.
+Persistent goals must not be paused for staffing or reallocation; pausing
+requires the user's explicit request. Preserve unfinished goals through ordinary
+handoffs and never falsely complete, reset or relabel them.
+
+| Original task | Named implementation owner / status | Delivered contribution and remaining original criteria | Prerequisite owner / next action / publication |
+|---|---|---|---|
+| QA01 | `6ec9`; original criteria SATISFIED for exact pinned canonical inputs, environment CONTRACT_READY; same goal `1793754012` COMPLETE then null, clean STOP | Every fixture/generated response shape coverage and drift/missing-operation/broken-schema/unknown-enum/empty-success failure requirements reported delivered without waived criteria. No whole C07/live/device/IN acceptance | Implementation `6e2038fccbfc09f0dedc344823ef3a494a0da7d3`, evidence `19d7441f`, non-force publication `bd103c101b07e1df30c424cbc1e8a3ea62ca5315`; owner reports all ancestry present under remote `cb9abce48d78227bbdedf7ea59ce95e9e0270c4a`. Both qa01-coverage leases returned; no remaining QA01 required work or new task goal |
+| QA05 mural contribution | Reserved `230` after its completed caller handoff; World primary `202` after current spatial work; NOT_STARTED | Existing FE33 module/caller support frozen fixture inputs, not required live failure acceptance. Contribute delay/gap/recovery/withdrawal/convergence scenarios without duplicating primary World coverage; full suite retains slow-client/background/ticket/restart/room-switch and bounded-queue/no-ghost requirements | Proposed NEW `frontend/e2e/realtime/mural/**` versus primary `world/**`; parent incumbent/root configuration lease must be confirmed before a grant. BE Wall `21e` supplies frozen C04 and later qualified live inputs. No new goal or contribution commit/push |
+| QA09 frontend lifecycle/closure/retry contribution | Reserved `230`; backend primary `267` at natural Gift/operator handoff; NOT_STARTED | No full recovery rehearsal delivered. Cover resumable partial closure/retry and frontend lifecycle around actual database restart/backup restoration, outbox replay, pending pickup and deletion; supporting restart tests do not certify whole task | Product root `1fc` owns BE44 restore/outbox interfaces, Social backend `16e1` BE42 deletion; FE39 frozen closure/retry input and exact shared recovery child-prefix lease required. Frozen-contract authoring can proceed independently when allocated; actual rehearsal requires candidate interfaces and scoped backup resources. No commit/push |
+| QA10 frontend provenance contribution | Reserved `230` serially after ready mural/recovery work; Product root `1fc` remains sole `scripts/mcr/release-check.sh` implementation owner; NOT_STARTED | Candidate versions, genuine checks, production mock/secret exclusion, task-to-commit evidence. Missing evidence stays NOT_RUN/BLOCKED and stale revisions cannot replace current candidate | BE43 remains root's hardening increment; QA01/QA02 same-candidate evidence required. Proposed NEW `docs/mcr/evidence/release/frontend/**` only, pending exact lease. No release-script grant to frontend contributor and no commit/push |
+| IN04 frontend real mural journey | Reserved `230`; backend Wall primary `21e`; NOT_RUN | FE33 original criteria SATISFIED and caller gap closed. Actual multiple-client paint/cooldown/pause/restore/final-freeze journey and unauthorized-moderation rejection remain unexecuted | Exact `frontend/e2e/real/mural.spec.ts` lease not yet granted. Wall/root HTTP+WS, BE40 pause/lock/restore/audit/new revision and genuine supplier remain open; implementation contacts `21e`, root `1fc`, canonical `207`, World `20f`. No IN04 commit/push or acceptance |
+| IN05 frontend evidence/limitations reconciliation contribution | Reserved `230` serially with its QA10 frontend contribution; joint backend decision artifact/publication owner Product root `1fc`; NOT_STARTED | Reconcile all 112 original tasks and 61 IA entries, same-candidate frontend evidence and explicit limitations; no helper inflation or fixture-to-live promotion. Release decision itself stays with root | Proposed NEW `docs/mcr/evidence/release/frontend/**` contribution, not `docs/mcr/release-decision.md` ownership. Original IN/QA/device/operator/recovery evidence remains required. No fake waiting goal, decision approval role or contribution commit/push |
+
+Full reserved developer identifiers: `230` =
+`01a1a230-6acc-7e82-9e4b-92506decc745`, `6ec9` =
+`01a1a1fd-6ec9-71e2-a2c6-b5dddca7542e`, World primary `202` =
+`01a1a202-375e-7401-bfa1-ff8721e90ed6`, backend `267` =
+`01a1a267-37a0-7723-a4e9-a3a6f5b27f52`, Social backend `16e1` =
+`01a1a1fe-16e1-7ee3-a9dc-8b5f037cc24c`. Other dependency identifiers are
+listed in the production table above. `1ab7` =
+`01a1a1fe-1ab7-79b0-adbc-d4c025701acb`; latest frontend-king allocation names it
+for independent QA02 under the king's dispatch and World tracking, not QA01.
+Social's IN02 reservation follows its committed QA02 STOP, with no parallel
+waiting goal. World QA05 primary above is a different UUID from active Auth
+QA04 owner `01a1a202-3ff2-7a93-95c3-374c6df97281`; prefix similarity gives no
+ownership collision or right to divert Auth work.
+
+**Delivered QA01 receipt:** owner reports 15 schemas/225 definitions plus 241
+generated components, 134 operations, all 124 fixture JSON inputs (121 fixtures
+and 3 indexes), 25 scenery cases and 1,519 response/media cases passing. Twelve
+deliberate CLI mutations each exit 1 with positive control passing; 1,167
+unknown-reason rejections; seven tests, three generator checks, planning,
+scope and diff checks exit 0. These are owner-run results, not manager reruns.
+Evidence: [QA01 coverage](../evidence/contracts/qa01-coverage/README.md),
+with `report.json`, `negative-results.json` and `validation.json` recording
+commands, hashes, limitations and provenance. Five new script paths and eight
+new evidence/doc paths stayed in the exact two prefixes; no canonical,
+generated, CI or application writes. Owner reports peer-merge and affected
+rerun before safe non-force publication, clean checkout, zero changed/untracked
+paths and no processes. The same goal completed and following `get_goal`
+returned null; no recreation/reset. No manual resume remains pending for this
+completed goal. No QA02/QA07/QA10/IN05 work began or new reservation was acquired.
+Original QA01 satisfaction was relayed to Main and frontend king for ledger
+reconciliation once; no replacement aggregate is computed here.
+
+**Post-QA01 context handoff:** Community released completed `6ec9` to Backend
+staffing `01a1a21d-39ec-7912-84cb-910058e7a110` as sole next allocator for
+prospective BE27 backend implementation. A fresh compact chat snapshot confirms
+notLoaded/latest turn completed and the QA01 COMPLETE/null/clean-STOP receipt;
+Community has sent no new assignment or goal. The chat remains archived until
+a concrete assignment. Backend staffing must first obtain actual STOP/zero-edit
+release of the prospective BE27 scope from developer `00c`, then own the exact
+ten-path lease, isolated backend worktree and truthful new-goal startup. No
+BE27 implementation or active goal is inferred from this context release, and
+no former frontend/shared-script/contract rights transfer. Community will not
+dispatch concurrent QA10/IN05/other work to this context.
+
+**Historical crossed-allocation lifecycle:** the earlier explicit frontend-king and
+World QA01-first grant to `6ec9` was acted on before the king's newer switch to
+`1ab7` arrived. Community created isolated
+`/Users/lhs/Desktop/mcr-worktrees/qa-contract-coverage`, branch
+`codex/mcr-qa-QA01-coverage`, base
+`d273c3771499d8f564e3282d4e9009cdf627a67e`, and dispatched concrete QA01 under
+NEW `scripts/mcr/contracts/qa01-coverage/**` plus NEW
+`docs/mcr/evidence/contracts/qa01-coverage/**`. Root subsequently confirmed
+those exact new prefixes had no incumbent and supplied published canonical
+source `21d0ac95` (schemas/fixtures, OpenAPI `b942`, frontend projection
+`65f91166`); existing validators/generators remain read-only.
+
+The receiving developer actually reported clean base, `get_goal: null` then
+NEW unbudgeted ACTIVE goal `1793754012`, and accepted scope. No QA01 deliverable
+was reported. On receiving the newer allocation Community immediately sent
+cancel/STOP/preserve-WIP and truthful goal-pause-if-created instructions and
+notified king, World and root. Actual STOP receipt then confirmed goal PAUSED
+at `1793754035`, unchanged clean base, zero changed/untracked/WIP paths,
+commits or processes, read-only reconnaissance only and no tests. This was
+unfinished work, never a completed/null goal.
+
+The king's subsequent actual-start decision preserves `6ec9`'s accepted QA01
+and assigns independent QA02 to stopped `1ab7` instead. Community explicitly
+restored the exact original two new prefixes and authorized resuming the SAME
+aligned goal `1793754012`, without creating/resetting a duplicate. Developer's
+subsequent `get_goal` then still reported PAUSED: available goal tools could
+not resume it, and user/app control was required for an ACTIVE transition.
+Developer continued expressly authorized aligned implementation with truthful
+runtime status. The final delivered receipt above supersedes that temporary
+pause: actual COMPLETE then null after all required owned work, not a staffing
+reset or false completion. No further implementation or goal is assigned.
+Root's canonical source/lease receipt was forwarded directly. No QA02/QA07
+assignment belongs to `6ec9` now. Community has never dispatched `1ab7`.
+No QA01 outcome is inferred from dispatch. Later QA07/QA10/IN05 contributions
+need natural handoffs and exact ready allocations.
+
 | Original task / contribution | Owner-reported disposition and source | Remaining behavior / ownership |
 |---|---|---|
 | FE01/C04 optional mural hint correction | Bounded correction accepted; `faeb6ed4939a623627d1e9ac2c5016b986a2efea`; goal COMPLETE then null, clean STOP, former shared lease ended | No optional-hint behavior dependency remains; no new parent-task count. Supports BE34/FE32/FE33 without completing them automatically |
@@ -86,14 +208,13 @@ not an added condition on the already satisfied original FE33 fixture criteria.
 | FE24–26 GIVEAWAY public/business flow | Source/fixture deliveries preserved; FE25/FE26 existing task-local satisfied dispositions remain in historical records; target fix `9055af1e` | Actual Gift producer increment assigned `01a1a267-37a0-7723-a4e9-a3a6f5b27f52`; no qualified-publication/readiness inference from old internal deliveries |
 | FE27/FE28 actual Feed/content commands | Existing source/fixture and portrait deliveries preserved | Product Feed/media availability last reported false until genuine producers/configuration; Feed write authority not supplied by read-route publication. Product root coordinates implementation owners |
 | FE37–40 operator/moderation/closure/archive; notices/inbox | Required backlog retained, no new completion decision from this record | Exact remaining original behavior and current task dispositions must come from assigned developer receipts, not a new manager audit or disappearing scope |
-| FE20 photo continuation | Staffing/interface coordination transferred to Social SL `01a1a1fe-ca12-7cc3-9a1d-62bbb2689498` | Active FE20 owner `01a1a1fe-1ab7-79b0-adbc-d4c025701acb`; Community FE33 has no photo or generated-output lease |
+| FE20 photo continuation | Owner reported task criteria SATISFIED at MOCK_READY, published `6c908472`, COMPLETE then null/clean STOP | `1ab7`'s next QA02 is separately allocated; IN02/live producer admission/device remain separate. Community FE33 has no photo or generated-output lease |
 
-`frontend/src/shared/api/domain-operations.generated.ts` is now exclusively
-allocated to active FE20 owner `01a1a1fe-1ab7-79b0-adbc-d4c025701acb` using the
-canonical generator/pin; backend/OpenAPI outputs remain with Product root.
-That owner also has the separately recorded purpose-type/import-only hunks in
-`features/event-feed/FeedImage.tsx` and `features/feed-thread/media.ts`, preserving
-POST-only guards. These grants do not overlap the FE33 new module or caller hunks.
+FE20's former exclusive generated-output and Feed purpose-type/import leases
+were bounded to its completed handoff, including projection `65f91166`; a new
+QA02 assignment does not restore those rights. Backend/OpenAPI and canonical
+generator composition remain with Product root. Neither current QA01 nor
+future QA02 receives generated-output, Feed or root application edits.
 
 Disputed historical Gift authorship is not a staffing barrier: the old
 `eac0b6ae` to `01a1a1fd-6b5d-75b0-8d42-01ade79b9393` association in older records

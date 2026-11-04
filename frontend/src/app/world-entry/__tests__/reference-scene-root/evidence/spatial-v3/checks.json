@@ -1,0 +1,197 @@
+{
+  "task": "FE-SPATIAL-V3-ROOT",
+  "status": "PASS",
+  "qualification": "MOCK_READY_SOURCE_FIXTURE_ONLY",
+  "sourceCommits": [
+    "b81707a5",
+    "b59ca1a6"
+  ],
+  "nativeCandidate": "d36972f2e3ca2169bae246983768fb3562ad8078",
+  "base": "b222805cda0d681eb1d40fa9dcb3d82f1663829a",
+  "peerBase": "72b1233fba1c05e439ad597f2849a487d8541b85",
+  "sourcePacket": {
+    "commit": "0a8c422645458c9397af9289e15089ee3f9cb0ad",
+    "sha256": "70c3d1ac268c6e5da39d30a20e01406fc7eb27668d6f0e6a66e1d87de15d7d07",
+    "bytes": 8010,
+    "scope": "Actual published source-level scenery and texture qualification; derived DTO bindings separately root-qualified; no Product admission"
+  },
+  "checks": [
+    {
+      "name": "affected Vitest",
+      "exit": 0,
+      "tests": 419,
+      "files": 20,
+      "workers": 2,
+      "python": "existing contracts-validation venv"
+    },
+    {
+      "name": "full tsc -b",
+      "exit": 0
+    },
+    {
+      "name": "scoped Oxlint",
+      "exit": 0
+    },
+    {
+      "name": "Vite production build",
+      "exit": 0,
+      "warning": "Existing large Phaser chunk advisory"
+    },
+    {
+      "name": "native original source",
+      "exit": 0,
+      "journeys": 9,
+      "widths": [
+        360,
+        390,
+        430
+      ],
+      "eras": [
+        "REVENGE",
+        "PARADE",
+        "DANGER"
+      ],
+      "receipt": "native.json"
+    },
+    {
+      "name": "native source-qualified derived fixtures",
+      "exit": 0,
+      "journeys": 3,
+      "directedEraTransitions": 18,
+      "receipt": "derived-native.json"
+    },
+    {
+      "name": "retained map2/v4",
+      "exit": 0,
+      "journeys": 3,
+      "receipt": "retained-map2.json"
+    },
+    {
+      "name": "actual default production resolver denial",
+      "exit": 0,
+      "modes": 3,
+      "sceneAssetRequests": 0
+    },
+    {
+      "name": "cross-mode per-era RGBA equality",
+      "status": "PASS",
+      "comparisons": 9
+    },
+    {
+      "name": "saved state after UI selection",
+      "status": "PASS",
+      "transitions": 18
+    },
+    {
+      "name": "all44 native source pins vs reconciled checkout",
+      "status": "PASS"
+    },
+    {
+      "name": "planning/provenance",
+      "exit": 0
+    },
+    {
+      "name": "UI-origin",
+      "exit": 0
+    },
+    {
+      "name": "assigned frontend boundaries",
+      "exit": 0,
+      "base": "72b1233fba1c05e439ad597f2849a487d8541b85",
+      "allowDocs": [
+        "docs/mcr/frontend/reference-scene-root.md",
+        "frontend/src/app/world-entry/__tests__/reference-scene-root/source-inputs/README.md"
+      ]
+    },
+    {
+      "name": "whitespace",
+      "exit": 0
+    }
+  ],
+  "limits": [
+    "Explicit nonauthoritative resolver for positive root fixtures; actual canonical Auth/privacy/root/Places/composition/runtime/default Phaser/characters",
+    "Original World fixtures/artist provenance/map2-v4/virtual place values unchanged; new derived descriptors use exact real published source provenance and separately validated C06/map/avatar bindings",
+    "Backend canonical map4 content736afd is recorded separately from TESTONLY source map content hash",
+    "No production Product/operator bundle/live/multiuser/device/physical/fidelity/global-parent acceptance",
+    "No v7 adoption, no runtime/composition/WorldPanels or FE09 writes"
+  ],
+  "runtime": {
+    "oneGameCameraFactoryConnection": true,
+    "defaultSourceObjectCount": 23,
+    "wholeCharacterSprites": 6,
+    "derivedSourceHttpRequests": 5,
+    "derivedCacheHits": 23,
+    "derivedCreatedRevokedURLs": [
+      29,
+      29
+    ],
+    "disposedCacheResidentBytes": 0,
+    "pageErrors": 0
+  },
+  "captureInspection": [
+    "world-revenge-360.png",
+    "map-danger-430.png",
+    "derived-world-danger-390.png",
+    "derived-map-revenge-360.png"
+  ],
+  "corrections": [
+    "Original all-era fixtures correctly failed optional REVIEWED-theme guard; actual published source packet plus separately derived full-validated fixture descriptors supplies honest qualification without weakening guard",
+    "Negative test metadata was frozen; deliberately cloned before mutations",
+    "Replaced initial uppercase-only accessible button match with case-insensitive actual label",
+    "Type-only ReleasePin export and narrowed runtime themeId corrected before final qualification"
+  ],
+  "evidenceSha256": {
+    "build.log": "6194895b39ab43676ca538487d45b1a92c1a5033820740c5996c15d6f1c7a5da",
+    "derived-map-danger-360.png": "ba9ebea57fc71ddb8a37d9f17da3cfc86d607a641ebc828ef1d687d645d5ce17",
+    "derived-map-danger-390.png": "6742208f91d4b9fcda07b6021059b1a6340381d174643b47ca6536da718af0f4",
+    "derived-map-danger-430.png": "499daceedc4dae0508374204f2f168f83ef0e4531be834fd4f56153b23ed56e7",
+    "derived-map-parade-360.png": "55b1362fac632b8d0bda4f57926bfeab148f0dafc7f365a679f04b48e8819a12",
+    "derived-map-parade-390.png": "4cd2bb5ea7dc814868adb0d7645d4787a0af350b6ca93c2590171d8b1d427528",
+    "derived-map-parade-430.png": "c7b416456d456b7edefd73bd3ccc11c3bc01a87194ae0ee35ad8bcb79fcf6c6a",
+    "derived-map-revenge-360.png": "590cca38cd87569b9c604d20ee02f29ce6521603d08996560ff6a6fa4b4a1c59",
+    "derived-map-revenge-390.png": "244d4b72babda6b635356a113ca2d74ce392f78ae710d5f55e09fca2683db613",
+    "derived-map-revenge-430.png": "02f0a9aec4f684fe408b6f947c6c6f1f9dd2981027fa09b1d7eb642e8ab08753",
+    "derived-native.json": "d328de8322a25019c2fec149f28b69cd378e646bad741f4bd3ad713c87c027dd",
+    "derived-world-danger-360.png": "f7251ca2eae810eb11c7d50cd55a6efdebef6dc6c99add7cea931cf7d107520c",
+    "derived-world-danger-390.png": "bdb39d9cc0a0e94cbdc2486d791807e3212841a090683395d08dca52b393b856",
+    "derived-world-danger-430.png": "8d2e035297f1562b05e867885ac00283cce8f97ceb7b7c08266737137ec81ce2",
+    "derived-world-parade-360.png": "ed0054e946231ab29d5df27a1321d1a740ad90056b720db854602d6aaf324a36",
+    "derived-world-parade-390.png": "3266071e5cae831ee3d57068b4ab70e9391884e2c059391636db758433370fa1",
+    "derived-world-parade-430.png": "b91bbfa45974b6b0108310b8cc554f8f6d31f3409316f86b19db8050b4245ebf",
+    "derived-world-revenge-360.png": "0c0d68a2f2823aecdd3f4ea43ac5b0542d6191752ddeada24a81a79a4084f648",
+    "derived-world-revenge-390.png": "2bee63ec33a0e4d2ef1785773b56015bed2c34264d2d8b02bded8d58d8e93d84",
+    "derived-world-revenge-430.png": "f4f6fcfa80c3596f64dda1b42ff77a8fc68dbbf04cc745a34a0da4fe64885c53",
+    "lint.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "map-danger-360.png": "8f1e05c1e1ee468f69350497942b950a3a8e2bd1963ad65e6057f95cc013a965",
+    "map-danger-390.png": "90ab86992fd9a18adc1f5c0950e352f17a149cba5323a87ed62aa4d3edd490fa",
+    "map-danger-430.png": "18532076a78a2a6692e2ecead11e45296b1ff90c1ed031dffc00416ceb82beac",
+    "map-parade-360.png": "5aae636cb9ff5cbe2bcc82ea1386e02977b9534d75259e983ced20db9e48a569",
+    "map-parade-390.png": "4b80b9104dd927fd5dea2385e4db78bfb977fbd10d677d68502ac229f4c65790",
+    "map-parade-430.png": "a67f6878364bf3e8be382d30cc95f923a8fb1790375af6b0d1ceb7e0e354d95c",
+    "map-revenge-360.png": "c84ecb6d9abeca8ef7de6ddbef5e693178db7c62df44794b29cdf82156098dc6",
+    "map-revenge-390.png": "a084798938ed0c71d1ee82353336542817bcbf2a3d515ec4c76c4cfbaf4dc6a0",
+    "map-revenge-430.png": "045eb92c0d62f3da0538d43153861958e5d1f9fe0313c508287559d0fe7d600d",
+    "native.json": "68a65addc074d87e4561d8e58c53aff18f007be22d47fe3d793d9a9a4e213672",
+    "retained-map-parade-390.png": "06601d3637df7bc7df853612c0207782907f93d096d7e48e7c76c8bbbacb1b4d",
+    "retained-map2.json": "d161eee7cc5888d6931a3661ac6a46d4d393176ab553533af3c1d481174cce5e",
+    "retained-world-parade-390.png": "7bd179664092f167d634e039fb10a52423a7b440f638d2a9d1ce81f3b7110c89",
+    "unit.log": "502f2acc8c52faa1ddfb63fcdd4fb4cb93db7d7be51f77cfb1214d1197936213",
+    "world-danger-360.png": "9c9e6ff45a6dd159070c19926c2f74debd5035e4401a948ba3cba5f1c8e0593c",
+    "world-danger-390.png": "bdb39d9cc0a0e94cbdc2486d791807e3212841a090683395d08dca52b393b856",
+    "world-danger-430.png": "8d2e035297f1562b05e867885ac00283cce8f97ceb7b7c08266737137ec81ce2",
+    "world-parade-360.png": "ed0054e946231ab29d5df27a1321d1a740ad90056b720db854602d6aaf324a36",
+    "world-parade-390.png": "3266071e5cae831ee3d57068b4ab70e9391884e2c059391636db758433370fa1",
+    "world-parade-430.png": "b91bbfa45974b6b0108310b8cc554f8f6d31f3409316f86b19db8050b4245ebf",
+    "world-revenge-360.png": "cd96a6b26237d51400cc6fbcaee8739233b737395d5b350f25526ae815a7a0bc",
+    "world-revenge-390.png": "2bee63ec33a0e4d2ef1785773b56015bed2c34264d2d8b02bded8d58d8e93d84",
+    "world-revenge-430.png": "f4f6fcfa80c3596f64dda1b42ff77a8fc68dbbf04cc745a34a0da4fe64885c53"
+  },
+  "originalTaskLocalDisposition": {
+    "integrationGap": "CLOSED: all3-era root/Map sourcefixture client integration",
+    "FE14": "SATISFIED client/sourcefixture criteria; no remaining code in allocation",
+    "FE15": "UNCHANGED/PARTIAL application-input journey; World/input + explicitly allocated root fixture owner",
+    "FE19": "SATISFIED root/Map integration and virtual-destination criteria; preserves Map owner mismatch/recovery evidence",
+    "FE07": "SATISFIED current persistent-shell criterion; broader routes independently owned",
+    "globalCountAmendment": false
+  }
+}

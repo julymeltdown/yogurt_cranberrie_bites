@@ -23,3 +23,4 @@ pub mod event_lifecycle;
 
 pub mod participant;
 pub mod gift_live;
+pub mod party_live;

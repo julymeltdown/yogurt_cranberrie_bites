@@ -4,7 +4,9 @@ use super::{
     Operation,
 };
 use async_trait::async_trait;
-use concert_application::avatar::{AvatarAuthority, AvatarError, AvatarSnapshot};
+use concert_application::avatar::{
+    AvatarAuthority, AvatarEffectFence, AvatarError, AvatarSnapshot,
+};
 use concert_domain::ParticipantKey;
 use uuid::Uuid;
 
@@ -84,6 +86,11 @@ pub trait MutationPermit: Send + Sync {
     /// release, original stop AND current server mutation capability. Never
     /// implement this as a conversion from VerifiedReadAuthority or booleans.
     fn check(&self, request: &VerifiedParticipantRequest) -> Result<(), AvatarError>;
+    /// The real permit owns the request/release-bound held-scope adapter. This
+    /// remains absent for legacy fixtures; product persistence refuses it.
+    fn effect_fence(&self) -> Option<&dyn AvatarEffectFence> {
+        None
+    }
 }
 #[async_trait]
 pub trait MutationAuthorityPort: Send + Sync {

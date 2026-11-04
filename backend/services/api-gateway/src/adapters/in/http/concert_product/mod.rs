@@ -18,6 +18,22 @@ use uuid::Uuid;
 pub fn router(state: Arc<AppState>) -> Router {
     Router::new()
         .route("/api/concert/events/:event_id/feed", get(dispatch))
+        .route(
+            "/api/concert/events/:event_id/posts/:post_id",
+            get(dispatch),
+        )
+        .route(
+            "/api/concert/events/:event_id/posts/:post_id/comments",
+            get(dispatch),
+        )
+        .route(
+            "/api/concert/events/:event_id/parties",
+            get(dispatch).post(dispatch),
+        )
+        .route(
+            "/api/concert/events/:event_id/parties/:party_id",
+            get(dispatch),
+        )
         .route("/api/concert/events/:event_id/commands", get(dispatch))
         .route(
             "/api/concert/events/:event_id/media/uploads",
@@ -54,7 +70,7 @@ pub(super) fn owns_receipt(method: &Method, path: &str) -> bool {
     if uuid(event).is_none() {
         return false;
     }
-    if method == Method::POST && tail == "media/uploads" {
+    if method == Method::POST && matches!(tail, "media/uploads" | "parties") {
         return true;
     }
     let pieces: Vec<_> = tail.split('/').collect();
@@ -149,7 +165,12 @@ fn is_product(path: &str) -> bool {
     let Some((_, tail)) = suffix.split_once('/') else {
         return false;
     };
-    tail == "feed" || tail == "commands" || tail.starts_with("media/")
+    tail == "feed"
+        || tail == "commands"
+        || tail == "parties"
+        || tail.starts_with("media/")
+        || tail.starts_with("posts/")
+        || tail.starts_with("parties/")
 }
 /// Cover outer transport rejections too, without discarding owner recovery details.
 pub async fn protect_response(request: Request, next: axum::middleware::Next) -> Response {
@@ -325,6 +346,13 @@ async fn dispatch(
         Ok(result) => result,
         Err(status) => return rpc_error(status),
     };
+    let delivery = match result.delivery {
+        Some(capability) => match client.delivery_token(capability) {
+            Ok(token) => token,
+            Err(_) => return error(StatusCode::SERVICE_UNAVAILABLE, "DEPENDENCY_UNAVAILABLE"),
+        },
+        None => return error(StatusCode::SERVICE_UNAVAILABLE, "DEPENDENCY_UNAVAILABLE"),
+    };
     if access.check().is_err() {
         return error(StatusCode::UNAUTHORIZED, "AUTHENTICATION_REQUIRED");
     }
@@ -362,5 +390,6 @@ async fn dispatch(
         );
     }
     protect(&mut response);
+    response.extensions_mut().insert(delivery);
     response
 }
