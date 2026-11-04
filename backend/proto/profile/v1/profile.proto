@@ -180,6 +180,22 @@ message ApplyUserDeletionRequest {
 
 message ApplyUserDeletionResponse {
   bool applied = 1;
+  // Missing on a legacy peer: never sufficient to acknowledge Auth's step.
+  CommittedDeletionReceipt committed_receipt = 2;
+}
+
+// The owning service returns this only after its cleanup/fence transaction COMMIT.
+message CommittedDeletionReceipt {
+  uint32 version = 1;
+  string saga_id = 2;
+  string user_id = 3;
+  string actor_id = 4;
+  optional int64 retention_seconds = 5;
+  optional uint32 retention_nanos = 6;
+  int64 fence_revision = 7;
+  string effect_xid = 8;
+  string recorded_at = 9; // Write observation, not a PostgreSQL commit timestamp.
+  string owner = 10;
 }
 
 service ProfileService {

@@ -569,20 +569,44 @@ impl proto::post_service_server::PostService for PostGrpcServer {
     ) -> Result<Response<proto::ApplyUserDeletionResponse>, Status> {
         // Irreversible account cleanup belongs to the deletion saga alone.
         authorize_call(&request, RpcAction::ApplyUserDeletion)?;
+        let deadline = platform::call_deadline::current().ok_or_else(|| {
+            Status::failed_precondition("Deletion requires an original finite call deadline")
+        })?;
+        if deadline <= std::time::Instant::now() {
+            return Err(Status::deadline_exceeded("Deletion deadline exceeded"));
+        }
         let request = request.into_inner();
-        let response = self
-            .state
-            .apply_user_deletion
-            .execute(ApplyUserDeletionDto {
-                saga_id: request.saga_id,
-                user_id: request.user_id,
-                actor_id: request.actor_id,
-                retention_until: request.retention_until,
-            })
-            .await
-            .map_err(to_status)?;
+        let response = tokio::time::timeout_at(
+            tokio::time::Instant::from_std(deadline),
+            self.state
+                .apply_user_deletion
+                .execute_with_receipt(ApplyUserDeletionDto {
+                    saga_id: request.saga_id,
+                    user_id: request.user_id,
+                    actor_id: request.actor_id,
+                    retention_until: request.retention_until,
+                }),
+        )
+        .await
+        .map_err(|_| Status::deadline_exceeded("Deletion deadline exceeded"))?
+        .map_err(to_status)?;
+        if deadline <= std::time::Instant::now() {
+            return Err(Status::deadline_exceeded("Deletion deadline exceeded"));
+        }
         Ok(Response::new(proto::ApplyUserDeletionResponse {
-            applied: response.applied,
+            applied: true,
+            committed_receipt: Some(proto::CommittedDeletionReceipt {
+                version: response.version,
+                saga_id: response.saga_id.to_string(),
+                user_id: response.user_id.to_string(),
+                actor_id: response.actor_id.to_string(),
+                retention_seconds: Some(response.retention_until.timestamp()),
+                retention_nanos: Some(response.retention_until.timestamp_subsec_nanos()),
+                fence_revision: response.fence_revision,
+                effect_xid: response.effect_xid,
+                recorded_at: response.recorded_at.to_rfc3339(),
+                owner: response.owner,
+            }),
         }))
     }
 

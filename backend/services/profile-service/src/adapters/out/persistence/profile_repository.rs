@@ -530,102 +530,22 @@ impl ProfileRepositoryPort for PgProfileRepository {
         actor_id: Uuid,
         retention_until: DateTime<Utc>,
     ) -> Result<()> {
-        let result: anyhow::Result<_> = async {
-            let mut tx = self.pool.begin().await?;
-            // Use the same subject lock as profile/avatar writes. A late writer
-            // either commits before this step and is removed below, or wakes after
-            // the tombstone and is rejected by the database trigger.
-            sqlx::query("select profile_lock_subject_ids($1::uuid[])")
-                .bind(vec![user_id])
-                .execute(&mut *tx)
-                .await?;
-            sqlx::query(
-                r#"
-            insert into profile_user_deletion_tombstones (
-                user_id, saga_id, actor_id, retention_until, applied_at
-            ) values ($1, $2, $3, $4, now())
-            on conflict (user_id) do nothing
-            "#,
-            )
-            .bind(user_id)
-            .bind(saga_id)
-            .bind(actor_id)
-            .bind(retention_until)
-            .execute(&mut *tx)
-            .await?;
-            let receipt_matches: bool = sqlx::query_scalar(
-                r#"
-            select saga_id = $2 and actor_id = $3 and retention_until = $4
-            from profile_user_deletion_tombstones
-            where user_id = $1
-            "#,
-            )
-            .bind(user_id)
-            .bind(saga_id)
-            .bind(actor_id)
-            .bind(retention_until)
-            .fetch_one(&mut *tx)
-            .await?;
-            anyhow::ensure!(
-                receipt_matches,
-                ProfileError::InvalidInput(
-                    "Profile deletion identity was reused with different saga data"
-                )
-            );
+        crate::deletion_receipt::apply(&self.pool, saga_id, user_id, actor_id, retention_until)
+            .await
+            .map(|_| ())
+            .map_err(repository_error)
+    }
 
-            sqlx::query(
-                r#"
-            update profiles
-            set deleted_at = coalesce(deleted_at, now()),
-                deleted_by = $2,
-                delete_reason = 'account_deletion',
-                retention_until = $3,
-                updated_at = now()
-            where user_id = $1
-            "#,
-            )
-            .bind(user_id)
-            .bind(actor_id)
-            .bind(retention_until)
-            .execute(&mut *tx)
-            .await?;
-            sqlx::query(
-                r#"
-            update avatars
-            set deleted_at = coalesce(deleted_at, now()),
-                deleted_by = $2,
-                delete_reason = 'account_deletion',
-                retention_until = $3,
-                updated_at = now()
-            where user_id = $1
-            "#,
-            )
-            .bind(user_id)
-            .bind(actor_id)
-            .bind(retention_until)
-            .execute(&mut *tx)
-            .await?;
-            sqlx::query(
-                r#"
-            insert into profile_audit_events (
-                id, actor_id, profile_user_id, action, outcome,
-                request_id, metadata_json, occurred_at
-            ) values ($1,$2,$3,'ACCOUNT_DELETION_APPLIED','SUCCESS',$4,$5,now())
-            on conflict (id) do nothing
-            "#,
-            )
-            .bind(saga_id)
-            .bind(actor_id)
-            .bind(user_id)
-            .bind(saga_id.to_string())
-            .bind(json!({"retentionUntil": retention_until}).to_string())
-            .execute(&mut *tx)
-            .await?;
-            tx.commit().await?;
-            Ok(())
-        }
-        .await;
-        result.map_err(repository_error)
+    async fn apply_user_deletion_with_receipt(
+        &self,
+        saga_id: Uuid,
+        user_id: Uuid,
+        actor_id: Uuid,
+        retention_until: DateTime<Utc>,
+    ) -> Result<crate::application::dto::profile_dto::CommittedDeletionReceiptDto> {
+        crate::deletion_receipt::apply(&self.pool, saga_id, user_id, actor_id, retention_until)
+            .await
+            .map_err(repository_error)
     }
 
     async fn purge_expired_profiles(
