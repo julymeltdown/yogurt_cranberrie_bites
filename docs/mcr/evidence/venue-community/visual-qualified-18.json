@@ -910,11 +910,16 @@
   ],
   "prospectiveTerminalChildRepair": {
     "source": "f350ce8ab3b6c74e1499ffcb005aa116e4175b8f",
-    "status": "NOT_RUN_CONDITIONAL_AUTHORIZATION_CAPACITY_DENIED",
-    "scope": "Exact owned Popen.poll before each fresh complete metadata retry; no identity waiver or raw Native18 rewrite.",
-    "allocation": "COMM-VENUE-TERMINAL-CONTROL-SOURCE19-0628",
-    "reason": "Allocator observed836100096-byte reserve shortfall; no ACCEPT, execution or resource hold. Resume only after genuine capacity/accounting change.",
+    "status": "PASS_SEPARATE_SOURCE20_QUALIFICATION_NATIVE18_RESOURCE_FAIL_UNCHANGED",
+    "allocation": "COMM-VENUE-TERMINAL-CONTROL-SOURCE20-0640",
+    "newCases": 4,
+    "commandExit": 0,
+    "dualFreshCompleteLive": true,
+    "actualFullEpoch": 1793861286.272137,
+    "rawFullSHA256": "bc0e88d7aec17f6ef62eb7c81f8d5ef6643a189991c564e9cee5956865b82017",
+    "portableEvidence": "docs/mcr/evidence/venue-community/terminal-control-qualified-20.json",
     "noHistoricalResourcePassInferred": true
   },
-  "snapshotAtUTC": "2026-11-05T06:30:07.954780+00:00"
+  "snapshotAtUTC": "2026-11-05T06:30:07.954780+00:00",
+  "laterSource20QualificationAtUTC": "2026-11-05T06:49:12.998650+00:00"
 }

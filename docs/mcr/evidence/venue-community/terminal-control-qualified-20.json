@@ -1,0 +1,102 @@
+{
+  "task": "AM-FE-COMM-01 / VENU-FE-M01",
+  "scope": "Private prospective terminal-child resource controller fix only; no application/source suite/browser replay or product acceptance",
+  "status": "PASS_FOUR_NEW_CASES_AND_DUAL_LIVE",
+  "controlImplementationSource": "f350ce8ab3b6c74e1499ffcb005aa116e4175b8f",
+  "runSource": "58b97768d557b8c121f55fa6f0ea99e1bc3f66e8",
+  "allocation": "COMM-VENUE-TERMINAL-CONTROL-SOURCE20-0640",
+  "acceptedAtEpoch": 1793861258.490752,
+  "actualFullEpoch": 1793861286.272137,
+  "workDeadlineUTC": "2026-11-05T06:48:38.490752+00:00",
+  "fullDeadlineUTC": "2026-11-05T06:49:08.490752+00:00",
+  "command": "python3 -B terminal-child-probe.py CASES_OUTPUT",
+  "commandExit": 0,
+  "cases": [
+    "reap-before-each-fresh-retry-retains-failed-observation",
+    "reap-callback-never-waives-live-or-unknown-identity",
+    "non-transient-identity-error-fails-on-original-first-attempt",
+    "exact-owned-popen-terminal-child-reaped-before-successful-fresh-snapshot"
+  ],
+  "rawFullSHA256": "bc0e88d7aec17f6ef62eb7c81f8d5ef6643a189991c564e9cee5956865b82017",
+  "controlFiles": [
+    {
+      "path": "docs/mcr/evidence/venue-community/native_membership.py",
+      "sha256": "dbb52626fba7dd48b934112cf9e05dbb0fc794d5a3cd26724205f074ecfd8c0e"
+    },
+    {
+      "path": "docs/mcr/evidence/venue-community/browser-controller.py",
+      "sha256": "24b429cb6ec5ea9384339f2648d9540d9c095bc19f605c66c5ad77f2393ab4eb"
+    },
+    {
+      "path": "docs/mcr/evidence/venue-community/terminal-control-controller.py",
+      "sha256": "fec98394f0acc86ad519e37a29c83ff5326437e11e17442086d78b7e15d52f2b"
+    },
+    {
+      "path": "docs/mcr/evidence/venue-community/terminal-control-guard.py",
+      "sha256": "cb77592d202d76fee8487decd2fa35b0c63064355aeefdadbf3d9fc24556c96b"
+    },
+    {
+      "path": "docs/mcr/evidence/venue-community/terminal-child-probe.py",
+      "sha256": "93e4ad64135b21bb3de8ae6667cffd25ec5237c2a32ee8b361611df40e5fa110"
+    }
+  ],
+  "implementation": "Before each fresh complete metadata attempt, call only the caller-owned Popen.poll. A child exiting during the prior observation is reaped before retry. Preserve raw failed observations, exact PID/birth/argv/cwd identity and original bounded retries. Unknown/live metadata and non-transient identity errors still fail.",
+  "resources": {
+    "sourceProcessesReleased": true,
+    "scratchAbsent": true,
+    "dependencyLinkNeverCreated": true,
+    "peakNew": {
+      "bytes": 433533033,
+      "rss": 112918528,
+      "processes": 6
+    },
+    "peakWhole": {
+      "bytes": 4823205968,
+      "entries": 72132
+    },
+    "cumulativeFamilyMaxBytes": 436207616,
+    "freshUpperBytes": 1048576,
+    "retainedDeletedTemporaryHistory": true,
+    "noCleanupCredit": true
+  },
+  "liveObservers": [
+    {
+      "role": "primary",
+      "observedAtEpoch": 1793861285.405175,
+      "classification": "LIVE_MACOS_SNAPSHOT",
+      "itemizedAllocationSHA256": "78d1dfc28669189a4e29c3afd531f7d93262e2d5a8ed84d1bfee767d0dac4514",
+      "plannedGlobalFutureBytes": 3355443200,
+      "excludedOwnPlannedPhaseBytes": 39845888,
+      "applicableOtherFutureBytes": 3315597312,
+      "ownNewUpperBytes": 1048576,
+      "afterAllFutureBytes": 13834735616,
+      "actualFreeBytes": 17151381504
+    },
+    {
+      "role": "guardian",
+      "observedAtEpoch": 1793861284.5875452,
+      "classification": "LIVE_MACOS_SNAPSHOT",
+      "itemizedAllocationSHA256": "78d1dfc28669189a4e29c3afd531f7d93262e2d5a8ed84d1bfee767d0dac4514",
+      "plannedGlobalFutureBytes": 3355443200,
+      "excludedOwnPlannedPhaseBytes": 39845888,
+      "applicableOtherFutureBytes": 3315597312,
+      "ownNewUpperBytes": 1048576,
+      "afterAllFutureBytes": 13834743808,
+      "actualFreeBytes": 17151389696
+    }
+  ],
+  "historicalDispositions": {
+    "Native18": "OUTER_RESOURCE_FAIL_UNCHANGED_PRODUCT_COMMANDS_0_0_REMAIN_SCOPED",
+    "Native18RawFullSHA256": "937cb7ff19fd21ba56d6fa38c2cbfb62c45e5b2a3b4c8eca421d53a92e8a626a",
+    "Source19": "GENUINE_UNUSED_YIELD_NEVER_ACCEPTED",
+    "Source19ActualUnusedEpoch": 1793860755.0534441,
+    "originalFE10Goal": "BLOCKED_INCOMPATIBLE_UNCHANGED"
+  },
+  "limitations": [
+    "No numeric-only birth consumer adaptation or identity waiver was introduced.",
+    "No replay of old69/3/8/6 cases, browser matrix or captures.",
+    "No default shell/liveHTTP/server/multiuser/device/GPS/arrival/wholeVENU or exactpixelparity acceptance."
+  ],
+  "publishedProduct": "7c2066bb8ba596589a80d1ce70f96ea51969ef04",
+  "publicationReadback": "Owner verified all33 postimages/modes/blobs/SHA/bytes/fourpreimages29absences/soleparent/freshremote ancestry and publisher receiptb66f7efff229722e963b54324f29d3681a77303206ec2dfee49c398823931d47."
+}
