@@ -1,0 +1,16 @@
+{
+  "pid": 66975,
+  "ppid": 66972,
+  "birth": "Thu Nov 5 12:54:00 2026",
+  "pgid": 66975,
+  "executable": "/Library/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python",
+  "script": "/private/tmp/mcr-post21a-be39-compile-unit04-0202/source_control.py",
+  "outputRoot": "/private/tmp/mcr-post21a-be39-compile-unit04-0202",
+  "cwd": "/Users/lhs/Desktop/mcr-worktrees/be-world-recipient-producer",
+  "OScomm": "/Library/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python",
+  "actualInvocation": [
+    "/private/tmp/mcr-post21a-be39-compile-unit04-0202/source_control.py",
+    "guard-bootstrap",
+    "/private/tmp/mcr-post21a-be39-compile-unit04-0202/source-bootstrap-08-1793850840490348000"
+  ]
+}

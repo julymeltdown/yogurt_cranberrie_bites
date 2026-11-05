@@ -1,0 +1,57 @@
+{
+  "state": "PROCESS_METADATA_ONLY_NOT_FILESYSTEM_OR_RUNTIME_QUALIFICATION",
+  "complete_process_admission": {
+    "own_processes": 3,
+    "own_rss": 66109440,
+    "global_processes": 3,
+    "global_rss": 66109440,
+    "global_workflows": 1,
+    "global_source": 1,
+    "global_browser": 0,
+    "global_warm_rust": 0,
+    "global_cohorts": [],
+    "global_pid_birth_group_root_records": [],
+    "own_pids": [
+      59310,
+      59313,
+      59316
+    ],
+    "unresolved_accepted_reserved_pids": 0,
+    "declared_global_pids": 4,
+    "declared_global_rss": 1073741824,
+    "unknown": [],
+    "other_accepted_remaining_new_bytes": 50331648,
+    "other_accepted_ordinary_remaining_new_bytes": 50331648,
+    "unquantified_ordinary_envelope_bytes": 0
+  },
+  "free": 22989668352,
+  "epoch": 1793850732.7386072,
+  "sample": {
+    "own_processes": 3,
+    "own_rss": 66109440,
+    "global_processes": 3,
+    "global_rss": 66109440,
+    "global_workflows": 1,
+    "global_source": 1,
+    "global_browser": 0,
+    "global_warm_rust": 0,
+    "global_cohorts": [],
+    "global_pid_birth_group_root_records": [],
+    "own_pids": [
+      59310,
+      59313,
+      59316
+    ],
+    "unresolved_accepted_reserved_pids": 0,
+    "declared_global_pids": 4,
+    "declared_global_rss": 1073741824,
+    "unknown": [],
+    "other_accepted_remaining_new_bytes": 50331648,
+    "other_accepted_ordinary_remaining_new_bytes": 50331648,
+    "unquantified_ordinary_envelope_bytes": 0
+  },
+  "target_access": "NONE",
+  "minimumNEW": 547319808,
+  "minimumWHOLE": 58987859968,
+  "completeFilesystemCensus": "DEFERRED_UNTIL_ACTUAL_ACCEPT"
+}

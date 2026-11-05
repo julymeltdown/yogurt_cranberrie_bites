@@ -1,0 +1,28 @@
+{
+  "ownerThreadId": "01a1a21a-a088-7c31-83e3-19de119ba873",
+  "offerId": "POST-CONTROL-SOURCE08-0350",
+  "state": "FULL",
+  "acceptedAtEpoch": 1793850840.6700559,
+  "actualFullEpoch": 1793850853.5109499,
+  "resourcesReleased": true,
+  "remainingNewUpperBytes": 0,
+  "resources": {
+    "workflows": 0,
+    "children": 0,
+    "guards": 0,
+    "tests": 0,
+    "target": 0,
+    "Cargo": 0,
+    "PG": 0,
+    "browser": 0,
+    "ports": 0,
+    "cleanup": 0
+  },
+  "absentExecutionGroups": [
+    66972,
+    66975
+  ],
+  "originalFullDeadlineEpoch": 1793851020.6700559,
+  "noRuntimeOrGrowthPASSInferred": true,
+  "target_access": "NONE"
+}

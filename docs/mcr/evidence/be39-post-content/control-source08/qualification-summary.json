@@ -1,0 +1,67 @@
+{
+  "state": "FAILED_PRE_INITIAL_PAIR_ALL10_NOT_RUN",
+  "acceptedAtEpoch": 1793850840.6700559,
+  "actualFullEpoch": 1793850853.5109499,
+  "fullSHA256": "612bd3a08677557f5227e9f676229d46a63f16d2f79969a00254d353bd127c76",
+  "fullBeforeInspection": true,
+  "actualOriginalPinsChecked": [
+    {
+      "path": "executed-controls/source-budget-amendment.json",
+      "SHA256": "a084a203a7d518d1dba148d8a649dedbec7635b6b6b50d2165175d0fb80eb13f"
+    },
+    {
+      "path": "executed-controls/accounting.py",
+      "SHA256": "d525a94f8bbc3a89a47bf84bda757c985d9f722aa985d7b60a2d600bffcb720a"
+    },
+    {
+      "path": "executed-controls/budget.py",
+      "SHA256": "61176dbff3be97ecd11fcb2746da03794f584103d1746b12a9d01fba97d576ad"
+    },
+    {
+      "path": "executed-controls/global-roster.json",
+      "SHA256": "1eb37d9d4fb6fe0483f80a75118fc2602a95f0856b8db85f4455340391f24bf7"
+    },
+    {
+      "path": "executed-controls/receipt_proof.py",
+      "SHA256": "69706c0727698ed2dddcfbadbc20a7eaa8db5a693319f313d217ba2e44ee13b3"
+    },
+    {
+      "path": "executed-controls/source_control.py",
+      "SHA256": "000bb7266621787d752b6b7448700409b0b28574cd5c7e065159a27309d47781"
+    },
+    {
+      "path": "executed-controls/python-launcher-image.json",
+      "SHA256": "1ac37458d911bea991e7c1ca2a2f338b98548e87308890a22719dcbc4ae6cab3"
+    },
+    {
+      "path": "executed-controls/test_process_receipts.py",
+      "SHA256": "0c5d5c66febdd7fd8b0136a59befa519a2fc64848f2b606690ee992eea6c8968"
+    },
+    {
+      "path": "executed-controls/source-plan.json",
+      "SHA256": "e52ad1e32fde69ecafa4bfe7a9d4d30b8be61c3e843cab7d90186734b4a4676b"
+    },
+    {
+      "path": "executed-controls/source-admission.json",
+      "SHA256": "44bc51d2538033dfa2970ab82f892940a55bf0919c5e6393b3693bf2be9b3a14"
+    },
+    {
+      "path": "executed-controls/source-budget-640-amendment.json",
+      "SHA256": "ab35b64909a1ae350ea6484516856406f1e9d29e749d23b93909d69f69539361"
+    },
+    {
+      "path": "executed-controls/source07-retained-inputs.json",
+      "SHA256": "149dbe365aa05810bd7786fae225d8504365373e103fde7496eabe7373320d86"
+    }
+  ],
+  "syntaxOnly": "PASS",
+  "all10Fixtures": "NOT_RUN",
+  "sixBackendUnits": "NOT_RUN",
+  "fiveNativeCases": "NOT_RUN",
+  "completeDualInitialPair": false,
+  "finalGrowthCertified": false,
+  "same640FamilyOriginalBaselineAndAllHigherRetained": true,
+  "minimumNEW": 547319808,
+  "minimumWHOLE": 58987859968,
+  "noClosedRoundRestart": true
+}

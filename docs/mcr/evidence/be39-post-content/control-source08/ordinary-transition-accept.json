@@ -1,0 +1,219 @@
+{
+  "ownerThreadId": "01a1a21a-a088-7c31-83e3-19de119ba873",
+  "offerId": "POST-CONTROL-INPROCESS-PREP-1793850840490348000",
+  "state": "ACCEPTED",
+  "kind": "ordinary",
+  "acceptedAtEpoch": 1793850840.490347,
+  "workDeadlineEpoch": 1793852100,
+  "fullDeadlineEpoch": null,
+  "processCap": null,
+  "rssCapBytes": null,
+  "remainingNewUpperBytes": 671088640,
+  "controller": {
+    "pid": 66972,
+    "ppid": 49590,
+    "birth": "Thu Nov 5 12:54:00 2026",
+    "pgid": 66972,
+    "executable": "/Library/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python",
+    "script": "/private/tmp/mcr-post21a-be39-compile-unit04-0202/source_control.py",
+    "outputRoot": "/private/tmp/mcr-post21a-be39-compile-unit04-0202",
+    "cwd": "/Users/lhs/Desktop/mcr-worktrees/be-world-recipient-producer",
+    "OScomm": "/Library/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python",
+    "actualInvocation": [
+      "/private/tmp/mcr-post21a-be39-compile-unit04-0202/source_control.py",
+      "08"
+    ]
+  },
+  "guardControllers": [
+    {
+      "pid": 66975,
+      "ppid": 66972,
+      "birth": "Thu Nov 5 12:54:00 2026",
+      "pgid": 66975,
+      "executable": "/Library/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python",
+      "script": "/private/tmp/mcr-post21a-be39-compile-unit04-0202/source_control.py",
+      "outputRoot": "/private/tmp/mcr-post21a-be39-compile-unit04-0202",
+      "cwd": "/Users/lhs/Desktop/mcr-worktrees/be-world-recipient-producer",
+      "OScomm": "/Library/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python",
+      "actualInvocation": [
+        "/private/tmp/mcr-post21a-be39-compile-unit04-0202/source_control.py",
+        "guard-bootstrap",
+        "/private/tmp/mcr-post21a-be39-compile-unit04-0202/source-bootstrap-08-1793850840490348000"
+      ]
+    }
+  ],
+  "receiptPaths": {
+    "accept": "/private/tmp/mcr-post21a-be39-compile-unit04-0202/inprocess-1793850840490348000-accept.json",
+    "full": "/private/tmp/mcr-post21a-be39-compile-unit04-0202/inprocess-1793850840490348000-FULL.json"
+  },
+  "closedHistory": [
+    {
+      "state": "FULL",
+      "ownerThreadId": "01a1a21a-a088-7c31-83e3-19de119ba873",
+      "offerId": "POST21A-BE39-COMPILE-UNIT03-0111",
+      "acceptedAtEpoch": 1793843217.049885,
+      "actualFullEpoch": 1793843273.254553,
+      "resourcesReleased": true,
+      "fullPath": "/private/tmp/mcr-post21a-be39-compile-unit03-0111/FULL.json",
+      "fullSHA256": "dc1565ebd2a2d40a0000831db95c25e0e5667d652fc7ade5c62d85a6350d89a3"
+    },
+    {
+      "state": "FULL",
+      "ownerThreadId": "01a1a21a-a088-7c31-83e3-19de119ba873",
+      "offerId": "POST-CONTROL-SOURCE01-0204",
+      "acceptedAtEpoch": 1793844446.060404,
+      "actualFullEpoch": 1793844495.518228,
+      "resourcesReleased": true,
+      "fullPath": "/private/tmp/mcr-post21a-be39-compile-unit04-0202/source-run-01/FULL.json",
+      "fullSHA256": "9a6d9bab1cf723b86df51a40a6f421b366bf644174357664b18d9ef5e7100bd2"
+    },
+    {
+      "state": "FULL",
+      "ownerThreadId": "01a1a21a-a088-7c31-83e3-19de119ba873",
+      "offerId": "POST-CONTROL-SOURCE02-0204",
+      "acceptedAtEpoch": 1793846080.7682319,
+      "actualFullEpoch": 1793846170.55013,
+      "resourcesReleased": true,
+      "fullPath": "/private/tmp/mcr-post21a-be39-compile-unit04-0202/source-run-02/FULL.json",
+      "fullSHA256": "961eea6358e2ec27da786718cb4ac373ade5c8b9dbf5685a4846f1aa714f9774"
+    },
+    {
+      "state": "FULL",
+      "ownerThreadId": "01a1a21a-a088-7c31-83e3-19de119ba873",
+      "offerId": "POST-CONTROL-SOURCE03-0301",
+      "acceptedAtEpoch": 1793847854.6624918,
+      "actualFullEpoch": 1793847895.307734,
+      "resourcesReleased": true,
+      "fullPath": "/private/tmp/mcr-post21a-be39-compile-unit04-0202/source-run-03/FULL.json",
+      "fullSHA256": "831abea9a63569b8f2e9a450e053e652bae2f355d5fbfc2c23c61f0d5aed617f"
+    },
+    {
+      "state": "FULL",
+      "ownerThreadId": "01a1a21a-a088-7c31-83e3-19de119ba873",
+      "offerId": "POST-CONTROL-SOURCE04-0301",
+      "acceptedAtEpoch": 1793848064.078023,
+      "actualFullEpoch": 1793848152.5561311,
+      "resourcesReleased": true,
+      "fullPath": "/private/tmp/mcr-post21a-be39-compile-unit04-0202/source-run-04/FULL.json",
+      "fullSHA256": "0338666a93f385989a44c2d1d8da5bd5592e4a3faba73da7af64255718f3d9f1"
+    },
+    {
+      "state": "FULL",
+      "ownerThreadId": "01a1a21a-a088-7c31-83e3-19de119ba873",
+      "offerId": "POST-CONTROL-ORDINARY-HANDOFF-1793848272240309000",
+      "acceptedAtEpoch": 1793848272.237296,
+      "actualFullEpoch": 1793848272.654399,
+      "resourcesReleased": true,
+      "fullPath": "/private/tmp/mcr-post21a-be39-compile-unit04-0202/POST-CONTROL-ORDINARY-HANDOFF-1793848272240309000-FULL.json",
+      "fullSHA256": "859f0514998909cd154f92cceaee20df41c2367983bb5c22a7d87f6df9b1233a"
+    },
+    {
+      "state": "FULL",
+      "ownerThreadId": "01a1a21a-a088-7c31-83e3-19de119ba873",
+      "offerId": "POST-CONTROL-SOURCE05-0314",
+      "acceptedAtEpoch": 1793848966.072507,
+      "actualFullEpoch": 1793848993.3764539,
+      "resourcesReleased": true,
+      "fullPath": "/private/tmp/mcr-post21a-be39-compile-unit04-0202/source-run-05/FULL.json",
+      "fullSHA256": "361f30927ab73e4fef332df7d0dbf6ac2ba703f6ac02b61df0b7cb84690877a1"
+    },
+    {
+      "state": "FULL",
+      "ownerThreadId": "01a1a21a-a088-7c31-83e3-19de119ba873",
+      "offerId": "POST-CONTROL-SOURCE07-0350",
+      "acceptedAtEpoch": 1793850732.790251,
+      "actualFullEpoch": 1793850745.80879,
+      "resourcesReleased": true,
+      "fullPath": "/private/tmp/mcr-post21a-be39-compile-unit04-0202/source-run-07/FULL.json",
+      "fullSHA256": "d029188bb19fd2999b9ed191ee593fe8aad0a18c1630c2e6b02b420e97360bf9"
+    }
+  ],
+  "authorization": "Explicit SAME cumulative640MiB through04:15; lightweight source admission only, no preaccept filesystem census or fixture payload",
+  "admissionDisposition": {
+    "state": "UNREADY_YIELD",
+    "ownerThreadId": "01a1a21a-a088-7c31-83e3-19de119ba873",
+    "offerId": "POST-CONTROL-SOURCE06-0314",
+    "epoch": 1793849611.090423,
+    "actualAccepted": false,
+    "actualAcceptEpoch": null,
+    "resourcesHeld": false,
+    "resources": {
+      "workflows": 0,
+      "guards": 0,
+      "children": 0,
+      "target": 0,
+      "tests": 0,
+      "Cargo": 0,
+      "PG": 0,
+      "browser": 0,
+      "ports": 0
+    },
+    "reason": "Preaccept complete ordinary source admission could not reconcile actual unregistered shell PID21624 birth ThuNov5 12:32:30 /bin/zsh -lc df -k /private/tmp | tail -1; ls -ld /private/tmp/mcr-be42-compile-10-exec. Source06 never ACCEPTED; retain all raw refusals and old Source05 FULL. Ready later listed first attempts may proceed.",
+    "predecessorObserved": {
+      "owner": "01a1a5d9-332b-7822-a8f7-40c576fad94a",
+      "offerId": "VENU-L-TRANSPORT-SOURCE04-0325",
+      "canonicalAcceptEpoch": 1793849440.314636,
+      "canonicalFullEpoch": 1793849447.814463
+    },
+    "minimumCumulativeCarryBytes": 406593536,
+    "minimumWholeCarryBytes": 49288855552,
+    "allHigherAndGapsRetained": true,
+    "originalBaselineUnchanged": true,
+    "noSource06ClockReset": true,
+    "path": "/private/tmp/mcr-post21a-be39-compile-unit04-0202/source06-UNREADY_YIELD-0333.json",
+    "SHA256": "72cc7fa79784da2dcaf9a01a1c9841ec66f84dc6c9f836a3d1c84de0d1f912a9"
+  },
+  "historicalLaunchIdentityObservations": [
+    {
+      "actualpid": 61986,
+      "birth": "Thu Nov 5 11:34:34 2026",
+      "role": "ordinary source-only preaccept shell wrapper, historical and ended",
+      "cwd": null,
+      "declaredCwd": "/Users/lhs/Desktop/mcr-worktrees/be-world-recipient-producer",
+      "executable": null,
+      "reportedHistoricalExecutable": "/bin/sh",
+      "historicalCwdMeasured": false,
+      "reportedCommandSHA256": "ae8b2ec30e3fc9c9ed0280163afed4da2c2ae241ca0855138fa571d4add76c76",
+      "reportingOwner": "01a1a202-3ff2-7a93-95c3-374c6df97281",
+      "historicalCommandPurpose": "metadata_probe.py --complete, pin freeze, exec source_control.py 02",
+      "wasMissingFromLiveOwnerIndex": true,
+      "subsequentExec": {
+        "samePidAndBirth": true,
+        "controller": {
+          "pid": 61986,
+          "birth": "Thu Nov 5 11:34:34 2026",
+          "pgid": 61986,
+          "executable": "/Library/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python",
+          "script": "/private/tmp/mcr-post21a-be39-compile-unit04-0202/source_control.py",
+          "outputRoot": "/private/tmp/mcr-post21a-be39-compile-unit04-0202",
+          "cwd": "/Users/lhs/Desktop/mcr-worktrees/be-world-recipient-producer",
+          "OScomm": "/Library/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python"
+        },
+        "actualSOURCE02Accept": 1793846080.7682319,
+        "guardControllers": [
+          {
+            "pid": 62314,
+            "birth": "Thu Nov 5 11:34:40 2026",
+            "pgid": 62314,
+            "executable": "/Library/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python",
+            "script": "/private/tmp/mcr-post21a-be39-compile-unit04-0202/source_control.py",
+            "outputRoot": "/private/tmp/mcr-post21a-be39-compile-unit04-0202",
+            "cwd": "/Users/lhs/Desktop/mcr-worktrees/be-world-recipient-producer",
+            "OScomm": "/Library/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python"
+          }
+        ]
+      },
+      "ended": true,
+      "endedObservedAtEpoch": 1793847182.2962801,
+      "exactEndedAtEpoch": null,
+      "exit": null,
+      "currentMatchingPids": [],
+      "observationRecordedAtEpoch": 1793847284.690592,
+      "source02FULL": "/private/tmp/mcr-post21a-be39-compile-unit04-0202/source-run-02/FULL.json",
+      "noRetrospectivePrechildCompliance": true,
+      "currentActiveIdentity": null,
+      "futureLaunchCorrection": "Use one direct exec launch; publish that actual Python bootstrap before heavy admission in the same process. No child descriptor substitutes for a live wrapper. Requires fresh authority; closedSOURCE02 never reopens."
+    }
+  ],
+  "bootstrapDirectory": "/private/tmp/mcr-post21a-be39-compile-unit04-0202/source-bootstrap-08-1793850840490348000"
+}

@@ -1,0 +1,6 @@
+{
+  "epoch": 1793850736.359238,
+  "sampler_pid": 59310,
+  "failure": "AssertionError: actual argv unavailable pid=59374 errno=22 expectedScript=None observed=/Library/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python -",
+  "traceback": "Traceback (most recent call last):\n  File \"/private/tmp/mcr-post21a-be39-compile-unit04-0202/source_control.py\", line 61, in metadata\n    sample = budget.processes({**a, 'process_cap': 4, 'rss_cap_bytes': GIB, 'kind': 'source'})\n  File \"/private/tmp/mcr-post21a-be39-compile-unit04-0202/budget.py\", line 299, in processes\n    proof=relative_identity(expected['pid'],expected,row,stdin=True)\n  File \"/private/tmp/mcr-post21a-be39-compile-unit04-0202/budget.py\", line 66, in relative_identity\n    assert libc.sysctl(mib,3,buf,ctypes.byref(size),None,0)==0,'actual argv unavailable pid='+str(pid)+' errno='+str(ctypes.get_errno())+' expectedScript='+str(expected.get('script'))+' observed='+row[4]\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError: actual argv unavailable pid=59374 errno=22 expectedScript=None observed=/Library/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python -\n"
+}

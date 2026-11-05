@@ -1,0 +1,207 @@
+{
+  "stage": "COMPLETE_CENSUS_BEFORE_ASSERT",
+  "epoch": 1793850844.571488,
+  "sampler_pid": 66972,
+  "relevant_actual_processes": [
+    {
+      "pid": 66972,
+      "ppid": 49590,
+      "pgid": 66972,
+      "rss": 264863744,
+      "birth": "Thu Nov 5 12:54:00 2026",
+      "command": "/Library/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python -B /private/tmp/mcr-post21a-be39-compile-unit04-0202/source_control.py 08"
+    },
+    {
+      "pid": 67103,
+      "ppid": 49590,
+      "pgid": 67103,
+      "rss": 2949120,
+      "birth": "Thu Nov 5 12:54:04 2026",
+      "command": "/bin/zsh -lc python3 -B - <<'PY'\\012import hashlib,json,pathlib,subprocess\\012root=pathlib.Path('/Users/lhs/Desktop/mcr-worktrees/be-media-combined')\\012d=json.loads(pathlib.Path('/private/tmp/mcr-be42-compile-12-freeze/root-intake-manifest.json').read_text())\\012for p,v in d['files'].items():\\012 b=subprocess.check_output(['git','show','HEAD:'+p],cwd=root)\\012 print(('OK ' if hashlib.sha256(b).hexdigest()==v['sha256'] else 'DIFF ')+p)\\012PY"
+    }
+  ],
+  "ordinary_observations_not_current_identity": [
+    {
+      "owner": "01a1a213-03de-72d3-9ecf-2f72b574cf82",
+      "pid": 57072,
+      "birth": "Thu Nov 5 12:51:22 2026",
+      "explicitEnded": false,
+      "matchesCurrentBirth": false,
+      "oldExecutionReleased": false,
+      "futureOrdinaryEnvelopeRetained": true,
+      "ownerIndexSHA256": "b835fa2ca68905821574905bf6d6f8a4525f2b16a6c89a5452a460c0dc05c772"
+    },
+    {
+      "owner": "01a1a5d9-6954-7bd3-9b08-7109883187b5",
+      "pid": 45471,
+      "birth": "Thu Nov  5 12:49:38 2026",
+      "explicitEnded": false,
+      "matchesCurrentBirth": false,
+      "oldExecutionReleased": false,
+      "futureOrdinaryEnvelopeRetained": true,
+      "ownerIndexSHA256": "68c2b4efaa011df86255d038f80caf2bbdb96f0975be2725c749410886387b45"
+    },
+    {
+      "owner": "01a1a1fe-1ab7-79b0-adbc-d4c025701acb",
+      "pid": 90881,
+      "birth": "Thu Nov 5 11:58:34 2026",
+      "explicitEnded": true,
+      "matchesCurrentBirth": false,
+      "oldExecutionReleased": false,
+      "futureOrdinaryEnvelopeRetained": true,
+      "ownerIndexSHA256": "c204ebf33135850ebb1e3387c423b73035d90b16ea22dc2fd4bbd4e9b52c29f4"
+    },
+    {
+      "owner": "01a1a1fe-16e1-7ee3-a9dc-8b5f037cc24c",
+      "pid": 45140,
+      "birth": "Thu Nov 5 12:49:27 2026",
+      "explicitEnded": true,
+      "matchesCurrentBirth": false,
+      "oldExecutionReleased": false,
+      "futureOrdinaryEnvelopeRetained": true,
+      "ownerIndexSHA256": "df87d718dd24ede1747ec83f521cc955e05cb0269d5473a80c2fea238052e5b0"
+    },
+    {
+      "owner": "01a1a20f-8d37-71c3-a429-8a55bb6d6c49",
+      "pid": 52324,
+      "birth": "Thu Nov 5 12:50:02 2026",
+      "explicitEnded": true,
+      "matchesCurrentBirth": false,
+      "oldExecutionReleased": false,
+      "futureOrdinaryEnvelopeRetained": true,
+      "ownerIndexSHA256": "59ba529e5a30397a60acff6cc2b74ea7e4dd1cc7d73dc097b03977b87e161c56"
+    },
+    {
+      "owner": "01a19e5c-e9c6-7973-a53b-a6d19141620f",
+      "pid": 43496,
+      "birth": "Thu Nov  5 10:28:27 2026",
+      "explicitEnded": true,
+      "matchesCurrentBirth": false,
+      "oldExecutionReleased": false,
+      "futureOrdinaryEnvelopeRetained": true,
+      "ownerIndexSHA256": "c3c945947002a8271d54f1ebcb9a70fe4e6d2135949fea9254f1efd9129bf64c"
+    },
+    {
+      "owner": "01a19f83-2c2a-7fa0-a98d-1c4f5f65cb3c",
+      "pid": 66086,
+      "birth": "Thu Nov  5 12:53:51 2026",
+      "explicitEnded": true,
+      "matchesCurrentBirth": false,
+      "oldExecutionReleased": false,
+      "futureOrdinaryEnvelopeRetained": true,
+      "ownerIndexSHA256": "48a2e029deaebff32f70f34cd877cd67ee881625d0623233d94f35ddc3a9ea9b"
+    },
+    {
+      "owner": "01a1a5d9-332b-7822-a8f7-412e295fa211",
+      "pid": 62501,
+      "birth": "Thu Nov  5 12:53:16 2026",
+      "explicitEnded": true,
+      "matchesCurrentBirth": false,
+      "oldExecutionReleased": false,
+      "futureOrdinaryEnvelopeRetained": true,
+      "ownerIndexSHA256": "4ab95e093793b6caebbf75832d46eccaf2974574db3c423faa909f22ae79407a"
+    },
+    {
+      "owner": "01a1a207-f012-7343-a24b-12b9c544973f",
+      "pid": 26253,
+      "birth": "Thu Nov 5 12:45:53 2026",
+      "explicitEnded": false,
+      "matchesCurrentBirth": false,
+      "oldExecutionReleased": false,
+      "futureOrdinaryEnvelopeRetained": true,
+      "ownerIndexSHA256": "f9a33ce5217ac5ba54580da7f67af7c3c55cd436b8260effad7b481b81d2af18"
+    },
+    {
+      "owner": "01a1a204-c583-7670-965a-4891b8b1289e",
+      "pid": 62015,
+      "birth": "Thu Nov 5 12:53:14 2026",
+      "explicitEnded": false,
+      "matchesCurrentBirth": false,
+      "oldExecutionReleased": false,
+      "futureOrdinaryEnvelopeRetained": true,
+      "ownerIndexSHA256": "588165338835f09b67e7088d807788289f081791f5d86219d03b238afa115a74"
+    },
+    {
+      "owner": "01a1a202-3ff2-7a93-95c3-374c6df97281",
+      "pid": 23024,
+      "birth": "Thu Nov  5 12:45:21 2026",
+      "explicitEnded": true,
+      "matchesCurrentBirth": false,
+      "oldExecutionReleased": false,
+      "futureOrdinaryEnvelopeRetained": true,
+      "ownerIndexSHA256": "fa0ac5526fb4be5034036c7d3bfe29eee5b911fff7047aebe8d64788e1f3dfe6"
+    },
+    {
+      "owner": "01a1a232-21e2-75c2-8474-a5fa6ae895cd",
+      "pid": 13981,
+      "birth": "Thu Nov 5 12:43:39 2026",
+      "explicitEnded": true,
+      "matchesCurrentBirth": false,
+      "oldExecutionReleased": false,
+      "futureOrdinaryEnvelopeRetained": true,
+      "ownerIndexSHA256": "eb847cf90404374622f1c9238e5d36c1d05fe08c77c0dc54193f90c6804492a8"
+    },
+    {
+      "owner": "01a1a1fe-1eed-7d12-a247-879cd521e0ec",
+      "pid": 64530,
+      "birth": "Thu Nov  5 12:53:29 2026",
+      "explicitEnded": true,
+      "matchesCurrentBirth": false,
+      "oldExecutionReleased": false,
+      "futureOrdinaryEnvelopeRetained": true,
+      "ownerIndexSHA256": "99a2bda343365d589ca3d20dba6a7571391b7c46121cced4b8de2bb64079492c"
+    },
+    {
+      "owner": "01a1a1fc-7f3d-7ff1-9416-e3435c8a6f08",
+      "pid": 61096,
+      "birth": "Thu Nov  5 12:52:50 2026",
+      "explicitEnded": true,
+      "matchesCurrentBirth": false,
+      "oldExecutionReleased": false,
+      "futureOrdinaryEnvelopeRetained": true,
+      "ownerIndexSHA256": "81daa34592973e099744df11a458aa08e41a31fc95eb140eb9d73bef8cf66839"
+    },
+    {
+      "owner": "01a19f83-12cc-7f21-8ad3-55749f012d9b",
+      "pid": 42977,
+      "birth": "Thu Nov 5 12:48:51 2026",
+      "explicitEnded": true,
+      "matchesCurrentBirth": false,
+      "oldExecutionReleased": false,
+      "futureOrdinaryEnvelopeRetained": true,
+      "ownerIndexSHA256": "0d9a5db2ca8779c6c0237aec785a559b3de58602ba8b50f5ddd750e1298183e8"
+    }
+  ],
+  "sample": {
+    "own_processes": 2,
+    "own_rss": 267059200,
+    "global_processes": 2,
+    "global_rss": 267059200,
+    "global_workflows": 1,
+    "global_source": 1,
+    "global_browser": 0,
+    "global_warm_rust": 0,
+    "global_cohorts": [],
+    "global_pid_birth_group_root_records": [],
+    "own_pids": [
+      66972,
+      67104
+    ],
+    "unresolved_accepted_reserved_pids": 0,
+    "declared_global_pids": 4,
+    "declared_global_rss": 1073741824,
+    "unknown": [
+      {
+        "pid": 67103,
+        "ppid": 49590,
+        "pgid": 67103,
+        "rss": 2949120,
+        "birth": "Thu Nov 5 12:54:04 2026",
+        "command": "/bin/zsh -lc python3 -B - <<'PY'\\012import hashlib,json,pathlib,subprocess\\012root=pathlib.Path('/Users/lhs/Desktop/mcr-worktrees/be-media-combined')\\012d=json.loads(pathlib.Path('/private/tmp/mcr-be42-compile-12-freeze/root-intake-manifest.json').read_text())\\012for p,v in d['files'].items():\\012 b=subprocess.check_output(['git','show','HEAD:'+p],cwd=root)\\012 print(('OK ' if hashlib.sha256(b).hexdigest()==v['sha256'] else 'DIFF ')+p)\\012PY"
+      }
+    ],
+    "other_accepted_remaining_new_bytes": 50331648,
+    "other_accepted_ordinary_remaining_new_bytes": 50331648,
+    "unquantified_ordinary_envelope_bytes": 0
+  }
+}

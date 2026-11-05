@@ -1,0 +1,136 @@
+{
+  "files": [
+    {
+      "path": "FULL.json",
+      "SHA256": "d029188bb19fd2999b9ed191ee593fe8aad0a18c1630c2e6b02b420e97360bf9"
+    },
+    {
+      "path": "accept-identities.json",
+      "SHA256": "64fe7bccd5913ee67aac8c0773056bcdabd3d3e694c8a1c8b9b32d0bfa8aa92e"
+    },
+    {
+      "path": "accept.json",
+      "SHA256": "86288e2c36668ebb1a6c974270110585c552564f51d3bf15f0b430f641f51acf"
+    },
+    {
+      "path": "bootstrap-accepted-path.json",
+      "SHA256": "153eee5fd8a5614900fa0ada13f9cccb4f9837ef009116217df44e59fa7d0910"
+    },
+    {
+      "path": "bootstrap-identity.json",
+      "SHA256": "48c1822d719ddbe87ff1fcf082dc8932d224f870df273cda336fefb8ace87111"
+    },
+    {
+      "path": "cleanup",
+      "SHA256": "f4ef1c4e39c73fb3211b513cf8d3858b7a8a8d2328ffdfb1dbffd4cad200a44d"
+    },
+    {
+      "path": "controller-result.json",
+      "SHA256": "7a6c5f534202c3d32c9b942edb9e2d6c54a6d228606541643f383ad6e30b312a"
+    },
+    {
+      "path": "executed-controls/accounting.py",
+      "SHA256": "d525a94f8bbc3a89a47bf84bda757c985d9f722aa985d7b60a2d600bffcb720a"
+    },
+    {
+      "path": "executed-controls/budget.py",
+      "SHA256": "1e44b4a178f2b40d4651e3fd8d5e75e09dd811a4a8b58ab33aecaf1b1648d89a"
+    },
+    {
+      "path": "executed-controls/global-roster.json",
+      "SHA256": "1eb37d9d4fb6fe0483f80a75118fc2602a95f0856b8db85f4455340391f24bf7"
+    },
+    {
+      "path": "executed-controls/manifest.json",
+      "SHA256": "e424dcd941ef6f7c8d2b1de838cc9d40390e74c2e63381a74e89a7baa3e3683e"
+    },
+    {
+      "path": "executed-controls/python-launcher-image.json",
+      "SHA256": "1ac37458d911bea991e7c1ca2a2f338b98548e87308890a22719dcbc4ae6cab3"
+    },
+    {
+      "path": "executed-controls/receipt_proof.py",
+      "SHA256": "69706c0727698ed2dddcfbadbc20a7eaa8db5a693319f313d217ba2e44ee13b3"
+    },
+    {
+      "path": "executed-controls/source-admission.json",
+      "SHA256": "95ba55ff34fc6b29bdaf2499c491491d9906a4348e87f8a1a869397451246de3"
+    },
+    {
+      "path": "executed-controls/source-budget-640-amendment.json",
+      "SHA256": "ab35b64909a1ae350ea6484516856406f1e9d29e749d23b93909d69f69539361"
+    },
+    {
+      "path": "executed-controls/source-budget-amendment.json",
+      "SHA256": "a084a203a7d518d1dba148d8a649dedbec7635b6b6b50d2165175d0fb80eb13f"
+    },
+    {
+      "path": "executed-controls/source-plan.json",
+      "SHA256": "e52ad1e32fde69ecafa4bfe7a9d4d30b8be61c3e843cab7d90186734b4a4676b"
+    },
+    {
+      "path": "executed-controls/source07-retained-inputs.json",
+      "SHA256": "149dbe365aa05810bd7786fae225d8504365373e103fde7496eabe7373320d86"
+    },
+    {
+      "path": "executed-controls/source_control.py",
+      "SHA256": "000bb7266621787d752b6b7448700409b0b28574cd5c7e065159a27309d47781"
+    },
+    {
+      "path": "executed-controls/test_process_receipts.py",
+      "SHA256": "52e2ee9f162c7e4d934f6e60edd2eb5f54858f0fe38bb64b48f2824e9d379fb2"
+    },
+    {
+      "path": "global-sample-before-assert-59310.json",
+      "SHA256": "d40af8016a3e8953b9ba4842b5f74018e7d4cf14264c0e7182e4be60d1e4bb54"
+    },
+    {
+      "path": "global-sample-before-assert-59313.json",
+      "SHA256": "89258d162b8e839ce20ec7cbeb492f2347b677684cb9d115971f5171d516787d"
+    },
+    {
+      "path": "guard-exit.json",
+      "SHA256": "be59bf0960b72d3a2115e8cf6414a3f642ac1042b1310e190790f58ec1c36d5e"
+    },
+    {
+      "path": "guard-failure.json",
+      "SHA256": "c70e96ef674d997258e522c73285b5dc0751176e4b16e48e486b00ee8d4cfed5"
+    },
+    {
+      "path": "guard-identity.json",
+      "SHA256": "48c1822d719ddbe87ff1fcf082dc8932d224f870df273cda336fefb8ace87111"
+    },
+    {
+      "path": "identities-published",
+      "SHA256": "59b484aced08500fce4610c16a84a715e70506428c4adcfc9fb5c59b312ef3a7"
+    },
+    {
+      "path": "ordinary-transition-accept.json",
+      "SHA256": "bb4ffc43eeaf2586f514c0fee0b9912ba318411de33299a2a85fd4281c0e1e68"
+    },
+    {
+      "path": "qualification-summary.json",
+      "SHA256": "db4a91707cd6e495bf420762513433e1a1af3af94fec5a8b5987a4a94c38daf4"
+    },
+    {
+      "path": "source-accounting-failure-59313.json",
+      "SHA256": "af691b72887079c45e19aab100112d8db663935153a90d9c65b6531a984ae737"
+    },
+    {
+      "path": "source-global-failure-59310.json",
+      "SHA256": "11c13cc9a2bad06c0aad8f734c26cc42331fefb38f688af109f2da72cabc6972"
+    },
+    {
+      "path": "source-global-failure-59313.json",
+      "SHA256": "8720d27f33c17ed5363caf320eb47dfcf98567dd6c96f50774f9a6f1a6a8d917"
+    },
+    {
+      "path": "stop",
+      "SHA256": "bfe9cb17e35679bb7f4ddd9e77ed5a0c5cd4f5a48fc32ce6c01c66ceab05c63a"
+    }
+  ],
+  "ordinaryEntireUpperOnce": 2097152,
+  "boundedEvidenceAllocatedBytesBeforeGit": 712704,
+  "remainingUpperForGitAndPrivatePrepAtLeast": 1384448,
+  "noFullSourceCensus": true
+}

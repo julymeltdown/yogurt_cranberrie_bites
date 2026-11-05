@@ -1,0 +1,31 @@
+{
+  "state": "FAILED",
+  "failure": "RuntimeError: finite SOURCE interrupted",
+  "cleanup_failure": "AssertionError: actual argv unavailable pid=59374 errno=22 expectedScript=None observed=/Library/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python -",
+  "test_exit": null,
+  "fixture_inputs": "SYNTHETIC_ONLY_ACTUAL_PRODUCTION_FUNCTION",
+  "outer_accounting": "REAL_LIVE_NOT_MOCKED",
+  "guard_reaped": true,
+  "peak": {
+    "minimum_free": 22989426688,
+    "own_processes": 4,
+    "own_rss": 534462464,
+    "global_processes": 4,
+    "global_rss": 534462464,
+    "global_workflows": 1
+  },
+  "target_Cargo_PG_browser": "NOT_RUN",
+  "epoch": 1793850736.3605728,
+  "guardian": {
+    "failure": "AccountingError: checkpoint/root/measurement failure",
+    "epoch": 1793850736.220891,
+    "peak": {
+      "minimum_free": 22989426688,
+      "own_processes": 4,
+      "own_rss": 530579456,
+      "global_processes": 4,
+      "global_rss": 530579456,
+      "global_workflows": 1
+    }
+  }
+}

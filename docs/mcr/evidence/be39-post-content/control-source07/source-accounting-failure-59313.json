@@ -1,0 +1,42 @@
+{
+  "epoch": 1793850736.218804,
+  "sampler_pid": 59313,
+  "failure": "AccountingError: checkpoint/root/measurement failure",
+  "traceback": "Traceback (most recent call last):\n  File \"/private/tmp/mcr-post21a-be39-compile-unit04-0202/accounting.py\", line 242, in collect\n    walk(fd, identity.scan_path, scope, 0)\n    ~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/private/tmp/mcr-post21a-be39-compile-unit04-0202/accounting.py\", line 225, in walk\n    walk(child, child_path, scope, depth + 1)\n    ~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/private/tmp/mcr-post21a-be39-compile-unit04-0202/accounting.py\", line 225, in walk\n    walk(child, child_path, scope, depth + 1)\n    ~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/private/tmp/mcr-post21a-be39-compile-unit04-0202/accounting.py\", line 225, in walk\n    walk(child, child_path, scope, depth + 1)\n    ~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  [Previous line repeated 6 more times]\n  File \"/private/tmp/mcr-post21a-be39-compile-unit04-0202/accounting.py\", line 213, in walk\n    check()\n    ~~~~~^^\n  File \"/private/tmp/mcr-post21a-be39-compile-unit04-0202/accounting.py\", line 185, in check\n    checkpoint()\n    ~~~~~~~~~~^^\n  File \"/private/tmp/mcr-post21a-be39-compile-unit04-0202/source_control.py\", line 149, in fast\n    self.sampled, free = metadata({**self.a, 'output_directory': str(O), 'controller_pid': self.a['controller']['pid'], 'global_roster_path': str(O / 'global-roster.json')})\n                         ~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/private/tmp/mcr-post21a-be39-compile-unit04-0202/source_control.py\", line 61, in metadata\n    sample = budget.processes({**a, 'process_cap': 4, 'rss_cap_bytes': GIB, 'kind': 'source'})\n  File \"/private/tmp/mcr-post21a-be39-compile-unit04-0202/budget.py\", line 299, in processes\n    proof=relative_identity(expected['pid'],expected,row,stdin=True)\n  File \"/private/tmp/mcr-post21a-be39-compile-unit04-0202/budget.py\", line 66, in relative_identity\n    assert libc.sysctl(mib,3,buf,ctypes.byref(size),None,0)==0,'actual argv unavailable pid='+str(pid)+' errno='+str(ctypes.get_errno())+' expectedScript='+str(expected.get('script'))+' observed='+row[4]\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError: actual argv unavailable pid=59374 errno=22 expectedScript=None observed=/Library/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python -\n\nThe above exception was the direct cause of the following exception:\n\nTraceback (most recent call last):\n  File \"/private/tmp/mcr-post21a-be39-compile-unit04-0202/source_control.py\", line 162, in sample\n    receipt = accounting.collect(self.roots, deadline=min(time.monotonic()+35, time.monotonic()+self.a['fullDeadlineEpoch']-time.time()-10), checkpoint=self.fast, attempts=3)\n  File \"/private/tmp/mcr-post21a-be39-compile-unit04-0202/accounting.py\", line 269, in collect\n    raise AccountingError('checkpoint/root/measurement failure', records) from error\naccounting.AccountingError: checkpoint/root/measurement failure\n",
+  "accounting_receipt": {
+    "reason": "checkpoint/root/measurement failure",
+    "attempts": [
+      {
+        "attempt": 1,
+        "complete": false,
+        "knownBytes": 5726547968,
+        "scopes": {
+          "source": 1408675840,
+          "common_git": 1237159936,
+          "evidence": 13258752,
+          "cargo_home": 1724936192,
+          "rust188": 1342517248,
+          "rust197_source_syntax_toolchain": 0,
+          "python_framework": 0,
+          "git_toolchain": 0,
+          "native_toolchain": 0,
+          "old_world_recipient_history": 0,
+          "old_world_producer_history": 0,
+          "previous_compile_unit01_history": 0,
+          "resource_metadata": 0,
+          "previous_compile_unit02_history": 0,
+          "previous_compile_unit03_history": 0
+        },
+        "races": [],
+        "entries": 155361,
+        "cause": {
+          "type": "AssertionError",
+          "message": "actual argv unavailable pid=59374 errno=22 expectedScript=None observed=/Library/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python -",
+          "errno": null
+        },
+        "finishedMonotonic": 194303.938434416
+      }
+    ],
+    "complete": false
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "stage": "CENSUS_BEFORE_ASSERT",
+  "epoch": 1793850736.210403,
+  "sampler_pid": 59313,
+  "relevant_actual_processes": [
+    {
+      "pid": 59310,
+      "ppid": 49590,
+      "pgid": 59310,
+      "rss": 262864896,
+      "birth": "Thu Nov 5 12:52:12 2026",
+      "command": "/Library/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python -B /private/tmp/mcr-post21a-be39-compile-unit04-0202/source_control.py 07"
+    },
+    {
+      "pid": 59313,
+      "ppid": 59310,
+      "pgid": 59313,
+      "rss": 265519104,
+      "birth": "Thu Nov 5 12:52:12 2026",
+      "command": "/Library/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python -B /private/tmp/mcr-post21a-be39-compile-unit04-0202/source_control.py guard-bootstrap /private/tmp/mcr-post21a-be39-compile-unit04-0202/source-bootstrap-07-1793850732618137000"
+    }
+  ]
+}
