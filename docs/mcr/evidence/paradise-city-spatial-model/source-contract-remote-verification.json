@@ -1,0 +1,80 @@
+{
+  "task": "SOURCE_CONTRACT_INTERFACE_ONLY",
+  "expectedCanonical": "43fa937622c772f717172f0696c9d0bdf3b9aaff",
+  "expectedSHA256": "bbf13c1623c2bf06570705287dd2e670bf5a665739d39a586fe1cc93fff77fec",
+  "startedAtEpoch": 1793845035.256761,
+  "commands": [
+    {
+      "argv": [
+        "git",
+        "remote",
+        "get-url",
+        "origin"
+      ],
+      "exitCode": 0
+    },
+    {
+      "argv": [
+        "git",
+        "fetch",
+        "--no-tags",
+        "origin",
+        "master"
+      ],
+      "exitCode": 0
+    },
+    {
+      "argv": [
+        "git",
+        "rev-parse",
+        "FETCH_HEAD"
+      ],
+      "exitCode": 0
+    },
+    {
+      "argv": [
+        "git",
+        "ls-remote",
+        "origin",
+        "refs/heads/master"
+      ],
+      "exitCode": 0
+    },
+    {
+      "argv": [
+        "git",
+        "merge-base",
+        "--is-ancestor",
+        "43fa937622c772f717172f0696c9d0bdf3b9aaff",
+        "41d90738e3941cdfc663d00551e0f7db2cd3aa4f"
+      ],
+      "exitCode": 0
+    },
+    {
+      "argv": [
+        "git",
+        "show",
+        "41d90738e3941cdfc663d00551e0f7db2cd3aa4f:frontend/src/features/paradise-city-map/spatial/contract.ts"
+      ],
+      "exitCode": 0
+    },
+    {
+      "argv": [
+        "git",
+        "ls-tree",
+        "41d90738e3941cdfc663d00551e0f7db2cd3aa4f",
+        "frontend/src/features/paradise-city-map/spatial/contract.ts"
+      ],
+      "exitCode": 0
+    }
+  ],
+  "state": "FRESH_REMOTE_POSTIMAGE_AND_ANCESTRY_VERIFIED",
+  "remoteHead": "41d90738e3941cdfc663d00551e0f7db2cd3aa4f",
+  "bytes": 7231,
+  "modeAndBlob": "100644 blob 74739d0e3e79f1586bb7154254734c0846d40898\tfrontend/src/features/paradise-city-map/spatial/contract.ts",
+  "actualSHA256": "bbf13c1623c2bf06570705287dd2e670bf5a665739d39a586fe1cc93fff77fec",
+  "publisherReceipt": "/private/tmp/mcr-publisher-412e-venue-community-batch-receipt.json",
+  "publisherReceiptSHA256": "f4f1c676f009ab2e492ef39dc658f7b9fcd916b46938e0cee0f03adbf0deeb3b",
+  "finishedAtEpoch": 1793845037.2145338,
+  "limits": "Only exact old source contract; no current replacement/model/native/product acceptance."
+}

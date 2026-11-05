@@ -1,0 +1,2 @@
+../contracts/generated/api-client/runtime.ts(2,19): error TS2307: Cannot find module 'zod' or its corresponding type declarations.
+../contracts/generated/api-client/runtime.ts(128,31): error TS7006: Parameter 'value' implicitly has an 'any' type.

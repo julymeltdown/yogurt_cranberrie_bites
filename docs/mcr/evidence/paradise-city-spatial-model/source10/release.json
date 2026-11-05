@@ -1,0 +1,26 @@
+{
+  "type": "FULL",
+  "lease": "SPATIAL-SOURCE10-0221",
+  "mode": "source",
+  "at": "2026-11-05T02:23:57.272685+00:00",
+  "exitCode": 0,
+  "failure": null,
+  "peak": {
+    "processes": 3,
+    "rssBytes": 1974894592,
+    "newBytes": 87355392,
+    "tmpBytes": 1363968,
+    "wholeBytes": 5565186048
+  },
+  "minimumFreeBytes": 23931375616,
+  "finalFreeBytes": 23935967232,
+  "seenPids": [
+    7681,
+    7837
+  ],
+  "livePids": [],
+  "ownedLinkAbsent": true,
+  "privateTmpAbsent": true,
+  "ownedPortClosed": true,
+  "resources": 0
+}

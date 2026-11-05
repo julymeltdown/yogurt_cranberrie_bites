@@ -1,0 +1,713 @@
+{
+  "task": "VENU-FE-SPATIAL-01",
+  "disposition": "QUALIFIED_SOURCE_IMPLEMENTATION_ONLY",
+  "sourceBase": "3a125d952cc55afbfac028afcafd7748dffaa056",
+  "sourceSnapshot": "cbe20842ab8a5c2a80786227c7315603f6390b3a",
+  "entries": [
+    {
+      "path": "docs/mcr/evidence/paradise-city-spatial-model/control-provenance.json",
+      "mode": "100644",
+      "blob": "e3dd7ca4517bd37b1f231a847dee7b830ec46021",
+      "bytes": 841,
+      "sha256": "d9004c682e38be1ff3d2da3a0342a71e2c6afd5673460c0b65f58956285a8e8b"
+    },
+    {
+      "path": "docs/mcr/evidence/paradise-city-spatial-model/custody-and-booking.json",
+      "mode": "100644",
+      "blob": "5ac284291c840ad3307aef52eee7f06c7049552d",
+      "bytes": 36905,
+      "sha256": "f5d7777f184ef218036578bc899aa73cc1c90645a082be9f20a19fba900cd121"
+    },
+    {
+      "path": "docs/mcr/evidence/paradise-city-spatial-model/pi01-owner-resource-before-transition.json",
+      "mode": "100644",
+      "blob": "38aaad192e6d88e4e027b950e9cd3624fe3791e1",
+      "bytes": 2421,
+      "sha256": "3b708bbe3abd60e4edbe2d30f7ca347dd31e3a4f23e426049435660e7298d6ca"
+    },
+    {
+      "path": "docs/mcr/evidence/paradise-city-spatial-model/producer-adoption.json",
+      "mode": "100644",
+      "blob": "165d6eebde74d5c2c7ce260a0108e1dd6e361f99",
+      "bytes": 1772,
+      "sha256": "2a58a56126c8ce51cd376ab5bb154ad5c37e28273ea1241f92aff05c6c547e8a"
+    },
+    {
+      "path": "docs/mcr/evidence/paradise-city-spatial-model/qualification-readset.json",
+      "mode": "100644",
+      "blob": "8eeda6b8a92f34c677c9fd00496348c307bafa07",
+      "bytes": 10100,
+      "sha256": "e500b40da706b9b6f9580a3f825b0db91cf22ee96a4fa17362f09672ec6fc166"
+    },
+    {
+      "path": "docs/mcr/evidence/paradise-city-spatial-model/qualification-summary.json",
+      "mode": "100644",
+      "blob": "bfc9fdcb3a0328be671c31cae498ae5f5ba49a7a",
+      "bytes": 20240,
+      "sha256": "ae09be6e2135e0b6b621d0375d304b8330c8cf92b9991d874ee0da902fd97a54"
+    },
+    {
+      "path": "docs/mcr/evidence/paradise-city-spatial-model/source-contract-handoff.json",
+      "mode": "100644",
+      "blob": "32cfa1261f185ce09db76ce664cff75f9cba9be6",
+      "bytes": 1986,
+      "sha256": "5fd456d9102e70912224f174c16a565d64a707db94ee26c0be577b947642d34f"
+    },
+    {
+      "path": "docs/mcr/evidence/paradise-city-spatial-model/source-contract-remote-verification.json",
+      "mode": "100644",
+      "blob": "1fe56b2e1b664b1b48f05680caa7f193709e9639",
+      "bytes": 2114,
+      "sha256": "b5403110cbfd6f303588d52ed9f59e60c015c41317e6a4aee6af9e0a55defa3b"
+    },
+    {
+      "path": "docs/mcr/evidence/paradise-city-spatial-model/source01-controller.jsonl",
+      "mode": "100644",
+      "blob": "5e8030a5b72c00eaf5971357076b6889adec1b68",
+      "bytes": 842,
+      "sha256": "ed7cceac87297d2c85e4d20af2df27bec8b5820313161f66003e3811ed521362"
+    },
+    {
+      "path": "docs/mcr/evidence/paradise-city-spatial-model/source01-executed-readset.json",
+      "mode": "100644",
+      "blob": "072600a8f78a97bd8304e498f7267f228c5e984e",
+      "bytes": 5660,
+      "sha256": "8bbff32e268008f374542596cd94a4fa3917507433d72cbcc737f0d808227733"
+    },
+    {
+      "path": "docs/mcr/evidence/paradise-city-spatial-model/source01-invocation.json",
+      "mode": "100644",
+      "blob": "d2eb6832a95fc1343c8afe0e12570207f647b88b",
+      "bytes": 3239,
+      "sha256": "b5fb8a83b2073859f514798d76850dfbf89050f521ace4f0e8f039b6480c9ea8"
+    },
+    {
+      "path": "docs/mcr/evidence/paradise-city-spatial-model/source02-controller-census.json",
+      "mode": "100644",
+      "blob": "e3fdc4328eb9732b6a6ad27878fd21badb1e49a5",
+      "bytes": 406,
+      "sha256": "a53d65bb6276984e04b6cce595407f91381cb8edd6645e7191bc19aec00c40a4"
+    },
+    {
+      "path": "docs/mcr/evidence/paradise-city-spatial-model/source02-controller.jsonl",
+      "mode": "100644",
+      "blob": "89f242ea27e7d3d25ca2cbf469ad1b20970a5eea",
+      "bytes": 1225,
+      "sha256": "247e3d47eaa92489249942729d9839adeb21719282883c8ada3ea422dcd21c43"
+    },
+    {
+      "path": "docs/mcr/evidence/paradise-city-spatial-model/source02-executed-readset.json",
+      "mode": "100644",
+      "blob": "61cf5d8c929d89b9741cbcd46d68f62dbc6d2552",
+      "bytes": 5660,
+      "sha256": "5d667d40239579304f3842b4607e0b8ff95ba71a1e624f9eefa117f32c670e74"
+    },
+    {
+      "path": "docs/mcr/evidence/paradise-city-spatial-model/source02-invocation.json",
+      "mode": "100644",
+      "blob": "5af4ad1564b5ee1c653a4b99275eae1f6f969f54",
+      "bytes": 3252,
+      "sha256": "dd30d0a8d1aa2de22451306d1a7645e3a9e29bd9b80572f77e9b01a7a8f2fb96"
+    },
+    {
+      "path": "docs/mcr/evidence/paradise-city-spatial-model/source02/command-00.log",
+      "mode": "100644",
+      "blob": "335b18d5b18cee30ca5a8fca31d2e06248ffa36a",
+      "bytes": 114,
+      "sha256": "dfe4fedb90c607062ae4e1109920a5f2f30962a59b7e7e1e76c21f4a4a0a2758"
+    },
+    {
+      "path": "docs/mcr/evidence/paradise-city-spatial-model/source02/command-01.log",
+      "mode": "100644",
+      "blob": "a5b87ed51d3acd25b9dd8d2d46e04500e0376fc5",
+      "bytes": 247,
+      "sha256": "9399f097cf02ed017c770d42df3e2d1998f1624f22d6abeb19224a6dc024b997"
+    },
+    {
+      "path": "docs/mcr/evidence/paradise-city-spatial-model/source02/guardian-census.json",
+      "mode": "100644",
+      "blob": "f06c20ab75c86b3d4582377c70906d79f8739b1a",
+      "bytes": 416,
+      "sha256": "d764a2aa98d1524ce1eb2461754ed3a02cb623e22b278e7a50eea0f115b6aa65"
+    },
+    {
+      "path": "docs/mcr/evidence/paradise-city-spatial-model/source02/guardian.jsonl",
+      "mode": "100644",
+      "blob": "a240d971ad9a8d41ae5c93f48af060d64d4fe921",
+      "bytes": 1147,
+      "sha256": "ba551c241557ca73332838805862acfe791308d1382ef816f6b97e80213afe05"
+    },
+    {
+      "path": "docs/mcr/evidence/paradise-city-spatial-model/source03-controller-census.json",
+      "mode": "100644",
+      "blob": "fad5571511c394b3fa89abee6defa81ff33a5269",
+      "bytes": 484,
+      "sha256": "0db167088cc17567f2ebe882a5413532bda4ddefb95644c310d3bb308b016532"
+    },
+    {
+      "path": "docs/mcr/evidence/paradise-city-spatial-model/source03-controller.jsonl",
+      "mode": "100644",
+      "blob": "e83a86bfcfe978d8d564562ef09591553789fb8e",
+      "bytes": 1234,
+      "sha256": "d2b7a9fc52b92fb083930d54e00e186fafb0dbeef93e60ac7ff879a8741889cc"
+    },
+    {
+      "path": "docs/mcr/evidence/paradise-city-spatial-model/source03-executed-readset.json",
+      "mode": "100644",
+      "blob": "b80a46e4a9117c750c31d84dbfa3ed83252abd3d",
+      "bytes": 5660,
+      "sha256": "99a5eb1fabddfcba3c5dad35fbd386e5ab67b3038763eec09c98cdadf6a19f5d"
+    },
+    {
+      "path": "docs/mcr/evidence/paradise-city-spatial-model/source03-invocation.json",
+      "mode": "100644",
+      "blob": "d0831da7adc4439263820881088da0047ac1d828",
+      "bytes": 3243,
+      "sha256": "1d05fc782f04e7a75aedcc9453fbb9947c922c6149b263596fb7bc6e4ad9922d"
+    },
+    {
+      "path": "docs/mcr/evidence/paradise-city-spatial-model/source03/command-00.log",
+      "mode": "100644",
+      "blob": "242f5c8aecbe293245e4f13c98189061abd81bf0",
+      "bytes": 116,
+      "sha256": "6bd1ff4b2acbf2cc7c0e598f496b49c50774c85560cb87ce328c531e89653b0d"
+    },
+    {
+      "path": "docs/mcr/evidence/paradise-city-spatial-model/source03/command-01.log",
+      "mode": "100644",
+      "blob": "5980371b45a37647517a055cd056f52a70c472a4",
+      "bytes": 247,
+      "sha256": "04a8e645e736f1ce0e8cfdfbeae2c89c6bf0c0957f5a7166ef59cc67f066369b"
+    },
+    {
+      "path": "docs/mcr/evidence/paradise-city-spatial-model/source03/command-02.log",
+      "mode": "100644",
+      "blob": "67b713a51507061c39c3d97ec6f3327d3d2e3c78",
+      "bytes": 247,
+      "sha256": "20671e7ff1993e6426dd56174b4fee2c2c39e4dad8faa423ba0ca73639be5560"
+    },
+    {
+      "path": "docs/mcr/evidence/paradise-city-spatial-model/source03/guardian-census.json",
+      "mode": "100644",
+      "blob": "a883a242575366da87a90f31efae7611d9845b2e",
+      "bytes": 417,
+      "sha256": "9fcb5f2affd5e19882f959983b04cde5d040d2c43e40664a30a228a70185a109"
+    },
+    {
+      "path": "docs/mcr/evidence/paradise-city-spatial-model/source03/guardian.jsonl",
+      "mode": "100644",
+      "blob": "5b62d9a63b3c2674eca24394111c8d8280749847",
+      "bytes": 2442,
+      "sha256": "6d6e17d80746573dd84a41d0d4918b1098b4506cc031c4869fe477791d4ca719"
+    },
+    {
+      "path": "docs/mcr/evidence/paradise-city-spatial-model/source03/release.json",
+      "mode": "100644",
+      "blob": "4ad7b210fe3691c1a4cc4031d6f27124b3bf1aa7",
+      "bytes": 636,
+      "sha256": "b80f2509064033379b6340c9c5511f82306c7dfc545d9308c43f67b9916b6964"
+    },
+    {
+      "path": "docs/mcr/evidence/paradise-city-spatial-model/source04-controller-census.json",
+      "mode": "100644",
+      "blob": "583f2e308193c4134add3e154d446c4b298e0fc7",
+      "bytes": 509,
+      "sha256": "8b58892c5ac7e6887ce5ba69c4f57eee202777c45ecf07666ffb617aa3f0d1d1"
+    },
+    {
+      "path": "docs/mcr/evidence/paradise-city-spatial-model/source04-controller.jsonl",
+      "mode": "100644",
+      "blob": "f1ca3ea491b6b56115a7a5145042f880d83ffb24",
+      "bytes": 1349,
+      "sha256": "142caf3630420deb5e043502d02af214546d1702b3ff72fd4b0e298bf0519448"
+    },
+    {
+      "path": "docs/mcr/evidence/paradise-city-spatial-model/source04-executed-readset.json",
+      "mode": "100644",
+      "blob": "aea5739d85119be5d075ad367a1224a1745e09d1",
+      "bytes": 7339,
+      "sha256": "1d43269aba4d825994d16ef40642f835493469c1cbc258e5cd885a7d2dffde89"
+    },
+    {
+      "path": "docs/mcr/evidence/paradise-city-spatial-model/source04-invocation.json",
+      "mode": "100644",
+      "blob": "6b46e24f90eb7379dadd893a783bc422861c7c61",
+      "bytes": 3376,
+      "sha256": "c85b079d1d8ec39417021e3560a1d5c01ef8ebec2c4a3a64ad5a20f376ffb369"
+    },
+    {
+      "path": "docs/mcr/evidence/paradise-city-spatial-model/source04/command-00.log",
+      "mode": "100644",
+      "blob": "69d6b8567739b436fa223be1a31f3d864521e97f",
+      "bytes": 118,
+      "sha256": "0b68510907f9ad579d241f21dd3bc6f4d64fe03da5eff6763e99122667bbc30a"
+    },
+    {
+      "path": "docs/mcr/evidence/paradise-city-spatial-model/source04/command-01.log",
+      "mode": "100644",
+      "blob": "82361bdee6229c22e733e88252c9ff466b0bd967",
+      "bytes": 247,
+      "sha256": "0d1e2ac387003385da4c4ecd3b8dd5bd33b3475b9d4bdcc6cad61be7e86dd565"
+    },
+    {
+      "path": "docs/mcr/evidence/paradise-city-spatial-model/source04/command-02.log",
+      "mode": "100644",
+      "blob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "docs/mcr/evidence/paradise-city-spatial-model/source04/command-03.log",
+      "mode": "100644",
+      "blob": "d3816e54de663bda6453f98ce8363fa7ce65a9c7",
+      "bytes": 244,
+      "sha256": "98d9f41fb049d0ad169c93843a85cb174c04698743bbcd26cdbf0b5f77bbd058"
+    },
+    {
+      "path": "docs/mcr/evidence/paradise-city-spatial-model/source04/guardian-census.json",
+      "mode": "100644",
+      "blob": "941455d35dc74b6e39aec1f91b975d463d61ae69",
+      "bytes": 530,
+      "sha256": "fa583c13246d206df0d4bb41dc29b34f316081dd68e405b117e1160b6303d55d"
+    },
+    {
+      "path": "docs/mcr/evidence/paradise-city-spatial-model/source04/guardian.jsonl",
+      "mode": "100644",
+      "blob": "14ba1a6b50488cf62657fcc2f5ea607511026f9b",
+      "bytes": 3301,
+      "sha256": "6ff031fc8aa5044be893246c55695c6832219abfe5184aa3b04934f092cd78bf"
+    },
+    {
+      "path": "docs/mcr/evidence/paradise-city-spatial-model/source04/release.json",
+      "mode": "100644",
+      "blob": "e491f182de557b7da65532cdbb435f529f57ef95",
+      "bytes": 649,
+      "sha256": "d433ee511f4a8ae2dd4cb75d0d1937a4cb74662999ba08c7300a3bdfb01d9bed"
+    },
+    {
+      "path": "docs/mcr/evidence/paradise-city-spatial-model/source05-controller-census.json",
+      "mode": "100644",
+      "blob": "aff4deff55b29dfa26a01e350a0f6059ca1dcb1e",
+      "bytes": 509,
+      "sha256": "b45db08a7ce7c5e8ee18c00930fa7e5b8f1bbad2636c4773216b5a667b64f043"
+    },
+    {
+      "path": "docs/mcr/evidence/paradise-city-spatial-model/source05-controller.jsonl",
+      "mode": "100644",
+      "blob": "556ec3dbfa1a6c7574941ae947776951994df64c",
+      "bytes": 1387,
+      "sha256": "8c224be6ef612fd8c39839320db16b7ca16b8d7d304a0da620e2bac337885389"
+    },
+    {
+      "path": "docs/mcr/evidence/paradise-city-spatial-model/source05-executed-readset.json",
+      "mode": "100644",
+      "blob": "2d17f9990c93193f04f7cb8c2f62c3f441190113",
+      "bytes": 9737,
+      "sha256": "15deadb4f8945be59f64a1ee01e190d1c92feca57525b9a8482cb7afa8ebaddb"
+    },
+    {
+      "path": "docs/mcr/evidence/paradise-city-spatial-model/source05-invocation.json",
+      "mode": "100644",
+      "blob": "7e0c9ed1db7a9a27ffc2c7e43099ddd4afcf5961",
+      "bytes": 3314,
+      "sha256": "af647fa1361daf7c86c409d9a5fad10a11750a4f886053b66cefcd32e38a51d5"
+    },
+    {
+      "path": "docs/mcr/evidence/paradise-city-spatial-model/source05/command-00.log",
+      "mode": "100644",
+      "blob": "fe5987012e5afdc06f543783eb081e3c2f2d127d",
+      "bytes": 259,
+      "sha256": "0577c55eb457d3f5cbf2c09305baaba9f6a81a316889eee7a46ee4e85bfd2d98"
+    },
+    {
+      "path": "docs/mcr/evidence/paradise-city-spatial-model/source05/command-01.log",
+      "mode": "100644",
+      "blob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "docs/mcr/evidence/paradise-city-spatial-model/source05/guardian-census.json",
+      "mode": "100644",
+      "blob": "1d9f8e05ca78d52ef297082eeeee405d5b4e338b",
+      "bytes": 519,
+      "sha256": "1699c73de17519555d6bdf69c9651b83a8582cf7972b716d15c8aedc65855be9"
+    },
+    {
+      "path": "docs/mcr/evidence/paradise-city-spatial-model/source05/guardian.jsonl",
+      "mode": "100644",
+      "blob": "19091bf7acdb9999521630ce24d5fd2670a050fd",
+      "bytes": 1483,
+      "sha256": "e31fb34391199a1897834a510ec85d7806adc2dd103397a1523cd9956e9a23a4"
+    },
+    {
+      "path": "docs/mcr/evidence/paradise-city-spatial-model/source06-controller-census.json",
+      "mode": "100644",
+      "blob": "8531d86a5b9e427a3c9386323bc00b3c73411634",
+      "bytes": 586,
+      "sha256": "fd16a3246d297f7647b75cdd83d8ccbab56a9dd9a373ef829cc26c0e7fe061f7"
+    },
+    {
+      "path": "docs/mcr/evidence/paradise-city-spatial-model/source06-controller.jsonl",
+      "mode": "100644",
+      "blob": "587ba36dc8f235c99dc204989eaab8cd789ecaf6",
+      "bytes": 1799,
+      "sha256": "4f9a21754860368d6377c71e6e3b02a6dc944eb51a8b078640f5e0f218b4839b"
+    },
+    {
+      "path": "docs/mcr/evidence/paradise-city-spatial-model/source06-executed-readset.json",
+      "mode": "100644",
+      "blob": "1c497fa4f0e527091c3a3620ff547198523ee14d",
+      "bytes": 10125,
+      "sha256": "dfbe7c092fe19b37217698665e0da2b24a31214de75b95b456db047a6062cc7a"
+    },
+    {
+      "path": "docs/mcr/evidence/paradise-city-spatial-model/source06-invocation.json",
+      "mode": "100644",
+      "blob": "b5b0cde3c8971e1279ae5ee7c4717d3ae6f828d0",
+      "bytes": 3303,
+      "sha256": "09a34540b30389d42ab78bd5dbf31ddbb6d4846fe395d88902d90cda5cd166ca"
+    },
+    {
+      "path": "docs/mcr/evidence/paradise-city-spatial-model/source06/command-00.log",
+      "mode": "100644",
+      "blob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "docs/mcr/evidence/paradise-city-spatial-model/source06/guardian-census.json",
+      "mode": "100644",
+      "blob": "e1a793118c005397601c3465ba9ce41e7e1c2dbb",
+      "bytes": 565,
+      "sha256": "9ba9b1fb3301ed2ef7f55c99a67ad51828d98020da7423e7981b5d1bed5da567"
+    },
+    {
+      "path": "docs/mcr/evidence/paradise-city-spatial-model/source06/guardian.jsonl",
+      "mode": "100644",
+      "blob": "c31b9481ef4a11eed15d3b03c44405da26f156dd",
+      "bytes": 952,
+      "sha256": "103c1e4c5eaff7bc20a8bc3e65163297663a60fe9a509e50ecdab8b6521adc35"
+    },
+    {
+      "path": "docs/mcr/evidence/paradise-city-spatial-model/source07-controller.jsonl",
+      "mode": "100644",
+      "blob": "cd2d897c081ca483263d1db7dd656497359a073d",
+      "bytes": 1562,
+      "sha256": "62870a7a28b4ebc151c80031f31d5be4013d50022954da987af3e79959061456"
+    },
+    {
+      "path": "docs/mcr/evidence/paradise-city-spatial-model/source07-executed-readset.json",
+      "mode": "100644",
+      "blob": "1c497fa4f0e527091c3a3620ff547198523ee14d",
+      "bytes": 10125,
+      "sha256": "dfbe7c092fe19b37217698665e0da2b24a31214de75b95b456db047a6062cc7a"
+    },
+    {
+      "path": "docs/mcr/evidence/paradise-city-spatial-model/source07-invocation.json",
+      "mode": "100644",
+      "blob": "1dba3d83207b281097cc1d1b37957b044efdf9e9",
+      "bytes": 3290,
+      "sha256": "6dd745965d15a38fc7c61398fb37238471ede1aa0a58ebe22eb734a136d97ecc"
+    },
+    {
+      "path": "docs/mcr/evidence/paradise-city-spatial-model/source08-controller-census.json",
+      "mode": "100644",
+      "blob": "d38447b1e7da1bcbc2504ed76806c82ab7e1a9a8",
+      "bytes": 418,
+      "sha256": "5f99eedd1e9283c5cbd6ef7ea267bd5a3643337558f605c72741411f0901c29c"
+    },
+    {
+      "path": "docs/mcr/evidence/paradise-city-spatial-model/source08-controller.jsonl",
+      "mode": "100644",
+      "blob": "d755ec66d48e0456700c7d5eac45547d4d452ded",
+      "bytes": 1213,
+      "sha256": "176cd9d598503a4e3ad15b248a733978de1b27c46fc870ff367c357c2f961a03"
+    },
+    {
+      "path": "docs/mcr/evidence/paradise-city-spatial-model/source08-executed-readset.json",
+      "mode": "100644",
+      "blob": "3ee80429b8988e3984c045470f2df1dc52731a83",
+      "bytes": 10125,
+      "sha256": "205295de0c9b4ef11ce957aeb44b3c847476ed6d924d1ba70b1640b208bc5dd9"
+    },
+    {
+      "path": "docs/mcr/evidence/paradise-city-spatial-model/source08-invocation.json",
+      "mode": "100644",
+      "blob": "b2330178f26ab7dec3be72327721a09e64012524",
+      "bytes": 3318,
+      "sha256": "6010e12c52a55a99d02dfc2ac4ace6b079abe0b6d91c8b4aae7820076ce57e52"
+    },
+    {
+      "path": "docs/mcr/evidence/paradise-city-spatial-model/source08/command-00.log",
+      "mode": "100644",
+      "blob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "docs/mcr/evidence/paradise-city-spatial-model/source08/guardian-census.json",
+      "mode": "100644",
+      "blob": "f7030db5f46a1026a20b2c5f28cce26d07bb3fc8",
+      "bytes": 442,
+      "sha256": "91c01a169d172459f7d167364b364c5eee18b43e68743e6808599bf0d440a8a3"
+    },
+    {
+      "path": "docs/mcr/evidence/paradise-city-spatial-model/source08/guardian.jsonl",
+      "mode": "100644",
+      "blob": "eaa894d1aac729f2c7fce39d6709f5b25fda0eaa",
+      "bytes": 1318,
+      "sha256": "b98fefce688a3c1f63bd042896b1cf79aaac634247f29f2dabb2c7587e3c1ea2"
+    },
+    {
+      "path": "docs/mcr/evidence/paradise-city-spatial-model/source08/release.json",
+      "mode": "100644",
+      "blob": "31b78d65f6d66d33a99ab583ea1655394e9809ac",
+      "bytes": 546,
+      "sha256": "526e1495dcc7ad4e13cc971a7dece5c9846889b7cecdb2766798b31c80b96018"
+    },
+    {
+      "path": "docs/mcr/evidence/paradise-city-spatial-model/source09-controller.jsonl",
+      "mode": "100644",
+      "blob": "808a6fdb7123dd92c06d71e5de2cfd8571df31d7",
+      "bytes": 1536,
+      "sha256": "cc257df6f48a0e58719e722f34a316ec37c009836b0bca2dc4ab2ee65e8cc871"
+    },
+    {
+      "path": "docs/mcr/evidence/paradise-city-spatial-model/source09-executed-readset.json",
+      "mode": "100644",
+      "blob": "811da4c604820737b9a438d61fa3daf788e0a58c",
+      "bytes": 10100,
+      "sha256": "36f10344dfb81716abef2c941ed4e0fe689bb6a205995a4bb0aa730a73296794"
+    },
+    {
+      "path": "docs/mcr/evidence/paradise-city-spatial-model/source09-invocation.json",
+      "mode": "100644",
+      "blob": "42bb087261c2f9fa022b37f494e012bb92cf354e",
+      "bytes": 3268,
+      "sha256": "e057e0a0beb1b0d468d9cfaefc540919936095d453f56ffcb38c668387dc2bfb"
+    },
+    {
+      "path": "docs/mcr/evidence/paradise-city-spatial-model/source10-controller-census.json",
+      "mode": "100644",
+      "blob": "56a4b6dc9fa4b0b362ac85a5b5d64de318f198d9",
+      "bytes": 392,
+      "sha256": "0a407b244741d0e01afb86893f4be832eaa55f0bcf0ca8c50cb4e87017b94bae"
+    },
+    {
+      "path": "docs/mcr/evidence/paradise-city-spatial-model/source10-controller.jsonl",
+      "mode": "100644",
+      "blob": "2a36dacf79c657b9cfa07b228ad9bce36abd8c0c",
+      "bytes": 1641,
+      "sha256": "690b918ce4c9f91683d6e5f5b33d475f049f4bc5226e9cf74db7f7f11a33ea26"
+    },
+    {
+      "path": "docs/mcr/evidence/paradise-city-spatial-model/source10-executed-readset.json",
+      "mode": "100644",
+      "blob": "8eeda6b8a92f34c677c9fd00496348c307bafa07",
+      "bytes": 10100,
+      "sha256": "e500b40da706b9b6f9580a3f825b0db91cf22ee96a4fa17362f09672ec6fc166"
+    },
+    {
+      "path": "docs/mcr/evidence/paradise-city-spatial-model/source10-invocation.json",
+      "mode": "100644",
+      "blob": "b1bf58cb22be16e9342a437dd2408f1e6ba04105",
+      "bytes": 3257,
+      "sha256": "c8ac0a8584784b88c5e1712c11baf76dfcbf632f15e7ad734a23043c59aed209"
+    },
+    {
+      "path": "docs/mcr/evidence/paradise-city-spatial-model/source10/command-00.log",
+      "mode": "100644",
+      "blob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "docs/mcr/evidence/paradise-city-spatial-model/source10/command-01.log",
+      "mode": "100644",
+      "blob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "docs/mcr/evidence/paradise-city-spatial-model/source10/guardian-census.json",
+      "mode": "100644",
+      "blob": "770e6dd42ecee0384c009c575b4dbce1853a1c02",
+      "bytes": 413,
+      "sha256": "467f96947d1072480609b03dffefe06af6d9dd09ed6b1187058ecbba36a630b8"
+    },
+    {
+      "path": "docs/mcr/evidence/paradise-city-spatial-model/source10/guardian.jsonl",
+      "mode": "100644",
+      "blob": "4ed0d3e5ef90b0f3c9be56e8648e5a6e4523119f",
+      "bytes": 2772,
+      "sha256": "666e4b1c26227ff606958f84eb9d54388ec4c3e527aa8b7d49a3239cb71c4a02"
+    },
+    {
+      "path": "docs/mcr/evidence/paradise-city-spatial-model/source10/release.json",
+      "mode": "100644",
+      "blob": "adca7a675527bbad10cdbb2e778d4f08b23d7b47",
+      "bytes": 528,
+      "sha256": "a3020e5de448d4d9f1bf12454249dcdd789106e91b71c732fd3c12bee7057cac"
+    },
+    {
+      "path": "docs/mcr/frontend/paradise-city-spatial-model.md",
+      "mode": "100644",
+      "blob": "ce1fa17ec833dd4cf5b11a5e0207562bd70eba61",
+      "bytes": 10368,
+      "sha256": "0e3f96b83a4e1aa4579ef872d647bce850617512a6c8d42e1ac482359e2dec96"
+    },
+    {
+      "path": "frontend/src/features/paradise-city-map/__tests__/spatial/controller.py",
+      "mode": "100644",
+      "blob": "0ea4d205af3709d8f802889c9caa9d58d389a962",
+      "bytes": 9791,
+      "sha256": "dc4097a07a9469e31e7c297bd7a2f48298edd852da940acbb52ec1651f3e6da7"
+    },
+    {
+      "path": "frontend/src/features/paradise-city-map/__tests__/spatial/fixture.ts",
+      "mode": "100644",
+      "blob": "f541fefb1e3e6ed65b39b359a2c0a138adf3290e",
+      "bytes": 2111,
+      "sha256": "65d944456240ef15c029836162c511629ce9a1b0ff4f668bb421ce94f55efbb1"
+    },
+    {
+      "path": "frontend/src/features/paradise-city-map/__tests__/spatial/guardian.py",
+      "mode": "100644",
+      "blob": "588c6fd2b7e9291b8b3902fd41f0a0e167a2c569",
+      "bytes": 13087,
+      "sha256": "366eda5883f052a17872f5791f6654123f00e7c3b21f326492b946374e5f2fb6"
+    },
+    {
+      "path": "frontend/src/features/paradise-city-map/__tests__/spatial/image-resource.test.ts",
+      "mode": "100644",
+      "blob": "bd86416e383fa75d607ccb758307f079d658310e",
+      "bytes": 8027,
+      "sha256": "fb65a4930377500e1a57e7085a33d405b54e3d9beb4f2c0dd63bfa2a97792fba"
+    },
+    {
+      "path": "frontend/src/features/paradise-city-map/__tests__/spatial/membership.py",
+      "mode": "100644",
+      "blob": "2a3e3123ccc116fb72c9f86c45b5d94a13059344",
+      "bytes": 12778,
+      "sha256": "9861e59b6814102bf948efdbec991d563900154528980a0f8150bfd866f18be0"
+    },
+    {
+      "path": "frontend/src/features/paradise-city-map/__tests__/spatial/membership_test.py",
+      "mode": "100644",
+      "blob": "e6cd33bf1e871c543ab422607291b8c4d5c58bfb",
+      "bytes": 9243,
+      "sha256": "a3b625293ae1ff9350944f80618a1e7e8089249ae833fce294ea0d5f10984b5e"
+    },
+    {
+      "path": "frontend/src/features/paradise-city-map/__tests__/spatial/model.test.ts",
+      "mode": "100644",
+      "blob": "cf75019508d1784e035232a7045213477b685b59",
+      "bytes": 4367,
+      "sha256": "905f8a9d37483a4fa3fa6fee4ca3264331c3975930980ebe135470ad735d1738"
+    },
+    {
+      "path": "frontend/src/features/paradise-city-map/__tests__/spatial/production-registration.test.ts",
+      "mode": "100644",
+      "blob": "ab6033405b7e0eaf69475c7b689b7ca26a368b5d",
+      "bytes": 4538,
+      "sha256": "810d5c1f5db0764582ec520b0a99e4b6ba173428731556c9b26c63dfe2394c52"
+    },
+    {
+      "path": "frontend/src/features/paradise-city-map/__tests__/spatial/tsconfig.validation.json",
+      "mode": "100644",
+      "blob": "50535f97dba5e08882af010b0a7c66b1a0c80bee",
+      "bytes": 220,
+      "sha256": "4711392dd0d791f896f69cebf005aa54317e5ed826d828c886cea6af60527705"
+    },
+    {
+      "path": "frontend/src/features/paradise-city-map/__tests__/spatial/viewport.test.ts",
+      "mode": "100644",
+      "blob": "63b2f65ee1f683e530495d6a808455d0c050d569",
+      "bytes": 2948,
+      "sha256": "6aab2362f20ce92e9ed88a63ae24d26479d918b478efae9f2ccb3bd0079e0098"
+    },
+    {
+      "path": "frontend/src/features/paradise-city-map/__tests__/spatial/vitest.config.ts",
+      "mode": "100644",
+      "blob": "e15dfc0eb480692be38149f0315ea2be3bd96549",
+      "bytes": 308,
+      "sha256": "a98c45c64173de935f15f409e8db48c6996ec39520732982968bb64f40b5cde5"
+    },
+    {
+      "path": "frontend/src/features/paradise-city-map/spatial/contract.ts",
+      "mode": "100644",
+      "blob": "3edd315925b5b2d476fd4f15cc08d282e73df9ce",
+      "bytes": 7289,
+      "sha256": "b75f7cf748949a1a858626fe098f3d1b0dd22e65eeea31d551b37fa309745a42"
+    },
+    {
+      "path": "frontend/src/features/paradise-city-map/spatial/image-resource.ts",
+      "mode": "100644",
+      "blob": "9691d5d63c86425c5af3c970ff71e9c3e825239b",
+      "bytes": 7478,
+      "sha256": "6d5e0f7c607d8ae17f03dd3030aa52e7c57d2f0ff1377d9384c6bed2554aba18"
+    },
+    {
+      "path": "frontend/src/features/paradise-city-map/spatial/model.ts",
+      "mode": "100644",
+      "blob": "818b4eb003c52b119dd6dde7b246e5ccf6de0058",
+      "bytes": 2617,
+      "sha256": "370023d8a25d135fce56969c5b5e2e8a20bfdd17e92eb0ab24da04b8aae219bd"
+    },
+    {
+      "path": "frontend/src/features/paradise-city-map/spatial/registration.ts",
+      "mode": "100644",
+      "blob": "c7cc25b1348cd9051f2b0f1b3eb072f1bed3660c",
+      "bytes": 3618,
+      "sha256": "75c57f43a81ecaeab1cd9b0dad86329744516285501137fa5d4abb8ff25fe314"
+    },
+    {
+      "path": "frontend/src/features/paradise-city-map/spatial/viewport.ts",
+      "mode": "100644",
+      "blob": "a58ddef0ee1b117403b1fbf2455d9c21aeaca426",
+      "bytes": 5068,
+      "sha256": "19489edc14c739050c3f4c6a8b32d76156f059f7620eeaa155148ff4a5a193f9"
+    }
+  ],
+  "entryCount": 95,
+  "selfPath": "docs/mcr/evidence/paradise-city-spatial-model/publication-postimages.json",
+  "selfExcludedToAvoidCircularHash": true,
+  "publishingOwner": "412e",
+  "integration": "Exact owned postimages only, master-only parent; do not merge private branch history. No existing root/ports/routes/generated/manifest/lock/ART changes.",
+  "canonicalContractPrecondition": {
+    "path": "frontend/src/features/paradise-city-map/spatial/contract.ts",
+    "canonical": "43fa937622c772f717172f0696c9d0bdf3b9aaff",
+    "mode": "100644",
+    "blob": "74739d0e3e79f1586bb7154254734c0846d40898",
+    "sha256": "bbf13c1623c2bf06570705287dd2e670bf5a665739d39a586fe1cc93fff77fec",
+    "replacement": "Only equivalent strict character-code predicate; ABI/equality unchanged; currenttypes+lintPASS"
+  },
+  "qualifiedProducer": {
+    "source": "46b4d8670d31365a88b9006250befdcf2832135e",
+    "canonical": "fcd0780537eb9f724a1f130523f02656e1be9ee6",
+    "scope": "Existing exact published image/manifest/provenance dependency, not included in this handoff"
+  },
+  "validation": {
+    "currentSource": "e4c4679b2bd0bda6c6434c5a67421918350d5b9d",
+    "currentReadsetSHA256": "e500b40da706b9b6f9580a3f825b0db91cf22ee96a4fa17362f09672ec6fc166",
+    "source10": "Current scoped warning-free lint0 and full strict nonincrementalfrontendtypes/privateactualzod1536MiBNodeoldspace0; actualFULL02:23:58.881911Z/all0",
+    "retained": "SOURCE03 model/viewport/loader31PASS; SOURCE04 resource19+changedloader10PASS; SOURCE05newlabels4+qualifiedproducer3PASS,17unchangedskipped. No single40case currentround claim.",
+    "failedHistory": "AllSOURCE01-09overallFAIL retained; ARTall5overallFAIL remainFAIL; exactboundedassetcriteriaqualifiedindependently.",
+    "gitDiffCheck": {
+      "exitCode": 2,
+      "allowedExactOutput": [
+        "docs/mcr/evidence/paradise-city-spatial-model/source02/command-01.log:9: new blank line at EOF.",
+        "docs/mcr/evidence/paradise-city-spatial-model/source03/command-01.log:9: new blank line at EOF.",
+        "docs/mcr/evidence/paradise-city-spatial-model/source04/command-01.log:9: new blank line at EOF.",
+        "docs/mcr/evidence/paradise-city-spatial-model/source05/command-00.log:9: new blank line at EOF."
+      ],
+      "allOtherPathsClean": true
+    }
+  },
+  "remaining": [
+    "Canonical publication +fresh ownerremote postimage/ancestryverification",
+    "UI40fde actualApp/native/reference comparisons/integrationfixes; Root mount/provider/wire composition",
+    "No defaultproductionresolution/combinedmasterruntime/native/JPEGdecoder/physical/GPS/multiuser/wholeVENUacceptance"
+  ]
+}

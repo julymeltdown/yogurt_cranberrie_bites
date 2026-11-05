@@ -1,0 +1,10 @@
+{
+  "extends": "../../../../../tsconfig.json",
+  "compilerOptions": {
+    "paths": {
+      "zod": [
+        "/Users/lhs/Desktop/mcr/frontend/node_modules/.pnpm/zod@4.4.3/node_modules/zod/index.d.cts"
+      ]
+    }
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "type": "FULL",
+  "lease": "PARADISECITY-SPATIAL-SOURCE03-0145",
+  "mode": "source",
+  "at": "2026-11-05T01:51:42.242826+00:00",
+  "exitCode": 1,
+  "failure": "RuntimeError('Command failed; immutable attempt retained, offer closes after cleanup')",
+  "peak": {
+    "processes": 3,
+    "rssBytes": 1981399040,
+    "newBytes": 78680064,
+    "tmpBytes": 24576,
+    "wholeBytes": 5560995840
+  },
+  "minimumFreeBytes": 23332147200,
+  "finalFreeBytes": 23334948864,
+  "seenPids": [
+    63233,
+    63349,
+    63394
+  ],
+  "livePids": [],
+  "ownedLinkAbsent": true,
+  "privateTmpAbsent": true,
+  "ownedPortClosed": true,
+  "resources": 0
+}

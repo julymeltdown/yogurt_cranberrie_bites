@@ -1,0 +1,47 @@
+{
+  "ownerThreadId": "01a1a26e-1de2-7b41-a294-c9a79cfded9b",
+  "offerId": "PI01-FOCUSED-NATIVE10-0118",
+  "state": "FULL",
+  "acceptedAtEpoch": 1793841555.855031,
+  "workDeadlineEpoch": 1793841855.855031,
+  "fullDeadlineEpoch": 1793841915.855031,
+  "kind": "browser",
+  "processCap": 24,
+  "rssCapBytes": 3758096384,
+  "remainingNewUpperBytes": 0,
+  "controller": {
+    "pid": 88733,
+    "birth": "Thu Nov 5 10:19:15 2026",
+    "executable": "/Library/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python",
+    "script": "/Users/lhs/Desktop/mcr-worktrees/fe-runtime-preferences/frontend/src/app/__tests__/parade-ink-foundation/controller.py",
+    "cwd": "/Users/lhs/Desktop/mcr-worktrees/fe-runtime-preferences",
+    "outputRoot": "/Users/lhs/Desktop/mcr-worktrees/fe-runtime-preferences/docs/mcr/evidence/parade-ink-foundation/native10"
+  },
+  "guardControllers": [
+    {
+      "pid": 88987,
+      "birth": "Thu Nov 5 10:19:18 2026",
+      "executable": "/Library/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python",
+      "script": "/Users/lhs/Desktop/mcr-worktrees/fe-runtime-preferences/frontend/src/app/__tests__/parade-ink-foundation/guardian.py",
+      "cwd": "/Users/lhs/Desktop/mcr-worktrees/fe-runtime-preferences",
+      "outputRoot": "/Users/lhs/Desktop/mcr-worktrees/fe-runtime-preferences/docs/mcr/evidence/parade-ink-foundation/native10"
+    }
+  ],
+  "receiptPaths": {
+    "accept": "/Users/lhs/Desktop/mcr-worktrees/fe-runtime-preferences/docs/mcr/evidence/parade-ink-foundation/native10-controller.jsonl",
+    "full": "/Users/lhs/Desktop/mcr-worktrees/fe-runtime-preferences/docs/mcr/evidence/parade-ink-foundation/native10-controller.jsonl",
+    "primaryFull": "/Users/lhs/Desktop/mcr-worktrees/fe-runtime-preferences/docs/mcr/evidence/parade-ink-foundation/native10/release.json"
+  },
+  "publishedAtEpoch": 1793841595.117781,
+  "actualFullEpoch": 1793841595.1177769,
+  "resources": 0,
+  "ordinaryObservation": {
+    "actualpid": 6018,
+    "birth": "Thu Nov  5 10:21:38 2026",
+    "cwd": "/Users/lhs/Desktop/mcr-worktrees/fe-runtime-preferences",
+    "role": "ordinary PI01 final documentation/evidence/scoped Git",
+    "observedAt": 1793841698.3748648,
+    "commandDigest": "45a507115cdd4055c1853b371374130eec24f99790b4958dc999498b2879c2d5",
+    "booking": "PI01-COMPLETION-DOC4-0120 4MiB through01:45Z; included sharedNEW200MiB"
+  }
+}

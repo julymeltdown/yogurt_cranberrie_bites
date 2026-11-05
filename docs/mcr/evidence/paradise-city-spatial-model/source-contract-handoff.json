@@ -1,0 +1,39 @@
+{
+  "disposition": "QUALIFIED_SOURCE_CONTRACT_INTERFACE_ONLY",
+  "path": "frontend/src/features/paradise-city-map/spatial/contract.ts",
+  "source": "998db81eae683142f0417abb6648ed6b86212b6f",
+  "sourceBase": "3a125d952cc55afbfac028afcafd7748dffaa056",
+  "mode": "100644",
+  "blob": "74739d0e3e79f1586bb7154254734c0846d40898",
+  "bytes": 7231,
+  "sha256": "bbf13c1623c2bf06570705287dd2e670bf5a665739d39a586fe1cc93fff77fec",
+  "reason": "Exact runtime sameSiteplanIdentity and type dependency used by qualified community3cfb7cce and Map647c18. Self-contained, no imports or producer dependencies.",
+  "retainedEvidence": [
+    {
+      "round": "SOURCE03",
+      "scope": "31 model/viewport/loader cases pass against exact contract; not 31 contract-only tests"
+    },
+    {
+      "round": "SOURCE04",
+      "scope": "Full ordinary nonincremental frontend types PASS with actual retainedzod/private mapping against exact contract",
+      "log": "source04/command-02.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  ],
+  "knownLimitation": {
+    "round": "SOURCE04",
+    "scope": "Scopedlint exit1 solely intentional ASCIIcontrol-regex warning at contract.ts67",
+    "log": "source04/command-03.log",
+    "sha256": "98d9f41fb049d0ad169c93843a85cb174c04698743bbcd26cdbf0b5f77bbd058"
+  },
+  "publication": {
+    "owner": "412e",
+    "scope": "ONLY this exact old qualified postimage; master-only commit, no private ancestry/other paths",
+    "status": "HANDOFF_SENT_CANONICAL_RECEIPT_PENDING"
+  },
+  "replacement": {
+    "sha256": "b75f7cf748949a1a858626fe098f3d1b0dd22e65eeea31d551b37fa309745a42",
+    "scope": "Equivalent character-code predicate replaces regex; no ABI/runtime equality change. Four new labels cases PASS05, current full types/lint pending. Separate later explicit handoff."
+  },
+  "acceptance": "No whole spatial/native/browser/defaultdependency/wholeVENU/physical/GPS acceptance; all failed resource histories preserved."
+}

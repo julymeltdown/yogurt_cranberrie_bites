@@ -1,0 +1,22 @@
+{
+  "sourceCommit": "7f9d1095c492867aac70c91c3a9a1b3ab161c687",
+  "sourcePrefix": "frontend/src/app/__tests__/parade-ink-foundation",
+  "destinationPrefix": "frontend/src/features/paradise-city-map/__tests__/spatial",
+  "files": [
+    "controller.py",
+    "guardian.py",
+    "membership.py",
+    "membership_test.py"
+  ],
+  "sourceQualification": "Native10 corrected UI scope all7commands PASS; not universal/backend35GiB claim",
+  "adaptations": [
+    "new exact own roots/evidence/source4commands",
+    "retained priorWHOLE5560971264",
+    "required retained root existence",
+    "ordinary-only observation schema without invented state/caps",
+    "nonempty offer match preserves legacy claims",
+    "additional ordinary-only legacy reservation regression"
+  ],
+  "status": "ADAPTED_SOURCE_NOT_RUN",
+  "noSharedSamplerOrAllocator": true
+}

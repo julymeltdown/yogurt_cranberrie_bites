@@ -64,7 +64,7 @@ export function decodeSiteplan(value: unknown): Siteplan {
   requireSiteplan(sourceRefs.some(source => source.sha256 === image.sha256 && source.bytes === image.bytes))
   const landmarks = Object.freeze(array(row.landmarks, 128).map(value => {
     const raw = record(value, ['id', 'displayName', 'anchor', 'hitRegion', 'sourceRefs', 'review'])
-    requireSiteplan(typeof raw.displayName === 'string' && raw.displayName.length >= 1 && raw.displayName.length <= 120 && raw.displayName.trim() === raw.displayName && !/[\u0000-\u001f\u007f]/.test(raw.displayName) && raw.review === 'ILLUSTRATED_UNCALIBRATED')
+    requireSiteplan(typeof raw.displayName === 'string' && raw.displayName.length >= 1 && raw.displayName.length <= 120 && raw.displayName.trim() === raw.displayName && ![...raw.displayName].some(character => character.charCodeAt(0) < 32 || character.charCodeAt(0) === 127) && raw.review === 'ILLUSTRATED_UNCALIBRATED')
     const a = record(raw.anchor, ['x', 'y']), r = record(raw.hitRegion, ['x', 'y', 'width', 'height'])
     const anchor = imagePoint(integer(a.x, 0, image.width - 1), integer(a.y, 0, image.height - 1))
     const hitRegion = Object.freeze({ x: integer(r.x, 0, image.width - 1), y: integer(r.y, 0, image.height - 1), width: integer(r.width, 1, image.width), height: integer(r.height, 1, image.height) })

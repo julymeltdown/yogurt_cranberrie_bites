@@ -1,0 +1,16 @@
+{
+  "observedAtEpoch": 1793845437.5493948,
+  "psSnapshotSHA256": "e9aebffa4abc241b7d1556193876983f97fbc022d81d1ccff528c19a8171f24d",
+  "owners": [
+    "01a1a26e-1de2-7b41-a294-c9a79cfded9b"
+  ],
+  "ordinaryActualPids": [],
+  "reservedProcesses": 8,
+  "reservedRSSBytes": 2147483648,
+  "actualPids": [
+    7468,
+    8400
+  ],
+  "actualRSSBytes": 42139648,
+  "otherNewUpperBytes": 2684354560
+}

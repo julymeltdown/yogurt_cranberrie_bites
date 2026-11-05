@@ -1,0 +1,59 @@
+{
+  "source": "a0125ffc8e2e5e54c5a695980a5b707d0ea651c5",
+  "bootstrap": {
+    "ownerThreadId": "01a1a26e-1de2-7b41-a294-c9a79cfded9b",
+    "offerId": "PARADISECITY-SPATIAL-SOURCE04-0202",
+    "state": "ACCEPTED",
+    "acceptedAtEpoch": 1793843860.7123399,
+    "workDeadlineEpoch": 1793844040.7123399,
+    "fullDeadlineEpoch": 1793844100.7123399,
+    "kind": "source",
+    "processCap": 8,
+    "rssCapBytes": 2147483648,
+    "remainingNewUpperBytes": 89128960,
+    "sharedNewCapBytes": 134217728,
+    "sharedNewCarryBytes": 45088768,
+    "controller": {
+      "pid": 91118,
+      "birth": "Thu Nov 5 10:57:40 2026",
+      "executable": "/Library/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python",
+      "script": "-",
+      "cwd": "/Users/lhs/Desktop/mcr-worktrees/fe-runtime-preferences",
+      "outputRoot": "/Users/lhs/Desktop/mcr-worktrees/fe-runtime-preferences/docs/mcr/evidence/paradise-city-spatial-model/source04"
+    },
+    "guardControllers": [],
+    "bootstrapStage": "actual inline Python stdin; same-PID exec follows",
+    "receiptPaths": {
+      "accept": "/Users/lhs/Desktop/mcr-worktrees/fe-runtime-preferences/docs/mcr/evidence/paradise-city-spatial-model/source04-controller.jsonl",
+      "full": "/Users/lhs/Desktop/mcr-worktrees/fe-runtime-preferences/docs/mcr/evidence/paradise-city-spatial-model/source04-controller.jsonl",
+      "primaryFull": "/Users/lhs/Desktop/mcr-worktrees/fe-runtime-preferences/docs/mcr/evidence/paradise-city-spatial-model/source04/release.json"
+    },
+    "publishedAtEpoch": 1793843860.7689412
+  },
+  "executable": "/Library/Frameworks/Python.framework/Versions/3.14/bin/python3",
+  "argv": [
+    "/Library/Frameworks/Python.framework/Versions/3.14/bin/python3",
+    "-B",
+    "/Users/lhs/Desktop/mcr-worktrees/fe-runtime-preferences/frontend/src/features/paradise-city-map/__tests__/spatial/controller.py"
+  ],
+  "cwd": "/Users/lhs/Desktop/mcr-worktrees/fe-runtime-preferences",
+  "environment": {
+    "MCR_PI_LEASE": "PARADISECITY-SPATIAL-SOURCE04-0202",
+    "MCR_PI_MODE": "source",
+    "MCR_PI_PHASE": "remainder",
+    "MCR_PI_OUTPUT": "/Users/lhs/Desktop/mcr-worktrees/fe-runtime-preferences/docs/mcr/evidence/paradise-city-spatial-model/source04",
+    "MCR_PI_TMP": "/private/tmp/mcr-paradise-spatial-source04",
+    "MCR_PI_ACCEPT_EPOCH": "1793843860.7123399",
+    "MCR_PI_WORK_DEADLINE": "2026-11-05T02:00:40.712340+00:00",
+    "MCR_PI_DEADLINE": "2026-11-05T02:01:40.712340+00:00",
+    "MCR_PI_OTHER_NEW": "5368709120",
+    "MCR_PI_NEW_CARRY": "45088768",
+    "MCR_PI_WHOLE_CAP": "8589934592",
+    "MCR_PI_START_FLOOR": "12884901888",
+    "MCR_PI_CONTROLLER_SHA": "dc4097a07a9469e31e7c297bd7a2f48298edd852da940acbb52ec1651f3e6da7",
+    "MCR_PI_GUARDIAN_SHA": "ec4f8186fe6a08a0015ce91089a2fddfafb201d44371f29bc717d936256bdc39",
+    "MCR_PI_READSET_SHA": "1d43269aba4d825994d16ef40642f835493469c1cbc258e5cd885a7d2dffde89"
+  },
+  "carryBasis": "43MiB retains priorprep/allrounds positive growth and source03 peakTMP1368064. Fixed34MiBGit reserve once. Same cumulative128MiB source01-05; no deletion credit; retained WHOLE5562339328+higher.",
+  "qualification": "Actual source invocation pending; changed19resource +10loader cases and remaining fullfrontend types/privateactualzod +scopedlint. SOURCE03 unchangedmodel/viewportpasses retained; productionregNULL/native/artnotclaimed."
+}

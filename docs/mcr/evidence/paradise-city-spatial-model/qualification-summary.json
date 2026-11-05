@@ -1,0 +1,535 @@
+{
+  "task": "VENU-FE-SPATIAL-01",
+  "status": "QUALIFIED_SOURCE_IMPLEMENTATION_ONLY_PUBLICATION_PENDING_NATIVE_OPEN",
+  "sourceBase": "3a125d952cc55afbfac028afcafd7748dffaa056",
+  "rounds": [
+    {
+      "offerId": "PARADISECITY-SPATIAL-SOURCE01-0145",
+      "source": "9b19d8af3c96c9566e5cffe304aed1f7e61a67a7",
+      "acceptedAtEpoch": 1793843056.5167758,
+      "actualFull": "2026-11-05T01:44:18.053233+00:00",
+      "exitCode": 1,
+      "failure": "AssertionError('global workflow reservations')",
+      "resources": 0,
+      "outerPeak": {
+        "processes": 0,
+        "rssBytes": 0,
+        "newBytes": 0,
+        "tmpBytes": 0,
+        "wholeBytes": 5560971264
+      },
+      "guardianPeak": null,
+      "retainedPeak": {
+        "processes": 0,
+        "rssBytes": 0,
+        "newBytes": 0,
+        "tmpBytes": 0,
+        "wholeBytes": 5560971264
+      },
+      "artifacts": [
+        {
+          "path": "docs/mcr/evidence/paradise-city-spatial-model/source01-controller.jsonl",
+          "bytes": 842,
+          "sha256": "ed7cceac87297d2c85e4d20af2df27bec8b5820313161f66003e3811ed521362"
+        },
+        {
+          "path": "docs/mcr/evidence/paradise-city-spatial-model/source01-invocation.json",
+          "bytes": 3239,
+          "sha256": "b5fb8a83b2073859f514798d76850dfbf89050f521ace4f0e8f039b6480c9ea8"
+        },
+        {
+          "path": "docs/mcr/evidence/paradise-city-spatial-model/source01-executed-readset.json",
+          "bytes": 5660,
+          "sha256": "8bbff32e268008f374542596cd94a4fa3917507433d72cbcc737f0d808227733"
+        }
+      ]
+    },
+    {
+      "offerId": "PARADISECITY-SPATIAL-SOURCE02-0145",
+      "source": "a03b631a749a337a7b2a37f171cd3153f7e71a1c",
+      "acceptedAtEpoch": 1793843394.7578518,
+      "actualFull": "2026-11-05T01:50:02.533055+00:00",
+      "exitCode": 1,
+      "failure": "AssertionError()",
+      "resources": 0,
+      "outerPeak": {
+        "processes": 5,
+        "rssBytes": 226918400,
+        "newBytes": 77615104,
+        "tmpBytes": 0,
+        "wholeBytes": 5560971264
+      },
+      "guardianPeak": null,
+      "retainedPeak": {
+        "processes": 5,
+        "rssBytes": 226918400,
+        "newBytes": 77615104,
+        "tmpBytes": 0,
+        "wholeBytes": 5560971264
+      },
+      "artifacts": [
+        {
+          "path": "docs/mcr/evidence/paradise-city-spatial-model/source02-controller.jsonl",
+          "bytes": 1225,
+          "sha256": "247e3d47eaa92489249942729d9839adeb21719282883c8ada3ea422dcd21c43"
+        },
+        {
+          "path": "docs/mcr/evidence/paradise-city-spatial-model/source02-invocation.json",
+          "bytes": 3252,
+          "sha256": "dd30d0a8d1aa2de22451306d1a7645e3a9e29bd9b80572f77e9b01a7a8f2fb96"
+        },
+        {
+          "path": "docs/mcr/evidence/paradise-city-spatial-model/source02-executed-readset.json",
+          "bytes": 5660,
+          "sha256": "5d667d40239579304f3842b4607e0b8ff95ba71a1e624f9eefa117f32c670e74"
+        }
+      ]
+    },
+    {
+      "offerId": "PARADISECITY-SPATIAL-SOURCE03-0145",
+      "source": "19d47a8c51158bcda49d3ff773b4ffb3b3896a48",
+      "acceptedAtEpoch": 1793843483.391905,
+      "actualFull": "2026-11-05T01:51:44.497465+00:00",
+      "exitCode": 1,
+      "failure": null,
+      "resources": 0,
+      "outerPeak": {
+        "processes": 5,
+        "rssBytes": 2025095168,
+        "newBytes": 80039936,
+        "tmpBytes": 1368064,
+        "wholeBytes": 5562339328
+      },
+      "guardianPeak": {
+        "processes": 3,
+        "rssBytes": 1981399040,
+        "newBytes": 78680064,
+        "tmpBytes": 24576,
+        "wholeBytes": 5560995840
+      },
+      "retainedPeak": {
+        "processes": 5,
+        "rssBytes": 2025095168,
+        "newBytes": 80039936,
+        "tmpBytes": 1368064,
+        "wholeBytes": 5562339328
+      },
+      "artifacts": [
+        {
+          "path": "docs/mcr/evidence/paradise-city-spatial-model/source03-controller.jsonl",
+          "bytes": 1234,
+          "sha256": "d2b7a9fc52b92fb083930d54e00e186fafb0dbeef93e60ac7ff879a8741889cc"
+        },
+        {
+          "path": "docs/mcr/evidence/paradise-city-spatial-model/source03-invocation.json",
+          "bytes": 3243,
+          "sha256": "1d05fc782f04e7a75aedcc9453fbb9947c922c6149b263596fb7bc6e4ad9922d"
+        },
+        {
+          "path": "docs/mcr/evidence/paradise-city-spatial-model/source03-executed-readset.json",
+          "bytes": 5660,
+          "sha256": "99a5eb1fabddfcba3c5dad35fbd386e5ab67b3038763eec09c98cdadf6a19f5d"
+        },
+        {
+          "path": "docs/mcr/evidence/paradise-city-spatial-model/source03/release.json",
+          "bytes": 636,
+          "sha256": "b80f2509064033379b6340c9c5511f82306c7dfc545d9308c43f67b9916b6964"
+        }
+      ]
+    },
+    {
+      "offerId": "PARADISECITY-SPATIAL-SOURCE04-0202",
+      "source": "a0125ffc8e2e5e54c5a695980a5b707d0ea651c5",
+      "acceptedAtEpoch": 1793843860.7123399,
+      "actualFull": "2026-11-05T01:58:10.347839+00:00",
+      "exitCode": 1,
+      "failure": null,
+      "resources": 0,
+      "outerPeak": {
+        "processes": 6,
+        "rssBytes": 2109587456,
+        "newBytes": 82137088,
+        "tmpBytes": 1368064,
+        "wholeBytes": 5563707392
+      },
+      "guardianPeak": {
+        "processes": 3,
+        "rssBytes": 2038235136,
+        "newBytes": 82128896,
+        "tmpBytes": 1368064,
+        "wholeBytes": 5563707392
+      },
+      "retainedPeak": {
+        "processes": 6,
+        "rssBytes": 2109587456,
+        "newBytes": 82137088,
+        "tmpBytes": 1368064,
+        "wholeBytes": 5563707392
+      },
+      "artifacts": [
+        {
+          "path": "docs/mcr/evidence/paradise-city-spatial-model/source04-controller.jsonl",
+          "bytes": 1349,
+          "sha256": "142caf3630420deb5e043502d02af214546d1702b3ff72fd4b0e298bf0519448"
+        },
+        {
+          "path": "docs/mcr/evidence/paradise-city-spatial-model/source04-invocation.json",
+          "bytes": 3376,
+          "sha256": "c85b079d1d8ec39417021e3560a1d5c01ef8ebec2c4a3a64ad5a20f376ffb369"
+        },
+        {
+          "path": "docs/mcr/evidence/paradise-city-spatial-model/source04-executed-readset.json",
+          "bytes": 7339,
+          "sha256": "1d43269aba4d825994d16ef40642f835493469c1cbc258e5cd885a7d2dffde89"
+        },
+        {
+          "path": "docs/mcr/evidence/paradise-city-spatial-model/source04/release.json",
+          "bytes": 649,
+          "sha256": "d433ee511f4a8ae2dd4cb75d0d1937a4cb74662999ba08c7300a3bdfb01d9bed"
+        }
+      ]
+    },
+    {
+      "offerId": "PARADISECITY-SPATIAL-SOURCE05-0202",
+      "source": "5ae3d3e3a781f9522e44030007cf1193a3100da6",
+      "acceptedAtEpoch": 1793844099.457084,
+      "actualFull": "2026-11-05T02:01:51.780084+00:00",
+      "exitCode": 1,
+      "failure": "AssertionError('unsupported receipt state: 01a1a204-c583-7670-965a-4891b8b1289e.json:BOOTSTRAP')",
+      "resources": 0,
+      "outerPeak": {
+        "processes": 5,
+        "rssBytes": 1348452352,
+        "newBytes": 82972672,
+        "tmpBytes": 114688,
+        "wholeBytes": 5563822080
+      },
+      "guardianPeak": null,
+      "retainedPeak": {
+        "processes": 5,
+        "rssBytes": 1348452352,
+        "newBytes": 82972672,
+        "tmpBytes": 114688,
+        "wholeBytes": 5563822080
+      },
+      "artifacts": [
+        {
+          "path": "docs/mcr/evidence/paradise-city-spatial-model/source05-controller.jsonl",
+          "bytes": 1387,
+          "sha256": "8c224be6ef612fd8c39839320db16b7ca16b8d7d304a0da620e2bac337885389"
+        },
+        {
+          "path": "docs/mcr/evidence/paradise-city-spatial-model/source05-invocation.json",
+          "bytes": 3314,
+          "sha256": "af647fa1361daf7c86c409d9a5fad10a11750a4f886053b66cefcd32e38a51d5"
+        },
+        {
+          "path": "docs/mcr/evidence/paradise-city-spatial-model/source05-executed-readset.json",
+          "bytes": 9737,
+          "sha256": "15deadb4f8945be59f64a1ee01e190d1c92feca57525b9a8482cb7afa8ebaddb"
+        }
+      ]
+    },
+    {
+      "offerId": "PARADISECITY-SPATIAL-SOURCE06-0210",
+      "source": "ec9ff326552e8277f1439ac646fb4748906a9a2a",
+      "acceptedAtEpoch": 1793844312.7341719,
+      "actualFull": "2026-11-05T02:05:24.645490+00:00",
+      "exitCode": 1,
+      "failure": "AssertionError('resource controller identity mismatch: {\"owner\": \"01a1a213-61d6-7a20-a8e7-476649312f8c\", \"pid\": 29772, \"birth\": \"Thu Nov 5 11:05:05 2026\", \"expectedScript\": \"/Users/lhs/Desktop/mcr-worktrees/fe-reference-frame-footer/frontend/src/app/__tests__/parade-ink-private-pages/watchdog.py\", \"observedExecutable\": \"(Python)\", \"observedCommandSHA256\": \"efc7749dfc5f00754e19a7d31af78b4a4bbfd21d1716a3da04d50cccbfe23cb0\", \"commandLength\": 8}')",
+      "resources": 0,
+      "outerPeak": {
+        "processes": 5,
+        "rssBytes": 1631666176,
+        "newBytes": 83902464,
+        "tmpBytes": 0,
+        "wholeBytes": 5563822080
+      },
+      "guardianPeak": null,
+      "retainedPeak": {
+        "processes": 5,
+        "rssBytes": 1631666176,
+        "newBytes": 83902464,
+        "tmpBytes": 0,
+        "wholeBytes": 5563822080
+      },
+      "artifacts": [
+        {
+          "path": "docs/mcr/evidence/paradise-city-spatial-model/source06-controller.jsonl",
+          "bytes": 1799,
+          "sha256": "4f9a21754860368d6377c71e6e3b02a6dc944eb51a8b078640f5e0f218b4839b"
+        },
+        {
+          "path": "docs/mcr/evidence/paradise-city-spatial-model/source06-invocation.json",
+          "bytes": 3303,
+          "sha256": "09a34540b30389d42ab78bd5dbf31ddbb6d4846fe395d88902d90cda5cd166ca"
+        },
+        {
+          "path": "docs/mcr/evidence/paradise-city-spatial-model/source06-executed-readset.json",
+          "bytes": 10125,
+          "sha256": "dfbe7c092fe19b37217698665e0da2b24a31214de75b95b456db047a6062cc7a"
+        }
+      ]
+    },
+    {
+      "offerId": "PARADISECITY-SPATIAL-SOURCE07-0210",
+      "source": "ec9ff326552e8277f1439ac646fb4748906a9a2a",
+      "acceptedAtEpoch": 1793844406.530977,
+      "actualFull": "2026-11-05T02:06:48.222947+00:00",
+      "exitCode": 1,
+      "failure": "AssertionError('unresolved workflow roots: [{\"pid\": 36364, \"parentPid\": 49590, \"birth\": \"Thu Nov 5 11:06:33 2026\", \"executable\": \"/Library/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python\", \"scriptCandidates\": [\"/private/tmp/mcr-be42-compile-04-0233/guardian.py\"], \"commandSHA256\": \"ac129fc66226fab8a5d0046443fcb69c171b58c39fd7054c30c5154f66d1eb19\"}, {\"pid\": 36991, \"parentPid\": 36364, \"birth\": \"Thu Nov 5 11:06:35 2026\", \"executable\": \"/Library/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python\", \"scriptCandidates\": [\"/private/tmp/mcr-be42-compile-04-0233/run.py\"], \"commandSHA256\": \"1169e0ce3908299d564021c282bba2373e41fc369046527fee901216198f9284\"}]')",
+      "resources": 0,
+      "outerPeak": {
+        "processes": 0,
+        "rssBytes": 0,
+        "newBytes": 0,
+        "tmpBytes": 0,
+        "wholeBytes": 5563822080
+      },
+      "guardianPeak": null,
+      "retainedPeak": {
+        "processes": 0,
+        "rssBytes": 0,
+        "newBytes": 0,
+        "tmpBytes": 0,
+        "wholeBytes": 5563822080
+      },
+      "artifacts": [
+        {
+          "path": "docs/mcr/evidence/paradise-city-spatial-model/source07-controller.jsonl",
+          "bytes": 1562,
+          "sha256": "62870a7a28b4ebc151c80031f31d5be4013d50022954da987af3e79959061456"
+        },
+        {
+          "path": "docs/mcr/evidence/paradise-city-spatial-model/source07-invocation.json",
+          "bytes": 3290,
+          "sha256": "6dd745965d15a38fc7c61398fb37238471ede1aa0a58ebe22eb734a136d97ecc"
+        },
+        {
+          "path": "docs/mcr/evidence/paradise-city-spatial-model/source07-executed-readset.json",
+          "bytes": 10125,
+          "sha256": "dfbe7c092fe19b37217698665e0da2b24a31214de75b95b456db047a6062cc7a"
+        }
+      ]
+    },
+    {
+      "offerId": "SPATIAL-SOURCE08-0215",
+      "source": "66dcadc6fc1dcd341a6530afb2592dc95633a0dd",
+      "acceptedAtEpoch": 1793845111.8264792,
+      "actualFull": "2026-11-05T02:18:49.265128+00:00",
+      "exitCode": 1,
+      "failure": null,
+      "resources": 0,
+      "outerPeak": {
+        "processes": 5,
+        "rssBytes": 2049949696,
+        "newBytes": 84955136,
+        "tmpBytes": 0,
+        "wholeBytes": 5563822080
+      },
+      "guardianPeak": {
+        "processes": 3,
+        "rssBytes": 2156707840,
+        "newBytes": 84942848,
+        "tmpBytes": 0,
+        "wholeBytes": 5563822080
+      },
+      "retainedPeak": {
+        "processes": 5,
+        "rssBytes": 2156707840,
+        "newBytes": 84955136,
+        "tmpBytes": 0,
+        "wholeBytes": 5563822080
+      },
+      "artifacts": [
+        {
+          "path": "docs/mcr/evidence/paradise-city-spatial-model/source08-controller.jsonl",
+          "bytes": 1213,
+          "sha256": "176cd9d598503a4e3ad15b248a733978de1b27c46fc870ff367c357c2f961a03"
+        },
+        {
+          "path": "docs/mcr/evidence/paradise-city-spatial-model/source08-invocation.json",
+          "bytes": 3318,
+          "sha256": "6010e12c52a55a99d02dfc2ac4ace6b079abe0b6d91c8b4aae7820076ce57e52"
+        },
+        {
+          "path": "docs/mcr/evidence/paradise-city-spatial-model/source08-executed-readset.json",
+          "bytes": 10125,
+          "sha256": "205295de0c9b4ef11ce957aeb44b3c847476ed6d924d1ba70b1640b208bc5dd9"
+        },
+        {
+          "path": "docs/mcr/evidence/paradise-city-spatial-model/source08/release.json",
+          "bytes": 546,
+          "sha256": "526e1495dcc7ad4e13cc971a7dece5c9846889b7cecdb2766798b31c80b96018"
+        }
+      ]
+    },
+    {
+      "offerId": "SPATIAL-SOURCE09-0221",
+      "source": "ef86cd5231c807f2dd979fe93a00c09d82802acc",
+      "acceptedAtEpoch": 1793845288.271646,
+      "actualFull": "2026-11-05T02:21:29.867104+00:00",
+      "exitCode": 1,
+      "failure": "AssertionError('unresolved workflow roots: [{\"pid\": 98445, \"parentPid\": 49590, \"birth\": \"Thu Nov 5 11:21:20 2026\", \"executable\": \"/Library/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python\", \"scriptCandidates\": [\"/private/tmp/mcr-be42-compile-07-0529/guardian.py\"], \"commandSHA256\": \"4765b510fdf59884b6becce306db20337a606fe9c2ceff066bc3efd067087ff0\"}, {\"pid\": 98545, \"parentPid\": 98445, \"birth\": \"Thu Nov 5 11:21:21 2026\", \"executable\": \"/Library/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python\", \"scriptCandidates\": [\"/private/tmp/mcr-be42-compile-07-0529/run.py\"], \"commandSHA256\": \"1857414d7fa121bb68b08df20dff7eb697ac2c90a07e6f83a80d9f3e493db53f\"}]')",
+      "resources": 0,
+      "outerPeak": {
+        "processes": 0,
+        "rssBytes": 0,
+        "newBytes": 0,
+        "tmpBytes": 0,
+        "wholeBytes": 5563822080
+      },
+      "guardianPeak": null,
+      "retainedPeak": {
+        "processes": 0,
+        "rssBytes": 0,
+        "newBytes": 0,
+        "tmpBytes": 0,
+        "wholeBytes": 5563822080
+      },
+      "artifacts": [
+        {
+          "path": "docs/mcr/evidence/paradise-city-spatial-model/source09-controller.jsonl",
+          "bytes": 1536,
+          "sha256": "cc257df6f48a0e58719e722f34a316ec37c009836b0bca2dc4ab2ee65e8cc871"
+        },
+        {
+          "path": "docs/mcr/evidence/paradise-city-spatial-model/source09-invocation.json",
+          "bytes": 3268,
+          "sha256": "e057e0a0beb1b0d468d9cfaefc540919936095d453f56ffcb38c668387dc2bfb"
+        },
+        {
+          "path": "docs/mcr/evidence/paradise-city-spatial-model/source09-executed-readset.json",
+          "bytes": 10100,
+          "sha256": "36f10344dfb81716abef2c941ed4e0fe689bb6a205995a4bb0aa730a73296794"
+        }
+      ]
+    },
+    {
+      "offerId": "SPATIAL-SOURCE10-0221",
+      "source": "e4c4679b2bd0bda6c6434c5a67421918350d5b9d",
+      "acceptedAtEpoch": 1793845418.244669,
+      "actualFull": "2026-11-05T02:23:58.881911+00:00",
+      "exitCode": 0,
+      "failure": null,
+      "resources": 0,
+      "outerPeak": {
+        "processes": 5,
+        "rssBytes": 2026078208,
+        "newBytes": 87363584,
+        "tmpBytes": 1363968,
+        "wholeBytes": 5565186048
+      },
+      "guardianPeak": {
+        "processes": 3,
+        "rssBytes": 1974894592,
+        "newBytes": 87355392,
+        "tmpBytes": 1363968,
+        "wholeBytes": 5565186048
+      },
+      "retainedPeak": {
+        "processes": 5,
+        "rssBytes": 2026078208,
+        "newBytes": 87363584,
+        "tmpBytes": 1363968,
+        "wholeBytes": 5565186048
+      },
+      "artifacts": [
+        {
+          "path": "docs/mcr/evidence/paradise-city-spatial-model/source10-controller.jsonl",
+          "bytes": 1641,
+          "sha256": "690b918ce4c9f91683d6e5f5b33d475f049f4bc5226e9cf74db7f7f11a33ea26"
+        },
+        {
+          "path": "docs/mcr/evidence/paradise-city-spatial-model/source10-invocation.json",
+          "bytes": 3257,
+          "sha256": "c8ac0a8584784b88c5e1712c11baf76dfcbf632f15e7ad734a23043c59aed209"
+        },
+        {
+          "path": "docs/mcr/evidence/paradise-city-spatial-model/source10-executed-readset.json",
+          "bytes": 10100,
+          "sha256": "e500b40da706b9b6f9580a3f825b0db91cf22ee96a4fa17362f09672ec6fc166"
+        },
+        {
+          "path": "docs/mcr/evidence/paradise-city-spatial-model/source10/release.json",
+          "bytes": 528,
+          "sha256": "a3020e5de448d4d9f1bf12454249dcdd789106e91b71c732fd3c12bee7057cac"
+        }
+      ]
+    }
+  ],
+  "retainedPositives": [
+    {
+      "round": "SOURCE03",
+      "cases": 31,
+      "scope": "Original model/viewport/loader synthetic suite; no native decoder claim"
+    },
+    {
+      "round": "SOURCE04",
+      "cases": 19,
+      "scope": "Resource control regressions"
+    },
+    {
+      "round": "SOURCE04",
+      "cases": 10,
+      "scope": "Changed loader resource/lifetime cases including timerfix"
+    },
+    {
+      "round": "SOURCE04",
+      "scope": "Full ordinary nonincremental frontend types with real retainedzod mapping, before later registration/label change"
+    },
+    {
+      "round": "SOURCE05",
+      "cases": 7,
+      "skipped": 17,
+      "scope": "New displaylabels4 +qualified immutable ARTmanifest/model/tamper3"
+    },
+    {
+      "round": "SOURCE10",
+      "scope": "Current fullordinarystrictnonincremental types withrealretainedzod/privateconfig+1536MiBNodeoldspace and scopedwarningsdeniedlint",
+      "exitCodes": [
+        0,
+        0
+      ]
+    }
+  ],
+  "limitations": [
+    "No single current40case complete-run claim; exact retained subsets and changed cases are distinct.",
+    "SOURCE01-09 overallFAIL remainFAIL; SOURCE10 only two pendingcommands PASS.",
+    "No native browser/JPEGdecoder/defaultproductiondependency/currentcombinedmaster/multiuser/physical/GPS/wholeVENU qualification.",
+    "Custom resource collector has declared matcher/identity/vanishing-file scan limitations; no universalglobalcollector certification."
+  ],
+  "wholeHighWaterBytes": 5565186048,
+  "cumulativeNewCapBytes": 134217728,
+  "conservativeCarryBytes": 50331648,
+  "gitReserveBytes": 35651584,
+  "productionPins": [
+    {
+      "path": "frontend/src/features/paradise-city-map/spatial/contract.ts",
+      "bytes": 7289,
+      "sha256": "b75f7cf748949a1a858626fe098f3d1b0dd22e65eeea31d551b37fa309745a42"
+    },
+    {
+      "path": "frontend/src/features/paradise-city-map/spatial/image-resource.ts",
+      "bytes": 7478,
+      "sha256": "6d5e0f7c607d8ae17f03dd3030aa52e7c57d2f0ff1377d9384c6bed2554aba18"
+    },
+    {
+      "path": "frontend/src/features/paradise-city-map/spatial/model.ts",
+      "bytes": 2617,
+      "sha256": "370023d8a25d135fce56969c5b5e2e8a20bfdd17e92eb0ab24da04b8aae219bd"
+    },
+    {
+      "path": "frontend/src/features/paradise-city-map/spatial/registration.ts",
+      "bytes": 3618,
+      "sha256": "75c57f43a81ecaeab1cd9b0dad86329744516285501137fa5d4abb8ff25fe314"
+    },
+    {
+      "path": "frontend/src/features/paradise-city-map/spatial/viewport.ts",
+      "bytes": 5068,
+      "sha256": "19489edc14c739050c3f4c6a8b32d76156f059f7620eeaa155148ff4a5a193f9"
+    }
+  ],
+  "historicalRSSHighWaterBytes": 2156707840,
+  "newHighWaterBytes": 87363584
+}

@@ -1,0 +1,25 @@
+{
+  "type": "FULL",
+  "lease": "SPATIAL-SOURCE08-0215",
+  "mode": "source",
+  "at": "2026-11-05T02:18:46.681859+00:00",
+  "exitCode": 1,
+  "failure": "AssertionError('process/RSS limit')",
+  "peak": {
+    "processes": 3,
+    "rssBytes": 2156707840,
+    "newBytes": 84942848,
+    "tmpBytes": 0,
+    "wholeBytes": 5563822080
+  },
+  "minimumFreeBytes": 23982862336,
+  "finalFreeBytes": 23983316992,
+  "seenPids": [
+    85450
+  ],
+  "livePids": [],
+  "ownedLinkAbsent": true,
+  "privateTmpAbsent": true,
+  "ownedPortClosed": true,
+  "resources": 0
+}

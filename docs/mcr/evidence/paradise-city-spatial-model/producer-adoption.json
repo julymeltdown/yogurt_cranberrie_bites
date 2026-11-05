@@ -1,0 +1,48 @@
+{
+  "source": "46b4d8670d31365a88b9006250befdcf2832135e",
+  "disposition": "ART responsible-owner QUALIFIED_FOR_SOURCE_ASSET_INTERFACE_DELIVERY; all five overall resource rounds remainFAIL.",
+  "pins": [
+    {
+      "path": "frontend/public/venue/paradise-city/v1/asset-interface.json",
+      "bytes": 8202,
+      "sha256": "a29a47add30fe9fe9cd20dcab5f5dd5004cf1290106794fb407991f1c5142dcd"
+    },
+    {
+      "path": "frontend/public/venue/paradise-city/v1/siteplan-photo-5.jpg",
+      "bytes": 328720,
+      "sha256": "d0713633289f87fc98603927f7cbc02df2054e989f6360332a93476d6c9da4e0"
+    },
+    {
+      "path": "frontend/public/venue/paradise-city/v1/source-provenance.json",
+      "bytes": 3238,
+      "sha256": "e18cfa90b1baedce92f5dd1453bc122f7c0881a105dc7f32b342c62f3617c68a"
+    }
+  ],
+  "acceptedPresentationIds": [
+    "stage",
+    "standing-a",
+    "standing-b",
+    "foh",
+    "main-gate",
+    "sub-gate",
+    "station",
+    "chroma",
+    "studio-paradise",
+    "spa-cimer",
+    "wonderbox",
+    "art-paradiso-plaza",
+    "photo-zone",
+    "queue-a",
+    "queue-b",
+    "queue-a-b-3001-plus",
+    "p1",
+    "p2",
+    "r1",
+    "r2",
+    "toilets",
+    "medical-symbol"
+  ],
+  "interpretation": "Photo5 wholeboard/geometry, Photo10 onlycamera-labelcorroboration. IDs are presentation candidates, never provider place IDs/revisions, capacity, access, safe route, arrival, operational medical services or geographic calibration.",
+  "evidence": "ART12product+13guard+8identitypass; fullunmaskedRGB0; actualownerinspection and exactcurrent-sourcebinding04. Canonicalpublication pending412e; no App/GPS/physical acceptance.",
+  "consumerValidation": "New registration authored; exactimmutablemanifestconsumption/newlabels/types/lint pending freshfiniteSOURCE05."
+}
