@@ -2,6 +2,7 @@ import { useEffect } from 'react'
 import { useLocation, useNavigate } from 'react-router-dom'
 import { BlocksPanel, ReportDialog } from '../../features/safety/panels'
 import { useSafetySnapshot } from './context'
+import '../../features/safety/parade-ink/report/report.css'
 
 function SafetyPanel({ report }: { report: boolean }) {
   const { entry, state } = useSafetySnapshot(), location = useLocation(), navigate = useNavigate()
@@ -22,5 +23,5 @@ function SafetyPanel({ report }: { report: boolean }) {
   </>
   return <BlocksPanel controller={state.controller} onBack={back} />
 }
-export function ReportPanel() { return <SafetyPanel report /> }
+export function ReportPanel() { return <div className="pi-report-entry"><SafetyPanel report /></div> }
 export function BlockedUsersPanel() { return <SafetyPanel report={false} /> }

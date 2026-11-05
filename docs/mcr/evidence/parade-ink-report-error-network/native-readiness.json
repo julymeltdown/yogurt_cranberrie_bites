@@ -1,0 +1,45 @@
+{
+  "createdUTC": "2026-11-05T01:29:02.765344+00:00",
+  "qualification": "FROZEN_NATIVE_READINESS_ONLY; not execution",
+  "port": 5381,
+  "portBindProbe": "PASS; closed immediately, not reserved",
+  "groups": [
+    "network",
+    "report-errors"
+  ],
+  "viewports": [
+    [
+      360,
+      844
+    ],
+    [
+      390,
+      844
+    ],
+    [
+      430,
+      844
+    ],
+    [
+      390,
+      420
+    ]
+  ],
+  "wholeWithChromeBytes": 6030311478,
+  "entries": 110123,
+  "logicalHistoryBytes": 1890599304,
+  "allocatedWholeBytes": 4268859392,
+  "proposedBrowserCaps": {
+    "allPids": 24,
+    "rssBytes": 3758096384,
+    "wholeBytes": 8589934592,
+    "newBytes": 209715200,
+    "temporaryBytes": 167772160,
+    "durableBytes": 41943040,
+    "workSeconds": 360,
+    "fullSeconds": 420
+  },
+  "chromeLauncherSHA256": "3f0acaf1e585195596d73ffa1824baa72c3c3ac115b5cfc43d789030a3f23d93",
+  "freeBytes": 23430045696,
+  "actualBrowser": "NOT_RUN"
+}

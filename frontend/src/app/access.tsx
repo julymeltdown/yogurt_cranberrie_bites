@@ -6,6 +6,7 @@ import { canonicalId, safeReturnTarget } from './routes'
 import type { ActiveScope, ShellBootstrap, ShellPorts } from './ports'
 import { ShellLoadError, type ShellFailureReason } from './ports'
 import { validCapabilities } from './capabilities'
+import './errors/parade-ink/status.css'
 
 const PortsContext = createContext<ShellPorts | null>(null)
 export function PortsProvider({ ports, children }: { ports: ShellPorts; children: ReactNode }) {
@@ -47,7 +48,7 @@ export function AccessNotice() {
   const pending = readiness === 'checking' || readiness === 'unknown'
   const title = pending ? 'Checking your session' : readiness === 'error' ? 'Could not check your session'
     : readiness === 'unavailable' ? 'World entry is not open yet' : 'Sign in to continue'
-  return <div className="shell-gate"><Link className="shell-link" to="/">MCR Concert World</Link>
+  return <div className="shell-gate pi-route-state"><Link className="shell-link" to="/">MCR Concert World</Link>
     <h1 tabIndex={-1}>{title}</h1>
     <Feedback kind={readiness === 'error' ? 'error' : 'status'} title={pending ? 'Your destination is saved' : 'Your link is still here'}>
       <p>{pending ? 'You can leave this page while we check access.'

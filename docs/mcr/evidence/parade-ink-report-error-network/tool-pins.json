@@ -1,0 +1,44 @@
+{
+  "node": {
+    "sha256": "b6fb419f0f43bb2fbca273700294dd2f3b685a64b60e8417c295f47646a70e4a",
+    "bytes": 122564432
+  },
+  "python": {
+    "sha256": "1192b994fbb50303c9df2cc97c9d63797d454c7f57f20ca682877c9e770429aa",
+    "bytes": 135696
+  },
+  "git": {
+    "sha256": "5f0351f649aa1321345229d5256fc8043517778b134a3b4571ecdc3818f124b2",
+    "bytes": 3703376
+  },
+  "vitest": {
+    "sha256": "39db22f579acf5639bbb17a261408debbde03f4692c0c439e77e7f13aeba74d6",
+    "bytes": 43
+  },
+  "typescript": {
+    "sha256": "8d5fa5bd883fec0979fc2004f1fe1d99aef40570155d550eadc0b03b55513bf0",
+    "bytes": 45
+  },
+  "oxlint": {
+    "sha256": "ecab4e2f1bebaab1a3306620bee562ec16e8cb83dd5fb739b94a5aae3c9e34bd",
+    "bytes": 46
+  },
+  "vite": {
+    "sha256": "f0999a86a4f852ef04de700f4dc42e43e40408b14bc8ee8a365c7defd3f90be6",
+    "bytes": 5083
+  },
+  "playwright": {
+    "sha256": "9d8556509e073169efec663b7f71c13f17d7002b307d00d48bf88ee91c387f3e",
+    "bytes": 754
+  },
+  "react-plugin": {
+    "path": "/Users/lhs/Desktop/mcr/frontend/node_modules/@vitejs/plugin-react/package.json",
+    "bytes": 2114,
+    "sha256": "744483e15597dba4505ff19c7af5d75ddb7280db9c894d8133f8a0edffe93c30"
+  },
+  "react-plugin-source": {
+    "path": "/Users/lhs/Desktop/mcr/frontend/node_modules/@vitejs/plugin-react/dist/index.js",
+    "bytes": 6604,
+    "sha256": "1686a439497c7e235f5de5e3c189d465c2329d6c2dc8bb33ef8842106035556e"
+  }
+}

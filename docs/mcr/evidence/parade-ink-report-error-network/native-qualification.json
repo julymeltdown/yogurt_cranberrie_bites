@@ -1,0 +1,5739 @@
+{
+  "schemaVersion": 1,
+  "qualification": "PASS: bounded frontend COMPOSITE_SOURCE_FIXTURE; controlled HTTP/C05/service inputs, not live/device/multiuser/QA05",
+  "base": "6414d3c9aa0d7a10224b3fed89f6f0e5e45d4997",
+  "featureCheckpoint": "44571af67d0666487c669a5e0bfe403a3777c9dc",
+  "qualifiedSource": "f605c482d184b6e044b5309cc957b24a1d56702c",
+  "reference": {
+    "path": "docs/mcr/design/parade-ink-2026-11-05/parade-ink.jpg",
+    "sha256": "9e7f17a666e1ecfc738a14b75bb3a166235a05c401f206aa24f26cf7463cbc27",
+    "foundationTupleSHA256": "a9b89a8bee524066009722f020cccc869ff506f65a79b35e5d7de289a6f24fd7",
+    "tokenContract": "pi01-photo2-v1",
+    "fixtureOverlayNotPublished": true
+  },
+  "commands": [
+    {
+      "label": "changed-fixture-lint",
+      "exit": 0
+    },
+    {
+      "label": "changed-fixture-types",
+      "exit": 0
+    },
+    {
+      "label": "native-both",
+      "exit": 0
+    }
+  ],
+  "retainedSourceQualification": "source-qualification.json: 13 focused semantic cases; prior scope/types/app-lint positives retained where postimages unchanged",
+  "coverage": {
+    "total": 80,
+    "fresh12": 66,
+    "retained11": 7,
+    "retained09": 7,
+    "viewports": [
+      {
+        "width": 360,
+        "height": 844,
+        "cases": 20
+      },
+      {
+        "width": 390,
+        "height": 844,
+        "cases": 20
+      },
+      {
+        "width": 430,
+        "height": 844,
+        "cases": 20
+      },
+      {
+        "width": 390,
+        "height": 420,
+        "cases": 20
+      }
+    ],
+    "captures": 84
+  },
+  "round12": {
+    "acceptedEpoch": 1793848727.049427,
+    "workDeadline": 1793849087.049427,
+    "fullDeadline": 1793849147.049427,
+    "actualFullUTC": "2026-11-05T03:20:52.366812+00:00",
+    "resourcesReleased": true,
+    "fullSHA256": "2d3541a54aa2894ca2a7a332eebc3c88c55880e78b58265868e0a3e4be4485e6",
+    "controllerSHA256": "ccc1e02d4450e2b178a78ea0cc09c2bb4173211bcaaeff323df525b81aeafdb1",
+    "nativeSHA256": "149e06ccb51aaec0b03a98672a1ecac932d8c512e258a6b3a9454c230b8dbce2",
+    "acceptedReadsetSHA256": "d072c047ed69de077098f6039d65fcdfa651328c7ef36f82b1e604f96e5c4815"
+  },
+  "retainedProofs": [
+    {
+      "round": "native11",
+      "path": "native11/native-progress.json",
+      "sha256": "b40d59ff6608280603994df2f3fa306d03aa4f13fe6e34cb449b7d7d1287193a",
+      "freshCompleted": 7,
+      "nestedRetained09": 7
+    },
+    {
+      "round": "native09",
+      "path": "native09/native.json",
+      "sha256": "e2bc00d575e4b6323c05099f25c19d07805910a48db66155ed163e2922dc6f50",
+      "qualifiedCompletedPrefix": 7
+    }
+  ],
+  "imageRetention": {
+    "selectedPublished": 39,
+    "familyRetainedTotal": 40,
+    "familyTotalBytes": 1401655,
+    "oneDuplicateOfflineImagePrivate": true,
+    "oldReportImagesDoNotReplaceFreshCaseAssertions": true
+  },
+  "visualInspection": {
+    "referenceCompared": true,
+    "representativeWidths": [
+      360,
+      390,
+      430
+    ],
+    "shortViewport": true,
+    "disposition": "Ink titlebars, paper body, condensed headings, restrained red actions, symmetric rules and 44px controls match the selected design family in the assigned regions. No decorative left accents. Short report form scrolls inside its native dialog; focus/keyboard close remain functional."
+  },
+  "limitations": [
+    "Controlled fixture qualification does not certify live backend, physical/device, real multiuser recovery or whole-product design acceptance.",
+    "PI01 supplied originals remain byte-exact and fixture overlay remains private; publication uses the separately delivered foundation.",
+    "Original QA05 goal remains BLOCKED and its seven real recovery/convergence cases remain NOT_RUN.",
+    "Publishing developer412e owns normal master integration/combined checks/remote verification; no king or SL review gate."
+  ],
+  "cases": [
+    {
+      "width": 360,
+      "height": 844,
+      "scenario": "default-version",
+      "status": "PASS",
+      "executionRound": "native11",
+      "completed": true,
+      "captures": [
+        {
+          "label": "default-version",
+          "geometry": {
+            "overflow": false,
+            "controls": [
+              {
+                "name": "Reload page",
+                "width": 168,
+                "height": 44
+              },
+              {
+                "name": "Back to world",
+                "width": 168,
+                "height": 44
+              },
+              {
+                "name": "Back to home",
+                "width": 344,
+                "height": 44
+              }
+            ],
+            "contract": "\"pi01-photo2-v1\"",
+            "raw": false
+          },
+          "states": {
+            "connection": {
+              "kind": "reconnecting",
+              "stale": true,
+              "pending": true,
+              "canRetry": false
+            },
+            "displayConnection": {
+              "kind": "version",
+              "stale": true,
+              "pending": false,
+              "canRetry": false
+            },
+            "defaultConnection": {
+              "kind": "version",
+              "stale": true,
+              "pending": false,
+              "canRetry": false
+            }
+          },
+          "singleOwner": {
+            "mounts": 1,
+            "games": 0,
+            "peak": 1,
+            "activeSockets": 0,
+            "canvases": 0
+          },
+          "reportPosts": 0,
+          "statusChecks": 0,
+          "image": null,
+          "visualOnlyRetainedImage": false
+        }
+      ]
+    },
+    {
+      "width": 360,
+      "height": 844,
+      "scenario": "http-401",
+      "status": "PASS",
+      "executionRound": "native12",
+      "completed": true,
+      "captures": [
+        {
+          "label": "http-401",
+          "geometry": {
+            "overflow": false,
+            "controls": [
+              {
+                "name": "Reload page",
+                "width": 165,
+                "height": 44
+              },
+              {
+                "name": "Back to world",
+                "width": 165,
+                "height": 44
+              },
+              {
+                "name": "Back to home",
+                "width": 338,
+                "height": 44
+              }
+            ],
+            "contract": "\"pi01-photo2-v1\"",
+            "raw": false
+          },
+          "states": {
+            "connection": {
+              "kind": "ready",
+              "stale": false,
+              "pending": false,
+              "canRetry": false
+            },
+            "displayConnection": {
+              "kind": "ready",
+              "stale": false,
+              "pending": false,
+              "canRetry": false
+            },
+            "defaultConnection": {
+              "kind": "ready",
+              "stale": false,
+              "pending": false,
+              "canRetry": false
+            }
+          },
+          "singleOwner": {
+            "mounts": 1,
+            "games": 1,
+            "peak": 1,
+            "activeSockets": 1,
+            "canvases": 1
+          },
+          "reportPosts": 0,
+          "statusChecks": 0,
+          "image": "docs/mcr/evidence/parade-ink-report-error-network/native12/360-844-http-401.png",
+          "visualOnlyRetainedImage": false
+        }
+      ]
+    },
+    {
+      "width": 360,
+      "height": 844,
+      "scenario": "http-403",
+      "status": "PASS",
+      "executionRound": "native12",
+      "completed": true,
+      "captures": [
+        {
+          "label": "http-403",
+          "geometry": {
+            "overflow": false,
+            "controls": [
+              {
+                "name": "Reload page",
+                "width": 165,
+                "height": 44
+              },
+              {
+                "name": "Back to world",
+                "width": 165,
+                "height": 44
+              },
+              {
+                "name": "Back to home",
+                "width": 338,
+                "height": 44
+              }
+            ],
+            "contract": "\"pi01-photo2-v1\"",
+            "raw": false
+          },
+          "states": {
+            "connection": {
+              "kind": "ready",
+              "stale": false,
+              "pending": false,
+              "canRetry": false
+            },
+            "displayConnection": {
+              "kind": "ready",
+              "stale": false,
+              "pending": false,
+              "canRetry": false
+            },
+            "defaultConnection": {
+              "kind": "ready",
+              "stale": false,
+              "pending": false,
+              "canRetry": false
+            }
+          },
+          "singleOwner": {
+            "mounts": 1,
+            "games": 1,
+            "peak": 1,
+            "activeSockets": 1,
+            "canvases": 1
+          },
+          "reportPosts": 0,
+          "statusChecks": 0,
+          "image": null,
+          "visualOnlyRetainedImage": false
+        }
+      ]
+    },
+    {
+      "width": 360,
+      "height": 844,
+      "scenario": "http-404",
+      "status": "PASS",
+      "executionRound": "native12",
+      "completed": true,
+      "captures": [
+        {
+          "label": "http-404",
+          "geometry": {
+            "overflow": false,
+            "controls": [
+              {
+                "name": "Reload page",
+                "width": 165,
+                "height": 44
+              },
+              {
+                "name": "Back to world",
+                "width": 165,
+                "height": 44
+              },
+              {
+                "name": "Back to home",
+                "width": 338,
+                "height": 44
+              }
+            ],
+            "contract": "\"pi01-photo2-v1\"",
+            "raw": false
+          },
+          "states": {
+            "connection": {
+              "kind": "ready",
+              "stale": false,
+              "pending": false,
+              "canRetry": false
+            },
+            "displayConnection": {
+              "kind": "ready",
+              "stale": false,
+              "pending": false,
+              "canRetry": false
+            },
+            "defaultConnection": {
+              "kind": "ready",
+              "stale": false,
+              "pending": false,
+              "canRetry": false
+            }
+          },
+          "singleOwner": {
+            "mounts": 1,
+            "games": 1,
+            "peak": 1,
+            "activeSockets": 1,
+            "canvases": 1
+          },
+          "reportPosts": 0,
+          "statusChecks": 0,
+          "image": null,
+          "visualOnlyRetainedImage": false
+        }
+      ]
+    },
+    {
+      "width": 360,
+      "height": 844,
+      "scenario": "http-410",
+      "status": "PASS",
+      "executionRound": "native12",
+      "completed": true,
+      "captures": [
+        {
+          "label": "http-410",
+          "geometry": {
+            "overflow": false,
+            "controls": [
+              {
+                "name": "Reload page",
+                "width": 165,
+                "height": 44
+              },
+              {
+                "name": "Back to world",
+                "width": 165,
+                "height": 44
+              },
+              {
+                "name": "Back to home",
+                "width": 338,
+                "height": 44
+              }
+            ],
+            "contract": "\"pi01-photo2-v1\"",
+            "raw": false
+          },
+          "states": {
+            "connection": {
+              "kind": "ready",
+              "stale": false,
+              "pending": false,
+              "canRetry": false
+            },
+            "displayConnection": {
+              "kind": "ready",
+              "stale": false,
+              "pending": false,
+              "canRetry": false
+            },
+            "defaultConnection": {
+              "kind": "ready",
+              "stale": false,
+              "pending": false,
+              "canRetry": false
+            }
+          },
+          "singleOwner": {
+            "mounts": 1,
+            "games": 1,
+            "peak": 1,
+            "activeSockets": 1,
+            "canvases": 1
+          },
+          "reportPosts": 0,
+          "statusChecks": 0,
+          "image": null,
+          "visualOnlyRetainedImage": false
+        }
+      ]
+    },
+    {
+      "width": 360,
+      "height": 844,
+      "scenario": "http-429",
+      "status": "PASS",
+      "executionRound": "native12",
+      "completed": true,
+      "captures": [
+        {
+          "label": "http-429",
+          "geometry": {
+            "overflow": false,
+            "controls": [
+              {
+                "name": "Reload page",
+                "width": 165,
+                "height": 44
+              },
+              {
+                "name": "Back to world",
+                "width": 165,
+                "height": 44
+              },
+              {
+                "name": "Back to home",
+                "width": 338,
+                "height": 44
+              }
+            ],
+            "contract": "\"pi01-photo2-v1\"",
+            "raw": false
+          },
+          "states": {
+            "connection": {
+              "kind": "ready",
+              "stale": false,
+              "pending": false,
+              "canRetry": false
+            },
+            "displayConnection": {
+              "kind": "ready",
+              "stale": false,
+              "pending": false,
+              "canRetry": false
+            },
+            "defaultConnection": {
+              "kind": "ready",
+              "stale": false,
+              "pending": false,
+              "canRetry": false
+            }
+          },
+          "singleOwner": {
+            "mounts": 1,
+            "games": 1,
+            "peak": 1,
+            "activeSockets": 1,
+            "canvases": 1
+          },
+          "reportPosts": 0,
+          "statusChecks": 0,
+          "image": null,
+          "visualOnlyRetainedImage": false
+        }
+      ]
+    },
+    {
+      "width": 360,
+      "height": 844,
+      "scenario": "http-503",
+      "status": "PASS",
+      "executionRound": "native12",
+      "completed": true,
+      "captures": [
+        {
+          "label": "http-503",
+          "geometry": {
+            "overflow": false,
+            "controls": [
+              {
+                "name": "Reload page",
+                "width": 165,
+                "height": 44
+              },
+              {
+                "name": "Back to world",
+                "width": 165,
+                "height": 44
+              },
+              {
+                "name": "Back to home",
+                "width": 338,
+                "height": 44
+              }
+            ],
+            "contract": "\"pi01-photo2-v1\"",
+            "raw": false
+          },
+          "states": {
+            "connection": {
+              "kind": "ready",
+              "stale": false,
+              "pending": false,
+              "canRetry": false
+            },
+            "displayConnection": {
+              "kind": "ready",
+              "stale": false,
+              "pending": false,
+              "canRetry": false
+            },
+            "defaultConnection": {
+              "kind": "ready",
+              "stale": false,
+              "pending": false,
+              "canRetry": false
+            }
+          },
+          "singleOwner": {
+            "mounts": 1,
+            "games": 1,
+            "peak": 1,
+            "activeSockets": 1,
+            "canvases": 1
+          },
+          "reportPosts": 0,
+          "statusChecks": 0,
+          "image": "docs/mcr/evidence/parade-ink-report-error-network/native12/360-844-http-503.png",
+          "visualOnlyRetainedImage": false
+        }
+      ]
+    },
+    {
+      "width": 360,
+      "height": 844,
+      "scenario": "maintenance",
+      "status": "PASS",
+      "executionRound": "native09",
+      "completed": true,
+      "captures": [
+        {
+          "label": "maintenance",
+          "geometry": {
+            "overflow": false,
+            "controls": [
+              {
+                "name": "Reload page",
+                "width": 168,
+                "height": 44
+              },
+              {
+                "name": "Back to world",
+                "width": 168,
+                "height": 44
+              },
+              {
+                "name": "Back to home",
+                "width": 344,
+                "height": 44
+              }
+            ],
+            "contract": "\"pi01-photo2-v1\"",
+            "raw": false
+          },
+          "states": {
+            "connection": {
+              "kind": "maintenance",
+              "stale": true,
+              "pending": false,
+              "canRetry": false
+            },
+            "defaultConnection": {
+              "kind": "ready",
+              "stale": false,
+              "pending": false,
+              "canRetry": false
+            }
+          },
+          "singleOwner": {
+            "mounts": 1,
+            "games": 1,
+            "peak": 1,
+            "activeSockets": 1,
+            "canvases": 1
+          },
+          "reportPosts": 0,
+          "statusChecks": 0,
+          "image": null,
+          "visualOnlyRetainedImage": false
+        }
+      ]
+    },
+    {
+      "width": 360,
+      "height": 844,
+      "scenario": "offline",
+      "status": "PASS",
+      "executionRound": "native09",
+      "completed": true,
+      "captures": [
+        {
+          "label": "offline",
+          "geometry": {
+            "overflow": false,
+            "controls": [
+              {
+                "name": "Reload page",
+                "width": 168,
+                "height": 44
+              },
+              {
+                "name": "Back to world",
+                "width": 168,
+                "height": 44
+              },
+              {
+                "name": "Back to home",
+                "width": 344,
+                "height": 44
+              }
+            ],
+            "contract": "\"pi01-photo2-v1\"",
+            "raw": false
+          },
+          "states": {
+            "connection": {
+              "kind": "offline",
+              "stale": true,
+              "pending": false,
+              "canRetry": false
+            },
+            "defaultConnection": {
+              "kind": "ready",
+              "stale": false,
+              "pending": false,
+              "canRetry": false
+            }
+          },
+          "singleOwner": {
+            "mounts": 1,
+            "games": 1,
+            "peak": 1,
+            "activeSockets": 1,
+            "canvases": 1
+          },
+          "reportPosts": 0,
+          "statusChecks": 0,
+          "image": "docs/mcr/evidence/parade-ink-report-error-network/native09/360-844-offline.png",
+          "visualOnlyRetainedImage": false
+        }
+      ]
+    },
+    {
+      "width": 360,
+      "height": 844,
+      "scenario": "reconnecting",
+      "status": "PASS",
+      "executionRound": "native09",
+      "completed": true,
+      "captures": [
+        {
+          "label": "reconnecting",
+          "geometry": {
+            "overflow": false,
+            "controls": [
+              {
+                "name": "Back to world",
+                "width": 168,
+                "height": 44
+              },
+              {
+                "name": "Back to home",
+                "width": 168,
+                "height": 44
+              }
+            ],
+            "contract": "\"pi01-photo2-v1\"",
+            "raw": false
+          },
+          "states": {
+            "connection": {
+              "kind": "reconnecting",
+              "stale": true,
+              "pending": true,
+              "canRetry": false
+            },
+            "defaultConnection": {
+              "kind": "reconnecting",
+              "stale": true,
+              "pending": true,
+              "canRetry": false
+            }
+          },
+          "singleOwner": {
+            "mounts": 1,
+            "games": 1,
+            "peak": 1,
+            "activeSockets": 1,
+            "canvases": 1
+          },
+          "reportPosts": 0,
+          "statusChecks": 0,
+          "image": null,
+          "visualOnlyRetainedImage": false
+        },
+        {
+          "label": "reconnecting-expired",
+          "geometry": {
+            "overflow": false,
+            "controls": [
+              {
+                "name": "Reload page",
+                "width": 168,
+                "height": 44
+              },
+              {
+                "name": "Back to world",
+                "width": 168,
+                "height": 44
+              },
+              {
+                "name": "Back to home",
+                "width": 344,
+                "height": 44
+              }
+            ],
+            "contract": "\"pi01-photo2-v1\"",
+            "raw": false
+          },
+          "states": {
+            "connection": {
+              "kind": "unavailable",
+              "stale": true,
+              "pending": false,
+              "canRetry": false
+            },
+            "defaultConnection": {
+              "kind": "reconnecting",
+              "stale": true,
+              "pending": true,
+              "canRetry": false
+            }
+          },
+          "singleOwner": {
+            "mounts": 1,
+            "games": 1,
+            "peak": 1,
+            "activeSockets": 1,
+            "canvases": 1
+          },
+          "reportPosts": 0,
+          "statusChecks": 0,
+          "image": null,
+          "visualOnlyRetainedImage": false
+        }
+      ]
+    },
+    {
+      "width": 360,
+      "height": 844,
+      "scenario": "report-failed",
+      "status": "PASS",
+      "executionRound": "native11",
+      "completed": true,
+      "captures": [
+        {
+          "label": "report-failed",
+          "geometry": {
+            "overflow": false,
+            "controls": [
+              {
+                "name": "Close report",
+                "width": 116.796875,
+                "height": 44
+              },
+              {
+                "name": "Check original request status",
+                "width": 290,
+                "height": 44
+              }
+            ],
+            "contract": "\"pi01-photo2-v1\"",
+            "raw": false
+          },
+          "states": {
+            "connection": {
+              "kind": "ready",
+              "stale": false,
+              "pending": false,
+              "canRetry": false
+            },
+            "displayConnection": {
+              "kind": "ready",
+              "stale": false,
+              "pending": false,
+              "canRetry": false
+            },
+            "defaultConnection": {
+              "kind": "ready",
+              "stale": false,
+              "pending": false,
+              "canRetry": false
+            }
+          },
+          "singleOwner": {
+            "mounts": 1,
+            "games": 1,
+            "peak": 1,
+            "activeSockets": 1,
+            "canvases": 1
+          },
+          "reportPosts": 1,
+          "statusChecks": 1,
+          "image": null,
+          "visualOnlyRetainedImage": false
+        }
+      ]
+    },
+    {
+      "width": 360,
+      "height": 844,
+      "scenario": "report-pending",
+      "status": "PASS",
+      "executionRound": "native11",
+      "completed": true,
+      "captures": [
+        {
+          "label": "report-pending",
+          "geometry": {
+            "overflow": false,
+            "controls": [
+              {
+                "name": "Close report",
+                "width": 116.796875,
+                "height": 44
+              },
+              {
+                "name": "Check original request status",
+                "width": 290,
+                "height": 44
+              }
+            ],
+            "contract": "\"pi01-photo2-v1\"",
+            "raw": false
+          },
+          "states": {
+            "connection": {
+              "kind": "ready",
+              "stale": false,
+              "pending": false,
+              "canRetry": false
+            },
+            "displayConnection": {
+              "kind": "ready",
+              "stale": false,
+              "pending": false,
+              "canRetry": false
+            },
+            "defaultConnection": {
+              "kind": "ready",
+              "stale": false,
+              "pending": false,
+              "canRetry": false
+            }
+          },
+          "singleOwner": {
+            "mounts": 1,
+            "games": 1,
+            "peak": 1,
+            "activeSockets": 1,
+            "canvases": 1
+          },
+          "reportPosts": 1,
+          "statusChecks": 1,
+          "image": "docs/mcr/evidence/parade-ink-report-error-network/native10/360-844-report-pending.png",
+          "visualOnlyRetainedImage": true
+        }
+      ]
+    },
+    {
+      "width": 360,
+      "height": 844,
+      "scenario": "report-permission",
+      "status": "PASS",
+      "executionRound": "native11",
+      "completed": true,
+      "captures": [
+        {
+          "label": "report-permission",
+          "geometry": {
+            "overflow": false,
+            "controls": [
+              {
+                "name": "Check safety availability",
+                "width": 205.015625,
+                "height": 44
+              },
+              {
+                "name": "Back to Me",
+                "width": 107.828125,
+                "height": 44
+              }
+            ],
+            "contract": "\"pi01-photo2-v1\"",
+            "raw": false
+          },
+          "states": {
+            "connection": {
+              "kind": "ready",
+              "stale": false,
+              "pending": false,
+              "canRetry": false
+            },
+            "displayConnection": {
+              "kind": "ready",
+              "stale": false,
+              "pending": false,
+              "canRetry": false
+            },
+            "defaultConnection": {
+              "kind": "ready",
+              "stale": false,
+              "pending": false,
+              "canRetry": false
+            }
+          },
+          "singleOwner": {
+            "mounts": 1,
+            "games": 1,
+            "peak": 1,
+            "activeSockets": 1,
+            "canvases": 1
+          },
+          "reportPosts": 0,
+          "statusChecks": 0,
+          "image": null,
+          "visualOnlyRetainedImage": false
+        }
+      ]
+    },
+    {
+      "width": 360,
+      "height": 844,
+      "scenario": "report-ready",
+      "status": "PASS",
+      "executionRound": "native11",
+      "completed": true,
+      "captures": [
+        {
+          "label": "report-ready",
+          "geometry": {
+            "overflow": false,
+            "controls": [
+              {
+                "name": "Close report",
+                "width": 116.796875,
+                "height": 44
+              },
+              {
+                "name": "HarassmentPrivacy concernUnsafe meetingSpamOther",
+                "width": 290,
+                "height": 44
+              },
+              {
+                "name": "Controlled private report draft",
+                "width": 290,
+                "height": 112
+              },
+              {
+                "name": "Submit report",
+                "width": 290,
+                "height": 44
+              }
+            ],
+            "contract": "\"pi01-photo2-v1\"",
+            "raw": false
+          },
+          "states": {
+            "connection": {
+              "kind": "ready",
+              "stale": false,
+              "pending": false,
+              "canRetry": false
+            },
+            "displayConnection": {
+              "kind": "ready",
+              "stale": false,
+              "pending": false,
+              "canRetry": false
+            },
+            "defaultConnection": {
+              "kind": "ready",
+              "stale": false,
+              "pending": false,
+              "canRetry": false
+            }
+          },
+          "singleOwner": {
+            "mounts": 1,
+            "games": 1,
+            "peak": 1,
+            "activeSockets": 1,
+            "canvases": 1
+          },
+          "reportPosts": 0,
+          "statusChecks": 0,
+          "image": "docs/mcr/evidence/parade-ink-report-error-network/native10/360-844-report-ready.png",
+          "visualOnlyRetainedImage": true
+        }
+      ]
+    },
+    {
+      "width": 360,
+      "height": 844,
+      "scenario": "report-unavailable",
+      "status": "PASS",
+      "executionRound": "native11",
+      "completed": true,
+      "captures": [
+        {
+          "label": "report-unavailable",
+          "geometry": {
+            "overflow": false,
+            "controls": [
+              {
+                "name": "Check safety availability",
+                "width": 205.015625,
+                "height": 44
+              },
+              {
+                "name": "Back to Me",
+                "width": 107.828125,
+                "height": 44
+              }
+            ],
+            "contract": "\"pi01-photo2-v1\"",
+            "raw": false
+          },
+          "states": {
+            "connection": {
+              "kind": "ready",
+              "stale": false,
+              "pending": false,
+              "canRetry": false
+            },
+            "displayConnection": {
+              "kind": "ready",
+              "stale": false,
+              "pending": false,
+              "canRetry": false
+            },
+            "defaultConnection": {
+              "kind": "ready",
+              "stale": false,
+              "pending": false,
+              "canRetry": false
+            }
+          },
+          "singleOwner": {
+            "mounts": 1,
+            "games": 1,
+            "peak": 1,
+            "activeSockets": 1,
+            "canvases": 1
+          },
+          "reportPosts": 0,
+          "statusChecks": 0,
+          "image": null,
+          "visualOnlyRetainedImage": false
+        }
+      ]
+    },
+    {
+      "width": 360,
+      "height": 844,
+      "scenario": "report-unknown",
+      "status": "PASS",
+      "executionRound": "native11",
+      "completed": true,
+      "captures": [
+        {
+          "label": "report-unknown",
+          "geometry": {
+            "overflow": false,
+            "controls": [
+              {
+                "name": "Close report",
+                "width": 116.796875,
+                "height": 44
+              },
+              {
+                "name": "Check original request status",
+                "width": 290,
+                "height": 44
+              }
+            ],
+            "contract": "\"pi01-photo2-v1\"",
+            "raw": false
+          },
+          "states": {
+            "connection": {
+              "kind": "ready",
+              "stale": false,
+              "pending": false,
+              "canRetry": false
+            },
+            "displayConnection": {
+              "kind": "ready",
+              "stale": false,
+              "pending": false,
+              "canRetry": false
+            },
+            "defaultConnection": {
+              "kind": "ready",
+              "stale": false,
+              "pending": false,
+              "canRetry": false
+            }
+          },
+          "singleOwner": {
+            "mounts": 1,
+            "games": 1,
+            "peak": 1,
+            "activeSockets": 1,
+            "canvases": 1
+          },
+          "reportPosts": 1,
+          "statusChecks": 1,
+          "image": null,
+          "visualOnlyRetainedImage": false
+        }
+      ]
+    },
+    {
+      "width": 360,
+      "height": 844,
+      "scenario": "resync",
+      "status": "PASS",
+      "executionRound": "native09",
+      "completed": true,
+      "captures": [
+        {
+          "label": "resync",
+          "geometry": {
+            "overflow": false,
+            "controls": [
+              {
+                "name": "Back to world",
+                "width": 168,
+                "height": 44
+              },
+              {
+                "name": "Back to home",
+                "width": 168,
+                "height": 44
+              }
+            ],
+            "contract": "\"pi01-photo2-v1\"",
+            "raw": false
+          },
+          "states": {
+            "connection": {
+              "kind": "resync",
+              "stale": true,
+              "pending": true,
+              "canRetry": false
+            },
+            "defaultConnection": {
+              "kind": "resync",
+              "stale": true,
+              "pending": true,
+              "canRetry": false
+            }
+          },
+          "singleOwner": {
+            "mounts": 1,
+            "games": 1,
+            "peak": 1,
+            "activeSockets": 1,
+            "canvases": 1
+          },
+          "reportPosts": 0,
+          "statusChecks": 0,
+          "image": null,
+          "visualOnlyRetainedImage": false
+        }
+      ]
+    },
+    {
+      "width": 360,
+      "height": 844,
+      "scenario": "suspended",
+      "status": "PASS",
+      "executionRound": "native09",
+      "completed": true,
+      "captures": [
+        {
+          "label": "suspended",
+          "geometry": {
+            "overflow": false,
+            "controls": [
+              {
+                "name": "Back to world",
+                "width": 168,
+                "height": 44
+              },
+              {
+                "name": "Back to home",
+                "width": 168,
+                "height": 44
+              }
+            ],
+            "contract": "\"pi01-photo2-v1\"",
+            "raw": false
+          },
+          "states": {
+            "connection": {
+              "kind": "suspended",
+              "stale": true,
+              "pending": false,
+              "canRetry": false
+            },
+            "defaultConnection": {
+              "kind": "suspended",
+              "stale": true,
+              "pending": false,
+              "canRetry": false
+            }
+          },
+          "singleOwner": {
+            "mounts": 1,
+            "games": 1,
+            "peak": 1,
+            "activeSockets": 0,
+            "canvases": 1
+          },
+          "reportPosts": 0,
+          "statusChecks": 0,
+          "image": null,
+          "visualOnlyRetainedImage": false
+        }
+      ]
+    },
+    {
+      "width": 360,
+      "height": 844,
+      "scenario": "unavailable",
+      "status": "PASS",
+      "executionRound": "native09",
+      "completed": true,
+      "captures": [
+        {
+          "label": "unavailable",
+          "geometry": {
+            "overflow": false,
+            "controls": [
+              {
+                "name": "Reload page",
+                "width": 168,
+                "height": 44
+              },
+              {
+                "name": "Back to world",
+                "width": 168,
+                "height": 44
+              },
+              {
+                "name": "Back to home",
+                "width": 344,
+                "height": 44
+              }
+            ],
+            "contract": "\"pi01-photo2-v1\"",
+            "raw": false
+          },
+          "states": {
+            "connection": {
+              "kind": "unavailable",
+              "stale": true,
+              "pending": false,
+              "canRetry": false
+            },
+            "defaultConnection": {
+              "kind": "ready",
+              "stale": false,
+              "pending": false,
+              "canRetry": false
+            }
+          },
+          "singleOwner": {
+            "mounts": 1,
+            "games": 1,
+            "peak": 1,
+            "activeSockets": 1,
+            "canvases": 1
+          },
+          "reportPosts": 0,
+          "statusChecks": 0,
+          "image": null,
+          "visualOnlyRetainedImage": false
+        }
+      ]
+    },
+    {
+      "width": 360,
+      "height": 844,
+      "scenario": "version",
+      "status": "PASS",
+      "executionRound": "native09",
+      "completed": true,
+      "captures": [
+        {
+          "label": "version",
+          "geometry": {
+            "overflow": false,
+            "controls": [
+              {
+                "name": "Reload page",
+                "width": 168,
+                "height": 44
+              },
+              {
+                "name": "Back to world",
+                "width": 168,
+                "height": 44
+              },
+              {
+                "name": "Back to home",
+                "width": 344,
+                "height": 44
+              }
+            ],
+            "contract": "\"pi01-photo2-v1\"",
+            "raw": false
+          },
+          "states": {
+            "connection": {
+              "kind": "version",
+              "stale": true,
+              "pending": false,
+              "canRetry": false
+            },
+            "defaultConnection": {
+              "kind": "ready",
+              "stale": false,
+              "pending": false,
+              "canRetry": false
+            }
+          },
+          "singleOwner": {
+            "mounts": 1,
+            "games": 1,
+            "peak": 1,
+            "activeSockets": 1,
+            "canvases": 1
+          },
+          "reportPosts": 0,
+          "statusChecks": 0,
+          "image": "docs/mcr/evidence/parade-ink-report-error-network/native09/360-844-version.png",
+          "visualOnlyRetainedImage": false
+        }
+      ]
+    },
+    {
+      "width": 390,
+      "height": 420,
+      "scenario": "default-version",
+      "status": "PASS",
+      "executionRound": "native12",
+      "completed": true,
+      "captures": [
+        {
+          "label": "default-version",
+          "geometry": {
+            "overflow": false,
+            "controls": [
+              {
+                "name": "Reload page",
+                "width": 183,
+                "height": 44
+              },
+              {
+                "name": "Back to world",
+                "width": 183,
+                "height": 44
+              },
+              {
+                "name": "Back to home",
+                "width": 374,
+                "height": 44
+              }
+            ],
+            "contract": "\"pi01-photo2-v1\"",
+            "raw": false
+          },
+          "states": {
+            "connection": {
+              "kind": "reconnecting",
+              "stale": true,
+              "pending": true,
+              "canRetry": false
+            },
+            "displayConnection": {
+              "kind": "version",
+              "stale": true,
+              "pending": false,
+              "canRetry": false
+            },
+            "defaultConnection": {
+              "kind": "version",
+              "stale": true,
+              "pending": false,
+              "canRetry": false
+            }
+          },
+          "singleOwner": {
+            "mounts": 1,
+            "games": 0,
+            "peak": 1,
+            "activeSockets": 0,
+            "canvases": 0
+          },
+          "reportPosts": 0,
+          "statusChecks": 0,
+          "image": null,
+          "visualOnlyRetainedImage": false
+        }
+      ]
+    },
+    {
+      "width": 390,
+      "height": 420,
+      "scenario": "http-401",
+      "status": "PASS",
+      "executionRound": "native12",
+      "completed": true,
+      "captures": [
+        {
+          "label": "http-401",
+          "geometry": {
+            "overflow": false,
+            "controls": [
+              {
+                "name": "Reload page",
+                "width": 180,
+                "height": 44
+              },
+              {
+                "name": "Back to world",
+                "width": 180,
+                "height": 44
+              },
+              {
+                "name": "Back to home",
+                "width": 368,
+                "height": 44
+              }
+            ],
+            "contract": "\"pi01-photo2-v1\"",
+            "raw": false
+          },
+          "states": {
+            "connection": {
+              "kind": "ready",
+              "stale": false,
+              "pending": false,
+              "canRetry": false
+            },
+            "displayConnection": {
+              "kind": "ready",
+              "stale": false,
+              "pending": false,
+              "canRetry": false
+            },
+            "defaultConnection": {
+              "kind": "ready",
+              "stale": false,
+              "pending": false,
+              "canRetry": false
+            }
+          },
+          "singleOwner": {
+            "mounts": 1,
+            "games": 1,
+            "peak": 1,
+            "activeSockets": 1,
+            "canvases": 1
+          },
+          "reportPosts": 0,
+          "statusChecks": 0,
+          "image": "docs/mcr/evidence/parade-ink-report-error-network/native12/390-420-http-401.png",
+          "visualOnlyRetainedImage": false
+        }
+      ]
+    },
+    {
+      "width": 390,
+      "height": 420,
+      "scenario": "http-403",
+      "status": "PASS",
+      "executionRound": "native12",
+      "completed": true,
+      "captures": [
+        {
+          "label": "http-403",
+          "geometry": {
+            "overflow": false,
+            "controls": [
+              {
+                "name": "Reload page",
+                "width": 180,
+                "height": 44
+              },
+              {
+                "name": "Back to world",
+                "width": 180,
+                "height": 44
+              },
+              {
+                "name": "Back to home",
+                "width": 368,
+                "height": 44
+              }
+            ],
+            "contract": "\"pi01-photo2-v1\"",
+            "raw": false
+          },
+          "states": {
+            "connection": {
+              "kind": "ready",
+              "stale": false,
+              "pending": false,
+              "canRetry": false
+            },
+            "displayConnection": {
+              "kind": "ready",
+              "stale": false,
+              "pending": false,
+              "canRetry": false
+            },
+            "defaultConnection": {
+              "kind": "ready",
+              "stale": false,
+              "pending": false,
+              "canRetry": false
+            }
+          },
+          "singleOwner": {
+            "mounts": 1,
+            "games": 1,
+            "peak": 1,
+            "activeSockets": 1,
+            "canvases": 1
+          },
+          "reportPosts": 0,
+          "statusChecks": 0,
+          "image": null,
+          "visualOnlyRetainedImage": false
+        }
+      ]
+    },
+    {
+      "width": 390,
+      "height": 420,
+      "scenario": "http-404",
+      "status": "PASS",
+      "executionRound": "native12",
+      "completed": true,
+      "captures": [
+        {
+          "label": "http-404",
+          "geometry": {
+            "overflow": false,
+            "controls": [
+              {
+                "name": "Reload page",
+                "width": 180,
+                "height": 44
+              },
+              {
+                "name": "Back to world",
+                "width": 180,
+                "height": 44
+              },
+              {
+                "name": "Back to home",
+                "width": 368,
+                "height": 44
+              }
+            ],
+            "contract": "\"pi01-photo2-v1\"",
+            "raw": false
+          },
+          "states": {
+            "connection": {
+              "kind": "ready",
+              "stale": false,
+              "pending": false,
+              "canRetry": false
+            },
+            "displayConnection": {
+              "kind": "ready",
+              "stale": false,
+              "pending": false,
+              "canRetry": false
+            },
+            "defaultConnection": {
+              "kind": "ready",
+              "stale": false,
+              "pending": false,
+              "canRetry": false
+            }
+          },
+          "singleOwner": {
+            "mounts": 1,
+            "games": 1,
+            "peak": 1,
+            "activeSockets": 1,
+            "canvases": 1
+          },
+          "reportPosts": 0,
+          "statusChecks": 0,
+          "image": null,
+          "visualOnlyRetainedImage": false
+        }
+      ]
+    },
+    {
+      "width": 390,
+      "height": 420,
+      "scenario": "http-410",
+      "status": "PASS",
+      "executionRound": "native12",
+      "completed": true,
+      "captures": [
+        {
+          "label": "http-410",
+          "geometry": {
+            "overflow": false,
+            "controls": [
+              {
+                "name": "Reload page",
+                "width": 180,
+                "height": 44
+              },
+              {
+                "name": "Back to world",
+                "width": 180,
+                "height": 44
+              },
+              {
+                "name": "Back to home",
+                "width": 368,
+                "height": 44
+              }
+            ],
+            "contract": "\"pi01-photo2-v1\"",
+            "raw": false
+          },
+          "states": {
+            "connection": {
+              "kind": "ready",
+              "stale": false,
+              "pending": false,
+              "canRetry": false
+            },
+            "displayConnection": {
+              "kind": "ready",
+              "stale": false,
+              "pending": false,
+              "canRetry": false
+            },
+            "defaultConnection": {
+              "kind": "ready",
+              "stale": false,
+              "pending": false,
+              "canRetry": false
+            }
+          },
+          "singleOwner": {
+            "mounts": 1,
+            "games": 1,
+            "peak": 1,
+            "activeSockets": 1,
+            "canvases": 1
+          },
+          "reportPosts": 0,
+          "statusChecks": 0,
+          "image": null,
+          "visualOnlyRetainedImage": false
+        }
+      ]
+    },
+    {
+      "width": 390,
+      "height": 420,
+      "scenario": "http-429",
+      "status": "PASS",
+      "executionRound": "native12",
+      "completed": true,
+      "captures": [
+        {
+          "label": "http-429",
+          "geometry": {
+            "overflow": false,
+            "controls": [
+              {
+                "name": "Reload page",
+                "width": 180,
+                "height": 44
+              },
+              {
+                "name": "Back to world",
+                "width": 180,
+                "height": 44
+              },
+              {
+                "name": "Back to home",
+                "width": 368,
+                "height": 44
+              }
+            ],
+            "contract": "\"pi01-photo2-v1\"",
+            "raw": false
+          },
+          "states": {
+            "connection": {
+              "kind": "ready",
+              "stale": false,
+              "pending": false,
+              "canRetry": false
+            },
+            "displayConnection": {
+              "kind": "ready",
+              "stale": false,
+              "pending": false,
+              "canRetry": false
+            },
+            "defaultConnection": {
+              "kind": "ready",
+              "stale": false,
+              "pending": false,
+              "canRetry": false
+            }
+          },
+          "singleOwner": {
+            "mounts": 1,
+            "games": 1,
+            "peak": 1,
+            "activeSockets": 1,
+            "canvases": 1
+          },
+          "reportPosts": 0,
+          "statusChecks": 0,
+          "image": null,
+          "visualOnlyRetainedImage": false
+        }
+      ]
+    },
+    {
+      "width": 390,
+      "height": 420,
+      "scenario": "http-503",
+      "status": "PASS",
+      "executionRound": "native12",
+      "completed": true,
+      "captures": [
+        {
+          "label": "http-503",
+          "geometry": {
+            "overflow": false,
+            "controls": [
+              {
+                "name": "Reload page",
+                "width": 180,
+                "height": 44
+              },
+              {
+                "name": "Back to world",
+                "width": 180,
+                "height": 44
+              },
+              {
+                "name": "Back to home",
+                "width": 368,
+                "height": 44
+              }
+            ],
+            "contract": "\"pi01-photo2-v1\"",
+            "raw": false
+          },
+          "states": {
+            "connection": {
+              "kind": "ready",
+              "stale": false,
+              "pending": false,
+              "canRetry": false
+            },
+            "displayConnection": {
+              "kind": "ready",
+              "stale": false,
+              "pending": false,
+              "canRetry": false
+            },
+            "defaultConnection": {
+              "kind": "ready",
+              "stale": false,
+              "pending": false,
+              "canRetry": false
+            }
+          },
+          "singleOwner": {
+            "mounts": 1,
+            "games": 1,
+            "peak": 1,
+            "activeSockets": 1,
+            "canvases": 1
+          },
+          "reportPosts": 0,
+          "statusChecks": 0,
+          "image": "docs/mcr/evidence/parade-ink-report-error-network/native12/390-420-http-503.png",
+          "visualOnlyRetainedImage": false
+        }
+      ]
+    },
+    {
+      "width": 390,
+      "height": 420,
+      "scenario": "maintenance",
+      "status": "PASS",
+      "executionRound": "native12",
+      "completed": true,
+      "captures": [
+        {
+          "label": "maintenance",
+          "geometry": {
+            "overflow": false,
+            "controls": [
+              {
+                "name": "Reload page",
+                "width": 183,
+                "height": 44
+              },
+              {
+                "name": "Back to world",
+                "width": 183,
+                "height": 44
+              },
+              {
+                "name": "Back to home",
+                "width": 374,
+                "height": 44
+              }
+            ],
+            "contract": "\"pi01-photo2-v1\"",
+            "raw": false
+          },
+          "states": {
+            "connection": {
+              "kind": "maintenance",
+              "stale": true,
+              "pending": false,
+              "canRetry": false
+            },
+            "displayConnection": {
+              "kind": "maintenance",
+              "stale": true,
+              "pending": false,
+              "canRetry": false
+            },
+            "defaultConnection": {
+              "kind": "ready",
+              "stale": false,
+              "pending": false,
+              "canRetry": false
+            }
+          },
+          "singleOwner": {
+            "mounts": 1,
+            "games": 1,
+            "peak": 1,
+            "activeSockets": 1,
+            "canvases": 1
+          },
+          "reportPosts": 0,
+          "statusChecks": 0,
+          "image": null,
+          "visualOnlyRetainedImage": false
+        }
+      ]
+    },
+    {
+      "width": 390,
+      "height": 420,
+      "scenario": "offline",
+      "status": "PASS",
+      "executionRound": "native12",
+      "completed": true,
+      "captures": [
+        {
+          "label": "offline",
+          "geometry": {
+            "overflow": false,
+            "controls": [
+              {
+                "name": "Reload page",
+                "width": 183,
+                "height": 44
+              },
+              {
+                "name": "Back to world",
+                "width": 183,
+                "height": 44
+              },
+              {
+                "name": "Back to home",
+                "width": 374,
+                "height": 44
+              }
+            ],
+            "contract": "\"pi01-photo2-v1\"",
+            "raw": false
+          },
+          "states": {
+            "connection": {
+              "kind": "offline",
+              "stale": true,
+              "pending": false,
+              "canRetry": false
+            },
+            "displayConnection": {
+              "kind": "offline",
+              "stale": true,
+              "pending": false,
+              "canRetry": false
+            },
+            "defaultConnection": {
+              "kind": "ready",
+              "stale": false,
+              "pending": false,
+              "canRetry": false
+            }
+          },
+          "singleOwner": {
+            "mounts": 1,
+            "games": 1,
+            "peak": 1,
+            "activeSockets": 1,
+            "canvases": 1
+          },
+          "reportPosts": 0,
+          "statusChecks": 0,
+          "image": "docs/mcr/evidence/parade-ink-report-error-network/native12/390-420-offline.png",
+          "visualOnlyRetainedImage": false
+        }
+      ]
+    },
+    {
+      "width": 390,
+      "height": 420,
+      "scenario": "reconnecting",
+      "status": "PASS",
+      "executionRound": "native12",
+      "completed": true,
+      "captures": [
+        {
+          "label": "reconnecting",
+          "geometry": {
+            "overflow": false,
+            "controls": [
+              {
+                "name": "Back to world",
+                "width": 183,
+                "height": 44
+              },
+              {
+                "name": "Back to home",
+                "width": 183,
+                "height": 44
+              }
+            ],
+            "contract": "\"pi01-photo2-v1\"",
+            "raw": false
+          },
+          "states": {
+            "connection": {
+              "kind": "reconnecting",
+              "stale": true,
+              "pending": true,
+              "canRetry": false
+            },
+            "displayConnection": {
+              "kind": "reconnecting",
+              "stale": true,
+              "pending": true,
+              "canRetry": false
+            },
+            "defaultConnection": {
+              "kind": "reconnecting",
+              "stale": true,
+              "pending": true,
+              "canRetry": false
+            }
+          },
+          "singleOwner": {
+            "mounts": 1,
+            "games": 1,
+            "peak": 1,
+            "activeSockets": 1,
+            "canvases": 1
+          },
+          "reportPosts": 0,
+          "statusChecks": 0,
+          "image": null,
+          "visualOnlyRetainedImage": false
+        },
+        {
+          "label": "reconnecting-expired",
+          "geometry": {
+            "overflow": false,
+            "controls": [
+              {
+                "name": "Reload page",
+                "width": 183,
+                "height": 44
+              },
+              {
+                "name": "Back to world",
+                "width": 183,
+                "height": 44
+              },
+              {
+                "name": "Back to home",
+                "width": 374,
+                "height": 44
+              }
+            ],
+            "contract": "\"pi01-photo2-v1\"",
+            "raw": false
+          },
+          "states": {
+            "connection": {
+              "kind": "unavailable",
+              "stale": true,
+              "pending": false,
+              "canRetry": false
+            },
+            "displayConnection": {
+              "kind": "unavailable",
+              "stale": true,
+              "pending": false,
+              "canRetry": false
+            },
+            "defaultConnection": {
+              "kind": "reconnecting",
+              "stale": true,
+              "pending": true,
+              "canRetry": false
+            }
+          },
+          "singleOwner": {
+            "mounts": 1,
+            "games": 1,
+            "peak": 1,
+            "activeSockets": 1,
+            "canvases": 1
+          },
+          "reportPosts": 0,
+          "statusChecks": 0,
+          "image": null,
+          "visualOnlyRetainedImage": false
+        }
+      ]
+    },
+    {
+      "width": 390,
+      "height": 420,
+      "scenario": "report-failed",
+      "status": "PASS",
+      "executionRound": "native12",
+      "completed": true,
+      "captures": [
+        {
+          "label": "report-failed",
+          "geometry": {
+            "overflow": false,
+            "controls": [
+              {
+                "name": "Close report",
+                "width": 116.796875,
+                "height": 44
+              },
+              {
+                "name": "Check original request status",
+                "width": 328,
+                "height": 44
+              }
+            ],
+            "contract": "\"pi01-photo2-v1\"",
+            "raw": false
+          },
+          "states": {
+            "connection": {
+              "kind": "ready",
+              "stale": false,
+              "pending": false,
+              "canRetry": false
+            },
+            "displayConnection": {
+              "kind": "ready",
+              "stale": false,
+              "pending": false,
+              "canRetry": false
+            },
+            "defaultConnection": {
+              "kind": "ready",
+              "stale": false,
+              "pending": false,
+              "canRetry": false
+            }
+          },
+          "singleOwner": {
+            "mounts": 1,
+            "games": 1,
+            "peak": 1,
+            "activeSockets": 1,
+            "canvases": 1
+          },
+          "reportPosts": 1,
+          "statusChecks": 1,
+          "image": null,
+          "visualOnlyRetainedImage": false
+        }
+      ]
+    },
+    {
+      "width": 390,
+      "height": 420,
+      "scenario": "report-pending",
+      "status": "PASS",
+      "executionRound": "native12",
+      "completed": true,
+      "captures": [
+        {
+          "label": "report-pending",
+          "geometry": {
+            "overflow": false,
+            "controls": [
+              {
+                "name": "Close report",
+                "width": 116.796875,
+                "height": 44
+              },
+              {
+                "name": "Check original request status",
+                "width": 328,
+                "height": 44
+              }
+            ],
+            "contract": "\"pi01-photo2-v1\"",
+            "raw": false
+          },
+          "states": {
+            "connection": {
+              "kind": "ready",
+              "stale": false,
+              "pending": false,
+              "canRetry": false
+            },
+            "displayConnection": {
+              "kind": "ready",
+              "stale": false,
+              "pending": false,
+              "canRetry": false
+            },
+            "defaultConnection": {
+              "kind": "ready",
+              "stale": false,
+              "pending": false,
+              "canRetry": false
+            }
+          },
+          "singleOwner": {
+            "mounts": 1,
+            "games": 1,
+            "peak": 1,
+            "activeSockets": 1,
+            "canvases": 1
+          },
+          "reportPosts": 1,
+          "statusChecks": 1,
+          "image": "docs/mcr/evidence/parade-ink-report-error-network/native12/390-420-report-pending.png",
+          "visualOnlyRetainedImage": false
+        }
+      ]
+    },
+    {
+      "width": 390,
+      "height": 420,
+      "scenario": "report-permission",
+      "status": "PASS",
+      "executionRound": "native12",
+      "completed": true,
+      "captures": [
+        {
+          "label": "report-permission",
+          "geometry": {
+            "overflow": false,
+            "controls": [
+              {
+                "name": "Check safety availability",
+                "width": 205.015625,
+                "height": 44
+              },
+              {
+                "name": "Back to Me",
+                "width": 107.828125,
+                "height": 44
+              }
+            ],
+            "contract": "\"pi01-photo2-v1\"",
+            "raw": false
+          },
+          "states": {
+            "connection": {
+              "kind": "ready",
+              "stale": false,
+              "pending": false,
+              "canRetry": false
+            },
+            "displayConnection": {
+              "kind": "ready",
+              "stale": false,
+              "pending": false,
+              "canRetry": false
+            },
+            "defaultConnection": {
+              "kind": "ready",
+              "stale": false,
+              "pending": false,
+              "canRetry": false
+            }
+          },
+          "singleOwner": {
+            "mounts": 1,
+            "games": 1,
+            "peak": 1,
+            "activeSockets": 1,
+            "canvases": 1
+          },
+          "reportPosts": 0,
+          "statusChecks": 0,
+          "image": null,
+          "visualOnlyRetainedImage": false
+        }
+      ]
+    },
+    {
+      "width": 390,
+      "height": 420,
+      "scenario": "report-ready",
+      "status": "PASS",
+      "executionRound": "native12",
+      "completed": true,
+      "captures": [
+        {
+          "label": "report-ready",
+          "geometry": {
+            "overflow": false,
+            "controls": [
+              {
+                "name": "Close report",
+                "width": 116.796875,
+                "height": 44
+              },
+              {
+                "name": "HarassmentPrivacy concernUnsafe meetingSpamOther",
+                "width": 328,
+                "height": 44
+              },
+              {
+                "name": "Controlled private report draft",
+                "width": 328,
+                "height": 88
+              },
+              {
+                "name": "Submit report",
+                "width": 328,
+                "height": 44
+              }
+            ],
+            "contract": "\"pi01-photo2-v1\"",
+            "raw": false
+          },
+          "states": {
+            "connection": {
+              "kind": "ready",
+              "stale": false,
+              "pending": false,
+              "canRetry": false
+            },
+            "displayConnection": {
+              "kind": "ready",
+              "stale": false,
+              "pending": false,
+              "canRetry": false
+            },
+            "defaultConnection": {
+              "kind": "ready",
+              "stale": false,
+              "pending": false,
+              "canRetry": false
+            }
+          },
+          "singleOwner": {
+            "mounts": 1,
+            "games": 1,
+            "peak": 1,
+            "activeSockets": 1,
+            "canvases": 1
+          },
+          "reportPosts": 0,
+          "statusChecks": 0,
+          "image": "docs/mcr/evidence/parade-ink-report-error-network/native12/390-420-report-ready.png",
+          "visualOnlyRetainedImage": false
+        }
+      ]
+    },
+    {
+      "width": 390,
+      "height": 420,
+      "scenario": "report-unavailable",
+      "status": "PASS",
+      "executionRound": "native12",
+      "completed": true,
+      "captures": [
+        {
+          "label": "report-unavailable",
+          "geometry": {
+            "overflow": false,
+            "controls": [
+              {
+                "name": "Check safety availability",
+                "width": 205.015625,
+                "height": 44
+              },
+              {
+                "name": "Back to Me",
+                "width": 107.828125,
+                "height": 44
+              }
+            ],
+            "contract": "\"pi01-photo2-v1\"",
+            "raw": false
+          },
+          "states": {
+            "connection": {
+              "kind": "ready",
+              "stale": false,
+              "pending": false,
+              "canRetry": false
+            },
+            "displayConnection": {
+              "kind": "ready",
+              "stale": false,
+              "pending": false,
+              "canRetry": false
+            },
+            "defaultConnection": {
+              "kind": "ready",
+              "stale": false,
+              "pending": false,
+              "canRetry": false
+            }
+          },
+          "singleOwner": {
+            "mounts": 1,
+            "games": 1,
+            "peak": 1,
+            "activeSockets": 1,
+            "canvases": 1
+          },
+          "reportPosts": 0,
+          "statusChecks": 0,
+          "image": null,
+          "visualOnlyRetainedImage": false
+        }
+      ]
+    },
+    {
+      "width": 390,
+      "height": 420,
+      "scenario": "report-unknown",
+      "status": "PASS",
+      "executionRound": "native12",
+      "completed": true,
+      "captures": [
+        {
+          "label": "report-unknown",
+          "geometry": {
+            "overflow": false,
+            "controls": [
+              {
+                "name": "Close report",
+                "width": 116.796875,
+                "height": 44
+              },
+              {
+                "name": "Check original request status",
+                "width": 328,
+                "height": 44
+              }
+            ],
+            "contract": "\"pi01-photo2-v1\"",
+            "raw": false
+          },
+          "states": {
+            "connection": {
+              "kind": "ready",
+              "stale": false,
+              "pending": false,
+              "canRetry": false
+            },
+            "displayConnection": {
+              "kind": "ready",
+              "stale": false,
+              "pending": false,
+              "canRetry": false
+            },
+            "defaultConnection": {
+              "kind": "ready",
+              "stale": false,
+              "pending": false,
+              "canRetry": false
+            }
+          },
+          "singleOwner": {
+            "mounts": 1,
+            "games": 1,
+            "peak": 1,
+            "activeSockets": 1,
+            "canvases": 1
+          },
+          "reportPosts": 1,
+          "statusChecks": 1,
+          "image": null,
+          "visualOnlyRetainedImage": false
+        }
+      ]
+    },
+    {
+      "width": 390,
+      "height": 420,
+      "scenario": "resync",
+      "status": "PASS",
+      "executionRound": "native12",
+      "completed": true,
+      "captures": [
+        {
+          "label": "resync",
+          "geometry": {
+            "overflow": false,
+            "controls": [
+              {
+                "name": "Back to world",
+                "width": 183,
+                "height": 44
+              },
+              {
+                "name": "Back to home",
+                "width": 183,
+                "height": 44
+              }
+            ],
+            "contract": "\"pi01-photo2-v1\"",
+            "raw": false
+          },
+          "states": {
+            "connection": {
+              "kind": "resync",
+              "stale": true,
+              "pending": true,
+              "canRetry": false
+            },
+            "displayConnection": {
+              "kind": "resync",
+              "stale": true,
+              "pending": true,
+              "canRetry": false
+            },
+            "defaultConnection": {
+              "kind": "resync",
+              "stale": true,
+              "pending": true,
+              "canRetry": false
+            }
+          },
+          "singleOwner": {
+            "mounts": 1,
+            "games": 1,
+            "peak": 1,
+            "activeSockets": 1,
+            "canvases": 1
+          },
+          "reportPosts": 0,
+          "statusChecks": 0,
+          "image": null,
+          "visualOnlyRetainedImage": false
+        }
+      ]
+    },
+    {
+      "width": 390,
+      "height": 420,
+      "scenario": "suspended",
+      "status": "PASS",
+      "executionRound": "native12",
+      "completed": true,
+      "captures": [
+        {
+          "label": "suspended",
+          "geometry": {
+            "overflow": false,
+            "controls": [
+              {
+                "name": "Back to world",
+                "width": 183,
+                "height": 44
+              },
+              {
+                "name": "Back to home",
+                "width": 183,
+                "height": 44
+              }
+            ],
+            "contract": "\"pi01-photo2-v1\"",
+            "raw": false
+          },
+          "states": {
+            "connection": {
+              "kind": "suspended",
+              "stale": true,
+              "pending": false,
+              "canRetry": false
+            },
+            "displayConnection": {
+              "kind": "suspended",
+              "stale": true,
+              "pending": false,
+              "canRetry": false
+            },
+            "defaultConnection": {
+              "kind": "suspended",
+              "stale": true,
+              "pending": false,
+              "canRetry": false
+            }
+          },
+          "singleOwner": {
+            "mounts": 1,
+            "games": 1,
+            "peak": 1,
+            "activeSockets": 0,
+            "canvases": 1
+          },
+          "reportPosts": 0,
+          "statusChecks": 0,
+          "image": null,
+          "visualOnlyRetainedImage": false
+        }
+      ]
+    },
+    {
+      "width": 390,
+      "height": 420,
+      "scenario": "unavailable",
+      "status": "PASS",
+      "executionRound": "native12",
+      "completed": true,
+      "captures": [
+        {
+          "label": "unavailable",
+          "geometry": {
+            "overflow": false,
+            "controls": [
+              {
+                "name": "Reload page",
+                "width": 183,
+                "height": 44
+              },
+              {
+                "name": "Back to world",
+                "width": 183,
+                "height": 44
+              },
+              {
+                "name": "Back to home",
+                "width": 374,
+                "height": 44
+              }
+            ],
+            "contract": "\"pi01-photo2-v1\"",
+            "raw": false
+          },
+          "states": {
+            "connection": {
+              "kind": "unavailable",
+              "stale": true,
+              "pending": false,
+              "canRetry": false
+            },
+            "displayConnection": {
+              "kind": "unavailable",
+              "stale": true,
+              "pending": false,
+              "canRetry": false
+            },
+            "defaultConnection": {
+              "kind": "ready",
+              "stale": false,
+              "pending": false,
+              "canRetry": false
+            }
+          },
+          "singleOwner": {
+            "mounts": 1,
+            "games": 1,
+            "peak": 1,
+            "activeSockets": 1,
+            "canvases": 1
+          },
+          "reportPosts": 0,
+          "statusChecks": 0,
+          "image": null,
+          "visualOnlyRetainedImage": false
+        }
+      ]
+    },
+    {
+      "width": 390,
+      "height": 420,
+      "scenario": "version",
+      "status": "PASS",
+      "executionRound": "native12",
+      "completed": true,
+      "captures": [
+        {
+          "label": "version",
+          "geometry": {
+            "overflow": false,
+            "controls": [
+              {
+                "name": "Reload page",
+                "width": 183,
+                "height": 44
+              },
+              {
+                "name": "Back to world",
+                "width": 183,
+                "height": 44
+              },
+              {
+                "name": "Back to home",
+                "width": 374,
+                "height": 44
+              }
+            ],
+            "contract": "\"pi01-photo2-v1\"",
+            "raw": false
+          },
+          "states": {
+            "connection": {
+              "kind": "version",
+              "stale": true,
+              "pending": false,
+              "canRetry": false
+            },
+            "displayConnection": {
+              "kind": "version",
+              "stale": true,
+              "pending": false,
+              "canRetry": false
+            },
+            "defaultConnection": {
+              "kind": "ready",
+              "stale": false,
+              "pending": false,
+              "canRetry": false
+            }
+          },
+          "singleOwner": {
+            "mounts": 1,
+            "games": 1,
+            "peak": 1,
+            "activeSockets": 1,
+            "canvases": 1
+          },
+          "reportPosts": 0,
+          "statusChecks": 0,
+          "image": "docs/mcr/evidence/parade-ink-report-error-network/native12/390-420-version.png",
+          "visualOnlyRetainedImage": false
+        }
+      ]
+    },
+    {
+      "width": 390,
+      "height": 844,
+      "scenario": "default-version",
+      "status": "PASS",
+      "executionRound": "native12",
+      "completed": true,
+      "captures": [
+        {
+          "label": "default-version",
+          "geometry": {
+            "overflow": false,
+            "controls": [
+              {
+                "name": "Reload page",
+                "width": 183,
+                "height": 44
+              },
+              {
+                "name": "Back to world",
+                "width": 183,
+                "height": 44
+              },
+              {
+                "name": "Back to home",
+                "width": 374,
+                "height": 44
+              }
+            ],
+            "contract": "\"pi01-photo2-v1\"",
+            "raw": false
+          },
+          "states": {
+            "connection": {
+              "kind": "reconnecting",
+              "stale": true,
+              "pending": true,
+              "canRetry": false
+            },
+            "displayConnection": {
+              "kind": "version",
+              "stale": true,
+              "pending": false,
+              "canRetry": false
+            },
+            "defaultConnection": {
+              "kind": "version",
+              "stale": true,
+              "pending": false,
+              "canRetry": false
+            }
+          },
+          "singleOwner": {
+            "mounts": 1,
+            "games": 0,
+            "peak": 1,
+            "activeSockets": 0,
+            "canvases": 0
+          },
+          "reportPosts": 0,
+          "statusChecks": 0,
+          "image": "docs/mcr/evidence/parade-ink-report-error-network/native12/390-844-default-version.png",
+          "visualOnlyRetainedImage": false
+        }
+      ]
+    },
+    {
+      "width": 390,
+      "height": 844,
+      "scenario": "http-401",
+      "status": "PASS",
+      "executionRound": "native12",
+      "completed": true,
+      "captures": [
+        {
+          "label": "http-401",
+          "geometry": {
+            "overflow": false,
+            "controls": [
+              {
+                "name": "Reload page",
+                "width": 180,
+                "height": 44
+              },
+              {
+                "name": "Back to world",
+                "width": 180,
+                "height": 44
+              },
+              {
+                "name": "Back to home",
+                "width": 368,
+                "height": 44
+              }
+            ],
+            "contract": "\"pi01-photo2-v1\"",
+            "raw": false
+          },
+          "states": {
+            "connection": {
+              "kind": "ready",
+              "stale": false,
+              "pending": false,
+              "canRetry": false
+            },
+            "displayConnection": {
+              "kind": "ready",
+              "stale": false,
+              "pending": false,
+              "canRetry": false
+            },
+            "defaultConnection": {
+              "kind": "ready",
+              "stale": false,
+              "pending": false,
+              "canRetry": false
+            }
+          },
+          "singleOwner": {
+            "mounts": 1,
+            "games": 1,
+            "peak": 1,
+            "activeSockets": 1,
+            "canvases": 1
+          },
+          "reportPosts": 0,
+          "statusChecks": 0,
+          "image": "docs/mcr/evidence/parade-ink-report-error-network/native12/390-844-http-401.png",
+          "visualOnlyRetainedImage": false
+        }
+      ]
+    },
+    {
+      "width": 390,
+      "height": 844,
+      "scenario": "http-403",
+      "status": "PASS",
+      "executionRound": "native12",
+      "completed": true,
+      "captures": [
+        {
+          "label": "http-403",
+          "geometry": {
+            "overflow": false,
+            "controls": [
+              {
+                "name": "Reload page",
+                "width": 180,
+                "height": 44
+              },
+              {
+                "name": "Back to world",
+                "width": 180,
+                "height": 44
+              },
+              {
+                "name": "Back to home",
+                "width": 368,
+                "height": 44
+              }
+            ],
+            "contract": "\"pi01-photo2-v1\"",
+            "raw": false
+          },
+          "states": {
+            "connection": {
+              "kind": "ready",
+              "stale": false,
+              "pending": false,
+              "canRetry": false
+            },
+            "displayConnection": {
+              "kind": "ready",
+              "stale": false,
+              "pending": false,
+              "canRetry": false
+            },
+            "defaultConnection": {
+              "kind": "ready",
+              "stale": false,
+              "pending": false,
+              "canRetry": false
+            }
+          },
+          "singleOwner": {
+            "mounts": 1,
+            "games": 1,
+            "peak": 1,
+            "activeSockets": 1,
+            "canvases": 1
+          },
+          "reportPosts": 0,
+          "statusChecks": 0,
+          "image": "docs/mcr/evidence/parade-ink-report-error-network/native12/390-844-http-403.png",
+          "visualOnlyRetainedImage": false
+        }
+      ]
+    },
+    {
+      "width": 390,
+      "height": 844,
+      "scenario": "http-404",
+      "status": "PASS",
+      "executionRound": "native12",
+      "completed": true,
+      "captures": [
+        {
+          "label": "http-404",
+          "geometry": {
+            "overflow": false,
+            "controls": [
+              {
+                "name": "Reload page",
+                "width": 180,
+                "height": 44
+              },
+              {
+                "name": "Back to world",
+                "width": 180,
+                "height": 44
+              },
+              {
+                "name": "Back to home",
+                "width": 368,
+                "height": 44
+              }
+            ],
+            "contract": "\"pi01-photo2-v1\"",
+            "raw": false
+          },
+          "states": {
+            "connection": {
+              "kind": "ready",
+              "stale": false,
+              "pending": false,
+              "canRetry": false
+            },
+            "displayConnection": {
+              "kind": "ready",
+              "stale": false,
+              "pending": false,
+              "canRetry": false
+            },
+            "defaultConnection": {
+              "kind": "ready",
+              "stale": false,
+              "pending": false,
+              "canRetry": false
+            }
+          },
+          "singleOwner": {
+            "mounts": 1,
+            "games": 1,
+            "peak": 1,
+            "activeSockets": 1,
+            "canvases": 1
+          },
+          "reportPosts": 0,
+          "statusChecks": 0,
+          "image": "docs/mcr/evidence/parade-ink-report-error-network/native12/390-844-http-404.png",
+          "visualOnlyRetainedImage": false
+        }
+      ]
+    },
+    {
+      "width": 390,
+      "height": 844,
+      "scenario": "http-410",
+      "status": "PASS",
+      "executionRound": "native12",
+      "completed": true,
+      "captures": [
+        {
+          "label": "http-410",
+          "geometry": {
+            "overflow": false,
+            "controls": [
+              {
+                "name": "Reload page",
+                "width": 180,
+                "height": 44
+              },
+              {
+                "name": "Back to world",
+                "width": 180,
+                "height": 44
+              },
+              {
+                "name": "Back to home",
+                "width": 368,
+                "height": 44
+              }
+            ],
+            "contract": "\"pi01-photo2-v1\"",
+            "raw": false
+          },
+          "states": {
+            "connection": {
+              "kind": "ready",
+              "stale": false,
+              "pending": false,
+              "canRetry": false
+            },
+            "displayConnection": {
+              "kind": "ready",
+              "stale": false,
+              "pending": false,
+              "canRetry": false
+            },
+            "defaultConnection": {
+              "kind": "ready",
+              "stale": false,
+              "pending": false,
+              "canRetry": false
+            }
+          },
+          "singleOwner": {
+            "mounts": 1,
+            "games": 1,
+            "peak": 1,
+            "activeSockets": 1,
+            "canvases": 1
+          },
+          "reportPosts": 0,
+          "statusChecks": 0,
+          "image": "docs/mcr/evidence/parade-ink-report-error-network/native12/390-844-http-410.png",
+          "visualOnlyRetainedImage": false
+        }
+      ]
+    },
+    {
+      "width": 390,
+      "height": 844,
+      "scenario": "http-429",
+      "status": "PASS",
+      "executionRound": "native12",
+      "completed": true,
+      "captures": [
+        {
+          "label": "http-429",
+          "geometry": {
+            "overflow": false,
+            "controls": [
+              {
+                "name": "Reload page",
+                "width": 180,
+                "height": 44
+              },
+              {
+                "name": "Back to world",
+                "width": 180,
+                "height": 44
+              },
+              {
+                "name": "Back to home",
+                "width": 368,
+                "height": 44
+              }
+            ],
+            "contract": "\"pi01-photo2-v1\"",
+            "raw": false
+          },
+          "states": {
+            "connection": {
+              "kind": "ready",
+              "stale": false,
+              "pending": false,
+              "canRetry": false
+            },
+            "displayConnection": {
+              "kind": "ready",
+              "stale": false,
+              "pending": false,
+              "canRetry": false
+            },
+            "defaultConnection": {
+              "kind": "ready",
+              "stale": false,
+              "pending": false,
+              "canRetry": false
+            }
+          },
+          "singleOwner": {
+            "mounts": 1,
+            "games": 1,
+            "peak": 1,
+            "activeSockets": 1,
+            "canvases": 1
+          },
+          "reportPosts": 0,
+          "statusChecks": 0,
+          "image": "docs/mcr/evidence/parade-ink-report-error-network/native12/390-844-http-429.png",
+          "visualOnlyRetainedImage": false
+        }
+      ]
+    },
+    {
+      "width": 390,
+      "height": 844,
+      "scenario": "http-503",
+      "status": "PASS",
+      "executionRound": "native12",
+      "completed": true,
+      "captures": [
+        {
+          "label": "http-503",
+          "geometry": {
+            "overflow": false,
+            "controls": [
+              {
+                "name": "Reload page",
+                "width": 180,
+                "height": 44
+              },
+              {
+                "name": "Back to world",
+                "width": 180,
+                "height": 44
+              },
+              {
+                "name": "Back to home",
+                "width": 368,
+                "height": 44
+              }
+            ],
+            "contract": "\"pi01-photo2-v1\"",
+            "raw": false
+          },
+          "states": {
+            "connection": {
+              "kind": "ready",
+              "stale": false,
+              "pending": false,
+              "canRetry": false
+            },
+            "displayConnection": {
+              "kind": "ready",
+              "stale": false,
+              "pending": false,
+              "canRetry": false
+            },
+            "defaultConnection": {
+              "kind": "ready",
+              "stale": false,
+              "pending": false,
+              "canRetry": false
+            }
+          },
+          "singleOwner": {
+            "mounts": 1,
+            "games": 1,
+            "peak": 1,
+            "activeSockets": 1,
+            "canvases": 1
+          },
+          "reportPosts": 0,
+          "statusChecks": 0,
+          "image": "docs/mcr/evidence/parade-ink-report-error-network/native12/390-844-http-503.png",
+          "visualOnlyRetainedImage": false
+        }
+      ]
+    },
+    {
+      "width": 390,
+      "height": 844,
+      "scenario": "maintenance",
+      "status": "PASS",
+      "executionRound": "native12",
+      "completed": true,
+      "captures": [
+        {
+          "label": "maintenance",
+          "geometry": {
+            "overflow": false,
+            "controls": [
+              {
+                "name": "Reload page",
+                "width": 183,
+                "height": 44
+              },
+              {
+                "name": "Back to world",
+                "width": 183,
+                "height": 44
+              },
+              {
+                "name": "Back to home",
+                "width": 374,
+                "height": 44
+              }
+            ],
+            "contract": "\"pi01-photo2-v1\"",
+            "raw": false
+          },
+          "states": {
+            "connection": {
+              "kind": "maintenance",
+              "stale": true,
+              "pending": false,
+              "canRetry": false
+            },
+            "displayConnection": {
+              "kind": "maintenance",
+              "stale": true,
+              "pending": false,
+              "canRetry": false
+            },
+            "defaultConnection": {
+              "kind": "ready",
+              "stale": false,
+              "pending": false,
+              "canRetry": false
+            }
+          },
+          "singleOwner": {
+            "mounts": 1,
+            "games": 1,
+            "peak": 1,
+            "activeSockets": 1,
+            "canvases": 1
+          },
+          "reportPosts": 0,
+          "statusChecks": 0,
+          "image": "docs/mcr/evidence/parade-ink-report-error-network/native12/390-844-maintenance.png",
+          "visualOnlyRetainedImage": false
+        }
+      ]
+    },
+    {
+      "width": 390,
+      "height": 844,
+      "scenario": "offline",
+      "status": "PASS",
+      "executionRound": "native12",
+      "completed": true,
+      "captures": [
+        {
+          "label": "offline",
+          "geometry": {
+            "overflow": false,
+            "controls": [
+              {
+                "name": "Reload page",
+                "width": 183,
+                "height": 44
+              },
+              {
+                "name": "Back to world",
+                "width": 183,
+                "height": 44
+              },
+              {
+                "name": "Back to home",
+                "width": 374,
+                "height": 44
+              }
+            ],
+            "contract": "\"pi01-photo2-v1\"",
+            "raw": false
+          },
+          "states": {
+            "connection": {
+              "kind": "offline",
+              "stale": true,
+              "pending": false,
+              "canRetry": false
+            },
+            "displayConnection": {
+              "kind": "offline",
+              "stale": true,
+              "pending": false,
+              "canRetry": false
+            },
+            "defaultConnection": {
+              "kind": "ready",
+              "stale": false,
+              "pending": false,
+              "canRetry": false
+            }
+          },
+          "singleOwner": {
+            "mounts": 1,
+            "games": 1,
+            "peak": 1,
+            "activeSockets": 1,
+            "canvases": 1
+          },
+          "reportPosts": 0,
+          "statusChecks": 0,
+          "image": "docs/mcr/evidence/parade-ink-report-error-network/native12/390-844-offline.png",
+          "visualOnlyRetainedImage": false
+        }
+      ]
+    },
+    {
+      "width": 390,
+      "height": 844,
+      "scenario": "reconnecting",
+      "status": "PASS",
+      "executionRound": "native12",
+      "completed": true,
+      "captures": [
+        {
+          "label": "reconnecting",
+          "geometry": {
+            "overflow": false,
+            "controls": [
+              {
+                "name": "Back to world",
+                "width": 183,
+                "height": 44
+              },
+              {
+                "name": "Back to home",
+                "width": 183,
+                "height": 44
+              }
+            ],
+            "contract": "\"pi01-photo2-v1\"",
+            "raw": false
+          },
+          "states": {
+            "connection": {
+              "kind": "reconnecting",
+              "stale": true,
+              "pending": true,
+              "canRetry": false
+            },
+            "displayConnection": {
+              "kind": "reconnecting",
+              "stale": true,
+              "pending": true,
+              "canRetry": false
+            },
+            "defaultConnection": {
+              "kind": "reconnecting",
+              "stale": true,
+              "pending": true,
+              "canRetry": false
+            }
+          },
+          "singleOwner": {
+            "mounts": 1,
+            "games": 1,
+            "peak": 1,
+            "activeSockets": 1,
+            "canvases": 1
+          },
+          "reportPosts": 0,
+          "statusChecks": 0,
+          "image": "docs/mcr/evidence/parade-ink-report-error-network/native12/390-844-reconnecting.png",
+          "visualOnlyRetainedImage": false
+        },
+        {
+          "label": "reconnecting-expired",
+          "geometry": {
+            "overflow": false,
+            "controls": [
+              {
+                "name": "Reload page",
+                "width": 183,
+                "height": 44
+              },
+              {
+                "name": "Back to world",
+                "width": 183,
+                "height": 44
+              },
+              {
+                "name": "Back to home",
+                "width": 374,
+                "height": 44
+              }
+            ],
+            "contract": "\"pi01-photo2-v1\"",
+            "raw": false
+          },
+          "states": {
+            "connection": {
+              "kind": "unavailable",
+              "stale": true,
+              "pending": false,
+              "canRetry": false
+            },
+            "displayConnection": {
+              "kind": "unavailable",
+              "stale": true,
+              "pending": false,
+              "canRetry": false
+            },
+            "defaultConnection": {
+              "kind": "reconnecting",
+              "stale": true,
+              "pending": true,
+              "canRetry": false
+            }
+          },
+          "singleOwner": {
+            "mounts": 1,
+            "games": 1,
+            "peak": 1,
+            "activeSockets": 1,
+            "canvases": 1
+          },
+          "reportPosts": 0,
+          "statusChecks": 0,
+          "image": "docs/mcr/evidence/parade-ink-report-error-network/native12/390-844-reconnecting-expired.png",
+          "visualOnlyRetainedImage": false
+        }
+      ]
+    },
+    {
+      "width": 390,
+      "height": 844,
+      "scenario": "report-failed",
+      "status": "PASS",
+      "executionRound": "native12",
+      "completed": true,
+      "captures": [
+        {
+          "label": "report-failed",
+          "geometry": {
+            "overflow": false,
+            "controls": [
+              {
+                "name": "Close report",
+                "width": 116.796875,
+                "height": 44
+              },
+              {
+                "name": "Check original request status",
+                "width": 320,
+                "height": 44
+              }
+            ],
+            "contract": "\"pi01-photo2-v1\"",
+            "raw": false
+          },
+          "states": {
+            "connection": {
+              "kind": "ready",
+              "stale": false,
+              "pending": false,
+              "canRetry": false
+            },
+            "displayConnection": {
+              "kind": "ready",
+              "stale": false,
+              "pending": false,
+              "canRetry": false
+            },
+            "defaultConnection": {
+              "kind": "ready",
+              "stale": false,
+              "pending": false,
+              "canRetry": false
+            }
+          },
+          "singleOwner": {
+            "mounts": 1,
+            "games": 1,
+            "peak": 1,
+            "activeSockets": 1,
+            "canvases": 1
+          },
+          "reportPosts": 1,
+          "statusChecks": 1,
+          "image": "docs/mcr/evidence/parade-ink-report-error-network/native12/390-844-report-failed.png",
+          "visualOnlyRetainedImage": false
+        }
+      ]
+    },
+    {
+      "width": 390,
+      "height": 844,
+      "scenario": "report-pending",
+      "status": "PASS",
+      "executionRound": "native12",
+      "completed": true,
+      "captures": [
+        {
+          "label": "report-pending",
+          "geometry": {
+            "overflow": false,
+            "controls": [
+              {
+                "name": "Close report",
+                "width": 116.796875,
+                "height": 44
+              },
+              {
+                "name": "Check original request status",
+                "width": 320,
+                "height": 44
+              }
+            ],
+            "contract": "\"pi01-photo2-v1\"",
+            "raw": false
+          },
+          "states": {
+            "connection": {
+              "kind": "ready",
+              "stale": false,
+              "pending": false,
+              "canRetry": false
+            },
+            "displayConnection": {
+              "kind": "ready",
+              "stale": false,
+              "pending": false,
+              "canRetry": false
+            },
+            "defaultConnection": {
+              "kind": "ready",
+              "stale": false,
+              "pending": false,
+              "canRetry": false
+            }
+          },
+          "singleOwner": {
+            "mounts": 1,
+            "games": 1,
+            "peak": 1,
+            "activeSockets": 1,
+            "canvases": 1
+          },
+          "reportPosts": 1,
+          "statusChecks": 1,
+          "image": "docs/mcr/evidence/parade-ink-report-error-network/native12/390-844-report-pending.png",
+          "visualOnlyRetainedImage": false
+        }
+      ]
+    },
+    {
+      "width": 390,
+      "height": 844,
+      "scenario": "report-permission",
+      "status": "PASS",
+      "executionRound": "native12",
+      "completed": true,
+      "captures": [
+        {
+          "label": "report-permission",
+          "geometry": {
+            "overflow": false,
+            "controls": [
+              {
+                "name": "Check safety availability",
+                "width": 205.015625,
+                "height": 44
+              },
+              {
+                "name": "Back to Me",
+                "width": 107.828125,
+                "height": 44
+              }
+            ],
+            "contract": "\"pi01-photo2-v1\"",
+            "raw": false
+          },
+          "states": {
+            "connection": {
+              "kind": "ready",
+              "stale": false,
+              "pending": false,
+              "canRetry": false
+            },
+            "displayConnection": {
+              "kind": "ready",
+              "stale": false,
+              "pending": false,
+              "canRetry": false
+            },
+            "defaultConnection": {
+              "kind": "ready",
+              "stale": false,
+              "pending": false,
+              "canRetry": false
+            }
+          },
+          "singleOwner": {
+            "mounts": 1,
+            "games": 1,
+            "peak": 1,
+            "activeSockets": 1,
+            "canvases": 1
+          },
+          "reportPosts": 0,
+          "statusChecks": 0,
+          "image": "docs/mcr/evidence/parade-ink-report-error-network/native12/390-844-report-permission.png",
+          "visualOnlyRetainedImage": false
+        }
+      ]
+    },
+    {
+      "width": 390,
+      "height": 844,
+      "scenario": "report-ready",
+      "status": "PASS",
+      "executionRound": "native12",
+      "completed": true,
+      "captures": [
+        {
+          "label": "report-ready",
+          "geometry": {
+            "overflow": false,
+            "controls": [
+              {
+                "name": "Close report",
+                "width": 116.796875,
+                "height": 44
+              },
+              {
+                "name": "HarassmentPrivacy concernUnsafe meetingSpamOther",
+                "width": 320,
+                "height": 44
+              },
+              {
+                "name": "Controlled private report draft",
+                "width": 320,
+                "height": 112
+              },
+              {
+                "name": "Submit report",
+                "width": 320,
+                "height": 44
+              }
+            ],
+            "contract": "\"pi01-photo2-v1\"",
+            "raw": false
+          },
+          "states": {
+            "connection": {
+              "kind": "ready",
+              "stale": false,
+              "pending": false,
+              "canRetry": false
+            },
+            "displayConnection": {
+              "kind": "ready",
+              "stale": false,
+              "pending": false,
+              "canRetry": false
+            },
+            "defaultConnection": {
+              "kind": "ready",
+              "stale": false,
+              "pending": false,
+              "canRetry": false
+            }
+          },
+          "singleOwner": {
+            "mounts": 1,
+            "games": 1,
+            "peak": 1,
+            "activeSockets": 1,
+            "canvases": 1
+          },
+          "reportPosts": 0,
+          "statusChecks": 0,
+          "image": "docs/mcr/evidence/parade-ink-report-error-network/native12/390-844-report-ready.png",
+          "visualOnlyRetainedImage": false
+        }
+      ]
+    },
+    {
+      "width": 390,
+      "height": 844,
+      "scenario": "report-unavailable",
+      "status": "PASS",
+      "executionRound": "native12",
+      "completed": true,
+      "captures": [
+        {
+          "label": "report-unavailable",
+          "geometry": {
+            "overflow": false,
+            "controls": [
+              {
+                "name": "Check safety availability",
+                "width": 205.015625,
+                "height": 44
+              },
+              {
+                "name": "Back to Me",
+                "width": 107.828125,
+                "height": 44
+              }
+            ],
+            "contract": "\"pi01-photo2-v1\"",
+            "raw": false
+          },
+          "states": {
+            "connection": {
+              "kind": "ready",
+              "stale": false,
+              "pending": false,
+              "canRetry": false
+            },
+            "displayConnection": {
+              "kind": "ready",
+              "stale": false,
+              "pending": false,
+              "canRetry": false
+            },
+            "defaultConnection": {
+              "kind": "ready",
+              "stale": false,
+              "pending": false,
+              "canRetry": false
+            }
+          },
+          "singleOwner": {
+            "mounts": 1,
+            "games": 1,
+            "peak": 1,
+            "activeSockets": 1,
+            "canvases": 1
+          },
+          "reportPosts": 0,
+          "statusChecks": 0,
+          "image": "docs/mcr/evidence/parade-ink-report-error-network/native12/390-844-report-unavailable.png",
+          "visualOnlyRetainedImage": false
+        }
+      ]
+    },
+    {
+      "width": 390,
+      "height": 844,
+      "scenario": "report-unknown",
+      "status": "PASS",
+      "executionRound": "native12",
+      "completed": true,
+      "captures": [
+        {
+          "label": "report-unknown",
+          "geometry": {
+            "overflow": false,
+            "controls": [
+              {
+                "name": "Close report",
+                "width": 116.796875,
+                "height": 44
+              },
+              {
+                "name": "Check original request status",
+                "width": 320,
+                "height": 44
+              }
+            ],
+            "contract": "\"pi01-photo2-v1\"",
+            "raw": false
+          },
+          "states": {
+            "connection": {
+              "kind": "ready",
+              "stale": false,
+              "pending": false,
+              "canRetry": false
+            },
+            "displayConnection": {
+              "kind": "ready",
+              "stale": false,
+              "pending": false,
+              "canRetry": false
+            },
+            "defaultConnection": {
+              "kind": "ready",
+              "stale": false,
+              "pending": false,
+              "canRetry": false
+            }
+          },
+          "singleOwner": {
+            "mounts": 1,
+            "games": 1,
+            "peak": 1,
+            "activeSockets": 1,
+            "canvases": 1
+          },
+          "reportPosts": 1,
+          "statusChecks": 1,
+          "image": "docs/mcr/evidence/parade-ink-report-error-network/native12/390-844-report-unknown.png",
+          "visualOnlyRetainedImage": false
+        }
+      ]
+    },
+    {
+      "width": 390,
+      "height": 844,
+      "scenario": "resync",
+      "status": "PASS",
+      "executionRound": "native12",
+      "completed": true,
+      "captures": [
+        {
+          "label": "resync",
+          "geometry": {
+            "overflow": false,
+            "controls": [
+              {
+                "name": "Back to world",
+                "width": 183,
+                "height": 44
+              },
+              {
+                "name": "Back to home",
+                "width": 183,
+                "height": 44
+              }
+            ],
+            "contract": "\"pi01-photo2-v1\"",
+            "raw": false
+          },
+          "states": {
+            "connection": {
+              "kind": "resync",
+              "stale": true,
+              "pending": true,
+              "canRetry": false
+            },
+            "displayConnection": {
+              "kind": "resync",
+              "stale": true,
+              "pending": true,
+              "canRetry": false
+            },
+            "defaultConnection": {
+              "kind": "resync",
+              "stale": true,
+              "pending": true,
+              "canRetry": false
+            }
+          },
+          "singleOwner": {
+            "mounts": 1,
+            "games": 1,
+            "peak": 1,
+            "activeSockets": 1,
+            "canvases": 1
+          },
+          "reportPosts": 0,
+          "statusChecks": 0,
+          "image": "docs/mcr/evidence/parade-ink-report-error-network/native12/390-844-resync.png",
+          "visualOnlyRetainedImage": false
+        }
+      ]
+    },
+    {
+      "width": 390,
+      "height": 844,
+      "scenario": "suspended",
+      "status": "PASS",
+      "executionRound": "native12",
+      "completed": true,
+      "captures": [
+        {
+          "label": "suspended",
+          "geometry": {
+            "overflow": false,
+            "controls": [
+              {
+                "name": "Back to world",
+                "width": 183,
+                "height": 44
+              },
+              {
+                "name": "Back to home",
+                "width": 183,
+                "height": 44
+              }
+            ],
+            "contract": "\"pi01-photo2-v1\"",
+            "raw": false
+          },
+          "states": {
+            "connection": {
+              "kind": "suspended",
+              "stale": true,
+              "pending": false,
+              "canRetry": false
+            },
+            "displayConnection": {
+              "kind": "suspended",
+              "stale": true,
+              "pending": false,
+              "canRetry": false
+            },
+            "defaultConnection": {
+              "kind": "suspended",
+              "stale": true,
+              "pending": false,
+              "canRetry": false
+            }
+          },
+          "singleOwner": {
+            "mounts": 1,
+            "games": 1,
+            "peak": 1,
+            "activeSockets": 0,
+            "canvases": 1
+          },
+          "reportPosts": 0,
+          "statusChecks": 0,
+          "image": "docs/mcr/evidence/parade-ink-report-error-network/native12/390-844-suspended.png",
+          "visualOnlyRetainedImage": false
+        }
+      ]
+    },
+    {
+      "width": 390,
+      "height": 844,
+      "scenario": "unavailable",
+      "status": "PASS",
+      "executionRound": "native12",
+      "completed": true,
+      "captures": [
+        {
+          "label": "unavailable",
+          "geometry": {
+            "overflow": false,
+            "controls": [
+              {
+                "name": "Reload page",
+                "width": 183,
+                "height": 44
+              },
+              {
+                "name": "Back to world",
+                "width": 183,
+                "height": 44
+              },
+              {
+                "name": "Back to home",
+                "width": 374,
+                "height": 44
+              }
+            ],
+            "contract": "\"pi01-photo2-v1\"",
+            "raw": false
+          },
+          "states": {
+            "connection": {
+              "kind": "unavailable",
+              "stale": true,
+              "pending": false,
+              "canRetry": false
+            },
+            "displayConnection": {
+              "kind": "unavailable",
+              "stale": true,
+              "pending": false,
+              "canRetry": false
+            },
+            "defaultConnection": {
+              "kind": "ready",
+              "stale": false,
+              "pending": false,
+              "canRetry": false
+            }
+          },
+          "singleOwner": {
+            "mounts": 1,
+            "games": 1,
+            "peak": 1,
+            "activeSockets": 1,
+            "canvases": 1
+          },
+          "reportPosts": 0,
+          "statusChecks": 0,
+          "image": "docs/mcr/evidence/parade-ink-report-error-network/native12/390-844-unavailable.png",
+          "visualOnlyRetainedImage": false
+        }
+      ]
+    },
+    {
+      "width": 390,
+      "height": 844,
+      "scenario": "version",
+      "status": "PASS",
+      "executionRound": "native12",
+      "completed": true,
+      "captures": [
+        {
+          "label": "version",
+          "geometry": {
+            "overflow": false,
+            "controls": [
+              {
+                "name": "Reload page",
+                "width": 183,
+                "height": 44
+              },
+              {
+                "name": "Back to world",
+                "width": 183,
+                "height": 44
+              },
+              {
+                "name": "Back to home",
+                "width": 374,
+                "height": 44
+              }
+            ],
+            "contract": "\"pi01-photo2-v1\"",
+            "raw": false
+          },
+          "states": {
+            "connection": {
+              "kind": "version",
+              "stale": true,
+              "pending": false,
+              "canRetry": false
+            },
+            "displayConnection": {
+              "kind": "version",
+              "stale": true,
+              "pending": false,
+              "canRetry": false
+            },
+            "defaultConnection": {
+              "kind": "ready",
+              "stale": false,
+              "pending": false,
+              "canRetry": false
+            }
+          },
+          "singleOwner": {
+            "mounts": 1,
+            "games": 1,
+            "peak": 1,
+            "activeSockets": 1,
+            "canvases": 1
+          },
+          "reportPosts": 0,
+          "statusChecks": 0,
+          "image": "docs/mcr/evidence/parade-ink-report-error-network/native12/390-844-version.png",
+          "visualOnlyRetainedImage": false
+        }
+      ]
+    },
+    {
+      "width": 430,
+      "height": 844,
+      "scenario": "default-version",
+      "status": "PASS",
+      "executionRound": "native12",
+      "completed": true,
+      "captures": [
+        {
+          "label": "default-version",
+          "geometry": {
+            "overflow": false,
+            "controls": [
+              {
+                "name": "Reload page",
+                "width": 132.65625,
+                "height": 44
+              },
+              {
+                "name": "Back to world",
+                "width": 132.671875,
+                "height": 44
+              },
+              {
+                "name": "Back to home",
+                "width": 132.671875,
+                "height": 44
+              }
+            ],
+            "contract": "\"pi01-photo2-v1\"",
+            "raw": false
+          },
+          "states": {
+            "connection": {
+              "kind": "reconnecting",
+              "stale": true,
+              "pending": true,
+              "canRetry": false
+            },
+            "displayConnection": {
+              "kind": "version",
+              "stale": true,
+              "pending": false,
+              "canRetry": false
+            },
+            "defaultConnection": {
+              "kind": "version",
+              "stale": true,
+              "pending": false,
+              "canRetry": false
+            }
+          },
+          "singleOwner": {
+            "mounts": 1,
+            "games": 0,
+            "peak": 1,
+            "activeSockets": 0,
+            "canvases": 0
+          },
+          "reportPosts": 0,
+          "statusChecks": 0,
+          "image": null,
+          "visualOnlyRetainedImage": false
+        }
+      ]
+    },
+    {
+      "width": 430,
+      "height": 844,
+      "scenario": "http-401",
+      "status": "PASS",
+      "executionRound": "native12",
+      "completed": true,
+      "captures": [
+        {
+          "label": "http-401",
+          "geometry": {
+            "overflow": false,
+            "controls": [
+              {
+                "name": "Reload page",
+                "width": 130.65625,
+                "height": 44
+              },
+              {
+                "name": "Back to world",
+                "width": 130.671875,
+                "height": 44
+              },
+              {
+                "name": "Back to home",
+                "width": 130.671875,
+                "height": 44
+              }
+            ],
+            "contract": "\"pi01-photo2-v1\"",
+            "raw": false
+          },
+          "states": {
+            "connection": {
+              "kind": "ready",
+              "stale": false,
+              "pending": false,
+              "canRetry": false
+            },
+            "displayConnection": {
+              "kind": "ready",
+              "stale": false,
+              "pending": false,
+              "canRetry": false
+            },
+            "defaultConnection": {
+              "kind": "ready",
+              "stale": false,
+              "pending": false,
+              "canRetry": false
+            }
+          },
+          "singleOwner": {
+            "mounts": 1,
+            "games": 1,
+            "peak": 1,
+            "activeSockets": 1,
+            "canvases": 1
+          },
+          "reportPosts": 0,
+          "statusChecks": 0,
+          "image": "docs/mcr/evidence/parade-ink-report-error-network/native12/430-844-http-401.png",
+          "visualOnlyRetainedImage": false
+        }
+      ]
+    },
+    {
+      "width": 430,
+      "height": 844,
+      "scenario": "http-403",
+      "status": "PASS",
+      "executionRound": "native12",
+      "completed": true,
+      "captures": [
+        {
+          "label": "http-403",
+          "geometry": {
+            "overflow": false,
+            "controls": [
+              {
+                "name": "Reload page",
+                "width": 130.65625,
+                "height": 44
+              },
+              {
+                "name": "Back to world",
+                "width": 130.671875,
+                "height": 44
+              },
+              {
+                "name": "Back to home",
+                "width": 130.671875,
+                "height": 44
+              }
+            ],
+            "contract": "\"pi01-photo2-v1\"",
+            "raw": false
+          },
+          "states": {
+            "connection": {
+              "kind": "ready",
+              "stale": false,
+              "pending": false,
+              "canRetry": false
+            },
+            "displayConnection": {
+              "kind": "ready",
+              "stale": false,
+              "pending": false,
+              "canRetry": false
+            },
+            "defaultConnection": {
+              "kind": "ready",
+              "stale": false,
+              "pending": false,
+              "canRetry": false
+            }
+          },
+          "singleOwner": {
+            "mounts": 1,
+            "games": 1,
+            "peak": 1,
+            "activeSockets": 1,
+            "canvases": 1
+          },
+          "reportPosts": 0,
+          "statusChecks": 0,
+          "image": null,
+          "visualOnlyRetainedImage": false
+        }
+      ]
+    },
+    {
+      "width": 430,
+      "height": 844,
+      "scenario": "http-404",
+      "status": "PASS",
+      "executionRound": "native12",
+      "completed": true,
+      "captures": [
+        {
+          "label": "http-404",
+          "geometry": {
+            "overflow": false,
+            "controls": [
+              {
+                "name": "Reload page",
+                "width": 130.65625,
+                "height": 44
+              },
+              {
+                "name": "Back to world",
+                "width": 130.671875,
+                "height": 44
+              },
+              {
+                "name": "Back to home",
+                "width": 130.671875,
+                "height": 44
+              }
+            ],
+            "contract": "\"pi01-photo2-v1\"",
+            "raw": false
+          },
+          "states": {
+            "connection": {
+              "kind": "ready",
+              "stale": false,
+              "pending": false,
+              "canRetry": false
+            },
+            "displayConnection": {
+              "kind": "ready",
+              "stale": false,
+              "pending": false,
+              "canRetry": false
+            },
+            "defaultConnection": {
+              "kind": "ready",
+              "stale": false,
+              "pending": false,
+              "canRetry": false
+            }
+          },
+          "singleOwner": {
+            "mounts": 1,
+            "games": 1,
+            "peak": 1,
+            "activeSockets": 1,
+            "canvases": 1
+          },
+          "reportPosts": 0,
+          "statusChecks": 0,
+          "image": null,
+          "visualOnlyRetainedImage": false
+        }
+      ]
+    },
+    {
+      "width": 430,
+      "height": 844,
+      "scenario": "http-410",
+      "status": "PASS",
+      "executionRound": "native12",
+      "completed": true,
+      "captures": [
+        {
+          "label": "http-410",
+          "geometry": {
+            "overflow": false,
+            "controls": [
+              {
+                "name": "Reload page",
+                "width": 130.65625,
+                "height": 44
+              },
+              {
+                "name": "Back to world",
+                "width": 130.671875,
+                "height": 44
+              },
+              {
+                "name": "Back to home",
+                "width": 130.671875,
+                "height": 44
+              }
+            ],
+            "contract": "\"pi01-photo2-v1\"",
+            "raw": false
+          },
+          "states": {
+            "connection": {
+              "kind": "ready",
+              "stale": false,
+              "pending": false,
+              "canRetry": false
+            },
+            "displayConnection": {
+              "kind": "ready",
+              "stale": false,
+              "pending": false,
+              "canRetry": false
+            },
+            "defaultConnection": {
+              "kind": "ready",
+              "stale": false,
+              "pending": false,
+              "canRetry": false
+            }
+          },
+          "singleOwner": {
+            "mounts": 1,
+            "games": 1,
+            "peak": 1,
+            "activeSockets": 1,
+            "canvases": 1
+          },
+          "reportPosts": 0,
+          "statusChecks": 0,
+          "image": null,
+          "visualOnlyRetainedImage": false
+        }
+      ]
+    },
+    {
+      "width": 430,
+      "height": 844,
+      "scenario": "http-429",
+      "status": "PASS",
+      "executionRound": "native12",
+      "completed": true,
+      "captures": [
+        {
+          "label": "http-429",
+          "geometry": {
+            "overflow": false,
+            "controls": [
+              {
+                "name": "Reload page",
+                "width": 130.65625,
+                "height": 44
+              },
+              {
+                "name": "Back to world",
+                "width": 130.671875,
+                "height": 44
+              },
+              {
+                "name": "Back to home",
+                "width": 130.671875,
+                "height": 44
+              }
+            ],
+            "contract": "\"pi01-photo2-v1\"",
+            "raw": false
+          },
+          "states": {
+            "connection": {
+              "kind": "ready",
+              "stale": false,
+              "pending": false,
+              "canRetry": false
+            },
+            "displayConnection": {
+              "kind": "ready",
+              "stale": false,
+              "pending": false,
+              "canRetry": false
+            },
+            "defaultConnection": {
+              "kind": "ready",
+              "stale": false,
+              "pending": false,
+              "canRetry": false
+            }
+          },
+          "singleOwner": {
+            "mounts": 1,
+            "games": 1,
+            "peak": 1,
+            "activeSockets": 1,
+            "canvases": 1
+          },
+          "reportPosts": 0,
+          "statusChecks": 0,
+          "image": null,
+          "visualOnlyRetainedImage": false
+        }
+      ]
+    },
+    {
+      "width": 430,
+      "height": 844,
+      "scenario": "http-503",
+      "status": "PASS",
+      "executionRound": "native12",
+      "completed": true,
+      "captures": [
+        {
+          "label": "http-503",
+          "geometry": {
+            "overflow": false,
+            "controls": [
+              {
+                "name": "Reload page",
+                "width": 130.65625,
+                "height": 44
+              },
+              {
+                "name": "Back to world",
+                "width": 130.671875,
+                "height": 44
+              },
+              {
+                "name": "Back to home",
+                "width": 130.671875,
+                "height": 44
+              }
+            ],
+            "contract": "\"pi01-photo2-v1\"",
+            "raw": false
+          },
+          "states": {
+            "connection": {
+              "kind": "ready",
+              "stale": false,
+              "pending": false,
+              "canRetry": false
+            },
+            "displayConnection": {
+              "kind": "ready",
+              "stale": false,
+              "pending": false,
+              "canRetry": false
+            },
+            "defaultConnection": {
+              "kind": "ready",
+              "stale": false,
+              "pending": false,
+              "canRetry": false
+            }
+          },
+          "singleOwner": {
+            "mounts": 1,
+            "games": 1,
+            "peak": 1,
+            "activeSockets": 1,
+            "canvases": 1
+          },
+          "reportPosts": 0,
+          "statusChecks": 0,
+          "image": "docs/mcr/evidence/parade-ink-report-error-network/native12/430-844-http-503.png",
+          "visualOnlyRetainedImage": false
+        }
+      ]
+    },
+    {
+      "width": 430,
+      "height": 844,
+      "scenario": "maintenance",
+      "status": "PASS",
+      "executionRound": "native12",
+      "completed": true,
+      "captures": [
+        {
+          "label": "maintenance",
+          "geometry": {
+            "overflow": false,
+            "controls": [
+              {
+                "name": "Reload page",
+                "width": 132.65625,
+                "height": 44
+              },
+              {
+                "name": "Back to world",
+                "width": 132.671875,
+                "height": 44
+              },
+              {
+                "name": "Back to home",
+                "width": 132.671875,
+                "height": 44
+              }
+            ],
+            "contract": "\"pi01-photo2-v1\"",
+            "raw": false
+          },
+          "states": {
+            "connection": {
+              "kind": "maintenance",
+              "stale": true,
+              "pending": false,
+              "canRetry": false
+            },
+            "displayConnection": {
+              "kind": "maintenance",
+              "stale": true,
+              "pending": false,
+              "canRetry": false
+            },
+            "defaultConnection": {
+              "kind": "ready",
+              "stale": false,
+              "pending": false,
+              "canRetry": false
+            }
+          },
+          "singleOwner": {
+            "mounts": 1,
+            "games": 1,
+            "peak": 1,
+            "activeSockets": 1,
+            "canvases": 1
+          },
+          "reportPosts": 0,
+          "statusChecks": 0,
+          "image": null,
+          "visualOnlyRetainedImage": false
+        }
+      ]
+    },
+    {
+      "width": 430,
+      "height": 844,
+      "scenario": "offline",
+      "status": "PASS",
+      "executionRound": "native12",
+      "completed": true,
+      "captures": [
+        {
+          "label": "offline",
+          "geometry": {
+            "overflow": false,
+            "controls": [
+              {
+                "name": "Reload page",
+                "width": 132.65625,
+                "height": 44
+              },
+              {
+                "name": "Back to world",
+                "width": 132.671875,
+                "height": 44
+              },
+              {
+                "name": "Back to home",
+                "width": 132.671875,
+                "height": 44
+              }
+            ],
+            "contract": "\"pi01-photo2-v1\"",
+            "raw": false
+          },
+          "states": {
+            "connection": {
+              "kind": "offline",
+              "stale": true,
+              "pending": false,
+              "canRetry": false
+            },
+            "displayConnection": {
+              "kind": "offline",
+              "stale": true,
+              "pending": false,
+              "canRetry": false
+            },
+            "defaultConnection": {
+              "kind": "ready",
+              "stale": false,
+              "pending": false,
+              "canRetry": false
+            }
+          },
+          "singleOwner": {
+            "mounts": 1,
+            "games": 1,
+            "peak": 1,
+            "activeSockets": 1,
+            "canvases": 1
+          },
+          "reportPosts": 0,
+          "statusChecks": 0,
+          "image": "docs/mcr/evidence/parade-ink-report-error-network/native12/430-844-offline.png",
+          "visualOnlyRetainedImage": false
+        }
+      ]
+    },
+    {
+      "width": 430,
+      "height": 844,
+      "scenario": "reconnecting",
+      "status": "PASS",
+      "executionRound": "native12",
+      "completed": true,
+      "captures": [
+        {
+          "label": "reconnecting",
+          "geometry": {
+            "overflow": false,
+            "controls": [
+              {
+                "name": "Back to world",
+                "width": 203,
+                "height": 44
+              },
+              {
+                "name": "Back to home",
+                "width": 203,
+                "height": 44
+              }
+            ],
+            "contract": "\"pi01-photo2-v1\"",
+            "raw": false
+          },
+          "states": {
+            "connection": {
+              "kind": "reconnecting",
+              "stale": true,
+              "pending": true,
+              "canRetry": false
+            },
+            "displayConnection": {
+              "kind": "reconnecting",
+              "stale": true,
+              "pending": true,
+              "canRetry": false
+            },
+            "defaultConnection": {
+              "kind": "reconnecting",
+              "stale": true,
+              "pending": true,
+              "canRetry": false
+            }
+          },
+          "singleOwner": {
+            "mounts": 1,
+            "games": 1,
+            "peak": 1,
+            "activeSockets": 1,
+            "canvases": 1
+          },
+          "reportPosts": 0,
+          "statusChecks": 0,
+          "image": null,
+          "visualOnlyRetainedImage": false
+        },
+        {
+          "label": "reconnecting-expired",
+          "geometry": {
+            "overflow": false,
+            "controls": [
+              {
+                "name": "Reload page",
+                "width": 132.65625,
+                "height": 44
+              },
+              {
+                "name": "Back to world",
+                "width": 132.671875,
+                "height": 44
+              },
+              {
+                "name": "Back to home",
+                "width": 132.671875,
+                "height": 44
+              }
+            ],
+            "contract": "\"pi01-photo2-v1\"",
+            "raw": false
+          },
+          "states": {
+            "connection": {
+              "kind": "unavailable",
+              "stale": true,
+              "pending": false,
+              "canRetry": false
+            },
+            "displayConnection": {
+              "kind": "unavailable",
+              "stale": true,
+              "pending": false,
+              "canRetry": false
+            },
+            "defaultConnection": {
+              "kind": "reconnecting",
+              "stale": true,
+              "pending": true,
+              "canRetry": false
+            }
+          },
+          "singleOwner": {
+            "mounts": 1,
+            "games": 1,
+            "peak": 1,
+            "activeSockets": 1,
+            "canvases": 1
+          },
+          "reportPosts": 0,
+          "statusChecks": 0,
+          "image": null,
+          "visualOnlyRetainedImage": false
+        }
+      ]
+    },
+    {
+      "width": 430,
+      "height": 844,
+      "scenario": "report-failed",
+      "status": "PASS",
+      "executionRound": "native12",
+      "completed": true,
+      "captures": [
+        {
+          "label": "report-failed",
+          "geometry": {
+            "overflow": false,
+            "controls": [
+              {
+                "name": "Close report",
+                "width": 116.796875,
+                "height": 44
+              },
+              {
+                "name": "Check original request status",
+                "width": 360,
+                "height": 44
+              }
+            ],
+            "contract": "\"pi01-photo2-v1\"",
+            "raw": false
+          },
+          "states": {
+            "connection": {
+              "kind": "ready",
+              "stale": false,
+              "pending": false,
+              "canRetry": false
+            },
+            "displayConnection": {
+              "kind": "ready",
+              "stale": false,
+              "pending": false,
+              "canRetry": false
+            },
+            "defaultConnection": {
+              "kind": "ready",
+              "stale": false,
+              "pending": false,
+              "canRetry": false
+            }
+          },
+          "singleOwner": {
+            "mounts": 1,
+            "games": 1,
+            "peak": 1,
+            "activeSockets": 1,
+            "canvases": 1
+          },
+          "reportPosts": 1,
+          "statusChecks": 1,
+          "image": null,
+          "visualOnlyRetainedImage": false
+        }
+      ]
+    },
+    {
+      "width": 430,
+      "height": 844,
+      "scenario": "report-pending",
+      "status": "PASS",
+      "executionRound": "native12",
+      "completed": true,
+      "captures": [
+        {
+          "label": "report-pending",
+          "geometry": {
+            "overflow": false,
+            "controls": [
+              {
+                "name": "Close report",
+                "width": 116.796875,
+                "height": 44
+              },
+              {
+                "name": "Check original request status",
+                "width": 360,
+                "height": 44
+              }
+            ],
+            "contract": "\"pi01-photo2-v1\"",
+            "raw": false
+          },
+          "states": {
+            "connection": {
+              "kind": "ready",
+              "stale": false,
+              "pending": false,
+              "canRetry": false
+            },
+            "displayConnection": {
+              "kind": "ready",
+              "stale": false,
+              "pending": false,
+              "canRetry": false
+            },
+            "defaultConnection": {
+              "kind": "ready",
+              "stale": false,
+              "pending": false,
+              "canRetry": false
+            }
+          },
+          "singleOwner": {
+            "mounts": 1,
+            "games": 1,
+            "peak": 1,
+            "activeSockets": 1,
+            "canvases": 1
+          },
+          "reportPosts": 1,
+          "statusChecks": 1,
+          "image": "docs/mcr/evidence/parade-ink-report-error-network/native12/430-844-report-pending.png",
+          "visualOnlyRetainedImage": false
+        }
+      ]
+    },
+    {
+      "width": 430,
+      "height": 844,
+      "scenario": "report-permission",
+      "status": "PASS",
+      "executionRound": "native12",
+      "completed": true,
+      "captures": [
+        {
+          "label": "report-permission",
+          "geometry": {
+            "overflow": false,
+            "controls": [
+              {
+                "name": "Check safety availability",
+                "width": 205.015625,
+                "height": 44
+              },
+              {
+                "name": "Back to Me",
+                "width": 107.828125,
+                "height": 44
+              }
+            ],
+            "contract": "\"pi01-photo2-v1\"",
+            "raw": false
+          },
+          "states": {
+            "connection": {
+              "kind": "ready",
+              "stale": false,
+              "pending": false,
+              "canRetry": false
+            },
+            "displayConnection": {
+              "kind": "ready",
+              "stale": false,
+              "pending": false,
+              "canRetry": false
+            },
+            "defaultConnection": {
+              "kind": "ready",
+              "stale": false,
+              "pending": false,
+              "canRetry": false
+            }
+          },
+          "singleOwner": {
+            "mounts": 1,
+            "games": 1,
+            "peak": 1,
+            "activeSockets": 1,
+            "canvases": 1
+          },
+          "reportPosts": 0,
+          "statusChecks": 0,
+          "image": null,
+          "visualOnlyRetainedImage": false
+        }
+      ]
+    },
+    {
+      "width": 430,
+      "height": 844,
+      "scenario": "report-ready",
+      "status": "PASS",
+      "executionRound": "native12",
+      "completed": true,
+      "captures": [
+        {
+          "label": "report-ready",
+          "geometry": {
+            "overflow": false,
+            "controls": [
+              {
+                "name": "Close report",
+                "width": 116.796875,
+                "height": 44
+              },
+              {
+                "name": "HarassmentPrivacy concernUnsafe meetingSpamOther",
+                "width": 360,
+                "height": 44
+              },
+              {
+                "name": "Controlled private report draft",
+                "width": 360,
+                "height": 112
+              },
+              {
+                "name": "Submit report",
+                "width": 360,
+                "height": 44
+              }
+            ],
+            "contract": "\"pi01-photo2-v1\"",
+            "raw": false
+          },
+          "states": {
+            "connection": {
+              "kind": "ready",
+              "stale": false,
+              "pending": false,
+              "canRetry": false
+            },
+            "displayConnection": {
+              "kind": "ready",
+              "stale": false,
+              "pending": false,
+              "canRetry": false
+            },
+            "defaultConnection": {
+              "kind": "ready",
+              "stale": false,
+              "pending": false,
+              "canRetry": false
+            }
+          },
+          "singleOwner": {
+            "mounts": 1,
+            "games": 1,
+            "peak": 1,
+            "activeSockets": 1,
+            "canvases": 1
+          },
+          "reportPosts": 0,
+          "statusChecks": 0,
+          "image": "docs/mcr/evidence/parade-ink-report-error-network/native12/430-844-report-ready.png",
+          "visualOnlyRetainedImage": false
+        }
+      ]
+    },
+    {
+      "width": 430,
+      "height": 844,
+      "scenario": "report-unavailable",
+      "status": "PASS",
+      "executionRound": "native12",
+      "completed": true,
+      "captures": [
+        {
+          "label": "report-unavailable",
+          "geometry": {
+            "overflow": false,
+            "controls": [
+              {
+                "name": "Check safety availability",
+                "width": 205.015625,
+                "height": 44
+              },
+              {
+                "name": "Back to Me",
+                "width": 107.828125,
+                "height": 44
+              }
+            ],
+            "contract": "\"pi01-photo2-v1\"",
+            "raw": false
+          },
+          "states": {
+            "connection": {
+              "kind": "ready",
+              "stale": false,
+              "pending": false,
+              "canRetry": false
+            },
+            "displayConnection": {
+              "kind": "ready",
+              "stale": false,
+              "pending": false,
+              "canRetry": false
+            },
+            "defaultConnection": {
+              "kind": "ready",
+              "stale": false,
+              "pending": false,
+              "canRetry": false
+            }
+          },
+          "singleOwner": {
+            "mounts": 1,
+            "games": 1,
+            "peak": 1,
+            "activeSockets": 1,
+            "canvases": 1
+          },
+          "reportPosts": 0,
+          "statusChecks": 0,
+          "image": null,
+          "visualOnlyRetainedImage": false
+        }
+      ]
+    },
+    {
+      "width": 430,
+      "height": 844,
+      "scenario": "report-unknown",
+      "status": "PASS",
+      "executionRound": "native12",
+      "completed": true,
+      "captures": [
+        {
+          "label": "report-unknown",
+          "geometry": {
+            "overflow": false,
+            "controls": [
+              {
+                "name": "Close report",
+                "width": 116.796875,
+                "height": 44
+              },
+              {
+                "name": "Check original request status",
+                "width": 360,
+                "height": 44
+              }
+            ],
+            "contract": "\"pi01-photo2-v1\"",
+            "raw": false
+          },
+          "states": {
+            "connection": {
+              "kind": "ready",
+              "stale": false,
+              "pending": false,
+              "canRetry": false
+            },
+            "displayConnection": {
+              "kind": "ready",
+              "stale": false,
+              "pending": false,
+              "canRetry": false
+            },
+            "defaultConnection": {
+              "kind": "ready",
+              "stale": false,
+              "pending": false,
+              "canRetry": false
+            }
+          },
+          "singleOwner": {
+            "mounts": 1,
+            "games": 1,
+            "peak": 1,
+            "activeSockets": 1,
+            "canvases": 1
+          },
+          "reportPosts": 1,
+          "statusChecks": 1,
+          "image": null,
+          "visualOnlyRetainedImage": false
+        }
+      ]
+    },
+    {
+      "width": 430,
+      "height": 844,
+      "scenario": "resync",
+      "status": "PASS",
+      "executionRound": "native12",
+      "completed": true,
+      "captures": [
+        {
+          "label": "resync",
+          "geometry": {
+            "overflow": false,
+            "controls": [
+              {
+                "name": "Back to world",
+                "width": 203,
+                "height": 44
+              },
+              {
+                "name": "Back to home",
+                "width": 203,
+                "height": 44
+              }
+            ],
+            "contract": "\"pi01-photo2-v1\"",
+            "raw": false
+          },
+          "states": {
+            "connection": {
+              "kind": "resync",
+              "stale": true,
+              "pending": true,
+              "canRetry": false
+            },
+            "displayConnection": {
+              "kind": "resync",
+              "stale": true,
+              "pending": true,
+              "canRetry": false
+            },
+            "defaultConnection": {
+              "kind": "resync",
+              "stale": true,
+              "pending": true,
+              "canRetry": false
+            }
+          },
+          "singleOwner": {
+            "mounts": 1,
+            "games": 1,
+            "peak": 1,
+            "activeSockets": 1,
+            "canvases": 1
+          },
+          "reportPosts": 0,
+          "statusChecks": 0,
+          "image": null,
+          "visualOnlyRetainedImage": false
+        }
+      ]
+    },
+    {
+      "width": 430,
+      "height": 844,
+      "scenario": "suspended",
+      "status": "PASS",
+      "executionRound": "native12",
+      "completed": true,
+      "captures": [
+        {
+          "label": "suspended",
+          "geometry": {
+            "overflow": false,
+            "controls": [
+              {
+                "name": "Back to world",
+                "width": 203,
+                "height": 44
+              },
+              {
+                "name": "Back to home",
+                "width": 203,
+                "height": 44
+              }
+            ],
+            "contract": "\"pi01-photo2-v1\"",
+            "raw": false
+          },
+          "states": {
+            "connection": {
+              "kind": "suspended",
+              "stale": true,
+              "pending": false,
+              "canRetry": false
+            },
+            "displayConnection": {
+              "kind": "suspended",
+              "stale": true,
+              "pending": false,
+              "canRetry": false
+            },
+            "defaultConnection": {
+              "kind": "suspended",
+              "stale": true,
+              "pending": false,
+              "canRetry": false
+            }
+          },
+          "singleOwner": {
+            "mounts": 1,
+            "games": 1,
+            "peak": 1,
+            "activeSockets": 0,
+            "canvases": 1
+          },
+          "reportPosts": 0,
+          "statusChecks": 0,
+          "image": null,
+          "visualOnlyRetainedImage": false
+        }
+      ]
+    },
+    {
+      "width": 430,
+      "height": 844,
+      "scenario": "unavailable",
+      "status": "PASS",
+      "executionRound": "native12",
+      "completed": true,
+      "captures": [
+        {
+          "label": "unavailable",
+          "geometry": {
+            "overflow": false,
+            "controls": [
+              {
+                "name": "Reload page",
+                "width": 132.65625,
+                "height": 44
+              },
+              {
+                "name": "Back to world",
+                "width": 132.671875,
+                "height": 44
+              },
+              {
+                "name": "Back to home",
+                "width": 132.671875,
+                "height": 44
+              }
+            ],
+            "contract": "\"pi01-photo2-v1\"",
+            "raw": false
+          },
+          "states": {
+            "connection": {
+              "kind": "unavailable",
+              "stale": true,
+              "pending": false,
+              "canRetry": false
+            },
+            "displayConnection": {
+              "kind": "unavailable",
+              "stale": true,
+              "pending": false,
+              "canRetry": false
+            },
+            "defaultConnection": {
+              "kind": "ready",
+              "stale": false,
+              "pending": false,
+              "canRetry": false
+            }
+          },
+          "singleOwner": {
+            "mounts": 1,
+            "games": 1,
+            "peak": 1,
+            "activeSockets": 1,
+            "canvases": 1
+          },
+          "reportPosts": 0,
+          "statusChecks": 0,
+          "image": null,
+          "visualOnlyRetainedImage": false
+        }
+      ]
+    },
+    {
+      "width": 430,
+      "height": 844,
+      "scenario": "version",
+      "status": "PASS",
+      "executionRound": "native12",
+      "completed": true,
+      "captures": [
+        {
+          "label": "version",
+          "geometry": {
+            "overflow": false,
+            "controls": [
+              {
+                "name": "Reload page",
+                "width": 132.65625,
+                "height": 44
+              },
+              {
+                "name": "Back to world",
+                "width": 132.671875,
+                "height": 44
+              },
+              {
+                "name": "Back to home",
+                "width": 132.671875,
+                "height": 44
+              }
+            ],
+            "contract": "\"pi01-photo2-v1\"",
+            "raw": false
+          },
+          "states": {
+            "connection": {
+              "kind": "version",
+              "stale": true,
+              "pending": false,
+              "canRetry": false
+            },
+            "displayConnection": {
+              "kind": "version",
+              "stale": true,
+              "pending": false,
+              "canRetry": false
+            },
+            "defaultConnection": {
+              "kind": "ready",
+              "stale": false,
+              "pending": false,
+              "canRetry": false
+            }
+          },
+          "singleOwner": {
+            "mounts": 1,
+            "games": 1,
+            "peak": 1,
+            "activeSockets": 1,
+            "canvases": 1
+          },
+          "reportPosts": 0,
+          "statusChecks": 0,
+          "image": "docs/mcr/evidence/parade-ink-report-error-network/native12/430-844-version.png",
+          "visualOnlyRetainedImage": false
+        }
+      ]
+    }
+  ],
+  "images": [
+    {
+      "path": "docs/mcr/evidence/parade-ink-report-error-network/native09/360-844-offline.png",
+      "sha256": "dde95295bc813e9f11e56d8d26c9fd5a367e8d5a4b2abe237b4adaa3eb1184e3",
+      "bytes": 48304,
+      "pixelWidth": 360,
+      "pixelHeight": 1150,
+      "visualSnapshotRound": "native09"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-report-error-network/native09/360-844-version.png",
+      "sha256": "dba97e713dfa1341f0fedbfc34f552794943f7e0e4ace5ad1a2b47492f647713",
+      "bytes": 50999,
+      "pixelWidth": 360,
+      "pixelHeight": 1166,
+      "visualSnapshotRound": "native09"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-report-error-network/native10/360-844-report-pending.png",
+      "sha256": "970f326e0ddcfa0029ab15e0d9126f3115b6a169e21ab9809a5f4d1dffbf5b37",
+      "bytes": 30976,
+      "pixelWidth": 360,
+      "pixelHeight": 844,
+      "visualSnapshotRound": "native10"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-report-error-network/native10/360-844-report-ready.png",
+      "sha256": "7efd3658ba52ec28167949f298fc4b646ee730df2381f6de0b916d415cff84ad",
+      "bytes": 49611,
+      "pixelWidth": 360,
+      "pixelHeight": 844,
+      "visualSnapshotRound": "native10"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-report-error-network/native12/360-844-http-401.png",
+      "sha256": "2d4cfd89be8b30011b8aeb9305b37796ecf14fffeedf59458ee9f562f24f386f",
+      "bytes": 19002,
+      "pixelWidth": 360,
+      "pixelHeight": 844,
+      "visualSnapshotRound": "native12"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-report-error-network/native12/360-844-http-503.png",
+      "sha256": "2d4cfd89be8b30011b8aeb9305b37796ecf14fffeedf59458ee9f562f24f386f",
+      "bytes": 19002,
+      "pixelWidth": 360,
+      "pixelHeight": 844,
+      "visualSnapshotRound": "native12"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-report-error-network/native12/390-420-http-401.png",
+      "sha256": "fe2b91b9fbdb66634dea676b2262f7d2b9a8aba9543b735fa4e02fafdd45d4d4",
+      "bytes": 17400,
+      "pixelWidth": 390,
+      "pixelHeight": 420,
+      "visualSnapshotRound": "native12"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-report-error-network/native12/390-420-http-503.png",
+      "sha256": "fe2b91b9fbdb66634dea676b2262f7d2b9a8aba9543b735fa4e02fafdd45d4d4",
+      "bytes": 17400,
+      "pixelWidth": 390,
+      "pixelHeight": 420,
+      "visualSnapshotRound": "native12"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-report-error-network/native12/390-420-offline.png",
+      "sha256": "47d9d65464dcc0dba272191ae7abc0237445f6fb932b65872c026772072da706",
+      "bytes": 46035,
+      "pixelWidth": 390,
+      "pixelHeight": 726,
+      "visualSnapshotRound": "native12"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-report-error-network/native12/390-420-report-pending.png",
+      "sha256": "a28406dbd51887e61313c9540e4428e9977b209e9e8b35a9417461eab50eb637",
+      "bytes": 22386,
+      "pixelWidth": 390,
+      "pixelHeight": 420,
+      "visualSnapshotRound": "native12"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-report-error-network/native12/390-420-report-ready.png",
+      "sha256": "1da38e137e8f7b01fcc5e1a5984895f797b98b0a3b898273f8aed7a905c90475",
+      "bytes": 31634,
+      "pixelWidth": 390,
+      "pixelHeight": 420,
+      "visualSnapshotRound": "native12"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-report-error-network/native12/390-420-version.png",
+      "sha256": "3757bdb51deadd82a7afadd7a6b536ac59439519a356cfd7e8ffe13d539110b0",
+      "bytes": 48310,
+      "pixelWidth": 390,
+      "pixelHeight": 726,
+      "visualSnapshotRound": "native12"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-report-error-network/native12/390-844-default-version.png",
+      "sha256": "9d7ea4c159eade53d6783e66fb19e9a9c2da9d594785bb60219d79bee6dd72f5",
+      "bytes": 47916,
+      "pixelWidth": 390,
+      "pixelHeight": 1150,
+      "visualSnapshotRound": "native12"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-report-error-network/native12/390-844-http-401.png",
+      "sha256": "c9b99931b474400cb238ae851e793f1fae3854ac110050c54f71b78a78aed378",
+      "bytes": 19368,
+      "pixelWidth": 390,
+      "pixelHeight": 844,
+      "visualSnapshotRound": "native12"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-report-error-network/native12/390-844-http-403.png",
+      "sha256": "c9b99931b474400cb238ae851e793f1fae3854ac110050c54f71b78a78aed378",
+      "bytes": 19368,
+      "pixelWidth": 390,
+      "pixelHeight": 844,
+      "visualSnapshotRound": "native12"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-report-error-network/native12/390-844-http-404.png",
+      "sha256": "c9b99931b474400cb238ae851e793f1fae3854ac110050c54f71b78a78aed378",
+      "bytes": 19368,
+      "pixelWidth": 390,
+      "pixelHeight": 844,
+      "visualSnapshotRound": "native12"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-report-error-network/native12/390-844-http-410.png",
+      "sha256": "c9b99931b474400cb238ae851e793f1fae3854ac110050c54f71b78a78aed378",
+      "bytes": 19368,
+      "pixelWidth": 390,
+      "pixelHeight": 844,
+      "visualSnapshotRound": "native12"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-report-error-network/native12/390-844-http-429.png",
+      "sha256": "c9b99931b474400cb238ae851e793f1fae3854ac110050c54f71b78a78aed378",
+      "bytes": 19368,
+      "pixelWidth": 390,
+      "pixelHeight": 844,
+      "visualSnapshotRound": "native12"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-report-error-network/native12/390-844-http-503.png",
+      "sha256": "c9b99931b474400cb238ae851e793f1fae3854ac110050c54f71b78a78aed378",
+      "bytes": 19368,
+      "pixelWidth": 390,
+      "pixelHeight": 844,
+      "visualSnapshotRound": "native12"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-report-error-network/native12/390-844-maintenance.png",
+      "sha256": "620701d2c6d6066cd46b4cd9520506110b315c5691c994b03f5ba055e1e9d521",
+      "bytes": 51053,
+      "pixelWidth": 390,
+      "pixelHeight": 1150,
+      "visualSnapshotRound": "native12"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-report-error-network/native12/390-844-offline.png",
+      "sha256": "19cf2443c98fa1ed0b2c78157057ab6d53187227da040ecf4a75aa0c81b4464f",
+      "bytes": 48778,
+      "pixelWidth": 390,
+      "pixelHeight": 1150,
+      "visualSnapshotRound": "native12"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-report-error-network/native12/390-844-reconnecting-expired.png",
+      "sha256": "8a46925c5374cb23b5570a8d144e9ee88574488fa2bff281b9c8b0b26fa80ee1",
+      "bytes": 50465,
+      "pixelWidth": 390,
+      "pixelHeight": 1166,
+      "visualSnapshotRound": "native12"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-report-error-network/native12/390-844-reconnecting.png",
+      "sha256": "e0d38c8fde020a9081728a88b1d93dac0eeb9ea331575e798ba4b72624203a7e",
+      "bytes": 48405,
+      "pixelWidth": 390,
+      "pixelHeight": 1136,
+      "visualSnapshotRound": "native12"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-report-error-network/native12/390-844-report-failed.png",
+      "sha256": "17512aee12465e29bee15063f1c7483d7d77e446eae5fdced93a12b53b5e8a8a",
+      "bytes": 31450,
+      "pixelWidth": 390,
+      "pixelHeight": 844,
+      "visualSnapshotRound": "native12"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-report-error-network/native12/390-844-report-pending.png",
+      "sha256": "4710116e3875833d20060f33dd40da6f8ee624bb73de758e964b0840af520eac",
+      "bytes": 30297,
+      "pixelWidth": 390,
+      "pixelHeight": 844,
+      "visualSnapshotRound": "native12"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-report-error-network/native12/390-844-report-permission.png",
+      "sha256": "dbb218702f45259916cc5799010381efd303db47f26577f111a977d0ff5f10c7",
+      "bytes": 18129,
+      "pixelWidth": 390,
+      "pixelHeight": 844,
+      "visualSnapshotRound": "native12"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-report-error-network/native12/390-844-report-ready.png",
+      "sha256": "d8e83892cf6a78a65be4d092c769b40333da4c06bd19404f3d3133e118f70a19",
+      "bytes": 50774,
+      "pixelWidth": 390,
+      "pixelHeight": 844,
+      "visualSnapshotRound": "native12"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-report-error-network/native12/390-844-report-unavailable.png",
+      "sha256": "dbb218702f45259916cc5799010381efd303db47f26577f111a977d0ff5f10c7",
+      "bytes": 18129,
+      "pixelWidth": 390,
+      "pixelHeight": 844,
+      "visualSnapshotRound": "native12"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-report-error-network/native12/390-844-report-unknown.png",
+      "sha256": "4710116e3875833d20060f33dd40da6f8ee624bb73de758e964b0840af520eac",
+      "bytes": 30297,
+      "pixelWidth": 390,
+      "pixelHeight": 844,
+      "visualSnapshotRound": "native12"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-report-error-network/native12/390-844-resync.png",
+      "sha256": "b3bfa03851ac92fa0fae37fe9bffcc263b49dd0436db566f2a115ae657c2d861",
+      "bytes": 47337,
+      "pixelWidth": 390,
+      "pixelHeight": 1136,
+      "visualSnapshotRound": "native12"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-report-error-network/native12/390-844-suspended.png",
+      "sha256": "56f3b7adac30667c697a886c4ed832dea8a4d0dc3c616f5d5adaf2cd928d5c20",
+      "bytes": 45091,
+      "pixelWidth": 390,
+      "pixelHeight": 1098,
+      "visualSnapshotRound": "native12"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-report-error-network/native12/390-844-unavailable.png",
+      "sha256": "80aed7a830d5b966cf9ec3c652c401db68169f0bd08421864bd7e9b4c644e7fa",
+      "bytes": 51742,
+      "pixelWidth": 390,
+      "pixelHeight": 1166,
+      "visualSnapshotRound": "native12"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-report-error-network/native12/390-844-version.png",
+      "sha256": "a4106faf0e043dbe2150a86af6723ce94234ec584923960f255b7c7a3f746057",
+      "bytes": 51091,
+      "pixelWidth": 390,
+      "pixelHeight": 1150,
+      "visualSnapshotRound": "native12"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-report-error-network/native12/430-844-http-401.png",
+      "sha256": "031b65102c712874b804b5e56cf42966fa13ccd4ce2e36daac88fda5a0a5a182",
+      "bytes": 18034,
+      "pixelWidth": 430,
+      "pixelHeight": 844,
+      "visualSnapshotRound": "native12"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-report-error-network/native12/430-844-http-503.png",
+      "sha256": "031b65102c712874b804b5e56cf42966fa13ccd4ce2e36daac88fda5a0a5a182",
+      "bytes": 18034,
+      "pixelWidth": 430,
+      "pixelHeight": 844,
+      "visualSnapshotRound": "native12"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-report-error-network/native12/430-844-offline.png",
+      "sha256": "2c253430bb6e525af84ef0e4b36b658f205ce6bc962f48db468b6fcd851eeafa",
+      "bytes": 48005,
+      "pixelWidth": 430,
+      "pixelHeight": 1098,
+      "visualSnapshotRound": "native12"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-report-error-network/native12/430-844-report-pending.png",
+      "sha256": "f61b2b1f19ecb749193ab3856ca449d5472237bc85d9228c317bcec2a651d38c",
+      "bytes": 30060,
+      "pixelWidth": 430,
+      "pixelHeight": 844,
+      "visualSnapshotRound": "native12"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-report-error-network/native12/430-844-report-ready.png",
+      "sha256": "0608c385e9ae6e019332284396c0008ae8d88b805102a760082c0c819e58303c",
+      "bytes": 50495,
+      "pixelWidth": 430,
+      "pixelHeight": 844,
+      "visualSnapshotRound": "native12"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-report-error-network/native12/430-844-version.png",
+      "sha256": "0d7b9221c87b473ab6c98e158007b9387afd883bce7ba7d1ace5691eb4d3b188",
+      "bytes": 50502,
+      "pixelWidth": 430,
+      "pixelHeight": 1098,
+      "visualSnapshotRound": "native12"
+    }
+  ]
+}

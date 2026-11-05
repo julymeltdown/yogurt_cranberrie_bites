@@ -1,0 +1,76 @@
+/* PI12 S02: presentation only; route classification and actions remain owner supplied. */
+.shell-gate.pi-route-state,
+.pi-route-status,
+.pi-administration-access {
+  min-inline-size: 0;
+  color: var(--pi-ink, #171717);
+  background: var(--pi-paper, #f9f9f8);
+  font: 400 var(--pi-body-size, 18px)/var(--pi-body-leading, 22px) var(--pi-font-body, Arial, sans-serif);
+  overflow-wrap: anywhere;
+}
+.shell-gate.pi-route-state {
+  inline-size: min(100%, 42rem);
+  padding: 0;
+  border: 2px solid var(--pi-ink, #171717);
+  margin-block: 12px;
+}
+.shell-gate.pi-route-state > h1 {
+  display: flex;
+  align-items: center;
+  min-block-size: var(--pi-title-height, 48px);
+  margin: 0;
+  padding: 8px 12px;
+  color: var(--pi-on-dark, #fff);
+  background: var(--pi-ink, #171717);
+  font: 700 var(--pi-title-size, 26px)/var(--pi-title-leading, 32px) var(--pi-font-display, "Arial Narrow", sans-serif);
+}
+.pi-route-state > .shell-link:first-child { justify-content: flex-start; margin: 4px; }
+.pi-route-state > p,
+.pi-route-state > .mcr-feedback,
+.pi-route-state > .shell-actions { margin: 12px; }
+.pi-route-state .shell-actions { gap: 8px; align-items: stretch; }
+.pi-route-state .shell-actions > a {
+  flex: 1 1 8rem;
+  border: 1px solid var(--pi-rule, #3c3c3b);
+  border-radius: var(--pi-radius, 2px);
+  color: var(--pi-ink, #171717);
+  background: var(--pi-paper, #f9f9f8);
+  font: 700 var(--pi-control-size, 18px)/var(--pi-control-leading, 22px) var(--pi-font-display, "Arial Narrow", sans-serif);
+  text-align: center;
+  text-decoration: none;
+}
+.pi-route-state .shell-actions > button { flex: 1 1 8rem; }
+.pi-route-state :is(a, button) { min-inline-size: 44px; min-block-size: 44px; }
+.pi-route-state--opening > .mcr-feedback { border: 0; padding: 0; }
+.pi-route-state--opening > .mcr-feedback h2 {
+  padding: 8px 12px;
+  color: var(--pi-on-dark, #fff);
+  background: var(--pi-ink, #171717);
+  font: 700 26px/32px var(--pi-font-display, "Arial Narrow", sans-serif);
+}
+.shell-gate.pi-route-wrap { min-inline-size: 0; margin-block: 12px; }
+.pi-administration-access { margin-block: 12px; border: 1px solid var(--pi-rule, #3c3c3b); }
+.pi-administration-access > h2 {
+  margin: 0;
+  padding: 10px 12px;
+  color: var(--pi-on-dark, #fff);
+  background: var(--pi-ink, #171717);
+  font: 700 22px/28px var(--pi-font-display, "Arial Narrow", sans-serif);
+}
+.pi-administration-access > p { margin: 12px; }
+@media (max-height: 560px) {
+  .shell-gate.pi-route-state, .shell-gate.pi-route-wrap { margin-block: 6px; }
+}
+
+/* Error meaning stays visible inside a shell panel, whose normal feature titles are clipped. */
+.pi-route-status > .concert-window--embedded > .concert-window__titlebar {
+  position: static;
+  inline-size: auto;
+  block-size: auto;
+  min-block-size: var(--pi-title-height, 48px);
+  margin: 0;
+  padding: 8px 12px;
+  overflow: visible;
+  clip-path: none;
+  border: 0;
+}

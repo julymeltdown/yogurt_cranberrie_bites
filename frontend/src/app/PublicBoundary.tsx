@@ -9,6 +9,7 @@ import { VerifyEmail } from '../features/auth/ui/VerifyEmail'
 import { AdmissionBoundary } from '../features/auth/ui/AdmissionBoundary'
 import { Callback } from '../features/auth/ui/Callback'
 import { AccountDeletionRecovery } from './account-deletion-entry/recovery'
+import './errors/parade-ink/status.css'
 
 const ArchiveRoute = lazy(() => import('./archive-entry').then(module => ({ default: module.ArchiveRoutePanel })))
 
@@ -32,7 +33,7 @@ export default function PublicBoundary() {
             : location.pathname === '/account/deleted' ? 'Account status'
               : location.pathname.startsWith('/legal/') ? 'Notices'
                 : location.pathname === '/archive' ? 'After the show' : 'Page unavailable'
-  return <main className="shell-gate" id="main" tabIndex={-1}>
+  return <main className="shell-gate pi-route-state" id="main" tabIndex={-1}>
     <Link className="shell-link" to="/">MCR Concert World</Link><h1>{title}</h1>
     <p>{title === 'Page unavailable' ? 'This page could not be found.'
       : 'This page is still being prepared. No account action has been completed.'}</p>

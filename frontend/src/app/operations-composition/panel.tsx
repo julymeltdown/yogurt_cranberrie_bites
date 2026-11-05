@@ -68,7 +68,7 @@ export function DefaultAdminPanel({ scope }: { scope: ActiveScope }) {
           : pathname === '/admin/audit' ? <AuditOperations controller={state.operations!} />
             : pathname === '/admin/mural' || pathname === '/admin/archive' ? <MuralClosurePanel entry={state.muralClosure!} view={pathname === '/admin/mural' ? 'mural' : 'closure'} />
               : <UnavailableReports />}
-    </> : <section aria-label="Administration access"><h2>{pending ? 'Checking current access' : unsupported ? 'Review tools unavailable' : 'Administration unavailable'}</h2>
+    </> : <section className="pi-administration-access" aria-label="Administration access"><h2>{pending ? 'Checking current access' : unsupported ? 'Review tools unavailable' : 'Administration unavailable'}</h2>
       <p role="status">{pending ? 'Checking current operator access and authorized event information.'
         : state.decision?.role === 'MODERATOR' ? 'Moderator access grants report review. Current operator access is required for event controls.'
           : 'Current operator access and authorized event information are required. Previous controls and private progress are hidden.'}</p></section>}

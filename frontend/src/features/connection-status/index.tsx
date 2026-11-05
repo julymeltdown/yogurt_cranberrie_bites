@@ -15,12 +15,12 @@ export function ConnectionStatusNotice({ view, retry, reload }: {
 }) {
   if (view.kind === 'ready') return null
   const copy = connectionCopy[view.kind]
-  return <div className="connection-status" role="region" aria-label="World connection status">
+  return <div className="connection-status pi-connection-status" role="region" aria-label="World connection status">
     <ConcertWindow title={copy.title} icon="world">
-      <div role="status" aria-live="polite" aria-atomic="true">
+      <div className="connection-status__message" role="status" aria-live="polite" aria-atomic="true">
         <p>{copy.description}</p>
         {view.stale && <p className="connection-status__stale">Previously shown world information may be out of date.</p>}
-        {view.pending && <p>Waiting for the world…</p>}
+        {view.pending && <p className="connection-status__pending">Waiting for the world…</p>}
       </div>
       <div className="connection-status__actions">
         {view.canRetry && <ConcertAction onClick={retry}>Reconnect</ConcertAction>}

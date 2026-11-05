@@ -5,6 +5,7 @@ import { AccessNotice, scopeKey, useAccess, usePorts, useScopedLoad } from './ac
 import type { ActiveScope } from './ports'
 import { DefaultAdminPanel } from './operations-composition/panel'
 import { AdmissionBoundary } from '../features/auth/ui/AdmissionBoundary'
+import './errors/parade-ink/status.css'
 
 export default function AdminBoundary() {
   const { scope } = useAccess()
@@ -22,7 +23,7 @@ function LegacyAdminAccess({ scope }: { scope: ActiveScope }) {
   const title = access.status === 'loading' ? 'Checking access'
     : access.status === 'error' ? 'Could not check access'
       : access.value ? 'Control room is not available yet' : 'Access denied'
-  return <main id="main" tabIndex={-1} className="shell-gate">
+  return <main id="main" tabIndex={-1} className="shell-gate pi-route-state">
     <Link className="shell-link" to="/">MCR Concert World</Link><h1>{title}</h1>
     <Feedback kind={access.status === 'error' || (access.status === 'ready' && !access.value) ? 'error' : 'status'} title="Event administration">
       <p>{access.status === 'ready' && access.value ? 'Administration tools are still being prepared. No changes have been made.'

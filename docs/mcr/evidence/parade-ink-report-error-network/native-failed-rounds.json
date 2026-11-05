@@ -1,0 +1,296 @@
+{
+  "qualification": "Historical failed rounds only; final bounded PASS recorded in native-qualification.json",
+  "sourceQualification": "Retain13 focused cases/types/app-lint/scope/syntax/finalGit PASS for exact prior postimages",
+  "rounds": [
+    {
+      "round": "native01",
+      "guardian": {
+        "status": "FAIL",
+        "failure": "Unknown live MCR workload PID 76431",
+        "finishedUTC": "2026-11-05T01:35:54.837019+00:00",
+        "withinFULLDeadline": true,
+        "resourcesReleased": true
+      },
+      "guardianSHA256": "eda8c4c41a1e2c96fc27ccb3bddc47ee881ce1387c035eeac94deb646e739744",
+      "pngCount": 0
+    },
+    {
+      "round": "native02",
+      "guardian": {
+        "status": "FAIL",
+        "failure": "",
+        "finishedUTC": "2026-11-05T01:37:58.169184+00:00",
+        "withinFULLDeadline": true,
+        "resourcesReleased": true
+      },
+      "guardianSHA256": "2cd4f2b419d8e29bc839fc10e0377e8d9152cc7cc0656d7fa5046bcfb6125a14",
+      "pngCount": 0
+    },
+    {
+      "round": "native03",
+      "guardian": {
+        "status": "FAIL",
+        "failure": "",
+        "finishedUTC": "2026-11-05T01:47:08.556994+00:00",
+        "withinFULLDeadline": true,
+        "resourcesReleased": true
+      },
+      "guardianSHA256": "7088d4b84950992c8d0c1908bbbb0e92cd53780dd5d0812bcedcef53a1efd9b0",
+      "commands": [
+        {
+          "label": "native-budget-adapt",
+          "exit": 0
+        },
+        {
+          "label": "native-helper-lint",
+          "exit": 0
+        },
+        {
+          "label": "native-helper-syntax",
+          "exit": 0
+        },
+        {
+          "label": "native-network",
+          "exit": 1
+        }
+      ],
+      "pngCount": 0
+    },
+    {
+      "round": "native04",
+      "guardian": {
+        "status": "FAIL",
+        "failure": "",
+        "finishedUTC": "2026-11-05T01:50:08.122995+00:00",
+        "withinFULLDeadline": true,
+        "resourcesReleased": true
+      },
+      "guardianSHA256": "767b641aa132e7883a6a9bd89d469f2a602186ec730fd7b5cc227070d5fc1ed7",
+      "commands": [
+        {
+          "label": "native-budget-adapt",
+          "exit": 0
+        },
+        {
+          "label": "native-overlay-repair",
+          "exit": 0
+        },
+        {
+          "label": "native-helper-lint",
+          "exit": 1
+        }
+      ],
+      "pngCount": 0
+    },
+    {
+      "round": "native05",
+      "guardian": {
+        "status": "FAIL",
+        "failure": "",
+        "finishedUTC": "2026-11-05T02:04:47.415749+00:00",
+        "withinFULLDeadline": true,
+        "resourcesReleased": true
+      },
+      "guardianSHA256": "b1784a7fb7a85037c885e67f750a3f241e8b8f9b204954e05597a8fefff47535",
+      "pngCount": 0,
+      "commands": [
+        {
+          "label": "native-network",
+          "exit": 1
+        }
+      ],
+      "native": {
+        "status": "FAIL",
+        "group": "network",
+        "failure": "Error: page.evaluate: TypeError: Cannot read properties of undefined (reading 'state')\n    at eval (eval at evaluate (:303:30), <anonymous>:1:23)\n    at UtilityScript.evaluate (<anonymous>:305:16)\n    at UtilityScript.<anonymous> (<anonymous>:1:44)",
+        "finishedUTC": "2026-11-05T02:04:46.803Z"
+      },
+      "attemptedCases": 1
+    },
+    {
+      "round": "native06",
+      "guardian": {
+        "status": "FAIL",
+        "failure": "Unknown live MCR workload PID 36364",
+        "finishedUTC": "2026-11-05T02:07:30.594858+00:00",
+        "withinFULLDeadline": true,
+        "resourcesReleased": true
+      },
+      "guardianSHA256": "ab70ae53fa4742201e0332ad8ea1efe8dfb397721bb96e756fb9ed069cf2eb73",
+      "pngCount": 0
+    },
+    {
+      "round": "native07",
+      "guardian": {
+        "status": "FAIL",
+        "failure": "",
+        "finishedUTC": "2026-11-05T02:23:38.876139+00:00",
+        "withinFULLDeadline": true,
+        "resourcesReleased": true
+      },
+      "guardianSHA256": "76b3aebcaa8dc111d82217daf77cd396769fa6a2da6bde57f2f6b51fe55f8d6f",
+      "pngCount": 0,
+      "commands": [
+        {
+          "label": "changed-native-lint",
+          "exit": 0
+        },
+        {
+          "label": "changed-native-syntax",
+          "exit": 0
+        },
+        {
+          "label": "native-network",
+          "exit": 1
+        }
+      ],
+      "native": {
+        "status": "FAIL",
+        "group": "network",
+        "failure": "Error: expect(received).toBe(expected) // Object.is equality\n\nExpected: \"ready\"\nReceived: \"unavailable\"\n\nCall Log:\n- Timeout 5000ms exceeded while waiting on the predicate",
+        "finishedUTC": "2026-11-05T02:23:38.150Z"
+      },
+      "attemptedCases": 1
+    },
+    {
+      "round": "native08",
+      "guardian": {
+        "status": "FAIL",
+        "phase": "outer-cleanup-recovery",
+        "failure": "Outer stop(child) raised PermissionError after inner exited; accepted check failures retained. No closed-round restart.",
+        "acceptedEpoch": 1793845996.1531332,
+        "finishedUTC": "2026-11-05T02:34:51.314043+00:00",
+        "finishedEpoch": 1793846091.314037,
+        "withinFULLDeadline": true,
+        "resourcesReleased": true,
+        "dependencyLinkAbsent": true,
+        "temporaryAbsent": true,
+        "port5381Bindable": true,
+        "remainingOwnedProcessOrGroupMatches": [],
+        "cleanupMethod": "Exact own controller/guard IDs and process groups absent; strict unique own script/native/TMP command match absent; no process signaled by recovery."
+      },
+      "guardianSHA256": "823922b25d2d3ef223893f2cb9b69f6f4efcdb611701a3705e5a58594720ea62",
+      "commands": [
+        {
+          "label": "changed-fixture-lint",
+          "exit": 0
+        },
+        {
+          "label": "changed-fixture-types",
+          "exit": 0
+        },
+        {
+          "label": "changed-native-lint",
+          "exit": 0
+        },
+        {
+          "label": "changed-native-syntax",
+          "exit": 0
+        },
+        {
+          "label": "native-both",
+          "exit": 1
+        }
+      ],
+      "native": {
+        "status": "FAIL",
+        "group": "both",
+        "failure": "Error: expect(received).toBe(expected) // Object.is equality\n\nExpected: \"reconnecting\"\nReceived: \"ready\"\n\nCall Log:\n- Timeout 5000ms exceeded while waiting on the predicate",
+        "finishedUTC": "2026-11-05T02:33:43.416Z"
+      },
+      "attemptedCases": 2,
+      "capturedCases": 1,
+      "pngCount": 1,
+      "disposition": "Initial World ready/offline proof passed; reconnect fixture called actual reconnect while still live and correctly received false. Native group incomplete."
+    },
+    {
+      "round": "native09",
+      "guardian": {
+        "status": "FAIL",
+        "failure": "",
+        "finishedUTC": "2026-11-05T03:03:39.185670+00:00",
+        "withinFULLDeadline": true,
+        "resourcesReleased": true
+      },
+      "guardianSHA256": "fb48c60e9e93fb9f47200d2ff3fa3c9e75030e91e1722eba3006c402ce5f436d",
+      "commands": [
+        {
+          "label": "changed-fixture-lint",
+          "exit": 0
+        },
+        {
+          "label": "changed-fixture-types",
+          "exit": 0
+        },
+        {
+          "label": "native-both",
+          "exit": 1
+        }
+      ],
+      "attemptedCases": 8,
+      "qualifiedBoundedCases": 7,
+      "pngCount": 2,
+      "failure": "Error: expect(received).toBe(expected) // Object.is equality\n\nExpected: \"version\"\nReceived: \"reconnecting\"\n\nCall Log:\n- Timeout 5000ms exceeded while waiting on the predicate",
+      "disposition": "Seven 360px controlled network cases passed; actualdefault-version needs canonicaldefaultobserver as displayowner, not controlledservice observer."
+    },
+    {
+      "round": "native10",
+      "guardian": {
+        "status": "FAIL",
+        "failure": "Unknown live MCR workload PID 44778",
+        "finishedUTC": "2026-11-05T03:07:27.680574+00:00",
+        "withinFULLDeadline": true,
+        "resourcesReleased": true
+      },
+      "guardianSHA256": "563140ead6be0b4010743cc5eb48c278612080d2d98cefd4d3a471728e40c13d",
+      "commands": [
+        {
+          "label": "changed-fixture-lint",
+          "exit": 0
+        },
+        {
+          "label": "changed-fixture-types",
+          "exit": 0
+        },
+        {
+          "label": "changed-native-lint",
+          "exit": 0
+        },
+        {
+          "label": "changed-native-syntax",
+          "exit": 0
+        }
+      ],
+      "pngCount": 2,
+      "nativeDisposition": "DISPATCHED_RESOURCE_INTERRUPTED; no completed native report. Two partial report PNGs are retained, not case acceptance.",
+      "ownerFinding": "44778 was a factually registered ParadiseCity ordinary preparation identity using actualpid. Own resource reader missed that canonical alias; no peer identity or old FULL was altered."
+    },
+    {
+      "round": "native11",
+      "guardian": {
+        "status": "FAIL",
+        "failure": "",
+        "finishedUTC": "2026-11-05T03:13:24.801577+00:00",
+        "withinFULLDeadline": true,
+        "resourcesReleased": true
+      },
+      "guardianSHA256": "450ce5d1535c5c8a0ab07d826ffc6fedbdd026a56e6b9dadd23d64411ca1f0c8",
+      "nativeStatus": "FAIL",
+      "failure": "Error: expect(locator).toBeVisible() failed\n\nLocator:  getByRole('heading', { name: 'This page is unavailable' })\nExpected: visible\nReceived: hidden\nTimeout:  5000ms\n\nCall log:\n  - Expect \"to.be.visible\" with timeout 5000ms\n  - waiting for getByRole('heading', { name: 'This page is unavailable' })\n    14 \u00d7 locator resolved to <h1 id=\"_r_7_\">This page is unavailable</h1>\n       - unexpected value \"hidden\"\n",
+      "freshCompletedCases": 7,
+      "retainedCompletedCases": 7,
+      "progressSHA256": "b40d59ff6608280603994df2f3fa306d03aa4f13fe6e34cb449b7d7d1287193a",
+      "pngCount": 0,
+      "disposition": "Canonicaldefault-version and sixreportstates completed at360px. FirstHTTP401heading is visually clipped by shared embedded-window title treatment. Owned RouteState selector now restores visibleerrorheading; otheracceptednetwork/reportregions unaffected."
+    }
+  ],
+  "fixtureDisposition": "Final native12 PASS:80cases/84captures across4viewports;66fresh+14retained. Alloldfailure/FULLfacts preserved.",
+  "helperFix": "Readonly overlay imports and React prebundling fixed; round07 clean application boot then pre-world fixture unavailable. Current controlled policy fixture fix pending fresh native qualification.",
+  "unacceptedYield": {
+    "round": "native08",
+    "state": "UNACCEPTED_UNREADY_YIELD",
+    "resources": 0,
+    "successor": "PreWorld05",
+    "laterActualDisposition": "Offer08 later accepted once under allocator clarification, then literal FULL; no reopen."
+  }
+}

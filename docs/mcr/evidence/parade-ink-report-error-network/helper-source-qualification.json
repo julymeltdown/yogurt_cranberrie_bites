@@ -1,0 +1,35 @@
+{
+  "qualification": "CHANGED_BROWSER_HELPERS_SOURCE_ONLY; no native/visual/live acceptance",
+  "offer": "GENERIC-HELPER-SOURCE01-0202",
+  "qualifiedCommit": "45d9ee3bcceee2ee863bf00c7b1aa1362071cf58",
+  "commands": [
+    {
+      "label": "helper-lint",
+      "exit": 0
+    },
+    {
+      "label": "native-helper-syntax",
+      "exit": 0
+    },
+    {
+      "label": "overlay-helper-syntax",
+      "exit": 0
+    }
+  ],
+  "actualFullUTC": "2026-11-05T01:59:08.959043+00:00",
+  "resourcesReleased": true,
+  "rawReceiptSHA256": {
+    "controller.json": "3a4e470f1665dc7490dc3a8b5e356a0cdd42238c0a4efa432828839f6a3fbcf4",
+    "guardian.json": "cf20a52395b06e9833699c067e7de870e8970647ec1ae291462b40d345599fa0"
+  },
+  "helperSHA256": {
+    "frontend/e2e/visual/parade-ink-route-status/native.mjs": "24fd0c34ece503593e3c8370d7ef6fddf36c9d36423946aaa29992c35f760154",
+    "frontend/e2e/visual/parade-ink-route-status/foundation-overlay.mjs": "9a27e5eff3382ed44a8dfacc80682fe0b5cef978d56fa10e1981db38a4a706d9"
+  },
+  "reusedApplicationQualification": "13 focused cases/types/app-lint/scope unchanged; no replay",
+  "frozenNativeGroups": {
+    "network": "NOT_RUN; Native03 browser startup failed before case proof",
+    "report-errors": "NOT_RUN"
+  },
+  "failedNative01To04Preserved": true
+}

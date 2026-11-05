@@ -1,0 +1,182 @@
+{
+  "schemaVersion": 1,
+  "qualification": "SOURCE_ONLY; native/visual/live/device/QA05 NOT_RUN",
+  "featureCheckpoint": "44571af67d0666487c669a5e0bfe403a3777c9dc",
+  "source06ControllerCommit": "527921edbc2fc2933e132283420a72fc2625871f",
+  "sourceResults": {
+    "source03": {
+      "controller": {
+        "status": "FAIL",
+        "commands": [
+          {
+            "label": "scope",
+            "exit": 0
+          },
+          {
+            "label": "changed-tests",
+            "exit": 0
+          },
+          {
+            "label": "types",
+            "exit": 2
+          }
+        ],
+        "failure": "types failed; retain evidence and fix in a usable fresh offer",
+        "finishedUTC": "2026-11-05T01:17:08.983486+00:00",
+        "dependencyLinkAbsent": true,
+        "temporaryAbsent": true,
+        "rawSHA256": "d72aa935cfa4ab9656c5352659095f136023812ee7f950eecb783ec422b82064",
+        "growthHighWaterBytes": 35549184
+      },
+      "guardian": {
+        "status": "FAIL",
+        "failure": "",
+        "finishedUTC": "2026-11-05T01:17:09.313418+00:00",
+        "withinFULLDeadline": true,
+        "resourcesReleased": true,
+        "rawSHA256": "2f9c914666e8eabc0827d43d77ae8262ac6c07dadb44eb46db97b0fd2b9fac89",
+        "growthHighWaterBytes": 35549184
+      }
+    },
+    "source04": {
+      "guardian": {
+        "status": "FAIL",
+        "failure": "'NoneType' object has no attribute 'get'",
+        "finishedUTC": "2026-11-05T01:21:49.452049+00:00",
+        "withinFULLDeadline": true,
+        "resourcesReleased": true,
+        "rawSHA256": "eced82a58f70883e65a9b9ba6c33aba01dfd9dd40a5a29d6ac4fdf714787baa0",
+        "growthHighWaterBytes": 24190976
+      }
+    },
+    "source05": {
+      "controller": {
+        "status": "FAIL",
+        "commands": [
+          {
+            "label": "scope",
+            "exit": 0
+          },
+          {
+            "label": "types",
+            "exit": 0
+          },
+          {
+            "label": "lint",
+            "exit": 1
+          }
+        ],
+        "failure": "lint failed; retain evidence and fix in a usable fresh offer",
+        "finishedUTC": "2026-11-05T01:24:02.570931+00:00",
+        "dependencyLinkAbsent": true,
+        "temporaryAbsent": true,
+        "rawSHA256": "b0a3581d3c0604d8dfbfe48ea4f00a7eb57041119f22eac9375b8330d5bf7a2b",
+        "growthHighWaterBytes": 25837568
+      },
+      "guardian": {
+        "status": "FAIL",
+        "failure": "",
+        "finishedUTC": "2026-11-05T01:24:02.769588+00:00",
+        "withinFULLDeadline": true,
+        "resourcesReleased": true,
+        "rawSHA256": "5859cc6aaa8f5f1ec8d658456b1e35197060d22c7726f97afc3a7bced259dc7f",
+        "growthHighWaterBytes": 25837568
+      }
+    },
+    "source06": {
+      "controller": {
+        "status": "FAIL",
+        "commands": [
+          {
+            "label": "fixture-lint-fix",
+            "exit": 0
+          },
+          {
+            "label": "scope",
+            "exit": 0
+          },
+          {
+            "label": "types",
+            "exit": 0
+          },
+          {
+            "label": "lint",
+            "exit": 0
+          },
+          {
+            "label": "native-syntax",
+            "exit": 0
+          },
+          {
+            "label": "overlay-syntax",
+            "exit": 0
+          },
+          {
+            "label": "whitespace",
+            "exit": 2
+          }
+        ],
+        "failure": "whitespace failed; retain evidence and fix in a usable fresh offer",
+        "finishedUTC": "2026-11-05T01:25:46.203518+00:00",
+        "dependencyLinkAbsent": true,
+        "temporaryAbsent": true,
+        "rawSHA256": "4e10aa067f7bd26eced084deedc6d83ecce7d2a2226b6da7bf350e2a4b9ea876",
+        "growthHighWaterBytes": 27521024
+      },
+      "guardian": {
+        "status": "FAIL",
+        "failure": "",
+        "finishedUTC": "2026-11-05T01:25:46.812365+00:00",
+        "withinFULLDeadline": true,
+        "resourcesReleased": true,
+        "rawSHA256": "38d486dd2d99ad17d779f75f69a9292e916f78bf7efbeb8ab0659ae5d858b3af",
+        "growthHighWaterBytes": 27521024
+      }
+    }
+  },
+  "focusedTests": {
+    "actualSourceRound": "source03",
+    "passed": 13,
+    "replayed": false
+  },
+  "unchangedPostimages": [
+    "frontend/src/app/AdminBoundary.tsx",
+    "frontend/src/app/PublicBoundary.tsx",
+    "frontend/src/app/access.tsx",
+    "frontend/src/app/errors/RouteState.tsx",
+    "frontend/src/app/operations-composition/panel.tsx",
+    "frontend/src/app/router.tsx",
+    "frontend/src/app/safety-entry/panels.tsx",
+    "frontend/src/features/connection-status/index.tsx",
+    "frontend/src/features/connection-status/status.css",
+    "frontend/src/features/safety/panels.tsx",
+    "frontend/src/app/__tests__/parade-ink-route-status/status.test.tsx",
+    "frontend/src/features/safety/__tests__/parade-ink-report/report.test.tsx",
+    "frontend/src/features/safety/__tests__/parade-ink-report/fixture.ts"
+  ],
+  "browserFixtureChanges": [
+    "Remove redundant array spread from value-port subscriber iteration; lint-only",
+    "Remove one trailing blank line at EOF; whitespace-only"
+  ],
+  "nativeGroups": {
+    "network": "NOT_RUN",
+    "report-errors": "NOT_RUN"
+  },
+  "qa05": {
+    "goal": "BLOCKED",
+    "actualCases": "all seven NOT_RUN"
+  },
+  "publication": "NOT_DELIVERED",
+  "guardReference": {
+    "contractCommit": "7f9d1095c492867aac70c91c3a9a1b3ab161c687",
+    "executedExampleCommit": "77cfe94af06cac6b292ad7528352e4750e929e71",
+    "inheritQualification": false
+  },
+  "finalGitWhitespace": {
+    "offer": "PI12-GENERIC-FINISH-PREP32-0128",
+    "command": "git diff --check 6414d3c9aa0d7a10224b3fed89f6f0e5e45d4997",
+    "exit": 0,
+    "observedUTC": "2026-11-05T01:29:15.661226+00:00",
+    "priorSource06FailurePreserved": true
+  }
+}

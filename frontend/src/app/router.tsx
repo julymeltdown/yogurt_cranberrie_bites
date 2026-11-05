@@ -61,12 +61,12 @@ const featurePanels: Readonly<Record<string, ReactNode>> = {
   '/gifts/mine': <Suspense fallback={<p role="status">Opening gifts…</p>}><GiftsPanel view="mine" /></Suspense>,
 }
 function LazyBoundary({ children }: { children: ReactNode }) {
-  return <Suspense fallback={<main className="shell-gate"><Feedback kind="status" title="Opening this page" />
+  return <Suspense fallback={<main className="shell-gate pi-route-state pi-route-state--opening"><Feedback kind="status" title="Opening this page" />
     <Link className="shell-link" to="/">Back to home</Link></main>}>{children}</Suspense>
 }
 export function RouteFailure() {
   // Never render thrown responses, URLs, stack traces or transport payloads.
-  return <div className="shell-gate"><RouteState kind="unavailable" reload={() => location.reload()} /></div>
+  return <div className="shell-gate pi-route-wrap"><RouteState kind="unavailable" reload={() => location.reload()} /></div>
 }
 export interface RouteComposition {
   /** Reviewed feature elements attach here without taking ownership of the shell lifetime.
