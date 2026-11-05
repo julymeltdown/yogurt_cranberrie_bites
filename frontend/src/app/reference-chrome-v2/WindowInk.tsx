@@ -10,7 +10,10 @@ const paths: Record<'close' | 'back' | 'expand' | 'reduce' | 'stars', ReactNode>
 
 /** PI01 decorative ink. The incumbent native control owns behavior and name. */
 export function WindowInk({ name, className = '' }: { name: keyof typeof paths; className?: string }) {
+  const panelToggle = name === 'back' && /\bmcr-reference-window-ink--(?:collapse|restore)\b/.test(className)
   return <svg className={`mcr-reference-window-ink${name === 'stars' ? ' mcr-reference-window-ink--stars' : ''} ${className}`}
     viewBox="0 0 24 24" width={24} height={24} fill="none" stroke="currentColor" strokeWidth={1.6}
-    strokeLinecap="square" strokeLinejoin="miter" aria-hidden="true" focusable="false">{paths[name]}</svg>
+    strokeLinecap="square" strokeLinejoin="miter" aria-hidden="true" focusable="false">{panelToggle
+      ? <path d="m7 5 10 7-10 7Z" fill="currentColor" stroke="none" />
+      : paths[name]}</svg>
 }

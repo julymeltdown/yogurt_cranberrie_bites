@@ -1,0 +1,575 @@
+{
+  "result": "PASS",
+  "foundation": "47fa1f05e1e1b496ca6fe493b27ea747d9caeca5",
+  "borrowed": [
+    {
+      "path": "frontend/src/features/event-feed/EventFeed.tsx",
+      "commit": "805dd5491dc2288ed296825367bf5d38f11c0da8",
+      "sha256": "3da54997fa7c683abb3753defb2723ce9cb6b2918d261395f2537709f655ec4e"
+    },
+    {
+      "path": "frontend/src/features/event-feed/feed.css",
+      "commit": "805dd5491dc2288ed296825367bf5d38f11c0da8",
+      "sha256": "3363185889b326d63f6808fe3735f69d8ac2e2c8329330458a2ed9656d508255"
+    },
+    {
+      "path": "frontend/src/features/event-feed/parade-ink/AuthorHeading.tsx",
+      "commit": "805dd5491dc2288ed296825367bf5d38f11c0da8",
+      "sha256": "22987af21193a9d51ef3bbc513e5513e7a39dc5609b6ba41bf78f60a4cb3258d"
+    },
+    {
+      "path": "frontend/src/features/feed-thread/FeedThread.tsx",
+      "commit": "805dd5491dc2288ed296825367bf5d38f11c0da8",
+      "sha256": "460fa6484d061943131284c6c006d7456d084e664f715c68af5423c97b92e157"
+    }
+  ],
+  "qualification": "Actual incumbent App router/WorldShell/production Auth and Phaser composition, deterministic HTTP/C05/geometric test terrain; exact read-only qualified Feed/Thread overlay. No live backend, approved World-art comparison, physical device or multiuser/load acceptance. Supplemental states are separately labeled.",
+  "screenshots": [
+    {
+      "file": "app-feed-360.png",
+      "sha256": "c70457b58947589141865a7e87f08d45d5fc6e08e7ca0a16fa94df82ebeb272f",
+      "bytes": 16937,
+      "capturedAt": "2026-11-05T00:45:04.251Z"
+    },
+    {
+      "file": "app-composer-360.png",
+      "sha256": "4b47deba67b070aa300990e2c487b9c8754342ee1cf34838951d14c91442bf08",
+      "bytes": 21602,
+      "capturedAt": "2026-11-05T00:45:04.427Z"
+    },
+    {
+      "file": "app-world-parade-360.png",
+      "sha256": "c3f1cd8cfb33084ee68971df10ceb134f9626ddb5c02034e838c6cfcdd3349b6",
+      "bytes": 26815,
+      "capturedAt": "2026-11-05T00:45:04.650Z"
+    },
+    {
+      "file": "app-short-composer-360.png",
+      "sha256": "2c1956f4ee275fae13d548d3fdfd8f1ca0cf2bab83417747f2f5669ec222e5a8",
+      "bytes": 19476,
+      "capturedAt": "2026-11-05T00:45:04.776Z"
+    },
+    {
+      "file": "app-feed-390.png",
+      "sha256": "a8f89262c6f5c3a76033a2f8eb053814009f3a0d9183c70a178bef1758a7ce3d",
+      "bytes": 17087,
+      "capturedAt": "2026-11-05T00:45:06.182Z"
+    },
+    {
+      "file": "app-composer-390.png",
+      "sha256": "3a8f55241847fa8b54e969e90e34405c94fc367785d2988c7eb679a0293eeb05",
+      "bytes": 21907,
+      "capturedAt": "2026-11-05T00:45:06.346Z"
+    },
+    {
+      "file": "app-world-parade-390.png",
+      "sha256": "b6f8101c8c5ad7caca493b2b484e62271b66a3166dae81ab03be9f815e60fda1",
+      "bytes": 27065,
+      "capturedAt": "2026-11-05T00:45:06.563Z"
+    },
+    {
+      "file": "app-short-composer-390.png",
+      "sha256": "6af2e3d990728dd975ebb7e2d4ebcdfadd9bfb87436e446f08c7ac9fa22c8375",
+      "bytes": 19676,
+      "capturedAt": "2026-11-05T00:45:06.695Z"
+    },
+    {
+      "file": "app-short-safe-area-composer-390.png",
+      "sha256": "32416e8c3c6e97dd737cb517d2b1684ae94597387ae8488eb9ca7bce04152db1",
+      "bytes": 19677,
+      "capturedAt": "2026-11-05T00:45:06.811Z"
+    },
+    {
+      "file": "app-feed-430.png",
+      "sha256": "f840dca35809413ab679814ef32178a6fd492e8fcc669e48fe891c06ae0ea8f6",
+      "bytes": 16833,
+      "capturedAt": "2026-11-05T00:45:08.175Z"
+    },
+    {
+      "file": "app-composer-430.png",
+      "sha256": "feec8fc0388d5f4161d0aa6c0f6b2614117ec54a22ae4baaaaa136944808882a",
+      "bytes": 21376,
+      "capturedAt": "2026-11-05T00:45:08.338Z"
+    },
+    {
+      "file": "app-world-parade-430.png",
+      "sha256": "68fe066b7439515788ba6dfd4cf7397dc3b65aee3da9a5c063716c828808bba8",
+      "bytes": 26851,
+      "capturedAt": "2026-11-05T00:45:08.555Z"
+    },
+    {
+      "file": "app-short-composer-430.png",
+      "sha256": "b52dbec092eef158ada28532698cdbdaeef1b20309c7d72eeed52919744cb198",
+      "bytes": 19402,
+      "capturedAt": "2026-11-05T00:45:08.687Z"
+    },
+    {
+      "file": "supplemental-shared-focus-error-disabled.png",
+      "sha256": "4040e31b7c490a1867ff398500dd390070dad738366bfecf6004e56ed1319f1b",
+      "bytes": 29520,
+      "capturedAt": "2026-11-05T00:45:08.970Z"
+    },
+    {
+      "file": "supplemental-shared-pressed.png",
+      "sha256": "d2a12b76c3e9ed590dcb49223cb7d7f3b6fb12074fad809f9ba64312728c442d",
+      "bytes": 29355,
+      "capturedAt": "2026-11-05T00:45:09.071Z"
+    },
+    {
+      "file": "supplemental-short-sheet.png",
+      "sha256": "751ffb2d2cc14ada85cda15cb51421bd4a50ccc0fe1b4e2e0fbe59857e5a5b34",
+      "bytes": 17883,
+      "capturedAt": "2026-11-05T00:45:09.219Z"
+    }
+  ],
+  "cases": [
+    {
+      "width": 360,
+      "metrics": {
+        "frame": {
+          "x": 0,
+          "y": 0,
+          "width": 360,
+          "height": 844,
+          "font": "18px / 22px \"Parade Ink Text\", Arial, sans-serif",
+          "color": "rgb(23, 23, 23)",
+          "background": "rgb(249, 249, 248)",
+          "border": "2px"
+        },
+        "header": {
+          "x": 5,
+          "y": 5,
+          "width": 350,
+          "height": 48,
+          "font": "18px / 22px \"Parade Ink Text\", Arial, sans-serif",
+          "color": "rgb(255, 255, 255)",
+          "background": "rgb(23, 23, 23)",
+          "border": "0px"
+        },
+        "body": {
+          "x": 5,
+          "y": 53,
+          "width": 350,
+          "height": 786,
+          "font": "18px / 22px \"Parade Ink Text\", Arial, sans-serif",
+          "color": "rgb(23, 23, 23)",
+          "background": "rgb(249, 249, 248)",
+          "border": "0px"
+        },
+        "tabs": {
+          "x": 11,
+          "y": 59,
+          "width": 338,
+          "height": 56,
+          "font": "18px / 22px \"Parade Ink Text\", Arial, sans-serif",
+          "color": "rgb(23, 23, 23)",
+          "background": "rgba(0, 0, 0, 0)",
+          "border": "0px"
+        },
+        "selected": {
+          "x": 11,
+          "y": 59,
+          "width": 81.5,
+          "height": 44,
+          "font": "700 18px / 22px \"Parade Ink Display\", \"Arial Narrow\", Arial, sans-serif",
+          "color": "rgb(255, 255, 255)",
+          "background": "rgb(23, 23, 23)",
+          "border": "1px"
+        },
+        "footer": {
+          "x": 11,
+          "y": 776,
+          "width": 338,
+          "height": 57,
+          "font": "18px / 22px \"Parade Ink Text\", Arial, sans-serif",
+          "color": "rgb(23, 23, 23)",
+          "background": "rgb(249, 249, 248)",
+          "border": "1px 0px 0px"
+        },
+        "postBackground": "none",
+        "footerBackground": "none",
+        "rootOverflow": false,
+        "fontLoaded": true
+      },
+      "controls": [
+        {
+          "label": "Reduce panel",
+          "width": 44,
+          "height": 44,
+          "x": 221,
+          "y": 7
+        },
+        {
+          "label": "Minimize panel",
+          "width": 44,
+          "height": 44,
+          "x": 265,
+          "y": 7
+        },
+        {
+          "label": "Back to previous panel",
+          "width": 44,
+          "height": 44,
+          "x": 309,
+          "y": 7
+        },
+        {
+          "label": "ALL",
+          "width": 81.5,
+          "height": 44,
+          "x": 11,
+          "y": 59
+        },
+        {
+          "label": "MEETUP",
+          "width": 81.5,
+          "height": 44,
+          "x": 96.5,
+          "y": 59
+        },
+        {
+          "label": "GIVEAWAY",
+          "width": 81.5,
+          "height": 44,
+          "x": 182,
+          "y": 59
+        },
+        {
+          "label": "NOTICE",
+          "width": 81.5,
+          "height": 44,
+          "x": 267.5,
+          "y": 59
+        },
+        {
+          "label": "Feed options",
+          "width": 61.328125,
+          "height": 44,
+          "x": 11,
+          "y": 783
+        },
+        {
+          "label": "Write a post",
+          "width": 209.546875,
+          "height": 44,
+          "x": 80.328125,
+          "y": 783
+        },
+        {
+          "label": "Refresh feed",
+          "width": 51.125,
+          "height": 44,
+          "x": 297.875,
+          "y": 783
+        }
+      ],
+      "oneWorld": true,
+      "oneSocket": true,
+      "independentEra": true,
+      "retainedDraft": true,
+      "shortActionsReachable": true
+    },
+    {
+      "width": 390,
+      "metrics": {
+        "frame": {
+          "x": 0,
+          "y": 0,
+          "width": 390,
+          "height": 844,
+          "font": "18px / 22px \"Parade Ink Text\", Arial, sans-serif",
+          "color": "rgb(23, 23, 23)",
+          "background": "rgb(249, 249, 248)",
+          "border": "2px"
+        },
+        "header": {
+          "x": 5,
+          "y": 5,
+          "width": 380,
+          "height": 48,
+          "font": "18px / 22px \"Parade Ink Text\", Arial, sans-serif",
+          "color": "rgb(255, 255, 255)",
+          "background": "rgb(23, 23, 23)",
+          "border": "0px"
+        },
+        "body": {
+          "x": 5,
+          "y": 53,
+          "width": 380,
+          "height": 786,
+          "font": "18px / 22px \"Parade Ink Text\", Arial, sans-serif",
+          "color": "rgb(23, 23, 23)",
+          "background": "rgb(249, 249, 248)",
+          "border": "0px"
+        },
+        "tabs": {
+          "x": 11,
+          "y": 59,
+          "width": 368,
+          "height": 56,
+          "font": "18px / 22px \"Parade Ink Text\", Arial, sans-serif",
+          "color": "rgb(23, 23, 23)",
+          "background": "rgba(0, 0, 0, 0)",
+          "border": "0px"
+        },
+        "selected": {
+          "x": 11,
+          "y": 59,
+          "width": 89,
+          "height": 44,
+          "font": "700 18px / 22px \"Parade Ink Display\", \"Arial Narrow\", Arial, sans-serif",
+          "color": "rgb(255, 255, 255)",
+          "background": "rgb(23, 23, 23)",
+          "border": "1px"
+        },
+        "footer": {
+          "x": 11,
+          "y": 776,
+          "width": 368,
+          "height": 57,
+          "font": "18px / 22px \"Parade Ink Text\", Arial, sans-serif",
+          "color": "rgb(23, 23, 23)",
+          "background": "rgb(249, 249, 248)",
+          "border": "1px 0px 0px"
+        },
+        "postBackground": "none",
+        "footerBackground": "none",
+        "rootOverflow": false,
+        "fontLoaded": true
+      },
+      "controls": [
+        {
+          "label": "Reduce panel",
+          "width": 44,
+          "height": 44,
+          "x": 251,
+          "y": 7
+        },
+        {
+          "label": "Minimize panel",
+          "width": 44,
+          "height": 44,
+          "x": 295,
+          "y": 7
+        },
+        {
+          "label": "Back to previous panel",
+          "width": 44,
+          "height": 44,
+          "x": 339,
+          "y": 7
+        },
+        {
+          "label": "ALL",
+          "width": 89,
+          "height": 44,
+          "x": 11,
+          "y": 59
+        },
+        {
+          "label": "MEETUP",
+          "width": 89,
+          "height": 44,
+          "x": 104,
+          "y": 59
+        },
+        {
+          "label": "GIVEAWAY",
+          "width": 89,
+          "height": 44,
+          "x": 197,
+          "y": 59
+        },
+        {
+          "label": "NOTICE",
+          "width": 89,
+          "height": 44,
+          "x": 290,
+          "y": 59
+        },
+        {
+          "label": "Feed options",
+          "width": 67.546875,
+          "height": 44,
+          "x": 11,
+          "y": 783
+        },
+        {
+          "label": "Write a post",
+          "width": 228.15625,
+          "height": 44,
+          "x": 86.546875,
+          "y": 783
+        },
+        {
+          "label": "Refresh feed",
+          "width": 56.296875,
+          "height": 44,
+          "x": 322.703125,
+          "y": 783
+        }
+      ],
+      "oneWorld": true,
+      "oneSocket": true,
+      "independentEra": true,
+      "retainedDraft": true,
+      "shortActionsReachable": true
+    },
+    {
+      "width": 430,
+      "metrics": {
+        "frame": {
+          "x": 0,
+          "y": 0,
+          "width": 430,
+          "height": 844,
+          "font": "18px / 22px \"Parade Ink Text\", Arial, sans-serif",
+          "color": "rgb(23, 23, 23)",
+          "background": "rgb(249, 249, 248)",
+          "border": "2px"
+        },
+        "header": {
+          "x": 5,
+          "y": 5,
+          "width": 420,
+          "height": 48,
+          "font": "18px / 22px \"Parade Ink Text\", Arial, sans-serif",
+          "color": "rgb(255, 255, 255)",
+          "background": "rgb(23, 23, 23)",
+          "border": "0px"
+        },
+        "body": {
+          "x": 5,
+          "y": 53,
+          "width": 420,
+          "height": 786,
+          "font": "18px / 22px \"Parade Ink Text\", Arial, sans-serif",
+          "color": "rgb(23, 23, 23)",
+          "background": "rgb(249, 249, 248)",
+          "border": "0px"
+        },
+        "tabs": {
+          "x": 11,
+          "y": 59,
+          "width": 408,
+          "height": 56,
+          "font": "18px / 22px \"Parade Ink Text\", Arial, sans-serif",
+          "color": "rgb(23, 23, 23)",
+          "background": "rgba(0, 0, 0, 0)",
+          "border": "0px"
+        },
+        "selected": {
+          "x": 11,
+          "y": 59,
+          "width": 99,
+          "height": 44,
+          "font": "700 18px / 22px \"Parade Ink Display\", \"Arial Narrow\", Arial, sans-serif",
+          "color": "rgb(255, 255, 255)",
+          "background": "rgb(23, 23, 23)",
+          "border": "1px"
+        },
+        "footer": {
+          "x": 11,
+          "y": 776,
+          "width": 408,
+          "height": 57,
+          "font": "18px / 22px \"Parade Ink Text\", Arial, sans-serif",
+          "color": "rgb(23, 23, 23)",
+          "background": "rgb(249, 249, 248)",
+          "border": "1px 0px 0px"
+        },
+        "postBackground": "none",
+        "footerBackground": "none",
+        "rootOverflow": false,
+        "fontLoaded": true
+      },
+      "controls": [
+        {
+          "label": "Reduce panel",
+          "width": 44,
+          "height": 44,
+          "x": 291,
+          "y": 7
+        },
+        {
+          "label": "Minimize panel",
+          "width": 44,
+          "height": 44,
+          "x": 335,
+          "y": 7
+        },
+        {
+          "label": "Back to previous panel",
+          "width": 44,
+          "height": 44,
+          "x": 379,
+          "y": 7
+        },
+        {
+          "label": "ALL",
+          "width": 99,
+          "height": 44,
+          "x": 11,
+          "y": 59
+        },
+        {
+          "label": "MEETUP",
+          "width": 99,
+          "height": 44,
+          "x": 114,
+          "y": 59
+        },
+        {
+          "label": "GIVEAWAY",
+          "width": 99,
+          "height": 44,
+          "x": 217,
+          "y": 59
+        },
+        {
+          "label": "NOTICE",
+          "width": 99,
+          "height": 44,
+          "x": 320,
+          "y": 59
+        },
+        {
+          "label": "Feed options",
+          "width": 75.84375,
+          "height": 44,
+          "x": 11,
+          "y": 783
+        },
+        {
+          "label": "Write a post",
+          "width": 252.953125,
+          "height": 44,
+          "x": 94.84375,
+          "y": 783
+        },
+        {
+          "label": "Refresh feed",
+          "width": 63.203125,
+          "height": 44,
+          "x": 355.796875,
+          "y": 783
+        }
+      ],
+      "oneWorld": true,
+      "oneSocket": true,
+      "independentEra": true,
+      "retainedDraft": true,
+      "shortActionsReachable": true
+    }
+  ],
+  "errors": [],
+  "safeArea": {
+    "emulation": "Chrome CDP insets, not physical device",
+    "top": 20,
+    "bottom": 34,
+    "computed": {
+      "top": 22,
+      "bottom": 36
+    }
+  }
+}

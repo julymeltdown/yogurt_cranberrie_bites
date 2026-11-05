@@ -10,6 +10,8 @@ import socket
 import subprocess
 import sys
 import time
+sys.dont_write_bytecode = True
+from membership import OWN as RESOURCE_RECEIPT, identity, publish as publish_resource, publish_census, sample as sample_membership
 
 ROOT = Path(__file__).resolve().parents[5]
 PREFIX = ROOT / 'frontend/src/app/__tests__/parade-ink-foundation'
@@ -25,10 +27,13 @@ CAP = (128 if MODE == 'source' else 200) * MIB
 WORK = datetime.datetime.fromisoformat(os.environ['MCR_PI_WORK_DEADLINE'].replace('Z', '+00:00')).timestamp()
 HARD = datetime.datetime.fromisoformat(os.environ['MCR_PI_DEADLINE'].replace('Z', '+00:00')).timestamp()
 OTHER = int(os.environ['MCR_PI_OTHER_NEW'])
+NEW_CARRY = int(os.environ.get('MCR_PI_NEW_CARRY', '0'))
+assert 0 <= NEW_CARRY <= 200 * 1024**2
 PRIVATE_GIT = Path(subprocess.check_output(['git', 'rev-parse', '--absolute-git-dir'], cwd=ROOT, text=True).strip())
 COMMON_GIT = Path(subprocess.check_output(['git', 'rev-parse', '--path-format=absolute', '--git-common-dir'], cwd=ROOT, text=True).strip())
 CARRY_PATHS = [ROOT, PRIVATE_GIT, COMMON_GIT, Path(DEPENDENCIES), Path('/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64'), Path('/Applications/Google Chrome.app'), Path('/Library/Frameworks/Python.framework/Versions/3.14'), Path('/Users/lhs/.codex/visualizations/2026/11/03/01a1a26e-1de2-7b41-a294-c9a79cfded9b')]
-MUTABLE = [ROOT, PRIVATE_GIT]
+CARRY_PATHS.append(RESOURCE_RECEIPT)
+MUTABLE = [ROOT, PRIVATE_GIT, RESOURCE_RECEIPT]
 WHOLE_CAP = int(os.environ['MCR_PI_WHOLE_CAP'])
 PORT = int(os.environ.get('MCR_PI_PORT', '0'))
 def port_free():
@@ -80,6 +85,16 @@ def table():
     return rows
 
 
+log = EVIDENCE / (OUT.name + '-controller.jsonl')
+accepted = float(os.environ.get('MCR_PI_ACCEPT_EPOCH', str(time.time())))
+resource = dict(ownerThreadId='01a1a26e-1de2-7b41-a294-c9a79cfded9b', offerId=os.environ['MCR_PI_LEASE'],
+                state='ACCEPTED', acceptedAtEpoch=accepted, workDeadlineEpoch=WORK, fullDeadlineEpoch=HARD,
+                kind='source' if MODE == 'source' else 'browser', processCap=8 if MODE == 'source' else 24,
+                rssCapBytes=int((2 if MODE == 'source' else 3.5) * GIB), remainingNewUpperBytes=CAP - NEW_CARRY,
+                controller=identity(os.getpid(), Path(__file__).resolve(), OUT), guardControllers=[],
+                receiptPaths=dict(accept=str(log), full=str(log), primaryFull=str(OUT / 'release.json')))
+publish_resource(resource)
+
 assert port_free(), 'allocated native port is occupied'
 assert MODE in ('source', 'native') and Path.cwd() == ROOT
 assert hashlib.sha256(Path(__file__).read_bytes()).hexdigest() == os.environ['MCR_PI_CONTROLLER_SHA']
@@ -114,6 +129,11 @@ def emit(value):
 
 def check():
     global minimum
+    membership = sample_membership()
+    publish_census(EVIDENCE / (OUT.name + '-controller-census.json'), membership)
+    if not hasattr(check, 'membership') or check.membership['owners'] != membership['owners']:
+        emit(dict(type='MEMBERSHIP', sample=membership))
+    check.membership = membership
     rows = table()
     previous = None
     while previous != seen:
@@ -125,7 +145,7 @@ def check():
     mutable, temporary = size(MUTABLE), size([TMP])
     counters = dict(processes=len(live) + 3,  # Outer, exec wrapper and this ps probe.
                     rssBytes=sum(rows[pid][2] * 1024 for pid in live | {os.getpid()} if pid in rows) + 24 * MIB,  # Wrapper16 + monitor8 reserve.
-                    newBytes=34 * MIB + max(0, mutable - baseline) + temporary, tmpBytes=temporary,
+                    newBytes=NEW_CARRY + 34 * MIB + max(0, mutable - baseline) + temporary, tmpBytes=temporary,
                     wholeBytes=max(carry, size(CARRY_PATHS)) + temporary)
     for key, value in counters.items():
         peak[key] = max(peak[key], value)
@@ -138,7 +158,7 @@ def check():
 
 emit(dict(type='ACCEPT', lease=os.environ['MCR_PI_LEASE'], at=datetime.datetime.now(datetime.timezone.utc).isoformat(),
           controllerPid=os.getpid(), workDeadline=WORK, hardDeadline=HARD, freeBytes=free(),
-          otherNewBytes=OTHER, ownNewCap=CAP, carryBytes=carry, priorHighWaterBytes=prior))
+          otherNewBytes=OTHER, ownNewCap=CAP, sharedNewCarryBytes=NEW_CARRY, carryBytes=carry, priorHighWaterBytes=prior))
 try:
     check()
     child = subprocess.Popen([sys.executable, '-B', str(GUARDIAN)], cwd=ROOT, start_new_session=True)
@@ -177,4 +197,8 @@ finally:
               exitCode=code, failure=failure, peak=peak, minimumFreeBytes=minimum, finalFreeBytes=free(),
               seenPids=sorted(seen), livePids=live, ownedLinkAbsent=not os.path.lexists(LINK),
               privateTmpAbsent=not TMP.exists(), ownedPortClosed=port_closed, resources=len(live) + (0 if port_closed else 1)))
+    resource = json.loads(RESOURCE_RECEIPT.read_text())
+    resource.update(state='FULL', actualFullEpoch=time.time(), remainingNewUpperBytes=0,
+                    resources=len(live) + (0 if port_closed else 1))
+    publish_resource(resource)
 raise SystemExit(code)

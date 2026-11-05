@@ -38,6 +38,7 @@ it('keeps distinct native size, content and Back actions through full and peek s
   expect(screen.getByRole('button', { name: 'Reduce panel' }).querySelector('svg path')).toHaveAttribute('d', 'M5 12h14')
   expect(screen.getByRole('button', { name: 'Minimize panel' }).querySelector('svg')).toHaveAttribute('focusable', 'false')
   expect(screen.getByRole('button', { name: 'Minimize panel' }).querySelector('svg')).toHaveClass('mcr-reference-window-ink--collapse')
+  expect(screen.getByRole('button', { name: 'Minimize panel' }).querySelector('svg path')).toHaveAttribute('fill', 'currentColor')
   fireEvent.click(screen.getByRole('button', { name: 'Reduce panel' }))
   fireEvent.click(screen.getByRole('button', { name: 'Minimize panel' }))
   fireEvent.click(screen.getByRole('button', { name: 'Back to previous panel' }))

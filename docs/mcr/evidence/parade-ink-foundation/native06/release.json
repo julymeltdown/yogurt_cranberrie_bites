@@ -1,0 +1,41 @@
+{
+  "type": "FULL",
+  "lease": "PI01-FOUNDATION-APP-NATIVE06-0043",
+  "mode": "native",
+  "at": "2026-11-05T00:45:13.994068+00:00",
+  "exitCode": 0,
+  "failure": null,
+  "peak": {
+    "processes": 10,
+    "rssBytes": 2851979264,
+    "newBytes": 66232320,
+    "tmpBytes": 30273536,
+    "wholeBytes": 5516935168
+  },
+  "minimumFreeBytes": 15261782016,
+  "finalFreeBytes": 15284293632,
+  "seenPids": [
+    78996,
+    79794,
+    79941,
+    80386,
+    80419,
+    80421,
+    80422,
+    80426,
+    80429,
+    80430,
+    81469,
+    81470,
+    81471,
+    81715,
+    81718,
+    81719,
+    82073
+  ],
+  "livePids": [],
+  "ownedLinkAbsent": true,
+  "privateTmpAbsent": true,
+  "ownedPortClosed": true,
+  "resources": 0
+}

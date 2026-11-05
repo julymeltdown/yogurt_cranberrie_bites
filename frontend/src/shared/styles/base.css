@@ -1,6 +1,6 @@
 @import "./parade-ink/tokens.css";
-@import "./cozy-identity-backgrounds-v1.css";
-@import "./cozy-community-backgrounds-v1.css";
+@import "./cozy-identity-backgrounds-v1.css" layer(mcr-foundation-legacy);
+@import "./cozy-community-backgrounds-v1.css" layer(mcr-foundation-legacy);
 @import "./parade-ink/primitives.css";
 
 /* Retained landing/layout/accessibility rules; shared PI01 paint takes precedence. */

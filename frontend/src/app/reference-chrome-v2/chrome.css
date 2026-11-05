@@ -10,8 +10,8 @@
 /* Shared Photo 2 ink controls remain decorative inside real 44px buttons. */
 .mcr-reference-window-ink { display:block; inline-size:var(--pi-icon); block-size:var(--pi-icon); object-fit:contain; pointer-events:none; user-select:none; }
 .mcr-reference-window-ink--stars { inline-size:var(--pi-icon); }
-.mcr-reference-window-ink--collapse { transform:rotate(-90deg); }
-.mcr-reference-window-ink--restore { transform:rotate(90deg); }
+.mcr-reference-window-ink--collapse { transform:rotate(90deg); }
+.mcr-reference-window-ink--restore { transform:rotate(-90deg); }
 :root .public-entry--poster .public-header.mcr-reference-public-titlebar { min-block-size:var(--pi-title-height); block-size:auto; padding:0 4px; background:var(--pi-ink); color:var(--pi-on-dark); }
 .mcr-reference-public-titlebar > .public-brand, .mcr-reference-public-titlebar > .public-text-link { display:flex; align-items:center; justify-content:center; min-inline-size:var(--pi-hit); min-block-size:var(--pi-hit); color:inherit; }
 .mcr-reference-public-titlebar > .public-text-link .mcr-reference-window-ink { padding:2px; border:1px solid var(--pi-on-dark); background:var(--pi-crimson); transform:rotate(180deg); }

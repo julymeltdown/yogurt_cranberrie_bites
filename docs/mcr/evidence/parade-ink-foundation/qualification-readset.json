@@ -1,12 +1,12 @@
 {
   "contract": "pi01-photo2-v1",
   "base": "f025bdb6fb409f3b7706e475dfabb5f3d21fe168",
-  "qualification": "SOURCE_CHECKPOINT; corrected shell height and native resolver pending fresh native04",
+  "qualification": "Developer-qualified Native06 fullfoundation + Native10 focusedheader PASS; finalscopedpublication pending; exactexecutedreadset native10/readset.json",
   "implementation": [
     {
       "path": "frontend/src/shared/styles/base.css",
-      "bytes": 8537,
-      "sha256": "d9788ee432554115f802c9def0c90b4e657165571e3b7429ad2d596be86928d6"
+      "bytes": 8595,
+      "sha256": "c687b4d31895eb1f1414277663bd5d707b56f6ded1abef9154262b9d27c2f303"
     },
     {
       "path": "frontend/src/shared/styles/themes/themes.css",
@@ -40,13 +40,13 @@
     },
     {
       "path": "frontend/src/app/reference-chrome-v2/WindowInk.tsx",
-      "bytes": 916,
-      "sha256": "16ce865a27dea4e79e239a19bd9290120844aa7857925af4652d37582de78278"
+      "bytes": 1117,
+      "sha256": "019662bb93b5eb92dd76b670738462c905a2a191ce7457b6ecbeb3efca9f33e4"
     },
     {
       "path": "frontend/src/app/reference-chrome-v2/chrome.css",
       "bytes": 3451,
-      "sha256": "857c14a183f4e008861ba119e65da490d52e6715ff5ca6b46b68b553f63f9c1e"
+      "sha256": "6a5449d6d89bd16497a17c9e46a872f4b9f8afe3cedff76835045529d2afca45"
     },
     {
       "path": "frontend/src/shared/styles/parade-ink/fonts/Oswald.ttf",
@@ -149,8 +149,8 @@
     },
     {
       "path": "frontend/src/app/__tests__/parade-ink-foundation/controller.py",
-      "bytes": 7956,
-      "sha256": "ac563fede2bda17dea2ca625ce1b00e7b61d768783ee7d3dddf40f1a25251d24"
+      "bytes": 9657,
+      "sha256": "99dd1eee9233602199644222c65a7af36f6f3f7279bb3ca6af799af1920a6b52"
     },
     {
       "path": "frontend/src/app/__tests__/parade-ink-foundation/foundation.test.tsx",
@@ -159,13 +159,13 @@
     },
     {
       "path": "frontend/src/app/__tests__/parade-ink-foundation/guardian.py",
-      "bytes": 11475,
-      "sha256": "7d4816f7e8eb2c9ef93550feaa31cde821b89a536869500d1967be8854fa8797"
+      "bytes": 13195,
+      "sha256": "a6f90c0033db07f6d5c954f586d84e55722ec99da673643d2de7383bce6440d5"
     },
     {
       "path": "frontend/src/app/__tests__/parade-ink-foundation/native.mjs",
-      "bytes": 10330,
-      "sha256": "6d52da2430a5b12b282d37201034ad0a855300c75837ab07b3f0306a4c4aca28"
+      "bytes": 11814,
+      "sha256": "4283751af6a49161dcfb806c7bf3c9712277abd85726ac1e61cc2eec7cc288d3"
     },
     {
       "path": "frontend/src/app/__tests__/parade-ink-foundation/preview.html",
@@ -196,6 +196,16 @@
       "path": "frontend/src/app/__tests__/parade-ink-foundation/vitest.config.ts",
       "bytes": 292,
       "sha256": "000376ccfcc5c344ec35464086a92759ce40756e0b85d22ba73e708b37e043dc"
+    },
+    {
+      "path": "frontend/src/app/__tests__/parade-ink-foundation/membership.py",
+      "sha256": "a462d804d7cead6e74992148421a2e2e86cb7ca2ddbc4fb4bbd83f57d569c9fb",
+      "bytes": 9767
+    },
+    {
+      "path": "frontend/src/app/__tests__/parade-ink-foundation/membership_test.py",
+      "sha256": "8ffe1bdb9b1bb42fe3535e7fccec0e4b535b10d95d2c8c3786e45dbfe7134a73",
+      "bytes": 5467
     }
   ],
   "executionPins": [
@@ -226,7 +236,7 @@
     "allFourCommandsExit": 0,
     "sevenRetainedChangedTests": "PASS",
     "priorFiveNewTests": "PASS source02; unchanged",
-    "nativeCurrentFixture": "native03 FAIL before first qualified width; new resolver and shell-height correction NOT_RUN"
+    "nativeCurrentFixture": "native05 lint/syntax PASS; actualApp published, hidden/fullscreen World correctly suspends connection; baseline check moved to visibleWorld. Shared legacy paint override owner-inspected, layer fix pending native06."
   },
   "retainedChangedTests": [
     {
@@ -235,7 +245,7 @@
     },
     {
       "path": "frontend/src/app/reference-chrome-v2/chrome.test.tsx",
-      "sha256": "ae794c91f94a08488d4c0bf5c0db5517c9d8f5b489f6fe022995d091efd4593a"
+      "sha256": "426dac3bd024cb15e8deae666e3293fb9cbfcf5040761c48ce3948f360156802"
     }
   ],
   "productionCorrection": {
@@ -243,5 +253,63 @@
     "path": "frontend/src/app/shell.css",
     "reason": "Default height variable specificity prevented full-panel override",
     "qualification": "NOT_RUN native04"
+  },
+  "productionCorrections": [
+    {
+      "prior": "056a8c48ff667134dee8e5e99710185294e4b898",
+      "path": "frontend/src/app/shell.css",
+      "reason": "Default height variable specificity prevented full-panel override",
+      "qualification": "NOT_RUN native04"
+    },
+    {
+      "prior": "b5b44e47531e3b75febc5ee5cdd6a11b1648779c",
+      "path": "frontend/src/shared/styles/base.css",
+      "reason": "Retained cozy imports must share legacy layer; unlayered :root rules otherwise override newly authored feature CSS",
+      "qualification": "NOT_RUN native06"
+    }
+  ],
+  "borrowedFeed": {
+    "commit": "805dd5491dc2288ed296825367bf5d38f11c0da8",
+    "qualification": "Owner213 source05/native07/native08 delivered PASS; exact four production files read-only, no peer/source writes",
+    "files": [
+      {
+        "path": "frontend/src/features/event-feed/EventFeed.tsx",
+        "bytes": 7914,
+        "sha256": "3da54997fa7c683abb3753defb2723ce9cb6b2918d261395f2537709f655ec4e"
+      },
+      {
+        "path": "frontend/src/features/event-feed/feed.css",
+        "bytes": 12246,
+        "sha256": "3363185889b326d63f6808fe3735f69d8ac2e2c8329330458a2ed9656d508255"
+      },
+      {
+        "path": "frontend/src/features/event-feed/parade-ink/AuthorHeading.tsx",
+        "bytes": 969,
+        "sha256": "22987af21193a9d51ef3bbc513e5513e7a39dc5609b6ba41bf78f60a4cb3258d"
+      },
+      {
+        "path": "frontend/src/features/feed-thread/FeedThread.tsx",
+        "bytes": 10846,
+        "sha256": "460fa6484d061943131284c6c006d7456d084e664f715c68af5423c97b92e157"
+      }
+    ]
+  },
+  "nativeQualification": {
+    "round": "native06",
+    "source": "47fa1f05e1e1b496ca6fe493b27ea747d9caeca5",
+    "readsetSHA": "dca1cfa1608b77366ba0b874588c751ca702611c0fe06c12042e0b728e6adf91",
+    "nativeReportSHA": "c7b5c7245724b6f512dc526e84e501ea7a8be6c9e0613f23e903cd7fa886df73",
+    "result": "PASS actual controlledApp360390430/allsharedstates/shortsafearea/PIL",
+    "fullUTC": "2026-11-05T00:45:16.534798Z",
+    "resources": 0,
+    "limit": "SyntheticHTTP/C05/geometricterrain, not live/device/multiuser/art parity"
+  },
+  "finalQualification": {
+    "source": "77cfe94af06cac6b292ad7528352e4750e929e71",
+    "executedReadsetSHA256": "eb80d722f513ce794fe35317a87702dd2878321a2d76f313d36265b3d593d5ef",
+    "full": "2026-11-05T01:19:55.117465Z",
+    "nativeFocus": "HEADER_CORRECTION_ONLY",
+    "fullFoundation": "native06",
+    "noNewProductionAfterExecutedSource": true
   }
 }

@@ -1,0 +1,31 @@
+{
+  "type": "FULL",
+  "lease": "PI01-GLYPH-CONTROL-FOCUSED-NATIVE07-0100",
+  "mode": "native",
+  "at": "2026-11-05T01:03:24.682925+00:00",
+  "exitCode": 1,
+  "failure": "AssertionError('resource controller identity mismatch')",
+  "peak": {
+    "processes": 4,
+    "rssBytes": 1964572672,
+    "newBytes": 48480256,
+    "tmpBytes": 12812288,
+    "wholeBytes": 5529747456
+  },
+  "minimumFreeBytes": 16388583424,
+  "finalFreeBytes": 16393342976,
+  "seenPids": [
+    84504,
+    84697,
+    84700,
+    85112,
+    85702,
+    86397,
+    86422
+  ],
+  "livePids": [],
+  "ownedLinkAbsent": true,
+  "privateTmpAbsent": true,
+  "ownedPortClosed": true,
+  "resources": 0
+}

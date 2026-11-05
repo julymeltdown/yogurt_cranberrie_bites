@@ -1,0 +1,247 @@
+{
+  "contract": "pi01-photo2-v1",
+  "base": "f025bdb6fb409f3b7706e475dfabb5f3d21fe168",
+  "qualification": "SOURCE_CHECKPOINT; corrected shell height and native resolver pending fresh native04",
+  "implementation": [
+    {
+      "path": "frontend/src/shared/styles/base.css",
+      "bytes": 8537,
+      "sha256": "d9788ee432554115f802c9def0c90b4e657165571e3b7429ad2d596be86928d6"
+    },
+    {
+      "path": "frontend/src/shared/styles/themes/themes.css",
+      "bytes": 1159,
+      "sha256": "c7d8561ab09c4402812e0eacf72cc56b6cc2ce7a84449632e8054573d4802e4c"
+    },
+    {
+      "path": "frontend/src/shared/ui/concert-window/index.tsx",
+      "bytes": 6205,
+      "sha256": "0b532322426fd4f0aae0e2667cae80e2257917eda8cb1de6455ee3670025ae56"
+    },
+    {
+      "path": "frontend/src/shared/ui/concert-window/concert-window.css",
+      "bytes": 5848,
+      "sha256": "9b03795cc11ed06130ebdc2ec386948d91f0e9cbba592f876a82c72ef1014c92"
+    },
+    {
+      "path": "frontend/src/app/shell.css",
+      "bytes": 13201,
+      "sha256": "b12f4bbddb55d144fb6da89ab2686e0225455ed3bedaff70ad8a34ef6a0161dc"
+    },
+    {
+      "path": "frontend/src/app/shell-chrome/parade-footer.tsx",
+      "bytes": 130,
+      "sha256": "ecbb1b9f16a61315c7e63b3ba296e7d0977619fb0df899b950e3a41b8a1c6428"
+    },
+    {
+      "path": "frontend/src/app/shell-chrome/shell-chrome.css",
+      "bytes": 6153,
+      "sha256": "264fa91f2b9d45f6d7756cfcde5fa0656d714e6c2190d325800d14c2f9639ea1"
+    },
+    {
+      "path": "frontend/src/app/reference-chrome-v2/WindowInk.tsx",
+      "bytes": 916,
+      "sha256": "16ce865a27dea4e79e239a19bd9290120844aa7857925af4652d37582de78278"
+    },
+    {
+      "path": "frontend/src/app/reference-chrome-v2/chrome.css",
+      "bytes": 3451,
+      "sha256": "857c14a183f4e008861ba119e65da490d52e6715ff5ca6b46b68b553f63f9c1e"
+    },
+    {
+      "path": "frontend/src/shared/styles/parade-ink/fonts/Oswald.ttf",
+      "bytes": 172088,
+      "sha256": "5b38c246e255a12f5712d640d56bcced0472466fc68983d2d0410ec0457c2817"
+    },
+    {
+      "path": "frontend/src/shared/styles/parade-ink/fonts/Roboto.ttf",
+      "bytes": 488584,
+      "sha256": "d7598e12c5dbef095ff8272cfc55da0250bd07fbdecbac8a530b9b277872a134"
+    },
+    {
+      "path": "frontend/src/shared/styles/parade-ink/fonts/oswald-METADATA.pb",
+      "bytes": 4396,
+      "sha256": "3d5119d2e99a15e7c2973937d10a77e7aa1fc6a28fe173b02e059485aa596097"
+    },
+    {
+      "path": "frontend/src/shared/styles/parade-ink/fonts/oswald-OFL.txt",
+      "bytes": 4483,
+      "sha256": "0fd731a904b729a4e02eaf5e8ebd06783edd9abe400e8882760160230675b652"
+    },
+    {
+      "path": "frontend/src/shared/styles/parade-ink/fonts/provenance.json",
+      "bytes": 3273,
+      "sha256": "aded4b656522bd2c4de6cfd1be9e9a6cfcf96d94ecc61e3a2f36497a465574db"
+    },
+    {
+      "path": "frontend/src/shared/styles/parade-ink/fonts/roboto-METADATA.pb",
+      "bytes": 1463,
+      "sha256": "6fef19da54fb62d152f0c7b21710e6849950db7ecf852ea29511c593dad462f0"
+    },
+    {
+      "path": "frontend/src/shared/styles/parade-ink/fonts/roboto-OFL.txt",
+      "bytes": 4394,
+      "sha256": "061402327a96aadb0bfb694a960ed289ecd38d383e396243831ab81feb109c41"
+    },
+    {
+      "path": "frontend/src/shared/styles/parade-ink/primitives.css",
+      "bytes": 6508,
+      "sha256": "c5a327ec4e63407ea5119a48ab20632c63e81780a842b57c0bb5e856e7ca78e0"
+    },
+    {
+      "path": "frontend/src/shared/styles/parade-ink/tokens.css",
+      "bytes": 1334,
+      "sha256": "15b68ce29df755e81849d2bc359f2c2aaade9857d5e04c32692bf9aab4700556"
+    }
+  ],
+  "readOnlyCompatibility": [
+    {
+      "path": "frontend/src/shared/ui/controls.tsx",
+      "sha256": "0aca62d6862fa0a0e2cc28d53cf58f184defdc6f7f63afe0484d8c87931c470d"
+    },
+    {
+      "path": "frontend/src/shared/ui/Dialog.tsx",
+      "sha256": "f2c7a386e77652325206bafb4067f024a867754a112f021e3fa499ba78d3ee18"
+    },
+    {
+      "path": "frontend/src/shared/ui/Tabs.tsx",
+      "sha256": "4ee35f9bb32595681107138943b38b5c8fcaee9532cd052985482d19ae5fe1ee"
+    },
+    {
+      "path": "frontend/src/shared/ui/feedback.tsx",
+      "sha256": "b4c0517287e8f139799d6a836b66edd9961c00a6feb44bac173781a75a7f607f"
+    },
+    {
+      "path": "frontend/src/app/shell-chrome/index.tsx",
+      "sha256": "498fa45b9f14b784bbc410984bc99728bab02e8782f60b15e604c6bcc8283304"
+    },
+    {
+      "path": "frontend/src/app/shell-chrome/identity.tsx",
+      "sha256": "cb52295e98b6146caa8cef00743bdf35f978ec38cd0c9ddb0193b9c4bd441890"
+    },
+    {
+      "path": "frontend/src/app/WorldShell.tsx",
+      "sha256": "ee070a76a730056934c65c2044b58744311c3019ea2e45ae19308853f09ce0d2"
+    },
+    {
+      "path": "frontend/src/app/router.tsx",
+      "sha256": "31a2ea3a7bdf57e1f135782f6177c128d1c1319194cfcd5e09e7506a3a651598"
+    },
+    {
+      "path": "frontend/package.json",
+      "sha256": "0f7a05587bcf1af5f4d5d077a0c2d90011adc87e1036a61db9ef3acf37c8b7d3"
+    },
+    {
+      "path": "frontend/pnpm-lock.yaml",
+      "sha256": "47ca44459819ad0e887d2f4f93394fdf3b1053b8f45edc9ceb0236981feee1f6"
+    }
+  ],
+  "harness": [
+    {
+      "path": "frontend/src/app/__tests__/parade-ink-foundation/compare.py",
+      "bytes": 3116,
+      "sha256": "a4804378810dafb20705e48d76664a70479292acdd82d4955f7c8b2d9c10b0e5"
+    },
+    {
+      "path": "frontend/src/app/__tests__/parade-ink-foundation/compatibility-vitest.config.ts",
+      "bytes": 318,
+      "sha256": "c320e9de4f336847a2fd507b5fdff7c8b5cd39968fb9caa87d0ee0ac42fcff81"
+    },
+    {
+      "path": "frontend/src/app/__tests__/parade-ink-foundation/controller.py",
+      "bytes": 7956,
+      "sha256": "ac563fede2bda17dea2ca625ce1b00e7b61d768783ee7d3dddf40f1a25251d24"
+    },
+    {
+      "path": "frontend/src/app/__tests__/parade-ink-foundation/foundation.test.tsx",
+      "bytes": 5991,
+      "sha256": "37947dc0a8611b92c0cc2558257dbcffe1651a44702f803b5e4f1f6ef6a309bb"
+    },
+    {
+      "path": "frontend/src/app/__tests__/parade-ink-foundation/guardian.py",
+      "bytes": 11475,
+      "sha256": "7d4816f7e8eb2c9ef93550feaa31cde821b89a536869500d1967be8854fa8797"
+    },
+    {
+      "path": "frontend/src/app/__tests__/parade-ink-foundation/native.mjs",
+      "bytes": 10330,
+      "sha256": "6d52da2430a5b12b282d37201034ad0a855300c75837ab07b3f0306a4c4aca28"
+    },
+    {
+      "path": "frontend/src/app/__tests__/parade-ink-foundation/preview.html",
+      "bytes": 268,
+      "sha256": "ab0aa0688e5964b41858585abba07c2949fd1ffa3f002e3531e852ef405401c5"
+    },
+    {
+      "path": "frontend/src/app/__tests__/parade-ink-foundation/preview.ts",
+      "bytes": 128,
+      "sha256": "fea3879d90c9c2df683d49a86a79989838a8a0e8e4f88f6d658a8db4bdfc4328"
+    },
+    {
+      "path": "frontend/src/app/__tests__/parade-ink-foundation/qualified.tsx",
+      "bytes": 8065,
+      "sha256": "f1d2f6f7313d9f4c162065d2738dd3f3c673f8e356eaf5de7866d24929f0739f"
+    },
+    {
+      "path": "frontend/src/app/__tests__/parade-ink-foundation/states.html",
+      "bytes": 278,
+      "sha256": "ad18e35a9a80b5571486d41f4c5b85731f353d578ac9f604669840166a145044"
+    },
+    {
+      "path": "frontend/src/app/__tests__/parade-ink-foundation/states.tsx",
+      "bytes": 1568,
+      "sha256": "3d0460c94cb3f34ef65ee78ccf60af4b49678fa4b00860aa2d477cec749704a6"
+    },
+    {
+      "path": "frontend/src/app/__tests__/parade-ink-foundation/vitest.config.ts",
+      "bytes": 292,
+      "sha256": "000376ccfcc5c344ec35464086a92759ce40756e0b85d22ba73e708b37e043dc"
+    }
+  ],
+  "executionPins": [
+    {
+      "path": "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node",
+      "sha256": "b6fb419f0f43bb2fbca273700294dd2f3b685a64b60e8417c295f47646a70e4a"
+    },
+    {
+      "path": "/Users/lhs/Desktop/mcr/frontend/package.json",
+      "sha256": "0f7a05587bcf1af5f4d5d077a0c2d90011adc87e1036a61db9ef3acf37c8b7d3"
+    },
+    {
+      "path": "/Users/lhs/Desktop/mcr/frontend/pnpm-lock.yaml",
+      "sha256": "47ca44459819ad0e887d2f4f93394fdf3b1053b8f45edc9ceb0236981feee1f6"
+    },
+    {
+      "path": "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome",
+      "sha256": "3f0acaf1e585195596d73ffa1824baa72c3c3ac115b5cfc43d789030a3f23d93"
+    }
+  ],
+  "productionCheckpoint": "056a8c48ff667134dee8e5e99710185294e4b898",
+  "newFocusedTestCount": 5,
+  "testDisposition": "Only five new focused regressions; no unchanged broad replay; actual World/browser obligations separate",
+  "sourceQualification": {
+    "result": "PASS",
+    "candidate": "c6cc270bfa211a381aab9d5058e4639b3c3ac377",
+    "source04ReadsetSHA": "9c24442a5e5970d2ae29db4c4bb363801dfbf70dfb2766f4e808062bd95c8fb8",
+    "allFourCommandsExit": 0,
+    "sevenRetainedChangedTests": "PASS",
+    "priorFiveNewTests": "PASS source02; unchanged",
+    "nativeCurrentFixture": "native03 FAIL before first qualified width; new resolver and shell-height correction NOT_RUN"
+  },
+  "retainedChangedTests": [
+    {
+      "path": "frontend/src/app/__tests__/reference-frame-footer/footer.test.tsx",
+      "sha256": "be2043b2a2800239651fc4e4b4d12656f03ac6dbfa5f942dbb709e618f92c67a"
+    },
+    {
+      "path": "frontend/src/app/reference-chrome-v2/chrome.test.tsx",
+      "sha256": "ae794c91f94a08488d4c0bf5c0db5517c9d8f5b489f6fe022995d091efd4593a"
+    }
+  ],
+  "productionCorrection": {
+    "prior": "056a8c48ff667134dee8e5e99710185294e4b898",
+    "path": "frontend/src/app/shell.css",
+    "reason": "Default height variable specificity prevented full-panel override",
+    "qualification": "NOT_RUN native04"
+  }
+}

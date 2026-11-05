@@ -1,8 +1,11 @@
 # PI01 — Parade Ink shared foundation
 
-Status: IN_PROGRESS. Source preparation is booked; executable and native checks
-are NOT_RUN. This document is the versioned presentation interface for PI02/03
-and later screen owners. It does not certify application or device acceptance.
+Status: IN_PROGRESS — developer implementation/validation complete; final scoped
+publication pending. Source02/source04, Native06 full-foundation and Native10
+focused corrected-header checks passed. Native10 five captures plus comparison
+were personally inspected. Initial b5 foundation is already publishedf70ad7eaf;
+final base.css/glyph/owned evidence followup goes directly to publisher412e.
+No king/SL review, acknowledgment or approval is required.
 
 ## Authorized objective and custody
 
@@ -97,25 +100,47 @@ PI04 consumes the same contract for its local rendering. No shared barrel or
 functional caller API is added. A contract source pin is sent directly to213,
 PI04, PI05, PI08, PI10 and UI533 without review/acknowledgment or a whole-family wait.
 
-No decorative left bars, fabricated levels, DM/Say hi, guestbook, client-only
-quantities or local success states are introduced. Controls expose real current
+No decorative left bars, fabricated levels, client-only quantities or local
+success states are introduced in this shared-foundation change. The later
+human Paradise City amendment explicitly authorizes contextual MESSAGE and
+meeting conversations in its separate venue scope; an old no-DM assumption
+does not constrain that scope. Controls expose real current
 callbacks. Character bytes, World geometry/camera/controller, single game/socket,
 Auth identity, privacy/cache/query ownership and era persistence are preserved.
 
 ## Validation and publication disposition
 
-NOT_RUN: relevant changed source checks; default-App native comparison and
-normal/selected/pressed/focus/pending/disabled/error states; short-height/safe-area;
-actual device/live obligations. No old matrix is automatically replayed.
-Runtime work requires its own fresh finite21d admission. Ordinary preparation
-64MiB TOTAL positive growth is booked through2026-11-05 10:00 Asia/Seoul;
-checkout +34MiB Git reserve +8MiB authoring projected55824779 bytes. Retained
-carry and prior WHOLE1707606622 are not reset or charged twice as NEW.
+Current qualification uses exact immutable source/readset pins. Source02's five
+new regressions and source04's seven retained cases, full types, scoped lint and
+syntax passed. Native06 passed the complete functioning default-App foundation
+matrix. Native07 passed seven commands' first five source checks (six resource
+regressions, one affected header callback, full types, scoped lint and syntax),
+then failed closed on a resource controller script-identity mismatch before
+its browser captures. Its FULL at 01:03:25.179106Z established resources0,
+no live recorded descendants, absent owned link/TMP and closed5365. Preserve
+that overall FAIL; no focused header native PASS is inferred.
 
-Complete only after functioning default consumption, necessary comparisons and
-fixes, concise evidence and canonical committed412e delivery. The full Feed/
-Thread visual milestone also needs owner213's functioning rendered slice.
-Original FE19 and unrelated live/device/physical acceptance remain open.
+The initial ordinary64MiB booking expired at01:00Z, with no future allocation
+carried forward. A distinct DOCFIX4MiB ordinary booking through01:20Z covers
+own diagnostic correction, documentation, scoped Git and direct412e handoff.
+Retained carry and every historical WHOLE high-water remain charged. Executable
+retries require a fresh finite21d allocation; actual FULL closes each old round.
+
+Initial foundation b5b44e475 was published by412e as f70ad7eaf, followed by
+final Feed805dd549 as10b1afe68. No combined current-master runtime replay is
+claimed. The pending followup from b5 contains only base.css, WindowInk.tsx,
+chrome.css, its granted retained test and owned helper/docs/evidence changes.
+Do not replay shell.css or any peer production file as a new change.
+
+Real backend/multiuser, device/load, approved World artwork and original FE19
+roof/reference obligations remain open. Native fixture data is deterministic;
+its geometric World and unavailable avatar are not product-art acceptance.
+
+The old ac24131 Mapv3 adoption grant was returned under the new direct human
+Paradise City amendment before any Map write, job, branch change or booking.
+All old commits/raw evidence and the original BLOCKED goal remain preserved.
+Independent PI01 work continues. Revised Map/Friends/Notes/location/meetings
+implementation requires exact disjoint ownership and a fresh applicable booking.
 
 ## Authored source checkpoint
 
@@ -127,9 +152,9 @@ pastel perimeter are removed. Existing era, route, controller and private
 state ownership is preserved. WindowInk uses inline currentColor SVG inside
 the incumbent buttons; callback, label and focus behavior is unchanged.
 
-This checkpoint is a reproducible source/API delivery for feature owners,
-not a passed visual milestone. Source, native and device results remain
-NOT_RUN. Full-screen body height subtracts the actual 70px frame/header/insets;
+At the initial checkpoint this was a reproducible source/API delivery; its
+source/native checks were then NOT_RUN. The current results above supersede
+that initial status, while device results remain NOT_RUN. Full-screen body height subtracts the actual 70px frame/header/insets;
 that measurement and short-height layout must be checked in the native round.
 
 Source01: five new focused regressions PASS. Full nonincremental types failed
@@ -178,3 +203,119 @@ The native driver now checks the normal 844px Feed footer is below 700px,
 preventing the observed half-height regression. This changes one production
 postimage from 056a8c48: `frontend/src/app/shell.css`. A new immutable pin and
 readset must be consumed explicitly; prior overlays remain reproducible.
+
+Native04 driver lint/syntax PASS0, but the second helper importer in FeedThread
+still failed resolution before the first width. The fixture now resolves pinned
+relative imports by their importer directory instead of recognizing one
+particular import spelling. Production postimages remain exactly b5b44e475.
+Both guards returned FULL/resource0 at 00:25:18.156448Z. Fixed-region analysis
+and all native widths remain unqualified, pending a distinct native05 round.
+
+Native05 reached the actual App, then stopped on an incorrect fixture expectation:
+a full Feed panel intentionally suspends the hidden World transport, so its room
+baseline is unavailable. The driver now waits for a baseline after opening the
+real World route. No production transport or controller changes are needed.
+Both guards returned FULL/resource0 at 00:38:20.557014Z.
+
+Owner inspection of native05/failure.png also exposed an actual paint defect:
+retained cozy imports were unlayered, and their :root feature selectors defeated
+the newly authored Feed background. Both retained imports now explicitly join
+`mcr-foundation-legacy`; new unlayered feature CSS wins without modifying frozen
+artist sources or feature code. This is the second production postimage change
+from056, alongside shell.css. The driver checks post/footer backgroundImage=none.
+A new explicit immutable correction pin is required; previous sources and failed
+rounds stay reproducible. This is not an accepted normal capture.
+
+The next composite fixture consumes the final owner-qualified Feed/Thread
+805dd5491dc2288ed296825367bf5d38f11c0da8 four-file read-only overlay, replacing
+293bec356. This incorporates the owner-validated compact text rows and final
+New Post footer alignment. Exact borrowed bytes are pinned in the readset.
+No peer source is written, and no fixture data or server authority is changed.
+
+Native06 FULL_FOUNDATION PASS at 00:45:16.534798Z, source47fa1f05e/readsetdca1cfa1.
+Actual App Feed/composer/World360/390/430, no horizontal overflow,44px targets,
+loaded bundled fonts, unchanged game/camera/geometry and one active connection
+when World is visible; drafts/shortactions,20/34CDPsafearea, shared focus/error/
+busy/pressed/sheet Escape+returnfocus all passed. Driverlint/syntax and bounded
+PIL comparison each exit0. Bothguards FULL/resources0; all16PNGs pluscomparison
+retained. Header390 measured delta x/y0.0633,width-0.1266,height1.5949px.
+Post/footer backgroundImage is none at every width, qualifying the base.css
+legacy-layer correction. Reference data/media/portrait and viewport heights
+differ truthfully; World terrain is synthetic and does not qualify productart.
+
+Owner image inspection found the minimize glyph pointing up. The pending narrow
+correction uses a filled triangle only for existing panel-toggle classes,
+rotated down for minimize/up for restore; generic Back ink stays unchanged.
+A focused3width native plus real minimize/restore will qualify this correction,
+retaining completed native06 evidence without replaying its full state matrix.
+One affected callback test, full types/lint and resource-census regressions are
+included. Future dualguards read exact resource receipts/legacy reservations,
+birth/ancestry and unknown-runtime census independently; metadata grants no
+resources and accepted-without-PID remains reserved. Native06 was closed before
+this interface existed; its new FULL metadata makes no retrospective claim.
+
+Native07 failed closed before browser startup at01:03:24.682925Z (primary) /
+01:03:25.179106Z (outer). All five preceding source commands passed. The exact
+controller identity victim was not logged, so no historical PID-specific cause
+is asserted. The next owned helper revision adds owner/PID/birth/expected-script,
+observed executable and command digest diagnostics without exposing full command
+arguments. It also recognizes scoped /tmp/mcr- and macOS /T/mcr- script roots.
+A seventh isolated regression checks diagnostic privacy and strict mismatch
+rejection; it is unrun until the next finite offer. No identity check is waived,
+no failed round is relabeled, and no old lease is restarted.
+
+The peer PreWorld owner supplied a concrete descriptor limitation from its
+retained SOURCE02typesB evidence: primary PID86290 was launched with relative
+`docs/mcr/evidence/parade-ink-pre-world-policy/lease.py`, while its descriptor
+claimed an absolute script. Its guardian86420 used absolute argv after a ready
+handshake. This is a factual mismatch compatible with the strict failure, not
+proof of Native07's unlogged victim. The owner will use absolute primary argv
+for future rounds. Preserve original receipts; do not retrospectively alter
+identity or relax strict script matching.
+
+Native08 bootstrap accepted01:12:29.214516Z and immediately exited1 before
+guardian/census/workload: moving receipt publication earlier had left `log`
+initialized too late. This owner error was corrected by defining the path
+before publication. Actual manual resource closure at01:12:45.875911Z confirmed
+PID49093 absent, no owned dependency link/TMP and closed5365. No test/capture
+ran; the round is permanently FAILED_FULL. Its invocation and explicit
+manual closure receipt remain retained without fabricated guard proof.
+
+Native09 both initial live samples succeeded; seven resource regressions passed.
+It then failed closed on unknown Python68158 at01:15:59 before further source
+or native work, FULL01:16:00.264438Z/resources0. The publisher's own factual
+receipt identifies68158 as its ordinary Git-only intake controller, with
+matching birth/script and no execution workload. The next reader therefore
+counts exact observed ordinary roots/descendants even while a FULL ordinary
+controller finishes writing, without reserving a workflow or caps. Three
+isolated regressions cover this role, mismatched scripts and forbidden runtime
+children. All unknown actual runtime payloads still fail closed. No failed
+Native09 proof is relabeled, and no old offer is reused.
+
+Native10 final header correction PASS_FULL01:19:55.117465Z, source77cfe94af /
+executed readseteb80d722 (byte-exact snapshot native10/readset.json). All seven
+commands passed, including ten meaningful resource regressions, affected header
+callback, full types, lint/syntax, actual defaultApp header360/390/430 plus real
+390 minimize/restore and PIL. All five captures and paired390 reference were
+personally inspected: down-minimize/up-restore glyphs, correct half-panel return,
+48px titlebar, separate44px targets, no horizontal overflow. Focus outline stays
+accessible. Header390 deltas remain x/y0.0633,width-0.1266,height+1.5949px versus
+normalized reference. Dynamic one-post/no-media/F-initial fixture differs
+truthfully; this is header qualification, not whole Feed density/art acceptance.
+Native06 separately retains complete foundation/safearea/shared-state proof.
+
+Final18production hashes are unchanged between source77c and this documentation
+commit. Compared with Native06, only WindowInk.tsx and chrome.css differ; Native10
+qualifies those. Compared with publishedb5, only base.css plus those two glyph
+files differ. No new shell.css/feature/controller/World change is published.
+Source/contract lineage, each command/exit, raw failed rounds and limitations
+remain in the scoped publication-followup manifest.
+
+Native10 peak12ALL/2738339840RSS/sharedNEW167677952 (includes96MiB carry),
+TMP31223808/WHOLE5560971264/minfree23638056960. Both guards FULL/resources0,
+no recorded live descendants, owned link/TMP absent and5365closed. Old DOCFIX4
+expired01:20 unchanged; distinct COMPLETION-DOC4-0120 adds4MiB through01:45
+in the same shared200MiB upper. No carry reset/deletion credit; conditional
+Native11/12 remain unused. Immutable working controller contract is
+controller-receipt-contract-v1.md with actual absolute invocation JSON and
+precise macOS runtime/ordinary-role/custody limitations.

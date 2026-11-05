@@ -10,6 +10,8 @@ import socket
 import subprocess
 import sys
 import time
+sys.dont_write_bytecode = True
+from membership import OWN as RESOURCE_RECEIPT, identity, publish as publish_resource, publish_census, sample as sample_membership
 
 ROOT = Path(__file__).resolve().parents[5]
 FRONT = ROOT / 'frontend'
@@ -25,6 +27,8 @@ TMP = Path(os.environ['MCR_PI_TMP'])
 HARD = datetime.datetime.fromisoformat(os.environ['MCR_PI_DEADLINE'].replace('Z', '+00:00')).timestamp()
 WORK = datetime.datetime.fromisoformat(os.environ['MCR_PI_WORK_DEADLINE'].replace('Z', '+00:00')).timestamp()
 OTHER = int(os.environ['MCR_PI_OTHER_NEW'])
+NEW_CARRY = int(os.environ.get('MCR_PI_NEW_CARRY', '0'))
+assert 0 <= NEW_CARRY <= 200 * 1024**2
 START_FLOOR = int(os.environ.get('MCR_PI_START_FLOOR', str(12 * 1024**3)))
 GIB = 1024**3
 MIB = 1024**2
@@ -34,7 +38,8 @@ RSS_CAP = (2 if MODE == 'source' else 3.5) * GIB
 PRIVATE_GIT = Path(subprocess.check_output(['git', 'rev-parse', '--absolute-git-dir'], cwd=ROOT, text=True).strip())
 COMMON_GIT = Path(subprocess.check_output(['git', 'rev-parse', '--path-format=absolute', '--git-common-dir'], cwd=ROOT, text=True).strip())
 CARRY_PATHS = [ROOT, PRIVATE_GIT, COMMON_GIT, Path(DEPENDENCIES), Path('/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64'), Path('/Applications/Google Chrome.app'), Path('/Library/Frameworks/Python.framework/Versions/3.14'), Path('/Users/lhs/.codex/visualizations/2026/11/03/01a1a26e-1de2-7b41-a294-c9a79cfded9b')]
-MUTABLE = [ROOT, PRIVATE_GIT]
+CARRY_PATHS.append(RESOURCE_RECEIPT)
+MUTABLE = [ROOT, PRIVATE_GIT, RESOURCE_RECEIPT]
 WHOLE_CAP = int(os.environ['MCR_PI_WHOLE_CAP'])
 PORT = int(os.environ.get('MCR_PI_PORT', '0'))
 def port_free():
@@ -128,12 +133,17 @@ def event(value):
 
 def measure():
     mutable, temporary = size(MUTABLE), size([TMP])
-    return dict(newBytes=34 * MIB + max(0, mutable - BASE) + temporary,
+    return dict(newBytes=NEW_CARRY + 34 * MIB + max(0, mutable - BASE) + temporary,
                 tmpBytes=temporary, wholeBytes=max(CARRY, size(CARRY_PATHS)) + temporary)
 
 
 def guard():
     global minimum_free
+    membership = sample_membership()
+    publish_census(OUT / 'guardian-census.json', membership)
+    if not hasattr(guard, 'membership') or guard.membership['owners'] != membership['owners']:
+        event(dict(type='MEMBERSHIP', sample=membership))
+    guard.membership = membership
     available, counters = free(), measure()
     minimum_free = min(minimum_free, available)
     assert available >= 8 * GIB and time.time() < WORK, 'live floor/work deadline'
@@ -160,9 +170,23 @@ if MODE == 'source' and PHASE == 'compatibility':
               [str(NODE), 'node_modules/oxlint/bin/oxlint', '--deny-warnings', PREFIX,
                'src/app/__tests__/reference-frame-footer/footer.test.tsx', 'src/app/reference-chrome-v2/chrome.test.tsx'],
               [str(NODE), '--check', PREFIX + 'native.mjs']]
+if MODE == 'native' and os.environ.get('MCR_PI_FOCUS') == 'header':
+    checks = [[sys.executable, '-B', PREFIX + 'membership_test.py'],
+              [str(NODE), 'node_modules/vitest/vitest.mjs', 'run', '--config', PREFIX + 'compatibility-vitest.config.ts',
+               '--configLoader', 'runner', '-t', 'keeps distinct native size'],
+              [str(NODE), 'node_modules/typescript/bin/tsc', '-p', 'tsconfig.json', '--pretty', 'false', '--incremental', 'false'],
+              [str(NODE), 'node_modules/oxlint/bin/oxlint', '--deny-warnings', PREFIX,
+               'src/app/reference-chrome-v2/WindowInk.tsx', 'src/app/reference-chrome-v2/chrome.test.tsx'],
+              [str(NODE), '--check', PREFIX + 'native.mjs'],
+              [str(NODE), PREFIX + 'native.mjs'],
+              [sys.executable, PREFIX + 'compare.py', str(OUT)]]
+resource = json.loads(RESOURCE_RECEIPT.read_text())
+assert resource['offerId'] == LEASE and resource['state'] == 'ACCEPTED'
+resource['guardControllers'] = [identity(os.getpid(), Path(__file__).resolve(), OUT)]
+publish_resource(resource)
 event(dict(type='ACCEPT', lease=LEASE, mode=MODE, phase=PHASE, at=datetime.datetime.now(datetime.timezone.utc).isoformat(),
            guardianPid=os.getpid(), workDeadline=WORK, hardDeadline=HARD, otherNewBytes=OTHER,
-           ownNewCap=NEW_CAP, startFloorBytes=START_FLOOR, freeBytes=free(), carryBytes=CARRY, priorHighWaterBytes=PRIOR))
+           ownNewCap=NEW_CAP, sharedNewCarryBytes=NEW_CARRY, startFloorBytes=START_FLOOR, freeBytes=free(), carryBytes=CARRY, priorHighWaterBytes=PRIOR))
 try:
     for index, argv in enumerate(checks):
         guard()

@@ -1,0 +1,61 @@
+{
+  "source": "77cfe94af06cac6b292ad7528352e4750e929e71",
+  "bootstrap": {
+    "ownerThreadId": "01a1a26e-1de2-7b41-a294-c9a79cfded9b",
+    "offerId": "PI01-FOCUSED-NATIVE10-0118",
+    "state": "ACCEPTED",
+    "acceptedAtEpoch": 1793841555.855031,
+    "workDeadlineEpoch": 1793841855.855031,
+    "fullDeadlineEpoch": 1793841915.855031,
+    "kind": "browser",
+    "processCap": 24,
+    "rssCapBytes": 3758096384,
+    "remainingNewUpperBytes": 109051904,
+    "sharedNewCapBytes": 209715200,
+    "sharedNewCarryBytes": 100663296,
+    "controller": {
+      "pid": 88733,
+      "birth": "Thu Nov 5 10:19:15 2026",
+      "executable": "/Library/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python",
+      "script": "-",
+      "cwd": "/Users/lhs/Desktop/mcr-worktrees/fe-runtime-preferences",
+      "outputRoot": "/Users/lhs/Desktop/mcr-worktrees/fe-runtime-preferences/docs/mcr/evidence/parade-ink-foundation/native10"
+    },
+    "guardControllers": [],
+    "bootstrapStage": "actual inline Python stdin; same-PID exec follows",
+    "receiptPaths": {
+      "accept": "/Users/lhs/Desktop/mcr-worktrees/fe-runtime-preferences/docs/mcr/evidence/parade-ink-foundation/native10-controller.jsonl",
+      "full": "/Users/lhs/Desktop/mcr-worktrees/fe-runtime-preferences/docs/mcr/evidence/parade-ink-foundation/native10-controller.jsonl",
+      "primaryFull": "/Users/lhs/Desktop/mcr-worktrees/fe-runtime-preferences/docs/mcr/evidence/parade-ink-foundation/native10/release.json"
+    },
+    "publishedAtEpoch": 1793841555.916398
+  },
+  "executable": "/Library/Frameworks/Python.framework/Versions/3.14/bin/python3",
+  "argv": [
+    "/Library/Frameworks/Python.framework/Versions/3.14/bin/python3",
+    "-B",
+    "/Users/lhs/Desktop/mcr-worktrees/fe-runtime-preferences/frontend/src/app/__tests__/parade-ink-foundation/controller.py"
+  ],
+  "cwd": "/Users/lhs/Desktop/mcr-worktrees/fe-runtime-preferences",
+  "environment": {
+    "MCR_PI_LEASE": "PI01-FOCUSED-NATIVE10-0118",
+    "MCR_PI_MODE": "native",
+    "MCR_PI_PHASE": "all",
+    "MCR_PI_FOCUS": "header",
+    "MCR_PI_OUTPUT": "/Users/lhs/Desktop/mcr-worktrees/fe-runtime-preferences/docs/mcr/evidence/parade-ink-foundation/native10",
+    "MCR_PI_TMP": "/private/tmp/mcr-parade-ink-native10",
+    "MCR_PI_PORT": "5365",
+    "MCR_PI_ACCEPT_EPOCH": "1793841555.855031",
+    "MCR_PI_WORK_DEADLINE": "2026-11-05T01:24:15.855031+00:00",
+    "MCR_PI_DEADLINE": "2026-11-05T01:25:15.855031+00:00",
+    "MCR_PI_OTHER_NEW": "5368709120",
+    "MCR_PI_NEW_CARRY": "100663296",
+    "MCR_PI_WHOLE_CAP": "8589934592",
+    "MCR_PI_START_FLOOR": "12884901888",
+    "MCR_PI_CONTROLLER_SHA": "99dd1eee9233602199644222c65a7af36f6f3f7279bb3ca6af799af1920a6b52",
+    "MCR_PI_GUARDIAN_SHA": "a6f90c0033db07f6d5c954f586d84e55722ec99da673643d2de7383bce6440d5",
+    "MCR_PI_READSET_SHA": "eb80d722f513ce794fe35317a87702dd2878321a2d76f313d36265b3d593d5ef"
+  },
+  "carryBasis": "96MiB >= Native07 max48480256 + Native09 max35672064 + Native08 1MiB + DOCFIX4MiB + margin. No deletion/reset credit. Shared200MiB across10/11/12, WHOLE retained separately.",
+  "qualification": "Actual invocation, results pending"
+}

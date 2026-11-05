@@ -1,0 +1,492 @@
+{
+  "result": "PASS",
+  "foundation": "77cfe94af06cac6b292ad7528352e4750e929e71",
+  "borrowed": [
+    {
+      "path": "frontend/src/features/event-feed/EventFeed.tsx",
+      "commit": "805dd5491dc2288ed296825367bf5d38f11c0da8",
+      "sha256": "3da54997fa7c683abb3753defb2723ce9cb6b2918d261395f2537709f655ec4e"
+    },
+    {
+      "path": "frontend/src/features/event-feed/feed.css",
+      "commit": "805dd5491dc2288ed296825367bf5d38f11c0da8",
+      "sha256": "3363185889b326d63f6808fe3735f69d8ac2e2c8329330458a2ed9656d508255"
+    },
+    {
+      "path": "frontend/src/features/event-feed/parade-ink/AuthorHeading.tsx",
+      "commit": "805dd5491dc2288ed296825367bf5d38f11c0da8",
+      "sha256": "22987af21193a9d51ef3bbc513e5513e7a39dc5609b6ba41bf78f60a4cb3258d"
+    },
+    {
+      "path": "frontend/src/features/feed-thread/FeedThread.tsx",
+      "commit": "805dd5491dc2288ed296825367bf5d38f11c0da8",
+      "sha256": "460fa6484d061943131284c6c006d7456d084e664f715c68af5423c97b92e157"
+    }
+  ],
+  "qualification": "Actual incumbent App router/WorldShell/production Auth and Phaser composition, deterministic HTTP/C05/geometric test terrain; exact read-only qualified Feed/Thread overlay. No live backend, approved World-art comparison, physical device or multiuser/load acceptance. Supplemental states are separately labeled.",
+  "screenshots": [
+    {
+      "file": "app-feed-360.png",
+      "sha256": "57aba1bae5ab276a603fe2abb819d0d961ecf4d9cc434ee5ec97e4c87411b44b",
+      "bytes": 16944,
+      "capturedAt": "2026-11-05T01:19:45.201Z"
+    },
+    {
+      "file": "app-feed-390.png",
+      "sha256": "dd99fd2cf426312ca33a0c1c0124f017366e8b856a1dd73c43a1ddbd9a4a36b1",
+      "bytes": 17094,
+      "capturedAt": "2026-11-05T01:19:46.687Z"
+    },
+    {
+      "file": "app-header-minimized-390.png",
+      "sha256": "b41152d6d50bbf5c4796bb223811ff22a47334595cd48370c9f031022691c095",
+      "bytes": 22005,
+      "capturedAt": "2026-11-05T01:19:46.803Z"
+    },
+    {
+      "file": "app-header-restored-390.png",
+      "sha256": "067b716ecdca9621f50cda27f83958a10668ba5aede9869526c8a88f84a832ba",
+      "bytes": 27999,
+      "capturedAt": "2026-11-05T01:19:46.904Z"
+    },
+    {
+      "file": "app-feed-430.png",
+      "sha256": "dbaa46353913991d0a5993940e6b26f9fab631aeb6fdf638d34afd647b1d471e",
+      "bytes": 16840,
+      "capturedAt": "2026-11-05T01:19:48.278Z"
+    }
+  ],
+  "cases": [
+    {
+      "width": 360,
+      "metrics": {
+        "frame": {
+          "x": 0,
+          "y": 0,
+          "width": 360,
+          "height": 844,
+          "font": "18px / 22px \"Parade Ink Text\", Arial, sans-serif",
+          "color": "rgb(23, 23, 23)",
+          "background": "rgb(249, 249, 248)",
+          "border": "2px"
+        },
+        "header": {
+          "x": 5,
+          "y": 5,
+          "width": 350,
+          "height": 48,
+          "font": "18px / 22px \"Parade Ink Text\", Arial, sans-serif",
+          "color": "rgb(255, 255, 255)",
+          "background": "rgb(23, 23, 23)",
+          "border": "0px"
+        },
+        "body": {
+          "x": 5,
+          "y": 53,
+          "width": 350,
+          "height": 786,
+          "font": "18px / 22px \"Parade Ink Text\", Arial, sans-serif",
+          "color": "rgb(23, 23, 23)",
+          "background": "rgb(249, 249, 248)",
+          "border": "0px"
+        },
+        "tabs": {
+          "x": 11,
+          "y": 59,
+          "width": 338,
+          "height": 56,
+          "font": "18px / 22px \"Parade Ink Text\", Arial, sans-serif",
+          "color": "rgb(23, 23, 23)",
+          "background": "rgba(0, 0, 0, 0)",
+          "border": "0px"
+        },
+        "selected": {
+          "x": 11,
+          "y": 59,
+          "width": 81.5,
+          "height": 44,
+          "font": "700 18px / 22px \"Parade Ink Display\", \"Arial Narrow\", Arial, sans-serif",
+          "color": "rgb(255, 255, 255)",
+          "background": "rgb(23, 23, 23)",
+          "border": "1px"
+        },
+        "footer": {
+          "x": 11,
+          "y": 776,
+          "width": 338,
+          "height": 57,
+          "font": "18px / 22px \"Parade Ink Text\", Arial, sans-serif",
+          "color": "rgb(23, 23, 23)",
+          "background": "rgb(249, 249, 248)",
+          "border": "1px 0px 0px"
+        },
+        "postBackground": "none",
+        "footerBackground": "none",
+        "rootOverflow": false,
+        "fontLoaded": true
+      },
+      "controls": [
+        {
+          "label": "Reduce panel",
+          "width": 44,
+          "height": 44,
+          "x": 221,
+          "y": 7
+        },
+        {
+          "label": "Minimize panel",
+          "width": 44,
+          "height": 44,
+          "x": 265,
+          "y": 7
+        },
+        {
+          "label": "Back to previous panel",
+          "width": 44,
+          "height": 44,
+          "x": 309,
+          "y": 7
+        },
+        {
+          "label": "ALL",
+          "width": 81.5,
+          "height": 44,
+          "x": 11,
+          "y": 59
+        },
+        {
+          "label": "MEETUP",
+          "width": 81.5,
+          "height": 44,
+          "x": 96.5,
+          "y": 59
+        },
+        {
+          "label": "GIVEAWAY",
+          "width": 81.5,
+          "height": 44,
+          "x": 182,
+          "y": 59
+        },
+        {
+          "label": "NOTICE",
+          "width": 81.5,
+          "height": 44,
+          "x": 267.5,
+          "y": 59
+        },
+        {
+          "label": "Feed options",
+          "width": 61.328125,
+          "height": 44,
+          "x": 11,
+          "y": 783
+        },
+        {
+          "label": "Write a post",
+          "width": 209.546875,
+          "height": 44,
+          "x": 80.328125,
+          "y": 783
+        },
+        {
+          "label": "Refresh feed",
+          "width": 51.125,
+          "height": 44,
+          "x": 297.875,
+          "y": 783
+        }
+      ],
+      "headerToggle": true,
+      "qualification": "Header glyph and actual minimize/restore only; prior full native06 remains separate immutable evidence."
+    },
+    {
+      "width": 390,
+      "metrics": {
+        "frame": {
+          "x": 0,
+          "y": 0,
+          "width": 390,
+          "height": 844,
+          "font": "18px / 22px \"Parade Ink Text\", Arial, sans-serif",
+          "color": "rgb(23, 23, 23)",
+          "background": "rgb(249, 249, 248)",
+          "border": "2px"
+        },
+        "header": {
+          "x": 5,
+          "y": 5,
+          "width": 380,
+          "height": 48,
+          "font": "18px / 22px \"Parade Ink Text\", Arial, sans-serif",
+          "color": "rgb(255, 255, 255)",
+          "background": "rgb(23, 23, 23)",
+          "border": "0px"
+        },
+        "body": {
+          "x": 5,
+          "y": 53,
+          "width": 380,
+          "height": 786,
+          "font": "18px / 22px \"Parade Ink Text\", Arial, sans-serif",
+          "color": "rgb(23, 23, 23)",
+          "background": "rgb(249, 249, 248)",
+          "border": "0px"
+        },
+        "tabs": {
+          "x": 11,
+          "y": 59,
+          "width": 368,
+          "height": 56,
+          "font": "18px / 22px \"Parade Ink Text\", Arial, sans-serif",
+          "color": "rgb(23, 23, 23)",
+          "background": "rgba(0, 0, 0, 0)",
+          "border": "0px"
+        },
+        "selected": {
+          "x": 11,
+          "y": 59,
+          "width": 89,
+          "height": 44,
+          "font": "700 18px / 22px \"Parade Ink Display\", \"Arial Narrow\", Arial, sans-serif",
+          "color": "rgb(255, 255, 255)",
+          "background": "rgb(23, 23, 23)",
+          "border": "1px"
+        },
+        "footer": {
+          "x": 11,
+          "y": 776,
+          "width": 368,
+          "height": 57,
+          "font": "18px / 22px \"Parade Ink Text\", Arial, sans-serif",
+          "color": "rgb(23, 23, 23)",
+          "background": "rgb(249, 249, 248)",
+          "border": "1px 0px 0px"
+        },
+        "postBackground": "none",
+        "footerBackground": "none",
+        "rootOverflow": false,
+        "fontLoaded": true
+      },
+      "controls": [
+        {
+          "label": "Reduce panel",
+          "width": 44,
+          "height": 44,
+          "x": 251,
+          "y": 7
+        },
+        {
+          "label": "Minimize panel",
+          "width": 44,
+          "height": 44,
+          "x": 295,
+          "y": 7
+        },
+        {
+          "label": "Back to previous panel",
+          "width": 44,
+          "height": 44,
+          "x": 339,
+          "y": 7
+        },
+        {
+          "label": "ALL",
+          "width": 89,
+          "height": 44,
+          "x": 11,
+          "y": 59
+        },
+        {
+          "label": "MEETUP",
+          "width": 89,
+          "height": 44,
+          "x": 104,
+          "y": 59
+        },
+        {
+          "label": "GIVEAWAY",
+          "width": 89,
+          "height": 44,
+          "x": 197,
+          "y": 59
+        },
+        {
+          "label": "NOTICE",
+          "width": 89,
+          "height": 44,
+          "x": 290,
+          "y": 59
+        },
+        {
+          "label": "Feed options",
+          "width": 67.546875,
+          "height": 44,
+          "x": 11,
+          "y": 783
+        },
+        {
+          "label": "Write a post",
+          "width": 228.15625,
+          "height": 44,
+          "x": 86.546875,
+          "y": 783
+        },
+        {
+          "label": "Refresh feed",
+          "width": 56.296875,
+          "height": 44,
+          "x": 322.703125,
+          "y": 783
+        }
+      ],
+      "headerToggle": true,
+      "qualification": "Header glyph and actual minimize/restore only; prior full native06 remains separate immutable evidence."
+    },
+    {
+      "width": 430,
+      "metrics": {
+        "frame": {
+          "x": 0,
+          "y": 0,
+          "width": 430,
+          "height": 844,
+          "font": "18px / 22px \"Parade Ink Text\", Arial, sans-serif",
+          "color": "rgb(23, 23, 23)",
+          "background": "rgb(249, 249, 248)",
+          "border": "2px"
+        },
+        "header": {
+          "x": 5,
+          "y": 5,
+          "width": 420,
+          "height": 48,
+          "font": "18px / 22px \"Parade Ink Text\", Arial, sans-serif",
+          "color": "rgb(255, 255, 255)",
+          "background": "rgb(23, 23, 23)",
+          "border": "0px"
+        },
+        "body": {
+          "x": 5,
+          "y": 53,
+          "width": 420,
+          "height": 786,
+          "font": "18px / 22px \"Parade Ink Text\", Arial, sans-serif",
+          "color": "rgb(23, 23, 23)",
+          "background": "rgb(249, 249, 248)",
+          "border": "0px"
+        },
+        "tabs": {
+          "x": 11,
+          "y": 59,
+          "width": 408,
+          "height": 56,
+          "font": "18px / 22px \"Parade Ink Text\", Arial, sans-serif",
+          "color": "rgb(23, 23, 23)",
+          "background": "rgba(0, 0, 0, 0)",
+          "border": "0px"
+        },
+        "selected": {
+          "x": 11,
+          "y": 59,
+          "width": 99,
+          "height": 44,
+          "font": "700 18px / 22px \"Parade Ink Display\", \"Arial Narrow\", Arial, sans-serif",
+          "color": "rgb(255, 255, 255)",
+          "background": "rgb(23, 23, 23)",
+          "border": "1px"
+        },
+        "footer": {
+          "x": 11,
+          "y": 776,
+          "width": 408,
+          "height": 57,
+          "font": "18px / 22px \"Parade Ink Text\", Arial, sans-serif",
+          "color": "rgb(23, 23, 23)",
+          "background": "rgb(249, 249, 248)",
+          "border": "1px 0px 0px"
+        },
+        "postBackground": "none",
+        "footerBackground": "none",
+        "rootOverflow": false,
+        "fontLoaded": true
+      },
+      "controls": [
+        {
+          "label": "Reduce panel",
+          "width": 44,
+          "height": 44,
+          "x": 291,
+          "y": 7
+        },
+        {
+          "label": "Minimize panel",
+          "width": 44,
+          "height": 44,
+          "x": 335,
+          "y": 7
+        },
+        {
+          "label": "Back to previous panel",
+          "width": 44,
+          "height": 44,
+          "x": 379,
+          "y": 7
+        },
+        {
+          "label": "ALL",
+          "width": 99,
+          "height": 44,
+          "x": 11,
+          "y": 59
+        },
+        {
+          "label": "MEETUP",
+          "width": 99,
+          "height": 44,
+          "x": 114,
+          "y": 59
+        },
+        {
+          "label": "GIVEAWAY",
+          "width": 99,
+          "height": 44,
+          "x": 217,
+          "y": 59
+        },
+        {
+          "label": "NOTICE",
+          "width": 99,
+          "height": 44,
+          "x": 320,
+          "y": 59
+        },
+        {
+          "label": "Feed options",
+          "width": 75.84375,
+          "height": 44,
+          "x": 11,
+          "y": 783
+        },
+        {
+          "label": "Write a post",
+          "width": 252.953125,
+          "height": 44,
+          "x": 94.84375,
+          "y": 783
+        },
+        {
+          "label": "Refresh feed",
+          "width": 63.203125,
+          "height": 44,
+          "x": 355.796875,
+          "y": 783
+        }
+      ],
+      "headerToggle": true,
+      "qualification": "Header glyph and actual minimize/restore only; prior full native06 remains separate immutable evidence."
+    }
+  ],
+  "errors": [],
+  "focus": "HEADER_CORRECTION_ONLY"
+}
