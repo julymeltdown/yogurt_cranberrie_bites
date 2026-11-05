@@ -1,0 +1,8 @@
+Traceback (most recent call last):
+  File "/Users/lhs/Desktop/mcr-worktrees/fe-ref-gifts/docs/mcr/evidence/parade-ink-part-preview/run-allocated.py", line 306, in <module>
+    raise SystemExit(main())
+                     ~~~~^^
+  File "/Users/lhs/Desktop/mcr-worktrees/fe-ref-gifts/docs/mcr/evidence/parade-ink-part-preview/run-allocated.py", line 123, in main
+    assert not subprocess.check_output(['git', 'status', '--porcelain'], cwd=ROOT).strip()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError

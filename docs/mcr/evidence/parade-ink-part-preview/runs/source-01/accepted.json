@@ -1,0 +1,142 @@
+{
+  "allocation": "PARTPREVIEW-SOURCE01-0202",
+  "state": "ACTUAL_ACCEPT_LIVE",
+  "class": "source",
+  "root": "/Users/lhs/Desktop/mcr-worktrees/fe-ref-gifts",
+  "candidate": "a71313a11ff3fc4f4f1733d5db05229c3fff72ce",
+  "acceptedUtc": "2026-11-05T01:58:16.683271+00:00",
+  "workUtc": "2026-11-05T02:04:16.683271+00:00",
+  "hardUtc": "2026-11-05T02:05:16.683271+00:00",
+  "caps": {
+    "wholeBytes": 8589934592,
+    "newBytes": 134217728,
+    "temporaryBytes": 100663296,
+    "durableBytes": 33554432,
+    "rssBytes": 3221225472,
+    "processes": 8
+  },
+  "pids": [
+    93804,
+    93718
+  ],
+  "pidBirth": {
+    "93804": "Thu Nov  5 10:58:18 2026",
+    "93718": "Thu Nov  5 10:58:16 2026"
+  },
+  "initialSample": {
+    "utc": "2026-11-05T01:58:19.704518+00:00",
+    "pids": [
+      93804,
+      93718
+    ],
+    "wholeBytes": 4683662502,
+    "newBytes": 118996992,
+    "temporaryBytes": 12288,
+    "durableBytes": 65536,
+    "rssBytes": 185024512,
+    "processes": 2,
+    "freeBytes": 23142600704
+  },
+  "retained": {
+    "checkoutBytes": 1378512896,
+    "gitMetadataBytes": 2367488,
+    "readOnlyDependencyLogicalBytes": 408236853,
+    "readOnlyDependencyAllocatedBytes": 438317056,
+    "readOnlyDependencyChargeBytes": 438317056,
+    "readOnlyNodeRuntimeBytes": 122564432,
+    "readOnlyFoundation": {
+      "bytes": 0,
+      "postimages": []
+    },
+    "entirePythonPrefix": "/Library/Frameworks/Python.framework/Versions/3.14",
+    "entirePythonChargeBytes": 1045037056,
+    "readOnlyNodeSha256": "b6fb419f0f43bb2fbca273700294dd2f3b685a64b60e8417c295f47646a70e4a",
+    "readOnlyChromeLogicalBytes": 0,
+    "readOnlyChromeAllocatedBytes": 0,
+    "readOnlyChromeChargeBytes": 0,
+    "ownedSharedGitInventory": {
+      "bytes": 143183872,
+      "objectCount": 1109,
+      "inodes": [
+        {
+          "path": "/Users/lhs/Desktop/mcr/.git/objects/pack/pack-6143e81802ffaa38c00e4f36a3e111bab2497518.idx",
+          "logicalBytes": 44360,
+          "allocatedBytes": 45056,
+          "chargeBytes": 45056
+        },
+        {
+          "path": "/Users/lhs/Desktop/mcr/.git/objects/pack/pack-6143e81802ffaa38c00e4f36a3e111bab2497518.pack",
+          "logicalBytes": 10363632,
+          "allocatedBytes": 10366976,
+          "chargeBytes": 10366976
+        },
+        {
+          "path": "/Users/lhs/Desktop/mcr/.git/objects/pack/pack-6143e81802ffaa38c00e4f36a3e111bab2497518.rev",
+          "logicalBytes": 6236,
+          "allocatedBytes": 8192,
+          "chargeBytes": 8192
+        },
+        {
+          "path": "/Users/lhs/Desktop/mcr/.git/objects/pack/pack-a5f977aeba3ff551abbd74c74071ad3e2d2cc9d3.idx",
+          "logicalBytes": 15828,
+          "allocatedBytes": 16384,
+          "chargeBytes": 16384
+        },
+        {
+          "path": "/Users/lhs/Desktop/mcr/.git/objects/pack/pack-a5f977aeba3ff551abbd74c74071ad3e2d2cc9d3.pack",
+          "logicalBytes": 1861681,
+          "allocatedBytes": 1863680,
+          "chargeBytes": 1863680
+        },
+        {
+          "path": "/Users/lhs/Desktop/mcr/.git/objects/pack/pack-a5f977aeba3ff551abbd74c74071ad3e2d2cc9d3.rev",
+          "logicalBytes": 2160,
+          "allocatedBytes": 4096,
+          "chargeBytes": 4096
+        },
+        {
+          "path": "/Users/lhs/Desktop/mcr/.git/objects/pack/pack-a67b743fb1894841bde14eab3e86acf9c5618b1f.idx",
+          "logicalBytes": 138972,
+          "allocatedBytes": 139264,
+          "chargeBytes": 139264
+        },
+        {
+          "path": "/Users/lhs/Desktop/mcr/.git/objects/pack/pack-a67b743fb1894841bde14eab3e86acf9c5618b1f.pack",
+          "logicalBytes": 24950965,
+          "allocatedBytes": 24952832,
+          "chargeBytes": 24952832
+        },
+        {
+          "path": "/Users/lhs/Desktop/mcr/.git/objects/pack/pack-a67b743fb1894841bde14eab3e86acf9c5618b1f.rev",
+          "logicalBytes": 19752,
+          "allocatedBytes": 20480,
+          "chargeBytes": 20480
+        },
+        {
+          "path": "/Users/lhs/Desktop/mcr/.git/objects/pack/pack-d4d7e686e78fcd35069b39d7608f0c07f0c19c85.idx",
+          "logicalBytes": 732516,
+          "allocatedBytes": 733184,
+          "chargeBytes": 733184
+        },
+        {
+          "path": "/Users/lhs/Desktop/mcr/.git/objects/pack/pack-d4d7e686e78fcd35069b39d7608f0c07f0c19c85.pack",
+          "logicalBytes": 104924051,
+          "allocatedBytes": 104927232,
+          "chargeBytes": 104927232
+        },
+        {
+          "path": "/Users/lhs/Desktop/mcr/.git/objects/pack/pack-d4d7e686e78fcd35069b39d7608f0c07f0c19c85.rev",
+          "logicalBytes": 104544,
+          "allocatedBytes": 106496,
+          "chargeBytes": 106496
+        }
+      ]
+    },
+    "sharedGitCommonDirReadOnly": "/Users/lhs/Desktop/mcr/.git",
+    "copiedGitCarryBytes": 0
+  },
+  "executables": {
+    "93804": "/Library/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python",
+    "93718": "/Library/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python"
+  }
+}

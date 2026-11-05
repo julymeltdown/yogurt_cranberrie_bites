@@ -1,0 +1,375 @@
+{
+  "status": "PASS",
+  "source": "71204892b0b3fc50dde880a0995ab18258315a2e",
+  "qualification": "Native Chrome pixels, verified atlas and minted reviewed authority from controlled protected bootstrap; no real backend, device, whole-PI07 or reference-parity claim.",
+  "errors": [],
+  "captures": [
+    "hair-390.png",
+    "outfit-390.png",
+    "eyes-390.png"
+  ],
+  "cases": [
+    {
+      "name": "all-28-native-raw-cell-pixels",
+      "items": [
+        {
+          "kind": "body",
+          "key": "body-0",
+          "frame": 120,
+          "width": 64,
+          "height": 64,
+          "mismatches": 0,
+          "transparent": 2708,
+          "visible": 1388,
+          "sha256": "4a8c1bba744f8e91c5bdc6950069ea5ad7cfed45f7975c124ae652b951dd2921",
+          "composition": "raw-item-cell"
+        },
+        {
+          "kind": "body",
+          "key": "body-1",
+          "frame": 140,
+          "width": 64,
+          "height": 64,
+          "mismatches": 0,
+          "transparent": 2708,
+          "visible": 1388,
+          "sha256": "fa45441953b0b67312e6de022b31f0ba3a040750ff65666183576364da0cc425",
+          "composition": "raw-item-cell"
+        },
+        {
+          "kind": "body",
+          "key": "body-2",
+          "frame": 160,
+          "width": 64,
+          "height": 64,
+          "mismatches": 0,
+          "transparent": 2708,
+          "visible": 1388,
+          "sha256": "7e79219b83e57f6ee99b495cdde03478ad38b6e1ea6fffb29cd5a2a8fd3fc0ed",
+          "composition": "raw-item-cell"
+        },
+        {
+          "kind": "body",
+          "key": "body-3",
+          "frame": 180,
+          "width": 64,
+          "height": 64,
+          "mismatches": 0,
+          "transparent": 2708,
+          "visible": 1388,
+          "sha256": "4f073395b90ddfdb790ca3343128650b7133c462c2dacafab5195addb53dd6d7",
+          "composition": "raw-item-cell"
+        },
+        {
+          "kind": "body",
+          "key": "body-4",
+          "frame": 200,
+          "width": 64,
+          "height": 64,
+          "mismatches": 0,
+          "transparent": 2708,
+          "visible": 1388,
+          "sha256": "402457079b41c1c7569ba9b823106b559b92d47db44e096d15958e434b3914bf",
+          "composition": "raw-item-cell"
+        },
+        {
+          "kind": "body",
+          "key": "body-5",
+          "frame": 220,
+          "width": 64,
+          "height": 64,
+          "mismatches": 0,
+          "transparent": 2708,
+          "visible": 1388,
+          "sha256": "8077d41b2ae40b0515c0abe084957784531cb2c70c99722432677159cf45a331",
+          "composition": "raw-item-cell"
+        },
+        {
+          "kind": "body",
+          "key": "body-6",
+          "frame": 240,
+          "width": 64,
+          "height": 64,
+          "mismatches": 0,
+          "transparent": 2708,
+          "visible": 1388,
+          "sha256": "15ef050533341652b37662b1015dca94dfb31f59f3ab684969b2a99a35be0594",
+          "composition": "raw-item-cell"
+        },
+        {
+          "kind": "body",
+          "key": "body-7",
+          "frame": 260,
+          "width": 64,
+          "height": 64,
+          "mismatches": 0,
+          "transparent": 2708,
+          "visible": 1388,
+          "sha256": "f61dbe019d563c8a882c16d77cf7acedf891a52cbbcb59fece091b7bca3994da",
+          "composition": "raw-item-cell"
+        },
+        {
+          "kind": "hair",
+          "key": "hair-0",
+          "frame": 280,
+          "width": 64,
+          "height": 64,
+          "mismatches": 0,
+          "transparent": 3097,
+          "visible": 999,
+          "sha256": "cc05eef2cae43d2ad7c0cc0454eaaea4e976f12260c23f139702db89d85040ea",
+          "composition": "raw-item-cell"
+        },
+        {
+          "kind": "hair",
+          "key": "hair-1",
+          "frame": 284,
+          "width": 64,
+          "height": 64,
+          "mismatches": 0,
+          "transparent": 3075,
+          "visible": 1021,
+          "sha256": "aac8dc6e6a557107d1ef7705cd1485f52daa1ff4714d460a93010341e81e3a70",
+          "composition": "raw-item-cell"
+        },
+        {
+          "kind": "hair",
+          "key": "hair-2",
+          "frame": 288,
+          "width": 64,
+          "height": 64,
+          "mismatches": 0,
+          "transparent": 2974,
+          "visible": 1122,
+          "sha256": "6823e780959b64c4ddeccc8732ca9eaa731bb0cb51044d76c92738e51cf00149",
+          "composition": "raw-item-cell"
+        },
+        {
+          "kind": "hair",
+          "key": "hair-3",
+          "frame": 292,
+          "width": 64,
+          "height": 64,
+          "mismatches": 0,
+          "transparent": 3073,
+          "visible": 1023,
+          "sha256": "70b5e68b6474b60d6b521fae1cb076c8f2dac8aeed65565e88e230f4c89e0fe5",
+          "composition": "raw-item-cell"
+        },
+        {
+          "kind": "hair",
+          "key": "hair-4",
+          "frame": 296,
+          "width": 64,
+          "height": 64,
+          "mismatches": 0,
+          "transparent": 3139,
+          "visible": 957,
+          "sha256": "263c3bab7df6a78e79bf64f87c6d55c09d4559be56b7ca3b9667e9a18fde7184",
+          "composition": "raw-item-cell"
+        },
+        {
+          "kind": "hair",
+          "key": "hair-5",
+          "frame": 300,
+          "width": 64,
+          "height": 64,
+          "mismatches": 0,
+          "transparent": 3022,
+          "visible": 1074,
+          "sha256": "95b9f91cca48eebfdd3e1b6fbe9f4cb8af8b38e54ca75323ca05283976b46ae1",
+          "composition": "raw-item-cell"
+        },
+        {
+          "kind": "outfit",
+          "key": "outfit-0",
+          "frame": 309,
+          "width": 64,
+          "height": 64,
+          "mismatches": 0,
+          "transparent": 3701,
+          "visible": 395,
+          "sha256": "d6e48efe9e0d4c690ddf04a91f7fb48a0eabaed85097f2c5c03ea937cedccb0c",
+          "composition": "raw-item-cell"
+        },
+        {
+          "kind": "outfit",
+          "key": "outfit-1",
+          "frame": 349,
+          "width": 64,
+          "height": 64,
+          "mismatches": 0,
+          "transparent": 3711,
+          "visible": 385,
+          "sha256": "4fae6c51f00479a8bc23f602eb81b5abf18875774e402f166b57a0126f9e7c1b",
+          "composition": "raw-item-cell"
+        },
+        {
+          "kind": "outfit",
+          "key": "outfit-2",
+          "frame": 389,
+          "width": 64,
+          "height": 64,
+          "mismatches": 0,
+          "transparent": 3689,
+          "visible": 407,
+          "sha256": "5aa53772d5065f7b7b115d40d17fdd25fd4213a39ff111b5bee11cfcfbd46ed9",
+          "composition": "raw-item-cell"
+        },
+        {
+          "kind": "outfit",
+          "key": "outfit-3",
+          "frame": 429,
+          "width": 64,
+          "height": 64,
+          "mismatches": 0,
+          "transparent": 3705,
+          "visible": 391,
+          "sha256": "ce3bd829d051a9e627dba22f17851a2ccdd058afa325d2202edc73f4827f4f2f",
+          "composition": "raw-item-cell"
+        },
+        {
+          "kind": "outfit",
+          "key": "outfit-4",
+          "frame": 469,
+          "width": 64,
+          "height": 64,
+          "mismatches": 0,
+          "transparent": 3703,
+          "visible": 393,
+          "sha256": "adf430de312405faecd01e4d0c84c45c726bb9cecd17bf515672f585f5bf5c7d",
+          "composition": "raw-item-cell"
+        },
+        {
+          "kind": "outfit",
+          "key": "outfit-5",
+          "frame": 509,
+          "width": 64,
+          "height": 64,
+          "mismatches": 0,
+          "transparent": 3697,
+          "visible": 399,
+          "sha256": "835f7b5ad6ce511f3bd612d856a93316437ea98fd877f74db9dbd5a5a8d54ef4",
+          "composition": "raw-item-cell"
+        },
+        {
+          "kind": "accessory",
+          "key": "accessory-0",
+          "frame": 544,
+          "width": 64,
+          "height": 64,
+          "mismatches": 0,
+          "transparent": 3933,
+          "visible": 163,
+          "sha256": "01de598eff686c9cdf4300a665856bbf406aadedc181144432e7b1e8b77afcd1",
+          "composition": "raw-item-cell"
+        },
+        {
+          "kind": "accessory",
+          "key": "accessory-1",
+          "frame": 548,
+          "width": 64,
+          "height": 64,
+          "mismatches": 0,
+          "transparent": 3937,
+          "visible": 159,
+          "sha256": "dcbcf8779c4144fd9ff33085cb8527a87b45c9e56668f38146cca53b7cf48638",
+          "composition": "raw-item-cell"
+        },
+        {
+          "kind": "accessory",
+          "key": "accessory-2",
+          "frame": 552,
+          "width": 64,
+          "height": 64,
+          "mismatches": 0,
+          "transparent": 3683,
+          "visible": 413,
+          "sha256": "dff9056c915ca64371d869a557b896f139362f6eeaec0dc50017d48118d81d52",
+          "composition": "raw-item-cell"
+        },
+        {
+          "kind": "accessory",
+          "key": "accessory-3",
+          "frame": 556,
+          "width": 64,
+          "height": 64,
+          "mismatches": 0,
+          "transparent": 3302,
+          "visible": 794,
+          "sha256": "98d9aa447bb9ebc7b29a7c03db80cf3758f5e822aec99cc724b8ec14b03cef29",
+          "composition": "raw-item-cell"
+        },
+        {
+          "kind": "eyes",
+          "key": "eyes-0",
+          "frame": 560,
+          "width": 64,
+          "height": 64,
+          "mismatches": 0,
+          "transparent": 3820,
+          "visible": 276,
+          "sha256": "b205ec8c1663fdb81d7a179f7fc1e1e719b572427a28eef4144f53d677270da7",
+          "composition": "raw-item-cell"
+        },
+        {
+          "kind": "eyes",
+          "key": "eyes-1",
+          "frame": 564,
+          "width": 64,
+          "height": 64,
+          "mismatches": 0,
+          "transparent": 3820,
+          "visible": 276,
+          "sha256": "f5a43650e13f1fb4a7ab5e7b291fc8a0d7411748a9537c804ca41765c4d40839",
+          "composition": "raw-item-cell"
+        },
+        {
+          "kind": "eyes",
+          "key": "eyes-2",
+          "frame": 568,
+          "width": 64,
+          "height": 64,
+          "mismatches": 0,
+          "transparent": 3824,
+          "visible": 272,
+          "sha256": "7548921d7802b9d84066563857ff755a34c7371f173203a43057357f44459b60",
+          "composition": "raw-item-cell"
+        },
+        {
+          "kind": "eyes",
+          "key": "eyes-3",
+          "frame": 572,
+          "width": 64,
+          "height": 64,
+          "mismatches": 0,
+          "transparent": 3829,
+          "visible": 267,
+          "sha256": "ce669d8f84e5e3fb23399b1e1280aceb2d6fb997f467bc204bee4cc91d3170ce",
+          "composition": "raw-item-cell"
+        }
+      ]
+    },
+    {
+      "name": "four-card-category-change-and-synchronous-withdrawal",
+      "allErased": true,
+      "attached": 0,
+      "diagnostics": {
+        "decodedAtlases": 0,
+        "leases": 0,
+        "partPreviews": 0,
+        "clockListeners": 0,
+        "composition": null,
+        "disposed": true
+      }
+    }
+  ],
+  "cleanup": {
+    "browserClosed": true,
+    "serverClosed": true
+  },
+  "artRequests": [
+    "http://127.0.0.1:5373/world/avatars/derived-v1/motion-candidates-v1/combined-release-candidate.json",
+    "http://127.0.0.1:5373/world/avatars/derived-v1/motion-candidates-v1/avatar-candidates-64-1cd8f05af8d76d58.png"
+  ]
+}

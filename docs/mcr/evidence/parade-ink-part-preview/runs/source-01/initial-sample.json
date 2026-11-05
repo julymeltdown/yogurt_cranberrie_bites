@@ -1,0 +1,14 @@
+{
+  "utc": "2026-11-05T01:58:19.704518+00:00",
+  "pids": [
+    93804,
+    93718
+  ],
+  "wholeBytes": 4683662502,
+  "newBytes": 118996992,
+  "temporaryBytes": 12288,
+  "durableBytes": 65536,
+  "rssBytes": 185024512,
+  "processes": 2,
+  "freeBytes": 23142600704
+}

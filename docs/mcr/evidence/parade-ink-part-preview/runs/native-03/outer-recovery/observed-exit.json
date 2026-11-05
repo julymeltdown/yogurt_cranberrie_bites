@@ -1,0 +1,6 @@
+{
+  "provenance": "Observed exec session 78235 stderr; transcribed after literal FULL, not a regenerated execution.",
+  "error": "PermissionError: [Errno 1] Operation not permitted",
+  "location": "supervise-allocated.py:180, os.killpg(group, signal.SIGTERM), called from run_round() / main()",
+  "qualification": "Outer cleanup reporting FAIL; product/native and primary PASS are separate actual records. Cause of invalid permission is not independently established."
+}

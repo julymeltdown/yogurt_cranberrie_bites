@@ -1,6 +1,7 @@
-import { assertMotionArt, motionFrame, requireMotion, validateMotionSelection, type MotionArt, type MotionDirection, type MotionItem, type MotionSelection } from './art'
+import { MOTION_LAYERS, assertMotionArt, motionFrame, requireMotion, validateMotionSelection, type MotionArt, type MotionDirection, type MotionItem, type MotionLayer, type MotionSelection } from './art'
 
 export interface MotionComposition { readonly key: string; readonly canvas: HTMLCanvasElement; release(): void }
+export interface MotionPart { readonly kind: MotionLayer; readonly key: string }
 /** One scoped owner; 20 output cells fit the incumbent Phaser texture() capability. No animation loop. */
 export function createMotionCompositor(options: { art: MotionArt; image: CanvasImageSource; isCurrent(): boolean; maxEntries?: number }) {
   assertMotionArt(options.art)
@@ -8,6 +9,7 @@ export function createMotionCompositor(options: { art: MotionArt; image: CanvasI
   requireMotion(Number.isInteger(maximum) && maximum > 0 && maximum <= 50)
   type Entry = { canvas: HTMLCanvasElement; refs: number }
   const cache = new Map<string, Entry>(), invalidations = new Set<() => void>()
+  const partInvalidations = new Set<() => void>()
   let disposed = false, created = 0, removed = 0
   const current = () => !disposed && options.isCurrent()
   function erase(key: string, entry: Entry) { cache.delete(key); entry.canvas.width = entry.canvas.height = 0; removed++ }
@@ -76,9 +78,27 @@ export function createMotionCompositor(options: { art: MotionArt; image: CanvasI
     } catch (error) { canvas.width = canvas.height = 0; throw error }
     finally { acquired.release() }
   }
-  return { acquire, thumbnail, validateSelection: (input: unknown) => validateMotionSelection(input, options.art),
-    read: () => ({ entries: cache.size, references: [...cache.values()].reduce((n, e) => n + e.refs, 0), created, removed, thumbnails: invalidations.size, disposed }),
-    dispose() { if (disposed) return; disposed = true; for (const clear of Array.from(invalidations)) clear(); for (const [key, entry] of Array.from(cache)) erase(key, entry) },
+  function acquirePartPreview(part: MotionPart) {
+    requireMotion(current() && part && MOTION_LAYERS.includes(part.kind) && typeof part.key === 'string' && partInvalidations.size < 4)
+    const selected = item(part.key, part.kind), down = selected.directions.find(direction => direction.direction === 0)
+    const index = down?.frames[0]; requireMotion(index !== undefined)
+    const canvas = document.createElement('canvas'); canvas.width = canvas.height = 64
+    let released = false
+    function release() {
+      if (released) return
+      released = true; partInvalidations.delete(release); canvas.width = canvas.height = 0
+    }
+    try {
+      const context = canvas.getContext('2d'); requireMotion(context); context.imageSmoothingEnabled = false
+      drawCell(context, index)
+      requireMotion(current())
+      partInvalidations.add(release)
+      return { canvas, release }
+    } catch (error) { release(); throw error }
+  }
+  return { acquire, thumbnail, acquirePartPreview, validateSelection: (input: unknown) => validateMotionSelection(input, options.art),
+    read: () => ({ entries: cache.size, references: [...cache.values()].reduce((n, e) => n + e.refs, 0), created, removed, thumbnails: invalidations.size, partPreviews: partInvalidations.size, disposed }),
+    dispose() { if (disposed) return; disposed = true; for (const clear of Array.from(partInvalidations)) clear(); for (const clear of Array.from(invalidations)) clear(); for (const [key, entry] of Array.from(cache)) erase(key, entry) },
   }
 }
 export type MotionCompositor = ReturnType<typeof createMotionCompositor>

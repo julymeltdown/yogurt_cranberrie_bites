@@ -1,0 +1,536 @@
+{
+  "kind": "scoped-part-preview-producer-handoff",
+  "owner": "01a1a230-6acc-7e82-9e4b-92506decc745",
+  "publisher": "01a1a5d9-332b-7822-a8f7-412e295fa211",
+  "consumer": "01a1a534-4fcf-7291-abe3-a97ba2fcafcd",
+  "sourceBase": "7ef98ff71a8914087aa158d4bd8280bcdeaddfc9",
+  "publicationBaseline": "1907016b6aa41c17998acab691a83e99d0a80076",
+  "validatedProductionSource": "b69640b5bf551e90246d035d3273d5481adb5ec8",
+  "nativeCandidate": "71204892b0b3fc50dde880a0995ab18258315a2e",
+  "publicationRule": "Only these exact scoped postimages/hunks plus this manifest. Do not merge private branch ancestry. Source seal commit and manifest digest travel in the direct immutable handoff.",
+  "scope": "Additive isolated raw64 down/idle part lease/API/compositor; optional MotionOption part prop and narrow direct lease view; tests, own doc/evidence. MotionEditor callsite belongs to 534.",
+  "postimages": [
+    {
+      "path": "docs/mcr/evidence/parade-ink-part-preview/git_carry.py",
+      "bytes": 4941,
+      "sha256": "f157383a9332141c2f335f1cda6514e13f15a6dadc13f2545f7f517dde7a5bea",
+      "newAssignedPath": true
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-part-preview/membership.py",
+      "bytes": 10207,
+      "sha256": "7e9b14c3730b243fed7b403e2ccfbe455208f6e5c40124ad854c9d2f27cf7eee",
+      "newAssignedPath": true
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-part-preview/run-allocated.py",
+      "bytes": 22663,
+      "sha256": "a6442da1aa073629c08281c82e03aa0383b5cb8647e537fa033d0d180c4e3616",
+      "newAssignedPath": true
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-part-preview/runs/native-01/bootstrap-accepted.json",
+      "bytes": 1327,
+      "sha256": "64f3a0ed0ff5886c6ab10078379198379d4eddf24c1cbeff7cff4609649c6b9d",
+      "newAssignedPath": true
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-part-preview/runs/native-01/outer-release.json",
+      "bytes": 458,
+      "sha256": "27f1c2dedb4edf81f2fe3342d54e40c6834e5f24f56621e67cd16c35fa40b9cc",
+      "newAssignedPath": true
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-part-preview/runs/native-02/00.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "newAssignedPath": true
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-part-preview/runs/native-02/accepted.json",
+      "bytes": 13926,
+      "sha256": "2b887a6c98aa7cb0409fcc607edad92426b764bde3411ca3dad6cb3ad6259f13",
+      "newAssignedPath": true
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-part-preview/runs/native-02/bootstrap-accepted.json",
+      "bytes": 1331,
+      "sha256": "db96df34b834a60f429e68d73edc8bb1dc6f1792d72817f6ce9a2784c73bbb9e",
+      "newAssignedPath": true
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-part-preview/runs/native-02/eyes-390.png",
+      "bytes": 13667,
+      "sha256": "fff6ee41b747c93a78e7d0cbc0dac22f16d459c13fe3bc71afac35f7095b1893",
+      "newAssignedPath": true
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-part-preview/runs/native-02/hair-390.png",
+      "bytes": 19056,
+      "sha256": "227fdcdd4bc847643368889506a3493a8aa777479846164c7addb8d469d73e5b",
+      "newAssignedPath": true
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-part-preview/runs/native-02/initial-sample.json",
+      "bytes": 263,
+      "sha256": "0809e7d371358f01c3aec4beefbbe4392484fe83ee3a09365ef3c79b9751bc90",
+      "newAssignedPath": true
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-part-preview/runs/native-02/outer-census.json",
+      "bytes": 564,
+      "sha256": "b6d44e36412d98a40bc4923eb20c9450c5f04510205830f548a932382a38582a",
+      "newAssignedPath": true
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-part-preview/runs/native-02/outer-primary.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "newAssignedPath": true
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-part-preview/runs/native-02/outer-release.json",
+      "bytes": 15017,
+      "sha256": "ba1c563ef88b36f92c296673beb0448885e349a20126d4cf907f5016e3fc4eb9",
+      "newAssignedPath": true
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-part-preview/runs/native-02/outfit-390.png",
+      "bytes": 14939,
+      "sha256": "8c23c2a241ecaca43674d894f4f26e0043181607fefbce29b9db729834f02552",
+      "newAssignedPath": true
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-part-preview/runs/native-02/primary-bootstrap-accepted.json",
+      "bytes": 1835,
+      "sha256": "5969cd06bd95c4642e1b1668c438a38498d70863ffb92b26b3a6046ac2277a3b",
+      "newAssignedPath": true
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-part-preview/runs/native-02/primary-census.json",
+      "bytes": 575,
+      "sha256": "4c7a6c2b2bea200b23f0b830408226f87eacf04e36b5bc0a7da62b433cb58e0e",
+      "newAssignedPath": true
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-part-preview/runs/native-02/release.json",
+      "bytes": 182,
+      "sha256": "2c833893cf7961c0c48acd5cc3fbcd411125171d2bf4e911049367d1d988a589",
+      "newAssignedPath": true
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-part-preview/runs/native-02/resource.json",
+      "bytes": 13926,
+      "sha256": "2b887a6c98aa7cb0409fcc607edad92426b764bde3411ca3dad6cb3ad6259f13",
+      "newAssignedPath": true
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-part-preview/runs/native-03/00.log",
+      "bytes": 131,
+      "sha256": "dd78a821a84ecf148341b696957a8a100f222f04e0ef9549e213ea9a71c327d5",
+      "newAssignedPath": true
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-part-preview/runs/native-03/accepted.json",
+      "bytes": 17043,
+      "sha256": "e3717ad589a152a92b36c1642883049734282295c216d7b55a18871e21cf0728",
+      "newAssignedPath": true
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-part-preview/runs/native-03/bootstrap-accepted.json",
+      "bytes": 1331,
+      "sha256": "4277e9d5dfbf264cdead241af305e9343c8fe2befff7fa46ccebeb51d6c3f97b",
+      "newAssignedPath": true
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-part-preview/runs/native-03/eyes-390.png",
+      "bytes": 13667,
+      "sha256": "fff6ee41b747c93a78e7d0cbc0dac22f16d459c13fe3bc71afac35f7095b1893",
+      "newAssignedPath": true
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-part-preview/runs/native-03/hair-390.png",
+      "bytes": 19056,
+      "sha256": "227fdcdd4bc847643368889506a3493a8aa777479846164c7addb8d469d73e5b",
+      "newAssignedPath": true
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-part-preview/runs/native-03/initial-sample.json",
+      "bytes": 263,
+      "sha256": "0e1bb82df97edbd599bb0ef8a16d9d27a8f50b4268f4707e16b572b444793bc6",
+      "newAssignedPath": true
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-part-preview/runs/native-03/native.json",
+      "bytes": 11206,
+      "sha256": "9b75fa0a0e5e3ad7eadec487ea1607b54679240471f775a380bdca4fc6005fa4",
+      "newAssignedPath": true
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-part-preview/runs/native-03/outer-recovery/child-temporary.json",
+      "bytes": 47,
+      "sha256": "86466190c0c1c69f54c324da423ea309547e8d0a41709959cd383de5f63bb08c",
+      "newAssignedPath": true
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-part-preview/runs/native-03/outer-recovery/observed-exit.json",
+      "bytes": 471,
+      "sha256": "53d481e7832d262736e4ef87a7ef968aeae8e4752ecb87b5cc692a4c5a59715a",
+      "newAssignedPath": true
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-part-preview/runs/native-03/outer-recovery/outer-census.json",
+      "bytes": 517,
+      "sha256": "8719afef7c6cdc2723c1c584ce57ae7475e3afc870ba682c17ae8641198cad6b",
+      "newAssignedPath": true
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-part-preview/runs/native-03/outer-recovery/primary.log",
+      "bytes": 22404,
+      "sha256": "641b34c2d4679f80aa63a465c12a4c3d6d905f99480f656b8ffd72800f28e430",
+      "newAssignedPath": true
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-part-preview/runs/native-03/outer-recovery/standing.json",
+      "bytes": 12740,
+      "sha256": "862b072814a9305d9395cd95659d657110d09f144aba78996e9318951db8b668",
+      "newAssignedPath": true
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-part-preview/runs/native-03/outer-release.json",
+      "bytes": 1472,
+      "sha256": "de7053776e36da515851510791c7199f6b1a19faa3cef5ef047877ef187b6b2c",
+      "newAssignedPath": true
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-part-preview/runs/native-03/outfit-390.png",
+      "bytes": 14939,
+      "sha256": "8c23c2a241ecaca43674d894f4f26e0043181607fefbce29b9db729834f02552",
+      "newAssignedPath": true
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-part-preview/runs/native-03/primary-bootstrap-accepted.json",
+      "bytes": 1836,
+      "sha256": "6c6fb506b38198845c304e269b0881bbb8b063f81902ff413fd70be596ffc820",
+      "newAssignedPath": true
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-part-preview/runs/native-03/primary-census.json",
+      "bytes": 506,
+      "sha256": "73d908d85bc7aaf25f6f788b0665c7ca3778c7ee53b143d1a232dd1f866f7633",
+      "newAssignedPath": true
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-part-preview/runs/native-03/release.json",
+      "bytes": 22404,
+      "sha256": "641b34c2d4679f80aa63a465c12a4c3d6d905f99480f656b8ffd72800f28e430",
+      "newAssignedPath": true
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-part-preview/runs/native-03/resource.json",
+      "bytes": 17122,
+      "sha256": "2a84db9e9a1bb23da2c9fcbba9d24279a38e15c1810e0365d448022189253b75",
+      "newAssignedPath": true
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-part-preview/runs/source-01/00.log",
+      "bytes": 138,
+      "sha256": "e795600d15ad4ce963d526e335c2507ab8e2df8872465c828dac3a90e66ffbc6",
+      "newAssignedPath": true
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-part-preview/runs/source-01/01.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "newAssignedPath": true
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-part-preview/runs/source-01/02.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "newAssignedPath": true
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-part-preview/runs/source-01/accepted.json",
+      "bytes": 4968,
+      "sha256": "ffab35c4cb6ddaeb3414efb664385df4488c009e40aa2a01882b471b140b03ee",
+      "newAssignedPath": true
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-part-preview/runs/source-01/bootstrap-accepted.json",
+      "bytes": 1328,
+      "sha256": "8f200630131aedfb7b30439ffe82ba662ff55482b19af8c197a694012230ebd1",
+      "newAssignedPath": true
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-part-preview/runs/source-01/initial-sample.json",
+      "bytes": 262,
+      "sha256": "a0e22bef11da6adb8769ba29cbfa989d44976b1a76e0bf94fff14bfeb9696f76",
+      "newAssignedPath": true
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-part-preview/runs/source-01/outer-census.json",
+      "bytes": 531,
+      "sha256": "7a223bb9422f0dbaeb9bc78aa7a77d7ecf6ab4c78627c776e4d7eee50f978178",
+      "newAssignedPath": true
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-part-preview/runs/source-01/outer-primary.log",
+      "bytes": 12011,
+      "sha256": "c9c7dc1017c9eb255758a987be68bc621eb078920e2501994a8bedb2c9a13f93",
+      "newAssignedPath": true
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-part-preview/runs/source-01/outer-release.json",
+      "bytes": 15556,
+      "sha256": "25032cb84752e12b84138ab173771950b4c32d03c39eab3f042bbfc70d0b5eb9",
+      "newAssignedPath": true
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-part-preview/runs/source-01/primary-bootstrap-accepted.json",
+      "bytes": 1833,
+      "sha256": "505177f869807256e36a0bcd32950c02054ba4658749ebbac8892ceab4c7dd4d",
+      "newAssignedPath": true
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-part-preview/runs/source-01/primary-census.json",
+      "bytes": 541,
+      "sha256": "4e89885bb8fa28b1cde0220c3f62de48296b0b1b81a50734ae7b1169ebee8b8e",
+      "newAssignedPath": true
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-part-preview/runs/source-01/release.json",
+      "bytes": 12011,
+      "sha256": "c9c7dc1017c9eb255758a987be68bc621eb078920e2501994a8bedb2c9a13f93",
+      "newAssignedPath": true
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-part-preview/runs/source-01/resource.json",
+      "bytes": 5047,
+      "sha256": "e1efe8024abc3c7b46bf444cd9efc42dd28ce57d52f5eb284ec42f6067eafda4",
+      "newAssignedPath": true
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-part-preview/runs/source-01/vitest.json",
+      "bytes": 18587,
+      "sha256": "1591587d73b684b854727c49578cb461c00e1ae981417a96b4c206d98d04895a",
+      "newAssignedPath": true
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-part-preview/runs/source-02/bootstrap-accepted.json",
+      "bytes": 1328,
+      "sha256": "f44e860a5f8912bc39122ee0affedff1f25cd25791520bf4bbac0b4582fa3771",
+      "newAssignedPath": true
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-part-preview/runs/source-02/outer-census.json",
+      "bytes": 428,
+      "sha256": "3e4737bbaaca82a3c1190bdc8311817dfdcac56630120fd0b2398c7f766333df",
+      "newAssignedPath": true
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-part-preview/runs/source-02/outer-primary.log",
+      "bytes": 559,
+      "sha256": "73341555628abe0a529bf52fdd4666858a9f08e72d6cba41b0b8acfaa0b08172",
+      "newAssignedPath": true
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-part-preview/runs/source-02/outer-release.json",
+      "bytes": 8279,
+      "sha256": "47f2b067acceda6103d2be992829bd28f839aab7dd25afef86cc02a905ab88da",
+      "newAssignedPath": true
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-part-preview/runs/source-02/release.json",
+      "bytes": 182,
+      "sha256": "beeb299b01af9007cab76d21092844e923b39236feb4b9d4d0e4988456636dcc",
+      "newAssignedPath": true
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-part-preview/runs/source-03/00.log",
+      "bytes": 138,
+      "sha256": "41f21303f6d9ef11f858c78da92119a09e065db68278f5a60485b8647270b171",
+      "newAssignedPath": true
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-part-preview/runs/source-03/01.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "newAssignedPath": true
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-part-preview/runs/source-03/02.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "newAssignedPath": true
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-part-preview/runs/source-03/accepted.json",
+      "bytes": 11171,
+      "sha256": "d4ac2045e022088ca063a0bfe6d53c11ff58ff99f9111195fbf8dfebeecfa448",
+      "newAssignedPath": true
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-part-preview/runs/source-03/bootstrap-accepted.json",
+      "bytes": 1327,
+      "sha256": "5df15e6d705fcb22c2618e15b5b2c50741d8e1a0db433792c4a3d5bbe791a02b",
+      "newAssignedPath": true
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-part-preview/runs/source-03/initial-sample.json",
+      "bytes": 263,
+      "sha256": "5a9a9c02d26c2268ebb8160ed7703ddbb7b12c6690f3ec4c84d18affae8d8df4",
+      "newAssignedPath": true
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-part-preview/runs/source-03/outer-census.json",
+      "bytes": 517,
+      "sha256": "052917d412b48c5f068c15c5b7a6b25efe084b7d41aae725fea303729f180944",
+      "newAssignedPath": true
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-part-preview/runs/source-03/outer-primary.log",
+      "bytes": 18224,
+      "sha256": "871f0644e7f604af40b51b5da36a942e23e1d45e7bcdcb8662667d0b8f32ada5",
+      "newAssignedPath": true
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-part-preview/runs/source-03/outer-release.json",
+      "bytes": 20127,
+      "sha256": "32af51555433af8e5c6069582909fbdc9f0091815da423765f93a1fd1e81e286",
+      "newAssignedPath": true
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-part-preview/runs/source-03/primary-bootstrap-accepted.json",
+      "bytes": 1834,
+      "sha256": "fd30e2f06aff7d65e4043cf40961b0b6c642b7bacd7706ab4e2d57acca53ffd0",
+      "newAssignedPath": true
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-part-preview/runs/source-03/primary-census.json",
+      "bytes": 527,
+      "sha256": "0a5f61809aff5f4b5577cf4e9c04142861793232c295336cb85884a0a7e1e183",
+      "newAssignedPath": true
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-part-preview/runs/source-03/release.json",
+      "bytes": 18224,
+      "sha256": "871f0644e7f604af40b51b5da36a942e23e1d45e7bcdcb8662667d0b8f32ada5",
+      "newAssignedPath": true
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-part-preview/runs/source-03/resource.json",
+      "bytes": 11250,
+      "sha256": "d26c55030419f81cc6f12de6487c6605842fbcbcb20b2f3d0e5e35073c86b707",
+      "newAssignedPath": true
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-part-preview/runs/source-03/vitest.json",
+      "bytes": 7951,
+      "sha256": "cb99d012c35ff77f1bd12a3bd75bfd73b5a5488e949227d0c948600ebb705a09",
+      "newAssignedPath": true
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-part-preview/supervise-allocated.py",
+      "bytes": 17896,
+      "sha256": "61cefe7b81ef0bac9869e62af4f922a0c839df7672007d6ac7665a79fe7aff60",
+      "newAssignedPath": true
+    },
+    {
+      "path": "docs/mcr/frontend/parade-ink-part-preview.md",
+      "bytes": 13756,
+      "sha256": "0619e1f1b8aa1c49907d3d82b603d59885d95ae7fdded1ac3e0f44343c7506d6",
+      "newAssignedPath": true
+    },
+    {
+      "path": "frontend/src/entities/avatar/runtime/motion-adoption/__tests__/parade-ink-part-preview/fixture.ts",
+      "bytes": 1968,
+      "sha256": "aa2b6ae61fdc2e5f13c835924ceb9034342c0860d1c164e3f034b42201c2465c",
+      "newAssignedPath": true
+    },
+    {
+      "path": "frontend/src/entities/avatar/runtime/motion-adoption/__tests__/parade-ink-part-preview/runtime.test.ts",
+      "bytes": 8934,
+      "sha256": "af2e64a2283eab8d3170296f29c74b2d57f956da2c81d10ce47e343a7263e1be",
+      "newAssignedPath": true
+    },
+    {
+      "path": "frontend/src/entities/avatar/runtime/motion-adoption/compositor.ts",
+      "bytes": 7296,
+      "sha256": "f32a1ab55ff9446cb4ddbd20d0c8c62ebb92c86a62ec1e8b4da2c1f1595854b9",
+      "preimageSha256": "3a6f100b87db1db560755cf17b06d83a6e5f67712b049c71004b953651cbe735"
+    },
+    {
+      "path": "frontend/src/entities/avatar/runtime/motion-adoption/runtime.ts",
+      "bytes": 11926,
+      "sha256": "aedf55ea4446e0a1411015bb0a48b776b55f8856137c8676e878f6baaca5fcdc",
+      "preimageSha256": "9d16a2caa0c072ba78410085429b30dd527b3519b83e1d50186b710ac01230b6"
+    },
+    {
+      "path": "frontend/src/features/avatar/__tests__/parade-ink-part-preview/native.mjs",
+      "bytes": 6960,
+      "sha256": "ca528ec1df89d6db65602bd1ef5be8eb825060311360bceede85d309fc148aa0",
+      "newAssignedPath": true
+    },
+    {
+      "path": "frontend/src/features/avatar/__tests__/parade-ink-part-preview/option.test.tsx",
+      "bytes": 5442,
+      "sha256": "f2ec7b3627519b387acf224348ddaf3bd793a325dc98234af6d5cd2c9be62642",
+      "newAssignedPath": true
+    },
+    {
+      "path": "frontend/src/features/avatar/__tests__/parade-ink-part-preview/preview.html",
+      "bytes": 683,
+      "sha256": "982828e287142cfc0d73f828905972df82d18bf0bba1d09f4e9eff136d4e9bf1",
+      "newAssignedPath": true
+    },
+    {
+      "path": "frontend/src/features/avatar/__tests__/parade-ink-part-preview/preview.tsx",
+      "bytes": 1684,
+      "sha256": "35159c06d169386a9fb2d0e9583051f80631bf3f091afb8157253244b8179d1e",
+      "newAssignedPath": true
+    },
+    {
+      "path": "frontend/src/features/avatar/__tests__/parade-ink-part-preview/vitest.config.mjs",
+      "bytes": 893,
+      "sha256": "33c1de4a86f6052837babfd817ff8985886d5a51cf6da6ca67c251787a38c101",
+      "newAssignedPath": true
+    },
+    {
+      "path": "frontend/src/features/avatar/motion-adoption/MotionOption.tsx",
+      "bytes": 1933,
+      "sha256": "9144cf3b6277c101a8bf078a7a38ef509320fdfe9613f1fc7f91e5e6fa969357",
+      "preimageSha256": "e7661142a711a88331a63f0008693cfa6a792d91f4559374c4d83cb013bad5b6"
+    },
+    {
+      "path": "frontend/src/features/avatar/motion-adoption/part-preview/MotionPartPreview.tsx",
+      "bytes": 1875,
+      "sha256": "c4b27ed730a14d919b54438b70c66eb1c249dff632b6d0114930c5a58f5bcbe3",
+      "newAssignedPath": true
+    }
+  ],
+  "manifestExcludesItself": true,
+  "validation": {
+    "source01": "61/61 at a71313a11; historical unchanged coverage retained",
+    "source03": "4 affected notification/reentrant cases PASS;23 intentionally not rerun; latest fullapp noemit and changedruntime/testlint exit0",
+    "native03": "28 raw cell RGBA comparisons with zero mismatches, transparent+visible pixels; oneatlasrequest;4visiblecardcategorychanges and synchronouswithdrawal PASS;3inspected390pxPNGs",
+    "primaryGuard": "PASS",
+    "outerGuard": "FAIL_CLEANUP_REPORTING; exact failure preserved, recovered all0 within originalclock; no outerPASS inferred",
+    "literalFull": "2026-11-05T02:22:17.887690+00:00",
+    "guardLimits": "WHOLE8GiB/ONEcumulativeNEW200MiB32PID4GiB; recordedprimarymax5543919440/162013184/10PID/1872969728; all known higher carry retained"
+  },
+  "limitations": [
+    "Controlled protectedbootstrap fixture, not live backend/provider",
+    "No wholePI07/reference/device/defaultpreset/Profile/World or consumerMotionEditor integration acceptance",
+    "No new original task closure or314admitteditems claim",
+    "Historical incompatible persistentgoal remains BLOCKED; no reset or false completion"
+  ],
+  "receiptFiles": [
+    "runs/source-01/release.json",
+    "runs/source-03/release.json",
+    "runs/source-03/vitest.json",
+    "runs/native-03/native.json",
+    "runs/native-03/release.json",
+    "runs/native-03/outer-release.json"
+  ]
+}

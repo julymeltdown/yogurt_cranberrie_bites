@@ -1,0 +1,36 @@
+{
+  "ownerThreadId": "01a1a230-6acc-7e82-9e4b-92506decc745",
+  "offerId": "PARTPREVIEW-NATIVE03-0215",
+  "state": "ACCEPTED",
+  "acceptedAtEpoch": 1793845225.524697,
+  "workDeadlineEpoch": 1793845585.524697,
+  "fullDeadlineEpoch": 1793845645.524697,
+  "kind": "browser",
+  "processCap": 32,
+  "rssCapBytes": 4294967296,
+  "remainingNewUpperBytes": 78020608,
+  "controller": {
+    "pid": 95028,
+    "birth": "Thu Nov  5 11:20:27 2026",
+    "executable": "/Library/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python",
+    "script": "/Users/lhs/Desktop/mcr-worktrees/fe-ref-gifts/docs/mcr/evidence/parade-ink-part-preview/run-allocated.py",
+    "cwd": "/Users/lhs/Desktop/mcr-worktrees/fe-ref-gifts",
+    "outputRoot": "/Users/lhs/Desktop/mcr-worktrees/fe-ref-gifts/docs/mcr/evidence/parade-ink-part-preview/runs/native-03"
+  },
+  "guardControllers": [
+    {
+      "pid": 94746,
+      "birth": "Thu Nov  5 11:20:25 2026",
+      "executable": "/Library/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python",
+      "script": "/Users/lhs/Desktop/mcr-worktrees/fe-ref-gifts/docs/mcr/evidence/parade-ink-part-preview/supervise-allocated.py",
+      "cwd": "/Users/lhs/Desktop/mcr-worktrees/fe-ref-gifts",
+      "outputRoot": "/Users/lhs/Desktop/mcr-worktrees/fe-ref-gifts/docs/mcr/evidence/parade-ink-part-preview/runs/native-03"
+    }
+  ],
+  "receiptPaths": {
+    "accept": "/Users/lhs/Desktop/mcr-worktrees/fe-ref-gifts/docs/mcr/evidence/parade-ink-part-preview/runs/native-03/primary-bootstrap-accepted.json",
+    "full": "/Users/lhs/Desktop/mcr-worktrees/fe-ref-gifts/docs/mcr/evidence/parade-ink-part-preview/runs/native-03/release.json"
+  },
+  "publishedAtEpoch": 1793845227.375766,
+  "stage": "Actual primary and outer Python before expensive carry census, no workload"
+}

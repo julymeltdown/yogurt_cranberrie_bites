@@ -1,0 +1,27 @@
+{
+  "ownerThreadId": "01a1a230-6acc-7e82-9e4b-92506decc745",
+  "offerId": "PARTPREVIEW-SOURCE03-0215",
+  "state": "ACCEPTED",
+  "acceptedAtEpoch": 1793845045.147944,
+  "workDeadlineEpoch": 1793845405.147944,
+  "fullDeadlineEpoch": 1793845465.147944,
+  "kind": "source",
+  "processCap": 8,
+  "rssCapBytes": 3221225472,
+  "remainingNewUpperBytes": 5009408,
+  "controller": {
+    "pid": 79616,
+    "birth": "Thu Nov  5 11:17:25 2026",
+    "executable": "/Library/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python",
+    "script": "/Users/lhs/Desktop/mcr-worktrees/fe-ref-gifts/docs/mcr/evidence/parade-ink-part-preview/supervise-allocated.py",
+    "cwd": "/Users/lhs/Desktop/mcr-worktrees/fe-ref-gifts",
+    "outputRoot": "/Users/lhs/Desktop/mcr-worktrees/fe-ref-gifts/docs/mcr/evidence/parade-ink-part-preview/runs/source-03"
+  },
+  "guardControllers": [],
+  "receiptPaths": {
+    "accept": "/Users/lhs/Desktop/mcr-worktrees/fe-ref-gifts/docs/mcr/evidence/parade-ink-part-preview/runs/source-03/bootstrap-accepted.json",
+    "full": "/Users/lhs/Desktop/mcr-worktrees/fe-ref-gifts/docs/mcr/evidence/parade-ink-part-preview/runs/source-03/outer-release.json"
+  },
+  "publishedAtEpoch": 1793845045.323731,
+  "stage": "Actual outer Python, before expensive carry census and before primary launch"
+}

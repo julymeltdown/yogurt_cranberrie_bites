@@ -1,0 +1,264 @@
+{
+  "allocation": "PARTPREVIEW-SOURCE01-0202",
+  "class": "source",
+  "candidate": "a71313a11ff3fc4f4f1733d5db05229c3fff72ce",
+  "acceptedUtc": "2026-11-05T01:58:16.683271+00:00",
+  "acceptedFreeBytes": 23145418752,
+  "otherReserveBytes": 6442450944,
+  "workUtc": "2026-11-05T02:04:16.683271+00:00",
+  "hardUtc": "2026-11-05T02:05:16.683271+00:00",
+  "sourceSha256": {
+    "frontend/src/entities/avatar/runtime/motion-adoption/compositor.ts": "f32a1ab55ff9446cb4ddbd20d0c8c62ebb92c86a62ec1e8b4da2c1f1595854b9",
+    "frontend/src/entities/avatar/runtime/motion-adoption/v2.ts": "6e12736e28fed01b20c0a309b6e8a15d05c439f65af5ba77fbe4b8a884b13167",
+    "frontend/src/entities/avatar/runtime/motion-adoption/art.ts": "3bc23478c870cf61894d99c735d38ec9ea76a981ee3582bb1fa7e7ad666f4d47",
+    "frontend/src/entities/avatar/runtime/motion-adoption/reviewed-config.ts": "450a5f52f167e062edbabf6f49cded29c2c7791a937942640ba318092eba6283",
+    "frontend/src/entities/avatar/runtime/motion-adoption/v2-candidate.ts": "f807e183cfb529e953c4a01f57c3ba2ec4c2aca3d36bd0d02b5ba2de5246dee5",
+    "frontend/src/entities/avatar/runtime/motion-adoption/reviewed-manifest.ts": "ff0a901e62f572aa406d5916f741dd771956ec767c3585cf0ce5aa6ec1b81701",
+    "frontend/src/entities/avatar/runtime/motion-adoption/runtime.ts": "533334aa79e9833584810183d7cb1179ab0adec54f615f366393c2db5ff89129",
+    "frontend/src/entities/avatar/runtime/motion-adoption/reviewed-production.ts": "dcae35f22db0ce3f20eb52213271d59a25f290a74413a74518eb1708cc92e36c",
+    "frontend/src/entities/avatar/runtime/motion-adoption/__tests__/parade-ink-part-preview/runtime.test.ts": "c90e71f2f4a44e0ec5eecb65213e178c92f1fa80183ea818247d68232feae03f",
+    "frontend/src/entities/avatar/runtime/motion-adoption/__tests__/parade-ink-part-preview/fixture.ts": "aa2b6ae61fdc2e5f13c835924ceb9034342c0860d1c164e3f034b42201c2465c",
+    "frontend/src/features/avatar/motion-adoption/MotionView.tsx": "dcb718ed62ce2deab98cd2e2c3c26d454132ba58bd97f020ca42c320421ff62e",
+    "frontend/src/features/avatar/motion-adoption/production-persistence.ts": "c372f14cde10b3886bc156991ee3780673b4d9d024d86e040492a3b02dd1024b",
+    "frontend/src/features/avatar/motion-adoption/production-owner.ts": "242697db46552de8233c47a2a8eb80eb5eec5b9312cd147494265967637a52db",
+    "frontend/src/features/avatar/motion-adoption/MotionOption.tsx": "9144cf3b6277c101a8bf078a7a38ef509320fdfe9613f1fc7f91e5e6fa969357",
+    "frontend/src/features/avatar/motion-adoption/controller.ts": "c092f03427278bb935520651e5f02c46e2e29f2b0a47248a539197fc10793045",
+    "frontend/src/features/avatar/motion-adoption/motion.css": "bb244fc1d9cc6727a2bf3ecf1679950a3c75007104000599b62bdb10ba74345c",
+    "frontend/src/features/avatar/motion-adoption/MotionEditor.tsx": "7aeaa4ed22b2a33d9b9cde18c1e0977295aa569c12d93dfca4e8171d29672f07",
+    "frontend/src/features/avatar/motion-adoption/part-preview/MotionPartPreview.tsx": "c4b27ed730a14d919b54438b70c66eb1c249dff632b6d0114930c5a58f5bcbe3",
+    "frontend/src/features/avatar/__tests__/parade-ink-part-preview/preview.html": "982828e287142cfc0d73f828905972df82d18bf0bba1d09f4e9eff136d4e9bf1",
+    "frontend/src/features/avatar/__tests__/parade-ink-part-preview/preview.tsx": "35159c06d169386a9fb2d0e9583051f80631bf3f091afb8157253244b8179d1e",
+    "frontend/src/features/avatar/__tests__/parade-ink-part-preview/option.test.tsx": "f2ec7b3627519b387acf224348ddaf3bd793a325dc98234af6d5cd2c9be62642",
+    "frontend/src/features/avatar/__tests__/parade-ink-part-preview/vitest.config.mjs": "33c1de4a86f6052837babfd817ff8985886d5a51cf6da6ca67c251787a38c101",
+    "frontend/src/features/avatar/__tests__/parade-ink-part-preview/native.mjs": "ca528ec1df89d6db65602bd1ef5be8eb825060311360bceede85d309fc148aa0",
+    "docs/mcr/evidence/parade-ink-part-preview/run-allocated.py": "b6b86603ec2dca86da87df53585d9fb0b91713594a9f5d436773b623be5baf1d",
+    "docs/mcr/evidence/parade-ink-part-preview/supervise-allocated.py": "5a86bb5134237519d037c703d9bff82d021fc4f7419827f5193d20a777449783",
+    "docs/mcr/evidence/parade-ink-part-preview/git_carry.py": "99296782f6eb01b19b93a9253fac93c5ccf1be236fffbf1149a4e4257533d20b",
+    "docs/mcr/evidence/parade-ink-part-preview/membership.py": "7e9b14c3730b243fed7b403e2ccfbe455208f6e5c40124ad854c9d2f27cf7eee",
+    "frontend/pnpm-lock.yaml": "47ca44459819ad0e887d2f4f93394fdf3b1053b8f45edc9ceb0236981feee1f6",
+    "frontend/tsconfig.json": "55050e293472fb6ec4aa2690c8cad7cb5a5a107ba483bf98851a0c4e707c6528"
+  },
+  "guardianPid": 93804,
+  "outerPid": 93718,
+  "standingBeforeChildrenUtc": "2026-11-05T01:58:19.670609+00:00",
+  "retained": {
+    "checkoutBytes": 1378512896,
+    "gitMetadataBytes": 2367488,
+    "readOnlyDependencyLogicalBytes": 408236853,
+    "readOnlyDependencyAllocatedBytes": 438317056,
+    "readOnlyDependencyChargeBytes": 438317056,
+    "readOnlyNodeRuntimeBytes": 122564432,
+    "readOnlyFoundation": {
+      "bytes": 0,
+      "postimages": []
+    },
+    "entirePythonPrefix": "/Library/Frameworks/Python.framework/Versions/3.14",
+    "entirePythonChargeBytes": 1045037056,
+    "readOnlyNodeSha256": "b6fb419f0f43bb2fbca273700294dd2f3b685a64b60e8417c295f47646a70e4a",
+    "readOnlyChromeLogicalBytes": 0,
+    "readOnlyChromeAllocatedBytes": 0,
+    "readOnlyChromeChargeBytes": 0,
+    "ownedSharedGitInventory": {
+      "bytes": 143183872,
+      "objectCount": 1109,
+      "inodes": [
+        {
+          "path": "/Users/lhs/Desktop/mcr/.git/objects/pack/pack-6143e81802ffaa38c00e4f36a3e111bab2497518.idx",
+          "logicalBytes": 44360,
+          "allocatedBytes": 45056,
+          "chargeBytes": 45056
+        },
+        {
+          "path": "/Users/lhs/Desktop/mcr/.git/objects/pack/pack-6143e81802ffaa38c00e4f36a3e111bab2497518.pack",
+          "logicalBytes": 10363632,
+          "allocatedBytes": 10366976,
+          "chargeBytes": 10366976
+        },
+        {
+          "path": "/Users/lhs/Desktop/mcr/.git/objects/pack/pack-6143e81802ffaa38c00e4f36a3e111bab2497518.rev",
+          "logicalBytes": 6236,
+          "allocatedBytes": 8192,
+          "chargeBytes": 8192
+        },
+        {
+          "path": "/Users/lhs/Desktop/mcr/.git/objects/pack/pack-a5f977aeba3ff551abbd74c74071ad3e2d2cc9d3.idx",
+          "logicalBytes": 15828,
+          "allocatedBytes": 16384,
+          "chargeBytes": 16384
+        },
+        {
+          "path": "/Users/lhs/Desktop/mcr/.git/objects/pack/pack-a5f977aeba3ff551abbd74c74071ad3e2d2cc9d3.pack",
+          "logicalBytes": 1861681,
+          "allocatedBytes": 1863680,
+          "chargeBytes": 1863680
+        },
+        {
+          "path": "/Users/lhs/Desktop/mcr/.git/objects/pack/pack-a5f977aeba3ff551abbd74c74071ad3e2d2cc9d3.rev",
+          "logicalBytes": 2160,
+          "allocatedBytes": 4096,
+          "chargeBytes": 4096
+        },
+        {
+          "path": "/Users/lhs/Desktop/mcr/.git/objects/pack/pack-a67b743fb1894841bde14eab3e86acf9c5618b1f.idx",
+          "logicalBytes": 138972,
+          "allocatedBytes": 139264,
+          "chargeBytes": 139264
+        },
+        {
+          "path": "/Users/lhs/Desktop/mcr/.git/objects/pack/pack-a67b743fb1894841bde14eab3e86acf9c5618b1f.pack",
+          "logicalBytes": 24950965,
+          "allocatedBytes": 24952832,
+          "chargeBytes": 24952832
+        },
+        {
+          "path": "/Users/lhs/Desktop/mcr/.git/objects/pack/pack-a67b743fb1894841bde14eab3e86acf9c5618b1f.rev",
+          "logicalBytes": 19752,
+          "allocatedBytes": 20480,
+          "chargeBytes": 20480
+        },
+        {
+          "path": "/Users/lhs/Desktop/mcr/.git/objects/pack/pack-d4d7e686e78fcd35069b39d7608f0c07f0c19c85.idx",
+          "logicalBytes": 732516,
+          "allocatedBytes": 733184,
+          "chargeBytes": 733184
+        },
+        {
+          "path": "/Users/lhs/Desktop/mcr/.git/objects/pack/pack-d4d7e686e78fcd35069b39d7608f0c07f0c19c85.pack",
+          "logicalBytes": 104924051,
+          "allocatedBytes": 104927232,
+          "chargeBytes": 104927232
+        },
+        {
+          "path": "/Users/lhs/Desktop/mcr/.git/objects/pack/pack-d4d7e686e78fcd35069b39d7608f0c07f0c19c85.rev",
+          "logicalBytes": 104544,
+          "allocatedBytes": 106496,
+          "chargeBytes": 106496
+        }
+      ]
+    },
+    "sharedGitCommonDirReadOnly": "/Users/lhs/Desktop/mcr/.git",
+    "copiedGitCarryBytes": 0
+  },
+  "caps": {
+    "wholeBytes": 8589934592,
+    "newBytes": 134217728,
+    "temporaryBytes": 100663296,
+    "durableBytes": 33554432,
+    "rssBytes": 3221225472,
+    "processes": 8
+  },
+  "peaks": {
+    "wholeBytes": 4683662502,
+    "newBytes": 120414208,
+    "temporaryBytes": 1380352,
+    "durableBytes": 114688,
+    "rssBytes": 2093465600,
+    "processes": 3
+  },
+  "commands": [
+    {
+      "argv": [
+        "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node",
+        "/Users/lhs/Desktop/mcr/frontend/node_modules/vitest/vitest.mjs",
+        "run",
+        "--config",
+        "/Users/lhs/Desktop/mcr-worktrees/fe-ref-gifts/frontend/src/features/avatar/__tests__/parade-ink-part-preview/vitest.config.mjs",
+        "--configLoader",
+        "native",
+        "--no-cache",
+        "--maxWorkers=1",
+        "--reporter=json",
+        "--outputFile=/Users/lhs/Desktop/mcr-worktrees/fe-ref-gifts/docs/mcr/evidence/parade-ink-part-preview/runs/source-01/vitest.json"
+      ],
+      "cwd": "frontend",
+      "exitCode": 0,
+      "elapsedSeconds": 2.754636166995624
+    },
+    {
+      "argv": [
+        "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node",
+        "/Users/lhs/Desktop/mcr/frontend/node_modules/typescript/bin/tsc",
+        "-p",
+        "/private/tmp/mcr-partpreview-current-0h7jq58d/tsconfig.json",
+        "--pretty",
+        "false"
+      ],
+      "cwd": "frontend",
+      "exitCode": 0,
+      "elapsedSeconds": 10.492457209009444
+    },
+    {
+      "argv": [
+        "/Users/lhs/Desktop/mcr/frontend/node_modules/.bin/oxlint",
+        "--deny-warnings",
+        "src/entities/avatar/runtime/motion-adoption/runtime.ts",
+        "src/entities/avatar/runtime/motion-adoption/compositor.ts",
+        "src/entities/avatar/runtime/motion-adoption/__tests__/parade-ink-part-preview",
+        "src/features/avatar/motion-adoption/MotionOption.tsx",
+        "src/features/avatar/motion-adoption/part-preview",
+        "src/features/avatar/__tests__/parade-ink-part-preview"
+      ],
+      "cwd": "frontend",
+      "exitCode": 0,
+      "elapsedSeconds": 0.5334631669975352
+    }
+  ],
+  "status": "PASS",
+  "initialSampleBeforeWorkload": {
+    "utc": "2026-11-05T01:58:19.704518+00:00",
+    "pids": [
+      93804,
+      93718
+    ],
+    "wholeBytes": 4683662502,
+    "newBytes": 118996992,
+    "temporaryBytes": 12288,
+    "durableBytes": 65536,
+    "rssBytes": 185024512,
+    "processes": 2,
+    "freeBytes": 23142600704
+  },
+  "initialGlobalCensus": {
+    "observedAtEpoch": 1793843899.802325,
+    "psSnapshotSHA256": "16f2983eec112e88a944a46fbc50b6418cbee65de6a22dd08ee90407cefab7a2",
+    "owners": [
+      "01a1a207-f012-7343-a24b-12b9c544973f",
+      "01a1a213-61d6-7a20-a8e7-476649312f8c",
+      "01a1a230-6acc-7e82-9e4b-92506decc745"
+    ],
+    "ordinaryActualPids": [
+      86147
+    ],
+    "reservedProcesses": 40,
+    "reservedRSSBytes": 10737418240,
+    "actualPids": [
+      72793,
+      73420,
+      86147,
+      88805,
+      92484,
+      93203,
+      93366,
+      93718,
+      93727,
+      93804,
+      93969
+    ],
+    "actualRSSBytes": 2803351552,
+    "otherNewUpperBytes": 4949278720
+  },
+  "sourcePlan": "full",
+  "fullUtc": "2026-11-05T01:58:33.676425+00:00",
+  "cleanupSeconds": 0.05830304100527428,
+  "remainingProcesses": [],
+  "dependencyLinkAbsent": true,
+  "temporaryAbsent": true,
+  "freeAfterBytes": 23104720896,
+  "finishedBeforeHardDeadline": true,
+  "released": true,
+  "logSha256": {
+    "00.log": "e795600d15ad4ce963d526e335c2507ab8e2df8872465c828dac3a90e66ffbc6",
+    "01.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "02.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  }
+}

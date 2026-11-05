@@ -1,0 +1,12 @@
+{
+  "allocation": "PARTPREVIEW-NATIVE01-0208",
+  "status": "FAIL",
+  "stage": "Pre-primary admission",
+  "failure": "[Errno 2] No such file or directory: '/Users/lhs/Desktop/mcr-worktrees/fe-ref-gifts/backend/releases/selected-character-motion-v2/reviewed/manifest.json'",
+  "workloadLaunched": false,
+  "remainingProcesses": [],
+  "resources": 0,
+  "released": true,
+  "fullUtc": "2026-11-05T02:03:14.687672+00:00",
+  "actualFullEpoch": 1793844194.687886
+}

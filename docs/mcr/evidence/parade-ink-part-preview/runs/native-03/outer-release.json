@@ -1,0 +1,32 @@
+{
+  "allocation": "PARTPREVIEW-NATIVE03-0215",
+  "status": "FAIL",
+  "stage": "Outer final cleanup reporting",
+  "failure": "PermissionError: [Errno 1] Operation not permitted from os.killpg in outer finally; original controller exited. No outer PASS inferred.",
+  "primaryExecutionStatus": "PASS",
+  "nativeProductStatus": "PASS",
+  "released": true,
+  "remainingProcesses": [],
+  "resources": 0,
+  "outerTemporaryAbsent": true,
+  "innerTemporaryAbsent": true,
+  "strictPortRebound": 5373,
+  "fullUtc": "2026-11-05T02:22:17.887690+00:00",
+  "actualFullEpoch": 1793845337.887887,
+  "finishedBeforeHardDeadline": true,
+  "scope": "Recovery only: verified original controller/guard absent, actual primary cleanup and browser/server closure, fresh owned-command census, strict port rebound; copied every remaining outer tempfile before removing only that exact owned directory.",
+  "preservedOuterFiles": {
+    "standing.json": "862b072814a9305d9395cd95659d657110d09f144aba78996e9318951db8b668",
+    "primary.log": "641b34c2d4679f80aa63a465c12a4c3d6d905f99480f656b8ffd72800f28e430",
+    "outer-census.json": "8719afef7c6cdc2723c1c584ce57ae7475e3afc870ba682c17ae8641198cad6b",
+    "child-temporary.json": "86466190c0c1c69f54c324da423ea309547e8d0a41709959cd383de5f63bb08c"
+  },
+  "primaryPeaksRetained": {
+    "wholeBytes": 5543919440,
+    "newBytes": 162013184,
+    "temporaryBytes": 30199808,
+    "durableBytes": 561152,
+    "rssBytes": 1872969728,
+    "processes": 10
+  }
+}
