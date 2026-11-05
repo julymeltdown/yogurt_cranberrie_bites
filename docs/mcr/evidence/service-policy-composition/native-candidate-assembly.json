@@ -1,0 +1,24 @@
+{
+  "canonicalBase": "1907016b6aa41c17998acab691a83e99d0a80076",
+  "candidateTree": "be772472cb9f37b9fbf25fb6f0473232337d7941",
+  "sourceHandoff": "e4e7a720313ef848daca507961d54d674ab169a6",
+  "materialized": "ONLY frontend+contracts exactcandidate baseline in existingisolatedWT; other roots retained fromprior source",
+  "materializedChangedPaths": 166,
+  "materializedPositiveLogicalBytes": 1276717,
+  "materializedNewLogicalPostimageBytes": 1595813,
+  "packageAndLockIdentical": true,
+  "sharedPostimages": {
+    "frontend/src/app/operations-composition/owner.ts": {
+      "sha256": "6ac72f822b56602b824c615d1780117645aceace94ade1bf6695a5bd44dcb72e",
+      "bytes": 12139
+    },
+    "frontend/src/app/operations-composition/panel.tsx": {
+      "sha256": "9a9ea3df7ab3877eb6e565409109cd674153c4ab8ae5bb2db0c98395d452857d",
+      "bytes": 6613
+    }
+  },
+  "ownSemanticScope": "ServicePolicy child only; all other imported frontend/contract files are alreadycanonical prerequisite copies, not new authored changes or ownership.",
+  "sourceQualification": "RetainedSOURCE04/05 apply to their pinned readsets; currentcanonicalcombined/browser NOT_RUN pending freshnativeoffer.",
+  "resource": "FE38-NATIVEPREP32-0133 additional32MiB through02:15UTC; no install/newworktree/target/partAPI",
+  "savedGoal": "OriginalFE12/FE13 BLOCKED unchanged; unstartedpartAPI scope STOP/RETURN toRoot"
+}

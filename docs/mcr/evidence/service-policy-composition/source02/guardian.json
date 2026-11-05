@@ -1,0 +1,5 @@
+{
+  "breach": "AttributeError: 'NoneType' object has no attribute 'get'",
+  "samples": 0,
+  "peaks": {}
+}

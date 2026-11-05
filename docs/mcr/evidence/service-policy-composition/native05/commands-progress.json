@@ -1,0 +1,11 @@
+[
+  {
+    "label": "actual-default-app-native",
+    "argv": [
+      "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node",
+      "src/app/operations-composition/__tests__/service-policy-integration/default-app-native.mjs"
+    ],
+    "pid": 45722,
+    "exit": 1
+  }
+]

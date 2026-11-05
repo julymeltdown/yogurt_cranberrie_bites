@@ -1,0 +1,141 @@
+{
+  "status": "ACTUAL_ACCEPT",
+  "offer": {
+    "id": "FE38-COMPOSITION-SOURCE01-0035",
+    "source": "aa35e24be949fb7e0430eda156eccc741ed9e3a4",
+    "processes": 8,
+    "rssBytes": 3221225472,
+    "wholeBytes": 8589934592,
+    "newBytes": 100663296,
+    "temporaryBytes": 50331648,
+    "durableBytes": 50331648,
+    "admissionFreeBytes": 11811160064,
+    "afterAllFreeBytes": 9663676416,
+    "continuousFreeBytes": 8589934592,
+    "otherUpperBytes": 4294967296,
+    "minimumCarryBytes": 4658474382,
+    "spentTemporaryBytes": 19135168,
+    "acceptedUTC": "2026-11-05T00:46:14.372658+00:00",
+    "workDeadline": "2026-11-05T00:51:14.372658+00:00",
+    "deadline": "2026-11-05T00:52:14.372658+00:00"
+  },
+  "predecessorLiteralFullEpoch": 1793839523.7412832,
+  "predecessorReceipt": "/Users/lhs/Desktop/mcr-worktrees/be-avatar-motion-v2/docs/mcr/evidence/parade-ink-pre-world-policy/source01-FULL.json",
+  "free": 15281192960,
+  "afterAllFree": 10885562368,
+  "inventory": {
+    "total": 4658474382,
+    "roots": [
+      {
+        "root": "/Users/lhs/Desktop/mcr-worktrees/art-runtime",
+        "bytes": 1500111072,
+        "inodes": 18222
+      },
+      {
+        "root": "/Users/lhs/Desktop/mcr/frontend/node_modules",
+        "bytes": 438891729,
+        "inodes": 13420
+      },
+      {
+        "root": "/Users/lhs/Desktop/mcr-tools",
+        "bytes": 419021528,
+        "inodes": 8089
+      },
+      {
+        "root": "/Users/lhs/Desktop/mcr/.git",
+        "bytes": 1187112032,
+        "inodes": 3830
+      },
+      {
+        "root": "/Library/Frameworks/Python.framework/Versions/3.14",
+        "bytes": 1046142375,
+        "inodes": 28412
+      },
+      {
+        "root": "/opt/homebrew/Cellar/git/2.55.0",
+        "bytes": 67168482,
+        "inodes": 1839
+      },
+      {
+        "root": "/opt/homebrew/opt/git/libexec/git-core",
+        "bytes": 0,
+        "inodes": 0
+      },
+      {
+        "root": "/opt/homebrew/bin/git",
+        "bytes": 27164,
+        "inodes": 2
+      }
+    ]
+  },
+  "initialAdmissionClaims": {
+    "metadataAsOf": "2026-11-05T00:45:21.309223+00:00",
+    "members": [
+      {
+        "cohort": "PreWorldSource01",
+        "kind": "source",
+        "pids": [],
+        "processCap": 24,
+        "rssCapBytes": 3221225472,
+        "remainingNewBytes": 33554432,
+        "state": "ACTUAL_ACCEPT_NO_LITERAL_FULL_RECEIPT_YET"
+      },
+      {
+        "cohort": "Post21aCompileUnit01",
+        "kind": "target",
+        "pids": [],
+        "processCap": 32,
+        "rssCapBytes": 8589934592,
+        "remainingNewBytes": 2147483648,
+        "state": "ACTUAL_ACCEPT_NO_LITERAL_FULL_RECEIPT_YET"
+      },
+      {
+        "cohort": "FE38Composition",
+        "kind": "source",
+        "pids": [
+          88587,
+          88740
+        ],
+        "processCap": 8,
+        "rssCapBytes": 3221225472,
+        "remainingNewBytes": 100663296,
+        "state": "ACTUAL_ACCEPT"
+      }
+    ],
+    "unresolvedPids": [],
+    "workflows": 3,
+    "sources": 2,
+    "browsers": 0,
+    "targets": 1,
+    "distinctPids": [
+      88587,
+      88740
+    ],
+    "actualRSS": 38912000,
+    "chargedPIDs": 64,
+    "chargedRSS": 15032385536,
+    "otherUpper": 4294967296,
+    "processes": [
+      {
+        "pid": 88587,
+        "parent": 49590,
+        "group": 88587,
+        "rss": 36749312,
+        "birth": "Thu Nov 5 09:46:13 2026",
+        "command": "/Library/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python -B -"
+      },
+      {
+        "pid": 88740,
+        "parent": 88587,
+        "group": 88587,
+        "rss": 2162688,
+        "birth": "Thu Nov 5 09:46:14 2026",
+        "command": "ps -axo pid=,ppid=,pgid=,rss=,lstart=,args="
+      }
+    ]
+  },
+  "controls": {
+    "guardian.py": "ba69847c276eec41a43b658884044173fbb3ebf7827c8df055207411fd2c83e4",
+    "qualify.py": "991250072a87681d4a64216eb5d02a3fda885f05d7ce0f46218018b5eb3e2b8e"
+  }
+}

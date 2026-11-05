@@ -1,0 +1,242 @@
+{
+  "status": "ACTUAL_FULL_SOURCE01_ABORTED_NO_COMPLETED_CASES",
+  "fullUTC": "2026-11-05T00:47:44.778408+00:00",
+  "offer": {
+    "id": "FE38-COMPOSITION-SOURCE01-0035",
+    "source": "aa35e24be949fb7e0430eda156eccc741ed9e3a4",
+    "processes": 8,
+    "rssBytes": 3221225472,
+    "wholeBytes": 8589934592,
+    "newBytes": 100663296,
+    "temporaryBytes": 50331648,
+    "durableBytes": 50331648,
+    "admissionFreeBytes": 11811160064,
+    "afterAllFreeBytes": 9663676416,
+    "continuousFreeBytes": 8589934592,
+    "otherUpperBytes": 4294967296,
+    "minimumCarryBytes": 4658474382,
+    "spentTemporaryBytes": 19135168,
+    "acceptedUTC": "2026-11-05T00:46:14.372658+00:00",
+    "workDeadline": "2026-11-05T00:51:14.372658+00:00",
+    "deadline": "2026-11-05T00:52:14.372658+00:00"
+  },
+  "source": "aa35e24be949fb7e0430eda156eccc741ed9e3a4",
+  "reason": "Independent guard unresolved process92138 was the concurrent Git-only publisher; workload Node started but no case results; supervisor cleanup then raised PermissionError from killpg. Complete supervisor receipt not produced.",
+  "independent": {
+    "breach": "unresolved workflow claims",
+    "samples": 2,
+    "peaks": {
+      "processes": 3,
+      "rss": 76103680,
+      "temporary": 64,
+      "durable": 45440,
+      "new": 50552644,
+      "whole": 4709222962
+    },
+    "initial": {
+      "pids": [
+        92017,
+        92129,
+        92130
+      ],
+      "processes": 3,
+      "rss": 60014592,
+      "temporary": 64,
+      "durable": 41312,
+      "new": 50548516,
+      "whole": 4709218802,
+      "free": 15275888640,
+      "global": {
+        "metadataAsOf": "2026-11-05T00:46:35.852231+00:00",
+        "members": [
+          {
+            "cohort": "PreWorldSource01",
+            "kind": "source",
+            "pids": [],
+            "processCap": 24,
+            "rssCapBytes": 3221225472,
+            "remainingNewBytes": 33554432,
+            "state": "ACTUAL_ACCEPT_NO_LITERAL_FULL_RECEIPT_YET"
+          },
+          {
+            "cohort": "Post21aCompileUnit01",
+            "kind": "target",
+            "pids": [],
+            "processCap": 32,
+            "rssCapBytes": 8589934592,
+            "remainingNewBytes": 2147483648,
+            "state": "ACTUAL_ACCEPT_NO_LITERAL_FULL_RECEIPT_YET"
+          },
+          {
+            "cohort": "FE38Composition",
+            "kind": "source",
+            "pids": [
+              92017,
+              92129,
+              92130
+            ],
+            "processCap": 8,
+            "rssCapBytes": 3221225472,
+            "remainingNewBytes": 100663296,
+            "state": "ACTUAL_ACCEPT"
+          }
+        ],
+        "unresolvedPids": [],
+        "workflows": 3,
+        "sources": 2,
+        "browsers": 0,
+        "targets": 1,
+        "distinctPids": [
+          92017,
+          92129,
+          92130
+        ],
+        "actualRSS": 60014592,
+        "chargedPIDs": 64,
+        "chargedRSS": 15032385536,
+        "otherUpper": 4294967296,
+        "processes": [
+          {
+            "pid": 92017,
+            "parent": 49590,
+            "group": 92017,
+            "rss": 37683200,
+            "birth": "Thu Nov 5 09:46:38 2026",
+            "command": "/Library/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python -B /Users/lhs/Desktop/mcr-worktrees/art-runtime/docs/mcr/evidence/service-policy-composition/qualify.py"
+          },
+          {
+            "pid": 92129,
+            "parent": 92017,
+            "group": 92017,
+            "rss": 20168704,
+            "birth": "Thu Nov 5 09:46:39 2026",
+            "command": "/Library/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python /Users/lhs/Desktop/mcr-worktrees/art-runtime/docs/mcr/evidence/service-policy-composition/guardian.py /Users/lhs/Desktop/mcr-worktrees/art-runtime/docs/mcr/evidence/service-policy-composition/source01/guard-config.json"
+          },
+          {
+            "pid": 92130,
+            "parent": 92129,
+            "group": 92017,
+            "rss": 2162688,
+            "birth": "Thu Nov 5 09:46:39 2026",
+            "command": "ps -axo pid=,ppid=,pgid=,rss=,lstart=,args="
+          }
+        ]
+      }
+    },
+    "last": {
+      "pids": [
+        92017,
+        92129,
+        92154
+      ],
+      "processes": 3,
+      "rss": 76103680,
+      "temporary": 64,
+      "durable": 45440,
+      "new": 50552644,
+      "whole": 4709222962,
+      "free": 15276630016,
+      "global": {
+        "metadataAsOf": "2026-11-05T00:46:35.852231+00:00",
+        "members": [
+          {
+            "cohort": "PreWorldSource01",
+            "kind": "source",
+            "pids": [],
+            "processCap": 24,
+            "rssCapBytes": 3221225472,
+            "remainingNewBytes": 33554432,
+            "state": "ACTUAL_ACCEPT_NO_LITERAL_FULL_RECEIPT_YET"
+          },
+          {
+            "cohort": "Post21aCompileUnit01",
+            "kind": "target",
+            "pids": [],
+            "processCap": 32,
+            "rssCapBytes": 8589934592,
+            "remainingNewBytes": 2147483648,
+            "state": "ACTUAL_ACCEPT_NO_LITERAL_FULL_RECEIPT_YET"
+          },
+          {
+            "cohort": "FE38Composition",
+            "kind": "source",
+            "pids": [
+              92017,
+              92129,
+              92154
+            ],
+            "processCap": 8,
+            "rssCapBytes": 3221225472,
+            "remainingNewBytes": 100663296,
+            "state": "ACTUAL_ACCEPT"
+          }
+        ],
+        "unresolvedPids": [
+          92138
+        ],
+        "workflows": 3,
+        "sources": 2,
+        "browsers": 0,
+        "targets": 1,
+        "distinctPids": [
+          92017,
+          92129,
+          92154
+        ],
+        "actualRSS": 76103680,
+        "chargedPIDs": 64,
+        "chargedRSS": 15032385536,
+        "otherUpper": 4294967296,
+        "processes": [
+          {
+            "pid": 92017,
+            "parent": 49590,
+            "group": 92017,
+            "rss": 39845888,
+            "birth": "Thu Nov 5 09:46:38 2026",
+            "command": "/Library/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python -B /Users/lhs/Desktop/mcr-worktrees/art-runtime/docs/mcr/evidence/service-policy-composition/qualify.py"
+          },
+          {
+            "pid": 92129,
+            "parent": 92017,
+            "group": 92017,
+            "rss": 34095104,
+            "birth": "Thu Nov 5 09:46:39 2026",
+            "command": "/Library/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python /Users/lhs/Desktop/mcr-worktrees/art-runtime/docs/mcr/evidence/service-policy-composition/guardian.py /Users/lhs/Desktop/mcr-worktrees/art-runtime/docs/mcr/evidence/service-policy-composition/source01/guard-config.json"
+          },
+          {
+            "pid": 92138,
+            "parent": 49590,
+            "group": 92138,
+            "rss": 27131904,
+            "birth": "Thu Nov 5 09:46:40 2026",
+            "command": "/Library/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python /private/tmp/mcr-publisher-412e-capacity-composition-delivery.py /private/tmp/mcr-publisher-412e-meet-rootdoc.json"
+          },
+          {
+            "pid": 92154,
+            "parent": 92129,
+            "group": 92017,
+            "rss": 2162688,
+            "birth": "Thu Nov 5 09:46:40 2026",
+            "command": "ps -axo pid=,ppid=,pgid=,rss=,lstart=,args="
+          }
+        ]
+      }
+    },
+    "minimumFree": 15275888640
+  },
+  "ownedRecordedPIDs": [
+    92017,
+    92129,
+    92130,
+    92154,
+    92240
+  ],
+  "remainingOwned": [],
+  "privateTemporaryAbsent": true,
+  "temporaryBytesAtManualCleanup": 64,
+  "dependencyLinkAbsent": true,
+  "browserServerTargetResources": 0,
+  "testsLogBytes": 69,
+  "qualification": "16cases/fulltypes/lint/syntax NOT_RUN to completion; old34/53 remain retained; no same-offer restart"
+}

@@ -1,0 +1,184 @@
+{
+  "status": "SCOPED_SOURCE_AND_PINNED_ACTUAL_APP_NATIVE_PASS_AWAITING_PUBLICATION",
+  "qualificationSource": "4bcb4fe1b6ca16c9a2042e0b9414cc532fcbda0f",
+  "sourceEvidence": {
+    "cases16": "SOURCE04 PASS at fd725695791dfa841330e0999034507e4ecbe235",
+    "lint": "SOURCE04 PASS unchanged original source readset",
+    "types": "SOURCE05 PASS at 95d5bd33fd10f1566e3a287e1559ec1dc67723cd:1113 roots/1716 files/0 diagnostics; not latest-master types",
+    "syntax": "SOURCE05 PASS"
+  },
+  "nativeEvidence": {
+    "width360": "Native05 retained PASS; unchanged app sources",
+    "width390": "Native07 PASS",
+    "width430": "Native07 PASS",
+    "native05Overall": "FAIL retained",
+    "native07CommandExit": 0,
+    "native07FullEpoch": 1793845480.8960042,
+    "independentSamples": 8,
+    "guardBreach": null,
+    "pageErrors": [],
+    "ownedResourcesAtFull": 0,
+    "strict5384Closed": true
+  },
+  "sourceAssembly": {
+    "canonicalBase": "1907016b6aa41c17998acab691a83e99d0a80076",
+    "candidateTree": "be772472cb9f37b9fbf25fb6f0473232337d7941",
+    "privatePrerequisiteAssembly": "66b7ad0fd3a166d671eeaf083607f91b08360ab2",
+    "prerequisiteCopiesNotInHandoff": 166
+  },
+  "runtimeBoundary": "Actual main/router/AdminBoundary/defaultPorts/canonicalAuth and unchanged production clock code; controlled public HTTP only. No injected Auth/controller/router/clock.",
+  "notRun": [
+    "latest combined master runtime",
+    "real backend and role producer",
+    "measured production-clock cohort",
+    "World ticket",
+    "real multiuser flow",
+    "physical device",
+    "ten-screen Parade Ink visual target acceptance"
+  ],
+  "savedAvatarGoal": "BLOCKED unchanged",
+  "resourceMaxima": {
+    "wholePeak": 7367959993,
+    "newPeak": 224274655,
+    "temporaryPeak": 30625209,
+    "processPeak": 12,
+    "rssPeak": 2413559808
+  },
+  "minimumFreeBytes": 23894974464,
+  "spentTemporaryBeforeNative07": 109423795,
+  "ordinaryDoc8Prep32ChargedOnceBytes": 41943040,
+  "currentFamilyPngCount": 17,
+  "currentFamilyPngBytes": 4147490,
+  "inspectedCaptures": [
+    "native05/actual-default-admin-confirmation-360.png",
+    "native05/actual-default-admin-member-content-sibling-390.png",
+    "native05/failure.png",
+    "native07/actual-default-admin-recovered-390.png",
+    "native07/actual-default-admin-withdrawn-390.png",
+    "native07/actual-default-admin-moderator-reports-430.png",
+    "native07/actual-default-admin-unknown-lost-response-430.png",
+    "native07/actual-default-admin-lost-response-recovered-430.png"
+  ],
+  "sharedPostimages": {
+    "frontend/src/app/operations-composition/owner.ts": {
+      "bytes": 12139,
+      "sha256": "6ac72f822b56602b824c615d1780117645aceace94ade1bf6695a5bd44dcb72e"
+    },
+    "frontend/src/app/operations-composition/panel.tsx": {
+      "bytes": 6613,
+      "sha256": "9a9ea3df7ab3877eb6e565409109cd674153c4ab8ae5bb2db0c98395d452857d"
+    }
+  },
+  "selectedRuntimeInputHashes": {
+    "frontend/index.html": "54ddecc6f53f2d868d33eb51790e8d265f05f28ce2acacccd83e0b0dc4ef1231",
+    "frontend/src/main.tsx": "73dcb049c45fc5125de1637587a09373664c31d4899ef15dea0119a0ace3d5a6",
+    "frontend/src/app/router.tsx": "31a2ea3a7bdf57e1f135782f6177c128d1c1319194cfcd5e09e7506a3a651598",
+    "frontend/src/app/AdminBoundary.tsx": "da057524a77573a6b1c7ff65849ee0d3a9471b491209fe721c976075e62b25a6",
+    "frontend/src/app/ports.ts": "8794c176b8634278fd1dda81e7e984d41a2c748bc118973912448de282f21d81",
+    "frontend/src/app/operations-composition/owner.ts": "6ac72f822b56602b824c615d1780117645aceace94ade1bf6695a5bd44dcb72e",
+    "frontend/src/app/operations-composition/panel.tsx": "9a9ea3df7ab3877eb6e565409109cd674153c4ab8ae5bb2db0c98395d452857d",
+    "frontend/src/features/admin/service-policy/controller.ts": "9229bf596d593a613a2ffa9eb724105bd59caf0b50338dc2bacaf6249b92a48f",
+    "frontend/src/features/admin/service-policy/ServicePolicyOperations.tsx": "c97f9c1c7f871df85c370f1b6db76fee4737e7fb4edb3ec801e2b5694081bc74"
+  },
+  "captures": [
+    {
+      "path": "docs/mcr/evidence/service-policy-composition/native05/native/actual-default-admin-confirmation-360.png",
+      "bytes": 306965,
+      "sha256": "db9d60b8c5ccb75f090be0cf255a00595a102395fc204a3ad2bd1137b654ad13"
+    },
+    {
+      "path": "docs/mcr/evidence/service-policy-composition/native05/native/actual-default-admin-confirmation-390.png",
+      "bytes": 303211,
+      "sha256": "35d9c47cab88d90a023c778ae1a8c4e9a98c5c09707c192cb9e1e797b6386d9c"
+    },
+    {
+      "path": "docs/mcr/evidence/service-policy-composition/native05/native/actual-default-admin-conflict-390.png",
+      "bytes": 302116,
+      "sha256": "f8d2058e7cf1d151cc9ede8ba93727372baca01d8d9d3a79935d7b28f0c916a6"
+    },
+    {
+      "path": "docs/mcr/evidence/service-policy-composition/native05/native/actual-default-admin-pending-390.png",
+      "bytes": 300909,
+      "sha256": "d293e61c85df6e1ef4688137de6720277df61e9651833f585b938d41fad5eb1c"
+    },
+    {
+      "path": "docs/mcr/evidence/service-policy-composition/native05/native/actual-default-admin-member-content-sibling-390.png",
+      "bytes": 39703,
+      "sha256": "e55e1e133df8c6baf54ebb4e520b655fc5946d52cbb4c8632b3b02e59a86c4a9"
+    },
+    {
+      "path": "docs/mcr/evidence/service-policy-composition/native05/native/failure.png",
+      "bytes": 318206,
+      "sha256": "deba9cc21bdaee5416d34d9643032728028532983113199fa78d4fe0f4d4995f"
+    },
+    {
+      "path": "docs/mcr/evidence/service-policy-composition/native07/native/actual-default-admin-confirmation-390.png",
+      "bytes": 303533,
+      "sha256": "d095342a9b29ed4b144cc417d1a3cd92205cfa79730c2d7f3c87e7e3a5d756ef"
+    },
+    {
+      "path": "docs/mcr/evidence/service-policy-composition/native07/native/actual-default-admin-conflict-390.png",
+      "bytes": 302436,
+      "sha256": "1a25977ba04ff9db4bdb46a801ce48601f4baa7189765d127030114e4ee0af84"
+    },
+    {
+      "path": "docs/mcr/evidence/service-policy-composition/native07/native/actual-default-admin-pending-390.png",
+      "bytes": 301209,
+      "sha256": "447059d0f34ce15b47009a0ef5154849e32da9b385d2718b2a37201000308281"
+    },
+    {
+      "path": "docs/mcr/evidence/service-policy-composition/native07/native/actual-default-admin-member-content-sibling-390.png",
+      "bytes": 39703,
+      "sha256": "e55e1e133df8c6baf54ebb4e520b655fc5946d52cbb4c8632b3b02e59a86c4a9"
+    },
+    {
+      "path": "docs/mcr/evidence/service-policy-composition/native07/native/actual-default-admin-pending-status-unavailable-390.png",
+      "bytes": 318694,
+      "sha256": "f45b0febac1f764630896482f51963beb61420457e753f5cd63a9e437d051e5a"
+    },
+    {
+      "path": "docs/mcr/evidence/service-policy-composition/native07/native/actual-default-admin-recovered-390.png",
+      "bytes": 303646,
+      "sha256": "039869b5ccebb486b36c61f9d1cf4a7c6b6a7561285292630ca585b012e81a13"
+    },
+    {
+      "path": "docs/mcr/evidence/service-policy-composition/native07/native/actual-default-admin-withdrawn-390.png",
+      "bytes": 34649,
+      "sha256": "dddcac66955746f4e6ac556c630088359ab015a0f2d49ab4a4ee253d604a46e5"
+    },
+    {
+      "path": "docs/mcr/evidence/service-policy-composition/native07/native/actual-default-admin-confirmation-430.png",
+      "bytes": 317496,
+      "sha256": "8813996fa2cb6577530367990f6bc60ab5c7e392eeaf6b1c36c53d6fec88f14d"
+    },
+    {
+      "path": "docs/mcr/evidence/service-policy-composition/native07/native/actual-default-admin-unknown-lost-response-430.png",
+      "bytes": 300845,
+      "sha256": "e18723367679eb362930784d043b254fcaeee6d07e43bf8c3dfbfd52da7b0b59"
+    },
+    {
+      "path": "docs/mcr/evidence/service-policy-composition/native07/native/actual-default-admin-lost-response-recovered-430.png",
+      "bytes": 313812,
+      "sha256": "fbf3b3dfc8705f802de4dd28c4ed06dba19fe1344bb45bfa839b25f34ff49e00"
+    },
+    {
+      "path": "docs/mcr/evidence/service-policy-composition/native07/native/actual-default-admin-moderator-reports-430.png",
+      "bytes": 40357,
+      "sha256": "8165380cfd019fe011c19986db935d897d7a381b5a35fd6e0058611a0d5529bc"
+    }
+  ],
+  "immutableFailedRounds": [
+    "source01",
+    "source02",
+    "source03",
+    "source04",
+    "native01",
+    "native02",
+    "native03",
+    "native04",
+    "native05",
+    "native06"
+  ],
+  "publisher": "01a1a5d9-332b-7822-a8f7-412e295fa211",
+  "publication": "PENDING; exact additive shared patch over canonical preimages, own new paths only; no private ancestry or prerequisite copies"
+}

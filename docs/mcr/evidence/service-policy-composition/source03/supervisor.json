@@ -1,0 +1,1194 @@
+{
+  "offer": {
+    "id": "FE38-COMPOSITION-SOURCE03-0120",
+    "source": "97fe00426a4f390fa83e4b8a295f84ff987a2f36",
+    "processes": 12,
+    "rssBytes": 3221225472,
+    "wholeBytes": 34359738368,
+    "newBytes": 134217728,
+    "temporaryBytes": 100663296,
+    "durableBytes": 25165824,
+    "admissionFreeBytes": 11811160064,
+    "afterAllFreeBytes": 9663676416,
+    "continuousFreeBytes": 8589934592,
+    "otherUpperBytes": 2684354560,
+    "minimumCarryBytes": 4709222962,
+    "spentTemporaryBytes": 20183808,
+    "ordinaryPrograms": {
+      "/private/tmp/mcr-publisher-412e-capacity-composition-delivery.py": "98523ce9d454f2fdfdc4080ca9fa11e6b724a9343217a8c2f03c44b16d854456"
+    },
+    "acceptByUTC": "2026-11-05T02:10:00+00:00",
+    "controlRegressionAuthorized": true,
+    "priorFullPaths": [
+      "/Users/lhs/Desktop/mcr-worktrees/art-runtime/docs/mcr/evidence/service-policy-composition/source01-full-release.json",
+      "/Users/lhs/Desktop/mcr-worktrees/art-runtime/docs/mcr/evidence/service-policy-composition/source02/FULL.json"
+    ],
+    "sharedNewCeilingAcross": [
+      "FE38-COMPOSITION-SOURCE03-0120",
+      "FE38-COMPOSITION-SOURCE04-0120",
+      "FE38-COMPOSITION-SOURCE05-0120"
+    ],
+    "acceptedUTC": "2026-11-05T01:21:17.344149+00:00",
+    "workDeadline": "2026-11-05T01:24:17.344149+00:00",
+    "deadline": "2026-11-05T01:25:17.344149+00:00"
+  },
+  "mode": "source",
+  "source": "97fe00426a4f390fa83e4b8a295f84ff987a2f36",
+  "commands": [
+    {
+      "label": "receipt-regression",
+      "argv": [
+        "/Library/Frameworks/Python.framework/Versions/3.14/bin/python3",
+        "-B",
+        "/Users/lhs/Desktop/mcr-worktrees/art-runtime/docs/mcr/evidence/service-policy-composition/receipt-regression.py"
+      ],
+      "pid": 3286,
+      "exit": 0
+    },
+    {
+      "label": "tests",
+      "argv": [
+        "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node",
+        "/Users/lhs/Desktop/mcr/frontend/node_modules/vitest/vitest.mjs",
+        "run",
+        "--configLoader",
+        "runner",
+        "--config",
+        "src/app/operations-composition/__tests__/service-policy-integration/vitest.config.mjs",
+        "--no-cache",
+        "--reporter",
+        "dot"
+      ],
+      "pid": 3701,
+      "exit": 0
+    },
+    {
+      "label": "lint",
+      "argv": [
+        "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node",
+        "/Users/lhs/Desktop/mcr/frontend/node_modules/oxlint/bin/oxlint",
+        "--deny-warnings",
+        "src/app/operations-composition/owner.ts",
+        "src/app/operations-composition/panel.tsx",
+        "src/app/operations-composition/__tests__/service-policy-integration"
+      ],
+      "pid": 3802,
+      "exit": 0
+    },
+    {
+      "label": "types",
+      "argv": [
+        "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node",
+        "--max-old-space-size=2048",
+        "src/app/operations-composition/__tests__/service-policy-integration/typecheck.mjs"
+      ],
+      "pid": 3941
+    }
+  ],
+  "status": "FAIL",
+  "startedUTC": "2026-11-05T01:21:17.344149+00:00",
+  "rssPeak": 1919090688,
+  "processPeak": 5,
+  "temporaryPeak": 17391264,
+  "durablePeak": 165120,
+  "wholePeak": 4786929392,
+  "freeMinimum": 23615479808,
+  "inventory": {
+    "total": 4671681006,
+    "roots": [
+      {
+        "root": "/Users/lhs/Desktop/mcr-worktrees/art-runtime",
+        "bytes": 1500197888,
+        "inodes": 18241
+      },
+      {
+        "root": "/Users/lhs/Desktop/mcr/frontend/node_modules",
+        "bytes": 438891729,
+        "inodes": 13420
+      },
+      {
+        "root": "/Users/lhs/Desktop/mcr-tools",
+        "bytes": 419021528,
+        "inodes": 8089
+      },
+      {
+        "root": "/Users/lhs/Desktop/mcr/.git",
+        "bytes": 1200231840,
+        "inodes": 4226
+      },
+      {
+        "root": "/Library/Frameworks/Python.framework/Versions/3.14",
+        "bytes": 1046142375,
+        "inodes": 28412
+      },
+      {
+        "root": "/opt/homebrew/Cellar/git/2.55.0",
+        "bytes": 67168482,
+        "inodes": 1839
+      },
+      {
+        "root": "/opt/homebrew/opt/git/libexec/git-core",
+        "bytes": 0,
+        "inodes": 0
+      },
+      {
+        "root": "/opt/homebrew/bin/git",
+        "bytes": 27164,
+        "inodes": 2
+      }
+    ]
+  },
+  "carryBoundBytes": 4709222962,
+  "initial": {
+    "pids": [
+      2958,
+      3090,
+      3237
+    ],
+    "processes": 3,
+    "rss": 78512128,
+    "temporary": 64,
+    "durable": 132128,
+    "new": 60286398,
+    "whole": 4769509360,
+    "free": 23647150080,
+    "global": {
+      "metadataAsOf": "2026-11-05T01:16:50.924501+00:00",
+      "members": [
+        {
+          "cohort": "PI12-OPERATIONS-SOURCE01-0111",
+          "kind": "source",
+          "pids": [],
+          "processCap": 12,
+          "rssCapBytes": 3221225472,
+          "remainingNewBytes": 134217728,
+          "state": "ACCEPTED"
+        },
+        {
+          "cohort": "PI12-OPERATIONS-SOURCE02-0120",
+          "kind": "source",
+          "pids": [
+            1778,
+            2016,
+            3239
+          ],
+          "processCap": 12,
+          "rssCapBytes": 3221225472,
+          "remainingNewBytes": 118906880,
+          "state": "ACCEPTED"
+        },
+        {
+          "cohort": "FE38Composition",
+          "kind": "source",
+          "pids": [
+            2958,
+            3090,
+            3237
+          ],
+          "processCap": 12,
+          "rssCapBytes": 3221225472,
+          "remainingNewBytes": 134217728,
+          "state": "ACTUAL_ACCEPT"
+        }
+      ],
+      "unresolvedPids": [],
+      "workflows": 3,
+      "sources": 3,
+      "browsers": 0,
+      "targets": 0,
+      "distinctPids": [
+        1778,
+        2016,
+        2958,
+        3090,
+        3237,
+        3239
+      ],
+      "actualRSS": 125042688,
+      "chargedPIDs": 36,
+      "chargedRSS": 9663676416,
+      "otherUpper": 2684354560,
+      "receiptFiles": [
+        "/Users/lhs/Desktop/mcr-evidence/backend-staffing-01a1a21d/owner-resource-receipts/01a19f83-2c2a-7fa0-a98d-1c4f5f65cb3c.json",
+        "/Users/lhs/Desktop/mcr-evidence/backend-staffing-01a1a21d/owner-resource-receipts/01a1a1fc-7f3d-7ff1-9416-e3435c8a6f08.json",
+        "/Users/lhs/Desktop/mcr-evidence/backend-staffing-01a1a21d/owner-resource-receipts/01a1a1fe-1ab7-79b0-adbc-d4c025701acb.json",
+        "/Users/lhs/Desktop/mcr-evidence/backend-staffing-01a1a21d/owner-resource-receipts/01a1a1fe-1eed-7d12-a247-879cd521e0ec.json",
+        "/Users/lhs/Desktop/mcr-evidence/backend-staffing-01a1a21d/owner-resource-receipts/01a1a205-3f89-78c3-aa67-719c4bb40b8d.json",
+        "/Users/lhs/Desktop/mcr-evidence/backend-staffing-01a1a21d/owner-resource-receipts/01a1a207-f012-7343-a24b-12b9c544973f.json",
+        "/Users/lhs/Desktop/mcr-evidence/backend-staffing-01a1a21d/owner-resource-receipts/01a1a20f-8d37-71c3-a429-8a55bb6d6c49.json",
+        "/Users/lhs/Desktop/mcr-evidence/backend-staffing-01a1a21d/owner-resource-receipts/01a1a213-61d6-7a20-a8e7-476649312f8c.json",
+        "/Users/lhs/Desktop/mcr-evidence/backend-staffing-01a1a21d/owner-resource-receipts/01a1a21a-a088-7c31-83e3-19de119ba873.json",
+        "/Users/lhs/Desktop/mcr-evidence/backend-staffing-01a1a21d/owner-resource-receipts/01a1a21e-ab80-7012-b9fa-cdb69eed097b.json",
+        "/Users/lhs/Desktop/mcr-evidence/backend-staffing-01a1a21d/owner-resource-receipts/01a1a230-6acc-7e82-9e4b-92506decc745.json",
+        "/Users/lhs/Desktop/mcr-evidence/backend-staffing-01a1a21d/owner-resource-receipts/01a1a231-0dc4-7b50-92bd-c0f0f56bd970.json",
+        "/Users/lhs/Desktop/mcr-evidence/backend-staffing-01a1a21d/owner-resource-receipts/01a1a232-21e2-75c2-8474-a5fa6ae895cd.json",
+        "/Users/lhs/Desktop/mcr-evidence/backend-staffing-01a1a21d/owner-resource-receipts/01a1a267-37a0-7723-a4e9-a3a6f5b27f52.json",
+        "/Users/lhs/Desktop/mcr-evidence/backend-staffing-01a1a21d/owner-resource-receipts/01a1a26e-1de2-7b41-a294-c9a79cfded9b.json",
+        "/Users/lhs/Desktop/mcr-evidence/backend-staffing-01a1a21d/owner-resource-receipts/01a1a533-50a8-7fb2-b3ed-96b941b96bbf.json",
+        "/Users/lhs/Desktop/mcr-evidence/backend-staffing-01a1a21d/owner-resource-receipts/01a1a534-4fcf-7291-abe3-a97ba2fcafcd.json",
+        "/Users/lhs/Desktop/mcr-evidence/backend-staffing-01a1a21d/owner-resource-receipts/01a1a5d9-332b-7822-a8f7-40c576fad94a.json",
+        "/Users/lhs/Desktop/mcr-evidence/backend-staffing-01a1a21d/owner-resource-receipts/01a1a5d9-332b-7822-a8f7-40fde6c81bb4.json",
+        "/Users/lhs/Desktop/mcr-evidence/backend-staffing-01a1a21d/owner-resource-receipts/01a1a5d9-332b-7822-a8f7-412e295fa211.json",
+        "/Users/lhs/Desktop/mcr-evidence/backend-staffing-01a1a21d/owner-resource-receipts/01a1a5d9-6950-7920-8c80-5214d4ce0eaf.json",
+        "/Users/lhs/Desktop/mcr-evidence/backend-staffing-01a1a21d/owner-resource-receipts/01a1a5d9-6954-7bd3-9b08-7109883187b5.json",
+        "/Users/lhs/Desktop/mcr-evidence/backend-staffing-01a1a21d/owner-resource-receipts/01a1a5d9-6955-7820-bcd4-8e0a21629aa2.json"
+      ],
+      "ordinary": [
+        {
+          "owner": "01a1a5d9-332b-7822-a8f7-412e295fa211",
+          "state": "FULL",
+          "verified": false,
+          "pids": [],
+          "remainingNewBytes": 0
+        },
+        {
+          "owner": "01a1a231-0dc4-7b50-92bd-c0f0f56bd970",
+          "state": "FULL",
+          "verified": false,
+          "pids": [],
+          "remainingNewBytes": 0
+        },
+        {
+          "owner": "01a1a21a-a088-7c31-83e3-19de119ba873",
+          "state": "FULL",
+          "verified": false,
+          "pids": [],
+          "remainingNewBytes": 0
+        },
+        {
+          "owner": "01a1a231-0dc4-7b50-92bd-c0f0f56bd970",
+          "state": "ACCEPTED",
+          "verified": false,
+          "pids": [
+            77904
+          ],
+          "remainingNewBytes": 134217728
+        },
+        {
+          "owner": "01a1a5d9-332b-7822-a8f7-412e295fa211",
+          "state": "FULL",
+          "verified": false,
+          "pids": [],
+          "remainingNewBytes": 0
+        }
+      ],
+      "processes": [
+        {
+          "pid": 1778,
+          "parent": 49590,
+          "group": 1778,
+          "rss": 22560768,
+          "birth": "Thu Nov 5 10:21:04 2026",
+          "command": "/Library/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python /Users/lhs/Desktop/mcr-worktrees/fe-ref-customize/frontend/src/app/__tests__/parade-ink-operations/finite-source.py /private/tmp/mcr-pi12-operations-source02-0120/control.json",
+          "executable": "/Library/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python"
+        },
+        {
+          "pid": 2016,
+          "parent": 1778,
+          "group": 1778,
+          "rss": 22478848,
+          "birth": "Thu Nov 5 10:21:04 2026",
+          "command": "/Library/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python /Users/lhs/Desktop/mcr-worktrees/fe-ref-customize/frontend/src/app/__tests__/parade-ink-operations/finite-source.py /private/tmp/mcr-pi12-operations-source02-0120/control.json secondary 1778",
+          "executable": "/Library/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python"
+        },
+        {
+          "pid": 2958,
+          "parent": 49590,
+          "group": 2958,
+          "rss": 38846464,
+          "birth": "Thu Nov 5 10:21:17 2026",
+          "command": "/Library/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python -B /Users/lhs/Desktop/mcr-worktrees/art-runtime/docs/mcr/evidence/service-policy-composition/qualify.py",
+          "executable": "/Library/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python"
+        },
+        {
+          "pid": 3090,
+          "parent": 2958,
+          "group": 2958,
+          "rss": 37437440,
+          "birth": "Thu Nov 5 10:21:18 2026",
+          "command": "/Library/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python /Users/lhs/Desktop/mcr-worktrees/art-runtime/docs/mcr/evidence/service-policy-composition/guardian.py /Users/lhs/Desktop/mcr-worktrees/art-runtime/docs/mcr/evidence/service-policy-composition/source03/guard-config.json",
+          "executable": "/Library/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python"
+        },
+        {
+          "pid": 3237,
+          "parent": 2958,
+          "group": 2958,
+          "rss": 2228224,
+          "birth": "Thu Nov 5 10:21:19 2026",
+          "command": "ps -axo pid=,ppid=,pgid=,rss=,lstart=,args=",
+          "executable": null
+        },
+        {
+          "pid": 3239,
+          "parent": 1778,
+          "group": 1778,
+          "rss": 1490944,
+          "birth": "Thu Nov 5 10:21:19 2026",
+          "command": "(du)",
+          "executable": null
+        }
+      ]
+    },
+    "ownedIdentities": [
+      {
+        "pid": 2958,
+        "parent": 49590,
+        "group": 2958,
+        "rss": 38846464,
+        "birth": "Thu Nov 5 10:21:17 2026",
+        "command": "/Library/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python -B /Users/lhs/Desktop/mcr-worktrees/art-runtime/docs/mcr/evidence/service-policy-composition/qualify.py",
+        "executable": "/Library/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python"
+      },
+      {
+        "pid": 3090,
+        "parent": 2958,
+        "group": 2958,
+        "rss": 37437440,
+        "birth": "Thu Nov 5 10:21:18 2026",
+        "command": "/Library/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python /Users/lhs/Desktop/mcr-worktrees/art-runtime/docs/mcr/evidence/service-policy-composition/guardian.py /Users/lhs/Desktop/mcr-worktrees/art-runtime/docs/mcr/evidence/service-policy-composition/source03/guard-config.json",
+        "executable": "/Library/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python"
+      },
+      {
+        "pid": 3237,
+        "parent": 2958,
+        "group": 2958,
+        "rss": 2228224,
+        "birth": "Thu Nov 5 10:21:19 2026",
+        "command": "ps -axo pid=,ppid=,pgid=,rss=,lstart=,args=",
+        "executable": null
+      }
+    ]
+  },
+  "newPeak": 77706430,
+  "lastGlobal": {
+    "metadataAsOf": "2026-11-05T01:16:50.924501+00:00",
+    "members": [
+      {
+        "cohort": "PI12-OPERATIONS-SOURCE01-0111",
+        "kind": "source",
+        "pids": [],
+        "processCap": 12,
+        "rssCapBytes": 3221225472,
+        "remainingNewBytes": 134217728,
+        "state": "ACCEPTED"
+      },
+      {
+        "cohort": "HUD-FINAL-REMAINDER-NATIVE05-0118",
+        "kind": "browser",
+        "pids": [
+          3811,
+          4031,
+          4123,
+          4867,
+          4990,
+          4994,
+          5010,
+          5021,
+          5026,
+          5027,
+          5320,
+          5321
+        ],
+        "processCap": 24,
+        "rssCapBytes": 4294967296,
+        "remainingNewBytes": 108862031,
+        "state": "ACCEPTED"
+      },
+      {
+        "cohort": "PI12-OPERATIONS-SOURCE02-0120",
+        "kind": "source",
+        "pids": [],
+        "processCap": 12,
+        "rssCapBytes": 3221225472,
+        "remainingNewBytes": 118906880,
+        "state": "ACCEPTED"
+      },
+      {
+        "cohort": "FE38Composition",
+        "kind": "source",
+        "pids": [
+          2958,
+          3090,
+          3941,
+          5322
+        ],
+        "processCap": 12,
+        "rssCapBytes": 3221225472,
+        "remainingNewBytes": 134217728,
+        "state": "ACTUAL_ACCEPT"
+      }
+    ],
+    "unresolvedPids": [],
+    "workflows": 4,
+    "sources": 3,
+    "browsers": 1,
+    "targets": 0,
+    "distinctPids": [
+      2958,
+      3090,
+      3811,
+      3941,
+      4031,
+      4123,
+      4867,
+      4990,
+      4994,
+      5010,
+      5021,
+      5026,
+      5027,
+      5320,
+      5321,
+      5322
+    ],
+    "actualRSS": 4915970048,
+    "chargedPIDs": 60,
+    "chargedRSS": 13958643712,
+    "otherUpper": 2684354560,
+    "receiptFiles": [
+      "/Users/lhs/Desktop/mcr-evidence/backend-staffing-01a1a21d/owner-resource-receipts/01a19f83-2c2a-7fa0-a98d-1c4f5f65cb3c.json",
+      "/Users/lhs/Desktop/mcr-evidence/backend-staffing-01a1a21d/owner-resource-receipts/01a1a1fc-7f3d-7ff1-9416-e3435c8a6f08.json",
+      "/Users/lhs/Desktop/mcr-evidence/backend-staffing-01a1a21d/owner-resource-receipts/01a1a1fe-1ab7-79b0-adbc-d4c025701acb.json",
+      "/Users/lhs/Desktop/mcr-evidence/backend-staffing-01a1a21d/owner-resource-receipts/01a1a1fe-1eed-7d12-a247-879cd521e0ec.json",
+      "/Users/lhs/Desktop/mcr-evidence/backend-staffing-01a1a21d/owner-resource-receipts/01a1a205-3f89-78c3-aa67-719c4bb40b8d.json",
+      "/Users/lhs/Desktop/mcr-evidence/backend-staffing-01a1a21d/owner-resource-receipts/01a1a207-f012-7343-a24b-12b9c544973f.json",
+      "/Users/lhs/Desktop/mcr-evidence/backend-staffing-01a1a21d/owner-resource-receipts/01a1a20f-8d37-71c3-a429-8a55bb6d6c49.json",
+      "/Users/lhs/Desktop/mcr-evidence/backend-staffing-01a1a21d/owner-resource-receipts/01a1a213-61d6-7a20-a8e7-476649312f8c.json",
+      "/Users/lhs/Desktop/mcr-evidence/backend-staffing-01a1a21d/owner-resource-receipts/01a1a21a-a088-7c31-83e3-19de119ba873.json",
+      "/Users/lhs/Desktop/mcr-evidence/backend-staffing-01a1a21d/owner-resource-receipts/01a1a21e-ab80-7012-b9fa-cdb69eed097b.json",
+      "/Users/lhs/Desktop/mcr-evidence/backend-staffing-01a1a21d/owner-resource-receipts/01a1a230-6acc-7e82-9e4b-92506decc745.json",
+      "/Users/lhs/Desktop/mcr-evidence/backend-staffing-01a1a21d/owner-resource-receipts/01a1a231-0dc4-7b50-92bd-c0f0f56bd970.json",
+      "/Users/lhs/Desktop/mcr-evidence/backend-staffing-01a1a21d/owner-resource-receipts/01a1a232-21e2-75c2-8474-a5fa6ae895cd.json",
+      "/Users/lhs/Desktop/mcr-evidence/backend-staffing-01a1a21d/owner-resource-receipts/01a1a267-37a0-7723-a4e9-a3a6f5b27f52.json",
+      "/Users/lhs/Desktop/mcr-evidence/backend-staffing-01a1a21d/owner-resource-receipts/01a1a26e-1de2-7b41-a294-c9a79cfded9b.json",
+      "/Users/lhs/Desktop/mcr-evidence/backend-staffing-01a1a21d/owner-resource-receipts/01a1a533-50a8-7fb2-b3ed-96b941b96bbf.json",
+      "/Users/lhs/Desktop/mcr-evidence/backend-staffing-01a1a21d/owner-resource-receipts/01a1a534-4fcf-7291-abe3-a97ba2fcafcd.json",
+      "/Users/lhs/Desktop/mcr-evidence/backend-staffing-01a1a21d/owner-resource-receipts/01a1a5d9-332b-7822-a8f7-40c576fad94a.json",
+      "/Users/lhs/Desktop/mcr-evidence/backend-staffing-01a1a21d/owner-resource-receipts/01a1a5d9-332b-7822-a8f7-40fde6c81bb4.json",
+      "/Users/lhs/Desktop/mcr-evidence/backend-staffing-01a1a21d/owner-resource-receipts/01a1a5d9-332b-7822-a8f7-412e295fa211.json",
+      "/Users/lhs/Desktop/mcr-evidence/backend-staffing-01a1a21d/owner-resource-receipts/01a1a5d9-6950-7920-8c80-5214d4ce0eaf.json",
+      "/Users/lhs/Desktop/mcr-evidence/backend-staffing-01a1a21d/owner-resource-receipts/01a1a5d9-6954-7bd3-9b08-7109883187b5.json",
+      "/Users/lhs/Desktop/mcr-evidence/backend-staffing-01a1a21d/owner-resource-receipts/01a1a5d9-6955-7820-bcd4-8e0a21629aa2.json"
+    ],
+    "ordinary": [
+      {
+        "owner": "01a1a5d9-332b-7822-a8f7-412e295fa211",
+        "state": "FULL",
+        "verified": false,
+        "pids": [],
+        "remainingNewBytes": 0
+      },
+      {
+        "owner": "01a1a231-0dc4-7b50-92bd-c0f0f56bd970",
+        "state": "FULL",
+        "verified": false,
+        "pids": [],
+        "remainingNewBytes": 0
+      },
+      {
+        "owner": "01a1a21a-a088-7c31-83e3-19de119ba873",
+        "state": "FULL",
+        "verified": false,
+        "pids": [],
+        "remainingNewBytes": 0
+      },
+      {
+        "owner": "01a1a231-0dc4-7b50-92bd-c0f0f56bd970",
+        "state": "ACCEPTED",
+        "verified": false,
+        "pids": [
+          77904
+        ],
+        "remainingNewBytes": 134217728
+      },
+      {
+        "owner": "01a1a5d9-332b-7822-a8f7-412e295fa211",
+        "state": "FULL",
+        "verified": false,
+        "pids": [],
+        "remainingNewBytes": 0
+      }
+    ],
+    "processes": [
+      {
+        "pid": 2958,
+        "parent": 49590,
+        "group": 2958,
+        "rss": 46989312,
+        "birth": "Thu Nov 5 10:21:17 2026",
+        "command": "/Library/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python -B /Users/lhs/Desktop/mcr-worktrees/art-runtime/docs/mcr/evidence/service-policy-composition/qualify.py",
+        "executable": "/Library/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python"
+      },
+      {
+        "pid": 3090,
+        "parent": 2958,
+        "group": 2958,
+        "rss": 40943616,
+        "birth": "Thu Nov 5 10:21:18 2026",
+        "command": "/Library/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python /Users/lhs/Desktop/mcr-worktrees/art-runtime/docs/mcr/evidence/service-policy-composition/guardian.py /Users/lhs/Desktop/mcr-worktrees/art-runtime/docs/mcr/evidence/service-policy-composition/source03/guard-config.json",
+        "executable": "/Library/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python"
+      },
+      {
+        "pid": 3811,
+        "parent": 49590,
+        "group": 3811,
+        "rss": 231800832,
+        "birth": "Thu Nov 5 10:21:23 2026",
+        "command": "/Library/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python /Users/lhs/Desktop/mcr-worktrees/qa07-input-delta-332b/docs/mcr/evidence/parade-ink-world-hud/guard.py --kind native --run-dir /Users/lhs/Desktop/mcr-worktrees/qa07-input-delta-332b/docs/mcr/evidence/parade-ink-world-hud/native05 --scratch /private/tmp/mcr-pi08-native05-332b --offer HUD-FINAL-REMAINDER-NATIVE05-0118 --node /usr/local/bin/node --dependencies /Users/lhs/Desktop/mcr/frontend --foundation /Users/lhs/Desktop/mcr-worktrees/fe-runtime-preferences --retained-new 293791153 --prior-whole 6867591168 --new-cap 402653184 --pids 24 --other 5368709120 --work 300 --pins /Users/lhs/Desktop/mcr-worktrees/qa07-input-delta-332b/docs/mcr/evidence/parade-ink-world-hud/native05-readset.json --pins-sha256 1ed55134cc05b0905bcf5abc607c94f7fe4d6424ff26640c1419ceb7fb630842",
+        "executable": "/Library/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python"
+      },
+      {
+        "pid": 3941,
+        "parent": 2958,
+        "group": 3941,
+        "rss": 1828945920,
+        "birth": "Thu Nov 5 10:21:24 2026",
+        "command": "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node --max-old-space-size=2048 src/app/operations-composition/__tests__/service-policy-integration/typecheck.mjs",
+        "executable": "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node"
+      },
+      {
+        "pid": 4031,
+        "parent": 3811,
+        "group": 4031,
+        "rss": 75071488,
+        "birth": "Thu Nov 5 10:21:26 2026",
+        "command": "/Library/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python /Users/lhs/Desktop/mcr-worktrees/qa07-input-delta-332b/docs/mcr/evidence/parade-ink-world-hud/guard.py --guardian /Users/lhs/Desktop/mcr-worktrees/qa07-input-delta-332b/docs/mcr/evidence/parade-ink-world-hud/native05/config.json",
+        "executable": "/Library/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python"
+      },
+      {
+        "pid": 4123,
+        "parent": 3811,
+        "group": 4123,
+        "rss": 1066172416,
+        "birth": "Thu Nov 5 10:21:28 2026",
+        "command": "/usr/local/bin/node /Users/lhs/Desktop/mcr-worktrees/qa07-input-delta-332b/frontend/src/features/parade-ink/world-hud/native.mjs",
+        "executable": "/usr/local/bin/node"
+      },
+      {
+        "pid": 4867,
+        "parent": 4123,
+        "group": 4867,
+        "rss": 271958016,
+        "birth": "Thu Nov 5 10:21:28 2026",
+        "command": "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome --disable-field-trial-config --disable-background-networking --disable-background-timer-throttling --disable-backgrounding-occluded-windows --disable-back-forward-cache --disable-breakpad --disable-client-side-phishing-detection --disable-component-extensions-with-background-pages --disable-component-update --no-default-browser-check --disable-default-apps --disable-dev-shm-usage --disable-edgeupdater --disable-extensions --disable-features=AvoidUnnecessaryBeforeUnloadCheckSync,BoundaryEventDispatchTracksNodeRemoval,DestroyProfileOnBrowserClose,DialMediaRouteProvider,GlobalMediaControls,HttpsUpgrades,LensOverlay,MediaRouter,PaintHolding,ThirdPartyStoragePartitioning,Translate,AutoDeElevate,RenderDocument,OptimizationHints,msForceBrowserSignIn,msEdgeUpdateLaunchServicesPreferredVersion --enable-features=CDPScreenshotNewSurface --allow-pre-commit-input --disable-hang-monitor --disable-ipc-flooding-protection --disable-popup-blocking --disable-prompt-on-repost --disable-renderer-backgrounding --force-color-profile=srgb --metrics-recording-only --no-first-run --password-store=basic --use-mock-keychain --no-service-autorun --export-tagged-pdf --disable-search-engine-choice-screen --unsafely-disable-devtools-self-xss-warnings --edge-skip-compat-layer-relaunch --disable-infobars --disable-search-engine-choice-screen --disable-sync --enable-unsafe-swiftshader --headless --hide-scrollbars --mute-audio --blink-settings=primaryHoverType=2,availableHoverTypes=2,primaryPointerType=4,availablePointerTypes=4 --no-sandbox --user-data-dir=/private/tmp/mcr-pi08-native05-332b/playwright_chromiumdev_profile-bvLF91 --remote-debugging-pipe --no-startup-window",
+        "executable": "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome"
+      },
+      {
+        "pid": 4990,
+        "parent": 4867,
+        "group": 4867,
+        "rss": 200196096,
+        "birth": "Thu Nov 5 10:21:29 2026",
+        "command": "/Applications/Google Chrome.app/Contents/Frameworks/Google Chrome Framework.framework/Versions/156.0.8078.80/Helpers/Google Chrome Helper (GPU).app/Contents/MacOS/Google Chrome Helper (GPU) --type=gpu-process --gpu-recent-crash-count=0 --no-sandbox --disable-breakpad --headless --enable-unsafe-swiftshader --noerrdialogs --user-data-dir=/private/tmp/mcr-pi08-native05-332b/playwright_chromiumdev_profile-bvLF91 --gpu-preferences=WAAAAAAAAAAgAAAEAAAAAAAAAAAAAGAAQAAAAAAAAAADAAAAAAAAADgAAAAAAAAAAAAAAAAAAAACAAAAAAAAAAAAAAAAAAAAKAAAAAAAAAAoAAAAAAAAAAgAAAAAAAAADAAAAAEAAAAAAAAAAAAAAAgAAAAAAAAACAAAAAAAAAA= --shared-files --field-trial-handle=1718379636,r,4732395843695985917,3528308402358960023,262144 --enable-features=CDPScreenshotNewSurface --disable-features=AutoDeElevate,AvoidUnnecessaryBeforeUnloadCheckSync,BoundaryEventDispatchTracksNodeRemoval,DestroyProfileOnBrowserClose,DialMediaRouteProvider,GlobalMediaControls,HttpsUpgrades,LensOverlay,MediaRouter,OptimizationHints,PaintHolding,RenderDocument,ThirdPartyStoragePartitioning,Translate,msEdgeUpdateLaunchServicesPreferredVersion,msForceBrowserSignIn --variations-seed-version --pseudonymization-salt-handle=1935764596,r,11865459749987457325,8672810651880450436,4 --trace-process-track-uuid=3190708988185955192",
+        "executable": "/Applications/Google Chrome.app/Contents/Frameworks/Google Chrome Framework.framework/Versions/156.0.8078.80/Helpers/Google Chrome Helper (GPU).app/Contents/MacOS/Google Chrome Helper (GPU)"
+      },
+      {
+        "pid": 4994,
+        "parent": 4867,
+        "group": 4867,
+        "rss": 151961600,
+        "birth": "Thu Nov 5 10:21:29 2026",
+        "command": "/Applications/Google Chrome.app/Contents/Frameworks/Google Chrome Framework.framework/Versions/156.0.8078.80/Helpers/Google Chrome Helper.app/Contents/MacOS/Google Chrome Helper --type=utility --utility-sub-type=network.mojom.NetworkService --lang=en-US --service-sandbox-type=network --no-sandbox --mute-audio --noerrdialogs --user-data-dir=/private/tmp/mcr-pi08-native05-332b/playwright_chromiumdev_profile-bvLF91 --shared-files --field-trial-handle=1718379636,r,4732395843695985917,3528308402358960023,262144 --enable-features=CDPScreenshotNewSurface --disable-features=AutoDeElevate,AvoidUnnecessaryBeforeUnloadCheckSync,BoundaryEventDispatchTracksNodeRemoval,DestroyProfileOnBrowserClose,DialMediaRouteProvider,GlobalMediaControls,HttpsUpgrades,LensOverlay,MediaRouter,OptimizationHints,PaintHolding,RenderDocument,ThirdPartyStoragePartitioning,Translate,msEdgeUpdateLaunchServicesPreferredVersion,msForceBrowserSignIn --variations-seed-version --pseudonymization-salt-handle=1935764596,r,11865459749987457325,8672810651880450436,4 --trace-process-track-uuid=3190708989122997041",
+        "executable": "/Applications/Google Chrome.app/Contents/Frameworks/Google Chrome Framework.framework/Versions/156.0.8078.80/Helpers/Google Chrome Helper.app/Contents/MacOS/Google Chrome Helper"
+      },
+      {
+        "pid": 5010,
+        "parent": 4867,
+        "group": 4867,
+        "rss": 86163456,
+        "birth": "Thu Nov 5 10:21:29 2026",
+        "command": "/Applications/Google Chrome.app/Contents/Frameworks/Google Chrome Framework.framework/Versions/156.0.8078.80/Helpers/Google Chrome Helper.app/Contents/MacOS/Google Chrome Helper --type=utility --utility-sub-type=storage.mojom.StorageService --lang=en-US --service-sandbox-type=service --no-sandbox --mute-audio --noerrdialogs --user-data-dir=/private/tmp/mcr-pi08-native05-332b/playwright_chromiumdev_profile-bvLF91 --shared-files --field-trial-handle=1718379636,r,4732395843695985917,3528308402358960023,262144 --enable-features=CDPScreenshotNewSurface --disable-features=AutoDeElevate,AvoidUnnecessaryBeforeUnloadCheckSync,BoundaryEventDispatchTracksNodeRemoval,DestroyProfileOnBrowserClose,DialMediaRouteProvider,GlobalMediaControls,HttpsUpgrades,LensOverlay,MediaRouter,OptimizationHints,PaintHolding,RenderDocument,ThirdPartyStoragePartitioning,Translate,msEdgeUpdateLaunchServicesPreferredVersion,msForceBrowserSignIn --variations-seed-version --pseudonymization-salt-handle=1935764596,r,11865459749987457325,8672810651880450436,4 --trace-process-track-uuid=3190708990060038890",
+        "executable": "/Applications/Google Chrome.app/Contents/Frameworks/Google Chrome Framework.framework/Versions/156.0.8078.80/Helpers/Google Chrome Helper.app/Contents/MacOS/Google Chrome Helper"
+      },
+      {
+        "pid": 5021,
+        "parent": 4867,
+        "group": 4867,
+        "rss": 195280896,
+        "birth": "Thu Nov 5 10:21:29 2026",
+        "command": "/Applications/Google Chrome.app/Contents/Frameworks/Google Chrome Framework.framework/Versions/156.0.8078.80/Helpers/Google Chrome Helper (Renderer).app/Contents/MacOS/Google Chrome Helper (Renderer) --type=renderer --top-chrome-webui --noerrdialogs --user-data-dir=/private/tmp/mcr-pi08-native05-332b/playwright_chromiumdev_profile-bvLF91 --no-sandbox --disable-back-forward-cache --disable-background-timer-throttling --disable-breakpad --force-color-profile=srgb --remote-debugging-pipe --allow-pre-commit-input --blink-settings=primaryHoverType=2,availableHoverTypes=2,primaryPointerType=4,availablePointerTypes=4 --lang=en-US --num-raster-threads=4 --enable-zero-copy --enable-gpu-memory-buffer-compositor-resources --enable-main-frame-before-activation --renderer-client-id=6 --launch-time-ticks=185257130247 --shared-files --field-trial-handle=1718379636,r,4732395843695985917,3528308402358960023,262144 --enable-features=CDPScreenshotNewSurface --disable-features=AutoDeElevate,AvoidUnnecessaryBeforeUnloadCheckSync,BoundaryEventDispatchTracksNodeRemoval,DestroyProfileOnBrowserClose,DialMediaRouteProvider,GlobalMediaControls,HttpsUpgrades,LensOverlay,MediaRouter,OptimizationHints,PaintHolding,RenderDocument,ThirdPartyStoragePartitioning,Translate,msEdgeUpdateLaunchServicesPreferredVersion,msForceBrowserSignIn --variations-seed-version --pseudonymization-salt-handle=1935764596,r,11865459749987457325,8672810651880450436,4 --trace-process-track-uuid=3190708991934122588",
+        "executable": "/Applications/Google Chrome.app/Contents/Frameworks/Google Chrome Framework.framework/Versions/156.0.8078.80/Helpers/Google Chrome Helper (Renderer).app/Contents/MacOS/Google Chrome Helper (Renderer)"
+      },
+      {
+        "pid": 5026,
+        "parent": 4867,
+        "group": 4867,
+        "rss": 106135552,
+        "birth": "Thu Nov 5 10:21:29 2026",
+        "command": "/Applications/Google Chrome.app/Contents/Frameworks/Google Chrome Framework.framework/Versions/156.0.8078.80/Helpers/Google Chrome Helper (Renderer).app/Contents/MacOS/Google Chrome Helper (Renderer) --type=renderer --noerrdialogs --user-data-dir=/private/tmp/mcr-pi08-native05-332b/playwright_chromiumdev_profile-bvLF91 --no-sandbox --disable-back-forward-cache --disable-background-timer-throttling --disable-breakpad --force-color-profile=srgb --remote-debugging-pipe --allow-pre-commit-input --blink-settings=primaryHoverType=2,availableHoverTypes=2,primaryPointerType=4,availablePointerTypes=4 --lang=en-US --num-raster-threads=4 --enable-zero-copy --enable-gpu-memory-buffer-compositor-resources --enable-main-frame-before-activation --renderer-client-id=8 --launch-time-ticks=185257155619 --shared-files --field-trial-handle=1718379636,r,4732395843695985917,3528308402358960023,262144 --enable-features=CDPScreenshotNewSurface --disable-features=AutoDeElevate,AvoidUnnecessaryBeforeUnloadCheckSync,BoundaryEventDispatchTracksNodeRemoval,DestroyProfileOnBrowserClose,DialMediaRouteProvider,GlobalMediaControls,HttpsUpgrades,LensOverlay,MediaRouter,OptimizationHints,PaintHolding,RenderDocument,ThirdPartyStoragePartitioning,Translate,msEdgeUpdateLaunchServicesPreferredVersion,msForceBrowserSignIn --variations-seed-version --pseudonymization-salt-handle=1935764596,r,11865459749987457325,8672810651880450436,4 --trace-process-track-uuid=3190708993808206286",
+        "executable": "/Applications/Google Chrome.app/Contents/Frameworks/Google Chrome Framework.framework/Versions/156.0.8078.80/Helpers/Google Chrome Helper (Renderer).app/Contents/MacOS/Google Chrome Helper (Renderer)"
+      },
+      {
+        "pid": 5027,
+        "parent": 4867,
+        "group": 4867,
+        "rss": 605634560,
+        "birth": "Thu Nov 5 10:21:29 2026",
+        "command": "/Applications/Google Chrome.app/Contents/Frameworks/Google Chrome Framework.framework/Versions/156.0.8078.80/Helpers/Google Chrome Helper (Renderer).app/Contents/MacOS/Google Chrome Helper (Renderer) --type=renderer --noerrdialogs --user-data-dir=/private/tmp/mcr-pi08-native05-332b/playwright_chromiumdev_profile-bvLF91 --no-sandbox --disable-back-forward-cache --disable-background-timer-throttling --disable-breakpad --force-color-profile=srgb --remote-debugging-pipe --allow-pre-commit-input --blink-settings=primaryHoverType=2,availableHoverTypes=2,primaryPointerType=4,availablePointerTypes=4 --lang=en-US --num-raster-threads=4 --enable-zero-copy --enable-gpu-memory-buffer-compositor-resources --enable-main-frame-before-activation --renderer-client-id=7 --launch-time-ticks=185257156662 --shared-files --field-trial-handle=1718379636,r,4732395843695985917,3528308402358960023,262144 --enable-features=CDPScreenshotNewSurface --disable-features=AutoDeElevate,AvoidUnnecessaryBeforeUnloadCheckSync,BoundaryEventDispatchTracksNodeRemoval,DestroyProfileOnBrowserClose,DialMediaRouteProvider,GlobalMediaControls,HttpsUpgrades,LensOverlay,MediaRouter,OptimizationHints,PaintHolding,RenderDocument,ThirdPartyStoragePartitioning,Translate,msEdgeUpdateLaunchServicesPreferredVersion,msForceBrowserSignIn --variations-seed-version --pseudonymization-salt-handle=1935764596,r,11865459749987457325,8672810651880450436,4 --trace-process-track-uuid=3190708992871164437",
+        "executable": "/Applications/Google Chrome.app/Contents/Frameworks/Google Chrome Framework.framework/Versions/156.0.8078.80/Helpers/Google Chrome Helper (Renderer).app/Contents/MacOS/Google Chrome Helper (Renderer)"
+      },
+      {
+        "pid": 5320,
+        "parent": 4031,
+        "group": 4031,
+        "rss": 3260416,
+        "birth": "Thu Nov 5 10:21:33 2026",
+        "command": "(ps)",
+        "executable": null
+      },
+      {
+        "pid": 5321,
+        "parent": 3811,
+        "group": 3811,
+        "rss": 3244032,
+        "birth": "Thu Nov 5 10:21:33 2026",
+        "command": "(ps)",
+        "executable": null
+      },
+      {
+        "pid": 5322,
+        "parent": 2958,
+        "group": 2958,
+        "rss": 2211840,
+        "birth": "Thu Nov 5 10:21:33 2026",
+        "command": "ps -axo pid=,ppid=,pgid=,rss=,lstart=,args=",
+        "executable": null
+      }
+    ]
+  },
+  "failure": "RuntimeError: Independent guardian interrupted allocation",
+  "cleanupErrors": [],
+  "guardian": {
+    "breach": "global workflow cap",
+    "samples": 13,
+    "peaks": {
+      "processes": 5,
+      "rss": 2077278208,
+      "temporary": 9067072,
+      "durable": 165120,
+      "new": 69382238,
+      "whole": 4778605200
+    },
+    "initial": {
+      "pids": [
+        2958,
+        3090,
+        3094,
+        3096
+      ],
+      "processes": 4,
+      "rss": 68632576,
+      "temporary": 64,
+      "durable": 119808,
+      "new": 60274078,
+      "whole": 4769497040,
+      "free": 23648288768,
+      "global": {
+        "metadataAsOf": "2026-11-05T01:16:50.924501+00:00",
+        "members": [
+          {
+            "cohort": "PI12-OPERATIONS-SOURCE01-0111",
+            "kind": "source",
+            "pids": [],
+            "processCap": 12,
+            "rssCapBytes": 3221225472,
+            "remainingNewBytes": 134217728,
+            "state": "ACCEPTED"
+          },
+          {
+            "cohort": "PI12-OPERATIONS-SOURCE02-0120",
+            "kind": "source",
+            "pids": [
+              1778,
+              2016,
+              2291,
+              3095
+            ],
+            "processCap": 12,
+            "rssCapBytes": 3221225472,
+            "remainingNewBytes": 118906880,
+            "state": "ACCEPTED"
+          },
+          {
+            "cohort": "FE38Composition",
+            "kind": "source",
+            "pids": [
+              2958,
+              3090,
+              3094,
+              3096
+            ],
+            "processCap": 12,
+            "rssCapBytes": 3221225472,
+            "remainingNewBytes": 134217728,
+            "state": "ACTUAL_ACCEPT"
+          }
+        ],
+        "unresolvedPids": [],
+        "workflows": 3,
+        "sources": 3,
+        "browsers": 0,
+        "targets": 0,
+        "distinctPids": [
+          1778,
+          2016,
+          2291,
+          2958,
+          3090,
+          3094,
+          3095,
+          3096
+        ],
+        "actualRSS": 2132426752,
+        "chargedPIDs": 36,
+        "chargedRSS": 9663676416,
+        "otherUpper": 2684354560,
+        "receiptFiles": [
+          "/Users/lhs/Desktop/mcr-evidence/backend-staffing-01a1a21d/owner-resource-receipts/01a19f83-2c2a-7fa0-a98d-1c4f5f65cb3c.json",
+          "/Users/lhs/Desktop/mcr-evidence/backend-staffing-01a1a21d/owner-resource-receipts/01a1a1fc-7f3d-7ff1-9416-e3435c8a6f08.json",
+          "/Users/lhs/Desktop/mcr-evidence/backend-staffing-01a1a21d/owner-resource-receipts/01a1a1fe-1ab7-79b0-adbc-d4c025701acb.json",
+          "/Users/lhs/Desktop/mcr-evidence/backend-staffing-01a1a21d/owner-resource-receipts/01a1a1fe-1eed-7d12-a247-879cd521e0ec.json",
+          "/Users/lhs/Desktop/mcr-evidence/backend-staffing-01a1a21d/owner-resource-receipts/01a1a205-3f89-78c3-aa67-719c4bb40b8d.json",
+          "/Users/lhs/Desktop/mcr-evidence/backend-staffing-01a1a21d/owner-resource-receipts/01a1a207-f012-7343-a24b-12b9c544973f.json",
+          "/Users/lhs/Desktop/mcr-evidence/backend-staffing-01a1a21d/owner-resource-receipts/01a1a20f-8d37-71c3-a429-8a55bb6d6c49.json",
+          "/Users/lhs/Desktop/mcr-evidence/backend-staffing-01a1a21d/owner-resource-receipts/01a1a213-61d6-7a20-a8e7-476649312f8c.json",
+          "/Users/lhs/Desktop/mcr-evidence/backend-staffing-01a1a21d/owner-resource-receipts/01a1a21a-a088-7c31-83e3-19de119ba873.json",
+          "/Users/lhs/Desktop/mcr-evidence/backend-staffing-01a1a21d/owner-resource-receipts/01a1a21e-ab80-7012-b9fa-cdb69eed097b.json",
+          "/Users/lhs/Desktop/mcr-evidence/backend-staffing-01a1a21d/owner-resource-receipts/01a1a230-6acc-7e82-9e4b-92506decc745.json",
+          "/Users/lhs/Desktop/mcr-evidence/backend-staffing-01a1a21d/owner-resource-receipts/01a1a231-0dc4-7b50-92bd-c0f0f56bd970.json",
+          "/Users/lhs/Desktop/mcr-evidence/backend-staffing-01a1a21d/owner-resource-receipts/01a1a232-21e2-75c2-8474-a5fa6ae895cd.json",
+          "/Users/lhs/Desktop/mcr-evidence/backend-staffing-01a1a21d/owner-resource-receipts/01a1a267-37a0-7723-a4e9-a3a6f5b27f52.json",
+          "/Users/lhs/Desktop/mcr-evidence/backend-staffing-01a1a21d/owner-resource-receipts/01a1a26e-1de2-7b41-a294-c9a79cfded9b.json",
+          "/Users/lhs/Desktop/mcr-evidence/backend-staffing-01a1a21d/owner-resource-receipts/01a1a533-50a8-7fb2-b3ed-96b941b96bbf.json",
+          "/Users/lhs/Desktop/mcr-evidence/backend-staffing-01a1a21d/owner-resource-receipts/01a1a534-4fcf-7291-abe3-a97ba2fcafcd.json",
+          "/Users/lhs/Desktop/mcr-evidence/backend-staffing-01a1a21d/owner-resource-receipts/01a1a5d9-332b-7822-a8f7-40c576fad94a.json",
+          "/Users/lhs/Desktop/mcr-evidence/backend-staffing-01a1a21d/owner-resource-receipts/01a1a5d9-332b-7822-a8f7-40fde6c81bb4.json",
+          "/Users/lhs/Desktop/mcr-evidence/backend-staffing-01a1a21d/owner-resource-receipts/01a1a5d9-332b-7822-a8f7-412e295fa211.json",
+          "/Users/lhs/Desktop/mcr-evidence/backend-staffing-01a1a21d/owner-resource-receipts/01a1a5d9-6950-7920-8c80-5214d4ce0eaf.json",
+          "/Users/lhs/Desktop/mcr-evidence/backend-staffing-01a1a21d/owner-resource-receipts/01a1a5d9-6954-7bd3-9b08-7109883187b5.json",
+          "/Users/lhs/Desktop/mcr-evidence/backend-staffing-01a1a21d/owner-resource-receipts/01a1a5d9-6955-7820-bcd4-8e0a21629aa2.json"
+        ],
+        "ordinary": [
+          {
+            "owner": "01a1a5d9-332b-7822-a8f7-412e295fa211",
+            "state": "FULL",
+            "verified": false,
+            "pids": [],
+            "remainingNewBytes": 0
+          },
+          {
+            "owner": "01a1a231-0dc4-7b50-92bd-c0f0f56bd970",
+            "state": "FULL",
+            "verified": false,
+            "pids": [],
+            "remainingNewBytes": 0
+          },
+          {
+            "owner": "01a1a21a-a088-7c31-83e3-19de119ba873",
+            "state": "FULL",
+            "verified": false,
+            "pids": [],
+            "remainingNewBytes": 0
+          },
+          {
+            "owner": "01a1a231-0dc4-7b50-92bd-c0f0f56bd970",
+            "state": "ACCEPTED",
+            "verified": false,
+            "pids": [
+              77904
+            ],
+            "remainingNewBytes": 134217728
+          },
+          {
+            "owner": "01a1a5d9-332b-7822-a8f7-412e295fa211",
+            "state": "FULL",
+            "verified": false,
+            "pids": [],
+            "remainingNewBytes": 0
+          }
+        ],
+        "processes": [
+          {
+            "pid": 1778,
+            "parent": 49590,
+            "group": 1778,
+            "rss": 22560768,
+            "birth": "Thu Nov 5 10:21:04 2026",
+            "command": "/Library/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python /Users/lhs/Desktop/mcr-worktrees/fe-ref-customize/frontend/src/app/__tests__/parade-ink-operations/finite-source.py /private/tmp/mcr-pi12-operations-source02-0120/control.json",
+            "executable": "/Library/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python"
+          },
+          {
+            "pid": 2016,
+            "parent": 1778,
+            "group": 1778,
+            "rss": 22478848,
+            "birth": "Thu Nov 5 10:21:04 2026",
+            "command": "/Library/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python /Users/lhs/Desktop/mcr-worktrees/fe-ref-customize/frontend/src/app/__tests__/parade-ink-operations/finite-source.py /private/tmp/mcr-pi12-operations-source02-0120/control.json secondary 1778",
+            "executable": "/Library/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python"
+          },
+          {
+            "pid": 2291,
+            "parent": 1778,
+            "group": 2291,
+            "rss": 2016772096,
+            "birth": "Thu Nov 5 10:21:08 2026",
+            "command": "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node /Users/lhs/Desktop/mcr-worktrees/fe-ref-customize/frontend/src/app/__tests__/parade-ink-operations/source-check.mjs",
+            "executable": "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node"
+          },
+          {
+            "pid": 2958,
+            "parent": 49590,
+            "group": 2958,
+            "rss": 38764544,
+            "birth": "Thu Nov 5 10:21:17 2026",
+            "command": "/Library/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python -B /Users/lhs/Desktop/mcr-worktrees/art-runtime/docs/mcr/evidence/service-policy-composition/qualify.py",
+            "executable": "/Library/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python"
+          },
+          {
+            "pid": 3090,
+            "parent": 2958,
+            "group": 2958,
+            "rss": 23347200,
+            "birth": "Thu Nov 5 10:21:18 2026",
+            "command": "/Library/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python /Users/lhs/Desktop/mcr-worktrees/art-runtime/docs/mcr/evidence/service-policy-composition/guardian.py /Users/lhs/Desktop/mcr-worktrees/art-runtime/docs/mcr/evidence/service-policy-composition/source03/guard-config.json",
+            "executable": "/Library/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python"
+          },
+          {
+            "pid": 3094,
+            "parent": 2958,
+            "group": 2958,
+            "rss": 4325376,
+            "birth": "Thu Nov 5 10:21:18 2026",
+            "command": "(ps)",
+            "executable": null
+          },
+          {
+            "pid": 3095,
+            "parent": 1778,
+            "group": 1778,
+            "rss": 1982464,
+            "birth": "Thu Nov 5 10:21:18 2026",
+            "command": "du -sk /Library/Frameworks/Python.framework",
+            "executable": null
+          },
+          {
+            "pid": 3096,
+            "parent": 3090,
+            "group": 2958,
+            "rss": 2195456,
+            "birth": "Thu Nov 5 10:21:18 2026",
+            "command": "ps -axo pid=,ppid=,pgid=,rss=,lstart=,args=",
+            "executable": null
+          }
+        ]
+      },
+      "ownedIdentities": [
+        {
+          "pid": 2958,
+          "parent": 49590,
+          "group": 2958,
+          "rss": 38764544,
+          "birth": "Thu Nov 5 10:21:17 2026",
+          "command": "/Library/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python -B /Users/lhs/Desktop/mcr-worktrees/art-runtime/docs/mcr/evidence/service-policy-composition/qualify.py",
+          "executable": "/Library/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python"
+        },
+        {
+          "pid": 3090,
+          "parent": 2958,
+          "group": 2958,
+          "rss": 23347200,
+          "birth": "Thu Nov 5 10:21:18 2026",
+          "command": "/Library/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python /Users/lhs/Desktop/mcr-worktrees/art-runtime/docs/mcr/evidence/service-policy-composition/guardian.py /Users/lhs/Desktop/mcr-worktrees/art-runtime/docs/mcr/evidence/service-policy-composition/source03/guard-config.json",
+          "executable": "/Library/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python"
+        },
+        {
+          "pid": 3094,
+          "parent": 2958,
+          "group": 2958,
+          "rss": 4325376,
+          "birth": "Thu Nov 5 10:21:18 2026",
+          "command": "(ps)",
+          "executable": null
+        },
+        {
+          "pid": 3096,
+          "parent": 3090,
+          "group": 2958,
+          "rss": 2195456,
+          "birth": "Thu Nov 5 10:21:18 2026",
+          "command": "ps -axo pid=,ppid=,pgid=,rss=,lstart=,args=",
+          "executable": null
+        }
+      ]
+    },
+    "last": {
+      "pids": [
+        2958,
+        3090,
+        3941,
+        5538
+      ],
+      "processes": 4,
+      "rss": 2077278208,
+      "temporary": 64,
+      "durable": 165120,
+      "new": 60319390,
+      "whole": 4769542352,
+      "free": 23631650816,
+      "global": {
+        "metadataAsOf": "2026-11-05T01:16:50.924501+00:00",
+        "members": [
+          {
+            "cohort": "PI12-OPERATIONS-SOURCE01-0111",
+            "kind": "source",
+            "pids": [],
+            "processCap": 12,
+            "rssCapBytes": 3221225472,
+            "remainingNewBytes": 134217728,
+            "state": "ACCEPTED"
+          },
+          {
+            "cohort": "PI12-REPORT-ERROR-NETWORK-SOURCE03-0116",
+            "kind": "source",
+            "pids": [],
+            "processCap": 12,
+            "rssCapBytes": 3221225472,
+            "remainingNewBytes": 134217728,
+            "state": "ACCEPTED_GUARDS_STARTING"
+          },
+          {
+            "cohort": "PI12-REPORT-ERROR-NETWORK-SOURCE04-0120",
+            "kind": "source",
+            "pids": [
+              5412
+            ],
+            "processCap": 12,
+            "rssCapBytes": 3221225472,
+            "remainingNewBytes": 134217728,
+            "state": "ACCEPTED_BOOTSTRAP"
+          },
+          {
+            "cohort": "PI12-OPERATIONS-SOURCE02-0120",
+            "kind": "source",
+            "pids": [],
+            "processCap": 12,
+            "rssCapBytes": 3221225472,
+            "remainingNewBytes": 118906880,
+            "state": "ACCEPTED"
+          },
+          {
+            "cohort": "FE38Composition",
+            "kind": "source",
+            "pids": [
+              2958,
+              3090,
+              3941,
+              5538
+            ],
+            "processCap": 12,
+            "rssCapBytes": 3221225472,
+            "remainingNewBytes": 134217728,
+            "state": "ACTUAL_ACCEPT"
+          }
+        ],
+        "unresolvedPids": [],
+        "workflows": 5,
+        "sources": 5,
+        "browsers": 0,
+        "targets": 0,
+        "distinctPids": [
+          2958,
+          3090,
+          3941,
+          5412,
+          5538
+        ],
+        "actualRSS": 2245918720,
+        "chargedPIDs": 60,
+        "chargedRSS": 16106127360,
+        "otherUpper": 2684354560,
+        "receiptFiles": [
+          "/Users/lhs/Desktop/mcr-evidence/backend-staffing-01a1a21d/owner-resource-receipts/01a19f83-2c2a-7fa0-a98d-1c4f5f65cb3c.json",
+          "/Users/lhs/Desktop/mcr-evidence/backend-staffing-01a1a21d/owner-resource-receipts/01a1a1fc-7f3d-7ff1-9416-e3435c8a6f08.json",
+          "/Users/lhs/Desktop/mcr-evidence/backend-staffing-01a1a21d/owner-resource-receipts/01a1a1fe-1ab7-79b0-adbc-d4c025701acb.json",
+          "/Users/lhs/Desktop/mcr-evidence/backend-staffing-01a1a21d/owner-resource-receipts/01a1a1fe-1eed-7d12-a247-879cd521e0ec.json",
+          "/Users/lhs/Desktop/mcr-evidence/backend-staffing-01a1a21d/owner-resource-receipts/01a1a205-3f89-78c3-aa67-719c4bb40b8d.json",
+          "/Users/lhs/Desktop/mcr-evidence/backend-staffing-01a1a21d/owner-resource-receipts/01a1a207-f012-7343-a24b-12b9c544973f.json",
+          "/Users/lhs/Desktop/mcr-evidence/backend-staffing-01a1a21d/owner-resource-receipts/01a1a20f-8d37-71c3-a429-8a55bb6d6c49.json",
+          "/Users/lhs/Desktop/mcr-evidence/backend-staffing-01a1a21d/owner-resource-receipts/01a1a213-61d6-7a20-a8e7-476649312f8c.json",
+          "/Users/lhs/Desktop/mcr-evidence/backend-staffing-01a1a21d/owner-resource-receipts/01a1a21a-a088-7c31-83e3-19de119ba873.json",
+          "/Users/lhs/Desktop/mcr-evidence/backend-staffing-01a1a21d/owner-resource-receipts/01a1a21e-ab80-7012-b9fa-cdb69eed097b.json",
+          "/Users/lhs/Desktop/mcr-evidence/backend-staffing-01a1a21d/owner-resource-receipts/01a1a230-6acc-7e82-9e4b-92506decc745.json",
+          "/Users/lhs/Desktop/mcr-evidence/backend-staffing-01a1a21d/owner-resource-receipts/01a1a231-0dc4-7b50-92bd-c0f0f56bd970.json",
+          "/Users/lhs/Desktop/mcr-evidence/backend-staffing-01a1a21d/owner-resource-receipts/01a1a232-21e2-75c2-8474-a5fa6ae895cd.json",
+          "/Users/lhs/Desktop/mcr-evidence/backend-staffing-01a1a21d/owner-resource-receipts/01a1a267-37a0-7723-a4e9-a3a6f5b27f52.json",
+          "/Users/lhs/Desktop/mcr-evidence/backend-staffing-01a1a21d/owner-resource-receipts/01a1a26e-1de2-7b41-a294-c9a79cfded9b.json",
+          "/Users/lhs/Desktop/mcr-evidence/backend-staffing-01a1a21d/owner-resource-receipts/01a1a533-50a8-7fb2-b3ed-96b941b96bbf.json",
+          "/Users/lhs/Desktop/mcr-evidence/backend-staffing-01a1a21d/owner-resource-receipts/01a1a534-4fcf-7291-abe3-a97ba2fcafcd.json",
+          "/Users/lhs/Desktop/mcr-evidence/backend-staffing-01a1a21d/owner-resource-receipts/01a1a5d9-332b-7822-a8f7-40c576fad94a.json",
+          "/Users/lhs/Desktop/mcr-evidence/backend-staffing-01a1a21d/owner-resource-receipts/01a1a5d9-332b-7822-a8f7-40fde6c81bb4.json",
+          "/Users/lhs/Desktop/mcr-evidence/backend-staffing-01a1a21d/owner-resource-receipts/01a1a5d9-332b-7822-a8f7-412e295fa211.json",
+          "/Users/lhs/Desktop/mcr-evidence/backend-staffing-01a1a21d/owner-resource-receipts/01a1a5d9-6950-7920-8c80-5214d4ce0eaf.json",
+          "/Users/lhs/Desktop/mcr-evidence/backend-staffing-01a1a21d/owner-resource-receipts/01a1a5d9-6954-7bd3-9b08-7109883187b5.json",
+          "/Users/lhs/Desktop/mcr-evidence/backend-staffing-01a1a21d/owner-resource-receipts/01a1a5d9-6955-7820-bcd4-8e0a21629aa2.json"
+        ],
+        "ordinary": [
+          {
+            "owner": "01a1a5d9-332b-7822-a8f7-412e295fa211",
+            "state": "FULL",
+            "verified": false,
+            "pids": [],
+            "remainingNewBytes": 0
+          },
+          {
+            "owner": "01a1a231-0dc4-7b50-92bd-c0f0f56bd970",
+            "state": "FULL",
+            "verified": false,
+            "pids": [],
+            "remainingNewBytes": 0
+          },
+          {
+            "owner": "01a1a21a-a088-7c31-83e3-19de119ba873",
+            "state": "FULL",
+            "verified": false,
+            "pids": [],
+            "remainingNewBytes": 0
+          },
+          {
+            "owner": "01a1a231-0dc4-7b50-92bd-c0f0f56bd970",
+            "state": "ACCEPTED",
+            "verified": false,
+            "pids": [
+              77904
+            ],
+            "remainingNewBytes": 134217728
+          },
+          {
+            "owner": "01a1a5d9-332b-7822-a8f7-412e295fa211",
+            "state": "FULL",
+            "verified": false,
+            "pids": [],
+            "remainingNewBytes": 0
+          }
+        ],
+        "processes": [
+          {
+            "pid": 2958,
+            "parent": 49590,
+            "group": 2958,
+            "rss": 47005696,
+            "birth": "Thu Nov 5 10:21:17 2026",
+            "command": "/Library/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python -B /Users/lhs/Desktop/mcr-worktrees/art-runtime/docs/mcr/evidence/service-policy-composition/qualify.py",
+            "executable": "/Library/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python"
+          },
+          {
+            "pid": 3090,
+            "parent": 2958,
+            "group": 2958,
+            "rss": 40943616,
+            "birth": "Thu Nov 5 10:21:18 2026",
+            "command": "/Library/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python /Users/lhs/Desktop/mcr-worktrees/art-runtime/docs/mcr/evidence/service-policy-composition/guardian.py /Users/lhs/Desktop/mcr-worktrees/art-runtime/docs/mcr/evidence/service-policy-composition/source03/guard-config.json",
+            "executable": "/Library/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python"
+          },
+          {
+            "pid": 3941,
+            "parent": 2958,
+            "group": 3941,
+            "rss": 1987133440,
+            "birth": "Thu Nov 5 10:21:24 2026",
+            "command": "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node --max-old-space-size=2048 src/app/operations-composition/__tests__/service-policy-integration/typecheck.mjs",
+            "executable": "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node"
+          },
+          {
+            "pid": 5412,
+            "parent": 49590,
+            "group": 5412,
+            "rss": 168640512,
+            "birth": "Thu Nov 5 10:21:33 2026",
+            "command": "/Library/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python -B /Users/lhs/Desktop/mcr-worktrees/fe-ref-map/docs/mcr/evidence/parade-ink-report-error-network/guardian.py /Users/lhs/Desktop/mcr-worktrees/fe-ref-map/docs/mcr/evidence/parade-ink-report-error-network/source04-offer.private.json",
+            "executable": "/Library/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python"
+          },
+          {
+            "pid": 5538,
+            "parent": 3090,
+            "group": 2958,
+            "rss": 2195456,
+            "birth": "Thu Nov 5 10:21:34 2026",
+            "command": "ps -axo pid=,ppid=,pgid=,rss=,lstart=,args=",
+            "executable": null
+          }
+        ]
+      },
+      "ownedIdentities": [
+        {
+          "pid": 2958,
+          "parent": 49590,
+          "group": 2958,
+          "rss": 47005696,
+          "birth": "Thu Nov 5 10:21:17 2026",
+          "command": "/Library/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python -B /Users/lhs/Desktop/mcr-worktrees/art-runtime/docs/mcr/evidence/service-policy-composition/qualify.py",
+          "executable": "/Library/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python"
+        },
+        {
+          "pid": 3090,
+          "parent": 2958,
+          "group": 2958,
+          "rss": 40943616,
+          "birth": "Thu Nov 5 10:21:18 2026",
+          "command": "/Library/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python /Users/lhs/Desktop/mcr-worktrees/art-runtime/docs/mcr/evidence/service-policy-composition/guardian.py /Users/lhs/Desktop/mcr-worktrees/art-runtime/docs/mcr/evidence/service-policy-composition/source03/guard-config.json",
+          "executable": "/Library/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python"
+        },
+        {
+          "pid": 3941,
+          "parent": 2958,
+          "group": 3941,
+          "rss": 1987133440,
+          "birth": "Thu Nov 5 10:21:24 2026",
+          "command": "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node --max-old-space-size=2048 src/app/operations-composition/__tests__/service-policy-integration/typecheck.mjs",
+          "executable": "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node"
+        },
+        {
+          "pid": 5538,
+          "parent": 3090,
+          "group": 2958,
+          "rss": 2195456,
+          "birth": "Thu Nov 5 10:21:34 2026",
+          "command": "ps -axo pid=,ppid=,pgid=,rss=,lstart=,args=",
+          "executable": null
+        }
+      ]
+    },
+    "minimumFree": 23615483904,
+    "cleanupErrors": []
+  },
+  "ownedPids": [
+    3090,
+    3286,
+    3288,
+    3292,
+    3701,
+    3703,
+    3705,
+    3706,
+    3794,
+    3802,
+    3804,
+    3807,
+    3808,
+    3941,
+    3944,
+    3948,
+    4005,
+    4052,
+    4116,
+    5036,
+    5119,
+    5183,
+    5322,
+    5628
+  ],
+  "aliveOwnedPids": [],
+  "privateTempAbsent": true,
+  "dependencyLinkAbsent": true,
+  "endedUTC": "2026-11-05T01:21:36.256519+00:00"
+}

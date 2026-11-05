@@ -1,0 +1,26 @@
+{
+  "path": "/private/tmp/mcr-publisher-412e-venue-plan-preflight.py",
+  "sha256": "e934c65738a0ce27c6cfe656e0092d60612a88448ff3f9f415a1860792d6264a",
+  "factualRole": "Entire program read: Git-only read preflight, JSON invariants, capacity and owner metadata; selected helpers loaded by AST from previously read pinned capacity-composition-delivery.py. No application/test/compiler/browser child. Requires exact actual owner receipt/PID/birth/script match; no general publisher exemption.",
+  "helperSource": {
+    "path": "/private/tmp/mcr-publisher-412e-capacity-composition-delivery.py",
+    "sha256": "98523ce9d454f2fdfdc4080ca9fa11e6b724a9343217a8c2f03c44b16d854456"
+  },
+  "source04FullAtEpoch": 1793841977.8545332,
+  "source04Retained": [
+    "10ownedcontrolgroupsPASS",
+    "16currentintegrationcasesPASS",
+    "scopedlintPASS"
+  ],
+  "source05Required": [
+    "minimalownedregression",
+    "fullfrontendnonincrementaltypes",
+    "3MJSsyntax",
+    "2PythonASTsyntax"
+  ],
+  "source05NotReplayed": [
+    "unchanged16cases",
+    "unchangedscopedlint"
+  ],
+  "qualification": "SOURCE04 failed closed when this new factual ordinary program had not yet been read/pinned; all resources released. Types interrupted/no result, syntax NOT_RUN."
+}

@@ -1,0 +1,92 @@
+[96msrc/app/feed-entry/__tests__/vite.config.ts[0m:[93m1[0m:[93m43[0m - [91merror[0m[90m TS2307: [0mCannot find module 'vite' or its corresponding type declarations.
+
+[7m1[0m import { defineConfig, mergeConfig } from 'vite'
+[7m [0m [91m                                          ~~~~~~[0m
+[96msrc/app/feed-entry/__tests__/vite.config.ts[0m:[93m21[0m:[93m8[0m - [91merror[0m[90m TS7006: [0mParameter 'id' implicitly has an 'any' type.
+
+[7m21[0m   load(id) {
+[7m  [0m [91m       ~~[0m
+[96msrc/app/operations-composition/__tests__/service-policy-integration/composition.test.tsx[0m:[93m81[0m:[93m77[0m - [91merror[0m[90m TS2769: [0mNo overload matches this call.
+  Overload 1 of 2, '(role: ByRoleMatcher, options?: ByRoleOptions | undefined, waitForElementOptions?: waitForOptions | undefined): Promise<HTMLElement>', gave the following error.
+    Object literal may only specify known properties, and 'exact' does not exist in type 'ByRoleOptions'.
+  Overload 2 of 2, '(role: ByRoleMatcher, options?: ByRoleOptions | undefined, waitForElementOptions?: waitForOptions | undefined): Promise<HTMLElement>', gave the following error.
+    Object literal may only specify known properties, and 'exact' does not exist in type 'ByRoleOptions'.
+
+[7m81[0m   const panel = await screen.findByRole('region', { name: 'Service policy', exact: true })
+[7m  [0m [91m                                                                            ~~~~~[0m
+
+[96msrc/app/operations-composition/__tests__/service-policy-integration/composition.test.tsx[0m:[93m89[0m:[93m63[0m - [91merror[0m[90m TS2769: [0mNo overload matches this call.
+  Overload 1 of 2, '(role: ByRoleMatcher, options?: ByRoleOptions | undefined): HTMLElement', gave the following error.
+    Object literal may only specify known properties, and 'exact' does not exist in type 'ByRoleOptions'.
+  Overload 2 of 2, '(role: ByRoleMatcher, options?: ByRoleOptions | undefined): HTMLElement', gave the following error.
+    Object literal may only specify known properties, and 'exact' does not exist in type 'ByRoleOptions'.
+
+[7m89[0m   fireEvent.click(screen.getByRole('link', { name: 'Reports', exact: true }))
+[7m  [0m [91m                                                              ~~~~~[0m
+
+[96msrc/app/operations-composition/__tests__/service-policy-integration/composition.test.tsx[0m:[93m91[0m:[93m66[0m - [91merror[0m[90m TS2769: [0mNo overload matches this call.
+  Overload 1 of 2, '(role: ByRoleMatcher, options?: ByRoleOptions | undefined): HTMLElement | null', gave the following error.
+    Object literal may only specify known properties, and 'exact' does not exist in type 'ByRoleOptions'.
+  Overload 2 of 2, '(role: ByRoleMatcher, options?: ByRoleOptions | undefined): HTMLElement | null', gave the following error.
+    Object literal may only specify known properties, and 'exact' does not exist in type 'ByRoleOptions'.
+
+[7m91[0m   expect(screen.queryByRole('heading', { name: 'Service policy', exact: true })).toBeNull()
+[7m  [0m [91m                                                                 ~~~~~[0m
+
+[96msrc/app/operations-composition/__tests__/service-policy-integration/composition.test.tsx[0m:[93m93[0m:[93m61[0m - [91merror[0m[90m TS2769: [0mNo overload matches this call.
+  Overload 1 of 2, '(role: ByRoleMatcher, options?: ByRoleOptions | undefined): HTMLElement', gave the following error.
+    Object literal may only specify known properties, and 'exact' does not exist in type 'ByRoleOptions'.
+  Overload 2 of 2, '(role: ByRoleMatcher, options?: ByRoleOptions | undefined): HTMLElement', gave the following error.
+    Object literal may only specify known properties, and 'exact' does not exist in type 'ByRoleOptions'.
+
+[7m93[0m   fireEvent.click(screen.getByRole('link', { name: 'Event', exact: true }))
+[7m  [0m [91m                                                            ~~~~~[0m
+
+[96msrc/app/operations-composition/__tests__/service-policy-integration/composition.test.tsx[0m:[93m104[0m:[93m66[0m - [91merror[0m[90m TS2769: [0mNo overload matches this call.
+  Overload 1 of 2, '(role: ByRoleMatcher, options?: ByRoleOptions | undefined): HTMLElement | null', gave the following error.
+    Object literal may only specify known properties, and 'exact' does not exist in type 'ByRoleOptions'.
+  Overload 2 of 2, '(role: ByRoleMatcher, options?: ByRoleOptions | undefined): HTMLElement | null', gave the following error.
+    Object literal may only specify known properties, and 'exact' does not exist in type 'ByRoleOptions'.
+
+[7m104[0m   expect(screen.queryByRole('heading', { name: 'Service policy', exact: true })).toBeNull()
+[7m   [0m [91m                                                                 ~~~~~[0m
+
+[96msrc/app/operations-composition/__tests__/service-policy-integration/composition.test.tsx[0m:[93m109[0m:[93m62[0m - [91merror[0m[90m TS2769: [0mNo overload matches this call.
+  Overload 1 of 2, '(role: ByRoleMatcher, options?: ByRoleOptions | undefined, waitForElementOptions?: waitForOptions | undefined): Promise<HTMLElement>', gave the following error.
+    Object literal may only specify known properties, and 'exact' does not exist in type 'ByRoleOptions'.
+  Overload 2 of 2, '(role: ByRoleMatcher, options?: ByRoleOptions | undefined, waitForElementOptions?: waitForOptions | undefined): Promise<HTMLElement>', gave the following error.
+    Object literal may only specify known properties, and 'exact' does not exist in type 'ByRoleOptions'.
+
+[7m109[0m   await screen.findByRole('heading', { name: 'Control room', exact: true })
+[7m   [0m [91m                                                             ~~~~~[0m
+
+[96msrc/app/operations-composition/__tests__/service-policy-integration/composition.test.tsx[0m:[93m111[0m:[93m66[0m - [91merror[0m[90m TS2769: [0mNo overload matches this call.
+  Overload 1 of 2, '(role: ByRoleMatcher, options?: ByRoleOptions | undefined): HTMLElement | null', gave the following error.
+    Object literal may only specify known properties, and 'exact' does not exist in type 'ByRoleOptions'.
+  Overload 2 of 2, '(role: ByRoleMatcher, options?: ByRoleOptions | undefined): HTMLElement | null', gave the following error.
+    Object literal may only specify known properties, and 'exact' does not exist in type 'ByRoleOptions'.
+
+[7m111[0m   expect(screen.queryByRole('heading', { name: 'Service policy', exact: true })).toBeNull()
+[7m   [0m [91m                                                                 ~~~~~[0m
+
+[96msrc/features/settings/runtime-adoption/__tests__/vitest.config.ts[0m:[93m2[0m:[93m19[0m - [91merror[0m[90m TS2307: [0mCannot find module '@vitejs/plugin-react' or its corresponding type declarations.
+
+[7m2[0m import react from '@vitejs/plugin-react'
+[7m [0m [91m                  ~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/features/theme/__tests__/original-fe06/vitest.config.ts[0m:[93m2[0m:[93m19[0m - [91merror[0m[90m TS2307: [0mCannot find module '@vitejs/plugin-react' or its corresponding type declarations.
+
+[7m2[0m import react from '@vitejs/plugin-react'
+[7m [0m [91m                  ~~~~~~~~~~~~~~~~~~~~~~[0m
+[96mvite.config.ts[0m:[93m1[0m:[93m30[0m - [91merror[0m[90m TS2307: [0mCannot find module 'vite' or its corresponding type declarations.
+
+[7m1[0m import { defineConfig } from 'vite';
+[7m [0m [91m                             ~~~~~~[0m
+[96mvite.config.ts[0m:[93m2[0m:[93m19[0m - [91merror[0m[90m TS2307: [0mCannot find module '@vitejs/plugin-react' or its corresponding type declarations.
+
+[7m2[0m import react from '@vitejs/plugin-react';
+[7m [0m [91m                  ~~~~~~~~~~~~~~~~~~~~~~[0m
+[96mvite.config.ts[0m:[93m3[0m:[93m25[0m - [91merror[0m[90m TS2307: [0mCannot find module '@tailwindcss/vite' or its corresponding type declarations.
+
+[7m3[0m import tailwindcss from '@tailwindcss/vite';
+[7m [0m [91m                        ~~~~~~~~~~~~~~~~~~~[0m
+{"roots":1113,"transitiveFiles":1713,"diagnostics":14}

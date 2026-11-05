@@ -1,0 +1,65 @@
+[
+  {
+    "label": "receipt-regression",
+    "argv": [
+      "/Library/Frameworks/Python.framework/Versions/3.14/bin/python3",
+      "-B",
+      "/Users/lhs/Desktop/mcr-worktrees/art-runtime/docs/mcr/evidence/service-policy-composition/receipt-regression.py"
+    ],
+    "pid": 40648,
+    "exit": 0
+  },
+  {
+    "label": "types",
+    "argv": [
+      "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node",
+      "--max-old-space-size=2048",
+      "src/app/operations-composition/__tests__/service-policy-integration/typecheck.mjs"
+    ],
+    "pid": 40683,
+    "exit": 0
+  },
+  {
+    "label": "native-syntax",
+    "argv": [
+      "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node",
+      "--check",
+      "src/app/operations-composition/__tests__/service-policy-integration/native.mjs"
+    ],
+    "pid": 41405,
+    "exit": 0
+  },
+  {
+    "label": "vitest.config-syntax",
+    "argv": [
+      "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node",
+      "--check",
+      "src/app/operations-composition/__tests__/service-policy-integration/vitest.config.mjs"
+    ],
+    "pid": 41418,
+    "exit": 0
+  },
+  {
+    "label": "typecheck-syntax",
+    "argv": [
+      "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node",
+      "--check",
+      "src/app/operations-composition/__tests__/service-policy-integration/typecheck.mjs"
+    ],
+    "pid": 41590,
+    "exit": 0
+  },
+  {
+    "label": "control-syntax",
+    "argv": [
+      "/Library/Frameworks/Python.framework/Versions/3.14/bin/python3",
+      "-B",
+      "-c",
+      "import ast, pathlib; [ast.parse(pathlib.Path(p).read_text(), filename=p) for p in __import__(\"sys\").argv[1:]]",
+      "/Users/lhs/Desktop/mcr-worktrees/art-runtime/docs/mcr/evidence/service-policy-composition/qualify.py",
+      "/Users/lhs/Desktop/mcr-worktrees/art-runtime/docs/mcr/evidence/service-policy-composition/guardian.py"
+    ],
+    "pid": 41606,
+    "exit": 0
+  }
+]

@@ -1,0 +1,8 @@
+{
+  "change": "Rename raw FULL path references only; no structured closure claim invented",
+  "valuesPreserved": 10,
+  "beforeSha256": "087042ad2756039f6c2b8dc676e219d411cb624e81aac1855a293e47b4360190",
+  "afterSha256": "24a82be48727062365bc063fad48a0e50a7df667fdf9a31b40ae980c0cc1fb29",
+  "allOtherFieldsEqual": true,
+  "oldRawFullArtifactsUnchanged": true
+}

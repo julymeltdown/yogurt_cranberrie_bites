@@ -1,0 +1,36 @@
+{
+  "state": "ACTUAL_ACCEPT",
+  "offer": {
+    "id": "FE38-COMPOSITION-SOURCE02-0113",
+    "source": "82b55c8625d852b7a7cdafa1981543c2f057b41c",
+    "processes": 12,
+    "rssBytes": 3221225472,
+    "wholeBytes": 34359738368,
+    "newBytes": 134217728,
+    "temporaryBytes": 100663296,
+    "durableBytes": 25165824,
+    "admissionFreeBytes": 11811160064,
+    "afterAllFreeBytes": 9663676416,
+    "continuousFreeBytes": 8589934592,
+    "otherUpperBytes": 2684354560,
+    "minimumCarryBytes": 4709222962,
+    "spentTemporaryBytes": 19135232,
+    "ordinaryPrograms": {
+      "/private/tmp/mcr-publisher-412e-capacity-composition-delivery.py": "98523ce9d454f2fdfdc4080ca9fa11e6b724a9343217a8c2f03c44b16d854456"
+    },
+    "acceptedUTC": "2026-11-05T01:17:42.255408+00:00",
+    "workDeadline": "2026-11-05T01:20:42.255408+00:00",
+    "deadline": "2026-11-05T01:21:42.255408+00:00"
+  },
+  "controller": {
+    "pid": 80928,
+    "parent": 49590,
+    "group": 80928,
+    "rss": 26640384,
+    "birth": "Thu Nov 5 10:17:42 2026",
+    "command": "/Library/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python -B /Users/lhs/Desktop/mcr-worktrees/art-runtime/docs/mcr/evidence/service-policy-composition/qualify.py",
+    "executable": "/Library/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python"
+  },
+  "phase": "BOOTSTRAP_BEFORE_HEAVY_CENSUS",
+  "source": "82b55c8625d852b7a7cdafa1981543c2f057b41c"
+}

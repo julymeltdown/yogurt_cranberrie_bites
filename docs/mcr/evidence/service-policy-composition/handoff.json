@@ -1,0 +1,555 @@
+{
+  "ownerThreadId": "01a1a1fe-1eed-7d12-a247-879cd521e0ec",
+  "task": "FE38 DefaultAdmin ServicePolicy composition",
+  "base": "5ac4bc6e69ee47e6782c2d0b25c72c5544a540d6",
+  "qualification": "SCOPED_SOURCE_PASS; browser/canonicalcombined/live remainNOT_RUN",
+  "scope": "Only exact servicePolicy owner/panel child hunks; seven new service-policy-integration files; owned doc/evidence. No backend/contracts/manifests/locks/Auth/root/router/presentation takeover.",
+  "publisher": "01a1a5d9-332b-7822-a8f7-412e295fa211",
+  "sharedPatch": "docs/mcr/evidence/service-policy-composition/shared-service-policy.patch",
+  "preserveCanonical": [
+    "FE37 Member/Content fields and dispose-before-notify",
+    "Reports and Moderator/settings-failure independence",
+    "83 nonready Administration-access section",
+    "53d clock behavior",
+    "all other current canonical paths"
+  ],
+  "leafAlreadyPublished": "15b492f8e914c2dcc5fa41f5df70f11d375beee6",
+  "memberContentCanonical": "cf7bb13735aeb20e0b796b2071726f048a211bd0",
+  "entries": [
+    {
+      "path": "frontend/src/app/operations-composition/owner.ts",
+      "mode": "100644",
+      "bytes": 11313,
+      "sha256": "3f3406c80d397a40fdf6d12a157705baa4392734194f851be75ef513c3cc5310",
+      "kind": "EXACT_ADDITIVE_SHARED_HUNKS",
+      "preimage": {
+        "revision": "5ac4bc6e69ee47e6782c2d0b25c72c5544a540d6",
+        "bytes": 10497,
+        "sha256": "0cca44c74fbd5a8d3622b54cb33898659d9a690424bb15ce70a5d8c21b0f1e1c"
+      }
+    },
+    {
+      "path": "frontend/src/app/operations-composition/panel.tsx",
+      "mode": "100644",
+      "bytes": 5266,
+      "sha256": "e4a97a1ecfea772f0da03f9302a6bf4ffb946b3a25f74bc72b084832dc446407",
+      "kind": "EXACT_ADDITIVE_SHARED_HUNKS",
+      "preimage": {
+        "revision": "5ac4bc6e69ee47e6782c2d0b25c72c5544a540d6",
+        "bytes": 5037,
+        "sha256": "829c4b95046f48b549a37d22a04799c12edcb83528c1989c1423b1d28fa8952e"
+      }
+    },
+    {
+      "path": "frontend/src/app/operations-composition/__tests__/service-policy-integration/composition.test.tsx",
+      "mode": "100644",
+      "bytes": 8230,
+      "sha256": "111f6fa43dae2d31b7eef31e0ebbf9f1e90aa8f47ef02acb1b37cac088330d71",
+      "kind": "NEW"
+    },
+    {
+      "path": "frontend/src/app/operations-composition/__tests__/service-policy-integration/fixture.ts",
+      "mode": "100644",
+      "bytes": 3161,
+      "sha256": "c64240893318bc77afe1f7e153e6d364035abb7b5b8a7520606a69d93072934a",
+      "kind": "NEW"
+    },
+    {
+      "path": "frontend/src/app/operations-composition/__tests__/service-policy-integration/native.mjs",
+      "mode": "100644",
+      "bytes": 8380,
+      "sha256": "074b42b7254a2a1e7f716474fbfc280d95efe10c3743a2a05ab0dfd2b452b19a",
+      "kind": "NEW"
+    },
+    {
+      "path": "frontend/src/app/operations-composition/__tests__/service-policy-integration/preview.html",
+      "mode": "100644",
+      "bytes": 346,
+      "sha256": "553398e96afeab0d6cf369407d104478cf4707ae519c9542137c95d7f47bbc6a",
+      "kind": "NEW"
+    },
+    {
+      "path": "frontend/src/app/operations-composition/__tests__/service-policy-integration/preview.tsx",
+      "mode": "100644",
+      "bytes": 2644,
+      "sha256": "1037870cef5fdeac90a127646e860d32cea270b581832fd8339796f0c2224877",
+      "kind": "NEW"
+    },
+    {
+      "path": "frontend/src/app/operations-composition/__tests__/service-policy-integration/typecheck.mjs",
+      "mode": "100644",
+      "bytes": 2040,
+      "sha256": "ed0e37f23d1c51adc71b01a8afcaf4edfd9ae5e2c5dcd8698fc7c1c9ca3dbee8",
+      "kind": "NEW"
+    },
+    {
+      "path": "frontend/src/app/operations-composition/__tests__/service-policy-integration/vitest.config.mjs",
+      "mode": "100644",
+      "bytes": 438,
+      "sha256": "e3c97c3b4e9f8ae154f540b5449ffbf762ea8574abdf43197281cc48d4c95058",
+      "kind": "NEW"
+    },
+    {
+      "path": "docs/mcr/frontend/service-policy-composition.md",
+      "mode": "100644",
+      "bytes": 19387,
+      "sha256": "1a2fe6d6365793812972685551a182ef5f83c2a3afb8380602c6c6dd94863c42",
+      "kind": "NEW"
+    },
+    {
+      "path": "docs/mcr/evidence/service-policy-composition/composition-source01-acceptance.json",
+      "mode": "100644",
+      "bytes": 3898,
+      "sha256": "962d84ac9b61f06ca0c47f383302173469d56db9a277b88271c6fd13a5e6463c",
+      "kind": "NEW"
+    },
+    {
+      "path": "docs/mcr/evidence/service-policy-composition/composition-source01-inputs.json",
+      "mode": "100644",
+      "bytes": 3864,
+      "sha256": "80ee28b006ad8f3b74c16fa11035c23917d0361289045ace4bd1220ef9271c33",
+      "kind": "NEW"
+    },
+    {
+      "path": "docs/mcr/evidence/service-policy-composition/guardian.py",
+      "mode": "100644",
+      "bytes": 17029,
+      "sha256": "56ec882b5227ab7819dde01b98aa2b40fb492691f470311fed733cbacf8044b2",
+      "kind": "NEW"
+    },
+    {
+      "path": "docs/mcr/evidence/service-policy-composition/qualify.py",
+      "mode": "100644",
+      "bytes": 17162,
+      "sha256": "c3b61068ffd550667e6c31835e4ee03e8d93250feb654bbb7714121fd95c99fc",
+      "kind": "NEW"
+    },
+    {
+      "path": "docs/mcr/evidence/service-policy-composition/receipt-regression.py",
+      "mode": "100644",
+      "bytes": 5933,
+      "sha256": "779d5404976b0815d9b798a835c06d75adbc120e3fc5749e9fd9d8bc2357158d",
+      "kind": "NEW"
+    },
+    {
+      "path": "docs/mcr/evidence/service-policy-composition/shared-service-policy.patch",
+      "mode": "100644",
+      "bytes": 8114,
+      "sha256": "bbaa0d83d92b69312fc8633010edb061452e24bc111ccf3e13db62ee83073f0c",
+      "kind": "NEW"
+    },
+    {
+      "path": "docs/mcr/evidence/service-policy-composition/source-inputs.json",
+      "mode": "100644",
+      "bytes": 3705,
+      "sha256": "4d1c1e43fa96bd513c924d9ed429c2d7cdafffd86f49dd87c812d6a6dd691aa5",
+      "kind": "NEW"
+    },
+    {
+      "path": "docs/mcr/evidence/service-policy-composition/source-qualification.json",
+      "mode": "100644",
+      "bytes": 2997,
+      "sha256": "2f5a7d7ea99f436beaa9ab6af07404bf70da85ba5d8b7b435b6cf8d6793dcfb2",
+      "kind": "NEW"
+    },
+    {
+      "path": "docs/mcr/evidence/service-policy-composition/source01-full-release.json",
+      "mode": "100644",
+      "bytes": 7954,
+      "sha256": "4873f03867f68db56910702e4201c2272f7724559636ea939b942c0caf71d0df",
+      "kind": "NEW"
+    },
+    {
+      "path": "docs/mcr/evidence/service-policy-composition/source01/guard-config.json",
+      "mode": "100644",
+      "bytes": 2451,
+      "sha256": "d58bf61c82062a3fbab659e3d1207df541cd3427e5e661f24964c37cc63010e0",
+      "kind": "NEW"
+    },
+    {
+      "path": "docs/mcr/evidence/service-policy-composition/source01/guard.ready",
+      "mode": "100644",
+      "bytes": 1940,
+      "sha256": "f9d35c39fc46b421f813c4047926ae19445ea22be7af5dda3f0b6374bb69d5ee",
+      "kind": "NEW"
+    },
+    {
+      "path": "docs/mcr/evidence/service-policy-composition/source01/guard.stop",
+      "mode": "100644",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "kind": "NEW"
+    },
+    {
+      "path": "docs/mcr/evidence/service-policy-composition/source01/guardian.json",
+      "mode": "100644",
+      "bytes": 6051,
+      "sha256": "44329c30808ec1a040e9833fad626b807564b311c76bab61d45427ef24a7d994",
+      "kind": "NEW"
+    },
+    {
+      "path": "docs/mcr/evidence/service-policy-composition/source01/tests.log",
+      "mode": "100644",
+      "bytes": 69,
+      "sha256": "529123321f8843069fa1c26a1bdc15d3860545927020e99f5ac027bfc1690e57",
+      "kind": "NEW"
+    },
+    {
+      "path": "docs/mcr/evidence/service-policy-composition/source02-preparation.json",
+      "mode": "100644",
+      "bytes": 1610,
+      "sha256": "6fa22fee17d3778c4090f72ce094976f5e84d814053ca0ab77fc3f2654abf662",
+      "kind": "NEW"
+    },
+    {
+      "path": "docs/mcr/evidence/service-policy-composition/source02/ACCEPT.json",
+      "mode": "100644",
+      "bytes": 1454,
+      "sha256": "f85022e7d4f671a8d8793a2d34276887ec0d44b0d30bddaaf85274029882f082",
+      "kind": "NEW"
+    },
+    {
+      "path": "docs/mcr/evidence/service-policy-composition/source02/FULL.json",
+      "mode": "100644",
+      "bytes": 1214,
+      "sha256": "285d55df1db43960e709e99665797aaa495c6e612df296fdff4580eef3cd3e12",
+      "kind": "NEW"
+    },
+    {
+      "path": "docs/mcr/evidence/service-policy-composition/source02/guard-config.json",
+      "mode": "100644",
+      "bytes": 3313,
+      "sha256": "25726fc2eafafc4b636d1a35e0420bec3badec8e24a5effeb863485a4e0ac15f",
+      "kind": "NEW"
+    },
+    {
+      "path": "docs/mcr/evidence/service-policy-composition/source02/guard.stop",
+      "mode": "100644",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "kind": "NEW"
+    },
+    {
+      "path": "docs/mcr/evidence/service-policy-composition/source02/guardian.json",
+      "mode": "100644",
+      "bytes": 106,
+      "sha256": "b6eb1aca61b3d68095573056072c5e4df67137f254049e9f7fe5f6ddd4cb33b8",
+      "kind": "NEW"
+    },
+    {
+      "path": "docs/mcr/evidence/service-policy-composition/source02/supervisor.json",
+      "mode": "100644",
+      "bytes": 2632,
+      "sha256": "c545a2c21800ffe90dc488bcb36a516b38b7d62a07e4477d7875a158fc27f9be",
+      "kind": "NEW"
+    },
+    {
+      "path": "docs/mcr/evidence/service-policy-composition/source03/ACCEPT.json",
+      "mode": "100644",
+      "bytes": 1973,
+      "sha256": "34f9b7bdfd3ee64f6b3c222d58eea2eb7e4ec9b56b3083e0b8e54c65e2ecb70b",
+      "kind": "NEW"
+    },
+    {
+      "path": "docs/mcr/evidence/service-policy-composition/source03/FULL.json",
+      "mode": "100644",
+      "bytes": 1965,
+      "sha256": "12c4d6b583181aa2e4897db48747aa085d202156659009f3daa8ec115ca0a055",
+      "kind": "NEW"
+    },
+    {
+      "path": "docs/mcr/evidence/service-policy-composition/source03/commands-progress.json",
+      "mode": "100644",
+      "bytes": 1178,
+      "sha256": "c436ee4129f34f2b82f766e8fb20506b2d82c8f7671ca796434f2af898bd6a8b",
+      "kind": "NEW"
+    },
+    {
+      "path": "docs/mcr/evidence/service-policy-composition/source03/guard-config.json",
+      "mode": "100644",
+      "bytes": 3832,
+      "sha256": "232f0b4ac73b5afbbd86c537d8beb432383f4f22c467a64ecc40ccc06f384ed3",
+      "kind": "NEW"
+    },
+    {
+      "path": "docs/mcr/evidence/service-policy-composition/source03/guard.ready",
+      "mode": "100644",
+      "bytes": 10456,
+      "sha256": "183207f3cbf243a9f3e4ae7371cf89b64a6c356567d914d6037ee9e0c7cc16cd",
+      "kind": "NEW"
+    },
+    {
+      "path": "docs/mcr/evidence/service-policy-composition/source03/guard.stop",
+      "mode": "100644",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "kind": "NEW"
+    },
+    {
+      "path": "docs/mcr/evidence/service-policy-composition/source03/guardian.json",
+      "mode": "100644",
+      "bytes": 21874,
+      "sha256": "bfe23a22a1575335114d75e2e0deacd4be6cb35c15a5075d19a1e114b7bee4b3",
+      "kind": "NEW"
+    },
+    {
+      "path": "docs/mcr/evidence/service-policy-composition/source03/lint.log",
+      "mode": "100644",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "kind": "NEW"
+    },
+    {
+      "path": "docs/mcr/evidence/service-policy-composition/source03/primary-initial.json",
+      "mode": "100644",
+      "bytes": 9506,
+      "sha256": "0e1440f424536c7fb1a30404e2873e0699b2cf9f035762e40fe215efa68f0f1f",
+      "kind": "NEW"
+    },
+    {
+      "path": "docs/mcr/evidence/service-policy-composition/source03/receipt-regression.log",
+      "mode": "100644",
+      "bytes": 76,
+      "sha256": "bdd1f915310fde803ccb44c6a55b26cb6195a4e8bf477429c987e7569983b0f6",
+      "kind": "NEW"
+    },
+    {
+      "path": "docs/mcr/evidence/service-policy-composition/source03/supervisor.json",
+      "mode": "100644",
+      "bytes": 60033,
+      "sha256": "72cde1c415565c32f376cb61394ce3bb370b892b4ad9d9fa01599514c82ef840",
+      "kind": "NEW"
+    },
+    {
+      "path": "docs/mcr/evidence/service-policy-composition/source03/tests.log",
+      "mode": "100644",
+      "bytes": 274,
+      "sha256": "9a39fada5d21c37fe13ebfe025bec5fea1517f22453940c475da0d14c2871792",
+      "kind": "NEW"
+    },
+    {
+      "path": "docs/mcr/evidence/service-policy-composition/source03/types.log",
+      "mode": "100644",
+      "bytes": 8112,
+      "sha256": "bd428327f67354560452b975dc7f2b1336b53da308856e81400cd92dc0d5a40f",
+      "kind": "NEW"
+    },
+    {
+      "path": "docs/mcr/evidence/service-policy-composition/source04/ACCEPT.json",
+      "mode": "100644",
+      "bytes": 2878,
+      "sha256": "4ea0ab0604d15853f1b096863a92a06b34f654db9344066034b21d78ee3b432e",
+      "kind": "NEW"
+    },
+    {
+      "path": "docs/mcr/evidence/service-policy-composition/source04/FULL.json",
+      "mode": "100644",
+      "bytes": 2868,
+      "sha256": "bc9ac8f2894dfdf0f40f50b07bbd3d1ad794c66c8f553801f88e7356fd0d3f43",
+      "kind": "NEW"
+    },
+    {
+      "path": "docs/mcr/evidence/service-policy-composition/source04/commands-progress.json",
+      "mode": "100644",
+      "bytes": 1181,
+      "sha256": "1d8b8e8b689c5335a71330e3632a058a6c5d4c8448c33abce774d21be17c1f1c",
+      "kind": "NEW"
+    },
+    {
+      "path": "docs/mcr/evidence/service-policy-composition/source04/guard-config.json",
+      "mode": "100644",
+      "bytes": 5490,
+      "sha256": "8fd76631f2e7903ec4573e962c2cfeea5f88a1a54ee86a77f61378e1aeac1177",
+      "kind": "NEW"
+    },
+    {
+      "path": "docs/mcr/evidence/service-policy-composition/source04/guard.ready",
+      "mode": "100644",
+      "bytes": 8450,
+      "sha256": "47957aa995d5b77345ece16252fce73d22e77e9fb2c39851c6f54488f142ec3f",
+      "kind": "NEW"
+    },
+    {
+      "path": "docs/mcr/evidence/service-policy-composition/source04/guard.stop",
+      "mode": "100644",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "kind": "NEW"
+    },
+    {
+      "path": "docs/mcr/evidence/service-policy-composition/source04/guardian.json",
+      "mode": "100644",
+      "bytes": 18910,
+      "sha256": "1c9a921058bfcf215c312e08cd13376a8a47bfa250c932a873213f772b8f186d",
+      "kind": "NEW"
+    },
+    {
+      "path": "docs/mcr/evidence/service-policy-composition/source04/lint.log",
+      "mode": "100644",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "kind": "NEW"
+    },
+    {
+      "path": "docs/mcr/evidence/service-policy-composition/source04/primary-initial.json",
+      "mode": "100644",
+      "bytes": 8007,
+      "sha256": "2615e0346164534f9b515284d14a2429fc33f5535b22df8b167023f974102c7c",
+      "kind": "NEW"
+    },
+    {
+      "path": "docs/mcr/evidence/service-policy-composition/source04/receipt-regression.log",
+      "mode": "100644",
+      "bytes": 77,
+      "sha256": "7b079e273871818bfc181c2680ef7661f39ed70ec984b8f36ef903fe6337ba99",
+      "kind": "NEW"
+    },
+    {
+      "path": "docs/mcr/evidence/service-policy-composition/source04/supervisor.json",
+      "mode": "100644",
+      "bytes": 41555,
+      "sha256": "513c951a37d5dbb42118aa8ed12a5fb6f3f087460211e2639c9cdc6a2afb6aca",
+      "kind": "NEW"
+    },
+    {
+      "path": "docs/mcr/evidence/service-policy-composition/source04/tests.log",
+      "mode": "100644",
+      "bytes": 274,
+      "sha256": "71f620732573ce24662a0fd271e85b22fdd8424787da952acda0b4420f8aa2e9",
+      "kind": "NEW"
+    },
+    {
+      "path": "docs/mcr/evidence/service-policy-composition/source04/types.log",
+      "mode": "100644",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "kind": "NEW"
+    },
+    {
+      "path": "docs/mcr/evidence/service-policy-composition/source05-ordinary-preparation.json",
+      "mode": "100644",
+      "bytes": 1247,
+      "sha256": "44db35bb04794776b098aa4fcb25699e444876ee31a8446ad77ac672367d6b50",
+      "kind": "NEW"
+    },
+    {
+      "path": "docs/mcr/evidence/service-policy-composition/source05/ACCEPT.json",
+      "mode": "100644",
+      "bytes": 3308,
+      "sha256": "9d550316be02dd429c1222fc93d6a5fcdd73ef382cfe06fc7c1e33f129c93e7f",
+      "kind": "NEW"
+    },
+    {
+      "path": "docs/mcr/evidence/service-policy-composition/source05/FULL.json",
+      "mode": "100644",
+      "bytes": 3445,
+      "sha256": "518a52758440368b7254973ee3d52e2e6e098c59dce9e720a5c7c9852c404d57",
+      "kind": "NEW"
+    },
+    {
+      "path": "docs/mcr/evidence/service-policy-composition/source05/commands-progress.json",
+      "mode": "100644",
+      "bytes": 1947,
+      "sha256": "475afde75a4dec143f9d761964402bac6aa6578d08fd70cf86b7b27399197b00",
+      "kind": "NEW"
+    },
+    {
+      "path": "docs/mcr/evidence/service-policy-composition/source05/control-syntax.log",
+      "mode": "100644",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "kind": "NEW"
+    },
+    {
+      "path": "docs/mcr/evidence/service-policy-composition/source05/guard-config.json",
+      "mode": "100644",
+      "bytes": 6051,
+      "sha256": "da05e80a34f2db6b30851b956f79407af7b24006a8366a655398350d8b1ee80a",
+      "kind": "NEW"
+    },
+    {
+      "path": "docs/mcr/evidence/service-policy-composition/source05/guard.ready",
+      "mode": "100644",
+      "bytes": 8695,
+      "sha256": "737d43d12074557f424e55aef94a05888b58ca9a249f8dc753e099d79f918fe8",
+      "kind": "NEW"
+    },
+    {
+      "path": "docs/mcr/evidence/service-policy-composition/source05/guard.stop",
+      "mode": "100644",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "kind": "NEW"
+    },
+    {
+      "path": "docs/mcr/evidence/service-policy-composition/source05/guardian.json",
+      "mode": "100644",
+      "bytes": 18461,
+      "sha256": "54b2ae8cf3e1e51e6e435df3feb8ade3bcadda0c65323e294cb7cf53c153770d",
+      "kind": "NEW"
+    },
+    {
+      "path": "docs/mcr/evidence/service-policy-composition/source05/native-syntax.log",
+      "mode": "100644",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "kind": "NEW"
+    },
+    {
+      "path": "docs/mcr/evidence/service-policy-composition/source05/primary-initial.json",
+      "mode": "100644",
+      "bytes": 8252,
+      "sha256": "942850418a2b166def7b8719e884d1e2d2357f85845fbd75841f604a6934f1ee",
+      "kind": "NEW"
+    },
+    {
+      "path": "docs/mcr/evidence/service-policy-composition/source05/receipt-regression.log",
+      "mode": "100644",
+      "bytes": 77,
+      "sha256": "7b079e273871818bfc181c2680ef7661f39ed70ec984b8f36ef903fe6337ba99",
+      "kind": "NEW"
+    },
+    {
+      "path": "docs/mcr/evidence/service-policy-composition/source05/supervisor.json",
+      "mode": "100644",
+      "bytes": 41623,
+      "sha256": "761146d8c4e8278e0bf8eb52a0ff3e67df189efadf84ca92483d80fb1bd21a9b",
+      "kind": "NEW"
+    },
+    {
+      "path": "docs/mcr/evidence/service-policy-composition/source05/typecheck-syntax.log",
+      "mode": "100644",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "kind": "NEW"
+    },
+    {
+      "path": "docs/mcr/evidence/service-policy-composition/source05/types.log",
+      "mode": "100644",
+      "bytes": 54,
+      "sha256": "11070dfbd71cc10896cb9edac58e53f9e6c56486e660ef95d10a69a5dba67d4d",
+      "kind": "NEW"
+    },
+    {
+      "path": "docs/mcr/evidence/service-policy-composition/source05/vitest.config-syntax.log",
+      "mode": "100644",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "kind": "NEW"
+    }
+  ],
+  "entryCount": 73,
+  "selfPath": "docs/mcr/evidence/service-policy-composition/handoff.json",
+  "publicationPathCountIncludingSelf": 74,
+  "selfHashPolicy": "Source commit supplied in direct publisher message binds handoff.json; self excluded from self-hash manifest.",
+  "remaining": [
+    "Developer-owned current canonical composition/combined checks",
+    "Actual DefaultAdmin browser scope under fresh finite offer",
+    "Live producer/production clock/device/parade visual requirements remain separate"
+  ],
+  "sourceInputPins": [
+    "fd725695791dfa841330e0999034507e4ecbe235",
+    "95d5bd33fd10f1566e3a287e1559ec1dc67723cd"
+  ],
+  "historyPolicy": "Scoped blobs and additive shared patches only; never whole-private-branch ancestry or old whole-file restore; normal non-force publication."
+}

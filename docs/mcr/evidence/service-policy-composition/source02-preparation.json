@@ -1,0 +1,24 @@
+{
+  "offer": "DOCFIX8-0113",
+  "newAdditionalUpperBytes": 8388608,
+  "untilUTC": "2026-11-05T01:45:00Z",
+  "source02Offer": "FE38-COMPOSITION-SOURCE02-0113",
+  "sourceUnchanged": "aa35e24be949fb7e0430eda156eccc741ed9e3a4",
+  "priorWholeMAXBytes": 4709222962,
+  "priorNewFloorBytes": 50552644,
+  "spentTemporaryBytes": 19135232,
+  "ordinaryPublisherProgram": {
+    "path": "/private/tmp/mcr-publisher-412e-capacity-composition-delivery.py",
+    "sha256": "98523ce9d454f2fdfdc4080ca9fa11e6b724a9343217a8c2f03c44b16d854456",
+    "factualRole": "Read entire program: subprocess commands restricted to git and ps; ordinary capacity/non-force Git publication/metadata, no app/test/compiler/browser workload. Actual owner receipt and controller birth/executable/script remain required."
+  },
+  "controlChanges": [
+    "Exact offer+owner+accepted-epoch legacy/atomic receipt merge; absent PID keeps accepted charge",
+    "Current owned cohort counted once; ordinary identified role remains in disk-growth reserve",
+    "Bootstrap immutable ACCEPT and atomic owner receipt precede heavy census; same actual exec identity transition",
+    "Both complete initial LIVE samples gate child dispatch; primary initial sample persisted before child",
+    "No group signals; actual owned PID/birth/executable checked immediately before signal; PermissionError recorded and remaining cleanup continues",
+    "FULL only after all recorded owned descendants reaped/absent and private scratch/link absent"
+  ],
+  "qualification": "Control edits prepared only; no source02 workload run; source01 failure/MAX/raw evidence retained"
+}

@@ -1,0 +1,1403 @@
+{
+  "ownerThreadId": "01a1a1fe-1eed-7d12-a247-879cd521e0ec",
+  "task": "FE38 bounded DefaultAdmin ServicePolicy composition",
+  "sourceSeal": "bbf9aa7759e4cb025e8059f4a715a596a9260d69",
+  "qualificationSource": "4bcb4fe1b6ca16c9a2042e0b9414cc532fcbda0f",
+  "canonicalBase": "1907016b6aa41c17998acab691a83e99d0a80076",
+  "candidateTree": "be772472cb9f37b9fbf25fb6f0473232337d7941",
+  "qualification": "SCOPED_SOURCE_PASS_PLUS_PINNED_ACTUAL_APP_NATIVE_PASS; publication pending; latest combined master/live/clock/device/visual acceptance NOT_RUN",
+  "supersedesForRoutingOnly": "e4e7a720313ef848daca507961d54d674ab169a6 original 74-path handoff; old raw packets remain historical",
+  "scope": "ONLY two ServicePolicy child shared hunks plus nine owned integration harness/test files and owned doc/evidence. No frontend/contract prerequisite copies or peer/shared ownership.",
+  "sharedPatch": "docs/mcr/evidence/service-policy-composition/shared-service-policy-current.patch",
+  "patchSha256": "b6252f974e945a28a6be699c48d380559c8c2ee48f1999844c9b185d5404459a",
+  "preserveCanonical": [
+    "FE37 MemberContent fields and disposal order",
+    "Reports and Moderator/settings failure independence",
+    "83 nonready Administration access section",
+    "53d clock behavior",
+    "all other canonical application/presentation/contract/backend paths"
+  ],
+  "doNotImportPrivatePrerequisiteCommit": "66b7ad0fd3a166d671eeaf083607f91b08360ab2",
+  "privatePrerequisitePathsExcluded": 166,
+  "publisher": "01a1a5d9-332b-7822-a8f7-412e295fa211",
+  "publication": "Normal serialized master delivery using exact scoped files/additive hunks; no private ancestry; no king/SL review or acknowledgment",
+  "nativeQualification": "docs/mcr/evidence/service-policy-composition/native-qualification.json",
+  "savedAvatarGoal": "BLOCKED unchanged",
+  "entries": [
+    {
+      "path": "docs/mcr/evidence/service-policy-composition/composition-source01-acceptance.json",
+      "mode": "100644",
+      "bytes": 3898,
+      "sha256": "962d84ac9b61f06ca0c47f383302173469d56db9a277b88271c6fd13a5e6463c",
+      "blob": "869ed812b828d60889343373fcf21041d8a37aaa",
+      "kind": "OWNED_SCOPED_PATH"
+    },
+    {
+      "path": "docs/mcr/evidence/service-policy-composition/composition-source01-inputs.json",
+      "mode": "100644",
+      "bytes": 3864,
+      "sha256": "80ee28b006ad8f3b74c16fa11035c23917d0361289045ace4bd1220ef9271c33",
+      "blob": "82119a000ae1dd88f0be8d4fef498f9278aaaa8d",
+      "kind": "OWNED_SCOPED_PATH"
+    },
+    {
+      "path": "docs/mcr/evidence/service-policy-composition/guardian.py",
+      "mode": "100644",
+      "bytes": 20146,
+      "sha256": "07c5fa093705341d49c316ee3cd76d21050d02346ae1f69b2f14a6d96b9d9ebb",
+      "blob": "25598c4e715442a54a9492e1f6e76f36fd34b0a8",
+      "kind": "OWNED_SCOPED_PATH"
+    },
+    {
+      "path": "docs/mcr/evidence/service-policy-composition/handoff.json",
+      "mode": "100644",
+      "bytes": 20458,
+      "sha256": "6aa49b662f0473638b11e242c01aee1880e6b1cc11fd25b65b358339f96965ef",
+      "blob": "269c25c84be8b8fdac404877688dc9269a766045",
+      "kind": "OWNED_SCOPED_PATH"
+    },
+    {
+      "path": "docs/mcr/evidence/service-policy-composition/native-candidate-assembly.json",
+      "mode": "100644",
+      "bytes": 1388,
+      "sha256": "54057ede2b3ee10e5f0146ba2aef6c74802ee6612ba128c5670a640d88c9065a",
+      "blob": "6ce629f964efa731a9965deb9ec8381b691c41eb",
+      "kind": "OWNED_SCOPED_PATH"
+    },
+    {
+      "path": "docs/mcr/evidence/service-policy-composition/native-qualification.json",
+      "mode": "100644",
+      "bytes": 8434,
+      "sha256": "98e03d6d10f25432f22dfdf144f37a5e5e16f5d876fd0ee9be52476d71773d24",
+      "blob": "d977ea97254da299a8a08565c030ac3f5137ae5d",
+      "kind": "OWNED_SCOPED_PATH"
+    },
+    {
+      "path": "docs/mcr/evidence/service-policy-composition/native01/ACCEPT.json",
+      "mode": "100644",
+      "bytes": 3111,
+      "sha256": "6f6be4844d42e0831b03cfadb1573bc325988567ec577016545cedf00e7e32fb",
+      "blob": "eb547790fe41e357d7e567df40ac8b2b8af12f3c",
+      "kind": "OWNED_SCOPED_PATH"
+    },
+    {
+      "path": "docs/mcr/evidence/service-policy-composition/native01/FULL.json",
+      "mode": "100644",
+      "bytes": 2871,
+      "sha256": "69367f5188724ced1a5597a03f8bb170ea2f305a3e00b7234faf6eba0b9db650",
+      "blob": "c1c8503555ab1d6e1ec9a3d94bf75002f793543d",
+      "kind": "OWNED_SCOPED_PATH"
+    },
+    {
+      "path": "docs/mcr/evidence/service-policy-composition/native01/guard-config.json",
+      "mode": "100644",
+      "bytes": 6310,
+      "sha256": "4cc63dc8a176d2fac1cbb5a2051ef1a610c3821bcccdc52ad89e93390602dd03",
+      "blob": "b235ae853c140f5d979775fc284cd8513ec36247",
+      "kind": "OWNED_SCOPED_PATH"
+    },
+    {
+      "path": "docs/mcr/evidence/service-policy-composition/native01/guard.stop",
+      "mode": "100644",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "blob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+      "kind": "OWNED_SCOPED_PATH"
+    },
+    {
+      "path": "docs/mcr/evidence/service-policy-composition/native01/guardian.json",
+      "mode": "100644",
+      "bytes": 23863,
+      "sha256": "d6b27d69ebd0d06ed0f303d645dca0726e51e350f92d4e10154d28b0a8227d74",
+      "blob": "c30802a587c3a42824eecbff8e49f7f0816d66ae",
+      "kind": "OWNED_SCOPED_PATH"
+    },
+    {
+      "path": "docs/mcr/evidence/service-policy-composition/native01/independent-census.json",
+      "mode": "100644",
+      "bytes": 11289,
+      "sha256": "b9c34d019497f0a693cdede2dd0ae42a298eae2d2ff7ff8142cc01f915a45910",
+      "blob": "1de0cb4ae91c3778ed52b86ab5df1391eaa2a859",
+      "kind": "OWNED_SCOPED_PATH"
+    },
+    {
+      "path": "docs/mcr/evidence/service-policy-composition/native01/supervisor.json",
+      "mode": "100644",
+      "bytes": 29238,
+      "sha256": "8fcbe91c95f5dba3a59a380fd45a6bf97420f178049d5d705950107887e18a41",
+      "blob": "5ea79d2b463414fbf0b885abef507e080d277895",
+      "kind": "OWNED_SCOPED_PATH"
+    },
+    {
+      "path": "docs/mcr/evidence/service-policy-composition/native02/ACCEPT.json",
+      "mode": "100644",
+      "bytes": 3780,
+      "sha256": "c5b04a7010c6a7f90a76c27c5a1c008c588ec524050d8445bd6de273b3587a32",
+      "blob": "53fca92d1a63f5045b14c4a8357b123872a0a60f",
+      "kind": "OWNED_SCOPED_PATH"
+    },
+    {
+      "path": "docs/mcr/evidence/service-policy-composition/native02/FULL.json",
+      "mode": "100644",
+      "bytes": 3540,
+      "sha256": "30fbbe9cac52b4db7954f424d62ed1a108721122ad522e9f5d66952c0cb66de9",
+      "blob": "f646b373dd03317f8303e07b9f9017c71248666c",
+      "kind": "OWNED_SCOPED_PATH"
+    },
+    {
+      "path": "docs/mcr/evidence/service-policy-composition/native02/guard-config.json",
+      "mode": "100644",
+      "bytes": 7634,
+      "sha256": "bb8696011ef7fd1db81fa37996d29df9f9f0bc040fef2fa80d592abc1b32962f",
+      "blob": "3dc91184dd68ac09f1e0becbfbf47b06da3fe560",
+      "kind": "OWNED_SCOPED_PATH"
+    },
+    {
+      "path": "docs/mcr/evidence/service-policy-composition/native02/guard.start",
+      "mode": "100644",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "blob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+      "kind": "OWNED_SCOPED_PATH"
+    },
+    {
+      "path": "docs/mcr/evidence/service-policy-composition/native02/guard.stop",
+      "mode": "100644",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "blob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+      "kind": "OWNED_SCOPED_PATH"
+    },
+    {
+      "path": "docs/mcr/evidence/service-policy-composition/native02/guardian.json",
+      "mode": "100644",
+      "bytes": 26289,
+      "sha256": "0a9fca729ee8dde9bb179ddb585811aebebd2f1aa7e689d52eb0f9758bb7a847",
+      "blob": "6cf0f82817a0dbacf8a5cf1cd9db4026b2eae205",
+      "kind": "OWNED_SCOPED_PATH"
+    },
+    {
+      "path": "docs/mcr/evidence/service-policy-composition/native02/independent-census.json",
+      "mode": "100644",
+      "bytes": 12412,
+      "sha256": "deda404269b98ec6d4c2a6d6a5d6e35ae78e7a431de8a7162e19c8fd9de516f5",
+      "blob": "6486eb98028c29806739e8301b3e5fdd92725e6a",
+      "kind": "OWNED_SCOPED_PATH"
+    },
+    {
+      "path": "docs/mcr/evidence/service-policy-composition/native02/supervisor.json",
+      "mode": "100644",
+      "bytes": 31352,
+      "sha256": "eb0b0dd02880aa1b4d9b03658461064c6ed9c42899b9e24bcf7a2166ed1f6d52",
+      "blob": "796f7c61e6fb85ccc02ef1054c744e41cee0de83",
+      "kind": "OWNED_SCOPED_PATH"
+    },
+    {
+      "path": "docs/mcr/evidence/service-policy-composition/native03/ACCEPT.json",
+      "mode": "100644",
+      "bytes": 3898,
+      "sha256": "ffb29760a51193367cff87b5d928f147b84dfa2566c712b0ff26af8adbca40cc",
+      "blob": "f0b50970d568114f6a1677e9241d924c48e1c074",
+      "kind": "OWNED_SCOPED_PATH"
+    },
+    {
+      "path": "docs/mcr/evidence/service-policy-composition/native03/FULL.json",
+      "mode": "100644",
+      "bytes": 3736,
+      "sha256": "41ac7b36087c04cf7ac822e607be5e2af1688bda7affdbdae5821b1e763c561b",
+      "blob": "a5a6be6c2165e5ae653c8641a662b3515683d9d7",
+      "kind": "OWNED_SCOPED_PATH"
+    },
+    {
+      "path": "docs/mcr/evidence/service-policy-composition/native03/actual-default-app-native.log",
+      "mode": "100644",
+      "bytes": 7586,
+      "sha256": "48c753d90fab9e030d53c51fd110d5d56799d8fee736acf5184d140bff0f231d",
+      "blob": "300ea78b3d67203108078a61c97b141cf66b4b1f",
+      "kind": "OWNED_SCOPED_PATH"
+    },
+    {
+      "path": "docs/mcr/evidence/service-policy-composition/native03/guard-config.json",
+      "mode": "100644",
+      "bytes": 7752,
+      "sha256": "2631afb9c54f44698623ab8093130e2d1e020d16c2c18c36bbb485ccf4cc7c65",
+      "blob": "384a39b7b0d890aec1835353d57442d954417097",
+      "kind": "OWNED_SCOPED_PATH"
+    },
+    {
+      "path": "docs/mcr/evidence/service-policy-composition/native03/guard.ready",
+      "mode": "100644",
+      "bytes": 25254,
+      "sha256": "2309b6245f9ccc9f73ceff9b26807284b8678520df2158238eb417da999ad64d",
+      "blob": "e94094be8090667fe298dab00d3e4a9600c7185f",
+      "kind": "OWNED_SCOPED_PATH"
+    },
+    {
+      "path": "docs/mcr/evidence/service-policy-composition/native03/guard.start",
+      "mode": "100644",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "blob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+      "kind": "OWNED_SCOPED_PATH"
+    },
+    {
+      "path": "docs/mcr/evidence/service-policy-composition/native03/guard.stop",
+      "mode": "100644",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "blob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+      "kind": "OWNED_SCOPED_PATH"
+    },
+    {
+      "path": "docs/mcr/evidence/service-policy-composition/native03/guardian.json",
+      "mode": "100644",
+      "bytes": 65517,
+      "sha256": "447bbaa2fb335623f85a9b652b21d528da93673b8d8b3715671c172893b5b422",
+      "blob": "13fa0e4acdc1670583023e33b452b15d2002351d",
+      "kind": "OWNED_SCOPED_PATH"
+    },
+    {
+      "path": "docs/mcr/evidence/service-policy-composition/native03/independent-census.json",
+      "mode": "100644",
+      "bytes": 38246,
+      "sha256": "ddcae8931924e15be80d5be9e6a6b97e131b7da3f3a2e5fcc6c67e83cc31f1ba",
+      "blob": "3e2859fd51e2e608cfa84e1a22dc347240db7a64",
+      "kind": "OWNED_SCOPED_PATH"
+    },
+    {
+      "path": "docs/mcr/evidence/service-policy-composition/native03/primary-census.json",
+      "mode": "100644",
+      "bytes": 38520,
+      "sha256": "7ab8624c2cfa1837585a9d4be30c64d3108eea0fa743538c17a2123d3b738f09",
+      "blob": "5d2deefcb73c952f6fbfdc12bf0cc0ac78662423",
+      "kind": "OWNED_SCOPED_PATH"
+    },
+    {
+      "path": "docs/mcr/evidence/service-policy-composition/native03/primary-initial.json",
+      "mode": "100644",
+      "bytes": 25014,
+      "sha256": "21025fb2c4e9b022ee4a70b00d1d34e13696e15093a15841cf3912370df57a85",
+      "blob": "d137f69ea9461d154a01c97c4cecb5aa1a3f1f7f",
+      "kind": "OWNED_SCOPED_PATH"
+    },
+    {
+      "path": "docs/mcr/evidence/service-policy-composition/native03/supervisor.json",
+      "mode": "100644",
+      "bytes": 121517,
+      "sha256": "51aa814544f9322a3229e9c073619456b1e09a6414ff3580b21194eb07739133",
+      "blob": "c0326115b61c873068d68e04ea7e0b0613580f0a",
+      "kind": "OWNED_SCOPED_PATH"
+    },
+    {
+      "path": "docs/mcr/evidence/service-policy-composition/native04/ACCEPT.json",
+      "mode": "100644",
+      "bytes": 4064,
+      "sha256": "9ebe1f93af33052aeffc4706cdf59ee9f1f9c3d687521c193a6872e9ea74b803",
+      "blob": "796e79cd301a48fbf2b247b7791e81d6ce2399ce",
+      "kind": "OWNED_SCOPED_PATH"
+    },
+    {
+      "path": "docs/mcr/evidence/service-policy-composition/native04/FULL.json",
+      "mode": "100644",
+      "bytes": 3824,
+      "sha256": "ccbbac0786b36aeb741e937d340c6eb77596e6b34bc987c2b947d7d46d436058",
+      "blob": "d79c059b9ea82b141c08adeed02fdfd54f886aa0",
+      "kind": "OWNED_SCOPED_PATH"
+    },
+    {
+      "path": "docs/mcr/evidence/service-policy-composition/native04/guard-config.json",
+      "mode": "100644",
+      "bytes": 7962,
+      "sha256": "f0eb2f83f9b514a788562c9862e6d02b4b2f187ff3120fa3c3f8d87105f21dd6",
+      "blob": "9c72abd00a4d949982c3001cac2e2441de42f5ef",
+      "kind": "OWNED_SCOPED_PATH"
+    },
+    {
+      "path": "docs/mcr/evidence/service-policy-composition/native04/guard.start",
+      "mode": "100644",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "blob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+      "kind": "OWNED_SCOPED_PATH"
+    },
+    {
+      "path": "docs/mcr/evidence/service-policy-composition/native04/guard.stop",
+      "mode": "100644",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "blob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+      "kind": "OWNED_SCOPED_PATH"
+    },
+    {
+      "path": "docs/mcr/evidence/service-policy-composition/native04/guardian.json",
+      "mode": "100644",
+      "bytes": 27202,
+      "sha256": "70b53d6c8569c70b8ba76d83b02dcf3a33a4b528e82e2a82eab128026729c620",
+      "blob": "8f34a5e70d959bd2756fa10d7efbaba00708b66a",
+      "kind": "OWNED_SCOPED_PATH"
+    },
+    {
+      "path": "docs/mcr/evidence/service-policy-composition/native04/independent-census.json",
+      "mode": "100644",
+      "bytes": 12862,
+      "sha256": "1e5439b4663d36eb27f32da82f27b02aa1d521251cc6c17aafc8c63b6b151962",
+      "blob": "fb40c2c683b66e189db660cd39af63fa1ab6d8f0",
+      "kind": "OWNED_SCOPED_PATH"
+    },
+    {
+      "path": "docs/mcr/evidence/service-policy-composition/native04/supervisor.json",
+      "mode": "100644",
+      "bytes": 32561,
+      "sha256": "2df0daf23e4767efc4916eb2369c1b5914989a073bac44edec267ad172417ac5",
+      "blob": "2418c5bc0f2e00441f829beecd1e931b8d69b9c9",
+      "kind": "OWNED_SCOPED_PATH"
+    },
+    {
+      "path": "docs/mcr/evidence/service-policy-composition/native05/ACCEPT.json",
+      "mode": "100644",
+      "bytes": 4182,
+      "sha256": "46c0d4a1569f5958a99d12a5b51818362adbb3956368e3e97c96936ddcaf467c",
+      "blob": "e28794632be228324f7c0f3677ac9ba5fd764026",
+      "kind": "OWNED_SCOPED_PATH"
+    },
+    {
+      "path": "docs/mcr/evidence/service-policy-composition/native05/FULL.json",
+      "mode": "100644",
+      "bytes": 4017,
+      "sha256": "6b176e5262691b1771c3d68c78374ebcf5ad1a0ba6d7e91ff7d08fdcf61f68ce",
+      "blob": "c84f2332a8ffcc6de5ddec0dec9c676247094a3d",
+      "kind": "OWNED_SCOPED_PATH"
+    },
+    {
+      "path": "docs/mcr/evidence/service-policy-composition/native05/actual-default-app-native.log",
+      "mode": "100644",
+      "bytes": 2311,
+      "sha256": "963240fc74dc87ba023df07d12bd5d0132eb23fdad10974dce2d78e708f8aa5c",
+      "blob": "db0de14a5b81ae59ee6fc666e459c4ca8143cca8",
+      "kind": "OWNED_SCOPED_PATH"
+    },
+    {
+      "path": "docs/mcr/evidence/service-policy-composition/native05/commands-progress.json",
+      "mode": "100644",
+      "bytes": 280,
+      "sha256": "e3c848bf5ade2374d4ee89eac5e631effc8e858190df868f685b0963a24ba81e",
+      "blob": "fe9e4d3b6bd99762c86352e0f737d2802e63bb6d",
+      "kind": "OWNED_SCOPED_PATH"
+    },
+    {
+      "path": "docs/mcr/evidence/service-policy-composition/native05/guard-config.json",
+      "mode": "100644",
+      "bytes": 8080,
+      "sha256": "58dd80fa10522d36c00ee19e715215455dd9d4ccc551701719b7009975e3d4bf",
+      "blob": "9e8b8d16e6132f73ff6831f9ec15ff74a23a23c9",
+      "kind": "OWNED_SCOPED_PATH"
+    },
+    {
+      "path": "docs/mcr/evidence/service-policy-composition/native05/guard.ready",
+      "mode": "100644",
+      "bytes": 26889,
+      "sha256": "ca13bedc1a1578031afbe7f77fd14dc222047d8ba6860a887082ff90a52a6d6a",
+      "blob": "ebcd723d77417093e3d0487120b2e4f30fc7cf28",
+      "kind": "OWNED_SCOPED_PATH"
+    },
+    {
+      "path": "docs/mcr/evidence/service-policy-composition/native05/guard.start",
+      "mode": "100644",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "blob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+      "kind": "OWNED_SCOPED_PATH"
+    },
+    {
+      "path": "docs/mcr/evidence/service-policy-composition/native05/guard.stop",
+      "mode": "100644",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "blob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+      "kind": "OWNED_SCOPED_PATH"
+    },
+    {
+      "path": "docs/mcr/evidence/service-policy-composition/native05/guardian.json",
+      "mode": "100644",
+      "bytes": 61582,
+      "sha256": "09d509a96eb1cbdb67a3620a473bb3551e04fc96f86ce8c899b6772854d3cdff",
+      "blob": "7730e198dc77a6d1d180afbdb5bcfe8754f34715",
+      "kind": "OWNED_SCOPED_PATH"
+    },
+    {
+      "path": "docs/mcr/evidence/service-policy-composition/native05/independent-census.json",
+      "mode": "100644",
+      "bytes": 32639,
+      "sha256": "0c5409d7d9bb9372109b3d2989d280f97593366c71ecfeb2c649b50521c8de0a",
+      "blob": "b4a4e1677b92cb5dfb92502a3ff8906efcce3aff",
+      "kind": "OWNED_SCOPED_PATH"
+    },
+    {
+      "path": "docs/mcr/evidence/service-policy-composition/native05/native/actual-default-admin-confirmation-360.png",
+      "mode": "100644",
+      "bytes": 306965,
+      "sha256": "db9d60b8c5ccb75f090be0cf255a00595a102395fc204a3ad2bd1137b654ad13",
+      "blob": "c80d882d160e552245901465d79e3fbb23efd686",
+      "kind": "OWNED_SCOPED_PATH"
+    },
+    {
+      "path": "docs/mcr/evidence/service-policy-composition/native05/native/actual-default-admin-confirmation-390.png",
+      "mode": "100644",
+      "bytes": 303211,
+      "sha256": "35d9c47cab88d90a023c778ae1a8c4e9a98c5c09707c192cb9e1e797b6386d9c",
+      "blob": "a7568d0efbdfe80df11072a9f6c40d8c1972285d",
+      "kind": "OWNED_SCOPED_PATH"
+    },
+    {
+      "path": "docs/mcr/evidence/service-policy-composition/native05/native/actual-default-admin-conflict-390.png",
+      "mode": "100644",
+      "bytes": 302116,
+      "sha256": "f8d2058e7cf1d151cc9ede8ba93727372baca01d8d9d3a79935d7b28f0c916a6",
+      "blob": "bcd2d25a6643b56c63fa0c2e726502565b48f791",
+      "kind": "OWNED_SCOPED_PATH"
+    },
+    {
+      "path": "docs/mcr/evidence/service-policy-composition/native05/native/actual-default-admin-member-content-sibling-390.png",
+      "mode": "100644",
+      "bytes": 39703,
+      "sha256": "e55e1e133df8c6baf54ebb4e520b655fc5946d52cbb4c8632b3b02e59a86c4a9",
+      "blob": "8b9ff9459948d54e6d573d0ec9e8b1d27adb26b7",
+      "kind": "OWNED_SCOPED_PATH"
+    },
+    {
+      "path": "docs/mcr/evidence/service-policy-composition/native05/native/actual-default-admin-pending-390.png",
+      "mode": "100644",
+      "bytes": 300909,
+      "sha256": "d293e61c85df6e1ef4688137de6720277df61e9651833f585b938d41fad5eb1c",
+      "blob": "0fa884b5661f4b82404ec87f97afd2ed3deb8a2e",
+      "kind": "OWNED_SCOPED_PATH"
+    },
+    {
+      "path": "docs/mcr/evidence/service-policy-composition/native05/native/failure.png",
+      "mode": "100644",
+      "bytes": 318206,
+      "sha256": "deba9cc21bdaee5416d34d9643032728028532983113199fa78d4fe0f4d4995f",
+      "blob": "e1fff728bc454fb7eddb2a45e8e4df0aba610c48",
+      "kind": "OWNED_SCOPED_PATH"
+    },
+    {
+      "path": "docs/mcr/evidence/service-policy-composition/native05/native/native.json",
+      "mode": "100644",
+      "bytes": 3132,
+      "sha256": "4c40823cb32551f2af82b09add37061b8810a5cf6a668d974c27ac7967f84823",
+      "blob": "6d9373e04c494a5089846fc55415239f20c8c768",
+      "kind": "OWNED_SCOPED_PATH"
+    },
+    {
+      "path": "docs/mcr/evidence/service-policy-composition/native05/primary-census.json",
+      "mode": "100644",
+      "bytes": 54198,
+      "sha256": "42781d1f74fe9c5d0538d1f9a45d48370b5de22e0161d0152506de96a6ea1275",
+      "blob": "2e72260747d78ae943c38d4e79d7ea9ab04a8cf7",
+      "kind": "OWNED_SCOPED_PATH"
+    },
+    {
+      "path": "docs/mcr/evidence/service-policy-composition/native05/primary-initial.json",
+      "mode": "100644",
+      "bytes": 28397,
+      "sha256": "b811a4ee743c86c33dcefd6911445ee074f3f40159631358e1a05be5a538efb4",
+      "blob": "be8df847ab08e995ff7d7b514e5fda9c60d86d15",
+      "kind": "OWNED_SCOPED_PATH"
+    },
+    {
+      "path": "docs/mcr/evidence/service-policy-composition/native05/supervisor.json",
+      "mode": "100644",
+      "bytes": 137376,
+      "sha256": "e7a6a72a021bf451036411b158e89d0fb20aa6e8df0105cb3fedb8acf1b21100",
+      "blob": "7ae1011e5c886a33adc2efe9605580394d744967",
+      "kind": "OWNED_SCOPED_PATH"
+    },
+    {
+      "path": "docs/mcr/evidence/service-policy-composition/native06/ACCEPT.json",
+      "mode": "100644",
+      "bytes": 4666,
+      "sha256": "dbc527bbfb84354d2c8626f19752e693969cc1e16d32678b2905e076187e6926",
+      "blob": "c96bd16c7aae4fb3f3e48a852f82e058421c99d4",
+      "kind": "OWNED_SCOPED_PATH"
+    },
+    {
+      "path": "docs/mcr/evidence/service-policy-composition/native06/FULL.json",
+      "mode": "100644",
+      "bytes": 4427,
+      "sha256": "21134f2b4a678794f636d1f395dc3b61edeca2d2fe2ced8bda5d45906783d04d",
+      "blob": "304fc5252d64dad04089b3dcd87bb49a09813f4d",
+      "kind": "OWNED_SCOPED_PATH"
+    },
+    {
+      "path": "docs/mcr/evidence/service-policy-composition/native06/guard-config.json",
+      "mode": "100644",
+      "bytes": 8571,
+      "sha256": "fc0c74af2e87e1faf692d533bb84c1cb055ef494a76f15772230d82bf4a33f23",
+      "blob": "81fa65ea2c3bcd379d70687ba7e3263089447a2e",
+      "kind": "OWNED_SCOPED_PATH"
+    },
+    {
+      "path": "docs/mcr/evidence/service-policy-composition/native06/guard.start",
+      "mode": "100644",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "blob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+      "kind": "OWNED_SCOPED_PATH"
+    },
+    {
+      "path": "docs/mcr/evidence/service-policy-composition/native06/guard.stop",
+      "mode": "100644",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "blob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+      "kind": "OWNED_SCOPED_PATH"
+    },
+    {
+      "path": "docs/mcr/evidence/service-policy-composition/native06/guardian.json",
+      "mode": "100644",
+      "bytes": 25822,
+      "sha256": "0b45cec782e49351850edbc240b2c26b9698c8d41113af84c3b583027090d1de",
+      "blob": "c77c0ecd26c78071e15f3136d121fea179e94a18",
+      "kind": "OWNED_SCOPED_PATH"
+    },
+    {
+      "path": "docs/mcr/evidence/service-policy-composition/native06/independent-census.json",
+      "mode": "100644",
+      "bytes": 12196,
+      "sha256": "8b0dce43ff1b6f0458f6f9cefecc9464b45efe366f3142aef6508bb4dc5dba56",
+      "blob": "0649969bbc115e35c011736339e4d931fa534704",
+      "kind": "OWNED_SCOPED_PATH"
+    },
+    {
+      "path": "docs/mcr/evidence/service-policy-composition/native06/supervisor.json",
+      "mode": "100644",
+      "bytes": 31735,
+      "sha256": "33c532a61e9fbb65cb2d8d7dc18ff571f0aaca8484c706d1caeb00c81903047c",
+      "blob": "8d34ee8490a2f3b95b935e8855bd482ab2b7b96c",
+      "kind": "OWNED_SCOPED_PATH"
+    },
+    {
+      "path": "docs/mcr/evidence/service-policy-composition/native07/ACCEPT.json",
+      "mode": "100644",
+      "bytes": 5304,
+      "sha256": "29daeaccf8ca2ebb0c380324ce802ca91c8b59de2ae219adc9be8ef21b8bfe6d",
+      "blob": "c6875b1075e70059115bc4aebc3125404fd2d577",
+      "kind": "OWNED_SCOPED_PATH"
+    },
+    {
+      "path": "docs/mcr/evidence/service-policy-composition/native07/FULL.json",
+      "mode": "100644",
+      "bytes": 5140,
+      "sha256": "d08f9e1a7f58fb0661a1303c4f715b001a5d101f81fcb10c4d5e69abbc8aaf09",
+      "blob": "911aa428c368075e024bad7c394acb7a98bea989",
+      "kind": "OWNED_SCOPED_PATH"
+    },
+    {
+      "path": "docs/mcr/evidence/service-policy-composition/native07/actual-default-app-native.log",
+      "mode": "100644",
+      "bytes": 6355,
+      "sha256": "de8207b4d59fbe0fb2550fb8d8a4ae1f3e6402a6883818f30dfba827597971d0",
+      "blob": "2501327d8706580cb6547bde8a65ab78bbe611e8",
+      "kind": "OWNED_SCOPED_PATH"
+    },
+    {
+      "path": "docs/mcr/evidence/service-policy-composition/native07/commands-progress.json",
+      "mode": "100644",
+      "bytes": 280,
+      "sha256": "88ad5fbf728449358c996bb35a47b3a7b88cf62910872ba86853b2daba430850",
+      "blob": "40c256ce012ffa73662d350acffd7882310caf04",
+      "kind": "OWNED_SCOPED_PATH"
+    },
+    {
+      "path": "docs/mcr/evidence/service-policy-composition/native07/guard-config.json",
+      "mode": "100644",
+      "bytes": 9711,
+      "sha256": "34dce9ef2ebd0f6f3a51795cb67563cd8d1e547f2533df17b527cc9df49ddec5",
+      "blob": "893c31d081b3e3cc81e7f89fa75dc7dcd5fe9bd1",
+      "kind": "OWNED_SCOPED_PATH"
+    },
+    {
+      "path": "docs/mcr/evidence/service-policy-composition/native07/guard.ready",
+      "mode": "100644",
+      "bytes": 10235,
+      "sha256": "9aa0e601a026728673b7add331d432ef7d4472dd47873caf3d78f2cc9f8c1ece",
+      "blob": "d618f40e06f629684303c7726dbefc19a7f8436f",
+      "kind": "OWNED_SCOPED_PATH"
+    },
+    {
+      "path": "docs/mcr/evidence/service-policy-composition/native07/guard.start",
+      "mode": "100644",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "blob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+      "kind": "OWNED_SCOPED_PATH"
+    },
+    {
+      "path": "docs/mcr/evidence/service-policy-composition/native07/guard.stop",
+      "mode": "100644",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "blob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+      "kind": "OWNED_SCOPED_PATH"
+    },
+    {
+      "path": "docs/mcr/evidence/service-policy-composition/native07/guardian.json",
+      "mode": "100644",
+      "bytes": 24053,
+      "sha256": "1c05eb3edea3a987fd75ef2bb66565a32cc1c35886355dc00138852be433e544",
+      "blob": "ce6b123342e8714947683122eca16d69cdafd2f0",
+      "kind": "OWNED_SCOPED_PATH"
+    },
+    {
+      "path": "docs/mcr/evidence/service-policy-composition/native07/independent-census.json",
+      "mode": "100644",
+      "bytes": 12437,
+      "sha256": "0491b8b9ed29dd44dbc48c0b777dc471a6bf02b764db8267a44534f88726ea65",
+      "blob": "39108e53d09e93d43eadf26a62f2a59afe4224e2",
+      "kind": "OWNED_SCOPED_PATH"
+    },
+    {
+      "path": "docs/mcr/evidence/service-policy-composition/native07/native/actual-default-admin-confirmation-390.png",
+      "mode": "100644",
+      "bytes": 303533,
+      "sha256": "d095342a9b29ed4b144cc417d1a3cd92205cfa79730c2d7f3c87e7e3a5d756ef",
+      "blob": "1cde3174532e2c9606a442592c91fd2e52fc4a4e",
+      "kind": "OWNED_SCOPED_PATH"
+    },
+    {
+      "path": "docs/mcr/evidence/service-policy-composition/native07/native/actual-default-admin-confirmation-430.png",
+      "mode": "100644",
+      "bytes": 317496,
+      "sha256": "8813996fa2cb6577530367990f6bc60ab5c7e392eeaf6b1c36c53d6fec88f14d",
+      "blob": "381051077a4e758354b05f1f3f4e1042519444f0",
+      "kind": "OWNED_SCOPED_PATH"
+    },
+    {
+      "path": "docs/mcr/evidence/service-policy-composition/native07/native/actual-default-admin-conflict-390.png",
+      "mode": "100644",
+      "bytes": 302436,
+      "sha256": "1a25977ba04ff9db4bdb46a801ce48601f4baa7189765d127030114e4ee0af84",
+      "blob": "6a03985f101c87f23d5ff6c8307aa86a0f96cb66",
+      "kind": "OWNED_SCOPED_PATH"
+    },
+    {
+      "path": "docs/mcr/evidence/service-policy-composition/native07/native/actual-default-admin-lost-response-recovered-430.png",
+      "mode": "100644",
+      "bytes": 313812,
+      "sha256": "fbf3b3dfc8705f802de4dd28c4ed06dba19fe1344bb45bfa839b25f34ff49e00",
+      "blob": "69b23c0f89584ddd0738a62dfc5a17216a92a1dc",
+      "kind": "OWNED_SCOPED_PATH"
+    },
+    {
+      "path": "docs/mcr/evidence/service-policy-composition/native07/native/actual-default-admin-member-content-sibling-390.png",
+      "mode": "100644",
+      "bytes": 39703,
+      "sha256": "e55e1e133df8c6baf54ebb4e520b655fc5946d52cbb4c8632b3b02e59a86c4a9",
+      "blob": "8b9ff9459948d54e6d573d0ec9e8b1d27adb26b7",
+      "kind": "OWNED_SCOPED_PATH"
+    },
+    {
+      "path": "docs/mcr/evidence/service-policy-composition/native07/native/actual-default-admin-moderator-reports-430.png",
+      "mode": "100644",
+      "bytes": 40357,
+      "sha256": "8165380cfd019fe011c19986db935d897d7a381b5a35fd6e0058611a0d5529bc",
+      "blob": "7050d65af968807b4928e5e8a456f9726a8fca4e",
+      "kind": "OWNED_SCOPED_PATH"
+    },
+    {
+      "path": "docs/mcr/evidence/service-policy-composition/native07/native/actual-default-admin-pending-390.png",
+      "mode": "100644",
+      "bytes": 301209,
+      "sha256": "447059d0f34ce15b47009a0ef5154849e32da9b385d2718b2a37201000308281",
+      "blob": "b2cf8ffa328379b716b6048d791dd1d9d9beb6f5",
+      "kind": "OWNED_SCOPED_PATH"
+    },
+    {
+      "path": "docs/mcr/evidence/service-policy-composition/native07/native/actual-default-admin-pending-status-unavailable-390.png",
+      "mode": "100644",
+      "bytes": 318694,
+      "sha256": "f45b0febac1f764630896482f51963beb61420457e753f5cd63a9e437d051e5a",
+      "blob": "30888b5cb7ec0b0b9235a678ef785a0578b0bc5e",
+      "kind": "OWNED_SCOPED_PATH"
+    },
+    {
+      "path": "docs/mcr/evidence/service-policy-composition/native07/native/actual-default-admin-recovered-390.png",
+      "mode": "100644",
+      "bytes": 303646,
+      "sha256": "039869b5ccebb486b36c61f9d1cf4a7c6b6a7561285292630ca585b012e81a13",
+      "blob": "c6e86e4a367a8ce2c4d6e0e51d5652c185342747",
+      "kind": "OWNED_SCOPED_PATH"
+    },
+    {
+      "path": "docs/mcr/evidence/service-policy-composition/native07/native/actual-default-admin-unknown-lost-response-430.png",
+      "mode": "100644",
+      "bytes": 300845,
+      "sha256": "e18723367679eb362930784d043b254fcaeee6d07e43bf8c3dfbfd52da7b0b59",
+      "blob": "98075e63afd6ff13a48bcb15f5a12611af7de9de",
+      "kind": "OWNED_SCOPED_PATH"
+    },
+    {
+      "path": "docs/mcr/evidence/service-policy-composition/native07/native/actual-default-admin-withdrawn-390.png",
+      "mode": "100644",
+      "bytes": 34649,
+      "sha256": "dddcac66955746f4e6ac556c630088359ab015a0f2d49ab4a4ee253d604a46e5",
+      "blob": "82c18dc3374cb9aa993f2690c109a06cbb570e0e",
+      "kind": "OWNED_SCOPED_PATH"
+    },
+    {
+      "path": "docs/mcr/evidence/service-policy-composition/native07/native/native.json",
+      "mode": "100644",
+      "bytes": 9138,
+      "sha256": "e2bca37c51ecb4c42c75b3eb471a9cb485c01f50c4b33c9d332c0675b043f7b0",
+      "blob": "da91541c8159fec7c7d3431556836b069480cb81",
+      "kind": "OWNED_SCOPED_PATH"
+    },
+    {
+      "path": "docs/mcr/evidence/service-policy-composition/native07/primary-census.json",
+      "mode": "100644",
+      "bytes": 12436,
+      "sha256": "944bdb8d88368e20fb3d13dc1e2f69da41b5419f39ea2912b762562a1cbc2e7c",
+      "blob": "1c752a8e21959b5fc97a274396d2b9a19318af0d",
+      "kind": "OWNED_SCOPED_PATH"
+    },
+    {
+      "path": "docs/mcr/evidence/service-policy-composition/native07/primary-initial.json",
+      "mode": "100644",
+      "bytes": 10235,
+      "sha256": "447682c04d3f9c0f5cbfbcf2af15fe6d669b1770b795942463a40883cb92084c",
+      "blob": "70e6d3c8653d0b9fad3b3c5c061a4f2c9e0a6ff2",
+      "kind": "OWNED_SCOPED_PATH"
+    },
+    {
+      "path": "docs/mcr/evidence/service-policy-composition/native07/supervisor.json",
+      "mode": "100644",
+      "bytes": 52466,
+      "sha256": "f3f465a1d3e15ab007d0c84c5d8759ef9f8c806a906edb42160dc6c03381871d",
+      "blob": "68588443f220a233c287b7add4bc97644d64315b",
+      "kind": "OWNED_SCOPED_PATH"
+    },
+    {
+      "path": "docs/mcr/evidence/service-policy-composition/qualify.py",
+      "mode": "100644",
+      "bytes": 19063,
+      "sha256": "0a880389cea8026465f1460bab0a971c1613f6eccbf24799500a7e7fb3488342",
+      "blob": "132b11907236a02ac3c30689ea4b64fd6445a618",
+      "kind": "OWNED_SCOPED_PATH"
+    },
+    {
+      "path": "docs/mcr/evidence/service-policy-composition/receipt-regression.py",
+      "mode": "100644",
+      "bytes": 5933,
+      "sha256": "779d5404976b0815d9b798a835c06d75adbc120e3fc5749e9fd9d8bc2357158d",
+      "blob": "afe90df865c936f71b0198923f702800c29ac571",
+      "kind": "OWNED_SCOPED_PATH"
+    },
+    {
+      "path": "docs/mcr/evidence/service-policy-composition/receipt-shape-fix/after.json",
+      "mode": "100644",
+      "bytes": 6847,
+      "sha256": "24a82be48727062365bc063fad48a0e50a7df667fdf9a31b40ae980c0cc1fb29",
+      "blob": "0e5511c27abcac734fb1b82cfe868b69cc42fd2b",
+      "kind": "OWNED_SCOPED_PATH"
+    },
+    {
+      "path": "docs/mcr/evidence/service-policy-composition/receipt-shape-fix/before.json",
+      "mode": "100644",
+      "bytes": 6841,
+      "sha256": "087042ad2756039f6c2b8dc676e219d411cb624e81aac1855a293e47b4360190",
+      "blob": "c58d7fce72e848d7fdb4b8b305e5a2b839e91848",
+      "kind": "OWNED_SCOPED_PATH"
+    },
+    {
+      "path": "docs/mcr/evidence/service-policy-composition/receipt-shape-fix/change.json",
+      "mode": "100644",
+      "bytes": 360,
+      "sha256": "0b1bcdfe2c8193167af30905d714828f45de057c7a2b36ca9a26ce5b8e9658e7",
+      "blob": "9514f8a219e100357a404696df86c4d269ea7ab6",
+      "kind": "OWNED_SCOPED_PATH"
+    },
+    {
+      "path": "docs/mcr/evidence/service-policy-composition/shared-service-policy-current.patch",
+      "mode": "100644",
+      "bytes": 8478,
+      "sha256": "b6252f974e945a28a6be699c48d380559c8c2ee48f1999844c9b185d5404459a",
+      "blob": "980235edbb8500dfac43d229e3bfc98e35bf08be",
+      "kind": "OWNED_SCOPED_PATH"
+    },
+    {
+      "path": "docs/mcr/evidence/service-policy-composition/shared-service-policy.patch",
+      "mode": "100644",
+      "bytes": 8114,
+      "sha256": "bbaa0d83d92b69312fc8633010edb061452e24bc111ccf3e13db62ee83073f0c",
+      "blob": "5b9fe04dcbec67de67f51d9ef7589ed029c5be01",
+      "kind": "OWNED_SCOPED_PATH"
+    },
+    {
+      "path": "docs/mcr/evidence/service-policy-composition/source-inputs.json",
+      "mode": "100644",
+      "bytes": 3705,
+      "sha256": "4d1c1e43fa96bd513c924d9ed429c2d7cdafffd86f49dd87c812d6a6dd691aa5",
+      "blob": "6865dedb8a3518ac2c943162fb719a132131010c",
+      "kind": "OWNED_SCOPED_PATH"
+    },
+    {
+      "path": "docs/mcr/evidence/service-policy-composition/source-qualification.json",
+      "mode": "100644",
+      "bytes": 2997,
+      "sha256": "2f5a7d7ea99f436beaa9ab6af07404bf70da85ba5d8b7b435b6cf8d6793dcfb2",
+      "blob": "30e8b2883704746f01c954a3783e25904bf0d811",
+      "kind": "OWNED_SCOPED_PATH"
+    },
+    {
+      "path": "docs/mcr/evidence/service-policy-composition/source01-full-release.json",
+      "mode": "100644",
+      "bytes": 7954,
+      "sha256": "4873f03867f68db56910702e4201c2272f7724559636ea939b942c0caf71d0df",
+      "blob": "89d789ffff2735ba2783b165cba224664cb53350",
+      "kind": "OWNED_SCOPED_PATH"
+    },
+    {
+      "path": "docs/mcr/evidence/service-policy-composition/source01/guard-config.json",
+      "mode": "100644",
+      "bytes": 2451,
+      "sha256": "d58bf61c82062a3fbab659e3d1207df541cd3427e5e661f24964c37cc63010e0",
+      "blob": "e7f4bee7bd7943c0b54b517dd877a4970d847d1c",
+      "kind": "OWNED_SCOPED_PATH"
+    },
+    {
+      "path": "docs/mcr/evidence/service-policy-composition/source01/guard.ready",
+      "mode": "100644",
+      "bytes": 1940,
+      "sha256": "f9d35c39fc46b421f813c4047926ae19445ea22be7af5dda3f0b6374bb69d5ee",
+      "blob": "11922bd7f0b7f89e9b2bc79788f34b3f5b63d805",
+      "kind": "OWNED_SCOPED_PATH"
+    },
+    {
+      "path": "docs/mcr/evidence/service-policy-composition/source01/guard.stop",
+      "mode": "100644",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "blob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+      "kind": "OWNED_SCOPED_PATH"
+    },
+    {
+      "path": "docs/mcr/evidence/service-policy-composition/source01/guardian.json",
+      "mode": "100644",
+      "bytes": 6051,
+      "sha256": "44329c30808ec1a040e9833fad626b807564b311c76bab61d45427ef24a7d994",
+      "blob": "dbdb09f64499fbf9f723c056f87654401e039b7d",
+      "kind": "OWNED_SCOPED_PATH"
+    },
+    {
+      "path": "docs/mcr/evidence/service-policy-composition/source01/tests.log",
+      "mode": "100644",
+      "bytes": 69,
+      "sha256": "529123321f8843069fa1c26a1bdc15d3860545927020e99f5ac027bfc1690e57",
+      "blob": "bbb89603afb355b96cdd2ab3e878b6a1c8bf14aa",
+      "kind": "OWNED_SCOPED_PATH"
+    },
+    {
+      "path": "docs/mcr/evidence/service-policy-composition/source02-preparation.json",
+      "mode": "100644",
+      "bytes": 1610,
+      "sha256": "6fa22fee17d3778c4090f72ce094976f5e84d814053ca0ab77fc3f2654abf662",
+      "blob": "df57e7e5b8f4bb5353ec37ec664de8bb48ae6934",
+      "kind": "OWNED_SCOPED_PATH"
+    },
+    {
+      "path": "docs/mcr/evidence/service-policy-composition/source02/ACCEPT.json",
+      "mode": "100644",
+      "bytes": 1454,
+      "sha256": "f85022e7d4f671a8d8793a2d34276887ec0d44b0d30bddaaf85274029882f082",
+      "blob": "ea23b3b3e6bea25321a7a4915eeaf343e4d7f6ad",
+      "kind": "OWNED_SCOPED_PATH"
+    },
+    {
+      "path": "docs/mcr/evidence/service-policy-composition/source02/FULL.json",
+      "mode": "100644",
+      "bytes": 1214,
+      "sha256": "285d55df1db43960e709e99665797aaa495c6e612df296fdff4580eef3cd3e12",
+      "blob": "daa2c8deaad59a15f793ed3b0e32af4a800305e7",
+      "kind": "OWNED_SCOPED_PATH"
+    },
+    {
+      "path": "docs/mcr/evidence/service-policy-composition/source02/guard-config.json",
+      "mode": "100644",
+      "bytes": 3313,
+      "sha256": "25726fc2eafafc4b636d1a35e0420bec3badec8e24a5effeb863485a4e0ac15f",
+      "blob": "c381127d62d8f07bc2be0130fc4020b41a3c8f4e",
+      "kind": "OWNED_SCOPED_PATH"
+    },
+    {
+      "path": "docs/mcr/evidence/service-policy-composition/source02/guard.stop",
+      "mode": "100644",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "blob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+      "kind": "OWNED_SCOPED_PATH"
+    },
+    {
+      "path": "docs/mcr/evidence/service-policy-composition/source02/guardian.json",
+      "mode": "100644",
+      "bytes": 106,
+      "sha256": "b6eb1aca61b3d68095573056072c5e4df67137f254049e9f7fe5f6ddd4cb33b8",
+      "blob": "55cde9ae1e4dac7b8815db500bd73f4c6c5bf777",
+      "kind": "OWNED_SCOPED_PATH"
+    },
+    {
+      "path": "docs/mcr/evidence/service-policy-composition/source02/supervisor.json",
+      "mode": "100644",
+      "bytes": 2632,
+      "sha256": "c545a2c21800ffe90dc488bcb36a516b38b7d62a07e4477d7875a158fc27f9be",
+      "blob": "756c0aad355f7fcd050b61a9792793a1d1d34802",
+      "kind": "OWNED_SCOPED_PATH"
+    },
+    {
+      "path": "docs/mcr/evidence/service-policy-composition/source03/ACCEPT.json",
+      "mode": "100644",
+      "bytes": 1973,
+      "sha256": "34f9b7bdfd3ee64f6b3c222d58eea2eb7e4ec9b56b3083e0b8e54c65e2ecb70b",
+      "blob": "2b4c1e13ebbd653e79a413b4abb1bae4600fcd03",
+      "kind": "OWNED_SCOPED_PATH"
+    },
+    {
+      "path": "docs/mcr/evidence/service-policy-composition/source03/FULL.json",
+      "mode": "100644",
+      "bytes": 1965,
+      "sha256": "12c4d6b583181aa2e4897db48747aa085d202156659009f3daa8ec115ca0a055",
+      "blob": "fdb1e867d54ef3732743f2a18be234282c7c7ac4",
+      "kind": "OWNED_SCOPED_PATH"
+    },
+    {
+      "path": "docs/mcr/evidence/service-policy-composition/source03/commands-progress.json",
+      "mode": "100644",
+      "bytes": 1178,
+      "sha256": "c436ee4129f34f2b82f766e8fb20506b2d82c8f7671ca796434f2af898bd6a8b",
+      "blob": "b390e6a3461116dc33a4bbe3fd69d79d47b8f9df",
+      "kind": "OWNED_SCOPED_PATH"
+    },
+    {
+      "path": "docs/mcr/evidence/service-policy-composition/source03/guard-config.json",
+      "mode": "100644",
+      "bytes": 3832,
+      "sha256": "232f0b4ac73b5afbbd86c537d8beb432383f4f22c467a64ecc40ccc06f384ed3",
+      "blob": "f3fe8647e66cd747aab8c90272f04941d6c0b5a7",
+      "kind": "OWNED_SCOPED_PATH"
+    },
+    {
+      "path": "docs/mcr/evidence/service-policy-composition/source03/guard.ready",
+      "mode": "100644",
+      "bytes": 10456,
+      "sha256": "183207f3cbf243a9f3e4ae7371cf89b64a6c356567d914d6037ee9e0c7cc16cd",
+      "blob": "9e2ec11a9a59fffccdf5112768a4739bd9fc4800",
+      "kind": "OWNED_SCOPED_PATH"
+    },
+    {
+      "path": "docs/mcr/evidence/service-policy-composition/source03/guard.stop",
+      "mode": "100644",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "blob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+      "kind": "OWNED_SCOPED_PATH"
+    },
+    {
+      "path": "docs/mcr/evidence/service-policy-composition/source03/guardian.json",
+      "mode": "100644",
+      "bytes": 21874,
+      "sha256": "bfe23a22a1575335114d75e2e0deacd4be6cb35c15a5075d19a1e114b7bee4b3",
+      "blob": "45ac3b229c9460246ad053fbb9142ce1a6a7f143",
+      "kind": "OWNED_SCOPED_PATH"
+    },
+    {
+      "path": "docs/mcr/evidence/service-policy-composition/source03/lint.log",
+      "mode": "100644",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "blob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+      "kind": "OWNED_SCOPED_PATH"
+    },
+    {
+      "path": "docs/mcr/evidence/service-policy-composition/source03/primary-initial.json",
+      "mode": "100644",
+      "bytes": 9506,
+      "sha256": "0e1440f424536c7fb1a30404e2873e0699b2cf9f035762e40fe215efa68f0f1f",
+      "blob": "e5a30e91fbf5d03b20bf0f3464397f789b9b3f05",
+      "kind": "OWNED_SCOPED_PATH"
+    },
+    {
+      "path": "docs/mcr/evidence/service-policy-composition/source03/receipt-regression.log",
+      "mode": "100644",
+      "bytes": 76,
+      "sha256": "bdd1f915310fde803ccb44c6a55b26cb6195a4e8bf477429c987e7569983b0f6",
+      "blob": "ee78cc76ffacb4b2f3585aecc64c07cb033f9c77",
+      "kind": "OWNED_SCOPED_PATH"
+    },
+    {
+      "path": "docs/mcr/evidence/service-policy-composition/source03/supervisor.json",
+      "mode": "100644",
+      "bytes": 60033,
+      "sha256": "72cde1c415565c32f376cb61394ce3bb370b892b4ad9d9fa01599514c82ef840",
+      "blob": "f8a54a3362ad321cfedc3f07e8b49aebd8f9113e",
+      "kind": "OWNED_SCOPED_PATH"
+    },
+    {
+      "path": "docs/mcr/evidence/service-policy-composition/source03/tests.log",
+      "mode": "100644",
+      "bytes": 274,
+      "sha256": "9a39fada5d21c37fe13ebfe025bec5fea1517f22453940c475da0d14c2871792",
+      "blob": "7c6b34852ba9c08cac9e50d5f298fcf3e0ad29f0",
+      "kind": "OWNED_SCOPED_PATH"
+    },
+    {
+      "path": "docs/mcr/evidence/service-policy-composition/source03/types.log",
+      "mode": "100644",
+      "bytes": 8112,
+      "sha256": "bd428327f67354560452b975dc7f2b1336b53da308856e81400cd92dc0d5a40f",
+      "blob": "b379adc1d1975dabaeb2154565c2c9cf5e9d4b20",
+      "kind": "OWNED_SCOPED_PATH"
+    },
+    {
+      "path": "docs/mcr/evidence/service-policy-composition/source04/ACCEPT.json",
+      "mode": "100644",
+      "bytes": 2878,
+      "sha256": "4ea0ab0604d15853f1b096863a92a06b34f654db9344066034b21d78ee3b432e",
+      "blob": "a01552c51adabf02d6fe277f206cdbca169681c2",
+      "kind": "OWNED_SCOPED_PATH"
+    },
+    {
+      "path": "docs/mcr/evidence/service-policy-composition/source04/FULL.json",
+      "mode": "100644",
+      "bytes": 2868,
+      "sha256": "bc9ac8f2894dfdf0f40f50b07bbd3d1ad794c66c8f553801f88e7356fd0d3f43",
+      "blob": "b9d0d05ba60e09a306aa70187b0a749413d6692a",
+      "kind": "OWNED_SCOPED_PATH"
+    },
+    {
+      "path": "docs/mcr/evidence/service-policy-composition/source04/commands-progress.json",
+      "mode": "100644",
+      "bytes": 1181,
+      "sha256": "1d8b8e8b689c5335a71330e3632a058a6c5d4c8448c33abce774d21be17c1f1c",
+      "blob": "8b5455f349b877b2532516dacb1bd937292c4aff",
+      "kind": "OWNED_SCOPED_PATH"
+    },
+    {
+      "path": "docs/mcr/evidence/service-policy-composition/source04/guard-config.json",
+      "mode": "100644",
+      "bytes": 5490,
+      "sha256": "8fd76631f2e7903ec4573e962c2cfeea5f88a1a54ee86a77f61378e1aeac1177",
+      "blob": "465be6b6a6e91561be3a29f342da8e6220a08eb2",
+      "kind": "OWNED_SCOPED_PATH"
+    },
+    {
+      "path": "docs/mcr/evidence/service-policy-composition/source04/guard.ready",
+      "mode": "100644",
+      "bytes": 8450,
+      "sha256": "47957aa995d5b77345ece16252fce73d22e77e9fb2c39851c6f54488f142ec3f",
+      "blob": "0c016b2a9d01c4c6e3044c6f065ff1b9825d62e9",
+      "kind": "OWNED_SCOPED_PATH"
+    },
+    {
+      "path": "docs/mcr/evidence/service-policy-composition/source04/guard.stop",
+      "mode": "100644",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "blob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+      "kind": "OWNED_SCOPED_PATH"
+    },
+    {
+      "path": "docs/mcr/evidence/service-policy-composition/source04/guardian.json",
+      "mode": "100644",
+      "bytes": 18910,
+      "sha256": "1c9a921058bfcf215c312e08cd13376a8a47bfa250c932a873213f772b8f186d",
+      "blob": "b0c2af763caa64cbcba18f312cf9211638034f06",
+      "kind": "OWNED_SCOPED_PATH"
+    },
+    {
+      "path": "docs/mcr/evidence/service-policy-composition/source04/lint.log",
+      "mode": "100644",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "blob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+      "kind": "OWNED_SCOPED_PATH"
+    },
+    {
+      "path": "docs/mcr/evidence/service-policy-composition/source04/primary-initial.json",
+      "mode": "100644",
+      "bytes": 8007,
+      "sha256": "2615e0346164534f9b515284d14a2429fc33f5535b22df8b167023f974102c7c",
+      "blob": "878f208172e8de792022f17ea5a3568ded26a9c5",
+      "kind": "OWNED_SCOPED_PATH"
+    },
+    {
+      "path": "docs/mcr/evidence/service-policy-composition/source04/receipt-regression.log",
+      "mode": "100644",
+      "bytes": 77,
+      "sha256": "7b079e273871818bfc181c2680ef7661f39ed70ec984b8f36ef903fe6337ba99",
+      "blob": "44ac9fc72b045439160691d26a687c7d1e9ad2d6",
+      "kind": "OWNED_SCOPED_PATH"
+    },
+    {
+      "path": "docs/mcr/evidence/service-policy-composition/source04/supervisor.json",
+      "mode": "100644",
+      "bytes": 41555,
+      "sha256": "513c951a37d5dbb42118aa8ed12a5fb6f3f087460211e2639c9cdc6a2afb6aca",
+      "blob": "18c084ec42cc59947f448f4b7691ac14f8f42f0f",
+      "kind": "OWNED_SCOPED_PATH"
+    },
+    {
+      "path": "docs/mcr/evidence/service-policy-composition/source04/tests.log",
+      "mode": "100644",
+      "bytes": 274,
+      "sha256": "71f620732573ce24662a0fd271e85b22fdd8424787da952acda0b4420f8aa2e9",
+      "blob": "18729fc5ceb15063e2b5722307999575f039f1cf",
+      "kind": "OWNED_SCOPED_PATH"
+    },
+    {
+      "path": "docs/mcr/evidence/service-policy-composition/source04/types.log",
+      "mode": "100644",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "blob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+      "kind": "OWNED_SCOPED_PATH"
+    },
+    {
+      "path": "docs/mcr/evidence/service-policy-composition/source05-ordinary-preparation.json",
+      "mode": "100644",
+      "bytes": 1247,
+      "sha256": "44db35bb04794776b098aa4fcb25699e444876ee31a8446ad77ac672367d6b50",
+      "blob": "9179dcb93d4a28f4cd96367bff938dd59f7d5116",
+      "kind": "OWNED_SCOPED_PATH"
+    },
+    {
+      "path": "docs/mcr/evidence/service-policy-composition/source05/ACCEPT.json",
+      "mode": "100644",
+      "bytes": 3308,
+      "sha256": "9d550316be02dd429c1222fc93d6a5fcdd73ef382cfe06fc7c1e33f129c93e7f",
+      "blob": "391ef16848feac2e8233520185c21187c2891166",
+      "kind": "OWNED_SCOPED_PATH"
+    },
+    {
+      "path": "docs/mcr/evidence/service-policy-composition/source05/FULL.json",
+      "mode": "100644",
+      "bytes": 3445,
+      "sha256": "518a52758440368b7254973ee3d52e2e6e098c59dce9e720a5c7c9852c404d57",
+      "blob": "0d9344e255991ab6b8851c2bab2884d58fbf81d9",
+      "kind": "OWNED_SCOPED_PATH"
+    },
+    {
+      "path": "docs/mcr/evidence/service-policy-composition/source05/commands-progress.json",
+      "mode": "100644",
+      "bytes": 1947,
+      "sha256": "475afde75a4dec143f9d761964402bac6aa6578d08fd70cf86b7b27399197b00",
+      "blob": "052391fcecb531ceb0dc90c51f0ad6ab50bb913a",
+      "kind": "OWNED_SCOPED_PATH"
+    },
+    {
+      "path": "docs/mcr/evidence/service-policy-composition/source05/control-syntax.log",
+      "mode": "100644",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "blob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+      "kind": "OWNED_SCOPED_PATH"
+    },
+    {
+      "path": "docs/mcr/evidence/service-policy-composition/source05/guard-config.json",
+      "mode": "100644",
+      "bytes": 6051,
+      "sha256": "da05e80a34f2db6b30851b956f79407af7b24006a8366a655398350d8b1ee80a",
+      "blob": "9285f7859b8b8580f21c523ab7794b6600dcbfc4",
+      "kind": "OWNED_SCOPED_PATH"
+    },
+    {
+      "path": "docs/mcr/evidence/service-policy-composition/source05/guard.ready",
+      "mode": "100644",
+      "bytes": 8695,
+      "sha256": "737d43d12074557f424e55aef94a05888b58ca9a249f8dc753e099d79f918fe8",
+      "blob": "b45d98ca286850916cb42d02eb8c7bd0bd347a32",
+      "kind": "OWNED_SCOPED_PATH"
+    },
+    {
+      "path": "docs/mcr/evidence/service-policy-composition/source05/guard.stop",
+      "mode": "100644",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "blob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+      "kind": "OWNED_SCOPED_PATH"
+    },
+    {
+      "path": "docs/mcr/evidence/service-policy-composition/source05/guardian.json",
+      "mode": "100644",
+      "bytes": 18461,
+      "sha256": "54b2ae8cf3e1e51e6e435df3feb8ade3bcadda0c65323e294cb7cf53c153770d",
+      "blob": "8bebe3ebc606cea9ba63da6e7c0fa22ce9bda598",
+      "kind": "OWNED_SCOPED_PATH"
+    },
+    {
+      "path": "docs/mcr/evidence/service-policy-composition/source05/native-syntax.log",
+      "mode": "100644",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "blob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+      "kind": "OWNED_SCOPED_PATH"
+    },
+    {
+      "path": "docs/mcr/evidence/service-policy-composition/source05/primary-initial.json",
+      "mode": "100644",
+      "bytes": 8252,
+      "sha256": "942850418a2b166def7b8719e884d1e2d2357f85845fbd75841f604a6934f1ee",
+      "blob": "543340c482c03c23b4636078176c11cbf7a4c79f",
+      "kind": "OWNED_SCOPED_PATH"
+    },
+    {
+      "path": "docs/mcr/evidence/service-policy-composition/source05/receipt-regression.log",
+      "mode": "100644",
+      "bytes": 77,
+      "sha256": "7b079e273871818bfc181c2680ef7661f39ed70ec984b8f36ef903fe6337ba99",
+      "blob": "44ac9fc72b045439160691d26a687c7d1e9ad2d6",
+      "kind": "OWNED_SCOPED_PATH"
+    },
+    {
+      "path": "docs/mcr/evidence/service-policy-composition/source05/supervisor.json",
+      "mode": "100644",
+      "bytes": 41623,
+      "sha256": "761146d8c4e8278e0bf8eb52a0ff3e67df189efadf84ca92483d80fb1bd21a9b",
+      "blob": "8b81ffa73d1d46075700f80cec8e2d6940b2e3fb",
+      "kind": "OWNED_SCOPED_PATH"
+    },
+    {
+      "path": "docs/mcr/evidence/service-policy-composition/source05/typecheck-syntax.log",
+      "mode": "100644",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "blob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+      "kind": "OWNED_SCOPED_PATH"
+    },
+    {
+      "path": "docs/mcr/evidence/service-policy-composition/source05/types.log",
+      "mode": "100644",
+      "bytes": 54,
+      "sha256": "11070dfbd71cc10896cb9edac58e53f9e6c56486e660ef95d10a69a5dba67d4d",
+      "blob": "e1a02a9ab13db7fd1f443947cd52143b4f140feb",
+      "kind": "OWNED_SCOPED_PATH"
+    },
+    {
+      "path": "docs/mcr/evidence/service-policy-composition/source05/vitest.config-syntax.log",
+      "mode": "100644",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "blob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+      "kind": "OWNED_SCOPED_PATH"
+    },
+    {
+      "path": "docs/mcr/frontend/service-policy-composition.md",
+      "mode": "100644",
+      "bytes": 34340,
+      "sha256": "8ad3706ad9ee2b270548aec9ecd677069dbf6e2ed6531643eadd09d0a442ab0f",
+      "blob": "a65238851c71add3456bb48e413ecb6c8c552cdd",
+      "kind": "OWNED_SCOPED_PATH"
+    },
+    {
+      "path": "frontend/src/app/operations-composition/__tests__/service-policy-integration/composition.test.tsx",
+      "mode": "100644",
+      "bytes": 8230,
+      "sha256": "111f6fa43dae2d31b7eef31e0ebbf9f1e90aa8f47ef02acb1b37cac088330d71",
+      "blob": "76aa26fc2b6cab36797512b7e2cc279e668ff5d7",
+      "kind": "OWNED_SCOPED_PATH"
+    },
+    {
+      "path": "frontend/src/app/operations-composition/__tests__/service-policy-integration/default-app-native.mjs",
+      "mode": "100644",
+      "bytes": 13753,
+      "sha256": "a4d42833c118697410830658bd9727e5b68e3953939707cc5f841b9ddc0ae1dc",
+      "blob": "6ef48d7fcb53e7f2925863425dd573cf13815047",
+      "kind": "OWNED_SCOPED_PATH"
+    },
+    {
+      "path": "frontend/src/app/operations-composition/__tests__/service-policy-integration/default-app-server.mjs",
+      "mode": "100644",
+      "bytes": 4169,
+      "sha256": "ef1c3e5e4be47edef386d868d077175c1c714bf346275250e7ac301e6eef562a",
+      "blob": "013bc7498a03b1da1f4503b6751ee2dcb0f9d907",
+      "kind": "OWNED_SCOPED_PATH"
+    },
+    {
+      "path": "frontend/src/app/operations-composition/__tests__/service-policy-integration/fixture.ts",
+      "mode": "100644",
+      "bytes": 3161,
+      "sha256": "c64240893318bc77afe1f7e153e6d364035abb7b5b8a7520606a69d93072934a",
+      "blob": "0b3c710546414298ceee65cd0b3e3161a0a0f23d",
+      "kind": "OWNED_SCOPED_PATH"
+    },
+    {
+      "path": "frontend/src/app/operations-composition/__tests__/service-policy-integration/native.mjs",
+      "mode": "100644",
+      "bytes": 8380,
+      "sha256": "074b42b7254a2a1e7f716474fbfc280d95efe10c3743a2a05ab0dfd2b452b19a",
+      "blob": "02bd240e165192f81e680a53e7e173dcdb0f392d",
+      "kind": "OWNED_SCOPED_PATH"
+    },
+    {
+      "path": "frontend/src/app/operations-composition/__tests__/service-policy-integration/preview.html",
+      "mode": "100644",
+      "bytes": 346,
+      "sha256": "553398e96afeab0d6cf369407d104478cf4707ae519c9542137c95d7f47bbc6a",
+      "blob": "39ddad7267819cdc7dd364abe1864456e7ab6c06",
+      "kind": "OWNED_SCOPED_PATH"
+    },
+    {
+      "path": "frontend/src/app/operations-composition/__tests__/service-policy-integration/preview.tsx",
+      "mode": "100644",
+      "bytes": 2644,
+      "sha256": "1037870cef5fdeac90a127646e860d32cea270b581832fd8339796f0c2224877",
+      "blob": "ce1e1e44805d98385cb7ea956dcc9b4f5d9e9bb4",
+      "kind": "OWNED_SCOPED_PATH"
+    },
+    {
+      "path": "frontend/src/app/operations-composition/__tests__/service-policy-integration/typecheck.mjs",
+      "mode": "100644",
+      "bytes": 2040,
+      "sha256": "ed0e37f23d1c51adc71b01a8afcaf4edfd9ae5e2c5dcd8698fc7c1c9ca3dbee8",
+      "blob": "510651801a5558854c154aadc4b66da525ee8a4e",
+      "kind": "OWNED_SCOPED_PATH"
+    },
+    {
+      "path": "frontend/src/app/operations-composition/__tests__/service-policy-integration/vitest.config.mjs",
+      "mode": "100644",
+      "bytes": 438,
+      "sha256": "e3c97c3b4e9f8ae154f540b5449ffbf762ea8574abdf43197281cc48d4c95058",
+      "blob": "0004e0ba5375b9df349bb33414ae551cfd798403",
+      "kind": "OWNED_SCOPED_PATH"
+    },
+    {
+      "path": "frontend/src/app/operations-composition/owner.ts",
+      "mode": "100644",
+      "bytes": 12139,
+      "sha256": "6ac72f822b56602b824c615d1780117645aceace94ade1bf6695a5bd44dcb72e",
+      "blob": "7a86546519e18c55306403136bfd204cbab3f0be",
+      "kind": "EXACT_ADDITIVE_SHARED_HUNKS",
+      "preimage": {
+        "revision": "1907016b6aa41c17998acab691a83e99d0a80076",
+        "blob": "19210c8288a00186e3386c8f455ccb5b0230a42d",
+        "bytes": 11323,
+        "sha256": "f2580f4f9f08779ed0fd0832d3926510ed6b95372d2364cea119c78217916d81"
+      }
+    },
+    {
+      "path": "frontend/src/app/operations-composition/panel.tsx",
+      "mode": "100644",
+      "bytes": 6613,
+      "sha256": "9a9ea3df7ab3877eb6e565409109cd674153c4ab8ae5bb2db0c98395d452857d",
+      "blob": "a3cb53fc64935f2d780ef9c8b1a3d5f45bf9a25b",
+      "kind": "EXACT_ADDITIVE_SHARED_HUNKS",
+      "preimage": {
+        "revision": "1907016b6aa41c17998acab691a83e99d0a80076",
+        "blob": "3800f416681d403f4c522b3334bd2123a82dacf0",
+        "bytes": 6384,
+        "sha256": "565ee596ce1a6c5363f17d7976ea45feb3a89ab0ed4b605d2f824a4bd9b7561b"
+      }
+    }
+  ],
+  "manifestSelf": "docs/mcr/evidence/service-policy-composition/native-handoff.json",
+  "totalPublicationPaths": 171,
+  "newEvidenceIncludes": "All closed failed/partial source/native rounds, exact receipts, 17 immutable PNG, current qualification and source/canonical provenance; no raw artifact cleanup"
+}

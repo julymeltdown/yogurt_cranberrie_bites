@@ -1,5 +1,6 @@
 import type { SessionController } from '../../features/auth/model/session'
 import { createOperationsController, type OperationsController } from '../../features/admin/event'
+import { createServicePolicyController, type ServicePolicyController } from '../../features/admin/service-policy'
 import { equal, freeze, settingsSchema, type Settings } from '../../features/admin/event/model/contract'
 import type { OperatorContext, OperatorContextPort } from '../../features/admin/mural/contract'
 import { domainOperation } from '../../shared/api/domain'
@@ -20,6 +21,7 @@ export interface AdminCompositionState {
   readonly settings: Settings | null
   readonly operations: OperationsController | null
   readonly muralClosure: MuralClosureEntry | null
+  readonly servicePolicy: ServicePolicyController | null
   readonly reports: ReportsEntry | null
   readonly memberContent: MemberContentEntry | null
 }
@@ -27,11 +29,12 @@ interface Bundle {
   readonly decision: OperationsAccessContext
   readonly operations: OperationsController
   readonly muralClosure: MuralClosureEntry
+  readonly servicePolicy: ServicePolicyController
   readonly context: OperatorContextPort
   readonly stop: () => void
   readonly withdraw: () => void
 }
-const empty = (phase: AdminCompositionState['phase']): AdminCompositionState => Object.freeze({ phase, decision: null, settings: null, operations: null, muralClosure: null, reports: null, memberContent: null })
+const empty = (phase: AdminCompositionState['phase']): AdminCompositionState => Object.freeze({ phase, decision: null, settings: null, operations: null, muralClosure: null, reports: null, memberContent: null, servicePolicy: null })
 
 /** One full-scope lifetime above Admin panels; no independent Auth/cache/socket. */
 export function createAdminComposition(auth: SessionController, scope: PrivacyScope,
@@ -52,6 +55,8 @@ export function createAdminComposition(auth: SessionController, scope: PrivacySc
     const previousReports = reports
     reports = retainReports && previousReports?.isCurrent() ? previousReports : null
     bundle = null; join = null; state = Object.freeze({ ...empty(phase), reports, memberContent, decision: reports?.decision ?? memberContent?.decision ?? null })
+    // Scrub this retained child's private state after publishing null, before notifying borrowers.
+    previous?.servicePolicy.dispose()
     // Publish null before abort, child cleanup or any reentrant consumer callback.
     if (previousMemberContent !== memberContent) previousMemberContent?.dispose()
     notify(); pending?.abort()
@@ -66,6 +71,7 @@ export function createAdminComposition(auth: SessionController, scope: PrivacySc
   async function qualify(decision: OperationsAccessContext) {
     const attempt = version, request = new AbortController(); join = request
     let partialOperations: OperationsController | null = null, partialMural: MuralClosureEntry | null = null
+    let partialServicePolicy: ServicePolicyController | null = null
     try {
       const registered = domainOperation('getConcertSettings')
       if (!registered || registered.method !== 'GET' || registered.path !== '/api/concert/events/{eventId}/admin/settings') throw Error('Settings binding unavailable')
@@ -91,7 +97,10 @@ export function createAdminComposition(auth: SessionController, scope: PrivacySc
       partialOperations = operations
       const muralClosure = createMuralClosureEntry({ auth, scope: expected, context, now: access.moderatorNow })
       partialMural = muralClosure
+      const servicePolicy = createServicePolicyController({ auth, authority: access.authority, clock: access.clock })
+      partialServicePolicy = servicePolicy
       if (attempt !== version || !bound(decision)) return
+      if (servicePolicy.read().access !== 'ready') throw Error('Service policy operator context unavailable')
       const stop = operations.subscribe(() => {
         if (!bundle || bundle.operations !== operations || !bound(decision)) return
         if (operations.read().access !== 'ready') { access.withdraw(); return }
@@ -104,14 +113,15 @@ export function createAdminComposition(auth: SessionController, scope: PrivacySc
           eventRevision: next.event.revision, phase: next.event.phase })
         state = Object.freeze({ ...state, settings: next }); contextChanged(); notify()
       })
-      bundle = { decision, context, operations, muralClosure, stop, withdraw() { contextValue = null; contextChanged(); contextListeners.clear() } }
+      bundle = { decision, context, operations, muralClosure, servicePolicy, stop, withdraw() { contextValue = null; contextChanged(); contextListeners.clear() } }
       partialOperations = null; partialMural = null
+      partialServicePolicy = null
       join = null
-      state = Object.freeze({ phase: 'ready', decision, settings, operations, muralClosure, reports, memberContent }); notify()
+      state = Object.freeze({ phase: 'ready', decision, settings, operations, muralClosure, reports, memberContent, servicePolicy }); notify()
     } catch {
       if (attempt === version && current()) clear('unavailable', true)
     } finally {
-      partialMural?.dispose(); partialOperations?.dispose()
+      partialServicePolicy?.dispose(); partialMural?.dispose(); partialOperations?.dispose()
     }
   }
   function changed() {

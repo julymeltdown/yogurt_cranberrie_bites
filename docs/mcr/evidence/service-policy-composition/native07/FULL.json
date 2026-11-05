@@ -1,0 +1,99 @@
+{
+  "state": "ACTUAL_FULL",
+  "status": "PASS",
+  "fullAtEpoch": 1793845480.8960042,
+  "offer": {
+    "id": "FE38-DEFAULTADMIN-NATIVE07-0215",
+    "source": "4bcb4fe1b6ca16c9a2042e0b9414cc532fcbda0f",
+    "processes": 24,
+    "rssBytes": 4294967296,
+    "wholeBytes": 17179869184,
+    "newBytes": 268435456,
+    "temporaryBytes": 167772160,
+    "durableBytes": 41943040,
+    "admissionFreeBytes": 12884901888,
+    "afterAllFreeBytes": 9663676416,
+    "continuousFreeBytes": 8589934592,
+    "otherUpperBytes": 2684354560,
+    "minimumCarryBytes": 7143685338,
+    "spentTemporaryBytes": 109423795,
+    "ordinaryPrograms": {
+      "/private/tmp/mcr-publisher-412e-capacity-composition-delivery.py": "98523ce9d454f2fdfdc4080ca9fa11e6b724a9343217a8c2f03c44b16d854456",
+      "/private/tmp/mcr-publisher-412e-venue-plan-preflight.py": "e934c65738a0ce27c6cfe656e0092d60612a88448ff3f9f415a1860792d6264a",
+      "/private/tmp/mcr-paradise-notes-api-root153-0159/ordinary.py": "f3347ac741f1379f444c915c738a8580d5722301b3bba8d4b8ddda23e3aab2a1",
+      "/private/tmp/mcr-paradise-notes-api-root153-0221/ordinary.py": "27766baf5884d4bab1e72f262fda1df659b79f4f5679bfe1bfa9d840ed6a6566"
+    },
+    "acceptByUTC": "2026-11-05T03:15:00+00:00",
+    "priorFullPaths": [
+      "/Users/lhs/Desktop/mcr-worktrees/art-runtime/docs/mcr/evidence/service-policy-composition/source01-full-release.json",
+      "/Users/lhs/Desktop/mcr-worktrees/art-runtime/docs/mcr/evidence/service-policy-composition/source02/FULL.json",
+      "/Users/lhs/Desktop/mcr-worktrees/art-runtime/docs/mcr/evidence/service-policy-composition/source03/FULL.json",
+      "/Users/lhs/Desktop/mcr-worktrees/art-runtime/docs/mcr/evidence/service-policy-composition/source04/FULL.json",
+      "/Users/lhs/Desktop/mcr-worktrees/art-runtime/docs/mcr/evidence/service-policy-composition/source05/FULL.json",
+      "/Users/lhs/Desktop/mcr-worktrees/art-runtime/docs/mcr/evidence/service-policy-composition/native01/FULL.json",
+      "/Users/lhs/Desktop/mcr-worktrees/art-runtime/docs/mcr/evidence/service-policy-composition/native02/FULL.json",
+      "/Users/lhs/Desktop/mcr-worktrees/art-runtime/docs/mcr/evidence/service-policy-composition/native03/FULL.json",
+      "/Users/lhs/Desktop/mcr-worktrees/art-runtime/docs/mcr/evidence/service-policy-composition/native04/FULL.json",
+      "/Users/lhs/Desktop/mcr-worktrees/art-runtime/docs/mcr/evidence/service-policy-composition/native05/FULL.json",
+      "/Users/lhs/Desktop/mcr-worktrees/art-runtime/docs/mcr/evidence/service-policy-composition/native06/FULL.json"
+    ],
+    "peerFullReceipts": [
+      {
+        "ownerThreadId": "01a1a5d9-6950-7920-8c80-5214d4ce0eaf",
+        "offerId": "PI12-OPERATIONS-SOURCE01-0111",
+        "acceptedAtEpoch": 1793841168.846922,
+        "path": "/private/tmp/mcr-pi12-operations-source01-0111/FULL.json",
+        "sha256": "201ad2eabcf46e7e311b34dd3292019f399d9e7a576e35f1190dfa77196b9b1a"
+      },
+      {
+        "ownerThreadId": "01a19f83-2c2a-7fa0-a98d-1c4f5f65cb3c",
+        "offerId": "PI12-REPORT-ERROR-NETWORK-SOURCE03-0116",
+        "acceptedAtEpoch": 1793841406.9410958,
+        "path": "/Users/lhs/Desktop/mcr-worktrees/fe-ref-map/docs/mcr/evidence/parade-ink-report-error-network/source03/guardian.json",
+        "sha256": "2f9c914666e8eabc0827d43d77ae8262ac6c07dadb44eb46db97b0fd2b9fac89"
+      }
+    ],
+    "kind": "browser",
+    "ordinaryReservedBytes": 41943040,
+    "ordinaryRolePins": [
+      {
+        "ownerThreadId": "01a1a153-1227-7e72-801f-a2a6b91981e1",
+        "offerId": "AM-FE-N01-API-PREP128-0159",
+        "acceptedAtEpoch": 1793843766.393444,
+        "script": "/private/tmp/mcr-paradise-notes-api-root153-0159/ordinary.py",
+        "phase": "SOURCE_AUTHORING",
+        "role": "Bounded Notes-only source preparation; no executable qualification"
+      },
+      {
+        "ownerThreadId": "01a1a153-1227-7e72-801f-a2a6b91981e1",
+        "offerId": "ROOT153-N01-SEALPREP16-0221",
+        "acceptedAtEpoch": 1793845236.666132,
+        "script": "/private/tmp/mcr-paradise-notes-api-root153-0221/ordinary.py",
+        "phase": "SOURCE_AUTHORING",
+        "role": "Bounded Notes-only source preparation; no executable qualification"
+      }
+    ],
+    "priorPngCount": 6,
+    "priorPngBytes": 1571110,
+    "prerequisiteRelease": {
+      "ownerThreadId": "01a1a204-c583-7670-965a-4891b8b1289e",
+      "path": "/Users/lhs/Desktop/mcr-worktrees/fe-wall-tools-b-204/docs/mcr/evidence/venue-community/native-round-02/release.json",
+      "sha256": "db29519306eba7350e22f70a0657f06923079ab1a88c99b0e828e7ec4f9663ea",
+      "actualFullEpoch": 1793845315.564598
+    },
+    "acceptedUTC": "2026-11-05T02:24:29.220238+00:00",
+    "workDeadline": "2026-11-05T02:29:29.220238+00:00",
+    "deadline": "2026-11-05T02:30:29.220238+00:00"
+  },
+  "remainingOwned": [],
+  "privateTempAbsent": true,
+  "dependencyLinkAbsent": true,
+  "browserServerTargetResources": 0,
+  "supervisor": "/Users/lhs/Desktop/mcr-worktrees/art-runtime/docs/mcr/evidence/service-policy-composition/native07/supervisor.json",
+  "qualification": [
+    {
+      "label": "actual-default-app-native",
+      "exit": 0
+    }
+  ]
+}

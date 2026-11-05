@@ -1,0 +1,70 @@
+{
+  "root": "/Users/lhs/Desktop/mcr-worktrees/art-runtime",
+  "base": "bd087fde2c67933b53d1666d3656af5ac98a7c19",
+  "supervisor": 80928,
+  "supervisorIdentity": {
+    "pid": 80928,
+    "parent": 49590,
+    "group": 80928,
+    "rss": 26640384,
+    "birth": "Thu Nov 5 10:17:42 2026",
+    "command": "/Library/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python -B /Users/lhs/Desktop/mcr-worktrees/art-runtime/docs/mcr/evidence/service-policy-composition/qualify.py",
+    "executable": "/Library/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python"
+  },
+  "offer": {
+    "id": "FE38-COMPOSITION-SOURCE02-0113",
+    "source": "82b55c8625d852b7a7cdafa1981543c2f057b41c",
+    "processes": 12,
+    "rssBytes": 3221225472,
+    "wholeBytes": 34359738368,
+    "newBytes": 134217728,
+    "temporaryBytes": 100663296,
+    "durableBytes": 25165824,
+    "admissionFreeBytes": 11811160064,
+    "afterAllFreeBytes": 9663676416,
+    "continuousFreeBytes": 8589934592,
+    "otherUpperBytes": 2684354560,
+    "minimumCarryBytes": 4709222962,
+    "spentTemporaryBytes": 19135232,
+    "ordinaryPrograms": {
+      "/private/tmp/mcr-publisher-412e-capacity-composition-delivery.py": "98523ce9d454f2fdfdc4080ca9fa11e6b724a9343217a8c2f03c44b16d854456"
+    },
+    "acceptedUTC": "2026-11-05T01:17:42.255408+00:00",
+    "workDeadline": "2026-11-05T01:20:42.255408+00:00",
+    "deadline": "2026-11-05T01:21:42.255408+00:00"
+  },
+  "mode": "source",
+  "temporary": "/private/tmp/mcr-fe38-composition-7g8y90fn",
+  "evidence": "/Users/lhs/Desktop/mcr-worktrees/art-runtime/docs/mcr/evidence/service-policy-composition",
+  "fixedCarry": 4709222962,
+  "wholeRoots": [
+    "/Users/lhs/Desktop/mcr-worktrees/art-runtime",
+    "/Users/lhs/Desktop/mcr/frontend/node_modules",
+    "/Users/lhs/Desktop/mcr-tools",
+    "/Users/lhs/Desktop/mcr/.git",
+    "/Library/Frameworks/Python.framework/Versions/3.14",
+    "/opt/homebrew/Cellar/git/2.55.0",
+    "/opt/homebrew/opt/git/libexec/git-core",
+    "/opt/homebrew/bin/git"
+  ],
+  "workDeadline": 1793841642.255408,
+  "stop": "/Users/lhs/Desktop/mcr-worktrees/art-runtime/docs/mcr/evidence/service-policy-composition/source02/guard.stop",
+  "ready": "/Users/lhs/Desktop/mcr-worktrees/art-runtime/docs/mcr/evidence/service-policy-composition/source02/guard.ready",
+  "activeChild": "/Users/lhs/Desktop/mcr-worktrees/art-runtime/docs/mcr/evidence/service-policy-composition/source02/active-child.pid",
+  "report": "/Users/lhs/Desktop/mcr-worktrees/art-runtime/docs/mcr/evidence/service-policy-composition/source02/guardian.json",
+  "spentTemporaryBytes": 19135232,
+  "ordinaryReservedBytes": 8388608,
+  "ordinaryPrograms": {
+    "/private/tmp/mcr-publisher-412e-capacity-composition-delivery.py": "98523ce9d454f2fdfdc4080ca9fa11e6b724a9343217a8c2f03c44b16d854456"
+  },
+  "freshPaths": [
+    "frontend/src/features/admin/service-policy",
+    "docs/mcr/frontend/admin-service-policy.md",
+    "docs/mcr/evidence/admin-service-policy",
+    "frontend/src/app/operations-composition/owner.ts",
+    "frontend/src/app/operations-composition/panel.tsx",
+    "frontend/src/app/operations-composition/__tests__/service-policy-integration",
+    "docs/mcr/frontend/service-policy-composition.md",
+    "docs/mcr/evidence/service-policy-composition"
+  ]
+}

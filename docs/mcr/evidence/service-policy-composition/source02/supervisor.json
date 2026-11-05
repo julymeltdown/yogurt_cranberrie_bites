@@ -1,0 +1,96 @@
+{
+  "offer": {
+    "id": "FE38-COMPOSITION-SOURCE02-0113",
+    "source": "82b55c8625d852b7a7cdafa1981543c2f057b41c",
+    "processes": 12,
+    "rssBytes": 3221225472,
+    "wholeBytes": 34359738368,
+    "newBytes": 134217728,
+    "temporaryBytes": 100663296,
+    "durableBytes": 25165824,
+    "admissionFreeBytes": 11811160064,
+    "afterAllFreeBytes": 9663676416,
+    "continuousFreeBytes": 8589934592,
+    "otherUpperBytes": 2684354560,
+    "minimumCarryBytes": 4709222962,
+    "spentTemporaryBytes": 19135232,
+    "ordinaryPrograms": {
+      "/private/tmp/mcr-publisher-412e-capacity-composition-delivery.py": "98523ce9d454f2fdfdc4080ca9fa11e6b724a9343217a8c2f03c44b16d854456"
+    },
+    "acceptedUTC": "2026-11-05T01:17:42.255408+00:00",
+    "workDeadline": "2026-11-05T01:20:42.255408+00:00",
+    "deadline": "2026-11-05T01:21:42.255408+00:00"
+  },
+  "mode": "source",
+  "source": "82b55c8625d852b7a7cdafa1981543c2f057b41c",
+  "commands": [],
+  "status": "FAIL",
+  "startedUTC": "2026-11-05T01:17:42.255408+00:00",
+  "rssPeak": 0,
+  "processPeak": 0,
+  "temporaryPeak": 0,
+  "durablePeak": 0,
+  "wholePeak": 4709222962,
+  "freeMinimum": 23708868608,
+  "inventory": {
+    "total": 4668688654,
+    "roots": [
+      {
+        "root": "/Users/lhs/Desktop/mcr-worktrees/art-runtime",
+        "bytes": 1500160704,
+        "inodes": 18233
+      },
+      {
+        "root": "/Users/lhs/Desktop/mcr/frontend/node_modules",
+        "bytes": 438891729,
+        "inodes": 13420
+      },
+      {
+        "root": "/Users/lhs/Desktop/mcr-tools",
+        "bytes": 419021528,
+        "inodes": 8089
+      },
+      {
+        "root": "/Users/lhs/Desktop/mcr/.git",
+        "bytes": 1197276672,
+        "inodes": 3815
+      },
+      {
+        "root": "/Library/Frameworks/Python.framework/Versions/3.14",
+        "bytes": 1046142375,
+        "inodes": 28412
+      },
+      {
+        "root": "/opt/homebrew/Cellar/git/2.55.0",
+        "bytes": 67168482,
+        "inodes": 1839
+      },
+      {
+        "root": "/opt/homebrew/opt/git/libexec/git-core",
+        "bytes": 0,
+        "inodes": 0
+      },
+      {
+        "root": "/opt/homebrew/bin/git",
+        "bytes": 27164,
+        "inodes": 2
+      }
+    ]
+  },
+  "carryBoundBytes": 4709222962,
+  "failure": "RuntimeError: Independent guardian interrupted allocation",
+  "cleanupErrors": [],
+  "guardian": {
+    "breach": "AttributeError: 'NoneType' object has no attribute 'get'",
+    "samples": 0,
+    "peaks": {}
+  },
+  "ownedPids": [
+    81384,
+    81443
+  ],
+  "aliveOwnedPids": [],
+  "privateTempAbsent": true,
+  "dependencyLinkAbsent": true,
+  "endedUTC": "2026-11-05T01:17:43.994641+00:00"
+}

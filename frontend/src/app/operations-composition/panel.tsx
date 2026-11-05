@@ -1,6 +1,7 @@
 import { useEffect, useState, useSyncExternalStore } from 'react'
 import { Link, matchPath, useLocation } from 'react-router-dom'
 import { EventOperations } from '../../features/admin/event'
+import { ServicePolicyOperations } from '../../features/admin/service-policy'
 import { PlacesOperations } from '../../features/admin/places'
 import { AuditOperations } from '../../features/admin/audit'
 import { ReportReviewScreen } from '../../features/admin/reports'
@@ -13,7 +14,7 @@ import { usePorts } from '../access'
 import type { ActiveScope, ShellPorts } from '../ports'
 import type { AdminComposition, AdminCompositionState } from './owner'
 
-const initial: AdminCompositionState = Object.freeze({ phase: 'idle', decision: null, settings: null, operations: null, muralClosure: null, reports: null, memberContent: null })
+const initial: AdminCompositionState = Object.freeze({ phase: 'idle', decision: null, settings: null, operations: null, muralClosure: null, reports: null, memberContent: null, servicePolicy: null })
 const noSubscription = () => () => {}
 const initialRead = () => initial
 const unavailable: AdminCompositionState = Object.freeze({ ...initial, phase: 'unavailable' })
@@ -61,7 +62,8 @@ export function DefaultAdminPanel({ scope }: { scope: ActiveScope }) {
           <p role="status">{review.opening ? 'Opening the current authorized review.' : 'A valid member reference and an available review slot are required. Open reviews remain retained.'}</p></section>
       : ready ? <>
       <p>Current event: {state.settings?.event.title} · {state.settings?.event.phase} · revision {state.settings?.event.revision}.</p>
-      {pathname === '/admin' || pathname === '/admin/event' ? <EventOperations controller={state.operations!} summaryOnly={pathname === '/admin'} />
+      {pathname === '/admin' || pathname === '/admin/event' ? <><EventOperations controller={state.operations!} summaryOnly={pathname === '/admin'} />
+        {pathname === '/admin/event' && state.servicePolicy && <ServicePolicyOperations controller={state.servicePolicy} />}</>
         : pathname === '/admin/places' ? <PlacesOperations controller={state.operations!} />
           : pathname === '/admin/audit' ? <AuditOperations controller={state.operations!} />
             : pathname === '/admin/mural' || pathname === '/admin/archive' ? <MuralClosurePanel entry={state.muralClosure!} view={pathname === '/admin/mural' ? 'mural' : 'closure'} />

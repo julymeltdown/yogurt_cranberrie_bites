@@ -1,0 +1,96 @@
+{
+  "status": "FAIL",
+  "qualification": "ACTUAL_MAIN_ROUTER_ADMINBOUNDARY_DEFAULTPORTS_CANONICAL_AUTH_CURRENT_ADMIN_COMPOSITION_CONTROLLED_HTTP",
+  "limits": "Real backend, measured production-clock cohort, World ticket, physical device and Parade Ink visual acceptance NOT_RUN.",
+  "cases": [
+    {
+      "width": 360,
+      "status": "PASS",
+      "checks": [
+        "actual-main-canonical-email-sign-in",
+        "default-admin-event-and-policy-mounted",
+        "keyboard-review-cancel-focus",
+        "cancel-no-write",
+        "no-horizontal-overflow",
+        "policy-targets-at-least44"
+      ]
+    }
+  ],
+  "captures": [
+    "actual-default-admin-confirmation-360.png",
+    "actual-default-admin-confirmation-390.png",
+    "actual-default-admin-conflict-390.png",
+    "actual-default-admin-pending-390.png",
+    "actual-default-admin-member-content-sibling-390.png",
+    "failure.png"
+  ],
+  "errors": [],
+  "requests": [
+    {
+      "width": 360,
+      "requests": [
+        {
+          "method": "GET",
+          "path": "/api/auth/capabilities",
+          "operation": null,
+          "key": null
+        },
+        {
+          "method": "POST",
+          "path": "/api/auth/login",
+          "operation": null,
+          "key": null
+        },
+        {
+          "method": "GET",
+          "path": "/api/auth/enrollment/admission",
+          "operation": null,
+          "key": null
+        },
+        {
+          "method": "GET",
+          "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/me/operations-access",
+          "operation": null,
+          "key": null
+        },
+        {
+          "method": "GET",
+          "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/admin/settings",
+          "operation": null,
+          "key": null
+        },
+        {
+          "method": "GET",
+          "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/admin/settings",
+          "operation": null,
+          "key": null
+        },
+        {
+          "method": "GET",
+          "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/admin/overview",
+          "operation": null,
+          "key": null
+        },
+        {
+          "method": "GET",
+          "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/admin/notices",
+          "operation": null,
+          "key": null
+        },
+        {
+          "method": "GET",
+          "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/service-policy",
+          "operation": null,
+          "key": null
+        }
+      ]
+    }
+  ],
+  "pngBytes": 1571110,
+  "browser": "156.0.8078.80",
+  "failure": {
+    "stage": "390/pending",
+    "message": "Error: expect(locator).toBeVisible() failed\n\nLocator: getByRole('region', { name: 'Service policy', exact: true }).getByText('unknown', { exact: true })\nExpected: visible\nTimeout: 5000ms\nError: element(s) not found\n\nCall log:\n  - Expect \"to.be.visible\" with timeout 5000ms\n  - waiting for getByRole('region', { name: 'Service policy', exact: true }).getByText('unknown', { exact: true })\n"
+  },
+  "resourcesClosed": true
+}

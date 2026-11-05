@@ -1,0 +1,96 @@
+{
+  "state": "ACTUAL_FULL",
+  "status": "PASS",
+  "fullAtEpoch": 1793842087.4247959,
+  "offer": {
+    "id": "FE38-COMPOSITION-SOURCE05-0120",
+    "source": "95d5bd33fd10f1566e3a287e1559ec1dc67723cd",
+    "processes": 12,
+    "rssBytes": 3221225472,
+    "wholeBytes": 34359738368,
+    "newBytes": 134217728,
+    "temporaryBytes": 100663296,
+    "durableBytes": 25165824,
+    "admissionFreeBytes": 11811160064,
+    "afterAllFreeBytes": 9663676416,
+    "continuousFreeBytes": 8589934592,
+    "otherUpperBytes": 2684354560,
+    "minimumCarryBytes": 4858958057,
+    "spentTemporaryBytes": 40845952,
+    "ordinaryPrograms": {
+      "/private/tmp/mcr-publisher-412e-capacity-composition-delivery.py": "98523ce9d454f2fdfdc4080ca9fa11e6b724a9343217a8c2f03c44b16d854456",
+      "/private/tmp/mcr-publisher-412e-venue-plan-preflight.py": "e934c65738a0ce27c6cfe656e0092d60612a88448ff3f9f415a1860792d6264a"
+    },
+    "acceptByUTC": "2026-11-05T02:10:00+00:00",
+    "controlRegressionAuthorized": true,
+    "priorFullPaths": [
+      "/Users/lhs/Desktop/mcr-worktrees/art-runtime/docs/mcr/evidence/service-policy-composition/source01-full-release.json",
+      "/Users/lhs/Desktop/mcr-worktrees/art-runtime/docs/mcr/evidence/service-policy-composition/source02/FULL.json",
+      "/Users/lhs/Desktop/mcr-worktrees/art-runtime/docs/mcr/evidence/service-policy-composition/source03/FULL.json",
+      "/Users/lhs/Desktop/mcr-worktrees/art-runtime/docs/mcr/evidence/service-policy-composition/source04/FULL.json"
+    ],
+    "sharedNewCeilingAcross": [
+      "FE38-COMPOSITION-SOURCE03-0120",
+      "FE38-COMPOSITION-SOURCE04-0120",
+      "FE38-COMPOSITION-SOURCE05-0120"
+    ],
+    "peerFullReceipts": [
+      {
+        "ownerThreadId": "01a1a5d9-6950-7920-8c80-5214d4ce0eaf",
+        "offerId": "PI12-OPERATIONS-SOURCE01-0111",
+        "acceptedAtEpoch": 1793841168.846922,
+        "path": "/private/tmp/mcr-pi12-operations-source01-0111/FULL.json",
+        "sha256": "201ad2eabcf46e7e311b34dd3292019f399d9e7a576e35f1190dfa77196b9b1a"
+      },
+      {
+        "ownerThreadId": "01a19f83-2c2a-7fa0-a98d-1c4f5f65cb3c",
+        "offerId": "PI12-REPORT-ERROR-NETWORK-SOURCE03-0116",
+        "acceptedAtEpoch": 1793841406.9410958,
+        "path": "/Users/lhs/Desktop/mcr-worktrees/fe-ref-map/docs/mcr/evidence/parade-ink-report-error-network/source03/guardian.json",
+        "sha256": "2f9c914666e8eabc0827d43d77ae8262ac6c07dadb44eb46db97b0fd2b9fac89"
+      }
+    ],
+    "remainingCommands": [
+      "receipt-regression",
+      "types",
+      "native-syntax",
+      "vitest.config-syntax",
+      "typecheck-syntax",
+      "control-syntax"
+    ],
+    "acceptedUTC": "2026-11-05T01:27:48.424486+00:00",
+    "workDeadline": "2026-11-05T01:30:48.424486+00:00",
+    "deadline": "2026-11-05T01:31:48.424486+00:00"
+  },
+  "remainingOwned": [],
+  "privateTempAbsent": true,
+  "dependencyLinkAbsent": true,
+  "browserServerTargetResources": 0,
+  "supervisor": "/Users/lhs/Desktop/mcr-worktrees/art-runtime/docs/mcr/evidence/service-policy-composition/source05/supervisor.json",
+  "qualification": [
+    {
+      "label": "receipt-regression",
+      "exit": 0
+    },
+    {
+      "label": "types",
+      "exit": 0
+    },
+    {
+      "label": "native-syntax",
+      "exit": 0
+    },
+    {
+      "label": "vitest.config-syntax",
+      "exit": 0
+    },
+    {
+      "label": "typecheck-syntax",
+      "exit": 0
+    },
+    {
+      "label": "control-syntax",
+      "exit": 0
+    }
+  ]
+}

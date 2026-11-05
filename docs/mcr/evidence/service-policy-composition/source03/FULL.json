@@ -1,0 +1,61 @@
+{
+  "state": "ACTUAL_FULL",
+  "status": "FAIL",
+  "fullAtEpoch": 1793841696.2571049,
+  "offer": {
+    "id": "FE38-COMPOSITION-SOURCE03-0120",
+    "source": "97fe00426a4f390fa83e4b8a295f84ff987a2f36",
+    "processes": 12,
+    "rssBytes": 3221225472,
+    "wholeBytes": 34359738368,
+    "newBytes": 134217728,
+    "temporaryBytes": 100663296,
+    "durableBytes": 25165824,
+    "admissionFreeBytes": 11811160064,
+    "afterAllFreeBytes": 9663676416,
+    "continuousFreeBytes": 8589934592,
+    "otherUpperBytes": 2684354560,
+    "minimumCarryBytes": 4709222962,
+    "spentTemporaryBytes": 20183808,
+    "ordinaryPrograms": {
+      "/private/tmp/mcr-publisher-412e-capacity-composition-delivery.py": "98523ce9d454f2fdfdc4080ca9fa11e6b724a9343217a8c2f03c44b16d854456"
+    },
+    "acceptByUTC": "2026-11-05T02:10:00+00:00",
+    "controlRegressionAuthorized": true,
+    "priorFullPaths": [
+      "/Users/lhs/Desktop/mcr-worktrees/art-runtime/docs/mcr/evidence/service-policy-composition/source01-full-release.json",
+      "/Users/lhs/Desktop/mcr-worktrees/art-runtime/docs/mcr/evidence/service-policy-composition/source02/FULL.json"
+    ],
+    "sharedNewCeilingAcross": [
+      "FE38-COMPOSITION-SOURCE03-0120",
+      "FE38-COMPOSITION-SOURCE04-0120",
+      "FE38-COMPOSITION-SOURCE05-0120"
+    ],
+    "acceptedUTC": "2026-11-05T01:21:17.344149+00:00",
+    "workDeadline": "2026-11-05T01:24:17.344149+00:00",
+    "deadline": "2026-11-05T01:25:17.344149+00:00"
+  },
+  "remainingOwned": [],
+  "privateTempAbsent": true,
+  "dependencyLinkAbsent": true,
+  "browserServerTargetResources": 0,
+  "supervisor": "/Users/lhs/Desktop/mcr-worktrees/art-runtime/docs/mcr/evidence/service-policy-composition/source03/supervisor.json",
+  "qualification": [
+    {
+      "label": "receipt-regression",
+      "exit": 0
+    },
+    {
+      "label": "tests",
+      "exit": 0
+    },
+    {
+      "label": "lint",
+      "exit": 0
+    },
+    {
+      "label": "types",
+      "exit": null
+    }
+  ]
+}

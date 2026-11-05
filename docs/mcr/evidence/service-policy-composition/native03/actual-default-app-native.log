@@ -1,0 +1,77 @@
+(!) Failed to run dependency scan. Skipping dependency pre-bundling. Error: The following dependencies are imported but could not be resolved:
+
+  @hookform/resolvers/zod (imported by /Users/lhs/Desktop/mcr-worktrees/art-runtime/frontend/src/features/party-authoring/ui/PartyAuthoring.tsx)
+
+Are they installed?
+    at file:///Users/lhs/Desktop/mcr/frontend/node_modules/.pnpm/vite@8.1.3_@types+node@24.13.2_jiti@2.7.0/node_modules/vite/dist/node/chunks/node.js:30992:33
+    at async file:///Users/lhs/Desktop/mcr/frontend/node_modules/.pnpm/vite@8.1.3_@types+node@24.13.2_jiti@2.7.0/node_modules/vite/dist/node/chunks/node.js:33264:15
+11:03:51 AM [vite] (client) Pre-transform error: Failed to resolve import "@hookform/resolvers/zod" from "src/features/giveaway-authoring/ui/GiveawayAuthoring.tsx". Does the file exist?
+  Plugin: vite:import-analysis
+  File: /Users/lhs/Desktop/mcr-worktrees/art-runtime/frontend/src/features/giveaway-authoring/ui/GiveawayAuthoring.tsx:3:26
+  1  |  import { useEffect, useSyncExternalStore } from "react";
+  2  |  import { Controller, useForm } from "react-hook-form";
+  3  |  import { zodResolver } from "@hookform/resolvers/zod";
+     |                               ^
+  4  |  import { giftDraftSchema } from "../model/contract";
+  5  |  import { kstInput, utcFromKst, kstTime } from "../../party-authoring/model/time";
+11:03:51 AM [vite] Internal server error: Failed to resolve import "@hookform/resolvers/zod" from "src/features/giveaway-authoring/ui/GiveawayAuthoring.tsx". Does the file exist?
+  Plugin: vite:import-analysis
+  File: /Users/lhs/Desktop/mcr-worktrees/art-runtime/frontend/src/features/giveaway-authoring/ui/GiveawayAuthoring.tsx:3:26
+  1  |  import { useEffect, useSyncExternalStore } from "react";
+  2  |  import { Controller, useForm } from "react-hook-form";
+  3  |  import { zodResolver } from "@hookform/resolvers/zod";
+     |                               ^
+  4  |  import { giftDraftSchema } from "../model/contract";
+  5  |  import { kstInput, utcFromKst, kstTime } from "../../party-authoring/model/time";
+      at TransformPluginContext._formatLog (file:///Users/lhs/Desktop/mcr/frontend/node_modules/.pnpm/vite@8.1.3_@types+node@24.13.2_jiti@2.7.0/node_modules/vite/dist/node/chunks/node.js:29960:39)
+      at TransformPluginContext.error (file:///Users/lhs/Desktop/mcr/frontend/node_modules/.pnpm/vite@8.1.3_@types+node@24.13.2_jiti@2.7.0/node_modules/vite/dist/node/chunks/node.js:29957:14)
+      at normalizeUrl (file:///Users/lhs/Desktop/mcr/frontend/node_modules/.pnpm/vite@8.1.3_@types+node@24.13.2_jiti@2.7.0/node_modules/vite/dist/node/chunks/node.js:26993:18)
+      at async file:///Users/lhs/Desktop/mcr/frontend/node_modules/.pnpm/vite@8.1.3_@types+node@24.13.2_jiti@2.7.0/node_modules/vite/dist/node/chunks/node.js:27056:30
+      at async Promise.all (index 2)
+      at async TransformPluginContext.transform (file:///Users/lhs/Desktop/mcr/frontend/node_modules/.pnpm/vite@8.1.3_@types+node@24.13.2_jiti@2.7.0/node_modules/vite/dist/node/chunks/node.js:27024:4)
+      at async EnvironmentPluginContainer.transform (file:///Users/lhs/Desktop/mcr/frontend/node_modules/.pnpm/vite@8.1.3_@types+node@24.13.2_jiti@2.7.0/node_modules/vite/dist/node/chunks/node.js:29745:14)
+      at async loadAndTransform (file:///Users/lhs/Desktop/mcr/frontend/node_modules/.pnpm/vite@8.1.3_@types+node@24.13.2_jiti@2.7.0/node_modules/vite/dist/node/chunks/node.js:19729:26)
+11:03:51 AM [vite] (client) Pre-transform error: Failed to resolve import "@hookform/resolvers/zod" from "src/features/giveaway-authoring/ui/GiveawayAuthoring.tsx". Does the file exist?
+  Plugin: vite:import-analysis
+  File: /Users/lhs/Desktop/mcr-worktrees/art-runtime/frontend/src/features/giveaway-authoring/ui/GiveawayAuthoring.tsx:3:26
+  1  |  import { useEffect, useSyncExternalStore } from "react";
+  2  |  import { Controller, useForm } from "react-hook-form";
+  3  |  import { zodResolver } from "@hookform/resolvers/zod";
+     |                               ^
+  4  |  import { giftDraftSchema } from "../model/contract";
+  5  |  import { kstInput, utcFromKst, kstTime } from "../../party-authoring/model/time";
+11:03:51 AM [vite] Internal server error: Failed to resolve import "@hookform/resolvers/zod" from "src/features/party-authoring/ui/PartyAuthoring.tsx". Does the file exist?
+  Plugin: vite:import-analysis
+  File: /Users/lhs/Desktop/mcr-worktrees/art-runtime/frontend/src/features/party-authoring/ui/PartyAuthoring.tsx:3:28
+  1  |  import { useEffect, useSyncExternalStore } from "react";
+  2  |  import { Controller, useForm } from "react-hook-form";
+  3  |  import { zodResolver } from "@hookform/resolvers/zod";
+     |                               ^
+  4  |  import { partyDraftSchema } from "../model/contract";
+  5  |  import { kstInput, utcFromKst, kstTime } from "../model/time";
+      at TransformPluginContext._formatLog (file:///Users/lhs/Desktop/mcr/frontend/node_modules/.pnpm/vite@8.1.3_@types+node@24.13.2_jiti@2.7.0/node_modules/vite/dist/node/chunks/node.js:29960:39)
+      at TransformPluginContext.error (file:///Users/lhs/Desktop/mcr/frontend/node_modules/.pnpm/vite@8.1.3_@types+node@24.13.2_jiti@2.7.0/node_modules/vite/dist/node/chunks/node.js:29957:14)
+      at normalizeUrl (file:///Users/lhs/Desktop/mcr/frontend/node_modules/.pnpm/vite@8.1.3_@types+node@24.13.2_jiti@2.7.0/node_modules/vite/dist/node/chunks/node.js:26993:18)
+      at async file:///Users/lhs/Desktop/mcr/frontend/node_modules/.pnpm/vite@8.1.3_@types+node@24.13.2_jiti@2.7.0/node_modules/vite/dist/node/chunks/node.js:27056:30
+      at async Promise.all (index 2)
+      at async TransformPluginContext.transform (file:///Users/lhs/Desktop/mcr/frontend/node_modules/.pnpm/vite@8.1.3_@types+node@24.13.2_jiti@2.7.0/node_modules/vite/dist/node/chunks/node.js:27024:4)
+      at async EnvironmentPluginContainer.transform (file:///Users/lhs/Desktop/mcr/frontend/node_modules/.pnpm/vite@8.1.3_@types+node@24.13.2_jiti@2.7.0/node_modules/vite/dist/node/chunks/node.js:29745:14)
+      at async loadAndTransform (file:///Users/lhs/Desktop/mcr/frontend/node_modules/.pnpm/vite@8.1.3_@types+node@24.13.2_jiti@2.7.0/node_modules/vite/dist/node/chunks/node.js:19729:26)
+11:03:51 AM [vite] (client) Pre-transform error: Failed to resolve import "@hookform/resolvers/zod" from "src/features/party-authoring/ui/PartyAuthoring.tsx". Does the file exist?
+  Plugin: vite:import-analysis
+  File: /Users/lhs/Desktop/mcr-worktrees/art-runtime/frontend/src/features/party-authoring/ui/PartyAuthoring.tsx:3:28
+  1  |  import { useEffect, useSyncExternalStore } from "react";
+  2  |  import { Controller, useForm } from "react-hook-form";
+  3  |  import { zodResolver } from "@hookform/resolvers/zod";
+     |                               ^
+  4  |  import { partyDraftSchema } from "../model/contract";
+  5  |  import { kstInput, utcFromKst, kstTime } from "../model/time";
+11:03:51 AM [vite] (client) Pre-transform error: Failed to resolve import "@hookform/resolvers/zod" from "src/features/party-authoring/ui/PartyAuthoring.tsx". Does the file exist?
+  Plugin: vite:import-analysis
+  File: /Users/lhs/Desktop/mcr-worktrees/art-runtime/frontend/src/features/party-authoring/ui/PartyAuthoring.tsx:3:28
+  1  |  import { useEffect, useSyncExternalStore } from "react";
+  2  |  import { Controller, useForm } from "react-hook-form";
+  3  |  import { zodResolver } from "@hookform/resolvers/zod";
+     |                               ^
+  4  |  import { partyDraftSchema } from "../model/contract";
+  5  |  import { kstInput, utcFromKst, kstTime } from "../model/time";

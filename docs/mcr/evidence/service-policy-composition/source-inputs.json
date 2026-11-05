@@ -1,0 +1,103 @@
+{
+  "source": "6c85343cf8325d33e228ece98fb362c5df06acf3",
+  "canonicalBase": "5ac4bc6e69ee47e6782c2d0b25c72c5544a540d6",
+  "available": 12911652864,
+  "whole": {
+    "total": 3539981993,
+    "roots": [
+      {
+        "root": "/Users/lhs/Desktop/mcr-worktrees/art-runtime",
+        "bytes": 1500094624,
+        "inodes": 18220
+      },
+      {
+        "root": "/Users/lhs/Desktop/mcr/frontend/node_modules",
+        "bytes": 438891729,
+        "inodes": 13420
+      },
+      {
+        "root": "/Users/lhs/Desktop/mcr-tools",
+        "bytes": 419021528,
+        "inodes": 8089
+      },
+      {
+        "root": "/Users/lhs/Desktop/mcr/.git",
+        "bytes": 1181974112,
+        "inodes": 4428
+      }
+    ]
+  },
+  "minimumCarryBytes": 3539981993,
+  "legacyBaselineFreshPlusSpent": 50361223,
+  "spentTemporaryBytes": 19135168,
+  "ordinaryMaterializationPositiveUpper": 23492855,
+  "ordinaryPriorCharged": 21865311,
+  "ordinaryChargedConservativeUpper": 46406742,
+  "ordinaryCap": 67108864,
+  "paths": [
+    {
+      "path": "docs/mcr/evidence/service-policy-composition/guardian.py",
+      "bytes": 4684,
+      "sha256": "6f6c56483efbcae9e669b9d6edb0959dc4e6d1cd0cfd434b9fec9f0e57778589"
+    },
+    {
+      "path": "docs/mcr/evidence/service-policy-composition/qualify.py",
+      "bytes": 9336,
+      "sha256": "59b477bbed2e563d8aea14ccc47310cf4b0025cc4c30c5078136d34b844d8bd7"
+    },
+    {
+      "path": "docs/mcr/frontend/service-policy-composition.md",
+      "bytes": 6556,
+      "sha256": "2bf9aa7b29a010513954d28b2bd8f2c8225c9660903aefcb91d60abdc4d70e76"
+    },
+    {
+      "path": "frontend/src/app/operations-composition/__tests__/service-policy-integration/composition.test.tsx",
+      "bytes": 8348,
+      "sha256": "2c5a9aac472e650e38829be7cc1153b9f666c7d293cd8035891e178fe3f55e84"
+    },
+    {
+      "path": "frontend/src/app/operations-composition/__tests__/service-policy-integration/fixture.ts",
+      "bytes": 3161,
+      "sha256": "c64240893318bc77afe1f7e153e6d364035abb7b5b8a7520606a69d93072934a"
+    },
+    {
+      "path": "frontend/src/app/operations-composition/__tests__/service-policy-integration/native.mjs",
+      "bytes": 8380,
+      "sha256": "074b42b7254a2a1e7f716474fbfc280d95efe10c3743a2a05ab0dfd2b452b19a"
+    },
+    {
+      "path": "frontend/src/app/operations-composition/__tests__/service-policy-integration/preview.html",
+      "bytes": 346,
+      "sha256": "553398e96afeab0d6cf369407d104478cf4707ae519c9542137c95d7f47bbc6a"
+    },
+    {
+      "path": "frontend/src/app/operations-composition/__tests__/service-policy-integration/preview.tsx",
+      "bytes": 2644,
+      "sha256": "1037870cef5fdeac90a127646e860d32cea270b581832fd8339796f0c2224877"
+    },
+    {
+      "path": "frontend/src/app/operations-composition/__tests__/service-policy-integration/typecheck.mjs",
+      "bytes": 1756,
+      "sha256": "5ef0233d86eeb3edf04e9765a2afb682056d07e89729f6f1d8e1c269c4585523"
+    },
+    {
+      "path": "frontend/src/app/operations-composition/__tests__/service-policy-integration/vitest.config.mjs",
+      "bytes": 438,
+      "sha256": "e3c97c3b4e9f8ae154f540b5449ffbf762ea8574abdf43197281cc48d4c95058"
+    },
+    {
+      "path": "frontend/src/app/operations-composition/owner.ts",
+      "bytes": 11313,
+      "sha256": "3f3406c80d397a40fdf6d12a157705baa4392734194f851be75ef513c3cc5310"
+    },
+    {
+      "path": "frontend/src/app/operations-composition/panel.tsx",
+      "bytes": 5266,
+      "sha256": "e4a97a1ecfea772f0da03f9302a6bf4ffb946b3a25f74bc72b084832dc446407"
+    }
+  ],
+  "controls": {
+    "qualify.py": "59b477bbed2e563d8aea14ccc47310cf4b0025cc4c30c5078136d34b844d8bd7",
+    "guardian.py": "6f6c56483efbcae9e669b9d6edb0959dc4e6d1cd0cfd434b9fec9f0e57778589"
+  }
+}
