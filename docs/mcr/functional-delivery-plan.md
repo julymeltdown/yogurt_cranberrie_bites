@@ -1,6 +1,12 @@
 # Revised functional delivery plan — 2026-11-05
 
-## Hourly owner disposition — 2026-11-05 11:22 KST
+## C04 original accounting correction — 2026-11-05 11:22 hourly supplement
+
+**54/111 active original tasks complete (48.6%); 57 remain.** Current original criteria outcomes are **59/112**, with five reopened historical deltas. Original C04 offline command/transition definitions, including selected Wall B, were already explicitly closed alongside QA01 in the responsible owner's [canonical disposition](qa/qa01-original-completion.md) at `aac0d96d152e47150f4fac0f57b69659ad20a956`. Consume C04 once; QA01 is already closed and is not counted again. FE37's preceding53-task checkpoint remains historical below and in register history.
+
+This corrects a stale central row; it adds no definition review, tests or live/device prerequisite. Added venue L/M/N contracts and actual producer, runtime, native, device and integration duties remain separate required scopes. Venue acceptance stays0/8, design acceptance0/12 and readinessNOT_READY. Original112 IDs/61IA, QA08 deferral, original criteria and all earlier hourly source/input/custody decisions remain intact.
+
+## Prior FE37 hourly checkpoint — 2026-11-05 11:22 KST
 
 **53/111 active original tasks complete (47.7%); 58 remain.** FE37 original moderator client criteria are closed once through the responsible implementation owner's published disposition (`308d1e782`, `cf7bb137`, `1907016b`) and the single Frontend KING385 hourly digest. Role-aware entry, forms and truthful failed actions have no identified original client remainder. Actual server session termination, protected-byte EOF, producer/device and integration duties remain independently open with their existing owners.
 
@@ -22,7 +28,7 @@ Original **QA07** and its required changed-control delta are now **DONE**, based
 
 The latest direct human references require a complete Paradise City venue view and **Map/Friends/Notes**, real opt-in phone-location states, fixed-landmark invitations with contextual MESSAGE, and place notes/replies with Friends/Everyone and1h/endday expiry. [Progressions](progressions.md) owns the product flows and [reference-state mapping](design/venue-redesign-2026-11-05/reference-state-map.json); the [scope-transition record](venue-feature-amendment-2026-11-05.md) defines eight additional required deliverables and ten extension IA states.
 
-**Historical 10:22 scope baseline:52/111 (46.8%); venue extension started0/8 complete. Current hourly accounting:53/111 (47.7%),58 remaining.** All112 original IDs/61IA/history andQA08 deferral are preserved. The original fraction is not expanded-product readiness. New venue work must be completed for final delivery; existing unrelated closures are not automatically reopened.
+**Historical 10:22 scope baseline:52/111 (46.8%); venue extension started0/8 complete. Current hourly accounting:54/111 (48.6%),57 remaining.** All112 original IDs/61IA/history andQA08 deferral are preserved. The original fraction is not expanded-product readiness. New venue work must be completed for final delivery; existing unrelated closures are not automatically reopened.
 
 Old roof-only/Mapv3/PI11 venue work has actual STOP/preservation reports; useful commits/source/fixtures and unrelated PI01/World/runtime work remain. New child source assignments need actual disjoint custody and fresh capacity, not Main approval. Root1fc owns the new venue protocol/schema families; Root153 owns the separate frontend public API family. Existing monolithic/shared source is not globally transferred.
 
@@ -36,7 +42,7 @@ The latest human choice is **Parade Ink (Photo 2), one app-wide appearance**. It
 
 Both kings and the existing UI/resource/functional leads contributed to the [design-first amendment](design/parade-ink-delivery-plan-2026-11-05.md). The [four supplied originals](design/parade-ink-2026-11-05/reference-manifest.json) are preserved byte for byte. Photo 2 is primary; other sheets supply missing anatomy translated into Parade Ink, and the earlier ten-screen reference supplies unpictured structure.
 
-**Current original-task accounting:53/111 (47.7%),58 remaining. New design acceptance:0/12 families.** These are separate measures; no combined product percentage is claimed. All112 original IDs,61 required IA and58 current original criteria outcomes remain. Existing functional completions are not erased by presentation work; QA06/IN05 still require the new design to be delivered.
+**Current original-task accounting:54/111 (48.6%),57 remaining. New design acceptance:0/12 families.** These are separate measures; no combined product percentage is claimed. All112 original IDs,61 required IA and59 current original criteria outcomes remain. Existing functional completions are not erased by presentation work; QA06/IN05 still require the new design to be delivered.
 
 First deliver shared components plus a working Feed/Thread family. Then parallelize Meet/Giveaway, Profile/avatar and World/Wall presentation through disjoint existing writers; cover public/auth and supporting screens with the same component contract. Safe backend/runtime work continues. Publishers preserve valid queued patches; no code restart, shared-checkout editing or unannounced ownership transfer.
 
@@ -62,15 +68,15 @@ These12 families partition all61 required IA entries with shared dependencies; t
 
 ## Progress under the revised scope
 
-- **53/111 active tasks complete (47.7%)**; **58 active tasks remain**.
+- **54/111 active tasks complete (48.6%)**; **57 active tasks remain**.
 - **1 task deferred: QA08**. Original total remains 112; performance qualification is neither passed nor completed.
-- The frozen replan baseline remains **39/112** original-task outcomes. Nineteen newly published original closures (C07, FE03, FE04, FE11, FE16, AR03, FE35, C06, FE17, FE31, FE36, BE13, BE14, FE06, BE04, BE07, BE06, FE41, FE37) bring the current original-criteria total to **58/112**. **5** historically closed IDs retain current-scope work: **FE19, FE21, FE24, FE32, FE33**. The original seven reopened IDs remain preserved in register history; QA07 and QA01 current deltas are now closed.
+- The frozen replan baseline remains **39/112** original-task outcomes. Twenty newly published original closures (C07, FE03, FE04, FE11, FE16, AR03, FE35, C06, FE17, FE31, FE36, BE13, BE14, FE06, BE04, BE07, BE06, FE41, FE37, C04) bring the current original-criteria total to **59/112**. **5** historically closed IDs retain current-scope work: **FE19, FE21, FE24, FE32, FE33**. The original seven reopened IDs remain preserved in register history; QA07 and QA01 current deltas are now closed.
 - This is an unweighted task fraction, not a product-readiness or time estimate. IN02–IN05, full reference/device acceptance and61-entry IA reconciliation remain open.
 
 | Revised state | Tasks |
 | --- | ---: |
-| DONE | 53 |
-| IN_PROGRESS | 47 |
+| DONE | 54 |
+| IN_PROGRESS | 46 |
 | WAITING_INPUT | 3 |
 | OPEN | 3 |
 | REOPENED | 5 |
@@ -150,7 +156,7 @@ The original specification remains the full baseline. Every row below preserves 
 | C01 — Source and rewrite inventory | DONE / 2 | FOUNDATION | Retain delivered outcome; no identified task-local remainder. | Every reuse entry names source/destination/test; no production-data deletion in cutover plan. | None for remaining scope |
 | C02 — Reproducible workspace and toolchain | DONE / 2 | FOUNDATION | Retain delivered outcome; no identified task-local remainder. | Clean frozen-lockfile install and minimal frontend/backend build; record versions and commands. | None for remaining scope |
 | C03 — Core HTTP and identity contract | DONE / 2 | FOUNDATION | Retain delivered outcome; no identified task-local remainder. | Schema-valid success/failure examples; exact frontend/backend auth mapping reviewed. | None for remaining scope |
-| C04 — Domain HTTP and transition contracts | IN_PROGRESS / 0 | FOUNDATION | Finish domain contract/transition coverage for the remaining production flows; Add the selected Wall B command, capability, quota, error, retry, private-history and recovery semantics; freeze FE/BE interfaces early. | Every command has actor, precondition, resulting state, error reason, and retry rule. | C03 |
+| C04 — Domain HTTP and transition contracts | DONE / 0 | FOUNDATION | Retain delivered original C04 offline command/transition definitions including selected Wall B; added venue L/M/N contracts and actual producer/runtime/IN duties remain separate required scopes. | Every command has actor, precondition, resulting state, error reason, and retry rule. | C03 |
 | C05 — Realtime wire protocol | DONE / 2 | FOUNDATION | Retain delivered outcome; no identified task-local remainder. | Reject unknown/oversized messages; filtered streams have no false sequence gaps. | None for remaining scope |
 | C06 — Map and avatar interfaces | DONE / 1 | FOUNDATION | Retain the published original map/avatar contract acceptance; no task-local remainder. | Small golden asset fixtures validate and align across all themes. | None for remaining scope |
 | C07 — Generated clients and fixture harness | DONE / 0 | FOUNDATION | Retain the delivered original-task outcome; no identified task-local remainder. | Generated output is reproducible; a deliberate schema mismatch fails CI. | None for remaining scope |

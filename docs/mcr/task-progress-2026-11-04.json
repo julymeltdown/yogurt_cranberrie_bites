@@ -17,16 +17,16 @@
     "required_ia_entries": 61,
     "optional_excluded": 6,
     "counts": {
-      "DONE": 53,
-      "IN_PROGRESS": 47,
+      "DONE": 54,
+      "IN_PROGRESS": 46,
       "WAITING_INPUT": 3,
       "REOPENED": 5,
       "DEFERRED_BY_USER": 1,
       "OPEN": 3
     },
-    "done_tasks": 53,
-    "remaining_active_tasks": 58,
-    "task_completion_percentage": 47.7,
+    "done_tasks": 54,
+    "remaining_active_tasks": 57,
+    "task_completion_percentage": 48.6,
     "historical_original_outcomes": 39,
     "reopened_historical_tasks": [
       "FE19",
@@ -96,9 +96,10 @@
       "BE07",
       "BE06",
       "FE41",
-      "FE37"
+      "FE37",
+      "C04"
     ],
-    "current_original_criteria_outcomes": 58,
+    "current_original_criteria_outcomes": 59,
     "progress_updated_at": "2026-11-05T11:22:00+09:00",
     "hosted_ci": {
       "state": "QUALIFIED_PUBLISHED",
@@ -225,15 +226,16 @@
     ],
     "current_delivery_checkpoint": {
       "recorded_at": "2026-11-05T11:22:00+09:00",
-      "kind": "HOURLY_OWNER_DISPOSITION",
-      "canonicalSnapshot": "41d90738e3941cdfc663d00551e0f7db2cd3aa4f",
+      "kind": "HOURLY_OWNER_DISPOSITION_C04_ACCOUNTING_CORRECTION",
+      "canonicalSnapshot": "92423964610356e8593ecac7a27e9b7209882673",
       "new_original_closures": [
-        "FE37"
+        "FE37",
+        "C04"
       ],
-      "original_done": 53,
+      "original_done": 54,
       "original_active": 111,
-      "original_remaining": 58,
-      "original_criteria_outcomes": 58,
+      "original_remaining": 57,
+      "original_criteria_outcomes": 59,
       "venue_complete": 0,
       "venue_required": 8,
       "extension_ia": 10,
@@ -295,9 +297,19 @@
           "commit": "41d90738e3941cdfc663d00551e0f7db2cd3aa4f",
           "scope": "Spatial/Map interface and invitation/conversation source leaf",
           "wholeTaskAcceptance": false
+        },
+        {
+          "commit": "aac0d96d152e47150f4fac0f57b69659ad20a956",
+          "scope": "Already canonical responsible-owner original QA01/C04 offline definitions; consume C04 once, QA01 previously closed",
+          "wholeTaskAcceptance": true,
+          "task": "C04",
+          "boundary": "Added venue contracts and live producer/native/device/integration duties remain separate"
         }
       ],
-      "authority": "Main direct MAIN_HOURLY_20261105_1122_FE37 assignment; single Frontend KING38511:22KST digest and Backend21d02:22UTC digest; responsible owner/publication dispositions, no Main implementation review."
+      "authority": "Main direct MAIN_HOURLY_1122_SUPPLEMENT_C04_ORIGINAL; consume published responsible-owner offline C04 disposition at aac0d96d once; QA01 already closed, no repeat count.",
+      "new_closures_in_this_publication": [
+        "C04"
+      ]
     },
     "scope_interpretation": {
       "QA06": "Original widths, skins, actual devices, keyboard/safearea, readability/reachability/clipping/oldUI checks remain intact. All61IA entries remain required; no unrequested universal61x3x3 capture gate.",
@@ -517,6 +529,82 @@
         "reference_publication": "UI533 owns original reference/Progressions packet; canonical receipt pending at this Main authoring checkpoint.",
         "accounting": "Additional mandatory scope outside the preserved112 original IDs/61IA. Original52/111 is a historical-scope functional metric, not expanded-product readiness; no blended percentage or automatic reopening. All8 venue deliverables and extension states must be reconciled for final delivery.",
         "readiness": "NOT_READY"
+      },
+      {
+        "recorded_at": "2026-11-05T11:22:00+09:00",
+        "kind": "HOURLY_OWNER_DISPOSITION",
+        "canonicalSnapshot": "41d90738e3941cdfc663d00551e0f7db2cd3aa4f",
+        "new_original_closures": [
+          "FE37"
+        ],
+        "original_done": 53,
+        "original_active": 111,
+        "original_remaining": 58,
+        "original_criteria_outcomes": 58,
+        "venue_complete": 0,
+        "venue_required": 8,
+        "extension_ia": 10,
+        "design_accepted": 0,
+        "design_total": 12,
+        "readiness": "NOT_READY",
+        "publication": [
+          {
+            "commit": "651159ec7bae9ff5e1bbc9d3dd083fc08faa02d9",
+            "scope": "PI01 bounded foundation/header correction",
+            "wholeTaskAcceptance": false
+          },
+          {
+            "commit": "1907016b6aa41c17998acab691a83e99d0a80076",
+            "scope": "Reports presentation",
+            "wholeTaskAcceptance": false
+          },
+          {
+            "commit": "0a27b70d7f782f6d63bf5a0904c10915c5fbd073",
+            "scope": "World HUD presentation",
+            "wholeTaskAcceptance": false
+          },
+          {
+            "commit": "4881ab798a4ab21d61e36974a962ba2efc0fab2c",
+            "scope": "Operator presentations",
+            "wholeTaskAcceptance": false
+          },
+          {
+            "commit": "6ff3e481cfcf820c2e14a9a670ae2dc3bffc9afb",
+            "scope": "Venue Progressions/10 originals/48 comparison cases",
+            "wholeTaskAcceptance": false
+          },
+          {
+            "commit": "31fce35d1de2bab9bc5ca2396982cafaa0d48395",
+            "scope": "MESSAGE no-landmark prerequisite clarification",
+            "wholeTaskAcceptance": false
+          },
+          {
+            "commit": "fcd0780537eb9f724a1f130523f02656e1be9ee6",
+            "scope": "Photo5 source-art/interface; independent model unfinished",
+            "wholeTaskAcceptance": false
+          },
+          {
+            "commit": "8d4561d9291274f867fc921ba8ed4c28790a85a7",
+            "scope": "Notes contract source/schema qualification",
+            "wholeTaskAcceptance": false
+          },
+          {
+            "commit": "574b3e5a2a4533d70da3236b2c42c465a32e34a4",
+            "scope": "Meeting contract limited source/structure qualification",
+            "wholeTaskAcceptance": false
+          },
+          {
+            "commit": "217c52c25180217b9fd1264af9b8cae52ec88a1a",
+            "scope": "Location contract source/schema qualification",
+            "wholeTaskAcceptance": false
+          },
+          {
+            "commit": "41d90738e3941cdfc663d00551e0f7db2cd3aa4f",
+            "scope": "Spatial/Map interface and invitation/conversation source leaf",
+            "wholeTaskAcceptance": false
+          }
+        ],
+        "authority": "Main direct MAIN_HOURLY_20261105_1122_FE37 assignment; single Frontend KING38511:22KST digest and Backend21d02:22UTC digest; responsible owner/publication dispositions, no Main implementation review."
       }
     ],
     "reopened_historical_tasks_at_replan": [
@@ -2567,26 +2655,25 @@
       "id": "C04",
       "title": "Domain HTTP and transition contracts",
       "lane": "LEAD",
-      "coverage_bucket": "IMPLEMENTATION_EVIDENCED",
-      "recorded_state": null,
+      "coverage_bucket": "TASK_CRITERIA_SATISFIED",
+      "recorded_state": "CONTRACT_READY",
       "evidence": [
         "docs/mcr/domain-contract.md"
       ],
-      "note": "Published receipt or owner report records bounded implementation/fixture/component work. Whole original-task completion is partial or not yet reconciled; no additional live/device gate is imposed on a pure task.",
+      "note": "Original C04 offline command/transition definitions including selected Wall B are closed by the responsible-owner canonical disposition at aac0d96d. Added venue contracts and actual producer/runtime/native/device/integration duties remain separate.",
       "revised_plan": {
-        "state": "IN_PROGRESS",
+        "state": "DONE",
         "package": "FOUNDATION",
         "priority": 0,
         "original_scope": "Define party, reservation, social, age, feed, mural, admin commands; actor permissions, idempotency, and versions.",
         "original_acceptance": "Every command has actor, precondition, resulting state, error reason, and retry rule.",
         "updated_scope": "Define party, reservation, social, age, feed, mural, admin commands; actor permissions, idempotency, and versions.",
         "remaining_work": [
-          "Finish domain contract/transition coverage for the remaining production flows.",
-          "Add the selected Wall B command, capability, quota, error, retry, private-history and recovery semantics; freeze FE/BE interfaces early."
+          "Retain delivered original C04 offline command/transition definitions including selected Wall B. Added venue L/M/N contracts and actual producer/runtime/IN validation remain separate required scopes with current owners."
         ],
         "complete_when": "Every command has actor, precondition, resulting state, error reason, and retry rule.",
-        "reason": "Domain implementation is evidenced, but full contract closure and the new Wall B scope remain open.",
-        "historical_criteria_closed": false,
+        "reason": "Published responsible-owner disposition at aac0d96d explicitly closes all original C04 contract-definition criteria. Central status was stale. No King re-review, additional live/device gate or new definition check required.",
+        "historical_criteria_closed": true,
         "reopened_for_current_scope": false,
         "depends_on_for_remaining_work": [
           "C03"
@@ -2617,7 +2704,25 @@
           "VENU-BE-M01",
           "VENU-BE-N01"
         ],
-        "amendment_link_interpretation": "Additional mandatory venue scope, not old-task completion or an implicit source grant. Preserve original definitions; reopen only genuinely changed/failing original criteria."
+        "amendment_link_interpretation": "Additional mandatory venue scope, not old-task completion or an implicit source grant. Preserve original definitions; reopen only genuinely changed/failing original criteria.",
+        "prior_state_history": [
+          {
+            "recorded_at": "2026-11-05T11:22:00+09:00",
+            "authority": "Main direct MAIN_HOURLY_1122_SUPPLEMENT_C04_ORIGINAL; consume published responsible-owner offline C04 disposition at aac0d96d once; QA01 already closed, no repeat count.",
+            "state": "IN_PROGRESS",
+            "priority": 0,
+            "remaining_work": [
+              "Finish domain contract/transition coverage for the remaining production flows.",
+              "Add the selected Wall B command, capability, quota, error, retry, private-history and recovery semantics; freeze FE/BE interfaces early."
+            ],
+            "reason": "Domain implementation is evidenced, but full contract closure and the new Wall B scope remain open.",
+            "historical_criteria_closed": false,
+            "reopened_for_current_scope": false,
+            "coverage_bucket": "IMPLEMENTATION_EVIDENCED",
+            "recorded_state": null,
+            "note": "Published receipt or owner report records bounded implementation/fixture/component work. Whole original-task completion is partial or not yet reconciled; no additional live/device gate is imposed on a pure task."
+          }
+        ]
       }
     },
     {
@@ -10598,6 +10703,27 @@
         "next": "Auth232 released next, then Post/M/World under21d actual custody. No new BE42 grant, Main approval or general resource limit change."
       },
       "input_consolidation": "Existing physical-input question extended from actual source trace; no new submission or answer inferred."
+    },
+    {
+      "id": "MAIN_HOURLY_1122_SUPPLEMENT_C04_ORIGINAL",
+      "at": "2026-11-05T11:22:00+09:00",
+      "recorded_epoch": 1793846582.253373,
+      "authority": "Main direct MAIN_HOURLY_1122_SUPPLEMENT_C04_ORIGINAL; consume published responsible-owner offline C04 disposition at aac0d96d once; QA01 already closed, no repeat count.",
+      "previous_canonical_53_checkpoint": "f45ce44ec94a45a64ebe5805c195e406ca7af6b9",
+      "new_closures_in_this_publication": [
+        "C04"
+      ],
+      "rollup_closures": [
+        "FE37",
+        "C04"
+      ],
+      "done_tasks": 54,
+      "remaining_active_tasks": 57,
+      "task_completion_percentage": 48.6,
+      "current_original_criteria_outcomes": 59,
+      "venue_accepted": 0,
+      "design_accepted": 0,
+      "product_release_state": "NOT_READY"
     }
   ],
   "staffing_update": {
