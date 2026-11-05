@@ -1,3 +1,19 @@
+# Qualified final CSS checkpoint: Native11
+
+Final CSS `430f42872fa13ea6a8ff9ad45d9ccb97a78732ca` passed the controlled native fixture and unmasked comparison at source `2b3ca2f54c79d3e4c63d3ea498de6c9f40493267`. Both commands exited 0. Actual FULL was 2026-11-05T04:29:04.985390Z, raw SHA256 `c169d48e35ae4dc0f8db994b280defedb8cf81fe3f25ff5e0f1ace402c9b45d9`; all owned processes exited and the dependency link and scratch cache were removed. Direct FULL relay preceded logs and image inspection. All 28 PNGs were individually inspected. Portable evidence: `docs/mcr/evidence/venue-community/visual-qualified-11.json`.
+
+At 360/390/430 pixels, conversation heights are 271.84375 / 293.71875 / 323.640625 pixels, compared with uniform reference heights 269.71576 / 293.51421 / 325.24548. The previous 6–9 pixel excess is resolved. Both authorized Map controls, 44-pixel hit targets, status recovery without resend, uncertain-result locking, privacy cleanup and the 390x520 viewport passed. Character artwork remains the approved selected derivative.
+
+Exact visual acceptance remains OPEN for small typography, header/message offsets and the focus-icon silhouette. Different approved character pixels are intentional. These controlled component results do not certify default shell, live HTTP/server, multiuser, physical keyboard/device/GPS, arrival or whole VENU behavior. Source69 tests/types/lint retain their unchanged-source qualification; no old green suite was replayed.
+
+Native09 failed before payload because the old OTHER ceiling undercovered accepted futures. Native10 failed before payload because a peer ordinary identity lacked its required role. Both remain immutable failures. Native11 used its distinct grant, corrected current producer facts, independent complete LIVE observers and actual current accepted-future accounting. Its SAME cumulative320MiB retained peak is 327,326,812 bytes; WHOLE 4,823,205,968 bytes / 72,132 entries; RSS 1,514,848,256 bytes / nine processes. No cleanup credit, cap reset or historical failure rewrite occurred.
+
+The prior qualified improvement is canonical in `08c83be39a0fbf90edc0486915506b8c940a7907` and `7e887df5c8d401ea273ab748d1b47da11c76d17d`. The developer consumed/hash-verified publisher receipt `2084ccc8c6f5d2f06a4e41804d60adbf46ab177fa69b6ed6de9060db1f423198`, independently checked all45 postimages/modes/blobs and sole-parent ancestry, and verified fresh remote master. The follow-up publishes only the changed CSS and its owned documentation/evidence.
+
+Earlier sections below are historical checkpoints; their failures and earlier open gates remain evidence, not current qualification claims.
+
+---
+
 # Qualified Native08 publication checkpoint
 
 Native08 at source `45bb2a71766e578837e24020d14814b86c456406` passed the two native/comparison commands and all 360/390/430 component flows. All 28 PNGs were inspected; the curated portable receipt is `docs/mcr/evidence/venue-community/visual-qualified-08.json`. Its exact source postimages are handed directly to the publishing developer while a final measured CSS correction remains separately unqualified. No private controller or borrowed Root source is included. The earlier checkpoints below are historical and retain their original failures and limitations.

@@ -1,0 +1,483 @@
+{
+  "task": "AM-FE-COMM-01 / VENU-FE-M01",
+  "status": "MOCK_READY_COMPONENT_FUNCTIONAL_PASS_MINOR_VISUAL_RESIDUAL_OPEN",
+  "implementationSource": "2b3ca2f54c79d3e4c63d3ea498de6c9f40493267",
+  "sourceValidation": {
+    "source": "3bed17fedbd10897421a80c2b8440bc4bebcff0d",
+    "tests": 69,
+    "breakdown": {
+      "adapter": 18,
+      "owner": 41,
+      "renderedUI": 10
+    },
+    "strictTypes": "15 explicit roots plus imported closure",
+    "scopedLint": "warnings denied",
+    "exits": [
+      0,
+      0,
+      0
+    ],
+    "rawFullSHA256": "e0343ab6dc05752044816d888525d710e02501248a21c467ab8fa0251e4a53db",
+    "carryForward": "Unchanged product TypeScript retains Source02 qualification; preview.refresh correction qualified Native07/08/11. Final CSS430 qualified by Native11. No fresh whole-application check."
+  },
+  "nativeValidation": {
+    "allocation": "COMM-VENUE-NATIVE11-0425",
+    "browserVersion": "156.0.8078.4",
+    "commands": [
+      "node frontend/e2e/venue-community/native.mjs",
+      "python3 -B frontend/e2e/venue-community/compare.py ORIGINAL_PHOTO OUTPUT_DIRECTORY"
+    ],
+    "exits": [
+      0,
+      0
+    ],
+    "actualFullEpoch": 1793852944.98539,
+    "rawFullSHA256": "c169d48e35ae4dc0f8db994b280defedb8cf81fe3f25ff5e0f1ace402c9b45d9",
+    "widths": [
+      360,
+      390,
+      430
+    ],
+    "shortViewport": [
+      390,
+      520
+    ],
+    "assertedBehavior": [
+      "read-only entry",
+      "explicit accept",
+      "both authorized Map controls",
+      "44px hit targets",
+      "composer focus",
+      "original-status recovery without resend",
+      "unknown close lock",
+      "privacy scrub and subscription cleanup"
+    ],
+    "pageErrors": [],
+    "inspectedPNGs": 28,
+    "resourcesReleased": true,
+    "retainedNewMaxBytes": 327326812,
+    "wholeMaxBytes": 4823205968,
+    "wholeMaxEntries": 72132,
+    "rssMaxBytes": 1514848256,
+    "processMax": 9
+  },
+  "art": {
+    "sourcePackSHA256": "f8d6c83818bced007f71af1f59dbc53cd88115c5dab0112fc302d8469a4fdc6f",
+    "derivativePath": "frontend/public/world/avatars/derived-v1/photo01-front-idle-64-e124c88815b22220.png",
+    "derivativeSHA256": "e124c88815b22220df2f2dc59e2f26b3ceb845e57b77674fd8e55383116d7efe",
+    "disposition": "Existing approved derivative unchanged. Legacy reference character pixels are comparison evidence only and are not used as product artwork."
+  },
+  "cases": [
+    {
+      "caseId": "P02-pending-invite",
+      "originalPhotoSHA256": "f7d841c815dfbf85b48b7e61a06106b9edab195e7bfbd4d37b78d8b23e610ac1",
+      "developerMeasuredSourceROI": [
+        868,
+        654,
+        394,
+        144
+      ],
+      "actualViewportCSSWidth": 360,
+      "actualViewportCSSHeight": 844,
+      "devicePixelRatio": 1,
+      "uniformScaleAndCropTransform": {
+        "sourceCrop": [
+          868,
+          654,
+          394,
+          144
+        ],
+        "scaleX": 0.8629441624365483,
+        "scaleY": 0.8629441624365483,
+        "padBottomPx": 0
+      },
+      "originalCaptureTimeWithTimezone": "2026-11-05T04:29:00.949Z",
+      "fixtureClockMs": 1800000000000,
+      "actualCapturePath": "docs/mcr/evidence/venue-community/native-round-11/native/invitation-360.png",
+      "referenceCropPath": "docs/mcr/evidence/venue-community/native-round-11/native/invitation-360-reference.png",
+      "overlayPath": "docs/mcr/evidence/venue-community/native-round-11/native/invitation-360-overlay.png",
+      "diffPath": "docs/mcr/evidence/venue-community/native-round-11/native/invitation-360-diff.png",
+      "declaredVariableDataMasks": []
+    },
+    {
+      "caseId": "P02-meeting-conversation",
+      "originalPhotoSHA256": "f7d841c815dfbf85b48b7e61a06106b9edab195e7bfbd4d37b78d8b23e610ac1",
+      "developerMeasuredSourceROI": [
+        447,
+        451,
+        387,
+        307
+      ],
+      "actualViewportCSSWidth": 360,
+      "actualViewportCSSHeight": 844,
+      "devicePixelRatio": 1,
+      "uniformScaleAndCropTransform": {
+        "sourceCrop": [
+          447,
+          451,
+          387,
+          307
+        ],
+        "scaleX": 0.8785529715762274,
+        "scaleY": 0.8785529715762274,
+        "padBottomPx": 2
+      },
+      "originalCaptureTimeWithTimezone": "2026-11-05T04:29:01.100Z",
+      "fixtureClockMs": 1800000000000,
+      "actualCapturePath": "docs/mcr/evidence/venue-community/native-round-11/native/conversation-360.png",
+      "referenceCropPath": "docs/mcr/evidence/venue-community/native-round-11/native/conversation-360-reference.png",
+      "overlayPath": "docs/mcr/evidence/venue-community/native-round-11/native/conversation-360-overlay.png",
+      "diffPath": "docs/mcr/evidence/venue-community/native-round-11/native/conversation-360-diff.png",
+      "declaredVariableDataMasks": []
+    },
+    {
+      "caseId": "P02-pending-invite",
+      "originalPhotoSHA256": "f7d841c815dfbf85b48b7e61a06106b9edab195e7bfbd4d37b78d8b23e610ac1",
+      "developerMeasuredSourceROI": [
+        868,
+        654,
+        394,
+        144
+      ],
+      "actualViewportCSSWidth": 390,
+      "actualViewportCSSHeight": 844,
+      "devicePixelRatio": 1,
+      "uniformScaleAndCropTransform": {
+        "sourceCrop": [
+          868,
+          654,
+          394,
+          144
+        ],
+        "scaleX": 0.9390862944162437,
+        "scaleY": 0.9390862944162437,
+        "padBottomPx": 0
+      },
+      "originalCaptureTimeWithTimezone": "2026-11-05T04:29:01.541Z",
+      "fixtureClockMs": 1800000000000,
+      "actualCapturePath": "docs/mcr/evidence/venue-community/native-round-11/native/invitation-390.png",
+      "referenceCropPath": "docs/mcr/evidence/venue-community/native-round-11/native/invitation-390-reference.png",
+      "overlayPath": "docs/mcr/evidence/venue-community/native-round-11/native/invitation-390-overlay.png",
+      "diffPath": "docs/mcr/evidence/venue-community/native-round-11/native/invitation-390-diff.png",
+      "declaredVariableDataMasks": []
+    },
+    {
+      "caseId": "P02-meeting-conversation",
+      "originalPhotoSHA256": "f7d841c815dfbf85b48b7e61a06106b9edab195e7bfbd4d37b78d8b23e610ac1",
+      "developerMeasuredSourceROI": [
+        447,
+        451,
+        387,
+        307
+      ],
+      "actualViewportCSSWidth": 390,
+      "actualViewportCSSHeight": 844,
+      "devicePixelRatio": 1,
+      "uniformScaleAndCropTransform": {
+        "sourceCrop": [
+          447,
+          451,
+          387,
+          307
+        ],
+        "scaleX": 0.9560723514211886,
+        "scaleY": 0.9560723514211886,
+        "padBottomPx": 0
+      },
+      "originalCaptureTimeWithTimezone": "2026-11-05T04:29:01.693Z",
+      "fixtureClockMs": 1800000000000,
+      "actualCapturePath": "docs/mcr/evidence/venue-community/native-round-11/native/conversation-390.png",
+      "referenceCropPath": "docs/mcr/evidence/venue-community/native-round-11/native/conversation-390-reference.png",
+      "overlayPath": "docs/mcr/evidence/venue-community/native-round-11/native/conversation-390-overlay.png",
+      "diffPath": "docs/mcr/evidence/venue-community/native-round-11/native/conversation-390-diff.png",
+      "declaredVariableDataMasks": []
+    },
+    {
+      "caseId": "P02-pending-invite",
+      "originalPhotoSHA256": "f7d841c815dfbf85b48b7e61a06106b9edab195e7bfbd4d37b78d8b23e610ac1",
+      "developerMeasuredSourceROI": [
+        868,
+        654,
+        394,
+        144
+      ],
+      "actualViewportCSSWidth": 430,
+      "actualViewportCSSHeight": 844,
+      "devicePixelRatio": 1,
+      "uniformScaleAndCropTransform": {
+        "sourceCrop": [
+          868,
+          654,
+          394,
+          144
+        ],
+        "scaleX": 1.0406091370558375,
+        "scaleY": 1.0406091370558375,
+        "padBottomPx": 2
+      },
+      "originalCaptureTimeWithTimezone": "2026-11-05T04:29:02.242Z",
+      "fixtureClockMs": 1800000000000,
+      "actualCapturePath": "docs/mcr/evidence/venue-community/native-round-11/native/invitation-430.png",
+      "referenceCropPath": "docs/mcr/evidence/venue-community/native-round-11/native/invitation-430-reference.png",
+      "overlayPath": "docs/mcr/evidence/venue-community/native-round-11/native/invitation-430-overlay.png",
+      "diffPath": "docs/mcr/evidence/venue-community/native-round-11/native/invitation-430-diff.png",
+      "declaredVariableDataMasks": []
+    },
+    {
+      "caseId": "P02-meeting-conversation",
+      "originalPhotoSHA256": "f7d841c815dfbf85b48b7e61a06106b9edab195e7bfbd4d37b78d8b23e610ac1",
+      "developerMeasuredSourceROI": [
+        447,
+        451,
+        387,
+        307
+      ],
+      "actualViewportCSSWidth": 430,
+      "actualViewportCSSHeight": 844,
+      "devicePixelRatio": 1,
+      "uniformScaleAndCropTransform": {
+        "sourceCrop": [
+          447,
+          451,
+          387,
+          307
+        ],
+        "scaleX": 1.0594315245478036,
+        "scaleY": 1.0594315245478036,
+        "padBottomPx": 0
+      },
+      "originalCaptureTimeWithTimezone": "2026-11-05T04:29:02.395Z",
+      "fixtureClockMs": 1800000000000,
+      "actualCapturePath": "docs/mcr/evidence/venue-community/native-round-11/native/conversation-430.png",
+      "referenceCropPath": "docs/mcr/evidence/venue-community/native-round-11/native/conversation-430-reference.png",
+      "overlayPath": "docs/mcr/evidence/venue-community/native-round-11/native/conversation-430-overlay.png",
+      "diffPath": "docs/mcr/evidence/venue-community/native-round-11/native/conversation-430-diff.png",
+      "declaredVariableDataMasks": []
+    }
+  ],
+  "pngs": [
+    {
+      "path": "docs/mcr/evidence/venue-community/native-round-11/native/conversation-360-diff.png",
+      "sha256": "a65056244e4cb557ea46a28ccab1112fe4f8fb74550b43fc9821b50f9308400b",
+      "width": 340,
+      "height": 272,
+      "bytes": 123516
+    },
+    {
+      "path": "docs/mcr/evidence/venue-community/native-round-11/native/conversation-360-overlay.png",
+      "sha256": "a09eb709e5b700a3ceb4f9982c5f71a8bcedbb960c9e6b13033782050ed747c6",
+      "width": 340,
+      "height": 272,
+      "bytes": 103887
+    },
+    {
+      "path": "docs/mcr/evidence/venue-community/native-round-11/native/conversation-360-reference.png",
+      "sha256": "c3e574c65e10af0bfb1e72863c177f86a9415171e4341c746afd72b646bd7fd3",
+      "width": 340,
+      "height": 272,
+      "bytes": 114307
+    },
+    {
+      "path": "docs/mcr/evidence/venue-community/native-round-11/native/conversation-360.png",
+      "sha256": "87a17843a0a9914cec317d9c759f60abfa18babe5370590b6c26304405c69110",
+      "width": 340,
+      "height": 272,
+      "bytes": 29504
+    },
+    {
+      "path": "docs/mcr/evidence/venue-community/native-round-11/native/conversation-390-diff.png",
+      "sha256": "df00b9564717a5dbf9657e8fb15ed128a81450361516d5145802b717e5267928",
+      "width": 370,
+      "height": 294,
+      "bytes": 143032
+    },
+    {
+      "path": "docs/mcr/evidence/venue-community/native-round-11/native/conversation-390-overlay.png",
+      "sha256": "9563cc9636558696a7088a6a208cd3a64ecb5b53144b54fa649b4ecdc0c2ae9a",
+      "width": 370,
+      "height": 294,
+      "bytes": 119820
+    },
+    {
+      "path": "docs/mcr/evidence/venue-community/native-round-11/native/conversation-390-reference.png",
+      "sha256": "501e920a9f0ef32b5e992f6f51dcec5c6a3e32d6b51cee4f6ab26f212b365ff8",
+      "width": 370,
+      "height": 294,
+      "bytes": 132242
+    },
+    {
+      "path": "docs/mcr/evidence/venue-community/native-round-11/native/conversation-390.png",
+      "sha256": "c1059769043c7170b3d6f4db5ee50211fffaa80461c2558768f7a241563ae65e",
+      "width": 370,
+      "height": 294,
+      "bytes": 32211
+    },
+    {
+      "path": "docs/mcr/evidence/venue-community/native-round-11/native/conversation-430-diff.png",
+      "sha256": "1aec7c9e25186191e4da6b97fbdd5aaaf3ec1e2aa3b8fe004dda38470b87bd4f",
+      "width": 410,
+      "height": 325,
+      "bytes": 171551
+    },
+    {
+      "path": "docs/mcr/evidence/venue-community/native-round-11/native/conversation-430-overlay.png",
+      "sha256": "ed7c54ddc3824b56dd3fb4d655f55181ffd3477649433e8fbbf3a676dd8e663c",
+      "width": 410,
+      "height": 325,
+      "bytes": 142650
+    },
+    {
+      "path": "docs/mcr/evidence/venue-community/native-round-11/native/conversation-430-reference.png",
+      "sha256": "0baefe0fdc43e600943afd21b6db1b34850d3bb52e458b62e9458bbb79e0cbf8",
+      "width": 410,
+      "height": 325,
+      "bytes": 156374
+    },
+    {
+      "path": "docs/mcr/evidence/venue-community/native-round-11/native/conversation-430.png",
+      "sha256": "472d35cdda434548cd69a1aac90cdb7be17a26d7a248b526eb67fd18a88d2540",
+      "width": 410,
+      "height": 324,
+      "bytes": 36489
+    },
+    {
+      "path": "docs/mcr/evidence/venue-community/native-round-11/native/invitation-360-diff.png",
+      "sha256": "cd8275860a33bbc81434f5e00f88282b8e5d7bc7d74063b44ce3ad5c012af3eb",
+      "width": 340,
+      "height": 124,
+      "bytes": 54365
+    },
+    {
+      "path": "docs/mcr/evidence/venue-community/native-round-11/native/invitation-360-overlay.png",
+      "sha256": "ba77f98daacd4adb947913e20ae2ec347a7eee0646d2c8e0c27d643bae8f6f7d",
+      "width": 340,
+      "height": 124,
+      "bytes": 45403
+    },
+    {
+      "path": "docs/mcr/evidence/venue-community/native-round-11/native/invitation-360-reference.png",
+      "sha256": "03b29b04d42c4185a2c1a18eac6f0d7891f439f58fc301bb17945630987007be",
+      "width": 340,
+      "height": 124,
+      "bytes": 50759
+    },
+    {
+      "path": "docs/mcr/evidence/venue-community/native-round-11/native/invitation-360.png",
+      "sha256": "e41cca7368fadb9d7d0a4019aa3871a0a3b24b144a78ee2c646d9462b636d607",
+      "width": 340,
+      "height": 123,
+      "bytes": 13616
+    },
+    {
+      "path": "docs/mcr/evidence/venue-community/native-round-11/native/invitation-390-diff.png",
+      "sha256": "cebb978bed263b96e8bd593ef4c6af4d54791323788a805fbf26c5d628645c7d",
+      "width": 370,
+      "height": 135,
+      "bytes": 62476
+    },
+    {
+      "path": "docs/mcr/evidence/venue-community/native-round-11/native/invitation-390-overlay.png",
+      "sha256": "0e26b84180737ffefb3a430758efcb74a6e69800e95e49b667e8822c7ef48af5",
+      "width": 370,
+      "height": 135,
+      "bytes": 51648
+    },
+    {
+      "path": "docs/mcr/evidence/venue-community/native-round-11/native/invitation-390-reference.png",
+      "sha256": "a721c95e091edd9c5ac232096514ef194898ab269a9d6019cf09b590df36f1e5",
+      "width": 370,
+      "height": 135,
+      "bytes": 58333
+    },
+    {
+      "path": "docs/mcr/evidence/venue-community/native-round-11/native/invitation-390.png",
+      "sha256": "05bc42532922aa7ff516aee4ea58fb792e24a2b9453b0ac0023bf9d341f75e6b",
+      "width": 370,
+      "height": 134,
+      "bytes": 14939
+    },
+    {
+      "path": "docs/mcr/evidence/venue-community/native-round-11/native/invitation-430-diff.png",
+      "sha256": "bd234855361ee552ef9e3b64f47fc2bc8d0bdcd783d27727ea11436fd441d123",
+      "width": 410,
+      "height": 152,
+      "bytes": 74734
+    },
+    {
+      "path": "docs/mcr/evidence/venue-community/native-round-11/native/invitation-430-overlay.png",
+      "sha256": "29f718e5f49c919c8b073dbd06c7c560a54256144a1775cd6d6cc55d1b2cb78f",
+      "width": 410,
+      "height": 152,
+      "bytes": 61638
+    },
+    {
+      "path": "docs/mcr/evidence/venue-community/native-round-11/native/invitation-430-reference.png",
+      "sha256": "87e7b4562e4835a90d8e69a57e6976881970ce42a6fe5f60f3d6af49d57d3acb",
+      "width": 410,
+      "height": 152,
+      "bytes": 69477
+    },
+    {
+      "path": "docs/mcr/evidence/venue-community/native-round-11/native/invitation-430.png",
+      "sha256": "1069284ad67a120d07112baf63ac5cd3d78206914c0652f2390df4efd6e46d28",
+      "width": 410,
+      "height": 152,
+      "bytes": 17070
+    },
+    {
+      "path": "docs/mcr/evidence/venue-community/native-round-11/native/short-height-390.png",
+      "sha256": "3da71dce3ce43df75ba6cb6ed011be3a69d17da9267d2a15904bea4807303d41",
+      "width": 390,
+      "height": 605,
+      "bytes": 51709
+    },
+    {
+      "path": "docs/mcr/evidence/venue-community/native-round-11/native/uncertain-360.png",
+      "sha256": "c8b055f62b335169c5bd02ea31fb0e6749dfe70316aac752497a9a54a59d859d",
+      "width": 360,
+      "height": 703,
+      "bytes": 58451
+    },
+    {
+      "path": "docs/mcr/evidence/venue-community/native-round-11/native/uncertain-390.png",
+      "sha256": "62ad980b899a4e8aa32971d04e41bdac837301201c04869d4f884a395a9304f0",
+      "width": 390,
+      "height": 725,
+      "bytes": 61170
+    },
+    {
+      "path": "docs/mcr/evidence/venue-community/native-round-11/native/uncertain-430.png",
+      "sha256": "dd209ad8c1eae02e9dfb11287c1f8bb5dbf6591ec4d17a41ed3b515e0ce4ee4a",
+      "width": 430,
+      "height": 738,
+      "bytes": 65640
+    }
+  ],
+  "remaining": [
+    "Exact reference visual acceptance remains OPEN for typography, header/message offsets and focus-icon silhouette; current geometry is closer and functionally qualified.",
+    "Default shell/actual HTTP/server/multiuser/device GPS, physical keyboard and physical arrival are not certified."
+  ],
+  "publication": "Exact scoped postimages only; no private control, borrowed Root, source ancestry, shared registry, lock or router changes.",
+  "cssSource": "430f42872fa13ea6a8ff9ad45d9ccb97a78732ca",
+  "developerInspection": {
+    "inspectedPNGs": 28,
+    "scope": "All10 state captures,6 reference crops,12 overlays/diffs individually viewed after direct FULL relay",
+    "conversationActualHeights": [
+      271.84375,
+      293.71875,
+      323.640625
+    ],
+    "conversationUniformReferenceHeights": [
+      269.7157622739018,
+      293.5142118863049,
+      325.2454780361757
+    ],
+    "disposition": "Previous6\u20139px excess resolved; maximum absolute current height difference2.13px. No horizontal clipping or clipped action/composer controls in asserted cases. Small typography/header/message offsets and different focus icon silhouette remain visible; exact visual acceptance remains OPEN. Approved selected character derivatives intentionally differ from legacy comparison pixels."
+  },
+  "priorPublication": {
+    "code": "08c83be39a0fbf90edc0486915506b8c940a7907",
+    "docs": "7e887df5c8d401ea273ab748d1b47da11c76d17d",
+    "publisherReceiptSHA256": "2084ccc8c6f5d2f06a4e41804d60adbf46ab177fa69b6ed6de9060db1f423198",
+    "ownerVerifiedPostimages": 45
+  }
+}

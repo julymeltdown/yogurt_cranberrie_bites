@@ -1,3 +1,9 @@
+# Native11 CSS delivery
+
+The final CSS correction is qualified by `docs/mcr/evidence/venue-community/visual-qualified-11.json`. It changes layout, proportional control typography and the reference-sampled burgundy token only. The already published13 frontend postimages retain their source/contract semantics. No public HTTP contract, root composition, Auth, Map owner, manifest or lockfile changes are included. Exact visual and real integration gates retain the limitations in visual-validation.md.
+
+---
+
 # Normalized Meeting adapter
 
 Source status: CONTRACT_READY / isolated source validation PASS. Existing canonical source-only leaf remains41d90738. This additional factory bridges the actual sole public Meeting client; it introduces no wire DTO, URL builder, transport, canonical Auth, clock, world or consumer capability family. Input pin6e4e53457f997f9253775ef693a5771847864549 has responsible-owner45 focused tests/type/lint PASS; the adapter now has separate responsible-owner qualification below. Default production dispatch remains a separate Root responsibility.
