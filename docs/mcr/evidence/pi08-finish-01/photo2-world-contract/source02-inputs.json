@@ -1,0 +1,48 @@
+{
+  "version": 1,
+  "files": [
+    {
+      "path": "frontend/src/features/parade-ink/world-hud/photo2-world-display-v1.ts",
+      "bytes": 15075,
+      "sha256": "a37dfc5dcd4a0f533ad4d607cab0ced9caa10ca1c3fcdcd8894fbb00997d9e50"
+    },
+    {
+      "path": "frontend/src/features/parade-ink/world-hud/__tests__/finish-01/photo2-world-display-v1.test.ts",
+      "bytes": 8434,
+      "sha256": "5963f0ca371a0633e1423d295a8a34fb7c4038831fac454796d33c63cb2460d6"
+    },
+    {
+      "path": "frontend/src/features/parade-ink/world-hud/__tests__/finish-01/photo2-control.config.mjs",
+      "bytes": 410,
+      "sha256": "cb6a530995a5bfde88610740258f47b2a031f17a33406f536eafebd592eda895"
+    },
+    {
+      "path": "frontend/src/features/parade-ink/world-hud/__tests__/finish-01/logical-zoom.test.ts",
+      "bytes": 2157,
+      "sha256": "02949433a310f7ad16524e84f90dfa8cd66ebd2f46ac800ac3137b1bf30217ff"
+    },
+    {
+      "path": "frontend/src/world/camera/port.ts",
+      "bytes": 1856,
+      "sha256": "3ddca1263288c40edab61f02bfd4a0649bb05c5378e4a9a4d94298f400bdbd3b"
+    },
+    {
+      "path": "frontend/src/features/parade-ink/world-hud/__tests__/finish-01/contract-source02.py",
+      "bytes": 15998,
+      "sha256": "bfce6e17bfd3fdd55a14c200574d931e02a2c01e320e45e633260c83d5f3548b"
+    },
+    {
+      "path": "frontend/src/features/parade-ink/world-hud/__tests__/finish-01/resource_snapshot.py",
+      "bytes": 4172,
+      "sha256": "ec2338c56bc59704399237ecb35f1f23602a8e6543aa31e1fbc53ad77ebcb6bb"
+    },
+    {
+      "path": "frontend/src/features/parade-ink/world-hud/__tests__/finish-01/resource_guard.py",
+      "bytes": 385,
+      "sha256": "65b6b2d90cdd682f012859f92e5bd5c9f4098f30fef82a8b6acb45b74d4cdae6"
+    }
+  ],
+  "scope": "AMENDED overflow/fractional newcase +two logicalzoom newcases +changedstrict types/lint; eight priorcases retained/notreplayed",
+  "familyLimitBytes": 805306368,
+  "sourcePhysicalFreshLimitBytes": 8388608
+}

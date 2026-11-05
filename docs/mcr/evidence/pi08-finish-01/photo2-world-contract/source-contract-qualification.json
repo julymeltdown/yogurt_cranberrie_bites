@@ -1,0 +1,25 @@
+{
+  "status": "QUALIFIED_SOURCE_CONTRACT_ONLY_NOT_ART_OR_RUNTIME_ADMISSION",
+  "production": "frontend/src/features/parade-ink/world-hud/photo2-world-display-v1.ts",
+  "qualifiedCases": {
+    "source01": "8 original semantic cases passed at1f8e40e3c; retained unchanged tests, implementation later hardened by additional bounds/version refusals",
+    "source02": "1 new overflow/fractional revision case passed;2 separate logicalzoom cases also passed but camera fix is excluded from this source-only packet"
+  },
+  "strictTypesAndLint": "Affected source02 exact postimages PASS",
+  "source01": {
+    "accept": 1793855527.3920739,
+    "full": 1793855531.6856031,
+    "actualExitCode": 0,
+    "inputSHA256": "24ebb1b1a24c8036eaee8dd94ed3182253bc4ebef93919f3d8e951fa29ac722b"
+  },
+  "source02": {
+    "accept": 1793856216.1316931,
+    "full": 1793856220.9969542,
+    "actualExitCode": 0,
+    "inputSHA256": "70cae27da149aeda6687e2620c029ae480980386eb281d2e370f30e82069b792"
+  },
+  "noAdmission": "No registered new Photo2 asset tuple, C03/theme revision or renderer activation is supplied. This pure module adds no side effect, provider or default-route bypass.",
+  "producerStatus": "Root source/frame agreement received; separateSource03 pure layout case not yet run; ART producer not yet restored.",
+  "cameraFollowup": "Authored one-hunk control.read fix qualified in pureSource02; separateNative10 NOACCEPT disk-floor refusal, not included here.",
+  "fullObjective": "Full unbudgeted PI08 remains active; descriptor-only milestone is not completion."
+}

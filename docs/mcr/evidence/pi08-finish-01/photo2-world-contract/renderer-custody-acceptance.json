@@ -1,0 +1,41 @@
+{
+  "status": "RECEIVING_LITERAL_ROOT_STOP_CUSTODY_ACCEPTED_BEFORE_WRITES",
+  "branch": "codex/mcr-fe-PI08-finish-01",
+  "canonical": "a6720ffb06391c62a809a63d3eba150538a16522",
+  "preimages": [
+    {
+      "path": "frontend/src/world/reference-scene/model.ts",
+      "blob": "a8da31afff462100ee12783ed96765017b8272f7",
+      "sha256": "139f92df0ae1ae1abf7fbb9822beee82faa4fdb4c51ee873a3cdbb7d267a715a",
+      "bytes": 4779,
+      "local": "MATCH"
+    },
+    {
+      "path": "frontend/src/world/reference-scene/phaser.ts",
+      "blob": "b6b58c674a0395d5d3b6ec47dfb126ff1e84ea3c",
+      "sha256": "b01001452caa199723bbb34f672e7985687f146850f46e28d7bd4801faa707b8",
+      "bytes": 3035,
+      "local": "MATCH"
+    },
+    {
+      "path": "frontend/src/world/scenes/MapScene.ts",
+      "blob": "c75091283d9409228a2e0370bbccd0d44f1a2062",
+      "sha256": "d60d66fa29770ec3639250e65f988cbea288632401bac0eb87873b606df6b9d6",
+      "bytes": 19666,
+      "local": "MATCH"
+    },
+    {
+      "path": "frontend/src/world/illustrated/model.ts",
+      "blob": "0693e22f2e91f7ec1973888352bb5f2453f74628",
+      "sha256": "a53157f04d6482f1265b4d37bf08e45d832628fb046c5a5e1a4db2cac56bd29e",
+      "bytes": 4717,
+      "local": "MATCH"
+    }
+  ],
+  "newPathsAbsent": [
+    "frontend/src/world/reference-scene/photo2-world-display-v1/model.ts",
+    "frontend/src/world/reference-scene/photo2-world-display-v1/phaser.ts"
+  ],
+  "hunkLimits": "Root literal transfer only: model imports/optionaldisplayfield/strictnewversiondispatch; phaser prepareReferenceSceneSkin newprofilebranch+cleanup; MapScene create/prepareSkin/refreshCamera/cameraprojectionread/avatarupdate/muralprojection newprofilehunks; illustrated validateScenery grounddimension equality+necessaryimport only. Preserve all legacy profile behavior including exact b4c81367 camera fallback; no Auth/router/resolver/physics/C06 bypass.",
+  "rootStop": "Received literalRoot153 STOP; no other known writer; own receiving acceptance precedes any source write."
+}

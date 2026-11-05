@@ -1,0 +1,156 @@
+{
+  "booking": "PI08-DISPLAY-CONTRACT-SOURCE01-0456",
+  "mode": "source01",
+  "acceptedEpoch": 1793855527.3920739,
+  "workDeadline": 1793855647.3920739,
+  "fullDeadline": 1793855707.3920739,
+  "carriedNewBytes": 750780416,
+  "startAvailable": 24126484480,
+  "status": "PASS",
+  "commands": [
+    {
+      "label": "contract-cases",
+      "pid": 48914,
+      "exitCode": 0
+    },
+    {
+      "label": "contract-strict-types",
+      "pid": 48933,
+      "exitCode": 0
+    },
+    {
+      "label": "contract-scoped-lint",
+      "pid": 48962,
+      "exitCode": 0
+    }
+  ],
+  "temporaryCleaned": true,
+  "dependencyLinkRemoved": true,
+  "controllerMetadata": {
+    "pid": 48782,
+    "birth": "Thu Nov 5 14:12:07 2026",
+    "executable": "/Library/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python",
+    "script": "/Users/lhs/Desktop/mcr-worktrees/art-cute-community-v1/frontend/src/features/parade-ink/world-hud/__tests__/finish-01/contract-round.py",
+    "cwd": "/Users/lhs/Desktop/mcr-worktrees/art-cute-community-v1",
+    "outputRoot": "/Users/lhs/Desktop/mcr-worktrees/art-cute-community-v1/docs/mcr/evidence/pi08-finish-01/source01"
+  },
+  "resourceIndex": "/Users/lhs/Desktop/mcr-evidence/backend-staffing-01a1a21d/owner-resource-receipts/01a1a5d9-6955-7820-bcd4-8e0a21629aa2.json",
+  "guardianMetadata": {
+    "pid": 48872,
+    "birth": "Thu Nov 5 14:12:07 2026",
+    "executable": "/Library/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python",
+    "script": "/Users/lhs/Desktop/mcr-worktrees/art-cute-community-v1/frontend/src/features/parade-ink/world-hud/__tests__/finish-01/resource_guard.py",
+    "cwd": "/Users/lhs/Desktop/mcr-worktrees/art-cute-community-v1",
+    "outputRoot": "/Users/lhs/Desktop/mcr-worktrees/art-cute-community-v1/docs/mcr/evidence/pi08-finish-01/source01"
+  },
+  "ownerClaim": {
+    "owner": "01a1a5d9-6955-7820-bcd4-8e0a21629aa2",
+    "booking": "PI08-DISPLAY-CONTRACT-SOURCE01-0456",
+    "kind": "source",
+    "root": "/Users/lhs/Desktop/mcr-worktrees/art-cute-community-v1",
+    "controller": "/Users/lhs/Desktop/mcr-worktrees/art-cute-community-v1/frontend/src/features/parade-ink/world-hud/__tests__/finish-01/contract-round.py",
+    "pid": 48782,
+    "pgid": 48782,
+    "birth": "Thu Nov  5 14:12:07 2026",
+    "at": 1793855527.450678,
+    "acceptedEpoch": 1793855527.3920739,
+    "workDeadline": 1793855647.3920739,
+    "fullDeadline": 1793855707.3920739,
+    "processCap": 8,
+    "rssCapBytes": 1073741824,
+    "newCapBytes": 767557632,
+    "familyNEWCapBytes": 771751936,
+    "carriedNewBytes": 750780416,
+    "wholeCapBytes": 8589934592,
+    "wholeRoots": [
+      "/Users/lhs/Desktop/mcr-worktrees/art-cute-community-v1",
+      "/Users/lhs/Desktop/mcr/.git",
+      "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64",
+      "/Users/lhs/Desktop/mcr/frontend/node_modules",
+      "/Library/Frameworks/Python.framework/Versions/3.14",
+      "/Applications/Google Chrome.app",
+      "/Users/lhs/Desktop/mcr-worktrees/fe-runtime-preferences",
+      "/Users/lhs/Desktop/mcr/frontend/public",
+      "/private/tmp/codex-remote-attachments/01a19e5c-e9c6-7973-a53b-a6d19141620f/9FC49E03-6C0E-4776-A954-2CA5C12CB495/1-Photo-1.jpg",
+      "/private/tmp/codex-remote-attachments/01a19e5c-e9c6-7973-a53b-a6d19141620f/9FC49E03-6C0E-4776-A954-2CA5C12CB495/2-Photo-2.jpg"
+    ],
+    "privateTemporaryRoot": "/private/tmp/mcr-pi08-finish-contract-source01"
+  },
+  "bothLiveBeforeWorkload": {
+    "primary": 48782,
+    "guardian": 48872,
+    "at": 1793855528.83918,
+    "initial": {
+      "pid": 48872,
+      "at": 1793855528.8004339,
+      "sample": {
+        "free": 24127451136,
+        "all": 3,
+        "rss": 55689216,
+        "new": 750788608,
+        "whole": 5472378880,
+        "pids": [
+          48782,
+          48872,
+          48900
+        ]
+      }
+    }
+  },
+  "initialMembership": {
+    "observedAtEpoch": 1793855528.911057,
+    "psSnapshotSHA256": "cd5c3bb32e4dd99640258445d16a4af4c56aa70d8ef27c28145c01deb3238dc9",
+    "owners": [
+      "01a1a205-3f89-78c3-aa67-719c4bb40b8d",
+      "01a1a5d9-6955-7820-bcd4-8e0a21629aa2"
+    ],
+    "ordinaryActualPids": [],
+    "reservedProcesses": 14,
+    "reservedRSSBytes": 2147483648,
+    "actualPids": [
+      48782,
+      48872,
+      48913
+    ],
+    "actualRSSBytes": 57491456,
+    "otherNewUpperBytes": 2692743168,
+    "receiptReadConsistency": {
+      "attempts": 1,
+      "stableRevisionSHA256": "622793c0f6cf73dda3da71d7a3fe6a65c6d255bc2dfabbd0d49e5812c0de68cc",
+      "unstableObservations": [],
+      "boundary": "Every returned claim/cap/PID/future passed the unchanged strict reader against a stable receipt revision; no reservation released from absence"
+    }
+  },
+  "postimagesExact": true,
+  "inputReadsetSha256": "24ebb1b1a24c8036eaee8dd94ed3182253bc4ebef93919f3d8e951fa29ac722b",
+  "guardian": {
+    "status": "STOPPED",
+    "pid": 48872,
+    "last": {
+      "free": 24124968960,
+      "all": 5,
+      "rss": 61767680,
+      "new": 752173056,
+      "whole": 5473763328,
+      "pids": [
+        48782,
+        48872,
+        48962,
+        48974,
+        48977
+      ]
+    },
+    "maximum": {
+      "all": 5,
+      "rss": 222658560,
+      "new": 752173056,
+      "whole": 5473763328
+    }
+  },
+  "endAvailable": 24121868288,
+  "elapsedSeconds": 4.16,
+  "checkoutPositiveBytes": 12288,
+  "outsideMetadataBytes": 61440,
+  "remainingManagedParent": 0,
+  "actualFullEpoch": 1793855531.6856031
+}

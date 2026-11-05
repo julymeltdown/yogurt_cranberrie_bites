@@ -1,0 +1,9 @@
+{
+  "canonical": "b4c81367eab7ac03f2b8cdc9bf3635664d22c38d",
+  "ownerIndependentlyCheckedExactBlobs": 46,
+  "mismatches": [],
+  "remoteObservedEarlier": "b4c81367eab7ac03f2b8cdc9bf3635664d22c38d",
+  "subsequentRemote": "9c73133cf45697ad5edfcd23bd48ae500cd80866",
+  "scope": "HUD+camera only; fullPhoto2open",
+  "publisherReceiptSha256": "62c2c75e3653f418c003d1acb7de1e7d5cc700d8f86015a057d77565277c8dbe"
+}

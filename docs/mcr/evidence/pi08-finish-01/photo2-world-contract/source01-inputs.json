@@ -1,0 +1,54 @@
+{
+  "version": 1,
+  "task": "PI08-DISPLAY-CONTRACT-01",
+  "canonicalSource": "8dee1335a79f831e6a29f005a50f2c0f65777d46",
+  "files": [
+    {
+      "path": "frontend/src/features/parade-ink/world-hud/photo2-world-display-v1.ts",
+      "bytes": 14920,
+      "sha256": "aed5dc195032dff6abb3abf2c9198811db1903dfb8e86a108fde5e57254a4bbd"
+    },
+    {
+      "path": "frontend/src/features/parade-ink/world-hud/__tests__/finish-01/photo2-world-display-v1.test.ts",
+      "bytes": 7787,
+      "sha256": "888ec2e974f323c7171dfe1bf993d103e89c4cf2448f267a78eac23d06245d97"
+    },
+    {
+      "path": "frontend/src/features/parade-ink/world-hud/__tests__/finish-01/photo2-contract.config.mjs",
+      "bytes": 332,
+      "sha256": "345c9b6ab10846048d13018b00d937b004a1333ea133822757558dc1779f6339"
+    },
+    {
+      "path": "frontend/src/features/parade-ink/world-hud/__tests__/finish-01/contract-round.py",
+      "bytes": 15576,
+      "sha256": "8b5145592290db938eb4ab95ebe7804b097ed6db2a9e00a0ed87e1148d7deb5b"
+    },
+    {
+      "path": "frontend/src/features/parade-ink/world-hud/__tests__/finish-01/resource_snapshot.py",
+      "bytes": 4172,
+      "sha256": "ec2338c56bc59704399237ecb35f1f23602a8e6543aa31e1fbc53ad77ebcb6bb"
+    },
+    {
+      "path": "frontend/src/features/parade-ink/world-hud/__tests__/finish-01/resource_guard.py",
+      "bytes": 385,
+      "sha256": "65b6b2d90cdd682f012859f92e5bd5c9f4098f30fef82a8b6acb45b74d4cdae6"
+    },
+    {
+      "path": "frontend/src/features/gift-discovery/__tests__/parade-ink/membership.py",
+      "bytes": 11575,
+      "sha256": "d2e52f549c07977265b131a1ed2a178b805ddef174fdc55c6d339dc8f370ae67"
+    },
+    {
+      "path": "frontend/src/features/gift-discovery/__tests__/parade-ink/guardian.py",
+      "bytes": 3849,
+      "sha256": "1b56f5723453a165939752b78c0660bd90811af9199dddc4c127f35c7f613d11"
+    }
+  ],
+  "checks": [
+    "8semanticcontractcases",
+    "scopedstrictTypeScript",
+    "scopedoxlint"
+  ],
+  "newPixels": false,
+  "noRuntimeOrArtReadinessClaim": true
+}

@@ -1,0 +1,54 @@
+{
+  "status": "EXACT_CUSTODY_REQUEST_NOT_GRANTED_NOT_ART_READY",
+  "canonicalReadset": "8dee1335a79f831e6a29f005a50f2c0f65777d46",
+  "currentMapSceneLease": "refreshCamera recognized-reference fallback expression only; unrelated hunks not transferred",
+  "newProductionPathsRequested": [
+    "frontend/src/world/reference-scene/photo2-world-display-v1/model.ts",
+    "frontend/src/world/reference-scene/photo2-world-display-v1/phaser.ts"
+  ],
+  "existingHunks": [
+    {
+      "path": "frontend/src/world/reference-scene/model.ts",
+      "preimageBlob": "a8da31afff462100ee12783ed96765017b8272f7",
+      "preimageSha256": "139f92df0ae1ae1abf7fbb9822beee82faa4fdb4c51ee873a3cdbb7d267a715a",
+      "bytes": 4779,
+      "requestedHunks": [
+        "imports + ReferenceSceneBinding optional display contract field",
+        "new strict version dispatch before broad spatial-v3 in validateReferenceMetadata, requireReferenceScene and referenceSceneFor"
+      ]
+    },
+    {
+      "path": "frontend/src/world/reference-scene/phaser.ts",
+      "preimageBlob": "b6b58c674a0395d5d3b6ec47dfb126ff1e84ea3c",
+      "preimageSha256": "b01001452caa199723bbb34f672e7985687f146850f46e28d7bd4801faa707b8",
+      "bytes": 3035,
+      "requestedHunks": [
+        "prepareReferenceSceneSkin: ground mesh/mask and per-prop mapped visual/collision frame, rollback/cleanup; keep existing profiles byte behavior"
+      ]
+    },
+    {
+      "path": "frontend/src/world/scenes/MapScene.ts",
+      "preimageBlob": "845fe9e162919d5894e3a23ff28283b0b0f23e2c",
+      "preimageSha256": "91cb1bfd7770051d126da6a15ab307e03f4228f22f3c7fe9819e87a514a1a258",
+      "bytes": 19140,
+      "requestedHunks": [
+        "create(): camera display bounds for new profile only",
+        "prepareSkin(): new explicitly versioned display renderer branch",
+        "refreshCamera(): native logical foot mapped once to display; existing profiles retain qualified expression",
+        "WorldCamera.project/unproject/read(): compose inverse/forward once around existing Phaser transforms",
+        "avatarScene sprite update(): project actual native actor foot and depth once",
+        "muralScene bridge: physical anchor projection for new display only"
+      ]
+    }
+  ],
+  "unchangedOwners": [
+    "Auth/session/privacy/router/root registry/OAuth",
+    "world authoritative actor positions, collision grid, proximity/interaction/room/identity services",
+    "backend C03 theme catalog and release admission: coherent new revision/hash needed from incumbent backend owner"
+  ],
+  "resolverFinding": "Existing createWorldEntryResolver already performs preflightReferenceScene, exact manifest/hash/geometry validation and conflict-checked asset allowlist; no resolver bypass/edit is currently justified. Strict version dispatch must precede broad legacy v3 identity claim.",
+  "mapCompatibility": "Existing Map-only composition is a distinct release tuple. New World theme hash must be explicitly compatible or truthfully withdrawn by Map owner; do not reuse its pixels as World art.",
+  "runtimeConstraint": "Phaser.CANVAS incumbent. Non-affine mesh needs a measured Canvas triangulation/render path and collision silhouette proof, no WebGL assumption/new game, no hidden precomposed texture outside current2,097,152-source-pixel limit (8,388,608RGBA bytes), separate from2,097,152transfer-byte limit; all new derived textures and swap peaks must be measured.",
+  "nextStage": "Qualify source projection/admission first. Then obtain exact shared-hunk transfer and a concrete artifact/occlusion frame set before ART producer readiness. Descriptor-only is not full completion.",
+  "custodyDisposition": "Root153 literalSTOP/transfer received for exactly listed model/phaser/MapScene hunks and two new model/phaser leaves; receiving fresh canonical acceptance still required beforewrite. Additional illustrated/model.ts dimension check+necessary import also RootSTOPped/transferred; legacy budgets/loaded-image checks untouched."
+}
