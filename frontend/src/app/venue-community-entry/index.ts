@@ -3,3 +3,6 @@ export { VenueInvitationPanel, VenueConversationPanel } from './routes'
 export { createMeetingLeafOwner } from './owner'
 export type { MeetingLeafOwner } from './owner'
 export type { MeetingLeafOptions, MeetingLeafRelease, MeetingLeafAdapter, LeafRequest, LeafCommandResult } from './ports'
+
+export { createNormalizedMeetingAdapter } from './adapter'
+export type { MeetingAdapterOptions, MeetingInboxView, MeetingPresentation } from './adapter'

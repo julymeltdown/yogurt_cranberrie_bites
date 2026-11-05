@@ -38,7 +38,7 @@ export function createMeetingLeafOwner({ auth, release, newCommandKey }: Meeting
     if (!live()) return null
     try {
       const clock = release!.clock.read()
-      return clock && sameScope(clock.scope, scope!) && Number.isFinite(clock.nowMs) && clock.nowMs >= 0 ? clock.nowMs : null
+      return clock && sameScope(clock.scope, scope!) && Number.isFinite(clock.nowMs) && clock.nowMs >= 0 && live() ? clock.nowMs : null
     } catch { return null }
   }
   function withdraw() {
@@ -47,6 +47,7 @@ export function createMeetingLeafOwner({ auth, release, newCommandKey }: Meeting
     clearTimeout(expiry); expiry = undefined
     // Scrub before abort/port cleanup/subscriber callbacks can re-enter the owner.
     state = Object.freeze({ ...emptyMeetingLeaf, phase: 'withdrawn' })
+    try { release?.adapter.withdraw?.() } catch { /* Owner state is already scrubbed. */ }
     request?.signal.removeEventListener('abort', withdraw)
     for (const stop of stops.splice(0).reverse()) { try { stop() } catch { /* No source can retain private data. */ } }
     notify()
@@ -211,6 +212,20 @@ export function createMeetingLeafOwner({ auth, release, newCommandKey }: Meeting
     catch { if (usable() && state.command?.command === command) publish({ command: { command, phase: 'unknown' }, notice: 'unknown' }) }
     return true
   }
+  async function loadMore() {
+    if (!usable() || locked() || state.phase !== 'ready' || !state.context?.conversation?.nextCursor
+      || !release?.adapter.loadMore || !request) return false
+    const context = state.context, attempt = ++serial
+    publish({ phase: 'loading' })
+    if (!usable() || serial !== attempt) return false
+    try {
+      const updated = await release.adapter.loadMore(context, request)
+      if (!usable() || serial !== attempt) return false
+      if (!validContext(updated, context.selection, null) || updated!.contextId !== context.contextId) { withdraw(); return false }
+      publish({ phase: 'ready', context: updated, canViewOnMap: !!release.mapFocus && !!mappedLandmark(updated!) }); armExpiry()
+      return true
+    } catch { if (usable() && serial === attempt) withdraw(); return false }
+  }
   function viewOnMap() {
     if (!usable() || locked() || !state.context || !release?.mapFocus) return false
     const artLandmarkId = mappedLandmark(state.context)
@@ -234,7 +249,7 @@ export function createMeetingLeafOwner({ auth, release, newCommandKey }: Meeting
   return {
     read: () => { if (state.phase !== 'idle' && !withdrawn) usable(); return state },
     subscribe(listener: () => void) { if (disposed) return () => {}; listeners.add(listener); return () => { listeners.delete(listener) } },
-    open, openInvitation, surface, execute, resolve, viewOnMap,
+    open, openInvitation, loadMore, surface, execute, resolve, viewOnMap,
     setDraft(draft: string) { if (usable() && state.context && !locked()) publish({ draft, notice: null }) },
     close() { if (!usable() || locked()) return false; publish({ active: false }); return true },
     refresh() { if (!usable() || locked() || (!selection && !state.requestedInvitationId)) return Promise.resolve({ kind: 'unavailable' } as const)

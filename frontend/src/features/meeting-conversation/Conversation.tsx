@@ -8,7 +8,7 @@ export function MeetingConversation({ owner, state }: { readonly owner: MeetingL
   const input = useRef<HTMLTextAreaElement>(null)
   useEffect(() => { if (state.composerOpen && context?.canSend) input.current?.focus() }, [state.composerOpen, context?.contextId, context?.canSend])
   if (!context) return null
-  const pending = commandUnresolved(state.command), invitation = context.invitation
+  const pending = commandUnresolved(state.command) || state.phase === 'loading', invitation = context.invitation
   return <section className="venue-meeting-conversation" aria-labelledby="venue-conversation-title" aria-busy={pending}>
     <h2 id="venue-conversation-title">{context.landmarkLabel ? `Meet at ${context.landmarkLabel}` : `Message ${context.friend.displayName}`}</h2>
     <MeetingParticipants context={context} />
@@ -25,6 +25,7 @@ export function MeetingConversation({ owner, state }: { readonly owner: MeetingL
         </li>
       })}
     </ol>
+    {context.conversation?.nextCursor && <button type="button" disabled={pending} onClick={() => { void owner.loadMore() }}>Load more messages</button>}
     {context.messages.length === 0 && <p className="venue-meeting-empty">Start a conversation about meeting here.</p>}
     {context.conversation?.earlierCursor && <p className="venue-meeting-explanation">Showing the current message window.</p>}
     {invitation && <div className={`venue-meeting-status venue-meeting-status-${invitation.status}`}>

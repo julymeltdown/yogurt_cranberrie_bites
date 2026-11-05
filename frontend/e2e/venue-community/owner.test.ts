@@ -202,3 +202,24 @@ describe('new route safety', () => {
     }
   })
 })
+
+
+it('scrubs normalized adapter windows before withdrawal subscribers', async () => {
+  const f = meetingFixture(); let cleared = false
+  f.release.adapter.withdraw = () => { cleared = true }
+  await f.owner.open(f.intent)
+  const stop = f.owner.subscribe(() => { if (f.owner.read().phase === 'withdrawn') expect(cleared).toBe(true) })
+  f.owner.withdraw(); expect(cleared).toBe(true); stop(); f.dispose()
+})
+
+it('loads a further authorized message page without a command or a replacement lifetime', async () => {
+  const f = meetingFixture(); f.patch({ conversation: { id: 'fixture-conversation', earlierCursor: null, nextCursor: '1' } })
+  let calls = 0
+  f.release.adapter.loadMore = async (context, request) => {
+    calls++; expect(request.signal).toBe(f.lifetime.signal)
+    return { ...context, messages: [{ id: 'next-message', authorId: fixtureIds.friend, body: 'Next page', timeLabel: 'Now' }],
+      conversation: { id: 'fixture-conversation', earlierCursor: null, nextCursor: null } }
+  }
+  await f.owner.open(f.intent); expect(await f.owner.loadMore()).toBe(true)
+  expect(f.owner.read().context?.messages[0]?.body).toBe('Next page'); expect(calls).toBe(1); expect(f.writes).toHaveLength(0); f.dispose()
+})

@@ -19,6 +19,9 @@ export interface MeetingLeafAdapter {
   execute(command: LeafCommand, request: LeafRequest): Promise<LeafCommandResult>
   /** Read status only; MUST NOT re-execute an unknown command. */
   status(command: LeafCommand, request: LeafRequest): Promise<LeafCommandResult>
+  loadMore?(context: MeetingContextView, request: LeafRequest): Promise<MeetingContextView | null>
+  /** Scrub normalized private windows before owner cleanup/subscriber callbacks. */
+  withdraw?(): void
 }
 export interface MeetingLeafRelease {
   readonly scope: PrivacyScope
