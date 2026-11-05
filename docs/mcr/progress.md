@@ -1,6 +1,6 @@
 # Execution record — functional delivery
 
-Updated **2026-11-05T08:27:57+09:00** from current lead dispositions and canonical delivery records. The [revised plan](functional-delivery-plan.md) and [machine register](task-progress-2026-11-04.json) remain the execution and progress references. Original scope and historical acceptance evidence are preserved.
+Updated **2026-11-05T09:25:46+09:00** from both hourly lead dispositions and canonical publisher receipts. The [revised plan](functional-delivery-plan.md) and [machine register](task-progress-2026-11-04.json) retain original scope and historical evidence.
 
 ## Current priority: Parade Ink design delivery
 
@@ -8,7 +8,7 @@ The latest human choice is **Parade Ink (Photo 2), one app-wide appearance**. It
 
 Both kings and the existing UI/resource/functional leads contributed to the [design-first amendment](design/parade-ink-delivery-plan-2026-11-05.md). The [four supplied originals](design/parade-ink-2026-11-05/reference-manifest.json) are preserved byte for byte. Photo 2 is primary; other sheets supply missing anatomy translated into Parade Ink, and the earlier ten-screen reference supplies unpictured structure.
 
-**Functional baseline:49/111 (44.1%),62 remaining. New design acceptance:0/12 families.** These are separate measures; no combined product percentage is claimed. All112 original IDs,61 required IA and55 original criteria outcomes remain. Existing functional completions are not erased by presentation work; QA06/IN05 still require the new design to be delivered.
+**Functional baseline:52/111 (46.8%),59 remaining. New design acceptance:0/12 families.** These are separate measures; no combined product percentage is claimed. All112 original IDs,61 required IA and57 original criteria outcomes remain. Existing functional completions are not erased by presentation work; QA06/IN05 still require the new design to be delivered.
 
 First deliver shared components plus a working Feed/Thread family. Then parallelize Meet/Giveaway, Profile/avatar and World/Wall presentation through disjoint existing writers; cover public/auth and supporting screens with the same component contract. Safe backend/runtime work continues. Publishers preserve valid queued patches; no code restart, shared-checkout editing or unannounced ownership transfer.
 
@@ -16,31 +16,31 @@ Developers compare fixed geometry, type, spacing, borders, icons, assets and con
 
 | Design family | Scope | Current status |
 | --- | --- | --- |
-| PI01 | Shared foundation and chrome | NOT_STARTED; developer26e preparing custody |
-| PI02 | Feed and notices | NOT_STARTED; developer213 preparing custody |
-| PI03 | Thread, replies and composer | NOT_STARTED; developer213 preparing custody |
-| PI04 | Giveaway and reservation | NOT_STARTED |
-| PI05 | Meet, party and people | NOT_STARTED |
-| PI06 | Profile, activity and preferences | NOT_STARTED |
-| PI07 | Avatar framing, popover and editor | NOT_STARTED |
-| PI08 | World HUD and era controls | NOT_STARTED |
-| PI09 | Wall B editor and states | NOT_STARTED |
-| PI10 | Public, authentication and legal | NOT_STARTED |
-| PI11 | Map, places, rooms and check-in | NOT_STARTED |
-| PI12 | Supporting safety, operations and archive | NOT_STARTED |
+| PI01 | Shared foundation and chrome | IN_PROGRESS; owner 26e |
+| PI02 | Feed and notices | IN_PROGRESS; owner 213 |
+| PI03 | Thread, replies and composer | IN_PROGRESS; owner 213 |
+| PI04 | Giveaway and reservation | NOT_STARTED; custody/preparation, source start not confirmed here; owner 2162 |
+| PI05 | Meet, party and people | IN_PROGRESS; owner 6950 |
+| PI06 | Profile, activity and preferences | IN_PROGRESS; owner 1ab7 |
+| PI07 | Avatar framing, popover and editor | NOT_STARTED; custody/preparation, source start not confirmed here; owner 534 |
+| PI08 | World HUD and era controls | IN_PROGRESS; owner 40c576 |
+| PI09 | Wall B editor and states | IN_PROGRESS; owner restored original Wall3187b5 |
+| PI10 | Public, authentication and legal | NOT_STARTED; custody/preparation, source start not confirmed here; owner 50 |
+| PI11 | Map, places, rooms and check-in | IN_PROGRESS; owner 40fde |
+| PI12 | Supporting safety, operations and archive | NOT_STARTED; custody/preparation, source start not confirmed here; owner 230 Reports +21e preWorld; other incumbents retain their scopes |
 
 These12 families partition all61 required IA entries with shared dependencies; they are not12 additional original tasks. No Parade Ink acceptance is inferred from earlier screenshots or this planning commit.
 
-## Latest management update — 2026-11-05T08:27:57+09:00
+## Latest hourly management update — 2026-11-05T09:25:46+09:00
 
-Both lead reports confirm **no additional original-task closure**:49/111 functional tasks are DONE,62 remain, and Parade Ink acceptance remains0/12. The plan and its original reference provenance are published at `f025bdb6fb409f3b7706e475dfabb5f3d21fe168`. Publishing the plan does not establish implemented design parity.
+**52/111 active tasks complete (46.8%);59 remain.** New originals BE06 and FE41 plus closure of QA01's reopened Wall B delta add three active completions over the prior49-task snapshot. QA01 is not counted twice in historical outcomes:57 original criteria outcomes minus5 current reopened deltas gives52. All112 original tasks,61 IA and deferred QA08 remain intact.
 
-- **Design:** Root153/UI533 are finalizing the exclusive shared-foundation versus Feed/Thread path transfers. Developer26e is named for PI01; developer213 for PI02/PI03. Their objectives are activated, but actual source starts are not yet confirmed in the receiving records. PI04–PI12 are planned only. Independent ready family/art work may proceed after real custody without waiting for a complete foundation wave or another king acknowledgment.
-- **Published increments:** Map viewport-fit source (`3aefd3dd0`), lawn source overlays (`1e2e3a328`), and QA05/IN04 source assembly (`11473eaad`) remain credited. They do not close changed Map visual checks, real QA05/IN04 journeys or whole original tasks.
-- **Execution:** Gift released its build round after an unqualified control failure. Resource21d routes Root next, then Party; Gift repairs controls in its source scope. FE41's functional browser round is running. Map's changed-browser attempt failed its driver check and released; retry is queued. Clock and QA04 source rounds are dispatched, with art231 following actual release. These are scheduling/owner reports, not passing test claims or new standing resource limits.
-- **Remaining delivery constraints:** composed real-service/cohort flows, required native/device/privacy/recovery checks and all12 design families. Physical-place, notification-audience, U03 visibility and genuine provider/claim inputs affect only their dependent outcomes; independent development continues.
+- **Design:** all12 families have named existing owners; actual source starts are reported for foundation, Feed/Thread, Meet, Profile, World HUD, Wall and Map. Full acceptance remains **0/12**. PI01's allocated-height correction needs native qualification; Feed/Thread's later unavailable-state assertion needs a developer fix. PI07/PI10 custody/preparation is recorded without claiming accepted delivery.
+- **Functional delivery:** BE06 bootstrap and FE41's full original pure-client behavior are delivered. QA01's published disposition explicitly includes the selected Wall B definition/fixture delta. IN02/IN03/QA09 source, Reports controlled-client and Root clock/build-identity increments remain credited within their stated limits; real journeys remain open.
+- **Staffing and capacity:** original FE41 developer21e already moved to disjoint PI12. All families use existing owners; PI12 S01/in-world recovery coverage is being resolved directly by functional leads and Root only where genuinely unowned. Ordinary source/publication resumed after the disk incident; actual execution still follows Resource21d's fresh bounded allocations.
+- **Remaining:** all12 completed visual families, coherent managed services/principals/cohorts, real IN02–IN05, and required privacy/recovery/device/release gates. Existing physical-place, Party audience, U03 visibility, claim/provider and BE39 deletion-profile questions affect only dependent scope.
 
-The immediate visible milestone is functioning Parade Ink **Feed → Thread/replies/composer**, using approved art and developer-owned360/390/430 comparison/fixes. No approval or ledger update from Main is required. Current product readiness remains **NOT_READY**.
+Responsible developers own qualification, fixes and direct publication. No manager acknowledgment or ledger update gates delivery. Product readiness remains **NOT_READY**.
 
 ## Current functional progress
 
@@ -48,26 +48,26 @@ The immediate visible milestone is functioning Parade Ink **Feed → Thread/repl
 | --- | --- |
 | Original required tasks | 112 |
 | Active functional-delivery tasks | 111 |
-| Recorded functional task outcomes | **49/111 (44.1%)** |
-| Remaining active tasks | **62** |
+| Recorded functional task outcomes | **52/111 (46.8%)** |
+| Remaining active tasks | **59** |
 | Deferred by user | **QA08: 1; not passed or complete** |
 | Historical original-task criteria baseline | 39/112, preserved |
-| Current original-task criteria outcomes | 55/112, including sixteen newly published closures |
-| Historically closed IDs with current deltas | 6 |
+| Current original-task criteria outcomes | 57/112, including eighteen newly published closures |
+| Historically closed IDs with current deltas | 5 |
 | Required IA entries | 61, all retained; full readiness reconciliation remains open |
 | Integrated outcomes | IN01 historically accepted; IN02/IN04/IN05 open; IN03 awaiting authorized provider/claims input |
 | Parade Ink design acceptance | 0/12 families; distinct from functional accounting |
 | Product delivery decision | NOT_READY |
 
-This is an unweighted task-count fraction, not an effort estimate or a claim that 44.1% of the product is usable. The former 11 count omitted later explicit owner dispositions. The 39 historical outcomes include completed contract, fixture and policy work; they are not 39 accepted live features. Six affected historical IDs retain current work; QA07's required current delta is now closed. Sixteen new original-task closures (C07, FE03, FE04, FE11, FE16, AR03, FE35, C06, FE17, FE31, FE36, BE13, BE14, FE06, BE04, BE07) and closure of QA07's reopened delta bring the current revised count to 49. No completed work was erased, and bounded helper deliveries did not inflate the total.
+This is an unweighted task-count fraction, not an effort estimate or a claim that 46.8% of the product is usable. The former 11 count omitted later explicit owner dispositions. The 39 historical outcomes include completed contract, fixture and policy work; they are not 39 accepted live features. Five affected historical IDs retain current work; QA07 and QA01 current deltas are now closed. Eighteen new original-task closures (C07, FE03, FE04, FE11, FE16, AR03, FE35, C06, FE17, FE31, FE36, BE13, BE14, FE06, BE04, BE07, BE06, FE41) and closure of QA07 and QA01 reopened deltas bring the current revised count to 52. No completed work was erased, and bounded helper deliveries did not inflate the total.
 
 | Revised state | Count |
 | --- | ---: |
-| DONE | 49 |
-| IN_PROGRESS | 50 |
+| DONE | 52 |
+| IN_PROGRESS | 48 |
 | WAITING_INPUT | 3 |
 | OPEN | 3 |
-| REOPENED | 6 |
+| REOPENED | 5 |
 | DEFERRED_BY_USER | 1 |
 
 `OPEN` means the revised completion outcome remains open, not that no code exists. `WAITING_INPUT` applies to closure of the affected scope; independent source work continues. Current resource and publication waits are recorded separately from task completion.
@@ -81,9 +81,8 @@ This is an unweighted task-count fraction, not an effort estimate or a claim tha
 | FE24 | Giveaway discovery and own activity | Protected GiftDetail binding, caller integration and density work are published and credited; finish actual authorized production media/motif inputs without fabricating a null binding; Preserve stock/action/recipient privacy and close the remaining original/current criteria with actual producers; full FE24/IN02 and visual acceptance remain open. |
 | FE32 | Mural editing surface | Selected B tools and default Wall lifecycle are published with developer-qualified controlled source/native evidence; preserve these increments and address actual producer integration or remaining task-local visual/input gaps; Complete actual authorized service behavior for cooldown, quota, conflict and unknown-outcome recovery with the backend owner; real two-client IN04 and full visual/device acceptance remain separately open. |
 | FE33 | Mural synchronization and world object | Published default Wall controlled lifecycle/recovery is credited; finish authoritative live C04/C05 binding and real convergence for bounded edits/undo, server recovery and moderation invalidation; Do not repeat unchanged controlled fixtures solely for a consumer acknowledgment; qualify actual multiuser requirements under IN04 when producers are ready. |
-| QA01 | Contract and fixture coverage | Extend fixture and drift coverage for the newly selected Wall B interface and changed generated outputs; Reuse the published baseline; run only changed-contract and missing-operation checks required by the new scope. |
 
-QA01 retains targeted changed-contract coverage; QA07's changed-control delta is now closed. Neither requires a repeated unchanged matrix. The already-published post-only Feed styling remains credited. New UI deltas do not reopen unrelated completed policy, contract or client tasks.
+QA01's selected Wall B definition/fixture delta and QA07's changed-control delta are now closed. Neither requires a repeated unchanged matrix. The already-published post-only Feed styling remains credited. New UI deltas do not reopen unrelated completed policy, contract or client tasks.
 
 Original **QA07** and its required changed-control delta are now **DONE**, based on the responsible-owner disposition recorded at `f3d1a93cd`. Retained original coverage and the published changed-control qualification close its client input/accessibility criteria. This removes one reopened delta; it does not add a new historical original outcome. Separate actual-device, spoken-assistive-output, live integration and release requirements remain open under their own tasks.
 
@@ -98,7 +97,7 @@ Original **QA07** and its required changed-control delta are now **DONE**, based
 | Wall B | Tools/C18 and default lifecycle `3f81baea` published with controlled source/native qualification | Live C04/C05, moderation and real two-client IN04; full visual/device acceptance open |
 | Operations/recovery | Bounded Auth, deletion, report and lifecycle increments published | Full category convergence, populated business recovery, authorization/races/abuse/configuration and release evidence |
 
-The earlier historical publication snapshot was `60831ca3b`; the latest snapshot is recorded above. The actual Enrollment browser retry passed its five cases, while live World continuation and the broader integration obligations remain open. Avatar Cancel/conflict, QA05 source-driver and scoped PrivateData/Age/legacy-deletion results are published; their limitations remain attached and they do not close whole parent tasks. Earlier original-task closures and hosted CI outcomes remain credited. One canonical publisher receipt establishes delivery; no extra king readback or proof-only commit is required. QA01, QA10 and real IN02–IN05 remain open.
+The earlier historical publication snapshot was `60831ca3b`; the latest snapshot is recorded above. The actual Enrollment browser retry passed its five cases, while live World continuation and the broader integration obligations remain open. Avatar Cancel/conflict, QA05 source-driver and scoped PrivateData/Age/legacy-deletion results are published; their limitations remain attached and they do not close whole parent tasks. Earlier original-task closures and hosted CI outcomes remain credited. One canonical publisher receipt establishes delivery; no extra king readback or proof-only commit is required. QA10 and real IN02–IN05 remain open; QA01's current offline delta is closed below.
 
 Original **C06** is now accepted and published at `6504448f` through the responsible owner's [disposition](c06-original-disposition.md). All five original criteria are covered; the existing six golden assets and qualified consumers remain the evidence basis. This does not close separate live, visual or device gates.
 
@@ -112,7 +111,13 @@ Original **BE13 and BE14 are accepted and published** at `9e4ace4d`, explicitly 
 
 Original **FE06 is complete and published** at `0ff6b459f`. The responsible developer's [completion record](frontend/original-fe06-completion.md) covers all original theme criteria using the changed default-app binding and relevant retained evidence. Canonical publication fulfills its final delivery requirement. This adds one task closure; full live backend, reference and device outcomes remain open with their existing owners. The developer has moved to FE41 implementation.
 
-Original **BE04 and BE07 are accepted and published** at `df244a715`. The responsible developer's [completion record](backend/identity-bootstrap-avatar-completion.md) explicitly closes canonical identity/private projection and validated avatar/theme persistence using source-reconciled retained native and public-reader evidence. The single canonical publisher receipt establishes delivery. **BE06 remains IN_PROGRESS** until its deletion-fence correction and relevant native regressions are actually qualified. Separate live integration, reference, device and release requirements remain open.
+Original **BE04 and BE07 are accepted and published** at `df244a715`. The responsible developer's [completion record](backend/identity-bootstrap-avatar-completion.md) explicitly closes canonical identity/private projection and validated avatar/theme persistence using source-reconciled retained native and public-reader evidence. The single canonical publisher receipt establishes delivery. BE06 is now separately closed as recorded below. Separate live integration, reference, device and release requirements remain open.
+
+Original **FE41 is fully closed and published** at `6b6c94d24`, explicitly confirmed by responsible developer21e and Root through the frontend lead's00:22UTC hourly disposition. Retained original lifecycle coverage plus the delivered trusted service-policy/defaultAuth/public-contract client join closes the remaining pure-client criteria. Backend service/catalog, integration and device obligations retain their own owners. Developer21e already owns its next disjoint PI12 presentation scope.
+
+Original **QA01 and its selected Wall B current delta are DONE** for the defined offline contract/fixture scope, as explicitly disposed in the published [owner record](qa/qa01-original-completion.md) at `aac0d96d`. This removes one reopened delta; QA01 was already among the historical39 outcomes and is not counted as a new original completion. Actual producer transactions, live services, devices and integration gates remain separate.
+
+Original **BE06 is accepted and published** at `66551b07d`. The responsible developer disposed all original bootstrap criteria after the corrected native/restart/deletion-fence round, as confirmed in the backend lead's00:17UTC hourly digest. BE04/BE07 remain previously credited closures. Separate Auth deletion, live integration, device and release duties remain open with their existing owners.
 
 ## Work allocation and capacity
 
@@ -123,9 +128,9 @@ Original **BE04 and BE07 are accepted and published** at `df244a715`. The respon
 - Resource owners report about5.67GiB of released outputs reclaimed, preserving the warm target and unique evidence; the runtime-package repair started. These dated reports establish queue movement, not standing capacity or a native pass.
 - All 112 task IDs and61 IA entries remain. QA08 stays DEFERRED_BY_USER. Existing owner evidence and original outcomes remain in the register and Git history; generated exports stay PLANNING_ONLY.
 
-Existing developer204/c583 has accepted whole IN02 meetup/pickup integration and developer50a8 has accepted QA01/C04 coverage. Developer207 owns backend service-policy production composition, with21e on FE41 and16e on its separate status/recovery leaf. Gift267 has released its unqualified control round; Resource21d routes the actual target to Root next, then Party12cc. BE06 database/restart qualification remains pending. Resource/World/Community leads and Frontend King assign follow-up work and wake dependencies directly, without a Main reply. Publisher412e remains the standing sole master publisher while Roots implement. The completed resource-accounting worker40c576 is archived after custody/resource return; its helper does not add a task completion.
+Existing developer204/c583 continues whole IN02 meetup/pickup integration. Developer50a8 has delivered QA01/C04 offline coverage and now retains the accepted PI10 design scope. Developer207 owns backend service-policy production composition, with16e on its separate status/recovery leaf;21e has closed original FE41 and accepted disjoint PI12 presentation work. Resource21d routes the next warm-target compile to207 after actual predecessor release. BE06 original criteria are accepted and published at66551b07d; Party/Root/World runtime/cohort remainders remain independently open. Resource/World/Community leads and Frontend King assign follow-up work and wake dependencies directly, without a Main reply. Publisher412e remains the standing sole master publisher while Roots implement. The completed resource-accounting worker40c576 is archived after custody/resource return; its helper does not add a task completion.
 
-The staffing routing was reconciled on 2026-11-05T08:27:57+09:00 from current lead records. Previous worker names are not current file ownership. Resource owners wake ready successors directly; lightweight metadata work is classified by its actual cost. An older incompatible unfinished goal is preserved truthfully and does not itself prohibit a newly authorized assignment. The staffing changes add no task closures; the separately published BE04/BE07 dispositions add two.
+The staffing routing was reconciled on 2026-11-05T09:20:27+09:00 from current lead records. Previous worker names are not current file ownership. Resource owners wake ready successors directly; lightweight metadata work is classified by its actual cost. An older incompatible unfinished goal is preserved truthfully and does not itself prohibit a newly authorized assignment. Staffing changes themselves add no task closures; this hourly update credits new originals BE06/FE41 and QA01's current delta once each.
 
 ## Next outcomes
 

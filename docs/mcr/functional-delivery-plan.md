@@ -2,7 +2,7 @@
 
 This is the current user-authorized execution amendment to the original [112-task specification](../../MCR_IMPLEMENTATION_PLAN_V2_EN.md). It revises each remaining task, scheduling, ownership and progress while preserving all original IDs and all 61 required IA entries. The source archive and generated planning exports remain unchanged. Historical analysis and task outcomes do not silently override this amendment.
 
-Snapshot: **2026-11-05T08:20:03+09:00**. Baseline read set: `7eac13ce30d6dd6be4df30727f75d5df90d3489d`; later delivery milestones are canonical publisher receipts through `bd087fde2`. The user explicitly requested this full replan. It is a management reconciliation, not a king review of code, queries, screenshots or tests.
+Snapshot: **2026-11-05T09:25:46+09:00**. Baseline read set: `7eac13ce30d6dd6be4df30727f75d5df90d3489d`; later delivery milestones are canonical publisher receipts through `3bab5b9a40a31106ab3b74c0e14e89bfb28ca61d`. The user explicitly requested this full replan. It is a management reconciliation, not a king review of code, queries, screenshots or tests.
 
 Original **QA07** and its required changed-control delta are now **DONE**, based on the responsible-owner disposition recorded at `f3d1a93cd`. Retained original coverage and the published changed-control qualification close its client input/accessibility criteria. This removes one reopened delta; it does not add a new historical original outcome. Separate actual-device, spoken-assistive-output, live integration and release requirements remain open under their own tasks.
 
@@ -12,7 +12,7 @@ The latest human choice is **Parade Ink (Photo 2), one app-wide appearance**. It
 
 Both kings and the existing UI/resource/functional leads contributed to the [design-first amendment](design/parade-ink-delivery-plan-2026-11-05.md). The [four supplied originals](design/parade-ink-2026-11-05/reference-manifest.json) are preserved byte for byte. Photo 2 is primary; other sheets supply missing anatomy translated into Parade Ink, and the earlier ten-screen reference supplies unpictured structure.
 
-**Functional baseline:49/111 (44.1%),62 remaining. New design acceptance:0/12 families.** These are separate measures; no combined product percentage is claimed. All112 original IDs,61 required IA and55 original criteria outcomes remain. Existing functional completions are not erased by presentation work; QA06/IN05 still require the new design to be delivered.
+**Functional baseline:52/111 (46.8%),59 remaining. New design acceptance:0/12 families.** These are separate measures; no combined product percentage is claimed. All112 original IDs,61 required IA and57 original criteria outcomes remain. Existing functional completions are not erased by presentation work; QA06/IN05 still require the new design to be delivered.
 
 First deliver shared components plus a working Feed/Thread family. Then parallelize Meet/Giveaway, Profile/avatar and World/Wall presentation through disjoint existing writers; cover public/auth and supporting screens with the same component contract. Safe backend/runtime work continues. Publishers preserve valid queued patches; no code restart, shared-checkout editing or unannounced ownership transfer.
 
@@ -20,36 +20,36 @@ Developers compare fixed geometry, type, spacing, borders, icons, assets and con
 
 | Design family | Scope | Current status |
 | --- | --- | --- |
-| PI01 | Shared foundation and chrome | NOT_STARTED |
-| PI02 | Feed and notices | NOT_STARTED |
-| PI03 | Thread, replies and composer | NOT_STARTED |
-| PI04 | Giveaway and reservation | NOT_STARTED |
-| PI05 | Meet, party and people | NOT_STARTED |
-| PI06 | Profile, activity and preferences | NOT_STARTED |
-| PI07 | Avatar framing, popover and editor | NOT_STARTED |
-| PI08 | World HUD and era controls | NOT_STARTED |
-| PI09 | Wall B editor and states | NOT_STARTED |
-| PI10 | Public, authentication and legal | NOT_STARTED |
-| PI11 | Map, places, rooms and check-in | NOT_STARTED |
-| PI12 | Supporting safety, operations and archive | NOT_STARTED |
+| PI01 | Shared foundation and chrome | IN_PROGRESS; owner 26e |
+| PI02 | Feed and notices | IN_PROGRESS; owner 213 |
+| PI03 | Thread, replies and composer | IN_PROGRESS; owner 213 |
+| PI04 | Giveaway and reservation | NOT_STARTED; custody/preparation, source start not confirmed here; owner 2162 |
+| PI05 | Meet, party and people | IN_PROGRESS; owner 6950 |
+| PI06 | Profile, activity and preferences | IN_PROGRESS; owner 1ab7 |
+| PI07 | Avatar framing, popover and editor | NOT_STARTED; custody/preparation, source start not confirmed here; owner 534 |
+| PI08 | World HUD and era controls | IN_PROGRESS; owner 40c576 |
+| PI09 | Wall B editor and states | IN_PROGRESS; owner restored original Wall3187b5 |
+| PI10 | Public, authentication and legal | NOT_STARTED; custody/preparation, source start not confirmed here; owner 50 |
+| PI11 | Map, places, rooms and check-in | IN_PROGRESS; owner 40fde |
+| PI12 | Supporting safety, operations and archive | NOT_STARTED; custody/preparation, source start not confirmed here; owner 230 Reports +21e preWorld; other incumbents retain their scopes |
 
 These12 families partition all61 required IA entries with shared dependencies; they are not12 additional original tasks. No Parade Ink acceptance is inferred from earlier screenshots or this planning commit.
 
 
 ## Progress under the revised scope
 
-- **49/111 active tasks complete (44.1%)**; **62 active tasks remain**.
+- **52/111 active tasks complete (46.8%)**; **59 active tasks remain**.
 - **1 task deferred: QA08**. Original total remains 112; performance qualification is neither passed nor completed.
-- The frozen replan baseline remains **39/112** original-task outcomes. Sixteen newly published original closures (C07, FE03, FE04, FE11, FE16, AR03, FE35, C06, FE17, FE31, FE36, BE13, BE14, FE06, BE04, BE07) bring the current original-criteria total to **55/112**. **6** historically closed IDs retain current-scope work: **FE19, FE21, FE24, FE32, FE33, QA01**. The original seven reopened IDs remain preserved in register history; QA07's current delta is now closed.
+- The frozen replan baseline remains **39/112** original-task outcomes. Eighteen newly published original closures (C07, FE03, FE04, FE11, FE16, AR03, FE35, C06, FE17, FE31, FE36, BE13, BE14, FE06, BE04, BE07, BE06, FE41) bring the current original-criteria total to **57/112**. **5** historically closed IDs retain current-scope work: **FE19, FE21, FE24, FE32, FE33**. The original seven reopened IDs remain preserved in register history; QA07 and QA01 current deltas are now closed.
 - This is an unweighted task fraction, not a product-readiness or time estimate. IN02–IN05, full reference/device acceptance and61-entry IA reconciliation remain open.
 
 | Revised state | Tasks |
 | --- | ---: |
-| DONE | 49 |
-| IN_PROGRESS | 50 |
+| DONE | 52 |
+| IN_PROGRESS | 48 |
 | WAITING_INPUT | 3 |
 | OPEN | 3 |
-| REOPENED | 6 |
+| REOPENED | 5 |
 | DEFERRED_BY_USER | 1 |
 
 `DONE` records an explicit original-task closure and canonical publication with no identified current remainder. `REOPENED` preserves that history but has a specific current delta. `IN_PROGRESS` includes partial delivered implementation and its remaining work. `OPEN` does not mean no code exists. `WAITING_INPUT` identifies a necessary external decision. Resource/publication waits are queue facts rather than fake review states. The machine register retains old evidence states such as MOCK_READY, CONTRACT_READY and ACCEPTED separately.
@@ -66,7 +66,13 @@ Original **BE13 and BE14 are accepted and published** at `9e4ace4d`, explicitly 
 
 Original **FE06 is complete and published** at `0ff6b459f`. The responsible developer's [completion record](frontend/original-fe06-completion.md) covers all original theme criteria using the changed default-app binding and relevant retained evidence. Canonical publication fulfills its final delivery requirement. This adds one task closure; full live backend, reference and device outcomes remain open with their existing owners. The developer has moved to FE41 implementation.
 
-Original **BE04 and BE07 are accepted and published** at `df244a715`. The responsible developer's [completion record](backend/identity-bootstrap-avatar-completion.md) explicitly closes canonical identity/private projection and validated avatar/theme persistence using source-reconciled retained native and public-reader evidence. The single canonical publisher receipt establishes delivery. **BE06 remains IN_PROGRESS** until its deletion-fence correction and relevant native regressions are actually qualified. Separate live integration, reference, device and release requirements remain open.
+Original **BE04 and BE07 are accepted and published** at `df244a715`. The responsible developer's [completion record](backend/identity-bootstrap-avatar-completion.md) explicitly closes canonical identity/private projection and validated avatar/theme persistence using source-reconciled retained native and public-reader evidence. The single canonical publisher receipt establishes delivery. BE06 is now separately closed as recorded below. Separate live integration, reference, device and release requirements remain open.
+
+Original **FE41 is fully closed and published** at `6b6c94d24`, explicitly confirmed by responsible developer21e and Root through the frontend lead's00:22UTC hourly disposition. Retained original lifecycle coverage plus the delivered trusted service-policy/defaultAuth/public-contract client join closes the remaining pure-client criteria. Backend service/catalog, integration and device obligations retain their own owners. Developer21e already owns its next disjoint PI12 presentation scope.
+
+Original **QA01 and its selected Wall B current delta are DONE** for the defined offline contract/fixture scope, as explicitly disposed in the published [owner record](qa/qa01-original-completion.md) at `aac0d96d`. This removes one reopened delta; QA01 was already among the historical39 outcomes and is not counted as a new original completion. Actual producer transactions, live services, devices and integration gates remain separate.
+
+Original **BE06 is accepted and published** at `66551b07d`. The responsible developer disposed all original bootstrap criteria after the corrected native/restart/deletion-fence round, as confirmed in the backend lead's00:17UTC hourly digest. BE04/BE07 remain previously credited closures. Separate Auth deletion, live integration, device and release duties remain open with their existing owners.
 
 ## Decisions applied to every task
 
@@ -99,7 +105,7 @@ Packages are parallel work queues, not new task IDs or additional managers. Lead
 
 The OPERATIONS package spans both lanes. Its backend owners provide server interfaces; they do not own frontend implementation. Frontend delivery assigns the remaining FE37, FE38, FE39 and FE41 outcomes to frontend developers, preserving active Wall/Root leases and the completed FE40 archive outcome. Empty owner-chat fields require a concrete lead assignment; they do not authorize a second writer or a backend-to-frontend ownership transfer. Developers resolve implementation and validation directly with their counterparts and named publisher.
 
-Existing developer204/c583 has accepted whole IN02 meetup/pickup integration and developer50a8 has accepted QA01/C04 coverage. Developer207 owns backend service-policy production composition, with21e on FE41 and16e on its separate status/recovery leaf. Existing Party12cc/Gift267 have finite build offers; BE06 executables are built and database/restart qualification remains pending. Resource/World/Community leads and Frontend King assign follow-up work and wake dependencies directly, without a Main reply. Publisher412e remains the standing sole master publisher while Roots implement. The completed resource-accounting worker40c576 is archived after custody/resource return; its helper does not add a task completion.
+Existing developer204/c583 continues whole IN02 meetup/pickup integration. Developer50a8 has delivered QA01/C04 offline coverage and now retains the accepted PI10 design scope. Developer207 owns backend service-policy production composition, with16e on its separate status/recovery leaf;21e has closed original FE41 and accepted disjoint PI12 presentation work. Party/Root/World build increments are credited within their bounded scope; actual production/cohort flows remain open. BE06 original criteria are now accepted and published at66551b07d. Resource/World/Community leads and Frontend King assign follow-up work and wake dependencies directly, without a Main reply. Publisher412e remains the standing sole master publisher while Roots implement. The completed resource-accounting worker40c576 is archived after custody/resource return; its helper does not add a task completion.
 
 ### Next dispatch order
 
@@ -144,7 +150,7 @@ The original specification remains the full baseline. Every row below preserves 
 | BE03 — Browser auth contract adapter | IN_PROGRESS / 0 | WORLD | Reconcile the full signup, verification/resend, login, reset, refresh, logout and provider-discovery contract against the retained owner receipts; finish any remaining production adapters; Close unrecorded expired/reused-credential, invalid OAuth-state, redirect and cookie/origin/CSRF criteria; expose unavailable providers truthfully. | Real isolated signup/login/refresh/logout; expired/reused credentials and invalid OAuth state rejected. Owner records full original auth-flow disposition and direct publication; accepted IN01 is reused, with no invented long-duration expiry gate. | BE02, C03 |
 | BE04 — Canonical participant identity adapter | DONE / 0 | WORLD | Retain the published original identity/persistence outcome; separate live integration and release requirements remain open. | Email-only user participates; foreign identity cannot attach claims; private profile fields never leak. | None for remaining scope |
 | BE05 — Concert service and core schema | DONE / 0 | FOUNDATION | Retain delivered outcome; no identified task-local remainder. | Migration uniqueness checks and dependency-boundary tests; service health and isolated startup. | None for remaining scope |
-| BE06 — Bootstrap and participant defaults | IN_PROGRESS / 0 | WORLD | Execute the committed canonical deletion-fence correction and its three relevant native bootstrap regressions, including real PostgreSQL restart, under the next allocated bounded run; fix any failures and publish the qualified correction.; Have the responsible implementation owner dispose the complete original BE06 row using the existing idempotence/default/capability/manifest/clock evidence and the actual changed-path result; do not replay unrelated matrices for management acknowledgment. | Repeated bootstrap creates one participant; degraded optional dependencies do not fabricate data. | BE04, BE05 |
+| BE06 — Bootstrap and participant defaults | DONE / 0 | WORLD | Original criteria accepted by responsible owner and published at66551b07d; separate live integration/device/release gates retain their owners. | Repeated bootstrap creates one participant; degraded optional dependencies do not fabricate data. | — |
 | BE07 — Avatar and preference persistence | DONE / 0 | WORLD | Retain the published original identity/persistence outcome; separate live integration and release requirements remain open. | Invalid URL/item rejected; stale version conflicts; other users' outfits remain unchanged. | None for remaining scope |
 | BE08 — Places and map-release reads | IN_PROGRESS / 0 | WORLD | Publish/adopt the recorded corrected spatial-release handoff through the designated publisher and enable actual map/place serving on the matching descriptor; Reconcile immutable map/version errors, reviewed versus concept-only landmarks and closed/unknown-place refusal; obtain real place provenance before using a physical destination. | Unknown/closed place cannot be selected for a new physical beacon; manifest mismatch has a typed error. | BE05, C06 |
 | BE09 — Physical beacon lifecycle | IN_PROGRESS / 1 | MEETUP | Join the physical-beacon adapter to actual public HTTP and canonical Party membership/mutation authority; Complete audience/TTL/revision/revocation behavior for authorized photos and reviewed places; reconcile blocked, expired, revoked and unrelated-reader denial in the real meetup flow. | Expired, revoked, blocked, and unrelated viewers receive no private meeting details. Virtual movement never asserts physical arrival; IN02 remains a separate real-flow package gate. | BE08, BE37, C04 |
@@ -228,13 +234,13 @@ The original specification remains the full baseline. Every row below preserves 
 | FE38 — Event operations screens | IN_PROGRESS / 1 | OPERATIONS | Reconcile original control-room/event/place/notice/audit criteria and finish uncovered confirmation/version-conflict/source visibility behavior; Bind current operator authority, approved notices/legal inputs and place records; preserve honest unavailability when authority or provenance is missing. | Confirm risky changes; stale versions conflict; source and review state remain visible. | FE07, FE05, C04 |
 | FE39 — Wall control and event closure UI | IN_PROGRESS / 2 | OPERATIONS | Reconcile original wall-control and closure criteria from existing resume delivery; finish uncovered snapshot confirmation, revision reset or partial-step presentation; Resolve current actual admin authorization/closure entry with the owning backend/root developers and qualify recovery from partial failure; do not repeat the fixed retry-contract implementation. | Restore confirmation names snapshot; partial closure failure is visible and recoverable. | FE38, FE33 |
 | FE40 — Read-only archive views | DONE / 3 | OPERATIONS | Retain delivered outcome; no identified task-local remainder. | Archive does not contain handles or physical beacons; deleted content stays inaccessible. | None for remaining scope |
-| FE41 — Global degraded and lifecycle states | IN_PROGRESS / 0 | OPERATIONS | Reconcile the completed controlled default-root360/390/430 offline/reconnect/reload/teardown result against the entire original FE41 scope; do not repeat it merely to generate another proof; Complete current operational/version/admission producers and uncovered real foreground/reconnect/pickup-no-replay paths; retain low-power/reduced-motion functional behavior and host limits. | No endless spinner; offline pickup is not queued silently; keyboard and reconnect preserve usable navigation. | FE07, FE17 |
+| FE41 — Global degraded and lifecycle states | DONE / 0 | OPERATIONS | Full original pure-client criteria explicitly closed by developer/Root, canonical6b6c94d. Separate backend/catalog/integration/device requirements retain their owners. | No endless spinner; offline pickup is not queued silently; keyboard and reconnect preserve usable navigation. | — |
 
 ### Verification owned by developers
 
 | ID / task | State / priority | Package | Remaining work | Completion rule | Prerequisites |
 | --- | --- | --- | --- | --- | --- |
-| QA01 — Contract and fixture coverage | REOPENED / 0 | FOUNDATION | Extend fixture and drift coverage for the newly selected Wall B interface and changed generated outputs; Reuse the published baseline; run only changed-contract and missing-operation checks required by the new scope. | Broken schema and unknown enum cause failure; no empty-test success. | C07 |
+| QA01 — Contract and fixture coverage | DONE / 0 | FOUNDATION | Original offline scope and selected Wall B current delta explicitly satisfied; canonicalaac0d96d. Actual producer/live integration/device evidence remains separate. | Broken schema and unknown enum cause failure; no empty-test success. | — |
 | QA02 — Zero legacy-UI audit | DONE / 2 | RELEASE | Retain delivered outcome; no identified task-local remainder. | No reused old control/layout/theme; new visual snapshots are reviewed, not blindly accepted. | None for remaining scope |
 | QA03 — Database race suite | IN_PROGRESS / 0 | RELEASE | Complete remaining real PostgreSQL interleavings for party capacity, stock reservation/release/claim, idempotent receipts and restart; Add atomic Wall B action/quota/history/undo races, including all-or-nothing bounded fills. | Invariants hold with forced transaction interleavings and worker restarts. | BE17, BE22, BE23, BE34 |
 | QA04 — Privacy and authorization matrix | IN_PROGRESS / 0 | RELEASE | Complete owner/member/stranger/blocked/suspended/expired/admin cases across HTTP, websocket and caches; Cover the newly added Wall history/recovery and Gifts protected-media paths; preserve access withdrawal and deletion behavior. | No unauthorized handle, claim, evidence, beacon or recipient data in responses or cached UI. | BE30, BE37, BE39, FE31, FE36 |

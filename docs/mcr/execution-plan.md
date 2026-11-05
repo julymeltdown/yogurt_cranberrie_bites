@@ -2,9 +2,13 @@
 
 The [revised functional delivery plan](functional-delivery-plan.md) is the current user-authorized amendment. Its 112-row register replaces outdated staffing, wave and status descriptions in earlier versions of this document. Preserve the original specification/source, all 112 task IDs, 61 IA entries and six excluded optional tasks. Read progress from the [current register](task-progress-2026-11-04.json), not generated planning exports.
 
-Current delivered-task count: **49/111 active tasks (44.1%)**, with 62 active tasks remaining. This is task accounting, not full-product readiness.
+Current delivered-task count: **52/111 active tasks (46.8%)**, with 59 active tasks remaining. This is task accounting, not full-product readiness.
 
 Original **QA07** and its required changed-control delta are now **DONE**, based on the responsible-owner disposition recorded at `f3d1a93cd`. Retained original coverage and the published changed-control qualification close its client input/accessibility criteria. This removes one reopened delta; it does not add a new historical original outcome. Separate actual-device, spoken-assistive-output, live integration and release requirements remain open under their own tasks.
+
+Original **FE41 is fully closed and published** at `6b6c94d24`, explicitly confirmed by responsible developer21e and Root through the frontend lead's00:22UTC hourly disposition. Retained original lifecycle coverage plus the delivered trusted service-policy/defaultAuth/public-contract client join closes the remaining pure-client criteria. Backend service/catalog, integration and device obligations retain their own owners. Developer21e already owns its next disjoint PI12 presentation scope.
+
+Original **QA01 and its selected Wall B current delta are DONE** for the defined offline contract/fixture scope, as explicitly disposed in the published [owner record](qa/qa01-original-completion.md) at `aac0d96d`. This removes one reopened delta; QA01 was already among the historical39 outcomes and is not counted as a new original completion. Actual producer transactions, live services, devices and integration gates remain separate.
 
 ## Current priority: Parade Ink design delivery
 
@@ -12,7 +16,7 @@ The latest human choice is **Parade Ink (Photo 2), one app-wide appearance**. It
 
 Both kings and the existing UI/resource/functional leads contributed to the [design-first amendment](design/parade-ink-delivery-plan-2026-11-05.md). The [four supplied originals](design/parade-ink-2026-11-05/reference-manifest.json) are preserved byte for byte. Photo 2 is primary; other sheets supply missing anatomy translated into Parade Ink, and the earlier ten-screen reference supplies unpictured structure.
 
-**Functional baseline:49/111 (44.1%),62 remaining. New design acceptance:0/12 families.** These are separate measures; no combined product percentage is claimed. All112 original IDs,61 required IA and55 original criteria outcomes remain. Existing functional completions are not erased by presentation work; QA06/IN05 still require the new design to be delivered.
+**Functional baseline:52/111 (46.8%),59 remaining. New design acceptance:0/12 families.** These are separate measures; no combined product percentage is claimed. All112 original IDs,61 required IA and57 original criteria outcomes remain. Existing functional completions are not erased by presentation work; QA06/IN05 still require the new design to be delivered.
 
 First deliver shared components plus a working Feed/Thread family. Then parallelize Meet/Giveaway, Profile/avatar and World/Wall presentation through disjoint existing writers; cover public/auth and supporting screens with the same component contract. Safe backend/runtime work continues. Publishers preserve valid queued patches; no code restart, shared-checkout editing or unannounced ownership transfer.
 
@@ -40,7 +44,7 @@ Use Photo2/Parade Ink as the primary component target, supporting sheets for unp
 
 These are routing facts, not blanket file leases. Leads assign unowned remaining scope to capable existing developers. Independent composition pieces may be delegated after the previous writer stops; shared files are not reserved as one indivisible integration assignment. Backend and frontend use separate commits, exact paths and isolated worktrees. Contracts, manifests, lockfiles, root composition, CI and shared artifacts require explicit single-writer ownership.
 
-Existing developer204/c583 has accepted whole IN02 meetup/pickup integration and developer50a8 has accepted QA01/C04 coverage. Developer207 owns backend service-policy production composition, with21e on FE41 and16e on its separate status/recovery leaf. Existing Party12cc/Gift267 have finite build offers; BE06 executables are built and database/restart qualification remains pending. Resource/World/Community leads and Frontend King assign follow-up work and wake dependencies directly, without a Main reply. Publisher412e remains the standing sole master publisher while Roots implement. The completed resource-accounting worker40c576 is archived after custody/resource return; its helper does not add a task completion.
+Existing developer204/c583 continues whole IN02 meetup/pickup integration. Developer50a8 has delivered QA01/C04 offline coverage and now retains the accepted PI10 design scope. Developer207 owns backend service-policy production composition, with16e on its separate status/recovery leaf;21e has closed original FE41 and accepted disjoint PI12 presentation work. Party/Root/World build increments are credited within their bounded scope; actual production/cohort flows remain open. BE06 original criteria are now accepted and published at66551b07d. Resource/World/Community leads and Frontend King assign follow-up work and wake dependencies directly, without a Main reply. Publisher412e remains the standing sole master publisher while Roots implement. The completed resource-accounting worker40c576 is archived after custody/resource return; its helper does not add a task completion.
 
 ## Complete feature assignments and direct delivery
 
