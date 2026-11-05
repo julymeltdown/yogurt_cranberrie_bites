@@ -1,0 +1,247 @@
+{
+  "version": 1,
+  "status": "SCOPED_RENDERER_SOURCE_PUBLISHED_INDEPENDENTLY_VERIFIED",
+  "observedAtEpoch": 1793864193.077211,
+  "canonicalCommit": "cdba75d3c23ce28364563bd39b114d83db3b7ece",
+  "soleParent": "56a0cb7f0bdc4e4526c45bbc6258d38bc3a7077a",
+  "remoteMaster": "cdba75d3c23ce28364563bd39b114d83db3b7ece",
+  "sourceCommit": "40aaf310f543fa38f6dab8ff421d74bf7017bbec",
+  "manifestSHA256": "ba0a45f597997cef8bb6394568e3124c45d37a4fb7986dc92848c18368b881b8",
+  "publisherReceiptSHA256": "1366cb3228a71161ab7abeaf9a4a2356cc8f362a0e06ae3601584b6d50699c8c",
+  "changedPathCount": 33,
+  "privateSourceAncestryImported": false,
+  "checks": [
+    {
+      "path": "frontend/src/features/parade-ink/world-hud/index.tsx",
+      "mode": "100644",
+      "blob": "8fb906016afb31026cddc1ef97e5e35e017ffc85",
+      "bytes": 4815,
+      "sha256": "79b95530d9141e4a25f6cb89396d7d9e6a3b15c6beb14d82fceb07d76d3f117b"
+    },
+    {
+      "path": "frontend/src/features/parade-ink/world-hud/world-context.tsx",
+      "mode": "100644",
+      "blob": "1142e37fb9129f6ed961aa692a534010c3fc3932",
+      "bytes": 5831,
+      "sha256": "e58031d22d4e357a734b4ec079e2d3fb26fdb05999c1470f6cdfae8d77fcb75f"
+    },
+    {
+      "path": "frontend/src/features/parade-ink/world-hud/world-hud.css",
+      "mode": "100644",
+      "blob": "1f0f6276e641b5eaff4145cc760452ad60311534",
+      "bytes": 7571,
+      "sha256": "b4c9e77ede2c2e0dab18e9d1e636df58c5bc8fd6c4d6b26a05908a7a09b4fdbd"
+    },
+    {
+      "path": "frontend/src/world/camera/port.ts",
+      "mode": "100644",
+      "blob": "e88fbce4ddebf6635a306da6558e26020fba5ab8",
+      "bytes": 2002,
+      "sha256": "c9de440e7e1d4203ddc69f33ab72357240ff7d14924d24e4ac4b1d56793aa627"
+    },
+    {
+      "path": "frontend/src/world/composition/index.ts",
+      "mode": "100644",
+      "blob": "ca1c56405d3932b154e667171ba962dae87335ae",
+      "bytes": 23494,
+      "sha256": "179a73db8cbe036fc458992402ac3cd621c7abc21ae6a92157f34fb644db92a1"
+    },
+    {
+      "path": "frontend/src/world/illustrated/model.ts",
+      "mode": "100644",
+      "blob": "7e853c2ae2cb08e46d13fd37b4fd9b2eb36aaa60",
+      "bytes": 4855,
+      "sha256": "f3fb5c86fa512a9d5c5b0fdcdf68687079e6f53f29ae021901293ae766281d6a"
+    },
+    {
+      "path": "frontend/src/world/reference-scene/model.ts",
+      "mode": "100644",
+      "blob": "71c4a6269b31e0db7ff895165318c4e2593735f8",
+      "bytes": 5572,
+      "sha256": "6b238713d83b19a6b7beefcbbd18b130ca10b8730113eea3eb4eeeab9593c99f"
+    },
+    {
+      "path": "frontend/src/world/reference-scene/phaser.ts",
+      "mode": "100644",
+      "blob": "cdcc488f15a503a29ac15ea4fd66f8c780028ea1",
+      "bytes": 3225,
+      "sha256": "b3e7098249144992daf4b04be39ecdd29d95782de03fa47d2c87d3f3c5568df1"
+    },
+    {
+      "path": "frontend/src/world/reference-scene/photo2-world-display-v1/model.ts",
+      "mode": "100644",
+      "blob": "8f94f54526e904aa5f2e86fb8ed2555e30960d94",
+      "bytes": 10705,
+      "sha256": "aafc6166a0930478634a8bcf1b4d2f4ebe8f6bd704289e18588f322bd58c1015"
+    },
+    {
+      "path": "frontend/src/world/reference-scene/photo2-world-display-v1/phaser.ts",
+      "mode": "100644",
+      "blob": "4c210e6d043d2b6355f2e796bb57606533c385e7",
+      "bytes": 13467,
+      "sha256": "6531c22131aa948c1eba92ca9e37a2978dd50862b3b843032c0122d960b2e1e9"
+    },
+    {
+      "path": "frontend/src/world/scenes/MapScene.ts",
+      "mode": "100644",
+      "blob": "827070fb51f402840256abaad597beeb7bcb4c94",
+      "bytes": 24260,
+      "sha256": "479f151394efd87a8f28ef5d0ed74b09b826bfb6c36fbcf9ebd92051b1c0619f"
+    },
+    {
+      "path": "frontend/src/features/parade-ink/world-hud/__tests__/finish-01/photo2-mural-projection.test.ts",
+      "mode": "100644",
+      "blob": "58ae2e7cde0d2ea7a94a6007cff04d9957395135",
+      "bytes": 7527,
+      "sha256": "4e6113552f2d703671773ad376e0dde50351d0ff51af9f4dc91e6e91c89fa38e"
+    },
+    {
+      "path": "frontend/src/features/parade-ink/world-hud/__tests__/finish-01/photo2-renderer-source.config.mjs",
+      "mode": "100644",
+      "blob": "ce595a5765f58bf7963049a203161da92105ad35",
+      "bytes": 279,
+      "sha256": "d3075fe8f26032a928c4a1cdb8b396670ce7e6f94e5f917789a499ceed2a42cb"
+    },
+    {
+      "path": "frontend/src/features/parade-ink/world-hud/__tests__/finish-01/photo2-renderer-source.tsconfig.json",
+      "mode": "100644",
+      "blob": "84656cc1d11936a1d6190078784b9c80ba4fd431",
+      "bytes": 776,
+      "sha256": "0a3cdbed91e8d072c63304524a5a21dd90b8960d53bd06bb8cf7a4c0ca809bd1"
+    },
+    {
+      "path": "frontend/src/features/parade-ink/world-hud/__tests__/finish-01/source07-round.py",
+      "mode": "100644",
+      "blob": "8c70c1b0741f2ca86ecc315f22a85be4878c0a7f",
+      "bytes": 21498,
+      "sha256": "75c595dabf935f8e65d6f16ab858168c9c5a19ad3d5284f02af78af6fb6bc53c"
+    },
+    {
+      "path": "frontend/src/features/parade-ink/world-hud/__tests__/finish-01/source08-round.py",
+      "mode": "100644",
+      "blob": "488a09ba837b98444ffd474d731f2a6fb5832fd9",
+      "bytes": 21164,
+      "sha256": "3e7feba372d0be5d8662471a226af90633dec3e7e513decfe3d0be28fd302dc3"
+    },
+    {
+      "path": "docs/mcr/frontend/pi08-finish-01.md",
+      "mode": "100644",
+      "blob": "8387f4e5d147bfafaddb2735723f27fff05f2ad3",
+      "bytes": 48170,
+      "sha256": "6504aacc1a38db21e73f5855017a85f797970b58d682ccdb1d4a3cb5c423440e"
+    },
+    {
+      "path": "docs/mcr/evidence/pi08-finish-01/photo2-world-contract/source07-inputs.json",
+      "mode": "100644",
+      "blob": "7ed7f6d6b1d7ff995d32ee80d0e46340274921e7",
+      "bytes": 7069,
+      "sha256": "37ad19f4f02f41c2b1042525be9837fa56583d0368d7c2bad7986a63cf26f939"
+    },
+    {
+      "path": "docs/mcr/evidence/pi08-finish-01/photo2-world-contract/source08-inputs.json",
+      "mode": "100644",
+      "blob": "898943096f1b59a0c1bc6762adcc5d9034462a1d",
+      "bytes": 8361,
+      "sha256": "d1344e20609c182374565e0f85e56bbffd83d855179e5f334a4bf053f516886e"
+    },
+    {
+      "path": "docs/mcr/evidence/pi08-finish-01/photo2-world-contract/renderer-source-qualification-v1.json",
+      "mode": "100644",
+      "blob": "355d0be630c204d5f654fb6ee1cdfb0fc4f05dbe",
+      "bytes": 3278,
+      "sha256": "8a1e2450bd2f02cb86309f24e8a5ce8763dd524f7fac7b278da3056e9459b9fc"
+    },
+    {
+      "path": "docs/mcr/evidence/pi08-finish-01/photo2-world-contract/source06-unused-yield.json",
+      "mode": "100644",
+      "blob": "3e4a39ee90a3b171ba0f0378f41cdbbe0e99bc41",
+      "bytes": 1554,
+      "sha256": "0061a00de93011cb77709020df91e424e795d33f0afd48383fa46db0f27e6a93"
+    },
+    {
+      "path": "docs/mcr/evidence/pi08-finish-01/source07/accepted.json",
+      "mode": "100644",
+      "blob": "3d97af933216dce658b20ee3437feaec006034b7",
+      "bytes": 52862,
+      "sha256": "89db23b989a79c9d4dd967be21f1b8fdc141c724e48d0ed4573b819a262c1d35"
+    },
+    {
+      "path": "docs/mcr/evidence/pi08-finish-01/source07/changed-renderer-types.log",
+      "mode": "100644",
+      "blob": "42b59857906432826ca82c59b1368add138e2cb0",
+      "bytes": 3579,
+      "sha256": "2da8c4f366dfde1afe3f71b1e6fb788ea32e7bb98a3792e04c226fa4246fca21"
+    },
+    {
+      "path": "docs/mcr/evidence/pi08-finish-01/source07/controller-census.json",
+      "mode": "100644",
+      "blob": "eea88577a12bc0c88c563927524c085f2df351f1",
+      "bytes": 770,
+      "sha256": "1a94e6017be006cefd18ad13df718383ceb09f9859762e33e41a79f33f129041"
+    },
+    {
+      "path": "docs/mcr/evidence/pi08-finish-01/source07/guardian-census.json",
+      "mode": "100644",
+      "blob": "3f5a3c23f29abcae4d1285ed72d672e0d0fb4d5c",
+      "bytes": 770,
+      "sha256": "3a4be1fbad3af07b7fef389c1453e54d82af745ad1991e5a2f60f612435f18f6"
+    },
+    {
+      "path": "docs/mcr/evidence/pi08-finish-01/source07/new-photo2-renderer-five-cases.log",
+      "mode": "100644",
+      "blob": "49b681ac3b7ef9ba6207dfe8a89d32d8433e83e2",
+      "bytes": 245,
+      "sha256": "592e8a4c1b0692e98e807721fda9c36a2e9840de365bb6978e12f4e5200584fe"
+    },
+    {
+      "path": "docs/mcr/evidence/pi08-finish-01/source07/round.json",
+      "mode": "100644",
+      "blob": "c0ee69e430a39ac7c0d325c9bc8d3913b888bb35",
+      "bytes": 9214,
+      "sha256": "408f08e74fbf955c6f4f2f748944dfd3ec57787f58c2bb61b1f1846c43fe3c99"
+    },
+    {
+      "path": "docs/mcr/evidence/pi08-finish-01/source08/accepted.json",
+      "mode": "100644",
+      "blob": "0885727b9790b030d95de490728c1ca7e4027084",
+      "bytes": 44278,
+      "sha256": "5819b60ae5257d52b1c953db6c4c2813258242149f70cddd6ee1879d837c1433"
+    },
+    {
+      "path": "docs/mcr/evidence/pi08-finish-01/source08/changed-renderer-lint.log",
+      "mode": "100644",
+      "blob": "0f49d2cd7172d21191ec4a979f04a88ac7a47abc",
+      "bytes": 309,
+      "sha256": "5f9bf29bcff136d79e255dd418af83a1f73d5c1b0083cccb5bf8f313d1713ff9"
+    },
+    {
+      "path": "docs/mcr/evidence/pi08-finish-01/source08/changed-renderer-types-repository-settings.log",
+      "mode": "100644",
+      "blob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "docs/mcr/evidence/pi08-finish-01/source08/controller-census.json",
+      "mode": "100644",
+      "blob": "9420e23804650ddb6ebb88d013cc7601eddde7b4",
+      "bytes": 816,
+      "sha256": "41b7ec9e7b60d3e32ec3e54e2496a7107574ff4a2c641907a301b712e52433c5"
+    },
+    {
+      "path": "docs/mcr/evidence/pi08-finish-01/source08/guardian-census.json",
+      "mode": "100644",
+      "blob": "5fcecc2b561ed321fb61c53d89ab02c21d253b2c",
+      "bytes": 792,
+      "sha256": "322d66f8ed23f42a17daaf3ea6591b287a846b594440ff385c60ff7bf28d6535"
+    },
+    {
+      "path": "docs/mcr/evidence/pi08-finish-01/source08/round.json",
+      "mode": "100644",
+      "blob": "f91365fd3a8f12e5edf29f177647cd48612fc00c",
+      "bytes": 9314,
+      "sha256": "57b8dfd4150f85cc123a36f6f57173d0cc3aba7582c7bbab778af408316b01e6"
+    }
+  ],
+  "scope": "Exact scoped bytes/modes/blobs/sole parent/current remote. Source07five new cases and Source08strict/lint qualification retained; no application execution or combined-master/native/fullPhoto2 acceptance. Registry remains empty, active v3 lamp/runtime work continues."
+}

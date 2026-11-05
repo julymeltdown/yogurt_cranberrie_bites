@@ -1,0 +1,17 @@
+{
+  "state": "SOURCE09_PREACCEPT_READY_NOT_ACCEPTED",
+  "offer": "PI08-LAMP-SOURCE09-0734",
+  "readsetSHA256": "a2f1826df3ece52250cc4b0c7e605c484e5c4c857eda28120331319f79d06900",
+  "projection": "/Users/lhs/Desktop/mcr-evidence/backend-staffing-01a1a21d/resource-future-projection-20261105T073422.json",
+  "projectionSHA256": "ba7c149c003b8491d4a111db533cc59d9c1b6903cd8f1da9ad849630e5063d03",
+  "otherMiB": 3900,
+  "futurePositiveBytes": 4194304,
+  "carryMiB": 1826,
+  "free": 15025278976,
+  "actualClaims": [],
+  "phaseAuthority": "Literal21d PI08-LAMP-SOURCE09-0734 NEW4MiBTOTAL09+conditionalchanged10, SAME2GiB family; no old05-08refund/reset or greens replay.",
+  "predecessor": {
+    "artifact": "/Users/lhs/Desktop/mcr-worktrees/art-map-cozy-v1/docs/mcr/art/evidence/photo2-world-display-v1/source06-full.json",
+    "sha256": "1df1226b738c4b08952a87d5d8073b0c97931109b0ccdbdf49d441fc765624de"
+  }
+}

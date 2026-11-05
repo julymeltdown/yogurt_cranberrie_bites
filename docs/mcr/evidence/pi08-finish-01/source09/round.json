@@ -1,0 +1,224 @@
+{
+  "booking": "PI08-LAMP-SOURCE09-0734",
+  "mode": "source09",
+  "acceptedEpoch": 1793864295.801688,
+  "workDeadline": 1793864415.801688,
+  "fullDeadline": 1793864475.801688,
+  "carriedNewBytes": 1914699776,
+  "futurePositiveBytes": 4194304,
+  "reserveRule": "Current physical free less OTHER plus only future positive growth; retained carry already allocated; full family ceiling preserved",
+  "startAvailable": 15024443392,
+  "status": "PASS",
+  "commands": [
+    {
+      "label": "new-lamp-paint-extent-packing-case",
+      "pid": 46276,
+      "exitCode": 0
+    },
+    {
+      "label": "changed-lamp-contract-types",
+      "pid": 46283,
+      "exitCode": 0
+    },
+    {
+      "label": "changed-lamp-contract-lint",
+      "pid": 46290,
+      "exitCode": 0
+    }
+  ],
+  "temporaryCleaned": true,
+  "dependencyLinkRemoved": true,
+  "historicalActualNEWPeakBytes": 803647488,
+  "historicalActualWHOLEPeakBytes": 5498929152,
+  "conservativeAccountingCarryBytes": 1914699776,
+  "newCounterSemantics": "Guardian new and carriedNewBytes are conservative historical accounting plus this phase measured positive growth; never relabel the touched old pack as actual fresh growth or the conservative carry as an observed physical historical peak.",
+  "controllerMetadata": {
+    "pid": 46140,
+    "present": true,
+    "parentPid": 49590,
+    "processGroupId": 46140,
+    "birth": "Thu Nov  5 16:38:15 2026",
+    "birthEpochSeconds": 1793864295,
+    "birthMicroseconds": 476659,
+    "executable": "/Library/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python",
+    "kernelComm": "Python",
+    "observedAtEpoch": 1793864295.6548421,
+    "method": "libproc kernel birth/image; no child process",
+    "script": "/Users/lhs/Desktop/mcr-worktrees/art-cute-community-v1/frontend/src/features/parade-ink/world-hud/__tests__/finish-01/source09-round.py",
+    "scriptSha256": "bd60118d9c8293a8ee6840f3ac5dcf1ac23ffaedf4f4ed05f032950c51c4ff6d",
+    "cwd": "/Users/lhs/Desktop/mcr-worktrees/art-cute-community-v1",
+    "workingRoot": "/Users/lhs/Desktop/mcr-worktrees/art-cute-community-v1",
+    "actualArgs": [
+      "/Users/lhs/Desktop/mcr-worktrees/art-cute-community-v1/frontend/src/features/parade-ink/world-hud/__tests__/finish-01/source09-round.py",
+      "source09"
+    ],
+    "actualArgsDomain": "python.sys.argv",
+    "pythonSysArgv": [
+      "/Users/lhs/Desktop/mcr-worktrees/art-cute-community-v1/frontend/src/features/parade-ink/world-hud/__tests__/finish-01/source09-round.py",
+      "source09"
+    ],
+    "pythonOrigArgv": [
+      "/Library/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python",
+      "-B",
+      "/Users/lhs/Desktop/mcr-worktrees/art-cute-community-v1/frontend/src/features/parade-ink/world-hud/__tests__/finish-01/source09-round.py",
+      "source09"
+    ],
+    "launcherArgv": null,
+    "launcherArgvStatus": "Not independently captured by this producer; no reconstruction or relabeling",
+    "kernelArgv": {
+      "source": "sysctl CTL_KERN KERN_PROCARGS2",
+      "argc": 4,
+      "argv": [
+        "/Library/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python",
+        "-B",
+        "/Users/lhs/Desktop/mcr-worktrees/art-cute-community-v1/frontend/src/features/parade-ink/world-hud/__tests__/finish-01/source09-round.py",
+        "source09"
+      ],
+      "executablePath": "/Library/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python",
+      "boundedExactlyByArgc": true,
+      "observedAtEpoch": 1793864295.854413,
+      "aliasesNormalized": false
+    },
+    "payload": "/Users/lhs/Desktop/mcr-worktrees/art-cute-community-v1/frontend/src/features/parade-ink/world-hud/__tests__/finish-01/ordinary-launch-source09.py",
+    "payloadSha256": "d17ff8531ec674212d5d52da50cfc1ddb667f2d9a11310272a3bc648f473c175",
+    "cwdSource": "Explicit parent cwd inherited by unchanged absolute guardian; actual strict membership census required before payload",
+    "outputRoot": "/Users/lhs/Desktop/mcr-worktrees/art-cute-community-v1/docs/mcr/evidence/pi08-finish-01/source09"
+  },
+  "resourceIndex": "/Users/lhs/Desktop/mcr-evidence/backend-staffing-01a1a21d/owner-resource-receipts/01a1a5d9-6955-7820-bcd4-8e0a21629aa2.json",
+  "guardianMetadata": {
+    "pid": 46220,
+    "parentPid": 46140,
+    "processGroupId": 46140,
+    "birthEpochSeconds": 1793864295,
+    "birthMicroseconds": 861243,
+    "birth": "Thu Nov  5 16:38:15 2026",
+    "executable": "/Library/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python",
+    "kernelArgv": {
+      "source": "sysctl CTL_KERN KERN_PROCARGS2",
+      "argc": 3,
+      "argv": [
+        "/Library/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python",
+        "/Users/lhs/Desktop/mcr-worktrees/art-cute-community-v1/frontend/src/features/parade-ink/world-hud/__tests__/finish-01/resource_guard.py",
+        "/private/tmp/mcr-pi08-finish-source09/guard-config.json"
+      ],
+      "executablePath": "/Library/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python",
+      "boundedExactlyByArgc": true,
+      "observedAtEpoch": 1793864296.773558,
+      "aliasesNormalized": false
+    },
+    "script": "/Users/lhs/Desktop/mcr-worktrees/art-cute-community-v1/frontend/src/features/parade-ink/world-hud/__tests__/finish-01/resource_guard.py",
+    "scriptSha256": "65b6b2d90cdd682f012859f92e5bd5c9f4098f30fef82a8b6acb45b74d4cdae6",
+    "cwd": "/Users/lhs/Desktop/mcr-worktrees/art-cute-community-v1",
+    "cwdSource": "Explicit parent cwd inherited by unchanged absolute guardian; actual strict membership census required before payload",
+    "outputRoot": "/Users/lhs/Desktop/mcr-worktrees/art-cute-community-v1/docs/mcr/evidence/pi08-finish-01/source09"
+  },
+  "ownerClaim": {
+    "owner": "01a1a5d9-6955-7820-bcd4-8e0a21629aa2",
+    "booking": "PI08-LAMP-SOURCE09-0734",
+    "kind": "source",
+    "root": "/Users/lhs/Desktop/mcr-worktrees/art-cute-community-v1",
+    "controller": "/Users/lhs/Desktop/mcr-worktrees/art-cute-community-v1/frontend/src/features/parade-ink/world-hud/__tests__/finish-01/source09-round.py",
+    "pid": 46140,
+    "pgid": 46140,
+    "birth": "Thu Nov  5 16:38:15 2026",
+    "at": 1793864295.854222,
+    "acceptedEpoch": 1793864295.801688,
+    "workDeadline": 1793864415.801688,
+    "fullDeadline": 1793864475.801688,
+    "processCap": 8,
+    "rssCapBytes": 2147483648,
+    "newCapBytes": 1918894080,
+    "familyNEWCapBytes": 2147483648,
+    "carriedNewBytes": 1914699776,
+    "wholeCapBytes": 8589934592,
+    "wholeRoots": [
+      "/Users/lhs/Desktop/mcr-worktrees/art-cute-community-v1",
+      "/Users/lhs/Desktop/mcr/.git",
+      "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64",
+      "/Users/lhs/Desktop/mcr/frontend/node_modules",
+      "/Library/Frameworks/Python.framework/Versions/3.14",
+      "/Applications/Google Chrome.app",
+      "/Users/lhs/Desktop/mcr-worktrees/fe-runtime-preferences",
+      "/Users/lhs/Desktop/mcr/frontend/public",
+      "/private/tmp/codex-remote-attachments/01a19e5c-e9c6-7973-a53b-a6d19141620f/9FC49E03-6C0E-4776-A954-2CA5C12CB495/1-Photo-1.jpg",
+      "/private/tmp/codex-remote-attachments/01a19e5c-e9c6-7973-a53b-a6d19141620f/9FC49E03-6C0E-4776-A954-2CA5C12CB495/2-Photo-2.jpg"
+    ],
+    "privateTemporaryRoot": "/private/tmp/mcr-pi08-finish-source09"
+  },
+  "bothLiveBeforeWorkload": {
+    "primary": 46140,
+    "guardian": 46220,
+    "at": 1793864296.773298,
+    "initial": {
+      "pid": 46220,
+      "at": 1793864296.766032,
+      "sample": {
+        "free": 15023628288,
+        "all": 3,
+        "rss": 54034432,
+        "new": 1914707968,
+        "whole": 5504036864,
+        "pids": [
+          46140,
+          46220,
+          46226
+        ]
+      }
+    }
+  },
+  "initialMembership": {
+    "observedAtEpoch": 1793864296.82976,
+    "psSnapshotSHA256": "beff2c975d9a29581478cb040ec7e82690c7ea6154d40cac12ae7708903f04ea",
+    "owners": [
+      "01a1a5d9-6955-7820-bcd4-8e0a21629aa2"
+    ],
+    "ordinaryActualPids": [],
+    "reservedProcesses": 8,
+    "reservedRSSBytes": 2147483648,
+    "actualPids": [
+      46140,
+      46220,
+      46275
+    ],
+    "actualRSSBytes": 55574528,
+    "otherNewUpperBytes": 2684354560,
+    "receiptReadConsistency": {
+      "attempts": 1,
+      "stableRevisionSHA256": "9428b3b9d391384dad158b7cf2a05ed298c573b3c908c856ef196788f0801355",
+      "unstableObservations": [],
+      "boundary": "Every returned claim/cap/PID/future passed the unchanged strict reader against a stable receipt revision; no reservation released from absence"
+    }
+  },
+  "postimagesExact": true,
+  "inputReadsetSha256": "a2f1826df3ece52250cc4b0c7e605c484e5c4c857eda28120331319f79d06900",
+  "guardian": {
+    "status": "STOPPED",
+    "pid": 46220,
+    "last": {
+      "free": 15024209920,
+      "all": 5,
+      "rss": 59277312,
+      "new": 1916092416,
+      "whole": 5505421312,
+      "pids": [
+        46140,
+        46220,
+        46290,
+        46297,
+        46299
+      ]
+    },
+    "maximum": {
+      "all": 5,
+      "rss": 249495552,
+      "new": 1916092416,
+      "whole": 5505421312
+    }
+  },
+  "endAvailable": 15025586176,
+  "elapsedSeconds": 3.59,
+  "checkoutPositiveBytes": 12288,
+  "outsideMetadataBytes": 53248,
+  "remainingManagedParent": 0,
+  "actualFullEpoch": 1793864299.537208
+}

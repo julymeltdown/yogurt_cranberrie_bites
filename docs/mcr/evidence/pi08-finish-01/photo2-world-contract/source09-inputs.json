@@ -1,0 +1,71 @@
+{
+  "version": 1,
+  "state": "EXPLICIT_SOURCE09_0734_FROZEN_NOT_ACCEPTED",
+  "offer": "PI08-LAMP-SOURCE09-0734",
+  "scope": "One NEW paint-extent/internal-lamp-support+24framepacking/invariant case and affected strict/lint only; no prior green replay or ART pixels/runtime acceptance.",
+  "resourceRequest": "NEW4MiBTOTAL09+necessarychangedfix10 within SAME2GiBfamily/8P2GiB/S1/WHOLE8/120WORK180FULL, pending current grant and fit. Old07+08 shared4MiB consumed2777088B/remainder1417216B retained; no refund/reset.",
+  "files": [
+    {
+      "path": "docs/mcr/evidence/pi08-finish-01/photo2-world-contract/producer-input-v2.json",
+      "bytes": 38407,
+      "sha256": "da87fef51caf2333e2fb9b05755efff0046c7254f0b399bc234b1308697c52fd"
+    },
+    {
+      "path": "docs/mcr/evidence/pi08-finish-01/photo2-world-contract/producer-contract-v2.json",
+      "bytes": 39013,
+      "sha256": "3fce374b7f60d46e8561559c42470a3343708f9eb3236a1d01050c4f0aa3a12d"
+    },
+    {
+      "path": "docs/mcr/evidence/pi08-finish-01/photo2-world-contract/producer-ready-v2.json",
+      "bytes": 4395,
+      "sha256": "61c142e4df6f95199f205320df9c78b28ea9af3e7f3fd5712b49bc2d04fbd85e"
+    },
+    {
+      "path": "docs/mcr/evidence/pi08-finish-01/photo2-world-contract/producer-input-v3.json",
+      "bytes": 38938,
+      "sha256": "4a41acdb1f331c668e2a9b017d1627d0aa970258aa2c5abbae893b2baa9e1f0d"
+    },
+    {
+      "path": "docs/mcr/evidence/pi08-finish-01/photo2-world-contract/producer-contract-v3.json",
+      "bytes": 39962,
+      "sha256": "cc12d028b4615246ea457722d13af6d35fc505e44b6d1946adcf1811a37ab98e"
+    },
+    {
+      "path": "frontend/src/features/parade-ink/world-hud/__tests__/finish-01/producer-layout-v3.test.ts",
+      "bytes": 4493,
+      "sha256": "8173ae5ffa5192e74f4f425b875dce6cdff0e21db369554cb4cd551814e2ec4b"
+    },
+    {
+      "path": "frontend/src/features/parade-ink/world-hud/__tests__/finish-01/producer-layout-v3.config.mjs",
+      "bytes": 327,
+      "sha256": "fdc4fca490fa4b1ae8831be4ef0d23028e6cd1896c268203e25f9b4ed1076a46"
+    },
+    {
+      "path": "frontend/src/features/parade-ink/world-hud/__tests__/finish-01/producer-layout-v3.tsconfig.json",
+      "bytes": 652,
+      "sha256": "712aa594a953660ba9df55840aab14b221a96917ba048a176753d040b4139563"
+    },
+    {
+      "path": "frontend/src/features/parade-ink/world-hud/__tests__/finish-01/source09-round.py",
+      "bytes": 20991,
+      "sha256": "bd60118d9c8293a8ee6840f3ac5dcf1ac23ffaedf4f4ed05f032950c51c4ff6d"
+    },
+    {
+      "path": "frontend/src/features/parade-ink/world-hud/__tests__/finish-01/resource_snapshot.py",
+      "bytes": 4172,
+      "sha256": "ec2338c56bc59704399237ecb35f1f23602a8e6543aa31e1fbc53ad77ebcb6bb"
+    },
+    {
+      "path": "frontend/src/features/parade-ink/world-hud/__tests__/finish-01/resource_guard.py",
+      "bytes": 385,
+      "sha256": "65b6b2d90cdd682f012859f92e5bd5c9f4098f30fef82a8b6acb45b74d4cdae6"
+    },
+    {
+      "path": "frontend/src/features/parade-ink/world-hud/photo2-world-display-v1.ts",
+      "bytes": 15075,
+      "sha256": "a37dfc5dcd4a0f533ad4d607cab0ced9caa10ca1c3fcdcd8894fbb00997d9e50"
+    }
+  ],
+  "allocatorAuthority": "Literal21d0734 distinct Source09/conditional10 SAME NEW4MiBTOTAL inside SAME2GiBfamily; current mixedG4S3B2T1/96PID18GiB; actual11GiB start +itemizedfuture/afterALL9/live8 required;120WORK180FULL/8P2GiB/WHOLE8/accept08:10/end08:30.",
+  "predecessor": "ARTSource06 actualFULL1793863030.664347/PASS/resources0; immutable1df1226b retained. No oldgreen replay or producer qualification barrier beyond actual literalv3READY for newART."
+}

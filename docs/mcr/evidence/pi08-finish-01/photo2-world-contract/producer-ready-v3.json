@@ -1,0 +1,66 @@
+{
+  "version": 1,
+  "paintRevision": 3,
+  "status": "CHANGED_PAINT_EXTENT_PACKING_INTERFACE_QUALIFIED_READY_FOR_ART_NOT_PIXELS_OR_RUNTIME_ADMITTED",
+  "candidate": {
+    "path": "docs/mcr/evidence/pi08-finish-01/photo2-world-contract/producer-input-v3.json",
+    "sha256": "4a41acdb1f331c668e2a9b017d1627d0aa970258aa2c5abbae893b2baa9e1f0d",
+    "bytes": 38938
+  },
+  "contract": {
+    "path": "docs/mcr/evidence/pi08-finish-01/photo2-world-contract/producer-contract-v3.json",
+    "sha256": "cc12d028b4615246ea457722d13af6d35fc505e44b6d1946adcf1811a37ab98e",
+    "bytes": 39962
+  },
+  "retained": {
+    "path": "docs/mcr/evidence/pi08-finish-01/photo2-world-contract/producer-ready-v2.json",
+    "sha256": "61c142e4df6f95199f205320df9c78b28ea9af3e7f3fd5712b49bc2d04fbd85e",
+    "bytes": 4395
+  },
+  "qualification": {
+    "offer": "PI08-LAMP-SOURCE09-0734",
+    "accepted": 1793864295.801688,
+    "full": 1793864299.537208,
+    "exit": 0,
+    "newCases": 1,
+    "typesExit": 0,
+    "lintExit": 0,
+    "raw": {
+      "path": "docs/mcr/evidence/pi08-finish-01/source09/round.json",
+      "sha256": "0c299d6f9a77b2c9971b421f3a8a1ccfb8eceb0c958a6cdc811f395d52262e36",
+      "bytes": 9365
+    },
+    "readset": {
+      "path": "docs/mcr/evidence/pi08-finish-01/photo2-world-contract/source09-inputs.json",
+      "sha256": "a2f1826df3ece52250cc4b0c7e605c484e5c4c857eda28120331319f79d06900",
+      "bytes": 3594
+    },
+    "bothLive": {
+      "primary": 46140,
+      "guardian": 46220,
+      "at": 1793864296.773298,
+      "initial": {
+        "pid": 46220,
+        "at": 1793864296.766032,
+        "sample": {
+          "free": 15023628288,
+          "all": 3,
+          "rss": 54034432,
+          "new": 1914707968,
+          "whole": 5504036864,
+          "pids": [
+            46140,
+            46220,
+            46226
+          ]
+        }
+      }
+    },
+    "resources": 0,
+    "actualPrimaryAndGuardianAbsenceObserved": true,
+    "postimagesExact": true
+  },
+  "producerResponsibility": "ART231 owns actual original paint/alpha/occlusion/source qualification under its existing exact custody and separate current resource book. V3 lamp composite localstem64/base154,headshaftx>=54,groundbandy>=156; rear support>100 painted pixels, no duplicate rear lamp. Same512x1024/499x1200/channels; preserve existing applicable memory probe if actual dimensions unchanged.",
+  "consumerInterface": "Native source/204mesh/22 ordered IDs and native rectangles/feet/displayfeet/origins/physics/C03/boards unchanged. Only tree06 paint80x170 and exact24atlas rect repack. New literal qualified ART/BE/scenery/theme tuple must bind atomically, never mixed old/new or C03 field/registry bypass. Existing coreversionv1 with paintRevision3 is a versioned producer amendment, not a new physical profile.",
+  "open": "ART v3 pixels/alpha/focusclearance/referenceinspection, exact C06 registration/catalog coherence, functioning actualdefaultApp newprofile/native/reference pairs and fullPhoto2 acceptance remain ACTIVE."
+}
