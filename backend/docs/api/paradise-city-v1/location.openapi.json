@@ -1,0 +1,2029 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Paradise City location and reviewed landmark contract",
+    "version": "1.0.0",
+    "description": "VENU-BE-L01 source contract. Actual authorities/configuration required; no fabricated runtime defaults or physical acceptance. Independent additive family; does not silently register old operations."
+  },
+  "paths": {
+    "/api/concert/events/{eventId}/venue/location": {
+      "get": {
+        "operationId": "getVenueLocationSnapshot",
+        "description": "Only current accepted friends plus explicit selected-viewer consent; bounded50; no raw clusters. Client may cluster only returned authorized locations. No physical projection is inferred.",
+        "parameters": [
+          {
+            "name": "eventId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Current authorized representation; private no-store",
+            "headers": {
+              "Cache-Control": {
+                "schema": {
+                  "type": "string",
+                  "const": "no-store"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/LocationSnapshot"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Fail closed without location or hidden identity disclosure",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/LocationError"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Fail closed without location or hidden identity disclosure",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/LocationError"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Fail closed without location or hidden identity disclosure",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/LocationError"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "Fail closed without location or hidden identity disclosure",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/LocationError"
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "Fail closed without location or hidden identity disclosure",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/LocationError"
+                }
+              }
+            }
+          },
+          "503": {
+            "description": "Fail closed without location or hidden identity disclosure",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/LocationError"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ]
+      }
+    },
+    "/api/concert/events/{eventId}/venue/location/sharing": {
+      "put": {
+        "operationId": "setVenueLocationSharing",
+        "description": "Explicit service consent. ACTIVE replaces selected current-friend viewers and starts a configured finite lease; PAUSED/REVOKED require empty viewer_ids, remove all visibility and delete precise fix/check-in. Resume requires fresh publication; never starts device GPS.",
+        "parameters": [
+          {
+            "name": "eventId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          },
+          {
+            "name": "Idempotency-Key",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Current authorized representation; private no-store",
+            "headers": {
+              "Cache-Control": {
+                "schema": {
+                  "type": "string",
+                  "const": "no-store"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/LocationCommandReceipt"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Fail closed without location or hidden identity disclosure",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/LocationError"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Fail closed without location or hidden identity disclosure",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/LocationError"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Fail closed without location or hidden identity disclosure",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/LocationError"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "Fail closed without location or hidden identity disclosure",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/LocationError"
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "Fail closed without location or hidden identity disclosure",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/LocationError"
+                }
+              }
+            }
+          },
+          "503": {
+            "description": "Fail closed without location or hidden identity disclosure",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/LocationError"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SharingInput"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/concert/events/{eventId}/venue/location/fix": {
+      "put": {
+        "operationId": "publishVenueLocationFix",
+        "description": "Current actor only, active unexpired sharing/current revision; reported finite WGS84 and accuracy/time checked against actual server policy. Provider is device-reported, never attested GPS or physical arrival.",
+        "parameters": [
+          {
+            "name": "eventId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          },
+          {
+            "name": "Idempotency-Key",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Current authorized representation; private no-store",
+            "headers": {
+              "Cache-Control": {
+                "schema": {
+                  "type": "string",
+                  "const": "no-store"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/LocationCommandReceipt"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Fail closed without location or hidden identity disclosure",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/LocationError"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Fail closed without location or hidden identity disclosure",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/LocationError"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Fail closed without location or hidden identity disclosure",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/LocationError"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "Fail closed without location or hidden identity disclosure",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/LocationError"
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "Fail closed without location or hidden identity disclosure",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/LocationError"
+                }
+              }
+            }
+          },
+          "503": {
+            "description": "Fail closed without location or hidden identity disclosure",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/LocationError"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PhoneFixInput"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/concert/events/{eventId}/venue/location/requests": {
+      "post": {
+        "operationId": "requestVenueLocation",
+        "description": "Current accepted friend only. Creates bounded pending request, never device permission/consent/sharing. Existing live pair request is reused without extending expiry.",
+        "parameters": [
+          {
+            "name": "eventId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          },
+          {
+            "name": "Idempotency-Key",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Current authorized representation; private no-store",
+            "headers": {
+              "Cache-Control": {
+                "schema": {
+                  "type": "string",
+                  "const": "no-store"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/LocationCommandReceipt"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Fail closed without location or hidden identity disclosure",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/LocationError"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Fail closed without location or hidden identity disclosure",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/LocationError"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Fail closed without location or hidden identity disclosure",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/LocationError"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "Fail closed without location or hidden identity disclosure",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/LocationError"
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "Fail closed without location or hidden identity disclosure",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/LocationError"
+                }
+              }
+            }
+          },
+          "503": {
+            "description": "Fail closed without location or hidden identity disclosure",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/LocationError"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/LocationRequestInput"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/concert/events/{eventId}/venue/location/requests/{requestId}/decision": {
+      "post": {
+        "operationId": "decideVenueLocationRequest",
+        "description": "Subject APPROVE/DENY, requester CANCEL. APPROVE explicitly adds requester to an already active selected-viewer sharing lease after fresh friendship checks; it never enables GPS or revives paused sharing. Terminal and expired states do not transition again.",
+        "parameters": [
+          {
+            "name": "eventId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          },
+          {
+            "name": "requestId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          },
+          {
+            "name": "Idempotency-Key",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Current authorized representation; private no-store",
+            "headers": {
+              "Cache-Control": {
+                "schema": {
+                  "type": "string",
+                  "const": "no-store"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/LocationCommandReceipt"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Fail closed without location or hidden identity disclosure",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/LocationError"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Fail closed without location or hidden identity disclosure",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/LocationError"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Fail closed without location or hidden identity disclosure",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/LocationError"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "Fail closed without location or hidden identity disclosure",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/LocationError"
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "Fail closed without location or hidden identity disclosure",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/LocationError"
+                }
+              }
+            }
+          },
+          "503": {
+            "description": "Fail closed without location or hidden identity disclosure",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/LocationError"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/LocationRequestDecisionInput"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/concert/events/{eventId}/venue/location/check-in": {
+      "put": {
+        "operationId": "setVenueLocationCheckIn",
+        "description": "Explicit self-reported current reviewed fixed landmark. No position fabricated from artwork, no physical-arrival claim, no invitation/message authorization.",
+        "parameters": [
+          {
+            "name": "eventId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          },
+          {
+            "name": "Idempotency-Key",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Current authorized representation; private no-store",
+            "headers": {
+              "Cache-Control": {
+                "schema": {
+                  "type": "string",
+                  "const": "no-store"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/LocationCommandReceipt"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Fail closed without location or hidden identity disclosure",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/LocationError"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Fail closed without location or hidden identity disclosure",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/LocationError"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Fail closed without location or hidden identity disclosure",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/LocationError"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "Fail closed without location or hidden identity disclosure",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/LocationError"
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "Fail closed without location or hidden identity disclosure",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/LocationError"
+                }
+              }
+            }
+          },
+          "503": {
+            "description": "Fail closed without location or hidden identity disclosure",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/LocationError"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CheckInInput"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/concert/events/{eventId}/venue/location/commands/{key}": {
+      "get": {
+        "operationId": "getVenueLocationCommand",
+        "description": "Actor/event scoped metadata only. Recover original operation/key after uncertain outcome.404 is not proof that a timed-out write failed; identical idempotent retry reconciles it. Never replays coordinates or bypasses fresh read authorization.",
+        "parameters": [
+          {
+            "name": "eventId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          },
+          {
+            "name": "key",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          },
+          {
+            "name": "operation",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "enum": [
+                "setVenueLocationSharing",
+                "publishVenueLocationFix",
+                "requestVenueLocation",
+                "decideVenueLocationRequest",
+                "setVenueLocationCheckIn"
+              ]
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Current authorized representation; private no-store",
+            "headers": {
+              "Cache-Control": {
+                "schema": {
+                  "type": "string",
+                  "const": "no-store"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/LocationCommandReceipt"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Fail closed without location or hidden identity disclosure",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/LocationError"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Fail closed without location or hidden identity disclosure",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/LocationError"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Fail closed without location or hidden identity disclosure",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/LocationError"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "Fail closed without location or hidden identity disclosure",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/LocationError"
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "Fail closed without location or hidden identity disclosure",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/LocationError"
+                }
+              }
+            }
+          },
+          "503": {
+            "description": "Fail closed without location or hidden identity disclosure",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/LocationError"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ]
+      }
+    },
+    "/api/concert/events/{eventId}/venue/landmarks": {
+      "get": {
+        "operationId": "listVenueLandmarks",
+        "description": "Only actual current reviewed fixed landmarks; unconfigured provider503. Artwork candidate labels do not become business identities. Maximum50; no implicit location authority.",
+        "parameters": [
+          {
+            "name": "eventId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Current authorized representation; private no-store",
+            "headers": {
+              "Cache-Control": {
+                "schema": {
+                  "type": "string",
+                  "const": "no-store"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/LandmarkList"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Fail closed without location or hidden identity disclosure",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/LocationError"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Fail closed without location or hidden identity disclosure",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/LocationError"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Fail closed without location or hidden identity disclosure",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/LocationError"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "Fail closed without location or hidden identity disclosure",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/LocationError"
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "Fail closed without location or hidden identity disclosure",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/LocationError"
+                }
+              }
+            }
+          },
+          "503": {
+            "description": "Fail closed without location or hidden identity disclosure",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/LocationError"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ]
+      }
+    },
+    "/api/concert/events/{eventId}/venue/landmarks/{landmarkId}": {
+      "get": {
+        "operationId": "getVenueLandmark",
+        "description": "Current provider/source/catalog/landmark/map/policy tuple and actual review validity. Callers recheck the full tuple at final effect/EOF; a prior response is not a grant.",
+        "parameters": [
+          {
+            "name": "eventId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          },
+          {
+            "name": "landmarkId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "$ref": "#/components/schemas/LandmarkId"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Current authorized representation; private no-store",
+            "headers": {
+              "Cache-Control": {
+                "schema": {
+                  "type": "string",
+                  "const": "no-store"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/LandmarkGrant"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Fail closed without location or hidden identity disclosure",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/LocationError"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Fail closed without location or hidden identity disclosure",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/LocationError"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Fail closed without location or hidden identity disclosure",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/LocationError"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "Fail closed without location or hidden identity disclosure",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/LocationError"
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "Fail closed without location or hidden identity disclosure",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/LocationError"
+                }
+              }
+            }
+          },
+          "503": {
+            "description": "Fail closed without location or hidden identity disclosure",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/LocationError"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ]
+      }
+    }
+  },
+  "components": {
+    "securitySchemes": {
+      "BearerAuth": {
+        "type": "http",
+        "scheme": "bearer"
+      }
+    },
+    "schemas": {
+      "LandmarkId": {
+        "type": "string",
+        "minLength": 1,
+        "maxLength": 128,
+        "pattern": "^(?!\\.{1,2}$)[A-Za-z0-9._~-]+$",
+        "description": "Opaque reviewed-provider identity. Artwork labels/World IDs never establish authority."
+      },
+      "LandmarkSelection": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "landmark_id": {
+            "$ref": "#/components/schemas/LandmarkId"
+          },
+          "catalog_revision": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 9007199254740991
+          },
+          "landmark_revision": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 9007199254740991
+          }
+        },
+        "required": [
+          "landmark_id",
+          "catalog_revision",
+          "landmark_revision"
+        ]
+      },
+      "PhysicalPlaceBinding": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "physical_place_id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "current_place_revision": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 9007199254740991
+          }
+        },
+        "required": [
+          "physical_place_id",
+          "current_place_revision"
+        ]
+      },
+      "LandmarkGrant": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "event_id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "selection": {
+            "$ref": "#/components/schemas/LandmarkSelection"
+          },
+          "provider_id": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 128
+          },
+          "source_revision": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 128
+          },
+          "venue_key": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 128
+          },
+          "map_id": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 128
+          },
+          "map_revision": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 9007199254740991
+          },
+          "policy_revision": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 9007199254740991
+          },
+          "label": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 160
+          },
+          "review_reference": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 256
+          },
+          "reviewed_at": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "server_time": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "valid_until": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "physical_binding": {
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/PhysicalPlaceBinding"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "presentation_id": {
+            "oneOf": [
+              {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 128
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "can_check_in": {
+            "type": "boolean"
+          },
+          "can_meet": {
+            "type": "boolean"
+          },
+          "can_note": {
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "event_id",
+          "selection",
+          "provider_id",
+          "source_revision",
+          "venue_key",
+          "map_id",
+          "map_revision",
+          "policy_revision",
+          "label",
+          "review_reference",
+          "reviewed_at",
+          "server_time",
+          "valid_until",
+          "physical_binding",
+          "presentation_id",
+          "can_check_in",
+          "can_meet",
+          "can_note"
+        ]
+      },
+      "VenueClock": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "event_id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "venue_key": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 128
+          },
+          "policy_revision": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 9007199254740991
+          },
+          "timezone": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 128
+          },
+          "server_time": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "end_of_day": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "valid_until": {
+            "type": "string",
+            "format": "date-time"
+          }
+        },
+        "required": [
+          "event_id",
+          "venue_key",
+          "policy_revision",
+          "timezone",
+          "server_time",
+          "end_of_day",
+          "valid_until"
+        ]
+      },
+      "VenueLocationPolicy": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "event_id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "venue_key": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 128
+          },
+          "provider_id": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 128
+          },
+          "source_revision": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 128
+          },
+          "revision": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 9007199254740991
+          },
+          "timezone": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 128
+          },
+          "valid_until": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "fresh_ms": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 9007199254740991
+          },
+          "last_known_ms": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 9007199254740991
+          },
+          "fix_max_age_ms": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 9007199254740991
+          },
+          "future_skew_ms": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 9007199254740991
+          },
+          "sharing_lease_ms": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 9007199254740991
+          },
+          "request_ttl_ms": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 9007199254740991
+          },
+          "check_in_ttl_ms": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 9007199254740991
+          },
+          "coordinate_retention_ms": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 9007199254740991
+          },
+          "command_retention_ms": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 9007199254740991
+          },
+          "max_accuracy_m": {
+            "type": "number",
+            "exclusiveMinimum": 0
+          },
+          "max_viewers": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 50
+          }
+        },
+        "required": [
+          "event_id",
+          "venue_key",
+          "provider_id",
+          "source_revision",
+          "revision",
+          "timezone",
+          "valid_until",
+          "fresh_ms",
+          "last_known_ms",
+          "fix_max_age_ms",
+          "future_skew_ms",
+          "sharing_lease_ms",
+          "request_ttl_ms",
+          "check_in_ttl_ms",
+          "coordinate_retention_ms",
+          "command_retention_ms",
+          "max_accuracy_m",
+          "max_viewers"
+        ]
+      },
+      "PhoneFixInput": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "expected_sharing_revision": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 9007199254740991
+          },
+          "source": {
+            "type": "string",
+            "enum": [
+              "DEVICE_GEOLOCATION_REPORTED"
+            ]
+          },
+          "latitude": {
+            "type": "number",
+            "minimum": -90,
+            "maximum": 90
+          },
+          "longitude": {
+            "type": "number",
+            "minimum": -180,
+            "maximum": 180
+          },
+          "accuracy_m": {
+            "type": "number",
+            "minimum": 0
+          },
+          "captured_at": {
+            "type": "string",
+            "format": "date-time"
+          }
+        },
+        "required": [
+          "expected_sharing_revision",
+          "source",
+          "latitude",
+          "longitude",
+          "accuracy_m",
+          "captured_at"
+        ]
+      },
+      "PhonePosition": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "latitude": {
+            "type": "number",
+            "minimum": -90,
+            "maximum": 90
+          },
+          "longitude": {
+            "type": "number",
+            "minimum": -180,
+            "maximum": 180
+          },
+          "accuracy_m": {
+            "type": "number",
+            "minimum": 0
+          },
+          "captured_at": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "received_at": {
+            "type": "string",
+            "format": "date-time"
+          }
+        },
+        "required": [
+          "latitude",
+          "longitude",
+          "accuracy_m",
+          "captured_at",
+          "received_at"
+        ]
+      },
+      "SharingInput": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "expected_revision": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 9007199254740991
+          },
+          "state": {
+            "type": "string",
+            "enum": [
+              "ACTIVE",
+              "PAUSED",
+              "REVOKED"
+            ]
+          },
+          "viewer_ids": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "format": "uuid"
+            },
+            "maxItems": 50,
+            "uniqueItems": true
+          }
+        },
+        "required": [
+          "expected_revision",
+          "state",
+          "viewer_ids"
+        ]
+      },
+      "SharingState": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "state": {
+            "type": "string",
+            "enum": [
+              "OFF",
+              "ACTIVE",
+              "PAUSED",
+              "REVOKED",
+              "EXPIRED"
+            ]
+          },
+          "revision": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 9007199254740991
+          },
+          "viewer_ids": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "format": "uuid"
+            },
+            "maxItems": 50,
+            "uniqueItems": true
+          },
+          "expires_at": {
+            "oneOf": [
+              {
+                "type": "string",
+                "format": "date-time"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "updated_at": {
+            "oneOf": [
+              {
+                "type": "string",
+                "format": "date-time"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          }
+        },
+        "required": [
+          "state",
+          "revision",
+          "viewer_ids",
+          "expires_at",
+          "updated_at"
+        ]
+      },
+      "LocationCapabilities": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "can_share_phone": {
+            "type": "boolean"
+          },
+          "can_pause": {
+            "type": "boolean"
+          },
+          "can_revoke": {
+            "type": "boolean"
+          },
+          "check_in_landmark_ids": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/LandmarkId"
+            },
+            "maxItems": 50
+          },
+          "geographic_projection": {
+            "type": "string",
+            "enum": [
+              "UNAVAILABLE"
+            ]
+          }
+        },
+        "required": [
+          "can_share_phone",
+          "can_pause",
+          "can_revoke",
+          "check_in_landmark_ids",
+          "geographic_projection"
+        ]
+      },
+      "VisibleLocation": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "user_id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "source": {
+            "type": "string",
+            "enum": [
+              "PHONE",
+              "SELF_REPORTED_CHECK_IN",
+              "LAST_KNOWN",
+              "UNAVAILABLE"
+            ]
+          },
+          "position": {
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/PhonePosition"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "landmark": {
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/LandmarkGrant"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "observed_at": {
+            "oneOf": [
+              {
+                "type": "string",
+                "format": "date-time"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "fresh_until": {
+            "oneOf": [
+              {
+                "type": "string",
+                "format": "date-time"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "expires_at": {
+            "oneOf": [
+              {
+                "type": "string",
+                "format": "date-time"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "access_until": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "visibility_revision": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 9007199254740991
+          },
+          "physical_arrival_verified": {
+            "type": "boolean",
+            "const": false
+          },
+          "can_request_location": {
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "user_id",
+          "source",
+          "position",
+          "landmark",
+          "observed_at",
+          "fresh_until",
+          "expires_at",
+          "access_until",
+          "visibility_revision",
+          "physical_arrival_verified",
+          "can_request_location"
+        ]
+      },
+      "LocationSnapshot": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "event_id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "actor_id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "server_time": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "access_until": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "policy": {
+            "$ref": "#/components/schemas/VenueLocationPolicy"
+          },
+          "clock": {
+            "$ref": "#/components/schemas/VenueClock"
+          },
+          "sharing": {
+            "$ref": "#/components/schemas/SharingState"
+          },
+          "self_location": {
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/VisibleLocation"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "friends": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/VisibleLocation"
+            },
+            "maxItems": 50
+          },
+          "capabilities": {
+            "$ref": "#/components/schemas/LocationCapabilities"
+          }
+        },
+        "required": [
+          "event_id",
+          "actor_id",
+          "server_time",
+          "access_until",
+          "policy",
+          "clock",
+          "sharing",
+          "self_location",
+          "friends",
+          "capabilities"
+        ]
+      },
+      "LocationRequestInput": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "subject_id": {
+            "type": "string",
+            "format": "uuid"
+          }
+        },
+        "required": [
+          "subject_id"
+        ]
+      },
+      "LocationRequestDecisionInput": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "expected_revision": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 9007199254740991
+          },
+          "decision": {
+            "type": "string",
+            "enum": [
+              "APPROVE",
+              "DENY",
+              "CANCEL"
+            ]
+          }
+        },
+        "required": [
+          "expected_revision",
+          "decision"
+        ]
+      },
+      "CheckInInput": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "expected_sharing_revision": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 9007199254740991
+          },
+          "landmark": {
+            "$ref": "#/components/schemas/LandmarkSelection"
+          }
+        },
+        "required": [
+          "expected_sharing_revision",
+          "landmark"
+        ]
+      },
+      "LocationRequest": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "request_id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "event_id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "requester_id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "subject_id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "revision": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 9007199254740991
+          },
+          "state": {
+            "type": "string",
+            "enum": [
+              "PENDING",
+              "APPROVED",
+              "DENIED",
+              "CANCELLED",
+              "EXPIRED"
+            ]
+          },
+          "created_at": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "expires_at": {
+            "type": "string",
+            "format": "date-time"
+          }
+        },
+        "required": [
+          "request_id",
+          "event_id",
+          "requester_id",
+          "subject_id",
+          "revision",
+          "state",
+          "created_at",
+          "expires_at"
+        ]
+      },
+      "LocationCommandReceipt": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "command_key": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "operation": {
+            "type": "string",
+            "enum": [
+              "setVenueLocationSharing",
+              "publishVenueLocationFix",
+              "requestVenueLocation",
+              "decideVenueLocationRequest",
+              "setVenueLocationCheckIn"
+            ]
+          },
+          "state": {
+            "type": "string",
+            "enum": [
+              "SUCCEEDED",
+              "FAILED"
+            ]
+          },
+          "resource_kind": {
+            "type": "string",
+            "enum": [
+              "SHARING",
+              "PHONE_FIX",
+              "LOCATION_REQUEST",
+              "CHECK_IN"
+            ]
+          },
+          "resource_id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "revision": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 9007199254740991
+          },
+          "created_at": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "expires_at": {
+            "type": "string",
+            "format": "date-time"
+          }
+        },
+        "required": [
+          "command_key",
+          "operation",
+          "state",
+          "resource_kind",
+          "resource_id",
+          "revision",
+          "created_at",
+          "expires_at"
+        ]
+      },
+      "LandmarkList": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "event_id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "server_time": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "access_until": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "items": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/LandmarkGrant"
+            },
+            "maxItems": 50
+          }
+        },
+        "required": [
+          "event_id",
+          "server_time",
+          "access_until",
+          "items"
+        ]
+      },
+      "LocationError": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "code": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 64
+          },
+          "message": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 256
+          },
+          "traceId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "timestamp": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "details": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "reason": {
+                "type": "string",
+                "enum": [
+                  "INVALID_INPUT",
+                  "AUTHENTICATION_REQUIRED",
+                  "RESOURCE_UNAVAILABLE",
+                  "DEPENDENCY_UNAVAILABLE",
+                  "VERSION_CONFLICT",
+                  "IDEMPOTENCY_CONFLICT",
+                  "IDEMPOTENCY_EXPIRED",
+                  "LOCATION_SHARING_OFF",
+                  "LOCATION_STALE",
+                  "LOCATION_ACCURACY_UNAVAILABLE",
+                  "LOCATION_REQUEST_EXPIRED",
+                  "LOCATION_REQUEST_TERMINAL",
+                  "RATE_LIMITED"
+                ]
+              }
+            },
+            "required": [
+              "reason"
+            ]
+          }
+        },
+        "required": [
+          "code",
+          "message",
+          "traceId",
+          "timestamp",
+          "details"
+        ]
+      }
+    }
+  }
+}

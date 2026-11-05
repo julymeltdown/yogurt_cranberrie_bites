@@ -1,0 +1,194 @@
+syntax = "proto3";
+package venue.location.v1;
+
+import "google/protobuf/timestamp.proto";
+
+// Additive venue DTO family. These messages create no listener, public route,
+// identity system or root operation registration. Original signed HTTP frames
+// continue through the canonical Concert ProductService and OwnerGuardScope.
+// Public JSON is the standalone OpenAPI contract, not protobuf JSON (int64
+// public revisions are bounded safe JSON numbers). No client-supplied actor,
+// friend boolean, consent proof, source publication or example coordinate grants
+// authority. Production providers/configuration are required and fail closed.
+message LandmarkSelection {
+  string landmark_id = 1; // provider-issued unreserved ASCII1..128, not . or ..
+  int64 catalog_revision = 2;
+  int64 landmark_revision = 3;
+}
+message PhysicalPlaceBinding {
+  string physical_place_id = 1; // actual BE08 UUID only when really bound
+  int64 current_place_revision = 2; // distinct from catalog_revision
+}
+message LandmarkGrant {
+  string event_id = 1;
+  LandmarkSelection selection = 2;
+  string provider_id = 3;
+  string source_revision = 4;
+  string venue_key = 5;
+  string map_id = 6;
+  int64 map_revision = 7;
+  int64 policy_revision = 8;
+  string label = 9;
+  string review_reference = 10;
+  google.protobuf.Timestamp reviewed_at = 11;
+  google.protobuf.Timestamp server_time = 12;
+  google.protobuf.Timestamp valid_until = 13;
+  PhysicalPlaceBinding physical_binding = 14; // absent unless actual binding
+  optional string presentation_id = 15; // no geographic meaning or authority
+  bool can_check_in = 16;
+  bool can_meet = 17;
+  bool can_note = 18;
+}
+message VenueClock {
+  string event_id = 1;
+  string venue_key = 2;
+  int64 policy_revision = 3;
+  string timezone = 4; // configured/validated IANA name, never device timezone
+  google.protobuf.Timestamp server_time = 5;
+  google.protobuf.Timestamp end_of_day = 6;
+  google.protobuf.Timestamp valid_until = 7;
+}
+message VenueLocationPolicy {
+  string event_id = 1;
+  string venue_key = 2;
+  string provider_id = 3;
+  string source_revision = 4;
+  int64 revision = 5;
+  string timezone = 6;
+  google.protobuf.Timestamp valid_until = 7;
+  int64 fresh_ms = 8;
+  int64 last_known_ms = 9;
+  int64 fix_max_age_ms = 10;
+  int64 future_skew_ms = 11;
+  int64 sharing_lease_ms = 12;
+  int64 request_ttl_ms = 13;
+  int64 check_in_ttl_ms = 14;
+  int64 coordinate_retention_ms = 15;
+  int64 command_retention_ms = 16;
+  double max_accuracy_m = 17;
+  uint32 max_viewers = 18;
+}
+enum SharingMode {
+  SHARING_MODE_UNSPECIFIED = 0;
+  SHARING_MODE_OFF = 1;
+  SHARING_MODE_ACTIVE = 2;
+  SHARING_MODE_PAUSED = 3;
+  SHARING_MODE_REVOKED = 4;
+  SHARING_MODE_EXPIRED = 5;
+}
+message SharingInput {
+  int64 expected_revision = 1; //0 only for never-created state
+  SharingMode state = 2; // only ACTIVE/PAUSED/REVOKED mutation values
+  repeated string viewer_ids = 3; // explicit selected current accepted friends
+}
+message SharingState {
+  SharingMode state = 1;
+  int64 revision = 2;
+  repeated string viewer_ids = 3;
+  google.protobuf.Timestamp expires_at = 4;
+  google.protobuf.Timestamp updated_at = 5;
+}
+message PhoneFixInput {
+  int64 expected_sharing_revision = 1;
+  string source = 2; // exactly DEVICE_GEOLOCATION_REPORTED, not attested GPS
+  double latitude = 3;
+  double longitude = 4;
+  double accuracy_m = 5;
+  google.protobuf.Timestamp captured_at = 6;
+}
+message PhonePosition {
+  double latitude = 1;
+  double longitude = 2;
+  double accuracy_m = 3;
+  google.protobuf.Timestamp captured_at = 4;
+  google.protobuf.Timestamp received_at = 5;
+}
+enum LocationSource {
+  LOCATION_SOURCE_UNSPECIFIED = 0;
+  LOCATION_SOURCE_PHONE = 1;
+  LOCATION_SOURCE_SELF_REPORTED_CHECK_IN = 2;
+  LOCATION_SOURCE_LAST_KNOWN = 3;
+  LOCATION_SOURCE_UNAVAILABLE = 4;
+}
+message VisibleLocation {
+  string user_id = 1;
+  LocationSource source = 2;
+  PhonePosition position = 3; // absent on withdrawn/unavailable/check-in state
+  LandmarkGrant landmark = 4; // check-in does not manufacture phone coordinates
+  google.protobuf.Timestamp observed_at = 5;
+  google.protobuf.Timestamp fresh_until = 6;
+  google.protobuf.Timestamp expires_at = 7;
+  google.protobuf.Timestamp access_until = 8;
+  int64 visibility_revision = 9;
+  bool physical_arrival_verified = 10; // always false; explicit self report only
+  bool can_request_location = 11;
+}
+message LocationCapabilities {
+  bool can_share_phone = 1;
+  bool can_pause = 2;
+  bool can_revoke = 3;
+  repeated string check_in_landmark_ids = 4;
+  string geographic_projection = 5; // UNAVAILABLE; no inferred image/GPS bridge
+}
+message LocationSnapshot {
+  string event_id = 1;
+  string actor_id = 2;
+  google.protobuf.Timestamp server_time = 3;
+  google.protobuf.Timestamp access_until = 4;
+  VenueLocationPolicy policy = 5;
+  VenueClock clock = 6;
+  SharingState sharing = 7;
+  VisibleLocation self_location = 8;
+  repeated VisibleLocation friends = 9;
+  LocationCapabilities capabilities = 10;
+}
+message LocationRequestInput { string subject_id = 1; }
+enum LocationRequestDecision {
+  LOCATION_REQUEST_DECISION_UNSPECIFIED = 0;
+  LOCATION_REQUEST_DECISION_APPROVE = 1;
+  LOCATION_REQUEST_DECISION_DENY = 2;
+  LOCATION_REQUEST_DECISION_CANCEL = 3;
+}
+message LocationRequestDecisionInput {
+  int64 expected_revision = 1;
+  LocationRequestDecision decision = 2;
+}
+message CheckInInput {
+  int64 expected_sharing_revision = 1;
+  LandmarkSelection landmark = 2;
+}
+enum LocationRequestState {
+  LOCATION_REQUEST_STATE_UNSPECIFIED = 0;
+  LOCATION_REQUEST_STATE_PENDING = 1;
+  LOCATION_REQUEST_STATE_APPROVED = 2;
+  LOCATION_REQUEST_STATE_DENIED = 3;
+  LOCATION_REQUEST_STATE_CANCELLED = 4;
+  LOCATION_REQUEST_STATE_EXPIRED = 5;
+}
+message LocationRequest {
+  string request_id = 1;
+  string event_id = 2;
+  string requester_id = 3;
+  string subject_id = 4;
+  int64 revision = 5;
+  LocationRequestState state = 6;
+  google.protobuf.Timestamp created_at = 7;
+  google.protobuf.Timestamp expires_at = 8;
+}
+message LocationCommandReceipt {
+  string command_key = 1;
+  string operation = 2; // closed5mutation operation IDs from standalone OpenAPI
+  string state = 3; // SUCCEEDED or FAILED
+  string resource_kind = 4; // SHARING/PHONE_FIX/LOCATION_REQUEST/CHECK_IN
+  string resource_id = 5;
+  int64 revision = 6;
+  google.protobuf.Timestamp created_at = 7;
+  google.protobuf.Timestamp expires_at = 8;
+  // Never stores/replays coordinates, request body, owner secrets or permissions.
+}
+message LandmarkList {
+  string event_id = 1;
+  google.protobuf.Timestamp server_time = 2;
+  google.protobuf.Timestamp access_until = 3;
+  repeated LandmarkGrant items = 4;
+}
