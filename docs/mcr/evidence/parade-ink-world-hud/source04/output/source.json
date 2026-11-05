@@ -1,0 +1,30 @@
+{
+  "status": "PASS",
+  "qualification": "PI08_SOURCE_ONLY",
+  "checks": [
+    {
+      "label": "retained10passingSOURCE02 cases; fixture type corrections emit identical JavaScript",
+      "exit": 0,
+      "source": "df5445fb5ccaa68bf7e9bdd3895ea37221765a32"
+    },
+    {
+      "label": "full nonincremental frontend types with pinned PI01 read-only postimages",
+      "errors": 0,
+      "exit": 0
+    },
+    {
+      "label": "syntax source.mjs",
+      "exit": 0
+    },
+    {
+      "label": "syntax foundation-overlay.mjs",
+      "exit": 0
+    },
+    {
+      "label": "changed fixture type metadata and source driver lint; unchanged UI/caller lint retained SOURCE02",
+      "exit": 0
+    }
+  ],
+  "foundation": "b5b44e47531e3b75febc5ee5cdd6a11b1648779c",
+  "foundationQualification": "Explicit one-file CSS correction; native acceptance not inferred"
+}

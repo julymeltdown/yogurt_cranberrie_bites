@@ -1,0 +1,45 @@
+{
+  "failure": null,
+  "samples": 1,
+  "peaks": {
+    "new": 242976177,
+    "whole": 6850813952,
+    "processes": 4,
+    "rss": 248086528
+  },
+  "minimumFree": 16342204416,
+  "globalCensusSelftest": "PASS eleven bounded census cases",
+  "globalPeaks": {
+    "processes": 11,
+    "rss": 3082207232,
+    "workflows": 3
+  },
+  "lastGlobal": {
+    "workflows": 3,
+    "processes": 10,
+    "rss": 3082207232,
+    "reservedPIDs": 80,
+    "reservedRSS": 16106127360,
+    "absentReservedPIDs": 24,
+    "cohorts": [
+      {
+        "owner": "01a1a21a-a088-7c31-83e3-19de119ba873",
+        "visible": true,
+        "pid": 88509,
+        "pids": 6,
+        "rss": 2835841024
+      },
+      {
+        "owner": "01a1a21e-ab80-7012-b9fa-cdb69eed097b",
+        "visible": false
+      },
+      {
+        "owner": "01a1a5d9-332b-7822-a8f7-40c576fad94a",
+        "visible": true,
+        "pid": 94725,
+        "pids": 4,
+        "rss": 246366208
+      }
+    ]
+  }
+}

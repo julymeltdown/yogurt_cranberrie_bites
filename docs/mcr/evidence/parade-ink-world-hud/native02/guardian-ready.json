@@ -1,0 +1,34 @@
+{
+  "failure": null,
+  "samples": 1,
+  "peaks": {
+    "new": 189310385,
+    "whole": 6805798912,
+    "processes": 4,
+    "rss": 246317056
+  },
+  "minimumFree": 15344332800,
+  "globalCensusSelftest": "PASS eleven bounded census cases",
+  "globalPeaks": {
+    "processes": 4,
+    "rss": 247660544,
+    "workflows": 1
+  },
+  "lastGlobal": {
+    "workflows": 1,
+    "processes": 4,
+    "rss": 247660544,
+    "reservedPIDs": 24,
+    "reservedRSS": 4294967296,
+    "absentReservedPIDs": 0,
+    "cohorts": [
+      {
+        "owner": "01a1a5d9-332b-7822-a8f7-40c576fad94a",
+        "visible": true,
+        "pid": 48619,
+        "pids": 4,
+        "rss": 247660544
+      }
+    ]
+  }
+}

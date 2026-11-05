@@ -1,0 +1,47 @@
+{
+  "failure": null,
+  "samples": 1,
+  "peaks": {
+    "new": 302212529,
+    "whole": 6867591168,
+    "processes": 4,
+    "rss": 249413632
+  },
+  "minimumFree": 23645900800,
+  "globalCensusSelftest": "PASS nineteen bounded census cases",
+  "globalPeaks": {
+    "processes": 7,
+    "rss": 1653178368,
+    "workflows": 3
+  },
+  "lastGlobal": {
+    "workflows": 3,
+    "processes": 6,
+    "rss": 1653178368,
+    "reservedPIDs": 48,
+    "reservedRSS": 10737418240,
+    "absentReservedPIDs": 12,
+    "ordinaryFutureUpperBytes": 134217728,
+    "ordinaryRoles": [],
+    "cohorts": [
+      {
+        "owner": "01a1a1fe-1eed-7d12-a247-879cd521e0ec",
+        "visible": true,
+        "pid": 2958,
+        "pids": 3,
+        "rss": 1408122880
+      },
+      {
+        "owner": "01a1a5d9-332b-7822-a8f7-40c576fad94a",
+        "visible": true,
+        "pid": 3811,
+        "pids": 3,
+        "rss": 245055488
+      },
+      {
+        "owner": "01a1a5d9-6950-7920-8c80-5214d4ce0eaf",
+        "visible": false
+      }
+    ]
+  }
+}

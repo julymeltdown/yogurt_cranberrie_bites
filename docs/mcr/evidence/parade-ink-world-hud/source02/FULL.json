@@ -1,0 +1,26 @@
+{
+  "offer": "PI08-WORLD-HUD-SOURCE02-20261105T0016Z",
+  "status": "FAIL",
+  "failure": "validation exit 1",
+  "actualFullEpoch": 1793837815.109966,
+  "workflow": 0,
+  "remainingReservation": 0,
+  "ownedChildren": [],
+  "dependencyLinkAbsent": true,
+  "testExit": 1,
+  "primary": {
+    "failure": "validation exit 1",
+    "samples": 11,
+    "peaks": {
+      "new": 163235249,
+      "whole": 5278744576,
+      "processes": 7,
+      "rss": 2542551040
+    },
+    "minimumFree": 16185589760
+  },
+  "guardianExit": 0,
+  "withinFullDeadline": true,
+  "privateScratchAbsent": true,
+  "scratchRetained": "none; raw evidence retained inside owned checkout"
+}

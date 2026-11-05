@@ -1,0 +1,47 @@
+{
+  "task": "PI08",
+  "status": "IN_PROGRESS_SOURCE_ONLY",
+  "goal": "ACTIVE unbudgeted finish-to-delivery, actual initial get_goal null",
+  "base": "aac0d96d152e47150f4fac0f57b69659ad20a956",
+  "branch": "codex/mcr-fe-PI08-world-hud",
+  "oldBranchPreserved": "codex/mcr-resource-accounting-reliability @dfa57960c269bd8500563c8ec12d58bfd76d06ee published f203d30c",
+  "grant": "Root153 exact new world-hud prefix/docs/evidence; WorldShell import/class/wrapper render hunk only; 26e literal STOP and Root153 transfer only EraControls/BottomNavigation return JSX+scopedimports; all behavior/state/props/order/keys/lifetimes protected",
+  "prep": {
+    "cap": 100663296,
+    "expiresUTC": "2026-11-05T01:00:00Z",
+    "projection": 100163584,
+    "positiveRoundedCheckout": 31444992,
+    "directoryBound": 589824,
+    "largestTemporaryFixture": 50302976,
+    "gitReserve": 8388608,
+    "sourceDocsReserve": 8388608,
+    "scratchSlack": 1048576,
+    "preflightEpoch": 1793835845.383081,
+    "free": 15401496576,
+    "retainedPriorNew": 41158065,
+    "retainedPriorWhole": 2625007616
+  },
+  "pi01": {
+    "source": "056a8c48ff667134dee8e5e99710185294e4b898",
+    "contract": "pi01-photo2-v1",
+    "qualification": "UNQUALIFIED_SOURCE_CHECKPOINT; later corrections separately pinned",
+    "tokensSha256": "15b68ce29df755e81849d2bc359f2c2aaade9857d5e04c32692bf9aab4700556"
+  },
+  "reference": {
+    "source": "f025bdb6fb409f3b7706e475dfabb5f3d21fe168",
+    "sha256": "9e7f17a666e1ecfc738a14b75bb3a166235a05c401f206aa24f26cf7463cbc27",
+    "crop": [
+      436,
+      60,
+      832,
+      847
+    ],
+    "normalization": "390/396 width, original preserved",
+    "originalLocalReadOnly": "/Users/lhs/Desktop/mcr-worktrees/fe-runtime-preferences/docs/mcr/design/parade-ink-2026-11-05/parade-ink.jpg"
+  },
+  "preimages": {
+    "frontend/src/app/WorldShell.tsx": "ee070a76a730056934c65c2044b58744311c3019ea2e45ae19308853f09ce0d2",
+    "frontend/src/app/shell-chrome/index.tsx": "498fa45b9f14b784bbc410984bc99728bab02e8782f60b15e604c6bcc8283304"
+  },
+  "execution": "NOT_RUN; distinct fresh21d source/native offers required"
+}

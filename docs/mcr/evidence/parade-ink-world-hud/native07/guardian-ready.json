@@ -1,0 +1,103 @@
+{
+  "failure": null,
+  "samples": 1,
+  "peaks": {
+    "new": 393422257,
+    "whole": 6867591168,
+    "processes": 4,
+    "rss": 247857152
+  },
+  "minimumFree": 23367921664,
+  "globalCensusSelftest": "PASS twenty-three bounded census cases",
+  "globalPeaks": {
+    "processes": 4,
+    "rss": 247496704,
+    "workflows": 1
+  },
+  "lastGlobal": {
+    "workflows": 1,
+    "processes": 3,
+    "rss": 244891648,
+    "reservedPIDs": 24,
+    "reservedRSS": 4294967296,
+    "absentReservedPIDs": 0,
+    "ordinaryFutureUpperBytes": 0,
+    "ordinaryRoles": [],
+    "cohorts": [
+      {
+        "owner": "01a1a5d9-332b-7822-a8f7-40c576fad94a",
+        "visible": true,
+        "pid": 72266,
+        "pids": 3,
+        "rss": 244891648
+      }
+    ],
+    "processIdentities": [
+      {
+        "pid": 72266,
+        "parent": 49590,
+        "rss": 200802304,
+        "birth": "Thu Nov 5 10:34:49 2026",
+        "command": "/Library/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python /Users/lhs/Desktop/mcr-worktrees/qa07-input-delta-332b/docs/mcr/evidence/parade-ink-world-hud/guard.py --run-dir /Users/lhs/Desktop/mcr-worktrees/qa07-input-delta-332b/docs/mcr/evidence/parade-ink-world-hud/native07 --offer HUD-FINAL-REMAINDER-NATIVE07-0118 --kind native --node /usr/local/bin/node --dependencies /Users/lhs/Desktop/mcr/frontend --foundation /Users/lhs/Desktop/mcr-worktrees/fe-runtime-preferences --prior-whole 6867591168 --retained-new 384910769 --new-cap 469762048 --pids 24 --scratch /private/tmp/mcr-pi08-native07-332b --other 5368709120 --pins /Users/lhs/Desktop/mcr-worktrees/qa07-input-delta-332b/docs/mcr/evidence/parade-ink-world-hud/native07-readset.json --pins-sha256 2138176342003e5ded395a6f3f35735413e70dd47fcde8e6fb93cb91e9dd363f --work 300"
+      },
+      {
+        "pid": 72726,
+        "parent": 72266,
+        "rss": 41893888,
+        "birth": "Thu Nov 5 10:34:52 2026",
+        "command": "/Library/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python /Users/lhs/Desktop/mcr-worktrees/qa07-input-delta-332b/docs/mcr/evidence/parade-ink-world-hud/guard.py --guardian /Users/lhs/Desktop/mcr-worktrees/qa07-input-delta-332b/docs/mcr/evidence/parade-ink-world-hud/native07/config.json"
+      },
+      {
+        "pid": 72813,
+        "parent": 72726,
+        "rss": 2195456,
+        "birth": "Thu Nov 5 10:34:53 2026",
+        "command": "/bin/ps -axo pid=,ppid=,rss=,lstart=,command="
+      }
+    ]
+  },
+  "observedPIDs": [
+    72266,
+    72726,
+    72728,
+    72729,
+    72731,
+    72732,
+    72733,
+    72734,
+    72767,
+    72768,
+    72769,
+    72770,
+    72771,
+    72773,
+    72774,
+    72776,
+    72777,
+    72778,
+    72779,
+    72780,
+    72782,
+    72783,
+    72786,
+    72788,
+    72789,
+    72791,
+    72792,
+    72793,
+    72794,
+    72795,
+    72797,
+    72798,
+    72799,
+    72801,
+    72802,
+    72804,
+    72806,
+    72807,
+    72808,
+    72810,
+    72811,
+    72812
+  ]
+}

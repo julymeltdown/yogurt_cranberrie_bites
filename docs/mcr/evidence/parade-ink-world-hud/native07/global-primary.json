@@ -1,0 +1,121 @@
+{
+  "epoch": 1793842515.059579,
+  "samplerPID": 72266,
+  "workflows": 2,
+  "processes": 13,
+  "rss": 3097968640,
+  "reservedPIDs": 48,
+  "reservedRSS": 8589934592,
+  "absentReservedPIDs": 0,
+  "ordinaryFutureUpperBytes": 0,
+  "ordinaryRoles": [],
+  "cohorts": [
+    {
+      "owner": "01a1a213-61d6-7a20-a8e7-476649312f8c",
+      "visible": true,
+      "pid": 75492,
+      "pids": 1,
+      "rss": 31211520
+    },
+    {
+      "owner": "01a1a5d9-332b-7822-a8f7-40c576fad94a",
+      "visible": true,
+      "pid": 72266,
+      "pids": 12,
+      "rss": 3066757120
+    }
+  ],
+  "processIdentities": [
+    {
+      "pid": 72266,
+      "parent": 49590,
+      "rss": 226656256,
+      "birth": "Thu Nov 5 10:34:49 2026",
+      "command": "/Library/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python /Users/lhs/Desktop/mcr-worktrees/qa07-input-delta-332b/docs/mcr/evidence/parade-ink-world-hud/guard.py --run-dir /Users/lhs/Desktop/mcr-worktrees/qa07-input-delta-332b/docs/mcr/evidence/parade-ink-world-hud/native07 --offer HUD-FINAL-REMAINDER-NATIVE07-0118 --kind native --node /usr/local/bin/node --dependencies /Users/lhs/Desktop/mcr/frontend --foundation /Users/lhs/Desktop/mcr-worktrees/fe-runtime-preferences --prior-whole 6867591168 --retained-new 384910769 --new-cap 469762048 --pids 24 --scratch /private/tmp/mcr-pi08-native07-332b --other 5368709120 --pins /Users/lhs/Desktop/mcr-worktrees/qa07-input-delta-332b/docs/mcr/evidence/parade-ink-world-hud/native07-readset.json --pins-sha256 2138176342003e5ded395a6f3f35735413e70dd47fcde8e6fb93cb91e9dd363f --work 300"
+    },
+    {
+      "pid": 72726,
+      "parent": 72266,
+      "rss": 213204992,
+      "birth": "Thu Nov 5 10:34:52 2026",
+      "command": "/Library/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python /Users/lhs/Desktop/mcr-worktrees/qa07-input-delta-332b/docs/mcr/evidence/parade-ink-world-hud/guard.py --guardian /Users/lhs/Desktop/mcr-worktrees/qa07-input-delta-332b/docs/mcr/evidence/parade-ink-world-hud/native07/config.json"
+    },
+    {
+      "pid": 72820,
+      "parent": 72266,
+      "rss": 1042071552,
+      "birth": "Thu Nov 5 10:34:53 2026",
+      "command": "/usr/local/bin/node /Users/lhs/Desktop/mcr-worktrees/qa07-input-delta-332b/frontend/src/features/parade-ink/world-hud/native.mjs"
+    },
+    {
+      "pid": 73359,
+      "parent": 72820,
+      "rss": 260800512,
+      "birth": "Thu Nov 5 10:34:54 2026",
+      "command": "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome --disable-field-trial-config --disable-background-networking --disable-background-timer-throttling --disable-backgrounding-occluded-windows --disable-back-forward-cache --disable-breakpad --disable-client-side-phishing-detection --disable-component-extensions-with-background-pages --disable-component-update --no-default-browser-check --disable-default-apps --disable-dev-shm-usage --disable-edgeupdater --disable-extensions --disable-features=AvoidUnnecessaryBeforeUnloadCheckSync,BoundaryEventDispatchTracksNodeRemoval,DestroyProfileOnBrowserClose,DialMediaRouteProvider,GlobalMediaControls,HttpsUpgrades,LensOverlay,MediaRouter,PaintHolding,ThirdPartyStoragePartitioning,Translate,AutoDeElevate,RenderDocument,OptimizationHints,msForceBrowserSignIn,msEdgeUpdateLaunchServicesPreferredVersion --enable-features=CDPScreenshotNewSurface --allow-pre-commit-input --disable-hang-monitor --disable-ipc-flooding-protection --disable-popup-blocking --disable-prompt-on-repost --disable-renderer-backgrounding --force-color-profile=srgb --metrics-recording-only --no-first-run --password-store=basic --use-mock-keychain --no-service-autorun --export-tagged-pdf --disable-search-engine-choice-screen --unsafely-disable-devtools-self-xss-warnings --edge-skip-compat-layer-relaunch --disable-infobars --disable-search-engine-choice-screen --disable-sync --enable-unsafe-swiftshader --headless --hide-scrollbars --mute-audio --blink-settings=primaryHoverType=2,availableHoverTypes=2,primaryPointerType=4,availablePointerTypes=4 --no-sandbox --user-data-dir=/private/tmp/mcr-pi08-native07-332b/playwright_chromiumdev_profile-mvBr9V --remote-debugging-pipe --no-startup-window"
+    },
+    {
+      "pid": 73393,
+      "parent": 73359,
+      "rss": 169328640,
+      "birth": "Thu Nov 5 10:34:54 2026",
+      "command": "/Applications/Google Chrome.app/Contents/Frameworks/Google Chrome Framework.framework/Versions/156.0.8078.80/Helpers/Google Chrome Helper (GPU).app/Contents/MacOS/Google Chrome Helper (GPU) --type=gpu-process --gpu-recent-crash-count=0 --no-sandbox --disable-breakpad --headless --enable-unsafe-swiftshader --noerrdialogs --user-data-dir=/private/tmp/mcr-pi08-native07-332b/playwright_chromiumdev_profile-mvBr9V --gpu-preferences=WAAAAAAAAAAgAAAEAAAAAAAAAAAAAGAAQAAAAAAAAAADAAAAAAAAADgAAAAAAAAAAAAAAAAAAAACAAAAAAAAAAAAAAAAAAAAKAAAAAAAAAAoAAAAAAAAAAgAAAAAAAAADAAAAAEAAAAAAAAAAAAAAAgAAAAAAAAACAAAAAAAAAA= --shared-files --field-trial-handle=1718379636,r,2957550960430472433,11841427272469564910,262144 --enable-features=CDPScreenshotNewSurface --disable-features=AutoDeElevate,AvoidUnnecessaryBeforeUnloadCheckSync,BoundaryEventDispatchTracksNodeRemoval,DestroyProfileOnBrowserClose,DialMediaRouteProvider,GlobalMediaControls,HttpsUpgrades,LensOverlay,MediaRouter,OptimizationHints,PaintHolding,RenderDocument,ThirdPartyStoragePartitioning,Translate,msEdgeUpdateLaunchServicesPreferredVersion,msForceBrowserSignIn --variations-seed-version --pseudonymization-salt-handle=1935764596,r,5278399817263725937,15161387632921353449,4 --trace-process-track-uuid=3190708988185955192"
+    },
+    {
+      "pid": 73394,
+      "parent": 73359,
+      "rss": 152109056,
+      "birth": "Thu Nov 5 10:34:54 2026",
+      "command": "/Applications/Google Chrome.app/Contents/Frameworks/Google Chrome Framework.framework/Versions/156.0.8078.80/Helpers/Google Chrome Helper.app/Contents/MacOS/Google Chrome Helper --type=utility --utility-sub-type=network.mojom.NetworkService --lang=en-US --service-sandbox-type=network --no-sandbox --mute-audio --noerrdialogs --user-data-dir=/private/tmp/mcr-pi08-native07-332b/playwright_chromiumdev_profile-mvBr9V --shared-files --field-trial-handle=1718379636,r,2957550960430472433,11841427272469564910,262144 --enable-features=CDPScreenshotNewSurface --disable-features=AutoDeElevate,AvoidUnnecessaryBeforeUnloadCheckSync,BoundaryEventDispatchTracksNodeRemoval,DestroyProfileOnBrowserClose,DialMediaRouteProvider,GlobalMediaControls,HttpsUpgrades,LensOverlay,MediaRouter,OptimizationHints,PaintHolding,RenderDocument,ThirdPartyStoragePartitioning,Translate,msEdgeUpdateLaunchServicesPreferredVersion,msForceBrowserSignIn --variations-seed-version --pseudonymization-salt-handle=1935764596,r,5278399817263725937,15161387632921353449,4 --trace-process-track-uuid=3190708989122997041"
+    },
+    {
+      "pid": 73397,
+      "parent": 73359,
+      "rss": 86360064,
+      "birth": "Thu Nov 5 10:34:54 2026",
+      "command": "/Applications/Google Chrome.app/Contents/Frameworks/Google Chrome Framework.framework/Versions/156.0.8078.80/Helpers/Google Chrome Helper.app/Contents/MacOS/Google Chrome Helper --type=utility --utility-sub-type=storage.mojom.StorageService --lang=en-US --service-sandbox-type=service --no-sandbox --mute-audio --noerrdialogs --user-data-dir=/private/tmp/mcr-pi08-native07-332b/playwright_chromiumdev_profile-mvBr9V --shared-files --field-trial-handle=1718379636,r,2957550960430472433,11841427272469564910,262144 --enable-features=CDPScreenshotNewSurface --disable-features=AutoDeElevate,AvoidUnnecessaryBeforeUnloadCheckSync,BoundaryEventDispatchTracksNodeRemoval,DestroyProfileOnBrowserClose,DialMediaRouteProvider,GlobalMediaControls,HttpsUpgrades,LensOverlay,MediaRouter,OptimizationHints,PaintHolding,RenderDocument,ThirdPartyStoragePartitioning,Translate,msEdgeUpdateLaunchServicesPreferredVersion,msForceBrowserSignIn --variations-seed-version --pseudonymization-salt-handle=1935764596,r,5278399817263725937,15161387632921353449,4 --trace-process-track-uuid=3190708990060038890"
+    },
+    {
+      "pid": 73410,
+      "parent": 73359,
+      "rss": 196165632,
+      "birth": "Thu Nov 5 10:34:55 2026",
+      "command": "/Applications/Google Chrome.app/Contents/Frameworks/Google Chrome Framework.framework/Versions/156.0.8078.80/Helpers/Google Chrome Helper (Renderer).app/Contents/MacOS/Google Chrome Helper (Renderer) --type=renderer --top-chrome-webui --noerrdialogs --user-data-dir=/private/tmp/mcr-pi08-native07-332b/playwright_chromiumdev_profile-mvBr9V --no-sandbox --disable-back-forward-cache --disable-background-timer-throttling --disable-breakpad --force-color-profile=srgb --remote-debugging-pipe --allow-pre-commit-input --blink-settings=primaryHoverType=2,availableHoverTypes=2,primaryPointerType=4,availablePointerTypes=4 --lang=en-US --num-raster-threads=4 --enable-zero-copy --enable-gpu-memory-buffer-compositor-resources --enable-main-frame-before-activation --renderer-client-id=6 --launch-time-ticks=186062862290 --shared-files --field-trial-handle=1718379636,r,2957550960430472433,11841427272469564910,262144 --enable-features=CDPScreenshotNewSurface --disable-features=AutoDeElevate,AvoidUnnecessaryBeforeUnloadCheckSync,BoundaryEventDispatchTracksNodeRemoval,DestroyProfileOnBrowserClose,DialMediaRouteProvider,GlobalMediaControls,HttpsUpgrades,LensOverlay,MediaRouter,OptimizationHints,PaintHolding,RenderDocument,ThirdPartyStoragePartitioning,Translate,msEdgeUpdateLaunchServicesPreferredVersion,msForceBrowserSignIn --variations-seed-version --pseudonymization-salt-handle=1935764596,r,5278399817263725937,15161387632921353449,4 --trace-process-track-uuid=3190708991934122588"
+    },
+    {
+      "pid": 73413,
+      "parent": 73359,
+      "rss": 106037248,
+      "birth": "Thu Nov 5 10:34:55 2026",
+      "command": "/Applications/Google Chrome.app/Contents/Frameworks/Google Chrome Framework.framework/Versions/156.0.8078.80/Helpers/Google Chrome Helper (Renderer).app/Contents/MacOS/Google Chrome Helper (Renderer) --type=renderer --noerrdialogs --user-data-dir=/private/tmp/mcr-pi08-native07-332b/playwright_chromiumdev_profile-mvBr9V --no-sandbox --disable-back-forward-cache --disable-background-timer-throttling --disable-breakpad --force-color-profile=srgb --remote-debugging-pipe --allow-pre-commit-input --blink-settings=primaryHoverType=2,availableHoverTypes=2,primaryPointerType=4,availablePointerTypes=4 --lang=en-US --num-raster-threads=4 --enable-zero-copy --enable-gpu-memory-buffer-compositor-resources --enable-main-frame-before-activation --renderer-client-id=8 --launch-time-ticks=186062901715 --shared-files --field-trial-handle=1718379636,r,2957550960430472433,11841427272469564910,262144 --enable-features=CDPScreenshotNewSurface --disable-features=AutoDeElevate,AvoidUnnecessaryBeforeUnloadCheckSync,BoundaryEventDispatchTracksNodeRemoval,DestroyProfileOnBrowserClose,DialMediaRouteProvider,GlobalMediaControls,HttpsUpgrades,LensOverlay,MediaRouter,OptimizationHints,PaintHolding,RenderDocument,ThirdPartyStoragePartitioning,Translate,msEdgeUpdateLaunchServicesPreferredVersion,msForceBrowserSignIn --variations-seed-version --pseudonymization-salt-handle=1935764596,r,5278399817263725937,15161387632921353449,4 --trace-process-track-uuid=3190708993808206286"
+    },
+    {
+      "pid": 73414,
+      "parent": 73359,
+      "rss": 607240192,
+      "birth": "Thu Nov 5 10:34:55 2026",
+      "command": "/Applications/Google Chrome.app/Contents/Frameworks/Google Chrome Framework.framework/Versions/156.0.8078.80/Helpers/Google Chrome Helper (Renderer).app/Contents/MacOS/Google Chrome Helper (Renderer) --type=renderer --noerrdialogs --user-data-dir=/private/tmp/mcr-pi08-native07-332b/playwright_chromiumdev_profile-mvBr9V --no-sandbox --disable-back-forward-cache --disable-background-timer-throttling --disable-breakpad --force-color-profile=srgb --remote-debugging-pipe --allow-pre-commit-input --blink-settings=primaryHoverType=2,availableHoverTypes=2,primaryPointerType=4,availablePointerTypes=4 --lang=en-US --num-raster-threads=4 --enable-zero-copy --enable-gpu-memory-buffer-compositor-resources --enable-main-frame-before-activation --renderer-client-id=7 --launch-time-ticks=186062902097 --shared-files --field-trial-handle=1718379636,r,2957550960430472433,11841427272469564910,262144 --enable-features=CDPScreenshotNewSurface --disable-features=AutoDeElevate,AvoidUnnecessaryBeforeUnloadCheckSync,BoundaryEventDispatchTracksNodeRemoval,DestroyProfileOnBrowserClose,DialMediaRouteProvider,GlobalMediaControls,HttpsUpgrades,LensOverlay,MediaRouter,OptimizationHints,PaintHolding,RenderDocument,ThirdPartyStoragePartitioning,Translate,msEdgeUpdateLaunchServicesPreferredVersion,msForceBrowserSignIn --variations-seed-version --pseudonymization-salt-handle=1935764596,r,5278399817263725937,15161387632921353449,4 --trace-process-track-uuid=3190708992871164437"
+    },
+    {
+      "pid": 75492,
+      "parent": 49590,
+      "rss": 31211520,
+      "birth": "Thu Nov 5 10:35:14 2026",
+      "command": "/Library/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python -B /Users/lhs/Desktop/mcr-worktrees/fe-reference-frame-footer/frontend/src/app/__tests__/parade-ink-private-pages/native-round.py --job PI12-PRIVATE-COMBINED-NATIVE01-0133 --candidate f5a4aa246e2a82dcb2be69b12864c93ca89e3ad4 --accepted-epoch 1793842514 --other-new-bytes 4294967296 --new-carry-bytes 134217728 --output /Users/lhs/Desktop/mcr-worktrees/fe-reference-frame-footer/docs/mcr/evidence/parade-ink-private-pages/native-01 --port 5382 --foundation-commit b5b44e47531e3b75febc5ee5cdd6a11b1648779c"
+    },
+    {
+      "pid": 75588,
+      "parent": 72726,
+      "rss": 4587520,
+      "birth": "Thu Nov 5 10:35:14 2026",
+      "command": "(ps)"
+    },
+    {
+      "pid": 75590,
+      "parent": 72266,
+      "rss": 2195456,
+      "birth": "Thu Nov 5 10:35:15 2026",
+      "command": "/bin/ps -axo pid=,ppid=,rss=,lstart=,command="
+    }
+  ]
+}

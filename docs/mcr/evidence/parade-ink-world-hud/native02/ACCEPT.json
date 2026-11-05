@@ -1,0 +1,18 @@
+{
+  "offer": "PI08-WORLD-HUD-APP-NATIVE02-0055",
+  "acceptedEpoch": 1793840226.193612,
+  "workEpoch": 1793840526.193612,
+  "fullEpoch": 1793840586.193612,
+  "parentPID": 48619,
+  "parentBirth": "Thu Nov  5 09:57:06 2026",
+  "kind": "native",
+  "root": "/Users/lhs/Desktop/mcr-worktrees/qa07-input-delta-332b",
+  "private": "/private/tmp/mcr-pi08-native02-332b",
+  "caps": {
+    "processes": 24,
+    "rss": 4294967296,
+    "new": 402653184,
+    "whole": 8589934592
+  },
+  "pinsSha256": "0cf7535cb073f5981ce00e96dfcb895fccca32f30498a5673728295f8003a604"
+}

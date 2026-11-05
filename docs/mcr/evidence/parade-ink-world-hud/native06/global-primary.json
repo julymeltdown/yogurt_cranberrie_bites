@@ -1,0 +1,58 @@
+{
+  "epoch": 1793842115.517853,
+  "samplerPID": 42650,
+  "workflows": 1,
+  "processes": 5,
+  "rss": 416022528,
+  "reservedPIDs": 24,
+  "reservedRSS": 4294967296,
+  "absentReservedPIDs": 0,
+  "ordinaryFutureUpperBytes": 0,
+  "ordinaryRoles": [],
+  "cohorts": [
+    {
+      "owner": "01a1a5d9-332b-7822-a8f7-40c576fad94a",
+      "visible": true,
+      "pid": 42650,
+      "pids": 5,
+      "rss": 416022528
+    }
+  ],
+  "processIdentities": [
+    {
+      "pid": 42650,
+      "parent": 49590,
+      "rss": 284721152,
+      "birth": "Thu Nov 5 10:28:20 2026",
+      "command": "/Library/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python /Users/lhs/Desktop/mcr-worktrees/qa07-input-delta-332b/docs/mcr/evidence/parade-ink-world-hud/guard.py --run-dir /Users/lhs/Desktop/mcr-worktrees/qa07-input-delta-332b/docs/mcr/evidence/parade-ink-world-hud/native06 --offer HUD-FINAL-REMAINDER-NATIVE06-0118 --kind native --node /usr/local/bin/node --dependencies /Users/lhs/Desktop/mcr/frontend --foundation /Users/lhs/Desktop/mcr-worktrees/fe-runtime-preferences --prior-whole 6867591168 --retained-new 331290033 --new-cap 402653184 --pids 24 --scratch /private/tmp/mcr-pi08-native06-332b --other 5368709120 --pins /Users/lhs/Desktop/mcr-worktrees/qa07-input-delta-332b/docs/mcr/evidence/parade-ink-world-hud/native06-readset.json --pins-sha256 31d65ce40dc77f2264c574deb7f396f5bff507e5ee38115af4623aed67d6ff44 --work 300"
+    },
+    {
+      "pid": 42722,
+      "parent": 42650,
+      "rss": 126877696,
+      "birth": "Thu Nov 5 10:28:23 2026",
+      "command": "/Library/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python /Users/lhs/Desktop/mcr-worktrees/qa07-input-delta-332b/docs/mcr/evidence/parade-ink-world-hud/guard.py --guardian /Users/lhs/Desktop/mcr-worktrees/qa07-input-delta-332b/docs/mcr/evidence/parade-ink-world-hud/native06/config.json"
+    },
+    {
+      "pid": 42796,
+      "parent": 42650,
+      "rss": 0,
+      "birth": "Thu Nov 5 10:28:24 2026",
+      "command": "<defunct>"
+    },
+    {
+      "pid": 44567,
+      "parent": 42650,
+      "rss": 2228224,
+      "birth": "Thu Nov 5 10:28:35 2026",
+      "command": "/bin/ps -axo pid=,ppid=,rss=,lstart=,command="
+    },
+    {
+      "pid": 44568,
+      "parent": 42722,
+      "rss": 2195456,
+      "birth": "Thu Nov 5 10:28:35 2026",
+      "command": "/bin/ps -axo pid=,ppid=,rss=,lstart=,command="
+    }
+  ]
+}

@@ -1,0 +1,8 @@
+{
+  "offer": "HUD-FINAL-REMAINDER-NATIVE07-0118",
+  "status": "FAIL",
+  "failure": "RuntimeError('cleanup unverified; retain accepted reservation')",
+  "observedEpoch": 1793842515.4507132,
+  "phase": "outer exception; release unverified",
+  "remainingReservation": "ACCEPT remains binding"
+}

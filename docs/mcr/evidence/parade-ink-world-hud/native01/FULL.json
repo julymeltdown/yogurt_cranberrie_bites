@@ -1,0 +1,33 @@
+{
+  "offer": "PI08-WORLD-HUD-APP-NATIVE01-0045",
+  "status": "FAIL",
+  "failure": "controller script identity changed",
+  "actualFullEpoch": 1793839868.9184399,
+  "workflow": 0,
+  "remainingReservation": 0,
+  "ownedChildren": [],
+  "dependencyLinkAbsent": true,
+  "testExit": null,
+  "primary": {
+    "failure": "controller script identity changed",
+    "samples": 0,
+    "peaks": {
+      "new": 0,
+      "whole": 0,
+      "processes": 0,
+      "rss": 0
+    },
+    "minimumFree": null,
+    "globalCensusSelftest": "PASS nine bounded census cases",
+    "globalPeaks": {
+      "processes": 0,
+      "rss": 0,
+      "workflows": 0
+    },
+    "lastGlobal": null
+  },
+  "guardianExit": null,
+  "withinFullDeadline": true,
+  "privateScratchAbsent": true,
+  "scratchRetained": "none; raw evidence retained inside owned checkout"
+}

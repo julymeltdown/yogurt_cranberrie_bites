@@ -1,0 +1,16 @@
+{
+  "offer": "HUD-FINAL-REMAINDER-NATIVE05-0118",
+  "status": "FAIL",
+  "actualFullEpoch": 1793841825.976037,
+  "rawPrematureFullEpoch": 1793841694.2718642,
+  "rawFullIncorrect": "Outer fallback mislabeled pre-child and zero holds after cleanup was interrupted by independent-guard SIGTERM. Node/browser HAD started; owned dependency link remained. Originalraw retained; this is the actual verified cleanup boundary.",
+  "workflow": 0,
+  "remainingReservation": 0,
+  "ownedChildren": [],
+  "ownedNodeChromeGuardianCommandMatches": 0,
+  "dependencyLinkAbsent": true,
+  "privateScratchAbsent": true,
+  "withinOriginalFullDeadline": true,
+  "newCarryMinimum": 331290033,
+  "wholeCarryMinimum": 6867591168
+}

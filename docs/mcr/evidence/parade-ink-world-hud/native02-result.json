@@ -1,0 +1,28 @@
+{
+  "round": "NATIVE02",
+  "status": "PARTIAL_NOT_FINAL_PASS",
+  "actualFullEpoch": 1793840244.1515179,
+  "failureStage": "six-destinations",
+  "cause": "ByRole navigation assertion cannot see the incumbent nav after Feed opens a full panel. Screenshot confirms correct unavailable Feed full-panel route.",
+  "qualified": [
+    "fourwidthcaptures/fonts/type/44px/ink/nooverflow",
+    "oneincumbentGameCameraCanvasSocket",
+    "keyboardcaption/menuEscapeFocus",
+    "Nearby/back",
+    "REVENGEdefaultand3independenteras"
+  ],
+  "unrun": [
+    "sixnavcompletion",
+    "safearea",
+    "shortheight/reducedmotion",
+    "referencecomparison",
+    "reloadpersistence",
+    "presencewithdrawal"
+  ],
+  "carry": {
+    "new": 217789873,
+    "whole": 6834036736
+  },
+  "resources": "FULL all0/linkTMPabsent/bothguardsclosed",
+  "assetBoundary": "Actual asset body comparison handler ran; no final used-asset list retained. Do not claim a retained list."
+}

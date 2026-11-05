@@ -1,0 +1,18 @@
+{
+  "offer": "HUDNATIVE08-0133",
+  "acceptedEpoch": 1793842650.945793,
+  "workEpoch": 1793842950.945793,
+  "fullEpoch": 1793843010.945793,
+  "parentPID": 88704,
+  "parentBirth": "Thu Nov  5 10:37:30 2026",
+  "kind": "native",
+  "root": "/Users/lhs/Desktop/mcr-worktrees/qa07-input-delta-332b",
+  "private": "/private/tmp/mcr-pi08-native08-332b",
+  "caps": {
+    "processes": 24,
+    "rss": 4294967296,
+    "new": 469762048,
+    "whole": 8589934592
+  },
+  "pinsSha256": "385413256171e13e141a2de4bdb1f8235fd5d756e20b8bfaee6d47bfd4c39e0a"
+}

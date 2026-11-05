@@ -1,0 +1,32 @@
+{
+  "epoch": 1793841694.002671,
+  "samplerPID": 4031,
+  "workflows": 3,
+  "processes": 15,
+  "rss": 4941414400,
+  "reservedPIDs": 48,
+  "reservedRSS": 10737418240,
+  "absentReservedPIDs": 12,
+  "ordinaryFutureUpperBytes": 134217728,
+  "ordinaryRoles": [],
+  "cohorts": [
+    {
+      "owner": "01a1a1fe-1eed-7d12-a247-879cd521e0ec",
+      "visible": true,
+      "pid": 2958,
+      "pids": 3,
+      "rss": 1941979136
+    },
+    {
+      "owner": "01a1a5d9-332b-7822-a8f7-40c576fad94a",
+      "visible": true,
+      "pid": 3811,
+      "pids": 12,
+      "rss": 2999435264
+    },
+    {
+      "owner": "01a1a5d9-6950-7920-8c80-5214d4ce0eaf",
+      "visible": false
+    }
+  ]
+}

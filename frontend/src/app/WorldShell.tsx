@@ -18,6 +18,7 @@ import { beginCommunityBootstrap, type CommunityBootstrapBinding } from './commu
 import { ShellLoadError } from './ports'
 import { PolicyNotice } from './pre-world-policy/PolicyNotice'
 import { usePolicyAttempt } from './pre-world-policy/usePolicyAttempt'
+import { WorldHudHeaderSlot, WorldHudLayout, WorldHudToolsSlot, WorldHudViewport } from '../features/parade-ink/world-hud'
 
 const SessionShellHeader = lazy(() => import('./shell-chrome/identity').then(module => ({ default: module.SessionShellHeader })))
 const RootSocialFeatures = lazy(() => import('./world-panels/social').then(module => ({ default: module.RootSocialFeatures })))
@@ -126,21 +127,22 @@ export function WorldShell({ scope, bootstrap, privacyScope = null, community = 
   return <Suspense fallback={<p role="status">Opening your event…</p>}><CharacterProvider bootstrap={bootstrap} scope={privacyScope}><RootMediaProvider auth={auth} scope={privacyScope}><CommunityFeatures bootstrap={bootstrap} privacyScope={privacyScope} binding={community}><ProductionWorldFeatures privacyScope={privacyScope}><AccountProvider auth={auth} bootstrap={bootstrap} privacyScope={privacyScope} assets={accountAssets}><MeetingEntryFeatures auth={auth ?? null} release={null}>
     <RootSocialFeatures bootstrap={bootstrap} scope={privacyScope}><NavigationMemory>
     {connectionStatus && <ConnectionStatus controller={connectionStatus.controller} reload={connectionStatus.reload} />}
-    <div className="world-shell" data-mcr-shell="" data-panel-size={panelOpen ? size : 'closed'} ref={root}
+    <WorldHudLayout active={!panelOpen} toolsOpen={worldToolsOpen} onToolsChange={setWorldToolsOpen}>
+    <div className="world-shell pi08-world-shell" data-mcr-shell="" data-panel-size={panelOpen ? size : 'closed'} ref={root}
     onFocusCapture={event => setTyping(typingTarget(event.target))}
     onBlurCapture={event => setTyping(typingTarget(event.relatedTarget))}>
     <a className="skip-link" href="#shell-content">Skip to content</a>
-    <SessionShellHeader bootstrap={bootstrap} />
+    <WorldHudHeaderSlot><SessionShellHeader bootstrap={bootstrap} /></WorldHudHeaderSlot>
     <div className="shell-era-region"><ProductionEraControls />
       {['READ_ONLY', 'ARCHIVED'].includes(bootstrap.event.phase) && <p className="shell-mode" role="status">Read only</p>}
     </div>
     <div className="shell-stage" data-panel-size={panelOpen ? size : 'closed'}>
-      <WorldHost key={key} scope={scope} bootstrap={bootstrap} privacyScope={privacyScope} blocked={panelOpen || typing} covered={panelOpen && size === 'full' && location.pathname !== '/wall'} />
+      <WorldHudViewport><WorldHost key={key} scope={scope} bootstrap={bootstrap} privacyScope={privacyScope} blocked={panelOpen || typing} covered={panelOpen && size === 'full' && location.pathname !== '/wall'} /></WorldHudViewport>
       {panelOpen ? <PanelFrame size={size} onSize={setSize} positions={positions.current}><Outlet /></PanelFrame>
-        : <WorldTools open={worldToolsOpen} onOpenChange={setWorldToolsOpen} />}
+        : <WorldHudToolsSlot><WorldTools open={worldToolsOpen} onOpenChange={setWorldToolsOpen} /></WorldHudToolsSlot>}
     </div>
     <BottomNavigation />
-  </div></NavigationMemory></RootSocialFeatures></MeetingEntryFeatures></AccountProvider></ProductionWorldFeatures></CommunityFeatures></RootMediaProvider></CharacterProvider></Suspense>
+  </div></WorldHudLayout></NavigationMemory></RootSocialFeatures></MeetingEntryFeatures></AccountProvider></ProductionWorldFeatures></CommunityFeatures></RootMediaProvider></CharacterProvider></Suspense>
 }
 
 function PanelFrame({ size, onSize, positions, children }: { size: 'peek' | 'half' | 'full'; onSize: (size: 'peek' | 'half' | 'full') => void; positions: Map<string, number>; children: ReactNode }) {

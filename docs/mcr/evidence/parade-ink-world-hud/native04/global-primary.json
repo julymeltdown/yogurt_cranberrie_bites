@@ -1,0 +1,30 @@
+{
+  "epoch": 1793841359.842752,
+  "samplerPID": 67763,
+  "workflows": 3,
+  "processes": 6,
+  "rss": 444235776,
+  "reservedPIDs": 60,
+  "reservedRSS": 11274289152,
+  "absentReservedPIDs": 12,
+  "cohorts": [
+    {
+      "owner": "01a1a26e-1de2-7b41-a294-c9a79cfded9b",
+      "visible": true,
+      "pid": 67436,
+      "pids": 2,
+      "rss": 200245248
+    },
+    {
+      "owner": "01a1a5d9-332b-7822-a8f7-40c576fad94a",
+      "visible": true,
+      "pid": 67763,
+      "pids": 4,
+      "rss": 243990528
+    },
+    {
+      "owner": "01a1a5d9-6950-7920-8c80-5214d4ce0eaf",
+      "visible": false
+    }
+  ]
+}

@@ -1,0 +1,11 @@
+{
+  "failure": null,
+  "samples": 1,
+  "peaks": {
+    "new": 154719665,
+    "whole": 5275254784,
+    "processes": 4,
+    "rss": 241008640
+  },
+  "minimumFree": 15467126784
+}

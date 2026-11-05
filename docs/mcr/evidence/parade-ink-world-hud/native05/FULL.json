@@ -1,0 +1,10 @@
+{
+  "offer": "HUD-FINAL-REMAINDER-NATIVE05-0118",
+  "status": "FAIL",
+  "failure": "RuntimeError('signal or independent guard')",
+  "actualFullEpoch": 1793841694.2718642,
+  "workflow": 0,
+  "remainingReservation": 0,
+  "ownedChildren": [],
+  "phase": "pre-child baseline; no workload admitted"
+}

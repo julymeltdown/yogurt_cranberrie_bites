@@ -6,6 +6,7 @@ import { ConcertIcon, type ConcertIconName } from '../../shared/ui/concert-windo
 import type { ThemeController, ThemeState } from '../../features/theme/model/controller'
 import { themeIds, type ThemeId } from '../../features/theme/model/preferences'
 import { WindowInk } from '../reference-chrome-v2/WindowInk'
+import { WorldEraView, WorldNavigationView } from '../../features/parade-ink/world-hud'
 import './shell-chrome.css'
 import '../reference-chrome-v2/chrome.css'
 
@@ -48,29 +49,25 @@ export function EraControls({ controller = null }: { controller?: EraPort | null
     // rollback and persistence. A rejected external port never leaks raw text.
     try { void controller.select(theme).catch(() => {}) } catch { /* Owner must publish failure through its state port. */ }
   }
-  return <section className="concert-kit mcr-chrome-eras" aria-label="World era">
-    <div className="mcr-chrome-eras__choices" role="group" aria-label="Choose an era" aria-describedby={`${id}-status`}>
+  return <WorldEraView statusId={`${id}-status`} status={status} quiet={available && state.phase === 'ready'}>
       {themeIds.map(theme => <button key={theme} type="button" disabled={!available} onClick={() => select(theme)}
         aria-pressed={available && state.selected === theme} data-pending={pending === theme ? 'true' : undefined}
         aria-label={`${label(theme)}${pending === theme ? ', loading' : ''}`}>
         {theme}<span className="mcr-chrome-eras__pending" aria-hidden="true">{pending === theme ? '…' : ''}</span>
       </button>)}
-    </div>
-    <p id={`${id}-status`} role="status" aria-live="polite" aria-atomic="true"
-      className={available && state.phase === 'ready' ? 'mcr-chrome-sr' : 'mcr-chrome-eras__status'}>{status}</p>
-  </section>
+  </WorldEraView>
 }
 
 const icons: Record<TabPath, ConcertIconName> = { '/world': 'world', '/feed': 'feed', '/meet': 'meet', '/gifts': 'gifts', '/wall': 'wall', '/me': 'me' }
 /** Uses the incumbent router and caller's NavigationMemory; no plain-anchor reload. */
 export function BottomNavigation() {
   const location = useLocation(), resolved = resolvePanel(location.pathname)
-  return <nav className="concert-kit mcr-chrome-bottom" aria-label="Main navigation">
+  return <WorldNavigationView>
     {tabs.map(tab => <ShellLink key={tab.path} to={tab.path} id={`tab-${tab.label.toLowerCase()}`}
       aria-current={resolved?.valid && resolved.route.tab === tab.path ? 'page' : undefined}>
       <ConcertIcon name={icons[tab.path]} /><span>{tab.label}</span>
     </ShellLink>)}
-  </nav>
+  </WorldNavigationView>
 }
 
 /** A replacement for the existing header only. Parent retains Back/Escape,

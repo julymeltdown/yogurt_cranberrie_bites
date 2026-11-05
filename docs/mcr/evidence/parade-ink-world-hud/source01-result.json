@@ -1,0 +1,53 @@
+{
+  "round": "SOURCE01",
+  "status": "FAIL_BEFORE_TEST_CHILD",
+  "acceptedEpoch": 1793837449.2624362,
+  "actualFullEpoch": 1793837453.329229,
+  "casesRun": 0,
+  "types": "NOT_RUN",
+  "lint": "NOT_RUN",
+  "reason": "Harness requested unexported vitest/vitest.mjs subpath. Corrected only in later SOURCE02; no restart or altered history.",
+  "peakNew": 154731953,
+  "peakWhole": 5275267072,
+  "peaksPID": 5,
+  "peakRSS": 374603776,
+  "remainingWorkflow": 0,
+  "remainingChildren": [],
+  "dependencyLinkAbsent": true,
+  "privateScratchAbsent": true,
+  "directRelease": "Root153 + allocator21d before diagnosis/docs",
+  "evidence": {
+    "source01/ACCEPT.json": {
+      "bytes": 165,
+      "sha256": "febd44dc87adb77ad757d5b9b26ed28e6d64cb155320a2ec24f059663934f9ff"
+    },
+    "source01/FULL.json": {
+      "bytes": 648,
+      "sha256": "c9edced8a4c2bbc8e17c00937413228b37f42b6de5c2848b3030b561efa697ab"
+    },
+    "source01/config.json": {
+      "bytes": 12115,
+      "sha256": "57c3a7363f9ad8a39f7fbb3c36593e60e722508a4e4dbf45f5c0fabc3a4bed82"
+    },
+    "source01/guardian-FULL.json": {
+      "bytes": 174,
+      "sha256": "026c007353517fcccf02aca448abead42fd0e5f363d0981ddad4d94f309ce050"
+    },
+    "source01/guardian-ready.json": {
+      "bytes": 174,
+      "sha256": "155b37efc3fcd4378424b7c03eb0228b9e133ca776205ca82cd421877242619f"
+    },
+    "source01/job.log": {
+      "bytes": 996,
+      "sha256": "87d924d7ad625be106e89cd6138858f8b61f6fcbc3ab2350a3ac757d4eaa528e"
+    },
+    "source01/output/source.json": {
+      "bytes": 138,
+      "sha256": "5af29ba8c6c9f1c78a559c311f19747e8238d806ad8c754ce597a73da0645ed8"
+    },
+    "source01/stop": {
+      "bytes": 5,
+      "sha256": "a11c3d917a2149a4b548217038bc8f2dd2130a1966e0c7af5c4225d81f25a8c3"
+    }
+  }
+}

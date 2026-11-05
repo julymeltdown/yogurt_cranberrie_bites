@@ -1,0 +1,55 @@
+{
+  "epoch": 1793842662.9922519,
+  "samplerPID": 88704,
+  "workflows": 2,
+  "processes": 4,
+  "rss": 371064832,
+  "reservedPIDs": 56,
+  "reservedRSS": 12884901888,
+  "absentReservedPIDs": 32,
+  "ordinaryFutureUpperBytes": 0,
+  "ordinaryRoles": [],
+  "cohorts": [
+    {
+      "owner": "01a1a00c-2690-7bc0-94fc-52609655ea83",
+      "visible": false
+    },
+    {
+      "owner": "01a1a5d9-332b-7822-a8f7-40c576fad94a",
+      "visible": true,
+      "pid": 88704,
+      "pids": 4,
+      "rss": 371064832
+    }
+  ],
+  "processIdentities": [
+    {
+      "pid": 88704,
+      "parent": 49590,
+      "rss": 262275072,
+      "birth": "Thu Nov 5 10:37:30 2026",
+      "command": "/Library/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python /Users/lhs/Desktop/mcr-worktrees/qa07-input-delta-332b/docs/mcr/evidence/parade-ink-world-hud/guard.py --run-dir /Users/lhs/Desktop/mcr-worktrees/qa07-input-delta-332b/docs/mcr/evidence/parade-ink-world-hud/native08 --offer HUDNATIVE08-0133 --kind native --node /usr/local/bin/node --dependencies /Users/lhs/Desktop/mcr/frontend --foundation /Users/lhs/Desktop/mcr-worktrees/fe-runtime-preferences --prior-whole 6889254912 --retained-new 428295601 --new-cap 469762048 --pids 24 --scratch /private/tmp/mcr-pi08-native08-332b --other 5368709120 --pins /Users/lhs/Desktop/mcr-worktrees/qa07-input-delta-332b/docs/mcr/evidence/parade-ink-world-hud/native08-readset.json --pins-sha256 385413256171e13e141a2de4bdb1f8235fd5d756e20b8bfaee6d47bfd4c39e0a --work 300"
+    },
+    {
+      "pid": 88962,
+      "parent": 88704,
+      "rss": 104235008,
+      "birth": "Thu Nov 5 10:37:33 2026",
+      "command": "/Library/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python /Users/lhs/Desktop/mcr-worktrees/qa07-input-delta-332b/docs/mcr/evidence/parade-ink-world-hud/guard.py --guardian /Users/lhs/Desktop/mcr-worktrees/qa07-input-delta-332b/docs/mcr/evidence/parade-ink-world-hud/native08/config.json"
+    },
+    {
+      "pid": 91296,
+      "parent": 88704,
+      "rss": 2195456,
+      "birth": "Thu Nov 5 10:37:42 2026",
+      "command": "/bin/ps -axo pid=,ppid=,rss=,lstart=,command="
+    },
+    {
+      "pid": 91297,
+      "parent": 88962,
+      "rss": 2359296,
+      "birth": "Thu Nov 5 10:37:42 2026",
+      "command": "/bin/ps -axo pid=,ppid=,rss=,lstart=,command="
+    }
+  ]
+}

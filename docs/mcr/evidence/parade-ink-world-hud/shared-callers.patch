@@ -1,0 +1,86 @@
+diff --git a/frontend/src/app/WorldShell.tsx b/frontend/src/app/WorldShell.tsx
+index d10c65252..2e254b924 100644
+--- a/frontend/src/app/WorldShell.tsx
++++ b/frontend/src/app/WorldShell.tsx
+@@ -15,6 +15,7 @@ import type { PrivacyScope } from '../shared/query/privacy'
+ import { AdmissionBoundary } from '../features/auth/ui/AdmissionBoundary'
+ import { ConnectionStatus } from '../features/connection-status'
+ import { beginCommunityBootstrap, type CommunityBootstrapBinding } from './community-adoption/bootstrap'
++import { WorldHudHeaderSlot, WorldHudLayout, WorldHudToolsSlot, WorldHudViewport } from '../features/parade-ink/world-hud'
+ 
+ const SessionShellHeader = lazy(() => import('./shell-chrome/identity').then(module => ({ default: module.SessionShellHeader })))
+ const RootSocialFeatures = lazy(() => import('./world-panels/social').then(module => ({ default: module.RootSocialFeatures })))
+@@ -102,21 +103,22 @@ export function WorldShell({ scope, bootstrap, privacyScope = null, community =
+   return <Suspense fallback={<p role="status">Opening your event…</p>}><CharacterProvider bootstrap={bootstrap} scope={privacyScope}><RootMediaProvider auth={auth} scope={privacyScope}><CommunityFeatures bootstrap={bootstrap} privacyScope={privacyScope} binding={community}><ProductionWorldFeatures privacyScope={privacyScope}><AccountProvider auth={auth} bootstrap={bootstrap} privacyScope={privacyScope} assets={accountAssets}><MeetingEntryFeatures auth={auth ?? null} release={null}>
+     <RootSocialFeatures bootstrap={bootstrap} scope={privacyScope}><NavigationMemory>
+     {connectionStatus && <ConnectionStatus controller={connectionStatus.controller} reload={connectionStatus.reload} />}
+-    <div className="world-shell" data-mcr-shell="" data-panel-size={panelOpen ? size : 'closed'} ref={root}
++    <WorldHudLayout active={!panelOpen} toolsOpen={worldToolsOpen} onToolsChange={setWorldToolsOpen}>
++    <div className="world-shell pi08-world-shell" data-mcr-shell="" data-panel-size={panelOpen ? size : 'closed'} ref={root}
+     onFocusCapture={event => setTyping(typingTarget(event.target))}
+     onBlurCapture={event => setTyping(typingTarget(event.relatedTarget))}>
+     <a className="skip-link" href="#shell-content">Skip to content</a>
+-    <SessionShellHeader bootstrap={bootstrap} />
++    <WorldHudHeaderSlot><SessionShellHeader bootstrap={bootstrap} /></WorldHudHeaderSlot>
+     <div className="shell-era-region"><ProductionEraControls />
+       {['READ_ONLY', 'ARCHIVED'].includes(bootstrap.event.phase) && <p className="shell-mode" role="status">Read only</p>}
+     </div>
+     <div className="shell-stage" data-panel-size={panelOpen ? size : 'closed'}>
+-      <WorldHost key={key} scope={scope} bootstrap={bootstrap} privacyScope={privacyScope} blocked={panelOpen || typing} covered={panelOpen && size === 'full' && location.pathname !== '/wall'} />
++      <WorldHudViewport><WorldHost key={key} scope={scope} bootstrap={bootstrap} privacyScope={privacyScope} blocked={panelOpen || typing} covered={panelOpen && size === 'full' && location.pathname !== '/wall'} /></WorldHudViewport>
+       {panelOpen ? <PanelFrame size={size} onSize={setSize} positions={positions.current}><Outlet /></PanelFrame>
+-        : <WorldTools open={worldToolsOpen} onOpenChange={setWorldToolsOpen} />}
++        : <WorldHudToolsSlot><WorldTools open={worldToolsOpen} onOpenChange={setWorldToolsOpen} /></WorldHudToolsSlot>}
+     </div>
+     <BottomNavigation />
+-  </div></NavigationMemory></RootSocialFeatures></MeetingEntryFeatures></AccountProvider></ProductionWorldFeatures></CommunityFeatures></RootMediaProvider></CharacterProvider></Suspense>
++  </div></WorldHudLayout></NavigationMemory></RootSocialFeatures></MeetingEntryFeatures></AccountProvider></ProductionWorldFeatures></CommunityFeatures></RootMediaProvider></CharacterProvider></Suspense>
+ }
+ 
+ function PanelFrame({ size, onSize, positions, children }: { size: 'peek' | 'half' | 'full'; onSize: (size: 'peek' | 'half' | 'full') => void; positions: Map<string, number>; children: ReactNode }) {
+diff --git a/frontend/src/app/shell-chrome/index.tsx b/frontend/src/app/shell-chrome/index.tsx
+index e16a7be1a..a7dd66057 100644
+--- a/frontend/src/app/shell-chrome/index.tsx
++++ b/frontend/src/app/shell-chrome/index.tsx
+@@ -6,6 +6,7 @@ import { ConcertIcon, type ConcertIconName } from '../../shared/ui/concert-windo
+ import type { ThemeController, ThemeState } from '../../features/theme/model/controller'
+ import { themeIds, type ThemeId } from '../../features/theme/model/preferences'
+ import { WindowInk } from '../reference-chrome-v2/WindowInk'
++import { WorldEraView, WorldNavigationView } from '../../features/parade-ink/world-hud'
+ import './shell-chrome.css'
+ import '../reference-chrome-v2/chrome.css'
+ 
+@@ -48,29 +49,25 @@ export function EraControls({ controller = null }: { controller?: EraPort | null
+     // rollback and persistence. A rejected external port never leaks raw text.
+     try { void controller.select(theme).catch(() => {}) } catch { /* Owner must publish failure through its state port. */ }
+   }
+-  return <section className="concert-kit mcr-chrome-eras" aria-label="World era">
+-    <div className="mcr-chrome-eras__choices" role="group" aria-label="Choose an era" aria-describedby={`${id}-status`}>
++  return <WorldEraView statusId={`${id}-status`} status={status} quiet={available && state.phase === 'ready'}>
+       {themeIds.map(theme => <button key={theme} type="button" disabled={!available} onClick={() => select(theme)}
+         aria-pressed={available && state.selected === theme} data-pending={pending === theme ? 'true' : undefined}
+         aria-label={`${label(theme)}${pending === theme ? ', loading' : ''}`}>
+         {theme}<span className="mcr-chrome-eras__pending" aria-hidden="true">{pending === theme ? '…' : ''}</span>
+       </button>)}
+-    </div>
+-    <p id={`${id}-status`} role="status" aria-live="polite" aria-atomic="true"
+-      className={available && state.phase === 'ready' ? 'mcr-chrome-sr' : 'mcr-chrome-eras__status'}>{status}</p>
+-  </section>
++  </WorldEraView>
+ }
+ 
+ const icons: Record<TabPath, ConcertIconName> = { '/world': 'world', '/feed': 'feed', '/meet': 'meet', '/gifts': 'gifts', '/wall': 'wall', '/me': 'me' }
+ /** Uses the incumbent router and caller's NavigationMemory; no plain-anchor reload. */
+ export function BottomNavigation() {
+   const location = useLocation(), resolved = resolvePanel(location.pathname)
+-  return <nav className="concert-kit mcr-chrome-bottom" aria-label="Main navigation">
++  return <WorldNavigationView>
+     {tabs.map(tab => <ShellLink key={tab.path} to={tab.path} id={`tab-${tab.label.toLowerCase()}`}
+       aria-current={resolved?.valid && resolved.route.tab === tab.path ? 'page' : undefined}>
+       <ConcertIcon name={icons[tab.path]} /><span>{tab.label}</span>
+     </ShellLink>)}
+-  </nav>
++  </WorldNavigationView>
+ }
+ 
+ /** A replacement for the existing header only. Parent retains Back/Escape,

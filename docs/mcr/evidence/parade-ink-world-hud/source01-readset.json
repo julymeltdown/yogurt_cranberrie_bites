@@ -1,0 +1,192 @@
+{
+  "task": "PI08",
+  "round": "SOURCE01",
+  "qualification": "FROZEN_NOT_RUN",
+  "base": "aac0d96d152e47150f4fac0f57b69659ad20a956",
+  "foundation": "056a8c48ff667134dee8e5e99710185294e4b898",
+  "cases": 10,
+  "files": [
+    {
+      "path": "/Users/lhs/Desktop/mcr-worktrees/qa07-input-delta-332b/frontend/src/app/WorldShell.tsx",
+      "bytes": 13171,
+      "sha256": "654e57358a27a819a0fca37200508be4cfcda0d10beb3f69b751f25abe5d098e"
+    },
+    {
+      "path": "/Users/lhs/Desktop/mcr-worktrees/qa07-input-delta-332b/frontend/src/app/shell-chrome/index.tsx",
+      "bytes": 5770,
+      "sha256": "6763977c4da718b9c7041eb189a7be82ddc0f40300f4327dfde24a93c6a00bf0"
+    },
+    {
+      "path": "/Users/lhs/Desktop/mcr-worktrees/qa07-input-delta-332b/docs/mcr/evidence/parade-ink-world-hud/guard.py",
+      "bytes": 11187,
+      "sha256": "f2d73b959ea4590dc2da343ef9afd91ce2beea27b4e70bcd518bac40dfbb5a21"
+    },
+    {
+      "path": "/Users/lhs/Desktop/mcr-worktrees/qa07-input-delta-332b/scripts/mcr/resource-accounting/accounting.py",
+      "bytes": 14496,
+      "sha256": "1a2ed019be0af4d673786532c8b46eda81cd6137a7ac27c9f97b83a34387483c"
+    },
+    {
+      "path": "/Users/lhs/Desktop/mcr-worktrees/qa07-input-delta-332b/frontend/tsconfig.json",
+      "bytes": 660,
+      "sha256": "55050e293472fb6ec4aa2690c8cad7cb5a5a107ba483bf98851a0c4e707c6528"
+    },
+    {
+      "path": "/Users/lhs/Desktop/mcr-worktrees/qa07-input-delta-332b/frontend/package.json",
+      "bytes": 1265,
+      "sha256": "0f7a05587bcf1af5f4d5d077a0c2d90011adc87e1036a61db9ef3acf37c8b7d3"
+    },
+    {
+      "path": "/Users/lhs/Desktop/mcr-worktrees/qa07-input-delta-332b/frontend/src/world/avatar/__tests__/motion-adoption/vitest.config.mjs",
+      "bytes": 1629,
+      "sha256": "a11c86d4d237a08854d4104ae461c89830061a9da6ce7b43a36c1f7d94d2ab9b"
+    },
+    {
+      "path": "/usr/local/bin/node",
+      "bytes": 145238560,
+      "sha256": "a9bd0630891c2dcdee70de88270fee2cc0c4a9e76495039dd3b4f91c5e6b71df"
+    },
+    {
+      "path": "/Users/lhs/Desktop/mcr/frontend/package.json",
+      "bytes": 1265,
+      "sha256": "0f7a05587bcf1af5f4d5d077a0c2d90011adc87e1036a61db9ef3acf37c8b7d3"
+    },
+    {
+      "path": "/Users/lhs/Desktop/mcr-worktrees/fe-runtime-preferences/docs/mcr/evidence/parade-ink-foundation/readset.json",
+      "bytes": 5018,
+      "sha256": "986b45d98aa9464246bab53cd87d29d60284587464a58a9cfeefce895328b4ac"
+    },
+    {
+      "path": "/Users/lhs/Desktop/mcr-worktrees/qa07-input-delta-332b/frontend/src/features/parade-ink/world-hud/foundation-overlay.mjs",
+      "bytes": 1649,
+      "sha256": "bbd04098e23d6f2b461037549d24367d66c569d1c2ea771ab4c85a60cb3e3072"
+    },
+    {
+      "path": "/Users/lhs/Desktop/mcr-worktrees/qa07-input-delta-332b/frontend/src/features/parade-ink/world-hud/index.tsx",
+      "bytes": 4287,
+      "sha256": "a89598ea5499fea1030de932e8aea003ff0ba76dac07af42ec36f1f028af3143"
+    },
+    {
+      "path": "/Users/lhs/Desktop/mcr-worktrees/qa07-input-delta-332b/frontend/src/features/parade-ink/world-hud/source.mjs",
+      "bytes": 2742,
+      "sha256": "07685ce5468108c6dfc68ead45b384176f3a0df8883243b5e1290ce4bd1af1cb"
+    },
+    {
+      "path": "/Users/lhs/Desktop/mcr-worktrees/qa07-input-delta-332b/frontend/src/features/parade-ink/world-hud/validation.config.mjs",
+      "bytes": 757,
+      "sha256": "b7bebb8a26e3927ba551229fd2c60dc9896cb140477d84a39037dc579a62852d"
+    },
+    {
+      "path": "/Users/lhs/Desktop/mcr-worktrees/qa07-input-delta-332b/frontend/src/features/parade-ink/world-hud/world-context.tsx",
+      "bytes": 1897,
+      "sha256": "80e3f26bb9b9f606b55ac609ba76e157b67f002734758a8b215c98b967169836"
+    },
+    {
+      "path": "/Users/lhs/Desktop/mcr-worktrees/qa07-input-delta-332b/frontend/src/features/parade-ink/world-hud/world-hud.css",
+      "bytes": 6588,
+      "sha256": "2233bb0f51037a9fcaee7768724d3c9527dbd5a8758bcdc3c9455f3e30f0a01b"
+    },
+    {
+      "path": "/Users/lhs/Desktop/mcr-worktrees/qa07-input-delta-332b/frontend/src/features/parade-ink/world-hud/world-hud.test.tsx",
+      "bytes": 8114,
+      "sha256": "620b0b8145725d544e833c3b034a4eae712fbec25505cd709ebf4f87574b133c"
+    },
+    {
+      "path": "/Users/lhs/Desktop/mcr-worktrees/fe-runtime-preferences/frontend/src/shared/styles/base.css",
+      "bytes": 8537,
+      "sha256": "d9788ee432554115f802c9def0c90b4e657165571e3b7429ad2d596be86928d6"
+    },
+    {
+      "path": "/Users/lhs/Desktop/mcr-worktrees/fe-runtime-preferences/frontend/src/shared/styles/themes/themes.css",
+      "bytes": 1159,
+      "sha256": "c7d8561ab09c4402812e0eacf72cc56b6cc2ce7a84449632e8054573d4802e4c"
+    },
+    {
+      "path": "/Users/lhs/Desktop/mcr-worktrees/fe-runtime-preferences/frontend/src/shared/ui/concert-window/index.tsx",
+      "bytes": 6205,
+      "sha256": "0b532322426fd4f0aae0e2667cae80e2257917eda8cb1de6455ee3670025ae56"
+    },
+    {
+      "path": "/Users/lhs/Desktop/mcr-worktrees/fe-runtime-preferences/frontend/src/shared/ui/concert-window/concert-window.css",
+      "bytes": 5848,
+      "sha256": "9b03795cc11ed06130ebdc2ec386948d91f0e9cbba592f876a82c72ef1014c92"
+    },
+    {
+      "path": "/Users/lhs/Desktop/mcr-worktrees/fe-runtime-preferences/frontend/src/app/shell.css",
+      "bytes": 13179,
+      "sha256": "e9afa33f563389ae5eab68a6d832ee324b1053e45ebb447bd78f554b33dea3cf"
+    },
+    {
+      "path": "/Users/lhs/Desktop/mcr-worktrees/fe-runtime-preferences/frontend/src/app/shell-chrome/parade-footer.tsx",
+      "bytes": 130,
+      "sha256": "ecbb1b9f16a61315c7e63b3ba296e7d0977619fb0df899b950e3a41b8a1c6428"
+    },
+    {
+      "path": "/Users/lhs/Desktop/mcr-worktrees/fe-runtime-preferences/frontend/src/app/shell-chrome/shell-chrome.css",
+      "bytes": 6153,
+      "sha256": "264fa91f2b9d45f6d7756cfcde5fa0656d714e6c2190d325800d14c2f9639ea1"
+    },
+    {
+      "path": "/Users/lhs/Desktop/mcr-worktrees/fe-runtime-preferences/frontend/src/app/reference-chrome-v2/WindowInk.tsx",
+      "bytes": 916,
+      "sha256": "16ce865a27dea4e79e239a19bd9290120844aa7857925af4652d37582de78278"
+    },
+    {
+      "path": "/Users/lhs/Desktop/mcr-worktrees/fe-runtime-preferences/frontend/src/app/reference-chrome-v2/chrome.css",
+      "bytes": 3451,
+      "sha256": "857c14a183f4e008861ba119e65da490d52e6715ff5ca6b46b68b553f63f9c1e"
+    },
+    {
+      "path": "/Users/lhs/Desktop/mcr-worktrees/fe-runtime-preferences/frontend/src/shared/styles/parade-ink/fonts/Oswald.ttf",
+      "bytes": 172088,
+      "sha256": "5b38c246e255a12f5712d640d56bcced0472466fc68983d2d0410ec0457c2817"
+    },
+    {
+      "path": "/Users/lhs/Desktop/mcr-worktrees/fe-runtime-preferences/frontend/src/shared/styles/parade-ink/fonts/Roboto.ttf",
+      "bytes": 488584,
+      "sha256": "d7598e12c5dbef095ff8272cfc55da0250bd07fbdecbac8a530b9b277872a134"
+    },
+    {
+      "path": "/Users/lhs/Desktop/mcr-worktrees/fe-runtime-preferences/frontend/src/shared/styles/parade-ink/fonts/oswald-METADATA.pb",
+      "bytes": 4396,
+      "sha256": "3d5119d2e99a15e7c2973937d10a77e7aa1fc6a28fe173b02e059485aa596097"
+    },
+    {
+      "path": "/Users/lhs/Desktop/mcr-worktrees/fe-runtime-preferences/frontend/src/shared/styles/parade-ink/fonts/oswald-OFL.txt",
+      "bytes": 4483,
+      "sha256": "0fd731a904b729a4e02eaf5e8ebd06783edd9abe400e8882760160230675b652"
+    },
+    {
+      "path": "/Users/lhs/Desktop/mcr-worktrees/fe-runtime-preferences/frontend/src/shared/styles/parade-ink/fonts/provenance.json",
+      "bytes": 3273,
+      "sha256": "aded4b656522bd2c4de6cfd1be9e9a6cfcf96d94ecc61e3a2f36497a465574db"
+    },
+    {
+      "path": "/Users/lhs/Desktop/mcr-worktrees/fe-runtime-preferences/frontend/src/shared/styles/parade-ink/fonts/roboto-METADATA.pb",
+      "bytes": 1463,
+      "sha256": "6fef19da54fb62d152f0c7b21710e6849950db7ecf852ea29511c593dad462f0"
+    },
+    {
+      "path": "/Users/lhs/Desktop/mcr-worktrees/fe-runtime-preferences/frontend/src/shared/styles/parade-ink/fonts/roboto-OFL.txt",
+      "bytes": 4394,
+      "sha256": "061402327a96aadb0bfb694a960ed289ecd38d383e396243831ab81feb109c41"
+    },
+    {
+      "path": "/Users/lhs/Desktop/mcr-worktrees/fe-runtime-preferences/frontend/src/shared/styles/parade-ink/primitives.css",
+      "bytes": 6508,
+      "sha256": "c5a327ec4e63407ea5119a48ab20632c63e81780a842b57c0bb5e856e7ca78e0"
+    },
+    {
+      "path": "/Users/lhs/Desktop/mcr-worktrees/fe-runtime-preferences/frontend/src/shared/styles/parade-ink/tokens.css",
+      "bytes": 1334,
+      "sha256": "15b68ce29df755e81849d2bc359f2c2aaade9857d5e04c32692bf9aab4700556"
+    },
+    {
+      "path": "/Library/Frameworks/Python.framework/Versions/3.14/bin/python3.14",
+      "bytes": 135696,
+      "sha256": "1192b994fbb50303c9df2cc97c9d63797d454c7f57f20ca682877c9e770429aa"
+    }
+  ],
+  "finiteOffer": "PI08-WORLD-HUD-SOURCE01-20261105T0004Z",
+  "controlCorrection": "Metadata-only exact offer compliance: OTHER current>=3GiB or5 ifRootNEW2, full readonlyNode/Python roots, separate owned private scratch removed before FULL, no production change. Full Python.framework included, immutable ACCEPT receipt starts deadlines before scans; no source change."
+}

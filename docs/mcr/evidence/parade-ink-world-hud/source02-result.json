@@ -1,0 +1,53 @@
+{
+  "round": "SOURCE02",
+  "status": "FAIL_FULL_TYPES",
+  "source": "df5445fb5ccaa68bf7e9bdd3895ea37221765a32",
+  "checks": [
+    {
+      "label": "10 changed HUD projection/navigation/state cases",
+      "exit": 0
+    },
+    {
+      "label": "full nonincremental frontend types with pinned PI01 read-only postimages",
+      "errors": 4,
+      "exit": 1
+    },
+    {
+      "label": "syntax native.mjs",
+      "exit": 0
+    },
+    {
+      "label": "syntax native-fixture.mjs",
+      "exit": 0
+    },
+    {
+      "label": "syntax native-observer.mjs",
+      "exit": 0
+    },
+    {
+      "label": "syntax foundation-overlay.mjs",
+      "exit": 0
+    },
+    {
+      "label": "syntax validation.config.mjs",
+      "exit": 0
+    },
+    {
+      "label": "syntax source.mjs",
+      "exit": 0
+    },
+    {
+      "label": "owned UI and narrow caller lint",
+      "exit": 0
+    }
+  ],
+  "actualFullEpoch": 1793837815.109966,
+  "newMax": 163235249,
+  "wholeMax": 5278744576,
+  "directReleaseBeforeDocs": "Root153 and21d",
+  "remainingWorkflow": 0,
+  "ownedChildren": [],
+  "dependencyLinkAbsent": true,
+  "privateScratchAbsent": true,
+  "diagnosis": "Two synthetic fixture type errors plus unresolved Zod and consequent implicit-any in external generated contract code. No production UI type diagnostic."
+}

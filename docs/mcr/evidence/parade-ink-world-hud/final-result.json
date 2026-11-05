@@ -1,0 +1,254 @@
+{
+  "task": "PI08",
+  "originalIds": [
+    "FE06",
+    "FE07",
+    "FE14",
+    "FE15",
+    "FE18",
+    "AR04",
+    "QA06"
+  ],
+  "IA": [
+    "W01",
+    "W06"
+  ],
+  "status": "OWNER_QUALIFIED_READY_FOR_CANONICAL_INTEGRATION",
+  "sourceBase": "aac0d96d152e47150f4fac0f57b69659ad20a956",
+  "native08Source": "34268c0fbd65f587c94e541518b60272eb8d8caa",
+  "qualification": "ACTUAL_MAIN_DEFAULT_APP_CONTROLLED_HTTP_C05_NOT_LIVE",
+  "liveServiceClaim": false,
+  "native08ReadsetSha256": "385413256171e13e141a2de4bdb1f8235fd5d756e20b8bfaee6d47bfd4c39e0a",
+  "retainedNative02": "5043c7166b9793a9a1eb329b6e63cc185421b2cd4c13d824d7c3ce26222cb2c6",
+  "retainedNative03": "8b0e2869a1956dc6e8267c3fbd32cf46ccae570e716f3ca66d6811920c036e62",
+  "retainedNative06": "949ea2c302f2d263690a6984f5715c50514ad2996846ce24b3a6103c31f9f1d3",
+  "native08ReportSha256": "c327b2f81a68a5fe5d0b5a8a90ba4bc2775a8190246211b5a4b661d2eb38e5c1",
+  "source": [
+    "source02/output/source.json",
+    "source04/output/source.json"
+  ],
+  "nativeChain": [
+    "native02/output/native.json",
+    "native03/output/native.json",
+    "native06/output/native.json",
+    "native08/output/native.json"
+  ],
+  "sourceClaims": "Source02 ten HUD cases; Source04 retained byte-identical erased testJS, full nonincremental frontend typecheck0 and scoped lint/syntax. No unit replay.",
+  "finalNativeClaims": [
+    "new document through canonical Sign in link/form",
+    "local DANGER restored despite REVENGE bootstrap",
+    "one incumbent canvas/socket in new document",
+    "positive presence withdrawn to unavailable/Rooms",
+    "14 served public assets verified by frozen Git blob plus SHA256"
+  ],
+  "usedAssets": {
+    "source": "80d9de4328eddadee4650caef248a2f25e18dcc5",
+    "tree": "6776987f8f339c31a70f3c098ef9fdaf3b71b5ea",
+    "files": {
+      "/backgrounds/cute-entry-v1/sign-in-clouds-top.svg": {
+        "path": "frontend/public/backgrounds/cute-entry-v1/sign-in-clouds-top.svg",
+        "gitBlob": "b61347c3c42202944291de2e88a9dc218107b2a7",
+        "bytes": 2609,
+        "sha256": "29ed345d8d974798b37bc6eb0dc8a50dd4345925a3c284283fcf2709cca4dbf1"
+      },
+      "/backgrounds/cute-entry-v1/sign-in-garden-bottom.svg": {
+        "path": "frontend/public/backgrounds/cute-entry-v1/sign-in-garden-bottom.svg",
+        "gitBlob": "ed0e7d2d9e92f8a14439107b431b47d20fc7e648",
+        "bytes": 2887,
+        "sha256": "0f0965425ce45f96925bc94b7d5372225f10af0a9d3a6901e6cc96bb3a328e4e"
+      },
+      "/backgrounds/cute-entry-v1/sign-in-paper.svg": {
+        "path": "frontend/public/backgrounds/cute-entry-v1/sign-in-paper.svg",
+        "gitBlob": "3a3b4390c5d10f376d0661fdeed2be4586adae46",
+        "bytes": 2115,
+        "sha256": "aee62ec92a87df6a86cfd2322682cd735ba629aeb7a5728aaca2bba81182fa73"
+      },
+      "/reference-window-controls-v2/close.svg": {
+        "path": "frontend/public/reference-window-controls-v2/close.svg",
+        "gitBlob": "524f320f785f17c75d44bcaed8a5665d1b0ea439",
+        "bytes": 198,
+        "sha256": "1b7041e386117aaae58a44d153abd8612bce1873300b350f357410d2af688f72"
+      },
+      "/world/avatars/derived-v1/photo01-front-idle-64-e124c88815b22220.png": {
+        "path": "frontend/public/world/avatars/derived-v1/photo01-front-idle-64-e124c88815b22220.png",
+        "gitBlob": "c86790e8e34441cc3475c7cadc27df067789ab17",
+        "bytes": 36030,
+        "sha256": "e124c88815b22220df2f2dc59e2f26b3ceb845e57b77674fd8e55383116d7efe"
+      },
+      "/world/avatars/derived-v1/static-release.json": {
+        "path": "frontend/public/world/avatars/derived-v1/static-release.json",
+        "gitBlob": "3db90103c17d7f2cc01fa15dd88a950f7f5d7c00",
+        "bytes": 1898,
+        "sha256": "cc53c6852742e9cbb9858a2d0961411e1a9e131d1e30c0f2b73b265e03f91677"
+      },
+      "/world/map-roof-street-derived-v2/danger-scene.png": {
+        "path": "frontend/public/world/map-roof-street-derived-v2/danger-scene.png",
+        "gitBlob": "f5f41a7e3b6344ea32658a64206c3b1b64c86309",
+        "bytes": 716634,
+        "sha256": "b4dbf3f41e392e2f37ce78f907336055938c4b6611925c79ad13f41b15d2e931"
+      },
+      "/world/map-roof-street-derived-v2/layout.json": {
+        "path": "frontend/public/world/map-roof-street-derived-v2/layout.json",
+        "gitBlob": "d0742c67904584380eba1ac0f899b84658aad7f1",
+        "bytes": 157579,
+        "sha256": "d9e401f6254df05530174b04b16655aa5f89fed68fa02c90f6a653e6a8010e91"
+      },
+      "/world/map-roof-street-derived-v2/revenge-scene.png": {
+        "path": "frontend/public/world/map-roof-street-derived-v2/revenge-scene.png",
+        "gitBlob": "0543e0e00713af81264a79e1db752e225c1a7022",
+        "bytes": 709817,
+        "sha256": "5669a7861851a1b95bd1f2ad48e222f2e73dcd471622405f48000a33419f1606"
+      },
+      "/world/reference-scene-v2/map-labels-v1/map-labels-bold.ttf": {
+        "path": "frontend/public/world/reference-scene-v2/map-labels-v1/map-labels-bold.ttf",
+        "gitBlob": "0d23c06e611129db43f08b2d89ef95752584aa17",
+        "bytes": 145012,
+        "sha256": "f44e493f61e2d91c2156dd5abc720eeb6274a9c02b11d9097d1ea38d50011e8b"
+      },
+      "/world/reference-scene-v2/quality-v6/danger/atlas.png": {
+        "path": "frontend/public/world/reference-scene-v2/quality-v6/danger/atlas.png",
+        "gitBlob": "c74b5644e33dd787c99b592e95513a48d31880b9",
+        "bytes": 1181494,
+        "sha256": "d5b658101719fd22834b6a4ce2b5502d80f380b7cd3c12bf7bfa8801a0e068ec"
+      },
+      "/world/reference-scene-v2/quality-v6/ground.png": {
+        "path": "frontend/public/world/reference-scene-v2/quality-v6/ground.png",
+        "gitBlob": "d2132557f3a234b5d4a86de270435808e76e41fc",
+        "bytes": 531480,
+        "sha256": "e2d9f785d31ea9e9a1888dc8f73d182eca917b54e1924fbf5159bc91be96e795"
+      },
+      "/world/reference-scene-v2/quality-v6/revenge/atlas.png": {
+        "path": "frontend/public/world/reference-scene-v2/quality-v6/revenge/atlas.png",
+        "gitBlob": "54453dd0c398e5bea23338fabedcb0bed733142d",
+        "bytes": 1176082,
+        "sha256": "210f82ccce180d5b5502f5c865b9505097c8960b2d4c82a7fb74411149df7185"
+      },
+      "/world/reference-scene-v2/runtime/spatial-v3/canonical-map-v4.json": {
+        "path": "frontend/public/world/reference-scene-v2/runtime/spatial-v3/canonical-map-v4.json",
+        "gitBlob": "05c57e2e95f63543975ba4a906483892392ac44d",
+        "bytes": 24058,
+        "sha256": "60364d5f35bcc8ff82931b7e3a0724a4580880d4a481610e90475d73dcb6ceb9"
+      }
+    }
+  },
+  "visualInspection": [
+    "native06/output/photo2-comparison.png",
+    "native06/output/photo2-overlay.png",
+    "native06/output/world-safe-area.png",
+    "native06/output/world-short-reduced-motion.png",
+    "native08/output/world-presence-unavailable.png"
+  ],
+  "literalDeviations": [
+    "Approved current Map4 and approved static C06v1 replace the sample illustrated scene/avatars; no art repaint or masking.",
+    "World / N in view and Nearby replace sample Plaza / 8 people here and JOIN. Count is authorized replication including self, not room occupancy.",
+    "Existing connection/renderer notices and World controls stay visible; caption/control wrapping can increase context/scene height.",
+    "REVENGE remains the fixture default; reference image selects PARADE. Each era remains independent.",
+    "Window glyph semantics: caption minimize/restore, existing destinations, real Feed navigation."
+  ],
+  "geometryDeltas": {
+    "title": {
+      "reference": {
+        "x": 3.9393939393939394,
+        "y": 4.924242424242424,
+        "width": 381.1363636363636,
+        "height": 46.28787878787879
+      },
+      "actual": {
+        "tag": "HEADER",
+        "text": "WORLD",
+        "x": 4,
+        "y": 4,
+        "width": 382,
+        "height": 48,
+        "font": "\"Parade Ink Text\", Arial, sans-serif",
+        "size": "18px",
+        "line": "22px",
+        "weight": "400",
+        "color": "rgb(255, 255, 255)",
+        "background": "rgb(23, 23, 23)",
+        "borders": [
+          "0px",
+          "0px",
+          "0px",
+          "0px"
+        ],
+        "pressed": null,
+        "current": null,
+        "outline": "none"
+      },
+      "delta": {
+        "x": 0.06060606060606055,
+        "y": -0.9242424242424239,
+        "width": 0.863636363636374,
+        "height": 1.712121212121211
+      }
+    },
+    "context": {
+      "reference": {
+        "x": 10.833333333333334,
+        "y": 617.5,
+        "width": 367.3484848484849,
+        "height": 72.87878787878788
+      },
+      "actual": {
+        "tag": "SECTION",
+        "text": "World/6 in viewVirtual presence, not physical arrival.Nearby",
+        "x": 10,
+        "y": 634,
+        "width": 370,
+        "height": 72,
+        "font": "\"Parade Ink Text\", Arial, sans-serif",
+        "size": "18px",
+        "line": "22px",
+        "weight": "400",
+        "color": "rgb(23, 23, 23)",
+        "background": "rgb(249, 248, 246)",
+        "borders": [
+          "1px",
+          "1px",
+          "1px",
+          "1px"
+        ],
+        "pressed": null,
+        "current": null,
+        "outline": "none"
+      },
+      "delta": {
+        "x": -0.8333333333333339,
+        "y": 16.5,
+        "width": 2.6515151515151274,
+        "height": -0.8787878787878753
+      }
+    }
+  },
+  "foundationFixture": "fixed18 leaves, 17 at056a8c48 plus shell.cssb5b44e47",
+  "currentCombinedMasterNativeVerified": false,
+  "runtimeRelease": {
+    "offer": "HUDNATIVE08-0133",
+    "status": "PASS",
+    "failure": null,
+    "actualFullEpoch": 1793842664.464797,
+    "workflow": 0,
+    "remainingReservation": 0,
+    "ownedChildren": [],
+    "dependencyLinkAbsent": true,
+    "testExit": 0,
+    "guardianExit": 0,
+    "withinFullDeadline": true,
+    "privateScratchAbsent": true,
+    "scratchRetained": "none; raw evidence retained inside owned checkout"
+  },
+  "maxima": {
+    "new": 467695025,
+    "whole": 6889254912,
+    "processes": 13,
+    "rss": 3135881216
+  },
+  "minimumFree": 23324712960,
+  "failedReleaseCorrections": [
+    "native05/FULL-correction.json",
+    "native07/FULL-correction.json"
+  ],
+  "rawFailuresPreserved": true,
+  "publication": "Pending standing publisher receipt; no review ACK gate"
+}

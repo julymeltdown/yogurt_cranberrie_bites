@@ -1,0 +1,19 @@
+{
+  "offer": "HUD-FINAL-REMAINDER-NATIVE07-0118",
+  "status": "FAIL",
+  "actualFullEpoch": 1793842547.73936,
+  "workflow": 0,
+  "remainingReservation": 0,
+  "ownedChildren": [],
+  "dependencyLinkAbsent": true,
+  "privateScratchAbsent": true,
+  "observedPIDsAbsent": true,
+  "guardFailure": "'NoneType' object is not subscriptable",
+  "note": "Outer fallback correctly retained ACCEPT when initial cleanup verification failed. Fresh complete process snapshot verifies all guardian-observed PIDs absent and all scoped commands absent; raw unverified receipt preserved.",
+  "peaks": {
+    "new": 424101297,
+    "whole": 6889254912,
+    "processes": 14,
+    "rss": 3122839552
+  }
+}

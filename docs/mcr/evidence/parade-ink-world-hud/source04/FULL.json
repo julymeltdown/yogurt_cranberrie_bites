@@ -1,0 +1,26 @@
+{
+  "offer": "PI08-TYPE-REMAINDER-SOURCE04-0035",
+  "status": "PASS",
+  "failure": null,
+  "actualFullEpoch": 1793839351.539408,
+  "workflow": 0,
+  "remainingReservation": 0,
+  "ownedChildren": [],
+  "dependencyLinkAbsent": true,
+  "testExit": 0,
+  "primary": {
+    "failure": null,
+    "samples": 12,
+    "peaks": {
+      "new": 172074417,
+      "whole": 5278744576,
+      "processes": 5,
+      "rss": 2488614912
+    },
+    "minimumFree": 15391092736
+  },
+  "guardianExit": 0,
+  "withinFullDeadline": true,
+  "privateScratchAbsent": true,
+  "scratchRetained": "none; raw evidence retained inside owned checkout"
+}

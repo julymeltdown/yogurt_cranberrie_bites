@@ -1,0 +1,30 @@
+{
+  "reason": "checkpoint/root/measurement failure",
+  "attempts": [
+    {
+      "attempt": 1,
+      "complete": false,
+      "knownBytes": 5087903744,
+      "scopes": {
+        "checkout": 1501458432,
+        "git": 1203580928,
+        "dependencies": 438317056,
+        "foundation": 883769344,
+        "node": 211628032,
+        "python": 849149952,
+        "private": 0,
+        "ownerReceipts": 0,
+        "chrome": 0
+      },
+      "races": [],
+      "entries": 72431,
+      "cause": {
+        "type": "RuntimeError",
+        "message": "invalid owner receipt identity/state",
+        "errno": null
+      },
+      "finishedMonotonic": 185261.954794666
+    }
+  ],
+  "complete": false
+}

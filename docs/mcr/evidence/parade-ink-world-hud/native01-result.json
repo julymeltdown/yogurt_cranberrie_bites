@@ -1,0 +1,21 @@
+{
+  "round": "NATIVE01",
+  "status": "FAIL_PRE_NODE_BROWSER",
+  "actualFullEpoch": 1793839868.9184399,
+  "cause": "Python __file__ is absolute while PS argv retained the relative launch spelling. Strict script-string identity comparison rejected own controller before any Node/browser/guardian.",
+  "rawPreserved": true,
+  "validation": "NOT_RUN",
+  "retainedNewPrior": 172512689,
+  "conservativeStartupReservation": 8388608,
+  "newCarriedUpper": 180901297,
+  "wholeCompleteBaseline": 6791987200,
+  "wholeCarriedUpper": 6800375808,
+  "zeroRawPeaks": "No live sample completed; zero fields are not an accounting PASS or replacement for carried maxima.",
+  "resources": {
+    "workflow": 0,
+    "children": [],
+    "linkAbsent": true,
+    "scratchAbsent": true
+  },
+  "fix": "Resolve actual argv script token against explicit controller workingDirectory and compare exact absolute path; add relative-launch regression to both guards ten-case selftest."
+}

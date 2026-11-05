@@ -1,0 +1,56 @@
+{
+  "offer": "HUD-REMAINDER-NATIVE03-0103",
+  "status": "FAIL",
+  "failure": "validation exit 1",
+  "actualFullEpoch": 1793840678.937908,
+  "workflow": 0,
+  "remainingReservation": 0,
+  "ownedChildren": [],
+  "dependencyLinkAbsent": true,
+  "testExit": 1,
+  "primary": {
+    "failure": "validation exit 1",
+    "samples": 4,
+    "peaks": {
+      "new": 268580273,
+      "whole": 6850813952,
+      "processes": 13,
+      "rss": 2982789120
+    },
+    "minimumFree": 16292917248,
+    "globalCensusSelftest": "PASS eleven bounded census cases",
+    "globalPeaks": {
+      "processes": 18,
+      "rss": 5792743424,
+      "workflows": 3
+    },
+    "lastGlobal": {
+      "workflows": 2,
+      "processes": 10,
+      "rss": 3512893440,
+      "reservedPIDs": 56,
+      "reservedRSS": 12884901888,
+      "absentReservedPIDs": 0,
+      "cohorts": [
+        {
+          "owner": "01a1a21a-a088-7c31-83e3-19de119ba873",
+          "visible": true,
+          "pid": 88509,
+          "pids": 5,
+          "rss": 3193700352
+        },
+        {
+          "owner": "01a1a5d9-332b-7822-a8f7-40c576fad94a",
+          "visible": true,
+          "pid": 94725,
+          "pids": 5,
+          "rss": 319193088
+        }
+      ]
+    }
+  },
+  "guardianExit": 0,
+  "withinFullDeadline": true,
+  "privateScratchAbsent": true,
+  "scratchRetained": "none; raw evidence retained inside owned checkout"
+}

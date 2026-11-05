@@ -1,0 +1,23 @@
+{
+  "round": "NATIVE03",
+  "status": "PARTIAL_NOT_FINAL_PASS",
+  "actualFullEpoch": 1793840678.937908,
+  "qualified": [
+    "all6navroutes/selectedDOMstate/incumbentcontinuity",
+    "DangerSurvivesNavigation"
+  ],
+  "failure": "Harness used non-existent CDP Emulation.setSafeAreaInsets; retained protocol primary definitions specify Emulation.setSafeAreaInsetsOverride.",
+  "remaining": [
+    "nonzero safearea",
+    "short/reducedmotion",
+    "referencecomparison",
+    "reload",
+    "presencewithdraw",
+    "publicassetlist"
+  ],
+  "carry": {
+    "new": 268580273,
+    "whole": 6850813952
+  },
+  "resources": "FULL all0/linkTMPabsent/bothguardsclosed/11guardcasesPASS"
+}

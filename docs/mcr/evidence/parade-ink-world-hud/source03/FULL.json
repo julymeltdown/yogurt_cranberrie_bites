@@ -1,0 +1,10 @@
+{
+  "offer": "PI08-TYPE-REMAINDER-SOURCE03-20261105T0022Z",
+  "status": "FAIL",
+  "failure": "RuntimeError('frozen source/input changed: /Users/lhs/Desktop/mcr-worktrees/fe-runtime-preferences/docs/mcr/evidence/parade-ink-foundation/qualification-readset.json')",
+  "actualFullEpoch": 1793838469.949436,
+  "workflow": 0,
+  "remainingReservation": 0,
+  "ownedChildren": [],
+  "phase": "pre-child baseline; no workload admitted"
+}

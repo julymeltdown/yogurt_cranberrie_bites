@@ -1,0 +1,1329 @@
+{
+  "task": "PI08",
+  "ownerThreadId": "01a1a5d9-332b-7822-a8f7-40c576fad94a",
+  "sourceBase": "aac0d96d152e47150f4fac0f57b69659ad20a956",
+  "payloadRevision": "0e8615b98dcc5ec4bcd83d2d7ab0ebb6c7149d27",
+  "branch": "codex/mcr-fe-PI08-world-hud",
+  "originalIds": [
+    "FE06",
+    "FE07",
+    "FE14",
+    "FE15",
+    "FE18",
+    "AR04",
+    "QA06"
+  ],
+  "IA": [
+    "W01",
+    "W06"
+  ],
+  "ownedPrefixes": [
+    "frontend/src/features/parade-ink/world-hud",
+    "docs/mcr/frontend/parade-ink-world-hud.md",
+    "docs/mcr/evidence/parade-ink-world-hud"
+  ],
+  "sharedPaths": [
+    "frontend/src/app/WorldShell.tsx",
+    "frontend/src/app/shell-chrome/index.tsx"
+  ],
+  "sharedIntegration": "Only imports/root class/render wrappers in WorldShell and EraControls/BottomNavigation imports/return JSX. Preserve incumbent children/key/props/hooks/state/controllers/authority and current unrelated master changes.",
+  "sharedPatch": {
+    "path": "docs/mcr/evidence/parade-ink-world-hud/shared-callers.patch",
+    "sha256": "29387fde62ea0ede0eac1a0d3c671210c0823395bf4bb49e308d915b6398a327"
+  },
+  "files": [
+    {
+      "path": "docs/mcr/evidence/parade-ink-world-hud/final-result.json",
+      "mode": "100644",
+      "gitBlob": "4060aaf8b396db8ddbd0af7bead74cb44e88816d",
+      "bytes": 10140,
+      "sha256": "cf8a735a03cd73c1e3093d6b7b0e1da11834843cddc45137f4d60f822aee37e7",
+      "integration": "exact-owned-postimage"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-world-hud/global_census.py",
+      "mode": "100644",
+      "gitBlob": "160145894ef007d2e3cee72b49383a28b7249192",
+      "bytes": 13018,
+      "sha256": "9b608bd88fdf39d7c407cb0f0bc0d5c4248ca84bef0032179b0c5eab9d49b1f5",
+      "integration": "exact-owned-postimage"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-world-hud/guard.py",
+      "mode": "100644",
+      "gitBlob": "012c6413fd7ab5fff91f85c6a044f164adea2873",
+      "bytes": 14760,
+      "sha256": "be8c732dd4092d90eaa0bde5f34d2f9e8b64cf65a9ac37091a6bf2c9950a5414",
+      "integration": "exact-owned-postimage"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-world-hud/intake.json",
+      "mode": "100644",
+      "gitBlob": "e701dce4837bfa216988904b94c066c50aac3c0a",
+      "bytes": 2112,
+      "sha256": "86b53efb0d10720a6973050538991f1d0317dba7e057449252596b11d255defc",
+      "integration": "exact-owned-postimage"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-world-hud/native-public-readset.json",
+      "mode": "100644",
+      "gitBlob": "9c7a149fbed97513331ac63d74738b763bea0bff",
+      "bytes": 391250,
+      "sha256": "c8a7d4c7ec48e97ee60e0b5730bda1493f824a136960c9914e7c2178b0c2e22d",
+      "integration": "exact-owned-postimage"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-world-hud/native01-readset.json",
+      "mode": "100644",
+      "gitBlob": "8967ac98d41ebfafebc179daaba57eeb0e7a7120",
+      "bytes": 12110,
+      "sha256": "5324aee06e40bfe4781b740f31b6e65b26461530c729ce532f507d568b4d9cf0",
+      "integration": "exact-owned-postimage"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-world-hud/native01-result.json",
+      "mode": "100644",
+      "gitBlob": "489dafff0a91a5df07cff9e4528c84ecc3ece3cf",
+      "bytes": 953,
+      "sha256": "523376747323f93e33978b323c9083c71915ff373e113452e7d5ef3355c307b5",
+      "integration": "exact-owned-postimage"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-world-hud/native01/ACCEPT.json",
+      "mode": "100644",
+      "gitBlob": "a34e6fa14362d50279fe7b3be8bc6fb6faa6fbe6",
+      "bytes": 554,
+      "sha256": "28478452f1da5b37ffb3583c56ccbd395c680a8efd83f910f0b149be788ae62d",
+      "integration": "exact-owned-postimage"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-world-hud/native01/FULL.json",
+      "mode": "100644",
+      "gitBlob": "687c7bd1c96659afae25d02c6d9d064bd402eed2",
+      "bytes": 824,
+      "sha256": "988ef98e044ae67908f99ab98363613e48cccf00418a601992b744483cc52add",
+      "integration": "exact-owned-postimage"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-world-hud/native01/config.json",
+      "mode": "100644",
+      "gitBlob": "87b6e277d56499853b70d0eb13f9735aa6d5eaf0",
+      "bytes": 15844,
+      "sha256": "ba56b4065eca630469537eea4d41ac75f8c48ba69419a2d9aeecfadddc4a52ce",
+      "integration": "exact-owned-postimage"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-world-hud/native01/stop",
+      "mode": "100644",
+      "gitBlob": "1e13d54dc116a39589fe17fa039ea518e5527455",
+      "bytes": 5,
+      "sha256": "a11c3d917a2149a4b548217038bc8f2dd2130a1966e0c7af5c4225d81f25a8c3",
+      "integration": "exact-owned-postimage"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-world-hud/native02-readset.json",
+      "mode": "100644",
+      "gitBlob": "3866e56a00aa63644158b3e40c252a9c1097ece4",
+      "bytes": 13659,
+      "sha256": "0cf7535cb073f5981ce00e96dfcb895fccca32f30498a5673728295f8003a604",
+      "integration": "exact-owned-postimage"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-world-hud/native02-result.json",
+      "mode": "100644",
+      "gitBlob": "1ae1516a0c034e8c4d47df57dd4467599c7fcfa7",
+      "bytes": 946,
+      "sha256": "cc03ae84fd92cfa55685653f9f85311171502c369dc388fbd4da36f2dfb8db24",
+      "integration": "exact-owned-postimage"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-world-hud/native02/ACCEPT.json",
+      "mode": "100644",
+      "gitBlob": "caf3c9c8405b42d7f99a97561ed6b048fc9202d0",
+      "bytes": 554,
+      "sha256": "8b4603ff1157bac092ee35126abb2b07cb4acdcb30521be85d238c2783a7632e",
+      "integration": "exact-owned-postimage"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-world-hud/native02/FULL.json",
+      "mode": "100644",
+      "gitBlob": "adee1bb2a5c2fda9823314634b9c5b70c5abe75f",
+      "bytes": 1196,
+      "sha256": "53bcf044ed692b4fb66b320485dde39139be79a01e438910096cff097b083bcd",
+      "integration": "exact-owned-postimage"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-world-hud/native02/config.json",
+      "mode": "100644",
+      "gitBlob": "18a38ca5434b8c948a623c79d2e3cd8d6c7f2910",
+      "bytes": 17455,
+      "sha256": "6c38ec799a7b449c39fbe6b9f5bc60065e9e279cedf1c2037fce8bd212c1a1ac",
+      "integration": "exact-owned-postimage"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-world-hud/native02/guardian-FULL.json",
+      "mode": "100644",
+      "gitBlob": "a8cce1073b0c6d23b6d237beaeab67a2e49ed969",
+      "bytes": 681,
+      "sha256": "e3fe096fa7c03631dafe982b6f01b5425f7c97f822a11665ab2f698bb1b0e6b8",
+      "integration": "exact-owned-postimage"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-world-hud/native02/guardian-ready.json",
+      "mode": "100644",
+      "gitBlob": "8b00378c7c9645a60f4952eeec40c63ab4415f6f",
+      "bytes": 677,
+      "sha256": "38c2b47c74817932feef6774ca7d61fc8003295b911c928d73a13f5272718cb7",
+      "integration": "exact-owned-postimage"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-world-hud/native02/job.log",
+      "mode": "100644",
+      "gitBlob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "integration": "exact-owned-postimage"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-world-hud/native02/output/failure.png",
+      "mode": "100644",
+      "gitBlob": "32702416be539443e3a62d80c5a48cba12e79485",
+      "bytes": 10567,
+      "sha256": "0811e5082d15d9699f785f53c1e8581707153922c12646f3f777ff319348caea",
+      "integration": "exact-owned-postimage"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-world-hud/native02/output/native.json",
+      "mode": "100644",
+      "gitBlob": "823aa3737a3e2c8e1f502b09de72629d5ae996c9",
+      "bytes": 111360,
+      "sha256": "5043c7166b9793a9a1eb329b6e63cc185421b2cd4c13d824d7c3ce26222cb2c6",
+      "integration": "exact-owned-postimage"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-world-hud/native02/output/world-360.png",
+      "mode": "100644",
+      "gitBlob": "41ff425a779ee044f4d909963500ba0d10c88c43",
+      "bytes": 270593,
+      "sha256": "6568e66caa9567f9a5b805546a15f607b26751bd15a1ad6f04ace10db80c165d",
+      "integration": "exact-owned-postimage"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-world-hud/native02/output/world-390-default.png",
+      "mode": "100644",
+      "gitBlob": "d4b76ae44a9032e68126a0463ddb4d298b68b2b4",
+      "bytes": 306543,
+      "sha256": "0d19bc8de03d6aba77624ebcf030e70b6e1be55862f88eb27cca56f0514f24e2",
+      "integration": "exact-owned-postimage"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-world-hud/native02/output/world-390-reference-height.png",
+      "mode": "100644",
+      "gitBlob": "b8dc2173cf7c2ba6e730f484ca7f7655e9df0869",
+      "bytes": 274371,
+      "sha256": "cee8c9e57944c8ac6a0cd22fa670c7f53cebade0c3fa16ddef12d98eea667945",
+      "integration": "exact-owned-postimage"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-world-hud/native02/output/world-430.png",
+      "mode": "100644",
+      "gitBlob": "1ddab938183273aa27da5d7e3606f9b0f99ddec0",
+      "bytes": 391540,
+      "sha256": "f95b6a23547fe03d65dfb7126ebd7791809ad3d36de5e9ff108bb049ba188542",
+      "integration": "exact-owned-postimage"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-world-hud/native02/output/world-era-danger.png",
+      "mode": "100644",
+      "gitBlob": "8593793b54725cccfb496c598e6734fb985acb65",
+      "bytes": 307256,
+      "sha256": "fe6427e869b5f81e7e70a275b119ed10289d8c49dcb4baa232c35ca798e11071",
+      "integration": "exact-owned-postimage"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-world-hud/native02/output/world-era-parade.png",
+      "mode": "100644",
+      "gitBlob": "acd0d183c6b719e71ac86ca121a675b2c259808a",
+      "bytes": 307314,
+      "sha256": "e056668298716ad402e4836cb772663fa642edf3f26cd23fac53bd70226e63ff",
+      "integration": "exact-owned-postimage"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-world-hud/native02/output/world-era-revenge.png",
+      "mode": "100644",
+      "gitBlob": "08c54faf00209099fc13d99c5775ed7c6695ce30",
+      "bytes": 306565,
+      "sha256": "0fb13d26cf6f7c9669e0c7423b77005bf0b478c2e1017ed531fbc12b1aee4f8e",
+      "integration": "exact-owned-postimage"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-world-hud/native02/output/world-keyboard-focus.png",
+      "mode": "100644",
+      "gitBlob": "bac88979eea5d126f9f49019f641417744b82d02",
+      "bytes": 306603,
+      "sha256": "74144902c5beeaa6761afc5321ae203f70e370f99461bb74d703139af7f1c46c",
+      "integration": "exact-owned-postimage"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-world-hud/native02/stop",
+      "mode": "100644",
+      "gitBlob": "1e13d54dc116a39589fe17fa039ea518e5527455",
+      "bytes": 5,
+      "sha256": "a11c3d917a2149a4b548217038bc8f2dd2130a1966e0c7af5c4225d81f25a8c3",
+      "integration": "exact-owned-postimage"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-world-hud/native03-readset.json",
+      "mode": "100644",
+      "gitBlob": "df0df20c0ae61d0b7cc15ba9641612c40bc6d6fd",
+      "bytes": 15555,
+      "sha256": "06f3b4a3b6c303960e1543ed0c773897683cdaeb184c833a7b7b61eb965e29f7",
+      "integration": "exact-owned-postimage"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-world-hud/native03-result.json",
+      "mode": "100644",
+      "gitBlob": "9b1cf609e7446a0a2f2989a22d90a136e04f6dd2",
+      "bytes": 673,
+      "sha256": "06a415c2439c7eb4ec587789515068002d772a797bcfa117e86231974de85bcf",
+      "integration": "exact-owned-postimage"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-world-hud/native03/ACCEPT.json",
+      "mode": "100644",
+      "gitBlob": "920a37937556227c2828773c8fea8f51e5346f4c",
+      "bytes": 549,
+      "sha256": "fc2af8693bddeec3db31a713ee964372f0ee471558b6b97adb56abaf31654d48",
+      "integration": "exact-owned-postimage"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-world-hud/native03/FULL.json",
+      "mode": "100644",
+      "gitBlob": "b8bb3f02c3546995d4c036214726b81cef909cda",
+      "bytes": 1373,
+      "sha256": "fc0addf69ed5f3f8a4b2432f074f120fd2eeb3c150b6e6ce0697cb0210de140b",
+      "integration": "exact-owned-postimage"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-world-hud/native03/config.json",
+      "mode": "100644",
+      "gitBlob": "a0bb601f50a78f2f8152aba19463292e4e4067a0",
+      "bytes": 19422,
+      "sha256": "21f88a657180f29be1439c8fb3ef8b099a7e28ff97e4d36789e3421233aa4ea9",
+      "integration": "exact-owned-postimage"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-world-hud/native03/guardian-FULL.json",
+      "mode": "100644",
+      "gitBlob": "f913415f2f76edf11c729af39204b4c3f79ab606",
+      "bytes": 850,
+      "sha256": "db4d7ee23e56244929b34d05a208980f162695d6959a030cc250045428d55696",
+      "integration": "exact-owned-postimage"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-world-hud/native03/guardian-ready.json",
+      "mode": "100644",
+      "gitBlob": "dd1fcc56913da1dffd464cf9f2aaf3db8b384855",
+      "bytes": 948,
+      "sha256": "4246718a980b8b2f3325e5443791946798f97054e2a06be330cd527188ff90d7",
+      "integration": "exact-owned-postimage"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-world-hud/native03/job.log",
+      "mode": "100644",
+      "gitBlob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "integration": "exact-owned-postimage"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-world-hud/native03/output/failure.png",
+      "mode": "100644",
+      "gitBlob": "624d8cd9bcab2346777bba47573a2b5152726c53",
+      "bytes": 274958,
+      "sha256": "5938903d40a04ba3449a7a385e6f9e051f5602aa3680f5673e31aced3ac55a4a",
+      "integration": "exact-owned-postimage"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-world-hud/native03/output/native.json",
+      "mode": "100644",
+      "gitBlob": "b1e415fa79137045969dea518d54b0d37a7a4751",
+      "bytes": 147103,
+      "sha256": "8b0e2869a1956dc6e8267c3fbd32cf46ccae570e716f3ca66d6811920c036e62",
+      "integration": "exact-owned-postimage"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-world-hud/native03/stop",
+      "mode": "100644",
+      "gitBlob": "1e13d54dc116a39589fe17fa039ea518e5527455",
+      "bytes": 5,
+      "sha256": "a11c3d917a2149a4b548217038bc8f2dd2130a1966e0c7af5c4225d81f25a8c3",
+      "integration": "exact-owned-postimage"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-world-hud/native04-readset.json",
+      "mode": "100644",
+      "gitBlob": "974b51327654d8a49abf97410246bce771887443",
+      "bytes": 17994,
+      "sha256": "3241da3c4bf4d9c2a896e5d06df8b6604156ba1c73eab7f1ecb783a5ba165e68",
+      "integration": "exact-owned-postimage"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-world-hud/native04-result.json",
+      "mode": "100644",
+      "gitBlob": "892a3851e376530580db3e72fb4e4e6e7727579e",
+      "bytes": 635,
+      "sha256": "ec71e5bb4cb8cbe5e5619480139aa79c1496c8ebf1263ccea946ed886f61fa49",
+      "integration": "exact-owned-postimage"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-world-hud/native04/ACCEPT.json",
+      "mode": "100644",
+      "gitBlob": "a33672404a0464a0415b8970bdb6b5fa89ad0c39",
+      "bytes": 555,
+      "sha256": "a11bb5bfd26a6d5bef02127091be2878d7086a342a0cf8b5483cd78a80744cad",
+      "integration": "exact-owned-postimage"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-world-hud/native04/FULL.json",
+      "mode": "100644",
+      "gitBlob": "cff1fa607ab492ca8c0f29821393f0b47eb903e1",
+      "bytes": 1524,
+      "sha256": "4eed400a3b0c58ce56601f4604bdf6f27845aa8bfe62c0a55b81e614bc0d9278",
+      "integration": "exact-owned-postimage"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-world-hud/native04/config.json",
+      "mode": "100644",
+      "gitBlob": "dc99846bfeff6565dee5cf7fca542f446e418e27",
+      "bytes": 22076,
+      "sha256": "361dca97456f2fb48aa46a7bca94817365cd326ed91c864052896e12b4d9ffd8",
+      "integration": "exact-owned-postimage"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-world-hud/native04/global-guardian.json",
+      "mode": "100644",
+      "gitBlob": "0a80d3a3e885a17d1c7cd4e70099083d11905860",
+      "bytes": 603,
+      "sha256": "03d697e0004b3628aa4497e5610d908d0e1fdc11355aa4631c9224fd2e826da2",
+      "integration": "exact-owned-postimage"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-world-hud/native04/global-primary.json",
+      "mode": "100644",
+      "gitBlob": "97cbacfbf6d3f9d6a47b1fb3b6d4f936833130f8",
+      "bytes": 604,
+      "sha256": "6f6fa39744d1f54f7010b3394d30de0625de4c341a5bc98f95b1c5b64fab5836",
+      "integration": "exact-owned-postimage"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-world-hud/native04/guardian-FULL.json",
+      "mode": "100644",
+      "gitBlob": "a723ba5355de6170e5a8a3e53326a3f1a3d44239",
+      "bytes": 944,
+      "sha256": "af39e48870ebf1b4a4fc42fb251af22b2907894081fad3ff7fcc121d8924210e",
+      "integration": "exact-owned-postimage"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-world-hud/native04/guardian-ready.json",
+      "mode": "100644",
+      "gitBlob": "a723ba5355de6170e5a8a3e53326a3f1a3d44239",
+      "bytes": 944,
+      "sha256": "af39e48870ebf1b4a4fc42fb251af22b2907894081fad3ff7fcc121d8924210e",
+      "integration": "exact-owned-postimage"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-world-hud/native04/stop",
+      "mode": "100644",
+      "gitBlob": "1e13d54dc116a39589fe17fa039ea518e5527455",
+      "bytes": 5,
+      "sha256": "a11c3d917a2149a4b548217038bc8f2dd2130a1966e0c7af5c4225d81f25a8c3",
+      "integration": "exact-owned-postimage"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-world-hud/native05-readset.json",
+      "mode": "100644",
+      "gitBlob": "e9ba6f77b2fef9605bab9e231e35e1b628f65a88",
+      "bytes": 18723,
+      "sha256": "1ed55134cc05b0905bcf5abc607c94f7fe4d6424ff26640c1419ceb7fb630842",
+      "integration": "exact-owned-postimage"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-world-hud/native05/ACCEPT.json",
+      "mode": "100644",
+      "gitBlob": "83480a100ad10b9b3de9421d6f7e5a745d5f5a7c",
+      "bytes": 557,
+      "sha256": "b537cbdc2100c5421b2d48a02496225c8daedcf23270f4ea0df4c6b322f06e73",
+      "integration": "exact-owned-postimage"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-world-hud/native05/FULL-correction.json",
+      "mode": "100644",
+      "gitBlob": "f7da86db7db09adf8379586093867cfa096651ba",
+      "bytes": 704,
+      "sha256": "c730fd7d423a01b866c93f93839c0363ad131baa61fa349acc95d59ea3e66f4a",
+      "integration": "exact-owned-postimage"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-world-hud/native05/FULL.json",
+      "mode": "100644",
+      "gitBlob": "e9fb69a9f1d48a724d5f43f208943a6f9b6a8c57",
+      "bytes": 296,
+      "sha256": "8e977faf4090fa03e064ac8f4da3d22415a2b67948dece954a6b4b21cc224208",
+      "integration": "exact-owned-postimage"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-world-hud/native05/config.json",
+      "mode": "100644",
+      "gitBlob": "0a2dc1b660cfa00ad30b44115de36d95c5121c2d",
+      "bytes": 22843,
+      "sha256": "7f5049e5e398dc4f9fd0d60696dc46f331c0213874231cee6f06ce54f7744a0f",
+      "integration": "exact-owned-postimage"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-world-hud/native05/global-guardian.json",
+      "mode": "100644",
+      "gitBlob": "3060fe94269d5533c6acb332ab3641254d11dbc8",
+      "bytes": 670,
+      "sha256": "0daae72f9a88a5dbaa74d2e6c7baf9c18fa13734d08730ab5eaca69a984cc353",
+      "integration": "exact-owned-postimage"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-world-hud/native05/global-primary.json",
+      "mode": "100644",
+      "gitBlob": "242446dca9aa09abf95d66bf01c0367f775bf164",
+      "bytes": 671,
+      "sha256": "43530652ea40e71263d16871b26c79101276ed748419b52997bba38bb410ca17",
+      "integration": "exact-owned-postimage"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-world-hud/native05/guardian-FULL.json",
+      "mode": "100644",
+      "gitBlob": "b05192421106d45f3aecf6efe24c02b29104dff3",
+      "bytes": 1053,
+      "sha256": "bf7b190becf35eef54ef454020d7feab3ebb64bb4609e8df4512c960def929de",
+      "integration": "exact-owned-postimage"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-world-hud/native05/guardian-failure.json",
+      "mode": "100644",
+      "gitBlob": "b05192421106d45f3aecf6efe24c02b29104dff3",
+      "bytes": 1053,
+      "sha256": "bf7b190becf35eef54ef454020d7feab3ebb64bb4609e8df4512c960def929de",
+      "integration": "exact-owned-postimage"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-world-hud/native05/guardian-ready.json",
+      "mode": "100644",
+      "gitBlob": "49717303b867fbbb203724cfd3d4ae79eacb62a3",
+      "bytes": 1014,
+      "sha256": "27060d868ef38a364722dc92869e67d717d8deb31fa71527afa5ac6b58de34ed",
+      "integration": "exact-owned-postimage"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-world-hud/native05/guardian-scan-failure.json",
+      "mode": "100644",
+      "gitBlob": "ff3d94e8c32318d83409c3d306cdc25c4d83c444",
+      "bytes": 691,
+      "sha256": "97f53071341f57a162f01a55ecba62a97e2bbac92413468bf6c08f23f82f9781",
+      "integration": "exact-owned-postimage"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-world-hud/native05/job.log",
+      "mode": "100644",
+      "gitBlob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "integration": "exact-owned-postimage"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-world-hud/native05/output/photo2-comparison.png",
+      "mode": "100644",
+      "gitBlob": "9b49cb24306a1626aee641a4e8e66cf707257774",
+      "bytes": 1014763,
+      "sha256": "d368e8f0d04494cdf3866047b73dd0189f0616aa320e1b9264df7a965f1fe5d8",
+      "integration": "exact-owned-postimage"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-world-hud/native05/output/photo2-overlay.png",
+      "mode": "100644",
+      "gitBlob": "0fd19d9750ff2e448951b58044511a39f1d5cde2",
+      "bytes": 627760,
+      "sha256": "5b7ad7c599e34ca3f460a5fa60a15d61d88dd230daa0327e8670dee86ca9550a",
+      "integration": "exact-owned-postimage"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-world-hud/native05/output/photo2-reference.png",
+      "mode": "100644",
+      "gitBlob": "81e94456f16dd67808a410f7052be3bf9c8d0213",
+      "bytes": 625739,
+      "sha256": "2e3903338aeed523aab1d41f13322eea3d5e1efd931c477ee5222194689f2579",
+      "integration": "exact-owned-postimage"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-world-hud/native05/output/world-safe-area.png",
+      "mode": "100644",
+      "gitBlob": "2cfe85e3222d4466a06c2bd8562b788c7f21ce69",
+      "bytes": 261742,
+      "sha256": "867e3f6f216fc125d472fff6a782ae29cf4cec6de9ce4f30fc762b18b399538d",
+      "integration": "exact-owned-postimage"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-world-hud/native05/output/world-short-reduced-motion.png",
+      "mode": "100644",
+      "gitBlob": "1b37c181b7fa348ce1ad317b7f606f1e65c79237",
+      "bytes": 143143,
+      "sha256": "266f3763f5ee4e8ebd888e3629da9b3c5b409c6790c73f772d965f9f23b9bef8",
+      "integration": "exact-owned-postimage"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-world-hud/native05/scan-failure.json",
+      "mode": "100644",
+      "gitBlob": "1b71b116e0827be63e55c0904e8770edcb6ebc6b",
+      "bytes": 691,
+      "sha256": "427680f938f5511aa4c0cefa7e1c3368d2101aada04fda8064a885cb9dfb6565",
+      "integration": "exact-owned-postimage"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-world-hud/native06-readset.json",
+      "mode": "100644",
+      "gitBlob": "1947ad96d7ce27ff70132b6990c6b946d6a1da59",
+      "bytes": 18723,
+      "sha256": "31d65ce40dc77f2264c574deb7f396f5bff507e5ee38115af4623aed67d6ff44",
+      "integration": "exact-owned-postimage"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-world-hud/native06/ACCEPT.json",
+      "mode": "100644",
+      "gitBlob": "86cac5a121ae726c0cf99e16dd0015e933446aca",
+      "bytes": 555,
+      "sha256": "6b6e7291b10d959552a425dab4f5fbab12c3b0b64a7e75906fe27da6a487de22",
+      "integration": "exact-owned-postimage"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-world-hud/native06/FULL.json",
+      "mode": "100644",
+      "gitBlob": "6aea741d1ceb400a96dc53ebddbc61b72035efce",
+      "bytes": 8616,
+      "sha256": "de41c75beb021b8ab85731bcc0ad7dbd39582723a620c7dd515ecb5f0d2dee02",
+      "integration": "exact-owned-postimage"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-world-hud/native06/config.json",
+      "mode": "100644",
+      "gitBlob": "834bc29de1f5d5357288778113fbb70c61c01de5",
+      "bytes": 22841,
+      "sha256": "cbfc3ed49c79d1183a75ac9d909360ec81d3379df5526166c5df8d5a347901c2",
+      "integration": "exact-owned-postimage"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-world-hud/native06/global-guardian.json",
+      "mode": "100644",
+      "gitBlob": "f1c8c3a998a6ad7a8045250baac5cd150de475b9",
+      "bytes": 2431,
+      "sha256": "709352c33ab226d6ed344ac51550793ed69e9c73c502abeec48fc29a60dc061d",
+      "integration": "exact-owned-postimage"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-world-hud/native06/global-primary.json",
+      "mode": "100644",
+      "gitBlob": "59cff30c47ca809515a5aac7497b17efa625dbfd",
+      "bytes": 2430,
+      "sha256": "8559067185380e6d1651770cc626e7efe33da2d949728019b1044097e3a2d727",
+      "integration": "exact-owned-postimage"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-world-hud/native06/guardian-FULL.json",
+      "mode": "100644",
+      "gitBlob": "d5458a84d2dfada4c62c18b8c0dae3ff018fed0d",
+      "bytes": 6665,
+      "sha256": "67a4503a52dc8e6b5a5e6acfb841f9f211a8ae3d5e893393ce48d87d8c5ae7c7",
+      "integration": "exact-owned-postimage"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-world-hud/native06/guardian-ready.json",
+      "mode": "100644",
+      "gitBlob": "dc77d6932d080b36a942128275c3b85076d8cc14",
+      "bytes": 2967,
+      "sha256": "bb479ff6bd4701b367e2968cf543cdbc3ac9929db4ed62cc720472438c856a5c",
+      "integration": "exact-owned-postimage"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-world-hud/native06/job.log",
+      "mode": "100644",
+      "gitBlob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "integration": "exact-owned-postimage"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-world-hud/native06/output/failure.png",
+      "mode": "100644",
+      "gitBlob": "d44848b9f22374ddc68333795aa39be0b9114b80",
+      "bytes": 21670,
+      "sha256": "6eb4177d845df6b09a11198073269bc32e6bd219a120a435e7c5e674832d19ee",
+      "integration": "exact-owned-postimage"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-world-hud/native06/output/native.json",
+      "mode": "100644",
+      "gitBlob": "71a856a45649efc47a683cc8a8c036791b948121",
+      "bytes": 143043,
+      "sha256": "949ea2c302f2d263690a6984f5715c50514ad2996846ce24b3a6103c31f9f1d3",
+      "integration": "exact-owned-postimage"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-world-hud/native06/output/photo2-comparison.png",
+      "mode": "100644",
+      "gitBlob": "9b49cb24306a1626aee641a4e8e66cf707257774",
+      "bytes": 1014763,
+      "sha256": "d368e8f0d04494cdf3866047b73dd0189f0616aa320e1b9264df7a965f1fe5d8",
+      "integration": "exact-owned-postimage"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-world-hud/native06/output/photo2-overlay.png",
+      "mode": "100644",
+      "gitBlob": "0fd19d9750ff2e448951b58044511a39f1d5cde2",
+      "bytes": 627760,
+      "sha256": "5b7ad7c599e34ca3f460a5fa60a15d61d88dd230daa0327e8670dee86ca9550a",
+      "integration": "exact-owned-postimage"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-world-hud/native06/output/photo2-reference.png",
+      "mode": "100644",
+      "gitBlob": "81e94456f16dd67808a410f7052be3bf9c8d0213",
+      "bytes": 625739,
+      "sha256": "2e3903338aeed523aab1d41f13322eea3d5e1efd931c477ee5222194689f2579",
+      "integration": "exact-owned-postimage"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-world-hud/native06/output/world-safe-area.png",
+      "mode": "100644",
+      "gitBlob": "2cfe85e3222d4466a06c2bd8562b788c7f21ce69",
+      "bytes": 261742,
+      "sha256": "867e3f6f216fc125d472fff6a782ae29cf4cec6de9ce4f30fc762b18b399538d",
+      "integration": "exact-owned-postimage"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-world-hud/native06/output/world-short-reduced-motion.png",
+      "mode": "100644",
+      "gitBlob": "1b37c181b7fa348ce1ad317b7f606f1e65c79237",
+      "bytes": 143143,
+      "sha256": "266f3763f5ee4e8ebd888e3629da9b3c5b409c6790c73f772d965f9f23b9bef8",
+      "integration": "exact-owned-postimage"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-world-hud/native06/stop",
+      "mode": "100644",
+      "gitBlob": "1e13d54dc116a39589fe17fa039ea518e5527455",
+      "bytes": 5,
+      "sha256": "a11c3d917a2149a4b548217038bc8f2dd2130a1966e0c7af5c4225d81f25a8c3",
+      "integration": "exact-owned-postimage"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-world-hud/native07-readset.json",
+      "mode": "100644",
+      "gitBlob": "2fb49f97ef4aec32c90fe04c18e01e650a281162",
+      "bytes": 18981,
+      "sha256": "2138176342003e5ded395a6f3f35735413e70dd47fcde8e6fb93cb91e9dd363f",
+      "integration": "exact-owned-postimage"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-world-hud/native07/ACCEPT.json",
+      "mode": "100644",
+      "gitBlob": "d2f365ae47e9e988b6e8343b569d93e7e41f98ad",
+      "bytes": 555,
+      "sha256": "92092a52517fc271f8fae3be0348d7540cae535e1206c7bb1d43ae41ae3f0821",
+      "integration": "exact-owned-postimage"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-world-hud/native07/FULL-correction.json",
+      "mode": "100644",
+      "gitBlob": "15581cf7cdba21f99d363fd94d0c4ccb4b789a7b",
+      "bytes": 678,
+      "sha256": "75098535ab670e2863d95bae764f631c6f1390400cd9c054a3ef6e206acc7a35",
+      "integration": "exact-owned-postimage"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-world-hud/native07/cleanup-unverified.json",
+      "mode": "100644",
+      "gitBlob": "0070b23ccdc0d5c028298a6d3596a3daa17f25b1",
+      "bytes": 292,
+      "sha256": "5a224d190554c56dc3bf10c4a17f9ad30072fe240566a07ee10f9ce317c33561",
+      "integration": "exact-owned-postimage"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-world-hud/native07/config.json",
+      "mode": "100644",
+      "gitBlob": "c102b776f4db244952a77b8144ea94bb4f8c0380",
+      "bytes": 23109,
+      "sha256": "5282b5840d1f13306607a18a820b90a7348c9471c28ecba6290cbb1ab93d69fa",
+      "integration": "exact-owned-postimage"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-world-hud/native07/global-guardian.json",
+      "mode": "100644",
+      "gitBlob": "55f17ec1e37886da7b319a97eeeb77d6f6b84c92",
+      "bytes": 13834,
+      "sha256": "6c1b9f7e05861753703a8b0a75ba084081f4054d8c90386b0d50134706986e27",
+      "integration": "exact-owned-postimage"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-world-hud/native07/global-primary.json",
+      "mode": "100644",
+      "gitBlob": "f236ba9ad398f419c06c4baf0c227d48aa9b029b",
+      "bytes": 13978,
+      "sha256": "3d77f23c831e9ba378b00b1600776e9e5705fa64478a4b8d0481710c52bf9897",
+      "integration": "exact-owned-postimage"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-world-hud/native07/guardian-FULL.json",
+      "mode": "100644",
+      "gitBlob": "777308dd6e933b65401b6f4609da8267be681192",
+      "bytes": 21595,
+      "sha256": "9b26fbb0aed649edc649222c1c7003cfe37e1679442865cc1e6991fde0d265c7",
+      "integration": "exact-owned-postimage"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-world-hud/native07/guardian-failure.json",
+      "mode": "100644",
+      "gitBlob": "777308dd6e933b65401b6f4609da8267be681192",
+      "bytes": 21595,
+      "sha256": "9b26fbb0aed649edc649222c1c7003cfe37e1679442865cc1e6991fde0d265c7",
+      "integration": "exact-owned-postimage"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-world-hud/native07/guardian-ready.json",
+      "mode": "100644",
+      "gitBlob": "976b493165732b11a955bc88b99904e18367978e",
+      "bytes": 2960,
+      "sha256": "44547b94ac2eb8f56da7b879662a8902954aef2e37755cffbc670a82dbd3acbf",
+      "integration": "exact-owned-postimage"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-world-hud/native07/job.log",
+      "mode": "100644",
+      "gitBlob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "integration": "exact-owned-postimage"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-world-hud/native07/stop",
+      "mode": "100644",
+      "gitBlob": "1e13d54dc116a39589fe17fa039ea518e5527455",
+      "bytes": 5,
+      "sha256": "a11c3d917a2149a4b548217038bc8f2dd2130a1966e0c7af5c4225d81f25a8c3",
+      "integration": "exact-owned-postimage"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-world-hud/native08-readset.json",
+      "mode": "100644",
+      "gitBlob": "662d95ea3d84308201f5f30da0f8298be4166eb7",
+      "bytes": 18981,
+      "sha256": "385413256171e13e141a2de4bdb1f8235fd5d756e20b8bfaee6d47bfd4c39e0a",
+      "integration": "exact-owned-postimage"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-world-hud/native08/ACCEPT.json",
+      "mode": "100644",
+      "gitBlob": "bb19fd1ea75e54cfd64f08d8db882be15a4a01d9",
+      "bytes": 538,
+      "sha256": "e877e7ae85172d0219e972a054d08ef9bdf1adc01c8d8df1d2a218830a447181",
+      "integration": "exact-owned-postimage"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-world-hud/native08/FULL.json",
+      "mode": "100644",
+      "gitBlob": "01f5fdef5dc6a8c88c3642a4407e6a6a50bab4f4",
+      "bytes": 7098,
+      "sha256": "0827bad0284520b2d05403e85115f2b79c2db0a494f1993df3b04892aa7042fc",
+      "integration": "exact-owned-postimage"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-world-hud/native08/config.json",
+      "mode": "100644",
+      "gitBlob": "a5d6ec4a545e28ccd500432a9c0cd3b76d7878cc",
+      "bytes": 23092,
+      "sha256": "f9b28039acef68b44c74d47ee867064a358fe5f76a7654368920bfe355d16f4f",
+      "integration": "exact-owned-postimage"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-world-hud/native08/global-guardian.json",
+      "mode": "100644",
+      "gitBlob": "8a760f57f3dce146da18fff4962ffd104bd2311c",
+      "bytes": 2178,
+      "sha256": "725da061ecd803adb1ca36de3a6e88c37cd3dd8a95dfeeb350ee5d0ae4ab260e",
+      "integration": "exact-owned-postimage"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-world-hud/native08/global-primary.json",
+      "mode": "100644",
+      "gitBlob": "ab860c6b8a37017347065335f237e6c978974467",
+      "bytes": 2364,
+      "sha256": "f5939057e27ff67013f6451e03453e2f407df9493ad6a4464eb443c09f22f6e1",
+      "integration": "exact-owned-postimage"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-world-hud/native08/guardian-FULL.json",
+      "mode": "100644",
+      "gitBlob": "209bdfd6a9d0b4a6f23040b002fa28863005b968",
+      "bytes": 6171,
+      "sha256": "6f25cd7a73435d95f0c1461eff67475b22748a87d00e9b4494ca967964288511",
+      "integration": "exact-owned-postimage"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-world-hud/native08/guardian-ready.json",
+      "mode": "100644",
+      "gitBlob": "0dac3343b4ea679c8c478cb2386cce4ef56592a3",
+      "bytes": 3288,
+      "sha256": "76056ab1b723ec46aabfa5c5d5f3f6d0834bcc3d0b21c8470be40a78f20a7331",
+      "integration": "exact-owned-postimage"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-world-hud/native08/job.log",
+      "mode": "100644",
+      "gitBlob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "integration": "exact-owned-postimage"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-world-hud/native08/output/native.json",
+      "mode": "100644",
+      "gitBlob": "f5b900c5baedf15a3c579d11c11f0cbb6019667a",
+      "bytes": 140682,
+      "sha256": "c327b2f81a68a5fe5d0b5a8a90ba4bc2775a8190246211b5a4b661d2eb38e5c1",
+      "integration": "exact-owned-postimage"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-world-hud/native08/output/world-presence-unavailable.png",
+      "mode": "100644",
+      "gitBlob": "83d13a19633c5b38872dc1fbbdc3fe3aaa895df3",
+      "bytes": 209815,
+      "sha256": "c60b34db9cf3acacbc666d6fe89e99d643fbd34bf8476d54c6be88d724aeea1b",
+      "integration": "exact-owned-postimage"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-world-hud/native08/stop",
+      "mode": "100644",
+      "gitBlob": "1e13d54dc116a39589fe17fa039ea518e5527455",
+      "bytes": 5,
+      "sha256": "a11c3d917a2149a4b548217038bc8f2dd2130a1966e0c7af5c4225d81f25a8c3",
+      "integration": "exact-owned-postimage"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-world-hud/source01-readset.json",
+      "mode": "100644",
+      "gitBlob": "64e1e97287f2aba9e1fa9f681132080432d3cb05",
+      "bytes": 9073,
+      "sha256": "73158644657ec207ac9c2a53234c9f57d902a67cd66a4a954b5f4b1f89b56797",
+      "integration": "exact-owned-postimage"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-world-hud/source01-result.json",
+      "mode": "100644",
+      "gitBlob": "271925e668060de2b7b330ab989bc813108849bd",
+      "bytes": 1764,
+      "sha256": "51ad616a678757d2dd0b4182079260554491340e1a04ed624be0f5f7ba609c6e",
+      "integration": "exact-owned-postimage"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-world-hud/source01/ACCEPT.json",
+      "mode": "100644",
+      "gitBlob": "1d68a26a242d954ae6592fab7b1230e29bfed1d5",
+      "bytes": 165,
+      "sha256": "febd44dc87adb77ad757d5b9b26ed28e6d64cb155320a2ec24f059663934f9ff",
+      "integration": "exact-owned-postimage"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-world-hud/source01/FULL.json",
+      "mode": "100644",
+      "gitBlob": "f3d3b7b257a7737d199fae7daa40d9ec7a8c0443",
+      "bytes": 648,
+      "sha256": "c9edced8a4c2bbc8e17c00937413228b37f42b6de5c2848b3030b561efa697ab",
+      "integration": "exact-owned-postimage"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-world-hud/source01/config.json",
+      "mode": "100644",
+      "gitBlob": "9db516ecf3ad7c76b4ad0c388d853fa2aefa1324",
+      "bytes": 12115,
+      "sha256": "57c3a7363f9ad8a39f7fbb3c36593e60e722508a4e4dbf45f5c0fabc3a4bed82",
+      "integration": "exact-owned-postimage"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-world-hud/source01/guardian-FULL.json",
+      "mode": "100644",
+      "gitBlob": "490a7957a25391bd031dec065165d7937d5dd59f",
+      "bytes": 174,
+      "sha256": "026c007353517fcccf02aca448abead42fd0e5f363d0981ddad4d94f309ce050",
+      "integration": "exact-owned-postimage"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-world-hud/source01/guardian-ready.json",
+      "mode": "100644",
+      "gitBlob": "5c0ce199620062a809daef4d5b7b4d8f340c65e9",
+      "bytes": 174,
+      "sha256": "155b37efc3fcd4378424b7c03eb0228b9e133ca776205ca82cd421877242619f",
+      "integration": "exact-owned-postimage"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-world-hud/source01/job.log",
+      "mode": "100644",
+      "gitBlob": "f4e9be8b589ce002a896a8b2c7decd49d9084a10",
+      "bytes": 996,
+      "sha256": "87d924d7ad625be106e89cd6138858f8b61f6fcbc3ab2350a3ac757d4eaa528e",
+      "integration": "exact-owned-postimage"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-world-hud/source01/output/source.json",
+      "mode": "100644",
+      "gitBlob": "b8affe1c92cdc3992e165336686c78144feb68e8",
+      "bytes": 138,
+      "sha256": "5af29ba8c6c9f1c78a559c311f19747e8238d806ad8c754ce597a73da0645ed8",
+      "integration": "exact-owned-postimage"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-world-hud/source01/stop",
+      "mode": "100644",
+      "gitBlob": "1e13d54dc116a39589fe17fa039ea518e5527455",
+      "bytes": 5,
+      "sha256": "a11c3d917a2149a4b548217038bc8f2dd2130a1966e0c7af5c4225d81f25a8c3",
+      "integration": "exact-owned-postimage"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-world-hud/source02-readset.json",
+      "mode": "100644",
+      "gitBlob": "6f656b0d49ad10e0de3cfb3aea011f3bbc8e53f3",
+      "bytes": 10400,
+      "sha256": "7ea0c5ad47d1fdc8da6d7ba43eda328477d84db23bfb85f307ede018b08821b8",
+      "integration": "exact-owned-postimage"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-world-hud/source02-result.json",
+      "mode": "100644",
+      "gitBlob": "fef8365cb101f315863059c021c69aa98e583647",
+      "bytes": 1295,
+      "sha256": "31de9907f94a9899c7f01cbfb0d207adac4e1ee26a080a4f6296c8cca18c1856",
+      "integration": "exact-owned-postimage"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-world-hud/source02/ACCEPT.json",
+      "mode": "100644",
+      "gitBlob": "6fdbb96451ad3cca468ff5e774e17c885d65e90d",
+      "bytes": 165,
+      "sha256": "9180a29e8016799f01bd97dfc58f781193fce897e4046e587f3174fde8fce921",
+      "integration": "exact-owned-postimage"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-world-hud/source02/FULL.json",
+      "mode": "100644",
+      "gitBlob": "fbd3cf91668a850735fcc729ff61bdd17fb7a1c8",
+      "bytes": 650,
+      "sha256": "e7137a85c7a70ccccaac79695f29bd71336662cf9e50e64cc104fea908d3070d",
+      "integration": "exact-owned-postimage"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-world-hud/source02/config.json",
+      "mode": "100644",
+      "gitBlob": "3a0d1e10af7d7eaf8ae274ea95d0c005a4ec2a4d",
+      "bytes": 13499,
+      "sha256": "8f585da4048ea70b2872e550a7f2bc5e0f8c339d723f829dd1f4375c336b67ac",
+      "integration": "exact-owned-postimage"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-world-hud/source02/guardian-FULL.json",
+      "mode": "100644",
+      "gitBlob": "d697697273e97ea9c12ed195ad09d4c268a3460c",
+      "bytes": 176,
+      "sha256": "5958e28ccc2e1e494f0d99e15678382e48271a90485077eb41659cf535495236",
+      "integration": "exact-owned-postimage"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-world-hud/source02/guardian-ready.json",
+      "mode": "100644",
+      "gitBlob": "9a35ad75e7da05e0118d21f7921bf7e19578952a",
+      "bytes": 174,
+      "sha256": "e5ff16946be8f9af6004db61b9c43849857d9bedc4c424ec4e953bdeefd0f4af",
+      "integration": "exact-owned-postimage"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-world-hud/source02/job.log",
+      "mode": "100644",
+      "gitBlob": "87df4f79bedae1a94cf6dce2819144bd63927f6b",
+      "bytes": 250,
+      "sha256": "68132811e753ca479cb85d4e408d5e6365ef72d1b857e804e6d056c8a4f347f2",
+      "integration": "exact-owned-postimage"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-world-hud/source02/output/source.json",
+      "mode": "100644",
+      "gitBlob": "7f2b28012a7380cfb7b79e8269203ec5b0a34a00",
+      "bytes": 884,
+      "sha256": "ffe61037696d1efd0238024757afaf1b36e2f2f5b9bc27411d087bd4476245cb",
+      "integration": "exact-owned-postimage"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-world-hud/source02/output/types.log",
+      "mode": "100644",
+      "gitBlob": "78e0e98c0be02b266eb4b8ebb1dcc247e7b41035",
+      "bytes": 3669,
+      "sha256": "a5273c74de5f2121fdb39d39543e9fb9909ed1b4fcadd12c2d0c5999d6dd9071",
+      "integration": "exact-owned-postimage"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-world-hud/source02/stop",
+      "mode": "100644",
+      "gitBlob": "1e13d54dc116a39589fe17fa039ea518e5527455",
+      "bytes": 5,
+      "sha256": "a11c3d917a2149a4b548217038bc8f2dd2130a1966e0c7af5c4225d81f25a8c3",
+      "integration": "exact-owned-postimage"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-world-hud/source03-readset.json",
+      "mode": "100644",
+      "gitBlob": "0f554fe5e560b3b66900d9d486d7bf507b218b07",
+      "bytes": 11555,
+      "sha256": "e78a5a9d7c0d348c3a23cd84ee9d0573da7e3d4be6ceecaa9eb51b729aa6668b",
+      "integration": "exact-owned-postimage"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-world-hud/source03/ACCEPT.json",
+      "mode": "100644",
+      "gitBlob": "804c82c9f169b0f85c7933c195f73dbf7bf2c964",
+      "bytes": 167,
+      "sha256": "73fad2b585d6624ce70b11ebe305579bef75901c7f792c9bf4e44e71996cd3e2",
+      "integration": "exact-owned-postimage"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-world-hud/source03/FULL.json",
+      "mode": "100644",
+      "gitBlob": "9e32d7018faca5654a6853ec0a6569f42b682513",
+      "bytes": 429,
+      "sha256": "5415b7ca5fb5195671a20defad972657933eaaeb90ec1ad2ee7b2b5dd18039b4",
+      "integration": "exact-owned-postimage"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-world-hud/source04-readset.json",
+      "mode": "100644",
+      "gitBlob": "ffca25a6a16ba165ad79e6154794ebb47fc79ec2",
+      "bytes": 7949,
+      "sha256": "ab00a633c19370e478909003969ff9680cae481bdbe222b2dd30b2a7c69bb8e0",
+      "integration": "exact-owned-postimage"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-world-hud/source04/ACCEPT.json",
+      "mode": "100644",
+      "gitBlob": "a083b15b73b0df9cea0582197f33814b7f322295",
+      "bytes": 157,
+      "sha256": "66f8be02ff5e8b2fb68e9895f0a62d04528551590ac9db3cb0ecb399c20e6332",
+      "integration": "exact-owned-postimage"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-world-hud/source04/FULL.json",
+      "mode": "100644",
+      "gitBlob": "09338014238752fee6c04647e85a596ed9dfff73",
+      "bytes": 615,
+      "sha256": "2affc19b7c7cb486ea0b13e7b23f62c02a650ec42967fa79d8b98c45e913004e",
+      "integration": "exact-owned-postimage"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-world-hud/source04/config.json",
+      "mode": "100644",
+      "gitBlob": "6d776a041309ebf240dabeda9d5a7cff257f457c",
+      "bytes": 10933,
+      "sha256": "731c1547b470caf397b28fc0df132051519b9892c450064dfb46f383aa26520b",
+      "integration": "exact-owned-postimage"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-world-hud/source04/guardian-FULL.json",
+      "mode": "100644",
+      "gitBlob": "9ec133a0b3d7161f379693096b493e9ac00dd1fa",
+      "bytes": 176,
+      "sha256": "7af867e5343e901e640004121c5f5770a296e1986907a6a150905c4bdab5c12d",
+      "integration": "exact-owned-postimage"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-world-hud/source04/guardian-ready.json",
+      "mode": "100644",
+      "gitBlob": "b10e3e95ded94bcc184d778f7af93fdfa976e4ec",
+      "bytes": 174,
+      "sha256": "1f222781114c0a7c92410cd54a716ca62151d7cdc94308af6735a092dd3da779",
+      "integration": "exact-owned-postimage"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-world-hud/source04/job.log",
+      "mode": "100644",
+      "gitBlob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "integration": "exact-owned-postimage"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-world-hud/source04/output/source.json",
+      "mode": "100644",
+      "gitBlob": "494f16b36a2ebfc5e47464658e2e36ecc5e79948",
+      "bytes": 853,
+      "sha256": "1a130fec26204948a922688f4bc713fb56491c72c667edc90c0aeff71f089d8d",
+      "integration": "exact-owned-postimage"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-world-hud/source04/output/types.log",
+      "mode": "100644",
+      "gitBlob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "integration": "exact-owned-postimage"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-world-hud/source04/stop",
+      "mode": "100644",
+      "gitBlob": "1e13d54dc116a39589fe17fa039ea518e5527455",
+      "bytes": 5,
+      "sha256": "a11c3d917a2149a4b548217038bc8f2dd2130a1966e0c7af5c4225d81f25a8c3",
+      "integration": "exact-owned-postimage"
+    },
+    {
+      "path": "docs/mcr/frontend/parade-ink-world-hud.md",
+      "mode": "100644",
+      "gitBlob": "fb29a888aef3f5792119e2f1206d59477373f0bc",
+      "bytes": 14798,
+      "sha256": "50b791b7b4477a24319b7850a4fc769d8817d47948c4473876bb31293dfb17ca",
+      "integration": "exact-owned-postimage"
+    },
+    {
+      "path": "frontend/src/app/WorldShell.tsx",
+      "mode": "100644",
+      "gitBlob": "2e254b92470e72d32a534f4c8267be5b6545c074",
+      "bytes": 13171,
+      "sha256": "654e57358a27a819a0fca37200508be4cfcda0d10beb3f69b751f25abe5d098e",
+      "integration": "authorized-hunks-only"
+    },
+    {
+      "path": "frontend/src/app/shell-chrome/index.tsx",
+      "mode": "100644",
+      "gitBlob": "a7dd66057806abf4578bed4ebddb05127cf9f24c",
+      "bytes": 5770,
+      "sha256": "6763977c4da718b9c7041eb189a7be82ddc0f40300f4327dfde24a93c6a00bf0",
+      "integration": "authorized-hunks-only"
+    },
+    {
+      "path": "frontend/src/features/parade-ink/world-hud/foundation-overlay.mjs",
+      "mode": "100644",
+      "gitBlob": "9ea0ae7d0e327046629beb2b0e9e97a455bca1dc",
+      "bytes": 2983,
+      "sha256": "5cf0493e3fdbaf47f4fdc5c3fa728e1dce3f09948011a6e8ff1e36e7c68bcd4d",
+      "integration": "exact-owned-postimage"
+    },
+    {
+      "path": "frontend/src/features/parade-ink/world-hud/foundation-readset.json",
+      "mode": "100644",
+      "gitBlob": "b21ebd7957b24eb078aa326574d05c5f8d9fc1d6",
+      "bytes": 4941,
+      "sha256": "a9b89a8bee524066009722f020cccc869ff506f65a79b35e5d7de289a6f24fd7",
+      "integration": "exact-owned-postimage"
+    },
+    {
+      "path": "frontend/src/features/parade-ink/world-hud/index.tsx",
+      "mode": "100644",
+      "gitBlob": "65898bc6d4234cf0364a360ea31958b76471a48b",
+      "bytes": 4748,
+      "sha256": "07a665805caf24baba0655430bf3ea9ff1782ef5f0bcdbc23503654ecc24f1a5",
+      "integration": "exact-owned-postimage"
+    },
+    {
+      "path": "frontend/src/features/parade-ink/world-hud/native-fixture.html",
+      "mode": "100644",
+      "gitBlob": "97f5b0f9876306c97d0b6aab57538a0ae12150d5",
+      "bytes": 339,
+      "sha256": "4eceabddbd48b40df5c149242af0f774edf7bd44484e3dfc2aafd296c94c1707",
+      "integration": "exact-owned-postimage"
+    },
+    {
+      "path": "frontend/src/features/parade-ink/world-hud/native-fixture.mjs",
+      "mode": "100644",
+      "gitBlob": "10eb7d4baede3b73508b9a13c788a7d5685d8f2c",
+      "bytes": 2001,
+      "sha256": "76e8ed7cbc2816e0b49bb5f180d3edcbbbb40dfb922aaa217136cbc352efd18d",
+      "integration": "exact-owned-postimage"
+    },
+    {
+      "path": "frontend/src/features/parade-ink/world-hud/native-observer.mjs",
+      "mode": "100644",
+      "gitBlob": "39d2318b7c0dde384fb3725e74623a64f0ed27d1",
+      "bytes": 781,
+      "sha256": "ff843ad0c91b13c63e95cb0de5aecbe5e5be8c26c87b26dda23620ad1d4bad4f",
+      "integration": "exact-owned-postimage"
+    },
+    {
+      "path": "frontend/src/features/parade-ink/world-hud/native.mjs",
+      "mode": "100644",
+      "gitBlob": "0d09f467ef52287b53140826ebd1ed6a16dd0af6",
+      "bytes": 23751,
+      "sha256": "3bda554957d1a6d825843e738b70b4393f45292f5194e179146df78a0d04cd7c",
+      "integration": "exact-owned-postimage"
+    },
+    {
+      "path": "frontend/src/features/parade-ink/world-hud/source.mjs",
+      "mode": "100644",
+      "gitBlob": "edd121c5edb0f484bb2b0d87e3296fbfc3a2419c",
+      "bytes": 3814,
+      "sha256": "74bc66d1fc8fef8bbaad561cf96b7eceaae165ee3c613a0a40a27d8e33b283bd",
+      "integration": "exact-owned-postimage"
+    },
+    {
+      "path": "frontend/src/features/parade-ink/world-hud/validation.config.mjs",
+      "mode": "100644",
+      "gitBlob": "36a367b7edd95f108b1c2a252381e74e287a0070",
+      "bytes": 757,
+      "sha256": "b7bebb8a26e3927ba551229fd2c60dc9896cb140477d84a39037dc579a62852d",
+      "integration": "exact-owned-postimage"
+    },
+    {
+      "path": "frontend/src/features/parade-ink/world-hud/world-context.tsx",
+      "mode": "100644",
+      "gitBlob": "c888849924dc8459f5e316c797bf36464b42054c",
+      "bytes": 1897,
+      "sha256": "80e3f26bb9b9f606b55ac609ba76e157b67f002734758a8b215c98b967169836",
+      "integration": "exact-owned-postimage"
+    },
+    {
+      "path": "frontend/src/features/parade-ink/world-hud/world-hud.css",
+      "mode": "100644",
+      "gitBlob": "ba8a5976d869207adc196609e0d22b6863bde831",
+      "bytes": 6606,
+      "sha256": "689f26586a653575ff5019b888325253d6b681f84bb8068209e346a74898cc7e",
+      "integration": "exact-owned-postimage"
+    },
+    {
+      "path": "frontend/src/features/parade-ink/world-hud/world-hud.test.tsx",
+      "mode": "100644",
+      "gitBlob": "eff81e2e8695bdeabe54bd8cdcb96ea9d619ffba",
+      "bytes": 8123,
+      "sha256": "49d54d44cf218792652a85c40967d0e9fe8cb75452d2b208b1187d25f9896b7e",
+      "integration": "exact-owned-postimage"
+    }
+  ],
+  "fileCount": 159,
+  "logicalBytes": 9937687,
+  "qualificationResult": "docs/mcr/evidence/parade-ink-world-hud/final-result.json",
+  "runtimeFullEpoch": 1793842664.464797,
+  "resourcesReleased": true,
+  "canonicalFoundation": "Preserve current published PI01;15/18 fixture leaves match observed3a125d952,3new glyph/rotation/legacy-layer fixes must remain. Current combined master is not native-rerun.",
+  "publication": "Direct standing412e; no technical ACK/review gate. This manifest and shared-callers.patch are separately committed metadata; payloadRevision covers listed postimages.",
+  "allowedDiffCheck": [
+    "docs/mcr/evidence/parade-ink-world-hud/shared-callers.patch:10: trailing whitespace.",
+    "+ ",
+    "docs/mcr/evidence/parade-ink-world-hud/shared-callers.patch:39: trailing whitespace.",
+    "+ ",
+    "docs/mcr/evidence/parade-ink-world-hud/shared-callers.patch:52: trailing whitespace.",
+    "+ ",
+    "docs/mcr/evidence/parade-ink-world-hud/shared-callers.patch:71: trailing whitespace.",
+    "+ ",
+    "docs/mcr/evidence/parade-ink-world-hud/shared-callers.patch:85: trailing whitespace.",
+    "+ ",
+    "docs/mcr/evidence/parade-ink-world-hud/source02/job.log:9: new blank line at EOF."
+  ],
+  "allowedDiffCheckReason": "Five literal unified-diff empty context lines require their leading space; the unchanged Source02 raw log ends with a blank line. Preserve exact patch and historical evidence. No production source whitespace exception."
+}

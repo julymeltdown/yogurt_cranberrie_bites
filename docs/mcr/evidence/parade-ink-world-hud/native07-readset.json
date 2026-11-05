@@ -1,0 +1,396 @@
+{
+  "task": "PI08",
+  "round": "NATIVE07_FINAL_REMAINDER",
+  "qualification": "FROZEN_NOT_RUN",
+  "base": "aac0d96d152e47150f4fac0f57b69659ad20a956",
+  "foundation": "b5b44e47531e3b75febc5ee5cdd6a11b1648779c",
+  "cases": 10,
+  "files": [
+    {
+      "path": "/Users/lhs/Desktop/mcr-worktrees/qa07-input-delta-332b/frontend/src/app/WorldShell.tsx",
+      "bytes": 13171,
+      "sha256": "654e57358a27a819a0fca37200508be4cfcda0d10beb3f69b751f25abe5d098e"
+    },
+    {
+      "path": "/Users/lhs/Desktop/mcr-worktrees/qa07-input-delta-332b/frontend/src/app/shell-chrome/index.tsx",
+      "bytes": 5770,
+      "sha256": "6763977c4da718b9c7041eb189a7be82ddc0f40300f4327dfde24a93c6a00bf0"
+    },
+    {
+      "path": "/Users/lhs/Desktop/mcr-worktrees/qa07-input-delta-332b/docs/mcr/evidence/parade-ink-world-hud/guard.py",
+      "bytes": 14126,
+      "sha256": "7fef0ac0e873b2990bd3d3e75898d21f2fdf5f5d5fdae57bbe2827a6d58ad381"
+    },
+    {
+      "path": "/Users/lhs/Desktop/mcr-worktrees/qa07-input-delta-332b/scripts/mcr/resource-accounting/accounting.py",
+      "bytes": 14496,
+      "sha256": "1a2ed019be0af4d673786532c8b46eda81cd6137a7ac27c9f97b83a34387483c"
+    },
+    {
+      "path": "/Users/lhs/Desktop/mcr-worktrees/qa07-input-delta-332b/frontend/tsconfig.json",
+      "bytes": 660,
+      "sha256": "55050e293472fb6ec4aa2690c8cad7cb5a5a107ba483bf98851a0c4e707c6528"
+    },
+    {
+      "path": "/Users/lhs/Desktop/mcr-worktrees/qa07-input-delta-332b/frontend/package.json",
+      "bytes": 1265,
+      "sha256": "0f7a05587bcf1af5f4d5d077a0c2d90011adc87e1036a61db9ef3acf37c8b7d3"
+    },
+    {
+      "path": "/Users/lhs/Desktop/mcr-worktrees/qa07-input-delta-332b/frontend/src/world/avatar/__tests__/motion-adoption/vitest.config.mjs",
+      "bytes": 1629,
+      "sha256": "a11c86d4d237a08854d4104ae461c89830061a9da6ce7b43a36c1f7d94d2ab9b"
+    },
+    {
+      "path": "/usr/local/bin/node",
+      "bytes": 145238560,
+      "sha256": "a9bd0630891c2dcdee70de88270fee2cc0c4a9e76495039dd3b4f91c5e6b71df"
+    },
+    {
+      "path": "/Users/lhs/Desktop/mcr/frontend/package.json",
+      "bytes": 1265,
+      "sha256": "0f7a05587bcf1af5f4d5d077a0c2d90011adc87e1036a61db9ef3acf37c8b7d3"
+    },
+    {
+      "path": "/Users/lhs/Desktop/mcr-worktrees/qa07-input-delta-332b/frontend/src/features/parade-ink/world-hud/foundation-overlay.mjs",
+      "bytes": 2983,
+      "sha256": "5cf0493e3fdbaf47f4fdc5c3fa728e1dce3f09948011a6e8ff1e36e7c68bcd4d"
+    },
+    {
+      "path": "/Users/lhs/Desktop/mcr-worktrees/qa07-input-delta-332b/frontend/src/features/parade-ink/world-hud/index.tsx",
+      "bytes": 4748,
+      "sha256": "07a665805caf24baba0655430bf3ea9ff1782ef5f0bcdbc23503654ecc24f1a5"
+    },
+    {
+      "path": "/Users/lhs/Desktop/mcr-worktrees/qa07-input-delta-332b/frontend/src/features/parade-ink/world-hud/source.mjs",
+      "bytes": 3814,
+      "sha256": "74bc66d1fc8fef8bbaad561cf96b7eceaae165ee3c613a0a40a27d8e33b283bd"
+    },
+    {
+      "path": "/Users/lhs/Desktop/mcr-worktrees/qa07-input-delta-332b/frontend/src/features/parade-ink/world-hud/validation.config.mjs",
+      "bytes": 757,
+      "sha256": "b7bebb8a26e3927ba551229fd2c60dc9896cb140477d84a39037dc579a62852d"
+    },
+    {
+      "path": "/Users/lhs/Desktop/mcr-worktrees/qa07-input-delta-332b/frontend/src/features/parade-ink/world-hud/world-context.tsx",
+      "bytes": 1897,
+      "sha256": "80e3f26bb9b9f606b55ac609ba76e157b67f002734758a8b215c98b967169836"
+    },
+    {
+      "path": "/Users/lhs/Desktop/mcr-worktrees/qa07-input-delta-332b/frontend/src/features/parade-ink/world-hud/world-hud.css",
+      "bytes": 6606,
+      "sha256": "689f26586a653575ff5019b888325253d6b681f84bb8068209e346a74898cc7e"
+    },
+    {
+      "path": "/Users/lhs/Desktop/mcr-worktrees/qa07-input-delta-332b/frontend/src/features/parade-ink/world-hud/world-hud.test.tsx",
+      "bytes": 8123,
+      "sha256": "49d54d44cf218792652a85c40967d0e9fe8cb75452d2b208b1187d25f9896b7e"
+    },
+    {
+      "path": "/Library/Frameworks/Python.framework/Versions/3.14/bin/python3.14",
+      "bytes": 135696,
+      "sha256": "1192b994fbb50303c9df2cc97c9d63797d454c7f57f20ca682877c9e770429aa"
+    },
+    {
+      "path": "/Users/lhs/Desktop/mcr-worktrees/qa07-input-delta-332b/frontend/src/features/parade-ink/world-hud/native-fixture.html",
+      "bytes": 339,
+      "sha256": "4eceabddbd48b40df5c149242af0f774edf7bd44484e3dfc2aafd296c94c1707"
+    },
+    {
+      "path": "/Users/lhs/Desktop/mcr-worktrees/qa07-input-delta-332b/frontend/src/features/parade-ink/world-hud/native-fixture.mjs",
+      "bytes": 2001,
+      "sha256": "76e8ed7cbc2816e0b49bb5f180d3edcbbbb40dfb922aaa217136cbc352efd18d"
+    },
+    {
+      "path": "/Users/lhs/Desktop/mcr-worktrees/qa07-input-delta-332b/frontend/src/features/parade-ink/world-hud/native-observer.mjs",
+      "bytes": 781,
+      "sha256": "ff843ad0c91b13c63e95cb0de5aecbe5e5be8c26c87b26dda23620ad1d4bad4f"
+    },
+    {
+      "path": "/Users/lhs/Desktop/mcr-worktrees/qa07-input-delta-332b/frontend/src/features/parade-ink/world-hud/native.mjs",
+      "bytes": 23661,
+      "sha256": "e312bd0be9f90b1123f5cdbce8c6c2bff2b8484e33d0c803f53634101fe08f80"
+    },
+    {
+      "path": "/Users/lhs/Desktop/mcr-worktrees/qa07-input-delta-332b/frontend/src/features/parade-ink/world-hud/foundation-readset.json",
+      "bytes": 4941,
+      "sha256": "a9b89a8bee524066009722f020cccc869ff506f65a79b35e5d7de289a6f24fd7"
+    },
+    {
+      "path": "/Users/lhs/Desktop/mcr-worktrees/qa07-input-delta-332b/docs/mcr/evidence/parade-ink-world-hud/native-public-readset.json",
+      "bytes": 391250,
+      "sha256": "c8a7d4c7ec48e97ee60e0b5730bda1493f824a136960c9914e7c2178b0c2e22d"
+    },
+    {
+      "path": "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome",
+      "bytes": 367696,
+      "sha256": "3f0acaf1e585195596d73ffa1824baa72c3c3ac115b5cfc43d789030a3f23d93"
+    },
+    {
+      "path": "/Applications/Google Chrome.app/Contents/Info.plist",
+      "bytes": 18856,
+      "sha256": "783428776205762dc39a2e2d9cc03ea02ba3a4357f1dc25cc7dd33e0107825b9"
+    },
+    {
+      "path": "/Users/lhs/Desktop/mcr-worktrees/fe-runtime-preferences/docs/mcr/design/parade-ink-2026-11-05/parade-ink.jpg",
+      "bytes": 321008,
+      "sha256": "9e7f17a666e1ecfc738a14b75bb3a166235a05c401f206aa24f26cf7463cbc27"
+    },
+    {
+      "path": "/Users/lhs/Desktop/mcr-worktrees/qa07-input-delta-332b/frontend/src/app/world-entry/__tests__/art06-default-entry/preview.ts",
+      "bytes": 8569,
+      "sha256": "73bf2e4b66738206589b2dd7430686944b4a2f252a96e81509e9d1580504af65"
+    },
+    {
+      "path": "/Users/lhs/Desktop/mcr-worktrees/qa07-input-delta-332b/frontend/src/app/world-entry/__tests__/map-roof-street-uptake/preview.ts",
+      "bytes": 1287,
+      "sha256": "cde383b4571b2f22e9f5701288e33f9b6047d326767ce297668406087449103b"
+    },
+    {
+      "path": "/Users/lhs/Desktop/mcr-worktrees/qa07-input-delta-332b/frontend/src/app/world-entry/__tests__/map-presentation-v1/source-inputs/operator-bootstrap.json",
+      "bytes": 204161,
+      "sha256": "11e25d9e692e224d35b91c0a77bf9e8da8dfa42ad3d8dbf650e281e905176b42"
+    },
+    {
+      "path": "/Users/lhs/Desktop/mcr-worktrees/qa07-input-delta-332b/frontend/src/app/world-entry/__tests__/map-presentation-v1/source-inputs/local-input.json",
+      "bytes": 267,
+      "sha256": "89e30ff0c2e72bbeb24c82fb70c2bdeb090520fca5beb1c671c1f2557d5dda6b"
+    },
+    {
+      "path": "/Users/lhs/Desktop/mcr-worktrees/qa07-input-delta-332b/frontend/src/app/world-entry/__tests__/map-presentation-v1/eligible-attendee.mjs",
+      "bytes": 505,
+      "sha256": "37a5cfe98bad3bc32f99034bc4b7889ef9315f5c494c06fee9f45223448df35e"
+    },
+    {
+      "path": "/Users/lhs/Desktop/mcr-worktrees/qa07-input-delta-332b/frontend/src/main.tsx",
+      "bytes": 2447,
+      "sha256": "73dcb049c45fc5125de1637587a09373664c31d4899ef15dea0119a0ace3d5a6"
+    },
+    {
+      "path": "/Users/lhs/Desktop/mcr-worktrees/qa07-input-delta-332b/docs/mcr/evidence/parade-ink-world-hud/global_census.py",
+      "bytes": 12589,
+      "sha256": "09fc94224586b8d9ac341340bb0dbe064505760e6037b017dccd78cfb6ee7d0a"
+    },
+    {
+      "path": "/Users/lhs/Desktop/mcr-worktrees/qa07-input-delta-332b/frontend/src/shared/styles/cozy-identity-backgrounds-v1.css",
+      "bytes": 3891,
+      "sha256": "77b25626d6c94f3f226e1ccc079a8b96d11d6a4873dfc6e20fcef174c49f5f6d"
+    },
+    {
+      "path": "/Users/lhs/Desktop/mcr-worktrees/qa07-input-delta-332b/frontend/src/shared/styles/cozy-community-backgrounds-v1.css",
+      "bytes": 2260,
+      "sha256": "d26dd8fbee928539f2689ccd9bb6269e4cb964c58b78e8cc86afbd894f228504"
+    },
+    {
+      "path": "/Users/lhs/Desktop/mcr-worktrees/qa07-input-delta-332b/docs/mcr/evidence/parade-ink-world-hud/native02/output/native.json",
+      "bytes": 111360,
+      "sha256": "5043c7166b9793a9a1eb329b6e63cc185421b2cd4c13d824d7c3ce26222cb2c6"
+    },
+    {
+      "path": "/Users/lhs/Desktop/mcr-worktrees/qa07-input-delta-332b/docs/mcr/evidence/parade-ink-world-hud/native02/output/world-390-reference-height.png",
+      "bytes": 274371,
+      "sha256": "cee8c9e57944c8ac6a0cd22fa670c7f53cebade0c3fa16ddef12d98eea667945"
+    },
+    {
+      "path": "/Users/lhs/Desktop/mcr-worktrees/qa07-input-delta-332b/docs/mcr/evidence/parade-ink-world-hud/native03/output/native.json",
+      "bytes": 147103,
+      "sha256": "8b0e2869a1956dc6e8267c3fbd32cf46ccae570e716f3ca66d6811920c036e62"
+    },
+    {
+      "path": "/Library/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python",
+      "bytes": 118272,
+      "sha256": "c9ce7b8516f24348a0e589e3004fd1246dc04756168b98bb8bd71fc67d0b8868"
+    },
+    {
+      "path": "/usr/sbin/lsof",
+      "bytes": 470608,
+      "sha256": "bad69cb7c04279feeca6bcbc87cf67630f7564ef5a20695a01c09f2952e0721b"
+    },
+    {
+      "path": "/Users/lhs/Desktop/mcr-worktrees/qa07-input-delta-332b/docs/mcr/evidence/parade-ink-world-hud/native06/output/native.json",
+      "bytes": 143043,
+      "sha256": "949ea2c302f2d263690a6984f5715c50514ad2996846ce24b3a6103c31f9f1d3"
+    }
+  ],
+  "finiteOffer": "REQUEST_PENDING",
+  "controlCorrection": "Fresh SOURCE02; Vitest exported package root; presentation glyphs and additive safearea corrected; native prepared but never executed; historical MAX carried as arguments.",
+  "priorFailed": {
+    "round": "SOURCE01",
+    "actualFullEpoch": 1793837453.329229,
+    "cause": "unexported vitest/vitest.mjs package subpath before test child",
+    "newMax": 154731953,
+    "wholeMax": 5275267072
+  },
+  "preAcceptanceMetadataCorrection": "Retained Testing Library ByRoleOptions has no exact property; remove Playwright-only redundant option from one synthetic navigation query. Accessible-name match and10cases unchanged; no production change.",
+  "retainedSource02": {
+    "cases": 10,
+    "lint": "PASS own feature and2sharedcallers",
+    "syntax": "PASS sixscripts; changeddriverwillbecheckedagain",
+    "typeErrors": 4,
+    "typeFixes": "2fixturetypeannotations; readonly Zod resolution for imported external contract generated code, no contract/dependency mutation",
+    "source": "df5445fb5ccaa68bf7e9bdd3895ea37221765a32"
+  },
+  "carry": {
+    "new": 293791153,
+    "whole": 6867591168
+  },
+  "explicitPI01Correction": {
+    "base": "056a8c48ff667134dee8e5e99710185294e4b898",
+    "path": "frontend/src/app/shell.css",
+    "sha256": "b12f4bbddb55d144fb6da89ab2686e0225455ed3bedaff70ad8a34ef6a0161dc",
+    "qualification": "Native-unqualified; exact one-file correction adopted before acceptance,17otherpostimages unchanged",
+    "closedReadsetSHA": "9630cc0b8b487b6a6348612dbadc27be868729f5e5189f61c5a559b31558c2c9"
+  },
+  "priorSource03": {
+    "actualFullEpoch": 1793838469.949436,
+    "status": "FAIL_PRECHILD_PIN_CHANGED",
+    "testsTypesLint": "NOT_RUN",
+    "newPrior": 163235249,
+    "wholePrior": 5278744576,
+    "peerWorkingManifestObserved": "d14f820c6c71ec0042d1827c86ff03c5b615a259c9a8d97870d1db0074f8d6d8",
+    "productionChanged": false
+  },
+  "immutablePI01LeafTuples": {
+    "sha256": "a9b89a8bee524066009722f020cccc869ff506f65a79b35e5d7de289a6f24fd7",
+    "leaves": 18,
+    "logicalBytes": 732123,
+    "source": "Root153 exact tuples; independently verified git ls-tree mode/blob/revision and git-show byte/SHA for everyleaf; no mutable qualification manifest lookup",
+    "baseline": "056a8c48ff667134dee8e5e99710185294e4b898",
+    "oneCorrection": "b5b44e47531e3b75febc5ee5cdd6a11b1648779c",
+    "consumption": "git-show revision:path directly; all18mode/blob/size/SHA verified before acceptance; source child checks all18 hashes before/after; no mutable physical producer leaves"
+  },
+  "sourceQualification": {
+    "round": "SOURCE04",
+    "result": "PASS",
+    "actualFullEpoch": 1793839351.539408,
+    "tenCasesRetainedByEmittedJavaScriptIdentity": true
+  },
+  "native": {
+    "default": [
+      390,
+      844
+    ],
+    "referenceHeight": [
+      390,
+      775
+    ],
+    "changed": [
+      [
+        360,
+        800
+      ],
+      [
+        430,
+        932
+      ]
+    ],
+    "short": [
+      390,
+      500
+    ],
+    "DPR": 1,
+    "fixture": "actual main.tsx; canonical Auth/router/providers; controlled HTTP/C05 current Map4/static C06v1; SOCIAL baseline fixture only",
+    "reference": "Photo2 crop [436,60,832,847], normalized390/396; full unmasked comparison/overlay",
+    "publicAssetReadset": "c8a7d4c7ec48e97ee60e0b5730bda1493f824a136960c9914e7c2178b0c2e22d",
+    "checks": "44px/fonts/safearea20+keyline2/keyboardfocus/reducedmotion/shortheight/6nav/persisted3eras/oneincumbentenginecamera/socket/authorizedpresencewithdrawal",
+    "sourceReplay": "none; exact3changed nativeharness Node syntax checks; overlay parses through actual driver import",
+    "resourceControl": "Both existing owned guards independently sample per-owner actual receipt directory+legacy accepted claims, PID birth/ancestry/root,96PID/18GiB/G4/source3/browser2/target1; invisible accepted roots retain reservedcaps; unknown roots failclosed. Eleven pure bounded census cases run inside each guard before any workload. Own atomic receipt sole-writer path authorized21d, included inode scope.",
+    "remainingOnly": "Retain02fourwidth/keyboard/Nearby/3eras and03sixnav/eraAcrossNavigation. Freshmain+singleDANGERsetup; ONLYsafeareaOverride20+2/shortreducedmotion/referencepairfromretained02PNG/reload/presencewithdraw/usedpublicassetlist. Same3harnessNodechecks, no oldmatrixreplay.",
+    "reloadPrecondition": "Retain explicit scenario/era/caller selectors inURL before actualbrowserreload; otherwise existingfixture chooses originalworld-disabledcapabilities afterrouterdropsquery. No production authority override."
+  },
+  "priorNative": {
+    "round": "NATIVE01",
+    "status": "FAIL_PRE_NODE_BROWSER",
+    "actualFullEpoch": 1793839868.9184399,
+    "cause": "Python __file__ is absolute while PS argv retained the relative launch spelling. Strict script-string identity comparison rejected own controller before any Node/browser/guardian.",
+    "rawPreserved": true,
+    "validation": "NOT_RUN",
+    "retainedNewPrior": 172512689,
+    "conservativeStartupReservation": 8388608,
+    "newCarriedUpper": 180901297,
+    "wholeCompleteBaseline": 6791987200,
+    "wholeCarriedUpper": 6800375808,
+    "zeroRawPeaks": "No live sample completed; zero fields are not an accounting PASS or replacement for carried maxima.",
+    "resources": {
+      "workflow": 0,
+      "children": [],
+      "linkAbsent": true,
+      "scratchAbsent": true
+    },
+    "fix": "Resolve actual argv script token against explicit controller workingDirectory and compare exact absolute path; add relative-launch regression to both guards ten-case selftest."
+  },
+  "priorNative02": {
+    "round": "NATIVE02",
+    "status": "PARTIAL_NOT_FINAL_PASS",
+    "actualFullEpoch": 1793840244.1515179,
+    "failureStage": "six-destinations",
+    "cause": "ByRole navigation assertion cannot see the incumbent nav after Feed opens a full panel. Screenshot confirms correct unavailable Feed full-panel route.",
+    "qualified": [
+      "fourwidthcaptures/fonts/type/44px/ink/nooverflow",
+      "oneincumbentGameCameraCanvasSocket",
+      "keyboardcaption/menuEscapeFocus",
+      "Nearby/back",
+      "REVENGEdefaultand3independenteras"
+    ],
+    "unrun": [
+      "sixnavcompletion",
+      "safearea",
+      "shortheight/reducedmotion",
+      "referencecomparison",
+      "reloadpersistence",
+      "presencewithdrawal"
+    ],
+    "carry": {
+      "new": 217789873,
+      "whole": 6834036736
+    },
+    "resources": "FULL all0/linkTMPabsent/bothguardsclosed",
+    "assetBoundary": "Actual asset body comparison handler ran; no final used-asset list retained. Do not claim a retained list."
+  },
+  "priorNative03": {
+    "round": "NATIVE03",
+    "status": "PARTIAL_NOT_FINAL_PASS",
+    "actualFullEpoch": 1793840678.937908,
+    "qualified": [
+      "all6navroutes/selectedDOMstate/incumbentcontinuity",
+      "DangerSurvivesNavigation"
+    ],
+    "failure": "Harness used non-existent CDP Emulation.setSafeAreaInsets; retained protocol primary definitions specify Emulation.setSafeAreaInsetsOverride.",
+    "remaining": [
+      "nonzero safearea",
+      "short/reducedmotion",
+      "referencecomparison",
+      "reload",
+      "presencewithdraw",
+      "publicassetlist"
+    ],
+    "carry": {
+      "new": 268580273,
+      "whole": 6850813952
+    },
+    "resources": "FULL all0/linkTMPabsent/bothguardsclosed/11guardcasesPASS"
+  },
+  "priorNative04": {
+    "round": "NATIVE04",
+    "status": "FAIL_PRE_NODE_BROWSER",
+    "actualFullEpoch": 1793841360.1899142,
+    "cause": "Resolved ordinary Git publisher started a different truthful intake script; fixed one-filename check rejected it before any Node/browser.",
+    "qualified": "14guardinitialcases; no new App checks",
+    "carry": {
+      "new": 293791153,
+      "whole": 6867591168
+    },
+    "resources": "FULL all0/linkTMPabsent/bothguardsclosed",
+    "correction": "Validate soleknownpublisher owner/birth/exact advertisedargv/script and ownedmcr-publisher-412e-*.py naming; reject arbitraryscripts orNode/Cargo/Chrome children.16pureguardcases."
+  },
+  "prospectiveNative05Admission": {
+    "offer": "REQUEST_PENDING",
+    "launch": "absolute actual Python executable + absolute owned guard script + explicit checkout cwd",
+    "retainedNewConservativeUpper": 293791153,
+    "priorWholeConservativeUpper": 6867591168,
+    "basis": "Native03 maximum already included entire16ordinary book. Additional16 conservative carry margin honors stricter wording of Native04 offer; no extra allocation/refund/reset or physical-spend claim.",
+    "newTotalCap": 402653184,
+    "futureUpper": 108862031,
+    "controlCorrection": "19pureguardcases; ordinaryprep BYTEbookings notexecutioncohorts, futureupperretainedwithinordinary2.5GiB; no unknownroot exemption fromprepbook alone. Knownpublisher resolved bysoleowner+actualbirth/executable/advertisedCURRENTprogram/lsofactualcwd/ancestry, no historicalbasename; Node/Cargo/Chrome underordinarybook fails. BothuniqueLIVEcensusfiles."
+  }
+}

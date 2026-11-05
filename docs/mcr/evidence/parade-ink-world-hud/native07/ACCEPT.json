@@ -1,0 +1,18 @@
+{
+  "offer": "HUD-FINAL-REMAINDER-NATIVE07-0118",
+  "acceptedEpoch": 1793842489.447374,
+  "workEpoch": 1793842789.447374,
+  "fullEpoch": 1793842849.447374,
+  "parentPID": 72266,
+  "parentBirth": "Thu Nov  5 10:34:49 2026",
+  "kind": "native",
+  "root": "/Users/lhs/Desktop/mcr-worktrees/qa07-input-delta-332b",
+  "private": "/private/tmp/mcr-pi08-native07-332b",
+  "caps": {
+    "processes": 24,
+    "rss": 4294967296,
+    "new": 469762048,
+    "whole": 8589934592
+  },
+  "pinsSha256": "2138176342003e5ded395a6f3f35735413e70dd47fcde8e6fb93cb91e9dd363f"
+}

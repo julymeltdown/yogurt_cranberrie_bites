@@ -1,0 +1,49 @@
+{
+  "offer": "PI08-WORLD-HUD-APP-NATIVE02-0055",
+  "status": "FAIL",
+  "failure": "validation exit 1",
+  "actualFullEpoch": 1793840244.1515179,
+  "workflow": 0,
+  "remainingReservation": 0,
+  "ownedChildren": [],
+  "dependencyLinkAbsent": true,
+  "testExit": 1,
+  "primary": {
+    "failure": "validation exit 1",
+    "samples": 8,
+    "peaks": {
+      "new": 217544113,
+      "whole": 6834036736,
+      "processes": 13,
+      "rss": 3045294080
+    },
+    "minimumFree": 15303618560,
+    "globalCensusSelftest": "PASS eleven bounded census cases",
+    "globalPeaks": {
+      "processes": 12,
+      "rss": 3042639872,
+      "workflows": 1
+    },
+    "lastGlobal": {
+      "workflows": 1,
+      "processes": 4,
+      "rss": 415006720,
+      "reservedPIDs": 24,
+      "reservedRSS": 4294967296,
+      "absentReservedPIDs": 0,
+      "cohorts": [
+        {
+          "owner": "01a1a5d9-332b-7822-a8f7-40c576fad94a",
+          "visible": true,
+          "pid": 48619,
+          "pids": 4,
+          "rss": 415006720
+        }
+      ]
+    }
+  },
+  "guardianExit": 0,
+  "withinFullDeadline": true,
+  "privateScratchAbsent": true,
+  "scratchRetained": "none; raw evidence retained inside owned checkout"
+}

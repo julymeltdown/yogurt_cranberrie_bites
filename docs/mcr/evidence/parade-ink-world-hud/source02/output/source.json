@@ -1,0 +1,44 @@
+{
+  "status": "FAIL",
+  "qualification": "PI08_SOURCE_ONLY",
+  "checks": [
+    {
+      "label": "10 changed HUD projection/navigation/state cases",
+      "exit": 0
+    },
+    {
+      "label": "full nonincremental frontend types with pinned PI01 read-only postimages",
+      "errors": 4,
+      "exit": 1
+    },
+    {
+      "label": "syntax native.mjs",
+      "exit": 0
+    },
+    {
+      "label": "syntax native-fixture.mjs",
+      "exit": 0
+    },
+    {
+      "label": "syntax native-observer.mjs",
+      "exit": 0
+    },
+    {
+      "label": "syntax foundation-overlay.mjs",
+      "exit": 0
+    },
+    {
+      "label": "syntax validation.config.mjs",
+      "exit": 0
+    },
+    {
+      "label": "syntax source.mjs",
+      "exit": 0
+    },
+    {
+      "label": "owned UI and narrow caller lint",
+      "exit": 0
+    }
+  ],
+  "foundation": "056a8c48ff667134dee8e5e99710185294e4b898"
+}

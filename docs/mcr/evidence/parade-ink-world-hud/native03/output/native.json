@@ -1,0 +1,4583 @@
+{
+  "result": "FAIL",
+  "qualification": "ACTUAL_MAIN_DEFAULT_APP_CONTROLLED_HTTP_C05_NOT_LIVE",
+  "foundation": "b5b44e47531e3b75febc5ee5cdd6a11b1648779c",
+  "foundationQualification": "ONE explicit shell.css correction; no full PI01 native acceptance inferred",
+  "reference": {
+    "sha256": "9e7f17a666e1ecfc738a14b75bb3a166235a05c401f206aa24f26cf7463cbc27",
+    "original": [
+      1280,
+      853
+    ],
+    "crop": [
+      436,
+      60,
+      832,
+      847
+    ],
+    "normalization": 0.9848484848484849
+  },
+  "DPR": 1,
+  "errors": [],
+  "captures": {},
+  "era": [],
+  "navigation": [
+    {
+      "label": "Feed",
+      "url": "http://127.0.0.1:5173/feed",
+      "state": {
+        "qualification": "ACTUAL_MAIN_CANONICAL_AUTH_MAP4_EXPLICIT_HTTP_C05_FIXTURE_NOT_LIVE",
+        "productionAdmitted": false,
+        "scenario": "eligible-attendee-contract-fixture",
+        "readiness": {
+          "status": "INPUT_CANDIDATE",
+          "productionAdmitted": false,
+          "reasons": [],
+          "worldReason": null,
+          "limitation": "Enabled flags and a Map4 identity are necessary only. Full authenticated C03 validation stays in memory; retained runtime evidence is a public-resource projection, never a private body or its digest. Normal contract/hash/admission validation still applies."
+        },
+        "ticketTiming": [
+          {
+            "serverTimeMs": 1793840675895,
+            "expiresTimeMs": 1793840705895,
+            "lifetimeMs": 30000
+          }
+        ],
+        "requests": [
+          {
+            "path": "/api/auth/capabilities",
+            "method": "GET"
+          },
+          {
+            "path": "/api/auth/login",
+            "method": "POST"
+          },
+          {
+            "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/bootstrap",
+            "method": "GET"
+          },
+          {
+            "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/rooms",
+            "method": "GET"
+          },
+          {
+            "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/places",
+            "method": "GET"
+          },
+          {
+            "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/world-tickets",
+            "method": "POST"
+          },
+          {
+            "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/intros",
+            "method": "GET"
+          },
+          {
+            "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/me/intro",
+            "method": "GET"
+          },
+          {
+            "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/me/age-status",
+            "method": "GET"
+          },
+          {
+            "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/me/notifications",
+            "method": "GET"
+          },
+          {
+            "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/mural/tools",
+            "method": "GET"
+          }
+        ],
+        "sockets": 1,
+        "activeSockets": 1,
+        "canvases": 1,
+        "urls": {
+          "created": [
+            "blob:http://127.0.0.1:5173/2c22d0f0-1e1b-496f-8597-c618ee654afb",
+            "blob:http://127.0.0.1:5173/1f762580-65cb-459a-9683-7382ca73d7dc",
+            "blob:http://127.0.0.1:5173/8bdcd315-f494-4d22-8351-8aa8ef5812e1",
+            "blob:http://127.0.0.1:5173/9e95d4d5-c920-4300-8a22-b878cdf666ba",
+            "blob:http://127.0.0.1:5173/ac1eaae7-0a6c-40ea-b259-1bb2cf5922cb",
+            "blob:http://127.0.0.1:5173/d632710f-e428-4029-9f5a-80d7834fbddc",
+            "blob:http://127.0.0.1:5173/60d5dbcc-74a2-4e90-a28e-8bb7ae54974d",
+            "blob:http://127.0.0.1:5173/462f3bf0-b084-4ff5-b2ce-16e1122e4da5",
+            "blob:http://127.0.0.1:5173/d0fd873d-04fe-493c-a02b-fc71aa47995e",
+            "blob:http://127.0.0.1:5173/37a9d14d-1921-42c4-a27b-968332488c88",
+            "blob:http://127.0.0.1:5173/c4d93c7f-3b54-43d8-bde5-5971470c5535"
+          ],
+          "revoked": [
+            "blob:http://127.0.0.1:5173/ac1eaae7-0a6c-40ea-b259-1bb2cf5922cb",
+            "blob:http://127.0.0.1:5173/d632710f-e428-4029-9f5a-80d7834fbddc",
+            "blob:http://127.0.0.1:5173/1f762580-65cb-459a-9683-7382ca73d7dc",
+            "blob:http://127.0.0.1:5173/8bdcd315-f494-4d22-8351-8aa8ef5812e1",
+            "blob:http://127.0.0.1:5173/9e95d4d5-c920-4300-8a22-b878cdf666ba",
+            "blob:http://127.0.0.1:5173/37a9d14d-1921-42c4-a27b-968332488c88"
+          ]
+        },
+        "path": "/feed",
+        "map": {
+          "id": "mcr_reference_scene_r3",
+          "revision": 4,
+          "contentHash": "sha256:736afd273a067f6c40db76b8cc54412416fba88984a50d9a6b6738d869831fb8",
+          "geometryHash": "sha256:899aca9bd6ce499c6f46aff5eaf21e30ab34b301e988771b978a6fab7c2d469f"
+        },
+        "theme": "REVENGE",
+        "active": 1,
+        "peak": 1,
+        "documentId": "0ce1dc15-eb23-4037-85ab-ecacfe288b27",
+        "avatar": {
+          "config": {
+            "contract_version": "1.1.0",
+            "kind": "avatar_config",
+            "manifest_id": "mcr_selected_static_20261103",
+            "manifest_version": 1,
+            "preset_id": "photo01_front_01",
+            "representation": "whole_character"
+          },
+          "revision": 1
+        },
+        "manifestPin": {
+          "manifest_id": "mcr_selected_static_20261103",
+          "manifest_version": 1,
+          "content_hash": "sha256:0627c7d178b22535a561e1270db6d8bf9e2383ba84d03a63962e48e565c59b2b"
+        }
+      }
+    },
+    {
+      "label": "Meet",
+      "url": "http://127.0.0.1:5173/meet",
+      "state": {
+        "qualification": "ACTUAL_MAIN_CANONICAL_AUTH_MAP4_EXPLICIT_HTTP_C05_FIXTURE_NOT_LIVE",
+        "productionAdmitted": false,
+        "scenario": "eligible-attendee-contract-fixture",
+        "readiness": {
+          "status": "INPUT_CANDIDATE",
+          "productionAdmitted": false,
+          "reasons": [],
+          "worldReason": null,
+          "limitation": "Enabled flags and a Map4 identity are necessary only. Full authenticated C03 validation stays in memory; retained runtime evidence is a public-resource projection, never a private body or its digest. Normal contract/hash/admission validation still applies."
+        },
+        "ticketTiming": [
+          {
+            "serverTimeMs": 1793840675895,
+            "expiresTimeMs": 1793840705895,
+            "lifetimeMs": 30000
+          }
+        ],
+        "requests": [
+          {
+            "path": "/api/auth/capabilities",
+            "method": "GET"
+          },
+          {
+            "path": "/api/auth/login",
+            "method": "POST"
+          },
+          {
+            "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/bootstrap",
+            "method": "GET"
+          },
+          {
+            "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/rooms",
+            "method": "GET"
+          },
+          {
+            "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/places",
+            "method": "GET"
+          },
+          {
+            "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/world-tickets",
+            "method": "POST"
+          },
+          {
+            "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/intros",
+            "method": "GET"
+          },
+          {
+            "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/me/intro",
+            "method": "GET"
+          },
+          {
+            "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/me/age-status",
+            "method": "GET"
+          },
+          {
+            "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/me/notifications",
+            "method": "GET"
+          },
+          {
+            "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/mural/tools",
+            "method": "GET"
+          }
+        ],
+        "sockets": 1,
+        "activeSockets": 1,
+        "canvases": 1,
+        "urls": {
+          "created": [
+            "blob:http://127.0.0.1:5173/2c22d0f0-1e1b-496f-8597-c618ee654afb",
+            "blob:http://127.0.0.1:5173/1f762580-65cb-459a-9683-7382ca73d7dc",
+            "blob:http://127.0.0.1:5173/8bdcd315-f494-4d22-8351-8aa8ef5812e1",
+            "blob:http://127.0.0.1:5173/9e95d4d5-c920-4300-8a22-b878cdf666ba",
+            "blob:http://127.0.0.1:5173/ac1eaae7-0a6c-40ea-b259-1bb2cf5922cb",
+            "blob:http://127.0.0.1:5173/d632710f-e428-4029-9f5a-80d7834fbddc",
+            "blob:http://127.0.0.1:5173/60d5dbcc-74a2-4e90-a28e-8bb7ae54974d",
+            "blob:http://127.0.0.1:5173/462f3bf0-b084-4ff5-b2ce-16e1122e4da5",
+            "blob:http://127.0.0.1:5173/d0fd873d-04fe-493c-a02b-fc71aa47995e",
+            "blob:http://127.0.0.1:5173/37a9d14d-1921-42c4-a27b-968332488c88",
+            "blob:http://127.0.0.1:5173/c4d93c7f-3b54-43d8-bde5-5971470c5535"
+          ],
+          "revoked": [
+            "blob:http://127.0.0.1:5173/ac1eaae7-0a6c-40ea-b259-1bb2cf5922cb",
+            "blob:http://127.0.0.1:5173/d632710f-e428-4029-9f5a-80d7834fbddc",
+            "blob:http://127.0.0.1:5173/1f762580-65cb-459a-9683-7382ca73d7dc",
+            "blob:http://127.0.0.1:5173/8bdcd315-f494-4d22-8351-8aa8ef5812e1",
+            "blob:http://127.0.0.1:5173/9e95d4d5-c920-4300-8a22-b878cdf666ba",
+            "blob:http://127.0.0.1:5173/37a9d14d-1921-42c4-a27b-968332488c88"
+          ]
+        },
+        "path": "/meet",
+        "map": {
+          "id": "mcr_reference_scene_r3",
+          "revision": 4,
+          "contentHash": "sha256:736afd273a067f6c40db76b8cc54412416fba88984a50d9a6b6738d869831fb8",
+          "geometryHash": "sha256:899aca9bd6ce499c6f46aff5eaf21e30ab34b301e988771b978a6fab7c2d469f"
+        },
+        "theme": "REVENGE",
+        "active": 1,
+        "peak": 1,
+        "documentId": "0ce1dc15-eb23-4037-85ab-ecacfe288b27",
+        "avatar": {
+          "config": {
+            "contract_version": "1.1.0",
+            "kind": "avatar_config",
+            "manifest_id": "mcr_selected_static_20261103",
+            "manifest_version": 1,
+            "preset_id": "photo01_front_01",
+            "representation": "whole_character"
+          },
+          "revision": 1
+        },
+        "manifestPin": {
+          "manifest_id": "mcr_selected_static_20261103",
+          "manifest_version": 1,
+          "content_hash": "sha256:0627c7d178b22535a561e1270db6d8bf9e2383ba84d03a63962e48e565c59b2b"
+        }
+      }
+    },
+    {
+      "label": "Gifts",
+      "url": "http://127.0.0.1:5173/gifts",
+      "state": {
+        "qualification": "ACTUAL_MAIN_CANONICAL_AUTH_MAP4_EXPLICIT_HTTP_C05_FIXTURE_NOT_LIVE",
+        "productionAdmitted": false,
+        "scenario": "eligible-attendee-contract-fixture",
+        "readiness": {
+          "status": "INPUT_CANDIDATE",
+          "productionAdmitted": false,
+          "reasons": [],
+          "worldReason": null,
+          "limitation": "Enabled flags and a Map4 identity are necessary only. Full authenticated C03 validation stays in memory; retained runtime evidence is a public-resource projection, never a private body or its digest. Normal contract/hash/admission validation still applies."
+        },
+        "ticketTiming": [
+          {
+            "serverTimeMs": 1793840675895,
+            "expiresTimeMs": 1793840705895,
+            "lifetimeMs": 30000
+          }
+        ],
+        "requests": [
+          {
+            "path": "/api/auth/capabilities",
+            "method": "GET"
+          },
+          {
+            "path": "/api/auth/login",
+            "method": "POST"
+          },
+          {
+            "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/bootstrap",
+            "method": "GET"
+          },
+          {
+            "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/rooms",
+            "method": "GET"
+          },
+          {
+            "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/places",
+            "method": "GET"
+          },
+          {
+            "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/world-tickets",
+            "method": "POST"
+          },
+          {
+            "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/intros",
+            "method": "GET"
+          },
+          {
+            "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/me/intro",
+            "method": "GET"
+          },
+          {
+            "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/me/age-status",
+            "method": "GET"
+          },
+          {
+            "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/me/notifications",
+            "method": "GET"
+          },
+          {
+            "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/mural/tools",
+            "method": "GET"
+          }
+        ],
+        "sockets": 1,
+        "activeSockets": 1,
+        "canvases": 1,
+        "urls": {
+          "created": [
+            "blob:http://127.0.0.1:5173/2c22d0f0-1e1b-496f-8597-c618ee654afb",
+            "blob:http://127.0.0.1:5173/1f762580-65cb-459a-9683-7382ca73d7dc",
+            "blob:http://127.0.0.1:5173/8bdcd315-f494-4d22-8351-8aa8ef5812e1",
+            "blob:http://127.0.0.1:5173/9e95d4d5-c920-4300-8a22-b878cdf666ba",
+            "blob:http://127.0.0.1:5173/ac1eaae7-0a6c-40ea-b259-1bb2cf5922cb",
+            "blob:http://127.0.0.1:5173/d632710f-e428-4029-9f5a-80d7834fbddc",
+            "blob:http://127.0.0.1:5173/60d5dbcc-74a2-4e90-a28e-8bb7ae54974d",
+            "blob:http://127.0.0.1:5173/462f3bf0-b084-4ff5-b2ce-16e1122e4da5",
+            "blob:http://127.0.0.1:5173/d0fd873d-04fe-493c-a02b-fc71aa47995e",
+            "blob:http://127.0.0.1:5173/37a9d14d-1921-42c4-a27b-968332488c88",
+            "blob:http://127.0.0.1:5173/c4d93c7f-3b54-43d8-bde5-5971470c5535"
+          ],
+          "revoked": [
+            "blob:http://127.0.0.1:5173/ac1eaae7-0a6c-40ea-b259-1bb2cf5922cb",
+            "blob:http://127.0.0.1:5173/d632710f-e428-4029-9f5a-80d7834fbddc",
+            "blob:http://127.0.0.1:5173/1f762580-65cb-459a-9683-7382ca73d7dc",
+            "blob:http://127.0.0.1:5173/8bdcd315-f494-4d22-8351-8aa8ef5812e1",
+            "blob:http://127.0.0.1:5173/9e95d4d5-c920-4300-8a22-b878cdf666ba",
+            "blob:http://127.0.0.1:5173/37a9d14d-1921-42c4-a27b-968332488c88"
+          ]
+        },
+        "path": "/gifts",
+        "map": {
+          "id": "mcr_reference_scene_r3",
+          "revision": 4,
+          "contentHash": "sha256:736afd273a067f6c40db76b8cc54412416fba88984a50d9a6b6738d869831fb8",
+          "geometryHash": "sha256:899aca9bd6ce499c6f46aff5eaf21e30ab34b301e988771b978a6fab7c2d469f"
+        },
+        "theme": "REVENGE",
+        "active": 1,
+        "peak": 1,
+        "documentId": "0ce1dc15-eb23-4037-85ab-ecacfe288b27",
+        "avatar": {
+          "config": {
+            "contract_version": "1.1.0",
+            "kind": "avatar_config",
+            "manifest_id": "mcr_selected_static_20261103",
+            "manifest_version": 1,
+            "preset_id": "photo01_front_01",
+            "representation": "whole_character"
+          },
+          "revision": 1
+        },
+        "manifestPin": {
+          "manifest_id": "mcr_selected_static_20261103",
+          "manifest_version": 1,
+          "content_hash": "sha256:0627c7d178b22535a561e1270db6d8bf9e2383ba84d03a63962e48e565c59b2b"
+        }
+      }
+    },
+    {
+      "label": "Wall",
+      "url": "http://127.0.0.1:5173/wall",
+      "state": {
+        "qualification": "ACTUAL_MAIN_CANONICAL_AUTH_MAP4_EXPLICIT_HTTP_C05_FIXTURE_NOT_LIVE",
+        "productionAdmitted": false,
+        "scenario": "eligible-attendee-contract-fixture",
+        "readiness": {
+          "status": "INPUT_CANDIDATE",
+          "productionAdmitted": false,
+          "reasons": [],
+          "worldReason": null,
+          "limitation": "Enabled flags and a Map4 identity are necessary only. Full authenticated C03 validation stays in memory; retained runtime evidence is a public-resource projection, never a private body or its digest. Normal contract/hash/admission validation still applies."
+        },
+        "ticketTiming": [
+          {
+            "serverTimeMs": 1793840675895,
+            "expiresTimeMs": 1793840705895,
+            "lifetimeMs": 30000
+          }
+        ],
+        "requests": [
+          {
+            "path": "/api/auth/capabilities",
+            "method": "GET"
+          },
+          {
+            "path": "/api/auth/login",
+            "method": "POST"
+          },
+          {
+            "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/bootstrap",
+            "method": "GET"
+          },
+          {
+            "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/rooms",
+            "method": "GET"
+          },
+          {
+            "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/places",
+            "method": "GET"
+          },
+          {
+            "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/world-tickets",
+            "method": "POST"
+          },
+          {
+            "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/intros",
+            "method": "GET"
+          },
+          {
+            "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/me/intro",
+            "method": "GET"
+          },
+          {
+            "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/me/age-status",
+            "method": "GET"
+          },
+          {
+            "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/me/notifications",
+            "method": "GET"
+          },
+          {
+            "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/mural/tools",
+            "method": "GET"
+          }
+        ],
+        "sockets": 1,
+        "activeSockets": 1,
+        "canvases": 1,
+        "urls": {
+          "created": [
+            "blob:http://127.0.0.1:5173/2c22d0f0-1e1b-496f-8597-c618ee654afb",
+            "blob:http://127.0.0.1:5173/1f762580-65cb-459a-9683-7382ca73d7dc",
+            "blob:http://127.0.0.1:5173/8bdcd315-f494-4d22-8351-8aa8ef5812e1",
+            "blob:http://127.0.0.1:5173/9e95d4d5-c920-4300-8a22-b878cdf666ba",
+            "blob:http://127.0.0.1:5173/ac1eaae7-0a6c-40ea-b259-1bb2cf5922cb",
+            "blob:http://127.0.0.1:5173/d632710f-e428-4029-9f5a-80d7834fbddc",
+            "blob:http://127.0.0.1:5173/60d5dbcc-74a2-4e90-a28e-8bb7ae54974d",
+            "blob:http://127.0.0.1:5173/462f3bf0-b084-4ff5-b2ce-16e1122e4da5",
+            "blob:http://127.0.0.1:5173/d0fd873d-04fe-493c-a02b-fc71aa47995e",
+            "blob:http://127.0.0.1:5173/37a9d14d-1921-42c4-a27b-968332488c88",
+            "blob:http://127.0.0.1:5173/c4d93c7f-3b54-43d8-bde5-5971470c5535"
+          ],
+          "revoked": [
+            "blob:http://127.0.0.1:5173/ac1eaae7-0a6c-40ea-b259-1bb2cf5922cb",
+            "blob:http://127.0.0.1:5173/d632710f-e428-4029-9f5a-80d7834fbddc",
+            "blob:http://127.0.0.1:5173/1f762580-65cb-459a-9683-7382ca73d7dc",
+            "blob:http://127.0.0.1:5173/8bdcd315-f494-4d22-8351-8aa8ef5812e1",
+            "blob:http://127.0.0.1:5173/9e95d4d5-c920-4300-8a22-b878cdf666ba",
+            "blob:http://127.0.0.1:5173/37a9d14d-1921-42c4-a27b-968332488c88"
+          ]
+        },
+        "path": "/wall",
+        "map": {
+          "id": "mcr_reference_scene_r3",
+          "revision": 4,
+          "contentHash": "sha256:736afd273a067f6c40db76b8cc54412416fba88984a50d9a6b6738d869831fb8",
+          "geometryHash": "sha256:899aca9bd6ce499c6f46aff5eaf21e30ab34b301e988771b978a6fab7c2d469f"
+        },
+        "theme": "REVENGE",
+        "active": 1,
+        "peak": 1,
+        "documentId": "0ce1dc15-eb23-4037-85ab-ecacfe288b27",
+        "avatar": {
+          "config": {
+            "contract_version": "1.1.0",
+            "kind": "avatar_config",
+            "manifest_id": "mcr_selected_static_20261103",
+            "manifest_version": 1,
+            "preset_id": "photo01_front_01",
+            "representation": "whole_character"
+          },
+          "revision": 1
+        },
+        "manifestPin": {
+          "manifest_id": "mcr_selected_static_20261103",
+          "manifest_version": 1,
+          "content_hash": "sha256:0627c7d178b22535a561e1270db6d8bf9e2383ba84d03a63962e48e565c59b2b"
+        }
+      }
+    },
+    {
+      "label": "Me",
+      "url": "http://127.0.0.1:5173/me",
+      "state": {
+        "qualification": "ACTUAL_MAIN_CANONICAL_AUTH_MAP4_EXPLICIT_HTTP_C05_FIXTURE_NOT_LIVE",
+        "productionAdmitted": false,
+        "scenario": "eligible-attendee-contract-fixture",
+        "readiness": {
+          "status": "INPUT_CANDIDATE",
+          "productionAdmitted": false,
+          "reasons": [],
+          "worldReason": null,
+          "limitation": "Enabled flags and a Map4 identity are necessary only. Full authenticated C03 validation stays in memory; retained runtime evidence is a public-resource projection, never a private body or its digest. Normal contract/hash/admission validation still applies."
+        },
+        "ticketTiming": [
+          {
+            "serverTimeMs": 1793840675895,
+            "expiresTimeMs": 1793840705895,
+            "lifetimeMs": 30000
+          }
+        ],
+        "requests": [
+          {
+            "path": "/api/auth/capabilities",
+            "method": "GET"
+          },
+          {
+            "path": "/api/auth/login",
+            "method": "POST"
+          },
+          {
+            "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/bootstrap",
+            "method": "GET"
+          },
+          {
+            "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/rooms",
+            "method": "GET"
+          },
+          {
+            "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/places",
+            "method": "GET"
+          },
+          {
+            "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/world-tickets",
+            "method": "POST"
+          },
+          {
+            "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/intros",
+            "method": "GET"
+          },
+          {
+            "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/me/intro",
+            "method": "GET"
+          },
+          {
+            "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/me/age-status",
+            "method": "GET"
+          },
+          {
+            "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/me/notifications",
+            "method": "GET"
+          },
+          {
+            "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/mural/tools",
+            "method": "GET"
+          }
+        ],
+        "sockets": 1,
+        "activeSockets": 1,
+        "canvases": 1,
+        "urls": {
+          "created": [
+            "blob:http://127.0.0.1:5173/2c22d0f0-1e1b-496f-8597-c618ee654afb",
+            "blob:http://127.0.0.1:5173/1f762580-65cb-459a-9683-7382ca73d7dc",
+            "blob:http://127.0.0.1:5173/8bdcd315-f494-4d22-8351-8aa8ef5812e1",
+            "blob:http://127.0.0.1:5173/9e95d4d5-c920-4300-8a22-b878cdf666ba",
+            "blob:http://127.0.0.1:5173/ac1eaae7-0a6c-40ea-b259-1bb2cf5922cb",
+            "blob:http://127.0.0.1:5173/d632710f-e428-4029-9f5a-80d7834fbddc",
+            "blob:http://127.0.0.1:5173/60d5dbcc-74a2-4e90-a28e-8bb7ae54974d",
+            "blob:http://127.0.0.1:5173/462f3bf0-b084-4ff5-b2ce-16e1122e4da5",
+            "blob:http://127.0.0.1:5173/d0fd873d-04fe-493c-a02b-fc71aa47995e",
+            "blob:http://127.0.0.1:5173/37a9d14d-1921-42c4-a27b-968332488c88",
+            "blob:http://127.0.0.1:5173/c4d93c7f-3b54-43d8-bde5-5971470c5535"
+          ],
+          "revoked": [
+            "blob:http://127.0.0.1:5173/ac1eaae7-0a6c-40ea-b259-1bb2cf5922cb",
+            "blob:http://127.0.0.1:5173/d632710f-e428-4029-9f5a-80d7834fbddc",
+            "blob:http://127.0.0.1:5173/1f762580-65cb-459a-9683-7382ca73d7dc",
+            "blob:http://127.0.0.1:5173/8bdcd315-f494-4d22-8351-8aa8ef5812e1",
+            "blob:http://127.0.0.1:5173/9e95d4d5-c920-4300-8a22-b878cdf666ba",
+            "blob:http://127.0.0.1:5173/37a9d14d-1921-42c4-a27b-968332488c88"
+          ]
+        },
+        "path": "/me",
+        "map": {
+          "id": "mcr_reference_scene_r3",
+          "revision": 4,
+          "contentHash": "sha256:736afd273a067f6c40db76b8cc54412416fba88984a50d9a6b6738d869831fb8",
+          "geometryHash": "sha256:899aca9bd6ce499c6f46aff5eaf21e30ab34b301e988771b978a6fab7c2d469f"
+        },
+        "theme": "REVENGE",
+        "active": 1,
+        "peak": 1,
+        "documentId": "0ce1dc15-eb23-4037-85ab-ecacfe288b27",
+        "avatar": {
+          "config": {
+            "contract_version": "1.1.0",
+            "kind": "avatar_config",
+            "manifest_id": "mcr_selected_static_20261103",
+            "manifest_version": 1,
+            "preset_id": "photo01_front_01",
+            "representation": "whole_character"
+          },
+          "revision": 1
+        },
+        "manifestPin": {
+          "manifest_id": "mcr_selected_static_20261103",
+          "manifest_version": 1,
+          "content_hash": "sha256:0627c7d178b22535a561e1270db6d8bf9e2383ba84d03a63962e48e565c59b2b"
+        }
+      }
+    },
+    {
+      "label": "World",
+      "url": "http://127.0.0.1:5173/world",
+      "state": {
+        "qualification": "ACTUAL_MAIN_CANONICAL_AUTH_MAP4_EXPLICIT_HTTP_C05_FIXTURE_NOT_LIVE",
+        "productionAdmitted": false,
+        "scenario": "eligible-attendee-contract-fixture",
+        "readiness": {
+          "status": "INPUT_CANDIDATE",
+          "productionAdmitted": false,
+          "reasons": [],
+          "worldReason": null,
+          "limitation": "Enabled flags and a Map4 identity are necessary only. Full authenticated C03 validation stays in memory; retained runtime evidence is a public-resource projection, never a private body or its digest. Normal contract/hash/admission validation still applies."
+        },
+        "ticketTiming": [
+          {
+            "serverTimeMs": 1793840675895,
+            "expiresTimeMs": 1793840705895,
+            "lifetimeMs": 30000
+          }
+        ],
+        "requests": [
+          {
+            "path": "/api/auth/capabilities",
+            "method": "GET"
+          },
+          {
+            "path": "/api/auth/login",
+            "method": "POST"
+          },
+          {
+            "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/bootstrap",
+            "method": "GET"
+          },
+          {
+            "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/rooms",
+            "method": "GET"
+          },
+          {
+            "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/places",
+            "method": "GET"
+          },
+          {
+            "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/world-tickets",
+            "method": "POST"
+          },
+          {
+            "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/intros",
+            "method": "GET"
+          },
+          {
+            "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/me/intro",
+            "method": "GET"
+          },
+          {
+            "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/me/age-status",
+            "method": "GET"
+          },
+          {
+            "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/me/notifications",
+            "method": "GET"
+          },
+          {
+            "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/mural/tools",
+            "method": "GET"
+          }
+        ],
+        "sockets": 1,
+        "activeSockets": 1,
+        "canvases": 1,
+        "urls": {
+          "created": [
+            "blob:http://127.0.0.1:5173/2c22d0f0-1e1b-496f-8597-c618ee654afb",
+            "blob:http://127.0.0.1:5173/1f762580-65cb-459a-9683-7382ca73d7dc",
+            "blob:http://127.0.0.1:5173/8bdcd315-f494-4d22-8351-8aa8ef5812e1",
+            "blob:http://127.0.0.1:5173/9e95d4d5-c920-4300-8a22-b878cdf666ba",
+            "blob:http://127.0.0.1:5173/ac1eaae7-0a6c-40ea-b259-1bb2cf5922cb",
+            "blob:http://127.0.0.1:5173/d632710f-e428-4029-9f5a-80d7834fbddc",
+            "blob:http://127.0.0.1:5173/60d5dbcc-74a2-4e90-a28e-8bb7ae54974d",
+            "blob:http://127.0.0.1:5173/462f3bf0-b084-4ff5-b2ce-16e1122e4da5",
+            "blob:http://127.0.0.1:5173/d0fd873d-04fe-493c-a02b-fc71aa47995e",
+            "blob:http://127.0.0.1:5173/37a9d14d-1921-42c4-a27b-968332488c88",
+            "blob:http://127.0.0.1:5173/c4d93c7f-3b54-43d8-bde5-5971470c5535"
+          ],
+          "revoked": [
+            "blob:http://127.0.0.1:5173/ac1eaae7-0a6c-40ea-b259-1bb2cf5922cb",
+            "blob:http://127.0.0.1:5173/d632710f-e428-4029-9f5a-80d7834fbddc",
+            "blob:http://127.0.0.1:5173/1f762580-65cb-459a-9683-7382ca73d7dc",
+            "blob:http://127.0.0.1:5173/8bdcd315-f494-4d22-8351-8aa8ef5812e1",
+            "blob:http://127.0.0.1:5173/9e95d4d5-c920-4300-8a22-b878cdf666ba",
+            "blob:http://127.0.0.1:5173/37a9d14d-1921-42c4-a27b-968332488c88"
+          ]
+        },
+        "path": "/world",
+        "map": {
+          "id": "mcr_reference_scene_r3",
+          "revision": 4,
+          "contentHash": "sha256:736afd273a067f6c40db76b8cc54412416fba88984a50d9a6b6738d869831fb8",
+          "geometryHash": "sha256:899aca9bd6ce499c6f46aff5eaf21e30ab34b301e988771b978a6fab7c2d469f"
+        },
+        "theme": "REVENGE",
+        "active": 1,
+        "peak": 1,
+        "documentId": "0ce1dc15-eb23-4037-85ab-ecacfe288b27",
+        "avatar": {
+          "config": {
+            "contract_version": "1.1.0",
+            "kind": "avatar_config",
+            "manifest_id": "mcr_selected_static_20261103",
+            "manifest_version": 1,
+            "preset_id": "photo01_front_01",
+            "representation": "whole_character"
+          },
+          "revision": 1
+        },
+        "manifestPin": {
+          "manifest_id": "mcr_selected_static_20261103",
+          "manifest_version": 1,
+          "content_hash": "sha256:0627c7d178b22535a561e1270db6d8bf9e2383ba84d03a63962e48e565c59b2b"
+        }
+      }
+    }
+  ],
+  "retainedNative02": {
+    "sha256": "5043c7166b9793a9a1eb329b6e63cc185421b2cd4c13d824d7c3ce26222cb2c6",
+    "qualified": [
+      "390reference/default360430 geometry/fonts/44px/ink/overflow/incumbent continuity",
+      "keyboard caption/menu Escape focus",
+      "Nearby route and incumbent Back",
+      "REVENGE default and all3 independent eras"
+    ],
+    "captures": {
+      "world-390-reference-height": {
+        "viewport": [
+          390,
+          775
+        ],
+        "DPR": 1,
+        "overflow": false,
+        "root": [
+          {
+            "tag": "DIV",
+            "text": "Skip to contentValidation participantMCR source-bound validation candidateWORLDREVENGEPARADEDANGERRevenge selected.Interact⌖RecenterControls & helpNearby in worldNo reachable interaction nearbyZoom −Zoom +Focus the map or joystick: arrows / W A S D move, E interacts, R recenters. Tap a walkable destination.Local movement ready.World connected.Reconnect worldVirtual position is not physical arrival.World/6 in viewVirtual presence, not physical arrival.NearbyWorldToolsMapRoomsNearbyHelpInboxSettingsWorldFeedMeetGiftsWallMe",
+            "x": 0,
+            "y": 0,
+            "width": 390,
+            "height": 775,
+            "font": "\"Parade Ink Text\", Arial, sans-serif",
+            "size": "18px",
+            "line": "22px",
+            "weight": "400",
+            "color": "rgb(23, 23, 23)",
+            "background": "rgb(249, 249, 248)",
+            "borders": [
+              "2px",
+              "2px",
+              "2px",
+              "2px"
+            ],
+            "pressed": null,
+            "current": null,
+            "outline": "none"
+          }
+        ],
+        "title": [
+          {
+            "tag": "HEADER",
+            "text": "WORLD",
+            "x": 4,
+            "y": 4,
+            "width": 382,
+            "height": 48,
+            "font": "\"Parade Ink Text\", Arial, sans-serif",
+            "size": "18px",
+            "line": "22px",
+            "weight": "400",
+            "color": "rgb(255, 255, 255)",
+            "background": "rgb(23, 23, 23)",
+            "borders": [
+              "0px",
+              "0px",
+              "0px",
+              "0px"
+            ],
+            "pressed": null,
+            "current": null,
+            "outline": "none"
+          }
+        ],
+        "eras": [
+          {
+            "tag": "BUTTON",
+            "text": "REVENGE",
+            "x": 10,
+            "y": 58,
+            "width": 120.65625,
+            "height": 44,
+            "font": "\"Parade Ink Display\", \"Arial Narrow\", Arial, sans-serif",
+            "size": "18px",
+            "line": "22px",
+            "weight": "700",
+            "color": "rgb(255, 255, 255)",
+            "background": "rgb(23, 23, 23)",
+            "borders": [
+              "1px",
+              "1px",
+              "1px",
+              "1px"
+            ],
+            "pressed": "true",
+            "current": null,
+            "outline": "none"
+          },
+          {
+            "tag": "BUTTON",
+            "text": "PARADE",
+            "x": 134.65625,
+            "y": 58,
+            "width": 120.671875,
+            "height": 44,
+            "font": "\"Parade Ink Display\", \"Arial Narrow\", Arial, sans-serif",
+            "size": "18px",
+            "line": "22px",
+            "weight": "700",
+            "color": "rgb(23, 23, 23)",
+            "background": "rgb(249, 248, 246)",
+            "borders": [
+              "1px",
+              "1px",
+              "1px",
+              "1px"
+            ],
+            "pressed": "false",
+            "current": null,
+            "outline": "none"
+          },
+          {
+            "tag": "BUTTON",
+            "text": "DANGER",
+            "x": 259.328125,
+            "y": 58,
+            "width": 120.65625,
+            "height": 44,
+            "font": "\"Parade Ink Display\", \"Arial Narrow\", Arial, sans-serif",
+            "size": "18px",
+            "line": "22px",
+            "weight": "700",
+            "color": "rgb(23, 23, 23)",
+            "background": "rgb(249, 248, 246)",
+            "borders": [
+              "1px",
+              "1px",
+              "1px",
+              "1px"
+            ],
+            "pressed": "false",
+            "current": null,
+            "outline": "none"
+          }
+        ],
+        "context": [
+          {
+            "tag": "SECTION",
+            "text": "World/6 in viewVirtual presence, not physical arrival.Nearby",
+            "x": 10,
+            "y": 634,
+            "width": 370,
+            "height": 72,
+            "font": "\"Parade Ink Text\", Arial, sans-serif",
+            "size": "18px",
+            "line": "22px",
+            "weight": "400",
+            "color": "rgb(23, 23, 23)",
+            "background": "rgb(249, 248, 246)",
+            "borders": [
+              "1px",
+              "1px",
+              "1px",
+              "1px"
+            ],
+            "pressed": null,
+            "current": null,
+            "outline": "none"
+          }
+        ],
+        "action": [
+          {
+            "tag": "A",
+            "text": "Nearby",
+            "x": 287,
+            "y": 648,
+            "width": 86,
+            "height": 44,
+            "font": "\"Parade Ink Display\", \"Arial Narrow\", Arial, sans-serif",
+            "size": "18px",
+            "line": "22px",
+            "weight": "700",
+            "color": "rgb(255, 255, 255)",
+            "background": "rgb(146, 37, 50)",
+            "borders": [
+              "1px",
+              "1px",
+              "1px",
+              "1px"
+            ],
+            "pressed": null,
+            "current": null,
+            "outline": "none"
+          }
+        ],
+        "nav": [
+          {
+            "tag": "A",
+            "text": "World",
+            "x": 4,
+            "y": 713,
+            "width": 63.65625,
+            "height": 58,
+            "font": "\"Parade Ink Display\", \"Arial Narrow\", Arial, sans-serif",
+            "size": "14px",
+            "line": "18px",
+            "weight": "700",
+            "color": "rgb(255, 255, 255)",
+            "background": "rgb(23, 23, 23)",
+            "borders": [
+              "0px",
+              "1px",
+              "0px",
+              "0px"
+            ],
+            "pressed": null,
+            "current": "page",
+            "outline": "none"
+          },
+          {
+            "tag": "A",
+            "text": "Feed",
+            "x": 67.65625,
+            "y": 713,
+            "width": 63.671875,
+            "height": 58,
+            "font": "\"Parade Ink Display\", \"Arial Narrow\", Arial, sans-serif",
+            "size": "14px",
+            "line": "18px",
+            "weight": "700",
+            "color": "rgb(23, 23, 23)",
+            "background": "rgb(249, 249, 248)",
+            "borders": [
+              "0px",
+              "1px",
+              "0px",
+              "0px"
+            ],
+            "pressed": null,
+            "current": null,
+            "outline": "none"
+          },
+          {
+            "tag": "A",
+            "text": "Meet",
+            "x": 131.328125,
+            "y": 713,
+            "width": 63.671875,
+            "height": 58,
+            "font": "\"Parade Ink Display\", \"Arial Narrow\", Arial, sans-serif",
+            "size": "14px",
+            "line": "18px",
+            "weight": "700",
+            "color": "rgb(23, 23, 23)",
+            "background": "rgb(249, 249, 248)",
+            "borders": [
+              "0px",
+              "1px",
+              "0px",
+              "0px"
+            ],
+            "pressed": null,
+            "current": null,
+            "outline": "none"
+          },
+          {
+            "tag": "A",
+            "text": "Gifts",
+            "x": 195,
+            "y": 713,
+            "width": 63.65625,
+            "height": 58,
+            "font": "\"Parade Ink Display\", \"Arial Narrow\", Arial, sans-serif",
+            "size": "14px",
+            "line": "18px",
+            "weight": "700",
+            "color": "rgb(23, 23, 23)",
+            "background": "rgb(249, 249, 248)",
+            "borders": [
+              "0px",
+              "1px",
+              "0px",
+              "0px"
+            ],
+            "pressed": null,
+            "current": null,
+            "outline": "none"
+          },
+          {
+            "tag": "A",
+            "text": "Wall",
+            "x": 258.65625,
+            "y": 713,
+            "width": 63.671875,
+            "height": 58,
+            "font": "\"Parade Ink Display\", \"Arial Narrow\", Arial, sans-serif",
+            "size": "14px",
+            "line": "18px",
+            "weight": "700",
+            "color": "rgb(23, 23, 23)",
+            "background": "rgb(249, 249, 248)",
+            "borders": [
+              "0px",
+              "1px",
+              "0px",
+              "0px"
+            ],
+            "pressed": null,
+            "current": null,
+            "outline": "none"
+          },
+          {
+            "tag": "A",
+            "text": "Me",
+            "x": 322.328125,
+            "y": 713,
+            "width": 63.671875,
+            "height": 58,
+            "font": "\"Parade Ink Display\", \"Arial Narrow\", Arial, sans-serif",
+            "size": "14px",
+            "line": "18px",
+            "weight": "700",
+            "color": "rgb(23, 23, 23)",
+            "background": "rgb(249, 249, 248)",
+            "borders": [
+              "0px",
+              "0px",
+              "0px",
+              "0px"
+            ],
+            "pressed": null,
+            "current": null,
+            "outline": "none"
+          }
+        ],
+        "headerControls": [
+          {
+            "tag": "BUTTON",
+            "text": "",
+            "x": 254,
+            "y": 6,
+            "width": 44,
+            "height": 44,
+            "font": "\"Parade Ink Text\", Arial, sans-serif",
+            "size": "18px",
+            "line": "22px",
+            "weight": "400",
+            "color": "rgb(255, 255, 255)",
+            "background": "rgba(0, 0, 0, 0)",
+            "borders": [
+              "0px",
+              "0px",
+              "0px",
+              "0px"
+            ],
+            "pressed": null,
+            "current": null,
+            "outline": "none"
+          },
+          {
+            "tag": "BUTTON",
+            "text": "",
+            "x": 298,
+            "y": 6,
+            "width": 44,
+            "height": 44,
+            "font": "\"Parade Ink Text\", Arial, sans-serif",
+            "size": "18px",
+            "line": "22px",
+            "weight": "400",
+            "color": "rgb(255, 255, 255)",
+            "background": "rgba(0, 0, 0, 0)",
+            "borders": [
+              "0px",
+              "0px",
+              "0px",
+              "0px"
+            ],
+            "pressed": null,
+            "current": null,
+            "outline": "none"
+          },
+          {
+            "tag": "A",
+            "text": "",
+            "x": 342,
+            "y": 6,
+            "width": 44,
+            "height": 44,
+            "font": "\"Parade Ink Text\", Arial, sans-serif",
+            "size": "18px",
+            "line": "22px",
+            "weight": "400",
+            "color": "rgb(255, 255, 255)",
+            "background": "rgba(0, 0, 0, 0)",
+            "borders": [
+              "0px",
+              "0px",
+              "0px",
+              "0px"
+            ],
+            "pressed": null,
+            "current": null,
+            "outline": "none"
+          }
+        ],
+        "fonts": {
+          "body": true,
+          "display": true,
+          "faces": [
+            {
+              "family": "Parade Ink Text",
+              "status": "loaded"
+            },
+            {
+              "family": "Parade Ink Display",
+              "status": "loaded"
+            },
+            {
+              "family": "MCR Auth Print",
+              "status": "loaded"
+            }
+          ]
+        },
+        "safeArea": "2px"
+      },
+      "world-390-default": {
+        "viewport": [
+          390,
+          844
+        ],
+        "DPR": 1,
+        "overflow": false,
+        "root": [
+          {
+            "tag": "DIV",
+            "text": "Skip to contentValidation participantMCR source-bound validation candidateWORLDREVENGEPARADEDANGERRevenge selected.Interact⌖RecenterControls & helpNearby in worldNo reachable interaction nearbyZoom −Zoom +Focus the map or joystick: arrows / W A S D move, E interacts, R recenters. Tap a walkable destination.Local movement ready.World connected.Reconnect worldVirtual position is not physical arrival.World/6 in viewVirtual presence, not physical arrival.NearbyWorldToolsMapRoomsNearbyHelpInboxSettingsWorldFeedMeetGiftsWallMe",
+            "x": 0,
+            "y": 0,
+            "width": 390,
+            "height": 844,
+            "font": "\"Parade Ink Text\", Arial, sans-serif",
+            "size": "18px",
+            "line": "22px",
+            "weight": "400",
+            "color": "rgb(23, 23, 23)",
+            "background": "rgb(249, 249, 248)",
+            "borders": [
+              "2px",
+              "2px",
+              "2px",
+              "2px"
+            ],
+            "pressed": null,
+            "current": null,
+            "outline": "none"
+          }
+        ],
+        "title": [
+          {
+            "tag": "HEADER",
+            "text": "WORLD",
+            "x": 4,
+            "y": 4,
+            "width": 382,
+            "height": 48,
+            "font": "\"Parade Ink Text\", Arial, sans-serif",
+            "size": "18px",
+            "line": "22px",
+            "weight": "400",
+            "color": "rgb(255, 255, 255)",
+            "background": "rgb(23, 23, 23)",
+            "borders": [
+              "0px",
+              "0px",
+              "0px",
+              "0px"
+            ],
+            "pressed": null,
+            "current": null,
+            "outline": "none"
+          }
+        ],
+        "eras": [
+          {
+            "tag": "BUTTON",
+            "text": "REVENGE",
+            "x": 10,
+            "y": 58,
+            "width": 120.65625,
+            "height": 44,
+            "font": "\"Parade Ink Display\", \"Arial Narrow\", Arial, sans-serif",
+            "size": "18px",
+            "line": "22px",
+            "weight": "700",
+            "color": "rgb(255, 255, 255)",
+            "background": "rgb(23, 23, 23)",
+            "borders": [
+              "1px",
+              "1px",
+              "1px",
+              "1px"
+            ],
+            "pressed": "true",
+            "current": null,
+            "outline": "none"
+          },
+          {
+            "tag": "BUTTON",
+            "text": "PARADE",
+            "x": 134.65625,
+            "y": 58,
+            "width": 120.671875,
+            "height": 44,
+            "font": "\"Parade Ink Display\", \"Arial Narrow\", Arial, sans-serif",
+            "size": "18px",
+            "line": "22px",
+            "weight": "700",
+            "color": "rgb(23, 23, 23)",
+            "background": "rgb(249, 248, 246)",
+            "borders": [
+              "1px",
+              "1px",
+              "1px",
+              "1px"
+            ],
+            "pressed": "false",
+            "current": null,
+            "outline": "none"
+          },
+          {
+            "tag": "BUTTON",
+            "text": "DANGER",
+            "x": 259.328125,
+            "y": 58,
+            "width": 120.65625,
+            "height": 44,
+            "font": "\"Parade Ink Display\", \"Arial Narrow\", Arial, sans-serif",
+            "size": "18px",
+            "line": "22px",
+            "weight": "700",
+            "color": "rgb(23, 23, 23)",
+            "background": "rgb(249, 248, 246)",
+            "borders": [
+              "1px",
+              "1px",
+              "1px",
+              "1px"
+            ],
+            "pressed": "false",
+            "current": null,
+            "outline": "none"
+          }
+        ],
+        "context": [
+          {
+            "tag": "SECTION",
+            "text": "World/6 in viewVirtual presence, not physical arrival.Nearby",
+            "x": 10,
+            "y": 703,
+            "width": 370,
+            "height": 72,
+            "font": "\"Parade Ink Text\", Arial, sans-serif",
+            "size": "18px",
+            "line": "22px",
+            "weight": "400",
+            "color": "rgb(23, 23, 23)",
+            "background": "rgb(249, 248, 246)",
+            "borders": [
+              "1px",
+              "1px",
+              "1px",
+              "1px"
+            ],
+            "pressed": null,
+            "current": null,
+            "outline": "none"
+          }
+        ],
+        "action": [
+          {
+            "tag": "A",
+            "text": "Nearby",
+            "x": 287,
+            "y": 717,
+            "width": 86,
+            "height": 44,
+            "font": "\"Parade Ink Display\", \"Arial Narrow\", Arial, sans-serif",
+            "size": "18px",
+            "line": "22px",
+            "weight": "700",
+            "color": "rgb(255, 255, 255)",
+            "background": "rgb(146, 37, 50)",
+            "borders": [
+              "1px",
+              "1px",
+              "1px",
+              "1px"
+            ],
+            "pressed": null,
+            "current": null,
+            "outline": "none"
+          }
+        ],
+        "nav": [
+          {
+            "tag": "A",
+            "text": "World",
+            "x": 4,
+            "y": 782,
+            "width": 63.65625,
+            "height": 58,
+            "font": "\"Parade Ink Display\", \"Arial Narrow\", Arial, sans-serif",
+            "size": "14px",
+            "line": "18px",
+            "weight": "700",
+            "color": "rgb(255, 255, 255)",
+            "background": "rgb(23, 23, 23)",
+            "borders": [
+              "0px",
+              "1px",
+              "0px",
+              "0px"
+            ],
+            "pressed": null,
+            "current": "page",
+            "outline": "none"
+          },
+          {
+            "tag": "A",
+            "text": "Feed",
+            "x": 67.65625,
+            "y": 782,
+            "width": 63.671875,
+            "height": 58,
+            "font": "\"Parade Ink Display\", \"Arial Narrow\", Arial, sans-serif",
+            "size": "14px",
+            "line": "18px",
+            "weight": "700",
+            "color": "rgb(23, 23, 23)",
+            "background": "rgb(249, 249, 248)",
+            "borders": [
+              "0px",
+              "1px",
+              "0px",
+              "0px"
+            ],
+            "pressed": null,
+            "current": null,
+            "outline": "none"
+          },
+          {
+            "tag": "A",
+            "text": "Meet",
+            "x": 131.328125,
+            "y": 782,
+            "width": 63.671875,
+            "height": 58,
+            "font": "\"Parade Ink Display\", \"Arial Narrow\", Arial, sans-serif",
+            "size": "14px",
+            "line": "18px",
+            "weight": "700",
+            "color": "rgb(23, 23, 23)",
+            "background": "rgb(249, 249, 248)",
+            "borders": [
+              "0px",
+              "1px",
+              "0px",
+              "0px"
+            ],
+            "pressed": null,
+            "current": null,
+            "outline": "none"
+          },
+          {
+            "tag": "A",
+            "text": "Gifts",
+            "x": 195,
+            "y": 782,
+            "width": 63.65625,
+            "height": 58,
+            "font": "\"Parade Ink Display\", \"Arial Narrow\", Arial, sans-serif",
+            "size": "14px",
+            "line": "18px",
+            "weight": "700",
+            "color": "rgb(23, 23, 23)",
+            "background": "rgb(249, 249, 248)",
+            "borders": [
+              "0px",
+              "1px",
+              "0px",
+              "0px"
+            ],
+            "pressed": null,
+            "current": null,
+            "outline": "none"
+          },
+          {
+            "tag": "A",
+            "text": "Wall",
+            "x": 258.65625,
+            "y": 782,
+            "width": 63.671875,
+            "height": 58,
+            "font": "\"Parade Ink Display\", \"Arial Narrow\", Arial, sans-serif",
+            "size": "14px",
+            "line": "18px",
+            "weight": "700",
+            "color": "rgb(23, 23, 23)",
+            "background": "rgb(249, 249, 248)",
+            "borders": [
+              "0px",
+              "1px",
+              "0px",
+              "0px"
+            ],
+            "pressed": null,
+            "current": null,
+            "outline": "none"
+          },
+          {
+            "tag": "A",
+            "text": "Me",
+            "x": 322.328125,
+            "y": 782,
+            "width": 63.671875,
+            "height": 58,
+            "font": "\"Parade Ink Display\", \"Arial Narrow\", Arial, sans-serif",
+            "size": "14px",
+            "line": "18px",
+            "weight": "700",
+            "color": "rgb(23, 23, 23)",
+            "background": "rgb(249, 249, 248)",
+            "borders": [
+              "0px",
+              "0px",
+              "0px",
+              "0px"
+            ],
+            "pressed": null,
+            "current": null,
+            "outline": "none"
+          }
+        ],
+        "headerControls": [
+          {
+            "tag": "BUTTON",
+            "text": "",
+            "x": 254,
+            "y": 6,
+            "width": 44,
+            "height": 44,
+            "font": "\"Parade Ink Text\", Arial, sans-serif",
+            "size": "18px",
+            "line": "22px",
+            "weight": "400",
+            "color": "rgb(255, 255, 255)",
+            "background": "rgba(0, 0, 0, 0)",
+            "borders": [
+              "0px",
+              "0px",
+              "0px",
+              "0px"
+            ],
+            "pressed": null,
+            "current": null,
+            "outline": "none"
+          },
+          {
+            "tag": "BUTTON",
+            "text": "",
+            "x": 298,
+            "y": 6,
+            "width": 44,
+            "height": 44,
+            "font": "\"Parade Ink Text\", Arial, sans-serif",
+            "size": "18px",
+            "line": "22px",
+            "weight": "400",
+            "color": "rgb(255, 255, 255)",
+            "background": "rgba(0, 0, 0, 0)",
+            "borders": [
+              "0px",
+              "0px",
+              "0px",
+              "0px"
+            ],
+            "pressed": null,
+            "current": null,
+            "outline": "none"
+          },
+          {
+            "tag": "A",
+            "text": "",
+            "x": 342,
+            "y": 6,
+            "width": 44,
+            "height": 44,
+            "font": "\"Parade Ink Text\", Arial, sans-serif",
+            "size": "18px",
+            "line": "22px",
+            "weight": "400",
+            "color": "rgb(255, 255, 255)",
+            "background": "rgba(0, 0, 0, 0)",
+            "borders": [
+              "0px",
+              "0px",
+              "0px",
+              "0px"
+            ],
+            "pressed": null,
+            "current": null,
+            "outline": "none"
+          }
+        ],
+        "fonts": {
+          "body": true,
+          "display": true,
+          "faces": [
+            {
+              "family": "Parade Ink Text",
+              "status": "loaded"
+            },
+            {
+              "family": "Parade Ink Display",
+              "status": "loaded"
+            },
+            {
+              "family": "MCR Auth Print",
+              "status": "loaded"
+            }
+          ]
+        },
+        "safeArea": "2px"
+      },
+      "world-360": {
+        "viewport": [
+          360,
+          800
+        ],
+        "DPR": 1,
+        "overflow": false,
+        "root": [
+          {
+            "tag": "DIV",
+            "text": "Skip to contentValidation participantMCR source-bound validation candidateWORLDREVENGEPARADEDANGERRevenge selected.Interact⌖RecenterControls & helpNearby in worldNo reachable interaction nearbyZoom −Zoom +Focus the map or joystick: arrows / W A S D move, E interacts, R recenters. Tap a walkable destination.Local movement ready.World connected.Reconnect worldVirtual position is not physical arrival.World/6 in viewVirtual presence, not physical arrival.NearbyWorldToolsMapRoomsNearbyHelpInboxSettingsWorldFeedMeetGiftsWallMe",
+            "x": 0,
+            "y": 0,
+            "width": 360,
+            "height": 800,
+            "font": "\"Parade Ink Text\", Arial, sans-serif",
+            "size": "18px",
+            "line": "22px",
+            "weight": "400",
+            "color": "rgb(23, 23, 23)",
+            "background": "rgb(249, 249, 248)",
+            "borders": [
+              "2px",
+              "2px",
+              "2px",
+              "2px"
+            ],
+            "pressed": null,
+            "current": null,
+            "outline": "none"
+          }
+        ],
+        "title": [
+          {
+            "tag": "HEADER",
+            "text": "WORLD",
+            "x": 4,
+            "y": 4,
+            "width": 352,
+            "height": 48,
+            "font": "\"Parade Ink Text\", Arial, sans-serif",
+            "size": "18px",
+            "line": "22px",
+            "weight": "400",
+            "color": "rgb(255, 255, 255)",
+            "background": "rgb(23, 23, 23)",
+            "borders": [
+              "0px",
+              "0px",
+              "0px",
+              "0px"
+            ],
+            "pressed": null,
+            "current": null,
+            "outline": "none"
+          }
+        ],
+        "eras": [
+          {
+            "tag": "BUTTON",
+            "text": "REVENGE",
+            "x": 10,
+            "y": 58,
+            "width": 110.65625,
+            "height": 44,
+            "font": "\"Parade Ink Display\", \"Arial Narrow\", Arial, sans-serif",
+            "size": "18px",
+            "line": "22px",
+            "weight": "700",
+            "color": "rgb(255, 255, 255)",
+            "background": "rgb(23, 23, 23)",
+            "borders": [
+              "1px",
+              "1px",
+              "1px",
+              "1px"
+            ],
+            "pressed": "true",
+            "current": null,
+            "outline": "none"
+          },
+          {
+            "tag": "BUTTON",
+            "text": "PARADE",
+            "x": 124.65625,
+            "y": 58,
+            "width": 110.671875,
+            "height": 44,
+            "font": "\"Parade Ink Display\", \"Arial Narrow\", Arial, sans-serif",
+            "size": "18px",
+            "line": "22px",
+            "weight": "700",
+            "color": "rgb(23, 23, 23)",
+            "background": "rgb(249, 248, 246)",
+            "borders": [
+              "1px",
+              "1px",
+              "1px",
+              "1px"
+            ],
+            "pressed": "false",
+            "current": null,
+            "outline": "none"
+          },
+          {
+            "tag": "BUTTON",
+            "text": "DANGER",
+            "x": 239.328125,
+            "y": 58,
+            "width": 110.65625,
+            "height": 44,
+            "font": "\"Parade Ink Display\", \"Arial Narrow\", Arial, sans-serif",
+            "size": "18px",
+            "line": "22px",
+            "weight": "700",
+            "color": "rgb(23, 23, 23)",
+            "background": "rgb(249, 248, 246)",
+            "borders": [
+              "1px",
+              "1px",
+              "1px",
+              "1px"
+            ],
+            "pressed": "false",
+            "current": null,
+            "outline": "none"
+          }
+        ],
+        "context": [
+          {
+            "tag": "SECTION",
+            "text": "World/6 in viewVirtual presence, not physical arrival.Nearby",
+            "x": 10,
+            "y": 659,
+            "width": 340,
+            "height": 72,
+            "font": "\"Parade Ink Text\", Arial, sans-serif",
+            "size": "18px",
+            "line": "22px",
+            "weight": "400",
+            "color": "rgb(23, 23, 23)",
+            "background": "rgb(249, 248, 246)",
+            "borders": [
+              "1px",
+              "1px",
+              "1px",
+              "1px"
+            ],
+            "pressed": null,
+            "current": null,
+            "outline": "none"
+          }
+        ],
+        "action": [
+          {
+            "tag": "A",
+            "text": "Nearby",
+            "x": 257,
+            "y": 673,
+            "width": 86,
+            "height": 44,
+            "font": "\"Parade Ink Display\", \"Arial Narrow\", Arial, sans-serif",
+            "size": "18px",
+            "line": "22px",
+            "weight": "700",
+            "color": "rgb(255, 255, 255)",
+            "background": "rgb(146, 37, 50)",
+            "borders": [
+              "1px",
+              "1px",
+              "1px",
+              "1px"
+            ],
+            "pressed": null,
+            "current": null,
+            "outline": "none"
+          }
+        ],
+        "nav": [
+          {
+            "tag": "A",
+            "text": "World",
+            "x": 4,
+            "y": 738,
+            "width": 58.65625,
+            "height": 58,
+            "font": "\"Parade Ink Display\", \"Arial Narrow\", Arial, sans-serif",
+            "size": "14px",
+            "line": "18px",
+            "weight": "700",
+            "color": "rgb(255, 255, 255)",
+            "background": "rgb(23, 23, 23)",
+            "borders": [
+              "0px",
+              "1px",
+              "0px",
+              "0px"
+            ],
+            "pressed": null,
+            "current": "page",
+            "outline": "none"
+          },
+          {
+            "tag": "A",
+            "text": "Feed",
+            "x": 62.65625,
+            "y": 738,
+            "width": 58.671875,
+            "height": 58,
+            "font": "\"Parade Ink Display\", \"Arial Narrow\", Arial, sans-serif",
+            "size": "14px",
+            "line": "18px",
+            "weight": "700",
+            "color": "rgb(23, 23, 23)",
+            "background": "rgb(249, 249, 248)",
+            "borders": [
+              "0px",
+              "1px",
+              "0px",
+              "0px"
+            ],
+            "pressed": null,
+            "current": null,
+            "outline": "none"
+          },
+          {
+            "tag": "A",
+            "text": "Meet",
+            "x": 121.328125,
+            "y": 738,
+            "width": 58.671875,
+            "height": 58,
+            "font": "\"Parade Ink Display\", \"Arial Narrow\", Arial, sans-serif",
+            "size": "14px",
+            "line": "18px",
+            "weight": "700",
+            "color": "rgb(23, 23, 23)",
+            "background": "rgb(249, 249, 248)",
+            "borders": [
+              "0px",
+              "1px",
+              "0px",
+              "0px"
+            ],
+            "pressed": null,
+            "current": null,
+            "outline": "none"
+          },
+          {
+            "tag": "A",
+            "text": "Gifts",
+            "x": 180,
+            "y": 738,
+            "width": 58.65625,
+            "height": 58,
+            "font": "\"Parade Ink Display\", \"Arial Narrow\", Arial, sans-serif",
+            "size": "14px",
+            "line": "18px",
+            "weight": "700",
+            "color": "rgb(23, 23, 23)",
+            "background": "rgb(249, 249, 248)",
+            "borders": [
+              "0px",
+              "1px",
+              "0px",
+              "0px"
+            ],
+            "pressed": null,
+            "current": null,
+            "outline": "none"
+          },
+          {
+            "tag": "A",
+            "text": "Wall",
+            "x": 238.65625,
+            "y": 738,
+            "width": 58.671875,
+            "height": 58,
+            "font": "\"Parade Ink Display\", \"Arial Narrow\", Arial, sans-serif",
+            "size": "14px",
+            "line": "18px",
+            "weight": "700",
+            "color": "rgb(23, 23, 23)",
+            "background": "rgb(249, 249, 248)",
+            "borders": [
+              "0px",
+              "1px",
+              "0px",
+              "0px"
+            ],
+            "pressed": null,
+            "current": null,
+            "outline": "none"
+          },
+          {
+            "tag": "A",
+            "text": "Me",
+            "x": 297.328125,
+            "y": 738,
+            "width": 58.671875,
+            "height": 58,
+            "font": "\"Parade Ink Display\", \"Arial Narrow\", Arial, sans-serif",
+            "size": "14px",
+            "line": "18px",
+            "weight": "700",
+            "color": "rgb(23, 23, 23)",
+            "background": "rgb(249, 249, 248)",
+            "borders": [
+              "0px",
+              "0px",
+              "0px",
+              "0px"
+            ],
+            "pressed": null,
+            "current": null,
+            "outline": "none"
+          }
+        ],
+        "headerControls": [
+          {
+            "tag": "BUTTON",
+            "text": "",
+            "x": 224,
+            "y": 6,
+            "width": 44,
+            "height": 44,
+            "font": "\"Parade Ink Text\", Arial, sans-serif",
+            "size": "18px",
+            "line": "22px",
+            "weight": "400",
+            "color": "rgb(255, 255, 255)",
+            "background": "rgba(0, 0, 0, 0)",
+            "borders": [
+              "0px",
+              "0px",
+              "0px",
+              "0px"
+            ],
+            "pressed": null,
+            "current": null,
+            "outline": "none"
+          },
+          {
+            "tag": "BUTTON",
+            "text": "",
+            "x": 268,
+            "y": 6,
+            "width": 44,
+            "height": 44,
+            "font": "\"Parade Ink Text\", Arial, sans-serif",
+            "size": "18px",
+            "line": "22px",
+            "weight": "400",
+            "color": "rgb(255, 255, 255)",
+            "background": "rgba(0, 0, 0, 0)",
+            "borders": [
+              "0px",
+              "0px",
+              "0px",
+              "0px"
+            ],
+            "pressed": null,
+            "current": null,
+            "outline": "none"
+          },
+          {
+            "tag": "A",
+            "text": "",
+            "x": 312,
+            "y": 6,
+            "width": 44,
+            "height": 44,
+            "font": "\"Parade Ink Text\", Arial, sans-serif",
+            "size": "18px",
+            "line": "22px",
+            "weight": "400",
+            "color": "rgb(255, 255, 255)",
+            "background": "rgba(0, 0, 0, 0)",
+            "borders": [
+              "0px",
+              "0px",
+              "0px",
+              "0px"
+            ],
+            "pressed": null,
+            "current": null,
+            "outline": "none"
+          }
+        ],
+        "fonts": {
+          "body": true,
+          "display": true,
+          "faces": [
+            {
+              "family": "Parade Ink Text",
+              "status": "loaded"
+            },
+            {
+              "family": "Parade Ink Display",
+              "status": "loaded"
+            },
+            {
+              "family": "MCR Auth Print",
+              "status": "loaded"
+            }
+          ]
+        },
+        "safeArea": "2px"
+      },
+      "world-430": {
+        "viewport": [
+          430,
+          932
+        ],
+        "DPR": 1,
+        "overflow": false,
+        "root": [
+          {
+            "tag": "DIV",
+            "text": "Skip to contentValidation participantMCR source-bound validation candidateWORLDREVENGEPARADEDANGERRevenge selected.Interact⌖RecenterControls & helpNearby in worldNo reachable interaction nearbyZoom −Zoom +Focus the map or joystick: arrows / W A S D move, E interacts, R recenters. Tap a walkable destination.Local movement ready.World connected.Reconnect worldVirtual position is not physical arrival.World/6 in viewVirtual presence, not physical arrival.NearbyWorldToolsMapRoomsNearbyHelpInboxSettingsWorldFeedMeetGiftsWallMe",
+            "x": 0,
+            "y": 0,
+            "width": 430,
+            "height": 932,
+            "font": "\"Parade Ink Text\", Arial, sans-serif",
+            "size": "18px",
+            "line": "22px",
+            "weight": "400",
+            "color": "rgb(23, 23, 23)",
+            "background": "rgb(249, 249, 248)",
+            "borders": [
+              "2px",
+              "2px",
+              "2px",
+              "2px"
+            ],
+            "pressed": null,
+            "current": null,
+            "outline": "none"
+          }
+        ],
+        "title": [
+          {
+            "tag": "HEADER",
+            "text": "WORLD",
+            "x": 4,
+            "y": 4,
+            "width": 422,
+            "height": 48,
+            "font": "\"Parade Ink Text\", Arial, sans-serif",
+            "size": "18px",
+            "line": "22px",
+            "weight": "400",
+            "color": "rgb(255, 255, 255)",
+            "background": "rgb(23, 23, 23)",
+            "borders": [
+              "0px",
+              "0px",
+              "0px",
+              "0px"
+            ],
+            "pressed": null,
+            "current": null,
+            "outline": "none"
+          }
+        ],
+        "eras": [
+          {
+            "tag": "BUTTON",
+            "text": "REVENGE",
+            "x": 10,
+            "y": 58,
+            "width": 134,
+            "height": 44,
+            "font": "\"Parade Ink Display\", \"Arial Narrow\", Arial, sans-serif",
+            "size": "18px",
+            "line": "22px",
+            "weight": "700",
+            "color": "rgb(255, 255, 255)",
+            "background": "rgb(23, 23, 23)",
+            "borders": [
+              "1px",
+              "1px",
+              "1px",
+              "1px"
+            ],
+            "pressed": "true",
+            "current": null,
+            "outline": "none"
+          },
+          {
+            "tag": "BUTTON",
+            "text": "PARADE",
+            "x": 148,
+            "y": 58,
+            "width": 134,
+            "height": 44,
+            "font": "\"Parade Ink Display\", \"Arial Narrow\", Arial, sans-serif",
+            "size": "18px",
+            "line": "22px",
+            "weight": "700",
+            "color": "rgb(23, 23, 23)",
+            "background": "rgb(249, 248, 246)",
+            "borders": [
+              "1px",
+              "1px",
+              "1px",
+              "1px"
+            ],
+            "pressed": "false",
+            "current": null,
+            "outline": "none"
+          },
+          {
+            "tag": "BUTTON",
+            "text": "DANGER",
+            "x": 286,
+            "y": 58,
+            "width": 134,
+            "height": 44,
+            "font": "\"Parade Ink Display\", \"Arial Narrow\", Arial, sans-serif",
+            "size": "18px",
+            "line": "22px",
+            "weight": "700",
+            "color": "rgb(23, 23, 23)",
+            "background": "rgb(249, 248, 246)",
+            "borders": [
+              "1px",
+              "1px",
+              "1px",
+              "1px"
+            ],
+            "pressed": "false",
+            "current": null,
+            "outline": "none"
+          }
+        ],
+        "context": [
+          {
+            "tag": "SECTION",
+            "text": "World/6 in viewVirtual presence, not physical arrival.Nearby",
+            "x": 10,
+            "y": 791,
+            "width": 410,
+            "height": 72,
+            "font": "\"Parade Ink Text\", Arial, sans-serif",
+            "size": "18px",
+            "line": "22px",
+            "weight": "400",
+            "color": "rgb(23, 23, 23)",
+            "background": "rgb(249, 248, 246)",
+            "borders": [
+              "1px",
+              "1px",
+              "1px",
+              "1px"
+            ],
+            "pressed": null,
+            "current": null,
+            "outline": "none"
+          }
+        ],
+        "action": [
+          {
+            "tag": "A",
+            "text": "Nearby",
+            "x": 327,
+            "y": 805,
+            "width": 86,
+            "height": 44,
+            "font": "\"Parade Ink Display\", \"Arial Narrow\", Arial, sans-serif",
+            "size": "18px",
+            "line": "22px",
+            "weight": "700",
+            "color": "rgb(255, 255, 255)",
+            "background": "rgb(146, 37, 50)",
+            "borders": [
+              "1px",
+              "1px",
+              "1px",
+              "1px"
+            ],
+            "pressed": null,
+            "current": null,
+            "outline": "none"
+          }
+        ],
+        "nav": [
+          {
+            "tag": "A",
+            "text": "World",
+            "x": 4,
+            "y": 870,
+            "width": 70.328125,
+            "height": 58,
+            "font": "\"Parade Ink Display\", \"Arial Narrow\", Arial, sans-serif",
+            "size": "14px",
+            "line": "18px",
+            "weight": "700",
+            "color": "rgb(255, 255, 255)",
+            "background": "rgb(23, 23, 23)",
+            "borders": [
+              "0px",
+              "1px",
+              "0px",
+              "0px"
+            ],
+            "pressed": null,
+            "current": "page",
+            "outline": "none"
+          },
+          {
+            "tag": "A",
+            "text": "Feed",
+            "x": 74.328125,
+            "y": 870,
+            "width": 70.328125,
+            "height": 58,
+            "font": "\"Parade Ink Display\", \"Arial Narrow\", Arial, sans-serif",
+            "size": "14px",
+            "line": "18px",
+            "weight": "700",
+            "color": "rgb(23, 23, 23)",
+            "background": "rgb(249, 249, 248)",
+            "borders": [
+              "0px",
+              "1px",
+              "0px",
+              "0px"
+            ],
+            "pressed": null,
+            "current": null,
+            "outline": "none"
+          },
+          {
+            "tag": "A",
+            "text": "Meet",
+            "x": 144.65625,
+            "y": 870,
+            "width": 70.34375,
+            "height": 58,
+            "font": "\"Parade Ink Display\", \"Arial Narrow\", Arial, sans-serif",
+            "size": "14px",
+            "line": "18px",
+            "weight": "700",
+            "color": "rgb(23, 23, 23)",
+            "background": "rgb(249, 249, 248)",
+            "borders": [
+              "0px",
+              "1px",
+              "0px",
+              "0px"
+            ],
+            "pressed": null,
+            "current": null,
+            "outline": "none"
+          },
+          {
+            "tag": "A",
+            "text": "Gifts",
+            "x": 215,
+            "y": 870,
+            "width": 70.328125,
+            "height": 58,
+            "font": "\"Parade Ink Display\", \"Arial Narrow\", Arial, sans-serif",
+            "size": "14px",
+            "line": "18px",
+            "weight": "700",
+            "color": "rgb(23, 23, 23)",
+            "background": "rgb(249, 249, 248)",
+            "borders": [
+              "0px",
+              "1px",
+              "0px",
+              "0px"
+            ],
+            "pressed": null,
+            "current": null,
+            "outline": "none"
+          },
+          {
+            "tag": "A",
+            "text": "Wall",
+            "x": 285.328125,
+            "y": 870,
+            "width": 70.328125,
+            "height": 58,
+            "font": "\"Parade Ink Display\", \"Arial Narrow\", Arial, sans-serif",
+            "size": "14px",
+            "line": "18px",
+            "weight": "700",
+            "color": "rgb(23, 23, 23)",
+            "background": "rgb(249, 249, 248)",
+            "borders": [
+              "0px",
+              "1px",
+              "0px",
+              "0px"
+            ],
+            "pressed": null,
+            "current": null,
+            "outline": "none"
+          },
+          {
+            "tag": "A",
+            "text": "Me",
+            "x": 355.65625,
+            "y": 870,
+            "width": 70.34375,
+            "height": 58,
+            "font": "\"Parade Ink Display\", \"Arial Narrow\", Arial, sans-serif",
+            "size": "14px",
+            "line": "18px",
+            "weight": "700",
+            "color": "rgb(23, 23, 23)",
+            "background": "rgb(249, 249, 248)",
+            "borders": [
+              "0px",
+              "0px",
+              "0px",
+              "0px"
+            ],
+            "pressed": null,
+            "current": null,
+            "outline": "none"
+          }
+        ],
+        "headerControls": [
+          {
+            "tag": "BUTTON",
+            "text": "",
+            "x": 294,
+            "y": 6,
+            "width": 44,
+            "height": 44,
+            "font": "\"Parade Ink Text\", Arial, sans-serif",
+            "size": "18px",
+            "line": "22px",
+            "weight": "400",
+            "color": "rgb(255, 255, 255)",
+            "background": "rgba(0, 0, 0, 0)",
+            "borders": [
+              "0px",
+              "0px",
+              "0px",
+              "0px"
+            ],
+            "pressed": null,
+            "current": null,
+            "outline": "none"
+          },
+          {
+            "tag": "BUTTON",
+            "text": "",
+            "x": 338,
+            "y": 6,
+            "width": 44,
+            "height": 44,
+            "font": "\"Parade Ink Text\", Arial, sans-serif",
+            "size": "18px",
+            "line": "22px",
+            "weight": "400",
+            "color": "rgb(255, 255, 255)",
+            "background": "rgba(0, 0, 0, 0)",
+            "borders": [
+              "0px",
+              "0px",
+              "0px",
+              "0px"
+            ],
+            "pressed": null,
+            "current": null,
+            "outline": "none"
+          },
+          {
+            "tag": "A",
+            "text": "",
+            "x": 382,
+            "y": 6,
+            "width": 44,
+            "height": 44,
+            "font": "\"Parade Ink Text\", Arial, sans-serif",
+            "size": "18px",
+            "line": "22px",
+            "weight": "400",
+            "color": "rgb(255, 255, 255)",
+            "background": "rgba(0, 0, 0, 0)",
+            "borders": [
+              "0px",
+              "0px",
+              "0px",
+              "0px"
+            ],
+            "pressed": null,
+            "current": null,
+            "outline": "none"
+          }
+        ],
+        "fonts": {
+          "body": true,
+          "display": true,
+          "faces": [
+            {
+              "family": "Parade Ink Text",
+              "status": "loaded"
+            },
+            {
+              "family": "Parade Ink Display",
+              "status": "loaded"
+            },
+            {
+              "family": "MCR Auth Print",
+              "status": "loaded"
+            }
+          ]
+        },
+        "safeArea": "2px"
+      }
+    },
+    "era": [
+      {
+        "era": "REVENGE",
+        "state": {
+          "qualification": "ACTUAL_MAIN_CANONICAL_AUTH_MAP4_EXPLICIT_HTTP_C05_FIXTURE_NOT_LIVE",
+          "productionAdmitted": false,
+          "scenario": "eligible-attendee-contract-fixture",
+          "readiness": {
+            "status": "INPUT_CANDIDATE",
+            "productionAdmitted": false,
+            "reasons": [],
+            "worldReason": null,
+            "limitation": "Enabled flags and a Map4 identity are necessary only. Full authenticated C03 validation stays in memory; retained runtime evidence is a public-resource projection, never a private body or its digest. Normal contract/hash/admission validation still applies."
+          },
+          "ticketTiming": [
+            {
+              "serverTimeMs": 1793840234884,
+              "expiresTimeMs": 1793840264884,
+              "lifetimeMs": 30000
+            }
+          ],
+          "requests": [
+            {
+              "path": "/api/auth/capabilities",
+              "method": "GET"
+            },
+            {
+              "path": "/api/auth/login",
+              "method": "POST"
+            },
+            {
+              "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/bootstrap",
+              "method": "GET"
+            },
+            {
+              "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/rooms",
+              "method": "GET"
+            },
+            {
+              "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/places",
+              "method": "GET"
+            },
+            {
+              "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/world-tickets",
+              "method": "POST"
+            },
+            {
+              "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/intros",
+              "method": "GET"
+            },
+            {
+              "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/me/intro",
+              "method": "GET"
+            },
+            {
+              "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/me/age-status",
+              "method": "GET"
+            },
+            {
+              "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/me/notifications",
+              "method": "GET"
+            },
+            {
+              "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/mural/tools",
+              "method": "GET"
+            }
+          ],
+          "sockets": 1,
+          "activeSockets": 1,
+          "canvases": 1,
+          "urls": {
+            "created": [
+              "blob:http://127.0.0.1:5173/9b0702c2-5fc9-4172-ad3b-9b58eaf2ee1e",
+              "blob:http://127.0.0.1:5173/7145a2d6-8463-4b2b-a1b2-7dcc6d524555",
+              "blob:http://127.0.0.1:5173/31da69c5-bac9-4179-a3de-7061872bc48e",
+              "blob:http://127.0.0.1:5173/27802af6-80d8-4a76-9dd2-b1320990c003",
+              "blob:http://127.0.0.1:5173/2177a62c-3efb-4713-a38e-011be1851e33",
+              "blob:http://127.0.0.1:5173/599200e0-95fc-4e10-a05c-74a5998363f4"
+            ],
+            "revoked": [
+              "blob:http://127.0.0.1:5173/2177a62c-3efb-4713-a38e-011be1851e33"
+            ]
+          },
+          "path": "/world",
+          "map": {
+            "id": "mcr_reference_scene_r3",
+            "revision": 4,
+            "contentHash": "sha256:736afd273a067f6c40db76b8cc54412416fba88984a50d9a6b6738d869831fb8",
+            "geometryHash": "sha256:899aca9bd6ce499c6f46aff5eaf21e30ab34b301e988771b978a6fab7c2d469f"
+          },
+          "theme": "REVENGE",
+          "active": 1,
+          "peak": 1,
+          "documentId": "28db423f-ddde-4793-be69-41579d67c46e",
+          "avatar": {
+            "config": {
+              "contract_version": "1.1.0",
+              "kind": "avatar_config",
+              "manifest_id": "mcr_selected_static_20261103",
+              "manifest_version": 1,
+              "preset_id": "photo01_front_01",
+              "representation": "whole_character"
+            },
+            "revision": 1
+          },
+          "manifestPin": {
+            "manifest_id": "mcr_selected_static_20261103",
+            "manifest_version": 1,
+            "content_hash": "sha256:0627c7d178b22535a561e1270db6d8bf9e2383ba84d03a63962e48e565c59b2b"
+          }
+        },
+        "layout": {
+          "viewport": [
+            390,
+            844
+          ],
+          "DPR": 1,
+          "overflow": false,
+          "root": [
+            {
+              "tag": "DIV",
+              "text": "Skip to contentValidation participantMCR source-bound validation candidateWORLDREVENGEPARADEDANGERRevenge selected.Interact⌖RecenterControls & helpNearby in worldNo reachable interaction nearbyZoom −Zoom +Focus the map or joystick: arrows / W A S D move, E interacts, R recenters. Tap a walkable destination.Local movement ready.World connected.Reconnect worldVirtual position is not physical arrival.World/6 in viewVirtual presence, not physical arrival.NearbyWorldToolsMapRoomsNearbyHelpInboxSettingsWorldFeedMeetGiftsWallMe",
+              "x": 0,
+              "y": 0,
+              "width": 390,
+              "height": 844,
+              "font": "\"Parade Ink Text\", Arial, sans-serif",
+              "size": "18px",
+              "line": "22px",
+              "weight": "400",
+              "color": "rgb(23, 23, 23)",
+              "background": "rgb(249, 249, 248)",
+              "borders": [
+                "2px",
+                "2px",
+                "2px",
+                "2px"
+              ],
+              "pressed": null,
+              "current": null,
+              "outline": "none"
+            }
+          ],
+          "title": [
+            {
+              "tag": "HEADER",
+              "text": "WORLD",
+              "x": 4,
+              "y": 4,
+              "width": 382,
+              "height": 48,
+              "font": "\"Parade Ink Text\", Arial, sans-serif",
+              "size": "18px",
+              "line": "22px",
+              "weight": "400",
+              "color": "rgb(255, 255, 255)",
+              "background": "rgb(23, 23, 23)",
+              "borders": [
+                "0px",
+                "0px",
+                "0px",
+                "0px"
+              ],
+              "pressed": null,
+              "current": null,
+              "outline": "none"
+            }
+          ],
+          "eras": [
+            {
+              "tag": "BUTTON",
+              "text": "REVENGE",
+              "x": 10,
+              "y": 58,
+              "width": 120.65625,
+              "height": 44,
+              "font": "\"Parade Ink Display\", \"Arial Narrow\", Arial, sans-serif",
+              "size": "18px",
+              "line": "22px",
+              "weight": "700",
+              "color": "rgb(255, 255, 255)",
+              "background": "rgb(23, 23, 23)",
+              "borders": [
+                "1px",
+                "1px",
+                "1px",
+                "1px"
+              ],
+              "pressed": "true",
+              "current": null,
+              "outline": "none"
+            },
+            {
+              "tag": "BUTTON",
+              "text": "PARADE",
+              "x": 134.65625,
+              "y": 58,
+              "width": 120.671875,
+              "height": 44,
+              "font": "\"Parade Ink Display\", \"Arial Narrow\", Arial, sans-serif",
+              "size": "18px",
+              "line": "22px",
+              "weight": "700",
+              "color": "rgb(23, 23, 23)",
+              "background": "rgb(249, 248, 246)",
+              "borders": [
+                "1px",
+                "1px",
+                "1px",
+                "1px"
+              ],
+              "pressed": "false",
+              "current": null,
+              "outline": "none"
+            },
+            {
+              "tag": "BUTTON",
+              "text": "DANGER",
+              "x": 259.328125,
+              "y": 58,
+              "width": 120.65625,
+              "height": 44,
+              "font": "\"Parade Ink Display\", \"Arial Narrow\", Arial, sans-serif",
+              "size": "18px",
+              "line": "22px",
+              "weight": "700",
+              "color": "rgb(23, 23, 23)",
+              "background": "rgb(249, 248, 246)",
+              "borders": [
+                "1px",
+                "1px",
+                "1px",
+                "1px"
+              ],
+              "pressed": "false",
+              "current": null,
+              "outline": "none"
+            }
+          ],
+          "context": [
+            {
+              "tag": "SECTION",
+              "text": "World/6 in viewVirtual presence, not physical arrival.Nearby",
+              "x": 10,
+              "y": 703,
+              "width": 370,
+              "height": 72,
+              "font": "\"Parade Ink Text\", Arial, sans-serif",
+              "size": "18px",
+              "line": "22px",
+              "weight": "400",
+              "color": "rgb(23, 23, 23)",
+              "background": "rgb(249, 248, 246)",
+              "borders": [
+                "1px",
+                "1px",
+                "1px",
+                "1px"
+              ],
+              "pressed": null,
+              "current": null,
+              "outline": "none"
+            }
+          ],
+          "action": [
+            {
+              "tag": "A",
+              "text": "Nearby",
+              "x": 287,
+              "y": 717,
+              "width": 86,
+              "height": 44,
+              "font": "\"Parade Ink Display\", \"Arial Narrow\", Arial, sans-serif",
+              "size": "18px",
+              "line": "22px",
+              "weight": "700",
+              "color": "rgb(255, 255, 255)",
+              "background": "rgb(146, 37, 50)",
+              "borders": [
+                "1px",
+                "1px",
+                "1px",
+                "1px"
+              ],
+              "pressed": null,
+              "current": null,
+              "outline": "none"
+            }
+          ],
+          "nav": [
+            {
+              "tag": "A",
+              "text": "World",
+              "x": 4,
+              "y": 782,
+              "width": 63.65625,
+              "height": 58,
+              "font": "\"Parade Ink Display\", \"Arial Narrow\", Arial, sans-serif",
+              "size": "14px",
+              "line": "18px",
+              "weight": "700",
+              "color": "rgb(255, 255, 255)",
+              "background": "rgb(23, 23, 23)",
+              "borders": [
+                "0px",
+                "1px",
+                "0px",
+                "0px"
+              ],
+              "pressed": null,
+              "current": "page",
+              "outline": "none"
+            },
+            {
+              "tag": "A",
+              "text": "Feed",
+              "x": 67.65625,
+              "y": 782,
+              "width": 63.671875,
+              "height": 58,
+              "font": "\"Parade Ink Display\", \"Arial Narrow\", Arial, sans-serif",
+              "size": "14px",
+              "line": "18px",
+              "weight": "700",
+              "color": "rgb(23, 23, 23)",
+              "background": "rgb(249, 249, 248)",
+              "borders": [
+                "0px",
+                "1px",
+                "0px",
+                "0px"
+              ],
+              "pressed": null,
+              "current": null,
+              "outline": "none"
+            },
+            {
+              "tag": "A",
+              "text": "Meet",
+              "x": 131.328125,
+              "y": 782,
+              "width": 63.671875,
+              "height": 58,
+              "font": "\"Parade Ink Display\", \"Arial Narrow\", Arial, sans-serif",
+              "size": "14px",
+              "line": "18px",
+              "weight": "700",
+              "color": "rgb(23, 23, 23)",
+              "background": "rgb(249, 249, 248)",
+              "borders": [
+                "0px",
+                "1px",
+                "0px",
+                "0px"
+              ],
+              "pressed": null,
+              "current": null,
+              "outline": "none"
+            },
+            {
+              "tag": "A",
+              "text": "Gifts",
+              "x": 195,
+              "y": 782,
+              "width": 63.65625,
+              "height": 58,
+              "font": "\"Parade Ink Display\", \"Arial Narrow\", Arial, sans-serif",
+              "size": "14px",
+              "line": "18px",
+              "weight": "700",
+              "color": "rgb(23, 23, 23)",
+              "background": "rgb(249, 249, 248)",
+              "borders": [
+                "0px",
+                "1px",
+                "0px",
+                "0px"
+              ],
+              "pressed": null,
+              "current": null,
+              "outline": "none"
+            },
+            {
+              "tag": "A",
+              "text": "Wall",
+              "x": 258.65625,
+              "y": 782,
+              "width": 63.671875,
+              "height": 58,
+              "font": "\"Parade Ink Display\", \"Arial Narrow\", Arial, sans-serif",
+              "size": "14px",
+              "line": "18px",
+              "weight": "700",
+              "color": "rgb(23, 23, 23)",
+              "background": "rgb(249, 249, 248)",
+              "borders": [
+                "0px",
+                "1px",
+                "0px",
+                "0px"
+              ],
+              "pressed": null,
+              "current": null,
+              "outline": "none"
+            },
+            {
+              "tag": "A",
+              "text": "Me",
+              "x": 322.328125,
+              "y": 782,
+              "width": 63.671875,
+              "height": 58,
+              "font": "\"Parade Ink Display\", \"Arial Narrow\", Arial, sans-serif",
+              "size": "14px",
+              "line": "18px",
+              "weight": "700",
+              "color": "rgb(23, 23, 23)",
+              "background": "rgb(249, 249, 248)",
+              "borders": [
+                "0px",
+                "0px",
+                "0px",
+                "0px"
+              ],
+              "pressed": null,
+              "current": null,
+              "outline": "none"
+            }
+          ],
+          "headerControls": [
+            {
+              "tag": "BUTTON",
+              "text": "",
+              "x": 254,
+              "y": 6,
+              "width": 44,
+              "height": 44,
+              "font": "\"Parade Ink Text\", Arial, sans-serif",
+              "size": "18px",
+              "line": "22px",
+              "weight": "400",
+              "color": "rgb(255, 255, 255)",
+              "background": "rgba(0, 0, 0, 0)",
+              "borders": [
+                "0px",
+                "0px",
+                "0px",
+                "0px"
+              ],
+              "pressed": null,
+              "current": null,
+              "outline": "none"
+            },
+            {
+              "tag": "BUTTON",
+              "text": "",
+              "x": 298,
+              "y": 6,
+              "width": 44,
+              "height": 44,
+              "font": "\"Parade Ink Text\", Arial, sans-serif",
+              "size": "18px",
+              "line": "22px",
+              "weight": "400",
+              "color": "rgb(255, 255, 255)",
+              "background": "rgba(0, 0, 0, 0)",
+              "borders": [
+                "0px",
+                "0px",
+                "0px",
+                "0px"
+              ],
+              "pressed": null,
+              "current": null,
+              "outline": "none"
+            },
+            {
+              "tag": "A",
+              "text": "",
+              "x": 342,
+              "y": 6,
+              "width": 44,
+              "height": 44,
+              "font": "\"Parade Ink Text\", Arial, sans-serif",
+              "size": "18px",
+              "line": "22px",
+              "weight": "400",
+              "color": "rgb(255, 255, 255)",
+              "background": "rgba(0, 0, 0, 0)",
+              "borders": [
+                "0px",
+                "0px",
+                "0px",
+                "0px"
+              ],
+              "pressed": null,
+              "current": null,
+              "outline": "none"
+            }
+          ],
+          "fonts": {
+            "body": true,
+            "display": true,
+            "faces": [
+              {
+                "family": "Parade Ink Text",
+                "status": "loaded"
+              },
+              {
+                "family": "Parade Ink Display",
+                "status": "loaded"
+              },
+              {
+                "family": "MCR Auth Print",
+                "status": "loaded"
+              }
+            ]
+          },
+          "safeArea": "2px"
+        },
+        "localPreference": [
+          [
+            "mcr:theme:v1:e5561eef-e758-567c-ae16-a8ae82e60bc7:f1fd7b85-d393-5410-8bc3-5ea6b71aeb77",
+            "REVENGE"
+          ]
+        ]
+      },
+      {
+        "era": "PARADE",
+        "state": {
+          "qualification": "ACTUAL_MAIN_CANONICAL_AUTH_MAP4_EXPLICIT_HTTP_C05_FIXTURE_NOT_LIVE",
+          "productionAdmitted": false,
+          "scenario": "eligible-attendee-contract-fixture",
+          "readiness": {
+            "status": "INPUT_CANDIDATE",
+            "productionAdmitted": false,
+            "reasons": [],
+            "worldReason": null,
+            "limitation": "Enabled flags and a Map4 identity are necessary only. Full authenticated C03 validation stays in memory; retained runtime evidence is a public-resource projection, never a private body or its digest. Normal contract/hash/admission validation still applies."
+          },
+          "ticketTiming": [
+            {
+              "serverTimeMs": 1793840234884,
+              "expiresTimeMs": 1793840264884,
+              "lifetimeMs": 30000
+            }
+          ],
+          "requests": [
+            {
+              "path": "/api/auth/capabilities",
+              "method": "GET"
+            },
+            {
+              "path": "/api/auth/login",
+              "method": "POST"
+            },
+            {
+              "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/bootstrap",
+              "method": "GET"
+            },
+            {
+              "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/rooms",
+              "method": "GET"
+            },
+            {
+              "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/places",
+              "method": "GET"
+            },
+            {
+              "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/world-tickets",
+              "method": "POST"
+            },
+            {
+              "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/intros",
+              "method": "GET"
+            },
+            {
+              "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/me/intro",
+              "method": "GET"
+            },
+            {
+              "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/me/age-status",
+              "method": "GET"
+            },
+            {
+              "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/me/notifications",
+              "method": "GET"
+            },
+            {
+              "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/mural/tools",
+              "method": "GET"
+            }
+          ],
+          "sockets": 1,
+          "activeSockets": 1,
+          "canvases": 1,
+          "urls": {
+            "created": [
+              "blob:http://127.0.0.1:5173/9b0702c2-5fc9-4172-ad3b-9b58eaf2ee1e",
+              "blob:http://127.0.0.1:5173/7145a2d6-8463-4b2b-a1b2-7dcc6d524555",
+              "blob:http://127.0.0.1:5173/31da69c5-bac9-4179-a3de-7061872bc48e",
+              "blob:http://127.0.0.1:5173/27802af6-80d8-4a76-9dd2-b1320990c003",
+              "blob:http://127.0.0.1:5173/2177a62c-3efb-4713-a38e-011be1851e33",
+              "blob:http://127.0.0.1:5173/599200e0-95fc-4e10-a05c-74a5998363f4",
+              "blob:http://127.0.0.1:5173/8fe0b8f6-83d5-4819-aab9-5cbbe3683a16",
+              "blob:http://127.0.0.1:5173/f19533bf-1a4d-4f11-b2f8-d48eddca48cd",
+              "blob:http://127.0.0.1:5173/1ffbd377-55e8-4a63-8069-913380b1e74d",
+              "blob:http://127.0.0.1:5173/882e8990-919a-437e-a1fc-90a25ede7f77",
+              "blob:http://127.0.0.1:5173/8b6221cc-fd78-4733-af65-93815697028d"
+            ],
+            "revoked": [
+              "blob:http://127.0.0.1:5173/2177a62c-3efb-4713-a38e-011be1851e33",
+              "blob:http://127.0.0.1:5173/599200e0-95fc-4e10-a05c-74a5998363f4",
+              "blob:http://127.0.0.1:5173/7145a2d6-8463-4b2b-a1b2-7dcc6d524555",
+              "blob:http://127.0.0.1:5173/31da69c5-bac9-4179-a3de-7061872bc48e",
+              "blob:http://127.0.0.1:5173/27802af6-80d8-4a76-9dd2-b1320990c003",
+              "blob:http://127.0.0.1:5173/882e8990-919a-437e-a1fc-90a25ede7f77"
+            ]
+          },
+          "path": "/world",
+          "map": {
+            "id": "mcr_reference_scene_r3",
+            "revision": 4,
+            "contentHash": "sha256:736afd273a067f6c40db76b8cc54412416fba88984a50d9a6b6738d869831fb8",
+            "geometryHash": "sha256:899aca9bd6ce499c6f46aff5eaf21e30ab34b301e988771b978a6fab7c2d469f"
+          },
+          "theme": "REVENGE",
+          "active": 1,
+          "peak": 1,
+          "documentId": "28db423f-ddde-4793-be69-41579d67c46e",
+          "avatar": {
+            "config": {
+              "contract_version": "1.1.0",
+              "kind": "avatar_config",
+              "manifest_id": "mcr_selected_static_20261103",
+              "manifest_version": 1,
+              "preset_id": "photo01_front_01",
+              "representation": "whole_character"
+            },
+            "revision": 1
+          },
+          "manifestPin": {
+            "manifest_id": "mcr_selected_static_20261103",
+            "manifest_version": 1,
+            "content_hash": "sha256:0627c7d178b22535a561e1270db6d8bf9e2383ba84d03a63962e48e565c59b2b"
+          }
+        },
+        "layout": {
+          "viewport": [
+            390,
+            844
+          ],
+          "DPR": 1,
+          "overflow": false,
+          "root": [
+            {
+              "tag": "DIV",
+              "text": "Skip to contentValidation participantMCR source-bound validation candidateWORLDREVENGEPARADEDANGERParade selected.Interact⌖RecenterControls & helpNearby in worldNo reachable interaction nearbyZoom −Zoom +Focus the map or joystick: arrows / W A S D move, E interacts, R recenters. Tap a walkable destination.Local movement ready.World connected.Reconnect worldVirtual position is not physical arrival.World/6 in viewVirtual presence, not physical arrival.NearbyWorldToolsMapRoomsNearbyHelpInboxSettingsWorldFeedMeetGiftsWallMe",
+              "x": 0,
+              "y": 0,
+              "width": 390,
+              "height": 844,
+              "font": "\"Parade Ink Text\", Arial, sans-serif",
+              "size": "18px",
+              "line": "22px",
+              "weight": "400",
+              "color": "rgb(23, 23, 23)",
+              "background": "rgb(249, 249, 248)",
+              "borders": [
+                "2px",
+                "2px",
+                "2px",
+                "2px"
+              ],
+              "pressed": null,
+              "current": null,
+              "outline": "none"
+            }
+          ],
+          "title": [
+            {
+              "tag": "HEADER",
+              "text": "WORLD",
+              "x": 4,
+              "y": 4,
+              "width": 382,
+              "height": 48,
+              "font": "\"Parade Ink Text\", Arial, sans-serif",
+              "size": "18px",
+              "line": "22px",
+              "weight": "400",
+              "color": "rgb(255, 255, 255)",
+              "background": "rgb(23, 23, 23)",
+              "borders": [
+                "0px",
+                "0px",
+                "0px",
+                "0px"
+              ],
+              "pressed": null,
+              "current": null,
+              "outline": "none"
+            }
+          ],
+          "eras": [
+            {
+              "tag": "BUTTON",
+              "text": "REVENGE",
+              "x": 10,
+              "y": 58,
+              "width": 120.65625,
+              "height": 44,
+              "font": "\"Parade Ink Display\", \"Arial Narrow\", Arial, sans-serif",
+              "size": "18px",
+              "line": "22px",
+              "weight": "700",
+              "color": "rgb(23, 23, 23)",
+              "background": "rgb(249, 248, 246)",
+              "borders": [
+                "1px",
+                "1px",
+                "1px",
+                "1px"
+              ],
+              "pressed": "false",
+              "current": null,
+              "outline": "none"
+            },
+            {
+              "tag": "BUTTON",
+              "text": "PARADE",
+              "x": 134.65625,
+              "y": 58,
+              "width": 120.671875,
+              "height": 44,
+              "font": "\"Parade Ink Display\", \"Arial Narrow\", Arial, sans-serif",
+              "size": "18px",
+              "line": "22px",
+              "weight": "700",
+              "color": "rgb(255, 255, 255)",
+              "background": "rgb(23, 23, 23)",
+              "borders": [
+                "1px",
+                "1px",
+                "1px",
+                "1px"
+              ],
+              "pressed": "true",
+              "current": null,
+              "outline": "none"
+            },
+            {
+              "tag": "BUTTON",
+              "text": "DANGER",
+              "x": 259.328125,
+              "y": 58,
+              "width": 120.65625,
+              "height": 44,
+              "font": "\"Parade Ink Display\", \"Arial Narrow\", Arial, sans-serif",
+              "size": "18px",
+              "line": "22px",
+              "weight": "700",
+              "color": "rgb(23, 23, 23)",
+              "background": "rgb(249, 248, 246)",
+              "borders": [
+                "1px",
+                "1px",
+                "1px",
+                "1px"
+              ],
+              "pressed": "false",
+              "current": null,
+              "outline": "none"
+            }
+          ],
+          "context": [
+            {
+              "tag": "SECTION",
+              "text": "World/6 in viewVirtual presence, not physical arrival.Nearby",
+              "x": 10,
+              "y": 703,
+              "width": 370,
+              "height": 72,
+              "font": "\"Parade Ink Text\", Arial, sans-serif",
+              "size": "18px",
+              "line": "22px",
+              "weight": "400",
+              "color": "rgb(23, 23, 23)",
+              "background": "rgb(249, 248, 246)",
+              "borders": [
+                "1px",
+                "1px",
+                "1px",
+                "1px"
+              ],
+              "pressed": null,
+              "current": null,
+              "outline": "none"
+            }
+          ],
+          "action": [
+            {
+              "tag": "A",
+              "text": "Nearby",
+              "x": 287,
+              "y": 717,
+              "width": 86,
+              "height": 44,
+              "font": "\"Parade Ink Display\", \"Arial Narrow\", Arial, sans-serif",
+              "size": "18px",
+              "line": "22px",
+              "weight": "700",
+              "color": "rgb(255, 255, 255)",
+              "background": "rgb(146, 37, 50)",
+              "borders": [
+                "1px",
+                "1px",
+                "1px",
+                "1px"
+              ],
+              "pressed": null,
+              "current": null,
+              "outline": "none"
+            }
+          ],
+          "nav": [
+            {
+              "tag": "A",
+              "text": "World",
+              "x": 4,
+              "y": 782,
+              "width": 63.65625,
+              "height": 58,
+              "font": "\"Parade Ink Display\", \"Arial Narrow\", Arial, sans-serif",
+              "size": "14px",
+              "line": "18px",
+              "weight": "700",
+              "color": "rgb(255, 255, 255)",
+              "background": "rgb(23, 23, 23)",
+              "borders": [
+                "0px",
+                "1px",
+                "0px",
+                "0px"
+              ],
+              "pressed": null,
+              "current": "page",
+              "outline": "none"
+            },
+            {
+              "tag": "A",
+              "text": "Feed",
+              "x": 67.65625,
+              "y": 782,
+              "width": 63.671875,
+              "height": 58,
+              "font": "\"Parade Ink Display\", \"Arial Narrow\", Arial, sans-serif",
+              "size": "14px",
+              "line": "18px",
+              "weight": "700",
+              "color": "rgb(23, 23, 23)",
+              "background": "rgb(249, 249, 248)",
+              "borders": [
+                "0px",
+                "1px",
+                "0px",
+                "0px"
+              ],
+              "pressed": null,
+              "current": null,
+              "outline": "none"
+            },
+            {
+              "tag": "A",
+              "text": "Meet",
+              "x": 131.328125,
+              "y": 782,
+              "width": 63.671875,
+              "height": 58,
+              "font": "\"Parade Ink Display\", \"Arial Narrow\", Arial, sans-serif",
+              "size": "14px",
+              "line": "18px",
+              "weight": "700",
+              "color": "rgb(23, 23, 23)",
+              "background": "rgb(249, 249, 248)",
+              "borders": [
+                "0px",
+                "1px",
+                "0px",
+                "0px"
+              ],
+              "pressed": null,
+              "current": null,
+              "outline": "none"
+            },
+            {
+              "tag": "A",
+              "text": "Gifts",
+              "x": 195,
+              "y": 782,
+              "width": 63.65625,
+              "height": 58,
+              "font": "\"Parade Ink Display\", \"Arial Narrow\", Arial, sans-serif",
+              "size": "14px",
+              "line": "18px",
+              "weight": "700",
+              "color": "rgb(23, 23, 23)",
+              "background": "rgb(249, 249, 248)",
+              "borders": [
+                "0px",
+                "1px",
+                "0px",
+                "0px"
+              ],
+              "pressed": null,
+              "current": null,
+              "outline": "none"
+            },
+            {
+              "tag": "A",
+              "text": "Wall",
+              "x": 258.65625,
+              "y": 782,
+              "width": 63.671875,
+              "height": 58,
+              "font": "\"Parade Ink Display\", \"Arial Narrow\", Arial, sans-serif",
+              "size": "14px",
+              "line": "18px",
+              "weight": "700",
+              "color": "rgb(23, 23, 23)",
+              "background": "rgb(249, 249, 248)",
+              "borders": [
+                "0px",
+                "1px",
+                "0px",
+                "0px"
+              ],
+              "pressed": null,
+              "current": null,
+              "outline": "none"
+            },
+            {
+              "tag": "A",
+              "text": "Me",
+              "x": 322.328125,
+              "y": 782,
+              "width": 63.671875,
+              "height": 58,
+              "font": "\"Parade Ink Display\", \"Arial Narrow\", Arial, sans-serif",
+              "size": "14px",
+              "line": "18px",
+              "weight": "700",
+              "color": "rgb(23, 23, 23)",
+              "background": "rgb(249, 249, 248)",
+              "borders": [
+                "0px",
+                "0px",
+                "0px",
+                "0px"
+              ],
+              "pressed": null,
+              "current": null,
+              "outline": "none"
+            }
+          ],
+          "headerControls": [
+            {
+              "tag": "BUTTON",
+              "text": "",
+              "x": 254,
+              "y": 6,
+              "width": 44,
+              "height": 44,
+              "font": "\"Parade Ink Text\", Arial, sans-serif",
+              "size": "18px",
+              "line": "22px",
+              "weight": "400",
+              "color": "rgb(255, 255, 255)",
+              "background": "rgba(0, 0, 0, 0)",
+              "borders": [
+                "0px",
+                "0px",
+                "0px",
+                "0px"
+              ],
+              "pressed": null,
+              "current": null,
+              "outline": "none"
+            },
+            {
+              "tag": "BUTTON",
+              "text": "",
+              "x": 298,
+              "y": 6,
+              "width": 44,
+              "height": 44,
+              "font": "\"Parade Ink Text\", Arial, sans-serif",
+              "size": "18px",
+              "line": "22px",
+              "weight": "400",
+              "color": "rgb(255, 255, 255)",
+              "background": "rgba(0, 0, 0, 0)",
+              "borders": [
+                "0px",
+                "0px",
+                "0px",
+                "0px"
+              ],
+              "pressed": null,
+              "current": null,
+              "outline": "none"
+            },
+            {
+              "tag": "A",
+              "text": "",
+              "x": 342,
+              "y": 6,
+              "width": 44,
+              "height": 44,
+              "font": "\"Parade Ink Text\", Arial, sans-serif",
+              "size": "18px",
+              "line": "22px",
+              "weight": "400",
+              "color": "rgb(255, 255, 255)",
+              "background": "rgba(0, 0, 0, 0)",
+              "borders": [
+                "0px",
+                "0px",
+                "0px",
+                "0px"
+              ],
+              "pressed": null,
+              "current": null,
+              "outline": "none"
+            }
+          ],
+          "fonts": {
+            "body": true,
+            "display": true,
+            "faces": [
+              {
+                "family": "Parade Ink Text",
+                "status": "loaded"
+              },
+              {
+                "family": "Parade Ink Display",
+                "status": "loaded"
+              },
+              {
+                "family": "MCR Auth Print",
+                "status": "loaded"
+              }
+            ]
+          },
+          "safeArea": "2px"
+        },
+        "localPreference": [
+          [
+            "mcr:theme:v1:e5561eef-e758-567c-ae16-a8ae82e60bc7:f1fd7b85-d393-5410-8bc3-5ea6b71aeb77",
+            "PARADE"
+          ]
+        ]
+      },
+      {
+        "era": "DANGER",
+        "state": {
+          "qualification": "ACTUAL_MAIN_CANONICAL_AUTH_MAP4_EXPLICIT_HTTP_C05_FIXTURE_NOT_LIVE",
+          "productionAdmitted": false,
+          "scenario": "eligible-attendee-contract-fixture",
+          "readiness": {
+            "status": "INPUT_CANDIDATE",
+            "productionAdmitted": false,
+            "reasons": [],
+            "worldReason": null,
+            "limitation": "Enabled flags and a Map4 identity are necessary only. Full authenticated C03 validation stays in memory; retained runtime evidence is a public-resource projection, never a private body or its digest. Normal contract/hash/admission validation still applies."
+          },
+          "ticketTiming": [
+            {
+              "serverTimeMs": 1793840234884,
+              "expiresTimeMs": 1793840264884,
+              "lifetimeMs": 30000
+            }
+          ],
+          "requests": [
+            {
+              "path": "/api/auth/capabilities",
+              "method": "GET"
+            },
+            {
+              "path": "/api/auth/login",
+              "method": "POST"
+            },
+            {
+              "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/bootstrap",
+              "method": "GET"
+            },
+            {
+              "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/rooms",
+              "method": "GET"
+            },
+            {
+              "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/places",
+              "method": "GET"
+            },
+            {
+              "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/world-tickets",
+              "method": "POST"
+            },
+            {
+              "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/intros",
+              "method": "GET"
+            },
+            {
+              "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/me/intro",
+              "method": "GET"
+            },
+            {
+              "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/me/age-status",
+              "method": "GET"
+            },
+            {
+              "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/me/notifications",
+              "method": "GET"
+            },
+            {
+              "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/mural/tools",
+              "method": "GET"
+            }
+          ],
+          "sockets": 1,
+          "activeSockets": 1,
+          "canvases": 1,
+          "urls": {
+            "created": [
+              "blob:http://127.0.0.1:5173/9b0702c2-5fc9-4172-ad3b-9b58eaf2ee1e",
+              "blob:http://127.0.0.1:5173/7145a2d6-8463-4b2b-a1b2-7dcc6d524555",
+              "blob:http://127.0.0.1:5173/31da69c5-bac9-4179-a3de-7061872bc48e",
+              "blob:http://127.0.0.1:5173/27802af6-80d8-4a76-9dd2-b1320990c003",
+              "blob:http://127.0.0.1:5173/2177a62c-3efb-4713-a38e-011be1851e33",
+              "blob:http://127.0.0.1:5173/599200e0-95fc-4e10-a05c-74a5998363f4",
+              "blob:http://127.0.0.1:5173/8fe0b8f6-83d5-4819-aab9-5cbbe3683a16",
+              "blob:http://127.0.0.1:5173/f19533bf-1a4d-4f11-b2f8-d48eddca48cd",
+              "blob:http://127.0.0.1:5173/1ffbd377-55e8-4a63-8069-913380b1e74d",
+              "blob:http://127.0.0.1:5173/882e8990-919a-437e-a1fc-90a25ede7f77",
+              "blob:http://127.0.0.1:5173/8b6221cc-fd78-4733-af65-93815697028d",
+              "blob:http://127.0.0.1:5173/57bccae1-795e-41a2-a5fe-c9283c5d5170",
+              "blob:http://127.0.0.1:5173/74b5b91d-7cd2-4fa5-885f-1a9b7cf5a79b",
+              "blob:http://127.0.0.1:5173/b8d4c3e7-8799-4d12-9f3f-82a219bfb0d0",
+              "blob:http://127.0.0.1:5173/9b3419eb-d658-423c-9263-aa59cb96345c",
+              "blob:http://127.0.0.1:5173/8d5c4fac-ef6b-4a08-bf00-14219ba6830a"
+            ],
+            "revoked": [
+              "blob:http://127.0.0.1:5173/2177a62c-3efb-4713-a38e-011be1851e33",
+              "blob:http://127.0.0.1:5173/599200e0-95fc-4e10-a05c-74a5998363f4",
+              "blob:http://127.0.0.1:5173/7145a2d6-8463-4b2b-a1b2-7dcc6d524555",
+              "blob:http://127.0.0.1:5173/31da69c5-bac9-4179-a3de-7061872bc48e",
+              "blob:http://127.0.0.1:5173/27802af6-80d8-4a76-9dd2-b1320990c003",
+              "blob:http://127.0.0.1:5173/882e8990-919a-437e-a1fc-90a25ede7f77",
+              "blob:http://127.0.0.1:5173/8b6221cc-fd78-4733-af65-93815697028d",
+              "blob:http://127.0.0.1:5173/8fe0b8f6-83d5-4819-aab9-5cbbe3683a16",
+              "blob:http://127.0.0.1:5173/f19533bf-1a4d-4f11-b2f8-d48eddca48cd",
+              "blob:http://127.0.0.1:5173/1ffbd377-55e8-4a63-8069-913380b1e74d",
+              "blob:http://127.0.0.1:5173/9b3419eb-d658-423c-9263-aa59cb96345c"
+            ]
+          },
+          "path": "/world",
+          "map": {
+            "id": "mcr_reference_scene_r3",
+            "revision": 4,
+            "contentHash": "sha256:736afd273a067f6c40db76b8cc54412416fba88984a50d9a6b6738d869831fb8",
+            "geometryHash": "sha256:899aca9bd6ce499c6f46aff5eaf21e30ab34b301e988771b978a6fab7c2d469f"
+          },
+          "theme": "REVENGE",
+          "active": 1,
+          "peak": 1,
+          "documentId": "28db423f-ddde-4793-be69-41579d67c46e",
+          "avatar": {
+            "config": {
+              "contract_version": "1.1.0",
+              "kind": "avatar_config",
+              "manifest_id": "mcr_selected_static_20261103",
+              "manifest_version": 1,
+              "preset_id": "photo01_front_01",
+              "representation": "whole_character"
+            },
+            "revision": 1
+          },
+          "manifestPin": {
+            "manifest_id": "mcr_selected_static_20261103",
+            "manifest_version": 1,
+            "content_hash": "sha256:0627c7d178b22535a561e1270db6d8bf9e2383ba84d03a63962e48e565c59b2b"
+          }
+        },
+        "layout": {
+          "viewport": [
+            390,
+            844
+          ],
+          "DPR": 1,
+          "overflow": false,
+          "root": [
+            {
+              "tag": "DIV",
+              "text": "Skip to contentValidation participantMCR source-bound validation candidateWORLDREVENGEPARADEDANGERDanger selected.Interact⌖RecenterControls & helpNearby in worldNo reachable interaction nearbyZoom −Zoom +Focus the map or joystick: arrows / W A S D move, E interacts, R recenters. Tap a walkable destination.Local movement ready.World connected.Reconnect worldVirtual position is not physical arrival.World/6 in viewVirtual presence, not physical arrival.NearbyWorldToolsMapRoomsNearbyHelpInboxSettingsWorldFeedMeetGiftsWallMe",
+              "x": 0,
+              "y": 0,
+              "width": 390,
+              "height": 844,
+              "font": "\"Parade Ink Text\", Arial, sans-serif",
+              "size": "18px",
+              "line": "22px",
+              "weight": "400",
+              "color": "rgb(23, 23, 23)",
+              "background": "rgb(249, 249, 248)",
+              "borders": [
+                "2px",
+                "2px",
+                "2px",
+                "2px"
+              ],
+              "pressed": null,
+              "current": null,
+              "outline": "none"
+            }
+          ],
+          "title": [
+            {
+              "tag": "HEADER",
+              "text": "WORLD",
+              "x": 4,
+              "y": 4,
+              "width": 382,
+              "height": 48,
+              "font": "\"Parade Ink Text\", Arial, sans-serif",
+              "size": "18px",
+              "line": "22px",
+              "weight": "400",
+              "color": "rgb(255, 255, 255)",
+              "background": "rgb(23, 23, 23)",
+              "borders": [
+                "0px",
+                "0px",
+                "0px",
+                "0px"
+              ],
+              "pressed": null,
+              "current": null,
+              "outline": "none"
+            }
+          ],
+          "eras": [
+            {
+              "tag": "BUTTON",
+              "text": "REVENGE",
+              "x": 10,
+              "y": 58,
+              "width": 120.65625,
+              "height": 44,
+              "font": "\"Parade Ink Display\", \"Arial Narrow\", Arial, sans-serif",
+              "size": "18px",
+              "line": "22px",
+              "weight": "700",
+              "color": "rgb(23, 23, 23)",
+              "background": "rgb(249, 248, 246)",
+              "borders": [
+                "1px",
+                "1px",
+                "1px",
+                "1px"
+              ],
+              "pressed": "false",
+              "current": null,
+              "outline": "none"
+            },
+            {
+              "tag": "BUTTON",
+              "text": "PARADE",
+              "x": 134.65625,
+              "y": 58,
+              "width": 120.671875,
+              "height": 44,
+              "font": "\"Parade Ink Display\", \"Arial Narrow\", Arial, sans-serif",
+              "size": "18px",
+              "line": "22px",
+              "weight": "700",
+              "color": "rgb(23, 23, 23)",
+              "background": "rgb(249, 248, 246)",
+              "borders": [
+                "1px",
+                "1px",
+                "1px",
+                "1px"
+              ],
+              "pressed": "false",
+              "current": null,
+              "outline": "none"
+            },
+            {
+              "tag": "BUTTON",
+              "text": "DANGER",
+              "x": 259.328125,
+              "y": 58,
+              "width": 120.65625,
+              "height": 44,
+              "font": "\"Parade Ink Display\", \"Arial Narrow\", Arial, sans-serif",
+              "size": "18px",
+              "line": "22px",
+              "weight": "700",
+              "color": "rgb(255, 255, 255)",
+              "background": "rgb(23, 23, 23)",
+              "borders": [
+                "1px",
+                "1px",
+                "1px",
+                "1px"
+              ],
+              "pressed": "true",
+              "current": null,
+              "outline": "none"
+            }
+          ],
+          "context": [
+            {
+              "tag": "SECTION",
+              "text": "World/6 in viewVirtual presence, not physical arrival.Nearby",
+              "x": 10,
+              "y": 703,
+              "width": 370,
+              "height": 72,
+              "font": "\"Parade Ink Text\", Arial, sans-serif",
+              "size": "18px",
+              "line": "22px",
+              "weight": "400",
+              "color": "rgb(23, 23, 23)",
+              "background": "rgb(249, 248, 246)",
+              "borders": [
+                "1px",
+                "1px",
+                "1px",
+                "1px"
+              ],
+              "pressed": null,
+              "current": null,
+              "outline": "none"
+            }
+          ],
+          "action": [
+            {
+              "tag": "A",
+              "text": "Nearby",
+              "x": 287,
+              "y": 717,
+              "width": 86,
+              "height": 44,
+              "font": "\"Parade Ink Display\", \"Arial Narrow\", Arial, sans-serif",
+              "size": "18px",
+              "line": "22px",
+              "weight": "700",
+              "color": "rgb(255, 255, 255)",
+              "background": "rgb(146, 37, 50)",
+              "borders": [
+                "1px",
+                "1px",
+                "1px",
+                "1px"
+              ],
+              "pressed": null,
+              "current": null,
+              "outline": "none"
+            }
+          ],
+          "nav": [
+            {
+              "tag": "A",
+              "text": "World",
+              "x": 4,
+              "y": 782,
+              "width": 63.65625,
+              "height": 58,
+              "font": "\"Parade Ink Display\", \"Arial Narrow\", Arial, sans-serif",
+              "size": "14px",
+              "line": "18px",
+              "weight": "700",
+              "color": "rgb(255, 255, 255)",
+              "background": "rgb(23, 23, 23)",
+              "borders": [
+                "0px",
+                "1px",
+                "0px",
+                "0px"
+              ],
+              "pressed": null,
+              "current": "page",
+              "outline": "none"
+            },
+            {
+              "tag": "A",
+              "text": "Feed",
+              "x": 67.65625,
+              "y": 782,
+              "width": 63.671875,
+              "height": 58,
+              "font": "\"Parade Ink Display\", \"Arial Narrow\", Arial, sans-serif",
+              "size": "14px",
+              "line": "18px",
+              "weight": "700",
+              "color": "rgb(23, 23, 23)",
+              "background": "rgb(249, 249, 248)",
+              "borders": [
+                "0px",
+                "1px",
+                "0px",
+                "0px"
+              ],
+              "pressed": null,
+              "current": null,
+              "outline": "none"
+            },
+            {
+              "tag": "A",
+              "text": "Meet",
+              "x": 131.328125,
+              "y": 782,
+              "width": 63.671875,
+              "height": 58,
+              "font": "\"Parade Ink Display\", \"Arial Narrow\", Arial, sans-serif",
+              "size": "14px",
+              "line": "18px",
+              "weight": "700",
+              "color": "rgb(23, 23, 23)",
+              "background": "rgb(249, 249, 248)",
+              "borders": [
+                "0px",
+                "1px",
+                "0px",
+                "0px"
+              ],
+              "pressed": null,
+              "current": null,
+              "outline": "none"
+            },
+            {
+              "tag": "A",
+              "text": "Gifts",
+              "x": 195,
+              "y": 782,
+              "width": 63.65625,
+              "height": 58,
+              "font": "\"Parade Ink Display\", \"Arial Narrow\", Arial, sans-serif",
+              "size": "14px",
+              "line": "18px",
+              "weight": "700",
+              "color": "rgb(23, 23, 23)",
+              "background": "rgb(249, 249, 248)",
+              "borders": [
+                "0px",
+                "1px",
+                "0px",
+                "0px"
+              ],
+              "pressed": null,
+              "current": null,
+              "outline": "none"
+            },
+            {
+              "tag": "A",
+              "text": "Wall",
+              "x": 258.65625,
+              "y": 782,
+              "width": 63.671875,
+              "height": 58,
+              "font": "\"Parade Ink Display\", \"Arial Narrow\", Arial, sans-serif",
+              "size": "14px",
+              "line": "18px",
+              "weight": "700",
+              "color": "rgb(23, 23, 23)",
+              "background": "rgb(249, 249, 248)",
+              "borders": [
+                "0px",
+                "1px",
+                "0px",
+                "0px"
+              ],
+              "pressed": null,
+              "current": null,
+              "outline": "none"
+            },
+            {
+              "tag": "A",
+              "text": "Me",
+              "x": 322.328125,
+              "y": 782,
+              "width": 63.671875,
+              "height": 58,
+              "font": "\"Parade Ink Display\", \"Arial Narrow\", Arial, sans-serif",
+              "size": "14px",
+              "line": "18px",
+              "weight": "700",
+              "color": "rgb(23, 23, 23)",
+              "background": "rgb(249, 249, 248)",
+              "borders": [
+                "0px",
+                "0px",
+                "0px",
+                "0px"
+              ],
+              "pressed": null,
+              "current": null,
+              "outline": "none"
+            }
+          ],
+          "headerControls": [
+            {
+              "tag": "BUTTON",
+              "text": "",
+              "x": 254,
+              "y": 6,
+              "width": 44,
+              "height": 44,
+              "font": "\"Parade Ink Text\", Arial, sans-serif",
+              "size": "18px",
+              "line": "22px",
+              "weight": "400",
+              "color": "rgb(255, 255, 255)",
+              "background": "rgba(0, 0, 0, 0)",
+              "borders": [
+                "0px",
+                "0px",
+                "0px",
+                "0px"
+              ],
+              "pressed": null,
+              "current": null,
+              "outline": "none"
+            },
+            {
+              "tag": "BUTTON",
+              "text": "",
+              "x": 298,
+              "y": 6,
+              "width": 44,
+              "height": 44,
+              "font": "\"Parade Ink Text\", Arial, sans-serif",
+              "size": "18px",
+              "line": "22px",
+              "weight": "400",
+              "color": "rgb(255, 255, 255)",
+              "background": "rgba(0, 0, 0, 0)",
+              "borders": [
+                "0px",
+                "0px",
+                "0px",
+                "0px"
+              ],
+              "pressed": null,
+              "current": null,
+              "outline": "none"
+            },
+            {
+              "tag": "A",
+              "text": "",
+              "x": 342,
+              "y": 6,
+              "width": 44,
+              "height": 44,
+              "font": "\"Parade Ink Text\", Arial, sans-serif",
+              "size": "18px",
+              "line": "22px",
+              "weight": "400",
+              "color": "rgb(255, 255, 255)",
+              "background": "rgba(0, 0, 0, 0)",
+              "borders": [
+                "0px",
+                "0px",
+                "0px",
+                "0px"
+              ],
+              "pressed": null,
+              "current": null,
+              "outline": "none"
+            }
+          ],
+          "fonts": {
+            "body": true,
+            "display": true,
+            "faces": [
+              {
+                "family": "Parade Ink Text",
+                "status": "loaded"
+              },
+              {
+                "family": "Parade Ink Display",
+                "status": "loaded"
+              },
+              {
+                "family": "MCR Auth Print",
+                "status": "loaded"
+              }
+            ]
+          },
+          "safeArea": "2px"
+        },
+        "localPreference": [
+          [
+            "mcr:theme:v1:e5561eef-e758-567c-ae16-a8ae82e60bc7:f1fd7b85-d393-5410-8bc3-5ea6b71aeb77",
+            "DANGER"
+          ]
+        ]
+      }
+    ],
+    "keyboard": {
+      "captionReversible": true,
+      "menuEscapeFocus": true,
+      "focusedOutline": {
+        "style": "solid",
+        "width": "2px",
+        "color": "rgb(255, 255, 255)"
+      }
+    },
+    "contextAction": {
+      "route": "/world/nearby",
+      "returnedByIncumbentPanelControl": true
+    },
+    "assets": "Native02 asset-body handler ran; its per-asset list was not retained before failure. Native03 separately verifies used assets and does not claim a retained per-asset list."
+  },
+  "port": 5173,
+  "initial": {
+    "qualification": "ACTUAL_MAIN_CANONICAL_AUTH_MAP4_EXPLICIT_HTTP_C05_FIXTURE_NOT_LIVE",
+    "productionAdmitted": false,
+    "scenario": "eligible-attendee-contract-fixture",
+    "readiness": {
+      "status": "INPUT_CANDIDATE",
+      "productionAdmitted": false,
+      "reasons": [],
+      "worldReason": null,
+      "limitation": "Enabled flags and a Map4 identity are necessary only. Full authenticated C03 validation stays in memory; retained runtime evidence is a public-resource projection, never a private body or its digest. Normal contract/hash/admission validation still applies."
+    },
+    "ticketTiming": [
+      {
+        "serverTimeMs": 1793840675895,
+        "expiresTimeMs": 1793840705895,
+        "lifetimeMs": 30000
+      }
+    ],
+    "requests": [
+      {
+        "path": "/api/auth/capabilities",
+        "method": "GET"
+      },
+      {
+        "path": "/api/auth/login",
+        "method": "POST"
+      },
+      {
+        "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/bootstrap",
+        "method": "GET"
+      },
+      {
+        "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/rooms",
+        "method": "GET"
+      },
+      {
+        "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/places",
+        "method": "GET"
+      },
+      {
+        "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/world-tickets",
+        "method": "POST"
+      },
+      {
+        "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/intros",
+        "method": "GET"
+      },
+      {
+        "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/me/intro",
+        "method": "GET"
+      },
+      {
+        "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/me/age-status",
+        "method": "GET"
+      },
+      {
+        "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/me/notifications",
+        "method": "GET"
+      },
+      {
+        "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/mural/tools",
+        "method": "GET"
+      }
+    ],
+    "sockets": 1,
+    "activeSockets": 1,
+    "canvases": 1,
+    "urls": {
+      "created": [
+        "blob:http://127.0.0.1:5173/2c22d0f0-1e1b-496f-8597-c618ee654afb",
+        "blob:http://127.0.0.1:5173/1f762580-65cb-459a-9683-7382ca73d7dc",
+        "blob:http://127.0.0.1:5173/8bdcd315-f494-4d22-8351-8aa8ef5812e1",
+        "blob:http://127.0.0.1:5173/9e95d4d5-c920-4300-8a22-b878cdf666ba",
+        "blob:http://127.0.0.1:5173/ac1eaae7-0a6c-40ea-b259-1bb2cf5922cb",
+        "blob:http://127.0.0.1:5173/d632710f-e428-4029-9f5a-80d7834fbddc"
+      ],
+      "revoked": [
+        "blob:http://127.0.0.1:5173/ac1eaae7-0a6c-40ea-b259-1bb2cf5922cb"
+      ]
+    },
+    "path": "/world",
+    "map": {
+      "id": "mcr_reference_scene_r3",
+      "revision": 4,
+      "contentHash": "sha256:736afd273a067f6c40db76b8cc54412416fba88984a50d9a6b6738d869831fb8",
+      "geometryHash": "sha256:899aca9bd6ce499c6f46aff5eaf21e30ab34b301e988771b978a6fab7c2d469f"
+    },
+    "theme": "REVENGE",
+    "active": 1,
+    "peak": 1,
+    "documentId": "0ce1dc15-eb23-4037-85ab-ecacfe288b27",
+    "avatar": {
+      "config": {
+        "contract_version": "1.1.0",
+        "kind": "avatar_config",
+        "manifest_id": "mcr_selected_static_20261103",
+        "manifest_version": 1,
+        "preset_id": "photo01_front_01",
+        "representation": "whole_character"
+      },
+      "revision": 1
+    },
+    "manifestPin": {
+      "manifest_id": "mcr_selected_static_20261103",
+      "manifest_version": 1,
+      "content_hash": "sha256:0627c7d178b22535a561e1270db6d8bf9e2383ba84d03a63962e48e565c59b2b"
+    }
+  },
+  "world": {
+    "width": 382,
+    "height": 519,
+    "rgba": "sha256:09c5c110cbe1f6708a46b1c3b6a122f77c93589557f8e35f2216437f01a325da",
+    "objects": [
+      {
+        "type": "Image",
+        "x": 0,
+        "y": 0,
+        "depth": 0,
+        "scaleX": 1,
+        "scaleY": 1,
+        "texture": "mcr-reviewed-map-1-quality_v6_shared_ground",
+        "frame": "__BASE"
+      },
+      {
+        "type": "Image",
+        "x": 12,
+        "y": -94,
+        "depth": 1.066615265998458,
+        "scaleX": 1.0163934426229508,
+        "scaleY": 1.52,
+        "texture": "mcr-reviewed-map-1-revenge_quality_v6_atlas",
+        "frame": "northern_hall"
+      },
+      {
+        "type": "Image",
+        "x": 472,
+        "y": -94,
+        "depth": 1.066615265998458,
+        "scaleX": 1.0163934426229508,
+        "scaleY": 1.2101910828025477,
+        "texture": "mcr-reviewed-map-1-revenge_quality_v6_atlas",
+        "frame": "north_eastern_hall"
+      },
+      {
+        "type": "Image",
+        "x": 146,
+        "y": -22,
+        "depth": 1.095065535851966,
+        "scaleX": 0.7757009345794392,
+        "scaleY": 0.7794117647058824,
+        "texture": "mcr-reviewed-map-1-revenge_quality_v6_atlas",
+        "frame": "rooted_tree_01"
+      },
+      {
+        "type": "Image",
+        "x": 328,
+        "y": -25,
+        "depth": 1.095065535851966,
+        "scaleX": 0.7757009345794392,
+        "scaleY": 0.7941176470588235,
+        "texture": "mcr-reviewed-map-1-revenge_quality_v6_atlas",
+        "frame": "rooted_tree_02"
+      },
+      {
+        "type": "Image",
+        "x": 558,
+        "y": -28,
+        "depth": 1.095065535851966,
+        "scaleX": 0.7614678899082569,
+        "scaleY": 0.7399103139013453,
+        "texture": "mcr-reviewed-map-1-revenge_quality_v6_atlas",
+        "frame": "rooted_tree_03"
+      },
+      {
+        "type": "Image",
+        "x": 665,
+        "y": 31,
+        "depth": 1.1040863531225906,
+        "scaleX": 0.44052863436123346,
+        "scaleY": 0.5357142857142857,
+        "texture": "mcr-reviewed-map-1-revenge_quality_v6_atlas",
+        "frame": "north_white_food"
+      },
+      {
+        "type": "Image",
+        "x": 522,
+        "y": 141,
+        "depth": 1.1880493446414804,
+        "scaleX": 0.4032258064516129,
+        "scaleY": 0.5826086956521739,
+        "texture": "mcr-reviewed-map-1-revenge_quality_v6_atlas",
+        "frame": "cross_banner_east"
+      },
+      {
+        "type": "Image",
+        "x": 634,
+        "y": 220,
+        "depth": 1.2456437933693139,
+        "scaleX": 0.6146788990825688,
+        "scaleY": 0.600896860986547,
+        "texture": "mcr-reviewed-map-1-revenge_quality_v6_atlas",
+        "frame": "rooted_tree_05"
+      },
+      {
+        "type": "Image",
+        "x": 160,
+        "y": 37,
+        "depth": 1.2498072474942175,
+        "scaleX": 1.2396694214876034,
+        "scaleY": 1.3770491803278688,
+        "texture": "mcr-reviewed-map-1-revenge_quality_v6_atlas",
+        "frame": "main_stage"
+      },
+      {
+        "type": "Image",
+        "x": 2,
+        "y": 220,
+        "depth": 1.2650732459521974,
+        "scaleX": 0.7217391304347827,
+        "scaleY": 0.7168141592920354,
+        "texture": "mcr-reviewed-map-1-revenge_quality_v6_atlas",
+        "frame": "rooted_tree_04"
+      },
+      {
+        "type": "Image",
+        "x": 585,
+        "y": 319,
+        "depth": 1.2851966075558983,
+        "scaleX": 0.6724137931034483,
+        "scaleY": 0.4824120603015075,
+        "texture": "mcr-reviewed-map-1-revenge_quality_v6_atlas",
+        "frame": "culture_park_plaque"
+      },
+      {
+        "type": "Sprite",
+        "x": 488,
+        "y": 424,
+        "depth": 1.2942174248265228,
+        "scaleX": 1,
+        "scaleY": 1,
+        "texture": "mcr-avatar-1",
+        "frame": 0
+      },
+      {
+        "type": "Sprite",
+        "x": 504,
+        "y": 424,
+        "depth": 1.2942174248265228,
+        "scaleX": 1,
+        "scaleY": 1,
+        "texture": "mcr-avatar-2",
+        "frame": 0
+      },
+      {
+        "type": "Sprite",
+        "x": 520,
+        "y": 424,
+        "depth": 1.2942174248265228,
+        "scaleX": 1,
+        "scaleY": 1,
+        "texture": "mcr-avatar-3",
+        "frame": 0
+      },
+      {
+        "type": "Sprite",
+        "x": 536,
+        "y": 424,
+        "depth": 1.2942174248265228,
+        "scaleX": 1,
+        "scaleY": 1,
+        "texture": "mcr-avatar-4",
+        "frame": 0
+      },
+      {
+        "type": "Sprite",
+        "x": 552,
+        "y": 424,
+        "depth": 1.2942174248265228,
+        "scaleX": 1,
+        "scaleY": 1,
+        "texture": "mcr-avatar-5",
+        "frame": 0
+      },
+      {
+        "type": "Sprite",
+        "x": 472,
+        "y": 424,
+        "depth": 1.2942174248265228,
+        "scaleX": 1,
+        "scaleY": 1,
+        "texture": "mcr-avatar-6",
+        "frame": 0
+      },
+      {
+        "type": "Image",
+        "x": 160,
+        "y": 381,
+        "depth": 1.3677717810331536,
+        "scaleX": 0.5945945945945946,
+        "scaleY": 0.6875,
+        "texture": "mcr-reviewed-map-1-revenge_quality_v6_atlas",
+        "frame": "west_white_merch"
+      },
+      {
+        "type": "Image",
+        "x": 640,
+        "y": 455,
+        "depth": 1.402467232074017,
+        "scaleX": 0.5565217391304348,
+        "scaleY": 0.5530973451327433,
+        "texture": "mcr-reviewed-map-1-revenge_quality_v6_atlas",
+        "frame": "rooted_tree_06"
+      },
+      {
+        "type": "Image",
+        "x": 410,
+        "y": 455,
+        "depth": 1.428141865844256,
+        "scaleX": 0.7217391304347827,
+        "scaleY": 0.7168141592920354,
+        "texture": "mcr-reviewed-map-1-revenge_quality_v6_atlas",
+        "frame": "rooted_tree_11"
+      },
+      {
+        "type": "Image",
+        "x": 5,
+        "y": 535,
+        "depth": 1.4836545875096376,
+        "scaleX": 0.7217391304347827,
+        "scaleY": 0.7168141592920354,
+        "texture": "mcr-reviewed-map-1-revenge_quality_v6_atlas",
+        "frame": "rooted_tree_07"
+      },
+      {
+        "type": "Image",
+        "x": 8,
+        "y": 551,
+        "depth": 1.5072474942174248,
+        "scaleX": 0.8688524590163934,
+        "scaleY": 1.44,
+        "texture": "mcr-reviewed-map-1-revenge_quality_v6_atlas",
+        "frame": "merch_venue_hall"
+      },
+      {
+        "type": "Image",
+        "x": 568,
+        "y": 611,
+        "depth": 1.5377794911333846,
+        "scaleX": 0.8260869565217391,
+        "scaleY": 0.8864864864864865,
+        "texture": "mcr-reviewed-map-1-revenge_quality_v6_atlas",
+        "frame": "food_counters"
+      },
+      {
+        "type": "Image",
+        "x": 594,
+        "y": 809,
+        "depth": 1.6612952968388588,
+        "scaleX": 0.7217391304347827,
+        "scaleY": 0.7309644670050761,
+        "texture": "mcr-reviewed-map-1-revenge_quality_v6_atlas",
+        "frame": "rooted_tree_09"
+      },
+      {
+        "type": "Image",
+        "x": 256,
+        "y": 779,
+        "depth": 1.6835003855050115,
+        "scaleX": 0.9672131147540983,
+        "scaleY": 1.3642384105960266,
+        "texture": "mcr-reviewed-map-1-revenge_quality_v6_atlas",
+        "frame": "meeting_pavilion"
+      },
+      {
+        "type": "Image",
+        "x": 40,
+        "y": 983,
+        "depth": 1.7966075558982266,
+        "scaleX": 0.7614678899082569,
+        "scaleY": 0.7399103139013453,
+        "texture": "mcr-reviewed-map-1-revenge_quality_v6_atlas",
+        "frame": "rooted_tree_08"
+      },
+      {
+        "type": "Image",
+        "x": 440,
+        "y": 1044,
+        "depth": 1.8673862760215882,
+        "scaleX": 0.9672131147540983,
+        "scaleY": 1.4714285714285715,
+        "texture": "mcr-reviewed-map-1-revenge_quality_v6_atlas",
+        "frame": "giveaway_pavilion"
+      },
+      {
+        "type": "Image",
+        "x": 8,
+        "y": 1137,
+        "depth": 1.8888974556669238,
+        "scaleX": 0.7217391304347827,
+        "scaleY": 0.7309644670050761,
+        "texture": "mcr-reviewed-map-1-revenge_quality_v6_atlas",
+        "frame": "rooted_tree_10"
+      }
+    ],
+    "camera": {
+      "x": 281,
+      "y": 164.5,
+      "width": 382,
+      "height": 519,
+      "zoom": 1
+    },
+    "actors": [
+      {
+        "type": "Sprite",
+        "x": 488,
+        "y": 424,
+        "depth": 1.2942174248265228,
+        "scaleX": 1,
+        "scaleY": 1,
+        "texture": "mcr-avatar-1",
+        "frame": 0
+      },
+      {
+        "type": "Sprite",
+        "x": 504,
+        "y": 424,
+        "depth": 1.2942174248265228,
+        "scaleX": 1,
+        "scaleY": 1,
+        "texture": "mcr-avatar-2",
+        "frame": 0
+      },
+      {
+        "type": "Sprite",
+        "x": 520,
+        "y": 424,
+        "depth": 1.2942174248265228,
+        "scaleX": 1,
+        "scaleY": 1,
+        "texture": "mcr-avatar-3",
+        "frame": 0
+      },
+      {
+        "type": "Sprite",
+        "x": 536,
+        "y": 424,
+        "depth": 1.2942174248265228,
+        "scaleX": 1,
+        "scaleY": 1,
+        "texture": "mcr-avatar-4",
+        "frame": 0
+      },
+      {
+        "type": "Sprite",
+        "x": 552,
+        "y": 424,
+        "depth": 1.2942174248265228,
+        "scaleX": 1,
+        "scaleY": 1,
+        "texture": "mcr-avatar-5",
+        "frame": 0
+      },
+      {
+        "type": "Sprite",
+        "x": 472,
+        "y": 424,
+        "depth": 1.2942174248265228,
+        "scaleX": 1,
+        "scaleY": 1,
+        "texture": "mcr-avatar-6",
+        "frame": 0
+      }
+    ]
+  },
+  "initialObservation": {
+    "sameGame": true,
+    "sameCamera": true,
+    "sceneKey": "mcr-map",
+    "camera": {
+      "x": 281,
+      "y": 164.5,
+      "width": 382,
+      "height": 519,
+      "zoom": 1
+    },
+    "textures": [
+      "mcr-reviewed-map-1-quality_v6_shared_ground",
+      "mcr-reviewed-map-1-revenge_quality_v6_atlas",
+      "mcr-avatar-1",
+      "mcr-avatar-2",
+      "mcr-avatar-3",
+      "mcr-avatar-4",
+      "mcr-avatar-5",
+      "mcr-avatar-6"
+    ],
+    "fixture": {
+      "qualification": "CURRENT_MAP4_APPROVED_STATIC_C06_HTTP_C05_CONTROLLED_NOT_LIVE",
+      "map": {
+        "id": "mcr_reference_scene_r3",
+        "revision": 4,
+        "contentHash": "sha256:736afd273a067f6c40db76b8cc54412416fba88984a50d9a6b6738d869831fb8",
+        "geometryHash": "sha256:899aca9bd6ce499c6f46aff5eaf21e30ab34b301e988771b978a6fab7c2d469f"
+      },
+      "avatarPin": {
+        "manifest_id": "mcr_selected_static_20261103",
+        "manifest_version": 1,
+        "content_hash": "sha256:0627c7d178b22535a561e1270db6d8bf9e2383ba84d03a63962e48e565c59b2b"
+      }
+    }
+  },
+  "lastObservation": {
+    "sameGame": true,
+    "sameCamera": true,
+    "sceneKey": "mcr-map",
+    "camera": {
+      "x": 281,
+      "y": 146,
+      "width": 382,
+      "height": 556,
+      "zoom": 1
+    },
+    "textures": [
+      "mcr-avatar-1",
+      "mcr-avatar-2",
+      "mcr-avatar-3",
+      "mcr-avatar-4",
+      "mcr-avatar-5",
+      "mcr-avatar-6",
+      "mcr-reviewed-map-2-quality_v6_shared_ground",
+      "mcr-reviewed-map-2-danger_quality_v6_atlas"
+    ],
+    "fixture": {
+      "qualification": "CURRENT_MAP4_APPROVED_STATIC_C06_HTTP_C05_CONTROLLED_NOT_LIVE",
+      "map": {
+        "id": "mcr_reference_scene_r3",
+        "revision": 4,
+        "contentHash": "sha256:736afd273a067f6c40db76b8cc54412416fba88984a50d9a6b6738d869831fb8",
+        "geometryHash": "sha256:899aca9bd6ce499c6f46aff5eaf21e30ab34b301e988771b978a6fab7c2d469f"
+      },
+      "avatarPin": {
+        "manifest_id": "mcr_selected_static_20261103",
+        "manifest_version": 1,
+        "content_hash": "sha256:0627c7d178b22535a561e1270db6d8bf9e2383ba84d03a63962e48e565c59b2b"
+      }
+    }
+  },
+  "eraSurvivesNavigation": true,
+  "failure": {
+    "stage": "safe-area",
+    "message": "Error: cdpSession.send: Protocol error (Emulation.setSafeAreaInsets): 'Emulation.setSafeAreaInsets' wasn't found",
+    "stack": "cdpSession.send: Protocol error (Emulation.setSafeAreaInsets): 'Emulation.setSafeAreaInsets' wasn't found\n    at /Users/lhs/Desktop/mcr-worktrees/qa07-input-delta-332b/frontend/src/features/parade-ink/world-hud/native.mjs:162:16"
+  },
+  "resourcesClosed": true
+}
