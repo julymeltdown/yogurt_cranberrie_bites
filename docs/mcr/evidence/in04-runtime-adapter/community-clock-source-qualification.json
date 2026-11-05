@@ -1,0 +1,75 @@
+{
+  "status": "PASS_SOURCE_ONLY",
+  "sourceRevision": "ec13867abdb7c9bfeaef33d350f2869f349b7258",
+  "baseRevision": "2e6807843914d978a34cad3b4a5ce19c82145d33",
+  "applicationCandidate": "5ac4bc6e69ee47e6782c2d0b25c72c5544a540d6",
+  "allocation": "ROOT-CLOCK-SOURCE03-20261105T0016Z",
+  "checks": {
+    "moduleSyntax": 4,
+    "nodeCases": 7,
+    "nodeFailed": 0,
+    "nodeCancelled": 0,
+    "nodeSkipped": 0,
+    "scopedDenyWarningsLint": "PASS",
+    "viteSsr": "SELECTED_GIT_DECODER_MIDDLEWARE_NO_HTTP",
+    "actualBuildIdentityManifests": 3
+  },
+  "sourceSha256": {
+    "frontend/e2e/runtime-adapters/in04-wall-b/community-clock-input.mjs": "9dd8a8c6547b4a2eb3a8859dfe71378a935d67c1386a9712fd659503fdd8585c",
+    "frontend/e2e/runtime-adapters/in04-wall-b/community-clock-input.test.mjs": "0c2fbdf1a7c775ddd4ec0a16a49aac72b1f04a54f576e64776bc058c004da357",
+    "frontend/e2e/runtime-adapters/in04-wall-b/server.mjs": "ded68264de55bee84d9e448f1dd3b8c046e36bc170d9033a9363fc0fbc5e9a17",
+    "frontend/e2e/runtime-adapters/in04-wall-b/application-release.mjs": "7d1b0e014fe8e7709aab1162c0c27040958c36d91a2088029f9287971fdd43a4"
+  },
+  "actualFullEpoch": 1793837869.1137578,
+  "primaryPeak": {
+    "whole": 3774672896,
+    "new": 17240064,
+    "pids": 5,
+    "rss": 1286914048
+  },
+  "independentPeak": {
+    "whole": 3774672896,
+    "new": 17240064,
+    "pids": 5,
+    "rss": 1291239424
+  },
+  "resourcesHeld": 0,
+  "remainingDescendants": [],
+  "scratchRemaining": false,
+  "localEvidence": {
+    "ROOT-CLOCK-SOURCE03-20261105T0016Z/attempt01/00.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "ROOT-CLOCK-SOURCE03-20261105T0016Z/attempt01/01.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "ROOT-CLOCK-SOURCE03-20261105T0016Z/attempt01/02.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "ROOT-CLOCK-SOURCE03-20261105T0016Z/attempt01/03.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "ROOT-CLOCK-SOURCE03-20261105T0016Z/attempt01/04.log": "2adf863acf8f2349f3bfa0a618c36456c6765cb431a7885b65b4af69facf324e",
+    "ROOT-CLOCK-SOURCE03-20261105T0016Z/attempt01/05.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "ROOT-CLOCK-SOURCE03-20261105T0016Z/attempt01/release.json": "56fde14eda3f72d47767993ce1abe140dbcf52c7573fb3fa0dd8cb2e1d8ffe0e",
+    "ROOT-CLOCK-SOURCE03-20261105T0016Z/attempt01/independent-release.json": "3d8e2e427eca91e201b27acf24b8c9892b5846b78aca3685c9ea8ed174ed1d58",
+    "ROOT-CLOCK-SOURCE03-20261105T0016Z/attempt01/control-source03.py": "d18175056d6c1273f270bab114c4509c105d18507462e5e75f631882c988c678",
+    "community-clock-source-readiness-03.json": "ccb26fabb4df7993e84cc0274d822a55ff286eec96e7796280f3e607a45724cf"
+  },
+  "preservedFailedRound": {
+    "allocation": "ROOT-CLOCK-SOURCE02-20261105T0004Z",
+    "status": "FAIL_RSS_CAP",
+    "partialNodePasses": 6,
+    "nodeCancelled": 1,
+    "qualified": false,
+    "resourcesHeld": 0,
+    "releaseSha256": "34b22ce213c055831cb3f1cd11859340b7b3d10f0c1a62ac37d8003fccd5ffa9",
+    "controllerSha256": "833ea4ef93b9bbe39f2c07b3a161c0f2f62c5cbfe73c33d4f385ca142cf17feb"
+  },
+  "runtimeNotRun": [
+    "actual C03 measurement and independent current producer binding",
+    "full frontend start/listen",
+    "QA05 runtime attachment and seven live cases",
+    "real IN04 Wall B journey",
+    "current service/cohort/operator window",
+    "backend and final frontend contract compatibility"
+  ],
+  "notes": [
+    "Synthetic source fixtures grant no runtime clock authority.",
+    "Prior application identity and historical failures are retained.",
+    "No browser, backend, HTTP listener, dependency installation or dependency link was started.",
+    "Raw controls, readsets, allocations and logs are local evidence; this compact receipt does not publish private inputs."
+  ]
+}

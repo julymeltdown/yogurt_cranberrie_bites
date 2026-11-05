@@ -8,6 +8,7 @@ import { readFile, writeFile } from 'node:fs/promises'
 import { resolve } from 'node:path'
 import { pathToFileURL } from 'node:url'
 import { sha256 } from './pinned-source.mjs'
+import { compiledClockIdentity } from './community-clock-input.mjs'
 
 // Explicit application-release declaration authorized by the deployment owner.
 export const ROOT_APPLICATION_VERSION = '0.1.0'
@@ -83,7 +84,7 @@ async function fileHash(path) {
   return digest.digest('hex')
 }
 
-export async function buildApplicationRelease({ repo, candidate, dependencies, mode }) {
+export async function buildApplicationRelease({ repo, candidate, dependencies, mode, communityClockInput = null }) {
   assert.match(candidate, /^[a-f0-9]{40}$/)
   assert.equal(candidate.length, 40)
   assert(['vite-serve', 'vite-build'].includes(mode), 'Explicit build mode required')
@@ -117,12 +118,13 @@ export async function buildApplicationRelease({ repo, candidate, dependencies, m
     packages.push({ name, version: metadata.version, packageJsonSha256: sha256(bytes) })
   }
   const assemblyInputs = []
-  for (const name of ['application-release.mjs', 'server.mjs', 'pinned-source.mjs', 'inputs.mjs', 'private-file.mjs']) {
+  for (const name of ['application-release.mjs', 'server.mjs', 'pinned-source.mjs', 'inputs.mjs', 'private-file.mjs', 'community-clock-input.mjs']) {
     assemblyInputs.push({ name, sha256: sha256(await readFile(new URL(name, import.meta.url))) })
   }
   const identity = { version: 1, kind: 'APPLICATION_BUILD_INPUT_IDENTITY', applicationVersion: ROOT_APPLICATION_VERSION, sourceRevision: candidate, mode,
-    capturePolicy: 'Tracked production source excluding test modules; all tracked public assets; entry, dependency and compiler inputs. Runtime event/actor configuration excluded.',
+    capturePolicy: 'Tracked production source excluding test modules; all tracked public assets; entry, dependency and compiler inputs; exact optional compiled Community clock bytes. Other runtime event/actor configuration excluded.',
     inputs: await hashBlobs(repo, entries), assemblyInputs,
+    compiledInputs: communityClockInput === null ? [] : [compiledClockIdentity(communityClockInput)],
     toolchain: { node: process.versions.node, nodeExecutableSha256: await fileHash(process.execPath), packages },
     emittedOutputs: { status: 'UNAVAILABLE', reason: 'NOT_BUILT_BY_THIS_PUBLISHER', files: [] } }
   const buildId = sha256(Buffer.from(canonicalJson(identity)))

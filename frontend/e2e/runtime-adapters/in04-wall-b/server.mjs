@@ -9,6 +9,7 @@ import { pinnedSource, sha256 } from './pinned-source.mjs'
 import { ownedBytes, readSettings } from './inputs.mjs'
 import { buildApplicationRelease, canonicalJson } from './application-release.mjs'
 import { attachQa05Runtime } from './qa05-runtime.mjs'
+import { readCommunityClockInput, validateCommunityClockInput, clockInputModule, clockInputName } from './community-clock-input.mjs'
 
 export function browserDependencyIncludes(manifest) {
   // Tailwind runs in the Vite server. Optimizing its native Oxide plugin as a
@@ -18,11 +19,12 @@ export function browserDependencyIncludes(manifest) {
     'react-dom/client', 'react/jsx-runtime', 'react/jsx-dev-runtime', '@hookform/resolvers/zod']
 }
 
-export async function startProductionFrontend({ repo, candidate, settingsPath, dependencies, cacheDirectory, handoffPath, qa05 }) {
+export async function startProductionFrontend({ repo, candidate, settingsPath, dependencies, cacheDirectory, handoffPath, qa05, communityClock }) {
   const source = pinnedSource(repo, candidate)
   const settingsBytes = await ownedBytes(settingsPath, { privateOnly: true })
   const settings = await readSettings(settingsPath, source)
   assert.equal(sha256(settingsBytes), sha256(await ownedBytes(settingsPath, { privateOnly: true })), 'Settings changed during qualification')
+  const communityClockInput = await readCommunityClockInput(communityClock, { candidate, settings, source })
   const frontend = resolve(repo, 'frontend')
   // A different physical application tree is permitted; different dependency
   // declarations/resolutions are not. Never install or alter a dependency tree.
@@ -33,7 +35,7 @@ export async function startProductionFrontend({ repo, candidate, settingsPath, d
   const manifest = JSON.parse(source.bytes('frontend/package.json').toString())
   const aliases = Object.keys(manifest.dependencies).map(name => ({ find: name, replacement: resolve(dependencies, name) }))
   const [vite, react, tailwind] = await Promise.all(['vite', '@vitejs/plugin-react', '@tailwindcss/vite'].map(name => import(pathToFileURL(require.resolve(name)).href)))
-  const application = await buildApplicationRelease({ repo, candidate, dependencies, mode: 'vite-serve' })
+  const application = await buildApplicationRelease({ repo, candidate, dependencies, mode: 'vite-serve', communityClockInput })
   await writeFile(resolve(cacheDirectory, 'application-release.json'), canonicalJson(application.manifest), { flag: 'wx', mode: 0o600 })
   const token = randomBytes(32).toString('hex'), origin = new URL(settings.origin)
   const settingsSha256 = sha256(settingsBytes)
@@ -90,6 +92,7 @@ export async function startProductionFrontend({ repo, candidate, settingsPath, d
       'import.meta.env.VITE_MCR_EVENT_ID': JSON.stringify(settings.eventId),
       'import.meta.env.VITE_MCR_LOCAL_INPUT_CONFIG': JSON.stringify(JSON.stringify(settings.localInput)),
       'import.meta.env.VITE_MCR_MURAL_CONFIG': JSON.stringify(JSON.stringify(settings.mural)),
+      [clockInputName]: communityClockInput === null ? 'undefined' : JSON.stringify(communityClockInput.raw),
     },
     // Freeze discovery to this dependency set so a later lazy route cannot
     // change Phaser's browser hash after QA captures the actual import URL.
@@ -105,6 +108,10 @@ export async function startProductionFrontend({ repo, candidate, settingsPath, d
   })
   let qa05Runtime = null
   try {
+    if (communityClockInput !== null) {
+      const decoder = await server.ssrLoadModule(clockInputModule)
+      validateCommunityClockInput(communityClockInput, decoder.decodeCompiledClockInput)
+    }
     if (qa05) qa05Runtime = await attachQa05Runtime({ ...qa05, repo, source, candidate, server, settings })
     await server.listen()
     // Obtain the exact versioned module imported by the canonical scene. A
@@ -128,11 +135,12 @@ export async function startProductionFrontend({ repo, candidate, settingsPath, d
 }
 
 if (process.argv[1] && import.meta.url === pathToFileURL(resolve(process.argv[1])).href) {
-  const [repo, candidate, settingsPath, dependencies, cacheDirectory, handoffPath] = process.argv.slice(2)
+  const [repo, candidate, settingsPath, dependencies, cacheDirectory, handoffPath, clockDescriptorPath] = process.argv.slice(2)
   assert([repo, candidate, settingsPath, dependencies, cacheDirectory, handoffPath].every(Boolean),
-    'Usage: server.mjs REPO CANDIDATE PRIVATE_SETTINGS EXISTING_NODE_MODULES ALLOCATED_CACHE NEW_PRIVATE_HANDOFF')
+    'Usage: server.mjs REPO CANDIDATE PRIVATE_SETTINGS EXISTING_NODE_MODULES ALLOCATED_CACHE NEW_PRIVATE_HANDOFF [PRIVATE_CLOCK_DESCRIPTOR]')
+  const communityClock = clockDescriptorPath === undefined ? undefined : JSON.parse((await ownedBytes(clockDescriptorPath, { privateOnly: true })).toString())
   await mkdir(cacheDirectory, { recursive: false, mode: 0o700 })
-  const runtime = await startProductionFrontend({ repo, candidate, settingsPath, dependencies, cacheDirectory, handoffPath })
+  const runtime = await startProductionFrontend({ repo, candidate, settingsPath, dependencies, cacheDirectory, handoffPath, communityClock })
   let closing = false
   const stop = async () => { if (closing) return; closing = true; await runtime.close() }
   process.once('SIGTERM', () => void stop()); process.once('SIGINT', () => void stop())
