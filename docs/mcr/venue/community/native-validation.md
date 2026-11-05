@@ -1,11 +1,32 @@
+# Qualified Native08 publication checkpoint
+
+Native08 at source `45bb2a71766e578837e24020d14814b86c456406` passed the two native/comparison commands and all 360/390/430 component flows. All 28 PNGs were inspected; the curated portable receipt is `docs/mcr/evidence/venue-community/visual-qualified-08.json`. Its exact source postimages are handed directly to the publishing developer while a final measured CSS correction remains separately unqualified. No private controller or borrowed Root source is included. The earlier checkpoints below are historical and retain their original failures and limitations.
+
+Visual reference acceptance is still open for the measured 6–9 pixel status gap and small offsets/type scaling. Actual default shell, live services, multiuser and device gates remain open. Source tests/types/lint and component interactions certify their stated scope only.
+
+---
+
+# Current native checkpoint: 2026-11-05 03:53 UTC
+
+`COMM-VENUE-NATIVE07-0350` passed the changed fixture at 360/390/430 pixels, both authorized map controls, 44-pixel hit targets, original-status recovery without resending, privacy cleanup, and the 390x520 viewport case. The changed metadata precondition passed three focused cases before the browser and comparison commands; no old collector or source green suite was repeated. All three stages exited 0. Actual FULL was 1793850817.608691; raw receipt SHA256 `48a9cd7697db7c1b86421bf5262fd7510666a9b0d59c89cb6539fac27bca11a8`. All processes exited, scratch and dependency link were removed.
+
+The developer inspected all 28 PNGs: ten component/state captures, six uniform reference crops, and twelve overlay/difference images. Material responsive geometry differences remain: conversation height stayed about 313 pixels while the scaled reference was about 270/293/325; the wide invitation was shorter than its reference. CSS repair `dd1b2986c070eab31fb4f6c0e19ca910dc330efa` adjusts proportional spacing and visible control frames while retaining real 44-pixel hit targets. A fresh distinct Native08 run is requested and has not started. Visual acceptance remains open.
+
+Native06 is a retained failure: its fixture called `open` for a cached target after changing seeded messages. The fixture now calls the existing owner `refresh` method. A concurrent missing measured executable caused a strict receipt path-binding failure; the prospective repair rejects incomplete identity before binding and retries only within the existing three-snapshot/three-second bound. It neither waives unknown processes nor changes capacity or deadline checks. The failed round remains closed.
+
+Current retained maximum is 272,754,754 NEW bytes within the explicitly amended cumulative 288 MiB family, 4,823,205,968 WHOLE bytes / 71,504 entries, 1,532,837,888 bytes RSS and ten processes. Deleted temporary bytes remain charged. These are controlled component results; actual default shell, HTTP/server, multiuser, physical keyboard and device/arrival acceptance remain separate.
+
+---
+
 # Native venue component qualification
 
-Status: NOT_RUN for actual components, browser capture and visual comparison. Two finite accepted attempts closed before any Node, Vite, browser or component workload. No screenshot, native, global guard or visual PASS is claimed. Source-only canonical publication remains41d90738e3941cdfc663d00551e0f7db2cd3aa4f.
+Status: IN_PROGRESS. Native05 controlled component interactions passed at360/390/430px; visual comparison has material differences OPEN. The earlier NOT_RUN checkpoints below are historical. Three finite accepted attempts closed before any Node, Vite, browser or component workload. No screenshot, native, global guard or visual PASS is claimed. Source-only canonical publication remains41d90738e3941cdfc663d00551e0f7db2cd3aa4f.
 
 | Attempt | Original ACCEPT / actual FULL UTC | Result |
 | --- | --- | --- |
 | AM-FE-COMM-COMPONENT-NATIVE01-0212 | 02:17:47.526306 / 02:18:22.342247 | Initial custody scan rejected Python's cert.pem symlink target. Controller exited1; no guardian or workload started. |
 | AM-FE-COMM-COMPONENT-NATIVE02-0212 | 02:21:42.390742 / 02:21:55.564598 | Complete custody scan passed; first global receipt reconciliation rejected FE38's closedHistory containing raw path strings in the typed closure-tuple alias. No guardian or workload started. |
+| COMM-COMPONENT-NATIVE03-0226 | 02:28:49.102980 / 02:29:05.666933 | Initial global census rejected previously unclassified ADB37112. No guardian or workload started; exact external-infrastructure facts were supplied afterward, without changing the historical failure. |
 
 Both controllers exited, exact PIDs/births were observed absent, own dependency link and scratch were absent, canonical own UUID records were updated to factual FULL, and literal FULL/resource0 was sent directly to allocator21d and the successor before post-round inspection. Original WORK180/FULL240 clocks never reset. The failed attempts and their raw receipts remain; neither may restart. The successor received capacity immediately. First release SHA2569760a3450fee05f65dff08de94900d9bb47f3f05a625b02c138283c83da69cc8; second release SHA256db29519306eba7350e22f70a0657f06923079ab1a88c99b0e828e7ec4f9663ea.
 
@@ -18,3 +39,23 @@ The privately pinned portable helper is QA06 source2a2f05d72d3c20cb3810655567bb7
 The unrun harness requests360/390/430px DPR1 components, short-height390x520, explicit Message composer focus, keyboard status recovery, uncertain-command lock and private-data scrub. Approved selected-source-pack portraits remain original reviewed derivatives. Photo2 SHA256f7d841c815dfbf85b48b7e61a06106b9edab195e7bfbd4d37b78d8b23e610ac1 has provisional developer-measured invitation ROI[868,654,394,144] and conversation ROI[447,451,387,307]; these are not approved CSS viewports or completed visual comparisons. Uniform crops/overlays/diffs, own inspection and material discrepancy fixes remain required. No arbitrary masks or full-poster stretching is allowed.
 
 Any future native attempt requires a distinct actual finite offer and fresh complete fit. Ordinary COMM-FINISHPREP8-0221 through02:50 permits owned source/control/readset/docs/scoped Git only,8MiB additional positive upper still within the same256MiB cumulative family. It does not authorize a third native round. Actual Root Meeting client/normalized adapter/list/pagination, shell/controlled HTTP and later real two-principal/device/GPS flows remain unfinished. No original task, VENU product or visual acceptance changes.
+
+
+## Current source/control checkpoint, 03:12 UTC
+
+The historical NOT_RUN collector/source-adapter statements above describe the earlier native attempts. SOURCE05 subsequently qualified eight actual collector regressions plus63 adapter/owner/rendered cases, focused strict TypeScript and lint, each exit0; it released FULL03:09:33.695066Z. See adapter-validation.md. The collector preserves exact physical PID/RSS, retries at most three fresh complete metadata snapshots within three seconds and retains failed observations; unknown roots are never silently waived. The source family retains NEW169936578 bytes plus all higher and WHOLE4823205968 bytes/71504 entries. No native or visual qualification follows from this source result.
+
+Native03 raw FULL SHA256 `10be1602e4c430ed01f7d69ca01e39702e3b0db9a5ee862216ee63b07766bc65` is retained. All three old native rounds are permanently closed. Prospective Native04 uses the qualified collector without replaying unchanged source/collector tests, the existing engine and exactly two commands: real component-fixture native interactions/captures, then Photo2 uniform-scale comparisons. Complete Photo2 input custody is explicit. Native04 remains unaccepted until an actual finite browser offer; no Node/browser/compare command has run for it. Ordinary FINISHPREP8 was time-only extended through04:00 UTC without new bytes or cumulative reset. This source/control preparation changes no visual or product acceptance.
+
+
+## Native04 and Native05 actual results
+
+Native04 accepted03:18:42.868788Z, FULL03:19:05.741651Z; raw FULL SHA256 `4d84880c6f514cf22abd08d89762c20dac67a05832aa99187c39732fa8e6e2e5`. It produced invitation360, then the harness exact-text assertion rejected the accepted status's decorative checkmark. Concurrent source07 controller/guard19068/19168 exited across the global snapshot; their owner confirmed registered source identities and actual FULL1793848744.775926. This was not an ordinary-process waiver. Both failures remain raw. Own native resources released completely; the round is closed. Harness53426 checks the actual visible accepted class and status text separately without altering product state.
+
+Native05 accepted03:23:31.765850Z and literal FULL03:23:52.886355Z. Both independent guards completed current LIVE membership/custody before payload. Node24 real Vite/Chromium156.0.8078.4 component fixture completed360/390/430 interaction captures, read-only entry, explicit acceptance, composer focus, uncertain original-key status recovery without resend, disabled close,44px pointer boxes,390x520 action reach and privacy/subscription cleanup; exit0. Python3.14/Pillow emitted six Photo2 crop/unmasked overlay/diff cases with uniform width scaling and preserved unequal heights; exit0. Ten component/state PNGs and eighteen analytical PNGs are retained. This is controlled component-fixture evidence, not production Root/HTTP/server/multiuser/device/GPS.
+
+Main59472/guard60343/Node60403/Python61083 exited0 and a fresh PS query confirmed absence; owned descendants, dependency link and scratch were absent. Literal FULL went directly to allocator21d and the successor before inspection. Maximum both-guard NEW218575952 bytes (guardian ten bytes higher), RSS1517223936/processes9; WHOLE floor4823205968/71504. The previous removed scratch gap22878887 bytes was retained before new Native05 growth, so cleanup did not refund the cumulative family. The original256MiB cap and all higher values remain binding.
+
+Developer inspected all six invitation/conversation native captures and their reference crops. Material differences remain: portrait frame/proportions and control typography/visible height; conversation place card above the messages instead of within an actual invitation-associated message; excess vertical spacing; flag icon rather than pin; no eligible controlled Map-focus fixture. Source2fab813 repairs these using explicit decoded message.invitationId linkage to the current reviewed invitation, rejecting dangling/unassociated projections. Unassociated messages keep the separate current-context card. It preserves selected approved character pixels and44px pointer/focus boxes while drawing denser symmetric control borders. It introduces no new URL, DTO or physical-location authority. New69-case source checks and a separate fresh native comparison are NOT_RUN until funded. Material visual acceptance remains OPEN; no scope or product counter changes.
+
+Native05 immutable raw FULL SHA256 `289c5a768cc7c33c35d237bd864b9f6a8ec3ad396156981e1f1f2819c12ff930`. Per-case inspection and repair disposition are retained locally in visual-inspection-native05.json.
