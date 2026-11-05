@@ -460,6 +460,40 @@ async fn typed_issuance_uses_same_digest_bound_one_use_store() {
 }
 
 #[tokio::test]
+async fn typed_issuance_enforces_release_freshness_before_persisting() {
+    let now = Utc.timestamp_opt(NOW, 0).unwrap();
+    // Age 4999ms is fresh; exactly 5000ms, older observations and future
+    // observations must fail before the ticket repository receives a record.
+    for age_ms in [4_999, 5_000, 5_001, 60_000, -1] {
+        let (authority, _, _) = authority(now + Duration::seconds(60));
+        let store = Store::default();
+        let service = WorldService::new(authority, store.clone(), FixedClock, Entropy(13.into()));
+        let request = request();
+        let mut release = pins(request.event_id);
+        release.captured_at = now - Duration::milliseconds(age_ms);
+        let result = service
+            .issue_verified(
+                VerifiedTicketSubject {
+                    key: key(request.event_id),
+                    event_id: request.event_id,
+                    session_id: session(),
+                    access_expires_at: now + Duration::seconds(60),
+                    release,
+                },
+                request,
+            )
+            .await;
+        if age_ms == 4_999 {
+            assert_eq!(result.unwrap().expires_at, now + Duration::seconds(30));
+            assert_eq!(store.state.lock().unwrap().records.len(), 1);
+        } else {
+            assert_eq!(result, Err(WorldError::Denied), "release age {age_ms}ms");
+            assert!(store.state.lock().unwrap().records.is_empty());
+        }
+    }
+}
+
+#[tokio::test]
 async fn typed_issuance_rejects_stale_release_with_distinct_error() {
     let now = Utc.timestamp_opt(NOW, 0).unwrap();
     let (authority, _, _) = authority(now + Duration::seconds(60));

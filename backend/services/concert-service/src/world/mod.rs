@@ -32,7 +32,7 @@ impl PgWorldRepository {
         key: ParticipantKey,
         now: DateTime<Utc>,
     ) -> Result<Option<CurrentOwnedMembership>, WorldError> {
-        let row = sqlx::query("select m.event_id,m.user_id,m.room_id,m.session_id,m.connection_id,m.map_id,m.map_revision,m.avatar_manifest_id,m.avatar_manifest_version,m.lease_until,m.access_expires_at,m.disconnected,l.owner_process_id,l.owner_epoch from public.concert_world_memberships m join public.concert_world_owner_leases l on l.event_id=m.event_id and l.room_id=m.room_id where m.event_id=$1 and m.user_id=$2 and m.lease_until>$3 and not m.disconnected and l.lease_until>$3")
+        let row = sqlx::query("select m.event_id,m.user_id,m.room_id,m.session_id,m.connection_id,m.map_id,m.map_revision,m.avatar_manifest_id,m.avatar_manifest_version,m.lease_until,m.access_expires_at,m.disconnected,l.owner_process_id,l.owner_epoch from public.concert_world_memberships m join public.concert_world_owner_leases l on l.event_id=m.event_id and l.room_id=m.room_id and l.owner_process_id=m.owner_process_id and l.owner_epoch=m.owner_epoch where m.event_id=$1 and m.user_id=$2 and m.lease_until>$3 and not m.disconnected and l.lease_until>$3")
             .bind(key.event_id.uuid())
             .bind(key.user_id.uuid())
             .bind(now)
@@ -725,7 +725,7 @@ impl WorldRepository for PgWorldRepository {
         subscription: &SubscriptionLease,
         now: DateTime<Utc>,
     ) -> Result<LeaseState, WorldError> {
-        let row = sqlx::query(&format!("select m.event_id,m.user_id,m.room_id,m.session_id,m.connection_id,m.map_id,m.map_revision,m.avatar_manifest_id,m.avatar_manifest_version,m.lease_until,m.access_expires_at,m.disconnected from public.concert_world_memberships m where m.event_id=$1 and m.user_id=$2 and m.room_id=$3 and m.session_id=$4 and m.connection_id=$5 and m.lease_until>$6 and exists(select 1 from public.concert_world_owner_leases l where l.event_id=m.event_id and l.room_id=m.room_id and l.owner_process_id=$7 and l.owner_epoch=$8 and l.lease_until>$6)"))
+        let row = sqlx::query(&format!("select m.event_id,m.user_id,m.room_id,m.session_id,m.connection_id,m.map_id,m.map_revision,m.avatar_manifest_id,m.avatar_manifest_version,m.lease_until,m.access_expires_at,m.disconnected from public.concert_world_memberships m where m.event_id=$1 and m.user_id=$2 and m.room_id=$3 and m.session_id=$4 and m.connection_id=$5 and m.lease_until>$6 and exists(select 1 from public.concert_world_owner_leases l where l.event_id=m.event_id and l.room_id=m.room_id and l.owner_process_id=m.owner_process_id and l.owner_epoch=m.owner_epoch and l.owner_process_id=$7 and l.owner_epoch=$8 and l.lease_until>$6)"))
             .bind(subscription.key.event_id.uuid()).bind(subscription.key.user_id.uuid()).bind(subscription.room_id.uuid())
             .bind(session_uuid(&subscription.session_id)?).bind(subscription.connection_id.uuid()).bind(now)
             .bind(&subscription.owner.process_id).bind(subscription.owner.epoch)

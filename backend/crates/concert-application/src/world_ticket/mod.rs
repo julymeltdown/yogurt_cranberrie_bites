@@ -697,7 +697,7 @@ impl<A: WorldAuthority, R: TicketRepository + WorldRepository, C: Clock, G: Tick
             || subject.event_id != request.event_id
             || subject.release.event_id != request.event_id
             || subject.release.captured_at > now
-            || subject.release.captured_at + Duration::seconds(FRESH_AUTHORITY_MILLISECONDS) <= now
+            || subject.release.captured_at + Duration::milliseconds(FRESH_AUTHORITY_MILLISECONDS) <= now
             || subject.access_expires_at <= now
         {
             return Err(WorldError::Denied);

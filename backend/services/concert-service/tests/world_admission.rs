@@ -16,6 +16,10 @@ use std::{
 use uuid::Uuid;
 
 async fn owned_pool() -> anyhow::Result<PgPool> {
+    owned_pool_with_limit(20).await
+}
+
+async fn owned_pool_with_limit(max_connections: u32) -> anyhow::Result<PgPool> {
     let root = PathBuf::from(std::env::var("WORLD_TEST_OWNER_ROOT")?);
     let info = std::fs::symlink_metadata(&root)?;
     anyhow::ensure!(
@@ -50,7 +54,7 @@ async fn owned_pool() -> anyhow::Result<PgPool> {
         "foreign database refused"
     );
     let pool = PgPoolOptions::new()
-        .max_connections(20)
+        .max_connections(max_connections)
         .acquire_timeout(StdDuration::from_secs(3))
         .connect_with(options)
         .await?;
@@ -470,6 +474,128 @@ async fn owner_lease_fencing_and_ghost_prune_are_persisted() -> anyhow::Result<(
         .await?,
         ConsumeOutcome::Unknown
     );
+    Ok(())
+}
+
+#[tokio::test]
+async fn owner_takeover_does_not_relabel_an_existing_membership() -> anyhow::Result<()> {
+    let pool = owned_pool_with_limit(2).await?;
+    let repo = PgWorldRepository::new(pool.clone());
+    // Independently fence an epoch change and a process change. Keep the old
+    // membership live while the shorter owner lease expires; no wall-clock sleep.
+    for change_epoch in [true, false] {
+        let f = fixture(&pool, 1).await?;
+        let now = DateTime::<Utc>::from_timestamp_micros(Utc::now().timestamp_micros()).unwrap();
+        let first = owner("takeover-a");
+        let second = OwnerIdentity::new(
+            if change_epoch { first.process_id.clone() } else { "takeover-b".into() },
+            if change_epoch { Uuid::new_v4() } else { first.epoch },
+        )?;
+        repo.claim_owner(f.event, f.room_a, &first, now, Duration::seconds(2)).await?;
+        let (rec, ticket) = record(f, f.room_a, 17, now);
+        let digest = ticket.digest();
+        repo.issue(rec).await?;
+        let ConsumeOutcome::Consumed(claim) = repo.consume(ConsumeClaim {
+            digest,
+            connection_id: ConnectionId::from_uuid(Uuid::new_v4())?,
+            requested: pin(f, f.room_a),
+            now,
+        }).await? else { anyhow::bail!("initial ticket not consumed") };
+        let AdmissionOutcome::Admitted(admitted) = repo.admit(&first, &claim, now).await?
+        else { anyhow::bail!("initial admission failed") };
+        let key = admitted.membership.key;
+        assert_eq!(repo.current_owned_membership(key, now).await?.unwrap().owner, first);
+        let subscription = SubscriptionLease {
+            key,
+            session_id: admitted.membership.session_id.clone(),
+            room_id: f.room_a,
+            connection_id: admitted.membership.connection_id,
+            owner: first.clone(),
+        };
+        assert!(matches!(repo.reauthorize(&subscription, now).await?, LeaseState::Active(_)));
+        let later = now + Duration::seconds(3);
+        assert!(admitted.membership.lease_until > later);
+        repo.claim_owner(f.event, f.room_a, &second, later, Duration::seconds(20)).await?;
+        assert!(repo.current_owned_membership(key, later).await?.is_none());
+        assert_eq!(repo.reauthorize(&subscription, later).await?, LeaseState::Gone);
+        let relabeled = SubscriptionLease { owner: second.clone(), ..subscription };
+        assert_eq!(repo.reauthorize(&relabeled, later).await?, LeaseState::Gone);
+
+        // Only an actual new ticket/admission may write the replacement owner.
+        let (rec, ticket) = record(f, f.room_a, 18, later);
+        let digest = ticket.digest();
+        repo.issue(rec).await?;
+        let ConsumeOutcome::Consumed(claim) = repo.consume(ConsumeClaim {
+            digest,
+            connection_id: ConnectionId::from_uuid(Uuid::new_v4())?,
+            requested: pin(f, f.room_a),
+            now: later,
+        }).await? else { anyhow::bail!("replacement ticket not consumed") };
+        let AdmissionOutcome::Replaced(replacement) = repo.admit(&second, &claim, later).await?
+        else { anyhow::bail!("replacement admission failed") };
+        let current = repo.current_owned_membership(key, later).await?.unwrap();
+        assert_eq!(current.owner, second);
+        assert_eq!(current.membership, replacement.membership);
+        let fresh = SubscriptionLease {
+            session_id: replacement.membership.session_id.clone(),
+            connection_id: replacement.membership.connection_id,
+            ..relabeled
+        };
+        assert!(matches!(repo.reauthorize(&fresh, later).await?, LeaseState::Active(_)));
+    }
+    Ok(())
+}
+
+#[tokio::test]
+async fn membership_leave_and_disconnect_grace_expire_canonical_rows() -> anyhow::Result<()> {
+    let pool = owned_pool_with_limit(2).await?;
+    let repo = PgWorldRepository::new(pool.clone());
+    for disconnect in [false, true] {
+        let f = fixture(&pool, 1).await?;
+        let now = DateTime::<Utc>::from_timestamp_micros(Utc::now().timestamp_micros()).unwrap();
+        let owner = owner("lifecycle");
+        repo.claim_owner(f.event, f.room_a, &owner, now, Duration::seconds(20)).await?;
+        let (rec, ticket) = record(f, f.room_a, 19, now);
+        let digest = ticket.digest();
+        repo.issue(rec).await?;
+        let ConsumeOutcome::Consumed(claim) = repo.consume(ConsumeClaim {
+            digest,
+            connection_id: ConnectionId::from_uuid(Uuid::new_v4())?,
+            requested: pin(f, f.room_a),
+            now,
+        }).await? else { anyhow::bail!("lifecycle ticket not consumed") };
+        let AdmissionOutcome::Admitted(admission) = repo.admit(&owner, &claim, now).await?
+        else { anyhow::bail!("lifecycle admission failed") };
+        let member = admission.membership;
+        let subscription = SubscriptionLease {
+            key: member.key,
+            session_id: member.session_id.clone(),
+            room_id: member.room_id,
+            connection_id: member.connection_id,
+            owner,
+        };
+        if disconnect {
+            let at = now + Duration::seconds(1);
+            let state = repo.disconnect(member.key, f.event, member.connection_id,
+                &member.session_id, at, Duration::seconds(1)).await?;
+            let LeaseState::Disconnected(disconnected) = state
+            else { anyhow::bail!("disconnect did not retain grace lease") };
+            assert_eq!(disconnected.lease_until, now + Duration::seconds(2));
+            assert!(repo.current_owned_membership(member.key, at).await?.is_none());
+            assert!(matches!(repo.reauthorize(&subscription, at).await?, LeaseState::Disconnected(_)));
+            let expiry = disconnected.lease_until;
+            assert_eq!(repo.reauthorize(&subscription, expiry).await?, LeaseState::Gone);
+            repo.prune(expiry).await?;
+        } else {
+            assert_eq!(repo.leave(member.key, &subscription, &session()).await, Err(WorldError::Denied));
+            assert!(repo.current_owned_membership(member.key, now).await?.is_some());
+            repo.leave(member.key, &subscription, &member.session_id).await?;
+            assert_eq!(repo.reauthorize(&subscription, now).await?, LeaseState::Gone);
+        }
+        let count: i64 = sqlx::query_scalar("select count(*) from public.concert_world_memberships where event_id=$1 and user_id=$2")
+            .bind(f.event.uuid()).bind(f.user.uuid()).fetch_one(&pool).await?;
+        assert_eq!(count, 0, "leave or expired ghost must remove its canonical row");
+    }
     Ok(())
 }
 
