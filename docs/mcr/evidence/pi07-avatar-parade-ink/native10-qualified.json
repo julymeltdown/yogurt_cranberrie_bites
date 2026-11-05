@@ -1,0 +1,76 @@
+{
+  "status": "QUALIFIED_CONTROLLED_APP_REMAINDER_WITH_RETAINED_PARTIAL_VISUAL_EVIDENCE",
+  "offer": "PI07-NATIVE10-0430",
+  "qualification": "ACTUAL_MAIN_CONTROLLED_REMAINDER_ONLY_NOT_LIVE_NOT_COMBINED_MASTER",
+  "driver": {
+    "executed": "frontend/src/features/avatar/__tests__/parade-ink/native08.mjs",
+    "sha256": "102d6b6b9b136abbfbf248f804c6cf93683f9f11c98e88aa2162778317420923",
+    "snapshot": "native10-executed-driver.mjs.txt"
+  },
+  "completed": [
+    {
+      "label": "430 next page reaches last page",
+      "at": "2026-11-05T04:32:44.846Z"
+    },
+    {
+      "label": "430 previous page returns first three",
+      "at": "2026-11-05T04:32:44.880Z"
+    },
+    {
+      "label": "430 Random enables existing Save",
+      "at": "2026-11-05T04:32:44.912Z"
+    },
+    {
+      "label": "430 Reset restores disabled Save",
+      "at": "2026-11-05T04:32:44.944Z"
+    }
+  ],
+  "geometry": [
+    {
+      "stage": "430/static-remaining-controls",
+      "name": "430 remaining static control entry",
+      "width": 396,
+      "height": 114,
+      "font": "\"Parade Ink Text\", Arial, sans-serif",
+      "fontSize": "18px",
+      "lineHeight": "22px",
+      "background": "rgba(0, 0, 0, 0)",
+      "border": "rgb(23, 23, 23)"
+    }
+  ],
+  "errors": [],
+  "newPNGCount": 0,
+  "retainedVisualEvidence": "native07-partial-native.json",
+  "original07LedgerUnchanged": true,
+  "scope": "Only final430 static paging, Random, Reset, Save-state and scoped page-error/teardown assertions. No Save persistence claim. Retained07 ten PNGs/capture-order inference and unchanged02 profile360 remain explicitly separate.",
+  "rawReports": {
+    "native10-watch-report.json": {
+      "path": "native10-watch-report.json",
+      "sha256": "5512f0971e08a8f674219a86607f29332b6a5a5c7ec4ae4cf9e84efee2647ad2"
+    },
+    "native-run10/report.json": {
+      "path": "native-run10/report.json",
+      "sha256": "1e07e97102cd4b3b749a3f13b2a6c528831cc9d82e446de8d92fb9895cf9278b"
+    },
+    "native-run10/native-report.json": {
+      "path": "native-run10/native-report.json",
+      "sha256": "bd0a6a94a3fbf4f296f31efb3a98a5b29084b7f3238d57a6988d85dbb0deda78"
+    },
+    "native-run10/checkpoint.json": {
+      "path": "native-run10/checkpoint.json",
+      "sha256": "7497bb9df2f681ab95d787f55403c5624a06ab14ca5c6d4cd04533ad71debd81"
+    }
+  },
+  "FULL": "2026-11-05T04:32:45.995712+00:00",
+  "all0": true,
+  "phasePositiveBytes": 46931968,
+  "familyCarryAtLeast": 991944704,
+  "wholeAllocatedPeak": 4470554624,
+  "entireTreeRssPeak": 2777497600,
+  "entireTreePidPeak": 12,
+  "limits": [
+    "No whole-current-master or live/backend/device/physical Map/Friends acceptance",
+    "Native07 remains interrupted partial evidence, never relabeled whole-run PASS",
+    "Additional390short lower-content scroll/focus experiment was not admitted or executed; existing footer/overflow captures are the bounded short-height evidence"
+  ]
+}

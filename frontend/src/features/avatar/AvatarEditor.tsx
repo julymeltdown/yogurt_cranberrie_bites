@@ -3,7 +3,7 @@ import { layers, sameConfig, type AvatarConfig } from './contract'
 import type { AvatarEditorController, EditorNotice } from './controller'
 import { OptionStrip } from './OptionStrip'
 import { ConcertAction, ConcertWindow } from '../../shared/ui/concert-window'
-import { CategoryRail } from './reference-presentation/CategoryRail'
+import { AvatarCategoryTabs } from './parade-ink/AvatarCategoryTabs'
 import { randomCandidates, randomizeDraft } from './reference-presentation/actions'
 import { TonePalette, type ToneColor } from './reference-presentation/TonePalette'
 import './avatar-editor.css'
@@ -44,7 +44,7 @@ export function AvatarEditor({ controller, tonePalette }: { readonly controller:
     {state.draft && !state.catalog.tones.includes(state.draft.skin_tone_id) && <option value={state.draft.skin_tone_id} disabled>Saved skin tone unavailable</option>}
     {state.catalog.tones.map(tone => <option key={tone} value={tone} disabled={!state.draft || !available({ ...state.draft, skin_tone_id: tone })}>{name(tone)}</option>)}
   </select></div> }] : []
-  return <section className="mcr-avatar-editor" aria-label="Avatar editor" aria-busy={busy}><ConcertWindow title="CUSTOMIZE" headingLevel={1} icon="me" footer={<>
+  return <section className="mcr-avatar-editor mcr-avatar-editor--parade-ink" aria-label="Avatar editor" aria-busy={busy}><ConcertWindow title="CUSTOMIZE" headingLevel={1} icon="me" footer={<>
     <div className="mcr-avatar-actions">
       <ConcertAction tone="paper" aria-label="Random outfit" disabled={!randomCandidates(controller).length} onClick={() => randomizeDraft(controller)}>Random</ConcertAction>
       <ConcertAction tone="paper" aria-label="Reset draft" disabled={!editable || !!state.candidate} onClick={() => controller.cancel()}>Reset</ConcertAction>
@@ -59,7 +59,7 @@ export function AvatarEditor({ controller, tonePalette }: { readonly controller:
       <div ref={host} />
       {state.preview.phase !== 'ready' && <p>{state.preview.phase === 'loading' ? 'Loading preview…' : 'Preview unavailable'}</p>}
     </div>
-    {state.catalog && <CategoryRail items={['hair', 'outfit', 'accessory', 'tone', 'presets', 'body', 'eyes'].flatMap(value => categories.filter(item => item.value === value)).map(item => ({ ...item, content:
+    {state.catalog && <AvatarCategoryTabs items={['hair', 'eyes', 'outfit', 'body', 'accessory', 'tone', 'presets'].flatMap(value => categories.filter(item => item.value === value)).map(item => ({ ...item, content:
       <>{item.value === category && state.draft && <OptionStrip key={category} controller={controller} category={category} />}
       {item.value === category && <TonePalette controller={controller} palette={tonePalette} />}
       <details className="mcr-avatar-id-options"><summary>Choose by ID</summary>{item.content}</details></>,

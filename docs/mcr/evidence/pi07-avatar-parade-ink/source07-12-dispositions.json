@@ -1,0 +1,69 @@
+{
+  "closedRounds": [
+    {
+      "round": "SOURCE07",
+      "result": "One new wiring case PASS, types/lint interrupted by unknown workflow before execution",
+      "raw": {
+        "path": "source07-watch-report.json",
+        "sha256": "9d2f122de2fba2880957a8a2d2d47641bcb96cc85f8881cbb8f70bb0cc075610"
+      },
+      "rawFailure": "AssertionError: Controller script mismatch: ('01a1a534-4fcf-7291-abe3-a97ba2fcafcd', 90261, '/Users/lhs/Desktop/mcr-worktrees/fe-social-feed/docs/mcr/evidence/pi07-avatar-parade-ink/run_source07.py')",
+      "rawResourcesClosed": true
+    },
+    {
+      "round": "SOURCE08",
+      "result": "Compiler host omitted its own test source; actual type command exit1, lint not run",
+      "raw": {
+        "path": "source08-watch-report.json",
+        "sha256": "071b7a495d41c41edd116b5cba53536fe21c87d4edba13b6170b5f27d0692c80"
+      },
+      "rawFailure": null,
+      "rawResourcesClosed": true
+    },
+    {
+      "round": "SOURCE09",
+      "result": "Unknown workflow stopped run before command result; raw cleanup-required plus separate literal FULL retained",
+      "raw": {
+        "path": "source09-watch-report.json",
+        "sha256": "926eec8bb4221947e2bebd277876c9f8a42ce84356c307256018b71374fb24c9"
+      },
+      "rawFailure": "AssertionError: Unrepresented workflow roots: [{\"pid\": 94817, \"birth\": \"Thu Nov 5 12:14:59 2026\", \"executable\": \"/Library/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python\", \"commandSHA256\": \"440ea83af771db58c10275c70310697e50adb4f7e356b5065c45265ce7ebdeeb\"}]",
+      "rawResourcesClosed": false,
+      "cleanupSupplement": {
+        "path": "source09-cleanup-full.json",
+        "sha256": "1ad718c3a10963c09e157a2d6071447c06ab845a70afab5391d62a3e35488de5"
+      }
+    },
+    {
+      "round": "SOURCE10",
+      "result": "New unknown workflow stopped run before type receipt",
+      "raw": {
+        "path": "source10-watch-report.json",
+        "sha256": "18e61d0e6863e0045cde7a8e0eeb1e275f14d8b73fe8a8d8c3574136768e3e47"
+      },
+      "rawFailure": "AssertionError: Unrepresented workflow roots: [{\"pid\": 42940, \"birth\": \"Thu Nov 5 12:21:11 2026\", \"executable\": \"/Library/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python\", \"commandSHA256\": \"24240ab4e0ce7c56c37c4d458e59a9c8c6013bf4392142c1cd9858321f766ed5\"}]",
+      "rawResourcesClosed": true
+    },
+    {
+      "round": "SOURCE11",
+      "result": "Actual type command found three TS2769 unsupported exact options; lint not run",
+      "raw": {
+        "path": "source11-watch-report.json",
+        "sha256": "1c551e8bf3dafcb2f168158d3b67bd5caf17807ee5736bbc67226dffd743436f"
+      },
+      "rawFailure": null,
+      "rawResourcesClosed": true
+    },
+    {
+      "round": "SOURCE12",
+      "result": "Strict429 dependency types and changed three-file lint each exit0; fixture-only option repair qualified",
+      "raw": {
+        "path": "source12-watch-report.json",
+        "sha256": "91e3e71bfe6fc20e5be81fab81e153cd4750a46909c3a626a8bebdc77279966b"
+      },
+      "rawFailure": null,
+      "rawResourcesClosed": true
+    }
+  ],
+  "preservation": "Raw failures remain unchanged; no closed round restarted or relabeled; no attribution of unknown workflow cause inferred"
+}

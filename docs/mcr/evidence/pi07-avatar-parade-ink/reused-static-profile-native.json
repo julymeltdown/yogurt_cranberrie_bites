@@ -1,0 +1,93 @@
+{
+  "kind": "BORROWED_READONLY_MATCHING_COMPONENT_EVIDENCE",
+  "owner": "01a1a1fe-1ab7-79b0-adbc-d4c025701acb",
+  "job": "PI06-PROFILE-FOCUSED-NATIVE05-0100",
+  "consumerCandidate": "a497f326c173216de1ce937aead4c8ce6dbe5794",
+  "reportSHA256": "737a07984bc2362149fc0791917bd5c67d441e4e72ef8b4896dd71916e1b3f9a",
+  "producerStaticFrame": "a2b6aaed44318ca3b38670a0fd3d09eb3c29df2b",
+  "foundation": "056a8c48ff667134dee8e5e99710185294e4b898",
+  "shellCorrection": "b5b44e47531e3b75febc5ee5cdd6a11b1648779c",
+  "screens": [
+    {
+      "name": "own-profile-360.png",
+      "sha256": "7bedf4fb7bbf89fc50a8d9f8a7b27c42338a88d47c17b8f534c84fcbbbddb99e",
+      "bytes": 69263,
+      "viewport": {
+        "width": 360,
+        "height": 844
+      },
+      "frame": {
+        "x": 17,
+        "y": 69,
+        "width": 128,
+        "height": 170,
+        "font": "\"Parade Ink Text\", Arial, sans-serif",
+        "fontSize": "14px",
+        "lineHeight": "18px",
+        "color": "rgb(23, 23, 23)",
+        "background": "rgb(249, 249, 248)",
+        "overflow": "visible",
+        "borderLeft": "1px solid rgb(60, 60, 59)",
+        "backgroundImage": "none"
+      },
+      "horizontalOverflow": false,
+      "personallyInspected": "2026-11-05T01:10Z",
+      "visualObservation": "128 by170 symmetric paper frame; approved128canvas retains visible proportions; longname wraps without horizontal overflow."
+    },
+    {
+      "name": "public-profile-390.png",
+      "sha256": "2b053254127f0fbf8773bdf6eb596ff08cb7dd1306b2530641f10aeb676c25ee",
+      "bytes": 60094,
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "frame": {
+        "x": 17,
+        "y": 69,
+        "width": 128,
+        "height": 170,
+        "font": "\"Parade Ink Text\", Arial, sans-serif",
+        "fontSize": "14px",
+        "lineHeight": "18px",
+        "color": "rgb(23, 23, 23)",
+        "background": "rgb(249, 249, 248)",
+        "overflow": "visible",
+        "borderLeft": "1px solid rgb(60, 60, 59)",
+        "backgroundImage": "none"
+      },
+      "horizontalOverflow": false,
+      "personallyInspected": "2026-11-05T01:10Z",
+      "visualObservation": "128 by170 symmetric paper frame; approved128canvas retains visible proportions; longname wraps without horizontal overflow."
+    },
+    {
+      "name": "own-profile-430.png",
+      "sha256": "ccbde8b29952efae9884175973c6205f2763169a56c0ffb41948c59c0663c471",
+      "bytes": 68650,
+      "viewport": {
+        "width": 430,
+        "height": 844
+      },
+      "frame": {
+        "x": 17,
+        "y": 69,
+        "width": 128,
+        "height": 170,
+        "font": "\"Parade Ink Text\", Arial, sans-serif",
+        "fontSize": "14px",
+        "lineHeight": "18px",
+        "color": "rgb(23, 23, 23)",
+        "background": "rgb(249, 249, 248)",
+        "overflow": "visible",
+        "borderLeft": "1px solid rgb(60, 60, 59)",
+        "backgroundImage": "none"
+      },
+      "horizontalOverflow": false,
+      "personallyInspected": "2026-11-05T01:10Z",
+      "visualObservation": "128 by170 symmetric paper frame; approved128canvas retains visible proportions; longname wraps without horizontal overflow."
+    }
+  ],
+  "reference": "Photo3 profileframe source rectangle439,130,567,300 gives128by170; translate palette toPhoto2 ParadeInk. No wholecard masks.",
+  "scope": "Static own/public portrait dependency only. Motion/popover/editor/part/live/device/fullPI07 gates remain open.",
+  "imageCustody": "Original PNGs retained by producing owner; no copies or mutation."
+}

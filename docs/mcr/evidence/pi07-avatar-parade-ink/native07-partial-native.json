@@ -1,0 +1,120 @@
+{
+  "status": "PARTIAL_NATIVE_CAPTURE_BACKED_ASSERTIONS_NOT_WHOLE_RUN_PASS",
+  "offer": "PI07-NATIVE07-0405",
+  "driver": {
+    "path": "frontend/src/features/avatar/__tests__/parade-ink/native04.mjs",
+    "sha256": "432e8938027842bef260fa65c07cde654618bd820aae57fde92650b6fcef8f87"
+  },
+  "screenshots": [
+    {
+      "path": "native-run07/motion-hair-360.png",
+      "bytes": 39025,
+      "sha256": "d310956a9b6e37e2db2fd97c71a4ee3838f781a657d2e85a0f10b43401e34291",
+      "width": 360,
+      "height": 800,
+      "personallyInspected": true
+    },
+    {
+      "path": "native-run07/motion-hair-390.png",
+      "bytes": 41509,
+      "sha256": "6b736a89165de2ce6c827cbf602352267a7dfb538b954f66f9a1b471827e78c3",
+      "width": 390,
+      "height": 844,
+      "personallyInspected": true
+    },
+    {
+      "path": "native-run07/motion-hair-430.png",
+      "bytes": 47179,
+      "sha256": "f20db655a22dd5000557f4c901dd43d462bb096d2478d71b4c6b68ff260e925c",
+      "width": 430,
+      "height": 932,
+      "personallyInspected": true
+    },
+    {
+      "path": "native-run07/motion-short-390.png",
+      "bytes": 21945,
+      "sha256": "318fd2321d661f4973acd44fc5aeebae145127986002df777c93427df82152e1",
+      "width": 390,
+      "height": 568,
+      "personallyInspected": true
+    },
+    {
+      "path": "native-run07/reviewed-profile-390.png",
+      "bytes": 38001,
+      "sha256": "d657dd0fcee73148b7aaf40e036bcec94d723fcf5d4dd79e3e79c6c85902d9c4",
+      "width": 390,
+      "height": 844,
+      "personallyInspected": true
+    },
+    {
+      "path": "native-run07/reviewed-profile-430.png",
+      "bytes": 38473,
+      "sha256": "de17af6077c0747dc438674cab656e0ca34e0431097da4dfac5f3fe3dc822dde",
+      "width": 430,
+      "height": 932,
+      "personallyInspected": true
+    },
+    {
+      "path": "native-run07/static-editor-360.png",
+      "bytes": 42196,
+      "sha256": "93e61fee74738239c2cf9884f973a4ce822839bb99901bc0d9ad926342417586",
+      "width": 360,
+      "height": 800,
+      "personallyInspected": true
+    },
+    {
+      "path": "native-run07/static-editor-390.png",
+      "bytes": 43186,
+      "sha256": "f4aeab57b0c7183bb41b51eafd6c1013f75d9537f1df27575090655aa57e0324",
+      "width": 390,
+      "height": 844,
+      "personallyInspected": true
+    },
+    {
+      "path": "native-run07/static-editor-430.png",
+      "bytes": 43652,
+      "sha256": "b95d3c9e5cf82dee24131ef330580e3c22f8d44bb98493db9056a4ec42e91a20",
+      "width": 430,
+      "height": 932,
+      "personallyInspected": true
+    },
+    {
+      "path": "native-run07/static-short-390.png",
+      "bytes": 28339,
+      "sha256": "8dbdc9936d428d242474eb1655a5fec0a36e1596efde130fa5540a87825bbb3b",
+      "width": 390,
+      "height": 568,
+      "personallyInspected": true
+    }
+  ],
+  "aggregatePNGBytes": 383505,
+  "actualOuter": {
+    "path": "native07-watch-report.json",
+    "sha256": "ee5cc0fcd0484040b4c31a8369455a7aee37b3228c02e7fbac1ed4fcc77b5181"
+  },
+  "literalCleanupFULL": {
+    "path": "native07-cleanup-full.json",
+    "sha256": "3320de4437cca4c0280c9376f3ae8c5c09639ae0fa21505839bb8a235c182916",
+    "FULL": "2026-11-05T04:09:48.425131+00:00",
+    "all0": true
+  },
+  "captureOrderInference": [
+    "All three motion-hair captures occur AFTER actual four raw64-by64 canvas RGBA equality, nonzero transparent/painted pixels and bounded192 preview assertions",
+    "Reviewed390/430 frame128x170 assertions occur before their captures; unchanged360 profile Native02 reused",
+    "Arrival at430 static screenshot proves all preceding360/390 static paging/Random/Reset/Save-state controls and390/430 reviewed category/preset/pose/Walk/Random/Cancel completed",
+    "Two390short screenshots prove footer reachability at those captures; full lower-body scroll/focus still needs explicit proof"
+  ],
+  "visualInspection": "All10 original PNGs personally opened: bounded draft, four isolated hair cards, intact static three-card grid, portrait proportions, legible labels, footer visible at short height; no horizontal image-width overflow",
+  "remaining": [
+    "Final430 static Next/Previous/Random/Reset/Save-state assertions after last capture",
+    "Explicit390short lower-content scroll/focus for both editor families",
+    "Scoped remainder page-error/teardown report; no historical global-empty-error assertion invented"
+  ],
+  "limits": [
+    "No durable Native07 final JSON PASS: guard stopped on new unrepresented Python83930 after10captures",
+    "No whole-current-master/device/live/backend/physicalMapFriends qualification"
+  ],
+  "phaseActual": 77246464,
+  "phaseConservativeUpper": 77312000,
+  "familyCarryAtLeast": 927072256
+}

@@ -19,6 +19,7 @@ const messages: Record<Exclude<MotionNotice, null>, string> = {
   'saved-refresh-needed': 'Outfit saved. Reload World and Profile to refresh their display.',
 }
 const equal = (a: unknown, b: unknown) => canonicalJson(a as Record<string, unknown>) === canonicalJson(b as Record<string, unknown>)
+const choicesPerPage = 4
 const layerLabels: Record<MotionLayer, string> = { body: 'Skin / body', hair: 'Hair', eyes: 'Eyes', outfit: 'Outfit', accessory: 'Accessory' }
 const label = (key: string) => `${key.split('-')[0]} ${Number(key.split('-').at(-1)) + 1}`
 const categoryPaths: Record<MotionLayer, string> = {
@@ -37,10 +38,10 @@ export function MotionEditor<C>({ controller }: { readonly controller: MotionEdi
   const draft = state.draft, catalog = state.catalog
   const selected = draft ? controller.runtime.authority.selection(draft) : null
   const dirty = !!draft && !!state.persisted && !equal(draft, state.persisted.config)
-  const items = catalog?.items.filter(item => item.kind === category) ?? [], last = Math.max(0, Math.ceil(items.length / 3) - 1), current = Math.min(page, last)
+  const items = catalog?.items.filter(item => item.kind === category) ?? [], last = Math.max(0, Math.ceil(items.length / choicesPerPage) - 1), current = Math.min(page, last)
   const chooseItem = (kind: MotionLayer, key: string | null) => {
     if (selected?.mode !== 'wardrobe') return
-    if (kind === category) setPage(Math.floor(Math.max(0, items.findIndex(item => item.key === key)) / 3))
+    if (kind === category) setPage(Math.floor(Math.max(0, items.findIndex(item => item.key === key)) / choicesPerPage))
     void controller.choose({ ...selected, [kind]: key } as MotionSelection)
   }
   const dressUp = () => {
@@ -50,7 +51,7 @@ export function MotionEditor<C>({ controller }: { readonly controller: MotionEdi
       hair: catalog.items.find(i => i.kind === 'hair')!.key, eyes: catalog.items.find(i => i.kind === 'eyes')!.key,
       outfit: catalog.items.find(i => i.kind === 'outfit')!.key, accessory: null })
   }
-  return <section className="mcr-motion-editor" aria-label="Avatar editor" aria-busy={busy}>
+  return <section className="mcr-motion-editor mcr-motion-editor--parade-ink" aria-label="Avatar editor" aria-busy={busy}>
     <ConcertWindow title="CUSTOMIZE" headingLevel={1} icon="me" footer={<div className="mcr-motion-actions">
       <ConcertAction tone="paper" aria-label="Random character" disabled={!editable} onClick={() => void controller.random()}>Random</ConcertAction>
       <ConcertAction tone="paper" aria-label="Cancel changes" disabled={!editable || !!state.candidate} onClick={() => controller.reset()}>Cancel</ConcertAction>
@@ -69,11 +70,12 @@ export function MotionEditor<C>({ controller }: { readonly controller: MotionEdi
         <button type="button" aria-label={walking ? 'Stop walking' : 'Preview walk'} aria-pressed={walking} disabled={!draft} onClick={() => setWalking(!walking)}>{walking ? 'Stop walk' : 'Walk'}</button>
       </div></div>
       {catalog && draft && <div className="mcr-motion-categories" role="group" aria-label="Clothing categories">
-        {(['hair', 'outfit', 'accessory', 'body', 'eyes'] as const).map(kind => <button type="button" key={kind} aria-label={layerLabels[kind]}
+        {(['hair', 'eyes', 'outfit', 'body', 'accessory'] as const).map(kind => <button type="button" key={kind} aria-label={layerLabels[kind]}
+          className={['hair', 'eyes', 'outfit'].includes(kind) ? 'mcr-motion-category--primary' : 'mcr-motion-category--secondary'}
           disabled={!editable} aria-pressed={selected?.mode === 'wardrobe' && category === kind} onClick={() => {
             setCategory(kind)
             const choices = catalog.items.filter(item => item.kind === kind)
-            setPage(selected?.mode === 'wardrobe' ? Math.floor(Math.max(0, choices.findIndex(item => item.key === selected[kind])) / 3) : 0)
+            setPage(selected?.mode === 'wardrobe' ? Math.floor(Math.max(0, choices.findIndex(item => item.key === selected[kind])) / choicesPerPage) : 0)
             if (selected?.mode !== 'wardrobe') dressUp()
           }}><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinejoin="round" strokeLinecap="round"><path d={categoryPaths[kind]} /></svg>
           <span>{layerLabels[kind]}</span></button>)}
@@ -95,8 +97,8 @@ export function MotionEditor<C>({ controller }: { readonly controller: MotionEdi
             <div className="mcr-motion-option-row">
               <button type="button" aria-label={`Previous ${layerLabels[category]} choices`} disabled={current === 0} onClick={() => setPage(current - 1)}>‹</button>
               <div className="mcr-motion-option-grid">
-                {selected?.mode === 'wardrobe' && items.slice(current * 3, current * 3 + 3).map(item => <MotionOption key={item.key} runtime={controller.runtime} draft={draft}
-                  selection={{ ...selected, [category]: item.key }} label={label(item.key)} pressed={selected[category] === item.key} disabled={!editable} onChoose={() => chooseItem(category, item.key)} />)}
+                {selected?.mode === 'wardrobe' && items.slice(current * choicesPerPage, (current + 1) * choicesPerPage).map(item => <MotionOption key={item.key} runtime={controller.runtime} draft={draft}
+                  part={{ kind: category, key: item.key }} selection={{ ...selected, [category]: item.key }} label={label(item.key)} pressed={selected[category] === item.key} disabled={!editable} onChoose={() => chooseItem(category, item.key)} />)}
               </div>
               <button type="button" aria-label={`Next ${layerLabels[category]} choices`} disabled={current === last} onClick={() => setPage(current + 1)}>›</button>
             </div>

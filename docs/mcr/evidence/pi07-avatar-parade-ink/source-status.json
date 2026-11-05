@@ -1,0 +1,49 @@
+{
+  "qualification": "FROZEN_SOURCE_PASS_STATIC_EXTENSION_PENDING",
+  "base": "5ac4bc6e69ee47e6782c2d0b25c72c5544a540d6",
+  "foundation": "056a8c48ff667134dee8e5e99710185294e4b898",
+  "foundationContract": "pi01-photo2-v1",
+  "sourceExecution": {
+    "source": "d181bfe4bc487984a3e15f2d3ab07ed7d4727301",
+    "offer": "PI07-SOURCE02-20261105T0035Z",
+    "fullAt": "2026-11-05T00:43:54.836038Z",
+    "reactCases": 7,
+    "failurePropagationCases": 1,
+    "typeRoots": 9,
+    "typeDiagnostics": 0,
+    "lint": "PASS",
+    "diffCheck": "PASS",
+    "allExitCodes": 0,
+    "resourcesClosed": true,
+    "entireTreePidPeak": 5,
+    "entireTreeRssPeak": 950910976,
+    "newPhasePositivePeak": 5877760
+  },
+  "defaultApplication360390430": "NOT_RUN",
+  "referenceComparisons": "NOT_RUN",
+  "nativeDevices": "NOT_RUN",
+  "publication": "NOT_RUN",
+  "popoverMount": "PI11 owns current authorized data, selection/withdrawal and focus. Peer source qualification is partial; native mount NOT_RUN.",
+  "retainedFunctionality": "Existing character bytes, controller/authority/runtime/catalog and production identity/clock remain outside PI07 edits",
+  "resourceAccounting": "Source-only admission and local inode ledger are retained separately; they are not test or acceptance proof",
+  "staticExtension": {
+    "sourceChecks": {
+      "source": "8907969327b8f0371860fc13eeddef2d60876a23",
+      "round": "SOURCE04",
+      "actualPasses": 4,
+      "actualFailures": 1,
+      "passedCases": [
+        "static portrait64 lifetime and withdrawal",
+        "static portrait128 lifetime and withdrawal",
+        "unframed256detail",
+        "static editorpaging/actions"
+      ],
+      "failure": "Editor withdrawal test supplied an impossible retained review-server notice; fixture corrected to actual revoked state in ee6a4a2f70ee995a86400dd8801f10e44d285014. Targeted rerun NOT_RUN.",
+      "types": "15roots0diagnostics printed, command exit receipt interrupted by globalguard; no qualified PASS",
+      "lint": "NOT_RUN"
+    },
+    "newCases": 5,
+    "native": "PI06 actual13PASS includes unchanged static own/public frames; three matching3width PNGs personally inspected and recorded separately",
+    "panelApplication": "Import-only hunks over consumer-owned postimages; preserve both public-profile size=128 props"
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "status": "FAILED_OWN_CONTROL_OUTPUT_PATH_BEFORE_CHROME",
+  "offer": "PI07-NATIVE05-0348",
+  "actualAccepted": true,
+  "error": "Own control output directory remained native-run04; FileExistsError before Chrome/payload",
+  "release": {
+    "path": "native05-watch-report.json",
+    "sha256": "8ad7d933d854d9642c56ff13081a69aa11d90e30fff2fa76e9a4eab3f08f8c83"
+  },
+  "FULL": "2026-11-05T03:50:41.134516+00:00",
+  "all0": true,
+  "actualPhase": 479232,
+  "sourceProductUntouched": true
+}

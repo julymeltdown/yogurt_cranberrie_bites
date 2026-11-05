@@ -1,0 +1,18 @@
+{
+  "status": "FAILED_GLOBAL_ORDINARY_COMMAND_DIGEST_BEFORE_NATIVE_RESULT",
+  "offer": "PI07-NATIVE06-0354",
+  "actualAccepted": true,
+  "error": "Live global ordinary command digest mismatch after completeLIVE; no image or pixel result",
+  "release": {
+    "path": "native06-watch-report.json",
+    "sha256": "9d3fa72025732ef3d00700573335dd09ddbc3441fa576283dade8756fd9f00d6"
+  },
+  "FULL": "2026-11-05T03:54:10.223693+00:00",
+  "all0": true,
+  "actualPhase": 4759552,
+  "sourceProductUntouched": true,
+  "noScreenshots": true,
+  "noPixelResult": true,
+  "frozenAdminSourceExists": true,
+  "adminPretransformCommandFailure": "Read-only cat-file confirms frozen admin module exists; interrupted Git child error does not prove missing source"
+}

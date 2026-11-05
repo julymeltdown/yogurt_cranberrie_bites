@@ -1,0 +1,133 @@
+import assert from 'node:assert/strict'
+import { mkdir, readFile, writeFile, rename } from 'node:fs/promises'
+import { resolve } from 'node:path'
+import { createServer } from 'vite'
+import { chromium, expect } from '@playwright/test'
+import { frozenSource } from './frozen-source.mjs'
+
+const frontend = resolve(import.meta.dirname, '../../../../..'), repo = resolve(frontend, '..')
+const scratch = process.env.MCR_PI07_SCRATCH, output = process.env.MCR_PI07_OUTPUT
+assert(scratch && output, 'Fresh booked private scratch and durable output are required')
+const port = Number(process.env.MCR_PI07_PORT)
+assert(Number.isInteger(port) && port > 1024, 'Use the booked strict port')
+await mkdir(output, { recursive: true }); await mkdir(scratch, { recursive: true })
+const frozen = frozenSource(repo), schema = JSON.parse(frozen.bytes('contracts/assets/v2/reviewed/avatar-manifest.schema.json'))
+const participant = JSON.parse(frozen.bytes('contracts/fixtures/core/bootstrap-open.json')).participant
+const durable = { avatar: { revision: 7, config: schema.$defs.ReviewedMotionAvatarManifest.const.presets[0].config },
+  participantRevision: participant.revision, reads: 0, writes: [] }
+const html = await readFile(resolve(import.meta.dirname, 'preview.html'), 'utf8')
+const staticEvent = JSON.parse(frozen.bytes('frontend/src/app/world-entry/__tests__/map-presentation-v1/source-inputs/operator-bootstrap.json')).event.event_id
+const input = { revision: 'TEST_ONLY_PI07_NOT_C05_AUTHORITY', reviewedBy: 'Controlled visual fixture',
+  movementPolicy: { speedPxPerSecond: 96, footWidthPx: 12, footHeightPx: 8, interactionRadiusPx: 96 }, zoom: 1 }
+const report = { qualification: 'ACTUAL_MAIN_CONTROLLED_REMAINDER_ONLY_NOT_LIVE_NOT_COMBINED_MASTER',
+  candidate: frozen.candidate, result: 'FAIL', screenshots: [], states: [], geometry: [], errors: [],
+  scope: 'Independent editor/profile only; old physical selected-card/popover/projection comparison STOPPED by Root',
+  reference: { photo3Portrait: { width: 128, height: 170 }, photo3Choices: 4,
+    translation: 'Retained independent editor and Photo3 portrait anatomy; no new physical reference acceptance' },
+  partPreview: 'Retained Native07 capture-backed twelve raw64 hair RGBA assertions; this run checks only final430static paging/Random/Reset/Save and end assertions, with zero new PNG' }
+let browser, page, server, stage = 'server'
+const measure = async (selector, name) => {
+  const result = await page.locator(selector).first().evaluate(element => {
+    const b = element.getBoundingClientRect(), style = getComputedStyle(element)
+    return { width: b.width, height: b.height, font: style.fontFamily, fontSize: style.fontSize,
+      lineHeight: style.lineHeight, background: style.backgroundColor, border: style.borderColor }
+  })
+  report.geometry.push({ stage, name, ...result }); return result
+}
+const login = async cohort => {
+  await page.goto(`http://127.0.0.1:${port}/login?cohort=${cohort}`)
+  await page.getByLabel('Email', { exact: true }).fill('fixture@example.test')
+  await page.getByLabel('Password', { exact: true }).fill('fixture-password')
+  await page.getByRole('button', { name: 'Sign in with email', exact: true }).click()
+  await expect(page.locator('.shell-world-host canvas')).toHaveCount(1)
+}
+const nav = name => page.getByRole('navigation', { name: 'Main navigation' }).getByRole('link', { name, exact: true })
+const targets = async selector => {
+  const violations = await page.locator(selector).evaluateAll(elements => elements.flatMap(element => {
+    const box = element.getBoundingClientRect()
+    if (!box.width || !box.height) return []
+    return box.width < 43.9 || box.height < 43.9 ? [{ label: element.getAttribute('aria-label') || element.textContent, width: box.width, height: box.height }] : []
+  }))
+  assert.deepEqual(violations, [], 'Owned visible controls retain 44px touch targets')
+}
+try {
+  server = await createServer({ root: frontend, configFile: resolve(frontend, 'vite.config.ts'), configLoader: 'runner',
+    cacheDir: resolve(scratch, 'vite'), logLevel: 'warn', optimizeDeps: { entries: [] },
+    define: { 'import.meta.env.VITE_MCR_EVENT_ID': 'globalThis.__PI07_EVENT_ID__',
+      'import.meta.env.VITE_MCR_LOCAL_INPUT_CONFIG': JSON.stringify(JSON.stringify(input)) },
+    plugins: [frozen.plugin, { name: 'pi07-private-html-and-wire-server', configureServer(vite) {
+      vite.middlewares.use(async (request, response, next) => {
+        try {
+          const url = new URL(request.url, 'http://127.0.0.1')
+          if (url.pathname === '/__reviewed_persistence_motion/state') {
+            response.setHeader('Content-Type', 'application/json'); response.setHeader('Cache-Control', 'no-store')
+            if (request.method === 'GET') { durable.reads++; response.end(JSON.stringify(durable)); return }
+            assert.equal(request.method, 'PUT')
+            let text = ''; for await (const chunk of request) { text += chunk; assert(text.length <= 32768) }
+            const body = JSON.parse(text)
+            if (body.expected_revision !== durable.avatar.revision) {
+              response.statusCode = 409; response.end(JSON.stringify({ code: 'CONFLICT', message: 'Changed', details: { reason: 'VERSION_CONFLICT' } })); return
+            }
+            assert.equal(body.config.manifest_id, 'mcr_selected_motion_reviewed_20261104')
+            assert.equal(body.config.manifest_version, 2)
+            durable.avatar = { revision: durable.avatar.revision + 1, config: body.config }; durable.participantRevision++
+            durable.writes.push({ expectedRevision: body.expected_revision, revision: durable.avatar.revision })
+            response.end(JSON.stringify(durable)); return
+          }
+          if (!request.headers.accept?.includes('text/html')) return next()
+          const entry = url.searchParams.get('cohort') === 'static' ? html.replace('/preview.ts', '/static-preview.ts') : html
+          response.setHeader('Content-Type', 'text/html')
+          const eventId = url.searchParams.get('cohort') === 'static' ? staticEvent : '00000000-0000-4000-8000-000000000201'
+          const boundEntry = entry.replace('<head>', '<head><script>globalThis.__PI07_EVENT_ID__=' + JSON.stringify(eventId) + '</script>')
+          response.end(await vite.transformIndexHtml(request.url, boundEntry))
+        } catch (error) { response.statusCode = 500; response.end(String(error)) }
+      })
+    } }],
+    server: { host: '127.0.0.1', port, strictPort: true, watch: null } })
+  await server.listen()
+  browser = await chromium.launch({ executablePath: '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome',
+    headless: true, env: { ...process.env, TMPDIR: scratch } })
+  report.browser = browser.version()
+  report.reusedEvidence = 'native07-partial-native.json: ten personally inspected immutable PNGs and capture-backed prior assertions'
+  report.completed = []
+  const mark = async label => {
+    report.completed.push({ label, at: new Date().toISOString() })
+    const temporary = resolve(output, 'checkpoint.json.tmp')
+    await writeFile(temporary, JSON.stringify(report, null, 2) + '\n')
+    await rename(temporary, resolve(output, 'checkpoint.json'))
+  }
+  const staticContext = await browser.newContext({ viewport: { width: 430, height: 932 }, hasTouch: true, reducedMotion: 'reduce' })
+  page = await staticContext.newPage(); page.setDefaultTimeout(10000)
+  page.on('pageerror', error => report.errors.push({ stage, message: error.message }))
+  stage = '430/static-remaining-controls'; await login('static')
+  await nav('Me').click(); await page.getByRole('link', { name: 'Dress up', exact: true }).click()
+  const whole = page.getByRole('region', { name: 'Whole character editor', exact: true })
+  await expect(whole.locator('.mcr-whole-choice')).toHaveCount(3)
+  await measure('.mcr-whole-grid', '430 remaining static control entry')
+  await targets('.mcr-whole-editor button')
+  await whole.getByRole('button', { name: 'Next characters' }).click()
+  await expect(whole.getByRole('button', { name: 'Next characters' })).toHaveAttribute('aria-disabled', 'true')
+  await mark('430 next page reaches last page')
+  await whole.getByRole('button', { name: 'Previous characters' }).click()
+  await expect(whole.locator('.mcr-whole-choices header > span')).toHaveText('1–3 / 6')
+  await mark('430 previous page returns first three')
+  await whole.getByRole('button', { name: 'Random character' }).click()
+  await expect(whole.getByRole('button', { name: 'Save character' })).toBeEnabled()
+  await mark('430 Random enables existing Save')
+  await whole.getByRole('button', { name: 'Reset draft' }).click()
+  await expect(whole.getByRole('button', { name: 'Save character' })).toBeDisabled()
+  await mark('430 Reset restores disabled Save')
+  await staticContext.close()
+  assert.deepEqual(report.errors, [])
+  report.result = 'PASS'
+} catch (error) {
+  report.failure = { stage, message: String(error), stack: error.stack }
+  if (page && !page.isClosed()) report.visibleText = await page.locator('body').innerText().catch(() => '')
+  process.exitCode = 1
+} finally {
+  await browser?.close(); await server?.close()
+  report.closedAt = new Date().toISOString()
+  report.readset = frozen.receipts(); report.transformations = frozen.transformations()
+  await writeFile(resolve(output, 'native-report.json'), JSON.stringify(report, null, 2) + '\n')
+  console.log(JSON.stringify({ result: report.result, stage, screenshots: report.screenshots, failure: report.failure, closedAt: report.closedAt }))
+}

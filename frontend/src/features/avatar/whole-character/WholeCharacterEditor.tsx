@@ -48,7 +48,7 @@ export function WholeCharacterEditor({ controller }: { readonly controller: Whol
             {choices.map(choice => <button key={choice.id} type="button" className="mcr-whole-choice" aria-label={`Choose ${choice.label}`}
               aria-pressed={!!state.draft && sameWholeConfig(choice.config, state.draft)} disabled={!editable} onClick={() => controller.select(choice.id)}>
               <WholeCharacterView runtime={controller.runtime} config={choice.config} size={64} label={choice.label} />
-              <span className="mcr-whole-sr-only">{choice.label}</span>
+              <span className="mcr-whole-choice-label">{choice.label}</span>
             </button>)}
           </div>
           <button type="button" aria-label="Next characters" aria-disabled={current === last} onClick={() => { if (current < last) setPage(current + 1) }}>›</button>

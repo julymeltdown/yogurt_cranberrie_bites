@@ -1,0 +1,39 @@
+{
+  "kind": "IMMUTABLE_STATIC_PRESENTATION_SOURCE_HANDOFF_NOT_NATIVE_ACCEPTANCE",
+  "base": "d181bfe4bc487984a3e15f2d3ab07ed7d4727301",
+  "wrapperClosure": [
+    {
+      "path": "frontend/src/app/character-entry/FramedWholeCharacterView.tsx",
+      "sha256": "1edb914cb76c425b49e1cab2099dc3d66015cb85d36d662c585810439b62c65a"
+    },
+    {
+      "path": "frontend/src/features/avatar/parade-ink/PortraitFrame.tsx",
+      "sha256": "637c7952cbed607db0a5479ee1e58277d7c242a0ed4ce30f88968825005c964f"
+    },
+    {
+      "path": "frontend/src/features/avatar/parade-ink/parade-ink-avatar.css",
+      "sha256": "fe2c83cc92a9818cabb33ef20858640452e7de2899cba80600d75c26e23ddbd0"
+    }
+  ],
+  "readonlyDependencies": [
+    "frontend/src/entities/avatar/whole-character/index.ts",
+    "frontend/src/entities/avatar/whole-character/view.tsx",
+    "frontend/src/entities/avatar/whole-character/contract.ts",
+    "frontend/src/entities/avatar/whole-character/runtime.ts"
+  ],
+  "hunks": {
+    "paths": [
+      "frontend/src/app/account-entry/panels.tsx",
+      "frontend/src/app/social-composition/panels.tsx"
+    ],
+    "remove": "import { WholeCharacterView } from '../../entities/avatar/whole-character'",
+    "add": "import { FramedWholeCharacterView as WholeCharacterView } from '../character-entry/FramedWholeCharacterView'",
+    "preserve": "Every other caller byte, including PI06 c6f0 public-profile size=128 props"
+  },
+  "qualification": {
+    "existingFrameAndCSS": "Frozen d181 focused source PASS",
+    "newWrapperAndStaticEditor": "AUTHORED, affected checks NOT_RUN",
+    "consumerCompositionAndCaptures": "Consumer-owned; no whole PI07/native barrier"
+  },
+  "staticEditor": "Existing three-choice paging and all pre-return code preserved; only visible label class and CSS presentation changed."
+}

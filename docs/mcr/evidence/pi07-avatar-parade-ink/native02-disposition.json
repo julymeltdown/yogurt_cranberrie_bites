@@ -1,0 +1,46 @@
+{
+  "offer": "PI07-EDITOR-PROFILE-NATIVE02-0145",
+  "actualFull": "2026-11-05T01:43:58.961786+00:00",
+  "resourcesClosed": true,
+  "status": "FAIL",
+  "passingBoundary": "Changed helper lint; controlled reviewed profile360 geometry128x170; retained controls exercised. Personal image inspection found real draft overflow, so no motion layout PASS.",
+  "failure": {
+    "stage": "360/static-editor",
+    "message": "Error: expect(locator).toHaveCount(expected) failed\n\nLocator:  locator('.shell-world-host canvas')\nExpected: 1\nReceived: 0\nTimeout:  5000ms\n\nCall log:\n  - Expect \"to.have.count\" with timeout 5000ms\n  - waiting for locator('.shell-world-host canvas')\n    14 \u00d7 locator resolved to 0 elements\n       - unexpected value \"0\"\n",
+    "stack": "Error: expect(locator).toHaveCount(expected) failed\n\nLocator:  locator('.shell-world-host canvas')\nExpected: 1\nReceived: 0\nTimeout:  5000ms\n\nCall log:\n  - Expect \"to.have.count\" with timeout 5000ms\n  - waiting for locator('.shell-world-host canvas')\n    14 \u00d7 locator resolved to 0 elements\n       - unexpected value \"0\"\n\n    at captureRawStack (/Users/lhs/Desktop/mcr-worktrees/fe-social-feed/frontend/node_modules/.pnpm/playwright-core@1.61.1/node_modules/playwright-core/lib/coreBundle.js:3172:17)\n    at callMatcherAsStep (/Users/lhs/Desktop/mcr-worktrees/fe-social-feed/frontend/node_modules/.pnpm/playwright@1.61.1/node_modules/playwright/lib/matchers/expect.js:12877:57)\n    at Object.toHaveCount (/Users/lhs/Desktop/mcr-worktrees/fe-social-feed/frontend/node_modules/.pnpm/playwright@1.61.1/node_modules/playwright/lib/matchers/expect.js:12867:23)\n    at login (/Users/lhs/Desktop/mcr-worktrees/fe-social-feed/frontend/src/features/avatar/__tests__/parade-ink/native.mjs:51:58)\n    at async file:///Users/lhs/Desktop/mcr-worktrees/fe-social-feed/frontend/src/features/avatar/__tests__/parade-ink/native.mjs:145:39"
+  },
+  "scope": "No390/430/short/static-editor acceptance, no production persistence/device/new-venue acceptance",
+  "raw": {
+    "native02-watch-report.json": {
+      "bytes": 2526,
+      "sha256": "a7b0dc5149ff84fdfb8730cc3d827dc99d7456d159c42557e81ed479563de56b"
+    },
+    "native-run02/report.json": {
+      "bytes": 5005,
+      "sha256": "baff23eda95beaed615b9fb40620609fc4728a55ec2eb34954438d3d22c5bc77"
+    },
+    "native-run02/native-report.json": {
+      "bytes": 141235,
+      "sha256": "50d8888cac530f2e883897ab269df324da8f2c54d064e7a6bb626c29cbbe2345"
+    }
+  },
+  "screenshots": {
+    "reviewed-profile-360.png": {
+      "bytes": 37484,
+      "sha256": "47f351fabadd10ebec1cb60cd4ba1890038f53e907e9c8026111b69153e07dea",
+      "personallyInspected": true
+    },
+    "motion-hair-360.png": {
+      "bytes": 40272,
+      "sha256": "45b90690d0128af52648e45d5b2bb7fe68208c4a208677a370a53e36a27540d4",
+      "personallyInspected": true
+    },
+    "failure.png": {
+      "bytes": 20789,
+      "sha256": "28b3998b0ee455dc82cb15e5ce39b3994fee183eba6aa00ea78602db668a7114",
+      "personallyInspected": true
+    }
+  },
+  "newPhasePositivePeak": 69853184,
+  "wholeAllocatedPeak": 4437364736
+}

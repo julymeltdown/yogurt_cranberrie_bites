@@ -1,0 +1,24 @@
+{
+  "status": "FAILED_INTERRUPTED_BEFORE_NATIVE_RESULT",
+  "offer": "PI07-NATIVE04-0215",
+  "actualAccepted": true,
+  "reuse": [
+    "Unchanged native04.mjs Node syntax exit0",
+    "Unchanged native04.mjs oxlint exit0"
+  ],
+  "noScreenshots": true,
+  "noPixelResult": true,
+  "raw": {
+    "path": "native04-watch-report.json",
+    "sha256": "ddbd9fb08f60a5d0660d31e050435e7b81b570f1851c7c92dfcff4b06f40a372"
+  },
+  "cleanup": {
+    "path": "native04-cleanup-full.json",
+    "sha256": "8b346d137cdc0b3401807fe54b90d39001e5f9358918d0c83dfe6567e13ed28c"
+  },
+  "FULL": "2026-11-05T03:47:12.590401+00:00",
+  "all0": true,
+  "phaseActual": 69636096,
+  "phaseConservativeUpper": 69701632,
+  "scope": "Consumer/editor browser qualification remains open; no attribution of unrepresented workflow ownership"
+}

@@ -1,0 +1,46 @@
+{
+  "status": "QUALIFIED_AFFECTED_CONSUMER_SOURCE",
+  "candidate": "46e23f8adbc142b40ff229ab6280f64dd36e724b plus fixture-only three unsupported exact options removed",
+  "scope": "One MotionEditor optional part prop; existing production assertions/handlers unchanged",
+  "producer": "b69640b5bf551e90246d035d3273d5481adb5ec8",
+  "producerCanonical": "9107766f7b9c469dd5bfad0ccb3b9c2308b558b8",
+  "reactEvidence": {
+    "source": "SOURCE07",
+    "result": "one wiring case PASS; three earlier cases intentionally skipped",
+    "boundary": "Passing fixture predates removal of three unsupported query options; no new Vitest rerun claimed",
+    "commandLog": {
+      "path": "source-run07/1.log",
+      "sha256": "a63dfd4629564912fb5e92d297a7962321a12786b50d673b4a470159ac00f39c"
+    },
+    "release": {
+      "path": "source07-watch-report.json",
+      "sha256": "9d2f122de2fba2880957a8a2d2d47641bcb96cc85f8881cbb8f70bb0cc075610"
+    }
+  },
+  "typesAndLint": {
+    "source": "SOURCE12",
+    "result": "strict429 imported-source compiler closure: two roots plus four exact producer Git postimages, zero diagnostics, exit0; changed three-file oxlint exit0",
+    "readset": {
+      "path": "source12-readset.json",
+      "sha256": "553c7d9c89c3374bcb4a07e037396e65e1711339d9c919f31a8e0807cfdfffaf"
+    },
+    "proposal": {
+      "path": "source12-proposal.json",
+      "sha256": "8cf96d3b6efbc5d67e527f3443dd879bc981421d2d316a9f6a43a946df4da9d2"
+    },
+    "primary": {
+      "path": "source-run12/report.json",
+      "sha256": "2eed31ff4ca49b403aabbcf98fbfde047b712985249fee08aad43f08ca87d1e7"
+    },
+    "release": {
+      "path": "source12-watch-report.json",
+      "sha256": "91e3e71bfe6fc20e5be81fab81e153cd4750a46909c3a626a8bebdc77279966b"
+    },
+    "actualFULL": "2026-11-05T03:35:57.979704+00:00",
+    "allResources0": true
+  },
+  "limits": [
+    "Controlled source evidence only; native consumer/reference remainder pending",
+    "No physical new-venue, real-device, live-backend or combined-current-master acceptance"
+  ]
+}

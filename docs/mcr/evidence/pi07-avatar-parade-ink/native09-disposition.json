@@ -1,0 +1,16 @@
+{
+  "status": "FAILED_OWN_DISPATCH_FILE_NOT_FOUND_BEFORE_LINT_OR_CHROME",
+  "offer": "PI07-NATIVE09-0420",
+  "FULL": "2026-11-05T04:26:12.387692+00:00",
+  "all0": true,
+  "phaseActual": 602112,
+  "raw": {
+    "path": "native09-watch-report.json",
+    "sha256": "2182803b061222799cb5ef31824318047c150c564b0877ca51973c22d78136bf"
+  },
+  "bootstrap": "samePID/runpy and exact stable OS digest with hashed executedControl passed both complete LIVE checks",
+  "error": "Primary referenced nonexistent native09.mjs; frozen actual input is native08.mjs",
+  "noProductPASS": true,
+  "newPNG": 0,
+  "nextPreacceptContract": "Every dispatched script must exist and match proposal SHA before actual newt0"
+}

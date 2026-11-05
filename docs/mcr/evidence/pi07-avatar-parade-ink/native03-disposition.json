@@ -1,0 +1,40 @@
+{
+  "offer": "PI07-EDITOR-PROFILE-NATIVE03-0157",
+  "acceptedAtEpoch": 1793844147.754694,
+  "actualFull": "2026-11-05T02:03:06.201924+00:00",
+  "status": "FAIL",
+  "resourcesClosed": true,
+  "qualifiedBoundary": "Changed native03 driver Node syntax and scoped lint each actual exit0 in outer stdout. No screenshots. Both independent initial censuses passed.",
+  "failure": "AssertionError: Unrepresented workflow roots: [{\"pid\": 18074, \"birth\": \"Thu Nov 5 11:02:33 2026\", \"executable\": \"/Library/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python\", \"commandSHA256\": \"3be19a62b279a828978f36afc46fbdc104261af41ce205cd2aefdb2cb420b242\"}]",
+  "cleanup": "Tracked births gone; own scratch absent; no strict5378 listener; reuse bind true; bounded cleanup supplement before original deadline. Original failed outer receipt remains unchanged.",
+  "attribution": "Unregistered Python owner unproven",
+  "sourceSpentFloor": 587304960,
+  "newPhasePositivePeakFloor": 512000,
+  "wholeAllocatedPeak": 4437364736,
+  "raw": {
+    "native03-watch-report.json": {
+      "bytes": 1310,
+      "sha256": "05efd62986e634a32bdae037dc9fb09ece2953f86d2f49e44730c6d67ca2c988"
+    },
+    "native03-cleanup-full.json": {
+      "bytes": 833,
+      "sha256": "3b55ebe10cf96259d7906e4b4fc1ac66f992de5d434cc814a05757f75af42a9e"
+    },
+    "native03-proposal.json": {
+      "bytes": 1987,
+      "sha256": "c9350ad98a32296b4f004ea4f7fb60350d56268085d6370cc93231bbcc3bb2e4"
+    },
+    "native03-composite-inputs-frozen.json": {
+      "bytes": 6890,
+      "sha256": "a45dfa4bccab6a2da43215c45ca00688e013cd454b8314dc14d2a72606d4e527"
+    },
+    "native03-independent-census.json": {
+      "bytes": 892,
+      "sha256": "6757a16c96f4ea203f550ca36b09515c018e533fd8e0b054638d8e702e374058"
+    },
+    "native03-primary-global-census.json": {
+      "bytes": 892,
+      "sha256": "7de4e4c39da5061347c459005a3cc48d702f9226727e17c6d178ce84f3c072b2"
+    }
+  }
+}

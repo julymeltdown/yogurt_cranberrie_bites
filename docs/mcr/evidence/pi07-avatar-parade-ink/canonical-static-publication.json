@@ -1,0 +1,14 @@
+{
+  "canonical": "5cc57d64326dcc568e4b3ae6caddc1ae589ac08b",
+  "dependencyCommit": "84f3e6cf93ea681379f949f1100bddec87965821",
+  "verification": "GitHub origin master ls-remote and all five postimage hashes matched personally on 2026-11-05 ~01:19 UTC",
+  "scope": "Three frame files plus two import-only hunks. Social import composed with PI06 two size=128 public-profile props. No editor/popover/native/full PI07 publication or combined-master runtime qualification implied.",
+  "publisherReceipt": "/private/tmp/mcr-publisher-412e-pi06-static-frame-receipt.json",
+  "postimages": {
+    "frontend/src/app/character-entry/FramedWholeCharacterView.tsx": "1edb914cb76c425b49e1cab2099dc3d66015cb85d36d662c585810439b62c65a",
+    "frontend/src/features/avatar/parade-ink/PortraitFrame.tsx": "637c7952cbed607db0a5479ee1e58277d7c242a0ed4ce30f88968825005c964f",
+    "frontend/src/features/avatar/parade-ink/parade-ink-avatar.css": "fe2c83cc92a9818cabb33ef20858640452e7de2899cba80600d75c26e23ddbd0",
+    "frontend/src/app/account-entry/panels.tsx": "159136e7c7e34d7c130b37ea2158cf7ca0a3df6f58b428bb5a5079c9cbc5baeb",
+    "frontend/src/app/social-composition/panels.tsx": "1c411e130b43579af694074a43b2ad77133d798a4cdf7f8ada5ba95b6c3d6acd"
+  }
+}

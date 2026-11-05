@@ -1,0 +1,16 @@
+{
+  "status": "FAILED_GLOBAL_UNREPRESENTED_SHELL_BEFORE_ANY_NODE_COMMAND",
+  "offer": "PI07-NATIVE08-0415",
+  "actualAccepted": true,
+  "FULL": "2026-11-05T04:15:25.431755+00:00",
+  "all0": true,
+  "raw": {
+    "path": "native08-watch-report.json",
+    "sha256": "e3d1e6602c57aa2745458c95ec72f5d86afb9acd962cea73548d29b6d5e16c52"
+  },
+  "failure": "AssertionError: Unrepresented workflow roots: [{\"pid\": 21559, \"birth\": \"Thu Nov 5 13:15:25 2026\", \"executable\": \"/bin/zsh\", \"commandSHA256\": \"5e06aff1c92cfd31d4a9e73d0aff8f02a18a29a4c2823cdff899e1fc5716d1e2\"}]",
+  "phaseActual": 561152,
+  "carryAtLeast": 927633408,
+  "priorTenNative07ImagesRetained": true,
+  "remaining": "Only430static actions/endassertions; no new images or source/viewport green replay"
+}

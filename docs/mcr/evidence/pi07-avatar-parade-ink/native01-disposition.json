@@ -1,0 +1,116 @@
+{
+  "classification": "FAILED_GLOBAL_CONCURRENCY_ROUND_FULLY_RELEASED",
+  "report": {
+    "scratchAbsent": true,
+    "noListener": true,
+    "reuseBind": true,
+    "offer": "PI07-AVATAR-APP-NATIVE01-0106",
+    "exitCode": 1,
+    "failure": "AssertionError: Browser/target cap",
+    "sourceSpentFloor": 416575488,
+    "newPhasePositivePeak": 212992,
+    "wholeAllocatedPeak": 4360675328,
+    "entireTreeRssPeak": 124551168,
+    "entireTreePidPeak": 4,
+    "survivingPids": [],
+    "resourcesClosed": true,
+    "observedBirths": {
+      "81666": "Thu Nov 5 10:36:26 2026",
+      "81744": "Thu Nov 5 10:36:26 2026",
+      "81668": "Thu Nov 5 10:36:26 2026",
+      "81752": "Thu Nov 5 10:36:27 2026",
+      "81751": "Thu Nov 5 10:36:27 2026",
+      "81753": "Thu Nov 5 10:36:27 2026",
+      "81846": "Thu Nov 5 10:36:28 2026",
+      "81969": "Thu Nov 5 10:36:29 2026",
+      "81970": "Thu Nov 5 10:36:29 2026",
+      "81972": "Thu Nov 5 10:36:29 2026",
+      "81975": "Thu Nov 5 10:36:30 2026",
+      "82140": "Thu Nov 5 10:36:31 2026",
+      "82139": "Thu Nov 5 10:36:31 2026",
+      "82141": "Thu Nov 5 10:36:31 2026",
+      "82231": "Thu Nov 5 10:36:32 2026"
+    },
+    "fullAt": "2026-11-05T01:36:32.203278+00:00"
+  },
+  "primaryCensus": {
+    "at": 1793842592.07342,
+    "psSnapshotSHA256": "7e5183064128bf5bb4454fdd0b121e33dde5fe12f81001478f9f1b39822003f3",
+    "claims": [
+      {
+        "owner": "01a1a5d9-6950-7920-8c80-5214d4ce0eaf",
+        "offer": "PI12-OPS-APP-NATIVE01-0125",
+        "kind": "browser"
+      },
+      {
+        "owner": "01a1a21e-ab80-7012-b9fa-cdb69eed097b",
+        "offer": "PI12-PREWORLD-APP-NATIVE01-0133",
+        "kind": "browser"
+      },
+      {
+        "owner": "01a1a00c-2690-7bc0-94fc-52609655ea83",
+        "offer": "BE42-PH1-COMPILE-FIVE-0131",
+        "kind": "target"
+      },
+      {
+        "owner": "01a1a534-4fcf-7291-abe3-a97ba2fcafcd",
+        "offer": "PI07-AVATAR-APP-NATIVE01-0106",
+        "kind": "browser"
+      }
+    ],
+    "declaredPids": 104,
+    "declaredRss": 20937965568,
+    "actualDistinctPids": 6,
+    "actualRss": 182779904,
+    "ordinaryPids": [],
+    "unknownRoots": [],
+    "remainingNewOther": 2518048768
+  },
+  "independentCensus": {
+    "at": 1793842592.1190631,
+    "psSnapshotSHA256": "0b7662e46df0dab38d77f5ec933e180102c761e303dea67a1bd2e7a10f1834ba",
+    "claims": [
+      {
+        "owner": "01a1a5d9-6950-7920-8c80-5214d4ce0eaf",
+        "offer": "PI12-OPS-APP-NATIVE01-0125",
+        "kind": "browser"
+      },
+      {
+        "owner": "01a1a21e-ab80-7012-b9fa-cdb69eed097b",
+        "offer": "PI12-PREWORLD-APP-NATIVE01-0133",
+        "kind": "browser"
+      },
+      {
+        "owner": "01a1a00c-2690-7bc0-94fc-52609655ea83",
+        "offer": "BE42-PH1-COMPILE-FIVE-0131",
+        "kind": "target"
+      },
+      {
+        "owner": "01a1a534-4fcf-7291-abe3-a97ba2fcafcd",
+        "offer": "PI07-AVATAR-APP-NATIVE01-0106",
+        "kind": "browser"
+      }
+    ],
+    "declaredPids": 104,
+    "declaredRss": 20937965568,
+    "actualDistinctPids": 5,
+    "actualRss": 179519488,
+    "ordinaryPids": [],
+    "unknownRoots": [],
+    "remainingNewOther": 2518048768
+  },
+  "retainedPasses": [
+    "native.mjs Node syntax",
+    "frozen-source.mjs Node syntax"
+  ],
+  "notRun": [
+    "lint",
+    "Chrome/browser",
+    "screenshots"
+  ],
+  "controls": {
+    "run_native.py": "91424facc86de587ca48906cfaf35ca9b6655d8e5e2986fb25ed7f64e89cc37d",
+    "watch_native.py": "eeda031b10d3239cc198e54afb12329d78f9f3a80e9b140f1357dea880da58d0",
+    "resource_census.py": "5aa72d743d5145be7cba5089837a9b396ca5ca5d33eea1b988d727523bd49266"
+  }
+}

@@ -22,7 +22,7 @@ export function MotionBodyPalette<C>({ controller }: { readonly controller: Moti
     } catch { /* Owner validation is authoritative; unavailable choices do not create a new draft. */ }
   }
   if (!current || !selected || !options.length) return <p className="mcr-motion-body-unavailable" role="status">Skin tones are unavailable in this character collection.</p>
-  return <fieldset className="mcr-motion-body-palette" disabled={!editable}>
+  return <fieldset className="mcr-motion-body-palette mcr-motion-body-palette--parade-ink" disabled={!editable}>
     <legend>Skin tones</legend>
     <div className="mcr-motion-body-palette__choices">
       {options.map(option => <button type="button" key={option.key} aria-label={option.label}

@@ -1,0 +1,47 @@
+{
+  "qualification": "SOURCE06_ACTUAL_PASS",
+  "report": {
+    "offer": "PI07-STATIC-REMAINDER-SOURCE06-0114",
+    "exitCode": 0,
+    "failure": null,
+    "sourceSpentFloor": 372854784,
+    "newPhasePositivePeak": 2691072,
+    "wholeAllocatedPeak": 2835505152,
+    "entireTreeRssPeak": 1009647616,
+    "entireTreePidPeak": 5,
+    "survivingPids": [],
+    "resourcesClosed": true,
+    "observedBirths": {
+      "38284": null,
+      "38290": "Thu Nov  5 10:27:15 2026",
+      "38323": null,
+      "38413": "Thu Nov  5 10:27:16 2026",
+      "38414": null,
+      "38415": null,
+      "38425": "Thu Nov  5 10:27:16 2026",
+      "38446": null,
+      "38533": null,
+      "38545": "Thu Nov  5 10:27:18 2026",
+      "38551": null,
+      "38634": null,
+      "38673": null,
+      "38674": null,
+      "38685": null,
+      "38711": null,
+      "38718": null,
+      "38739": null,
+      "38727": "Thu Nov  5 10:27:23 2026",
+      "38746": null,
+      "38793": null,
+      "38753": "Thu Nov  5 10:27:25 2026",
+      "38896": null
+    },
+    "fullAt": "2026-11-05T01:27:27.558695+00:00"
+  },
+  "readsetSHA256": "f4b960f0f6eb577d7a7ca4efbc9269d18bf1163119c8d540c2a73c027da55f1c",
+  "controls": {
+    "run_static_source06.py": "9c32aff7051eafa20af503850c407083f123f4f84705a1df34fb73493012ec5a",
+    "watch_static_source06.py": "5a76cfbab0c2cfa534f0b962018b34010a1e239ec0c323e6bd276d3d5b07434c",
+    "resource_census.py": "5aa72d743d5145be7cba5089837a9b396ca5ca5d33eea1b988d727523bd49266"
+  }
+}

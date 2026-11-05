@@ -1,0 +1,30 @@
+{
+  "producerRevision": "b69640b5bf551e90246d035d3273d5481adb5ec8",
+  "qualification": "Actual SOURCE03 affected4/4/fullappnoEmit0/changedlint0, FULL02:17:42.093908Z; SOURCE01 61green retained. APIunchanged. Producer nativeRGBA stillpending.",
+  "immutableInputs": [
+    {
+      "path": "frontend/src/entities/avatar/runtime/motion-adoption/runtime.ts",
+      "revision": "b69640b5bf551e90246d035d3273d5481adb5ec8",
+      "bytes": 11926,
+      "sha256": "aedf55ea4446e0a1411015bb0a48b776b55f8856137c8676e878f6baaca5fcdc"
+    },
+    {
+      "path": "frontend/src/entities/avatar/runtime/motion-adoption/compositor.ts",
+      "revision": "b69640b5bf551e90246d035d3273d5481adb5ec8",
+      "bytes": 7296,
+      "sha256": "f32a1ab55ff9446cb4ddbd20d0c8c62ebb92c86a62ec1e8b4da2c1f1595854b9"
+    },
+    {
+      "path": "frontend/src/features/avatar/motion-adoption/MotionOption.tsx",
+      "revision": "b69640b5bf551e90246d035d3273d5481adb5ec8",
+      "bytes": 1933,
+      "sha256": "9144cf3b6277c101a8bf078a7a38ef509320fdfe9613f1fc7f91e5e6fa969357"
+    },
+    {
+      "path": "frontend/src/features/avatar/motion-adoption/part-preview/MotionPartPreview.tsx",
+      "revision": "b69640b5bf551e90246d035d3273d5481adb5ec8",
+      "bytes": 1875,
+      "sha256": "c4b27ed730a14d919b54438b70c66eb1c249dff632b6d0114930c5a58f5bcbe3"
+    }
+  ]
+}
