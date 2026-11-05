@@ -6,7 +6,7 @@ import { useRuntimePreferences } from '../../features/settings/runtime-adoption/
 import { useWorldPresentation } from '../world-panels'
 import { useAccountOwner } from './provider'
 import { useCharacterRuntime, useReviewedCharacterOwner } from '../character-entry/provider'
-import { WholeCharacterView } from '../../entities/avatar/whole-character'
+import { FramedWholeCharacterView as WholeCharacterView } from '../character-entry/FramedWholeCharacterView'
 import { MotionEditor } from '../../features/avatar/motion-adoption/MotionEditor'
 import { ReviewedCharacterView } from '../character-entry/ReviewedCharacterView'
 import { WholeCharacterEditor } from '../../features/avatar/whole-character/WholeCharacterEditor'

@@ -1,0 +1,116 @@
+.pi-portrait-frame {
+  box-sizing: border-box;
+  display: inline-grid;
+  place-items: center;
+  flex: 0 0 auto;
+  inline-size: 64px;
+  block-size: 64px;
+  max-inline-size: 100%;
+  min-inline-size: 0;
+  border: 1px solid var(--pi-rule, #3c3c3b);
+  border-radius: var(--pi-radius, 2px);
+  background: var(--pi-paper, #f9f9f8);
+  color: var(--pi-ink, #171717);
+  vertical-align: middle;
+}
+.pi-portrait-frame[data-portrait-size="128"] { inline-size: 128px; block-size: 170px; }
+.pi-portrait-frame--fit { inline-size: 100%; block-size: 100%; }
+.pi-portrait-frame > [role="img"], .pi-portrait-frame > [role="status"] {
+  max-inline-size: 100%;
+  overflow-wrap: anywhere;
+  text-align: center;
+  font: 400 14px/18px var(--pi-font-body, Roboto, sans-serif);
+}
+.pi-avatar-popover {
+  position: relative;
+  box-sizing: border-box;
+  display: grid;
+  grid-template-columns: 108px minmax(0, 1fr);
+  gap: 14px;
+  inline-size: 100%;
+  max-inline-size: 390px;
+  padding: 12px;
+  border: 1px solid var(--pi-rule, #3c3c3b);
+  border-radius: var(--pi-radius, 2px);
+  color: var(--pi-ink, #171717);
+  background: var(--pi-paper, #f9f9f8);
+  font: 400 18px/22px var(--pi-font-body, Roboto, sans-serif);
+}
+.pi-avatar-popover__portrait {
+  display: grid;
+  place-items: center;
+  box-sizing: border-box;
+  inline-size: 108px;
+  block-size: 116px;
+  min-inline-size: 0;
+  border: 1px solid var(--pi-rule, #3c3c3b);
+  border-radius: var(--pi-radius, 2px);
+  text-align: center;
+  font-size: 14px;
+  line-height: 18px;
+}
+.pi-avatar-popover__portrait .pi-portrait-frame { inline-size: 100%; block-size: 100%; border: 0; }
+.pi-avatar-popover__identity { display: flex; min-inline-size: 0; flex-direction: column; justify-content: center; gap: 18px; }
+.pi-avatar-popover__identity h2 {
+  margin: 0;
+  padding-inline-end: 22px;
+  overflow-wrap: anywhere;
+  color: var(--pi-crimson, #922532);
+  font: 700 22px/28px var(--pi-font-body, Roboto, sans-serif);
+}
+.pi-avatar-popover__actions { display: flex; flex-wrap: wrap; min-inline-size: 0; gap: 8px; }
+.pi-avatar-popover__actions > :is(a, button) {
+  box-sizing: border-box;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-block-size: 44px;
+  min-inline-size: 44px;
+  padding: 8px 12px;
+  border: 1px solid var(--pi-rule, #3c3c3b);
+  border-radius: var(--pi-radius, 2px);
+  color: var(--pi-ink, #171717);
+  background: var(--pi-paper, #f9f9f8);
+  font: 700 18px/22px var(--pi-font-body, Roboto, sans-serif);
+  text-decoration: none;
+  text-align: center;
+}
+.pi-avatar-popover__close {
+  position: absolute;
+  inset-block-start: 0;
+  inset-inline-end: 0;
+  display: grid;
+  place-items: center;
+  box-sizing: border-box;
+  inline-size: 44px;
+  block-size: 44px;
+  padding: 10px;
+  border: 0;
+  background: transparent;
+  color: var(--pi-ink, #171717);
+  cursor: pointer;
+}
+.pi-avatar-popover__close svg { inline-size: 24px; block-size: 24px; fill: none; stroke: currentColor; stroke-width: 2; }
+.pi-avatar-popover :focus-visible, .pi-avatar-tabs :focus-visible { outline: 3px solid var(--pi-crimson, #922532); outline-offset: 2px; }
+.pi-avatar-tabs { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); gap: 4px; min-inline-size: 0; }
+.pi-avatar-tabs > button {
+  box-sizing: border-box;
+  min-inline-size: 0;
+  min-block-size: 44px;
+  padding: 6px 4px;
+  border: 1px solid var(--pi-rule, #3c3c3b);
+  border-radius: var(--pi-radius, 2px);
+  color: var(--pi-ink, #171717);
+  background: var(--pi-paper, #f9f9f8);
+  font: 700 18px/22px var(--pi-font-display, Oswald, sans-serif);
+  overflow-wrap: anywhere;
+}
+.pi-avatar-tabs__primary { grid-column: span 4; }
+.pi-avatar-tabs__secondary { grid-column: span 3; font-size: 14px !important; line-height: 18px !important; }
+.pi-avatar-tabs > button[aria-selected="true"] { background: var(--pi-ink, #171717); color: var(--pi-on-dark, white); }
+.pi-avatar-tabs > button:active { box-shadow: inset 0 0 0 1px currentColor; }
+.pi-avatar-tabpanel[hidden] { display: none; }
+@media (max-width: 360px) {
+  .pi-avatar-popover { gap: 10px; padding: 10px; }
+  .pi-avatar-popover__identity h2 { font-size: 20px; line-height: 26px; }
+}
