@@ -1,6 +1,6 @@
 # BE03 OAuth boundary: canonical source candidate
 
-## Latest execution disposition (2026-11-05 06:12 UTC)
+## Latest execution disposition (2026-11-05 07:01 UTC)
 
 The backend candidate is `11be1d4395354b02c94211ed33f7992105750e42`,
 parent `bd15b964e9e2624f4c4d97d2e545cf8d0a5d1bda`. Its sixteen-leaf
@@ -31,7 +31,8 @@ Later controls cannot retroactively qualify that old execution.
 | AMEND10 | PASS/exit 0; ACCEPT `1793858858.6516402`, FULL `1793858872.697063`, resources zero. Both LIVE guards and all 2,339 immutable backend source files qualified. Source qualification only; no application compiler, test, browser, database or provider execution. Entire 4 MiB charged. | `projection-amend10/full.json`, SHA `6a09706a7714d39d721f98f22f4c0d7172a473e36cbdbf1de04d6950f6982a25` |
 
 Paths in that table are relative to `/private/tmp/mcr-be03-oauth-12cc/`.
-The current cumulative family floor is 941,211,648 bytes plus every higher
+After the two separate source-control rounds described below, the current
+cumulative family floor is 949,600,256 bytes plus every higher
 observation. Closed-round bounds receive no deletion, overwrite or unused-byte
 refund. The physical checkout and real index remain untouched and unqualified.
 
@@ -132,7 +133,117 @@ same single 128 MiB check phase, contingent on current source, target custody,
 both LIVE guards and tool/profile prerequisites. Its exact command is
 `cargo +1.88.0 check --offline --locked -p api-gateway --lib --tests`;
 it is not an additional allowance or a running workload. The controller is
-not yet ready and no target slot is held while preparing it.
+not yet ready and no target slot is held while preparing it. The allocator later
+withdrew every unaccepted compiler offer for its source window, including
+CHECK03. Its explicit unused disposition is
+`check03-run01/UNACCEPTED_UNUSED_SOURCE_WINDOW.json`, SHA-256
+`855377f6669e87b47bfcb82e9abde705b05ca60726b7381d0ee85c6b194ac1fe`.
+There was no target read, lock, hold, Cargo invocation or invented ACCEPT/FULL.
+A distinct fresh target offer is required; the window's end does not restore it.
+
+### Separate source-control qualification, not Gateway application validation
+
+The publisher delivered only this report as canonical
+`8940a51fcd856ca9015ae2b30279d5f485ad752c`, verified on the remote through
+`12a033ae9abac21f95fe75be2dd0980926bd1e96`. All fifteen other candidate leaves,
+including application code, browser harness and shared contract, were excluded.
+The publisher receipt is
+`/private/tmp/mcr-publisher-412e-n213-be03-map-ordinary-delivery-r2-receipt.json`,
+SHA-256 `744f474b204d24e4e9e5dbc5168ca95ad5674cd8c38ece3991fcadda010666c5`.
+
+The allocator's genuine 06:31:30 UTC accounting change withdrew all unaccepted
+compiler futures rather than releasing an accepted resource or refunding history.
+The source-window projection is
+`/Users/lhs/Desktop/mcr-evidence/backend-staffing-01a1a21d/resource-future-projection-20261105T063130.json`,
+SHA-256 `d6dfad8910bdfe528aac03644b8cb7c96e3767ed96fe8c38ad8be99b2d19b941`.
+Fresh admission consumes the current projection revision, not that dated snapshot
+as a permanent capacity proof. The current warm-target namespace upper is
+19,676,201,440 bytes from the retained QA03/Notice metadata; it is not a new
+baseline or permission to inspect the target. The old 50,737,467,392-byte value
+belongs to a broader historic WHOLE namespace. It remains a historical operand
+and must not be added as a second current target component beside the complete
+non-target union. Carry every higher actual WHOLE observation, including Root's
+subsequent 67,328,389,120-byte source-round maximum.
+
+`BE03-CHECK-CONTROLS01-0628` actually accepted at `1793860944.006742` and
+closed FULL at `1793860944.3515399`: FAIL, child exit -15, controller exit 1,
+resources zero, no complete initial LIVE sample. The seven syntax inputs and
+six new deterministic resource-control cases therefore did not run. FULL is
+`check-controls01/full.json`, SHA-256
+`978f783488917a22a280c2d262dd4613a00d696c2b8c23aac89e799867bf3471`.
+Its entire 4 MiB is charged; the resulting family floor is 945,405,952 bytes.
+The round was closed and routed directly to Root's next ready source tickets
+before diagnostic reads. It is never restarted. Exact nine controller/input
+source files were copied before successor edits and bound in
+`check-controls01/failed-source/manifest.json`, SHA-256
+`3b89d98b7d7dd30b3d7f7eeb1349a09f0688f9935c509b40404714e609079423`.
+
+The recorded error is a bare assertion; its exact historical operands were not
+retained. A later read-only metadata observation found a valid legacy combined
+fractional epoch plus a separate integer microsecond component. Its producer
+confirmed those semantics and that the tuple is historical/closed. This does
+not prove which operand caused the failed round or establish a death timestamp.
+The separate prepared fix compares actual kernel integer seconds/microseconds
+exactly and checks combined-float consistency within one binary ULP without
+rounding, rewriting or inventing an alias for the original descriptor. It also
+returns unmatched for an absent observed PID without deleting a reservation.
+The six new cases include disjoint namespace accounting and these strict typed
+identity boundaries; no old AMEND03/AMEND05 green cases are replayed.
+
+The distinct `BE03-CHECK-CONTROLS02-FRACTIONAL-0647` source grant covers the same
+seven syntax inputs and six unfinished cases, 6 PIDs/2 GiB, 120-second work and
+180-second FULL deadlines, and 4 MiB inside the unchanged 1,040 MiB family.
+Its producer-confirmed pin amendment was authorized before execution. Actual
+ACCEPT was `1793861638.769849`, FULL `1793861675.960635`: overall FAIL,
+child exit -2, controller exit 1, resources zero. FULL is
+`check-controls02/full.json`, SHA-256
+`a4ec7975c3ce31590c96c5205e2a0b86d3c846b9d808b793fd766e8e53e7f8d1`.
+Both complete initial LIVE observations exist in `check-controls02/both-live.json`,
+SHA-256 `05e936f292e3c35114f23bd5c738b0299e8059ae74a73a008e7556b8c927ec09`.
+All seven resource-controller syntax inputs and all six new cases actually
+passed in `check-controls02/new-control-result.json`, SHA-256
+`45a97f4c5fe5670f86bbdafb5d283116960bc55727f09ca793b785ce3b2b7e49`.
+These are retained passing controls and must not be replayed in a successor.
+
+The overall round remains unqualified: a later guard refused unresolved Python
+PID 60221. Its retained diagnostic is
+`check-controls02/helper-refusal-1793861675841721000.json`, SHA-256
+`ad6fba88b8fdd7b78262366938b139cf6cc145e0ecb394e0f34832ab195b6706`.
+That diagnostic observed parent 49590, kernel birth `1793861675.587067`, and a
+stored ordinary-metadata entry under the separate Community art worktree.
+Later metadata inspection found no current flat PID binding. This does not
+reconstruct the helper's exact earlier consumed inputs, establish a historical
+death time, or authorize a retroactive PASS. The responsible producer was asked
+for its retained BEGIN/FULL/schema facts; no peer files were changed or new OS
+probe requested. The inner finalization was interrupted while joining its guard,
+so no complete inner-guard report was written. The overall FULL and zero owned
+resources remain the literal closed result, routed before diagnostic reads.
+Peaks were WHOLE 67,328,389,120 bytes, NEW 949,600,256 bytes, three PIDs and
+811,794,432 RSS bytes; minimum observed free space was 16,812,015,616 bytes.
+
+The entire second 4 MiB is charged, yielding a family floor of 949,600,256
+bytes plus all higher observations. No further 4 MiB round is implicitly
+granted. Any necessary changed guard/readset work requires a distinct bounded
+offer, retains the six case/seven syntax passes, and rejoins the fair queue.
+The one future 128 MiB compiler
+phase would total 1,083,817,984 bytes, leaving 6,701,056 bytes before any higher
+applicable growth. No compiler offer is currently active. The unchanged ordinary
+40 MiB book received only a time extension through 10:30 UTC; both epoch and UTC
+fields match, prior scopes remain preserved, and execution floors remain binding.
+
+A subsequent ordinary helper could not encode its closing discovery update
+within 65,536 bytes because the archive-reference array itself had grown.
+The oversized proposed update was not written; the preceding 65,280-byte
+canonical bytes were preserved exactly in
+`ordinary-history/1793861994170797000-68814.json`, SHA-256
+`12264ac4b189284b764fa3c7a8552aaa89b85c80dd7815d7e0baa44a42e8df75`.
+The owner-only fix keeps one transitive reference to that exact previous receipt,
+which already contains every older archive reference, while retaining finite
+closure tuples flat in the discovery index. This is bounded discovery, not
+history deletion or a resource refund. The corrected helper SHA-256 is
+`4489f1a1683ed3500fe3b047367fbd2c98254679aec54dc4da0f12b11cfee37f`.
+Its subsequent closing update was 49,839 bytes, ordinary FULL and finite round02
+FULL/resources zero. No failed callback completion clock was invented.
 
 Auth's existing parity client uses synthetic lookup, not real HTTP token and
 userinfo exchange. Production configuration validation remains intact. The
