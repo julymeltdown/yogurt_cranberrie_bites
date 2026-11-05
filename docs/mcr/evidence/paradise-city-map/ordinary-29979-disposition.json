@@ -1,0 +1,82 @@
+{
+  "kind": "FACTUAL_INLINE_29979_REGISTRATION_REPAIR_NO_RETROSPECTIVE_PASS",
+  "ownerThreadId": "01a1a5d9-332b-7822-a8f7-40fde6c81bb4",
+  "oldOrdinaryObservation": {
+    "pid": 29979,
+    "actualpid": 29979,
+    "birth": "Thu Nov 5 15:09:52 2026",
+    "birthSec": 1793858992,
+    "birthUsec": 77797,
+    "executable": "/Library/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python",
+    "cwd": "/Users/lhs/Desktop/mcr-worktrees/fe-profile-preferences",
+    "script": "-",
+    "argv": [
+      "/Library/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python",
+      "-B",
+      "-"
+    ],
+    "commandDigest": "257c9fe95d9eaf9a8a8cd6c2c875b2ced46d2cba56b6caa4fd2973dcc55a6651",
+    "commandDigestEncoding": "sha256:python-sys.orig_argv-json-utf8-v1",
+    "observedAt": 1793858992.1245708,
+    "role": "ordinary SAME PREP64 exact canonical remote readback verification; no runtime",
+    "endedAt": 1793858995.1351502
+  },
+  "exactPriorOwnerReceipt": {
+    "path": "/Users/lhs/Desktop/mcr-worktrees/fe-profile-preferences/docs/mcr/evidence/paradise-city-map/ordinary-29979-prior-owner-receipt.json",
+    "sha256": "cdbf717a25a6c0138f327ad81974b9e8a0843fd68a9825aecf89dc81447096d9",
+    "bytes": 7078
+  },
+  "oldToolEnding": {
+    "endedAt": 1793858995.1351502,
+    "meaning": "Recorded verifier-body completion in finally; not a kernel-exit timestamp"
+  },
+  "currentKernelObservation": {
+    "observedAt": 1793859131.1360168,
+    "pid": 29979,
+    "present": false,
+    "currentBirth": null,
+    "sameHistoricalProcess": false
+  },
+  "peerRawPSCommandSHA256": "b87755a18e173c7d2ee51cc9866b92256b9045eac373686160e8c76a56f350c7",
+  "digestDistinction": "Original typed sys.orig_argv JSON digest remains257c9fe95d9eaf9a8a8cd6c2c875b2ced46d2cba56b6caa4fd2973dcc55a6651; raw PS hash is a different encoding, never relabeled or compared as equal.",
+  "defect": "Owner inline Git verifier stored script=-; it was not an absolute script and had no filesystem script SHA. That original producer defect is preserved.",
+  "prospectiveRepair": {
+    "script": "/Users/lhs/Desktop/mcr-worktrees/fe-profile-preferences/docs/mcr/evidence/paradise-city-map/prepare.py",
+    "scriptSHA256": "5d8f64a3dd2d5642f250df77a4d535ea2203e7f1d747a79ebadcccc3d8cddf52",
+    "identity": {
+      "actualpid": 50138,
+      "pid": 50138,
+      "parentPid": 49590,
+      "groupPid": 50138,
+      "birth": "Thu Nov 5 15:12:11 2026",
+      "birthSec": 1793859131,
+      "birthUsec": 79705,
+      "birthEpoch": 1793859131.079705,
+      "cwd": "/Users/lhs/Desktop/mcr-worktrees/fe-profile-preferences",
+      "script": "/Users/lhs/Desktop/mcr-worktrees/fe-profile-preferences/docs/mcr/evidence/paradise-city-map/prepare.py",
+      "scriptSHA256": "5d8f64a3dd2d5642f250df77a4d535ea2203e7f1d747a79ebadcccc3d8cddf52",
+      "executable": "/Library/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python",
+      "argv": [
+        "/Library/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python",
+        "-B",
+        "/Users/lhs/Desktop/mcr-worktrees/fe-profile-preferences/docs/mcr/evidence/paradise-city-map/prepare.py",
+        "--reconcile-inline-registration"
+      ],
+      "commandDigest": "e54dafe342ca02598b12ede631a8ebe4e7286695c49aad0d5f433b11aaae05d6",
+      "commandDigestEncoding": "sha256:kern-procargs2-argv-json-utf8-v1",
+      "role": "ordinary-source-pin-preparation-no-runtime",
+      "booking": "PARADISECITY-PI11-PREP64-0114",
+      "observedAt": 1793859131.126113,
+      "canonicalReplaceReturnedAt": 1793859131.1267571
+    },
+    "beginReceipt": "/Users/lhs/Desktop/mcr-worktrees/fe-profile-preferences/docs/mcr/evidence/paradise-city-map/ordinary-preparation/50138-1793859131-79705-begin.json",
+    "beginSHA256": "1f8c2b849557ff2c4e495586b67ccdab5ef01408474f653510543cf951abb6ad",
+    "endReceipt": "/Users/lhs/Desktop/mcr-worktrees/fe-profile-preferences/docs/mcr/evidence/paradise-city-map/ordinary-preparation/50138-1793859131-79705-end.json",
+    "policy": "Use direct absolute prepare.py for Python ordinary preparation; no stdin script registration or conversion of an existing PID into another program. Direct Git commands do not invent a Python script identity."
+  },
+  "booking": "PARADISECITY-PI11-PREP64-0114",
+  "sameCumulativeAllowanceBytes": 67108864,
+  "expiryEpoch": 1793860200.0,
+  "historicalResult": "ROOT153-OAUTH-SOURCE12-0607 remains FAIL/FULL1793858996.408724; retained60OAuth/lint source11 greens unchanged; strict NOT_RUN.",
+  "applicationChanges": "None; published Map Native18 product and its qualification remain byte-exact and unchanged."
+}

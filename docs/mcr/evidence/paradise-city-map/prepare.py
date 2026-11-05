@@ -13,7 +13,8 @@ import time
 ROOT=Path(__file__).resolve().parents[4]
 OUT=Path(__file__).resolve().parent
 RECEIPT=Path('/Users/lhs/Desktop/mcr-evidence/backend-staffing-01a1a21d/owner-resource-receipts/01a1a5d9-332b-7822-a8f7-40fde6c81bb4.json')
-record=json.loads(RECEIPT.read_text())
+prior_record_bytes=RECEIPT.read_bytes()
+record=json.loads(prior_record_bytes)
 assert record['state'] in ('FULL','DECLINED'), 'ordinary prep cannot replace an active workflow'
 assert sys.platform == 'darwin', 'ordinary identity requires the actual Darwin kernel'
 libproc=ctypes.CDLL('/usr/lib/libproc.dylib',use_errno=True)
@@ -39,7 +40,10 @@ while raw[position]==0: position+=1
 argv=[]
 for _ in range(argc):
     end=raw.index(b'\0',position);argv.append(raw[position:end].decode());position=end+1
-assert argc==3 and argv[1]=='-B' and argv[2]==str(Path(__file__).resolve())
+reconcile_inline=sys.argv[1:]==['--reconcile-inline-registration']
+assert sys.argv[1:]==[] or reconcile_inline
+assert argc==(4 if reconcile_inline else 3) and argv[1]=='-B' and argv[2]==str(Path(__file__).resolve())
+if reconcile_inline: assert argv[3]=='--reconcile-inline-registration'
 observation=dict(actualpid=os.getpid(),pid=os.getpid(),parentPid=os.getppid(),groupPid=os.getpgrp(),birth=birth,
     birthSec=started,birthUsec=started_usec,birthEpoch=started+started_usec/1000000,
     cwd=str(ROOT),script=str(Path(__file__).resolve()),scriptSHA256=hashlib.sha256(Path(__file__).read_bytes()).hexdigest(),
@@ -70,6 +74,37 @@ try:
     assert time.time()<datetime.datetime(2026,11,5,6,30,tzinfo=datetime.timezone.utc).timestamp()
     v=os.statvfs(ROOT);free=v.f_bavail*v.f_frsize
     assert free>=8*1024**3+5*1024**3+64*1024**2
+    if reconcile_inline:
+        prior=json.loads(prior_record_bytes)
+        old=prior.get('ordinaryObservation',{})
+        assert old.get('pid')==29979 and old.get('script')=='-' and old.get('birthSec')==1793858992 and old.get('birthUsec')==77797
+        archived=OUT/'ordinary-29979-prior-owner-receipt.json'
+        assert not archived.exists()
+        archived.write_bytes(prior_record_bytes)
+        observed_at=time.time()
+        old_info=ctypes.create_string_buffer(136)
+        present=libproc.proc_pidinfo(29979,3,0,old_info,len(old_info))==len(old_info)
+        current_birth=struct.unpack_from('=QQ',old_info.raw,120) if present else None
+        disposition=dict(kind='FACTUAL_INLINE_29979_REGISTRATION_REPAIR_NO_RETROSPECTIVE_PASS',
+            ownerThreadId=record['ownerThreadId'],oldOrdinaryObservation=old,
+            exactPriorOwnerReceipt=dict(path=str(archived),sha256=hashlib.sha256(prior_record_bytes).hexdigest(),bytes=len(prior_record_bytes)),
+            oldToolEnding=dict(endedAt=old['endedAt'],meaning='Recorded verifier-body completion in finally; not a kernel-exit timestamp'),
+            currentKernelObservation=dict(observedAt=observed_at,pid=29979,present=present,currentBirth=current_birth,
+                sameHistoricalProcess=present and current_birth==(1793858992,77797)),
+            peerRawPSCommandSHA256='b87755a18e173c7d2ee51cc9866b92256b9045eac373686160e8c76a56f350c7',
+            digestDistinction='Original typed sys.orig_argv JSON digest remains257c9fe95d9eaf9a8a8cd6c2c875b2ced46d2cba56b6caa4fd2973dcc55a6651; raw PS hash is a different encoding, never relabeled or compared as equal.',
+            defect='Owner inline Git verifier stored script=-; it was not an absolute script and had no filesystem script SHA. That original producer defect is preserved.',
+            prospectiveRepair=dict(script=observation['script'],scriptSHA256=observation['scriptSHA256'],identity=observation,
+                beginReceipt=str(begin),beginSHA256=activity['beginSHA256'],endReceipt=str(ended),
+                policy='Use direct absolute prepare.py for Python ordinary preparation; no stdin script registration or conversion of an existing PID into another program. Direct Git commands do not invent a Python script identity.'),
+            booking=activity['offerId'],sameCumulativeAllowanceBytes=activity['sameCumulativeAllowanceBytes'],expiryEpoch=activity['expiryEpoch'],
+            historicalResult='ROOT153-OAUTH-SOURCE12-0607 remains FAIL/FULL1793858996.408724; retained60OAuth/lint source11 greens unchanged; strict NOT_RUN.',
+            applicationChanges='None; published Map Native18 product and its qualification remain byte-exact and unchanged.')
+        target=OUT/'ordinary-29979-disposition.json'
+        target.write_text(json.dumps(disposition,indent=2)+'\n')
+        print(json.dumps(dict(at=time.time(),dispositionPath=str(target),sha256=hashlib.sha256(target.read_bytes()).hexdigest(),priorReceiptSHA256=hashlib.sha256(prior_record_bytes).hexdigest(),newScriptSHA256=observation['scriptSHA256'],beginReceipt=str(begin),endReceipt=str(ended),kernelObservation=disposition['currentKernelObservation'])))
+        outcome=0
+        raise SystemExit(0)
     paths=subprocess.check_output(['git','ls-files','--cached','--others','--exclude-standard','-z'],cwd=ROOT).decode().split('\0')
     pins=[]
     for name in sorted(set(paths)):

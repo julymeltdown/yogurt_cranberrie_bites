@@ -1,0 +1,25 @@
+{
+  "actualpid": 50138,
+  "pid": 50138,
+  "parentPid": 49590,
+  "groupPid": 50138,
+  "birth": "Thu Nov 5 15:12:11 2026",
+  "birthSec": 1793859131,
+  "birthUsec": 79705,
+  "birthEpoch": 1793859131.079705,
+  "cwd": "/Users/lhs/Desktop/mcr-worktrees/fe-profile-preferences",
+  "script": "/Users/lhs/Desktop/mcr-worktrees/fe-profile-preferences/docs/mcr/evidence/paradise-city-map/prepare.py",
+  "scriptSHA256": "5d8f64a3dd2d5642f250df77a4d535ea2203e7f1d747a79ebadcccc3d8cddf52",
+  "executable": "/Library/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python",
+  "argv": [
+    "/Library/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python",
+    "-B",
+    "/Users/lhs/Desktop/mcr-worktrees/fe-profile-preferences/docs/mcr/evidence/paradise-city-map/prepare.py",
+    "--reconcile-inline-registration"
+  ],
+  "commandDigest": "e54dafe342ca02598b12ede631a8ebe4e7286695c49aad0d5f433b11aaae05d6",
+  "commandDigestEncoding": "sha256:kern-procargs2-argv-json-utf8-v1",
+  "role": "ordinary-source-pin-preparation-no-runtime",
+  "booking": "PARADISECITY-PI11-PREP64-0114",
+  "observedAt": 1793859131.126113
+}

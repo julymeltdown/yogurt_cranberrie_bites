@@ -1,0 +1,158 @@
+{
+  "ownerThreadId": "01a1a5d9-332b-7822-a8f7-40fde6c81bb4",
+  "offerId": "MAP-FINISH-NATIVE18-0555",
+  "state": "FULL",
+  "acceptedAtEpoch": 1793858332.84391,
+  "workDeadlineEpoch": 1793858632.84391,
+  "fullDeadlineEpoch": 1793858692.84391,
+  "kind": "browser",
+  "processCap": 24,
+  "rssCapBytes": 3758096384,
+  "remainingNewUpperBytes": 0,
+  "controller": {
+    "pid": 87784,
+    "birth": "Thu Nov 5 14:58:52 2026",
+    "executable": "/Library/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python",
+    "script": "/Users/lhs/Desktop/mcr-worktrees/fe-profile-preferences/docs/mcr/evidence/paradise-city-map/controller.py",
+    "cwd": "/Users/lhs/Desktop/mcr-worktrees/fe-profile-preferences",
+    "outputRoot": "/Users/lhs/Desktop/mcr-worktrees/fe-profile-preferences/docs/mcr/evidence/paradise-city-map/native18"
+  },
+  "guardControllers": [
+    {
+      "pid": 88038,
+      "birth": "Thu Nov 5 14:58:58 2026",
+      "executable": "/Library/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python",
+      "script": "/Users/lhs/Desktop/mcr-worktrees/fe-profile-preferences/docs/mcr/evidence/paradise-city-map/guardian.py",
+      "cwd": "/Users/lhs/Desktop/mcr-worktrees/fe-profile-preferences",
+      "outputRoot": "/Users/lhs/Desktop/mcr-worktrees/fe-profile-preferences/docs/mcr/evidence/paradise-city-map/native18"
+    }
+  ],
+  "receiptPaths": {
+    "accept": "/Users/lhs/Desktop/mcr-worktrees/fe-profile-preferences/docs/mcr/evidence/paradise-city-map/native18-controller.jsonl",
+    "full": "/Users/lhs/Desktop/mcr-worktrees/fe-profile-preferences/docs/mcr/evidence/paradise-city-map/native18-controller.jsonl"
+  },
+  "closedReceipts": [
+    {
+      "ownerThreadId": "01a1a5d9-332b-7822-a8f7-40fde6c81bb4",
+      "offerId": "MAP-LFACTORY-SOURCE13-0329",
+      "state": "FULL",
+      "acceptedAtEpoch": 1793849409.979838,
+      "actualFullEpoch": 1793849415.53879,
+      "resources": 0,
+      "resourcesReleased": true,
+      "fullPath": "/Users/lhs/Desktop/mcr-worktrees/fe-profile-preferences/docs/mcr/evidence/paradise-city-map/source13-controller.jsonl",
+      "fullSHA": "92c2fcf2f40548ac2e0170feea2762ab867a6bef6dfe0e06e67b2ae6c5989834"
+    },
+    {
+      "ownerThreadId": "01a1a5d9-332b-7822-a8f7-40fde6c81bb4",
+      "offerId": "MAP-LFACTORY-SOURCE14-0329",
+      "state": "FULL",
+      "acceptedAtEpoch": 1793849891.79175,
+      "actualFullEpoch": 1793849920.274657,
+      "resources": 0,
+      "resourcesReleased": true,
+      "fullPath": "/Users/lhs/Desktop/mcr-worktrees/fe-profile-preferences/docs/mcr/evidence/paradise-city-map/source14-controller.jsonl",
+      "fullSHA": "578d6421b02d50a98002ed132882cc289263569ed00dd8dee5c7e9f9f47d440e"
+    },
+    {
+      "ownerThreadId": "01a1a5d9-332b-7822-a8f7-40fde6c81bb4",
+      "offerId": "MAP-LFACTORY-SOURCE15-0341",
+      "state": "FULL",
+      "acceptedAtEpoch": 1793850071.0259929,
+      "actualFullEpoch": 1793850076.796032,
+      "resources": 0,
+      "resourcesReleased": true,
+      "fullPath": "/Users/lhs/Desktop/mcr-worktrees/fe-profile-preferences/docs/mcr/evidence/paradise-city-map/source15-controller.jsonl",
+      "fullSHA": "f2111321bd594d67e0836312b956366630e15c5f65edef7a97bf5692a05e0f25"
+    }
+  ],
+  "publishedAtEpoch": 1793858376.755564,
+  "actualFullEpoch": 1793858376.755559,
+  "resources": 0,
+  "actual": {
+    "type": "FULL",
+    "role": "controller",
+    "lease": "MAP-FINISH-NATIVE18-0555",
+    "at": 1793858376.754896,
+    "exitCode": 0,
+    "failure": null,
+    "peak": {
+      "processes": 14,
+      "rssBytes": 3253125120,
+      "newBytes": 443715584,
+      "tmpBytes": 30302208,
+      "wholeBytes": 7016591360
+    },
+    "minimumFreeBytes": 21370396672,
+    "livePids": [],
+    "resources": 0,
+    "privateTmpAbsent": true,
+    "portClosed": true,
+    "retainedDependencyRecords": 11480
+  },
+  "ordinaryObservation": {
+    "pid": 29979,
+    "actualpid": 29979,
+    "birth": "Thu Nov 5 15:09:52 2026",
+    "birthSec": 1793858992,
+    "birthUsec": 77797,
+    "executable": "/Library/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python",
+    "cwd": "/Users/lhs/Desktop/mcr-worktrees/fe-profile-preferences",
+    "script": "-",
+    "argv": [
+      "/Library/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python",
+      "-B",
+      "-"
+    ],
+    "commandDigest": "257c9fe95d9eaf9a8a8cd6c2c875b2ced46d2cba56b6caa4fd2973dcc55a6651",
+    "commandDigestEncoding": "sha256:python-sys.orig_argv-json-utf8-v1",
+    "observedAt": 1793858992.1245708,
+    "role": "ordinary SAME PREP64 exact canonical remote readback verification; no runtime",
+    "endedAt": 1793858995.1351502
+  },
+  "ordinaryActivities": [
+    {
+      "ownerThreadId": "01a1a5d9-332b-7822-a8f7-40fde6c81bb4",
+      "offerId": "PARADISECITY-PI11-PREP64-0114",
+      "kind": "ordinary",
+      "activityState": "FULL",
+      "phase": "SOURCE_PIN_PREPARATION",
+      "identity": {
+        "actualpid": 98358,
+        "pid": 98358,
+        "parentPid": 49590,
+        "groupPid": 98358,
+        "birth": "Thu Nov 5 15:01:54 2026",
+        "birthSec": 1793858514,
+        "birthUsec": 76637,
+        "birthEpoch": 1793858514.076637,
+        "cwd": "/Users/lhs/Desktop/mcr-worktrees/fe-profile-preferences",
+        "script": "/Users/lhs/Desktop/mcr-worktrees/fe-profile-preferences/docs/mcr/evidence/paradise-city-map/prepare.py",
+        "scriptSHA256": "01270a223b2e0dcf315d3ab32ddef1751114d4d813c39b55e7a1c9fe0a53a8b7",
+        "executable": "/Library/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python",
+        "argv": [
+          "/Library/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python",
+          "-B",
+          "/Users/lhs/Desktop/mcr-worktrees/fe-profile-preferences/docs/mcr/evidence/paradise-city-map/prepare.py"
+        ],
+        "commandDigest": "cb033c3c62dbe9c60739c810aa24b27e1caf0fe327ade39e07113a6cedc73406",
+        "commandDigestEncoding": "sha256:kern-procargs2-argv-json-utf8-v1",
+        "role": "ordinary-source-pin-preparation-no-runtime",
+        "booking": "PARADISECITY-PI11-PREP64-0114",
+        "observedAt": 1793858514.109195,
+        "canonicalReplaceReturnedAt": 1793858514.1097841,
+        "endedAt": 1793858515.6992798,
+        "exit": 0
+      },
+      "sameCumulativeAllowanceBytes": 67108864,
+      "expiryEpoch": 1793860200.0,
+      "accounting": "Existing SAME PREP64 only; no new allowance, refund or reset",
+      "beginReceipt": "/Users/lhs/Desktop/mcr-worktrees/fe-profile-preferences/docs/mcr/evidence/paradise-city-map/ordinary-preparation/98358-1793858514-76637-begin.json",
+      "beginSHA256": "49c745801f4d70d8d63793fe7ef4df7112c960432ee35195e416e887cd3bb686",
+      "endReceipt": "/Users/lhs/Desktop/mcr-worktrees/fe-profile-preferences/docs/mcr/evidence/paradise-city-map/ordinary-preparation/98358-1793858514-76637-end.json",
+      "endedAt": 1793858515.6992798,
+      "exit": 0,
+      "endSHA256": "eeee5e5371fffb2e005f3dcd99eb1f9908ec667a48806cf7436bfd003383309a"
+    }
+  ]
+}
