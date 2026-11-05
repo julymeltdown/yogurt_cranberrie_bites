@@ -1,0 +1,17 @@
+e2e/venue-map/composition.tsx(52,40): error TS2322: Type 'PlaceNote | { id: string; landmarkId: LandmarkId; body: string; audience: NoteAudience; author: { userId: string | null; displayName: string; avatar: ReviewedMotionConfig; }; ... 4 more ...; replies: never[]; }' is not assignable to type 'PlaceNote'.
+  Type '{ id: string; landmarkId: LandmarkId; body: string; audience: NoteAudience; author: { userId: string | null; displayName: string; avatar: ReviewedMotionConfig; }; ... 4 more ...; replies: never[]; }' is not assignable to type 'PlaceNote'.
+    The types of 'author.userId' are incompatible between these types.
+      Type 'string | null' is not assignable to type 'string'.
+        Type 'null' is not assignable to type 'string'.
+e2e/venue-map/composition.tsx(52,179): error TS2322: Type 'string | null' is not assignable to type 'string'.
+  Type 'null' is not assignable to type 'string'.
+e2e/venue-map/composition.tsx(56,32): error TS2322: Type '(PlaceNote | { replies: (PlaceReply | { id: string; body: string; createdAtMs: number; author: { userId: string | null; displayName: string; avatar: ReviewedMotionConfig; }; })[]; ... 8 more ...; createdAtMs: number; })[]' is not assignable to type 'readonly PlaceNote[]'.
+  Type 'PlaceNote | { replies: (PlaceReply | { id: string; body: string; createdAtMs: number; author: { userId: string | null; displayName: string; avatar: ReviewedMotionConfig; }; })[]; ... 8 more ...; createdAtMs: number; }' is not assignable to type 'PlaceNote'.
+    Type '{ replies: (PlaceReply | { id: string; body: string; createdAtMs: number; author: { userId: string | null; displayName: string; avatar: ReviewedMotionConfig; }; })[]; ... 8 more ...; createdAtMs: number; }' is not assignable to type 'PlaceNote'.
+      Types of property 'replies' are incompatible.
+        Type '(PlaceReply | { id: string; body: string; createdAtMs: number; author: { userId: string | null; displayName: string; avatar: ReviewedMotionConfig; }; })[]' is not assignable to type 'readonly PlaceReply[]'.
+          Type 'PlaceReply | { id: string; body: string; createdAtMs: number; author: { userId: string | null; displayName: string; avatar: ReviewedMotionConfig; }; }' is not assignable to type 'PlaceReply'.
+            Type '{ id: string; body: string; createdAtMs: number; author: { userId: string | null; displayName: string; avatar: ReviewedMotionConfig; }; }' is not assignable to type 'PlaceReply'.
+              The types of 'author.userId' are incompatible between these types.
+                Type 'string | null' is not assignable to type 'string'.
+                  Type 'null' is not assignable to type 'string'.

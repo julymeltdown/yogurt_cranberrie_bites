@@ -1,0 +1,21 @@
+{
+  "type": "FULL",
+  "role": "guardian",
+  "lease": "PI11-SOURCE10-0229",
+  "at": 1793845804.650398,
+  "exitCode": 1,
+  "failure": "RuntimeError('Command failed; preserve immutable attempt and close offer')",
+  "peak": {
+    "processes": 8,
+    "rssBytes": 2355396608,
+    "newBytes": 42520576,
+    "tmpBytes": 36864,
+    "wholeBytes": 6645792768
+  },
+  "minimumFreeBytes": 23881670656,
+  "livePids": [],
+  "resources": 0,
+  "privateTmpAbsent": true,
+  "portClosed": true,
+  "retainedDependencyRecords": 11480
+}

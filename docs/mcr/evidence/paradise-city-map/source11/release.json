@@ -1,0 +1,21 @@
+{
+  "type": "FULL",
+  "role": "guardian",
+  "lease": "PI11-SOURCE11-0234",
+  "at": 1793846106.6362891,
+  "exitCode": 1,
+  "failure": "AssertionError('ordinary script identity mismatch')",
+  "peak": {
+    "processes": 7,
+    "rssBytes": 1871167488,
+    "newBytes": 43950080,
+    "tmpBytes": 36864,
+    "wholeBytes": 6647193600
+  },
+  "minimumFreeBytes": 23854321664,
+  "livePids": [],
+  "resources": 0,
+  "privateTmpAbsent": true,
+  "portClosed": true,
+  "retainedDependencyRecords": 11480
+}

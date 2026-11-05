@@ -1,0 +1,21 @@
+{
+  "type": "FULL",
+  "role": "guardian",
+  "lease": "PARADISECITY-PI11-SOURCE02-0155",
+  "at": 1793843334.781857,
+  "exitCode": 1,
+  "failure": "AssertionError('resource controller identity mismatch: {\"owner\": \"01a1a231-0dc4-7b50-92bd-c0f0f56bd970\", \"pid\": 49092, \"birth\": \"Thu Nov 5 10:48:36 2026\", \"expectedScript\": \"/Users/lhs/Desktop/mcr-worktrees/art-map-cozy-v1/docs/mcr/art/evidence/paradise-city-siteplan-v1/resource_guardian.py\", \"observedExecutable\": \"(Python)\", \"observedCommandSHA256\": \"efc7749dfc5f00754e19a7d31af78b4a4bbfd21d1716a3da04d50cccbfe23cb0\", \"commandLength\": 8}')",
+  "peak": {
+    "processes": 0,
+    "rssBytes": 0,
+    "newBytes": 0,
+    "tmpBytes": 0,
+    "wholeBytes": 6642925568
+  },
+  "minimumFreeBytes": 23173230592,
+  "livePids": [],
+  "resources": 0,
+  "privateTmpAbsent": true,
+  "portClosed": true,
+  "retainedDependencyRecords": 11480
+}

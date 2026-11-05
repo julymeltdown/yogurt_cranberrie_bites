@@ -1,0 +1,44 @@
+{
+  "producer": "4f94914d06d54c3b465930cc23d40be91a1255cb",
+  "inputs": [
+    {
+      "path": "frontend/src/features/paradise-city-map/spatial/contract.ts",
+      "sha256": "b75f7cf748949a1a858626fe098f3d1b0dd22e65eeea31d551b37fa309745a42",
+      "bytes": 7289,
+      "privateOverlay": "/private/tmp/mcr-paradise-city-map-source09/type-inputs/features/paradise-city-map/spatial/contract.ts"
+    },
+    {
+      "path": "frontend/src/features/paradise-city-map/spatial/image-resource.ts",
+      "sha256": "6d5e0f7c607d8ae17f03dd3030aa52e7c57d2f0ff1377d9384c6bed2554aba18",
+      "bytes": 7478,
+      "privateOverlay": "/private/tmp/mcr-paradise-city-map-source09/type-inputs/features/paradise-city-map/spatial/image-resource.ts"
+    },
+    {
+      "path": "frontend/src/features/paradise-city-map/spatial/model.ts",
+      "sha256": "370023d8a25d135fce56969c5b5e2e8a20bfdd17e92eb0ab24da04b8aae219bd",
+      "bytes": 2617,
+      "privateOverlay": "/private/tmp/mcr-paradise-city-map-source09/type-inputs/features/paradise-city-map/spatial/model.ts"
+    },
+    {
+      "path": "frontend/src/features/paradise-city-map/spatial/registration.ts",
+      "sha256": "75c57f43a81ecaeab1cd9b0dad86329744516285501137fa5d4abb8ff25fe314",
+      "bytes": 3618,
+      "privateOverlay": "/private/tmp/mcr-paradise-city-map-source09/type-inputs/features/paradise-city-map/spatial/registration.ts"
+    },
+    {
+      "path": "frontend/src/features/paradise-city-map/spatial/viewport.ts",
+      "sha256": "19489edc14c739050c3f4c6a8b32d76156f059f7620eeaa155148ff4a5a193f9",
+      "bytes": 5068,
+      "privateOverlay": "/private/tmp/mcr-paradise-city-map-source09/type-inputs/features/paradise-city-map/spatial/viewport.ts"
+    }
+  ],
+  "classification": "ACTUAL_SPATIAL_PRODUCER_INPUT_NOT_PRODUCER_ACCEPTANCE",
+  "ordinaryProject": "/Users/lhs/Desktop/mcr-worktrees/fe-profile-preferences/frontend/tsconfig.json",
+  "changes": [
+    "rootDirs: five exact immutable Git producer modules in read-only private TMP",
+    "typeRoots: original explicit vite/client anchored to retained frontend dependencies; inherited types unchanged",
+    "zod: existing read-only package resolution",
+    "incremental:false",
+    "include: all ordinary source/config plus own actual-App fixture, no exclusions"
+  ]
+}

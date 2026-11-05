@@ -1,0 +1,21 @@
+{
+  "type": "FULL",
+  "role": "guardian",
+  "lease": "PARADISECITY-PI11-SOURCE06-0210",
+  "at": 1793844353.50295,
+  "exitCode": 1,
+  "failure": "RuntimeError('Orderly stop requested')",
+  "peak": {
+    "processes": 7,
+    "rssBytes": 2022064128,
+    "newBytes": 39612416,
+    "tmpBytes": 36864,
+    "wholeBytes": 6644355072
+  },
+  "minimumFreeBytes": 22952296448,
+  "livePids": [],
+  "resources": 0,
+  "privateTmpAbsent": true,
+  "portClosed": true,
+  "retainedDependencyRecords": 11480
+}

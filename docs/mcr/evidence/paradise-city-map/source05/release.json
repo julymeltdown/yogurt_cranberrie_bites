@@ -1,0 +1,21 @@
+{
+  "type": "FULL",
+  "role": "guardian",
+  "lease": "PARADISECITY-PI11-SOURCE05-0204",
+  "at": 1793844099.563303,
+  "exitCode": 1,
+  "failure": "RuntimeError('Command failed; preserve immutable attempt and close offer')",
+  "peak": {
+    "processes": 7,
+    "rssBytes": 1527988224,
+    "newBytes": 39550976,
+    "tmpBytes": 12288,
+    "wholeBytes": 6642954240
+  },
+  "minimumFreeBytes": 23000068096,
+  "livePids": [],
+  "resources": 0,
+  "privateTmpAbsent": true,
+  "portClosed": true,
+  "retainedDependencyRecords": 11480
+}

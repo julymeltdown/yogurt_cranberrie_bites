@@ -1,0 +1,13 @@
+{
+  "producer": "998db81eae683142f0417abb6648ed6b86212b6f",
+  "path": "frontend/src/features/paradise-city-map/spatial/contract.ts",
+  "sha256": "bbf13c1623c2bf06570705287dd2e670bf5a665739d39a586fe1cc93fff77fec",
+  "classification": "ACTUAL_UNQUALIFIED_SPATIAL_TYPE_INPUT_ONLY",
+  "privateOverlay": "/private/tmp/mcr-paradise-city-map-source04/type-inputs/features/paradise-city-map/spatial/contract.ts",
+  "ordinaryProject": "/Users/lhs/Desktop/mcr-worktrees/fe-profile-preferences/frontend/tsconfig.json",
+  "changes": [
+    "rootDirs: read-only exact Git contract in private TMP",
+    "zod: existing read-only package resolution",
+    "incremental:false"
+  ]
+}

@@ -1,0 +1,36 @@
+{
+  "type": "CLEANUP_RECONCILIATION",
+  "offerId": "PARADISECITY-PI11-SOURCE01-0145",
+  "at": 1793843134.547242,
+  "resources": 0,
+  "ownPidsAbsent": [
+    31255,
+    33011
+  ],
+  "psExit": 1,
+  "privateTmpAbsent": true,
+  "priorFull": {
+    "type": "FULL",
+    "role": "controller",
+    "lease": "PARADISECITY-PI11-SOURCE01-0145",
+    "at": 1793843113.176882,
+    "exitCode": 1,
+    "failure": "AssertionError('unresolved workflow roots: [{\"pid\": 33382, \"parentPid\": 49590, \"birth\": \"Thu Nov 5 10:45:11 2026\", \"executable\": \"/bin/zsh\", \"scriptCandidates\": [], \"commandSHA256\": \"0ca690fc21957c1fc3b5f4491209d4004d8c679e850cd8f85f901a10d9b1dea0\"}]')",
+    "peak": {
+      "processes": 5,
+      "rssBytes": 363151360,
+      "newBytes": 39428096,
+      "tmpBytes": 0,
+      "wholeBytes": 6642925568
+    },
+    "minimumFreeBytes": 23194779648,
+    "livePids": [
+      33011
+    ],
+    "resources": 1,
+    "privateTmpAbsent": true,
+    "portClosed": true,
+    "retainedDependencyRecords": 11480
+  },
+  "classification": "FAILED_SOURCE_ATTEMPT_NO_RESTART"
+}

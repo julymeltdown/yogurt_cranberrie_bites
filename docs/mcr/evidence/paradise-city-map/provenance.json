@@ -1,0 +1,23 @@
+{
+  "task": "PARADISECITY-MAP-FRIENDS-NOTES",
+  "qualification": "UNEXECUTED_OWNED_CONTROLS",
+  "membershipOrigin": {
+    "commit": "77cfe94af06cac6b292ad7528352e4750e929e71",
+    "path": "frontend/src/app/__tests__/parade-ink-foundation/membership.py",
+    "sha256": "a462d804d7cead6e74992148421a2e2e86cb7ca2ddbc4fb4bbd83f57d569c9fb",
+    "changes": ["own identity/environment", "relative argv matched against actual lsof cwd", "opaque scoped runtime shell detection"]
+  },
+  "retainedDependenciesOrigin": {
+    "commit": "473b22bdbc65b550973d1c1c7f1feb3d959eee3e",
+    "path": "docs/mcr/evidence/parade-ink-map-places/retained-dependencies.json"
+  },
+  "guards": "Own independent controller/guardian processes, each executing fresh global membership and complete own accounting. Not a canonical shared runtime guard.",
+  "wholeHighWaterLowerBoundBytes": 6642925568,
+  "limits": "Finite offers alone authorize exact clocks/caps/NEW/floors. No prior closed source/native offer is reused.",
+  "spatialTypeInput": {
+    "commit": "998db81eae683142f0417abb6648ed6b86212b6f",
+    "path": "frontend/src/features/paradise-city-map/spatial/contract.ts",
+    "sha256": "bbf13c1623c2bf06570705287dd2e670bf5a665739d39a586fe1cc93fff77fec",
+    "classification": "ACTUAL_UNQUALIFIED_PRODUCER_TYPE_INPUT_ONLY"
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "type": "FULL",
+  "role": "guardian",
+  "lease": "MAP-SOURCE12-0252",
+  "at": 1793847105.989229,
+  "exitCode": 0,
+  "failure": null,
+  "peak": {
+    "processes": 7,
+    "rssBytes": 2400747520,
+    "newBytes": 45387776,
+    "tmpBytes": 1400832,
+    "wholeBytes": 6648594432
+  },
+  "minimumFreeBytes": 23742132224,
+  "livePids": [],
+  "resources": 0,
+  "privateTmpAbsent": true,
+  "portClosed": true,
+  "retainedDependencyRecords": 11480
+}
