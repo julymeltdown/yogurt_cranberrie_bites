@@ -1,0 +1,15 @@
+{
+  "aliases": [
+    {
+      "owner": "01a1a230-6acc-7e82-9e4b-92506decc745",
+      "offer": "ORIGINAL-FE37-DEFAULT-APP-NATIVE03-0110",
+      "accepted_epoch": 1793841143.082609,
+      "original_path": "/Users/lhs/Desktop/mcr-worktrees/fe-ref-gifts/docs/mcr/evidence/fe37-default-member-content/runs/native-03/release.json",
+      "retained_path": "/private/tmp/mcr-auth232-be39-nonignored-05/closed-history/release.json",
+      "sha256": "764aa19e5d777b5191724666f4bb3be9eebd68d97a222fdd6d0919e646a5ae00",
+      "source_commit": "bc38036e75ab82fdc9fc5c436365249b572c54fd",
+      "retention_commit": "ca87dfef7",
+      "purpose": "Exact moved historical FULL raw receipt; no live root exemption or reopened execution"
+    }
+  ]
+}

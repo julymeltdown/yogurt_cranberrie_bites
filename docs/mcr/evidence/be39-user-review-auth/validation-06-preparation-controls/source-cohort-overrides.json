@@ -1,0 +1,18 @@
+{
+  "captured_epoch": 1793841695.714592,
+  "cohorts": [],
+  "infrastructure": [
+    {
+      "pid": 20056,
+      "birth": "Wed Nov 4 23:26:42 2026",
+      "group": 16491,
+      "command": "/Applications/ChatGPT.app/Contents/Resources/cua_node/bin/node --experimental-vm-modules /var/folders/j4/41h_5mjj7j9d8f2j2bzcsngw0000gn/T/.tmpCCbUfQ/kernel.js --session-id 91e5a248e5e44ccb88561bbb3057a9f6 --working-dir /Users/lhs/Desktop/mcr"
+    },
+    {
+      "pid": 20057,
+      "birth": "Wed Nov 4 23:26:42 2026",
+      "group": 16491,
+      "command": "/Applications/ChatGPT.app/Contents/Resources/cua_node/bin/node /var/folders/j4/41h_5mjj7j9d8f2j2bzcsngw0000gn/T/.tmpCCbUfQ/trusted-worker.js /Users/lhs/Desktop/mcr"
+    }
+  ]
+}

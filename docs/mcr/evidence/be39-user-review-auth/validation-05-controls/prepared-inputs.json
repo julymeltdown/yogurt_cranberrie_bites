@@ -1,0 +1,124 @@
+{
+  "state": "FROZEN_COMMAND_REQUEST_NOT_ACCEPTED",
+  "offer": "AUTH232-NONIGNORED05-0233",
+  "source": "a7c4c905ef4702811795dae6583b7b21629f60dc",
+  "worktree": "/Users/lhs/Desktop/mcr-worktrees/be-auth-concert-deletion-232",
+  "readset_count": 2683,
+  "readset_sha256": "8e1afe4688be972494e32bf7aaf19e48021d2ea20d2b8430fac14216c74017fc",
+  "tools_sha256": "f1c1e224f254306d82e71f09dffa2e400d9aa746f47edef709b6c92705b12ce7",
+  "commands": [
+    {
+      "name": "format-check",
+      "argv": [
+        "/Users/lhs/.rustup/toolchains/1.88.0-aarch64-apple-darwin/bin/rustfmt",
+        "--edition",
+        "2021",
+        "--check",
+        "/Users/lhs/Desktop/mcr-worktrees/be-auth-concert-deletion-232/backend/services/auth-service/src/concert_moderation/authority.rs",
+        "/Users/lhs/Desktop/mcr-worktrees/be-auth-concert-deletion-232/backend/services/auth-service/src/concert_moderation/deletion_observation.rs",
+        "/Users/lhs/Desktop/mcr-worktrees/be-auth-concert-deletion-232/backend/services/auth-service/src/concert_moderation/deletion_observation_tests.rs",
+        "/Users/lhs/Desktop/mcr-worktrees/be-auth-concert-deletion-232/backend/services/auth-service/src/concert_moderation/lifecycle.rs",
+        "/Users/lhs/Desktop/mcr-worktrees/be-auth-concert-deletion-232/backend/services/auth-service/src/concert_moderation/lifecycle_tests.rs",
+        "/Users/lhs/Desktop/mcr-worktrees/be-auth-concert-deletion-232/backend/services/auth-service/src/concert_moderation/mod.rs",
+        "/Users/lhs/Desktop/mcr-worktrees/be-auth-concert-deletion-232/backend/services/auth-service/src/concert_moderation/model.rs",
+        "/Users/lhs/Desktop/mcr-worktrees/be-auth-concert-deletion-232/backend/services/auth-service/src/concert_moderation/model_tests.rs",
+        "/Users/lhs/Desktop/mcr-worktrees/be-auth-concert-deletion-232/backend/services/auth-service/src/concert_moderation/native.rs",
+        "/Users/lhs/Desktop/mcr-worktrees/be-auth-concert-deletion-232/backend/services/auth-service/src/concert_moderation/native_tests.rs",
+        "/Users/lhs/Desktop/mcr-worktrees/be-auth-concert-deletion-232/backend/services/auth-service/src/concert_moderation/source.rs",
+        "/Users/lhs/Desktop/mcr-worktrees/be-auth-concert-deletion-232/backend/services/auth-service/src/concert_moderation/store.rs",
+        "/Users/lhs/Desktop/mcr-worktrees/be-auth-concert-deletion-232/backend/services/auth-service/src/adapters/in/grpc/concert_moderation.rs",
+        "/Users/lhs/Desktop/mcr-worktrees/be-auth-concert-deletion-232/backend/services/auth-service/build.rs",
+        "/Users/lhs/Desktop/mcr-worktrees/be-auth-concert-deletion-232/backend/services/auth-service/src/adapters/in/grpc/method_policy.rs",
+        "/Users/lhs/Desktop/mcr-worktrees/be-auth-concert-deletion-232/backend/services/auth-service/tests/concert_moderation_lifecycle.rs",
+        "/Users/lhs/Desktop/mcr-worktrees/be-auth-concert-deletion-232/backend/services/auth-service/tests/concert_deletion_observation.rs"
+      ],
+      "mutation": "NONE; check/stdout only; exit1 retained as format failure, independent compile/tests may continue in unchanged finite round; overall remains unqualified"
+    },
+    {
+      "name": "compile-nonignored-closure",
+      "argv": [
+        "/Users/lhs/.rustup/toolchains/1.88.0-aarch64-apple-darwin/bin/cargo",
+        "test",
+        "--offline",
+        "--locked",
+        "-j",
+        "2",
+        "-p",
+        "auth-service",
+        "--lib",
+        "--test",
+        "concert_moderation_lifecycle",
+        "--test",
+        "concert_deletion_observation",
+        "--no-run",
+        "--config",
+        "profile.dev.package.contracts-build.opt-level=2",
+        "--message-format=json-render-diagnostics"
+      ],
+      "cwd": "/Users/lhs/Desktop/mcr-worktrees/be-auth-concert-deletion-232/backend"
+    },
+    {
+      "name": "run-own-lib",
+      "argv": [
+        "<cargo-emitted exact auth_service lib test executable>",
+        "concert_moderation::",
+        "--test-threads=1"
+      ],
+      "ignored": "excluded by default"
+    },
+    {
+      "name": "run-moderation-contract",
+      "argv": [
+        "<cargo-emitted exact concert_moderation_lifecycle test executable>",
+        "--test-threads=1"
+      ]
+    },
+    {
+      "name": "run-observation-contract",
+      "argv": [
+        "<cargo-emitted exact concert_deletion_observation test executable>",
+        "--test-threads=1"
+      ]
+    }
+  ],
+  "environment": {
+    "RUSTC": "/Users/lhs/.rustup/toolchains/1.88.0-aarch64-apple-darwin/bin/rustc",
+    "RUSTDOC": "/Users/lhs/.rustup/toolchains/1.88.0-aarch64-apple-darwin/bin/rustdoc",
+    "CARGO_BUILD_JOBS": "2",
+    "CARGO_PROFILE_DEV_DEBUG": "0",
+    "CARGO_PROFILE_TEST_DEBUG": "0",
+    "CARGO_INCREMENTAL": "0",
+    "CARGO_NET_OFFLINE": "true",
+    "CARGO_TARGET_DIR": "/Users/lhs/Desktop/mcr-build/media-combined-fa4b4b3/target",
+    "TMPDIR": "/private/tmp/mcr-auth232-be39-nonignored-05/tmp",
+    "DEVELOPER_DIR": "/Library/Developer/CommandLineTools",
+    "CC": "/Library/Developer/CommandLineTools/usr/bin/clang",
+    "CXX": "/Library/Developer/CommandLineTools/usr/bin/clang++",
+    "SDKROOT": "/Library/Developer/CommandLineTools/SDKs/MacOSX27.0.sdk"
+  },
+  "required_build_closure": [
+    "Auth test lib+both named integration tests",
+    "implicit Auth binary for integration tests if Cargo requires",
+    "existing api-gateway/profile-service dev dependencies"
+  ],
+  "excluded": [
+    "PostgreSQL",
+    "native/ignored tests",
+    "services/listeners",
+    "network/install/tool repair",
+    "RootAuth19MAIN requalification"
+  ],
+  "pending": [
+    "actual predecessor releases or explicit unready yields",
+    "fresh admission with all higher actual WHOLE and peer reservations",
+    "final frozen source/control pins; both live complete initials"
+  ],
+  "protoc_scope": "Only required build.rs generation in private allocated target OUT_DIR; no standalone registry/workspace generation",
+  "readset_path": "/private/tmp/mcr-auth232-be39-validation-03/readset.json",
+  "tools_path": "/private/tmp/mcr-auth232-be39-validation-03/tools.json",
+  "readset_overrides": {
+    "docs/mcr/backend/auth-deletion-observation.md": "dcb55a982446e779884d0dc00a9a6597191dc79c70fc663b512911a7a31277f3",
+    "docs/mcr/backend/moderation-user-review-auth.md": "b68a35437a04d1c50940100f6ca53d34c5205dff9b3d067c91d56b502d200ae9"
+  },
+  "readset_override_basis": "Two owned documentation inputs refreshed at b9c90e39; historical2683vector and all backend bytes unchanged."
+}

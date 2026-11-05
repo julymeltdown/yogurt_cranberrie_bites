@@ -1,0 +1,21 @@
+{
+  "state": "FULL_RELEASED",
+  "offer": "AUTH232-NONIGNORED05-0233",
+  "source": "a7c4c905ef4702811795dae6583b7b21629f60dc",
+  "failure": "JSONDecodeError: Extra data: line 2 column 1 (char 368)",
+  "exit_code": 1,
+  "epoch": 1793848797.383717,
+  "target_access": "NONE",
+  "workflows": 0,
+  "remaining_new_bytes": 0,
+  "owned_children": 0,
+  "remaining_pids": [],
+  "commands": [],
+  "copies": [],
+  "primary_peak": {},
+  "guardian": {
+    "failure": "JSONDecodeError: Extra data: line 2 column 1 (char 368)",
+    "peak": {},
+    "epoch": 1793848796.191277
+  }
+}

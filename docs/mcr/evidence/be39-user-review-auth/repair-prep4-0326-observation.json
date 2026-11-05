@@ -1,0 +1,36 @@
+{
+  "booking": "AUTH232-CLOSED05-REPAIRPREP4-0326",
+  "own_factual_descriptor": {
+    "actualpid": 99493,
+    "birth": "Thu Nov 5 12:29:18 2026",
+    "kernelStartEpoch": 1793849358.159172,
+    "executable": "/Library/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python",
+    "argv": [
+      "/Library/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python",
+      "-B",
+      "/private/tmp/mcr-auth232-repairprep4-0326.py"
+    ],
+    "script": "/private/tmp/mcr-auth232-repairprep4-0326.py",
+    "cwd": "/Users/lhs/Desktop/mcr-worktrees/be-auth-concert-deletion-232",
+    "role": "ordinary closed05 evidence/docs and separate suffix-aware decoder authoring only; no probes/tests/compiler/app/target",
+    "booking": "AUTH232-CLOSED05-REPAIRPREP4-0326",
+    "observedAt": 1793849358.3509738,
+    "endedAt": 1793849358.366783,
+    "positiveUpperBytes": 4194304,
+    "deadlineEpoch": 1793851200,
+    "exitCode": 0
+  },
+  "helper_source_sha256": "7c0a86c96cfe59cc0d083e71665bebac7f549f690f8d7fb9e015e3a259c4f8f4",
+  "peer_report": {
+    "owner": "01a1a26e-1de2-7b41-a294-c9a79cfded9b",
+    "scope": "PI11 SOURCE02",
+    "interrupted_at": 1793849358.846934,
+    "unknown_pid": 99493,
+    "disposition": "FAILED literal FULL/all0; no bypass/retry/peer write or retrospective PASS"
+  },
+  "publication_order": "Direct kernel self birth/image/argv capture, atomic own canonical ordinary descriptor publication, then source/evidence preparation; no child helper/shell/census before publication.",
+  "atomic_replacement_completion_timestamp": "NOT_CAPTURED; observedAt is pre-write observation time",
+  "actual_os_process_exit_timestamp": "NOT_CAPTURED; endedAt records ordinary scope completion, not proven process death",
+  "before_peer_census_compliance": "NOT_ESTABLISHED; peer interruption time alone does not establish its earlier census time",
+  "execution_claim": "NONE; descriptor covers ordinary evidence/docs/control authoring only"
+}

@@ -1,0 +1,9 @@
+{
+  "state": "TARGET_RELEASED",
+  "offer": "AUTH232-NONIGNORED05-0233",
+  "source": "a7c4c905ef4702811795dae6583b7b21629f60dc",
+  "epoch": 1793848797.28386,
+  "target": "/Users/lhs/Desktop/mcr-build/media-combined-fa4b4b3/target",
+  "open_handles": 0,
+  "samplers_frozen": true
+}

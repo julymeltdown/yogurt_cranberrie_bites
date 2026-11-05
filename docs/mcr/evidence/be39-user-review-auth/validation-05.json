@@ -1,0 +1,70 @@
+{
+  "task_ids": [
+    "BE39-AUTH-LIFECYCLE",
+    "QA09-AUTH-DELETION-OBSERVATION"
+  ],
+  "status": "IN_PROGRESS",
+  "attempt": "AUTH232-NONIGNORED05-0233",
+  "source": "a7c4c905ef4702811795dae6583b7b21629f60dc",
+  "implementation_unchanged_from": "b0f2b56217bb48ab2c0c1f7c0e42720de6cbf8bc",
+  "result": "FAILED_OWN_HISTORICAL_FULL_JSONL_DECODER_BEFORE_INITIALS_AND_PRODUCT_COMMANDS",
+  "accepted_epoch": 1793848796.0535738,
+  "work_deadline": 1793849696.0535738,
+  "full_deadline": 1793849876.0535738,
+  "target_release_epoch": 1793848797.28386,
+  "full_release_epoch": 1793848797.383717,
+  "target_access": "NONE",
+  "workflows": 0,
+  "owned_children": 0,
+  "remaining_pids": [],
+  "remaining_new_reservation": 0,
+  "complete_initial_samples": "NOT_ESTABLISHED",
+  "protocol_fixtures": "NOT_RUN",
+  "formatter": "NOT_RUN",
+  "cargo": "NOT_RUN",
+  "product_tests": "NOT_RUN",
+  "commands": [],
+  "copies": [],
+  "qualified_fresh_whole_or_new_peak": "NONE",
+  "retained_incoming_whole_floor": 58895065088,
+  "retained_new_floor": 143654912,
+  "frozen_plan_sha256": "fb8caf570c42917ce67fbaedeb7c556cb0e597f7603ad615898cbc30e11bcf23",
+  "raw_sha256": {
+    "acceptance.json": "8658b83e72f5deeb7a4b2fc6f58afc8289d2fbabdcca3842c4bcaa14c9979845",
+    "TARGET.json": "6016caf2efaf6561dfdfdf7fb78232dcd6b9a7158546fbd09dc52880ddd19f23",
+    "FULL.json": "a4d019d3fc4b22550727fc9c0104a6d732dd72bfe3c490e6ca0d90661c2e9626",
+    "primary.failure.json": "478e6b5a636e307619676f82730200b9f1c9576346256ca90e50b99170113d94",
+    "guardian.failure.structured.json": "7629d39280ebe8eeb7c2d227d1b16cc789d395386c610900c89ef291db7d738f",
+    "guardian.failure.json": "047ef2e78ad495c5e5b00e9d235bdd7d51959f5bb11d623ffb2ad8de4e269a5f",
+    "guardian.result.json": "d231650fc3178ec755b0189b38b0e707aec4159135b99be07ff127983f19f27a"
+  },
+  "callsite": "/private/tmp/mcr-auth232-be39-nonignored-05/budget.py:209 reconciled_cohorts raw=proof.read_bytes();json.loads(raw)",
+  "saved_exception": "JSONDecodeError: Extra data: line 2 column 1 (char 368)",
+  "exact_runtime_input_path": "NOT_CAPTURED; do not recertify from the mutable membership file",
+  "verified_shared_jsonl_example": {
+    "path": "/Users/lhs/Desktop/mcr-worktrees/fe-runtime-preferences/docs/mcr/evidence/parade-ink-foundation/native10-controller.jsonl",
+    "sha256": "c7abe5064ec8ecb470ea9513ae81ee95f201ed0ce0fa76996c92a6d0296bd968",
+    "first_line_bytes": 368,
+    "inference": "Likely runtime input because offset matches; not a saved runtime pathname witness"
+  },
+  "secondary_peer_observation": {
+    "owner": "01a1a213-61d6-7a20-a8e7-476649312f8c",
+    "round": "PRIVATE-NATIVE14-0314",
+    "observed_guard_pid": 30618,
+    "observed_command": "<defunct>",
+    "disposition": "Historical strict identity failure preserved; no retroactive PASS or exemption"
+  },
+  "release_routing": "Actual TARGET/FULL sent directly21d/207/World before diagnosis/docs; publisher412e and PI12 subsequently received factual closure",
+  "closed_round_immutable": true,
+  "preparation_booking": "AUTH232-CLOSED05-REPAIRPREP4-0326",
+  "preparation_positive_upper_bytes": 4194304,
+  "preparation_deadline_epoch": 1793851200,
+  "preparation_charged_entire_once_inside_same_auth_2gib": true,
+  "minimum_new_retention_after_preparation": 147849216,
+  "goal_metadata": "Historical BE33 goal remains blocked and incompatible; no false reset/completion",
+  "remaining": [
+    "Separate suffix-aware decoder repair and authored regression, no execution under ordinary book.",
+    "Fresh distinct execution offer and fair queue before any successor runtime work.",
+    "Developer validation/fixes and qualified direct publisher handoff; real native/PG/mTLS still NOT_RUN."
+  ]
+}

@@ -1,0 +1,92 @@
+[
+  {
+    "offerId": "AUTH232-BE39-NONIGNORED-VALIDATION01-20261105T0022Z",
+    "state": "FULL",
+    "acceptedAtEpoch": 1793839303.3842602,
+    "actualFullEpoch": 1793839304.589601,
+    "resourcesReleased": true,
+    "fullPath": "/private/tmp/mcr-auth232-be39-validation-0022/FULL.json",
+    "fullSHA256": "8bd654417aac87756ec944aed99f31b71be913c9b3cf8f382e49d114c3c66b45",
+    "qualification": "Resource release only; technical result remains in raw record"
+  },
+  {
+    "offerId": "AUTH232-BE39-NONIGNORED-VALIDATION02-0047",
+    "state": "FULL",
+    "acceptedAtEpoch": 1793839997.169515,
+    "actualFullEpoch": 1793839998.255392,
+    "resourcesReleased": true,
+    "fullPath": "/private/tmp/mcr-auth232-be39-validation-next/FULL.json",
+    "fullSHA256": "2ae9dd4f976f68aad2209426c0c316fb46371ae8c72d0f0274a7a12c7ac83d2e",
+    "qualification": "Resource release only; technical result remains in raw record"
+  },
+  {
+    "offerId": "AUTH232-BE39-NONIGNORED-VALIDATION03-0105",
+    "state": "FULL",
+    "acceptedAtEpoch": 1793841000.591606,
+    "actualFullEpoch": 1793841020.134986,
+    "resourcesReleased": true,
+    "fullPath": "/private/tmp/mcr-auth232-be39-validation-03/FULL.json",
+    "fullSHA256": "3f0ae89850d0fc4231108bec8116e6d1fdaf4659c118faa892de40b3a9c57117",
+    "qualification": "Resource release only; technical result remains in raw record"
+  },
+  {
+    "offerId": "AUTH232-ACCOUNTING-DIAGNOSTIC-SOURCE01-0113",
+    "state": "FULL",
+    "acceptedAtEpoch": 1793841782.613973,
+    "actualFullEpoch": 1793841782.8133771,
+    "resourcesReleased": true,
+    "fullPath": "/private/tmp/mcr-auth232-be39-validation-04/source-FULL.json",
+    "fullSHA256": "5047a728b51c337a9a4246722afc0e233c2d082247c2483efbc6dc43ecff1da2",
+    "qualification": "Resource release only; technical result remains in raw record"
+  },
+  {
+    "offerId": "ACCOUNTING-DIAGNOSTIC-SOURCE02-0133",
+    "state": "FULL",
+    "acceptedAtEpoch": 1793842491.890306,
+    "actualFullEpoch": 1793842492.088338,
+    "resourcesReleased": true,
+    "fullPath": "/private/tmp/mcr-auth232-be39-validation-04/next/source-FULL.json",
+    "fullSHA256": "97eb36035031437b7f1812aee7729999060598a6180904965ac7e0c4c1eabae0",
+    "qualification": "Resource release only; technical result remains in raw record"
+  },
+  {
+    "offerId": "ACCOUNTING-DIAGNOSTIC-SOURCE03-0133",
+    "state": "FULL",
+    "acceptedAtEpoch": 1793842540.963774,
+    "actualFullEpoch": 1793842541.1581938,
+    "resourcesReleased": true,
+    "fullPath": "/private/tmp/mcr-auth232-be39-validation-04/source03/source-FULL.json",
+    "fullSHA256": "b3b438b0a0bb13729b94c2478e2114c11d0718b4bb63bef09aff9e28dd4c27b5",
+    "qualification": "Resource release only; technical result remains in raw record"
+  },
+  {
+    "offerId": "AUTH232-DIAGNOSTIC-SOURCE04-0142",
+    "state": "FULL",
+    "acceptedAtEpoch": 1793842849.710218,
+    "actualFullEpoch": 1793842849.9480052,
+    "resourcesReleased": true,
+    "fullPath": "/private/tmp/mcr-auth232-be39-validation-04/source04-prepared/source-FULL.json",
+    "fullSHA256": "b0ccf475fe613abe0387f7ad6ed046625a2a369b136e2bef9b7275e0cc610edf",
+    "qualification": "Resource release only; technical result remains in raw record"
+  },
+  {
+    "offerId": "AUTH232-DIAGNOSTIC-SOURCE05-0149",
+    "state": "FULL",
+    "acceptedAtEpoch": 1793843073.2435,
+    "actualFullEpoch": 1793843074.8936498,
+    "resourcesReleased": true,
+    "fullPath": "/private/tmp/mcr-auth232-be39-validation-04/source05-prepared/source-FULL.json",
+    "fullSHA256": "3ae261b5a75e5942c7431c4489b5a2cd2497d2bf9375f95a103d9f87664ffcd3",
+    "qualification": "Resource release only; technical result remains in raw record"
+  },
+  {
+    "offerId": "AUTH232-BE39-NONIGNORED04-0159",
+    "state": "FULL",
+    "acceptedAtEpoch": 1793845591.865324,
+    "actualFullEpoch": 1793845608.4570901,
+    "resourcesReleased": true,
+    "fullPath": "/private/tmp/mcr-auth232-be39-nonignored-04/FULL.json",
+    "fullSHA256": "706fab80015965ae56e44eb74fe002e567613fbb3068fc2ea8596d838da8c205",
+    "qualification": "Closed failure before product command; preserve exact startup reconciliation causes"
+  }
+]
