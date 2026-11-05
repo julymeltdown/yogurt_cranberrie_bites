@@ -1,0 +1,26 @@
+{
+  "classification": "DEVELOPER_INSPECTION_NOT_FULL_PHOTO2_ACCEPTANCE",
+  "viewed": [
+    "photo2-pair.png",
+    "photo2-overlay.png",
+    "photo2-diff.png",
+    "photo2-scenery.png",
+    "world-short.png",
+    "world-parade-360.png",
+    "world-parade-430.png"
+  ],
+  "qualified": [
+    "Context bounds within one CSS pixel at390x775",
+    "Short viewport has no unpainted side gutter",
+    "Normal stage framing improved; all authoritative anchors unchanged"
+  ],
+  "open": [
+    "World quality_v6 plaza material, vendor/tree arrangement and MEET/WALL composition differ materially from Photo2",
+    "Native08 unavailable-presence banner full viewport layout is outside the qualified contract",
+    "Controlled synthetic HTTP/C05 evidence does not establish live release/device acceptance"
+  ],
+  "actualPrimaryExitCode": 0,
+  "actualPrimaryExitObservedBeforeThisRecord": true,
+  "native08RetainedMatrix": true,
+  "native09Replay": "changed display/360/390/430/short only"
+}

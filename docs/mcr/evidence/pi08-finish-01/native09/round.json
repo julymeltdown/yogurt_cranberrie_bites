@@ -1,0 +1,154 @@
+{
+  "booking": "PI08-FINISH-NATIVE09-0453",
+  "mode": "native09",
+  "acceptedEpoch": 1793854765.449481,
+  "workDeadline": 1793854945.449481,
+  "fullDeadline": 1793855005.449481,
+  "carriedNewBytes": 702545920,
+  "startAvailable": 26513154048,
+  "status": "PASS",
+  "commands": [
+    {
+      "label": "changed-native-syntax",
+      "pid": 6878,
+      "exitCode": 0
+    },
+    {
+      "label": "transferred-display-lint",
+      "pid": 6891,
+      "exitCode": 0
+    },
+    {
+      "label": "native",
+      "pid": 6907,
+      "exitCode": 0
+    }
+  ],
+  "temporaryCleaned": true,
+  "dependencyLinkRemoved": true,
+  "controllerMetadata": {
+    "pid": 6681,
+    "birth": "Thu Nov 5 13:59:25 2026",
+    "executable": "/Library/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python",
+    "script": "/Users/lhs/Desktop/mcr-worktrees/art-cute-community-v1/frontend/src/features/parade-ink/world-hud/__tests__/finish-01/round.py",
+    "cwd": "/Users/lhs/Desktop/mcr-worktrees/art-cute-community-v1",
+    "outputRoot": "/Users/lhs/Desktop/mcr-worktrees/art-cute-community-v1/docs/mcr/evidence/pi08-finish-01/native09"
+  },
+  "resourceIndex": "/Users/lhs/Desktop/mcr-evidence/backend-staffing-01a1a21d/owner-resource-receipts/01a1a5d9-6955-7820-bcd4-8e0a21629aa2.json",
+  "guardianMetadata": {
+    "pid": 6766,
+    "birth": "Thu Nov 5 13:59:25 2026",
+    "executable": "/Library/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python",
+    "script": "/Users/lhs/Desktop/mcr-worktrees/art-cute-community-v1/frontend/src/features/parade-ink/world-hud/__tests__/finish-01/resource_guard.py",
+    "cwd": "/Users/lhs/Desktop/mcr-worktrees/art-cute-community-v1",
+    "outputRoot": "/Users/lhs/Desktop/mcr-worktrees/art-cute-community-v1/docs/mcr/evidence/pi08-finish-01/native09"
+  },
+  "ownerClaim": {
+    "owner": "01a1a5d9-6955-7820-bcd4-8e0a21629aa2",
+    "booking": "PI08-FINISH-NATIVE09-0453",
+    "kind": "browser",
+    "root": "/Users/lhs/Desktop/mcr-worktrees/art-cute-community-v1",
+    "controller": "/Users/lhs/Desktop/mcr-worktrees/art-cute-community-v1/frontend/src/features/parade-ink/world-hud/__tests__/finish-01/round.py",
+    "pid": 6681,
+    "pgid": 6681,
+    "birth": "Thu Nov  5 13:59:25 2026",
+    "at": 1793854765.499985,
+    "acceptedEpoch": 1793854765.449481,
+    "workDeadline": 1793854945.449481,
+    "fullDeadline": 1793855005.449481,
+    "processCap": 24,
+    "rssCapBytes": 3758096384,
+    "newCapBytes": 746586112,
+    "familyNEWCapBytes": 771751936,
+    "carriedNewBytes": 702545920,
+    "wholeCapBytes": 8589934592,
+    "wholeRoots": [
+      "/Users/lhs/Desktop/mcr-worktrees/art-cute-community-v1",
+      "/Users/lhs/Desktop/mcr/.git",
+      "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64",
+      "/Users/lhs/Desktop/mcr/frontend/node_modules",
+      "/Library/Frameworks/Python.framework/Versions/3.14",
+      "/Applications/Google Chrome.app",
+      "/Users/lhs/Desktop/mcr-worktrees/fe-runtime-preferences",
+      "/Users/lhs/Desktop/mcr/frontend/public",
+      "/private/tmp/codex-remote-attachments/01a19e5c-e9c6-7973-a53b-a6d19141620f/9FC49E03-6C0E-4776-A954-2CA5C12CB495/1-Photo-1.jpg",
+      "/private/tmp/codex-remote-attachments/01a19e5c-e9c6-7973-a53b-a6d19141620f/9FC49E03-6C0E-4776-A954-2CA5C12CB495/2-Photo-2.jpg"
+    ],
+    "privateTemporaryRoot": "/private/tmp/mcr-pi08-finish-native09-0453"
+  },
+  "bothLiveBeforeWorkload": {
+    "primary": 6681,
+    "guardian": 6766,
+    "at": 1793854766.80317,
+    "initial": {
+      "pid": 6766,
+      "at": 1793854766.788342,
+      "sample": {
+        "free": 26519433216,
+        "all": 3,
+        "rss": 55115776,
+        "new": 702554112,
+        "whole": 5451792384,
+        "pids": [
+          6681,
+          6766,
+          6870
+        ]
+      }
+    }
+  },
+  "initialMembership": {
+    "observedAtEpoch": 1793854766.8655481,
+    "psSnapshotSHA256": "5008b85f4c05c3190d9b529ec2ec0d0d6d9b1ffd34480f798c3d9ca048abdf01",
+    "owners": [
+      "01a1a205-3f89-78c3-aa67-719c4bb40b8d",
+      "01a1a5d9-6955-7820-bcd4-8e0a21629aa2"
+    ],
+    "ordinaryActualPids": [],
+    "reservedProcesses": 36,
+    "reservedRSSBytes": 8053063680,
+    "actualPids": [
+      6681,
+      6766,
+      6877
+    ],
+    "actualRSSBytes": 56393728,
+    "otherNewUpperBytes": 4026531840,
+    "receiptReadConsistency": {
+      "attempts": 1,
+      "stableRevisionSHA256": "bf44110c1f1793063491c79c69663105e42bd5e9e601e982b1b418e68521a0bc",
+      "unstableObservations": [],
+      "boundary": "Every returned claim/cap/PID/future passed the unchanged strict reader against a stable receipt revision; no reservation released from absence"
+    }
+  },
+  "remainingOwnedChrome": [],
+  "nativePortReleased": true,
+  "guardian": {
+    "status": "STOPPED",
+    "pid": 6766,
+    "last": {
+      "free": 26483699712,
+      "all": 3,
+      "rss": 59588608,
+      "new": 731435008,
+      "whole": 5480673280,
+      "pids": [
+        6681,
+        6766,
+        9514
+      ]
+    },
+    "maximum": {
+      "all": 13,
+      "rss": 2537603072,
+      "new": 733646848,
+      "whole": 5482885120
+    }
+  },
+  "endAvailable": 26506817536,
+  "elapsedSeconds": 13.34,
+  "checkoutPositiveBytes": 5779456,
+  "outsideMetadataBytes": 49152,
+  "remainingManagedParent": 0,
+  "actualFullEpoch": 1793854778.9147048
+}

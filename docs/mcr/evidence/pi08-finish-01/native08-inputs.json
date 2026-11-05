@@ -1,0 +1,130 @@
+{
+  "task": "PI08-FINISH-01",
+  "canonicalSource": "7b81bf62d22b48a1ea653a1a84fae199c2b1d837",
+  "preservedParent": "6c12f4882123c8dfc51afb57e59cb5f69de3c910",
+  "implementationAndDrivers": [
+    {
+      "path": "frontend/src/features/parade-ink/world-hud/index.tsx",
+      "bytes": 4748,
+      "sha256": "07a665805caf24baba0655430bf3ea9ff1782ef5f0bcdbc23503654ecc24f1a5"
+    },
+    {
+      "path": "frontend/src/features/parade-ink/world-hud/world-context.tsx",
+      "bytes": 1897,
+      "sha256": "80e3f26bb9b9f606b55ac609ba76e157b67f002734758a8b215c98b967169836"
+    },
+    {
+      "path": "frontend/src/features/parade-ink/world-hud/world-hud.css",
+      "bytes": 6850,
+      "sha256": "7be988a5da2ecb87a2fbeeed6d26b62f84c312460d2e81f4bd599c5763b86e44"
+    },
+    {
+      "path": "frontend/src/features/parade-ink/world-hud/__tests__/finish-01/git-source.mjs",
+      "bytes": 4462,
+      "sha256": "061edf54b879a53301f68c38549b1c4d8cd3e35b2c95eb450ffa3f06c3a0debc"
+    },
+    {
+      "path": "frontend/src/features/parade-ink/world-hud/__tests__/finish-01/native.mjs",
+      "bytes": 14366,
+      "sha256": "f9e4d3987767a9641d7a608a5a761da4656b7cf059804766c31a46fe3e8a5b08"
+    },
+    {
+      "path": "frontend/src/features/parade-ink/world-hud/__tests__/finish-01/preview.html",
+      "bytes": 357,
+      "sha256": "dd40a008e8396972ec2f81816873c8b24860d0b1102892124e5ba48ef1863f7b"
+    },
+    {
+      "path": "frontend/src/features/parade-ink/world-hud/__tests__/finish-01/round.py",
+      "bytes": 16420,
+      "sha256": "aeb54ef800358aa61ec04ab5d5c9c471a6585df359a9c229f787658c543ec220"
+    },
+    {
+      "path": "frontend/src/features/parade-ink/world-hud/__tests__/finish-01/source-check.mjs",
+      "bytes": 1664,
+      "sha256": "514581e8b0accc24b23e3f23ebf6346b13ffd7079ef4eaf3bb8eae7afb42becf"
+    },
+    {
+      "path": "frontend/src/features/parade-ink/world-hud/__tests__/finish-01/resource_snapshot.py",
+      "bytes": 4172,
+      "sha256": "ec2338c56bc59704399237ecb35f1f23602a8e6543aa31e1fbc53ad77ebcb6bb"
+    },
+    {
+      "path": "frontend/src/features/parade-ink/world-hud/__tests__/finish-01/resource_guard.py",
+      "bytes": 385,
+      "sha256": "65b6b2d90cdd682f012859f92e5bd5c9f4098f30fef82a8b6acb45b74d4cdae6"
+    },
+    {
+      "path": "frontend/src/features/parade-ink/world-hud/__tests__/finish-01/resource_snapshot_test.py",
+      "bytes": 3726,
+      "sha256": "4afd7a5f60f60306a008d6478b4504a97b3af353f3e3e97a25c50db7413fc346"
+    },
+    {
+      "path": "frontend/src/features/parade-ink/world-hud/__tests__/finish-01/resource_binding_test.py",
+      "bytes": 3365,
+      "sha256": "9b6d781aeb227daf86819aa88d16dbd0cff55efd55f4e9fc12eaab63fc56afbd"
+    },
+    {
+      "path": "frontend/src/features/parade-ink/world-hud/__tests__/finish-01/fixture.mjs",
+      "bytes": 1865,
+      "sha256": "09ca8f8ad16a0f42428ec50cb92f217e36076a0b6fec33277f1beeb295c51ed6"
+    },
+    {
+      "path": "frontend/src/world/scenes/MapScene.ts",
+      "bytes": 19341,
+      "sha256": "c7968c0ad996c87da4957be9c165f7254314b8fa5bd53d05022b61b4d1b8e140"
+    }
+  ],
+  "borrowedReadonlyGuardian": "frontend/src/features/gift-discovery/__tests__/parade-ink/guardian.py",
+  "borrowedReadonlyMembership": "frontend/src/features/gift-discovery/__tests__/parade-ink/membership.py",
+  "wholeRootsMetadata": "docs/mcr/evidence/parade-ink-giveaway/native-whole-census.json",
+  "node": {
+    "path": "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node",
+    "sha256": "b6fb419f0f43bb2fbca273700294dd2f3b685a64b60e8417c295f47646a70e4a"
+  },
+  "chromeVersion": "156.0.8078.80",
+  "reference": {
+    "sha256": "9e7f17a666e1ecfc738a14b75bb3a166235a05c401f206aa24f26cf7463cbc27",
+    "crop": [
+      436,
+      60,
+      832,
+      847
+    ],
+    "scale": "390/396"
+  },
+  "retainedBehavior": "Two JSX leaves remain exact canonical source; old qualified10HUD tests retained. CSS geometry only, source checks/native fresh.",
+  "borrowedReadonlyGuardianSha256": "1b56f5723453a165939752b78c0660bd90811af9199dddc4c127f35c7f613d11",
+  "borrowedReadonlyMembershipSha256": "d2e52f549c07977265b131a1ed2a178b805ddef174fdc55c6d339dc8f370ae67",
+  "wholeRootsMetadataSha256": "9ef02fcd19a52f0fc1350c38afbdd35f7c7916d0d9ac46e2b10e111f2fdc8332",
+  "round": "native08",
+  "priorRound": {
+    "offer": "PI08-FINISH-NATIVE07-0425",
+    "acceptedAtEpoch": 1793853003.65695,
+    "actualFullEpoch": 1793853017.5819361,
+    "rawStatus": "FAIL",
+    "sourceChecks": "Three Native07 changed-driver checks PASS retained plus four source checks/eight consistency/two semantic cases. New native override and transferred renderer require changed checks only.",
+    "failure": "Stable peerGift267 kernel exittransient while activeidentity remained; lateractualFULL not a retrospective waiver. One partial actualWorldPNG, no finalnative.json.",
+    "NEWMax": 651497472,
+    "WHOLEMax": 5464543232,
+    "allHigherRetained": true
+  },
+  "allocation": {
+    "offer": "PI08-FINISH-NATIVE08-0425",
+    "cumulativeNEWCapBytes": 704643072,
+    "carriedNewBytes": 654311424,
+    "futurePositiveUpperBytes": 50331648,
+    "acceptBeforeUTC": "2026-11-05T05:00:00Z",
+    "ordinarySameUnspent64ExpiryUTC": "2026-11-05T05:00:00Z",
+    "scope": "Necessary amended unused08, SAMEtotal640to672 +32only. Remaining originalAppmatrix with new exacttransferred renderer postimage/ownednative override. No replay of unchanged qualified checks. Newpublication afterPI0710 exactactualfirst; freshB2G4."
+  },
+  "collectorQualification": "Eight Native05 and two Native06 collector cases PASS retained. Strict stable semantic sampling unchanged.",
+  "controlledPolicyQualification": "TEST_ONLY exact canonical synthetic release fixture plus protected GET event/version/build/Bearer recognition. Unknown requests return UNAVAILABLE. No production recognition or provider/Auth bypass.",
+  "literalSharedHunkTransfer": {
+    "grantor": "Root153",
+    "receivingBranch": "codex/mcr-fe-PI08-finish-01",
+    "path": "frontend/src/world/scenes/MapScene.ts",
+    "preimageBlob": "845fe9e162919d5894e3a23ff28283b0b0f23e2c",
+    "function": "refreshCamera",
+    "hunk": "Only recognized-reference fallback expression appended to existing spatialV5CameraPresentation at original line145. Root retainedwriterSTOPPED; receivingacceptance relayed beforeedit. Existingfoot/transforms/geometry/IDs/assets/characters unchanged."
+  }
+}

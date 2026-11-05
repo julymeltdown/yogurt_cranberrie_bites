@@ -142,7 +142,12 @@ export async function loadPhaserEngine(): Promise<EngineFactory> {
         : stage && stageInteraction ? { x: stage.x + stage.width / 2 + Math.min(64, game.scale.width / camera.zoom * .14),
         y: stage.y + stage.height / 2 + Math.min(260, game.scale.height / camera.zoom * .32) }
         : { x: (loaded.spawn.cell_x + .5) * g.tile_width_px, y: (loaded.spawn.cell_y + .5) * g.tile_height_px })
-      const presentation = spatialV5CameraPresentation(loaded, { width: game.scale.width, height: game.scale.height }, foot, cameraZoom ?? 1)
+      const presentation = spatialV5CameraPresentation(loaded, { width: game.scale.width, height: game.scale.height }, foot, cameraZoom ?? 1) ?? (reference ? {
+        zoom: (cameraZoom ?? 1) * Math.max(Math.min(1, game.scale.width / reference.worldCamera.width, game.scale.height / reference.worldCamera.height),
+          game.scale.width / loaded.widthPx, game.scale.height / loaded.heightPx),
+        center: { x: foot.x - Math.max(-32, Math.min(32, foot.x - (reference.worldCamera.x + reference.worldCamera.width / 2))),
+          y: foot.y - Math.max(-160, Math.min(160, foot.y - (reference.worldCamera.y + reference.worldCamera.height / 2))) },
+      } : null)
       if (presentation) camera.setZoom(presentation.zoom)
       camera.centerOn(presentation?.center.x ?? foot.x, presentation?.center.y ?? foot.y)
       camera.preRender() // Updates bounded scroll and the matrix used by public getWorldPoint().
