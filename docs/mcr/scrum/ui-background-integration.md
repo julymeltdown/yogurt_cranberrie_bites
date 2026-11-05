@@ -1,5 +1,63 @@
 # UI background integration coordination
 
+<!-- BEGIN PARADE-INK-HOURLY-2026-11-05-1436 -->
+
+## Current lane disposition — 2026-11-05 14:36 KST
+
+This normal substantive lane update records responsible-owner dispositions and publication/resource metadata. UI533 has not reviewed implementation, queries, tests, browser output or pixels and has not run application or device checks. Implementation owners retain validation and fixes; no king, SL or QA approval queue is introduced.
+
+The last explicit central disposition received, in the Map Native16 publisher receipt, remains 58 DONE of 111 active tasks, 53 remaining, design 9 of 12, original criteria 61 / frozen 39 / new original closures 22, VENU 0 of 8 and product NOT_READY. Original planning still contains 112 tasks with QA08/200-user qualification explicitly deferred; the separate eight venue tasks, ten extension IA entries and all 48 stable new venue comparison cases remain unchanged/NOT_RUN. Ten pure-client design families now have literal satisfied owner dispositions including PI07; PI07's tenth disposition is queued for the normal central accounting batch rather than silently changing central counts. PI08 and PI11 remain open.
+
+### PI07 literal disposition and completed-context lifecycle
+
+Owner534 explicitly states: "Original PI07 assigned pure-client/design criteria: ALL SATISFIED. No remaining assigned fix." Canonical delivery is ecb2c4adeaed06bc5b7ceb1e1f21d6b9a97e19c5 from source 42aa843ec0bca9e6c0802247f9ff53ee2695fe58. This is the implementation owner's source-qualified and inspected render/control disposition, not a publication-only inference. Native07 remains partial raw FAIL; Native10's 430px tail is PASS; the extra 390px short run was NEVER_ADMITTED/NOT_RUN. No generic full-matrix, live-service or physical-device gate was added to these assigned client criteria.
+
+All eleven production-path leases were returned to21d. Actual goal remained historical BLOCKED, Native10 FULL/resources zero and no accepted next scope; actual chat idle/completed was checked before archiving SAME534. The optional final FINISHSEAL16 guard failure is retained: actual MAX 26,378,240 bytes exceeded 16,777,216 by 9,601,024; its callback did not run. Higher family accounting remains at least 1,001,545,728 bytes within 1,024 MiB. No retroactive authorization, reset, proof-only successor or altered Native10 FULL is implied.
+
+### PI08: narrow camera delivery; producer interface agreed, qualification pending
+
+Qualified HUD/camera delivery is canonical b4c81367eab7ac03f2b8cdc9bf3635664d22c38d from source 061f1221b7f8c6468e993957572279e806226968. The developer reports personally inspected Native08 controlled-App and Native09 responsive/short-gutter evidence. Its exact 46-path scope contains the HUD CSS, the Root-transferred single MapScene display expression, and finite fixtures/documentation/evidence. Full Photo2 scenery remains materially different and open; this delivery does not close PI08, venue tasks or comparison cases.
+
+A subsequent developer-owned source correction makes camera control snapshots report logical zoom while retaining the renderer's fitted actual scale. Source02 eca0969c9, input SHA256 70cae27da149aeda6687e2620c029ae480980386eb281d2e370f30e82069b792, actual ACCEPT 1793856216.1316931 / FULL 1793856220.9969542, execution exit zero and three command exits zero. The owner subsequently inspected the focused regression, affected strict TypeScript and lint results. Eight earlier cases and Native09 were retained. Native10 zoom browser execution was not admitted because its residual disk-floor check refused admission; no zoom-native PASS or rewritten earlier evidence is inferred.
+
+The exact Photo2 source remains SHA256 9e7f17a666e1ecfc738a14b75bb3a166235a05c401f206aa24f26cf7463cbc27. Preserve all 22 authoritative object IDs, native coordinates, spawns, collisions, proximity, room and identity semantics. Display projection uses one mapping and inverse for truthful actors, input, collision support and affordances. MEET/WALL boards are nonphysical shortcuts to existing authorized panels, with existing permission/disabled behavior; no new physical arrival, spatial service or server command is introduced.
+
+Root153 and implementation owner2162 now directly agree the concrete source/frame interface. Owner contract commit 9a0cd1bd2 contains docs/mcr/evidence/pi08-finish-01/photo2-world-contract/producer-contract-v1.json, SHA256 98c12d93104fa15c7cc8e76d9ed65996b8549350e3c4641525852649173e506d. Owner reports 204 target-mesh vertices, 22 native frames plus two nonphysical boards/24 atlas slots, shared native foot/depth/blockers, versioned fail-closed PARADE loading, ground 499x1200 and atlas 512x1024. These dimensions derive from this candidate, not an old size freeze. Total 1,123,088 pixels / 4,492,352 decoded RGBA bytes are distinct from the separate 2,097,152-pixel and 2,097,152-transfer-byte limits.
+
+The remaining immediate producer prerequisite is owner2162's new pure producer-layout/frame/nonfolding/source case, sealed input 210e3c33, awaiting fresh21d admission after Root's protected source window. No asset-consuming renderer, native zoom run, backend completion or further Root correctness ACK is a prerequisite. After an actually qualified READY packet supplies literal ten NEW output paths and provenance, restore SAME archived ART231 with exact exclusive assets/qualifier/docs/evidence scope, actual custody acceptance and fresh21d limits. ART is not allocated merely to wait. Root's bounded future model/Phaser/MapScene transfers do not authorize broad shared writes; each receiving hunk still requires fresh preimage acceptance. Original art and selected character source bytes remain preserved.
+
+### Original QA06: physical readiness unconfirmed; independent fixture source work assigned
+
+Historical implementation owner1ab7 freshly checked the actual original QA06 goal: BLOCKED, unfinished/history preserved. No current physical execution scope is accepted. Its old QA06 fe-ref-public checkout remains loaned to publisher412e and must not be reclaimed or shared. Current fe-public checkout/branch/HEAD, successor custody and NEW-path absence were not yet OS-verified at this snapshot; the old ddada3b26/codex/mcr-fe-location-api tuple is historical only.
+
+Root153, host1eed and allocator21d do not establish actual iOS Safari or Android Chrome device IDs, usable connection/pairing/debug access, device custody, current control/use authority, physical executor, finite execution lease or reachable fixture/session/navigation endpoint. These inputs are UNCONFIRMED, not proven absent and not replaced by emulation. Host1eed's last Native09 actual FULL 1793855357.298878 released children, browser, TMP, dependency link and port5384. Its prepared default-App tuple has no qualified App/browser/device run. No retained active endpoint or device lease is inferred from idle/notLoaded/publication records.
+
+Retained producer records identify an independent, ready source-preparation remainder. Qualified PI06 actual-default-App source a497f326c173216de1ce937aead4c8ce6dbe5794 / canonical5cc57d643, fixture SHA256 2b388be991124e83667fe7c8ecd5f5cb02f634c89285fabdc11088e0651dc5c0, owns the reusable frontend/e2e/visual/qa06/parade-ink-profile/{preview.ts,preview.html,frozen-source.mjs,native.mjs} and Native05 readset/report. It imports actual src/main and uses controlled browser-local canonical HTTP/C05/admission with actual login/navigation. Its desktop launcher binds127.0.0.1, starts Chromium and seeds baseline through automation, so standalone device provisioning is not qualified. Finished Map Native16 likewise uses a loopback/desktop-automation driver and has no qualified standalone provisioning wrapper; host1eed confirms no qualified replacement. Reuse PI06 rather than duplicate Map, Auth or a synthetic backend.
+
+UI533 issued implementation assignment QA06-FIXTURE-READY-01 (helper label, not a new original task) to SAME1ab7. Exact exclusive NEW writes are frontend/e2e/qa06-device-fixture/**, docs/mcr/frontend/qa06-device-fixture-ready-01.md and docs/mcr/evidence/qa06-device-fixture-ready-01/**. Proposed isolated existing checkout is fe-public with task branch codex/mcr-qa-QA06-device-fixture, conditional on actual metadata/custody/path checks and literal ACCEPT before writes. No production Auth/router/WorldShell/model, shared registry, manifest, lockfile or CI ownership transfers.
+
+The full unbudgeted objective covers source-pinned server-only lifecycle, explicit listen origin, browser-independent deterministic synthetic session/baseline/navigation/reset, finite deadline/cleanup invocation, meaningful developer-owned fixture validation and fixes, provenance/documentation, committed handoff directly to412e and necessary integration fixes. Preserve the existing blocked original goal; create a goal only if no unfinished goal exists, otherwise retain the historical incompatible goal and record this concrete aligned objective in the owned document. Actual source/runtime/port work requires fresh21d admission after Root's protected 05:33:30–05:35:00 UTC window; no browser/device authorization is implied. At this snapshot this is a concrete assignment awaiting actual custody ACCEPT, not a started implementation or completed helper.
+
+Dependency owners: UI385/UI533 name the physical executor/device custodian; the actual device custodian supplies device IDs/connections and current use/control authority; selected fixture implementation/runtime owner supplies frozen inputs and the admitted reachable endpoint/session/navigation;21d supplies finite source/runtime/device leases. No whole PI08, PI11, venue-host, backend or latest-master barrier is imposed. No duplicate broad human permission question or separate QA approval matrix is introduced.
+
+### Natural Map publication and reporting provenance
+
+Map owner40fde's compact Notes/composer changes and controlled Native16 evidence are canonical a6720ffb06391c62a809a63d3eba150538a16522, source packet96a20cf7530ea4b61365f888333b8b339cd601ec, exercised61bafe284f08bbf78f849373ea5e9a29aa20e770, exact CSS a8115d138e87d9bf0ed3c0825871088aa21866e4. Publisher receipt /private/tmp/mcr-publisher-412e-map-native16-delivery-receipt.json has SHA256 2ab7e85060dd0214bad5821b29d686fb71fd7637bca84dfe1cfa67e11b39f40e. Developer reports four controlled contexts and 27 inspected images; Notes157/reference122, composer366/reference356, Friends79/reference74 and named visual differences remain exposed. Native13/15 failures remain unchanged. This is TEST_ONLY actual main/Auth/WorldShell/realPhaser with synthetic data/emulated GPS, not default Root, actual204 leaf, live services or physical-device proof.
+
+Three existing share-safe Native16 390x844 images were naturally handed to385 for the already-scheduled regular screenshot post. Original capture window is 2026-11-05 14:23:41.834219–14:24:04.938904 KST; individual shutter times are not recorded and file mtimes are not substituted. No reporting capture, pixel review or extra Main acceptance packet was requested.
+
+### Management objective and resource boundary
+
+Continue exact disjoint ownership, ready-task reuse, developer-owned qualification/fixes, truthful goal/resource lifecycle and committed canonical handoffs. Do not turn an owner report or a sent instruction into actual acceptance, execution, goal completion or product acceptance. UI533's freshly read persistent historical background goal remains BLOCKED/incompatible and unchanged.
+
+No UI533 OS process, Git helper, source edit, test, browser, device or new private control script has started for this update. The requested fresh UI533 ordinary16MiB book was not accepted/executed; normal publisher-only literal-prefix composition may carry this management text under its existing ordinary Git authority. Preserve all prior76MiB MAX accounting, prior higher whole roots at least3,368,538,112 bytes plus original3,368KiB attachments/all retained higher evidence; no deletion credit, refund or budget reset. No application slot is created by this record.
+
+<!-- END PARADE-INK-HOURLY-2026-11-05-1436 -->
+
+## Historical boundary — snapshots below remain byte for byte
+
+The following dated records retain their original claims and limitations. They do not override this 14:36 disposition.
+
 <!-- BEGIN PARADE-INK-HOURLY-2026-11-05-1338 -->
 ## Current owner delivery reconciliation
 
