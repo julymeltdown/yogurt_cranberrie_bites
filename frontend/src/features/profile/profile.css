@@ -1,28 +1,24 @@
-.reference-public-profile{min-width:0;width:100%;color:#211d19;font:14px/1.3 'Arial Narrow',Arial,sans-serif}
+.reference-public-profile{min-width:0;width:100%;color:var(--pi-ink);font:400 var(--pi-body-size)/var(--pi-body-leading) var(--pi-font-body)}
 .reference-public-profile .concert-window__body{padding:0}
-.reference-public-profile .concert-window__titlebar{min-height:44px;padding:0 0 0 8px;gap:6px}
-.reference-public-profile .concert-window__titlebar h1{font:800 22px/1.1 Impact,'Arial Narrow',sans-serif;letter-spacing:.02em}
-.reference-public-profile .public-profile-header{padding:10px 8px 7px;background:#1c1a18;color:#f5ecdc}
-.reference-public-profile .public-profile-identity{display:grid;grid-template-columns:clamp(112px,33vw,148px) minmax(0,1fr);gap:11px;align-items:start}
-.reference-public-profile .intro-avatar{min-height:0;width:100%;aspect-ratio:1;display:grid;align-content:center;border:3px double #e1d4bc;background:#d8cdbb;padding:3px;color:#4b4238;overflow:hidden;text-align:center;font:12px/1.3 Arial,sans-serif}
-.reference-public-profile .intro-avatar span{padding:5px}
-.reference-public-profile .intro-avatar canvas{display:block;width:100%;height:auto;image-rendering:pixelated}
+.reference-public-profile .public-profile-header{padding:10px var(--pi-content-inset);background:var(--pi-paper);border-bottom:var(--pi-rule-width) solid var(--pi-rule)}
+.reference-public-profile .public-profile-identity{display:grid;grid-template-columns:128px minmax(0,1fr);gap:16px;align-items:start}
+.reference-public-profile .intro-avatar{width:128px;min-height:170px;display:grid;place-items:center;text-align:center;color:var(--pi-muted);font:400 var(--pi-meta-size)/var(--pi-meta-leading) var(--pi-font-body)}
 .reference-public-profile .public-profile-copy{min-width:0}
-.reference-public-profile .public-profile-copy h2{font:800 clamp(21px,6vw,27px)/1.05 'Arial Narrow',Arial,sans-serif;margin:1px 0 12px;letter-spacing:-.035em;overflow-wrap:anywhere}
-.reference-public-profile .public-profile-bio{background:#f1e8d9;color:#211d19;border:1px solid #a99a83;border-radius:2px;padding:7px;font:13px/1.3 'Arial Narrow',Arial,sans-serif;margin:0;white-space:pre-wrap;overflow-wrap:anywhere}
-.reference-public-profile .public-profile-actions{display:flex;justify-content:center;gap:12px;margin:7px 0 0}
-.reference-public-profile .public-profile-actions a,.reference-public-profile .public-profile-actions button{display:grid;place-items:center;width:48px;height:44px;min-height:44px;min-width:44px;padding:8px;border:1px solid #c2b199;border-radius:2px;background:#f1e8da;color:#211d19;cursor:pointer}
-.reference-public-profile .reference-profile-icon{display:block;width:23px;height:23px}
-.reference-public-profile .public-profile-navigation{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:3px;padding:4px 3px;border-bottom:1px solid #6e6050;background:#e5dac7}
-.reference-public-profile .public-profile-navigation button,.reference-public-profile .public-profile-navigation span{display:flex;justify-content:center;align-items:center;min-height:44px;min-width:44px;border:1px solid #796954;border-radius:1px;background:#f2e9d9;color:#211d19;font:800 17px/1.1 Impact,'Arial Narrow',sans-serif;text-transform:uppercase;padding:4px}
-.reference-public-profile .public-profile-navigation [aria-current]{background:#d3c7b4;box-shadow:inset 0 0 0 1px #b7a88e}
-.reference-public-profile button:disabled{cursor:not-allowed;color:#6d6254;background:#d5ccbc}
-.reference-public-profile .public-profile-privacy{margin:0 8px;border-top:1px solid #ab9c85;font-size:12px}
-.reference-public-profile .public-profile-privacy p{margin:7px 0;overflow-wrap:anywhere}
-.reference-public-profile .public-profile-privacy a,.reference-public-profile .concert-window__footer a{display:inline-flex;align-items:center;min-height:44px;min-width:44px;color:inherit;font-size:12px}
-.reference-public-profile .concert-window__footer{padding:3px 8px}
-.reference-public-profile .public-profile-unavailable{padding:12px;font-size:14px}
-.reference-public-profile .public-profile-unavailable button{min-height:44px;min-width:44px;padding:8px;font:inherit;color:inherit;background:#f1e8d9;border:1px solid #796954}
-.reference-public-profile :focus-visible{outline:3px solid #921f28;outline-offset:2px}
-.reference-public-profile .concert-window__titlebar :focus-visible{outline-color:#fff4dc;outline-offset:-4px}
+.reference-public-profile .public-profile-copy h2{margin:0 0 8px;color:var(--pi-crimson);font:700 24px/28px var(--pi-font-body);overflow-wrap:anywhere}
+.reference-public-profile .public-profile-bio{margin:0;white-space:pre-wrap;overflow-wrap:anywhere}
+.reference-public-profile .public-profile-actions{display:flex;justify-content:flex-end;gap:8px;margin-top:8px}
+.reference-public-profile .public-profile-actions :is(a,button){display:grid;place-items:center;width:44px;min-width:44px;min-height:44px;padding:8px;background:var(--pi-paper);color:var(--pi-ink);border:var(--pi-frame-border) solid var(--pi-rule);border-radius:var(--pi-radius);cursor:pointer}
+.reference-public-profile .reference-profile-icon{display:block;width:var(--pi-icon);height:var(--pi-icon)}
+.reference-public-profile .public-profile-navigation{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:var(--pi-tab-gap);padding:var(--pi-content-inset);border-bottom:var(--pi-rule-width) solid var(--pi-rule)}
+.reference-public-profile .public-profile-navigation :is(button,span){display:flex;justify-content:center;align-items:center;min-height:var(--pi-hit);min-width:0;padding:4px;background:var(--pi-paper);color:var(--pi-ink);border:var(--pi-frame-border) solid var(--pi-rule);border-radius:var(--pi-radius);font:600 var(--pi-control-size)/var(--pi-control-leading) var(--pi-font-display);text-transform:uppercase}
+.reference-public-profile .public-profile-navigation [aria-current]{background:var(--pi-ink);color:var(--pi-on-dark)}
+.reference-public-profile button:disabled{background:var(--pi-disabled);color:var(--pi-muted);cursor:not-allowed}
+.reference-public-profile .public-profile-privacy{margin:0 var(--pi-content-inset);border-top:var(--pi-rule-width) solid var(--pi-soft-rule);font:400 var(--pi-meta-size)/var(--pi-meta-leading) var(--pi-font-body)}
+.reference-public-profile .public-profile-privacy p{margin:8px 0;overflow-wrap:anywhere}
+.reference-public-profile .public-profile-privacy a,.reference-public-profile .concert-window__footer a{display:inline-flex;align-items:center;min-height:44px;min-width:44px;color:inherit;font-size:var(--pi-meta-size)}
+.reference-public-profile .public-profile-unavailable{padding:12px}
+.reference-public-profile .public-profile-unavailable button{min-height:44px;min-width:44px;padding:8px;font:inherit;color:inherit;background:var(--pi-paper);border:var(--pi-frame-border) solid var(--pi-rule)}
+.reference-public-profile :focus-visible{outline:3px solid var(--pi-focus);outline-offset:3px}
+@media(max-width:374px){.reference-public-profile .public-profile-identity{gap:10px}}
 @media(prefers-reduced-motion:reduce){.reference-public-profile *{scroll-behavior:auto}}
+@media(forced-colors:active){.reference-public-profile :focus-visible{outline-color:Highlight}}

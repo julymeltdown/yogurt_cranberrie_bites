@@ -1,0 +1,30 @@
+{
+  "observedAtEpoch": 1793840662.9767628,
+  "ownerThreadId": "01a1a1fe-1ab7-79b0-adbc-d4c025701acb",
+  "offerId": "PI06-PROFILE-FOCUSED-NATIVE05-0100",
+  "state": "FULL",
+  "acceptedAtEpoch": 1793840459.629889,
+  "workDeadlineEpoch": 1793840699.629889,
+  "fullDeadlineEpoch": 1793840759.629889,
+  "kind": "browser",
+  "processCap": 20,
+  "rssCapBytes": 4294967296,
+  "remainingNewUpperBytes": 0,
+  "controller": {
+    "pid": 70955,
+    "birth": "Thu Nov  5 10:00:59 2026",
+    "script": "/Users/lhs/Desktop/mcr-worktrees/fe-public/frontend/e2e/visual/qa06/parade-ink-profile/native-round.py",
+    "outputRoot": "/Users/lhs/Desktop/mcr-worktrees/fe-public/docs/mcr/evidence/parade-ink-profile/native05",
+    "launcherExecutable": "/Library/Frameworks/Python.framework/Versions/3.14/bin/python3.14",
+    "lastObservedExecutable": "/Library/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python",
+    "executable": null,
+    "state": "REAPED; current executable not asserted"
+  },
+  "guardControllers": [],
+  "receiptPaths": {
+    "accept": "/Users/lhs/Desktop/mcr-worktrees/fe-public/docs/mcr/evidence/parade-ink-profile/native05/accepted.json",
+    "full": "/Users/lhs/Desktop/mcr-worktrees/fe-public/docs/mcr/evidence/parade-ink-profile/native05/full.json"
+  },
+  "identityLimitation": "Native05 prechild descriptor used Python launcher path; peer21a observed actual framework reexec path before literalFULL. Raw executed receipts are unchanged. Future metadata reads actual ps comm and keeps launcher separately; not a retrospective prechild-compliance claim.",
+  "actualFullEpoch": 1793840521.419551
+}

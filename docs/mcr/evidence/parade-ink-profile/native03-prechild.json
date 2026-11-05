@@ -1,0 +1,19 @@
+{
+  "ownerThreadId": "01a1a1fe-1ab7-79b0-adbc-d4c025701acb",
+  "offerId": "PI06-PROFILE-FOCUSED-NATIVE03-0045",
+  "state": "DECLINED",
+  "observedAtEpoch": 1793839858.0699751,
+  "acceptedAtEpoch": null,
+  "incorrectDeclaredAcceptedEpoch": 1793839830,
+  "kind": "browser",
+  "processCap": 20,
+  "rssCapBytes": 4294967296,
+  "remainingNewUpperBytes": 0,
+  "controller": null,
+  "guardControllers": [],
+  "receiptPaths": {
+    "accept": null,
+    "full": null
+  },
+  "disposition": "Prechild controller rejected futureclock actual00:50:24UTC; no outdir, guard, temp, workload or browser created. Closed, never restarted."
+}

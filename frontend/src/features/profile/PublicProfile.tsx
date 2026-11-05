@@ -15,7 +15,7 @@ export function PublicProfile({ controller, userId, avatars, sharing, blocking, 
   const state = useSyncExternalStore(controller.subscribe, controller.read, controller.read)
   useEffect(() => { controller.start(); if (state.available) void controller.openProfile(userId); return () => controller.closeProfile() }, [controller, userId, state.available])
   const profile = state.available && state.target === userId && state.profile.phase === 'ready' ? state.profile.data : null
-  return <section className="reference-public-profile"><ConcertWindow title="Profile" headingLevel={1} icon="me" footer={<Link to="/meet/people">Back to people</Link>}>
+  return <section className="reference-public-profile pi-public-profile"><ConcertWindow title="Profile" headingLevel={1} icon="me" footer={<Link to="/meet/people">Back to people</Link>}>
     {profile ? <>
       <div className="public-profile-header"><div className="public-profile-identity">
         {renderAvatar ? <div className="intro-avatar">{renderAvatar(profile.avatar, `${profile.display_name}'s avatar`)}</div> : profile.avatar.config.contract_version === '1.0.0' ? <ReviewedProfileAvatar config={profile.avatar.config} label={`${profile.display_name}'s avatar`} options={avatars} /> : <div className="intro-avatar" role="img" aria-label={`${profile.display_name}'s avatar: selected character portrait unavailable`}>Selected character portrait unavailable in this connection.</div>}

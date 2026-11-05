@@ -1,0 +1,41 @@
+{
+  "booking": "PI06-FIXDOC16MiB-0035",
+  "expiresEpoch": 1793840400,
+  "capBytes": 16777216,
+  "conservativeReservedGrowthBytes": 13631488,
+  "initialEpoch": 1793839000.004311,
+  "initialFreeBytes": 15504056320,
+  "base": "f34d53cd9d7d295b48b9844972c3d713536a2d8c",
+  "retains": "Original64MiB expired00:25; all original/source01/native01 charge history retained, no deletion credits or reset",
+  "batches": [
+    {
+      "purpose": "profile identity type correction; native changed-driver lint preparation; own bookkeeping and Git",
+      "upperBytes": 2097152
+    },
+    {
+      "purpose": "native detached-descendant cleanup accounting, controls/docs/Git",
+      "upperBytes": 2097152
+    },
+    {
+      "purpose": "native02 diagnosis/focused tail preparation; saved snapshots/docs/Git; exact live membership receipt",
+      "upperBytes": 2097152
+    },
+    {
+      "purpose": "focused native tail/public-source reuse proof and docs/Git",
+      "upperBytes": 2097152
+    },
+    {
+      "purpose": "discoverable terminal resource receipt/control pin/Git",
+      "upperBytes": 1048576
+    },
+    {
+      "purpose": "independent global receipt census and atomic own controller receipts/control Git",
+      "upperBytes": 2097152
+    },
+    {
+      "purpose": "final source-bound provenance/reference comparison/handoff documentation and scoped Git",
+      "upperBytes": 2097152
+    }
+  ],
+  "rule": "Each later source/control/docs/Git mutation reserves another bounded upper before growth; finite execution NEW separately charged."
+}

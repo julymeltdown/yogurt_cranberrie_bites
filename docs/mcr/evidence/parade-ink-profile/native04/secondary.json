@@ -1,0 +1,10 @@
+{
+  "guard": "independent-secondary",
+  "startedEpoch": 1793839993.374114,
+  "samples": 0,
+  "peakProcesses": 0,
+  "peakRssKiB": 0,
+  "peakWholeBytes": 0,
+  "error": "Controller path mismatch",
+  "finishedEpoch": 1793839994.401746
+}

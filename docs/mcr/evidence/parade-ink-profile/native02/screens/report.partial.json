@@ -1,0 +1,1991 @@
+{
+  "job": "PI06-PROFILE-APP-NATIVE02-0035",
+  "status": "IN_PROGRESS",
+  "candidate": "f71a25633c65f2ddbfcf76fb45bfb5169b49c8c5",
+  "foundation": "056a8c48ff667134dee8e5e99710185294e4b898",
+  "shellCorrection": "b5b44e47531e3b75febc5ee5cdd6a11b1648779c",
+  "portrait": "d181bfe4bc487984a3e15f2d3ab07ed7d4727301",
+  "portraitPaths": [
+    "frontend/src/app/character-entry/ReviewedCharacterView.tsx",
+    "frontend/src/features/avatar/parade-ink/PortraitFrame.tsx",
+    "frontend/src/features/avatar/parade-ink/parade-ink-avatar.css"
+  ],
+  "harnessHead": "f71a25633c65f2ddbfcf76fb45bfb5169b49c8c5",
+  "qualification": "Frozen actual main + explicit PI01 presentation and PI07 unqualified frame checkpoints; controlled canonical HTTP/C05, not live or physical device",
+  "cases": [
+    {
+      "width": 360,
+      "status": "FAIL",
+      "errors": [],
+      "screens": [
+        {
+          "name": "public-profile",
+          "screenshot": "public-profile-360.png",
+          "viewport": {
+            "width": 360,
+            "height": 844
+          },
+          "horizontalOverflow": false,
+          "data": {
+            ".pi-public-profile .concert-window__titlebar": {
+              "x": 10,
+              "y": 58,
+              "width": 12,
+              "height": 48,
+              "font": "\"Parade Ink Text\", Arial, sans-serif",
+              "fontSize": "18px",
+              "lineHeight": "22px",
+              "color": "rgb(255, 255, 255)",
+              "background": "rgb(23, 23, 23)",
+              "overflow": "hidden",
+              "borderLeft": "0px none rgb(255, 255, 255)",
+              "backgroundImage": "none"
+            },
+            ".concert-window": {
+              "x": 11,
+              "y": 59,
+              "width": 338,
+              "height": 771,
+              "font": "\"Parade Ink Text\", Arial, sans-serif",
+              "fontSize": "18px",
+              "lineHeight": "22px",
+              "color": "rgb(23, 23, 23)",
+              "background": "rgba(0, 0, 0, 0)",
+              "overflow": "visible",
+              "borderLeft": "0px none rgb(23, 23, 23)",
+              "backgroundImage": "none"
+            },
+            ".concert-window__titlebar": {
+              "x": 10,
+              "y": 58,
+              "width": 12,
+              "height": 48,
+              "font": "\"Parade Ink Text\", Arial, sans-serif",
+              "fontSize": "18px",
+              "lineHeight": "22px",
+              "color": "rgb(255, 255, 255)",
+              "background": "rgb(23, 23, 23)",
+              "overflow": "hidden",
+              "borderLeft": "0px none rgb(255, 255, 255)",
+              "backgroundImage": "none"
+            },
+            ".reference-activity__list li": {
+              "x": 17,
+              "y": 407,
+              "width": 326,
+              "height": 119,
+              "font": "\"Parade Ink Text\", Arial, sans-serif",
+              "fontSize": "18px",
+              "lineHeight": "22px",
+              "color": "rgb(23, 23, 23)",
+              "background": "rgba(0, 0, 0, 0)",
+              "overflow": "visible",
+              "borderLeft": "0px none rgb(23, 23, 23)",
+              "backgroundImage": "none"
+            },
+            ".public-profile-identity": {
+              "x": 17,
+              "y": 69,
+              "width": 326,
+              "height": 170,
+              "font": "\"Parade Ink Text\", Arial, sans-serif",
+              "fontSize": "18px",
+              "lineHeight": "22px",
+              "color": "rgb(23, 23, 23)",
+              "background": "rgba(0, 0, 0, 0)",
+              "overflow": "visible",
+              "borderLeft": "0px none rgb(23, 23, 23)",
+              "backgroundImage": "none"
+            },
+            ".public-profile-copy h2": {
+              "x": 155,
+              "y": 69,
+              "width": 188,
+              "height": 56,
+              "font": "\"Parade Ink Text\", Arial, sans-serif",
+              "fontSize": "24px",
+              "lineHeight": "28px",
+              "color": "rgb(146, 37, 50)",
+              "background": "rgba(0, 0, 0, 0)",
+              "overflow": "visible",
+              "borderLeft": "0px none rgb(146, 37, 50)",
+              "backgroundImage": "none"
+            },
+            ".public-profile-actions": {
+              "x": 17,
+              "y": 247,
+              "width": 326,
+              "height": 44,
+              "font": "\"Parade Ink Text\", Arial, sans-serif",
+              "fontSize": "18px",
+              "lineHeight": "22px",
+              "color": "rgb(23, 23, 23)",
+              "background": "rgba(0, 0, 0, 0)",
+              "overflow": "visible",
+              "borderLeft": "0px none rgb(23, 23, 23)",
+              "backgroundImage": "none"
+            }
+          }
+        },
+        {
+          "name": "own-profile",
+          "screenshot": "own-profile-360.png",
+          "viewport": {
+            "width": 360,
+            "height": 844
+          },
+          "horizontalOverflow": false,
+          "data": {
+            ".me-hub--reference .concert-window__titlebar": {
+              "x": 10,
+              "y": 58,
+              "width": 12,
+              "height": 48,
+              "font": "\"Parade Ink Text\", Arial, sans-serif",
+              "fontSize": "18px",
+              "lineHeight": "22px",
+              "color": "rgb(255, 255, 255)",
+              "background": "rgb(23, 23, 23)",
+              "overflow": "hidden",
+              "borderLeft": "0px none rgb(255, 255, 255)",
+              "backgroundImage": "none"
+            },
+            ".me-profile-header": {
+              "x": 11,
+              "y": 59,
+              "width": 338,
+              "height": 207,
+              "font": "\"Parade Ink Text\", Arial, sans-serif",
+              "fontSize": "18px",
+              "lineHeight": "22px",
+              "color": "rgb(23, 23, 23)",
+              "background": "rgb(249, 249, 248)",
+              "overflow": "visible",
+              "borderLeft": "0px none rgb(23, 23, 23)",
+              "backgroundImage": "none"
+            },
+            ".concert-window": {
+              "x": 11,
+              "y": 59,
+              "width": 338,
+              "height": 657,
+              "font": "\"Parade Ink Text\", Arial, sans-serif",
+              "fontSize": "18px",
+              "lineHeight": "22px",
+              "color": "rgb(23, 23, 23)",
+              "background": "rgba(0, 0, 0, 0)",
+              "overflow": "visible",
+              "borderLeft": "0px none rgb(23, 23, 23)",
+              "backgroundImage": "none"
+            },
+            ".concert-window__titlebar": {
+              "x": 10,
+              "y": 58,
+              "width": 12,
+              "height": 48,
+              "font": "\"Parade Ink Text\", Arial, sans-serif",
+              "fontSize": "18px",
+              "lineHeight": "22px",
+              "color": "rgb(255, 255, 255)",
+              "background": "rgb(23, 23, 23)",
+              "overflow": "hidden",
+              "borderLeft": "0px none rgb(255, 255, 255)",
+              "backgroundImage": "none"
+            },
+            ".me-identity": {
+              "x": 17,
+              "y": 69,
+              "width": 326,
+              "height": 186,
+              "font": "\"Parade Ink Text\", Arial, sans-serif",
+              "fontSize": "18px",
+              "lineHeight": "22px",
+              "color": "rgb(23, 23, 23)",
+              "background": "rgba(0, 0, 0, 0)",
+              "overflow": "visible",
+              "borderLeft": "0px none rgb(23, 23, 23)",
+              "backgroundImage": "none"
+            },
+            ".me-avatar--presentation": {
+              "x": 17,
+              "y": 69,
+              "width": 128,
+              "height": 170,
+              "font": "\"Parade Ink Text\", Arial, sans-serif",
+              "fontSize": "14px",
+              "lineHeight": "18px",
+              "color": "rgb(84, 84, 84)",
+              "background": "rgba(0, 0, 0, 0)",
+              "overflow": "visible",
+              "borderLeft": "0px none rgb(84, 84, 84)",
+              "backgroundImage": "none"
+            },
+            ".me-identity__copy h3": {
+              "x": 155,
+              "y": 69,
+              "width": 188,
+              "height": 56,
+              "font": "\"Parade Ink Text\", Arial, sans-serif",
+              "fontSize": "24px",
+              "lineHeight": "28px",
+              "color": "rgb(146, 37, 50)",
+              "background": "rgba(0, 0, 0, 0)",
+              "overflow": "visible",
+              "borderLeft": "0px none rgb(146, 37, 50)",
+              "backgroundImage": "none"
+            },
+            ".me-bio": {
+              "x": 155,
+              "y": 133,
+              "width": 188,
+              "height": 44,
+              "font": "\"Parade Ink Text\", Arial, sans-serif",
+              "fontSize": "18px",
+              "lineHeight": "22px",
+              "color": "rgb(23, 23, 23)",
+              "background": "rgb(249, 249, 248)",
+              "overflow": "visible",
+              "borderLeft": "0px none rgb(23, 23, 23)",
+              "backgroundImage": "none"
+            },
+            ".pi-profile-customize": {
+              "x": 155,
+              "y": 211,
+              "width": 188,
+              "height": 44,
+              "font": "\"Parade Ink Display\", \"Arial Narrow\", Arial, sans-serif",
+              "fontSize": "18px",
+              "lineHeight": "22px",
+              "color": "rgb(23, 23, 23)",
+              "background": "rgb(249, 249, 248)",
+              "overflow": "visible",
+              "borderLeft": "2px solid rgb(60, 60, 59)",
+              "backgroundImage": "none"
+            },
+            ".me-activity-navigation": {
+              "x": 11,
+              "y": 266,
+              "width": 338,
+              "height": 57,
+              "font": "\"Parade Ink Text\", Arial, sans-serif",
+              "fontSize": "18px",
+              "lineHeight": "22px",
+              "color": "rgb(23, 23, 23)",
+              "background": "rgb(249, 249, 248)",
+              "overflow": "visible",
+              "borderLeft": "0px none rgb(23, 23, 23)",
+              "backgroundImage": "none"
+            },
+            ".reference-activity__list li": {
+              "x": 17,
+              "y": 371,
+              "width": 326,
+              "height": 119,
+              "font": "\"Parade Ink Text\", Arial, sans-serif",
+              "fontSize": "18px",
+              "lineHeight": "22px",
+              "color": "rgb(23, 23, 23)",
+              "background": "rgba(0, 0, 0, 0)",
+              "overflow": "visible",
+              "borderLeft": "0px none rgb(23, 23, 23)",
+              "backgroundImage": "none"
+            }
+          }
+        },
+        {
+          "name": "edit-profile",
+          "screenshot": "edit-profile-360.png",
+          "viewport": {
+            "width": 360,
+            "height": 844
+          },
+          "horizontalOverflow": false,
+          "data": {
+            ".concert-window": {
+              "x": 11,
+              "y": 59,
+              "width": 338,
+              "height": 719.78125,
+              "font": "\"Parade Ink Text\", Arial, sans-serif",
+              "fontSize": "18px",
+              "lineHeight": "22px",
+              "color": "rgb(23, 23, 23)",
+              "background": "rgba(0, 0, 0, 0)",
+              "overflow": "visible",
+              "borderLeft": "0px none rgb(23, 23, 23)",
+              "backgroundImage": "none"
+            },
+            ".concert-window__titlebar": {
+              "x": 10,
+              "y": 58,
+              "width": 12,
+              "height": 48,
+              "font": "\"Parade Ink Text\", Arial, sans-serif",
+              "fontSize": "18px",
+              "lineHeight": "22px",
+              "color": "rgb(255, 255, 255)",
+              "background": "rgb(23, 23, 23)",
+              "overflow": "hidden",
+              "borderLeft": "0px none rgb(255, 255, 255)",
+              "backgroundImage": "none"
+            },
+            ".pi-profile-form fieldset": {
+              "x": 17,
+              "y": 195,
+              "width": 326,
+              "height": 452.78125,
+              "font": "\"Parade Ink Text\", Arial, sans-serif",
+              "fontSize": "18px",
+              "lineHeight": "22px",
+              "color": "rgb(23, 23, 23)",
+              "background": "rgba(0, 0, 0, 0)",
+              "overflow": "visible",
+              "borderLeft": "0px none rgb(23, 23, 23)",
+              "backgroundImage": "none"
+            }
+          }
+        }
+      ],
+      "profile": {
+        "qualification": "ACTUAL_MAIN_CONTROLLED_CANONICAL_HTTP_C05_NOT_LIVE",
+        "mode": "loaded",
+        "path": "/me",
+        "requests": [
+          {
+            "path": "/api/auth/capabilities",
+            "method": "GET",
+            "status": 200
+          },
+          {
+            "path": "/api/auth/login",
+            "method": "POST",
+            "status": 200
+          },
+          {
+            "path": "/api/auth/enrollment/admission",
+            "method": "GET",
+            "status": 200
+          },
+          {
+            "path": "/api/auth/enrollment/admission",
+            "method": "GET",
+            "status": 200
+          },
+          {
+            "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/bootstrap",
+            "method": "GET",
+            "status": 200
+          },
+          {
+            "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/rooms",
+            "method": "GET",
+            "status": 200
+          },
+          {
+            "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/places",
+            "method": "GET",
+            "status": 404
+          },
+          {
+            "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/world-tickets",
+            "method": "POST",
+            "status": 200
+          },
+          {
+            "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/mural/tools",
+            "method": "GET",
+            "status": 404
+          },
+          {
+            "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/feed",
+            "method": "GET",
+            "status": 200
+          },
+          {
+            "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/notices",
+            "method": "GET",
+            "status": 404
+          },
+          {
+            "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/intros",
+            "method": "GET",
+            "status": 200
+          },
+          {
+            "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/me/intro",
+            "method": "GET",
+            "status": 404
+          },
+          {
+            "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/me/age-status",
+            "method": "GET",
+            "status": 404
+          },
+          {
+            "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/me/notifications",
+            "method": "GET",
+            "status": 404
+          },
+          {
+            "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/media/00000000-0000-4000-8000-000000000075",
+            "method": "GET",
+            "status": 200
+          },
+          {
+            "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/media/00000000-0000-4000-8000-000000000077",
+            "method": "GET",
+            "status": 404
+          },
+          {
+            "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/media/00000000-0000-4000-8000-000000000076",
+            "method": "GET",
+            "status": 200
+          },
+          {
+            "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/media/00000000-0000-4000-8000-000000000075/content",
+            "method": "GET",
+            "status": 200
+          },
+          {
+            "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/media/00000000-0000-4000-8000-000000000076/content",
+            "method": "GET",
+            "status": 200
+          },
+          {
+            "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/mural/tools",
+            "method": "GET",
+            "status": 404
+          },
+          {
+            "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/intros",
+            "method": "GET",
+            "status": 200
+          },
+          {
+            "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/people/e5561eef-e758-567c-ae16-a8ae82e60bc7",
+            "method": "GET",
+            "status": 200
+          },
+          {
+            "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/me",
+            "method": "GET",
+            "status": 200
+          }
+        ],
+        "feedReads": 1,
+        "userId": "e5561eef-e758-567c-ae16-a8ae82e60bc7",
+        "preferredEra": "PARADE",
+        "mediaReads": 5,
+        "socketsCreated": 1,
+        "activeSockets": 1,
+        "peakSockets": 1,
+        "admittedStreams": 1,
+        "canvases": 1,
+        "peakCanvases": 1,
+        "urls": {
+          "created": [
+            "blob:http://127.0.0.1:4196/c379310d-f9e2-44b8-89eb-9bc7cf135bd9",
+            "blob:http://127.0.0.1:4196/853f0491-984f-407a-8105-84ff9a7fd58b",
+            "blob:http://127.0.0.1:4196/c1eecdd4-bc67-4e08-bc6b-1671601be033",
+            "blob:http://127.0.0.1:4196/c4a8785f-f73d-4437-816b-e873ccedc38a",
+            "blob:http://127.0.0.1:4196/d498c1a5-47aa-46cc-b1bc-efab7a843598",
+            "blob:http://127.0.0.1:4196/18924a3e-a863-4d85-ba99-cdfe3368a5fd",
+            "blob:http://127.0.0.1:4196/8d4b2aef-c68e-42f8-80cf-71731c3298ca",
+            "blob:http://127.0.0.1:4196/0c1f297e-9cb6-4564-bbd3-342d970979ec"
+          ],
+          "revoked": [
+            "blob:http://127.0.0.1:4196/d498c1a5-47aa-46cc-b1bc-efab7a843598"
+          ]
+        }
+      },
+      "error": "Error: expect(locator).toHaveValue(expected) failed\n\nLocator: getByLabel('Preferred era', { exact: true })\nExpected: \"PARADE\"\nTimeout: 5000ms\nError: element(s) not found\n\nCall log:\n  - Expect \"to.have.value\" with timeout 5000ms\n  - waiting for getByLabel('Preferred era', { exact: true })\n\n    at captureRawStack (/Users/lhs/Desktop/mcr-worktrees/fe-public/frontend/node_modules/.pnpm/playwright-core@1.61.1/node_modules/playwright-core/lib/coreBundle.js:3172:17)\n    at callMatcherAsStep (/Users/lhs/Desktop/mcr-worktrees/fe-public/frontend/node_modules/.pnpm/playwright@1.61.1/node_modules/playwright/lib/matchers/expect.js:12877:57)\n    at Object.toHaveValue (/Users/lhs/Desktop/mcr-worktrees/fe-public/frontend/node_modules/.pnpm/playwright@1.61.1/node_modules/playwright/lib/matchers/expect.js:12867:23)\n    at /Users/lhs/Desktop/mcr-worktrees/fe-public/frontend/e2e/visual/qa06/parade-ink-profile/native.mjs:124:79",
+      "failure": {
+        "state": {
+          "qualification": "ACTUAL_MAIN_CONTROLLED_CANONICAL_HTTP_C05_NOT_LIVE",
+          "mode": "loaded",
+          "path": "/me/settings",
+          "requests": [
+            {
+              "path": "/api/auth/capabilities",
+              "method": "GET",
+              "status": 200
+            },
+            {
+              "path": "/api/auth/login",
+              "method": "POST",
+              "status": 200
+            },
+            {
+              "path": "/api/auth/enrollment/admission",
+              "method": "GET",
+              "status": 200
+            },
+            {
+              "path": "/api/auth/enrollment/admission",
+              "method": "GET",
+              "status": 200
+            },
+            {
+              "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/bootstrap",
+              "method": "GET",
+              "status": 200
+            },
+            {
+              "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/rooms",
+              "method": "GET",
+              "status": 200
+            },
+            {
+              "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/places",
+              "method": "GET",
+              "status": 404
+            },
+            {
+              "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/world-tickets",
+              "method": "POST",
+              "status": 200
+            },
+            {
+              "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/mural/tools",
+              "method": "GET",
+              "status": 404
+            },
+            {
+              "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/feed",
+              "method": "GET",
+              "status": 200
+            },
+            {
+              "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/notices",
+              "method": "GET",
+              "status": 404
+            },
+            {
+              "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/intros",
+              "method": "GET",
+              "status": 200
+            },
+            {
+              "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/me/intro",
+              "method": "GET",
+              "status": 404
+            },
+            {
+              "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/me/age-status",
+              "method": "GET",
+              "status": 404
+            },
+            {
+              "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/me/notifications",
+              "method": "GET",
+              "status": 404
+            },
+            {
+              "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/media/00000000-0000-4000-8000-000000000075",
+              "method": "GET",
+              "status": 200
+            },
+            {
+              "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/media/00000000-0000-4000-8000-000000000077",
+              "method": "GET",
+              "status": 404
+            },
+            {
+              "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/media/00000000-0000-4000-8000-000000000076",
+              "method": "GET",
+              "status": 200
+            },
+            {
+              "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/media/00000000-0000-4000-8000-000000000075/content",
+              "method": "GET",
+              "status": 200
+            },
+            {
+              "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/media/00000000-0000-4000-8000-000000000076/content",
+              "method": "GET",
+              "status": 200
+            },
+            {
+              "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/mural/tools",
+              "method": "GET",
+              "status": 404
+            },
+            {
+              "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/intros",
+              "method": "GET",
+              "status": 200
+            },
+            {
+              "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/people/e5561eef-e758-567c-ae16-a8ae82e60bc7",
+              "method": "GET",
+              "status": 200
+            },
+            {
+              "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/me",
+              "method": "GET",
+              "status": 200
+            },
+            {
+              "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/mural/tools",
+              "method": "GET",
+              "status": 404
+            },
+            {
+              "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/mural/tools",
+              "method": "GET",
+              "status": 404
+            },
+            {
+              "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/mural/tools",
+              "method": "GET",
+              "status": 404
+            }
+          ],
+          "feedReads": 1,
+          "userId": "e5561eef-e758-567c-ae16-a8ae82e60bc7",
+          "preferredEra": "PARADE",
+          "mediaReads": 5,
+          "socketsCreated": 1,
+          "activeSockets": 1,
+          "peakSockets": 1,
+          "admittedStreams": 1,
+          "canvases": 1,
+          "peakCanvases": 1,
+          "urls": {
+            "created": [
+              "blob:http://127.0.0.1:4196/c379310d-f9e2-44b8-89eb-9bc7cf135bd9",
+              "blob:http://127.0.0.1:4196/853f0491-984f-407a-8105-84ff9a7fd58b",
+              "blob:http://127.0.0.1:4196/c1eecdd4-bc67-4e08-bc6b-1671601be033",
+              "blob:http://127.0.0.1:4196/c4a8785f-f73d-4437-816b-e873ccedc38a",
+              "blob:http://127.0.0.1:4196/d498c1a5-47aa-46cc-b1bc-efab7a843598",
+              "blob:http://127.0.0.1:4196/18924a3e-a863-4d85-ba99-cdfe3368a5fd",
+              "blob:http://127.0.0.1:4196/8d4b2aef-c68e-42f8-80cf-71731c3298ca",
+              "blob:http://127.0.0.1:4196/0c1f297e-9cb6-4564-bbd3-342d970979ec"
+            ],
+            "revoked": [
+              "blob:http://127.0.0.1:4196/d498c1a5-47aa-46cc-b1bc-efab7a843598"
+            ]
+          }
+        },
+        "text": "Skip to content\nSETTINGS\nSETTINGS\n\nSaved for your account and this event. Sound stays off until you explicitly apply it in this session.\n\nUnsaved changes discarded.\n\nDiscard drafts and reload saved version\nSAVED PREFERENCES\nPreferred era\nREVENGE\nPARADE\nDANGER\nLow power\nReduced motion\nEnable sound\n\nSound is off by default. Saving a preference does not start audio.\n\nSave preferences\nCancel preference changes\nApply saved preferences in this session\n\nCHOOSE AN ERA\n\nOne world, three skins. Your room, position and outfit stay with you.\n\nWORLD SKIN\nREVENGE\nPARADE\nDANGER\n\nPARADE selected.\n\nAccount controls\nBack to world"
+      }
+    },
+    {
+      "width": 390,
+      "status": "FAIL",
+      "errors": [],
+      "screens": [
+        {
+          "name": "public-profile",
+          "screenshot": "public-profile-390.png",
+          "viewport": {
+            "width": 390,
+            "height": 844
+          },
+          "horizontalOverflow": false,
+          "data": {
+            ".pi-public-profile .concert-window__titlebar": {
+              "x": 10,
+              "y": 58,
+              "width": 12,
+              "height": 48,
+              "font": "\"Parade Ink Text\", Arial, sans-serif",
+              "fontSize": "18px",
+              "lineHeight": "22px",
+              "color": "rgb(255, 255, 255)",
+              "background": "rgb(23, 23, 23)",
+              "overflow": "hidden",
+              "borderLeft": "0px none rgb(255, 255, 255)",
+              "backgroundImage": "none"
+            },
+            ".concert-window": {
+              "x": 11,
+              "y": 59,
+              "width": 368,
+              "height": 735,
+              "font": "\"Parade Ink Text\", Arial, sans-serif",
+              "fontSize": "18px",
+              "lineHeight": "22px",
+              "color": "rgb(23, 23, 23)",
+              "background": "rgba(0, 0, 0, 0)",
+              "overflow": "visible",
+              "borderLeft": "0px none rgb(23, 23, 23)",
+              "backgroundImage": "none"
+            },
+            ".concert-window__titlebar": {
+              "x": 10,
+              "y": 58,
+              "width": 12,
+              "height": 48,
+              "font": "\"Parade Ink Text\", Arial, sans-serif",
+              "fontSize": "18px",
+              "lineHeight": "22px",
+              "color": "rgb(255, 255, 255)",
+              "background": "rgb(23, 23, 23)",
+              "overflow": "hidden",
+              "borderLeft": "0px none rgb(255, 255, 255)",
+              "backgroundImage": "none"
+            },
+            ".reference-activity__list li": {
+              "x": 17,
+              "y": 407,
+              "width": 356,
+              "height": 101,
+              "font": "\"Parade Ink Text\", Arial, sans-serif",
+              "fontSize": "18px",
+              "lineHeight": "22px",
+              "color": "rgb(23, 23, 23)",
+              "background": "rgba(0, 0, 0, 0)",
+              "overflow": "visible",
+              "borderLeft": "0px none rgb(23, 23, 23)",
+              "backgroundImage": "none"
+            },
+            ".public-profile-identity": {
+              "x": 17,
+              "y": 69,
+              "width": 356,
+              "height": 170,
+              "font": "\"Parade Ink Text\", Arial, sans-serif",
+              "fontSize": "18px",
+              "lineHeight": "22px",
+              "color": "rgb(23, 23, 23)",
+              "background": "rgba(0, 0, 0, 0)",
+              "overflow": "visible",
+              "borderLeft": "0px none rgb(23, 23, 23)",
+              "backgroundImage": "none"
+            },
+            ".public-profile-copy h2": {
+              "x": 161,
+              "y": 69,
+              "width": 212,
+              "height": 56,
+              "font": "\"Parade Ink Text\", Arial, sans-serif",
+              "fontSize": "24px",
+              "lineHeight": "28px",
+              "color": "rgb(146, 37, 50)",
+              "background": "rgba(0, 0, 0, 0)",
+              "overflow": "visible",
+              "borderLeft": "0px none rgb(146, 37, 50)",
+              "backgroundImage": "none"
+            },
+            ".public-profile-actions": {
+              "x": 17,
+              "y": 247,
+              "width": 356,
+              "height": 44,
+              "font": "\"Parade Ink Text\", Arial, sans-serif",
+              "fontSize": "18px",
+              "lineHeight": "22px",
+              "color": "rgb(23, 23, 23)",
+              "background": "rgba(0, 0, 0, 0)",
+              "overflow": "visible",
+              "borderLeft": "0px none rgb(23, 23, 23)",
+              "backgroundImage": "none"
+            }
+          }
+        },
+        {
+          "name": "own-profile",
+          "screenshot": "own-profile-390.png",
+          "viewport": {
+            "width": 390,
+            "height": 844
+          },
+          "horizontalOverflow": false,
+          "data": {
+            ".me-hub--reference .concert-window__titlebar": {
+              "x": 10,
+              "y": 58,
+              "width": 12,
+              "height": 48,
+              "font": "\"Parade Ink Text\", Arial, sans-serif",
+              "fontSize": "18px",
+              "lineHeight": "22px",
+              "color": "rgb(255, 255, 255)",
+              "background": "rgb(23, 23, 23)",
+              "overflow": "hidden",
+              "borderLeft": "0px none rgb(255, 255, 255)",
+              "backgroundImage": "none"
+            },
+            ".me-profile-header": {
+              "x": 11,
+              "y": 59,
+              "width": 368,
+              "height": 207,
+              "font": "\"Parade Ink Text\", Arial, sans-serif",
+              "fontSize": "18px",
+              "lineHeight": "22px",
+              "color": "rgb(23, 23, 23)",
+              "background": "rgb(249, 249, 248)",
+              "overflow": "visible",
+              "borderLeft": "0px none rgb(23, 23, 23)",
+              "backgroundImage": "none"
+            },
+            ".concert-window": {
+              "x": 11,
+              "y": 59,
+              "width": 368,
+              "height": 621,
+              "font": "\"Parade Ink Text\", Arial, sans-serif",
+              "fontSize": "18px",
+              "lineHeight": "22px",
+              "color": "rgb(23, 23, 23)",
+              "background": "rgba(0, 0, 0, 0)",
+              "overflow": "visible",
+              "borderLeft": "0px none rgb(23, 23, 23)",
+              "backgroundImage": "none"
+            },
+            ".concert-window__titlebar": {
+              "x": 10,
+              "y": 58,
+              "width": 12,
+              "height": 48,
+              "font": "\"Parade Ink Text\", Arial, sans-serif",
+              "fontSize": "18px",
+              "lineHeight": "22px",
+              "color": "rgb(255, 255, 255)",
+              "background": "rgb(23, 23, 23)",
+              "overflow": "hidden",
+              "borderLeft": "0px none rgb(255, 255, 255)",
+              "backgroundImage": "none"
+            },
+            ".me-identity": {
+              "x": 17,
+              "y": 69,
+              "width": 356,
+              "height": 186,
+              "font": "\"Parade Ink Text\", Arial, sans-serif",
+              "fontSize": "18px",
+              "lineHeight": "22px",
+              "color": "rgb(23, 23, 23)",
+              "background": "rgba(0, 0, 0, 0)",
+              "overflow": "visible",
+              "borderLeft": "0px none rgb(23, 23, 23)",
+              "backgroundImage": "none"
+            },
+            ".me-avatar--presentation": {
+              "x": 17,
+              "y": 69,
+              "width": 128,
+              "height": 170,
+              "font": "\"Parade Ink Text\", Arial, sans-serif",
+              "fontSize": "14px",
+              "lineHeight": "18px",
+              "color": "rgb(84, 84, 84)",
+              "background": "rgba(0, 0, 0, 0)",
+              "overflow": "visible",
+              "borderLeft": "0px none rgb(84, 84, 84)",
+              "backgroundImage": "none"
+            },
+            ".me-identity__copy h3": {
+              "x": 161,
+              "y": 69,
+              "width": 212,
+              "height": 56,
+              "font": "\"Parade Ink Text\", Arial, sans-serif",
+              "fontSize": "24px",
+              "lineHeight": "28px",
+              "color": "rgb(146, 37, 50)",
+              "background": "rgba(0, 0, 0, 0)",
+              "overflow": "visible",
+              "borderLeft": "0px none rgb(146, 37, 50)",
+              "backgroundImage": "none"
+            },
+            ".me-bio": {
+              "x": 161,
+              "y": 133,
+              "width": 212,
+              "height": 44,
+              "font": "\"Parade Ink Text\", Arial, sans-serif",
+              "fontSize": "18px",
+              "lineHeight": "22px",
+              "color": "rgb(23, 23, 23)",
+              "background": "rgb(249, 249, 248)",
+              "overflow": "visible",
+              "borderLeft": "0px none rgb(23, 23, 23)",
+              "backgroundImage": "none"
+            },
+            ".pi-profile-customize": {
+              "x": 161,
+              "y": 211,
+              "width": 128,
+              "height": 44,
+              "font": "\"Parade Ink Display\", \"Arial Narrow\", Arial, sans-serif",
+              "fontSize": "18px",
+              "lineHeight": "22px",
+              "color": "rgb(23, 23, 23)",
+              "background": "rgb(249, 249, 248)",
+              "overflow": "visible",
+              "borderLeft": "2px solid rgb(60, 60, 59)",
+              "backgroundImage": "none"
+            },
+            ".me-activity-navigation": {
+              "x": 11,
+              "y": 266,
+              "width": 368,
+              "height": 57,
+              "font": "\"Parade Ink Text\", Arial, sans-serif",
+              "fontSize": "18px",
+              "lineHeight": "22px",
+              "color": "rgb(23, 23, 23)",
+              "background": "rgb(249, 249, 248)",
+              "overflow": "visible",
+              "borderLeft": "0px none rgb(23, 23, 23)",
+              "backgroundImage": "none"
+            },
+            ".reference-activity__list li": {
+              "x": 17,
+              "y": 371,
+              "width": 356,
+              "height": 101,
+              "font": "\"Parade Ink Text\", Arial, sans-serif",
+              "fontSize": "18px",
+              "lineHeight": "22px",
+              "color": "rgb(23, 23, 23)",
+              "background": "rgba(0, 0, 0, 0)",
+              "overflow": "visible",
+              "borderLeft": "0px none rgb(23, 23, 23)",
+              "backgroundImage": "none"
+            }
+          }
+        },
+        {
+          "name": "edit-profile",
+          "screenshot": "edit-profile-390.png",
+          "viewport": {
+            "width": 390,
+            "height": 844
+          },
+          "horizontalOverflow": false,
+          "data": {
+            ".concert-window": {
+              "x": 11,
+              "y": 59,
+              "width": 368,
+              "height": 719.78125,
+              "font": "\"Parade Ink Text\", Arial, sans-serif",
+              "fontSize": "18px",
+              "lineHeight": "22px",
+              "color": "rgb(23, 23, 23)",
+              "background": "rgba(0, 0, 0, 0)",
+              "overflow": "visible",
+              "borderLeft": "0px none rgb(23, 23, 23)",
+              "backgroundImage": "none"
+            },
+            ".concert-window__titlebar": {
+              "x": 10,
+              "y": 58,
+              "width": 12,
+              "height": 48,
+              "font": "\"Parade Ink Text\", Arial, sans-serif",
+              "fontSize": "18px",
+              "lineHeight": "22px",
+              "color": "rgb(255, 255, 255)",
+              "background": "rgb(23, 23, 23)",
+              "overflow": "hidden",
+              "borderLeft": "0px none rgb(255, 255, 255)",
+              "backgroundImage": "none"
+            },
+            ".pi-profile-form fieldset": {
+              "x": 17,
+              "y": 195,
+              "width": 356,
+              "height": 452.78125,
+              "font": "\"Parade Ink Text\", Arial, sans-serif",
+              "fontSize": "18px",
+              "lineHeight": "22px",
+              "color": "rgb(23, 23, 23)",
+              "background": "rgba(0, 0, 0, 0)",
+              "overflow": "visible",
+              "borderLeft": "0px none rgb(23, 23, 23)",
+              "backgroundImage": "none"
+            }
+          }
+        }
+      ],
+      "profile": {
+        "qualification": "ACTUAL_MAIN_CONTROLLED_CANONICAL_HTTP_C05_NOT_LIVE",
+        "mode": "loaded",
+        "path": "/me",
+        "requests": [
+          {
+            "path": "/api/auth/capabilities",
+            "method": "GET",
+            "status": 200
+          },
+          {
+            "path": "/api/auth/login",
+            "method": "POST",
+            "status": 200
+          },
+          {
+            "path": "/api/auth/enrollment/admission",
+            "method": "GET",
+            "status": 200
+          },
+          {
+            "path": "/api/auth/enrollment/admission",
+            "method": "GET",
+            "status": 200
+          },
+          {
+            "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/bootstrap",
+            "method": "GET",
+            "status": 200
+          },
+          {
+            "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/rooms",
+            "method": "GET",
+            "status": 200
+          },
+          {
+            "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/places",
+            "method": "GET",
+            "status": 404
+          },
+          {
+            "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/world-tickets",
+            "method": "POST",
+            "status": 200
+          },
+          {
+            "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/mural/tools",
+            "method": "GET",
+            "status": 404
+          },
+          {
+            "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/feed",
+            "method": "GET",
+            "status": 200
+          },
+          {
+            "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/notices",
+            "method": "GET",
+            "status": 404
+          },
+          {
+            "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/intros",
+            "method": "GET",
+            "status": 200
+          },
+          {
+            "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/me/intro",
+            "method": "GET",
+            "status": 404
+          },
+          {
+            "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/me/age-status",
+            "method": "GET",
+            "status": 404
+          },
+          {
+            "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/me/notifications",
+            "method": "GET",
+            "status": 404
+          },
+          {
+            "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/media/00000000-0000-4000-8000-000000000075",
+            "method": "GET",
+            "status": 200
+          },
+          {
+            "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/media/00000000-0000-4000-8000-000000000077",
+            "method": "GET",
+            "status": 404
+          },
+          {
+            "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/media/00000000-0000-4000-8000-000000000076",
+            "method": "GET",
+            "status": 200
+          },
+          {
+            "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/media/00000000-0000-4000-8000-000000000075/content",
+            "method": "GET",
+            "status": 200
+          },
+          {
+            "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/media/00000000-0000-4000-8000-000000000076/content",
+            "method": "GET",
+            "status": 200
+          },
+          {
+            "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/mural/tools",
+            "method": "GET",
+            "status": 404
+          },
+          {
+            "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/intros",
+            "method": "GET",
+            "status": 200
+          },
+          {
+            "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/people/e5561eef-e758-567c-ae16-a8ae82e60bc7",
+            "method": "GET",
+            "status": 200
+          },
+          {
+            "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/me",
+            "method": "GET",
+            "status": 200
+          }
+        ],
+        "feedReads": 1,
+        "userId": "e5561eef-e758-567c-ae16-a8ae82e60bc7",
+        "preferredEra": "PARADE",
+        "mediaReads": 5,
+        "socketsCreated": 1,
+        "activeSockets": 1,
+        "peakSockets": 1,
+        "admittedStreams": 1,
+        "canvases": 1,
+        "peakCanvases": 1,
+        "urls": {
+          "created": [
+            "blob:http://127.0.0.1:4196/7c051b1a-7603-4e9c-a922-acdb966c94f2",
+            "blob:http://127.0.0.1:4196/441ebb05-9f51-4c9a-a460-83fec09740d3",
+            "blob:http://127.0.0.1:4196/b959f031-9745-46af-82c0-074b8e97ce0c",
+            "blob:http://127.0.0.1:4196/cf2b187a-f3fa-439a-b60b-e36824f4a4fc",
+            "blob:http://127.0.0.1:4196/6ddc2986-e5da-4ce9-a1f7-3855b12301a4",
+            "blob:http://127.0.0.1:4196/30287caf-7ccb-4449-92bb-43d01f3ab197",
+            "blob:http://127.0.0.1:4196/5dd4a396-4b0a-4277-9eff-ed09e0c40231",
+            "blob:http://127.0.0.1:4196/66aaacd2-f93e-47ea-bff1-0a2ae879f13a"
+          ],
+          "revoked": [
+            "blob:http://127.0.0.1:4196/6ddc2986-e5da-4ce9-a1f7-3855b12301a4"
+          ]
+        }
+      },
+      "error": "Error: expect(locator).toHaveValue(expected) failed\n\nLocator: getByLabel('Preferred era', { exact: true })\nExpected: \"PARADE\"\nTimeout: 5000ms\nError: element(s) not found\n\nCall log:\n  - Expect \"to.have.value\" with timeout 5000ms\n  - waiting for getByLabel('Preferred era', { exact: true })\n\n    at captureRawStack (/Users/lhs/Desktop/mcr-worktrees/fe-public/frontend/node_modules/.pnpm/playwright-core@1.61.1/node_modules/playwright-core/lib/coreBundle.js:3172:17)\n    at callMatcherAsStep (/Users/lhs/Desktop/mcr-worktrees/fe-public/frontend/node_modules/.pnpm/playwright@1.61.1/node_modules/playwright/lib/matchers/expect.js:12877:57)\n    at Object.toHaveValue (/Users/lhs/Desktop/mcr-worktrees/fe-public/frontend/node_modules/.pnpm/playwright@1.61.1/node_modules/playwright/lib/matchers/expect.js:12867:23)\n    at /Users/lhs/Desktop/mcr-worktrees/fe-public/frontend/e2e/visual/qa06/parade-ink-profile/native.mjs:124:79",
+      "failure": {
+        "state": {
+          "qualification": "ACTUAL_MAIN_CONTROLLED_CANONICAL_HTTP_C05_NOT_LIVE",
+          "mode": "loaded",
+          "path": "/me/settings",
+          "requests": [
+            {
+              "path": "/api/auth/capabilities",
+              "method": "GET",
+              "status": 200
+            },
+            {
+              "path": "/api/auth/login",
+              "method": "POST",
+              "status": 200
+            },
+            {
+              "path": "/api/auth/enrollment/admission",
+              "method": "GET",
+              "status": 200
+            },
+            {
+              "path": "/api/auth/enrollment/admission",
+              "method": "GET",
+              "status": 200
+            },
+            {
+              "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/bootstrap",
+              "method": "GET",
+              "status": 200
+            },
+            {
+              "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/rooms",
+              "method": "GET",
+              "status": 200
+            },
+            {
+              "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/places",
+              "method": "GET",
+              "status": 404
+            },
+            {
+              "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/world-tickets",
+              "method": "POST",
+              "status": 200
+            },
+            {
+              "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/mural/tools",
+              "method": "GET",
+              "status": 404
+            },
+            {
+              "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/feed",
+              "method": "GET",
+              "status": 200
+            },
+            {
+              "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/notices",
+              "method": "GET",
+              "status": 404
+            },
+            {
+              "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/intros",
+              "method": "GET",
+              "status": 200
+            },
+            {
+              "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/me/intro",
+              "method": "GET",
+              "status": 404
+            },
+            {
+              "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/me/age-status",
+              "method": "GET",
+              "status": 404
+            },
+            {
+              "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/me/notifications",
+              "method": "GET",
+              "status": 404
+            },
+            {
+              "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/media/00000000-0000-4000-8000-000000000075",
+              "method": "GET",
+              "status": 200
+            },
+            {
+              "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/media/00000000-0000-4000-8000-000000000077",
+              "method": "GET",
+              "status": 404
+            },
+            {
+              "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/media/00000000-0000-4000-8000-000000000076",
+              "method": "GET",
+              "status": 200
+            },
+            {
+              "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/media/00000000-0000-4000-8000-000000000075/content",
+              "method": "GET",
+              "status": 200
+            },
+            {
+              "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/media/00000000-0000-4000-8000-000000000076/content",
+              "method": "GET",
+              "status": 200
+            },
+            {
+              "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/mural/tools",
+              "method": "GET",
+              "status": 404
+            },
+            {
+              "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/intros",
+              "method": "GET",
+              "status": 200
+            },
+            {
+              "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/people/e5561eef-e758-567c-ae16-a8ae82e60bc7",
+              "method": "GET",
+              "status": 200
+            },
+            {
+              "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/me",
+              "method": "GET",
+              "status": 200
+            },
+            {
+              "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/mural/tools",
+              "method": "GET",
+              "status": 404
+            },
+            {
+              "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/mural/tools",
+              "method": "GET",
+              "status": 404
+            },
+            {
+              "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/mural/tools",
+              "method": "GET",
+              "status": 404
+            }
+          ],
+          "feedReads": 1,
+          "userId": "e5561eef-e758-567c-ae16-a8ae82e60bc7",
+          "preferredEra": "PARADE",
+          "mediaReads": 5,
+          "socketsCreated": 1,
+          "activeSockets": 1,
+          "peakSockets": 1,
+          "admittedStreams": 1,
+          "canvases": 1,
+          "peakCanvases": 1,
+          "urls": {
+            "created": [
+              "blob:http://127.0.0.1:4196/7c051b1a-7603-4e9c-a922-acdb966c94f2",
+              "blob:http://127.0.0.1:4196/441ebb05-9f51-4c9a-a460-83fec09740d3",
+              "blob:http://127.0.0.1:4196/b959f031-9745-46af-82c0-074b8e97ce0c",
+              "blob:http://127.0.0.1:4196/cf2b187a-f3fa-439a-b60b-e36824f4a4fc",
+              "blob:http://127.0.0.1:4196/6ddc2986-e5da-4ce9-a1f7-3855b12301a4",
+              "blob:http://127.0.0.1:4196/30287caf-7ccb-4449-92bb-43d01f3ab197",
+              "blob:http://127.0.0.1:4196/5dd4a396-4b0a-4277-9eff-ed09e0c40231",
+              "blob:http://127.0.0.1:4196/66aaacd2-f93e-47ea-bff1-0a2ae879f13a"
+            ],
+            "revoked": [
+              "blob:http://127.0.0.1:4196/6ddc2986-e5da-4ce9-a1f7-3855b12301a4"
+            ]
+          }
+        },
+        "text": "Skip to content\nSETTINGS\nSETTINGS\n\nSaved for your account and this event. Sound stays off until you explicitly apply it in this session.\n\nUnsaved changes discarded.\n\nDiscard drafts and reload saved version\nSAVED PREFERENCES\nPreferred era\nREVENGE\nPARADE\nDANGER\nLow power\nReduced motion\nEnable sound\n\nSound is off by default. Saving a preference does not start audio.\n\nSave preferences\nCancel preference changes\nApply saved preferences in this session\n\nCHOOSE AN ERA\n\nOne world, three skins. Your room, position and outfit stay with you.\n\nWORLD SKIN\nREVENGE\nPARADE\nDANGER\n\nPARADE selected.\n\nAccount controls\nBack to world"
+      }
+    },
+    {
+      "width": 430,
+      "status": "FAIL",
+      "errors": [],
+      "screens": [
+        {
+          "name": "public-profile",
+          "screenshot": "public-profile-430.png",
+          "viewport": {
+            "width": 430,
+            "height": 844
+          },
+          "horizontalOverflow": false,
+          "data": {
+            ".pi-public-profile .concert-window__titlebar": {
+              "x": 10,
+              "y": 58,
+              "width": 12,
+              "height": 48,
+              "font": "\"Parade Ink Text\", Arial, sans-serif",
+              "fontSize": "18px",
+              "lineHeight": "22px",
+              "color": "rgb(255, 255, 255)",
+              "background": "rgb(23, 23, 23)",
+              "overflow": "hidden",
+              "borderLeft": "0px none rgb(255, 255, 255)",
+              "backgroundImage": "none"
+            },
+            ".concert-window": {
+              "x": 11,
+              "y": 59,
+              "width": 408,
+              "height": 699,
+              "font": "\"Parade Ink Text\", Arial, sans-serif",
+              "fontSize": "18px",
+              "lineHeight": "22px",
+              "color": "rgb(23, 23, 23)",
+              "background": "rgba(0, 0, 0, 0)",
+              "overflow": "visible",
+              "borderLeft": "0px none rgb(23, 23, 23)",
+              "backgroundImage": "none"
+            },
+            ".concert-window__titlebar": {
+              "x": 10,
+              "y": 58,
+              "width": 12,
+              "height": 48,
+              "font": "\"Parade Ink Text\", Arial, sans-serif",
+              "fontSize": "18px",
+              "lineHeight": "22px",
+              "color": "rgb(255, 255, 255)",
+              "background": "rgb(23, 23, 23)",
+              "overflow": "hidden",
+              "borderLeft": "0px none rgb(255, 255, 255)",
+              "backgroundImage": "none"
+            },
+            ".reference-activity__list li": {
+              "x": 17,
+              "y": 407,
+              "width": 396,
+              "height": 83,
+              "font": "\"Parade Ink Text\", Arial, sans-serif",
+              "fontSize": "18px",
+              "lineHeight": "22px",
+              "color": "rgb(23, 23, 23)",
+              "background": "rgba(0, 0, 0, 0)",
+              "overflow": "visible",
+              "borderLeft": "0px none rgb(23, 23, 23)",
+              "backgroundImage": "none"
+            },
+            ".public-profile-identity": {
+              "x": 17,
+              "y": 69,
+              "width": 396,
+              "height": 170,
+              "font": "\"Parade Ink Text\", Arial, sans-serif",
+              "fontSize": "18px",
+              "lineHeight": "22px",
+              "color": "rgb(23, 23, 23)",
+              "background": "rgba(0, 0, 0, 0)",
+              "overflow": "visible",
+              "borderLeft": "0px none rgb(23, 23, 23)",
+              "backgroundImage": "none"
+            },
+            ".public-profile-copy h2": {
+              "x": 161,
+              "y": 69,
+              "width": 252,
+              "height": 28,
+              "font": "\"Parade Ink Text\", Arial, sans-serif",
+              "fontSize": "24px",
+              "lineHeight": "28px",
+              "color": "rgb(146, 37, 50)",
+              "background": "rgba(0, 0, 0, 0)",
+              "overflow": "visible",
+              "borderLeft": "0px none rgb(146, 37, 50)",
+              "backgroundImage": "none"
+            },
+            ".public-profile-actions": {
+              "x": 17,
+              "y": 247,
+              "width": 396,
+              "height": 44,
+              "font": "\"Parade Ink Text\", Arial, sans-serif",
+              "fontSize": "18px",
+              "lineHeight": "22px",
+              "color": "rgb(23, 23, 23)",
+              "background": "rgba(0, 0, 0, 0)",
+              "overflow": "visible",
+              "borderLeft": "0px none rgb(23, 23, 23)",
+              "backgroundImage": "none"
+            }
+          }
+        },
+        {
+          "name": "own-profile",
+          "screenshot": "own-profile-430.png",
+          "viewport": {
+            "width": 430,
+            "height": 844
+          },
+          "horizontalOverflow": false,
+          "data": {
+            ".me-hub--reference .concert-window__titlebar": {
+              "x": 10,
+              "y": 58,
+              "width": 12,
+              "height": 48,
+              "font": "\"Parade Ink Text\", Arial, sans-serif",
+              "fontSize": "18px",
+              "lineHeight": "22px",
+              "color": "rgb(255, 255, 255)",
+              "background": "rgb(23, 23, 23)",
+              "overflow": "hidden",
+              "borderLeft": "0px none rgb(255, 255, 255)",
+              "backgroundImage": "none"
+            },
+            ".me-profile-header": {
+              "x": 11,
+              "y": 59,
+              "width": 408,
+              "height": 191,
+              "font": "\"Parade Ink Text\", Arial, sans-serif",
+              "fontSize": "18px",
+              "lineHeight": "22px",
+              "color": "rgb(23, 23, 23)",
+              "background": "rgb(249, 249, 248)",
+              "overflow": "visible",
+              "borderLeft": "0px none rgb(23, 23, 23)",
+              "backgroundImage": "none"
+            },
+            ".concert-window": {
+              "x": 11,
+              "y": 59,
+              "width": 408,
+              "height": 569,
+              "font": "\"Parade Ink Text\", Arial, sans-serif",
+              "fontSize": "18px",
+              "lineHeight": "22px",
+              "color": "rgb(23, 23, 23)",
+              "background": "rgba(0, 0, 0, 0)",
+              "overflow": "visible",
+              "borderLeft": "0px none rgb(23, 23, 23)",
+              "backgroundImage": "none"
+            },
+            ".concert-window__titlebar": {
+              "x": 10,
+              "y": 58,
+              "width": 12,
+              "height": 48,
+              "font": "\"Parade Ink Text\", Arial, sans-serif",
+              "fontSize": "18px",
+              "lineHeight": "22px",
+              "color": "rgb(255, 255, 255)",
+              "background": "rgb(23, 23, 23)",
+              "overflow": "hidden",
+              "borderLeft": "0px none rgb(255, 255, 255)",
+              "backgroundImage": "none"
+            },
+            ".me-identity": {
+              "x": 17,
+              "y": 69,
+              "width": 396,
+              "height": 170,
+              "font": "\"Parade Ink Text\", Arial, sans-serif",
+              "fontSize": "18px",
+              "lineHeight": "22px",
+              "color": "rgb(23, 23, 23)",
+              "background": "rgba(0, 0, 0, 0)",
+              "overflow": "visible",
+              "borderLeft": "0px none rgb(23, 23, 23)",
+              "backgroundImage": "none"
+            },
+            ".me-avatar--presentation": {
+              "x": 17,
+              "y": 69,
+              "width": 128,
+              "height": 170,
+              "font": "\"Parade Ink Text\", Arial, sans-serif",
+              "fontSize": "14px",
+              "lineHeight": "18px",
+              "color": "rgb(84, 84, 84)",
+              "background": "rgba(0, 0, 0, 0)",
+              "overflow": "visible",
+              "borderLeft": "0px none rgb(84, 84, 84)",
+              "backgroundImage": "none"
+            },
+            ".me-identity__copy h3": {
+              "x": 161,
+              "y": 69,
+              "width": 252,
+              "height": 28,
+              "font": "\"Parade Ink Text\", Arial, sans-serif",
+              "fontSize": "24px",
+              "lineHeight": "28px",
+              "color": "rgb(146, 37, 50)",
+              "background": "rgba(0, 0, 0, 0)",
+              "overflow": "visible",
+              "borderLeft": "0px none rgb(146, 37, 50)",
+              "backgroundImage": "none"
+            },
+            ".me-bio": {
+              "x": 161,
+              "y": 105,
+              "width": 252,
+              "height": 44,
+              "font": "\"Parade Ink Text\", Arial, sans-serif",
+              "fontSize": "18px",
+              "lineHeight": "22px",
+              "color": "rgb(23, 23, 23)",
+              "background": "rgb(249, 249, 248)",
+              "overflow": "visible",
+              "borderLeft": "0px none rgb(23, 23, 23)",
+              "backgroundImage": "none"
+            },
+            ".pi-profile-customize": {
+              "x": 161,
+              "y": 183,
+              "width": 128,
+              "height": 44,
+              "font": "\"Parade Ink Display\", \"Arial Narrow\", Arial, sans-serif",
+              "fontSize": "18px",
+              "lineHeight": "22px",
+              "color": "rgb(23, 23, 23)",
+              "background": "rgb(249, 249, 248)",
+              "overflow": "visible",
+              "borderLeft": "2px solid rgb(60, 60, 59)",
+              "backgroundImage": "none"
+            },
+            ".me-activity-navigation": {
+              "x": 11,
+              "y": 250,
+              "width": 408,
+              "height": 57,
+              "font": "\"Parade Ink Text\", Arial, sans-serif",
+              "fontSize": "18px",
+              "lineHeight": "22px",
+              "color": "rgb(23, 23, 23)",
+              "background": "rgb(249, 249, 248)",
+              "overflow": "visible",
+              "borderLeft": "0px none rgb(23, 23, 23)",
+              "backgroundImage": "none"
+            },
+            ".reference-activity__list li": {
+              "x": 17,
+              "y": 355,
+              "width": 396,
+              "height": 83,
+              "font": "\"Parade Ink Text\", Arial, sans-serif",
+              "fontSize": "18px",
+              "lineHeight": "22px",
+              "color": "rgb(23, 23, 23)",
+              "background": "rgba(0, 0, 0, 0)",
+              "overflow": "visible",
+              "borderLeft": "0px none rgb(23, 23, 23)",
+              "backgroundImage": "none"
+            }
+          }
+        },
+        {
+          "name": "edit-profile",
+          "screenshot": "edit-profile-430.png",
+          "viewport": {
+            "width": 430,
+            "height": 844
+          },
+          "horizontalOverflow": false,
+          "data": {
+            ".concert-window": {
+              "x": 11,
+              "y": 59,
+              "width": 408,
+              "height": 719.78125,
+              "font": "\"Parade Ink Text\", Arial, sans-serif",
+              "fontSize": "18px",
+              "lineHeight": "22px",
+              "color": "rgb(23, 23, 23)",
+              "background": "rgba(0, 0, 0, 0)",
+              "overflow": "visible",
+              "borderLeft": "0px none rgb(23, 23, 23)",
+              "backgroundImage": "none"
+            },
+            ".concert-window__titlebar": {
+              "x": 10,
+              "y": 58,
+              "width": 12,
+              "height": 48,
+              "font": "\"Parade Ink Text\", Arial, sans-serif",
+              "fontSize": "18px",
+              "lineHeight": "22px",
+              "color": "rgb(255, 255, 255)",
+              "background": "rgb(23, 23, 23)",
+              "overflow": "hidden",
+              "borderLeft": "0px none rgb(255, 255, 255)",
+              "backgroundImage": "none"
+            },
+            ".pi-profile-form fieldset": {
+              "x": 17,
+              "y": 195,
+              "width": 396,
+              "height": 452.78125,
+              "font": "\"Parade Ink Text\", Arial, sans-serif",
+              "fontSize": "18px",
+              "lineHeight": "22px",
+              "color": "rgb(23, 23, 23)",
+              "background": "rgba(0, 0, 0, 0)",
+              "overflow": "visible",
+              "borderLeft": "0px none rgb(23, 23, 23)",
+              "backgroundImage": "none"
+            }
+          }
+        }
+      ],
+      "profile": {
+        "qualification": "ACTUAL_MAIN_CONTROLLED_CANONICAL_HTTP_C05_NOT_LIVE",
+        "mode": "loaded",
+        "path": "/me",
+        "requests": [
+          {
+            "path": "/api/auth/capabilities",
+            "method": "GET",
+            "status": 200
+          },
+          {
+            "path": "/api/auth/login",
+            "method": "POST",
+            "status": 200
+          },
+          {
+            "path": "/api/auth/enrollment/admission",
+            "method": "GET",
+            "status": 200
+          },
+          {
+            "path": "/api/auth/enrollment/admission",
+            "method": "GET",
+            "status": 200
+          },
+          {
+            "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/bootstrap",
+            "method": "GET",
+            "status": 200
+          },
+          {
+            "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/rooms",
+            "method": "GET",
+            "status": 200
+          },
+          {
+            "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/places",
+            "method": "GET",
+            "status": 404
+          },
+          {
+            "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/world-tickets",
+            "method": "POST",
+            "status": 200
+          },
+          {
+            "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/mural/tools",
+            "method": "GET",
+            "status": 404
+          },
+          {
+            "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/feed",
+            "method": "GET",
+            "status": 200
+          },
+          {
+            "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/notices",
+            "method": "GET",
+            "status": 404
+          },
+          {
+            "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/intros",
+            "method": "GET",
+            "status": 200
+          },
+          {
+            "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/me/intro",
+            "method": "GET",
+            "status": 404
+          },
+          {
+            "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/me/age-status",
+            "method": "GET",
+            "status": 404
+          },
+          {
+            "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/me/notifications",
+            "method": "GET",
+            "status": 404
+          },
+          {
+            "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/media/00000000-0000-4000-8000-000000000075",
+            "method": "GET",
+            "status": 200
+          },
+          {
+            "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/media/00000000-0000-4000-8000-000000000077",
+            "method": "GET",
+            "status": 404
+          },
+          {
+            "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/media/00000000-0000-4000-8000-000000000076",
+            "method": "GET",
+            "status": 200
+          },
+          {
+            "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/media/00000000-0000-4000-8000-000000000075/content",
+            "method": "GET",
+            "status": 200
+          },
+          {
+            "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/media/00000000-0000-4000-8000-000000000076/content",
+            "method": "GET",
+            "status": 200
+          },
+          {
+            "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/mural/tools",
+            "method": "GET",
+            "status": 404
+          },
+          {
+            "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/intros",
+            "method": "GET",
+            "status": 200
+          },
+          {
+            "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/people/e5561eef-e758-567c-ae16-a8ae82e60bc7",
+            "method": "GET",
+            "status": 200
+          },
+          {
+            "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/me",
+            "method": "GET",
+            "status": 200
+          }
+        ],
+        "feedReads": 1,
+        "userId": "e5561eef-e758-567c-ae16-a8ae82e60bc7",
+        "preferredEra": "PARADE",
+        "mediaReads": 5,
+        "socketsCreated": 1,
+        "activeSockets": 1,
+        "peakSockets": 1,
+        "admittedStreams": 1,
+        "canvases": 1,
+        "peakCanvases": 1,
+        "urls": {
+          "created": [
+            "blob:http://127.0.0.1:4196/a16aef2f-fbef-4f68-a4cd-17a94f1c145d",
+            "blob:http://127.0.0.1:4196/abc4649c-5db5-44dc-8007-e78588f211bc",
+            "blob:http://127.0.0.1:4196/68335a40-3cd0-4392-ae4f-0f75c6b9905b",
+            "blob:http://127.0.0.1:4196/7b0f2d6e-cc0c-42e0-a110-2a68e9b02d4b",
+            "blob:http://127.0.0.1:4196/07650c3f-0b1d-4126-9864-ad6a8e8140f0",
+            "blob:http://127.0.0.1:4196/eb809f52-472e-4aa5-bd1d-b0badd493d05",
+            "blob:http://127.0.0.1:4196/42cbe916-d774-42e4-ae81-0f7cc3eeb79c",
+            "blob:http://127.0.0.1:4196/0879741d-27c9-4a2a-aea7-0d7b634891df"
+          ],
+          "revoked": [
+            "blob:http://127.0.0.1:4196/07650c3f-0b1d-4126-9864-ad6a8e8140f0"
+          ]
+        }
+      },
+      "error": "Error: expect(locator).toHaveValue(expected) failed\n\nLocator: getByLabel('Preferred era', { exact: true })\nExpected: \"PARADE\"\nTimeout: 5000ms\nError: element(s) not found\n\nCall log:\n  - Expect \"to.have.value\" with timeout 5000ms\n  - waiting for getByLabel('Preferred era', { exact: true })\n\n    at captureRawStack (/Users/lhs/Desktop/mcr-worktrees/fe-public/frontend/node_modules/.pnpm/playwright-core@1.61.1/node_modules/playwright-core/lib/coreBundle.js:3172:17)\n    at callMatcherAsStep (/Users/lhs/Desktop/mcr-worktrees/fe-public/frontend/node_modules/.pnpm/playwright@1.61.1/node_modules/playwright/lib/matchers/expect.js:12877:57)\n    at Object.toHaveValue (/Users/lhs/Desktop/mcr-worktrees/fe-public/frontend/node_modules/.pnpm/playwright@1.61.1/node_modules/playwright/lib/matchers/expect.js:12867:23)\n    at /Users/lhs/Desktop/mcr-worktrees/fe-public/frontend/e2e/visual/qa06/parade-ink-profile/native.mjs:124:79",
+      "failure": {
+        "state": {
+          "qualification": "ACTUAL_MAIN_CONTROLLED_CANONICAL_HTTP_C05_NOT_LIVE",
+          "mode": "loaded",
+          "path": "/me/settings",
+          "requests": [
+            {
+              "path": "/api/auth/capabilities",
+              "method": "GET",
+              "status": 200
+            },
+            {
+              "path": "/api/auth/login",
+              "method": "POST",
+              "status": 200
+            },
+            {
+              "path": "/api/auth/enrollment/admission",
+              "method": "GET",
+              "status": 200
+            },
+            {
+              "path": "/api/auth/enrollment/admission",
+              "method": "GET",
+              "status": 200
+            },
+            {
+              "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/bootstrap",
+              "method": "GET",
+              "status": 200
+            },
+            {
+              "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/rooms",
+              "method": "GET",
+              "status": 200
+            },
+            {
+              "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/places",
+              "method": "GET",
+              "status": 404
+            },
+            {
+              "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/world-tickets",
+              "method": "POST",
+              "status": 200
+            },
+            {
+              "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/mural/tools",
+              "method": "GET",
+              "status": 404
+            },
+            {
+              "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/feed",
+              "method": "GET",
+              "status": 200
+            },
+            {
+              "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/notices",
+              "method": "GET",
+              "status": 404
+            },
+            {
+              "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/intros",
+              "method": "GET",
+              "status": 200
+            },
+            {
+              "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/me/intro",
+              "method": "GET",
+              "status": 404
+            },
+            {
+              "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/me/age-status",
+              "method": "GET",
+              "status": 404
+            },
+            {
+              "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/me/notifications",
+              "method": "GET",
+              "status": 404
+            },
+            {
+              "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/media/00000000-0000-4000-8000-000000000075",
+              "method": "GET",
+              "status": 200
+            },
+            {
+              "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/media/00000000-0000-4000-8000-000000000077",
+              "method": "GET",
+              "status": 404
+            },
+            {
+              "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/media/00000000-0000-4000-8000-000000000076",
+              "method": "GET",
+              "status": 200
+            },
+            {
+              "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/media/00000000-0000-4000-8000-000000000075/content",
+              "method": "GET",
+              "status": 200
+            },
+            {
+              "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/media/00000000-0000-4000-8000-000000000076/content",
+              "method": "GET",
+              "status": 200
+            },
+            {
+              "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/mural/tools",
+              "method": "GET",
+              "status": 404
+            },
+            {
+              "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/intros",
+              "method": "GET",
+              "status": 200
+            },
+            {
+              "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/people/e5561eef-e758-567c-ae16-a8ae82e60bc7",
+              "method": "GET",
+              "status": 200
+            },
+            {
+              "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/me",
+              "method": "GET",
+              "status": 200
+            },
+            {
+              "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/mural/tools",
+              "method": "GET",
+              "status": 404
+            },
+            {
+              "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/mural/tools",
+              "method": "GET",
+              "status": 404
+            },
+            {
+              "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/mural/tools",
+              "method": "GET",
+              "status": 404
+            }
+          ],
+          "feedReads": 1,
+          "userId": "e5561eef-e758-567c-ae16-a8ae82e60bc7",
+          "preferredEra": "PARADE",
+          "mediaReads": 5,
+          "socketsCreated": 1,
+          "activeSockets": 1,
+          "peakSockets": 1,
+          "admittedStreams": 1,
+          "canvases": 1,
+          "peakCanvases": 1,
+          "urls": {
+            "created": [
+              "blob:http://127.0.0.1:4196/a16aef2f-fbef-4f68-a4cd-17a94f1c145d",
+              "blob:http://127.0.0.1:4196/abc4649c-5db5-44dc-8007-e78588f211bc",
+              "blob:http://127.0.0.1:4196/68335a40-3cd0-4392-ae4f-0f75c6b9905b",
+              "blob:http://127.0.0.1:4196/7b0f2d6e-cc0c-42e0-a110-2a68e9b02d4b",
+              "blob:http://127.0.0.1:4196/07650c3f-0b1d-4126-9864-ad6a8e8140f0",
+              "blob:http://127.0.0.1:4196/eb809f52-472e-4aa5-bd1d-b0badd493d05",
+              "blob:http://127.0.0.1:4196/42cbe916-d774-42e4-ae81-0f7cc3eeb79c",
+              "blob:http://127.0.0.1:4196/0879741d-27c9-4a2a-aea7-0d7b634891df"
+            ],
+            "revoked": [
+              "blob:http://127.0.0.1:4196/07650c3f-0b1d-4126-9864-ad6a8e8140f0"
+            ]
+          }
+        },
+        "text": "Skip to content\nSETTINGS\nSETTINGS\n\nSaved for your account and this event. Sound stays off until you explicitly apply it in this session.\n\nUnsaved changes discarded.\n\nDiscard drafts and reload saved version\nSAVED PREFERENCES\nPreferred era\nREVENGE\nPARADE\nDANGER\nLow power\nReduced motion\nEnable sound\n\nSound is off by default. Saving a preference does not start audio.\n\nSave preferences\nCancel preference changes\nApply saved preferences in this session\n\nCHOOSE AN ERA\n\nOne world, three skins. Your room, position and outfit stay with you.\n\nWORLD SKIN\nREVENGE\nPARADE\nDANGER\n\nPARADE selected.\n\nAccount controls\nBack to world"
+      }
+    }
+  ],
+  "pngBytes": 554932,
+  "startedAt": "2026-11-05T00:39:29.072Z",
+  "browser": "156.0.8078.80"
+}

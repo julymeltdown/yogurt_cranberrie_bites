@@ -1,12 +1,11 @@
 import { useId, useSyncExternalStore, type ReactNode } from 'react'
 import { ProfileActivity, type ProfileActivityInput, type ProfilePostMediaRenderer } from './reference-profile/ProfileActivity'
-import { ProfileIcon } from '../../profile/reference-presentation/ProfileIcon'
 import { ShellLink } from '../../../app/navigation'
 import type { SessionController } from '../../auth/model/session'
 import type { Participant } from '../model/contract'
 import type { MeController } from '../model/controller'
 import { AvatarThumbnail, type ReviewedThumbnailSource } from './AvatarThumbnail'
-import { ConcertAction, ConcertIcon, ConcertWindow } from '../../../shared/ui/concert-window'
+import { ConcertAction, ConcertWindow } from '../../../shared/ui/concert-window'
 import './me.css'
 export function useMe(controller: MeController) { return useSyncExternalStore(controller.subscribe, controller.read, controller.read) }
 export function MeStatus({ controller }: { controller: MeController }) {
@@ -16,21 +15,17 @@ export function MeStatus({ controller }: { controller: MeController }) {
 }
 export function MeHub({ controller, auth, thumbnailSource, activity, renderAvatar, renderPostMedia }: { controller: MeController; auth: Pick<SessionController, 'privacy'>; thumbnailSource?: ReviewedThumbnailSource; activity?: ProfileActivityInput; renderAvatar?: (avatar: Participant['profile']['avatar'], label: string) => ReactNode; renderPostMedia?: ProfilePostMediaRenderer }) {
   const s = useMe(controller)
-  return <section className="me-view me-view--concert me-hub me-hub--reference" aria-label="ME"><ConcertWindow title="My profile" icon="me" footer={<ShellLink id="me-enter-world" to="/world">Back to world</ShellLink>}>
+  return <section className="me-view me-view--concert me-hub me-hub--reference" aria-label="ME"><ConcertWindow title="My profile" icon="me" footer={<nav className="pi-profile-footer" aria-label="Profile navigation"><ShellLink id="me-enter-world" to="/world">Back to world</ShellLink><ShellLink id="me-edit-profile" to="/me/profile" className="pi-profile-edit"><span aria-hidden="true">+</span>Edit profile</ShellLink></nav>}>
     <div className="me-profile-header">
       {s.participant ? <div className="me-identity">{renderAvatar ? <div className="me-avatar me-avatar--presentation">{renderAvatar(s.participant.profile.avatar, `${s.participant.profile.display_name}'s avatar`)}</div> : s.participant.profile.avatar.config.contract_version === '1.0.0' ? <AvatarThumbnail auth={auth} config={s.participant.profile.avatar.config} {...(thumbnailSource ? { source: thumbnailSource } : {})} /> : <div className="me-avatar"><p role="status">Selected character portrait unavailable in this connection.</p></div>}
-        <div className="me-identity__copy"><h3>{s.participant.profile.display_name}</h3><p className="me-saved-era">{s.participant.preferences.theme}</p><p className="me-bio">{s.participant.profile.bio || 'No bio yet. Add one whenever you like.'}</p></div></div>
+        <div className="me-identity__copy"><h3>{s.participant.profile.display_name}</h3><p className="me-bio">{s.participant.profile.bio || 'No bio yet. Add one whenever you like.'}</p><p className="me-saved-era">Preferred era · {s.participant.preferences.theme}</p><ShellLink id="me-avatar" to="/me/avatar" className="pi-profile-customize" aria-label="Dress up">Customize</ShellLink></div></div>
         : <div className="me-identity-unavailable" role="status">{s.message || 'Your saved profile is not loaded yet.'}</div>}
-      <nav className="me-profile-icons" aria-label="Profile actions">
-        <ShellLink id="me-edit-profile" to="/me/profile" aria-label="Edit profile" title="Edit profile"><ProfileIcon name="edit" /></ShellLink>
-        <ShellLink id="me-avatar" to="/me/avatar" aria-label="Dress up" title="Dress up"><ConcertIcon name="star" /></ShellLink>
-        <ShellLink id="me-social" to="/me/social" aria-label="Manage private social links" title="Manage private social links"><ProfileIcon name="link" /></ShellLink>
-        <ShellLink id="me-requests" to="/me/requests" aria-label="Sharing requests" title="Sharing requests"><ConcertIcon name="meet" /></ShellLink>
-      </nav>
+
     </div>
     <nav className="me-activity-navigation" aria-label="Your activity"><span aria-current="page">Activity</span><ShellLink id="me-parties" to="/meet" aria-label="Parties and MY PLAN">Parties</ShellLink><ShellLink id="me-gifts" to="/gifts/mine" aria-label="My gifts">Gifts</ShellLink></nav>
     {s.participant && <ProfileActivity subject={s.participant.user_id} privacy={auth.privacy} input={activity} browseFeed renderPostMedia={renderPostMedia} />}
     <details className="me-profile-options"><summary>Profile options</summary><nav className="me-account-links" aria-label="More account options">
+      <ShellLink id="me-social" to="/me/social">Private social links</ShellLink><ShellLink id="me-requests" to="/me/requests">Sharing requests</ShellLink>
       <ShellLink id="me-settings" to="/me/settings">Settings</ShellLink><ShellLink id="me-age" to="/me/age">Age &amp; privacy</ShellLink>
       <ShellLink id="me-blocks" to="/me/blocks">Blocked users</ShellLink><ShellLink id="me-account" to="/me/account">Account</ShellLink>
     </nav><p className="me-optionality">Profile details are optional. You can enter the world without completing them.</p><div className="me-status"><MeStatus controller={controller} /></div></details>
@@ -41,7 +36,7 @@ export function MeHub({ controller, auth, thumbnailSource, activity, renderAvata
 export interface OptionalProfileFieldsPort { readonly render: (context: { controller: MeController }) => ReactNode }
 export function ProfileForm({ controller, optionalFields }: { controller: MeController; optionalFields?: OptionalProfileFieldsPort }) {
   const s = useMe(controller), id = useId(), disabled = !s.participant || ['loading', 'saving', 'expired', 'disposed'].includes(s.phase)
-  return <section className="me-view me-view--concert me-profile-form" aria-label="Edit profile"><ConcertWindow title="Edit profile" icon="me" footer={<ShellLink id="profile-back-world" to="/world">Back to world</ShellLink>}><p className="me-optionality">Bio, ticket section and visibility choices are optional. Your world access does not depend on them.</p><div className="me-status"><MeStatus controller={controller} /></div>
+  return <section className="me-view me-view--concert me-profile-form pi-profile-form" aria-label="Edit profile"><ConcertWindow title="Edit profile" icon="me" footer={<ShellLink id="profile-back-world" to="/world">Back to world</ShellLink>}><p className="me-optionality">Bio, ticket section and visibility choices are optional. Your world access does not depend on them.</p><div className="me-status"><MeStatus controller={controller} /></div>
     <form onSubmit={e => { e.preventDefault(); void controller.save('profile') }}><fieldset disabled={disabled}><legend>Public profile</legend>
       <label htmlFor={`${id}-name`}>Display name<input id={`${id}-name`} autoComplete="nickname" value={s.draft.display_name} onChange={e => controller.editProfile({ display_name: e.target.value })} aria-describedby={`${id}-name-hint`} required /></label><p id={`${id}-name-hint`}>1–40 characters, with at least one non-space character. No tabs or newlines. Other people can see your display name and bio.</p>
       <label htmlFor={`${id}-bio`}>Bio (optional)<textarea id={`${id}-bio`} rows={4} value={s.draft.bio ?? ''} onChange={e => controller.editProfile({ bio: e.target.value || null })} aria-describedby={`${id}-bio-hint`} /></label><p id={`${id}-bio-hint`}>{Array.from(s.draft.bio ?? '').length}/160 characters. No tabs or newlines. Keep private contact details out of your public bio.</p>

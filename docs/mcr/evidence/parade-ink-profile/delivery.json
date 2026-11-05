@@ -1,0 +1,155 @@
+{
+  "state": "MOCK_READY_COMMITTED_HANDOFF_TO_412E",
+  "observedEpoch": 1793840226.793371,
+  "base": "5ac4bc6e69ee47e6782c2d0b25c72c5544a540d6",
+  "preparedHead": "966ced8ea0daba46b5821946fa4a0b028e5697ab",
+  "taskIds": [
+    "PI06",
+    "FE30",
+    "FE34",
+    "QA06"
+  ],
+  "ia": [
+    "M09",
+    "U01",
+    "U03",
+    "U07"
+  ],
+  "publishingOwner": "01a1a5d9-332b-7822-a8f7-412e295fa211",
+  "productionPostimages": {
+    "frontend/src/features/me/ui/MePages.tsx": "5941b5427a7b8f18e8b9e71d6bcd43bf98ae93d419904848e6eef3fc899fa81a",
+    "frontend/src/features/me/ui/me.css": "38bd9374501d9b28384d8ef5fc4a663edb99d1a223ae4e255b43213fa84c3b7c",
+    "frontend/src/features/me/ui/reference-profile/ProfileActivity.tsx": "78f1f0486e5998f88d3ff2454c43b01d3ea160021abf6ab3ecec2d6080618411",
+    "frontend/src/features/profile/PublicProfile.tsx": "989476ea8206a3081e50c2f60ff8f414bcda58b19c148cff9279339cc6ea77de",
+    "frontend/src/features/profile/profile.css": "fe56fdc27e6118352f0834dfdbd7e001f9f095126bfc4c755a3c386008ed6338",
+    "frontend/src/features/profile/reference-presentation/activity.css": "418c8db760b301d629dfb2180c8f27cf072f216b957b7f5aea4cc2c0ff994981",
+    "frontend/src/features/settings/SettingsPage.tsx": "881cd3d658723d28ed95fef10e6099da756de3bedbd7f0aa2d3c332bc887cca4",
+    "frontend/src/features/settings/parade-ink-settings.css": "de5f7f9c9046e44120a71eca770d6ea8c2d8d711da0a70ec38645c0278649b60",
+    "frontend/src/app/social-composition/panels.tsx": "6cb19918c0a07dce36c6da777872fc1bc88cbf7ac17fed9708f7608339f9cb79"
+  },
+  "sharedHunkLimit": "Only two public-profile renderAvatar size props64to128; PI07 owns separate two WholeCharacterView import hunks, fixture composition does not transfer production ownership",
+  "sourceValidation": {
+    "candidate": "204a8c5ea506a9963d7ee37377cb50c1997c53c6",
+    "focusedCases": 4,
+    "testsExit": 0,
+    "typesExit": 0,
+    "lintExit": 0,
+    "evidence": "source01/guardian.json"
+  },
+  "nativeCompletion": {
+    "status": "PASS",
+    "candidate": "a497f326c173216de1ce937aead4c8ce6dbe5794",
+    "offer": "PI06-PROFILE-FOCUSED-NATIVE05-0100",
+    "acceptedEpoch": 1793840459.629889,
+    "fullEpoch": 1793840521.419551,
+    "commands": [
+      {
+        "label": "driver-syntax",
+        "exitCode": 0
+      },
+      {
+        "label": "frozen-source-syntax",
+        "exitCode": 0
+      },
+      {
+        "label": "changed-driver-lint",
+        "exitCode": 0
+      },
+      {
+        "label": "native",
+        "exitCode": 0
+      }
+    ],
+    "screens": 13,
+    "pngBytes": 760194,
+    "widths": [
+      360,
+      390,
+      430
+    ],
+    "shortViewport": [
+      390,
+      420
+    ],
+    "sourceEvidence": "native05/screens/report.json",
+    "resourceEvidence": "native05/guardian.json",
+    "comparisonEvidence": "reference-comparison.json"
+  },
+  "physicalLiveAllIA": "OriginalQA06unfinishedBLOCKED; no completion inferred",
+  "scopeCheck": "PASS exact assigned production/helper/evidence paths; frozen source/backend/manifest/lock untouched",
+  "protectedMetadata": [
+    {
+      "path": "frontend/src/features/settings/SettingsPage.tsx",
+      "function": "export function SettingsPage",
+      "intakeSha256": "149b2e328115456aa9af11f588eda704af5dd7d7c743c6b380b21ebb0d5aeda4",
+      "currentSha256": "6d65b3cc667be96ccc62ab5c3368cadfca79047a939a0a8f85cd48fda6684f5b",
+      "baseSha256": "6d65b3cc667be96ccc62ab5c3368cadfca79047a939a0a8f85cd48fda6684f5b",
+      "unchangedFromBase": true,
+      "method": "Exact function-declaration through first newline/two-space return prefix byte equality; intake hash used a different boundary"
+    },
+    {
+      "path": "frontend/src/features/profile/PublicProfile.tsx",
+      "function": "export function PublicProfile",
+      "intakeSha256": "67acee4a807e89caeb7af33bec1217bf3b5c086649252d5b9cf6053f36a4a464",
+      "currentSha256": "c7f29530f8a711fcc681d3434880c9be598811b86bc469be22a759aec5f7c711",
+      "baseSha256": "c7f29530f8a711fcc681d3434880c9be598811b86bc469be22a759aec5f7c711",
+      "unchangedFromBase": true,
+      "method": "Exact function-declaration through first newline/two-space return prefix byte equality; intake hash used a different boundary"
+    },
+    {
+      "path": "frontend/src/features/me/ui/MePages.tsx",
+      "function": "export function MeHub",
+      "intakeSha256": "384589060652acb638a45dfe2e3307b3c6057e9becf02d0a939a22dcbaaa2809",
+      "currentSha256": "e04db8e5bd47d7c97b1ae9c40ec8aff7efb76b32470072d80e5a56560a009716",
+      "baseSha256": "e04db8e5bd47d7c97b1ae9c40ec8aff7efb76b32470072d80e5a56560a009716",
+      "unchangedFromBase": true,
+      "method": "Exact function-declaration through first newline/two-space return prefix byte equality; intake hash used a different boundary"
+    },
+    {
+      "path": "frontend/src/features/me/ui/MePages.tsx",
+      "function": "export function ProfileForm",
+      "intakeSha256": "bdd281991242f30639da587d0eb8e3e9b090454b71ec38c9fcb56cc9be921313",
+      "currentSha256": "26d40db0fc118fb399597dd8c6375a7a8e31855c056fc29e568424066426b27e",
+      "baseSha256": "26d40db0fc118fb399597dd8c6375a7a8e31855c056fc29e568424066426b27e",
+      "unchangedFromBase": true,
+      "method": "Exact function-declaration through first newline/two-space return prefix byte equality; intake hash used a different boundary"
+    },
+    {
+      "path": "frontend/src/features/me/ui/MePages.tsx",
+      "function": "export function MeStatus",
+      "intakeSha256": "bc091ceaf8d86cc78cd38ed624c992730fa1d514f9da1ff72d0fbe9d5db10751",
+      "currentSha256": "a29d400d84b21366f2e45a5f25659f9ea4cd81f32c620e7883cbeea5b3f077d3",
+      "baseSha256": "a29d400d84b21366f2e45a5f25659f9ea4cd81f32c620e7883cbeea5b3f077d3",
+      "unchangedFromBase": true,
+      "method": "Exact function-declaration through first newline/two-space return prefix byte equality; intake hash used a different boundary"
+    },
+    {
+      "path": "frontend/src/features/me/ui/reference-profile/ProfileActivity.tsx",
+      "function": "export function ProfileActivity",
+      "intakeSha256": "ab112b4dce608eadf62b2560779d2a03a3357ad844b296689a333f98785fba0d",
+      "currentSha256": "979ceb9a50767221773d8870c040cad18b7b1733035d82ac8ec8e9f3710d441f",
+      "baseSha256": "979ceb9a50767221773d8870c040cad18b7b1733035d82ac8ec8e9f3710d441f",
+      "unchangedFromBase": true,
+      "method": "Exact function-declaration through first newline/two-space return prefix byte equality; intake hash used a different boundary"
+    },
+    {
+      "path": "frontend/src/features/me/model/controller.ts",
+      "sha256": "34c9c487f539b7781d31c6db1e453c871fa424a4bd0dd17bc14fc02f6d531e2e",
+      "unchanged": true
+    },
+    {
+      "path": "frontend/src/features/me/model/contract.ts",
+      "sha256": "69c70ab44898f34a84a18817d670c3d84186f904ea4c5e0edbdf75a8a56eed79",
+      "unchanged": true
+    },
+    {
+      "path": "frontend/src/features/profile/Avatar.tsx",
+      "sha256": "cae62acf82fd44db50cd5549dbffd1b1d93f6a4374d2034a07f7f6b31fcfee5b",
+      "unchanged": true
+    }
+  ],
+  "publication": "WAITING_FOR_PUBLICATION through412e; combined consuming checkout checks and remote master proof belong to publisher, no king/SL acknowledgment",
+  "sourceDependencyQualification": "Responsible PI07 owner classified source04 failure as static-editor test fixture/oracle only; 3wrapper+1paging cases passed, a2b6closure unchanged/no consumerfix. PI06 native13PASS retained; PI07 repaired-case/types/lint followup separate.",
+  "postRunControlCorrection": "guard_support.py future receipt executable uses actual ps comm, with launcher separately. Raw native05 candidate/control hashes preserved; no retrospective control rerun claim.",
+  "finalizationBase": "a497f326c173216de1ce937aead4c8ce6dbe5794"
+}

@@ -1,0 +1,33 @@
+{
+  "job": "PI06-PROFILE-FOCUSED-NATIVE04-0052",
+  "status": "IN_PROGRESS",
+  "candidate": "ec1147c290a1fce82eb003ab2d0adaa2ce050279",
+  "acceptedEpoch": 1793839992.071566,
+  "workDeadline": 1793840232.071566,
+  "cleanupDeadline": 1793840292.071566,
+  "limits": {
+    "workSeconds": 240,
+    "cleanupSeconds": 60,
+    "processes": 20,
+    "rssMiB": 4096,
+    "wholeBytes": 8589934592,
+    "newGrowthBytes": 268435456,
+    "tempBytes": 201326592,
+    "durableBytes": 25165824,
+    "logBytes": 2097152
+  },
+  "controller": {
+    "pid": 23601,
+    "parentPid": 49590,
+    "processGroup": 23601,
+    "birth": "Thu Nov  5 09:53:11 2026",
+    "path": "/Users/lhs/Desktop/mcr-worktrees/fe-public/frontend/e2e/visual/qa06/parade-ink-profile/native-round.py",
+    "outputRoot": "/Users/lhs/Desktop/mcr-worktrees/fe-public/docs/mcr/evidence/parade-ink-profile/native04"
+  },
+  "admission": {
+    "freeBytes": 15367430144,
+    "otherNewBytes": 3221225472,
+    "ownNewBytes": 268435456,
+    "residualBytes": 11877769216
+  }
+}

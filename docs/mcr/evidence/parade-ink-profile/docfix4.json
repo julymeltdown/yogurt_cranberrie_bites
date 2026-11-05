@@ -1,0 +1,9 @@
+{
+  "booking": "PI06-DOCFIX4MiB-0100",
+  "capBytes": 4194304,
+  "conservativeReservedGrowthBytes": 4194304,
+  "expiresEpoch": 1793841600,
+  "initialEpoch": 1793840557.654326,
+  "initialFreeBytes": 16423976960,
+  "purpose": "Final source-bound comparison/receipt correction/documentation/scoped Git/412e handoff; no extra test/browser/PIL workload; old16MiB actual13MiB upper and all prior history retained"
+}

@@ -8,7 +8,7 @@ import { Inbox } from '../../features/inbox'
 import { People } from '../../features/people'
 import { PublicProfile } from '../../features/profile'
 import { ReviewedProfileAvatar } from '../../features/profile/Avatar'
-import { WholeCharacterView } from '../../entities/avatar/whole-character'
+import { FramedWholeCharacterView as WholeCharacterView } from '../character-entry/FramedWholeCharacterView'
 import { useCharacterRuntime, useReviewedCharacterOwner } from '../character-entry/provider'
 import { ReviewedCharacterView } from '../character-entry/ReviewedCharacterView'
 import { useLoadedProfileActivity } from '../character-entry/activity'
@@ -65,8 +65,8 @@ function CurrentPanel({ owner, path }: { readonly owner: SocialOwner; readonly p
     case 'profile': return <PublicProfile controller={owner.people} userId={route.id}
       {...(owner.canShare(route.id) ? { sharing: (id: string) => { void owner.openSharing(id) } } : {})}
       {...(safety && route.id !== owner.scope.userId ? { blocking: (id: string) => { void safety.beginBlock(id, owner.scope) } } : {})} avatars={owner.avatars} activity={activity} activityPrivacy={owner.auth.privacy}
-      renderAvatar={reviewed ? (avatar, label) => <ReviewedCharacterView owner={reviewed} config={avatar.config} label={label} size={64} /> : runtime ? (avatar, label) => avatar.config.contract_version === '1.1.0'
-        ? <WholeCharacterView runtime={runtime} config={avatar.config} label={label} size={64} />
+      renderAvatar={reviewed ? (avatar, label) => <ReviewedCharacterView owner={reviewed} config={avatar.config} label={label} size={128} /> : runtime ? (avatar, label) => avatar.config.contract_version === '1.1.0'
+        ? <WholeCharacterView runtime={runtime} config={avatar.config} label={label} size={128} />
         : <ReviewedProfileAvatar config={avatar.config} label={label} options={owner.avatars} /> : undefined} />
     case 'intro': return <IntroEditor controller={owner.intro} />
     case 'age': return <AgeStatus controller={owner.age} />

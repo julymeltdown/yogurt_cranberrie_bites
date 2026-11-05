@@ -1,0 +1,146 @@
+{
+  "job": "PI06-PROFILE-APP-NATIVE01-20261105T0017Z",
+  "status": "FAIL",
+  "candidate": "b6f8bf4b2090718d3f56b05974fb52e4e6b40acb",
+  "acceptedEpoch": 1793837873.0,
+  "workDeadline": 1793838113.0,
+  "cleanupDeadline": 1793838173.0,
+  "limits": {
+    "workSeconds": 240,
+    "cleanupSeconds": 60,
+    "processes": 20,
+    "rssMiB": 4096,
+    "wholeBytes": 8589934592,
+    "newGrowthBytes": 268435456,
+    "tempBytes": 201326592,
+    "durableBytes": 25165824,
+    "logBytes": 2097152
+  },
+  "admission": {
+    "freeBytes": 16177651712,
+    "otherNewBytes": 4294967296,
+    "ownNewBytes": 268435456,
+    "residualBytes": 11614248960
+  },
+  "initialInventory": {
+    "roots": [
+      {
+        "path": "/Users/lhs/Desktop/mcr-worktrees/fe-public",
+        "inodes": 15586,
+        "allocatedBytes": 372834304
+      },
+      {
+        "path": "/Users/lhs/Desktop/mcr-worktrees/fe-ref-public",
+        "inodes": 10254,
+        "allocatedBytes": 866787328
+      },
+      {
+        "path": "/Users/lhs/Desktop/mcr-worktrees/fe-social-feed",
+        "inodes": 16749,
+        "allocatedBytes": 424595456
+      },
+      {
+        "path": "/Users/lhs/Desktop/mcr/frontend/node_modules",
+        "inodes": 13420,
+        "allocatedBytes": 438317056
+      },
+      {
+        "path": "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64",
+        "inodes": 5888,
+        "allocatedBytes": 209088512
+      },
+      {
+        "path": "/Users/lhs/Desktop/mcr/.git",
+        "inodes": 5328,
+        "allocatedBytes": 1197178880
+      },
+      {
+        "path": "/Library/Frameworks/Python.framework",
+        "inodes": 28418,
+        "allocatedBytes": 1045037056
+      },
+      {
+        "path": "/Applications/Google Chrome.app",
+        "inodes": 1339,
+        "allocatedBytes": 1527132160
+      }
+    ],
+    "uniqueInodes": 96982,
+    "allocatedBytes": 6080970752
+  },
+  "priorHistoricalMaxBytes": 6076608512,
+  "chargedInitialWholeBytes": 6080970752,
+  "sourceSha256": {
+    "frontend/src/features/me/ui/MePages.tsx": "5941b5427a7b8f18e8b9e71d6bcd43bf98ae93d419904848e6eef3fc899fa81a",
+    "frontend/src/features/me/ui/me.css": "6e132dc30a3f4a3e3c10393b7ccea511ce393933cee53e943de51bf25ee50c76",
+    "frontend/src/features/me/ui/reference-profile/ProfileActivity.tsx": "78f1f0486e5998f88d3ff2454c43b01d3ea160021abf6ab3ecec2d6080618411",
+    "frontend/src/features/profile/PublicProfile.tsx": "989476ea8206a3081e50c2f60ff8f414bcda58b19c148cff9279339cc6ea77de",
+    "frontend/src/features/profile/profile.css": "aac259a3ca2390f2f82b7e3d766b66d98a6fd5b2abff8626014955190b885fc9",
+    "frontend/src/features/profile/reference-presentation/activity.css": "418c8db760b301d629dfb2180c8f27cf072f216b957b7f5aea4cc2c0ff994981",
+    "frontend/src/features/settings/SettingsPage.tsx": "881cd3d658723d28ed95fef10e6099da756de3bedbd7f0aa2d3c332bc887cca4",
+    "frontend/src/features/settings/parade-ink-settings.css": "de5f7f9c9046e44120a71eca770d6ea8c2d8d711da0a70ec38645c0278649b60",
+    "frontend/e2e/visual/qa06/parade-ink-profile/frozen-source.mjs": "23cf2d64254dd7ab1da5569de90e60a8cee9aa28704fbbe68191c2c39e5be79a",
+    "frontend/e2e/visual/qa06/parade-ink-profile/guard_support.py": "92c1fc1b1da418a944c481de7f9104ba7aafe20a28467d47d5b8812bf3759b67",
+    "frontend/e2e/visual/qa06/parade-ink-profile/native-round.py": "1509e33b056fc0c7c2eec3a32a2a93b457b3c1641995e934d34f6ef11862483e",
+    "frontend/e2e/visual/qa06/parade-ink-profile/native.mjs": "a425ead45f9309c901924b15930e4c8f563b189efc40e444693ff23e1fac2654",
+    "frontend/e2e/visual/qa06/parade-ink-profile/preview.html": "1baddfe71c73f5e34c3b71e59e739002b4877945d45f56acec367d4f9b317b25",
+    "frontend/e2e/visual/qa06/parade-ink-profile/preview.ts": "2b388be991124e83667fe7c8ecd5f5cb02f634c89285fabdc11088e0651dc5c0",
+    "frontend/e2e/visual/qa06/parade-ink-profile/watchdog.py": "44ebc3ccdca81253c6f639aeedaff2e46677535d1ba170f02db597ab7206d960",
+    "frontend/package.json": "0f7a05587bcf1af5f4d5d077a0c2d90011adc87e1036a61db9ef3acf37c8b7d3",
+    "frontend/pnpm-lock.yaml": "47ca44459819ad0e887d2f4f93394fdf3b1053b8f45edc9ceb0236981feee1f6",
+    "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node": "b6fb419f0f43bb2fbca273700294dd2f3b685a64b60e8417c295f47646a70e4a",
+    "/Library/Frameworks/Python.framework/Versions/3.14/bin/python3.14": "1192b994fbb50303c9df2cc97c9d63797d454c7f57f20ca682877c9e770429aa",
+    "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome": "3f0acaf1e585195596d73ffa1824baa72c3c3ac115b5cfc43d789030a3f23d93"
+  },
+  "commands": [
+    {
+      "label": "driver-syntax",
+      "command": [
+        "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node",
+        "--check",
+        "/Users/lhs/Desktop/mcr-worktrees/fe-public/frontend/e2e/visual/qa06/parade-ink-profile/native.mjs"
+      ],
+      "startedEpoch": 1793837886.6708841,
+      "exitCode": 0,
+      "finishedEpoch": 1793837888.5653272
+    },
+    {
+      "label": "frozen-source-syntax",
+      "command": [
+        "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node",
+        "--check",
+        "/Users/lhs/Desktop/mcr-worktrees/fe-public/frontend/e2e/visual/qa06/parade-ink-profile/frozen-source.mjs"
+      ],
+      "startedEpoch": 1793837890.035247,
+      "exitCode": 0,
+      "finishedEpoch": 1793837891.716414
+    },
+    {
+      "label": "native",
+      "command": [
+        "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node",
+        "/Users/lhs/Desktop/mcr-worktrees/fe-public/frontend/e2e/visual/qa06/parade-ink-profile/native.mjs"
+      ],
+      "startedEpoch": 1793837893.076148,
+      "exitCode": 1,
+      "finishedEpoch": 1793837904.922144
+    }
+  ],
+  "peakProcesses": 12,
+  "peakRssKiB": 2692576,
+  "peakWholeBytes": 6109081600,
+  "peakTempBytes": 32616132,
+  "peakOutputBytes": 298345,
+  "peakPositiveGrowthBytes": 30404608,
+  "bothGuardsLiveBeforeWorkload": true,
+  "error": "native failed; retained log/report",
+  "remainingOwnDescendants": [],
+  "finishedEpoch": 1793837905.924146,
+  "cleanup": {
+    "strictPort4196Absent": true,
+    "retainedDependenciesUnchanged": true,
+    "tempAbsent": true,
+    "secondaryExited": true,
+    "beforeOriginalDeadline": true
+  }
+}

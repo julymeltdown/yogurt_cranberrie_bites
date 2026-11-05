@@ -37,7 +37,7 @@ export function ProfileActivity({ input, subject, privacy, browseFeed = false, r
   }, [privacy])
   const current = useSyncExternalStore(subscribe, () => !!input && !!privacy?.isCurrent(input.scope), () => false)
   const posts = current ? qualifiedProfilePosts(input, subject, privacy) : null
-  return <section className="reference-activity" aria-label="Recent profile activity">
+  return <section className="reference-activity pi-profile-activity" aria-label="Recent profile activity">
     {posts === null ? <><p className="reference-activity__notice" role="status">Recent activity is unavailable in this connection.</p>{browseFeed && <ShellLink to="/feed" className="me-activity-load">Open feed</ShellLink>}</>
       : <><p className="reference-activity__scope">Recent posts from the loaded event feed page. This is a partial view of activity.</p>
         {posts.length ? <ul className="reference-activity__list">{posts.map(post => <li key={post.post_id}>

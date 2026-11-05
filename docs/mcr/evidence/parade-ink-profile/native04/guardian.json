@@ -1,0 +1,122 @@
+{
+  "job": "PI06-PROFILE-FOCUSED-NATIVE04-0052",
+  "status": "FAIL",
+  "candidate": "ec1147c290a1fce82eb003ab2d0adaa2ce050279",
+  "acceptedEpoch": 1793839992.071566,
+  "workDeadline": 1793840232.071566,
+  "cleanupDeadline": 1793840292.071566,
+  "limits": {
+    "workSeconds": 240,
+    "cleanupSeconds": 60,
+    "processes": 20,
+    "rssMiB": 4096,
+    "wholeBytes": 8589934592,
+    "newGrowthBytes": 268435456,
+    "tempBytes": 201326592,
+    "durableBytes": 25165824,
+    "logBytes": 2097152
+  },
+  "controller": {
+    "pid": 23601,
+    "parentPid": 49590,
+    "processGroup": 23601,
+    "birth": "Thu Nov  5 09:53:11 2026",
+    "path": "/Users/lhs/Desktop/mcr-worktrees/fe-public/frontend/e2e/visual/qa06/parade-ink-profile/native-round.py",
+    "outputRoot": "/Users/lhs/Desktop/mcr-worktrees/fe-public/docs/mcr/evidence/parade-ink-profile/native04"
+  },
+  "admission": {
+    "freeBytes": 15367430144,
+    "otherNewBytes": 3221225472,
+    "ownNewBytes": 268435456,
+    "residualBytes": 11877769216
+  },
+  "initialInventory": {
+    "roots": [
+      {
+        "path": "/Users/lhs/Desktop/mcr-worktrees/fe-public",
+        "inodes": 15619,
+        "allocatedBytes": 374046720
+      },
+      {
+        "path": "/Users/lhs/Desktop/mcr-worktrees/fe-ref-public",
+        "inodes": 10254,
+        "allocatedBytes": 866787328
+      },
+      {
+        "path": "/Users/lhs/Desktop/mcr-worktrees/fe-social-feed",
+        "inodes": 16835,
+        "allocatedBytes": 427765760
+      },
+      {
+        "path": "/Users/lhs/Desktop/mcr/frontend/node_modules",
+        "inodes": 13420,
+        "allocatedBytes": 438317056
+      },
+      {
+        "path": "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64",
+        "inodes": 5888,
+        "allocatedBytes": 209088512
+      },
+      {
+        "path": "/Users/lhs/Desktop/mcr/.git",
+        "inodes": 4555,
+        "allocatedBytes": 1190502400
+      },
+      {
+        "path": "/Library/Frameworks/Python.framework",
+        "inodes": 28418,
+        "allocatedBytes": 1045037056
+      },
+      {
+        "path": "/Applications/Google Chrome.app",
+        "inodes": 1339,
+        "allocatedBytes": 1527132160
+      }
+    ],
+    "uniqueInodes": 96328,
+    "allocatedBytes": 6078676992
+  },
+  "priorHistoricalMaxBytes": 6109081600,
+  "chargedInitialWholeBytes": 6109081600,
+  "sourceSha256": {
+    "frontend/src/features/me/ui/MePages.tsx": "5941b5427a7b8f18e8b9e71d6bcd43bf98ae93d419904848e6eef3fc899fa81a",
+    "frontend/src/features/me/ui/me.css": "38bd9374501d9b28384d8ef5fc4a663edb99d1a223ae4e255b43213fa84c3b7c",
+    "frontend/src/features/me/ui/reference-profile/ProfileActivity.tsx": "78f1f0486e5998f88d3ff2454c43b01d3ea160021abf6ab3ecec2d6080618411",
+    "frontend/src/features/profile/PublicProfile.tsx": "989476ea8206a3081e50c2f60ff8f414bcda58b19c148cff9279339cc6ea77de",
+    "frontend/src/features/profile/profile.css": "fe56fdc27e6118352f0834dfdbd7e001f9f095126bfc4c755a3c386008ed6338",
+    "frontend/src/features/profile/reference-presentation/activity.css": "418c8db760b301d629dfb2180c8f27cf072f216b957b7f5aea4cc2c0ff994981",
+    "frontend/src/app/social-composition/panels.tsx": "6cb19918c0a07dce36c6da777872fc1bc88cbf7ac17fed9708f7608339f9cb79",
+    "frontend/src/features/settings/SettingsPage.tsx": "881cd3d658723d28ed95fef10e6099da756de3bedbd7f0aa2d3c332bc887cca4",
+    "frontend/src/features/settings/parade-ink-settings.css": "de5f7f9c9046e44120a71eca770d6ea8c2d8d711da0a70ec38645c0278649b60",
+    "frontend/e2e/visual/qa06/parade-ink-profile/frozen-source.mjs": "70a01a30284b0ce773fb2a81a975fb41cb8dfb1db0fc513793ac8a9b91ca3d43",
+    "frontend/e2e/visual/qa06/parade-ink-profile/guard_support.py": "ac41f57cae3031eb6a922d2990a8f8a2af35312dd4c0c1656900e3dbecd5a1a0",
+    "frontend/e2e/visual/qa06/parade-ink-profile/native-round.py": "c2fe71f47bed9ffaf1d45e5c0c80d7f8c405c8a293c1a6f27f76469378fff0a9",
+    "frontend/e2e/visual/qa06/parade-ink-profile/native.mjs": "b06ebac53559002edcffc25ea7141f65677b9f744f9978279bde0d3980d5b348",
+    "frontend/e2e/visual/qa06/parade-ink-profile/preview.html": "1baddfe71c73f5e34c3b71e59e739002b4877945d45f56acec367d4f9b317b25",
+    "frontend/e2e/visual/qa06/parade-ink-profile/preview.ts": "2b388be991124e83667fe7c8ecd5f5cb02f634c89285fabdc11088e0651dc5c0",
+    "frontend/e2e/visual/qa06/parade-ink-profile/watchdog.py": "89e829039875f598b8c787de00c0550ed028646c48156da1dfeeec196a5e2291",
+    "frontend/package.json": "0f7a05587bcf1af5f4d5d077a0c2d90011adc87e1036a61db9ef3acf37c8b7d3",
+    "frontend/pnpm-lock.yaml": "47ca44459819ad0e887d2f4f93394fdf3b1053b8f45edc9ceb0236981feee1f6",
+    "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node": "b6fb419f0f43bb2fbca273700294dd2f3b685a64b60e8417c295f47646a70e4a",
+    "/Library/Frameworks/Python.framework/Versions/3.14/bin/python3.14": "1192b994fbb50303c9df2cc97c9d63797d454c7f57f20ca682877c9e770429aa",
+    "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome": "3f0acaf1e585195596d73ffa1824baa72c3c3ac115b5cfc43d789030a3f23d93"
+  },
+  "commands": [],
+  "peakProcesses": 0,
+  "peakRssKiB": 0,
+  "peakWholeBytes": 6109081600,
+  "peakTempBytes": 0,
+  "peakOutputBytes": 0,
+  "peakPositiveGrowthBytes": 0,
+  "error": "Independent secondary guard requested fail-closed cleanup",
+  "recordedChildrenBeforeFinalCleanup": [],
+  "remainingOwnDescendants": [],
+  "finishedEpoch": 1793839994.581128,
+  "cleanup": {
+    "strictPort4196Absent": true,
+    "retainedDependenciesUnchanged": true,
+    "tempAbsent": true,
+    "secondaryExited": true,
+    "beforeOriginalDeadline": true
+  }
+}

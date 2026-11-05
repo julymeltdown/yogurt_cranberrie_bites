@@ -1,0 +1,24 @@
+{
+  "job": "PI06-PROFILE-FOCUSED-NATIVE05-0100",
+  "status": "FULL",
+  "resourcesReleased": true,
+  "qualification": "PASS",
+  "acceptedEpoch": 1793840459.629889,
+  "finishedEpoch": 1793840521.419551,
+  "controller": {
+    "pid": 70955,
+    "parentPid": 49590,
+    "processGroup": 70955,
+    "birth": "Thu Nov  5 10:00:59 2026",
+    "path": "/Users/lhs/Desktop/mcr-worktrees/fe-public/frontend/e2e/visual/qa06/parade-ink-profile/native-round.py",
+    "outputRoot": "/Users/lhs/Desktop/mcr-worktrees/fe-public/docs/mcr/evidence/parade-ink-profile/native05"
+  },
+  "remainingOwnDescendants": [],
+  "cleanup": {
+    "strictPort4196Absent": true,
+    "retainedDependenciesUnchanged": true,
+    "tempAbsent": true,
+    "secondaryExited": true,
+    "beforeOriginalDeadline": true
+  }
+}

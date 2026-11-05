@@ -1,5 +1,7 @@
 import { useLayoutEffect, useState } from 'react'
 import { ShellLink } from '../../app/navigation'
+import { ConcertWindow } from '../../shared/ui/concert-window'
+import './parade-ink-settings.css'
 import { AccountControlsLink } from '../../app/account-deletion-entry/link'
 import type { SessionController } from '../auth/model/session'
 import type { PrivacyScope } from '../../shared/query/privacy'
@@ -30,7 +32,7 @@ export function SettingsPage({ controller, auth, runtime, theme }: { controller:
     } catch { if (!signal.aborted && auth.privacy.isCurrent(controller.scope)) setApplication('Could not apply preferences. Saved values are unchanged. Try again.') }
     finally { if (!signal.aborted) setApplying(false) }
   }
-  return <section className="me-view" aria-label="Settings"><h2>SETTINGS</h2><p>Saved for your account and this event. Sound stays off until you explicitly apply it in this session.</p><MeStatus controller={controller} />
+  return <section className="me-view pi-settings" aria-label="Settings"><ConcertWindow title="Settings" icon="settings" footer={<ShellLink id="settings-back-world" to="/world">Back to world</ShellLink>}><p>Saved for your account and this event. Sound stays off until you explicitly apply it in this session.</p><MeStatus controller={controller} />
     <form onSubmit={e => { e.preventDefault(); void controller.save('preferences') }}><fieldset disabled={disabled || applying}><legend>Saved preferences</legend>
       <label>Preferred era<select value={s.draft.preferences.theme} onChange={e => controller.editPreferences({ theme: e.target.value as Preferences['theme'] })}>{['REVENGE', 'PARADE', 'DANGER'].map(t => <option key={t}>{t}</option>)}</select></label>
       <label className="me-check"><input type="checkbox" checked={s.draft.preferences.low_power} onChange={e => controller.editPreferences({ low_power: e.target.checked })} />Low power</label>
@@ -41,6 +43,5 @@ export function SettingsPage({ controller, auth, runtime, theme }: { controller:
     {runtime ? <><button type="button" disabled={disabled || applying || s.blocked || controller.dirty('preferences')} onClick={() => void apply()}>Apply saved preferences in this session</button><p role="status">{application}</p></> : <p>Live preference controls are unavailable in this connection. Saving values does not change the active world or start audio.</p>}
     {theme && !disabled && <ThemeSelector controller={theme} />}
     <AccountControlsLink />
-    <ShellLink id="settings-back-world" to="/world">Back to world</ShellLink>
-  </section>
+  </ConcertWindow></section>
 }

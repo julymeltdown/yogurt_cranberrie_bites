@@ -1,0 +1,152 @@
+{
+  "job": "PI06-PROFILE-SOURCE01-20261105T0007Z",
+  "status": "PASS",
+  "candidate": "204a8c5ea506a9963d7ee37377cb50c1997c53c6",
+  "acceptedEpoch": 1793837459.0,
+  "workDeadline": 1793837579.0,
+  "cleanupDeadline": 1793837639.0,
+  "limits": {
+    "workSeconds": 120,
+    "cleanupSeconds": 60,
+    "processes": 8,
+    "rssMiB": 3072,
+    "wholeBytes": 6442450944,
+    "newGrowthBytes": 134217728,
+    "tempBytes": 104857600,
+    "durableBytes": 16777216,
+    "logBytes": 2097152
+  },
+  "admission": {
+    "freeBytes": 15465795584,
+    "otherNewBytes": 4294967296,
+    "ownNewBytes": 134217728,
+    "residualBytes": 11036610560
+  },
+  "initialInventory": {
+    "roots": [
+      {
+        "path": "/Users/lhs/Desktop/mcr-worktrees/fe-public",
+        "inodes": 15579,
+        "allocatedBytes": 372813824
+      },
+      {
+        "path": "/Users/lhs/Desktop/mcr-worktrees/fe-ref-public",
+        "inodes": 10254,
+        "allocatedBytes": 866787328
+      },
+      {
+        "path": "/Users/lhs/Desktop/mcr-worktrees/fe-social-feed",
+        "inodes": 16397,
+        "allocatedBytes": 421376000
+      },
+      {
+        "path": "/Users/lhs/Desktop/mcr/frontend/node_modules",
+        "inodes": 13420,
+        "allocatedBytes": 438317056
+      },
+      {
+        "path": "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64",
+        "inodes": 5888,
+        "allocatedBytes": 209088512
+      },
+      {
+        "path": "/Users/lhs/Desktop/mcr/.git",
+        "inodes": 4676,
+        "allocatedBytes": 1192759296
+      },
+      {
+        "path": "/Library/Frameworks/Python.framework",
+        "inodes": 28418,
+        "allocatedBytes": 1045037056
+      }
+    ],
+    "uniqueInodes": 94632,
+    "allocatedBytes": 4546179072
+  },
+  "priorHistoricalMaxBytes": 3496415232,
+  "chargedInitialWholeBytes": 4546179072,
+  "sourceSha256": {
+    "frontend/src/features/me/ui/MePages.tsx": "5941b5427a7b8f18e8b9e71d6bcd43bf98ae93d419904848e6eef3fc899fa81a",
+    "frontend/src/features/me/ui/me.css": "6e132dc30a3f4a3e3c10393b7ccea511ce393933cee53e943de51bf25ee50c76",
+    "frontend/src/features/me/ui/reference-profile/ProfileActivity.tsx": "78f1f0486e5998f88d3ff2454c43b01d3ea160021abf6ab3ecec2d6080618411",
+    "frontend/src/features/profile/PublicProfile.tsx": "989476ea8206a3081e50c2f60ff8f414bcda58b19c148cff9279339cc6ea77de",
+    "frontend/src/features/profile/profile.css": "aac259a3ca2390f2f82b7e3d766b66d98a6fd5b2abff8626014955190b885fc9",
+    "frontend/src/features/profile/reference-presentation/activity.css": "418c8db760b301d629dfb2180c8f27cf072f216b957b7f5aea4cc2c0ff994981",
+    "frontend/src/features/settings/SettingsPage.tsx": "881cd3d658723d28ed95fef10e6099da756de3bedbd7f0aa2d3c332bc887cca4",
+    "frontend/src/features/settings/parade-ink-settings.css": "de5f7f9c9046e44120a71eca770d6ea8c2d8d711da0a70ec38645c0278649b60",
+    "frontend/src/features/me/__tests__/parade-ink-profile/guard_support.py": "92c1fc1b1da418a944c481de7f9104ba7aafe20a28467d47d5b8812bf3759b67",
+    "frontend/src/features/me/__tests__/parade-ink-profile/presentation.test.tsx": "c2e96a96a8a437924df41f5b7beec421c1fbc0fe5dd645902b020a72ba75fb74",
+    "frontend/src/features/me/__tests__/parade-ink-profile/source-round.py": "869c0788fc6c92bce93b3cd9fef9ad82710b945cd110e426bb4baae7377875d9",
+    "frontend/src/features/me/__tests__/parade-ink-profile/tsconfig.json": "dd6edc802b8822553645237718490e6a7dda935030c7b887adcfd7d1ae44196b",
+    "frontend/src/features/me/__tests__/parade-ink-profile/vitest.config.mjs": "5df24e51972543f83031a20a492fd200bc711b53ce40cbf189a83ee2bd840c3c",
+    "frontend/src/features/me/__tests__/parade-ink-profile/watchdog.py": "44ebc3ccdca81253c6f639aeedaff2e46677535d1ba170f02db597ab7206d960",
+    "frontend/package.json": "0f7a05587bcf1af5f4d5d077a0c2d90011adc87e1036a61db9ef3acf37c8b7d3",
+    "frontend/pnpm-lock.yaml": "47ca44459819ad0e887d2f4f93394fdf3b1053b8f45edc9ceb0236981feee1f6",
+    "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node": "b6fb419f0f43bb2fbca273700294dd2f3b685a64b60e8417c295f47646a70e4a"
+  },
+  "commands": [
+    {
+      "label": "source-tests",
+      "command": [
+        "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node",
+        "/Users/lhs/Desktop/mcr-worktrees/fe-public/frontend/node_modules/vitest/vitest.mjs",
+        "run",
+        "--config",
+        "src/features/me/__tests__/parade-ink-profile/vitest.config.mjs",
+        "--configLoader",
+        "runner",
+        "--maxWorkers=1",
+        "--no-file-parallelism"
+      ],
+      "startedEpoch": 1793837463.913022,
+      "exitCode": 0,
+      "finishedEpoch": 1793837466.7220638
+    },
+    {
+      "label": "source-types",
+      "command": [
+        "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node",
+        "/Users/lhs/Desktop/mcr-worktrees/fe-public/frontend/node_modules/typescript/bin/tsc",
+        "-p",
+        "src/features/me/__tests__/parade-ink-profile/tsconfig.json",
+        "--noEmit",
+        "--incremental",
+        "false",
+        "--allowImportingTsExtensions"
+      ],
+      "startedEpoch": 1793837467.728263,
+      "exitCode": 0,
+      "finishedEpoch": 1793837472.869354
+    },
+    {
+      "label": "source-lint",
+      "command": [
+        "/Users/lhs/Desktop/mcr-worktrees/fe-public/frontend/node_modules/.bin/oxlint",
+        "--deny-warnings",
+        "src/features/me/ui/MePages.tsx",
+        "src/features/me/ui/reference-profile/ProfileActivity.tsx",
+        "src/features/profile/PublicProfile.tsx",
+        "src/features/settings/SettingsPage.tsx",
+        "src/features/me/__tests__/parade-ink-profile"
+      ],
+      "startedEpoch": 1793837473.823174,
+      "exitCode": 0,
+      "finishedEpoch": 1793837475.069845
+    }
+  ],
+  "peakProcesses": 5,
+  "peakRssKiB": 1227856,
+  "peakWholeBytes": 4550164480,
+  "peakTempBytes": 7972069,
+  "peakOutputBytes": 237,
+  "peakPositiveGrowthBytes": 4124672,
+  "bothGuardsLiveBeforeWorkload": true,
+  "remainingOwnDescendants": [],
+  "finishedEpoch": 1793837476.608242,
+  "cleanup": {
+    "retainedDependenciesUnchanged": true,
+    "tempAbsent": true,
+    "secondaryExited": true,
+    "beforeOriginalDeadline": true
+  }
+}

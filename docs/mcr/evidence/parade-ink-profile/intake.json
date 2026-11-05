@@ -1,0 +1,139 @@
+{
+  "status": "SOURCE_PREPARED_NOT_EXECUTED",
+  "base": "5ac4bc6e69ee47e6782c2d0b25c72c5544a540d6",
+  "productionFiles": {
+    "frontend/src/features/me/ui/MePages.tsx": {
+      "sha256": "643361264e3f8b590d1dd98bbdca3a9647f169f2cfbc192baefe56e81c5b601d",
+      "bytes": 6951
+    },
+    "frontend/src/features/me/ui/me.css": {
+      "sha256": "6e132dc30a3f4a3e3c10393b7ccea511ce393933cee53e943de51bf25ee50c76",
+      "bytes": 7309
+    },
+    "frontend/src/features/me/ui/reference-profile/ProfileActivity.tsx": {
+      "sha256": "78f1f0486e5998f88d3ff2454c43b01d3ea160021abf6ab3ecec2d6080618411",
+      "bytes": 4023
+    },
+    "frontend/src/features/profile/PublicProfile.tsx": {
+      "sha256": "989476ea8206a3081e50c2f60ff8f414bcda58b19c148cff9279339cc6ea77de",
+      "bytes": 4060
+    },
+    "frontend/src/features/profile/profile.css": {
+      "sha256": "aac259a3ca2390f2f82b7e3d766b66d98a6fd5b2abff8626014955190b885fc9",
+      "bytes": 3615
+    },
+    "frontend/src/features/profile/reference-presentation/activity.css": {
+      "sha256": "418c8db760b301d629dfb2180c8f27cf072f216b957b7f5aea4cc2c0ff994981",
+      "bytes": 2015
+    },
+    "frontend/src/features/settings/SettingsPage.tsx": {
+      "sha256": "881cd3d658723d28ed95fef10e6099da756de3bedbd7f0aa2d3c332bc887cca4",
+      "bytes": 4878
+    },
+    "frontend/src/features/settings/parade-ink-settings.css": {
+      "sha256": "de5f7f9c9046e44120a71eca770d6ea8c2d8d711da0a70ec38645c0278649b60",
+      "bytes": 1969
+    }
+  },
+  "protectedPreReturnLogic": [
+    {
+      "path": "frontend/src/features/settings/SettingsPage.tsx",
+      "function": "export function SettingsPage",
+      "preReturnSha256": "149b2e328115456aa9af11f588eda704af5dd7d7c743c6b380b21ebb0d5aeda4",
+      "unchanged": true
+    },
+    {
+      "path": "frontend/src/features/profile/PublicProfile.tsx",
+      "function": "export function PublicProfile",
+      "preReturnSha256": "67acee4a807e89caeb7af33bec1217bf3b5c086649252d5b9cf6053f36a4a464",
+      "unchanged": true
+    },
+    {
+      "path": "frontend/src/features/me/ui/MePages.tsx",
+      "function": "export function MeHub",
+      "preReturnSha256": "384589060652acb638a45dfe2e3307b3c6057e9becf02d0a939a22dcbaaa2809",
+      "unchanged": true
+    },
+    {
+      "path": "frontend/src/features/me/ui/MePages.tsx",
+      "function": "export function ProfileForm",
+      "preReturnSha256": "bdd281991242f30639da587d0eb8e3e9b090454b71ec38c9fcb56cc9be921313",
+      "unchanged": true
+    },
+    {
+      "path": "frontend/src/features/me/ui/MePages.tsx",
+      "function": "export function MeStatus",
+      "preReturnSha256": "bc091ceaf8d86cc78cd38ed624c992730fa1d514f9da1ff72d0fbe9d5db10751",
+      "unchanged": true
+    },
+    {
+      "path": "frontend/src/features/me/ui/reference-profile/ProfileActivity.tsx",
+      "function": "export function ProfileActivity",
+      "preReturnSha256": "ab112b4dce608eadf62b2560779d2a03a3357ad844b296689a333f98785fba0d",
+      "unchanged": true
+    },
+    {
+      "path": "frontend/src/features/me/model/controller.ts",
+      "unchanged": true,
+      "sha256": "34c9c487f539b7781d31c6db1e453c871fa424a4bd0dd17bc14fc02f6d531e2e"
+    },
+    {
+      "path": "frontend/src/features/me/model/contract.ts",
+      "unchanged": true,
+      "sha256": "69c70ab44898f34a84a18817d670c3d84186f904ea4c5e0edbdf75a8a56eed79"
+    },
+    {
+      "path": "frontend/src/features/profile/Avatar.tsx",
+      "unchanged": true,
+      "sha256": "cae62acf82fd44db50cd5549dbffd1b1d93f6a4374d2034a07f7f6b31fcfee5b"
+    }
+  ],
+  "qualifiedProfilePostsUnchanged": true,
+  "readonlyInputsVerified": 91,
+  "dependencyLockSha256": "47ca44459819ad0e887d2f4f93394fdf3b1053b8f45edc9ceb0236981feee1f6",
+  "installedLockMatches": true,
+  "resourcePreflightInventory": {
+    "roots": [
+      {
+        "path": "/Users/lhs/Desktop/mcr-worktrees/fe-public",
+        "inodes": 15568,
+        "allocatedBytes": 372752384
+      },
+      {
+        "path": "/Users/lhs/Desktop/mcr-worktrees/fe-ref-public",
+        "inodes": 10254,
+        "allocatedBytes": 866787328
+      },
+      {
+        "path": "/Users/lhs/Desktop/mcr-worktrees/fe-social-feed",
+        "inodes": 16381,
+        "allocatedBytes": 421150720
+      },
+      {
+        "path": "/Users/lhs/Desktop/mcr/frontend/node_modules",
+        "inodes": 13420,
+        "allocatedBytes": 438317056
+      },
+      {
+        "path": "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64",
+        "inodes": 5888,
+        "allocatedBytes": 209088512
+      },
+      {
+        "path": "/Users/lhs/Desktop/mcr/.git",
+        "inodes": 3964,
+        "allocatedBytes": 1188319232
+      }
+    ],
+    "uniqueInodes": 65475,
+    "allocatedBytes": 3496415232
+  },
+  "priorQASoftwareWholePeakBytes": 1337389208,
+  "validation": "Python AST only, protected-prefix/readonly/source custody and diff checks; NO Node/tests/types/lint/native yet",
+  "guardProvenance": {
+    "sourceCommit": "293bec35693c688900e38e6e019343cdc6f01e44",
+    "sourcePrefix": "frontend/src/features/feed-thread/__tests__/parade-ink/",
+    "destinationPrefix": "frontend/src/features/me/__tests__/parade-ink-profile/",
+    "adaptations": "PI06paths/existingretainedexactlockdeps/no link mutation/8ALL3GiBRSS6GiBWHOLE; cumulative per-inode allocated highwater NEW accounting; same two independent live guards/original clocks/cleanup"
+  }
+}

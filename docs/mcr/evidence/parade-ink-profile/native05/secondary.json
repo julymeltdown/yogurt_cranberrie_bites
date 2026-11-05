@@ -1,0 +1,46 @@
+{
+  "guard": "independent-secondary",
+  "startedEpoch": 1793840461.0186298,
+  "samples": 35,
+  "peakProcesses": 13,
+  "peakRssKiB": 2820624,
+  "peakWholeBytes": 6121287680,
+  "initialGlobalCensus": {
+    "claims": [
+      {
+        "owner": "01a1a1fe-1ab7-79b0-adbc-d4c025701acb",
+        "kind": "browser",
+        "processCap": 20,
+        "rssCapBytes": 4294967296,
+        "remainingNewUpperBytes": 268435456,
+        "controller": {
+          "pid": 70955,
+          "birth": "Thu Nov  5 10:00:59 2026",
+          "executable": "/Library/Frameworks/Python.framework/Versions/3.14/bin/python3.14",
+          "script": "/Users/lhs/Desktop/mcr-worktrees/fe-public/frontend/e2e/visual/qa06/parade-ink-profile/native-round.py",
+          "outputRoot": "/Users/lhs/Desktop/mcr-worktrees/fe-public/docs/mcr/evidence/parade-ink-profile/native05"
+        },
+        "matchers": [
+          "/Users/lhs/Desktop/mcr-worktrees/fe-public/frontend/e2e/visual/qa06/parade-ink-profile/native-round.py",
+          "/Users/lhs/Desktop/mcr-worktrees/fe-public/docs/mcr/evidence/parade-ink-profile/native05"
+        ]
+      }
+    ],
+    "unknown": [],
+    "actualPids": [
+      70955,
+      71150,
+      71158
+    ],
+    "actualRSSBytes": 270155776,
+    "reservedProcessCaps": 20,
+    "reservedRSSBytes": 4294967296,
+    "browsers": 1,
+    "sources": 0,
+    "targets": 0
+  },
+  "peakGlobalWorkflows": 1,
+  "peakGlobalProcesses": 13,
+  "peakGlobalRSSBytes": 2815164416,
+  "finishedEpoch": 1793840521.223928
+}
