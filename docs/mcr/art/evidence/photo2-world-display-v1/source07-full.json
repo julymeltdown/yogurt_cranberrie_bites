@@ -1,0 +1,20 @@
+{
+  "offerId": "ART231-PHOTO2-SOURCE07-0734",
+  "status": "FAIL",
+  "failure": "KeyError('totalConservativeFutureUpperBytes')",
+  "acceptedAtEpoch": null,
+  "bootstrapAtEpoch": 1793865052.8353322,
+  "actualFullEpoch": 1793865052.837046,
+  "commands": [],
+  "peak": null,
+  "minimumFree": null,
+  "allChildrenReaped": true,
+  "tempAbsent": true,
+  "resources": {
+    "processes": 0,
+    "appSlots": 0
+  },
+  "sourceArtOnly": true,
+  "personalInspection": "PENDING",
+  "worldRuntimeAcceptance": false
+}

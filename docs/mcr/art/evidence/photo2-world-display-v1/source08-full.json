@@ -1,0 +1,77 @@
+{
+  "offerId": "ART231-PHOTO2-SOURCE08-0752",
+  "status": "PASS",
+  "failure": null,
+  "acceptedAtEpoch": 1793866448.153944,
+  "bootstrapAtEpoch": 1793866448.153944,
+  "actualFullEpoch": 1793866459.073729,
+  "commands": [
+    {
+      "name": "original-vector-raster",
+      "argv": [
+        "/Library/Frameworks/Python.framework/Versions/3.14/bin/python3",
+        "-B",
+        "-u",
+        "/Users/lhs/Desktop/mcr-worktrees/art-map-cozy-v1/docs/mcr/art/evidence/photo2-world-display-v1/author.py",
+        "--build"
+      ],
+      "pid": 63956,
+      "exit": 0,
+      "log": {
+        "path": "/Users/lhs/Desktop/mcr-worktrees/art-map-cozy-v1/docs/mcr/art/evidence/photo2-world-display-v1/source08-command-00.log",
+        "bytes": 1639,
+        "sha256": "fdb03d276cd066dd28f205b38cd87aeaf9363b9a858ca0ffa29d738856795003"
+      }
+    },
+    {
+      "name": "scoped-strict-types",
+      "argv": [
+        "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node",
+        "--max-old-space-size=256",
+        "/Users/lhs/Desktop/mcr/frontend/node_modules/typescript/bin/tsc",
+        "--project",
+        "/Users/lhs/Desktop/mcr-worktrees/art-map-cozy-v1/docs/mcr/art/evidence/photo2-world-display-v1/scoped-tsconfig.json",
+        "--pretty",
+        "false"
+      ],
+      "pid": 63987,
+      "exit": 0,
+      "log": {
+        "path": "/Users/lhs/Desktop/mcr-worktrees/art-map-cozy-v1/docs/mcr/art/evidence/photo2-world-display-v1/source08-command-01.log",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "name": "owned-hostile-frame-support-qualifier",
+      "argv": [
+        "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node",
+        "--max-old-space-size=256",
+        "/Users/lhs/Desktop/mcr-worktrees/art-map-cozy-v1/frontend/src/features/parade-ink/world-hud/__tests__/photo2-art-source-v1/qualifier.test.ts"
+      ],
+      "pid": 64011,
+      "exit": 0,
+      "log": {
+        "path": "/Users/lhs/Desktop/mcr-worktrees/art-map-cozy-v1/docs/mcr/art/evidence/photo2-world-display-v1/source08-command-02.log",
+        "bytes": 784,
+        "sha256": "fafbf25efbbd57ac8456a68dc3d44c981b18f24c5e4e629cab819e68d2e635f3"
+      }
+    }
+  ],
+  "peak": {
+    "whole": 4393060635,
+    "positive": 2494632,
+    "rss": 147046400,
+    "processes": 5
+  },
+  "minimumFree": 13287559168,
+  "allChildrenReaped": true,
+  "tempAbsent": true,
+  "resources": {
+    "processes": 0,
+    "appSlots": 0
+  },
+  "sourceArtOnly": true,
+  "personalInspection": "PENDING",
+  "worldRuntimeAcceptance": false
+}

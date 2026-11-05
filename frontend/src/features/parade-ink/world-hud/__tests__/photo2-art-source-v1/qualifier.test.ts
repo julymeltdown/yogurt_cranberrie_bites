@@ -18,8 +18,8 @@ const folder = resolve(root, 'frontend/public/world/reference-scene-v2/photo2-wo
 const evidence = resolve(root, 'docs/mcr/art/evidence/photo2-world-display-v1');
 const hash = (b: Uint8Array) => createHash('sha256').update(b).digest('hex');
 const parse = <T>(b: Uint8Array): T => JSON.parse(Buffer.from(b).toString()) as T;
-const rawContract = execFileSync('/usr/bin/git', ['show', '33491ccf9b0ae3835ad691072d8479b299f543d8:docs/mcr/evidence/pi08-finish-01/photo2-world-contract/producer-contract-v2.json']);
-assert.equal(hash(rawContract), '3fce374b7f60d46e8561559c42470a3343708f9eb3236a1d01050c4f0aa3a12d');
+const rawContract = execFileSync('/usr/bin/git', ['show', '3d256d4216327a59dce96e550e4feb355e55b18a:docs/mcr/evidence/pi08-finish-01/photo2-world-contract/producer-contract-v3.json']);
+assert.equal(hash(rawContract), 'cc12d028b4615246ea457722d13af6d35fc505e44b6d1946adcf1811a37ab98e');
 const contract = parse<Contract>(rawContract);
 const nativeRaw = execFileSync('/usr/bin/git', ['show', `${contract.nativeSource.commit}:${contract.nativeSource.path}`]);
 assert.equal(hash(nativeRaw), '847d9c92a4ddfa22b8187bb6afe9a9fc2e6e09b1c7fe8e5f85c5a7f5c0d846a9');
@@ -83,7 +83,7 @@ test('qualified source pins, exact native objects/frames/mesh and actual resourc
 test('foreground scenery alpha leaves both shortcut boards fully visible', () => {
   const image = decode(readFileSync(resolve(folder, 'atlas.png')));
   for (const board of contract.boards) for (const f of contract.frames) {
-    const b = board.displayRect; const r = f.displayRect;
+    const raw = board.displayRect; const b = { x: raw.x - 4, y: raw.y - 4, width: raw.width + 8, height: raw.height + 8 }; const r = f.displayRect;
     if (f.displayFoot!.y <= b.y + b.height) continue;
     const ox = Math.round(r.x); const oy = Math.round(r.y);
     for (let y = Math.max(oy, b.y); y < Math.min(oy + r.height, b.y + b.height); y++)
@@ -92,6 +92,18 @@ test('foreground scenery alpha leaves both shortcut boards fully visible', () =>
         assert.equal(image.pixels[p], 0, `${f.id} covers ${board.id} at ${x},${y}`);
       }
   }
+});
+test('v3 foreground lamp is tall, grounded at its composite foot and rear frame is low support', () => {
+  const image = decode(readFileSync(resolve(folder, 'atlas.png')));
+  const f = contract.frames.find(f => f.id === 'rooted_tree_06')!;
+  assert.deepEqual([f.atlasRect.width, f.atlasRect.height], [80, 170]);
+  assert.deepEqual(f.origin, { x: 0.5, y: 1 });
+  const alpha = (frame: Frame, x: number, y: number) => image.pixels[((frame.atlasRect.y + y) * image.width + frame.atlasRect.x + x) * 4 + 3]!;
+  for (let y = 50; y <= 143; y++) assert.ok(alpha(f, 64, y), `missing lamp stem at ${y}`);
+  assert.ok(alpha(f, 40, 168), 'composite ground support must reach the native foot');
+  for (let y = 0; y < 156; y++) for (let x = 0; x < 54; x++) assert.equal(alpha(f, x, y), 0, 'paint intrudes into board/focus clearance');
+  const rear = contract.frames.find(f => f.id === 'cross_banner_east')!;
+  for (let y = 0; y < 65; y++) for (let x = 0; x < 18; x++) assert.equal(alpha(rear, x, y), 0, 'duplicate rear lamp');
 });
 test('transparent atlas has no paint outside its 24 disjoint frames', () => {
   const image = decode(readFileSync(resolve(folder, 'atlas.png'))); assert.deepEqual([image.width, image.height, image.channels], [512, 1024, 4]);

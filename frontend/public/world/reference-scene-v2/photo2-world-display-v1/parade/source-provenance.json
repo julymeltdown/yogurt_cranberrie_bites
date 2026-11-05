@@ -10,9 +10,9 @@
     "sourcePixelSampling": false
   },
   "producerContract": {
-    "canonicalCommit": "33491ccf9b0ae3835ad691072d8479b299f543d8",
-    "path": "docs/mcr/evidence/pi08-finish-01/photo2-world-contract/producer-contract-v2.json",
-    "sha256": "3fce374b7f60d46e8561559c42470a3343708f9eb3236a1d01050c4f0aa3a12d"
+    "canonicalCommit": "3d256d4216327a59dce96e550e4feb355e55b18a",
+    "path": "docs/mcr/evidence/pi08-finish-01/photo2-world-contract/producer-contract-v3.json",
+    "sha256": "cc12d028b4615246ea457722d13af6d35fc505e44b6d1946adcf1811a37ab98e"
   },
   "nativeSource": {
     "commit": "8dee1335a79f831e6a29f005a50f2c0f65777d46",
@@ -25,8 +25,8 @@
   },
   "sourceCode": {
     "path": "docs/mcr/art/evidence/photo2-world-display-v1/author.py",
-    "bytes": 22457,
-    "sha256": "ca1be3ec595a7054447165fa8e929e1ffca7fae982bb8fb089ebf031dbbc45b4"
+    "bytes": 23570,
+    "sha256": "ae66bd67bc67d239c90268bad2d8e5d338c0ef595aa7d12fac5736047120ac5d"
   },
   "outputs": [
     {
@@ -41,23 +41,23 @@
     },
     {
       "path": "frontend/public/world/reference-scene-v2/photo2-world-display-v1/parade/atlas.png",
-      "bytes": 27038,
-      "sha256": "db05972c262e6406872afea9ef8f7ce3c9be3eb443946023d5d2afdf93018795"
+      "bytes": 27372,
+      "sha256": "cb4eb5dab44b925dd71bec7a5821d9e607d74f4078679b2bb982644a7b32fb8a"
     },
     {
       "path": "frontend/public/world/reference-scene-v2/photo2-world-display-v1/parade/atlas-editable.json",
-      "bytes": 874317,
-      "sha256": "0cb243163c696df5fc8ea95316819bbbfe6ca2b9f9a9e413fd6f0dee13507126"
+      "bytes": 879379,
+      "sha256": "d8c4f3ff611458b48e12ddc38adab176254e4df09b8acf65028d92c4cb7f9abf"
     },
     {
       "path": "frontend/public/world/reference-scene-v2/photo2-world-display-v1/parade/asset-interface.json",
-      "bytes": 46548,
-      "sha256": "085880838187f5e0514afaf25c4a75d4a3fe0a4a48453a05d86b73b71e591c77"
+      "bytes": 46552,
+      "sha256": "dd2d09f2aebe3c631fcd0eed8cc09e11df8661550a38fa214ee50e6c39b81600"
     },
     {
       "path": "frontend/public/world/reference-scene-v2/photo2-world-display-v1/parade/README.md",
       "bytes": 2058,
-      "sha256": "ec2f88ebd55a248890f9e96dbcf4575d8c437fca5a6bada98e5c516260fdbdb4"
+      "sha256": "e2717c16b6e583365af40449ef0cfa2f46a080d2d175c9b6a1ff565fff0bc5f0"
     }
   ],
   "dependencies": {

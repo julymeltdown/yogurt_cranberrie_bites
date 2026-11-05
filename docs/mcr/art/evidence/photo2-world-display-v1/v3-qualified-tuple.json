@@ -1,0 +1,64 @@
+{
+  "schema": "mcr-photo2-qualified-art-tuple-v3",
+  "status": "SOURCE_QUALIFIED_PERSONALLY_INSPECTED_LAMP_FIX_COMPLETE",
+  "producerContract": {
+    "canonicalCommit": "3d256d4216327a59dce96e550e4feb355e55b18a",
+    "path": "docs/mcr/evidence/pi08-finish-01/photo2-world-contract/producer-contract-v3.json",
+    "sha256": "cc12d028b4615246ea457722d13af6d35fc505e44b6d1946adcf1811a37ab98e"
+  },
+  "sourceQualification": {
+    "path": "docs/mcr/art/evidence/photo2-world-display-v1/source08-full.json",
+    "bytes": 2601,
+    "sha256": "414d39e6fc1b96105ac95e2f1422bc403a2554feca314b77040b124c892981f6"
+  },
+  "developerQualification": {
+    "path": "docs/mcr/art/evidence/photo2-world-display-v1/qualification-review-v3.json",
+    "bytes": 7288,
+    "sha256": "7ef35cbbbff44ae3fe0a0681f984f611fb1d9f744d2432145ff0ec245164894f"
+  },
+  "assets": [
+    {
+      "path": "frontend/public/world/reference-scene-v2/photo2-world-display-v1/parade/ground.svg",
+      "bytes": 1623572,
+      "sha256": "9d9063e466949223d889f4f6d859e8dd54b51f64ff3677161cab44f7b8c85ab5"
+    },
+    {
+      "path": "frontend/public/world/reference-scene-v2/photo2-world-display-v1/parade/ground.png",
+      "bytes": 61501,
+      "sha256": "5d4c6c56186088fd86de836dc0c66a9aff7df1cf373615f070e2a63b9272d9c0"
+    },
+    {
+      "path": "frontend/public/world/reference-scene-v2/photo2-world-display-v1/parade/atlas.png",
+      "bytes": 27372,
+      "sha256": "cb4eb5dab44b925dd71bec7a5821d9e607d74f4078679b2bb982644a7b32fb8a"
+    },
+    {
+      "path": "frontend/public/world/reference-scene-v2/photo2-world-display-v1/parade/atlas-editable.json",
+      "bytes": 879379,
+      "sha256": "d8c4f3ff611458b48e12ddc38adab176254e4df09b8acf65028d92c4cb7f9abf"
+    },
+    {
+      "path": "frontend/public/world/reference-scene-v2/photo2-world-display-v1/parade/asset-interface.json",
+      "bytes": 46552,
+      "sha256": "dd2d09f2aebe3c631fcd0eed8cc09e11df8661550a38fa214ee50e6c39b81600"
+    },
+    {
+      "path": "frontend/public/world/reference-scene-v2/photo2-world-display-v1/parade/source-provenance.json",
+      "bytes": 3469,
+      "sha256": "8cebea0e8f5adcb9fa479b01936e89e65fa15a1a625f5afc47bd0a898e9ed465"
+    },
+    {
+      "path": "frontend/public/world/reference-scene-v2/photo2-world-display-v1/parade/README.md",
+      "bytes": 2058,
+      "sha256": "e2717c16b6e583365af40449ef0cfa2f46a080d2d175c9b6a1ff565fff0bc5f0"
+    }
+  ],
+  "collisionSupport": {
+    "path": "docs/mcr/art/evidence/photo2-world-display-v1/collision-support.json",
+    "bytes": 1054609,
+    "sha256": "91a1238106b96207aa2f06ab5d2d5b8b6cd8304b3aef264bc5cb38f79ce6b6ea"
+  },
+  "nativeGeometryUnchanged": true,
+  "releaseAdmission": "NOT_ADMITTED",
+  "runtimeAcceptance": false
+}

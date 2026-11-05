@@ -1,0 +1,86 @@
+{
+  "head": "ebdda5481c2f8c24a00bd89b1ef108ee6c8e5352",
+  "files": [
+    {
+      "path": "/Users/lhs/Desktop/mcr-worktrees/art-map-cozy-v1/docs/mcr/art/evidence/photo2-world-display-v1/author.py",
+      "bytes": 23570,
+      "sha256": "ae66bd67bc67d239c90268bad2d8e5d338c0ef595aa7d12fac5736047120ac5d"
+    },
+    {
+      "path": "/Users/lhs/Desktop/mcr-worktrees/art-map-cozy-v1/docs/mcr/art/evidence/photo2-world-display-v1/controller08.py",
+      "bytes": 1796,
+      "sha256": "a0ea9f9da72db2d1f2b2e72ecdc30b8143503b7251386a44eb53f96b69239f75"
+    },
+    {
+      "path": "/Users/lhs/Desktop/mcr-worktrees/art-map-cozy-v1/docs/mcr/art/evidence/photo2-world-display-v1/controller07.py",
+      "bytes": 2265,
+      "sha256": "f541d5d2fd3f0ef5895a2ce765f509a5eed7616301dc3e402818ad5d86190eca"
+    },
+    {
+      "path": "/Users/lhs/Desktop/mcr-worktrees/art-map-cozy-v1/docs/mcr/art/evidence/photo2-world-display-v1/controller.py",
+      "bytes": 8356,
+      "sha256": "f1b53f9fa351b1ee9dc571d8f49fe208922ecff05eb8853e7c2ee5eaeb6dfd94"
+    },
+    {
+      "path": "/Users/lhs/Desktop/mcr-worktrees/art-map-cozy-v1/docs/mcr/art/evidence/photo2-world-display-v1/source-control08.py",
+      "bytes": 745,
+      "sha256": "5db10c874c519f450b7daffb686617f9d1f41a8fd0a46ec5d1d1cbe017e97ef5"
+    },
+    {
+      "path": "/Users/lhs/Desktop/mcr-worktrees/art-map-cozy-v1/docs/mcr/art/evidence/photo2-world-display-v1/source-control07.py",
+      "bytes": 3055,
+      "sha256": "2cf14390379a1c120e6e31eb04e5f2d69fc1788d47c715fd671c4027f1c1129b"
+    },
+    {
+      "path": "/Users/lhs/Desktop/mcr-worktrees/art-map-cozy-v1/docs/mcr/art/evidence/photo2-world-display-v1/source-control05.py",
+      "bytes": 4382,
+      "sha256": "85e9da6ebeeda92bbe56440cc873e5ba0fa0d8161df38af5a58dc250a9a18804"
+    },
+    {
+      "path": "/Users/lhs/Desktop/mcr-worktrees/art-map-cozy-v1/docs/mcr/art/evidence/photo2-world-display-v1/source-control04.py",
+      "bytes": 3312,
+      "sha256": "78afe84050d0d428506c3b558b7e085a63729018daf3ad9f02ed7c0709f313f3"
+    },
+    {
+      "path": "/Users/lhs/Desktop/mcr-worktrees/art-map-cozy-v1/docs/mcr/art/evidence/photo2-world-display-v1/source-control.py",
+      "bytes": 11814,
+      "sha256": "3e1aed729b2eeed94ff523f9874b1592a7d7e4848d0d4124dccd42098f2f43fe"
+    },
+    {
+      "path": "/Users/lhs/Desktop/mcr-worktrees/art-map-cozy-v1/docs/mcr/art/evidence/photo2-world-display-v1/memory-probe.py",
+      "bytes": 1765,
+      "sha256": "0bc75747783bcf6307b79739d7c868ee5782bedcdd99edf26d5a045ca94f2b89"
+    },
+    {
+      "path": "/Users/lhs/Desktop/mcr-worktrees/art-map-cozy-v1/docs/mcr/art/evidence/photo2-world-display-v1/scoped-tsconfig.json",
+      "bytes": 338,
+      "sha256": "bcb6e7497b02fb094b24e1ecfe970c937201b825a8244fe52893d2d574006120"
+    },
+    {
+      "path": "/Users/lhs/Desktop/mcr-worktrees/art-map-cozy-v1/frontend/src/features/parade-ink/world-hud/__tests__/photo2-art-source-v1/qualifier.test.ts",
+      "bytes": 13136,
+      "sha256": "0b3e29fa16027b2181d29378b4cb9df542a99aa6f285e93fd419e035374e58b6"
+    },
+    {
+      "path": "/Users/lhs/Desktop/mcr-worktrees/art-map-cozy-v1/frontend/public/world/reference-scene-v2/photo2-world-display-v1/parade/README.md",
+      "bytes": 2058,
+      "sha256": "e2717c16b6e583365af40449ef0cfa2f46a080d2d175c9b6a1ff565fff0bc5f0"
+    },
+    {
+      "path": "/Users/lhs/Desktop/mcr-worktrees/art-map-cozy-v1/frontend/tsconfig.json",
+      "bytes": 660,
+      "sha256": "55050e293472fb6ec4aa2690c8cad7cb5a5a107ba483bf98851a0c4e707c6528"
+    },
+    {
+      "path": "/Users/lhs/Desktop/mcr-worktrees/art-map-cozy-v1/frontend/public/world/reference-scene-v2/photo2-world-display-v1/parade/ground.png",
+      "bytes": 61501,
+      "sha256": "5d4c6c56186088fd86de836dc0c66a9aff7df1cf373615f070e2a63b9272d9c0"
+    },
+    {
+      "path": "/Users/lhs/Desktop/mcr-worktrees/art-map-cozy-v1/frontend/public/world/reference-scene-v2/photo2-world-display-v1/parade/ground.svg",
+      "bytes": 1623572,
+      "sha256": "9d9063e466949223d889f4f6d859e8dd54b51f64ff3677161cab44f7b8c85ab5"
+    }
+  ],
+  "meaning": "Actual source frozen during authorized readiness bootstrap; final controller bootstrap fix is pinned by exact SHA and committed with delivery"
+}

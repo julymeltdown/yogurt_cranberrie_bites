@@ -1,0 +1,15 @@
+✔ qualified source pins, exact native objects/frames/mesh and actual resource units (33.838375ms)
+✔ foreground scenery alpha leaves both shortcut boards fully visible (15.265083ms)
+✔ v3 foreground lamp is tall, grounded at its composite foot and rear frame is low support (14.987584ms)
+✔ transparent atlas has no paint outside its 24 disjoint frames (19.86675ms)
+✔ every frozen blocked cell has its complete native support painted through the mesh (266.783583ms)
+✔ hostile mixed hash, moved anchor, aliased frame, physical board, mesh drift and false units are rejected (32.994625ms)
+✔ missing blocked support and corrupt PNG CRC fail closed (8.840875ms)
+ℹ tests 7
+ℹ suites 0
+ℹ pass 7
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 397.770167

@@ -1,6 +1,6 @@
 # Photo 2 PARADE source art
 
-Original editable vector scenery for the qualified Photo 2 display contract at canonical commit `33491ccf9b0ae3835ad691072d8479b299f543d8`. `ground.svg` and `atlas-editable.json` are editable sources; the owned `author.py` deterministically rasterizes their original primitives using the existing Pillow installation. No reference, avatar, or character pixels are sampled into these assets.
+Original editable vector scenery for the qualified Photo 2 display contract at canonical commit `3d256d4216327a59dce96e550e4feb355e55b18a`. `ground.svg` and `atlas-editable.json` are editable sources; the owned `author.py` deterministically rasterizes their original primitives using the existing Pillow installation. No reference, avatar, or character pixels are sampled into these assets.
 
 The ground is 499 × 1200 display pixels with viewBox `-112 -20 499 1200`. The transparent atlas is 512 × 1024 pixels, with 22 native-foot billboard frames and two nonphysical MEET/WALL panel shortcut frames. The frozen native geometry, coordinates, IDs, collision, rooms and existing C06 native tiled texture remain separate inputs. Blocked native cells are clipped against the contract triangles and painted through the same projection, including support beyond decorative sprite alpha.
 

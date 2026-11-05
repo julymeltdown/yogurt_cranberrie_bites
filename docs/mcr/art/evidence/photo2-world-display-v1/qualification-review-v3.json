@@ -1,0 +1,172 @@
+{
+  "schema": "mcr-photo2-source-review-v3",
+  "status": "SOURCE_QUALIFIED_PERSONALLY_INSPECTED_LAMP_FIX_COMPLETE",
+  "recordedAtEpoch": 1793866607.8354828,
+  "producerContract": {
+    "canonicalCommit": "3d256d4216327a59dce96e550e4feb355e55b18a",
+    "path": "docs/mcr/evidence/pi08-finish-01/photo2-world-contract/producer-contract-v3.json",
+    "sha256": "cc12d028b4615246ea457722d13af6d35fc505e44b6d1946adcf1811a37ab98e"
+  },
+  "qualification": {
+    "path": "docs/mcr/art/evidence/photo2-world-display-v1/source08-full.json",
+    "bytes": 2601,
+    "sha256": "414d39e6fc1b96105ac95e2f1422bc403a2554feca314b77040b124c892981f6"
+  },
+  "commands": [
+    {
+      "name": "original-vector-raster",
+      "argv": [
+        "/Library/Frameworks/Python.framework/Versions/3.14/bin/python3",
+        "-B",
+        "-u",
+        "/Users/lhs/Desktop/mcr-worktrees/art-map-cozy-v1/docs/mcr/art/evidence/photo2-world-display-v1/author.py",
+        "--build"
+      ],
+      "pid": 63956,
+      "exit": 0,
+      "log": {
+        "path": "/Users/lhs/Desktop/mcr-worktrees/art-map-cozy-v1/docs/mcr/art/evidence/photo2-world-display-v1/source08-command-00.log",
+        "bytes": 1639,
+        "sha256": "fdb03d276cd066dd28f205b38cd87aeaf9363b9a858ca0ffa29d738856795003"
+      }
+    },
+    {
+      "name": "scoped-strict-types",
+      "argv": [
+        "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node",
+        "--max-old-space-size=256",
+        "/Users/lhs/Desktop/mcr/frontend/node_modules/typescript/bin/tsc",
+        "--project",
+        "/Users/lhs/Desktop/mcr-worktrees/art-map-cozy-v1/docs/mcr/art/evidence/photo2-world-display-v1/scoped-tsconfig.json",
+        "--pretty",
+        "false"
+      ],
+      "pid": 63987,
+      "exit": 0,
+      "log": {
+        "path": "/Users/lhs/Desktop/mcr-worktrees/art-map-cozy-v1/docs/mcr/art/evidence/photo2-world-display-v1/source08-command-01.log",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "name": "owned-hostile-frame-support-qualifier",
+      "argv": [
+        "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node",
+        "--max-old-space-size=256",
+        "/Users/lhs/Desktop/mcr-worktrees/art-map-cozy-v1/frontend/src/features/parade-ink/world-hud/__tests__/photo2-art-source-v1/qualifier.test.ts"
+      ],
+      "pid": 64011,
+      "exit": 0,
+      "log": {
+        "path": "/Users/lhs/Desktop/mcr-worktrees/art-map-cozy-v1/docs/mcr/art/evidence/photo2-world-display-v1/source08-command-02.log",
+        "bytes": 784,
+        "sha256": "fafbf25efbbd57ac8456a68dc3d44c981b18f24c5e4e629cab819e68d2e635f3"
+      }
+    }
+  ],
+  "personalInspection": {
+    "method": "Actual view_image of generated files after actual FULL; original reference comparison included",
+    "performedAfterEpoch": 1793866459.073729,
+    "completedBeforeEpoch": 1793866518.2303529,
+    "images": [
+      {
+        "path": "docs/mcr/art/evidence/photo2-world-display-v1/reference-comparison.png",
+        "bytes": 380368,
+        "sha256": "1f53c5f4d29116937347b41925fbe8509d0a17c2014520862c31c41956fb77c5"
+      },
+      {
+        "path": "docs/mcr/art/evidence/photo2-world-display-v1/scene-viewport.png",
+        "bytes": 33823,
+        "sha256": "a1eea697f5653f22a959adaef1081a51e4a7a132dba2066f99b7b6eecd02160a"
+      },
+      {
+        "path": "docs/mcr/art/evidence/photo2-world-display-v1/atlas-contact.png",
+        "bytes": 46088,
+        "sha256": "df64a6c9470db6f22df75b02e56b1b9417d313c68e3e7d5cf8fcbff40d020cdb"
+      },
+      {
+        "path": "docs/mcr/art/evidence/photo2-world-display-v1/support-diagnostic.png",
+        "bytes": 65955,
+        "sha256": "3cd989da054c4711e6102b3934ca04f9f5be7d0a42b027858524ac4068d54316"
+      },
+      {
+        "path": "docs/mcr/art/evidence/photo2-world-display-v1/full-scene.png",
+        "bytes": 87751,
+        "sha256": "023ef64794f8305ce20bd7b8c64e52e3807a398e205160f94fa5a22dfec0e800"
+      }
+    ],
+    "findings": [
+      "Foreground lamp is visibly tall and to the right of WALL, with a slim shaft and low grounded composite base.",
+      "The rear frame is low support with no duplicate full lamp.",
+      "MEET and WALL lettering remain clear; seven checks include four display pixels of surrounding alpha clearance.",
+      "Fine pink-gray paving, rounded olive canopies, the truss stage and peaked merchandise canopy remain visible.",
+      "Support is depicted against the exact projected frozen grid; the unchanged ground PNG and SVG retain their qualified bytes."
+    ]
+  },
+  "preserved": {
+    "nativeIds": 22,
+    "atlasFramesIncludingNonphysicalBoards": 24,
+    "meshVertices": 204,
+    "groundDimensions": [
+      499,
+      1200
+    ],
+    "atlasDimensions": [
+      512,
+      1024
+    ],
+    "nativeFootAndCollision": true
+  },
+  "retainedSingleDecodeProbe": {
+    "pin": {
+      "path": "docs/mcr/art/evidence/photo2-world-display-v1/decode-probe.json",
+      "bytes": 437,
+      "sha256": "52a54ed59e47edf52c4f8b02025414b44246221d245090083d93c36e68c41352"
+    },
+    "reason": "Actual texture dimensions and RGB/RGBA channels unchanged; original single producer allocation observation retained, not rerun or claimed as a renderer swap."
+  },
+  "assets": [
+    {
+      "path": "frontend/public/world/reference-scene-v2/photo2-world-display-v1/parade/ground.svg",
+      "bytes": 1623572,
+      "sha256": "9d9063e466949223d889f4f6d859e8dd54b51f64ff3677161cab44f7b8c85ab5"
+    },
+    {
+      "path": "frontend/public/world/reference-scene-v2/photo2-world-display-v1/parade/ground.png",
+      "bytes": 61501,
+      "sha256": "5d4c6c56186088fd86de836dc0c66a9aff7df1cf373615f070e2a63b9272d9c0"
+    },
+    {
+      "path": "frontend/public/world/reference-scene-v2/photo2-world-display-v1/parade/atlas.png",
+      "bytes": 27372,
+      "sha256": "cb4eb5dab44b925dd71bec7a5821d9e607d74f4078679b2bb982644a7b32fb8a"
+    },
+    {
+      "path": "frontend/public/world/reference-scene-v2/photo2-world-display-v1/parade/atlas-editable.json",
+      "bytes": 879379,
+      "sha256": "d8c4f3ff611458b48e12ddc38adab176254e4df09b8acf65028d92c4cb7f9abf"
+    },
+    {
+      "path": "frontend/public/world/reference-scene-v2/photo2-world-display-v1/parade/asset-interface.json",
+      "bytes": 46552,
+      "sha256": "dd2d09f2aebe3c631fcd0eed8cc09e11df8661550a38fa214ee50e6c39b81600"
+    },
+    {
+      "path": "frontend/public/world/reference-scene-v2/photo2-world-display-v1/parade/source-provenance.json",
+      "bytes": 3469,
+      "sha256": "8cebea0e8f5adcb9fa479b01936e89e65fa15a1a625f5afc47bd0a898e9ed465"
+    },
+    {
+      "path": "frontend/public/world/reference-scene-v2/photo2-world-display-v1/parade/README.md",
+      "bytes": 2058,
+      "sha256": "e2717c16b6e583365af40449ef0cfa2f46a080d2d175c9b6a1ff565fff0bc5f0"
+    }
+  ],
+  "limits": [
+    "Source art qualification and lamp inspection only.",
+    "Coherent C06 registration, renderer consumption and full Photo2/native/runtime acceptance remain with their owners.",
+    "No World release activation, live production or new character sampling is claimed."
+  ],
+  "historicalFailures": "All prior failed source rounds remain immutable, including Source07 pre-ACCEPT projection KeyError; its null peak is not zero or a refund."
+}

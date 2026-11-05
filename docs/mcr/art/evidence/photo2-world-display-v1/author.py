@@ -13,9 +13,9 @@ import sys
 HERE=Path(__file__).resolve().parent
 ROOT=HERE.parents[4]
 PUBLIC=ROOT/'frontend/public/world/reference-scene-v2/photo2-world-display-v1/parade'
-CANONICAL='33491ccf9b0ae3835ad691072d8479b299f543d8'
+CANONICAL='3d256d4216327a59dce96e550e4feb355e55b18a'
 FOLDER='docs/mcr/evidence/pi08-finish-01/photo2-world-contract/'
-CONTRACT_SHA='3fce374b7f60d46e8561559c42470a3343708f9eb3236a1d01050c4f0aa3a12d'
+CONTRACT_SHA='cc12d028b4615246ea457722d13af6d35fc505e44b6d1946adcf1811a37ab98e'
 REFERENCE_SHA='9e7f17a666e1ecfc738a14b75bb3a166235a05c401f206aa24f26cf7463cbc27'
 REFERENCE=Path('/private/tmp/codex-remote-attachments/01a19e5c-e9c6-7973-a53b-a6d19141620f/9FC49E03-6C0E-4776-A954-2CA5C12CB495/2-Photo-2.jpg')
 NATIVE_PATH='frontend/src/world/reference-scene/spatial-v3/source-inputs.json'
@@ -24,7 +24,7 @@ INK='#282725'; DARK='#3c3935'; PAPER='#e4dcd2'
 def sha(b):return hashlib.sha256(b).hexdigest()
 def git_bytes(revision,path):return subprocess.check_output(['git','show',revision+':'+path],cwd=ROOT)
 def inputs():
- raw=git_bytes(CANONICAL,FOLDER+'producer-contract-v2.json');assert sha(raw)==CONTRACT_SHA
+ raw=git_bytes(CANONICAL,FOLDER+'producer-contract-v3.json');assert sha(raw)==CONTRACT_SHA
  contract=json.loads(raw);n=contract['nativeSource'];raw_native=git_bytes(n['commit'],n['path']);assert sha(raw_native)==n['sha256']
  assert sha(REFERENCE.read_bytes())==REFERENCE_SHA
  return contract,json.loads(raw_native)
@@ -138,6 +138,29 @@ def lamp(c):
  c.line([(mid,23),(mid,36)],'#69665b')
  c.poly([(2,18),(mid,3),(w-3,18)],'#62645d',INK);c.rect(mid-1,0,3,4,INK)
 
+def foreground_lamp(c):
+ # One native-foot composite: local asymmetry is original paint, never a placement offset.
+ assert (c.width,c.height)==(80,170)
+ c.poly([(3,161),(19,156),(35,159),(48,156),(77,160),(78,166),(43,169),(4,167)],'#777e50',INK)
+ c.poly([(4,164),(42,166),(78,163),(76,168),(42,169),(5,168)],'#969381',INK)
+ for x,y in [(15,159),(27,160),(46,159),(61,161)]:c.rect(x,y,7,3,'#a0a268')
+ c.poly([(57,148),(71,148),(74,154),(54,154)],'#4c4c45',INK,1)
+ c.line([(57,152),(71,152)],'#969586',1)
+ c.rect(62,45,5,104,'#4a4d47',INK,1)
+ c.line([(64,49),(64,146)],'#b0ab99',1)
+ c.poly([(55,22),(73,22),(71,44),(58,44)],'#d9d1b5',INK,2)
+ c.line([(64,24),(64,43)],'#6c6c60',1)
+ c.line([(58,27),(70,27)],'#efe5cd',1)
+ c.poly([(55,23),(64,10),(75,23),(75,27),(55,27)],'#4e554d',INK,2)
+ c.poly([(57,22),(64,14),(70,22)],'#777b6d')
+ c.rect(63,4,3,8,INK)
+
+def rear_support(c):
+ assert (c.width,c.height)==(18,85)
+ c.poly([(0,74),(10,70),(17,74),(17,82),(8,84),(0,81)],'#9a9687',INK)
+ c.poly([(1,74),(10,71),(16,74),(7,77)],'#c0bba7',INK)
+ for x in [3,8,12]:c.rect(x,68,3,5,'#737b4a')
+
 def old_tree_source03(c,seed):
  rng=random.Random(seed);w,h=c.width,c.height;cx=w*.51;trunk=max(6,round(w*.095));canopy=h*.65
  c.poly([(cx-trunk*.6,canopy*.6),(cx+trunk*.5,canopy*.6),(cx+trunk*.7,h-4),(cx-trunk*.6,h-4)],'#625145',INK,2)
@@ -211,11 +234,9 @@ def frame_canvas(frame,index):
  elif name=='north_white_food':vendor(c)
  elif name=='west_white_merch':bench(c)
  elif name=='culture_park_plaque':planter(c)
- elif name=='cross_banner_east':lamp(c)
+ elif name=='cross_banner_east':rear_support(c)
  elif name=='rooted_tree_06':
-  # Trimmed foreground planting stays below the WALL board; frozen foot/frame remain exact.
-  c.poly([(2,h-12),(w*.18,h-19),(w*.42,h-16),(w*.65,h-20),(w-3,h-12),(w-2,h-5),(3,h-5)],'#666d47',INK)
-  c.poly([(4,h-7),(w-3,h-7),(w-5,h-1),(7,h-1)],'#989381',INK)
+  foreground_lamp(c)
  elif name.startswith('rooted_tree_'):tree(c,20261105+index*31)
  elif name.startswith('photo2-shortcut-'):board(c,'MEET' if name.endswith('meet') else 'WALL')
  else:pavilion(c,index)
@@ -277,8 +298,10 @@ def build():
  from PIL import Image,ImageDraw,ImageFont,__version__ as pillow_version
  contract,native=inputs();PUBLIC.mkdir(parents=True,exist_ok=True)
  frames=contract['frames']+contract['boards'];assert len(frames)==24
- ground,support=ground_canvas(contract,native);(PUBLIC/'ground.svg').write_text(ground.svg((-112,-20)))
- ground_image=ground.render((-112,-20)).convert('RGB');ground_image.save(PUBLIC/'ground.png',optimize=True,compress_level=9)
+ # The v3 amendment changes atlas paint/packing only. Preserve the qualified ground bytes.
+ assert sha((PUBLIC/'ground.png').read_bytes())=='5d4c6c56186088fd86de836dc0c66a9aff7df1cf373615f070e2a63b9272d9c0'
+ assert sha((PUBLIC/'ground.svg').read_bytes())=='9d9063e466949223d889f4f6d859e8dd54b51f64ff3677161cab44f7b8c85ab5'
+ ground_image=Image.open(PUBLIC/'ground.png').convert('RGB');support=json.loads((HERE/'collision-support.json').read_bytes());support['contractSHA256']=CONTRACT_SHA
  atlas=Image.new('RGBA',(512,1024));editable=[];images={}
  for index,frame in enumerate(frames):
   c=frame_canvas(frame,index);image=c.render();r=frame['atlasRect'];assert image.size==(r['width'],r['height'])
@@ -292,10 +315,10 @@ def build():
  g=resource(ground_pin,'parade_photo2_display_v1_ground',499,1200);a=resource(atlas_pin,'parade_photo2_display_v1_atlas',512,1024)
  objects=deepcopy(native['scenes']['PARADE']['scenery']['objects']);by_id={f['id']:f for f in contract['frames']}
  for obj in objects:obj['atlas_id']=a['id'];obj['frame']=by_id[obj['id']]['atlasRect']
- interface=dict(schemaVersion='mcr-photo2-world-art-source-v1',version=1,variantId='photo2-parade-display-v1',themeId='PARADE',status='SOURCE_ARTIFACT_NOT_RELEASE_ADMITTED',sourceInput=dict(canonicalCommit=CANONICAL,contractPath=FOLDER+'producer-contract-v2.json',contractSHA256=CONTRACT_SHA,referenceSHA256=REFERENCE_SHA,nativeSource=contract['nativeSource']),scenery=dict(version=1,ground=g,atlases=[a],objects=objects),sceneDescriptor=dict(schema='mcr-photo2-world-display-v1',version=1,mesh=contract['mesh'],displayBounds=contract['ground']['displayBounds'],frames=contract['frames'],boards=contract['boards'],occlusion=contract['occlusion'],nativeTileTexture='SEPARATE_EXISTING_PINNED_C06_TILED_TEXTURE_UNCHANGED',collisionSupport=dict(source='EXACT_FROZEN_NATIVE_GRID_PROJECTED_BY_CONTRACT_MESH',blockedCellCount=len(support['blockedCells']),proofSHA256=sha((HERE/'collision-support.json').read_bytes()))),resourceUnits=dict(sourcePixelCount=1123088,decodedRGBABytes=4492352,sourcePixelCountLimit=2097152,transferByteLimit=2097152,actualPngTransferBytes=ground_pin['bytes']+atlas_pin['bytes']),activation=dict(state='NOT_ADMITTED',required='2162/Root coherent new PARADE theme_revision/content_hash/catalog tuple; exact new resources and descriptor SHA before activation',otherEras='REVENGE/DANGER unchanged'))
+ interface=dict(schemaVersion='mcr-photo2-world-art-source-v1',version=1,variantId='photo2-parade-display-v1',themeId='PARADE',status='SOURCE_ARTIFACT_NOT_RELEASE_ADMITTED',sourceInput=dict(canonicalCommit=CANONICAL,contractPath=FOLDER+'producer-contract-v3.json',contractSHA256=CONTRACT_SHA,referenceSHA256=REFERENCE_SHA,nativeSource=contract['nativeSource']),scenery=dict(version=1,ground=g,atlases=[a],objects=objects),sceneDescriptor=dict(schema='mcr-photo2-world-display-v1',version=1,mesh=contract['mesh'],displayBounds=contract['ground']['displayBounds'],frames=contract['frames'],boards=contract['boards'],occlusion=contract['occlusion'],nativeTileTexture='SEPARATE_EXISTING_PINNED_C06_TILED_TEXTURE_UNCHANGED',collisionSupport=dict(source='EXACT_FROZEN_NATIVE_GRID_PROJECTED_BY_CONTRACT_MESH',blockedCellCount=len(support['blockedCells']),proofSHA256=sha((HERE/'collision-support.json').read_bytes()))),resourceUnits=dict(sourcePixelCount=1123088,decodedRGBABytes=4492352,sourcePixelCountLimit=2097152,transferByteLimit=2097152,actualPngTransferBytes=ground_pin['bytes']+atlas_pin['bytes']),activation=dict(state='NOT_ADMITTED',required='2162/Root coherent new PARADE theme_revision/content_hash/catalog tuple; exact new resources and descriptor SHA before activation',otherEras='REVENGE/DANGER unchanged'))
  write_json(PUBLIC/'asset-interface.json',interface)
  outputs=[file_pin(PUBLIC/p) for p in ['ground.svg','ground.png','atlas.png','atlas-editable.json','asset-interface.json','README.md']]
- provenance=dict(schema='mcr-photo2-world-display-provenance-v1',version=1,authorship='Original project-authored editable vector primitives, deterministic Pillow rasterization; no generated or sampled character/reference pixels',reference=dict(kind='USER_SUPPLIED_VISUAL_REFERENCE_ONLY',filename='2-Photo-2.jpg',upload='01a19e5c-e9c6-7973-a53b-a6d19141620f/9FC49E03-6C0E-4776-A954-2CA5C12CB495',sha256=REFERENCE_SHA,sourcePixelSampling=False),producerContract=dict(canonicalCommit=CANONICAL,path=FOLDER+'producer-contract-v2.json',sha256=CONTRACT_SHA),nativeSource=contract['nativeSource'],sourceCode=file_pin(HERE/'author.py'),outputs=outputs,dependencies=dict(python=platform.python_version(),pillow=pillow_version,network=False,newDependencies=False),preserved=['user originals','selected characters and all avatar bytes','22 native IDs/transforms/feet/depths','geometry/collision/spawns/proximity/room identity','REVENGE/DANGER','old quality-v6 pixels/hash/release tuple'],limits=['Source asset and producer checks do not admit a World release','Consumer renderer/projection/occlusion/native/whole Photo2 acceptance remains separate','No physical availability or attendance authority','SVG/PNG external-rasterizer parity not claimed'])
+ provenance=dict(schema='mcr-photo2-world-display-provenance-v1',version=1,authorship='Original project-authored editable vector primitives, deterministic Pillow rasterization; no generated or sampled character/reference pixels',reference=dict(kind='USER_SUPPLIED_VISUAL_REFERENCE_ONLY',filename='2-Photo-2.jpg',upload='01a19e5c-e9c6-7973-a53b-a6d19141620f/9FC49E03-6C0E-4776-A954-2CA5C12CB495',sha256=REFERENCE_SHA,sourcePixelSampling=False),producerContract=dict(canonicalCommit=CANONICAL,path=FOLDER+'producer-contract-v3.json',sha256=CONTRACT_SHA),nativeSource=contract['nativeSource'],sourceCode=file_pin(HERE/'author.py'),outputs=outputs,dependencies=dict(python=platform.python_version(),pillow=pillow_version,network=False,newDependencies=False),preserved=['user originals','selected characters and all avatar bytes','22 native IDs/transforms/feet/depths','geometry/collision/spawns/proximity/room identity','REVENGE/DANGER','old quality-v6 pixels/hash/release tuple'],limits=['Source asset and producer checks do not admit a World release','Consumer renderer/projection/occlusion/native/whole Photo2 acceptance remains separate','No physical availability or attendance authority','SVG/PNG external-rasterizer parity not claimed'])
  write_json(PUBLIC/'source-provenance.json',provenance)
  # Honest actor-free source specimens; the original reference is untouched.
  scene=ground_image.convert('RGBA')
