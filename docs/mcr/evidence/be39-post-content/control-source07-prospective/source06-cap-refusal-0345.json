@@ -1,0 +1,57 @@
+{
+  "state": "CUMULATIVE_CAP_REFUSAL_SOURCE06_NEVER_ACCEPTED",
+  "epoch": 1793850335.230067,
+  "retainedMapsCumulativeNEWLowerBound": 545222656,
+  "cap": 536870912,
+  "excessLowerBound": 8351744,
+  "wholeCarryLowerBound": 49427484672,
+  "allHigherRetained": true,
+  "baselineSHA256": "e2783a1ec4a3a1f512a573af50afde3109cf8419a373ff6555f508aa3f52d92d",
+  "maps": [
+    {
+      "path": "/private/tmp/mcr-post21a-be39-compile-unit04-0202/source-high-13171.json.gz",
+      "sha256": "6bbb4ea961e05fd2c4b09aa66fb8821a6ebc0f97c622e36c6674db7f1365a2cb"
+    },
+    {
+      "path": "/private/tmp/mcr-post21a-be39-compile-unit04-0202/source-high-19523.json.gz",
+      "sha256": "6d034ee825a37638e9d7b4ebd4f7b4c85576abda69050096d605cc4f3436a33e"
+    },
+    {
+      "path": "/private/tmp/mcr-post21a-be39-compile-unit04-0202/source-high-20550.json.gz",
+      "sha256": "d221104133f1089ff6cc452ba82aeb0ecbc401d21e947746f54b16b5806c3906"
+    },
+    {
+      "path": "/private/tmp/mcr-post21a-be39-compile-unit04-0202/source-high-38480.json.gz",
+      "sha256": "5c85d4c1ca1ab695518fbec3018bd49a987c417d5e767c8bef8d052a24bc88ae"
+    },
+    {
+      "path": "/private/tmp/mcr-post21a-be39-compile-unit04-0202/source-high-46693.json.gz",
+      "sha256": "191616d2c850fc84d6213c3eeca23fd95474056b2aa10bf3ac49d82441ccfb2d"
+    },
+    {
+      "path": "/private/tmp/mcr-post21a-be39-compile-unit04-0202/source-high-55177.json.gz",
+      "sha256": "ccae8baf6c49a48afedc6c94cb3650dd110e58c86e36a0711130c6372f530afd"
+    },
+    {
+      "path": "/private/tmp/mcr-post21a-be39-compile-unit04-0202/source-high-61987.json.gz",
+      "sha256": "dc81d68648b8beeab0b43c0374c9c092d0b9819b9d21edf1945517e984952db0"
+    },
+    {
+      "path": "/private/tmp/mcr-post21a-be39-compile-unit04-0202/source-high-7642.json.gz",
+      "sha256": "b2cfc0cc807719e65f720defd9dcca2939e43c5522c935cd21d113e2ec5fbf94"
+    },
+    {
+      "path": "/private/tmp/mcr-post21a-be39-compile-unit04-0202/source-high-83106.json.gz",
+      "sha256": "5190eb89bca76dbb3b24e22316d318e1b7d6e3d1b5148c16328f9714db00f8c8"
+    },
+    {
+      "path": "/private/tmp/mcr-post21a-be39-compile-unit04-0202/source-high-8759.json.gz",
+      "sha256": "6407a48f3e53ed1e67f45148c5f696db98b8a2023233079db4b5be3aeec79a56"
+    }
+  ],
+  "currentSource06Accepted": false,
+  "fixtures": "NOT_RUN",
+  "noNewCensus": true,
+  "latestOrdinaryFULL": "/private/tmp/mcr-post21a-be39-compile-unit04-0202/inprocess-1793850290499129000-FULL.json",
+  "controllerAndGuardian": ""
+}

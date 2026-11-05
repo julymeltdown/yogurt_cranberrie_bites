@@ -1,0 +1,17 @@
+{
+  "state": "FULL_ORDINARY_METADATA_CLOSED",
+  "ownerThreadId": "01a1a21a-a088-7c31-83e3-19de119ba873",
+  "offerId": "POST-CONTROL-INPROCESS-PREP-1793850290499129000",
+  "acceptedAtEpoch": 1793850290.499128,
+  "actualFullEpoch": 1793850296.78805,
+  "resourcesReleased": true,
+  "resources": {
+    "workflows": 0,
+    "guards": 0,
+    "children": 0,
+    "tests": 0,
+    "target": 0
+  },
+  "remainingNewUpperBytes": 0,
+  "failure": "AssertionError: shared cumulative SOURCE01/02 NEW cap exceeded"
+}

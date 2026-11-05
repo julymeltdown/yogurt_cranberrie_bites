@@ -1,0 +1,5 @@
+{
+  "failure": "AssertionError: shared cumulative SOURCE01/02 NEW cap exceeded",
+  "traceback": "Traceback (most recent call last):\n  File \"/private/tmp/mcr-post21a-be39-compile-unit04-0202/source_control.py\", line 243, in ordinary_admission\n    complete = g.sample()\n  File \"/private/tmp/mcr-post21a-be39-compile-unit04-0202/source_control.py\", line 180, in sample\n    assert self.peak['cumulative_new'] <= CAP, 'shared cumulative SOURCE01/02 NEW cap exceeded'\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError: shared cumulative SOURCE01/02 NEW cap exceeded\n",
+  "epoch": 1793850296.7059379
+}

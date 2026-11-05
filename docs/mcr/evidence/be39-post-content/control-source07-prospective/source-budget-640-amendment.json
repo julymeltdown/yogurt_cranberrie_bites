@@ -1,0 +1,38 @@
+{
+  "state": "EXPLICIT_SAME_FAMILY_640_NOT_RETROACTIVE_PASS",
+  "allocator": "01a1a21d-39ec-7912-84cb-910058e7a110",
+  "epoch_recorded": 1793845080.2452989,
+  "shared_new_bytes": 671088640,
+  "prior_uncertified_reservation_bytes": 16777216,
+  "prior_historical_growth_certified": false,
+  "additional_upper_bytes": 520093696,
+  "original_fixed_baseline_unchanged": true,
+  "ordinary_TOTAL64_permission_unchanged": false,
+  "accept_by_utc": "2026-11-05T04:15:00Z",
+  "same_caps": {
+    "processes": 4,
+    "rss_bytes": 1073741824,
+    "WORK": 120,
+    "FULL": 180,
+    "WHOLE": 68719476736
+  },
+  "target_access": false,
+  "minimum_cumulative_carry_bytes": 547319808,
+  "whole_limit_bytes": 68719476736,
+  "ordinary_total_bytes": 671088640,
+  "ordinary_expires_utc": "2026-11-05T04:15:00Z",
+  "historical_cap_incident_preserved": true,
+  "latest_amendment_epoch_recorded": 1793847727.433346,
+  "all_old_actual_MAX_retained": true,
+  "previous_128MiB_admission_refused": true,
+  "previous_ordinary_overlap_NOT_CERTIFIED": true,
+  "minimum_whole_highwater_bytes": 58987859968,
+  "source02_gap_NOT_CERTIFIED": true,
+  "source06_never_accepted": true,
+  "old512breach_preserved": true,
+  "ordinarySealPrep": {
+    "offerId": "POST-INCIDENT-SEALPREP2-0350",
+    "entireUpperBytesChargedOnce": 2097152
+  },
+  "allocatorInstruction": "Distinct07/actualrepair08;4PID1GiBRSS/WHOLE64GiB/WORK120FULL180; exactly10 unrun fixtures; no Rust/native/Cargo/PG/HTTP/browser/target"
+}

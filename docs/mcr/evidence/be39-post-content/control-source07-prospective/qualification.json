@@ -1,0 +1,62 @@
+{
+  "epoch": 1793850687.6943932,
+  "state": "AST_ONLY_PROSPECTIVE_SOURCE07_NOT_ACCEPTED",
+  "files": [
+    {
+      "path": "budget.py",
+      "SHA256": "1e44b4a178f2b40d4651e3fd8d5e75e09dd811a4a8b58ab33aecaf1b1648d89a",
+      "AST": "PASS",
+      "testMethods": 0
+    },
+    {
+      "path": "source_control.py",
+      "SHA256": "000bb7266621787d752b6b7448700409b0b28574cd5c7e065159a27309d47781",
+      "AST": "PASS",
+      "testMethods": 0
+    },
+    {
+      "path": "test_process_receipts.py",
+      "SHA256": "52e2ee9f162c7e4d934f6e60edd2eb5f54858f0fe38bb64b48f2824e9d379fb2",
+      "AST": "PASS",
+      "testMethods": 10
+    },
+    {
+      "path": "accounting.py",
+      "SHA256": "d525a94f8bbc3a89a47bf84bda757c985d9f722aa985d7b60a2d600bffcb720a",
+      "AST": "PASS",
+      "testMethods": 0
+    },
+    {
+      "path": "receipt_proof.py",
+      "SHA256": "69706c0727698ed2dddcfbadbc20a7eaa8db5a693319f313d217ba2e44ee13b3",
+      "AST": "PASS",
+      "testMethods": 0
+    },
+    {
+      "path": "release_source.py",
+      "SHA256": "b169d291c52bb7e0ee0c7b0f2b54def0973eb18df41c9d937c237d2f71e5b0c0",
+      "AST": "PASS",
+      "testMethods": 0
+    },
+    {
+      "path": "sealprep2.py",
+      "SHA256": "e3d8f1690e093768aee0a64151ecd3983fd288ee8d35ea1cbe63f9b85cf3d0d0",
+      "AST": "PASS",
+      "testMethods": 0
+    },
+    {
+      "path": "sealprep_finalize.py",
+      "SHA256": "8356a9cbdf7aa851cf607d0332dc5bd732b5879c36c047151d061bbc95646163",
+      "AST": "PASS",
+      "testMethods": 0
+    }
+  ],
+  "all10Fixtures": "NOT_RUN",
+  "backendUnitsAndNative": "NOT_RUN",
+  "Source06": "NEVER_ACCEPTED_YIELD",
+  "prepEntire2MiBOnce": true,
+  "same640Family": true,
+  "kernelArgvFailure": "HISTORICAL_UNDIAGNOSED_NO_WAIVER",
+  "yieldDecoder": "AUTHORED_NOT_RUN_RETAINS_OLD_ACCEPTANCE",
+  "publication": "DIRECT_ROOT153_L03_PREDECESSOR_FRESH_CAPS_REQUIRED"
+}
