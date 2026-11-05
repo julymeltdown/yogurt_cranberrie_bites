@@ -1,0 +1,11 @@
+{
+  "status": "FAIL",
+  "startedAt": "2026-11-05T00:13:58.024Z",
+  "browser": "156.0.8078.80",
+  "qualification": "ACTUAL_DEFAULT_APP_WITH_PINNED_PI01_OVERLAY_CONTROLLED_SYNTHETIC_HTTP_NOT_LIVE_IN03",
+  "cases": [],
+  "screenshots": [],
+  "error": "page.waitForFunction: Timeout 10000ms exceeded.\n    at capture (/Users/lhs/Desktop/mcr-worktrees/fe-reference-frame-footer/frontend/src/features/event-feed/__tests__/parade-ink/native.mjs:58:14)\n    at /Users/lhs/Desktop/mcr-worktrees/fe-reference-frame-footer/frontend/src/features/event-feed/__tests__/parade-ink/native.mjs:82:24",
+  "finishedAt": "2026-11-05T00:14:09.352Z",
+  "pageErrors": []
+}

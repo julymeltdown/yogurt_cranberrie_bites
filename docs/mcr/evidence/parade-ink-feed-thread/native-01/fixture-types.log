@@ -1,0 +1,2 @@
+src/features/event-feed/__tests__/parade-ink/fixture.ts(65,88): error TS2322: Type '{ contract_version: string; kind: string; manifest_id: string; manifest_version: number; representation: string; preset_id: string; }' is not assignable to type 'AvatarConfig | ReviewedMotionAvatarConfig'.
+  Type '{ contract_version: string; kind: string; manifest_id: string; manifest_version: number; representation: string; preset_id: string; }' is missing the following properties from type 'LayeredAvatarConfig': "item_ids", "skin_tone_id"

@@ -1,0 +1,262 @@
+{
+  "job": "PI02-PI03-DEFAULT-APP-NATIVE06-20261105T0018Z",
+  "status": "FAIL",
+  "candidate": "b7b349f3be753a40abb21d8cb6644e46175aa982",
+  "acceptedEpoch": 1793837872.023,
+  "workDeadline": 1793838172.023,
+  "cleanupDeadline": 1793838232.023,
+  "foundationCommit": "056a8c48ff667134dee8e5e99710185294e4b898",
+  "port": 5364,
+  "limits": {
+    "workSeconds": 300,
+    "cleanupSeconds": 60,
+    "processes": 24,
+    "rssMiB": 4096,
+    "wholeBytes": 6442450944,
+    "newGrowthBytes": 268435456,
+    "tempBytes": 134217728,
+    "durableBytes": 16777216,
+    "logBytes": 2097152
+  },
+  "admission": {
+    "freeBytes": 16194072576,
+    "otherNewBytes": 5368709120,
+    "ownNewBytes": 268435456,
+    "residualBytes": 10556928000
+  },
+  "initialInventory": {
+    "roots": [
+      {
+        "path": "/Users/lhs/Desktop/mcr-worktrees/fe-reference-frame-footer",
+        "inodes": 15253,
+        "allocatedBytes": 1451442176
+      },
+      {
+        "path": "/Users/lhs/Desktop/mcr-worktrees/fe-mural-editor",
+        "inodes": 4788,
+        "allocatedBytes": 75980800
+      },
+      {
+        "path": "/Users/lhs/Desktop/mcr-worktrees/fe-wall-reference-target",
+        "inodes": 2590,
+        "allocatedBytes": 63672320
+      },
+      {
+        "path": "/Users/lhs/Desktop/mcr-worktrees/be-party-runtime",
+        "inodes": 4042,
+        "allocatedBytes": 72794112
+      },
+      {
+        "path": "/Users/lhs/Desktop/mcr/frontend/node_modules",
+        "inodes": 13420,
+        "allocatedBytes": 438317056
+      },
+      {
+        "path": "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64",
+        "inodes": 5888,
+        "allocatedBytes": 209088512
+      },
+      {
+        "path": "/Users/lhs/Desktop/mcr/.git",
+        "inodes": 5290,
+        "allocatedBytes": 1196994560
+      },
+      {
+        "path": "/Applications/Google Chrome.app",
+        "inodes": 1339,
+        "allocatedBytes": 1527132160
+      },
+      {
+        "path": "/Library/Frameworks/Python.framework/Versions/3.14",
+        "inodes": 28412,
+        "allocatedBytes": 1045037056
+      }
+    ],
+    "uniqueInodes": 81022,
+    "allocatedBytes": 6080458752
+  },
+  "priorHistoricalMaxBytes": 6112686080,
+  "sourceSha256": {
+    "frontend/src/features/event-feed/EventFeed.tsx": "3da54997fa7c683abb3753defb2723ce9cb6b2918d261395f2537709f655ec4e",
+    "frontend/src/features/event-feed/feed.css": "8fd2f90cbb0a0dbfff4dac14c9f735ff733d7c01d1ad566f00323b7cebf79923",
+    "frontend/src/features/feed-thread/FeedThread.tsx": "460fa6484d061943131284c6c006d7456d084e664f715c68af5423c97b92e157",
+    "frontend/src/features/event-feed/parade-ink/AuthorHeading.tsx": "22987af21193a9d51ef3bbc513e5513e7a39dc5609b6ba41bf78f60a4cb3258d",
+    "frontend/src/features/event-feed/__tests__/parade-ink/fixture.ts": "d0a3ced70e12babbbe4ed3c4df1d482b3d2f5a49f7709ada54f336abb509e135",
+    "frontend/src/features/event-feed/__tests__/parade-ink/native.mjs": "3b1bd8bf009c19c71c7262ec5a9af7bd74446dec768075e5349c1e8ad0fda047",
+    "frontend/src/features/event-feed/__tests__/parade-ink/preview.html": "24c0a6c68b58033b130f6bddcd44df09e6b9a6c6cfedfba38d70d337c149e47a",
+    "frontend/src/features/event-feed/__tests__/parade-ink/preview.tsx": "dc9b8a51d6c832043d04667bc8bef671d99bf8f41ccab2048648e477fefe712a",
+    "frontend/src/features/event-feed/__tests__/parade-ink/vite.config.ts": "b69971b20bf868ca85c61415130ab3d9479ff1b638b9181a16ac465fba652634",
+    "frontend/src/features/feed-thread/__tests__/parade-ink/fixtures.ts": "9873d86348db83f0fdd9e3e786bc2c54a76e5d39fbfc590e8ae3500e20816322",
+    "frontend/src/features/feed-thread/__tests__/parade-ink/guard_support.py": "fe8d78074a0f7f9302a5dc1f8bfb907a864203da06358ce931a4b68335a53ec0",
+    "frontend/src/features/feed-thread/__tests__/parade-ink/interactions.test.tsx": "aad6a2e2c32048ef698b07589cf9945c58fc093cc5932595a67fa2f62f11d4e3",
+    "frontend/src/features/feed-thread/__tests__/parade-ink/native-round.py": "7b9c48d011a745c27bf6e7df010799676982691259ed2135e5a936e124aee1ec",
+    "frontend/src/features/feed-thread/__tests__/parade-ink/source-round.py": "86dbfa9cd9d6257d113c2a1d3ca42cb6c023954ab34ee7eb150f55eed3c47b12",
+    "frontend/src/features/feed-thread/__tests__/parade-ink/vitest.config.mjs": "fd569ef7786794948a82017ba9ac7db4ff78afb058f9b38a449f65fcbb60dc14",
+    "frontend/src/features/feed-thread/__tests__/parade-ink/watchdog.py": "44ebc3ccdca81253c6f639aeedaff2e46677535d1ba170f02db597ab7206d960",
+    "frontend/package.json": "0f7a05587bcf1af5f4d5d077a0c2d90011adc87e1036a61db9ef3acf37c8b7d3",
+    "frontend/pnpm-lock.yaml": "47ca44459819ad0e887d2f4f93394fdf3b1053b8f45edc9ceb0236981feee1f6",
+    "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node": "b6fb419f0f43bb2fbca273700294dd2f3b685a64b60e8417c295f47646a70e4a",
+    "/Library/Frameworks/Python.framework/Versions/3.14/bin/python3.14": "1192b994fbb50303c9df2cc97c9d63797d454c7f57f20ca682877c9e770429aa"
+  },
+  "commands": [
+    {
+      "label": "fixture-lint",
+      "command": [
+        "/Users/lhs/Desktop/mcr/frontend/node_modules/.bin/oxlint",
+        "--deny-warnings",
+        "src/features/event-feed/__tests__/parade-ink"
+      ],
+      "startedEpoch": 1793837876.462058,
+      "exitCode": 0,
+      "finishedEpoch": 1793837877.533692
+    },
+    {
+      "label": "driver-syntax",
+      "command": [
+        "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node",
+        "--check",
+        "src/features/event-feed/__tests__/parade-ink/native.mjs"
+      ],
+      "startedEpoch": 1793837878.414508,
+      "exitCode": 0,
+      "finishedEpoch": 1793837879.519714
+    },
+    {
+      "label": "native",
+      "command": [
+        "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node",
+        "src/features/event-feed/__tests__/parade-ink/native.mjs"
+      ],
+      "startedEpoch": 1793837882.1839502,
+      "exitCode": 1,
+      "finishedEpoch": 1793837912.355127
+    }
+  ],
+  "peakProcesses": 14,
+  "peakRssKiB": 2526848,
+  "peakWholeBytes": 6115184640,
+  "peakTempBytes": 32225195,
+  "peakOutputBytes": 1417550,
+  "bothGuardsLiveBeforeWorkload": true,
+  "foundationPins": [
+    {
+      "path": "frontend/src/shared/styles/base.css",
+      "bytes": 8537,
+      "sha256": "d9788ee432554115f802c9def0c90b4e657165571e3b7429ad2d596be86928d6",
+      "file": "/private/tmp/mcr-parade-ink-feed-thread-rij2v0b2/foundation/frontend/src/shared/styles/base.css"
+    },
+    {
+      "path": "frontend/src/shared/styles/themes/themes.css",
+      "bytes": 1159,
+      "sha256": "c7d8561ab09c4402812e0eacf72cc56b6cc2ce7a84449632e8054573d4802e4c",
+      "file": "/private/tmp/mcr-parade-ink-feed-thread-rij2v0b2/foundation/frontend/src/shared/styles/themes/themes.css"
+    },
+    {
+      "path": "frontend/src/shared/ui/concert-window/index.tsx",
+      "bytes": 6205,
+      "sha256": "0b532322426fd4f0aae0e2667cae80e2257917eda8cb1de6455ee3670025ae56",
+      "file": "/private/tmp/mcr-parade-ink-feed-thread-rij2v0b2/foundation/frontend/src/shared/ui/concert-window/index.tsx"
+    },
+    {
+      "path": "frontend/src/shared/ui/concert-window/concert-window.css",
+      "bytes": 5848,
+      "sha256": "9b03795cc11ed06130ebdc2ec386948d91f0e9cbba592f876a82c72ef1014c92",
+      "file": "/private/tmp/mcr-parade-ink-feed-thread-rij2v0b2/foundation/frontend/src/shared/ui/concert-window/concert-window.css"
+    },
+    {
+      "path": "frontend/src/app/shell.css",
+      "bytes": 13179,
+      "sha256": "e9afa33f563389ae5eab68a6d832ee324b1053e45ebb447bd78f554b33dea3cf",
+      "file": "/private/tmp/mcr-parade-ink-feed-thread-rij2v0b2/foundation/frontend/src/app/shell.css"
+    },
+    {
+      "path": "frontend/src/app/shell-chrome/parade-footer.tsx",
+      "bytes": 130,
+      "sha256": "ecbb1b9f16a61315c7e63b3ba296e7d0977619fb0df899b950e3a41b8a1c6428",
+      "file": "/private/tmp/mcr-parade-ink-feed-thread-rij2v0b2/foundation/frontend/src/app/shell-chrome/parade-footer.tsx"
+    },
+    {
+      "path": "frontend/src/app/shell-chrome/shell-chrome.css",
+      "bytes": 6153,
+      "sha256": "264fa91f2b9d45f6d7756cfcde5fa0656d714e6c2190d325800d14c2f9639ea1",
+      "file": "/private/tmp/mcr-parade-ink-feed-thread-rij2v0b2/foundation/frontend/src/app/shell-chrome/shell-chrome.css"
+    },
+    {
+      "path": "frontend/src/app/reference-chrome-v2/WindowInk.tsx",
+      "bytes": 916,
+      "sha256": "16ce865a27dea4e79e239a19bd9290120844aa7857925af4652d37582de78278",
+      "file": "/private/tmp/mcr-parade-ink-feed-thread-rij2v0b2/foundation/frontend/src/app/reference-chrome-v2/WindowInk.tsx"
+    },
+    {
+      "path": "frontend/src/app/reference-chrome-v2/chrome.css",
+      "bytes": 3451,
+      "sha256": "857c14a183f4e008861ba119e65da490d52e6715ff5ca6b46b68b553f63f9c1e",
+      "file": "/private/tmp/mcr-parade-ink-feed-thread-rij2v0b2/foundation/frontend/src/app/reference-chrome-v2/chrome.css"
+    },
+    {
+      "path": "frontend/src/shared/styles/parade-ink/fonts/Oswald.ttf",
+      "bytes": 172088,
+      "sha256": "5b38c246e255a12f5712d640d56bcced0472466fc68983d2d0410ec0457c2817",
+      "file": "/private/tmp/mcr-parade-ink-feed-thread-rij2v0b2/foundation/frontend/src/shared/styles/parade-ink/fonts/Oswald.ttf"
+    },
+    {
+      "path": "frontend/src/shared/styles/parade-ink/fonts/Roboto.ttf",
+      "bytes": 488584,
+      "sha256": "d7598e12c5dbef095ff8272cfc55da0250bd07fbdecbac8a530b9b277872a134",
+      "file": "/private/tmp/mcr-parade-ink-feed-thread-rij2v0b2/foundation/frontend/src/shared/styles/parade-ink/fonts/Roboto.ttf"
+    },
+    {
+      "path": "frontend/src/shared/styles/parade-ink/fonts/oswald-METADATA.pb",
+      "bytes": 4396,
+      "sha256": "3d5119d2e99a15e7c2973937d10a77e7aa1fc6a28fe173b02e059485aa596097",
+      "file": "/private/tmp/mcr-parade-ink-feed-thread-rij2v0b2/foundation/frontend/src/shared/styles/parade-ink/fonts/oswald-METADATA.pb"
+    },
+    {
+      "path": "frontend/src/shared/styles/parade-ink/fonts/oswald-OFL.txt",
+      "bytes": 4483,
+      "sha256": "0fd731a904b729a4e02eaf5e8ebd06783edd9abe400e8882760160230675b652",
+      "file": "/private/tmp/mcr-parade-ink-feed-thread-rij2v0b2/foundation/frontend/src/shared/styles/parade-ink/fonts/oswald-OFL.txt"
+    },
+    {
+      "path": "frontend/src/shared/styles/parade-ink/fonts/provenance.json",
+      "bytes": 3273,
+      "sha256": "aded4b656522bd2c4de6cfd1be9e9a6cfcf96d94ecc61e3a2f36497a465574db",
+      "file": "/private/tmp/mcr-parade-ink-feed-thread-rij2v0b2/foundation/frontend/src/shared/styles/parade-ink/fonts/provenance.json"
+    },
+    {
+      "path": "frontend/src/shared/styles/parade-ink/fonts/roboto-METADATA.pb",
+      "bytes": 1463,
+      "sha256": "6fef19da54fb62d152f0c7b21710e6849950db7ecf852ea29511c593dad462f0",
+      "file": "/private/tmp/mcr-parade-ink-feed-thread-rij2v0b2/foundation/frontend/src/shared/styles/parade-ink/fonts/roboto-METADATA.pb"
+    },
+    {
+      "path": "frontend/src/shared/styles/parade-ink/fonts/roboto-OFL.txt",
+      "bytes": 4394,
+      "sha256": "061402327a96aadb0bfb694a960ed289ecd38d383e396243831ab81feb109c41",
+      "file": "/private/tmp/mcr-parade-ink-feed-thread-rij2v0b2/foundation/frontend/src/shared/styles/parade-ink/fonts/roboto-OFL.txt"
+    },
+    {
+      "path": "frontend/src/shared/styles/parade-ink/primitives.css",
+      "bytes": 6508,
+      "sha256": "c5a327ec4e63407ea5119a48ab20632c63e81780a842b57c0bb5e856e7ca78e0",
+      "file": "/private/tmp/mcr-parade-ink-feed-thread-rij2v0b2/foundation/frontend/src/shared/styles/parade-ink/primitives.css"
+    },
+    {
+      "path": "frontend/src/shared/styles/parade-ink/tokens.css",
+      "bytes": 1334,
+      "sha256": "15b68ce29df755e81849d2bc359f2c2aaade9857d5e04c32692bf9aab4700556",
+      "file": "/private/tmp/mcr-parade-ink-feed-thread-rij2v0b2/foundation/frontend/src/shared/styles/parade-ink/tokens.css"
+    }
+  ],
+  "foundationReadsetSha256": "986b45d98aa9464246bab53cd87d29d60284587464a58a9cfeefce895328b4ac",
+  "error": "Native failed; retained report/log",
+  "remainingOwnDescendants": [],
+  "finishedEpoch": 1793837913.430958,
+  "cleanup": {
+    "linkAbsent": true,
+    "tempAbsent": true,
+    "secondaryExited": true,
+    "portAbsent": true,
+    "beforeOriginalDeadline": true
+  }
+}

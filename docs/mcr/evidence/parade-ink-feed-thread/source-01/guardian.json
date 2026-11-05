@@ -1,0 +1,145 @@
+{
+  "job": "PI02-PI03-FIRST-CANDIDATE-SOURCE-20261104T2338Z",
+  "status": "PASS",
+  "candidate": "293bec35693c688900e38e6e019343cdc6f01e44",
+  "acceptedEpoch": 1793835743.188,
+  "workDeadline": 1793835863.188,
+  "cleanupDeadline": 1793835923.188,
+  "limits": {
+    "workSeconds": 120,
+    "cleanupSeconds": 60,
+    "processes": 6,
+    "rssMiB": 2560,
+    "wholeBytes": 5368709120,
+    "newGrowthBytes": 134217728,
+    "tempBytes": 104857600,
+    "durableBytes": 16777216,
+    "logBytes": 2097152
+  },
+  "admission": {
+    "freeBytes": 14736535552,
+    "otherNewBytes": 3221225472,
+    "ownNewBytes": 134217728,
+    "residualBytes": 11381092352
+  },
+  "initialInventory": {
+    "roots": [
+      {
+        "path": "/Users/lhs/Desktop/mcr-worktrees/fe-reference-frame-footer",
+        "inodes": 15191,
+        "allocatedBytes": 1449779200
+      },
+      {
+        "path": "/Users/lhs/Desktop/mcr-worktrees/fe-mural-editor",
+        "inodes": 2992,
+        "allocatedBytes": 49750016
+      },
+      {
+        "path": "/Users/lhs/Desktop/mcr-worktrees/fe-wall-reference-target",
+        "inodes": 2590,
+        "allocatedBytes": 63672320
+      },
+      {
+        "path": "/Users/lhs/Desktop/mcr-worktrees/be-party-runtime",
+        "inodes": 4042,
+        "allocatedBytes": 72794112
+      },
+      {
+        "path": "/Users/lhs/Desktop/mcr/frontend/node_modules",
+        "inodes": 13420,
+        "allocatedBytes": 438317056
+      },
+      {
+        "path": "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64",
+        "inodes": 5888,
+        "allocatedBytes": 209088512
+      },
+      {
+        "path": "/Users/lhs/Desktop/mcr/.git",
+        "inodes": 4055,
+        "allocatedBytes": 1176797184
+      }
+    ],
+    "uniqueInodes": 48178,
+    "allocatedBytes": 3460198400
+  },
+  "priorHistoricalMaxBytes": 2027491328,
+  "sourceSha256": {
+    "frontend/src/features/event-feed/EventFeed.tsx": "3da54997fa7c683abb3753defb2723ce9cb6b2918d261395f2537709f655ec4e",
+    "frontend/src/features/event-feed/feed.css": "dcc2c340893353b1ed44f23e8564ad6806055804ebdf4f575a1deb9d0bdb70ae",
+    "frontend/src/features/feed-thread/FeedThread.tsx": "4619fa807ce8da559452801c7998878673e5048782e5069bf8fb03348ff38898",
+    "frontend/src/features/event-feed/parade-ink/AuthorHeading.tsx": "22987af21193a9d51ef3bbc513e5513e7a39dc5609b6ba41bf78f60a4cb3258d",
+    "frontend/src/features/feed-thread/__tests__/parade-ink/fixtures.ts": "9873d86348db83f0fdd9e3e786bc2c54a76e5d39fbfc590e8ae3500e20816322",
+    "frontend/src/features/feed-thread/__tests__/parade-ink/guard_support.py": "fe8d78074a0f7f9302a5dc1f8bfb907a864203da06358ce931a4b68335a53ec0",
+    "frontend/src/features/feed-thread/__tests__/parade-ink/interactions.test.tsx": "aad6a2e2c32048ef698b07589cf9945c58fc093cc5932595a67fa2f62f11d4e3",
+    "frontend/src/features/feed-thread/__tests__/parade-ink/source-round.py": "86dbfa9cd9d6257d113c2a1d3ca42cb6c023954ab34ee7eb150f55eed3c47b12",
+    "frontend/src/features/feed-thread/__tests__/parade-ink/vitest.config.mjs": "fd569ef7786794948a82017ba9ac7db4ff78afb058f9b38a449f65fcbb60dc14",
+    "frontend/src/features/feed-thread/__tests__/parade-ink/watchdog.py": "44ebc3ccdca81253c6f639aeedaff2e46677535d1ba170f02db597ab7206d960",
+    "frontend/package.json": "0f7a05587bcf1af5f4d5d077a0c2d90011adc87e1036a61db9ef3acf37c8b7d3",
+    "frontend/pnpm-lock.yaml": "47ca44459819ad0e887d2f4f93394fdf3b1053b8f45edc9ceb0236981feee1f6",
+    "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node": "b6fb419f0f43bb2fbca273700294dd2f3b685a64b60e8417c295f47646a70e4a"
+  },
+  "commands": [
+    {
+      "label": "source-tests",
+      "command": [
+        "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node",
+        "/Users/lhs/Desktop/mcr/frontend/node_modules/vitest/vitest.mjs",
+        "run",
+        "--config",
+        "src/features/feed-thread/__tests__/parade-ink/vitest.config.mjs",
+        "--configLoader",
+        "runner",
+        "--maxWorkers=1",
+        "--no-file-parallelism"
+      ],
+      "startedEpoch": 1793835746.437193,
+      "exitCode": 0,
+      "finishedEpoch": 1793835748.200834
+    },
+    {
+      "label": "source-types",
+      "command": [
+        "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node",
+        "/Users/lhs/Desktop/mcr/frontend/node_modules/typescript/bin/tsc",
+        "-p",
+        "tsconfig.json",
+        "--noEmit",
+        "--incremental",
+        "false",
+        "--allowImportingTsExtensions"
+      ],
+      "startedEpoch": 1793835748.735809,
+      "exitCode": 0,
+      "finishedEpoch": 1793835758.625639
+    },
+    {
+      "label": "source-lint",
+      "command": [
+        "/Users/lhs/Desktop/mcr/frontend/node_modules/.bin/oxlint",
+        "--deny-warnings",
+        "src/features/event-feed/EventFeed.tsx",
+        "src/features/event-feed/parade-ink",
+        "src/features/feed-thread/FeedThread.tsx",
+        "src/features/feed-thread/__tests__/parade-ink"
+      ],
+      "startedEpoch": 1793835759.258576,
+      "exitCode": 0,
+      "finishedEpoch": 1793835760.080745
+    }
+  ],
+  "peakProcesses": 4,
+  "peakRssKiB": 1851664,
+  "peakWholeBytes": 3461595136,
+  "peakTempBytes": 1363848,
+  "peakOutputBytes": 253,
+  "bothGuardsLiveBeforeWorkload": true,
+  "remainingOwnDescendants": [],
+  "finishedEpoch": 1793835760.221796,
+  "cleanup": {
+    "linkAbsent": true,
+    "tempAbsent": true,
+    "secondaryExited": true,
+    "beforeOriginalDeadline": true
+  }
+}

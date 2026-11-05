@@ -4,7 +4,7 @@ import type { Filter, Notice, Post, ResourceLink } from './contract'
 import { messages, type Slot } from './runtime'
 import { Tabs } from '../../shared/ui/Tabs'
 import { FeedGlyph } from './FeedGlyph'
-import { relativePostTime } from './presentation'
+import { AuthorHeading } from './parade-ink/AuthorHeading'
 import './feed.css'
 
 export function ReadStatus({ slot, retry }: { slot: Slot<unknown>; retry: () => void }) {
@@ -22,10 +22,7 @@ export function PostContent({ post, onLink, renderMedia, renderAuthor }: {
   post: Post; onLink: (link: ResourceLink) => void; renderMedia?: RenderPostMedia | undefined; renderAuthor?: RenderPostAuthor | undefined
 }) {
   return <>
-    <header className="feed-post-heading">
-      <div className="feed-portrait">{renderAuthor ? renderAuthor(post.author) : <span className="feed-initial" role="img" aria-label={`${post.author.display_name}: avatar unavailable`}>{Array.from(post.author.display_name.trim())[0]?.toLocaleUpperCase() ?? '?'}</span>}</div>
-      <div className="feed-author-line"><strong>{post.author.display_name}</strong><time dateTime={post.created_at} title={new Date(post.created_at).toLocaleString()}>{relativePostTime(post.created_at)}</time>{post.edited_at && <small>Edited</small>}</div>
-    </header>
+    <AuthorHeading author={post.author} createdAt={post.created_at} edited={post.edited_at !== null} renderAuthor={renderAuthor} />
     <p className="feed-text feed-post-copy">{post.text}</p>
     {post.media_ids.length > 0 && (renderMedia ? <div className="feed-media" aria-label="Post images">{post.media_ids.map(id => <figure key={id}>{renderMedia(id, post)}</figure>)}</div> : <p className="feed-media-unavailable">{post.media_ids.length} image attachment(s). Image viewing is currently unavailable.</p>)}
     {post.links.length > 0 && <ul className="feed-related" aria-label="Related content">{post.links.map((link, i) => <li key={`${link.target_id}-${i}`}><button type="button" onClick={() => onLink(link)}>Open {link.target_type.toLowerCase()} <span aria-hidden="true">↗</span></button></li>)}</ul>}
@@ -41,7 +38,7 @@ export function EventFeed({ controller, onPost, onCompose, onLink, renderMedia, 
   const posts = <>
     <ReadStatus slot={state.feed} retry={() => { void controller.loadFeed() }} />
     {state.feed.data?.items.length === 0 && <div className="feed-empty" role="status"><p>No posts yet.</p><p>Try another filter or come back later.</p>{state.notices.data?.items.length === 0 && <p>No published notices.</p>}</div>}
-    <ol className="feed-list feed-posts" aria-label="Latest posts">{state.feed.data?.items.map(post => <li key={post.post_id}><article className="feed-post">
+    <ol className="feed-list feed-posts" aria-label="Latest posts">{state.feed.data?.items.map(post => <li key={post.post_id}><article className={`feed-post ${post.media_ids.length > 0 ? 'feed-post--media' : 'feed-post--text'}`}>
       <PostContent post={post} onLink={onLink} renderMedia={renderMedia} renderAuthor={renderAuthor} />
       <div className="feed-post-actions" aria-label={`Actions for ${post.author.display_name}'s post`}>
         <button type="button" className={post.reacted_by_me ? 'feed-reacted' : ''} aria-label={`View ${post.reaction_count} reactions in thread`} onClick={() => onPost(post.post_id)}><FeedGlyph name="star" /><span>{post.reaction_count}</span></button>

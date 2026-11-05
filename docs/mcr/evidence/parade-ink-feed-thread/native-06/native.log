@@ -1,0 +1,16 @@
+node:internal/modules/run_main:107
+    triggerUncaughtException(
+    ^
+
+locator.waitFor: Timeout 10000ms exceeded.
+Call log:
+[2m  - waiting for getByText('Feed unavailable for the current account or event.', { exact: true }) to be visible[22m
+
+    at /Users/lhs/Desktop/mcr-worktrees/fe-reference-frame-footer/frontend/src/features/event-feed/__tests__/parade-ink/native.mjs:154:133 {
+  log: [
+    "  - waiting for getByText('Feed unavailable for the current account or event.', { exact: true }) to be visible"
+  ],
+  name: 'TimeoutError'
+}
+
+Node.js v24.22.2

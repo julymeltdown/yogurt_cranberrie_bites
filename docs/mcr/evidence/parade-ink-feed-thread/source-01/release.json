@@ -1,0 +1,16 @@
+{
+  "status": "FULL",
+  "job": "PI02-PI03-FIRST-CANDIDATE-SOURCE-20261104T2338Z",
+  "candidate": "293bec35693c688900e38e6e019343cdc6f01e44",
+  "result": "PASS",
+  "finishedEpoch": 1793835760.221796,
+  "remainingOwnDescendants": 0,
+  "dependencyLinkAbsent": true,
+  "privateTempAbsent": true,
+  "secondaryExited": true,
+  "native": "NOT_RUN",
+  "notifiedDirect": [
+    "21d",
+    "204"
+  ]
+}

@@ -1,0 +1,1 @@
+src/features/event-feed/__tests__/parade-ink/native.mjs:37:131: warning eslint(no-useless-escape): Unnecessary escape character '"' help: Replace `\"` with `"`.
