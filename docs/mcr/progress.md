@@ -1,5 +1,26 @@
 # Execution record — functional delivery
 
+<!-- BEGIN MAIN_AR02_AR04_20261105T150424Z -->
+## CURRENT — 2026-11-06T00:04:24.864450+09:00 responsible-owner original-criteria reconciliation
+
+**Original tasks:63/111 active DONE (56.8%),48 remaining;112 original IDs and61 original IA preserved. Current original criteria outcomes65; frozen historical39;26 new original closures since replan. Design10/12, PI08/PI11 open. VENU1/8, seven remaining;10 extension IA and48 comparisons NOT_RUN. QA08 DEFERRED_BY_USER/nonpass. Product NOT_READY; full112false.**
+
+AR02 and AR04 are the only new original closures, consumed once under Main’s exact four-file composition grant. All older checkpoint blocks below are dated historical snapshots; this checkpoint supersedes their current-count interpretation while preserving every prior byte.
+
+| Original | Responsible disposition and retained evidence | Qualification boundary and linked remainder |
+| --- | --- | --- |
+| AR02 | WorldSL/Root153 nine-criterion map disposition; BE12/20f retained26/26 deterministic collision regressions, tested158b8147/source988ddb3/published2d3faaa6, map6/ef52/ac30 original-map source comparison. No replay. | Original walkable/spawn/collision/interaction/layer criteria satisfied. PI11/full-reference density and layout, PI08/Photo2, AR01 physical provenance, VENU-ART01 and production admission remain separately mandatory. |
+| AR04 | WorldSL/2162 complete Revenge/Parade/Danger source, readability, contrast, manifest-hash/license disposition and original230 ancestry; Root prepared input2026-11-05T09:19:12Z preserves individual earlier observations. | Original three-skin source criteria satisfied. Current atlas/Photo2/PI08/C06 tuple and registry/runtime, PI11 and venue amendment obligations remain open. |
+
+The machine register archives both complete prior entries, reasons and remaining-work lists exactly once in completion_updates. Original scope, acceptance, complete_when, updated scope and design/amendment links are preserved. All other110 original entries and61 IA are unchanged. Historical root39 and historical coverage counts are frozen. FE12/FE13 are not recounted; FE19 is a historical reclosure, and VENU-ART01 is not a new original outcome.
+
+Current bounded staffing and publication facts: qualified Community76ca and ARTa802 source deliveries remain credited;204 stopped/archived and231 closed. C06 Source08 actually passed generator/format/nested controls, but its final scoped commit is pending and compiler/constructor/runtime/Photo2 remain unqualified. PI11 Source23 compiler/lint passed; Native17 overall failed (360 flow PASS,390 mandatory switch FAIL,430/short NOT_RUN); the expiry-preserving fixture fix is authored, while Source24 failed before payload on peer cwd. FE24 attempt02 hit configured TSC heap OOM and unresolved zod imports; attempt03’s interrupted outcome is unreconciled.53d remains the sole coupled executor; Root153 owns only caller fixes. Default Source05 failed before commands; QA06 Browser09 was never accepted and prior preparation kernel closure remains unconfirmed. Fresh allocations do not imply acceptance or release.
+
+BE42 remains held/unpublished with proposal seal missing and0076 ownership unreconciled; source checks do not establish Cargo/PG/native/mTLS/serving/runtime. World repair remains unvalidated after Native03 seven PASS/one FAIL. Notice and Gateway preserve their original failures and unavailable final target attribution. No universal quota recovery, custody transfer, model/goal reset, extra source writer, new execution grant, technical review or acknowledgment gate is inferred.
+
+Actual checkpoint time is recorded above; missed18:30/21:30 private registers are not backfilled. Sealed16:30/17:30 bytes remain immutable. This is responsible-owner management accounting, not source/code/query/test/runtime/screenshot/pixel review or production admission.
+<!-- END MAIN_AR02_AR04_20261105T150424Z -->
+
 <!-- BEGIN MAIN_HOURLY_20261105_1632 -->
 ## CURRENT — 2026-11-05 16:32 KST responsible-owner reconciliation
 
