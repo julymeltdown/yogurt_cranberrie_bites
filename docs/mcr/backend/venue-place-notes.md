@@ -943,3 +943,94 @@ control files are exact frozen copies. No new target offer exists and no changed
 control test, initial LIVE pair, compiler or application workload has run.
 Distinct bounded source validation was requested; Cargo04 remains closed.
 The SAME ordinary16MiB book, original family charges and all higher floors remain.
+
+
+## Guardian Source04: six changed transition cases and fresh LIVE passed
+
+The allocator explicitly withdrew all unaccepted compiler/target offers during
+the source window. This changed prospective target future to zero, without
+releasing an accepted owner, refunding historical bytes or reducing physical
+floors. Source04 did not repeat the earlier capacity-denied census. Its ticket
+waited for the exact207 SOURCE07 literal FULL1793860614.404407, SHA256
+`32ee4dff587208c0d56645b219acf24f7a51c97c6d09459368b4bd4733b55250`.
+The literal accepted clock1793860613.9762182 was used directly; it was not
+normalized to the slightly different clock in the sender's progress message.
+207's bootstrap failure is not a validation pass or a product prerequisite.
+
+New private `ordinary-preparation-v4.py`, SHA256
+`675f741eed52cc6eb82200ebf39b435c56001f25dfe07348985ab63487eb5ac0`,
+naturally ran necessary Source04 source preparation. V3 and PID11461 original
+sources/receipts remain unchanged. V4 adds an actual self-only Darwin
+KERN_PROCARGS2 argc-bounded full kernel vector and explicit JSON digest domain,
+separate from Python sys.argv, sys.orig_argv and rawPS. The actual kernel vector
+retains the Framework Python argv0, -B, absolute entry and action, without path
+or argv0 alias substitution. It verifies repeated kernel/vector stability and
+retains precise birth, PPID/group, image/cwd, entry/action hashes, immutable input
+contract and unchanged book. Environment bytes are not retained. Natural PID87861
+BEGIN1793860225.5340312 SHA256
+`ca6fd7d0b048632c47d147b0dba40dbc9b15615151057b82b8d4f1e769428070`
+and activity FULL1793860225.538432 SHA256
+`ce019e771880ba29690549d8d843ba474089b9d1db04acf9677505dd1bee0001`
+were routed directly to QA06,1eed and21d. Activity FULL does not prove kernel exit.
+No consumer application pass or shared-guard project was introduced.
+
+Actual `N03-GUARDIAN-CONTROL-SOURCE04-0615` accepted1793860717.811567 under
+4PIDs/512MiBRSS,60second WORK/90second FULL and shared4MiB total across Source04
+and any necessary changed-fix05, inside the original6GiB family and72GiB WHOLE.
+The exact production guardian self-published before the parent bound its owned
+PID, birth, image, cwd, PPID/group, script hash and original argument tail.
+Actual parent before/cwd/after observations are retained. The startup deadline
+is at most15seconds and before original WORK minus15, including a60second source
+round. -P allows this source-only harness to select its source-window metadata
+adapter without changing the production compiler readset. Only the three
+prospective production control files change: receipts.py, run.py and guardian.py.
+
+Both independent initial complete LIVE checks passed at1793860718.026166 and
+1793860718.090795, with identity_errors and unknown processes empty, G1/S1/B0/T0.
+Global reserved5PIDs/543,080,448RSS bytes include the existing exact host PostgreSQL
+infrastructure observation beyond the owned4PID/512MiB reservation; this is not
+PG job use. Fresh free operands were18,342,928,384 and18,342,543,360 bytes, each
+against3,355,443,200 applicable future and the unchanged9GiB residual. Exact
+itemized future was3,327,433,695 bytes. The actual063719 projection SHA256 is
+`963b9ed8b8c80b6acec28b50fb501affdc04c7cc81e5d0477a4800d27a6046e2`;
+allocation SHA256 is `ba6fe305899f016a89d8ade80a291f286e94ebec3df3fbf7a7316cab48a7eb77`.
+
+Exactly six new controlled transition cases passed: reject wrong owned PID/
+parent/group/script/hash/argv; retry a genuinely unstable complete binding pair
+with raw operands retained; refuse stable mismatches without retry or intent
+attribution; exhaust three unstable pairs with all observations retained; refuse
+missing self-publication without inferring identity from an absent child; and
+keep original interpreter entry distinct from transient runpy argv. Per-case
+scratch is retained rather than taking fixture-deletion credit. The log reports
+`Ran 6 tests` and `OK`, SHA256
+`b95b5805bef96b568b1b2424b637003cd6f306e6312d682e4f2e4e23f635b26a`.
+No Source03 three, Source02 nine or aggregate twelve were replayed. Their original
+status and the earlier operational-order disclosure remain unchanged.
+
+Literal FULL1793860718.34308 is `diagnostic07/run-01/full-release.json`, SHA256
+`4ac26de5825e61e2b5fa9647e887eb1b3634d7c571af080ea0a2d860a5e8f288`:
+PASS_CHANGED_GUARDIAN_SOURCE04, exit0, cleanup null, both owned processes reaped,
+target never held and no Cargo/PG/native/HTTP/browser execution. It was routed
+directly to successor1eed and21d before diagnostic/test-log reads. No ACK or
+diagnostic-completion barrier was added. The exact actual source/input archive
+`diagnostic07/source-controls-actual-1793860717811567104` has manifest SHA256
+`94e798be1d766ecfbae196ef298ab64e36569150feb636004b9b38deda626574`.
+`diagnostic07/ACTUAL_SOURCE04.json`, SHA256
+`df6d7fbf9f9591bbc3a1e14e241566a4e112fb9e20fff0d3595907f735096c5f`,
+binds exact acceptance, FULL, both initial LIVE records, parent/guardian identity,
+the new tests and source archive. Actual pins were hash-checked before freezing.
+
+The shared4MiB pair upper is conservatively charged once: Notes NEW at least
+1,527,074,816 and WHOLE at least67,328,389,120 bytes, plus all higher observations.
+Retained allocation measured at FULL was1,126,400 bytes before later archive/
+ordinary metadata. This is not a refund or a fresh4MiB allowance for Source05.
+No changed-fix successor is needed for these passing cases. The own existing
+131,072byte metadata limit was unchanged; its scoped pass does not waive other
+consumers'65,536byte limits or qualify ART receipt compaction/consumer adapters.
+
+Source04's bounded control assignment is complete. The incompatible old BE24
+BLOCKED persistent goal is preserved without false reset/completion. Original
+Notes implementation, compiler/native/PG/HTTP/vertical-flow obligations remain
+IN_PROGRESS. Cargo04 remains closed FAIL with no historical cause inference.
+Any future target/compiler execution needs a distinct fresh actual offer after
+the source window and current usable capacity; no withdrawn offer reenters.
