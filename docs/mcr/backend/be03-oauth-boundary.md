@@ -792,3 +792,101 @@ browser and native runtime remain NOT_RUN. Public OAuth stays OFF. Denial still
 clears the browser cookie without tombstoning Auth state; that replay gap is
 OPEN. The real worktree HEAD and index remain outside this documentation-only
 change. No king/SL review or acknowledgment is a prerequisite.
+
+
+## 2026-11-05: actual Gateway05/06 validation and remaining source-input closure
+
+`BE03-GATEWAY-CHECK05-0831` actually accepted at `1793867647.867641` and
+reached FULL at `1793867648.701034`, exit 1, resources zero, both guards and
+child reaped, target released. It failed before both LIVE, target access,
+bootstrap cases or Cargo. Both guards encountered `KeyError('phaseOwners')`:
+the current allocator reconciliation contained `record`, `SHA256` and
+`asOfUTC`, while the reader expected an inline `phaseOwners` field. This cause
+is supported by the actual consumed immutable before/after bytes, not a later
+reconstruction. Both frames have allocation SHA-256
+`6348d82633efc0037b467f6139048dc98f7b8fb7013177f738b72dc4d8734f3b`;
+they point to projection `20261105T083129` SHA-256
+`30cdb28fd7daa2ef4ee0e9a4bbeef9f92b27e1f78af8be81310e6e807561918e`.
+
+Gateway05 artifacts are under
+`/private/tmp/mcr-be03-oauth-12cc/gateway-check04-run01/` (the directory name
+does not revive unused offer CHECK04):
+
+- `ACCEPTED.json`: `39019e2f42cd14269dae4f86ef49e51cddf469a35bef1215323cfc371d479801`.
+- `TARGET_RELEASE.json`: `d8edc51eda50c6d5bcc095e2fa2ba5a963361290724f02babc966af90a5cb717`.
+- `FULL.json`: `0733a55b8fcd2d05c042968ed30a64113c5e667ffe5b9abb4cd69c06bec2f7dc`.
+- `failed-readset-disposition.json`:
+  `1c840beb7d8c3f93d95b8d92fe5df091f393a8b9b47e3b48fd8ab37a80a94cb1`.
+
+The repaired reader consumes the immutable projection referenced by the current
+allocation, validates its published SHA-256 and canonical bounded path, retains
+the actual bytes, and requires current phase, ordinary, target and total values
+to agree. Optional inline owners must agree with referenced owners. It never
+falls back to a historical projection. Exact source:
+`gateway-check06-controls/future_projection_control.py` SHA-256
+`0a8c8e1d5f55d4ca79d6fa11528312bf66d1fcbe75ede753bb199cb2c5aca327`.
+
+`BE03-GATEWAY-CHECK06-0838` actually accepted at `1793868112.113215` and
+reached FULL at `1793868167.571879`, exit 1, resources zero, both guards and
+compiler child reaped, target released. Both complete independent guards became
+LIVE before target access, cases or Cargo. Two previously unrun bootstrap cases
+and two new projection-reader cases passed. The exact C06 retention qualification
+was retained; its cases were not replayed. These four case passes remain valid
+case-only evidence; the overall Gateway06 round remains FAIL.
+
+Gateway06 artifacts are under
+`/private/tmp/mcr-be03-oauth-12cc/gateway-check06-run01/`:
+
+- `ACCEPTED.json`: `ebb970684789d8fc627ba6e7896033780df686312e8e0fe0e102684ed6ee52cc`.
+- `both-initial-LIVE.json`: `e49460c826d9c24f15393741d10084d97fc5917987ff211d106c0abb7ab3ea0e`.
+- `new-bootstrap-boundary-cases.json`: `253c0f12178aaf15709635a0ae9854f80d10d22b9433b4ed56f9ac5a543fc469`.
+- `new-projection-boundary-cases.json`: `dac54c9b482fb5ca3734aaaf657085c0dba81469b73e7033fa47fee62bc144f2`.
+- `retained-retention-case-disposition.json`: `c594cc997641a3334c7e9263e783b18fdb2f7e9ab3ede82efd17c54455d10ed1`.
+- `compile.stdout`: `ad36c494495af61a9653523cc9cbec3f3ef3e45780af491f38c02ffb34e45e6d`.
+- `TARGET_RELEASE.json`: `80eb0ad8712c02b48db7561daf0ed5f70de1b72c792fb05f9cb9bd72efda3672`.
+- `FULL.json`: `fc36f0a05f1252e2a1e9b44ffac38e155510a30e5a6b0c120283c40fe60b0b49`.
+
+The exact allocated Rust 1.88 offline/locked `api-gateway --lib --tests` check
+actually ran. Several dependency crates were checked, but `concert-domain`
+failed because its `include_str!` for
+`docs/mcr/contracts/avatar-motion-v2/review/visual-review.json` was absent from
+the backend-only sealed export. The API Gateway library/tests therefore remain
+UNCOMPILED/UNQUALIFIED. No application test logic ran.
+
+Both guards also refused outside growth including the fixed bootstrap after it
+exceeded 16 MiB. Last valid TARGET_ACTIVE samples at
+`1793868155.5170019` and `1793868155.499624` recorded outside 16,352,576 bytes,
+target growth 311,776 bytes and total phase growth 16,664,352 bytes. Their files
+are `guard-0-accounting-latest.json` SHA-256
+`f3c61ccd3e94866aa3ec8e0d4479b899a5b2a0dd6bdcc8fd4be07825e2c26308`
+and `guard-1-accounting-latest.json` SHA-256
+`7f2e27816753a7665cc59361a6df272f514dd08258b495625181179e0557ec67`.
+Exact per-path maxima for the final failing growth sample were not persisted;
+its attribution is UNAVAILABLE. Later artifact sizes are not substituted for
+those missing historical operands. Future failure-only operand retention is
+being authored within the same bounded immutable evidence mechanism.
+
+Read-only input closure audit
+`source-input-closure-audit.json` SHA-256
+`343fea860f71ed7464f9f1afe8924fb7d21d7fb2529de5d10283e86eee914a36`
+resolved 166 literal and `CARGO_MANIFEST_DIR` include expressions. Seventeen
+distinct root contracts/docs inputs, totaling 2,717,830 bytes, were omitted from
+the export; every input was found as an exact blob in candidate `11be`, and
+unresolved expressions were zero. This is an include-source audit, not runtime
+qualification. AMEND10's byte/inventory integrity PASS remains historical;
+its backend-only inventory does not certify complete build-input closure.
+
+The failed Gateway05 entire-book family upper 1,073,332,224 bytes and failed
+Gateway06 upper 1,190,772,736 bytes remain retained, with WHOLE lower bound
+77,309,411,328 bytes and all higher observations. Prospective caps changed only
+through explicit allocator grants; no failed book is refunded. A new bounded
+source-authoring allocation is requested for a fresh immutable export containing
+the exact root inputs, preserving AMEND10, real worktree HEAD/index and all
+original source. A distinct compiler continuation must use fresh source/tool/
+projection/custody bindings and sufficient combined outside/target allowance.
+Neither request is an actual acceptance or a separate review/approval stage.
+
+All 15 application/shared leaves remain UNPUBLISHED and the Gateway qualification
+remains OPEN. Provider, SQL, browser and native runtime are NOT_RUN. Public OAuth
+remains OFF; denial still does not tombstone Auth state and its replay gap remains
+OPEN. No IN02, visual, design or product acceptance increment is claimed.
