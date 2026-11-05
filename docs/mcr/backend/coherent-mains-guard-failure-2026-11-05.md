@@ -78,3 +78,55 @@ owned process counts were 8 primary / 9 guardian, peak RSS 1,353,449,472 bytes,
 positive NEW 1,851,392 bytes, and minimum sampled free space 15,252,082,688 bytes.
 No target growth was measured. The round is permanently closed; the next source
 fix and allocation must not reuse its acceptance or extend its clocks.
+
+## Distinct round 03: actual ordinary-authoring process misclassified
+
+Status: `FAILED_FULL_RELEASED`. Source `12361094851474726117374a304c973a2e33fd0e`
+contains the exact qualified Enrollment application module and export omitted
+from retry 02. Its provenance is recorded separately in
+`enrollment-application-closure-intake-2026-11-05.json`.
+
+Offer `ROOT-COHERENT-MAINS03-0105` accepted at `1793840885.150468`.
+Both complete initial samples passed before Cargo started. Actual target and
+FULL release completed at `1793840889.297896`; FULL SHA-256 is
+`3623a48656729c109dc5bd1f170ded4352eef1b1c8ac2e660874389ccf660003`.
+No completed main artifact or runtime qualification resulted.
+
+The guardian refused an unresolved workflow. Its bounded identity diagnostic
+preserved PID 19687, birth `Thu Nov 5 10:08:08 2026`, parent 49590,
+`/bin/zsh`, and the actual frontend preferences worktree as current directory.
+The responsible PI01 owner directly confirmed ordinary documentation/privacy
+edits and scoped Git commit `b7b5e26d`, completed with exit zero and no compiler,
+test, browser or target work. This factual confirmation resolves that process's
+role; it does not retroactively register the process or pass round 03. The
+broad shell/command-text seed treated ordinary authoring as validation work.
+Retry 02's different PID 8131 remains unresolved and is not explained by this
+later identity.
+
+The primary accounting scan was interrupted by the guardian signal, reporting
+`AccountingError: checkpoint/root/measurement failure`. Its complete outside-root
+scan had not returned a qualified measurement; this is not evidence of a
+separate source-root accounting defect. Peak counts were 6 owned PIDs and
+199,622,656 RSS bytes. Positive NEW was 1,523,712 bytes, target growth zero,
+WHOLE 42,953,048,064 bytes, and minimum free space 16,273,436,672 bytes.
+
+Cleanup reaped the builder and guardian, found no target handles and atomically
+published FULL with workflow, owned-child and remaining-NEW claims zero.
+Literal release went directly to successors and the allocator before this
+record. Source remained clean. Round 03 is permanently closed.
+
+The separate future round 04 draft classifies factual ordinary observations
+before numeric execution-cap arithmetic. It requires actual PID, normalized
+birth, actual current directory and command identity; ordinary PID/RSS remain
+counted without inventing an execution reservation. Unknown actual payloads
+remain fail-closed. Exact immutable closed-offer hashes and release epochs
+resolve stale legacy claims rather than treating a newer FULL as blanket
+release. Actual bootstrap identity is published before costly admission census.
+
+The future controls passed Python syntax parsing, current receipt discovery and
+one actual process-only pre-admission sample with no unresolved workflow. No
+build target was read. These checks do not qualify both live runtime guards or
+a main build. Offer `ROOT-COHERENT-MAINS04-0120` remains unaccepted until its
+literal Post/Gateway predecessors release; source, caps, original clocks and
+nonshrinking retained-carry accounting remain binding. Managed runtime remains
+`NOT_RUN`.

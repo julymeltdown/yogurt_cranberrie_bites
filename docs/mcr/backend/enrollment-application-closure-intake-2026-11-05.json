@@ -1,0 +1,40 @@
+{
+  "state": "EXACT_QUALIFIED_SOURCE_INTAKE_COMPLETE_NEW_BUILD_NOT_RUN",
+  "source_commit": "868f27a0fdeabbb06a772aa95c2e51b91f07ea86",
+  "parent": "1c8f87675d73f9cfb932beae1ff56a50851a498a",
+  "qualified_source": "1ab1cc579724851f7a222d1083551573ccbd8595",
+  "precopy_manifest_sha256": "a385c1e02b464c07a0b3537e6236f47600d5b00a0bbaeb437333cecea308a73a",
+  "paths": [
+    {
+      "path": "backend/crates/gateway-application/src/enrollment_policy.rs",
+      "source": "1ab1cc579724851f7a222d1083551573ccbd8595",
+      "source_mode": "100644",
+      "source_blob": "f00f8065a1a775c4d2abece218fbf258eaca4209",
+      "before_sha256": null,
+      "after_sha256": "be04e815f5a1d9edf5a317f81edc4b04a241e447965aa3791e48bb077e6a81e3",
+      "bytes": 1176,
+      "positive_postimage_upper": 4096
+    },
+    {
+      "path": "backend/crates/gateway-application/src/lib.rs",
+      "source": "1ab1cc579724851f7a222d1083551573ccbd8595",
+      "source_mode": "100644",
+      "source_blob": "e1d447b073c0628252aea13ddbc4d929d6911c5d",
+      "before_sha256": "901549fcb1d5b308aa22e737f1687098992e4977fdad5ec301c4804b55c9dbb1",
+      "after_sha256": "d24d08fad1f11d083f00aa73551b08c0805a72f2e2ccc84f698380d0a2333bcb",
+      "bytes": 527,
+      "positive_postimage_upper": 4096
+    }
+  ],
+  "actual_positive_postimage_bytes": 8192,
+  "same128MiB_projection": 61911040,
+  "resource_scope_amendment": "explicit21dexact2pathsonexisting128through01Z/noreset",
+  "scoped_diff_check_exit": 0,
+  "compiler": "NOT_RUN on corrected source",
+  "prior_actual_diagnostics": [
+    "E0432 Gateway HTTP Enrollment adapter",
+    "E0432 Gateway outbound Enrollment adapter"
+  ],
+  "target_access": "NONE",
+  "source_archive_diff": ""
+}
