@@ -1,0 +1,118 @@
+{
+  "task": "AM-FE-COMM-01",
+  "scope": "SOURCE_QUALIFIED_FRONTEND_LEAF_ONLY",
+  "sourceHead": "3cfb7cce391cd8e17974ce360dc70024c3a08620",
+  "base": "5e28dc35dda0126ca5463f810f06eda8a56dc38f",
+  "deliveryMode": "EXACT_PATH_POSTIMAGES_OR_SCOPED_PATCH; NEVER_WHOLE_PRIVATE_ANCESTRY",
+  "paths": [
+    {
+      "path": "frontend/e2e/venue-community/compare.py",
+      "sha256": "83f326dc0a40c3f4ef18c50a44e1d3a7acaa3c2ea25e86b58cadb22e627ba4c4"
+    },
+    {
+      "path": "frontend/e2e/venue-community/fixture.ts",
+      "sha256": "0e830fa3ffb40c1a98342c5f317835bcb397fcd29da483e32069db0d25783736"
+    },
+    {
+      "path": "frontend/e2e/venue-community/native.mjs",
+      "sha256": "7a0120abf32d2fb20f7b83c1dc8d9e839bcb6c44c0c86b8c34eecc203f4a9c3e"
+    },
+    {
+      "path": "frontend/e2e/venue-community/owner.test.ts",
+      "sha256": "e6430b3d706f84e39194b89897a147d5fd4b8fe00a6aa0d373a0abdf721c0e3b"
+    },
+    {
+      "path": "frontend/e2e/venue-community/preview.css",
+      "sha256": "b49bdd7eb539312a6207e6c27df31489af4287f09858e96d9f57939885bc0ae2"
+    },
+    {
+      "path": "frontend/e2e/venue-community/preview.html",
+      "sha256": "89b412524d063d4e8082f3f7b5a95902dd36257e880d86b51d1c151d64872049"
+    },
+    {
+      "path": "frontend/e2e/venue-community/preview.tsx",
+      "sha256": "d13571152c1ba234c3246bada071441b555e657b817b1e18109a0652356a4f15"
+    },
+    {
+      "path": "frontend/e2e/venue-community/ui.test.tsx",
+      "sha256": "86e080abb32cf102a6a164ceaee6e04571af5797083700e3a4c31668904a7918"
+    },
+    {
+      "path": "frontend/src/app/router.tsx",
+      "sha256": "90513aa1d2bca6b3d24227c20dabc6737fc25a9cf2d08bdb142cd269f31fc4cb"
+    },
+    {
+      "path": "frontend/src/app/routes.ts",
+      "sha256": "7b7657af56330870447832e1fa958c9001b1f53cca1191c270c01e820be7095e"
+    },
+    {
+      "path": "frontend/src/app/venue-community-entry/index.ts",
+      "sha256": "ff617931442085dff249fd99ba3ee6b1aeaedf05ccc2374769a3e82c5a04e6ab"
+    },
+    {
+      "path": "frontend/src/app/venue-community-entry/owner.ts",
+      "sha256": "00c4de065ce88b01b1fc610179bc65760c8aa352e360f2d00630047d178f009d"
+    },
+    {
+      "path": "frontend/src/app/venue-community-entry/ports.ts",
+      "sha256": "339382d6dc54b2571b37fafc94c7db3b4e336230ece98a1c601579b150a757e4"
+    },
+    {
+      "path": "frontend/src/app/venue-community-entry/provider.tsx",
+      "sha256": "2e090aa0eb67c43be25ead509a66d8b5d8c7a47dbdf6a6a1f0e45bca39871678"
+    },
+    {
+      "path": "frontend/src/app/venue-community-entry/routes.tsx",
+      "sha256": "705259be1cfef865b81e38de122fe29add106d2ef76a406cdec88df642f369fb"
+    },
+    {
+      "path": "frontend/src/app/venue-community-entry/view.tsx",
+      "sha256": "9cfb8ce310000856ab11ff09fc0c1a4bbf502790648c4b8006de9cbffec8f906"
+    },
+    {
+      "path": "frontend/src/features/meeting-conversation/Conversation.tsx",
+      "sha256": "000bae08d6e3f40934d8d4470f15c589c4f0b6c70691dbd32810a58db2d10953"
+    },
+    {
+      "path": "frontend/src/features/venue-invitations/Invitation.tsx",
+      "sha256": "d31e2d904f017cd528a1dfb75cd5f1a96242d5a8219b92c570e0ecd8fe30cdd7"
+    },
+    {
+      "path": "frontend/src/features/venue-invitations/meeting.css",
+      "sha256": "8d16974ac14209139ff1394858acf05067a96ef02e69863a742d18ed73ad800c"
+    },
+    {
+      "path": "frontend/src/features/venue-invitations/model.ts",
+      "sha256": "3f901bf111841c3136e32e96174ef9725fe371027184fed9b66908b9320bd1a5"
+    },
+    {
+      "path": "docs/mcr/venue/community/outcome.md",
+      "sha256": "dd82cc4403eef624546ce3e12e0fdedfa83c14eee735071a5d3a48261e2da4ad"
+    },
+    {
+      "path": "docs/mcr/venue/community/source-validation.md",
+      "sha256": "7499b7fa56c9e4191068d01ce2b5694cf764ee7a1839f91e1b9cc4434c6a37ce"
+    }
+  ],
+  "validation": {
+    "candidate": "aa6dfdcf4cf5b7a88a2611ccc9c9decc2bb01869",
+    "vitest": "45/45 PASS exit0",
+    "strictTypes": "PASS exit0",
+    "scopedLint": "PASS exit0",
+    "native": "NOT_RUN",
+    "globalResourceMembership": "NOT_ESTABLISHED_BY_SOURCE03_OWN_TREE_GUARDS"
+  },
+  "excluded": [
+    "docs/mcr/evidence/venue-community/**",
+    "frontend/src/app/ports.ts",
+    "frontend/src/world/composition/policy.ts",
+    "all custody/private raw resource records"
+  ],
+  "limitations": [
+    "Root actual Meeting wire client/normalized adapter/pagination/list support unfinished",
+    "Root retained stable WorldShell/provider/People/Inbox target integration unfinished",
+    "native reference comparison/controlled HTTP/actual backend/two principals/device GPS NOT_RUN",
+    "No original task closure or VENU product acceptance implied"
+  ],
+  "existingFileHunks": "Only two new lazy imports+featurePanels keys in router.tsx and two new metadata rows in routes.ts; preserve all concurrent rows/RouteFailure/LazyBoundary/UUID/safe-return/currentMap import."
+}

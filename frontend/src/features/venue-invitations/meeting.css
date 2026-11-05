@@ -1,0 +1,76 @@
+.venue-meeting {
+  --meeting-ink: #171717;
+  --meeting-paper: #f8f7f3;
+  --meeting-burgundy: #9e233e;
+  color: var(--meeting-ink);
+  background: var(--meeting-paper);
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 14px;
+  line-height: 1.35;
+  width: 100%;
+  min-width: 0;
+  box-sizing: border-box;
+  padding: 10px;
+}
+.venue-meeting *, .venue-meeting *::before, .venue-meeting *::after { box-sizing: border-box; }
+.venue-meeting h2 { margin: 0; font-size: 21px; line-height: 1.15; font-weight: 800; overflow-wrap: anywhere; }
+.venue-meeting p { margin: 0; }
+.venue-meeting button {
+  min-height: 44px;
+  padding: 8px 12px;
+  border: 1px solid #333;
+  border-radius: 4px;
+  background: #fbfaf7;
+  color: var(--meeting-ink);
+  font: inherit;
+  font-weight: 800;
+  cursor: pointer;
+}
+.venue-meeting button:disabled { opacity: .55; cursor: default; }
+.venue-meeting button:focus-visible, .venue-meeting textarea:focus-visible { outline: 3px solid #355cc9; outline-offset: 3px; }
+.venue-meeting .venue-meeting-primary { color: #fff; background: var(--meeting-burgundy); border-color: var(--meeting-burgundy); }
+.venue-meeting-header { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-bottom: 8px; }
+.venue-meeting-header strong { font-size: 12px; text-transform: uppercase; letter-spacing: .04em; }
+.venue-meeting-header button { padding: 6px 10px; }
+.venue-meeting-invitation { border: 1px solid #333; border-radius: 6px; padding: 14px; }
+.venue-meeting-invitation-heading { display: flex; align-items: center; gap: 12px; margin-bottom: 14px; }
+.venue-meeting-invitation-heading p { margin-top: 4px; }
+.venue-meeting-pair { display: flex; flex: 0 0 auto; gap: 7px; }
+.venue-meeting-pair > span { display: grid; place-items: center; width: 48px; height: 54px; border: 1px solid #333; border-radius: 3px; overflow: hidden; background: #e9e5dc; }
+.venue-meeting-pair img, .venue-meeting-portrait img, .venue-meeting-message-portrait img { width: 100%; height: 100%; object-fit: contain; image-rendering: pixelated; }
+.venue-meeting-participants { display: flex; align-items: center; gap: 5px; margin-top: 4px; font-weight: 700; flex-wrap: wrap; }
+.venue-meeting-portrait { display: grid; place-items: center; width: 30px; height: 30px; overflow: hidden; }
+.venue-meeting-plus { font-weight: 400; }
+.venue-meeting-participants > span:last-child { margin-left: 5px; }
+.venue-meeting-guidance { margin-top: 5px !important; padding-bottom: 5px; border-bottom: 1px solid #b6b3ac; }
+.venue-meeting-place { display: flex; align-items: center; gap: 8px; padding: 8px 9px; border: 1px solid #89867f; border-radius: 4px; margin: 8px 0; }
+.venue-meeting-place strong { display: block; font-size: 16px; }
+.venue-meeting-place > div { flex: 1; min-width: 0; }
+.venue-meeting-place button { font-size: 12px; padding: 6px; }
+.venue-meeting-place span:not(.venue-meeting-pin) { display: block; font-size: 12px; }
+.venue-meeting-pin { font-size: 26px; font-weight: 900; }
+.venue-meeting-status { display: flex; align-items: center; justify-content: space-between; gap: 10px; background: #e8e5df; border-radius: 4px; margin: 10px 0 !important; padding: 5px 12px; font-weight: 800; }
+.venue-meeting-status-accepted { background: var(--meeting-burgundy); color: #fff; }
+.venue-meeting-actions { display: flex; gap: 10px; margin-top: 9px; }
+.venue-meeting-actions > button { flex: 1 1 0; min-width: 0; text-transform: uppercase; font-size: 13px; }
+.venue-meeting-explanation { font-size: 12px; margin: 7px 0 !important; }
+.venue-meeting .venue-meeting-text-button { margin-top: 8px; width: 100%; border-color: transparent; text-decoration: underline; font-size: 13px; }
+.venue-meeting-messages { list-style: none; margin: 0; padding: 0; max-height: min(34dvh, 320px); overflow-y: auto; overscroll-behavior: contain; }
+.venue-meeting-messages li { display: flex; gap: 7px; margin: 8px 0; }
+.venue-meeting-message-portrait { flex: 0 0 34px; width: 34px; height: 36px; border: 1px solid #666; border-radius: 4px; overflow: hidden; }
+.venue-meeting-messages li > div { flex: 1; min-width: 0; }
+.venue-meeting-message-heading { display: flex; flex-wrap: wrap; align-items: baseline; gap: 9px; line-height: 1.2; }
+.venue-meeting-message-heading strong { color: var(--meeting-burgundy); }
+.venue-meeting-message-self .venue-meeting-message-heading strong { color: var(--meeting-ink); }
+.venue-meeting-message-heading small { font-size: 11px; color: #515151; }
+.venue-meeting-messages li p { display: inline-block; max-width: 100%; margin-top: 3px; border: 1px solid #9a978e; border-radius: 5px; padding: 5px 8px; white-space: pre-wrap; overflow-wrap: anywhere; }
+.venue-meeting-empty { padding: 16px 0; font-size: 13px; }
+.venue-meeting-composer { display: grid; gap: 5px; margin-top: 10px; }
+.venue-meeting-composer label { font-size: 12px; font-weight: 700; }
+.venue-meeting-composer textarea { width: 100%; resize: vertical; min-height: 60px; max-height: 180px; font: inherit; font-size: 16px; padding: 8px; border: 1px solid #666; border-radius: 4px; background: #fff; color: #171717; }
+.venue-meeting-composer .venue-meeting-explanation { margin: 0 !important; }
+.venue-meeting-command { padding: 9px 0; margin-top: 9px; border-top: 1px solid #aaa69d; }
+.venue-meeting-command button { width: 100%; margin-top: 7px; }
+.venue-meeting-safety { margin-top: 10px !important; font-size: 11px; color: #515151; }
+@media (max-width: 370px) { .venue-meeting-invitation { padding: 10px; } .venue-meeting-pair { gap: 4px; } .venue-meeting-pair > span { width: 40px; height: 48px; } .venue-meeting-invitation-heading { gap: 8px; } }
+@media (max-height: 620px) { .venue-meeting-messages { max-height: 140px; } }

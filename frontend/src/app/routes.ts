@@ -35,6 +35,8 @@ export const panelRoutes: readonly PanelRoute[] = [
   { path: '/meet/parties/:partyId/manage', title: 'Manage party', tab: '/meet', parent: '/meet/parties/:partyId' },
   { path: '/meet/parties/:partyId/rally', title: 'Rendezvous', tab: '/meet', parent: '/meet/parties/:partyId' },
   { path: '/meet/beacons/:beaconId', title: 'Find each other', tab: '/meet', parent: '/meet' },
+  { path: '/meet/invitations/:invitationId', title: 'Meeting invitation', tab: '/meet', parent: '/meet' },
+  { path: '/meet/invitations/:invitationId/conversation', title: 'Meeting conversation', tab: '/meet', parent: '/meet/invitations/:invitationId' },
   { path: '/meet/people', title: 'People', tab: '/meet', parent: '/meet' },
   { path: '/meet/intro/edit', title: 'Your intro', tab: '/meet', parent: '/meet' },
   { path: '/people/:userId', title: 'Profile', tab: '/meet', parent: '/meet/people' },
