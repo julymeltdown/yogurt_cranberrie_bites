@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-11-05T10:22:21+09:00",
+  "updated_at": "2026-11-05T11:22:00+09:00",
   "progress_basis": "REVISED_FUNCTIONAL_DELIVERY; historical original criteria outcomes are retained separately",
   "published_snapshot": "a9c04eb256e7b50e6efc99bfd076eca9a8293100",
   "method": "Human-authorized full112-task replan using original task/IA definitions, responsible-owner hourly dispositions and canonical publisher receipts. Kings do not inspect implementation, SQL, tests or screenshots. No new technical acceptance is inferred.",
@@ -17,16 +17,16 @@
     "required_ia_entries": 61,
     "optional_excluded": 6,
     "counts": {
-      "DONE": 52,
-      "IN_PROGRESS": 48,
+      "DONE": 53,
+      "IN_PROGRESS": 47,
       "WAITING_INPUT": 3,
       "REOPENED": 5,
       "DEFERRED_BY_USER": 1,
       "OPEN": 3
     },
-    "done_tasks": 52,
-    "remaining_active_tasks": 59,
-    "task_completion_percentage": 46.8,
+    "done_tasks": 53,
+    "remaining_active_tasks": 58,
+    "task_completion_percentage": 47.7,
     "historical_original_outcomes": 39,
     "reopened_historical_tasks": [
       "FE19",
@@ -95,10 +95,11 @@
       "BE04",
       "BE07",
       "BE06",
-      "FE41"
+      "FE41",
+      "FE37"
     ],
-    "current_original_criteria_outcomes": 57,
-    "progress_updated_at": "2026-11-05T10:22:21+09:00",
+    "current_original_criteria_outcomes": 58,
+    "progress_updated_at": "2026-11-05T11:22:00+09:00",
     "hosted_ci": {
       "state": "QUALIFIED_PUBLISHED",
       "observed_at": "2026-11-04T18:18:00Z",
@@ -223,22 +224,80 @@
       }
     ],
     "current_delivery_checkpoint": {
-      "recorded_at": "2026-11-05T10:22:21+09:00",
-      "kind": "DIRECT_HUMAN_SCOPE_AMENDMENT",
-      "canonical_snapshot_before_amendment": "cf7bb13735aeb20e0b796b2071726f048a211bd0",
-      "new_original_closures": [],
-      "done_tasks": 52,
-      "active_tasks": 111,
-      "remaining_active_tasks": 59,
-      "original_criteria_outcomes": 57,
-      "design_accepted_families": 0,
-      "design_total_families": 12,
-      "added_required_venue_deliverables": 8,
-      "added_venue_completed": 0,
-      "amendment_id": "VENUE_2026_11_05",
-      "reference_publication": "UI533 owns original reference/Progressions packet; canonical receipt pending at this Main authoring checkpoint.",
-      "accounting": "Additional mandatory scope outside the preserved112 original IDs/61IA. Original52/111 is a historical-scope functional metric, not expanded-product readiness; no blended percentage or automatic reopening. All8 venue deliverables and extension states must be reconciled for final delivery.",
-      "readiness": "NOT_READY"
+      "recorded_at": "2026-11-05T11:22:00+09:00",
+      "kind": "HOURLY_OWNER_DISPOSITION",
+      "canonicalSnapshot": "41d90738e3941cdfc663d00551e0f7db2cd3aa4f",
+      "new_original_closures": [
+        "FE37"
+      ],
+      "original_done": 53,
+      "original_active": 111,
+      "original_remaining": 58,
+      "original_criteria_outcomes": 58,
+      "venue_complete": 0,
+      "venue_required": 8,
+      "extension_ia": 10,
+      "design_accepted": 0,
+      "design_total": 12,
+      "readiness": "NOT_READY",
+      "publication": [
+        {
+          "commit": "651159ec7bae9ff5e1bbc9d3dd083fc08faa02d9",
+          "scope": "PI01 bounded foundation/header correction",
+          "wholeTaskAcceptance": false
+        },
+        {
+          "commit": "1907016b6aa41c17998acab691a83e99d0a80076",
+          "scope": "Reports presentation",
+          "wholeTaskAcceptance": false
+        },
+        {
+          "commit": "0a27b70d7f782f6d63bf5a0904c10915c5fbd073",
+          "scope": "World HUD presentation",
+          "wholeTaskAcceptance": false
+        },
+        {
+          "commit": "4881ab798a4ab21d61e36974a962ba2efc0fab2c",
+          "scope": "Operator presentations",
+          "wholeTaskAcceptance": false
+        },
+        {
+          "commit": "6ff3e481cfcf820c2e14a9a670ae2dc3bffc9afb",
+          "scope": "Venue Progressions/10 originals/48 comparison cases",
+          "wholeTaskAcceptance": false
+        },
+        {
+          "commit": "31fce35d1de2bab9bc5ca2396982cafaa0d48395",
+          "scope": "MESSAGE no-landmark prerequisite clarification",
+          "wholeTaskAcceptance": false
+        },
+        {
+          "commit": "fcd0780537eb9f724a1f130523f02656e1be9ee6",
+          "scope": "Photo5 source-art/interface; independent model unfinished",
+          "wholeTaskAcceptance": false
+        },
+        {
+          "commit": "8d4561d9291274f867fc921ba8ed4c28790a85a7",
+          "scope": "Notes contract source/schema qualification",
+          "wholeTaskAcceptance": false
+        },
+        {
+          "commit": "574b3e5a2a4533d70da3236b2c42c465a32e34a4",
+          "scope": "Meeting contract limited source/structure qualification",
+          "wholeTaskAcceptance": false
+        },
+        {
+          "commit": "217c52c25180217b9fd1264af9b8cae52ec88a1a",
+          "scope": "Location contract source/schema qualification",
+          "wholeTaskAcceptance": false
+        },
+        {
+          "commit": "41d90738e3941cdfc663d00551e0f7db2cd3aa4f",
+          "scope": "Spatial/Map interface and invitation/conversation source leaf",
+          "wholeTaskAcceptance": false
+        }
+      ],
+      "authority": "Main direct MAIN_HOURLY_20261105_1122_FE37 assignment; single Frontend KING38511:22KST digest and Backend21d02:22UTC digest; responsible owner/publication dispositions, no Main implementation review."
     },
     "scope_interpretation": {
       "QA06": "Original widths, skins, actual devices, keyboard/safearea, readability/reachability/clipping/oldUI checks remain intact. All61IA entries remain required; no unrequested universal61x3x3 capture gate.",
@@ -261,7 +320,7 @@
         "scope": "Preserve this real integration requirement after closing originalFE36 client controls. No live reporting/moderation/media certification or scope cut is inferred."
       }
     },
-    "staffing_updated_at": "2026-11-05T09:25:46+09:00",
+    "staffing_updated_at": "2026-11-05T11:22:00+09:00",
     "delivery_checkpoint_history": [
       {
         "recorded_at": "2026-11-05T04:37:28+09:00",
@@ -440,6 +499,24 @@
           "FE41": "Full original pure-client criteria; owner/Root explicit disposition via385, canonical6b6c94d",
           "QA01": "Selected Wall B current delta closed at canonicalaac0d96d; already counted in historical39, no duplicate original outcome"
         }
+      },
+      {
+        "recorded_at": "2026-11-05T10:22:21+09:00",
+        "kind": "DIRECT_HUMAN_SCOPE_AMENDMENT",
+        "canonical_snapshot_before_amendment": "cf7bb13735aeb20e0b796b2071726f048a211bd0",
+        "new_original_closures": [],
+        "done_tasks": 52,
+        "active_tasks": 111,
+        "remaining_active_tasks": 59,
+        "original_criteria_outcomes": 57,
+        "design_accepted_families": 0,
+        "design_total_families": 12,
+        "added_required_venue_deliverables": 8,
+        "added_venue_completed": 0,
+        "amendment_id": "VENUE_2026_11_05",
+        "reference_publication": "UI533 owns original reference/Progressions packet; canonical receipt pending at this Main authoring checkpoint.",
+        "accounting": "Additional mandatory scope outside the preserved112 original IDs/61IA. Original52/111 is a historical-scope functional metric, not expanded-product readiness; no blended percentage or automatic reopening. All8 venue deliverables and extension states must be reconciled for final delivery.",
+        "readiness": "NOT_READY"
       }
     ],
     "reopened_historical_tasks_at_replan": [
@@ -478,6 +555,35 @@
         "venue": "Paradise City",
         "references": "Ten user-provided venue and Map/Friends/Notes images; upload5AE18B10-B53F-405C-9CC2-1541ECB4BAFA",
         "authority": "Direct human venue amendment; visual/art requirements only"
+      },
+      "consolidated_unresolved_inputs": [
+        {
+          "area": "Friendship and viewer authority",
+          "need": "Product definition and actual authoritative provider for accepted Friends, separate GPS sharing/viewer consent; following/block/mute and canonical pair fencing do not establish this.",
+          "owner": "Main product decision; Root1fc/L16e actual provider binding"
+        },
+        {
+          "area": "Location and event policy",
+          "need": "Explicit accuracy/freshness thresholds, sharing lifetime, retained-location policy, check-in/context eligibility, event timezone and end-of-day boundary; actual policy provider/configuration.",
+          "owner": "Root1fc/L16e/M/N consolidate minimal product choices; implementation owners own providers/config"
+        },
+        {
+          "area": "Physical location authority",
+          "need": "Reviewed physical landmark binding, georeferencing/calibration, distinct catalog/map/current-place revisions, permitted access/closures/reviewer/validity and applicable source rights.",
+          "owner": "Existing Main physical-input request; implementation/physical-source owners"
+        }
+      ],
+      "developer_trace_basis": {
+        "recorded_at": "2026-11-05T11:22:00+09:00",
+        "source": "Root1fc relaying L16e actual source trace; no King implementation review",
+        "state": "CONFIRMED_GAPS_FOR_EXISTING_REQUEST_NEXT_HOURLY_RECORD",
+        "already_supplied": [
+          "Paradise City venue identity",
+          "Ten venue design references"
+        ],
+        "continue": "Independent frozen contracts, typed injected providers, client/source preparation and qualified M/N publication continue; unconfigured real location projection remains unavailable.",
+        "no_new_question_submitted": true,
+        "no_approval_inferred": true
       }
     },
     "design_delivery": {
@@ -499,8 +605,8 @@
       "accepted_families": 0,
       "total_families": 12,
       "family_counts": {
-        "IN_PROGRESS": 8,
-        "NOT_STARTED": 4
+        "IN_PROGRESS": 12,
+        "NOT_STARTED": 0
       },
       "families": [
         {
@@ -528,8 +634,8 @@
           "completion": "Functioning default-app component family; fixed reference comparison and applicable states/responsive checks by implementation owner; approved assets; fixes and canonical publication; no unapproved material fixed-region deviation.",
           "evidence": [],
           "canonical_commit": null,
-          "dispatch_state": "CORRECTION_AWAITING_QUALIFICATION",
-          "dispatch_note": "Developer identified an allocated-height defect and authored b5b44e475; corrected native qualification remains pending. Earlier source increment does not qualify this correction.",
+          "dispatch_state": "SCOPED_DELIVERY_PUBLISHED_REMAINING_INTEGRATION_OPEN",
+          "dispatch_note": "Bounded canonical delivery651159ec foundation/header or0a27b70d HUD is recorded separately; remaining actual Root integration/whole-family acceptance stays open.",
           "owner_reference": "26e",
           "ownership_basis": "FrontendKing38500:22UTC hourly named-owner disposition; actual exclusive paths and resource limits remain in responsible lead records, not granted by this register."
         },
@@ -596,7 +702,7 @@
         {
           "id": "PI04",
           "title": "Giveaway and reservation",
-          "state": "NOT_STARTED",
+          "state": "IN_PROGRESS",
           "original_task_ids": [
             "FE24",
             "FE25",
@@ -623,8 +729,8 @@
           "completion": "Functioning default-app component family; fixed reference comparison and applicable states/responsive checks by implementation owner; approved assets; fixes and canonical publication; no unapproved material fixed-region deviation.",
           "evidence": [],
           "canonical_commit": null,
-          "dispatch_state": "CUSTODY_ACCEPTED_PREPARATION",
-          "dispatch_note": "Existing owner assigned in the responsible frontend lead registry; exact actual grants and resource rounds remain with the leads. This accounting entry grants no custody or execution.",
+          "dispatch_state": "IMPLEMENTATION_AND_VALIDATION_IN_PROGRESS",
+          "dispatch_note": "Current11:22KST responsible-owner digest confirms implementation and validation in progress; current lead registry controls exact custody, no lease granted by this record.",
           "owner_reference": "2162",
           "ownership_basis": "FrontendKing38500:22UTC hourly named-owner disposition; actual exclusive paths and resource limits remain in responsible lead records, not granted by this register."
         },
@@ -701,7 +807,7 @@
         {
           "id": "PI07",
           "title": "Avatar framing, popover and editor",
-          "state": "NOT_STARTED",
+          "state": "IN_PROGRESS",
           "original_task_ids": [
             "FE12",
             "FE13",
@@ -723,8 +829,8 @@
           "completion": "Functioning default-app component family; fixed reference comparison and applicable states/responsive checks by implementation owner; approved assets; fixes and canonical publication; no unapproved material fixed-region deviation.",
           "evidence": [],
           "canonical_commit": null,
-          "dispatch_state": "CUSTODY_ACCEPTED_PREPARATION",
-          "dispatch_note": "Existing owner assigned in the responsible frontend lead registry; exact actual grants and resource rounds remain with the leads. This accounting entry grants no custody or execution.",
+          "dispatch_state": "IMPLEMENTATION_AND_VALIDATION_IN_PROGRESS",
+          "dispatch_note": "Current11:22KST responsible-owner digest confirms implementation and validation in progress; current lead registry controls exact custody, no lease granted by this record.",
           "owner_reference": "534",
           "ownership_basis": "FrontendKing38500:22UTC hourly named-owner disposition; actual exclusive paths and resource limits remain in responsible lead records, not granted by this register."
         },
@@ -756,8 +862,8 @@
           "completion": "Functioning default-app component family; fixed reference comparison and applicable states/responsive checks by implementation owner; approved assets; fixes and canonical publication; no unapproved material fixed-region deviation.",
           "evidence": [],
           "canonical_commit": null,
-          "dispatch_state": "SOURCE_IMPLEMENTATION_STARTED",
-          "dispatch_note": "Existing owner assigned in the responsible frontend lead registry; exact actual grants and resource rounds remain with the leads. This accounting entry grants no custody or execution.",
+          "dispatch_state": "SCOPED_DELIVERY_PUBLISHED_REMAINING_INTEGRATION_OPEN",
+          "dispatch_note": "Bounded canonical delivery651159ec foundation/header or0a27b70d HUD is recorded separately; remaining actual Root integration/whole-family acceptance stays open.",
           "owner_reference": "40c576",
           "ownership_basis": "FrontendKing38500:22UTC hourly named-owner disposition; actual exclusive paths and resource limits remain in responsible lead records, not granted by this register."
         },
@@ -793,7 +899,7 @@
         {
           "id": "PI10",
           "title": "Public, authentication and legal",
-          "state": "NOT_STARTED",
+          "state": "IN_PROGRESS",
           "original_task_ids": [
             "FE08",
             "FE09",
@@ -823,8 +929,8 @@
           "completion": "Functioning default-app component family; fixed reference comparison and applicable states/responsive checks by implementation owner; approved assets; fixes and canonical publication; no unapproved material fixed-region deviation.",
           "evidence": [],
           "canonical_commit": null,
-          "dispatch_state": "CUSTODY_ACCEPTED_PREPARATION",
-          "dispatch_note": "Existing owner assigned in the responsible frontend lead registry; exact actual grants and resource rounds remain with the leads. This accounting entry grants no custody or execution.",
+          "dispatch_state": "IMPLEMENTATION_AND_VALIDATION_IN_PROGRESS",
+          "dispatch_note": "Current11:22KST responsible-owner digest confirms implementation and validation in progress; current lead registry controls exact custody, no lease granted by this record.",
           "owner_reference": "50",
           "ownership_basis": "FrontendKing38500:22UTC hourly named-owner disposition; actual exclusive paths and resource limits remain in responsible lead records, not granted by this register."
         },
@@ -860,8 +966,8 @@
           "completion": "Functioning default-app component family; fixed reference comparison and applicable states/responsive checks by implementation owner; approved assets; fixes and canonical publication; no unapproved material fixed-region deviation.",
           "evidence": [],
           "canonical_commit": null,
-          "dispatch_state": "OLD_VENUE_STOP_CONFIRMED_REVISED_CHILD_CUSTODY_PENDING",
-          "dispatch_note": "Retain original owner40fde and qualified useful historical work; new venue scope proposed, not accepted/implemented by inheritance. Original World/rooms/nearby duties remain.",
+          "dispatch_state": "NEW_VENUE_IMPLEMENTATION_IN_PROGRESS",
+          "dispatch_note": "New venue source/model/client work is in progress under actual separately owned grants; old stopped Map scope does not qualify the new surface.",
           "owner_reference": "40fde",
           "ownership_basis": "FrontendKing38500:22UTC hourly named-owner disposition; actual exclusive paths and resource limits remain in responsible lead records, not granted by this register.",
           "prior_dispatch_before_venue_amendment": {
@@ -883,7 +989,7 @@
         {
           "id": "PI12",
           "title": "Supporting safety, operations and archive",
-          "state": "NOT_STARTED",
+          "state": "IN_PROGRESS",
           "original_task_ids": [
             "FE30",
             "FE31",
@@ -929,8 +1035,8 @@
           "completion": "Functioning default-app component family; fixed reference comparison and applicable states/responsive checks by implementation owner; approved assets; fixes and canonical publication; no unapproved material fixed-region deviation.",
           "evidence": [],
           "canonical_commit": null,
-          "dispatch_state": "CUSTODY_ACCEPTED_PREPARATION",
-          "dispatch_note": "Developer21e actually accepted Root-granted disjoint PI12 pre-World presentation scope and a new unbudgeted active goal after its assigned FE41 delivery; no whole-family acceptance.",
+          "dispatch_state": "IMPLEMENTATION_AND_VALIDATION_IN_PROGRESS",
+          "dispatch_note": "Current11:22KST responsible-owner digest confirms implementation and validation in progress; current lead registry controls exact custody, no lease granted by this record.",
           "owner_reference": "230 Reports +21e preWorld; other incumbents retain their scopes",
           "ownership_basis": "FrontendKing38500:22UTC hourly named-owner disposition; actual exclusive paths and resource limits remain in responsible lead records, not granted by this register."
         }
@@ -1062,19 +1168,18 @@
       ],
       "preservation": "No changes to original112 task scopes/acceptance/completion criteria,61 IA/source originals,accepted code or existing exclusive writer custody. Keep validated queued patches.",
       "publication_route": "Standing publisher412e; design dispatch starts on canonical plan publication without another king/SL ACK.",
-      "progress_updated_at": "2026-11-05T10:22:21+09:00",
+      "progress_updated_at": "2026-11-05T11:22:00+09:00",
       "plan_canonical_commit": "f025bdb6fb409f3b7706e475dfabb5f3d21fe168",
       "dispatch_counts": {
-        "CORRECTION_AWAITING_QUALIFICATION": 1,
-        "IMPLEMENTATION_AND_VALIDATION_IN_PROGRESS": 2,
-        "CUSTODY_ACCEPTED_PREPARATION": 4,
-        "SOURCE_IMPLEMENTATION_STARTED": 3,
+        "SCOPED_DELIVERY_PUBLISHED_REMAINING_INTEGRATION_OPEN": 2,
+        "IMPLEMENTATION_AND_VALIDATION_IN_PROGRESS": 6,
+        "SOURCE_IMPLEMENTATION_STARTED": 2,
         "SOURCE_QUALIFIED": 1,
-        "OLD_VENUE_STOP_CONFIRMED_REVISED_CHILD_CUSTODY_PENDING": 1
+        "NEW_VENUE_IMPLEMENTATION_IN_PROGRESS": 1
       },
       "staffing_snapshot": {
-        "recorded_at": "2026-11-05T09:25:46+09:00",
-        "basis": "FrontendKing38500:22UTC hourly named-owner disposition.",
+        "recorded_at": "2026-11-05T11:22:00+09:00",
+        "basis": "Main direct MAIN_HOURLY_20261105_1122_FE37 assignment; single Frontend KING38511:22KST digest and Backend21d02:22UTC digest; responsible owner/publication dispositions, no Main implementation review.",
         "assigned_family_count": 12,
         "accepted_family_count": 0,
         "owner_registry": "Frontend King385/UI533 current exact custody records; this central summary is not a file grant.",
@@ -1083,10 +1188,14 @@
         ],
         "implementation_and_validation_families": [
           "PI02",
-          "PI03"
+          "PI03",
+          "PI04",
+          "PI07",
+          "PI10",
+          "PI12"
         ],
-        "current_gap": "Shared allocated-height correction awaits native qualification. Feed/Thread later unavailable-state harness assertion is under developer correction. Partial controlled captures and source increments establish no family acceptance.",
-        "remaining_dispatch": "All12 families have existing owners and bounded preparation/validation routing. An assignment or source pass is not a family acceptance.",
+        "current_gap": "All12 families have implementation and validation remainders under actual owners; no whole-family acceptance. Scoped deliveries are recorded separately.",
+        "remaining_dispatch": "Current responsible lead registry controls exact custody. HUD40c576 finished its old scoped handoff and actually accepted disjoint M public-client work with a fresh goal; original HUD integration retains Root/lead custody. ART231 completed pure assets and was preserved/archived with no ready followup;26e independent model remained unfinished at this digest. QA04 existing202 resumed ready source remainder. No genuinely unstaffed ready scope; failed/unaccepted offers are neither reservations nor releases.",
         "named_owners": {
           "PI01": "26e",
           "PI02": "213",
@@ -1105,15 +1214,18 @@
           "PI01",
           "PI02",
           "PI03",
+          "PI04",
           "PI05",
           "PI06",
+          "PI07",
           "PI08",
-          "PI09"
+          "PI09",
+          "PI10",
+          "PI11",
+          "PI12"
         ],
-        "correction_awaiting_qualification": [
-          "PI01"
-        ],
-        "coverage_exception": "PI12 S01/in-world recovery ownership is being resolved directly by World/Community/Root; reuse an existing QA05 candidate only if genuinely unowned, no duplicate chat.",
+        "correction_awaiting_qualification": [],
+        "coverage_exception": "No genuinely unstaffed ready scope in this hourly digest; current lead registry retains exact custody.",
         "source_started_before_venue_amendment": [
           "PI01",
           "PI02",
@@ -1124,7 +1236,8 @@
           "PI09",
           "PI11"
         ],
-        "venue_retargeting": "PI11 old venue scope stopped; new-reference implementation/grants not inferred from old source starts. Other existing family ownership remains."
+        "venue_retargeting": "Actual new venue source/grants in progress; no source grant is created by this summary.",
+        "named_owners_are_dated_references_not_new_leases": true
       },
       "reference_precedence_updates": [
         {
@@ -1135,21 +1248,708 @@
           "local_override": "New venue photos govern affected surfaces, including burgundy active tabs. Other Parade Ink surfaces and independent World eras remain.",
           "unrelated_surfaces": "Retain global Parade Ink and original World-era semantics."
         }
+      ],
+      "hourly_state_history": [
+        {
+          "recorded_at": "2026-11-05T11:22:00+09:00",
+          "prior_snapshot": {
+            "revision": "2026-11-05-parade-ink",
+            "recorded_at": "2026-11-05T08:20:03+09:00",
+            "authority": "Latest direct human choice: Parade Ink, not the black version. User requested joint king/PM planning, progress update, commit/push before new design dispatch, with interrupted sessions resumed first.",
+            "appearance": "PARADE_INK",
+            "selected_reference": "docs/mcr/design/parade-ink-2026-11-05/parade-ink.jpg",
+            "selected_reference_sha256": "9e7f17a666e1ecfc738a14b75bb3a166235a05c401f206aa24f26cf7463cbc27",
+            "superseded_selection": "AFTER_DARK",
+            "appearance_count": 1,
+            "world_eras_unchanged": [
+              "REVENGE",
+              "PARADE",
+              "DANGER"
+            ],
+            "plan": "docs/mcr/design/parade-ink-delivery-plan-2026-11-05.md",
+            "reference_manifest": "docs/mcr/design/parade-ink-2026-11-05/reference-manifest.json",
+            "accepted_families": 0,
+            "total_families": 12,
+            "family_counts": {
+              "IN_PROGRESS": 8,
+              "NOT_STARTED": 4
+            },
+            "families": [
+              {
+                "id": "PI01",
+                "title": "Shared foundation and chrome",
+                "state": "IN_PROGRESS",
+                "original_task_ids": [
+                  "FE05",
+                  "FE06",
+                  "FE07",
+                  "FE41",
+                  "QA06",
+                  "QA07"
+                ],
+                "primary_required_ia": [],
+                "reference_authority": [
+                  "photo2",
+                  "supporting_states"
+                ],
+                "coordinator": "Frontend King385 through existing functional/UI leads",
+                "implementation_owner": "01a1a26e-1de2-7b41-a294-c9a79cfded9b",
+                "prerequisites": [
+                  "Actual exclusive custody and usable shared component contract; no matching backend-completion barrier for source work"
+                ],
+                "completion": "Functioning default-app component family; fixed reference comparison and applicable states/responsive checks by implementation owner; approved assets; fixes and canonical publication; no unapproved material fixed-region deviation.",
+                "evidence": [],
+                "canonical_commit": null,
+                "dispatch_state": "CORRECTION_AWAITING_QUALIFICATION",
+                "dispatch_note": "Developer identified an allocated-height defect and authored b5b44e475; corrected native qualification remains pending. Earlier source increment does not qualify this correction.",
+                "owner_reference": "26e",
+                "ownership_basis": "FrontendKing38500:22UTC hourly named-owner disposition; actual exclusive paths and resource limits remain in responsible lead records, not granted by this register."
+              },
+              {
+                "id": "PI02",
+                "title": "Feed and notices",
+                "state": "IN_PROGRESS",
+                "original_task_ids": [
+                  "FE27",
+                  "QA06"
+                ],
+                "primary_required_ia": [
+                  "F01",
+                  "F05"
+                ],
+                "reference_authority": [
+                  "photo2"
+                ],
+                "coordinator": "Frontend King385 through existing functional/UI leads",
+                "implementation_owner": "01a1a213-61d6-7a20-a8e7-476649312f8c",
+                "prerequisites": [
+                  "Actual exclusive custody and usable shared component contract; no matching backend-completion barrier for source work"
+                ],
+                "completion": "Functioning default-app component family; fixed reference comparison and applicable states/responsive checks by implementation owner; approved assets; fixes and canonical publication; no unapproved material fixed-region deviation.",
+                "evidence": [],
+                "canonical_commit": null,
+                "dispatch_state": "IMPLEMENTATION_AND_VALIDATION_IN_PROGRESS",
+                "dispatch_note": "Actual App native-size captures and successive edit/publish/delete/read-only/notice/pending states exist. Owner is fixing the later unavailable-state harness assertion; full reference acceptance remains open.",
+                "owner_reference": "213",
+                "ownership_basis": "FrontendKing38500:22UTC hourly named-owner disposition; actual exclusive paths and resource limits remain in responsible lead records, not granted by this register."
+              },
+              {
+                "id": "PI03",
+                "title": "Thread, replies and composer",
+                "state": "IN_PROGRESS",
+                "original_task_ids": [
+                  "FE28",
+                  "FE04",
+                  "QA06"
+                ],
+                "primary_required_ia": [
+                  "F02",
+                  "F03",
+                  "F04"
+                ],
+                "reference_authority": [
+                  "photo2",
+                  "photo3_anatomy",
+                  "photo4_anatomy"
+                ],
+                "coordinator": "Frontend King385 through existing functional/UI leads",
+                "implementation_owner": "01a1a213-61d6-7a20-a8e7-476649312f8c",
+                "prerequisites": [
+                  "Actual exclusive custody and usable shared component contract; no matching backend-completion barrier for source work"
+                ],
+                "completion": "Functioning default-app component family; fixed reference comparison and applicable states/responsive checks by implementation owner; approved assets; fixes and canonical publication; no unapproved material fixed-region deviation.",
+                "evidence": [],
+                "canonical_commit": null,
+                "dispatch_state": "IMPLEMENTATION_AND_VALIDATION_IN_PROGRESS",
+                "dispatch_note": "Actual App native-size captures and successive edit/publish/delete/read-only/notice/pending states exist. Owner is fixing the later unavailable-state harness assertion; full reference acceptance remains open.",
+                "owner_reference": "213",
+                "ownership_basis": "FrontendKing38500:22UTC hourly named-owner disposition; actual exclusive paths and resource limits remain in responsible lead records, not granted by this register."
+              },
+              {
+                "id": "PI04",
+                "title": "Giveaway and reservation",
+                "state": "NOT_STARTED",
+                "original_task_ids": [
+                  "FE24",
+                  "FE25",
+                  "FE26",
+                  "QA06"
+                ],
+                "primary_required_ia": [
+                  "G01",
+                  "G02",
+                  "G03",
+                  "G04",
+                  "G05",
+                  "G06",
+                  "G07"
+                ],
+                "reference_authority": [
+                  "photo1_anatomy"
+                ],
+                "coordinator": "Frontend King385 through existing functional/UI leads",
+                "implementation_owner": "Exact existing developer and file scope assigned after this plan is published; no lease inferred from historic title",
+                "prerequisites": [
+                  "Actual exclusive custody and usable shared component contract; no matching backend-completion barrier for source work"
+                ],
+                "completion": "Functioning default-app component family; fixed reference comparison and applicable states/responsive checks by implementation owner; approved assets; fixes and canonical publication; no unapproved material fixed-region deviation.",
+                "evidence": [],
+                "canonical_commit": null,
+                "dispatch_state": "CUSTODY_ACCEPTED_PREPARATION",
+                "dispatch_note": "Existing owner assigned in the responsible frontend lead registry; exact actual grants and resource rounds remain with the leads. This accounting entry grants no custody or execution.",
+                "owner_reference": "2162",
+                "ownership_basis": "FrontendKing38500:22UTC hourly named-owner disposition; actual exclusive paths and resource limits remain in responsible lead records, not granted by this register."
+              },
+              {
+                "id": "PI05",
+                "title": "Meet, party and people",
+                "state": "IN_PROGRESS",
+                "original_task_ids": [
+                  "FE21",
+                  "FE22",
+                  "FE23",
+                  "FE29",
+                  "FE30",
+                  "QA06"
+                ],
+                "primary_required_ia": [
+                  "M01",
+                  "M02",
+                  "M03",
+                  "M04",
+                  "M05",
+                  "M06",
+                  "M07",
+                  "M08"
+                ],
+                "reference_authority": [
+                  "photo4_anatomy"
+                ],
+                "coordinator": "Frontend King385 through existing functional/UI leads",
+                "implementation_owner": "Exact existing developer and file scope assigned after this plan is published; no lease inferred from historic title",
+                "prerequisites": [
+                  "Actual exclusive custody and usable shared component contract; no matching backend-completion barrier for source work"
+                ],
+                "completion": "Functioning default-app component family; fixed reference comparison and applicable states/responsive checks by implementation owner; approved assets; fixes and canonical publication; no unapproved material fixed-region deviation.",
+                "evidence": [],
+                "canonical_commit": null,
+                "dispatch_state": "SOURCE_IMPLEMENTATION_STARTED",
+                "dispatch_note": "Existing owner assigned in the responsible frontend lead registry; exact actual grants and resource rounds remain with the leads. This accounting entry grants no custody or execution.",
+                "owner_reference": "6950",
+                "ownership_basis": "FrontendKing38500:22UTC hourly named-owner disposition; actual exclusive paths and resource limits remain in responsible lead records, not granted by this register."
+              },
+              {
+                "id": "PI06",
+                "title": "Profile, activity and preferences",
+                "state": "IN_PROGRESS",
+                "original_task_ids": [
+                  "FE30",
+                  "FE34",
+                  "QA06"
+                ],
+                "primary_required_ia": [
+                  "M09",
+                  "U01",
+                  "U03",
+                  "U07"
+                ],
+                "reference_authority": [
+                  "photo3_anatomy",
+                  "photo2_popover"
+                ],
+                "coordinator": "Frontend King385 through existing functional/UI leads",
+                "implementation_owner": "Exact existing developer and file scope assigned after this plan is published; no lease inferred from historic title",
+                "prerequisites": [
+                  "Actual exclusive custody and usable shared component contract; no matching backend-completion barrier for source work"
+                ],
+                "completion": "Functioning default-app component family; fixed reference comparison and applicable states/responsive checks by implementation owner; approved assets; fixes and canonical publication; no unapproved material fixed-region deviation.",
+                "evidence": [],
+                "canonical_commit": null,
+                "dispatch_state": "SOURCE_QUALIFIED",
+                "dispatch_note": "Existing owner assigned in the responsible frontend lead registry; exact actual grants and resource rounds remain with the leads. This accounting entry grants no custody or execution.",
+                "owner_reference": "1ab7",
+                "ownership_basis": "FrontendKing38500:22UTC hourly named-owner disposition; actual exclusive paths and resource limits remain in responsible lead records, not granted by this register."
+              },
+              {
+                "id": "PI07",
+                "title": "Avatar framing, popover and editor",
+                "state": "NOT_STARTED",
+                "original_task_ids": [
+                  "FE12",
+                  "FE13",
+                  "FE18",
+                  "QA06"
+                ],
+                "primary_required_ia": [
+                  "U02"
+                ],
+                "reference_authority": [
+                  "photo2",
+                  "photo3_editor_anatomy"
+                ],
+                "coordinator": "Frontend King385 through existing functional/UI leads",
+                "implementation_owner": "Exact existing developer and file scope assigned after this plan is published; no lease inferred from historic title",
+                "prerequisites": [
+                  "Actual exclusive custody and usable shared component contract; no matching backend-completion barrier for source work"
+                ],
+                "completion": "Functioning default-app component family; fixed reference comparison and applicable states/responsive checks by implementation owner; approved assets; fixes and canonical publication; no unapproved material fixed-region deviation.",
+                "evidence": [],
+                "canonical_commit": null,
+                "dispatch_state": "CUSTODY_ACCEPTED_PREPARATION",
+                "dispatch_note": "Existing owner assigned in the responsible frontend lead registry; exact actual grants and resource rounds remain with the leads. This accounting entry grants no custody or execution.",
+                "owner_reference": "534",
+                "ownership_basis": "FrontendKing38500:22UTC hourly named-owner disposition; actual exclusive paths and resource limits remain in responsible lead records, not granted by this register."
+              },
+              {
+                "id": "PI08",
+                "title": "World HUD and era controls",
+                "state": "IN_PROGRESS",
+                "original_task_ids": [
+                  "FE06",
+                  "FE07",
+                  "FE14",
+                  "FE15",
+                  "FE18",
+                  "AR04",
+                  "QA06"
+                ],
+                "primary_required_ia": [
+                  "W01",
+                  "W06"
+                ],
+                "reference_authority": [
+                  "photo2"
+                ],
+                "coordinator": "Frontend King385 through existing functional/UI leads",
+                "implementation_owner": "Exact existing developer and file scope assigned after this plan is published; no lease inferred from historic title",
+                "prerequisites": [
+                  "Actual exclusive custody and usable shared component contract; no matching backend-completion barrier for source work"
+                ],
+                "completion": "Functioning default-app component family; fixed reference comparison and applicable states/responsive checks by implementation owner; approved assets; fixes and canonical publication; no unapproved material fixed-region deviation.",
+                "evidence": [],
+                "canonical_commit": null,
+                "dispatch_state": "SOURCE_IMPLEMENTATION_STARTED",
+                "dispatch_note": "Existing owner assigned in the responsible frontend lead registry; exact actual grants and resource rounds remain with the leads. This accounting entry grants no custody or execution.",
+                "owner_reference": "40c576",
+                "ownership_basis": "FrontendKing38500:22UTC hourly named-owner disposition; actual exclusive paths and resource limits remain in responsible lead records, not granted by this register."
+              },
+              {
+                "id": "PI09",
+                "title": "Wall B editor and states",
+                "state": "IN_PROGRESS",
+                "original_task_ids": [
+                  "FE32",
+                  "FE33",
+                  "QA06"
+                ],
+                "primary_required_ia": [
+                  "R01"
+                ],
+                "reference_authority": [
+                  "photo2",
+                  "approved_wall_b"
+                ],
+                "coordinator": "Frontend King385 through existing functional/UI leads",
+                "implementation_owner": "Exact existing developer and file scope assigned after this plan is published; no lease inferred from historic title",
+                "prerequisites": [
+                  "Actual exclusive custody and usable shared component contract; no matching backend-completion barrier for source work"
+                ],
+                "completion": "Functioning default-app component family; fixed reference comparison and applicable states/responsive checks by implementation owner; approved assets; fixes and canonical publication; no unapproved material fixed-region deviation.",
+                "evidence": [],
+                "canonical_commit": null,
+                "dispatch_state": "SOURCE_IMPLEMENTATION_STARTED",
+                "dispatch_note": "Existing owner assigned in the responsible frontend lead registry; exact actual grants and resource rounds remain with the leads. This accounting entry grants no custody or execution.",
+                "owner_reference": "restored original Wall3187b5",
+                "ownership_basis": "FrontendKing38500:22UTC hourly named-owner disposition; actual exclusive paths and resource limits remain in responsible lead records, not granted by this register."
+              },
+              {
+                "id": "PI10",
+                "title": "Public, authentication and legal",
+                "state": "NOT_STARTED",
+                "original_task_ids": [
+                  "FE08",
+                  "FE09",
+                  "FE10",
+                  "FE11",
+                  "FE36",
+                  "QA06"
+                ],
+                "primary_required_ia": [
+                  "A01",
+                  "A02",
+                  "A03",
+                  "A04",
+                  "A05",
+                  "A06",
+                  "A07",
+                  "A08"
+                ],
+                "reference_authority": [
+                  "previous_ten_screen_structure"
+                ],
+                "coordinator": "Frontend King385 through existing functional/UI leads",
+                "implementation_owner": "Exact existing developer and file scope assigned after this plan is published; no lease inferred from historic title",
+                "prerequisites": [
+                  "Actual exclusive custody and usable shared component contract; no matching backend-completion barrier for source work"
+                ],
+                "completion": "Functioning default-app component family; fixed reference comparison and applicable states/responsive checks by implementation owner; approved assets; fixes and canonical publication; no unapproved material fixed-region deviation.",
+                "evidence": [],
+                "canonical_commit": null,
+                "dispatch_state": "CUSTODY_ACCEPTED_PREPARATION",
+                "dispatch_note": "Existing owner assigned in the responsible frontend lead registry; exact actual grants and resource rounds remain with the leads. This accounting entry grants no custody or execution.",
+                "owner_reference": "50",
+                "ownership_basis": "FrontendKing38500:22UTC hourly named-owner disposition; actual exclusive paths and resource limits remain in responsible lead records, not granted by this register."
+              },
+              {
+                "id": "PI11",
+                "title": "Map, places, rooms and check-in",
+                "state": "IN_PROGRESS",
+                "original_task_ids": [
+                  "FE18",
+                  "FE19",
+                  "FE20",
+                  "AR02",
+                  "QA06"
+                ],
+                "primary_required_ia": [
+                  "W02",
+                  "W03",
+                  "W04",
+                  "W05",
+                  "W07",
+                  "W08"
+                ],
+                "reference_authority": [
+                  "previous_ten_screen_structure",
+                  "photo2_world_language",
+                  "VENUE_2026_11_05 affected-surface override; provisionalP05/P09/P10/P02 anatomy"
+                ],
+                "coordinator": "Frontend King385 through existing functional/UI leads",
+                "implementation_owner": "Exact existing developer and file scope assigned after this plan is published; no lease inferred from historic title",
+                "prerequisites": [
+                  "Actual exclusive custody and usable shared component contract; no matching backend-completion barrier for source work"
+                ],
+                "completion": "Functioning default-app component family; fixed reference comparison and applicable states/responsive checks by implementation owner; approved assets; fixes and canonical publication; no unapproved material fixed-region deviation.",
+                "evidence": [],
+                "canonical_commit": null,
+                "dispatch_state": "OLD_VENUE_STOP_CONFIRMED_REVISED_CHILD_CUSTODY_PENDING",
+                "dispatch_note": "Retain original owner40fde and qualified useful historical work; new venue scope proposed, not accepted/implemented by inheritance. Original World/rooms/nearby duties remain.",
+                "owner_reference": "40fde",
+                "ownership_basis": "FrontendKing38500:22UTC hourly named-owner disposition; actual exclusive paths and resource limits remain in responsible lead records, not granted by this register.",
+                "prior_dispatch_before_venue_amendment": {
+                  "state": "IN_PROGRESS",
+                  "dispatch_state": "SOURCE_IMPLEMENTATION_STARTED",
+                  "dispatch_note": "Existing owner assigned in the responsible frontend lead registry; exact actual grants and resource rounds remain with the leads. This accounting entry grants no custody or execution."
+                },
+                "required_amendment_ids": [
+                  "VENU-ART01",
+                  "VENU-BE-L01",
+                  "VENU-FE-L01",
+                  "VENU-BE-M01",
+                  "VENU-FE-M01",
+                  "VENU-BE-N01",
+                  "VENU-FE-N01",
+                  "VENU-IN01"
+                ]
+              },
+              {
+                "id": "PI12",
+                "title": "Supporting safety, operations and archive",
+                "state": "NOT_STARTED",
+                "original_task_ids": [
+                  "FE30",
+                  "FE31",
+                  "FE35",
+                  "FE36",
+                  "FE37",
+                  "FE38",
+                  "FE39",
+                  "FE40",
+                  "FE41",
+                  "QA06"
+                ],
+                "primary_required_ia": [
+                  "U04",
+                  "U05",
+                  "U06",
+                  "U08",
+                  "U09",
+                  "U10",
+                  "X01",
+                  "S01",
+                  "S02",
+                  "S03",
+                  "O01",
+                  "O02",
+                  "O03",
+                  "O04",
+                  "O05",
+                  "O06",
+                  "O07",
+                  "O08",
+                  "O09"
+                ],
+                "reference_authority": [
+                  "previous_structure",
+                  "parade_ink_shared_components"
+                ],
+                "coordinator": "Frontend King385 through existing functional/UI leads",
+                "implementation_owner": "Pre-World sub-scope: 01a1a21e-ab80-7012-b9fa-cdb69eed097b; remaining supporting scopes through existing frontend owner registry",
+                "prerequisites": [
+                  "Actual exclusive custody and usable shared component contract; no matching backend-completion barrier for source work"
+                ],
+                "completion": "Functioning default-app component family; fixed reference comparison and applicable states/responsive checks by implementation owner; approved assets; fixes and canonical publication; no unapproved material fixed-region deviation.",
+                "evidence": [],
+                "canonical_commit": null,
+                "dispatch_state": "CUSTODY_ACCEPTED_PREPARATION",
+                "dispatch_note": "Developer21e actually accepted Root-granted disjoint PI12 pre-World presentation scope and a new unbudgeted active goal after its assigned FE41 delivery; no whole-family acceptance.",
+                "owner_reference": "230 Reports +21e preWorld; other incumbents retain their scopes",
+                "ownership_basis": "FrontendKing38500:22UTC hourly named-owner disposition; actual exclusive paths and resource limits remain in responsible lead records, not granted by this register."
+              }
+            ],
+            "accounting": "Child design groups under existing QA06; not new original tasks or blended into functional percentage. Current original-task outcomes are recorded in functional_delivery. Presentation-only work does not reopen unrelated completed behavior; concrete changed/failing original criteria are separately recorded.",
+            "primary_ia_map": {
+              "F01": "PI02",
+              "F05": "PI02",
+              "F02": "PI03",
+              "F03": "PI03",
+              "F04": "PI03",
+              "G01": "PI04",
+              "G02": "PI04",
+              "G03": "PI04",
+              "G04": "PI04",
+              "G05": "PI04",
+              "G06": "PI04",
+              "G07": "PI04",
+              "M01": "PI05",
+              "M02": "PI05",
+              "M03": "PI05",
+              "M04": "PI05",
+              "M05": "PI05",
+              "M06": "PI05",
+              "M07": "PI05",
+              "M08": "PI05",
+              "M09": "PI06",
+              "U01": "PI06",
+              "U03": "PI06",
+              "U07": "PI06",
+              "U02": "PI07",
+              "W01": "PI08",
+              "W06": "PI08",
+              "R01": "PI09",
+              "A01": "PI10",
+              "A02": "PI10",
+              "A03": "PI10",
+              "A04": "PI10",
+              "A05": "PI10",
+              "A06": "PI10",
+              "A07": "PI10",
+              "A08": "PI10",
+              "W02": "PI11",
+              "W03": "PI11",
+              "W04": "PI11",
+              "W05": "PI11",
+              "W07": "PI11",
+              "W08": "PI11",
+              "U04": "PI12",
+              "U05": "PI12",
+              "U06": "PI12",
+              "U08": "PI12",
+              "U09": "PI12",
+              "U10": "PI12",
+              "X01": "PI12",
+              "S01": "PI12",
+              "S02": "PI12",
+              "S03": "PI12",
+              "O01": "PI12",
+              "O02": "PI12",
+              "O03": "PI12",
+              "O04": "PI12",
+              "O05": "PI12",
+              "O06": "PI12",
+              "O07": "PI12",
+              "O08": "PI12",
+              "O09": "PI12"
+            },
+            "required_ia_count": 61,
+            "implementation_validation_owner": "Responsible developer; kings/SLs do not inspect code, queries, tests, runtime or screenshots.",
+            "fixed_regions": [
+              "bounds",
+              "spacing",
+              "type metrics and line heights",
+              "borders",
+              "icons",
+              "tabs and control alignment",
+              "image/portrait frames and crops",
+              "density"
+            ],
+            "variable_fields": [
+              "authorized names and text",
+              "timestamps and counts",
+              "stock/capacity/status/permissions",
+              "selected approved avatar and authorized media",
+              "World actors/positions",
+              "mural content"
+            ],
+            "variable_mask_rule": "Never mask whole cards/containers or fixed geometry to hide differences; deterministic visual fixtures preferred.",
+            "screen_sizes": [
+              360,
+              390,
+              430
+            ],
+            "acceptance_limit": "Material fixed-region deviations remain open. JPEG/raster noise is not a layout exemption. Physical devices and real IN gates remain separate and required.",
+            "semantic_conflicts": [
+              "No fabricated level or new XP system",
+              "No implicit guestbook API or fake guestbook entries",
+              "No general DM from Say hi",
+              "No new quantity parameter without actual reservation semantics",
+              "Original Hair/Eyes/Outfit catalog remains required",
+              "128x128/16-color bounded Wall B retained",
+              "Every visible window/menu/refresh control needs named real behavior"
+            ],
+            "first_milestone": [
+              "PI01",
+              "PI02",
+              "PI03"
+            ],
+            "parallel_next": [
+              "PI04",
+              "PI05",
+              "PI06",
+              "PI07",
+              "PI08",
+              "PI09"
+            ],
+            "remaining_coverage": [
+              "PI10",
+              "PI11",
+              "PI12"
+            ],
+            "planning_contributors": [
+              "Main King01a19e5c-e9c6-7973-a53b-a6d19141620f",
+              "Frontend King01a1a385-9f32-73c2-8715-ff54bd1e0497",
+              "UI lead01a1a533-0644-7ef0-9ee8-9f1755817fb9",
+              "Resource lead01a1a21d-39ec-7912-84cb-910058e7a110",
+              "World and Community leads via Frontend King"
+            ],
+            "preservation": "No changes to original112 task scopes/acceptance/completion criteria,61 IA/source originals,accepted code or existing exclusive writer custody. Keep validated queued patches.",
+            "publication_route": "Standing publisher412e; design dispatch starts on canonical plan publication without another king/SL ACK.",
+            "progress_updated_at": "2026-11-05T10:22:21+09:00",
+            "plan_canonical_commit": "f025bdb6fb409f3b7706e475dfabb5f3d21fe168",
+            "dispatch_counts": {
+              "CORRECTION_AWAITING_QUALIFICATION": 1,
+              "IMPLEMENTATION_AND_VALIDATION_IN_PROGRESS": 2,
+              "CUSTODY_ACCEPTED_PREPARATION": 4,
+              "SOURCE_IMPLEMENTATION_STARTED": 3,
+              "SOURCE_QUALIFIED": 1,
+              "OLD_VENUE_STOP_CONFIRMED_REVISED_CHILD_CUSTODY_PENDING": 1
+            },
+            "staffing_snapshot": {
+              "recorded_at": "2026-11-05T09:25:46+09:00",
+              "basis": "FrontendKing38500:22UTC hourly named-owner disposition.",
+              "assigned_family_count": 12,
+              "accepted_family_count": 0,
+              "owner_registry": "Frontend King385/UI533 current exact custody records; this central summary is not a file grant.",
+              "source_qualified_families": [
+                "PI06"
+              ],
+              "implementation_and_validation_families": [
+                "PI02",
+                "PI03"
+              ],
+              "current_gap": "Shared allocated-height correction awaits native qualification. Feed/Thread later unavailable-state harness assertion is under developer correction. Partial controlled captures and source increments establish no family acceptance.",
+              "remaining_dispatch": "All12 families have existing owners and bounded preparation/validation routing. An assignment or source pass is not a family acceptance.",
+              "named_owners": {
+                "PI01": "26e",
+                "PI02": "213",
+                "PI03": "213",
+                "PI04": "2162",
+                "PI05": "6950",
+                "PI06": "1ab7",
+                "PI07": "534",
+                "PI08": "40c576",
+                "PI09": "restored original Wall3187b5",
+                "PI10": "50",
+                "PI11": "40fde",
+                "PI12": "230 Reports +21e preWorld; other incumbents retain their scopes"
+              },
+              "confirmed_source_started_families": [
+                "PI01",
+                "PI02",
+                "PI03",
+                "PI05",
+                "PI06",
+                "PI08",
+                "PI09"
+              ],
+              "correction_awaiting_qualification": [
+                "PI01"
+              ],
+              "coverage_exception": "PI12 S01/in-world recovery ownership is being resolved directly by World/Community/Root; reuse an existing QA05 candidate only if genuinely unowned, no duplicate chat.",
+              "source_started_before_venue_amendment": [
+                "PI01",
+                "PI02",
+                "PI03",
+                "PI05",
+                "PI06",
+                "PI08",
+                "PI09",
+                "PI11"
+              ],
+              "venue_retargeting": "PI11 old venue scope stopped; new-reference implementation/grants not inferred from old source starts. Other existing family ownership remains."
+            },
+            "reference_precedence_updates": [
+              {
+                "recorded_at": "2026-11-05T10:22:21+09:00",
+                "amendment_id": "VENUE_2026_11_05",
+                "applies_to": "Affected Paradise City venue/map/friends/notes/invitation/contextual-message surfaces; chieflyPI11 and linked new flow states",
+                "primary": "docs/mcr/design/venue-redesign-2026-11-05/reference-manifest.json",
+                "local_override": "New venue photos govern affected surfaces, including burgundy active tabs. Other Parade Ink surfaces and independent World eras remain.",
+                "unrelated_surfaces": "Retain global Parade Ink and original World-era semantics."
+              }
+            ]
+          }
+        }
+      ],
+      "scoped_delivery_dispositions": [
+        {
+          "family": "PI01",
+          "canonical_commit": "651159ec7bae9ff5e1bbc9d3dd083fc08faa02d9",
+          "scope": "Bounded foundation/header correction only",
+          "whole_family_accepted": false
+        },
+        {
+          "family": "PI06",
+          "scope": "Retained source-qualified Profile scope; native/reference and whole-family requirements remain with actual owner",
+          "whole_family_accepted": false
+        },
+        {
+          "family": "PI08",
+          "canonical_commit": "0a27b70d7f782f6d63bf5a0904c10915c5fbd073",
+          "scope": "Bounded HUD presentation; remaining Root integration independently open",
+          "whole_family_accepted": false
+        },
+        {
+          "family": "PI12",
+          "canonical_commit": "4881ab798a4ab21d61e36974a962ba2efc0fab2c",
+          "scope": "Scoped Operator presentations and Reports milestone1907016b; other supporting surfaces remain separately owned",
+          "whole_family_accepted": false
+        }
       ]
     },
-    "current_staffing_snapshot": "All12 design families assigned to existing owners. Finished FE41 context reused for PI12. No genuinely unattended ready backend scope reported; other work has implementation owners and execution/input dependencies. Disk incident recovered under fresh applicable floors; ordinary source/preparation and Git publication resumed. Actual accepted rounds remain bounded by current21d allocation. Root/Party/World builds and bounded route units are credited only within owner-reported scope; managed services/cohorts and whole runtime journeys remain open. Next warm-target compile routes to207 directly.",
+    "current_staffing_snapshot": "Current responsible lead registry controls exact custody. HUD40c576 finished its old scoped handoff and actually accepted disjoint M public-client work with a fresh goal; original HUD integration retains Root/lead custody. ART231 completed pure assets and was preserved/archived with no ready followup;26e independent model remained unfinished at this digest. QA04 existing202 resumed ready source remainder. No genuinely unstaffed ready scope; failed/unaccepted offers are neither reservations nor releases.",
     "venue_amendment": {
       "id": "VENUE_2026_11_05",
       "recorded_at": "2026-11-05T10:22:21+09:00",
       "authority": "Direct human venue-function/reference amendment in Frontend King conversation01a1a385-9f32-73c2-8715-ff54bd1e0497; exact human text verified by Main. Not inferred from artwork alone.",
       "required": true,
-      "state": "PLANNED_DELIVERY_REQUIRED",
+      "state": "IMPLEMENTATION_IN_PROGRESS",
       "source_upload_id": "5AE18B10-B53F-405C-9CC2-1541ECB4BAFA",
       "scope_document": "docs/mcr/venue-feature-amendment-2026-11-05.md",
       "flow_document": "docs/mcr/progressions.md",
       "reference_manifest": "docs/mcr/design/venue-redesign-2026-11-05/reference-manifest.json",
       "reference_state_map": "docs/mcr/design/venue-redesign-2026-11-05/reference-state-map.json",
-      "reference_document_owner": "UI533 under Frontend385; canonical publication pending this checkpoint",
+      "reference_document_owner": "UI533 under Frontend385; reference publication6ff3e481cfcf820c2e14a9a670ae2dc3bffc9afb canonical",
       "reference_roles": {
         "P01": "Fenced whole-plan base alternative",
         "P04": "Second fenced whole-plan alternative",
@@ -1192,9 +1992,9 @@
           ],
           "scope": "Preserve all ten originals and an explicit master-variant decision; produce the complete Paradise City site plan, landmark IDs and an independent site-plan projection/model with provenance and closure states. Preserve original walkable World obligations; never alias site pixels or virtual coordinates to WGS84.",
           "completion": "Published approved-source assets/model and actual venue overview; every displayed landmark resolves with declared source/review status; no mixed variant geometry, legacy character substitution or invented calibration.",
-          "state": "NOT_STARTED",
+          "state": "IN_PROGRESS",
           "required": true,
-          "dispatch_state": "EXACT_CHILD_GRANT_AND_RECEIVER_ACCEPTANCE_PENDING"
+          "dispatch_state": "IMPLEMENTATION_IN_PROGRESS"
         },
         {
           "id": "VENU-BE-L01",
@@ -1217,9 +2017,9 @@
           ],
           "scope": "Add real phone-location opt-in, distinct sharing/viewer permissions, current/check-in/last-known timestamps, location requests and pause/revoke semantics; event/friend/blocked/suspended/deleted filtering and bounded retention.",
           "completion": "Actual authorized producer persists and enforces consent, freshness/expiry and revocation across reads/mutations/realtime/cache; unauthorized requests reveal no coordinates/history; no virtual movement or invitation acceptance creates physical arrival.",
-          "state": "NOT_STARTED",
+          "state": "IN_PROGRESS",
           "required": true,
-          "dispatch_state": "EXACT_CHILD_GRANT_AND_RECEIVER_ACCEPTANCE_PENDING"
+          "dispatch_state": "IMPLEMENTATION_IN_PROGRESS"
         },
         {
           "id": "VENU-FE-L01",
@@ -1239,9 +2039,9 @@
           ],
           "scope": "Implement complete venue overview/zoom/recenter/landmarks and MAP/FRIENDS/NOTES navigation; friend clusters, selected friend, current/stale/check-in states, permission/denial/offline handling, request/pause/revoke controls through typed contracts.",
           "completion": "Working client states and accessible actions match corresponding reference panels; real browser permission and actual backend integration are qualified by responsible owners separately from deterministic visual fixtures; no fake live status.",
-          "state": "NOT_STARTED",
+          "state": "IN_PROGRESS",
           "required": true,
-          "dispatch_state": "EXACT_CHILD_GRANT_AND_RECEIVER_ACCEPTANCE_PENDING"
+          "dispatch_state": "IMPLEMENTATION_IN_PROGRESS"
         },
         {
           "id": "VENU-BE-M01",
@@ -1267,9 +2067,9 @@
           ],
           "scope": "Add fixed reviewed-landmark invitation create/accept/decline/cancel transitions with current place revisions, idempotency, privacy and lifecycle/retention behavior. Separately provide contextual MESSAGE for an authorized selected friend and event context without a landmark or invitation prerequisite. Landmark/invitation linkage is optional and never permission; invitationId is optional, opening performs no invite/send/write, and cancellation rights remain producer-authorized. No global bare-user DM.",
           "completion": "Actual invitation/conversation producers persist decisions and messages, reauthorize current authorized conversation actors and places, handle duplicate/uncertain actions and block/delete/expire transitions; no automatic location disclosure or arrival.",
-          "state": "NOT_STARTED",
+          "state": "IN_PROGRESS",
           "required": true,
-          "dispatch_state": "EXACT_CHILD_GRANT_AND_RECEIVER_ACCEPTANCE_PENDING"
+          "dispatch_state": "IMPLEMENTATION_IN_PROGRESS"
         },
         {
           "id": "VENU-FE-M01",
@@ -1290,9 +2090,9 @@
           ],
           "scope": "Implement fixed-landmark invite composer/details, incoming/outgoing invitation states, accept/decline/cancel, contextual MESSAGE and note Meet Here entry using typed ports and truthful mutation states. MESSAGE opens directly from an authorized selected friend and event context without a landmark or invitation prerequisite. Optional landmark/invitation linkage is not permission; no mutation occurs merely by opening MESSAGE. Fixed reviewed landmarks are required only for INVITE actions, and cancellation rights remain producer-authorized.",
           "completion": "Actual working invitation and contextual conversation states match reference Photo2 anatomy, recover uncertain submissions without duplication, preserve drafts appropriately and show only authorized participants/content; no static-message substitute.",
-          "state": "NOT_STARTED",
+          "state": "IN_PROGRESS",
           "required": true,
-          "dispatch_state": "EXACT_CHILD_GRANT_AND_RECEIVER_ACCEPTANCE_PENDING"
+          "dispatch_state": "IMPLEMENTATION_IN_PROGRESS"
         },
         {
           "id": "VENU-BE-N01",
@@ -1315,9 +2115,9 @@
           ],
           "scope": "Add place-anchored notes/replies with explicit Friends/Everyone event audience, create/list/group/select/reply authorization and server-enforced1h/endday expiry, deletion/moderation/revocation and safe Meet Here links.",
           "completion": "Actual producer enforces note/place/audience/expiry at access time and on changes; expired/deleted/blocked notes are not recoverable through replies, map clusters or caches; persistence and restart preserve deadlines.",
-          "state": "NOT_STARTED",
+          "state": "IN_PROGRESS",
           "required": true,
-          "dispatch_state": "EXACT_CHILD_GRANT_AND_RECEIVER_ACCEPTANCE_PENDING"
+          "dispatch_state": "IMPLEMENTATION_IN_PROGRESS"
         },
         {
           "id": "VENU-FE-N01",
@@ -1337,9 +2137,9 @@
           ],
           "scope": "Implement note clusters/list/selection, place-anchored composer, Friends/Everyone controls,1h/endday expiry, replies and Meet Here; truthful empty/loading/expired/denied/offline and uncertain-write states.",
           "completion": "Working notes and reply states match mapped photo panels, retain safe drafts, never expose expired/private data, and hand off Meet Here to a real authorized invitation flow; actual producers integrated separately from visual fixtures.",
-          "state": "NOT_STARTED",
+          "state": "IN_PROGRESS",
           "required": true,
-          "dispatch_state": "EXACT_CHILD_GRANT_AND_RECEIVER_ACCEPTANCE_PENDING"
+          "dispatch_state": "IMPLEMENTATION_IN_PROGRESS"
         },
         {
           "id": "VENU-IN01",
@@ -1516,12 +2316,83 @@
       "comparison_rule": "At every affected iteration, responsible developer records originalSHA+measuredROI/case/viewport/DPR/scale/sourcecommit/time/fixture-or-real-service metadata, actual capture pair, overlay/diff and discrepancy/fix disposition. No invented ROI, broad masks or manager pixel/code review.",
       "open_inputs": [
         "Single optional primary-art choice with Frontend385; common flows proceed provisionally.",
-        "Actual missing authoritative georeferencing/calibration, approved event-day places/access/closure/validity and applicable external-source rights.",
-        "Only after source/reference tracing: any unresolved friend eligibility/freshness/check-in/context access/retention/endday semantics. No invented values or duplicate human questions."
+        "Friendship and viewer authority: Product definition and actual authoritative provider for accepted Friends, separate GPS sharing/viewer consent; following/block/mute and canonical pair fencing do not establish this.",
+        "Location and event policy: Explicit accuracy/freshness thresholds, sharing lifetime, retained-location policy, check-in/context eligibility, event timezone and end-of-day boundary; actual policy provider/configuration.",
+        "Physical location authority: Reviewed physical landmark binding, georeferencing/calibration, distinct catalog/map/current-place revisions, permitted access/closures/reviewer/validity and applicable source rights."
       ],
-      "publisher": "Standing412e; independent immutable qualified lane packets; no managerACK or whole backend wave barrier."
+      "publisher": "Standing412e; independent immutable qualified lane packets; no managerACK or whole backend wave barrier.",
+      "hourly_state_history": [
+        {
+          "recorded_at": "2026-11-05T11:22:00+09:00",
+          "state": "PLANNED_DELIVERY_REQUIRED",
+          "deliverable_states": [
+            {
+              "id": "VENU-ART01",
+              "state": "NOT_STARTED",
+              "dispatch_state": "EXACT_CHILD_GRANT_AND_RECEIVER_ACCEPTANCE_PENDING"
+            },
+            {
+              "id": "VENU-BE-L01",
+              "state": "NOT_STARTED",
+              "dispatch_state": "EXACT_CHILD_GRANT_AND_RECEIVER_ACCEPTANCE_PENDING"
+            },
+            {
+              "id": "VENU-FE-L01",
+              "state": "NOT_STARTED",
+              "dispatch_state": "EXACT_CHILD_GRANT_AND_RECEIVER_ACCEPTANCE_PENDING"
+            },
+            {
+              "id": "VENU-BE-M01",
+              "state": "NOT_STARTED",
+              "dispatch_state": "EXACT_CHILD_GRANT_AND_RECEIVER_ACCEPTANCE_PENDING"
+            },
+            {
+              "id": "VENU-FE-M01",
+              "state": "NOT_STARTED",
+              "dispatch_state": "EXACT_CHILD_GRANT_AND_RECEIVER_ACCEPTANCE_PENDING"
+            },
+            {
+              "id": "VENU-BE-N01",
+              "state": "NOT_STARTED",
+              "dispatch_state": "EXACT_CHILD_GRANT_AND_RECEIVER_ACCEPTANCE_PENDING"
+            },
+            {
+              "id": "VENU-FE-N01",
+              "state": "NOT_STARTED",
+              "dispatch_state": "EXACT_CHILD_GRANT_AND_RECEIVER_ACCEPTANCE_PENDING"
+            },
+            {
+              "id": "VENU-IN01",
+              "state": "NOT_STARTED",
+              "dispatch_state": "EXACT_CHILD_GRANT_AND_RECEIVER_ACCEPTANCE_PENDING"
+            }
+          ],
+          "open_inputs": [
+            "Single optional primary-art choice with Frontend385; common flows proceed provisionally.",
+            "Actual missing authoritative georeferencing/calibration, approved event-day places/access/closure/validity and applicable external-source rights.",
+            "Only after source/reference tracing: any unresolved friend eligibility/freshness/check-in/context access/retention/endday semantics. No invented values or duplicate human questions."
+          ],
+          "reference_document_owner": "UI533 under Frontend385; canonical publication pending this checkpoint"
+        }
+      ],
+      "progress_updated_at": "2026-11-05T11:22:00+09:00",
+      "reference_publication": {
+        "commit": "6ff3e481cfcf820c2e14a9a670ae2dc3bffc9afb",
+        "originals": 10,
+        "stable_cases": 48,
+        "new_venue_comparisons": "NOT_RUN",
+        "measurement_owner": "Responsible implementation developers"
+      },
+      "current_custody": "Actual L16e/Mb91d/N03de producers; source grants/capacity and Root1fc/153 registration transfers follow current responsible records. Narrow N registration custody resolved by no-incumbent/50a8 nolease/385 return and Root-to153 transfer; M client40c576 accepted. This register grants no source custody.",
+      "integration_boundary": "Separately owned source/model/client/producer work is in progress; real integrated producer qualification has not run. VENU-IN01 remains NOT_STARTED with owner/prerequisites retained; no unrelated full-wave barrier. Pure art subset delivered; independent model keeps ART01 open without blanket live/App prerequisite on pure assets."
     },
-    "prior_percentage_interpretation_before_venue_amendment": "Unweighted completed-task fraction for the revised active plan, not effort, feature completeness or a prediction of remaining time. DeferredQA08 is excluded explicitly, not counted done."
+    "prior_percentage_interpretation_before_venue_amendment": "Unweighted completed-task fraction for the revised active plan, not effort, feature completeness or a prediction of remaining time. DeferredQA08 is excluded explicitly, not counted done.",
+    "execution_exception_1122": {
+      "state": "RESOLVED_AT_RESOURCE_BOUNDARY",
+      "owner": "00c",
+      "reason": "Repeated stale BE42 execution-offer binding caused cross-lane admission failures. Main enforced cleanup-only STOP.21d reports literalFULL1793845427.2123468/all0/failurestale_offer_binding; source/raw/goal retained, BE42 not complete.",
+      "next": "Auth232 released next, then Post/M/World under21d actual custody. No new BE42 grant, Main approval or general resource limit change."
+    }
   },
   "historical_accounting": {
     "baseline_revision": "7eac13ce30d6dd6be4df30727f75d5df90d3489d",
@@ -7335,26 +8206,25 @@
       "id": "FE37",
       "title": "Moderator review screens",
       "lane": "FE-APP",
-      "coverage_bucket": "IMPLEMENTATION_EVIDENCED",
-      "recorded_state": null,
+      "coverage_bucket": "TASK_CRITERIA_SATISFIED",
+      "recorded_state": "ACCEPTED",
       "evidence": [
         "docs/mcr/frontend/moderation.md"
       ],
-      "note": "Published receipt or owner report records bounded implementation/fixture/component work. Whole original-task completion is partial or not yet reconciled; no additional live/device gate is imposed on a pure task.",
+      "note": "Original FE37 client criteria closed by responsible implementation owner and published; consumed once through Frontend KING38511:22KST hourly disposition. Server/privacy/device/integration obligations remain independently open.",
       "revised_plan": {
-        "state": "IN_PROGRESS",
+        "state": "DONE",
         "package": "OPERATIONS",
-        "priority": 2,
+        "priority": 0,
         "original_scope": "New plain tables/forms for report evidence, suspension, hide/restore and action reasons; server-role-aware entry.",
         "original_acceptance": "Nonmoderator direct route blocked; failed action remains pending/failed rather than successful.",
         "updated_scope": "Finish moderator report/member/content views with least-privilege evidence, reasons and truthful action outcomes.",
         "remaining_work": [
-          "Have the responsible implementation owner reconcile original role-route, evidence, reason, suspension/hide/restore and failed-action coverage from existing delivery; fix any actual gap.",
-          "Bind current authorized role/evidence providers for production and carry server denial/downstream-failure cases without exposing reporter/private data."
+          "Retain delivered original moderator client criteria; separate real producer, protected-byte EOF, session-termination, device and integration duties remain with their existing owners."
         ],
         "complete_when": "Nonmoderator direct route blocked; failed action remains pending/failed rather than successful.",
-        "reason": "Frontend fixes, common adapter and delivery report are published; the clean feature checkout has no independent remaining work within its grant. Actual production moderation/linked-evidence providers and app integration remain with BE205 and Root/delegated composition owners. The bounded worker goal is blocked, not a new external-input or king-approval gate for the project.",
-        "historical_criteria_closed": false,
+        "reason": "Original role-aware entry, moderator forms and truthful failed-action behavior are fully disposed by the responsible owner through published308d1e782/cf7bb137/1907016b. No identified original client remainder; do not add backend/device prerequisites to this pure-client task.",
+        "historical_criteria_closed": true,
         "reopened_for_current_scope": false,
         "depends_on_for_remaining_work": [
           "FE07",
@@ -7388,7 +8258,25 @@
         "design_family_ids": [
           "PI12"
         ],
-        "design_scope_note": "Parade Ink presentation obligation tracked under QA06; original functional state/history retained. This link grants no source ownership."
+        "design_scope_note": "Parade Ink presentation obligation tracked under QA06; original functional state/history retained. This link grants no source ownership.",
+        "prior_state_history": [
+          {
+            "recorded_at": "2026-11-05T11:22:00+09:00",
+            "authority": "Main direct MAIN_HOURLY_20261105_1122_FE37 assignment; single Frontend KING38511:22KST digest and Backend21d02:22UTC digest; responsible owner/publication dispositions, no Main implementation review.",
+            "state": "IN_PROGRESS",
+            "priority": 2,
+            "remaining_work": [
+              "Have the responsible implementation owner reconcile original role-route, evidence, reason, suspension/hide/restore and failed-action coverage from existing delivery; fix any actual gap.",
+              "Bind current authorized role/evidence providers for production and carry server denial/downstream-failure cases without exposing reporter/private data."
+            ],
+            "reason": "Frontend fixes, common adapter and delivery report are published; the clean feature checkout has no independent remaining work within its grant. Actual production moderation/linked-evidence providers and app integration remain with BE205 and Root/delegated composition owners. The bounded worker goal is blocked, not a new external-input or king-approval gate for the project.",
+            "historical_criteria_closed": false,
+            "reopened_for_current_scope": false,
+            "coverage_bucket": "IMPLEMENTATION_EVIDENCED",
+            "recorded_state": null,
+            "note": "Published receipt or owner report records bounded implementation/fixture/component work. Whole original-task completion is partial or not yet reconciled; no additional live/device gate is imposed on a pure task."
+          }
+        ]
       },
       "latest_owner_activity": {
         "reported_at": "2026-11-05T02:28:19+09:00",
@@ -9622,6 +10510,94 @@
       "current_scope_closures": [
         "QA01"
       ]
+    },
+    {
+      "id": "MAIN_HOURLY_20261105_1122_FE37",
+      "at": "2026-11-05T11:22:00+09:00",
+      "authority": "Main direct MAIN_HOURLY_20261105_1122_FE37 assignment; single Frontend KING38511:22KST digest and Backend21d02:22UTC digest; responsible owner/publication dispositions, no Main implementation review.",
+      "checkpoint": {
+        "recorded_at": "2026-11-05T11:22:00+09:00",
+        "kind": "HOURLY_OWNER_DISPOSITION",
+        "canonicalSnapshot": "41d90738e3941cdfc663d00551e0f7db2cd3aa4f",
+        "new_original_closures": [
+          "FE37"
+        ],
+        "original_done": 53,
+        "original_active": 111,
+        "original_remaining": 58,
+        "original_criteria_outcomes": 58,
+        "venue_complete": 0,
+        "venue_required": 8,
+        "extension_ia": 10,
+        "design_accepted": 0,
+        "design_total": 12,
+        "readiness": "NOT_READY",
+        "publication": [
+          {
+            "commit": "651159ec7bae9ff5e1bbc9d3dd083fc08faa02d9",
+            "scope": "PI01 bounded foundation/header correction",
+            "wholeTaskAcceptance": false
+          },
+          {
+            "commit": "1907016b6aa41c17998acab691a83e99d0a80076",
+            "scope": "Reports presentation",
+            "wholeTaskAcceptance": false
+          },
+          {
+            "commit": "0a27b70d7f782f6d63bf5a0904c10915c5fbd073",
+            "scope": "World HUD presentation",
+            "wholeTaskAcceptance": false
+          },
+          {
+            "commit": "4881ab798a4ab21d61e36974a962ba2efc0fab2c",
+            "scope": "Operator presentations",
+            "wholeTaskAcceptance": false
+          },
+          {
+            "commit": "6ff3e481cfcf820c2e14a9a670ae2dc3bffc9afb",
+            "scope": "Venue Progressions/10 originals/48 comparison cases",
+            "wholeTaskAcceptance": false
+          },
+          {
+            "commit": "31fce35d1de2bab9bc5ca2396982cafaa0d48395",
+            "scope": "MESSAGE no-landmark prerequisite clarification",
+            "wholeTaskAcceptance": false
+          },
+          {
+            "commit": "fcd0780537eb9f724a1f130523f02656e1be9ee6",
+            "scope": "Photo5 source-art/interface; independent model unfinished",
+            "wholeTaskAcceptance": false
+          },
+          {
+            "commit": "8d4561d9291274f867fc921ba8ed4c28790a85a7",
+            "scope": "Notes contract source/schema qualification",
+            "wholeTaskAcceptance": false
+          },
+          {
+            "commit": "574b3e5a2a4533d70da3236b2c42c465a32e34a4",
+            "scope": "Meeting contract limited source/structure qualification",
+            "wholeTaskAcceptance": false
+          },
+          {
+            "commit": "217c52c25180217b9fd1264af9b8cae52ec88a1a",
+            "scope": "Location contract source/schema qualification",
+            "wholeTaskAcceptance": false
+          },
+          {
+            "commit": "41d90738e3941cdfc663d00551e0f7db2cd3aa4f",
+            "scope": "Spatial/Map interface and invitation/conversation source leaf",
+            "wholeTaskAcceptance": false
+          }
+        ],
+        "authority": "Main direct MAIN_HOURLY_20261105_1122_FE37 assignment; single Frontend KING38511:22KST digest and Backend21d02:22UTC digest; responsible owner/publication dispositions, no Main implementation review."
+      },
+      "execution_exception": {
+        "state": "RESOLVED_AT_RESOURCE_BOUNDARY",
+        "owner": "00c",
+        "reason": "Repeated stale BE42 execution-offer binding caused cross-lane admission failures. Main enforced cleanup-only STOP.21d reports literalFULL1793845427.2123468/all0/failurestale_offer_binding; source/raw/goal retained, BE42 not complete.",
+        "next": "Auth232 released next, then Post/M/World under21d actual custody. No new BE42 grant, Main approval or general resource limit change."
+      },
+      "input_consolidation": "Existing physical-input question extended from actual source trace; no new submission or answer inferred."
     }
   ],
   "staffing_update": {

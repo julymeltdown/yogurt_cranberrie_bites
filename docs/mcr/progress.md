@@ -1,12 +1,24 @@
 # Execution record — functional delivery
 
-Updated **2026-11-05T10:22:21+09:00** for the direct human venue amendment. [Progressions](progressions.md) defines the added flows; this file and the [machine register](task-progress-2026-11-04.json) retain numerical accounting and the original task history.
+## Hourly owner disposition — 2026-11-05 11:22 KST
+
+**53/111 active original tasks complete (47.7%); 58 remain.** FE37 original moderator client criteria are closed once through the responsible implementation owner's published disposition (`308d1e782`, `cf7bb137`, `1907016b`) and the single Frontend KING385 hourly digest. Role-aware entry, forms and truthful failed actions have no identified original client remainder. Actual server session termination, protected-byte EOF, producer/device and integration duties remain independently open with their existing owners.
+
+Venue acceptance remains **0/8**, with ten extension IA states; design acceptance remains **0/12**. All twelve design families are in progress, including PI04/PI07/PI10/PI12; new PI11 venue work has actual source/grants. Scoped PI01 foundation/header (`651159ec`), PI06 source, PI08 HUD (`0a27b70d`) and PI12 Reports/Operator (`1907016b`/`4881ab79`) deliveries do not close whole families. Reference packet `6ff3e481` retains ten originals and 48 new-venue cases; measured comparisons remain NOT_RUN at this digest. Source milestones `fcd07805` (art), `8d4561d9` (Notes), `574b3e5a` (Meeting), `217c52c2` (Location) and `41d90738` (spatial/Map interfaces and community leaf) remain bounded source deliveries. Later owner/publisher receipts are separate from this dated snapshot.
+
+Current lead records control custody. HUD40c576 moved to disjoint M public-client work; Root/lead retains HUD integration. ART231 completed pure assets and is archived; the independent model remains with26e. QA04's existing202 resumed its ready remainder. No genuinely unstaffed ready scope is reported. Failed or unaccepted offers create no reservation or release.
+
+Root1fc/L16e source tracing confirms missing accepted-Friends/viewer authority, location accuracy/freshness/sharing/retention/check-in policy, venue timezone/end-of-day clock, and reviewed physical bindings/calibration/access/validity/source rights. These extend the existing Main physical-input request; Paradise City and ten references remain supplied. No new question, answer or approval is inferred; independent contracts, typed providers and qualified source publication continue, with unconfigured real projection unavailable.
+
+The stale BE42 execution-offer exception is resolved at the resource boundary: Main's cleanup-only STOP was followed by21d's literal FULL1793845427.2123468/all0/failurestale_offer_binding. Source/raw evidence/goal remain; BE42 is incomplete and receives no new grant. Auth232 then Post/M/World proceed only under21d's actual custody. No global resource or ownership change is made. Original112 IDs/61IA, five reopened deltas, historical39 outcomes, QA08 deferral and NOT_READY release status remain.
+
+Updated **2026-11-05T11:22:00+09:00** for the hourly responsible-owner disposition; the dated venue amendment is retained. [Progressions](progressions.md) defines the added flows; this file and the [machine register](task-progress-2026-11-04.json) retain numerical accounting and the original task history.
 
 ## New required venue amendment — 2026-11-05T10:22:21+09:00
 
 The latest direct human references require a complete Paradise City venue view and **Map/Friends/Notes**, real opt-in phone-location states, fixed-landmark invitations with contextual MESSAGE, and place notes/replies with Friends/Everyone and1h/endday expiry. [Progressions](progressions.md) owns the product flows and [reference-state mapping](design/venue-redesign-2026-11-05/reference-state-map.json); the [scope-transition record](venue-feature-amendment-2026-11-05.md) defines eight additional required deliverables and ten extension IA states.
 
-**Original baseline stays52/111 (46.8%); venue extension starts0/8 complete.** All112 original IDs/61IA/history andQA08 deferral are preserved. The original fraction is not expanded-product readiness. New venue work must be completed for final delivery; existing unrelated closures are not automatically reopened.
+**Historical 10:22 scope baseline:52/111 (46.8%); venue extension started0/8 complete. Current hourly accounting:53/111 (47.7%),58 remaining.** All112 original IDs/61IA/history andQA08 deferral are preserved. The original fraction is not expanded-product readiness. New venue work must be completed for final delivery; existing unrelated closures are not automatically reopened.
 
 Old roof-only/Mapv3/PI11 venue work has actual STOP/preservation reports; useful commits/source/fixtures and unrelated PI01/World/runtime work remain. New child source assignments need actual disjoint custody and fresh capacity, not Main approval. Root1fc owns the new venue protocol/schema families; Root153 owns the separate frontend public API family. Existing monolithic/shared source is not globally transferred.
 
@@ -20,7 +32,7 @@ The latest human choice is **Parade Ink (Photo 2), one app-wide appearance**. It
 
 Both kings and the existing UI/resource/functional leads contributed to the [design-first amendment](design/parade-ink-delivery-plan-2026-11-05.md). The [four supplied originals](design/parade-ink-2026-11-05/reference-manifest.json) are preserved byte for byte. Photo 2 is primary; other sheets supply missing anatomy translated into Parade Ink, and the earlier ten-screen reference supplies unpictured structure.
 
-**Functional baseline:52/111 (46.8%),59 remaining. New design acceptance:0/12 families.** These are separate measures; no combined product percentage is claimed. All112 original IDs,61 required IA and57 original criteria outcomes remain. Existing functional completions are not erased by presentation work; QA06/IN05 still require the new design to be delivered.
+**Current original-task accounting:53/111 (47.7%),58 remaining. New design acceptance:0/12 families.** These are separate measures; no combined product percentage is claimed. All112 original IDs,61 required IA and58 current original criteria outcomes remain. Existing functional completions are not erased by presentation work; QA06/IN05 still require the new design to be delivered.
 
 First deliver shared components plus a working Feed/Thread family. Then parallelize Meet/Giveaway, Profile/avatar and World/Wall presentation through disjoint existing writers; cover public/auth and supporting screens with the same component contract. Safe backend/runtime work continues. Publishers preserve valid queued patches; no code restart, shared-checkout editing or unannounced ownership transfer.
 
@@ -28,22 +40,22 @@ Developers compare fixed geometry, type, spacing, borders, icons, assets and con
 
 | Design family | Scope | Current status |
 | --- | --- | --- |
-| PI01 | Shared foundation and chrome | IN_PROGRESS; owner 26e |
-| PI02 | Feed and notices | IN_PROGRESS; owner 213 |
-| PI03 | Thread, replies and composer | IN_PROGRESS; owner 213 |
-| PI04 | Giveaway and reservation | NOT_STARTED; custody/preparation, source start not confirmed here; owner 2162 |
-| PI05 | Meet, party and people | IN_PROGRESS; owner 6950 |
-| PI06 | Profile, activity and preferences | IN_PROGRESS; owner 1ab7 |
-| PI07 | Avatar framing, popover and editor | NOT_STARTED; custody/preparation, source start not confirmed here; owner 534 |
-| PI08 | World HUD and era controls | IN_PROGRESS; owner 40c576 |
-| PI09 | Wall B editor and states | IN_PROGRESS; owner restored original Wall3187b5 |
-| PI10 | Public, authentication and legal | NOT_STARTED; custody/preparation, source start not confirmed here; owner 50 |
-| PI11 | Map, places, rooms and check-in | IN_PROGRESS; old venue scope stopped, new-reference child custody pending; owner40fde |
-| PI12 | Supporting safety, operations and archive | NOT_STARTED; custody/preparation, source start not confirmed here; owner 230 Reports +21e preWorld; other incumbents retain their scopes |
+| PI01 | Shared foundation and chrome | IN_PROGRESS; dated owner reference 26e |
+| PI02 | Feed and notices | IN_PROGRESS; dated owner reference 213 |
+| PI03 | Thread, replies and composer | IN_PROGRESS; dated owner reference 213 |
+| PI04 | Giveaway and reservation | IN_PROGRESS; current11:22 digest confirms implementation/validation; dated owner reference 2162 |
+| PI05 | Meet, party and people | IN_PROGRESS; dated owner reference 6950 |
+| PI06 | Profile, activity and preferences | IN_PROGRESS; dated owner reference 1ab7 |
+| PI07 | Avatar framing, popover and editor | IN_PROGRESS; current11:22 digest confirms implementation/validation; dated owner reference 534 |
+| PI08 | World HUD and era controls | IN_PROGRESS; dated owner reference 40c576 |
+| PI09 | Wall B editor and states | IN_PROGRESS; dated owner reference restored original Wall3187b5 |
+| PI10 | Public, authentication and legal | IN_PROGRESS; current11:22 digest confirms implementation/validation; dated owner reference 50 |
+| PI11 | Map, places, rooms and check-in | IN_PROGRESS; new venue source/grants active;  old venue scope stopped, new-reference child custody pending; owner40fde |
+| PI12 | Supporting safety, operations and archive | IN_PROGRESS; current11:22 digest confirms implementation/validation; dated owner reference 230 Reports +21e preWorld; other incumbents retain their scopes |
 
 These12 families partition all61 required IA entries with shared dependencies; they are not12 additional original tasks. No Parade Ink acceptance is inferred from earlier screenshots or this planning commit.
 
-## Latest hourly management update — 2026-11-05T09:25:46+09:00
+## Prior hourly management snapshot — 2026-11-05T09:25:46+09:00
 
 **52/111 active tasks complete (46.8%);59 remain.** New originals BE06 and FE41 plus closure of QA01's reopened Wall B delta add three active completions over the prior49-task snapshot. QA01 is not counted twice in historical outcomes:57 original criteria outcomes minus5 current reopened deltas gives52. All112 original tasks,61 IA and deferred QA08 remain intact.
 
@@ -60,23 +72,23 @@ Responsible developers own qualification, fixes and direct publication. No manag
 | --- | --- |
 | Original required tasks | 112 |
 | Active functional-delivery tasks | 111 |
-| Recorded functional task outcomes | **52/111 (46.8%)** |
-| Remaining active tasks | **59** |
+| Recorded functional task outcomes | **53/111 (47.7%)** |
+| Remaining active tasks | **58** |
 | Deferred by user | **QA08: 1; not passed or complete** |
 | Historical original-task criteria baseline | 39/112, preserved |
-| Current original-task criteria outcomes | 57/112, including eighteen newly published closures |
+| Current original-task criteria outcomes | 58/112, including nineteen newly published closures |
 | Historically closed IDs with current deltas | 5 |
 | Required IA entries | 61, all retained; full readiness reconciliation remains open |
 | Integrated outcomes | IN01 historically accepted; IN02/IN04/IN05 open; IN03 awaiting authorized provider/claims input |
 | Parade Ink design acceptance | 0/12 families; distinct from functional accounting |
 | Product delivery decision | NOT_READY |
 
-This is an unweighted task-count fraction, not an effort estimate or a claim that 46.8% of the product is usable. The former 11 count omitted later explicit owner dispositions. The 39 historical outcomes include completed contract, fixture and policy work; they are not 39 accepted live features. Five affected historical IDs retain current work; QA07 and QA01 current deltas are now closed. Eighteen new original-task closures (C07, FE03, FE04, FE11, FE16, AR03, FE35, C06, FE17, FE31, FE36, BE13, BE14, FE06, BE04, BE07, BE06, FE41) and closure of QA07 and QA01 reopened deltas bring the current revised count to 52. No completed work was erased, and bounded helper deliveries did not inflate the total.
+This is an unweighted task-count fraction, not an effort estimate or a claim that 47.7% of the product is usable. The former 11 count omitted later explicit owner dispositions. The 39 historical outcomes include completed contract, fixture and policy work; they are not 39 accepted live features. Five affected historical IDs retain current work; QA07 and QA01 current deltas are now closed. Nineteen new original-task closures (C07, FE03, FE04, FE11, FE16, AR03, FE35, C06, FE17, FE31, FE36, BE13, BE14, FE06, BE04, BE07, BE06, FE41, FE37) and closure of QA07 and QA01 reopened deltas bring the current revised count to 53. No completed work was erased, and bounded helper deliveries did not inflate the total.
 
 | Revised state | Count |
 | --- | ---: |
-| DONE | 52 |
-| IN_PROGRESS | 48 |
+| DONE | 53 |
+| IN_PROGRESS | 47 |
 | WAITING_INPUT | 3 |
 | OPEN | 3 |
 | REOPENED | 5 |
@@ -140,7 +152,7 @@ Original **BE06 is accepted and published** at `66551b07d`. The responsible deve
 - Resource owners report about5.67GiB of released outputs reclaimed, preserving the warm target and unique evidence; the runtime-package repair started. These dated reports establish queue movement, not standing capacity or a native pass.
 - All 112 task IDs and61 IA entries remain. QA08 stays DEFERRED_BY_USER. Existing owner evidence and original outcomes remain in the register and Git history; generated exports stay PLANNING_ONLY.
 
-Existing developer204/c583 continues whole IN02 meetup/pickup integration. Developer50a8 has delivered QA01/C04 offline coverage and now retains the accepted PI10 design scope. Developer207 owns backend service-policy production composition, with16e on its separate status/recovery leaf;21e has closed original FE41 and accepted disjoint PI12 presentation work. Resource21d routes the next warm-target compile to207 after actual predecessor release. BE06 original criteria are accepted and published at66551b07d; Party/Root/World runtime/cohort remainders remain independently open. Resource/World/Community leads and Frontend King assign follow-up work and wake dependencies directly, without a Main reply. Publisher412e remains the standing sole master publisher while Roots implement. The completed resource-accounting worker40c576 is archived after custody/resource return; its helper does not add a task completion.
+Existing developer204/c583 continues whole IN02 meetup/pickup integration. Developer50a8 has delivered QA01/C04 offline coverage and now retains the accepted PI10 design scope. Developer207 owns backend service-policy production composition, with16e on its separate status/recovery leaf;21e has closed original FE41 and accepted disjoint PI12 presentation work. Resource21d routes the next warm-target compile to207 after actual predecessor release. BE06 original criteria are accepted and published at66551b07d; Party/Root/World runtime/cohort remainders remain independently open. Resource/World/Community leads and Frontend King assign follow-up work and wake dependencies directly, without a Main reply. Publisher412e remains the standing sole master publisher while Roots implement. The former resource-accounting/HUD worker40c576 now owns disjoint M public-client work after actual fresh acceptance; old helper/HUD increments add no task closure or new custody grant here.
 
 The staffing routing was reconciled on 2026-11-05T09:20:27+09:00 from current lead records. Previous worker names are not current file ownership. Resource owners wake ready successors directly; lightweight metadata work is classified by its actual cost. An older incompatible unfinished goal is preserved truthfully and does not itself prohibit a newly authorized assignment. Staffing changes themselves add no task closures; this hourly update credits new originals BE06/FE41 and QA01's current delta once each.
 
