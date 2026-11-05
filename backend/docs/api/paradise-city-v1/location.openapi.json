@@ -2,7 +2,7 @@
   "openapi": "3.1.0",
   "info": {
     "title": "Paradise City location and reviewed landmark contract",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "description": "VENU-BE-L01 source contract. Actual authorities/configuration required; no fabricated runtime defaults or physical acceptance. Independent additive family; does not silently register old operations."
   },
   "paths": {
@@ -1748,6 +1748,22 @@
           },
           "capabilities": {
             "$ref": "#/components/schemas/LocationCapabilities"
+          },
+          "incoming_requests": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/LocationRequest"
+            },
+            "maxItems": 50,
+            "description": "Current or terminal request metadata between actor and currently returned authorized friends; bounded50, no coordinate disclosure. Sort created_at descending then request_id descending."
+          },
+          "outgoing_requests": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/LocationRequest"
+            },
+            "maxItems": 50,
+            "description": "Current or terminal request metadata between actor and currently returned authorized friends; bounded50, no coordinate disclosure. Sort created_at descending then request_id descending."
           }
         },
         "required": [
@@ -1760,7 +1776,9 @@
           "sharing",
           "self_location",
           "friends",
-          "capabilities"
+          "capabilities",
+          "incoming_requests",
+          "outgoing_requests"
         ]
       },
       "LocationRequestInput": {

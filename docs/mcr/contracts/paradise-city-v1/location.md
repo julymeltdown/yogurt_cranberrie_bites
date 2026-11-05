@@ -1,4 +1,4 @@
-# Paradise City L01 protocol v1
+# Paradise City L01 protocol v1.0.1 (additive request inbox)
 
 Source candidate: IN_PROGRESS / NOT_VALIDATED. No API/service/native/physical
 acceptance. Producer:16e. Public frontend mapping:Root153. M/N consume the same
@@ -148,3 +148,24 @@ Source/schema qualification may be delivered independently. It does not claim
 actual compilation, persistence, multiuser, native owner, device GPS, reviewed
 physical catalog or calibrated projection acceptance. Backend implementation and
 actual relevant validation/fixes continue in their assigned leaves.
+
+
+## Version1.0.1 request inbox correction
+
+The location snapshot adds required `incoming_requests` and `outgoing_requests`,
+each up to50 existing `LocationRequest` objects, ordered by created_at then ID
+descending. Only current authorized Friends returned in this bounded snapshot
+are eligible; revoked/blocked/unavailable counterparts produce no request rows.
+These metadata rows supply the actual request ID/revision for APPROVE/DENY/CANCEL;
+a redacted command receipt alone is not the current request. Pending rows whose
+server expiry passed are returned EXPIRED; terminal states never regain authority.
+Root's invalidation consumer must refetch the affected recipient as well as
+requester. No phone permission, service consent, sharing lease or coordinate is
+created by receiving/opening this inbox. Native witness binds the complete exact
+selected request IDs/revisions/state/expiry within the actor's redacted fact.
+
+This additive wire correction does not add a route or change the common landmark
+ABI. The previously source-qualified v1 three-file publication is canonical
+`217c52c25180217b9fd1264af9b8cae52ec88a1a`; v1.0.1 source/protobuf qualification
+requires a new exact-input round. Application/native/physical acceptance remains
+open independently.

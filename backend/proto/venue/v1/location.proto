@@ -141,6 +141,8 @@ message LocationSnapshot {
   VisibleLocation self_location = 8;
   repeated VisibleLocation friends = 9;
   LocationCapabilities capabilities = 10;
+  repeated LocationRequest incoming_requests = 11;
+  repeated LocationRequest outgoing_requests = 12;
 }
 message LocationRequestInput { string subject_id = 1; }
 enum LocationRequestDecision {
