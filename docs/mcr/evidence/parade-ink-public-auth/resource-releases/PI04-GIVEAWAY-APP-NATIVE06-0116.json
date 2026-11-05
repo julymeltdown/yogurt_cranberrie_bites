@@ -1,0 +1,125 @@
+{
+  "booking": "PI04-GIVEAWAY-APP-NATIVE06-0116",
+  "mode": "native06",
+  "acceptedEpoch": 1793841373.679795,
+  "workDeadline": 1793841673.679795,
+  "fullDeadline": 1793841733.679795,
+  "carriedNewBytes": 157286400,
+  "startAvailable": 16179445760,
+  "status": "FAIL",
+  "commands": [
+    {
+      "label": "native-lint",
+      "pid": 69251,
+      "exitCode": 0
+    },
+    {
+      "label": "native",
+      "pid": 69415,
+      "exitCode": 1
+    }
+  ],
+  "temporaryCleaned": true,
+  "dependencyLinkRemoved": true,
+  "controllerMetadata": {
+    "pid": 69141,
+    "birth": "Thu Nov 5 10:16:13 2026",
+    "executable": "/Library/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python",
+    "script": "/Users/lhs/Desktop/mcr-worktrees/art-cute-community-v1/frontend/src/features/gift-discovery/__tests__/parade-ink/round.py",
+    "cwd": "/Users/lhs/Desktop/mcr-worktrees/art-cute-community-v1",
+    "outputRoot": "/Users/lhs/Desktop/mcr-worktrees/art-cute-community-v1/docs/mcr/evidence/parade-ink-giveaway/native06"
+  },
+  "ownerClaim": {
+    "owner": "01a1a5d9-6955-7820-bcd4-8e0a21629aa2",
+    "booking": "PI04-GIVEAWAY-APP-NATIVE06-0116",
+    "kind": "browser",
+    "root": "/Users/lhs/Desktop/mcr-worktrees/art-cute-community-v1",
+    "controller": "/Users/lhs/Desktop/mcr-worktrees/art-cute-community-v1/frontend/src/features/gift-discovery/__tests__/parade-ink/round.py",
+    "pid": 69141,
+    "pgid": 69141,
+    "birth": "Thu Nov  5 10:16:13 2026",
+    "at": 1793841374.11436,
+    "acceptedEpoch": 1793841373.679795,
+    "workDeadline": 1793841673.679795,
+    "fullDeadline": 1793841733.679795,
+    "processCap": 24,
+    "rssCapBytes": 3758096384,
+    "newCapBytes": 209715200,
+    "carriedNewBytes": 157286400,
+    "wholeCapBytes": 8589934592,
+    "wholeRoots": [
+      "/Users/lhs/Desktop/mcr-worktrees/art-cute-community-v1",
+      "/Users/lhs/Desktop/mcr/.git",
+      "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64",
+      "/Users/lhs/Desktop/mcr/frontend/node_modules",
+      "/Library/Frameworks/Python.framework/Versions/3.14",
+      "/Applications/Google Chrome.app",
+      "/Users/lhs/Desktop/mcr-worktrees/fe-runtime-preferences",
+      "/Users/lhs/Desktop/mcr/frontend/public",
+      "/private/tmp/codex-remote-attachments/01a19e5c-e9c6-7973-a53b-a6d19141620f/9FC49E03-6C0E-4776-A954-2CA5C12CB495/1-Photo-1.jpg",
+      "/private/tmp/codex-remote-attachments/01a19e5c-e9c6-7973-a53b-a6d19141620f/9FC49E03-6C0E-4776-A954-2CA5C12CB495/2-Photo-2.jpg"
+    ],
+    "privateTemporaryRoot": "/private/tmp/mcr-pi04-native06-0117"
+  },
+  "bothLiveBeforeWorkload": {
+    "primary": 69141,
+    "guardian": 69227,
+    "at": 1793841374.532408,
+    "initial": {
+      "pid": 69227,
+      "at": 1793841374.494657,
+      "sample": {
+        "free": 16179396608,
+        "all": 3,
+        "rss": 43696128,
+        "new": 157290496,
+        "whole": 5359009792,
+        "pids": [
+          69141,
+          69227,
+          69228
+        ]
+      }
+    }
+  },
+  "guardianMetadata": {
+    "pid": 69227,
+    "birth": "Thu Nov 5 10:16:14 2026",
+    "executable": "/Library/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python",
+    "script": "/Users/lhs/Desktop/mcr-worktrees/art-cute-community-v1/frontend/src/features/gift-discovery/__tests__/parade-ink/guardian.py",
+    "cwd": "/Users/lhs/Desktop/mcr-worktrees/art-cute-community-v1",
+    "outputRoot": "/Users/lhs/Desktop/mcr-worktrees/art-cute-community-v1/docs/mcr/evidence/parade-ink-giveaway/native06"
+  },
+  "resourceIndex": "/Users/lhs/Desktop/mcr-evidence/backend-staffing-01a1a21d/owner-resource-receipts/01a1a5d9-6955-7820-bcd4-8e0a21629aa2.json",
+  "failure": "native failed; round closed, no automatic restart",
+  "remainingOwnedChrome": [],
+  "nativePortReleased": true,
+  "guardian": {
+    "status": "STOPPED",
+    "pid": 69227,
+    "last": {
+      "free": 23684542464,
+      "all": 3,
+      "rss": 46383104,
+      "new": 183341056,
+      "whole": 5385060352,
+      "pids": [
+        69141,
+        69227,
+        78293
+      ]
+    },
+    "maximum": {
+      "all": 12,
+      "rss": 2181316608,
+      "new": 190656512,
+      "whole": 5392375808
+    }
+  },
+  "endAvailable": 23707443200,
+  "elapsedSeconds": 61.64,
+  "checkoutPositiveBytes": 3182592,
+  "outsideMetadataBytes": 4096,
+  "remainingManagedParent": 0,
+  "actualFullEpoch": 1793841435.528896
+}

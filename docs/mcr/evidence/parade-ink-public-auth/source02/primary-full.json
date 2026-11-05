@@ -1,0 +1,15 @@
+{
+  "lease": "PI10-SOURCE02-20261105T0007Z",
+  "result": "FAIL",
+  "exit": 1,
+  "failure": null,
+  "full_epoch": 1793837335.518238,
+  "before_hard": true,
+  "peak": {
+    "whole": 5312054050,
+    "new": 48054272,
+    "processes": 7,
+    "rss": 900628480
+  },
+  "minimum_free": 15442886656
+}

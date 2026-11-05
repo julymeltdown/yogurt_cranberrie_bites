@@ -1,0 +1,50 @@
+{
+  "id": "PI12-OPERATIONS-SOURCE01-0111",
+  "status": "FULL",
+  "result": "FAIL",
+  "actualAcceptEpoch": 1793841168.846922,
+  "actualFullEpoch": 1793841445.246858,
+  "elapsedSeconds": 276.39993596076965,
+  "head": "8d913ecb41d82c75b41477508b3bcf2f4483e82a",
+  "peak": {
+    "processes": 5,
+    "rssBytes": 2062057472,
+    "wholeBytes": 5343883264,
+    "newBytes": 15310848
+  },
+  "checks": {
+    "exactPresentationBoundary": "PASS",
+    "wholeFrontendTypes": "PASS 1150files noemit/nonincremental",
+    "scopedLint": "PASS deny-warnings",
+    "nodeHelperSyntax": "PASS",
+    "ownInteractionCases": "2PASS/6FAIL inrun02,run03;run04lastteststage stopped atfixeddeadline"
+  },
+  "failures": [
+    "run01 historical nullable membership clock pre-workload",
+    "run02 andrun03 isolated event/place/audit/moderation responsequalification failures;no production code changed",
+    "run04 deadline during finalteststage;earlier boundary/types/lint/helpers PASS"
+  ],
+  "resources": {
+    "source": 0,
+    "node": 0,
+    "browser": 0,
+    "guard": 0,
+    "descendants": 0,
+    "target": 0,
+    "growthReservation": 0
+  },
+  "oldCarryPreserved": true,
+  "roots": [
+    "/Users/lhs/Desktop/mcr-worktrees/fe-ref-customize",
+    "/Users/lhs/Desktop/mcr/.git",
+    "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64",
+    "/Library/Frameworks/Python.framework",
+    "/Users/lhs/Desktop/mcr/frontend/node_modules",
+    "/Applications/Google Chrome.app",
+    "/private/tmp/mcr-pi05-source01-20261105T0007Z",
+    "/private/tmp/mcr-pi05-native01-20261105T0023Z",
+    "/private/tmp/mcr-pi12-operations-prep80-0100",
+    "/private/tmp/mcr-pi12-operations-source01-0111"
+  ],
+  "unusedNewBytes": 118906880
+}

@@ -1,0 +1,24 @@
+{
+  "lease": "PI10-NATIVE12-0221",
+  "result": "PASS",
+  "exit": 0,
+  "failure": null,
+  "full_epoch": 1793845404.186391,
+  "before_hard": true,
+  "peak": {
+    "whole": 5558930355,
+    "new": 534049536,
+    "processes": 15,
+    "rss": 2402713600,
+    "native_payload": 156540928,
+    "global_rss": 2598240256,
+    "global_workflows": 2,
+    "global_source": 0,
+    "global_browsers": 1,
+    "global_target": 1,
+    "global_processes": 17
+  },
+  "minimum_free": 23927345152,
+  "remaining": [],
+  "execution_resources": 0
+}

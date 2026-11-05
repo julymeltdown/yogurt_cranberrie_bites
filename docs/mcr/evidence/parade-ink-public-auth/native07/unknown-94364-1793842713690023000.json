@@ -1,0 +1,38 @@
+{
+  "epoch": 1793842713.6900291,
+  "sampler": 94364,
+  "attempt": 0,
+  "owned_before": [
+    94364,
+    94538,
+    94795,
+    94902,
+    94926
+  ],
+  "owned_current": [
+    94364,
+    94538,
+    94993
+  ],
+  "cohorts": [
+    "01a1a00c-2690-7bc0-94fc-52609655ea83:BE42-PH1-COMPILE-FIVE-0131"
+  ],
+  "identities": [
+    {
+      "pid": 94884,
+      "parent": 49590,
+      "rss": 32882688,
+      "command": "/Library/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python -B /private/tmp/mcr-be42-compile-0131/source-snapshot/guardian.py /private/tmp/mcr-be42-compile-0131/source-snapshot build",
+      "birth": "Thu Nov 5 10:38:32 2026"
+    }
+  ],
+  "unresolved": [
+    {
+      "pid": 94884,
+      "parent": 49590,
+      "rss": 32882688,
+      "command": "/Library/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python -B /private/tmp/mcr-be42-compile-0131/source-snapshot/guardian.py /private/tmp/mcr-be42-compile-0131/source-snapshot build",
+      "birth": "Thu Nov 5 10:38:32 2026"
+    }
+  ]
+}

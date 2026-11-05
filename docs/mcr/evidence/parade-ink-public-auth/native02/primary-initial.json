@@ -1,0 +1,26 @@
+{
+  "epoch": 1793841543.099374,
+  "sample": {
+    "whole": 5404253109,
+    "new": 109633690,
+    "processes": 5,
+    "rss": 230768640
+  },
+  "global_sample": {
+    "epoch": 1793841543.098739,
+    "membership_asof": "2026-11-05T01:16:50.924501+00:00",
+    "cohorts": [],
+    "pids": [
+      88150,
+      88339,
+      88352
+    ],
+    "declared_pids": 24,
+    "declared_rss": 3758096384,
+    "rss": 232341504,
+    "workflows": 1,
+    "source": 0,
+    "browsers": 1,
+    "target": 0
+  }
+}

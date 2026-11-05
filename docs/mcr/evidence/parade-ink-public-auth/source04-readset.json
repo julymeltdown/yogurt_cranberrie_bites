@@ -1,0 +1,249 @@
+{
+  "base": "aac0d96d152e47150f4fac0f57b69659ad20a956",
+  "shared_checkpoint": "056a8c48ff667134dee8e5e99710185294e4b898",
+  "protected_prefixes_identical": [
+    "frontend/src/app/account-deletion-entry/recovery.tsx",
+    "frontend/src/features/auth/ui/AdmissionBoundary.tsx",
+    "frontend/src/features/auth/ui/Callback.tsx",
+    "frontend/src/features/auth/ui/ConsentAdmission.tsx",
+    "frontend/src/features/auth/ui/ResetPassword.tsx",
+    "frontend/src/features/auth/ui/SignIn.tsx",
+    "frontend/src/features/auth/ui/SignUp.tsx",
+    "frontend/src/features/public/ui/Landing.tsx"
+  ],
+  "focused_cases": 1,
+  "native": "NOT_RUN",
+  "prior_whole_lower_bound": 5312054050,
+  "prior_new_source01": 35692544,
+  "status": "FROZEN_SOURCE04_NOT_RUN",
+  "previous_source": "e03a646a4ad7fe6b1ce2d3136730d2825d296fbc",
+  "paths": [
+    {
+      "path": "docs/mcr/evidence/parade-ink-public-auth/resource-releases/207CompileA.json",
+      "sha256": "829c60a701855e9a41e78319e02711423e7fce7653ec3e1a22927ce2fafb49d7"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-public-auth/resource-releases/PI06Native02.json",
+      "sha256": "17f41a6a8ec6434341419be0f95595273789bcfb54f028413476e5c5db1ad4cb"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-public-auth/resource-releases/provenance.json",
+      "sha256": "bbf0b6368386a200cc3768d0ed1c3b88440d1acf9642c7728e74ea77ce0f207d"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-public-auth/source01/command-00.log",
+      "sha256": "1d94b2e705b1daa18cb569ab75408457776458688df14d2c4338f412964d6d73"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-public-auth/source01/offer.json",
+      "sha256": "cd15d1564cf10455a5a36fa4481fdd1e18303ac6d3375559580f43a39d93c981"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-public-auth/source01/outer-accept.json",
+      "sha256": "a378f80c12943433e3fdff0fecce72a850c214d60ec765b966d59153129d48a4"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-public-auth/source01/outer-full.json",
+      "sha256": "cfbd1f432201c718074c0c5dc6896398763044e6531abae87e75ec156d04b130"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-public-auth/source01/primary-accept.json",
+      "sha256": "d3de20614d87ac446ff51b4ee1d7eabf5b7db2f12d8399154eb3e6f35a156acf"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-public-auth/source01/primary-full.json",
+      "sha256": "5ac0702b1c9cf65639116a484d851c919d49529daf5da4799b9ad9d0ef4f61a1"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-public-auth/source02-readset.json",
+      "sha256": "bfa981d6de78bfffb6416e1bd98be255f1ebfb23ca7db045fb3e57a477a9d82a"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-public-auth/source02/command-00.log",
+      "sha256": "efd0868e4e983575e90c9fd91748aad1a0ab93bbb2a0049153c4366963dee73e"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-public-auth/source02/offer.json",
+      "sha256": "876f8a9acf4c6a885c683188f613f82e9d09fdfade5b81c17200c917cc8f96f1"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-public-auth/source02/outer-accept.json",
+      "sha256": "f4469414521f97e00ff5f58a9870cebeb5d2aa8292bb6c5cc929a4194264f0c4"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-public-auth/source02/outer-full.json",
+      "sha256": "b03bdb59676910325636d23eb90b7dbfd426a32967dbfe88380e0553480767ea"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-public-auth/source02/primary-accept.json",
+      "sha256": "3d06187202d15bf8f460a9c72f7a3c0809ecd8b1ea78fe897bfa80391ab02558"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-public-auth/source02/primary-full.json",
+      "sha256": "89995a419e13fa67b6fd93ebf066b107be36a876f5a67a7b2295469f1a69c34a"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-public-auth/source03-readset.json",
+      "sha256": "e5c27417661b590c421019430134ea145cb4f9eb04bbb07e10592acae564dd27"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-public-auth/source03/command-00.log",
+      "sha256": "d7013df02b4752cd6a4c95135f65dda1abb86477eecd9554863bae106906ea64"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-public-auth/source03/command-01.log",
+      "sha256": "5249f37a89c8894794b82dc75cbc8816a42784d181fadcab43e3e41f73f23624"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-public-auth/source03/command-02.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-public-auth/source03/command-03.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-public-auth/source03/offer.json",
+      "sha256": "2cf3c8715104ae5e0cc809b3a4c14bf9062e1f45ca905190a3fb5d70075a5104"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-public-auth/source03/outer-accept.json",
+      "sha256": "9d38d1fea339f63900c823e9478663c92f2657157273ed9e1ed515da453b5ba6"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-public-auth/source03/outer-full.json",
+      "sha256": "c2126547b252634a005506f6d7216833dc63731381657e8db764bcda86c99e46"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-public-auth/source03/primary-accept.json",
+      "sha256": "b60ff4e994b2461eac1d0cc89582b80a3e11c1a7f980260a136438b3d9afcc75"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-public-auth/source03/primary-full.json",
+      "sha256": "dc5f2e636dbc0a676b2178c831a2c023a3e38e80c3e24500c1cc18c12d0001c1"
+    },
+    {
+      "path": "docs/mcr/frontend/parade-ink-public-auth.md",
+      "sha256": "3fcf8c571cc04c0048cc36d629371019fcd11ae183e11f38272cd17f7cd9a4f7"
+    },
+    {
+      "path": "frontend/src/app/account-deletion-entry/recovery.tsx",
+      "sha256": "b647aaefb256baf8895ed3cb8940fb3d04d0be8946b9ea3af0bdf4b935f55263"
+    },
+    {
+      "path": "frontend/src/features/auth/__tests__/parade-ink-entry/compare.mjs",
+      "sha256": "66169093f9d1a509e93c09e97cdf21813bb568b2edfa95c68e3ddb5e9159e03e"
+    },
+    {
+      "path": "frontend/src/features/auth/__tests__/parade-ink-entry/controller.py",
+      "sha256": "46c14e3cf07d3a74c36b9e8e15aa58dd725c60fd65b93c6e553e663348b2c5cb"
+    },
+    {
+      "path": "frontend/src/features/auth/__tests__/parade-ink-entry/entry.test.tsx",
+      "sha256": "2b16614fda3b66274c4f1aca1edb67dc8a6f84fd921bb6e0b0600f71216d67e3"
+    },
+    {
+      "path": "frontend/src/features/auth/__tests__/parade-ink-entry/guardian.py",
+      "sha256": "2504a778d1ba0868092ee97560d37a7eddfe8c194cbdf37e229c2162943aa7ec"
+    },
+    {
+      "path": "frontend/src/features/auth/__tests__/parade-ink-entry/metrics.py",
+      "sha256": "dfda19c8cc79292350aa72f1cccb86fb8babef579c8c9ff9dfd199705788dbaf"
+    },
+    {
+      "path": "frontend/src/features/auth/__tests__/parade-ink-entry/native.mjs",
+      "sha256": "f4907a445687883c218a336179680778e1be5973165b94870ad4894054332574"
+    },
+    {
+      "path": "frontend/src/features/auth/__tests__/parade-ink-entry/preview.html",
+      "sha256": "ca21bd7b9fb9d15876231a6705d7302e76c6bfdd71e280ae6e0a1f3d86b254ef"
+    },
+    {
+      "path": "frontend/src/features/auth/__tests__/parade-ink-entry/preview.tsx",
+      "sha256": "1ea09450aa7450360ab7ab6b92ecbcad4cfcf80526c9b80154acdeb395f51f4a"
+    },
+    {
+      "path": "frontend/src/features/auth/__tests__/parade-ink-entry/runtime.mjs",
+      "sha256": "c18f7ab3056c6115f3a0e743487d125d419bda79b91e01b5566b860d0460d03a"
+    },
+    {
+      "path": "frontend/src/features/auth/__tests__/parade-ink-entry/tsconfig.json",
+      "sha256": "7931bddad299e237afac6dbf40f8cded6623342d90eb12d5523df58dc6039454"
+    },
+    {
+      "path": "frontend/src/features/auth/__tests__/parade-ink-entry/vitest.config.mjs",
+      "sha256": "1285a0ce7eec1f2f034e3c680724ef72f48d9403067c042597b5f85b417e066a"
+    },
+    {
+      "path": "frontend/src/features/auth/__tests__/reference-target/presentation.test.tsx",
+      "sha256": "2bdc15a3ac2d4fc51bd3851e264f4fe33d7592d57b8c8e01e66aabbfc7c43bdd"
+    },
+    {
+      "path": "frontend/src/features/auth/ui/AdmissionBoundary.tsx",
+      "sha256": "6441444ffc41a7cd0636bb4251c1af980c038f2a98becc0d636a8e638f7a497f"
+    },
+    {
+      "path": "frontend/src/features/auth/ui/Callback.tsx",
+      "sha256": "1ce8110ccaafd8f9b0fdd8f3fd41832b66ffd64a6d9893f64b81ea92d3719df4"
+    },
+    {
+      "path": "frontend/src/features/auth/ui/ConsentAdmission.tsx",
+      "sha256": "c3bcd388c50384e6c6a309bdbc4c3b3686d7388a66ceab8109a8aa4d2ac6840d"
+    },
+    {
+      "path": "frontend/src/features/auth/ui/ResetPassword.tsx",
+      "sha256": "fb7a31cfc75ad2097ed1afc2bf607261154efd884cf669013c47430335300f87"
+    },
+    {
+      "path": "frontend/src/features/auth/ui/SignIn.tsx",
+      "sha256": "9a2e6ac41550f9d3bb09e14400146b547d709de6dba4ed0121efb0168c1680df"
+    },
+    {
+      "path": "frontend/src/features/auth/ui/SignUp.tsx",
+      "sha256": "600fc850449e50fe4e2acc5f4db8bb9da6488cd7fee8bc3033807c18bc4e0ca6"
+    },
+    {
+      "path": "frontend/src/features/auth/ui/enrollment.css",
+      "sha256": "a915bc47eb1254d08ca087cc74d121d169866e343cd10f78b4ea91d19810477e"
+    },
+    {
+      "path": "frontend/src/features/auth/ui/parade-ink-auth/entry.css",
+      "sha256": "f677987c8a744145f37fcab6b9427c9d4bcb8211b114361ca4dbe329c73bc05d"
+    },
+    {
+      "path": "frontend/src/features/auth/ui/recovery.css",
+      "sha256": "c95adbbf9780c07d086b6f3099a02b0054d187afeb690d39c012d742931135a0"
+    },
+    {
+      "path": "frontend/src/features/auth/ui/sign-in.css",
+      "sha256": "04a40780ea9192041bc3f4feaee0a46b3ab9e76621668853f48140ce28011462"
+    },
+    {
+      "path": "frontend/src/features/public/__tests__/parade-ink-entry/entry.test.tsx",
+      "sha256": "feba4dcbaa6eba1e4d33445f6b75d1e51342e1efc4bb32b9ba493306cc9abbbf"
+    },
+    {
+      "path": "frontend/src/features/public/__tests__/reference-target/presentation.test.tsx",
+      "sha256": "c0e3cf76f6b0fa0e0648a713fe4332bd32142be52c5495db62be30e014da817d"
+    },
+    {
+      "path": "frontend/src/features/public/ui/Landing.tsx",
+      "sha256": "f832568cc0d2d0042bc8d4d799c0fb0cdcdb337ea0b85e072b53f1ba0ee9e2fb"
+    },
+    {
+      "path": "frontend/src/features/public/ui/PublicFrame.tsx",
+      "sha256": "ebd38dc166864387895040a4fa8f72fa7d8f2a08452fe23db25fff11256c4081"
+    },
+    {
+      "path": "frontend/src/features/public/ui/public.css",
+      "sha256": "8e277ce806201955365dec0a8561d18c7b578319fdf862c5a6dea45ae6e5f83b"
+    }
+  ],
+  "created_epoch": 1793839230.498562,
+  "prior_new_source02": 48054272,
+  "tail_fixture_correction": "200/string-status per incumbent decodeResetResponse; no delivery inference",
+  "retained_unchanged_pass": 17,
+  "prior_new_source03": 50434048,
+  "shell_correction": "b5b44e47531e3b75febc5ee5cdd6a11b1648779c",
+  "control_correction": "same-owned-scope source04 preaccept allowance; receipt discovery + ordinary Git publisher classification"
+}

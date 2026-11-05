@@ -1,0 +1,23 @@
+{
+  "lease": "SOURCE04-0035",
+  "result": "FAIL",
+  "exit": 1,
+  "failure": "AssertionError('Unresolved live MCR workflow roots: [19913]')",
+  "full_epoch": 1793839951.5122712,
+  "before_hard": true,
+  "peak": {
+    "whole": 5368834843,
+    "new": 38027264,
+    "processes": 5,
+    "rss": 231882752,
+    "global_rss": 232751104,
+    "global_workflows": 1,
+    "global_source": 1,
+    "global_browsers": 0,
+    "global_target": 0,
+    "global_processes": 4
+  },
+  "minimum_free": 15375495168,
+  "remaining": [],
+  "execution_resources": 0
+}

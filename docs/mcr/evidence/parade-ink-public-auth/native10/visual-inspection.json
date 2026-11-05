@@ -1,0 +1,146 @@
+{
+  "source": "0cd18bf66f3cf0d981af26daefe508f0702dbd92",
+  "reportSHA": "01587b09490a9074c68a87d307446641aae17fc9531cea727db195e946354dc9",
+  "kind": "Developer actual visual inspection after literalFULL; desktop Chromium syntheticports only",
+  "captures": [
+    {
+      "path": "landing-360.png",
+      "sha256": "2403672f374931cf1d11a88fa1a9fa2b5d507eb933a62470d69eddb894ddc2b9"
+    },
+    {
+      "path": "sign-in-360.png",
+      "sha256": "dc42a11793dfa3de51cc33c893e695b34311fa87f1c6e1c9bfc47194071de169"
+    },
+    {
+      "path": "signup-policy-360.png",
+      "sha256": "66a4ead523fe87441565548774cd2a6bcf2916ac3fa23da3cc19368bf6dc8e47"
+    },
+    {
+      "path": "verification-360.png",
+      "sha256": "5f57459bca2e7c813a93bf1b84b7563e04b053e1a8aa1d9a34b845f3cb0c6cda"
+    },
+    {
+      "path": "reset-360.png",
+      "sha256": "d9d21be088bb8735dc69b863cb77df0054d496c91940ace0b420fad2766cfac5"
+    },
+    {
+      "path": "callback-360.png",
+      "sha256": "02f9d7e5e2f8f32079c59d311843d65003600bbeff3ef1c13b26fe31f7e85a8c"
+    },
+    {
+      "path": "legal-unavailable-360.png",
+      "sha256": "b08d352bb4e96bd70307db1810c3fa686234599586f55d4ad4b22312361f4a10"
+    },
+    {
+      "path": "deletion-no-retained-360.png",
+      "sha256": "fde36169cdda9e4f9197b2c610531a0769c03d0ce1f43d96e264842998b1c020"
+    },
+    {
+      "path": "landing-390.png",
+      "sha256": "887baba63e508e6769eba6dbec3a28d100710dda05d41cde82aaf226084d1898"
+    },
+    {
+      "path": "sign-in-390.png",
+      "sha256": "227a44cf3dff3e86c0aa51a054ce99ce795abb0593aa806c57536a777c2dc41f"
+    },
+    {
+      "path": "sign-in-focus-390.png",
+      "sha256": "6f7c09716e2c96d680efe007cf8ab9f10d71848c2cfdcc0f69b51bd9fa72e28b"
+    },
+    {
+      "path": "sign-in-error-390.png",
+      "sha256": "0335b5f293b48913ed62a1a076713444b77e78631c22eb656ae708331b666850"
+    },
+    {
+      "path": "signup-policy-390.png",
+      "sha256": "f643335d617cd7605564c937957c45e5090bf72e869106b79ccc3033ef6db0d7"
+    },
+    {
+      "path": "verification-390.png",
+      "sha256": "f57afcfda3c6d7a3eaf2af7f593ba7e4358fd764d45727e919fcc221af0eee8d"
+    },
+    {
+      "path": "reset-390.png",
+      "sha256": "b32f1e5b8ab70153b7c83746845cb0786fb38aa2911fb25543ee13a947043d1c"
+    },
+    {
+      "path": "reset-neutral-result-390.png",
+      "sha256": "3d1abf668e363b659195ba06e7d971dbe1de8d354adf01b7f89a8fa57ef43de6"
+    },
+    {
+      "path": "callback-390.png",
+      "sha256": "09d4d5838d80ef0417e9fe3c32a28f849042288a81962d78a0a039e9921d27a4"
+    },
+    {
+      "path": "legal-unavailable-390.png",
+      "sha256": "e40c20c44bfdeaca8f416bd48ea3a9c12eaf3eaacabfc421f67c2497ae73d685"
+    },
+    {
+      "path": "legal-synthetic-390.png",
+      "sha256": "9a73c9c29c1c39bd64800fd0248c2236671df6053b90624e404b8da67f732a7f"
+    },
+    {
+      "path": "deletion-no-retained-390.png",
+      "sha256": "3c7940926ca3b79c1f9963a6061b173f65f301f916423781ef65770d71c45bf6"
+    },
+    {
+      "path": "consent-390.png",
+      "sha256": "fad0a670406f0e8a27e99b7e4718a89f2d709b089bde8c0a853b884f2de616b6"
+    },
+    {
+      "path": "admission-inactive-390.png",
+      "sha256": "ee3555086d57d513c79d16a8d473e39930444e86137ae96593be76ae8d047f14"
+    },
+    {
+      "path": "sign-in-rate-limited-390.png",
+      "sha256": "465a87b21b6241686c115191ebc979622d42fde40ab226404e68378369357540"
+    },
+    {
+      "path": "sign-in-pending-390.png",
+      "sha256": "f674279d362aad6e423416acc934ad9996695539b1208bbcc0fdacc06d1b4293"
+    },
+    {
+      "path": "short-reset-390.png",
+      "sha256": "061be7b9dd4f3c82012a4381d456c596b29c1f2b6f7b15503f7a1825065a5d62"
+    },
+    {
+      "path": "short-safe-area-390.png",
+      "sha256": "cac52246fcba22b91e529a96b050b16aa73f561d89a75b7661c87be8125dbbb7"
+    },
+    {
+      "path": "landing-430.png",
+      "sha256": "e408784522671b1589fc5ecd0f184f3d6da9faea30564e06445f8910a955ea6e"
+    },
+    {
+      "path": "sign-in-430.png",
+      "sha256": "493a6b15b7127d340d35cd9e88f31f3ab3650ca00c2a1a7d52dc0cab41731705"
+    },
+    {
+      "path": "signup-policy-430.png",
+      "sha256": "ca22af70506d4224476148e8574d1343c40eea503d3e534e8bf6726326854155"
+    },
+    {
+      "path": "verification-430.png",
+      "sha256": "2ab8a2acab0e3d862bf593e7abf05b87507ac26c4456d4fb76ee3ab6d347f66f"
+    },
+    {
+      "path": "reset-430.png",
+      "sha256": "ec9ebf5fd2bb18d0f430f833b5edbf6345bbd6aa29e328b72316e1ba5b72fd44"
+    },
+    {
+      "path": "callback-430.png",
+      "sha256": "4cfaee941d336feda4237c534cadb5bebb411fcbf668ca349f091c2d294e5a2d"
+    },
+    {
+      "path": "legal-unavailable-430.png",
+      "sha256": "ce9aa75bb1b204ad5a28c87c34596088964a195c239630ba27e9f93d1ee24829"
+    },
+    {
+      "path": "deletion-no-retained-430.png",
+      "sha256": "6151a0686dd71ec16b79612251fccf201e32d7c6fb8d8e93d47adc89f41b2922"
+    }
+  ],
+  "findings": "All34 inspected. Paper/black/crimson palette, loaded bundled type, reviewed characters, dense forms, truthful unavailable/deletion states, focus/disabled/pending/short controls legible. No additional product defect observed.",
+  "result": "PASS_CONTROLLED_CAPTURE_INSPECTION",
+  "remaining": "Actual defaultentry and Photo2 comparison are unfinished; actualindex interceptor incorrectly matched source modules. Native10 raw FAIL retained."
+}

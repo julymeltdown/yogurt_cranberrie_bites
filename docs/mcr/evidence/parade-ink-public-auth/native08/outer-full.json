@@ -1,0 +1,24 @@
+{
+  "lease": "PI10-NATIVE08-0136",
+  "result": "FAIL",
+  "exit": 1,
+  "failure": "AssertionError('Unresolved live MCR workflow roots: [3757]')",
+  "full_epoch": 1793842805.697122,
+  "before_hard": true,
+  "peak": {
+    "whole": 5468044211,
+    "new": 270901556,
+    "processes": 7,
+    "rss": 444661760,
+    "native_payload": 75653272,
+    "global_rss": 313606144,
+    "global_workflows": 2,
+    "global_source": 0,
+    "global_browsers": 1,
+    "global_target": 1,
+    "global_processes": 11
+  },
+  "minimum_free": 23347863552,
+  "remaining": [],
+  "execution_resources": 0
+}

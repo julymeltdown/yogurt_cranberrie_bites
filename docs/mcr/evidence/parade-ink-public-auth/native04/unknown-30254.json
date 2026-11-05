@@ -1,0 +1,24 @@
+{
+  "epoch": 1793841966.505654,
+  "sampler": 30254,
+  "owned_before": [
+    30254
+  ],
+  "owned_current": [
+    30254,
+    30427
+  ],
+  "cohorts": [
+    "PI12-OPERATIONS-SOURCE01-0111",
+    "PI12-REPORT-ERROR-NETWORK-SOURCE03-0116"
+  ],
+  "identities": [
+    {
+      "pid": 30248,
+      "parent": 49590,
+      "rss": 25690112,
+      "command": "/Library/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python -B scripts/mcr/private_data_production/request.py --worktree /Users/lhs/Desktop/mcr-worktrees/be-meet-live --source-freeze /private/tmp/mcr-be42-phase1-20261105/source-freeze.json --output /private/tmp/mcr-be42-phase1-20261105/phase1-request.json",
+      "birth": "Thu Nov 5 10:26:06 2026"
+    }
+  ]
+}

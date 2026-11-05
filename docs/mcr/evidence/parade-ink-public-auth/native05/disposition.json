@@ -1,0 +1,12 @@
+{
+  "status": "GUARD_ABORT_BEFORE_COMMANDS",
+  "actual_full": 1793842207.616322,
+  "remaining": [],
+  "Node": false,
+  "browser": false,
+  "screenshots": 0,
+  "initial_samples": "Both completed before payload; commands[] in primaryFULL",
+  "peer": "PID51565 actual publisher O04 Git/doc/JSON intake; direct owner confirms no Node/compiler/browser/target. No separate historical ownerFULL epoch claimed.",
+  "port5390": "LISTEN empty after FULL",
+  "classification_fix": "Bounded fresh400ms registry/PS reread requires actual published identity; disappearance alone cannot resolve originalunknown. KnownordinaryactualPID/RSS counts withoutG."
+}

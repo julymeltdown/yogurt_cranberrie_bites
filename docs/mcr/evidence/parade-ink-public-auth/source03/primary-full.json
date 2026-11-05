@@ -1,0 +1,75 @@
+{
+  "lease": "SOURCE03-20261105T0013Z",
+  "result": "FAIL",
+  "exit": 1,
+  "failure": null,
+  "commands": [
+    {
+      "index": 0,
+      "argv": [
+        "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node",
+        "/Users/lhs/Desktop/mcr/frontend/node_modules/vitest/vitest.mjs",
+        "run",
+        "--config",
+        "src/features/auth/__tests__/parade-ink-entry/vitest.config.mjs",
+        "--configLoader",
+        "runner"
+      ],
+      "exit": 1
+    },
+    {
+      "index": 1,
+      "argv": [
+        "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node",
+        "/Users/lhs/Desktop/mcr/frontend/node_modules/typescript/bin/tsc",
+        "-p",
+        "src/features/auth/__tests__/parade-ink-entry/tsconfig.json",
+        "--pretty",
+        "false",
+        "--incremental",
+        "false"
+      ],
+      "exit": 2
+    },
+    {
+      "index": 2,
+      "argv": [
+        "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node",
+        "/Users/lhs/Desktop/mcr/frontend/node_modules/oxlint/bin/oxlint",
+        "--deny-warnings",
+        "src/app/account-deletion-entry/recovery.tsx",
+        "src/features/public/ui/Landing.tsx",
+        "src/features/public/ui/PublicFrame.tsx",
+        "src/features/auth/ui/SignIn.tsx",
+        "src/features/auth/ui/SignUp.tsx",
+        "src/features/auth/ui/AdmissionBoundary.tsx",
+        "src/features/auth/ui/ConsentAdmission.tsx",
+        "src/features/auth/ui/Callback.tsx",
+        "src/features/auth/ui/ResetPassword.tsx",
+        "src/features/auth/__tests__/parade-ink-entry",
+        "src/features/public/__tests__/parade-ink-entry",
+        "src/features/public/__tests__/reference-target/presentation.test.tsx",
+        "src/features/auth/__tests__/reference-target/presentation.test.tsx"
+      ],
+      "exit": 0
+    },
+    {
+      "index": 3,
+      "argv": [
+        "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node",
+        "--check",
+        "src/features/auth/__tests__/parade-ink-entry/native.mjs"
+      ],
+      "exit": 0
+    }
+  ],
+  "full_epoch": 1793838234.6341681,
+  "before_hard": true,
+  "peak": {
+    "whole": 5312054050,
+    "new": 50425856,
+    "processes": 7,
+    "rss": 1964703744
+  },
+  "minimum_free": 15740321792
+}

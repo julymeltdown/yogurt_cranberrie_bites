@@ -1,0 +1,9 @@
+{
+  "book": "PI10-FINALDOC8-0215",
+  "actualAcceptEpoch": 1793845054.111665,
+  "deadlineEpoch": 1793846400,
+  "upperBytes": 8388608,
+  "scope": "Owned proof/remainder driver/freeze/Git only; no Node/browser",
+  "priorBook": "FINALDOC8-0136 expired02:10; no writes in gap; entire old charge retained",
+  "executionFamilyCharge": "Entire additional8MiB once inside cumulative512MiB"
+}

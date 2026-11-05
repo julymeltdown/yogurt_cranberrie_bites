@@ -1,0 +1,34 @@
+{
+  "epoch": 1793842552.1522071,
+  "sampler": 78447,
+  "attempt": 1,
+  "owned_before": [
+    78447
+  ],
+  "owned_current": [
+    78447,
+    78529
+  ],
+  "cohorts": [
+    "PI12-OPS-APP-NATIVE01-0125",
+    "01a1a00c-2690-7bc0-94fc-52609655ea83:BE42-PH1-COMPILE-FIVE-0131"
+  ],
+  "identities": [
+    {
+      "pid": 76431,
+      "parent": 49590,
+      "rss": 54738944,
+      "command": "/Library/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python -B -u /Users/lhs/Desktop/mcr-worktrees/art-map-cozy-v1/docs/mcr/art/evidence/paradise-city-siteplan-v1/ordinary.py",
+      "birth": "Thu Nov 5 10:35:25 2026"
+    }
+  ],
+  "unresolved": [
+    {
+      "pid": 76431,
+      "parent": 49590,
+      "rss": 54738944,
+      "command": "/Library/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python -B -u /Users/lhs/Desktop/mcr-worktrees/art-map-cozy-v1/docs/mcr/art/evidence/paradise-city-siteplan-v1/ordinary.py",
+      "birth": "Thu Nov 5 10:35:25 2026"
+    }
+  ]
+}

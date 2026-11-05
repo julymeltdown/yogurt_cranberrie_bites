@@ -1,0 +1,13 @@
+{
+  "result": "ABORTED_NO_COMPLETED_CASE",
+  "full_epoch": 1793839951.5122712,
+  "primary_full": "ABSENT: outer cleanup interrupted primary",
+  "tests": "Vitest RUN only; no case result",
+  "types": "NOT_RUN",
+  "lint": "NOT_RUN",
+  "syntax": "NOT_RUN",
+  "initial_guards": "Both complete initial samples recorded",
+  "remaining": [],
+  "limits": "Resource FULL only; no qualification",
+  "race": "The current PS table must expand owned descendants; PID19913 original identity was not retained and is not asserted"
+}

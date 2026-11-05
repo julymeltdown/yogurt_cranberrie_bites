@@ -1,0 +1,52 @@
+{
+  "epoch": 1793844228.2916741,
+  "sampler": 20530,
+  "attempt": 0,
+  "owned_before": [
+    20325,
+    20530,
+    20861,
+    20873,
+    20998,
+    21007,
+    21058,
+    22986,
+    22987,
+    22988,
+    22989
+  ],
+  "owned_current": [
+    20325,
+    20530,
+    20861,
+    20873,
+    20998,
+    21007,
+    21058,
+    22986,
+    22987,
+    22988,
+    23072
+  ],
+  "cohorts": [
+    "01a1a00c-2690-7bc0-94fc-52609655ea83:BE42-PH1-COMPILE-03-0218"
+  ],
+  "identities": [
+    {
+      "pid": 22998,
+      "parent": 49590,
+      "rss": 7880704,
+      "command": "/Library/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python -B /Users/lhs/Desktop/mcr-worktrees/art-runtime/docs/mcr/evidence/service-policy-composition/qualify.py",
+      "birth": "Thu Nov 5 11:03:48 2026"
+    }
+  ],
+  "unresolved": [
+    {
+      "pid": 22998,
+      "parent": 49590,
+      "rss": 7880704,
+      "command": "/Library/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python -B /Users/lhs/Desktop/mcr-worktrees/art-runtime/docs/mcr/evidence/service-policy-composition/qualify.py",
+      "birth": "Thu Nov 5 11:03:48 2026"
+    }
+  ]
+}

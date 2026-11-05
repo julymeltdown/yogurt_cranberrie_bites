@@ -1,0 +1,26 @@
+{
+  "epoch": 1793844175.5691268,
+  "sample": {
+    "epoch": 1793844175.568961,
+    "membership_asof": "2026-11-05T01:47:30.991757+00:00",
+    "cohorts": [
+      "01a1a00c-2690-7bc0-94fc-52609655ea83:BE42-PH1-COMPILE-03-0218",
+      "01a1a534-4fcf-7291-abe3-a97ba2fcafcd:PI07-EDITOR-PROFILE-NATIVE03-0157"
+    ],
+    "pids": [
+      19740,
+      19819,
+      86147
+    ],
+    "declared_pids": 80,
+    "declared_rss": 16642998272.0,
+    "rss": 115933184,
+    "qualified_control_identities": [],
+    "workflows": 3,
+    "source": 0,
+    "browsers": 2,
+    "target": 1
+  },
+  "accepted": false,
+  "payload": false
+}

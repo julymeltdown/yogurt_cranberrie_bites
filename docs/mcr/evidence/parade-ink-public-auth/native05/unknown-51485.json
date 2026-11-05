@@ -1,0 +1,26 @@
+{
+  "epoch": 1793842206.265559,
+  "sampler": 51485,
+  "owned_before": [
+    51044,
+    51485,
+    51527
+  ],
+  "owned_current": [
+    51044,
+    51485,
+    51569
+  ],
+  "cohorts": [
+    "01a1a5d9-6950-7920-8c80-5214d4ce0eaf:PI12-OPS-APP-NATIVE01-0125"
+  ],
+  "identities": [
+    {
+      "pid": 51565,
+      "parent": 49590,
+      "rss": 26492928,
+      "command": "/Library/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python /private/tmp/mcr-publisher-412e-o04-detail.py",
+      "birth": "Thu Nov 5 10:30:06 2026"
+    }
+  ]
+}

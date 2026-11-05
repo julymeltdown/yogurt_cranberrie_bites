@@ -1,0 +1,352 @@
+{
+  "result": "PASS",
+  "kind": "COMPOSITE_SOURCE_FIXTURE",
+  "shared": "77cfe94af06cac6b292ad7528352e4750e929e71",
+  "sharedReadset": "eb80d722f513ce794fe35317a87702dd2878321a2d76f313d36265b3d593d5ef",
+  "retainedCore": {
+    "source": "0cd18bf66f3cf0d981af26daefe508f0702dbd92",
+    "reportSHA": "01587b09490a9074c68a87d307446641aae17fc9531cea727db195e946354dc9",
+    "captures": 34,
+    "states": [
+      {
+        "width": 360,
+        "checked": true,
+        "focus": true,
+        "pending": true,
+        "disabled": true,
+        "error": true,
+        "shortHeight": true,
+        "truthfulUnavailable": true
+      },
+      {
+        "width": 390,
+        "checked": true,
+        "focus": true,
+        "pending": true,
+        "disabled": true,
+        "error": true,
+        "shortHeight": true,
+        "truthfulUnavailable": true
+      },
+      {
+        "width": 430,
+        "checked": true,
+        "focus": true,
+        "pending": true,
+        "disabled": true,
+        "error": true,
+        "shortHeight": true,
+        "truthfulUnavailable": true
+      }
+    ]
+  },
+  "limits": "Actual index.html/main.tsx/default ports with explicit unavailable HTTP fixtures and exact PI01 source. Desktop Chromium only; real Auth/World, live backend, physical devices and release remain OPEN/NOT_RUN.",
+  "entries": [
+    {
+      "width": 360,
+      "actualIndex": true,
+      "defaultPorts": true,
+      "signInNavigation": true,
+      "noWorld": true,
+      "fonts": [
+        {
+          "request": "400 18px \"Parade Ink Text\"",
+          "loaded": 1,
+          "ready": true
+        },
+        {
+          "request": "700 26px \"Parade Ink Display\"",
+          "loaded": 1,
+          "ready": true
+        }
+      ]
+    },
+    {
+      "width": 390,
+      "actualIndex": true,
+      "defaultPorts": true,
+      "signInNavigation": true,
+      "noWorld": true,
+      "fonts": [
+        {
+          "request": "400 18px \"Parade Ink Text\"",
+          "loaded": 1,
+          "ready": true
+        },
+        {
+          "request": "700 26px \"Parade Ink Display\"",
+          "loaded": 1,
+          "ready": true
+        }
+      ]
+    },
+    {
+      "width": 430,
+      "actualIndex": true,
+      "defaultPorts": true,
+      "signInNavigation": true,
+      "noWorld": true,
+      "fonts": [
+        {
+          "request": "400 18px \"Parade Ink Text\"",
+          "loaded": 1,
+          "ready": true
+        },
+        {
+          "request": "700 26px \"Parade Ink Display\"",
+          "loaded": 1,
+          "ready": true
+        }
+      ]
+    }
+  ],
+  "headers": [
+    {
+      "name": "landing",
+      "width": 360,
+      "bounds": {
+        "x": 4,
+        "y": 4,
+        "width": 352,
+        "height": 48,
+        "top": 4,
+        "right": 356,
+        "bottom": 52,
+        "left": 4
+      }
+    },
+    {
+      "name": "sign-in",
+      "width": 360,
+      "bounds": {
+        "x": 4,
+        "y": 4,
+        "width": 352,
+        "height": 48,
+        "top": 4,
+        "right": 356,
+        "bottom": 52,
+        "left": 4
+      }
+    },
+    {
+      "name": "landing",
+      "width": 390,
+      "bounds": {
+        "x": 4,
+        "y": 4,
+        "width": 382,
+        "height": 48,
+        "top": 4,
+        "right": 386,
+        "bottom": 52,
+        "left": 4
+      }
+    },
+    {
+      "name": "sign-in",
+      "width": 390,
+      "bounds": {
+        "x": 4,
+        "y": 4,
+        "width": 382,
+        "height": 48,
+        "top": 4,
+        "right": 386,
+        "bottom": 52,
+        "left": 4
+      }
+    },
+    {
+      "name": "landing",
+      "width": 430,
+      "bounds": {
+        "x": 4,
+        "y": 4,
+        "width": 422,
+        "height": 48,
+        "top": 4,
+        "right": 426,
+        "bottom": 52,
+        "left": 4
+      }
+    },
+    {
+      "name": "sign-in",
+      "width": 430,
+      "bounds": {
+        "x": 4,
+        "y": 4,
+        "width": 422,
+        "height": 48,
+        "top": 4,
+        "right": 426,
+        "bottom": 52,
+        "left": 4
+      }
+    }
+  ],
+  "screenshots": [
+    "actual-default-entry-390.png",
+    "header-comparison.png"
+  ],
+  "errors": [],
+  "console": [
+    "Failed to load resource: the server responded with a status of 503 (Service Unavailable)",
+    "Failed to load resource: the server responded with a status of 503 (Service Unavailable)",
+    "Failed to load resource: the server responded with a status of 503 (Service Unavailable)"
+  ],
+  "failedRequests": [],
+  "comparisons": [
+    {
+      "name": "landing",
+      "width": 360,
+      "crop": [
+        0,
+        0,
+        180,
+        48
+      ],
+      "referenceCrop": [
+        29,
+        65,
+        414,
+        112
+      ],
+      "referenceScale": 0.9873417721518988,
+      "mask": null,
+      "mae": 51.07920524691358,
+      "changedFraction": 0.3106481481481482,
+      "files": {
+        "comparison": "header-comparison.png",
+        "row": 0
+      },
+      "interpretation": "Unmasked visual evidence. Feed title/control labels differ from public/Auth; the metric is descriptive, not a pixel-acceptance threshold."
+    },
+    {
+      "name": "sign-in",
+      "width": 360,
+      "crop": [
+        0,
+        0,
+        180,
+        48
+      ],
+      "referenceCrop": [
+        29,
+        65,
+        414,
+        112
+      ],
+      "referenceScale": 0.9873417721518988,
+      "mask": null,
+      "mae": 39.90308641975309,
+      "changedFraction": 0.25277777777777777,
+      "files": {
+        "comparison": "header-comparison.png",
+        "row": 1
+      },
+      "interpretation": "Unmasked visual evidence. Feed title/control labels differ from public/Auth; the metric is descriptive, not a pixel-acceptance threshold."
+    },
+    {
+      "name": "landing",
+      "width": 390,
+      "crop": [
+        0,
+        0,
+        180,
+        48
+      ],
+      "referenceCrop": [
+        29,
+        65,
+        414,
+        112
+      ],
+      "referenceScale": 0.9873417721518988,
+      "mask": null,
+      "mae": 51.07920524691358,
+      "changedFraction": 0.3106481481481482,
+      "files": {
+        "comparison": "header-comparison.png",
+        "row": 2
+      },
+      "interpretation": "Unmasked visual evidence. Feed title/control labels differ from public/Auth; the metric is descriptive, not a pixel-acceptance threshold."
+    },
+    {
+      "name": "sign-in",
+      "width": 390,
+      "crop": [
+        0,
+        0,
+        180,
+        48
+      ],
+      "referenceCrop": [
+        29,
+        65,
+        414,
+        112
+      ],
+      "referenceScale": 0.9873417721518988,
+      "mask": null,
+      "mae": 39.90308641975309,
+      "changedFraction": 0.25277777777777777,
+      "files": {
+        "comparison": "header-comparison.png",
+        "row": 3
+      },
+      "interpretation": "Unmasked visual evidence. Feed title/control labels differ from public/Auth; the metric is descriptive, not a pixel-acceptance threshold."
+    },
+    {
+      "name": "landing",
+      "width": 430,
+      "crop": [
+        0,
+        0,
+        180,
+        48
+      ],
+      "referenceCrop": [
+        29,
+        65,
+        414,
+        112
+      ],
+      "referenceScale": 0.9873417721518988,
+      "mask": null,
+      "mae": 51.07920524691358,
+      "changedFraction": 0.3106481481481482,
+      "files": {
+        "comparison": "header-comparison.png",
+        "row": 4
+      },
+      "interpretation": "Unmasked visual evidence. Feed title/control labels differ from public/Auth; the metric is descriptive, not a pixel-acceptance threshold."
+    },
+    {
+      "name": "sign-in",
+      "width": 430,
+      "crop": [
+        0,
+        0,
+        180,
+        48
+      ],
+      "referenceCrop": [
+        29,
+        65,
+        414,
+        112
+      ],
+      "referenceScale": 0.9873417721518988,
+      "mask": null,
+      "mae": 39.90308641975309,
+      "changedFraction": 0.25277777777777777,
+      "files": {
+        "comparison": "header-comparison.png",
+        "row": 5
+      },
+      "interpretation": "Unmasked visual evidence. Feed title/control labels differ from public/Auth; the metric is descriptive, not a pixel-acceptance threshold."
+    }
+  ]
+}

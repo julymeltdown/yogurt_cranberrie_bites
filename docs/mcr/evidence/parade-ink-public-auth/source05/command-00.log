@@ -1,0 +1,9 @@
+
+ RUN  v4.1.9 /Users/lhs/Desktop/mcr-worktrees/sl-world/frontend
+
+
+ Test Files  1 passed (1)
+      Tests  1 passed | 4 skipped (5)
+   Start at  09:59:06
+   Duration  2.06s (transform 728ms, setup 0ms, import 1.08s, tests 435ms, environment 469ms)
+

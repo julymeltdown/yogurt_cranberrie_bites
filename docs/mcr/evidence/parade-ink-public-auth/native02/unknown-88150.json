@@ -1,0 +1,35 @@
+{
+  "epoch": 1793841562.134801,
+  "sampler": 88150,
+  "owned_before": [
+    88150,
+    88339,
+    88546,
+    88591,
+    88635,
+    88636,
+    88637,
+    88640,
+    88642,
+    88643,
+    89246
+  ],
+  "owned_current": [
+    88150,
+    88339,
+    88546,
+    89255
+  ],
+  "cohorts": [
+    "01a1a26e-1de2-7b41-a294-c9a79cfded9b:PI01-FOCUSED-NATIVE10-0118"
+  ],
+  "identities": [
+    {
+      "pid": 89247,
+      "parent": 49590,
+      "rss": 31309824,
+      "command": "/Library/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python -B /private/tmp/mcr-post21a-be39-compile-unit03-0111/bootstrap.py",
+      "birth": "Thu Nov 5 10:19:21 2026"
+    }
+  ]
+}

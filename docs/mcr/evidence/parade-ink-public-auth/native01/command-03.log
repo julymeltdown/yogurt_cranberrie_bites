@@ -1,0 +1,14 @@
+[vite:css][postcss] @import must precede all other statements (besides @charset or empty @layer)
+50 |  }
+51 |  
+52 |  @import "./cozy-identity-backgrounds-v1.css";
+   |  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+53 |  @import "./cozy-community-backgrounds-v1.css";
+54 |  /* Shared PI01 presentation only. Component props and behavior remain incumbent. */
+[vite:css][postcss] @import must precede all other statements (besides @charset or empty @layer)
+51 |  
+52 |  @import "./cozy-identity-backgrounds-v1.css";
+53 |  @import "./cozy-community-backgrounds-v1.css";
+   |  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+54 |  /* Shared PI01 presentation only. Component props and behavior remain incumbent. */
+55 |  :root {

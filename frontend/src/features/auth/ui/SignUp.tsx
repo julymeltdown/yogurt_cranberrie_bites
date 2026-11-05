@@ -100,7 +100,7 @@ export function EnrollmentView({ mode }: { mode: 'signup' | 'verify' }) {
   function onSubmit(event: FormEvent<HTMLFormElement>) { event.preventDefault(); void submit(mode) }
   const disabled = pending || !available || remaining > 0
   const completed = kind === 'verified'
-  return <main className="auth-enrollment" id="main" tabIndex={-1}>
+  return <main className="auth-enrollment parade-auth-entry" id="main" tabIndex={-1}>
     <Link className="enrollment-home" to="/">MCR Concert World</Link>
     <p className="enrollment-eyebrow">BEFORE THE SHOW</p>
     <h1 ref={heading} tabIndex={-1}>{mode === 'signup' ? 'Create account' : 'Verify email'}</h1>

@@ -1,0 +1,1708 @@
+{
+  "state": "PUBLISHED_VERIFIED",
+  "packet": "/private/tmp/mcr-publisher-412e-pi01-root03.json",
+  "objective": "Publish independently qualified PI01 foundation correction and exact Root03 failure/provenance documentation; retain scoped qualification and raw failures.",
+  "ancestryPolicy": "One current-master first-parent commit per disjoint owner cohort; Owner-Source/Base provenance only, no private branch ancestry.",
+  "cohorts": [
+    {
+      "source": "7f9d1095c492867aac70c91c3a9a1b3ab161c687",
+      "postimageSnapshot": "7f9d1095c492867aac70c91c3a9a1b3ab161c687",
+      "documentComposition": null,
+      "base": "b5b44e47531e3b75febc5ee5cdd6a11b1648779c",
+      "preimageRevisions": {},
+      "parent": "cf7bb13735aeb20e0b796b2071726f048a211bd0",
+      "published": "651159ec7bae9ff5e1bbc9d3dd083fc08faa02d9",
+      "owner": "01a1a26e-1de2-7b41-a294-c9a79cfded9b",
+      "paths": [
+        "docs/mcr/design/parade-ink-foundation.md",
+        "docs/mcr/evidence/parade-ink-foundation/controller-receipt-contract-v1.md",
+        "docs/mcr/evidence/parade-ink-foundation/native04-controller.jsonl",
+        "docs/mcr/evidence/parade-ink-foundation/native04/command-00.log",
+        "docs/mcr/evidence/parade-ink-foundation/native04/command-01.log",
+        "docs/mcr/evidence/parade-ink-foundation/native04/command-02.log",
+        "docs/mcr/evidence/parade-ink-foundation/native04/failure.png",
+        "docs/mcr/evidence/parade-ink-foundation/native04/guardian.jsonl",
+        "docs/mcr/evidence/parade-ink-foundation/native04/native.json",
+        "docs/mcr/evidence/parade-ink-foundation/native04/readset.json",
+        "docs/mcr/evidence/parade-ink-foundation/native04/release.json",
+        "docs/mcr/evidence/parade-ink-foundation/native05-controller.jsonl",
+        "docs/mcr/evidence/parade-ink-foundation/native05/command-00.log",
+        "docs/mcr/evidence/parade-ink-foundation/native05/command-01.log",
+        "docs/mcr/evidence/parade-ink-foundation/native05/command-02.log",
+        "docs/mcr/evidence/parade-ink-foundation/native05/failure.png",
+        "docs/mcr/evidence/parade-ink-foundation/native05/guardian.jsonl",
+        "docs/mcr/evidence/parade-ink-foundation/native05/native.json",
+        "docs/mcr/evidence/parade-ink-foundation/native05/readset.json",
+        "docs/mcr/evidence/parade-ink-foundation/native05/release.json",
+        "docs/mcr/evidence/parade-ink-foundation/native06-controller.jsonl",
+        "docs/mcr/evidence/parade-ink-foundation/native06/app-composer-360.png",
+        "docs/mcr/evidence/parade-ink-foundation/native06/app-composer-390.png",
+        "docs/mcr/evidence/parade-ink-foundation/native06/app-composer-430.png",
+        "docs/mcr/evidence/parade-ink-foundation/native06/app-feed-360.png",
+        "docs/mcr/evidence/parade-ink-foundation/native06/app-feed-390.png",
+        "docs/mcr/evidence/parade-ink-foundation/native06/app-feed-430.png",
+        "docs/mcr/evidence/parade-ink-foundation/native06/app-short-composer-360.png",
+        "docs/mcr/evidence/parade-ink-foundation/native06/app-short-composer-390.png",
+        "docs/mcr/evidence/parade-ink-foundation/native06/app-short-composer-430.png",
+        "docs/mcr/evidence/parade-ink-foundation/native06/app-short-safe-area-composer-390.png",
+        "docs/mcr/evidence/parade-ink-foundation/native06/app-world-parade-360.png",
+        "docs/mcr/evidence/parade-ink-foundation/native06/app-world-parade-390.png",
+        "docs/mcr/evidence/parade-ink-foundation/native06/app-world-parade-430.png",
+        "docs/mcr/evidence/parade-ink-foundation/native06/command-00.log",
+        "docs/mcr/evidence/parade-ink-foundation/native06/command-01.log",
+        "docs/mcr/evidence/parade-ink-foundation/native06/command-02.log",
+        "docs/mcr/evidence/parade-ink-foundation/native06/command-03.log",
+        "docs/mcr/evidence/parade-ink-foundation/native06/comparison.json",
+        "docs/mcr/evidence/parade-ink-foundation/native06/guardian.jsonl",
+        "docs/mcr/evidence/parade-ink-foundation/native06/native.json",
+        "docs/mcr/evidence/parade-ink-foundation/native06/readset.json",
+        "docs/mcr/evidence/parade-ink-foundation/native06/reference-app-390.png",
+        "docs/mcr/evidence/parade-ink-foundation/native06/release.json",
+        "docs/mcr/evidence/parade-ink-foundation/native06/supplemental-shared-focus-error-disabled.png",
+        "docs/mcr/evidence/parade-ink-foundation/native06/supplemental-shared-pressed.png",
+        "docs/mcr/evidence/parade-ink-foundation/native06/supplemental-short-sheet.png",
+        "docs/mcr/evidence/parade-ink-foundation/native07-controller-census.json",
+        "docs/mcr/evidence/parade-ink-foundation/native07-controller.jsonl",
+        "docs/mcr/evidence/parade-ink-foundation/native07/command-00.log",
+        "docs/mcr/evidence/parade-ink-foundation/native07/command-01.log",
+        "docs/mcr/evidence/parade-ink-foundation/native07/command-02.log",
+        "docs/mcr/evidence/parade-ink-foundation/native07/command-03.log",
+        "docs/mcr/evidence/parade-ink-foundation/native07/command-04.log",
+        "docs/mcr/evidence/parade-ink-foundation/native07/command-05.log",
+        "docs/mcr/evidence/parade-ink-foundation/native07/guardian-census.json",
+        "docs/mcr/evidence/parade-ink-foundation/native07/guardian.jsonl",
+        "docs/mcr/evidence/parade-ink-foundation/native07/release.json",
+        "docs/mcr/evidence/parade-ink-foundation/native08-controller.jsonl",
+        "docs/mcr/evidence/parade-ink-foundation/native08-invocation.json",
+        "docs/mcr/evidence/parade-ink-foundation/native08/release.json",
+        "docs/mcr/evidence/parade-ink-foundation/native09-controller-census.json",
+        "docs/mcr/evidence/parade-ink-foundation/native09-controller.jsonl",
+        "docs/mcr/evidence/parade-ink-foundation/native09-invocation.json",
+        "docs/mcr/evidence/parade-ink-foundation/native09/command-00.log",
+        "docs/mcr/evidence/parade-ink-foundation/native09/guardian-census.json",
+        "docs/mcr/evidence/parade-ink-foundation/native09/guardian.jsonl",
+        "docs/mcr/evidence/parade-ink-foundation/native10-controller-census.json",
+        "docs/mcr/evidence/parade-ink-foundation/native10-controller.jsonl",
+        "docs/mcr/evidence/parade-ink-foundation/native10-invocation.json",
+        "docs/mcr/evidence/parade-ink-foundation/native10/app-feed-360.png",
+        "docs/mcr/evidence/parade-ink-foundation/native10/app-feed-390.png",
+        "docs/mcr/evidence/parade-ink-foundation/native10/app-feed-430.png",
+        "docs/mcr/evidence/parade-ink-foundation/native10/app-header-minimized-390.png",
+        "docs/mcr/evidence/parade-ink-foundation/native10/app-header-restored-390.png",
+        "docs/mcr/evidence/parade-ink-foundation/native10/command-00.log",
+        "docs/mcr/evidence/parade-ink-foundation/native10/command-01.log",
+        "docs/mcr/evidence/parade-ink-foundation/native10/command-02.log",
+        "docs/mcr/evidence/parade-ink-foundation/native10/command-03.log",
+        "docs/mcr/evidence/parade-ink-foundation/native10/command-04.log",
+        "docs/mcr/evidence/parade-ink-foundation/native10/command-05.log",
+        "docs/mcr/evidence/parade-ink-foundation/native10/command-06.log",
+        "docs/mcr/evidence/parade-ink-foundation/native10/comparison.json",
+        "docs/mcr/evidence/parade-ink-foundation/native10/guardian-census.json",
+        "docs/mcr/evidence/parade-ink-foundation/native10/guardian.jsonl",
+        "docs/mcr/evidence/parade-ink-foundation/native10/native.json",
+        "docs/mcr/evidence/parade-ink-foundation/native10/readset.json",
+        "docs/mcr/evidence/parade-ink-foundation/native10/reference-app-390.png",
+        "docs/mcr/evidence/parade-ink-foundation/native10/release.json",
+        "docs/mcr/evidence/parade-ink-foundation/qualification-readset.json",
+        "frontend/src/app/__tests__/parade-ink-foundation/controller.py",
+        "frontend/src/app/__tests__/parade-ink-foundation/guardian.py",
+        "frontend/src/app/__tests__/parade-ink-foundation/membership.py",
+        "frontend/src/app/__tests__/parade-ink-foundation/membership_test.py",
+        "frontend/src/app/__tests__/parade-ink-foundation/native.mjs",
+        "frontend/src/app/reference-chrome-v2/WindowInk.tsx",
+        "frontend/src/app/reference-chrome-v2/chrome.css",
+        "frontend/src/app/reference-chrome-v2/chrome.test.tsx",
+        "frontend/src/shared/styles/base.css",
+        "docs/mcr/evidence/parade-ink-foundation/publication-followup.json"
+      ],
+      "changedPaths": [
+        "docs/mcr/design/parade-ink-foundation.md",
+        "docs/mcr/evidence/parade-ink-foundation/controller-receipt-contract-v1.md",
+        "docs/mcr/evidence/parade-ink-foundation/native04-controller.jsonl",
+        "docs/mcr/evidence/parade-ink-foundation/native04/command-00.log",
+        "docs/mcr/evidence/parade-ink-foundation/native04/command-01.log",
+        "docs/mcr/evidence/parade-ink-foundation/native04/command-02.log",
+        "docs/mcr/evidence/parade-ink-foundation/native04/failure.png",
+        "docs/mcr/evidence/parade-ink-foundation/native04/guardian.jsonl",
+        "docs/mcr/evidence/parade-ink-foundation/native04/native.json",
+        "docs/mcr/evidence/parade-ink-foundation/native04/readset.json",
+        "docs/mcr/evidence/parade-ink-foundation/native04/release.json",
+        "docs/mcr/evidence/parade-ink-foundation/native05-controller.jsonl",
+        "docs/mcr/evidence/parade-ink-foundation/native05/command-00.log",
+        "docs/mcr/evidence/parade-ink-foundation/native05/command-01.log",
+        "docs/mcr/evidence/parade-ink-foundation/native05/command-02.log",
+        "docs/mcr/evidence/parade-ink-foundation/native05/failure.png",
+        "docs/mcr/evidence/parade-ink-foundation/native05/guardian.jsonl",
+        "docs/mcr/evidence/parade-ink-foundation/native05/native.json",
+        "docs/mcr/evidence/parade-ink-foundation/native05/readset.json",
+        "docs/mcr/evidence/parade-ink-foundation/native05/release.json",
+        "docs/mcr/evidence/parade-ink-foundation/native06-controller.jsonl",
+        "docs/mcr/evidence/parade-ink-foundation/native06/app-composer-360.png",
+        "docs/mcr/evidence/parade-ink-foundation/native06/app-composer-390.png",
+        "docs/mcr/evidence/parade-ink-foundation/native06/app-composer-430.png",
+        "docs/mcr/evidence/parade-ink-foundation/native06/app-feed-360.png",
+        "docs/mcr/evidence/parade-ink-foundation/native06/app-feed-390.png",
+        "docs/mcr/evidence/parade-ink-foundation/native06/app-feed-430.png",
+        "docs/mcr/evidence/parade-ink-foundation/native06/app-short-composer-360.png",
+        "docs/mcr/evidence/parade-ink-foundation/native06/app-short-composer-390.png",
+        "docs/mcr/evidence/parade-ink-foundation/native06/app-short-composer-430.png",
+        "docs/mcr/evidence/parade-ink-foundation/native06/app-short-safe-area-composer-390.png",
+        "docs/mcr/evidence/parade-ink-foundation/native06/app-world-parade-360.png",
+        "docs/mcr/evidence/parade-ink-foundation/native06/app-world-parade-390.png",
+        "docs/mcr/evidence/parade-ink-foundation/native06/app-world-parade-430.png",
+        "docs/mcr/evidence/parade-ink-foundation/native06/command-00.log",
+        "docs/mcr/evidence/parade-ink-foundation/native06/command-01.log",
+        "docs/mcr/evidence/parade-ink-foundation/native06/command-02.log",
+        "docs/mcr/evidence/parade-ink-foundation/native06/command-03.log",
+        "docs/mcr/evidence/parade-ink-foundation/native06/comparison.json",
+        "docs/mcr/evidence/parade-ink-foundation/native06/guardian.jsonl",
+        "docs/mcr/evidence/parade-ink-foundation/native06/native.json",
+        "docs/mcr/evidence/parade-ink-foundation/native06/readset.json",
+        "docs/mcr/evidence/parade-ink-foundation/native06/reference-app-390.png",
+        "docs/mcr/evidence/parade-ink-foundation/native06/release.json",
+        "docs/mcr/evidence/parade-ink-foundation/native06/supplemental-shared-focus-error-disabled.png",
+        "docs/mcr/evidence/parade-ink-foundation/native06/supplemental-shared-pressed.png",
+        "docs/mcr/evidence/parade-ink-foundation/native06/supplemental-short-sheet.png",
+        "docs/mcr/evidence/parade-ink-foundation/native07-controller-census.json",
+        "docs/mcr/evidence/parade-ink-foundation/native07-controller.jsonl",
+        "docs/mcr/evidence/parade-ink-foundation/native07/command-00.log",
+        "docs/mcr/evidence/parade-ink-foundation/native07/command-01.log",
+        "docs/mcr/evidence/parade-ink-foundation/native07/command-02.log",
+        "docs/mcr/evidence/parade-ink-foundation/native07/command-03.log",
+        "docs/mcr/evidence/parade-ink-foundation/native07/command-04.log",
+        "docs/mcr/evidence/parade-ink-foundation/native07/command-05.log",
+        "docs/mcr/evidence/parade-ink-foundation/native07/guardian-census.json",
+        "docs/mcr/evidence/parade-ink-foundation/native07/guardian.jsonl",
+        "docs/mcr/evidence/parade-ink-foundation/native07/release.json",
+        "docs/mcr/evidence/parade-ink-foundation/native08-controller.jsonl",
+        "docs/mcr/evidence/parade-ink-foundation/native08-invocation.json",
+        "docs/mcr/evidence/parade-ink-foundation/native08/release.json",
+        "docs/mcr/evidence/parade-ink-foundation/native09-controller-census.json",
+        "docs/mcr/evidence/parade-ink-foundation/native09-controller.jsonl",
+        "docs/mcr/evidence/parade-ink-foundation/native09-invocation.json",
+        "docs/mcr/evidence/parade-ink-foundation/native09/command-00.log",
+        "docs/mcr/evidence/parade-ink-foundation/native09/guardian-census.json",
+        "docs/mcr/evidence/parade-ink-foundation/native09/guardian.jsonl",
+        "docs/mcr/evidence/parade-ink-foundation/native10-controller-census.json",
+        "docs/mcr/evidence/parade-ink-foundation/native10-controller.jsonl",
+        "docs/mcr/evidence/parade-ink-foundation/native10-invocation.json",
+        "docs/mcr/evidence/parade-ink-foundation/native10/app-feed-360.png",
+        "docs/mcr/evidence/parade-ink-foundation/native10/app-feed-390.png",
+        "docs/mcr/evidence/parade-ink-foundation/native10/app-feed-430.png",
+        "docs/mcr/evidence/parade-ink-foundation/native10/app-header-minimized-390.png",
+        "docs/mcr/evidence/parade-ink-foundation/native10/app-header-restored-390.png",
+        "docs/mcr/evidence/parade-ink-foundation/native10/command-00.log",
+        "docs/mcr/evidence/parade-ink-foundation/native10/command-01.log",
+        "docs/mcr/evidence/parade-ink-foundation/native10/command-02.log",
+        "docs/mcr/evidence/parade-ink-foundation/native10/command-03.log",
+        "docs/mcr/evidence/parade-ink-foundation/native10/command-04.log",
+        "docs/mcr/evidence/parade-ink-foundation/native10/command-05.log",
+        "docs/mcr/evidence/parade-ink-foundation/native10/command-06.log",
+        "docs/mcr/evidence/parade-ink-foundation/native10/comparison.json",
+        "docs/mcr/evidence/parade-ink-foundation/native10/guardian-census.json",
+        "docs/mcr/evidence/parade-ink-foundation/native10/guardian.jsonl",
+        "docs/mcr/evidence/parade-ink-foundation/native10/native.json",
+        "docs/mcr/evidence/parade-ink-foundation/native10/readset.json",
+        "docs/mcr/evidence/parade-ink-foundation/native10/reference-app-390.png",
+        "docs/mcr/evidence/parade-ink-foundation/native10/release.json",
+        "docs/mcr/evidence/parade-ink-foundation/publication-followup.json",
+        "docs/mcr/evidence/parade-ink-foundation/qualification-readset.json",
+        "frontend/src/app/__tests__/parade-ink-foundation/controller.py",
+        "frontend/src/app/__tests__/parade-ink-foundation/guardian.py",
+        "frontend/src/app/__tests__/parade-ink-foundation/membership.py",
+        "frontend/src/app/__tests__/parade-ink-foundation/membership_test.py",
+        "frontend/src/app/__tests__/parade-ink-foundation/native.mjs",
+        "frontend/src/app/reference-chrome-v2/WindowInk.tsx",
+        "frontend/src/app/reference-chrome-v2/chrome.css",
+        "frontend/src/app/reference-chrome-v2/chrome.test.tsx",
+        "frontend/src/shared/styles/base.css"
+      ],
+      "classifications": {
+        "docs/mcr/design/parade-ink-foundation.md": "EXACT_DECLARED_BASE_PREIMAGE",
+        "docs/mcr/evidence/parade-ink-foundation/controller-receipt-contract-v1.md": "NEW_PATH_ABSENT",
+        "docs/mcr/evidence/parade-ink-foundation/native04-controller.jsonl": "NEW_PATH_ABSENT",
+        "docs/mcr/evidence/parade-ink-foundation/native04/command-00.log": "NEW_PATH_ABSENT",
+        "docs/mcr/evidence/parade-ink-foundation/native04/command-01.log": "NEW_PATH_ABSENT",
+        "docs/mcr/evidence/parade-ink-foundation/native04/command-02.log": "NEW_PATH_ABSENT",
+        "docs/mcr/evidence/parade-ink-foundation/native04/failure.png": "NEW_PATH_ABSENT",
+        "docs/mcr/evidence/parade-ink-foundation/native04/guardian.jsonl": "NEW_PATH_ABSENT",
+        "docs/mcr/evidence/parade-ink-foundation/native04/native.json": "NEW_PATH_ABSENT",
+        "docs/mcr/evidence/parade-ink-foundation/native04/readset.json": "NEW_PATH_ABSENT",
+        "docs/mcr/evidence/parade-ink-foundation/native04/release.json": "NEW_PATH_ABSENT",
+        "docs/mcr/evidence/parade-ink-foundation/native05-controller.jsonl": "NEW_PATH_ABSENT",
+        "docs/mcr/evidence/parade-ink-foundation/native05/command-00.log": "NEW_PATH_ABSENT",
+        "docs/mcr/evidence/parade-ink-foundation/native05/command-01.log": "NEW_PATH_ABSENT",
+        "docs/mcr/evidence/parade-ink-foundation/native05/command-02.log": "NEW_PATH_ABSENT",
+        "docs/mcr/evidence/parade-ink-foundation/native05/failure.png": "NEW_PATH_ABSENT",
+        "docs/mcr/evidence/parade-ink-foundation/native05/guardian.jsonl": "NEW_PATH_ABSENT",
+        "docs/mcr/evidence/parade-ink-foundation/native05/native.json": "NEW_PATH_ABSENT",
+        "docs/mcr/evidence/parade-ink-foundation/native05/readset.json": "NEW_PATH_ABSENT",
+        "docs/mcr/evidence/parade-ink-foundation/native05/release.json": "NEW_PATH_ABSENT",
+        "docs/mcr/evidence/parade-ink-foundation/native06-controller.jsonl": "NEW_PATH_ABSENT",
+        "docs/mcr/evidence/parade-ink-foundation/native06/app-composer-360.png": "NEW_PATH_ABSENT",
+        "docs/mcr/evidence/parade-ink-foundation/native06/app-composer-390.png": "NEW_PATH_ABSENT",
+        "docs/mcr/evidence/parade-ink-foundation/native06/app-composer-430.png": "NEW_PATH_ABSENT",
+        "docs/mcr/evidence/parade-ink-foundation/native06/app-feed-360.png": "NEW_PATH_ABSENT",
+        "docs/mcr/evidence/parade-ink-foundation/native06/app-feed-390.png": "NEW_PATH_ABSENT",
+        "docs/mcr/evidence/parade-ink-foundation/native06/app-feed-430.png": "NEW_PATH_ABSENT",
+        "docs/mcr/evidence/parade-ink-foundation/native06/app-short-composer-360.png": "NEW_PATH_ABSENT",
+        "docs/mcr/evidence/parade-ink-foundation/native06/app-short-composer-390.png": "NEW_PATH_ABSENT",
+        "docs/mcr/evidence/parade-ink-foundation/native06/app-short-composer-430.png": "NEW_PATH_ABSENT",
+        "docs/mcr/evidence/parade-ink-foundation/native06/app-short-safe-area-composer-390.png": "NEW_PATH_ABSENT",
+        "docs/mcr/evidence/parade-ink-foundation/native06/app-world-parade-360.png": "NEW_PATH_ABSENT",
+        "docs/mcr/evidence/parade-ink-foundation/native06/app-world-parade-390.png": "NEW_PATH_ABSENT",
+        "docs/mcr/evidence/parade-ink-foundation/native06/app-world-parade-430.png": "NEW_PATH_ABSENT",
+        "docs/mcr/evidence/parade-ink-foundation/native06/command-00.log": "NEW_PATH_ABSENT",
+        "docs/mcr/evidence/parade-ink-foundation/native06/command-01.log": "NEW_PATH_ABSENT",
+        "docs/mcr/evidence/parade-ink-foundation/native06/command-02.log": "NEW_PATH_ABSENT",
+        "docs/mcr/evidence/parade-ink-foundation/native06/command-03.log": "NEW_PATH_ABSENT",
+        "docs/mcr/evidence/parade-ink-foundation/native06/comparison.json": "NEW_PATH_ABSENT",
+        "docs/mcr/evidence/parade-ink-foundation/native06/guardian.jsonl": "NEW_PATH_ABSENT",
+        "docs/mcr/evidence/parade-ink-foundation/native06/native.json": "NEW_PATH_ABSENT",
+        "docs/mcr/evidence/parade-ink-foundation/native06/readset.json": "NEW_PATH_ABSENT",
+        "docs/mcr/evidence/parade-ink-foundation/native06/reference-app-390.png": "NEW_PATH_ABSENT",
+        "docs/mcr/evidence/parade-ink-foundation/native06/release.json": "NEW_PATH_ABSENT",
+        "docs/mcr/evidence/parade-ink-foundation/native06/supplemental-shared-focus-error-disabled.png": "NEW_PATH_ABSENT",
+        "docs/mcr/evidence/parade-ink-foundation/native06/supplemental-shared-pressed.png": "NEW_PATH_ABSENT",
+        "docs/mcr/evidence/parade-ink-foundation/native06/supplemental-short-sheet.png": "NEW_PATH_ABSENT",
+        "docs/mcr/evidence/parade-ink-foundation/native07-controller-census.json": "NEW_PATH_ABSENT",
+        "docs/mcr/evidence/parade-ink-foundation/native07-controller.jsonl": "NEW_PATH_ABSENT",
+        "docs/mcr/evidence/parade-ink-foundation/native07/command-00.log": "NEW_PATH_ABSENT",
+        "docs/mcr/evidence/parade-ink-foundation/native07/command-01.log": "NEW_PATH_ABSENT",
+        "docs/mcr/evidence/parade-ink-foundation/native07/command-02.log": "NEW_PATH_ABSENT",
+        "docs/mcr/evidence/parade-ink-foundation/native07/command-03.log": "NEW_PATH_ABSENT",
+        "docs/mcr/evidence/parade-ink-foundation/native07/command-04.log": "NEW_PATH_ABSENT",
+        "docs/mcr/evidence/parade-ink-foundation/native07/command-05.log": "NEW_PATH_ABSENT",
+        "docs/mcr/evidence/parade-ink-foundation/native07/guardian-census.json": "NEW_PATH_ABSENT",
+        "docs/mcr/evidence/parade-ink-foundation/native07/guardian.jsonl": "NEW_PATH_ABSENT",
+        "docs/mcr/evidence/parade-ink-foundation/native07/release.json": "NEW_PATH_ABSENT",
+        "docs/mcr/evidence/parade-ink-foundation/native08-controller.jsonl": "NEW_PATH_ABSENT",
+        "docs/mcr/evidence/parade-ink-foundation/native08-invocation.json": "NEW_PATH_ABSENT",
+        "docs/mcr/evidence/parade-ink-foundation/native08/release.json": "NEW_PATH_ABSENT",
+        "docs/mcr/evidence/parade-ink-foundation/native09-controller-census.json": "NEW_PATH_ABSENT",
+        "docs/mcr/evidence/parade-ink-foundation/native09-controller.jsonl": "NEW_PATH_ABSENT",
+        "docs/mcr/evidence/parade-ink-foundation/native09-invocation.json": "NEW_PATH_ABSENT",
+        "docs/mcr/evidence/parade-ink-foundation/native09/command-00.log": "NEW_PATH_ABSENT",
+        "docs/mcr/evidence/parade-ink-foundation/native09/guardian-census.json": "NEW_PATH_ABSENT",
+        "docs/mcr/evidence/parade-ink-foundation/native09/guardian.jsonl": "NEW_PATH_ABSENT",
+        "docs/mcr/evidence/parade-ink-foundation/native10-controller-census.json": "NEW_PATH_ABSENT",
+        "docs/mcr/evidence/parade-ink-foundation/native10-controller.jsonl": "NEW_PATH_ABSENT",
+        "docs/mcr/evidence/parade-ink-foundation/native10-invocation.json": "NEW_PATH_ABSENT",
+        "docs/mcr/evidence/parade-ink-foundation/native10/app-feed-360.png": "NEW_PATH_ABSENT",
+        "docs/mcr/evidence/parade-ink-foundation/native10/app-feed-390.png": "NEW_PATH_ABSENT",
+        "docs/mcr/evidence/parade-ink-foundation/native10/app-feed-430.png": "NEW_PATH_ABSENT",
+        "docs/mcr/evidence/parade-ink-foundation/native10/app-header-minimized-390.png": "NEW_PATH_ABSENT",
+        "docs/mcr/evidence/parade-ink-foundation/native10/app-header-restored-390.png": "NEW_PATH_ABSENT",
+        "docs/mcr/evidence/parade-ink-foundation/native10/command-00.log": "NEW_PATH_ABSENT",
+        "docs/mcr/evidence/parade-ink-foundation/native10/command-01.log": "NEW_PATH_ABSENT",
+        "docs/mcr/evidence/parade-ink-foundation/native10/command-02.log": "NEW_PATH_ABSENT",
+        "docs/mcr/evidence/parade-ink-foundation/native10/command-03.log": "NEW_PATH_ABSENT",
+        "docs/mcr/evidence/parade-ink-foundation/native10/command-04.log": "NEW_PATH_ABSENT",
+        "docs/mcr/evidence/parade-ink-foundation/native10/command-05.log": "NEW_PATH_ABSENT",
+        "docs/mcr/evidence/parade-ink-foundation/native10/command-06.log": "NEW_PATH_ABSENT",
+        "docs/mcr/evidence/parade-ink-foundation/native10/comparison.json": "NEW_PATH_ABSENT",
+        "docs/mcr/evidence/parade-ink-foundation/native10/guardian-census.json": "NEW_PATH_ABSENT",
+        "docs/mcr/evidence/parade-ink-foundation/native10/guardian.jsonl": "NEW_PATH_ABSENT",
+        "docs/mcr/evidence/parade-ink-foundation/native10/native.json": "NEW_PATH_ABSENT",
+        "docs/mcr/evidence/parade-ink-foundation/native10/readset.json": "NEW_PATH_ABSENT",
+        "docs/mcr/evidence/parade-ink-foundation/native10/reference-app-390.png": "NEW_PATH_ABSENT",
+        "docs/mcr/evidence/parade-ink-foundation/native10/release.json": "NEW_PATH_ABSENT",
+        "docs/mcr/evidence/parade-ink-foundation/qualification-readset.json": "EXACT_DECLARED_BASE_PREIMAGE",
+        "frontend/src/app/__tests__/parade-ink-foundation/controller.py": "EXACT_DECLARED_BASE_PREIMAGE",
+        "frontend/src/app/__tests__/parade-ink-foundation/guardian.py": "EXACT_DECLARED_BASE_PREIMAGE",
+        "frontend/src/app/__tests__/parade-ink-foundation/membership.py": "NEW_PATH_ABSENT",
+        "frontend/src/app/__tests__/parade-ink-foundation/membership_test.py": "NEW_PATH_ABSENT",
+        "frontend/src/app/__tests__/parade-ink-foundation/native.mjs": "EXACT_DECLARED_BASE_PREIMAGE",
+        "frontend/src/app/reference-chrome-v2/WindowInk.tsx": "EXACT_DECLARED_BASE_PREIMAGE",
+        "frontend/src/app/reference-chrome-v2/chrome.css": "EXACT_DECLARED_BASE_PREIMAGE",
+        "frontend/src/app/reference-chrome-v2/chrome.test.tsx": "EXACT_DECLARED_BASE_PREIMAGE",
+        "frontend/src/shared/styles/base.css": "EXACT_DECLARED_BASE_PREIMAGE",
+        "docs/mcr/evidence/parade-ink-foundation/publication-followup.json": "NEW_PATH_ABSENT"
+      },
+      "modesBlobs": {
+        "docs/mcr/design/parade-ink-foundation.md": {
+          "mode": "100644",
+          "blob": "f25e58fa7fd5a65587b9174118e9dc54d79e48cb",
+          "sha256": "39328340ef968fd7c448fdb5484928c3eae3d35366feb0224ad2f5a3c798559a",
+          "ownerSourceSha256": "39328340ef968fd7c448fdb5484928c3eae3d35366feb0224ad2f5a3c798559a"
+        },
+        "docs/mcr/evidence/parade-ink-foundation/controller-receipt-contract-v1.md": {
+          "mode": "100644",
+          "blob": "8e301a855c3d5bb5731ffbb32ee03a0619d5f61c",
+          "sha256": "57255ab8a85d9a011bb9d757ed408e21894f1c0a915c091c3e8c8bcc4796ff68",
+          "ownerSourceSha256": "57255ab8a85d9a011bb9d757ed408e21894f1c0a915c091c3e8c8bcc4796ff68"
+        },
+        "docs/mcr/evidence/parade-ink-foundation/native04-controller.jsonl": {
+          "mode": "100644",
+          "blob": "8ce03140ecb6a38cae79579c7b6ff38394da4771",
+          "sha256": "3f21535f20f4b14e90002fe26d3cd48e34ce4562686dad6f2c3d9f5a674b2982",
+          "ownerSourceSha256": "3f21535f20f4b14e90002fe26d3cd48e34ce4562686dad6f2c3d9f5a674b2982"
+        },
+        "docs/mcr/evidence/parade-ink-foundation/native04/command-00.log": {
+          "mode": "100644",
+          "blob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "ownerSourceSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "docs/mcr/evidence/parade-ink-foundation/native04/command-01.log": {
+          "mode": "100644",
+          "blob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "ownerSourceSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "docs/mcr/evidence/parade-ink-foundation/native04/command-02.log": {
+          "mode": "100644",
+          "blob": "e2efabf9d653730dfe2e6c4047c141eef4bfb320",
+          "sha256": "e44c2ebde820863928e01dfb4090db7fe307e96d16a8bc1005e136994f038ae7",
+          "ownerSourceSha256": "e44c2ebde820863928e01dfb4090db7fe307e96d16a8bc1005e136994f038ae7"
+        },
+        "docs/mcr/evidence/parade-ink-foundation/native04/failure.png": {
+          "mode": "100644",
+          "blob": "e99f4bb0d91c91141cc4708dc2bec4f07f45ae0c",
+          "sha256": "d62b7aff1a1708dc9d81de04a23ea5c0dd7997b6ddc2a59cc9e1d919a2249218",
+          "ownerSourceSha256": "d62b7aff1a1708dc9d81de04a23ea5c0dd7997b6ddc2a59cc9e1d919a2249218"
+        },
+        "docs/mcr/evidence/parade-ink-foundation/native04/guardian.jsonl": {
+          "mode": "100644",
+          "blob": "dec62c2a22776cecc532cff3d7327174238b8e98",
+          "sha256": "4e37576dd2a1e66ebc4d3f6cd2396288bfe8a2b17622710b28e568229a15b575",
+          "ownerSourceSha256": "4e37576dd2a1e66ebc4d3f6cd2396288bfe8a2b17622710b28e568229a15b575"
+        },
+        "docs/mcr/evidence/parade-ink-foundation/native04/native.json": {
+          "mode": "100644",
+          "blob": "ea468f49aa6416f53ef2f81621c1e34c181b4ea4",
+          "sha256": "a9f2d58884ca6694f1068fcab4b7d32ec78abcd28063e1d79ba681f040eb7185",
+          "ownerSourceSha256": "a9f2d58884ca6694f1068fcab4b7d32ec78abcd28063e1d79ba681f040eb7185"
+        },
+        "docs/mcr/evidence/parade-ink-foundation/native04/readset.json": {
+          "mode": "100644",
+          "blob": "45d99d10916e9fa8db37829ce58b19fec3eb906f",
+          "sha256": "9630cc0b8b487b6a6348612dbadc27be868729f5e5189f61c5a559b31558c2c9",
+          "ownerSourceSha256": "9630cc0b8b487b6a6348612dbadc27be868729f5e5189f61c5a559b31558c2c9"
+        },
+        "docs/mcr/evidence/parade-ink-foundation/native04/release.json": {
+          "mode": "100644",
+          "blob": "aae10c11094a833b625ce29461712085443acd1e",
+          "sha256": "4741c202d9747b640dc05c0b46e4da5839be64087e662e8237402ed1113874de",
+          "ownerSourceSha256": "4741c202d9747b640dc05c0b46e4da5839be64087e662e8237402ed1113874de"
+        },
+        "docs/mcr/evidence/parade-ink-foundation/native05-controller.jsonl": {
+          "mode": "100644",
+          "blob": "4d03164276a5f419095921f6afdec48e270b521b",
+          "sha256": "d5ebb56288231de9689e6f823911b7f4bfaf7f2d6656588f7e0bd1c16a83fe3d",
+          "ownerSourceSha256": "d5ebb56288231de9689e6f823911b7f4bfaf7f2d6656588f7e0bd1c16a83fe3d"
+        },
+        "docs/mcr/evidence/parade-ink-foundation/native05/command-00.log": {
+          "mode": "100644",
+          "blob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "ownerSourceSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "docs/mcr/evidence/parade-ink-foundation/native05/command-01.log": {
+          "mode": "100644",
+          "blob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "ownerSourceSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "docs/mcr/evidence/parade-ink-foundation/native05/command-02.log": {
+          "mode": "100644",
+          "blob": "323561b5f3de28a4f43882e3d118384939b5e126",
+          "sha256": "c3ac6b8ef5dca20823f82325ffca9406621554a1fbf57e4c5753d2b0670473e0",
+          "ownerSourceSha256": "c3ac6b8ef5dca20823f82325ffca9406621554a1fbf57e4c5753d2b0670473e0"
+        },
+        "docs/mcr/evidence/parade-ink-foundation/native05/failure.png": {
+          "mode": "100644",
+          "blob": "c61ec06a88128d4c80763b9b0b6c8c8b35a08599",
+          "sha256": "c545d4564aceacc7a0d25a817b0a5a2af92494fb569ff50e943ce4cc4b8bcd85",
+          "ownerSourceSha256": "c545d4564aceacc7a0d25a817b0a5a2af92494fb569ff50e943ce4cc4b8bcd85"
+        },
+        "docs/mcr/evidence/parade-ink-foundation/native05/guardian.jsonl": {
+          "mode": "100644",
+          "blob": "17c60a976e2236252ab4fce58ddc8943bb1220cb",
+          "sha256": "072981e41e2a6d686da254284ed614e0387bfe362b08889a8deca62ba1273a97",
+          "ownerSourceSha256": "072981e41e2a6d686da254284ed614e0387bfe362b08889a8deca62ba1273a97"
+        },
+        "docs/mcr/evidence/parade-ink-foundation/native05/native.json": {
+          "mode": "100644",
+          "blob": "e821e1b13f970de923779498032e4fe23d88af00",
+          "sha256": "e03df64e16da33d92e68de580fafe1d026ce92e21bd5ba427e93c9b3f6a209b2",
+          "ownerSourceSha256": "e03df64e16da33d92e68de580fafe1d026ce92e21bd5ba427e93c9b3f6a209b2"
+        },
+        "docs/mcr/evidence/parade-ink-foundation/native05/readset.json": {
+          "mode": "100644",
+          "blob": "e9788b1544988eecced236feeda078398fd51751",
+          "sha256": "d14f820c6c71ec0042d1827c86ff03c5b615a259c9a8d97870d1db0074f8d6d8",
+          "ownerSourceSha256": "d14f820c6c71ec0042d1827c86ff03c5b615a259c9a8d97870d1db0074f8d6d8"
+        },
+        "docs/mcr/evidence/parade-ink-foundation/native05/release.json": {
+          "mode": "100644",
+          "blob": "0157fa044093101e285a33f70b9ec579973aa078",
+          "sha256": "39e2aff78d9052ef29c9fc3f4d0be479a9bd832d6dc07b89675139573a0f2a1d",
+          "ownerSourceSha256": "39e2aff78d9052ef29c9fc3f4d0be479a9bd832d6dc07b89675139573a0f2a1d"
+        },
+        "docs/mcr/evidence/parade-ink-foundation/native06-controller.jsonl": {
+          "mode": "100644",
+          "blob": "32e7748597f2bfb81ede82c223eb74434cba017a",
+          "sha256": "a7856ecae69c2c20ba2f5f8ac7afc06f53ad296e4c3a1dc1de259771350e2bbb",
+          "ownerSourceSha256": "a7856ecae69c2c20ba2f5f8ac7afc06f53ad296e4c3a1dc1de259771350e2bbb"
+        },
+        "docs/mcr/evidence/parade-ink-foundation/native06/app-composer-360.png": {
+          "mode": "100644",
+          "blob": "481b0328908aedd56462fd4aebe1509fdca20455",
+          "sha256": "4b47deba67b070aa300990e2c487b9c8754342ee1cf34838951d14c91442bf08",
+          "ownerSourceSha256": "4b47deba67b070aa300990e2c487b9c8754342ee1cf34838951d14c91442bf08"
+        },
+        "docs/mcr/evidence/parade-ink-foundation/native06/app-composer-390.png": {
+          "mode": "100644",
+          "blob": "b242f42099e4703ff5f79ab35fee0a47d13dffa7",
+          "sha256": "3a8f55241847fa8b54e969e90e34405c94fc367785d2988c7eb679a0293eeb05",
+          "ownerSourceSha256": "3a8f55241847fa8b54e969e90e34405c94fc367785d2988c7eb679a0293eeb05"
+        },
+        "docs/mcr/evidence/parade-ink-foundation/native06/app-composer-430.png": {
+          "mode": "100644",
+          "blob": "1b03bde829cc12fd3904aff440ce38de20d4ab1d",
+          "sha256": "feec8fc0388d5f4161d0aa6c0f6b2614117ec54a22ae4baaaaa136944808882a",
+          "ownerSourceSha256": "feec8fc0388d5f4161d0aa6c0f6b2614117ec54a22ae4baaaaa136944808882a"
+        },
+        "docs/mcr/evidence/parade-ink-foundation/native06/app-feed-360.png": {
+          "mode": "100644",
+          "blob": "8e7727d599379a0b3a23527b6f88522221437387",
+          "sha256": "c70457b58947589141865a7e87f08d45d5fc6e08e7ca0a16fa94df82ebeb272f",
+          "ownerSourceSha256": "c70457b58947589141865a7e87f08d45d5fc6e08e7ca0a16fa94df82ebeb272f"
+        },
+        "docs/mcr/evidence/parade-ink-foundation/native06/app-feed-390.png": {
+          "mode": "100644",
+          "blob": "8fba3b80dd2b562f68fa315684f8d02fcfd5e87b",
+          "sha256": "a8f89262c6f5c3a76033a2f8eb053814009f3a0d9183c70a178bef1758a7ce3d",
+          "ownerSourceSha256": "a8f89262c6f5c3a76033a2f8eb053814009f3a0d9183c70a178bef1758a7ce3d"
+        },
+        "docs/mcr/evidence/parade-ink-foundation/native06/app-feed-430.png": {
+          "mode": "100644",
+          "blob": "ce8465aac28a75f2a9cc56135d11b9dcf395e878",
+          "sha256": "f840dca35809413ab679814ef32178a6fd492e8fcc669e48fe891c06ae0ea8f6",
+          "ownerSourceSha256": "f840dca35809413ab679814ef32178a6fd492e8fcc669e48fe891c06ae0ea8f6"
+        },
+        "docs/mcr/evidence/parade-ink-foundation/native06/app-short-composer-360.png": {
+          "mode": "100644",
+          "blob": "d1df24dac5ff96ffd6cb642271ddf388f13e7a15",
+          "sha256": "2c1956f4ee275fae13d548d3fdfd8f1ca0cf2bab83417747f2f5669ec222e5a8",
+          "ownerSourceSha256": "2c1956f4ee275fae13d548d3fdfd8f1ca0cf2bab83417747f2f5669ec222e5a8"
+        },
+        "docs/mcr/evidence/parade-ink-foundation/native06/app-short-composer-390.png": {
+          "mode": "100644",
+          "blob": "908b5927e10a098addb40f81641d1031d9d98f74",
+          "sha256": "6af2e3d990728dd975ebb7e2d4ebcdfadd9bfb87436e446f08c7ac9fa22c8375",
+          "ownerSourceSha256": "6af2e3d990728dd975ebb7e2d4ebcdfadd9bfb87436e446f08c7ac9fa22c8375"
+        },
+        "docs/mcr/evidence/parade-ink-foundation/native06/app-short-composer-430.png": {
+          "mode": "100644",
+          "blob": "dd99d0ed80de7aa1f777961923aa273718aeed12",
+          "sha256": "b52dbec092eef158ada28532698cdbdaeef1b20309c7d72eeed52919744cb198",
+          "ownerSourceSha256": "b52dbec092eef158ada28532698cdbdaeef1b20309c7d72eeed52919744cb198"
+        },
+        "docs/mcr/evidence/parade-ink-foundation/native06/app-short-safe-area-composer-390.png": {
+          "mode": "100644",
+          "blob": "d5967765b21e28f465f021da39111bf4544d1a64",
+          "sha256": "32416e8c3c6e97dd737cb517d2b1684ae94597387ae8488eb9ca7bce04152db1",
+          "ownerSourceSha256": "32416e8c3c6e97dd737cb517d2b1684ae94597387ae8488eb9ca7bce04152db1"
+        },
+        "docs/mcr/evidence/parade-ink-foundation/native06/app-world-parade-360.png": {
+          "mode": "100644",
+          "blob": "f4b00348d18488b0917c71106520fbaf94f434dc",
+          "sha256": "c3f1cd8cfb33084ee68971df10ceb134f9626ddb5c02034e838c6cfcdd3349b6",
+          "ownerSourceSha256": "c3f1cd8cfb33084ee68971df10ceb134f9626ddb5c02034e838c6cfcdd3349b6"
+        },
+        "docs/mcr/evidence/parade-ink-foundation/native06/app-world-parade-390.png": {
+          "mode": "100644",
+          "blob": "dbc50f5f95b4c2a4128eba444f2f34836cadafc2",
+          "sha256": "b6f8101c8c5ad7caca493b2b484e62271b66a3166dae81ab03be9f815e60fda1",
+          "ownerSourceSha256": "b6f8101c8c5ad7caca493b2b484e62271b66a3166dae81ab03be9f815e60fda1"
+        },
+        "docs/mcr/evidence/parade-ink-foundation/native06/app-world-parade-430.png": {
+          "mode": "100644",
+          "blob": "bf28e9cb0de03c63365a060faa8309faa167c3a9",
+          "sha256": "68fe066b7439515788ba6dfd4cf7397dc3b65aee3da9a5c063716c828808bba8",
+          "ownerSourceSha256": "68fe066b7439515788ba6dfd4cf7397dc3b65aee3da9a5c063716c828808bba8"
+        },
+        "docs/mcr/evidence/parade-ink-foundation/native06/command-00.log": {
+          "mode": "100644",
+          "blob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "ownerSourceSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "docs/mcr/evidence/parade-ink-foundation/native06/command-01.log": {
+          "mode": "100644",
+          "blob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "ownerSourceSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "docs/mcr/evidence/parade-ink-foundation/native06/command-02.log": {
+          "mode": "100644",
+          "blob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "ownerSourceSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "docs/mcr/evidence/parade-ink-foundation/native06/command-03.log": {
+          "mode": "100644",
+          "blob": "26287862807b034191dac791dd37f50bf8127ce0",
+          "sha256": "a5d3af35d024be84971078b402d53bbc9a1ffe60a623bf8e5c780f4ae2355ef7",
+          "ownerSourceSha256": "a5d3af35d024be84971078b402d53bbc9a1ffe60a623bf8e5c780f4ae2355ef7"
+        },
+        "docs/mcr/evidence/parade-ink-foundation/native06/comparison.json": {
+          "mode": "100644",
+          "blob": "31b93b395384997faee33f1a45eb746a99995692",
+          "sha256": "e2211a5a69cb3a1807b73a00a8f7a2e9590cbe380ced831561583370d950f6bd",
+          "ownerSourceSha256": "e2211a5a69cb3a1807b73a00a8f7a2e9590cbe380ced831561583370d950f6bd"
+        },
+        "docs/mcr/evidence/parade-ink-foundation/native06/guardian.jsonl": {
+          "mode": "100644",
+          "blob": "12414c1c2c4ca36696b87528ad525ee833b6e71d",
+          "sha256": "6e0cbe268b77697797c9a29ceb19fe11308d2db27f16019fa58bd8ca25cc7d04",
+          "ownerSourceSha256": "6e0cbe268b77697797c9a29ceb19fe11308d2db27f16019fa58bd8ca25cc7d04"
+        },
+        "docs/mcr/evidence/parade-ink-foundation/native06/native.json": {
+          "mode": "100644",
+          "blob": "b4c31b618c9abddb6f369a75771a5201b0e11e55",
+          "sha256": "c7b5c7245724b6f512dc526e84e501ea7a8be6c9e0613f23e903cd7fa886df73",
+          "ownerSourceSha256": "c7b5c7245724b6f512dc526e84e501ea7a8be6c9e0613f23e903cd7fa886df73"
+        },
+        "docs/mcr/evidence/parade-ink-foundation/native06/readset.json": {
+          "mode": "100644",
+          "blob": "4fa10d8eee09cd3b4b44fa84977d662b0c08c800",
+          "sha256": "dca1cfa1608b77366ba0b874588c751ca702611c0fe06c12042e0b728e6adf91",
+          "ownerSourceSha256": "dca1cfa1608b77366ba0b874588c751ca702611c0fe06c12042e0b728e6adf91"
+        },
+        "docs/mcr/evidence/parade-ink-foundation/native06/reference-app-390.png": {
+          "mode": "100644",
+          "blob": "e2f641548e2989ef90dbdc46594aaa596aff4acc",
+          "sha256": "46822f75d4873b449577d99554b75c088b8ce014db5ec6ffcba5327e1a02147e",
+          "ownerSourceSha256": "46822f75d4873b449577d99554b75c088b8ce014db5ec6ffcba5327e1a02147e"
+        },
+        "docs/mcr/evidence/parade-ink-foundation/native06/release.json": {
+          "mode": "100644",
+          "blob": "8e40b45493a1977f017f50acce14316350649c53",
+          "sha256": "b575059244d95d209ac01715ad30057e85b3a09ac50d5af2ca47405edad805cb",
+          "ownerSourceSha256": "b575059244d95d209ac01715ad30057e85b3a09ac50d5af2ca47405edad805cb"
+        },
+        "docs/mcr/evidence/parade-ink-foundation/native06/supplemental-shared-focus-error-disabled.png": {
+          "mode": "100644",
+          "blob": "720e93c1fe76ec43e1203e14def16ac687f816c5",
+          "sha256": "4040e31b7c490a1867ff398500dd390070dad738366bfecf6004e56ed1319f1b",
+          "ownerSourceSha256": "4040e31b7c490a1867ff398500dd390070dad738366bfecf6004e56ed1319f1b"
+        },
+        "docs/mcr/evidence/parade-ink-foundation/native06/supplemental-shared-pressed.png": {
+          "mode": "100644",
+          "blob": "b95c4770a9e768068bab76b011b5fc30354088a9",
+          "sha256": "d2a12b76c3e9ed590dcb49223cb7d7f3b6fb12074fad809f9ba64312728c442d",
+          "ownerSourceSha256": "d2a12b76c3e9ed590dcb49223cb7d7f3b6fb12074fad809f9ba64312728c442d"
+        },
+        "docs/mcr/evidence/parade-ink-foundation/native06/supplemental-short-sheet.png": {
+          "mode": "100644",
+          "blob": "7e9906b58c14029baba95ba99808bf3141580472",
+          "sha256": "751ffb2d2cc14ada85cda15cb51421bd4a50ccc0fe1b4e2e0fbe59857e5a5b34",
+          "ownerSourceSha256": "751ffb2d2cc14ada85cda15cb51421bd4a50ccc0fe1b4e2e0fbe59857e5a5b34"
+        },
+        "docs/mcr/evidence/parade-ink-foundation/native07-controller-census.json": {
+          "mode": "100644",
+          "blob": "b5dd00b3052bbf778bb6891292efd018b808cd98",
+          "sha256": "7ab620c4486e8e8323b9dd851344cf234bc1ac6772f1d09d6f11784010067098",
+          "ownerSourceSha256": "7ab620c4486e8e8323b9dd851344cf234bc1ac6772f1d09d6f11784010067098"
+        },
+        "docs/mcr/evidence/parade-ink-foundation/native07-controller.jsonl": {
+          "mode": "100644",
+          "blob": "ec362ad6601a72a4d394d557d25a30917f4c6c80",
+          "sha256": "f59ed0e363c5be8d42e0181fe5d502d2d053107da2fea44e89675ceaceeb2f2f",
+          "ownerSourceSha256": "f59ed0e363c5be8d42e0181fe5d502d2d053107da2fea44e89675ceaceeb2f2f"
+        },
+        "docs/mcr/evidence/parade-ink-foundation/native07/command-00.log": {
+          "mode": "100644",
+          "blob": "7c9b3e0174426aa7f042fb83ac14a63ef23f8d41",
+          "sha256": "1e43b905e11ca028139fe5078016515111aaf7cebf8d6a3e224b7d03b9cb6ac9",
+          "ownerSourceSha256": "1e43b905e11ca028139fe5078016515111aaf7cebf8d6a3e224b7d03b9cb6ac9"
+        },
+        "docs/mcr/evidence/parade-ink-foundation/native07/command-01.log": {
+          "mode": "100644",
+          "blob": "598e87db5bb142a30f1d2dae9417d06fece8c754",
+          "sha256": "b14f7e133ab79d9e9880d8d4b99ea4c9e1a1af92465d00281a2d329fdd0b69f2",
+          "ownerSourceSha256": "b14f7e133ab79d9e9880d8d4b99ea4c9e1a1af92465d00281a2d329fdd0b69f2"
+        },
+        "docs/mcr/evidence/parade-ink-foundation/native07/command-02.log": {
+          "mode": "100644",
+          "blob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "ownerSourceSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "docs/mcr/evidence/parade-ink-foundation/native07/command-03.log": {
+          "mode": "100644",
+          "blob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "ownerSourceSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "docs/mcr/evidence/parade-ink-foundation/native07/command-04.log": {
+          "mode": "100644",
+          "blob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "ownerSourceSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "docs/mcr/evidence/parade-ink-foundation/native07/command-05.log": {
+          "mode": "100644",
+          "blob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "ownerSourceSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "docs/mcr/evidence/parade-ink-foundation/native07/guardian-census.json": {
+          "mode": "100644",
+          "blob": "cc5f4d9cfc3dcff22bad7e5c03071a7fd18648a8",
+          "sha256": "e9cfe2073bbdce53edb21e2b90a69c5b9aecbc8fb5fe6b8631d7841321f189a5",
+          "ownerSourceSha256": "e9cfe2073bbdce53edb21e2b90a69c5b9aecbc8fb5fe6b8631d7841321f189a5"
+        },
+        "docs/mcr/evidence/parade-ink-foundation/native07/guardian.jsonl": {
+          "mode": "100644",
+          "blob": "1da0608ba345ccd61e9a76331ebf3938953b8523",
+          "sha256": "bf5dd9ec01df35231a8d1f0db0551f2b2957ea80664f2dca7f50588d35c188e3",
+          "ownerSourceSha256": "bf5dd9ec01df35231a8d1f0db0551f2b2957ea80664f2dca7f50588d35c188e3"
+        },
+        "docs/mcr/evidence/parade-ink-foundation/native07/release.json": {
+          "mode": "100644",
+          "blob": "0ab72983003c7477033b443eb452728de308f3e0",
+          "sha256": "348a97f47633b86d41ad81765aa808a3b985961b94458a2898cbb7f448b20842",
+          "ownerSourceSha256": "348a97f47633b86d41ad81765aa808a3b985961b94458a2898cbb7f448b20842"
+        },
+        "docs/mcr/evidence/parade-ink-foundation/native08-controller.jsonl": {
+          "mode": "100644",
+          "blob": "b6768b001f7f18ca42e8b69d6cf1cdbcecc1beb7",
+          "sha256": "56d2a34839c180f3b6f35c709154d2f2bd35a171d97a1d8160016b65ffdba376",
+          "ownerSourceSha256": "56d2a34839c180f3b6f35c709154d2f2bd35a171d97a1d8160016b65ffdba376"
+        },
+        "docs/mcr/evidence/parade-ink-foundation/native08-invocation.json": {
+          "mode": "100644",
+          "blob": "e07ec70eb8c22099198b128e8d258afe50a3bb43",
+          "sha256": "fc38daddc189863068d447d6dc1c1b53d1349bb4e89d542a8a98235506fa2135",
+          "ownerSourceSha256": "fc38daddc189863068d447d6dc1c1b53d1349bb4e89d542a8a98235506fa2135"
+        },
+        "docs/mcr/evidence/parade-ink-foundation/native08/release.json": {
+          "mode": "100644",
+          "blob": "7f518478b9b28ec7ef9515f5dc0494824e3ef648",
+          "sha256": "60aa47f05939a5df89621fc18577043c19efa659a3507a874a4c07c2c432fed2",
+          "ownerSourceSha256": "60aa47f05939a5df89621fc18577043c19efa659a3507a874a4c07c2c432fed2"
+        },
+        "docs/mcr/evidence/parade-ink-foundation/native09-controller-census.json": {
+          "mode": "100644",
+          "blob": "23e05141dbb121e4d2c4c7a6fae86e974030a009",
+          "sha256": "5ccf9dbe57adc8aad1446484d14c42449d335d8668337fd2b5c80e09a85a267b",
+          "ownerSourceSha256": "5ccf9dbe57adc8aad1446484d14c42449d335d8668337fd2b5c80e09a85a267b"
+        },
+        "docs/mcr/evidence/parade-ink-foundation/native09-controller.jsonl": {
+          "mode": "100644",
+          "blob": "0688b7aac6f3fb18a93f3addb6de546397b55b4d",
+          "sha256": "8fd900595f5c9c4141e022bb99c02a1abfb11f4d2e8615e27a04338a3839d2e3",
+          "ownerSourceSha256": "8fd900595f5c9c4141e022bb99c02a1abfb11f4d2e8615e27a04338a3839d2e3"
+        },
+        "docs/mcr/evidence/parade-ink-foundation/native09-invocation.json": {
+          "mode": "100644",
+          "blob": "e77b616e6ed363e541333dc8fcfd55f6238cd102",
+          "sha256": "97b9c5d0cc6d4b490299caf04fdab60784e1197b07011bd9b4231724dfe67ca8",
+          "ownerSourceSha256": "97b9c5d0cc6d4b490299caf04fdab60784e1197b07011bd9b4231724dfe67ca8"
+        },
+        "docs/mcr/evidence/parade-ink-foundation/native09/command-00.log": {
+          "mode": "100644",
+          "blob": "95fe4b32ceed43844db98a7cecd4d03714d92a66",
+          "sha256": "4190e6532da5d52050bd5ea71ff40310f4ffe0846610b4b159650675a5a9c2b2",
+          "ownerSourceSha256": "4190e6532da5d52050bd5ea71ff40310f4ffe0846610b4b159650675a5a9c2b2"
+        },
+        "docs/mcr/evidence/parade-ink-foundation/native09/guardian-census.json": {
+          "mode": "100644",
+          "blob": "968b8c8d40c797fcd0743b4d8c0f252b92178b78",
+          "sha256": "73abf75899d93070982ffe8104da67aa3c68b10aaae25a402396bea661aee99b",
+          "ownerSourceSha256": "73abf75899d93070982ffe8104da67aa3c68b10aaae25a402396bea661aee99b"
+        },
+        "docs/mcr/evidence/parade-ink-foundation/native09/guardian.jsonl": {
+          "mode": "100644",
+          "blob": "a0d8f7619c1fcf80b6c9fe2f48b671ba6dc7458f",
+          "sha256": "e33b49119ae75e82c75082291146d5ed9d1d575f93e908e0ea910ad9c136cfd4",
+          "ownerSourceSha256": "e33b49119ae75e82c75082291146d5ed9d1d575f93e908e0ea910ad9c136cfd4"
+        },
+        "docs/mcr/evidence/parade-ink-foundation/native10-controller-census.json": {
+          "mode": "100644",
+          "blob": "260adf5ae08e0ee8c8d9e46aa4fb2ebe77bece37",
+          "sha256": "a0376849e6d744fec06b6c7e38996170478a1f4b8bdaa2bd184aaf607cff9b53",
+          "ownerSourceSha256": "a0376849e6d744fec06b6c7e38996170478a1f4b8bdaa2bd184aaf607cff9b53"
+        },
+        "docs/mcr/evidence/parade-ink-foundation/native10-controller.jsonl": {
+          "mode": "100644",
+          "blob": "f50379d376dddf817ca1ff56f5da51129fbc03c0",
+          "sha256": "c7abe5064ec8ecb470ea9513ae81ee95f201ed0ce0fa76996c92a6d0296bd968",
+          "ownerSourceSha256": "c7abe5064ec8ecb470ea9513ae81ee95f201ed0ce0fa76996c92a6d0296bd968"
+        },
+        "docs/mcr/evidence/parade-ink-foundation/native10-invocation.json": {
+          "mode": "100644",
+          "blob": "f2b6a327a033ae23bc771ca2f92cddfc85f9b4c3",
+          "sha256": "d0be94a5d6a30af51b6bb2957da8b0d79086e9d33d3fe0623437fefd941d61a8",
+          "ownerSourceSha256": "d0be94a5d6a30af51b6bb2957da8b0d79086e9d33d3fe0623437fefd941d61a8"
+        },
+        "docs/mcr/evidence/parade-ink-foundation/native10/app-feed-360.png": {
+          "mode": "100644",
+          "blob": "d2e46fd4839a55d8ee9af64f2da01fbad4c64ed9",
+          "sha256": "57aba1bae5ab276a603fe2abb819d0d961ecf4d9cc434ee5ec97e4c87411b44b",
+          "ownerSourceSha256": "57aba1bae5ab276a603fe2abb819d0d961ecf4d9cc434ee5ec97e4c87411b44b"
+        },
+        "docs/mcr/evidence/parade-ink-foundation/native10/app-feed-390.png": {
+          "mode": "100644",
+          "blob": "5a9ea8f8e727dc2b9194b5bc59e86c6a17b60641",
+          "sha256": "dd99fd2cf426312ca33a0c1c0124f017366e8b856a1dd73c43a1ddbd9a4a36b1",
+          "ownerSourceSha256": "dd99fd2cf426312ca33a0c1c0124f017366e8b856a1dd73c43a1ddbd9a4a36b1"
+        },
+        "docs/mcr/evidence/parade-ink-foundation/native10/app-feed-430.png": {
+          "mode": "100644",
+          "blob": "d880ee40816e6e156cad89418fb643a34756b79c",
+          "sha256": "dbaa46353913991d0a5993940e6b26f9fab631aeb6fdf638d34afd647b1d471e",
+          "ownerSourceSha256": "dbaa46353913991d0a5993940e6b26f9fab631aeb6fdf638d34afd647b1d471e"
+        },
+        "docs/mcr/evidence/parade-ink-foundation/native10/app-header-minimized-390.png": {
+          "mode": "100644",
+          "blob": "ac397635f3d2580f5d37849bb7224a67f401bee4",
+          "sha256": "b41152d6d50bbf5c4796bb223811ff22a47334595cd48370c9f031022691c095",
+          "ownerSourceSha256": "b41152d6d50bbf5c4796bb223811ff22a47334595cd48370c9f031022691c095"
+        },
+        "docs/mcr/evidence/parade-ink-foundation/native10/app-header-restored-390.png": {
+          "mode": "100644",
+          "blob": "864f79f3e507822fba2da0a02107d1c9c78ba1a2",
+          "sha256": "067b716ecdca9621f50cda27f83958a10668ba5aede9869526c8a88f84a832ba",
+          "ownerSourceSha256": "067b716ecdca9621f50cda27f83958a10668ba5aede9869526c8a88f84a832ba"
+        },
+        "docs/mcr/evidence/parade-ink-foundation/native10/command-00.log": {
+          "mode": "100644",
+          "blob": "e06da7f95daa0a53918f68f711452bda50c056bd",
+          "sha256": "45629e08d8c41ba474e149425cf4477b6ed2d14afbd48b41a5dea35ddb36ae32",
+          "ownerSourceSha256": "45629e08d8c41ba474e149425cf4477b6ed2d14afbd48b41a5dea35ddb36ae32"
+        },
+        "docs/mcr/evidence/parade-ink-foundation/native10/command-01.log": {
+          "mode": "100644",
+          "blob": "090df1479928cddcc59c59c2db06fcd805eb39c9",
+          "sha256": "c4d407905e6384f23a0417d3d802c48e34455ab1e6cb4d3b21297fadb49b304e",
+          "ownerSourceSha256": "c4d407905e6384f23a0417d3d802c48e34455ab1e6cb4d3b21297fadb49b304e"
+        },
+        "docs/mcr/evidence/parade-ink-foundation/native10/command-02.log": {
+          "mode": "100644",
+          "blob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "ownerSourceSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "docs/mcr/evidence/parade-ink-foundation/native10/command-03.log": {
+          "mode": "100644",
+          "blob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "ownerSourceSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "docs/mcr/evidence/parade-ink-foundation/native10/command-04.log": {
+          "mode": "100644",
+          "blob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "ownerSourceSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "docs/mcr/evidence/parade-ink-foundation/native10/command-05.log": {
+          "mode": "100644",
+          "blob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "ownerSourceSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "docs/mcr/evidence/parade-ink-foundation/native10/command-06.log": {
+          "mode": "100644",
+          "blob": "fb0788cfdbe7acdc3c3a1ac232b17b785609910c",
+          "sha256": "3f281c1cf39da0ce64d4ce4ceefb6330aad83cb18467c84e72bf5dc0557ef941",
+          "ownerSourceSha256": "3f281c1cf39da0ce64d4ce4ceefb6330aad83cb18467c84e72bf5dc0557ef941"
+        },
+        "docs/mcr/evidence/parade-ink-foundation/native10/comparison.json": {
+          "mode": "100644",
+          "blob": "b655ddade09894c67283a7efc78cc6972d5ac996",
+          "sha256": "94fc70b5c108cea5a9585f0a6b147bac86cf4aa4d45b55d4a509eb0e5b8ed1b6",
+          "ownerSourceSha256": "94fc70b5c108cea5a9585f0a6b147bac86cf4aa4d45b55d4a509eb0e5b8ed1b6"
+        },
+        "docs/mcr/evidence/parade-ink-foundation/native10/guardian-census.json": {
+          "mode": "100644",
+          "blob": "89b7813ae5caec17a2c74c2c12e30fb0b7374015",
+          "sha256": "76bdca07c3ff8663ce8bf1bffc8e858617b9b7416da6178ebf34c3bfc6e2d0a5",
+          "ownerSourceSha256": "76bdca07c3ff8663ce8bf1bffc8e858617b9b7416da6178ebf34c3bfc6e2d0a5"
+        },
+        "docs/mcr/evidence/parade-ink-foundation/native10/guardian.jsonl": {
+          "mode": "100644",
+          "blob": "410d335c479accdc52ed6c9b1ff27e0bbf04cd6b",
+          "sha256": "275e2cc8d9b390fbd6d50bd4c4016d7065836b61430ea96d7294271632428333",
+          "ownerSourceSha256": "275e2cc8d9b390fbd6d50bd4c4016d7065836b61430ea96d7294271632428333"
+        },
+        "docs/mcr/evidence/parade-ink-foundation/native10/native.json": {
+          "mode": "100644",
+          "blob": "bd10674d7225bda211104a257d4ffdb0d348825a",
+          "sha256": "da7f6a1b139f4ed569655bbb7953dd724c6e19ab36142fc4f4bb26de363ab166",
+          "ownerSourceSha256": "da7f6a1b139f4ed569655bbb7953dd724c6e19ab36142fc4f4bb26de363ab166"
+        },
+        "docs/mcr/evidence/parade-ink-foundation/native10/readset.json": {
+          "mode": "100644",
+          "blob": "829dd10e77e018dd75bfce04d2f2cf54d8724a11",
+          "sha256": "eb80d722f513ce794fe35317a87702dd2878321a2d76f313d36265b3d593d5ef",
+          "ownerSourceSha256": "eb80d722f513ce794fe35317a87702dd2878321a2d76f313d36265b3d593d5ef"
+        },
+        "docs/mcr/evidence/parade-ink-foundation/native10/reference-app-390.png": {
+          "mode": "100644",
+          "blob": "096e73f14cbfe98bdaf661b0f3d3eddf10615900",
+          "sha256": "a5902941103500c79a721aeff14b725b376139d971e4bac6d56815a79db484b5",
+          "ownerSourceSha256": "a5902941103500c79a721aeff14b725b376139d971e4bac6d56815a79db484b5"
+        },
+        "docs/mcr/evidence/parade-ink-foundation/native10/release.json": {
+          "mode": "100644",
+          "blob": "1ae0bb1828aef8ed9f7649f603f69a9bae87f279",
+          "sha256": "85cb477933b16891d4c9097d917ad8a0ddda458eed21a829d8f68c7ddfcb2678",
+          "ownerSourceSha256": "85cb477933b16891d4c9097d917ad8a0ddda458eed21a829d8f68c7ddfcb2678"
+        },
+        "docs/mcr/evidence/parade-ink-foundation/qualification-readset.json": {
+          "mode": "100644",
+          "blob": "c636f3980b9e9b8c2c39b6ba0cbb3415140f4f0b",
+          "sha256": "4aac4c9b2a1b9dd7c3cf9e9b8bd167004e3f19158c7769bbfba65ed834836ab5",
+          "ownerSourceSha256": "4aac4c9b2a1b9dd7c3cf9e9b8bd167004e3f19158c7769bbfba65ed834836ab5"
+        },
+        "frontend/src/app/__tests__/parade-ink-foundation/controller.py": {
+          "mode": "100644",
+          "blob": "9d9dc56ef64496f46c135b15bfaa277d08f41461",
+          "sha256": "99dd1eee9233602199644222c65a7af36f6f3f7279bb3ca6af799af1920a6b52",
+          "ownerSourceSha256": "99dd1eee9233602199644222c65a7af36f6f3f7279bb3ca6af799af1920a6b52"
+        },
+        "frontend/src/app/__tests__/parade-ink-foundation/guardian.py": {
+          "mode": "100644",
+          "blob": "b341f49bec9f04a89ae2e7c09f7b6e5077cec1a1",
+          "sha256": "a6f90c0033db07f6d5c954f586d84e55722ec99da673643d2de7383bce6440d5",
+          "ownerSourceSha256": "a6f90c0033db07f6d5c954f586d84e55722ec99da673643d2de7383bce6440d5"
+        },
+        "frontend/src/app/__tests__/parade-ink-foundation/membership.py": {
+          "mode": "100644",
+          "blob": "68d83dad0f73c5f9b9a24936f7d05949dc20d71b",
+          "sha256": "a462d804d7cead6e74992148421a2e2e86cb7ca2ddbc4fb4bbd83f57d569c9fb",
+          "ownerSourceSha256": "a462d804d7cead6e74992148421a2e2e86cb7ca2ddbc4fb4bbd83f57d569c9fb"
+        },
+        "frontend/src/app/__tests__/parade-ink-foundation/membership_test.py": {
+          "mode": "100644",
+          "blob": "70608bd432cfc0f1333ab1e54fc973b9dd41afa9",
+          "sha256": "8ffe1bdb9b1bb42fe3535e7fccec0e4b535b10d95d2c8c3786e45dbfe7134a73",
+          "ownerSourceSha256": "8ffe1bdb9b1bb42fe3535e7fccec0e4b535b10d95d2c8c3786e45dbfe7134a73"
+        },
+        "frontend/src/app/__tests__/parade-ink-foundation/native.mjs": {
+          "mode": "100644",
+          "blob": "86e279e4cf32d570b028fa64ad9682b5861af797",
+          "sha256": "4283751af6a49161dcfb806c7bf3c9712277abd85726ac1e61cc2eec7cc288d3",
+          "ownerSourceSha256": "4283751af6a49161dcfb806c7bf3c9712277abd85726ac1e61cc2eec7cc288d3"
+        },
+        "frontend/src/app/reference-chrome-v2/WindowInk.tsx": {
+          "mode": "100644",
+          "blob": "c4baed6c07299aae04b67dde3bde0d8153de1fce",
+          "sha256": "019662bb93b5eb92dd76b670738462c905a2a191ce7457b6ecbeb3efca9f33e4",
+          "ownerSourceSha256": "019662bb93b5eb92dd76b670738462c905a2a191ce7457b6ecbeb3efca9f33e4"
+        },
+        "frontend/src/app/reference-chrome-v2/chrome.css": {
+          "mode": "100644",
+          "blob": "a96564242f62ec6b7d1defdce441be89e36393d3",
+          "sha256": "6a5449d6d89bd16497a17c9e46a872f4b9f8afe3cedff76835045529d2afca45",
+          "ownerSourceSha256": "6a5449d6d89bd16497a17c9e46a872f4b9f8afe3cedff76835045529d2afca45"
+        },
+        "frontend/src/app/reference-chrome-v2/chrome.test.tsx": {
+          "mode": "100644",
+          "blob": "ca542e45e310c45c06bba619540f52bfdbcfbdc6",
+          "sha256": "426dac3bd024cb15e8deae666e3293fb9cbfcf5040761c48ce3948f360156802",
+          "ownerSourceSha256": "426dac3bd024cb15e8deae666e3293fb9cbfcf5040761c48ce3948f360156802"
+        },
+        "frontend/src/shared/styles/base.css": {
+          "mode": "100644",
+          "blob": "4ee1e20e56d2ecc6f0178753d17addf6b3438a56",
+          "sha256": "c687b4d31895eb1f1414277663bd5d707b56f6ded1abef9154262b9d27c2f303",
+          "ownerSourceSha256": "c687b4d31895eb1f1414277663bd5d707b56f6ded1abef9154262b9d27c2f303"
+        },
+        "docs/mcr/evidence/parade-ink-foundation/publication-followup.json": {
+          "mode": "100644",
+          "blob": "0d54fdc9b8d0142a753e8fb7daab142b79a186fd",
+          "sha256": "f860e090a9ab2c48372143b5191c9bf712c05cd94f066bf9283bee8b787a29aa",
+          "ownerSourceSha256": "f860e090a9ab2c48372143b5191c9bf712c05cd94f066bf9283bee8b787a29aa"
+        }
+      },
+      "exactPostimages": true,
+      "sharedPatchesApplied": [],
+      "diffCheck": 2,
+      "allowedDiffCheck": [
+        "docs/mcr/evidence/parade-ink-foundation/native07/command-01.log:9: new blank line at EOF.",
+        "docs/mcr/evidence/parade-ink-foundation/native10/command-01.log:9: new blank line at EOF."
+      ],
+      "qualification": "BOUNDED_PI01_SHARED_FOUNDATION_CORRECTION_ONLY.100paths=99listedpostimages+manifestself,3productionbase.css/WindowInk/chrome.css exactownerSHA and executed77cfe94a/readseteb80d722; no shell.css/peerFeedWorldAuthrouterartmanifest changes. Native10readset entireimplementation/harness/readonlyGitclosure verified; fourborrowed805Feedpostimages alreadycanonical and unchanged. Native06actualApp controlledHTTP/C05/geometrictestterrain3width+states/safearea16capturesPASS; finaldiffonlyWindowInk/chrome glyph correction. Native10HEADERONLY all7commandsPASS0:10resourceregressions/1headercallback(fullother6skipped)/fulltypes/lint/syntax/3widthplus390minrest5captures/PIL, literalouterFULL01:19:55.117465/all0/privateTMPlinkabsent/5365closed. Ownerpersonallyinspectedfivepluspair/publishernoimageinspection. Source02five/Source04sevenqualifiedtypeslintretained; allpriorrawFAILsource01/03/native02-05/07identity/08NameError/09ordinarypreserved. ExactlytwoimmutablelogEOFwhitespacefindingskept,other98clean/no normalization. Immutablecontrollercontract/actualabsoluteinvocation/censusincluded; no universalguard/backend35GiBclaim. Combinedcurrentmasterruntime/livebackend/multiuser/device/load/art/whole112task61IAacceptanceNOT_RUN; originalincompatiblegoalBLOCKEDunchanged; oldMapadoptionSTOP/newParadiseCityseparate. No applicationexecution/reviewACK/proofsuccessor/privateancestry.",
+      "sourceHistoryImported": false,
+      "alreadyPresent": false
+    },
+    {
+      "source": "36b9d54776e03f359bd744663c65be73fa65d837",
+      "postimageSnapshot": "36b9d54776e03f359bd744663c65be73fa65d837",
+      "documentComposition": null,
+      "base": "12361094851474726117374a304c973a2e33fd0e",
+      "preimageRevisions": {
+        "docs/mcr/backend/coherent-mains-guard-failure-2026-11-05.md": "cf7bb13735aeb20e0b796b2071726f048a211bd0"
+      },
+      "parent": "651159ec7bae9ff5e1bbc9d3dd083fc08faa02d9",
+      "published": "3a125d952cc55afbfac028afcafd7748dffaa056",
+      "owner": "01a1a1fc-7f3d-7ff1-9416-e3435c8a6f08",
+      "paths": [
+        "docs/mcr/backend/coherent-mains-guard-failure-2026-11-05.md",
+        "docs/mcr/backend/enrollment-application-closure-intake-2026-11-05.json"
+      ],
+      "changedPaths": [
+        "docs/mcr/backend/coherent-mains-guard-failure-2026-11-05.md",
+        "docs/mcr/backend/enrollment-application-closure-intake-2026-11-05.json"
+      ],
+      "classifications": {
+        "docs/mcr/backend/coherent-mains-guard-failure-2026-11-05.md": "EXACT_DECLARED_BASE_PREIMAGE",
+        "docs/mcr/backend/enrollment-application-closure-intake-2026-11-05.json": "NEW_PATH_ABSENT"
+      },
+      "modesBlobs": {
+        "docs/mcr/backend/coherent-mains-guard-failure-2026-11-05.md": {
+          "mode": "100644",
+          "blob": "ca17137d165ac8d7ed38a1453d6bb427020bc552",
+          "sha256": "9595a28cc3e0664853a3f26b2a61e3d540738f9252baf55dc4be0b60c372cdfd",
+          "ownerSourceSha256": "9595a28cc3e0664853a3f26b2a61e3d540738f9252baf55dc4be0b60c372cdfd"
+        },
+        "docs/mcr/backend/enrollment-application-closure-intake-2026-11-05.json": {
+          "mode": "100644",
+          "blob": "14d678072c650af7619bbb89dd8b01591add1fb6",
+          "sha256": "8842c60c53703b246f9b9e3984aeec00909399958bd5e89250f557dcf2029091",
+          "ownerSourceSha256": "8842c60c53703b246f9b9e3984aeec00909399958bd5e89250f557dcf2029091"
+        }
+      },
+      "exactPostimages": true,
+      "sharedPatchesApplied": [],
+      "diffCheck": 0,
+      "allowedDiffCheck": [],
+      "qualification": "DOC_ONLY2EXACTPOSTIMAGES. Failuredoc8175B/SHA9595a28c retains all5015canonicalprefix/SHAec0d81b9exact and appends permanentlyclosedRoot03actualfailure; enrollment-application-closure-intakeJSON1699B/SHA8842c60c provenanceONLY/no applicationcode. Round03actualACCEPT1793840885.150468/FULL1793840889.297896/FULLSHA3623a486retained; initialsamplespassedthen guardianmisclassifiedactualordinaryPI01authoring19687, rolefactuallyconfirmed/no retroactivePASS; separate8131stillunresolved. Primarymeasurementinterruptednotqualifiedrootdefectproof. No completedmainartifact/qualifiedruntime; all0releasedperdocument. Future04controls/processonlypre-admission notbuild/runtimequalification, offerunacceptedatdocumenttime/no newexecutionby publisher. No backend868/123/privateancestry/controlimport. Exactcurrentcanonicalpreimageexplicitoverride because ownprivateparent hasno failuredoc; newintakeJSON independentlynewcanonical. Scopedwhitespace0/loanpreserved; no test/build/browser/reviewACK/proofsuccessor.",
+      "sourceHistoryImported": false,
+      "alreadyPresent": false
+    }
+  ],
+  "conflicts": [],
+  "outputDirectory": "/var/folders/j4/41h_5mjj7j9d8f2j2bzcsngw0000gn/T/mcr-publisher-412e-qbsg8swp",
+  "loanBefore": {
+    "head": "bd26465542f1b22e6dba8bb92fd241e0f44ef72f",
+    "statusHex": "3f3f20646f63732f6d63722f65766964656e63652f76697375616c2f716130362f636f6e73756d6572732d76312f003f3f20646f63732f6d63722f65766964656e63652f76697375616c2f716130362f636f6e73756d6572732d76322f003f3f20646f63732f6d63722f65766964656e63652f76697375616c2f716130362f636f6e73756d6572732d76342f003f3f20646f63732f6d63722f65766964656e63652f76697375616c2f716130362f6d6f64616c2d64656275672d3336302f003f3f20646f63732f6d63722f65766964656e63652f76697375616c2f716130362f6d6f64616c2d76312f003f3f20646f63732f6d63722f65766964656e63652f76697375616c2f716130362f736d6f6b652d3339302f003f3f20646f63732f6d63722f65766964656e63652f76697375616c2f716130362f736d6f6b65322d3339302f003f3f20646f63732f6d63722f65766964656e63652f76697375616c2f716130362f736d6f6b65332d3339302f00",
+    "indexSha256": "8665c94bb18a632c9059bf2aa6db1e61a8f6b2fbe8d0822529450a4196d0903e",
+    "leaves": {
+      "docs/mcr/evidence/visual/qa06/consumers-v1/gift-pickup-390-reduced420.png": {
+        "mode": 420,
+        "bytes": 28722,
+        "sha256": "177d5eb0fc97f3f6bbd0c03e794c12de9c31ff3a4e98c0e26b6d3264af2b548a"
+      },
+      "docs/mcr/evidence/visual/qa06/consumers-v1/gift-pickup-390.png": {
+        "mode": 420,
+        "bytes": 55415,
+        "sha256": "5c80d3874525805a08a69d0bc51406c1429013f24fd1ad2147eac911b5e0b9a0"
+      },
+      "docs/mcr/evidence/visual/qa06/consumers-v1/gift-pickup-430-reduced420.png": {
+        "mode": 420,
+        "bytes": 29644,
+        "sha256": "ce2508d0f20e44282dbc0606411727e29c363866428a7ad8b5c3f4628c465781"
+      },
+      "docs/mcr/evidence/visual/qa06/consumers-v1/gift-pickup-430.png": {
+        "mode": 420,
+        "bytes": 56907,
+        "sha256": "26281eb5cb251545ab93566d2ba6ed8d7f5567248ed8c48bffefff2feb687a6c"
+      },
+      "docs/mcr/evidence/visual/qa06/consumers-v1/report.partial.json": {
+        "mode": 420,
+        "bytes": 26210,
+        "sha256": "6fdc99720bb9fbca6b65c4abf7d45428e876a479bb1cc6b741be024cfe8ce262"
+      },
+      "docs/mcr/evidence/visual/qa06/consumers-v1/wall-caller-360.png": {
+        "mode": 420,
+        "bytes": 52767,
+        "sha256": "1269b0b3365ae605a57f284f11891ec584c38c79c61a88be2af31aa7eec3f310"
+      },
+      "docs/mcr/evidence/visual/qa06/consumers-v1/wall-caller-390.png": {
+        "mode": 420,
+        "bytes": 51612,
+        "sha256": "23676c765159542a6d6b737388cd2898c2f20dec2ebe2a8607932de4ee54f5c7"
+      },
+      "docs/mcr/evidence/visual/qa06/consumers-v1/wall-caller-430.png": {
+        "mode": 420,
+        "bytes": 50190,
+        "sha256": "cd1c71f4772f4abb6f2b584fd0fdaf3bbf8f47402d7af74ba63f517035846944"
+      },
+      "docs/mcr/evidence/visual/qa06/consumers-v2/gift-pickup-360-reduced420.png": {
+        "mode": 420,
+        "bytes": 29116,
+        "sha256": "1c718ff7a104586790919cfe6d7e0239285205a5692e02e5aa7120076fac7db2"
+      },
+      "docs/mcr/evidence/visual/qa06/consumers-v2/gift-pickup-360.png": {
+        "mode": 420,
+        "bytes": 54463,
+        "sha256": "3c436ceb99b198454802389b752dbbfaf54ffbecfde35e82e719753a8daafa28"
+      },
+      "docs/mcr/evidence/visual/qa06/consumers-v2/gift-pickup-390-reduced420.png": {
+        "mode": 420,
+        "bytes": 28505,
+        "sha256": "ae14d4c928b69dd07305408287ff77d2046b0fdfe5416313b5d3b08e37d620fd"
+      },
+      "docs/mcr/evidence/visual/qa06/consumers-v2/gift-pickup-390.png": {
+        "mode": 420,
+        "bytes": 55415,
+        "sha256": "5c80d3874525805a08a69d0bc51406c1429013f24fd1ad2147eac911b5e0b9a0"
+      },
+      "docs/mcr/evidence/visual/qa06/consumers-v2/report.partial.json": {
+        "mode": 420,
+        "bytes": 17208,
+        "sha256": "0a662c48af2b886f5fbbbb3da9122a3c24a56ffecdedbc5608d6d59497b024bd"
+      },
+      "docs/mcr/evidence/visual/qa06/consumers-v2/wall-caller-360.png": {
+        "mode": 420,
+        "bytes": 52767,
+        "sha256": "1269b0b3365ae605a57f284f11891ec584c38c79c61a88be2af31aa7eec3f310"
+      },
+      "docs/mcr/evidence/visual/qa06/consumers-v2/wall-caller-390.png": {
+        "mode": 420,
+        "bytes": 51612,
+        "sha256": "23676c765159542a6d6b737388cd2898c2f20dec2ebe2a8607932de4ee54f5c7"
+      },
+      "docs/mcr/evidence/visual/qa06/consumers-v4/report.json": {
+        "mode": 420,
+        "bytes": 2098,
+        "sha256": "28efcd71a2d663062c654432f4f235b669a46fb9634f46c568e1d5ef836761fc"
+      },
+      "docs/mcr/evidence/visual/qa06/modal-debug-360/modal-closed-revenge-360.png": {
+        "mode": 420,
+        "bytes": 168008,
+        "sha256": "f6a17ea07832989fa4825d70ce93eda84880d8a21d422c05a348b9881a0c14f6"
+      },
+      "docs/mcr/evidence/visual/qa06/modal-debug-360/modal-search-revenge-360.png": {
+        "mode": 420,
+        "bytes": 27407,
+        "sha256": "b833eb7a966dc167c1f56247c9a8051437d060a5e458e09a1af9ae0a8f10a84a"
+      },
+      "docs/mcr/evidence/visual/qa06/modal-debug-360/report.json": {
+        "mode": 420,
+        "bytes": 4543,
+        "sha256": "af68015843f365759cf3d513d96a58ba955fec380e80814f4e943ec9d2fc0ee7"
+      },
+      "docs/mcr/evidence/visual/qa06/modal-v1/modal-search-danger-360.png": {
+        "mode": 420,
+        "bytes": 27411,
+        "sha256": "f7366db5a09bd0966d7a678449c87b638470c1cb15898f202997d6255a75f83a"
+      },
+      "docs/mcr/evidence/visual/qa06/modal-v1/modal-search-danger-390.png": {
+        "mode": 420,
+        "bytes": 27582,
+        "sha256": "7077968761e319a9e3d76829740c31e605af43bbe496719c9b716b76125b2874"
+      },
+      "docs/mcr/evidence/visual/qa06/modal-v1/modal-search-danger-430.png": {
+        "mode": 420,
+        "bytes": 29118,
+        "sha256": "ae591e721c231855dd3f5c1535e8c9cbb8c55bd08f2523f9546bfc768b28f7b9"
+      },
+      "docs/mcr/evidence/visual/qa06/modal-v1/modal-search-parade-360.png": {
+        "mode": 420,
+        "bytes": 27407,
+        "sha256": "9873782231c90567573f905705afdd66d28a82d67d1950436ddf238236e6b4e3"
+      },
+      "docs/mcr/evidence/visual/qa06/modal-v1/modal-search-parade-390.png": {
+        "mode": 420,
+        "bytes": 27584,
+        "sha256": "9cf39dfdf974b16de17e0c0882a670f30c266a47fc4b271de485d8cb52362e69"
+      },
+      "docs/mcr/evidence/visual/qa06/modal-v1/modal-search-parade-430.png": {
+        "mode": 420,
+        "bytes": 29106,
+        "sha256": "20fbf6113f93b2da9f3d7a00c963fbf833c31c5cabe3758984b46a8402764e2a"
+      },
+      "docs/mcr/evidence/visual/qa06/modal-v1/modal-search-revenge-360.png": {
+        "mode": 420,
+        "bytes": 27407,
+        "sha256": "b833eb7a966dc167c1f56247c9a8051437d060a5e458e09a1af9ae0a8f10a84a"
+      },
+      "docs/mcr/evidence/visual/qa06/modal-v1/modal-search-revenge-390.png": {
+        "mode": 420,
+        "bytes": 27585,
+        "sha256": "3eb377156a5ba264e74740c62fdd746f7d6257361a6c1500f6cae1bc5236b624"
+      },
+      "docs/mcr/evidence/visual/qa06/modal-v1/modal-search-revenge-430.png": {
+        "mode": 420,
+        "bytes": 29128,
+        "sha256": "97977bec4bdaae97df9e01947344299cd131c37bc75214554e7bc761b1a43d9b"
+      },
+      "docs/mcr/evidence/visual/qa06/modal-v1/report.json": {
+        "mode": 420,
+        "bytes": 17785,
+        "sha256": "a4a95c078c5f96d273e99e9c5713e6f88e08e8e93b148990c297302a37838bb8"
+      },
+      "docs/mcr/evidence/visual/qa06/smoke-390/landing-revenge-390.png": {
+        "mode": 420,
+        "bytes": 248289,
+        "sha256": "dbb09ff5b80b7ceb578c17778b3021722655ff2c55f9af1904ded21345e288cc"
+      },
+      "docs/mcr/evidence/visual/qa06/smoke-390/login-revenge-390-reduced420.png": {
+        "mode": 420,
+        "bytes": 199196,
+        "sha256": "7205188bcc0fb1f7668f0fde46341797b7fc14921694686df109fea5a973dd50"
+      },
+      "docs/mcr/evidence/visual/qa06/smoke-390/login-revenge-390.png": {
+        "mode": 420,
+        "bytes": 368543,
+        "sha256": "ea52a7559e8bcba3b79f3630b1cec7af429ee07fada24d79defb58fa6fa2bd7a"
+      },
+      "docs/mcr/evidence/visual/qa06/smoke-390/report.json": {
+        "mode": 420,
+        "bytes": 36999,
+        "sha256": "8d9aa3db959fd97b59120a9ac9374f9fc9a55664e565988ae6e751847e2e5a18"
+      },
+      "docs/mcr/evidence/visual/qa06/smoke-390/report.partial.json": {
+        "mode": 420,
+        "bytes": 36955,
+        "sha256": "e12f9f25c1276aa92105e199d29c410672aa2036e8baa7b0994d80ffe4aebdc3"
+      },
+      "docs/mcr/evidence/visual/qa06/smoke-390/world-revenge-390.png": {
+        "mode": 420,
+        "bytes": 210070,
+        "sha256": "168152eafc8182691125732838f17801aee31b0e31290222c42f478345171b28"
+      },
+      "docs/mcr/evidence/visual/qa06/smoke2-390/customize-revenge-390-reduced420.png": {
+        "mode": 420,
+        "bytes": 38677,
+        "sha256": "cbf94efdf5f1f470ecc352769e57f9fb866508fec1c615687f4c5c66f5a8cc13"
+      },
+      "docs/mcr/evidence/visual/qa06/smoke2-390/customize-revenge-390.png": {
+        "mode": 420,
+        "bytes": 61268,
+        "sha256": "b6d320887196179f18b3dc0b6ae81648080b56d390ae23af9baa86c83f25e677"
+      },
+      "docs/mcr/evidence/visual/qa06/smoke2-390/feed-revenge-390-reduced420.png": {
+        "mode": 420,
+        "bytes": 37662,
+        "sha256": "426c3758f72f168ce6d66bef8b12cd7cc2d6314950d0143860fa1a12212ebb5e"
+      },
+      "docs/mcr/evidence/visual/qa06/smoke2-390/feed-revenge-390.png": {
+        "mode": 420,
+        "bytes": 62634,
+        "sha256": "2ac956c4c04dcd468721a158684dc59a2b7b8c8b3c43f3b136170c9b46faaed1"
+      },
+      "docs/mcr/evidence/visual/qa06/smoke2-390/gifts-revenge-390.png": {
+        "mode": 420,
+        "bytes": 97300,
+        "sha256": "df524cccd38b991e699085939d17229f8702ee6c884411922918dd262a0bab10"
+      },
+      "docs/mcr/evidence/visual/qa06/smoke2-390/landing-revenge-390.png": {
+        "mode": 420,
+        "bytes": 248289,
+        "sha256": "dbb09ff5b80b7ceb578c17778b3021722655ff2c55f9af1904ded21345e288cc"
+      },
+      "docs/mcr/evidence/visual/qa06/smoke2-390/login-revenge-390-reduced420.png": {
+        "mode": 420,
+        "bytes": 199196,
+        "sha256": "7205188bcc0fb1f7668f0fde46341797b7fc14921694686df109fea5a973dd50"
+      },
+      "docs/mcr/evidence/visual/qa06/smoke2-390/login-revenge-390.png": {
+        "mode": 420,
+        "bytes": 368543,
+        "sha256": "ea52a7559e8bcba3b79f3630b1cec7af429ee07fada24d79defb58fa6fa2bd7a"
+      },
+      "docs/mcr/evidence/visual/qa06/smoke2-390/map-revenge-390-reduced420.png": {
+        "mode": 420,
+        "bytes": 86888,
+        "sha256": "839ad00cc9ce22e8d93c0a3dc2296132fb7d132f8df98a66637bbc3e2f06430f"
+      },
+      "docs/mcr/evidence/visual/qa06/smoke2-390/map-revenge-390.png": {
+        "mode": 420,
+        "bytes": 162846,
+        "sha256": "fff9ab6af83bf3e4461201372ad6d40e62627efeb3472ab87058744b70fabe25"
+      },
+      "docs/mcr/evidence/visual/qa06/smoke2-390/me-revenge-390.png": {
+        "mode": 420,
+        "bytes": 73424,
+        "sha256": "6f59de1d34b97194ccfebb9dd2c4eff46d5332bb75a9c1903b5a2a7d4dd5953c"
+      },
+      "docs/mcr/evidence/visual/qa06/smoke2-390/meet-revenge-390.png": {
+        "mode": 420,
+        "bytes": 96449,
+        "sha256": "e646c50ee6a0a1314f8527838820ace303f90ad0384eed9077663ec2031bd7da"
+      },
+      "docs/mcr/evidence/visual/qa06/smoke2-390/report.json": {
+        "mode": 420,
+        "bytes": 150030,
+        "sha256": "df12df9d57bf98f2c2a2a7e0d4972f9836cdef0f87a97d1e0c5f921e6ac73248"
+      },
+      "docs/mcr/evidence/visual/qa06/smoke2-390/report.partial.json": {
+        "mode": 420,
+        "bytes": 149984,
+        "sha256": "60f4adb3876b2f3530bcf131f4c18d9d1037c4bdfe71d99871ba0013836dfb57"
+      },
+      "docs/mcr/evidence/visual/qa06/smoke2-390/wall-revenge-390.png": {
+        "mode": 420,
+        "bytes": 58727,
+        "sha256": "8b9e8e4e21ea42bf2c83710d15c31179868988727b01f493119757a651ebb3e6"
+      },
+      "docs/mcr/evidence/visual/qa06/smoke2-390/world-revenge-390.png": {
+        "mode": 420,
+        "bytes": 210070,
+        "sha256": "168152eafc8182691125732838f17801aee31b0e31290222c42f478345171b28"
+      },
+      "docs/mcr/evidence/visual/qa06/smoke3-390/customize-revenge-390-reduced420.png": {
+        "mode": 420,
+        "bytes": 38423,
+        "sha256": "442c9bedb0bdbd72952000d32b545087d9a1fe00307b81601321e9e9dd90dd12"
+      },
+      "docs/mcr/evidence/visual/qa06/smoke3-390/customize-revenge-390.png": {
+        "mode": 420,
+        "bytes": 61268,
+        "sha256": "b6d320887196179f18b3dc0b6ae81648080b56d390ae23af9baa86c83f25e677"
+      },
+      "docs/mcr/evidence/visual/qa06/smoke3-390/feed-revenge-390-reduced420.png": {
+        "mode": 420,
+        "bytes": 32175,
+        "sha256": "301d8bb2f51961040943f8097369b0297bd894429020a60b64caeb613d5ef9c0"
+      },
+      "docs/mcr/evidence/visual/qa06/smoke3-390/feed-revenge-390.png": {
+        "mode": 420,
+        "bytes": 62634,
+        "sha256": "2ac956c4c04dcd468721a158684dc59a2b7b8c8b3c43f3b136170c9b46faaed1"
+      },
+      "docs/mcr/evidence/visual/qa06/smoke3-390/gifts-revenge-390.png": {
+        "mode": 420,
+        "bytes": 97300,
+        "sha256": "df524cccd38b991e699085939d17229f8702ee6c884411922918dd262a0bab10"
+      },
+      "docs/mcr/evidence/visual/qa06/smoke3-390/landing-revenge-390.png": {
+        "mode": 420,
+        "bytes": 248289,
+        "sha256": "dbb09ff5b80b7ceb578c17778b3021722655ff2c55f9af1904ded21345e288cc"
+      },
+      "docs/mcr/evidence/visual/qa06/smoke3-390/login-revenge-390-reduced420.png": {
+        "mode": 420,
+        "bytes": 199502,
+        "sha256": "b0d529c6f6285b50d89cc66d66fdcb53e77745e6c21b90ce9bbdf6e927acc848"
+      },
+      "docs/mcr/evidence/visual/qa06/smoke3-390/login-revenge-390.png": {
+        "mode": 420,
+        "bytes": 368543,
+        "sha256": "ea52a7559e8bcba3b79f3630b1cec7af429ee07fada24d79defb58fa6fa2bd7a"
+      },
+      "docs/mcr/evidence/visual/qa06/smoke3-390/map-revenge-390-reduced420.png": {
+        "mode": 420,
+        "bytes": 85895,
+        "sha256": "3c3ccb3aa7d8893d76bd17d36fb0b0a733ddf8c23b6d8c4fe0d66951cb86358c"
+      },
+      "docs/mcr/evidence/visual/qa06/smoke3-390/map-revenge-390.png": {
+        "mode": 420,
+        "bytes": 162839,
+        "sha256": "9beacd7938fe6638d540fb8ddf95775576fa1cf8404b8a1a47c3e32f09034ae2"
+      },
+      "docs/mcr/evidence/visual/qa06/smoke3-390/me-revenge-390.png": {
+        "mode": 420,
+        "bytes": 73424,
+        "sha256": "6f59de1d34b97194ccfebb9dd2c4eff46d5332bb75a9c1903b5a2a7d4dd5953c"
+      },
+      "docs/mcr/evidence/visual/qa06/smoke3-390/meet-revenge-390.png": {
+        "mode": 420,
+        "bytes": 96449,
+        "sha256": "e646c50ee6a0a1314f8527838820ace303f90ad0384eed9077663ec2031bd7da"
+      },
+      "docs/mcr/evidence/visual/qa06/smoke3-390/report.json": {
+        "mode": 420,
+        "bytes": 181695,
+        "sha256": "50a1c755f5acc67422370a294324c86e0b4a296508f7ed71d13b35f096c687b6"
+      },
+      "docs/mcr/evidence/visual/qa06/smoke3-390/report.partial.json": {
+        "mode": 420,
+        "bytes": 181649,
+        "sha256": "e7812180ff39a3af8ae338ff09d42f046566a2c634ef5dd2255608d5700a5a5a"
+      },
+      "docs/mcr/evidence/visual/qa06/smoke3-390/spatial-v4-map-revenge-390.png": {
+        "mode": 420,
+        "bytes": 431002,
+        "sha256": "d85bac8a9d393b0307efc8889390ab475917f972ea0f1abc000ec5a28fd65dc7"
+      },
+      "docs/mcr/evidence/visual/qa06/smoke3-390/spatial-v4-world-revenge-390.png": {
+        "mode": 420,
+        "bytes": 315643,
+        "sha256": "9a2ddc8302d755800038a60fd23fcc0e12cbeacdf77d474a495b7f92cd959cd9"
+      },
+      "docs/mcr/evidence/visual/qa06/smoke3-390/wall-revenge-390.png": {
+        "mode": 420,
+        "bytes": 58727,
+        "sha256": "8b9e8e4e21ea42bf2c83710d15c31179868988727b01f493119757a651ebb3e6"
+      },
+      "docs/mcr/evidence/visual/qa06/smoke3-390/world-revenge-390.png": {
+        "mode": 420,
+        "bytes": 210070,
+        "sha256": "168152eafc8182691125732838f17801aee31b0e31290222c42f478345171b28"
+      }
+    }
+  },
+  "base": "cf7bb13735aeb20e0b796b2071726f048a211bd0",
+  "tip": "3a125d952cc55afbfac028afcafd7748dffaa056",
+  "capacity": {
+    "liveFloorBytes": 8589934592,
+    "conservativeRemainingBookingBytes": 134217728,
+    "samples": 682,
+    "minimumAvailableBytes": 23472136192,
+    "lastAvailableBytes": 23475089408,
+    "clearance": "Existing21d23:36 standing<=128MiB ordinaryGit-onlybooking; fresh8GiB+remainingbooking, no new execution grant or reservation",
+    "newReservationOrCapReset": false
+  },
+  "push": {
+    "exit": 0,
+    "stdout": "",
+    "stderr": "To https://github.com/julymeltdown/mcr.git\n   cf7bb1373..3a125d952  codex/mcr-delivery-publisher-412e -> master\n"
+  },
+  "remote": "3a125d952cc55afbfac028afcafd7748dffaa056",
+  "independentLsRemote": "3a125d952cc55afbfac028afcafd7748dffaa056",
+  "loanPreserved": true,
+  "loanAfter": {
+    "head": "bd26465542f1b22e6dba8bb92fd241e0f44ef72f",
+    "statusHex": "3f3f20646f63732f6d63722f65766964656e63652f76697375616c2f716130362f636f6e73756d6572732d76312f003f3f20646f63732f6d63722f65766964656e63652f76697375616c2f716130362f636f6e73756d6572732d76322f003f3f20646f63732f6d63722f65766964656e63652f76697375616c2f716130362f636f6e73756d6572732d76342f003f3f20646f63732f6d63722f65766964656e63652f76697375616c2f716130362f6d6f64616c2d64656275672d3336302f003f3f20646f63732f6d63722f65766964656e63652f76697375616c2f716130362f6d6f64616c2d76312f003f3f20646f63732f6d63722f65766964656e63652f76697375616c2f716130362f736d6f6b652d3339302f003f3f20646f63732f6d63722f65766964656e63652f76697375616c2f716130362f736d6f6b65322d3339302f003f3f20646f63732f6d63722f65766964656e63652f76697375616c2f716130362f736d6f6b65332d3339302f00",
+    "indexSha256": "8665c94bb18a632c9059bf2aa6db1e61a8f6b2fbe8d0822529450a4196d0903e",
+    "leaves": {
+      "docs/mcr/evidence/visual/qa06/consumers-v1/gift-pickup-390-reduced420.png": {
+        "mode": 420,
+        "bytes": 28722,
+        "sha256": "177d5eb0fc97f3f6bbd0c03e794c12de9c31ff3a4e98c0e26b6d3264af2b548a"
+      },
+      "docs/mcr/evidence/visual/qa06/consumers-v1/gift-pickup-390.png": {
+        "mode": 420,
+        "bytes": 55415,
+        "sha256": "5c80d3874525805a08a69d0bc51406c1429013f24fd1ad2147eac911b5e0b9a0"
+      },
+      "docs/mcr/evidence/visual/qa06/consumers-v1/gift-pickup-430-reduced420.png": {
+        "mode": 420,
+        "bytes": 29644,
+        "sha256": "ce2508d0f20e44282dbc0606411727e29c363866428a7ad8b5c3f4628c465781"
+      },
+      "docs/mcr/evidence/visual/qa06/consumers-v1/gift-pickup-430.png": {
+        "mode": 420,
+        "bytes": 56907,
+        "sha256": "26281eb5cb251545ab93566d2ba6ed8d7f5567248ed8c48bffefff2feb687a6c"
+      },
+      "docs/mcr/evidence/visual/qa06/consumers-v1/report.partial.json": {
+        "mode": 420,
+        "bytes": 26210,
+        "sha256": "6fdc99720bb9fbca6b65c4abf7d45428e876a479bb1cc6b741be024cfe8ce262"
+      },
+      "docs/mcr/evidence/visual/qa06/consumers-v1/wall-caller-360.png": {
+        "mode": 420,
+        "bytes": 52767,
+        "sha256": "1269b0b3365ae605a57f284f11891ec584c38c79c61a88be2af31aa7eec3f310"
+      },
+      "docs/mcr/evidence/visual/qa06/consumers-v1/wall-caller-390.png": {
+        "mode": 420,
+        "bytes": 51612,
+        "sha256": "23676c765159542a6d6b737388cd2898c2f20dec2ebe2a8607932de4ee54f5c7"
+      },
+      "docs/mcr/evidence/visual/qa06/consumers-v1/wall-caller-430.png": {
+        "mode": 420,
+        "bytes": 50190,
+        "sha256": "cd1c71f4772f4abb6f2b584fd0fdaf3bbf8f47402d7af74ba63f517035846944"
+      },
+      "docs/mcr/evidence/visual/qa06/consumers-v2/gift-pickup-360-reduced420.png": {
+        "mode": 420,
+        "bytes": 29116,
+        "sha256": "1c718ff7a104586790919cfe6d7e0239285205a5692e02e5aa7120076fac7db2"
+      },
+      "docs/mcr/evidence/visual/qa06/consumers-v2/gift-pickup-360.png": {
+        "mode": 420,
+        "bytes": 54463,
+        "sha256": "3c436ceb99b198454802389b752dbbfaf54ffbecfde35e82e719753a8daafa28"
+      },
+      "docs/mcr/evidence/visual/qa06/consumers-v2/gift-pickup-390-reduced420.png": {
+        "mode": 420,
+        "bytes": 28505,
+        "sha256": "ae14d4c928b69dd07305408287ff77d2046b0fdfe5416313b5d3b08e37d620fd"
+      },
+      "docs/mcr/evidence/visual/qa06/consumers-v2/gift-pickup-390.png": {
+        "mode": 420,
+        "bytes": 55415,
+        "sha256": "5c80d3874525805a08a69d0bc51406c1429013f24fd1ad2147eac911b5e0b9a0"
+      },
+      "docs/mcr/evidence/visual/qa06/consumers-v2/report.partial.json": {
+        "mode": 420,
+        "bytes": 17208,
+        "sha256": "0a662c48af2b886f5fbbbb3da9122a3c24a56ffecdedbc5608d6d59497b024bd"
+      },
+      "docs/mcr/evidence/visual/qa06/consumers-v2/wall-caller-360.png": {
+        "mode": 420,
+        "bytes": 52767,
+        "sha256": "1269b0b3365ae605a57f284f11891ec584c38c79c61a88be2af31aa7eec3f310"
+      },
+      "docs/mcr/evidence/visual/qa06/consumers-v2/wall-caller-390.png": {
+        "mode": 420,
+        "bytes": 51612,
+        "sha256": "23676c765159542a6d6b737388cd2898c2f20dec2ebe2a8607932de4ee54f5c7"
+      },
+      "docs/mcr/evidence/visual/qa06/consumers-v4/report.json": {
+        "mode": 420,
+        "bytes": 2098,
+        "sha256": "28efcd71a2d663062c654432f4f235b669a46fb9634f46c568e1d5ef836761fc"
+      },
+      "docs/mcr/evidence/visual/qa06/modal-debug-360/modal-closed-revenge-360.png": {
+        "mode": 420,
+        "bytes": 168008,
+        "sha256": "f6a17ea07832989fa4825d70ce93eda84880d8a21d422c05a348b9881a0c14f6"
+      },
+      "docs/mcr/evidence/visual/qa06/modal-debug-360/modal-search-revenge-360.png": {
+        "mode": 420,
+        "bytes": 27407,
+        "sha256": "b833eb7a966dc167c1f56247c9a8051437d060a5e458e09a1af9ae0a8f10a84a"
+      },
+      "docs/mcr/evidence/visual/qa06/modal-debug-360/report.json": {
+        "mode": 420,
+        "bytes": 4543,
+        "sha256": "af68015843f365759cf3d513d96a58ba955fec380e80814f4e943ec9d2fc0ee7"
+      },
+      "docs/mcr/evidence/visual/qa06/modal-v1/modal-search-danger-360.png": {
+        "mode": 420,
+        "bytes": 27411,
+        "sha256": "f7366db5a09bd0966d7a678449c87b638470c1cb15898f202997d6255a75f83a"
+      },
+      "docs/mcr/evidence/visual/qa06/modal-v1/modal-search-danger-390.png": {
+        "mode": 420,
+        "bytes": 27582,
+        "sha256": "7077968761e319a9e3d76829740c31e605af43bbe496719c9b716b76125b2874"
+      },
+      "docs/mcr/evidence/visual/qa06/modal-v1/modal-search-danger-430.png": {
+        "mode": 420,
+        "bytes": 29118,
+        "sha256": "ae591e721c231855dd3f5c1535e8c9cbb8c55bd08f2523f9546bfc768b28f7b9"
+      },
+      "docs/mcr/evidence/visual/qa06/modal-v1/modal-search-parade-360.png": {
+        "mode": 420,
+        "bytes": 27407,
+        "sha256": "9873782231c90567573f905705afdd66d28a82d67d1950436ddf238236e6b4e3"
+      },
+      "docs/mcr/evidence/visual/qa06/modal-v1/modal-search-parade-390.png": {
+        "mode": 420,
+        "bytes": 27584,
+        "sha256": "9cf39dfdf974b16de17e0c0882a670f30c266a47fc4b271de485d8cb52362e69"
+      },
+      "docs/mcr/evidence/visual/qa06/modal-v1/modal-search-parade-430.png": {
+        "mode": 420,
+        "bytes": 29106,
+        "sha256": "20fbf6113f93b2da9f3d7a00c963fbf833c31c5cabe3758984b46a8402764e2a"
+      },
+      "docs/mcr/evidence/visual/qa06/modal-v1/modal-search-revenge-360.png": {
+        "mode": 420,
+        "bytes": 27407,
+        "sha256": "b833eb7a966dc167c1f56247c9a8051437d060a5e458e09a1af9ae0a8f10a84a"
+      },
+      "docs/mcr/evidence/visual/qa06/modal-v1/modal-search-revenge-390.png": {
+        "mode": 420,
+        "bytes": 27585,
+        "sha256": "3eb377156a5ba264e74740c62fdd746f7d6257361a6c1500f6cae1bc5236b624"
+      },
+      "docs/mcr/evidence/visual/qa06/modal-v1/modal-search-revenge-430.png": {
+        "mode": 420,
+        "bytes": 29128,
+        "sha256": "97977bec4bdaae97df9e01947344299cd131c37bc75214554e7bc761b1a43d9b"
+      },
+      "docs/mcr/evidence/visual/qa06/modal-v1/report.json": {
+        "mode": 420,
+        "bytes": 17785,
+        "sha256": "a4a95c078c5f96d273e99e9c5713e6f88e08e8e93b148990c297302a37838bb8"
+      },
+      "docs/mcr/evidence/visual/qa06/smoke-390/landing-revenge-390.png": {
+        "mode": 420,
+        "bytes": 248289,
+        "sha256": "dbb09ff5b80b7ceb578c17778b3021722655ff2c55f9af1904ded21345e288cc"
+      },
+      "docs/mcr/evidence/visual/qa06/smoke-390/login-revenge-390-reduced420.png": {
+        "mode": 420,
+        "bytes": 199196,
+        "sha256": "7205188bcc0fb1f7668f0fde46341797b7fc14921694686df109fea5a973dd50"
+      },
+      "docs/mcr/evidence/visual/qa06/smoke-390/login-revenge-390.png": {
+        "mode": 420,
+        "bytes": 368543,
+        "sha256": "ea52a7559e8bcba3b79f3630b1cec7af429ee07fada24d79defb58fa6fa2bd7a"
+      },
+      "docs/mcr/evidence/visual/qa06/smoke-390/report.json": {
+        "mode": 420,
+        "bytes": 36999,
+        "sha256": "8d9aa3db959fd97b59120a9ac9374f9fc9a55664e565988ae6e751847e2e5a18"
+      },
+      "docs/mcr/evidence/visual/qa06/smoke-390/report.partial.json": {
+        "mode": 420,
+        "bytes": 36955,
+        "sha256": "e12f9f25c1276aa92105e199d29c410672aa2036e8baa7b0994d80ffe4aebdc3"
+      },
+      "docs/mcr/evidence/visual/qa06/smoke-390/world-revenge-390.png": {
+        "mode": 420,
+        "bytes": 210070,
+        "sha256": "168152eafc8182691125732838f17801aee31b0e31290222c42f478345171b28"
+      },
+      "docs/mcr/evidence/visual/qa06/smoke2-390/customize-revenge-390-reduced420.png": {
+        "mode": 420,
+        "bytes": 38677,
+        "sha256": "cbf94efdf5f1f470ecc352769e57f9fb866508fec1c615687f4c5c66f5a8cc13"
+      },
+      "docs/mcr/evidence/visual/qa06/smoke2-390/customize-revenge-390.png": {
+        "mode": 420,
+        "bytes": 61268,
+        "sha256": "b6d320887196179f18b3dc0b6ae81648080b56d390ae23af9baa86c83f25e677"
+      },
+      "docs/mcr/evidence/visual/qa06/smoke2-390/feed-revenge-390-reduced420.png": {
+        "mode": 420,
+        "bytes": 37662,
+        "sha256": "426c3758f72f168ce6d66bef8b12cd7cc2d6314950d0143860fa1a12212ebb5e"
+      },
+      "docs/mcr/evidence/visual/qa06/smoke2-390/feed-revenge-390.png": {
+        "mode": 420,
+        "bytes": 62634,
+        "sha256": "2ac956c4c04dcd468721a158684dc59a2b7b8c8b3c43f3b136170c9b46faaed1"
+      },
+      "docs/mcr/evidence/visual/qa06/smoke2-390/gifts-revenge-390.png": {
+        "mode": 420,
+        "bytes": 97300,
+        "sha256": "df524cccd38b991e699085939d17229f8702ee6c884411922918dd262a0bab10"
+      },
+      "docs/mcr/evidence/visual/qa06/smoke2-390/landing-revenge-390.png": {
+        "mode": 420,
+        "bytes": 248289,
+        "sha256": "dbb09ff5b80b7ceb578c17778b3021722655ff2c55f9af1904ded21345e288cc"
+      },
+      "docs/mcr/evidence/visual/qa06/smoke2-390/login-revenge-390-reduced420.png": {
+        "mode": 420,
+        "bytes": 199196,
+        "sha256": "7205188bcc0fb1f7668f0fde46341797b7fc14921694686df109fea5a973dd50"
+      },
+      "docs/mcr/evidence/visual/qa06/smoke2-390/login-revenge-390.png": {
+        "mode": 420,
+        "bytes": 368543,
+        "sha256": "ea52a7559e8bcba3b79f3630b1cec7af429ee07fada24d79defb58fa6fa2bd7a"
+      },
+      "docs/mcr/evidence/visual/qa06/smoke2-390/map-revenge-390-reduced420.png": {
+        "mode": 420,
+        "bytes": 86888,
+        "sha256": "839ad00cc9ce22e8d93c0a3dc2296132fb7d132f8df98a66637bbc3e2f06430f"
+      },
+      "docs/mcr/evidence/visual/qa06/smoke2-390/map-revenge-390.png": {
+        "mode": 420,
+        "bytes": 162846,
+        "sha256": "fff9ab6af83bf3e4461201372ad6d40e62627efeb3472ab87058744b70fabe25"
+      },
+      "docs/mcr/evidence/visual/qa06/smoke2-390/me-revenge-390.png": {
+        "mode": 420,
+        "bytes": 73424,
+        "sha256": "6f59de1d34b97194ccfebb9dd2c4eff46d5332bb75a9c1903b5a2a7d4dd5953c"
+      },
+      "docs/mcr/evidence/visual/qa06/smoke2-390/meet-revenge-390.png": {
+        "mode": 420,
+        "bytes": 96449,
+        "sha256": "e646c50ee6a0a1314f8527838820ace303f90ad0384eed9077663ec2031bd7da"
+      },
+      "docs/mcr/evidence/visual/qa06/smoke2-390/report.json": {
+        "mode": 420,
+        "bytes": 150030,
+        "sha256": "df12df9d57bf98f2c2a2a7e0d4972f9836cdef0f87a97d1e0c5f921e6ac73248"
+      },
+      "docs/mcr/evidence/visual/qa06/smoke2-390/report.partial.json": {
+        "mode": 420,
+        "bytes": 149984,
+        "sha256": "60f4adb3876b2f3530bcf131f4c18d9d1037c4bdfe71d99871ba0013836dfb57"
+      },
+      "docs/mcr/evidence/visual/qa06/smoke2-390/wall-revenge-390.png": {
+        "mode": 420,
+        "bytes": 58727,
+        "sha256": "8b9e8e4e21ea42bf2c83710d15c31179868988727b01f493119757a651ebb3e6"
+      },
+      "docs/mcr/evidence/visual/qa06/smoke2-390/world-revenge-390.png": {
+        "mode": 420,
+        "bytes": 210070,
+        "sha256": "168152eafc8182691125732838f17801aee31b0e31290222c42f478345171b28"
+      },
+      "docs/mcr/evidence/visual/qa06/smoke3-390/customize-revenge-390-reduced420.png": {
+        "mode": 420,
+        "bytes": 38423,
+        "sha256": "442c9bedb0bdbd72952000d32b545087d9a1fe00307b81601321e9e9dd90dd12"
+      },
+      "docs/mcr/evidence/visual/qa06/smoke3-390/customize-revenge-390.png": {
+        "mode": 420,
+        "bytes": 61268,
+        "sha256": "b6d320887196179f18b3dc0b6ae81648080b56d390ae23af9baa86c83f25e677"
+      },
+      "docs/mcr/evidence/visual/qa06/smoke3-390/feed-revenge-390-reduced420.png": {
+        "mode": 420,
+        "bytes": 32175,
+        "sha256": "301d8bb2f51961040943f8097369b0297bd894429020a60b64caeb613d5ef9c0"
+      },
+      "docs/mcr/evidence/visual/qa06/smoke3-390/feed-revenge-390.png": {
+        "mode": 420,
+        "bytes": 62634,
+        "sha256": "2ac956c4c04dcd468721a158684dc59a2b7b8c8b3c43f3b136170c9b46faaed1"
+      },
+      "docs/mcr/evidence/visual/qa06/smoke3-390/gifts-revenge-390.png": {
+        "mode": 420,
+        "bytes": 97300,
+        "sha256": "df524cccd38b991e699085939d17229f8702ee6c884411922918dd262a0bab10"
+      },
+      "docs/mcr/evidence/visual/qa06/smoke3-390/landing-revenge-390.png": {
+        "mode": 420,
+        "bytes": 248289,
+        "sha256": "dbb09ff5b80b7ceb578c17778b3021722655ff2c55f9af1904ded21345e288cc"
+      },
+      "docs/mcr/evidence/visual/qa06/smoke3-390/login-revenge-390-reduced420.png": {
+        "mode": 420,
+        "bytes": 199502,
+        "sha256": "b0d529c6f6285b50d89cc66d66fdcb53e77745e6c21b90ce9bbdf6e927acc848"
+      },
+      "docs/mcr/evidence/visual/qa06/smoke3-390/login-revenge-390.png": {
+        "mode": 420,
+        "bytes": 368543,
+        "sha256": "ea52a7559e8bcba3b79f3630b1cec7af429ee07fada24d79defb58fa6fa2bd7a"
+      },
+      "docs/mcr/evidence/visual/qa06/smoke3-390/map-revenge-390-reduced420.png": {
+        "mode": 420,
+        "bytes": 85895,
+        "sha256": "3c3ccb3aa7d8893d76bd17d36fb0b0a733ddf8c23b6d8c4fe0d66951cb86358c"
+      },
+      "docs/mcr/evidence/visual/qa06/smoke3-390/map-revenge-390.png": {
+        "mode": 420,
+        "bytes": 162839,
+        "sha256": "9beacd7938fe6638d540fb8ddf95775576fa1cf8404b8a1a47c3e32f09034ae2"
+      },
+      "docs/mcr/evidence/visual/qa06/smoke3-390/me-revenge-390.png": {
+        "mode": 420,
+        "bytes": 73424,
+        "sha256": "6f59de1d34b97194ccfebb9dd2c4eff46d5332bb75a9c1903b5a2a7d4dd5953c"
+      },
+      "docs/mcr/evidence/visual/qa06/smoke3-390/meet-revenge-390.png": {
+        "mode": 420,
+        "bytes": 96449,
+        "sha256": "e646c50ee6a0a1314f8527838820ace303f90ad0384eed9077663ec2031bd7da"
+      },
+      "docs/mcr/evidence/visual/qa06/smoke3-390/report.json": {
+        "mode": 420,
+        "bytes": 181695,
+        "sha256": "50a1c755f5acc67422370a294324c86e0b4a296508f7ed71d13b35f096c687b6"
+      },
+      "docs/mcr/evidence/visual/qa06/smoke3-390/report.partial.json": {
+        "mode": 420,
+        "bytes": 181649,
+        "sha256": "e7812180ff39a3af8ae338ff09d42f046566a2c634ef5dd2255608d5700a5a5a"
+      },
+      "docs/mcr/evidence/visual/qa06/smoke3-390/spatial-v4-map-revenge-390.png": {
+        "mode": 420,
+        "bytes": 431002,
+        "sha256": "d85bac8a9d393b0307efc8889390ab475917f972ea0f1abc000ec5a28fd65dc7"
+      },
+      "docs/mcr/evidence/visual/qa06/smoke3-390/spatial-v4-world-revenge-390.png": {
+        "mode": 420,
+        "bytes": 315643,
+        "sha256": "9a2ddc8302d755800038a60fd23fcc0e12cbeacdf77d474a495b7f92cd959cd9"
+      },
+      "docs/mcr/evidence/visual/qa06/smoke3-390/wall-revenge-390.png": {
+        "mode": 420,
+        "bytes": 58727,
+        "sha256": "8b9e8e4e21ea42bf2c83710d15c31179868988727b01f493119757a651ebb3e6"
+      },
+      "docs/mcr/evidence/visual/qa06/smoke3-390/world-revenge-390.png": {
+        "mode": 420,
+        "bytes": 210070,
+        "sha256": "168152eafc8182691125732838f17801aee31b0e31290222c42f478345171b28"
+      }
+    }
+  },
+  "verifiedEpoch": 1793841999.310555,
+  "privateIndexReleased": true
+}

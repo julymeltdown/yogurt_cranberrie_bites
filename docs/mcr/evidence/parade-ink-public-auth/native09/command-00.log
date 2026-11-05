@@ -1,0 +1,56 @@
+node:internal/modules/run_main:107
+    triggerUncaughtException(
+    ^
+
+ExpectError: expect(locator).toHaveCSS(expected) failed
+
+Locator:  locator('.public-poster')
+Expected: "none"
+Received: "url(\"http://127.0.0.1:5390/backgrounds/cute-entry-v1/landing-garden-night.svg\")"
+Timeout:  5000ms
+
+Call log:
+  - Expect "to.have.css" with timeout 5000ms
+  - waiting for locator('.public-poster')
+    14 × locator resolved to <div class="public-poster" aria-labelledby="landing-title">…</div>
+       - unexpected value "url("http://127.0.0.1:5390/backgrounds/cute-entry-v1/landing-garden-night.svg")"
+
+    at captureRawStack (/Users/lhs/Desktop/mcr/frontend/node_modules/.pnpm/playwright-core@1.61.1/node_modules/playwright-core/lib/coreBundle.js:3172:17)
+    at callMatcherAsStep (/Users/lhs/Desktop/mcr/frontend/node_modules/.pnpm/playwright@1.61.1/node_modules/playwright/lib/matchers/expect.js:12877:57)
+    at Object.toHaveCSS (/Users/lhs/Desktop/mcr/frontend/node_modules/.pnpm/playwright@1.61.1/node_modules/playwright/lib/matchers/expect.js:12867:23)
+    at /Users/lhs/Desktop/mcr-worktrees/sl-world/frontend/src/features/auth/__tests__/parade-ink-entry/native.mjs:67:236 {
+  matcherResult: {
+    name: 'toHaveCSS',
+    expected: 'none',
+    message: 'expect(locator).toHaveCSS(expected) failed\n' +
+      '\n' +
+      "Locator:  locator('.public-poster')\n" +
+      'Expected: "none"\n' +
+      'Received: "url(\\"http://127.0.0.1:5390/backgrounds/cute-entry-v1/landing-garden-night.svg\\")"\n' +
+      'Timeout:  5000ms\n' +
+      '\n' +
+      'Call log:\n' +
+      '  - Expect "to.have.css" with timeout 5000ms\n' +
+      "  - waiting for locator('.public-poster')\n" +
+      '    14 × locator resolved to <div class="public-poster" aria-labelledby="landing-title">…</div>\n' +
+      '       - unexpected value "url("http://127.0.0.1:5390/backgrounds/cute-entry-v1/landing-garden-night.svg")"\n',
+    pass: false,
+    actual: 'url("http://127.0.0.1:5390/backgrounds/cute-entry-v1/landing-garden-night.svg")',
+    log: [
+      '  - Expect "to.have.css" with timeout 5000ms',
+      "  - waiting for locator('.public-poster')",
+      '    14 × locator resolved to <div class="public-poster" aria-labelledby="landing-title">…</div>',
+      '       - unexpected value "url("http://127.0.0.1:5390/backgrounds/cute-entry-v1/landing-garden-night.svg")"'
+    ],
+    timeout: 5000,
+    ariaSnapshot: '- heading "One world. Every era." [level=1]\n' +
+      '- paragraph: The MCR fan social world.\n' +
+      '- paragraph: Meet · Trade · Hang out\n' +
+      '- paragraph: At the show.\n' +
+      '- link "Sign in to enter":\n' +
+      '  - /url: /login?returnTo=%2Fworld\n' +
+      '  - text: Enter the world'
+  }
+}
+
+Node.js v24.22.2

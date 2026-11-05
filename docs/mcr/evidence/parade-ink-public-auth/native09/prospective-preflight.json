@@ -1,0 +1,26 @@
+{
+  "epoch": 1793843552.297395,
+  "sample": {
+    "epoch": 1793843552.297216,
+    "membership_asof": "2026-11-05T01:47:30.991757+00:00",
+    "cohorts": [
+      "01a1a267-37a0-7723-a4e9-a3a6f5b27f52:GIFT-SOURCE08-0159"
+    ],
+    "pids": [
+      69681,
+      69953,
+      70070,
+      70071
+    ],
+    "declared_pids": 30,
+    "declared_rss": 4294967296.0,
+    "rss": 81641472,
+    "qualified_control_identities": [],
+    "workflows": 2,
+    "source": 1,
+    "browsers": 1,
+    "target": 0
+  },
+  "accepted": false,
+  "payload": false
+}

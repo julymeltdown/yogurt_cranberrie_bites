@@ -1,0 +1,208 @@
+
+ RUN  v4.1.9 /Users/lhs/Desktop/mcr-worktrees/sl-world/frontend
+
+ ❯ src/features/auth/__tests__/parade-ink-entry/entry.test.tsx (5 tests | 1 failed) 1691ms
+   × preserves password recovery mode controls and focus after an unavailable request 1065ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  src/features/auth/__tests__/parade-ink-entry/entry.test.tsx > preserves password recovery mode controls and focus after an unavailable request
+TestingLibraryElementError: Unable to find an element with the text: Password recovery could not be completed. Please try again when the service is available.. This could be because the text is broken up by multiple elements. In this case, you can provide a function for your text matcher to make your matcher more flexible.
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div>[39m
+    [36m<main[39m
+      [33mclass[39m=[32m"auth-recovery parade-auth-entry"[39m
+      [33mid[39m=[32m"main"[39m
+      [33mtabindex[39m=[32m"-1"[39m
+    [36m>[39m
+      [36m<a[39m
+        [33mclass[39m=[32m"recovery-home"[39m
+        [33mdata-discover[39m=[32m"true"[39m
+        [33mhref[39m=[32m"/"[39m
+      [36m>[39m
+        [0mMCR Concert World[0m
+      [36m</a>[39m
+      [36m<p[39m
+        [33mclass[39m=[32m"recovery-eyebrow"[39m
+      [36m>[39m
+        [0mYOUR WAY BACK[0m
+      [36m</p>[39m
+      [36m<h1[39m
+        [33mtabindex[39m=[32m"-1"[39m
+      [36m>[39m
+        [0mReset password[0m
+      [36m</h1>[39m
+      [36m<p[39m
+        [33mclass[39m=[32m"recovery-intro"[39m
+      [36m>[39m
+        [0mStart with the email you use to sign in.[0m
+      [36m</p>[39m
+      [36m<div[39m
+        [33maria-live[39m=[32m"polite"[39m
+        [33mclass[39m=[32m"recovery-feedback"[39m
+        [33mrole[39m=[32m"status"[39m
+        [33mtabindex[39m=[32m"-1"[39m
+      [36m>[39m
+        [36m<p>[39m
+          [0mYour request may have been processed, but the result and email delivery are not confirmed. You can try again later.[0m
+        [36m</p>[39m
+      [36m</div>[39m
+      [36m<form[39m
+        [33maria-busy[39m=[32m"false"[39m
+        [33maria-label[39m=[32m"Request password reset"[39m
+        [33mnovalidate[39m=[32m""[39m
+      [36m>[39m
+        [36m<label[39m
+          [33mfor[39m=[32m"reset-email"[39m
+        [36m>[39m
+          [0mEmail[0m
+        [36m</label>[39m
+        [36m<input[39m
+          [33mautocomplete[39m=[32m"username"[39m
+          [33mid[39m=[32m"reset-email"[39m
+          [33mmaxlength[39m=[32m"254"[39m
+          [33mname[39m=[32m"email"[39m
+          [33mrequired[39m=[32m""[39m
+          [33mtype[39m=[32m"email"[39m
+          [33mvalue[39m=[32m"synthetic@example.invalid"[39m
+        [36m/>[39m
+        [36m<button[39m
+          [33mclass[39m=[32m"recovery-submit"[39m
+          [33mtype[39m=[32m"submit"[39m
+        [36m>[39m
+          [0mRequest reset[0m
+        [36m</button>[39m
+      [36m</form>[39m
+      [36m<button[39m
+        [33mclass[39m=[32m"recovery-switch"[39m
+        [33mtype[39m=[32m"button"[39m
+      [36m>[39m
+        [0mI have a reset token[0m
+      [36m</button>[39m
+      [36m<a[39m
+        [33mclass[39m=[32m"recovery-link"[39m
+        [33mdata-discover[39m=[32m"true"[39m
+        [33mhref[39m=[32m"/login?returnTo=%2Fworld"[39m
+      [36m>[39m
+        [0mBack to sign in[0m
+      [36m</a>[39m
+      [36m<a[39m
+        [33mclass[39m=[32m"recovery-link"[39m
+        [33mdata-discover[39m=[32m"true"[39m
+        [33mhref[39m=[32m"/"[39m
+      [36m>[39m
+        [0mBack to home[0m
+      [36m</a>[39m
+    [36m</main>[39m
+  [36m</div>[39m
+[36m</body>[39m
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div>[39m
+    [36m<main[39m
+      [33mclass[39m=[32m"auth-recovery parade-auth-entry"[39m
+      [33mid[39m=[32m"main"[39m
+      [33mtabindex[39m=[32m"-1"[39m
+    [36m>[39m
+      [36m<a[39m
+        [33mclass[39m=[32m"recovery-home"[39m
+        [33mdata-discover[39m=[32m"true"[39m
+        [33mhref[39m=[32m"/"[39m
+      [36m>[39m
+        [0mMCR Concert World[0m
+      [36m</a>[39m
+      [36m<p[39m
+        [33mclass[39m=[32m"recovery-eyebrow"[39m
+      [36m>[39m
+        [0mYOUR WAY BACK[0m
+      [36m</p>[39m
+      [36m<h1[39m
+        [33mtabindex[39m=[32m"-1"[39m
+      [36m>[39m
+        [0mReset password[0m
+      [36m</h1>[39m
+      [36m<p[39m
+        [33mclass[39m=[32m"recovery-intro"[39m
+      [36m>[39m
+        [0mStart with the email you use to sign in.[0m
+      [36m</p>[39m
+      [36m<div[39m
+        [33maria-live[39m=[32m"polite"[39m
+        [33mclass[39m=[32m"recovery-feedback"[39m
+        [33mrole[39m=[32m"status"[39m
+        [33mtabindex[39m=[32m"-1"[39m
+      [36m>[39m
+        [36m<p>[39m
+          [0mYour request may have been processed, but the result and email delivery are not confirmed. You can try again later.[0m
+        [36m</p>[39m
+      [36m</div>[39m
+      [36m<form[39m
+        [33maria-busy[39m=[32m"false"[39m
+        [33maria-label[39m=[32m"Request password reset"[39m
+        [33mnovalidate[39m=[32m""[39m
+      [36m>[39m
+        [36m<label[39m
+          [33mfor[39m=[32m"reset-email"[39m
+        [36m>[39m
+          [0mEmail[0m
+        [36m</label>[39m
+        [36m<input[39m
+          [33mautocomplete[39m=[32m"username"[39m
+          [33mid[39m=[32m"reset-email"[39m
+          [33mmaxlength[39m=[32m"254"[39m
+          [33mname[39m=[32m"email"[39m
+          [33mrequired[39m=[32m""[39m
+          [33mtype[39m=[32m"email"[39m
+          [33mvalue[39m=[32m"synthetic@example.invalid"[39m
+        [36m/>[39m
+        [36m<button[39m
+          [33mclass[39m=[32m"recovery-submit"[39m
+          [33mtype[39m=[32m"submit"[39m
+        [36m>[39m
+          [0mRequest reset[0m
+        [36m</button>[39m
+      [36m</form>[39m
+      [36m<button[39m
+        [33mclass[39m=[32m"recovery-switch"[39m
+        [33mtype[39m=[32m"button"[39m
+      [36m>[39m
+        [0mI have a reset token[0m
+      [36m</button>[39m
+      [36m<a[39m
+        [33mclass[39m=[32m"recovery-link"[39m
+        [33mdata-discover[39m=[32m"true"[39m
+        [33mhref[39m=[32m"/login?returnTo=%2Fworld"[39m
+      [36m>[39m
+        [0mBack to sign in[0m
+      [36m</a>[39m
+      [36m<a[39m
+        [33mclass[39m=[32m"recovery-link"[39m
+        [33mdata-discover[39m=[32m"true"[39m
+        [33mhref[39m=[32m"/"[39m
+      [36m>[39m
+        [0mBack to home[0m
+      [36m</a>[39m
+    [36m</main>[39m
+  [36m</div>[39m
+[36m</body>[39m
+ ❯ waitForWrapper ../../../mcr/frontend/node_modules/.pnpm/@testing-library+dom@10.4.1/node_modules/@testing-library/dom/dist/wait-for.js:163:27
+ ❯ ../../../mcr/frontend/node_modules/.pnpm/@testing-library+dom@10.4.1/node_modules/@testing-library/dom/dist/query-helpers.js:86:33
+ ❯ src/features/auth/__tests__/parade-ink-entry/entry.test.tsx:43:32
+     41|   fireEvent.change(await screen.findByLabelText('Email'), { target: { …
+     42|   fireEvent.submit(screen.getByRole('form'))
+     43|   const message = await screen.findByText('Password recovery could not…
+       |                                ^
+     44|   expect(message.closest('[role=status]')).toHaveFocus()
+     45|   fireEvent.click(screen.getByRole('button', { name: 'I have a reset t…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+
+ Test Files  1 failed | 3 passed (4)
+      Tests  1 failed | 17 passed (18)
+   Start at  09:23:34
+   Duration  5.65s (transform 646ms, setup 0ms, import 1.59s, tests 2.58s, environment 1.20s)
+

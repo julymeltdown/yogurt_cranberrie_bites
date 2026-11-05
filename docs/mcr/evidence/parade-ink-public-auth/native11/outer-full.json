@@ -1,0 +1,10 @@
+{
+  "lease": "PI10-NATIVE11-0215",
+  "result": "FAIL",
+  "exit": 1,
+  "failure": "Bootstrap before payload: AssertionError('Unresolved live MCR workflow roots: [87571]')",
+  "full_epoch": 1793845155.364435,
+  "before_hard": true,
+  "remaining": [],
+  "execution_resources": 0
+}

@@ -1,0 +1,24 @@
+{
+  "lease": "PI10-PUBLIC-AUTH-APP-NATIVE05-0122",
+  "result": "FAIL",
+  "exit": 1,
+  "failure": null,
+  "full_epoch": 1793842207.616322,
+  "before_hard": true,
+  "peak": {
+    "whole": 5439679259,
+    "new": 182194484,
+    "processes": 5,
+    "rss": 234733568,
+    "native_payload": 49864704,
+    "global_rss": 234291200,
+    "global_workflows": 2,
+    "global_source": 0,
+    "global_browsers": 2,
+    "global_target": 0,
+    "global_processes": 7
+  },
+  "minimum_free": 23393181696,
+  "remaining": [],
+  "execution_resources": 0
+}

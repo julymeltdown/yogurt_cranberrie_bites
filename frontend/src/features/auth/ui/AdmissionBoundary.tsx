@@ -14,7 +14,7 @@ export function AdmissionBoundary({ children }: { children: ReactNode }) {
   if (state?.admission === 'checking' && state.pending === 'login') return children
   if (state?.admission === 'CONSENT_REQUIRED') return <ConsentAdmission onAdmitted={() => { void auth.checkAdmission() }} />
   const checking = state?.admission === 'checking', inactive = state?.admission === 'ACCOUNT_INACTIVE'
-  return <main className="auth-enrollment" id="main" tabIndex={-1}>
+  return <main className="auth-enrollment parade-auth-entry" id="main" tabIndex={-1}>
     <Link className="enrollment-home" to="/">MCR Concert World</Link>
     <h1>{checking ? 'Checking account entry' : inactive ? 'Account entry unavailable' : 'World entry paused'}</h1>
     <p role="status">{checking ? 'Checking the current server admission decision before opening your destination.'

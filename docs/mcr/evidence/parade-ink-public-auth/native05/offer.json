@@ -1,0 +1,128 @@
+{
+  "lease": "PI10-PUBLIC-AUTH-APP-NATIVE05-0122",
+  "mode": "native",
+  "source_retry": false,
+  "status": "ACTUAL_ACCEPTED",
+  "start_floor": 12884901888,
+  "other_new": 5368709120,
+  "new_cap": 335544320,
+  "whole_cap": 8589934592,
+  "process_cap": 24,
+  "rss_cap": 3758096384,
+  "prior_whole": 5434829749,
+  "prior_new_source01": 35692544,
+  "prior_new_source02": 48054272,
+  "prior_new_source03": 50434048,
+  "control": "/private/tmp/mcr-pi10-native05-0130",
+  "temporary": "/private/tmp/mcr-pi10-native05-0130/scratch",
+  "output": "/Users/lhs/Desktop/mcr-worktrees/sl-world/docs/mcr/evidence/parade-ink-public-auth/native05",
+  "readset": "docs/mcr/evidence/parade-ink-public-auth/native05-readset.json",
+  "readset_sha": "311ccf2b3e8c43c01663f4eeb25e65d4f30a3cfba07e903f66a8b234755b1382",
+  "node_sha": "b6fb419f0f43bb2fbca273700294dd2f3b685a64b60e8417c295f47646a70e4a",
+  "pins": {
+    "controller.py": "2f44445754a405ef52f17e1f0e08c884e53357a830855d791d1fec4ca37be131",
+    "guardian.py": "c44382c4d515d8043ee21f2fc5afcffe4c1adbdd6e331edca475fe93ad83ac87",
+    "metrics.py": "3663ac81e1959e38dd7c27ad9b6af5b66b92f3c1e323a209fb5ea076388f5e6c",
+    "bootstrap.py": "546ea92cfb7bbe621975ef19d3c8095fbf187438db15a40d58d86579f5ed1958"
+  },
+  "source": "ac1b7cd4d9ce122eb3ac1898ad0c2204bcdf0e49",
+  "retained_roots": [
+    "/private/tmp/mcr-pi10-source01-0003",
+    "/private/tmp/mcr-pi10-source02-0009",
+    "/private/tmp/mcr-pi10-source03-0023",
+    "/private/tmp/mcr-qa01-disposition-50a8-2330",
+    "/private/tmp/mcr-pi10-source04-0043",
+    "/private/tmp/mcr-pi10-source05-0058",
+    "/private/tmp/mcr-pi10-native01-0107",
+    "/private/tmp/mcr-pi10-native02-0120",
+    "/private/tmp/mcr-pi10-native03-0127",
+    "/private/tmp/mcr-pi10-native04-0127"
+  ],
+  "resource_predecessor": "OwnNative04 actualFULL1793841966.5060391/all0. BE42source-onlyprep26032/30248 completed and absent; directownercommentary confirms no compileadmission. Three stale legacy reservations released only through copied exact immutable FULL receipts.",
+  "lint_paths": [
+    "src/features/auth/__tests__/parade-ink-entry",
+    "src/features/public/__tests__/parade-ink-entry/entry.test.tsx"
+  ],
+  "membership_path": "/Users/lhs/Desktop/mcr-evidence/backend-staffing-01a1a21d/resource-membership-current.json",
+  "literal_releases": [
+    {
+      "cohort": "207CompileA",
+      "path": "/Users/lhs/Desktop/mcr-worktrees/sl-world/docs/mcr/evidence/parade-ink-public-auth/resource-releases/207CompileA.json",
+      "sha256": "829c60a701855e9a41e78319e02711423e7fce7653ec3e1a22927ce2fafb49d7"
+    },
+    {
+      "cohort": "PI06Native02",
+      "path": "/Users/lhs/Desktop/mcr-worktrees/sl-world/docs/mcr/evidence/parade-ink-public-auth/resource-releases/PI06Native02.json",
+      "sha256": "17f41a6a8ec6434341419be0f95595273789bcfb54f028413476e5c5db1ad4cb"
+    },
+    {
+      "cohort": "PI04-GIVEAWAY-APP-NATIVE06-0116",
+      "path": "/Users/lhs/Desktop/mcr-worktrees/sl-world/docs/mcr/evidence/parade-ink-public-auth/resource-releases/PI04-GIVEAWAY-APP-NATIVE06-0116.json",
+      "sha256": "49fddc401bc61c8d6e559bd7c9ff0e9503feca6ac5a112100a585f84b713ed80"
+    },
+    {
+      "cohort": "PI12-OPERATIONS-SOURCE01-0111",
+      "path": "/Users/lhs/Desktop/mcr-worktrees/sl-world/docs/mcr/evidence/parade-ink-public-auth/resource-releases/PI12-OPERATIONS-SOURCE01-0111.json",
+      "sha256": "201ad2eabcf46e7e311b34dd3292019f399d9e7a576e35f1190dfa77196b9b1a"
+    },
+    {
+      "cohort": "PI12-REPORT-ERROR-NETWORK-SOURCE03-0116",
+      "path": "/Users/lhs/Desktop/mcr-worktrees/sl-world/docs/mcr/evidence/parade-ink-public-auth/resource-releases/PI12-REPORT-ERROR-NETWORK-SOURCE03-0116.json",
+      "sha256": "2f9c914666e8eabc0827d43d77ae8262ac6c07dadb44eb46db97b0fd2b9fac89"
+    }
+  ],
+  "additional_cohorts": [],
+  "own_cohort_names": [
+    "PI10Native05",
+    "PI10-PUBLIC-AUTH-APP-NATIVE05-0122"
+  ],
+  "prepared_epoch": 1793842193.73015,
+  "owner_thread": "01a1a533-50a8-7fb2-b3ed-96b941b96bbf",
+  "owner_receipt": "/Users/lhs/Desktop/mcr-evidence/backend-staffing-01a1a21d/owner-resource-receipts/01a1a533-50a8-7fb2-b3ed-96b941b96bbf.json",
+  "receipt_directory": "/Users/lhs/Desktop/mcr-evidence/backend-staffing-01a1a21d/owner-resource-receipts",
+  "ordinary_git_only": [
+    {
+      "script": "/private/tmp/mcr-publisher-412e-capacity-composition-delivery.py",
+      "sha256": "98523ce9d454f2fdfdc4080ca9fa11e6b724a9343217a8c2f03c44b16d854456"
+    },
+    {
+      "script": "/private/tmp/mcr-post21a-be39-compile-unit03-0111/bootstrap.py",
+      "sha256": "21513d1761d8090eef1a5c2e4f3de16262713a3560a39ee0778a9aba9ea7aabb",
+      "dependencies": {
+        "/private/tmp/mcr-post21a-be39-compile-unit03-0111/prepare_admission.py": "fbd68b9c83ce3c80776d83a8bd800086eb7a8273bd5acb198277e51e76f7c25c",
+        "/private/tmp/mcr-post21a-be39-compile-unit03-0111/budget.py": "c6e33a09cf730f797f4a483208f45cbdb80e6fba2529f8fec52c87d1e9bf43ff",
+        "/private/tmp/mcr-post21a-be39-compile-unit03-0111/accounting.py": "d525a94f8bbc3a89a47bf84bda757c985d9f722aa985d7b60a2d600bffcb720a"
+      },
+      "role": "Direct owner factual ordinary preparation only; no compile ACCEPT; actual PID/RSS counts"
+    }
+  ],
+  "prior_new_source04": 38027264,
+  "prior_new_source05": 53932032,
+  "port": 5390,
+  "chrome_sha": "3f0acaf1e585195596d73ffa1824baa72c3c3ac115b5cfc43d789030a3f23d93",
+  "cwd": "/Users/lhs/Desktop/mcr-worktrees/sl-world",
+  "accept_by_epoch": 1793844600,
+  "historical_new_charge": 145723700,
+  "remaining_new_reservation": 194014924,
+  "retained_native_payload_roots": [
+    "/private/tmp/mcr-pi10-native01-0107",
+    "/Users/lhs/Desktop/mcr-worktrees/sl-world/docs/mcr/evidence/parade-ink-public-auth/native01",
+    "/private/tmp/mcr-pi10-native02-0120",
+    "/Users/lhs/Desktop/mcr-worktrees/sl-world/docs/mcr/evidence/parade-ink-public-auth/native02",
+    "/private/tmp/mcr-pi10-native03-0127",
+    "/Users/lhs/Desktop/mcr-worktrees/sl-world/docs/mcr/evidence/parade-ink-public-auth/native03",
+    "/private/tmp/mcr-pi10-native04-0127",
+    "/Users/lhs/Desktop/mcr-worktrees/sl-world/docs/mcr/evidence/parade-ink-public-auth/native04"
+  ],
+  "retained_native_png_roots": [
+    "/Users/lhs/Desktop/mcr-worktrees/sl-world/docs/mcr/evidence/parade-ink-public-auth/native01",
+    "/Users/lhs/Desktop/mcr-worktrees/sl-world/docs/mcr/evidence/parade-ink-public-auth/native02"
+  ],
+  "native_payload_cap": 134217728,
+  "native_png_cap": 52,
+  "native_png_byte_cap": 25165824,
+  "accept_epoch": 1793842201.040771,
+  "work_deadline": 1793842501.040771,
+  "full_deadline": 1793842561.040771,
+  "fresh_free": 23395393536
+}

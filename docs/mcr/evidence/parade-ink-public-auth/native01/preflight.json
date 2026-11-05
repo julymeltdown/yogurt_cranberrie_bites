@@ -1,0 +1,22 @@
+{
+  "epoch": 1793840805.466094,
+  "global_sample": {
+    "epoch": 1793840804.855707,
+    "membership_asof": "2026-11-05T01:05:45.309481+00:00",
+    "cohorts": [],
+    "pids": [
+      9534,
+      9611
+    ],
+    "declared_pids": 24,
+    "declared_rss": 3758096384,
+    "rss": 52019200,
+    "workflows": 1,
+    "source": 0,
+    "browsers": 1,
+    "target": 0
+  },
+  "whole": 5377575707,
+  "free": 16301445120,
+  "port": "5390 SO_REUSEADDR bind-close success, no hold"
+}

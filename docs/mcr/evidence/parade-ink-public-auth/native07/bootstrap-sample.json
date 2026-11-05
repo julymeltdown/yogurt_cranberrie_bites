@@ -1,0 +1,22 @@
+{
+  "epoch": 1793842706.320032,
+  "carry": 5441805083,
+  "global_sample": {
+    "epoch": 1793842705.6764932,
+    "membership_asof": "2026-11-05T01:32:01.205903+00:00",
+    "cohorts": [
+      "01a1a00c-2690-7bc0-94fc-52609655ea83:BE42-PH1-COMPILE-FIVE-0131"
+    ],
+    "pids": [
+      94364,
+      94441
+    ],
+    "declared_pids": 56,
+    "declared_rss": 12348030976.0,
+    "rss": 53067776,
+    "workflows": 2,
+    "source": 0,
+    "browsers": 1,
+    "target": 1
+  }
+}

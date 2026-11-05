@@ -7,7 +7,7 @@ import { SignIn } from '../../ui/SignIn'
 import { createSessionController } from '../../model/session'
 import { capabilities, eventId, isolatedCookiePolicy } from '../fixtures/data'
 afterEach(cleanup)
-it('uses actual fields, disabled provider marks, cemetery scenery and no invented remember-session control', async () => {
+it('keeps actual fields and disabled provider options in the shared Parade Ink window without invented session controls', async () => {
   const auth = createSessionController({ eventId, cookiePolicy: isolatedCookiePolicy(), fetch: async () => Response.json(capabilities()) }); auth.start()
   const router = createMemoryRouter([{ path: '/login', element: <SignIn /> }], { initialEntries: ['/login'] })
   const view = render(<PortsProvider ports={{ auth, session: auth.session, readiness: auth.readiness, bootstrap: { load: auth.loadBootstrap }, admin: { authorize: async () => false } }}><RouterProvider router={router} /></PortsProvider>)
@@ -19,7 +19,8 @@ it('uses actual fields, disabled provider marks, cemetery scenery and no invente
     const button = screen.getByRole('button', { name: `Continue with ${name}` }) as HTMLButtonElement
     expect(button.disabled).toBe(true); expect(button.querySelector('svg[aria-hidden=true]')).toBeTruthy()
   }
-  expect(view.container.querySelectorAll('.auth-cemetery')).toHaveLength(2)
+  expect(view.container.querySelectorAll('.auth-cemetery')).toHaveLength(0)
+  expect(view.container.querySelector('.concert-window__titlebar h1')?.textContent).toBe('Sign in')
   expect(screen.getByRole('link', { name: 'Forgot password?' }).getAttribute('href')).toBe('/reset-password')
   expect(screen.getByRole('link', { name: 'Create an account' }).getAttribute('href')).toBe('/signup')
   router.dispose(); auth.dispose()

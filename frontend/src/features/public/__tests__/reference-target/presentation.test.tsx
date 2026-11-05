@@ -25,13 +25,14 @@ it('uses the target CTA wording with the existing explicit sign-in destination a
   expect(cta).toHaveAttribute('aria-describedby', 'public-entry-status'); expect(screen.getByRole('status')).toHaveTextContent('Sign in to check entry to the world.')
   expect(f.fixture.stats.mounts).toBe(0); expect(document.querySelector('[data-world-host]')).toBeNull()
 })
-it('keeps one semantic heading, decorative ornaments and real window navigation without fake close controls or art', async () => {
+it('keeps one visible heading and real Parade Ink navigation without obsolete ornament controls or fallback art', async () => {
   setup(); await screen.findByRole('link', { name: 'Sign in to enter' })
   expect(screen.getAllByRole('heading', { level: 1 })).toHaveLength(1)
   expect(screen.getByRole('link', { name: 'MCR Concert World home' })).toHaveAttribute('href', '/')
   expect(screen.getByRole('link', { name: 'Sign in' })).toHaveAttribute('href', '/login')
-  expect(document.querySelector('.landing-window-stars')).toHaveAttribute('aria-hidden', 'true')
-  for (const selector of ['.landing-wordmark', '.landing-web', '.landing-scene']) expect(document.querySelector(selector)).toHaveAttribute('aria-hidden', 'true')
+  expect(screen.getByRole('heading', { level: 1 })).toBeVisible()
+  expect(screen.getByRole('link', { name: 'MCR Concert World home' })).toHaveTextContent('MCR Concert World')
+  expect(document.querySelector('.landing-window-stars,.landing-wordmark,.landing-web,.landing-scene')).toBeNull()
   expect(document.querySelector('.landing-crowd')).toHaveAttribute('data-art-state', 'unavailable')
   expect(document.querySelectorAll('.landing-crowd > span')).toHaveLength(0)
   expect(screen.queryByRole('button', { name: /close/i })).not.toBeInTheDocument()

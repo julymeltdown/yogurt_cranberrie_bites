@@ -1,0 +1,33 @@
+{
+  "epoch": 1793840820.065353,
+  "sampler": 9534,
+  "owned_before": [
+    9534,
+    9676,
+    10036,
+    10045,
+    10087,
+    10088,
+    10089,
+    10093,
+    10098,
+    10099,
+    10299
+  ],
+  "owned_current": [
+    9534,
+    9676,
+    10036,
+    10305
+  ],
+  "cohorts": [],
+  "identities": [
+    {
+      "pid": 10220,
+      "parent": 49590,
+      "rss": 83230720,
+      "command": "/Library/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python -B /private/tmp/mcr-root-coherent-mains-r3-6270w43b/controller.py /private/tmp/mcr-root-coherent-mains-r3-6270w43b/actual-offer.json /private/tmp/mcr-root-coherent-mains-r3-6270w43b/capacity.json",
+      "birth": "Thu Nov 5 10:06:59 2026"
+    }
+  ]
+}

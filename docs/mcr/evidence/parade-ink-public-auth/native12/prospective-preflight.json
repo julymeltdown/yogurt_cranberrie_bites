@@ -1,0 +1,30 @@
+{
+  "result": "PASS_PROSPECTIVE_NO_ACCEPT",
+  "epoch": 1793845374.372844,
+  "source": "7c8dcbb6f697b8c70dc7c6494c19f81923d1979b",
+  "readset": "6d032e4ef0782658618342fdc1c4febda9f4aba7a70773f863cbafd7eb37e654",
+  "carry": 5540268981,
+  "free": 23958175744,
+  "globalSample": {
+    "epoch": 1793845373.7716732,
+    "membership_asof": "2026-11-05T01:47:30.991757+00:00",
+    "cohorts": [
+      "01a1a00c-2690-7bc0-94fc-52609655ea83:BE42-PH1-COMPILE-FIVE-07-0529"
+    ],
+    "pids": [
+      3836,
+      3916,
+      98445,
+      98545,
+      98628
+    ],
+    "declared_pids": 56,
+    "declared_rss": 12348030976.0,
+    "rss": 254279680,
+    "qualified_control_identities": [],
+    "workflows": 2,
+    "source": 0,
+    "browsers": 1,
+    "target": 1
+  }
+}

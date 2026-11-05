@@ -1,0 +1,29 @@
+{
+  "epoch": 1793842201.818047,
+  "carry": 5438831387,
+  "global_sample": {
+    "epoch": 1793842201.13118,
+    "membership_asof": "2026-11-05T01:16:50.924501+00:00",
+    "cohorts": [
+      "01a1a213-61d6-7a20-a8e7-476649312f8c:PI12-PRIVATE-PAGES-SOURCE05-0120",
+      "01a1a231-0dc4-7b50-92bd-c0f0f56bd970:PARADISECITY-ART-QUALIFY01-0125",
+      "01a1a5d9-6950-7920-8c80-5214d4ce0eaf:PI12-OPS-APP-NATIVE01-0125"
+    ],
+    "pids": [
+      48945,
+      49293,
+      50442,
+      50527,
+      50691,
+      51044,
+      51155
+    ],
+    "declared_pids": 58,
+    "declared_rss": 11274289152.0,
+    "rss": 1234124800,
+    "workflows": 4,
+    "source": 2,
+    "browsers": 2,
+    "target": 0
+  }
+}

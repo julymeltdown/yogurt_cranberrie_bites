@@ -1,0 +1,152 @@
+{
+  "status": "UNQUALIFIED_SOURCE_CHECKPOINT",
+  "base": "aac0d96d152e47150f4fac0f57b69659ad20a956",
+  "shared_checkpoint": "056a8c48ff667134dee8e5e99710185294e4b898",
+  "contract": "pi01-photo2-v1",
+  "paths": [
+    {
+      "path": "frontend/src/app/account-deletion-entry/recovery.tsx",
+      "bytes": 1761,
+      "sha256": "b647aaefb256baf8895ed3cb8940fb3d04d0be8946b9ea3af0bdf4b935f55263"
+    },
+    {
+      "path": "frontend/src/features/auth/ui/AdmissionBoundary.tsx",
+      "bytes": 2280,
+      "sha256": "6441444ffc41a7cd0636bb4251c1af980c038f2a98becc0d636a8e638f7a497f"
+    },
+    {
+      "path": "frontend/src/features/auth/ui/Callback.tsx",
+      "bytes": 2412,
+      "sha256": "1ce8110ccaafd8f9b0fdd8f3fd41832b66ffd64a6d9893f64b81ea92d3719df4"
+    },
+    {
+      "path": "frontend/src/features/auth/ui/ConsentAdmission.tsx",
+      "bytes": 3692,
+      "sha256": "c3bcd388c50384e6c6a309bdbc4c3b3686d7388a66ceab8109a8aa4d2ac6840d"
+    },
+    {
+      "path": "frontend/src/features/auth/ui/ResetPassword.tsx",
+      "bytes": 8955,
+      "sha256": "fb7a31cfc75ad2097ed1afc2bf607261154efd884cf669013c47430335300f87"
+    },
+    {
+      "path": "frontend/src/features/auth/ui/SignIn.tsx",
+      "bytes": 6016,
+      "sha256": "9a2e6ac41550f9d3bb09e14400146b547d709de6dba4ed0121efb0168c1680df"
+    },
+    {
+      "path": "frontend/src/features/auth/ui/SignUp.tsx",
+      "bytes": 12949,
+      "sha256": "600fc850449e50fe4e2acc5f4db8bb9da6488cd7fee8bc3033807c18bc4e0ca6"
+    },
+    {
+      "path": "frontend/src/features/auth/ui/enrollment.css",
+      "bytes": 767,
+      "sha256": "a915bc47eb1254d08ca087cc74d121d169866e343cd10f78b4ea91d19810477e"
+    },
+    {
+      "path": "frontend/src/features/auth/ui/recovery.css",
+      "bytes": 131,
+      "sha256": "c95adbbf9780c07d086b6f3099a02b0054d187afeb690d39c012d742931135a0"
+    },
+    {
+      "path": "frontend/src/features/auth/ui/sign-in.css",
+      "bytes": 2590,
+      "sha256": "9ce7f2f9bee4399eb4d165ab6f4f5ee6842481a6a09e5e78952734ee485a7ba8"
+    },
+    {
+      "path": "frontend/src/features/public/ui/Landing.tsx",
+      "bytes": 3849,
+      "sha256": "f832568cc0d2d0042bc8d4d799c0fb0cdcdb337ea0b85e072b53f1ba0ee9e2fb"
+    },
+    {
+      "path": "frontend/src/features/public/ui/PublicFrame.tsx",
+      "bytes": 1301,
+      "sha256": "ebd38dc166864387895040a4fa8f72fa7d8f2a08452fe23db25fff11256c4081"
+    },
+    {
+      "path": "frontend/src/features/public/ui/public.css",
+      "bytes": 6214,
+      "sha256": "c5524890b11112093c7c1d54178e674b35635a0d7190049ee72f072d3ebe9c6c"
+    },
+    {
+      "path": "docs/mcr/frontend/parade-ink-public-auth.md",
+      "bytes": 3230,
+      "sha256": "a8567e9b495d86abcede9a0d19d5b1039fd8a8f925b1eadaae6f6151b2ae0901"
+    },
+    {
+      "path": "frontend/src/features/auth/__tests__/parade-ink-entry/controller.py",
+      "bytes": 2788,
+      "sha256": "212e75ff00100155adea1cff56a04640400bfb5f5908d508d869c0184a6ec54d"
+    },
+    {
+      "path": "frontend/src/features/auth/__tests__/parade-ink-entry/entry.test.tsx",
+      "bytes": 4128,
+      "sha256": "431dc3221e3d603a15e4059b270523c15c0b843a8416ee2988cbb9c51b840b0c"
+    },
+    {
+      "path": "frontend/src/features/auth/__tests__/parade-ink-entry/guardian.py",
+      "bytes": 4474,
+      "sha256": "5517755754eeff821d5e34e68b34dd09397c33536945b39cdf6c9ff8581ceec0"
+    },
+    {
+      "path": "frontend/src/features/auth/__tests__/parade-ink-entry/metrics.py",
+      "bytes": 3926,
+      "sha256": "3a409288ff72b65800f7a2f2666b81872a98d9085e08bbe95b58f02658eb28bd"
+    },
+    {
+      "path": "frontend/src/features/auth/__tests__/parade-ink-entry/native.mjs",
+      "bytes": 10980,
+      "sha256": "69ca9acb2ce0fdd8bc9b2e001d9ff7ae1b4ad8ef45bdfcff21d562906ad477ee"
+    },
+    {
+      "path": "frontend/src/features/auth/__tests__/parade-ink-entry/preview.html",
+      "bytes": 366,
+      "sha256": "ca21bd7b9fb9d15876231a6705d7302e76c6bfdd71e280ae6e0a1f3d86b254ef"
+    },
+    {
+      "path": "frontend/src/features/auth/__tests__/parade-ink-entry/preview.tsx",
+      "bytes": 2975,
+      "sha256": "4febbcd8d0a51cc8e2cfcab0bff4778e5cef205f51fdec6b7f31b2f1cdcf5aef"
+    },
+    {
+      "path": "frontend/src/features/auth/__tests__/parade-ink-entry/runtime.mjs",
+      "bytes": 2145,
+      "sha256": "3d4c6127832e0ab51fff35f52e9830aab7f78eac465bc0b2b7fdfe52759c48ed"
+    },
+    {
+      "path": "frontend/src/features/auth/__tests__/parade-ink-entry/tsconfig.json",
+      "bytes": 874,
+      "sha256": "de10bc0b01dc0a089c0ea39923346ebd54fb66f9fb15ea99e9d869edd25ad215"
+    },
+    {
+      "path": "frontend/src/features/auth/__tests__/parade-ink-entry/vitest.config.mjs",
+      "bytes": 450,
+      "sha256": "67a527d8b34d86d66944a22a2a808cd54a6ed8794e7bcabfe1e9092bde150d45"
+    },
+    {
+      "path": "frontend/src/features/auth/ui/parade-ink-auth/entry.css",
+      "bytes": 3328,
+      "sha256": "758966c911e682da1b6547b189d06c4f834738b0b2004ea0b766ec391600b358"
+    },
+    {
+      "path": "frontend/src/features/public/__tests__/parade-ink-entry/entry.test.tsx",
+      "bytes": 3410,
+      "sha256": "9bb2b94430c1f72db3e9c55dbfd2a097f32ce559a9fa481656c440d7ee39b5c4"
+    }
+  ],
+  "protected_prefixes_identical": [
+    "frontend/src/app/account-deletion-entry/recovery.tsx",
+    "frontend/src/features/auth/ui/AdmissionBoundary.tsx",
+    "frontend/src/features/auth/ui/Callback.tsx",
+    "frontend/src/features/auth/ui/ConsentAdmission.tsx",
+    "frontend/src/features/auth/ui/ResetPassword.tsx",
+    "frontend/src/features/auth/ui/SignIn.tsx",
+    "frontend/src/features/auth/ui/SignUp.tsx",
+    "frontend/src/features/public/ui/Landing.tsx"
+  ],
+  "tests": "NOT_RUN",
+  "native": "NOT_RUN",
+  "created_epoch": 1793836628.849219,
+  "control_amendment": "Same-scope pre-ACCEPT controls include private census and post-run source pins; production checkpoint cfcbd unchanged."
+}

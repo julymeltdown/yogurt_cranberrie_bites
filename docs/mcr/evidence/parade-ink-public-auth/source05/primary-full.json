@@ -1,0 +1,73 @@
+{
+  "lease": "PI10-MINIMAL-SOURCE05-0055",
+  "result": "PASS",
+  "exit": 0,
+  "failure": null,
+  "commands": [
+    {
+      "index": 0,
+      "argv": [
+        "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node",
+        "/Users/lhs/Desktop/mcr/frontend/node_modules/vitest/vitest.mjs",
+        "run",
+        "--config",
+        "src/features/auth/__tests__/parade-ink-entry/vitest.config.mjs",
+        "--configLoader",
+        "runner",
+        "src/features/auth/__tests__/parade-ink-entry/entry.test.tsx",
+        "-t",
+        "preserves password recovery mode controls and focus after an uncertain request"
+      ],
+      "exit": 0
+    },
+    {
+      "index": 1,
+      "argv": [
+        "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node",
+        "/Users/lhs/Desktop/mcr/frontend/node_modules/typescript/bin/tsc",
+        "-p",
+        "src/features/auth/__tests__/parade-ink-entry/tsconfig.json",
+        "--pretty",
+        "false",
+        "--incremental",
+        "false"
+      ],
+      "exit": 0
+    },
+    {
+      "index": 2,
+      "argv": [
+        "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node",
+        "/Users/lhs/Desktop/mcr/frontend/node_modules/oxlint/bin/oxlint",
+        "--deny-warnings",
+        "src/features/auth/__tests__/parade-ink-entry",
+        "src/features/public/__tests__/parade-ink-entry/entry.test.tsx"
+      ],
+      "exit": 0
+    },
+    {
+      "index": 3,
+      "argv": [
+        "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node",
+        "--check",
+        "src/features/auth/__tests__/parade-ink-entry/native.mjs"
+      ],
+      "exit": 0
+    }
+  ],
+  "full_epoch": 1793840360.795389,
+  "before_hard": true,
+  "peak": {
+    "whole": 5375494939,
+    "new": 43347968,
+    "processes": 7,
+    "rss": 1168375808,
+    "global_rss": 3213148160,
+    "global_workflows": 2,
+    "global_source": 1,
+    "global_browsers": 0,
+    "global_target": 1,
+    "global_processes": 12
+  },
+  "minimum_free": 16344576000
+}

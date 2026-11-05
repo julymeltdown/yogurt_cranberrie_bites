@@ -1,0 +1,23 @@
+{
+  "lease": "PI10-MINIMAL-SOURCE05-0055",
+  "result": "PASS",
+  "exit": 0,
+  "failure": null,
+  "full_epoch": 1793840361.949505,
+  "before_hard": true,
+  "peak": {
+    "whole": 5377575707,
+    "new": 53932032,
+    "processes": 7,
+    "rss": 1168769024,
+    "global_rss": 3217195008,
+    "global_workflows": 3,
+    "global_source": 1,
+    "global_browsers": 1,
+    "global_target": 1,
+    "global_processes": 12
+  },
+  "minimum_free": 16345042944,
+  "remaining": [],
+  "execution_resources": 0
+}

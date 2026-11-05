@@ -1,0 +1,17 @@
+{
+  "status": "GUARD_ABORT_AFTER_HELPER_LINT",
+  "actualAccept": 1793842705.605825,
+  "actualFull": 1793842714.618326,
+  "resources": 0,
+  "remaining": [],
+  "helper_lint": "PASS command00 exit0",
+  "browser": false,
+  "screenshots": 0,
+  "primaryFULL": "ABSENT after outer cleanup",
+  "failure": "BE42 accepted target guardian94884 had controllernull/guardControllers[] in actualownerrecord; no guessed ancestry or role was substituted",
+  "historicalMax": {
+    "whole": 5442738971,
+    "new": 231797044,
+    "native_payload": 56299674
+  }
+}

@@ -1,0 +1,16 @@
+[
+  {
+    "path": "docs/mcr/evidence/parade-ink-public-auth/resource-releases/PI06Native02.json",
+    "source": "/Users/lhs/Desktop/mcr-worktrees/fe-public/docs/mcr/evidence/parade-ink-profile/native02/guardian.json",
+    "sha256": "17f41a6a8ec6434341419be0f95595273789bcfb54f028413476e5c5db1ad4cb",
+    "copied_epoch": 1793839355.362818,
+    "boundary": "Resource release receipt only; no implementation acceptance"
+  },
+  {
+    "path": "docs/mcr/evidence/parade-ink-public-auth/resource-releases/207CompileA.json",
+    "source": "/private/tmp/mcr-gateway207-settings-28-enfm_kd9/be38/combined-build/run-01/full-release.json",
+    "sha256": "829c60a701855e9a41e78319e02711423e7fce7653ec3e1a22927ce2fafb49d7",
+    "copied_epoch": 1793839355.363248,
+    "boundary": "Resource release receipt only; no implementation acceptance"
+  }
+]

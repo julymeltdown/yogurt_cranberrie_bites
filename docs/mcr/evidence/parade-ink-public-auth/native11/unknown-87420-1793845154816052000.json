@@ -1,0 +1,33 @@
+{
+  "epoch": 1793845154.8160572,
+  "sampler": 87420,
+  "attempt": 0,
+  "owned_before": [
+    87420
+  ],
+  "owned_current": [
+    87420,
+    87570
+  ],
+  "cohorts": [
+    "01a1a207-f012-7343-a24b-12b9c544973f:GATEWAY207-COPIED05-0215"
+  ],
+  "identities": [
+    {
+      "pid": 87571,
+      "parent": 87445,
+      "rss": 327680,
+      "command": "/Library/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python -m py_compile scripts/mcr/private_data_production/freeze.py scripts/mcr/private_data_production/guardian.py scripts/mcr/private_data_production/native.py scripts/mcr/private_data_production/request.py scripts/mcr/private_data_production/run.py",
+      "birth": "Thu Nov 5 11:19:14 2026"
+    }
+  ],
+  "unresolved": [
+    {
+      "pid": 87571,
+      "parent": 87445,
+      "rss": 327680,
+      "command": "/Library/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python -m py_compile scripts/mcr/private_data_production/freeze.py scripts/mcr/private_data_production/guardian.py scripts/mcr/private_data_production/native.py scripts/mcr/private_data_production/request.py scripts/mcr/private_data_production/run.py",
+      "birth": "Thu Nov 5 11:19:14 2026"
+    }
+  ]
+}

@@ -1,0 +1,171 @@
+{
+  "lease": "PI10-AUTH-NATIVE10-0202",
+  "mode": "native",
+  "source_retry": false,
+  "status": "ACTUAL_ACCEPTED",
+  "start_floor": 12884901888,
+  "other_new": 5368709120,
+  "new_cap": 536870912,
+  "whole_cap": 8589934592,
+  "process_cap": 24,
+  "rss_cap": 3758096384,
+  "prior_whole": 5506309045,
+  "prior_new_source01": 35692544,
+  "prior_new_source02": 48054272,
+  "prior_new_source03": 50434048,
+  "control": "/private/tmp/mcr-pi10-native10-0202",
+  "temporary": "/private/tmp/mcr-pi10-native10-0202/scratch",
+  "output": "/Users/lhs/Desktop/mcr-worktrees/sl-world/docs/mcr/evidence/parade-ink-public-auth/native10",
+  "readset": "docs/mcr/evidence/parade-ink-public-auth/native10-readset.json",
+  "readset_sha": "7036aecea2477ab157b7eaed5ba9e6f71041814c7ae5bed50eb1dacf0d48cb0d",
+  "node_sha": "b6fb419f0f43bb2fbca273700294dd2f3b685a64b60e8417c295f47646a70e4a",
+  "pins": {
+    "controller.py": "df202f507bbd5da0d42a603f493e10fef5b014b413699915ebd4cc62b08fe1d9",
+    "guardian.py": "1d7fe54a939acd60f74f2d59d780d2e80614dcf2309cfe69378516e190579a7d",
+    "metrics.py": "bdfb3a790d3a725215ddbd6e0ca0f7d90ac80b1b0e7a82f7ed998b4f7b203292",
+    "bootstrap.py": "546ea92cfb7bbe621975ef19d3c8095fbf187438db15a40d58d86579f5ed1958"
+  },
+  "source": "0cd18bf66f3cf0d981af26daefe508f0702dbd92",
+  "retained_roots": [
+    "/private/tmp/mcr-pi10-source01-0003",
+    "/private/tmp/mcr-pi10-source02-0009",
+    "/private/tmp/mcr-pi10-source03-0023",
+    "/private/tmp/mcr-qa01-disposition-50a8-2330",
+    "/private/tmp/mcr-pi10-source04-0043",
+    "/private/tmp/mcr-pi10-source05-0058",
+    "/private/tmp/mcr-pi10-native01-0107",
+    "/private/tmp/mcr-pi10-native02-0120",
+    "/private/tmp/mcr-pi10-native03-0127",
+    "/private/tmp/mcr-pi10-native04-0127",
+    "/private/tmp/mcr-pi10-native05-0130",
+    "/private/tmp/mcr-pi10-native06-0136",
+    "/private/tmp/mcr-pi10-native07-0139",
+    "/private/tmp/mcr-pi10-native08-0140",
+    "/private/tmp/mcr-pi10-native09-0150"
+  ],
+  "resource_predecessor": "Wall16literalFULL1793844015.490793/all0; 17/18UNREADY_YIELD direct. Auth09FULL1793843576.661937/all0/realCSSdefectfixed. Standingguardclarificationearlyprimarypublish+cwdresealed. EarlieractualPI04orotherscountednofuturehold.",
+  "lint_paths": [
+    "src/features/auth/__tests__/parade-ink-entry",
+    "src/features/public/__tests__/parade-ink-entry/entry.test.tsx"
+  ],
+  "membership_path": "/Users/lhs/Desktop/mcr-evidence/backend-staffing-01a1a21d/resource-membership-current.json",
+  "literal_releases": [
+    {
+      "cohort": "207CompileA",
+      "path": "/Users/lhs/Desktop/mcr-worktrees/sl-world/docs/mcr/evidence/parade-ink-public-auth/resource-releases/207CompileA.json",
+      "sha256": "829c60a701855e9a41e78319e02711423e7fce7653ec3e1a22927ce2fafb49d7"
+    },
+    {
+      "cohort": "PI06Native02",
+      "path": "/Users/lhs/Desktop/mcr-worktrees/sl-world/docs/mcr/evidence/parade-ink-public-auth/resource-releases/PI06Native02.json",
+      "sha256": "17f41a6a8ec6434341419be0f95595273789bcfb54f028413476e5c5db1ad4cb"
+    },
+    {
+      "cohort": "PI04-GIVEAWAY-APP-NATIVE06-0116",
+      "path": "/Users/lhs/Desktop/mcr-worktrees/sl-world/docs/mcr/evidence/parade-ink-public-auth/resource-releases/PI04-GIVEAWAY-APP-NATIVE06-0116.json",
+      "sha256": "49fddc401bc61c8d6e559bd7c9ff0e9503feca6ac5a112100a585f84b713ed80"
+    },
+    {
+      "cohort": "PI12-OPERATIONS-SOURCE01-0111",
+      "path": "/Users/lhs/Desktop/mcr-worktrees/sl-world/docs/mcr/evidence/parade-ink-public-auth/resource-releases/PI12-OPERATIONS-SOURCE01-0111.json",
+      "sha256": "201ad2eabcf46e7e311b34dd3292019f399d9e7a576e35f1190dfa77196b9b1a"
+    },
+    {
+      "cohort": "PI12-REPORT-ERROR-NETWORK-SOURCE03-0116",
+      "path": "/Users/lhs/Desktop/mcr-worktrees/sl-world/docs/mcr/evidence/parade-ink-public-auth/resource-releases/PI12-REPORT-ERROR-NETWORK-SOURCE03-0116.json",
+      "sha256": "2f9c914666e8eabc0827d43d77ae8262ac6c07dadb44eb46db97b0fd2b9fac89"
+    },
+    {
+      "cohort": "PI12-OPS-APP-NATIVE01-0125",
+      "path": "/Users/lhs/Desktop/mcr-worktrees/sl-world/docs/mcr/evidence/parade-ink-public-auth/resource-releases/PI12-OPS-APP-NATIVE01-0125.json",
+      "sha256": "9f6bb40e1b0f2125e2d4346be1a53eb3ff60f9d815cc77fd02bd5cde974f2a38"
+    },
+    {
+      "cohort": "BE42-PH1-COMPILE-FIVE-0131",
+      "path": "/Users/lhs/Desktop/mcr-worktrees/sl-world/docs/mcr/evidence/parade-ink-public-auth/resource-releases/BE42-PH1-COMPILE-FIVE-0131.json",
+      "sha256": "842789388b93aa13b9ac9f8467399bcae8deda10e586aaf9d99711845cd35fe3"
+    }
+  ],
+  "additional_cohorts": [],
+  "own_cohort_names": [
+    "PI10Native10",
+    "PI10-AUTH-NATIVE10-0202"
+  ],
+  "prepared_epoch": 1793844034.884833,
+  "owner_thread": "01a1a533-50a8-7fb2-b3ed-96b941b96bbf",
+  "owner_receipt": "/Users/lhs/Desktop/mcr-evidence/backend-staffing-01a1a21d/owner-resource-receipts/01a1a533-50a8-7fb2-b3ed-96b941b96bbf.json",
+  "receipt_directory": "/Users/lhs/Desktop/mcr-evidence/backend-staffing-01a1a21d/owner-resource-receipts",
+  "ordinary_git_only": [
+    {
+      "script": "/private/tmp/mcr-publisher-412e-capacity-composition-delivery.py",
+      "sha256": "98523ce9d454f2fdfdc4080ca9fa11e6b724a9343217a8c2f03c44b16d854456"
+    },
+    {
+      "script": "/private/tmp/mcr-post21a-be39-compile-unit03-0111/bootstrap.py",
+      "sha256": "21513d1761d8090eef1a5c2e4f3de16262713a3560a39ee0778a9aba9ea7aabb",
+      "dependencies": {
+        "/private/tmp/mcr-post21a-be39-compile-unit03-0111/prepare_admission.py": "fbd68b9c83ce3c80776d83a8bd800086eb7a8273bd5acb198277e51e76f7c25c",
+        "/private/tmp/mcr-post21a-be39-compile-unit03-0111/budget.py": "c6e33a09cf730f797f4a483208f45cbdb80e6fba2529f8fec52c87d1e9bf43ff",
+        "/private/tmp/mcr-post21a-be39-compile-unit03-0111/accounting.py": "d525a94f8bbc3a89a47bf84bda757c985d9f722aa985d7b60a2d600bffcb720a"
+      },
+      "role": "Direct owner factual ordinary preparation only; no compile ACCEPT; actual PID/RSS counts"
+    }
+  ],
+  "prior_new_source04": 38027264,
+  "prior_new_source05": 53932032,
+  "port": 5390,
+  "chrome_sha": "3f0acaf1e585195596d73ffa1824baa72c3c3ac115b5cfc43d789030a3f23d93",
+  "cwd": "/Users/lhs/Desktop/mcr-worktrees/sl-world",
+  "accept_by_epoch": 1793846100,
+  "historical_new_charge": 367448526,
+  "remaining_new_reservation": 169422386,
+  "retained_native_payload_roots": [
+    "/private/tmp/mcr-pi10-native01-0107",
+    "/Users/lhs/Desktop/mcr-worktrees/sl-world/docs/mcr/evidence/parade-ink-public-auth/native01",
+    "/private/tmp/mcr-pi10-native02-0120",
+    "/Users/lhs/Desktop/mcr-worktrees/sl-world/docs/mcr/evidence/parade-ink-public-auth/native02",
+    "/private/tmp/mcr-pi10-native03-0127",
+    "/Users/lhs/Desktop/mcr-worktrees/sl-world/docs/mcr/evidence/parade-ink-public-auth/native03",
+    "/private/tmp/mcr-pi10-native04-0127",
+    "/Users/lhs/Desktop/mcr-worktrees/sl-world/docs/mcr/evidence/parade-ink-public-auth/native04",
+    "/private/tmp/mcr-pi10-native05-0130",
+    "/Users/lhs/Desktop/mcr-worktrees/sl-world/docs/mcr/evidence/parade-ink-public-auth/native05",
+    "/private/tmp/mcr-pi10-native06-0136",
+    "/Users/lhs/Desktop/mcr-worktrees/sl-world/docs/mcr/evidence/parade-ink-public-auth/native06",
+    "/private/tmp/mcr-pi10-native07-0139",
+    "/Users/lhs/Desktop/mcr-worktrees/sl-world/docs/mcr/evidence/parade-ink-public-auth/native07",
+    "/private/tmp/mcr-pi10-native08-0140",
+    "/Users/lhs/Desktop/mcr-worktrees/sl-world/docs/mcr/evidence/parade-ink-public-auth/native08",
+    "/private/tmp/mcr-pi10-native09-0150",
+    "/Users/lhs/Desktop/mcr-worktrees/sl-world/docs/mcr/evidence/parade-ink-public-auth/native09"
+  ],
+  "retained_native_png_roots": [
+    "/Users/lhs/Desktop/mcr-worktrees/sl-world/docs/mcr/evidence/parade-ink-public-auth/native01",
+    "/Users/lhs/Desktop/mcr-worktrees/sl-world/docs/mcr/evidence/parade-ink-public-auth/native02"
+  ],
+  "native_payload_cap": 201326592,
+  "native_png_cap": 52,
+  "native_png_byte_cap": 25165824,
+  "prior_native_payload": 106795162,
+  "qualified_helper_proof": {
+    "path": "docs/mcr/evidence/parade-ink-public-auth/native08/primary-full.json",
+    "sha256": "bd27e12417e1bcb15404a595ab87be13a6e18680c8ce67b4d3ef81650dd42a6c",
+    "helper_pins": {
+      "native.mjs": "509e9774bbae329dd534da81388053fa1fb0f81216fea690326041b889d5b55b",
+      "compare.mjs": "70ac932f02226226691f7201538fd4738fa57b6e7367eeb38cdbb9d4f90ebd53",
+      "runtime.mjs": "acb1eea309b9c4a46fdc41a21b3cc746938e1d9d374b8a7328f8ccfe949445d4"
+    }
+  },
+  "factual_control_packet_owners": [
+    {
+      "owner": "01a1a00c-2690-7bc0-94fc-52609655ea83",
+      "kind": "target",
+      "receipt_prefix": "/Users/lhs/Desktop/mcr-evidence/backend-staffing-01a1a21d/BE42-COMPILE-",
+      "control_prefix": "/private/tmp/mcr-be42-compile-"
+    }
+  ],
+  "accept_epoch": 1793844185.146913,
+  "work_deadline": 1793844485.146913,
+  "full_deadline": 1793844545.146913,
+  "fresh_free": 23017889792
+}

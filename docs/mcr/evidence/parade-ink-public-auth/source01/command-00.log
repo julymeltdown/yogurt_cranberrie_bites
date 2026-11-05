@@ -1,0 +1,24 @@
+
+ RUN  v4.1.9 /Users/lhs/Desktop/mcr-worktrees/sl-world/frontend
+
+ ❯ src/features/auth/__tests__/parade-ink-entry/entry.test.tsx (0 test)
+ ❯ src/features/public/__tests__/parade-ink-entry/entry.test.tsx (0 test)
+
+⎯⎯⎯⎯⎯⎯ Failed Suites 2 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  src/features/auth/__tests__/parade-ink-entry/entry.test.tsx [ src/features/auth/__tests__/parade-ink-entry/entry.test.tsx ]
+ FAIL  src/features/public/__tests__/parade-ink-entry/entry.test.tsx [ src/features/public/__tests__/parade-ink-entry/entry.test.tsx ]
+Error: Vitest cannot be imported in a CommonJS module using require(). Please use "import" instead.
+
+If you are using "import" in your source code, then it's possible it was bundled into require() automatically by your bundler. In that case, do not bundle CommonJS output since it will never work with Vitest, or use dynamic import() which is available in all CommonJS modules.
+ ❯ Object.<anonymous> ../../../mcr/frontend/node_modules/.pnpm/vitest@4.1.9_@types+node@24.13.2_jsdom@29.1.1_msw@2.14.6_@types+node@24.13.2_typescript_67338a2989bf71c5b75b87305b6eead5/node_modules/vitest/index.cjs:1:7
+ ❯ Object.<anonymous> ../../../mcr/frontend/node_modules/.pnpm/@testing-library+jest-dom@6.9.1/node_modules/@testing-library/jest-dom/dist/vitest.js:3:14
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/2]⎯
+
+
+ Test Files  2 failed (2)
+      Tests  no tests
+   Start at  09:02:56
+   Duration  836ms (transform 18ms, setup 0ms, import 0ms, tests 0ms, environment 658ms)
+

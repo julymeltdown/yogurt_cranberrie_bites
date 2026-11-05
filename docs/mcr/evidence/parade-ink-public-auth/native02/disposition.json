@@ -1,0 +1,34 @@
+{
+  "status": "ABORTED_PARTIAL",
+  "actual_full": 1793841562.541153,
+  "remaining": [],
+  "port5390": "LISTEN empty; lsof exit1 after FULL",
+  "primary_full": "ABSENT after independent outer cleanup; no synthetic receipt",
+  "native_json": "ABSENT after outer cleanup; no full matrix outcome",
+  "pngs": [
+    "callback-360.png",
+    "deletion-no-retained-360.png",
+    "landing-360.png",
+    "legal-unavailable-360.png",
+    "reset-360.png",
+    "sign-in-360.png",
+    "signup-policy-360.png",
+    "verification-360.png"
+  ],
+  "inspection": "All8 primary360 PNGs viewed. Sign-in primary crimson/display corrected. Landing and sign-in legacy Cozy import cascade exposed; consume PI01 exact qualified layer correction next. Other6 primary360 layouts legible, no evident overflow; no completed matrix claim.",
+  "peak": {
+    "whole": 5434829749,
+    "new": 141529396,
+    "processes": 13,
+    "rss": 2392965120,
+    "native_payload": 56299674,
+    "global_rss": 2577350656,
+    "global_workflows": 2,
+    "global_source": 0,
+    "global_browsers": 2,
+    "global_target": 0,
+    "global_processes": 16
+  },
+  "unknown_peer": "BE39 bootstrap PID89247 parent49590 birth Thu Nov5 10:19:21 2026; full exact identities in unknown receipts",
+  "live_auth_world_device": "NOT_RUN"
+}

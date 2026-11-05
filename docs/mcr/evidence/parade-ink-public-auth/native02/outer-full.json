@@ -1,0 +1,24 @@
+{
+  "lease": "PI10-PUBLIC-AUTH-APP-NATIVE02-0110",
+  "result": "FAIL",
+  "exit": 1,
+  "failure": "AssertionError('Unresolved live MCR workflow roots: [89247]')",
+  "full_epoch": 1793841562.541153,
+  "before_hard": true,
+  "peak": {
+    "whole": 5434829749,
+    "new": 141529396,
+    "processes": 13,
+    "rss": 2392965120,
+    "native_payload": 56299674,
+    "global_rss": 2577350656,
+    "global_workflows": 2,
+    "global_source": 0,
+    "global_browsers": 2,
+    "global_target": 0,
+    "global_processes": 16
+  },
+  "minimum_free": 23668596736,
+  "remaining": [],
+  "execution_resources": 0
+}

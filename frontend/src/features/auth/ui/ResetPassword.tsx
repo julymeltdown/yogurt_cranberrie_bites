@@ -88,7 +88,7 @@ export function ResetPassword() {
     if (submitting.current) return
     clearSecrets(); setResult(null); setMode(next)
   }
-  return <main className="auth-recovery" id="main" tabIndex={-1}>
+  return <main className="auth-recovery parade-auth-entry" id="main" tabIndex={-1}>
     <Link className="recovery-home" to="/">MCR Concert World</Link>
     <p className="recovery-eyebrow">YOUR WAY BACK</p>
     <h1 ref={heading} tabIndex={-1}>Reset password</h1>

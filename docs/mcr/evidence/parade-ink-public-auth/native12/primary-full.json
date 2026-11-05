@@ -1,0 +1,61 @@
+{
+  "lease": "PI10-NATIVE12-0221",
+  "result": "PASS",
+  "exit": 0,
+  "failure": null,
+  "commands": [
+    {
+      "index": 0,
+      "argv": [
+        "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node",
+        "/Users/lhs/Desktop/mcr/frontend/node_modules/oxlint/bin/oxlint",
+        "--deny-warnings",
+        "src/features/auth/__tests__/parade-ink-entry/native.mjs",
+        "src/features/auth/__tests__/parade-ink-entry/entry-remainder.mjs"
+      ],
+      "exit": 0
+    },
+    {
+      "index": 1,
+      "argv": [
+        "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node",
+        "--check",
+        "src/features/auth/__tests__/parade-ink-entry/native.mjs"
+      ],
+      "exit": 0
+    },
+    {
+      "index": 2,
+      "argv": [
+        "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node",
+        "--check",
+        "src/features/auth/__tests__/parade-ink-entry/entry-remainder.mjs"
+      ],
+      "exit": 0
+    },
+    {
+      "index": 3,
+      "argv": [
+        "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node",
+        "src/features/auth/__tests__/parade-ink-entry/entry-remainder.mjs"
+      ],
+      "exit": 0
+    }
+  ],
+  "full_epoch": 1793845402.379623,
+  "before_hard": true,
+  "peak": {
+    "whole": 5558930355,
+    "new": 525693696,
+    "processes": 14,
+    "rss": 2402713600,
+    "native_payload": 156540928,
+    "global_rss": 2598240256,
+    "global_workflows": 2,
+    "global_source": 0,
+    "global_browsers": 1,
+    "global_target": 1,
+    "global_processes": 17
+  },
+  "minimum_free": 23927345152
+}

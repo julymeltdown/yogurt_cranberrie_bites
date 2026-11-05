@@ -1,0 +1,40 @@
+{
+  "lease": "PI10-AUTH-PRESENTATION-SOURCE01-20261105T0001Z",
+  "mode": "source",
+  "accept_epoch": 1793836972.256242,
+  "work_deadline": 1793837212.256242,
+  "full_deadline": 1793837272.256242,
+  "start_floor": 11811160064,
+  "other_new": 5368709120,
+  "new_cap": 134217728,
+  "whole_cap": 8589934592,
+  "process_cap": 8,
+  "rss_cap": 2147483648,
+  "prior_whole": 5296710434,
+  "control": "/private/tmp/mcr-pi10-source01-0003",
+  "temporary": "/private/tmp/mcr-pi10-source01-0003/scratch",
+  "output": "/Users/lhs/Desktop/mcr-worktrees/sl-world/docs/mcr/evidence/parade-ink-public-auth/source01",
+  "readset": "docs/mcr/evidence/parade-ink-public-auth/source-readset.json",
+  "readset_sha": "37d83b7a942994208d7a0b061ab92fc0ef5f0433a8cc4f81ef8898d955a1f36c",
+  "node_sha": "b6fb419f0f43bb2fbca273700294dd2f3b685a64b60e8417c295f47646a70e4a",
+  "pins": {
+    "controller.py": "212e75ff00100155adea1cff56a04640400bfb5f5908d508d869c0184a6ec54d",
+    "guardian.py": "5517755754eeff821d5e34e68b34dd09397c33536945b39cdf6c9ff8581ceec0",
+    "metrics.py": "3a409288ff72b65800f7a2f2666b81872a98d9085e08bbe95b58f02658eb28bd"
+  },
+  "source": "6e6ff300e78d505b47afe983caf7996aee2be9a9",
+  "fresh_free": 15450120192,
+  "lint_paths": [
+    "src/app/account-deletion-entry/recovery.tsx",
+    "src/features/public/ui/Landing.tsx",
+    "src/features/public/ui/PublicFrame.tsx",
+    "src/features/auth/ui/SignIn.tsx",
+    "src/features/auth/ui/SignUp.tsx",
+    "src/features/auth/ui/AdmissionBoundary.tsx",
+    "src/features/auth/ui/ConsentAdmission.tsx",
+    "src/features/auth/ui/Callback.tsx",
+    "src/features/auth/ui/ResetPassword.tsx",
+    "src/features/auth/__tests__/parade-ink-entry",
+    "src/features/public/__tests__/parade-ink-entry"
+  ]
+}

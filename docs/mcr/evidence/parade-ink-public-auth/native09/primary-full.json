@@ -1,0 +1,32 @@
+{
+  "lease": "PI10-AUTH-NATIVE09-0147",
+  "result": "FAIL",
+  "exit": 1,
+  "failure": null,
+  "commands": [
+    {
+      "index": 0,
+      "argv": [
+        "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node",
+        "src/features/auth/__tests__/parade-ink-entry/native.mjs"
+      ],
+      "exit": 1
+    }
+  ],
+  "full_epoch": 1793843574.0218859,
+  "before_hard": true,
+  "peak": {
+    "whole": 5506317237,
+    "new": 367440334,
+    "processes": 13,
+    "rss": 2305212416,
+    "native_payload": 106803354,
+    "global_rss": 2640101376,
+    "global_workflows": 3,
+    "global_source": 1,
+    "global_browsers": 1,
+    "global_target": 1,
+    "global_processes": 21
+  },
+  "minimum_free": 23270559744
+}

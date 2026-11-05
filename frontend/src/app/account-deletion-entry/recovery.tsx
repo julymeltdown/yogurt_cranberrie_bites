@@ -1,13 +1,13 @@
 import { useLayoutEffect, useRef } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 import { useRetainedAccount } from './context'
-import '../../features/safety/safety.css'
+import '../../features/auth/ui/parade-ink-auth/entry.css'
 export function AccountDeletionRecovery() {
   const { controller } = useRetainedAccount(), location = useLocation(), heading = useRef<HTMLHeadingElement>(null)
   const state = controller?.read()
   useLayoutEffect(() => { heading.current?.focus() }, [location.key])
   const retained = state && ['requesting', 'checking', 'pending', 'partial-failure', 'unknown', 'complete'].includes(state.phase)
-  return <main className="shell-gate mcr-safety-panel" id="main">
+  return <main className="parade-auth-entry parade-deletion-entry" id="main">
     <h1 ref={heading} tabIndex={-1}>Account deletion status</h1>
     {!retained ? <><p role="status">No deletion completion is confirmed in this session. Retained recovery is unavailable after expiry, sign-out or a session change.</p>
       <Link className="shell-link" to="/login">Sign in</Link></>

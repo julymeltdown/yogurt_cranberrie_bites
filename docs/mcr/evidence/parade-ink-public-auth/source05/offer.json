@@ -1,0 +1,74 @@
+{
+  "lease": "PI10-MINIMAL-SOURCE05-0055",
+  "mode": "source",
+  "source_retry": true,
+  "status": "ACTUAL_ACCEPTED",
+  "start_floor": 11811160064,
+  "other_new": 5368709120,
+  "new_cap": 134217728,
+  "whole_cap": 8589934592,
+  "process_cap": 8,
+  "rss_cap": 2147483648,
+  "prior_whole": 5374094107,
+  "prior_new_source01": 35692544,
+  "prior_new_source02": 48054272,
+  "prior_new_source03": 50434048,
+  "control": "/private/tmp/mcr-pi10-source05-0058",
+  "temporary": "/private/tmp/mcr-pi10-source05-0058/scratch",
+  "output": "/Users/lhs/Desktop/mcr-worktrees/sl-world/docs/mcr/evidence/parade-ink-public-auth/source05",
+  "readset": "docs/mcr/evidence/parade-ink-public-auth/source05-readset.json",
+  "readset_sha": "c50951fed32df7f23c466a2cde3f0a1fce906223e9a2c1704c683b4ae2530e58",
+  "node_sha": "b6fb419f0f43bb2fbca273700294dd2f3b685a64b60e8417c295f47646a70e4a",
+  "pins": {
+    "controller.py": "982c26a88da6ded052b680a9f78dc0ca420873ad8f75940c59d6a1b44293bc79",
+    "guardian.py": "2504a778d1ba0868092ee97560d37a7eddfe8c194cbdf37e229c2162943aa7ec",
+    "metrics.py": "04c390c143a8f7855fbd9b78fd1ba5a36524a5162367d98d4ecaae373a7af846"
+  },
+  "source": "daced9bd74daac251b3a17a813442c2038e94420",
+  "retained_roots": [
+    "/private/tmp/mcr-pi10-source01-0003",
+    "/private/tmp/mcr-pi10-source02-0009",
+    "/private/tmp/mcr-pi10-source03-0023",
+    "/private/tmp/mcr-qa01-disposition-50a8-2330",
+    "/private/tmp/mcr-pi10-source04-0043"
+  ],
+  "resource_predecessor": "Own SOURCE04 actualFULL1793839951.5122712; distinct Source05 eligible NOW; 207prepare ordinary-only resolved directowner, FE37SOURCE02 FULL00:57:43.353592 resolved directowner toallocator",
+  "lint_paths": [
+    "src/features/auth/__tests__/parade-ink-entry",
+    "src/features/public/__tests__/parade-ink-entry/entry.test.tsx"
+  ],
+  "membership_path": "/Users/lhs/Desktop/mcr-evidence/backend-staffing-01a1a21d/resource-membership-current.json",
+  "literal_releases": [
+    {
+      "cohort": "207CompileA",
+      "path": "/Users/lhs/Desktop/mcr-worktrees/sl-world/docs/mcr/evidence/parade-ink-public-auth/resource-releases/207CompileA.json",
+      "sha256": "829c60a701855e9a41e78319e02711423e7fce7653ec3e1a22927ce2fafb49d7"
+    },
+    {
+      "cohort": "PI06Native02",
+      "path": "/Users/lhs/Desktop/mcr-worktrees/sl-world/docs/mcr/evidence/parade-ink-public-auth/resource-releases/PI06Native02.json",
+      "sha256": "17f41a6a8ec6434341419be0f95595273789bcfb54f028413476e5c5db1ad4cb"
+    }
+  ],
+  "additional_cohorts": [],
+  "own_cohort_names": [
+    "PI10Source05",
+    "PI10SOURCE05",
+    "PI10-MINIMAL-SOURCE05-0055"
+  ],
+  "prepared_epoch": 1793839412.4566872,
+  "owner_thread": "01a1a533-50a8-7fb2-b3ed-96b941b96bbf",
+  "owner_receipt": "/Users/lhs/Desktop/mcr-evidence/backend-staffing-01a1a21d/owner-resource-receipts/01a1a533-50a8-7fb2-b3ed-96b941b96bbf.json",
+  "receipt_directory": "/Users/lhs/Desktop/mcr-evidence/backend-staffing-01a1a21d/owner-resource-receipts",
+  "ordinary_git_only": [
+    {
+      "script": "/private/tmp/mcr-publisher-412e-capacity-composition-delivery.py",
+      "sha256": "8bd689d14ffd14ef04b2209cf890eb113a52a261c350e9cc2809d60971293622"
+    }
+  ],
+  "prior_new_source04": 38027264,
+  "accept_epoch": 1793840340.2254899,
+  "work_deadline": 1793840520.2254899,
+  "full_deadline": 1793840580.2254899,
+  "fresh_free": 16368582656
+}

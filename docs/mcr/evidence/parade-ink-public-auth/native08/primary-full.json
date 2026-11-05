@@ -1,0 +1,63 @@
+{
+  "lease": "PI10-NATIVE08-0136",
+  "result": "FAIL",
+  "exit": 1,
+  "failure": "AssertionError('Unresolved live MCR workflow roots: [3757]')",
+  "commands": [
+    {
+      "index": 0,
+      "argv": [
+        "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node",
+        "/Users/lhs/Desktop/mcr/frontend/node_modules/oxlint/bin/oxlint",
+        "--deny-warnings",
+        "src/features/auth/__tests__/parade-ink-entry/native.mjs",
+        "src/features/auth/__tests__/parade-ink-entry/compare.mjs",
+        "src/features/auth/__tests__/parade-ink-entry/runtime.mjs"
+      ],
+      "exit": 0
+    },
+    {
+      "index": 1,
+      "argv": [
+        "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node",
+        "--check",
+        "src/features/auth/__tests__/parade-ink-entry/native.mjs"
+      ],
+      "exit": 0
+    },
+    {
+      "index": 2,
+      "argv": [
+        "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node",
+        "--check",
+        "src/features/auth/__tests__/parade-ink-entry/compare.mjs"
+      ],
+      "exit": 0
+    },
+    {
+      "index": 3,
+      "argv": [
+        "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node",
+        "--check",
+        "src/features/auth/__tests__/parade-ink-entry/runtime.mjs"
+      ],
+      "exit": 0
+    }
+  ],
+  "full_epoch": 1793842805.333689,
+  "before_hard": true,
+  "peak": {
+    "whole": 5467483044,
+    "new": 268357940,
+    "processes": 7,
+    "rss": 350224384,
+    "native_payload": 75096201,
+    "global_rss": 322732032,
+    "global_workflows": 2,
+    "global_source": 0,
+    "global_browsers": 1,
+    "global_target": 1,
+    "global_processes": 11
+  },
+  "minimum_free": 23347859456
+}

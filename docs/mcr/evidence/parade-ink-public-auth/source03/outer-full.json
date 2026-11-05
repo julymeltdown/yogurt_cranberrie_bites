@@ -1,0 +1,17 @@
+{
+  "lease": "SOURCE03-20261105T0013Z",
+  "result": "FAIL",
+  "exit": 1,
+  "failure": null,
+  "full_epoch": 1793838235.7338471,
+  "before_hard": true,
+  "peak": {
+    "whole": 5312054050,
+    "new": 50434048,
+    "processes": 7,
+    "rss": 1964244992
+  },
+  "minimum_free": 15740362752,
+  "remaining": [],
+  "execution_resources": 0
+}

@@ -1,0 +1,11 @@
+{
+  "status": "BOOTSTRAP_ABORT_BEFORE_PAYLOAD",
+  "execution_resources": 0,
+  "Node": false,
+  "browser": false,
+  "screenshots": 0,
+  "initial_samples": "NOT_COMPLETED; no workload admitted after bootstrap census failure",
+  "peer": "PID30248 be42 request authoring; exact identity retained",
+  "native04_closed": true,
+  "restart": false
+}

@@ -1,0 +1,21 @@
+{
+  "result": "PASS_SCOPED_SOURCE_AUDIT",
+  "epoch": 1793845596.78481,
+  "base": "aac0d96d152e47150f4fac0f57b69659ad20a956",
+  "codeSource": "7c8dcbb6f697b8c70dc7c6494c19f81923d1979b",
+  "outOfScope": [],
+  "sparseSHA": "6f908ca0679efa72a87aac4f8db67ad913669faac88d0df6d24406bd4b46dcbc",
+  "protectedSetupIdentical": [
+    "frontend/src/app/account-deletion-entry/recovery.tsx",
+    "frontend/src/features/auth/ui/AdmissionBoundary.tsx",
+    "frontend/src/features/auth/ui/Callback.tsx",
+    "frontend/src/features/auth/ui/ConsentAdmission.tsx",
+    "frontend/src/features/auth/ui/ResetPassword.tsx",
+    "frontend/src/features/auth/ui/SignIn.tsx",
+    "frontend/src/features/auth/ui/SignUp.tsx",
+    "frontend/src/features/public/ui/Landing.tsx"
+  ],
+  "frontendDiffCheckExit": 0,
+  "sourceProvenance": "Headless foundation remains unchanged; owned JSX/CSS only, existing art/sourcepack retained. No frontend/backend cross-import or shared composition edits.",
+  "limits": "Audit of owned changed paths and preservedsetup; not live server/security/release acceptance."
+}

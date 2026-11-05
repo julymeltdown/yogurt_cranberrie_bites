@@ -1,0 +1,221 @@
+{
+  "state": "FAILED",
+  "source": "915340e5b207d9916853c7e7f3b15e41bf9270e3",
+  "failure": "AssertionError: command failed: concert-service-lib",
+  "cleanup_failure": null,
+  "epoch": 1793838639.107544,
+  "before_original_full_stop": true,
+  "peak": {
+    "target": 779194368,
+    "source": 65691648,
+    "evidence": 69734400,
+    "operator_evidence": 0,
+    "common_git": 75120640,
+    "cargo_home": 0,
+    "rust_toolchain": 0,
+    "python_framework": 0,
+    "git_toolchain": 0,
+    "native_toolchain": 0,
+    "system_lsof": 0,
+    "system_ps": 0,
+    "system_cc": 0,
+    "new_bytes": 989741056,
+    "whole_bytes": 35427282944,
+    "minimum_free": 15527903232,
+    "processes": 6,
+    "rss": 2308866048
+  },
+  "commands": [
+    {
+      "argv": [
+        "/usr/sbin/lsof",
+        "+D",
+        "/Users/lhs/Desktop/mcr-build/media-combined-fa4b4b3/target",
+        "-Fn"
+      ],
+      "exit_code": 1,
+      "epoch": 1793838289.7017322,
+      "seconds": 5.699851989746094,
+      "label": "initial-target-idle"
+    },
+    {
+      "argv": [
+        "/opt/homebrew/Cellar/git/2.55.0/bin/git",
+        "status",
+        "--porcelain"
+      ],
+      "exit_code": 0,
+      "epoch": 1793838305.6197681,
+      "seconds": 5.950658082962036,
+      "label": "normal-status"
+    },
+    {
+      "argv": [
+        "/opt/homebrew/Cellar/git/2.55.0/bin/git",
+        "rev-parse",
+        "HEAD"
+      ],
+      "exit_code": 0,
+      "epoch": 1793838323.1798809,
+      "seconds": 6.236235857009888,
+      "label": "normal-head"
+    },
+    {
+      "argv": [
+        "/opt/homebrew/Cellar/git/2.55.0/bin/git",
+        "rev-parse",
+        "codex/mcr-be-BE38-policy-production207"
+      ],
+      "exit_code": 0,
+      "epoch": 1793838340.553777,
+      "seconds": 6.116482734680176,
+      "label": "candidate-ref"
+    },
+    {
+      "argv": [
+        "/opt/homebrew/Cellar/git/2.55.0/bin/git",
+        "switch",
+        "codex/mcr-be-BE38-policy-production207"
+      ],
+      "exit_code": 0,
+      "epoch": 1793838358.899223,
+      "seconds": 6.214792013168335,
+      "label": "materialize-same-checkout"
+    },
+    {
+      "argv": [
+        "/opt/homebrew/Cellar/git/2.55.0/bin/git",
+        "rev-parse",
+        "HEAD"
+      ],
+      "exit_code": 0,
+      "epoch": 1793838377.8907578,
+      "seconds": 6.5490148067474365,
+      "label": "materialized-head"
+    },
+    {
+      "argv": [
+        "/opt/homebrew/Cellar/git/2.55.0/bin/git",
+        "status",
+        "--porcelain"
+      ],
+      "exit_code": 0,
+      "epoch": 1793838394.293867,
+      "seconds": 5.646476984024048,
+      "label": "materialized-status"
+    },
+    {
+      "argv": [
+        "/opt/homebrew/Cellar/git/2.55.0/bin/git",
+        "ls-files",
+        "-z"
+      ],
+      "exit_code": 0,
+      "epoch": 1793838409.866438,
+      "seconds": 5.434396982192993,
+      "label": "source-inventory-7"
+    },
+    {
+      "argv": [
+        "/Users/lhs/.rustup/toolchains/1.88.0-aarch64-apple-darwin/bin/cargo",
+        "test",
+        "--manifest-path",
+        "backend/Cargo.toml",
+        "--locked",
+        "--offline",
+        "-j1",
+        "--config",
+        "profile.dev.package.contracts-build.opt-level=2",
+        "-p",
+        "platform",
+        "--lib",
+        "--no-run",
+        "--message-format=json"
+      ],
+      "exit_code": 0,
+      "epoch": 1793838431.255775,
+      "seconds": 11.594080924987793,
+      "label": "platform-lib"
+    },
+    {
+      "argv": [
+        "/Users/lhs/.rustup/toolchains/1.88.0-aarch64-apple-darwin/bin/cargo",
+        "test",
+        "--manifest-path",
+        "backend/Cargo.toml",
+        "--locked",
+        "--offline",
+        "-j1",
+        "--config",
+        "profile.dev.package.contracts-build.opt-level=2",
+        "-p",
+        "api-gateway",
+        "--lib",
+        "--no-run",
+        "--message-format=json"
+      ],
+      "exit_code": 0,
+      "epoch": 1793838510.108605,
+      "seconds": 53.26854872703552,
+      "label": "api-gateway-lib"
+    },
+    {
+      "argv": [
+        "/Users/lhs/.rustup/toolchains/1.88.0-aarch64-apple-darwin/bin/cargo",
+        "test",
+        "--manifest-path",
+        "backend/Cargo.toml",
+        "--locked",
+        "--offline",
+        "-j1",
+        "--config",
+        "profile.dev.package.contracts-build.opt-level=2",
+        "-p",
+        "concert-service",
+        "--lib",
+        "--no-run",
+        "--message-format=json"
+      ],
+      "exit_code": 101,
+      "epoch": 1793838619.148275,
+      "seconds": 88.32507681846619,
+      "label": "concert-service-lib"
+    },
+    {
+      "argv": [
+        "/usr/sbin/lsof",
+        "+D",
+        "/Users/lhs/Desktop/mcr-build/media-combined-fa4b4b3/target",
+        "-Fn"
+      ],
+      "exit_code": 1,
+      "epoch": 1793838638.897504,
+      "seconds": 5.2235589027404785,
+      "label": "target-no-open-handles"
+    }
+  ],
+  "copies": {
+    "platform-lib": {
+      "path": "/private/tmp/mcr-gateway207-settings-28-enfm_kd9/be38/combined-build/run-01/platform-lib-frozen",
+      "sha256": "a8271eed6f35bff2410c5e116a61c97c8e1715125857603c92660980bf3cc236",
+      "bytes": 24852384,
+      "package": "platform",
+      "target": "platform",
+      "kind": "lib",
+      "qualification": "COMPILED_ONLY_NOT_RUN"
+    },
+    "api-gateway-lib": {
+      "path": "/private/tmp/mcr-gateway207-settings-28-enfm_kd9/be38/combined-build/run-01/api-gateway-lib-frozen",
+      "sha256": "72e049c82bf7716cbdd5a4203eff874ad8e3c24a0c392090178be9757bb53e31",
+      "bytes": 39102288,
+      "package": "api-gateway",
+      "target": "api_gateway",
+      "kind": "lib",
+      "qualification": "COMPILED_ONLY_NOT_RUN"
+    }
+  },
+  "target_released": true,
+  "guardian_reaped": true,
+  "owned_child_reaped": true,
+  "tests_native_HTTP": "NOT_RUN"
+}

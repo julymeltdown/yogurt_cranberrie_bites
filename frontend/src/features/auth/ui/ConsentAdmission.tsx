@@ -28,7 +28,7 @@ export function ConsentAdmission({ onAdmitted }: { onAdmitted?(receipt: Enrollme
       if (checked.kind === 'admitted' && receipt?.decision === 'ADMITTED') onAdmitted?.(receipt)
     } finally { submitting.current = false }
   }
-  return <main className="auth-enrollment" id="main" tabIndex={-1}>
+  return <main className="auth-enrollment parade-auth-entry" id="main" tabIndex={-1}>
     <Link className="enrollment-home" to="/">MCR Concert World</Link>
     <h1>Review current agreements</h1>
     <p>Your account needs the current published agreements before entering the concert world. Restricted features have separate eligibility checks.</p>

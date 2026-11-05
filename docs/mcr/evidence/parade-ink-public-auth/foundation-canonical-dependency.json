@@ -1,0 +1,137 @@
+{
+  "status": "STATIC_DEPENDENCY_EXACT18",
+  "epoch": 1793843988.039409,
+  "canonicalSnapshot": "574b3e5a2a4533d70da3236b2c42c465a32e34a4",
+  "deliveredFoundation": "651159ec7bae9ff5e1bbc9d3dd083fc08faa02d9",
+  "qualifiedSource": "77cfe94af06cac6b292ad7528352e4750e929e71",
+  "qualifiedReadset": "eb80d722f513ce794fe35317a87702dd2878321a2d76f313d36265b3d593d5ef",
+  "paths": [
+    {
+      "path": "frontend/src/shared/styles/base.css",
+      "sha256": "c687b4d31895eb1f1414277663bd5d707b56f6ded1abef9154262b9d27c2f303",
+      "bytes": 8595,
+      "mode": "100644",
+      "blob": "4ee1e20e56d2ecc6f0178753d17addf6b3438a56"
+    },
+    {
+      "path": "frontend/src/shared/styles/themes/themes.css",
+      "sha256": "c7d8561ab09c4402812e0eacf72cc56b6cc2ce7a84449632e8054573d4802e4c",
+      "bytes": 1159,
+      "mode": "100644",
+      "blob": "16b2d48697fff421c6f382dcd4f304c76852a5be"
+    },
+    {
+      "path": "frontend/src/shared/ui/concert-window/index.tsx",
+      "sha256": "0b532322426fd4f0aae0e2667cae80e2257917eda8cb1de6455ee3670025ae56",
+      "bytes": 6205,
+      "mode": "100644",
+      "blob": "41ad0d712571ede0c6be6dddd88e17214173565d"
+    },
+    {
+      "path": "frontend/src/shared/ui/concert-window/concert-window.css",
+      "sha256": "9b03795cc11ed06130ebdc2ec386948d91f0e9cbba592f876a82c72ef1014c92",
+      "bytes": 5848,
+      "mode": "100644",
+      "blob": "f43d5599dc1ee79b97cf076f971874882913189d"
+    },
+    {
+      "path": "frontend/src/app/shell.css",
+      "sha256": "b12f4bbddb55d144fb6da89ab2686e0225455ed3bedaff70ad8a34ef6a0161dc",
+      "bytes": 13201,
+      "mode": "100644",
+      "blob": "0dfa2ae4bd392319255263908b590ec365e9f154"
+    },
+    {
+      "path": "frontend/src/app/shell-chrome/parade-footer.tsx",
+      "sha256": "ecbb1b9f16a61315c7e63b3ba296e7d0977619fb0df899b950e3a41b8a1c6428",
+      "bytes": 130,
+      "mode": "100644",
+      "blob": "ace2d3653ef24532da8f2417d9a59a3f3c2fa6b9"
+    },
+    {
+      "path": "frontend/src/app/shell-chrome/shell-chrome.css",
+      "sha256": "264fa91f2b9d45f6d7756cfcde5fa0656d714e6c2190d325800d14c2f9639ea1",
+      "bytes": 6153,
+      "mode": "100644",
+      "blob": "52f53296b94dc5a3fe75ab4fd2dcf9c69061f363"
+    },
+    {
+      "path": "frontend/src/app/reference-chrome-v2/WindowInk.tsx",
+      "sha256": "019662bb93b5eb92dd76b670738462c905a2a191ce7457b6ecbeb3efca9f33e4",
+      "bytes": 1117,
+      "mode": "100644",
+      "blob": "c4baed6c07299aae04b67dde3bde0d8153de1fce"
+    },
+    {
+      "path": "frontend/src/app/reference-chrome-v2/chrome.css",
+      "sha256": "6a5449d6d89bd16497a17c9e46a872f4b9f8afe3cedff76835045529d2afca45",
+      "bytes": 3451,
+      "mode": "100644",
+      "blob": "a96564242f62ec6b7d1defdce441be89e36393d3"
+    },
+    {
+      "path": "frontend/src/shared/styles/parade-ink/fonts/Oswald.ttf",
+      "sha256": "5b38c246e255a12f5712d640d56bcced0472466fc68983d2d0410ec0457c2817",
+      "bytes": 172088,
+      "mode": "100644",
+      "blob": "d1a3b9cb1325bf20b3a06ef9849d21c411212a3b"
+    },
+    {
+      "path": "frontend/src/shared/styles/parade-ink/fonts/Roboto.ttf",
+      "sha256": "d7598e12c5dbef095ff8272cfc55da0250bd07fbdecbac8a530b9b277872a134",
+      "bytes": 488584,
+      "mode": "100644",
+      "blob": "5522a368d9072fd88c299916e61fcff369949061"
+    },
+    {
+      "path": "frontend/src/shared/styles/parade-ink/fonts/oswald-METADATA.pb",
+      "sha256": "3d5119d2e99a15e7c2973937d10a77e7aa1fc6a28fe173b02e059485aa596097",
+      "bytes": 4396,
+      "mode": "100644",
+      "blob": "ed3535d82f80934e2b40c106563a897a430ca2fa"
+    },
+    {
+      "path": "frontend/src/shared/styles/parade-ink/fonts/oswald-OFL.txt",
+      "sha256": "0fd731a904b729a4e02eaf5e8ebd06783edd9abe400e8882760160230675b652",
+      "bytes": 4483,
+      "mode": "100644",
+      "blob": "4d4e319b6114be0174e6de5d8090408f78dc65b8"
+    },
+    {
+      "path": "frontend/src/shared/styles/parade-ink/fonts/provenance.json",
+      "sha256": "aded4b656522bd2c4de6cfd1be9e9a6cfcf96d94ecc61e3a2f36497a465574db",
+      "bytes": 3273,
+      "mode": "100644",
+      "blob": "bbe56927f4aac1fce25800edbeb0ceaa777cbcca"
+    },
+    {
+      "path": "frontend/src/shared/styles/parade-ink/fonts/roboto-METADATA.pb",
+      "sha256": "6fef19da54fb62d152f0c7b21710e6849950db7ecf852ea29511c593dad462f0",
+      "bytes": 1463,
+      "mode": "100644",
+      "blob": "9ae795d676a683ce135be1835797e3ad8968ec02"
+    },
+    {
+      "path": "frontend/src/shared/styles/parade-ink/fonts/roboto-OFL.txt",
+      "sha256": "061402327a96aadb0bfb694a960ed289ecd38d383e396243831ab81feb109c41",
+      "bytes": 4394,
+      "mode": "100644",
+      "blob": "9c48e05a24fa2267e207ecf17560291b5621c197"
+    },
+    {
+      "path": "frontend/src/shared/styles/parade-ink/primitives.css",
+      "sha256": "c5a327ec4e63407ea5119a48ab20632c63e81780a842b57c0bb5e856e7ca78e0",
+      "bytes": 6508,
+      "mode": "100644",
+      "blob": "8f44241243b23b2bf3b0eabbaceb5f7ffd56601f"
+    },
+    {
+      "path": "frontend/src/shared/styles/parade-ink/tokens.css",
+      "sha256": "15b68ce29df755e81849d2bc359f2c2aaade9857d5e04c32692bf9aab4700556",
+      "bytes": 1334,
+      "mode": "100644",
+      "blob": "25d0cfd466a6ce9901a585cabbb46bb8051e1767"
+    }
+  ],
+  "limit": "Exactfoundationdependencybytes/modes/blobssnapshot; no combinedcanonicalApp/live/device/wholefamily runtime claim"
+}

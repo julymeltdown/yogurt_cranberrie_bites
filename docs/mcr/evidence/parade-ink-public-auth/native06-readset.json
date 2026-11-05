@@ -1,0 +1,662 @@
+{
+  "base": "aac0d96d152e47150f4fac0f57b69659ad20a956",
+  "shared_checkpoint": "77cfe94af06cac6b292ad7528352e4750e929e71",
+  "protected_prefixes_identical": [
+    "frontend/src/app/account-deletion-entry/recovery.tsx",
+    "frontend/src/features/auth/ui/AdmissionBoundary.tsx",
+    "frontend/src/features/auth/ui/Callback.tsx",
+    "frontend/src/features/auth/ui/ConsentAdmission.tsx",
+    "frontend/src/features/auth/ui/ResetPassword.tsx",
+    "frontend/src/features/auth/ui/SignIn.tsx",
+    "frontend/src/features/auth/ui/SignUp.tsx",
+    "frontend/src/features/public/ui/Landing.tsx"
+  ],
+  "focused_cases": 1,
+  "native": "NOT_RUN",
+  "prior_whole_lower_bound": 5439679259,
+  "prior_new_source01": 35692544,
+  "status": "FROZEN_NATIVE06_NOT_RUN",
+  "previous_source": "2cbe41549d3340523dcc70402238446b65c7c3bb",
+  "paths": [
+    {
+      "path": "docs/mcr/evidence/parade-ink-public-auth/native01-readset.json",
+      "sha256": "d73e0ab378d6c000212cbac7dca1fef7f9b1ff12adced5942433a3f334d32ac1"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-public-auth/native01/command-00.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-public-auth/native01/command-01.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-public-auth/native01/command-02.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-public-auth/native01/command-03.log",
+      "sha256": "d539a959070a16d4114352064fdf0e3b243ffaba62eefac018efe3963a570e5d"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-public-auth/native01/disposition.json",
+      "sha256": "282be2fd0e9e0ae29b015dca36ae583dcff76db070fbf90513c4d3ff3e61b776"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-public-auth/native01/landing-360.png",
+      "sha256": "2403672f374931cf1d11a88fa1a9fa2b5d507eb933a62470d69eddb894ddc2b9"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-public-auth/native01/offer.json",
+      "sha256": "d698ede3be83cc32d367537e7a3cee9415b55a12e9cd55de1e957f5f8eed976d"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-public-auth/native01/outer-accept.json",
+      "sha256": "237d39a7de63087fb14d85cd23d1e54609ec55322cfe03f15b2f727da89c75d9"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-public-auth/native01/outer-full.json",
+      "sha256": "fe338626663e447c8a144d290d59de75af1aacc77f004148255d08d196ad6a51"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-public-auth/native01/outer-initial.json",
+      "sha256": "11bd1604f7e499af1b53bcb61a136af740693b197244d78e577705a39943707d"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-public-auth/native01/preflight.json",
+      "sha256": "40c66f6023b5b1f876b90022067b0a7d209c23961d96bf1791119e53066bd580"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-public-auth/native01/primary-accept.json",
+      "sha256": "012357bb299c91fa3f9b3ceb99d5382d65f78679127bac65f2bee256b970583e"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-public-auth/native01/primary-control.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-public-auth/native01/primary-initial.json",
+      "sha256": "767dec48b091ed23690296b76a2154adcb2cc92e1aa4f45883a34af105d04317"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-public-auth/native01/sign-in-360.png",
+      "sha256": "89057f7f840d4983aef6e2a11c5591ddf7ede6732d2d8127dd16b5450c3b303b"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-public-auth/native01/signup-policy-360.png",
+      "sha256": "66a4ead523fe87441565548774cd2a6bcf2916ac3fa23da3cc19368bf6dc8e47"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-public-auth/native01/unknown-9534.json",
+      "sha256": "5d494b67e2d0835b2d5c354eb71657791dbaa8164cb8730ef8a09ec91516fe4f"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-public-auth/native01/unknown-9676.json",
+      "sha256": "713f713e78418b3825712ca498f65cda9c3bc130e81c531e0da42a3870e6c90d"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-public-auth/native01/verification-360.png",
+      "sha256": "5f57459bca2e7c813a93bf1b84b7563e04b053e1a8aa1d9a34b845f3cb0c6cda"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-public-auth/native02-readset.json",
+      "sha256": "57895c8cc37822af36a9426b059efd1f53ab0b623e26e4a4a7e03896dcf46efb"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-public-auth/native02/bootstrap-sample.json",
+      "sha256": "6129889749aab63237ecfc554bfe6d779660f3a4b42ac8c1b300df1180ca73b6"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-public-auth/native02/callback-360.png",
+      "sha256": "02f9d7e5e2f8f32079c59d311843d65003600bbeff3ef1c13b26fe31f7e85a8c"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-public-auth/native02/command-00.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-public-auth/native02/command-01.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-public-auth/native02/command-02.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-public-auth/native02/command-03.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-public-auth/native02/command-04.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-public-auth/native02/deletion-no-retained-360.png",
+      "sha256": "fde36169cdda9e4f9197b2c610531a0769c03d0ce1f43d96e264842998b1c020"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-public-auth/native02/disposition.json",
+      "sha256": "9fdee11e1262229fb1100fbe203ac170e71291fa445e7dba37338a45b4609839"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-public-auth/native02/landing-360.png",
+      "sha256": "8ce6e829d612b43cf00deb4398f760b37771e1389dda303f001345c69ae69782"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-public-auth/native02/legal-unavailable-360.png",
+      "sha256": "b08d352bb4e96bd70307db1810c3fa686234599586f55d4ad4b22312361f4a10"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-public-auth/native02/offer.json",
+      "sha256": "101bf738ba6d0d330d5877562e644e30d10286660b3693e073c4663133207586"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-public-auth/native02/outer-accept.json",
+      "sha256": "5a0c678f3c8b5f99c885878f855d4ac19ec769e90e22f2f1e0303c5cb43856a3"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-public-auth/native02/outer-full.json",
+      "sha256": "a51d8aab5fd92f2bd7484f84535a22dbf39b7e4f9bddfd946f0b33708696f1c4"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-public-auth/native02/outer-initial.json",
+      "sha256": "43da6a12f9ae3d1aeadc68b8ad2d03c1d6e8b38ef40bb505e51b3a266504a309"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-public-auth/native02/primary-accept.json",
+      "sha256": "b21306c68a5d92b57bd9dc2deb6c2440fd7de4fb95fd7147df3f5e965a67721b"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-public-auth/native02/primary-control.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-public-auth/native02/primary-initial.json",
+      "sha256": "bccaded9904cc75b405b72e3396939f34e674575e42b1e47c60e88828a22aa1a"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-public-auth/native02/reset-360.png",
+      "sha256": "d9d21be088bb8735dc69b863cb77df0054d496c91940ace0b420fad2766cfac5"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-public-auth/native02/sign-in-360.png",
+      "sha256": "3950699a416aa09ec772e89600c3529997254b49dbe96b7b4d9a9cb85fa5f1f6"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-public-auth/native02/signup-policy-360.png",
+      "sha256": "66a4ead523fe87441565548774cd2a6bcf2916ac3fa23da3cc19368bf6dc8e47"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-public-auth/native02/unknown-88150.json",
+      "sha256": "cbe7bbbae6960d6dfcb6cb61e17c9b77752fa013a66dfede7ac4b5ab593b1e32"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-public-auth/native02/unknown-88339.json",
+      "sha256": "64726a499e26d2e21a56c6eb817b387097c14163c28a69ce06746ecd9834f927"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-public-auth/native02/verification-360.png",
+      "sha256": "5f57459bca2e7c813a93bf1b84b7563e04b053e1a8aa1d9a34b845f3cb0c6cda"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-public-auth/native03-readset.json",
+      "sha256": "dd3ac53f1374e5413f17bde380f698cb7412a013011acaf1f95c7076191db0bf"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-public-auth/native03/disposition.json",
+      "sha256": "2ae644c82ec99c2fe6cd934e0fc3d8e2b70afa67f80d8974115fbb885f134886"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-public-auth/native03/offer.json",
+      "sha256": "0e850c67f29dff451fb0bf2c3b47682b7a0da16552d161339fe9924954b6abff"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-public-auth/native03/outer-full.json",
+      "sha256": "7a648c17b5bb21186da381046e8ddfd737472d0552629513fbaba6f06f2db2db"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-public-auth/native03/unknown-26221.json",
+      "sha256": "991ceed12d93a23fef80c4ee51f8be0e3b3fea092ae64bacfaec62246561d172"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-public-auth/native04/disposition.json",
+      "sha256": "09ea79959ae6ed95ceffbe0bf8e7808a5d2b6b5038dab7909380ee9e916f90a4"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-public-auth/native04/offer.json",
+      "sha256": "9c4ce36deae47465d553dc171e79e8ec8e4e51ec05b3e91cba17be92f2acca1a"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-public-auth/native04/outer-full.json",
+      "sha256": "c7840db650e2c5a2c4e7f556df0f3fe6e0922b14900af2379f03c6bd85235313"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-public-auth/native04/unknown-30254.json",
+      "sha256": "3e4e215de6c6677b17ee59e916270032676f646b8769d0556cb7831f616282e9"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-public-auth/native05-readset.json",
+      "sha256": "311ccf2b3e8c43c01663f4eeb25e65d4f30a3cfba07e903f66a8b234755b1382"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-public-auth/native05/bootstrap-sample.json",
+      "sha256": "b3ba56dc1ad29c9e52f55f1a2a35c058309966cbde3bbb665724b95c93e4da7f"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-public-auth/native05/disposition.json",
+      "sha256": "92e84f9b2d19bec88255495f20aa5ffe844910b41ec23cd478f4e4822e7dfa39"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-public-auth/native05/offer.json",
+      "sha256": "f878d9e6b59d47f68d9ecc9e3d9fd8faae8d72c79adb9fd83bcfe0b5705da380"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-public-auth/native05/outer-accept.json",
+      "sha256": "c059a34c616ff198c4118bfd8edddc4678edd348855a19439bdc1a82103ca158"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-public-auth/native05/outer-full.json",
+      "sha256": "2ad4205be8d1fa3dd0707f4d4305af12713e1856bbff2872b8fcea07116ca281"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-public-auth/native05/outer-initial.json",
+      "sha256": "902ec168dd4a5308faa120f8d2afa68a7a3986826bee6e62a8b107831ebf4266"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-public-auth/native05/primary-accept.json",
+      "sha256": "ba896b308c82bf064a42f218a509847af53fb7310fe1b6e018ff5f0c76db6350"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-public-auth/native05/primary-control.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-public-auth/native05/primary-full.json",
+      "sha256": "fdcac286e15e81d8d14e141dd73da556bad3cb9f3f2ff97a08b59cd40740ea46"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-public-auth/native05/primary-initial.json",
+      "sha256": "55f3ac78cfd77277b99fa2f9ecab8a1a3ac740721ef504b6bf34419af1c4f3db"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-public-auth/native05/unknown-51485.json",
+      "sha256": "7561341390b200cbb15e878f65cdcd5d05d4cc9d91fb5dee8d9f61a2ed91074e"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-public-auth/pi01-final-qualified-readset.json",
+      "sha256": "eb80d722f513ce794fe35317a87702dd2878321a2d76f313d36265b3d593d5ef"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-public-auth/resource-releases/207CompileA.json",
+      "sha256": "829c60a701855e9a41e78319e02711423e7fce7653ec3e1a22927ce2fafb49d7"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-public-auth/resource-releases/PI04-GIVEAWAY-APP-NATIVE06-0116.json",
+      "sha256": "49fddc401bc61c8d6e559bd7c9ff0e9503feca6ac5a112100a585f84b713ed80"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-public-auth/resource-releases/PI06Native02.json",
+      "sha256": "17f41a6a8ec6434341419be0f95595273789bcfb54f028413476e5c5db1ad4cb"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-public-auth/resource-releases/PI12-OPERATIONS-SOURCE01-0111.json",
+      "sha256": "201ad2eabcf46e7e311b34dd3292019f399d9e7a576e35f1190dfa77196b9b1a"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-public-auth/resource-releases/PI12-REPORT-ERROR-NETWORK-SOURCE03-0116.json",
+      "sha256": "2f9c914666e8eabc0827d43d77ae8262ac6c07dadb44eb46db97b0fd2b9fac89"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-public-auth/resource-releases/provenance.json",
+      "sha256": "bbf0b6368386a200cc3768d0ed1c3b88440d1acf9642c7728e74ea77ce0f207d"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-public-auth/source01/command-00.log",
+      "sha256": "1d94b2e705b1daa18cb569ab75408457776458688df14d2c4338f412964d6d73"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-public-auth/source01/offer.json",
+      "sha256": "cd15d1564cf10455a5a36fa4481fdd1e18303ac6d3375559580f43a39d93c981"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-public-auth/source01/outer-accept.json",
+      "sha256": "a378f80c12943433e3fdff0fecce72a850c214d60ec765b966d59153129d48a4"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-public-auth/source01/outer-full.json",
+      "sha256": "cfbd1f432201c718074c0c5dc6896398763044e6531abae87e75ec156d04b130"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-public-auth/source01/primary-accept.json",
+      "sha256": "d3de20614d87ac446ff51b4ee1d7eabf5b7db2f12d8399154eb3e6f35a156acf"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-public-auth/source01/primary-full.json",
+      "sha256": "5ac0702b1c9cf65639116a484d851c919d49529daf5da4799b9ad9d0ef4f61a1"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-public-auth/source02-readset.json",
+      "sha256": "bfa981d6de78bfffb6416e1bd98be255f1ebfb23ca7db045fb3e57a477a9d82a"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-public-auth/source02/command-00.log",
+      "sha256": "efd0868e4e983575e90c9fd91748aad1a0ab93bbb2a0049153c4366963dee73e"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-public-auth/source02/offer.json",
+      "sha256": "876f8a9acf4c6a885c683188f613f82e9d09fdfade5b81c17200c917cc8f96f1"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-public-auth/source02/outer-accept.json",
+      "sha256": "f4469414521f97e00ff5f58a9870cebeb5d2aa8292bb6c5cc929a4194264f0c4"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-public-auth/source02/outer-full.json",
+      "sha256": "b03bdb59676910325636d23eb90b7dbfd426a32967dbfe88380e0553480767ea"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-public-auth/source02/primary-accept.json",
+      "sha256": "3d06187202d15bf8f460a9c72f7a3c0809ecd8b1ea78fe897bfa80391ab02558"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-public-auth/source02/primary-full.json",
+      "sha256": "89995a419e13fa67b6fd93ebf066b107be36a876f5a67a7b2295469f1a69c34a"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-public-auth/source03-readset.json",
+      "sha256": "e5c27417661b590c421019430134ea145cb4f9eb04bbb07e10592acae564dd27"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-public-auth/source03/command-00.log",
+      "sha256": "d7013df02b4752cd6a4c95135f65dda1abb86477eecd9554863bae106906ea64"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-public-auth/source03/command-01.log",
+      "sha256": "5249f37a89c8894794b82dc75cbc8816a42784d181fadcab43e3e41f73f23624"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-public-auth/source03/command-02.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-public-auth/source03/command-03.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-public-auth/source03/offer.json",
+      "sha256": "2cf3c8715104ae5e0cc809b3a4c14bf9062e1f45ca905190a3fb5d70075a5104"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-public-auth/source03/outer-accept.json",
+      "sha256": "9d38d1fea339f63900c823e9478663c92f2657157273ed9e1ed515da453b5ba6"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-public-auth/source03/outer-full.json",
+      "sha256": "c2126547b252634a005506f6d7216833dc63731381657e8db764bcda86c99e46"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-public-auth/source03/primary-accept.json",
+      "sha256": "b60ff4e994b2461eac1d0cc89582b80a3e11c1a7f980260a136438b3d9afcc75"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-public-auth/source03/primary-full.json",
+      "sha256": "dc5f2e636dbc0a676b2178c831a2c023a3e38e80c3e24500c1cc18c12d0001c1"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-public-auth/source04-readset.json",
+      "sha256": "016665f27578da5aab62d771ca14a3e38f811ec2296a580d4a695fe62963ff10"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-public-auth/source04/command-00.log",
+      "sha256": "ca9fca5cd29756dcc278b5464ebfbaee3a19c5b17aceeef11bcd6a6a0e32b87c"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-public-auth/source04/disposition.json",
+      "sha256": "8a89b6bc36a784237a42ac8fe54b852a778e503e0a0e7647d87f4922a77fda07"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-public-auth/source04/offer.json",
+      "sha256": "7e38cc19b70c8781fc843c238796b38107551fcfee5d63601ac5303bc2b9fd15"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-public-auth/source04/outer-accept.json",
+      "sha256": "4302af260f4bc6f1122295f1101da652034c539aca12c536bc6122a050ec225a"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-public-auth/source04/outer-full.json",
+      "sha256": "256f857818b165a1b1e45ebf635c73d1d9d7f05a15a7c3d55a3f80dcf3d672ba"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-public-auth/source04/outer-initial.json",
+      "sha256": "210c059e213cbeec24689201beaf79f2e08fe7ef38ce32ebe69b1fced8299a8f"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-public-auth/source04/preflight.json",
+      "sha256": "228f4afa135dcee0ddaebb7e0f640f682acdbb61b911dca1bf9c48f22939ad86"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-public-auth/source04/primary-accept.json",
+      "sha256": "3786b2f40c187ffd0aed4c1f66b38e3b14461ebfb9d0edc4062f148322039524"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-public-auth/source04/primary-initial.json",
+      "sha256": "292cc3f5dc05eb5a66a8bd13769626a6bc1e64b2420df641bc15f3e176b898fa"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-public-auth/source05-readset.json",
+      "sha256": "c50951fed32df7f23c466a2cde3f0a1fce906223e9a2c1704c683b4ae2530e58"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-public-auth/source05/command-00.log",
+      "sha256": "8c175c8333a330647608e2aa5efcf436e8708583335e1e54d9ef6c8455f7867c"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-public-auth/source05/command-01.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-public-auth/source05/command-02.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-public-auth/source05/command-03.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-public-auth/source05/offer.json",
+      "sha256": "019905f8178859aa57de1936c89be8e48825570f3958b20c4dc5a96e5212f933"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-public-auth/source05/outer-accept.json",
+      "sha256": "349255ec4b194096613928518971c3ce34021c380d53ef71103ce307ac2fc196"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-public-auth/source05/outer-full.json",
+      "sha256": "f21a738d65a1ce189f0e03a58aa9b3627c0fd3d25684387c2a1b63018d84646e"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-public-auth/source05/outer-initial.json",
+      "sha256": "4828aa7691d30866cf6cb66a454c2d6766969916d7e992a98e47f2c68e96ba30"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-public-auth/source05/preflight.json",
+      "sha256": "824404d791e93b8f4ed675f0c5d0ce6fce94757a75d3e3949b101ca7eb07cc43"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-public-auth/source05/primary-accept.json",
+      "sha256": "10b7cbdeea3864b3e97380f15d341184757772e588d73152e339a2c58a3f60d0"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-public-auth/source05/primary-control.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-public-auth/source05/primary-full.json",
+      "sha256": "9977af2931030968a3cecf47781e843362121ca984cca3a58dc5e5a16bba497b"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-public-auth/source05/primary-initial.json",
+      "sha256": "b45b861fce8c93f1ff5586a985c19e6d1f8022a70778d414ad86ab4ea1f8a710"
+    },
+    {
+      "path": "docs/mcr/frontend/parade-ink-public-auth.md",
+      "sha256": "d5671ba15214425c496d4e6cf3733c8b8acdeb1dab9e8f1f81c6199bc2150134"
+    },
+    {
+      "path": "frontend/src/app/account-deletion-entry/recovery.tsx",
+      "sha256": "b647aaefb256baf8895ed3cb8940fb3d04d0be8946b9ea3af0bdf4b935f55263"
+    },
+    {
+      "path": "frontend/src/features/auth/__tests__/parade-ink-entry/bootstrap.py",
+      "sha256": "546ea92cfb7bbe621975ef19d3c8095fbf187438db15a40d58d86579f5ed1958"
+    },
+    {
+      "path": "frontend/src/features/auth/__tests__/parade-ink-entry/compare.mjs",
+      "sha256": "70ac932f02226226691f7201538fd4738fa57b6e7367eeb38cdbb9d4f90ebd53"
+    },
+    {
+      "path": "frontend/src/features/auth/__tests__/parade-ink-entry/controller.py",
+      "sha256": "b6f9c46bdc95b98e6397f39eea4dbb34b4392fdf2189d252742f9a3d659fcc0e"
+    },
+    {
+      "path": "frontend/src/features/auth/__tests__/parade-ink-entry/entry.test.tsx",
+      "sha256": "2b16614fda3b66274c4f1aca1edb67dc8a6f84fd921bb6e0b0600f71216d67e3"
+    },
+    {
+      "path": "frontend/src/features/auth/__tests__/parade-ink-entry/guardian.py",
+      "sha256": "c44382c4d515d8043ee21f2fc5afcffe4c1adbdd6e331edca475fe93ad83ac87"
+    },
+    {
+      "path": "frontend/src/features/auth/__tests__/parade-ink-entry/metrics.py",
+      "sha256": "fa1b95748f3823c20c8eeb1a4dab96f05f30321b771b8a13792fa54296ac41a6"
+    },
+    {
+      "path": "frontend/src/features/auth/__tests__/parade-ink-entry/native.mjs",
+      "sha256": "509e9774bbae329dd534da81388053fa1fb0f81216fea690326041b889d5b55b"
+    },
+    {
+      "path": "frontend/src/features/auth/__tests__/parade-ink-entry/preview.html",
+      "sha256": "ca21bd7b9fb9d15876231a6705d7302e76c6bfdd71e280ae6e0a1f3d86b254ef"
+    },
+    {
+      "path": "frontend/src/features/auth/__tests__/parade-ink-entry/preview.tsx",
+      "sha256": "1ea09450aa7450360ab7ab6b92ecbcad4cfcf80526c9b80154acdeb395f51f4a"
+    },
+    {
+      "path": "frontend/src/features/auth/__tests__/parade-ink-entry/runtime.mjs",
+      "sha256": "acb1eea309b9c4a46fdc41a21b3cc746938e1d9d374b8a7328f8ccfe949445d4"
+    },
+    {
+      "path": "frontend/src/features/auth/__tests__/parade-ink-entry/tsconfig.json",
+      "sha256": "7931bddad299e237afac6dbf40f8cded6623342d90eb12d5523df58dc6039454"
+    },
+    {
+      "path": "frontend/src/features/auth/__tests__/parade-ink-entry/vitest.config.mjs",
+      "sha256": "1285a0ce7eec1f2f034e3c680724ef72f48d9403067c042597b5f85b417e066a"
+    },
+    {
+      "path": "frontend/src/features/auth/__tests__/reference-target/presentation.test.tsx",
+      "sha256": "2bdc15a3ac2d4fc51bd3851e264f4fe33d7592d57b8c8e01e66aabbfc7c43bdd"
+    },
+    {
+      "path": "frontend/src/features/auth/ui/AdmissionBoundary.tsx",
+      "sha256": "6441444ffc41a7cd0636bb4251c1af980c038f2a98becc0d636a8e638f7a497f"
+    },
+    {
+      "path": "frontend/src/features/auth/ui/Callback.tsx",
+      "sha256": "1ce8110ccaafd8f9b0fdd8f3fd41832b66ffd64a6d9893f64b81ea92d3719df4"
+    },
+    {
+      "path": "frontend/src/features/auth/ui/ConsentAdmission.tsx",
+      "sha256": "c3bcd388c50384e6c6a309bdbc4c3b3686d7388a66ceab8109a8aa4d2ac6840d"
+    },
+    {
+      "path": "frontend/src/features/auth/ui/ResetPassword.tsx",
+      "sha256": "fb7a31cfc75ad2097ed1afc2bf607261154efd884cf669013c47430335300f87"
+    },
+    {
+      "path": "frontend/src/features/auth/ui/SignIn.tsx",
+      "sha256": "9a2e6ac41550f9d3bb09e14400146b547d709de6dba4ed0121efb0168c1680df"
+    },
+    {
+      "path": "frontend/src/features/auth/ui/SignUp.tsx",
+      "sha256": "600fc850449e50fe4e2acc5f4db8bb9da6488cd7fee8bc3033807c18bc4e0ca6"
+    },
+    {
+      "path": "frontend/src/features/auth/ui/enrollment.css",
+      "sha256": "a915bc47eb1254d08ca087cc74d121d169866e343cd10f78b4ea91d19810477e"
+    },
+    {
+      "path": "frontend/src/features/auth/ui/parade-ink-auth/entry.css",
+      "sha256": "f677987c8a744145f37fcab6b9427c9d4bcb8211b114361ca4dbe329c73bc05d"
+    },
+    {
+      "path": "frontend/src/features/auth/ui/recovery.css",
+      "sha256": "c95adbbf9780c07d086b6f3099a02b0054d187afeb690d39c012d742931135a0"
+    },
+    {
+      "path": "frontend/src/features/auth/ui/sign-in.css",
+      "sha256": "d8807371eaa1c04841e4af1f9e20606cb5e5992a1ad562541aaead53cf55dc27"
+    },
+    {
+      "path": "frontend/src/features/public/__tests__/parade-ink-entry/entry.test.tsx",
+      "sha256": "feba4dcbaa6eba1e4d33445f6b75d1e51342e1efc4bb32b9ba493306cc9abbbf"
+    },
+    {
+      "path": "frontend/src/features/public/__tests__/reference-target/presentation.test.tsx",
+      "sha256": "c0e3cf76f6b0fa0e0648a713fe4332bd32142be52c5495db62be30e014da817d"
+    },
+    {
+      "path": "frontend/src/features/public/ui/Landing.tsx",
+      "sha256": "f832568cc0d2d0042bc8d4d799c0fb0cdcdb337ea0b85e072b53f1ba0ee9e2fb"
+    },
+    {
+      "path": "frontend/src/features/public/ui/PublicFrame.tsx",
+      "sha256": "ebd38dc166864387895040a4fa8f72fa7d8f2a08452fe23db25fff11256c4081"
+    },
+    {
+      "path": "frontend/src/features/public/ui/public.css",
+      "sha256": "8e277ce806201955365dec0a8561d18c7b578319fdf862c5a6dea45ae6e5f83b"
+    },
+    {
+      "path": "frontend/src/shared/styles/cozy-community-backgrounds-v1.css",
+      "sha256": "d26dd8fbee928539f2689ccd9bb6269e4cb964c58b78e8cc86afbd894f228504"
+    },
+    {
+      "path": "frontend/src/shared/styles/cozy-identity-backgrounds-v1.css",
+      "sha256": "77b25626d6c94f3f226e1ccc079a8b96d11d6a4873dfc6e20fcef174c49f5f6d"
+    }
+  ],
+  "created_epoch": 1793841349.8018072,
+  "prior_new_source02": 48054272,
+  "tail_fixture_correction": "200/string-status per incumbent decodeResetResponse; no delivery inference",
+  "retained_unchanged_pass": 17,
+  "prior_new_source03": 50434048,
+  "shell_correction": "b5b44e47531e3b75febc5ee5cdd6a11b1648779c",
+  "control_correction": "Current second PS sample expands owned descendants; unknown identities + primary errors persisted",
+  "prior_new_source04": 38027264,
+  "source_qualification": "Source05 onecase/type/lint/syntaxPASS;17retainedSource03PASS",
+  "prior_new_source05": 53932032,
+  "capture_plan": {
+    "historical": 12,
+    "new": 36,
+    "family_cap": 52,
+    "family_byte_cap": 25165824
+  },
+  "prior_native_new": 69787802,
+  "docfix_upper": 4194304,
+  "read_only_css_dependencies": "Both Cozy CSS files unchanged/source056SHA verified; privatefixture inline at original importpositions",
+  "source_change": "Two owned sign-in.css specificityselectors only; nativecomputedcrimson/font assertion",
+  "bootstrap": "Factual current bootstrap descriptor before expensive census; actualsamePIDexec transition",
+  "ordinary_identity": "Ordinary Git publishers retain factual identity/actual PID and RSS accounting, but do not acquire execution workflow reservations. Live matching script must match the exact proposal SHA.",
+  "shared_packet": "7f9d1095c492867aac70c91c3a9a1b3ab161c687",
+  "prior_native02_new": 141529396,
+  "docfix4_upper": 4194304,
+  "shared_qualification_sha": "eb80d722f513ce794fe35317a87702dd2878321a2d76f313d36265b3d593d5ef",
+  "metadata_normalization": "Completed noncanonical ordinaryObservation does not release any accepted legacy cohort; actual root detection remains fail closed. ACCEPTED_RUNNING states remain reserved.",
+  "native03": "BOOTSTRAP_FAIL_NO_PAYLOAD",
+  "native04": "BOOTSTRAP_FAIL_NO_PAYLOAD",
+  "prior_native_new_max": 182194484,
+  "native05": "GUARD_ABORT_BEFORE_COMMANDS",
+  "prior_native_payload_max": 56299674
+}

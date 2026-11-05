@@ -1,0 +1,29 @@
+{
+  "status": "ACTUAL_UI_ASSERTION_FAIL",
+  "actualAccept": 1793843559.3237062,
+  "actualFull": 1793843576.661937,
+  "resources": 0,
+  "remaining": [],
+  "result": "No fullnativeacceptance",
+  "passed": [
+    "BothLIVEinitials",
+    "ActualbundledTextandDisplayfonts loaded",
+    "public-entry papercomputedcolor"
+  ],
+  "failure": "public-poster background-image legacy SVG still applies; lowerlayer property survives when higherlayer neverdefines it.",
+  "screenshots": 0,
+  "fix": "TwoownCSSbackground:var(--pi-paper) shorthand resets onpublicposter/signinwindow, no shared/controller/art changes",
+  "peak": {
+    "whole": 5506309045,
+    "new": 367448526,
+    "processes": 14,
+    "rss": 2338914304,
+    "native_payload": 106795162,
+    "global_rss": 2578464768,
+    "global_workflows": 3,
+    "global_source": 1,
+    "global_browsers": 1,
+    "global_target": 1,
+    "global_processes": 20
+  }
+}

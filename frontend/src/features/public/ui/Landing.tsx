@@ -3,7 +3,6 @@ import { Link, useNavigate } from 'react-router-dom'
 import { useAccess, usePorts } from '../../../app/access'
 import { PublicFrame } from './PublicFrame'
 import { ConcertAction } from '../../../shared/ui/concert-window'
-import { PosterScene, PosterWeb, PosterWordmark, PosterWear, PosterCopyPrint, PosterEntryPrint, PosterGrain } from './landing-reference/PosterArtwork'
 import { SelectedStaticGallery } from '../../../entities/avatar/selected-static'
 
 export function Landing() {
@@ -27,22 +26,16 @@ export function Landing() {
   return <PublicFrame appearance="poster">
     <div className="public-hero">
       <div className="landing-poster-frame">
-      <PosterWear />
       <div className="public-poster" aria-labelledby="landing-title">
       <h1 className="landing-accessible-title" id="landing-title">One world. Every era.</h1>
-      <PosterGrain />
-      <PosterWeb />
-      <PosterWordmark />
-      <PosterScene />
       <SelectedStaticGallery count={4} className="landing-crowd" />
       <div className="landing-poster-copy">
-        <PosterCopyPrint />
         <p className="public-poster-motto">The MCR<br />fan social world.</p>
         <p className="public-poster-invitation">Meet <span>·</span> Trade <span>·</span> Hang out</p>
         <p className="public-poster-show">At the show.</p>
       </div>
       <div className="public-entry-action">
-        {anonymous ? <Link className="public-primary" to="/login?returnTo=%2Fworld" aria-label="Sign in to enter" aria-describedby="public-entry-status"><span className="landing-control-label">Enter the world</span><PosterEntryPrint /></Link>
+        {anonymous ? <Link className="public-primary" to="/login?returnTo=%2Fworld" aria-label="Sign in to enter" aria-describedby="public-entry-status"><span className="landing-control-label">Enter the world</span><span aria-hidden="true">→</span></Link>
           : <ConcertAction className="public-primary" type="button" disabled aria-describedby="public-entry-status">{opening ? 'Opening the world…' : checking ? 'Checking entry…' : 'Enter the world'}<span aria-hidden="true">→</span></ConcertAction>}
       </div>
       </div>

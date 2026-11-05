@@ -1,0 +1,812 @@
+{
+  "result": "FAIL",
+  "kind": "COMPOSITE_SOURCE_FIXTURE",
+  "shared": "77cfe94af06cac6b292ad7528352e4750e929e71",
+  "sharedReadset": "eb80d722f513ce794fe35317a87702dd2878321a2d76f313d36265b3d593d5ef",
+  "limits": "PI10 postimages plus exact PI01 source. Synthetic public/Auth ports; desktop Chromium, no live Auth, real World, physical iOS/Android or release acceptance.",
+  "screenshots": [
+    "landing-360.png",
+    "sign-in-360.png",
+    "signup-policy-360.png",
+    "verification-360.png",
+    "reset-360.png",
+    "callback-360.png",
+    "legal-unavailable-360.png",
+    "deletion-no-retained-360.png",
+    "landing-390.png",
+    "sign-in-390.png",
+    "sign-in-focus-390.png",
+    "sign-in-error-390.png",
+    "signup-policy-390.png",
+    "verification-390.png",
+    "reset-390.png",
+    "reset-neutral-result-390.png",
+    "callback-390.png",
+    "legal-unavailable-390.png",
+    "legal-synthetic-390.png",
+    "deletion-no-retained-390.png",
+    "consent-390.png",
+    "admission-inactive-390.png",
+    "sign-in-rate-limited-390.png",
+    "sign-in-pending-390.png",
+    "short-reset-390.png",
+    "short-safe-area-390.png",
+    "landing-430.png",
+    "sign-in-430.png",
+    "signup-policy-430.png",
+    "verification-430.png",
+    "reset-430.png",
+    "callback-430.png",
+    "legal-unavailable-430.png",
+    "deletion-no-retained-430.png"
+  ],
+  "metrics": [
+    {
+      "label": "landing",
+      "width": 360,
+      "overflow": false,
+      "frame": {
+        "x": 0,
+        "y": 0,
+        "width": 360,
+        "height": 623,
+        "top": 0,
+        "right": 360,
+        "bottom": 623,
+        "left": 0
+      },
+      "heading": {
+        "size": "36px",
+        "leading": "42px",
+        "family": "\"Parade Ink Display\", \"Arial Narrow\", Arial, sans-serif"
+      },
+      "badTargets": [],
+      "mountedWorld": false
+    },
+    {
+      "label": "sign-in",
+      "width": 360,
+      "overflow": false,
+      "frame": {
+        "x": 0,
+        "y": 0,
+        "width": 360,
+        "height": 554,
+        "top": 0,
+        "right": 360,
+        "bottom": 554,
+        "left": 0
+      },
+      "heading": {
+        "size": "26px",
+        "leading": "32px",
+        "family": "\"Parade Ink Display\", \"Arial Narrow\", Arial, sans-serif"
+      },
+      "badTargets": [],
+      "mountedWorld": false
+    },
+    {
+      "label": "signup-policy",
+      "width": 360,
+      "overflow": false,
+      "frame": {
+        "x": 0,
+        "y": 0,
+        "width": 360,
+        "height": 796,
+        "top": 0,
+        "right": 360,
+        "bottom": 796,
+        "left": 0
+      },
+      "heading": {
+        "size": "26px",
+        "leading": "32px",
+        "family": "\"Parade Ink Display\", \"Arial Narrow\", Arial, sans-serif"
+      },
+      "badTargets": [],
+      "mountedWorld": false
+    },
+    {
+      "label": "verification",
+      "width": 360,
+      "overflow": false,
+      "frame": {
+        "x": 0,
+        "y": 0,
+        "width": 360,
+        "height": 628,
+        "top": 0,
+        "right": 360,
+        "bottom": 628,
+        "left": 0
+      },
+      "heading": {
+        "size": "26px",
+        "leading": "32px",
+        "family": "\"Parade Ink Display\", \"Arial Narrow\", Arial, sans-serif"
+      },
+      "badTargets": [],
+      "mountedWorld": false
+    },
+    {
+      "label": "reset",
+      "width": 360,
+      "overflow": false,
+      "frame": {
+        "x": 0,
+        "y": 0,
+        "width": 360,
+        "height": 458,
+        "top": 0,
+        "right": 360,
+        "bottom": 458,
+        "left": 0
+      },
+      "heading": {
+        "size": "26px",
+        "leading": "32px",
+        "family": "\"Parade Ink Display\", \"Arial Narrow\", Arial, sans-serif"
+      },
+      "badTargets": [],
+      "mountedWorld": false
+    },
+    {
+      "label": "callback",
+      "width": 360,
+      "overflow": false,
+      "frame": {
+        "x": 0,
+        "y": 0,
+        "width": 360,
+        "height": 368,
+        "top": 0,
+        "right": 360,
+        "bottom": 368,
+        "left": 0
+      },
+      "heading": {
+        "size": "26px",
+        "leading": "32px",
+        "family": "\"Parade Ink Display\", \"Arial Narrow\", Arial, sans-serif"
+      },
+      "badTargets": [],
+      "mountedWorld": false
+    },
+    {
+      "label": "legal-unavailable",
+      "width": 360,
+      "overflow": false,
+      "frame": {
+        "x": 0,
+        "y": 0,
+        "width": 360,
+        "height": 331,
+        "top": 0,
+        "right": 360,
+        "bottom": 331,
+        "left": 0
+      },
+      "heading": {
+        "size": "26px",
+        "leading": "32px",
+        "family": "\"Parade Ink Display\", \"Arial Narrow\", Arial, sans-serif"
+      },
+      "badTargets": [],
+      "mountedWorld": false
+    },
+    {
+      "label": "legal-synthetic",
+      "width": 360,
+      "overflow": false,
+      "frame": {
+        "x": 0,
+        "y": 0,
+        "width": 360,
+        "height": 800,
+        "top": 0,
+        "right": 360,
+        "bottom": 800,
+        "left": 0
+      },
+      "heading": {
+        "size": "26px",
+        "leading": "32px",
+        "family": "\"Parade Ink Display\", \"Arial Narrow\", Arial, sans-serif"
+      },
+      "badTargets": [],
+      "mountedWorld": false
+    },
+    {
+      "label": "deletion-no-retained",
+      "width": 360,
+      "overflow": false,
+      "frame": {
+        "x": 0,
+        "y": 0,
+        "width": 360,
+        "height": 312,
+        "top": 0,
+        "right": 360,
+        "bottom": 312,
+        "left": 0
+      },
+      "heading": {
+        "size": "26px",
+        "leading": "32px",
+        "family": "\"Parade Ink Display\", \"Arial Narrow\", Arial, sans-serif"
+      },
+      "badTargets": [],
+      "mountedWorld": false
+    },
+    {
+      "label": "consent",
+      "width": 360,
+      "overflow": false,
+      "frame": {
+        "x": 0,
+        "y": 0,
+        "width": 360,
+        "height": 528,
+        "top": 0,
+        "right": 360,
+        "bottom": 528,
+        "left": 0
+      },
+      "heading": {
+        "size": "26px",
+        "leading": "32px",
+        "family": "\"Parade Ink Display\", \"Arial Narrow\", Arial, sans-serif"
+      },
+      "badTargets": [],
+      "mountedWorld": false
+    },
+    {
+      "label": "admission-inactive",
+      "width": 360,
+      "overflow": false,
+      "frame": {
+        "x": 0,
+        "y": 0,
+        "width": 360,
+        "height": 268,
+        "top": 0,
+        "right": 360,
+        "bottom": 268,
+        "left": 0
+      },
+      "heading": {
+        "size": "26px",
+        "leading": "32px",
+        "family": "\"Parade Ink Display\", \"Arial Narrow\", Arial, sans-serif"
+      },
+      "badTargets": [],
+      "mountedWorld": false
+    },
+    {
+      "label": "short-reset",
+      "width": 360,
+      "overflow": false,
+      "frame": {
+        "x": 0,
+        "y": -16,
+        "width": 360,
+        "height": 610,
+        "top": -16,
+        "right": 360,
+        "bottom": 594,
+        "left": 0
+      },
+      "heading": {
+        "size": "26px",
+        "leading": "32px",
+        "family": "\"Parade Ink Display\", \"Arial Narrow\", Arial, sans-serif"
+      },
+      "badTargets": [],
+      "mountedWorld": false
+    },
+    {
+      "label": "landing",
+      "width": 390,
+      "overflow": false,
+      "frame": {
+        "x": 0,
+        "y": 0,
+        "width": 390,
+        "height": 623,
+        "top": 0,
+        "right": 390,
+        "bottom": 623,
+        "left": 0
+      },
+      "heading": {
+        "size": "36px",
+        "leading": "42px",
+        "family": "\"Parade Ink Display\", \"Arial Narrow\", Arial, sans-serif"
+      },
+      "badTargets": [],
+      "mountedWorld": false
+    },
+    {
+      "label": "sign-in",
+      "width": 390,
+      "overflow": false,
+      "frame": {
+        "x": 0,
+        "y": 0,
+        "width": 390,
+        "height": 554,
+        "top": 0,
+        "right": 390,
+        "bottom": 554,
+        "left": 0
+      },
+      "heading": {
+        "size": "26px",
+        "leading": "32px",
+        "family": "\"Parade Ink Display\", \"Arial Narrow\", Arial, sans-serif"
+      },
+      "badTargets": [],
+      "mountedWorld": false
+    },
+    {
+      "label": "signup-policy",
+      "width": 390,
+      "overflow": false,
+      "frame": {
+        "x": 0,
+        "y": 0,
+        "width": 390,
+        "height": 774,
+        "top": 0,
+        "right": 390,
+        "bottom": 774,
+        "left": 0
+      },
+      "heading": {
+        "size": "26px",
+        "leading": "32px",
+        "family": "\"Parade Ink Display\", \"Arial Narrow\", Arial, sans-serif"
+      },
+      "badTargets": [],
+      "mountedWorld": false
+    },
+    {
+      "label": "verification",
+      "width": 390,
+      "overflow": false,
+      "frame": {
+        "x": 0,
+        "y": 0,
+        "width": 390,
+        "height": 628,
+        "top": 0,
+        "right": 390,
+        "bottom": 628,
+        "left": 0
+      },
+      "heading": {
+        "size": "26px",
+        "leading": "32px",
+        "family": "\"Parade Ink Display\", \"Arial Narrow\", Arial, sans-serif"
+      },
+      "badTargets": [],
+      "mountedWorld": false
+    },
+    {
+      "label": "reset",
+      "width": 390,
+      "overflow": false,
+      "frame": {
+        "x": 0,
+        "y": 0,
+        "width": 390,
+        "height": 458,
+        "top": 0,
+        "right": 390,
+        "bottom": 458,
+        "left": 0
+      },
+      "heading": {
+        "size": "26px",
+        "leading": "32px",
+        "family": "\"Parade Ink Display\", \"Arial Narrow\", Arial, sans-serif"
+      },
+      "badTargets": [],
+      "mountedWorld": false
+    },
+    {
+      "label": "callback",
+      "width": 390,
+      "overflow": false,
+      "frame": {
+        "x": 0,
+        "y": 0,
+        "width": 390,
+        "height": 368,
+        "top": 0,
+        "right": 390,
+        "bottom": 368,
+        "left": 0
+      },
+      "heading": {
+        "size": "26px",
+        "leading": "32px",
+        "family": "\"Parade Ink Display\", \"Arial Narrow\", Arial, sans-serif"
+      },
+      "badTargets": [],
+      "mountedWorld": false
+    },
+    {
+      "label": "legal-unavailable",
+      "width": 390,
+      "overflow": false,
+      "frame": {
+        "x": 0,
+        "y": 0,
+        "width": 390,
+        "height": 331,
+        "top": 0,
+        "right": 390,
+        "bottom": 331,
+        "left": 0
+      },
+      "heading": {
+        "size": "26px",
+        "leading": "32px",
+        "family": "\"Parade Ink Display\", \"Arial Narrow\", Arial, sans-serif"
+      },
+      "badTargets": [],
+      "mountedWorld": false
+    },
+    {
+      "label": "legal-synthetic",
+      "width": 390,
+      "overflow": false,
+      "frame": {
+        "x": 0,
+        "y": 0,
+        "width": 390,
+        "height": 800,
+        "top": 0,
+        "right": 390,
+        "bottom": 800,
+        "left": 0
+      },
+      "heading": {
+        "size": "26px",
+        "leading": "32px",
+        "family": "\"Parade Ink Display\", \"Arial Narrow\", Arial, sans-serif"
+      },
+      "badTargets": [],
+      "mountedWorld": false
+    },
+    {
+      "label": "deletion-no-retained",
+      "width": 390,
+      "overflow": false,
+      "frame": {
+        "x": 0,
+        "y": 0,
+        "width": 390,
+        "height": 312,
+        "top": 0,
+        "right": 390,
+        "bottom": 312,
+        "left": 0
+      },
+      "heading": {
+        "size": "26px",
+        "leading": "32px",
+        "family": "\"Parade Ink Display\", \"Arial Narrow\", Arial, sans-serif"
+      },
+      "badTargets": [],
+      "mountedWorld": false
+    },
+    {
+      "label": "consent",
+      "width": 390,
+      "overflow": false,
+      "frame": {
+        "x": 0,
+        "y": 0,
+        "width": 390,
+        "height": 506,
+        "top": 0,
+        "right": 390,
+        "bottom": 506,
+        "left": 0
+      },
+      "heading": {
+        "size": "26px",
+        "leading": "32px",
+        "family": "\"Parade Ink Display\", \"Arial Narrow\", Arial, sans-serif"
+      },
+      "badTargets": [],
+      "mountedWorld": false
+    },
+    {
+      "label": "admission-inactive",
+      "width": 390,
+      "overflow": false,
+      "frame": {
+        "x": 0,
+        "y": 0,
+        "width": 390,
+        "height": 268,
+        "top": 0,
+        "right": 390,
+        "bottom": 268,
+        "left": 0
+      },
+      "heading": {
+        "size": "26px",
+        "leading": "32px",
+        "family": "\"Parade Ink Display\", \"Arial Narrow\", Arial, sans-serif"
+      },
+      "badTargets": [],
+      "mountedWorld": false
+    },
+    {
+      "label": "short-reset",
+      "width": 390,
+      "overflow": false,
+      "frame": {
+        "x": 0,
+        "y": -16,
+        "width": 390,
+        "height": 610,
+        "top": -16,
+        "right": 390,
+        "bottom": 594,
+        "left": 0
+      },
+      "heading": {
+        "size": "26px",
+        "leading": "32px",
+        "family": "\"Parade Ink Display\", \"Arial Narrow\", Arial, sans-serif"
+      },
+      "badTargets": [],
+      "mountedWorld": false
+    },
+    {
+      "label": "landing",
+      "width": 430,
+      "overflow": false,
+      "frame": {
+        "x": 0,
+        "y": 0,
+        "width": 430,
+        "height": 623,
+        "top": 0,
+        "right": 430,
+        "bottom": 623,
+        "left": 0
+      },
+      "heading": {
+        "size": "36px",
+        "leading": "42px",
+        "family": "\"Parade Ink Display\", \"Arial Narrow\", Arial, sans-serif"
+      },
+      "badTargets": [],
+      "mountedWorld": false
+    },
+    {
+      "label": "sign-in",
+      "width": 430,
+      "overflow": false,
+      "frame": {
+        "x": 0,
+        "y": 0,
+        "width": 430,
+        "height": 554,
+        "top": 0,
+        "right": 430,
+        "bottom": 554,
+        "left": 0
+      },
+      "heading": {
+        "size": "26px",
+        "leading": "32px",
+        "family": "\"Parade Ink Display\", \"Arial Narrow\", Arial, sans-serif"
+      },
+      "badTargets": [],
+      "mountedWorld": false
+    },
+    {
+      "label": "signup-policy",
+      "width": 430,
+      "overflow": false,
+      "frame": {
+        "x": 0,
+        "y": 0,
+        "width": 430,
+        "height": 708,
+        "top": 0,
+        "right": 430,
+        "bottom": 708,
+        "left": 0
+      },
+      "heading": {
+        "size": "26px",
+        "leading": "32px",
+        "family": "\"Parade Ink Display\", \"Arial Narrow\", Arial, sans-serif"
+      },
+      "badTargets": [],
+      "mountedWorld": false
+    },
+    {
+      "label": "verification",
+      "width": 430,
+      "overflow": false,
+      "frame": {
+        "x": 0,
+        "y": 0,
+        "width": 430,
+        "height": 628,
+        "top": 0,
+        "right": 430,
+        "bottom": 628,
+        "left": 0
+      },
+      "heading": {
+        "size": "26px",
+        "leading": "32px",
+        "family": "\"Parade Ink Display\", \"Arial Narrow\", Arial, sans-serif"
+      },
+      "badTargets": [],
+      "mountedWorld": false
+    },
+    {
+      "label": "reset",
+      "width": 430,
+      "overflow": false,
+      "frame": {
+        "x": 0,
+        "y": 0,
+        "width": 430,
+        "height": 458,
+        "top": 0,
+        "right": 430,
+        "bottom": 458,
+        "left": 0
+      },
+      "heading": {
+        "size": "26px",
+        "leading": "32px",
+        "family": "\"Parade Ink Display\", \"Arial Narrow\", Arial, sans-serif"
+      },
+      "badTargets": [],
+      "mountedWorld": false
+    },
+    {
+      "label": "callback",
+      "width": 430,
+      "overflow": false,
+      "frame": {
+        "x": 0,
+        "y": 0,
+        "width": 430,
+        "height": 346,
+        "top": 0,
+        "right": 430,
+        "bottom": 346,
+        "left": 0
+      },
+      "heading": {
+        "size": "26px",
+        "leading": "32px",
+        "family": "\"Parade Ink Display\", \"Arial Narrow\", Arial, sans-serif"
+      },
+      "badTargets": [],
+      "mountedWorld": false
+    },
+    {
+      "label": "legal-unavailable",
+      "width": 430,
+      "overflow": false,
+      "frame": {
+        "x": 0,
+        "y": 0,
+        "width": 430,
+        "height": 331,
+        "top": 0,
+        "right": 430,
+        "bottom": 331,
+        "left": 0
+      },
+      "heading": {
+        "size": "26px",
+        "leading": "32px",
+        "family": "\"Parade Ink Display\", \"Arial Narrow\", Arial, sans-serif"
+      },
+      "badTargets": [],
+      "mountedWorld": false
+    },
+    {
+      "label": "legal-synthetic",
+      "width": 430,
+      "overflow": false,
+      "frame": {
+        "x": 0,
+        "y": 0,
+        "width": 430,
+        "height": 756,
+        "top": 0,
+        "right": 430,
+        "bottom": 756,
+        "left": 0
+      },
+      "heading": {
+        "size": "26px",
+        "leading": "32px",
+        "family": "\"Parade Ink Display\", \"Arial Narrow\", Arial, sans-serif"
+      },
+      "badTargets": [],
+      "mountedWorld": false
+    },
+    {
+      "label": "deletion-no-retained",
+      "width": 430,
+      "overflow": false,
+      "frame": {
+        "x": 0,
+        "y": 0,
+        "width": 430,
+        "height": 312,
+        "top": 0,
+        "right": 430,
+        "bottom": 312,
+        "left": 0
+      },
+      "heading": {
+        "size": "26px",
+        "leading": "32px",
+        "family": "\"Parade Ink Display\", \"Arial Narrow\", Arial, sans-serif"
+      },
+      "badTargets": [],
+      "mountedWorld": false
+    }
+  ],
+  "errors": [],
+  "states": [
+    {
+      "width": 360,
+      "checked": true,
+      "focus": true,
+      "pending": true,
+      "disabled": true,
+      "error": true,
+      "shortHeight": true,
+      "truthfulUnavailable": true
+    },
+    {
+      "width": 390,
+      "checked": true,
+      "focus": true,
+      "pending": true,
+      "disabled": true,
+      "error": true,
+      "shortHeight": true,
+      "truthfulUnavailable": true
+    }
+  ],
+  "fonts": [
+    {
+      "request": "400 18px \"Parade Ink Text\"",
+      "loaded": 1,
+      "ready": true
+    },
+    {
+      "request": "700 26px \"Parade Ink Display\"",
+      "loaded": 1,
+      "ready": true
+    }
+  ],
+  "safeArea": {
+    "simulated": true,
+    "top": "20px",
+    "bottom": "34px"
+  },
+  "stage": "/account/deleted:normal:430"
+}

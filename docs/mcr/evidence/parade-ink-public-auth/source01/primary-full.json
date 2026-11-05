@@ -1,0 +1,15 @@
+{
+  "lease": "PI10-AUTH-PRESENTATION-SOURCE01-20261105T0001Z",
+  "result": "FAIL",
+  "exit": 1,
+  "failure": null,
+  "full_epoch": 1793836977.792922,
+  "before_hard": true,
+  "peak": {
+    "whole": 5297558306,
+    "new": 35680256,
+    "processes": 7,
+    "rss": 521584640
+  },
+  "minimum_free": 15450288128
+}

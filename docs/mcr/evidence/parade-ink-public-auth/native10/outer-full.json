@@ -1,0 +1,24 @@
+{
+  "lease": "PI10-AUTH-NATIVE10-0202",
+  "result": "FAIL",
+  "exit": 1,
+  "failure": null,
+  "full_epoch": 1793844236.3145611,
+  "before_hard": true,
+  "peak": {
+    "whole": 5540268981,
+    "new": 447865448,
+    "processes": 14,
+    "rss": 2480160768,
+    "native_payload": 132337818,
+    "global_rss": 4399333376,
+    "global_workflows": 3,
+    "global_source": 0,
+    "global_browsers": 2,
+    "global_target": 1,
+    "global_processes": 25
+  },
+  "minimum_free": 22942453760,
+  "remaining": [],
+  "execution_resources": 0
+}

@@ -1,0 +1,48 @@
+{
+  "lease": "PI10-SOURCE02-20261105T0007Z",
+  "mode": "source",
+  "accept_epoch": 1793837328.085131,
+  "work_deadline": 1793837568.085131,
+  "full_deadline": 1793837628.085131,
+  "start_floor": 11811160064,
+  "other_new": 5368709120,
+  "new_cap": 134217728,
+  "whole_cap": 8589934592,
+  "process_cap": 8,
+  "rss_cap": 2147483648,
+  "prior_whole": 5297562402,
+  "prior_new_source01": 35692544,
+  "control": "/private/tmp/mcr-pi10-source02-0009",
+  "temporary": "/private/tmp/mcr-pi10-source02-0009/scratch",
+  "output": "/Users/lhs/Desktop/mcr-worktrees/sl-world/docs/mcr/evidence/parade-ink-public-auth/source02",
+  "readset": "docs/mcr/evidence/parade-ink-public-auth/source02-readset.json",
+  "readset_sha": "bfa981d6de78bfffb6416e1bd98be255f1ebfb23ca7db045fb3e57a477a9d82a",
+  "node_sha": "b6fb419f0f43bb2fbca273700294dd2f3b685a64b60e8417c295f47646a70e4a",
+  "pins": {
+    "controller.py": "e1071551a595def9325df13c8a9239a3d0c6e431bab46e7b6e8ec5b26dafa2d2",
+    "guardian.py": "5517755754eeff821d5e34e68b34dd09397c33536945b39cdf6c9ff8581ceec0",
+    "metrics.py": "edcc2e6feaf1fe7185ce522ce72dc0f288819b11117074910e602e015d1e049a"
+  },
+  "source": "b3b5d6d93676de0345c0d0a5ac173ca46c660fc1",
+  "fresh_free": 15443984384,
+  "retained_roots": [
+    "/private/tmp/mcr-pi10-source01-0003",
+    "/private/tmp/mcr-qa01-disposition-50a8-2330"
+  ],
+  "resource_predecessor": "PI02-PI03-DEFAULT-APP-NATIVE04-20261105T0009Z actualdirectFULL/all0",
+  "lint_paths": [
+    "src/app/account-deletion-entry/recovery.tsx",
+    "src/features/public/ui/Landing.tsx",
+    "src/features/public/ui/PublicFrame.tsx",
+    "src/features/auth/ui/SignIn.tsx",
+    "src/features/auth/ui/SignUp.tsx",
+    "src/features/auth/ui/AdmissionBoundary.tsx",
+    "src/features/auth/ui/ConsentAdmission.tsx",
+    "src/features/auth/ui/Callback.tsx",
+    "src/features/auth/ui/ResetPassword.tsx",
+    "src/features/auth/__tests__/parade-ink-entry",
+    "src/features/public/__tests__/parade-ink-entry",
+    "src/features/public/__tests__/reference-target/presentation.test.tsx",
+    "src/features/auth/__tests__/reference-target/presentation.test.tsx"
+  ]
+}

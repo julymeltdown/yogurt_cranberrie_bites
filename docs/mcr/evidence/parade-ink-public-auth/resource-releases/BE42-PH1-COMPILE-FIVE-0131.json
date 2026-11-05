@@ -1,0 +1,21 @@
+{
+  "state": "FULL",
+  "ownerThreadId": "01a1a00c-2690-7bc0-94fc-52609655ea83",
+  "offerId": "BE42-PH1-COMPILE-FIVE-0131",
+  "acceptedAtEpoch": 1793842663.0534458,
+  "workDeadlineEpoch": 1793843563.0534458,
+  "fullDeadlineEpoch": 1793843743.0534458,
+  "actualFullEpoch": 1793843072.15938,
+  "targetHeld": false,
+  "resources": {
+    "target": 0,
+    "compiler": 0,
+    "source": 0,
+    "tests": 0,
+    "postgresql": 0,
+    "native": 0,
+    "browser": 0
+  },
+  "qualification": "NOT_RUN: no target access or compiler execution; original accepted window expired during pre-execution controls",
+  "noPublication": true
+}

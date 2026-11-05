@@ -1,0 +1,17 @@
+{
+  "result": "PASS_SCOPED_VISUAL_INSPECTION",
+  "inspectedEpoch": 1793845514.868733,
+  "reportSHA": "36f67b8ad6d4832c0f96b0ade88c9ae1eb8ec473499c577372007dec8855e0b6",
+  "captures": [
+    {
+      "path": "actual-default-entry-390.png",
+      "sha256": "887baba63e508e6769eba6dbec3a28d100710dda05d41cde82aaf226084d1898"
+    },
+    {
+      "path": "header-comparison.png",
+      "sha256": "66c0e3bd3c2ae8859d1f4c46fc28480a9f93a1e2aac0f60b28570711659c6ee5"
+    }
+  ],
+  "findings": "Actualdefaultentry390 matches controlledNative10 paper/black/crimson typography and approved4character layout. Headercomparison actually viewed: six measured48px headers; source/actual/overlay/diff visible without masks. Feed label differs from truthful public/Authlabels; MAEdescriptive only, not pixelidentity or wholeproduct visualacceptance.",
+  "limits": "Desktop Chromium composite source with explicit503HTTPfixtures. Real Auth/World/livebackend/physicaldevice/release gates remain OPEN/NOT_RUN."
+}

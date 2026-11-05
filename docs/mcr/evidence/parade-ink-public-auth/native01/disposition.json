@@ -1,0 +1,18 @@
+{
+  "status": "ABORTED_AFTER_FOUR_360_PNG",
+  "accepted_epoch": 1793840805.4663749,
+  "actual_full_epoch": 1793840820.481777,
+  "resources": 0,
+  "primary_full": "ABSENT: interrupted by outer cleanup",
+  "screens": [
+    "landing",
+    "sign-in",
+    "signup-policy",
+    "verification"
+  ],
+  "unknown": "PeerRootMains03 PID10220 actualidentity retained; no peer signaled",
+  "native": "Matrix incomplete; no accepted visual/device/live Auth/World claim",
+  "css": "Private inlining import-order warning; sign-in primary specificity defect observed after release",
+  "prior_new_lower_bound": 69787802,
+  "prior_whole_lower_bound": 5404253109
+}

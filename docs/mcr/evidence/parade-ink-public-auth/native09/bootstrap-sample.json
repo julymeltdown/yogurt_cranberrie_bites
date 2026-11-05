@@ -1,0 +1,25 @@
+{
+  "epoch": 1793843560.2230558,
+  "carry": 5475187483,
+  "global_sample": {
+    "epoch": 1793843559.400029,
+    "membership_asof": "2026-11-05T01:47:30.991757+00:00",
+    "cohorts": [
+      "01a1a267-37a0-7723-a4e9-a3a6f5b27f52:GIFT-SOURCE08-0159"
+    ],
+    "pids": [
+      69681,
+      71455,
+      71555,
+      71556
+    ],
+    "declared_pids": 30,
+    "declared_rss": 4294967296.0,
+    "rss": 85573632,
+    "qualified_control_identities": [],
+    "workflows": 2,
+    "source": 1,
+    "browsers": 1,
+    "target": 0
+  }
+}

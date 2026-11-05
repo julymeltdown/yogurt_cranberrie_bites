@@ -1,0 +1,11 @@
+src/app/feed-entry/__tests__/vite.config.ts(1,43): error TS2307: Cannot find module 'vite' or its corresponding type declarations.
+src/app/feed-entry/__tests__/vite.config.ts(21,8): error TS7006: Parameter 'id' implicitly has an 'any' type.
+src/features/public/__tests__/parade-ink-entry/entry.test.tsx(16,35): error TS2322: Type 'DocumentProvider | { read: () => Promise<{ status: string; }>; }' is not assignable to type 'DocumentProvider'.
+  Property 'syntheticPreview' is missing in type '{ read: () => Promise<{ status: string; }>; }' but required in type 'DocumentProvider'.
+src/features/settings/runtime-adoption/__tests__/vitest.config.ts(2,19): error TS2307: Cannot find module '@vitejs/plugin-react' or its corresponding type declarations.
+src/features/theme/__tests__/original-fe06/vitest.config.ts(2,19): error TS2307: Cannot find module '@vitejs/plugin-react' or its corresponding type declarations.
+src/shared/ui/Dialog.tsx(2,30): error TS7016: Could not find a declaration file for module 'react-dom'. '/Users/lhs/Desktop/mcr/frontend/node_modules/.pnpm/react-dom@19.2.7_react@19.2.7/node_modules/react-dom/index.js' implicitly has an 'any' type.
+  If the 'react-dom' package actually exposes this module, consider sending a pull request to amend 'https://github.com/DefinitelyTyped/DefinitelyTyped/tree/master/types/react-dom'
+vite.config.ts(1,30): error TS2307: Cannot find module 'vite' or its corresponding type declarations.
+vite.config.ts(2,19): error TS2307: Cannot find module '@vitejs/plugin-react' or its corresponding type declarations.
+vite.config.ts(3,25): error TS2307: Cannot find module '@tailwindcss/vite' or its corresponding type declarations.

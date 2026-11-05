@@ -1,0 +1,90 @@
+{
+  "lease": "PI10-PUBLIC-AUTH-APP-NATIVE02-0110",
+  "mode": "native",
+  "source_retry": false,
+  "status": "ACTUAL_ACCEPTED",
+  "start_floor": 12884901888,
+  "other_new": 5368709120,
+  "new_cap": 209715200,
+  "whole_cap": 8589934592,
+  "process_cap": 24,
+  "rss_cap": 3758096384,
+  "prior_whole": 5404253109,
+  "prior_new_source01": 35692544,
+  "prior_new_source02": 48054272,
+  "prior_new_source03": 50434048,
+  "control": "/private/tmp/mcr-pi10-native02-0120",
+  "temporary": "/private/tmp/mcr-pi10-native02-0120/scratch",
+  "output": "/Users/lhs/Desktop/mcr-worktrees/sl-world/docs/mcr/evidence/parade-ink-public-auth/native02",
+  "readset": "docs/mcr/evidence/parade-ink-public-auth/native02-readset.json",
+  "readset_sha": "57895c8cc37822af36a9426b059efd1f53ab0b623e26e4a4a7e03896dcf46efb",
+  "node_sha": "b6fb419f0f43bb2fbca273700294dd2f3b685a64b60e8417c295f47646a70e4a",
+  "pins": {
+    "controller.py": "2f44445754a405ef52f17e1f0e08c884e53357a830855d791d1fec4ca37be131",
+    "guardian.py": "b7cd21ab2dc1c9fd2142fb601269f3cb41376c9254cde9d1f0fd56262e0a25e8",
+    "metrics.py": "8817211458b8259659127adb19fcdb417e3da70c0598b9c5c9b711103df0aa4a",
+    "bootstrap.py": "43b6d92b594801ca37cffa5d2a117120baa5d6901c6686fb82b7cf8ba05977ad"
+  },
+  "source": "2cbe41549d3340523dcc70402238446b65c7c3bb",
+  "retained_roots": [
+    "/private/tmp/mcr-pi10-source01-0003",
+    "/private/tmp/mcr-pi10-source02-0009",
+    "/private/tmp/mcr-pi10-source03-0023",
+    "/private/tmp/mcr-qa01-disposition-50a8-2330",
+    "/private/tmp/mcr-pi10-source04-0043",
+    "/private/tmp/mcr-pi10-source05-0058",
+    "/private/tmp/mcr-pi10-native01-0107"
+  ],
+  "resource_predecessor": "Own Native01 actualFULL1793840820.481777; original FE37Native01 FULL01:00:23; FE37Native03 PASS_FULL01:12:38.800446; FE38SOURCE02 FULL1793841463.995012. No new barrier.",
+  "lint_paths": [
+    "src/features/auth/__tests__/parade-ink-entry",
+    "src/features/public/__tests__/parade-ink-entry/entry.test.tsx"
+  ],
+  "membership_path": "/Users/lhs/Desktop/mcr-evidence/backend-staffing-01a1a21d/resource-membership-current.json",
+  "literal_releases": [
+    {
+      "cohort": "207CompileA",
+      "path": "/Users/lhs/Desktop/mcr-worktrees/sl-world/docs/mcr/evidence/parade-ink-public-auth/resource-releases/207CompileA.json",
+      "sha256": "829c60a701855e9a41e78319e02711423e7fce7653ec3e1a22927ce2fafb49d7"
+    },
+    {
+      "cohort": "PI06Native02",
+      "path": "/Users/lhs/Desktop/mcr-worktrees/sl-world/docs/mcr/evidence/parade-ink-public-auth/resource-releases/PI06Native02.json",
+      "sha256": "17f41a6a8ec6434341419be0f95595273789bcfb54f028413476e5c5db1ad4cb"
+    }
+  ],
+  "additional_cohorts": [],
+  "own_cohort_names": [
+    "PI10Native02",
+    "PI10-PUBLIC-AUTH-APP-NATIVE02-0110"
+  ],
+  "prepared_epoch": 1793841534.674908,
+  "owner_thread": "01a1a533-50a8-7fb2-b3ed-96b941b96bbf",
+  "owner_receipt": "/Users/lhs/Desktop/mcr-evidence/backend-staffing-01a1a21d/owner-resource-receipts/01a1a533-50a8-7fb2-b3ed-96b941b96bbf.json",
+  "receipt_directory": "/Users/lhs/Desktop/mcr-evidence/backend-staffing-01a1a21d/owner-resource-receipts",
+  "ordinary_git_only": [
+    {
+      "script": "/private/tmp/mcr-publisher-412e-capacity-composition-delivery.py",
+      "sha256": "98523ce9d454f2fdfdc4080ca9fa11e6b724a9343217a8c2f03c44b16d854456"
+    }
+  ],
+  "prior_new_source04": 38027264,
+  "prior_new_source05": 53932032,
+  "port": 5390,
+  "chrome_sha": "3f0acaf1e585195596d73ffa1824baa72c3c3ac115b5cfc43d789030a3f23d93",
+  "cwd": "/Users/lhs/Desktop/mcr-worktrees/sl-world",
+  "accept_by_epoch": 1793843100,
+  "historical_new_charge": 73982106,
+  "remaining_new_reservation": 139927398,
+  "retained_native_payload_roots": [
+    "/private/tmp/mcr-pi10-native01-0107",
+    "/Users/lhs/Desktop/mcr-worktrees/sl-world/docs/mcr/evidence/parade-ink-public-auth/native01"
+  ],
+  "retained_native_png_roots": [
+    "/Users/lhs/Desktop/mcr-worktrees/sl-world/docs/mcr/evidence/parade-ink-public-auth/native01"
+  ],
+  "accept_epoch": 1793841539.0628119,
+  "work_deadline": 1793841839.0628119,
+  "full_deadline": 1793841899.0628119,
+  "fresh_free": 23696588800
+}

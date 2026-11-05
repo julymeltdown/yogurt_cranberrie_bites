@@ -4,7 +4,6 @@ import { usePorts } from '../../../app/access'
 import { safeReturnTarget } from '../../../app/routes'
 import type { AuthState } from '../model/session'
 import { ConcertAction, ConcertWindow } from '../../../shared/ui/concert-window'
-import { Cemetery } from './reference-sign-in/Cemetery'
 import { ProviderMark } from './reference-sign-in/ProviderMark'
 import './sign-in.css'
 
@@ -43,9 +42,7 @@ export function SignIn() {
   return <main className="auth-sign-in auth-sign-in--concert" id="main" tabIndex={-1}>
     <ConcertWindow title={signedIn ? 'You’re signed in' : 'Sign in'} headingLevel={1}
       onClose={() => { void navigate('/') }} closeLabel="Close sign-in and return home">
-    <Cemetery edge="top" />
     <div className="auth-paper-content">
-    <p className="auth-display-heading" aria-hidden="true">{signedIn ? 'You’re signed in' : 'SIGN IN'}</p>
     <div role="status" aria-live="polite" className="auth-message">
       {state.pending === 'login' && <p>Signing you in…</p>}
       {state.pending === 'logout' && <p>Local access cleared. Signing out…</p>}
@@ -83,7 +80,6 @@ export function SignIn() {
     </>}
     {!signedIn && new URLSearchParams(location.search).has('returnTo') && <Link className="auth-link auth-back" to={target}>Back to your destination</Link>}
     </div>
-    <Cemetery edge="bottom" />
     </ConcertWindow>
   </main>
 }

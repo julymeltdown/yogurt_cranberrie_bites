@@ -1,0 +1,99 @@
+{
+  "schemaVersion": 1,
+  "ownerThreadId": "01a1a00c-2690-7bc0-94fc-52609655ea83",
+  "offerId": "BE42-PH1-COMPILE-FIVE-02-0152",
+  "state": "ACCEPTED",
+  "kind": "target",
+  "source": "5a80fec4868e9e9359dbda12607508807ec62fa2",
+  "base": "80de53f327c90db21955eb63d3b74aa41ec62514",
+  "target": "/Users/lhs/Desktop/mcr-build/media-combined-fa4b4b3/target",
+  "freeAtAcceptance": 23176503296,
+  "caps": {
+    "ALL": 32,
+    "processCap": 32,
+    "rssCap": 8589934592,
+    "newTotal": 2147483648,
+    "targetGrowth": 1610612736,
+    "outsideCap": 536870912,
+    "wholeCap": 68719476736,
+    "workSeconds": 900,
+    "fullSeconds": 1080
+  },
+  "artifacts": {
+    "freeze": {
+      "path": "/private/tmp/mcr-be42-compile-02-0152/source-freeze.json",
+      "sha256": "14ccba4e110115de7ec79fb162f30f376af3771829adb0ccd3cc5bf5bfa7e65d"
+    },
+    "request": {
+      "path": "/private/tmp/mcr-be42-compile-02-0152/phase1-request.json",
+      "sha256": "99eca4a8da4645ecfa08c4b99add367618a955d940fadabcf45134facf718046"
+    }
+  },
+  "controlCopies": {
+    "guardian": {
+      "path": "/private/tmp/mcr-be42-compile-02-0152/guardian.py",
+      "sha256": "03e75ce2a04d888345224a191997bad117f673f53a4c323b646d150c1ecdfca7"
+    },
+    "run": {
+      "path": "/private/tmp/mcr-be42-compile-02-0152/run.py",
+      "sha256": "6f152e437ca8fe4a542b579bd3058843e7ba8e2fa541649055184feab47408af"
+    }
+  },
+  "sourceInventorySha256": "c6430e32baed5640b080cc1168ece0e950238b63d5bd53a82c6a849754bbf5f0",
+  "worktreeBaseline": 1452515328,
+  "carry": 0,
+  "preCensus": {
+    "targetRead": false,
+    "targetWrite": false,
+    "compiler": false
+  },
+  "noPublication": true,
+  "priorClosedOffer": {
+    "offerId": "BE42-PH1-COMPILE-FIVE-0131",
+    "actualFullEpoch": 1793843072.15938,
+    "resources": 0
+  },
+  "accepted": 1793843275.7924821,
+  "startBefore": 1793843575.7924821,
+  "compileStop": 1793844175.7924821,
+  "fullStop": 1793844355.7924821,
+  "worktree": "/Users/lhs/Desktop/mcr-worktrees/be-meet-live",
+  "task": "BE42-PRIVATE-DATA-PRODUCTION-COMPOSITION-01",
+  "tests": [
+    "production_private_data_native",
+    "private_data_production",
+    "account_deletion_runtime",
+    "media_deletion",
+    "account_private_data_aggregate"
+  ],
+  "targetGrowthCap": 1610612736,
+  "outsideCap": 536870912,
+  "newTotal": 2147483648,
+  "liveFloor": 8589934592,
+  "minimumAfterResidual": 9663676416,
+  "otherOutstandingGrowth": 536870912,
+  "targetInitialGrowth": 1610612736,
+  "copiedExecutables": 5,
+  "compileArtifacts": [
+    "production_private_data_native",
+    "private_data_production",
+    "account_deletion_runtime",
+    "media_deletion",
+    "account_private_data_aggregate"
+  ],
+  "executedArtifacts": [
+    "production_private_data_native",
+    "account_private_data_aggregate"
+  ],
+  "targetMode": "EXISTING_WARM_ONLY",
+  "compiler": false,
+  "targetReads": "AFTER_ACCEPTANCE_ONLY",
+  "expectedTarget": "/Users/lhs/Desktop/mcr-build/media-combined-fa4b4b3/target",
+  "ALL": 32,
+  "processCap": 32,
+  "rssCap": 8589934592,
+  "wholeCap": 68719476736,
+  "explicitAccept": true,
+  "sourceHeadSha256": "c63471684919138c2bea2aa310e0ac7ea438b6181fd7842914e2580d42f670b0",
+  "attemptsRetained": 1
+}

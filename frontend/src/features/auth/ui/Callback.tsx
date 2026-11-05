@@ -25,7 +25,7 @@ export function Callback() {
     }
   }, [dirty, location.key, location.search, location.hash, navigate])
   const state = copy[projection.kind]
-  return <main className="auth-recovery" id="main" tabIndex={-1}>
+  return <main className="auth-recovery parade-auth-entry" id="main" tabIndex={-1}>
     <Link className="recovery-home" to="/">MCR Concert World</Link>
     <p className="recovery-eyebrow">BACK TO THE CROWD</p>
     {!dirty && <>

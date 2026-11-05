@@ -1,0 +1,28 @@
+{
+  "offerId": "PI12-OPS-APP-NATIVE01-0125",
+  "state": "FULL",
+  "validation": "PARTIAL_FAIL",
+  "acceptedEpoch": 1793842151.142661,
+  "actualFullEpoch": 1793842435.882509,
+  "elapsedSeconds": 284.7398478984833,
+  "resources": {
+    "source": 0,
+    "node": 0,
+    "browser": 0,
+    "guard": 0,
+    "descendants": 0,
+    "target": 0,
+    "growthReservation": 0
+  },
+  "peak": {
+    "wholeBytes": 5397770240,
+    "newBytes": 90529792,
+    "processes": 11,
+    "rssBytes": 2479194112
+  },
+  "includedPriorDebtBytes": 32088064,
+  "pngCount": 31,
+  "pngBytes": 4202842,
+  "processVerification": "All recorded primary/secondary pids and process groups absent; no owned Node/browser/guard command remains",
+  "result": "Canonical six routes at 360/390/430 and six focused states plus Member/Content 360/390 confirmations captured; Member lost-response sequence failed after navigation reset review selection; 430 moderation and final two recovery captures not run. No complete browser PASS."
+}

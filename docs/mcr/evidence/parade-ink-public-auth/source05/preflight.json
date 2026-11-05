@@ -1,0 +1,28 @@
+{
+  "epoch": 1793840340.225224,
+  "global_sample": {
+    "epoch": 1793840339.441953,
+    "membership_asof": "2026-11-05T00:56:25.476625+00:00",
+    "cohorts": [
+      "01a1a20f-8d37-71c3-a429-8a55bb6d6c49:WORLD-BE39-MODERATION-BUILD01-0052"
+    ],
+    "pids": [
+      57278,
+      57917,
+      59405,
+      59957,
+      59994,
+      59995,
+      60073
+    ],
+    "declared_pids": 32,
+    "declared_rss": 8589934592.0,
+    "rss": 949026816,
+    "workflows": 2,
+    "source": 1,
+    "browsers": 0,
+    "target": 1
+  },
+  "whole": 5374094107,
+  "free": 16368582656
+}

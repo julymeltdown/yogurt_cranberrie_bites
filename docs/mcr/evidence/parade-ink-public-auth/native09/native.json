@@ -1,0 +1,28 @@
+{
+  "result": "FAIL",
+  "kind": "COMPOSITE_SOURCE_FIXTURE",
+  "shared": "77cfe94af06cac6b292ad7528352e4750e929e71",
+  "sharedReadset": "eb80d722f513ce794fe35317a87702dd2878321a2d76f313d36265b3d593d5ef",
+  "limits": "PI10 postimages plus exact PI01 source. Synthetic public/Auth ports; desktop Chromium, no live Auth, real World, physical iOS/Android or release acceptance.",
+  "screenshots": [],
+  "metrics": [],
+  "errors": [],
+  "states": [],
+  "fonts": [
+    {
+      "request": "400 18px \"Parade Ink Text\"",
+      "loaded": 1,
+      "ready": true
+    },
+    {
+      "request": "700 26px \"Parade Ink Display\"",
+      "loaded": 1,
+      "ready": true
+    }
+  ],
+  "failure": {
+    "stage": "/:normal:360",
+    "message": "Error: expect(locator).toHaveCSS(expected) failed\n\nLocator:  locator('.public-poster')\nExpected: \"none\"\nReceived: \"url(\\\"http://127.0.0.1:5390/backgrounds/cute-entry-v1/landing-garden-night.svg\\\")\"\nTimeout:  5000ms\n\nCall log:\n  - Expect \"to.have.css\" with timeout 5000ms\n  - waiting for locator('.public-poster')\n    14 × locator resolved to <div class=\"public-poster\" aria-labelledby=\"landing-title\">…</div>\n       - unexpected value \"url(\"http://127.0.0.1:5390/backgrounds/cute-entry-v1/landing-garden-night.svg\")\"\n",
+    "stack": "Error: expect(locator).toHaveCSS(expected) failed\n\nLocator:  locator('.public-poster')\nExpected: \"none\"\nReceived: \"url(\\\"http://127.0.0.1:5390/backgrounds/cute-entry-v1/landing-garden-night.svg\\\")\"\nTimeout:  5000ms\n\nCall log:\n  - Expect \"to.have.css\" with timeout 5000ms\n  - waiting for locator('.public-poster')\n    14 × locator resolved to <div class=\"public-poster\" aria-labelledby=\"landing-title\">…</div>\n       - unexpected value \"url(\"http://127.0.0.1:5390/backgrounds/cute-entry-v1/landing-garden-night.svg\")\"\n\n    at captureRawStack (/Users/lhs/Desktop/mcr/frontend/node_modules/.pnpm/playwright-core@1.61.1/node_modules/playwright-core/lib/coreBundle.js:3172:17)\n    at callMatcherAsStep (/Users/lhs/Desktop/mcr/frontend/node_modules/.pnpm/playwright@1.61.1/node_modules/playwright/lib/matchers/expect.js:12877:57)\n    at Object.toHaveCSS (/Users/lhs/Desktop/mcr/frontend/node_modules/.pnpm/playwright@1.61.1/node_modules/playwright/lib/matchers/expect.js:12867:23)\n    at /Users/lhs/Desktop/mcr-worktrees/sl-world/frontend/src/features/auth/__tests__/parade-ink-entry/native.mjs:67:236"
+  }
+}
