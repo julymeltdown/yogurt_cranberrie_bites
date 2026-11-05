@@ -1,0 +1,26 @@
+{
+  "status": "SEALED_EXPECTED_NOT_RUN",
+  "offer": "PI12-OPS-NATIVE02-0136",
+  "stage": "moderation",
+  "retainedNative01": "native01/run04/native/report.json",
+  "newScreenshots": 9,
+  "maxNewPngCount": 10,
+  "maxNewPngBytes": 2097152,
+  "newCapBytes": 201326592,
+  "includedPriorDebtBytes": 107307008,
+  "widths": [
+    360,
+    390,
+    430
+  ],
+  "cases": [
+    "Member/Content confirmation at each width; existing focus and cancel/zero-write checks",
+    "390 Content conflict",
+    "390 Member lost-response unknown/original-command affordance after explicit reopened selection/action/reason",
+    "390 authority withdrawn/private controls scrubbed"
+  ],
+  "sourceChange": "Owned test driver explicitly reopens Member record/selects action/fills reason after navigation. Product and previously passing source inputs unchanged.",
+  "retainedCanonicalCases": 18,
+  "realProducer": "NOT_RUN",
+  "combinedLatestMaster": "NOT_RUN"
+}

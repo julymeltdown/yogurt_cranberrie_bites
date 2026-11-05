@@ -1,0 +1,34 @@
+[
+  {
+    "argv": [
+      "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node",
+      "--check",
+      "/Users/lhs/Desktop/mcr-worktrees/fe-ref-customize/frontend/e2e/visual/parade-ink-operations/native.mjs"
+    ],
+    "exitCode": 0
+  },
+  {
+    "argv": [
+      "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node",
+      "--check",
+      "/Users/lhs/Desktop/mcr-worktrees/fe-ref-customize/frontend/e2e/visual/parade-ink-operations/config.mjs"
+    ],
+    "exitCode": 0
+  },
+  {
+    "argv": [
+      "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node",
+      "/Users/lhs/Desktop/mcr/frontend/node_modules/oxlint/bin/oxlint",
+      "--deny-warnings",
+      "e2e/visual/parade-ink-operations"
+    ],
+    "exitCode": 0
+  },
+  {
+    "argv": [
+      "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node",
+      "/Users/lhs/Desktop/mcr-worktrees/fe-ref-customize/frontend/e2e/visual/parade-ink-operations/native.mjs"
+    ],
+    "exitCode": 0
+  }
+]

@@ -1,0 +1,67 @@
+{
+  "status": "FAIL",
+  "qualification": "TEST_ONLY_CONTROLLED_HTTP_ACTUAL_MAIN",
+  "source": "0f2fab78d13c58a1e3323e49e7fe46317a876960",
+  "canonicalSixPages": [],
+  "sourcePinnedMemberContent": [],
+  "errors": [
+    "ReferenceError: module is not defined\n    at eval (/Users/lhs/Desktop/mcr/frontend/node_modules/.pnpm/react@19.2.7/node_modules/react/index.js:9:3)\n    at ESModulesEvaluator.runInlinedModule (file:///Users/lhs/Desktop/mcr/frontend/node_modules/.pnpm/vite@8.1.3_@types+node@24.13.2_jiti@2.7.0/node_modules/vite/dist/node/module-runner.js:1006:163)\n    at SSRCompatModuleRunner.directRequest (file:///Users/lhs/Desktop/mcr/frontend/node_modules/.pnpm/vite@8.1.3_@types+node@24.13.2_jiti@2.7.0/node_modules/vite/dist/node/module-runner.js:1259:80)\n    at async SSRCompatModuleRunner.directRequest (file:///Users/lhs/Desktop/mcr/frontend/node_modules/.pnpm/vite@8.1.3_@types+node@24.13.2_jiti@2.7.0/node_modules/vite/dist/node/chunks/node.js:11245:20)\n    at async SSRCompatModuleRunner.cachedRequest (file:///Users/lhs/Desktop/mcr/frontend/node_modules/.pnpm/vite@8.1.3_@types+node@24.13.2_jiti@2.7.0/node_modules/vite/dist/node/module-runner.js:1166:73)"
+  ],
+  "captures": [],
+  "measurements": [],
+  "canonicalMemberContentMount": "PUBLISHED_SEPARATELY_cf7bb137; own_native_uses_qualified_immutable_postimages",
+  "physicalDevices": "NOT_RUN",
+  "realProducer": "NOT_RUN",
+  "twoRealClients": "NOT_RUN",
+  "reference": {
+    "sha256": "9e7f17a666e1ecfc738a14b75bb3a166235a05c401f206aa24f26cf7463cbc27",
+    "crop": [
+      24,
+      60,
+      395,
+      787
+    ],
+    "normalizedWidth": 390,
+    "limitation": "Operator pages are unpictured; shared frame/control anatomy only. Outer administration composition remains separately owned."
+  },
+  "sourceQualifiedComposition": [
+    {
+      "path": "frontend/src/app/operations-composition/owner.ts",
+      "source": "bc38036e75ab82fdc9fc5c436365249b572c54fd",
+      "sha256": "f2580f4f9f08779ed0fd0832d3926510ed6b95372d2364cea119c78217916d81",
+      "bytes": 11323
+    },
+    {
+      "path": "frontend/src/app/operations-composition/panel.tsx",
+      "source": "bc38036e75ab82fdc9fc5c436365249b572c54fd",
+      "sha256": "565ee596ce1a6c5363f17d7976ea45feb3a89ab0ed4b605d2f824a4bd9b7561b",
+      "bytes": 6384
+    },
+    {
+      "path": "frontend/src/app/operations-composition/member-content/index.ts",
+      "source": "bc38036e75ab82fdc9fc5c436365249b572c54fd",
+      "sha256": "406cd72e69681407d4dcfada97d8b3d8c859e9a84cb6293379e6e4c64f00b011",
+      "bytes": 3598
+    },
+    {
+      "path": "frontend/src/app/operations-composition/member-content/use-review.ts",
+      "source": "bc38036e75ab82fdc9fc5c436365249b572c54fd",
+      "sha256": "fbd1746574a413bf8dbe456b92419d20ab8aad9caf7b7af3a4acb749e2811236",
+      "bytes": 945
+    },
+    {
+      "path": "frontend/src/app/operations-composition/__tests__/member-content-production/server.ts",
+      "source": "bc38036e75ab82fdc9fc5c436365249b572c54fd",
+      "sha256": "b0a4e5f5996f972ea5a248538577780030ba8db85b1bc3de7f8faa14e4d05459",
+      "bytes": 5877,
+      "previousFixtureSha256": "0bbaa28dcc0c42ed19030ea7f851a15f280b0181ac2ccea0015e154d0a0d35b6",
+      "qualificationDelta": "Qualified fixture imports bootstrap JSON directly and uses explicit .ts import; data/HTTP behavior unchanged."
+    }
+  ],
+  "focusedStates": [],
+  "browser": "156.0.8078.80",
+  "cleanup": {
+    "browser": "CLOSED",
+    "vite": "CLOSED"
+  }
+}

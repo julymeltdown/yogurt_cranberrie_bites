@@ -1,6 +1,7 @@
+import { OperationsSurface, OperationsFrame } from '../parade-ink-operations/OperationsSurface'
 import { useEffect, useRef, useState } from 'react'
 import type { OperationsController } from '../event/model/controller'
-import { Field, OperationFeedback, OperationsFrame, OperationsGate, useOperations, useReviewFocus } from '../event/ui/common'
+import { Field, OperationFeedback, OperationsGate, useOperations, useReviewFocus } from '../event/ui/common'
 import type { PlaceAdmin } from './contract'
 
 export function PlacesOperations({ controller }: { controller: OperationsController }) {
@@ -9,7 +10,7 @@ export function PlacesOperations({ controller }: { controller: OperationsControl
   useEffect(() => { void controller.loadPlaces() }, [controller])
   useEffect(() => { if (state.access !== 'ready') setSelected(null) }, [state.access])
   useReviewFocus(state, review)
-  return <OperationsGate state={state}><OperationsFrame title="Venue and places">
+  return <OperationsSurface view="places"><OperationsGate state={state}><OperationsFrame title="Venue and places">
     <p>Concept art never verifies a physical venue. Changes require the current place revision and an independently qualified map/write release.</p>
     <p>Write map revision: {controller.mapRevision() ?? 'Unavailable'}. The place revision below is separate from a catalog/map revision.</p>
     <button type="button" disabled={state.loading || state.command?.stage === 'review' || state.command?.stage === 'sending'} onClick={() => { void controller.loadPlaces() }}>Refresh places</button>
@@ -20,7 +21,7 @@ export function PlacesOperations({ controller }: { controller: OperationsControl
         <td className="ops-state">{row.place.closure_state}<br />{row.place.verification_state}</td><td><button type="button" disabled={state.command !== null || state.loading} onClick={() => setSelected(row.place.place_id)}>Review {row.place.label}</button></td></tr>)}</tbody></table></div>
     {state.placeCursor && <button type="button" disabled={state.loading || state.command !== null} onClick={() => { setSelected(null); void controller.loadPlaces(true) }}>Next places page</button>}
     {row && <PlaceForm key={row.place.place_id} row={row} controller={controller} locked={state.command !== null || state.loading} onClose={() => setSelected(null)} />}
-  </OperationsFrame></OperationsGate>
+  </OperationsFrame></OperationsGate></OperationsSurface>
 }
 function PlaceForm({ row, controller, locked, onClose }: { row: PlaceAdmin; controller: OperationsController; locked: boolean; onClose: () => void }) {
   const [place, setPlace] = useState(row.place), [reason, setReason] = useState('')

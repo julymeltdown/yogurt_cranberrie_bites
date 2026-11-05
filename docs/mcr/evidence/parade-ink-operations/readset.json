@@ -1,0 +1,167 @@
+{
+  "base": "2b3819fbe686b03769648e698c3741b8f9debe18",
+  "ownedOriginals": [
+    {
+      "path": "frontend/src/features/admin/event/ui/EventOperations.tsx",
+      "source": "2b3819fbe686b03769648e698c3741b8f9debe18",
+      "sha256": "ef7af68d29d17627b57d31d1ad926ec234f7b3d05a5b852419351ba208a364b6",
+      "bytes": 8027
+    },
+    {
+      "path": "frontend/src/features/admin/places/PlacesOperations.tsx",
+      "source": "2b3819fbe686b03769648e698c3741b8f9debe18",
+      "sha256": "eb6654419e4e3a659677bed38c6db5e9d3d7b38ea811b01c43230a62a0224507",
+      "bytes": 7157
+    },
+    {
+      "path": "frontend/src/features/admin/audit/AuditOperations.tsx",
+      "source": "2b3819fbe686b03769648e698c3741b8f9debe18",
+      "sha256": "68dfca7cc1cc820bc0fa2523dce73b533508f5b872bc9f28ded8be704cb95d8c",
+      "bytes": 4252
+    },
+    {
+      "path": "frontend/src/features/admin/mural/WallControl.tsx",
+      "source": "2b3819fbe686b03769648e698c3741b8f9debe18",
+      "sha256": "3219cec02fe7d2ca7985d3f9691cc9af35bb645076cfe5bbabcd00a108c59838",
+      "bytes": 5971
+    },
+    {
+      "path": "frontend/src/features/admin/closure/EventClosure.tsx",
+      "source": "2b3819fbe686b03769648e698c3741b8f9debe18",
+      "sha256": "fd4b11be8c59a332c475ae03f1799891793bde147c8b4935257f4ee62e826cd1",
+      "bytes": 5585
+    },
+    {
+      "path": "frontend/src/features/admin/members/index.ts",
+      "source": "2b3819fbe686b03769648e698c3741b8f9debe18",
+      "sha256": "edd62388b0cd1b6ad21d8b788a1826c3d96f7cfb556ae96d27585700d4661305",
+      "bytes": 308
+    },
+    {
+      "path": "frontend/src/features/admin/content/index.ts",
+      "source": "2b3819fbe686b03769648e698c3741b8f9debe18",
+      "sha256": "43f8e8da55b1fc0c54bca563108dda3f1e46befafd557fbe0b3a23227a4aef63",
+      "bytes": 310
+    }
+  ],
+  "protected": [
+    {
+      "path": "frontend/src/features/admin/event/ui/common.tsx",
+      "source": "2b3819fbe686b03769648e698c3741b8f9debe18",
+      "sha256": "7055c5c6b844fd8df88714576d9cd9aaa986b3326937a2a173c0eeae9b35969c",
+      "bytes": 3695
+    },
+    {
+      "path": "frontend/src/features/admin/event/ui/operations.css",
+      "source": "2b3819fbe686b03769648e698c3741b8f9debe18",
+      "sha256": "56c26b90323d4acd1a86b3e80a3aff7f9efb8eec5dce2807ee2ab8f3387ab17c",
+      "bytes": 2293
+    },
+    {
+      "path": "frontend/src/features/admin/mural/admin.css",
+      "source": "2b3819fbe686b03769648e698c3741b8f9debe18",
+      "sha256": "ebc05982ccebd55930450728fb00757e0368d026aea78b6eb553c3484c65849b",
+      "bytes": 1384
+    },
+    {
+      "path": "frontend/src/features/admin/reports/ui/ModerationReview.tsx",
+      "source": "2b3819fbe686b03769648e698c3741b8f9debe18",
+      "sha256": "a03bc69c25c073140cb8dbe6c8675ebe520d557b1a313ecabd465d33e1239619",
+      "bytes": 6070
+    },
+    {
+      "path": "frontend/src/features/admin/reports/ui/moderation.css",
+      "source": "2b3819fbe686b03769648e698c3741b8f9debe18",
+      "sha256": "b9b43dd58fa07677b906c894f2c0d5a0fa52e622cd812507a8f0bdff3ef9c4d0",
+      "bytes": 2007
+    },
+    {
+      "path": "frontend/src/app/operations-composition/owner.ts",
+      "source": "2b3819fbe686b03769648e698c3741b8f9debe18",
+      "sha256": "0cca44c74fbd5a8d3622b54cb33898659d9a690424bb15ce70a5d8c21b0f1e1c",
+      "bytes": 10497
+    },
+    {
+      "path": "frontend/src/app/operations-composition/panel.tsx",
+      "source": "2b3819fbe686b03769648e698c3741b8f9debe18",
+      "sha256": "829c4b95046f48b549a37d22a04799c12edcb83528c1989c1423b1d28fa8952e",
+      "bytes": 5037
+    }
+  ],
+  "fe37SourcePassedReadonlyPostimages": [
+    {
+      "path": "frontend/src/app/operations-composition/owner.ts",
+      "source": "bc38036e75ab82fdc9fc5c436365249b572c54fd",
+      "sha256": "f2580f4f9f08779ed0fd0832d3926510ed6b95372d2364cea119c78217916d81",
+      "bytes": 11323
+    },
+    {
+      "path": "frontend/src/app/operations-composition/panel.tsx",
+      "source": "bc38036e75ab82fdc9fc5c436365249b572c54fd",
+      "sha256": "565ee596ce1a6c5363f17d7976ea45feb3a89ab0ed4b605d2f824a4bd9b7561b",
+      "bytes": 6384
+    },
+    {
+      "path": "frontend/src/app/operations-composition/member-content/index.ts",
+      "source": "bc38036e75ab82fdc9fc5c436365249b572c54fd",
+      "sha256": "406cd72e69681407d4dcfada97d8b3d8c859e9a84cb6293379e6e4c64f00b011",
+      "bytes": 3598
+    },
+    {
+      "path": "frontend/src/app/operations-composition/member-content/use-review.ts",
+      "source": "bc38036e75ab82fdc9fc5c436365249b572c54fd",
+      "sha256": "fbd1746574a413bf8dbe456b92419d20ab8aad9caf7b7af3a4acb749e2811236",
+      "bytes": 945
+    },
+    {
+      "path": "frontend/src/app/operations-composition/__tests__/member-content-production/server.ts",
+      "source": "bc38036e75ab82fdc9fc5c436365249b572c54fd",
+      "sha256": "b0a4e5f5996f972ea5a248538577780030ba8db85b1bc3de7f8faa14e4d05459",
+      "bytes": 5877,
+      "previousFixtureSha256": "0bbaa28dcc0c42ed19030ea7f851a15f280b0181ac2ccea0015e154d0a0d35b6",
+      "qualificationDelta": "Qualified fixture imports bootstrap JSON directly and uses explicit .ts import; data/HTTP behavior unchanged."
+    }
+  ],
+  "helperProvenance": [
+    {
+      "path": "frontend/src/features/party-discovery/__tests__/parade-ink/finite-source.py",
+      "source": "2b3819fbe686b03769648e698c3741b8f9debe18",
+      "sha256": "40e4bce5a419aa56815c12cb046c2802387501db00627ba50d6c4eb0ede6bcc9",
+      "bytes": 8147
+    },
+    {
+      "path": "frontend/src/features/party-discovery/__tests__/parade-ink/source-check.mjs",
+      "source": "2b3819fbe686b03769648e698c3741b8f9debe18",
+      "sha256": "1f6969db083397dcaa5fba35b2a1779f4bb08b742d230c69658e455f78c07ff4",
+      "bytes": 2151
+    }
+  ],
+  "qualification": "Own SOURCE02 PASS; FE37 immutable controlled-native-qualified and separately published; own PI12 native NOT_RUN; combined latest master runtime NOT_RUN",
+  "canonicalAdmissionFixture": [
+    {
+      "path": "frontend/src/features/auth/__tests__/enrollment-consent/fixtures.ts",
+      "source": "2b3819fbe686b03769648e698c3741b8f9debe18",
+      "sha256": "6b6a5b8f757d626d565fd71a36a891bb4b6a15aaaa23d206a69dc89726a9fbd4",
+      "bytes": 3196
+    },
+    {
+      "path": "frontend/src/features/auth/model/enrollment-contract.ts",
+      "source": "2b3819fbe686b03769648e698c3741b8f9debe18",
+      "sha256": "407dfaa9f512ca35d474b5f4470a864b082bc24e8b8e6b9a968ceefb9cb7b37b",
+      "bytes": 4400
+    }
+  ],
+  "fe37FunctionalQualification": {
+    "source": "bc38036e75ab82fdc9fc5c436365249b572c54fd",
+    "canonical": "cf7bb13735aeb20e0b796b2071726f048a211bd0",
+    "receiptSha256": "dcb9d117e25fdababd2a33241dc82faaaea18f1d3ad5fecf77555e8158cb0f25",
+    "native": "Counterpart Native02 three-width main and Native03 focused five states PASS; four production postimages byte-identical to f1; qualified test-server import delta pinned separately"
+  },
+  "pureNativeFixtureProvenance": {
+    "source": "2b3819fbe686b03769648e698c3741b8f9debe18",
+    "path": "frontend/src/features/admin/event/__tests__/fixtures/data.ts",
+    "sha256": "cbcff7c01fe0695958674c9484864d856103496bd7da80e91f83cc22180fcbd9",
+    "selected": "uid/constants/time/place/notice public-contract getters only; TS return annotations removed; no Auth/controllers imported or copied",
+    "destination": "frontend/e2e/visual/parade-ink-operations/fixtures.mjs"
+  }
+}

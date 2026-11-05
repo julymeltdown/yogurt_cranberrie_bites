@@ -1,0 +1,19 @@
+[
+  {
+    "argv": [
+      "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node",
+      "/Users/lhs/Desktop/mcr-worktrees/fe-ref-customize/frontend/src/app/__tests__/parade-ink-operations/boundary-check.mjs"
+    ],
+    "exitCode": 0
+  },
+  {
+    "argv": [
+      "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node",
+      "/Users/lhs/Desktop/mcr/frontend/node_modules/vitest/vitest.mjs",
+      "run",
+      "--config",
+      "/Users/lhs/Desktop/mcr-worktrees/fe-ref-customize/frontend/src/app/__tests__/parade-ink-operations/vitest.config.mjs"
+    ],
+    "exitCode": 1
+  }
+]

@@ -1,0 +1,646 @@
+{
+  "status": "PASS_WITH_PRESERVED_FAILED_PREDECESSOR",
+  "qualification": "TEST_ONLY_CONTROLLED_HTTP_ACTUAL_MAIN",
+  "canonicalBase": "2b3819fbe686b03769648e698c3741b8f9debe18",
+  "qualifiedSource": "676bea0569e86fbcaf96ac44c35c62b63292aaf5",
+  "canonicalSixRouteWidthCases": [
+    {
+      "path": "/admin",
+      "width": 360,
+      "result": "PASS"
+    },
+    {
+      "path": "/admin/event",
+      "width": 360,
+      "result": "PASS"
+    },
+    {
+      "path": "/admin/places",
+      "width": 360,
+      "result": "PASS"
+    },
+    {
+      "path": "/admin/mural",
+      "width": 360,
+      "result": "PASS"
+    },
+    {
+      "path": "/admin/audit",
+      "width": 360,
+      "result": "PASS"
+    },
+    {
+      "path": "/admin/archive",
+      "width": 360,
+      "result": "PASS"
+    },
+    {
+      "path": "/admin",
+      "width": 390,
+      "result": "PASS"
+    },
+    {
+      "path": "/admin/event",
+      "width": 390,
+      "result": "PASS"
+    },
+    {
+      "path": "/admin/places",
+      "width": 390,
+      "result": "PASS"
+    },
+    {
+      "path": "/admin/mural",
+      "width": 390,
+      "result": "PASS"
+    },
+    {
+      "path": "/admin/audit",
+      "width": 390,
+      "result": "PASS"
+    },
+    {
+      "path": "/admin/archive",
+      "width": 390,
+      "result": "PASS"
+    },
+    {
+      "path": "/admin",
+      "width": 430,
+      "result": "PASS"
+    },
+    {
+      "path": "/admin/event",
+      "width": 430,
+      "result": "PASS"
+    },
+    {
+      "path": "/admin/places",
+      "width": 430,
+      "result": "PASS"
+    },
+    {
+      "path": "/admin/mural",
+      "width": 430,
+      "result": "PASS"
+    },
+    {
+      "path": "/admin/audit",
+      "width": 430,
+      "result": "PASS"
+    },
+    {
+      "path": "/admin/archive",
+      "width": 430,
+      "result": "PASS"
+    }
+  ],
+  "qualifiedMemberContentWidthCases": [
+    {
+      "path": "/admin/users/00000000-0000-4000-8000-000000000601",
+      "width": 360,
+      "result": "PASS",
+      "canonical": false
+    },
+    {
+      "path": "/admin/content",
+      "width": 360,
+      "result": "PASS",
+      "canonical": false
+    },
+    {
+      "path": "/admin/users/00000000-0000-4000-8000-000000000601",
+      "width": 390,
+      "result": "PASS",
+      "canonical": false
+    },
+    {
+      "path": "/admin/content",
+      "width": 390,
+      "result": "PASS",
+      "canonical": false
+    },
+    {
+      "path": "/admin/users/00000000-0000-4000-8000-000000000601",
+      "width": 430,
+      "result": "PASS",
+      "canonical": false
+    },
+    {
+      "path": "/admin/content",
+      "width": 430,
+      "result": "PASS",
+      "canonical": false
+    }
+  ],
+  "focusedStates": [
+    "390auditdetailsfocus",
+    "390eventserviceunavailableread",
+    "390x420wallconfirm-long",
+    "390x420wallunknown-original",
+    "390x420wallfrozen",
+    "390x420closurepartial",
+    "390contentconflict",
+    "390memberunknown",
+    "390authoritywithdrawn-protectedroot"
+  ],
+  "screenshots": 33,
+  "referenceComparisons": 2,
+  "selectedPngCount": 35,
+  "selectedPngBytes": 4612286,
+  "allRetainedNativeAttemptPngCount": 40,
+  "allRetainedNativeAttemptPngBytes": 5254328,
+  "developerImageInspection": "PASS shared Photo2 anatomy with documented unpictured operator content; 360/390/430 normal and 390x420 recovery examples inspected",
+  "measurements": {
+    "bodyFont": "Parade Ink Text",
+    "bodySize": "18px",
+    "bodyLineHeight": "22px",
+    "headingFont": "Parade Ink Display",
+    "headingSize": "26px",
+    "headingLineHeight": "32px",
+    "titleBarHeight": "48px",
+    "paper": "rgb(249, 249, 248)",
+    "minMeasuredControlWidth": 44,
+    "minMeasuredControlHeight": 44,
+    "allReadyNestedMainCountZero": true,
+    "allViewportOverflowFalse": true
+  },
+  "sourcePins": [
+    {
+      "path": "frontend/src/app/operations-composition/owner.ts",
+      "source": "bc38036e75ab82fdc9fc5c436365249b572c54fd",
+      "sha256": "f2580f4f9f08779ed0fd0832d3926510ed6b95372d2364cea119c78217916d81",
+      "bytes": 11323
+    },
+    {
+      "path": "frontend/src/app/operations-composition/panel.tsx",
+      "source": "bc38036e75ab82fdc9fc5c436365249b572c54fd",
+      "sha256": "565ee596ce1a6c5363f17d7976ea45feb3a89ab0ed4b605d2f824a4bd9b7561b",
+      "bytes": 6384
+    },
+    {
+      "path": "frontend/src/app/operations-composition/member-content/index.ts",
+      "source": "bc38036e75ab82fdc9fc5c436365249b572c54fd",
+      "sha256": "406cd72e69681407d4dcfada97d8b3d8c859e9a84cb6293379e6e4c64f00b011",
+      "bytes": 3598
+    },
+    {
+      "path": "frontend/src/app/operations-composition/member-content/use-review.ts",
+      "source": "bc38036e75ab82fdc9fc5c436365249b572c54fd",
+      "sha256": "fbd1746574a413bf8dbe456b92419d20ab8aad9caf7b7af3a4acb749e2811236",
+      "bytes": 945
+    },
+    {
+      "path": "frontend/src/app/operations-composition/__tests__/member-content-production/server.ts",
+      "source": "bc38036e75ab82fdc9fc5c436365249b572c54fd",
+      "sha256": "b0a4e5f5996f972ea5a248538577780030ba8db85b1bc3de7f8faa14e4d05459",
+      "bytes": 5877,
+      "previousFixtureSha256": "0bbaa28dcc0c42ed19030ea7f851a15f280b0181ac2ccea0015e154d0a0d35b6",
+      "qualificationDelta": "Qualified fixture imports bootstrap JSON directly and uses explicit .ts import; data/HTTP behavior unchanged."
+    }
+  ],
+  "rounds": [
+    {
+      "id": "PI12-OPS-APP-NATIVE01-0125",
+      "validation": "PARTIAL_FAIL",
+      "fullSha256": "9f6bb40e1b0f2125e2d4346be1a53eb3ff60f9d815cc77fd02bd5cde974f2a38",
+      "preserved": "native01/",
+      "reuse": "18 canonical ready route/width cases plus seven focused states; old selected moderation images superseded only in final selection, raw originals retained privately and all40 hashed below"
+    },
+    {
+      "id": "PI12-OPS-NATIVE02-0136",
+      "validation": "PASS_MODERATION_REMAINDER",
+      "fullSha256": "63e4b559ab09f43dcb9e2945e1271e797a78453b0e0c1b0c6bfe592023cc00a6",
+      "preserved": "native02/",
+      "covered": "Member/Content six widths plus conflict/unknown/withdrawal; no product behavior changes"
+    }
+  ],
+  "historicalPeak": {
+    "wholeBytes": 5397770240,
+    "newBytes": 138883072,
+    "rssBytes": 2479194112,
+    "processes": 11
+  },
+  "limits": {
+    "realProducer": "NOT_RUN",
+    "physicalDevices": "NOT_RUN",
+    "twoRealClients": "NOT_RUN",
+    "combinedLatestMasterRuntime": "NOT_RUN",
+    "QA08_200users": "DEFERRED_BY_USER",
+    "protectedGateUnavailableMain": "Existing protected branch not qualified as ready-page behavior"
+  },
+  "captures": [
+    {
+      "name": "360-audit.png",
+      "sourceRound": "native01",
+      "bytes": 75723,
+      "sha256": "471d6bfb8439b96819728ad32cdf330ddc5bd835daee7d4e403d14a610adf80d"
+    },
+    {
+      "name": "360-closure.png",
+      "sourceRound": "native01",
+      "bytes": 67962,
+      "sha256": "9b95c5115cff0b37a92b7ac33f088d41b6f351ec1598e8c660657e25ec8f38b5"
+    },
+    {
+      "name": "360-content-confirm.png",
+      "sourceRound": "native02",
+      "bytes": 136864,
+      "sha256": "52c47d5b62ae9227201dd05982f2505fac77f6dbc4cea21285f73fe1fc73f9b5"
+    },
+    {
+      "name": "360-control.png",
+      "sourceRound": "native01",
+      "bytes": 129973,
+      "sha256": "0b0598e49ebd5e0ce51e2514e92f44b98b4a071cf80fe8236e5f4ef0b0ac0591"
+    },
+    {
+      "name": "360-event.png",
+      "sourceRound": "native01",
+      "bytes": 194810,
+      "sha256": "5b26775e11b7358962305dbca97104a8ebd9c006cfcf622931a3c7dfe1e937b1"
+    },
+    {
+      "name": "360-members-confirm.png",
+      "sourceRound": "native02",
+      "bytes": 126925,
+      "sha256": "4df9cdda98a849abeb9d8b41d5fa7a3e1c0d6d57321d9e8830bfcfd538921f28"
+    },
+    {
+      "name": "360-places.png",
+      "sourceRound": "native01",
+      "bytes": 66890,
+      "sha256": "01b28a6987db672c2ab379553d02947d81a0e9ee3c1ec9719776999267866855"
+    },
+    {
+      "name": "360-wall.png",
+      "sourceRound": "native01",
+      "bytes": 57338,
+      "sha256": "e5186516996269ed7499854f28932d5b2a322252217b3aea83f7fa20df400cff"
+    },
+    {
+      "name": "390-audit-details.png",
+      "sourceRound": "native01",
+      "bytes": 124266,
+      "sha256": "4a77efb46e142433dc362a790b582567c12aa72fd8a1d99c9c5758a1c478b63d"
+    },
+    {
+      "name": "390-audit.png",
+      "sourceRound": "native01",
+      "bytes": 75447,
+      "sha256": "6420c785ffb0483dbb8c4319c908dc8ff18b8b18faf85bb5bde533032970d3da"
+    },
+    {
+      "name": "390-authority-withdrawn.png",
+      "sourceRound": "native02",
+      "bytes": 35002,
+      "sha256": "399b74296f37bf705db202b1dff0e5a3b9cfc63afe48053379367d73e0f33a75"
+    },
+    {
+      "name": "390-closure.png",
+      "sourceRound": "native01",
+      "bytes": 67341,
+      "sha256": "78f21201dca1210f2961534bd9f8a733c7b1ec8bd11f545db6b9fcedd30be3eb"
+    },
+    {
+      "name": "390-content-confirm.png",
+      "sourceRound": "native02",
+      "bytes": 134792,
+      "sha256": "948bb551c0c6af1449494c540b1febc5dd838bf045247edf2a850fc777adfee9"
+    },
+    {
+      "name": "390-content-conflict.png",
+      "sourceRound": "native02",
+      "bytes": 118091,
+      "sha256": "4f8fb2b94267e53f8cdac2fbfb3cc9cedf2ac5ffd70107abfaf1cddb2df8f926"
+    },
+    {
+      "name": "390-control.png",
+      "sourceRound": "native01",
+      "bytes": 128717,
+      "sha256": "e093d28a6bcdceb339d53d77deeae65fe6da7fd2a480895a464fed548821e9be"
+    },
+    {
+      "name": "390-event-unavailable-read.png",
+      "sourceRound": "native01",
+      "bytes": 200195,
+      "sha256": "ef9888c448e9197ee92f0b99c3768c3a487d70886e490e39c758a2d207d34a56"
+    },
+    {
+      "name": "390-event.png",
+      "sourceRound": "native01",
+      "bytes": 193375,
+      "sha256": "055ca8c26725ea4bc41fbdb5bc40db5e2b314696c93fb8d059cad85cfb0e8950"
+    },
+    {
+      "name": "390-member-unknown.png",
+      "sourceRound": "native02",
+      "bytes": 104272,
+      "sha256": "7b859be79a3eaee037544fd25afc5a0b2069bb1a73826e8ac914bf6845b64f1b"
+    },
+    {
+      "name": "390-members-confirm.png",
+      "sourceRound": "native02",
+      "bytes": 125370,
+      "sha256": "633717588b309bee30a6debbba0474238bd32ef8d7bbc16ad61e13e0c3cd34cd"
+    },
+    {
+      "name": "390-places.png",
+      "sourceRound": "native01",
+      "bytes": 67884,
+      "sha256": "e06759c2db4d7b47f3a87461316b49867904f74ba4eb2899e664bde0790c9048"
+    },
+    {
+      "name": "390-wall.png",
+      "sourceRound": "native01",
+      "bytes": 57677,
+      "sha256": "5c589a54f77726bcbbcbfbf66c540617fb88610e64ab330dcc52e267e6bac15e"
+    },
+    {
+      "name": "390x420-closure-partial.png",
+      "sourceRound": "native01",
+      "bytes": 115458,
+      "sha256": "c5607b76516b8f2d6ba53cce9d9fc2a1f5f8edb27de04f49e0913a1572200aff"
+    },
+    {
+      "name": "390x420-wall-confirm.png",
+      "sourceRound": "native01",
+      "bytes": 92476,
+      "sha256": "a8812e6d173b34e7117b7447d42cef83308264413c89d9cd3b2b0dabbdcfa2f2"
+    },
+    {
+      "name": "390x420-wall-frozen.png",
+      "sourceRound": "native01",
+      "bytes": 55116,
+      "sha256": "5eafa7f889bfe6b81bbcb628d71fe616871620419802bfa4ac10f9a1096181a6"
+    },
+    {
+      "name": "390x420-wall-unknown.png",
+      "sourceRound": "native01",
+      "bytes": 65411,
+      "sha256": "74a9307d18af00d2760e6a2082910abadae48f155a82f95043e6a6ab280bcc5e"
+    },
+    {
+      "name": "430-audit.png",
+      "sourceRound": "native01",
+      "bytes": 77868,
+      "sha256": "f1a6a5dd59fb100e896099659d255571fb7b73e526894e18bece981e8b6225c6"
+    },
+    {
+      "name": "430-closure.png",
+      "sourceRound": "native01",
+      "bytes": 69776,
+      "sha256": "dba3027d37ae927941756f8342e05d3c58510fe5896d2b505d3380d93a820829"
+    },
+    {
+      "name": "430-content-confirm.png",
+      "sourceRound": "native02",
+      "bytes": 138094,
+      "sha256": "d8fe4ef1535f309ba3ce71686cc0746acf55fd69cf2b7eaa378310b669021045"
+    },
+    {
+      "name": "430-control.png",
+      "sourceRound": "native01",
+      "bytes": 135032,
+      "sha256": "5964a2c9e2b22fb531ba0ddcf400ac7a51dfa554b510bb8fcf39d7052f68daaa"
+    },
+    {
+      "name": "430-event.png",
+      "sourceRound": "native01",
+      "bytes": 201430,
+      "sha256": "e724d25d798848d16e3de183635bdf10ce4ca852ab9022b36ef1af0bd510d5a8"
+    },
+    {
+      "name": "430-members-confirm.png",
+      "sourceRound": "native02",
+      "bytes": 132076,
+      "sha256": "ae803c6c692ffeef3ecff0c04a0a76f023cd36f4a083733023c813ad6dc949c3"
+    },
+    {
+      "name": "430-places.png",
+      "sourceRound": "native01",
+      "bytes": 71604,
+      "sha256": "40e8a8429d0c1e0bdbdbe556a2d0a7a9c0050348b5ca7beef079ec095ff91adb"
+    },
+    {
+      "name": "430-wall.png",
+      "sourceRound": "native01",
+      "bytes": 58207,
+      "sha256": "28d8017dc55e54d287380c8b97daba489fd741126e76c939a3519f49560871a6"
+    },
+    {
+      "name": "operator-390-reference-overlay.png",
+      "sourceRound": "native01",
+      "bytes": 460560,
+      "sha256": "affda623c376e7dfd052f4f356031cd0f6863a49837d896ace8e651631babd81"
+    },
+    {
+      "name": "operator-390-reference-side.png",
+      "sourceRound": "native01",
+      "bytes": 650264,
+      "sha256": "5cb9f1cdd77a187c1111040cba25c79e816efb10919369b1e03a165fd81e5a53"
+    }
+  ],
+  "allRawPngs": [
+    {
+      "path": "/private/tmp/mcr-pi12-ops-app-native01-0125/run04/native/360-audit.png",
+      "bytes": 75723,
+      "sha256": "471d6bfb8439b96819728ad32cdf330ddc5bd835daee7d4e403d14a610adf80d"
+    },
+    {
+      "path": "/private/tmp/mcr-pi12-ops-app-native01-0125/run04/native/360-closure.png",
+      "bytes": 67962,
+      "sha256": "9b95c5115cff0b37a92b7ac33f088d41b6f351ec1598e8c660657e25ec8f38b5"
+    },
+    {
+      "path": "/private/tmp/mcr-pi12-ops-app-native01-0125/run04/native/360-content-confirm.png",
+      "bytes": 136864,
+      "sha256": "52c47d5b62ae9227201dd05982f2505fac77f6dbc4cea21285f73fe1fc73f9b5"
+    },
+    {
+      "path": "/private/tmp/mcr-pi12-ops-app-native01-0125/run04/native/360-control.png",
+      "bytes": 129973,
+      "sha256": "0b0598e49ebd5e0ce51e2514e92f44b98b4a071cf80fe8236e5f4ef0b0ac0591"
+    },
+    {
+      "path": "/private/tmp/mcr-pi12-ops-app-native01-0125/run04/native/360-event.png",
+      "bytes": 194810,
+      "sha256": "5b26775e11b7358962305dbca97104a8ebd9c006cfcf622931a3c7dfe1e937b1"
+    },
+    {
+      "path": "/private/tmp/mcr-pi12-ops-app-native01-0125/run04/native/360-members-confirm.png",
+      "bytes": 126925,
+      "sha256": "4df9cdda98a849abeb9d8b41d5fa7a3e1c0d6d57321d9e8830bfcfd538921f28"
+    },
+    {
+      "path": "/private/tmp/mcr-pi12-ops-app-native01-0125/run04/native/360-places.png",
+      "bytes": 66890,
+      "sha256": "01b28a6987db672c2ab379553d02947d81a0e9ee3c1ec9719776999267866855"
+    },
+    {
+      "path": "/private/tmp/mcr-pi12-ops-app-native01-0125/run04/native/360-wall.png",
+      "bytes": 57338,
+      "sha256": "e5186516996269ed7499854f28932d5b2a322252217b3aea83f7fa20df400cff"
+    },
+    {
+      "path": "/private/tmp/mcr-pi12-ops-app-native01-0125/run04/native/390-audit-details.png",
+      "bytes": 124266,
+      "sha256": "4a77efb46e142433dc362a790b582567c12aa72fd8a1d99c9c5758a1c478b63d"
+    },
+    {
+      "path": "/private/tmp/mcr-pi12-ops-app-native01-0125/run04/native/390-audit.png",
+      "bytes": 75447,
+      "sha256": "6420c785ffb0483dbb8c4319c908dc8ff18b8b18faf85bb5bde533032970d3da"
+    },
+    {
+      "path": "/private/tmp/mcr-pi12-ops-app-native01-0125/run04/native/390-closure.png",
+      "bytes": 67341,
+      "sha256": "78f21201dca1210f2961534bd9f8a733c7b1ec8bd11f545db6b9fcedd30be3eb"
+    },
+    {
+      "path": "/private/tmp/mcr-pi12-ops-app-native01-0125/run04/native/390-content-confirm.png",
+      "bytes": 134792,
+      "sha256": "948bb551c0c6af1449494c540b1febc5dd838bf045247edf2a850fc777adfee9"
+    },
+    {
+      "path": "/private/tmp/mcr-pi12-ops-app-native01-0125/run04/native/390-content-conflict.png",
+      "bytes": 118091,
+      "sha256": "4f8fb2b94267e53f8cdac2fbfb3cc9cedf2ac5ffd70107abfaf1cddb2df8f926"
+    },
+    {
+      "path": "/private/tmp/mcr-pi12-ops-app-native01-0125/run04/native/390-control.png",
+      "bytes": 128717,
+      "sha256": "e093d28a6bcdceb339d53d77deeae65fe6da7fd2a480895a464fed548821e9be"
+    },
+    {
+      "path": "/private/tmp/mcr-pi12-ops-app-native01-0125/run04/native/390-event-unavailable-read.png",
+      "bytes": 200195,
+      "sha256": "ef9888c448e9197ee92f0b99c3768c3a487d70886e490e39c758a2d207d34a56"
+    },
+    {
+      "path": "/private/tmp/mcr-pi12-ops-app-native01-0125/run04/native/390-event.png",
+      "bytes": 193375,
+      "sha256": "055ca8c26725ea4bc41fbdb5bc40db5e2b314696c93fb8d059cad85cfb0e8950"
+    },
+    {
+      "path": "/private/tmp/mcr-pi12-ops-app-native01-0125/run04/native/390-members-confirm.png",
+      "bytes": 125370,
+      "sha256": "633717588b309bee30a6debbba0474238bd32ef8d7bbc16ad61e13e0c3cd34cd"
+    },
+    {
+      "path": "/private/tmp/mcr-pi12-ops-app-native01-0125/run04/native/390-places.png",
+      "bytes": 67884,
+      "sha256": "e06759c2db4d7b47f3a87461316b49867904f74ba4eb2899e664bde0790c9048"
+    },
+    {
+      "path": "/private/tmp/mcr-pi12-ops-app-native01-0125/run04/native/390-wall.png",
+      "bytes": 57677,
+      "sha256": "5c589a54f77726bcbbcbfbf66c540617fb88610e64ab330dcc52e267e6bac15e"
+    },
+    {
+      "path": "/private/tmp/mcr-pi12-ops-app-native01-0125/run04/native/390x420-closure-partial.png",
+      "bytes": 115458,
+      "sha256": "c5607b76516b8f2d6ba53cce9d9fc2a1f5f8edb27de04f49e0913a1572200aff"
+    },
+    {
+      "path": "/private/tmp/mcr-pi12-ops-app-native01-0125/run04/native/390x420-wall-confirm.png",
+      "bytes": 92476,
+      "sha256": "a8812e6d173b34e7117b7447d42cef83308264413c89d9cd3b2b0dabbdcfa2f2"
+    },
+    {
+      "path": "/private/tmp/mcr-pi12-ops-app-native01-0125/run04/native/390x420-wall-frozen.png",
+      "bytes": 55116,
+      "sha256": "5eafa7f889bfe6b81bbcb628d71fe616871620419802bfa4ac10f9a1096181a6"
+    },
+    {
+      "path": "/private/tmp/mcr-pi12-ops-app-native01-0125/run04/native/390x420-wall-unknown.png",
+      "bytes": 65411,
+      "sha256": "74a9307d18af00d2760e6a2082910abadae48f155a82f95043e6a6ab280bcc5e"
+    },
+    {
+      "path": "/private/tmp/mcr-pi12-ops-app-native01-0125/run04/native/430-audit.png",
+      "bytes": 77868,
+      "sha256": "f1a6a5dd59fb100e896099659d255571fb7b73e526894e18bece981e8b6225c6"
+    },
+    {
+      "path": "/private/tmp/mcr-pi12-ops-app-native01-0125/run04/native/430-closure.png",
+      "bytes": 69776,
+      "sha256": "dba3027d37ae927941756f8342e05d3c58510fe5896d2b505d3380d93a820829"
+    },
+    {
+      "path": "/private/tmp/mcr-pi12-ops-app-native01-0125/run04/native/430-control.png",
+      "bytes": 135032,
+      "sha256": "5964a2c9e2b22fb531ba0ddcf400ac7a51dfa554b510bb8fcf39d7052f68daaa"
+    },
+    {
+      "path": "/private/tmp/mcr-pi12-ops-app-native01-0125/run04/native/430-event.png",
+      "bytes": 201430,
+      "sha256": "e724d25d798848d16e3de183635bdf10ce4ca852ab9022b36ef1af0bd510d5a8"
+    },
+    {
+      "path": "/private/tmp/mcr-pi12-ops-app-native01-0125/run04/native/430-places.png",
+      "bytes": 71604,
+      "sha256": "40e8a8429d0c1e0bdbdbe556a2d0a7a9c0050348b5ca7beef079ec095ff91adb"
+    },
+    {
+      "path": "/private/tmp/mcr-pi12-ops-app-native01-0125/run04/native/430-wall.png",
+      "bytes": 58207,
+      "sha256": "28d8017dc55e54d287380c8b97daba489fd741126e76c939a3519f49560871a6"
+    },
+    {
+      "path": "/private/tmp/mcr-pi12-ops-app-native01-0125/run04/native/operator-390-reference-overlay.png",
+      "bytes": 460560,
+      "sha256": "affda623c376e7dfd052f4f356031cd0f6863a49837d896ace8e651631babd81"
+    },
+    {
+      "path": "/private/tmp/mcr-pi12-ops-app-native01-0125/run04/native/operator-390-reference-side.png",
+      "bytes": 650264,
+      "sha256": "5cb9f1cdd77a187c1111040cba25c79e816efb10919369b1e03a165fd81e5a53"
+    },
+    {
+      "path": "/private/tmp/mcr-pi12-ops-native02-0136/run01/native/360-content-confirm.png",
+      "bytes": 136864,
+      "sha256": "52c47d5b62ae9227201dd05982f2505fac77f6dbc4cea21285f73fe1fc73f9b5"
+    },
+    {
+      "path": "/private/tmp/mcr-pi12-ops-native02-0136/run01/native/360-members-confirm.png",
+      "bytes": 126925,
+      "sha256": "4df9cdda98a849abeb9d8b41d5fa7a3e1c0d6d57321d9e8830bfcfd538921f28"
+    },
+    {
+      "path": "/private/tmp/mcr-pi12-ops-native02-0136/run01/native/390-authority-withdrawn.png",
+      "bytes": 35002,
+      "sha256": "399b74296f37bf705db202b1dff0e5a3b9cfc63afe48053379367d73e0f33a75"
+    },
+    {
+      "path": "/private/tmp/mcr-pi12-ops-native02-0136/run01/native/390-content-confirm.png",
+      "bytes": 134792,
+      "sha256": "948bb551c0c6af1449494c540b1febc5dd838bf045247edf2a850fc777adfee9"
+    },
+    {
+      "path": "/private/tmp/mcr-pi12-ops-native02-0136/run01/native/390-content-conflict.png",
+      "bytes": 118091,
+      "sha256": "4f8fb2b94267e53f8cdac2fbfb3cc9cedf2ac5ffd70107abfaf1cddb2df8f926"
+    },
+    {
+      "path": "/private/tmp/mcr-pi12-ops-native02-0136/run01/native/390-member-unknown.png",
+      "bytes": 104272,
+      "sha256": "7b859be79a3eaee037544fd25afc5a0b2069bb1a73826e8ac914bf6845b64f1b"
+    },
+    {
+      "path": "/private/tmp/mcr-pi12-ops-native02-0136/run01/native/390-members-confirm.png",
+      "bytes": 125370,
+      "sha256": "633717588b309bee30a6debbba0474238bd32ef8d7bbc16ad61e13e0c3cd34cd"
+    },
+    {
+      "path": "/private/tmp/mcr-pi12-ops-native02-0136/run01/native/430-content-confirm.png",
+      "bytes": 138094,
+      "sha256": "d8fe4ef1535f309ba3ce71686cc0746acf55fd69cf2b7eaa378310b669021045"
+    },
+    {
+      "path": "/private/tmp/mcr-pi12-ops-native02-0136/run01/native/430-members-confirm.png",
+      "bytes": 132076,
+      "sha256": "ae803c6c692ffeef3ecff0c04a0a76f023cd36f4a083733023c813ad6dc949c3"
+    }
+  ]
+}

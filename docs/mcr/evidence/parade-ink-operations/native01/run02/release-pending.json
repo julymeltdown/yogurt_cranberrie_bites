@@ -1,0 +1,15 @@
+{
+  "status": "FAIL",
+  "epoch": 1793842208.567123,
+  "primaryPid": 51581,
+  "secondaryPid": 51670,
+  "remainingChildren": [],
+  "peak": {
+    "processes": 0,
+    "rssBytes": 0,
+    "wholeBytes": 5343883264,
+    "newBytes": 32088064
+  },
+  "wholeBytes": 5339402240,
+  "commands": []
+}

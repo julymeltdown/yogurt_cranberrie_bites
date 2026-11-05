@@ -1,0 +1,87 @@
+{
+  "primary": {
+    "epoch": 1793841238.655731,
+    "pid": 58119,
+    "ownedPids": [
+      58119,
+      58253
+    ],
+    "global": {
+      "acceptedOffers": [
+        "BE38-207-REMAINING-COMPILE-A03-0105",
+        "PI04-GIVEAWAY-APP-NATIVE05-0113",
+        "GIFT-BE39-CHANGED-PARSE-SOURCE05-0103"
+      ],
+      "observedPids": [
+        57762,
+        57968,
+        57975,
+        58075,
+        58119,
+        58123,
+        58245,
+        58246,
+        58247,
+        58249,
+        58251,
+        58252,
+        58253,
+        58263,
+        58268
+      ],
+      "boundary": "Fresh allocator membership plus exact accepted owner controller/guard receipts; unknown membership stays charged."
+    },
+    "freeBytes": 16158363648,
+    "wholeBytes": 5329190912,
+    "positiveNewBytes": 618496,
+    "rssBytes": 43925504,
+    "peak": {
+      "processes": 2,
+      "rssBytes": 43925504,
+      "wholeBytes": 5334413312,
+      "newBytes": 618496
+    }
+  },
+  "secondary": {
+    "epoch": 1793841238.121637,
+    "pid": 58253,
+    "ownedPids": [
+      58119,
+      58253
+    ],
+    "global": {
+      "acceptedOffers": [
+        "BE38-207-REMAINING-COMPILE-A03-0105",
+        "PI04-GIVEAWAY-APP-NATIVE05-0113",
+        "GIFT-BE39-CHANGED-PARSE-SOURCE05-0103"
+      ],
+      "observedPids": [
+        57762,
+        57968,
+        57975,
+        58075,
+        58119,
+        58123,
+        58212,
+        58245,
+        58246,
+        58247,
+        58249,
+        58251,
+        58252,
+        58253
+      ],
+      "boundary": "Fresh allocator membership plus exact accepted owner controller/guard receipts; unknown membership stays charged."
+    },
+    "freeBytes": 16158613504,
+    "wholeBytes": 5329186816,
+    "positiveNewBytes": 614400,
+    "rssBytes": 43646976,
+    "peak": {
+      "processes": 2,
+      "rssBytes": 43646976,
+      "wholeBytes": 5334413312,
+      "newBytes": 614400
+    }
+  }
+}

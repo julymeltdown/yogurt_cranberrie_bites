@@ -1,0 +1,10 @@
+{
+  "epoch": 1793841409.42415,
+  "error": "Fixed work deadline",
+  "peak": {
+    "processes": 5,
+    "rssBytes": 2062057472,
+    "wholeBytes": 5343883264,
+    "newBytes": 15310848
+  }
+}

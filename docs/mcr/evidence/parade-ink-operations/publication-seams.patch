@@ -1,0 +1,160 @@
+diff --git a/frontend/src/features/admin/audit/AuditOperations.tsx b/frontend/src/features/admin/audit/AuditOperations.tsx
+index 719ab8aa5..4f81ecd3d 100644
+--- a/frontend/src/features/admin/audit/AuditOperations.tsx
++++ b/frontend/src/features/admin/audit/AuditOperations.tsx
+@@ -1,6 +1,7 @@
++import { OperationsSurface, OperationsFrame } from '../parade-ink-operations/OperationsSurface'
+ import { useEffect, useRef, useState } from 'react'
+ import type { OperationsController } from '../event/model/controller'
+-import { Field, OperationFeedback, OperationsFrame, OperationsGate, useOperations } from '../event/ui/common'
++import { Field, OperationFeedback, OperationsGate, useOperations } from '../event/ui/common'
+ import type { AuditQuery } from './contract'
+ export function AuditOperations({ controller }: { controller: OperationsController }) {
+   const state = useOperations(controller), detail = useRef<HTMLHeadingElement>(null)
+@@ -14,7 +15,7 @@ export function AuditOperations({ controller }: { controller: OperationsControll
+     return () => { if (opener instanceof HTMLElement && opener.isConnected) opener.focus() }
+   }, [state.auditDetail])
+   useEffect(() => { if (state.access !== 'ready') setQuery({ actor: '', operation: '', outcome: '', from: '', until: '' }) }, [state.access])
+-  return <OperationsGate state={state}><OperationsFrame title="Audit log"><p>Minimal action metadata only. Report text, private media, notice contents and free-text reasons are not opened here.</p>
++  return <OperationsSurface view="audit"><OperationsGate state={state}><OperationsFrame title="Audit log"><p>Minimal action metadata only. Report text, private media, notice contents and free-text reasons are not opened here.</p>
+     <form onSubmit={e => { e.preventDefault(); void controller.loadAudit(filters()) }}><fieldset disabled={state.loading}><legend>Search action metadata</legend>
+       <div className="ops-fields"><Field label="Actor UUID">{id => <input id={id} value={query.actor} onChange={e => setQuery({ ...query, actor: e.target.value })} />}</Field>
+         <Field label="Operation ID">{id => <input id={id} maxLength={100} value={query.operation} onChange={e => setQuery({ ...query, operation: e.target.value })} />}</Field>
+@@ -31,5 +32,5 @@ export function AuditOperations({ controller }: { controller: OperationsControll
+     {state.auditDetail && <section><h2 ref={detail} tabIndex={-1}>Audit entry details</h2><dl className="ops-audit-detail">
+       {Object.entries(state.auditDetail).map(([key, value]) => <div key={key}><dt>{key.replaceAll('_', ' ')}</dt><dd>{value ?? 'None'}</dd></div>)}
+     </dl><p>This entry records an outcome. It is not proof of an externally delivered notification or a completed closure job.</p><button type="button" onClick={() => controller.selectAudit(null)}>Close audit detail</button></section>}
+-  </OperationsFrame></OperationsGate>
++  </OperationsFrame></OperationsGate></OperationsSurface>
+ }
+diff --git a/frontend/src/features/admin/closure/EventClosure.tsx b/frontend/src/features/admin/closure/EventClosure.tsx
+index 9ba70f821..5e43278de 100644
+--- a/frontend/src/features/admin/closure/EventClosure.tsx
++++ b/frontend/src/features/admin/closure/EventClosure.tsx
+@@ -1,3 +1,4 @@
++import { OperationsSurface } from '../parade-ink-operations/OperationsSurface'
+ import { useEffect, useId, useRef, useState, useSyncExternalStore } from 'react'
+ import type { EventClosure as EventClosureController } from './controller'
+ import '../mural/admin.css'
+@@ -8,7 +9,7 @@ export function EventClosure({ controller }: { controller: EventClosureControlle
+   const resumeReasonLabel = useId()
+   useEffect(() => { if (state.draft) focus.current?.focus() }, [state.draft])
+   useEffect(() => { if (state.phase === 'unavailable' || state.phase === 'disposed') { setReason(''); setJobId(''); setInvalid(false) } }, [state.phase])
+-  return <section className="mcr-ops" aria-label="Event closure"><header><p>Event operations</p><h1>CLOSE THE EVENT</h1></header>
++  return <OperationsSurface view="closure"><section className="mcr-ops" aria-label="Event closure"><header><p>Event operations</p><h1>CLOSE THE EVENT</h1></header>
+     <p>Make the event read-only, freeze the final wall, expire private access and prepare the permitted archive. Completed cleanup steps remain complete.</p>
+     <p role="status" aria-label="Event closure status" aria-live="polite">{state.message}</p>
+     {!state.command && !state.jobId && !state.draft && state.phase !== 'unavailable' && state.phase !== 'disposed' && <form className="mcr-ops__form" aria-label="Prepare event closure" onSubmit={e => { e.preventDefault(); setInvalid(!controller.prepare(reason)) }}>
+@@ -40,5 +41,5 @@ export function EventClosure({ controller }: { controller: EventClosureControlle
+       <button type="submit" disabled={busy}>Load existing closure job</button>
+     </form>}
+     <button disabled={busy || state.phase === 'disposed'} onClick={controller.revalidate}>Recheck operator access</button>
+-  </section>
++  </section></OperationsSurface>
+ }
+diff --git a/frontend/src/features/admin/content/index.ts b/frontend/src/features/admin/content/index.ts
+index e0bf02613..fb2d18614 100644
+--- a/frontend/src/features/admin/content/index.ts
++++ b/frontend/src/features/admin/content/index.ts
+@@ -1,3 +1,3 @@
+ import { createModeration, type ModerationOptions } from '../reports/model/controller';
+-export { ModerationReview as ContentReviewScreen } from '../reports/ui/ModerationReview';
++export { ContentReviewScreen } from './ui/parade-ink/ContentReviewScreen';
+ export const createContentReview = (options: Omit<ModerationOptions, 'lane'>) => createModeration({ ...options, lane: 'content' });
+diff --git a/frontend/src/features/admin/event/ui/EventOperations.tsx b/frontend/src/features/admin/event/ui/EventOperations.tsx
+index 0f690a206..4d3c59816 100644
+--- a/frontend/src/features/admin/event/ui/EventOperations.tsx
++++ b/frontend/src/features/admin/event/ui/EventOperations.tsx
+@@ -1,7 +1,8 @@
++import { OperationsSurface, OperationsFrame } from '../../parade-ink-operations/OperationsSurface'
+ import { useEffect, useRef, useState } from 'react'
+ import { dataFromNotice, type OperationsController } from '../model/controller'
+ import type { CreateNotice, Notice, Settings } from '../model/contract'
+-import { Field, OperationFeedback, OperationsFrame, OperationsGate, useOperations, useReviewFocus } from './common'
++import { Field, OperationFeedback, OperationsGate, useOperations, useReviewFocus } from './common'
+ 
+ const limits = [
+   ['beacon_ttl_seconds', 'Beacon lifetime (seconds)', 1, 900], ['pickup_grace_seconds', 'Pickup grace (seconds)', 0, 86400],
+@@ -11,7 +12,7 @@ export function EventOperations({ controller, summaryOnly = false }: { controlle
+   const state = useOperations(controller), confirm = useRef<HTMLDivElement>(null)
+   useEffect(() => { void controller.loadEvent() }, [controller])
+   useReviewFocus(state, confirm)
+-  return <OperationsGate state={state}><OperationsFrame title={summaryOnly ? 'Control room' : 'Event settings'}>
++  return <OperationsSurface view={summaryOnly ? 'control' : 'event'}><OperationsGate state={state}><OperationsFrame title={summaryOnly ? 'Control room' : 'Event settings'}>
+     <button type="button" disabled={state.loading || state.command?.stage === 'review' || state.command?.stage === 'sending'} onClick={() => { void controller.loadEvent() }}>Refresh event information</button>
+     {state.overview && <section><h2>Operational summary</h2><dl><dt>Health</dt><dd>{state.overview.health}</dd><dt>Open reports</dt><dd>{state.overview.open_reports}</dd>
+       <dt>Pending jobs</dt><dd>{state.overview.pending_jobs}</dd><dt>Overview revision</dt><dd>{state.overview.revision}</dd></dl></section>}
+@@ -23,7 +24,7 @@ export function EventOperations({ controller, summaryOnly = false }: { controlle
+       {state.notices.map(notice => <NoticeRecord key={`${notice.notice_id}:${notice.revision}`} notice={notice} controller={controller} locked={state.command !== null || state.loading} />)}
+       {state.noticeCursor && <button type="button" disabled={state.loading || state.command !== null} onClick={() => { void controller.loadNotices(true) }}>Next notices page</button>}
+     </section>}
+-  </OperationsFrame></OperationsGate>
++  </OperationsFrame></OperationsGate></OperationsSurface>
+ }
+ function SettingsForm({ settings, controller, locked }: { settings: Settings; controller: OperationsController; locked: boolean }) {
+   const [draft, setDraft] = useState(settings), [reason, setReason] = useState('')
+diff --git a/frontend/src/features/admin/members/index.ts b/frontend/src/features/admin/members/index.ts
+index 3abf4c8d0..40850aa42 100644
+--- a/frontend/src/features/admin/members/index.ts
++++ b/frontend/src/features/admin/members/index.ts
+@@ -1,3 +1,3 @@
+ import { createModeration, type ModerationOptions } from '../reports/model/controller';
+-export { ModerationReview as MemberReviewScreen } from '../reports/ui/ModerationReview';
++export { MemberReviewScreen } from './ui/parade-ink/MemberReviewScreen';
+ export const createMemberReview = (options: Omit<ModerationOptions, 'lane'>) => createModeration({ ...options, lane: 'members' });
+diff --git a/frontend/src/features/admin/mural/WallControl.tsx b/frontend/src/features/admin/mural/WallControl.tsx
+index a9861337d..870877f42 100644
+--- a/frontend/src/features/admin/mural/WallControl.tsx
++++ b/frontend/src/features/admin/mural/WallControl.tsx
+@@ -1,3 +1,4 @@
++import { OperationsSurface } from '../parade-ink-operations/OperationsSurface'
+ import { useEffect, useRef, useState, useSyncExternalStore } from 'react'
+ import type { FormEvent } from 'react'
+ import type { MuralControl } from './controller'
+@@ -36,7 +37,7 @@ export function WallControl({ controller }: { controller: MuralControl }) {
+   const state = useSyncExternalStore(controller.subscribe, controller.read, controller.read), draft = state.draft, focus = useRef<HTMLDivElement>(null)
+   useEffect(() => { if (draft) focus.current?.focus() }, [draft])
+   const busy = state.commandPhase === 'sending' || state.commandPhase === 'checking'
+-  return <section className="mcr-ops" aria-label="Wall control"><header><p>Event operations</p><h1>WALL CONTROL</h1></header>
++  return <OperationsSurface view="wall"><section className="mcr-ops" aria-label="Wall control"><header><p>Event operations</p><h1>WALL CONTROL</h1></header>
+     <p role="status" aria-label="Wall control status" aria-live="polite">{state.message}</p>
+     {state.mural && <><p>Wall {state.mural.state} · revision {state.mural.revision}</p><p>Current snapshot <code>{state.mural.snapshot_id}</code></p>
+       <h2>Locked regions</h2>{state.mural.locks.length ? <ul>{state.mural.locks.map((r, i) => <li key={i}>X [{r.x_min}, {r.x_max_exclusive}) · Y [{r.y_min}, {r.y_max_exclusive})</li>)}</ul> : <p>No locked regions.</p>}
+@@ -53,5 +54,5 @@ export function WallControl({ controller }: { controller: MuralControl }) {
+     </div>}
+     {state.command && <><p>Original wall action: {state.commandPhase}. Another wall action is blocked until its outcome is verified.</p><button disabled={busy} onClick={() => void controller.check()}>Check original wall command</button></>}
+     <button disabled={busy || state.phase === 'loading' || state.phase === 'disposed'} onClick={() => void controller.load()}>Refresh wall controls</button>
+-  </section>
++  </section></OperationsSurface>
+ }
+diff --git a/frontend/src/features/admin/places/PlacesOperations.tsx b/frontend/src/features/admin/places/PlacesOperations.tsx
+index 7baa9560b..d060758e9 100644
+--- a/frontend/src/features/admin/places/PlacesOperations.tsx
++++ b/frontend/src/features/admin/places/PlacesOperations.tsx
+@@ -1,6 +1,7 @@
++import { OperationsSurface, OperationsFrame } from '../parade-ink-operations/OperationsSurface'
+ import { useEffect, useRef, useState } from 'react'
+ import type { OperationsController } from '../event/model/controller'
+-import { Field, OperationFeedback, OperationsFrame, OperationsGate, useOperations, useReviewFocus } from '../event/ui/common'
++import { Field, OperationFeedback, OperationsGate, useOperations, useReviewFocus } from '../event/ui/common'
+ import type { PlaceAdmin } from './contract'
+ 
+ export function PlacesOperations({ controller }: { controller: OperationsController }) {
+@@ -9,7 +10,7 @@ export function PlacesOperations({ controller }: { controller: OperationsControl
+   useEffect(() => { void controller.loadPlaces() }, [controller])
+   useEffect(() => { if (state.access !== 'ready') setSelected(null) }, [state.access])
+   useReviewFocus(state, review)
+-  return <OperationsGate state={state}><OperationsFrame title="Venue and places">
++  return <OperationsSurface view="places"><OperationsGate state={state}><OperationsFrame title="Venue and places">
+     <p>Concept art never verifies a physical venue. Changes require the current place revision and an independently qualified map/write release.</p>
+     <p>Write map revision: {controller.mapRevision() ?? 'Unavailable'}. The place revision below is separate from a catalog/map revision.</p>
+     <button type="button" disabled={state.loading || state.command?.stage === 'review' || state.command?.stage === 'sending'} onClick={() => { void controller.loadPlaces() }}>Refresh places</button>
+@@ -20,7 +21,7 @@ export function PlacesOperations({ controller }: { controller: OperationsControl
+         <td className="ops-state">{row.place.closure_state}<br />{row.place.verification_state}</td><td><button type="button" disabled={state.command !== null || state.loading} onClick={() => setSelected(row.place.place_id)}>Review {row.place.label}</button></td></tr>)}</tbody></table></div>
+     {state.placeCursor && <button type="button" disabled={state.loading || state.command !== null} onClick={() => { setSelected(null); void controller.loadPlaces(true) }}>Next places page</button>}
+     {row && <PlaceForm key={row.place.place_id} row={row} controller={controller} locked={state.command !== null || state.loading} onClose={() => setSelected(null)} />}
+-  </OperationsFrame></OperationsGate>
++  </OperationsFrame></OperationsGate></OperationsSurface>
+ }
+ function PlaceForm({ row, controller, locked, onClose }: { row: PlaceAdmin; controller: OperationsController; locked: boolean; onClose: () => void }) {
+   const [place, setPlace] = useState(row.place), [reason, setReason] = useState('')

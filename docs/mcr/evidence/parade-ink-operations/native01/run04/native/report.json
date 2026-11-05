@@ -1,0 +1,2391 @@
+{
+  "status": "FAIL",
+  "qualification": "TEST_ONLY_CONTROLLED_HTTP_ACTUAL_MAIN",
+  "source": "e1e5371d8c962c2a23f6e3984b747030ac049d55",
+  "canonicalSixPages": [
+    {
+      "path": "/admin",
+      "width": 360,
+      "result": "PASS"
+    },
+    {
+      "path": "/admin/event",
+      "width": 360,
+      "result": "PASS"
+    },
+    {
+      "path": "/admin/places",
+      "width": 360,
+      "result": "PASS"
+    },
+    {
+      "path": "/admin/mural",
+      "width": 360,
+      "result": "PASS"
+    },
+    {
+      "path": "/admin/audit",
+      "width": 360,
+      "result": "PASS"
+    },
+    {
+      "path": "/admin/archive",
+      "width": 360,
+      "result": "PASS"
+    },
+    {
+      "path": "/admin",
+      "width": 390,
+      "result": "PASS"
+    },
+    {
+      "path": "/admin/event",
+      "width": 390,
+      "result": "PASS"
+    },
+    {
+      "path": "/admin/places",
+      "width": 390,
+      "result": "PASS"
+    },
+    {
+      "path": "/admin/mural",
+      "width": 390,
+      "result": "PASS"
+    },
+    {
+      "path": "/admin/audit",
+      "width": 390,
+      "result": "PASS"
+    },
+    {
+      "path": "/admin/archive",
+      "width": 390,
+      "result": "PASS"
+    },
+    {
+      "path": "/admin",
+      "width": 430,
+      "result": "PASS"
+    },
+    {
+      "path": "/admin/event",
+      "width": 430,
+      "result": "PASS"
+    },
+    {
+      "path": "/admin/places",
+      "width": 430,
+      "result": "PASS"
+    },
+    {
+      "path": "/admin/mural",
+      "width": 430,
+      "result": "PASS"
+    },
+    {
+      "path": "/admin/audit",
+      "width": 430,
+      "result": "PASS"
+    },
+    {
+      "path": "/admin/archive",
+      "width": 430,
+      "result": "PASS"
+    }
+  ],
+  "sourcePinnedMemberContent": [
+    {
+      "path": "/admin/users/00000000-0000-4000-8000-000000000601",
+      "width": 360,
+      "result": "PASS",
+      "canonical": false
+    },
+    {
+      "path": "/admin/content",
+      "width": 360,
+      "result": "PASS",
+      "canonical": false
+    },
+    {
+      "path": "/admin/users/00000000-0000-4000-8000-000000000601",
+      "width": 390,
+      "result": "PASS",
+      "canonical": false
+    },
+    {
+      "path": "/admin/content",
+      "width": 390,
+      "result": "PASS",
+      "canonical": false
+    }
+  ],
+  "errors": [
+    "locator.click: Timeout 30000ms exceeded.\nCall log:\n\u001b[2m  - waiting for getByRole('button', { name: 'Review action', exact: true })\u001b[22m\n\u001b[2m    - locator resolved to <button disabled type=\"submit\">Review action</button>\u001b[22m\n\u001b[2m  - attempting click action\u001b[22m\n\u001b[2m    2 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is not enabled\u001b[22m\n\u001b[2m    - retrying click action\u001b[22m\n\u001b[2m    - waiting 20ms\u001b[22m\n\u001b[2m    2 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is not enabled\u001b[22m\n\u001b[2m    - retrying click action\u001b[22m\n\u001b[2m      - waiting 100ms\u001b[22m\n\u001b[2m    58 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m       - element is not enabled\u001b[22m\n\u001b[2m     - retrying click action\u001b[22m\n\u001b[2m       - waiting 500ms\u001b[22m\n\n    at /Users/lhs/Desktop/mcr-worktrees/fe-ref-customize/frontend/e2e/visual/parade-ink-operations/native.mjs:207:78"
+  ],
+  "captures": [
+    "360-control.png",
+    "360-event.png",
+    "360-places.png",
+    "360-wall.png",
+    "360-audit.png",
+    "360-closure.png",
+    "390-control.png",
+    "390-event.png",
+    "390-event-unavailable-read.png",
+    "390-places.png",
+    "390-wall.png",
+    "390-audit.png",
+    "390-audit-details.png",
+    "390-closure.png",
+    "430-control.png",
+    "430-event.png",
+    "430-places.png",
+    "430-wall.png",
+    "430-audit.png",
+    "430-closure.png",
+    "390x420-wall-confirm.png",
+    "390x420-wall-unknown.png",
+    "390x420-wall-frozen.png",
+    "390x420-closure-partial.png",
+    "360-members-confirm.png",
+    "360-content-confirm.png",
+    "390-members-confirm.png",
+    "390-content-confirm.png",
+    "390-content-conflict.png"
+  ],
+  "measurements": [
+    {
+      "view": "control",
+      "viewport": {
+        "width": 360,
+        "height": 844
+      },
+      "width": 328,
+      "font": "\"Parade Ink Text\", Arial, sans-serif",
+      "size": "18px",
+      "leading": "22px",
+      "background": "rgb(249, 249, 248)",
+      "heading": {
+        "font": "\"Parade Ink Display\", \"Arial Narrow\", Arial, sans-serif",
+        "size": "26px",
+        "leading": "32px"
+      },
+      "controls": [
+        {
+          "label": "Refresh event information",
+          "width": 194.796875,
+          "height": 44,
+          "font": "\"Parade Ink Display\", \"Arial Narrow\", Arial, sans-serif",
+          "background": "rgb(249, 248, 246)"
+        },
+        {
+          "label": "",
+          "width": 44,
+          "height": 44,
+          "font": "\"Parade Ink Text\", Arial, sans-serif",
+          "background": "rgb(249, 248, 246)"
+        },
+        {
+          "label": "",
+          "width": 44,
+          "height": 44,
+          "font": "\"Parade Ink Text\", Arial, sans-serif",
+          "background": "rgb(249, 248, 246)"
+        },
+        {
+          "label": "",
+          "width": 44,
+          "height": 44,
+          "font": "\"Parade Ink Text\", Arial, sans-serif",
+          "background": "rgb(249, 248, 246)"
+        },
+        {
+          "label": "",
+          "width": 44,
+          "height": 44,
+          "font": "\"Parade Ink Text\", Arial, sans-serif",
+          "background": "rgb(249, 248, 246)"
+        },
+        {
+          "label": "",
+          "width": 44,
+          "height": 44,
+          "font": "\"Parade Ink Text\", Arial, sans-serif",
+          "background": "rgb(249, 248, 246)"
+        },
+        {
+          "label": "",
+          "width": 286,
+          "height": 44,
+          "font": "\"Parade Ink Text\", Arial, sans-serif",
+          "background": "rgb(255, 255, 255)"
+        },
+        {
+          "label": "",
+          "width": 286,
+          "height": 44,
+          "font": "\"Parade Ink Text\", Arial, sans-serif",
+          "background": "rgb(255, 255, 255)"
+        },
+        {
+          "label": "",
+          "width": 286,
+          "height": 44,
+          "font": "\"Parade Ink Text\", Arial, sans-serif",
+          "background": "rgb(255, 255, 255)"
+        },
+        {
+          "label": "",
+          "width": 286,
+          "height": 44,
+          "font": "\"Parade Ink Text\", Arial, sans-serif",
+          "background": "rgb(255, 255, 255)"
+        },
+        {
+          "label": "",
+          "width": 286,
+          "height": 88,
+          "font": "\"Parade Ink Text\", Arial, sans-serif",
+          "background": "rgb(249, 248, 246)"
+        },
+        {
+          "label": "Review settings change",
+          "width": 176.21875,
+          "height": 44,
+          "font": "\"Parade Ink Display\", \"Arial Narrow\", Arial, sans-serif",
+          "background": "rgb(146, 37, 50)"
+        }
+      ],
+      "viewportOverflow": false,
+      "nestedMainCount": 0
+    },
+    {
+      "view": "event",
+      "viewport": {
+        "width": 360,
+        "height": 844
+      },
+      "width": 328,
+      "font": "\"Parade Ink Text\", Arial, sans-serif",
+      "size": "18px",
+      "leading": "22px",
+      "background": "rgb(249, 249, 248)",
+      "heading": {
+        "font": "\"Parade Ink Display\", \"Arial Narrow\", Arial, sans-serif",
+        "size": "26px",
+        "leading": "32px"
+      },
+      "controls": [
+        {
+          "label": "Refresh event information",
+          "width": 194.796875,
+          "height": 44,
+          "font": "\"Parade Ink Display\", \"Arial Narrow\", Arial, sans-serif",
+          "background": "rgb(249, 248, 246)"
+        },
+        {
+          "label": "",
+          "width": 44,
+          "height": 44,
+          "font": "\"Parade Ink Text\", Arial, sans-serif",
+          "background": "rgb(249, 248, 246)"
+        },
+        {
+          "label": "",
+          "width": 44,
+          "height": 44,
+          "font": "\"Parade Ink Text\", Arial, sans-serif",
+          "background": "rgb(249, 248, 246)"
+        },
+        {
+          "label": "",
+          "width": 44,
+          "height": 44,
+          "font": "\"Parade Ink Text\", Arial, sans-serif",
+          "background": "rgb(249, 248, 246)"
+        },
+        {
+          "label": "",
+          "width": 44,
+          "height": 44,
+          "font": "\"Parade Ink Text\", Arial, sans-serif",
+          "background": "rgb(249, 248, 246)"
+        },
+        {
+          "label": "",
+          "width": 44,
+          "height": 44,
+          "font": "\"Parade Ink Text\", Arial, sans-serif",
+          "background": "rgb(249, 248, 246)"
+        },
+        {
+          "label": "",
+          "width": 286,
+          "height": 44,
+          "font": "\"Parade Ink Text\", Arial, sans-serif",
+          "background": "rgb(255, 255, 255)"
+        },
+        {
+          "label": "",
+          "width": 286,
+          "height": 44,
+          "font": "\"Parade Ink Text\", Arial, sans-serif",
+          "background": "rgb(255, 255, 255)"
+        },
+        {
+          "label": "",
+          "width": 286,
+          "height": 44,
+          "font": "\"Parade Ink Text\", Arial, sans-serif",
+          "background": "rgb(255, 255, 255)"
+        },
+        {
+          "label": "",
+          "width": 286,
+          "height": 44,
+          "font": "\"Parade Ink Text\", Arial, sans-serif",
+          "background": "rgb(255, 255, 255)"
+        },
+        {
+          "label": "",
+          "width": 286,
+          "height": 88,
+          "font": "\"Parade Ink Text\", Arial, sans-serif",
+          "background": "rgb(249, 248, 246)"
+        },
+        {
+          "label": "Review settings change",
+          "width": 176.21875,
+          "height": 44,
+          "font": "\"Parade Ink Display\", \"Arial Narrow\", Arial, sans-serif",
+          "background": "rgb(146, 37, 50)"
+        },
+        {
+          "label": "",
+          "width": 286,
+          "height": 44,
+          "font": "\"Parade Ink Text\", Arial, sans-serif",
+          "background": "rgb(255, 255, 255)"
+        },
+        {
+          "label": "",
+          "width": 286,
+          "height": 88,
+          "font": "\"Parade Ink Text\", Arial, sans-serif",
+          "background": "rgb(249, 248, 246)"
+        },
+        {
+          "label": "",
+          "width": 286,
+          "height": 44,
+          "font": "\"Parade Ink Text\", Arial, sans-serif",
+          "background": "rgb(255, 255, 255)"
+        },
+        {
+          "label": "",
+          "width": 286,
+          "height": 44,
+          "font": "\"Parade Ink Text\", Arial, sans-serif",
+          "background": "rgb(255, 255, 255)"
+        },
+        {
+          "label": "DRAFTPUBLISHEDWITHDRAWN",
+          "width": 286,
+          "height": 44,
+          "font": "\"Parade Ink Text\", Arial, sans-serif",
+          "background": "rgb(249, 248, 246)"
+        },
+        {
+          "label": "Review notice change",
+          "width": 163.453125,
+          "height": 44,
+          "font": "\"Parade Ink Display\", \"Arial Narrow\", Arial, sans-serif",
+          "background": "rgb(146, 37, 50)"
+        },
+        {
+          "label": "Edit notice",
+          "width": 88,
+          "height": 44,
+          "font": "\"Parade Ink Display\", \"Arial Narrow\", Arial, sans-serif",
+          "background": "rgb(249, 248, 246)"
+        },
+        {
+          "label": "Review notice withdrawal",
+          "width": 189.03125,
+          "height": 44,
+          "font": "\"Parade Ink Display\", \"Arial Narrow\", Arial, sans-serif",
+          "background": "rgb(249, 248, 246)"
+        }
+      ],
+      "viewportOverflow": false,
+      "nestedMainCount": 0
+    },
+    {
+      "view": "places",
+      "viewport": {
+        "width": 360,
+        "height": 844
+      },
+      "width": 328,
+      "font": "\"Parade Ink Text\", Arial, sans-serif",
+      "size": "18px",
+      "leading": "22px",
+      "background": "rgb(249, 249, 248)",
+      "heading": {
+        "font": "\"Parade Ink Display\", \"Arial Narrow\", Arial, sans-serif",
+        "size": "26px",
+        "leading": "32px"
+      },
+      "controls": [
+        {
+          "label": "Refresh places",
+          "width": 115.9375,
+          "height": 44,
+          "font": "\"Parade Ink Display\", \"Arial Narrow\", Arial, sans-serif",
+          "background": "rgb(249, 248, 246)"
+        },
+        {
+          "label": "Review SYNTHETIC landmark",
+          "width": 136.1875,
+          "height": 80,
+          "font": "\"Parade Ink Display\", \"Arial Narrow\", Arial, sans-serif",
+          "background": "rgb(249, 248, 246)"
+        }
+      ],
+      "viewportOverflow": false,
+      "nestedMainCount": 0
+    },
+    {
+      "view": "wall",
+      "viewport": {
+        "width": 360,
+        "height": 844
+      },
+      "width": 328,
+      "font": "\"Parade Ink Text\", Arial, sans-serif",
+      "size": "18px",
+      "leading": "22px",
+      "background": "rgb(249, 249, 248)",
+      "heading": {
+        "font": "\"Parade Ink Display\", \"Arial Narrow\", Arial, sans-serif",
+        "size": "26px",
+        "leading": "32px"
+      },
+      "controls": [
+        {
+          "label": "Wall action",
+          "width": 312,
+          "height": 44,
+          "font": "\"Parade Ink Text\", Arial, sans-serif",
+          "background": "rgb(249, 248, 246)"
+        },
+        {
+          "label": "",
+          "width": 312,
+          "height": 88,
+          "font": "\"Parade Ink Text\", Arial, sans-serif",
+          "background": "rgb(249, 248, 246)"
+        },
+        {
+          "label": "Review wall action",
+          "width": 312,
+          "height": 44,
+          "font": "\"Parade Ink Display\", \"Arial Narrow\", Arial, sans-serif",
+          "background": "rgb(146, 37, 50)"
+        },
+        {
+          "label": "Refresh wall controls",
+          "width": 160.453125,
+          "height": 44,
+          "font": "\"Parade Ink Display\", \"Arial Narrow\", Arial, sans-serif",
+          "background": "rgb(249, 248, 246)"
+        }
+      ],
+      "viewportOverflow": false,
+      "nestedMainCount": 0
+    },
+    {
+      "view": "audit",
+      "viewport": {
+        "width": 360,
+        "height": 844
+      },
+      "width": 328,
+      "font": "\"Parade Ink Text\", Arial, sans-serif",
+      "size": "18px",
+      "leading": "22px",
+      "background": "rgb(249, 249, 248)",
+      "heading": {
+        "font": "\"Parade Ink Display\", \"Arial Narrow\", Arial, sans-serif",
+        "size": "26px",
+        "leading": "32px"
+      },
+      "controls": [
+        {
+          "label": "",
+          "width": 286,
+          "height": 44,
+          "font": "\"Parade Ink Text\", Arial, sans-serif",
+          "background": "rgb(255, 255, 255)"
+        },
+        {
+          "label": "",
+          "width": 286,
+          "height": 44,
+          "font": "\"Parade Ink Text\", Arial, sans-serif",
+          "background": "rgb(255, 255, 255)"
+        },
+        {
+          "label": "AllPENDINGSUCCEEDEDFAILED",
+          "width": 286,
+          "height": 44,
+          "font": "\"Parade Ink Text\", Arial, sans-serif",
+          "background": "rgb(249, 248, 246)"
+        },
+        {
+          "label": "",
+          "width": 286,
+          "height": 44,
+          "font": "\"Parade Ink Text\", Arial, sans-serif",
+          "background": "rgb(255, 255, 255)"
+        },
+        {
+          "label": "",
+          "width": 286,
+          "height": 44,
+          "font": "\"Parade Ink Text\", Arial, sans-serif",
+          "background": "rgb(255, 255, 255)"
+        },
+        {
+          "label": "Search audit log",
+          "width": 126.859375,
+          "height": 44,
+          "font": "\"Parade Ink Display\", \"Arial Narrow\", Arial, sans-serif",
+          "background": "rgb(146, 37, 50)"
+        },
+        {
+          "label": "View audit entry",
+          "width": 92.890625,
+          "height": 58,
+          "font": "\"Parade Ink Display\", \"Arial Narrow\", Arial, sans-serif",
+          "background": "rgb(249, 248, 246)"
+        }
+      ],
+      "viewportOverflow": false,
+      "nestedMainCount": 0
+    },
+    {
+      "view": "closure",
+      "viewport": {
+        "width": 360,
+        "height": 844
+      },
+      "width": 328,
+      "font": "\"Parade Ink Text\", Arial, sans-serif",
+      "size": "18px",
+      "leading": "22px",
+      "background": "rgb(249, 249, 248)",
+      "heading": {
+        "font": "\"Parade Ink Display\", \"Arial Narrow\", Arial, sans-serif",
+        "size": "26px",
+        "leading": "32px"
+      },
+      "controls": [
+        {
+          "label": "",
+          "width": 312,
+          "height": 88,
+          "font": "\"Parade Ink Text\", Arial, sans-serif",
+          "background": "rgb(249, 248, 246)"
+        },
+        {
+          "label": "Review event closure",
+          "width": 312,
+          "height": 44,
+          "font": "\"Parade Ink Display\", \"Arial Narrow\", Arial, sans-serif",
+          "background": "rgb(146, 37, 50)"
+        },
+        {
+          "label": "",
+          "width": 312,
+          "height": 44,
+          "font": "\"Parade Ink Text\", Arial, sans-serif",
+          "background": "rgb(249, 248, 246)"
+        },
+        {
+          "label": "Load existing closure job",
+          "width": 312,
+          "height": 44,
+          "font": "\"Parade Ink Display\", \"Arial Narrow\", Arial, sans-serif",
+          "background": "rgb(146, 37, 50)"
+        },
+        {
+          "label": "Recheck operator access",
+          "width": 186.84375,
+          "height": 44,
+          "font": "\"Parade Ink Display\", \"Arial Narrow\", Arial, sans-serif",
+          "background": "rgb(249, 248, 246)"
+        }
+      ],
+      "viewportOverflow": false,
+      "nestedMainCount": 0
+    },
+    {
+      "view": "control",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "width": 358,
+      "font": "\"Parade Ink Text\", Arial, sans-serif",
+      "size": "18px",
+      "leading": "22px",
+      "background": "rgb(249, 249, 248)",
+      "heading": {
+        "font": "\"Parade Ink Display\", \"Arial Narrow\", Arial, sans-serif",
+        "size": "26px",
+        "leading": "32px"
+      },
+      "controls": [
+        {
+          "label": "Refresh event information",
+          "width": 194.796875,
+          "height": 44,
+          "font": "\"Parade Ink Display\", \"Arial Narrow\", Arial, sans-serif",
+          "background": "rgb(249, 248, 246)"
+        },
+        {
+          "label": "",
+          "width": 44,
+          "height": 44,
+          "font": "\"Parade Ink Text\", Arial, sans-serif",
+          "background": "rgb(249, 248, 246)"
+        },
+        {
+          "label": "",
+          "width": 44,
+          "height": 44,
+          "font": "\"Parade Ink Text\", Arial, sans-serif",
+          "background": "rgb(249, 248, 246)"
+        },
+        {
+          "label": "",
+          "width": 44,
+          "height": 44,
+          "font": "\"Parade Ink Text\", Arial, sans-serif",
+          "background": "rgb(249, 248, 246)"
+        },
+        {
+          "label": "",
+          "width": 44,
+          "height": 44,
+          "font": "\"Parade Ink Text\", Arial, sans-serif",
+          "background": "rgb(249, 248, 246)"
+        },
+        {
+          "label": "",
+          "width": 44,
+          "height": 44,
+          "font": "\"Parade Ink Text\", Arial, sans-serif",
+          "background": "rgb(249, 248, 246)"
+        },
+        {
+          "label": "",
+          "width": 316,
+          "height": 44,
+          "font": "\"Parade Ink Text\", Arial, sans-serif",
+          "background": "rgb(255, 255, 255)"
+        },
+        {
+          "label": "",
+          "width": 316,
+          "height": 44,
+          "font": "\"Parade Ink Text\", Arial, sans-serif",
+          "background": "rgb(255, 255, 255)"
+        },
+        {
+          "label": "",
+          "width": 316,
+          "height": 44,
+          "font": "\"Parade Ink Text\", Arial, sans-serif",
+          "background": "rgb(255, 255, 255)"
+        },
+        {
+          "label": "",
+          "width": 316,
+          "height": 44,
+          "font": "\"Parade Ink Text\", Arial, sans-serif",
+          "background": "rgb(255, 255, 255)"
+        },
+        {
+          "label": "",
+          "width": 316,
+          "height": 88,
+          "font": "\"Parade Ink Text\", Arial, sans-serif",
+          "background": "rgb(249, 248, 246)"
+        },
+        {
+          "label": "Review settings change",
+          "width": 176.21875,
+          "height": 44,
+          "font": "\"Parade Ink Display\", \"Arial Narrow\", Arial, sans-serif",
+          "background": "rgb(146, 37, 50)"
+        }
+      ],
+      "viewportOverflow": false,
+      "nestedMainCount": 0
+    },
+    {
+      "view": "event",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "width": 358,
+      "font": "\"Parade Ink Text\", Arial, sans-serif",
+      "size": "18px",
+      "leading": "22px",
+      "background": "rgb(249, 249, 248)",
+      "heading": {
+        "font": "\"Parade Ink Display\", \"Arial Narrow\", Arial, sans-serif",
+        "size": "26px",
+        "leading": "32px"
+      },
+      "controls": [
+        {
+          "label": "Refresh event information",
+          "width": 194.796875,
+          "height": 44,
+          "font": "\"Parade Ink Display\", \"Arial Narrow\", Arial, sans-serif",
+          "background": "rgb(249, 248, 246)"
+        },
+        {
+          "label": "",
+          "width": 44,
+          "height": 44,
+          "font": "\"Parade Ink Text\", Arial, sans-serif",
+          "background": "rgb(249, 248, 246)"
+        },
+        {
+          "label": "",
+          "width": 44,
+          "height": 44,
+          "font": "\"Parade Ink Text\", Arial, sans-serif",
+          "background": "rgb(249, 248, 246)"
+        },
+        {
+          "label": "",
+          "width": 44,
+          "height": 44,
+          "font": "\"Parade Ink Text\", Arial, sans-serif",
+          "background": "rgb(249, 248, 246)"
+        },
+        {
+          "label": "",
+          "width": 44,
+          "height": 44,
+          "font": "\"Parade Ink Text\", Arial, sans-serif",
+          "background": "rgb(249, 248, 246)"
+        },
+        {
+          "label": "",
+          "width": 44,
+          "height": 44,
+          "font": "\"Parade Ink Text\", Arial, sans-serif",
+          "background": "rgb(249, 248, 246)"
+        },
+        {
+          "label": "",
+          "width": 316,
+          "height": 44,
+          "font": "\"Parade Ink Text\", Arial, sans-serif",
+          "background": "rgb(255, 255, 255)"
+        },
+        {
+          "label": "",
+          "width": 316,
+          "height": 44,
+          "font": "\"Parade Ink Text\", Arial, sans-serif",
+          "background": "rgb(255, 255, 255)"
+        },
+        {
+          "label": "",
+          "width": 316,
+          "height": 44,
+          "font": "\"Parade Ink Text\", Arial, sans-serif",
+          "background": "rgb(255, 255, 255)"
+        },
+        {
+          "label": "",
+          "width": 316,
+          "height": 44,
+          "font": "\"Parade Ink Text\", Arial, sans-serif",
+          "background": "rgb(255, 255, 255)"
+        },
+        {
+          "label": "",
+          "width": 316,
+          "height": 88,
+          "font": "\"Parade Ink Text\", Arial, sans-serif",
+          "background": "rgb(249, 248, 246)"
+        },
+        {
+          "label": "Review settings change",
+          "width": 176.21875,
+          "height": 44,
+          "font": "\"Parade Ink Display\", \"Arial Narrow\", Arial, sans-serif",
+          "background": "rgb(146, 37, 50)"
+        },
+        {
+          "label": "",
+          "width": 316,
+          "height": 44,
+          "font": "\"Parade Ink Text\", Arial, sans-serif",
+          "background": "rgb(255, 255, 255)"
+        },
+        {
+          "label": "",
+          "width": 316,
+          "height": 88,
+          "font": "\"Parade Ink Text\", Arial, sans-serif",
+          "background": "rgb(249, 248, 246)"
+        },
+        {
+          "label": "",
+          "width": 316,
+          "height": 44,
+          "font": "\"Parade Ink Text\", Arial, sans-serif",
+          "background": "rgb(255, 255, 255)"
+        },
+        {
+          "label": "",
+          "width": 316,
+          "height": 44,
+          "font": "\"Parade Ink Text\", Arial, sans-serif",
+          "background": "rgb(255, 255, 255)"
+        },
+        {
+          "label": "DRAFTPUBLISHEDWITHDRAWN",
+          "width": 316,
+          "height": 44,
+          "font": "\"Parade Ink Text\", Arial, sans-serif",
+          "background": "rgb(249, 248, 246)"
+        },
+        {
+          "label": "Review notice change",
+          "width": 163.453125,
+          "height": 44,
+          "font": "\"Parade Ink Display\", \"Arial Narrow\", Arial, sans-serif",
+          "background": "rgb(146, 37, 50)"
+        },
+        {
+          "label": "Edit notice",
+          "width": 88,
+          "height": 44,
+          "font": "\"Parade Ink Display\", \"Arial Narrow\", Arial, sans-serif",
+          "background": "rgb(249, 248, 246)"
+        },
+        {
+          "label": "Review notice withdrawal",
+          "width": 189.03125,
+          "height": 44,
+          "font": "\"Parade Ink Display\", \"Arial Narrow\", Arial, sans-serif",
+          "background": "rgb(249, 248, 246)"
+        }
+      ],
+      "viewportOverflow": false,
+      "nestedMainCount": 0
+    },
+    {
+      "view": "places",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "width": 358,
+      "font": "\"Parade Ink Text\", Arial, sans-serif",
+      "size": "18px",
+      "leading": "22px",
+      "background": "rgb(249, 249, 248)",
+      "heading": {
+        "font": "\"Parade Ink Display\", \"Arial Narrow\", Arial, sans-serif",
+        "size": "26px",
+        "leading": "32px"
+      },
+      "controls": [
+        {
+          "label": "Refresh places",
+          "width": 115.9375,
+          "height": 44,
+          "font": "\"Parade Ink Display\", \"Arial Narrow\", Arial, sans-serif",
+          "background": "rgb(249, 248, 246)"
+        },
+        {
+          "label": "Review SYNTHETIC landmark",
+          "width": 150.359375,
+          "height": 58,
+          "font": "\"Parade Ink Display\", \"Arial Narrow\", Arial, sans-serif",
+          "background": "rgb(249, 248, 246)"
+        }
+      ],
+      "viewportOverflow": false,
+      "nestedMainCount": 0
+    },
+    {
+      "view": "wall",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "width": 358,
+      "font": "\"Parade Ink Text\", Arial, sans-serif",
+      "size": "18px",
+      "leading": "22px",
+      "background": "rgb(249, 249, 248)",
+      "heading": {
+        "font": "\"Parade Ink Display\", \"Arial Narrow\", Arial, sans-serif",
+        "size": "26px",
+        "leading": "32px"
+      },
+      "controls": [
+        {
+          "label": "Wall action",
+          "width": 342,
+          "height": 44,
+          "font": "\"Parade Ink Text\", Arial, sans-serif",
+          "background": "rgb(249, 248, 246)"
+        },
+        {
+          "label": "",
+          "width": 342,
+          "height": 88,
+          "font": "\"Parade Ink Text\", Arial, sans-serif",
+          "background": "rgb(249, 248, 246)"
+        },
+        {
+          "label": "Review wall action",
+          "width": 342,
+          "height": 44,
+          "font": "\"Parade Ink Display\", \"Arial Narrow\", Arial, sans-serif",
+          "background": "rgb(146, 37, 50)"
+        },
+        {
+          "label": "Refresh wall controls",
+          "width": 160.453125,
+          "height": 44,
+          "font": "\"Parade Ink Display\", \"Arial Narrow\", Arial, sans-serif",
+          "background": "rgb(249, 248, 246)"
+        }
+      ],
+      "viewportOverflow": false,
+      "nestedMainCount": 0
+    },
+    {
+      "view": "audit",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "width": 358,
+      "font": "\"Parade Ink Text\", Arial, sans-serif",
+      "size": "18px",
+      "leading": "22px",
+      "background": "rgb(249, 249, 248)",
+      "heading": {
+        "font": "\"Parade Ink Display\", \"Arial Narrow\", Arial, sans-serif",
+        "size": "26px",
+        "leading": "32px"
+      },
+      "controls": [
+        {
+          "label": "",
+          "width": 316,
+          "height": 44,
+          "font": "\"Parade Ink Text\", Arial, sans-serif",
+          "background": "rgb(255, 255, 255)"
+        },
+        {
+          "label": "",
+          "width": 316,
+          "height": 44,
+          "font": "\"Parade Ink Text\", Arial, sans-serif",
+          "background": "rgb(255, 255, 255)"
+        },
+        {
+          "label": "AllPENDINGSUCCEEDEDFAILED",
+          "width": 316,
+          "height": 44,
+          "font": "\"Parade Ink Text\", Arial, sans-serif",
+          "background": "rgb(249, 248, 246)"
+        },
+        {
+          "label": "",
+          "width": 316,
+          "height": 44,
+          "font": "\"Parade Ink Text\", Arial, sans-serif",
+          "background": "rgb(255, 255, 255)"
+        },
+        {
+          "label": "",
+          "width": 316,
+          "height": 44,
+          "font": "\"Parade Ink Text\", Arial, sans-serif",
+          "background": "rgb(255, 255, 255)"
+        },
+        {
+          "label": "Search audit log",
+          "width": 126.859375,
+          "height": 44,
+          "font": "\"Parade Ink Display\", \"Arial Narrow\", Arial, sans-serif",
+          "background": "rgb(146, 37, 50)"
+        },
+        {
+          "label": "View audit entry",
+          "width": 100.296875,
+          "height": 58,
+          "font": "\"Parade Ink Display\", \"Arial Narrow\", Arial, sans-serif",
+          "background": "rgb(249, 248, 246)"
+        }
+      ],
+      "viewportOverflow": false,
+      "nestedMainCount": 0
+    },
+    {
+      "view": "closure",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "width": 358,
+      "font": "\"Parade Ink Text\", Arial, sans-serif",
+      "size": "18px",
+      "leading": "22px",
+      "background": "rgb(249, 249, 248)",
+      "heading": {
+        "font": "\"Parade Ink Display\", \"Arial Narrow\", Arial, sans-serif",
+        "size": "26px",
+        "leading": "32px"
+      },
+      "controls": [
+        {
+          "label": "",
+          "width": 342,
+          "height": 88,
+          "font": "\"Parade Ink Text\", Arial, sans-serif",
+          "background": "rgb(249, 248, 246)"
+        },
+        {
+          "label": "Review event closure",
+          "width": 342,
+          "height": 44,
+          "font": "\"Parade Ink Display\", \"Arial Narrow\", Arial, sans-serif",
+          "background": "rgb(146, 37, 50)"
+        },
+        {
+          "label": "",
+          "width": 342,
+          "height": 44,
+          "font": "\"Parade Ink Text\", Arial, sans-serif",
+          "background": "rgb(249, 248, 246)"
+        },
+        {
+          "label": "Load existing closure job",
+          "width": 342,
+          "height": 44,
+          "font": "\"Parade Ink Display\", \"Arial Narrow\", Arial, sans-serif",
+          "background": "rgb(146, 37, 50)"
+        },
+        {
+          "label": "Recheck operator access",
+          "width": 186.84375,
+          "height": 44,
+          "font": "\"Parade Ink Display\", \"Arial Narrow\", Arial, sans-serif",
+          "background": "rgb(249, 248, 246)"
+        }
+      ],
+      "viewportOverflow": false,
+      "nestedMainCount": 0
+    },
+    {
+      "view": "control",
+      "viewport": {
+        "width": 430,
+        "height": 844
+      },
+      "width": 398,
+      "font": "\"Parade Ink Text\", Arial, sans-serif",
+      "size": "18px",
+      "leading": "22px",
+      "background": "rgb(249, 249, 248)",
+      "heading": {
+        "font": "\"Parade Ink Display\", \"Arial Narrow\", Arial, sans-serif",
+        "size": "26px",
+        "leading": "32px"
+      },
+      "controls": [
+        {
+          "label": "Refresh event information",
+          "width": 194.796875,
+          "height": 44,
+          "font": "\"Parade Ink Display\", \"Arial Narrow\", Arial, sans-serif",
+          "background": "rgb(249, 248, 246)"
+        },
+        {
+          "label": "",
+          "width": 44,
+          "height": 44,
+          "font": "\"Parade Ink Text\", Arial, sans-serif",
+          "background": "rgb(249, 248, 246)"
+        },
+        {
+          "label": "",
+          "width": 44,
+          "height": 44,
+          "font": "\"Parade Ink Text\", Arial, sans-serif",
+          "background": "rgb(249, 248, 246)"
+        },
+        {
+          "label": "",
+          "width": 44,
+          "height": 44,
+          "font": "\"Parade Ink Text\", Arial, sans-serif",
+          "background": "rgb(249, 248, 246)"
+        },
+        {
+          "label": "",
+          "width": 44,
+          "height": 44,
+          "font": "\"Parade Ink Text\", Arial, sans-serif",
+          "background": "rgb(249, 248, 246)"
+        },
+        {
+          "label": "",
+          "width": 44,
+          "height": 44,
+          "font": "\"Parade Ink Text\", Arial, sans-serif",
+          "background": "rgb(249, 248, 246)"
+        },
+        {
+          "label": "",
+          "width": 356,
+          "height": 44,
+          "font": "\"Parade Ink Text\", Arial, sans-serif",
+          "background": "rgb(255, 255, 255)"
+        },
+        {
+          "label": "",
+          "width": 356,
+          "height": 44,
+          "font": "\"Parade Ink Text\", Arial, sans-serif",
+          "background": "rgb(255, 255, 255)"
+        },
+        {
+          "label": "",
+          "width": 356,
+          "height": 44,
+          "font": "\"Parade Ink Text\", Arial, sans-serif",
+          "background": "rgb(255, 255, 255)"
+        },
+        {
+          "label": "",
+          "width": 356,
+          "height": 44,
+          "font": "\"Parade Ink Text\", Arial, sans-serif",
+          "background": "rgb(255, 255, 255)"
+        },
+        {
+          "label": "",
+          "width": 356,
+          "height": 88,
+          "font": "\"Parade Ink Text\", Arial, sans-serif",
+          "background": "rgb(249, 248, 246)"
+        },
+        {
+          "label": "Review settings change",
+          "width": 176.21875,
+          "height": 44,
+          "font": "\"Parade Ink Display\", \"Arial Narrow\", Arial, sans-serif",
+          "background": "rgb(146, 37, 50)"
+        }
+      ],
+      "viewportOverflow": false,
+      "nestedMainCount": 0
+    },
+    {
+      "view": "event",
+      "viewport": {
+        "width": 430,
+        "height": 844
+      },
+      "width": 398,
+      "font": "\"Parade Ink Text\", Arial, sans-serif",
+      "size": "18px",
+      "leading": "22px",
+      "background": "rgb(249, 249, 248)",
+      "heading": {
+        "font": "\"Parade Ink Display\", \"Arial Narrow\", Arial, sans-serif",
+        "size": "26px",
+        "leading": "32px"
+      },
+      "controls": [
+        {
+          "label": "Refresh event information",
+          "width": 194.796875,
+          "height": 44,
+          "font": "\"Parade Ink Display\", \"Arial Narrow\", Arial, sans-serif",
+          "background": "rgb(249, 248, 246)"
+        },
+        {
+          "label": "",
+          "width": 44,
+          "height": 44,
+          "font": "\"Parade Ink Text\", Arial, sans-serif",
+          "background": "rgb(249, 248, 246)"
+        },
+        {
+          "label": "",
+          "width": 44,
+          "height": 44,
+          "font": "\"Parade Ink Text\", Arial, sans-serif",
+          "background": "rgb(249, 248, 246)"
+        },
+        {
+          "label": "",
+          "width": 44,
+          "height": 44,
+          "font": "\"Parade Ink Text\", Arial, sans-serif",
+          "background": "rgb(249, 248, 246)"
+        },
+        {
+          "label": "",
+          "width": 44,
+          "height": 44,
+          "font": "\"Parade Ink Text\", Arial, sans-serif",
+          "background": "rgb(249, 248, 246)"
+        },
+        {
+          "label": "",
+          "width": 44,
+          "height": 44,
+          "font": "\"Parade Ink Text\", Arial, sans-serif",
+          "background": "rgb(249, 248, 246)"
+        },
+        {
+          "label": "",
+          "width": 356,
+          "height": 44,
+          "font": "\"Parade Ink Text\", Arial, sans-serif",
+          "background": "rgb(255, 255, 255)"
+        },
+        {
+          "label": "",
+          "width": 356,
+          "height": 44,
+          "font": "\"Parade Ink Text\", Arial, sans-serif",
+          "background": "rgb(255, 255, 255)"
+        },
+        {
+          "label": "",
+          "width": 356,
+          "height": 44,
+          "font": "\"Parade Ink Text\", Arial, sans-serif",
+          "background": "rgb(255, 255, 255)"
+        },
+        {
+          "label": "",
+          "width": 356,
+          "height": 44,
+          "font": "\"Parade Ink Text\", Arial, sans-serif",
+          "background": "rgb(255, 255, 255)"
+        },
+        {
+          "label": "",
+          "width": 356,
+          "height": 88,
+          "font": "\"Parade Ink Text\", Arial, sans-serif",
+          "background": "rgb(249, 248, 246)"
+        },
+        {
+          "label": "Review settings change",
+          "width": 176.21875,
+          "height": 44,
+          "font": "\"Parade Ink Display\", \"Arial Narrow\", Arial, sans-serif",
+          "background": "rgb(146, 37, 50)"
+        },
+        {
+          "label": "",
+          "width": 356,
+          "height": 44,
+          "font": "\"Parade Ink Text\", Arial, sans-serif",
+          "background": "rgb(255, 255, 255)"
+        },
+        {
+          "label": "",
+          "width": 356,
+          "height": 88,
+          "font": "\"Parade Ink Text\", Arial, sans-serif",
+          "background": "rgb(249, 248, 246)"
+        },
+        {
+          "label": "",
+          "width": 356,
+          "height": 44,
+          "font": "\"Parade Ink Text\", Arial, sans-serif",
+          "background": "rgb(255, 255, 255)"
+        },
+        {
+          "label": "",
+          "width": 356,
+          "height": 44,
+          "font": "\"Parade Ink Text\", Arial, sans-serif",
+          "background": "rgb(255, 255, 255)"
+        },
+        {
+          "label": "DRAFTPUBLISHEDWITHDRAWN",
+          "width": 356,
+          "height": 44,
+          "font": "\"Parade Ink Text\", Arial, sans-serif",
+          "background": "rgb(249, 248, 246)"
+        },
+        {
+          "label": "Review notice change",
+          "width": 163.453125,
+          "height": 44,
+          "font": "\"Parade Ink Display\", \"Arial Narrow\", Arial, sans-serif",
+          "background": "rgb(146, 37, 50)"
+        },
+        {
+          "label": "Edit notice",
+          "width": 88,
+          "height": 44,
+          "font": "\"Parade Ink Display\", \"Arial Narrow\", Arial, sans-serif",
+          "background": "rgb(249, 248, 246)"
+        },
+        {
+          "label": "Review notice withdrawal",
+          "width": 189.03125,
+          "height": 44,
+          "font": "\"Parade Ink Display\", \"Arial Narrow\", Arial, sans-serif",
+          "background": "rgb(249, 248, 246)"
+        }
+      ],
+      "viewportOverflow": false,
+      "nestedMainCount": 0
+    },
+    {
+      "view": "places",
+      "viewport": {
+        "width": 430,
+        "height": 844
+      },
+      "width": 398,
+      "font": "\"Parade Ink Text\", Arial, sans-serif",
+      "size": "18px",
+      "leading": "22px",
+      "background": "rgb(249, 249, 248)",
+      "heading": {
+        "font": "\"Parade Ink Display\", \"Arial Narrow\", Arial, sans-serif",
+        "size": "26px",
+        "leading": "32px"
+      },
+      "controls": [
+        {
+          "label": "Refresh places",
+          "width": 115.9375,
+          "height": 44,
+          "font": "\"Parade Ink Display\", \"Arial Narrow\", Arial, sans-serif",
+          "background": "rgb(249, 248, 246)"
+        },
+        {
+          "label": "Review SYNTHETIC landmark",
+          "width": 169.265625,
+          "height": 58,
+          "font": "\"Parade Ink Display\", \"Arial Narrow\", Arial, sans-serif",
+          "background": "rgb(249, 248, 246)"
+        }
+      ],
+      "viewportOverflow": false,
+      "nestedMainCount": 0
+    },
+    {
+      "view": "wall",
+      "viewport": {
+        "width": 430,
+        "height": 844
+      },
+      "width": 398,
+      "font": "\"Parade Ink Text\", Arial, sans-serif",
+      "size": "18px",
+      "leading": "22px",
+      "background": "rgb(249, 249, 248)",
+      "heading": {
+        "font": "\"Parade Ink Display\", \"Arial Narrow\", Arial, sans-serif",
+        "size": "26px",
+        "leading": "32px"
+      },
+      "controls": [
+        {
+          "label": "Wall action",
+          "width": 382,
+          "height": 44,
+          "font": "\"Parade Ink Text\", Arial, sans-serif",
+          "background": "rgb(249, 248, 246)"
+        },
+        {
+          "label": "",
+          "width": 382,
+          "height": 88,
+          "font": "\"Parade Ink Text\", Arial, sans-serif",
+          "background": "rgb(249, 248, 246)"
+        },
+        {
+          "label": "Review wall action",
+          "width": 382,
+          "height": 44,
+          "font": "\"Parade Ink Display\", \"Arial Narrow\", Arial, sans-serif",
+          "background": "rgb(146, 37, 50)"
+        },
+        {
+          "label": "Refresh wall controls",
+          "width": 160.453125,
+          "height": 44,
+          "font": "\"Parade Ink Display\", \"Arial Narrow\", Arial, sans-serif",
+          "background": "rgb(249, 248, 246)"
+        }
+      ],
+      "viewportOverflow": false,
+      "nestedMainCount": 0
+    },
+    {
+      "view": "audit",
+      "viewport": {
+        "width": 430,
+        "height": 844
+      },
+      "width": 398,
+      "font": "\"Parade Ink Text\", Arial, sans-serif",
+      "size": "18px",
+      "leading": "22px",
+      "background": "rgb(249, 249, 248)",
+      "heading": {
+        "font": "\"Parade Ink Display\", \"Arial Narrow\", Arial, sans-serif",
+        "size": "26px",
+        "leading": "32px"
+      },
+      "controls": [
+        {
+          "label": "",
+          "width": 356,
+          "height": 44,
+          "font": "\"Parade Ink Text\", Arial, sans-serif",
+          "background": "rgb(255, 255, 255)"
+        },
+        {
+          "label": "",
+          "width": 356,
+          "height": 44,
+          "font": "\"Parade Ink Text\", Arial, sans-serif",
+          "background": "rgb(255, 255, 255)"
+        },
+        {
+          "label": "AllPENDINGSUCCEEDEDFAILED",
+          "width": 356,
+          "height": 44,
+          "font": "\"Parade Ink Text\", Arial, sans-serif",
+          "background": "rgb(249, 248, 246)"
+        },
+        {
+          "label": "",
+          "width": 356,
+          "height": 44,
+          "font": "\"Parade Ink Text\", Arial, sans-serif",
+          "background": "rgb(255, 255, 255)"
+        },
+        {
+          "label": "",
+          "width": 356,
+          "height": 44,
+          "font": "\"Parade Ink Text\", Arial, sans-serif",
+          "background": "rgb(255, 255, 255)"
+        },
+        {
+          "label": "Search audit log",
+          "width": 126.859375,
+          "height": 44,
+          "font": "\"Parade Ink Display\", \"Arial Narrow\", Arial, sans-serif",
+          "background": "rgb(146, 37, 50)"
+        },
+        {
+          "label": "View audit entry",
+          "width": 110.171875,
+          "height": 58,
+          "font": "\"Parade Ink Display\", \"Arial Narrow\", Arial, sans-serif",
+          "background": "rgb(249, 248, 246)"
+        }
+      ],
+      "viewportOverflow": false,
+      "nestedMainCount": 0
+    },
+    {
+      "view": "closure",
+      "viewport": {
+        "width": 430,
+        "height": 844
+      },
+      "width": 398,
+      "font": "\"Parade Ink Text\", Arial, sans-serif",
+      "size": "18px",
+      "leading": "22px",
+      "background": "rgb(249, 249, 248)",
+      "heading": {
+        "font": "\"Parade Ink Display\", \"Arial Narrow\", Arial, sans-serif",
+        "size": "26px",
+        "leading": "32px"
+      },
+      "controls": [
+        {
+          "label": "",
+          "width": 382,
+          "height": 88,
+          "font": "\"Parade Ink Text\", Arial, sans-serif",
+          "background": "rgb(249, 248, 246)"
+        },
+        {
+          "label": "Review event closure",
+          "width": 382,
+          "height": 44,
+          "font": "\"Parade Ink Display\", \"Arial Narrow\", Arial, sans-serif",
+          "background": "rgb(146, 37, 50)"
+        },
+        {
+          "label": "",
+          "width": 382,
+          "height": 44,
+          "font": "\"Parade Ink Text\", Arial, sans-serif",
+          "background": "rgb(249, 248, 246)"
+        },
+        {
+          "label": "Load existing closure job",
+          "width": 382,
+          "height": 44,
+          "font": "\"Parade Ink Display\", \"Arial Narrow\", Arial, sans-serif",
+          "background": "rgb(146, 37, 50)"
+        },
+        {
+          "label": "Recheck operator access",
+          "width": 186.84375,
+          "height": 44,
+          "font": "\"Parade Ink Display\", \"Arial Narrow\", Arial, sans-serif",
+          "background": "rgb(249, 248, 246)"
+        }
+      ],
+      "viewportOverflow": false,
+      "nestedMainCount": 0
+    },
+    {
+      "view": "wall",
+      "viewport": {
+        "width": 390,
+        "height": 420
+      },
+      "width": 358,
+      "font": "\"Parade Ink Text\", Arial, sans-serif",
+      "size": "18px",
+      "leading": "22px",
+      "background": "rgb(249, 249, 248)",
+      "heading": {
+        "font": "\"Parade Ink Display\", \"Arial Narrow\", Arial, sans-serif",
+        "size": "26px",
+        "leading": "32px"
+      },
+      "controls": [
+        {
+          "label": "Wall action",
+          "width": 342,
+          "height": 44,
+          "font": "\"Parade Ink Text\", Arial, sans-serif",
+          "background": "rgb(249, 248, 246)"
+        },
+        {
+          "label": "",
+          "width": 342,
+          "height": 88,
+          "font": "\"Parade Ink Text\", Arial, sans-serif",
+          "background": "rgb(249, 248, 246)"
+        },
+        {
+          "label": "Review wall action",
+          "width": 342,
+          "height": 44,
+          "font": "\"Parade Ink Display\", \"Arial Narrow\", Arial, sans-serif",
+          "background": "rgb(146, 37, 50)"
+        },
+        {
+          "label": "Refresh wall controls",
+          "width": 160.453125,
+          "height": 44,
+          "font": "\"Parade Ink Display\", \"Arial Narrow\", Arial, sans-serif",
+          "background": "rgb(249, 248, 246)"
+        }
+      ],
+      "viewportOverflow": false,
+      "nestedMainCount": 0
+    },
+    {
+      "view": "wall",
+      "viewport": {
+        "width": 390,
+        "height": 420
+      },
+      "width": 358,
+      "font": "\"Parade Ink Text\", Arial, sans-serif",
+      "size": "18px",
+      "leading": "22px",
+      "background": "rgb(249, 249, 248)",
+      "heading": {
+        "font": "\"Parade Ink Display\", \"Arial Narrow\", Arial, sans-serif",
+        "size": "26px",
+        "leading": "32px"
+      },
+      "controls": [
+        {
+          "label": "Check original wall command",
+          "width": 216.96875,
+          "height": 44,
+          "font": "\"Parade Ink Display\", \"Arial Narrow\", Arial, sans-serif",
+          "background": "rgb(227, 227, 224)"
+        },
+        {
+          "label": "Refresh wall controls",
+          "width": 160.453125,
+          "height": 44,
+          "font": "\"Parade Ink Display\", \"Arial Narrow\", Arial, sans-serif",
+          "background": "rgb(227, 227, 224)"
+        }
+      ],
+      "viewportOverflow": false,
+      "nestedMainCount": 0
+    },
+    {
+      "view": "wall",
+      "viewport": {
+        "width": 390,
+        "height": 420
+      },
+      "width": 358,
+      "font": "\"Parade Ink Text\", Arial, sans-serif",
+      "size": "18px",
+      "leading": "22px",
+      "background": "rgb(249, 249, 248)",
+      "heading": {
+        "font": "\"Parade Ink Display\", \"Arial Narrow\", Arial, sans-serif",
+        "size": "26px",
+        "leading": "32px"
+      },
+      "controls": [
+        {
+          "label": "Refresh wall controls",
+          "width": 160.453125,
+          "height": 44,
+          "font": "\"Parade Ink Display\", \"Arial Narrow\", Arial, sans-serif",
+          "background": "rgb(249, 248, 246)"
+        }
+      ],
+      "viewportOverflow": false,
+      "nestedMainCount": 0
+    },
+    {
+      "view": "closure",
+      "viewport": {
+        "width": 390,
+        "height": 420
+      },
+      "width": 358,
+      "font": "\"Parade Ink Text\", Arial, sans-serif",
+      "size": "18px",
+      "leading": "22px",
+      "background": "rgb(249, 249, 248)",
+      "heading": {
+        "font": "\"Parade Ink Display\", \"Arial Narrow\", Arial, sans-serif",
+        "size": "26px",
+        "leading": "32px"
+      },
+      "controls": [
+        {
+          "label": "",
+          "width": 342,
+          "height": 88,
+          "font": "\"Parade Ink Text\", Arial, sans-serif",
+          "background": "rgb(249, 248, 246)"
+        },
+        {
+          "label": "Review event closure",
+          "width": 342,
+          "height": 44,
+          "font": "\"Parade Ink Display\", \"Arial Narrow\", Arial, sans-serif",
+          "background": "rgb(146, 37, 50)"
+        },
+        {
+          "label": "",
+          "width": 342,
+          "height": 44,
+          "font": "\"Parade Ink Text\", Arial, sans-serif",
+          "background": "rgb(249, 248, 246)"
+        },
+        {
+          "label": "Load existing closure job",
+          "width": 342,
+          "height": 44,
+          "font": "\"Parade Ink Display\", \"Arial Narrow\", Arial, sans-serif",
+          "background": "rgb(146, 37, 50)"
+        },
+        {
+          "label": "Recheck operator access",
+          "width": 186.84375,
+          "height": 44,
+          "font": "\"Parade Ink Display\", \"Arial Narrow\", Arial, sans-serif",
+          "background": "rgb(249, 248, 246)"
+        }
+      ],
+      "viewportOverflow": false,
+      "nestedMainCount": 0
+    },
+    {
+      "view": "members",
+      "viewport": {
+        "width": 360,
+        "height": 844
+      },
+      "width": 328,
+      "font": "\"Parade Ink Text\", Arial, sans-serif",
+      "size": "18px",
+      "leading": "22px",
+      "background": "rgb(249, 249, 248)",
+      "heading": {
+        "font": "\"Parade Ink Display\", \"Arial Narrow\", Arial, sans-serif",
+        "size": "26px",
+        "leading": "32px"
+      },
+      "controls": [
+        {
+          "label": "Refresh records",
+          "width": 312,
+          "height": 44,
+          "font": "\"Parade Ink Display\", \"Arial Narrow\", Arial, sans-serif",
+          "background": "rgb(249, 248, 246)"
+        },
+        {
+          "label": "Review 00000000-0000-4000-8000-000000000601",
+          "width": 62.28125,
+          "height": 44,
+          "font": "\"Parade Ink Display\", \"Arial Narrow\", Arial, sans-serif",
+          "background": "rgb(249, 248, 246)"
+        },
+        {
+          "label": "Choose an actionSUSPEND",
+          "width": 294,
+          "height": 44,
+          "font": "\"Parade Ink Text\", Arial, sans-serif",
+          "background": "rgb(249, 248, 246)"
+        },
+        {
+          "label": "",
+          "width": 294,
+          "height": 102,
+          "font": "\"Parade Ink Text\", Arial, sans-serif",
+          "background": "rgb(249, 248, 246)"
+        },
+        {
+          "label": "Review action",
+          "width": 109.546875,
+          "height": 44,
+          "font": "\"Parade Ink Display\", \"Arial Narrow\", Arial, sans-serif",
+          "background": "rgb(146, 37, 50)"
+        }
+      ],
+      "viewportOverflow": false,
+      "nestedMainCount": 0
+    },
+    {
+      "view": "members",
+      "viewport": {
+        "width": 360,
+        "height": 844
+      },
+      "width": 328,
+      "font": "\"Parade Ink Text\", Arial, sans-serif",
+      "size": "18px",
+      "leading": "22px",
+      "background": "rgb(249, 249, 248)",
+      "heading": {
+        "font": "\"Parade Ink Display\", \"Arial Narrow\", Arial, sans-serif",
+        "size": "26px",
+        "leading": "32px"
+      },
+      "controls": [
+        {
+          "label": "Refresh records",
+          "width": 312,
+          "height": 44,
+          "font": "\"Parade Ink Display\", \"Arial Narrow\", Arial, sans-serif",
+          "background": "rgb(249, 248, 246)"
+        },
+        {
+          "label": "Review 00000000-0000-4000-8000-000000000601",
+          "width": 62.28125,
+          "height": 44,
+          "font": "\"Parade Ink Display\", \"Arial Narrow\", Arial, sans-serif",
+          "background": "rgb(249, 248, 246)"
+        },
+        {
+          "label": "Choose an actionSUSPEND",
+          "width": 294,
+          "height": 44,
+          "font": "\"Parade Ink Text\", Arial, sans-serif",
+          "background": "rgb(249, 248, 246)"
+        },
+        {
+          "label": "Synthetic factual presentation review",
+          "width": 294,
+          "height": 102,
+          "font": "\"Parade Ink Text\", Arial, sans-serif",
+          "background": "rgb(249, 248, 246)"
+        },
+        {
+          "label": "Review action",
+          "width": 109.546875,
+          "height": 44,
+          "font": "\"Parade Ink Display\", \"Arial Narrow\", Arial, sans-serif",
+          "background": "rgb(146, 37, 50)"
+        },
+        {
+          "label": "Confirm action",
+          "width": 116.375,
+          "height": 44,
+          "font": "\"Parade Ink Display\", \"Arial Narrow\", Arial, sans-serif",
+          "background": "rgb(146, 37, 50)"
+        },
+        {
+          "label": "Cancel confirmation",
+          "width": 153.140625,
+          "height": 44,
+          "font": "\"Parade Ink Display\", \"Arial Narrow\", Arial, sans-serif",
+          "background": "rgb(249, 248, 246)"
+        }
+      ],
+      "viewportOverflow": false,
+      "nestedMainCount": 0
+    },
+    {
+      "view": "content",
+      "viewport": {
+        "width": 360,
+        "height": 844
+      },
+      "width": 328,
+      "font": "\"Parade Ink Text\", Arial, sans-serif",
+      "size": "18px",
+      "leading": "22px",
+      "background": "rgb(249, 249, 248)",
+      "heading": {
+        "font": "\"Parade Ink Display\", \"Arial Narrow\", Arial, sans-serif",
+        "size": "26px",
+        "leading": "32px"
+      },
+      "controls": [
+        {
+          "label": "Refresh records",
+          "width": 312,
+          "height": 44,
+          "font": "\"Parade Ink Display\", \"Arial Narrow\", Arial, sans-serif",
+          "background": "rgb(249, 248, 246)"
+        },
+        {
+          "label": "Review 00000000-0000-4000-8000-000000000701",
+          "width": 62.28125,
+          "height": 44,
+          "font": "\"Parade Ink Display\", \"Arial Narrow\", Arial, sans-serif",
+          "background": "rgb(249, 248, 246)"
+        },
+        {
+          "label": "Review 00000000-0000-4000-8000-000000000702",
+          "width": 62.28125,
+          "height": 44,
+          "font": "\"Parade Ink Display\", \"Arial Narrow\", Arial, sans-serif",
+          "background": "rgb(249, 248, 246)"
+        },
+        {
+          "label": "Review 00000000-0000-4000-8000-000000000703",
+          "width": 62.28125,
+          "height": 44,
+          "font": "\"Parade Ink Display\", \"Arial Narrow\", Arial, sans-serif",
+          "background": "rgb(249, 248, 246)"
+        },
+        {
+          "label": "Review 00000000-0000-4000-8000-000000000704",
+          "width": 62.28125,
+          "height": 44,
+          "font": "\"Parade Ink Display\", \"Arial Narrow\", Arial, sans-serif",
+          "background": "rgb(249, 248, 246)"
+        },
+        {
+          "label": "Review 00000000-0000-4000-8000-000000000705",
+          "width": 62.28125,
+          "height": 44,
+          "font": "\"Parade Ink Display\", \"Arial Narrow\", Arial, sans-serif",
+          "background": "rgb(249, 248, 246)"
+        }
+      ],
+      "viewportOverflow": false,
+      "nestedMainCount": 0
+    },
+    {
+      "view": "content",
+      "viewport": {
+        "width": 360,
+        "height": 844
+      },
+      "width": 328,
+      "font": "\"Parade Ink Text\", Arial, sans-serif",
+      "size": "18px",
+      "leading": "22px",
+      "background": "rgb(249, 249, 248)",
+      "heading": {
+        "font": "\"Parade Ink Display\", \"Arial Narrow\", Arial, sans-serif",
+        "size": "26px",
+        "leading": "32px"
+      },
+      "controls": [
+        {
+          "label": "Refresh records",
+          "width": 312,
+          "height": 44,
+          "font": "\"Parade Ink Display\", \"Arial Narrow\", Arial, sans-serif",
+          "background": "rgb(249, 248, 246)"
+        },
+        {
+          "label": "Review 00000000-0000-4000-8000-000000000701",
+          "width": 62.28125,
+          "height": 44,
+          "font": "\"Parade Ink Display\", \"Arial Narrow\", Arial, sans-serif",
+          "background": "rgb(249, 248, 246)"
+        },
+        {
+          "label": "Review 00000000-0000-4000-8000-000000000702",
+          "width": 62.28125,
+          "height": 44,
+          "font": "\"Parade Ink Display\", \"Arial Narrow\", Arial, sans-serif",
+          "background": "rgb(249, 248, 246)"
+        },
+        {
+          "label": "Review 00000000-0000-4000-8000-000000000703",
+          "width": 62.28125,
+          "height": 44,
+          "font": "\"Parade Ink Display\", \"Arial Narrow\", Arial, sans-serif",
+          "background": "rgb(249, 248, 246)"
+        },
+        {
+          "label": "Review 00000000-0000-4000-8000-000000000704",
+          "width": 62.28125,
+          "height": 44,
+          "font": "\"Parade Ink Display\", \"Arial Narrow\", Arial, sans-serif",
+          "background": "rgb(249, 248, 246)"
+        },
+        {
+          "label": "Review 00000000-0000-4000-8000-000000000705",
+          "width": 62.28125,
+          "height": 44,
+          "font": "\"Parade Ink Display\", \"Arial Narrow\", Arial, sans-serif",
+          "background": "rgb(249, 248, 246)"
+        },
+        {
+          "label": "Choose an actionHIDE",
+          "width": 294,
+          "height": 44,
+          "font": "\"Parade Ink Text\", Arial, sans-serif",
+          "background": "rgb(249, 248, 246)"
+        },
+        {
+          "label": "Synthetic factual presentation review",
+          "width": 294,
+          "height": 102,
+          "font": "\"Parade Ink Text\", Arial, sans-serif",
+          "background": "rgb(249, 248, 246)"
+        },
+        {
+          "label": "Review action",
+          "width": 109.546875,
+          "height": 44,
+          "font": "\"Parade Ink Display\", \"Arial Narrow\", Arial, sans-serif",
+          "background": "rgb(146, 37, 50)"
+        },
+        {
+          "label": "Confirm action",
+          "width": 116.375,
+          "height": 44,
+          "font": "\"Parade Ink Display\", \"Arial Narrow\", Arial, sans-serif",
+          "background": "rgb(146, 37, 50)"
+        },
+        {
+          "label": "Cancel confirmation",
+          "width": 153.140625,
+          "height": 44,
+          "font": "\"Parade Ink Display\", \"Arial Narrow\", Arial, sans-serif",
+          "background": "rgb(249, 248, 246)"
+        }
+      ],
+      "viewportOverflow": false,
+      "nestedMainCount": 0
+    },
+    {
+      "view": "members",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "width": 358,
+      "font": "\"Parade Ink Text\", Arial, sans-serif",
+      "size": "18px",
+      "leading": "22px",
+      "background": "rgb(249, 249, 248)",
+      "heading": {
+        "font": "\"Parade Ink Display\", \"Arial Narrow\", Arial, sans-serif",
+        "size": "26px",
+        "leading": "32px"
+      },
+      "controls": [
+        {
+          "label": "Refresh records",
+          "width": 342,
+          "height": 44,
+          "font": "\"Parade Ink Display\", \"Arial Narrow\", Arial, sans-serif",
+          "background": "rgb(249, 248, 246)"
+        },
+        {
+          "label": "Review 00000000-0000-4000-8000-000000000601",
+          "width": 62.28125,
+          "height": 44,
+          "font": "\"Parade Ink Display\", \"Arial Narrow\", Arial, sans-serif",
+          "background": "rgb(249, 248, 246)"
+        },
+        {
+          "label": "Choose an actionSUSPEND",
+          "width": 324,
+          "height": 44,
+          "font": "\"Parade Ink Text\", Arial, sans-serif",
+          "background": "rgb(249, 248, 246)"
+        },
+        {
+          "label": "",
+          "width": 324,
+          "height": 102,
+          "font": "\"Parade Ink Text\", Arial, sans-serif",
+          "background": "rgb(249, 248, 246)"
+        },
+        {
+          "label": "Review action",
+          "width": 109.546875,
+          "height": 44,
+          "font": "\"Parade Ink Display\", \"Arial Narrow\", Arial, sans-serif",
+          "background": "rgb(146, 37, 50)"
+        }
+      ],
+      "viewportOverflow": false,
+      "nestedMainCount": 0
+    },
+    {
+      "view": "members",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "width": 358,
+      "font": "\"Parade Ink Text\", Arial, sans-serif",
+      "size": "18px",
+      "leading": "22px",
+      "background": "rgb(249, 249, 248)",
+      "heading": {
+        "font": "\"Parade Ink Display\", \"Arial Narrow\", Arial, sans-serif",
+        "size": "26px",
+        "leading": "32px"
+      },
+      "controls": [
+        {
+          "label": "Refresh records",
+          "width": 342,
+          "height": 44,
+          "font": "\"Parade Ink Display\", \"Arial Narrow\", Arial, sans-serif",
+          "background": "rgb(249, 248, 246)"
+        },
+        {
+          "label": "Review 00000000-0000-4000-8000-000000000601",
+          "width": 62.28125,
+          "height": 44,
+          "font": "\"Parade Ink Display\", \"Arial Narrow\", Arial, sans-serif",
+          "background": "rgb(249, 248, 246)"
+        },
+        {
+          "label": "Choose an actionSUSPEND",
+          "width": 324,
+          "height": 44,
+          "font": "\"Parade Ink Text\", Arial, sans-serif",
+          "background": "rgb(249, 248, 246)"
+        },
+        {
+          "label": "Synthetic factual presentation review",
+          "width": 324,
+          "height": 102,
+          "font": "\"Parade Ink Text\", Arial, sans-serif",
+          "background": "rgb(249, 248, 246)"
+        },
+        {
+          "label": "Review action",
+          "width": 109.546875,
+          "height": 44,
+          "font": "\"Parade Ink Display\", \"Arial Narrow\", Arial, sans-serif",
+          "background": "rgb(146, 37, 50)"
+        },
+        {
+          "label": "Confirm action",
+          "width": 116.375,
+          "height": 44,
+          "font": "\"Parade Ink Display\", \"Arial Narrow\", Arial, sans-serif",
+          "background": "rgb(146, 37, 50)"
+        },
+        {
+          "label": "Cancel confirmation",
+          "width": 153.140625,
+          "height": 44,
+          "font": "\"Parade Ink Display\", \"Arial Narrow\", Arial, sans-serif",
+          "background": "rgb(249, 248, 246)"
+        }
+      ],
+      "viewportOverflow": false,
+      "nestedMainCount": 0
+    },
+    {
+      "view": "content",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "width": 358,
+      "font": "\"Parade Ink Text\", Arial, sans-serif",
+      "size": "18px",
+      "leading": "22px",
+      "background": "rgb(249, 249, 248)",
+      "heading": {
+        "font": "\"Parade Ink Display\", \"Arial Narrow\", Arial, sans-serif",
+        "size": "26px",
+        "leading": "32px"
+      },
+      "controls": [
+        {
+          "label": "Refresh records",
+          "width": 342,
+          "height": 44,
+          "font": "\"Parade Ink Display\", \"Arial Narrow\", Arial, sans-serif",
+          "background": "rgb(249, 248, 246)"
+        },
+        {
+          "label": "Review 00000000-0000-4000-8000-000000000701",
+          "width": 62.28125,
+          "height": 44,
+          "font": "\"Parade Ink Display\", \"Arial Narrow\", Arial, sans-serif",
+          "background": "rgb(249, 248, 246)"
+        },
+        {
+          "label": "Review 00000000-0000-4000-8000-000000000702",
+          "width": 62.28125,
+          "height": 44,
+          "font": "\"Parade Ink Display\", \"Arial Narrow\", Arial, sans-serif",
+          "background": "rgb(249, 248, 246)"
+        },
+        {
+          "label": "Review 00000000-0000-4000-8000-000000000703",
+          "width": 62.28125,
+          "height": 44,
+          "font": "\"Parade Ink Display\", \"Arial Narrow\", Arial, sans-serif",
+          "background": "rgb(249, 248, 246)"
+        },
+        {
+          "label": "Review 00000000-0000-4000-8000-000000000704",
+          "width": 62.28125,
+          "height": 44,
+          "font": "\"Parade Ink Display\", \"Arial Narrow\", Arial, sans-serif",
+          "background": "rgb(249, 248, 246)"
+        },
+        {
+          "label": "Review 00000000-0000-4000-8000-000000000705",
+          "width": 62.28125,
+          "height": 44,
+          "font": "\"Parade Ink Display\", \"Arial Narrow\", Arial, sans-serif",
+          "background": "rgb(249, 248, 246)"
+        }
+      ],
+      "viewportOverflow": false,
+      "nestedMainCount": 0
+    },
+    {
+      "view": "content",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "width": 358,
+      "font": "\"Parade Ink Text\", Arial, sans-serif",
+      "size": "18px",
+      "leading": "22px",
+      "background": "rgb(249, 249, 248)",
+      "heading": {
+        "font": "\"Parade Ink Display\", \"Arial Narrow\", Arial, sans-serif",
+        "size": "26px",
+        "leading": "32px"
+      },
+      "controls": [
+        {
+          "label": "Refresh records",
+          "width": 342,
+          "height": 44,
+          "font": "\"Parade Ink Display\", \"Arial Narrow\", Arial, sans-serif",
+          "background": "rgb(249, 248, 246)"
+        },
+        {
+          "label": "Review 00000000-0000-4000-8000-000000000701",
+          "width": 62.28125,
+          "height": 44,
+          "font": "\"Parade Ink Display\", \"Arial Narrow\", Arial, sans-serif",
+          "background": "rgb(249, 248, 246)"
+        },
+        {
+          "label": "Review 00000000-0000-4000-8000-000000000702",
+          "width": 62.28125,
+          "height": 44,
+          "font": "\"Parade Ink Display\", \"Arial Narrow\", Arial, sans-serif",
+          "background": "rgb(249, 248, 246)"
+        },
+        {
+          "label": "Review 00000000-0000-4000-8000-000000000703",
+          "width": 62.28125,
+          "height": 44,
+          "font": "\"Parade Ink Display\", \"Arial Narrow\", Arial, sans-serif",
+          "background": "rgb(249, 248, 246)"
+        },
+        {
+          "label": "Review 00000000-0000-4000-8000-000000000704",
+          "width": 62.28125,
+          "height": 44,
+          "font": "\"Parade Ink Display\", \"Arial Narrow\", Arial, sans-serif",
+          "background": "rgb(249, 248, 246)"
+        },
+        {
+          "label": "Review 00000000-0000-4000-8000-000000000705",
+          "width": 62.28125,
+          "height": 44,
+          "font": "\"Parade Ink Display\", \"Arial Narrow\", Arial, sans-serif",
+          "background": "rgb(249, 248, 246)"
+        },
+        {
+          "label": "Choose an actionHIDE",
+          "width": 324,
+          "height": 44,
+          "font": "\"Parade Ink Text\", Arial, sans-serif",
+          "background": "rgb(249, 248, 246)"
+        },
+        {
+          "label": "Synthetic factual presentation review",
+          "width": 324,
+          "height": 102,
+          "font": "\"Parade Ink Text\", Arial, sans-serif",
+          "background": "rgb(249, 248, 246)"
+        },
+        {
+          "label": "Review action",
+          "width": 109.546875,
+          "height": 44,
+          "font": "\"Parade Ink Display\", \"Arial Narrow\", Arial, sans-serif",
+          "background": "rgb(146, 37, 50)"
+        },
+        {
+          "label": "Confirm action",
+          "width": 116.375,
+          "height": 44,
+          "font": "\"Parade Ink Display\", \"Arial Narrow\", Arial, sans-serif",
+          "background": "rgb(146, 37, 50)"
+        },
+        {
+          "label": "Cancel confirmation",
+          "width": 153.140625,
+          "height": 44,
+          "font": "\"Parade Ink Display\", \"Arial Narrow\", Arial, sans-serif",
+          "background": "rgb(249, 248, 246)"
+        }
+      ],
+      "viewportOverflow": false,
+      "nestedMainCount": 0
+    }
+  ],
+  "canonicalMemberContentMount": "PUBLISHED_SEPARATELY_cf7bb137; own_native_uses_qualified_immutable_postimages",
+  "physicalDevices": "NOT_RUN",
+  "realProducer": "NOT_RUN",
+  "twoRealClients": "NOT_RUN",
+  "reference": {
+    "sha256": "9e7f17a666e1ecfc738a14b75bb3a166235a05c401f206aa24f26cf7463cbc27",
+    "crop": [
+      24,
+      60,
+      395,
+      787
+    ],
+    "normalizedWidth": 390,
+    "limitation": "Operator pages are unpictured; shared frame/control anatomy only. Outer administration composition remains separately owned.",
+    "developerAssessment": "PENDING_IMAGE_INSPECTION"
+  },
+  "sourceQualifiedComposition": [
+    {
+      "path": "frontend/src/app/operations-composition/owner.ts",
+      "source": "bc38036e75ab82fdc9fc5c436365249b572c54fd",
+      "sha256": "f2580f4f9f08779ed0fd0832d3926510ed6b95372d2364cea119c78217916d81",
+      "bytes": 11323
+    },
+    {
+      "path": "frontend/src/app/operations-composition/panel.tsx",
+      "source": "bc38036e75ab82fdc9fc5c436365249b572c54fd",
+      "sha256": "565ee596ce1a6c5363f17d7976ea45feb3a89ab0ed4b605d2f824a4bd9b7561b",
+      "bytes": 6384
+    },
+    {
+      "path": "frontend/src/app/operations-composition/member-content/index.ts",
+      "source": "bc38036e75ab82fdc9fc5c436365249b572c54fd",
+      "sha256": "406cd72e69681407d4dcfada97d8b3d8c859e9a84cb6293379e6e4c64f00b011",
+      "bytes": 3598
+    },
+    {
+      "path": "frontend/src/app/operations-composition/member-content/use-review.ts",
+      "source": "bc38036e75ab82fdc9fc5c436365249b572c54fd",
+      "sha256": "fbd1746574a413bf8dbe456b92419d20ab8aad9caf7b7af3a4acb749e2811236",
+      "bytes": 945
+    },
+    {
+      "path": "frontend/src/app/operations-composition/__tests__/member-content-production/server.ts",
+      "source": "bc38036e75ab82fdc9fc5c436365249b572c54fd",
+      "sha256": "b0a4e5f5996f972ea5a248538577780030ba8db85b1bc3de7f8faa14e4d05459",
+      "bytes": 5877,
+      "previousFixtureSha256": "0bbaa28dcc0c42ed19030ea7f851a15f280b0181ac2ccea0015e154d0a0d35b6",
+      "qualificationDelta": "Qualified fixture imports bootstrap JSON directly and uses explicit .ts import; data/HTTP behavior unchanged."
+    }
+  ],
+  "focusedStates": [
+    "event-unavailable-read",
+    "audit-details-focus",
+    "wall-unknown-original-command",
+    "wall-frozen",
+    "content-conflict"
+  ],
+  "browser": "156.0.8078.80",
+  "cleanup": {
+    "browser": "CLOSED",
+    "vite": "CLOSED"
+  }
+}

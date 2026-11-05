@@ -1,0 +1,54 @@
+{
+  "primary": {
+    "epoch": 1793841317.7670348,
+    "pid": 64941,
+    "ownedPids": [
+      64941,
+      65029
+    ],
+    "global": {
+      "acceptedOffers": [],
+      "observedPids": [
+        64941,
+        65029
+      ],
+      "boundary": "Fresh allocator membership plus exact accepted owner controller/guard receipts; unknown membership stays charged."
+    },
+    "freeBytes": 16184614912,
+    "wholeBytes": 5329739776,
+    "positiveNewBytes": 1167360,
+    "rssBytes": 43368448,
+    "peak": {
+      "processes": 2,
+      "rssBytes": 43368448,
+      "wholeBytes": 5341532160,
+      "newBytes": 1167360
+    }
+  },
+  "secondary": {
+    "epoch": 1793841317.375704,
+    "pid": 65029,
+    "ownedPids": [
+      64941,
+      65029
+    ],
+    "global": {
+      "acceptedOffers": [],
+      "observedPids": [
+        64941,
+        65029
+      ],
+      "boundary": "Fresh allocator membership plus exact accepted owner controller/guard receipts; unknown membership stays charged."
+    },
+    "freeBytes": 16184623104,
+    "wholeBytes": 5329735680,
+    "positiveNewBytes": 1163264,
+    "rssBytes": 43155456,
+    "peak": {
+      "processes": 2,
+      "rssBytes": 43155456,
+      "wholeBytes": 5341532160,
+      "newBytes": 1163264
+    }
+  }
+}

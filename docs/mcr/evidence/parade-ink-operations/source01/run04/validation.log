@@ -1,0 +1,791 @@
+
+ RUN  v4.1.9 /Users/lhs/Desktop/mcr-worktrees/fe-ref-customize/frontend
+
+stderr | src/app/__tests__/parade-ink-operations/presentation.test.tsx > PI12 presentation preserves controller boundaries > retains the event review barrier and cancellation (summary=true)
+DIAGNOSTIC TransportError: Request failed: invalid-request.
+    at requestWithPolicy (/Users/lhs/Desktop/mcr-worktrees/fe-ref-customize/frontend/src/features/auth/model/session.ts:173:86)
+    at processTicksAndRejections (node:internal/process/task_queues:104:5)
+    at /Users/lhs/Desktop/mcr-worktrees/fe-ref-customize/frontend/src/app/__tests__/parade-ink-operations/presentation.test.tsx:25:5
+    at file:///Users/lhs/Desktop/mcr/frontend/node_modules/.pnpm/@vitest+runner@4.1.9/node_modules/@vitest/runner/dist/chunk-artifact.js:1903:20 {
+  kind: 'invalid-request',
+  status: null,
+  code: 'INVALID_REQUEST',
+  server: null,
+  retryAfterMs: null,
+  uncertain: false
+} [ 'https://mcr.example.invalid/api/auth/enrollment/admission' ]
+
+stderr | src/app/__tests__/parade-ink-operations/presentation.test.tsx > PI12 presentation preserves controller boundaries > retains the event review barrier and cancellation (summary=false)
+DIAGNOSTIC TransportError: Request failed: invalid-request.
+    at requestWithPolicy (/Users/lhs/Desktop/mcr-worktrees/fe-ref-customize/frontend/src/features/auth/model/session.ts:173:86)
+    at processTicksAndRejections (node:internal/process/task_queues:104:5)
+    at /Users/lhs/Desktop/mcr-worktrees/fe-ref-customize/frontend/src/app/__tests__/parade-ink-operations/presentation.test.tsx:25:5
+    at file:///Users/lhs/Desktop/mcr/frontend/node_modules/.pnpm/@vitest+runner@4.1.9/node_modules/@vitest/runner/dist/chunk-artifact.js:1903:20 {
+  kind: 'invalid-request',
+  status: null,
+  code: 'INVALID_REQUEST',
+  server: null,
+  retryAfterMs: null,
+  uncertain: false
+} [ 'https://mcr.example.invalid/api/auth/enrollment/admission' ]
+
+ ❯ src/app/__tests__/parade-ink-operations/presentation.test.tsx (8 tests | 6 failed) 4101ms
+     × retains the event review barrier and cancellation (summary=true) 10ms
+     × retains the event review barrier and cancellation (summary=false) 1ms
+     × keeps place source review focused and clears it when authority is withdrawn 1021ms
+     × retains minimal audit metadata and the keyboard reachable scrolling region 1010ms
+     × keeps members confirmation, focus and privacy under the original moderation view 1006ms
+     × keeps content confirmation, focus and privacy under the original moderation view 1005ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 6 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  src/app/__tests__/parade-ink-operations/presentation.test.tsx > PI12 presentation preserves controller boundaries > retains the event review barrier and cancellation (summary=true)
+ FAIL  src/app/__tests__/parade-ink-operations/presentation.test.tsx > PI12 presentation preserves controller boundaries > retains the event review barrier and cancellation (summary=false)
+TransportError: Request failed: invalid-request.
+ ❯ requestWithPolicy src/features/auth/model/session.ts:173:86
+    171|     const expected = session.read()
+    172|     if (input.access === 'protected' && session.read().userId && state…
+    173|       if (!await checkAdmission(input.signal) || !session.isCurrent(ex…
+       |                                                                                      ^
+    174|     }
+    175|     const execute = async () => {
+ ❯ src/app/__tests__/parade-ink-operations/presentation.test.tsx:25:5
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/6]⎯
+
+ FAIL  src/app/__tests__/parade-ink-operations/presentation.test.tsx > PI12 presentation preserves controller boundaries > keeps place source review focused and clears it when authority is withdrawn
+TestingLibraryElementError: Unable to find role="button" and name "Review SYNTHETIC landmark"
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div>[39m
+    [36m<div[39m
+      [33mclass[39m=[32m"pi-operations"[39m
+      [33mdata-operations-view[39m=[32m"places"[39m
+      [33mdata-presentation[39m=[32m"parade-ink-operations"[39m
+    [36m>[39m
+      [36m<section[39m
+        [33mclass[39m=[32m"event-ops"[39m
+      [36m>[39m
+        [36m<section[39m
+          [33maria-labelledby[39m=[32m"_r_0_"[39m
+          [33mclass[39m=[32m"concert-kit concert-window"[39m
+        [36m>[39m
+          [36m<header[39m
+            [33mclass[39m=[32m"concert-window__titlebar concert-window__titlebar--reference"[39m
+          [36m>[39m
+            [36m<h1[39m
+              [33mid[39m=[32m"_r_0_"[39m
+            [36m>[39m
+              [0mVenue and places[0m
+            [36m</h1>[39m
+          [36m</header>[39m
+          [36m<div[39m
+            [33mclass[39m=[32m"concert-window__body"[39m
+          [36m>[39m
+            [36m<p>[39m
+              [0mConcept art never verifies a physical venue. Changes require the current place revision and an independently qualified map/write release.[0m
+            [36m</p>[39m
+            [36m<p>[39m
+              [0mWrite map revision: [0m
+              [0m7[0m
+              [0m. The place revision below is separate from a catalog/map revision.[0m
+            [36m</p>[39m
+            [36m<button[39m
+              [33mtype[39m=[32m"button"[39m
+            [36m>[39m
+              [0mRefresh places[0m
+            [36m</button>[39m
+            [36m<div>[39m
+              [36m<p[39m
+                [33mrole[39m=[32m"status"[39m
+              [36m>[39m
+                [0mThe response could not be qualified. Refresh current information explicitly.[0m
+              [36m</p>[39m
+            [36m</div>[39m
+            [36m<p>[39m
+              [0mNo places in this authorized page.[0m
+            [36m</p>[39m
+            [36m<div[39m
+              [33maria-label[39m=[32m"Scrollable place review"[39m
+              [33mclass[39m=[32m"ops-table-wrap"[39m
+              [33mrole[39m=[32m"region"[39m
+              [33mtabindex[39m=[32m"0"[39m
+            [36m>[39m
+              [36m<table>[39m
+                [36m<caption>[39m
+                  [0mCurrent place review and closure[0m
+                [36m</caption>[39m
+                [36m<thead>[39m
+                  [36m<tr>[39m
+                    [36m<th[39m
+                      [33mscope[39m=[32m"col"[39m
+                    [36m>[39m
+                      [0mPlace[0m
+                    [36m</th>[39m
+                    [36m<th[39m
+                      [33mscope[39m=[32m"col"[39m
+                    [36m>[39m
+                      [0mState[0m
+                    [36m</th>[39m
+                    [36m<th[39m
+                      [33mscope[39m=[32m"col"[39m
+                    [36m>[39m
+                      [0mReview[0m
+                    [36m</th>[39m
+                  [36m</tr>[39m
+                [36m</thead>[39m
+                [36m<tbody />[39m
+              [36m</table>[39m
+            [36m</div>[39m
+          [36m</div>[39m
+        [36m</section>[39m
+      [36m</section>[39m
+    [36m</div>[39m
+  [36m</div>[39m
+[36m</body>[39m
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div>[39m
+    [36m<div[39m
+      [33mclass[39m=[32m"pi-operations"[39m
+      [33mdata-operations-view[39m=[32m"places"[39m
+      [33mdata-presentation[39m=[32m"parade-ink-operations"[39m
+    [36m>[39m
+      [36m<section[39m
+        [33mclass[39m=[32m"event-ops"[39m
+      [36m>[39m
+        [36m<section[39m
+          [33maria-labelledby[39m=[32m"_r_0_"[39m
+          [33mclass[39m=[32m"concert-kit concert-window"[39m
+        [36m>[39m
+          [36m<header[39m
+            [33mclass[39m=[32m"concert-window__titlebar concert-window__titlebar--reference"[39m
+          [36m>[39m
+            [36m<h1[39m
+              [33mid[39m=[32m"_r_0_"[39m
+            [36m>[39m
+              [0mVenue and places[0m
+            [36m</h1>[39m
+          [36m</header>[39m
+          [36m<div[39m
+            [33mclass[39m=[32m"concert-window__body"[39m
+          [36m>[39m
+            [36m<p>[39m
+              [0mConcept art never verifies a physical venue. Changes require the current place revision and an independently qualified map/write release.[0m
+            [36m</p>[39m
+            [36m<p>[39m
+              [0mWrite map revision: [0m
+              [0m7[0m
+              [0m. The place revision below is separate from a catalog/map revision.[0m
+            [36m</p>[39m
+            [36m<button[39m
+              [33mtype[39m=[32m"button"[39m
+            [36m>[39m
+              [0mRefresh places[0m
+            [36m</button>[39m
+            [36m<div>[39m
+              [36m<p[39m
+                [33mrole[39m=[32m"status"[39m
+              [36m>[39m
+                [0mThe response could not be qualified. Refresh current information explicitly.[0m
+              [36m</p>[39m
+            [36m</div>[39m
+            [36m<p>[39m
+              [0mNo places in this authorized page.[0m
+            [36m</p>[39m
+            [36m<div[39m
+              [33maria-label[39m=[32m"Scrollable place review"[39m
+              [33mclass[39m=[32m"ops-table-wrap"[39m
+              [33mrole[39m=[32m"region"[39m
+              [33mtabindex[39m=[32m"0"[39m
+            [36m>[39m
+              [36m<table>[39m
+                [36m<caption>[39m
+                  [0mCurrent place review and closure[0m
+                [36m</caption>[39m
+                [36m<thead>[39m
+                  [36m<tr>[39m
+                    [36m<th[39m
+                      [33mscope[39m=[32m"col"[39m
+                    [36m>[39m
+                      [0mPlace[0m
+                    [36m</th>[39m
+                    [36m<th[39m
+                      [33mscope[39m=[32m"col"[39m
+                    [36m>[39m
+                      [0mState[0m
+                    [36m</th>[39m
+                    [36m<th[39m
+                      [33mscope[39m=[32m"col"[39m
+                    [36m>[39m
+                      [0mReview[0m
+                    [36m</th>[39m
+                  [36m</tr>[39m
+                [36m</thead>[39m
+                [36m<tbody />[39m
+              [36m</table>[39m
+            [36m</div>[39m
+          [36m</div>[39m
+        [36m</section>[39m
+      [36m</section>[39m
+    [36m</div>[39m
+  [36m</div>[39m
+[36m</body>[39m
+ ❯ waitForWrapper ../../../mcr/frontend/node_modules/.pnpm/@testing-library+dom@10.4.1/node_modules/@testing-library/dom/dist/wait-for.js:163:27
+ ❯ ../../../mcr/frontend/node_modules/.pnpm/@testing-library+dom@10.4.1/node_modules/@testing-library/dom/dist/query-helpers.js:86:33
+ ❯ src/app/__tests__/parade-ink-operations/presentation.test.tsx:41:34
+     39|     const f = eventFixture()
+     40|     render(<PlacesOperations controller={f.controller} />)
+     41|     fireEvent.click(await screen.findByRole('button', { name: 'Review …
+       |                                  ^
+     42|     const heading = screen.getByRole('heading', { name: 'Review place …
+     43|     expect(document.activeElement).toBe(heading)
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/6]⎯
+
+ FAIL  src/app/__tests__/parade-ink-operations/presentation.test.tsx > PI12 presentation preserves controller boundaries > retains minimal audit metadata and the keyboard reachable scrolling region
+TestingLibraryElementError: Unable to find role="button" and name "View audit entry"
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div>[39m
+    [36m<div[39m
+      [33mclass[39m=[32m"pi-operations"[39m
+      [33mdata-operations-view[39m=[32m"audit"[39m
+      [33mdata-presentation[39m=[32m"parade-ink-operations"[39m
+    [36m>[39m
+      [36m<section[39m
+        [33mclass[39m=[32m"event-ops"[39m
+      [36m>[39m
+        [36m<section[39m
+          [33maria-labelledby[39m=[32m"_r_1_"[39m
+          [33mclass[39m=[32m"concert-kit concert-window"[39m
+        [36m>[39m
+          [36m<header[39m
+            [33mclass[39m=[32m"concert-window__titlebar concert-window__titlebar--reference"[39m
+          [36m>[39m
+            [36m<h1[39m
+              [33mid[39m=[32m"_r_1_"[39m
+            [36m>[39m
+              [0mAudit log[0m
+            [36m</h1>[39m
+          [36m</header>[39m
+          [36m<div[39m
+            [33mclass[39m=[32m"concert-window__body"[39m
+          [36m>[39m
+            [36m<p>[39m
+              [0mMinimal action metadata only. Report text, private media, notice contents and free-text reasons are not opened here.[0m
+            [36m</p>[39m
+            [36m<form>[39m
+              [36m<fieldset>[39m
+                [36m<legend>[39m
+                  [0mSearch action metadata[0m
+                [36m</legend>[39m
+                [36m<div[39m
+                  [33mclass[39m=[32m"ops-fields"[39m
+                [36m>[39m
+                  [36m<div[39m
+                    [33mclass[39m=[32m"ops-field"[39m
+                  [36m>[39m
+                    [36m<label[39m
+                      [33mfor[39m=[32m"_r_2_"[39m
+                    [36m>[39m
+                      [0mActor UUID[0m
+                    [36m</label>[39m
+                    [36m<input[39m
+                      [33mid[39m=[32m"_r_2_"[39m
+                      [33mvalue[39m=[32m""[39m
+                    [36m/>[39m
+                  [36m</div>[39m
+                  [36m<div[39m
+                    [33mclass[39m=[32m"ops-field"[39m
+                  [36m>[39m
+                    [36m<label[39m
+                      [33mfor[39m=[32m"_r_3_"[39m
+                    [36m>[39m
+                      [0mOperation ID[0m
+                    [36m</label>[39m
+                    [36m<input[39m
+                      [33mid[39m=[32m"_r_3_"[39m
+                      [33mmaxlength[39m=[32m"100"[39m
+                      [33mvalue[39m=[32m""[39m
+                    [36m/>[39m
+                  [36m</div>[39m
+                  [36m<div[39m
+                    [33mclass[39m=[32m"ops-field"[39m
+                  [36m>[39m
+                    [36m<label[39m
+                      [33mfor[39m=[32m"_r_4_"[39m
+                    [36m>[39m
+                      [0mOutcome[0m
+                    [36m</label>[39m
+                    [36m<select[39m
+                      [33mid[39m=[32m"_r_4_"[39m
+                    [36m>[39m
+                      [36m<option[39m
+                        [33mvalue[39m=[32m""[39m
+                      [36m>[39m
+                        [0mAll[0m
+                      [36m</option>[39m
+                      [36m<option>[39m
+                        [0mPENDING[0m
+                      [36m</option>[39m
+                      [36m<option>[39m
+                        [0mSUCCEEDED[0m
+                      [36m</option>[39m
+                      [36m<option>[39m
+                        [0mFAILED[0m
+                      [36m</option>[39m
+                    [36m</select>[39m
+                  [36m</div>[39m
+                  [36m<div[39m
+                    [33mclass[39m=[32m"ops-field"[39m
+                  [36m>[39m
+                    [36m<label[39m
+                      [33mfor[39m=[32m"_r_5_"[39m
+                    [36m>[39m
+                      [0mFrom (inclusive UTC)[0m
+                    [36m</label>[39m
+                    [36m<input[39m
+                      [33mid[39m=[32m"_r_5_"[39m
+                      [33mplaceholder[39m=[32m"YYYY-MM-DDTHH:mm:ssZ"[39m
+                      [33mvalue[39m=[32m""[39m
+                    [36m/>[39m
+                  [36m</div>[39m
+                  [36m<div[39m
+                    [33mclass[39m=[32m"ops-field"[39m
+                  [36m>[39m
+                    [36m<label[39m
+                      [33mfor[39m=[32m"_r_6_"[39m
+                    [36m>[39m
+                      [0mUntil (exclusive UTC)[0m
+                    [36m</label>[39m
+                    [36m<input[39m
+                      [33mid[39m=[32m"_r_6_"[39m
+                      [33mplaceholder[39m=[32m"YYYY-MM-DDTHH:mm:ssZ"[39m
+                      [33mvalue[39m=[32m""[39m
+                    [36m/>[39m
+                  [36m</div>[39m
+                [36m</div>[39m
+                [36m<button[39m
+                  [33mtype[39m=[32m"submit"[39m
+                [36m>[39m
+                  [0mSearch audit log[0m
+                [36m</button>[39m
+              [36m</fieldset>[39m
+            [36m</form>[39m
+            [36m<p[39m
+              [33mrole[39m=[32m"status"[39m
+            [36m>[39m
+              [0mThe response could not be qualified. Refresh current information explicitly.[0m
+            [36m</p>[39m
+            [36m<p>[39m
+              [0mNo audit entries in this authorized page.[0m
+            [36m</p>[39m
+            [36m<div[39m
+              [33maria-label[39m=[32m"Scrollable action outcomes"[39m
+              [33mclass[39m=[32m"ops-table-wrap"[39m
+              [33mrole[39m=[32m"region"[39m
+              [33mtabindex[39m=[32m"0"[39m
+            [36m>[39m
+              [36m<table>[39m
+                [36m<caption>[39m
+                  [0mAction outcomes[0m
+                [36m</caption>[39m
+                [36m<thead>[39m
+                  [36m<tr>[39m
+                    [36m<th[39m
+                      [33mscope[39m=[32m"col"[39m
+                    [36m>[39m
+                      [0mOperation[0m
+                    [36m</th>[39m
+                    [36m<th[39m
+                      [33mscope[39m=[32m"col"[39m
+                    [36m>[39m
+                      [0mOutcome[0m
+                    [36m</th>[39m
+                    [36m<th[39m
+                      [33mscope[39m=[32m"col"[39m
+                    [36m>[39m
+                      [0mDetails[0m
+                    [36m</th>[39m
+                  [36m</tr>[39m
+                [36m</thead>[39m
+                [36m<tbody />[39m
+              [36m</table>[39m
+            [36m</div>[39m
+          [36m</div>[39m
+        [36m</section>[39m
+      [36m</section>[39m
+    [36m</div>[39m
+  [36m</div>[39m
+[36m</body>[39m
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div>[39m
+    [36m<div[39m
+      [33mclass[39m=[32m"pi-operations"[39m
+      [33mdata-operations-view[39m=[32m"audit"[39m
+      [33mdata-presentation[39m=[32m"parade-ink-operations"[39m
+    [36m>[39m
+      [36m<section[39m
+        [33mclass[39m=[32m"event-ops"[39m
+      [36m>[39m
+        [36m<section[39m
+          [33maria-labelledby[39m=[32m"_r_1_"[39m
+          [33mclass[39m=[32m"concert-kit concert-window"[39m
+        [36m>[39m
+          [36m<header[39m
+            [33mclass[39m=[32m"concert-window__titlebar concert-window__titlebar--reference"[39m
+          [36m>[39m
+            [36m<h1[39m
+              [33mid[39m=[32m"_r_1_"[39m
+            [36m>[39m
+              [0mAudit log[0m
+            [36m</h1>[39m
+          [36m</header>[39m
+          [36m<div[39m
+            [33mclass[39m=[32m"concert-window__body"[39m
+          [36m>[39m
+            [36m<p>[39m
+              [0mMinimal action metadata only. Report text, private media, notice contents and free-text reasons are not opened here.[0m
+            [36m</p>[39m
+            [36m<form>[39m
+              [36m<fieldset>[39m
+                [36m<legend>[39m
+                  [0mSearch action metadata[0m
+                [36m</legend>[39m
+                [36m<div[39m
+                  [33mclass[39m=[32m"ops-fields"[39m
+                [36m>[39m
+                  [36m<div[39m
+                    [33mclass[39m=[32m"ops-field"[39m
+                  [36m>[39m
+                    [36m<label[39m
+                      [33mfor[39m=[32m"_r_2_"[39m
+                    [36m>[39m
+                      [0mActor UUID[0m
+                    [36m</label>[39m
+                    [36m<input[39m
+                      [33mid[39m=[32m"_r_2_"[39m
+                      [33mvalue[39m=[32m""[39m
+                    [36m/>[39m
+                  [36m</div>[39m
+                  [36m<div[39m
+                    [33mclass[39m=[32m"ops-field"[39m
+                  [36m>[39m
+                    [36m<label[39m
+                      [33mfor[39m=[32m"_r_3_"[39m
+                    [36m>[39m
+                      [0mOperation ID[0m
+                    [36m</label>[39m
+                    [36m<input[39m
+                      [33mid[39m=[32m"_r_3_"[39m
+                      [33mmaxlength[39m=[32m"100"[39m
+                      [33mvalue[39m=[32m""[39m
+                    [36m/>[39m
+                  [36m</div>[39m
+                  [36m<div[39m
+                    [33mclass[39m=[32m"ops-field"[39m
+                  [36m>[39m
+                    [36m<label[39m
+                      [33mfor[39m=[32m"_r_4_"[39m
+                    [36m>[39m
+                      [0mOutcome[0m
+                    [36m</label>[39m
+                    [36m<select[39m
+                      [33mid[39m=[32m"_r_4_"[39m
+                    [36m>[39m
+                      [36m<option[39m
+                        [33mvalue[39m=[32m""[39m
+                      [36m>[39m
+                        [0mAll[0m
+                      [36m</option>[39m
+                      [36m<option>[39m
+                        [0mPENDING[0m
+                      [36m</option>[39m
+                      [36m<option>[39m
+                        [0mSUCCEEDED[0m
+                      [36m</option>[39m
+                      [36m<option>[39m
+                        [0mFAILED[0m
+                      [36m</option>[39m
+                    [36m</select>[39m
+                  [36m</div>[39m
+                  [36m<div[39m
+                    [33mclass[39m=[32m"ops-field"[39m
+                  [36m>[39m
+                    [36m<label[39m
+                      [33mfor[39m=[32m"_r_5_"[39m
+                    [36m>[39m
+                      [0mFrom (inclusive UTC)[0m
+                    [36m</label>[39m
+                    [36m<input[39m
+                      [33mid[39m=[32m"_r_5_"[39m
+                      [33mplaceholder[39m=[32m"YYYY-MM-DDTHH:mm:ssZ"[39m
+                      [33mvalue[39m=[32m""[39m
+                    [36m/>[39m
+                  [36m</div>[39m
+                  [36m<div[39m
+                    [33mclass[39m=[32m"ops-field"[39m
+                  [36m>[39m
+                    [36m<label[39m
+                      [33mfor[39m=[32m"_r_6_"[39m
+                    [36m>[39m
+                      [0mUntil (exclusive UTC)[0m
+                    [36m</label>[39m
+                    [36m<input[39m
+                      [33mid[39m=[32m"_r_6_"[39m
+                      [33mplaceholder[39m=[32m"YYYY-MM-DDTHH:mm:ssZ"[39m
+                      [33mvalue[39m=[32m""[39m
+                    [36m/>[39m
+                  [36m</div>[39m
+                [36m</div>[39m
+                [36m<button[39m
+                  [33mtype[39m=[32m"submit"[39m
+                [36m>[39m
+                  [0mSearch audit log[0m
+                [36m</button>[39m
+              [36m</fieldset>[39m
+            [36m</form>[39m
+            [36m<p[39m
+              [33mrole[39m=[32m"status"[39m
+            [36m>[39m
+              [0mThe response could not be qualified. Refresh current information explicitly.[0m
+            [36m</p>[39m
+            [36m<p>[39m
+              [0mNo audit entries in this authorized page.[0m
+            [36m</p>[39m
+            [36m<div[39m
+              [33maria-label[39m=[32m"Scrollable action outcomes"[39m
+              [33mclass[39m=[32m"ops-table-wrap"[39m
+              [33mrole[39m=[32m"region"[39m
+              [33mtabindex[39m=[32m"0"[39m
+            [36m>[39m
+              [36m<table>[39m
+                [36m<caption>[39m
+                  [0mAction outcomes[0m
+                [36m</caption>[39m
+                [36m<thead>[39m
+                  [36m<tr>[39m
+                    [36m<th[39m
+                      [33mscope[39m=[32m"col"[39m
+                    [36m>[39m
+                      [0mOperation[0m
+                    [36m</th>[39m
+                    [36m<th[39m
+                      [33mscope[39m=[32m"col"[39m
+                    [36m>[39m
+                      [0mOutcome[0m
+                    [36m</th>[39m
+                    [36m<th[39m
+                      [33mscope[39m=[32m"col"[39m
+                    [36m>[39m
+                      [0mDetails[0m
+                    [36m</th>[39m
+                  [36m</tr>[39m
+                [36m</thead>[39m
+                [36m<tbody />[39m
+              [36m</table>[39m
+            [36m</div>[39m
+          [36m</div>[39m
+        [36m</section>[39m
+      [36m</section>[39m
+    [36m</div>[39m
+  [36m</div>[39m
+[36m</body>[39m
+ ❯ waitForWrapper ../../../mcr/frontend/node_modules/.pnpm/@testing-library+dom@10.4.1/node_modules/@testing-library/dom/dist/wait-for.js:163:27
+ ❯ ../../../mcr/frontend/node_modules/.pnpm/@testing-library+dom@10.4.1/node_modules/@testing-library/dom/dist/query-helpers.js:86:33
+ ❯ src/app/__tests__/parade-ink-operations/presentation.test.tsx:54:18
+     52|     const f = eventFixture()
+     53|     render(<AuditOperations controller={f.controller} />)
+     54|     await screen.findByRole('button', { name: 'View audit entry' })
+       |                  ^
+     55|     expect(screen.getByRole('region', { name: 'Scrollable action outco…
+     56|     expect(screen.queryByText('Raw sensitive failure text must never r…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[3/6]⎯
+
+ FAIL  src/app/__tests__/parade-ink-operations/presentation.test.tsx > PI12 presentation preserves controller boundaries > keeps members confirmation, focus and privacy under the original moderation view
+TestingLibraryElementError: Unable to find role="button" and name `/^Review /`
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div>[39m
+    [36m<div[39m
+      [33mclass[39m=[32m"pi-operations"[39m
+      [33mdata-operations-view[39m=[32m"members"[39m
+      [33mdata-presentation[39m=[32m"parade-ink-operations"[39m
+    [36m>[39m
+      [36m<main[39m
+        [33mclass[39m=[32m"moderation"[39m
+      [36m>[39m
+        [36m<header>[39m
+          [36m<p>[39m
+            [0mEvent moderation[0m
+          [36m</p>[39m
+          [36m<h1>[39m
+            [0mMember review[0m
+          [36m</h1>[39m
+          [36m<p>[39m
+            [0mPrivate review. Use only the information needed for this action.[0m
+          [36m</p>[39m
+          [36m<p>[39m
+            [0mSuspension applies only to this event. It does not delete an account or change access to other events.[0m
+          [36m</p>[39m
+          [36m<button>[39m
+            [0mRefresh records[0m
+          [36m</button>[39m
+        [36m</header>[39m
+        [36m<p[39m
+          [33mrole[39m=[32m"alert"[39m
+        [36m>[39m
+          [0mThe request failed. No applied action has been confirmed.[0m
+        [36m</p>[39m
+      [36m</main>[39m
+    [36m</div>[39m
+  [36m</div>[39m
+[36m</body>[39m
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div>[39m
+    [36m<div[39m
+      [33mclass[39m=[32m"pi-operations"[39m
+      [33mdata-operations-view[39m=[32m"members"[39m
+      [33mdata-presentation[39m=[32m"parade-ink-operations"[39m
+    [36m>[39m
+      [36m<main[39m
+        [33mclass[39m=[32m"moderation"[39m
+      [36m>[39m
+        [36m<header>[39m
+          [36m<p>[39m
+            [0mEvent moderation[0m
+          [36m</p>[39m
+          [36m<h1>[39m
+            [0mMember review[0m
+          [36m</h1>[39m
+          [36m<p>[39m
+            [0mPrivate review. Use only the information needed for this action.[0m
+          [36m</p>[39m
+          [36m<p>[39m
+            [0mSuspension applies only to this event. It does not delete an account or change access to other events.[0m
+          [36m</p>[39m
+          [36m<button>[39m
+            [0mRefresh records[0m
+          [36m</button>[39m
+        [36m</header>[39m
+        [36m<p[39m
+          [33mrole[39m=[32m"alert"[39m
+        [36m>[39m
+          [0mThe request failed. No applied action has been confirmed.[0m
+        [36m</p>[39m
+      [36m</main>[39m
+    [36m</div>[39m
+  [36m</div>[39m
+[36m</body>[39m
+ ❯ waitForWrapper ../../../mcr/frontend/node_modules/.pnpm/@testing-library+dom@10.4.1/node_modules/@testing-library/dom/dist/wait-for.js:163:27
+ ❯ ../../../mcr/frontend/node_modules/.pnpm/@testing-library+dom@10.4.1/node_modules/@testing-library/dom/dist/query-helpers.js:86:33
+ ❯ src/app/__tests__/parade-ink-operations/presentation.test.tsx:92:34
+     90|     const View = lane === 'members' ? MemberReviewScreen : ContentRevi…
+     91|     const { container } = render(<View controller={f.controller} />)
+     92|     fireEvent.click(await screen.findByRole('button', { name: /^Review…
+       |                                  ^
+     93|     fireEvent.change(screen.getByLabelText('Action'), { target: { valu…
+     94|     fireEvent.change(screen.getByLabelText('Reason for this action'), …
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[4/6]⎯
+
+ FAIL  src/app/__tests__/parade-ink-operations/presentation.test.tsx > PI12 presentation preserves controller boundaries > keeps content confirmation, focus and privacy under the original moderation view
+TestingLibraryElementError: Unable to find role="button" and name `/^Review /`
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div>[39m
+    [36m<div[39m
+      [33mclass[39m=[32m"pi-operations"[39m
+      [33mdata-operations-view[39m=[32m"content"[39m
+      [33mdata-presentation[39m=[32m"parade-ink-operations"[39m
+    [36m>[39m
+      [36m<main[39m
+        [33mclass[39m=[32m"moderation"[39m
+      [36m>[39m
+        [36m<header>[39m
+          [36m<p>[39m
+            [0mEvent moderation[0m
+          [36m</p>[39m
+          [36m<h1>[39m
+            [0mContent review[0m
+          [36m</h1>[39m
+          [36m<p>[39m
+            [0mPrivate review. Use only the information needed for this action.[0m
+          [36m</p>[39m
+          [36m<button>[39m
+            [0mRefresh records[0m
+          [36m</button>[39m
+        [36m</header>[39m
+        [36m<p[39m
+          [33mrole[39m=[32m"alert"[39m
+        [36m>[39m
+          [0mThe request failed. No applied action has been confirmed.[0m
+        [36m</p>[39m
+      [36m</main>[39m
+    [36m</div>[39m
+  [36m</div>[39m
+[36m</body>[39m
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div>[39m
+    [36m<div[39m
+      [33mclass[39m=[32m"pi-operations"[39m
+      [33mdata-operations-view[39m=[32m"content"[39m
+      [33mdata-presentation[39m=[32m"parade-ink-operations"[39m
+    [36m>[39m
+      [36m<main[39m
+        [33mclass[39m=[32m"moderation"[39m
+      [36m>[39m
+        [36m<header>[39m
+          [36m<p>[39m
+            [0mEvent moderation[0m
+          [36m</p>[39m
+          [36m<h1>[39m
+            [0mContent review[0m
+          [36m</h1>[39m
+          [36m<p>[39m
+            [0mPrivate review. Use only the information needed for this action.[0m
+          [36m</p>[39m
+          [36m<button>[39m
+            [0mRefresh records[0m
+          [36m</button>[39m
+        [36m</header>[39m
+        [36m<p[39m
+          [33mrole[39m=[32m"alert"[39m
+        [36m>[39m
+          [0mThe request failed. No applied action has been confirmed.[0m
+        [36m</p>[39m
+      [36m</main>[39m
+    [36m</div>[39m
+  [36m</div>[39m
+[36m</body>[39m
+ ❯ waitForWrapper ../../../mcr/frontend/node_modules/.pnpm/@testing-library+dom@10.4.1/node_modules/@testing-library/dom/dist/wait-for.js:163:27
+ ❯ ../../../mcr/frontend/node_modules/.pnpm/@testing-library+dom@10.4.1/node_modules/@testing-library/dom/dist/query-helpers.js:86:33
+ ❯ src/app/__tests__/parade-ink-operations/presentation.test.tsx:92:34
+     90|     const View = lane === 'members' ? MemberReviewScreen : ContentRevi…
+     91|     const { container } = render(<View controller={f.controller} />)
+     92|     fireEvent.click(await screen.findByRole('button', { name: /^Review…
+       |                                  ^
+     93|     fireEvent.change(screen.getByLabelText('Action'), { target: { valu…
+     94|     fireEvent.change(screen.getByLabelText('Reason for this action'), …
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[5/6]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  6 failed | 2 passed (8)
+   Start at  10:16:41
+   Duration  6.81s (transform 1.64s, setup 0ms, import 2.06s, tests 4.10s, environment 568ms)
+

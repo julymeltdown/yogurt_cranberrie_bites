@@ -1,7 +1,8 @@
+import { OperationsSurface, OperationsFrame } from '../../parade-ink-operations/OperationsSurface'
 import { useEffect, useRef, useState } from 'react'
 import { dataFromNotice, type OperationsController } from '../model/controller'
 import type { CreateNotice, Notice, Settings } from '../model/contract'
-import { Field, OperationFeedback, OperationsFrame, OperationsGate, useOperations, useReviewFocus } from './common'
+import { Field, OperationFeedback, OperationsGate, useOperations, useReviewFocus } from './common'
 
 const limits = [
   ['beacon_ttl_seconds', 'Beacon lifetime (seconds)', 1, 900], ['pickup_grace_seconds', 'Pickup grace (seconds)', 0, 86400],
@@ -11,7 +12,7 @@ export function EventOperations({ controller, summaryOnly = false }: { controlle
   const state = useOperations(controller), confirm = useRef<HTMLDivElement>(null)
   useEffect(() => { void controller.loadEvent() }, [controller])
   useReviewFocus(state, confirm)
-  return <OperationsGate state={state}><OperationsFrame title={summaryOnly ? 'Control room' : 'Event settings'}>
+  return <OperationsSurface view={summaryOnly ? 'control' : 'event'}><OperationsGate state={state}><OperationsFrame title={summaryOnly ? 'Control room' : 'Event settings'}>
     <button type="button" disabled={state.loading || state.command?.stage === 'review' || state.command?.stage === 'sending'} onClick={() => { void controller.loadEvent() }}>Refresh event information</button>
     {state.overview && <section><h2>Operational summary</h2><dl><dt>Health</dt><dd>{state.overview.health}</dd><dt>Open reports</dt><dd>{state.overview.open_reports}</dd>
       <dt>Pending jobs</dt><dd>{state.overview.pending_jobs}</dd><dt>Overview revision</dt><dd>{state.overview.revision}</dd></dl></section>}
@@ -23,7 +24,7 @@ export function EventOperations({ controller, summaryOnly = false }: { controlle
       {state.notices.map(notice => <NoticeRecord key={`${notice.notice_id}:${notice.revision}`} notice={notice} controller={controller} locked={state.command !== null || state.loading} />)}
       {state.noticeCursor && <button type="button" disabled={state.loading || state.command !== null} onClick={() => { void controller.loadNotices(true) }}>Next notices page</button>}
     </section>}
-  </OperationsFrame></OperationsGate>
+  </OperationsFrame></OperationsGate></OperationsSurface>
 }
 function SettingsForm({ settings, controller, locked }: { settings: Settings; controller: OperationsController; locked: boolean }) {
   const [draft, setDraft] = useState(settings), [reason, setReason] = useState('')

@@ -1,0 +1,10 @@
+{
+  "error": "Stage 4 failed; repair and rerun requires remaining original time/caps",
+  "epoch": 1793842258.7387578,
+  "peak": {
+    "processes": 4,
+    "rssBytes": 326238208,
+    "wholeBytes": 5343883264,
+    "newBytes": 34115584
+  }
+}

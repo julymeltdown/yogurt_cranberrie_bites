@@ -1,0 +1,126 @@
+/* PI12 operator surfaces consume the canonical PI01 Photo 2 contract. */
+:root .pi-operations {
+  color: var(--pi-ink);
+  background: var(--pi-paper);
+  font: var(--pi-body-size)/var(--pi-body-leading) var(--pi-font-body);
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+:root .pi-operations :is(.event-ops, .mcr-ops, .moderation) {
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 58rem;
+  margin-inline: auto;
+  padding: var(--pi-content-inset);
+  color: var(--pi-ink);
+  background: var(--pi-paper);
+  font: inherit;
+}
+:root .pi-operations :is(.mcr-ops, .moderation) {
+  border: var(--pi-frame-border) solid var(--pi-ink);
+  border-radius: var(--pi-radius);
+}
+:root .pi-operations :is(.mcr-ops, .moderation) > header {
+  display: flex;
+  flex-direction: column;
+  gap: var(--pi-row-gap);
+  margin: calc(-1 * var(--pi-content-inset)) calc(-1 * var(--pi-content-inset)) var(--pi-row-gap);
+  padding: 0 0 var(--pi-content-inset);
+  background: var(--pi-paper);
+  color: var(--pi-ink);
+  border-bottom: var(--pi-rule-width) solid var(--pi-soft-rule);
+}
+:root .pi-operations :is(.mcr-ops, .moderation) > header > h1 {
+  order: -1;
+  display: flex;
+  align-items: center;
+  min-height: var(--pi-title-height);
+  padding-inline: var(--pi-content-inset);
+  background: var(--pi-ink);
+  color: var(--pi-on-dark);
+}
+:root .pi-operations :is(.mcr-ops, .moderation) > header > :not(h1) { margin-inline: var(--pi-content-inset); }
+:root .pi-operations header > p { margin-block: 0; }
+:root .pi-operations header > p:first-child { font-size: var(--pi-meta-size); line-height: var(--pi-meta-leading); }
+:root .pi-operations h1 {
+  margin: 0;
+  font: 700 var(--pi-title-size)/var(--pi-title-leading) var(--pi-font-display);
+}
+:root .pi-operations :is(h2, h3, legend, caption) {
+  font: 600 var(--pi-control-size)/var(--pi-control-leading) var(--pi-font-display);
+}
+:root .pi-operations :is(h2, h3) { margin-block: var(--pi-row-gap); }
+:root .pi-operations p { margin-block: var(--pi-row-gap); }
+:root .pi-operations section + section { margin-top: var(--pi-row-gap); }
+:root .pi-operations .moderation section { margin-bottom: var(--pi-row-gap); }
+:root .pi-operations :is(button, input, select, textarea) {
+  box-sizing: border-box;
+  min-height: var(--pi-hit);
+  min-width: var(--pi-hit);
+  max-width: 100%;
+  padding: var(--pi-content-inset);
+  border: var(--pi-rule-width) solid var(--pi-rule);
+  border-radius: var(--pi-radius);
+  color: var(--pi-ink);
+  background: var(--pi-surface);
+  font: inherit;
+}
+:root .pi-operations button {
+  margin: 0;
+  font: 500 var(--pi-control-size)/var(--pi-control-leading) var(--pi-font-display);
+  cursor: pointer;
+  white-space: normal;
+}
+:root .pi-operations :is(button[type="submit"], .ops-confirm .ops-actions > button:first-child, .mcr-ops__review .mcr-ops__actions > button:first-child, [role="dialog"] button:first-of-type) {
+  color: var(--pi-on-dark);
+  background: var(--pi-crimson);
+  border-color: var(--pi-crimson);
+}
+:root .pi-operations button:disabled {
+  opacity: 1;
+  color: var(--pi-muted);
+  background: var(--pi-disabled);
+  border-color: var(--pi-soft-rule);
+  cursor: default;
+}
+:root .pi-operations button:active:not(:disabled) { box-shadow: inset 0 0 0 1px currentColor; }
+:root .pi-operations :focus-visible { outline: 2px solid var(--pi-focus); outline-offset: 2px; }
+:root .pi-operations :is(input:not([type="checkbox"]), textarea, select) { width: 100%; }
+:root .pi-operations textarea { min-height: 88px; resize: vertical; }
+:root .pi-operations input[type="checkbox"] { accent-color: var(--pi-crimson); flex: 0 0 var(--pi-hit); }
+:root .pi-operations :is(.ops-field, .mcr-ops label) { display: grid; gap: 4px; margin-block: var(--pi-row-gap); }
+:root .pi-operations .ops-check { display: flex; align-items: center; min-height: var(--pi-hit); gap: var(--pi-row-gap); }
+:root .pi-operations fieldset {
+  min-width: 0;
+  margin-block: var(--pi-row-gap);
+  padding: var(--pi-content-inset);
+  border: var(--pi-rule-width) solid var(--pi-soft-rule);
+}
+:root .pi-operations :is(.ops-actions, .mcr-ops__actions) { display: flex; flex-wrap: wrap; gap: var(--pi-row-gap); margin-block: var(--pi-row-gap); }
+:root .pi-operations :is(.ops-confirm, .mcr-ops__review, [role="dialog"]) {
+  margin-block: var(--pi-row-gap);
+  padding: var(--pi-content-inset);
+  border: var(--pi-frame-border) solid var(--pi-ink);
+  border-radius: var(--pi-radius);
+  background: var(--pi-surface);
+}
+:root .pi-operations .mcr-ops__form { gap: var(--pi-row-gap); margin-block: var(--pi-row-gap); }
+:root .pi-operations .mcr-ops__coordinates { gap: var(--pi-row-gap); }
+:root .pi-operations dl { display: grid; grid-template-columns: minmax(5rem, 1fr) minmax(0, 2fr); gap: 4px var(--pi-row-gap); margin-block: var(--pi-row-gap); }
+:root .pi-operations dt { font-weight: 650; }
+:root .pi-operations dd { min-width: 0; margin: 0; }
+:root .pi-operations .ops-audit-detail { display: block; }
+:root .pi-operations .ops-audit-detail > div { gap: 4px var(--pi-row-gap); margin-block: var(--pi-row-gap); }
+:root .pi-operations table { width: 100%; border-collapse: collapse; }
+:root .pi-operations :is(th, td) { padding: var(--pi-content-inset); border-bottom: 1px solid var(--pi-soft-rule); text-align: start; vertical-align: top; }
+:root .pi-operations th { font: 600 var(--pi-meta-size)/var(--pi-meta-leading) var(--pi-font-body); }
+:root .pi-operations caption { text-align: start; padding-block: var(--pi-row-gap); }
+:root .pi-operations .ops-state { white-space: normal; }
+:root .pi-operations .moderation td:last-child button { white-space: normal; min-width: var(--pi-hit); }
+:root .pi-operations small { font-size: var(--pi-meta-size); line-height: var(--pi-meta-leading); }
+:root .pi-operations code { white-space: normal; overflow-wrap: anywhere; }
+:root .pi-operations .ops-record { padding-block: var(--pi-row-gap); border-color: var(--pi-soft-rule); }
+:root .pi-operations .mcr-ops__steps li { padding-block: 4px; }
+@media (min-width: 640px) {
+  :root .pi-operations .ops-fields { gap: 0 var(--pi-row-gap); }
+}

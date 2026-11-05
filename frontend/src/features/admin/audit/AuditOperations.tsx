@@ -1,6 +1,7 @@
+import { OperationsSurface, OperationsFrame } from '../parade-ink-operations/OperationsSurface'
 import { useEffect, useRef, useState } from 'react'
 import type { OperationsController } from '../event/model/controller'
-import { Field, OperationFeedback, OperationsFrame, OperationsGate, useOperations } from '../event/ui/common'
+import { Field, OperationFeedback, OperationsGate, useOperations } from '../event/ui/common'
 import type { AuditQuery } from './contract'
 export function AuditOperations({ controller }: { controller: OperationsController }) {
   const state = useOperations(controller), detail = useRef<HTMLHeadingElement>(null)
@@ -14,7 +15,7 @@ export function AuditOperations({ controller }: { controller: OperationsControll
     return () => { if (opener instanceof HTMLElement && opener.isConnected) opener.focus() }
   }, [state.auditDetail])
   useEffect(() => { if (state.access !== 'ready') setQuery({ actor: '', operation: '', outcome: '', from: '', until: '' }) }, [state.access])
-  return <OperationsGate state={state}><OperationsFrame title="Audit log"><p>Minimal action metadata only. Report text, private media, notice contents and free-text reasons are not opened here.</p>
+  return <OperationsSurface view="audit"><OperationsGate state={state}><OperationsFrame title="Audit log"><p>Minimal action metadata only. Report text, private media, notice contents and free-text reasons are not opened here.</p>
     <form onSubmit={e => { e.preventDefault(); void controller.loadAudit(filters()) }}><fieldset disabled={state.loading}><legend>Search action metadata</legend>
       <div className="ops-fields"><Field label="Actor UUID">{id => <input id={id} value={query.actor} onChange={e => setQuery({ ...query, actor: e.target.value })} />}</Field>
         <Field label="Operation ID">{id => <input id={id} maxLength={100} value={query.operation} onChange={e => setQuery({ ...query, operation: e.target.value })} />}</Field>
@@ -31,5 +32,5 @@ export function AuditOperations({ controller }: { controller: OperationsControll
     {state.auditDetail && <section><h2 ref={detail} tabIndex={-1}>Audit entry details</h2><dl className="ops-audit-detail">
       {Object.entries(state.auditDetail).map(([key, value]) => <div key={key}><dt>{key.replaceAll('_', ' ')}</dt><dd>{value ?? 'None'}</dd></div>)}
     </dl><p>This entry records an outcome. It is not proof of an externally delivered notification or a completed closure job.</p><button type="button" onClick={() => controller.selectAudit(null)}>Close audit detail</button></section>}
-  </OperationsFrame></OperationsGate>
+  </OperationsFrame></OperationsGate></OperationsSurface>
 }

@@ -1,0 +1,31 @@
+{
+  "offerId": "PI12-OPS-NATIVE02-0136",
+  "ownerThreadId": "01a1a5d9-6950-7920-8c80-5214d4ce0eaf",
+  "state": "FULL",
+  "validation": "PASS_MODERATION_REMAINDER",
+  "acceptedAtEpoch": 1793842624.818867,
+  "acceptedEpoch": 1793842624.818867,
+  "actualFullEpoch": 1793842659.29857,
+  "elapsedSeconds": 34.479702949523926,
+  "resourcesReleased": true,
+  "resources": {
+    "source": 0,
+    "node": 0,
+    "browser": 0,
+    "guard": 0,
+    "descendants": 0,
+    "target": 0,
+    "growthReservation": 0
+  },
+  "peak": {
+    "processes": 11,
+    "rssBytes": 2146959360,
+    "wholeBytes": 5397770240,
+    "newBytes": 138883072
+  },
+  "includedPriorDebtBytes": 107372544,
+  "pngCount": 9,
+  "pngBytes": 1051486,
+  "processVerification": "Recorded primary/secondary PIDs and process groups absent; no owned Node/browser/guard command remains",
+  "result": "All six Member/Content width cases, Content conflict, Member original-command unknown and authority withdrawal PASS. Retain Native01 18 canonical width cases and original focused captures; no product source changes or replay."
+}

@@ -1,0 +1,86 @@
+[
+  {
+    "argv": [
+      "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node",
+      "/Users/lhs/Desktop/mcr-worktrees/fe-ref-customize/frontend/src/app/__tests__/parade-ink-operations/boundary-check.mjs"
+    ],
+    "exitCode": 0
+  },
+  {
+    "argv": [
+      "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node",
+      "/Users/lhs/Desktop/mcr-worktrees/fe-ref-customize/frontend/src/app/__tests__/parade-ink-operations/source-check.mjs"
+    ],
+    "exitCode": 0
+  },
+  {
+    "argv": [
+      "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node",
+      "/Users/lhs/Desktop/mcr/frontend/node_modules/oxlint/bin/oxlint",
+      "--deny-warnings",
+      "src/features/admin/parade-ink-operations",
+      "src/features/admin/event/ui/EventOperations.tsx",
+      "src/features/admin/places/PlacesOperations.tsx",
+      "src/features/admin/audit/AuditOperations.tsx",
+      "src/features/admin/mural/WallControl.tsx",
+      "src/features/admin/closure/EventClosure.tsx",
+      "src/features/admin/members/index.ts",
+      "src/features/admin/content/index.ts",
+      "src/features/admin/members/ui/parade-ink",
+      "src/features/admin/content/ui/parade-ink",
+      "src/app/__tests__/parade-ink-operations",
+      "e2e/visual/parade-ink-operations"
+    ],
+    "exitCode": 0
+  },
+  {
+    "argv": [
+      "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node",
+      "--check",
+      "/Users/lhs/Desktop/mcr-worktrees/fe-ref-customize/frontend/src/app/__tests__/parade-ink-operations/source-check.mjs"
+    ],
+    "exitCode": 0
+  },
+  {
+    "argv": [
+      "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node",
+      "--check",
+      "/Users/lhs/Desktop/mcr-worktrees/fe-ref-customize/frontend/src/app/__tests__/parade-ink-operations/vitest.config.mjs"
+    ],
+    "exitCode": 0
+  },
+  {
+    "argv": [
+      "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node",
+      "--check",
+      "/Users/lhs/Desktop/mcr-worktrees/fe-ref-customize/frontend/src/app/__tests__/parade-ink-operations/boundary-check.mjs"
+    ],
+    "exitCode": 0
+  },
+  {
+    "argv": [
+      "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node",
+      "--check",
+      "/Users/lhs/Desktop/mcr-worktrees/fe-ref-customize/frontend/e2e/visual/parade-ink-operations/native.mjs"
+    ],
+    "exitCode": 0
+  },
+  {
+    "argv": [
+      "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node",
+      "--check",
+      "/Users/lhs/Desktop/mcr-worktrees/fe-ref-customize/frontend/e2e/visual/parade-ink-operations/config.mjs"
+    ],
+    "exitCode": 0
+  },
+  {
+    "argv": [
+      "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node",
+      "/Users/lhs/Desktop/mcr/frontend/node_modules/vitest/vitest.mjs",
+      "run",
+      "--config",
+      "/Users/lhs/Desktop/mcr-worktrees/fe-ref-customize/frontend/src/app/__tests__/parade-ink-operations/vitest.config.mjs"
+    ],
+    "exitCode": 1
+  }
+]

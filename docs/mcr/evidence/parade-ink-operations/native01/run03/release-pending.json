@@ -1,0 +1,48 @@
+{
+  "status": "FAIL",
+  "epoch": 1793842259.458497,
+  "primaryPid": 55196,
+  "secondaryPid": 55373,
+  "remainingChildren": [],
+  "peak": {
+    "processes": 7,
+    "rssBytes": 926564352,
+    "wholeBytes": 5343883264,
+    "newBytes": 34115584
+  },
+  "wholeBytes": 5339983872,
+  "commands": [
+    {
+      "argv": [
+        "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node",
+        "--check",
+        "/Users/lhs/Desktop/mcr-worktrees/fe-ref-customize/frontend/e2e/visual/parade-ink-operations/native.mjs"
+      ],
+      "exitCode": 0
+    },
+    {
+      "argv": [
+        "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node",
+        "--check",
+        "/Users/lhs/Desktop/mcr-worktrees/fe-ref-customize/frontend/e2e/visual/parade-ink-operations/config.mjs"
+      ],
+      "exitCode": 0
+    },
+    {
+      "argv": [
+        "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node",
+        "/Users/lhs/Desktop/mcr/frontend/node_modules/oxlint/bin/oxlint",
+        "--deny-warnings",
+        "e2e/visual/parade-ink-operations"
+      ],
+      "exitCode": 0
+    },
+    {
+      "argv": [
+        "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node",
+        "/Users/lhs/Desktop/mcr-worktrees/fe-ref-customize/frontend/e2e/visual/parade-ink-operations/native.mjs"
+      ],
+      "exitCode": 1
+    }
+  ]
+}

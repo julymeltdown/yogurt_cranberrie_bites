@@ -1,0 +1,33 @@
+{
+  "status": "FAIL",
+  "epoch": 1793841249.242937,
+  "primaryPid": 58119,
+  "secondaryPid": 58253,
+  "remainingChildren": [],
+  "peak": {
+    "processes": 5,
+    "rssBytes": 762511360,
+    "wholeBytes": 5341532160,
+    "newBytes": 12959744
+  },
+  "wholeBytes": 5329256448,
+  "commands": [
+    {
+      "argv": [
+        "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node",
+        "/Users/lhs/Desktop/mcr-worktrees/fe-ref-customize/frontend/src/app/__tests__/parade-ink-operations/boundary-check.mjs"
+      ],
+      "exitCode": 0
+    },
+    {
+      "argv": [
+        "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node",
+        "/Users/lhs/Desktop/mcr/frontend/node_modules/vitest/vitest.mjs",
+        "run",
+        "--config",
+        "/Users/lhs/Desktop/mcr-worktrees/fe-ref-customize/frontend/src/app/__tests__/parade-ink-operations/vitest.config.mjs"
+      ],
+      "exitCode": 1
+    }
+  ]
+}

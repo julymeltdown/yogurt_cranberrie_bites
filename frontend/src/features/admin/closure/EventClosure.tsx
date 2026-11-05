@@ -1,3 +1,4 @@
+import { OperationsSurface } from '../parade-ink-operations/OperationsSurface'
 import { useEffect, useId, useRef, useState, useSyncExternalStore } from 'react'
 import type { EventClosure as EventClosureController } from './controller'
 import '../mural/admin.css'
@@ -8,7 +9,7 @@ export function EventClosure({ controller }: { controller: EventClosureControlle
   const resumeReasonLabel = useId()
   useEffect(() => { if (state.draft) focus.current?.focus() }, [state.draft])
   useEffect(() => { if (state.phase === 'unavailable' || state.phase === 'disposed') { setReason(''); setJobId(''); setInvalid(false) } }, [state.phase])
-  return <section className="mcr-ops" aria-label="Event closure"><header><p>Event operations</p><h1>CLOSE THE EVENT</h1></header>
+  return <OperationsSurface view="closure"><section className="mcr-ops" aria-label="Event closure"><header><p>Event operations</p><h1>CLOSE THE EVENT</h1></header>
     <p>Make the event read-only, freeze the final wall, expire private access and prepare the permitted archive. Completed cleanup steps remain complete.</p>
     <p role="status" aria-label="Event closure status" aria-live="polite">{state.message}</p>
     {!state.command && !state.jobId && !state.draft && state.phase !== 'unavailable' && state.phase !== 'disposed' && <form className="mcr-ops__form" aria-label="Prepare event closure" onSubmit={e => { e.preventDefault(); setInvalid(!controller.prepare(reason)) }}>
@@ -40,5 +41,5 @@ export function EventClosure({ controller }: { controller: EventClosureControlle
       <button type="submit" disabled={busy}>Load existing closure job</button>
     </form>}
     <button disabled={busy || state.phase === 'disposed'} onClick={controller.revalidate}>Recheck operator access</button>
-  </section>
+  </section></OperationsSurface>
 }

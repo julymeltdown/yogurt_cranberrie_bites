@@ -1,0 +1,1094 @@
+{
+  "task": "PI12 Operator Parade Ink eight-page presentation",
+  "status": "QUALIFIED_PUBLICATION_PENDING",
+  "base": "2b3819fbe686b03769648e698c3741b8f9debe18",
+  "qualifiedSource": "676bea0569e86fbcaf96ac44c35c62b63292aaf5",
+  "publisher": "01a1a5d9-332b-7822-a8f7-412e295fa211",
+  "canonicalDependencies": [
+    "cf7bb13735aeb20e0b796b2071726f048a211bd0",
+    "1907016b6aa41c17998acab691a83e99d0a80076"
+  ],
+  "routing": "Apply only seven exact presentation/import/index hunks from publication-seams.patch against matching bases; preserve newer functional/Reports/owner changes. Add exact new owned postimages. Do not merge whole worker branch or replace protected shared root composition. Five source files retain all old hooks/controller/behavior after subtracting allowed wrapper/frame import aliases; indices change only UI export line.",
+  "entries": [
+    {
+      "path": "docs/mcr/evidence/parade-ink-operations/native-plan.json",
+      "baseBlob": null,
+      "postBlob": "d573ff53fb689c5dbdf60d1b44fba7c872cb21bd",
+      "sha256": "4569a4be1a87bafc7446bdcb3ef640de6b75beeb799b11e3f79557fcbaf176db",
+      "bytes": 1232,
+      "mode": "100644",
+      "routing": "OWNED_NEW_POSTIMAGE"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-operations/native-remainder-plan.json",
+      "baseBlob": null,
+      "postBlob": "2c6ace19eca333cf269a9b4c061df4b07cf911ff",
+      "sha256": "48fbb18ac9e3b9c6352203d63f6e791513205339eacef0cbec18ac8ec9791ba2",
+      "bytes": 935,
+      "mode": "100644",
+      "routing": "OWNED_NEW_POSTIMAGE"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-operations/native-validation.json",
+      "baseBlob": null,
+      "postBlob": "6c5fc2c17f3324244a9b840b576ebda5157d9fc0",
+      "sha256": "5f4892ba1edc331ab716d0721914e0571620f127c22dbc2461ac570c77ac52b4",
+      "bytes": 21638,
+      "mode": "100644",
+      "routing": "OWNED_NEW_POSTIMAGE"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-operations/native01/FULL.json",
+      "baseBlob": null,
+      "postBlob": "750ef8f61d8698d06e5572a89648cde300d3f0d4",
+      "sha256": "9f6bb40e1b0f2125e2d4346be1a53eb3ff60f9d815cc77fd02bd5cde974f2a38",
+      "bytes": 989,
+      "mode": "100644",
+      "routing": "OWNED_NEW_POSTIMAGE"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-operations/native01/accept.json",
+      "baseBlob": null,
+      "postBlob": "c0dd0cdc58f25684b8f2ea425fbda99b2c31078d",
+      "sha256": "4a44236a110b08f4ad1be923360d3af674a2dea2844b883a0e0f40d33f71deb3",
+      "bytes": 147,
+      "mode": "100644",
+      "routing": "OWNED_NEW_POSTIMAGE"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-operations/native01/run01/failure.json",
+      "baseBlob": null,
+      "postBlob": "29a1ed094f88e88c4e255f8ecd58cc583e266e91",
+      "sha256": "27e29360d28513f9f5305d323b3d4ef1062a0c2b45d2ce2abe9bdfb3bcc0595b",
+      "bytes": 159,
+      "mode": "100644",
+      "routing": "OWNED_NEW_POSTIMAGE"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-operations/native01/run01/release-pending.json",
+      "baseBlob": null,
+      "postBlob": "922e418d5c97f64f51b4f122a16f9dd95772ef18",
+      "sha256": "a8c66d69125dbefa479a6ac27c99e8c3f3831e93ea27c5d469462daa5213a673",
+      "bytes": 285,
+      "mode": "100644",
+      "routing": "OWNED_NEW_POSTIMAGE"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-operations/native01/run02/failure.json",
+      "baseBlob": null,
+      "postBlob": "a72c212f5c54e131df5886bc4242e00b5451e947",
+      "sha256": "6fcfa989223fbde41020c50d01df0083e9e3fe1bb5ae4915f0858177ab4f6428",
+      "bytes": 159,
+      "mode": "100644",
+      "routing": "OWNED_NEW_POSTIMAGE"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-operations/native01/run02/release-pending.json",
+      "baseBlob": null,
+      "postBlob": "e23fca53d90e85fa894a26855bdb92ebf455bc39",
+      "sha256": "58594cc7ccf10d8438decffe5006e8291f4a0b2586c8301f15f6a878a4a3b6b4",
+      "bytes": 285,
+      "mode": "100644",
+      "routing": "OWNED_NEW_POSTIMAGE"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-operations/native01/run03/01.log",
+      "baseBlob": null,
+      "postBlob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0,
+      "mode": "100644",
+      "routing": "OWNED_NEW_POSTIMAGE"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-operations/native01/run03/02.log",
+      "baseBlob": null,
+      "postBlob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0,
+      "mode": "100644",
+      "routing": "OWNED_NEW_POSTIMAGE"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-operations/native01/run03/03.log",
+      "baseBlob": null,
+      "postBlob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0,
+      "mode": "100644",
+      "routing": "OWNED_NEW_POSTIMAGE"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-operations/native01/run03/04.log",
+      "baseBlob": null,
+      "postBlob": "dd03f552c22403c6b9890f1d216e90788dd30c45",
+      "sha256": "402800cb6abce3a8025dc497ff942b5ad8e628598c0fec345e2bd9fcd3289d25",
+      "bytes": 2142,
+      "mode": "100644",
+      "routing": "OWNED_NEW_POSTIMAGE"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-operations/native01/run03/commands.json",
+      "baseBlob": null,
+      "postBlob": "e42c54bab767ad841d388dda07958f905b020be9",
+      "sha256": "cbe41422cab64979b6bf7a4969117ce657522f994debf6634495c9c5e484a5a5",
+      "bytes": 996,
+      "mode": "100644",
+      "routing": "OWNED_NEW_POSTIMAGE"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-operations/native01/run03/failure.json",
+      "baseBlob": null,
+      "postBlob": "1cb53096e7b45bc0768dca5321de1795bbb3d3fd",
+      "sha256": "5980c063fd10c7b492e1d2aa6933602e1bf8e9fc2134075ce75a8e705db548ca",
+      "bytes": 238,
+      "mode": "100644",
+      "routing": "OWNED_NEW_POSTIMAGE"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-operations/native01/run03/native/report.json",
+      "baseBlob": null,
+      "postBlob": "421f5a10bceb081b46978fd964444f84fc981c78",
+      "sha256": "66f3062cf8b8bbe33e9544d3a40396857e37b50bc10798da5f6040329a257303",
+      "bytes": 3452,
+      "mode": "100644",
+      "routing": "OWNED_NEW_POSTIMAGE"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-operations/native01/run03/release-pending.json",
+      "baseBlob": null,
+      "postBlob": "19c4dd6fe7eba9cab27d3529a8c55be2cbfbb3c6",
+      "sha256": "409a2e56dfb4879e74acbf3610656858654da223bbb846e8ad6353961c1550b3",
+      "bytes": 1352,
+      "mode": "100644",
+      "routing": "OWNED_NEW_POSTIMAGE"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-operations/native01/run04/01.log",
+      "baseBlob": null,
+      "postBlob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0,
+      "mode": "100644",
+      "routing": "OWNED_NEW_POSTIMAGE"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-operations/native01/run04/02.log",
+      "baseBlob": null,
+      "postBlob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0,
+      "mode": "100644",
+      "routing": "OWNED_NEW_POSTIMAGE"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-operations/native01/run04/03.log",
+      "baseBlob": null,
+      "postBlob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0,
+      "mode": "100644",
+      "routing": "OWNED_NEW_POSTIMAGE"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-operations/native01/run04/04.log",
+      "baseBlob": null,
+      "postBlob": "190bf9682473c6faa2e07415e170093430fa1477",
+      "sha256": "6642093c92ac1dd0ce80b1b40596fa361c74d26bd539500480a7653ace670be9",
+      "bytes": 1773,
+      "mode": "100644",
+      "routing": "OWNED_NEW_POSTIMAGE"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-operations/native01/run04/commands.json",
+      "baseBlob": null,
+      "postBlob": "e42c54bab767ad841d388dda07958f905b020be9",
+      "sha256": "cbe41422cab64979b6bf7a4969117ce657522f994debf6634495c9c5e484a5a5",
+      "bytes": 996,
+      "mode": "100644",
+      "routing": "OWNED_NEW_POSTIMAGE"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-operations/native01/run04/failure.json",
+      "baseBlob": null,
+      "postBlob": "46afe08006c99dd6f487735eb66902f418036486",
+      "sha256": "9972f022eb5305c613f986b77e8f639f2512def2ca0fbd6b13f1320aa2477fea",
+      "bytes": 239,
+      "mode": "100644",
+      "routing": "OWNED_NEW_POSTIMAGE"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-operations/native01/run04/native/report.json",
+      "baseBlob": null,
+      "postBlob": "a5730100b95dad9a696119d99ba9138b6376d678",
+      "sha256": "243bd4e8553f282b54a72ee8e7157ffeaa1bb7db396e6f48b6b39cf887748626",
+      "bytes": 71037,
+      "mode": "100644",
+      "routing": "OWNED_NEW_POSTIMAGE"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-operations/native01/run04/release-pending.json",
+      "baseBlob": null,
+      "postBlob": "b252856fe51519c28e0f18a78c7a5cdbd29d4ced",
+      "sha256": "e50f542d938087884552f15999a8aeab11c614f3cb1526d771dfc885fca87e06",
+      "bytes": 1354,
+      "mode": "100644",
+      "routing": "OWNED_NEW_POSTIMAGE"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-operations/native02/FULL.json",
+      "baseBlob": null,
+      "postBlob": "97be2e859d4876b82be7188dccc5fdcefc652771",
+      "sha256": "63e4b559ab09f43dcb9e2945e1271e797a78453b0e0c1b0c6bfe592023cc00a6",
+      "bytes": 1078,
+      "mode": "100644",
+      "routing": "OWNED_NEW_POSTIMAGE"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-operations/native02/accept.json",
+      "baseBlob": null,
+      "postBlob": "cbb9c2c7d1ee450480e8663051c0784089638648",
+      "sha256": "902e1b34473795be3f5d085f290b465df48c529fd0bd7122d3316811142b1131",
+      "bytes": 143,
+      "mode": "100644",
+      "routing": "OWNED_NEW_POSTIMAGE"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-operations/native02/run01/01.log",
+      "baseBlob": null,
+      "postBlob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0,
+      "mode": "100644",
+      "routing": "OWNED_NEW_POSTIMAGE"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-operations/native02/run01/02.log",
+      "baseBlob": null,
+      "postBlob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0,
+      "mode": "100644",
+      "routing": "OWNED_NEW_POSTIMAGE"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-operations/native02/run01/03.log",
+      "baseBlob": null,
+      "postBlob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0,
+      "mode": "100644",
+      "routing": "OWNED_NEW_POSTIMAGE"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-operations/native02/run01/04.log",
+      "baseBlob": null,
+      "postBlob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0,
+      "mode": "100644",
+      "routing": "OWNED_NEW_POSTIMAGE"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-operations/native02/run01/commands.json",
+      "baseBlob": null,
+      "postBlob": "20b49fa34fccf39fb1e847b83513ff477d19df4b",
+      "sha256": "ca16632b7b461b8cad9764f0b6f8be8d78dc92bf5523e83a2d91ad56af7f51df",
+      "bytes": 996,
+      "mode": "100644",
+      "routing": "OWNED_NEW_POSTIMAGE"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-operations/native02/run01/release-pending.json",
+      "baseBlob": null,
+      "postBlob": "cd774852be689ce1e71c18c445562229b72437eb",
+      "sha256": "d704a86d3d62a93d1fa48e92c9cb78f1db4e18cde71330a86455a92acb8357b4",
+      "bytes": 1355,
+      "mode": "100644",
+      "routing": "OWNED_NEW_POSTIMAGE"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-operations/native02/run01/report.json",
+      "baseBlob": null,
+      "postBlob": "9768a40516a6a24f9c6e825cc5658912bcced300",
+      "sha256": "41f7135318a659270593a2e0926421a1478b1547e59081ce2cbd02e4799f54b3",
+      "bytes": 31245,
+      "mode": "100644",
+      "routing": "OWNED_NEW_POSTIMAGE"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-operations/publication-seams.patch",
+      "baseBlob": null,
+      "postBlob": "6bd1d9d45459c9ab132d0e5542855b383a368519",
+      "sha256": "db4ef5a701647056b553113ba9413347d8f054d6e0a67ddb66cb8ded0af8bd1c",
+      "bytes": 14447,
+      "mode": "100644",
+      "routing": "OWNED_NEW_POSTIMAGE"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-operations/readset.json",
+      "baseBlob": null,
+      "postBlob": "4042dc34e205ec63105f17da716c6a5b1a3feeec",
+      "sha256": "1918d645aa477089b0ae16bf99ebb7a46a5153a3d11634c45cca07132a93c7c2",
+      "bytes": 7327,
+      "mode": "100644",
+      "routing": "OWNED_NEW_POSTIMAGE"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-operations/screenshots/360-audit.png",
+      "baseBlob": null,
+      "postBlob": "68cfc44e8e40090438e2d5ae53109caccb35a4e2",
+      "sha256": "471d6bfb8439b96819728ad32cdf330ddc5bd835daee7d4e403d14a610adf80d",
+      "bytes": 75723,
+      "mode": "100644",
+      "routing": "OWNED_NEW_POSTIMAGE"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-operations/screenshots/360-closure.png",
+      "baseBlob": null,
+      "postBlob": "3b3c79dc10efe72200d7970d41194e61e106587e",
+      "sha256": "9b95c5115cff0b37a92b7ac33f088d41b6f351ec1598e8c660657e25ec8f38b5",
+      "bytes": 67962,
+      "mode": "100644",
+      "routing": "OWNED_NEW_POSTIMAGE"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-operations/screenshots/360-content-confirm.png",
+      "baseBlob": null,
+      "postBlob": "39f1b90b2436f830d8773c749b95c60864a0d155",
+      "sha256": "52c47d5b62ae9227201dd05982f2505fac77f6dbc4cea21285f73fe1fc73f9b5",
+      "bytes": 136864,
+      "mode": "100644",
+      "routing": "OWNED_NEW_POSTIMAGE"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-operations/screenshots/360-control.png",
+      "baseBlob": null,
+      "postBlob": "28ef5a8f757d60710b37f2e42d3d87d74133e473",
+      "sha256": "0b0598e49ebd5e0ce51e2514e92f44b98b4a071cf80fe8236e5f4ef0b0ac0591",
+      "bytes": 129973,
+      "mode": "100644",
+      "routing": "OWNED_NEW_POSTIMAGE"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-operations/screenshots/360-event.png",
+      "baseBlob": null,
+      "postBlob": "15f97adf5e22e4c882ed6179e4c2e4415de1d891",
+      "sha256": "5b26775e11b7358962305dbca97104a8ebd9c006cfcf622931a3c7dfe1e937b1",
+      "bytes": 194810,
+      "mode": "100644",
+      "routing": "OWNED_NEW_POSTIMAGE"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-operations/screenshots/360-members-confirm.png",
+      "baseBlob": null,
+      "postBlob": "dbbe80cb411c7d782ed0f22a7096f5c65ea97a6d",
+      "sha256": "4df9cdda98a849abeb9d8b41d5fa7a3e1c0d6d57321d9e8830bfcfd538921f28",
+      "bytes": 126925,
+      "mode": "100644",
+      "routing": "OWNED_NEW_POSTIMAGE"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-operations/screenshots/360-places.png",
+      "baseBlob": null,
+      "postBlob": "4f62bad07d452bd1604ab0c88436fea574b14b3f",
+      "sha256": "01b28a6987db672c2ab379553d02947d81a0e9ee3c1ec9719776999267866855",
+      "bytes": 66890,
+      "mode": "100644",
+      "routing": "OWNED_NEW_POSTIMAGE"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-operations/screenshots/360-wall.png",
+      "baseBlob": null,
+      "postBlob": "057e1e68845f2402ec73e9161aa5e2537793d913",
+      "sha256": "e5186516996269ed7499854f28932d5b2a322252217b3aea83f7fa20df400cff",
+      "bytes": 57338,
+      "mode": "100644",
+      "routing": "OWNED_NEW_POSTIMAGE"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-operations/screenshots/390-audit-details.png",
+      "baseBlob": null,
+      "postBlob": "4bbf0721bf3ad3e6a819243568e9551e927e14f8",
+      "sha256": "4a77efb46e142433dc362a790b582567c12aa72fd8a1d99c9c5758a1c478b63d",
+      "bytes": 124266,
+      "mode": "100644",
+      "routing": "OWNED_NEW_POSTIMAGE"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-operations/screenshots/390-audit.png",
+      "baseBlob": null,
+      "postBlob": "54d9b47f49486fc3fa318aef144996cdd7a34433",
+      "sha256": "6420c785ffb0483dbb8c4319c908dc8ff18b8b18faf85bb5bde533032970d3da",
+      "bytes": 75447,
+      "mode": "100644",
+      "routing": "OWNED_NEW_POSTIMAGE"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-operations/screenshots/390-authority-withdrawn.png",
+      "baseBlob": null,
+      "postBlob": "1af284fac178e289c5bead0c555072769dfaa5f0",
+      "sha256": "399b74296f37bf705db202b1dff0e5a3b9cfc63afe48053379367d73e0f33a75",
+      "bytes": 35002,
+      "mode": "100644",
+      "routing": "OWNED_NEW_POSTIMAGE"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-operations/screenshots/390-closure.png",
+      "baseBlob": null,
+      "postBlob": "8d0494baea5bd0ed793a15d5bb92998da1c87879",
+      "sha256": "78f21201dca1210f2961534bd9f8a733c7b1ec8bd11f545db6b9fcedd30be3eb",
+      "bytes": 67341,
+      "mode": "100644",
+      "routing": "OWNED_NEW_POSTIMAGE"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-operations/screenshots/390-content-confirm.png",
+      "baseBlob": null,
+      "postBlob": "8cc9f22c2487fe72a53530c64f4e9198c05bc5f4",
+      "sha256": "948bb551c0c6af1449494c540b1febc5dd838bf045247edf2a850fc777adfee9",
+      "bytes": 134792,
+      "mode": "100644",
+      "routing": "OWNED_NEW_POSTIMAGE"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-operations/screenshots/390-content-conflict.png",
+      "baseBlob": null,
+      "postBlob": "45797698d808a339195f9bbaa6e3a35799e1289b",
+      "sha256": "4f8fb2b94267e53f8cdac2fbfb3cc9cedf2ac5ffd70107abfaf1cddb2df8f926",
+      "bytes": 118091,
+      "mode": "100644",
+      "routing": "OWNED_NEW_POSTIMAGE"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-operations/screenshots/390-control.png",
+      "baseBlob": null,
+      "postBlob": "c6cf877558a828085d6d0cbaa563df6d0a783d85",
+      "sha256": "e093d28a6bcdceb339d53d77deeae65fe6da7fd2a480895a464fed548821e9be",
+      "bytes": 128717,
+      "mode": "100644",
+      "routing": "OWNED_NEW_POSTIMAGE"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-operations/screenshots/390-event-unavailable-read.png",
+      "baseBlob": null,
+      "postBlob": "b4816f65e7de3133a5dfb35ec712d0a41104fb49",
+      "sha256": "ef9888c448e9197ee92f0b99c3768c3a487d70886e490e39c758a2d207d34a56",
+      "bytes": 200195,
+      "mode": "100644",
+      "routing": "OWNED_NEW_POSTIMAGE"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-operations/screenshots/390-event.png",
+      "baseBlob": null,
+      "postBlob": "c913a023c00417634a489a30043eb5e9ddaac90a",
+      "sha256": "055ca8c26725ea4bc41fbdb5bc40db5e2b314696c93fb8d059cad85cfb0e8950",
+      "bytes": 193375,
+      "mode": "100644",
+      "routing": "OWNED_NEW_POSTIMAGE"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-operations/screenshots/390-member-unknown.png",
+      "baseBlob": null,
+      "postBlob": "70e09a3c41898cfac5b0af1046519316d79e1613",
+      "sha256": "7b859be79a3eaee037544fd25afc5a0b2069bb1a73826e8ac914bf6845b64f1b",
+      "bytes": 104272,
+      "mode": "100644",
+      "routing": "OWNED_NEW_POSTIMAGE"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-operations/screenshots/390-members-confirm.png",
+      "baseBlob": null,
+      "postBlob": "fe54cc02cf18c8586c4bc947009576245f44f2e7",
+      "sha256": "633717588b309bee30a6debbba0474238bd32ef8d7bbc16ad61e13e0c3cd34cd",
+      "bytes": 125370,
+      "mode": "100644",
+      "routing": "OWNED_NEW_POSTIMAGE"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-operations/screenshots/390-places.png",
+      "baseBlob": null,
+      "postBlob": "cd07813edb95d296fe513fef50a13981bc22ede2",
+      "sha256": "e06759c2db4d7b47f3a87461316b49867904f74ba4eb2899e664bde0790c9048",
+      "bytes": 67884,
+      "mode": "100644",
+      "routing": "OWNED_NEW_POSTIMAGE"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-operations/screenshots/390-wall.png",
+      "baseBlob": null,
+      "postBlob": "a57fabc58512a6ec79c202ddafdff7af7d3b2371",
+      "sha256": "5c589a54f77726bcbbcbfbf66c540617fb88610e64ab330dcc52e267e6bac15e",
+      "bytes": 57677,
+      "mode": "100644",
+      "routing": "OWNED_NEW_POSTIMAGE"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-operations/screenshots/390x420-closure-partial.png",
+      "baseBlob": null,
+      "postBlob": "7d8c28c11d405e7f97d2fca8f1f8b7a88e1db9f2",
+      "sha256": "c5607b76516b8f2d6ba53cce9d9fc2a1f5f8edb27de04f49e0913a1572200aff",
+      "bytes": 115458,
+      "mode": "100644",
+      "routing": "OWNED_NEW_POSTIMAGE"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-operations/screenshots/390x420-wall-confirm.png",
+      "baseBlob": null,
+      "postBlob": "9a921a20e0411365947f00d9f7f1c7454a70bc6d",
+      "sha256": "a8812e6d173b34e7117b7447d42cef83308264413c89d9cd3b2b0dabbdcfa2f2",
+      "bytes": 92476,
+      "mode": "100644",
+      "routing": "OWNED_NEW_POSTIMAGE"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-operations/screenshots/390x420-wall-frozen.png",
+      "baseBlob": null,
+      "postBlob": "685501f312ce85e281aacfade11dd1a5b143384a",
+      "sha256": "5eafa7f889bfe6b81bbcb628d71fe616871620419802bfa4ac10f9a1096181a6",
+      "bytes": 55116,
+      "mode": "100644",
+      "routing": "OWNED_NEW_POSTIMAGE"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-operations/screenshots/390x420-wall-unknown.png",
+      "baseBlob": null,
+      "postBlob": "8bd2b26384f4a47ce41923b023bf4bf388282192",
+      "sha256": "74a9307d18af00d2760e6a2082910abadae48f155a82f95043e6a6ab280bcc5e",
+      "bytes": 65411,
+      "mode": "100644",
+      "routing": "OWNED_NEW_POSTIMAGE"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-operations/screenshots/430-audit.png",
+      "baseBlob": null,
+      "postBlob": "72a0e5644383e7e377d622e6fbaf54774ee71702",
+      "sha256": "f1a6a5dd59fb100e896099659d255571fb7b73e526894e18bece981e8b6225c6",
+      "bytes": 77868,
+      "mode": "100644",
+      "routing": "OWNED_NEW_POSTIMAGE"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-operations/screenshots/430-closure.png",
+      "baseBlob": null,
+      "postBlob": "b31552eb5a4fe1817b321f60580ac4dbf23b2e82",
+      "sha256": "dba3027d37ae927941756f8342e05d3c58510fe5896d2b505d3380d93a820829",
+      "bytes": 69776,
+      "mode": "100644",
+      "routing": "OWNED_NEW_POSTIMAGE"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-operations/screenshots/430-content-confirm.png",
+      "baseBlob": null,
+      "postBlob": "3fdfaadd2da7e09cfeccec232707f52bba23e275",
+      "sha256": "d8fe4ef1535f309ba3ce71686cc0746acf55fd69cf2b7eaa378310b669021045",
+      "bytes": 138094,
+      "mode": "100644",
+      "routing": "OWNED_NEW_POSTIMAGE"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-operations/screenshots/430-control.png",
+      "baseBlob": null,
+      "postBlob": "7ab152346ddc1d6c23fae887a258a90bb0b65e9c",
+      "sha256": "5964a2c9e2b22fb531ba0ddcf400ac7a51dfa554b510bb8fcf39d7052f68daaa",
+      "bytes": 135032,
+      "mode": "100644",
+      "routing": "OWNED_NEW_POSTIMAGE"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-operations/screenshots/430-event.png",
+      "baseBlob": null,
+      "postBlob": "4dcbaab1bc3eec185c8e032e0d5426cea83632eb",
+      "sha256": "e724d25d798848d16e3de183635bdf10ce4ca852ab9022b36ef1af0bd510d5a8",
+      "bytes": 201430,
+      "mode": "100644",
+      "routing": "OWNED_NEW_POSTIMAGE"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-operations/screenshots/430-members-confirm.png",
+      "baseBlob": null,
+      "postBlob": "f001d750a49aa9b19f21ba500cdcf85e1403ea2f",
+      "sha256": "ae803c6c692ffeef3ecff0c04a0a76f023cd36f4a083733023c813ad6dc949c3",
+      "bytes": 132076,
+      "mode": "100644",
+      "routing": "OWNED_NEW_POSTIMAGE"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-operations/screenshots/430-places.png",
+      "baseBlob": null,
+      "postBlob": "6da20b0e6ca64cf79fb7a925d91930334e1d6c75",
+      "sha256": "40e8a8429d0c1e0bdbdbe556a2d0a7a9c0050348b5ca7beef079ec095ff91adb",
+      "bytes": 71604,
+      "mode": "100644",
+      "routing": "OWNED_NEW_POSTIMAGE"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-operations/screenshots/430-wall.png",
+      "baseBlob": null,
+      "postBlob": "8dcbfaf30f9680220fbf0dd6d85b1560fb7f20d7",
+      "sha256": "28d8017dc55e54d287380c8b97daba489fd741126e76c939a3519f49560871a6",
+      "bytes": 58207,
+      "mode": "100644",
+      "routing": "OWNED_NEW_POSTIMAGE"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-operations/screenshots/operator-390-reference-overlay.png",
+      "baseBlob": null,
+      "postBlob": "8b1638d71741c225ae83c4e03a369f22f0241877",
+      "sha256": "affda623c376e7dfd052f4f356031cd0f6863a49837d896ace8e651631babd81",
+      "bytes": 460560,
+      "mode": "100644",
+      "routing": "OWNED_NEW_POSTIMAGE"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-operations/screenshots/operator-390-reference-side.png",
+      "baseBlob": null,
+      "postBlob": "6df298df49b4aa7b556bddea29715e10053b6fcc",
+      "sha256": "5cb9f1cdd77a187c1111040cba25c79e816efb10919369b1e03a165fd81e5a53",
+      "bytes": 650264,
+      "mode": "100644",
+      "routing": "OWNED_NEW_POSTIMAGE"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-operations/source-intake.json",
+      "baseBlob": null,
+      "postBlob": "90a76fbc42d8cc80f903d32edc807ec856ba3146",
+      "sha256": "c1bc51d47a3a364c7b8cf17817579e99cba9f660c1ccf7d203a4bab01ececfa3",
+      "bytes": 1645,
+      "mode": "100644",
+      "routing": "OWNED_NEW_POSTIMAGE"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-operations/source-validation.json",
+      "baseBlob": null,
+      "postBlob": "a315f0d44a35170209140412be77d198032c2342",
+      "sha256": "166368f1a4f863698c48eff6e9f0d77b6a708385c17f8913f2f7bd3c1b140c23",
+      "bytes": 4377,
+      "mode": "100644",
+      "routing": "OWNED_NEW_POSTIMAGE"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-operations/source01/run01/failure.json",
+      "baseBlob": null,
+      "postBlob": "c8e7d91828ab5abe6a9b208731a2d3b2c4e9bc4f",
+      "sha256": "57754e542054239ea633a0326d6a9b2663fb0b29a4e73fce8b701d8dbcd1beaa",
+      "bytes": 153,
+      "mode": "100644",
+      "routing": "OWNED_NEW_POSTIMAGE"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-operations/source01/run01/release-pending.json",
+      "baseBlob": null,
+      "postBlob": "aa2c786887ed1a9723f507877ed0012484c26458",
+      "sha256": "de62a7f4234e2efe028b5f0399d327e4eacebdb3d29c4c66ea53419363b2ca77",
+      "bytes": 278,
+      "mode": "100644",
+      "routing": "OWNED_NEW_POSTIMAGE"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-operations/source01/run01/secondary-failure.json",
+      "baseBlob": null,
+      "postBlob": "d43d848210764526a4a2e1e84f93319709b9da1a",
+      "sha256": "f0c3cb6b20fa375846dab95b86c42e3390c38fc203980c623b69de4198d2339f",
+      "bytes": 214,
+      "mode": "100644",
+      "routing": "OWNED_NEW_POSTIMAGE"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-operations/source01/run02/commands.json",
+      "baseBlob": null,
+      "postBlob": "205acb261a7490e858c85191dfece820b404fbf0",
+      "sha256": "73aa3ba3e6119131996ab7e824b9da92aba5d9098676ea3fdc0350ae58417e9c",
+      "bytes": 601,
+      "mode": "100644",
+      "routing": "OWNED_NEW_POSTIMAGE"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-operations/source01/run02/failure.json",
+      "baseBlob": null,
+      "postBlob": "820583823ec5c78dc6d421af401fe2ceae54b4cf",
+      "sha256": "aead175fa00ce23f4d452984ba7cba9620075037225cf63870ecb217bb016d85",
+      "bytes": 237,
+      "mode": "100644",
+      "routing": "OWNED_NEW_POSTIMAGE"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-operations/source01/run02/initial.json",
+      "baseBlob": null,
+      "postBlob": "4711ab71435352dc21401e50d8f0f5bde40fe12d",
+      "sha256": "855ced5adbfd27c035ed9c5f1556f2f165e47795cafecbb44a90f832f700fa60",
+      "bytes": 1896,
+      "mode": "100644",
+      "routing": "OWNED_NEW_POSTIMAGE"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-operations/source01/run02/release-pending.json",
+      "baseBlob": null,
+      "postBlob": "9e2a68d6bfece9d0c12ddee35112e531053e9b1c",
+      "sha256": "d941fc6b808488151c3944ca42184f5a40d3da022c32cc7d4e991abefbe9b44e",
+      "bytes": 927,
+      "mode": "100644",
+      "routing": "OWNED_NEW_POSTIMAGE"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-operations/source01/run02/validation.log",
+      "baseBlob": null,
+      "postBlob": "221c80fdf83e55089d15481183efefd9dc2c0b2a",
+      "sha256": "16d9e98920a25922f3e57e7c5ed01878b42b2924beb89bea46940d63982772b8",
+      "bytes": 39782,
+      "mode": "100644",
+      "routing": "OWNED_NEW_POSTIMAGE"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-operations/source01/run03/commands.json",
+      "baseBlob": null,
+      "postBlob": "205acb261a7490e858c85191dfece820b404fbf0",
+      "sha256": "73aa3ba3e6119131996ab7e824b9da92aba5d9098676ea3fdc0350ae58417e9c",
+      "bytes": 601,
+      "mode": "100644",
+      "routing": "OWNED_NEW_POSTIMAGE"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-operations/source01/run03/failure.json",
+      "baseBlob": null,
+      "postBlob": "545832ca552638d476131a5a5a640a6036ad6119",
+      "sha256": "4122513f28ab83f5dec1f15b67bbf3c697a3d373e2a8bebad312fc67d109f946",
+      "bytes": 236,
+      "mode": "100644",
+      "routing": "OWNED_NEW_POSTIMAGE"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-operations/source01/run03/initial.json",
+      "baseBlob": null,
+      "postBlob": "cb6140f85170dd0f67b31db84d37782b6816b06d",
+      "sha256": "8692c539824b3f5b4f34424b676a380ead7e405f914549bb33f407957599e15b",
+      "bytes": 1236,
+      "mode": "100644",
+      "routing": "OWNED_NEW_POSTIMAGE"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-operations/source01/run03/release-pending.json",
+      "baseBlob": null,
+      "postBlob": "53a0752785ffa082e732595fa827e8f2c7843589",
+      "sha256": "3e0f84e2f921831c89acea69147a23754f5aa15ea5d5f238f2cc91f8719fe88a",
+      "bytes": 927,
+      "mode": "100644",
+      "routing": "OWNED_NEW_POSTIMAGE"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-operations/source01/run03/validation.log",
+      "baseBlob": null,
+      "postBlob": "5b8834648ccc3e0ee65cb545f1a4df4e4dfa915f",
+      "sha256": "afef9370b8ddfd43c71ea9280bc52ae9f1a868fb01d7d8ec5fe23295f6ebe84f",
+      "bytes": 39782,
+      "mode": "100644",
+      "routing": "OWNED_NEW_POSTIMAGE"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-operations/source01/run04/commands.json",
+      "baseBlob": null,
+      "postBlob": "c7826d19c767049489ff2e14064c494ceac12de1",
+      "sha256": "d5dfeeed51ee00c18f48a2f57561d98706856c5c4a4b540e2aaa4508fe7b97ca",
+      "bytes": 2958,
+      "mode": "100644",
+      "routing": "OWNED_NEW_POSTIMAGE"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-operations/source01/run04/failure.json",
+      "baseBlob": null,
+      "postBlob": "0442b9e91929bec5ecd5dc96a75a8a2018718222",
+      "sha256": "5a13e3c02054ee771a766a21b12b5c65d88bc54d17c3faecbb7f298e12c49fb7",
+      "bytes": 239,
+      "mode": "100644",
+      "routing": "OWNED_NEW_POSTIMAGE"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-operations/source01/run04/initial.json",
+      "baseBlob": null,
+      "postBlob": "9df048bc50adcf7f5530812ea51f2fafa53bc017",
+      "sha256": "416d55574b0e2ce992169a3656808fc03b78773e119b918e14cf99ddcec1a8ac",
+      "bytes": 1741,
+      "mode": "100644",
+      "routing": "OWNED_NEW_POSTIMAGE"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-operations/source01/run04/release-pending.json",
+      "baseBlob": null,
+      "postBlob": "4c8943c9aaa14d98526e91578d577e0cbdd2f2d9",
+      "sha256": "196615057a7d1c2d899e97a439b5cfa530f40419902dd72668b19af1dbd4f3f9",
+      "bytes": 3419,
+      "mode": "100644",
+      "routing": "OWNED_NEW_POSTIMAGE"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-operations/source01/run04/secondary-failure.json",
+      "baseBlob": null,
+      "postBlob": "fce569a2efed5e63a7eaf44777dad0053f3ef042",
+      "sha256": "9b5532af8dd2ddb82069d486e2dfe07b4cc2955354b622b434f48b751e998568",
+      "bytes": 186,
+      "mode": "100644",
+      "routing": "OWNED_NEW_POSTIMAGE"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-operations/source01/run04/validation.log",
+      "baseBlob": null,
+      "postBlob": "6d6213caa43488c2a5d61d34fa0cd4fd3310938e",
+      "sha256": "1d62d49f0756699700433c9a4469621f8973dd5aeb75500a580d4629b6ee4f27",
+      "bytes": 33708,
+      "mode": "100644",
+      "routing": "OWNED_NEW_POSTIMAGE"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-operations/source02/01.log",
+      "baseBlob": null,
+      "postBlob": "ee5be599d5d583a8e85e951a2615a3c7c32db208",
+      "sha256": "344f2a4436db0fc4bcfe419c385e953b8c3ee00e9e0be1d7aab26dfcb97b37dc",
+      "bytes": 244,
+      "mode": "100644",
+      "routing": "OWNED_NEW_POSTIMAGE"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-operations/source02/02.log",
+      "baseBlob": null,
+      "postBlob": "0609c1a9ab26f7c309af7c16650314e11820f9e8",
+      "sha256": "1d95ba6e9654df0a9496d9bf0718b32ff48a459ee1192136e04ba3d7ad9371e4",
+      "bytes": 80,
+      "mode": "100644",
+      "routing": "OWNED_NEW_POSTIMAGE"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-operations/source02/03.log",
+      "baseBlob": null,
+      "postBlob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0,
+      "mode": "100644",
+      "routing": "OWNED_NEW_POSTIMAGE"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-operations/source02/commands.json",
+      "baseBlob": null,
+      "postBlob": "85a505dc3a65c65580acd5ac4cf82c31906535b2",
+      "sha256": "04c7ac535fb05ed9fec886c7fe3d0ff75ed260875c43fdcfcdba56e7889169e5",
+      "bytes": 888,
+      "mode": "100644",
+      "routing": "OWNED_NEW_POSTIMAGE"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-operations/source02/initial.json",
+      "baseBlob": null,
+      "postBlob": "d2e25a9ea48f7a77dff234c99f4cedd7373db284",
+      "sha256": "3793f09b54f8d5e8cbfe24a08d97d02aed82faa14f3bbb0a3c009fb21af7dee8",
+      "bytes": 1316,
+      "mode": "100644",
+      "routing": "OWNED_NEW_POSTIMAGE"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-operations/source02/release-pending.json",
+      "baseBlob": null,
+      "postBlob": "90ad474a95e955d7db9db363c2536992e050abb7",
+      "sha256": "6e16d74fa2ca5f8f35d9e7c9338f0045126f6536367961501a822a632cd44e77",
+      "bytes": 1232,
+      "mode": "100644",
+      "routing": "OWNED_NEW_POSTIMAGE"
+    },
+    {
+      "path": "docs/mcr/frontend/parade-ink-operations.md",
+      "baseBlob": null,
+      "postBlob": "be004e157b6da89c2bc1b50ce35e0c25d829729f",
+      "sha256": "32a3a07b62b0156d106e0419edef2b1cf33c473b67b9324b5f802204a15752e8",
+      "bytes": 10335,
+      "mode": "100644",
+      "routing": "OWNED_NEW_POSTIMAGE"
+    },
+    {
+      "path": "frontend/e2e/visual/parade-ink-operations/config.mjs",
+      "baseBlob": null,
+      "postBlob": "e7931bfce38560ee49f5ffc96bb938d090024c28",
+      "sha256": "5bd81c7b395fce0d7cea610d8bd8ab57710e807b9b90ad09e1d8d63240e7bd52",
+      "bytes": 1837,
+      "mode": "100644",
+      "routing": "OWNED_NEW_POSTIMAGE"
+    },
+    {
+      "path": "frontend/e2e/visual/parade-ink-operations/finite-native.py",
+      "baseBlob": null,
+      "postBlob": "2279b6064e588a926035d344fde414ff28eea06a",
+      "sha256": "d089e312aa37b185588e85c85cc9b2530a210b456acc08d30f3bb22a6b160878",
+      "bytes": 13161,
+      "mode": "100644",
+      "routing": "OWNED_NEW_POSTIMAGE"
+    },
+    {
+      "path": "frontend/e2e/visual/parade-ink-operations/fixtures.mjs",
+      "baseBlob": null,
+      "postBlob": "665504f93246f13301702d4a58ecdf82ca10850e",
+      "sha256": "13022e6555ead5bb988bde288e30b12697e46a9bd377aa61dd3aeed9d36714df",
+      "bytes": 1354,
+      "mode": "100644",
+      "routing": "OWNED_NEW_POSTIMAGE"
+    },
+    {
+      "path": "frontend/e2e/visual/parade-ink-operations/native.mjs",
+      "baseBlob": null,
+      "postBlob": "35158c3fefd42678d2ac03e3dde499e92be97493",
+      "sha256": "5c98e0d2350e0f961a4e9a5bda0fa26b7bb0a7055d3c150c5db27e93a8a7f03a",
+      "bytes": 18161,
+      "mode": "100644",
+      "routing": "OWNED_NEW_POSTIMAGE"
+    },
+    {
+      "path": "frontend/src/app/__tests__/parade-ink-operations/boundary-check.mjs",
+      "baseBlob": null,
+      "postBlob": "0584c0a7293b5a2f2366ee5e83b4b881abf6b1be",
+      "sha256": "db27e4ea047d4f3986a4f6d2ca233f238c1b68a6f74924c45b10d701da16d800",
+      "bytes": 2815,
+      "mode": "100644",
+      "routing": "OWNED_NEW_POSTIMAGE"
+    },
+    {
+      "path": "frontend/src/app/__tests__/parade-ink-operations/finite-source.py",
+      "baseBlob": null,
+      "postBlob": "74ea1b5ca72e2a03c5c4e3fc51e222bc0f6d97e2",
+      "sha256": "11973b0a2673f11c2ca7840947bffccbe022a3ece4baa1aa602c67540f9b2edf",
+      "bytes": 12373,
+      "mode": "100644",
+      "routing": "OWNED_NEW_POSTIMAGE"
+    },
+    {
+      "path": "frontend/src/app/__tests__/parade-ink-operations/presentation.test.tsx",
+      "baseBlob": null,
+      "postBlob": "a32161923fa840002c3339046ea855f7fa913025",
+      "sha256": "ce787b5ecf3001526bc545071a87932066421fe606bc2af8e5fd03e469b0cc8f",
+      "bytes": 7587,
+      "mode": "100644",
+      "routing": "OWNED_NEW_POSTIMAGE"
+    },
+    {
+      "path": "frontend/src/app/__tests__/parade-ink-operations/source-check.mjs",
+      "baseBlob": null,
+      "postBlob": "a96f021e4533c6e7fd551de94e5e606fff00ccd7",
+      "sha256": "6861966fd44ddb09426cf5fd331fba584a588b21b97bd375637438cf17be5271",
+      "bytes": 2148,
+      "mode": "100644",
+      "routing": "OWNED_NEW_POSTIMAGE"
+    },
+    {
+      "path": "frontend/src/app/__tests__/parade-ink-operations/vitest.config.mjs",
+      "baseBlob": null,
+      "postBlob": "41b31dd8fafa62b420687ef4eea79c299da9327e",
+      "sha256": "f702e65b4a7b15a001f599136b175e7339b579134132b8f59fa98fd311f5db36",
+      "bytes": 788,
+      "mode": "100644",
+      "routing": "OWNED_NEW_POSTIMAGE"
+    },
+    {
+      "path": "frontend/src/features/admin/audit/AuditOperations.tsx",
+      "baseBlob": "719ab8aa589cdb1d79b358f4b77ff6fbd3c680de",
+      "postBlob": "4f81ecd3dfbb48c10101d7c0b115e94c51beffc1",
+      "sha256": "0a2c7de97c168111ca436c848e9245e90d37f018a04846696cd968ace29df2c3",
+      "bytes": 4383,
+      "mode": "100644",
+      "routing": "EXACT_PRESENTATION_HUNK_ONLY"
+    },
+    {
+      "path": "frontend/src/features/admin/closure/EventClosure.tsx",
+      "baseBlob": "9ba70f821a5dc61cc19a2a3ce69f46384dc7b8fb",
+      "postBlob": "5e43278deffb19fb17a3aea5c712fae7442aa378",
+      "sha256": "4980b5211c83e9ae45a56aee4624c13622c97811c20515066d7b6b83b5cd49ac",
+      "bytes": 5718,
+      "mode": "100644",
+      "routing": "EXACT_PRESENTATION_HUNK_ONLY"
+    },
+    {
+      "path": "frontend/src/features/admin/content/index.ts",
+      "baseBlob": "e0bf02613be76b497df98baf1d3fc8eeee775fa3",
+      "postBlob": "fb2d186145ec6b8428040de6242f594991e87b55",
+      "sha256": "aea8e71804f04f2d1fd9ba315b8298406215ee6644ee5732e6146039d8f4bb63",
+      "bytes": 295,
+      "mode": "100644",
+      "routing": "EXACT_PRESENTATION_HUNK_ONLY"
+    },
+    {
+      "path": "frontend/src/features/admin/content/ui/parade-ink/ContentReviewScreen.tsx",
+      "baseBlob": null,
+      "postBlob": "cdb18538ef79b227d1b20115f238349e9e054784",
+      "sha256": "0c43d3809ea2418bf148239d09ee43ee6267ebbfa49dd269e3a3907bf94bc08c",
+      "bytes": 438,
+      "mode": "100644",
+      "routing": "OWNED_NEW_POSTIMAGE"
+    },
+    {
+      "path": "frontend/src/features/admin/event/ui/EventOperations.tsx",
+      "baseBlob": "0f690a20617d96c3682ca8a0436f00c6139de43b",
+      "postBlob": "4d3c59816b2156b819487faa0321a65120c4cf32",
+      "sha256": "e6022a026732037fd1725ab521e0b09aa268b63127385ebebdfb2b2deecf50f9",
+      "bytes": 8189,
+      "mode": "100644",
+      "routing": "EXACT_PRESENTATION_HUNK_ONLY"
+    },
+    {
+      "path": "frontend/src/features/admin/members/index.ts",
+      "baseBlob": "3abf4c8d0c044f8d9f17feab2295299b0c1e969b",
+      "postBlob": "40850aa42b2094b4ebae8a6dfdfddbdea9e08432",
+      "sha256": "4cad326a706b5ee50f6081bcb5c22b114701a7ce9e621d87f96bd33810c4429e",
+      "bytes": 292,
+      "mode": "100644",
+      "routing": "EXACT_PRESENTATION_HUNK_ONLY"
+    },
+    {
+      "path": "frontend/src/features/admin/members/ui/parade-ink/MemberReviewScreen.tsx",
+      "baseBlob": null,
+      "postBlob": "289eb1af77eb80702a5841233876038081324d26",
+      "sha256": "6e24ee8379e409becca724027fa5399ea8548a18f4b40055c7149f2d92829a97",
+      "bytes": 437,
+      "mode": "100644",
+      "routing": "OWNED_NEW_POSTIMAGE"
+    },
+    {
+      "path": "frontend/src/features/admin/mural/WallControl.tsx",
+      "baseBlob": "a9861337d51c6521603235951f865a90d56c982c",
+      "postBlob": "870877f4225a2023f25796ebe12572cf09236c09",
+      "sha256": "922e6ac1798d2079b14f13f49eb8cc27b913909802ebab6ef459be9f6b3d9bdb",
+      "bytes": 6101,
+      "mode": "100644",
+      "routing": "EXACT_PRESENTATION_HUNK_ONLY"
+    },
+    {
+      "path": "frontend/src/features/admin/parade-ink-operations/OperationsSurface.tsx",
+      "baseBlob": null,
+      "postBlob": "1c23249bd6bcd76788667cf44f447a648d056547",
+      "sha256": "aad20dd8a046d6a595b8a37d888e2b5d6750e567cf9c638c940ab3a51ab07268",
+      "bytes": 870,
+      "mode": "100644",
+      "routing": "OWNED_NEW_POSTIMAGE"
+    },
+    {
+      "path": "frontend/src/features/admin/parade-ink-operations/operations.css",
+      "baseBlob": null,
+      "postBlob": "0140debe2d18a6a6772428c6bb92f5f89924c3a6",
+      "sha256": "86ccc542ca0ab41b8ea2e0c5035815e00728d76a0567299f0f60b44c677733e6",
+      "bytes": 6048,
+      "mode": "100644",
+      "routing": "OWNED_NEW_POSTIMAGE"
+    },
+    {
+      "path": "frontend/src/features/admin/places/PlacesOperations.tsx",
+      "baseBlob": "7baa9560bbc46e5df4b817b85d5ab80c94675148",
+      "postBlob": "d060758e96f805e618c58b4fa687e1f3ce31a187",
+      "sha256": "6f6f1625c253c802351258e6235332031cbb8b5b3f16f565ca2234647577449d",
+      "bytes": 7289,
+      "mode": "100644",
+      "routing": "EXACT_PRESENTATION_HUNK_ONLY"
+    }
+  ],
+  "entryCount": 119,
+  "manifestSelf": "publication-manifest.json additionally delivered by its immutable blob in the final packet commit; no recursive self hash.",
+  "validation": {
+    "source": "source-validation.json 8 interactions/1150 frontend files/types/deny-warning lint/boundary PASS",
+    "native": "native-validation.json 24 route-width cases plus9focused states/35selectedPNG; TEST_ONLY controlledHTTP actualmain; failed predecessors preserved",
+    "productionChange": "Presentation-only 7 seams +pure wrappers/frame/scopedCSS; no state/effect/handler/authority/API/contract/router/bootstrap edits",
+    "limits": "Real producer/device/two real clients/latest combined master runtime NOT_RUN; QA08 200-user DEFERRED_BY_USER"
+  },
+  "noReviewGate": true
+}

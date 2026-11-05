@@ -1,0 +1,58 @@
+{
+  "primary": {
+    "epoch": 1793841665.7540748,
+    "pid": 1778,
+    "ownedPids": [
+      1778,
+      2016
+    ],
+    "global": {
+      "acceptedOffers": [
+        "O04-ADMIN-APP-NATIVE02-0120"
+      ],
+      "observedPids": [
+        1778,
+        2016
+      ],
+      "boundary": "Fresh allocator membership plus exact accepted owner controller/guard receipts; unknown membership stays charged."
+    },
+    "freeBytes": 23649095680,
+    "wholeBytes": 5329567744,
+    "positiveNewBytes": 995328,
+    "rssBytes": 43515904,
+    "peak": {
+      "processes": 2,
+      "rssBytes": 43515904,
+      "wholeBytes": 5343883264,
+      "newBytes": 15310848
+    }
+  },
+  "secondary": {
+    "epoch": 1793841665.351796,
+    "pid": 2016,
+    "ownedPids": [
+      1778,
+      2016
+    ],
+    "global": {
+      "acceptedOffers": [
+        "O04-ADMIN-APP-NATIVE02-0120"
+      ],
+      "observedPids": [
+        1778,
+        2016
+      ],
+      "boundary": "Fresh allocator membership plus exact accepted owner controller/guard receipts; unknown membership stays charged."
+    },
+    "freeBytes": 23649103872,
+    "wholeBytes": 5329563648,
+    "positiveNewBytes": 991232,
+    "rssBytes": 43253760,
+    "peak": {
+      "processes": 2,
+      "rssBytes": 43253760,
+      "wholeBytes": 5343883264,
+      "newBytes": 15310848
+    }
+  }
+}

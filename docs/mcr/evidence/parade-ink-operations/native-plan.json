@@ -1,0 +1,41 @@
+{
+  "status": "SEALED_EXPECTED_NOT_RUN",
+  "canonicalBase": "2b3819fbe686b03769648e698c3741b8f9debe18",
+  "functionalPostimages": "bc38036e75ab82fdc9fc5c436365249b572c54fd",
+  "port": 5376,
+  "widths": [
+    360,
+    390,
+    430
+  ],
+  "dpr": 1,
+  "height": 844,
+  "shortHeight": 420,
+  "canonicalNormalCases": 18,
+  "qualifiedMemberContentCases": 6,
+  "focusedStates": [
+    "390auditdetailsfocus",
+    "390eventserviceunavailableread",
+    "390x420wallconfirm-long",
+    "390x420wallunknown-original",
+    "390x420wallfrozen",
+    "390x420closurepartial",
+    "390contentconflict",
+    "390memberunknown",
+    "390authoritywithdrawn-protectedroot"
+  ],
+  "plannedScreenshots": 33,
+  "plannedReferenceComparisons": 2,
+  "maxPngCount": 40,
+  "maxPngBytes": 16777216,
+  "driverStricterPngBytes": 8388608,
+  "referenceOriginalSha256": "9e7f17a666e1ecfc738a14b75bb3a166235a05c401f206aa24f26cf7463cbc27",
+  "referenceCropXYWH": [
+    24,
+    60,
+    395,
+    787
+  ],
+  "normalizationWidth": 390,
+  "claimLimit": "Unpictured operator surfaces compared to shared Photo2 contract; canonical2b six routes and separate immutable qualified FE37 composition consumer; no combinedlatestmaster runtime/realproducer/physical/twoclient claim"
+}

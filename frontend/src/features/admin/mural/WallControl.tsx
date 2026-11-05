@@ -1,3 +1,4 @@
+import { OperationsSurface } from '../parade-ink-operations/OperationsSurface'
 import { useEffect, useRef, useState, useSyncExternalStore } from 'react'
 import type { FormEvent } from 'react'
 import type { MuralControl } from './controller'
@@ -36,7 +37,7 @@ export function WallControl({ controller }: { controller: MuralControl }) {
   const state = useSyncExternalStore(controller.subscribe, controller.read, controller.read), draft = state.draft, focus = useRef<HTMLDivElement>(null)
   useEffect(() => { if (draft) focus.current?.focus() }, [draft])
   const busy = state.commandPhase === 'sending' || state.commandPhase === 'checking'
-  return <section className="mcr-ops" aria-label="Wall control"><header><p>Event operations</p><h1>WALL CONTROL</h1></header>
+  return <OperationsSurface view="wall"><section className="mcr-ops" aria-label="Wall control"><header><p>Event operations</p><h1>WALL CONTROL</h1></header>
     <p role="status" aria-label="Wall control status" aria-live="polite">{state.message}</p>
     {state.mural && <><p>Wall {state.mural.state} · revision {state.mural.revision}</p><p>Current snapshot <code>{state.mural.snapshot_id}</code></p>
       <h2>Locked regions</h2>{state.mural.locks.length ? <ul>{state.mural.locks.map((r, i) => <li key={i}>X [{r.x_min}, {r.x_max_exclusive}) · Y [{r.y_min}, {r.y_max_exclusive})</li>)}</ul> : <p>No locked regions.</p>}
@@ -53,5 +54,5 @@ export function WallControl({ controller }: { controller: MuralControl }) {
     </div>}
     {state.command && <><p>Original wall action: {state.commandPhase}. Another wall action is blocked until its outcome is verified.</p><button disabled={busy} onClick={() => void controller.check()}>Check original wall command</button></>}
     <button disabled={busy || state.phase === 'loading' || state.phase === 'disposed'} onClick={() => void controller.load()}>Refresh wall controls</button>
-  </section>
+  </section></OperationsSurface>
 }

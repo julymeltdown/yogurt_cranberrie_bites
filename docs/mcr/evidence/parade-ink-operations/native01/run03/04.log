@@ -1,0 +1,20 @@
+10:30:58 AM [vite] (ssr) Error when evaluating SSR module /src/features/admin/event/__tests__/fixtures/data.ts: module is not defined
+      at eval (/Users/lhs/Desktop/mcr/frontend/node_modules/.pnpm/react@19.2.7/node_modules/react/index.js:9:3)
+      at ESModulesEvaluator.runInlinedModule (file:///Users/lhs/Desktop/mcr/frontend/node_modules/.pnpm/vite@8.1.3_@types+node@24.13.2_jiti@2.7.0/node_modules/vite/dist/node/module-runner.js:1006:163)
+      at SSRCompatModuleRunner.directRequest (file:///Users/lhs/Desktop/mcr/frontend/node_modules/.pnpm/vite@8.1.3_@types+node@24.13.2_jiti@2.7.0/node_modules/vite/dist/node/module-runner.js:1259:80)
+      at async SSRCompatModuleRunner.directRequest (file:///Users/lhs/Desktop/mcr/frontend/node_modules/.pnpm/vite@8.1.3_@types+node@24.13.2_jiti@2.7.0/node_modules/vite/dist/node/chunks/node.js:11245:20)
+      at async SSRCompatModuleRunner.cachedRequest (file:///Users/lhs/Desktop/mcr/frontend/node_modules/.pnpm/vite@8.1.3_@types+node@24.13.2_jiti@2.7.0/node_modules/vite/dist/node/module-runner.js:1166:73)
+node:internal/modules/run_main:107
+    triggerUncaughtException(
+    ^
+
+ReferenceError: module is not defined
+    at eval (/Users/lhs/Desktop/mcr/frontend/node_modules/.pnpm/react@19.2.7/node_modules/react/index.js:9:3)
+    at ESModulesEvaluator.runInlinedModule (file:///Users/lhs/Desktop/mcr/frontend/node_modules/.pnpm/vite@8.1.3_@types+node@24.13.2_jiti@2.7.0/node_modules/vite/dist/node/module-runner.js:1006:163)
+    at SSRCompatModuleRunner.directRequest (file:///Users/lhs/Desktop/mcr/frontend/node_modules/.pnpm/vite@8.1.3_@types+node@24.13.2_jiti@2.7.0/node_modules/vite/dist/node/module-runner.js:1259:80)
+    at async SSRCompatModuleRunner.directRequest (file:///Users/lhs/Desktop/mcr/frontend/node_modules/.pnpm/vite@8.1.3_@types+node@24.13.2_jiti@2.7.0/node_modules/vite/dist/node/chunks/node.js:11245:20)
+    at async SSRCompatModuleRunner.cachedRequest (file:///Users/lhs/Desktop/mcr/frontend/node_modules/.pnpm/vite@8.1.3_@types+node@24.13.2_jiti@2.7.0/node_modules/vite/dist/node/module-runner.js:1166:73) {
+  code: 'ERR_AMBIGUOUS_MODULE_SYNTAX'
+}
+
+Node.js v24.22.2
