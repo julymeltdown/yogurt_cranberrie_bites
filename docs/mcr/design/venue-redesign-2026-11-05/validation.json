@@ -1,0 +1,48 @@
+{
+  "schemaVersion": 1,
+  "checkedAt": "2026-11-05T01:28:29.959676+00:00",
+  "method": "Ordinary Python metadata/byte equality/SHA-256/PIL JPEG header dimensions/JSON/path/link checks and Git scope inspection; no application execution or image processing.",
+  "exitCode": 0,
+  "results": {
+    "originalJPEGCount": 10,
+    "originalBytes": 3424474,
+    "sourceByteEquality": "PASS",
+    "sha256AndDimensions": "PASS",
+    "jsonParseAndCrossReferences": "PASS",
+    "uniqueStateCases": 48,
+    "roiUnmeasuredForAllCases": "PASS",
+    "ownedPathScope": "PASS",
+    "docsSourceTrackedDiff": "EMPTY",
+    "localDocumentLinks": "PASS except separately owned amendment may await publication",
+    "selectedFriendMessageWithoutInvitation": "PASS: wording and input requirements; metadata check only"
+  },
+  "externalPublicationDependency": {
+    "path": "docs/mcr/venue-feature-amendment-2026-11-05.md",
+    "localAtBase": "MISSING",
+    "owner": "Main",
+    "disposition": "Publisher must resolve against canonical amendment delivery; this owner must not author the peer file."
+  },
+  "notRun": [
+    "Application tests/builds",
+    "Browser/device/live-service flows",
+    "Implementation/pixel comparison",
+    "Combined-master runtime"
+  ],
+  "resource": {
+    "booking": "UI533-VENUE-DOCREF32-0118",
+    "capBytes": 33554432,
+    "freeBytesAtCheck": 23424401408,
+    "ordinaryCombinedAllowanceBytes": 2684354560,
+    "retainedCarryFloorBytesExcludingAttachments": 3313811456,
+    "noDeletionCredits": true
+  },
+  "publicationFix": {
+    "reason": "Selected-friend contextual MESSAGE does not require invitation creation or acceptance.",
+    "invitationId": "optional for contextual conversation",
+    "composerOpening": "no implicit invitation/message write",
+    "authorization": "selected-friend context required; bare user ID grants no global DM",
+    "booking": "UI533-VENUE-DOCFIX20-0126",
+    "additionalCapBytes": 20971520,
+    "priorClosedConservativePositiveMAXBytes": 16777216
+  }
+}

@@ -1,0 +1,953 @@
+{
+  "schemaVersion": 1,
+  "referenceSet": "venue-redesign-2026-11-05",
+  "manifest": "reference-manifest.json",
+  "primaryRoles": {
+    "baseMap": 5,
+    "friends": 9,
+    "notes": 10,
+    "meetingComponentAnatomy": 2,
+    "status": "PROVISIONAL"
+  },
+  "compositionRules": [
+    "Photo 5 full-map region is the provisional base-map target. Its exact source crop remains developer-measured.",
+    "Photo 2 meeting UI/component regions are anatomy targets; its fenced alternative background is not a mandate to replace Photo 5 geometry. Record the intentional base-variant difference explicitly.",
+    "Compare matching component/state regions separately. Do not claim whole Photo 2 pixel identity over a Photo 5 map, blend fence geometry or warp reference layouts.",
+    "Retain every alternative as a distinct reference. No user-visible variant selector. Collage canvas sizes are not handset CSS viewports.",
+    "Headings, explanatory captions and surrounding poster layouts are not automatically app UI."
+  ],
+  "captureContract": {
+    "producer": "Responsible implementation owner; no king/SL pixel review or acknowledgment gate.",
+    "requiredFields": [
+      "caseId",
+      "originalPhotoSHA256",
+      "referenceRole",
+      "developerMeasuredSourceROI",
+      "actualViewportCSSWidth",
+      "actualViewportCSSHeight",
+      "devicePixelRatio",
+      "uniformScaleAndCropTransform",
+      "implementationCommit",
+      "originalCaptureTimeWithTimezone",
+      "fixtureOrRealServiceDeviceLabel",
+      "producerContractSourcePins",
+      "actualCapturePath",
+      "referenceCropPath",
+      "overlayPath",
+      "diffPath",
+      "declaredVariableDataMasks",
+      "materialDiscrepancies",
+      "fixDisposition"
+    ],
+    "widthsCSS": [
+      360,
+      390,
+      430
+    ],
+    "rules": [
+      "Record actual viewport height and DPR; do not derive them from a composite sheet.",
+      "Use explicit uniform scale/crop transforms; no nonuniform stretching or geometry blending.",
+      "Masks cover declared variable data only, never hide layout, controls, containers or missing states.",
+      "Developer inspects each same-state pair, overlay and diff, fixes material differences and repeats until closed.",
+      "Keep fixture, live-service and real-device evidence distinct. Visual acceptance remains open while material discrepancies remain."
+    ]
+  },
+  "cases": [
+    {
+      "caseId": "P01-whole-plan",
+      "photo": 1,
+      "sourcePath": "photo-01.jpg",
+      "sourceSHA256": "2366e1ce7e76e3b5932879d0602a8642dc36775dbd41b4378945ed838a4aa9b3",
+      "referenceRole": "whole-site fenced alternative",
+      "sourceRegionDescription": "Illustrated full-site map body; exclude presentation heading/caption outside product UI",
+      "sourceROI": null,
+      "roiStatus": "DEVELOPER_MEASUREMENT_REQUIRED",
+      "actualCSSViewport": null,
+      "targetState": "Full venue extent, named landmarks and queue zones; pan, zoom and recenter",
+      "requiredInputs": [
+        "immutable art revision/hash/dimensions",
+        "reviewed landmark IDs/source anchors",
+        "map viewport/camera",
+        "explicit physical projection availability"
+      ],
+      "comparisonStatus": "NOT_RUN"
+    },
+    {
+      "caseId": "P04-whole-plan",
+      "photo": 4,
+      "sourcePath": "photo-04.jpg",
+      "sourceSHA256": "4347ef9ba4f13c22e3575c80e9ff0eecd2aa569678e49223170a4b2491e589eb",
+      "referenceRole": "whole-site fenced alternative",
+      "sourceRegionDescription": "Illustrated full-site map body; exclude presentation heading/caption outside product UI",
+      "sourceROI": null,
+      "roiStatus": "DEVELOPER_MEASUREMENT_REQUIRED",
+      "actualCSSViewport": null,
+      "targetState": "Full venue extent, named landmarks and queue zones; pan, zoom and recenter",
+      "requiredInputs": [
+        "immutable art revision/hash/dimensions",
+        "reviewed landmark IDs/source anchors",
+        "map viewport/camera",
+        "explicit physical projection availability"
+      ],
+      "comparisonStatus": "NOT_RUN"
+    },
+    {
+      "caseId": "P05-whole-plan",
+      "photo": 5,
+      "sourcePath": "photo-05.jpg",
+      "sourceSHA256": "d0713633289f87fc98603927f7cbc02df2054e989f6360332a93476d6c9da4e0",
+      "referenceRole": "PROVISIONAL primary base map",
+      "sourceRegionDescription": "Illustrated full-site map body; exclude presentation heading/caption outside product UI",
+      "sourceROI": null,
+      "roiStatus": "DEVELOPER_MEASUREMENT_REQUIRED",
+      "actualCSSViewport": null,
+      "targetState": "Full venue extent, named landmarks and queue zones; pan, zoom and recenter",
+      "requiredInputs": [
+        "immutable art revision/hash/dimensions",
+        "reviewed landmark IDs/source anchors",
+        "map viewport/camera",
+        "explicit physical projection availability"
+      ],
+      "comparisonStatus": "NOT_RUN"
+    },
+    {
+      "caseId": "P02-selected-friend",
+      "photo": 2,
+      "sourcePath": "photo-02.jpg",
+      "sourceSHA256": "f7d841c815dfbf85b48b7e61a06106b9edab195e7bfbd4d37b78d8b23e610ac1",
+      "referenceRole": "meeting and contextual conversation anatomy; alternate fenced map background",
+      "sourceRegionDescription": "Left handset, MAP tab and selected-friend card near Main Gate",
+      "sourceROI": null,
+      "roiStatus": "DEVELOPER_MEASUREMENT_REQUIRED",
+      "actualCSSViewport": null,
+      "targetState": "Selected physical friend; MESSAGE and MEET HERE",
+      "requiredInputs": [
+        "authorized friend and portrait",
+        "location source/sample time/freshness",
+        "fixed reviewed meeting landmark for MEET HERE only",
+        "server action capabilities",
+        "authorized selected-friend conversation context; invitationId optional; opening composer creates no invitation/message"
+      ],
+      "comparisonStatus": "NOT_RUN"
+    },
+    {
+      "caseId": "P02-meeting-conversation",
+      "photo": 2,
+      "sourcePath": "photo-02.jpg",
+      "sourceSHA256": "f7d841c815dfbf85b48b7e61a06106b9edab195e7bfbd4d37b78d8b23e610ac1",
+      "referenceRole": "meeting and contextual conversation anatomy; alternate fenced map background",
+      "sourceRegionDescription": "Middle handset, fixed Main Gate flag, moving pins, conversation and accepted meeting card",
+      "sourceROI": null,
+      "roiStatus": "DEVELOPER_MEASUREMENT_REQUIRED",
+      "actualCSSViewport": null,
+      "targetState": "Contextual conversation with accepted meeting; MESSAGE and CANCEL MEETUP",
+      "requiredInputs": [
+        "invite ID/revision/status/expiry",
+        "fixed landmark ID/revision",
+        "participant authorization",
+        "context conversation messages/send capability",
+        "accepted invite belongs to this pictured state only; selected-friend composer may open without an invitation"
+      ],
+      "comparisonStatus": "NOT_RUN"
+    },
+    {
+      "caseId": "P02-place-card",
+      "photo": 2,
+      "sourcePath": "photo-02.jpg",
+      "sourceSHA256": "f7d841c815dfbf85b48b7e61a06106b9edab195e7bfbd4d37b78d8b23e610ac1",
+      "referenceRole": "meeting and contextual conversation anatomy; alternate fenced map background",
+      "sourceRegionDescription": "Right component: real-landmark card and VIEW ON MAP",
+      "sourceROI": null,
+      "roiStatus": "DEVELOPER_MEASUREMENT_REQUIRED",
+      "actualCSSViewport": null,
+      "targetState": "Fixed real-landmark card",
+      "requiredInputs": [
+        "reviewed place provenance",
+        "source anchor",
+        "view-on-map capability"
+      ],
+      "comparisonStatus": "NOT_RUN"
+    },
+    {
+      "caseId": "P02-friend-freshness",
+      "photo": 2,
+      "sourcePath": "photo-02.jpg",
+      "sourceSHA256": "f7d841c815dfbf85b48b7e61a06106b9edab195e7bfbd4d37b78d8b23e610ac1",
+      "referenceRole": "meeting and contextual conversation anatomy; alternate fenced map background",
+      "sourceRegionDescription": "Right component: current friend versus stale friend and ASK LOCATION",
+      "sourceROI": null,
+      "roiStatus": "DEVELOPER_MEASUREMENT_REQUIRED",
+      "actualCSSViewport": null,
+      "targetState": "Friend location freshness and request action",
+      "requiredInputs": [
+        "phone/check-in/last-known discriminator",
+        "sample time/server clock",
+        "visibility revision",
+        "request capability"
+      ],
+      "comparisonStatus": "NOT_RUN"
+    },
+    {
+      "caseId": "P02-fixed-vs-moving",
+      "photo": 2,
+      "sourcePath": "photo-02.jpg",
+      "sourceSHA256": "f7d841c815dfbf85b48b7e61a06106b9edab195e7bfbd4d37b78d8b23e610ac1",
+      "referenceRole": "meeting and contextual conversation anatomy; alternate fenced map background",
+      "sourceRegionDescription": "Right component: fixed meetup flag versus friend marker",
+      "sourceROI": null,
+      "roiStatus": "DEVELOPER_MEASUREMENT_REQUIRED",
+      "actualCSSViewport": null,
+      "targetState": "Fixed meeting anchor distinct from moving friend",
+      "requiredInputs": [
+        "fixed landmark/revision",
+        "authorized friend projection",
+        "no arrival inference"
+      ],
+      "comparisonStatus": "NOT_RUN"
+    },
+    {
+      "caseId": "P02-pending-invite",
+      "photo": 2,
+      "sourcePath": "photo-02.jpg",
+      "sourceSHA256": "f7d841c815dfbf85b48b7e61a06106b9edab195e7bfbd4d37b78d8b23e610ac1",
+      "referenceRole": "meeting and contextual conversation anatomy; alternate fenced map background",
+      "sourceRegionDescription": "Right component: invitation with DECLINE and ACCEPT",
+      "sourceROI": null,
+      "roiStatus": "DEVELOPER_MEASUREMENT_REQUIRED",
+      "actualCSSViewport": null,
+      "targetState": "Pending meeting invitation",
+      "requiredInputs": [
+        "invite revision/status/expiry",
+        "recipient capabilities",
+        "idempotent accept/decline result"
+      ],
+      "comparisonStatus": "NOT_RUN"
+    },
+    {
+      "caseId": "P03-notes-map-list",
+      "photo": 3,
+      "sourcePath": "photo-03.jpg",
+      "sourceSHA256": "ddaf9da28fc517eb01588f725678a20045b3d52f0ca71d24d38b194a8b269423",
+      "referenceRole": "notes alternative",
+      "sourceRegionDescription": "Left handset, NOTES tab, grouped/single markers and selected Main Gate list",
+      "sourceROI": null,
+      "roiStatus": "DEVELOPER_MEASUREMENT_REQUIRED",
+      "actualCSSViewport": null,
+      "targetState": "Notes map/list with close, reply, MEET HERE and new note",
+      "requiredInputs": [
+        "authorized note groups/counts",
+        "selected landmark",
+        "note IDs/revisions",
+        "reply/meet/create capabilities"
+      ],
+      "comparisonStatus": "NOT_RUN"
+    },
+    {
+      "caseId": "P03-composer",
+      "photo": 3,
+      "sourcePath": "photo-03.jpg",
+      "sourceSHA256": "ddaf9da28fc517eb01588f725678a20045b3d52f0ca71d24d38b194a8b269423",
+      "referenceRole": "notes alternative",
+      "sourceRegionDescription": "Middle handset, selected/change place, note body and POST NOTE",
+      "sourceROI": null,
+      "roiStatus": "DEVELOPER_MEASUREMENT_REQUIRED",
+      "actualCSSViewport": null,
+      "targetState": "Place-anchored note composer",
+      "requiredInputs": [
+        "reviewed fixed landmark/revision",
+        "body draft",
+        "audience choice",
+        "expiry choice/server event timezone",
+        "post capability"
+      ],
+      "comparisonStatus": "NOT_RUN"
+    },
+    {
+      "caseId": "P03-marker-taxonomy",
+      "photo": 3,
+      "sourcePath": "photo-03.jpg",
+      "sourceSHA256": "ddaf9da28fc517eb01588f725678a20045b3d52f0ca71d24d38b194a8b269423",
+      "referenceRole": "notes alternative",
+      "sourceRegionDescription": "Right component: single, group and selected note markers",
+      "sourceROI": null,
+      "roiStatus": "DEVELOPER_MEASUREMENT_REQUIRED",
+      "actualCSSViewport": null,
+      "targetState": "Note marker taxonomy",
+      "requiredInputs": [
+        "authorized count",
+        "selected group/note",
+        "source anchor"
+      ],
+      "comparisonStatus": "NOT_RUN"
+    },
+    {
+      "caseId": "P03-place-note-card",
+      "photo": 3,
+      "sourcePath": "photo-03.jpg",
+      "sourceSHA256": "ddaf9da28fc517eb01588f725678a20045b3d52f0ca71d24d38b194a8b269423",
+      "referenceRole": "notes alternative",
+      "sourceRegionDescription": "Right component: individual place-note card",
+      "sourceROI": null,
+      "roiStatus": "DEVELOPER_MEASUREMENT_REQUIRED",
+      "actualCSSViewport": null,
+      "targetState": "Selected note card",
+      "requiredInputs": [
+        "authorized author/portrait",
+        "body/timestamp",
+        "landmark",
+        "audience/expiry/status"
+      ],
+      "comparisonStatus": "NOT_RUN"
+    },
+    {
+      "caseId": "P03-audience-selector",
+      "photo": 3,
+      "sourcePath": "photo-03.jpg",
+      "sourceSHA256": "ddaf9da28fc517eb01588f725678a20045b3d52f0ca71d24d38b194a8b269423",
+      "referenceRole": "notes alternative",
+      "sourceRegionDescription": "Right component: Friends and Everyone selector",
+      "sourceROI": null,
+      "roiStatus": "DEVELOPER_MEASUREMENT_REQUIRED",
+      "actualCSSViewport": null,
+      "targetState": "Audience selector with black selected state",
+      "requiredInputs": [
+        "server-supported audience values",
+        "visibility policy",
+        "selection draft"
+      ],
+      "comparisonStatus": "NOT_RUN"
+    },
+    {
+      "caseId": "P03-expiry-selector",
+      "photo": 3,
+      "sourcePath": "photo-03.jpg",
+      "sourceSHA256": "ddaf9da28fc517eb01588f725678a20045b3d52f0ca71d24d38b194a8b269423",
+      "referenceRole": "notes alternative",
+      "sourceRegionDescription": "Right component: 1h and End of day selector",
+      "sourceROI": null,
+      "roiStatus": "DEVELOPER_MEASUREMENT_REQUIRED",
+      "actualCSSViewport": null,
+      "targetState": "Expiry selector with black selected state",
+      "requiredInputs": [
+        "allowed expiry choices",
+        "server expiresAt",
+        "event timezone"
+      ],
+      "comparisonStatus": "NOT_RUN"
+    },
+    {
+      "caseId": "P03-inline-reply",
+      "photo": 3,
+      "sourcePath": "photo-03.jpg",
+      "sourceSHA256": "ddaf9da28fc517eb01588f725678a20045b3d52f0ca71d24d38b194a8b269423",
+      "referenceRole": "notes alternative",
+      "sourceRegionDescription": "Right component: inline reply interaction",
+      "sourceROI": null,
+      "roiStatus": "DEVELOPER_MEASUREMENT_REQUIRED",
+      "actualCSSViewport": null,
+      "targetState": "Authorized note reply",
+      "requiredInputs": [
+        "note/reply revisions",
+        "reply visibility/expiry policy",
+        "send state/capability"
+      ],
+      "comparisonStatus": "NOT_RUN"
+    },
+    {
+      "caseId": "P06-notes-map-list",
+      "photo": 6,
+      "sourcePath": "photo-06.jpg",
+      "sourceSHA256": "4a0e2229ce68d447f25656cab392d982822d868dfb1123caef28be82b16d07e3",
+      "referenceRole": "notes alternative",
+      "sourceRegionDescription": "Left handset, NOTES tab, grouped/single markers and selected Main Gate list",
+      "sourceROI": null,
+      "roiStatus": "DEVELOPER_MEASUREMENT_REQUIRED",
+      "actualCSSViewport": null,
+      "targetState": "Notes map/list with close, reply, MEET HERE and new note",
+      "requiredInputs": [
+        "authorized note groups/counts",
+        "selected landmark",
+        "note IDs/revisions",
+        "reply/meet/create capabilities"
+      ],
+      "comparisonStatus": "NOT_RUN"
+    },
+    {
+      "caseId": "P06-composer",
+      "photo": 6,
+      "sourcePath": "photo-06.jpg",
+      "sourceSHA256": "4a0e2229ce68d447f25656cab392d982822d868dfb1123caef28be82b16d07e3",
+      "referenceRole": "notes alternative",
+      "sourceRegionDescription": "Middle handset, selected/change place, note body and POST NOTE",
+      "sourceROI": null,
+      "roiStatus": "DEVELOPER_MEASUREMENT_REQUIRED",
+      "actualCSSViewport": null,
+      "targetState": "Place-anchored note composer",
+      "requiredInputs": [
+        "reviewed fixed landmark/revision",
+        "body draft",
+        "audience choice",
+        "expiry choice/server event timezone",
+        "post capability"
+      ],
+      "comparisonStatus": "NOT_RUN"
+    },
+    {
+      "caseId": "P06-marker-taxonomy",
+      "photo": 6,
+      "sourcePath": "photo-06.jpg",
+      "sourceSHA256": "4a0e2229ce68d447f25656cab392d982822d868dfb1123caef28be82b16d07e3",
+      "referenceRole": "notes alternative",
+      "sourceRegionDescription": "Right component: single, group and selected note markers",
+      "sourceROI": null,
+      "roiStatus": "DEVELOPER_MEASUREMENT_REQUIRED",
+      "actualCSSViewport": null,
+      "targetState": "Note marker taxonomy",
+      "requiredInputs": [
+        "authorized count",
+        "selected group/note",
+        "source anchor"
+      ],
+      "comparisonStatus": "NOT_RUN"
+    },
+    {
+      "caseId": "P06-place-note-card",
+      "photo": 6,
+      "sourcePath": "photo-06.jpg",
+      "sourceSHA256": "4a0e2229ce68d447f25656cab392d982822d868dfb1123caef28be82b16d07e3",
+      "referenceRole": "notes alternative",
+      "sourceRegionDescription": "Right component: individual place-note card",
+      "sourceROI": null,
+      "roiStatus": "DEVELOPER_MEASUREMENT_REQUIRED",
+      "actualCSSViewport": null,
+      "targetState": "Selected note card",
+      "requiredInputs": [
+        "authorized author/portrait",
+        "body/timestamp",
+        "landmark",
+        "audience/expiry/status"
+      ],
+      "comparisonStatus": "NOT_RUN"
+    },
+    {
+      "caseId": "P06-audience-selector",
+      "photo": 6,
+      "sourcePath": "photo-06.jpg",
+      "sourceSHA256": "4a0e2229ce68d447f25656cab392d982822d868dfb1123caef28be82b16d07e3",
+      "referenceRole": "notes alternative",
+      "sourceRegionDescription": "Right component: Friends and Everyone selector",
+      "sourceROI": null,
+      "roiStatus": "DEVELOPER_MEASUREMENT_REQUIRED",
+      "actualCSSViewport": null,
+      "targetState": "Audience selector with black selected state",
+      "requiredInputs": [
+        "server-supported audience values",
+        "visibility policy",
+        "selection draft"
+      ],
+      "comparisonStatus": "NOT_RUN"
+    },
+    {
+      "caseId": "P06-expiry-selector",
+      "photo": 6,
+      "sourcePath": "photo-06.jpg",
+      "sourceSHA256": "4a0e2229ce68d447f25656cab392d982822d868dfb1123caef28be82b16d07e3",
+      "referenceRole": "notes alternative",
+      "sourceRegionDescription": "Right component: 1h and End of day selector",
+      "sourceROI": null,
+      "roiStatus": "DEVELOPER_MEASUREMENT_REQUIRED",
+      "actualCSSViewport": null,
+      "targetState": "Expiry selector with black selected state",
+      "requiredInputs": [
+        "allowed expiry choices",
+        "server expiresAt",
+        "event timezone"
+      ],
+      "comparisonStatus": "NOT_RUN"
+    },
+    {
+      "caseId": "P06-inline-reply",
+      "photo": 6,
+      "sourcePath": "photo-06.jpg",
+      "sourceSHA256": "4a0e2229ce68d447f25656cab392d982822d868dfb1123caef28be82b16d07e3",
+      "referenceRole": "notes alternative",
+      "sourceRegionDescription": "Right component: inline reply interaction",
+      "sourceROI": null,
+      "roiStatus": "DEVELOPER_MEASUREMENT_REQUIRED",
+      "actualCSSViewport": null,
+      "targetState": "Authorized note reply",
+      "requiredInputs": [
+        "note/reply revisions",
+        "reply visibility/expiry policy",
+        "send state/capability"
+      ],
+      "comparisonStatus": "NOT_RUN"
+    },
+    {
+      "caseId": "P10-notes-map-list",
+      "photo": 10,
+      "sourcePath": "photo-10.jpg",
+      "sourceSHA256": "1f0e133be3a4bf999fb7871188cce67086d09106a095c266b74e648a67777f63",
+      "referenceRole": "PROVISIONAL primary notes states",
+      "sourceRegionDescription": "Left handset, NOTES tab, grouped/single markers and selected Main Gate list",
+      "sourceROI": null,
+      "roiStatus": "DEVELOPER_MEASUREMENT_REQUIRED",
+      "actualCSSViewport": null,
+      "targetState": "Notes map/list with close, reply, MEET HERE and new note",
+      "requiredInputs": [
+        "authorized note groups/counts",
+        "selected landmark",
+        "note IDs/revisions",
+        "reply/meet/create capabilities"
+      ],
+      "comparisonStatus": "NOT_RUN"
+    },
+    {
+      "caseId": "P10-composer",
+      "photo": 10,
+      "sourcePath": "photo-10.jpg",
+      "sourceSHA256": "1f0e133be3a4bf999fb7871188cce67086d09106a095c266b74e648a67777f63",
+      "referenceRole": "PROVISIONAL primary notes states",
+      "sourceRegionDescription": "Middle handset, selected/change place, note body and POST NOTE",
+      "sourceROI": null,
+      "roiStatus": "DEVELOPER_MEASUREMENT_REQUIRED",
+      "actualCSSViewport": null,
+      "targetState": "Place-anchored note composer",
+      "requiredInputs": [
+        "reviewed fixed landmark/revision",
+        "body draft",
+        "audience choice",
+        "expiry choice/server event timezone",
+        "post capability"
+      ],
+      "comparisonStatus": "NOT_RUN"
+    },
+    {
+      "caseId": "P10-marker-taxonomy",
+      "photo": 10,
+      "sourcePath": "photo-10.jpg",
+      "sourceSHA256": "1f0e133be3a4bf999fb7871188cce67086d09106a095c266b74e648a67777f63",
+      "referenceRole": "PROVISIONAL primary notes states",
+      "sourceRegionDescription": "Right component: single, group and selected note markers",
+      "sourceROI": null,
+      "roiStatus": "DEVELOPER_MEASUREMENT_REQUIRED",
+      "actualCSSViewport": null,
+      "targetState": "Note marker taxonomy",
+      "requiredInputs": [
+        "authorized count",
+        "selected group/note",
+        "source anchor"
+      ],
+      "comparisonStatus": "NOT_RUN"
+    },
+    {
+      "caseId": "P10-place-note-card",
+      "photo": 10,
+      "sourcePath": "photo-10.jpg",
+      "sourceSHA256": "1f0e133be3a4bf999fb7871188cce67086d09106a095c266b74e648a67777f63",
+      "referenceRole": "PROVISIONAL primary notes states",
+      "sourceRegionDescription": "Right component: individual place-note card",
+      "sourceROI": null,
+      "roiStatus": "DEVELOPER_MEASUREMENT_REQUIRED",
+      "actualCSSViewport": null,
+      "targetState": "Selected note card",
+      "requiredInputs": [
+        "authorized author/portrait",
+        "body/timestamp",
+        "landmark",
+        "audience/expiry/status"
+      ],
+      "comparisonStatus": "NOT_RUN"
+    },
+    {
+      "caseId": "P10-audience-selector",
+      "photo": 10,
+      "sourcePath": "photo-10.jpg",
+      "sourceSHA256": "1f0e133be3a4bf999fb7871188cce67086d09106a095c266b74e648a67777f63",
+      "referenceRole": "PROVISIONAL primary notes states",
+      "sourceRegionDescription": "Right component: Friends and Everyone selector",
+      "sourceROI": null,
+      "roiStatus": "DEVELOPER_MEASUREMENT_REQUIRED",
+      "actualCSSViewport": null,
+      "targetState": "Audience selector with black selected state",
+      "requiredInputs": [
+        "server-supported audience values",
+        "visibility policy",
+        "selection draft"
+      ],
+      "comparisonStatus": "NOT_RUN"
+    },
+    {
+      "caseId": "P10-expiry-selector",
+      "photo": 10,
+      "sourcePath": "photo-10.jpg",
+      "sourceSHA256": "1f0e133be3a4bf999fb7871188cce67086d09106a095c266b74e648a67777f63",
+      "referenceRole": "PROVISIONAL primary notes states",
+      "sourceRegionDescription": "Right component: 1h and End of day selector",
+      "sourceROI": null,
+      "roiStatus": "DEVELOPER_MEASUREMENT_REQUIRED",
+      "actualCSSViewport": null,
+      "targetState": "Expiry selector with black selected state",
+      "requiredInputs": [
+        "allowed expiry choices",
+        "server expiresAt",
+        "event timezone"
+      ],
+      "comparisonStatus": "NOT_RUN"
+    },
+    {
+      "caseId": "P10-inline-reply",
+      "photo": 10,
+      "sourcePath": "photo-10.jpg",
+      "sourceSHA256": "1f0e133be3a4bf999fb7871188cce67086d09106a095c266b74e648a67777f63",
+      "referenceRole": "PROVISIONAL primary notes states",
+      "sourceRegionDescription": "Right component: inline reply interaction",
+      "sourceROI": null,
+      "roiStatus": "DEVELOPER_MEASUREMENT_REQUIRED",
+      "actualCSSViewport": null,
+      "targetState": "Authorized note reply",
+      "requiredInputs": [
+        "note/reply revisions",
+        "reply visibility/expiry policy",
+        "send state/capability"
+      ],
+      "comparisonStatus": "NOT_RUN"
+    },
+    {
+      "caseId": "P07-map-overview",
+      "photo": 7,
+      "sourcePath": "photo-07.jpg",
+      "sourceSHA256": "6b1ecf2806588f29ad7e3f3da8e7a36fcfb392a2640be33ce6de006f8c8a13ce",
+      "referenceRole": "friends alternative",
+      "sourceRegionDescription": "Left handset, MAP tab and full venue with self/friend/cluster/note overlays",
+      "sourceROI": null,
+      "roiStatus": "DEVELOPER_MEASUREMENT_REQUIRED",
+      "actualCSSViewport": null,
+      "targetState": "Map overview with zoom, recenter and sharing/Pause",
+      "requiredInputs": [
+        "approved map revision",
+        "authorized physical markers/clusters",
+        "sharing state",
+        "projection availability"
+      ],
+      "comparisonStatus": "NOT_RUN"
+    },
+    {
+      "caseId": "P07-friends-list",
+      "photo": 7,
+      "sourcePath": "photo-07.jpg",
+      "sourceSHA256": "6b1ecf2806588f29ad7e3f3da8e7a36fcfb392a2640be33ce6de006f8c8a13ce",
+      "referenceRole": "friends alternative",
+      "sourceRegionDescription": "Middle handset, FRIENDS tab, overview and freshness rows",
+      "sourceROI": null,
+      "roiStatus": "DEVELOPER_MEASUREMENT_REQUIRED",
+      "actualCSSViewport": null,
+      "targetState": "Friends list with current/check-in/stale rows and VIEW/ASK LOCATION",
+      "requiredInputs": [
+        "authorized friend rows",
+        "location source/sample time/server clock",
+        "freshness and visibility",
+        "view/request capabilities"
+      ],
+      "comparisonStatus": "NOT_RUN"
+    },
+    {
+      "caseId": "P07-marker-taxonomy",
+      "photo": 7,
+      "sourcePath": "photo-07.jpg",
+      "sourceSHA256": "6b1ecf2806588f29ad7e3f3da8e7a36fcfb392a2640be33ce6de006f8c8a13ce",
+      "referenceRole": "friends alternative",
+      "sourceRegionDescription": "Right component: self, friend, cluster and note markers",
+      "sourceROI": null,
+      "roiStatus": "DEVELOPER_MEASUREMENT_REQUIRED",
+      "actualCSSViewport": null,
+      "targetState": "Overlay marker taxonomy",
+      "requiredInputs": [
+        "approved portrait",
+        "authorized cluster membership/count",
+        "selection state"
+      ],
+      "comparisonStatus": "NOT_RUN"
+    },
+    {
+      "caseId": "P07-freshness-formats",
+      "photo": 7,
+      "sourcePath": "photo-07.jpg",
+      "sourceSHA256": "6b1ecf2806588f29ad7e3f3da8e7a36fcfb392a2640be33ce6de006f8c8a13ce",
+      "referenceRole": "friends alternative",
+      "sourceRegionDescription": "Right component: phone/current, check-in and last-known formats",
+      "sourceROI": null,
+      "roiStatus": "DEVELOPER_MEASUREMENT_REQUIRED",
+      "actualCSSViewport": null,
+      "targetState": "Distinct source and freshness labels",
+      "requiredInputs": [
+        "source discriminator",
+        "sample/check-in time",
+        "server clock",
+        "expiry/visibility revision"
+      ],
+      "comparisonStatus": "NOT_RUN"
+    },
+    {
+      "caseId": "P07-selected-friend",
+      "photo": 7,
+      "sourcePath": "photo-07.jpg",
+      "sourceSHA256": "6b1ecf2806588f29ad7e3f3da8e7a36fcfb392a2640be33ce6de006f8c8a13ce",
+      "referenceRole": "friends alternative",
+      "sourceRegionDescription": "Right component: friend profile with MESSAGE and MEET HERE",
+      "sourceROI": null,
+      "roiStatus": "DEVELOPER_MEASUREMENT_REQUIRED",
+      "actualCSSViewport": null,
+      "targetState": "Selected physical friend card",
+      "requiredInputs": [
+        "authorized profile/portrait",
+        "fixed selected landmark for MEET HERE only",
+        "meeting/conversation capabilities",
+        "authorized selected-friend conversation context; invitationId optional; opening composer creates no invitation/message"
+      ],
+      "comparisonStatus": "NOT_RUN"
+    },
+    {
+      "caseId": "P07-sharing-control",
+      "photo": 7,
+      "sourcePath": "photo-07.jpg",
+      "sourceSHA256": "6b1ecf2806588f29ad7e3f3da8e7a36fcfb392a2640be33ce6de006f8c8a13ce",
+      "referenceRole": "friends alternative",
+      "sourceRegionDescription": "Right component: location-sharing control and Pause",
+      "sourceROI": null,
+      "roiStatus": "DEVELOPER_MEASUREMENT_REQUIRED",
+      "actualCSSViewport": null,
+      "targetState": "Opt-in sharing, pause and revoke states",
+      "requiredInputs": [
+        "device permission separately from service sharing",
+        "server sharing status/revision",
+        "pending/denied/error state"
+      ],
+      "comparisonStatus": "NOT_RUN"
+    },
+    {
+      "caseId": "P08-map-overview",
+      "photo": 8,
+      "sourcePath": "photo-08.jpg",
+      "sourceSHA256": "2a35eacdfa5c23aaa159a866d1e8fae092ab1279a2a4a5bfa990bc7b1999531d",
+      "referenceRole": "friends alternative",
+      "sourceRegionDescription": "Left handset, MAP tab and full venue with self/friend/cluster/note overlays",
+      "sourceROI": null,
+      "roiStatus": "DEVELOPER_MEASUREMENT_REQUIRED",
+      "actualCSSViewport": null,
+      "targetState": "Map overview with zoom, recenter and sharing/Pause",
+      "requiredInputs": [
+        "approved map revision",
+        "authorized physical markers/clusters",
+        "sharing state",
+        "projection availability"
+      ],
+      "comparisonStatus": "NOT_RUN"
+    },
+    {
+      "caseId": "P08-friends-list",
+      "photo": 8,
+      "sourcePath": "photo-08.jpg",
+      "sourceSHA256": "2a35eacdfa5c23aaa159a866d1e8fae092ab1279a2a4a5bfa990bc7b1999531d",
+      "referenceRole": "friends alternative",
+      "sourceRegionDescription": "Middle handset, FRIENDS tab, overview and freshness rows",
+      "sourceROI": null,
+      "roiStatus": "DEVELOPER_MEASUREMENT_REQUIRED",
+      "actualCSSViewport": null,
+      "targetState": "Friends list with current/check-in/stale rows and VIEW/ASK LOCATION",
+      "requiredInputs": [
+        "authorized friend rows",
+        "location source/sample time/server clock",
+        "freshness and visibility",
+        "view/request capabilities"
+      ],
+      "comparisonStatus": "NOT_RUN"
+    },
+    {
+      "caseId": "P08-marker-taxonomy",
+      "photo": 8,
+      "sourcePath": "photo-08.jpg",
+      "sourceSHA256": "2a35eacdfa5c23aaa159a866d1e8fae092ab1279a2a4a5bfa990bc7b1999531d",
+      "referenceRole": "friends alternative",
+      "sourceRegionDescription": "Right component: self, friend, cluster and note markers",
+      "sourceROI": null,
+      "roiStatus": "DEVELOPER_MEASUREMENT_REQUIRED",
+      "actualCSSViewport": null,
+      "targetState": "Overlay marker taxonomy",
+      "requiredInputs": [
+        "approved portrait",
+        "authorized cluster membership/count",
+        "selection state"
+      ],
+      "comparisonStatus": "NOT_RUN"
+    },
+    {
+      "caseId": "P08-freshness-formats",
+      "photo": 8,
+      "sourcePath": "photo-08.jpg",
+      "sourceSHA256": "2a35eacdfa5c23aaa159a866d1e8fae092ab1279a2a4a5bfa990bc7b1999531d",
+      "referenceRole": "friends alternative",
+      "sourceRegionDescription": "Right component: phone/current, check-in and last-known formats",
+      "sourceROI": null,
+      "roiStatus": "DEVELOPER_MEASUREMENT_REQUIRED",
+      "actualCSSViewport": null,
+      "targetState": "Distinct source and freshness labels",
+      "requiredInputs": [
+        "source discriminator",
+        "sample/check-in time",
+        "server clock",
+        "expiry/visibility revision"
+      ],
+      "comparisonStatus": "NOT_RUN"
+    },
+    {
+      "caseId": "P08-selected-friend",
+      "photo": 8,
+      "sourcePath": "photo-08.jpg",
+      "sourceSHA256": "2a35eacdfa5c23aaa159a866d1e8fae092ab1279a2a4a5bfa990bc7b1999531d",
+      "referenceRole": "friends alternative",
+      "sourceRegionDescription": "Right component: friend profile with MESSAGE and MEET HERE",
+      "sourceROI": null,
+      "roiStatus": "DEVELOPER_MEASUREMENT_REQUIRED",
+      "actualCSSViewport": null,
+      "targetState": "Selected physical friend card",
+      "requiredInputs": [
+        "authorized profile/portrait",
+        "fixed selected landmark for MEET HERE only",
+        "meeting/conversation capabilities",
+        "authorized selected-friend conversation context; invitationId optional; opening composer creates no invitation/message"
+      ],
+      "comparisonStatus": "NOT_RUN"
+    },
+    {
+      "caseId": "P08-sharing-control",
+      "photo": 8,
+      "sourcePath": "photo-08.jpg",
+      "sourceSHA256": "2a35eacdfa5c23aaa159a866d1e8fae092ab1279a2a4a5bfa990bc7b1999531d",
+      "referenceRole": "friends alternative",
+      "sourceRegionDescription": "Right component: location-sharing control and Pause",
+      "sourceROI": null,
+      "roiStatus": "DEVELOPER_MEASUREMENT_REQUIRED",
+      "actualCSSViewport": null,
+      "targetState": "Opt-in sharing, pause and revoke states",
+      "requiredInputs": [
+        "device permission separately from service sharing",
+        "server sharing status/revision",
+        "pending/denied/error state"
+      ],
+      "comparisonStatus": "NOT_RUN"
+    },
+    {
+      "caseId": "P09-map-overview",
+      "photo": 9,
+      "sourcePath": "photo-09.jpg",
+      "sourceSHA256": "2c9a8a240495467c9b03a0cce445515f3b879c6e2aef4bc0a366f1aa855051a9",
+      "referenceRole": "PROVISIONAL primary friends states",
+      "sourceRegionDescription": "Left handset, MAP tab and full venue with self/friend/cluster/note overlays",
+      "sourceROI": null,
+      "roiStatus": "DEVELOPER_MEASUREMENT_REQUIRED",
+      "actualCSSViewport": null,
+      "targetState": "Map overview with zoom, recenter and sharing/Pause",
+      "requiredInputs": [
+        "approved map revision",
+        "authorized physical markers/clusters",
+        "sharing state",
+        "projection availability"
+      ],
+      "comparisonStatus": "NOT_RUN"
+    },
+    {
+      "caseId": "P09-friends-list",
+      "photo": 9,
+      "sourcePath": "photo-09.jpg",
+      "sourceSHA256": "2c9a8a240495467c9b03a0cce445515f3b879c6e2aef4bc0a366f1aa855051a9",
+      "referenceRole": "PROVISIONAL primary friends states",
+      "sourceRegionDescription": "Middle handset, FRIENDS tab, overview and freshness rows",
+      "sourceROI": null,
+      "roiStatus": "DEVELOPER_MEASUREMENT_REQUIRED",
+      "actualCSSViewport": null,
+      "targetState": "Friends list with current/check-in/stale rows and VIEW/ASK LOCATION",
+      "requiredInputs": [
+        "authorized friend rows",
+        "location source/sample time/server clock",
+        "freshness and visibility",
+        "view/request capabilities"
+      ],
+      "comparisonStatus": "NOT_RUN"
+    },
+    {
+      "caseId": "P09-marker-taxonomy",
+      "photo": 9,
+      "sourcePath": "photo-09.jpg",
+      "sourceSHA256": "2c9a8a240495467c9b03a0cce445515f3b879c6e2aef4bc0a366f1aa855051a9",
+      "referenceRole": "PROVISIONAL primary friends states",
+      "sourceRegionDescription": "Right component: self, friend, cluster and note markers",
+      "sourceROI": null,
+      "roiStatus": "DEVELOPER_MEASUREMENT_REQUIRED",
+      "actualCSSViewport": null,
+      "targetState": "Overlay marker taxonomy",
+      "requiredInputs": [
+        "approved portrait",
+        "authorized cluster membership/count",
+        "selection state"
+      ],
+      "comparisonStatus": "NOT_RUN"
+    },
+    {
+      "caseId": "P09-freshness-formats",
+      "photo": 9,
+      "sourcePath": "photo-09.jpg",
+      "sourceSHA256": "2c9a8a240495467c9b03a0cce445515f3b879c6e2aef4bc0a366f1aa855051a9",
+      "referenceRole": "PROVISIONAL primary friends states",
+      "sourceRegionDescription": "Right component: phone/current, check-in and last-known formats",
+      "sourceROI": null,
+      "roiStatus": "DEVELOPER_MEASUREMENT_REQUIRED",
+      "actualCSSViewport": null,
+      "targetState": "Distinct source and freshness labels",
+      "requiredInputs": [
+        "source discriminator",
+        "sample/check-in time",
+        "server clock",
+        "expiry/visibility revision"
+      ],
+      "comparisonStatus": "NOT_RUN"
+    },
+    {
+      "caseId": "P09-selected-friend",
+      "photo": 9,
+      "sourcePath": "photo-09.jpg",
+      "sourceSHA256": "2c9a8a240495467c9b03a0cce445515f3b879c6e2aef4bc0a366f1aa855051a9",
+      "referenceRole": "PROVISIONAL primary friends states",
+      "sourceRegionDescription": "Right component: friend profile with MESSAGE and MEET HERE",
+      "sourceROI": null,
+      "roiStatus": "DEVELOPER_MEASUREMENT_REQUIRED",
+      "actualCSSViewport": null,
+      "targetState": "Selected physical friend card",
+      "requiredInputs": [
+        "authorized profile/portrait",
+        "fixed selected landmark for MEET HERE only",
+        "meeting/conversation capabilities",
+        "authorized selected-friend conversation context; invitationId optional; opening composer creates no invitation/message"
+      ],
+      "comparisonStatus": "NOT_RUN"
+    },
+    {
+      "caseId": "P09-sharing-control",
+      "photo": 9,
+      "sourcePath": "photo-09.jpg",
+      "sourceSHA256": "2c9a8a240495467c9b03a0cce445515f3b879c6e2aef4bc0a366f1aa855051a9",
+      "referenceRole": "PROVISIONAL primary friends states",
+      "sourceRegionDescription": "Right component: location-sharing control and Pause",
+      "sourceROI": null,
+      "roiStatus": "DEVELOPER_MEASUREMENT_REQUIRED",
+      "actualCSSViewport": null,
+      "targetState": "Opt-in sharing, pause and revoke states",
+      "requiredInputs": [
+        "device permission separately from service sharing",
+        "server sharing status/revision",
+        "pending/denied/error state"
+      ],
+      "comparisonStatus": "NOT_RUN"
+    }
+  ]
+}

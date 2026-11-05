@@ -1,0 +1,178 @@
+{
+  "schemaVersion": 1,
+  "createdAt": "2026-11-05T01:19:42.813291+00:00",
+  "referenceSet": "venue-redesign-2026-11-05",
+  "sourceSubmission": {
+    "threadId": "01a1a385-9f32-73c2-8715-ff54bd1e0497",
+    "attachmentId": "5AE18B10-B53F-405C-9CC2-1541ECB4BAFA",
+    "count": 10,
+    "totalOriginalBytes": 3424474
+  },
+  "authority": {
+    "productFlows": "../../progressions.md",
+    "scopeRegister": "../../venue-feature-amendment-2026-11-05.md",
+    "stateMap": "reference-state-map.json",
+    "primarySelection": "PROVISIONAL; one optional human choice remains with frontend king. Do not add a product variant selector."
+  },
+  "deliveryObjective": {
+    "objective": "Preserve the ten supplied venue JPEGs byte for byte; deliver the full product-flow document, provenance manifest and individual-state map; validate metadata, links and exact scope; commit the packet, resolve publication fixes and obtain canonical master delivery through the standing publisher.",
+    "tokenBudget": null,
+    "completionCriteria": [
+      "All ten originals match source SHA-256, size and canvas dimensions.",
+      "Product flows include opt-in physical location, fixed-landmark invitations and contextual conversation, place notes, privacy and failure states.",
+      "Composite references have separate state/component cases, provisional roles and unmeasured ROI values.",
+      "Own bounded metadata/JSON/path/link/scope checks pass; no application or pixel acceptance is claimed.",
+      "Exact scoped commit is handed directly to standing publisher; publication fixes and canonical receipt complete delivery."
+    ],
+    "existingPersistentGoal": {
+      "status": "blocked",
+      "relationship": "Historical background-integration goal is incompatible and unfinished; preserved without reset, completion or pause. This explicit unbudgeted delivery objective records the new assignment; no second active goal was created."
+    }
+  },
+  "ownership": {
+    "writerThread": "01a1a533-0644-7ef0-9ee8-9f1755817fb9",
+    "baseCommit": "97b4dce908cf1dab8fa193bed12d7b7964ee3227",
+    "writablePaths": [
+      "docs/mcr/progressions.md",
+      "docs/mcr/design/venue-redesign-2026-11-05/**"
+    ],
+    "mainReturnedBeforeWrites": true,
+    "publisherThread": "01a1a5d9-332b-7822-a8f7-412e295fa211"
+  },
+  "resourceBooking": {
+    "id": "UI533-VENUE-DOCREF32-0118",
+    "expiresAt": "2026-11-05T01:50:00Z",
+    "positiveGrowthCapBytes": 33554432,
+    "correctedProjectionBytes": 27820468,
+    "retainedCarryFloorBytesExcludingAttachments": 3313811456,
+    "operations": "Ordinary byte copy, Python metadata/JSON/link checks and scoped Git commit only; no application execution or image processing."
+  },
+  "limitations": [
+    "Not an implementation acceptance record or release-progress denominator. Original 112 task IDs and 61 IA entries remain governed by the central register.",
+    "Canvas dimensions are verified; source ROI and actual CSS viewport are unmeasured.",
+    "No product screenshots, live services, phone GPS, device runs or layout comparisons were inspected by this documentation owner.",
+    "Original artwork is not proof of real place provenance, physical arrival or an image-to-GPS transform."
+  ],
+  "files": [
+    {
+      "photo": 1,
+      "path": "photo-01.jpg",
+      "sourceFilename": "1-Photo-1.jpg",
+      "sha256": "2366e1ce7e76e3b5932879d0602a8642dc36775dbd41b4378945ed838a4aa9b3",
+      "bytes": 329153,
+      "width": 1024,
+      "height": 1280,
+      "mediaType": "image/jpeg",
+      "role": "whole-site fenced alternative",
+      "provenance": "User-supplied attachment; unchanged source bytes; design reference, not live/device/georeferencing evidence."
+    },
+    {
+      "photo": 2,
+      "path": "photo-02.jpg",
+      "sourceFilename": "2-Photo-2.jpg",
+      "sha256": "f7d841c815dfbf85b48b7e61a06106b9edab195e7bfbd4d37b78d8b23e610ac1",
+      "bytes": 350812,
+      "width": 1280,
+      "height": 853,
+      "mediaType": "image/jpeg",
+      "role": "meeting and contextual conversation anatomy; alternate fenced map background",
+      "provenance": "User-supplied attachment; unchanged source bytes; design reference, not live/device/georeferencing evidence."
+    },
+    {
+      "photo": 3,
+      "path": "photo-03.jpg",
+      "sourceFilename": "3-Photo-3.jpg",
+      "sha256": "ddaf9da28fc517eb01588f725678a20045b3d52f0ca71d24d38b194a8b269423",
+      "bytes": 321634,
+      "width": 1280,
+      "height": 853,
+      "mediaType": "image/jpeg",
+      "role": "notes alternative",
+      "provenance": "User-supplied attachment; unchanged source bytes; design reference, not live/device/georeferencing evidence."
+    },
+    {
+      "photo": 4,
+      "path": "photo-04.jpg",
+      "sourceFilename": "4-Photo-4.jpg",
+      "sha256": "4347ef9ba4f13c22e3575c80e9ff0eecd2aa569678e49223170a4b2491e589eb",
+      "bytes": 343671,
+      "width": 1024,
+      "height": 1280,
+      "mediaType": "image/jpeg",
+      "role": "whole-site fenced alternative",
+      "provenance": "User-supplied attachment; unchanged source bytes; design reference, not live/device/georeferencing evidence."
+    },
+    {
+      "photo": 5,
+      "path": "photo-05.jpg",
+      "sourceFilename": "5-Photo-5.jpg",
+      "sha256": "d0713633289f87fc98603927f7cbc02df2054e989f6360332a93476d6c9da4e0",
+      "bytes": 328720,
+      "width": 1024,
+      "height": 1280,
+      "mediaType": "image/jpeg",
+      "role": "PROVISIONAL primary base map",
+      "provenance": "User-supplied attachment; unchanged source bytes; design reference, not live/device/georeferencing evidence."
+    },
+    {
+      "photo": 6,
+      "path": "photo-06.jpg",
+      "sourceFilename": "6-Photo-6.jpg",
+      "sha256": "4a0e2229ce68d447f25656cab392d982822d868dfb1123caef28be82b16d07e3",
+      "bytes": 320646,
+      "width": 1280,
+      "height": 853,
+      "mediaType": "image/jpeg",
+      "role": "notes alternative",
+      "provenance": "User-supplied attachment; unchanged source bytes; design reference, not live/device/georeferencing evidence."
+    },
+    {
+      "photo": 7,
+      "path": "photo-07.jpg",
+      "sourceFilename": "7-Photo-7.jpg",
+      "sha256": "6b1ecf2806588f29ad7e3f3da8e7a36fcfb392a2640be33ce6de006f8c8a13ce",
+      "bytes": 369348,
+      "width": 1280,
+      "height": 853,
+      "mediaType": "image/jpeg",
+      "role": "friends alternative",
+      "provenance": "User-supplied attachment; unchanged source bytes; design reference, not live/device/georeferencing evidence."
+    },
+    {
+      "photo": 8,
+      "path": "photo-08.jpg",
+      "sourceFilename": "8-Photo-8.jpg",
+      "sha256": "2a35eacdfa5c23aaa159a866d1e8fae092ab1279a2a4a5bfa990bc7b1999531d",
+      "bytes": 373033,
+      "width": 1280,
+      "height": 853,
+      "mediaType": "image/jpeg",
+      "role": "friends alternative",
+      "provenance": "User-supplied attachment; unchanged source bytes; design reference, not live/device/georeferencing evidence."
+    },
+    {
+      "photo": 9,
+      "path": "photo-09.jpg",
+      "sourceFilename": "9-Photo-9.jpg",
+      "sha256": "2c9a8a240495467c9b03a0cce445515f3b879c6e2aef4bc0a366f1aa855051a9",
+      "bytes": 366804,
+      "width": 1280,
+      "height": 853,
+      "mediaType": "image/jpeg",
+      "role": "PROVISIONAL primary friends states",
+      "provenance": "User-supplied attachment; unchanged source bytes; design reference, not live/device/georeferencing evidence."
+    },
+    {
+      "photo": 10,
+      "path": "photo-10.jpg",
+      "sourceFilename": "10-Photo-10.jpg",
+      "sha256": "1f0e133be3a4bf999fb7871188cce67086d09106a095c266b74e648a67777f63",
+      "bytes": 320653,
+      "width": 1280,
+      "height": 853,
+      "mediaType": "image/jpeg",
+      "role": "PROVISIONAL primary notes states",
+      "provenance": "User-supplied attachment; unchanged source bytes; design reference, not live/device/georeferencing evidence."
+    }
+  ]
+}
