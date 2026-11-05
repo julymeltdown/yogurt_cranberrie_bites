@@ -1,0 +1,21 @@
+{"status":"PASS","imageBytes":328720,"imageSHA256":"d0713633289f87fc98603927f7cbc02df2054e989f6360332a93476d6c9da4e0","width":1024,"height":1280,"sourceCandidates":22,"interfaceSHA256":"a29a47add30fe9fe9cd20dcab5f5dd5004cf1290106794fb407991f1c5142dcd","provisional":true,"coordinateSpace":"image-px"}
+✔ real three-file pack, exact supplied JPEG and single source-anchor/provenance closure qualify (3.347333ms)
+✔ independent JPEG header identifies full unchanged board and rejects malformed input (0.696833ms)
+✔ rejects a mixed primary image, world alias and geographic coordinate brand (0.343125ms)
+✔ rejects dimensions or bytes/hash not exactly bound to Photo 5 (0.695541ms)
+✔ rejects duplicated/invalid source keys and missing mandatory pictured landmarks (0.242667ms)
+✔ rejects negative, nonfinite, fractional, outside-image and half-open region-edge anchors (0.596542ms)
+✔ rejects zero/negative/overflow hit regions without clipping (0.542708ms)
+✔ rejects wrong reference pins and unsupported per-landmark source references (0.187833ms)
+✔ Photo Zone label requires its explicit Notes reference, with geometry kept on Photo 5 (0.209833ms)
+✔ rejects forged operational review or extra GPS/live-user/permission authority (0.238ms)
+✔ rejects source labels containing hidden control characters or padding (0.453125ms)
+✔ rejects unbounded source lists and non-finite/unknown image-pixel geometry fields (0.159416ms)
+ℹ tests 12
+ℹ suites 0
+ℹ pass 12
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 10.65075

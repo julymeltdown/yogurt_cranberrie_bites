@@ -1,0 +1,10 @@
+{
+  "extends": "../../../../../../frontend/tsconfig.json",
+  "compilerOptions": {
+    "types": ["node"],
+    "typeRoots": ["/Users/lhs/Desktop/mcr/frontend/node_modules/@types"]
+  },
+  "files": ["../../../../../../frontend/src/features/paradise-city-map/art-source/qualifier.test.ts"],
+  "include": [],
+  "exclude": []
+}

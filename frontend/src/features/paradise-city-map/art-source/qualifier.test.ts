@@ -13,7 +13,7 @@ test('real three-file pack, exact supplied JPEG and single source-anchor/provena
 })
 test('independent JPEG header identifies full unchanged board and rejects malformed input',()=>{
  assert.deepEqual(jpegDimensions(jpeg),{width:1024,height:1280});assert.throws(()=>jpegDimensions(new Uint8Array([255,216,255])))
- const forged=Buffer.from(jpeg);forged[200]^=1;assert(qualifyImage(forged).includes('EXACT_JPEG_BYTES'))
+ const forged=Buffer.from(jpeg);const byte=forged[200];assert(byte!==undefined,'Photo 5 must contain the hostile mutation byte');forged[200]=byte^1;assert(qualifyImage(forged).includes('EXACT_JPEG_BYTES'))
  assert(qualifyImage(jpeg.subarray(0,100)).includes('EXACT_JPEG_BYTES'))
 })
 test('rejects a mixed primary image, world alias and geographic coordinate brand',()=>{
@@ -21,7 +21,7 @@ test('rejects a mixed primary image, world alias and geographic coordinate brand
  assert(qualifyInterface(v).includes('VARIANT_IDENTITY'));assert(qualifyInterface(v).includes('EXACT_IMAGE'));assert(qualifyInterface(v).includes('PRESENTATION_COORDINATES'))
 })
 test('rejects dimensions or bytes/hash not exactly bound to Photo 5',()=>{
- for(const [field,value] of [['width',768],['height',1296],['bytes',328721],['sha256','0'.repeat(64)]]){const v=clone();v.image[field]=value;assert(qualifyInterface(v).includes('EXACT_IMAGE'))}
+ for(const [field,value] of [['width',768],['height',1296],['bytes',328721],['sha256','0'.repeat(64)]] as const){const v=clone();v.image[field]=value;assert(qualifyInterface(v).includes('EXACT_IMAGE'))}
 })
 test('rejects duplicated/invalid source keys and missing mandatory pictured landmarks',()=>{
  const v=clone();v.landmarks[1].id='stage';assert(qualifyInterface(v).includes('CANDIDATE_ID'));assert(qualifyInterface(v).includes('COMPLETE_PICTURED_PLAN_ANCHORS'))
@@ -32,7 +32,7 @@ test('rejects negative, nonfinite, fractional, outside-image and half-open regio
  const v=clone();v.landmarks[0].anchor.x=v.landmarks[0].hitRegion.x+v.landmarks[0].hitRegion.width;assert(qualifyInterface(v).includes('PIXEL_BOUNDS'))
 })
 test('rejects zero/negative/overflow hit regions without clipping',()=>{
- for(const [field,value] of [['width',0],['height',-1],['x',1000],['y',1280]]){const v=clone();v.landmarks[0].hitRegion[field]=value;assert(qualifyInterface(v).includes('PIXEL_BOUNDS'))}
+ for(const [field,value] of [['width',0],['height',-1],['x',1000],['y',1280]] as const){const v=clone();v.landmarks[0].hitRegion[field]=value;assert(qualifyInterface(v).includes('PIXEL_BOUNDS'))}
 })
 test('rejects wrong reference pins and unsupported per-landmark source references',()=>{
  const v=clone();v.sourceRefs[0].sha256='0'.repeat(64);v.landmarks[0].sourceRefs=['unknown'];assert(qualifyInterface(v).includes('EXACT_SOURCE_REFS'));assert(qualifyInterface(v).includes('CANDIDATE_SOURCE_REFS'))

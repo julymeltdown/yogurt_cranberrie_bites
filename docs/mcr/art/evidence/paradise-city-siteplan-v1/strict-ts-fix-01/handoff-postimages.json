@@ -1,0 +1,131 @@
+{
+   "exactWritableScopes" : [
+      "frontend/src/features/paradise-city-map/art-source/qualifier.test.ts",
+      "docs/mcr/art/paradise-city-siteplan-v1.md",
+      "docs/mcr/art/evidence/paradise-city-siteplan-v1/strict-ts-fix-01/"
+   ],
+   "files" : [
+      {
+         "bytes" : 2526,
+         "gitBlob" : "65e5f77a6137f7c070d6ca07b1b8f5ab47dfa9a3",
+         "mode" : "100644",
+         "path" : "docs/mcr/art/evidence/paradise-city-siteplan-v1/strict-ts-fix-01/ART-PC-STRICT-SOURCE01-0418-guardian.json",
+         "sha256" : "298832a2d184d95535fbfebcfa5b63d5e2638b9847338405c815841d4852a46b"
+      },
+      {
+         "bytes" : 21063,
+         "gitBlob" : "b443b8e37e433383e479406ccb269d6dd8b960c1",
+         "mode" : "100644",
+         "path" : "docs/mcr/art/evidence/paradise-city-siteplan-v1/strict-ts-fix-01/ART-PC-STRICT-SOURCE01-0418.jsonl",
+         "sha256" : "0e2a1702046c440b30aceb45940b64782151a7e55417481499dd82468c7fa090"
+      },
+      {
+         "bytes" : 3152,
+         "gitBlob" : "67d290a72e88b1c3668a845d9cc7b491f5dcc0f2",
+         "mode" : "100644",
+         "path" : "docs/mcr/art/evidence/paradise-city-siteplan-v1/strict-ts-fix-01/assessment.json",
+         "sha256" : "41abbeb1671d0156960e50f1584197be221ff431664916d8414dcf0ef3e7f2d6"
+      },
+      {
+         "bytes" : 0,
+         "gitBlob" : "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+         "mode" : "100644",
+         "path" : "docs/mcr/art/evidence/paradise-city-siteplan-v1/strict-ts-fix-01/command-00.log",
+         "sha256" : "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      {
+         "bytes" : 1553,
+         "gitBlob" : "7d3de4faf60485ac6699c123a3054ca8cdb54b19",
+         "mode" : "100644",
+         "path" : "docs/mcr/art/evidence/paradise-city-siteplan-v1/strict-ts-fix-01/command-01.log",
+         "sha256" : "eee1599f70bfbf475105be69cfe623f180e4f0a0ad20176e60d40cbcd05207fa"
+      },
+      {
+         "bytes" : 3187,
+         "gitBlob" : "8579b648311c68b1e419888916a1a7fc768317bc",
+         "mode" : "100644",
+         "path" : "docs/mcr/art/evidence/paradise-city-siteplan-v1/strict-ts-fix-01/consumer-source05-input.json",
+         "sha256" : "8383023965a0a8d68cb2c705a80b3ee223b5fb129638118af3e90acbb6ba627c"
+      },
+      {
+         "bytes" : 8124,
+         "gitBlob" : "46e698a35fc1d68511c7a6f1fa97a5c2037f58b3",
+         "mode" : "100644",
+         "path" : "docs/mcr/art/evidence/paradise-city-siteplan-v1/strict-ts-fix-01/controller.py",
+         "sha256" : "80d6d50201a1833c9101404eaf02ae270c573813a1c824f75fa4af4b99098ef9"
+      },
+      {
+         "bytes" : 1035,
+         "gitBlob" : "626aefe8ed43e3520235e8fee532e3221fc5cbd9",
+         "mode" : "100644",
+         "path" : "docs/mcr/art/evidence/paradise-city-siteplan-v1/strict-ts-fix-01/guardian.py",
+         "sha256" : "b661ea59e1721093125f9aef8829d6dadb71d86084d6610a81353ee861425a2a"
+      },
+      {
+         "bytes" : 9651,
+         "gitBlob" : "853c3fdec81eff8ddda9e07179af141e1e413efa",
+         "mode" : "100644",
+         "path" : "docs/mcr/art/evidence/paradise-city-siteplan-v1/strict-ts-fix-01/inventory.py",
+         "sha256" : "1f8696a22985527b4d39c68f41895a170e0e1bb74413324972a1fe7f148cdd8d"
+      },
+      {
+         "bytes" : 741,
+         "gitBlob" : "9035ca14d4fbd809aa28a11f84a59b066b368258",
+         "mode" : "100644",
+         "path" : "docs/mcr/art/evidence/paradise-city-siteplan-v1/strict-ts-fix-01/preparation.json",
+         "sha256" : "a8bc7c296bfd32b6c46658ba07b9c770dd500fe3fd83d0209fa6f656a857a4d1"
+      },
+      {
+         "bytes" : 3704,
+         "gitBlob" : "9bd97c0da935ce4abcaff610798eec0039836c08",
+         "mode" : "100644",
+         "path" : "docs/mcr/art/evidence/paradise-city-siteplan-v1/strict-ts-fix-01/preparation.py",
+         "sha256" : "61fbd881fd44ef0055440974958d9d1a9ce4593ce1638045139d6ba424329163"
+      },
+      {
+         "bytes" : 3179,
+         "gitBlob" : "33ff8f1a3a0c7d196ca150ebaf345239a6b0c681",
+         "mode" : "100644",
+         "path" : "docs/mcr/art/evidence/paradise-city-siteplan-v1/strict-ts-fix-01/safety.py",
+         "sha256" : "6082bbca656868dd8a56ff5f24e1f508eb9eab69429f35a943eb490a74dcd420"
+      },
+      {
+         "bytes" : 321,
+         "gitBlob" : "0d9ae5736bbbc3faa4c037df219a09af0e8a82ee",
+         "mode" : "100644",
+         "path" : "docs/mcr/art/evidence/paradise-city-siteplan-v1/strict-ts-fix-01/scoped-tsconfig.json",
+         "sha256" : "6df375106d29dfb9b11713a517c4d3ee9e7b147962fe4d1d5b087a80476092bd"
+      },
+      {
+         "bytes" : 738,
+         "gitBlob" : "dfcbdd60e701e0ecbb95acb9c8fd4e34808c6e13",
+         "mode" : "100644",
+         "path" : "docs/mcr/art/evidence/paradise-city-siteplan-v1/strict-ts-fix-01/seal.json",
+         "sha256" : "dd15db154bd55cb150868fb24f786b20b2efdaf05d23352144ee7074b8e3090c"
+      },
+      {
+         "bytes" : 14752,
+         "gitBlob" : "b6ecc072844352d85b05aeb81dc5c5d7c07701fd",
+         "mode" : "100644",
+         "path" : "docs/mcr/art/paradise-city-siteplan-v1.md",
+         "sha256" : "354ff99989d6fe734834ed07bd33d257ee9b15a614e27fded8fc5a9f7e806095"
+      },
+      {
+         "bytes" : 4699,
+         "gitBlob" : "45a798411faf65bd7f87d1a508adecc661131d4e",
+         "mode" : "100644",
+         "path" : "frontend/src/features/paradise-city-map/art-source/qualifier.test.ts",
+         "sha256" : "ea553d54e7eaf36d0391b798f56c0a0f8a287debac946f0d46af7a0bc6ef9a61"
+      }
+   ],
+   "fullProgramComposition" : "OWNED_BY_26E_PENDING_FRESH_SOURCE06",
+   "importPolicy" : "EXACT_POSTIMAGES_ON_CURRENT_MASTER_NO_PRIVATE_ANCESTRY",
+   "manifestSelfPath" : "docs/mcr/art/evidence/paradise-city-siteplan-v1/strict-ts-fix-01/handoff-postimages.json",
+   "qualification" : "SCOPED_STRICT_TWO_FILE_TYPES_AND_ORIGINAL12_NODE_CASES_PASS",
+   "qualifiedSourceCommit" : "624d30a86d77771425f402f939f8c516e42b123e",
+   "selfExcludedForNonCircularHash" : true,
+   "selfPinConveyedInDirectHandoff" : true,
+   "sourceBase" : "46b4d8670d31365a88b9006250befdcf2832135e",
+   "task" : "ART-PC-STRICT-01",
+   "testPreimageGitBlob" : "1b960ad84c283581b34e828674c64f9811eeb0ef"
+}

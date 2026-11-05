@@ -1,0 +1,96 @@
+{
+  "event": "FULL",
+  "status": "PASS",
+  "at": 1793852718.654722,
+  "pid": 59734,
+  "failure": null,
+  "peak": {
+    "whole": 4355102563,
+    "repairNew": 35359286,
+    "rss": 302596096,
+    "processes": 4,
+    "tmp": 1366255
+  },
+  "samples": 8,
+  "lastCensus": {
+    "processes": 3,
+    "rss": 141557760,
+    "pids": [
+      59682,
+      59734,
+      60022
+    ],
+    "globalCensus": {
+      "workflows": 1,
+      "source": 1,
+      "browser": 0,
+      "target": 0,
+      "reservedProcesses": 4,
+      "reservedRSS": 536870912,
+      "otherRemainingUpper": 2684354560,
+      "owners": [
+        {
+          "owner": "01a1a1fe-1eed-7d12-a247-879cd521e0ec",
+          "offer": "DEFAULT-VENUE-HOST-PREP32-0350",
+          "kind": "ordinary",
+          "pids": [
+            59951
+          ],
+          "visible": true
+        },
+        {
+          "owner": "01a1a5d9-332b-7822-a8f7-412e295fa211",
+          "offer": "PUBLISHER412E-ORDINARY-GIT-128M-OBSERVATION",
+          "kind": "ordinary",
+          "pids": [],
+          "visible": false
+        },
+        {
+          "owner": "01a1a205-3f89-78c3-aa67-719c4bb40b8d",
+          "offer": "NOTICE-BUILD-CONTROLPREP4-0359",
+          "kind": "ordinary",
+          "pids": [],
+          "visible": false
+        },
+        {
+          "owner": "01a1a231-0dc4-7b50-92bd-c0f0f56bd970",
+          "offer": "ART-PC-STRICT-SOURCE01-0418",
+          "kind": "source",
+          "pids": [
+            59682,
+            59734,
+            60022
+          ],
+          "visible": true
+        },
+        {
+          "owner": "01a1a202-3b96-7822-ab54-2f7d29aa42e5",
+          "offer": "QA03-WALL-BUILD-CONTROLPREP2-0415",
+          "kind": "ordinary",
+          "pids": [],
+          "visible": false
+        }
+      ],
+      "unknown": []
+    },
+    "birth": "Thu Nov 5 13:25:07 2026",
+    "executable": "/Library/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python",
+    "controllerIdentities": {
+      "59682": {
+        "pid": 59682,
+        "birth": "Thu Nov 5 13:25:07 2026",
+        "executable": "/Library/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python"
+      },
+      "60022": {
+        "pid": 60022,
+        "birth": "Thu Nov 5 13:25:18 2026",
+        "executable": "ps"
+      },
+      "59734": {
+        "pid": 59734,
+        "birth": "Thu Nov 5 13:25:09 2026",
+        "executable": "/Library/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python"
+      }
+    }
+  }
+}

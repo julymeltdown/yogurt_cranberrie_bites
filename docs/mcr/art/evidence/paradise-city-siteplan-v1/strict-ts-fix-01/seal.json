@@ -1,0 +1,21 @@
+{
+  "event": "FULL",
+  "offer": "ART-PC-STRICT-SEAL4-0427",
+  "status": "FAIL",
+  "acceptedAtEpoch": 1793852613.035827,
+  "at": "2026-11-05T04:23:49.579147+00:00",
+  "cap": 4194304,
+  "positivePeak": 4479502,
+  "wholePeak": 4352646186,
+  "minFree": 22331510784,
+  "allChildrenExited": true,
+  "roots": [
+    "/Users/lhs/Desktop/mcr-worktrees/art-map-cozy-v1",
+    "/Users/lhs/Desktop/mcr/.git",
+    "/Library/Frameworks/Python.framework/Versions/3.14",
+    "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64",
+    "/Users/lhs/Desktop/mcr/frontend/node_modules",
+    "/Users/lhs/Desktop/mcr-evidence/backend-staffing-01a1a21d/owner-resource-receipts/01a1a231-0dc4-7b50-92bd-c0f0f56bd970.json"
+  ],
+  "historicalNewPeak": 221435639
+}

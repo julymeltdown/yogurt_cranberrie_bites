@@ -1,0 +1,55 @@
+{
+  "task": "ART-PC-STRICT-01",
+  "disposition": "QUALIFIED_SCOPED_STRICT_TYPES_AND_ORIGINAL_TWELVE_HOSTILE_CASES",
+  "baselineSource": "46b4d8670d31365a88b9006250befdcf2832135e",
+  "baselineCanonicalTestPublication": "fcd0780537eb9f724a1f130523f02656e1be9ee6",
+  "consumerFailedCanonicalInput": "7b81bf62d22b48a1ea653a1a84fae199c2b1d837",
+  "qualifiedSourceCommit": "624d30a86d77771425f402f939f8c516e42b123e",
+  "testPostimage": {
+    "path": "frontend/src/features/paradise-city-map/art-source/qualifier.test.ts",
+    "mode": "100644",
+    "preimageGitBlob": "1b960ad84c283581b34e828674c64f9811eeb0ef",
+    "gitBlob": "45a798411faf65bd7f87d1a508adecc661131d4e",
+    "bytes": 4699,
+    "sha256": "ea553d54e7eaf36d0391b798f56c0a0f8a287debac946f0d46af7a0bc6ef9a61"
+  },
+  "diagnosis": [
+    {"line": 16, "code": "TS2532", "cause": "Unchecked Buffer indexed read may be undefined", "fix": "Assert the selected byte exists before XOR mutation"},
+    {"line": 24, "code": "TS2538", "cause": "Heterogeneous nested arrays do not preserve tuple key positions", "fix": "Const tuple mutation table"},
+    {"line": 35, "code": "TS2538", "cause": "Nested mutation array key may be undefined", "fix": "Const tuple mutation table"}
+  ],
+  "checks": {
+    "strictScopedTypeScriptVersion": "6.0.3",
+    "strictScopedTypeCheckExit": 0,
+    "strictOptionsInheritedUnchanged": true,
+    "scopedNodeAmbientTypesUseExistingReadOnlyDependencies": true,
+    "testRootAndImportedQualifierOnly": true,
+    "originalNodeCases": 12,
+    "originalNodePassed": 12,
+    "originalNodeFailed": 0,
+    "nodeVersion": "24.22.2",
+    "noProductOrImageChange": true,
+    "allPriorOwnedEvidenceAndPrivateCustodyPinsVerifiedUnchanged": true
+  },
+  "sourceReceipt": {"file": "ART-PC-STRICT-SOURCE01-0418.jsonl", "sha256": "0e2a1702046c440b30aceb45940b64782151a7e55417481499dd82468c7fa090", "status": "PASS", "acceptedAtEpoch": 1793852707.204701, "fullAt": "2026-11-05T04:25:19.622869Z"},
+  "independentReceipt": {"file": "ART-PC-STRICT-SOURCE01-0418-guardian.json", "sha256": "298832a2d184d95535fbfebcfa5b63d5e2638b9847338405c815841d4852a46b"},
+  "resources": {
+    "failedPreparationPositiveBytes": 28423407,
+    "failedSealPositiveBytes": 4479502,
+    "failedOrdinaryRoundsRetained": true,
+    "missingInitialOrdinaryRoleFailureRetained": true,
+    "repairTotalCapBytes": 67108864,
+    "sampledRepairNewPeakBytesIncludingPriorFailuresAndClosingUpper": 37817629,
+    "historicalNewPeakBytesRetainedSeparately": 221435639,
+    "wholePeakBytes": 4357560906,
+    "sampledAggregateRSSBytes": 139149312,
+    "sampledAggregateProcesses": 4,
+    "minimumFreeBytes": 22303580160,
+    "allChildrenExited": true,
+    "privateTempAbsent": true
+  },
+  "wholeProgramComposition": "PENDING_RESPONSIBLE_26E_ALREADY_REQUIRED_FRESH_SOURCE06_NOT_CERTIFIED_BY_SCOPED_CHECK",
+  "persistentGoal": "HISTORICAL_INCOMPATIBLE_FE_REF_SCENE_BLOCKED_PRESERVED_NO_RESET_OR_FALSE_COMPLETION",
+  "publication": "DIRECT_EXACT_SCOPED_POSTIMAGES_TO_412E_PENDING_AT_HANDOFF",
+  "notRun": ["browser", "native", "pixel comparison replay", "dependency install or copy", "whole application strict program", "physical device"]
+}
