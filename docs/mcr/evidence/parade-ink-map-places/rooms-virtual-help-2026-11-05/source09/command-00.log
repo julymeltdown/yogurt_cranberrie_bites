@@ -1,0 +1,4 @@
+{"phase":"BEFORE_TARGETED_FIXTURE_PROGRAM","rootFiles":1,"memory":{"rss":130220032,"heapTotal":43646976,"heapUsed":26993256,"external":5091932,"arrayBuffers":1428245}}
+{"phase":"AFTER_TARGETED_FIXTURE_PROGRAM","rootFiles":1,"memory":{"rss":585515008,"heapTotal":449003520,"heapUsed":346501960,"external":39310284,"arrayBuffers":9384569}}
+{"phase":"AFTER_TARGETED_FIXTURE_DIAGNOSTICS","rootFiles":1,"memory":{"rss":1254211584,"heapTotal":1084932096,"heapUsed":956007184,"external":39965644,"arrayBuffers":10039929}}
+{"qualification":"TARGETED_CHANGED_TEST_FIXTURE_STRICT_WITH_REAL_TRANSITIVE_IMPORTS","rootFiles":1,"sourceFiles":766,"diagnostics":0}

@@ -1,0 +1,17 @@
+{
+  "type": "FULL",
+  "state": "FULL",
+  "offerId": "PI11-DRIVER-COLLECTOR-SOURCE13-0710",
+  "acceptedAtEpoch": 1793863047.3280718,
+  "actualFullEpoch": 1793863058.794683,
+  "exitCode": 1,
+  "failure": "AssertionError('unresolved workflow roots: [{\"pid\": 97078, \"parentPid\": 49590, \"birth\": \"Thu Nov 5 16:17:38 2026\", \"executable\": \"/Library/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python\", \"scriptCandidates\": [\"/private/tmp/mcr-be03-oauth-12cc/read_source.py\"], \"commandSHA256\": \"2996d11d8cf353fb50bc5ea1df4e4fee7a75551af841157c53f4b13a2de3f959\"}]')",
+  "peak": {
+    "processes": 4,
+    "rssBytes": 369295360,
+    "newBytes": 304627712,
+    "wholeBytes": 6739521536
+  },
+  "resources": 0,
+  "livePids": []
+}

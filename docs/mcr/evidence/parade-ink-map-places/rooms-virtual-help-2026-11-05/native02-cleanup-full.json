@@ -1,0 +1,20 @@
+{
+  "ownerThreadId": "01a1a26e-1de2-7b41-a294-c9a79cfded9b",
+  "offerId": "PI11-NATIVE02-0517",
+  "state": "FULL",
+  "acceptedAtEpoch": 1793855852.178133,
+  "actualFullEpoch": 1793856172.079662,
+  "originalFull": "2026-11-05T05:17:54.218051+00:00",
+  "originalResources": 1,
+  "originalOwnedPortClosed": false,
+  "originalReceipt": {
+    "path": "/Users/lhs/Desktop/mcr-worktrees/fe-runtime-preferences/docs/mcr/evidence/parade-ink-map-places/rooms-virtual-help-2026-11-05/native02-resource-original-full.json",
+    "sha256": "a415eebc1c5ba78a54af9b5b89cea769495ce9b00689009cc424b0d0ee2094a0"
+  },
+  "livePids": [],
+  "ownedLinkAbsent": true,
+  "privateTmpAbsent": true,
+  "ownedPortClosed": true,
+  "resources": 0,
+  "qualification": "LATER_FACTUAL_CLEANUP_ONLY_ORIGINAL_UI_FAIL_UNCHANGED"
+}

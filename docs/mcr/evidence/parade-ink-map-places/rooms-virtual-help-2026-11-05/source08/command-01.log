@@ -1,0 +1,4 @@
+{"phase":"BEFORE_FULL_PROGRAM","rootFiles":1233,"memory":{"rss":130891776,"heapTotal":43909120,"heapUsed":26986960,"external":5091932,"arrayBuffers":1428245}}
+{"phase":"AFTER_FULL_PROGRAM","rootFiles":1233,"memory":{"rss":923484160,"heapTotal":766885888,"heapUsed":653796168,"external":51590122,"arrayBuffers":17225541}}
+{"phase":"AFTER_FULL_DIAGNOSTICS","rootFiles":1233,"memory":{"rss":2149744640,"heapTotal":1943715840,"heapUsed":1788303928,"external":52048874,"arrayBuffers":17684293}}
+{"qualification":"FULL_ORDINARY_STRICT_CANONICAL_GIT_PROGRAM","rootFiles":1233,"sourceFiles":1833,"diagnostics":0}

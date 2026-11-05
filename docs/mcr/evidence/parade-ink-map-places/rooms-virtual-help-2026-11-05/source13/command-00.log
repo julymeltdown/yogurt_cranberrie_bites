@@ -1,0 +1,3 @@
+PASS actual exited child kernel-read + fresh PS absence retries whole-census fixture; finite claim unchanged
+PASS simulated unavailable read for actual still-present PID rejects without retry
+PASS actual absent-child kernel-read exhaustion is exactly 3 whole-census fixtures, PID context and retained caps/clocks unchanged

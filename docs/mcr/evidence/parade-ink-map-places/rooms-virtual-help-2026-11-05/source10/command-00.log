@@ -1,0 +1,3 @@
+{"fixture": "numeric_current_kernel_identity", "status": "PASS"}
+{"fixture": "invalid_numeric_unit_types_ranges_partial", "status": "PASS"}
+{"fixture": "stable_kernel_and_seconds_microseconds_mismatch", "status": "PASS"}

@@ -1,0 +1,309 @@
+{
+  "objective": "Finish original PI11 W04 rooms / W05 VIRTUAL nearby / W08 help presentation only",
+  "owner": "01a1a26e-1de2-7b41-a294-c9a79cfded9b",
+  "acceptedAtEpoch": 1793848453.901221,
+  "oldSourceQualified": "7c2558e39eb928568151dfe160df978c0300ed4a",
+  "preservationSource": "473b22bdbc65b550973d1c1c7f1feb3d959eee3e",
+  "historicalGoalStatus": "blocked",
+  "canonicalBase": "4948e72a05a3cca05fd4fb85db959af7f0c5584f",
+  "paths": [
+    {
+      "path": "frontend/src/features/world-rooms/ui/WorldRooms.tsx",
+      "oldBase": {
+        "revision": "5ac4bc6e69ee47e6782c2d0b25c72c5544a540d6",
+        "sha256": "7dffc0db4327b7453421226c62282330c2122e073fa0d8ebe555e5fc2b84f361",
+        "bytes": 5155,
+        "blob": "0a950071900db9eab0229bc15b8b26892a2c4715"
+      },
+      "preservedSource": {
+        "revision": "473b22bdbc65b550973d1c1c7f1feb3d959eee3e",
+        "sha256": "8ff7572334b9ee251b378c08b07b5f2f5bc70b3d22c439be55a072a57550fe84",
+        "bytes": 5181,
+        "blob": "f15e562fc5acfb9202b0364e21fb1ae32bc7d7d0"
+      },
+      "canonicalPreimage": {
+        "revision": "4948e72a05a3cca05fd4fb85db959af7f0c5584f",
+        "sha256": "7dffc0db4327b7453421226c62282330c2122e073fa0d8ebe555e5fc2b84f361",
+        "bytes": 5155,
+        "blob": "0a950071900db9eab0229bc15b8b26892a2c4715"
+      },
+      "checkoutPreimage": {
+        "revision": "HEAD",
+        "sha256": "7dffc0db4327b7453421226c62282330c2122e073fa0d8ebe555e5fc2b84f361",
+        "bytes": 5155,
+        "blob": "0a950071900db9eab0229bc15b8b26892a2c4715"
+      }
+    },
+    {
+      "path": "frontend/src/features/world-rooms/ui/world-access.css",
+      "oldBase": {
+        "revision": "5ac4bc6e69ee47e6782c2d0b25c72c5544a540d6",
+        "sha256": "fdde6e1f0118145f9431b0ac1d90f23358861f4cb907565372c8553535850b3d",
+        "bytes": 1682,
+        "blob": "8ec522bacd3c6835bb7d2c8e927718aee7b8dcc0"
+      },
+      "preservedSource": {
+        "revision": "473b22bdbc65b550973d1c1c7f1feb3d959eee3e",
+        "sha256": "e2089b902224d7c351f0fdace8487008580f97f508f31f2dfa354c48bc62a869",
+        "bytes": 3085,
+        "blob": "26b44a4e720cce74e71311eb13c8725b3fc2e97b"
+      },
+      "canonicalPreimage": {
+        "revision": "4948e72a05a3cca05fd4fb85db959af7f0c5584f",
+        "sha256": "fdde6e1f0118145f9431b0ac1d90f23358861f4cb907565372c8553535850b3d",
+        "bytes": 1682,
+        "blob": "8ec522bacd3c6835bb7d2c8e927718aee7b8dcc0"
+      },
+      "checkoutPreimage": {
+        "revision": "HEAD",
+        "sha256": "fdde6e1f0118145f9431b0ac1d90f23358861f4cb907565372c8553535850b3d",
+        "bytes": 1682,
+        "blob": "8ec522bacd3c6835bb7d2c8e927718aee7b8dcc0"
+      }
+    },
+    {
+      "path": "frontend/src/features/world-nearby/WorldNearby.tsx",
+      "oldBase": {
+        "revision": "5ac4bc6e69ee47e6782c2d0b25c72c5544a540d6",
+        "sha256": "84a515f457f9b9c70778c10bb73f935cd48273bf4d0b1b3fc9c5753cef9c6f32",
+        "bytes": 3155,
+        "blob": "df69580c3a96a1b21fa896137f33d2aa04cec221"
+      },
+      "preservedSource": {
+        "revision": "473b22bdbc65b550973d1c1c7f1feb3d959eee3e",
+        "sha256": "a565917dbf57737c24eb78c01424dee6169a8c0338ba9bfed916fc6bb3951775",
+        "bytes": 5629,
+        "blob": "8f8cf67c37dafff827ae41ff82a860010872fd61"
+      },
+      "canonicalPreimage": {
+        "revision": "4948e72a05a3cca05fd4fb85db959af7f0c5584f",
+        "sha256": "84a515f457f9b9c70778c10bb73f935cd48273bf4d0b1b3fc9c5753cef9c6f32",
+        "bytes": 3155,
+        "blob": "df69580c3a96a1b21fa896137f33d2aa04cec221"
+      },
+      "checkoutPreimage": {
+        "revision": "HEAD",
+        "sha256": "84a515f457f9b9c70778c10bb73f935cd48273bf4d0b1b3fc9c5753cef9c6f32",
+        "bytes": 3155,
+        "blob": "df69580c3a96a1b21fa896137f33d2aa04cec221"
+      }
+    },
+    {
+      "path": "frontend/src/features/world-nearby/projection.ts",
+      "oldBase": {
+        "revision": "5ac4bc6e69ee47e6782c2d0b25c72c5544a540d6",
+        "sha256": "d6f8f83482196eb46acdb7d5c9a9fc91b9df052e2c71e88244e104682ad49a27",
+        "bytes": 1430,
+        "blob": "c57b528c70ec1ce67f7767b12abd940304c3c2e2"
+      },
+      "preservedSource": {
+        "revision": "473b22bdbc65b550973d1c1c7f1feb3d959eee3e",
+        "sha256": "c752b53caf91d5dc67538dad837036293d089d2dd2fddb58433d3b6c0a989e16",
+        "bytes": 1621,
+        "blob": "64d65384d2f5284cbb2fb660fba4cb845b439fb1"
+      },
+      "canonicalPreimage": {
+        "revision": "4948e72a05a3cca05fd4fb85db959af7f0c5584f",
+        "sha256": "d6f8f83482196eb46acdb7d5c9a9fc91b9df052e2c71e88244e104682ad49a27",
+        "bytes": 1430,
+        "blob": "c57b528c70ec1ce67f7767b12abd940304c3c2e2"
+      },
+      "checkoutPreimage": {
+        "revision": "HEAD",
+        "sha256": "d6f8f83482196eb46acdb7d5c9a9fc91b9df052e2c71e88244e104682ad49a27",
+        "bytes": 1430,
+        "blob": "c57b528c70ec1ce67f7767b12abd940304c3c2e2"
+      }
+    },
+    {
+      "path": "frontend/src/features/world-rooms/__tests__/world-access.test.ts",
+      "oldBase": {
+        "revision": "5ac4bc6e69ee47e6782c2d0b25c72c5544a540d6",
+        "sha256": "a4130e1e19e08e4d1b2234c12204170c9762427ed2aa50df32c4cb8970cf648a",
+        "bytes": 11490,
+        "blob": "f9085eff11c14bb284ad19c6711e991986f35bd5"
+      },
+      "preservedSource": {
+        "revision": "473b22bdbc65b550973d1c1c7f1feb3d959eee3e",
+        "sha256": "d585432fc8f25efce891de017de0b7a18b80902f82eb54f456edc9cf3404a965",
+        "bytes": 11562,
+        "blob": "842b06c07907abaafdfb58ee6a61d06ae9bb380c"
+      },
+      "canonicalPreimage": {
+        "revision": "4948e72a05a3cca05fd4fb85db959af7f0c5584f",
+        "sha256": "a4130e1e19e08e4d1b2234c12204170c9762427ed2aa50df32c4cb8970cf648a",
+        "bytes": 11490,
+        "blob": "f9085eff11c14bb284ad19c6711e991986f35bd5"
+      },
+      "checkoutPreimage": {
+        "revision": "HEAD",
+        "sha256": "a4130e1e19e08e4d1b2234c12204170c9762427ed2aa50df32c4cb8970cf648a",
+        "bytes": 11490,
+        "blob": "f9085eff11c14bb284ad19c6711e991986f35bd5"
+      }
+    },
+    {
+      "path": "frontend/src/features/world-help/WorldHelp.tsx",
+      "oldBase": {
+        "revision": "5ac4bc6e69ee47e6782c2d0b25c72c5544a540d6",
+        "sha256": "db09b1ac62ce21696e2ad51968ebf7e6cb86aada569249406f712aef602a7baf",
+        "bytes": 2702,
+        "blob": "5654b19c50f5954bac8a2e02a6c1910c9d502f5a"
+      },
+      "preservedSource": {
+        "revision": "473b22bdbc65b550973d1c1c7f1feb3d959eee3e",
+        "sha256": "04ce5478d81b657d75b2a939a28afaf61531126869c6ccc024b46ba1f31cf7d7",
+        "bytes": 2716,
+        "blob": "4cc00992d821d3402010e100f13e2cb436acd050"
+      },
+      "canonicalPreimage": {
+        "revision": "4948e72a05a3cca05fd4fb85db959af7f0c5584f",
+        "sha256": "db09b1ac62ce21696e2ad51968ebf7e6cb86aada569249406f712aef602a7baf",
+        "bytes": 2702,
+        "blob": "5654b19c50f5954bac8a2e02a6c1910c9d502f5a"
+      },
+      "checkoutPreimage": {
+        "revision": "HEAD",
+        "sha256": "db09b1ac62ce21696e2ad51968ebf7e6cb86aada569249406f712aef602a7baf",
+        "bytes": 2702,
+        "blob": "5654b19c50f5954bac8a2e02a6c1910c9d502f5a"
+      }
+    },
+    {
+      "path": "frontend/src/features/world-help/world-help.css",
+      "oldBase": {
+        "revision": "5ac4bc6e69ee47e6782c2d0b25c72c5544a540d6",
+        "sha256": "dc65af4c4067531154868d5f6ce6d774cd65e1d8f0bf18c610b87095ce9bf347",
+        "bytes": 921,
+        "blob": "71d153251e2dd68e9325368471a0897d0afe1a5c"
+      },
+      "preservedSource": {
+        "revision": "473b22bdbc65b550973d1c1c7f1feb3d959eee3e",
+        "sha256": "04b18716e58c5c8ccc946875d0a753c73a3f5d8df3053d62accb1323108d5f55",
+        "bytes": 1179,
+        "blob": "ea31350924c82f2bf804a9131e9a8e6a850a46b3"
+      },
+      "canonicalPreimage": {
+        "revision": "4948e72a05a3cca05fd4fb85db959af7f0c5584f",
+        "sha256": "dc65af4c4067531154868d5f6ce6d774cd65e1d8f0bf18c610b87095ce9bf347",
+        "bytes": 921,
+        "blob": "71d153251e2dd68e9325368471a0897d0afe1a5c"
+      },
+      "checkoutPreimage": {
+        "revision": "HEAD",
+        "sha256": "dc65af4c4067531154868d5f6ce6d774cd65e1d8f0bf18c610b87095ce9bf347",
+        "bytes": 921,
+        "blob": "71d153251e2dd68e9325368471a0897d0afe1a5c"
+      }
+    },
+    {
+      "path": "frontend/src/app/world-entry/routes.tsx",
+      "oldBase": {
+        "revision": "5ac4bc6e69ee47e6782c2d0b25c72c5544a540d6",
+        "sha256": "8e8e840bc823e4f3ff12fe5cc85f7ef47645ee808a603e55bc7977030ddff008",
+        "bytes": 1827,
+        "blob": "1fd392217d3483d78b4952545603ad8d2fb64727"
+      },
+      "preservedSource": {
+        "revision": "473b22bdbc65b550973d1c1c7f1feb3d959eee3e",
+        "sha256": "d1ac2483205e3f9f260c24639695d97a93ca4c69c38d36a09f431f72b372e322",
+        "bytes": 2485,
+        "blob": "0844405a8734366f355ed58737a6228494e30768"
+      },
+      "canonicalPreimage": {
+        "revision": "4948e72a05a3cca05fd4fb85db959af7f0c5584f",
+        "sha256": "8e8e840bc823e4f3ff12fe5cc85f7ef47645ee808a603e55bc7977030ddff008",
+        "bytes": 1827,
+        "blob": "1fd392217d3483d78b4952545603ad8d2fb64727"
+      },
+      "checkoutPreimage": {
+        "revision": "HEAD",
+        "sha256": "8e8e840bc823e4f3ff12fe5cc85f7ef47645ee808a603e55bc7977030ddff008",
+        "bytes": 1827,
+        "blob": "1fd392217d3483d78b4952545603ad8d2fb64727"
+      }
+    },
+    {
+      "path": "frontend/src/app/world-entry/root-features.tsx",
+      "oldBase": {
+        "revision": "5ac4bc6e69ee47e6782c2d0b25c72c5544a540d6",
+        "sha256": "8d63946b05879cf6a191b7eeb584846549416b4334c4d0328f444be2322fc9b4",
+        "bytes": 2327,
+        "blob": "6a15e0267339799e4a80ce26562ae7077214cb73"
+      },
+      "preservedSource": {
+        "revision": "473b22bdbc65b550973d1c1c7f1feb3d959eee3e",
+        "sha256": "625d7c861988a232adda3eaf36a60a28bca16281b1156cb454d710934c5be947",
+        "bytes": 2985,
+        "blob": "9019dd6609849d02d4bf54cd30bfd7daa96f4763"
+      },
+      "canonicalPreimage": {
+        "revision": "4948e72a05a3cca05fd4fb85db959af7f0c5584f",
+        "sha256": "8d63946b05879cf6a191b7eeb584846549416b4334c4d0328f444be2322fc9b4",
+        "bytes": 2327,
+        "blob": "6a15e0267339799e4a80ce26562ae7077214cb73"
+      },
+      "checkoutPreimage": {
+        "revision": "HEAD",
+        "sha256": "8d63946b05879cf6a191b7eeb584846549416b4334c4d0328f444be2322fc9b4",
+        "bytes": 2327,
+        "blob": "6a15e0267339799e4a80ce26562ae7077214cb73"
+      }
+    }
+  ],
+  "exclusions": [
+    "All old places/Map/checkin and new Paradise scope",
+    "PI01/PI07/chrome/font/avatar borrowed inputs",
+    "Controllers/Auth/DTO/World simulation",
+    "All caller changes except exact NearbyPanel imports/render hunk"
+  ],
+  "openCriterion": "W04 party-room invitation UNIMPLEMENTED, owners20f+Root1fc; Find a party is not an invitation",
+  "executionStatus": "NOT_RUN; ordinary preparation only; no old41 replay",
+  "canonicalConsumerBase": "7b81bf62d22b48a1ea653a1a84fae199c2b1d837",
+  "borrowedProducers": [
+    {
+      "path": "frontend/src/features/avatar/parade-ink/AvatarPopover.tsx",
+      "revision": "8907969327b8f0371860fc13eeddef2d60876a23",
+      "sha256": "f00896675a28767ac9c9b92af4d75f45aa5872409e107625790370c4cefc57b3",
+      "bytes": 1320,
+      "qualification": "SOURCE_QUALIFIED_OWNER534_EXISTING_DISPOSITION",
+      "publication": "PUBLISHED_EXACT_FROZEN_LEAF",
+      "confirmedCurrentCanonicalRevision": "ecb2c4adeaed06bc5b7ceb1e1f21d6b9a97e19c5"
+    },
+    {
+      "path": "frontend/src/features/avatar/parade-ink/PortraitFrame.tsx",
+      "revision": "7b81bf62d22b48a1ea653a1a84fae199c2b1d837",
+      "sha256": "637c7952cbed607db0a5479ee1e58277d7c242a0ed4ce30f88968825005c964f",
+      "bytes": 606,
+      "qualification": "SOURCE_QUALIFIED_OWNER534_EXISTING_DISPOSITION",
+      "publication": "PUBLISHED_EXACT_FROZEN_LEAF",
+      "canonicalRevision": "84f3e6cf93ea681379f949f1100bddec87965821",
+      "confirmedCurrentCanonicalRevision": "ecb2c4adeaed06bc5b7ceb1e1f21d6b9a97e19c5"
+    },
+    {
+      "path": "frontend/src/features/avatar/parade-ink/parade-ink-avatar.css",
+      "revision": "7b81bf62d22b48a1ea653a1a84fae199c2b1d837",
+      "sha256": "fe2c83cc92a9818cabb33ef20858640452e7de2899cba80600d75c26e23ddbd0",
+      "bytes": 4132,
+      "qualification": "SOURCE_QUALIFIED_OWNER534_EXISTING_DISPOSITION",
+      "publication": "PUBLISHED_EXACT_FROZEN_LEAF",
+      "canonicalRevision": "84f3e6cf93ea681379f949f1100bddec87965821",
+      "confirmedCurrentCanonicalRevision": "ecb2c4adeaed06bc5b7ceb1e1f21d6b9a97e19c5"
+    },
+    {
+      "path": "frontend/src/features/paradise-city-map/art-source/qualifier.test.ts",
+      "revision": "624d30a86d77771425f402f939f8c516e42b123e",
+      "blob": "45a798411faf65bd7f87d1a508adecc661131d4e",
+      "sha256": "ea553d54e7eaf36d0391b798f56c0a0f8a287debac946f0d46af7a0bc6ef9a61",
+      "bytes": 4699,
+      "mode": "100644",
+      "ownerThreadId": "01a1a231-0dc4-7b50-92bd-c0f0f56bd970",
+      "qualification": "OWNER_SOURCE01_SCOPED_STRICT_AND_12_ORIGINAL_TESTS_PASS_2026_11_05T04_25_19_622869Z_NOT_FULL_APP",
+      "publication": "PUBLISHED_EXACT_QUALIFIED_TEST",
+      "custody": "READONLY_GIT_INPUT_ONLY_NOT_26E_DELIVERY",
+      "canonicalRevision": "8dee1335a79f831e6a29f005a50f2c0f65777d46",
+      "publisherReceiptSHA256": "4b7096749e0bd6b8be86e634439c74c4b7296041758192f2521402fbaf567e88"
+    }
+  ],
+  "producerBoundary": "Owner534 supplied existing7case/types/lint SOURCE02 and static3+repairedcase/types/lint SOURCE04/06; no newrerun. AvatarPopover exactsourcequalified, not yetcanonical. OwnNearby consumer/native independent; fullPI07/editor/device/physical remainsopen."
+}

@@ -1,0 +1,17 @@
+{
+  "type": "FULL",
+  "state": "FULL",
+  "offerId": "PI11-DRIVER-LINT-SOURCE12-0659",
+  "acceptedAtEpoch": 1793862118.466732,
+  "actualFullEpoch": 1793862128.5684412,
+  "exitCode": 1,
+  "failure": null,
+  "peak": {
+    "processes": 4,
+    "rssBytes": 346308608,
+    "newBytes": 304357376,
+    "wholeBytes": 6739521536
+  },
+  "resources": 0,
+  "livePids": []
+}

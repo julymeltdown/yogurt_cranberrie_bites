@@ -1,11 +1,13 @@
-.world-help { max-width: 42rem; margin-inline: auto; display: grid; gap: 1.5rem; overflow-wrap: anywhere; }
-.world-help-kicker { font-size: .75rem; letter-spacing: .1em; text-transform: uppercase; color: var(--mcr-muted); }
-.world-help h2 { font-size: clamp(1.65rem, 6vw, 2.35rem); letter-spacing: -.04em; line-height: 1.12; margin: .35rem 0 .75rem; }
-.world-help h3 { font-size: 1.15rem; margin: 0 0 .6rem; }
-.world-help section + section { border-top: 1px solid #bfb6a8; padding-top: 1.25rem; }
-.world-help dl { margin: 0 0 .75rem; display: grid; gap: .85rem; }
-.world-help dt { font-weight: 700; margin-bottom: .2rem; }
-.world-help dd { margin: 0; line-height: 1.65; }
-.world-help p + p { margin-top: .75rem; }
-.world-help nav { display: flex; flex-wrap: wrap; gap: .75rem; }
-.world-help nav a { min-height: 44px; min-width: 44px; display: inline-flex; align-items: center; padding: .55rem .25rem; font-weight: 650; }
+.world-help { max-width: 42rem; margin-inline: auto; display: grid; gap: 8px; overflow-wrap: anywhere; color: var(--pi-ink, #171717); font: 400 18px/22px var(--pi-font-body, Roboto, sans-serif); }
+.world-help-kicker { margin: 0; font: 400 14px/18px var(--pi-font-body, Roboto, sans-serif); color: var(--pi-muted, #545454); }
+.world-help h2 { margin: 4px 0 8px; font: 500 26px/32px var(--pi-font-display, Oswald, sans-serif); }
+.world-help h3 { margin: 0 0 8px; font: 500 22px/28px var(--pi-font-display, Oswald, sans-serif); }
+.world-help section { border-top: 2px solid var(--pi-rule, #3c3c3b); padding-top: 8px; }
+.world-help dl { margin: 0 0 8px; display: grid; gap: 8px; }
+.world-help dt { font-weight: 700; margin-bottom: 4px; }
+.world-help dd { margin: 0; }
+.world-help p { margin: 0; }
+.world-help p + p { margin-top: 8px; }
+.world-help nav { display: flex; flex-wrap: wrap; gap: 4px 12px; }
+.world-help nav a { min-height: 44px; min-width: 44px; display: inline-flex; align-items: center; color: inherit; font: 500 18px/22px var(--pi-font-display, Oswald, sans-serif); }
+.world-help a:focus-visible { outline: 3px solid var(--pi-crimson, #922532); outline-offset: 2px; }

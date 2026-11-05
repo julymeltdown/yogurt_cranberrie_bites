@@ -1,0 +1,17 @@
+{
+  "type": "FULL",
+  "state": "FULL",
+  "offerId": "PI11-DRIVER-COLLECTOR-SOURCE10-0643",
+  "acceptedAtEpoch": 1793861231.352078,
+  "actualFullEpoch": 1793861240.129313,
+  "exitCode": 1,
+  "failure": "AssertionError('actual source PID/RSS cap')",
+  "peak": {
+    "processes": 5,
+    "rssBytes": 109903872,
+    "newBytes": 303894528,
+    "wholeBytes": 6739521536
+  },
+  "resources": 0,
+  "livePids": []
+}

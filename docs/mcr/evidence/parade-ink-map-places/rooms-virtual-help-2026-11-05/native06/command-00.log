@@ -1,0 +1,87 @@
+(!) Failed to run dependency scan. Skipping dependency pre-bundling. Error:   Failed to scan for dependencies from entries:
+  /Users/lhs/Desktop/mcr-worktrees/fe-runtime-preferences/frontend/index.html
+/Users/lhs/Desktop/mcr-worktrees/fe-runtime-preferences/frontend/e2e/privacy/index.html
+/Users/lhs/Desktop/mcr-worktrees/fe-runtime-preferences/frontend/e2e/qa07-input-delta/fixture.html
+/Users/lhs/Desktop/mcr-worktrees/fe-runtime-preferences/frontend/e2e/qa08-rendering/fixture.html
+/Users/lhs/Desktop/mcr-worktrees/fe-runtime-preferences/frontend/e2e/reference-integrated/preview.html
+/Users/lhs/Desktop/mcr-worktrees/fe-runtime-preferences/frontend/e2e/wall-reference/index.html
+/Users/lhs/Desktop/mcr-worktrees/fe-runtime-preferences/frontend/e2e/accessibility/qa07/fixture.html
+/Users/lhs/Desktop/mcr-worktrees/fe-runtime-preferences/frontend/e2e/community-client/qa06-meet-type/preview.html
+/Users/lhs/Desktop/mcr-worktrees/fe-runtime-preferences/frontend/e2e/community-client/fe21-fe24/preview.html
+/Users/lhs/Desktop/mcr-worktrees/fe-runtime-preferences/frontend/e2e/community-client/fe32/preview.html
+/Users/lhs/Desktop/mcr-worktrees/fe-runtime-preferences/frontend/e2e/realtime/mural/preview.html
+/Users/lhs/Desktop/mcr-worktrees/fe-runtime-preferences/frontend/e2e/real/auth/entry.html
+/Users/lhs/Desktop/mcr-worktrees/fe-runtime-preferences/frontend/e2e/real/social/entry.html
+/Users/lhs/Desktop/mcr-worktrees/fe-runtime-preferences/frontend/e2e/reference-integrated/whole/preview.html
+/Users/lhs/Desktop/mcr-worktrees/fe-runtime-preferences/frontend/e2e/reference-integrated/evidence/comparison.html
+/Users/lhs/Desktop/mcr-worktrees/fe-runtime-preferences/frontend/e2e/visual/qa06/preview.html
+/Users/lhs/Desktop/mcr-worktrees/fe-runtime-preferences/frontend/e2e/visual/qa06/software-preview.html
+/Users/lhs/Desktop/mcr-worktrees/fe-runtime-preferences/frontend/e2e/visual/qa06/wall-software-preview.html
+/Users/lhs/Desktop/mcr-worktrees/fe-runtime-preferences/frontend/public/world/illustrated/review.html
+/Users/lhs/Desktop/mcr-worktrees/fe-runtime-preferences/frontend/public/world/maps/phaser-review.html
+/Users/lhs/Desktop/mcr-worktrees/fe-runtime-preferences/frontend/public/world/maps/review.html
+/Users/lhs/Desktop/mcr-worktrees/fe-runtime-preferences/frontend/e2e/realtime/world/qa05/preview.html
+/Users/lhs/Desktop/mcr-worktrees/fe-runtime-preferences/frontend/public/world/reference-scene-v2/review.html
+/Users/lhs/Desktop/mcr-worktrees/fe-runtime-preferences/frontend/e2e/visual/qa06/parade-ink-profile/preview.html
+/Users/lhs/Desktop/mcr-worktrees/fe-runtime-preferences/frontend/src/entities/avatar/derived-assets/hair-review.html
+/Users/lhs/Desktop/mcr-worktrees/fe-runtime-preferences/frontend/src/entities/avatar/derived-assets/review.html
+/Users/lhs/Desktop/mcr-worktrees/fe-runtime-preferences/frontend/src/entities/avatar/derived-assets/static-review.html
+/Users/lhs/Desktop/mcr-worktrees/fe-runtime-preferences/frontend/src/entities/avatar/__fixtures__/sources.html
+/Users/lhs/Desktop/mcr-worktrees/fe-runtime-preferences/frontend/public/world/reference-scene-v2/eras-v5/review.html
+/Users/lhs/Desktop/mcr-worktrees/fe-runtime-preferences/frontend/public/world/reference-scene-v2/map-landscape-v1/review.html
+/Users/lhs/Desktop/mcr-worktrees/fe-runtime-preferences/frontend/public/world/reference-scene-v2/map-labels-v1/review.html
+/Users/lhs/Desktop/mcr-worktrees/fe-runtime-preferences/frontend/public/world/reference-scene-v2/quality-v10/review.html
+/Users/lhs/Desktop/mcr-worktrees/fe-runtime-preferences/frontend/public/world/reference-scene-v2/quality-v7/review.html
+/Users/lhs/Desktop/mcr-worktrees/fe-runtime-preferences/frontend/public/world/reference-scene-v2/quality-v6/review.html
+/Users/lhs/Desktop/mcr-worktrees/fe-runtime-preferences/frontend/public/world/reference-scene-v2/quality-v8/review.html
+/Users/lhs/Desktop/mcr-worktrees/fe-runtime-preferences/frontend/public/world/reference-scene-v2/quality-v9/review.html
+/Users/lhs/Desktop/mcr-worktrees/fe-runtime-preferences/frontend/src/entities/avatar/derived-assets/motion-candidates-v1/direction-review.html
+/Users/lhs/Desktop/mcr-worktrees/fe-runtime-preferences/frontend/src/entities/avatar/derived-assets/motion-candidates-v1/gait-review.html
+/Users/lhs/Desktop/mcr-worktrees/fe-runtime-preferences/frontend/src/entities/avatar/derived-assets/motion-candidates-v1/review.html
+/Users/lhs/Desktop/mcr-worktrees/fe-runtime-preferences/frontend/src/entities/avatar/derived-assets/motion-candidates-v1/wardrobe-review.html
+
+  Build failed with 1 error:
+
+[31m[UNLOADABLE_DEPENDENCY] [0mCould not load src/features/avatar/parade-ink/AvatarPopover.tsx
+   [38;5;246m╭[0m[38;5;246m─[0m[38;5;246m[[0m src/features/world-nearby/WorldNearby.tsx:2:31 [38;5;246m][0m
+   [38;5;246m│[0m
+ [38;5;246m2 │[0m [38;5;249mi[0m[38;5;249mm[0m[38;5;249mp[0m[38;5;249mo[0m[38;5;249mr[0m[38;5;249mt[0m[38;5;249m [0m[38;5;249m{[0m[38;5;249m [0m[38;5;249mA[0m[38;5;249mv[0m[38;5;249ma[0m[38;5;249mt[0m[38;5;249ma[0m[38;5;249mr[0m[38;5;249mP[0m[38;5;249mo[0m[38;5;249mp[0m[38;5;249mo[0m[38;5;249mv[0m[38;5;249me[0m[38;5;249mr[0m[38;5;249m [0m[38;5;249m}[0m[38;5;249m [0m[38;5;249mf[0m[38;5;249mr[0m[38;5;249mo[0m[38;5;249mm[0m[38;5;249m [0m'../avatar/parade-ink/AvatarPopover'
+ [38;5;240m  │[0m                               ──────────────────┬─────────────────  
+ [38;5;240m  │[0m                                                 ╰─────────────────── No such file or directory (os error 2)
+[38;5;246m───╯[0m
+
+    at aggregateBindingErrorsIntoJsError (file:///Users/lhs/Desktop/mcr/frontend/node_modules/.pnpm/rolldown@1.1.4/node_modules/rolldown/dist/shared/error-BlQ0-ek7.mjs:48:18)
+    at unwrapBindingResult (file:///Users/lhs/Desktop/mcr/frontend/node_modules/.pnpm/rolldown@1.1.4/node_modules/rolldown/dist/shared/error-BlQ0-ek7.mjs:18:128)
+    at scan (file:///Users/lhs/Desktop/mcr/frontend/node_modules/.pnpm/rolldown@1.1.4/node_modules/rolldown/dist/experimental-index.mjs:187:3)
+    at async Object.build (file:///Users/lhs/Desktop/mcr/frontend/node_modules/.pnpm/vite@8.1.3_@types+node@24.13.2_jiti@2.7.0/node_modules/vite/dist/node/chunks/node.js:30302:3)
+    at async scan (file:///Users/lhs/Desktop/mcr/frontend/node_modules/.pnpm/vite@8.1.3_@types+node@24.13.2_jiti@2.7.0/node_modules/vite/dist/node/chunks/node.js:30245:4)
+    at async file:///Users/lhs/Desktop/mcr/frontend/node_modules/.pnpm/vite@8.1.3_@types+node@24.13.2_jiti@2.7.0/node_modules/vite/dist/node/chunks/node.js:33264:15
+node:internal/modules/run_main:107
+    triggerUncaughtException(
+    ^
+
+ExpectError: expect(received).toBe(expected) // Object.is equality
+
+Expected: 1
+Received: 0
+
+Call Log:
+- Timeout 5000ms exceeded while waiting on the predicate
+    at captureRawStack (/Users/lhs/Desktop/mcr/frontend/node_modules/.pnpm/playwright-core@1.61.1/node_modules/playwright-core/lib/coreBundle.js:3172:17)
+    at callMatcherAsStep (/Users/lhs/Desktop/mcr/frontend/node_modules/.pnpm/playwright@1.61.1/node_modules/playwright/lib/matchers/expect.js:12877:57)
+    at Object.toBe (/Users/lhs/Desktop/mcr/frontend/node_modules/.pnpm/playwright@1.61.1/node_modules/playwright/lib/matchers/expect.js:12867:23)
+    at /Users/lhs/Desktop/mcr-worktrees/fe-runtime-preferences/docs/mcr/evidence/parade-ink-map-places/rooms-virtual-help-2026-11-05/native.mjs:71:70 {
+  matcherResult: {
+    pass: false,
+    message: 'expect(received).toBe(expected) // Object.is equality\n' +
+      '\n' +
+      'Expected: 1\n' +
+      'Received: 0\n' +
+      '\n' +
+      'Call Log:\n' +
+      '- Timeout 5000ms exceeded while waiting on the predicate',
+    name: 'toBe'
+  }
+}
+
+Node.js v24.22.2

@@ -2,7 +2,7 @@ import { ShellLink } from '../../app/navigation'
 import './world-help.css'
 
 export function WorldHelp() {
-  return <article className="world-help" aria-label="Controls and meeting safety">
+  return <article className="world-help pi-map-family" aria-label="Controls and meeting safety">
     <header><p className="world-help-kicker">How to play</p><h2>One world, at your pace</h2>
       <p>Explore on screen. Make real meeting decisions separately.</p></header>
     <section><h3>Move around</h3><dl>

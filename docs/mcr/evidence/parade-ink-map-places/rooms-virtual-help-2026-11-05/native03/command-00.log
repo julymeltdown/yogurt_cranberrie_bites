@@ -1,0 +1,16 @@
+2:23:30 PM [vite] (client) [Unhandled error] SyntaxError: The requested module '/@fs/Users/lhs/Desktop/mcr/frontend/node_modules/.pnpm/cookie@1.1.1/node_modules/cookie/dist/index.js?v=c4346819' does not provide an export named 'parse'
+
+node:internal/modules/run_main:107
+    triggerUncaughtException(
+    ^
+
+locator.fill: Timeout 12000ms exceeded.
+Call log:
+[2m  - waiting for getByLabel('Email', { exact: true })[22m
+
+    at /Users/lhs/Desktop/mcr-worktrees/fe-runtime-preferences/docs/mcr/evidence/parade-ink-map-places/rooms-virtual-help-2026-11-05/native.mjs:69:53 {
+  log: [ "  - waiting for getByLabel('Email', { exact: true })" ],
+  name: 'TimeoutError'
+}
+
+Node.js v24.22.2

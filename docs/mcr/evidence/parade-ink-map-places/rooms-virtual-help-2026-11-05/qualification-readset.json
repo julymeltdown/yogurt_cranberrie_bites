@@ -1,0 +1,381 @@
+{
+  "canonicalRevision": "7b81bf62d22b48a1ea653a1a84fae199c2b1d837",
+  "borrowedSource": [
+    {
+      "path": "frontend/src/features/avatar/parade-ink/AvatarPopover.tsx",
+      "revision": "8907969327b8f0371860fc13eeddef2d60876a23",
+      "sha256": "f00896675a28767ac9c9b92af4d75f45aa5872409e107625790370c4cefc57b3",
+      "bytes": 1320,
+      "qualification": "SOURCE_QUALIFIED_OWNER534_EXISTING_DISPOSITION",
+      "publication": "NOT_PUBLISHED"
+    },
+    {
+      "path": "frontend/src/features/avatar/parade-ink/PortraitFrame.tsx",
+      "revision": "7b81bf62d22b48a1ea653a1a84fae199c2b1d837",
+      "sha256": "637c7952cbed607db0a5479ee1e58277d7c242a0ed4ce30f88968825005c964f",
+      "bytes": 606,
+      "qualification": "SOURCE_QUALIFIED_OWNER534_EXISTING_DISPOSITION",
+      "publication": "PUBLISHED_STATIC_FRAME_ONLY",
+      "canonicalRevision": "84f3e6cf93ea681379f949f1100bddec87965821"
+    },
+    {
+      "path": "frontend/src/features/avatar/parade-ink/parade-ink-avatar.css",
+      "revision": "7b81bf62d22b48a1ea653a1a84fae199c2b1d837",
+      "sha256": "fe2c83cc92a9818cabb33ef20858640452e7de2899cba80600d75c26e23ddbd0",
+      "bytes": 4132,
+      "qualification": "SOURCE_QUALIFIED_OWNER534_EXISTING_DISPOSITION",
+      "publication": "PUBLISHED_STATIC_FRAME_ONLY",
+      "canonicalRevision": "84f3e6cf93ea681379f949f1100bddec87965821"
+    }
+  ],
+  "harness": [
+    {
+      "path": "docs/mcr/evidence/parade-ink-map-places/rooms-virtual-help-2026-11-05/controller.py",
+      "sha256": "eb698903a32c7787882dba091855451e3dbaa23702cad298f138aa940ed4fedc"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-map-places/rooms-virtual-help-2026-11-05/custody.json",
+      "sha256": "0ba26039305ddfcd45eae530c8ba0bebb4cf2b4418e0a1648eebf86da35da2d0"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-map-places/rooms-virtual-help-2026-11-05/git-inputs.mjs",
+      "sha256": "eb952bc457528f312a73140cd9672c7c89a432547b047a9101cde3745fd3bf74"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-map-places/rooms-virtual-help-2026-11-05/guardian.py",
+      "sha256": "b480bb62692ebbce344a575cce751ce7eb376850b35ed98f4a65fb618e9dd590"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-map-places/rooms-virtual-help-2026-11-05/identity-probe.py",
+      "sha256": "85b7058f1eb942ba45db8f5e73b2a8d4c07795137eb107c397b3551051b9c500"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-map-places/rooms-virtual-help-2026-11-05/membership.py",
+      "sha256": "0b5cd75a75031216356ab68636b2338785f1b155418a799a2cd32d9c6cab2f58"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-map-places/rooms-virtual-help-2026-11-05/native.mjs",
+      "sha256": "23b46b342e985a3dc1b8bfa3411529ca9e72979d40184854a94d34471946c6b0"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-map-places/rooms-virtual-help-2026-11-05/ordinary-probe.py",
+      "sha256": "0db45a98aedc4ce36e35e848d80b2368a62c844395b85e6e52cb3fa0bf6a5b6c"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-map-places/rooms-virtual-help-2026-11-05/terminal-probe.py",
+      "sha256": "23e7ba6aae8a3f9fc88c124747e4d0eb4087dd024655f59d60a911a7aaf5847a"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-map-places/rooms-virtual-help-2026-11-05/types.mjs",
+      "sha256": "f59c459f156c831df6343599eb014db125f4aab446a03c7ecec5eaa8c2875ca2"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-map-places/rooms-virtual-help-2026-11-05/fixture-types.mjs",
+      "sha256": "37c65547cf85a7850341cc4215b7f3d6489166177b8e93d04234240cf1b4ce88"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-map-places/rooms-virtual-help-2026-11-05/source10-probe.py",
+      "sha256": "8d8425bac435bbfd0e6cd3dc1f77121b354bd52292ad740725520d46f7e58567"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-map-places/rooms-virtual-help-2026-11-05/source10-guard.py",
+      "sha256": "dfab2fc9ad3198b282911f2e7930be9756c72ca3e792ba5e56cb1251c2d2b6c8"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-map-places/rooms-virtual-help-2026-11-05/source11-boundary.py",
+      "sha256": "7d1ba1dca69456980703679c2c0dd6b24899138753d2bb4e1b6c9da0ac3a4ce1"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-map-places/rooms-virtual-help-2026-11-05/source11-guard.py",
+      "sha256": "7a9b1eeee4786bb0de723b30d39f354221d3fbad560881c2bce22a3afa32632c"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-map-places/rooms-virtual-help-2026-11-05/source12-guard.py",
+      "sha256": "e98842cb6e2268e8c6ad52968b55150c9b65b524bb763079b09c4b319ef4faad"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-map-places/rooms-virtual-help-2026-11-05/source13-race-probe.py",
+      "sha256": "c865bdfc7d96e30527b73f24841960f27dcf15b815b7f074f53736f62e27cbe9"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-map-places/rooms-virtual-help-2026-11-05/source13-guard.py",
+      "sha256": "3d299668a488b12b08c4f6dd97ce32fd91aa869778039882fb516552d334f11e"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-map-places/rooms-virtual-help-2026-11-05/source14-case.py",
+      "sha256": "32c4ed43366721158f6082c9402f7aa1dc4056df97abb94a5160d12aaf14c6c7"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-map-places/rooms-virtual-help-2026-11-05/source14-guard.py",
+      "sha256": "7fd4b7668480044af1e1bb01df18e68596266a226829d3d1fce3318fb5abd34f"
+    }
+  ],
+  "implementation": [
+    {
+      "path": "frontend/src/features/world-rooms/ui/WorldRooms.tsx",
+      "sha256": "8ff7572334b9ee251b378c08b07b5f2f5bc70b3d22c439be55a072a57550fe84",
+      "bytes": 5181
+    },
+    {
+      "path": "frontend/src/features/world-rooms/ui/world-access.css",
+      "sha256": "e2089b902224d7c351f0fdace8487008580f97f508f31f2dfa354c48bc62a869",
+      "bytes": 3085
+    },
+    {
+      "path": "frontend/src/features/world-nearby/WorldNearby.tsx",
+      "sha256": "a565917dbf57737c24eb78c01424dee6169a8c0338ba9bfed916fc6bb3951775",
+      "bytes": 5629
+    },
+    {
+      "path": "frontend/src/features/world-nearby/projection.ts",
+      "sha256": "c752b53caf91d5dc67538dad837036293d089d2dd2fddb58433d3b6c0a989e16",
+      "bytes": 1621
+    },
+    {
+      "path": "frontend/src/features/world-rooms/__tests__/world-access.test.ts",
+      "sha256": "d585432fc8f25efce891de017de0b7a18b80902f82eb54f456edc9cf3404a965",
+      "bytes": 11562
+    },
+    {
+      "path": "frontend/src/features/world-help/WorldHelp.tsx",
+      "sha256": "04ce5478d81b657d75b2a939a28afaf61531126869c6ccc024b46ba1f31cf7d7",
+      "bytes": 2716
+    },
+    {
+      "path": "frontend/src/features/world-help/world-help.css",
+      "sha256": "04b18716e58c5c8ccc946875d0a753c73a3f5d8df3053d62accb1323108d5f55",
+      "bytes": 1179
+    },
+    {
+      "path": "frontend/src/app/world-entry/routes.tsx",
+      "sha256": "d1ac2483205e3f9f260c24639695d97a93ca4c69c38d36a09f431f72b372e322",
+      "bytes": 2485
+    },
+    {
+      "path": "frontend/src/app/world-entry/root-features.tsx",
+      "sha256": "625d7c861988a232adda3eaf36a60a28bca16281b1156cb454d710934c5be947",
+      "bytes": 2985
+    },
+    {
+      "path": "frontend/src/features/world-nearby/__tests__/parade-ink/admission.setup.ts",
+      "sha256": "dae3cd2a4189a275fa69dda7416b32089590257532ced174c8fd4cc07ee77322",
+      "bytes": 1098
+    },
+    {
+      "path": "frontend/src/features/world-nearby/__tests__/parade-ink/nearby.test.tsx",
+      "sha256": "d1d4eb38c3756a4d196b71756a5d4d437f22f94220dd0961b820ea91ae274e91",
+      "bytes": 6804
+    },
+    {
+      "path": "frontend/src/features/world-nearby/__tests__/parade-ink/tsconfig.full.json",
+      "sha256": "9e6148f830758764568fa905a1f7d953adb2c1c7b5d0754717a866adafb00c66",
+      "bytes": 146
+    },
+    {
+      "path": "frontend/src/features/world-nearby/__tests__/parade-ink/vitest.config.ts",
+      "sha256": "4fa0b076cb3eae9ba42b4ab2acda437f47c31bbb0967282768f2939a9a114730",
+      "bytes": 637
+    },
+    {
+      "path": "frontend/src/app/world-entry/__tests__/parade-ink-map-places/rooms-virtual-help.ts",
+      "sha256": "4cf21debc1aafefe1b647ada83943d8482246f434e99277c59c866299c166189",
+      "bytes": 3816
+    },
+    {
+      "path": "frontend/src/app/world-entry/__tests__/parade-ink-map-places/rooms-virtual-help.html",
+      "sha256": "136f6f9b77d8593e1da625fabe3aa91d535b42338d15d06e2beef0604b207b85",
+      "bytes": 288
+    }
+  ],
+  "readOnlyCompatibility": [
+    {
+      "path": "frontend/tsconfig.json",
+      "sha256": "55050e293472fb6ec4aa2690c8cad7cb5a5a107ba483bf98851a0c4e707c6528",
+      "bytes": 660
+    },
+    {
+      "path": "/private/tmp/mcr-be03-oauth-12cc/ordinary_source.py",
+      "sha256": "f5ffa86fdde9a3f109eb539684c86f8f0fe330c2ed4b15eb45e79104da47e7f8",
+      "scope": "Exact producer identity interface only"
+    },
+    {
+      "path": "/private/tmp/mcr-be03-oauth-12cc/read_source.py",
+      "sha256": "ecd43dacaa7619f622ad1510234ca670287e578883bef4882e3749b583e5317f",
+      "scope": "Exact producer identity interface only"
+    }
+  ],
+  "executionPins": [
+    {
+      "path": "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node",
+      "bytes": 122564432,
+      "sha256": "b6fb419f0f43bb2fbca273700294dd2f3b685a64b60e8417c295f47646a70e4a"
+    },
+    {
+      "path": "/Users/lhs/Desktop/mcr/frontend/node_modules/.pnpm/zod@4.4.3/node_modules/zod/index.d.cts",
+      "bytes": 123,
+      "sha256": "29f823cbe0166e10e7176a94afe609a24b9e5af3858628c541ff8ce1727023cd"
+    },
+    {
+      "path": "/Users/lhs/Desktop/mcr/frontend/node_modules/typescript/lib/typescript.js",
+      "bytes": 9144216,
+      "sha256": "569177652966bd528c319171c7dd22860dbf72bde116cbc4f644f1d02bb12e39"
+    },
+    {
+      "path": "/Users/lhs/Desktop/mcr/frontend/node_modules/vite/dist/node/index.js",
+      "bytes": 2700,
+      "sha256": "4892d68c0d1e7a55dd76c10962370136fb49887d7145942c2220d87ce9c9f24b"
+    }
+  ],
+  "retainedChangedTests": [],
+  "lockfileSHA256": "47ca44459819ad0e887d2f4f93394fdf3b1053b8f45edc9ceb0236981feee1f6",
+  "semanticReuse": "Old41 semanticPASS/source02 and fulltypeslintSOURCE03 immutable Git473 record. No wholesale replay; currentroundfullordinarytypes+scopedlint, thenchangedactualAppnativeonly.",
+  "remainingSource03": "Full strict ordinary canonical Git program only; SOURCE02 identity8+scopedlint exit0 retained, no replay.",
+  "source03ResourceBoundary": {
+    "inclusiveNewCarryBytes": 162107392,
+    "remainingPhaseBytes": 22441984,
+    "sourcePhaseCapBytes": 184549376,
+    "aggregateCapBytes": 268435456,
+    "old34MiBReserveChargedOnce": true,
+    "runtimeStateHandling": "No new state enum or broad exception; producer retains FULL and nests routing disposition."
+  },
+  "source03OrderingObserved": {
+    "ownerThreadId": "01a1a153-1227-7e72-801f-a2a6b91981e1",
+    "offerId": "ROOT153-L-REGISTRATION-SOURCE03-0343",
+    "state": "FULL",
+    "acceptedAtEpoch": 1793850395.827633,
+    "actualFullEpoch": 1793850402.6164238
+  },
+  "remainingSource04": "New real-OS terminal-controller cases, then full strict canonical Git program only. SOURCE02 eight relative-identity checks/lint and original41 semantic cases retained, no replay.",
+  "source04ResourceBoundary": {
+    "inclusiveNewCarryBytes": 162385920,
+    "sourcePhaseCapBytes": 184549376,
+    "aggregateCapBytes": 268435456,
+    "remainingPhaseBytes": 22163456,
+    "old34MiBReserveChargedOnce": true
+  },
+  "remainingSource05": "Full ordinary strict canonical Git TypeScript only; all1225 canonical source roots plus retained actual ordinary roots, no narrowed options/exclusions. New terminal10 PASS is retained without replay.",
+  "source05Boundary": {
+    "inclusiveNewCarryBytes": 162684928,
+    "sourcePhaseCapBytes": 184549376,
+    "aggregateFamilyCapBytes": 268435456,
+    "remainingPhaseBytes": 21864448,
+    "wholeFloorBytes": 6642933760,
+    "sourceRSSBytes": 3221225472,
+    "nodeHeapMiB": 2304,
+    "kernelIdentityBeforeChildren": true
+  },
+  "nativeSublimits": {
+    "pngFiles": 24,
+    "pngBytes": 25165824,
+    "durableBytes": 16777216,
+    "logBytes": 2097152,
+    "tmpBytes": 50331648,
+    "additionalNewBytes": 67108864
+  },
+  "source06Boundary": {
+    "status": "OWNER_FIX_PIN_ACTUAL_SOURCE_QUALIFIED_SOURCE06_NOT_YET_ACCEPTED",
+    "inclusiveNewCarryBytes": 162971648,
+    "sourcePhaseCapBytes": 184549376,
+    "aggregateFamilyCapBytes": 268435456,
+    "remainingPhaseBytes": 21577728,
+    "wholeFloorBytes": 6642933760,
+    "sourceRSSBytes": 3221225472,
+    "nodeHeapMiB": 2304,
+    "requiredArtOwner": "01a1a231-0dc4-7b50-92bd-c0f0f56bd970",
+    "failedCanonicalBlob": "1b960ad84c283581b34e828674c64f9811eeb0ef",
+    "qualification": "Whole ordinary strict program; no green probe/lint/semantic replay",
+    "actualReadOnlyArtFix": {
+      "path": "frontend/src/features/paradise-city-map/art-source/qualifier.test.ts",
+      "revision": "624d30a86d77771425f402f939f8c516e42b123e",
+      "blob": "45a798411faf65bd7f87d1a508adecc661131d4e",
+      "sha256": "ea553d54e7eaf36d0391b798f56c0a0f8a287debac946f0d46af7a0bc6ef9a61",
+      "bytes": 4699,
+      "mode": "100644",
+      "ownerThreadId": "01a1a231-0dc4-7b50-92bd-c0f0f56bd970",
+      "qualification": "OWNER_SOURCE01_SCOPED_STRICT_AND_12_ORIGINAL_TESTS_PASS_2026_11_05T04_25_19_622869Z_NOT_FULL_APP",
+      "publication": "OWNER231_TO_PUBLISHER412E_SEPARATE_ROUTING",
+      "custody": "READONLY_GIT_INPUT_ONLY_NOT_26E_DELIVERY"
+    }
+  },
+  "source07Boundary": {
+    "status": "PREPARED_NOT_ACCEPTED",
+    "inclusiveNewCarryBytes": 163262464,
+    "sourcePhaseCapBytes": 184549376,
+    "aggregateFamilyCapBytes": 268435456,
+    "remainingPhaseBytes": 21286912,
+    "wholeFloorBytes": 6642933760,
+    "sourceRSSBytes": 3221225472,
+    "nodeHeapMiB": 2304,
+    "newWork": "Only new ordinary stdin/raw-digest/terminal boundary cases, then full ordinary strict program with immutable qualified owner231 test; no old10/8/lint41 replay"
+  },
+  "source08Boundary": {
+    "status": "ACTUAL_PASS_FULL",
+    "inclusiveNewCarryBytes": 163856384,
+    "phaseCapBytes": 184549376,
+    "aggregateCapBytes": 268435456,
+    "freshAdditionalCapBytes": 16777216,
+    "effectiveCapBytes": 180633600,
+    "wholeFloorBytes": 6642933760,
+    "applicableOtherFutureMinimumBytes": 12884901888,
+    "targetMutuallyExclusiveFutureCount": "max6GiB once inside applicableOTHER; ordinary2.5GiB once",
+    "sourceRSSBytes": 3221225472,
+    "nodeHeapMiB": 2304,
+    "work": "3 new ended-selection cases,13 realOS ordinary/producer-digest boundary cases, then full ordinary strict; no old10/8/lint41 replay",
+    "failedSealActualPositiveBytes": 69632,
+    "failedSealRetainedCarryBytes": 163332096,
+    "actualAcceptedAtEpoch": 1793855300.114978,
+    "actualFull": "2026-11-05T05:08:51.031699+00:00",
+    "rootFiles": 1233,
+    "sourceFiles": 1833,
+    "diagnostics": 0,
+    "ordinarySelectionCases": 3,
+    "realOSCases": 13,
+    "retainedActualNewPeakBytes": 163885056
+  },
+  "currentNativeBoundary": {
+    "offerId": "NO_ACTIVE_NATIVE_OFFER",
+    "retainedNewCarryBytes": 378359808,
+    "effectiveCapBytes": 383037440,
+    "phaseTotalMiB": 208,
+    "aggregateFamilyCapBytes": 394264576,
+    "wholeFloorBytes": 6739521536,
+    "status": "NOT_RUN"
+  },
+  "harnessRepair": {
+    "offerId": "PI11-HARNESS-REPAIR1M-0520",
+    "scope": "Own read-only Git CSS imports/layers/relative assets, retained minimal CommonJS prebundle, cleanup waits within original HARD clock; no app/producer edits or source replay",
+    "status": "PREPARED_NOT_EXECUTED"
+  },
+  "prebundleRepair": {
+    "offerId": "PI11-PREBUNDLE-REPAIR256K-0528",
+    "scope": "Owned harness only: explicitly prebundle actual react-router-dom and enable dependency discovery. No application changes or successful source replay.",
+    "status": "PREPARED_NOT_EXECUTED"
+  },
+  "newFixtureQualification": {
+    "offerId": "PI11-FIXTURE-SOURCE09-0603",
+    "status": "NOT_RUN",
+    "sourceAdditionalUpperBytes": 4194304,
+    "sourceRSSBytes": 2147483648,
+    "scope": "Changed fixture strict check with ordinary strict options and all real transitive imports; no old full-program/probe replay"
+  },
+  "source13Boundary": {
+    "offerId": "PI11-DRIVER-COLLECTOR-SOURCE13-0710",
+    "status": "ACTUAL_ACCEPT_NOT_YET_QUALIFIED",
+    "scope": "Only three new exact PID/PS race fixtures and still-unqualified owned native.mjs oxlint; no green replay",
+    "carryBefore": 304545792,
+    "carryAfterEntireBook": 304807936
+  },
+  "source14Boundary": {
+    "offerId": "PI11-DRIVER-LINT-SOURCE14-0720",
+    "status": "ACTUAL_PASS_FULL",
+    "scope": "Explicit expanded typed multi-record/kernel-vector consumer + ONE changed case + remainingoxlint; no old replay",
+    "carryBefore": 304807936,
+    "carryAfterEntireBook": 305070080,
+    "actualAcceptEpoch": 1793863577.582509,
+    "actualFullEpoch": 1793863590.76047,
+    "commandExits": [
+      0,
+      0
+    ]
+  }
+}

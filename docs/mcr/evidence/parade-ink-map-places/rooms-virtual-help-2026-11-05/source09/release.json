@@ -1,0 +1,27 @@
+{
+  "type": "FULL",
+  "lease": "PI11-FIXTURE-SOURCE09-0603",
+  "mode": "source",
+  "at": "2026-11-05T06:09:35.386124+00:00",
+  "exitCode": 0,
+  "failure": null,
+  "peak": {
+    "processes": 4,
+    "rssBytes": 1396178944,
+    "newBytes": 234131456,
+    "tmpBytes": 0,
+    "wholeBytes": 6709219328
+  },
+  "minimumFreeBytes": 19714560000,
+  "finalFreeBytes": 20387930112,
+  "seenPids": [
+    12777,
+    20148,
+    24915
+  ],
+  "livePids": [],
+  "ownedLinkAbsent": true,
+  "privateTmpAbsent": true,
+  "ownedPortClosed": true,
+  "resources": 0
+}

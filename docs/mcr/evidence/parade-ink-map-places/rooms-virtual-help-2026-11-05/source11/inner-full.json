@@ -1,0 +1,17 @@
+{
+  "type": "FULL",
+  "state": "FULL",
+  "offerId": "PI11-DRIVER-COLLECTOR-SOURCE11-0651",
+  "acceptedAtEpoch": 1793861692.9042392,
+  "actualFullEpoch": 1793861706.1676779,
+  "exitCode": 1,
+  "failure": "AssertionError('changed source check failed')",
+  "peak": {
+    "processes": 4,
+    "rssBytes": 365641728,
+    "newBytes": 304103424,
+    "wholeBytes": 6739521536
+  },
+  "resources": 0,
+  "livePids": []
+}

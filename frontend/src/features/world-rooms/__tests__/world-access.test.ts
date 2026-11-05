@@ -82,11 +82,11 @@ describe('FE18 switch authority and bounded ownership', () => {
     expect(h.controller.read().nearby).toHaveLength(1); expect(h.controller.read().switch.phase).toBe('idle')
     h.replication.setVisible(false); expect(h.controller.read().nearby).toEqual([]); expect(h.controller.switchReason(uid(12))).not.toBeNull()
   })
-  it('delta removal and resync clear the exact authorized projection; no coordinates or avatar data leak into DOM state', async () => {
+  it('delta removal and resync clear the exact authorized projection; only authorized avatar data reaches the portrait projection; no coordinates or distance leak', async () => {
     const h = setup(); await h.live(); const b = h.replication.read().baseline!
     h.receive({ protocolVersion: '1.0.0', type: 'delta', streamId: b.streamId, roomEpoch: b.roomEpoch, streamSeq: 1, serverTick: 2, ackInputSeq: 0, upserts: [], removes: [uid(2)] })
-    expect(h.controller.read().nearby.map(p => p.userId)).not.toContain(uid(2)); expect(h.projected.at(-1)).not.toContain(uid(2)); expect(h.controller.read().nearby[0]).toEqual({ userId: uid(1), displayName: 'Raven', self: true, moving: false })
-    expect(JSON.stringify(h.controller.read().nearby)).not.toMatch(/position|avatar|distance/)
+    expect(h.controller.read().nearby.map(p => p.userId)).not.toContain(uid(2)); expect(h.projected.at(-1)).not.toContain(uid(2)); expect(h.controller.read().nearby[0]).toEqual({ userId: uid(1), displayName: 'Raven', self: true, moving: false, avatar: initial.players[0]!.avatar })
+    expect(JSON.stringify(h.controller.read().nearby)).not.toMatch(/position|distance/)
     h.receive({ protocolVersion: '1.0.0', type: 'delta', streamId: b.streamId, roomEpoch: b.roomEpoch, streamSeq: 10, serverTick: 20, ackInputSeq: 0, upserts: [], removes: [] })
     expect(h.controller.read().nearby).toEqual([]); expect(h.controller.read().phase).toBe('resync')
   })

@@ -1,0 +1,31 @@
+{
+  "type": "FULL",
+  "lease": "PI11-ROOMS-SOURCE08-0453",
+  "mode": "source",
+  "at": "2026-11-05T05:08:48.897750+00:00",
+  "exitCode": 0,
+  "failure": null,
+  "peak": {
+    "processes": 4,
+    "rssBytes": 2188001280,
+    "newBytes": 163872768,
+    "tmpBytes": 0,
+    "wholeBytes": 6642933760
+  },
+  "minimumFreeBytes": 24645332992,
+  "finalFreeBytes": 24831787008,
+  "seenPids": [
+    31779,
+    31870,
+    32329,
+    33090,
+    34306,
+    35077,
+    36748
+  ],
+  "livePids": [],
+  "ownedLinkAbsent": true,
+  "privateTmpAbsent": true,
+  "ownedPortClosed": true,
+  "resources": 0
+}

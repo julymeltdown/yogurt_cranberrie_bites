@@ -1,0 +1,34 @@
+{
+  "type": "FULL",
+  "lease": "PI11-NATIVE03-0520",
+  "mode": "native",
+  "at": "2026-11-05T05:24:10.252681+00:00",
+  "exitCode": 1,
+  "failure": "RuntimeError('Command failed; immutable attempt retained, offer closes after cleanup')",
+  "peak": {
+    "processes": 11,
+    "rssBytes": 2107899904,
+    "newBytes": 202092544,
+    "tmpBytes": 28336128,
+    "wholeBytes": 6678945792
+  },
+  "minimumFreeBytes": 23491104768,
+  "finalFreeBytes": 23257886720,
+  "seenPids": [
+    85403,
+    85544,
+    85555,
+    85556,
+    85557,
+    85558,
+    85568,
+    85574,
+    85575,
+    89277
+  ],
+  "livePids": [],
+  "ownedLinkAbsent": true,
+  "privateTmpAbsent": true,
+  "ownedPortClosed": true,
+  "resources": 0
+}

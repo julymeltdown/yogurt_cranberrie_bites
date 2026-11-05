@@ -1,0 +1,17 @@
+{
+  "type": "FULL",
+  "state": "FULL",
+  "offerId": "PI11-DRIVER-COLLECTOR-SOURCE11-0651",
+  "acceptedAtEpoch": 1793861692.9042392,
+  "actualFullEpoch": 1793861708.111797,
+  "exitCode": 1,
+  "failure": null,
+  "peak": {
+    "processes": 4,
+    "rssBytes": 365641728,
+    "newBytes": 304107520,
+    "wholeBytes": 6739521536
+  },
+  "resources": 0,
+  "livePids": []
+}

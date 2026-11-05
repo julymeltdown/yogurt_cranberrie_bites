@@ -1,0 +1,210 @@
+{
+  "status": "PRODUCT_SOURCE_QUALIFIED_NATIVE_FAILED_VISUAL_OPEN_COMMITTED_HANDOFF",
+  "ownerThreadId": "01a1a26e-1de2-7b41-a294-c9a79cfded9b",
+  "canonicalConsumerBase": "7b81bf62d22b48a1ea653a1a84fae199c2b1d837",
+  "preparedAtCommit": "9d97f639854098bf8883e1379e16ec6793d4b438",
+  "exactPostimages": [
+    {
+      "path": "frontend/src/features/world-rooms/ui/WorldRooms.tsx",
+      "mode": "100644",
+      "bytes": 5181,
+      "sha256": "8ff7572334b9ee251b378c08b07b5f2f5bc70b3d22c439be55a072a57550fe84",
+      "blob": "f15e562fc5acfb9202b0364e21fb1ae32bc7d7d0"
+    },
+    {
+      "path": "frontend/src/features/world-rooms/ui/world-access.css",
+      "mode": "100644",
+      "bytes": 3085,
+      "sha256": "e2089b902224d7c351f0fdace8487008580f97f508f31f2dfa354c48bc62a869",
+      "blob": "26b44a4e720cce74e71311eb13c8725b3fc2e97b"
+    },
+    {
+      "path": "frontend/src/features/world-nearby/WorldNearby.tsx",
+      "mode": "100644",
+      "bytes": 5629,
+      "sha256": "a565917dbf57737c24eb78c01424dee6169a8c0338ba9bfed916fc6bb3951775",
+      "blob": "8f8cf67c37dafff827ae41ff82a860010872fd61"
+    },
+    {
+      "path": "frontend/src/features/world-nearby/projection.ts",
+      "mode": "100644",
+      "bytes": 1621,
+      "sha256": "c752b53caf91d5dc67538dad837036293d089d2dd2fddb58433d3b6c0a989e16",
+      "blob": "64d65384d2f5284cbb2fb660fba4cb845b439fb1"
+    },
+    {
+      "path": "frontend/src/features/world-rooms/__tests__/world-access.test.ts",
+      "mode": "100644",
+      "bytes": 11562,
+      "sha256": "d585432fc8f25efce891de017de0b7a18b80902f82eb54f456edc9cf3404a965",
+      "blob": "842b06c07907abaafdfb58ee6a61d06ae9bb380c"
+    },
+    {
+      "path": "frontend/src/features/world-help/WorldHelp.tsx",
+      "mode": "100644",
+      "bytes": 2716,
+      "sha256": "04ce5478d81b657d75b2a939a28afaf61531126869c6ccc024b46ba1f31cf7d7",
+      "blob": "4cc00992d821d3402010e100f13e2cb436acd050"
+    },
+    {
+      "path": "frontend/src/features/world-help/world-help.css",
+      "mode": "100644",
+      "bytes": 1179,
+      "sha256": "04b18716e58c5c8ccc946875d0a753c73a3f5d8df3053d62accb1323108d5f55",
+      "blob": "ea31350924c82f2bf804a9131e9a8e6a850a46b3"
+    },
+    {
+      "path": "frontend/src/features/world-nearby/__tests__/parade-ink/admission.setup.ts",
+      "mode": "100644",
+      "bytes": 1098,
+      "sha256": "dae3cd2a4189a275fa69dda7416b32089590257532ced174c8fd4cc07ee77322",
+      "blob": "da3e0ef5f59354e16dd6abd9d2e69792970a3203"
+    },
+    {
+      "path": "frontend/src/features/world-nearby/__tests__/parade-ink/nearby.test.tsx",
+      "mode": "100644",
+      "bytes": 6804,
+      "sha256": "d1d4eb38c3756a4d196b71756a5d4d437f22f94220dd0961b820ea91ae274e91",
+      "blob": "8e61c22bf14d3adcd277d1348d9722ebacce7f40"
+    },
+    {
+      "path": "frontend/src/features/world-nearby/__tests__/parade-ink/tsconfig.full.json",
+      "mode": "100644",
+      "bytes": 146,
+      "sha256": "9e6148f830758764568fa905a1f7d953adb2c1c7b5d0754717a866adafb00c66",
+      "blob": "ca9b42bc63e8253ba17416eafbf3f6b3b425772c"
+    },
+    {
+      "path": "frontend/src/features/world-nearby/__tests__/parade-ink/vitest.config.ts",
+      "mode": "100644",
+      "bytes": 637,
+      "sha256": "4fa0b076cb3eae9ba42b4ab2acda437f47c31bbb0967282768f2939a9a114730",
+      "blob": "fda3335f66c9b823b149750f364164dd1ac94242"
+    },
+    {
+      "path": "frontend/src/app/world-entry/__tests__/parade-ink-map-places/rooms-virtual-help.html",
+      "mode": "100644",
+      "bytes": 288,
+      "sha256": "136f6f9b77d8593e1da625fabe3aa91d535b42338d15d06e2beef0604b207b85",
+      "blob": "90a5a7d80365196ec6af320f1241320edb5995e1"
+    },
+    {
+      "path": "frontend/src/app/world-entry/__tests__/parade-ink-map-places/rooms-virtual-help.ts",
+      "mode": "100644",
+      "bytes": 3816,
+      "sha256": "4cf21debc1aafefe1b647ada83943d8482246f434e99277c59c866299c166189",
+      "blob": "73f6a7c5ba7e8e7ef321e7757733bfc2ec311c1a"
+    }
+  ],
+  "sharedCallers": {
+    "mode": "LITERAL_TWO_NEARBY_PANEL_IMPORT_RENDER_HUNKS_ONLY",
+    "paths": [
+      "frontend/src/app/world-entry/root-features.tsx",
+      "frontend/src/app/world-entry/routes.tsx"
+    ],
+    "patchPath": "docs/mcr/evidence/parade-ink-map-places/rooms-virtual-help-2026-11-05/nearby-callers.patch",
+    "patchSHA256": "6c6b36cb5e966fc8fd75b76d73faa6aeba986fa09ee452e129e3f1a0f8fcacb9",
+    "forbidWholeFileReplacement": true
+  },
+  "documentation": "docs/mcr/frontend/parade-ink-map-places.md",
+  "evidencePrefix": "docs/mcr/evidence/parade-ink-map-places/rooms-virtual-help-2026-11-05/",
+  "excludedBorrowedProducers": [
+    {
+      "path": "frontend/src/features/avatar/parade-ink/AvatarPopover.tsx",
+      "revision": "8907969327b8f0371860fc13eeddef2d60876a23",
+      "sha256": "f00896675a28767ac9c9b92af4d75f45aa5872409e107625790370c4cefc57b3",
+      "bytes": 1320,
+      "qualification": "SOURCE_QUALIFIED_OWNER534_EXISTING_DISPOSITION",
+      "publication": "NOT_PUBLISHED"
+    },
+    {
+      "path": "frontend/src/features/avatar/parade-ink/PortraitFrame.tsx",
+      "revision": "7b81bf62d22b48a1ea653a1a84fae199c2b1d837",
+      "sha256": "637c7952cbed607db0a5479ee1e58277d7c242a0ed4ce30f88968825005c964f",
+      "bytes": 606,
+      "qualification": "SOURCE_QUALIFIED_OWNER534_EXISTING_DISPOSITION",
+      "publication": "PUBLISHED_STATIC_FRAME_ONLY",
+      "canonicalRevision": "84f3e6cf93ea681379f949f1100bddec87965821"
+    },
+    {
+      "path": "frontend/src/features/avatar/parade-ink/parade-ink-avatar.css",
+      "revision": "7b81bf62d22b48a1ea653a1a84fae199c2b1d837",
+      "sha256": "fe2c83cc92a9818cabb33ef20858640452e7de2899cba80600d75c26e23ddbd0",
+      "bytes": 4132,
+      "qualification": "SOURCE_QUALIFIED_OWNER534_EXISTING_DISPOSITION",
+      "publication": "PUBLISHED_STATIC_FRAME_ONLY",
+      "canonicalRevision": "84f3e6cf93ea681379f949f1100bddec87965821"
+    },
+    {
+      "path": "frontend/src/features/paradise-city-map/art-source/qualifier.test.ts",
+      "revision": "624d30a86d77771425f402f939f8c516e42b123e",
+      "blob": "45a798411faf65bd7f87d1a508adecc661131d4e",
+      "sha256": "ea553d54e7eaf36d0391b798f56c0a0f8a287debac946f0d46af7a0bc6ef9a61",
+      "bytes": 4699,
+      "mode": "100644",
+      "ownerThreadId": "01a1a231-0dc4-7b50-92bd-c0f0f56bd970",
+      "qualification": "OWNER_SOURCE01_SCOPED_STRICT_AND_12_ORIGINAL_TESTS_PASS_2026_11_05T04_25_19_622869Z_NOT_FULL_APP",
+      "publication": "OWNER231_TO_PUBLISHER412E_SEPARATE_ROUTING",
+      "custody": "READONLY_GIT_INPUT_ONLY_NOT_26E_DELIVERY"
+    }
+  ],
+  "excludedScopes": [
+    "Map/places/check-in/Paradise City/physical/GPS",
+    "controllers/Auth/DTO/World simulation",
+    "all borrowed producer source",
+    "entire retained branch and spatial evidence/closing files",
+    "docs/source byte changes"
+  ],
+  "remaining": [
+    "Actual controlled App native360/390/430 and short height, personal image/reference/focus qualification and owned fixes",
+    "Scoped publishing-owner combined checks, publication and remote postimage/ancestry verification"
+  ],
+  "openProductCriterion": "W04 party invitation separate UNIMPLEMENTED with20f/Root; Find a party is navigation only",
+  "sourceQualification": {
+    "offerId": "PI11-ROOMS-SOURCE08-0453",
+    "rootFiles": 1233,
+    "sourceFiles": 1833,
+    "diagnostics": 0,
+    "exitCode": 0,
+    "outerFull": "2026-11-05T05:08:51.031699+00:00",
+    "logs": [
+      "source08/command-00.log",
+      "source08/command-01.log",
+      "source08-controller.jsonl"
+    ]
+  },
+  "fixtureQualification": {
+    "offerId": "PI11-FIXTURE-SOURCE09-0603",
+    "rootFiles": 1,
+    "sourceFiles": 766,
+    "diagnostics": 0,
+    "exitCode": 0
+  },
+  "driverQualification": {
+    "offerId": "PI11-DRIVER-LINT-SOURCE14-0720",
+    "actualAcceptEpoch": 1793863577.582509,
+    "actualFullEpoch": 1793863590.76047,
+    "commandExits": [
+      0,
+      0
+    ],
+    "scope": "ONE new typed multi-record/kernel argv case and installed native.mjs oxlint only",
+    "priorSource13": "FAIL_RESOURCE; three limited stdout PASS without recorded command exit"
+  },
+  "nativeDisposition": {
+    "native08": "GENUINELY_UNUSED_EXPIRED_BEFORE_REGISTRATION",
+    "native09": "GENUINELY_UNUSED_NO_ACCEPT_NO_RESOURCE_HOLD",
+    "native10": "CLOSED_FAIL_UNSUPPORTED_LAUNCHER_PHASE_NO_BROWSER",
+    "native11": "CLOSED_FAIL_APP_READINESS_TIMEOUT_NO_CAPTURES",
+    "visualAcceptance": "OPEN",
+    "liveServiceDeviceMultiuser": "NOT_QUALIFIED"
+  },
+  "localOnlyEvidence": [
+    "source14/consumed-12cc-raw.json"
+  ],
+  "immutableRawWhitespaceException": {
+    "path": "docs/mcr/evidence/parade-ink-map-places/rooms-virtual-help-2026-11-05/native06/command-00.log",
+    "sha256": "d5db9aa5fc97f7b29ec6482505635ab52e1f6881b4c064d619c4a270bcc9107a",
+    "reason": "Only original ANSI terminal output trailing spaces; original bytes preserved. All other staged paths remain under strict whitespace check."
+  }
+}

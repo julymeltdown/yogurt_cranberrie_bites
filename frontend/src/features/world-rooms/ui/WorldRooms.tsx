@@ -20,7 +20,7 @@ export function WorldRooms({ controller }: { controller: WorldAccessController }
   const current = catalog?.items.find(r => r.room_id === state.currentRoomId)
   const target = catalog?.items.find(r => r.room_id === state.switch.targetId)
   const live = state.phase === 'live' || state.phase === 'switching'
-  return <div className="world-access"><nav className="world-access-nav" aria-label="Room navigation"><ShellLink id="rooms-nearby" to="/world/nearby">Nearby in world</ShellLink><ShellLink id="rooms-world" to="/world">Back to world</ShellLink></nav>
+  return <div className="world-access world-rooms pi-map-family"><nav className="world-access-nav" aria-label="Room navigation"><ShellLink id="rooms-nearby" to="/world/nearby">Nearby in world</ShellLink><ShellLink id="rooms-world" to="/world">Back to world</ShellLink></nav>
     <div className="world-access-heading"><h2>Choose your room</h2><button type="button" disabled={state.rooms.phase === 'loading' || !state.available} onClick={() => void controller.loadRooms()}>Refresh rooms</button></div>
     <p>Rooms are shared virtual spaces. Switching does not confirm physical arrival.</p>
     {state.currentRoomId && <p>{live ? 'Current room' : 'Last confirmed room'}: <strong>{current?.label ?? 'Room details unavailable'}</strong></p>}

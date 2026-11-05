@@ -1,0 +1,138 @@
+{
+  "canonical": "7b81bf62d22b48a1ea653a1a84fae199c2b1d837",
+  "status": "FAIL",
+  "qualification": "ACTUAL_APP_CONTROLLED_HTTP_C05_NOT_LIVE_OR_DEVICE",
+  "producerBoundary": "Immutable source-qualified PI07 leaves published at ecb2c4adeaed06bc5b7ceb1e1f21d6b9a97e19c5; exact bytes retained",
+  "openCriterion": "W04 party invitation UNIMPLEMENTED owners20f/Root1fc",
+  "checks": [
+    {
+      "width": 360,
+      "height": 844,
+      "images": [],
+      "errors": [],
+      "focus": [],
+      "targets": {},
+      "policy": [
+        {
+          "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/service-policy",
+          "method": "GET",
+          "authorized": true,
+          "recognized": true,
+          "qualification": "CANONICAL_TEST_ONLY_RELEASE_AND_FRESH_POLICY_NOT_PRODUCTION_AUTHORITY"
+        }
+      ]
+    }
+  ],
+  "browser": "156.0.8078.80",
+  "failure": "locator.getAttribute: Timeout 12000ms exceeded.\nCall log:\n\u001b[2m  - waiting for getByRole('button', { name: 'World tools', exact: true })\u001b[22m\n\n    at open (/Users/lhs/Desktop/mcr-worktrees/fe-runtime-preferences/docs/mcr/evidence/parade-ink-map-places/rooms-virtual-help-2026-11-05/native.mjs:79:128)\n    at /Users/lhs/Desktop/mcr-worktrees/fe-runtime-preferences/docs/mcr/evidence/parade-ink-map-places/rooms-virtual-help-2026-11-05/native.mjs:81:11",
+  "failureState": {
+    "path": "/world",
+    "retained": {
+      "qualification": "ACTUAL_MAIN_CANONICAL_AUTH_MAP4_EXPLICIT_HTTP_C05_FIXTURE_NOT_LIVE",
+      "productionAdmitted": false,
+      "scenario": "eligible-attendee-contract-fixture",
+      "readiness": {
+        "status": "INPUT_CANDIDATE",
+        "productionAdmitted": false,
+        "reasons": [],
+        "worldReason": null,
+        "limitation": "Enabled flags and a Map4 identity are necessary only. Full authenticated C03 validation stays in memory; retained runtime evidence is a public-resource projection, never a private body or its digest. Normal contract/hash/admission validation still applies."
+      },
+      "ticketTiming": [
+        {
+          "serverTimeMs": 1793859022525,
+          "expiresTimeMs": 1793859052525,
+          "lifetimeMs": 30000
+        }
+      ],
+      "requests": [
+        {
+          "path": "/api/auth/capabilities",
+          "method": "GET"
+        },
+        {
+          "path": "/api/auth/login",
+          "method": "POST"
+        },
+        {
+          "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/bootstrap",
+          "method": "GET"
+        },
+        {
+          "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/rooms",
+          "method": "GET"
+        },
+        {
+          "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/places",
+          "method": "GET"
+        },
+        {
+          "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/world-tickets",
+          "method": "POST"
+        },
+        {
+          "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/mural/tools",
+          "method": "GET"
+        },
+        {
+          "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/mural/tools",
+          "method": "GET"
+        },
+        {
+          "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/mural/tools",
+          "method": "GET"
+        },
+        {
+          "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/mural/tools",
+          "method": "GET"
+        },
+        {
+          "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/mural/tools",
+          "method": "GET"
+        },
+        {
+          "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/mural/tools",
+          "method": "GET"
+        },
+        {
+          "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/mural/tools",
+          "method": "GET"
+        }
+      ],
+      "sockets": 1,
+      "activeSockets": 1,
+      "canvases": 1,
+      "urls": {
+        "created": [
+          "blob:http://127.0.0.1:5386/e253ef45-6bfe-4e69-a1eb-c3c21f80c158",
+          "blob:http://127.0.0.1:5386/8a409f41-c815-4e4b-abb2-7ce45d0471b8",
+          "blob:http://127.0.0.1:5386/d93bb3d9-5d36-4a40-88a4-f3f555b87a70",
+          "blob:http://127.0.0.1:5386/d9914e41-6979-48d3-8bd2-01eb4ca9e491",
+          "blob:http://127.0.0.1:5386/d8f14836-49dd-4484-9bb7-1f3672bb236a",
+          "blob:http://127.0.0.1:5386/9c227a15-5b31-4dd8-8cfa-27b207569fe7"
+        ],
+        "revoked": [
+          "blob:http://127.0.0.1:5386/d8f14836-49dd-4484-9bb7-1f3672bb236a"
+        ]
+      },
+      "path": "/world",
+      "map": {
+        "id": "mcr_reference_scene_r3",
+        "revision": 4,
+        "contentHash": "sha256:736afd273a067f6c40db76b8cc54412416fba88984a50d9a6b6738d869831fb8",
+        "geometryHash": "sha256:899aca9bd6ce499c6f46aff5eaf21e30ab34b301e988771b978a6fab7c2d469f"
+      },
+      "theme": "PARADE"
+    },
+    "policy": [
+      {
+        "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/service-policy",
+        "method": "GET",
+        "authorized": true,
+        "recognized": true,
+        "qualification": "CANONICAL_TEST_ONLY_RELEASE_AND_FRESH_POLICY_NOT_PRODUCTION_AUTHORITY"
+      }
+    ],
+    "body": "Skip to content\nWORLD\nREVENGE\nPARADE\nDANGER\n\nParade selected.\n\nInteract\n⌖\nRecenter\nControls & help\n\nLocal movement ready.\n\nWorld connected.\n\nVirtual position is not physical arrival.\n\nWorld\n/\n6 in view\n\nVirtual presence, not physical arrival.\n\nNEARBY\nWorld\nWORLD\nFEED\nMEET\nGIFTS\nWALL\nME"
+  }
+}

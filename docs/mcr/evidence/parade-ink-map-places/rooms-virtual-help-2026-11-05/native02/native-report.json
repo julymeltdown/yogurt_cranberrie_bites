@@ -1,0 +1,21 @@
+{
+  "canonical": "7b81bf62d22b48a1ea653a1a84fae199c2b1d837",
+  "status": "FAIL",
+  "qualification": "ACTUAL_APP_CONTROLLED_HTTP_C05_NOT_LIVE_OR_DEVICE",
+  "producerBoundary": "Immutable source-qualified PI07 popover, not yet canonical; no wholePI07 acceptance",
+  "openCriterion": "W04 party invitation UNIMPLEMENTED owners20f/Root1fc",
+  "checks": [
+    {
+      "width": 360,
+      "height": 844,
+      "images": [],
+      "errors": [
+        "Failed to fetch dynamically imported module: http://127.0.0.1:5386/src/main.tsx"
+      ],
+      "focus": [],
+      "targets": {}
+    }
+  ],
+  "browser": "156.0.8078.80",
+  "failure": "locator.fill: Timeout 12000ms exceeded.\nCall log:\n\u001b[2m  - waiting for getByLabel('Email', { exact: true })\u001b[22m\n\n    at /Users/lhs/Desktop/mcr-worktrees/fe-runtime-preferences/docs/mcr/evidence/parade-ink-map-places/rooms-virtual-help-2026-11-05/native.mjs:68:53"
+}
