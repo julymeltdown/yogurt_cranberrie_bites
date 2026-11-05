@@ -1,7 +1,7 @@
 # Community and WALL delivery record
 
 <!-- current-lane-record:start -->
-Updated 2026-11-05 10:37 (Asia/Seoul) from responsible implementation-owner
+Updated 2026-11-05 11:31 (Asia/Seoul) from responsible implementation-owner
 reports, compact current chat snapshots and actual source/custody dispositions.
 This is management bookkeeping; developers own implementation, validation,
 fixes and exact immutable committed handoffs. Current standing sole publisher
@@ -189,6 +189,48 @@ producers, same-current Auth/audience/revoke/expiry/persistence/recovery.
 Developers compare same viewport reference/capture pairs+overlays/diffs and fix
 material mismatches; no SL/king technical or screenshot review/approval.
 Required original IN02/IN04/QA05/QA09/runtime/device work remains separately open.
+
+### Venue leaf delivery update — responsible-owner report
+
+AM-FE-COMM-01 / VENU-FE-M01 owner204 reports the bounded frontend leaf
+PUBLISHED_VERIFIED at canonical `41d90738e3941cdfc663d00551e0f7db2cd3aa4f`,
+with sole producer dependencies `43fa9376` and `e9535129`. This supersedes the
+source-only status above for this leaf. Owner retained45 state/rendered-UI cases,
+strict TypeScript and lint PASS; publisher412e reports normal push/fetch/ls-remote,
+exact25 postimages and import closure verified, canonical receipt consumed.
+Delivered source covers invitation actions, contextual MESSAGE, truthful original
+unknown-command status, privacy fences, stable consumer and explicit real-provider
+versus ART mapped focus. No SL reinspection or validation is performed.
+
+This is NOT VENU product acceptance: normalized adapter/list/ascending pagination,
+Root stable host and People/Inbox wiring, actual shell/HTTP/two-principal/device/GPS
+integration remain OPEN with204, Root153 and the actual producer counterparts.
+The current compact snapshot shows204 actively consuming an initial frozen wire
+API pin and implementing its leaf adapter; Root153 remains active on wire-client
+checks. Neither production transport binding nor combined runtime is inferred.
+Native01 and02 both closed prework FAIL/all0, with no Node/Vite/browser/captures;
+Native03 was requested, not accepted. The owner declared the full Python symlink
+dependency and preserved renamed closed FE38 history. Native failures stay failed.
+Curated integration/publication/native-failure documentation source `3bfe3a420`
+is already sent directly to412e; its separate canonical receipt is pending.
+
+All112 original IDs/61 IA and the32 unique lane original rows remain unchanged;
+VENU0/8 and extension IA accounting are not incremented. Old FE10 BLOCKED goal is
+preserved without reset, false completion or replacement. No generic live gate is
+added to any completed pure-client original. Batch this material bounded delivery
+into the NEXT ordinary hourly digest, without a second current King packet.
+
+The earlier lane record source90f7e5d is already canonical
+`308d1e782f48d7c9ea6ede6e55af3f25b57f33b3`; no outstanding publication is
+implied by the superseded DOC2 bookkeeping below. This update uses fresh ordinary
+COMMUNITY-HOURLY-DOC16-0228, total positive upper16MiB through03:00UTC, exactONE
+lane MD plus own private control/scoped Git only. Prior DOC2 is closed/released;
+its retained positive maximum838791B and all prior higher/full-root maxima remain,
+with no reset/refund. Fresh baseline and final full-root/common-Git accounting,
+8GiB live floor plus9GiB applicable future growth and2.5GiB ordinary aggregate
+reserve are recorded in the own private release record. No app execution cohort,
+source/test/browser/DB/target/install/new checkout or peer writes are authorized.
+Exact postimage goes directly to412e; literal ordinary release follows the commit.
 
 ### Management delivery and cadence
 
