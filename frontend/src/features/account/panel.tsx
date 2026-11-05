@@ -1,3 +1,4 @@
+import './parade-ink-private/private.css'
 import { useEffect,useState,useSyncExternalStore } from 'react'
 import type { SessionController } from '../auth/model/session'
 import type { AccountController } from './controller'
@@ -15,7 +16,7 @@ export function AccountPanel({controller,auth,onBack}:{controller:AccountControl
  useEffect(()=>setConfirm(null),[controller,auth,scopeKey])
  const confirms=(kind:'logout'|'delete')=>confirm?.kind===kind&&confirm.owner===controller&&confirm.auth===auth&&confirm.scopeKey===JSON.stringify(auth.privacy.capture())
  const canDelete=controller.canRequestDeletion(),signedIn=auth.session.read().userId!==null
- return <section className="mcr-safety-panel" aria-labelledby="mcr-account-title"><button onClick={onBack}>Back</button><h1 id="mcr-account-title">Account controls</h1>
+ return <section className="mcr-safety-panel pi-private-account" aria-labelledby="mcr-account-title"><button onClick={onBack}>Back</button><h1 id="mcr-account-title">Account controls</h1>
   <p>Signing out clears private views and drafts on this device immediately.</p>
   <button disabled={!signedIn||session.pending==='logout'||s.phase==='closed'} onClick={()=>setConfirm({kind:'logout',owner:controller,auth,scopeKey})}>Sign out</button>
   {session.logout==='confirmed'&&<p role="status">Signed out. Server logout confirmed.</p>}

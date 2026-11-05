@@ -1,0 +1,31 @@
+{
+  "observedAtEpoch": 1793847624.1835232,
+  "psSnapshotSHA256": "4991d5f590ba2ddd766cbab4e1d24e686e5152a2a3468956470dff21f1444315",
+  "owners": [
+    "01a1a213-61d6-7a20-a8e7-476649312f8c"
+  ],
+  "ordinaryActualPids": [
+    91644
+  ],
+  "reservedProcesses": 24,
+  "reservedRSSBytes": 4294967296,
+  "actualPids": [
+    119,
+    285,
+    454,
+    462,
+    506,
+    507,
+    508,
+    797,
+    803,
+    805,
+    1085,
+    91644,
+    99790
+  ],
+  "actualRSSBytes": 3050962944,
+  "otherNewUpperBytes": 2684354560,
+  "receiptSnapshotAttempts": 1,
+  "observedRecordTransitions": []
+}

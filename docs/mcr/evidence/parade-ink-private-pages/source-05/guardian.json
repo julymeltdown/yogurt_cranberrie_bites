@@ -1,0 +1,132 @@
+{
+  "job": "PI12-PRIVATE-PAGES-SOURCE05-0120",
+  "status": "FAIL",
+  "candidate": "25a860816bfcbe7cc54eb889a7ceb67d4b224b2f",
+  "acceptedEpoch": 1793842194.468,
+  "workDeadline": 1793842314.468,
+  "cleanupDeadline": 1793842374.468,
+  "limits": {
+    "workSeconds": 120,
+    "cleanupSeconds": 60,
+    "processes": 6,
+    "rssMiB": 2560,
+    "wholeBytes": 8589934592,
+    "newGrowthBytes": 134217728,
+    "tempBytes": 104857600,
+    "durableBytes": 16777216,
+    "logBytes": 2097152
+  },
+  "admission": {
+    "freeBytes": 23398342656,
+    "otherNewBytes": 3221225472,
+    "ownRemainingNewBytes": 41943040,
+    "residualBytes": 20135174144
+  },
+  "initialInventory": {
+    "roots": [
+      {
+        "path": "/Users/lhs/Desktop/mcr-worktrees/fe-reference-frame-footer",
+        "inodes": 15994,
+        "allocatedBytes": 1484591104
+      },
+      {
+        "path": "/Users/lhs/Desktop/mcr-worktrees/fe-mural-editor",
+        "inodes": 4942,
+        "allocatedBytes": 77512704
+      },
+      {
+        "path": "/Users/lhs/Desktop/mcr-worktrees/fe-wall-reference-target",
+        "inodes": 2590,
+        "allocatedBytes": 63672320
+      },
+      {
+        "path": "/Users/lhs/Desktop/mcr-worktrees/be-party-runtime",
+        "inodes": 4042,
+        "allocatedBytes": 72794112
+      },
+      {
+        "path": "/Users/lhs/Desktop/mcr/frontend/node_modules",
+        "inodes": 13420,
+        "allocatedBytes": 438317056
+      },
+      {
+        "path": "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64",
+        "inodes": 5888,
+        "allocatedBytes": 209088512
+      },
+      {
+        "path": "/Users/lhs/Desktop/mcr/.git",
+        "inodes": 3884,
+        "allocatedBytes": 1209487360
+      },
+      {
+        "path": "/Applications/Google Chrome.app",
+        "inodes": 1339,
+        "allocatedBytes": 1527132160
+      },
+      {
+        "path": "/Library/Frameworks/Python.framework/Versions/3.14",
+        "inodes": 28412,
+        "allocatedBytes": 1045037056
+      }
+    ],
+    "uniqueInodes": 80511,
+    "allocatedBytes": 6127632384
+  },
+  "nonresettingNewCarryBytes": 92274688,
+  "priorHistoricalMaxBytes": 6127472640,
+  "sourceSha256": {
+    "frontend/src/app/__tests__/parade-ink-private-pages/compare.py": "50b73ff256fd969434a3c73167089bf92adc841325d05809a9960e6e5c9ca147",
+    "frontend/src/app/__tests__/parade-ink-private-pages/guard_support.py": "43b4fea85383037dd9eadbea913200e2abd777c00017e77b3cc0a5cefb4e3bfb",
+    "frontend/src/app/__tests__/parade-ink-private-pages/membership.py": "2a6ce50e4dfcd24f6ef5f1b524d5e707a19d860a27d209a2eb3955f025125c84",
+    "frontend/src/app/__tests__/parade-ink-private-pages/native-round.py": "d21453ab49ca7558652d62b19b8331e05d527a3b1e1c4d4eb0bea5f50d7a336c",
+    "frontend/src/app/__tests__/parade-ink-private-pages/pages.test.tsx": "0016b4275c754c8ab4631683522ae8476495e70df4fa76f32be394c7cd80cca9",
+    "frontend/src/app/__tests__/parade-ink-private-pages/preservation.test.tsx": "2aaf2b8d324f6af55815d0bca182daa516f613a07da3b9b9b7a8226a5a0b6e35",
+    "frontend/src/app/__tests__/parade-ink-private-pages/source-round.py": "380c73726d004f747f7b46f61c1d0af28347ae9b0ba2d7a1911655b34f5470d1",
+    "frontend/src/app/__tests__/parade-ink-private-pages/vitest.config.mjs": "df2877480471a4f3eac908326864d50531c166feb4ff03218855337da49052ec",
+    "frontend/src/app/__tests__/parade-ink-private-pages/watchdog.py": "44ebc3ccdca81253c6f639aeedaff2e46677535d1ba170f02db597ab7206d960",
+    "frontend/e2e/visual/parade-ink-private-pages/native.mjs": "f35d9fe9bf649cd97af4a7f5079e9fb75cbfd405d5e018deb2225afc396d0616",
+    "frontend/e2e/visual/parade-ink-private-pages/preview.html": "9a63facd350227a024b3a3a2d0ec4054e24ee19017d1bea6b0a1a55ceeed810e",
+    "frontend/e2e/visual/parade-ink-private-pages/preview.tsx": "66a4495288d853708d4df6b5db21ea4ae9aa98b1db4bf1d24d370e16d722f8a9",
+    "frontend/e2e/visual/parade-ink-private-pages/service.ts": "a579ddb80de7d0071871634f4094bfb307299cdc764708f19869322de026f210",
+    "frontend/e2e/visual/parade-ink-private-pages/vite.config.ts": "0219c97b4f00d45afd50526e90c13dbbb72b522b1b4745e2528b4b9501cbdf21",
+    "frontend/package.json": "0f7a05587bcf1af5f4d5d077a0c2d90011adc87e1036a61db9ef3acf37c8b7d3",
+    "frontend/pnpm-lock.yaml": "47ca44459819ad0e887d2f4f93394fdf3b1053b8f45edc9ceb0236981feee1f6",
+    "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node": "b6fb419f0f43bb2fbca273700294dd2f3b685a64b60e8417c295f47646a70e4a",
+    "/Library/Frameworks/Python.framework/Versions/3.14/bin/python3.14": "1192b994fbb50303c9df2cc97c9d63797d454c7f57f20ca682877c9e770429aa"
+  },
+  "commands": [
+    {
+      "label": "source-tests",
+      "command": [
+        "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node",
+        "/Users/lhs/Desktop/mcr/frontend/node_modules/vitest/vitest.mjs",
+        "run",
+        "--config",
+        "src/app/__tests__/parade-ink-private-pages/vitest.config.mjs",
+        "--configLoader",
+        "runner",
+        "--maxWorkers=1",
+        "--no-file-parallelism"
+      ],
+      "startedEpoch": 1793842198.480681,
+      "exitCode": 0,
+      "finishedEpoch": 1793842202.43919
+    }
+  ],
+  "peakProcesses": 4,
+  "peakRssKiB": 1043520,
+  "peakWholeBytes": 6127656960,
+  "peakTempBytes": 1161,
+  "peakOutputBytes": 2538,
+  "bothGuardsLiveBeforeWorkload": true,
+  "error": "resource controller identity mismatch: {\"owner\": \"01a1a533-50a8-7fb2-b3ed-96b941b96bbf\", \"pid\": 51044, \"birth\": \"Thu Nov 5 10:30:00 2026\", \"expectedScript\": \"/Users/lhs/Desktop/mcr-worktrees/sl-world/frontend/src/features/auth/__tests__/parade-ink-entry/bootstrap.py\", \"observedExecutable\": \"/Library/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python\", \"observedCommandSHA256\": \"f6fe6a80b48662570a0c12ad257836e4b37aa4d3590338eb1f751f31e680260a\", \"commandLength\": 206}",
+  "remainingOwnDescendants": [],
+  "finishedEpoch": 1793842203.201782,
+  "cleanup": {
+    "linkAbsent": true,
+    "tempAbsent": true,
+    "secondaryExited": true,
+    "beforeOriginalDeadline": true
+  }
+}

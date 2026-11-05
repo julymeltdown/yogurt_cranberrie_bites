@@ -1,0 +1,21 @@
+{
+  "observedAtEpoch": 1793845662.183365,
+  "controller": {
+    "pid": 22569,
+    "birth": "Thu Nov 5 11:27:41 2026",
+    "executable": "/Library/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python",
+    "script": "/Users/lhs/Desktop/mcr-worktrees/fe-reference-frame-footer/frontend/src/app/__tests__/parade-ink-private-pages/native-round.py",
+    "cwd": "/Users/lhs/Desktop/mcr-worktrees/fe-reference-frame-footer",
+    "outputRoot": "/Users/lhs/Desktop/mcr-worktrees/fe-reference-frame-footer/docs/mcr/evidence/parade-ink-private-pages/native-06"
+  },
+  "guardControllers": [
+    {
+      "pid": 22696,
+      "birth": "Thu Nov 5 11:27:42 2026",
+      "executable": "/Library/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python",
+      "script": "/Users/lhs/Desktop/mcr-worktrees/fe-reference-frame-footer/frontend/src/app/__tests__/parade-ink-private-pages/watchdog.py",
+      "cwd": "/Users/lhs/Desktop/mcr-worktrees/fe-reference-frame-footer",
+      "outputRoot": "/Users/lhs/Desktop/mcr-worktrees/fe-reference-frame-footer/docs/mcr/evidence/parade-ink-private-pages/native-06"
+    }
+  ]
+}

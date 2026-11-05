@@ -1,0 +1,10 @@
+{
+  "guard": "independent-secondary",
+  "startedEpoch": 1793842515.87691,
+  "samples": 0,
+  "peakProcesses": 0,
+  "peakRssKiB": 0,
+  "peakWholeBytes": 0,
+  "error": "OTHER does not cover ordinary and accepted peer growth",
+  "finishedEpoch": 1793842515.943871
+}

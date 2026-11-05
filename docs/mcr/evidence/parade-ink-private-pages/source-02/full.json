@@ -1,0 +1,30 @@
+{
+  "ownerThreadId": "01a1a213-61d6-7a20-a8e7-476649312f8c",
+  "offerId": "PI12-PRIVATE-PAGES-SOURCE02-0116",
+  "state": "FULL",
+  "acceptedAtEpoch": 1793841456.249,
+  "workDeadlineEpoch": 1793841576.249,
+  "fullDeadlineEpoch": 1793841636.249,
+  "kind": "source",
+  "processCap": 6,
+  "rssCapBytes": 2684354560,
+  "remainingNewUpperBytes": 0,
+  "controller": {
+    "pid": 80192,
+    "birth": "Thu Nov 5 10:17:36 2026",
+    "executable": "/Library/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python",
+    "script": "/Users/lhs/Desktop/mcr-worktrees/fe-reference-frame-footer/frontend/src/app/__tests__/parade-ink-private-pages/source-round.py",
+    "cwd": "/Users/lhs/Desktop/mcr-worktrees/fe-reference-frame-footer",
+    "outputRoot": "/Users/lhs/Desktop/mcr-worktrees/fe-reference-frame-footer/docs/mcr/evidence/parade-ink-private-pages/source-02"
+  },
+  "guardControllers": [],
+  "receiptPaths": {
+    "accept": "/Users/lhs/Desktop/mcr-worktrees/fe-reference-frame-footer/docs/mcr/evidence/parade-ink-private-pages/source-02/accepted.json",
+    "full": "/Users/lhs/Desktop/mcr-worktrees/fe-reference-frame-footer/docs/mcr/evidence/parade-ink-private-pages/source-02/full.json"
+  },
+  "publishedAtEpoch": 1793841475.135348,
+  "actualFullEpoch": 1793841475.135348,
+  "resources": 0,
+  "livePids": [],
+  "failure": "Preflight full HEAD equality assertion: caller supplied abbreviated candidate; no child, inventory, TMP or dependency link created"
+}

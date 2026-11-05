@@ -1,0 +1,113 @@
+{
+  "job": "PI12-PRIVATE-PAGES-SOURCE03-0120",
+  "status": "FAIL",
+  "candidate": "22cd42372ccda0919f95c6cefd4b9037dfb1b01a",
+  "acceptedEpoch": 1793841672.286,
+  "workDeadline": 1793841792.286,
+  "cleanupDeadline": 1793841852.286,
+  "limits": {
+    "workSeconds": 120,
+    "cleanupSeconds": 60,
+    "processes": 6,
+    "rssMiB": 2560,
+    "wholeBytes": 8589934592,
+    "newGrowthBytes": 134217728,
+    "tempBytes": 104857600,
+    "durableBytes": 16777216,
+    "logBytes": 2097152
+  },
+  "admission": {
+    "freeBytes": 23649792000,
+    "otherNewBytes": 3221225472,
+    "ownRemainingNewBytes": 79691776,
+    "residualBytes": 20348874752
+  },
+  "initialInventory": {
+    "roots": [
+      {
+        "path": "/Users/lhs/Desktop/mcr-worktrees/fe-reference-frame-footer",
+        "inodes": 15981,
+        "allocatedBytes": 1484529664
+      },
+      {
+        "path": "/Users/lhs/Desktop/mcr-worktrees/fe-mural-editor",
+        "inodes": 4933,
+        "allocatedBytes": 77467648
+      },
+      {
+        "path": "/Users/lhs/Desktop/mcr-worktrees/fe-wall-reference-target",
+        "inodes": 2590,
+        "allocatedBytes": 63672320
+      },
+      {
+        "path": "/Users/lhs/Desktop/mcr-worktrees/be-party-runtime",
+        "inodes": 4042,
+        "allocatedBytes": 72794112
+      },
+      {
+        "path": "/Users/lhs/Desktop/mcr/frontend/node_modules",
+        "inodes": 13420,
+        "allocatedBytes": 438317056
+      },
+      {
+        "path": "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64",
+        "inodes": 5888,
+        "allocatedBytes": 209088512
+      },
+      {
+        "path": "/Users/lhs/Desktop/mcr/.git",
+        "inodes": 4226,
+        "allocatedBytes": 1200033792
+      },
+      {
+        "path": "/Applications/Google Chrome.app",
+        "inodes": 1339,
+        "allocatedBytes": 1527132160
+      },
+      {
+        "path": "/Library/Frameworks/Python.framework/Versions/3.14",
+        "inodes": 28412,
+        "allocatedBytes": 1045037056
+      }
+    ],
+    "uniqueInodes": 80831,
+    "allocatedBytes": 6118072320
+  },
+  "nonresettingNewCarryBytes": 54525952,
+  "priorHistoricalMaxBytes": 6117408768,
+  "sourceSha256": {
+    "frontend/src/app/__tests__/parade-ink-private-pages/compare.py": "50b73ff256fd969434a3c73167089bf92adc841325d05809a9960e6e5c9ca147",
+    "frontend/src/app/__tests__/parade-ink-private-pages/guard_support.py": "01ff879b733e424dcf1edc23852adc7bf2639dcd43f53b7ba97eb9eb82668399",
+    "frontend/src/app/__tests__/parade-ink-private-pages/membership.py": "9334d811b726ea146af0ad64b4b1679f9f6ace38a3c8400305c077231c627fd0",
+    "frontend/src/app/__tests__/parade-ink-private-pages/native-round.py": "d371ca1c34300de8add1db4d861a9aeee7c1bc35729d183e69d01babf33b3a9e",
+    "frontend/src/app/__tests__/parade-ink-private-pages/pages.test.tsx": "cbe456fd6d0496aef3f965cd421d4d5b479a5727b34856f5cebd8020a395f195",
+    "frontend/src/app/__tests__/parade-ink-private-pages/preservation.test.tsx": "2aaf2b8d324f6af55815d0bca182daa516f613a07da3b9b9b7a8226a5a0b6e35",
+    "frontend/src/app/__tests__/parade-ink-private-pages/source-round.py": "d3f0ea5f02792f84819fded0e78c5bebdc1455d2bb8f5a1451bcf467ad9a752b",
+    "frontend/src/app/__tests__/parade-ink-private-pages/vitest.config.mjs": "df2877480471a4f3eac908326864d50531c166feb4ff03218855337da49052ec",
+    "frontend/src/app/__tests__/parade-ink-private-pages/watchdog.py": "44ebc3ccdca81253c6f639aeedaff2e46677535d1ba170f02db597ab7206d960",
+    "frontend/e2e/visual/parade-ink-private-pages/native.mjs": "f35d9fe9bf649cd97af4a7f5079e9fb75cbfd405d5e018deb2225afc396d0616",
+    "frontend/e2e/visual/parade-ink-private-pages/preview.html": "9a63facd350227a024b3a3a2d0ec4054e24ee19017d1bea6b0a1a55ceeed810e",
+    "frontend/e2e/visual/parade-ink-private-pages/preview.tsx": "66a4495288d853708d4df6b5db21ea4ae9aa98b1db4bf1d24d370e16d722f8a9",
+    "frontend/e2e/visual/parade-ink-private-pages/service.ts": "a579ddb80de7d0071871634f4094bfb307299cdc764708f19869322de026f210",
+    "frontend/e2e/visual/parade-ink-private-pages/vite.config.ts": "0219c97b4f00d45afd50526e90c13dbbb72b522b1b4745e2528b4b9501cbdf21",
+    "frontend/package.json": "0f7a05587bcf1af5f4d5d077a0c2d90011adc87e1036a61db9ef3acf37c8b7d3",
+    "frontend/pnpm-lock.yaml": "47ca44459819ad0e887d2f4f93394fdf3b1053b8f45edc9ceb0236981feee1f6",
+    "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node": "b6fb419f0f43bb2fbca273700294dd2f3b685a64b60e8417c295f47646a70e4a",
+    "/Library/Frameworks/Python.framework/Versions/3.14/bin/python3.14": "1192b994fbb50303c9df2cc97c9d63797d454c7f57f20ca682877c9e770429aa"
+  },
+  "commands": [],
+  "peakProcesses": 0,
+  "peakRssKiB": 0,
+  "peakWholeBytes": 6118072320,
+  "peakTempBytes": 0,
+  "peakOutputBytes": 0,
+  "error": "Independent secondary guard requested fail-closed cleanup",
+  "remainingOwnDescendants": [],
+  "finishedEpoch": 1793841673.743722,
+  "cleanup": {
+    "linkAbsent": true,
+    "tempAbsent": true,
+    "secondaryExited": true,
+    "beforeOriginalDeadline": true
+  }
+}

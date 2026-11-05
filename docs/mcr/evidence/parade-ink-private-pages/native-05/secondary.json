@@ -1,0 +1,9 @@
+{
+  "guard": "independent-secondary",
+  "startedEpoch": 1793845187.354264,
+  "samples": 13,
+  "peakProcesses": 12,
+  "peakRssKiB": 2913328,
+  "peakWholeBytes": 6172798976,
+  "finishedEpoch": 1793845208.520098
+}

@@ -1,0 +1,22 @@
+
+  VITE v8.1.3  ready in 252 ms
+
+  ➜  Local:   http://127.0.0.1:5382/
+[vite:css][postcss] @import must precede all other statements (besides @charset or empty @layer)
+50 |  }
+51 |  
+52 |  @import "./cozy-identity-backgrounds-v1.css";
+   |  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+53 |  @import "./cozy-community-backgrounds-v1.css";
+54 |  /* Shared PI01 presentation only. Component props and behavior remain incumbent. */
+[vite:css][postcss] @import must precede all other statements (besides @charset or empty @layer)
+51 |  
+52 |  @import "./cozy-identity-backgrounds-v1.css";
+53 |  @import "./cozy-community-backgrounds-v1.css";
+   |  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+54 |  /* Shared PI01 presentation only. Component props and behavior remain incumbent. */
+55 |  :root {
+11:32:49 AM [vite] (client) [console.warn] You are trying to use a blocker on a POP navigation to a location that was not created by @remix-run/router. This will fail silently in production. This can happen if you are navigating outside the router via `window.history.pushState`/`window.location.hash` instead of using router navigation APIs.  This can also happen if you are using createHashRouter and the user manually changes the URL.
+11:32:49 AM [vite] (client) [console.warn] You are trying to use a blocker on a POP navigation to a location that was not created by @remix-run/router. This will fail silently in production. This can happen if you are navigating outside the router via `window.history.pushState`/`window.location.hash` instead of using router navigation APIs.  This can also happen if you are using createHashRouter and the user manually changes the URL.
+11:32:49 AM [vite] (client) [console.warn] You are trying to use a blocker on a POP navigation to a location that was not created by @remix-run/router. This will fail silently in production. This can happen if you are navigating outside the router via `window.history.pushState`/`window.location.hash` instead of using router navigation APIs.  This can also happen if you are using createHashRouter and the user manually changes the URL.
+11:32:49 AM [vite] (client) [console.warn] You are trying to use a blocker on a POP navigation to a location that was not created by @remix-run/router. This will fail silently in production. This can happen if you are navigating outside the router via `window.history.pushState`/`window.location.hash` instead of using router navigation APIs.  This can also happen if you are using createHashRouter and the user manually changes the URL.

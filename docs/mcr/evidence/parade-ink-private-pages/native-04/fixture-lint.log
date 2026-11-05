@@ -1,0 +1,1 @@
+e2e/visual/parade-ink-private-pages/service.ts:39:11: warning unicorn(prefer-string-starts-ends-with): Prefer String#endsWith over a regex with a dollar sign. help: Replace `/\/me\/social-handles\/INSTAGRAM$/.test(path)` with `path.endsWith('/me/social-handles/INSTAGRAM')`.

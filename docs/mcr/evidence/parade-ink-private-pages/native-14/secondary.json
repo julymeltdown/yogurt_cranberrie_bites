@@ -1,0 +1,12 @@
+{
+  "guard": "independent-secondary",
+  "startedEpoch": 1793848781.308188,
+  "samples": 10,
+  "peakProcesses": 12,
+  "peakRssKiB": 2998960,
+  "peakWholeBytes": 6183149568,
+  "error": "resource controller identity mismatch: {\"owner\": \"01a1a232-21e2-75c2-8474-a5fa6ae895cd\", \"pid\": 30618, \"birth\": \"Thu Nov 5 12:19:56 2026\", \"expectedScript\": \"/private/tmp/mcr-auth232-be39-nonignored-05/guardian.py\", \"observedExecutable\": \"<defunct>\", \"observedCommandSHA256\": \"2cb5df3e483665ed13c3cc80b0123d0cac6d93548e8a334e7782fd2c63ab975e\", \"commandLength\": 9}",
+  "errorType": "AssertionError",
+  "errorTraceback": "Traceback (most recent call last):\n  File \"/Users/lhs/Desktop/mcr-worktrees/fe-reference-frame-footer/frontend/src/app/__tests__/parade-ink-private-pages/watchdog.py\", line 31, in <module>\n    value = sample(config)\n  File \"/Users/lhs/Desktop/mcr-worktrees/fe-reference-frame-footer/frontend/src/app/__tests__/parade-ink-private-pages/guard_support.py\", line 66, in sample\n    membership_value = membership.sample()\n  File \"/Users/lhs/Desktop/mcr-worktrees/fe-reference-frame-footer/frontend/src/app/__tests__/parade-ink-private-pages/membership.py\", line 215, in sample\n    result = _sample(proposed, before)\n  File \"/Users/lhs/Desktop/mcr-worktrees/fe-reference-frame-footer/frontend/src/app/__tests__/parade-ink-private-pages/membership.py\", line 119, in _sample\n    assert control['script'] in rows[pid]['command'], 'resource controller identity mismatch: ' + json.dumps(dict(owner=claim['ownerThreadId'], pid=pid, birth=rows[pid]['birth'], expectedScript=control['script'], observedExecutable=rows[pid]['command'].split()[0], observedCommandSHA256=hashlib.sha256(rows[pid]['command'].encode()).hexdigest(), commandLength=len(rows[pid]['command'])))\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError: resource controller identity mismatch: {\"owner\": \"01a1a232-21e2-75c2-8474-a5fa6ae895cd\", \"pid\": 30618, \"birth\": \"Thu Nov 5 12:19:56 2026\", \"expectedScript\": \"/private/tmp/mcr-auth232-be39-nonignored-05/guardian.py\", \"observedExecutable\": \"<defunct>\", \"observedCommandSHA256\": \"2cb5df3e483665ed13c3cc80b0123d0cac6d93548e8a334e7782fd2c63ab975e\", \"commandLength\": 9}\n",
+  "finishedEpoch": 1793848797.140322
+}

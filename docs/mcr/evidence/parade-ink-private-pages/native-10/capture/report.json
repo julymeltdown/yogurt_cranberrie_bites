@@ -1,0 +1,2140 @@
+{
+  "status": "FAIL",
+  "browser": "156.0.8078.80",
+  "startedAt": "2026-11-05T03:00:16.909Z",
+  "qualification": "ACTUAL_MAIN_CANONICAL_AUTH_PRODUCTION_READINESS_CONTROLLED_HTTP_C05_NOT_LIVE_OR_DEVICE",
+  "cases": [],
+  "screenshots": [],
+  "errors": [],
+  "retainedScreenshots": [
+    {
+      "file": "/Users/lhs/Desktop/mcr-worktrees/fe-reference-frame-footer/docs/mcr/evidence/parade-ink-private-pages/native-08/capture/social-360.png",
+      "capturedAt": "2026-11-05T02:32:49.479Z",
+      "metrics": {
+        "viewport": {
+          "width": 360,
+          "height": 844,
+          "dpr": 1
+        },
+        "root": {
+          "x": 11,
+          "y": 59,
+          "width": 338,
+          "height": 1097,
+          "font": "\"Parade Ink Text\", Arial, sans-serif",
+          "size": "18px",
+          "leading": "22px",
+          "color": "rgb(23, 23, 23)",
+          "background": "rgb(249, 249, 248)",
+          "backgroundImage": "none",
+          "border": "0px",
+          "radius": "0px"
+        },
+        "heading": {
+          "x": 17,
+          "y": 156,
+          "width": 326,
+          "height": 32,
+          "font": "\"Parade Ink Display\", \"Arial Narrow\", Arial, sans-serif",
+          "size": "26px",
+          "leading": "32px",
+          "color": "rgb(23, 23, 23)",
+          "background": "rgba(0, 0, 0, 0)",
+          "backgroundImage": "none",
+          "border": "0px",
+          "radius": "0px"
+        },
+        "bodyFont": "\"Parade Ink Text\", Arial, sans-serif",
+        "horizontalOverflow": false,
+        "controls": [
+          {
+            "label": "Social links",
+            "x": 17,
+            "y": 65,
+            "width": 161,
+            "height": 44,
+            "font": "\"Parade Ink Text\", Arial, sans-serif",
+            "size": "18px",
+            "leading": "22px",
+            "color": "rgb(255, 255, 255)",
+            "background": "rgb(23, 23, 23)",
+            "backgroundImage": "none",
+            "border": "2px",
+            "radius": "2px"
+          },
+          {
+            "label": "Requests",
+            "x": 182,
+            "y": 65,
+            "width": 161,
+            "height": 44,
+            "font": "\"Parade Ink Text\", Arial, sans-serif",
+            "size": "18px",
+            "leading": "22px",
+            "color": "rgb(23, 23, 23)",
+            "background": "rgba(0, 0, 0, 0)",
+            "backgroundImage": "none",
+            "border": "2px",
+            "radius": "2px"
+          },
+          {
+            "label": "Reload handle settings",
+            "x": 17,
+            "y": 410,
+            "width": 206.203125,
+            "height": 44,
+            "font": "\"Parade Ink Text\", Arial, sans-serif",
+            "size": "18px",
+            "leading": "22px",
+            "color": "rgb(23, 23, 23)",
+            "background": "rgb(249, 249, 248)",
+            "backgroundImage": "none",
+            "border": "2px",
+            "radius": "2px"
+          },
+          {
+            "label": "",
+            "x": 24,
+            "y": 589,
+            "width": 312,
+            "height": 44,
+            "font": "\"Parade Ink Text\", Arial, sans-serif",
+            "size": "18px",
+            "leading": "22px",
+            "color": "rgb(23, 23, 23)",
+            "background": "rgb(249, 249, 248)",
+            "backgroundImage": "none",
+            "border": "2px",
+            "radius": "2px"
+          },
+          {
+            "label": "Replace privately",
+            "x": 24,
+            "y": 725,
+            "width": 159.640625,
+            "height": 44,
+            "font": "\"Parade Ink Text\", Arial, sans-serif",
+            "size": "18px",
+            "leading": "22px",
+            "color": "rgb(84, 84, 84)",
+            "background": "rgb(227, 227, 224)",
+            "backgroundImage": "none",
+            "border": "2px",
+            "radius": "2px"
+          },
+          {
+            "label": "Remove Instagram",
+            "x": 24,
+            "y": 777,
+            "width": 174.421875,
+            "height": 44,
+            "font": "\"Parade Ink Text\", Arial, sans-serif",
+            "size": "18px",
+            "leading": "22px",
+            "color": "rgb(23, 23, 23)",
+            "background": "rgb(249, 249, 248)",
+            "backgroundImage": "none",
+            "border": "2px",
+            "radius": "2px"
+          },
+          {
+            "label": "",
+            "x": 24,
+            "y": 963,
+            "width": 312,
+            "height": 44,
+            "font": "\"Parade Ink Text\", Arial, sans-serif",
+            "size": "18px",
+            "leading": "22px",
+            "color": "rgb(23, 23, 23)",
+            "background": "rgb(249, 249, 248)",
+            "backgroundImage": "none",
+            "border": "2px",
+            "radius": "2px"
+          },
+          {
+            "label": "Save privately",
+            "x": 24,
+            "y": 1081,
+            "width": 134.25,
+            "height": 44,
+            "font": "\"Parade Ink Text\", Arial, sans-serif",
+            "size": "18px",
+            "leading": "22px",
+            "color": "rgb(84, 84, 84)",
+            "background": "rgb(227, 227, 224)",
+            "backgroundImage": "none",
+            "border": "2px",
+            "radius": "2px"
+          }
+        ],
+        "privacy": {
+          "leakedDiagnostic": false
+        }
+      },
+      "key": "social-360",
+      "sha256": "ba16f1fe20d265c5e6669807fc77527781efe0e4ee181d08e5f42b4e55c3a54f",
+      "retainedFrom": "native-08 individual completed capture, overall round FAIL preserved",
+      "ownerInspection": "Legible authored paper/ink typography, symmetric controls and rows; unpictured shared-component target, no page parity claim"
+    },
+    {
+      "file": "/Users/lhs/Desktop/mcr-worktrees/fe-reference-frame-footer/docs/mcr/evidence/parade-ink-private-pages/native-08/capture/requests-360.png",
+      "capturedAt": "2026-11-05T02:32:49.523Z",
+      "metrics": {
+        "viewport": {
+          "width": 360,
+          "height": 844,
+          "dpr": 1
+        },
+        "root": {
+          "x": 11,
+          "y": 59,
+          "width": 338,
+          "height": 542,
+          "font": "\"Parade Ink Text\", Arial, sans-serif",
+          "size": "18px",
+          "leading": "22px",
+          "color": "rgb(23, 23, 23)",
+          "background": "rgb(249, 249, 248)",
+          "backgroundImage": "none",
+          "border": "0px",
+          "radius": "0px"
+        },
+        "heading": {
+          "x": 17,
+          "y": 126,
+          "width": 326,
+          "height": 32,
+          "font": "\"Parade Ink Display\", \"Arial Narrow\", Arial, sans-serif",
+          "size": "26px",
+          "leading": "32px",
+          "color": "rgb(23, 23, 23)",
+          "background": "rgba(0, 0, 0, 0)",
+          "backgroundImage": "none",
+          "border": "0px",
+          "radius": "0px"
+        },
+        "bodyFont": "\"Parade Ink Text\", Arial, sans-serif",
+        "horizontalOverflow": false,
+        "controls": [
+          {
+            "label": "Social links",
+            "x": 17,
+            "y": 65,
+            "width": 161,
+            "height": 44,
+            "font": "\"Parade Ink Text\", Arial, sans-serif",
+            "size": "18px",
+            "leading": "22px",
+            "color": "rgb(23, 23, 23)",
+            "background": "rgba(0, 0, 0, 0)",
+            "backgroundImage": "none",
+            "border": "2px",
+            "radius": "2px"
+          },
+          {
+            "label": "Requests",
+            "x": 182,
+            "y": 65,
+            "width": 161,
+            "height": 44,
+            "font": "\"Parade Ink Text\", Arial, sans-serif",
+            "size": "18px",
+            "leading": "22px",
+            "color": "rgb(255, 255, 255)",
+            "background": "rgb(23, 23, 23)",
+            "backgroundImage": "none",
+            "border": "2px",
+            "radius": "2px"
+          },
+          {
+            "label": "IncomingOutgoing",
+            "x": 93.03125,
+            "y": 328,
+            "width": 115,
+            "height": 44,
+            "font": "\"Parade Ink Text\", Arial, sans-serif",
+            "size": "18px",
+            "leading": "normal",
+            "color": "rgb(23, 23, 23)",
+            "background": "rgb(249, 249, 248)",
+            "backgroundImage": "none",
+            "border": "2px",
+            "radius": "2px"
+          },
+          {
+            "label": "Refresh requests",
+            "x": 17,
+            "y": 388,
+            "width": 159.6875,
+            "height": 44,
+            "font": "\"Parade Ink Text\", Arial, sans-serif",
+            "size": "18px",
+            "leading": "22px",
+            "color": "rgb(23, 23, 23)",
+            "background": "rgb(249, 249, 248)",
+            "backgroundImage": "none",
+            "border": "2px",
+            "radius": "2px"
+          },
+          {
+            "label": "Open request",
+            "x": 17,
+            "y": 524,
+            "width": 130.796875,
+            "height": 44,
+            "font": "\"Parade Ink Text\", Arial, sans-serif",
+            "size": "18px",
+            "leading": "22px",
+            "color": "rgb(23, 23, 23)",
+            "background": "rgb(249, 249, 248)",
+            "backgroundImage": "none",
+            "border": "2px",
+            "radius": "2px"
+          }
+        ],
+        "privacy": {
+          "leakedDiagnostic": false
+        }
+      },
+      "key": "requests-360",
+      "sha256": "d51b68aa156772aab1ec2a6280a7a39d5538d95273cdcb1efdcb1c6b635a3cfb",
+      "retainedFrom": "native-08 individual completed capture, overall round FAIL preserved",
+      "ownerInspection": "Legible authored paper/ink typography, symmetric controls and rows; unpictured shared-component target, no page parity claim"
+    },
+    {
+      "file": "/Users/lhs/Desktop/mcr-worktrees/fe-reference-frame-footer/docs/mcr/evidence/parade-ink-private-pages/native-08/capture/age-360.png",
+      "capturedAt": "2026-11-05T02:32:49.574Z",
+      "metrics": {
+        "viewport": {
+          "width": 360,
+          "height": 844,
+          "dpr": 1
+        },
+        "root": {
+          "x": 11,
+          "y": 59,
+          "width": 338,
+          "height": 556,
+          "font": "\"Parade Ink Text\", Arial, sans-serif",
+          "size": "18px",
+          "leading": "22px",
+          "color": "rgb(23, 23, 23)",
+          "background": "rgb(249, 249, 248)",
+          "backgroundImage": "none",
+          "border": "0px",
+          "radius": "0px"
+        },
+        "heading": {
+          "x": 17,
+          "y": 73,
+          "width": 326,
+          "height": 32,
+          "font": "\"Parade Ink Display\", \"Arial Narrow\", Arial, sans-serif",
+          "size": "26px",
+          "leading": "32px",
+          "color": "rgb(23, 23, 23)",
+          "background": "rgba(0, 0, 0, 0)",
+          "backgroundImage": "none",
+          "border": "0px",
+          "radius": "0px"
+        },
+        "bodyFont": "\"Parade Ink Text\", Arial, sans-serif",
+        "horizontalOverflow": false,
+        "controls": [
+          {
+            "label": "Start verification",
+            "x": 17,
+            "y": 343,
+            "width": 155.546875,
+            "height": 44,
+            "font": "\"Parade Ink Text\", Arial, sans-serif",
+            "size": "18px",
+            "leading": "22px",
+            "color": "rgb(84, 84, 84)",
+            "background": "rgb(227, 227, 224)",
+            "backgroundImage": "none",
+            "border": "2px",
+            "radius": "2px"
+          },
+          {
+            "label": "Refresh age status",
+            "x": 17,
+            "y": 399,
+            "width": 174.03125,
+            "height": 44,
+            "font": "\"Parade Ink Text\", Arial, sans-serif",
+            "size": "18px",
+            "leading": "22px",
+            "color": "rgb(23, 23, 23)",
+            "background": "rgb(249, 249, 248)",
+            "backgroundImage": "none",
+            "border": "2px",
+            "radius": "2px"
+          },
+          {
+            "label": "Back to people",
+            "x": 17,
+            "y": 559,
+            "width": 118.40625,
+            "height": 44,
+            "font": "\"Parade Ink Text\", Arial, sans-serif",
+            "size": "18px",
+            "leading": "22px",
+            "color": "rgb(23, 23, 23)",
+            "background": "rgba(0, 0, 0, 0)",
+            "backgroundImage": "none",
+            "border": "0px",
+            "radius": "0px"
+          }
+        ],
+        "privacy": {
+          "leakedDiagnostic": false
+        }
+      },
+      "key": "age-360",
+      "sha256": "328c2fb237b1ee6e9feaf74d9fb38cc74fccb3951899254cc0eb09c91cdaca10",
+      "retainedFrom": "native-08 individual completed capture, overall round FAIL preserved",
+      "ownerInspection": "Legible authored paper/ink typography, symmetric controls and rows; unpictured shared-component target, no page parity claim"
+    },
+    {
+      "file": "/Users/lhs/Desktop/mcr-worktrees/fe-reference-frame-footer/docs/mcr/evidence/parade-ink-private-pages/native-09/capture/blocks-360.png",
+      "capturedAt": "2026-11-05T02:52:23.751Z",
+      "metrics": {
+        "viewport": {
+          "width": 360,
+          "height": 844,
+          "dpr": 1
+        },
+        "root": {
+          "x": 11,
+          "y": 59,
+          "width": 338,
+          "height": 287,
+          "font": "\"Parade Ink Text\", Arial, sans-serif",
+          "size": "18px",
+          "leading": "22px",
+          "color": "rgb(23, 23, 23)",
+          "background": "rgb(249, 249, 248)",
+          "backgroundImage": "none",
+          "border": "0px",
+          "radius": "0px"
+        },
+        "heading": {
+          "x": 17,
+          "y": 125,
+          "width": 326,
+          "height": 32,
+          "font": "\"Parade Ink Display\", \"Arial Narrow\", Arial, sans-serif",
+          "size": "26px",
+          "leading": "32px",
+          "color": "rgb(23, 23, 23)",
+          "background": "rgba(0, 0, 0, 0)",
+          "backgroundImage": "none",
+          "border": "0px",
+          "radius": "0px"
+        },
+        "bodyFont": "\"Parade Ink Text\", Arial, sans-serif",
+        "horizontalOverflow": false,
+        "controls": [
+          {
+            "label": "Back",
+            "x": 17,
+            "y": 69,
+            "width": 63.5625,
+            "height": 44,
+            "font": "\"Parade Ink Text\", Arial, sans-serif",
+            "size": "18px",
+            "leading": "22px",
+            "color": "rgb(23, 23, 23)",
+            "background": "rgb(249, 249, 248)",
+            "backgroundImage": "none",
+            "border": "2px",
+            "radius": "2px"
+          },
+          {
+            "label": "Unblock user",
+            "x": 17,
+            "y": 269,
+            "width": 128.234375,
+            "height": 44,
+            "font": "\"Parade Ink Text\", Arial, sans-serif",
+            "size": "18px",
+            "leading": "22px",
+            "color": "rgb(23, 23, 23)",
+            "background": "rgb(249, 249, 248)",
+            "backgroundImage": "none",
+            "border": "2px",
+            "radius": "2px"
+          }
+        ],
+        "privacy": {
+          "leakedDiagnostic": false
+        }
+      },
+      "key": "blocks-360",
+      "sha256": "c8be247f9d2454c8361e80803b57f6031bf6547132e988b20c7913f889fb26b1",
+      "retainedFrom": "native-09 completed individual capture; whole round FAIL preserved",
+      "ownerInspection": "Pending final owner comparison; actual capture metrics PASS"
+    },
+    {
+      "file": "/Users/lhs/Desktop/mcr-worktrees/fe-reference-frame-footer/docs/mcr/evidence/parade-ink-private-pages/native-09/capture/account-360.png",
+      "capturedAt": "2026-11-05T02:52:23.814Z",
+      "metrics": {
+        "viewport": {
+          "width": 360,
+          "height": 844,
+          "dpr": 1
+        },
+        "root": {
+          "x": 11,
+          "y": 59,
+          "width": 338,
+          "height": 454,
+          "font": "\"Parade Ink Text\", Arial, sans-serif",
+          "size": "18px",
+          "leading": "22px",
+          "color": "rgb(23, 23, 23)",
+          "background": "rgb(249, 249, 248)",
+          "backgroundImage": "none",
+          "border": "0px",
+          "radius": "0px"
+        },
+        "heading": {
+          "x": 17,
+          "y": 125,
+          "width": 326,
+          "height": 32,
+          "font": "\"Parade Ink Display\", \"Arial Narrow\", Arial, sans-serif",
+          "size": "26px",
+          "leading": "32px",
+          "color": "rgb(23, 23, 23)",
+          "background": "rgba(0, 0, 0, 0)",
+          "backgroundImage": "none",
+          "border": "0px",
+          "radius": "0px"
+        },
+        "bodyFont": "\"Parade Ink Text\", Arial, sans-serif",
+        "horizontalOverflow": false,
+        "controls": [
+          {
+            "label": "Back",
+            "x": 17,
+            "y": 69,
+            "width": 63.5625,
+            "height": 44,
+            "font": "\"Parade Ink Text\", Arial, sans-serif",
+            "size": "18px",
+            "leading": "22px",
+            "color": "rgb(23, 23, 23)",
+            "background": "rgb(249, 249, 248)",
+            "backgroundImage": "none",
+            "border": "2px",
+            "radius": "2px"
+          },
+          {
+            "label": "Sign out",
+            "x": 17,
+            "y": 221,
+            "width": 89.65625,
+            "height": 44,
+            "font": "\"Parade Ink Text\", Arial, sans-serif",
+            "size": "18px",
+            "leading": "22px",
+            "color": "rgb(23, 23, 23)",
+            "background": "rgb(249, 249, 248)",
+            "backgroundImage": "none",
+            "border": "2px",
+            "radius": "2px"
+          },
+          {
+            "label": "Request account deletion",
+            "x": 17,
+            "y": 393,
+            "width": 227.1875,
+            "height": 44,
+            "font": "\"Parade Ink Text\", Arial, sans-serif",
+            "size": "18px",
+            "leading": "22px",
+            "color": "rgb(23, 23, 23)",
+            "background": "rgb(249, 249, 248)",
+            "backgroundImage": "none",
+            "border": "2px",
+            "radius": "2px"
+          },
+          {
+            "label": "Check deletion progress",
+            "x": 17,
+            "y": 453,
+            "width": 217.203125,
+            "height": 44,
+            "font": "\"Parade Ink Text\", Arial, sans-serif",
+            "size": "18px",
+            "leading": "22px",
+            "color": "rgb(23, 23, 23)",
+            "background": "rgb(249, 249, 248)",
+            "backgroundImage": "none",
+            "border": "2px",
+            "radius": "2px"
+          }
+        ],
+        "privacy": {
+          "leakedDiagnostic": false
+        }
+      },
+      "key": "account-360",
+      "sha256": "8c6b3ffbcd45f0bca223a8ff6910af96cc27ca7718e6318592b14f0b3d420c38",
+      "retainedFrom": "native-09 completed individual capture; whole round FAIL preserved",
+      "ownerInspection": "Pending final owner comparison; actual capture metrics PASS"
+    },
+    {
+      "file": "/Users/lhs/Desktop/mcr-worktrees/fe-reference-frame-footer/docs/mcr/evidence/parade-ink-private-pages/native-09/capture/inbox-360.png",
+      "capturedAt": "2026-11-05T02:52:23.867Z",
+      "metrics": {
+        "viewport": {
+          "width": 360,
+          "height": 844,
+          "dpr": 1
+        },
+        "root": {
+          "x": 11,
+          "y": 59,
+          "width": 338,
+          "height": 538,
+          "font": "\"Parade Ink Text\", Arial, sans-serif",
+          "size": "18px",
+          "leading": "22px",
+          "color": "rgb(23, 23, 23)",
+          "background": "rgb(249, 249, 248)",
+          "backgroundImage": "none",
+          "border": "0px",
+          "radius": "0px"
+        },
+        "heading": {
+          "x": 17,
+          "y": 97,
+          "width": 326,
+          "height": 32,
+          "font": "\"Parade Ink Display\", \"Arial Narrow\", Arial, sans-serif",
+          "size": "26px",
+          "leading": "32px",
+          "color": "rgb(23, 23, 23)",
+          "background": "rgba(0, 0, 0, 0)",
+          "backgroundImage": "none",
+          "border": "0px",
+          "radius": "0px"
+        },
+        "bodyFont": "\"Parade Ink Text\", Arial, sans-serif",
+        "horizontalOverflow": false,
+        "controls": [
+          {
+            "label": "Refresh inbox",
+            "x": 150.0625,
+            "y": 197,
+            "width": 133.484375,
+            "height": 44,
+            "font": "\"Parade Ink Text\", Arial, sans-serif",
+            "size": "18px",
+            "leading": "22px",
+            "color": "rgb(23, 23, 23)",
+            "background": "rgb(249, 249, 248)",
+            "backgroundImage": "none",
+            "border": "2px",
+            "radius": "2px"
+          },
+          {
+            "label": "Mark all as read",
+            "x": 17,
+            "y": 257,
+            "width": 151.171875,
+            "height": 44,
+            "font": "\"Parade Ink Text\", Arial, sans-serif",
+            "size": "18px",
+            "leading": "22px",
+            "color": "rgb(23, 23, 23)",
+            "background": "rgb(249, 249, 248)",
+            "backgroundImage": "none",
+            "border": "2px",
+            "radius": "2px"
+          },
+          {
+            "label": "Open update",
+            "x": 24,
+            "y": 520,
+            "width": 125.859375,
+            "height": 44,
+            "font": "\"Parade Ink Text\", Arial, sans-serif",
+            "size": "18px",
+            "leading": "22px",
+            "color": "rgb(23, 23, 23)",
+            "background": "rgb(249, 249, 248)",
+            "backgroundImage": "none",
+            "border": "2px",
+            "radius": "2px"
+          },
+          {
+            "label": "Mark as read",
+            "x": 159.859375,
+            "y": 520,
+            "width": 128.171875,
+            "height": 44,
+            "font": "\"Parade Ink Text\", Arial, sans-serif",
+            "size": "18px",
+            "leading": "22px",
+            "color": "rgb(23, 23, 23)",
+            "background": "rgb(249, 249, 248)",
+            "backgroundImage": "none",
+            "border": "2px",
+            "radius": "2px"
+          }
+        ],
+        "privacy": {
+          "leakedDiagnostic": false
+        }
+      },
+      "key": "inbox-360",
+      "sha256": "bbc103f3fc42386cc8f31580233fb50b8ce92a09d8406b8d9a3f5024add0c0ee",
+      "retainedFrom": "native-09 completed individual capture; whole round FAIL preserved",
+      "ownerInspection": "Pending final owner comparison; actual capture metrics PASS"
+    },
+    {
+      "file": "/Users/lhs/Desktop/mcr-worktrees/fe-reference-frame-footer/docs/mcr/evidence/parade-ink-private-pages/native-09/capture/archive-360.png",
+      "capturedAt": "2026-11-05T02:52:24.733Z",
+      "metrics": {
+        "viewport": {
+          "width": 360,
+          "height": 844,
+          "dpr": 1
+        },
+        "root": {
+          "x": 16,
+          "y": 16,
+          "width": 328,
+          "height": 1026,
+          "font": "\"Parade Ink Text\", Arial, sans-serif",
+          "size": "18px",
+          "leading": "22px",
+          "color": "rgb(23, 23, 23)",
+          "background": "rgb(249, 249, 248)",
+          "backgroundImage": "none",
+          "border": "0px",
+          "radius": "0px"
+        },
+        "heading": {
+          "x": 30,
+          "y": 70,
+          "width": 300,
+          "height": 32,
+          "font": "\"Parade Ink Display\", \"Arial Narrow\", Arial, sans-serif",
+          "size": "26px",
+          "leading": "32px",
+          "color": "rgb(23, 23, 23)",
+          "background": "rgba(0, 0, 0, 0)",
+          "backgroundImage": "none",
+          "border": "0px",
+          "radius": "0px"
+        },
+        "bodyFont": "\"Parade Ink Text\", Arial, sans-serif",
+        "horizontalOverflow": false,
+        "controls": [
+          {
+            "label": "Reload archive",
+            "x": 30,
+            "y": 240,
+            "width": 141.28125,
+            "height": 44,
+            "font": "\"Parade Ink Text\", Arial, sans-serif",
+            "size": "18px",
+            "leading": "22px",
+            "color": "rgb(23, 23, 23)",
+            "background": "rgb(249, 249, 248)",
+            "backgroundImage": "none",
+            "border": "2px",
+            "radius": "2px"
+          },
+          {
+            "label": "View archived image 1 for post 00000000-0000-4000-8000-000000000012",
+            "x": 29,
+            "y": 871,
+            "width": 203.78125,
+            "height": 44,
+            "font": "\"Parade Ink Text\", Arial, sans-serif",
+            "size": "18px",
+            "leading": "22px",
+            "color": "rgb(23, 23, 23)",
+            "background": "rgb(249, 249, 248)",
+            "backgroundImage": "none",
+            "border": "2px",
+            "radius": "2px"
+          },
+          {
+            "label": "Next page",
+            "x": 22,
+            "y": 940,
+            "width": 105.234375,
+            "height": 44,
+            "font": "\"Parade Ink Text\", Arial, sans-serif",
+            "size": "18px",
+            "leading": "22px",
+            "color": "rgb(23, 23, 23)",
+            "background": "rgb(249, 249, 248)",
+            "backgroundImage": "none",
+            "border": "2px",
+            "radius": "2px"
+          }
+        ],
+        "privacy": {
+          "leakedDiagnostic": false
+        }
+      },
+      "key": "archive-360",
+      "sha256": "bfe05f5bd4f28f5f3bf56435822e73aba9d51ff7b09139dc4aba33e68eaed200",
+      "retainedFrom": "native-09 completed individual capture; whole round FAIL preserved",
+      "ownerInspection": "Pending final owner comparison; actual capture metrics PASS"
+    },
+    {
+      "file": "/Users/lhs/Desktop/mcr-worktrees/fe-reference-frame-footer/docs/mcr/evidence/parade-ink-private-pages/native-09/capture/social-390.png",
+      "capturedAt": "2026-11-05T02:52:27.116Z",
+      "metrics": {
+        "viewport": {
+          "width": 390,
+          "height": 844,
+          "dpr": 1
+        },
+        "root": {
+          "x": 11,
+          "y": 59,
+          "width": 368,
+          "height": 1097,
+          "font": "\"Parade Ink Text\", Arial, sans-serif",
+          "size": "18px",
+          "leading": "22px",
+          "color": "rgb(23, 23, 23)",
+          "background": "rgb(249, 249, 248)",
+          "backgroundImage": "none",
+          "border": "0px",
+          "radius": "0px"
+        },
+        "heading": {
+          "x": 17,
+          "y": 156,
+          "width": 356,
+          "height": 32,
+          "font": "\"Parade Ink Display\", \"Arial Narrow\", Arial, sans-serif",
+          "size": "26px",
+          "leading": "32px",
+          "color": "rgb(23, 23, 23)",
+          "background": "rgba(0, 0, 0, 0)",
+          "backgroundImage": "none",
+          "border": "0px",
+          "radius": "0px"
+        },
+        "bodyFont": "\"Parade Ink Text\", Arial, sans-serif",
+        "horizontalOverflow": false,
+        "controls": [
+          {
+            "label": "Social links",
+            "x": 17,
+            "y": 65,
+            "width": 176,
+            "height": 44,
+            "font": "\"Parade Ink Text\", Arial, sans-serif",
+            "size": "18px",
+            "leading": "22px",
+            "color": "rgb(255, 255, 255)",
+            "background": "rgb(23, 23, 23)",
+            "backgroundImage": "none",
+            "border": "2px",
+            "radius": "2px"
+          },
+          {
+            "label": "Requests",
+            "x": 197,
+            "y": 65,
+            "width": 176,
+            "height": 44,
+            "font": "\"Parade Ink Text\", Arial, sans-serif",
+            "size": "18px",
+            "leading": "22px",
+            "color": "rgb(23, 23, 23)",
+            "background": "rgba(0, 0, 0, 0)",
+            "backgroundImage": "none",
+            "border": "2px",
+            "radius": "2px"
+          },
+          {
+            "label": "Reload handle settings",
+            "x": 17,
+            "y": 410,
+            "width": 206.203125,
+            "height": 44,
+            "font": "\"Parade Ink Text\", Arial, sans-serif",
+            "size": "18px",
+            "leading": "22px",
+            "color": "rgb(23, 23, 23)",
+            "background": "rgb(249, 249, 248)",
+            "backgroundImage": "none",
+            "border": "2px",
+            "radius": "2px"
+          },
+          {
+            "label": "",
+            "x": 24,
+            "y": 589,
+            "width": 342,
+            "height": 44,
+            "font": "\"Parade Ink Text\", Arial, sans-serif",
+            "size": "18px",
+            "leading": "22px",
+            "color": "rgb(23, 23, 23)",
+            "background": "rgb(249, 249, 248)",
+            "backgroundImage": "none",
+            "border": "2px",
+            "radius": "2px"
+          },
+          {
+            "label": "Replace privately",
+            "x": 24,
+            "y": 725,
+            "width": 159.640625,
+            "height": 44,
+            "font": "\"Parade Ink Text\", Arial, sans-serif",
+            "size": "18px",
+            "leading": "22px",
+            "color": "rgb(84, 84, 84)",
+            "background": "rgb(227, 227, 224)",
+            "backgroundImage": "none",
+            "border": "2px",
+            "radius": "2px"
+          },
+          {
+            "label": "Remove Instagram",
+            "x": 24,
+            "y": 777,
+            "width": 174.421875,
+            "height": 44,
+            "font": "\"Parade Ink Text\", Arial, sans-serif",
+            "size": "18px",
+            "leading": "22px",
+            "color": "rgb(23, 23, 23)",
+            "background": "rgb(249, 249, 248)",
+            "backgroundImage": "none",
+            "border": "2px",
+            "radius": "2px"
+          },
+          {
+            "label": "",
+            "x": 24,
+            "y": 963,
+            "width": 342,
+            "height": 44,
+            "font": "\"Parade Ink Text\", Arial, sans-serif",
+            "size": "18px",
+            "leading": "22px",
+            "color": "rgb(23, 23, 23)",
+            "background": "rgb(249, 249, 248)",
+            "backgroundImage": "none",
+            "border": "2px",
+            "radius": "2px"
+          },
+          {
+            "label": "Save privately",
+            "x": 24,
+            "y": 1081,
+            "width": 134.25,
+            "height": 44,
+            "font": "\"Parade Ink Text\", Arial, sans-serif",
+            "size": "18px",
+            "leading": "22px",
+            "color": "rgb(84, 84, 84)",
+            "background": "rgb(227, 227, 224)",
+            "backgroundImage": "none",
+            "border": "2px",
+            "radius": "2px"
+          }
+        ],
+        "privacy": {
+          "leakedDiagnostic": false
+        }
+      },
+      "key": "social-390",
+      "sha256": "fdf4410e9854d43c394ce76495eaf9c2b33735ead699aeca0c55c04136cb11c2",
+      "retainedFrom": "native-09 completed individual capture; whole round FAIL preserved",
+      "ownerInspection": "Pending final owner comparison; actual capture metrics PASS"
+    },
+    {
+      "file": "/Users/lhs/Desktop/mcr-worktrees/fe-reference-frame-footer/docs/mcr/evidence/parade-ink-private-pages/native-09/capture/requests-390.png",
+      "capturedAt": "2026-11-05T02:52:27.176Z",
+      "metrics": {
+        "viewport": {
+          "width": 390,
+          "height": 844,
+          "dpr": 1
+        },
+        "root": {
+          "x": 11,
+          "y": 59,
+          "width": 368,
+          "height": 542,
+          "font": "\"Parade Ink Text\", Arial, sans-serif",
+          "size": "18px",
+          "leading": "22px",
+          "color": "rgb(23, 23, 23)",
+          "background": "rgb(249, 249, 248)",
+          "backgroundImage": "none",
+          "border": "0px",
+          "radius": "0px"
+        },
+        "heading": {
+          "x": 17,
+          "y": 126,
+          "width": 356,
+          "height": 32,
+          "font": "\"Parade Ink Display\", \"Arial Narrow\", Arial, sans-serif",
+          "size": "26px",
+          "leading": "32px",
+          "color": "rgb(23, 23, 23)",
+          "background": "rgba(0, 0, 0, 0)",
+          "backgroundImage": "none",
+          "border": "0px",
+          "radius": "0px"
+        },
+        "bodyFont": "\"Parade Ink Text\", Arial, sans-serif",
+        "horizontalOverflow": false,
+        "controls": [
+          {
+            "label": "Social links",
+            "x": 17,
+            "y": 65,
+            "width": 176,
+            "height": 44,
+            "font": "\"Parade Ink Text\", Arial, sans-serif",
+            "size": "18px",
+            "leading": "22px",
+            "color": "rgb(23, 23, 23)",
+            "background": "rgba(0, 0, 0, 0)",
+            "backgroundImage": "none",
+            "border": "2px",
+            "radius": "2px"
+          },
+          {
+            "label": "Requests",
+            "x": 197,
+            "y": 65,
+            "width": 176,
+            "height": 44,
+            "font": "\"Parade Ink Text\", Arial, sans-serif",
+            "size": "18px",
+            "leading": "22px",
+            "color": "rgb(255, 255, 255)",
+            "background": "rgb(23, 23, 23)",
+            "backgroundImage": "none",
+            "border": "2px",
+            "radius": "2px"
+          },
+          {
+            "label": "IncomingOutgoing",
+            "x": 93.03125,
+            "y": 328,
+            "width": 115,
+            "height": 44,
+            "font": "\"Parade Ink Text\", Arial, sans-serif",
+            "size": "18px",
+            "leading": "normal",
+            "color": "rgb(23, 23, 23)",
+            "background": "rgb(249, 249, 248)",
+            "backgroundImage": "none",
+            "border": "2px",
+            "radius": "2px"
+          },
+          {
+            "label": "Refresh requests",
+            "x": 17,
+            "y": 388,
+            "width": 159.6875,
+            "height": 44,
+            "font": "\"Parade Ink Text\", Arial, sans-serif",
+            "size": "18px",
+            "leading": "22px",
+            "color": "rgb(23, 23, 23)",
+            "background": "rgb(249, 249, 248)",
+            "backgroundImage": "none",
+            "border": "2px",
+            "radius": "2px"
+          },
+          {
+            "label": "Open request",
+            "x": 17,
+            "y": 524,
+            "width": 130.796875,
+            "height": 44,
+            "font": "\"Parade Ink Text\", Arial, sans-serif",
+            "size": "18px",
+            "leading": "22px",
+            "color": "rgb(23, 23, 23)",
+            "background": "rgb(249, 249, 248)",
+            "backgroundImage": "none",
+            "border": "2px",
+            "radius": "2px"
+          }
+        ],
+        "privacy": {
+          "leakedDiagnostic": false
+        }
+      },
+      "key": "requests-390",
+      "sha256": "98452f5131334df8d6a7ded00184943a6ef0b730f1c59388db027494449eda98",
+      "retainedFrom": "native-09 completed individual capture; whole round FAIL preserved",
+      "ownerInspection": "Pending final owner comparison; actual capture metrics PASS"
+    },
+    {
+      "file": "/Users/lhs/Desktop/mcr-worktrees/fe-reference-frame-footer/docs/mcr/evidence/parade-ink-private-pages/native-09/capture/age-390.png",
+      "capturedAt": "2026-11-05T02:52:27.224Z",
+      "metrics": {
+        "viewport": {
+          "width": 390,
+          "height": 844,
+          "dpr": 1
+        },
+        "root": {
+          "x": 11,
+          "y": 59,
+          "width": 368,
+          "height": 500,
+          "font": "\"Parade Ink Text\", Arial, sans-serif",
+          "size": "18px",
+          "leading": "22px",
+          "color": "rgb(23, 23, 23)",
+          "background": "rgb(249, 249, 248)",
+          "backgroundImage": "none",
+          "border": "0px",
+          "radius": "0px"
+        },
+        "heading": {
+          "x": 17,
+          "y": 73,
+          "width": 356,
+          "height": 32,
+          "font": "\"Parade Ink Display\", \"Arial Narrow\", Arial, sans-serif",
+          "size": "26px",
+          "leading": "32px",
+          "color": "rgb(23, 23, 23)",
+          "background": "rgba(0, 0, 0, 0)",
+          "backgroundImage": "none",
+          "border": "0px",
+          "radius": "0px"
+        },
+        "bodyFont": "\"Parade Ink Text\", Arial, sans-serif",
+        "horizontalOverflow": false,
+        "controls": [
+          {
+            "label": "Start verification",
+            "x": 17,
+            "y": 343,
+            "width": 155.546875,
+            "height": 44,
+            "font": "\"Parade Ink Text\", Arial, sans-serif",
+            "size": "18px",
+            "leading": "22px",
+            "color": "rgb(84, 84, 84)",
+            "background": "rgb(227, 227, 224)",
+            "backgroundImage": "none",
+            "border": "2px",
+            "radius": "2px"
+          },
+          {
+            "label": "Refresh age status",
+            "x": 182.546875,
+            "y": 343,
+            "width": 174.03125,
+            "height": 44,
+            "font": "\"Parade Ink Text\", Arial, sans-serif",
+            "size": "18px",
+            "leading": "22px",
+            "color": "rgb(23, 23, 23)",
+            "background": "rgb(249, 249, 248)",
+            "backgroundImage": "none",
+            "border": "2px",
+            "radius": "2px"
+          },
+          {
+            "label": "Back to people",
+            "x": 17,
+            "y": 503,
+            "width": 118.40625,
+            "height": 44,
+            "font": "\"Parade Ink Text\", Arial, sans-serif",
+            "size": "18px",
+            "leading": "22px",
+            "color": "rgb(23, 23, 23)",
+            "background": "rgba(0, 0, 0, 0)",
+            "backgroundImage": "none",
+            "border": "0px",
+            "radius": "0px"
+          }
+        ],
+        "privacy": {
+          "leakedDiagnostic": false
+        }
+      },
+      "key": "age-390",
+      "sha256": "741b0bd18aa189efc52bf9c45a73f9f0a26fd2fc52592281bf77727f00030296",
+      "retainedFrom": "native-09 completed individual capture; whole round FAIL preserved",
+      "ownerInspection": "Pending final owner comparison; actual capture metrics PASS"
+    },
+    {
+      "file": "/Users/lhs/Desktop/mcr-worktrees/fe-reference-frame-footer/docs/mcr/evidence/parade-ink-private-pages/native-09/capture/blocks-390.png",
+      "capturedAt": "2026-11-05T02:52:27.291Z",
+      "metrics": {
+        "viewport": {
+          "width": 390,
+          "height": 844,
+          "dpr": 1
+        },
+        "root": {
+          "x": 11,
+          "y": 59,
+          "width": 368,
+          "height": 287,
+          "font": "\"Parade Ink Text\", Arial, sans-serif",
+          "size": "18px",
+          "leading": "22px",
+          "color": "rgb(23, 23, 23)",
+          "background": "rgb(249, 249, 248)",
+          "backgroundImage": "none",
+          "border": "0px",
+          "radius": "0px"
+        },
+        "heading": {
+          "x": 17,
+          "y": 125,
+          "width": 356,
+          "height": 32,
+          "font": "\"Parade Ink Display\", \"Arial Narrow\", Arial, sans-serif",
+          "size": "26px",
+          "leading": "32px",
+          "color": "rgb(23, 23, 23)",
+          "background": "rgba(0, 0, 0, 0)",
+          "backgroundImage": "none",
+          "border": "0px",
+          "radius": "0px"
+        },
+        "bodyFont": "\"Parade Ink Text\", Arial, sans-serif",
+        "horizontalOverflow": false,
+        "controls": [
+          {
+            "label": "Back",
+            "x": 17,
+            "y": 69,
+            "width": 63.5625,
+            "height": 44,
+            "font": "\"Parade Ink Text\", Arial, sans-serif",
+            "size": "18px",
+            "leading": "22px",
+            "color": "rgb(23, 23, 23)",
+            "background": "rgb(249, 249, 248)",
+            "backgroundImage": "none",
+            "border": "2px",
+            "radius": "2px"
+          },
+          {
+            "label": "Unblock user",
+            "x": 17,
+            "y": 269,
+            "width": 128.234375,
+            "height": 44,
+            "font": "\"Parade Ink Text\", Arial, sans-serif",
+            "size": "18px",
+            "leading": "22px",
+            "color": "rgb(23, 23, 23)",
+            "background": "rgb(249, 249, 248)",
+            "backgroundImage": "none",
+            "border": "2px",
+            "radius": "2px"
+          }
+        ],
+        "privacy": {
+          "leakedDiagnostic": false
+        }
+      },
+      "key": "blocks-390",
+      "sha256": "4f5751ea11621c0711089ecdae79b0d52c26b5a29fad28c5489997d5b7e051c7",
+      "retainedFrom": "native-09 completed individual capture; whole round FAIL preserved",
+      "ownerInspection": "Pending final owner comparison; actual capture metrics PASS"
+    },
+    {
+      "file": "/Users/lhs/Desktop/mcr-worktrees/fe-reference-frame-footer/docs/mcr/evidence/parade-ink-private-pages/native-09/capture/account-390.png",
+      "capturedAt": "2026-11-05T02:52:27.361Z",
+      "metrics": {
+        "viewport": {
+          "width": 390,
+          "height": 844,
+          "dpr": 1
+        },
+        "root": {
+          "x": 11,
+          "y": 59,
+          "width": 368,
+          "height": 454,
+          "font": "\"Parade Ink Text\", Arial, sans-serif",
+          "size": "18px",
+          "leading": "22px",
+          "color": "rgb(23, 23, 23)",
+          "background": "rgb(249, 249, 248)",
+          "backgroundImage": "none",
+          "border": "0px",
+          "radius": "0px"
+        },
+        "heading": {
+          "x": 17,
+          "y": 125,
+          "width": 356,
+          "height": 32,
+          "font": "\"Parade Ink Display\", \"Arial Narrow\", Arial, sans-serif",
+          "size": "26px",
+          "leading": "32px",
+          "color": "rgb(23, 23, 23)",
+          "background": "rgba(0, 0, 0, 0)",
+          "backgroundImage": "none",
+          "border": "0px",
+          "radius": "0px"
+        },
+        "bodyFont": "\"Parade Ink Text\", Arial, sans-serif",
+        "horizontalOverflow": false,
+        "controls": [
+          {
+            "label": "Back",
+            "x": 17,
+            "y": 69,
+            "width": 63.5625,
+            "height": 44,
+            "font": "\"Parade Ink Text\", Arial, sans-serif",
+            "size": "18px",
+            "leading": "22px",
+            "color": "rgb(23, 23, 23)",
+            "background": "rgb(249, 249, 248)",
+            "backgroundImage": "none",
+            "border": "2px",
+            "radius": "2px"
+          },
+          {
+            "label": "Sign out",
+            "x": 17,
+            "y": 221,
+            "width": 89.65625,
+            "height": 44,
+            "font": "\"Parade Ink Text\", Arial, sans-serif",
+            "size": "18px",
+            "leading": "22px",
+            "color": "rgb(23, 23, 23)",
+            "background": "rgb(249, 249, 248)",
+            "backgroundImage": "none",
+            "border": "2px",
+            "radius": "2px"
+          },
+          {
+            "label": "Request account deletion",
+            "x": 17,
+            "y": 393,
+            "width": 227.1875,
+            "height": 44,
+            "font": "\"Parade Ink Text\", Arial, sans-serif",
+            "size": "18px",
+            "leading": "22px",
+            "color": "rgb(23, 23, 23)",
+            "background": "rgb(249, 249, 248)",
+            "backgroundImage": "none",
+            "border": "2px",
+            "radius": "2px"
+          },
+          {
+            "label": "Check deletion progress",
+            "x": 17,
+            "y": 453,
+            "width": 217.203125,
+            "height": 44,
+            "font": "\"Parade Ink Text\", Arial, sans-serif",
+            "size": "18px",
+            "leading": "22px",
+            "color": "rgb(23, 23, 23)",
+            "background": "rgb(249, 249, 248)",
+            "backgroundImage": "none",
+            "border": "2px",
+            "radius": "2px"
+          }
+        ],
+        "privacy": {
+          "leakedDiagnostic": false
+        }
+      },
+      "key": "account-390",
+      "sha256": "0a1bb6b7dd486bff5dc2566a79926bfe5aefc56426d4939c2b4bc692110cc18c",
+      "retainedFrom": "native-09 completed individual capture; whole round FAIL preserved",
+      "ownerInspection": "Pending final owner comparison; actual capture metrics PASS"
+    },
+    {
+      "file": "/Users/lhs/Desktop/mcr-worktrees/fe-reference-frame-footer/docs/mcr/evidence/parade-ink-private-pages/native-09/capture/inbox-390.png",
+      "capturedAt": "2026-11-05T02:52:27.423Z",
+      "metrics": {
+        "viewport": {
+          "width": 390,
+          "height": 844,
+          "dpr": 1
+        },
+        "root": {
+          "x": 11,
+          "y": 59,
+          "width": 368,
+          "height": 538,
+          "font": "\"Parade Ink Text\", Arial, sans-serif",
+          "size": "18px",
+          "leading": "22px",
+          "color": "rgb(23, 23, 23)",
+          "background": "rgb(249, 249, 248)",
+          "backgroundImage": "none",
+          "border": "0px",
+          "radius": "0px"
+        },
+        "heading": {
+          "x": 17,
+          "y": 97,
+          "width": 356,
+          "height": 32,
+          "font": "\"Parade Ink Display\", \"Arial Narrow\", Arial, sans-serif",
+          "size": "26px",
+          "leading": "32px",
+          "color": "rgb(23, 23, 23)",
+          "background": "rgba(0, 0, 0, 0)",
+          "backgroundImage": "none",
+          "border": "0px",
+          "radius": "0px"
+        },
+        "bodyFont": "\"Parade Ink Text\", Arial, sans-serif",
+        "horizontalOverflow": false,
+        "controls": [
+          {
+            "label": "Refresh inbox",
+            "x": 150.0625,
+            "y": 197,
+            "width": 133.484375,
+            "height": 44,
+            "font": "\"Parade Ink Text\", Arial, sans-serif",
+            "size": "18px",
+            "leading": "22px",
+            "color": "rgb(23, 23, 23)",
+            "background": "rgb(249, 249, 248)",
+            "backgroundImage": "none",
+            "border": "2px",
+            "radius": "2px"
+          },
+          {
+            "label": "Mark all as read",
+            "x": 17,
+            "y": 257,
+            "width": 151.171875,
+            "height": 44,
+            "font": "\"Parade Ink Text\", Arial, sans-serif",
+            "size": "18px",
+            "leading": "22px",
+            "color": "rgb(23, 23, 23)",
+            "background": "rgb(249, 249, 248)",
+            "backgroundImage": "none",
+            "border": "2px",
+            "radius": "2px"
+          },
+          {
+            "label": "Open update",
+            "x": 24,
+            "y": 520,
+            "width": 125.859375,
+            "height": 44,
+            "font": "\"Parade Ink Text\", Arial, sans-serif",
+            "size": "18px",
+            "leading": "22px",
+            "color": "rgb(23, 23, 23)",
+            "background": "rgb(249, 249, 248)",
+            "backgroundImage": "none",
+            "border": "2px",
+            "radius": "2px"
+          },
+          {
+            "label": "Mark as read",
+            "x": 159.859375,
+            "y": 520,
+            "width": 128.171875,
+            "height": 44,
+            "font": "\"Parade Ink Text\", Arial, sans-serif",
+            "size": "18px",
+            "leading": "22px",
+            "color": "rgb(23, 23, 23)",
+            "background": "rgb(249, 249, 248)",
+            "backgroundImage": "none",
+            "border": "2px",
+            "radius": "2px"
+          }
+        ],
+        "privacy": {
+          "leakedDiagnostic": false
+        }
+      },
+      "key": "inbox-390",
+      "sha256": "df3f2758df44d2aa515f4a418eadc45c2207a14890643defdd49a91ed190b0c1",
+      "retainedFrom": "native-09 completed individual capture; whole round FAIL preserved",
+      "ownerInspection": "Pending final owner comparison; actual capture metrics PASS"
+    },
+    {
+      "file": "/Users/lhs/Desktop/mcr-worktrees/fe-reference-frame-footer/docs/mcr/evidence/parade-ink-private-pages/native-09/capture/social-short-input-390.png",
+      "capturedAt": "2026-11-05T02:52:27.539Z",
+      "metrics": {
+        "viewport": {
+          "width": 390,
+          "height": 480,
+          "dpr": 1
+        },
+        "root": {
+          "x": 11,
+          "y": -288,
+          "width": 368,
+          "height": 1093,
+          "font": "\"Parade Ink Text\", Arial, sans-serif",
+          "size": "18px",
+          "leading": "22px",
+          "color": "rgb(23, 23, 23)",
+          "background": "rgb(249, 249, 248)",
+          "backgroundImage": "none",
+          "border": "0px",
+          "radius": "0px"
+        },
+        "heading": {
+          "x": 17,
+          "y": -191,
+          "width": 356,
+          "height": 32,
+          "font": "\"Parade Ink Display\", \"Arial Narrow\", Arial, sans-serif",
+          "size": "26px",
+          "leading": "32px",
+          "color": "rgb(23, 23, 23)",
+          "background": "rgba(0, 0, 0, 0)",
+          "backgroundImage": "none",
+          "border": "0px",
+          "radius": "0px"
+        },
+        "bodyFont": "\"Parade Ink Text\", Arial, sans-serif",
+        "horizontalOverflow": false,
+        "controls": [
+          {
+            "label": "Social links",
+            "x": 17,
+            "y": -282,
+            "width": 176,
+            "height": 44,
+            "font": "\"Parade Ink Text\", Arial, sans-serif",
+            "size": "18px",
+            "leading": "22px",
+            "color": "rgb(255, 255, 255)",
+            "background": "rgb(23, 23, 23)",
+            "backgroundImage": "none",
+            "border": "2px",
+            "radius": "2px"
+          },
+          {
+            "label": "Requests",
+            "x": 197,
+            "y": -282,
+            "width": 176,
+            "height": 44,
+            "font": "\"Parade Ink Text\", Arial, sans-serif",
+            "size": "18px",
+            "leading": "22px",
+            "color": "rgb(23, 23, 23)",
+            "background": "rgba(0, 0, 0, 0)",
+            "backgroundImage": "none",
+            "border": "2px",
+            "radius": "2px"
+          },
+          {
+            "label": "Reload handle settings",
+            "x": 17,
+            "y": 63,
+            "width": 206.203125,
+            "height": 44,
+            "font": "\"Parade Ink Text\", Arial, sans-serif",
+            "size": "18px",
+            "leading": "22px",
+            "color": "rgb(23, 23, 23)",
+            "background": "rgb(249, 249, 248)",
+            "backgroundImage": "none",
+            "border": "2px",
+            "radius": "2px"
+          },
+          {
+            "label": "",
+            "x": 24,
+            "y": 242,
+            "width": 342,
+            "height": 44,
+            "font": "\"Parade Ink Text\", Arial, sans-serif",
+            "size": "18px",
+            "leading": "22px",
+            "color": "rgb(23, 23, 23)",
+            "background": "rgb(249, 249, 248)",
+            "backgroundImage": "none",
+            "border": "2px",
+            "radius": "2px"
+          },
+          {
+            "label": "Replace privately",
+            "x": 24,
+            "y": 378,
+            "width": 159.640625,
+            "height": 44,
+            "font": "\"Parade Ink Text\", Arial, sans-serif",
+            "size": "18px",
+            "leading": "22px",
+            "color": "rgb(255, 255, 255)",
+            "background": "rgb(146, 37, 50)",
+            "backgroundImage": "none",
+            "border": "2px",
+            "radius": "2px"
+          },
+          {
+            "label": "Remove Instagram",
+            "x": 24,
+            "y": 430,
+            "width": 174.421875,
+            "height": 44,
+            "font": "\"Parade Ink Text\", Arial, sans-serif",
+            "size": "18px",
+            "leading": "22px",
+            "color": "rgb(23, 23, 23)",
+            "background": "rgb(249, 249, 248)",
+            "backgroundImage": "none",
+            "border": "2px",
+            "radius": "2px"
+          },
+          {
+            "label": "",
+            "x": 24,
+            "y": 616,
+            "width": 342,
+            "height": 44,
+            "font": "\"Parade Ink Text\", Arial, sans-serif",
+            "size": "18px",
+            "leading": "22px",
+            "color": "rgb(23, 23, 23)",
+            "background": "rgb(249, 249, 248)",
+            "backgroundImage": "none",
+            "border": "2px",
+            "radius": "2px"
+          },
+          {
+            "label": "Save privately",
+            "x": 24,
+            "y": 734,
+            "width": 134.25,
+            "height": 44,
+            "font": "\"Parade Ink Text\", Arial, sans-serif",
+            "size": "18px",
+            "leading": "22px",
+            "color": "rgb(84, 84, 84)",
+            "background": "rgb(227, 227, 224)",
+            "backgroundImage": "none",
+            "border": "2px",
+            "radius": "2px"
+          }
+        ],
+        "privacy": {
+          "leakedDiagnostic": false
+        }
+      },
+      "key": "social-short-input-390",
+      "sha256": "aa5bfadae250f949a362ee67cab57ea9f2996d5abee3a05aac8ed527f06dfe14",
+      "retainedFrom": "native-09 completed individual capture; whole round FAIL preserved",
+      "ownerInspection": "Pending final owner comparison; actual capture metrics PASS"
+    },
+    {
+      "file": "/Users/lhs/Desktop/mcr-worktrees/fe-reference-frame-footer/docs/mcr/evidence/parade-ink-private-pages/native-09/capture/requests-consent-390.png",
+      "capturedAt": "2026-11-05T02:52:27.791Z",
+      "metrics": {
+        "viewport": {
+          "width": 390,
+          "height": 844,
+          "dpr": 1
+        },
+        "root": {
+          "x": 11,
+          "y": 59,
+          "width": 368,
+          "height": 758,
+          "font": "\"Parade Ink Text\", Arial, sans-serif",
+          "size": "18px",
+          "leading": "22px",
+          "color": "rgb(23, 23, 23)",
+          "background": "rgb(249, 249, 248)",
+          "backgroundImage": "none",
+          "border": "0px",
+          "radius": "0px"
+        },
+        "heading": {
+          "x": 17,
+          "y": 186,
+          "width": 356,
+          "height": 32,
+          "font": "\"Parade Ink Display\", \"Arial Narrow\", Arial, sans-serif",
+          "size": "26px",
+          "leading": "32px",
+          "color": "rgb(23, 23, 23)",
+          "background": "rgba(0, 0, 0, 0)",
+          "backgroundImage": "none",
+          "border": "0px",
+          "radius": "0px"
+        },
+        "bodyFont": "\"Parade Ink Text\", Arial, sans-serif",
+        "horizontalOverflow": false,
+        "controls": [
+          {
+            "label": "Social links",
+            "x": 17,
+            "y": 65,
+            "width": 176,
+            "height": 44,
+            "font": "\"Parade Ink Text\", Arial, sans-serif",
+            "size": "18px",
+            "leading": "22px",
+            "color": "rgb(23, 23, 23)",
+            "background": "rgba(0, 0, 0, 0)",
+            "backgroundImage": "none",
+            "border": "2px",
+            "radius": "2px"
+          },
+          {
+            "label": "Requests",
+            "x": 197,
+            "y": 65,
+            "width": 176,
+            "height": 44,
+            "font": "\"Parade Ink Text\", Arial, sans-serif",
+            "size": "18px",
+            "leading": "22px",
+            "color": "rgb(255, 255, 255)",
+            "background": "rgb(23, 23, 23)",
+            "backgroundImage": "none",
+            "border": "2px",
+            "radius": "2px"
+          },
+          {
+            "label": "Back to requests",
+            "x": 17,
+            "y": 130,
+            "width": 158.109375,
+            "height": 44,
+            "font": "\"Parade Ink Text\", Arial, sans-serif",
+            "size": "18px",
+            "leading": "22px",
+            "color": "rgb(23, 23, 23)",
+            "background": "rgb(249, 249, 248)",
+            "backgroundImage": "none",
+            "border": "2px",
+            "radius": "2px"
+          },
+          {
+            "label": "Approve selected platforms",
+            "x": 17,
+            "y": 653,
+            "width": 244.734375,
+            "height": 44,
+            "font": "\"Parade Ink Text\", Arial, sans-serif",
+            "size": "18px",
+            "leading": "22px",
+            "color": "rgb(255, 255, 255)",
+            "background": "rgb(146, 37, 50)",
+            "backgroundImage": "none",
+            "border": "2px",
+            "radius": "2px"
+          },
+          {
+            "label": "Reject request",
+            "x": 17,
+            "y": 705,
+            "width": 138.625,
+            "height": 44,
+            "font": "\"Parade Ink Text\", Arial, sans-serif",
+            "size": "18px",
+            "leading": "22px",
+            "color": "rgb(23, 23, 23)",
+            "background": "rgb(249, 249, 248)",
+            "backgroundImage": "none",
+            "border": "2px",
+            "radius": "2px"
+          },
+          {
+            "label": "Revoke sharing",
+            "x": 17,
+            "y": 757,
+            "width": 145.859375,
+            "height": 44,
+            "font": "\"Parade Ink Text\", Arial, sans-serif",
+            "size": "18px",
+            "leading": "22px",
+            "color": "rgb(23, 23, 23)",
+            "background": "rgb(249, 249, 248)",
+            "backgroundImage": "none",
+            "border": "2px",
+            "radius": "2px"
+          }
+        ],
+        "privacy": {
+          "leakedDiagnostic": false
+        }
+      },
+      "key": "requests-consent-390",
+      "sha256": "e5be97f3bc38449e7d715f43558a2c3683aaacd422d9dc41245ba416ba909ac7",
+      "retainedFrom": "native-09 completed individual capture; whole round FAIL preserved",
+      "ownerInspection": "Pending final owner comparison; actual capture metrics PASS"
+    },
+    {
+      "file": "/Users/lhs/Desktop/mcr-worktrees/fe-reference-frame-footer/docs/mcr/evidence/parade-ink-private-pages/native-09/capture/request-reveal-390.png",
+      "capturedAt": "2026-11-05T02:52:27.959Z",
+      "metrics": {
+        "viewport": {
+          "width": 390,
+          "height": 844,
+          "dpr": 1
+        },
+        "root": {
+          "x": 11,
+          "y": 59,
+          "width": 368,
+          "height": 895,
+          "font": "\"Parade Ink Text\", Arial, sans-serif",
+          "size": "18px",
+          "leading": "22px",
+          "color": "rgb(23, 23, 23)",
+          "background": "rgb(249, 249, 248)",
+          "backgroundImage": "none",
+          "border": "0px",
+          "radius": "0px"
+        },
+        "heading": {
+          "x": 17,
+          "y": 186,
+          "width": 356,
+          "height": 32,
+          "font": "\"Parade Ink Display\", \"Arial Narrow\", Arial, sans-serif",
+          "size": "26px",
+          "leading": "32px",
+          "color": "rgb(23, 23, 23)",
+          "background": "rgba(0, 0, 0, 0)",
+          "backgroundImage": "none",
+          "border": "0px",
+          "radius": "0px"
+        },
+        "bodyFont": "\"Parade Ink Text\", Arial, sans-serif",
+        "horizontalOverflow": false,
+        "controls": [
+          {
+            "label": "Social links",
+            "x": 17,
+            "y": 65,
+            "width": 176,
+            "height": 44,
+            "font": "\"Parade Ink Text\", Arial, sans-serif",
+            "size": "18px",
+            "leading": "22px",
+            "color": "rgb(23, 23, 23)",
+            "background": "rgba(0, 0, 0, 0)",
+            "backgroundImage": "none",
+            "border": "2px",
+            "radius": "2px"
+          },
+          {
+            "label": "Requests",
+            "x": 197,
+            "y": 65,
+            "width": 176,
+            "height": 44,
+            "font": "\"Parade Ink Text\", Arial, sans-serif",
+            "size": "18px",
+            "leading": "22px",
+            "color": "rgb(255, 255, 255)",
+            "background": "rgb(23, 23, 23)",
+            "backgroundImage": "none",
+            "border": "2px",
+            "radius": "2px"
+          },
+          {
+            "label": "Back to requests",
+            "x": 17,
+            "y": 130,
+            "width": 158.109375,
+            "height": 44,
+            "font": "\"Parade Ink Text\", Arial, sans-serif",
+            "size": "18px",
+            "leading": "22px",
+            "color": "rgb(23, 23, 23)",
+            "background": "rgb(249, 249, 248)",
+            "backgroundImage": "none",
+            "border": "2px",
+            "radius": "2px"
+          },
+          {
+            "label": "Reveal Instagram",
+            "x": 24,
+            "y": 563,
+            "width": 162.5625,
+            "height": 44,
+            "font": "\"Parade Ink Text\", Arial, sans-serif",
+            "size": "18px",
+            "leading": "22px",
+            "color": "rgb(23, 23, 23)",
+            "background": "rgb(249, 249, 248)",
+            "backgroundImage": "none",
+            "border": "2px",
+            "radius": "2px"
+          },
+          {
+            "label": "Revoke sharing",
+            "x": 17,
+            "y": 630,
+            "width": 145.859375,
+            "height": 44,
+            "font": "\"Parade Ink Text\", Arial, sans-serif",
+            "size": "18px",
+            "leading": "22px",
+            "color": "rgb(23, 23, 23)",
+            "background": "rgb(249, 249, 248)",
+            "backgroundImage": "none",
+            "border": "2px",
+            "radius": "2px"
+          },
+          {
+            "label": "Hide account name",
+            "x": 17,
+            "y": 856,
+            "width": 179.5625,
+            "height": 44,
+            "font": "\"Parade Ink Text\", Arial, sans-serif",
+            "size": "18px",
+            "leading": "22px",
+            "color": "rgb(23, 23, 23)",
+            "background": "rgb(249, 249, 248)",
+            "backgroundImage": "none",
+            "border": "2px",
+            "radius": "2px"
+          }
+        ],
+        "privacy": {
+          "leakedDiagnostic": false
+        }
+      },
+      "key": "request-reveal-390",
+      "sha256": "50360d6de4168e33a0655744d6f41caae72742f9e35756add89c716e5b836d54",
+      "retainedFrom": "native-09 completed individual capture; whole round FAIL preserved",
+      "ownerInspection": "Pending final owner comparison; actual capture metrics PASS"
+    }
+  ],
+  "reusedCaptures": [
+    "social-360"
+  ],
+  "failure": {
+    "stage": "seven normal routes 360",
+    "error": "Error: expect(locator).toHaveAttribute(expected) failed\n\nLocator:  locator('[data-mcr-shell]')\nExpected: \"full\"\nReceived: \"half\"\nTimeout:  5000ms\n\nCall log:\n  - Expect \"to.have.attribute.value\" with timeout 5000ms\n  - waiting for locator('[data-mcr-shell]')\n    14 × locator resolved to <div data-mcr-shell=\"\" class=\"world-shell\" data-panel-size=\"half\" data-mcr-theme=\"REVENGE\">…</div>\n       - unexpected value \"half\"\n",
+    "text": "Skip to content\nSelected fixture fan\nSynthetic contract fixture\nREVENGE\nPARADE\nDANGER\n\nRevenge selected.\n\nInteract\n⌖\nRecenter\nControls & help\n\nMovement paused.\n\nWorld connected.\n\nVirtual position is not physical arrival.\n\nREQUESTS\nSocial links\nRequests\nREQUESTS\n\nSharing lets the other person see your selected account name. It does not follow anyone automatically. Revoking stops future access here; it cannot erase a name someone already saw or copied. Unblocking does not restore previous consent.\n\nDirection \nIncoming\nOutgoing\nRefresh requests\n\nPENDING · Instagram\n\nExpires 11/8/2099, 9:00:00 AM\n\nOpen request\nWORLD\nFEED\nMEET\nGIFTS\nWALL\nME",
+    "state": {
+      "path": "/me/requests",
+      "requests": [
+        {
+          "path": "/api/auth/capabilities",
+          "url": "http://127.0.0.1:5382/api/auth/capabilities",
+          "method": "GET",
+          "key": null,
+          "baseline": false,
+          "authorized": false,
+          "cache": "no-store",
+          "credentials": "same-origin"
+        },
+        {
+          "path": "/api/auth/login",
+          "url": "http://127.0.0.1:5382/api/auth/login",
+          "method": "POST",
+          "key": null,
+          "baseline": false,
+          "authorized": false,
+          "cache": "no-store",
+          "credentials": "same-origin"
+        },
+        {
+          "path": "/api/auth/enrollment/admission",
+          "url": "http://127.0.0.1:5382/api/auth/enrollment/admission",
+          "method": "GET",
+          "key": null,
+          "baseline": false,
+          "authorized": true,
+          "cache": "no-store",
+          "credentials": "include"
+        },
+        {
+          "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/service-policy",
+          "url": "http://127.0.0.1:5382/api/concert/events/00000000-0000-4000-8000-000000000201/service-policy?client_version=0.1.0&client_release=aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+          "method": "GET",
+          "key": null,
+          "baseline": false,
+          "authorized": true,
+          "cache": "no-store",
+          "credentials": "same-origin"
+        },
+        {
+          "path": "/api/auth/enrollment/admission",
+          "url": "http://127.0.0.1:5382/api/auth/enrollment/admission",
+          "method": "GET",
+          "key": null,
+          "baseline": false,
+          "authorized": true,
+          "cache": "no-store",
+          "credentials": "include"
+        },
+        {
+          "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/bootstrap",
+          "url": "http://127.0.0.1:5382/api/concert/events/00000000-0000-4000-8000-000000000201/bootstrap",
+          "method": "GET",
+          "key": null,
+          "baseline": false,
+          "authorized": true,
+          "cache": "no-store",
+          "credentials": "same-origin"
+        },
+        {
+          "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/rooms",
+          "url": "http://127.0.0.1:5382/api/concert/events/00000000-0000-4000-8000-000000000201/rooms",
+          "method": "GET",
+          "key": null,
+          "baseline": false,
+          "authorized": true,
+          "cache": "no-store",
+          "credentials": "same-origin"
+        },
+        {
+          "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/places",
+          "url": "http://127.0.0.1:5382/api/concert/events/00000000-0000-4000-8000-000000000201/places",
+          "method": "GET",
+          "key": null,
+          "baseline": false,
+          "authorized": true,
+          "cache": "no-store",
+          "credentials": "same-origin"
+        },
+        {
+          "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/world-tickets",
+          "url": "http://127.0.0.1:5382/api/concert/events/00000000-0000-4000-8000-000000000201/world-tickets",
+          "method": "POST",
+          "key": null,
+          "baseline": false,
+          "authorized": true,
+          "cache": "no-store",
+          "credentials": "same-origin"
+        },
+        {
+          "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/intros",
+          "url": "http://127.0.0.1:5382/api/concert/events/00000000-0000-4000-8000-000000000201/intros?limit=20",
+          "method": "GET",
+          "key": null,
+          "baseline": true,
+          "authorized": true,
+          "cache": "no-store",
+          "credentials": "same-origin"
+        },
+        {
+          "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/me/intro",
+          "url": "http://127.0.0.1:5382/api/concert/events/00000000-0000-4000-8000-000000000201/me/intro",
+          "method": "GET",
+          "key": null,
+          "baseline": true,
+          "authorized": true,
+          "cache": "no-store",
+          "credentials": "same-origin"
+        },
+        {
+          "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/me/age-status",
+          "url": "http://127.0.0.1:5382/api/concert/events/00000000-0000-4000-8000-000000000201/me/age-status",
+          "method": "GET",
+          "key": null,
+          "baseline": true,
+          "authorized": true,
+          "cache": "no-store",
+          "credentials": "same-origin"
+        },
+        {
+          "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/me/notifications",
+          "url": "http://127.0.0.1:5382/api/concert/events/00000000-0000-4000-8000-000000000201/me/notifications?limit=20&unread_only=false",
+          "method": "GET",
+          "key": null,
+          "baseline": true,
+          "authorized": true,
+          "cache": "no-store",
+          "credentials": "same-origin"
+        },
+        {
+          "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/me/social-handles",
+          "url": "http://127.0.0.1:5382/api/concert/events/00000000-0000-4000-8000-000000000201/me/social-handles",
+          "method": "GET",
+          "key": null,
+          "baseline": true,
+          "authorized": true,
+          "cache": "no-store",
+          "credentials": "same-origin"
+        },
+        {
+          "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/me/social-requests",
+          "url": "http://127.0.0.1:5382/api/concert/events/00000000-0000-4000-8000-000000000201/me/social-requests?direction=INCOMING&limit=20",
+          "method": "GET",
+          "key": null,
+          "baseline": true,
+          "authorized": true,
+          "cache": "no-store",
+          "credentials": "same-origin"
+        },
+        {
+          "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/me/social-handles",
+          "url": "http://127.0.0.1:5382/api/concert/events/00000000-0000-4000-8000-000000000201/me/social-handles",
+          "method": "GET",
+          "key": null,
+          "baseline": true,
+          "authorized": true,
+          "cache": "no-store",
+          "credentials": "same-origin"
+        },
+        {
+          "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/me/social-requests",
+          "url": "http://127.0.0.1:5382/api/concert/events/00000000-0000-4000-8000-000000000201/me/social-requests?direction=INCOMING&limit=20",
+          "method": "GET",
+          "key": null,
+          "baseline": true,
+          "authorized": true,
+          "cache": "no-store",
+          "credentials": "same-origin"
+        }
+      ],
+      "frames": [
+        {
+          "type": "snapshot",
+          "streamId": "00000000-0000-4000-8000-000000000020"
+        },
+        {
+          "type": "policy.baseline",
+          "streamId": "00000000-0000-4000-8000-000000000020",
+          "policyRevision": 1
+        }
+      ],
+      "baselineEnabled": true,
+      "policyRevision": 1,
+      "sockets": 1,
+      "activeSockets": 1,
+      "peakSockets": 1,
+      "peakCanvases": 1,
+      "canvases": 1,
+      "sameHost": true,
+      "sameCanvas": true
+    }
+  },
+  "finishedAt": "2026-11-05T03:00:24.931Z"
+}

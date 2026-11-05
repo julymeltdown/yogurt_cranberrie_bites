@@ -1,0 +1,39 @@
+{
+  "observedAtEpoch": 1793848268.8148181,
+  "psSnapshotSHA256": "a466d6e977cc9ea0ca610b125bb5c22afc05d7a6a730f5d8fb29376088b3d9ea",
+  "owners": [
+    "01a1a00c-2690-7bc0-94fc-52609655ea83",
+    "01a1a153-1227-7e72-801f-a2a6b91981e1",
+    "01a1a213-61d6-7a20-a8e7-476649312f8c"
+  ],
+  "ordinaryActualPids": [
+    26507
+  ],
+  "reservedProcesses": 64,
+  "reservedRSSBytes": 17179869184,
+  "actualPids": [
+    5445,
+    5455,
+    26507,
+    65439,
+    65605,
+    65924,
+    65941,
+    66104,
+    66151,
+    66161,
+    66318,
+    66335,
+    66402,
+    66409,
+    66413,
+    66414,
+    66581,
+    66714,
+    99401
+  ],
+  "actualRSSBytes": 7158743040,
+  "otherNewUpperBytes": 4917044663,
+  "receiptSnapshotAttempts": 1,
+  "observedRecordTransitions": []
+}

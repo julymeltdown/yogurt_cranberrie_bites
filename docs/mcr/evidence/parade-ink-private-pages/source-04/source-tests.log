@@ -1,0 +1,528 @@
+
+ RUN  v4.1.9 /Users/lhs/Desktop/mcr-worktrees/fe-reference-frame-footer/frontend
+
+ ❯ src/app/__tests__/parade-ink-private-pages/pages.test.tsx (6 tests | 5 failed) 5406ms
+   × default Social links keeps names private, validates input, and binds removal to explicit current confirmation 1022ms
+   × default Requests preserves explicit reciprocal consent, approved metadata and secret cleanup on return 1006ms
+   × default Age & privacy reflects real decoded expiry and preserves the unavailable provider action 1006ms
+   × default Inbox confirms one read-state command and keeps an inaccessible target safe 1006ms
+   × default Blocked users retains cancellation, one confirmed unblock and no restored consent 1006ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 5 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  src/app/__tests__/parade-ink-private-pages/pages.test.tsx > default Social links keeps names private, validates input, and binds removal to explicit current confirmation
+TestingLibraryElementError: Unable to find a label with the text of: Replacement Instagram account name
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div>[39m
+    [36m<main[39m
+      [33mclass[39m=[32m"auth-enrollment"[39m
+      [33mid[39m=[32m"main"[39m
+      [33mtabindex[39m=[32m"-1"[39m
+    [36m>[39m
+      [36m<a[39m
+        [33mclass[39m=[32m"enrollment-home"[39m
+        [33mdata-discover[39m=[32m"true"[39m
+        [33mhref[39m=[32m"/"[39m
+      [36m>[39m
+        [0mMCR Concert World[0m
+      [36m</a>[39m
+      [36m<h1>[39m
+        [0mWorld entry paused[0m
+      [36m</h1>[39m
+      [36m<p[39m
+        [33mrole[39m=[32m"status"[39m
+      [36m>[39m
+        [0mWe could not confirm the current account requirements. Your identity has not been replaced.[0m
+      [36m</p>[39m
+      [36m<button[39m
+        [33mtype[39m=[32m"button"[39m
+      [36m>[39m
+        [0mCheck entry again[0m
+      [36m</button>[39m
+      [36m<button[39m
+        [33mtype[39m=[32m"button"[39m
+      [36m>[39m
+        [0mSign out[0m
+      [36m</button>[39m
+      [36m<a[39m
+        [33mclass[39m=[32m"enrollment-link"[39m
+        [33mdata-discover[39m=[32m"true"[39m
+        [33mhref[39m=[32m"/"[39m
+      [36m>[39m
+        [0mBack to home[0m
+      [36m</a>[39m
+    [36m</main>[39m
+  [36m</div>[39m
+[36m</body>[39m
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div>[39m
+    [36m<main[39m
+      [33mclass[39m=[32m"auth-enrollment"[39m
+      [33mid[39m=[32m"main"[39m
+      [33mtabindex[39m=[32m"-1"[39m
+    [36m>[39m
+      [36m<a[39m
+        [33mclass[39m=[32m"enrollment-home"[39m
+        [33mdata-discover[39m=[32m"true"[39m
+        [33mhref[39m=[32m"/"[39m
+      [36m>[39m
+        [0mMCR Concert World[0m
+      [36m</a>[39m
+      [36m<h1>[39m
+        [0mWorld entry paused[0m
+      [36m</h1>[39m
+      [36m<p[39m
+        [33mrole[39m=[32m"status"[39m
+      [36m>[39m
+        [0mWe could not confirm the current account requirements. Your identity has not been replaced.[0m
+      [36m</p>[39m
+      [36m<button[39m
+        [33mtype[39m=[32m"button"[39m
+      [36m>[39m
+        [0mCheck entry again[0m
+      [36m</button>[39m
+      [36m<button[39m
+        [33mtype[39m=[32m"button"[39m
+      [36m>[39m
+        [0mSign out[0m
+      [36m</button>[39m
+      [36m<a[39m
+        [33mclass[39m=[32m"enrollment-link"[39m
+        [33mdata-discover[39m=[32m"true"[39m
+        [33mhref[39m=[32m"/"[39m
+      [36m>[39m
+        [0mBack to home[0m
+      [36m</a>[39m
+    [36m</main>[39m
+  [36m</div>[39m
+[36m</body>[39m
+ ❯ waitForWrapper ../../../mcr/frontend/node_modules/.pnpm/@testing-library+dom@10.4.1/node_modules/@testing-library/dom/dist/wait-for.js:163:27
+ ❯ ../../../mcr/frontend/node_modules/.pnpm/@testing-library+dom@10.4.1/node_modules/@testing-library/dom/dist/query-helpers.js:86:33
+ ❯ src/app/__tests__/parade-ink-private-pages/pages.test.tsx:26:30
+     24| it('default Social links keeps names private, validates input, and bin…
+     25|   const f = setup('/me/social')
+     26|   const input = await screen.findByLabelText('Replacement Instagram ac…
+       |                              ^
+     27|   expect(input.closest('.pi-private-social')).not.toBeNull()
+     28|   expect(document.body.textContent).not.toContain('@controlled_fixture…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/5]⎯
+
+ FAIL  src/app/__tests__/parade-ink-private-pages/pages.test.tsx > default Requests preserves explicit reciprocal consent, approved metadata and secret cleanup on return
+TestingLibraryElementError: Unable to find role="button" and name "Open request"
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div>[39m
+    [36m<main[39m
+      [33mclass[39m=[32m"auth-enrollment"[39m
+      [33mid[39m=[32m"main"[39m
+      [33mtabindex[39m=[32m"-1"[39m
+    [36m>[39m
+      [36m<a[39m
+        [33mclass[39m=[32m"enrollment-home"[39m
+        [33mdata-discover[39m=[32m"true"[39m
+        [33mhref[39m=[32m"/"[39m
+      [36m>[39m
+        [0mMCR Concert World[0m
+      [36m</a>[39m
+      [36m<h1>[39m
+        [0mWorld entry paused[0m
+      [36m</h1>[39m
+      [36m<p[39m
+        [33mrole[39m=[32m"status"[39m
+      [36m>[39m
+        [0mWe could not confirm the current account requirements. Your identity has not been replaced.[0m
+      [36m</p>[39m
+      [36m<button[39m
+        [33mtype[39m=[32m"button"[39m
+      [36m>[39m
+        [0mCheck entry again[0m
+      [36m</button>[39m
+      [36m<button[39m
+        [33mtype[39m=[32m"button"[39m
+      [36m>[39m
+        [0mSign out[0m
+      [36m</button>[39m
+      [36m<a[39m
+        [33mclass[39m=[32m"enrollment-link"[39m
+        [33mdata-discover[39m=[32m"true"[39m
+        [33mhref[39m=[32m"/"[39m
+      [36m>[39m
+        [0mBack to home[0m
+      [36m</a>[39m
+    [36m</main>[39m
+  [36m</div>[39m
+[36m</body>[39m
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div>[39m
+    [36m<main[39m
+      [33mclass[39m=[32m"auth-enrollment"[39m
+      [33mid[39m=[32m"main"[39m
+      [33mtabindex[39m=[32m"-1"[39m
+    [36m>[39m
+      [36m<a[39m
+        [33mclass[39m=[32m"enrollment-home"[39m
+        [33mdata-discover[39m=[32m"true"[39m
+        [33mhref[39m=[32m"/"[39m
+      [36m>[39m
+        [0mMCR Concert World[0m
+      [36m</a>[39m
+      [36m<h1>[39m
+        [0mWorld entry paused[0m
+      [36m</h1>[39m
+      [36m<p[39m
+        [33mrole[39m=[32m"status"[39m
+      [36m>[39m
+        [0mWe could not confirm the current account requirements. Your identity has not been replaced.[0m
+      [36m</p>[39m
+      [36m<button[39m
+        [33mtype[39m=[32m"button"[39m
+      [36m>[39m
+        [0mCheck entry again[0m
+      [36m</button>[39m
+      [36m<button[39m
+        [33mtype[39m=[32m"button"[39m
+      [36m>[39m
+        [0mSign out[0m
+      [36m</button>[39m
+      [36m<a[39m
+        [33mclass[39m=[32m"enrollment-link"[39m
+        [33mdata-discover[39m=[32m"true"[39m
+        [33mhref[39m=[32m"/"[39m
+      [36m>[39m
+        [0mBack to home[0m
+      [36m</a>[39m
+    [36m</main>[39m
+  [36m</div>[39m
+[36m</body>[39m
+ ❯ waitForWrapper ../../../mcr/frontend/node_modules/.pnpm/@testing-library+dom@10.4.1/node_modules/@testing-library/dom/dist/wait-for.js:163:27
+ ❯ ../../../mcr/frontend/node_modules/.pnpm/@testing-library+dom@10.4.1/node_modules/@testing-library/dom/dist/query-helpers.js:86:33
+ ❯ src/app/__tests__/parade-ink-private-pages/pages.test.tsx:41:32
+     39| it('default Requests preserves explicit reciprocal consent, approved m…
+     40|   const f = setup('/me/requests')
+     41|   fireEvent.click(await screen.findByRole('button', { name: 'Open requ…
+       |                                ^
+     42|   const approve = await screen.findByRole('button', { name: 'Approve s…
+     43|   fireEvent.click(screen.getByRole('checkbox', { name: 'Exchange Insta…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/5]⎯
+
+ FAIL  src/app/__tests__/parade-ink-private-pages/pages.test.tsx > default Age & privacy reflects real decoded expiry and preserves the unavailable provider action
+TestingLibraryElementError: Unable to find role="heading" and name "Not verified"
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div>[39m
+    [36m<main[39m
+      [33mclass[39m=[32m"auth-enrollment"[39m
+      [33mid[39m=[32m"main"[39m
+      [33mtabindex[39m=[32m"-1"[39m
+    [36m>[39m
+      [36m<a[39m
+        [33mclass[39m=[32m"enrollment-home"[39m
+        [33mdata-discover[39m=[32m"true"[39m
+        [33mhref[39m=[32m"/"[39m
+      [36m>[39m
+        [0mMCR Concert World[0m
+      [36m</a>[39m
+      [36m<h1>[39m
+        [0mWorld entry paused[0m
+      [36m</h1>[39m
+      [36m<p[39m
+        [33mrole[39m=[32m"status"[39m
+      [36m>[39m
+        [0mWe could not confirm the current account requirements. Your identity has not been replaced.[0m
+      [36m</p>[39m
+      [36m<button[39m
+        [33mtype[39m=[32m"button"[39m
+      [36m>[39m
+        [0mCheck entry again[0m
+      [36m</button>[39m
+      [36m<button[39m
+        [33mtype[39m=[32m"button"[39m
+      [36m>[39m
+        [0mSign out[0m
+      [36m</button>[39m
+      [36m<a[39m
+        [33mclass[39m=[32m"enrollment-link"[39m
+        [33mdata-discover[39m=[32m"true"[39m
+        [33mhref[39m=[32m"/"[39m
+      [36m>[39m
+        [0mBack to home[0m
+      [36m</a>[39m
+    [36m</main>[39m
+  [36m</div>[39m
+[36m</body>[39m
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div>[39m
+    [36m<main[39m
+      [33mclass[39m=[32m"auth-enrollment"[39m
+      [33mid[39m=[32m"main"[39m
+      [33mtabindex[39m=[32m"-1"[39m
+    [36m>[39m
+      [36m<a[39m
+        [33mclass[39m=[32m"enrollment-home"[39m
+        [33mdata-discover[39m=[32m"true"[39m
+        [33mhref[39m=[32m"/"[39m
+      [36m>[39m
+        [0mMCR Concert World[0m
+      [36m</a>[39m
+      [36m<h1>[39m
+        [0mWorld entry paused[0m
+      [36m</h1>[39m
+      [36m<p[39m
+        [33mrole[39m=[32m"status"[39m
+      [36m>[39m
+        [0mWe could not confirm the current account requirements. Your identity has not been replaced.[0m
+      [36m</p>[39m
+      [36m<button[39m
+        [33mtype[39m=[32m"button"[39m
+      [36m>[39m
+        [0mCheck entry again[0m
+      [36m</button>[39m
+      [36m<button[39m
+        [33mtype[39m=[32m"button"[39m
+      [36m>[39m
+        [0mSign out[0m
+      [36m</button>[39m
+      [36m<a[39m
+        [33mclass[39m=[32m"enrollment-link"[39m
+        [33mdata-discover[39m=[32m"true"[39m
+        [33mhref[39m=[32m"/"[39m
+      [36m>[39m
+        [0mBack to home[0m
+      [36m</a>[39m
+    [36m</main>[39m
+  [36m</div>[39m
+[36m</body>[39m
+ ❯ waitForWrapper ../../../mcr/frontend/node_modules/.pnpm/@testing-library+dom@10.4.1/node_modules/@testing-library/dom/dist/wait-for.js:163:27
+ ❯ ../../../mcr/frontend/node_modules/.pnpm/@testing-library+dom@10.4.1/node_modules/@testing-library/dom/dist/query-helpers.js:86:33
+ ❯ src/app/__tests__/parade-ink-private-pages/pages.test.tsx:57:16
+     55| it('default Age & privacy reflects real decoded expiry and preserves t…
+     56|   const f = setup('/me/age')
+     57|   await screen.findByRole('heading', { name: 'Not verified' }); expect…
+       |                ^
+     58|   f.service.age('EXPIRED'); fireEvent.click(screen.getByRole('button',…
+     59|   await screen.findByRole('heading', { name: 'Verification expired' })
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[3/5]⎯
+
+ FAIL  src/app/__tests__/parade-ink-private-pages/pages.test.tsx > default Inbox confirms one read-state command and keeps an inaccessible target safe
+TestingLibraryElementError: Unable to find role="button" and name "Mark as read"
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div>[39m
+    [36m<main[39m
+      [33mclass[39m=[32m"auth-enrollment"[39m
+      [33mid[39m=[32m"main"[39m
+      [33mtabindex[39m=[32m"-1"[39m
+    [36m>[39m
+      [36m<a[39m
+        [33mclass[39m=[32m"enrollment-home"[39m
+        [33mdata-discover[39m=[32m"true"[39m
+        [33mhref[39m=[32m"/"[39m
+      [36m>[39m
+        [0mMCR Concert World[0m
+      [36m</a>[39m
+      [36m<h1>[39m
+        [0mWorld entry paused[0m
+      [36m</h1>[39m
+      [36m<p[39m
+        [33mrole[39m=[32m"status"[39m
+      [36m>[39m
+        [0mWe could not confirm the current account requirements. Your identity has not been replaced.[0m
+      [36m</p>[39m
+      [36m<button[39m
+        [33mtype[39m=[32m"button"[39m
+      [36m>[39m
+        [0mCheck entry again[0m
+      [36m</button>[39m
+      [36m<button[39m
+        [33mtype[39m=[32m"button"[39m
+      [36m>[39m
+        [0mSign out[0m
+      [36m</button>[39m
+      [36m<a[39m
+        [33mclass[39m=[32m"enrollment-link"[39m
+        [33mdata-discover[39m=[32m"true"[39m
+        [33mhref[39m=[32m"/"[39m
+      [36m>[39m
+        [0mBack to home[0m
+      [36m</a>[39m
+    [36m</main>[39m
+  [36m</div>[39m
+[36m</body>[39m
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div>[39m
+    [36m<main[39m
+      [33mclass[39m=[32m"auth-enrollment"[39m
+      [33mid[39m=[32m"main"[39m
+      [33mtabindex[39m=[32m"-1"[39m
+    [36m>[39m
+      [36m<a[39m
+        [33mclass[39m=[32m"enrollment-home"[39m
+        [33mdata-discover[39m=[32m"true"[39m
+        [33mhref[39m=[32m"/"[39m
+      [36m>[39m
+        [0mMCR Concert World[0m
+      [36m</a>[39m
+      [36m<h1>[39m
+        [0mWorld entry paused[0m
+      [36m</h1>[39m
+      [36m<p[39m
+        [33mrole[39m=[32m"status"[39m
+      [36m>[39m
+        [0mWe could not confirm the current account requirements. Your identity has not been replaced.[0m
+      [36m</p>[39m
+      [36m<button[39m
+        [33mtype[39m=[32m"button"[39m
+      [36m>[39m
+        [0mCheck entry again[0m
+      [36m</button>[39m
+      [36m<button[39m
+        [33mtype[39m=[32m"button"[39m
+      [36m>[39m
+        [0mSign out[0m
+      [36m</button>[39m
+      [36m<a[39m
+        [33mclass[39m=[32m"enrollment-link"[39m
+        [33mdata-discover[39m=[32m"true"[39m
+        [33mhref[39m=[32m"/"[39m
+      [36m>[39m
+        [0mBack to home[0m
+      [36m</a>[39m
+    [36m</main>[39m
+  [36m</div>[39m
+[36m</body>[39m
+ ❯ waitForWrapper ../../../mcr/frontend/node_modules/.pnpm/@testing-library+dom@10.4.1/node_modules/@testing-library/dom/dist/wait-for.js:163:27
+ ❯ ../../../mcr/frontend/node_modules/.pnpm/@testing-library+dom@10.4.1/node_modules/@testing-library/dom/dist/query-helpers.js:86:33
+ ❯ src/app/__tests__/parade-ink-private-pages/pages.test.tsx:64:32
+     62| it('default Inbox confirms one read-state command and keeps an inacces…
+     63|   const f = setup('/notifications')
+     64|   fireEvent.click(await screen.findByRole('button', { name: 'Mark as r…
+       |                                ^
+     65|   await screen.findByText('Read-state command confirmed.')
+     66|   expect(f.requests.filter(r => r.method === 'PATCH')).toHaveLength(1)
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[4/5]⎯
+
+ FAIL  src/app/__tests__/parade-ink-private-pages/pages.test.tsx > default Blocked users retains cancellation, one confirmed unblock and no restored consent
+TestingLibraryElementError: Unable to find role="button" and name "Unblock user"
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div>[39m
+    [36m<main[39m
+      [33mclass[39m=[32m"auth-enrollment"[39m
+      [33mid[39m=[32m"main"[39m
+      [33mtabindex[39m=[32m"-1"[39m
+    [36m>[39m
+      [36m<a[39m
+        [33mclass[39m=[32m"enrollment-home"[39m
+        [33mdata-discover[39m=[32m"true"[39m
+        [33mhref[39m=[32m"/"[39m
+      [36m>[39m
+        [0mMCR Concert World[0m
+      [36m</a>[39m
+      [36m<h1>[39m
+        [0mWorld entry paused[0m
+      [36m</h1>[39m
+      [36m<p[39m
+        [33mrole[39m=[32m"status"[39m
+      [36m>[39m
+        [0mWe could not confirm the current account requirements. Your identity has not been replaced.[0m
+      [36m</p>[39m
+      [36m<button[39m
+        [33mtype[39m=[32m"button"[39m
+      [36m>[39m
+        [0mCheck entry again[0m
+      [36m</button>[39m
+      [36m<button[39m
+        [33mtype[39m=[32m"button"[39m
+      [36m>[39m
+        [0mSign out[0m
+      [36m</button>[39m
+      [36m<a[39m
+        [33mclass[39m=[32m"enrollment-link"[39m
+        [33mdata-discover[39m=[32m"true"[39m
+        [33mhref[39m=[32m"/"[39m
+      [36m>[39m
+        [0mBack to home[0m
+      [36m</a>[39m
+    [36m</main>[39m
+  [36m</div>[39m
+[36m</body>[39m
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div>[39m
+    [36m<main[39m
+      [33mclass[39m=[32m"auth-enrollment"[39m
+      [33mid[39m=[32m"main"[39m
+      [33mtabindex[39m=[32m"-1"[39m
+    [36m>[39m
+      [36m<a[39m
+        [33mclass[39m=[32m"enrollment-home"[39m
+        [33mdata-discover[39m=[32m"true"[39m
+        [33mhref[39m=[32m"/"[39m
+      [36m>[39m
+        [0mMCR Concert World[0m
+      [36m</a>[39m
+      [36m<h1>[39m
+        [0mWorld entry paused[0m
+      [36m</h1>[39m
+      [36m<p[39m
+        [33mrole[39m=[32m"status"[39m
+      [36m>[39m
+        [0mWe could not confirm the current account requirements. Your identity has not been replaced.[0m
+      [36m</p>[39m
+      [36m<button[39m
+        [33mtype[39m=[32m"button"[39m
+      [36m>[39m
+        [0mCheck entry again[0m
+      [36m</button>[39m
+      [36m<button[39m
+        [33mtype[39m=[32m"button"[39m
+      [36m>[39m
+        [0mSign out[0m
+      [36m</button>[39m
+      [36m<a[39m
+        [33mclass[39m=[32m"enrollment-link"[39m
+        [33mdata-discover[39m=[32m"true"[39m
+        [33mhref[39m=[32m"/"[39m
+      [36m>[39m
+        [0mBack to home[0m
+      [36m</a>[39m
+    [36m</main>[39m
+  [36m</div>[39m
+[36m</body>[39m
+ ❯ waitForWrapper ../../../mcr/frontend/node_modules/.pnpm/@testing-library+dom@10.4.1/node_modules/@testing-library/dom/dist/wait-for.js:163:27
+ ❯ ../../../mcr/frontend/node_modules/.pnpm/@testing-library+dom@10.4.1/node_modules/@testing-library/dom/dist/query-helpers.js:86:33
+ ❯ src/app/__tests__/parade-ink-private-pages/pages.test.tsx:74:32
+     72| it('default Blocked users retains cancellation, one confirmed unblock …
+     73|   const f = setup('/me/blocks')
+     74|   fireEvent.click(await screen.findByRole('button', { name: 'Unblock u…
+       |                                ^
+     75|   expect(await screen.findByRole('dialog', { name: 'Unblock this user?…
+     76|   fireEvent.click(screen.getByRole('button', { name: 'Keep blocked' }))
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[5/5]⎯
+
+
+ Test Files  1 failed | 1 passed (2)
+      Tests  5 failed | 16 passed (21)
+   Start at  10:24:37
+   Duration  7.03s (transform 576ms, setup 0ms, import 907ms, tests 5.59s, environment 415ms)
+

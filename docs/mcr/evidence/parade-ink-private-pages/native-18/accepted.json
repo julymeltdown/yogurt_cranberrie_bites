@@ -1,0 +1,205 @@
+{
+  "ownerThreadId": "01a1a213-61d6-7a20-a8e7-476649312f8c",
+  "offerId": "PRIVATE-NATIVE18-0344",
+  "state": "ACCEPTED",
+  "acceptedAtEpoch": 1793852418.0,
+  "workDeadlineEpoch": 1793852718.0,
+  "fullDeadlineEpoch": 1793852778.0,
+  "kind": "browser",
+  "processCap": 24,
+  "rssCapBytes": 4294967296,
+  "remainingNewUpperBytes": 67108864,
+  "controller": {
+    "pid": 43294,
+    "birth": "Thu Nov 5 13:20:18 2026",
+    "executable": "/Library/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python",
+    "script": "/Users/lhs/Desktop/mcr-worktrees/fe-reference-frame-footer/frontend/src/app/__tests__/parade-ink-private-pages/native-round.py",
+    "cwd": "/Users/lhs/Desktop/mcr-worktrees/fe-reference-frame-footer",
+    "outputRoot": "/Users/lhs/Desktop/mcr-worktrees/fe-reference-frame-footer/docs/mcr/evidence/parade-ink-private-pages/native-18"
+  },
+  "guardControllers": [],
+  "receiptPaths": {
+    "accept": "/Users/lhs/Desktop/mcr-worktrees/fe-reference-frame-footer/docs/mcr/evidence/parade-ink-private-pages/native-18/accepted.json",
+    "full": "/Users/lhs/Desktop/mcr-worktrees/fe-reference-frame-footer/docs/mcr/evidence/parade-ink-private-pages/native-18/guardian.json"
+  },
+  "closedOffers": [
+    {
+      "ownerThreadId": "01a1a213-61d6-7a20-a8e7-476649312f8c",
+      "offerId": "PI12-PRIVATE-COMBINED-NATIVE01-0133",
+      "acceptedAtEpoch": 1793842514.0,
+      "actualFullEpoch": 1793842516.101314,
+      "fullPath": "/Users/lhs/Desktop/mcr-worktrees/fe-reference-frame-footer/docs/mcr/evidence/parade-ink-private-pages/native-01/guardian.json",
+      "fullSHA": "dd09af63e60ea7386fd229b146fe37ac0953d2a58b2d2bbe7cbbabb907463814",
+      "resourcesReleased": true
+    },
+    {
+      "ownerThreadId": "01a1a213-61d6-7a20-a8e7-476649312f8c",
+      "offerId": "PI12-PRIVATE-COMBINED-NATIVE02-0145",
+      "acceptedAtEpoch": 1793843132.0,
+      "actualFullEpoch": 1793843145.97038,
+      "fullPath": "/Users/lhs/Desktop/mcr-worktrees/fe-reference-frame-footer/docs/mcr/evidence/parade-ink-private-pages/native-02/guardian.json",
+      "fullSHA": "54c6ad99bc77a06da5fa97230f0d34c8b639f474820d8e72eb729c5575beea4c",
+      "resourcesReleased": true
+    },
+    {
+      "ownerThreadId": "01a1a213-61d6-7a20-a8e7-476649312f8c",
+      "offerId": "PI12-PRIVATE-COMBINED-NATIVE03-0155",
+      "acceptedAtEpoch": 1793843891.0,
+      "actualFullEpoch": 1793843900.276706,
+      "fullPath": "/Users/lhs/Desktop/mcr-worktrees/fe-reference-frame-footer/docs/mcr/evidence/parade-ink-private-pages/native-03/guardian.json",
+      "fullSHA": "9c1ab0f5c343a14cfd7ee00294bcd490078010979b772458b93961a8b2d80bb9",
+      "resourcesReleased": true
+    },
+    {
+      "ownerThreadId": "01a1a213-61d6-7a20-a8e7-476649312f8c",
+      "offerId": "PI12-PRIVATE-COMBINED-NATIVE04-0208",
+      "acceptedAtEpoch": 1793844304.0,
+      "actualFullEpoch": 1793844324.312902,
+      "fullPath": "/Users/lhs/Desktop/mcr-worktrees/fe-reference-frame-footer/docs/mcr/evidence/parade-ink-private-pages/native-04/guardian.json",
+      "fullSHA": "354ea3b53df5632ab873027cecae58b6ff4cf6c9a7f63265d5b7c67fdfb97a40",
+      "resourcesReleased": true
+    },
+    {
+      "ownerThreadId": "01a1a213-61d6-7a20-a8e7-476649312f8c",
+      "offerId": "PRIVATE-NATIVE05-0215",
+      "acceptedAtEpoch": 1793845185.0,
+      "actualFullEpoch": 1793845208.642224,
+      "fullPath": "/Users/lhs/Desktop/mcr-worktrees/fe-reference-frame-footer/docs/mcr/evidence/parade-ink-private-pages/native-05/guardian.json",
+      "fullSHA": "b38a1eea5a163cbf2453f5e82ac365f2aacf7233a62603249b209f89bc1b37e7",
+      "resourcesReleased": true
+    },
+    {
+      "ownerThreadId": "01a1a213-61d6-7a20-a8e7-476649312f8c",
+      "offerId": "PRIVATE-NATIVE06-0226",
+      "acceptedAtEpoch": 1793845661.0,
+      "actualFullEpoch": 1793845666.564437,
+      "fullPath": "/Users/lhs/Desktop/mcr-worktrees/fe-reference-frame-footer/docs/mcr/evidence/parade-ink-private-pages/native-06/guardian.json",
+      "fullSHA": "ba778f6e4262302834174e8f598d6b80a53168dfd7a76a9a36abf7582ae70d56",
+      "resourcesReleased": true
+    },
+    {
+      "ownerThreadId": "01a1a213-61d6-7a20-a8e7-476649312f8c",
+      "offerId": "PRIVATE-NATIVE07-0230",
+      "acceptedAtEpoch": 1793845858.0,
+      "actualFullEpoch": 1793845862.5529652,
+      "fullPath": "/Users/lhs/Desktop/mcr-worktrees/fe-reference-frame-footer/docs/mcr/evidence/parade-ink-private-pages/native-07/guardian.json",
+      "fullSHA": "1eace9078e1f2ff49fd17fd93d05c66866b72e258e352d8b470176809a213785",
+      "resourcesReleased": true
+    },
+    {
+      "ownerThreadId": "01a1a213-61d6-7a20-a8e7-476649312f8c",
+      "offerId": "PRIVATE-NATIVE08-0230",
+      "acceptedAtEpoch": 1793845958.0,
+      "actualFullEpoch": 1793845971.30157,
+      "fullPath": "/Users/lhs/Desktop/mcr-worktrees/fe-reference-frame-footer/docs/mcr/evidence/parade-ink-private-pages/native-08/guardian.json",
+      "fullSHA": "20d1f7fefb1f0ffacb45b3722a3386eb9ff3d30c441ec1f467d26d48623a32bb",
+      "resourcesReleased": true
+    },
+    {
+      "ownerThreadId": "01a1a213-61d6-7a20-a8e7-476649312f8c",
+      "offerId": "PRIVATE-NATIVE09-0252",
+      "acceptedAtEpoch": 1793847130.0,
+      "actualFullEpoch": 1793847161.466177,
+      "fullPath": "/Users/lhs/Desktop/mcr-worktrees/fe-reference-frame-footer/docs/mcr/evidence/parade-ink-private-pages/native-09/guardian.json",
+      "fullSHA": "84b95b73599bf833a6c9a8682dfe0a081d5f09f63cd22924c63c17c4b7fc8792",
+      "resourcesReleased": true
+    },
+    {
+      "ownerThreadId": "01a1a213-61d6-7a20-a8e7-476649312f8c",
+      "offerId": "PRIVATE-NATIVE10-0252",
+      "acceptedAtEpoch": 1793847607.0,
+      "actualFullEpoch": 1793847626.4972138,
+      "fullPath": "/Users/lhs/Desktop/mcr-worktrees/fe-reference-frame-footer/docs/mcr/evidence/parade-ink-private-pages/native-10/guardian.json",
+      "fullSHA": "68cb0a39cf87919d6780520a7cc6ff12ab218b4e26e068184fecfbd93401ad3b",
+      "resourcesReleased": true
+    },
+    {
+      "ownerThreadId": "01a1a213-61d6-7a20-a8e7-476649312f8c",
+      "offerId": "PRIVATE-NATIVE11-0307",
+      "acceptedAtEpoch": 1793848183.0,
+      "actualFullEpoch": 1793848185.114341,
+      "fullPath": "/Users/lhs/Desktop/mcr-worktrees/fe-reference-frame-footer/docs/mcr/evidence/parade-ink-private-pages/native-11/guardian.json",
+      "fullSHA": "9afab072105e27bd4d543e7257c22f5c56ae7e740b6f297a986d1ec7cfdb9965",
+      "resourcesReleased": true
+    },
+    {
+      "ownerThreadId": "01a1a213-61d6-7a20-a8e7-476649312f8c",
+      "offerId": "PRIVATE-NATIVE12-0307",
+      "acceptedAtEpoch": 1793848254.0,
+      "actualFullEpoch": 1793848269.98734,
+      "fullPath": "/Users/lhs/Desktop/mcr-worktrees/fe-reference-frame-footer/docs/mcr/evidence/parade-ink-private-pages/native-12/guardian.json",
+      "fullSHA": "d450b6a7d2d880f5279cb33889baa0c3bfc05e99970a32d56fbb91b0988ed784",
+      "resourcesReleased": true
+    },
+    {
+      "ownerThreadId": "01a1a213-61d6-7a20-a8e7-476649312f8c",
+      "offerId": "PRIVATE-NATIVE13-0314",
+      "acceptedAtEpoch": 1793848642.0,
+      "actualFullEpoch": 1793848652.509793,
+      "fullPath": "/Users/lhs/Desktop/mcr-worktrees/fe-reference-frame-footer/docs/mcr/evidence/parade-ink-private-pages/native-13/guardian.json",
+      "fullSHA": "de53b20f4bfdb189541ea33561a2aeaf819816e7a3bb0239ae6ca2ffb38bb8c4",
+      "resourcesReleased": true
+    },
+    {
+      "ownerThreadId": "01a1a213-61d6-7a20-a8e7-476649312f8c",
+      "offerId": "PRIVATE-NATIVE14-0314",
+      "acceptedAtEpoch": 1793848779.0,
+      "actualFullEpoch": 1793848797.458944,
+      "fullPath": "/Users/lhs/Desktop/mcr-worktrees/fe-reference-frame-footer/docs/mcr/evidence/parade-ink-private-pages/native-14/guardian.json",
+      "fullSHA": "3234e9909db95c77e32ebb00210d0e48e6aa0f186a0c34e0c1d35e2cd19219cc",
+      "resourcesReleased": true
+    },
+    {
+      "ownerThreadId": "01a1a213-61d6-7a20-a8e7-476649312f8c",
+      "offerId": "PRIVATE-NATIVE15-0325",
+      "acceptedAtEpoch": 1793849183.0,
+      "actualFullEpoch": 1793849189.226204,
+      "fullPath": "/Users/lhs/Desktop/mcr-worktrees/fe-reference-frame-footer/docs/mcr/evidence/parade-ink-private-pages/native-15/guardian.json",
+      "fullSHA": "39a03e1e8498c2c47359b74295bd3161e440b4c25d5ee91b8533238b54bc44bf",
+      "resourcesReleased": true
+    },
+    {
+      "ownerThreadId": "01a1a213-61d6-7a20-a8e7-476649312f8c",
+      "offerId": "PRIVATE-NATIVE16-0325",
+      "acceptedAtEpoch": 1793849311.0,
+      "actualFullEpoch": 1793849336.696496,
+      "fullPath": "/Users/lhs/Desktop/mcr-worktrees/fe-reference-frame-footer/docs/mcr/evidence/parade-ink-private-pages/native-16/guardian.json",
+      "fullSHA": "c377eef3065f438e82dc503ccb9b74808379f9270efb0205e77aabffa1016e62",
+      "resourcesReleased": true
+    },
+    {
+      "ownerThreadId": "01a1a213-61d6-7a20-a8e7-476649312f8c",
+      "offerId": "PRIVATE-NATIVE17-0334",
+      "acceptedAtEpoch": 1793849976.0,
+      "actualFullEpoch": 1793850008.9039428,
+      "fullPath": "/Users/lhs/Desktop/mcr-worktrees/fe-reference-frame-footer/docs/mcr/evidence/parade-ink-private-pages/native-17/guardian.json",
+      "fullSHA": "7e3531555ad02aa1ebd9b7dbca6cc5e9d6d1d7913bbe389dc3bbfc3a1a2d6977",
+      "resourcesReleased": true
+    }
+  ],
+  "ordinaryAuthoringBookings": [
+    {
+      "offerId": "PRIVATE-FINAL8-0356",
+      "actualAcceptedEpoch": 1793851092.7505789,
+      "expiresAt": "2026-11-05T04:30:00Z",
+      "newPositiveUpperBytes": 8388608,
+      "cumulativeFamilyTotalBytes": 603979776,
+      "minimumNextCarryBytes": 536870912
+    }
+  ],
+  "ordinaryObservation": {
+    "state": "COMPLETED",
+    "pid": 42630,
+    "actualpid": 42630,
+    "birth": "Thu Nov  5 13:20:06 2026",
+    "executable": "/Library/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python",
+    "script": null,
+    "cwd": "/Users/lhs/Desktop/mcr-worktrees/fe-reference-frame-footer",
+    "role": "ordinary Main management authoring and Git only",
+    "ordinaryCommandsComplete": true,
+    "offerId": "PRIVATE-FINAL8-0356",
+    "at": "2026-11-05T04:20:06.411760+00:00",
+    "completedAt": "2026-11-05T04:20:06.476962+00:00"
+  },
+  "publishedAtEpoch": 1793852418.611665
+}

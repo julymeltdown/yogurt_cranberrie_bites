@@ -1,0 +1,64 @@
+{
+  "ownerThreadId": "01a1a213-61d6-7a20-a8e7-476649312f8c",
+  "offerId": "PRIVATE-NATIVE05-0215",
+  "state": "ACCEPTED",
+  "acceptedAtEpoch": 1793845185.0,
+  "workDeadlineEpoch": 1793845485.0,
+  "fullDeadlineEpoch": 1793845545.0,
+  "kind": "browser",
+  "processCap": 24,
+  "rssCapBytes": 4294967296,
+  "remainingNewUpperBytes": 100663296,
+  "controller": {
+    "pid": 90269,
+    "birth": "Thu Nov 5 11:19:45 2026",
+    "executable": "/Library/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python",
+    "script": "/Users/lhs/Desktop/mcr-worktrees/fe-reference-frame-footer/frontend/src/app/__tests__/parade-ink-private-pages/native-round.py",
+    "cwd": "/Users/lhs/Desktop/mcr-worktrees/fe-reference-frame-footer",
+    "outputRoot": "/Users/lhs/Desktop/mcr-worktrees/fe-reference-frame-footer/docs/mcr/evidence/parade-ink-private-pages/native-05"
+  },
+  "guardControllers": [],
+  "receiptPaths": {
+    "accept": "/Users/lhs/Desktop/mcr-worktrees/fe-reference-frame-footer/docs/mcr/evidence/parade-ink-private-pages/native-05/accepted.json",
+    "full": "/Users/lhs/Desktop/mcr-worktrees/fe-reference-frame-footer/docs/mcr/evidence/parade-ink-private-pages/native-05/guardian.json"
+  },
+  "closedOffers": [
+    {
+      "ownerThreadId": "01a1a213-61d6-7a20-a8e7-476649312f8c",
+      "offerId": "PI12-PRIVATE-COMBINED-NATIVE01-0133",
+      "acceptedAtEpoch": 1793842514.0,
+      "actualFullEpoch": 1793842516.101314,
+      "fullPath": "/Users/lhs/Desktop/mcr-worktrees/fe-reference-frame-footer/docs/mcr/evidence/parade-ink-private-pages/native-01/guardian.json",
+      "fullSHA": "dd09af63e60ea7386fd229b146fe37ac0953d2a58b2d2bbe7cbbabb907463814",
+      "resourcesReleased": true
+    },
+    {
+      "ownerThreadId": "01a1a213-61d6-7a20-a8e7-476649312f8c",
+      "offerId": "PI12-PRIVATE-COMBINED-NATIVE02-0145",
+      "acceptedAtEpoch": 1793843132.0,
+      "actualFullEpoch": 1793843145.97038,
+      "fullPath": "/Users/lhs/Desktop/mcr-worktrees/fe-reference-frame-footer/docs/mcr/evidence/parade-ink-private-pages/native-02/guardian.json",
+      "fullSHA": "54c6ad99bc77a06da5fa97230f0d34c8b639f474820d8e72eb729c5575beea4c",
+      "resourcesReleased": true
+    },
+    {
+      "ownerThreadId": "01a1a213-61d6-7a20-a8e7-476649312f8c",
+      "offerId": "PI12-PRIVATE-COMBINED-NATIVE03-0155",
+      "acceptedAtEpoch": 1793843891.0,
+      "actualFullEpoch": 1793843900.276706,
+      "fullPath": "/Users/lhs/Desktop/mcr-worktrees/fe-reference-frame-footer/docs/mcr/evidence/parade-ink-private-pages/native-03/guardian.json",
+      "fullSHA": "9c1ab0f5c343a14cfd7ee00294bcd490078010979b772458b93961a8b2d80bb9",
+      "resourcesReleased": true
+    },
+    {
+      "ownerThreadId": "01a1a213-61d6-7a20-a8e7-476649312f8c",
+      "offerId": "PI12-PRIVATE-COMBINED-NATIVE04-0208",
+      "acceptedAtEpoch": 1793844304.0,
+      "actualFullEpoch": 1793844324.312902,
+      "fullPath": "/Users/lhs/Desktop/mcr-worktrees/fe-reference-frame-footer/docs/mcr/evidence/parade-ink-private-pages/native-04/guardian.json",
+      "fullSHA": "354ea3b53df5632ab873027cecae58b6ff4cf6c9a7f63265d5b7c67fdfb97a40",
+      "resourcesReleased": true
+    }
+  ],
+  "publishedAtEpoch": 1793845185.9958348
+}

@@ -24,4 +24,4 @@ function SafetyPanel({ report }: { report: boolean }) {
   return <BlocksPanel controller={state.controller} onBack={back} />
 }
 export function ReportPanel() { return <div className="pi-report-entry"><SafetyPanel report /></div> }
-export function BlockedUsersPanel() { return <SafetyPanel report={false} /> }
+export function BlockedUsersPanel() { return <div className="pi-private-blocks"><SafetyPanel report={false} /></div> }

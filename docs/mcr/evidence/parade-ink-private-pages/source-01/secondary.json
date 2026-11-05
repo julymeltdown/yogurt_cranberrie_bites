@@ -1,0 +1,10 @@
+{
+  "guard": "independent-secondary",
+  "startedEpoch": 1793841247.9438841,
+  "samples": 0,
+  "peakProcesses": 0,
+  "peakRssKiB": 0,
+  "peakWholeBytes": 0,
+  "error": "resource controller identity mismatch: {\"owner\": \"01a1a5d9-6950-7920-8c80-5214d4ce0eaf\", \"pid\": 58119, \"birth\": \"Thu Nov 5 10:13:56 2026\", \"expectedScript\": \"/Users/lhs/Desktop/mcr-worktrees/fe-ref-customize/frontend/src/app/__tests__/parade-ink-operations/finite-source.py\", \"observedExecutable\": \"/Library/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python\", \"observedCommandSHA256\": \"d447bf0db6c9d72102862da78d4c46ca66bc77578ee52c07ecf3afef282184a6\", \"commandLength\": 219}",
+  "finishedEpoch": 1793841248.006795
+}

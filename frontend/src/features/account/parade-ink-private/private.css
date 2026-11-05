@@ -1,0 +1,52 @@
+/* PI12 feature-gated presentation. Consumes the frozen PI01 token contract. */
+.pi-private-account.pi-private-account {
+  box-sizing: border-box; inline-size: 100%; max-inline-size: 54rem; min-inline-size: 0;
+  margin: 0 auto; padding: var(--pi-content-inset, 6px);
+  padding-block-end: max(12px, env(safe-area-inset-bottom, 0px));
+  color: var(--pi-ink, #171717); background: var(--pi-paper, #f9f9f8);
+  font: 400 var(--pi-body-size, 18px)/var(--pi-body-leading, 22px) var(--pi-font-body, sans-serif);
+  overflow-wrap: anywhere;
+}
+.pi-private-account.pi-private-account *, .pi-private-account.pi-private-account *::before, .pi-private-account.pi-private-account *::after { box-sizing: border-box; }
+.pi-private-account.pi-private-account h1 {
+  margin: 8px 0; color: var(--pi-ink, #171717); letter-spacing: 0;
+  font: 700 var(--pi-title-size, 26px)/var(--pi-title-leading, 32px) var(--pi-font-display, sans-serif);
+}
+.pi-private-account.pi-private-account h2 { margin: 12px 0 6px; font: 700 20px/26px var(--pi-font-display, sans-serif); letter-spacing: 0; }
+.pi-private-account.pi-private-account h3 { margin: 0; font: 700 18px/22px var(--pi-font-body, sans-serif); }
+.pi-private-account.pi-private-account p { margin: 8px 0; line-height: var(--pi-body-leading, 22px); }
+.pi-private-account.pi-private-account header { margin: 0 0 8px; }
+.pi-private-account.pi-private-account :is(button, select, input:not([type=checkbox]), textarea) {
+  max-inline-size: 100%; min-inline-size: 0; min-block-size: var(--pi-hit, 44px);
+  border: var(--pi-frame-border, 2px) solid var(--pi-ink, #171717); border-radius: var(--pi-radius, 2px);
+  padding: 8px 10px; color: var(--pi-ink, #171717); background: var(--pi-paper, #f9f9f8);
+  font: 400 var(--pi-control-size, 18px)/var(--pi-control-leading, 22px) var(--pi-font-body, sans-serif);
+}
+.pi-private-account.pi-private-account button { min-inline-size: 44px; margin: 4px 6px 4px 0; cursor: pointer; font-weight: 700; white-space: normal; overflow-wrap: anywhere; }
+.pi-private-account.pi-private-account :is(button[type=submit], .pi-private-primary) { color: var(--pi-on-dark, #fff); background: var(--pi-crimson, #922532); border-color: var(--pi-crimson, #922532); }
+.pi-private-account.pi-private-account :is(button, select, input, textarea):disabled { color: var(--pi-muted, #545454); background: var(--pi-disabled, #e3e3e0); border-color: var(--pi-soft-rule, #777774); opacity: 1; cursor: default; }
+.pi-private-account.pi-private-account button:not(:disabled):active { color: var(--pi-on-dark, #fff); background: var(--pi-ink, #171717); border-color: var(--pi-ink, #171717); }
+.pi-private-account.pi-private-account :focus-visible { outline: 3px solid var(--pi-focus, #922532); outline-offset: 2px; }
+.pi-private-account.pi-private-account label { display: block; min-block-size: 44px; margin: 8px 0; font-weight: 400; }
+.pi-private-account.pi-private-account input:not([type=checkbox]), .pi-private-account.pi-private-account textarea { display: block; inline-size: 100%; margin-block-start: 6px; }
+.pi-private-account.pi-private-account input[type=checkbox] { inline-size: 22px; block-size: 22px; margin: 8px 8px 8px 0; vertical-align: middle; accent-color: var(--pi-crimson, #922532); }
+.pi-private-account.pi-private-account input[aria-invalid=true] { border-style: dashed; border-color: var(--pi-crimson, #922532); }
+.pi-private-account.pi-private-account fieldset { min-inline-size: 0; margin: 12px 0; padding: 8px; border: 1px solid var(--pi-rule, #3c3c3b); border-radius: 0; }
+.pi-private-account.pi-private-account legend { max-inline-size: 100%; padding-inline: 4px; font-weight: 700; }
+.pi-private-account.pi-private-account :is([role=status], [role=alert]) { max-inline-size: 100%; overflow-wrap: anywhere; }
+.pi-private-account.pi-private-account [role=alert] { color: var(--pi-crimson, #922532); font-weight: 700; }
+.pi-private-account.pi-private-account a { color: var(--pi-ink, #171717); text-underline-offset: 3px; }
+.pi-private-account.pi-private-account > a, .pi-private-account.pi-private-account p > a { display: inline-flex; min-block-size: 44px; align-items: center; padding-block: 8px; }
+.pi-private-account.pi-private-account :is(ul, ol) { padding: 0; margin: 8px 0; list-style: none; }
+.pi-private-account.pi-private-account li { padding: 8px 0; border-block-end: 1px solid var(--pi-rule, #3c3c3b); }
+.pi-private-account.pi-private-account time { font: 400 var(--pi-meta-size, 14px)/var(--pi-meta-leading, 18px) var(--pi-font-body, sans-serif); }
+.pi-private-account.pi-private-account .mcr-safety-dialog {
+  inline-size: min(34rem, calc(100% - 24px)); max-block-size: calc(100dvh - 24px);
+  margin: auto; padding: 12px; overflow: auto; overscroll-behavior: contain;
+  color: var(--pi-ink, #171717); background: var(--pi-paper, #f9f9f8);
+  font: 400 18px/22px var(--pi-font-body, sans-serif);
+  border: 2px solid var(--pi-ink, #171717); border-radius: 2px;
+}
+.pi-private-account.pi-private-account .mcr-safety-dialog > h2 { margin: -12px -12px 12px; padding: 8px 12px; color: var(--pi-on-dark, #fff); background: var(--pi-ink, #171717); font: 700 26px/32px var(--pi-font-display, sans-serif); }
+.pi-private-account.pi-private-account .mcr-safety-dialog::backdrop { background: #171717b3; }
+@media (max-height: 550px) { .pi-private-account.pi-private-account { padding-block-end: 8px; } .pi-private-account.pi-private-account .mcr-safety-dialog { max-block-size: calc(100dvh - 12px); } }

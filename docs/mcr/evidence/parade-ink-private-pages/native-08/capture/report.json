@@ -1,0 +1,629 @@
+{
+  "status": "FAIL",
+  "browser": "156.0.8078.80",
+  "startedAt": "2026-11-05T02:32:46.786Z",
+  "qualification": "ACTUAL_MAIN_CANONICAL_AUTH_PRODUCTION_READINESS_CONTROLLED_HTTP_C05_NOT_LIVE_OR_DEVICE",
+  "cases": [],
+  "screenshots": [
+    {
+      "file": "social-360.png",
+      "capturedAt": "2026-11-05T02:32:49.479Z",
+      "metrics": {
+        "viewport": {
+          "width": 360,
+          "height": 844,
+          "dpr": 1
+        },
+        "root": {
+          "x": 11,
+          "y": 59,
+          "width": 338,
+          "height": 1097,
+          "font": "\"Parade Ink Text\", Arial, sans-serif",
+          "size": "18px",
+          "leading": "22px",
+          "color": "rgb(23, 23, 23)",
+          "background": "rgb(249, 249, 248)",
+          "backgroundImage": "none",
+          "border": "0px",
+          "radius": "0px"
+        },
+        "heading": {
+          "x": 17,
+          "y": 156,
+          "width": 326,
+          "height": 32,
+          "font": "\"Parade Ink Display\", \"Arial Narrow\", Arial, sans-serif",
+          "size": "26px",
+          "leading": "32px",
+          "color": "rgb(23, 23, 23)",
+          "background": "rgba(0, 0, 0, 0)",
+          "backgroundImage": "none",
+          "border": "0px",
+          "radius": "0px"
+        },
+        "bodyFont": "\"Parade Ink Text\", Arial, sans-serif",
+        "horizontalOverflow": false,
+        "controls": [
+          {
+            "label": "Social links",
+            "x": 17,
+            "y": 65,
+            "width": 161,
+            "height": 44,
+            "font": "\"Parade Ink Text\", Arial, sans-serif",
+            "size": "18px",
+            "leading": "22px",
+            "color": "rgb(255, 255, 255)",
+            "background": "rgb(23, 23, 23)",
+            "backgroundImage": "none",
+            "border": "2px",
+            "radius": "2px"
+          },
+          {
+            "label": "Requests",
+            "x": 182,
+            "y": 65,
+            "width": 161,
+            "height": 44,
+            "font": "\"Parade Ink Text\", Arial, sans-serif",
+            "size": "18px",
+            "leading": "22px",
+            "color": "rgb(23, 23, 23)",
+            "background": "rgba(0, 0, 0, 0)",
+            "backgroundImage": "none",
+            "border": "2px",
+            "radius": "2px"
+          },
+          {
+            "label": "Reload handle settings",
+            "x": 17,
+            "y": 410,
+            "width": 206.203125,
+            "height": 44,
+            "font": "\"Parade Ink Text\", Arial, sans-serif",
+            "size": "18px",
+            "leading": "22px",
+            "color": "rgb(23, 23, 23)",
+            "background": "rgb(249, 249, 248)",
+            "backgroundImage": "none",
+            "border": "2px",
+            "radius": "2px"
+          },
+          {
+            "label": "",
+            "x": 24,
+            "y": 589,
+            "width": 312,
+            "height": 44,
+            "font": "\"Parade Ink Text\", Arial, sans-serif",
+            "size": "18px",
+            "leading": "22px",
+            "color": "rgb(23, 23, 23)",
+            "background": "rgb(249, 249, 248)",
+            "backgroundImage": "none",
+            "border": "2px",
+            "radius": "2px"
+          },
+          {
+            "label": "Replace privately",
+            "x": 24,
+            "y": 725,
+            "width": 159.640625,
+            "height": 44,
+            "font": "\"Parade Ink Text\", Arial, sans-serif",
+            "size": "18px",
+            "leading": "22px",
+            "color": "rgb(84, 84, 84)",
+            "background": "rgb(227, 227, 224)",
+            "backgroundImage": "none",
+            "border": "2px",
+            "radius": "2px"
+          },
+          {
+            "label": "Remove Instagram",
+            "x": 24,
+            "y": 777,
+            "width": 174.421875,
+            "height": 44,
+            "font": "\"Parade Ink Text\", Arial, sans-serif",
+            "size": "18px",
+            "leading": "22px",
+            "color": "rgb(23, 23, 23)",
+            "background": "rgb(249, 249, 248)",
+            "backgroundImage": "none",
+            "border": "2px",
+            "radius": "2px"
+          },
+          {
+            "label": "",
+            "x": 24,
+            "y": 963,
+            "width": 312,
+            "height": 44,
+            "font": "\"Parade Ink Text\", Arial, sans-serif",
+            "size": "18px",
+            "leading": "22px",
+            "color": "rgb(23, 23, 23)",
+            "background": "rgb(249, 249, 248)",
+            "backgroundImage": "none",
+            "border": "2px",
+            "radius": "2px"
+          },
+          {
+            "label": "Save privately",
+            "x": 24,
+            "y": 1081,
+            "width": 134.25,
+            "height": 44,
+            "font": "\"Parade Ink Text\", Arial, sans-serif",
+            "size": "18px",
+            "leading": "22px",
+            "color": "rgb(84, 84, 84)",
+            "background": "rgb(227, 227, 224)",
+            "backgroundImage": "none",
+            "border": "2px",
+            "radius": "2px"
+          }
+        ],
+        "privacy": {
+          "leakedDiagnostic": false
+        }
+      }
+    },
+    {
+      "file": "requests-360.png",
+      "capturedAt": "2026-11-05T02:32:49.523Z",
+      "metrics": {
+        "viewport": {
+          "width": 360,
+          "height": 844,
+          "dpr": 1
+        },
+        "root": {
+          "x": 11,
+          "y": 59,
+          "width": 338,
+          "height": 542,
+          "font": "\"Parade Ink Text\", Arial, sans-serif",
+          "size": "18px",
+          "leading": "22px",
+          "color": "rgb(23, 23, 23)",
+          "background": "rgb(249, 249, 248)",
+          "backgroundImage": "none",
+          "border": "0px",
+          "radius": "0px"
+        },
+        "heading": {
+          "x": 17,
+          "y": 126,
+          "width": 326,
+          "height": 32,
+          "font": "\"Parade Ink Display\", \"Arial Narrow\", Arial, sans-serif",
+          "size": "26px",
+          "leading": "32px",
+          "color": "rgb(23, 23, 23)",
+          "background": "rgba(0, 0, 0, 0)",
+          "backgroundImage": "none",
+          "border": "0px",
+          "radius": "0px"
+        },
+        "bodyFont": "\"Parade Ink Text\", Arial, sans-serif",
+        "horizontalOverflow": false,
+        "controls": [
+          {
+            "label": "Social links",
+            "x": 17,
+            "y": 65,
+            "width": 161,
+            "height": 44,
+            "font": "\"Parade Ink Text\", Arial, sans-serif",
+            "size": "18px",
+            "leading": "22px",
+            "color": "rgb(23, 23, 23)",
+            "background": "rgba(0, 0, 0, 0)",
+            "backgroundImage": "none",
+            "border": "2px",
+            "radius": "2px"
+          },
+          {
+            "label": "Requests",
+            "x": 182,
+            "y": 65,
+            "width": 161,
+            "height": 44,
+            "font": "\"Parade Ink Text\", Arial, sans-serif",
+            "size": "18px",
+            "leading": "22px",
+            "color": "rgb(255, 255, 255)",
+            "background": "rgb(23, 23, 23)",
+            "backgroundImage": "none",
+            "border": "2px",
+            "radius": "2px"
+          },
+          {
+            "label": "IncomingOutgoing",
+            "x": 93.03125,
+            "y": 328,
+            "width": 115,
+            "height": 44,
+            "font": "\"Parade Ink Text\", Arial, sans-serif",
+            "size": "18px",
+            "leading": "normal",
+            "color": "rgb(23, 23, 23)",
+            "background": "rgb(249, 249, 248)",
+            "backgroundImage": "none",
+            "border": "2px",
+            "radius": "2px"
+          },
+          {
+            "label": "Refresh requests",
+            "x": 17,
+            "y": 388,
+            "width": 159.6875,
+            "height": 44,
+            "font": "\"Parade Ink Text\", Arial, sans-serif",
+            "size": "18px",
+            "leading": "22px",
+            "color": "rgb(23, 23, 23)",
+            "background": "rgb(249, 249, 248)",
+            "backgroundImage": "none",
+            "border": "2px",
+            "radius": "2px"
+          },
+          {
+            "label": "Open request",
+            "x": 17,
+            "y": 524,
+            "width": 130.796875,
+            "height": 44,
+            "font": "\"Parade Ink Text\", Arial, sans-serif",
+            "size": "18px",
+            "leading": "22px",
+            "color": "rgb(23, 23, 23)",
+            "background": "rgb(249, 249, 248)",
+            "backgroundImage": "none",
+            "border": "2px",
+            "radius": "2px"
+          }
+        ],
+        "privacy": {
+          "leakedDiagnostic": false
+        }
+      }
+    },
+    {
+      "file": "age-360.png",
+      "capturedAt": "2026-11-05T02:32:49.574Z",
+      "metrics": {
+        "viewport": {
+          "width": 360,
+          "height": 844,
+          "dpr": 1
+        },
+        "root": {
+          "x": 11,
+          "y": 59,
+          "width": 338,
+          "height": 556,
+          "font": "\"Parade Ink Text\", Arial, sans-serif",
+          "size": "18px",
+          "leading": "22px",
+          "color": "rgb(23, 23, 23)",
+          "background": "rgb(249, 249, 248)",
+          "backgroundImage": "none",
+          "border": "0px",
+          "radius": "0px"
+        },
+        "heading": {
+          "x": 17,
+          "y": 73,
+          "width": 326,
+          "height": 32,
+          "font": "\"Parade Ink Display\", \"Arial Narrow\", Arial, sans-serif",
+          "size": "26px",
+          "leading": "32px",
+          "color": "rgb(23, 23, 23)",
+          "background": "rgba(0, 0, 0, 0)",
+          "backgroundImage": "none",
+          "border": "0px",
+          "radius": "0px"
+        },
+        "bodyFont": "\"Parade Ink Text\", Arial, sans-serif",
+        "horizontalOverflow": false,
+        "controls": [
+          {
+            "label": "Start verification",
+            "x": 17,
+            "y": 343,
+            "width": 155.546875,
+            "height": 44,
+            "font": "\"Parade Ink Text\", Arial, sans-serif",
+            "size": "18px",
+            "leading": "22px",
+            "color": "rgb(84, 84, 84)",
+            "background": "rgb(227, 227, 224)",
+            "backgroundImage": "none",
+            "border": "2px",
+            "radius": "2px"
+          },
+          {
+            "label": "Refresh age status",
+            "x": 17,
+            "y": 399,
+            "width": 174.03125,
+            "height": 44,
+            "font": "\"Parade Ink Text\", Arial, sans-serif",
+            "size": "18px",
+            "leading": "22px",
+            "color": "rgb(23, 23, 23)",
+            "background": "rgb(249, 249, 248)",
+            "backgroundImage": "none",
+            "border": "2px",
+            "radius": "2px"
+          },
+          {
+            "label": "Back to people",
+            "x": 17,
+            "y": 559,
+            "width": 118.40625,
+            "height": 44,
+            "font": "\"Parade Ink Text\", Arial, sans-serif",
+            "size": "18px",
+            "leading": "22px",
+            "color": "rgb(23, 23, 23)",
+            "background": "rgba(0, 0, 0, 0)",
+            "backgroundImage": "none",
+            "border": "0px",
+            "radius": "0px"
+          }
+        ],
+        "privacy": {
+          "leakedDiagnostic": false
+        }
+      }
+    }
+  ],
+  "errors": [],
+  "failure": {
+    "stage": "seven normal routes 360",
+    "error": "Error: expect(locator).toBeVisible() failed\n\nLocator: getByRole('heading', { name: 'Blocked users', exact: true })\nExpected: visible\nError: strict mode violation: getByRole('heading', { name: 'Blocked users', exact: true }) resolved to 2 elements:\n    1) <h1 tabindex=\"-1\" id=\"panel-title\">Blocked users</h1> aka locator('#panel-title')\n    2) <h1 id=\"mcr-blocks-title\">Blocked users</h1> aka locator('#mcr-blocks-title')\n\nCall log:\n  - Expect \"to.be.visible\" with timeout 5000ms\n  - waiting for getByRole('heading', { name: 'Blocked users', exact: true })\n",
+    "text": "Skip to content\nBLOCKED USERS\nBack\nBlocked users\n\nBlocking closes affected private views. Unblocking never restores previous consent or social access.\n\n00000000-0000-4000-8000-000000000099\nUnblock user",
+    "state": {
+      "path": "/me/blocks",
+      "requests": [
+        {
+          "path": "/api/auth/capabilities",
+          "url": "http://127.0.0.1:5382/api/auth/capabilities",
+          "method": "GET",
+          "key": null,
+          "baseline": false,
+          "authorized": false,
+          "cache": "no-store",
+          "credentials": "same-origin"
+        },
+        {
+          "path": "/api/auth/login",
+          "url": "http://127.0.0.1:5382/api/auth/login",
+          "method": "POST",
+          "key": null,
+          "baseline": false,
+          "authorized": false,
+          "cache": "no-store",
+          "credentials": "same-origin"
+        },
+        {
+          "path": "/api/auth/enrollment/admission",
+          "url": "http://127.0.0.1:5382/api/auth/enrollment/admission",
+          "method": "GET",
+          "key": null,
+          "baseline": false,
+          "authorized": true,
+          "cache": "no-store",
+          "credentials": "include"
+        },
+        {
+          "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/service-policy",
+          "url": "http://127.0.0.1:5382/api/concert/events/00000000-0000-4000-8000-000000000201/service-policy?client_version=0.1.0&client_release=aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+          "method": "GET",
+          "key": null,
+          "baseline": false,
+          "authorized": true,
+          "cache": "no-store",
+          "credentials": "same-origin"
+        },
+        {
+          "path": "/api/auth/enrollment/admission",
+          "url": "http://127.0.0.1:5382/api/auth/enrollment/admission",
+          "method": "GET",
+          "key": null,
+          "baseline": false,
+          "authorized": true,
+          "cache": "no-store",
+          "credentials": "include"
+        },
+        {
+          "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/bootstrap",
+          "url": "http://127.0.0.1:5382/api/concert/events/00000000-0000-4000-8000-000000000201/bootstrap",
+          "method": "GET",
+          "key": null,
+          "baseline": false,
+          "authorized": true,
+          "cache": "no-store",
+          "credentials": "same-origin"
+        },
+        {
+          "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/rooms",
+          "url": "http://127.0.0.1:5382/api/concert/events/00000000-0000-4000-8000-000000000201/rooms",
+          "method": "GET",
+          "key": null,
+          "baseline": false,
+          "authorized": true,
+          "cache": "no-store",
+          "credentials": "same-origin"
+        },
+        {
+          "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/places",
+          "url": "http://127.0.0.1:5382/api/concert/events/00000000-0000-4000-8000-000000000201/places",
+          "method": "GET",
+          "key": null,
+          "baseline": false,
+          "authorized": true,
+          "cache": "no-store",
+          "credentials": "same-origin"
+        },
+        {
+          "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/world-tickets",
+          "url": "http://127.0.0.1:5382/api/concert/events/00000000-0000-4000-8000-000000000201/world-tickets",
+          "method": "POST",
+          "key": null,
+          "baseline": false,
+          "authorized": true,
+          "cache": "no-store",
+          "credentials": "same-origin"
+        },
+        {
+          "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/intros",
+          "url": "http://127.0.0.1:5382/api/concert/events/00000000-0000-4000-8000-000000000201/intros?limit=20",
+          "method": "GET",
+          "key": null,
+          "baseline": true,
+          "authorized": true,
+          "cache": "no-store",
+          "credentials": "same-origin"
+        },
+        {
+          "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/me/intro",
+          "url": "http://127.0.0.1:5382/api/concert/events/00000000-0000-4000-8000-000000000201/me/intro",
+          "method": "GET",
+          "key": null,
+          "baseline": true,
+          "authorized": true,
+          "cache": "no-store",
+          "credentials": "same-origin"
+        },
+        {
+          "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/me/age-status",
+          "url": "http://127.0.0.1:5382/api/concert/events/00000000-0000-4000-8000-000000000201/me/age-status",
+          "method": "GET",
+          "key": null,
+          "baseline": true,
+          "authorized": true,
+          "cache": "no-store",
+          "credentials": "same-origin"
+        },
+        {
+          "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/me/notifications",
+          "url": "http://127.0.0.1:5382/api/concert/events/00000000-0000-4000-8000-000000000201/me/notifications?limit=20&unread_only=false",
+          "method": "GET",
+          "key": null,
+          "baseline": true,
+          "authorized": true,
+          "cache": "no-store",
+          "credentials": "same-origin"
+        },
+        {
+          "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/me/social-handles",
+          "url": "http://127.0.0.1:5382/api/concert/events/00000000-0000-4000-8000-000000000201/me/social-handles",
+          "method": "GET",
+          "key": null,
+          "baseline": true,
+          "authorized": true,
+          "cache": "no-store",
+          "credentials": "same-origin"
+        },
+        {
+          "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/me/social-requests",
+          "url": "http://127.0.0.1:5382/api/concert/events/00000000-0000-4000-8000-000000000201/me/social-requests?direction=INCOMING&limit=20",
+          "method": "GET",
+          "key": null,
+          "baseline": true,
+          "authorized": true,
+          "cache": "no-store",
+          "credentials": "same-origin"
+        },
+        {
+          "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/me/social-handles",
+          "url": "http://127.0.0.1:5382/api/concert/events/00000000-0000-4000-8000-000000000201/me/social-handles",
+          "method": "GET",
+          "key": null,
+          "baseline": true,
+          "authorized": true,
+          "cache": "no-store",
+          "credentials": "same-origin"
+        },
+        {
+          "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/me/social-requests",
+          "url": "http://127.0.0.1:5382/api/concert/events/00000000-0000-4000-8000-000000000201/me/social-requests?direction=INCOMING&limit=20",
+          "method": "GET",
+          "key": null,
+          "baseline": true,
+          "authorized": true,
+          "cache": "no-store",
+          "credentials": "same-origin"
+        },
+        {
+          "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/me/age-status",
+          "url": "http://127.0.0.1:5382/api/concert/events/00000000-0000-4000-8000-000000000201/me/age-status",
+          "method": "GET",
+          "key": null,
+          "baseline": true,
+          "authorized": true,
+          "cache": "no-store",
+          "credentials": "same-origin"
+        },
+        {
+          "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/me/blocks",
+          "url": "http://127.0.0.1:5382/api/concert/events/00000000-0000-4000-8000-000000000201/me/blocks?limit=20",
+          "method": "GET",
+          "key": null,
+          "baseline": true,
+          "authorized": true,
+          "cache": "no-store",
+          "credentials": "same-origin"
+        },
+        {
+          "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/me/reports",
+          "url": "http://127.0.0.1:5382/api/concert/events/00000000-0000-4000-8000-000000000201/me/reports?limit=20",
+          "method": "GET",
+          "key": null,
+          "baseline": true,
+          "authorized": true,
+          "cache": "no-store",
+          "credentials": "same-origin"
+        },
+        {
+          "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/me/blocks",
+          "url": "http://127.0.0.1:5382/api/concert/events/00000000-0000-4000-8000-000000000201/me/blocks?limit=20",
+          "method": "GET",
+          "key": null,
+          "baseline": true,
+          "authorized": true,
+          "cache": "no-store",
+          "credentials": "same-origin"
+        }
+      ],
+      "frames": [
+        {
+          "type": "snapshot",
+          "streamId": "00000000-0000-4000-8000-000000000020"
+        },
+        {
+          "type": "policy.baseline",
+          "streamId": "00000000-0000-4000-8000-000000000020",
+          "policyRevision": 1
+        }
+      ],
+      "baselineEnabled": true,
+      "policyRevision": 1,
+      "sockets": 1,
+      "activeSockets": 1,
+      "peakSockets": 1,
+      "peakCanvases": 1,
+      "canvases": 1,
+      "sameHost": true,
+      "sameCanvas": true
+    }
+  },
+  "finishedAt": "2026-11-05T02:32:49.994Z"
+}

@@ -1,3 +1,4 @@
+import '../parade-ink-private/private.css'
 import { useSyncExternalStore } from 'react'
 import type { InboxController, InboxFailure } from '../model/controller'
 import type { InboxNotification } from '../model/contract'
@@ -17,7 +18,7 @@ export function Inbox({ controller }: { controller: InboxController }) {
   const state = useSyncExternalStore(controller.subscribe, controller.read, controller.read)
   const blocked = ['sending', 'checking', 'uncertain', 'retired'].includes(state.command.phase)
   const loading = state.phase === 'loading'
-  return <section className="mcr-inbox" aria-label="Notification inbox">
+  return <section className="mcr-inbox pi-private-inbox" aria-label="Notification inbox">
     <header><p className="inbox-eyebrow">Your event updates</p><h1>INBOX</h1><p>Private updates for your current account and event.</p></header>
     {!state.available ? <p role="status">Inbox is unavailable for the current account or event.</p> : <>
       <div className="inbox-controls"><label><input type="checkbox" checked={state.unreadOnly} onChange={e => controller.setUnreadOnly(e.target.checked)} /> Unread only</label>

@@ -1,3 +1,4 @@
+import '../../features/social-sharing/ui/parade-ink-private/private.css'
 import { useEffect, useSyncExternalStore } from 'react'
 import { createSocialSharingController, HandleSettings, SharingOffer, SharingRequest, SharingRequests } from '../../features/social-sharing'
 import { ShellLink } from '../navigation'
@@ -34,7 +35,7 @@ export const canonicalSharingRequests: NonNullable<SocialOptions['requests']> = 
         }
         return controller.hideSecret
       }, [current.path, current.detail, current.offer, state.available])
-      return <div className="social-sharing-entry">
+      return <div className="social-sharing-entry pi-private-social">
         <nav aria-label="Private sharing sections">
           <ShellLink id="sharing-handles" to="/me/social" aria-current={current.path === '/me/social' ? 'page' : undefined}>Social links</ShellLink>
           <ShellLink id="sharing-requests" to="/me/requests" aria-current={current.path === '/me/requests' ? 'page' : undefined}>Requests</ShellLink>

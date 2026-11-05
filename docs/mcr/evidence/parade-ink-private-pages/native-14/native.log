@@ -1,0 +1,10 @@
+node:internal/modules/run_main:107
+    triggerUncaughtException(
+    ^
+
+locator.innerText: Target page, context or browser has been closed
+    at /Users/lhs/Desktop/mcr-worktrees/fe-reference-frame-footer/frontend/e2e/visual/parade-ink-private-pages/native.mjs:151:109 {
+  log: []
+}
+
+Node.js v24.22.2

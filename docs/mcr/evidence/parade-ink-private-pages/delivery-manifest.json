@@ -1,0 +1,220 @@
+{
+  "taskId": "PI12",
+  "status": "IN_PROGRESS",
+  "disposition": "Developer validation complete; direct publishing-owner handoff ready; canonical publication pending",
+  "baseCommit": "2b3819fbe686b03769648e698c3741b8f9debe18",
+  "validatedCandidate": "3459fbb136f2e22dbfb0ab85f19f1e7033637b22",
+  "branch": "codex/mcr-fe-PI12-private-pages",
+  "presentationCommits": [
+    "4ad21a802863209f5de88f9f71e5d62fe5e8f16b",
+    "f5a4aa246e2a82dcb2be69b12864c93ca89e3ad4"
+  ],
+  "productionPostimages": [
+    {
+      "path": "frontend/src/app/account-deletion-entry/panel.tsx",
+      "sha256": "f2bf00cd2fa6839d93f727c050cdf632b63d2cb7a1d11bd9fde912a8ff557dc0"
+    },
+    {
+      "path": "frontend/src/app/archive-entry/index.tsx",
+      "sha256": "3948b7b41a375fb719c9faf207346c9086737cdd2867485591300bd90129fef3"
+    },
+    {
+      "path": "frontend/src/app/safety-entry/panels.tsx",
+      "sha256": "bf83a775cc5114889de3ed66ac8b5b4b355875485bf07a0f2fc632d49777276e"
+    },
+    {
+      "path": "frontend/src/app/social-composition/sharing.tsx",
+      "sha256": "2f178042fc4e673e1b5adabe691708b1407a2f3c5b01e9789dac1eb93fe4517c"
+    },
+    {
+      "path": "frontend/src/features/account/panel.tsx",
+      "sha256": "f328c2701e16273c5a0ba0a7dc27e462e5d3ec99f60d5154ae923b3c3c97c98b"
+    },
+    {
+      "path": "frontend/src/features/age-status/AgeStatus.tsx",
+      "sha256": "d1f77258017426eb2ba6b6d289a7994070665f3184e513bc9102d48d0945ecb3"
+    },
+    {
+      "path": "frontend/src/features/archive/ArchivePage.tsx",
+      "sha256": "4df5b1774817640b8f00e2de2e1f20530cd7ffd0d583bcb44e9dc30cbec49c10"
+    },
+    {
+      "path": "frontend/src/features/inbox/ui/Inbox.tsx",
+      "sha256": "cdb48c34c1a3260e3e88f74b992dfa7da21bc71a828ea090140c93ac01063c5c"
+    },
+    {
+      "path": "frontend/src/features/safety/panels.tsx",
+      "sha256": "4e9c8b97bae1099e10d6b98ab9054f5b7e15f6bb6764e01098f60d4763703640"
+    },
+    {
+      "path": "frontend/src/features/social-sharing/ui/SocialSharing.tsx",
+      "sha256": "90e2c5a47e3f1615cb6d85ae4b3a2340857040b40a036517dec4a6e374596b61"
+    },
+    {
+      "path": "frontend/src/features/account/parade-ink-private/private.css",
+      "sha256": "1c9ad1d83e57dee6bc0e9ccd73359c639184522ea61067b3a1453cfb4b97597b"
+    },
+    {
+      "path": "frontend/src/features/age-status/parade-ink-private/private.css",
+      "sha256": "681bc65c1139c598c67bcaf7e6dbb02a8f0638ddc28a04679f253121f5f804d6"
+    },
+    {
+      "path": "frontend/src/features/archive/parade-ink-private/private.css",
+      "sha256": "1ca799a1ed1ef129b7270b6f787058fbf44ef9daa2e5a7b7d107516c562ab354"
+    },
+    {
+      "path": "frontend/src/features/inbox/parade-ink-private/private.css",
+      "sha256": "858c0d62867457b6d2b2ed808875f468193fda3b0a11f72270b72cc1a1b3c916"
+    },
+    {
+      "path": "frontend/src/features/safety/parade-ink-private/private.css",
+      "sha256": "2a9e0d97cdf0e4349bbc8c2ffc44d6c664fe5c2c7c7f43fe801eeaedb4c056cb"
+    },
+    {
+      "path": "frontend/src/features/social-sharing/ui/parade-ink-private/private.css",
+      "sha256": "cb58d6b4499a770b8ef18b5b5070c20371b3e125db2f5eb4756991573428ae40"
+    }
+  ],
+  "foundation": {
+    "sourceCommit": "b5b44e47531e3b75febc5ee5cdd6a11b1648779c",
+    "canonicalCommit": "f70ad7eaf72580628a6a58a296ff37703311f0b6",
+    "readsetSHA256": "9630cc0b8b487b6a6348612dbadc27be868729f5e5189f61c5a559b31558c2c9"
+  },
+  "functionalDependency": {
+    "taskId": "FE-DIALOG-ESC-01",
+    "status": "QUALIFIED_OWNER_HANDOFF",
+    "path": "frontend/src/features/safety/Dialog.tsx",
+    "commit": "e80a9dd935b3ffb3d7aeb1fa53c52118e5b9055a",
+    "sha256": "0182adfdde950ff5c27802f3539e8cf6eb05fc6523ef78cf2e18260e0a408f81",
+    "blob": "1eb151acc815b7e1ce3d44fa768ea5cc7447d33e",
+    "bytes": 1659,
+    "writerThreadId": "01a19f83-2c2a-7fa0-a98d-1c4f5f65cb3c",
+    "qualification": {
+      "ownerHandoffReceivedAt": "2026-11-05T04:19:49.464528+00:00",
+      "native06": {
+        "status": "PASS",
+        "changedDriverLintExit": 0,
+        "nativeExit": 0,
+        "actualFullEpoch": 1793852210.6657012,
+        "resources": 0,
+        "dependencyLinkAbsent": true,
+        "temporaryAbsent": true,
+        "freshCases": 2,
+        "retainedNative04CompletedCases": 7,
+        "aggregatePassedCases": 9,
+        "newPngs": 0,
+        "evidenceRoot": "/Users/lhs/Desktop/mcr-worktrees/fe-ref-map/docs/mcr/evidence/parade-ink-report-error-network/dialog-escape-native06",
+        "sha256": {
+          "dialog-native.json": "93474108806606815a19415df84b0abb428d8e66e13d1028ad7ad5929a11bd72",
+          "guardian.json": "eae2dc88b06d60af4d20607946a424b57f481c91ca227178098a26bfb9d819f2"
+        }
+      },
+      "behavior": "Escape stopPropagation only; no preventDefault, WorldShell or caller edits. Blocks 390x844 and 390x480 retain route, native cancel once and opener focus; Tab/ShiftTab contained; account, ordinary outside-modal shell and Report cancel paths pass without mutations.",
+      "boundary": "Responsible-owner validation in actual main/canonical Auth/production readiness with controlled HTTP/C05. No live/device/latest-master claim; prior overall failed rounds remain failed. Consumer native proof remains required."
+    }
+  },
+  "validation": {
+    "sourceTests": "SOURCE05 21/21 PASS exit0; exact preserved source and fixture pins retained by NATIVE18",
+    "strictFrontendTypes": "NATIVE04 exit0; full unchanged frontend tsconfig strict/includes, private TMP dependency binding",
+    "applicationTestLint": "NATIVE04 exit0; unchanged scoped application/test sources",
+    "fixtureLint": "NATIVE05 exit0; exact retained preview checks from NATIVE12",
+    "native18Commands": [
+      {
+        "label": "changed-driver-lint",
+        "command": [
+          "/Users/lhs/Desktop/mcr/frontend/node_modules/.bin/oxlint",
+          "--deny-warnings",
+          "e2e/visual/parade-ink-private-pages/native.mjs"
+        ],
+        "startedEpoch": 1793852422.639452,
+        "exitCode": 0,
+        "finishedEpoch": 1793852423.807749
+      },
+      {
+        "label": "driver-syntax",
+        "command": [
+          "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node",
+          "--check",
+          "e2e/visual/parade-ink-private-pages/native.mjs"
+        ],
+        "startedEpoch": 1793852424.6906419,
+        "exitCode": 0,
+        "finishedEpoch": 1793852425.765066
+      },
+      {
+        "label": "native",
+        "command": [
+          "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node",
+          "e2e/visual/parade-ink-private-pages/native.mjs"
+        ],
+        "startedEpoch": 1793852427.5900202,
+        "exitCode": 0,
+        "finishedEpoch": 1793852457.908949
+      },
+      {
+        "label": "reference-comparison",
+        "command": [
+          "/Library/Frameworks/Python.framework/Versions/3.14/bin/python3",
+          "-B",
+          "/Users/lhs/Desktop/mcr-worktrees/fe-reference-frame-footer/frontend/src/app/__tests__/parade-ink-private-pages/compare.py",
+          "/Users/lhs/Desktop/mcr-worktrees/fe-reference-frame-footer/docs/mcr/evidence/parade-ink-private-pages/native-18/capture"
+        ],
+        "startedEpoch": 1793852459.014774,
+        "exitCode": 0,
+        "finishedEpoch": 1793852460.485665
+      }
+    ],
+    "native18GuardianSHA256": "034e57a6dead3eb9eca2ec4a6961411a5b6c8c8922ad25bb6946e83f2bd7ebd2",
+    "native18ReportSHA256": "7620e861367c3ff1468e70451e607171a4e65e5ea987ac2b14fbdb1f90808f46",
+    "comparisonSHA256": "e9a8fc4cd1a8af8b76b73f440e614b0b667125a9637c5eb0c0fd427022780372",
+    "nativeCases": [
+      {
+        "name": "seven-default-routes-360",
+        "status": "PASS"
+      },
+      {
+        "name": "390-sharing-consent-grant-expiry-revocation-and-terminal-states",
+        "status": "PASS"
+      },
+      {
+        "name": "390-private-consent-expiry-cancel-focus-commands-states",
+        "status": "PASS"
+      },
+      {
+        "name": "seven-default-routes-390",
+        "status": "PASS"
+      },
+      {
+        "name": "seven-default-routes-430",
+        "status": "PASS"
+      }
+    ],
+    "retainedPositiveCaptures": 16,
+    "newPositiveCaptures": 17,
+    "completePositiveCaptures": 33,
+    "familyPNGCount": 44,
+    "familyPNGBytes": 3231467,
+    "ownerVisualInspection": "All 17 new original captures and reference contact sheet inspected after literal FULL. Earlier 16 qualified originals were already inspected. Readable paper/ink typography, symmetric controls, no horizontal overflow or prohibited left accents; 390x480 modal contents/actions fit and focus remains visible. Half panels use normal scrolling; no unpictured page pixel-parity claim.",
+    "historicalFailures": "All earlier whole-round failures/raw artifacts retained byte-exact; four NATIVE17 image-only states remain unqualified and were recaptured in passing NATIVE18."
+  },
+  "resourceRelease": {
+    "actualFullEpoch": 1793852461.455766,
+    "resources": 0,
+    "cleanup": {
+      "linkAbsent": true,
+      "tempAbsent": true,
+      "secondaryExited": true,
+      "portAbsent": true,
+      "beforeOriginalDeadline": true
+    },
+    "peakWholeBytes": 6200139776,
+    "nonresettingCarryBytes": 536870912,
+    "cumulativeFamilyLimitBytes": 603979776
+  },
+  "publicationRouting": "Publisher412e composes exact assigned hunks with Safety83 Report changes and separately qualified Dialog dependency; owns current canonical combined checks, reconciliation and push to julymeltdown/mcr master without force push. No king/SL review or ACK.",
+  "limitations": [
+    "Controlled HTTP/C05 in actual default main/canonical Auth/production readiness; no live multiuser, physical-device, release or latest-master claim.",
+    "Seven assigned pages are absent from the supplied reference; comparison qualifies shared anatomy/tokens, not exact page-image parity.",
+    "Original FE34 persistent goal remains BLOCKED/incompatible and is not completed or reset."
+  ]
+}

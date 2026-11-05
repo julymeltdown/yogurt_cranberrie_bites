@@ -1,3 +1,4 @@
+import './parade-ink-private/private.css'
 import { useEffect, useState, useSyncExternalStore } from 'react'
 import type { SafetyController } from './controller'
 import { reasons } from './contract'
@@ -33,7 +34,7 @@ export function BlocksPanel({controller,onBack}:{controller:SafetyController;onB
  useEffect(()=>{setConfirm(null);void controller.loadBlocks()},[controller])
  useEffect(()=>{setConfirm(value=>value?.owner===controller&&s.blocks?.items.some(item=>item.target_user_id===value.id&&item.revision===value.revision)?value:null)},[controller,s.blocks])
  const locked=!controller.blocksAvailable||['submitting','pending','unknown','failed','closed'].includes(s.phase)
- return <section className="mcr-safety-panel" aria-labelledby="mcr-blocks-title">
+ return <section className="mcr-safety-panel pi-private-blocks" aria-labelledby="mcr-blocks-title">
   <button type="button" onClick={onBack}>Back</button><h1 id="mcr-blocks-title">Blocked users</h1>
   <p>Blocking closes affected private views. Unblocking never restores previous consent or social access.</p>
   {s.blocksPhase==='loading'&&<p role="status">Loading blocked users…</p>}

@@ -1,0 +1,12 @@
+{
+  "guard": "independent-secondary",
+  "startedEpoch": 1793849977.349938,
+  "samples": 19,
+  "peakProcesses": 14,
+  "peakRssKiB": 2910416,
+  "peakWholeBytes": 6186934272,
+  "error": "ordinary role cannot cover runtime payload",
+  "errorType": "AssertionError",
+  "errorTraceback": "Traceback (most recent call last):\n  File \"/Users/lhs/Desktop/mcr-worktrees/fe-reference-frame-footer/frontend/src/app/__tests__/parade-ink-private-pages/watchdog.py\", line 31, in <module>\n    value = sample(config)\n  File \"/Users/lhs/Desktop/mcr-worktrees/fe-reference-frame-footer/frontend/src/app/__tests__/parade-ink-private-pages/guard_support.py\", line 66, in sample\n    membership_value = membership.sample()\n  File \"/Users/lhs/Desktop/mcr-worktrees/fe-reference-frame-footer/frontend/src/app/__tests__/parade-ink-private-pages/membership.py\", line 224, in sample\n    result = _sample(proposed, before)\n  File \"/Users/lhs/Desktop/mcr-worktrees/fe-reference-frame-footer/frontend/src/app/__tests__/parade-ink-private-pages/membership.py\", line 175, in _sample\n    assert not heavy and not script_child, 'ordinary role cannot cover runtime payload'\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError: ordinary role cannot cover runtime payload\n",
+  "finishedEpoch": 1793850006.693377
+}

@@ -1,0 +1,110 @@
+{
+  "status": "FAIL",
+  "browser": "156.0.8078.80",
+  "startedAt": "2026-11-05T02:19:58.594Z",
+  "qualification": "ACTUAL_MAIN_CANONICAL_AUTH_PRODUCTION_READINESS_CONTROLLED_HTTP_C05_NOT_LIVE_OR_DEVICE",
+  "cases": [],
+  "screenshots": [],
+  "errors": [],
+  "failure": {
+    "stage": "seven normal routes 360",
+    "error": "Error: expect(locator).toBeVisible() failed\n\nLocator: getByRole('heading', { name: 'SOCIAL LINKS', exact: true })\nExpected: visible\nTimeout: 5000ms\nError: element(s) not found\n\nCall log:\n  - Expect \"to.be.visible\" with timeout 5000ms\n  - waiting for getByRole('heading', { name: 'SOCIAL LINKS', exact: true })\n",
+    "text": "WORLD IS PAUSED\n\nThe world will recover when its viewport is visible again.\n\nBack to world\nBack to home\nSkip to content\nSOCIAL LINKS\n\nThis section is unavailable for the current account or event.",
+    "state": {
+      "path": "/me/social",
+      "requests": [
+        {
+          "path": "/api/auth/capabilities",
+          "url": "http://127.0.0.1:5382/api/auth/capabilities",
+          "method": "GET",
+          "key": null,
+          "baseline": false,
+          "authorized": false,
+          "cache": "no-store",
+          "credentials": "same-origin"
+        },
+        {
+          "path": "/api/auth/login",
+          "url": "http://127.0.0.1:5382/api/auth/login",
+          "method": "POST",
+          "key": null,
+          "baseline": false,
+          "authorized": false,
+          "cache": "no-store",
+          "credentials": "same-origin"
+        },
+        {
+          "path": "/api/auth/enrollment/admission",
+          "url": "http://127.0.0.1:5382/api/auth/enrollment/admission",
+          "method": "GET",
+          "key": null,
+          "baseline": false,
+          "authorized": true,
+          "cache": "no-store",
+          "credentials": "include"
+        },
+        {
+          "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/service-policy",
+          "url": "http://127.0.0.1:5382/api/concert/events/00000000-0000-4000-8000-000000000201/service-policy?client_version=0.1.0&client_release=aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+          "method": "GET",
+          "key": null,
+          "baseline": false,
+          "authorized": true,
+          "cache": "no-store",
+          "credentials": "same-origin"
+        },
+        {
+          "path": "/api/auth/enrollment/admission",
+          "url": "http://127.0.0.1:5382/api/auth/enrollment/admission",
+          "method": "GET",
+          "key": null,
+          "baseline": false,
+          "authorized": true,
+          "cache": "no-store",
+          "credentials": "include"
+        },
+        {
+          "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/bootstrap",
+          "url": "http://127.0.0.1:5382/api/concert/events/00000000-0000-4000-8000-000000000201/bootstrap",
+          "method": "GET",
+          "key": null,
+          "baseline": false,
+          "authorized": true,
+          "cache": "no-store",
+          "credentials": "same-origin"
+        },
+        {
+          "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/rooms",
+          "url": "http://127.0.0.1:5382/api/concert/events/00000000-0000-4000-8000-000000000201/rooms",
+          "method": "GET",
+          "key": null,
+          "baseline": false,
+          "authorized": true,
+          "cache": "no-store",
+          "credentials": "same-origin"
+        },
+        {
+          "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/places",
+          "url": "http://127.0.0.1:5382/api/concert/events/00000000-0000-4000-8000-000000000201/places",
+          "method": "GET",
+          "key": null,
+          "baseline": false,
+          "authorized": true,
+          "cache": "no-store",
+          "credentials": "same-origin"
+        }
+      ],
+      "frames": [],
+      "baselineEnabled": true,
+      "policyRevision": 1,
+      "sockets": 0,
+      "activeSockets": 0,
+      "peakSockets": 0,
+      "peakCanvases": 1,
+      "canvases": 1,
+      "sameHost": true,
+      "sameCanvas": true
+    }
+  },
+  "finishedAt": "2026-11-05T02:20:07.153Z"
+}

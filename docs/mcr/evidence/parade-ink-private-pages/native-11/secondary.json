@@ -1,0 +1,10 @@
+{
+  "guard": "independent-secondary",
+  "startedEpoch": 1793848184.771022,
+  "samples": 0,
+  "peakProcesses": 0,
+  "peakRssKiB": 0,
+  "peakWholeBytes": 0,
+  "error": "resource controller identity mismatch: {\"owner\": \"01a1a1fe-1eed-7d12-a247-879cd521e0ec\", \"pid\": 57362, \"birth\": \"Thu Nov 5 12:09:37 2026\", \"expectedScript\": \"/Users/lhs/Desktop/mcr-worktrees/art-runtime/docs/mcr/evidence/venue-root-binding/qualify.py\", \"observedExecutable\": \"/Library/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python\", \"observedCommandSHA256\": \"e0ec248f219c62a8bbb5cd72844c6fa0795300e1ce692d23874eddf22ed7e303\", \"commandLength\": 144}",
+  "finishedEpoch": 1793848184.941917
+}

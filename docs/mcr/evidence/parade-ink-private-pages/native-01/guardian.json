@@ -1,0 +1,132 @@
+{
+  "job": "PI12-PRIVATE-COMBINED-NATIVE01-0133",
+  "status": "FAIL",
+  "candidate": "f5a4aa246e2a82dcb2be69b12864c93ca89e3ad4",
+  "acceptedEpoch": 1793842514.0,
+  "workDeadline": 1793842814.0,
+  "cleanupDeadline": 1793842874.0,
+  "foundationCommit": "b5b44e47531e3b75febc5ee5cdd6a11b1648779c",
+  "port": 5382,
+  "limits": {
+    "workSeconds": 300,
+    "cleanupSeconds": 60,
+    "processes": 24,
+    "rssMiB": 4096,
+    "wholeBytes": 8589934592,
+    "newGrowthBytes": 268435456,
+    "tempBytes": 134217728,
+    "durableBytes": 16777216,
+    "logBytes": 2097152
+  },
+  "admission": {
+    "freeBytes": 23341936640,
+    "otherNewBytes": 4294967296,
+    "ownRemainingNewBytes": 134217728,
+    "residualBytes": 18912751616
+  },
+  "initialInventory": {
+    "roots": [
+      {
+        "path": "/Users/lhs/Desktop/mcr-worktrees/fe-reference-frame-footer",
+        "inodes": 16002,
+        "allocatedBytes": 1484632064
+      },
+      {
+        "path": "/Users/lhs/Desktop/mcr-worktrees/fe-mural-editor",
+        "inodes": 4942,
+        "allocatedBytes": 77512704
+      },
+      {
+        "path": "/Users/lhs/Desktop/mcr-worktrees/fe-wall-reference-target",
+        "inodes": 2590,
+        "allocatedBytes": 63672320
+      },
+      {
+        "path": "/Users/lhs/Desktop/mcr-worktrees/be-party-runtime",
+        "inodes": 4042,
+        "allocatedBytes": 72794112
+      },
+      {
+        "path": "/Users/lhs/Desktop/mcr/frontend/node_modules",
+        "inodes": 13420,
+        "allocatedBytes": 438317056
+      },
+      {
+        "path": "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64",
+        "inodes": 5888,
+        "allocatedBytes": 209088512
+      },
+      {
+        "path": "/Users/lhs/Desktop/mcr/.git",
+        "inodes": 4346,
+        "allocatedBytes": 1211338752
+      },
+      {
+        "path": "/Applications/Google Chrome.app",
+        "inodes": 1339,
+        "allocatedBytes": 1527132160
+      },
+      {
+        "path": "/Library/Frameworks/Python.framework/Versions/3.14",
+        "inodes": 28412,
+        "allocatedBytes": 1045037056
+      }
+    ],
+    "uniqueInodes": 80981,
+    "allocatedBytes": 6129524736
+  },
+  "nonresettingNewCarryBytes": 134217728,
+  "priorHistoricalMaxBytes": 6127656960,
+  "sourceSha256": {
+    "frontend/src/app/account-deletion-entry/panel.tsx": "f2bf00cd2fa6839d93f727c050cdf632b63d2cb7a1d11bd9fde912a8ff557dc0",
+    "frontend/src/app/archive-entry/index.tsx": "3948b7b41a375fb719c9faf207346c9086737cdd2867485591300bd90129fef3",
+    "frontend/src/app/safety-entry/panels.tsx": "bf83a775cc5114889de3ed66ac8b5b4b355875485bf07a0f2fc632d49777276e",
+    "frontend/src/app/social-composition/sharing.tsx": "2f178042fc4e673e1b5adabe691708b1407a2f3c5b01e9789dac1eb93fe4517c",
+    "frontend/src/features/account/panel.tsx": "f328c2701e16273c5a0ba0a7dc27e462e5d3ec99f60d5154ae923b3c3c97c98b",
+    "frontend/src/features/age-status/AgeStatus.tsx": "d1f77258017426eb2ba6b6d289a7994070665f3184e513bc9102d48d0945ecb3",
+    "frontend/src/features/archive/ArchivePage.tsx": "4df5b1774817640b8f00e2de2e1f20530cd7ffd0d583bcb44e9dc30cbec49c10",
+    "frontend/src/features/inbox/ui/Inbox.tsx": "cdb48c34c1a3260e3e88f74b992dfa7da21bc71a828ea090140c93ac01063c5c",
+    "frontend/src/features/safety/panels.tsx": "4e9c8b97bae1099e10d6b98ab9054f5b7e15f6bb6764e01098f60d4763703640",
+    "frontend/src/features/social-sharing/ui/SocialSharing.tsx": "90e2c5a47e3f1615cb6d85ae4b3a2340857040b40a036517dec4a6e374596b61",
+    "frontend/src/features/account/parade-ink-private/private.css": "1c9ad1d83e57dee6bc0e9ccd73359c639184522ea61067b3a1453cfb4b97597b",
+    "frontend/src/features/age-status/parade-ink-private/private.css": "681bc65c1139c598c67bcaf7e6dbb02a8f0638ddc28a04679f253121f5f804d6",
+    "frontend/src/features/archive/parade-ink-private/private.css": "1ca799a1ed1ef129b7270b6f787058fbf44ef9daa2e5a7b7d107516c562ab354",
+    "frontend/src/features/inbox/parade-ink-private/private.css": "858c0d62867457b6d2b2ed808875f468193fda3b0a11f72270b72cc1a1b3c916",
+    "frontend/src/features/safety/parade-ink-private/private.css": "2a9e0d97cdf0e4349bbc8c2ffc44d6c664fe5c2c7c7f43fe801eeaedb4c056cb",
+    "frontend/src/features/social-sharing/ui/parade-ink-private/private.css": "cb58d6b4499a770b8ef18b5b5070c20371b3e125db2f5eb4756991573428ae40",
+    "frontend/src/app/__tests__/parade-ink-private-pages/compare.py": "50b73ff256fd969434a3c73167089bf92adc841325d05809a9960e6e5c9ca147",
+    "frontend/src/app/__tests__/parade-ink-private-pages/guard_support.py": "43b4fea85383037dd9eadbea913200e2abd777c00017e77b3cc0a5cefb4e3bfb",
+    "frontend/src/app/__tests__/parade-ink-private-pages/membership.py": "665a65d1fec2c1e6ae57f91b3db9cd529a0b34f98474221a8391b8c1b947cca6",
+    "frontend/src/app/__tests__/parade-ink-private-pages/native-round.py": "7670ba1d2768a93102f3922047cb33c6113de95716f903e983ff1be0c573640a",
+    "frontend/src/app/__tests__/parade-ink-private-pages/pages.test.tsx": "0016b4275c754c8ab4631683522ae8476495e70df4fa76f32be394c7cd80cca9",
+    "frontend/src/app/__tests__/parade-ink-private-pages/preservation.test.tsx": "2aaf2b8d324f6af55815d0bca182daa516f613a07da3b9b9b7a8226a5a0b6e35",
+    "frontend/src/app/__tests__/parade-ink-private-pages/source-round.py": "75e39cc0b925d14ffadc41e3519813facd397946d6e1898d9a29084616ae7683",
+    "frontend/src/app/__tests__/parade-ink-private-pages/vitest.config.mjs": "df2877480471a4f3eac908326864d50531c166feb4ff03218855337da49052ec",
+    "frontend/src/app/__tests__/parade-ink-private-pages/watchdog.py": "44ebc3ccdca81253c6f639aeedaff2e46677535d1ba170f02db597ab7206d960",
+    "frontend/e2e/visual/parade-ink-private-pages/native.mjs": "f35d9fe9bf649cd97af4a7f5079e9fb75cbfd405d5e018deb2225afc396d0616",
+    "frontend/e2e/visual/parade-ink-private-pages/preview.html": "9a63facd350227a024b3a3a2d0ec4054e24ee19017d1bea6b0a1a55ceeed810e",
+    "frontend/e2e/visual/parade-ink-private-pages/preview.tsx": "66a4495288d853708d4df6b5db21ea4ae9aa98b1db4bf1d24d370e16d722f8a9",
+    "frontend/e2e/visual/parade-ink-private-pages/service.ts": "a579ddb80de7d0071871634f4094bfb307299cdc764708f19869322de026f210",
+    "frontend/e2e/visual/parade-ink-private-pages/vite.config.ts": "0219c97b4f00d45afd50526e90c13dbbb72b522b1b4745e2528b4b9501cbdf21",
+    "frontend/package.json": "0f7a05587bcf1af5f4d5d077a0c2d90011adc87e1036a61db9ef3acf37c8b7d3",
+    "frontend/pnpm-lock.yaml": "47ca44459819ad0e887d2f4f93394fdf3b1053b8f45edc9ceb0236981feee1f6",
+    "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node": "b6fb419f0f43bb2fbca273700294dd2f3b685a64b60e8417c295f47646a70e4a",
+    "/Library/Frameworks/Python.framework/Versions/3.14/bin/python3.14": "1192b994fbb50303c9df2cc97c9d63797d454c7f57f20ca682877c9e770429aa"
+  },
+  "commands": [],
+  "peakProcesses": 0,
+  "peakRssKiB": 0,
+  "peakWholeBytes": 6129524736,
+  "peakTempBytes": 0,
+  "peakOutputBytes": 0,
+  "error": "Independent secondary guard requested fail-closed cleanup",
+  "remainingOwnDescendants": [],
+  "finishedEpoch": 1793842516.100986,
+  "cleanup": {
+    "linkAbsent": true,
+    "tempAbsent": true,
+    "secondaryExited": true,
+    "portAbsent": true,
+    "beforeOriginalDeadline": true
+  }
+}

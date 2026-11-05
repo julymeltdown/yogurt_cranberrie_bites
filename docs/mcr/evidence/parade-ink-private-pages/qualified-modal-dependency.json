@@ -1,0 +1,33 @@
+{
+  "taskId": "FE-DIALOG-ESC-01",
+  "status": "QUALIFIED_OWNER_HANDOFF",
+  "path": "frontend/src/features/safety/Dialog.tsx",
+  "commit": "e80a9dd935b3ffb3d7aeb1fa53c52118e5b9055a",
+  "sha256": "0182adfdde950ff5c27802f3539e8cf6eb05fc6523ef78cf2e18260e0a408f81",
+  "blob": "1eb151acc815b7e1ce3d44fa768ea5cc7447d33e",
+  "bytes": 1659,
+  "writerThreadId": "01a19f83-2c2a-7fa0-a98d-1c4f5f65cb3c",
+  "qualification": {
+    "ownerHandoffReceivedAt": "2026-11-05T04:19:49.464528+00:00",
+    "native06": {
+      "status": "PASS",
+      "changedDriverLintExit": 0,
+      "nativeExit": 0,
+      "actualFullEpoch": 1793852210.6657012,
+      "resources": 0,
+      "dependencyLinkAbsent": true,
+      "temporaryAbsent": true,
+      "freshCases": 2,
+      "retainedNative04CompletedCases": 7,
+      "aggregatePassedCases": 9,
+      "newPngs": 0,
+      "evidenceRoot": "/Users/lhs/Desktop/mcr-worktrees/fe-ref-map/docs/mcr/evidence/parade-ink-report-error-network/dialog-escape-native06",
+      "sha256": {
+        "dialog-native.json": "93474108806606815a19415df84b0abb428d8e66e13d1028ad7ad5929a11bd72",
+        "guardian.json": "eae2dc88b06d60af4d20607946a424b57f481c91ca227178098a26bfb9d819f2"
+      }
+    },
+    "behavior": "Escape stopPropagation only; no preventDefault, WorldShell or caller edits. Blocks 390x844 and 390x480 retain route, native cancel once and opener focus; Tab/ShiftTab contained; account, ordinary outside-modal shell and Report cancel paths pass without mutations.",
+    "boundary": "Responsible-owner validation in actual main/canonical Auth/production readiness with controlled HTTP/C05. No live/device/latest-master claim; prior overall failed rounds remain failed. Consumer native proof remains required."
+  }
+}

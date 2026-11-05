@@ -1,0 +1,51 @@
+{
+  "observedAtEpoch": 1793848796.182925,
+  "psSnapshotSHA256": "5245186ca67f11b51b3b9e3d4d4d4bdb93483b514e57d572a7366b9a36b797cb",
+  "owners": [
+    "01a19f83-2c2a-7fa0-a98d-1c4f5f65cb3c",
+    "01a1a213-61d6-7a20-a8e7-476649312f8c",
+    "01a1a232-21e2-75c2-8474-a5fa6ae895cd"
+  ],
+  "ordinaryActualPids": [],
+  "reservedProcesses": 80,
+  "reservedRSSBytes": 16642998272,
+  "actualPids": [
+    18248,
+    18662,
+    20930,
+    20971,
+    21046,
+    21050,
+    21067,
+    24362,
+    26587,
+    27132,
+    28151,
+    28442,
+    28524,
+    28545,
+    28546,
+    28547,
+    29490,
+    29495,
+    29496,
+    30381,
+    30391,
+    30392,
+    30541,
+    30618,
+    30620,
+    30625
+  ],
+  "actualRSSBytes": 6099763200,
+  "otherNewUpperBytes": 5100273664,
+  "receiptSnapshotAttempts": 2,
+  "observedRecordTransitions": [
+    {
+      "reason": "unresolved workflow roots: [{\"pid\": 30541, \"parentPid\": 49590, \"birth\": \"Thu Nov 5 12:19:55 2026\", \"executable\": \"/Library/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python\", \"scriptCandidates\": [\"/private/tmp/mcr-auth232-be39-nonignored-05/run.py\"], \"commandSHA256\": \"faa3aa32188bb09f72959433ebf46fa84c119ceab7a17295043c84c6d332cc1a\"}]",
+      "changedOwnerFiles": [
+        "01a1a232-21e2-75c2-8474-a5fa6ae895cd.json"
+      ]
+    }
+  ]
+}

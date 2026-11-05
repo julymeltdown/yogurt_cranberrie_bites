@@ -1,0 +1,188 @@
+{
+  "status": "PASS",
+  "referenceSha256": "9e7f17a666e1ecfc738a14b75bb3a166235a05c401f206aa24f26cf7463cbc27",
+  "referenceCrops": {
+    "tabs-footer": [
+      850,
+      504,
+      1259,
+      635
+    ],
+    "text-row": [
+      850,
+      679,
+      1259,
+      837
+    ]
+  },
+  "transform": "isotropic resize to390px; contact-sheet native images at1/2 scale; originals preserved",
+  "scope": "Seven pages are unpictured. Compare shared reference anatomy/tokens and actual source metrics; no exact page-image pixel parity or whole-image similarity claim.",
+  "fixedRegionDisposition": "Native owner inspection required after FULL. No masks or fabricated unsupported controls.",
+  "rows": [
+    {
+      "file": "/Users/lhs/Desktop/mcr-worktrees/fe-reference-frame-footer/docs/mcr/evidence/parade-ink-private-pages/native-08/capture/social-360.png",
+      "sha256": "ba16f1fe20d265c5e6669807fc77527781efe0e4ee181d08e5f42b4e55c3a54f",
+      "componentChecks": "paper/font/18-22 body/26-32 title/44px controls/no overflow PASS"
+    },
+    {
+      "file": "/Users/lhs/Desktop/mcr-worktrees/fe-reference-frame-footer/docs/mcr/evidence/parade-ink-private-pages/native-08/capture/requests-360.png",
+      "sha256": "d51b68aa156772aab1ec2a6280a7a39d5538d95273cdcb1efdcb1c6b635a3cfb",
+      "componentChecks": "paper/font/18-22 body/26-32 title/44px controls/no overflow PASS"
+    },
+    {
+      "file": "/Users/lhs/Desktop/mcr-worktrees/fe-reference-frame-footer/docs/mcr/evidence/parade-ink-private-pages/native-08/capture/age-360.png",
+      "sha256": "328c2fb237b1ee6e9feaf74d9fb38cc74fccb3951899254cc0eb09c91cdaca10",
+      "componentChecks": "paper/font/18-22 body/26-32 title/44px controls/no overflow PASS"
+    },
+    {
+      "file": "/Users/lhs/Desktop/mcr-worktrees/fe-reference-frame-footer/docs/mcr/evidence/parade-ink-private-pages/native-09/capture/blocks-360.png",
+      "sha256": "c8be247f9d2454c8361e80803b57f6031bf6547132e988b20c7913f889fb26b1",
+      "componentChecks": "paper/font/18-22 body/26-32 title/44px controls/no overflow PASS"
+    },
+    {
+      "file": "/Users/lhs/Desktop/mcr-worktrees/fe-reference-frame-footer/docs/mcr/evidence/parade-ink-private-pages/native-09/capture/account-360.png",
+      "sha256": "8c6b3ffbcd45f0bca223a8ff6910af96cc27ca7718e6318592b14f0b3d420c38",
+      "componentChecks": "paper/font/18-22 body/26-32 title/44px controls/no overflow PASS"
+    },
+    {
+      "file": "/Users/lhs/Desktop/mcr-worktrees/fe-reference-frame-footer/docs/mcr/evidence/parade-ink-private-pages/native-09/capture/inbox-360.png",
+      "sha256": "bbc103f3fc42386cc8f31580233fb50b8ce92a09d8406b8d9a3f5024add0c0ee",
+      "componentChecks": "paper/font/18-22 body/26-32 title/44px controls/no overflow PASS"
+    },
+    {
+      "file": "/Users/lhs/Desktop/mcr-worktrees/fe-reference-frame-footer/docs/mcr/evidence/parade-ink-private-pages/native-09/capture/archive-360.png",
+      "sha256": "bfe05f5bd4f28f5f3bf56435822e73aba9d51ff7b09139dc4aba33e68eaed200",
+      "componentChecks": "paper/font/18-22 body/26-32 title/44px controls/no overflow PASS"
+    },
+    {
+      "file": "/Users/lhs/Desktop/mcr-worktrees/fe-reference-frame-footer/docs/mcr/evidence/parade-ink-private-pages/native-09/capture/social-390.png",
+      "sha256": "fdf4410e9854d43c394ce76495eaf9c2b33735ead699aeca0c55c04136cb11c2",
+      "componentChecks": "paper/font/18-22 body/26-32 title/44px controls/no overflow PASS"
+    },
+    {
+      "file": "/Users/lhs/Desktop/mcr-worktrees/fe-reference-frame-footer/docs/mcr/evidence/parade-ink-private-pages/native-09/capture/requests-390.png",
+      "sha256": "98452f5131334df8d6a7ded00184943a6ef0b730f1c59388db027494449eda98",
+      "componentChecks": "paper/font/18-22 body/26-32 title/44px controls/no overflow PASS"
+    },
+    {
+      "file": "/Users/lhs/Desktop/mcr-worktrees/fe-reference-frame-footer/docs/mcr/evidence/parade-ink-private-pages/native-09/capture/age-390.png",
+      "sha256": "741b0bd18aa189efc52bf9c45a73f9f0a26fd2fc52592281bf77727f00030296",
+      "componentChecks": "paper/font/18-22 body/26-32 title/44px controls/no overflow PASS"
+    },
+    {
+      "file": "/Users/lhs/Desktop/mcr-worktrees/fe-reference-frame-footer/docs/mcr/evidence/parade-ink-private-pages/native-09/capture/blocks-390.png",
+      "sha256": "4f5751ea11621c0711089ecdae79b0d52c26b5a29fad28c5489997d5b7e051c7",
+      "componentChecks": "paper/font/18-22 body/26-32 title/44px controls/no overflow PASS"
+    },
+    {
+      "file": "/Users/lhs/Desktop/mcr-worktrees/fe-reference-frame-footer/docs/mcr/evidence/parade-ink-private-pages/native-09/capture/account-390.png",
+      "sha256": "0a1bb6b7dd486bff5dc2566a79926bfe5aefc56426d4939c2b4bc692110cc18c",
+      "componentChecks": "paper/font/18-22 body/26-32 title/44px controls/no overflow PASS"
+    },
+    {
+      "file": "/Users/lhs/Desktop/mcr-worktrees/fe-reference-frame-footer/docs/mcr/evidence/parade-ink-private-pages/native-09/capture/inbox-390.png",
+      "sha256": "df3f2758df44d2aa515f4a418eadc45c2207a14890643defdd49a91ed190b0c1",
+      "componentChecks": "paper/font/18-22 body/26-32 title/44px controls/no overflow PASS"
+    },
+    {
+      "file": "/Users/lhs/Desktop/mcr-worktrees/fe-reference-frame-footer/docs/mcr/evidence/parade-ink-private-pages/native-09/capture/social-short-input-390.png",
+      "sha256": "aa5bfadae250f949a362ee67cab57ea9f2996d5abee3a05aac8ed527f06dfe14",
+      "componentChecks": "paper/font/18-22 body/26-32 title/44px controls/no overflow PASS"
+    },
+    {
+      "file": "/Users/lhs/Desktop/mcr-worktrees/fe-reference-frame-footer/docs/mcr/evidence/parade-ink-private-pages/native-09/capture/requests-consent-390.png",
+      "sha256": "e5be97f3bc38449e7d715f43558a2c3683aaacd422d9dc41245ba416ba909ac7",
+      "componentChecks": "paper/font/18-22 body/26-32 title/44px controls/no overflow PASS"
+    },
+    {
+      "file": "/Users/lhs/Desktop/mcr-worktrees/fe-reference-frame-footer/docs/mcr/evidence/parade-ink-private-pages/native-09/capture/request-reveal-390.png",
+      "sha256": "50360d6de4168e33a0655744d6f41caae72742f9e35756add89c716e5b836d54",
+      "componentChecks": "paper/font/18-22 body/26-32 title/44px controls/no overflow PASS"
+    },
+    {
+      "file": "request-rejected-390.png",
+      "sha256": "46756ab22fabeb277134a6b95596bfe65d4f7417ad01f22644463ee52e1c7b12",
+      "componentChecks": "paper/font/18-22 body/26-32 title/44px controls/no overflow PASS"
+    },
+    {
+      "file": "request-expired-390.png",
+      "sha256": "a153b517bf51115bec156774d67b391330cd04e1a4d2fa9b67efca06e1b3cdc6",
+      "componentChecks": "paper/font/18-22 body/26-32 title/44px controls/no overflow PASS"
+    },
+    {
+      "file": "age-provider-unavailable-390.png",
+      "sha256": "e212e5004dc8bf9e7fb49ed180eae42e9ed1f5e0ccc03b3cf83dd79c18953c70",
+      "componentChecks": "paper/font/18-22 body/26-32 title/44px controls/no overflow PASS"
+    },
+    {
+      "file": "blocks-short-dialog-390.png",
+      "sha256": "6a166c669646fb137e9a0d3529d396b818c638e109fb2d5594c93c1e9ef563ea",
+      "componentChecks": "paper/font/18-22 body/26-32 title/44px controls/no overflow PASS"
+    },
+    {
+      "file": "account-short-confirmation-390.png",
+      "sha256": "96fda263980289abd973f3d15ec201c7d1d8334b45a66e06b75396ff904a9648",
+      "componentChecks": "paper/font/18-22 body/26-32 title/44px controls/no overflow PASS"
+    },
+    {
+      "file": "inbox-empty-390.png",
+      "sha256": "b6571dc00304e25803d12aad60d850dcf4c99b0443bdbe87a73b3b0988d4ee3e",
+      "componentChecks": "paper/font/18-22 body/26-32 title/44px controls/no overflow PASS"
+    },
+    {
+      "file": "inbox-error-390.png",
+      "sha256": "75b63e06d866bf5e7b9be5f0a37a471ddcd85f7116b7385d76a6aae4f245a5a8",
+      "componentChecks": "paper/font/18-22 body/26-32 title/44px controls/no overflow PASS"
+    },
+    {
+      "file": "archive-390.png",
+      "sha256": "7d2c85eae9f2166e6a0a5e362d3f8e1c89d3280d29a8a1a2d53cf8a183f4c5a0",
+      "componentChecks": "paper/font/18-22 body/26-32 title/44px controls/no overflow PASS"
+    },
+    {
+      "file": "archive-error-390.png",
+      "sha256": "4d2cc1c7eec55a705051b755f3b6ee489db2ab650ef15c662f891fc2ccc3cc97",
+      "componentChecks": "paper/font/18-22 body/26-32 title/44px controls/no overflow PASS"
+    },
+    {
+      "file": "archive-empty-390.png",
+      "sha256": "84efbd7abcf0158802d8e6b32502f5d2b9cedcb234c22ce8b31c6be212137e07",
+      "componentChecks": "paper/font/18-22 body/26-32 title/44px controls/no overflow PASS"
+    },
+    {
+      "file": "social-430.png",
+      "sha256": "49bfa0a94b2938d3db43c130caffe930ff4bede1ffc6a29d5d69ac36b805b129",
+      "componentChecks": "paper/font/18-22 body/26-32 title/44px controls/no overflow PASS"
+    },
+    {
+      "file": "requests-430.png",
+      "sha256": "2f8374803850ae389d2bbb737ca3fad8358dba687879d70540a5de75a4cf4ef0",
+      "componentChecks": "paper/font/18-22 body/26-32 title/44px controls/no overflow PASS"
+    },
+    {
+      "file": "age-430.png",
+      "sha256": "4d30c64bc9e261b2a9606ff239c70df36ddb95e380471b4edfa61d61a273cbd9",
+      "componentChecks": "paper/font/18-22 body/26-32 title/44px controls/no overflow PASS"
+    },
+    {
+      "file": "blocks-430.png",
+      "sha256": "bbfe127d8d6beb467437622a8e0dede8d1cc452e2097034374a6de6e9e9953e7",
+      "componentChecks": "paper/font/18-22 body/26-32 title/44px controls/no overflow PASS"
+    },
+    {
+      "file": "account-430.png",
+      "sha256": "92c9ceb2fee171e5094024bcdea524155ea4cd75879a99625824fb507db56010",
+      "componentChecks": "paper/font/18-22 body/26-32 title/44px controls/no overflow PASS"
+    },
+    {
+      "file": "inbox-430.png",
+      "sha256": "93c8a734c50129b40cb8b0af2af03a4d56af90bf3302395091574c3114947565",
+      "componentChecks": "paper/font/18-22 body/26-32 title/44px controls/no overflow PASS"
+    },
+    {
+      "file": "archive-430.png",
+      "sha256": "28c2a78aef24a2ad6e460a32f90dfe1df778df9788bb87cd74fa97f20c31c2bd",
+      "componentChecks": "paper/font/18-22 body/26-32 title/44px controls/no overflow PASS"
+    }
+  ]
+}

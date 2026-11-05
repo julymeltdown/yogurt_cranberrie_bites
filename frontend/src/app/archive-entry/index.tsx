@@ -1,3 +1,4 @@
+import '../../features/archive/parade-ink-private/private.css'
 import { useCallback, useEffect, useState, useSyncExternalStore } from 'react'
 import { ArchivePage, createArchiveContext, createArchiveController, createPublicArchiveReader, type ArchiveController } from '../../features/archive'
 import type { SessionPort } from '../../shared/api/http'
@@ -49,7 +50,7 @@ export function ArchiveRoutePanel() {
 
   // Never render a previous event/account while passive owner cleanup is pending.
   if (!owned || owned.eventId !== eventId || owned.session !== session || owned.generation !== generation) {
-    return <main className="event-archive"><p role="status">Opening archive…</p></main>
+    return <main className="event-archive pi-private-archive"><p role="status">Opening archive…</p></main>
   }
   return <ArchivePage controller={owned.controller} />
 }

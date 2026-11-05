@@ -1,3 +1,4 @@
+import './parade-ink-private/private.css'
 import { useEffect, useState, useSyncExternalStore } from 'react'
 import type { SocialSharingController } from '../model/controller'
 import { validHandle, type Platform } from '../model/contract'
@@ -19,7 +20,7 @@ export function HandleSettings({ controller }: { controller: SocialSharingContro
   const state = useSyncExternalStore(controller.subscribe, controller.read, controller.read), [remove, setRemove] = useState<{ platform: Platform; scope: string | null; version: number } | null>(null)
   const busy = ['sending', 'pending', 'uncertain', 'verifying', 'blocked'].includes(state.mutation.phase)
   const removing = remove && state.available && remove.scope === state.scopeKey && state.handles.data?.items.some(h => h.platform === remove.platform && h.version === remove.version && h.configured) ? remove : null
-  return <section className="social-sharing" aria-label="Private social handles"><header><p>Private by default</p><h1>SOCIAL LINKS</h1><p>Account names are optional and never part of your public profile.</p></header><PrivacyCopy />
+  return <section className="social-sharing pi-private-social" aria-label="Private social handles"><header><p>Private by default</p><h1>SOCIAL LINKS</h1><p>Account names are optional and never part of your public profile.</p></header><PrivacyCopy />
     {!state.available && <p role="status">Social settings are unavailable for the current account or event.</p>}{state.readOnly && <p role="status">This event is read-only. You can remove existing handles.</p>}
     <button type="button" disabled={!state.available || busy} onClick={() => { void controller.loadHandles() }}>Reload handle settings</button><ReadStatus slot={state.handles} retry={() => { void controller.loadHandles() }} />
     {state.handles.data?.items.map(handle => <section key={handle.platform} aria-label={`${labels[handle.platform]} settings`}><h2>{labels[handle.platform]}</h2><p>{handle.configured ? 'Configured privately' : 'Not configured'} · Version {handle.version}</p>
@@ -39,7 +40,7 @@ export function HandleSettings({ controller }: { controller: SocialSharingContro
 export function SharingOffer({ controller, retry }: { controller: SocialSharingController; retry: () => void }) {
   const state = useSyncExternalStore(controller.subscribe, controller.read, controller.read), offer = state.offer.data, busy = ['sending', 'pending', 'uncertain', 'verifying', 'blocked'].includes(state.mutation.phase)
   const platforms = offer?.available_handles.filter(h => state.handles.data?.items.some(own => own.platform === h.platform && own.configured)) ?? []
-  return <section className="social-sharing" aria-label="Request sharing"><h1>REQUEST SHARING</h1><PrivacyCopy />
+  return <section className="social-sharing pi-private-social" aria-label="Request sharing"><h1>REQUEST SHARING</h1><PrivacyCopy />
     <ReadStatus slot={state.offer} retry={retry} />
     {!state.available && <p role="status">Sharing is unavailable for the current account or event.</p>}
     {offer && <><p>The current introduction offers platform metadata only. No account name has been revealed.</p>
@@ -52,7 +53,7 @@ export function SharingOffer({ controller, retry }: { controller: SocialSharingC
 }
 export function SharingRequests({ controller, onRequest }: { controller: SocialSharingController; onRequest: (id: string) => void }) {
   const state = useSyncExternalStore(controller.subscribe, controller.read, controller.read), busy = ['sending', 'pending', 'uncertain', 'verifying'].includes(state.mutation.phase)
-  return <section className="social-sharing" aria-label="Sharing requests"><h1>REQUESTS</h1><PrivacyCopy />
+  return <section className="social-sharing pi-private-social" aria-label="Sharing requests"><h1>REQUESTS</h1><PrivacyCopy />
     <label>Direction <select value={state.direction} disabled={busy || !state.available} onChange={e => controller.setDirection(e.target.value as 'INCOMING' | 'OUTGOING')}><option value="INCOMING">Incoming</option><option value="OUTGOING">Outgoing</option></select></label>
     <button type="button" disabled={!state.available} onClick={() => { void controller.loadRequests() }}>Refresh requests</button>
     {!state.available && <p role="status">Requests are unavailable for this account or event.</p>}
@@ -67,7 +68,7 @@ export function SharingRequest({ controller, retry }: { controller: SocialSharin
   useEffect(() => () => controller.hideSecret(), [controller])
   const request = state.detail.data, busy = ['sending', 'pending', 'uncertain', 'verifying', 'blocked'].includes(state.mutation.phase), expired = !!request && Date.parse(request.expires_at) <= state.now
   const recipient = request?.recipient_id === state.userId
-  return <section className="social-sharing" aria-label="Sharing request detail"><h1>SHARING REQUEST</h1><PrivacyCopy /><ReadStatus slot={state.detail} retry={retry} />
+  return <section className="social-sharing pi-private-social" aria-label="Sharing request detail"><h1>SHARING REQUEST</h1><PrivacyCopy /><ReadStatus slot={state.detail} retry={retry} />
     {request && <><p role="status">{expired && ['PENDING', 'APPROVED'].includes(request.state) ? 'EXPIRED' : request.state}</p><p>Expires <time dateTime={request.expires_at}>{new Date(request.expires_at).toLocaleString()}</time></p>
       {!expired && request.state === 'PENDING' && recipient && <form onSubmit={e => { e.preventDefault(); void controller.decide(true) }}>
         <fieldset disabled={busy || state.readOnly || !state.available}><legend>Approve only the platforms you choose</legend>{request.consents.map(c => <label key={c.platform}><input type="checkbox" checked={state.approvedPlatforms.includes(c.platform)} onChange={e => controller.setDecisionPlatform(c.platform, e.target.checked)} /> Exchange {labels[c.platform]} account names</label>)}

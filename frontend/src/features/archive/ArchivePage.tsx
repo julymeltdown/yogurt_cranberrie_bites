@@ -1,3 +1,4 @@
+import './parade-ink-private/private.css'
 import { useEffect, useRef, useSyncExternalStore } from 'react';
 import type { ArchiveController } from './controller';
 import type { FinalMural } from './contract';
@@ -43,7 +44,7 @@ export function ArchivePage({ controller }: {
         if (state.phase === 'ready')
             heading.current?.focus();
     }, [state.phase, state.page]);
-    return <main className="event-archive"><header><p>Event archive</p><h1>After the show</h1><p>Permitted posts and the final wall. This archive is read-only.</p><p>No live activity, private meeting details or social-sharing records are included.</p><button disabled={state.phase === 'loading'} onClick={() => void controller.load()}>Reload archive</button></header>
+    return <main className="event-archive pi-private-archive"><header><p>Event archive</p><h1>After the show</h1><p>Permitted posts and the final wall. This archive is read-only.</p><p>No live activity, private meeting details or social-sharing records are included.</p><button disabled={state.phase === 'loading'} onClick={() => void controller.load()}>Reload archive</button></header>
     {state.phase === 'idle' && <p role="status">Load the public archive for this event.</p>}
     {state.phase === 'loading' && <p role="status">Reading the public archive…</p>}
     {state.failure && <p role="alert">{messages[state.failure]}</p>}
