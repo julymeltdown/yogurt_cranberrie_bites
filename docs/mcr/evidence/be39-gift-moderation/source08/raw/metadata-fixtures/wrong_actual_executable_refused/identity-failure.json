@@ -1,0 +1,15 @@
+{
+  "sampled_at_epoch": 1793843540.5543838,
+  "pid": 69008,
+  "expected_descriptor": {
+    "pid": 69008,
+    "birth": "Thu Nov  5 10:52:20 2026",
+    "executable": "/not-actual-runtime",
+    "script": "/private/tmp/mcr-gift-public-ready-z8ch5q3t/be39-source08-metadata-fixture.py",
+    "cwd": "/Users/lhs/Desktop/mcr-worktrees/be-gifts-live",
+    "outputRoot": "/private/tmp/mcr-gift-be39-source08-x6xy70of/metadata-fixtures/wrong_actual_executable_refused"
+  },
+  "actual_executable": "/Library/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python",
+  "actual_birth": "Thu Nov  5 10:52:20 2026",
+  "command_sha256": "eeeb14aa53d82af50d3ea0142d05609bbfac8d6b524baed60ff3e0139821c698"
+}

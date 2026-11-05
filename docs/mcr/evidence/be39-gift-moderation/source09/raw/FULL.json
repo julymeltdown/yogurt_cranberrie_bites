@@ -1,0 +1,34 @@
+{
+  "ownerThreadId": "01a1a267-37a0-7723-a4e9-a3a6f5b27f52",
+  "offerId": "GIFT-SOURCE09-0159",
+  "acceptedAtEpoch": 1793843622.437131,
+  "actualFullEpoch": 1793843649.327275,
+  "state": "FULL",
+  "result": "PASS",
+  "resourcesReleased": true,
+  "all_owned_released": true,
+  "workflow": 0,
+  "processes": 0,
+  "guardians": 0,
+  "rssBytes": 0,
+  "remainingNewUpperBytes": 0,
+  "targetHold": 0,
+  "targetAccess": "NONE",
+  "exact_identity_absence_checks": [
+    {
+      "pid": 75997,
+      "birth": "Thu Nov  5 10:53:42 2026",
+      "same_identity_live": false
+    },
+    {
+      "pid": 76136,
+      "birth": "Thu Nov  5 10:53:44 2026",
+      "same_identity_live": false
+    }
+  ],
+  "commandsCompleted": 6,
+  "qualification": "SixremainingRustparses/newcontrolASTPASS; retained08partialfivecases/first2/white; no aggregate clean08round or types/SQL/native/productacceptance",
+  "withinOriginalFullDeadline": true,
+  "reportSha256": "3918f845bc856f858bfbd9536a2c5146855ecd16d58f5b3628a67623386f72f9",
+  "retainedWholeMAX": 47533559808
+}

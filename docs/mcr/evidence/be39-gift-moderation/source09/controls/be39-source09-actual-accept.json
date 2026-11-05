@@ -1,0 +1,32 @@
+{
+  "allocation_id": "GIFT-SOURCE09-0159",
+  "actual_accept_epoch": 1793843622.437131,
+  "work_deadline_epoch": 1793843742.437131,
+  "full_deadline_epoch": 1793843802.437131,
+  "output_dir": "/private/tmp/mcr-gift-be39-source09-lkpvkf_3",
+  "allocation_output_root": "/private/tmp/mcr-gift-be39-source09-lkpvkf_3",
+  "source_revision": "855abbfcebda163c79a9c88e5a6c87b286bdfd0d",
+  "private_packet_commit": "0d7e91ee8ca95cc45f01b5aeb5341ec7a239e87d",
+  "retained_carry_bytes": 47518547968,
+  "whole_cap_bytes": 51539607552,
+  "new_limit_bytes": 16777216,
+  "process_cap": 6,
+  "rss_cap_bytes": 536870912,
+  "other_growth_bytes": 6979321856,
+  "free_before_accept_bytes": 23270805504,
+  "readset_sha256": "f468983b086424c3584fbf44f939a0d19054f91cafd0c6a0c9ce6f9cea627932",
+  "private_control_pins": {
+    "/private/tmp/mcr-gift-public-ready-z8ch5q3t/be39_parse_guard_source09.py": "80adbb431eb45a779432f4c097b8da0c7598226191b7cd8b3463b0530c7ce35e",
+    "/private/tmp/mcr-gift-public-ready-z8ch5q3t/be39-source09-runner.py": "ac8b9869726722b987e5fe63de6b567adbfd6a0640c41aaebe4111228852d95d",
+    "/private/tmp/mcr-gift-public-ready-z8ch5q3t/be39-source09-bootstrap.py": "e913aab38987fb870b25b9ebad4dc0d57d541c68cbd507c7be1a642f8bebe14b"
+  },
+  "target_access": "NONE; saved baseline only",
+  "global_controls": {
+    "owner_thread_id": "01a1a267-37a0-7723-a4e9-a3a6f5b27f52",
+    "receipt_directory": "/Users/lhs/Desktop/mcr-evidence/backend-staffing-01a1a21d/owner-resource-receipts",
+    "membership_path": "/Users/lhs/Desktop/mcr-evidence/backend-staffing-01a1a21d/resource-membership-current.json",
+    "peer_releases_path": "/private/tmp/mcr-gift-public-ready-z8ch5q3t/be39-source09-peer-releases.json",
+    "peer_releases_sha256": "70ebe78802b63dbe11b9389267a0a877c04707311836b5c0b4c8c5e9be473ffa"
+  },
+  "outside_census_sha256": "76a0c769194a14153dd50457168422d9b79cc71d349f2ff674110b3e9a883b19"
+}

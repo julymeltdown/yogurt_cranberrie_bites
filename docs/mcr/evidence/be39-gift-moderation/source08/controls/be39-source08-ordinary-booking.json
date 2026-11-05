@@ -1,0 +1,45 @@
+{
+  "grant": "GIFT-RESULTDOC4-0159",
+  "recorded_epoch": 1793843531.2700312,
+  "deadline_epoch": 1793845200,
+  "additional_upper_bytes": 4194304,
+  "old_DOC4_expired_epoch": 1793843400,
+  "old_DOC4_actual_charge_lower": 4108288,
+  "older_DOC4_upper_retained": 5033984,
+  "historical_output_roots": [
+    {
+      "root": "/private/tmp/mcr-gift-be39-parse-5uxp11vh",
+      "allocated_bytes": 188416
+    },
+    {
+      "root": "/private/tmp/mcr-gift-be39-source02-u0rpvi3a",
+      "allocated_bytes": 200704
+    },
+    {
+      "root": "/private/tmp/mcr-gift-be39-source03-mk2dj3gt",
+      "allocated_bytes": 49152
+    },
+    {
+      "root": "/private/tmp/mcr-gift-be39-source04-7pljvh39",
+      "allocated_bytes": 12288
+    },
+    {
+      "root": "/private/tmp/mcr-gift-be39-source05-3ise0z2e",
+      "allocated_bytes": 81920
+    },
+    {
+      "root": "/private/tmp/mcr-gift-be39-source06-edq5zpxc",
+      "allocated_bytes": 172032
+    },
+    {
+      "root": "/private/tmp/mcr-gift-be39-source07-omapgtyh",
+      "allocated_bytes": 176128
+    }
+  ],
+  "cumulative_reserved_preparation_upper": 14680064,
+  "conservative_components_sum": 14303232,
+  "source08_09_shared_new_limit": 16777216,
+  "baseline_B": 31117312,
+  "own_git_reserve": 1048576,
+  "no_reset": true
+}

@@ -1,0 +1,255 @@
+{
+  "observed_epoch": 1793843539.541279,
+  "rows": [
+    {
+      "root": "/Library/Frameworks/Python.framework/Versions/3.14",
+      "allocated_bytes": 1045037056,
+      "dev": 16777229,
+      "ino": 50195912
+    },
+    {
+      "root": "/Users/lhs/.rustup/toolchains/1.88.0-aarch64-apple-darwin",
+      "allocated_bytes": 1719767040,
+      "dev": 16777229,
+      "ino": 48213592
+    },
+    {
+      "root": "/Users/lhs/Desktop/mcr-worktrees/be-gifts-live",
+      "allocated_bytes": 1412202496,
+      "dev": 16777229,
+      "ino": 541681291
+    },
+    {
+      "root": "/Users/lhs/Desktop/mcr/.git",
+      "allocated_bytes": 1221001216,
+      "dev": 16777229,
+      "ino": 536659365
+    },
+    {
+      "root": "/private/tmp/mcr-gift-controls2327-2tbu6mvz",
+      "allocated_bytes": 155648,
+      "dev": 16777229,
+      "ino": 548519039
+    },
+    {
+      "root": "/private/tmp/mcr-gift-functional-publication-831rnjlq",
+      "allocated_bytes": 1933312,
+      "dev": 16777229,
+      "ino": 546939245
+    },
+    {
+      "root": "/private/tmp/mcr-gift-live-build-final.jsonl",
+      "allocated_bytes": 331776,
+      "dev": 16777229,
+      "ino": 541858172
+    },
+    {
+      "root": "/private/tmp/mcr-gift-live-build-final.stderr",
+      "allocated_bytes": 12288,
+      "dev": 16777229,
+      "ino": 541858173
+    },
+    {
+      "root": "/private/tmp/mcr-gift-live-build-retry.jsonl",
+      "allocated_bytes": 331776,
+      "dev": 16777229,
+      "ino": 541857300
+    },
+    {
+      "root": "/private/tmp/mcr-gift-live-build-retry.stderr",
+      "allocated_bytes": 12288,
+      "dev": 16777229,
+      "ino": 541857301
+    },
+    {
+      "root": "/private/tmp/mcr-gift-live-build.jsonl",
+      "allocated_bytes": 323584,
+      "dev": 16777229,
+      "ino": 541853012
+    },
+    {
+      "root": "/private/tmp/mcr-gift-live-build.stderr",
+      "allocated_bytes": 4096,
+      "dev": 16777229,
+      "ino": 541853013
+    },
+    {
+      "root": "/private/tmp/mcr-gift-live-frozen-path",
+      "allocated_bytes": 4096,
+      "dev": 16777229,
+      "ino": 541858696
+    },
+    {
+      "root": "/private/tmp/mcr-gift-live-initial-plan.json",
+      "allocated_bytes": 4096,
+      "dev": 16777229,
+      "ino": 541745550
+    },
+    {
+      "root": "/private/tmp/mcr-gift-live-native-plan.json",
+      "allocated_bytes": 4096,
+      "dev": 16777229,
+      "ino": 541872446
+    },
+    {
+      "root": "/private/tmp/mcr-gift-live-reconciled-plan.json",
+      "allocated_bytes": 4096,
+      "dev": 16777229,
+      "ino": 541875504
+    },
+    {
+      "root": "/private/tmp/mcr-gift-live-runtime-source-plan.json",
+      "allocated_bytes": 4096,
+      "dev": 16777229,
+      "ino": 541974166
+    },
+    {
+      "root": "/private/tmp/mcr-gift-live-source-plan.json",
+      "allocated_bytes": 4096,
+      "dev": 16777229,
+      "ino": 541819129
+    },
+    {
+      "root": "/private/tmp/mcr-gift-live-targets-final.json",
+      "allocated_bytes": 8192,
+      "dev": 16777229,
+      "ino": 542105370
+    },
+    {
+      "root": "/private/tmp/mcr-gift-live-targets-first.json",
+      "allocated_bytes": 4096,
+      "dev": 16777229,
+      "ino": 542077810
+    },
+    {
+      "root": "/private/tmp/mcr-gift-live-targets-profile-pin.json",
+      "allocated_bytes": 8192,
+      "dev": 16777229,
+      "ino": 542141124
+    },
+    {
+      "root": "/private/tmp/mcr-gift-live-targets-second.json",
+      "allocated_bytes": 8192,
+      "dev": 16777229,
+      "ino": 542082188
+    },
+    {
+      "root": "/private/tmp/mcr-gift-private-current-report",
+      "allocated_bytes": 4096,
+      "dev": 16777229,
+      "ino": 542710575
+    },
+    {
+      "root": "/private/tmp/mcr-gift-public-build-7rl5_680",
+      "allocated_bytes": 606208,
+      "dev": 16777229,
+      "ino": 548192374
+    },
+    {
+      "root": "/private/tmp/mcr-gift-public-ready-z8ch5q3t",
+      "allocated_bytes": 31174656,
+      "dev": 16777229,
+      "ino": 547978297
+    },
+    {
+      "root": "/private/tmp/mcr-gift-retained40-build-18m_lu3q",
+      "allocated_bytes": 376832,
+      "dev": 16777229,
+      "ino": 548493096
+    },
+    {
+      "root": "/private/tmp/mcr-gift-runtime-current-path",
+      "allocated_bytes": 4096,
+      "dev": 16777229,
+      "ino": 542213784
+    },
+    {
+      "root": "/var/folders/j4/41h_5mjj7j9d8f2j2bzcsngw0000gn/T/mcr-gift-live-frozen-sr3eu5h2",
+      "allocated_bytes": 54001664,
+      "dev": 16777229,
+      "ino": 541858683
+    },
+    {
+      "root": "/var/folders/j4/41h_5mjj7j9d8f2j2bzcsngw0000gn/T/mcr-gift-private-5329-5l8f_p2r",
+      "allocated_bytes": 237568,
+      "dev": 16777229,
+      "ino": 542710574
+    },
+    {
+      "root": "/var/folders/j4/41h_5mjj7j9d8f2j2bzcsngw0000gn/T/mcr-gift-runner-preflight-8xqct2m1",
+      "allocated_bytes": 237568,
+      "dev": 16777229,
+      "ino": 542614279
+    },
+    {
+      "root": "/var/folders/j4/41h_5mjj7j9d8f2j2bzcsngw0000gn/T/mcr-gift-runtime-frozen-x0xoqpfs",
+      "allocated_bytes": 117870592,
+      "dev": 16777229,
+      "ino": 542213783
+    },
+    {
+      "root": "/private/tmp/mcr-gift-be39-parse-5uxp11vh",
+      "allocated_bytes": 188416,
+      "dev": 16777229,
+      "ino": 548753059
+    },
+    {
+      "root": "/private/tmp/mcr-gift-be39-source02-u0rpvi3a",
+      "allocated_bytes": 200704,
+      "dev": 16777229,
+      "ino": 548769317
+    },
+    {
+      "root": "/private/tmp/mcr-gift-be39-source03-mk2dj3gt",
+      "allocated_bytes": 49152,
+      "dev": 16777229,
+      "ino": 548797462
+    },
+    {
+      "root": "/Users/lhs/Desktop/mcr-evidence/backend-staffing-01a1a21d/owner-resource-receipts",
+      "allocated_bytes": 163840,
+      "dev": 16777229,
+      "ino": 548822501
+    },
+    {
+      "root": "/private/tmp/mcr-gift-be39-source04-7pljvh39",
+      "allocated_bytes": 12288,
+      "dev": 16777229,
+      "ino": 548828833
+    },
+    {
+      "root": "/usr/sbin/lsof",
+      "allocated_bytes": 188416,
+      "dev": 16777229,
+      "ino": 1152921500312615194
+    },
+    {
+      "root": "/Library/Developer/CommandLineTools",
+      "allocated_bytes": 1411588096,
+      "dev": 16777229,
+      "ino": 383724768
+    },
+    {
+      "root": "/usr/bin/git",
+      "allocated_bytes": 20480,
+      "dev": 16777229,
+      "ino": 1152921500312610571
+    },
+    {
+      "root": "/bin/ps",
+      "allocated_bytes": 65536,
+      "dev": 16777229,
+      "ino": 1152921500312610411
+    }
+  ],
+  "fresh_conservative_union": 32538290352,
+  "retained_carry_bytes": 47503667200,
+  "post_observed_whole_lower_bound": 43203280896,
+  "future_Root_bytes": 2147483648,
+  "ordinary_future_bytes": 2684354560,
+  "actual_peer_future_bytes": 0,
+  "other_growth_bytes": 5368709120,
+  "saved_target_bytes_NO_CURRENT_READ": 19550818304,
+  "target_access": "NONE",
+  "no_history_reset": true
+}

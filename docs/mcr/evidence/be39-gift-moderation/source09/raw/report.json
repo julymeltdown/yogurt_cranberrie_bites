@@ -1,0 +1,187 @@
+{
+  "allocation_id": "GIFT-SOURCE09-0159",
+  "source_revision": "855abbfcebda163c79a9c88e5a6c87b286bdfd0d",
+  "result": "PASS",
+  "target_access": "NONE; saved baseline only",
+  "qualification": "ISOLATED_METADATA_AND_PARSE_ONLY_NOT_TYPES_SQL_NATIVE_RUNTIME",
+  "private_packet_commit": "0d7e91ee8ca95cc45f01b5aeb5341ec7a239e87d",
+  "work_deadline_epoch": 1793843742.437131,
+  "full_deadline_epoch": 1793843802.437131,
+  "retained_carry_bytes": 47518547968,
+  "commands": [
+    {
+      "argv": [
+        "/Users/lhs/.rustup/toolchains/1.88.0-aarch64-apple-darwin/bin/rustfmt",
+        "--emit",
+        "stdout",
+        "--edition",
+        "2021",
+        "--config",
+        "skip_children=true",
+        "/private/tmp/mcr-gift-public-ready-z8ch5q3t/source04-frozen-inputs/backend/services/concert-service/tests/gift_moderation.rs"
+      ],
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "/Users/lhs/.rustup/toolchains/1.88.0-aarch64-apple-darwin/bin/rustfmt",
+        "--emit",
+        "stdout",
+        "--edition",
+        "2021",
+        "--config",
+        "skip_children=true",
+        "/private/tmp/mcr-gift-public-ready-z8ch5q3t/source04-frozen-inputs/backend/services/concert-service/tests/gift_moderation_support/canonical/capture.rs"
+      ],
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "/Users/lhs/.rustup/toolchains/1.88.0-aarch64-apple-darwin/bin/rustfmt",
+        "--emit",
+        "stdout",
+        "--edition",
+        "2021",
+        "--config",
+        "skip_children=true",
+        "/private/tmp/mcr-gift-public-ready-z8ch5q3t/source04-frozen-inputs/backend/services/concert-service/tests/gift_moderation_support/canonical/environment.rs"
+      ],
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "/Users/lhs/.rustup/toolchains/1.88.0-aarch64-apple-darwin/bin/rustfmt",
+        "--emit",
+        "stdout",
+        "--edition",
+        "2021",
+        "--config",
+        "skip_children=true",
+        "/private/tmp/mcr-gift-public-ready-z8ch5q3t/source04-frozen-inputs/backend/services/concert-service/tests/gift_moderation_support/canonical/mod.rs"
+      ],
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "/Users/lhs/.rustup/toolchains/1.88.0-aarch64-apple-darwin/bin/rustfmt",
+        "--emit",
+        "stdout",
+        "--edition",
+        "2021",
+        "--config",
+        "skip_children=true",
+        "/private/tmp/mcr-gift-public-ready-z8ch5q3t/source04-frozen-inputs/backend/services/concert-service/tests/gift_moderation_support/canonical/owners.rs"
+      ],
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "/Users/lhs/.rustup/toolchains/1.88.0-aarch64-apple-darwin/bin/rustfmt",
+        "--emit",
+        "stdout",
+        "--edition",
+        "2021",
+        "--config",
+        "skip_children=true",
+        "/private/tmp/mcr-gift-public-ready-z8ch5q3t/source04-frozen-inputs/backend/services/concert-service/tests/gift_moderation_support/canonical/tests.rs"
+      ],
+      "exit_code": 0
+    }
+  ],
+  "global_sample": {
+    "workflow_count": 2,
+    "source_count": 1,
+    "browser_count": 0,
+    "target_count": 1,
+    "distinct_workflow_pids": 6,
+    "actual_rss_bytes": 617725952,
+    "ordinary_actual_pids": [],
+    "cohorts": [
+      {
+        "owner": "01a1a207-f012-7343-a24b-12b9c544973f",
+        "offer": "BE38-REMAINING-A04-0117",
+        "actual_pids": [
+          72793,
+          73420,
+          76735
+        ],
+        "rss": 460324864
+      },
+      {
+        "owner": "01a1a267-37a0-7723-a4e9-a3a6f5b27f52",
+        "offer": "GIFT-SOURCE09-0159",
+        "actual_pids": [
+          75997,
+          76136,
+          76859
+        ],
+        "rss": 157401088
+      }
+    ],
+    "unknown_peer_policy": "FAIL_CLOSED_SELF_CANCEL_ONLY",
+    "sampled_at_epoch": 1793843629.0830731
+  },
+  "python_ast": "PASS",
+  "retained_qualified_source08": "5metadata cases, 2firstRust parses, whitespace; overall08FAIL retained",
+  "independent_guardian": {
+    "result": "PASS",
+    "config_sha256": "bb217731fdd6aaae896fd428156ec8b5d2d36f4db634803b9a1495748f2cbd0b",
+    "max_owned_processes": 5,
+    "max_rss_bytes": 147914752,
+    "max_whole_bytes": 47533559808,
+    "minimum_free_bytes": 23270522880,
+    "target_measured": false,
+    "rss_cap_bytes": 536870912,
+    "global_sample": {
+      "workflow_count": 2,
+      "source_count": 1,
+      "browser_count": 0,
+      "target_count": 1,
+      "distinct_workflow_pids": 7,
+      "actual_rss_bytes": 609222656,
+      "ordinary_actual_pids": [],
+      "cohorts": [
+        {
+          "owner": "01a1a207-f012-7343-a24b-12b9c544973f",
+          "offer": "BE38-REMAINING-A04-0117",
+          "actual_pids": [
+            72793,
+            73420,
+            76735
+          ],
+          "rss": 460324864
+        },
+        {
+          "owner": "01a1a267-37a0-7723-a4e9-a3a6f5b27f52",
+          "offer": "GIFT-SOURCE09-0159",
+          "actual_pids": [
+            75997,
+            76136,
+            76734,
+            76747
+          ],
+          "rss": 148897792
+        }
+      ],
+      "unknown_peer_policy": "FAIL_CLOSED_SELF_CANCEL_ONLY",
+      "sampled_at_epoch": 1793843628.752026
+    },
+    "max_global_distinct_pids": 7,
+    "max_global_rss_bytes": 609222656,
+    "max_target_growth_bytes": 0,
+    "max_source_growth_bytes": 45056,
+    "max_outside_bytes": 15011840,
+    "finished_unix": 1793843629.375804
+  },
+  "finished_unix": 1793843629.405368,
+  "peaks": {
+    "new": 15011840,
+    "rss": 156663808,
+    "processes": 5,
+    "whole": 47533559808,
+    "global_pids": 7,
+    "global_rss": 617725952
+  },
+  "cleanup_errors": [],
+  "owned_children": 0
+}

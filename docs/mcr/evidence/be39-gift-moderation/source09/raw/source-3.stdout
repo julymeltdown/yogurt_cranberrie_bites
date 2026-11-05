@@ -1,0 +1,338 @@
+/private/tmp/mcr-gift-public-ready-z8ch5q3t/source04-frozen-inputs/backend/services/concert-service/tests/gift_moderation_support/canonical/mod.rs:
+
+//! Gift-only adaptation of canonical fixture610e; all qualification NOT_RUN.
+//! Adapted role fixture from EBB operations_public_roles_native.rs (SHA256 69d7cbdff69a617da0290c19fe9de4e76e7c31c250b61b3ac0527de5142ab6b6).
+//! Real isolated Auth/Friend/Concert owners, signed issuer and captured Gateway parent.
+#[path = "capture.rs"]
+mod capture;
+#[path = "environment.rs"]
+mod environment;
+#[path = "owners.rs"]
+mod owners;
+use chrono::{Duration, SecondsFormat, Utc};
+use concert_service::product_rpc::settlement::NativeTransactionResolver;
+use concert_service::{
+    adapters::out::relationship_authority::guarded::{
+        CanonicalOwnerFence, ChildRecoveryReference, OwnerGuardScope,
+    },
+    config::{canonical_runtime::CanonicalRuntimeCore, native_resolver::NativeResolverUnion},
+    operations_live::public_access::{
+        composition::PreparedOperationsAuthority,
+        issuer::{
+            AssignedRole, AssignmentIssuers, AssignmentStatement, IssuerKey, SignedAssignment,
+        },
+        publication::OperationsPublication,
+        store::OperationsAssignments,
+    },
+    product_rpc::{
+        scope_ledger::{ChildIntentSettler, ChildRecoveryKey, ChildRecoveryKeys, ScopeKey},
+        settlement::POLICY,
+    },
+};
+use platform::{
+    grpc_auth::{CallerRegistry, Workload},
+    grpc_method_policy::guard_without_delegation,
+};
+use ring::signature::{Ed25519KeyPair, KeyPair};
+use sha2::{Digest, Sha256};
+use sqlx::{PgPool, Row};
+use std::{
+    io::Write, os::unix::fs::OpenOptionsExt, path::PathBuf, sync::Arc, time::Duration as Wait,
+};
+use tonic::Status;
+use uuid::Uuid;
+struct NoChildren;
+#[async_trait::async_trait]
+impl ChildIntentSettler for NoChildren {
+    async fn recover_one(&self, _: &ChildRecoveryReference) -> Result<(), Status> {
+        Err(Status::unavailable("Unexpected role child"))
+    }
+}
+fn hex(bytes: &[u8]) -> String {
+    bytes.iter().map(|b| format!("{b:02x}")).collect()
+}
+fn signing() -> Ed25519KeyPair {
+    Ed25519KeyPair::from_seed_unchecked(&[108; 32]).unwrap()
+}
+fn issuer() -> AssignmentIssuers {
+    AssignmentIssuers::new(vec![IssuerKey {
+        issuer: "role-native-test".into(),
+        public_key_hex: hex(signing().public_key().as_ref()),
+    }])
+    .unwrap()
+}
+pub(super) struct Fixture {
+    pub(super) auth: PgPool,
+    friend: PgPool,
+    pub(super) concert: PgPool,
+    pub(super) actor: Uuid,
+    family: Uuid,
+    pub(super) event: Uuid,
+    core: CanonicalRuntimeCore,
+    fence: CanonicalOwnerFence,
+    pub(super) roles: Arc<OperationsAssignments>,
+    pub(super) publication: Arc<OperationsPublication>,
+    publication_path: PathBuf,
+    _auth: owners::Running,
+    _friend: owners::Running,
+    task: tokio::task::JoinHandle<()>,
+}
+impl Drop for Fixture {
+    fn drop(&mut self) {
+        self.task.abort();
+        let _ = std::fs::remove_file(&self.publication_path);
+    }
+}
+impl Fixture {
+    pub(super) async fn new() -> anyhow::Result<Self> {
+        let auth = environment::pool("auth").await?;
+        let friend = environment::pool("friend").await?;
+        let concert = environment::pool("concert").await?;
+        let (actor, family, _) = environment::identities(&auth, 0).await?;
+        let event = Uuid::new_v4();
+        sqlx::query("insert into concert_events(event_id,slug,title,phase) values($1,$2,'Operations role native','OPEN')").bind(event).bind(format!("role-{}",event.simple())).execute(&concert).await?;
+        sqlx::query(
+            "insert into concert_event_admissions(event_id,user_id,state) values($1,$2,'ACTIVE')",
+        )
+        .bind(event)
+        .bind(actor)
+        .execute(&concert)
+        .await?;
+        let instance = Uuid::new_v4();
+        let publication_path =
+            environment::root()?.join(format!("role-publication-{}.json", Uuid::new_v4().simple()));
+        let mut file = std::fs::OpenOptions::new()
+            .write(true)
+            .create_new(true)
+            .mode(0o600)
+            .open(&publication_path)?;
+        file.write_all(b"[]")?;
+        let prepared =
+            PreparedOperationsAuthority::new(concert.clone(), issuer(), publication_path.clone());
+        let lifecycle = prepared.lifecycle_factory();
+        let core = CanonicalRuntimeCore::new_with_lifecycle(
+            concert.clone(),
+            instance,
+            Arc::new(ChildRecoveryKeys::new(
+                ChildRecoveryKey::new("role-native-v1", &[87; 32])?,
+                vec![],
+            )?),
+            Arc::new(NoChildren),
+            Some(lifecycle),
+        )?;
+        let published = prepared.compose_publication()?;
+        let roles = published.roles;
+        let publication = published.publication;
+        publication.synchronize(&concert).await?;
+        let listener = tokio::net::TcpListener::bind("127.0.0.1:0").await?;
+        let url = format!("https://{}", listener.local_addr()?);
+        let running_auth = owners::auth(auth.clone(), &url).await?;
+        let running_friend = owners::friend(friend.clone(), &url).await?;
+        let fence = core.owner_fence(
+            &running_auth.url,
+            &running_friend.url,
+            "concert-fixture",
+            &environment::tls(Workload::Concert)?,
+            owners::signer()?,
+        )?;
+        let service = guard_without_delegation(
+            &POLICY,
+            core.settlement_service(Arc::new(Resolver::new(concert.clone(), instance)?))
+                .server(),
+            CallerRegistry::new()
+                .register(Workload::Auth, "auth-fixture")?
+                .register(Workload::Friend, "friend-fixture")?,
+        )?;
+        let server = tonic::transport::Server::builder()
+            .tls_config(environment::tls(Workload::Concert)?.server_config()?)?
+            .add_service(service);
+        let incoming = futures::stream::unfold(listener, |listener| async {
+            Some((listener.accept().await.map(|(s, _)| s), listener))
+        });
+        let task = tokio::spawn(async move {
+            server
+                .serve_with_incoming(incoming)
+                .await
+                .expect("Actual role Root settlement server")
+        });
+        Ok(Self {
+            auth,
+            friend,
+            concert,
+            actor,
+            family,
+            event,
+            core,
+            fence,
+            roles,
+            publication,
+            publication_path,
+            _auth: running_auth,
+            _friend: running_friend,
+            task,
+        })
+    }
+    pub(super) async fn publish(&self, statements: Vec<SignedAssignment>) -> anyhow::Result<()> {
+        let next = self
+            .publication_path
+            .with_extension(format!("{}.next", Uuid::new_v4().simple()));
+        let mut file = std::fs::OpenOptions::new()
+            .write(true)
+            .create_new(true)
+            .mode(0o600)
+            .open(&next)?;
+        let document: Vec<_> = statements.into_iter().map(|signed| {
+            serde_json::json!({"statement":signed.statement,"signature_hex":signed.signature_hex})
+        }).collect();
+        file.write_all(&serde_json::to_vec(&document)?)?;
+        file.sync_all()?;
+        std::fs::rename(next, &self.publication_path)?;
+        self.publication.synchronize(&self.concert).await?;
+        Ok(())
+    }
+    pub(super) fn assignment(&self, expected: i64, role: Option<AssignedRole>) -> SignedAssignment {
+        self.target_assignment(self.actor, expected, role)
+    }
+    pub(super) fn target_assignment(
+        &self,
+        actor: Uuid,
+        expected: i64,
+        role: Option<AssignedRole>,
+    ) -> SignedAssignment {
+        let now = Utc::now();
+        let statement = AssignmentStatement {
+            version: 1,
+            statement_id: Uuid::new_v4().to_string(),
+            issuer: "role-native-test".into(),
+            event_id: self.event.to_string(),
+            actor_id: actor.to_string(),
+            expected_revision: expected,
+            role,
+            issued_at: (now - Duration::milliseconds(1))
+                .to_rfc3339_opts(SecondsFormat::Micros, true),
+            expires_at: role.map(|_| {
+                (now + Duration::seconds(120)).to_rfc3339_opts(SecondsFormat::Micros, true)
+            }),
+        };
+        let mut bytes = b"MCR-OPERATIONS-ASSIGNMENT-V1\0".to_vec();
+        bytes.extend(serde_json::to_vec(&statement).unwrap());
+        SignedAssignment {
+            statement,
+            signature_hex: hex(signing().sign(&bytes).as_ref()),
+        }
+    }
+    pub(super) async fn acquire_frame(
+        &self,
+        operation: &str,
+        method: &str,
+        suffix: &str,
+        body: Vec<u8>,
+        key: Option<Uuid>,
+    ) -> anyhow::Result<(
+        Arc<OwnerGuardScope>,
+        concert_service::product_rpc::proto::ProductRequest,
+    )> {
+        let (binding, frame) = capture::binding(
+            self.actor,
+            self.family,
+            self.event,
+            operation,
+            method,
+            suffix,
+            body,
+            key,
+        )
+        .await?;
+        let scope = self.fence.acquire(binding).await?;
+        let producer = scope.producer_scope();
+        let secret: [u8; 32] = Sha256::digest(producer.scope_id.as_bytes()).into();
+        self.core
+            .ledger()
+            .bind_delivery(
+                &ScopeKey {
+                    instance: self.core.ledger().instance(),
+                    scope: Uuid::parse_str(&producer.scope_id)?,
+                    binding_digest: producer.binding_digest.as_slice().try_into()?,
+                },
+                &secret,
+            )
+            .await?;
+        Ok((scope, frame))
+    }
+    pub(super) async fn finish(&self, scope: &OwnerGuardScope) -> anyhow::Result<()> {
+        scope.mark_serialized().await?;
+        scope.finish_response().await?;
+        for pool in [&self.auth, &self.friend, &self.concert] {
+            let count: i64 = sqlx::query_scalar(
+                "select count(*) from pg_prepared_xacts where database=current_database()",
+            )
+            .fetch_one(pool)
+            .await?;
+            assert_eq!(
+                count, 0,
+                "Root terminal must settle actual owner/role preparations"
+            );
+        }
+        Ok(())
+    }
+}
+
+pub(super) async fn target(f: &Fixture) -> anyhow::Result<Uuid> {
+    let (_, _, subjects) = environment::identities(&f.auth, 1).await?;
+    let target = subjects[0];
+    sqlx::query(
+        "INSERT INTO concert_event_admissions(event_id,user_id,state) VALUES($1,$2,'ACTIVE')",
+    )
+    .bind(f.event)
+    .bind(target)
+    .execute(&f.concert)
+    .await?;
+    Ok(target)
+}
+pub(super) fn verify(
+    value: SignedAssignment,
+) -> anyhow::Result<concert_service::operations_live::public_access::issuer::VerifiedAssignment> {
+    Ok(issuer().verify(value, Utc::now())?)
+}
+
+// Closed test-local composition; never first-success fallback and never a
+// production shared-union edit. Every resolver receives the actual core pool
+// and instance. Unknown Gift/engine evidence stays with its selected owner.
+struct Resolver {
+    base: NativeResolverUnion,
+    gift: concert_service::gift_live::moderation::GiftModerationNativeResolver,
+    engine: concert_service::moderation_live::production::settlement::ModerationNativeResolver,
+}
+impl Resolver {
+    fn new(pool: PgPool, instance: Uuid) -> Result<Self, Status> {
+        Ok(Self {
+            base:NativeResolverUnion::new(pool.clone(),instance)?,
+            gift:concert_service::gift_live::moderation::GiftModerationNativeResolver::new(pool.clone(),instance)?,
+            engine:concert_service::moderation_live::production::settlement::ModerationNativeResolver::new(pool,instance)?,
+        })
+    }
+}
+#[async_trait::async_trait]
+impl concert_service::product_rpc::settlement::NativeTransactionResolver for Resolver {
+    async fn resolve(
+        &self,
+        b: &platform::actor_delegation::owner_binding::OwnerBinding,
+        n: &concert_service::product_rpc::scope_ledger::ProducerTransaction,
+    ) -> Result<concert_service::product_rpc::settlement::NativeTransactionResolution, Status> {
+        if concert_service::gift_live::moderation::handles_native(n) {
+            return self.gift.resolve(b, n).await;
+        }
+        let reference: serde_json::Value =
+            serde_json::from_slice(&n.settlement_reference).unwrap_or(serde_json::Value::Null);
+        if matches!(
+            reference.get("kind").and_then(serde_json::Value::as_str),
+            Some("MODERATION_ENGINE_V1" | "MODERATION_PUBLIC_OWNER_V1")
+        ) {
+            return self.engine.resolve(b, n).await;
+        }
+        self.base.resolve(b, n).await
+    }
+}
+
+#[path = "tests.rs"]
+mod gift_tests;

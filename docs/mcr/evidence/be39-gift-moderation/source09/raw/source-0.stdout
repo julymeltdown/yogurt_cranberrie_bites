@@ -1,0 +1,257 @@
+/private/tmp/mcr-gift-public-ready-z8ch5q3t/source04-frozen-inputs/backend/services/concert-service/tests/gift_moderation.rs:
+
+//! Real PostgreSQL native-denial tests; NOT a role-provider or HTTP acceptance.
+//! Run explicitly under an allocated, marker/inode-owned moderation database.
+#[path = "gift_moderation_support/canonical/mod.rs"]
+mod canonical;
+#[path = "gift_moderation_support/sql.rs"]
+mod native_sql;
+#[path = "gift_moderation_support/owned.rs"]
+mod owned;
+use chrono::Utc;
+use concert_application::{
+    admin::{
+        moderation::{Change, ContentAction, ContentKind, OwnerStep},
+        Actor, AuthorityQuery, RoleLease,
+    },
+    commands::CommandError,
+};
+use concert_service::{
+    adapters::out::relationship_authority::guarded::{
+        proto::TransactionStatus, ProducerTransaction as Captured,
+    },
+    gift_live::moderation::{GiftModerationNativeResolver, GiftModerationOwner},
+    moderation_live::ports::{
+        ModerationAuthority, ModerationOwner, OwnerIntent, OwnerOutcome, TargetRoleLease,
+    },
+    product_rpc::{scope_ledger::ProducerTransaction, settlement::NativeTransactionResolver},
+};
+use platform::actor_delegation::owner_binding::OwnerBinding;
+use serde_json::json;
+use sqlx::{PgConnection, PgPool};
+use uuid::Uuid;
+
+// Caller UUIDs and a trait implementation are not the acquired canonical Root
+// capability. These methods intentionally panic if the owner delegates to them.
+struct UuidOnlyAuthority;
+#[async_trait::async_trait]
+impl ModerationAuthority for UuidOnlyAuthority {
+    async fn check_in(
+        &self,
+        _: &mut PgConnection,
+        _: AuthorityQuery,
+        _: chrono::DateTime<Utc>,
+    ) -> Result<RoleLease, CommandError> {
+        panic!("UUID-only authority must be rejected before role or database work")
+    }
+    async fn target_role_in(
+        &self,
+        _: &mut PgConnection,
+        _: Actor,
+        _: Uuid,
+        _: chrono::DateTime<Utc>,
+    ) -> Result<TargetRoleLease, CommandError> {
+        panic!("content creator role cannot substitute for canonical capability")
+    }
+    async fn check_disclosure(&self) -> Result<(), CommandError> {
+        panic!("no acquired disclosure capability")
+    }
+}
+#[tokio::test]
+async fn uuid_only_authority_cannot_apply_recover_or_read_privileged_content() -> anyhow::Result<()>
+{
+    // connect_lazy opens no socket; denied requests must not reach this endpoint.
+    let pool = sqlx::postgres::PgPoolOptions::new()
+        .max_connections(1)
+        .connect_lazy("postgresql://mcr_owner@127.0.0.1:1/mcr_gift_moderation")?;
+    let owner = GiftModerationOwner::new(pool.clone(), Uuid::new_v4())?;
+    let actor = Actor {
+        actor: Uuid::new_v4(),
+        event: Uuid::new_v4(),
+    };
+    let target = Uuid::new_v4();
+    let intent = OwnerIntent {
+        receipt: Uuid::new_v4(),
+        actor,
+        target,
+        operation: "moderateConcertContent".into(),
+        step: OwnerStep::GiveawayContent,
+        expected_revision: 1,
+    };
+    let change = Change::Content {
+        kind: ContentKind::Giveaway,
+        target,
+        expected_revision: 1,
+        action: ContentAction::Hide,
+        reason: "Synthetic capability denial".into(),
+    };
+    let denied =
+        |r: Result<OwnerOutcome, CommandError>| assert!(matches!(r, Err(CommandError::Denied)));
+    denied(owner.apply(&UuidOnlyAuthority, &intent, &change).await);
+    denied(owner.recover(&UuidOnlyAuthority, &intent, &change).await);
+    assert_eq!(
+        owner.review(&UuidOnlyAuthority, actor, target).await,
+        Err(CommandError::Denied)
+    );
+    pool.close().await;
+    Ok(())
+}
+
+fn binding() -> OwnerBinding {
+    let event = Uuid::new_v4();
+    OwnerBinding {
+        actor_id: Uuid::new_v4(),
+        event_id: event,
+        session_family_id: Uuid::new_v4(),
+        request_id: Uuid::new_v4(),
+        operation: "listConcertGiveaways".into(),
+        expires_unix_micros: Utc::now().timestamp_micros() + 30_000_000,
+        parent_digest: [1; 32],
+        parent_body_digest: [2; 32],
+        parent_method: "/concert.product.v1.ProductService/Dispatch".into(),
+        http_method: "GET".into(),
+        http_target: format!("/api/concert/events/{event}/giveaways"),
+        body_digest: [3; 32],
+    }
+}
+async fn capture(
+    c: &mut PgConnection,
+    instance: Uuid,
+    b: &OwnerBinding,
+) -> anyhow::Result<ProducerTransaction> {
+    let hex: String = b.digest()?.iter().map(|v| format!("{v:02x}")).collect();
+    let reference = serde_json::to_vec(
+        &json!({"kind":"GIFT_VISIBILITY_READ_V1","instance_id":instance,
+        "scope_id":Uuid::new_v4(),"event_id":b.event_id,"binding_digest":hex}),
+    )?;
+    let n = Captured::capture_concert_in(c, [9; 32], instance, reference).await?;
+    Ok(ProducerTransaction {
+        producer: "CONCERT".into(),
+        system_identifier: n.system_identifier,
+        database_oid: n.database_oid,
+        full_xid: n.full_xid,
+        backend_pid: n.backend_pid,
+        backend_started_unix_micros: n.backend_started.timestamp_micros(),
+        effect_binding_digest: n.effect_binding_digest,
+        producer_instance: n.producer_instance_id,
+        settlement_reference: n.settlement_reference,
+    })
+}
+async fn installed(pool: &PgPool) -> anyhow::Result<()> {
+    let present:bool=sqlx::query_scalar("select to_regclass('public.concert_gift_moderation_effects') is not null and to_regclass('public.concert_gift_visibility_read_scopes') is not null and to_regclass('public.concert_moderation_public_owner_receipts') is not null and to_regprocedure('public.concert_moderation_require_native_authority(uuid,uuid,bytea,uuid,uuid,text)') is not null")
+        .fetch_one(pool).await?;
+    anyhow::ensure!(
+        present,
+        "coherent0092+0096 schema required; missing dependencies are NOT a passing denial"
+    );
+    Ok(())
+}
+
+#[tokio::test]
+#[ignore = "fresh allocated marker-owned Gift moderation PG and native target required"]
+async fn actual_in_progress_and_rollback_are_not_committed_effects() -> anyhow::Result<()> {
+    let pool = owned::owned_pool().await?;
+    installed(&pool).await?;
+    let instance = Uuid::new_v4();
+    let b = binding();
+    let resolver = GiftModerationNativeResolver::new(pool.clone(), instance)?;
+    let mut tx = pool.begin().await?;
+    let n = capture(&mut tx, instance, &b).await?;
+    let active = resolver.resolve(&b, &n).await?;
+    assert_eq!(active.status, TransactionStatus::InProgress);
+    assert!(active.receipt_evidence.is_empty());
+    tx.rollback().await?;
+    let aborted = resolver.resolve(&b, &n).await?;
+    assert_eq!(aborted.status, TransactionStatus::Aborted);
+    assert!(aborted.receipt_evidence.is_empty());
+    pool.close().await;
+    Ok(())
+}
+#[tokio::test]
+#[ignore = "fresh allocated marker-owned Gift moderation PG and native target required"]
+async fn real_committed_xid_without_owner_journal_never_certifies_commit() -> anyhow::Result<()> {
+    let pool = owned::owned_pool().await?;
+    installed(&pool).await?;
+    let instance = Uuid::new_v4();
+    let b = binding();
+    let resolver = GiftModerationNativeResolver::new(pool.clone(), instance)?;
+    let mut tx = pool.begin().await?;
+    let n = capture(&mut tx, instance, &b).await?;
+    tx.commit().await?;
+    let actual: Option<String> = sqlx::query_scalar("select pg_xact_status($1::text::xid8)")
+        .bind(&n.full_xid)
+        .fetch_one(&pool)
+        .await?;
+    assert_eq!(actual.as_deref(), Some("committed"));
+    let answer = resolver.resolve(&b, &n).await?;
+    assert_eq!(answer.status, TransactionStatus::Unknown);
+    assert!(answer.receipt_evidence.is_empty());
+    pool.close().await;
+    Ok(())
+}
+#[tokio::test]
+#[ignore = "fresh allocated marker-owned Gift moderation PG and native target required"]
+async fn foreign_instance_cluster_and_database_cannot_reuse_actual_identity() -> anyhow::Result<()>
+{
+    let pool = owned::owned_pool().await?;
+    installed(&pool).await?;
+    let instance = Uuid::new_v4();
+    let b = binding();
+    let resolver = GiftModerationNativeResolver::new(pool.clone(), instance)?;
+    let mut tx = pool.begin().await?;
+    let original = capture(&mut tx, instance, &b).await?;
+    for variant in 0..3 {
+        let mut n = original.clone();
+        match variant {
+            0 => n.producer_instance = Uuid::new_v4(),
+            1 => n.system_identifier = "18446744073709551615".into(),
+            _ => {
+                n.database_oid = n
+                    .database_oid
+                    .checked_add(1)
+                    .ok_or_else(|| anyhow::anyhow!("fixture database oid overflow"))?
+            }
+        }
+        let answer = resolver.resolve(&b, &n).await?;
+        assert_eq!(answer.status, TransactionStatus::Unknown);
+        assert!(answer.receipt_evidence.is_empty());
+    }
+    tx.rollback().await?;
+    pool.close().await;
+    Ok(())
+}
+#[tokio::test]
+#[ignore = "fresh allocated marker-owned Gift moderation PG and native target required"]
+async fn authority_setting_without_engine_witness_is_rejected() -> anyhow::Result<()> {
+    let pool = owned::owned_pool().await?;
+    installed(&pool).await?;
+    let mut tx = pool.begin().await?;
+    sqlx::query("select set_config('mcr.moderation_authority_until',(clock_timestamp()+interval '30 seconds')::text,true)").execute(&mut *tx).await?;
+    let result=sqlx::query("select public.concert_moderation_require_native_authority($1,$2,$3,$4,$5,'moderateConcertContent')")
+        .bind(Uuid::new_v4()).bind(Uuid::new_v4()).bind([7u8;32].as_slice()).bind(Uuid::new_v4()).bind(Uuid::new_v4()).execute(&mut *tx).await;
+    let error = result.expect_err("GUC alone must not authorize an effect");
+    assert_eq!(
+        error.as_database_error().and_then(|e| e.code()).as_deref(),
+        Some("23514")
+    );
+    tx.rollback().await?;
+    pool.close().await;
+    Ok(())
+}
+#[tokio::test]
+#[ignore = "fresh allocated marker-owned Gift moderation PG and native target required"]
+async fn direct_hidden_state_requires_actual_owner_effect() -> anyhow::Result<()> {
+    let pool = owned::owned_pool().await?;
+    installed(&pool).await?;
+    let mut tx = pool.begin().await?;
+    let result=sqlx::query("insert into public.concert_gift_visibility(event_id,giveaway_id,hidden,revision,owner_receipt_id) values($1,$2,true,2,$3)")
+        .bind(Uuid::new_v4()).bind(Uuid::new_v4()).bind(Uuid::new_v4()).execute(&mut *tx).await;
+    let error = result.expect_err("visibility cannot exist without actual journal effect");
+    assert_eq!(
+        error.as_database_error().and_then(|e| e.code()).as_deref(),
+        Some("23514")
+    );
+    tx.rollback().await?;
+    pool.close().await;
+    Ok(())
+}

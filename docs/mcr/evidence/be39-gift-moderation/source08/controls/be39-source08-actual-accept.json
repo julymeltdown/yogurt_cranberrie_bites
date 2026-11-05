@@ -1,0 +1,33 @@
+{
+  "allocation_id": "GIFT-SOURCE08-0159",
+  "actual_accept_epoch": 1793843537.5885,
+  "work_deadline_epoch": 1793843657.5885,
+  "full_deadline_epoch": 1793843717.5885,
+  "output_dir": "/private/tmp/mcr-gift-be39-source08-x6xy70of",
+  "allocation_output_root": "/private/tmp/mcr-gift-be39-source08-x6xy70of",
+  "source_revision": "855abbfcebda163c79a9c88e5a6c87b286bdfd0d",
+  "private_packet_commit": "0d7e91ee8ca95cc45f01b5aeb5341ec7a239e87d",
+  "retained_carry_bytes": 47503667200,
+  "whole_cap_bytes": 51539607552,
+  "new_limit_bytes": 16777216,
+  "process_cap": 6,
+  "rss_cap_bytes": 536870912,
+  "other_growth_bytes": 5368709120,
+  "free_before_accept_bytes": 23304462336,
+  "readset_sha256": "2597b97e02503958404a4c70e7f54a99fef3627e3682abaf30b2ef33e8239de5",
+  "private_control_pins": {
+    "/private/tmp/mcr-gift-public-ready-z8ch5q3t/be39_parse_guard_source08.py": "b9f74e5ffa491fe0a5d8453e40e8ac5e5a9c1af665f3f80fe4c48ece294a2988",
+    "/private/tmp/mcr-gift-public-ready-z8ch5q3t/be39-source08-runner.py": "06d82b0783c7a171d17fe17682477112d82b6cc3ebf8da81731b40873111afea",
+    "/private/tmp/mcr-gift-public-ready-z8ch5q3t/be39-source08-bootstrap.py": "11e764a06b6b63236c93605cf02dd6bdea6c45ba70f4c22bc8084b4748737a1d",
+    "/private/tmp/mcr-gift-public-ready-z8ch5q3t/be39-source08-metadata-fixture.py": "760d69e1035d405293f8131e980fa33692f04ae10ca14e36ecfa85094f472e6a"
+  },
+  "target_access": "NONE; saved baseline only",
+  "global_controls": {
+    "owner_thread_id": "01a1a267-37a0-7723-a4e9-a3a6f5b27f52",
+    "receipt_directory": "/Users/lhs/Desktop/mcr-evidence/backend-staffing-01a1a21d/owner-resource-receipts",
+    "membership_path": "/Users/lhs/Desktop/mcr-evidence/backend-staffing-01a1a21d/resource-membership-current.json",
+    "peer_releases_path": "/private/tmp/mcr-gift-public-ready-z8ch5q3t/be39-source08-peer-releases.json",
+    "peer_releases_sha256": "70ebe78802b63dbe11b9389267a0a877c04707311836b5c0b4c8c5e9be473ffa"
+  },
+  "outside_census_sha256": "bd9fdd13d775fd24b327f90318396da128b32797b419570138ecf60938b39041"
+}

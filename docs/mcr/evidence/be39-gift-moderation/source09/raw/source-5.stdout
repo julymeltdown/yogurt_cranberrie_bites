@@ -1,0 +1,278 @@
+/private/tmp/mcr-gift-public-ready-z8ch5q3t/source04-frozen-inputs/backend/services/concert-service/tests/gift_moderation_support/canonical/tests.rs:
+
+//! Source preparation only. Requires a separately allocated three-store fixture.
+//! Real signed assignments, Gateway frames, Auth/Friend owners and public runtime.
+//! This component suite does not claim production-main startup or HTTP EOF.
+use super::Fixture;
+use async_trait::async_trait;
+use chrono::{Duration, Utc};
+use concert_application::{
+    admin::{moderation::Change, Actor},
+    commands::{CommandError, FingerprintKeys, SigningKey},
+};
+use concert_domain::community::giveaway::{GiftFields, Giveaway};
+use concert_service::{
+    gift_live::moderation::GiftModerationOwner,
+    moderation_live::{
+        ports::{
+            ModerationAuthority, ModerationDirectory, ModerationOwner, ModerationOwners,
+            OwnerIntent, OwnerOutcome,
+        },
+        production::PublishedModerationRoles,
+        runtime::ModerationRuntime,
+    },
+    operations_live::public_access::issuer::AssignedRole,
+};
+use serde_json::{json, Value};
+use std::sync::{
+    atomic::{AtomicUsize, Ordering},
+    Arc,
+};
+use uuid::Uuid;
+
+// Fault injection drops only genuine post-commit APPLIED return values. It
+// neither manufactures an effect nor substitutes for acquired authority.
+struct LostAck {
+    actual: Arc<GiftModerationOwner>,
+    remaining: AtomicUsize,
+}
+impl LostAck {
+    fn receive(&self, i: &OwnerIntent, r: OwnerOutcome) -> OwnerOutcome {
+        if matches!(&r, OwnerOutcome::Applied { .. })
+            && self
+                .remaining
+                .fetch_update(Ordering::SeqCst, Ordering::SeqCst, |n| n.checked_sub(1))
+                .is_ok()
+        {
+            OwnerOutcome::Pending { intent: i.clone() }
+        } else {
+            r
+        }
+    }
+}
+#[async_trait]
+impl ModerationOwner for LostAck {
+    async fn apply(
+        &self,
+        a: &dyn ModerationAuthority,
+        i: &OwnerIntent,
+        c: &Change,
+    ) -> Result<OwnerOutcome, CommandError> {
+        Ok(self.receive(i, self.actual.apply(a, i, c).await?))
+    }
+    async fn recover(
+        &self,
+        a: &dyn ModerationAuthority,
+        i: &OwnerIntent,
+        c: &Change,
+    ) -> Result<OwnerOutcome, CommandError> {
+        Ok(self.receive(i, self.actual.recover(a, i, c).await?))
+    }
+    async fn review(
+        &self,
+        a: &dyn ModerationAuthority,
+        actor: Actor,
+        target: Uuid,
+    ) -> Result<Value, CommandError> {
+        self.actual.review(a, actor, target).await
+    }
+}
+impl Fixture {
+    fn runtime(&self, drop_acks: usize) -> anyhow::Result<ModerationRuntime> {
+        let actual = Arc::new(GiftModerationOwner::new(
+            self.concert.clone(),
+            self.core.ledger().instance(),
+        )?);
+        let directory: Arc<dyn ModerationDirectory> = actual.clone();
+        let owner: Arc<dyn ModerationOwner> = if drop_acks == 0 {
+            actual
+        } else {
+            Arc::new(LostAck {
+                actual,
+                remaining: AtomicUsize::new(drop_acks),
+            })
+        };
+        Ok(ModerationRuntime::new(
+            self.concert.clone(),
+            ModerationOwners {
+                giveaway_content: Some(owner),
+                directory: Some(directory),
+                ..Default::default()
+            },
+            Some(Arc::new(PublishedModerationRoles::new(
+                self.roles.clone(),
+                self.publication.clone(),
+            ))),
+            Arc::new(FingerprintKeys::new(
+                SigningKey::new("gift-canonical", &[91; 32])?,
+                vec![],
+            )?),
+            &[92; 32],
+        )?)
+    }
+    async fn gift(&self) -> anyhow::Result<Uuid> {
+        let now = Utc::now();
+        let id = Uuid::new_v4();
+        // Seed business data only. Moderation authority below is acquired from
+        // the real signed owner; a data seed grants no role or transport scope.
+        let g = Giveaway::create(
+            id,
+            self.event,
+            Uuid::new_v4(),
+            GiftFields {
+                title: "Canonical moderation gift".into(),
+                description: String::new(),
+                image_media_id: None,
+                quantity_total: 2,
+                pickup_starts_at: now,
+                pickup_ends_at: now + Duration::hours(1),
+                public_place_id: Uuid::new_v4(),
+            },
+            30,
+            now,
+        )?;
+        sqlx::query("insert into public.concert_community_giveaways(event_id,giveaway_id,owner_id,revision,state,quantity_total,reserved_unclaimed,quantity_claimed,next_action_at,aggregate) values($1,$2,$3,1,'DRAFT',2,0,0,$4,$5)")
+            .bind(self.event).bind(id).bind(g.owner).bind(g.expires_at()).bind(serde_json::to_value(g)?).execute(&self.concert).await?;
+        Ok(id)
+    }
+    async fn post(
+        &self,
+        r: &ModerationRuntime,
+        key: Uuid,
+        body: Vec<u8>,
+    ) -> anyhow::Result<(
+        Arc<concert_service::adapters::out::relationship_authority::guarded::OwnerGuardScope>,
+        Result<concert_service::moderation_live::runtime::ModerationReply, CommandError>,
+    )> {
+        let (scope, frame) = self
+            .acquire_frame(
+                "moderateConcertContent",
+                "POST",
+                "admin/content/moderation",
+                body,
+                Some(key),
+            )
+            .await?;
+        let result = r.dispatch(scope.clone(), frame).await;
+        Ok((scope, result))
+    }
+}
+fn body(gift: Uuid, expected: i64, action: &str) -> anyhow::Result<Vec<u8>> {
+    Ok(serde_json::to_vec(
+        &json!({"target_type":"GIVEAWAY","target_id":gift,"expected_revision":expected,"action":action,"reason":"Canonical Gift regression"}),
+    )?)
+}
+async fn journal(f: &Fixture, gift: Uuid) -> anyhow::Result<Vec<Value>> {
+    Ok(sqlx::query_scalar("select to_jsonb(e) from public.concert_gift_moderation_effects e where event_id=$1 and giveaway_id=$2 order by revision").bind(f.event).bind(gift).fetch_all(&f.concert).await?)
+}
+
+#[tokio::test]
+#[ignore = "fresh finite Auth/Friend/Concert and TLS/listener allocation; actual role dependency required"]
+async fn real_moderator_hide_restore_and_filtered_directory() -> anyhow::Result<()> {
+    let f = Fixture::new().await?;
+    let gift = f.gift().await?;
+    let runtime = f.runtime(0)?;
+    let (member, result) = f
+        .post(&runtime, Uuid::new_v4(), body(gift, 1, "HIDE")?)
+        .await?;
+    assert!(matches!(result, Err(CommandError::Denied)));
+    f.finish(&member).await?;
+    assert!(journal(&f, gift).await?.is_empty());
+    f.publish(vec![f.assignment(0, Some(AssignedRole::Moderator))])
+        .await?;
+    let (hide, result) = f
+        .post(&runtime, Uuid::new_v4(), body(gift, 1, "HIDE")?)
+        .await?;
+    let reply = result?;
+    assert_eq!(reply.status, 200);
+    assert_eq!(reply.body["state"], "HIDDEN");
+    assert_eq!(reply.body["revision"], 2);
+    f.finish(&hide).await?;
+    let (scope, frame) = f
+        .acquire_frame(
+            "listConcertAdminContent",
+            "GET",
+            "admin/content?target_type=GIVEAWAY&state=HIDDEN&limit=1",
+            vec![],
+            None,
+        )
+        .await?;
+    let reply = runtime.dispatch(scope.clone(), frame).await?;
+    assert_eq!(reply.status, 200);
+    let item = &reply.body["items"][0];
+    assert_eq!(item["target_id"], gift.to_string());
+    assert_eq!(item["state"], "HIDDEN");
+    assert_eq!(item.as_object().map(|o| o.len()), Some(4));
+    f.finish(&scope).await?;
+    let (restore, result) = f
+        .post(&runtime, Uuid::new_v4(), body(gift, 2, "RESTORE")?)
+        .await?;
+    let reply = result?;
+    assert_eq!(reply.status, 200);
+    assert_eq!(reply.body["state"], "VISIBLE");
+    assert_eq!(reply.body["revision"], 3);
+    f.finish(&restore).await?;
+    assert_eq!(journal(&f, gift).await?.len(), 2);
+    Ok(())
+}
+
+#[tokio::test]
+#[ignore = "fresh finite Auth/Friend/Concert and TLS/listener allocation; actual role dependency required"]
+async fn lost_ack_original_post_recovers_original_identity_after_owner_reconstruction(
+) -> anyhow::Result<()> {
+    let f = Fixture::new().await?;
+    let gift = f.gift().await?;
+    f.publish(vec![f.assignment(0, Some(AssignedRole::Moderator))])
+        .await?;
+    // Fresh submit and the runtime's one immediate resume both lose the genuine
+    // owner result. The next request must use the immutable original journal.
+    let runtime = f.runtime(2)?;
+    let key = Uuid::new_v4();
+    let payload = body(gift, 1, "HIDE")?;
+    let (first, result) = f.post(&runtime, key, payload.clone()).await?;
+    assert_eq!(result?.status, 202);
+    f.finish(&first).await?;
+    let before = journal(&f, gift).await?;
+    assert_eq!(before.len(), 1);
+    drop(runtime);
+    // This reconstructs owner/runtime objects, not the service process or PG.
+    let runtime = f.runtime(0)?;
+    let (retry, result) = f.post(&runtime, key, payload).await?;
+    let reply = result?;
+    assert_eq!(reply.status, 200);
+    assert_eq!(reply.body["revision"], 2);
+    f.finish(&retry).await?;
+    assert!(before == journal(&f, gift).await?);
+    let receipt_count:i64=sqlx::query_scalar("select count(*) from public.concert_command_receipts where actor_id=$1 and event_id=$2 and operation_id='moderateConcertContent' and idempotency_key=$3 and state='SUCCEEDED'").bind(f.actor).bind(f.event).bind(key).fetch_one(&f.concert).await?;
+    assert_eq!(receipt_count, 1);
+    let (changed, result) = f.post(&runtime, key, body(gift, 2, "RESTORE")?).await?;
+    assert!(matches!(result, Err(CommandError::Conflict)));
+    f.finish(&changed).await?;
+    assert!(before == journal(&f, gift).await?);
+    Ok(())
+}
+
+#[tokio::test]
+#[ignore = "fresh finite Auth/Friend/Concert and TLS/listener allocation; actual role dependency required"]
+async fn actual_role_revocation_denies_pending_original_post_recovery() -> anyhow::Result<()> {
+    let f = Fixture::new().await?;
+    let gift = f.gift().await?;
+    f.publish(vec![f.assignment(0, Some(AssignedRole::Moderator))])
+        .await?;
+    let runtime = f.runtime(2)?;
+    let key = Uuid::new_v4();
+    let payload = body(gift, 1, "HIDE")?;
+    let (first, result) = f.post(&runtime, key, payload.clone()).await?;
+    assert_eq!(result?.status, 202);
+    f.finish(&first).await?;
+    let before = journal(&f, gift).await?;
+    assert_eq!(before.len(), 1);
+    f.publish(vec![f.assignment(1, None)]).await?;
+    let (retry, result) = f.post(&runtime, key, payload).await?;
+    assert!(matches!(result, Err(CommandError::Denied)));
+    f.finish(&retry).await?;
+    assert!(before == journal(&f, gift).await?);
+    let state:String=sqlx::query_scalar("select state from public.concert_command_receipts where actor_id=$1 and event_id=$2 and operation_id='moderateConcertContent' and idempotency_key=$3").bind(f.actor).bind(f.event).bind(key).fetch_one(&f.concert).await?;
+    assert_eq!(state, "PENDING");
+    Ok(())
+}

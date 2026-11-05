@@ -1,0 +1,41 @@
+{
+  "status": "SOURCE_SUBSETS_ONLY",
+  "application_source": "0d7e91ee8ca95cc45f01b5aeb5341ec7a239e87d",
+  "frozen_worktree_HEAD": "855abbfcebda163c79a9c88e5a6c87b286bdfd0d",
+  "source08": {
+    "overall": "FAIL",
+    "passed": [
+      "five production metadata/legacy/actual-executable helpers",
+      "private Python AST",
+      "Git whitespace",
+      "production/mod.rs parse",
+      "production/roles.rs parse"
+    ],
+    "remaining_six": "NOT_RUN",
+    "failure": "Live primary unknown scoped runtime/shell69360; subsequent explicit PS found no live identity; no attribution/exemption inferred",
+    "full_epoch": 1793843576.2410161,
+    "full_sha256": "f24be156103095486b6e432448d8dabe9ec9ec2a98eac6315d5a794fb6779333"
+  },
+  "source09": {
+    "overall": "PASS",
+    "scope": "Six remaining changed Rust files and changed controls AST only; no passed08 replay",
+    "full_epoch": 1793843649.327275,
+    "full_sha256": "09ff3cba0273b795efb7e859b8c00ac94bae5fcbd88002c0c23b2c8c9d6039f1"
+  },
+  "source07": "FAIL preserved; no restart or historical relabel",
+  "aggregate": "All eight file parse exit codes recorded across08failed subset and09passed remainder; this is not one wholly passed eight-file resource round",
+  "not_run": [
+    "Rust typecheck",
+    "all14 Gift product test executions",
+    "PostgreSQL/SQL authority or recovery validation",
+    "native transport/EOF/cancellation/restart acceptance",
+    "HTTP or multiuser vertical flow"
+  ],
+  "whole_retained_MAX_bytes": 47533559808,
+  "cumulative_NEW_MAX_bytes": 15011840,
+  "resource_released": true,
+  "target_access": "NONE",
+  "future_dependency": "Root coherent BE39 projection required; no implicit Ops0076 or generic SDK write grant",
+  "goal": "Existing incompatible BE41 goal remains BLOCKED; no reset or false completion",
+  "fixture_scope": "Copied fixture JSON under metadata-fixtures is isolated test data only, never allocator release or product authority"
+}

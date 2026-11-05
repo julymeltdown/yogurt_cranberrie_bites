@@ -1,0 +1,216 @@
+{
+  "issuer": "Gift267 direct literal owner releases",
+  "releases": {
+    "PreWorldSource01": {
+      "owner": "01a1a21e-ab80-7012-b9fa-cdb69eed097b",
+      "actual_accept": 1793839324.4544158,
+      "actual_full": 1793839523.7412832,
+      "all_owned_released": true
+    },
+    "Post21aCompileUnit01": {
+      "owner": "01a1a21a-a088-7c31-83e3-19de119ba873",
+      "actual_accept": 1793839456.2023702,
+      "actual_full": 1793839568.4696152,
+      "all_owned_released": true,
+      "full_sha256": "f94e6fb7432ac6337fa7be73691161c32828e2ae4b3b3fcaa512f0faade99b4c"
+    },
+    "PI12-OPERATIONS-SOURCE01-0111": {
+      "owner": "01a1a5d9-6950-7920-8c80-5214d4ce0eaf",
+      "actual_accept": 1793841168.846922,
+      "actual_full": 1793841445.246858,
+      "all_owned_released": true,
+      "full_path": "/private/tmp/mcr-pi12-operations-source01-0111/FULL.json",
+      "full_sha256": "201ad2eabcf46e7e311b34dd3292019f399d9e7a576e35f1190dfa77196b9b1a",
+      "basis": "Direct implementation owner literalFULL; oldrelease does not erase newSOURCE02 acceptedclaim"
+    },
+    "PI12-REPORT-ERROR-NETWORK-SOURCE03-0116": {
+      "owner": "01a19f83-2c2a-7fa0-a98d-1c4f5f65cb3c",
+      "actual_accept": 1793841406.9410958,
+      "actual_full": 1793841429.313418,
+      "all_owned_released": true,
+      "proof_path": "/Users/lhs/Desktop/mcr-worktrees/fe-ref-map/docs/mcr/evidence/parade-ink-report-error-network/source03/guardian.json",
+      "proof_sha256": "2f9c914666e8eabc0827d43d77ae8262ac6c07dadb44eb46db97b0fd2b9fac89",
+      "basis": "Owner immutable receipt resourcesReleased=true, corroborating same-clock atomicFULL observed preaccept; never PIDabsence"
+    },
+    "PI12-OPERATIONS-SOURCE02-0120": {
+      "owner": "01a1a5d9-6950-7920-8c80-5214d4ce0eaf",
+      "actual_accept": 1793841635.177011,
+      "actual_full": null,
+      "all_owned_released": true,
+      "snapshot_path": "/private/tmp/mcr-gift-be39-source06-edq5zpxc/literal-full-snapshots/01a1a5d9-6950-7920-8c80-5214d4ce0eaf.json",
+      "snapshot_sha256": "ced2aa47ede0216a348970870438ab89f015b330162f52682600c2c373925683",
+      "basis": "Actual owner atomicFULL snapshot, no absence inference"
+    },
+    "PI09-WALLB-APP-NATIVE08-0120": {
+      "owner": "01a1a5d9-6954-7bd3-9b08-7109883187b5",
+      "actual_accept": 1793841812.5190241,
+      "actual_full": null,
+      "all_owned_released": true,
+      "snapshot_path": "/private/tmp/mcr-gift-be39-source06-edq5zpxc/literal-full-snapshots/01a1a5d9-6954-7bd3-9b08-7109883187b5.json",
+      "snapshot_sha256": "fdb2dbfaa613c41f1d7921834efed441809a425ccaef6d81084ad590eaae2583",
+      "basis": "Actual owner atomicFULL snapshot, no absence inference"
+    },
+    "O04-ADMIN-APP-NATIVE02-0120": {
+      "owner": "01a1a230-6acc-7e82-9e4b-92506decc745",
+      "actual_accept": 1793841643.53849,
+      "actual_full": null,
+      "all_owned_released": true,
+      "snapshot_path": "/private/tmp/mcr-gift-be39-source06-edq5zpxc/literal-full-snapshots/01a1a230-6acc-7e82-9e4b-92506decc745.json",
+      "snapshot_sha256": "51b9eff3ae4ccfe53a3a8d874d181f9a0899eaabad19f084acd3fdfaf97af593",
+      "basis": "Actual owner atomicFULL snapshot, no absence inference"
+    },
+    "PI06-PROFILE-FOCUSED-NATIVE05-0100": {
+      "owner": "01a1a1fe-1ab7-79b0-adbc-d4c025701acb",
+      "actual_accept": 1793840459.629889,
+      "actual_full": null,
+      "all_owned_released": true,
+      "snapshot_path": "/private/tmp/mcr-gift-be39-source06-edq5zpxc/literal-full-snapshots/01a1a1fe-1ab7-79b0-adbc-d4c025701acb.json",
+      "snapshot_sha256": "b7a842510902ed6b6447da4050b80d3882ea17fed4ce0cc26f0b76445005fda8",
+      "basis": "Actual owner atomicFULL snapshot, no absence inference"
+    },
+    "POST21A-UNIT03-0111-ORDINARY-PREP-1793841809976080000-16867": {
+      "owner": "01a1a21a-a088-7c31-83e3-19de119ba873",
+      "actual_accept": 1793841809.976079,
+      "actual_full": null,
+      "all_owned_released": true,
+      "snapshot_path": "/private/tmp/mcr-gift-be39-source06-edq5zpxc/literal-full-snapshots/01a1a21a-a088-7c31-83e3-19de119ba873.json",
+      "snapshot_sha256": "b3bfdbb68e4928e26b9a6122bc2c59dd70d86f9fa42d6448df8883342eec7360",
+      "basis": "Actual owner atomicFULL snapshot, no absence inference"
+    },
+    "WORLD-BE39-MODERATION-BUILD02-0105": {
+      "owner": "01a1a20f-8d37-71c3-a429-8a55bb6d6c49",
+      "actual_accept": 1793841375.86046,
+      "actual_full": null,
+      "all_owned_released": true,
+      "snapshot_path": "/private/tmp/mcr-gift-be39-source06-edq5zpxc/literal-full-snapshots/01a1a20f-8d37-71c3-a429-8a55bb6d6c49.json",
+      "snapshot_sha256": "5bcff62b10b69d8b093e313a82ecc0c8e8e6b100f5934295bf8bd71e2e74e1e8",
+      "basis": "Actual owner atomicFULL snapshot, no absence inference"
+    },
+    "PI01-FOCUSED-NATIVE10-0118": {
+      "owner": "01a1a26e-1de2-7b41-a294-c9a79cfded9b",
+      "actual_accept": 1793841555.855031,
+      "actual_full": null,
+      "all_owned_released": true,
+      "snapshot_path": "/private/tmp/mcr-gift-be39-source06-edq5zpxc/literal-full-snapshots/01a1a26e-1de2-7b41-a294-c9a79cfded9b.json",
+      "snapshot_sha256": "3b708bbe3abd60e4edbe2d30f7ca347dd31e3a4f23e426049435660e7298d6ca",
+      "basis": "Actual owner atomicFULL snapshot, no absence inference"
+    },
+    "PI12-REPORT-ERROR-NETWORK-SOURCE04-0120": {
+      "owner": "01a19f83-2c2a-7fa0-a98d-1c4f5f65cb3c",
+      "actual_accept": 1793841693.792182,
+      "actual_full": null,
+      "all_owned_released": true,
+      "snapshot_path": "/private/tmp/mcr-gift-be39-source06-edq5zpxc/literal-full-snapshots/01a19f83-2c2a-7fa0-a98d-1c4f5f65cb3c.json",
+      "snapshot_sha256": "28c91ad31df6df8883893fa38d0ac0c5eb5ff032641941a932932bada0739b44",
+      "basis": "Actual owner atomicFULL snapshot, no absence inference"
+    },
+    "PI12-PREWORLD-REMAINDER-SOURCE04-0122": {
+      "owner": "01a1a21e-ab80-7012-b9fa-cdb69eed097b",
+      "actual_accept": 1793841790.946882,
+      "actual_full": null,
+      "all_owned_released": true,
+      "snapshot_path": "/private/tmp/mcr-gift-be39-source06-edq5zpxc/literal-full-snapshots/01a1a21e-ab80-7012-b9fa-cdb69eed097b.json",
+      "snapshot_sha256": "5a9bdab333830513ead0b2fe24ea6105f0a43b6aad1bc94639316361c5807d04",
+      "basis": "Actual owner atomicFULL snapshot, no absence inference"
+    },
+    "BE38-207-REMAINING-COMPILE-A03-0105": {
+      "owner": "01a1a207-f012-7343-a24b-12b9c544973f",
+      "actual_accept": 1793841235.603083,
+      "actual_full": null,
+      "all_owned_released": true,
+      "snapshot_path": "/private/tmp/mcr-gift-be39-source06-edq5zpxc/literal-full-snapshots/01a1a207-f012-7343-a24b-12b9c544973f.json",
+      "snapshot_sha256": "ea0c127b7b532f1cb2106b5031657c119bcdebe0dd4f3c2277ea302f4a9fb290",
+      "basis": "Actual owner atomicFULL snapshot, no absence inference"
+    },
+    "PI04-GIVEAWAY-APP-NATIVE06-0116": {
+      "owner": "01a1a5d9-6955-7820-bcd4-8e0a21629aa2",
+      "actual_accept": 1793841373.679795,
+      "actual_full": null,
+      "all_owned_released": true,
+      "snapshot_path": "/private/tmp/mcr-gift-be39-source06-edq5zpxc/literal-full-snapshots/01a1a5d9-6955-7820-bcd4-8e0a21629aa2.json",
+      "snapshot_sha256": "0778b802b68402533693cfbe5cc3feef25e128d1cba49fb17176d032f8b98d21",
+      "basis": "Actual owner atomicFULL snapshot, no absence inference"
+    },
+    "PI10-PUBLIC-AUTH-APP-NATIVE02-0110": {
+      "owner": "01a1a533-50a8-7fb2-b3ed-96b941b96bbf",
+      "actual_accept": 1793841539.0628119,
+      "actual_full": null,
+      "all_owned_released": true,
+      "snapshot_path": "/private/tmp/mcr-gift-be39-source06-edq5zpxc/literal-full-snapshots/01a1a533-50a8-7fb2-b3ed-96b941b96bbf.json",
+      "snapshot_sha256": "07ec6fc02c648cc2293cc3cb722baffa9209f0e3e24b7e428e87635f31f3c7fe",
+      "basis": "Actual owner atomicFULL snapshot, no absence inference"
+    },
+    "AUTH232-ACCOUNTING-DIAGNOSTIC-SOURCE01-0113": {
+      "owner": "01a1a232-21e2-75c2-8474-a5fa6ae895cd",
+      "actual_accept": 1793841782.613973,
+      "actual_full": null,
+      "all_owned_released": true,
+      "snapshot_path": "/private/tmp/mcr-gift-be39-source06-edq5zpxc/literal-full-snapshots/01a1a232-21e2-75c2-8474-a5fa6ae895cd.json",
+      "snapshot_sha256": "b78012bcf525cc6f4715519eb7502962668b62dba7f9f05af6bef95167334dbd",
+      "basis": "Actual owner atomicFULL snapshot, no absence inference"
+    },
+    "BE39-205-OWNED-RUSTFMT-SOURCE03-0110": {
+      "owner": "01a1a205-3f89-78c3-aa67-719c4bb40b8d",
+      "actual_accept": 1793841159.714172,
+      "actual_full": null,
+      "all_owned_released": true,
+      "snapshot_path": "/private/tmp/mcr-gift-be39-source06-edq5zpxc/literal-full-snapshots/01a1a205-3f89-78c3-aa67-719c4bb40b8d.json",
+      "snapshot_sha256": "baeb12f567b6cab096f4df08c7823062136fce65d9c5a63f1679151e6d435f7c",
+      "basis": "Actual owner atomicFULL snapshot, no absence inference"
+    },
+    "PARADISECITY-ART-PREP128-0116": {
+      "owner": "01a1a231-0dc4-7b50-92bd-c0f0f56bd970",
+      "actual_accept": 1793841431.564384,
+      "actual_full": null,
+      "all_owned_released": true,
+      "snapshot_path": "/private/tmp/mcr-gift-be39-source06-edq5zpxc/literal-full-snapshots/01a1a231-0dc4-7b50-92bd-c0f0f56bd970.json",
+      "snapshot_sha256": "4b3b8303ed059b8cfc29fe7b2ea72614f7c79a5e908af972a7435872cc2f34d3",
+      "basis": "Actual owner atomicFULL snapshot, no absence inference"
+    },
+    "PI12-PRIVATE-PAGES-SOURCE03-0120": {
+      "owner": "01a1a213-61d6-7a20-a8e7-476649312f8c",
+      "actual_accept": 1793841672.286,
+      "actual_full": null,
+      "all_owned_released": true,
+      "snapshot_path": "/private/tmp/mcr-gift-be39-source06-edq5zpxc/literal-full-snapshots/01a1a213-61d6-7a20-a8e7-476649312f8c.json",
+      "snapshot_sha256": "584dfc67d6c6853bc074ad97746b8b84ccd51fd1fe29cf0af0121126a7ed709a",
+      "basis": "Actual owner atomicFULL snapshot, no absence inference"
+    },
+    "HUD-FINAL-REMAINDER-NATIVE05-0118": {
+      "owner": "01a1a5d9-332b-7822-a8f7-40c576fad94a",
+      "actual_accept": 1793841683.7316868,
+      "actual_full": null,
+      "all_owned_released": true,
+      "snapshot_path": "/private/tmp/mcr-gift-be39-source06-edq5zpxc/literal-full-snapshots/01a1a5d9-332b-7822-a8f7-40c576fad94a.json",
+      "snapshot_sha256": "98833e6f4db80bc070c2736e5b1fdae37827a40e37b20d2d931a36b211fadda8",
+      "basis": "Actual owner atomicFULL snapshot, no absence inference"
+    },
+    "FE38-COMPOSITION-SOURCE03-0120": {
+      "owner": "01a1a1fe-1eed-7d12-a247-879cd521e0ec",
+      "actual_accept": 1793841677.344149,
+      "actual_full": null,
+      "all_owned_released": true,
+      "snapshot_path": "/private/tmp/mcr-gift-be39-source06-edq5zpxc/literal-full-snapshots/01a1a1fe-1eed-7d12-a247-879cd521e0ec.json",
+      "snapshot_sha256": "bce0c493fb45fb3ee9bb5842bee3295e3b8213637f8a444909a45f865fc67cc1",
+      "basis": "Actual owner atomicFULL snapshot, no absence inference"
+    },
+    "PI07-STATIC-REMAINDER-SOURCE05-0110": {
+      "owner": "01a1a534-4fcf-7291-abe3-a97ba2fcafcd",
+      "actual_accept": 1793841152.536942,
+      "actual_full": null,
+      "all_owned_released": true,
+      "snapshot_path": "/private/tmp/mcr-gift-be39-source06-edq5zpxc/literal-full-snapshots/01a1a534-4fcf-7291-abe3-a97ba2fcafcd.json",
+      "snapshot_sha256": "bffb38eb7bab57204c978e917ac258cc30fdbe59b45c80c25e1ac04d6f3042c2",
+      "basis": "Actual owner atomicFULL snapshot, no absence inference"
+    },
+    "ROOT-COHERENT-MAINS03-0105": {
+      "owner": "01a1a1fc-7f3d-7ff1-9416-e3435c8a6f08",
+      "actual_accept": 1793840885.150468,
+      "actual_full": null,
+      "all_owned_released": true,
+      "snapshot_path": "/private/tmp/mcr-gift-be39-source06-edq5zpxc/literal-full-snapshots/01a1a1fc-7f3d-7ff1-9416-e3435c8a6f08.json",
+      "snapshot_sha256": "fb98c85d8e0571282a2f0ea1daa8d911ffa1382f38a455167b3798f5e0d5101a",
+      "basis": "Actual owner atomicFULL snapshot, no absence inference"
+    }
+  }
+}

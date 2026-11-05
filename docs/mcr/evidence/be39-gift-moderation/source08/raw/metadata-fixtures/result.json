@@ -1,0 +1,33 @@
+{
+  "qualification": "ISOLATED_METADATA_ONLY_OUTER_GUARDS_AUTHORITATIVE",
+  "cases": [
+    {
+      "case": "canonical_without_cohort",
+      "result": "PASS",
+      "actual_ps_sample": false,
+      "scope": "metadata helper only; outer guards continuously enforce real global census"
+    },
+    {
+      "case": "ordinary_observation_only_no_workflow",
+      "result": "PASS",
+      "actual_ps_sample": false,
+      "scope": "metadata helper only; outer guards continuously enforce real global census"
+    },
+    {
+      "case": "observation_only_never_releases_legacy",
+      "result": "PASS",
+      "expected_refusal": "accepted legacy owner lacks actual descriptor: 01a19e5c-e9c6-7973-a53b-a6d19141620f"
+    },
+    {
+      "case": "positive_isolated_release_closes_only_old_claim",
+      "result": "PASS",
+      "actual_ps_sample": false,
+      "scope": "metadata helper only; outer guards continuously enforce real global census"
+    },
+    {
+      "case": "wrong_actual_executable_refused",
+      "result": "PASS",
+      "expected_refusal": "actual PS executable/birth mismatch pid=69008 expected=/not-actual-runtime actual=/Library/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python"
+    }
+  ]
+}

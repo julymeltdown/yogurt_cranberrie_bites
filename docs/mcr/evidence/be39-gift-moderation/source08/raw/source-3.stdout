@@ -1,0 +1,202 @@
+/private/tmp/mcr-gift-public-ready-z8ch5q3t/source04-frozen-inputs/backend/services/concert-service/src/moderation_live/production/roles.rs:
+
+//! Current managed roles. The existing Operations lifecycle owns their release.
+use crate::{
+    adapters::out::{
+        relationship_authority::guarded::OwnerGuardScope,
+        repository::event_operations::FencedOperationsAuthority,
+    },
+    moderation_live::ports::{EventRoleFence, EventRoleProvider, TargetRoleLease},
+    operations_live::{public_access::publication::OperationsPublication, ScopedOperationsRoles},
+};
+use async_trait::async_trait;
+use chrono::{DateTime, Utc};
+use concert_application::{
+    admin::{Action, Actor, AuthorityQuery, Role, RoleLease},
+    commands::CommandError,
+};
+use sqlx::{PgConnection, Row};
+use std::sync::Arc;
+use uuid::Uuid;
+
+pub struct PublishedModerationRoles {
+    roles: Arc<dyn ScopedOperationsRoles>,
+    publication: Arc<OperationsPublication>,
+}
+impl PublishedModerationRoles {
+    /// Both arguments must be the actual handles returned by the single
+    /// PreparedOperationsAuthority composition, not newly constructed owners.
+    pub fn new(
+        roles: Arc<dyn ScopedOperationsRoles>,
+        publication: Arc<OperationsPublication>,
+    ) -> Self {
+        Self { roles, publication }
+    }
+}
+struct PublishedRoleFence {
+    scope: Arc<OwnerGuardScope>,
+    roles: Arc<dyn ScopedOperationsRoles>,
+    publication: Arc<OperationsPublication>,
+    role: Role,
+    revision: i64,
+    expires_at: DateTime<Utc>,
+}
+fn error(value: tonic::Status) -> CommandError {
+    match value.code() {
+        tonic::Code::PermissionDenied | tonic::Code::Unauthenticated => CommandError::Denied,
+        _ => CommandError::Unavailable,
+    }
+}
+fn db(_: impl std::fmt::Display) -> CommandError {
+    CommandError::Unavailable
+}
+fn action(operation: &str) -> Result<Action, CommandError> {
+    match operation {
+        "moderateConcertUser" => Ok(Action::ModerateUser),
+        "moderateConcertContent" => Ok(Action::ModerateContent),
+        "listConcertAdminUsers" => Ok(Action::AdminUsers),
+        "listConcertAdminContent" => Ok(Action::AdminContent),
+        "listConcertAudit" => Ok(Action::AuditRead),
+        _ => Err(CommandError::Denied),
+    }
+}
+#[async_trait]
+impl EventRoleProvider for PublishedModerationRoles {
+    async fn acquire_for_root_terminal(
+        &self,
+        scope: Arc<OwnerGuardScope>,
+    ) -> Result<Arc<dyn EventRoleFence>, CommandError> {
+        scope.binding().check().map_err(error)?;
+        let action = action(scope.binding().operation())?;
+        // require_* retains the SAME prepared owner exclusion. Its lifecycle
+        // remains installed in Root through actual EOF/cancellation settlement.
+        let held = if action == Action::AuditRead {
+            self.publication.require_operator(&scope).await
+        } else {
+            self.publication.require_moderator(&scope).await
+        }
+        .map_err(error)?;
+        scope
+            .limit_disclosure_until(held.expires_at)
+            .map_err(error)?;
+        Ok(Arc::new(PublishedRoleFence {
+            scope,
+            roles: self.roles.clone(),
+            publication: self.publication.clone(),
+            role: held.role,
+            revision: held.revision,
+            expires_at: held.expires_at,
+        }))
+    }
+}
+#[async_trait]
+impl FencedOperationsAuthority for PublishedRoleFence {
+    async fn check_in(
+        &self,
+        c: &mut PgConnection,
+        query: AuthorityQuery,
+        now: DateTime<Utc>,
+    ) -> Result<RoleLease, CommandError> {
+        self.check_disclosure().await?;
+        if query.actor.actor != self.scope.binding().actor()
+            || query.actor.event != self.scope.binding().event()
+            || query.action != action(self.scope.binding().operation())?
+        {
+            return Err(CommandError::Denied);
+        }
+        let mut lease = self.roles.check_in(&self.scope, c, query, now).await?;
+        if lease.role != self.role || lease.revision != self.revision {
+            return Err(CommandError::Denied);
+        }
+        lease.expires_at = lease.expires_at.min(self.expires_at);
+        self.check_disclosure().await?;
+        Ok(lease)
+    }
+}
+#[async_trait]
+impl EventRoleFence for PublishedRoleFence {
+    fn root_binding_digest(&self) -> [u8; 32] {
+        self.scope.binding().digest()
+    }
+    async fn target_role_in(
+        &self,
+        c: &mut PgConnection,
+        actor: Actor,
+        target: Uuid,
+        _now: DateTime<Utc>,
+    ) -> Result<TargetRoleLease, CommandError> {
+        self.check_disclosure().await?;
+        if actor.actor != self.scope.binding().actor()
+            || actor.event != self.scope.binding().event()
+            || action(self.scope.binding().operation())? != Action::ModerateUser
+            || target.is_nil()
+        {
+            return Err(CommandError::Denied);
+        }
+        // Assignment writers use this EXACT advisory key before inserting or
+        // updating a role. A row lock alone cannot fence an absent assignment.
+        // Hold the shared exclusion on the actual protected connection.
+        sqlx::query("SELECT pg_advisory_xact_lock_shared(hashtextextended($1,0))")
+            .bind(format!("operations-assignment:{}:{}", actor.event, target))
+            .execute(&mut *c)
+            .await
+            .map_err(db)?;
+        let admission: Option<i64> = sqlx::query_scalar("SELECT restriction_revision FROM public.concert_event_admissions WHERE event_id=$1 AND user_id=$2 FOR SHARE")
+            .bind(actor.event).bind(target).fetch_optional(&mut *c).await.map_err(db)?;
+        let admission = admission.ok_or(CommandError::Denied)?;
+        let row = sqlx::query("SELECT role,revision,expires_at FROM public.concert_operations_assignments WHERE event_id=$1 AND actor_id=$2 FOR SHARE")
+            .bind(actor.event).bind(target).fetch_optional(&mut *c).await.map_err(db)?;
+        let at: DateTime<Utc> = sqlx::query_scalar("SELECT clock_timestamp()")
+            .fetch_one(&mut *c)
+            .await
+            .map_err(db)?;
+        let ceiling = self.scope.disclosure_ceiling().map_err(error)?;
+        let until = DateTime::from_timestamp_micros(ceiling.expires_micros())
+            .ok_or(CommandError::Unavailable)?
+            .min(self.expires_at);
+        let (role, revision, expires_at) = match row {
+            Some(row) => {
+                let raw: Option<String> = row.try_get("role").map_err(db)?;
+                let revision: i64 = row.try_get("revision").map_err(db)?;
+                let expires: Option<DateTime<Utc>> = row.try_get("expires_at").map_err(db)?;
+                let role = match (raw.as_deref(), expires) {
+                    (Some("OPERATOR"), Some(until)) if until > at => Role::Operator,
+                    (Some("MODERATOR"), Some(until)) if until > at => Role::Moderator,
+                    (None, None) | (Some("OPERATOR") | Some("MODERATOR"), Some(_)) => Role::Member,
+                    _ => return Err(CommandError::Unavailable),
+                };
+                (
+                    role,
+                    revision,
+                    if role == Role::Member {
+                        until
+                    } else {
+                        until.min(expires.ok_or(CommandError::Unavailable)?)
+                    },
+                )
+            }
+            None => (Role::Member, admission, until),
+        };
+        if !(1..=concert_domain::MAX_REVISION).contains(&revision) || expires_at <= at {
+            return Err(CommandError::Unavailable);
+        }
+        self.check_disclosure().await?;
+        Ok(TargetRoleLease {
+            event: actor.event,
+            target,
+            role,
+            revision,
+            checked_at: at,
+            expires_at,
+        })
+    }
+    async fn check_disclosure(&self) -> Result<(), CommandError> {
+        self.scope.binding().check().map_err(error)?;
+        self.scope.disclosure_ceiling().map_err(error)?;
+        self.publication.check_current().map_err(error)?;
+        if self.expires_at <= Utc::now() {
+            return Err(CommandError::Denied);
+        }
+        Ok(())
+    }
+}
