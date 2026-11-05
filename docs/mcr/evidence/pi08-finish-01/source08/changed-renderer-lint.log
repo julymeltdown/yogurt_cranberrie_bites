@@ -1,0 +1,1 @@
+src/features/parade-ink/world-hud/__tests__/finish-01/photo2-mural-projection.test.ts:30:15: warning unicorn(no-useless-spread): Using a spread operator here creates a new array unnecessarily. help: `output.slice` returns a new array. Spreading it into an array expression to create a new array is redundant.

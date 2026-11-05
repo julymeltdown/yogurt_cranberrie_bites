@@ -7,6 +7,8 @@ import { isSpatialReferenceClaim, validateSpatialMetadata, requireSpatialScene }
 import { isSpatialV4ReferenceClaim, validateSpatialV4Metadata, requireSpatialV4Scene } from './spatial-v4/model'
 
 import { isSpatialV5ReferenceClaim, validateSpatialV5Metadata, requireSpatialV5Scene } from './spatial-v5/model'
+import { isPhoto2ReferenceClaim, registeredPhoto2Release, validatePhoto2Metadata, requirePhoto2Display,
+  type Photo2SceneDisplay } from './photo2-world-display-v1/model'
 
 /** Source and packed metadata are immutable public inputs, not release admission authority. */
 function freeze<T>(value: T): T {
@@ -26,6 +28,7 @@ const plaza = freeze(source.plaza_parcel.map(p => [p[0]!, p[1]!] as const))
 const worldCamera = freeze({ ...source.world_camera })
 
 export interface ReferenceSceneBinding {
+  readonly display?: Photo2SceneDisplay
   readonly loaded: LoadedScenery
   readonly overview: readonly SceneryObject[]
   readonly plaza: readonly (readonly [number, number])[]
@@ -34,6 +37,7 @@ export interface ReferenceSceneBinding {
 
 /** A matching hash label alone cannot pair these pixels with unrelated collision or visual metadata. */
 export function validateReferenceMetadata(map: Pick<LoadedMap, 'map' | 'theme' | 'widthPx' | 'heightPx' | 'spawn'>) {
+  if (isPhoto2ReferenceClaim(map)) { validatePhoto2Metadata(map, registeredPhoto2Release(map)); return }
   if (isSpatialV5ReferenceClaim(map)) { validateSpatialV5Metadata(map); return }
   if (isSpatialV4ReferenceClaim(map)) { validateSpatialV4Metadata(map); return }
   if (isSpatialReferenceClaim(map)) { validateSpatialMetadata(map); return }
@@ -50,6 +54,12 @@ export function validateReferenceMetadata(map: Pick<LoadedMap, 'map' | 'theme' |
 }
 
 export function requireReferenceScene(map: LoadedMap): ReferenceSceneBinding {
+  if (isPhoto2ReferenceClaim(map)) {
+    const display = requirePhoto2Display(map, registeredPhoto2Release(map))
+    validateLoadedScenery(map)
+    requireMap(map.scenery && map.image.naturalWidth === map.theme.texture.width_px && map.image.naturalHeight === map.theme.texture.height_px)
+    return Object.freeze({ loaded: map.scenery, overview: map.scenery.manifest.objects, plaza: Object.freeze([]), worldCamera: display.camera, display })
+  }
   if (isSpatialV5ReferenceClaim(map)) return requireSpatialV5Scene(map)
   if (isSpatialV4ReferenceClaim(map)) return requireSpatialV4Scene(map)
   if (isSpatialReferenceClaim(map)) return requireSpatialScene(map)
@@ -60,7 +70,7 @@ export function requireReferenceScene(map: LoadedMap): ReferenceSceneBinding {
 
 /** Unknown ordinary releases retain their incumbent path; malformed/stale reference candidates fail closed. */
 export function referenceSceneFor(map: LoadedMap): ReferenceSceneBinding | null {
-  const candidate = isSpatialV5ReferenceClaim(map) || isSpatialV4ReferenceClaim(map) || isSpatialReferenceClaim(map) || map.map.map_id === referenceSceneIdentity.mapId || map.map.geometry_hash === referenceSceneIdentity.geometryHash
+  const candidate = isPhoto2ReferenceClaim(map) || isSpatialV5ReferenceClaim(map) || isSpatialV4ReferenceClaim(map) || isSpatialReferenceClaim(map) || map.map.map_id === referenceSceneIdentity.mapId || map.map.geometry_hash === referenceSceneIdentity.geometryHash
     || [map.theme.scenery?.ground.path, ...map.theme.scenery?.atlases.map(a => a.path) ?? []].some(p => p?.startsWith('world/reference-scene-v2/runtime-v4/'))
   return candidate ? requireReferenceScene(map) : null
 }

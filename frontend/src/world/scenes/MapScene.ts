@@ -1,5 +1,5 @@
 import { createEnginePreferenceEffects, type EnginePreferenceEffects } from '../preferences/engine'
-import { createPhaserMuralScene } from '../mural/phaser'
+import { createProfiledMuralScene } from '../reference-scene/photo2-world-display-v1/phaser'
 import type { MuralSceneTexture } from '../mural/sink'
 import type { IncumbentMuralScene } from '../runtime'
 import type { Point, WorldCamera } from '../camera/port'
@@ -13,6 +13,7 @@ import { validateLoadedScenery } from '../illustrated/model'
 import { referenceSceneFor } from '../reference-scene/model'
 import { spatialV5CameraPresentation } from '../reference-scene/spatial-v5/camera'
 import { prepareReferenceSceneSkin } from '../reference-scene/phaser'
+import { photo2DisplayDepth } from '../reference-scene/photo2-world-display-v1/model'
 /** Phaser is evaluated only after an explicitly started owner has loaded and verified resources. */
 export async function loadPhaserEngine(): Promise<EngineFactory> {
   const Phaser = (await import('phaser')).default
@@ -23,6 +24,9 @@ export async function loadPhaserEngine(): Promise<EngineFactory> {
     const closed = new Promise<void>(resolve => { resolveClosed = resolve })
     const g = loaded.map.geometry
     const reference = referenceSceneFor(loaded)
+    let activeMap = loaded, activeReference = reference
+    const reprojectAvatars = new Set<() => void>()
+    const reprojectMurals = new Set<() => void>()
     const muralClose = new Set<() => void>()
     const closeMural = () => { for (const close of Array.from(muralClose)) { try { close() } catch { /* Continue scene teardown. */ } }; muralClose.clear() }
     let skinRevision = 0
@@ -58,7 +62,8 @@ export async function loadPhaserEngine(): Promise<EngineFactory> {
           this.events.once(Phaser.Scenes.Events.DESTROY, remove)
           // Phaser Canvas roundPixels expands every frame by half a source pixel.
           // Illustrated atlas rectangles must keep their exact placement/extents instead.
-          this.cameras.main.setBounds(0, 0, loaded.widthPx, loaded.heightPx).setRoundPixels(!loaded.scenery)
+          const bounds = activeReference?.display?.groundBounds
+          this.cameras.main.setBounds(bounds?.x ?? 0, bounds?.y ?? 0, bounds?.width ?? loaded.widthPx, bounds?.height ?? loaded.heightPx).setRoundPixels(!loaded.scenery)
           this.cameras.main.setBackgroundColor(loaded.theme.palette.background)
           resolveReady()
         } catch (error) { rejectReady(error) }
@@ -67,8 +72,28 @@ export async function loadPhaserEngine(): Promise<EngineFactory> {
       prepareSkin(next: LoadedMap): Skin {
         const textureKey = `mcr-reviewed-map-${++skinRevision}`
         validateLoadedScenery(next)
-        if (referenceSceneFor(next)) return prepareReferenceSceneSkin(this, next, textureKey, Phaser.Textures.FilterMode.NEAREST, () => { readScenery() }, () => !stopped && sceneReady)
-        if (next.scenery) return prepareIllustratedSkin(this, next, textureKey, Phaser.Textures.FilterMode.NEAREST, () => { readScenery() }, () => !stopped && sceneReady)
+        const nextReference = referenceSceneFor(next)
+        const activate = (prepared: Skin): Skin => ({ show: () => {
+          const priorMap = activeMap, priorReference = activeReference
+          try {
+            prepared.show()
+            activeMap = next; activeReference = nextReference
+            const bounds = nextReference?.display?.groundBounds
+            this.cameras.main.setBounds(bounds?.x ?? 0, bounds?.y ?? 0, bounds?.width ?? loaded.widthPx, bounds?.height ?? loaded.heightPx)
+            for (const refresh of reprojectAvatars) refresh()
+            for (const refresh of reprojectMurals) refresh()
+            refreshCamera()
+          } catch (error) {
+            activeMap = priorMap; activeReference = priorReference; prepared.remove()
+            const bounds = priorReference?.display?.groundBounds
+            this.cameras.main.setBounds(bounds?.x ?? 0, bounds?.y ?? 0, bounds?.width ?? loaded.widthPx, bounds?.height ?? loaded.heightPx)
+            for (const refresh of reprojectAvatars) refresh()
+            for (const refresh of reprojectMurals) refresh()
+            refreshCamera(); throw error
+          }
+        }, remove: prepared.remove })
+        if (nextReference) return activate(prepareReferenceSceneSkin(this, next, textureKey, Phaser.Textures.FilterMode.NEAREST, () => { readScenery() }, () => !stopped && sceneReady))
+        if (next.scenery) return activate(prepareIllustratedSkin(this, next, textureKey, Phaser.Textures.FilterMode.NEAREST, () => { readScenery() }, () => !stopped && sceneReady))
         let tilemap: PhaserType.Tilemaps.Tilemap | null = null, removed = false
         const layers: PhaserType.Tilemaps.TilemapLayer[] = []
         const remove = () => {
@@ -89,7 +114,7 @@ export async function loadPhaserEngine(): Promise<EngineFactory> {
             layers.push(layer)
             layer.setVisible(false).putTilesAt(grid.map(row => row.map(id => id === 0 ? -1 : id - 1)), 0, 0).setDepth(depth)
           }
-          return { show: () => { for (const layer of layers) layer.setVisible(true) }, remove }
+          return activate({ show: () => { for (const layer of layers) layer.setVisible(true) }, remove })
         } catch (error) { remove(); throw error }
       }
     }
@@ -133,6 +158,21 @@ export async function loadPhaserEngine(): Promise<EngineFactory> {
     function refreshCamera() {
       if (stopped || !sceneReady) return
       const camera = game.scene.getScene('mcr-map').cameras.main
+      const display = activeReference?.display
+      if (display) {
+        const view = display.camera, bounds = display.groundBounds
+        const fit = Math.max(Math.min(1, game.scale.width / view.width, game.scale.height / view.height),
+          game.scale.width / bounds.width, game.scale.height / bounds.height)
+        const projected = cameraFoot ? display.projection.forward(cameraFoot) : null
+        const center = { x: view.x + view.width / 2, y: view.y + view.height / 2 }
+        if (projected) {
+          center.x = projected.x - Math.max(-32, Math.min(32, projected.x - center.x))
+          center.y = projected.y - Math.max(-160, Math.min(160, projected.y - center.y))
+        }
+        camera.setSize(game.scale.width, game.scale.height).setZoom((cameraZoom ?? 1) * fit).centerOn(center.x, center.y)
+        camera.preRender(); return
+      }
+      const reference = activeReference
       camera.setSize(game.scale.width, game.scale.height).setZoom(cameraZoom ?? Math.max(1, Math.floor(Math.min(game.scale.width / loaded.widthPx, game.scale.height / loaded.heightPx))))
       // Before a server/self or explicit camera target exists, present the bound stage.
       // This is a view only: no spawn, player, geometry or interaction is moved.
@@ -142,7 +182,7 @@ export async function loadPhaserEngine(): Promise<EngineFactory> {
         : stage && stageInteraction ? { x: stage.x + stage.width / 2 + Math.min(64, game.scale.width / camera.zoom * .14),
         y: stage.y + stage.height / 2 + Math.min(260, game.scale.height / camera.zoom * .32) }
         : { x: (loaded.spawn.cell_x + .5) * g.tile_width_px, y: (loaded.spawn.cell_y + .5) * g.tile_height_px })
-      const presentation = spatialV5CameraPresentation(loaded, { width: game.scale.width, height: game.scale.height }, foot, cameraZoom ?? 1) ?? (reference ? {
+      const presentation = spatialV5CameraPresentation(activeMap, { width: game.scale.width, height: game.scale.height }, foot, cameraZoom ?? 1) ?? (reference ? {
         zoom: (cameraZoom ?? 1) * Math.max(Math.min(1, game.scale.width / reference.worldCamera.width, game.scale.height / reference.worldCamera.height),
           game.scale.width / loaded.widthPx, game.scale.height / loaded.heightPx),
         center: { x: foot.x - Math.max(-32, Math.min(32, foot.x - (reference.worldCamera.x + reference.worldCamera.width / 2))),
@@ -163,21 +203,41 @@ export async function loadPhaserEngine(): Promise<EngineFactory> {
         const rect = game.canvas.getBoundingClientRect()
         if (rect.width <= 0 || rect.height <= 0 || client.x < rect.left || client.y < rect.top || client.x >= rect.right || client.y >= rect.bottom) return null
         refreshCamera()
-        const point = game.scene.getScene('mcr-map').cameras.main.getWorldPoint((client.x - rect.left) * game.canvas.width / rect.width, (client.y - rect.top) * game.canvas.height / rect.height)
+        const painted = game.scene.getScene('mcr-map').cameras.main.getWorldPoint((client.x - rect.left) * game.canvas.width / rect.width, (client.y - rect.top) * game.canvas.height / rect.height)
+        const point = activeReference?.display ? activeReference.display.projection.inverse(painted) : painted
+        if (!point) return null
         return point.x < 0 || point.y < 0 || point.x > loaded.widthPx || point.y > loaded.heightPx ? null : { x: point.x, y: point.y }
       },
       unproject(world) {
         if (stopped || !sceneReady || !Number.isFinite(world.x) || !Number.isFinite(world.y)) return null
         refreshCamera()
+        const point = activeReference?.display ? activeReference.display.projection.forward(world) : world
+        if (!point) return null
         const camera = game.scene.getScene('mcr-map').cameras.main, origin = camera.getWorldPoint(0, 0), end = camera.getWorldPoint(game.canvas.width, game.canvas.height), rect = game.canvas.getBoundingClientRect()
         if (rect.width <= 0 || rect.height <= 0) return null
-        return { x: rect.left + (world.x - origin.x) / (end.x - origin.x) * rect.width, y: rect.top + (world.y - origin.y) / (end.y - origin.y) * rect.height }
+        return { x: rect.left + (point.x - origin.x) / (end.x - origin.x) * rect.width, y: rect.top + (point.y - origin.y) / (end.y - origin.y) * rect.height }
       },
       read() {
         if (stopped || !sceneReady) return null
         refreshCamera()
         const camera = game.scene.getScene('mcr-map').cameras.main
         return { zoom: camera.zoom, scrollX: camera.scrollX, scrollY: camera.scrollY, width: camera.width, height: camera.height }
+      },
+      readShortcuts() {
+        const display = activeReference?.display
+        if (stopped || !sceneReady || !display) return null
+        refreshCamera()
+        const camera = game.scene.getScene('mcr-map').cameras.main, rect = game.canvas.getBoundingClientRect()
+        if (rect.width <= 0 || rect.height <= 0) return null
+        const origin = camera.getWorldPoint(0, 0), end = camera.getWorldPoint(game.canvas.width, game.canvas.height)
+        const client = (x: number, y: number) => ({ x: rect.left + (x - origin.x) / (end.x - origin.x) * rect.width,
+          y: rect.top + (y - origin.y) / (end.y - origin.y) * rect.height })
+        return Object.freeze({ version: display.version, viewport: Object.freeze({ x: rect.left, y: rect.top, width: rect.width, height: rect.height }),
+          boards: Object.freeze(display.boards.map(board => {
+            const area = board.displayRect, start = client(area.x, area.y), finish = client(area.x + area.width, area.y + area.height)
+            return Object.freeze({ id: board.id, destination: board.destination,
+              clientRect: Object.freeze({ ...start, width: finish.x - start.x, height: finish.y - start.y }) })
+          })) })
       },
     }
     const avatarTextureFrames = new WeakMap<AvatarSceneTexture, number>()
@@ -210,11 +270,19 @@ export async function loadPhaserEngine(): Promise<EngineFactory> {
         if (stopped || !sceneReady || !avatarTextures.has(texture)) throw new Error('Avatar texture unavailable')
         const image = game.scene.getScene('mcr-map').add.sprite(0, 0, texture.key, 0).setOrigin(.5, 60 / 64).setVisible(false)
         let removed = false
+        let last: { x: number; y: number; frame: number; depth: number } | null = null
+        const refresh = () => {
+          if (removed || !last) return
+          const display = activeReference?.display, foot = display ? display.projection.forward(last) : last
+          if (!foot) { image.setVisible(false); return }
+          image.setPosition(foot.x, foot.y).setFrame(last.frame).setDepth(display ? photo2DisplayDepth(display, foot.y) : last.depth).setVisible(true)
+        }
+        reprojectAvatars.add(refresh)
         const lease: AvatarSceneSprite = { update(x, y, frame, depth) {
           if (removed || stopped || !Number.isFinite(x) || !Number.isFinite(y) || !Number.isInteger(frame) || frame < 0 || frame >= (avatarTextureFrames.get(texture) ?? 0)
             || !Number.isFinite(depth) || depth < 1 || depth >= 2) throw new Error('Avatar sprite unavailable')
-          image.setPosition(x, y).setFrame(frame).setDepth(depth).setVisible(true)
-        }, dispose() { if (removed) return; removed = true; avatarSprites.delete(lease); spriteTextures.delete(lease); image.destroy() } }
+          last = { x, y, frame, depth }; refresh()
+        }, dispose() { if (removed) return; removed = true; reprojectAvatars.delete(refresh); avatarSprites.delete(lease); spriteTextures.delete(lease); image.destroy() } }
         avatarSprites.set(lease, lease.dispose); spriteTextures.set(lease, texture); return lease
       },
       onFrame(listener) {
@@ -228,7 +296,7 @@ export async function loadPhaserEngine(): Promise<EngineFactory> {
     }
     const muralScene: IncumbentMuralScene = (anchor, key) => {
       if (stopped || !sceneReady) throw new Error('Mural scene unavailable')
-      const port = createPhaserMuralScene(game.scene.getScene('mcr-map'), anchor, key)
+      const port = createProfiledMuralScene(game.scene.getScene('mcr-map'), anchor, key, () => activeReference?.display ?? null, reprojectMurals)
       const textures = new WeakMap<MuralSceneTexture, MuralSceneTexture>()
       const live = () => { if (stopped || !sceneReady) throw new Error('Mural scene unavailable') }
       return {

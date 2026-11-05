@@ -1,6 +1,6 @@
 import { createContext, useContext, useRef, useState, type ReactNode, type RefObject } from 'react'
 import { ShellLink } from '../../../app/navigation'
-import { WorldContextStrip } from './world-context'
+import { WorldContextStrip, WorldPhoto2Shortcuts } from './world-context'
 import './world-hud.css'
 
 interface HudLayout {
@@ -60,6 +60,7 @@ export function WorldHudViewport({ children }: { children: ReactNode }) {
   const hud = useHud()
   return <div className="pi08-viewport" data-world-hud-active={hud.active ? 'true' : 'false'}>
     {children}
+    {hud.active && <WorldPhoto2Shortcuts />}
     {hud.active && <WorldContextStrip expanded={hud.details} />}
   </div>
 }

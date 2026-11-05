@@ -1,3 +1,5 @@
+import type { Photo2ShortcutSnapshot } from '../reference-scene/photo2-world-display-v1/model'
+
 export interface Point { readonly x: number; readonly y: number }
 export interface CameraSnapshot { readonly zoom: number; readonly scrollX: number; readonly scrollY: number; readonly width: number; readonly height: number }
 /** CSS-client coordinates at the boundary; implementations own canvas scaling and actual camera transforms. */
@@ -7,6 +9,7 @@ export interface WorldCamera {
   project(client: Point): Point | null
   unproject(world: Point): Point | null
   read(): CameraSnapshot | null
+  readShortcuts?(): Photo2ShortcutSnapshot | null
 }
 export function createCameraControl(view: WorldCamera, foot: Point, zoom: number) {
   if (!Number.isFinite(zoom) || zoom < 1 || zoom > 8) throw new Error('Invalid local camera policy')

@@ -1,5 +1,6 @@
 import { canonicalJson, requireMap } from '../map/json'
 import type { Resource } from '../map/resources'
+import { registeredPhoto2Ground } from '../reference-scene/photo2-world-display-v1/model'
 
 export interface SceneryTexture {
   readonly id: string; readonly path: string; readonly sha256: string
@@ -46,7 +47,7 @@ export function validateScenery(s: Scenery | undefined, width: number, height: n
     pixels += t.width_px * t.height_px; bytes += t.bytes
   }
   requireMap(bytes <= sceneryLimits.transferBytes && pixels <= sceneryLimits.pixels
-    && s.ground.width_px === width && s.ground.height_px === height)
+    && ((s.ground.width_px === width && s.ground.height_px === height) || registeredPhoto2Ground(s, width, height)))
   const atlases = new Map(s.atlases.map(t => [t.id, t])), objects = new Set<string>()
   for (const o of s.objects) {
     const t = atlases.get(o.atlas_id), f = o.frame

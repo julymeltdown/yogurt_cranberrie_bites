@@ -1,0 +1,145 @@
+{
+  "state": "EXPLICIT_SOURCE07_0654_FROZEN_NOT_ACCEPTED",
+  "sourceBase": "38ffe4fe31db3d1fd163b0dd8e099e6d2f8accaa",
+  "files": [
+    {
+      "path": "frontend/src/features/parade-ink/world-hud/index.tsx",
+      "bytes": 4815,
+      "sha256": "79b95530d9141e4a25f6cb89396d7d9e6a3b15c6beb14d82fceb07d76d3f117b"
+    },
+    {
+      "path": "frontend/src/features/parade-ink/world-hud/world-context.tsx",
+      "bytes": 5831,
+      "sha256": "e58031d22d4e357a734b4ec079e2d3fb26fdb05999c1470f6cdfae8d77fcb75f"
+    },
+    {
+      "path": "frontend/src/features/parade-ink/world-hud/world-hud.css",
+      "bytes": 7571,
+      "sha256": "b4c9e77ede2c2e0dab18e9d1e636df58c5bc8fd6c4d6b26a05908a7a09b4fdbd"
+    },
+    {
+      "path": "frontend/src/features/parade-ink/world-hud/photo2-world-display-v1.ts",
+      "bytes": 15075,
+      "sha256": "a37dfc5dcd4a0f533ad4d607cab0ced9caa10ca1c3fcdcd8894fbb00997d9e50"
+    },
+    {
+      "path": "frontend/src/world/camera/port.ts",
+      "bytes": 2002,
+      "sha256": "c9de440e7e1d4203ddc69f33ab72357240ff7d14924d24e4ac4b1d56793aa627"
+    },
+    {
+      "path": "frontend/src/world/composition/index.ts",
+      "bytes": 23494,
+      "sha256": "179a73db8cbe036fc458992402ac3cd621c7abc21ae6a92157f34fb644db92a1"
+    },
+    {
+      "path": "frontend/src/world/illustrated/model.ts",
+      "bytes": 4855,
+      "sha256": "f3fb5c86fa512a9d5c5b0fdcdf68687079e6f53f29ae021901293ae766281d6a"
+    },
+    {
+      "path": "frontend/src/world/reference-scene/model.ts",
+      "bytes": 5572,
+      "sha256": "6b238713d83b19a6b7beefcbbd18b130ca10b8730113eea3eb4eeeab9593c99f"
+    },
+    {
+      "path": "frontend/src/world/reference-scene/phaser.ts",
+      "bytes": 3225,
+      "sha256": "b3e7098249144992daf4b04be39ecdd29d95782de03fa47d2c87d3f3c5568df1"
+    },
+    {
+      "path": "frontend/src/world/reference-scene/photo2-world-display-v1/model.ts",
+      "bytes": 10705,
+      "sha256": "aafc6166a0930478634a8bcf1b4d2f4ebe8f6bd704289e18588f322bd58c1015"
+    },
+    {
+      "path": "frontend/src/world/reference-scene/photo2-world-display-v1/phaser.ts",
+      "bytes": 13467,
+      "sha256": "6531c22131aa948c1eba92ca9e37a2978dd50862b3b843032c0122d960b2e1e9"
+    },
+    {
+      "path": "frontend/src/world/scenes/MapScene.ts",
+      "bytes": 24260,
+      "sha256": "479f151394efd87a8f28ef5d0ed74b09b826bfb6c36fbcf9ebd92051b1c0619f"
+    },
+    {
+      "path": "frontend/src/world/reference-scene/spatial-v3/source-inputs.json",
+      "bytes": 47336,
+      "sha256": "847d9c92a4ddfa22b8187bb6afe9a9fc2e6e09b1c7fe8e5f85c5a7f5c0d846a9"
+    },
+    {
+      "path": "frontend/src/world/reference-scene/spatial-v3/tile-pin.json",
+      "bytes": 213,
+      "sha256": "f20d50e9daa3026972728b8be6dd5d3f84d8c15ad74ac2a75e85edca0651bd48"
+    },
+    {
+      "path": "frontend/src/features/parade-ink/world-hud/__tests__/finish-01/photo2-mural-projection.test.ts",
+      "bytes": 7527,
+      "sha256": "4e6113552f2d703671773ad376e0dde50351d0ff51af9f4dc91e6e91c89fa38e"
+    },
+    {
+      "path": "frontend/src/features/parade-ink/world-hud/__tests__/finish-01/photo2-renderer-source.config.mjs",
+      "bytes": 279,
+      "sha256": "d3075fe8f26032a928c4a1cdb8b396670ce7e6f94e5f917789a499ceed2a42cb"
+    },
+    {
+      "path": "frontend/src/features/parade-ink/world-hud/__tests__/finish-01/source07-round.py",
+      "bytes": 21498,
+      "sha256": "75c595dabf935f8e65d6f16ab858168c9c5a19ad3d5284f02af78af6fb6bc53c"
+    },
+    {
+      "path": "frontend/src/features/parade-ink/world-hud/__tests__/finish-01/resource_guard.py",
+      "bytes": 385,
+      "sha256": "65b6b2d90cdd682f012859f92e5bd5c9f4098f30fef82a8b6acb45b74d4cdae6"
+    },
+    {
+      "path": "frontend/src/features/parade-ink/world-hud/__tests__/finish-01/resource_snapshot.py",
+      "bytes": 4172,
+      "sha256": "ec2338c56bc59704399237ecb35f1f23602a8e6543aa31e1fbc53ad77ebcb6bb"
+    },
+    {
+      "path": "frontend/src/features/gift-discovery/__tests__/parade-ink/guardian.py",
+      "bytes": 3849,
+      "sha256": "1b56f5723453a165939752b78c0660bd90811af9199dddc4c127f35c7f613d11"
+    },
+    {
+      "path": "frontend/src/features/gift-discovery/__tests__/parade-ink/membership.py",
+      "bytes": 11575,
+      "sha256": "d2e52f549c07977265b131a1ed2a178b805ddef174fdc55c6d339dc8f370ae67"
+    },
+    {
+      "path": "docs/mcr/evidence/pi08-finish-01/photo2-world-contract/producer-input-v2.json",
+      "bytes": 38407,
+      "sha256": "da87fef51caf2333e2fb9b05755efff0046c7254f0b399bc234b1308697c52fd"
+    },
+    {
+      "path": "docs/mcr/evidence/pi08-finish-01/photo2-world-contract/producer-contract-v2.json",
+      "bytes": 39013,
+      "sha256": "3fce374b7f60d46e8561559c42470a3343708f9eb3236a1d01050c4f0aa3a12d"
+    },
+    {
+      "path": "frontend/src/world/theme/compatibility.ts",
+      "bytes": 2047,
+      "sha256": "f1aa9bfd3eae5f30f30069609882f385085cdabb97bba005019e8bbe78376b3c"
+    }
+  ],
+  "scope": "New source cases and affected strict/lint only. No replay of Source01/02/04 or Native08/09/11. No admitted art/catalog tuple or native display qualification.",
+  "preRunStaticCorrection": "Preserve optional incumbent mural key default and exact legacy key/anchor validation; no finite execution or replay occurred.",
+  "preRunStaticCorrections": [
+    "Optional incumbent mural key and exact legacy anchor/key guard preserved.",
+    "All Vite cache goes to private accepted scratch, never borrowed read-only node_modules.",
+    "Fifth new case additionally guards unchanged compatibility: same native placement with separate displayground passes; moved/renamed/reordered physical objects fail. No compatibility product edit or grant inferred.",
+    "Distinct07 controller checks exact07 renderer24-file readset before/after workload, replacing stale Source04 historical readset reference. Frozen Source04 source and old guard remain unchanged."
+  ],
+  "allocatorAuthority": "Literal21d distinct07 grant: prepared73f4a0df/0a4501b8, correct internal readset reference and final literal offer/readset/launcher binding ONLY. Published mapping before grant; no product/test changes.",
+  "prospectiveBookBindingCorrections": [
+    "Primary and guardian numeric libproc birth/PPID/group/image and actual argc-bounded kernel argv.",
+    "Actual WHOLE plus fresh4MiB once; historical2GiB family accounting is not another prospective physical reservation.",
+    "Subsequent ordinary transition preserves historicalactual803647488 separately from conservative accounting peak."
+  ],
+  "predecessor": "ART231-PHOTO2-SOURCE03-0647 literalFULL1793861614.764074; FAIL retained, no art qualification barrier or PASS inference.",
+  "phaseBudget": "Remaining SAME4MiB TOTAL05+06+07;05/06 never finiteaccepted, no reset/new4MiB.",
+  "eligibility": "After actual ART finiteSOURCE03 FULL1793861614.764074; accept by07:15, actual valid census/fit/dual LIVE required.",
+  "offer": "PI08-RENDERER-SOURCE07-0654",
+  "resourceGrant": "8PID2GiB/S1/WHOLE8GiB/120WORK180FULL/accept07:15; conservative family2GiB/carry1647MiB distinct actual historical803647488/allhigher; ordinary SAME64 time07:30."
+}

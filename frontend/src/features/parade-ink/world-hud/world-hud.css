@@ -32,7 +32,12 @@
 .pi08-world-shell .pi08-era-controls button[aria-pressed='true'] { background: var(--pi-ink); color: var(--pi-on-dark); box-shadow: none; }
 .pi08-world-shell .pi08-era-controls button:disabled { background: var(--pi-disabled); color: var(--pi-muted); }
 .pi08-world-shell .pi08-era-controls .mcr-chrome-eras__status { margin: 4px 0 0; color: var(--pi-ink); font: 400 var(--pi-meta-size)/var(--pi-meta-leading) var(--pi-font-body); }
-.pi08-viewport { display: grid; grid-template-rows: minmax(0, 1fr) auto; min-width: 0; min-height: 0; }
+.pi08-viewport { position: relative; display: grid; grid-template-rows: minmax(0, 1fr) auto; min-width: 0; min-height: 0; }
+.pi08-photo2-shortcuts { position: absolute; inset: 0; pointer-events: none; overflow: hidden; }
+.pi08-photo2-shortcuts > a, .pi08-photo2-shortcuts > button { position: absolute; display: block; min-width: 44px; min-height: 44px; padding: 0; border: 0; background: transparent; pointer-events: auto; }
+.pi08-photo2-shortcuts > a:focus-visible { outline: 3px solid var(--pi-ink); outline-offset: -3px; background: color-mix(in srgb, var(--pi-paper) 35%, transparent); }
+.pi08-photo2-shortcuts > button:disabled { cursor: default; }
+.pi08-photo2-shortcuts > :is(a, button) > span { position: absolute; width: 1px; height: 1px; padding: 0; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
 .pi08-viewport[data-world-hud-active='false'] { grid-template-rows: minmax(0, 1fr); }
 .pi08-world-context {
   display: grid; grid-template-columns: minmax(0, 1fr) auto; align-items: center;

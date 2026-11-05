@@ -1,0 +1,25 @@
+{
+  "observedAtEpoch": 1793861788.581973,
+  "psSnapshotSHA256": "8f0db71f41896c04494a49d8551b799e1bf662464311aac7488e6b383fc030e5",
+  "owners": [
+    "01a1a5d9-6955-7820-bcd4-8e0a21629aa2"
+  ],
+  "ordinaryActualPids": [],
+  "reservedProcesses": 8,
+  "reservedRSSBytes": 2147483648,
+  "actualPids": [
+    62761,
+    62841,
+    62906,
+    63143,
+    63144
+  ],
+  "actualRSSBytes": 939753472,
+  "otherNewUpperBytes": 2684354560,
+  "receiptReadConsistency": {
+    "attempts": 1,
+    "stableRevisionSHA256": "c5043e566f907570420d62545ce79c69e560d6dc24990f8d2f25293e89c850fb",
+    "unstableObservations": [],
+    "boundary": "Every returned claim/cap/PID/future passed the unchanged strict reader against a stable receipt revision; no reservation released from absence"
+  }
+}

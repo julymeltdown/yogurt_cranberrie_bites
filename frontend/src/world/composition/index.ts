@@ -2,6 +2,7 @@ import type { WorldLease, WorldLifecyclePort } from '../../app/ports'
 import type { SessionController } from '../../features/auth/model/session'
 import type { PrivacyScope } from '../../shared/query/privacy'
 import type { WorldCamera, Point } from '../camera/port'
+import type { Photo2ShortcutSnapshot } from '../reference-scene/photo2-world-display-v1/model'
 import { attachMovement, type MovementAttachment } from '../input/controller'
 import { abortable, loadMap, type LoadedMap } from '../map/resources'
 import { createWorldRuntime, type EngineFactory, type OverviewFactory, type RuntimeState, type WorldRuntime } from '../runtime'
@@ -50,6 +51,7 @@ export interface WorldReplicationRelease {
 }
 /** Read-only capabilities of this exact live engine/release, withdrawn before any resource cleanup. */
 export interface WorldPresentationRelease {
+  readonly shortcuts?: { read(): Photo2ShortcutSnapshot | null }
   /** Explicit qualified mural source on this incumbent world; absent stays unavailable. */
   readonly mural?: MuralEntryReleaseSource
   readonly overview?: SceneryOverviewPort
@@ -309,6 +311,7 @@ export function createWorldComposition(options: WorldCompositionOptions) {
           map: Object.freeze({ scope: context.scope, manifest: prepared.map,
             expected: Object.freeze({ mapId: prepared.resources.mapId, revision: prepared.resources.mapRevision, contentHash: prepared.mapInput.pin.mapHash, geometryHash: prepared.map.geometry_hash }) }),
           camera: publicCamera, theme: Object.freeze({ read: theme.read, subscribe: theme.subscribe, select: theme.select }),
+          shortcuts: Object.freeze({ read: () => livePresentation() ? camera?.readShortcuts?.() ?? null : null }),
           runtimePreferences: Object.freeze({ effects: runtime.effects }),
           overview: Object.freeze({ read: () => livePresentation() ? runtime?.overview.read() ?? null : null,
             subscribe: runtime.overview.subscribe }) })

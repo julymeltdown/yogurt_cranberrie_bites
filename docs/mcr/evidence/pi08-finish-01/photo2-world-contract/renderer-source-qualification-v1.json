@@ -1,0 +1,108 @@
+{
+  "classification": "QUALIFIED_RENDERER_SOURCE_ONLY_FULL_PHOTO2_ACTIVE",
+  "recordedAtEpoch": 1793862652.928504,
+  "source": "bf373364cd011e4689d7c8748e56e6151d95430e",
+  "rounds": [
+    {
+      "mode": "source07",
+      "path": "docs/mcr/evidence/pi08-finish-01/source07/round.json",
+      "sha256": "408f08e74fbf955c6f4f2f748944dfd3ec57787f58c2bb61b1f1846c43fe3c99",
+      "acceptedEpoch": 1793861782.378651,
+      "actualFullEpoch": 1793861789.390424,
+      "status": "FAIL",
+      "bothCompleteLiveBeforeWorkload": {
+        "primary": 62761,
+        "guardian": 62841,
+        "at": 1793861783.330125,
+        "initial": {
+          "pid": 62841,
+          "at": 1793861783.310124,
+          "sample": {
+            "free": 16750292992,
+            "all": 3,
+            "rss": 56918016,
+            "new": 1739595776,
+            "whole": 5485350912,
+            "pids": [
+              62761,
+              62841,
+              62847
+            ]
+          }
+        }
+      },
+      "commands": [
+        {
+          "label": "new-photo2-renderer-five-cases",
+          "pid": 62854,
+          "exitCode": 0
+        },
+        {
+          "label": "changed-renderer-types",
+          "pid": 62906,
+          "exitCode": 2
+        }
+      ],
+      "phasePositiveUpperBytes": 1392640,
+      "peakProcesses": 6,
+      "peakRSSBytes": 939638784,
+      "peakWHOLEBytes": 5486731264
+    },
+    {
+      "mode": "source08",
+      "path": "docs/mcr/evidence/pi08-finish-01/source08/round.json",
+      "sha256": "57b8dfd4150f85cc123a36f6f57173d0cc3aba7582c7bbab778af408316b01e6",
+      "acceptedEpoch": 1793862612.6943161,
+      "actualFullEpoch": 1793862619.490975,
+      "status": "PASS",
+      "bothCompleteLiveBeforeWorkload": {
+        "primary": 81726,
+        "guardian": 81806,
+        "at": 1793862613.723787,
+        "initial": {
+          "pid": 81806,
+          "at": 1793862613.666356,
+          "sample": {
+            "free": 17206833152,
+            "all": 3,
+            "rss": 53739520,
+            "new": 1742741504,
+            "whole": 5488832512,
+            "pids": [
+              81726,
+              81806,
+              81811
+            ]
+          }
+        }
+      },
+      "commands": [
+        {
+          "label": "changed-renderer-types-repository-settings",
+          "pid": 81831,
+          "exitCode": 0
+        },
+        {
+          "label": "changed-renderer-lint",
+          "pid": 82068,
+          "exitCode": 0
+        }
+      ],
+      "phasePositiveUpperBytes": 1384448,
+      "peakProcesses": 5,
+      "peakRSSBytes": 972636160,
+      "peakWHOLEBytes": 5490208768
+    }
+  ],
+  "fiveNewCases": "Source07 actual5/5PASS; unchanged24-file input verified before08 and after08. No replay.",
+  "strictAndLint": "Source08 actualrepositorysettings strict/lint0, exact27pins before/after; source07FAIL preserved.",
+  "sharedPhaseOriginalUpperBytes": 4194304,
+  "sharedPhaseConsumedPositiveUpperBytes": 2777088,
+  "sharedPhaseRemainingUpperBytes": 1417216,
+  "historicalActualNEWPeakBytes": 803647488,
+  "historicalActualWHOLEPeakBytes": 5498929152,
+  "registration": "EMPTY_FAIL_CLOSED_PENDING_LITERAL_QUALIFIED_ART_AND_BACKEND_TUPLE",
+  "nativePhoto2Acceptance": false,
+  "newAssetsAdmitted": false,
+  "fullObjective": "ACTIVE_UNFINISHED"
+}

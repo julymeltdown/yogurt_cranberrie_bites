@@ -1,0 +1,21 @@
+{
+  "owner": "01a1a5d9-6955-7820-bcd4-8e0a21629aa2",
+  "offer": "PI08-RENDERER-SOURCE06-0639",
+  "state": "GENUINE_UNUSED_YIELD_NOT_ACCEPTED",
+  "unusedYieldRecordedAtEpoch": 1793861252.89725,
+  "finiteAccept": null,
+  "finiteFull": null,
+  "resources": 0,
+  "finitePhaseProspectiveNEWConsumed": 0,
+  "firstDirectHandoff": "Literal genuineunused sent ART231 nextowner and21d beforediagnostics; this exact immutable record confirms same still-unused disposition, not a new attempt.",
+  "source": "5991a0aabec38ab31f1d8a37628846dbed6aae04",
+  "readsetSha256": "b96546eb1d83a7c2793f33b6c2438a16d7170c42358b2ce4d2cf0fbc42a50b70",
+  "preacceptFailures": [
+    "Old readonly proposed API rejects an ACCEPTED own ordinary activity; local launcher changed to strict actualsample plus exact prospective caps, without hiding that activity.",
+    "Next unchanged strict ordinary reader requires birth presentation string; ART231 numeric kernel birth and typed vector do not have this presentation field. Rejected at membership.py:139, before finite exec and application."
+  ],
+  "actualLastPreacceptToolExit": 1,
+  "checks": "Five new cases, types and lint all UNRUN; no source/guard/application PASS or FAIL inferred.",
+  "nextChain": "ARTSource02 -> CommunitySource20; ARTSource02 independently literalunused already delivered Community, no own acknowledgment barrier.",
+  "resume": "Concrete owned legacy-consumer adapter mapping requested from1eed; no textual birth invention, source mutation, owner exemption, old guard change or repeated unchanged census."
+}

@@ -2,11 +2,13 @@ import type Phaser from 'phaser'
 import type { LoadedMap } from '../map/resources'
 import { sceneryDepth } from '../illustrated/model'
 import { requireReferenceScene } from './model'
+import { preparePhoto2SceneSkin } from './photo2-world-display-v1/phaser'
 
 /** Hidden preparation on the incumbent scene. No physics, actor, input, camera or network ownership. */
 export function prepareReferenceSceneSkin(scene: Phaser.Scene, map: LoadedMap, prefix: string,
   nearest: Phaser.Textures.FilterMode, uploaded: () => void, alive: () => boolean) {
   const binding = requireReferenceScene(map)
+  if (binding.display) return preparePhoto2SceneSkin(scene, map, binding.display, prefix, nearest, uploaded, alive)
   const objects: Phaser.GameObjects.Image[] = [], keys: string[] = []
   let removed = false, graphics: Phaser.GameObjects.Graphics | null = null, mask: Phaser.Display.Masks.GeometryMask | null = null
   const remove = () => {
