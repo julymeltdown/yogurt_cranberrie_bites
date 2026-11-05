@@ -1,7 +1,7 @@
 {
-  "updated_at": "2026-11-05T15:32:00+09:00",
+  "updated_at": "2026-11-05T16:32:00+09:00",
   "progress_basis": "REVISED_FUNCTIONAL_DELIVERY; historical original criteria outcomes are retained separately",
-  "published_snapshot": "7c2066bb8ba596589a80d1ce70f96ea51969ef04",
+  "published_snapshot": "cdba75d3c23ce28364563bd39b114d83db3b7ece",
   "method": "Human-authorized full112-task replan using original task/IA definitions, responsible-owner hourly dispositions and canonical publisher receipts. Kings do not inspect implementation, SQL, tests or screenshots. No new technical acceptance is inferred.",
   "required_tasks": 112,
   "required_ia_entries": 61,
@@ -17,19 +17,18 @@
     "required_ia_entries": 61,
     "optional_excluded": 6,
     "counts": {
-      "DONE": 58,
+      "DONE": 61,
       "WAITING_INPUT": 3,
-      "IN_PROGRESS": 44,
-      "REOPENED": 3,
+      "IN_PROGRESS": 42,
+      "REOPENED": 2,
       "DEFERRED_BY_USER": 1,
       "OPEN": 3
     },
-    "done_tasks": 58,
-    "remaining_active_tasks": 53,
-    "task_completion_percentage": 52.3,
+    "done_tasks": 61,
+    "remaining_active_tasks": 50,
+    "task_completion_percentage": 55.0,
     "historical_original_outcomes": 39,
     "reopened_historical_tasks": [
-      "FE19",
       "FE24",
       "FE33"
     ],
@@ -97,10 +96,12 @@
       "FE37",
       "C04",
       "FE38",
-      "FE39"
+      "FE39",
+      "FE12",
+      "FE13"
     ],
-    "current_original_criteria_outcomes": 61,
-    "progress_updated_at": "2026-11-05T15:32:00+09:00",
+    "current_original_criteria_outcomes": 63,
+    "progress_updated_at": "2026-11-05T16:32:00+09:00",
     "hosted_ci": {
       "state": "QUALIFIED_PUBLISHED",
       "observed_at": "2026-11-04T18:18:00Z",
@@ -140,9 +141,9 @@
       }
     },
     "staffing_changes": {
-      "at": "2026-11-05T15:32:00+09:00",
-      "checkpoint": "MAIN_HOURLY_20261105_1532",
-      "basis": "Single38515:32 digest and Backend21d06:05 conclusions through Main; fixed frontend register and explicitly dated later Community publication.",
+      "at": "2026-11-05T16:32:00+09:00",
+      "checkpoint": "MAIN_HOURLY_20261105_1632",
+      "basis": "Main explicit16:32accounting+385/Worldresponsibleownerconclusions; boundedcanonicalpublicationssupersededatedpendingonly.",
       "allocator": "21d",
       "publisher": "412e",
       "new_chats": 0,
@@ -153,58 +154,84 @@
       "manager_technical_review": false,
       "venue_done": 1,
       "venue_remaining": 7,
-      "venue_new_acceptance": "VENU-ART01 pure-art/controlled-client only",
-      "original_done": 58,
+      "venue_new_acceptance": null,
+      "original_done": 61,
+      "original_remaining": 50,
+      "new_original_closures": [
+        "FE12",
+        "FE13"
+      ],
+      "historical_reclosed_only": [
+        "FE19"
+      ],
       "design_accepted": 10,
       "design_remaining": [
         "PI08",
         "PI11"
       ],
-      "Map_lifecycle": "Terminal/clean/archived samecontext; grants/book remainder returned, oldBLOCKEDgoal unchanged/no accepted nextscope",
-      "PI08": {
-        "owner": "2162 renderer,231 ART,existing6b5d backend discovery;Root1fc exact backend custody",
-        "delivered": "Source contract33491ccf and logical zoom8c601c71 published.",
-        "open": "Full Photo2 scenery/renderer activation/wholePI08 parity unfinished. ART231 accepted ten exact NEW paths and authored vector generator; PNG generation/qualification unfinished and capacity-denied.",
-        "custody": "6b5d accepted C06-PARADE-BINDING-BE01 source-readiness only; operative backend release paths/preimages/write custody pending discovery/Root1fc. No backend production grant or frontend compatibility.ts change inferred."
-      },
-      "Community": {
-        "canonical": "7c2066bb8ba596589a80d1ce70f96ea51969ef04",
-        "date_relation": "Later than fixed06:30:10UTC register",
-        "qualified": "Controlled Native18 native/compare0/0 and28 owner-inspected PNGs; component product improvement only.",
-        "retained_failure": "OUTER_RESOURCE_FAIL remains FAIL; no aggregateNative18PASS",
-        "open": "Small text/glyph/subpixel differences and broader default-shell/live-service/device/integration remain open; no original/design/VENU closure."
-      },
-      "OAuth": {
-        "owner": "Root153/12cc and actual provider/SQL owners",
-        "positive": "Focused current session/boundary/recovery/lint checks passed.",
-        "open": "Strict corrected-overlay/import/metadata and strict-onlySource13/native/provider/SQL/public qualification unfinished; publicOAuthOFF. Conditional authorizations are capacity-denied, no accepted hold.",
-        "report_only": [
-          "BE03 report8940a51f excludes15 unqualified application/core leaves",
-          "N213956cb709 ownedreport, not product/native completion",
-          "Map12a033ae ordinary-registration repair, not app successor"
-        ]
-      },
-      "PI11_default_QA06": {
-        "owner": "26e PI11;1eed default host;SAME1ab7 exactfe-public QA06 lifecycle",
-        "PI11": "Reached realWorld one canvas/socket, failed fixture/HUD entry and separate process metadata; existing owner retains repair/native finish.",
-        "default_and_fixture": "Default-host adapters and QA06 fixture-source qualification unfinished. QA06 candidate/source custody actually accepted; physical executor/device/access/control/reachable fixture requirements remain separately UNCONFIRMED and originalBLOCKED goal unchanged.",
-        "boundary": "No blanket backend/PI08/PI11/defaultHost/device gate added to independent source preparation or finished pure-client criteria."
-      },
-      "backend": {
-        "digest_at": "2026-11-05T06:05:00Z",
-        "whole_original_completion": "NO_NEW_COMPLETION",
-        "scope": "Source/control milestones and bounded future reservations are not runtime passes or accepted holds.",
-        "resources": "After-futures disk fit is allocator21d-owned blocker.21d alone controls actual usable fresh windows/direct custody; dated queues are not grants. Preserve accepted limits/cumulative history/failures/unrun states; no cleanup/globalkill/reset/model/newchat."
-      },
-      "W04": {
-        "policy": "PENDING_UNFROZEN",
-        "planning_only": true,
-        "invitation_grant": false,
-        "boundary": "Keep existing single human question; actual Friends/viewer/location/event-clock/reviewed physical inputs remain existing producer/access decisions. No duplicate question or whole-backend-wave barrier."
-      },
-      "ready_stream_staffing": {
-        "ready_unstaffed_disjoint_work": "NONE_VERIFIED",
-        "next": "Existing leads continue owner validation/fixes and sole412e publication independently. Main/SL acknowledgment never gates work; no manager code/query/runtime/pixel review."
+      "major_remainders": {
+        "OAuth": {
+          "owner": "Root153/12cc plus actual Gateway/provider/SQL owners",
+          "frontend": "Qualified26postimages canonical8ccdeb0a: actualApp/Auth/admission/privacy with controlledsynthetic303/cookie counterpart only.",
+          "BE03report": "Source54ab7bc32c26 report-only3ba98e5e8ad7; Source04fiveNEWresourcecasesPASS/old02and03FAILretained;15applicationleavesEXCLUDED_UNPUBLISHED.",
+          "open": "PublicOAuthOFF; actualGateway/provider/SQL/device/combinedruntime/wholeBE03/tombstonegapOPEN."
+        },
+        "PI08": {
+          "owner": "2162/231/6b5d existing direct owners",
+          "delivered": "Contract33491ccf/logicalzoom8c601c71 and rendererSOURCE40aaf310/PACKET76402376 nowcanonicalcdba75d3 exact33paths, nine literal hunks inverse-exact. Five sourcecases retained, strictSource08/lintPASS.",
+          "ART": "Sourceebdda548 qualifiedpartial67paths nowcanonical62302f94; sixassetchecks/singleproducerdecodePASS ownerreported. Active front-right lamp-placement/paint-extent/minimalversionedcorrection remains231/2162/6b5d.",
+          "open": "RegistryEMPTYfailclosed/qualified ART-BE coherentcatalogrelease tuple activation/nativeintegration/fullPhoto2/profilefidelityOPEN. No fullART/PI08 acceptance."
+        },
+        "C06": {
+          "owner": "6b5d exactoperative14grant61989715;Root1fc",
+          "StageA": "6c867068 publishedreadinessonly.",
+          "current": "80c3023e3 authoredsource, backendmeaningfulvalidation/bootstrap/releaseactivationunfinished. NewlypublishedpartialARTtupleavailable, NOTADMITTED.",
+          "scope": "Actual14operativegrant supersedes datedcustodypending only; no legacyquality/FE/ART/BE42 or extra production grant."
+        },
+        "DefaultHost": {
+          "owner": "1eed distinctexistingparent;Root153 boundedhostcustodyreturn",
+          "delivery": "Native17guardedfourcommands/360390430/18owner-viewedcaptures qualifiedfunctionalPASS;exact61pathsnow56a0cb7f0bdc.",
+          "open": "MaterialWorldframe/populatedFriends/Notes/meeting fixedlayoutdifferencesOPEN. Missingactualclock/physical/Friends/meeting/Notesauthority failclosed. No wholeparent/live/device/latestmaster acceptance.",
+          "lateOrdinaryAccounting": "FinalsealGit202310Bstrictexcess/withinFamilyFALSE/bookclosed separately retained; Native17guardedPASS neither rewritten nor broadened. No reset/refund/newcommandswithoutfreshfit."
+        },
+        "Community204": {
+          "originalSummary": "32originals:22DONE/2REOPENED/4IN_PROGRESS/3OPEN/QA08DEFERRED unchanged.",
+          "CSS": "Materialfix17753485 plus4306a618 committedunvalidated; Native21and22genuinelyunused asdateddigest, laterNative23FAILbeforebrowsercommands;Source24privatecollectorfix33cb7cf authoredthreeNEWcasesNOT_RUN.",
+          "next": "Existingowner/21d distinctactuallyusablecurrentallocation only; no waiver/capreset/managerreview. Source20fourcontrolsPASS andNative18outerresourceFAIL retained."
+        },
+        "PI11_QA06": {
+          "PI11": "26e Source14actualnewcase+oxlintPASS; Source13stdoutwithoutcommandexit/outerFAILretained; preservationcommit pendingusableactualdeadline. Native/visualfinishOPEN.",
+          "QA06": "SAME1ab7 standaloneSource10PASS; browser02beforepayloadFAIL/parserfix35c1bbc0f withfocusedcasepending; browser03genuinelyunused. NewactualUI/lifecycleNOT_RUN;physical/devicegoal remainsBLOCKED truthfully."
+        },
+        "FE33_Wall": {
+          "original": "Client/defaultcallerowner-satisfied; FE33 remainsREOPENED for true servingrelease/config/artifact/IN04currentreceivingresponsibilityunreconciled.",
+          "discovery": "Wall202/Root1fc actualnarrowread-onlyStageAFULL1793863611.67495; no repowrite afterworkguard refusal. ExistingWall B/core/fence/Gatewayroutes sourcefindings do not prove serving. ExistingE2A9archived/Root153+World20fNOCLAIM.",
+          "next": "Currentactualpublicrelease/IN04custodydiscovery; no duplicatefrontend work or200user/devicegate."
+        },
+        "Backend21d": {
+          "digest": "07:13UTC no newbackendoriginalcompletion.",
+          "capacity": "Compiler offersWITHDRAWN/NOT_ACCEPTED_DEFERRED untilactualfamily/outside/WHOLE+cumulativeoperands. Separate8MiBreadonlyRoot1fcmetadata census is notCargo/copy/materializationauthority. Preservefailure/reservation/history/prospectivefitdistinction.",
+          "BE42": "LatestRoot-attributed00c source4f7319c7/seal8619294c source-only; no physicalexport/target/Cargo/native/publication. Prior774/6a1proposals retainpins."
+        },
+        "W04": {
+          "at": "2026-11-05T14:32:00+09:00",
+          "state": "OPEN",
+          "implementation_state": "NOT_STARTED",
+          "scope": "Original IA W04 virtual party-room invitations; preserve FE18 closed chooser/membership criteria. Distinct from room reads/switch/FindParty, physical VENU-M/MEET HERE/MESSAGE.",
+          "policy_question": {
+            "state": "PENDING_EXISTING_MAIN_QUESTION",
+            "proposal_only": true,
+            "proposed_policy": "Host to accepted party members/current virtual room; five-minute expiry/revoke; ordinary capacity-checked admission with no reservation.",
+            "frozen": false,
+            "duplicate_question_requested": false
+          },
+          "routing": "Current controller40fde and producer6b5d coordinate through existing World/Root custody. No producer grant or policy freeze from this management record.",
+          "planning_canonical": "3e063c98f3806910439eae5c24f54535f0d2c8db"
+        },
+        "Staffing": {
+          "readyUnstaffed": "NONE_VERIFIED",
+          "policy": "Existingleads reuse/retirecontexts onlywithrealexactcustody; implementation/publicationcontinues independently. No filler/newchat/model/goalreset/managerACK/fullwavebarrier."
+        }
       }
     },
     "capacity_history": [
@@ -262,44 +289,53 @@
       }
     ],
     "current_delivery_checkpoint": {
-      "id": "MAIN_HOURLY_20261105_1532",
-      "recorded_at": "2026-11-05T15:32:00+09:00",
-      "kind": "HOURLY_RESPONSIBLE_OWNER_ONCE_ONLY_VENU_ART01_RECONCILIATION",
-      "canonicalSnapshot": "7c2066bb8ba596589a80d1ce70f96ea51969ef04",
-      "authority": "Main new temporary sole exact-four-file management composition grant after source-STOP, ends at this canonical receipt. Prior14:32 grant ended; no review/ACK.",
+      "id": "MAIN_HOURLY_20261105_1632",
+      "recorded_at": "2026-11-05T16:32:00+09:00",
+      "kind": "RESPONSIBLE_OWNER_TWO_NEW_ORIGINAL_CLOSURES_AND_ONE_HISTORICAL_RECLOSURE",
+      "canonicalSnapshot": "cdba75d3c23ce28364563bd39b114d83db3b7ece",
+      "authority": "Main new temporary sole four-file composition aftersourceSTOP; endsatcanonicalreceipt. NoMain/SLrevieworACK/applicationvalidation/newexecutiongrant.",
       "digestReadset": {
-        "frontend": "Main authoritative quotation of single38515:32KST digest plus fixed frontend register literal WorldSL disposition",
-        "backend": "Main supplied authoritative Backend21d06:05UTC staffing conclusions",
-        "frontend_register": "/private/tmp/mcr-frontend-hourly-register-20261105-1530.json",
-        "frontend_register_checkpoint": "2026-11-05T06:30:10.049983+00:00",
-        "frontend_register_sha256": "fd47c0cbf3a0064f44539fb18a71346319df5357c51b4ee413259a6f62d58da9",
-        "laterCommunityDelta": "7c2066bb after fixed register; register remains immutable"
+        "frontend": "385 direct16:32KST digest and Main explicitFE12/FE13/FE19 accountingdispositions",
+        "world_register": "/private/tmp/mcr-world-hourly-register-20261105-0600.json",
+        "world_sha256": "fd9dac0cd6f0fe8f1c5596ead6672d905c8ea13768d8080b2e69efca06dccec1",
+        "world_checkpoint": "2026-11-05T07:37:53.753364+00:00",
+        "frontend_register": "/private/tmp/mcr-frontend-hourly-register-20261105-1630.json",
+        "frontend_register_sha256": "4892852fdd03ac856be2ac7c7a04cbff9cacaed5e70de086fbe984fcacab6eb1",
+        "frontend_register_timing": "PENDINGatMaindispatch; subsequentlysealed07:37:28.964019UTC_LATE_IMMUTABLE_notrequiredforgrant",
+        "prior1530immutable": "fd47c0cbf3a0064f44539fb18a71346319df5357c51b4ee413259a6f62d58da9",
+        "backend": "21d07:13UTC conclusions throughMain"
       },
-      "new_original_closures": [],
-      "reclosed_reopened_delta_only": [],
+      "new_original_closures": [
+        "FE12",
+        "FE13"
+      ],
+      "reclosed_reopened_delta_only": [
+        "FE19"
+      ],
       "new_design_acceptances": [],
       "previously_consumed_not_recounted": [
-        "PI07",
         "FE32",
+        "PI07",
         "PI09",
-        "PI12"
+        "PI12",
+        "VENU-ART01"
       ],
-      "original_done": 58,
+      "original_done": 61,
       "original_active": 111,
       "original_required": 112,
-      "original_remaining": 53,
-      "task_completion_percentage": 52.3,
-      "original_criteria_outcomes": 61,
-      "done_tasks": 58,
-      "remaining_active_tasks": 53,
-      "current_original_criteria_outcomes": 61,
+      "original_remaining": 50,
+      "task_completion_percentage": 55.0,
+      "original_criteria_outcomes": 63,
+      "done_tasks": 61,
+      "remaining_active_tasks": 50,
+      "current_original_criteria_outcomes": 63,
       "frozen_root_outcomes": 39,
-      "new_original_closures_since_replan": 22,
+      "new_original_closures_since_replan": 24,
       "counts": {
-        "DONE": 58,
+        "DONE": 61,
         "WAITING_INPUT": 3,
-        "IN_PROGRESS": 44,
-        "REOPENED": 3,
+        "IN_PROGRESS": 42,
+        "REOPENED": 2,
         "DEFERRED_BY_USER": 1,
         "OPEN": 3
       },
@@ -344,63 +380,79 @@
         "planning_canonical": "3e063c98f3806910439eae5c24f54535f0d2c8db"
       },
       "major_remainders": {
+        "OAuth": {
+          "owner": "Root153/12cc plus actual Gateway/provider/SQL owners",
+          "frontend": "Qualified26postimages canonical8ccdeb0a: actualApp/Auth/admission/privacy with controlledsynthetic303/cookie counterpart only.",
+          "BE03report": "Source54ab7bc32c26 report-only3ba98e5e8ad7; Source04fiveNEWresourcecasesPASS/old02and03FAILretained;15applicationleavesEXCLUDED_UNPUBLISHED.",
+          "open": "PublicOAuthOFF; actualGateway/provider/SQL/device/combinedruntime/wholeBE03/tombstonegapOPEN."
+        },
         "PI08": {
-          "owner": "2162 renderer,231 ART,existing6b5d backend discovery;Root1fc exact backend custody",
-          "delivered": "Source contract33491ccf and logical zoom8c601c71 published.",
-          "open": "Full Photo2 scenery/renderer activation/wholePI08 parity unfinished. ART231 accepted ten exact NEW paths and authored vector generator; PNG generation/qualification unfinished and capacity-denied.",
-          "custody": "6b5d accepted C06-PARADE-BINDING-BE01 source-readiness only; operative backend release paths/preimages/write custody pending discovery/Root1fc. No backend production grant or frontend compatibility.ts change inferred."
+          "owner": "2162/231/6b5d existing direct owners",
+          "delivered": "Contract33491ccf/logicalzoom8c601c71 and rendererSOURCE40aaf310/PACKET76402376 nowcanonicalcdba75d3 exact33paths, nine literal hunks inverse-exact. Five sourcecases retained, strictSource08/lintPASS.",
+          "ART": "Sourceebdda548 qualifiedpartial67paths nowcanonical62302f94; sixassetchecks/singleproducerdecodePASS ownerreported. Active front-right lamp-placement/paint-extent/minimalversionedcorrection remains231/2162/6b5d.",
+          "open": "RegistryEMPTYfailclosed/qualified ART-BE coherentcatalogrelease tuple activation/nativeintegration/fullPhoto2/profilefidelityOPEN. No fullART/PI08 acceptance."
+        },
+        "C06": {
+          "owner": "6b5d exactoperative14grant61989715;Root1fc",
+          "StageA": "6c867068 publishedreadinessonly.",
+          "current": "80c3023e3 authoredsource, backendmeaningfulvalidation/bootstrap/releaseactivationunfinished. NewlypublishedpartialARTtupleavailable, NOTADMITTED.",
+          "scope": "Actual14operativegrant supersedes datedcustodypending only; no legacyquality/FE/ART/BE42 or extra production grant."
+        },
+        "DefaultHost": {
+          "owner": "1eed distinctexistingparent;Root153 boundedhostcustodyreturn",
+          "delivery": "Native17guardedfourcommands/360390430/18owner-viewedcaptures qualifiedfunctionalPASS;exact61pathsnow56a0cb7f0bdc.",
+          "open": "MaterialWorldframe/populatedFriends/Notes/meeting fixedlayoutdifferencesOPEN. Missingactualclock/physical/Friends/meeting/Notesauthority failclosed. No wholeparent/live/device/latestmaster acceptance.",
+          "lateOrdinaryAccounting": "FinalsealGit202310Bstrictexcess/withinFamilyFALSE/bookclosed separately retained; Native17guardedPASS neither rewritten nor broadened. No reset/refund/newcommandswithoutfreshfit."
         },
         "Community204": {
-          "canonical": "7c2066bb8ba596589a80d1ce70f96ea51969ef04",
-          "date_relation": "Later than fixed06:30:10UTC register",
-          "qualified": "Controlled Native18 native/compare0/0 and28 owner-inspected PNGs; component product improvement only.",
-          "retained_failure": "OUTER_RESOURCE_FAIL remains FAIL; no aggregateNative18PASS",
-          "open": "Small text/glyph/subpixel differences and broader default-shell/live-service/device/integration remain open; no original/design/VENU closure."
+          "originalSummary": "32originals:22DONE/2REOPENED/4IN_PROGRESS/3OPEN/QA08DEFERRED unchanged.",
+          "CSS": "Materialfix17753485 plus4306a618 committedunvalidated; Native21and22genuinelyunused asdateddigest, laterNative23FAILbeforebrowsercommands;Source24privatecollectorfix33cb7cf authoredthreeNEWcasesNOT_RUN.",
+          "next": "Existingowner/21d distinctactuallyusablecurrentallocation only; no waiver/capreset/managerreview. Source20fourcontrolsPASS andNative18outerresourceFAIL retained."
         },
-        "OAuth": {
-          "owner": "Root153/12cc and actual provider/SQL owners",
-          "positive": "Focused current session/boundary/recovery/lint checks passed.",
-          "open": "Strict corrected-overlay/import/metadata and strict-onlySource13/native/provider/SQL/public qualification unfinished; publicOAuthOFF. Conditional authorizations are capacity-denied, no accepted hold.",
-          "report_only": [
-            "BE03 report8940a51f excludes15 unqualified application/core leaves",
-            "N213956cb709 ownedreport, not product/native completion",
-            "Map12a033ae ordinary-registration repair, not app successor"
-          ]
+        "PI11_QA06": {
+          "PI11": "26e Source14actualnewcase+oxlintPASS; Source13stdoutwithoutcommandexit/outerFAILretained; preservationcommit pendingusableactualdeadline. Native/visualfinishOPEN.",
+          "QA06": "SAME1ab7 standaloneSource10PASS; browser02beforepayloadFAIL/parserfix35c1bbc0f withfocusedcasepending; browser03genuinelyunused. NewactualUI/lifecycleNOT_RUN;physical/devicegoal remainsBLOCKED truthfully."
         },
-        "PI11_default_QA06": {
-          "owner": "26e PI11;1eed default host;SAME1ab7 exactfe-public QA06 lifecycle",
-          "PI11": "Reached realWorld one canvas/socket, failed fixture/HUD entry and separate process metadata; existing owner retains repair/native finish.",
-          "default_and_fixture": "Default-host adapters and QA06 fixture-source qualification unfinished. QA06 candidate/source custody actually accepted; physical executor/device/access/control/reachable fixture requirements remain separately UNCONFIRMED and originalBLOCKED goal unchanged.",
-          "boundary": "No blanket backend/PI08/PI11/defaultHost/device gate added to independent source preparation or finished pure-client criteria."
+        "FE33_Wall": {
+          "original": "Client/defaultcallerowner-satisfied; FE33 remainsREOPENED for true servingrelease/config/artifact/IN04currentreceivingresponsibilityunreconciled.",
+          "discovery": "Wall202/Root1fc actualnarrowread-onlyStageAFULL1793863611.67495; no repowrite afterworkguard refusal. ExistingWall B/core/fence/Gatewayroutes sourcefindings do not prove serving. ExistingE2A9archived/Root153+World20fNOCLAIM.",
+          "next": "Currentactualpublicrelease/IN04custodydiscovery; no duplicatefrontend work or200user/devicegate."
         },
-        "backend": {
-          "digest_at": "2026-11-05T06:05:00Z",
-          "whole_original_completion": "NO_NEW_COMPLETION",
-          "scope": "Source/control milestones and bounded future reservations are not runtime passes or accepted holds.",
-          "resources": "After-futures disk fit is allocator21d-owned blocker.21d alone controls actual usable fresh windows/direct custody; dated queues are not grants. Preserve accepted limits/cumulative history/failures/unrun states; no cleanup/globalkill/reset/model/newchat."
+        "Backend21d": {
+          "digest": "07:13UTC no newbackendoriginalcompletion.",
+          "capacity": "Compiler offersWITHDRAWN/NOT_ACCEPTED_DEFERRED untilactualfamily/outside/WHOLE+cumulativeoperands. Separate8MiBreadonlyRoot1fcmetadata census is notCargo/copy/materializationauthority. Preservefailure/reservation/history/prospectivefitdistinction.",
+          "BE42": "LatestRoot-attributed00c source4f7319c7/seal8619294c source-only; no physicalexport/target/Cargo/native/publication. Prior774/6a1proposals retainpins."
         },
         "W04": {
-          "policy": "PENDING_UNFROZEN",
-          "planning_only": true,
-          "invitation_grant": false,
-          "boundary": "Keep existing single human question; actual Friends/viewer/location/event-clock/reviewed physical inputs remain existing producer/access decisions. No duplicate question or whole-backend-wave barrier."
+          "at": "2026-11-05T14:32:00+09:00",
+          "state": "OPEN",
+          "implementation_state": "NOT_STARTED",
+          "scope": "Original IA W04 virtual party-room invitations; preserve FE18 closed chooser/membership criteria. Distinct from room reads/switch/FindParty, physical VENU-M/MEET HERE/MESSAGE.",
+          "policy_question": {
+            "state": "PENDING_EXISTING_MAIN_QUESTION",
+            "proposal_only": true,
+            "proposed_policy": "Host to accepted party members/current virtual room; five-minute expiry/revoke; ordinary capacity-checked admission with no reservation.",
+            "frozen": false,
+            "duplicate_question_requested": false
+          },
+          "routing": "Current controller40fde and producer6b5d coordinate through existing World/Root custody. No producer grant or policy freeze from this management record.",
+          "planning_canonical": "3e063c98f3806910439eae5c24f54535f0d2c8db"
         },
-        "staffing": {
-          "ready_unstaffed_disjoint_work": "NONE_VERIFIED",
-          "next": "Existing leads continue owner validation/fixes and sole412e publication independently. Main/SL acknowledgment never gates work; no manager code/query/runtime/pixel review."
+        "Staffing": {
+          "readyUnstaffed": "NONE_VERIFIED",
+          "policy": "Existingleads reuse/retirecontexts onlywithrealexactcustody; implementation/publicationcontinues independently. No filler/newchat/model/goalreset/managerACK/fullwavebarrier."
         }
       },
       "publication": [
+        "c3c60842a0900e1625633e293092509fe59d341f",
+        "1adf8006ba6d050aecd2682ab4c0bec6e144ee75",
+        "32ecbaa3c854259c6d68e140f658f65c4abc2106",
+        "8ccdeb0a753c4a5dab9bccc670efb195c51c0611",
         "03c24e05a6a99368344d80bbe831946c1d8fba12",
-        "fcd07805",
-        "d3dd189c",
-        "4f94914",
-        "33491ccf9b0ae3835ad691072d8479b299f543d8",
-        "8c601c7171cfcc8600e332c4e8c3f0108d1a24f8",
-        "7c2066bb8ba596589a80d1ce70f96ea51969ef04",
-        "8940a51fcd856ca9015ae2b30279d5f485ad752c",
-        "956cb709a77665c12aec06bb58c1f391ccbef668",
-        "12a033ae9abac21f95fe75be2dd0980926bd1e96"
+        "3ba98e5e8ad7b8f84a792adb06aa1c85cd59f93c",
+        "62302f949ba567158b0aba3fc4444a80fb8929cb",
+        "56a0cb7f0bdc4e4526c45bbc6258d38bc3a7077a",
+        "cdba75d3c23ce28364563bd39b114d83db3b7ece"
       ],
       "source_limits": {
         "whole_venue": "NOT_READY",
@@ -411,18 +463,19 @@
         "global_quota_restoration": "NOT_ESTABLISHED",
         "FastOFF": "NOT_ESTABLISHED",
         "PI07": "Assigned pure-client/design only; earlier native failures and broader duties preserved.",
-        "original112Rows": "ALL_UNCHANGED",
-        "noNewOriginalOutcomes": true,
-        "VENU_ART01": "DONE_PURE_ART_CONTROLLED_CLIENT_ONLY_NO_PHYSICAL_DEFAULTROOT_DEVICE_OR_PIXEL_IDENTITY"
+        "original112Rows": "109_UNRELATED_ENTRIES_IDENTICAL_AS_DATA_THREE_EXPLICIT_DISPOSITIONS_ONLY",
+        "noNewOriginalOutcomes": false,
+        "VENU_ART01": "DONE_PURE_ART_CONTROLLED_CLIENT_ONLY_NO_PHYSICAL_DEFAULTROOT_DEVICE_OR_PIXEL_IDENTITY",
+        "originalClosures": "FE12_FE13_ONCE_ONLY_FE19_RECLOSED_ZERO_NEW_OUTCOME",
+        "combinedLatestMasterRuntime": "NOT_RUN"
       },
       "screenshots": {
-        "status": "Separately handled by385/UI, no publisher capture/review; no new screenshot qualification from this record."
+        "status": "385/UIseparate; no publishercapture/pixelreview."
       },
-      "scope": "One VENU-ART01 extension outcome only. Original112rows/61IA/design12family dispositions/8venue definitions/10extensionIA/48comparison definitions preserved.",
-      "new_venue_acceptances": [
-        "VENU-ART01"
-      ],
-      "venue_remaining": 7
+      "scope": "ExactlyFE12/FE13neworiginalclosures+FE19historicalreclosedonly;109unrelatedtasks/61originalIA/12design/8venue/10extensionIA/48comparisonsunchanged.",
+      "new_venue_acceptances": [],
+      "venue_remaining": 7,
+      "composed_actual_utc": "2026-11-05T07:40:44.175581+00:00"
     },
     "scope_interpretation": {
       "QA06": "Original widths, skins, actual devices, keyboard/safearea, readability/reachability/clipping/oldUI checks remain intact. All61IA entries remain required; no unrequested universal61x3x3 capture gate.",
@@ -460,7 +513,7 @@
         "planning_canonical": "3e063c98f3806910439eae5c24f54535f0d2c8db"
       }
     },
-    "staffing_updated_at": "2026-11-05T15:32:00+09:00",
+    "staffing_updated_at": "2026-11-05T16:32:00+09:00",
     "delivery_checkpoint_history": [
       {
         "recorded_at": "2026-11-05T04:37:28+09:00",
@@ -1117,6 +1170,169 @@
           "new_reporting_browser_job": false
         },
         "scope": "Management design acceptance only; preserve112 original tasks and criteria,61 original IA,8 mandatory VENU,10 extension IA and48 comparisons unchanged."
+      },
+      {
+        "id": "MAIN_HOURLY_20261105_1532",
+        "recorded_at": "2026-11-05T15:32:00+09:00",
+        "kind": "HOURLY_RESPONSIBLE_OWNER_ONCE_ONLY_VENU_ART01_RECONCILIATION",
+        "canonicalSnapshot": "7c2066bb8ba596589a80d1ce70f96ea51969ef04",
+        "authority": "Main new temporary sole exact-four-file management composition grant after source-STOP, ends at this canonical receipt. Prior14:32 grant ended; no review/ACK.",
+        "digestReadset": {
+          "frontend": "Main authoritative quotation of single38515:32KST digest plus fixed frontend register literal WorldSL disposition",
+          "backend": "Main supplied authoritative Backend21d06:05UTC staffing conclusions",
+          "frontend_register": "/private/tmp/mcr-frontend-hourly-register-20261105-1530.json",
+          "frontend_register_checkpoint": "2026-11-05T06:30:10.049983+00:00",
+          "frontend_register_sha256": "fd47c0cbf3a0064f44539fb18a71346319df5357c51b4ee413259a6f62d58da9",
+          "laterCommunityDelta": "7c2066bb after fixed register; register remains immutable"
+        },
+        "new_original_closures": [],
+        "reclosed_reopened_delta_only": [],
+        "new_design_acceptances": [],
+        "previously_consumed_not_recounted": [
+          "PI07",
+          "FE32",
+          "PI09",
+          "PI12"
+        ],
+        "original_done": 58,
+        "original_active": 111,
+        "original_required": 112,
+        "original_remaining": 53,
+        "task_completion_percentage": 52.3,
+        "original_criteria_outcomes": 61,
+        "done_tasks": 58,
+        "remaining_active_tasks": 53,
+        "current_original_criteria_outcomes": 61,
+        "frozen_root_outcomes": 39,
+        "new_original_closures_since_replan": 22,
+        "counts": {
+          "DONE": 58,
+          "WAITING_INPUT": 3,
+          "IN_PROGRESS": 44,
+          "REOPENED": 3,
+          "DEFERRED_BY_USER": 1,
+          "OPEN": 3
+        },
+        "design_accepted": 10,
+        "design_total": 12,
+        "design_in_progress": 2,
+        "design_accepted_families": [
+          "PI01",
+          "PI02",
+          "PI03",
+          "PI04",
+          "PI05",
+          "PI06",
+          "PI07",
+          "PI09",
+          "PI10",
+          "PI12"
+        ],
+        "design_remaining": [
+          "PI08",
+          "PI11"
+        ],
+        "venue_complete": 1,
+        "venue_required": 8,
+        "extension_ia": 10,
+        "new_venue_comparisons": "48 NOT_RUN",
+        "readiness": "NOT_READY",
+        "full112_completion_claim": false,
+        "W04": {
+          "at": "2026-11-05T14:32:00+09:00",
+          "state": "OPEN",
+          "implementation_state": "NOT_STARTED",
+          "scope": "Original IA W04 virtual party-room invitations; preserve FE18 closed chooser/membership criteria. Distinct from room reads/switch/FindParty, physical VENU-M/MEET HERE/MESSAGE.",
+          "policy_question": {
+            "state": "PENDING_EXISTING_MAIN_QUESTION",
+            "proposal_only": true,
+            "proposed_policy": "Host to accepted party members/current virtual room; five-minute expiry/revoke; ordinary capacity-checked admission with no reservation.",
+            "frozen": false,
+            "duplicate_question_requested": false
+          },
+          "routing": "Current controller40fde and producer6b5d coordinate through existing World/Root custody. No producer grant or policy freeze from this management record.",
+          "planning_canonical": "3e063c98f3806910439eae5c24f54535f0d2c8db"
+        },
+        "major_remainders": {
+          "PI08": {
+            "owner": "2162 renderer,231 ART,existing6b5d backend discovery;Root1fc exact backend custody",
+            "delivered": "Source contract33491ccf and logical zoom8c601c71 published.",
+            "open": "Full Photo2 scenery/renderer activation/wholePI08 parity unfinished. ART231 accepted ten exact NEW paths and authored vector generator; PNG generation/qualification unfinished and capacity-denied.",
+            "custody": "6b5d accepted C06-PARADE-BINDING-BE01 source-readiness only; operative backend release paths/preimages/write custody pending discovery/Root1fc. No backend production grant or frontend compatibility.ts change inferred."
+          },
+          "Community204": {
+            "canonical": "7c2066bb8ba596589a80d1ce70f96ea51969ef04",
+            "date_relation": "Later than fixed06:30:10UTC register",
+            "qualified": "Controlled Native18 native/compare0/0 and28 owner-inspected PNGs; component product improvement only.",
+            "retained_failure": "OUTER_RESOURCE_FAIL remains FAIL; no aggregateNative18PASS",
+            "open": "Small text/glyph/subpixel differences and broader default-shell/live-service/device/integration remain open; no original/design/VENU closure."
+          },
+          "OAuth": {
+            "owner": "Root153/12cc and actual provider/SQL owners",
+            "positive": "Focused current session/boundary/recovery/lint checks passed.",
+            "open": "Strict corrected-overlay/import/metadata and strict-onlySource13/native/provider/SQL/public qualification unfinished; publicOAuthOFF. Conditional authorizations are capacity-denied, no accepted hold.",
+            "report_only": [
+              "BE03 report8940a51f excludes15 unqualified application/core leaves",
+              "N213956cb709 ownedreport, not product/native completion",
+              "Map12a033ae ordinary-registration repair, not app successor"
+            ]
+          },
+          "PI11_default_QA06": {
+            "owner": "26e PI11;1eed default host;SAME1ab7 exactfe-public QA06 lifecycle",
+            "PI11": "Reached realWorld one canvas/socket, failed fixture/HUD entry and separate process metadata; existing owner retains repair/native finish.",
+            "default_and_fixture": "Default-host adapters and QA06 fixture-source qualification unfinished. QA06 candidate/source custody actually accepted; physical executor/device/access/control/reachable fixture requirements remain separately UNCONFIRMED and originalBLOCKED goal unchanged.",
+            "boundary": "No blanket backend/PI08/PI11/defaultHost/device gate added to independent source preparation or finished pure-client criteria."
+          },
+          "backend": {
+            "digest_at": "2026-11-05T06:05:00Z",
+            "whole_original_completion": "NO_NEW_COMPLETION",
+            "scope": "Source/control milestones and bounded future reservations are not runtime passes or accepted holds.",
+            "resources": "After-futures disk fit is allocator21d-owned blocker.21d alone controls actual usable fresh windows/direct custody; dated queues are not grants. Preserve accepted limits/cumulative history/failures/unrun states; no cleanup/globalkill/reset/model/newchat."
+          },
+          "W04": {
+            "policy": "PENDING_UNFROZEN",
+            "planning_only": true,
+            "invitation_grant": false,
+            "boundary": "Keep existing single human question; actual Friends/viewer/location/event-clock/reviewed physical inputs remain existing producer/access decisions. No duplicate question or whole-backend-wave barrier."
+          },
+          "staffing": {
+            "ready_unstaffed_disjoint_work": "NONE_VERIFIED",
+            "next": "Existing leads continue owner validation/fixes and sole412e publication independently. Main/SL acknowledgment never gates work; no manager code/query/runtime/pixel review."
+          }
+        },
+        "publication": [
+          "03c24e05a6a99368344d80bbe831946c1d8fba12",
+          "fcd07805",
+          "d3dd189c",
+          "4f94914",
+          "33491ccf9b0ae3835ad691072d8479b299f543d8",
+          "8c601c7171cfcc8600e332c4e8c3f0108d1a24f8",
+          "7c2066bb8ba596589a80d1ce70f96ea51969ef04",
+          "8940a51fcd856ca9015ae2b30279d5f485ad752c",
+          "956cb709a77665c12aec06bb58c1f391ccbef668",
+          "12a033ae9abac21f95fe75be2dd0980926bd1e96"
+        ],
+        "source_limits": {
+          "whole_venue": "NOT_READY",
+          "live_device_multiuser": "NOT_ACCEPTED",
+          "QA08": "DEFERRED_BY_USER",
+          "Safety_original_criterion_mapping": "UNRECONCILED",
+          "Post07_08": "FAILED_CONTROL_HISTORY",
+          "global_quota_restoration": "NOT_ESTABLISHED",
+          "FastOFF": "NOT_ESTABLISHED",
+          "PI07": "Assigned pure-client/design only; earlier native failures and broader duties preserved.",
+          "original112Rows": "ALL_UNCHANGED",
+          "noNewOriginalOutcomes": true,
+          "VENU_ART01": "DONE_PURE_ART_CONTROLLED_CLIENT_ONLY_NO_PHYSICAL_DEFAULTROOT_DEVICE_OR_PIXEL_IDENTITY"
+        },
+        "screenshots": {
+          "status": "Separately handled by385/UI, no publisher capture/review; no new screenshot qualification from this record."
+        },
+        "scope": "One VENU-ART01 extension outcome only. Original112rows/61IA/design12family dispositions/8venue definitions/10extensionIA/48comparison definitions preserved.",
+        "new_venue_acceptances": [
+          "VENU-ART01"
+        ],
+        "venue_remaining": 7
       }
     ],
     "reopened_historical_tasks_at_replan": [
@@ -12830,7 +13046,7 @@
         }
       ]
     },
-    "current_staffing_snapshot": "VENU-ART01 DONE pure-art/controlled-client once; sevenremainingVENU. DesignPI08/PI11 unfinished, existing owners retain exact scopes;21d allocator/412e publisher. No verified ready unstaffed disjoint work or new grant.",
+    "current_staffing_snapshot": "61of111originalDONE/50remaining;FE12and13neworiginals/FE19historicalreclosedonly. PI08andPI11open;VENU1of8/sevenremaining. Existingownersand21dactualallocation;412epublisher. No verifiedreadyunstaffedwork/newgrant/ACK.",
     "venue_amendment": {
       "id": "VENUE_2026_11_05",
       "recorded_at": "2026-11-05T10:22:21+09:00",
@@ -17773,31 +17989,25 @@
       "id": "FE12",
       "title": "Shared avatar compositor",
       "lane": "FE-WORLD",
-      "coverage_bucket": "IMPLEMENTATION_EVIDENCED",
-      "recorded_state": null,
+      "coverage_bucket": "TASK_CRITERIA_SATISFIED",
+      "recorded_state": "MOCK_READY",
       "evidence": [
         "docs/mcr/frontend/whole-character-runtime.md"
       ],
-      "note": "Published receipt or owner report records bounded implementation/fixture/component work. Whole original-task completion is partial or not yet reconciled; no additional live/device gate is imposed on a pure task.",
+      "note": "Main explicit16:32 disposition consumes responsible1eed full literal original compositor criteria once: deterministic five layers,64px frame/(32,60)anchor,four directions idle/four walk,reference-counted320x256cache/sharedthumbnail export,20golden equalities and approved same-manifest fallback-or-unavailable satisfied. Existing published original/native/sharedportrait deliveries; no identified original-client remainder. Enrollment80de is not Avatar evidence.",
       "revised_plan": {
-        "state": "IN_PROGRESS",
+        "state": "DONE",
         "package": "WORLD",
         "priority": 0,
         "original_scope": "Deterministic layer composition, frame/anchor mapping, texture cache, and shared profile-thumbnail export.",
         "original_acceptance": "Golden-config render aligns across world/profile; missing asset uses documented fallback.",
         "updated_scope": "Complete deterministic shared character composition/cache and matching World/Profile/other authorized portraits using selected-source assets.",
-        "remaining_work": [
-          "Retain published reload/moving-peer and Cancel/conflict results; complete any genuinely uncovered original compositor/editor criterion identified by the responsible developer without repeating unchanged journeys.",
-          "Reconcile original frame/anchor/layer/thumbnail coverage and qualified production admission; an unavailable asset must never fall back to legacy or synthetic product art."
-        ],
+        "remaining_work": [],
         "complete_when": "Golden-config render aligns across world/profile; missing asset uses documented fallback.",
-        "reason": "BODY 5da64426 adds real controlled three-width behavior; it is not original FE12 closure, production 2.0 availability or full-reference acceptance.",
-        "historical_criteria_closed": false,
+        "reason": "Main explicit16:32 disposition consumes responsible1eed full literal original compositor criteria once: deterministic five layers,64px frame/(32,60)anchor,four directions idle/four walk,reference-counted320x256cache/sharedthumbnail export,20golden equalities and approved same-manifest fallback-or-unavailable satisfied. Existing published original/native/sharedportrait deliveries; no identified original-client remainder. Enrollment80de is not Avatar evidence.",
+        "historical_criteria_closed": true,
         "reopened_for_current_scope": false,
-        "depends_on_for_remaining_work": [
-          "C06",
-          "C02"
-        ],
+        "depends_on_for_remaining_work": [],
         "interface_collaborators_not_completion_barriers": [
           "AR03"
         ],
@@ -17816,54 +18026,87 @@
           "docs/mcr/frontend/whole-character-runtime.md",
           "docs/mcr/frontend/combined-root-adoption.md:9",
           "U_BODY",
-          "U_AR03"
+          "U_AR03",
+          "c3c60842a0900e1625633e293092509fe59d341f",
+          "1adf8006ba6d050aecd2682ab4c0bec6e144ee75",
+          "32ecbaa3c854259c6d68e140f658f65c4abc2106"
         ],
-        "active_delivery_requirement": true,
+        "active_delivery_requirement": false,
         "previous_owner_chats": [],
         "current_assignment": {
-          "recorded_at": "2026-11-05T05:28:00+09:00",
-          "state": "ORIGINAL_SCOPE_COMPLETENESS_IN_PROGRESS",
-          "candidate_owner": "01a1a1fe-1eed-7d12-a247-879cd521e0ec",
-          "coordinator": "World SLc276",
-          "scope": "Cancel/conflict native follow-up published1adf8006b; owner reconciles full original compositor/editor scope and implements any actual uncovered remainder.",
-          "ownership": "1eed retains exclusive assigned avatar paths;213 remains FE34,21e now FE41 and83 now QA05. No new shared-file grant is implied."
+          "recorded_at": "2026-11-05T16:32:00+09:00",
+          "state": "ORIGINAL_CRITERIA_CLOSED_NO_NEW_WRITER",
+          "scope": "No remaining literal original-client work. Separate design/integration/venue obligations retain existing responsible owners and exact custody.",
+          "prior_assignment_reference": "#/completion_updates/37/prior_complete_task_entries/FE12/revised_plan/current_assignment"
         },
         "design_family_ids": [
           "PI07"
         ],
-        "design_scope_note": "Parade Ink presentation obligation tracked under QA06; original functional state/history retained. This link grants no source ownership."
+        "design_scope_note": "Parade Ink presentation obligation tracked under QA06; original functional state/history retained. This link grants no source ownership.",
+        "separate_obligations": {
+          "classification": "SEPARATE_MANDATORY_INTEGRATION_DESIGN_VENUE_OBLIGATIONS_NOT_REMAINING_ORIGINAL_CLIENT_CRITERIA",
+          "prior_remaining_work_preserved_verbatim": [
+            "Retain published reload/moving-peer and Cancel/conflict results; complete any genuinely uncovered original compositor/editor criterion identified by the responsible developer without repeating unchanged journeys.",
+            "Reconcile original frame/anchor/layer/thumbnail coverage and qualified production admission; an unavailable asset must never fall back to legacy or synthetic product art."
+          ],
+          "prior_dependency_owners_preserved": [
+            "C06",
+            "C02"
+          ],
+          "design_family_ids": [
+            "PI07"
+          ],
+          "required_amendment_links": [],
+          "remaining": "Currentclock/IN01/liveBE07/twoaccount/device/defaultVenueHost obligations remain separate.1eed continues distinct accepted default host parent; old incompatible BLOCKED goal unchanged. No Avatar writer/rerun/custody transfer."
+        },
+        "completion_disposition": {
+          "checkpoint": "MAIN_HOURLY_20261105_1632",
+          "recorded_at": "2026-11-05T16:32:00+09:00",
+          "authority": "Main explicit current task-state disposition; responsible-owner reconciliation only, no King/SL/publisher technical reinspection",
+          "state": "TASK_CRITERIA_SATISFIED",
+          "readiness": "MOCK_READY",
+          "new_original_outcome": true,
+          "reclosed_historical_delta_only": false,
+          "source": "/private/tmp/mcr-world-hourly-register-20261105-0600.json",
+          "source_sha256": "fd9dac0cd6f0fe8f1c5596ead6672d905c8ea13768d8080b2e69efca06dccec1",
+          "source_checkpoint": "2026-11-05T07:37:53.753364+00:00",
+          "responsible_row": {
+            "id": "FE12",
+            "owner": "1eed originalresponsible; no currentAvatar/callerwritelease; Root153/412e publicationrecordlookup",
+            "status": "DONE",
+            "delivered": "Ownerretained deterministic5layers/64px(32,60)/4dirs-idle+4walk/refcount320x256cache/thumbexport/20goldenequality/approvedsame-manifestfallback-or-unavailable: NOidentifiedpureclientgap.",
+            "remaining": "NONE inliteraloriginalpureclientcriteria afterfullownercriterionreport+existingpublicationlookup. Productionclock/currentRootbuild/liveBE07/twoaccount/deviceintegration separate; oldgoalBLOCKED unchanged.",
+            "dependency": "No remainingoriginalpublicationdependency:412e existingreceipt32ecbaa3 confirmed107scopedpaths; AR03DONE/approvedreviewedproducer retained. No genericlivegate.",
+            "next": "BatchONCE07:30UTCoriginalclosure; no newAvatarwriter/rerun/proofcommit/ACK.1eed continuesdistinctaccepteddefaultvenuefinish.",
+            "commitPublication": "Originalc3c60842a0900e1625633e293092509fe59d341f+native1adf8006ba6d050aecd2682ab4c0bec6e144ee75 PUBLISHEDancestors;80de53f3laterEnrollmentsnapshot. Shared0ae792c8/0ee70451→32ecbaa3c854259c6d68e140f658f65c4abc2106/107paths;sole412ereceipt542172c7 consumed."
+          },
+          "prior_complete_entry_reference": "#/completion_updates/37/prior_complete_task_entries/FE12"
+        }
       }
     },
     {
       "id": "FE13",
       "title": "New avatar editor",
       "lane": "FE-WORLD",
-      "coverage_bucket": "IMPLEMENTATION_EVIDENCED",
-      "recorded_state": null,
+      "coverage_bucket": "TASK_CRITERIA_SATISFIED",
+      "recorded_state": "MOCK_READY",
       "evidence": [
         "docs/mcr/frontend/reference-customize-whole.md"
       ],
-      "note": "Published receipt or owner report records bounded implementation/fixture/component work. Whole original-task completion is partial or not yet reconciled; no additional live/device gate is imposed on a pure task.",
+      "note": "Main explicit16:32 disposition consumes responsible1eed full literal original editor criteria once: preview360/390/430,all eight BODY catalog controls,draftprivacy,HTTPsave World+Profile pixels,Cancel withoutPUT,and revision-conflict draft Keep/Cancel/preset5 satisfied by existing published deliveries. No identified original-client remainder.",
       "revised_plan": {
-        "state": "IN_PROGRESS",
+        "state": "DONE",
         "package": "WORLD",
         "priority": 0,
         "original_scope": "New large preview, presets and item selectors; draft/save/cancel; optimistic-version conflict without losing draft.",
         "original_acceptance": "Save changes world and profile consistently; cancelling retains persisted outfit.",
         "updated_scope": "Finish the selected-source editor with complete supported presets/layers, preview, save/cancel and revision-conflict draft retention.",
-        "remaining_work": [
-          "Retain published reload/moving-peer and Cancel/conflict results; complete any genuinely uncovered original compositor/editor criterion identified by the responsible developer without repeating unchanged journeys.",
-          "Resolve any original layer/preset/animation coverage omitted by the whole-character path through AR03/C06 owners, without relabeling static previews as complete atlases."
-        ],
+        "remaining_work": [],
         "complete_when": "Save changes world and profile consistently; cancelling retains persisted outfit.",
-        "reason": "Default editor/BODY Save/Profile/World-self/signout passed in the published bounded cohort; original FE13 has no whole-task disposition.",
-        "historical_criteria_closed": false,
+        "reason": "Main explicit16:32 disposition consumes responsible1eed full literal original editor criteria once: preview360/390/430,all eight BODY catalog controls,draftprivacy,HTTPsave World+Profile pixels,Cancel withoutPUT,and revision-conflict draft Keep/Cancel/preset5 satisfied by existing published deliveries. No identified original-client remainder.",
+        "historical_criteria_closed": true,
         "reopened_for_current_scope": false,
-        "depends_on_for_remaining_work": [
-          "FE12",
-          "FE05",
-          "C03"
-        ],
+        "depends_on_for_remaining_work": [],
         "interface_collaborators_not_completion_barriers": [
           "AR03",
           "BE07"
@@ -17884,24 +18127,65 @@
           "docs/mcr/frontend/reference-customize-whole.md:7",
           "docs/mcr/frontend/combined-root-adoption.md:9",
           "U_BODY",
-          "U_AR03"
+          "U_AR03",
+          "c3c60842a0900e1625633e293092509fe59d341f",
+          "1adf8006ba6d050aecd2682ab4c0bec6e144ee75",
+          "32ecbaa3c854259c6d68e140f658f65c4abc2106"
         ],
-        "active_delivery_requirement": true,
+        "active_delivery_requirement": false,
         "previous_owner_chats": [
           "01a19f83-2c2a-7fa0-a98d-1c4f5f65cb3c"
         ],
         "current_assignment": {
-          "recorded_at": "2026-11-05T05:28:00+09:00",
-          "state": "ORIGINAL_SCOPE_COMPLETENESS_IN_PROGRESS",
-          "candidate_owner": "01a1a1fe-1eed-7d12-a247-879cd521e0ec",
-          "coordinator": "World SLc276",
-          "scope": "Cancel/conflict native follow-up published1adf8006b; owner reconciles full original compositor/editor scope and implements any actual uncovered remainder.",
-          "ownership": "1eed retains exclusive assigned avatar paths;213 remains FE34,21e now FE41 and83 now QA05. No new shared-file grant is implied."
+          "recorded_at": "2026-11-05T16:32:00+09:00",
+          "state": "ORIGINAL_CRITERIA_CLOSED_NO_NEW_WRITER",
+          "scope": "No remaining literal original-client work. Separate design/integration/venue obligations retain existing responsible owners and exact custody.",
+          "prior_assignment_reference": "#/completion_updates/37/prior_complete_task_entries/FE13/revised_plan/current_assignment"
         },
         "design_family_ids": [
           "PI07"
         ],
-        "design_scope_note": "Parade Ink presentation obligation tracked under QA06; original functional state/history retained. This link grants no source ownership."
+        "design_scope_note": "Parade Ink presentation obligation tracked under QA06; original functional state/history retained. This link grants no source ownership.",
+        "separate_obligations": {
+          "classification": "SEPARATE_MANDATORY_INTEGRATION_DESIGN_VENUE_OBLIGATIONS_NOT_REMAINING_ORIGINAL_CLIENT_CRITERIA",
+          "prior_remaining_work_preserved_verbatim": [
+            "Retain published reload/moving-peer and Cancel/conflict results; complete any genuinely uncovered original compositor/editor criterion identified by the responsible developer without repeating unchanged journeys.",
+            "Resolve any original layer/preset/animation coverage omitted by the whole-character path through AR03/C06 owners, without relabeling static previews as complete atlases."
+          ],
+          "prior_dependency_owners_preserved": [
+            "FE12",
+            "FE05",
+            "C03"
+          ],
+          "design_family_ids": [
+            "PI07"
+          ],
+          "required_amendment_links": [],
+          "remaining": "Currentclock/IN01/liveBE07/twoaccount/device/defaultVenueHost obligations remain separate.1eed continues distinct accepted default host parent; old incompatible BLOCKED goal unchanged. No Avatar writer/rerun/custody transfer."
+        },
+        "completion_disposition": {
+          "checkpoint": "MAIN_HOURLY_20261105_1632",
+          "recorded_at": "2026-11-05T16:32:00+09:00",
+          "authority": "Main explicit current task-state disposition; responsible-owner reconciliation only, no King/SL/publisher technical reinspection",
+          "state": "TASK_CRITERIA_SATISFIED",
+          "readiness": "MOCK_READY",
+          "new_original_outcome": true,
+          "reclosed_historical_delta_only": false,
+          "source": "/private/tmp/mcr-world-hourly-register-20261105-0600.json",
+          "source_sha256": "fd9dac0cd6f0fe8f1c5596ead6672d905c8ea13768d8080b2e69efca06dccec1",
+          "source_checkpoint": "2026-11-05T07:37:53.753364+00:00",
+          "responsible_row": {
+            "id": "FE13",
+            "owner": "1eed originalresponsible; no currentAvatar/callerwriter; sharedpublicationlookup412e",
+            "status": "DONE",
+            "delivered": "Ownerretainedpreview360390430/allcatalog-eightBODYcontrols/draftprivacy/HTTPsaveWorldProfilepixels/CancelnoPUT/stale7vs10draftKeepCancelpreset5: NOidentifiedpureclientgap.",
+            "remaining": "NONE inliteraloriginalpureclientcriteria afterfullownercriterionreport+existingpublicationlookup. Productionclock/currentRootbuild/liveBE07/twoaccount/deviceintegration separate; oldgoalBLOCKED unchanged.",
+            "dependency": "No remainingoriginalpublicationdependency:412e existingreceipt32ecbaa3 confirmed107scopedpaths; AR03DONE/approvedreviewedproducer retained. No genericlivegate.",
+            "next": "BatchONCE07:30UTCoriginalclosure; no newAvatarwriter/rerun/proofcommit/ACK.1eed continuesdistinctaccepteddefaultvenuefinish.",
+            "commitPublication": "Originalc3c60842a0900e1625633e293092509fe59d341f+native1adf8006ba6d050aecd2682ab4c0bec6e144ee75 PUBLISHEDancestors;80de53f3laterEnrollmentsnapshot. Shared0ae792c8/0ee70451→32ecbaa3c854259c6d68e140f658f65c4abc2106/107paths;sole412ereceipt542172c7 consumed."
+          },
+          "prior_complete_entry_reference": "#/completion_updates/37/prior_complete_task_entries/FE13"
+        }
       }
     },
     {
@@ -18186,31 +18470,24 @@
         "docs/mcr/frontend/reference-map.md",
         "docs/mcr/frontend/reference-scene-root.md"
       ],
-      "note": "World SL relays the implementation owner original FE19 task-local SATISFIED disposition: published all-era root/Map/virtual-destination integration closes the missing producer/caller gap, with existing Map/Places mismatch, recovery, source, closure and help implementation/evidence preserved. The current increment does not claim to rerun every historical Places state; no king or SL review is added.",
+      "note": "Main explicit16:32 disposition recloses a previously credited historical original outcome only. Root153+26e retain literal pure-client SATISFIED/no adapter gap: source-review/rights/closed-unavailable/legend/concept guard/a11y/404410/mismatch+Reload/privacy; current responsible reconciliation canonical8ccdeb0a reference-scene-root.md and delivered Mapretarget03c24e05. No new original-criteria outcome from this reclosure.",
       "known_followup": "Actual operator/place data, physical destination authority, Product admission and complete reference-art fidelity remain separate requirements with their producer/art owners. Virtual concepts do not establish physical arrival or meeting eligibility.",
       "published_integration_commits": [
         "10784b26c2a5e8a544551d0b9ed8951b25b68afe"
       ],
       "revised_plan": {
-        "state": "REOPENED",
+        "state": "DONE",
         "package": "WORLD",
-        "priority": 1,
+        "priority": 0,
         "original_scope": "New overview and place sheet, source/closed states, physical/virtual legend, accessible actions and controls help.",
         "original_acceptance": "Concept-only place never offered as verified physical destination; map mismatch produces recovery UI.",
         "updated_scope": "Preserve completed Map/Places/help behavior and finish the explicitly expanded reference presentation and truthful release binding.",
-        "remaining_work": [
-          "Retarget the affected venue overview/place/help presentation to the new Paradise City references through VENU-ART01/VENU-FE-L01, preserving useful pan/zoom, source provenance and qualified historical work; old roof-only/Mapv3 acceptance is superseded for this scope.",
-          "Keep source/review/closure/version/physical-versus-virtual behavior truthful; real new phone-location/meeting/note duties are separately required in the VENU register and are not satisfied by old map fixtures."
-        ],
+        "remaining_work": [],
         "complete_when": "Concept-only place never offered as verified physical destination; map mismatch produces recovery UI.",
-        "reason": "Historical original client closure remains true. The named newer Map reference milestone has concrete remaining differences; 20531 closes only its bounded ART04 goal.",
+        "reason": "Main explicit16:32 disposition recloses a previously credited historical original outcome only. Root153+26e retain literal pure-client SATISFIED/no adapter gap: source-review/rights/closed-unavailable/legend/concept guard/a11y/404410/mismatch+Reload/privacy; current responsible reconciliation canonical8ccdeb0a reference-scene-root.md and delivered Mapretarget03c24e05. No new original-criteria outcome from this reclosure.",
         "historical_criteria_closed": true,
-        "reopened_for_current_scope": true,
-        "depends_on_for_remaining_work": [
-          "FE07",
-          "FE14",
-          "C03"
-        ],
+        "reopened_for_current_scope": false,
+        "depends_on_for_remaining_work": [],
         "interface_collaborators_not_completion_barriers": [
           "AR01",
           "AR02",
@@ -18236,13 +18513,16 @@
           "U_MAP",
           "ff96d53eb817c93dd1bafb5c4f125630f995413b",
           "609ae393",
-          "82787782"
+          "82787782",
+          "03c24e05a6a99368344d80bbe831946c1d8fba12",
+          "10784b26c2a5e8a544551d0b9ed8951b25b68afe"
         ],
-        "active_delivery_requirement": true,
+        "active_delivery_requirement": false,
         "current_assignment": {
-          "recorded_at": "2026-11-05T04:37:28+09:00",
-          "state": "ACTIVE_CHAT_PREPARATION",
-          "scope": "ActualMap/World adoption of published densitypacket7acfac3a; preserve qualified stage/focus behavior and truthful physical-place limitations."
+          "recorded_at": "2026-11-05T16:32:00+09:00",
+          "state": "ORIGINAL_CRITERIA_CLOSED_NO_NEW_WRITER",
+          "scope": "No remaining literal original-client work. Separate design/integration/venue obligations retain existing responsible owners and exact custody.",
+          "prior_assignment_reference": "#/completion_updates/37/prior_complete_task_entries/FE19/revised_plan/current_assignment"
         },
         "design_family_ids": [
           "PI11"
@@ -18258,7 +18538,52 @@
         "prior_remaining_work_before_venue_amendment": [
           "Address documented Map composition/density differences with asset/CSS counterparts, preserving the completed ART04 canopy/substrate correction and label/focus behavior.",
           "Reconcile actual current release/physical-place binding while keeping concept-only/closed/mismatch states truthful; do not repeat already-closed original producer/caller work."
-        ]
+        ],
+        "separate_obligations": {
+          "classification": "SEPARATE_MANDATORY_INTEGRATION_DESIGN_VENUE_OBLIGATIONS_NOT_REMAINING_ORIGINAL_CLIENT_CRITERIA",
+          "prior_remaining_work_preserved_verbatim": [
+            "Retarget the affected venue overview/place/help presentation to the new Paradise City references through VENU-ART01/VENU-FE-L01, preserving useful pan/zoom, source provenance and qualified historical work; old roof-only/Mapv3 acceptance is superseded for this scope.",
+            "Keep source/review/closure/version/physical-versus-virtual behavior truthful; real new phone-location/meeting/note duties are separately required in the VENU register and are not satisfied by old map fixtures."
+          ],
+          "prior_dependency_owners_preserved": [
+            "FE07",
+            "FE14",
+            "C03"
+          ],
+          "design_family_ids": [
+            "PI11"
+          ],
+          "required_amendment_links": [
+            "VENU-ART01",
+            "VENU-FE-L01",
+            "VENU-FE-M01",
+            "VENU-FE-N01"
+          ],
+          "remaining": "PI11 and AR01/physical/operator authority, VENU and IN obligations remain open separately; no Map wake or new writer."
+        },
+        "completion_disposition": {
+          "checkpoint": "MAIN_HOURLY_20261105_1632",
+          "recorded_at": "2026-11-05T16:32:00+09:00",
+          "authority": "Main explicit current task-state disposition; responsible-owner reconciliation only, no King/SL/publisher technical reinspection",
+          "state": "TASK_CRITERIA_SATISFIED",
+          "readiness": "MOCK_READY",
+          "new_original_outcome": false,
+          "reclosed_historical_delta_only": true,
+          "source": "/private/tmp/mcr-world-hourly-register-20261105-0600.json",
+          "source_sha256": "fd9dac0cd6f0fe8f1c5596ead6672d905c8ea13768d8080b2e69efca06dccec1",
+          "source_checkpoint": "2026-11-05T07:37:53.753364+00:00",
+          "responsible_row": {
+            "id": "FE19",
+            "owner": "Root153returnedMap/Places/provider NOnewwriter;26eONLYPI11Rooms/VIRTUALNearby/Help; actualC03/C06producerowner/pin UNCONFIRMED",
+            "status": "DONE",
+            "delivered": "Root153+26e retainoriginalMOCK_READY/SATISFIED: source-review/rights/legend/a11y/conceptguard/closed-unavailable/404410latches/mismatch+Reload/privacy;61tests154hashes/native360390430. No rootadaptergap;03c24e05retargetcredited.",
+            "remaining": "NONE identifiedoriginalpureclient: Root153+26eSATISFIED/noadaptergap+03c24e05retarget. PI11design/native andAR01physical/VENU/INduties separate, no inventedlivegate.",
+            "dependency": "No originalclientdeliveryblock. Actualoperator-reviewedC03place/closure/review+release/admission actor/lease/pinUNCONFIRMED perRoot1fc/20f/16e, AR01/VENU/INseparate; narrowC06notactivation.",
+            "next": "ONCE07:30UTCFE19reclosedoutcome; Root153Mapcustodyunchanged/no newwriter.26ePI11/current21dindependent; no Mapwake/rerun/ACK.",
+            "commitPublication": "Map03c24e05published;26e9d97f6398+uncommittedcontrols/evidence. TS08/09retained,10/11overallFAIL,12FULL2128/all0/nooxlint,13/nativepending."
+          },
+          "prior_complete_entry_reference": "#/completion_updates/37/prior_complete_task_entries/FE19"
+        }
       }
     },
     {
@@ -21200,6 +21525,262 @@
       "canonical_references": [
         "fe3a9712b11b0cbaa7ac1844f13dfcc5af80c7fe"
       ]
+    },
+    {
+      "checkpoint": "MAIN_HOURLY_20261105_1632",
+      "recorded_at": "2026-11-05T16:32:00+09:00",
+      "actual_composed_utc": "2026-11-05T07:40:44.175581+00:00",
+      "authority": "Main explicittemporaryfour-filegrant",
+      "new_original_closures": [
+        "FE12",
+        "FE13"
+      ],
+      "reclosed_historical_delta_only": [
+        "FE19"
+      ],
+      "prior_complete_task_entries": {
+        "FE12": {
+          "id": "FE12",
+          "title": "Shared avatar compositor",
+          "lane": "FE-WORLD",
+          "coverage_bucket": "IMPLEMENTATION_EVIDENCED",
+          "recorded_state": null,
+          "evidence": [
+            "docs/mcr/frontend/whole-character-runtime.md"
+          ],
+          "note": "Published receipt or owner report records bounded implementation/fixture/component work. Whole original-task completion is partial or not yet reconciled; no additional live/device gate is imposed on a pure task.",
+          "revised_plan": {
+            "state": "IN_PROGRESS",
+            "package": "WORLD",
+            "priority": 0,
+            "original_scope": "Deterministic layer composition, frame/anchor mapping, texture cache, and shared profile-thumbnail export.",
+            "original_acceptance": "Golden-config render aligns across world/profile; missing asset uses documented fallback.",
+            "updated_scope": "Complete deterministic shared character composition/cache and matching World/Profile/other authorized portraits using selected-source assets.",
+            "remaining_work": [
+              "Retain published reload/moving-peer and Cancel/conflict results; complete any genuinely uncovered original compositor/editor criterion identified by the responsible developer without repeating unchanged journeys.",
+              "Reconcile original frame/anchor/layer/thumbnail coverage and qualified production admission; an unavailable asset must never fall back to legacy or synthetic product art."
+            ],
+            "complete_when": "Golden-config render aligns across world/profile; missing asset uses documented fallback.",
+            "reason": "BODY 5da64426 adds real controlled three-width behavior; it is not original FE12 closure, production 2.0 availability or full-reference acceptance.",
+            "historical_criteria_closed": false,
+            "reopened_for_current_scope": false,
+            "depends_on_for_remaining_work": [
+              "C06",
+              "C02"
+            ],
+            "interface_collaborators_not_completion_barriers": [
+              "AR03"
+            ],
+            "related_validation_gates": [],
+            "dependency_interpretation": "Interface/read-set readiness for source work; actual producers for live integration. No full-wave or manager approval barrier.",
+            "owner_role": "Existing identity/World/character developers",
+            "coordination_owner": "frontend_delivery",
+            "known_current_owner_chats": [
+              "01a1a1fe-1eed-7d12-a247-879cd521e0ec"
+            ],
+            "ownership_note": "Known current owners are routing evidence, not a new file lease. Leads allocate any unassigned remainder to an existing capable developer before dispatch; exact paths/worktree remain exclusive.",
+            "validation_owner": "FE character/compositor developer with Root consumer developer",
+            "current_scope_evidence": [
+              "MCR_IMPLEMENTATION_PLAN_V2_EN.md:518",
+              "docs/mcr/task-progress-2026-11-04.json#/tasks/67",
+              "docs/mcr/frontend/whole-character-runtime.md",
+              "docs/mcr/frontend/combined-root-adoption.md:9",
+              "U_BODY",
+              "U_AR03"
+            ],
+            "active_delivery_requirement": true,
+            "previous_owner_chats": [],
+            "current_assignment": {
+              "recorded_at": "2026-11-05T05:28:00+09:00",
+              "state": "ORIGINAL_SCOPE_COMPLETENESS_IN_PROGRESS",
+              "candidate_owner": "01a1a1fe-1eed-7d12-a247-879cd521e0ec",
+              "coordinator": "World SLc276",
+              "scope": "Cancel/conflict native follow-up published1adf8006b; owner reconciles full original compositor/editor scope and implements any actual uncovered remainder.",
+              "ownership": "1eed retains exclusive assigned avatar paths;213 remains FE34,21e now FE41 and83 now QA05. No new shared-file grant is implied."
+            },
+            "design_family_ids": [
+              "PI07"
+            ],
+            "design_scope_note": "Parade Ink presentation obligation tracked under QA06; original functional state/history retained. This link grants no source ownership."
+          }
+        },
+        "FE13": {
+          "id": "FE13",
+          "title": "New avatar editor",
+          "lane": "FE-WORLD",
+          "coverage_bucket": "IMPLEMENTATION_EVIDENCED",
+          "recorded_state": null,
+          "evidence": [
+            "docs/mcr/frontend/reference-customize-whole.md"
+          ],
+          "note": "Published receipt or owner report records bounded implementation/fixture/component work. Whole original-task completion is partial or not yet reconciled; no additional live/device gate is imposed on a pure task.",
+          "revised_plan": {
+            "state": "IN_PROGRESS",
+            "package": "WORLD",
+            "priority": 0,
+            "original_scope": "New large preview, presets and item selectors; draft/save/cancel; optimistic-version conflict without losing draft.",
+            "original_acceptance": "Save changes world and profile consistently; cancelling retains persisted outfit.",
+            "updated_scope": "Finish the selected-source editor with complete supported presets/layers, preview, save/cancel and revision-conflict draft retention.",
+            "remaining_work": [
+              "Retain published reload/moving-peer and Cancel/conflict results; complete any genuinely uncovered original compositor/editor criterion identified by the responsible developer without repeating unchanged journeys.",
+              "Resolve any original layer/preset/animation coverage omitted by the whole-character path through AR03/C06 owners, without relabeling static previews as complete atlases."
+            ],
+            "complete_when": "Save changes world and profile consistently; cancelling retains persisted outfit.",
+            "reason": "Default editor/BODY Save/Profile/World-self/signout passed in the published bounded cohort; original FE13 has no whole-task disposition.",
+            "historical_criteria_closed": false,
+            "reopened_for_current_scope": false,
+            "depends_on_for_remaining_work": [
+              "FE12",
+              "FE05",
+              "C03"
+            ],
+            "interface_collaborators_not_completion_barriers": [
+              "AR03",
+              "BE07"
+            ],
+            "related_validation_gates": [],
+            "dependency_interpretation": "Interface/read-set readiness for source work; actual producers for live integration. No full-wave or manager approval barrier.",
+            "owner_role": "Existing identity/World/character developers",
+            "coordination_owner": "frontend_delivery",
+            "known_current_owner_chats": [
+              "01a1a1fe-1eed-7d12-a247-879cd521e0ec"
+            ],
+            "ownership_note": "Known current owners are routing evidence, not a new file lease. Leads allocate any unassigned remainder to an existing capable developer before dispatch; exact paths/worktree remain exclusive.",
+            "validation_owner": "FE avatar-editor developer with character owner83 and Root",
+            "current_scope_evidence": [
+              "MCR_IMPLEMENTATION_PLAN_V2_EN.md:519",
+              "docs/mcr/task-progress-2026-11-04.json#/tasks/68",
+              "docs/mcr/frontend/reference-customize-whole.md",
+              "docs/mcr/frontend/reference-customize-whole.md:7",
+              "docs/mcr/frontend/combined-root-adoption.md:9",
+              "U_BODY",
+              "U_AR03"
+            ],
+            "active_delivery_requirement": true,
+            "previous_owner_chats": [
+              "01a19f83-2c2a-7fa0-a98d-1c4f5f65cb3c"
+            ],
+            "current_assignment": {
+              "recorded_at": "2026-11-05T05:28:00+09:00",
+              "state": "ORIGINAL_SCOPE_COMPLETENESS_IN_PROGRESS",
+              "candidate_owner": "01a1a1fe-1eed-7d12-a247-879cd521e0ec",
+              "coordinator": "World SLc276",
+              "scope": "Cancel/conflict native follow-up published1adf8006b; owner reconciles full original compositor/editor scope and implements any actual uncovered remainder.",
+              "ownership": "1eed retains exclusive assigned avatar paths;213 remains FE34,21e now FE41 and83 now QA05. No new shared-file grant is implied."
+            },
+            "design_family_ids": [
+              "PI07"
+            ],
+            "design_scope_note": "Parade Ink presentation obligation tracked under QA06; original functional state/history retained. This link grants no source ownership."
+          }
+        },
+        "FE19": {
+          "id": "FE19",
+          "title": "Map, place details, and help",
+          "lane": "FE-APP",
+          "coverage_bucket": "TASK_CRITERIA_SATISFIED",
+          "recorded_state": "MOCK_READY",
+          "evidence": [
+            "docs/mcr/frontend/reference-map.md",
+            "docs/mcr/frontend/reference-scene-root.md"
+          ],
+          "note": "World SL relays the implementation owner original FE19 task-local SATISFIED disposition: published all-era root/Map/virtual-destination integration closes the missing producer/caller gap, with existing Map/Places mismatch, recovery, source, closure and help implementation/evidence preserved. The current increment does not claim to rerun every historical Places state; no king or SL review is added.",
+          "known_followup": "Actual operator/place data, physical destination authority, Product admission and complete reference-art fidelity remain separate requirements with their producer/art owners. Virtual concepts do not establish physical arrival or meeting eligibility.",
+          "published_integration_commits": [
+            "10784b26c2a5e8a544551d0b9ed8951b25b68afe"
+          ],
+          "revised_plan": {
+            "state": "REOPENED",
+            "package": "WORLD",
+            "priority": 1,
+            "original_scope": "New overview and place sheet, source/closed states, physical/virtual legend, accessible actions and controls help.",
+            "original_acceptance": "Concept-only place never offered as verified physical destination; map mismatch produces recovery UI.",
+            "updated_scope": "Preserve completed Map/Places/help behavior and finish the explicitly expanded reference presentation and truthful release binding.",
+            "remaining_work": [
+              "Retarget the affected venue overview/place/help presentation to the new Paradise City references through VENU-ART01/VENU-FE-L01, preserving useful pan/zoom, source provenance and qualified historical work; old roof-only/Mapv3 acceptance is superseded for this scope.",
+              "Keep source/review/closure/version/physical-versus-virtual behavior truthful; real new phone-location/meeting/note duties are separately required in the VENU register and are not satisfied by old map fixtures."
+            ],
+            "complete_when": "Concept-only place never offered as verified physical destination; map mismatch produces recovery UI.",
+            "reason": "Historical original client closure remains true. The named newer Map reference milestone has concrete remaining differences; 20531 closes only its bounded ART04 goal.",
+            "historical_criteria_closed": true,
+            "reopened_for_current_scope": true,
+            "depends_on_for_remaining_work": [
+              "FE07",
+              "FE14",
+              "C03"
+            ],
+            "interface_collaborators_not_completion_barriers": [
+              "AR01",
+              "AR02",
+              "AR04",
+              "BE08"
+            ],
+            "related_validation_gates": [],
+            "dependency_interpretation": "Interface/read-set readiness for source work; actual producers for live integration. No full-wave or manager approval barrier.",
+            "owner_role": "Existing identity/World/character developers",
+            "coordination_owner": "frontend_delivery",
+            "known_current_owner_chats": [
+              "01a1a26e-1de2-7b41-a294-c9a79cfded9b"
+            ],
+            "ownership_note": "Known current owners are routing evidence, not a new file lease. Leads allocate any unassigned remainder to an existing capable developer before dispatch; exact paths/worktree remain exclusive.",
+            "validation_owner": "FE Map/Places developer; ART and Root counterparts",
+            "current_scope_evidence": [
+              "MCR_IMPLEMENTATION_PLAN_V2_EN.md:525",
+              "docs/mcr/task-progress-2026-11-04.json#/tasks/74",
+              "docs/mcr/frontend/reference-map.md",
+              "docs/mcr/frontend/reference-scene-root.md",
+              "docs/mcr/frontend/combined-root-adoption.md:5",
+              "docs/mcr/scrum/world.md:1678",
+              "U_MAP",
+              "ff96d53eb817c93dd1bafb5c4f125630f995413b",
+              "609ae393",
+              "82787782"
+            ],
+            "active_delivery_requirement": true,
+            "current_assignment": {
+              "recorded_at": "2026-11-05T04:37:28+09:00",
+              "state": "ACTIVE_CHAT_PREPARATION",
+              "scope": "ActualMap/World adoption of published densitypacket7acfac3a; preserve qualified stage/focus behavior and truthful physical-place limitations."
+            },
+            "design_family_ids": [
+              "PI11"
+            ],
+            "design_scope_note": "Parade Ink presentation obligation tracked under QA06; original functional state/history retained. This link grants no source ownership.",
+            "required_amendment_links": [
+              "VENU-ART01",
+              "VENU-FE-L01",
+              "VENU-FE-M01",
+              "VENU-FE-N01"
+            ],
+            "amendment_link_interpretation": "Additional mandatory venue scope, not old-task completion or an implicit source grant. Preserve original definitions; reopen only genuinely changed/failing original criteria.",
+            "prior_remaining_work_before_venue_amendment": [
+              "Address documented Map composition/density differences with asset/CSS counterparts, preserving the completed ART04 canopy/substrate correction and label/focus behavior.",
+              "Reconcile actual current release/physical-place binding while keeping concept-only/closed/mismatch states truthful; do not repeat already-closed original producer/caller work."
+            ]
+          }
+        }
+      },
+      "prior_original_counts": {
+        "DONE": 58,
+        "WAITING_INPUT": 3,
+        "IN_PROGRESS": 44,
+        "REOPENED": 3,
+        "DEFERRED_BY_USER": 1,
+        "OPEN": 3
+      },
+      "new_original_counts": {
+        "DONE": 61,
+        "WAITING_INPUT": 3,
+        "IN_PROGRESS": 42,
+        "REOPENED": 2,
+        "DEFERRED_BY_USER": 1,
+        "OPEN": 3
+      },
+      "historical_outcomes_unchanged": 39,
+      "new_current_original_criteria_outcomes": 63,
+      "new_original_closures_since_replan": 24,
+      "original_scope_acceptance_complete_when_preserved": true,
+      "separate_integration_design_venue_obligations_preserved": true
     }
   ],
   "coverage_updates": [
@@ -22532,12 +23113,201 @@
         "VENU-ART01"
       ],
       "venue_remaining": 7
+    },
+    {
+      "id": "MAIN_HOURLY_20261105_1632",
+      "recorded_at": "2026-11-05T16:32:00+09:00",
+      "kind": "RESPONSIBLE_OWNER_TWO_NEW_ORIGINAL_CLOSURES_AND_ONE_HISTORICAL_RECLOSURE",
+      "canonicalSnapshot": "cdba75d3c23ce28364563bd39b114d83db3b7ece",
+      "authority": "Main new temporary sole four-file composition aftersourceSTOP; endsatcanonicalreceipt. NoMain/SLrevieworACK/applicationvalidation/newexecutiongrant.",
+      "digestReadset": {
+        "frontend": "385 direct16:32KST digest and Main explicitFE12/FE13/FE19 accountingdispositions",
+        "world_register": "/private/tmp/mcr-world-hourly-register-20261105-0600.json",
+        "world_sha256": "fd9dac0cd6f0fe8f1c5596ead6672d905c8ea13768d8080b2e69efca06dccec1",
+        "world_checkpoint": "2026-11-05T07:37:53.753364+00:00",
+        "frontend_register": "/private/tmp/mcr-frontend-hourly-register-20261105-1630.json",
+        "frontend_register_sha256": "4892852fdd03ac856be2ac7c7a04cbff9cacaed5e70de086fbe984fcacab6eb1",
+        "frontend_register_timing": "PENDINGatMaindispatch; subsequentlysealed07:37:28.964019UTC_LATE_IMMUTABLE_notrequiredforgrant",
+        "prior1530immutable": "fd47c0cbf3a0064f44539fb18a71346319df5357c51b4ee413259a6f62d58da9",
+        "backend": "21d07:13UTC conclusions throughMain"
+      },
+      "new_original_closures": [
+        "FE12",
+        "FE13"
+      ],
+      "reclosed_reopened_delta_only": [
+        "FE19"
+      ],
+      "new_design_acceptances": [],
+      "previously_consumed_not_recounted": [
+        "FE32",
+        "PI07",
+        "PI09",
+        "PI12",
+        "VENU-ART01"
+      ],
+      "original_done": 61,
+      "original_active": 111,
+      "original_required": 112,
+      "original_remaining": 50,
+      "task_completion_percentage": 55.0,
+      "original_criteria_outcomes": 63,
+      "done_tasks": 61,
+      "remaining_active_tasks": 50,
+      "current_original_criteria_outcomes": 63,
+      "frozen_root_outcomes": 39,
+      "new_original_closures_since_replan": 24,
+      "counts": {
+        "DONE": 61,
+        "WAITING_INPUT": 3,
+        "IN_PROGRESS": 42,
+        "REOPENED": 2,
+        "DEFERRED_BY_USER": 1,
+        "OPEN": 3
+      },
+      "design_accepted": 10,
+      "design_total": 12,
+      "design_in_progress": 2,
+      "design_accepted_families": [
+        "PI01",
+        "PI02",
+        "PI03",
+        "PI04",
+        "PI05",
+        "PI06",
+        "PI07",
+        "PI09",
+        "PI10",
+        "PI12"
+      ],
+      "design_remaining": [
+        "PI08",
+        "PI11"
+      ],
+      "venue_complete": 1,
+      "venue_required": 8,
+      "extension_ia": 10,
+      "new_venue_comparisons": "48 NOT_RUN",
+      "readiness": "NOT_READY",
+      "full112_completion_claim": false,
+      "W04": {
+        "at": "2026-11-05T14:32:00+09:00",
+        "state": "OPEN",
+        "implementation_state": "NOT_STARTED",
+        "scope": "Original IA W04 virtual party-room invitations; preserve FE18 closed chooser/membership criteria. Distinct from room reads/switch/FindParty, physical VENU-M/MEET HERE/MESSAGE.",
+        "policy_question": {
+          "state": "PENDING_EXISTING_MAIN_QUESTION",
+          "proposal_only": true,
+          "proposed_policy": "Host to accepted party members/current virtual room; five-minute expiry/revoke; ordinary capacity-checked admission with no reservation.",
+          "frozen": false,
+          "duplicate_question_requested": false
+        },
+        "routing": "Current controller40fde and producer6b5d coordinate through existing World/Root custody. No producer grant or policy freeze from this management record.",
+        "planning_canonical": "3e063c98f3806910439eae5c24f54535f0d2c8db"
+      },
+      "major_remainders": {
+        "OAuth": {
+          "owner": "Root153/12cc plus actual Gateway/provider/SQL owners",
+          "frontend": "Qualified26postimages canonical8ccdeb0a: actualApp/Auth/admission/privacy with controlledsynthetic303/cookie counterpart only.",
+          "BE03report": "Source54ab7bc32c26 report-only3ba98e5e8ad7; Source04fiveNEWresourcecasesPASS/old02and03FAILretained;15applicationleavesEXCLUDED_UNPUBLISHED.",
+          "open": "PublicOAuthOFF; actualGateway/provider/SQL/device/combinedruntime/wholeBE03/tombstonegapOPEN."
+        },
+        "PI08": {
+          "owner": "2162/231/6b5d existing direct owners",
+          "delivered": "Contract33491ccf/logicalzoom8c601c71 and rendererSOURCE40aaf310/PACKET76402376 nowcanonicalcdba75d3 exact33paths, nine literal hunks inverse-exact. Five sourcecases retained, strictSource08/lintPASS.",
+          "ART": "Sourceebdda548 qualifiedpartial67paths nowcanonical62302f94; sixassetchecks/singleproducerdecodePASS ownerreported. Active front-right lamp-placement/paint-extent/minimalversionedcorrection remains231/2162/6b5d.",
+          "open": "RegistryEMPTYfailclosed/qualified ART-BE coherentcatalogrelease tuple activation/nativeintegration/fullPhoto2/profilefidelityOPEN. No fullART/PI08 acceptance."
+        },
+        "C06": {
+          "owner": "6b5d exactoperative14grant61989715;Root1fc",
+          "StageA": "6c867068 publishedreadinessonly.",
+          "current": "80c3023e3 authoredsource, backendmeaningfulvalidation/bootstrap/releaseactivationunfinished. NewlypublishedpartialARTtupleavailable, NOTADMITTED.",
+          "scope": "Actual14operativegrant supersedes datedcustodypending only; no legacyquality/FE/ART/BE42 or extra production grant."
+        },
+        "DefaultHost": {
+          "owner": "1eed distinctexistingparent;Root153 boundedhostcustodyreturn",
+          "delivery": "Native17guardedfourcommands/360390430/18owner-viewedcaptures qualifiedfunctionalPASS;exact61pathsnow56a0cb7f0bdc.",
+          "open": "MaterialWorldframe/populatedFriends/Notes/meeting fixedlayoutdifferencesOPEN. Missingactualclock/physical/Friends/meeting/Notesauthority failclosed. No wholeparent/live/device/latestmaster acceptance.",
+          "lateOrdinaryAccounting": "FinalsealGit202310Bstrictexcess/withinFamilyFALSE/bookclosed separately retained; Native17guardedPASS neither rewritten nor broadened. No reset/refund/newcommandswithoutfreshfit."
+        },
+        "Community204": {
+          "originalSummary": "32originals:22DONE/2REOPENED/4IN_PROGRESS/3OPEN/QA08DEFERRED unchanged.",
+          "CSS": "Materialfix17753485 plus4306a618 committedunvalidated; Native21and22genuinelyunused asdateddigest, laterNative23FAILbeforebrowsercommands;Source24privatecollectorfix33cb7cf authoredthreeNEWcasesNOT_RUN.",
+          "next": "Existingowner/21d distinctactuallyusablecurrentallocation only; no waiver/capreset/managerreview. Source20fourcontrolsPASS andNative18outerresourceFAIL retained."
+        },
+        "PI11_QA06": {
+          "PI11": "26e Source14actualnewcase+oxlintPASS; Source13stdoutwithoutcommandexit/outerFAILretained; preservationcommit pendingusableactualdeadline. Native/visualfinishOPEN.",
+          "QA06": "SAME1ab7 standaloneSource10PASS; browser02beforepayloadFAIL/parserfix35c1bbc0f withfocusedcasepending; browser03genuinelyunused. NewactualUI/lifecycleNOT_RUN;physical/devicegoal remainsBLOCKED truthfully."
+        },
+        "FE33_Wall": {
+          "original": "Client/defaultcallerowner-satisfied; FE33 remainsREOPENED for true servingrelease/config/artifact/IN04currentreceivingresponsibilityunreconciled.",
+          "discovery": "Wall202/Root1fc actualnarrowread-onlyStageAFULL1793863611.67495; no repowrite afterworkguard refusal. ExistingWall B/core/fence/Gatewayroutes sourcefindings do not prove serving. ExistingE2A9archived/Root153+World20fNOCLAIM.",
+          "next": "Currentactualpublicrelease/IN04custodydiscovery; no duplicatefrontend work or200user/devicegate."
+        },
+        "Backend21d": {
+          "digest": "07:13UTC no newbackendoriginalcompletion.",
+          "capacity": "Compiler offersWITHDRAWN/NOT_ACCEPTED_DEFERRED untilactualfamily/outside/WHOLE+cumulativeoperands. Separate8MiBreadonlyRoot1fcmetadata census is notCargo/copy/materializationauthority. Preservefailure/reservation/history/prospectivefitdistinction.",
+          "BE42": "LatestRoot-attributed00c source4f7319c7/seal8619294c source-only; no physicalexport/target/Cargo/native/publication. Prior774/6a1proposals retainpins."
+        },
+        "W04": {
+          "at": "2026-11-05T14:32:00+09:00",
+          "state": "OPEN",
+          "implementation_state": "NOT_STARTED",
+          "scope": "Original IA W04 virtual party-room invitations; preserve FE18 closed chooser/membership criteria. Distinct from room reads/switch/FindParty, physical VENU-M/MEET HERE/MESSAGE.",
+          "policy_question": {
+            "state": "PENDING_EXISTING_MAIN_QUESTION",
+            "proposal_only": true,
+            "proposed_policy": "Host to accepted party members/current virtual room; five-minute expiry/revoke; ordinary capacity-checked admission with no reservation.",
+            "frozen": false,
+            "duplicate_question_requested": false
+          },
+          "routing": "Current controller40fde and producer6b5d coordinate through existing World/Root custody. No producer grant or policy freeze from this management record.",
+          "planning_canonical": "3e063c98f3806910439eae5c24f54535f0d2c8db"
+        },
+        "Staffing": {
+          "readyUnstaffed": "NONE_VERIFIED",
+          "policy": "Existingleads reuse/retirecontexts onlywithrealexactcustody; implementation/publicationcontinues independently. No filler/newchat/model/goalreset/managerACK/fullwavebarrier."
+        }
+      },
+      "publication": [
+        "c3c60842a0900e1625633e293092509fe59d341f",
+        "1adf8006ba6d050aecd2682ab4c0bec6e144ee75",
+        "32ecbaa3c854259c6d68e140f658f65c4abc2106",
+        "8ccdeb0a753c4a5dab9bccc670efb195c51c0611",
+        "03c24e05a6a99368344d80bbe831946c1d8fba12",
+        "3ba98e5e8ad7b8f84a792adb06aa1c85cd59f93c",
+        "62302f949ba567158b0aba3fc4444a80fb8929cb",
+        "56a0cb7f0bdc4e4526c45bbc6258d38bc3a7077a",
+        "cdba75d3c23ce28364563bd39b114d83db3b7ece"
+      ],
+      "source_limits": {
+        "whole_venue": "NOT_READY",
+        "live_device_multiuser": "NOT_ACCEPTED",
+        "QA08": "DEFERRED_BY_USER",
+        "Safety_original_criterion_mapping": "UNRECONCILED",
+        "Post07_08": "FAILED_CONTROL_HISTORY",
+        "global_quota_restoration": "NOT_ESTABLISHED",
+        "FastOFF": "NOT_ESTABLISHED",
+        "PI07": "Assigned pure-client/design only; earlier native failures and broader duties preserved.",
+        "original112Rows": "109_UNRELATED_ENTRIES_IDENTICAL_AS_DATA_THREE_EXPLICIT_DISPOSITIONS_ONLY",
+        "noNewOriginalOutcomes": false,
+        "VENU_ART01": "DONE_PURE_ART_CONTROLLED_CLIENT_ONLY_NO_PHYSICAL_DEFAULTROOT_DEVICE_OR_PIXEL_IDENTITY",
+        "originalClosures": "FE12_FE13_ONCE_ONLY_FE19_RECLOSED_ZERO_NEW_OUTCOME",
+        "combinedLatestMasterRuntime": "NOT_RUN"
+      },
+      "screenshots": {
+        "status": "385/UIseparate; no publishercapture/pixelreview."
+      },
+      "scope": "ExactlyFE12/FE13neworiginalclosures+FE19historicalreclosedonly;109unrelatedtasks/61originalIA/12design/8venue/10extensionIA/48comparisonsunchanged.",
+      "new_venue_acceptances": [],
+      "venue_remaining": 7,
+      "composed_actual_utc": "2026-11-05T07:40:44.175581+00:00"
     }
   ],
   "staffing_update": {
-    "at": "2026-11-05T15:32:00+09:00",
-    "checkpoint": "MAIN_HOURLY_20261105_1532",
-    "basis": "Single38515:32 digest and Backend21d06:05 conclusions through Main; fixed frontend register and explicitly dated later Community publication.",
+    "at": "2026-11-05T16:32:00+09:00",
+    "checkpoint": "MAIN_HOURLY_20261105_1632",
+    "basis": "Main explicit16:32accounting+385/Worldresponsibleownerconclusions; boundedcanonicalpublicationssupersededatedpendingonly.",
     "allocator": "21d",
     "publisher": "412e",
     "new_chats": 0,
@@ -22548,58 +23318,84 @@
     "manager_technical_review": false,
     "venue_done": 1,
     "venue_remaining": 7,
-    "venue_new_acceptance": "VENU-ART01 pure-art/controlled-client only",
-    "original_done": 58,
+    "venue_new_acceptance": null,
+    "original_done": 61,
+    "original_remaining": 50,
+    "new_original_closures": [
+      "FE12",
+      "FE13"
+    ],
+    "historical_reclosed_only": [
+      "FE19"
+    ],
     "design_accepted": 10,
     "design_remaining": [
       "PI08",
       "PI11"
     ],
-    "Map_lifecycle": "Terminal/clean/archived samecontext; grants/book remainder returned, oldBLOCKEDgoal unchanged/no accepted nextscope",
-    "PI08": {
-      "owner": "2162 renderer,231 ART,existing6b5d backend discovery;Root1fc exact backend custody",
-      "delivered": "Source contract33491ccf and logical zoom8c601c71 published.",
-      "open": "Full Photo2 scenery/renderer activation/wholePI08 parity unfinished. ART231 accepted ten exact NEW paths and authored vector generator; PNG generation/qualification unfinished and capacity-denied.",
-      "custody": "6b5d accepted C06-PARADE-BINDING-BE01 source-readiness only; operative backend release paths/preimages/write custody pending discovery/Root1fc. No backend production grant or frontend compatibility.ts change inferred."
-    },
-    "Community": {
-      "canonical": "7c2066bb8ba596589a80d1ce70f96ea51969ef04",
-      "date_relation": "Later than fixed06:30:10UTC register",
-      "qualified": "Controlled Native18 native/compare0/0 and28 owner-inspected PNGs; component product improvement only.",
-      "retained_failure": "OUTER_RESOURCE_FAIL remains FAIL; no aggregateNative18PASS",
-      "open": "Small text/glyph/subpixel differences and broader default-shell/live-service/device/integration remain open; no original/design/VENU closure."
-    },
-    "OAuth": {
-      "owner": "Root153/12cc and actual provider/SQL owners",
-      "positive": "Focused current session/boundary/recovery/lint checks passed.",
-      "open": "Strict corrected-overlay/import/metadata and strict-onlySource13/native/provider/SQL/public qualification unfinished; publicOAuthOFF. Conditional authorizations are capacity-denied, no accepted hold.",
-      "report_only": [
-        "BE03 report8940a51f excludes15 unqualified application/core leaves",
-        "N213956cb709 ownedreport, not product/native completion",
-        "Map12a033ae ordinary-registration repair, not app successor"
-      ]
-    },
-    "PI11_default_QA06": {
-      "owner": "26e PI11;1eed default host;SAME1ab7 exactfe-public QA06 lifecycle",
-      "PI11": "Reached realWorld one canvas/socket, failed fixture/HUD entry and separate process metadata; existing owner retains repair/native finish.",
-      "default_and_fixture": "Default-host adapters and QA06 fixture-source qualification unfinished. QA06 candidate/source custody actually accepted; physical executor/device/access/control/reachable fixture requirements remain separately UNCONFIRMED and originalBLOCKED goal unchanged.",
-      "boundary": "No blanket backend/PI08/PI11/defaultHost/device gate added to independent source preparation or finished pure-client criteria."
-    },
-    "backend": {
-      "digest_at": "2026-11-05T06:05:00Z",
-      "whole_original_completion": "NO_NEW_COMPLETION",
-      "scope": "Source/control milestones and bounded future reservations are not runtime passes or accepted holds.",
-      "resources": "After-futures disk fit is allocator21d-owned blocker.21d alone controls actual usable fresh windows/direct custody; dated queues are not grants. Preserve accepted limits/cumulative history/failures/unrun states; no cleanup/globalkill/reset/model/newchat."
-    },
-    "W04": {
-      "policy": "PENDING_UNFROZEN",
-      "planning_only": true,
-      "invitation_grant": false,
-      "boundary": "Keep existing single human question; actual Friends/viewer/location/event-clock/reviewed physical inputs remain existing producer/access decisions. No duplicate question or whole-backend-wave barrier."
-    },
-    "ready_stream_staffing": {
-      "ready_unstaffed_disjoint_work": "NONE_VERIFIED",
-      "next": "Existing leads continue owner validation/fixes and sole412e publication independently. Main/SL acknowledgment never gates work; no manager code/query/runtime/pixel review."
+    "major_remainders": {
+      "OAuth": {
+        "owner": "Root153/12cc plus actual Gateway/provider/SQL owners",
+        "frontend": "Qualified26postimages canonical8ccdeb0a: actualApp/Auth/admission/privacy with controlledsynthetic303/cookie counterpart only.",
+        "BE03report": "Source54ab7bc32c26 report-only3ba98e5e8ad7; Source04fiveNEWresourcecasesPASS/old02and03FAILretained;15applicationleavesEXCLUDED_UNPUBLISHED.",
+        "open": "PublicOAuthOFF; actualGateway/provider/SQL/device/combinedruntime/wholeBE03/tombstonegapOPEN."
+      },
+      "PI08": {
+        "owner": "2162/231/6b5d existing direct owners",
+        "delivered": "Contract33491ccf/logicalzoom8c601c71 and rendererSOURCE40aaf310/PACKET76402376 nowcanonicalcdba75d3 exact33paths, nine literal hunks inverse-exact. Five sourcecases retained, strictSource08/lintPASS.",
+        "ART": "Sourceebdda548 qualifiedpartial67paths nowcanonical62302f94; sixassetchecks/singleproducerdecodePASS ownerreported. Active front-right lamp-placement/paint-extent/minimalversionedcorrection remains231/2162/6b5d.",
+        "open": "RegistryEMPTYfailclosed/qualified ART-BE coherentcatalogrelease tuple activation/nativeintegration/fullPhoto2/profilefidelityOPEN. No fullART/PI08 acceptance."
+      },
+      "C06": {
+        "owner": "6b5d exactoperative14grant61989715;Root1fc",
+        "StageA": "6c867068 publishedreadinessonly.",
+        "current": "80c3023e3 authoredsource, backendmeaningfulvalidation/bootstrap/releaseactivationunfinished. NewlypublishedpartialARTtupleavailable, NOTADMITTED.",
+        "scope": "Actual14operativegrant supersedes datedcustodypending only; no legacyquality/FE/ART/BE42 or extra production grant."
+      },
+      "DefaultHost": {
+        "owner": "1eed distinctexistingparent;Root153 boundedhostcustodyreturn",
+        "delivery": "Native17guardedfourcommands/360390430/18owner-viewedcaptures qualifiedfunctionalPASS;exact61pathsnow56a0cb7f0bdc.",
+        "open": "MaterialWorldframe/populatedFriends/Notes/meeting fixedlayoutdifferencesOPEN. Missingactualclock/physical/Friends/meeting/Notesauthority failclosed. No wholeparent/live/device/latestmaster acceptance.",
+        "lateOrdinaryAccounting": "FinalsealGit202310Bstrictexcess/withinFamilyFALSE/bookclosed separately retained; Native17guardedPASS neither rewritten nor broadened. No reset/refund/newcommandswithoutfreshfit."
+      },
+      "Community204": {
+        "originalSummary": "32originals:22DONE/2REOPENED/4IN_PROGRESS/3OPEN/QA08DEFERRED unchanged.",
+        "CSS": "Materialfix17753485 plus4306a618 committedunvalidated; Native21and22genuinelyunused asdateddigest, laterNative23FAILbeforebrowsercommands;Source24privatecollectorfix33cb7cf authoredthreeNEWcasesNOT_RUN.",
+        "next": "Existingowner/21d distinctactuallyusablecurrentallocation only; no waiver/capreset/managerreview. Source20fourcontrolsPASS andNative18outerresourceFAIL retained."
+      },
+      "PI11_QA06": {
+        "PI11": "26e Source14actualnewcase+oxlintPASS; Source13stdoutwithoutcommandexit/outerFAILretained; preservationcommit pendingusableactualdeadline. Native/visualfinishOPEN.",
+        "QA06": "SAME1ab7 standaloneSource10PASS; browser02beforepayloadFAIL/parserfix35c1bbc0f withfocusedcasepending; browser03genuinelyunused. NewactualUI/lifecycleNOT_RUN;physical/devicegoal remainsBLOCKED truthfully."
+      },
+      "FE33_Wall": {
+        "original": "Client/defaultcallerowner-satisfied; FE33 remainsREOPENED for true servingrelease/config/artifact/IN04currentreceivingresponsibilityunreconciled.",
+        "discovery": "Wall202/Root1fc actualnarrowread-onlyStageAFULL1793863611.67495; no repowrite afterworkguard refusal. ExistingWall B/core/fence/Gatewayroutes sourcefindings do not prove serving. ExistingE2A9archived/Root153+World20fNOCLAIM.",
+        "next": "Currentactualpublicrelease/IN04custodydiscovery; no duplicatefrontend work or200user/devicegate."
+      },
+      "Backend21d": {
+        "digest": "07:13UTC no newbackendoriginalcompletion.",
+        "capacity": "Compiler offersWITHDRAWN/NOT_ACCEPTED_DEFERRED untilactualfamily/outside/WHOLE+cumulativeoperands. Separate8MiBreadonlyRoot1fcmetadata census is notCargo/copy/materializationauthority. Preservefailure/reservation/history/prospectivefitdistinction.",
+        "BE42": "LatestRoot-attributed00c source4f7319c7/seal8619294c source-only; no physicalexport/target/Cargo/native/publication. Prior774/6a1proposals retainpins."
+      },
+      "W04": {
+        "at": "2026-11-05T14:32:00+09:00",
+        "state": "OPEN",
+        "implementation_state": "NOT_STARTED",
+        "scope": "Original IA W04 virtual party-room invitations; preserve FE18 closed chooser/membership criteria. Distinct from room reads/switch/FindParty, physical VENU-M/MEET HERE/MESSAGE.",
+        "policy_question": {
+          "state": "PENDING_EXISTING_MAIN_QUESTION",
+          "proposal_only": true,
+          "proposed_policy": "Host to accepted party members/current virtual room; five-minute expiry/revoke; ordinary capacity-checked admission with no reservation.",
+          "frozen": false,
+          "duplicate_question_requested": false
+        },
+        "routing": "Current controller40fde and producer6b5d coordinate through existing World/Root custody. No producer grant or policy freeze from this management record.",
+        "planning_canonical": "3e063c98f3806910439eae5c24f54535f0d2c8db"
+      },
+      "Staffing": {
+        "readyUnstaffed": "NONE_VERIFIED",
+        "policy": "Existingleads reuse/retirecontexts onlywithrealexactcustody; implementation/publicationcontinues independently. No filler/newchat/model/goalreset/managerACK/fullwavebarrier."
+      }
     }
   },
   "staffing_history": [
@@ -23073,6 +23869,74 @@
         "Map": "14:23–14:24KST owner-inspected Native16 Map",
         "HUD": "13:59KST Native09 HUD",
         "new_reporting_browser_job": false
+      }
+    },
+    {
+      "at": "2026-11-05T15:32:00+09:00",
+      "checkpoint": "MAIN_HOURLY_20261105_1532",
+      "basis": "Single38515:32 digest and Backend21d06:05 conclusions through Main; fixed frontend register and explicitly dated later Community publication.",
+      "allocator": "21d",
+      "publisher": "412e",
+      "new_chats": 0,
+      "execution_grant": false,
+      "new_models": false,
+      "goal_reset": false,
+      "manager_ack_required": false,
+      "manager_technical_review": false,
+      "venue_done": 1,
+      "venue_remaining": 7,
+      "venue_new_acceptance": "VENU-ART01 pure-art/controlled-client only",
+      "original_done": 58,
+      "design_accepted": 10,
+      "design_remaining": [
+        "PI08",
+        "PI11"
+      ],
+      "Map_lifecycle": "Terminal/clean/archived samecontext; grants/book remainder returned, oldBLOCKEDgoal unchanged/no accepted nextscope",
+      "PI08": {
+        "owner": "2162 renderer,231 ART,existing6b5d backend discovery;Root1fc exact backend custody",
+        "delivered": "Source contract33491ccf and logical zoom8c601c71 published.",
+        "open": "Full Photo2 scenery/renderer activation/wholePI08 parity unfinished. ART231 accepted ten exact NEW paths and authored vector generator; PNG generation/qualification unfinished and capacity-denied.",
+        "custody": "6b5d accepted C06-PARADE-BINDING-BE01 source-readiness only; operative backend release paths/preimages/write custody pending discovery/Root1fc. No backend production grant or frontend compatibility.ts change inferred."
+      },
+      "Community": {
+        "canonical": "7c2066bb8ba596589a80d1ce70f96ea51969ef04",
+        "date_relation": "Later than fixed06:30:10UTC register",
+        "qualified": "Controlled Native18 native/compare0/0 and28 owner-inspected PNGs; component product improvement only.",
+        "retained_failure": "OUTER_RESOURCE_FAIL remains FAIL; no aggregateNative18PASS",
+        "open": "Small text/glyph/subpixel differences and broader default-shell/live-service/device/integration remain open; no original/design/VENU closure."
+      },
+      "OAuth": {
+        "owner": "Root153/12cc and actual provider/SQL owners",
+        "positive": "Focused current session/boundary/recovery/lint checks passed.",
+        "open": "Strict corrected-overlay/import/metadata and strict-onlySource13/native/provider/SQL/public qualification unfinished; publicOAuthOFF. Conditional authorizations are capacity-denied, no accepted hold.",
+        "report_only": [
+          "BE03 report8940a51f excludes15 unqualified application/core leaves",
+          "N213956cb709 ownedreport, not product/native completion",
+          "Map12a033ae ordinary-registration repair, not app successor"
+        ]
+      },
+      "PI11_default_QA06": {
+        "owner": "26e PI11;1eed default host;SAME1ab7 exactfe-public QA06 lifecycle",
+        "PI11": "Reached realWorld one canvas/socket, failed fixture/HUD entry and separate process metadata; existing owner retains repair/native finish.",
+        "default_and_fixture": "Default-host adapters and QA06 fixture-source qualification unfinished. QA06 candidate/source custody actually accepted; physical executor/device/access/control/reachable fixture requirements remain separately UNCONFIRMED and originalBLOCKED goal unchanged.",
+        "boundary": "No blanket backend/PI08/PI11/defaultHost/device gate added to independent source preparation or finished pure-client criteria."
+      },
+      "backend": {
+        "digest_at": "2026-11-05T06:05:00Z",
+        "whole_original_completion": "NO_NEW_COMPLETION",
+        "scope": "Source/control milestones and bounded future reservations are not runtime passes or accepted holds.",
+        "resources": "After-futures disk fit is allocator21d-owned blocker.21d alone controls actual usable fresh windows/direct custody; dated queues are not grants. Preserve accepted limits/cumulative history/failures/unrun states; no cleanup/globalkill/reset/model/newchat."
+      },
+      "W04": {
+        "policy": "PENDING_UNFROZEN",
+        "planning_only": true,
+        "invitation_grant": false,
+        "boundary": "Keep existing single human question; actual Friends/viewer/location/event-clock/reviewed physical inputs remain existing producer/access decisions. No duplicate question or whole-backend-wave barrier."
+      },
+      "ready_stream_staffing": {
+        "ready_unstaffed_disjoint_work": "NONE_VERIFIED",
+        "next": "Existing leads continue owner validation/fixes and sole412e publication independently. Main/SL acknowledgment never gates work; no manager code/query/runtime/pixel review."
       }
     }
   ],

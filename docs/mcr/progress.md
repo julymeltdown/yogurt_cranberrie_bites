@@ -1,5 +1,40 @@
 # Execution record — functional delivery
 
+<!-- BEGIN MAIN_HOURLY_20261105_1632 -->
+## CURRENT — 2026-11-05 16:32 KST responsible-owner reconciliation
+
+**Original tasks:61/111 active DONE (55.0%),50 remaining;112 original IDs and61 original IA preserved. Current original criteria outcomes63; frozen historical39;24 new original closures since replan. Design10/12, PI08/PI11 open. VENU1/8, seven remaining;10 extension IA and48 comparisons NOT_RUN. QA08 DEFERRED_BY_USER/nonpass. Product NOT_READY; full112false.**
+
+FE12 and FE13 are DONE / TASK_CRITERIA_SATISFIED / MOCK_READY, priority0, consumed once from responsible1eed's full literal original-criterion disposition. FE12 covers deterministic layers, frame/anchor/directions/walk/cache/shared-thumbnail export and approved same-manifest fallback-or-unavailable. FE13 covers preview/selectors/draft privacy/save World+Profile/Cancel without PUT/revision-conflict draft retention. Originalc3c60842a0900e1625633e293092509fe59d341f, native1adf8006ba6d050aecd2682ab4c0bec6e144ee75 and sharedportrait32ecbaa3c854259c6d68e140f658f65c4abc2106 (107 scoped paths; canonical publisher receipt542172c7) provide published owner evidence. Enrollment80de53f3 is not Avatar evidence; legacy/synthetic product-art fallback is not admitted. No remaining original-client work is identified.
+
+FE19 is DONE, priority0, with historical TASK_CRITERIA_SATISFIED/MOCK_READY and historical_criteria_closed=true retained; reopened_for_current_scope=false. This recloses a previously credited remainder and adds ZERO historical original outcomes. Root153+26e retain literal pure-client satisfaction/no adapter gap; source-review/rights/closed-unavailable/legend/concept guard/a11y/404410/mismatch+Reload/privacy evidence remains. Responsible reconciliation is canonical8ccdeb0a docs/mcr/frontend/reference-scene-root.md; historical10784b26 and delivered Mapretarget03c24e05 remain credited.
+
+Complete prior FE12/FE13/FE19 entries, reasons, remaining-work and dispositions are archived once in the machine register's completion_updates. Original titles/scope/acceptance/complete_when, updated scope and amendment/design links are unchanged. Prior integration/design/venue requirements are explicitly retained as separate mandatory obligations. LiveBE07/two-account/device/current-clock/IN01/defaultHost, PI11, AR01/physical authority, VENU and IN work remain independently open. Existing owners/custody and incompatible unfinished BLOCKED goals remain truthful; no Avatar writer, Map wake, rerun, transferred custody or generic live/device completion gate follows.
+
+| Existing stream / owner | Current delivery, limitation and next action |
+| --- | --- |
+| OAuth /Root153,12cc | Qualified frontend26 postimages at8ccdeb0a cover actualApp/Auth/admission/privacy with synthetic303/cookie only. BE03Source04report54ab now3ba98e5e records five new resource cases PASS, old02/03FAIL retained;15 application leaves unpublished. PublicOAuthOFF/Gateway/provider/SQL/device/combined runtime/wholeBE03/tombstone gap open. |
+| PI08 /2162,231,6b5d | Contract33491ccf/logicalzoom8c601c71 retained. Qualified partial ARTebdda now62302f94; rendererSOURCE40aaf310/PACKET76402376 nowcdba75d3. Active lamp-placement/paint-extent correction continues directly. Registry empty/failclosed; coherent ART/BE catalog-release admission, native integration/fullPhoto2/fidelity open. No fullART/PI08 acceptance. |
+| C06 /6b5d,Root1fc | StageA6c867068 published. Exact14 operative grant61989715 actually accepted; source80c3023e3 authored. Meaningful backend validation/bootstrap and release activation unfinished. Qualified partial ART tuple is now available, not admitted; no FE/ART/BE42 scope expansion. |
+| Default host /1eed,Root153 | Native17 guarded four-command/three-width/18owner-capture functional qualification published as61 paths56a0cb7f. Material World frame/populated Friends/Notes/meeting fixed-layout differences remain parent work. Later seal/Git202310Bstrict family excess/withinFamilyFALSE/book closed remains separate; no retroactive native rewrite or full completion. Bounded host custody returnedRoot153; continuation requires exact custody/fresh actual21d fit. |
+| Community /204 | Material CSS17753485/4306a618 remains unvalidated. Dated Native21/22 genuinely unused; laterNative23 failed before browser commands. Private Source24collector correction33cb7cf and threeNEWcases authored, NOT_RUN. Retain Source20controlsPASS/Native18outerFAIL.32original summary remains22DONE/2REOPENED/4IP/3OPEN/QA08deferred;21d alone issues usable allocation. |
+| PI11 /26e; QA06 /SAME1ab7 | Source14newcase+oxlintPASS retained, preservation handoff pending actual deadline; native/visual unfinished. QA06Source10PASS; browser02 failed before payload/parser correction35c1bbc0f case pending; browser03genuinelyunused. New standalone actualUI/lifecycle NOT_RUN; physical-device duties and oldBLOCKEDgoal remain open. |
+| FE33 /Wall202,Root1fc | Client/default-caller behavior already owner-satisfied. True serving release/config/artifact/currentIN04receiving responsibility remains unreconciled, soFE33REOPENED. Narrow read-only discoveryFULL retained, no repowrite after workguard refusal. Existing Wall B/core/fence/routes are source findings, not serving proof; no duplicate frontend work or200user/device prerequisite. |
+| Backend /21d,Root1fc,existing producers |07:13digest adds no backend original closure. Compiler offers withdrawn/deferred pending actual family/outside/WHOLE and cumulative operands. Separate8MiB read-only metadata census is notCargo/copy/materialization authority. BE42latest4f7319c7/seal8619294c is attributed source only; no physicalexport/target/Cargo/native/publication. Preserve failures, accepted reservations, source-bound history and prospective-fit distinction. |
+| W04 /existing leads | Existing policy question PENDING/UNFROZEN; no duplicate question or invitation authority. No verified ready unstaffed implementation. Reuse/retire contexts with actual exact custody; no filler/newchat/model changes/managerACK/full-wave barrier. |
+
+This CURRENT16:32 record uses Main's explicit temporary sole four-file composition grant after source-STOP, Frontend385's direct16:32digest and WorldSL's current30-row responsible register. Prior current checkpoint/staffing are archived once.109 unrelated original rows and all61 original IA entries are identical as data; all12 design/eight venue definitions and dispositions,10 extension IA and48 comparison definitions remain unchanged. FE12/FE13 add two new original outcomes; FE19 is reclosed only. Reopened IDs areFE24/FE33. No recount FE32/PI07/PI09/PI12/VENU-ART01.
+
+The private1630 register was PENDING at Main dispatch and subsequently sealed late at07:37:28.964019UTC,746897B/SHA4892852fdd03ac856be2ac7c7a04cbff9cacaed5e70de086fbe984fcacab6eb1; its pending accounting is a dated snapshot. Prior1530 remains immutable/SHAfd47c0cb. Qualified162-path product/source publication took priority and is now canonicalcdba75d3; receiptSHA1366cb3228a71161ab7abeaf9a4a2356cc8f362a0e06ae3601584b6d50699c8c supersedes the digest's pending-publication wording only for those scoped deliveries. No combined latest-master runtime pass follows.
+
+Management verification covers JSON shape/counts/IDs/history/scope, whitespace, Git ancestry/remote and loan preservation only. No application/code/query/test/runtime/pixel review, new execution grant, goal/model/cap reset, Main/SL technical review or ACK. Exact four-file grant ends at its canonical receipt; detailed evidence stays with owners. All preceding Markdown below remains byte for byte under HISTORICAL; earlier CURRENT labels are dated snapshots.
+
+<!-- END MAIN_HOURLY_20261105_1632 -->
+
+## HISTORICAL — complete preceding Markdown retained byte for byte
+
+# Execution record — functional delivery
+
 <!-- BEGIN MAIN_HOURLY_20261105_1532 -->
 ## CURRENT — 2026-11-05 15:32 KST responsible-owner reconciliation
 
