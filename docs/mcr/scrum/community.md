@@ -1,7 +1,7 @@
 # Community and WALL delivery record
 
 <!-- current-lane-record:start -->
-Updated for 2026-11-05 13:28 KST scheduled check from responsible implementation-owner
+Updated for 2026-11-05 14:36 KST scheduled check from responsible implementation-owner
 reports, compact current chat snapshots and actual source/custody dispositions.
 This is management bookkeeping; developers own implementation, validation,
 fixes and exact immutable committed handoffs. Current standing sole publisher
@@ -30,6 +30,177 @@ one compact hourly digest upward covers original IDs completed, broad remaining
 milestones, ready unstaffed work, blockers/decisions and links to owner records.
 Immediate escalation is limited to cross-lane conflicts unresolved directly,
 genuinely unattended critical work or human-required product/access decisions.
+
+## Hourly reconciliation — 2026-11-05 14:36 KST scheduled check
+
+This is the CURRENT Community/Wall feature-level reconciliation. The32-ID
+living task table retained below the dated13:28 narrative is updated IN PLACE
+for this check; it is the sole current task table. Earlier dated prose and other
+older tables remain historical. Owner reports, canonical publisher receipts and
+compact actual chat/goal/custody snapshots govern; no SL code/query/test/runtime/
+screenshot inspection, technical review or rerun occurred.
+
+### Original-task accounting and acceptance boundaries
+
+Canonical Main3d13aced now records58/111 active tasks DONE,53 remaining,
+61 current original outcomes. FE32 selected-WallB current CLIENT delta is DONE
+on responsible6954's literal all-current-client-criteria SATISFIED/MOCK_READY
+disposition; its original client outcome was already credited, so NO second
+historical original closure. FE21/38/39/37/C04/QA01 are not recounted. All112
+original task IDs/61 required IA remain; QA08 stays DEFERRED_BY_USER, excluded
+from111 active, neither passed nor completed. Product remains NOT_READY.
+
+All32 current lane originals were reconciled:22 DONE/MOCK_READY,2 REOPENED
+(FE24/FE33),4 IN_PROGRESS(QA05/06/09/10),3 OPEN(IN02/04/05),1 DEFERRED(QA08).
+No newly first-time-closed original task is inferred this hour. Original/current
+pure-client criteria and separately open actual backend/live/multiuser/device/
+release duties stay distinct. FE32 has no identified client fix; FE33 and IN04
+still require authoritative real multi-client behavior. Original FE38/FE39
+control-room/event/place/notice/audit/confirmation/version/source-review and
+snapshot/reset/partial-recovery criteria remain owner-satisfied, not reopened
+by the unfinished default venue mount.
+
+FE36/QA07 affected shared-dialog Escape criterion mapping is explicitly supplied
+by responsible2c2a through Root153, and narrow fix034a8bb2 remains delivered.
+The central13:30 mapping-unreconciled observation is stale management context;
+consume the existing literal mapping normally, without another proof packet,
+blanket reopen or unrelated task closure. Report cancellation has no opener-focus
+restoration claim; broader actual QA/device duties stay separately required.
+
+### Delivered increments and remaining feature milestones
+
+- Community204 final33-path CSS packet27ecf951→c31f3072 is canonically delivered
+  and independently owner-verified. It resolved the prior6–9px height excess,
+  within2.13px geometry at that qualification. Native13 then passed its two
+  controlled commands,28 images individually inspected; two material differences
+  remained: action-font height and invitation-heading vertical offset. New CSS
+  27bd63190 plus owner control repair82924eb0c are committed but NOT qualified.
+  Six new boundary cases/native/comparison remain NOT_RUN. Preservation
+  checkpoint40ec2516 changes documentation, not qualification or publication.
+-204 distinctNative15 three-command scope is actually granted by21d, SAME384/
+  fresh38MiB, but was genuinely unused/yielded6734.031374 without ACCEPT or hold.
+  Latest post-quiet-window free22263025664B vs required22941271736B is short
+  678246072B. State is WAITING_RESOURCE_SLOT/fresh usable fit; implementation
+  ready and prior publication delivered are separate facts. No refund, lowered
+  reserve, cleanup, implicit extension or review gate. Prep06:00UTC remains
+  binding unless allocator explicitly amends it. Old FE10 goal stays BLOCKED.
+- Map40fde overlap correction698db20a and subsequent compact Notes/composer
+  a6720ffb are published with responsible-owner controlled TEST_ONLY Native12/
+  Native16 actual-App/Auth/WorldShell/realPhaser qualification. Native16 four
+  viewport contexts/browser/comparison/dualFULL passed, onecanvas/onesocket,
+  owner-inspected images with retained-image attribution. Notes209→157px vs122
+  reference; composer410→366px vs356; Friends79vs74 and named content/approved-
+  portrait/44px/read-replies/place-selector differences remain OPEN. Do not
+  promote this to reference identity, actual204leaf/defaultRoot/live/device or
+  whole VENU. All prior failed/partial rounds remain their actual dispositions.
+- Gift267 bounded component scope63d1a52d→1c45a448 is delivered, scoped compile
+  and seven copied tests passed. Route activation, original14/nativePG/role/
+  restart/EOF/cancel/HTTP/multiuser/liveness acceptance remains unqualified;
+  this does NOT close FE24/IN02.267 is preserved/archived after bounded delivery,
+  with actual route/integration ownership remaining Roots/producers.
+- QA04/meetbeacon admission compatibility4f44f9b3→9c73133c is published,
+  synthetic MOCK_READY only. Passing strict/lint/targeted-Chrome command results
+  remain separate from overall Source23/Native02 resourceFAIL. Real seven-
+  principal HTTP/WS/cache producer/catalog/runtime matrix stays NOT_RUN/BLOCKED.
+  No original FE20/IN02/real privacy acceptance is inferred.
+-1eed actual default venue integration remains unfinished in its accepted sole
+  checkout/shared-new-prefix custody. Native11 unused yield on209616896B deficit,
+  preservation06713ffa0, no validation commands. Root153 keeps continuation and
+  next-scope routing; no duplicate writer or archival race. Root's separate Auth
+  Source08 likewise stopped pretest on~363MiB deficit/all0; BE03 public OAuth
+  remains OFF/runtime unfinished. Historical Avatar/other incompatible goals
+  stay truthfully BLOCKED, not reset or falsely completed.
+
+### Design and actual device work
+
+NEW canonical Main3d13aced14:32 reconciliation explicitly acceptsPI07 once:
+design is NOW10/12 accepted PI01–07/09/10/12, withPI08/PI11 IN_PROGRESS.
+The earlier fresh13:30 register read of9/12 is superseded by that actual
+publisher receipt, not by dispatch or inference. Responsible534's literal all
+assigned pure-client/design criteria SATISFIED/no remaining fix rests on its
+existing qualified checks and inspected affected render/control evidence at
+canonicalecb2c4ad/source42aa843e. Native07 remains raw overallFAIL/partial;
+narrow Native10 admitted430 remainder passed; extra390short experiment was
+NEVER_ADMITTED/NOT_RUN. No broader native/live/device/VENU acceptance is added.
+534 is actually archived/no accepted next scope, old BLOCKED goal unchanged and
+leases returned. All112 task rows/61IA and family definitions remain preserved.
+
+PI08 narrow HUD/context/camera/short-viewport correction061f1221→b4c81367 is
+canonically delivered with owner Native08/09 controlled qualification. Full
+quality_v6 Photo2 scenery remains materially different and OPEN.2162 is active
+on the agreed versioned layout/display-contract stage, including atlas slots and
+measured reference regions; transfer bytes/skin-swap memory still need owner
+qualification. No API/assets/shared renderer custody is granted by this record.
+
+PI11 responsible26e reports prebundle repair complete, strict types/identity
+checks passed. Native04 is unstarted/requeued on~505MiB reserve shortfall,
+no held resources; native visual validation/publication still open.231's prior
+strict-test repair is delivered, not a substitute for this native qualification.
+
+Broader QA06/all61IA/physical iOS Safari/Android Chrome and required state/device
+checks stay IN_PROGRESS. Existing533/original QA06 owner coordinates a concrete
+deterministic device-reachable fixture source assignment, still pending actual
+checkout custody/allocation. Retained Map harness is desktop loopback-only,
+automation-seeded; no device-reachable server-only/provisioning helper is already
+qualified. Serve/device control need separate actual allocations. Do not create a
+parallel fixture/controller or add device gates to completed pure-client scopes.
+
+### Dependencies, staffing and current source boundaries
+
+No genuine unstaffed ready lane scope is established.204/2162/Root153 retain
+active accepted work.1eed/26e are unfinished but actually waiting usable capacity;
+a completed turn/unused offer is not an abandoned goal. Existing WorldSL received
+direct continuation coordination for40fde's named remaining primary-map criteria
+and26e's capacity-requeued visual work, without new source/lease/model/chat grants.
+230 is now actually notLoaded/completed with no-follow-up report; archived
+213/6954/2c2a/53d/21e/6950/375e/e2a9/267 remain preserved. No blanket goal completion
+or custody transfer follows archival. Same contexts resume on genuinely ready
+exact assignments/actual inputs.
+
+21d remains sole execution allocator. It received one consolidated capacity
+action covering actual observed204/1eed/Root153/26e deficits, to resolve usable
+same-chat admission/common release dependencies with actual resource owners.
+Those samples are not a fresh global census or permission to lower floors/caps,
+clean peer outputs, create a target, displace accepted reservations or infer
+release. Avoid repeated unusable offers/empty observer polling. Ready disjoint
+source and publication continue independently; no correctness/King ACK barrier.
+
+Real IN02 Party→physical rally→reservation→one-time pickup remains NOT_RUN.
+IN04 actual tools/quota/conflict/uncertainty/moderation/restore/freeze/convergence
+and privacy remains OPEN; actuale2a9 cohort is absent. QA05 seven real cases and
+QA09 six populated recovery scenarios remain NOT_RUN. QA10 still needs genuine
+same-candidate backend/service/device/task trace, not published control failures.
+
+Venue remains0/8 mandatory deliverables plus10 extensionIA,48 registered actual
+comparisons NOT_RUN centrally; source/native increments above do not silently
+advance registry-wide acceptance. Existing Main physical/Friend/GPS/timezone/
+reviewed-place/authority/art inputs remain with their owners, no duplicate human
+question or inferred answer. MESSAGE opens authorized selected-friend+event
+context without landmark/invitation prerequisite and performs no implicit write;
+reviewed fixed landmark is INVITE-only. Physical GPS/check-in stays distinct
+from virtual World movement. Original W04 virtual room invitation remains
+OPEN/NOT_IMPLEMENTED, policyPENDING/unfrozen, planning3e063c98 delivered only;
+FE18 chooser/membership outcome stays closed.
+
+### Current task table and management publication
+
+The existing32-row living table below is current as of this reconciliation,
+with task ID/owner/status/increment/remaining criteria/dependency/next action and
+commit/publication fields updated. Unchanged original outcomes retain their
+actual evidence; missing current evidence means UNRECONCILED, not NOT_STARTED.
+
+Prior13:28 lane reconciliation is canonicala63d8ba9; its one-MD grant ended.
+SL local61918 source/checkout remains STOP and all old ordinary allocations
+released; no new local file or runtime workload. This substantive hourly update
+temporarily delegates ONLY docs/mcr/scrum/community.md top timestamp, THIS exact
+subsection and32 explicitly current old→new rows to standing412e under its own
+usable ordinary publishing bounds. No second goal, central/app/source/DB/test/
+browser/image/shared writer grant. All other bytes, especially frozen suffix,
+remain exact; transaction receipt ends this ONE-MD authoring scope. ONE compact
+hourly385 digest carries material outcomes/dependencies, never raw proof packets.
+Neither record publication nor digest is a delivery/staffing prerequisite.
+
+## Earlier dated narrative — current living task table is explicitly maintained in place
 
 ## Hourly reconciliation — 2026-11-05 13:28 KST scheduled check
 
@@ -179,38 +350,38 @@ evidence is UNRECONCILED, not unstarted or zero progress.
 
 | Original ID | Responsible owner / custody | Task-level status | Delivered since previous check | Remaining original/current criteria | Dependency / blocker owner | Next action | Latest commit / publication |
 | --- | --- | --- | --- | --- | --- | --- | --- |
-| FE09 | Retained identity owner; Root153 separate Auth custody | DONE | No new original identity delta. | None in original client scope. | Separate Auth/IN owners;204 has no Auth implementation grant. | Retain original outcome; Root153 continues its separately accepted anonymous OAuth work. | 62b4bf80 published retained; no new FE09 commit claimed. |
-| FE20 | Original3ff2 photo/beacon; Roots current physical producers | DONE | No new original client delta; venue source increments are separate. | None in original client scope. | Root1fc/153 actual GPS/Friend/physical authority and IN02. | Preserve explicit arrival and expired/moved/revoked states; never infer arrival from virtual motion. | 6c908472 published retained. |
-| FE21 | Responsible53d; original Party counterparts | DONE/MOCK_READY | No further change after literal full original-client disposition consumed at12:28. | None; prior reopened client delta already reclosed. | Actual clock/authority/backend/IN02/device under their own tasks. | Preserve archived clean53d; no duplicate historical original credit. | 3a08414a→7b81bf62 published disposition; prior16856024 retained. |
-| FE22 | Original6ec9 form;6950 presentation preserved | DONE | No original form delta; venue M improvement published separately. | None: form/local validation/server errors/conflict draft criteria satisfied. | Party authority/clock/IN02 and new venue producers remain separate. | Retain original authoring outcome; no new writer. | 5da64426/d8778b8 and16856024 published retained. |
-| FE23 | Original6ec9 management/rally; Root1fc Party producers | DONE | No new original client delta; BE10/11 membership publication is separate. | None in original client scope. | Capacity/removal/physical-rally producers and IN02. | Preserve existing semantics; W04 virtual invitation remains separately NOT_IMPLEMENTED. | 48bb3e8/d8778b8 and16856024 published retained;51af7f7a backend not a new FE23 closure. |
-| FE24 | 267 Gift producer; Root153 caller;2162 completed PI04 | REOPENED | PI04 presentation remains delivered; allocator reports Gift compile passed and copied tests separately offered, not completed. | Authorized production media/motif/stock/action/privacy/pickupPlace current integration. | 267/backend Gift/media and Root callers; fresh21d for execution. | Finish actual producer/read-set and original/current remainder; no fabricated null binding or physical authority. | e74f5057 PI04 published; latest Gift producer test/publication disposition unreconciled. |
-| FE25 | Original6ec9 authoring/inventory;2162 now PI08 | DONE | No new original authoring/inventory delta. | None in original client scope. | Real upload/Gift authority belongs separate integration. | Retain completed forms/conflict/owner-route outcome; no reopening from new venue work. | 95d9f37/d8778b8 ande74f5057 published retained. |
-| FE26 | Original6ec9 pickup client;267/Roots actual journey | DONE | No new original intent/hold/expiry/code/claim/cancel/reload delta. | None in original client scope. | Actual one-time pickup/inventory and IN02 producers. | Preserve truthful receipt recovery; no positive TEST_ONLY code as live authority. | 941d36c/d8778b8 ande74f5057 published retained. |
-| FE27 | Retained Feed owner213; current213 private presentation | DONE | 213 finished qualified private-page source/native/comparison handoff, now canonical3c9af155; no original Feed criterion change. | None in original Feed criteria. | 213/publisher412e exact private scope; actual IN03/device separate. | Consume literal private-family disposition at natural closing; preserve/reuse or retire actually finished context, no proof successor. | 10b1afe6 Feed published;213 private ece84f117→3c9af155 published. |
-| FE28 | Retained Thread owner213; current private presentation | DONE | Qualified private-page source/types/lint/native/comparison packet canonically3c9af155; original Thread unchanged. | None in original Thread/composer/recovery/privacy criteria. | Actual IN03 producer/live/device own tasks. | Retain original Thread; no private-family closure inferred until literal owner disposition. | 10b1afe6 published; private ece84f117→3c9af155 published. |
-| FE29 | Retained People owner;204 separate venue leaf; Roots shared callers | DONE | Community associated-message/place/art/authorized-Map improvement canonically delivered. NEW final CSS Native11 qualified by owner, geometry within2.13px;33-path handoff pending publication. | None in original People client scope. | New venue shared caller/authority; W04 virtual invitation policy/interface own owners. | 204 finishes actual typography/header/message-offset/focus-glyph residuals within its accepted exclusive leaf after delivery/fresh21d, retaining independent contextual MESSAGE rights. | 45bb2a71+567b27bb→08c83be3+7e887df5 published; final33-path27ecf951 pending412e, no visual closure. |
-| FE30 | Retained intro/profile/age owner;213 exact U06 presentation | DONE | L registration delivered;213 private U06 presentation source/native qualified and canonical3c9af155. | None in original intro/profile/age criteria. | Actual Friend/GPS/location authority remains producers/Roots. | Retain original client outcome; publish exact private scope, no handle/age-to-GPS rights inference. | 33efa6f0 L registration source-qualified published; private ece84f117→3c9af155 published;5cc57d64 retained. |
-| FE31 | Retained social-consent owner;213 exact private scope | DONE | 213 privacy/revoke/recovery/private presentation now canonical3c9af155 with exact qualified Dialog dependency. | None in original consent/reveal/revoke/expiry client criteria. | Separate actual services/device/venue producers. | Consume actual owned criterion disposition; no new Auth/GPS-friend or venue implementation rights. | b2b3/a40d original published retained; ece84f117→3c9af155 published; Dialog034a8bb published. |
-| FE32 | Responsible6954 selected-WallB client; original204 tool evidence | DONE/MOCK_READY current CLIENT delta; central REOPENED pending normal consumption | NEW literal original pure-client AND current selected-WallB client criteria ALL SATISFIED; no uncovered client criterion/fix. Canonical PI09 default-App synthetic command/recovery and owner comparisons delivered. | None in original/current CLIENT criteria. No transparency/full-wall fill/redo/undo after intervening revision; approved square/44px-scroll/real-Confirm adaptations are not unresolved gaps. | Actual producers/live/backend, FE33 convergence, IN04 and broader QA06/device remain separately owned. | Consume current-delta reclosure once, no second historical original credit.6954 actual completed/clean/resources0/no ready scope, preserved/archived; old incompatible CSS goal BLOCKED untouched. | 8407fd7a→fe3a9712 published; original fe32-client-delivery and204 wall-tools-b dispositions retained. |
-| FE33 | Root153/1fc/backendWall202; e2a9 IN04 preserved | REOPENED | WallB presentation and actual synthetic-App fill/undo/erase/unknown/reconnect/signout evidence published, no whole FE33 closure. | Actual authoritative C04/C05 producer activation, two-client convergence, rollback/restore discard and moderation/recovery. | Roots/backendWall202 real services/principals/event/settings/snapshot; e2a9 cohort absent. | Finish actual binding and real convergence; reuse valid controlled evidence, no unchanged replay for ACK. | fe3a9712 PI09 increment published; prior canonical lifecycle baseline retained; no new live FE33 receipt. |
-| FE35 | Retained Inbox owner;213 U10; Roots/1eed new shared caller | DONE | 213 private Inbox presentation qualified and canonical3c9af155; new venue default binding remains separate. | None in original Inbox criteria. | Actual new People/Inbox/venue default binding remains1eed/Root/BE33. | Retain original Inbox; Roots/1eed continue exact accepted default integration and actual producers. | Original Inbox published retained; private ece84f117→3c9af155 published; M25d94f86/L33efa6f0 published. |
-| FE36 | Retained safety/account owner;2c2a narrow Escape fix;213 private pages | DONE; affected Escape delta delivered | NEW responsible2c2a explicitly identifies FE36/QA07 shared-dialog Escape delta;9 owner-qualified actual-App cases now canonically delivered. | No new uncovered original criterion identified; report cancellation has no opener-focus restoration claim. No blanket closure of unrelated duties. | Actual server/deletion/authority and broader QA tasks remain separate. | Preserve published narrow fix and immutable213 dependency; actually terminal2c2a archived with original QA05 BLOCKED unchanged. | 61a6a11c→034a8bb2 published; private213 ece84f117→3c9af155 published. |
-| FE37 | Responsible230 original moderation client; backend205/207/Root | DONE | No new original moderation outcome;230 idle/completed latest PI09-report turn says no follow-up here. | None in original moderator client criteria. | Actual session termination/protected-byte EOF/device/IN duties separate. | Root153 owns any already accepted230 QA04 continuation or truthful preservation/retirement after source/goal facts. | Original Reports/MemberContent/O04 dispositions central-consumed; no new FE37 commit. |
-| FE38 | Responsible1eed original client; separately sole default-venue writer | DONE/ACCEPTED original CLIENT | Original full-client closure retained.1eed separately accepted actual default integration; strict/StrictMode/browser/reference validation unfinished with unused-slot yield. | None in original control-room/settings/place/notice/audit/confirm/version/source-review criteria. | Default venue integration1eed/Root153; fresh21d admission and real providers; old Avatar goal BLOCKED separate. | Root153 directly resumes ended ready continuation within existing sole custody; no duplicate writer or archival race. | 4b91d113→28fbfa28 and06a2ab90 published; controlled host1774a36c published; no completed default-mount receipt. |
-| FE39 | Responsible53d original Wall-control/closure client | DONE/MOCK_READY | No new delta after full original-client disposition and canonical delivery. | None: pause/region lock/restore/exact snapshot/revision/partial failure/retry client criteria satisfied. | Actual authority/operator/backend/clock/multiuser/IN/device separate. | Preserve archived source and historical incompatible Admin goal; no duplicate original count. | 3a08414a→7b81bf62 published; central806b46f2 consumed once. |
-| FE40 | Retained archive owner;213 exact private/archive presentation | DONE | 213 private/archive presentation now canonical3c9af155 with owner-inspected controlled state/capture qualification. | None in original permitted read-only archive/privacy criteria. | Actual deletion/closure/persistence/release under producer tasks. | Retain original archive; consume literal PI12 family disposition separately, no whole-product inference. | Original archive published retained; operator4881ab79 retained; ece84f117→3c9af155 published. |
-| FE41 | 21e original lifecycle and completed preWorld subset | DONE | No new original or preWorld delta; context remains preserved/notLoaded after completed assigned goal. | None in original lifecycle or assigned preWorld subset. | Whole PI12 remaining private scope/device/live/other IA separate. | Reuse same context only for a genuinely ready exact grant; no filler scope. | Original6b6 retained;3caf3a8b→78886ffa published; assigned new goal COMPLETE. |
-| IN02 | 204 original harness preserved; Roots/Party/Gift actual journey | OPEN | New Community functional improvement and L registration published;204 finalCSS Native11 source27ecf951 qualified/pending. Neither it nor Gift compile progress certifies the real journey. | Real two-client Party approval→authorized physical rally→Gift reservation→one-time pickup remains NOT_RUN. | Root1fc/153, Party/Gift/media/clock/physical-place producers and actual services/cohort. | Continue actual producers/default composition; controlled host sentinel is not real World/Phaser or live physical flow. | M08c83be3/7e887df5 and L33efa6f0 published; no live IN02 commit/result claimed. |
-| QA01 | 50a8 retained original definitions; separate normalized Notes adapter | DONE | No original definition delta. Notes adapter is canonically delivered; source qualification not combined runtime. | None in original schema/unknown-enum/nonempty-test criteria. | Actual Notes default/backend/device duties remain separate. | Retain completed definition outcome; no duplicate original credit. | 130a9da→aac0d96d original retained; ac98d49b→4c397da2 Notes adapter published. |
-| QA07 | World original accessibility/input owner;2c2a scoped Escape repair | DONE; shared-dialog Escape delta delivered | Nine developer-qualified focused default-App cases fix native Escape cancellation/route preservation and applicable opener focus; canonical delivery received. | No new remaining original criterion identified by responsible owner; no report-cancel opener-focus claim or combined runtime inference. | Broader spoken/device/live/release duties stay with their exact tasks. | Keep fix and original outcome separate from whole QA05/QA06; no SL rerun or blanket task reopening. | Original d1964/e275 retained;61a6a11c→034a8bb2 published. |
-| QA08 | World capacity owner retained; user deferral | DEFERRED_BY_USER | No new performance qualification; historical partial Auth/profile and failed World admission retained. | 200 sockets/four rooms/FPS/bundle/memory/slow-network/reconnect-storm measured ceilings deferred. | Explicit later user resumption; no active execution assignment. | Keep among112 IDs, excluded from111 active; neither passed nor complete; functional invariants remain required. | Historical evidence retained; no new QA08 commit/result. |
-| QA05 | 2c2a original goal BLOCKED; Root/World actual pair/cohort | IN_PROGRESS; original goal BLOCKED | Narrow Escape repair delivered but does not execute original seven real-flow cases. | Packet delay/gap/slow client/foreground/ticket replay/restart/room switch all real cases NOT_RUN. | Roots/World actual managed pair/cohort, Auth/transport and fresh21d. | Restore same preserved2c2a context when genuinely executable; no duplicate helper or stress expansion. | 822b4d01 presentation and034a8bb2 Escape published; no new actual QA05 qualification. |
-| QA06 | Responsible family developers/functional SLs;533 finite normal-batch metadata | IN_PROGRESS | PI09 literal all client-design criteria satisfied/published;8/12 owner-satisfied,4 family remainders07/08/11/12 pending further dispositions. Central still7/12.213 private33 captures qualified, now canonical3c9af155; literal full-family disposition requested.204 Native11 qualified, geometry within2.13px. | Broader all61IA/device and required state/keyboard/safe-area cases; PI07/08/11/12 exact remaining delivery/qualification; venue48 registered comparisons remain NOT_RUN centrally. | 213/2162/26e/PI07 actual owners;21d execution; Main existing provenance decisions. | Consume natural213 whole-family disposition;204 exact typography/header/message-offset/focus-glyph residuals OPEN, finalCSS27ecf951 pending. ART strict repair8dee1335 published;26e full-program qualification still pending. PI08 actual serialized admission. | PI09fe3a9712, Community7e887df5, PI12 private3c9af155 and ART8dee1335 published;20427ecf951 pending; central806b46f2 unchanged. |
-| QA09 | 375e preserved/archived; Root actual populated recovery cohort | IN_PROGRESS | No new real recovery scenario or backend Cargo/runtime qualification. | All six populated restart/restore/outbox/pickup/deletion/partial-closure cases NOT_RUN. | Actual same-candidate services/Auth/observer/transport/business state and fresh21d. | Resume same375e only with genuine inputs; preserve compatibility source and failed history. | 860ec838 frontend retained;76dacf27 compatibility source, publication/runtime evidence unreconciled. |
-| QA10 | Root1fc release/provenance; retained6b5d frontend contribution | IN_PROGRESS | BE10/11 membership scope canonically51af7f7a; Post07/08 CLOSED-FAILURE control evidence published. Neither is whole QA10 qualification. | Genuine same-candidate backend/service/device/task-to-commit trace; missing checks NOT_RUN. | Responsible implementation/release owners, actual candidates and required input evidence. | Reuse existing checker; preserve Post failures, no09 grant/goal closure inferred, QA08 nonblocking deferral. | 54c08628 frontend checker/31 regressions retained;402e2a1a→ee2398a9 evidence-only;51af7f7a backend scope published. |
-| IN04 | e2a9 preserved/archived; Root153/1fc/backendWall202 real cohort | OPEN | No new real multi-client journey. FE32 client delta and PI09 published; e2a9 current resources0/no executable cohort. | Actual multi-client tools/cooldown/quota/conflict/unknown recovery, pause/restore/freeze/convergence/privacy and unauthorized moderation. | Roots/backendWall202 actual stack/principals/event/settings/moderation/snapshot; sole21d execution. | Supply actual producer/cohort to same e2a9; no second stack, generic performance gate or false goal completion. | af85/40d7 retained source; fe3a9712 client increment published; no new live IN04 receipt. |
-| IN05 | Root1fc release/Main385 central; feature owners literal dispositions | OPEN | Canonical register remains57/111 DONE,54 remaining,61 original outcomes; FE32 current-client reclosure and PI09 owner-family satisfaction prepared for normal consumption. | All112 IDs/61IA/111 active outcomes;8 venue deliverables/10 extensionIA; genuine functional/visual/device/recovery and final decision. | Responsible original/venue/design owners and real external inputs; Main accounting. | Consume FE32 current delta once without second historical original credit; no independent global increment; product NOT_READY. | Central806b46f2 unchanged; lane814ba58c published; later source receipts through8dee1335; this hourly update pending. |
+| FE09 | Retained identity owner; Root153 separate Auth custody | DONE | No new original identity-client delta. Root153's separately accepted anonymous OAuth checks are unfinished; Source08 stopped pretest on disk reserve shortfall. | None in original client scope. | Separate Auth/IN owners;204 has no Auth implementation grant. | Retain original identity outcome; actual Root153/BE03 continuation follows changed capacity/fresh21d, no204 Auth rights. | 62b4bf80 original published retained; no new FE09 qualification claimed. |
+| FE20 | Original3ff2 photo/beacon; Roots current physical producers | DONE | Original client outcome unchanged. QA04/meetbeacon synthetic admission compatibility is canonically delivered, with command successes separate from overall resourceFAIL. | None in original client scope. | Root1fc/153 actual GPS/Friend/physical authority and IN02. | Retain original explicit arrival/privacy; original QA04 real-service principal matrix and IN02 remain separate and NOT_RUN. | 6c908472 original retained;4f44f9b3→9c73133c bounded fixture published. |
+| FE21 | Responsible53d; original Party counterparts | DONE/MOCK_READY | No new original/client delta; canonical Main215f5c96 has consumed prior reclosure without duplicate historical credit. | None; prior reopened client delta already reclosed. | Actual clock/authority/backend/IN02/device under their own tasks. | Preserve archived clean53d; no duplicate historical original credit. | 7b81bf62 disposition/16856024 presentation published retained; Main215f5c96 consumed. |
+| FE22 | Original6ec9 form;6950 presentation preserved | DONE | No original form delta; Community's later CSS deliveries remain a separate venue-leaf scope. | None: form/local validation/server errors/conflict draft criteria satisfied. | Party authority/clock/IN02 and new venue producers remain separate. | Retain original form/conflict outcome; Party/IN02 and new venue bindings keep their actual owners. | 5da64426/d8778b8 and16856024 published retained. |
+| FE23 | Original6ec9 management/rally; Root1fc Party producers | DONE | No original member/rally delta. W04 planning-only document is delivered; virtual invitation implementation remains not started/policy pending. | None in original client scope. | Capacity/removal/physical-rally producers and IN02. | Preserve original membership/rally criteria and explicit arrival; no FE18/FE23 reopen or W04 closure from membership/docs. | 48bb3e8/d8778b8 and16856024 retained;51af7f7a membership/3e063c98 planning published separately. |
+| FE24 | 267 Gift producer; Root153 caller;2162 completed PI04 | REOPENED | 267 bounded Gift components now canonical1c45a448: scoped compilation and seven copied component tests passed; not route activation or broader BE39/native/HTTP qualification. | Actual authorized production media/motif/stock/action/privacy/pickupPlace current remainder remains OPEN; do not fabricate null binding. | 267 retained producer source plus Root1fc/153 actual route/media/service owners; actual admission21d. | Integrate/qualify actual producer and caller remainder through existing exact custody; archived bounded component owner is not proof whole feature complete. | 63d1a52d→1c45a448 bounded backend components published; e74f5057 PI04 retained. No FE24/IN02 completion. |
+| FE25 | Original6ec9 authoring/inventory;2162 now PI08 | DONE | No new original form/inventory criterion change; bounded backend Gift increment1c45a448 does not reopen or newly close FE25. | None in original client scope. | Real upload/Gift authority belongs separate integration. | Retain completed forms/conflict/owner-route outcome; no reopening from new venue work. | 95d9f37/d8778b8/e74f5057 retained;1c45a448 separate bounded backend scope published. |
+| FE26 | Original6ec9 pickup client;267/Roots actual journey | DONE | No new original pickup/recovery delta. Gift component delivery has no route/one-time real pickup acceptance. | None in original client scope. | Actual one-time pickup/inventory and IN02 producers. | Preserve original receipt/idempotency client outcome; actual pickup/inventory/IN02 duties stay with producers/Roots. | 941d36c/d8778b8 ande74f5057 published retained. |
+| FE27 | Retained Feed owner213; current213 private presentation | DONE | No original Feed delta; prior213 private-page delivery remains published and owner-satisfied. | None in original Feed criteria. | 213/publisher412e exact private scope; actual IN03/device separate. | Retain original Feed outcome and archived213 private context; no source transfer or unnecessary successor. | 10b1afe6 Feed and3c9af155 private presentation published retained. |
+| FE28 | Retained Thread owner213; current private presentation | DONE | No original Thread/composer delta; private PI12 accepted in canonical Main215f5c96, not a second original closure. | None in original Thread/composer/recovery/privacy criteria. | Actual IN03 producer/live/device own tasks. | Preserve Thread outcome and controlled/live boundaries; no new source writer or rerun. | 10b1afe6 and3c9af155 published retained. |
+| FE29 | Retained People owner;204 separate venue leaf; Roots shared callers | DONE | Community final33-path CSS27ecf951→c31f3072 delivered and independently verified. Native13 residual pass exposed two differences; newer CSS27bd/control82924 is committed but unqualified. | None in original People client scope; venue action-font height/invitation-heading offset remains OPEN separately. | 204 owns exact venue leaf;21d capacity fit; Root/1eed shared binding/real authority. | 204 same-chat fresh usable Native15 fit/requeue; six new control cases/native/compare remain NOT_RUN; no review gate or Auth expansion. | 08c83be3/7e887df5 andc31f3072 published;27bd63190/82924eb0c plus preservation40ec2516 committed, not new qualified packet. |
+| FE30 | Retained intro/profile/age owner;213 exact U06 presentation | DONE | Original intro/profile/age criteria unchanged; private3c9af155 and L33efa6f0 remain delivered. | None in original intro/profile/age criteria. | Actual Friend/GPS/location authority remains producers/Roots. | Retain original/private outcome; actual Friend/GPS/location rights remain fail-closed producer duties. | 5cc57d64/3c9af155/33efa6f0 published retained. |
+| FE31 | Retained social-consent owner;213 exact private scope | DONE | No new original consent/reveal/revoke client delta.213 remains preserved/archived after full owned private-scope disposition. | None in original consent/reveal/revoke/expiry client criteria. | Separate actual services/device/venue producers. | Preserve actual semantic/privacy boundaries; no private-page presentation grant implies Auth/GPS/venue source rights. | b2b3/a40d original and3c9af155 private presentation published retained. |
+| FE32 | Responsible6954 selected-WallB client; original204 tool evidence | DONE/MOCK_READY current CLIENT delta; now canonically consumed | Main215f5c96 canonically consumes responsible6954's literal original and selected-WallB current-client SATISFIED disposition. No new historical original credit. | NONE in original/current CLIENT scope; original grid/input/360px/cooldown and selected opaque erase/bounded fill/latest-own undo/shared512-budget/explicit confirmation criteria satisfied. | Real producer authority, FE33 convergence, IN04 and broader QA06/device remain separately required; not invented FE32 client gates. | Preserve archived6954 source and incompatible CSS-only BLOCKED goal; no additional client fix or new writer identified. | 8407fd7a→fe3a9712 client/design published; current reclosure canonical215f5c96, historical original outcome unchanged. |
+| FE33 | Root153/1fc/backendWall202; e2a9 IN04 preserved | REOPENED | No new authoritative live convergence outcome. Retain published WallB controlled lifecycle/PI09 progress; multiple real clients still unqualified. | Real C04/C05 producer activation, two-client convergence, rejected-preview rollback/restore obsolete-delta discard and moderation recovery. | Roots/backendWall202 real services/principals/event/settings/snapshot; e2a9 cohort absent. | Existing Roots/backendWall202 supply actual cohort/producers to preserved e2a9 under fresh21d; no second stack/unchanged fixture replay. | fe3a9712 client increment/prior lifecycle baseline published retained; no new live FE33 receipt. |
+| FE35 | Retained Inbox owner;213 U10; Roots/1eed new shared caller | DONE | No original Inbox delta;213 private presentation remains canonical3c9af155. Default venue mounting validation remains unfinished. | None in original Inbox criteria. | Actual new People/Inbox/venue default binding remains1eed/Root/BE33. | Preserve original target/privacy behavior;1eed/Roots continue accepted actual binding on usable admission. | Original Inbox and3c9af155 private published retained; no completed default mount qualification. |
+| FE36 | Retained safety/account owner;2c2a narrow Escape fix;213 private pages | DONE; affected Escape delta delivered | No new original safety criterion change; narrow FE36/QA07 Escape delta remains canonical034a8bb2 with literal responsible2c2a mapping. | No new uncovered original client criterion identified; report cancellation has no opener-focus restoration claim. | Actual server/deletion/authority and broader QA tasks remain separate. | Consume already supplied literal affected-ID mapping in normal bookkeeping; central13:30 mapping-unreconciled prose is stale, not a demand for new proof. Broader duties separate. | 61a6a11c→034a8bb2 and3c9af155 published retained; no new whole-task increment. |
+| FE37 | Responsible230 original moderation client; backend205/207/Root | DONE | No new original moderator outcome.230 now notLoaded/completed with its no-follow-up report; original source/custody remains preserved. | None in original moderator client criteria. | Actual session termination/protected-byte EOF/device/IN duties separate. | Retain original criterion closure; any genuine new compatible scope uses actual Root custody/fresh allocation, no implicit reassignment. | Original Reports/MemberContent/O04 dispositions published/central-consumed; no new FE37 commit. |
+| FE38 | Responsible1eed original client; separately sole default-venue writer | DONE/ACCEPTED original CLIENT | Original client DONE unchanged.1eed default-host Native11 was actually offered but unused on209616896B disk deficit; no validation commands ran, requeued. | NONE in original event/place/notice/audit/confirm/version/source-review CLIENT criteria; actual default venue scope remains separate and unfinished. | 1eed sole existing shared/new-prefix default-host writer;21d fresh capacity fit; Roots actual normalized producers. | Root153 retains same-owner continuation/next-scope custody. Resume when actually usable; no empty polling, duplicate writer, false Avatar-goal completion or archival race. | 28fbfa28/06a2ab90 original and1774a36c controlled host published;06713ffa0 unused-yield preservation committed, not qualification. |
+| FE39 | Responsible53d original Wall-control/closure client | DONE/MOCK_READY | No new original Wall-control/closure client change; prior full snapshot/partial-recovery disposition remains consumed. | None: pause/region lock/restore/exact snapshot/revision/partial failure/retry client criteria satisfied. | Actual authority/operator/backend/clock/multiuser/IN/device separate. | Keep original client outcome and archived53d source; real authority/backend/IN/device remain separately owned. | 3a08414a→7b81bf62 published; central806b46f2 consumed once. |
+| FE40 | Retained archive owner;213 exact private/archive presentation | DONE | No new original archive criterion change. Private/archive213 scope is delivered and PI12 canonically accepted. | None in original permitted read-only archive/privacy criteria. | Actual deletion/closure/persistence/release under producer tasks. | Retain archive/privacy outcome; no blanket whole-product or live persistence acceptance. | Original archive/operator4881ab79/private3c9af155 published retained. |
+| FE41 | 21e original lifecycle and completed preWorld subset | DONE | No new original lifecycle or preWorld-subset delta;21e remains archived/completed with assigned goal actually COMPLETE. | None in original lifecycle or assigned preWorld subset. | Other actual live/device/release and venue lifecycle requirements stay with their own task owners. | Preserve same-context reuse only for genuine ready scope; no filler work or goal reset. | Original6b6 retained;3caf3a8b→78886ffa published; assigned new goal COMPLETE. |
+| IN02 | 204 original harness preserved; Roots/Party/Gift actual journey | OPEN | Gift bounded components1c45a448, QA04 synthetic admission9c73133c, Communityc31f3072 and Map controlled overlap/compact corrections698db20a/a6720ffb delivered; none is real two-client journey. | Real Party approval→authorized physical rally→Gift reservation→one-time pickup remains NOT_RUN. | Roots/Party/Gift/media/clock/physical authority, actual services/principals/cohort;1eed default mount pending capacity. | Continue exact actual producers/callers; do not treat controlled/emulatedGPS or desktop fixture compatibility as live arrival/IN02. | Scoped source/fixture increments througha6720ffb published; no new live IN02 receipt. |
+| QA01 | 50a8 retained original definitions; separate normalized Notes adapter | DONE | No original schema/unknown-enum/nonempty-test criterion delta; normalized Notes adapter retained delivered. | None in original schema/unknown-enum/nonempty-test criteria. | Actual Notes default/backend/device duties remain separate. | Retain original closure; live/default Notes and device qualification remain their actual tasks, not QA01 duplicate credit. | 130a9da→aac0d96d original retained; ac98d49b→4c397da2 Notes adapter published. |
+| QA07 | World original accessibility/input owner;2c2a scoped Escape repair | DONE; shared-dialog Escape delta delivered | No new original accessibility/input closure; shared-dialog Escape delta034a8bb2 remains delivered with actual FE36/QA07 responsible-owner attribution. | No new remaining original criterion identified by responsible owner; no report-cancel opener-focus claim or combined runtime inference. | Broader spoken/device/live/release duties stay with their exact tasks. | Preserve actual criterion mapping, no report-cancel opener-focus claim or combined-master inference. Device/spoken/live duties stay separately required. | Originald1964/e275 and034a8bb2 published retained. |
+| QA08 | World capacity owner retained; user deferral | DEFERRED_BY_USER | No new performance qualification; existing explicit user deferral unchanged. | 200 sockets/four rooms/FPS/bundle/memory/slow-network/reconnect-storm measured ceilings deferred. | Explicit later user resumption; no active execution assignment. | Keep112original/111active denominator and non-pass deferral intact; active functional invariants/visual/device are not deferred. | Historical evidence retained; no new QA08 commit/result. |
+| QA05 | 2c2a original goal BLOCKED; Root/World actual pair/cohort | IN_PROGRESS; original goal BLOCKED | No new seven-case real-flow qualification;2c2a remains preserved/archived after separately delivered Escape fix. | Packet delay/gap/slow client/foreground/ticket replay/restart/room switch all real cases NOT_RUN. | Roots/World actual managed pair/cohort, Auth/transport and fresh21d. | Actual managed pair/cohort first, then same-owner fresh21d continuation; no separate review gate, duplicate helper or200-user expansion. | 822b4d01 presentation and034a8bb2 Escape published; no new actual QA05 qualification. |
+| QA06 | Responsible family developers/functional SLs;533 finite normal-batch metadata | IN_PROGRESS | NEW Main3d13aced canonically acceptsPI07 on literal534 all assigned client/design criteria SATISFIED; now10/12 accepted. PI08 narrow camera/HUD fix delivered, full scenery OPEN. PI11 strict/source repair passed, native unstarted on capacity. | Whole QA06/all61IA/state/device remains IN_PROGRESS. Two client-family remainders PI08 scenery/display contract and PI11 native visual. Mandatory venue48 comparisons still centrally NOT_RUN. | 2162/26e actual owners, existing QA06 owner with533 fixture coordination,21d capacity; physical device/provisioning allocation distinct. | Finish admitted PI08 contract check and PI11 native when usable. Existing QA06 device-reachable fixture source assignment is pending actual checkout custody/allocation; no parallel wrapper/controller. No family count from receipt alone. | PI07ecb2c4ad, PI08b4c81367, Mapa6720ffb published; Main3d13aced canonical10/12; no whole QA06/device acceptance. |
+| QA09 | 375e preserved/archived; Root actual populated recovery cohort | IN_PROGRESS | No new real populated recovery cases.375e remains archived; compatibility source not new Cargo/runtime qualification. | All six populated restart/restore/outbox/pickup/deletion/partial-closure cases NOT_RUN. | Actual same-candidate services/Auth/observer/transport/business state and fresh21d. | Supply actual business state/same-candidate services/Auth/observer then resume same owner with fresh21d; all six real cases remain NOT_RUN. | 860ec838 frontend retained;76dacf27 compatibility source, publication/runtime evidence unreconciled. |
+| QA10 | Root1fc release/provenance; retained6b5d frontend contribution | IN_PROGRESS | New bounded Gift/QA04/Map/PI08 source/native increments and retained failures are published; no whole same-candidate release trace qualification. | Genuine same-candidate backend/service/device/task-to-commit trace; missing checks NOT_RUN. | Responsible implementation/release owners, actual candidates and required input evidence. | Existing release owners bind genuine backend/service/device/task evidence; distinguish commandPASS from overall resourceFAIL, missing checks NOT_RUN and QA08 deferred. | 54c08628 checker retained; bounded1c45a448/9c73133c/a6720ffb/b4c81367 published, no new QA10 gate completion. |
+| IN04 | e2a9 preserved/archived; Root153/1fc/backendWall202 real cohort | OPEN | No new actual multi-client Wall journey. e2a9 remains archived/resources0/no executable cohort; FE32 client DONE is not IN04 completion. | Actual multi-client tools/cooldown/quota/conflict/unknown recovery, pause/restore/freeze/convergence/privacy and unauthorized moderation. | Roots/backendWall202 actual stack/principals/event/settings/moderation/snapshot; sole21d execution. | Existing Root/backendWall202 supplies real stack/principals/moderation/snapshot cohort to same e2a9 on fresh21d; no duplicate stack or performance gate. | af85/40d7 retained;fe3a9712 client increment published; no live IN04 receipt. |
+| IN05 | Root1fc release/Main385 central; feature owners literal dispositions | OPEN | Canonical Main3d13aced now58/111 DONE,53 remaining,61 original outcomes/design10/12. PI07 accepted once, original tasks unchanged;112task/61IA arrays preserved. | All112original IDs/61IA/111active outcomes plus8venue/10extensionIA; real functional/visual/device/recovery/release criteria remain; QA08 deferred/non-pass. | Responsible original/venue/design owners and real external inputs; Main accounting. | Preserve exact task/venue/design denominators and separately open outcomes; no original increment from PI07 family acceptance or bounded helper packets. | Central3d13aced and lanea63d8ba9 published; UI batchheaddb898bacc. This hourly lane update pending. |
 
 ### Subsequent literal disposition received after the fixed13:28 dispatch
 
