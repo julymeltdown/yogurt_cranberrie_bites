@@ -10,10 +10,11 @@ export function MeetingParticipants({ context }: { readonly context: MeetingCont
     <span>You + {context.friend.displayName}</span>
   </div>
 }
-export function MeetingPlace({ context, onView }: { readonly context: MeetingContextView; readonly onView?: () => void }) {
+export function MeetingPlace({ context, onView, compact = false }: { readonly context: MeetingContextView; readonly onView?: () => void; readonly compact?: boolean }) {
   if (!context.landmarkLabel) return null
-  return <div className="venue-meeting-place"><span className="venue-meeting-pin" aria-hidden="true">⚑</span>
-    <div><strong>{context.landmarkLabel}</strong><span>{context.landmarkDescription}</span></div>
+  return <div className={`venue-meeting-place${compact ? ' venue-meeting-place-compact' : ''}`} aria-label="Current reviewed meeting place">
+    <svg className="venue-meeting-pin" aria-hidden="true" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a8 8 0 0 0-8 8c0 5.6 8 12 8 12s8-6.4 8-12a8 8 0 0 0-8-8Zm0 11a3 3 0 1 1 0-6 3 3 0 0 1 0 6Z" /></svg>
+    <div><strong>{context.landmarkLabel}</strong><span className="venue-meeting-place-description">{context.landmarkDescription}</span></div>
     {onView && <button type="button" onClick={onView}>View on map</button>}
   </div>
 }

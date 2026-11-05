@@ -223,3 +223,10 @@ it('loads a further authorized message page without a command or a replacement l
   await f.owner.open(f.intent); expect(await f.owner.loadMore()).toBe(true)
   expect(f.owner.read().context?.messages[0]?.body).toBe('Next page'); expect(calls).toBe(1); expect(f.writes).toHaveLength(0); f.dispose()
 })
+
+it.each(['dangling', 'no-invitation'] as const)('rejects an invalid shared-place message projection: %s', async reason => {
+  const f = fixture(); f.patch({ sharedPlaceMessageId: 'message-linked',
+    messages: [{ id: reason === 'dangling' ? 'another-message' : 'message-linked', authorId: fixtureIds.actor, body: 'Hello', timeLabel: 'Now' }],
+    invitation: reason === 'dangling' ? { id: fixtureIds.invitation, version: '1', status: 'accepted', expiresAtMs: f.time() + 50000 } : null })
+  expect((await f.owner.open(f.intent)).kind).toBe('unavailable'); expect(f.owner.read().context).toBeNull()
+})

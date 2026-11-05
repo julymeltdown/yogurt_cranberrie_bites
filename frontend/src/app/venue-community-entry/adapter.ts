@@ -128,6 +128,7 @@ export function createNormalizedMeetingAdapter(options: MeetingAdapterOptions) {
       invitationActions: invitation && Date.parse(invitation.expiresAt) <= now ? [] : actions,
       invitation: invitation ? viewInvitation(invitation) : null,
       messages: messages.map(message => ({ id: message.id, authorId: message.senderId, body: message.body, timeLabel: format.format(Date.parse(message.createdAt)) })),
+      sharedPlaceMessageId: invitation && selected.landmark ? messages.find(message => message.invitationId === invitation.id)?.id ?? null : null,
       conversation: page.conversationId === null ? null : { id: page.conversationId,
         earlierCursor: messages[0] && messages[0].sequence > 1 ? String(messages[0].sequence - 1) : null,
         nextCursor: page.hasMore ? page.cursor : null },

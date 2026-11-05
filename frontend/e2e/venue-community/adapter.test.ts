@@ -107,6 +107,12 @@ describe('actual shared-client normalized adapter', () => {
     expect(await h.factory.adapter.execute(command, h.request)).toEqual({ state: 'applied' })
     expect(h.calls.at(-1)?.body?.json).toMatchObject({ expectedRevision: 3, decision: 'ACCEPT' })
   })
+  it.each([true, false])('embeds a place only for an actual matching invitation message: %s', async associated => {
+    const h = setup(); await h.factory.listInvitations('INCOMING', undefined, h.request)
+    h.setPage({ items: [{ ...h.message(1), invitationId: associated ? ids.invitation : null }], cursor: '1' })
+    const view = await h.factory.adapter.readInvitation(ids.invitation, h.request)
+    expect(view?.sharedPlaceMessageId).toBe(associated ? h.message(1).id : null)
+  })
   it('does not infer detail authority from a bare invitation UUID', async () => {
     const h = setup(); expect(await h.factory.adapter.readInvitation(ids.invitation, h.request)).toBeNull(); expect(h.calls).toHaveLength(0)
   })

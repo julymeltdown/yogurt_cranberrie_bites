@@ -42,11 +42,20 @@ try {
     assert(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth))
     const invitation = await capture(page, `invitation-${width}`, page.locator('.venue-meeting-invitation'))
     await page.getByRole('button', { name: 'Accept', exact: true }).click()
-    await expect(page.getByText('Meeting accepted', { exact: true })).toBeVisible()
+    await expect(page.locator('.venue-meeting-status-accepted')).toBeVisible()
+    await expect(page.locator('.venue-meeting-status-accepted')).toContainText('Meeting accepted')
     await page.evaluate(() => window.__VENUE_MEETING_FIXTURE__.conversation())
     await expect(page.getByText('On my way.', { exact: true })).toBeVisible()
     assert.equal((await page.evaluate(() => window.__VENUE_MEETING_FIXTURE__.state())).writes, 1)
     const conversation = await capture(page, `conversation-${width}`, page.locator('.venue-meeting-conversation'))
+    await page.getByRole('button', { name: 'View on map', exact: true }).click()
+    await expect.poll(() => page.evaluate(() => window.__VENUE_MEETING_FIXTURE__.state().focuses)).toBe(1)
+    await page.evaluate(() => window.__VENUE_MEETING_FIXTURE__.conversation())
+    await expect(page.getByText('On my way.', { exact: true })).toBeVisible()
+    await page.getByRole('button', { name: 'Focus meeting place on map', exact: true }).click()
+    await expect.poll(() => page.evaluate(() => window.__VENUE_MEETING_FIXTURE__.state().focuses)).toBe(2)
+    await page.evaluate(() => window.__VENUE_MEETING_FIXTURE__.conversation())
+    await expect(page.getByText('On my way.', { exact: true })).toBeVisible()
     await page.getByRole('button', { name: 'Message', exact: true }).click()
     await expect(page.getByRole('textbox', { name: 'Message', exact: true })).toBeFocused()
     await page.getByRole('textbox', { name: 'Message', exact: true }).fill('Private fixture draft')
@@ -79,7 +88,7 @@ try {
     assert.deepEqual((await page.evaluate(() => window.__VENUE_MEETING_FIXTURE__.state())).subscriptions, { clock: 0, invalidation: 0 })
     await page.evaluate(() => window.__VENUE_MEETING_FIXTURE__.dispose())
     report.widths.push({ width, result: 'PASS', invitation, conversation, uncertain, shortHeight,
-      minimumTouchTarget: 44, focus: 'MESSAGE focuses composer; status recovery works by keyboard',
+      mapFocus: 'Controlled sole Map focus port; no real position, GPS or production shell', minimumTouchTarget: 44, focus: 'MESSAGE focuses composer; status recovery works by keyboard',
       keyboardLimit: 'Desktop headless viewport resize, not a physical mobile software keyboard' })
     await context.close()
   }

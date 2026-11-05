@@ -74,3 +74,12 @@ it('the retained host binds one consumer and releases it with its original subsc
   // The separate fixture owner still has one subscription; the host-owned one is gone.
   expect(f.subscriptions()).toEqual({ clock: 1, invalidation: 1 })
 })
+
+it.each([true, false])('keeps current place outside unassociated messages and embeds only an associated message: %s', async associated => {
+  const f = fixture(); f.patch({ invitation: { id: fixtureIds.invitation, version: '1', status: 'accepted', expiresAtMs: f.time() + 50000 },
+    messages: [{ id: 'visible-message', authorId: fixtureIds.actor, body: 'Meet after the show.', timeLabel: 'Now' }],
+    sharedPlaceMessageId: associated ? 'visible-message' : null })
+  await f.owner.open(f.intent); const result = render(<MeetingLeaf owner={f.owner} />)
+  expect(result.container.querySelector('.venue-meeting-message-with-place .venue-meeting-place') !== null).toBe(associated)
+  expect(result.container.querySelectorAll('.venue-meeting-conversation .venue-meeting-place')).toHaveLength(1)
+})

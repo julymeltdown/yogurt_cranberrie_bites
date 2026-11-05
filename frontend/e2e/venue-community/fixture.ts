@@ -3,6 +3,7 @@ import type { ReactNode } from 'react'
 import { createMemorySession } from '../../src/shared/api/http'
 import { createQueryPrivacy, type PrivacyScope } from '../../src/shared/query/privacy'
 import type { MeetingOpenIntent } from '../../src/features/paradise-city-map/ports'
+import { landmarkId } from '../../src/features/paradise-city-map/spatial/contract'
 import type { LeafCommand, MeetingContextView } from '../../src/features/venue-invitations/model'
 import { createMeetingLeafOwner } from '../../src/app/venue-community-entry/owner'
 import type { LeafCommandResult, MeetingLeafAdapter, MeetingLeafRelease, LeafRequest } from '../../src/app/venue-community-entry/ports'
@@ -18,11 +19,12 @@ export function deferred<T>() {
   return { promise, resolve, reject }
 }
 /** Controlled presentation fixture only; no actual landmark authority or production wire. */
-export function meetingFixture(portraits: readonly [ReactNode, ReactNode] = [null, null]) {
+export function meetingFixture(portraits: readonly [ReactNode, ReactNode] = [null, null], withMapFocus = false) {
   const session = createMemorySession(), client = new QueryClient()
   session.replace(0, { userId: fixtureIds.actor, eventId: fixtureIds.event, accessToken: 'fixture-only' })
   const privacy = createQueryPrivacy({ client, session }), auth = { session, privacy }
   const scope = privacy.capture(), lifetime = new AbortController()
+  const focuses: unknown[] = []
   const clocks = new Set<() => void>(), invalidations = new Set<() => void>()
   let time = 1_800_000_000_000, clockScope: PrivacyScope = scope, clockAvailable = true, keys = 0
   const place = { landmarkId: 'synthetic-real-main-gate', catalogRevision: '7', landmarkRevision: '11' }
@@ -67,10 +69,14 @@ export function meetingFixture(portraits: readonly [ReactNode, ReactNode] = [nul
     clock: { read: () => clockAvailable ? { scope: clockScope, nowMs: time } : null,
       subscribe(fn) { clocks.add(fn); return () => { clocks.delete(fn) } } },
     invalidations: { subscribe(fn) { invalidations.add(fn); return () => { invalidations.delete(fn) } } },
+    ...(withMapFocus ? { mapVenue: { identity: intent.venue, title: 'Controlled illustrated focus surface',
+      image: { src: '', width: 100, height: 100, description: 'Controlled fixture coordinates, not a real venue position' },
+      classification: 'ILLUSTRATED_UNCALIBRATED' as const, landmarks: [{ id: landmarkId('synthetic-art-gate'), label: 'Main Gate',
+        point: { x: 50, y: 50 }, meetingContext: place }] }, mapFocus: { focus(value: unknown) { focuses.push(value); return true } } } : {}),
   }
   const owner = createMeetingLeafOwner({ auth, release, newCommandKey: () => `00000000-0000-4000-8000-${String(++keys).padStart(12, '0')}` })
   const clockChanged = () => { for (const fn of Array.from(clocks)) fn() }
-  return { auth, scope, release, lifetime, intent, inviteIntent, owner, reads, writes, statuses,
+  return { auth, scope, release, lifetime, intent, inviteIntent, owner, reads, writes, statuses, focuses,
     context: () => context, patch(patch: Partial<MeetingContextView>) { context = { ...context, ...patch } },
     setWriteResult(result: LeafCommandResult) { writeResult = result }, setStatusResult(result: LeafCommandResult) { statusResult = result },
     nextRead(promise: Promise<MeetingContextView | null>) { readNext = promise },

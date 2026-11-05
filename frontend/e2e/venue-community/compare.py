@@ -41,7 +41,7 @@ for item in native['widths']:
                                                       'padBottomPx': canvas_size[1] - reference.height},
                       'implementationCommit': native['sourceCommit'], 'originalCaptureTimeWithTimezone': capture['capturedAt'],
                       'fixtureOrRealServiceDeviceLabel': native['classification'], 'fixtureClockMs': native['fixtureClockMs'],
-                      'producerContractSourcePins': {'spatialContractSHA256': native['spatialSHA256'], 'wire': 'NOT_FROZEN_NOT_USED'},
+                      'producerContractSourcePins': {'spatialContractSHA256': native['spatialSHA256'], 'wire': 'CANONICAL_81680fc8_NOT_USED_BY_COMPONENT_FIXTURE'},
                       'actualCapturePath': capture['path'], **{key: str(value) for key, value in paths.items()},
                       'declaredVariableDataMasks': [], 'meanAbsoluteRGBDifference': ImageStat.Stat(diff).mean,
                       'materialDiscrepancies': ['DEVELOPER_INSPECTION_PENDING'], 'fixDisposition': 'OPEN_NOT_ACCEPTED'})

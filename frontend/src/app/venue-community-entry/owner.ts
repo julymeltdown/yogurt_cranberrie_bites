@@ -94,6 +94,7 @@ export function createMeetingLeafOwner({ auth, release, newCommandKey }: Meeting
       if (!message.id || ids.has(message.id) || (message.authorId !== value.self.userId && message.authorId !== value.friend.userId)) return false
       ids.add(message.id)
     }
+    if (value.sharedPlaceMessageId != null && (!ids.has(value.sharedPlaceMessageId) || !value.landmarkLabel || !value.invitation)) return false
     return true
   }
   function mappedLandmark(context: MeetingContextView) {

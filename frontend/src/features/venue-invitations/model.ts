@@ -38,6 +38,8 @@ export interface MeetingContextView {
   readonly invitation: InvitationView | null
   /** A complete authorized display window in producer order, deduplicated by the adapter. */
   readonly messages: readonly MeetingMessage[]
+  /** Only an actual server message associated with the current reviewed invitation. */
+  readonly sharedPlaceMessageId?: string | null
   readonly conversation: { readonly id: string; readonly earlierCursor: string | null; readonly nextCursor?: string | null } | null
   /** Adapter translates the actual frozen server length/unit policy. No guessed UI limit. */
   readonly messagePolicy: { readonly hint: string; readonly accepts: (body: string) => boolean }

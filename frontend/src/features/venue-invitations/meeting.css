@@ -13,7 +13,7 @@
   padding: 10px;
 }
 .venue-meeting *, .venue-meeting *::before, .venue-meeting *::after { box-sizing: border-box; }
-.venue-meeting h2 { margin: 0; font-size: 21px; line-height: 1.15; font-weight: 800; overflow-wrap: anywhere; }
+.venue-meeting h2 { margin: 0; font-size: clamp(18px, 5.3vw, 23px); line-height: 1.15; font-weight: 800; overflow-wrap: anywhere; }
 .venue-meeting p { margin: 0; }
 .venue-meeting button {
   min-height: 44px;
@@ -32,14 +32,14 @@
 .venue-meeting-header { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-bottom: 8px; }
 .venue-meeting-header strong { font-size: 12px; text-transform: uppercase; letter-spacing: .04em; }
 .venue-meeting-header button { padding: 6px 10px; }
-.venue-meeting-invitation { border: 1px solid #333; border-radius: 6px; padding: 14px; }
+.venue-meeting-invitation { border: 1px solid #333; border-radius: 6px; padding: clamp(12px, 3.6vw, 15px); }
 .venue-meeting-invitation-heading { display: flex; align-items: center; gap: 12px; margin-bottom: 14px; }
 .venue-meeting-invitation-heading p { margin-top: 4px; }
 .venue-meeting-pair { display: flex; flex: 0 0 auto; gap: 7px; }
-.venue-meeting-pair > span { display: grid; place-items: center; width: 48px; height: 54px; border: 1px solid #333; border-radius: 3px; overflow: hidden; background: #e9e5dc; }
+.venue-meeting-pair > span { display: grid; place-items: center; width: clamp(48px, 14vw, 60px); aspect-ratio: 1; border: 1px solid #333; border-radius: 3px; overflow: hidden; background: #e9e5dc; }
 .venue-meeting-pair img, .venue-meeting-portrait img, .venue-meeting-message-portrait img { width: 100%; height: 100%; object-fit: contain; image-rendering: pixelated; }
 .venue-meeting-participants { display: flex; align-items: center; gap: 5px; margin-top: 4px; font-weight: 700; flex-wrap: wrap; }
-.venue-meeting-portrait { display: grid; place-items: center; width: 30px; height: 30px; overflow: hidden; }
+.venue-meeting-portrait { display: grid; place-items: center; width: 26px; height: 26px; overflow: hidden; }
 .venue-meeting-plus { font-weight: 400; }
 .venue-meeting-participants > span:last-child { margin-left: 5px; }
 .venue-meeting-guidance { margin-top: 5px !important; padding-bottom: 5px; border-bottom: 1px solid #b6b3ac; }
@@ -48,22 +48,23 @@
 .venue-meeting-place > div { flex: 1; min-width: 0; }
 .venue-meeting-place button { font-size: 12px; padding: 6px; }
 .venue-meeting-place span:not(.venue-meeting-pin) { display: block; font-size: 12px; }
-.venue-meeting-pin { font-size: 26px; font-weight: 900; }
-.venue-meeting-status { display: flex; align-items: center; justify-content: space-between; gap: 10px; background: #e8e5df; border-radius: 4px; margin: 10px 0 !important; padding: 5px 12px; font-weight: 800; }
+.venue-meeting-pin { flex: 0 0 22px; width: 22px; height: 25px; }
+.venue-meeting-status { display: flex; align-items: center; justify-content: space-between; gap: 10px; background: #e8e5df; border-radius: 4px; margin: 7px 0 !important; padding: 5px 12px; font-size: 16px; line-height: 1.1; font-weight: 800; }
 .venue-meeting-status-accepted { background: var(--meeting-burgundy); color: #fff; }
 .venue-meeting-actions { display: flex; gap: 10px; margin-top: 9px; }
 .venue-meeting-actions > button { flex: 1 1 0; min-width: 0; text-transform: uppercase; font-size: 13px; }
 .venue-meeting-explanation { font-size: 12px; margin: 7px 0 !important; }
 .venue-meeting .venue-meeting-text-button { margin-top: 8px; width: 100%; border-color: transparent; text-decoration: underline; font-size: 13px; }
 .venue-meeting-messages { list-style: none; margin: 0; padding: 0; max-height: min(34dvh, 320px); overflow-y: auto; overscroll-behavior: contain; }
-.venue-meeting-messages li { display: flex; gap: 7px; margin: 8px 0; }
+.venue-meeting-messages li { display: flex; gap: 7px; margin: 5px 0; }
 .venue-meeting-message-portrait { flex: 0 0 34px; width: 34px; height: 36px; border: 1px solid #666; border-radius: 4px; overflow: hidden; }
 .venue-meeting-messages li > div { flex: 1; min-width: 0; }
 .venue-meeting-message-heading { display: flex; flex-wrap: wrap; align-items: baseline; gap: 9px; line-height: 1.2; }
 .venue-meeting-message-heading strong { color: var(--meeting-burgundy); }
 .venue-meeting-message-self .venue-meeting-message-heading strong { color: var(--meeting-ink); }
 .venue-meeting-message-heading small { font-size: 11px; color: #515151; }
-.venue-meeting-messages li p { display: inline-block; max-width: 100%; margin-top: 3px; border: 1px solid #9a978e; border-radius: 5px; padding: 5px 8px; white-space: pre-wrap; overflow-wrap: anywhere; }
+.venue-meeting-message-bubble { display: inline-block; max-width: 100%; }
+.venue-meeting-messages li p { display: block; max-width: 100%; margin-top: 3px; border: 1px solid #9a978e; border-radius: 5px; padding: 5px 8px; white-space: pre-wrap; overflow-wrap: anywhere; }
 .venue-meeting-empty { padding: 16px 0; font-size: 13px; }
 .venue-meeting-composer { display: grid; gap: 5px; margin-top: 10px; }
 .venue-meeting-composer label { font-size: 12px; font-weight: 700; }
@@ -74,3 +75,56 @@
 .venue-meeting-safety { margin-top: 10px !important; font-size: 11px; color: #515151; }
 @media (max-width: 370px) { .venue-meeting-invitation { padding: 10px; } .venue-meeting-pair { gap: 4px; } .venue-meeting-pair > span { width: 40px; height: 48px; } .venue-meeting-invitation-heading { gap: 8px; } }
 @media (max-height: 620px) { .venue-meeting-messages { max-height: 140px; } }
+
+/* Visible dense reference controls retain a full 44px pointer/focus box. */
+.venue-meeting-actions { height: 32px; align-items: center; }
+.venue-meeting-actions > button, .venue-meeting-place-compact button {
+  position: relative; isolation: isolate; min-height: 44px; border: 0;
+  background: transparent; font-size: 15px;
+}
+.venue-meeting-actions > button::before, .venue-meeting-place-compact button::before {
+  content: ""; position: absolute; z-index: -1; inset: 6px 0;
+  border: 1px solid #333; border-radius: 3px; background: #fbfaf7; pointer-events: none;
+}
+.venue-meeting-actions > .venue-meeting-primary { background: transparent; }
+.venue-meeting-actions > .venue-meeting-primary::before { background: var(--meeting-burgundy); border-color: var(--meeting-burgundy); }
+.venue-meeting-message-with-place { display: block; margin-top: 3px; padding: 4px 5px; border: 1px solid #9a978e; border-radius: 5px; }
+.venue-meeting-messages .venue-meeting-message-with-place > p { margin: 0; padding: 0; border: 0; }
+.venue-meeting-place-compact { height: 32px; margin: 5px 0 0; padding: 2px 5px; gap: 5px; }
+.venue-meeting-place-compact .venue-meeting-pin { flex-basis: 20px; width: 20px; height: 23px; }
+.venue-meeting-place-compact strong { font-size: 15px; }
+.venue-meeting-place-compact button { font-size: 12px; padding-inline: 8px; white-space: nowrap; }
+.venue-meeting-place-compact .venue-meeting-place-description { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+@media (max-width: 370px) {
+  .venue-meeting-invitation { padding: 12px; }
+  .venue-meeting-pair { gap: 6px; }
+  .venue-meeting-pair > span { width: 50px; height: auto; }
+  .venue-meeting-invitation-heading { gap: 10px; }
+}
+
+.venue-meeting-conversation-heading { display: flex; justify-content: space-between; align-items: center; gap: 8px; min-height: 26px; }
+.venue-meeting .venue-meeting-focus { flex: 0 0 44px; width: 44px; height: 44px; margin-block: -9px; padding: 12px; border: 0; background: transparent; position: relative; isolation: isolate; }
+.venue-meeting-focus::before { content: ""; position: absolute; z-index: -1; inset: 9px; border: 1px solid #333; border-radius: 3px; background: #fbfaf7; pointer-events: none; }
+.venue-meeting-focus svg { display: block; width: 20px; height: 20px; }
+
+/* Scale the measured component anatomy with the supported mobile widths. */
+.venue-meeting-conversation { padding-inline: 5px; font-size: clamp(13px, 3.72vw, 16px); }
+.venue-meeting-conversation-heading { min-height: clamp(24px, calc(2.86vw + 13.7px), 26px); }
+.venue-meeting-conversation .venue-meeting-participants { margin-top: clamp(0px, calc(5.71vw - 20.6px), 4px); }
+.venue-meeting-conversation .venue-meeting-guidance { margin-top: clamp(0px, calc(7.14vw - 25.7px), 5px) !important; padding-bottom: clamp(3px, calc(2.86vw - 7.3px), 5px); }
+.venue-meeting-conversation .venue-meeting-portrait { width: clamp(22px, 6vw, 26px); height: clamp(22px, 6vw, 26px); }
+.venue-meeting-message-portrait { flex-basis: clamp(30px, 8.7vw, 38px); width: clamp(30px, 8.7vw, 38px); height: clamp(32px, 9.2vw, 40px); }
+.venue-meeting-messages li { margin-block: clamp(3px, calc(2.86vw - 7.3px), 5px); }
+.venue-meeting-message-heading small { font-size: clamp(10px, 2.82vw, 12px); }
+.venue-meeting-place-compact { height: clamp(28px, 8.2vw, 36px); }
+.venue-meeting-place-compact strong { font-size: clamp(14px, 3.95vw, 17px); }
+.venue-meeting-place-compact button::before { inset-block: 9px; }
+.venue-meeting-status { font-size: clamp(14px, 4.1vw, 18px); }
+.venue-meeting-conversation .venue-meeting-actions { height: clamp(26px, 7.44vw, 32px); }
+.venue-meeting-conversation .venue-meeting-actions > button::before { inset-block: clamp(6px, calc(30.8px - 5.7vw), 10px); }
+.venue-meeting-invitation { padding: clamp(12px, calc(8.57vw - 18.85px), 18px); }
+.venue-meeting-invitation-heading { margin-bottom: clamp(14px, calc(5.7vw - 6.5px), 18px); }
+@media (min-width: 410px) {
+  .venue-meeting-invitation .venue-meeting-actions { height: 36px; }
+  .venue-meeting-invitation .venue-meeting-actions > button::before { inset-block: 4px; }
+}
